@@ -229,7 +229,7 @@ html[dir='rtl'] .makeMenu li ul li {
 
 .makeMenu ul li a {
 	background-color:#EEE;
-	padding:0 5px 0 2px;
+	padding:0 5px 5px 2px;
 	display:block;
 }
 

@@ -3,8 +3,6 @@
 /*
  * iPad Specific style
  */
-.search-icon{margin-bottom:-3px;}
-
 @media only screen and (orientation:portrait){
    /* portrait styles here */
    #wrap {width:768px;}

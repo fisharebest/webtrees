@@ -358,6 +358,7 @@ text-align:left;
 
 .makeMenu li ul li a {
 color:#333;
+padding:2px 5px 2px 2px!important;
 }
 
 .makeMenu,.makeMenu li ul {
@@ -1319,7 +1320,7 @@ color:#000;
 }
 .search_item{font-weight:600;}
 
-.search-icon{margin-bottom:-1px}
+.search-icon{height: 17px;vertical-align:top;}}
 
 .topbottombar {
 font-weight:bold;
@@ -1962,7 +1963,7 @@ margin-right:auto;
 }
 
 .faq_italic {
-font-size:10px;
+font-size:12px;
 font-style:italic;
 font-weight:700;
 padding:0 10px;
@@ -1989,7 +1990,7 @@ width:98%;
 /* FAQ table  */
 table.faq {
 background-color:#eee;
-margin:5px 0 50px 5px;
+margin:5px 0 15px 5px;
 width:98%;
 }
 
