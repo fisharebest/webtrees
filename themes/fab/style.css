@@ -1296,7 +1296,7 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 .ui-tabs .ui-tabs-panel {padding:1em 0;}
 .ui-state-active, .ui-widget-content .ui-state-active {border:1px solid darkGray;background:#ccc;font-weight:normal;color:black;outline:none;}
 .ui-accordion .ui-accordion-header .ui-icon {position:absolute;left:0.5em;top:50%;margin-top:-8px;}
-.ui-accordion .ui-accordion-content {padding:1em .05em;border-top:0;margin-top:-2px;position:relative;top:1px;margin-bottom:2px;overflow:visible;display:none;}
+.ui-accordion .ui-accordion-content {padding:1em .05em;border-top:0;margin-top:1px;position:relative;top:1px;margin-bottom:2px;overflow:visible;display:none;}
 .ui-accordion .ui-accordion-content-active {display:block;}
 .ui-accordion .ui-accordion-header a {padding:.5em;}
 .ui-helper-reset {line-height:1.6;}

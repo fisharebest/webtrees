@@ -737,7 +737,7 @@ html[dir='rtl'] dd .editlink, html[dir='rtl'] dd .deletelink {float:left;}
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-tabs {padding:0;}
 .ui-tabs .ui-tabs-panel {padding:1em 0;}
-.ui-accordion .ui-accordion-content {overflow:visible;padding:0 5px;}
+.ui-accordion .ui-accordion-content {margin-top: 1px;overflow:visible;padding:0 5px;}
 .ui-accordion .ui-accordion-header {text-align:center;margin-top:0;}
 .ui-accordion .ui-accordion-header a {padding:2px;}
 .ui-helper-reset {line-height:1.5;}

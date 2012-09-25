@@ -1850,7 +1850,7 @@ html[dir='rtl'] dd .editlink, html[dir='rtl'] dd .deletelink {float:left;}
 .ui-tabs .ui-tabs-panel {background:#f8f8f8;}
 
 .ui-accordion .ui-accordion-header .ui-icon {position:absolute;left:.5em;top:50%;margin-top:-8px;}
-.ui-accordion .ui-accordion-content {padding:0 0.5em;border-top:0;margin-top:-2px;position:relative;top:1px;margin-bottom:2px;overflow:visible;display:none;}
+.ui-accordion .ui-accordion-content {padding:0 0.5em;border-top:0;margin-top:1px;position:relative;top:1px;padding:0 5px;overflow:visible;display:none;}
 .ui-accordion .ui-accordion-content-active {display:block;}
 .ui-accordion .ui-accordion-header a {padding:0.5em;}
 .ui-helper-reset {line-height:1.6;}

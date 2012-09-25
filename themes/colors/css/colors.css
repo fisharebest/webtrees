@@ -757,7 +757,7 @@ html[dir='rtl'] .indi_table{clear:right;}
 
 /* jquery-ui.custom.css changes  */
 span.link_text{display:none;}
-.ui-accordion .ui-accordion-content {overflow:visible;padding:0 5px;}
+.ui-accordion .ui-accordion-content {margin-top:1px;overflow:visible;padding:0 5px;}
 .ui-accordion .ui-accordion-header{margin-top:0;text-align:center;}
 .ui-accordion .ui-accordion-header a{padding:2px;}
 .ui-helper-reset{line-height:1.5;}
