@@ -290,7 +290,7 @@ case 'createuser':
 		set_user_setting($user_id, 'editaccount',          $editaccount);
 		set_user_setting($user_id, 'verified',             $verified);
 		set_user_setting($user_id, 'verified_by_admin',    $verified_by_admin);
-		foreach (WT_Tree::allTrees() as $tree) {
+		foreach (WT_Tree::getAll() as $tree) {
 			$tree->userPreference($user_id, 'gedcomid', safe_POST_xref('gedcomid'.$tree->tree_id));
 			$tree->userPreference($user_id, 'rootid',   safe_POST_xref('rootid'.$tree->tree_id));
 			$tree->userPreference($user_id, 'canedit',  safe_POST('canedit'.$tree->tree_id, array_keys($ALL_EDIT_OPTIONS)));
@@ -365,92 +365,81 @@ case 'createform':
 		});
 	');
 
-	?>
-	<form name="newform" method="post" action="admin_users.php?action=createuser" onsubmit="return checkform(this);">
-		<!--table-->
+	echo '
+	<form name="newform" method="post" action="admin_users.php?action=createuser" onsubmit="return checkform(this);" autocomplete="off">
 		<table id="adduser">
 			<tr>
-				<td><?php echo WT_I18N::translate('Username'), help_link('username'); ?></td>
-				<td colspan="3"><input type="text" name="username" value="<?php echo htmlspecialchars($username); ?>" autofocus></td>
+				<td>', WT_I18N::translate('Real name'), help_link('real_name'), '</td>
+				<td><input type="text" name="realname" style="width:95%;" required maxlength="64" value="', htmlspecialchars($realname), '" autofocus></td>
+				<td>', WT_I18N::translate('Administrator'), help_link('role'), '</td>
+				<td><input type="checkbox" name="canadmin" value="1"></td>
 			</tr>
 			<tr>
-				<td><?php echo WT_I18N::translate('Real name'), help_link('real_name'); ?></td>
-				<td colspan="3"><input type="text" name="realname" size="40" value="<?php echo htmlspecialchars($realname); ?>"></td>
-			</tr>
-			<tr>
-				<td><?php echo WT_I18N::translate('Password'), help_link('password'); ?></td>
-				<td><input type="password" name="pass1" value="<?php echo htmlspecialchars($pass1); ?>"></td>
-				<td><?php echo WT_I18N::translate('Confirm password'), help_link('password_confirm'); ?></td>
-				<td><input type="password" name="pass2" value="<?php echo htmlspecialchars($pass2); ?>"></td>
-			</tr>
-			<tr>
-				<td><?php echo WT_I18N::translate('Email address'), help_link('email'); ?></td>
-				<td><input type="email" name="emailaddress" size="40" value="<?php echo htmlspecialchars($emailaddress); ?>"></td>
-				<td><?php echo WT_I18N::translate('Preferred contact method'); ?></td>
-				<td>
-					<?php
-						echo edit_field_contact('new_contact_method', $new_contact_method);
-					?>
-				</td>
-			</tr>
-			<tr>
-				<td><?php echo WT_I18N::translate('Email verified'), help_link('useradmin_verification'); ?></td>
-				<td><input type="checkbox" name="verified" value="1" checked="checked"></td>
-				<td><?php echo WT_I18N::translate('Approved by administrator'), help_link('useradmin_verification'); ?></td>
+				<td>', WT_I18N::translate('Username'), help_link('username'), '</td>
+				<td><input type="text" name="username" style="width:95%;" required maxlength="32" value="', htmlspecialchars($username), '"></td>
+				<td>', WT_I18N::translate('Approved by administrator'), help_link('useradmin_verification'), '</td>
 				<td><input type="checkbox" name="verified_by_admin" value="1" checked="checked"></td>
 			</tr>
 			<tr>
-				<td><?php echo WT_I18N::translate('Automatically approve changes made by this user'), help_link('useradmin_auto_accept'); ?></td>
-				<td><input type="checkbox" name="new_auto_accept" value="1"></td>
-				<td><?php echo WT_I18N::translate('Allow this user to edit his account information'), help_link('useradmin_editaccount'); ?></td>
-				<td><input type="checkbox" name="editaccount" value="1" checked="checked"></td>
+				<td>', WT_I18N::translate('Email address'), help_link('email'), '</td>
+				<td><input type="email" name="emailaddress" style="width:95%;" required maxlength="64" value="', htmlspecialchars($emailaddress), '"></td>
+				<td>', WT_I18N::translate('Email verified'), help_link('useradmin_verification'), '</td>
+				<td><input type="checkbox" name="verified" value="1" checked="checked"></td>
 			</tr>
 			<tr>
-				<td><?php echo WT_I18N::translate('Administrator'), help_link('role'); ?></td>
-				<td><input type="checkbox" name="canadmin" value="1"></td>
-				<td><?php echo WT_I18N::translate('Visible to other users when online'), help_link('useradmin_visibleonline'); ?></td>
+				<td>', WT_I18N::translate('Password'), help_link('password'), '</td>
+				<td><input type="password" name="pass1" style="width:95%;" value="', htmlspecialchars($pass1), '" required placeholder="', WT_I18N::translate('At least 6 characters'), '" pattern="', WT_REGEX_PASSWORD, '" onchange="form.user_password02.pattern = regex_quote(this.value);"></td>
+				<td>', WT_I18N::translate('Automatically approve changes made by this user'), help_link('useradmin_auto_accept'), '</td>
+				<td><input type="checkbox" name="new_auto_accept" value="1"></td>
+			</tr>
+				<td>', WT_I18N::translate('Confirm password'), help_link('password_confirm'), '</td>
+				<td><input type="password" name="pass2" style="width:95%;" value="', htmlspecialchars($pass2), '" required placeholder="', WT_I18N::translate('Same password as above'), '" pattern="', WT_REGEX_PASSWORD, '"></td>
+				<td>', WT_I18N::translate('Allow this user to edit his account information'), help_link('useradmin_editaccount'), '</td>
+				<td><input type="checkbox" name="editaccount" value="1" checked="checked"></td>
+			<tr>
+				<td>', WT_I18N::translate('Preferred contact method'), '</td>
+				<td>';
+					echo edit_field_contact('new_contact_method', $new_contact_method);
+				echo '</td>
+				<td>', WT_I18N::translate('Visible to other users when online'), help_link('useradmin_visibleonline'), '</td>
 				<td><input type="checkbox" name="visibleonline" value="1" checked="checked"></td>
 			</tr>
-			<?php if (WT_USER_IS_ADMIN) { ?>
 			<tr>
-				<td><?php echo WT_I18N::translate('Admin comments on user'); ?></td>
-				<td colspan="3"><textarea cols="80" rows="5" name="new_comment" value="<?php echo htmlspecialchars($new_comment); ?>"></textarea></td>
 			</tr>
-			<?php } ?>
 			<tr>
-				<td><?php echo WT_I18N::translate('Language'); ?></td>
-				<td colspan="3"><?php echo edit_field_language('user_language', $user_language); ?></td>
-			</tr>
-			<?php if (WT_Site::preference('ALLOW_USER_THEMES')) { ?>
-				<tr>
-					<td><?php echo WT_I18N::translate('Theme'), help_link('THEME'); ?></td>
-					<td colspan="3">
+				<td>', WT_I18N::translate('Language'), '</td>
+				<td>', edit_field_language('user_language', $user_language), '</td>';
+				if (WT_Site::preference('ALLOW_USER_THEMES')) {
+					echo '<td>', WT_I18N::translate('Theme'), help_link('THEME'), '</td>
+					<td>
 						<select name="new_user_theme">
-						<option value="" selected="selected"><?php echo htmlspecialchars(WT_I18N::translate('<default theme>')); ?></option>
-						<?php
+						<option value="" selected="selected">', htmlspecialchars(WT_I18N::translate('<default theme>')), '</option>';
 							foreach (get_theme_names() as $themename=>$themedir) {
 								echo '<option value="', $themedir, '">', $themename, '</option>';
 							}
-						?>
-						</select>
-					</td>
-				</tr>
-			<?php } ?>
-			<!-- access and relationship path details -->
-			<tr>
-				<th colspan="4"><?php print WT_I18N::translate('Family tree access and settings'); ?></th>
+						echo '</select>
+					</td>';
+				}
+			echo '</tr>';
+			if (WT_USER_IS_ADMIN) {
+			echo '<tr>
+				<td>', WT_I18N::translate('Admin comments on user'), '</td>
+				<td colspan="3"><textarea style="width:95%;" rows="5" name="new_comment" value="', htmlspecialchars($new_comment), '"></textarea></td>
+			</tr>';
+			}
+			echo '<tr>
+				<th colspan="4">', WT_I18N::translate('Family tree access and settings'), '</th>
 			</tr>
 			<tr>
 				<td colspan="4">
 					<table id="adduser2">
 						<tr>
-							<th><?php echo WT_I18N::translate('Family tree'); ?></th>
-							<th><?php echo WT_I18N::translate('Default individual'), help_link('default_individual'); ?></th>
-							<th><?php echo WT_I18N::translate('Individual record'), help_link('useradmin_gedcomid'); ?></th>
-							<th><?php echo WT_I18N::translate('Role'), help_link('role'); ?></th>
-							<th><?php echo WT_I18N::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'); ?></th>
-						</tr>
-						<?php
+							<th>', WT_I18N::translate('Family tree'), '</th>
+							<th>', WT_I18N::translate('Default individual'), help_link('default_individual'), '</th>
+							<th>', WT_I18N::translate('Individual record'), help_link('useradmin_gedcomid'), '</th>
+							<th>', WT_I18N::translate('Role'), help_link('role'), '</th>
+							<th>', WT_I18N::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'), '</th>
+						</tr>';
 							foreach (WT_Tree::getAll() as $tree) {
 								echo '<tr>',
 									'<td>', $tree->tree_title_html, '</td>',
@@ -490,17 +479,15 @@ case 'createform':
 									'</td>',
 								'</tr>';
 							}
-						?>
-					</table>
+					echo '</table>
 				</td>
 			</tr>
 				<td colspan="4">
-					<input type="submit" value="<?php echo WT_I18N::translate('Create User'); ?>">
+					<input type="submit" value="', WT_I18N::translate('Create User'), '">
 				</td>
 			</tr>	
 		</table>
-	</form>
-	<?php
+	</form>';
 	break;
 case 'cleanup':
 	?>
