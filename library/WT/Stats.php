@@ -936,7 +936,11 @@ class WT_Stats {
 				break;
 			case 'place':
 				$fact=WT_GedcomRecord::getInstance($row['d_gid'])->getFactByType($row['d_fact']);
-				$result=format_fact_place($fact, true, true, true);
+				if ($fact) {
+					$result=format_fact_place($fact, true, true, true);
+				} else {
+					$result=WT_I18N::translate('Private');
+				}
 				break;
 		}
 		return $result;
@@ -1873,7 +1877,11 @@ class WT_Stats {
 				break;
 			case 'place':
 				$fact=$record->getFactByType($row['fact']);
-				$result=format_fact_place($fact, true, true, true);
+				if ($fact) {
+					$result=format_fact_place($fact, true, true, true);
+				} else {
+					$result=WT_I18N::translate('Private');
+				}
 				break;
 		}
 		return $result;
