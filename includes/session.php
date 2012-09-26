@@ -423,6 +423,7 @@ if ($WT_TREE) {
 	define('WT_USER_PATH_LENGTH',  0);
 	define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
 }
+$GEDCOM=WT_GEDCOM;
 
 // With no parameters, init() looks to the environment to choose a language
 define('WT_LOCALE', WT_I18N::init());
