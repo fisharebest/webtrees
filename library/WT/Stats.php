@@ -39,7 +39,7 @@ class WT_Stats {
 	private $_ged_id;
 
 	// Methods not allowed to be used as embedded statistics
-	private static $_not_allowed = array('stats', 'getAllTags', 'getTags', 'embedTags', 'iso3166', 'get_all_countries');
+	private static $_not_allowed = array('stats', 'getTags', 'embedTags', 'iso3166', 'get_all_countries');
 	private static $_media_types = array('audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic', 'magazine', 'manuscript', 'map', 'fiche', 'film', 'newspaper', 'painting', 'photo', 'tombstone', 'video', 'other');
 
 	public function __construct($gedcom) {
@@ -49,82 +49,54 @@ class WT_Stats {
 	}
 
 	/**
-	* Return an array of all supported tags and an example of its output.
-	*/
-	function getAllTags() {
-		$examples = array();
-		$methods = get_class_methods('WT_Stats');
-		$c = count($methods);
-		for ($i=0; $i < $c; $i++) {
-			if ($methods[$i][0] == '_' || in_array($methods[$i], self::$_not_allowed)) {
-				continue;
-			}
-			$examples[$methods[$i]] = $this->$methods[$i]();
-			if (stristr($methods[$i], 'highlight')) {
-				$examples[$methods[$i]]=str_replace(array(' align="left"', ' align="right"'), '', $examples[$methods[$i]]);
-			}
-		}
-		ksort($examples);
-		return $examples;
-	}
-
-	/**
 	* Return a string of all supported tags and an example of its output in table row form.
 	*/
 	function getAllTagsTable() {
-		global $TEXT_DIRECTION;
 		$examples = array();
-		$methods = get_class_methods($this);
-		$c = count($methods);
-		for ($i=0; $i < $c; $i++) {
-			if (in_array($methods[$i], self::$_not_allowed) || $methods[$i][0] == '_' || $methods[$i] == 'getAllTagsTable' || $methods[$i] == 'getAllTagsText') {
+		foreach (get_class_methods($this) as $method) {
+			if (in_array($method, self::$_not_allowed) || $method[0] == '_' || $method == 'getAllTagsTable' || $method == 'getAllTagsText') {
 				continue;
-			} // Include this method name to prevent bad stuff happening
-			$examples[$methods[$i]] = $this->$methods[$i]();
-			if (stristr($methods[$i], 'highlight')) {
-				$examples[$methods[$i]]=str_replace(array(' align="left"', ' align="right"'), '', $examples[$methods[$i]]);
+			}
+			$examples[$method] = $this->$method();
+			if (stristr($method, 'highlight')) {
+				$examples[$method]=str_replace(array(' align="left"', ' align="right"'), '', $examples[$method]);
 			}
 		}
 		ksort($examples);
-		if ($TEXT_DIRECTION=='rtl') {
-			$alignVar = 'right';
-			$alignRes = 'right';
-		} else {
-			$alignVar = 'left';
-			$alignRes = 'left';
+
+		$html = '';
+		foreach ($examples as $tag=>$value) {
+			$html .= '<tr>';
+			$html .= '<td class="list_value_wrap">' . $tag   . '</td>';
+			$html .= '<td class="list_value_wrap">' . $value . '</td>';
+			$html .= '</tr>';
 		}
-		$out = "<table id=\"keywords\">
-					<tr>
-						<th align=\"{$alignVar}\" class=\"list_label_wrap\">".WT_I18N::translate('Embedded variable')."</th>
-						<th style=\"text-align:{$alignVar};\" class=\"list_label_wrap \">".WT_I18N::translate('Resulting value')."</th>
-					</tr>";
-					foreach ($examples as $tag=>$v) {
-						$out .= "\t<tr>";
-						$out .= "<td class=\"list_value_wrap\" align=\"{$alignVar}\" valign=\"top\">{$tag}</td>";
-						$out .= "<td class=\"list_value_wrap\" align=\"{$alignRes}\" valign=\"top\">{$v}</td>";
-						$out .= "</tr>\n";
-					}
-		$out .= '</table>';
-		return $out;
+
+		return
+			'<table id="keywords"><thead>'.
+			'<tr>'.
+			'<th class="list_label_wrap">' . WT_I18N::translate('Embedded variable') . '</th>'.
+			'<th class="list_label_wrap">' . WT_I18N::translate('Resulting value')   . '</th>'.
+			'</tr>'.
+			'</thead><tbody>'.
+			$html.
+			'</tbody></table>';
 	}
 
 	/**
 	* Return a string of all supported tags in plain text.
 	*/
 	function getAllTagsText() {
-		$examples=array();
-		$methods=get_class_methods($this);
-		$c=count($methods);
-		for ($i=0; $i < $c; $i++) {
-			if (in_array($methods[$i], self::$_not_allowed) || $methods[$i][0] == '_' || $methods[$i] == 'getAllTagsTable' || $methods[$i] == 'getAllTagsText') {continue;} // Include this method name to prevent bad stuff happining
-			$examples[$methods[$i]] = $methods[$i];
+		$examples = array();
+		foreach (get_class_methods($this) as $method) {
+			if (in_array($method, self::$_not_allowed) || $method[0] == '_' || $method == 'getAllTagsTable' || $method == 'getAllTagsText') {
+				continue;
+			}
+			$examples[$method] = $method;
 		}
 		ksort($examples);
-		$out = '';
-		foreach ($examples as $tag=>$v) {
-			$out .= "{$tag}<br />\n";
-		}
-		return $out;
+
+		return implode('<br>', $examples);
 	}
 
 	/*
@@ -1161,8 +1133,8 @@ class WT_Stats {
 			$chart_url.=substr(WT_GOOGLE_CHART_ENCODING, (int)($count/max($surn_countries)*61), 1);
 		}
 		$chart = '<div id="google_charts" class="center">';
-		$chart .= '<b>'.$chart_title.'</b><br /><br />';
-		$chart .= '<div align="center"><img src="'.$chart_url.'" alt="'.$chart_title.'" title="'.$chart_title.'" class="gchart" /><br />';
+		$chart .= '<b>'.$chart_title.'</b><br><br>';
+		$chart .= '<div align="center"><img src="'.$chart_url.'" alt="'.$chart_title.'" title="'.$chart_title.'" class="gchart" /><br>';
 		$chart .= '<table align="center" border="0" cellpadding="1" cellspacing="1"><tr>';
 		$chart .= '<td bgcolor="#'.$WT_STATS_CHART_COLOR2.'" width="12"></td><td>'.WT_I18N::translate('Highest population').'&nbsp;&nbsp;</td>';
 		$chart .= '<td bgcolor="#'.$WT_STATS_CHART_COLOR3.'" width="12"></td><td>'.WT_I18N::translate('Lowest population').'&nbsp;&nbsp;</td>';
@@ -1209,8 +1181,8 @@ class WT_Stats {
 			$top10[].='</li>';
 			if ($i++==10) break;
 		}
-		$top10=join("\n", $top10);
-		return "<ul>\n{$top10}</ul>\n";
+		$top10=join('', $top10);
+		return '<ul>' . $top10 . '</ul>';
 	}
 
 	function commonBirthPlacesList() {
@@ -1224,8 +1196,8 @@ class WT_Stats {
 			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
 		}
-		$top10=join("\n", $top10);
-		return "<ul>\n{$top10}</ul>\n";
+		$top10=join('', $top10);
+		return '<ul>' . $top10 . '</ul>';
 	}
 
 	function commonDeathPlacesList() {
@@ -1239,8 +1211,8 @@ class WT_Stats {
 			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
 		}
-		$top10=join("\n", $top10);
-		return "<ul>\n{$top10}</ul>\n";
+		$top10=join('', $top10);
+		return '<ul>' . $top10 . '</ul>';
 	}
 
 	function commonMarriagePlacesList() {
@@ -1254,8 +1226,8 @@ class WT_Stats {
 			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
 		}
-		$top10=join("\n", $top10);
-		return "<ul>\n{$top10}</ul>\n";
+		$top10=join('', $top10);
+		return '<ul>' . $top10 . '</ul>';
 	}
 
 	function _statsBirth($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
@@ -1520,22 +1492,22 @@ class WT_Stats {
 			$age = get_age_at_event($age, true);
 			if ($person->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[]="\t<li><a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> (".$age.")"."</li>\n";
+					$top10[]="<li><a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> (".$age.")"."</li>";
 				} else {
 					$top10[]="<a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> (".$age.")";
 				}
 			}
 		}
 		if ($type == 'list') {
-			$top10=join("\n", $top10);
+			$top10=join('', $top10);
 		} else {
-			$top10=join(';&nbsp; ', $top10);
+			$top10=join(' ', $top10);
 		}
 		if ($TEXT_DIRECTION=='rtl') {
 			$top10=str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type == 'list') {
-			return "<ul>\n{$top10}</ul>\n";
+			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;
 	}
@@ -1562,7 +1534,7 @@ class WT_Stats {
 			" `##individuals` AS indi".
 			" WHERE".
 			" indi.i_id=birth.d_gid AND".
-			" indi.i_gedcom NOT REGEXP '\n1 (".WT_EVENTS_DEAT.")' AND".
+			" indi.i_gedcom NOT REGEXP '\\n1 (".WT_EVENTS_DEAT.")' AND".
 			" birth.d_file={$this->_ged_id} AND".
 			" birth.d_fact='BIRT' AND".
 			" birth.d_file=indi.i_file AND".
@@ -1586,13 +1558,13 @@ class WT_Stats {
 			}
 			$age = get_age_at_event($age, true);
 			if ($type == 'list') {
-				$top10[]="\t<li><a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> (".$age.")"."</li>\n";
+				$top10[]="<li><a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> (".$age.")"."</li>";
 			} else {
 				$top10[]="<a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> (".$age.")";
 			}
 		}
 		if ($type == 'list') {
-			$top10=join("\n", $top10);
+			$top10=join('', $top10);
 		} else {
 			$top10=join(';&nbsp; ', $top10);
 		}
@@ -1600,7 +1572,7 @@ class WT_Stats {
 			$top10=str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type == 'list') {
-			return "<ul>\n{$top10}</ul>\n";
+			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;
 	}
@@ -2065,7 +2037,7 @@ class WT_Stats {
 			if (($husb->getAllDeathDates() && $wife->getAllDeathDates()) || !$husb->isDead() || !$wife->isDead()) {
 				if ($family->canDisplayDetails()) {
 					if ($type == 'list') {
-						$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> (".$age.")"."</li>\n";
+						$top10[] = "<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> (".$age.")"."</li>";
 					} else {
 						$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> (".$age.")";
 					}
@@ -2074,7 +2046,7 @@ class WT_Stats {
 			}
 		}
 		if ($type == 'list') {
-			$top10=join("\n", $top10);
+			$top10=join('', $top10);
 		} else {
 			$top10 = join(';&nbsp; ', $top10);
 		}
@@ -2082,7 +2054,7 @@ class WT_Stats {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type == 'list') {
-			return "<ul>\n{$top10}</ul>\n";
+			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;
 	}
@@ -2129,14 +2101,14 @@ class WT_Stats {
 			$age = get_age_at_event($age, true);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> (".$age.")"."</li>\n";
+					$top10[] = "<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> (".$age.")"."</li>";
 				} else {
 					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> (".$age.")";
 				}
 			}
 		}
 		if ($type == 'list') {
-			$top10=join("\n", $top10);
+			$top10=join('', $top10);
 		} else {
 			$top10 = join(';&nbsp; ', $top10);
 		}
@@ -2144,7 +2116,7 @@ class WT_Stats {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type == 'list') {
-			return "<ul>\n{$top10}</ul>\n";
+			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;
 	}
@@ -2560,14 +2532,14 @@ class WT_Stats {
 	function oldestFatherAge($show_years=false)   { return $this->_parentsQuery('age',  'DESC', 'M', $show_years); }
 
 	function totalMarriedMales() {
-		$n=WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_husb) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\n1 MARR%'")
+		$n=WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_husb) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 		return WT_I18N::number($n);
 	}
 
 	function totalMarriedFemales() {
-		$n=WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_wife) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\n1 MARR%'")
+		$n=WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_wife) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 		return WT_I18N::number($n);
@@ -2642,7 +2614,7 @@ class WT_Stats {
 			}
 		}
 		if ($type == 'list') {
-			$top10=join("\n", $top10);
+			$top10=join('', $top10);
 		} else {
 			$top10 = join(';&nbsp; ', $top10);
 		}
@@ -2650,7 +2622,7 @@ class WT_Stats {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type == 'list') {
-			return "<ul>\n{$top10}</ul>\n";
+			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;
 	}
@@ -2719,45 +2691,44 @@ class WT_Stats {
 			if ($type == 'list') {
 				if ($one && !in_array($fam['family'], $dist)) {
 					if ($child1->canDisplayDetails() && $child2->canDisplayDetails()) {
-						$return = "\t<li>";
+						$return = "<li>";
 						$return .= "<a href=\"".$child2->getHtmlUrl()."\">".$child2->getFullName()."</a> ";
 						$return .= WT_I18N::translate('and')." ";
 						$return .= "<a href=\"".$child1->getHtmlUrl()."\">".$child1->getFullName()."</a>";
 						$return .= " (".$age.")";
 						$return .= " <a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>";
-						$return .= "\t</li>\n";
+						$return .= '</li>';
 						$top10[] = $return;
 						$dist[] = $fam['family'];
 					}
 				} else if (!$one && $child1->canDisplayDetails() && $child2->canDisplayDetails()) {
-					$return = "\t<li>";
+					$return = "<li>";
 					$return .= "<a href=\"".$child2->getHtmlUrl()."\">".$child2->getFullName()."</a> ";
 					$return .= WT_I18N::translate('and')." ";
 					$return .= "<a href=\"".$child1->getHtmlUrl()."\">".$child1->getFullName()."</a>";
 					$return .= " (".$age.")";
 					$return .= " <a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>";
-					$return .= "\t</li>\n";
+					$return .= '</li>';
 					$top10[] = $return;
 				}
 			} else {
 				if ($child1->canDisplayDetails() && $child2->canDisplayDetails()) {
 					$return = $child2->format_list('span', false, $child2->getFullName());
-					$return .= "<br />".WT_I18N::translate('and')."<br />";
+					$return .= "<br>".WT_I18N::translate('and')."<br>";
 					$return .= $child1->format_list('span', false, $child1->getFullName());
-					//$return .= "<br />(".$age.")";
-					$return .= "<br /><a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>\n";
+					$return .= "<br><a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>";
 					return $return;
 				}
 			}
 		}
 		if ($type == 'list') {
-			$top10=join("\n", $top10);
+			$top10=join('', $top10);
 		}
 		if ($TEXT_DIRECTION == 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type == 'list') {
-			return "<ul>\n{$top10}</ul>\n";
+			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;
 	}
@@ -3042,14 +3013,14 @@ class WT_Stats {
 			$family=WT_Family::getInstance($row['family']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a></li>\n";
+					$top10[] = "<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a></li>";
 				} else {
 					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a>";
 				}
 			}
 		}
 		if ($type == 'list') {
-			$top10=join("\n", $top10);
+			$top10=join('', $top10);
 		} else {
 			$top10 = join(';&nbsp; ', $top10);
 		}
@@ -3057,7 +3028,7 @@ class WT_Stats {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type == 'list') {
-			return "<ul>\n{$top10}</ul>\n";
+			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;
 	}
@@ -3170,7 +3141,7 @@ class WT_Stats {
 			}
 		}
 		if ($type == 'list') {
-			$top10=join("\n", $top10);
+			$top10=join('', $top10);
 		} else {
 			$top10 = join(';&nbsp; ', $top10);
 		}
@@ -3178,7 +3149,7 @@ class WT_Stats {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type == 'list') {
-			return "<ul>\n{$top10}</ul>\n";
+			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;
 	}
@@ -3395,7 +3366,7 @@ class WT_Stats {
 				$lookup=array('M'=>WT_I18N::translate('Male'), 'F'=>WT_I18N::translate('Female'), 'U'=>WT_I18N::translate_c('unknown gender', 'Unknown'), 'B'=>WT_I18N::translate('All'));
 				return '<table id="'.$table_id.'" class="givn-list"><thead><tr><th class="ui-state-default" colspan="3">'.$lookup[$sex].'</th></tr><tr><th>'.WT_I18N::translate('Name').'</th><th>'.WT_I18N::translate('Count').'</th><th>COUNT</th></tr></thead><tbody>'.join('', $common).'</tbody></table>';
 			case 'list':
-				return '<ul>\n'.join("\n", $common).'</ul>\n';
+				return '<ul>'.join('', $common).'</ul>';
 			case 'nolist':
 				return join(WT_I18N::$list_separator, $common);
 			}
@@ -3492,7 +3463,7 @@ class WT_Stats {
 		if ($LoginUsers > 0) {
 			if ($NumAnonymous) {
 				if ($type == 'list') {
-					$content .= "<br /><br />\n";
+					$content .= "<br><br>";
 				} else {
 					$content .= " ".WT_I18N::translate('and')." ";
 				}
@@ -3507,19 +3478,19 @@ class WT_Stats {
 		if (WT_USER_ID) {
 			foreach ($loggedusers as $user_id=>$user_name) {
 				if ($type == 'list') {
-					$content .= "\t<li>".htmlspecialchars(getUserFullName($user_id))." - {$user_name}";
+					$content .= "<li>".htmlspecialchars(getUserFullName($user_id))." - {$user_name}";
 				} else {
 					$content .= htmlspecialchars(getUserFullName($user_id))." - {$user_name}";
 				}
 				if (WT_USER_ID != $user_id && get_user_setting($user_id, 'contactmethod') != 'none') {
 					if ($type == 'list') {
-						$content .= '<br /><a class="icon-email" href="#" onclick="return message(\''.$user_id.'\', \'\', \''.addslashes(urlencode(get_query_url())).'\', \'\');" title="'.WT_I18N::translate('Send Message').'"></a>';
+						$content .= '<br><a class="icon-email" href="#" onclick="return message(\''.$user_id.'\', \'\', \''.addslashes(urlencode(get_query_url())).'\', \'\');" title="'.WT_I18N::translate('Send Message').'"></a>';
 					} else {
 						$content .= ' <a class="icon-email" href="#" onclick="return message(\''.$user_id.'\', \'\', \''.addslashes(urlencode(get_query_url())).'\', \'\');" title="'.WT_I18N::translate('Send Message').'"></a>';
 					}
 				}
 				if ($type == 'list') {
-					$content .= "</li>\n";
+					$content .= '</li>';
 				}
 			}
 		}
