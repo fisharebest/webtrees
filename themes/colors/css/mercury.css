@@ -29,12 +29,12 @@
 /* Header */
 #header {
 background:#d4d4d4;
-color: #FFFFFF;
+color: #707070;
 }
 
 .title {
 text-decoration:none;
-color:#FFFFFF;}
+color:#707070;}
 
 /* Tbls and menus  */
 .descriptionbox, .descriptionbox a, .facts_label03,
@@ -46,7 +46,7 @@ color:#FFFFFF;}
 .ui-state-active a:link, .ui-state-active a:visited 
 {
 background-color:#C6C8D2;
-color: #ffffff;
+color: #707070;
 }
 
 /* Top Menu  */
@@ -75,7 +75,7 @@ border:solid #a9adbc 2px;
 
 /* Light Text */
 .makeMenu li a {
-color:#FFFFFF;
+color:#707070;
 }
 
 /*  Dark Text Color  */
