@@ -33,24 +33,16 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-// Methods not allowed to be used in a statistic
-define('STATS_NOT_ALLOWED', 'stats,getAllTags,getTags,embedTags,iso3166,get_all_countries');
-
 class WT_Stats {
-	var $_gedcom;
-	var $_gedcom_url;
-	var $_ged_id;
-	static $_not_allowed = false;
-	static $_media_types = array('audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic', 'magazine', 'manuscript', 'map', 'fiche', 'film', 'newspaper', 'painting', 'photo', 'tombstone', 'video', 'other');
+	private $_gedcom;
+	private $_gedcom_url;
+	private $_ged_id;
 
-	static $_xencoding = WT_GOOGLE_CHART_ENCODING;
+	// Methods not allowed to be used as embedded statistics
+	private static $_not_allowed = array('stats', 'getAllTags', 'getTags', 'embedTags', 'iso3166', 'get_all_countries');
+	private static $_media_types = array('audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic', 'magazine', 'manuscript', 'map', 'fiche', 'film', 'newspaper', 'painting', 'photo', 'tombstone', 'video', 'other');
 
-	function __construct($gedcom, $server_url='') {
-		self::$_not_allowed = explode(',', STATS_NOT_ALLOWED);
-		$this->_setGedcom($gedcom);
-	}
-
-	function _setGedcom($gedcom) {
+	public function __construct($gedcom) {
 		$this->_gedcom = $gedcom;
 		$this->_ged_id = get_id_from_gedcom($gedcom);
 		$this->_gedcom_url = rawurlencode($gedcom);
@@ -93,6 +85,7 @@ class WT_Stats {
 				$examples[$methods[$i]]=str_replace(array(' align="left"', ' align="right"'), '', $examples[$methods[$i]]);
 			}
 		}
+		ksort($examples);
 		if ($TEXT_DIRECTION=='rtl') {
 			$alignVar = 'right';
 			$alignRes = 'right';
@@ -126,6 +119,7 @@ class WT_Stats {
 			if (in_array($methods[$i], self::$_not_allowed) || $methods[$i][0] == '_' || $methods[$i] == 'getAllTagsTable' || $methods[$i] == 'getAllTagsText') {continue;} // Include this method name to prevent bad stuff happining
 			$examples[$methods[$i]] = $methods[$i];
 		}
+		ksort($examples);
 		$out = '';
 		foreach ($examples as $tag=>$v) {
 			$out .= "{$tag}<br />\n";
@@ -3693,6 +3687,8 @@ class WT_Stats {
 
 	// http://bendodson.com/news/google-extended-encoding-made-easy/
 	static function _array_to_extended_encoding($a) {
+		$xencoding = WT_GOOGLE_CHART_ENCODING;
+
 		if (!is_array($a)) {
 			$a = array($a);
 		}
@@ -3701,7 +3697,7 @@ class WT_Stats {
 			if ($value<0) $value = 0;
 			$first = (int)($value / 64);
 			$second = $value % 64;
-			$encoding .= self::$_xencoding[(int)$first].self::$_xencoding[(int)$second];
+			$encoding .= $xencoding[(int)$first] . $xencoding[(int)$second];
 		}
 		return $encoding;
 	}
