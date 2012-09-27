@@ -1293,6 +1293,7 @@ border-color:#fff #006 #006 #fff;
 input,textarea {
 padding-left:3px;
 padding-right:3px;
+font-family: inherit;
 }
 
 .optionbox input {
