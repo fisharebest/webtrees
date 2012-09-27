@@ -298,27 +298,28 @@ function execution_stats() {
 }
 
 // Generate a login link
-function login_link($extra='') {
+function login_link() {
 	global $SEARCH_SPIDER;
 
 	if ($SEARCH_SPIDER) {
 		return '';
 	} else {
 		return
-			'<a href="'.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()).'" '.$extra.' class="link">'.
+			'<a href="'.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()).'" class="link">'.
+//			'<a href="#" onclick="modalDialog(\''. WT_LOGIN_URL .'?url='.rawurlencode(get_query_url()) .'\', \''. WT_I18N::translate('Login') . '\');" '.$extra.' class="link">'.
 			WT_I18N::translate('Login').
 			'</a>';
 	}
 }
 
 // Generate a logout link
-function logout_link($extra='') {
+function logout_link() {
 	global $SEARCH_SPIDER;
 
 	if ($SEARCH_SPIDER) {
 		return '';
 	} else {
-		return '<a href="index.php?logout=1" ' . $extra . ' class="link">' . WT_I18N::translate('Logout') . '</a>';
+		return '<a href="index.php?logout=1" class="link">' . WT_I18N::translate('Logout') . '</a>';
 	}
 }
 
