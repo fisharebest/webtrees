@@ -418,17 +418,11 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$indi=WT_Person::getInstance($story->xref);
 				$story_title = get_block_setting($story->block_id, 'title');
 				if ($indi) {
-					$title="<a href=\"".$indi->getHtmlUrl()."#stories\">".$story_title."</a>";
-					$name="<a href=\"".$indi->getHtmlUrl()."#stories\">".$indi->getFullName()."</a>";
+					if ($indi->canDisplayDetails()) {
+						echo '<tr><td><a href="'.$indi->getHtmlUrl().'#stories">'.$story_title.'</a></td><td><a href="'.$indi->getHtmlUrl().'#stories">'.$indi->getFullName().'</a></td></tr>';
+					}
 				} else {
-					$title=$story_title;
-					$name=$story->xref;
-				}
-				if ($indi->canDisplayDetails()) {
-					echo '<tr>
-						<td>', $title, '</td>
-						<td>', $name, '</td>
-						</tr>';
+					echo '<tr><td>', $story_title, '</td><td class="error">', $story->xref, '</td></tr>';
 				}
 			}
 			echo '</tbody></table>';
