@@ -153,7 +153,7 @@ case 'add':
 		}
 		WT_DB::prepare(
 			"REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, ?, ?, ?)"
-		)->execute(array(WT_GED_ID, safe_POST('xref'), safe_POST('tag_type'), safe_POST('resn')));
+		)->execute(array(WT_GED_ID, safe_POST_xref('xref'), safe_POST('tag_type'), safe_POST('resn')));
 	}
 	// Reload the page, so that the new privacy restrictions are reflected in the header
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
