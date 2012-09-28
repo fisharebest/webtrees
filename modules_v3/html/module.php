@@ -274,7 +274,13 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			WT_I18N::translate('Templates'),
 			help_link('block_html_template', $this->getName()),
 			'</td><td class="optionbox">';
-		echo '<select name="template" onchange="document.block.html.value=document.block.template.options[document.block.template.selectedIndex].value;">';
+		// The CK editor needs lots of help to load/save data :-(
+		if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
+			$ckeditor_onchange='CKEDITOR.instances.html.setData(document.block.html.value);';
+		} else {
+			$ckeditor_onchange='';
+		}
+		echo '<select name="template" onchange="document.block.html.value=document.block.template.options[document.block.template.selectedIndex].value;', $ckeditor_onchange, '">';
 		echo '<option value="', htmlspecialchars($html), '">', WT_I18N::translate('Custom'), '</option>';
 		foreach ($templates as $title=>$template) {
 			echo '<option value="', htmlspecialchars($template), '">', $title, '</option>';
