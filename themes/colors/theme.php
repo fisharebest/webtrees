@@ -47,7 +47,7 @@ function getMenuAsCustomList($menu) {
 
 //-- print color theme sub type change dropdown box
 function color_theme_dropdown() {
-	global $COLOR_THEME_LIST, $WT_SESSION;
+	global $COLOR_THEME_LIST, $WT_SESSION, $subColor;
 	$menu=new WT_Menu(/* I18N: A colour scheme */ WT_I18N::translate('Palette'), '#', 'menu-color');
 	uasort($COLOR_THEME_LIST, 'utf8_strcasecmp');
 	foreach ($COLOR_THEME_LIST as $colorChoice=>$colorName) {
@@ -56,11 +56,15 @@ function color_theme_dropdown() {
 			if ($WT_SESSION->subColor == $colorChoice) {  
 				$submenu->addClass('','','theme-active');
 			}
-		} elseif  (WT_Site::preference('DEFAULT_COLOR_PALETTE') == $colorChoice) { 
+		} elseif  (WT_Site::preference('DEFAULT_COLOR_PALETTE') == $colorChoice) { /* here when visitor changes palette from default */
 			$submenu->addClass('','','theme-active');
+		} elseif ($subColor=='ash') { /* here when site has different theme as default and user switches to colors */
+			if ($subColor == $colorChoice) {
+				$submenu->addClass('','','theme-active');
 			}
-		$menu->addSubMenu($submenu);
 		}
+		$menu->addSubMenu($submenu);
+	}
 	return $menu->getMenuAsList();
 }
 
