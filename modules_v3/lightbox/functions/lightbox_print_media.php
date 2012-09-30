@@ -492,20 +492,22 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			$menu->addClass('', 'submenu');
 
 			// View Notes
+			//return '<span class="icon-help" onclick="helpDialog(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;</span>';
 			if (strpos($rowm['m_gedrec'], "\n1 NOTE")) {
-				$submenu = new WT_Menu('&nbsp;&nbsp;' . WT_I18N::translate('View Notes') . '&nbsp;&nbsp;', '#', 'right');
+				$submenu = new WT_Menu('&nbsp;&nbsp;' . WT_I18N::translate('View Notes') . '&nbsp;&nbsp;', '#');
 				// Notes Tooltip ----------------------------------------------------
-				$sonclick  = 'TipTog(';
+//				$sonclick  = '"helpDialog(\''.WT_I18N::translate('View Notes').'\',\''.$notes.'\'); "';
 				// Contents of Notes
-				$sonclick .= "'";
-				$sonclick .= "<font color=#008800><b>" . WT_I18N::translate('Notes') . ":</b></font><br>";
-				$sonclick .= $notes;
-				$sonclick .= "'";
+//				$sonclick .= "'";
+//				$sonclick .= "<font color=#008800><b>" . WT_I18N::translate('Notes') . ":</b></font><br>";
+//				$sonclick .= $notes;
+//				$sonclick .= "'";
 				// Notes Tooltip Parameters
-				$sonclick .= $tt_opts;
-				$sonclick .= ");";
-				$sonclick .= "return false;";
-				$submenu->addOnclick($sonclick);
+//				$sonclick .= $tt_opts;
+//				$sonclick .= ");";
+//				$sonclick .= "return false;";
+//				$submenu->addOnclick($sonclick);
+				$submenu->addOnclick("modalNotes('". $notes ."','". WT_I18N::translate('View Notes') ."'); return false;");
 				$submenu->addClass($submenu_class);
 				$menu->addSubMenu($submenu);
 			}

@@ -67,6 +67,22 @@ function modalDialog(url, title) {
 	return false;
 }
 
+// Create a modal dialog to display notes
+function modalNotes(content, title) {
+	dialog=jQuery('<div title="'+title+'"></div>')
+		.html(content)
+		.dialog({
+			modal: true,
+			width: 500,
+			close: function(event, ui) { $(this).remove(); }
+		});
+	// Close the window when we click outside it.
+	jQuery(".ui-widget-overlay").live("click", function () {
+		jQuery("div:ui-dialog:visible").dialog("close");
+	});
+	return false;
+}
+
 // For a dialog containing a form, submit the form via AJAX
 // (to save the data), then reload the page (to display it).
 function modalDialogSubmitAjax(form) {
