@@ -1142,16 +1142,21 @@ function print_specialchar_link($element_id) {
 	return '<a href="#" onclick="findSpecialChar(document.getElementById(\''.$element_id.'\')); updatewholename(); return false;" class="icon-button_keyboard" title="'.WT_I18N::translate('Find a special character').'"></a>';
 }
 
-function print_autopaste_link($element_id, $choices, $updatewholename) {
-	echo "<small>";
+function print_autopaste_link($element_id, $choices, $updatewholename, $append) {
+	echo '<small>';
 	foreach ($choices as $indexval => $choice) {
-		echo " &nbsp;<a href=\"#\" onclick=\"document.getElementById('", $element_id, "').value='", $choice, "';";
+		echo '<a href="#" onclick="document.getElementById(\'', $element_id, '\').value=';
+		if ($append) {
+			echo 'trim(document.getElementById(\'', $element_id, '\').value + \' \' + \'', $choice, '\');';
+		} else {
+			echo '\'', $choice, '\';';
+		}
 		if ($updatewholename) {
 			echo " updatewholename();";
 		}
-		echo " return false;\">", $choice, "</a>";
+		echo " return false;\">", $choice, '</a> ';
 	}
-	echo "</small>";
+	echo '</small>';
 }
 
 function print_findsource_link($element_id, $sourcename='') {

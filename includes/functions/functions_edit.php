@@ -1718,9 +1718,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 	// pastable values
 	if ($readOnly=='') {
-		if ($fact=="SPFX") print_autopaste_link($element_id, $SPFX_accept, true);
-		if ($fact=="NSFX") print_autopaste_link($element_id, $NSFX_accept, true);
-		if ($fact=="FORM" && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept, false);
+		if ($fact=="SPFX") print_autopaste_link($element_id, $SPFX_accept, true, true);
+		if ($fact=="NSFX") print_autopaste_link($element_id, $NSFX_accept, true, true);
+		if ($fact=="FORM" && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept, false, false);
 	}
 
 	if ($noClose != "NOCLOSE") echo "</td></tr>";
