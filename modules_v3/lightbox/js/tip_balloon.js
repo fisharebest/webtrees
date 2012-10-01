@@ -85,7 +85,7 @@ balloon.OnCreateContentString = function()
 	var iImgBorderStart = isRtl ? 4 : 8;
 	var iImgBorderEnd = isRtl ? 8 : 4;
 	var iImgButtonStart = isRtl ? 5 : 7;
-	var iImgBottomEnd = isRtl ? 7 : 5;
+	var iImgButtonEnd = isRtl ? 7 : 5;
 
 	// Cache balloon images in advance:
 	// Either use the pre-cached default images...
