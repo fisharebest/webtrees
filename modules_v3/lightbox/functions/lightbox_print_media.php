@@ -420,48 +420,12 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		$before   = substr($haystack, 0, strpos($haystack, $needle));
 		$after    = substr(strstr($haystack, $needle), strlen($needle));
 		$final    = $before.$needle.$after;
-		$notes    = htmlspecialchars(print_fact_notes($final, 1, true, true), ENT_QUOTES);
+		$notes    = htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)), ENT_QUOTES);
 
 		// Get info on how to handle this media file
 		$mediaInfo = mediaFileInfo($mainMedia, $thumbnail, $rowm['m_media'], $mediaTitle, $notes);
 
-		//text alignment for Tooltips
-		if ($TEXT_DIRECTION=='rtl') {
-			$alignm = 'right';
-			$left = 'true';
-		} else {
-			$alignm = 'left';
-			$left = 'false';
-		}
-
-		// Tooltip Options
-		$tt_opts = ", BALLOON," . true ; // true=balloon, false=normal
-		$tt_opts .= ", LEFT," . $left;
-		$tt_opts .= ", ABOVE, true";
-		$tt_opts .= ", TEXTALIGN, '" . $alignm . "'";
-		$tt_opts .= ", WIDTH, -480 ";
-		$tt_opts .= ", BORDERCOLOR, ''";
-		$tt_opts .= ", TITLEBGCOLOR, ''";
-		$tt_opts .= ", CLOSEBTNTEXT, 'X'";
-		$tt_opts .= ", CLOSEBTN, false";
-		$tt_opts .= ", CLOSEBTNCOLORS, ['#ff0000', '#ffffff', '#ffffff', '#ff0000']";
-		$tt_opts .= ", OFFSETX, -30";
-		$tt_opts .= ", OFFSETY, 110";
-		$tt_opts .= ", STICKY, true";
-		$tt_opts .= ", PADDING, 6";
-		$tt_opts .= ", CLICKCLOSE, true";
-		$tt_opts .= ", DURATION, 8000";
-		$tt_opts .= ", BGCOLOR, '#f3f3f3'";
-		$tt_opts .= ", JUMPHORZ, 'true' ";
-		$tt_opts .= ", JUMPVERT, 'false' ";
-		$tt_opts .= ", DELAY, 0";
-
 		// Prepare Below Thumbnail  menu ----------------------------------------------------
-		if ($TEXT_DIRECTION== 'rtl') {
-			$submenu_class = 'submenuitem_rtl';
-		} else {
-			$submenu_class = 'submenuitem';
-		}
 		$menu = new WT_Menu();
 		// Truncate media title to 13 chars (45 chars if Streetview) and add ellipsis
 		$mtitle = strip_tags($mediaTitle);
@@ -482,8 +446,6 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		} else {
 			$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\">" . $mtitle, 'right');
 		}
-		// Next line removed to avoid gallery thumbnail duplication
-		// $menu['link'] = mediaInfo['url'];
 
 		if ($rtype=='old') {
 			// Do not print menu if item has changed and this is the old item
@@ -492,47 +454,35 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			$menu->addClass('', 'submenu');
 
 			// View Notes
-			//return '<span class="icon-help" onclick="helpDialog(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;</span>';
 			if (strpos($rowm['m_gedrec'], "\n1 NOTE")) {
 				$submenu = new WT_Menu('&nbsp;&nbsp;' . WT_I18N::translate('View Notes') . '&nbsp;&nbsp;', '#');
 				// Notes Tooltip ----------------------------------------------------
-//				$sonclick  = '"helpDialog(\''.WT_I18N::translate('View Notes').'\',\''.$notes.'\'); "';
-				// Contents of Notes
-//				$sonclick .= "'";
-//				$sonclick .= "<font color=#008800><b>" . WT_I18N::translate('Notes') . ":</b></font><br>";
-//				$sonclick .= $notes;
-//				$sonclick .= "'";
-				// Notes Tooltip Parameters
-//				$sonclick .= $tt_opts;
-//				$sonclick .= ");";
-//				$sonclick .= "return false;";
-//				$submenu->addOnclick($sonclick);
 				$submenu->addOnclick("modalNotes('". $notes ."','". WT_I18N::translate('View Notes') ."'); return false;");
-				$submenu->addClass($submenu_class);
+				$submenu->addClass("submenuitem");
 				$menu->addSubMenu($submenu);
 			}
 			//View Details
 			$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('View Details') . "&nbsp;&nbsp;", WT_SERVER_NAME.WT_SCRIPT_PATH . "mediaviewer.php?mid=".$rowm['m_media'].'&amp;ged='.WT_GEDURL, 'right');
-			$submenu->addClass($submenu_class);
+			$submenu->addClass("submenuitem");
 			$menu->addSubMenu($submenu);
 			//View Source
 			if ($sour && $sour->canDisplayDetails()) {
 				$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('View Source') . "&nbsp;&nbsp;", $sour->getHtmlUrl());
-				$submenu->addClass($submenu_class);
+				$submenu->addClass("submenuitem");
 				$menu->addSubMenu($submenu);
 			}
 			if (WT_USER_CAN_EDIT) {
 				// Edit Media
 				$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('Edit media') . "&nbsp;&nbsp;");
 				$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid={$rowm['m_media']}&amp;linktoid={$rowm['mm_gid']}', '_blank', edit_window_specs);");
-				$submenu->addClass($submenu_class);
+				$submenu->addClass("submenuitem");
 				$menu->addSubMenu($submenu);
 				if (WT_USER_IS_ADMIN) {
 					// Manage Links
 					if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('Manage links') . "&nbsp;&nbsp;");
 						$submenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_media']}&amp;linkto=manage', '_blank', find_window_specs);");
-						$submenu->addClass($submenu_class);
+						$submenu->addClass("submenuitem");
 						$menu->addSubMenu($submenu);
 					} else {
 						$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('Set link') . "&nbsp;&nbsp;", '#', null, 'right', 'right');
@@ -558,7 +508,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 					// Unlink Media
 					$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('Unlink Media') . "&nbsp;&nbsp;");
 					$submenu->addOnclick("return delete_fact('$pid', 'OBJE', '".$rowm['m_media']."', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');");
-					$submenu->addClass($submenu_class);
+					$submenu->addClass("submenuitem");
 					$menu->addSubMenu($submenu);
 				}
 			}
