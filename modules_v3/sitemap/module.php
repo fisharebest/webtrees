@@ -60,7 +60,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	private function generate($file) {
 		if ($file=='sitemap.xml') {
 			$this->generate_index();
-		} elseif (preg_match('/^sitemap-(\d+)-([ifsrmn])-(\d+).xml$/', $file, $match)) {
+		} elseif (preg_match('/^sitemap-(\d+)-([isrmn])-(\d+).xml$/', $file, $match)) {
 			$this->generate_file($match[1], $match[2], $match[3]);
 		} else {
 			header('HTTP/1.0 404 Not Found');
@@ -81,10 +81,6 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 					$n=WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=?")->execute(array($tree->tree_id))->fetchOne();
 					for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
 						$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$tree->tree_id.'-i-'.$i.'.xml</loc>'.$lastmod.'</sitemap>'.PHP_EOL;
-					}
-					$n=WT_DB::prepare("SELECT COUNT(*) FROM `##families` WHERE f_file=?")->execute(array($tree->tree_id))->fetchOne();
-					for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
-						$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$tree->tree_id.'-f-'.$i.'.xml</loc>'.$lastmod.'</sitemap>'.PHP_EOL;
 					}
 					$n=WT_DB::prepare("SELECT COUNT(*) FROM `##sources` WHERE s_file=?")->execute(array($tree->tree_id))->fetchOne();
 					if ($n) {
@@ -142,18 +138,6 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 				foreach ($rows as $row) {
 					$records[]=WT_Person::getInstance($row);
-				}
-				break;
-			case 'f':
-				$rows=WT_DB::prepare(
-					"SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec".
-					" FROM `##families`".
-					" WHERE f_file=?".
-					" ORDER BY f_id".
-					" LIMIT ".self::RECORDS_PER_VOLUME." OFFSET ".($volume*self::RECORDS_PER_VOLUME)
-				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
-				foreach ($rows as $row) {
-					$records[]=WT_Family::getInstance($row);
 				}
 				break;
 			case 's':
