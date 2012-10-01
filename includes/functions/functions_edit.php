@@ -1567,7 +1567,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				places_assistant_WT_Module::setup_place_subfields($element_id);
 				places_assistant_WT_Module::print_place_subfields($element_id);
 			}
-		} elseif (($cols>20 || $fact=="NPFX") && $readOnly=='') {
+		} elseif (($cols>20 || $fact=="NPFX" || $fact=="NSFX" || $fact=="SPFX") && $readOnly=='') {
 			echo print_specialchar_link($element_id);
 		}
 	}
@@ -1718,8 +1718,8 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 	// pastable values
 	if ($readOnly=='') {
-		if ($fact=="SPFX") print_autopaste_link($element_id, $SPFX_accept, true, true);
-		if ($fact=="NSFX") print_autopaste_link($element_id, $NSFX_accept, true, true);
+//		if ($fact=="SPFX") print_autopaste_link($element_id, $SPFX_accept, true, true);
+//		if ($fact=="NSFX") print_autopaste_link($element_id, $NSFX_accept, true, true);
 		if ($fact=="FORM" && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept, false, false);
 	}
 
