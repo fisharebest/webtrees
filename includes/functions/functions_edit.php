@@ -1255,7 +1255,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			$cols=40;
 		}
 		break;
-	case 'LATI': case 'LONG': case 'NPFX': case 'SPFX': case 'NSFX':
+	case 'LATI': case 'LONG':
 		$rows=1;
 		$cols=12;
 		break;
@@ -1267,7 +1267,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		$rows=1;
 		$cols=20;
 		break;
-	case 'GIVN': case 'SURN': case '_MARNM':
+	case 'GIVN': case 'SURN': case '_MARNM': case 'NPFX': case 'SPFX': case 'NSFX':
 		$rows=1;
 		$cols=25;
 		break;
