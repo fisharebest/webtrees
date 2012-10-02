@@ -2042,7 +2042,16 @@ function GedcomValueSHandler($attrs) {
 			}
 			$tags = explode(":", $tag);
 			$value = get_gedcom_value($tag, $level, $gedrec, $truncate);
-//@@ do we still need?			
+			switch (substr($tag, -5)) {
+			case ':DATE':
+				$tmp=new WT_Date($value);
+				$value=$tmp->Display();
+				break;
+			case ':PLAC':
+				$tmp=new WT_Place($value, WT_GED_ID);
+				$value=$tmp->getFullName();
+				break;
+			}
 			if ($useBreak == "1") {
 				// Insert <br> when multiple dates exist.
 				// This works around a TCPDF bug that incorrectly wraps RTL dates on LTR pages
