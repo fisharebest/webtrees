@@ -411,6 +411,18 @@ case 'SURN': // Surnames, that start with the search term
 case 'SPFX': // Name prefixes, that start with the search term
 case 'NPFX':
 case 'NSFX':
+	// Do not filter by privacy.  Surnames on their own do not identify individuals.
+	echo json_encode(
+		WT_DB::prepare(
+			"SELECT SQL_CACHE DISTINCT SUBSTRING_INDEX(SUBSTRING_INDEX(i_gedcom, CONCAT('\n2 ', ?, ' '), -1), '\n', 1)".
+			" FROM `##individuals`".
+			" WHERE i_gedcom LIKE CONCAT('%\n2 ', ?, ' ', ?, '%') AND i_file=?".
+			" ORDER BY 1"
+		)
+		->execute(array($type, $type, $term, WT_GED_ID))
+		->fetchOneColumn()
+	);
+	exit;
 	$data=array();
 	$rows=
 		WT_DB::prepare(
