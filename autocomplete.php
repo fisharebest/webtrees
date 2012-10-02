@@ -423,25 +423,6 @@ case 'NSFX':
 		->fetchOneColumn()
 	);
 	exit;
-	$data=array();
-	$rows=
-		WT_DB::prepare(
-			"SELECT  SQL_CACHE DISTINCT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
-			" FROM `##individuals`".
-			" WHERE i_gedcom LIKE '%\n2 ".$type." %' AND i_file=?".
-			" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 ".$type." ', -1)"
-		)
-		->execute(array(WT_GED_ID))
-		->fetchAll(PDO::FETCH_ASSOC);
-	foreach ($rows as $row) {
-		$person=WT_Person::getInstance($row);
-		if (preg_match('/\n2 '.$type.' (.*'.preg_quote($term, '/').'.*)/i', $person->getGedcomRecord(), $match)) {
-			$data[]=$match[1];
-		}
-	}	
-	echo json_encode(array_unique($data));
-	exit;
-
 	
 case 'IFSRO':
 	$data=array();
