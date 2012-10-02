@@ -414,7 +414,7 @@ case 'NSFX':
 	$data=array();
 	$rows=
 		WT_DB::prepare(
-			"SELECT SQL_CACHE 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+			"SELECT  SQL_CACHE DISTINCT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 			" FROM `##individuals`".
 			" WHERE i_gedcom LIKE '%\n2 ".$type." %' AND i_file=?".
 			" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 ".$type." ', -1)"
@@ -427,7 +427,7 @@ case 'NSFX':
 			$data[]=$match[1];
 		}
 	}	
-	echo json_encode($data);
+	echo json_encode(array_unique($data));
 	exit;
 
 	
