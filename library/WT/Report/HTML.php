@@ -176,7 +176,7 @@ class WT_Report_HTML extends WT_Report_Base {
 
 	function run() {
 		global $stylesheet, $TEXT_DIRECTION;
-
+		if (strstr($stylesheet, 'colors')) {$stylesheet = '/themes/colors/css/colors.css';}
 		echo "
 <!DOCTYPE html>
 <html ", WT_I18N::html_markup(), ">
@@ -186,6 +186,7 @@ class WT_Report_HTML extends WT_Report_Base {
 <meta name=\"keywords\" content=\"", $this->rkeywords, "\">
 <meta name=\"description\" content=\"", $this->rsubject, "\">
 <title>", $this->title, "</title>
+
 <link rel=\"stylesheet\" href=\"", $stylesheet, "\" type=\"text/css\" media=\"all\">";
 
 		// Setting up the styles
