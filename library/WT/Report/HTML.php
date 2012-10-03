@@ -200,9 +200,8 @@ class WT_Report_HTML extends WT_Report_Base {
 		//-- header divider
 		echo "
 </style>
-</head>\n<body>
-<div id=\"headermargin\" style=\"position:relative; top:auto; height:", $this->headermargin, "pt; width:", $this->noMarginWidth, "pt;\"></div>
-<div id=\"headerdiv\" style=\"position:relative; top:auto; width:", $this->noMarginWidth, "pt;\">";
+<div id=\"headermargin\" style=\"position:relative;top:auto;height:", $this->headermargin, "pt;width:", $this->noMarginWidth, "pt;\"></div>
+<div id=\"headerdiv\" style=\"position:relative;top:auto;width:", $this->noMarginWidth, "pt;\">";
 		foreach ($this->headerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
@@ -214,7 +213,7 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 		//-- body
 		echo "
-</div><script>document.getElementById('headerdiv').style.height='", $this->topmargin - $this->headermargin - 6, "pt';</script><div id=\"bodydiv\" style=\"position:relative; top:auto; width:", $this->noMarginWidth, "pt; height:100%;\">";
+</div><script>document.getElementById('headerdiv').style.height='", $this->topmargin - $this->headermargin - 6, "pt';</script><div id=\"bodydiv\" style=\"position:relative;top:auto;width:", $this->noMarginWidth, "pt;height:100%;\">";
 		$this->Y = 0;
 		$this->maxY = 0;
 		$this->runPageHeader();
@@ -229,8 +228,8 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 		//-- footer
 		echo "
-</div><script>document.getElementById('bodydiv').style.height='", $this->maxY, "pt';</script><div id=\"bottommargin\" style=\"position:relative; top:auto; height:", $this->bottommargin - $this->footermargin, "pt; width:", $this->noMarginWidth, "pt;\"></div>
-<div id=\"footerdiv\" style=\"position:relative; top:auto; width: ", $this->noMarginWidth, "pt; height:auto;\">";
+</div><script>document.getElementById('bodydiv').style.height='", $this->maxY, "pt';</script><div id=\"bottommargin\" style=\"position:relative;top:auto;height:", $this->bottommargin - $this->footermargin, "pt;width:", $this->noMarginWidth, "pt;\"></div>
+<div id=\"footerdiv\" style=\"position:relative;top:auto;width: ", $this->noMarginWidth, "pt;height:auto;\">";
 		$this->Y = 0;
 		$this->X = 0;
 		$this->maxY = 0;
@@ -244,8 +243,7 @@ class WT_Report_HTML extends WT_Report_Base {
 			}
 		}
 		echo "
-</div><script>document.getElementById('footerdiv').style.height='", $this->maxY, "pt';</script><div id=\"footermargin\" style=\"position:relative; top:auto; height:", $this->footermargin, "pt; width:", $this->noMarginWidth, "pt;\"></div>
-</body>\n</html>\n";
+</div><script>document.getElementById('footerdiv').style.height='", $this->maxY, "pt';</script><div id=\"footermargin\" style=\"position:relative;top:auto;height:", $this->footermargin, "pt;width:", $this->noMarginWidth, "pt;\"></div>";
 	}
 
 	/**
@@ -630,14 +628,14 @@ class CellHTML extends Cell {
 		}
 
 		// Start collecting the HTML code
-		echo "<div class=\"", $this->styleName, "\" style=\"position:absolute; top:", $this->top, "pt; ";
+		echo "<div class=\"", $this->styleName, "\" style=\"position:absolute;top:", $this->top, "pt;";
 		// Use Cell around padding to support RTL also
-		echo "padding:", $cP, "pt; ";
+		echo "padding:", $cP, "pt;";
 		// LTR (left) or RTL (right)
-		echo $html->alignRTL, ":", $this->left, "pt; ";
+		echo $html->alignRTL, ":", $this->left, "pt;";
 		// Background color
 		if (!empty($this->bgcolor)) {
-			echo "background-color:", $this->bgcolor, "; ";
+			echo "background-color:", $this->bgcolor, ";";
 		}
 		// Border setup
 		$bpixX = 0;
@@ -719,18 +717,18 @@ class CellHTML extends Cell {
 		if ($html->lastCellHeight > $this->height) {
 			$this->height = $html->lastCellHeight;
 		}
-		echo " width:", $cW - $bpixX, "pt; height:", $this->height - $bpixY, "pt;";
+		echo " width:", $cW - $bpixX, "pt;height:", $this->height - $bpixY, "pt;";
 
 		// Text alignment
 		switch($this->align) {
 			case "C":
-				echo " text-align:center; ";
+				echo " text-align:center;";
 				break;
 			case "L":
-				echo " text-align:left; ";
+				echo " text-align:left;";
 				break;
 			case "R":
-				echo " text-align:right; ";
+				echo " text-align:right;";
 				break;
 		}
 
@@ -812,7 +810,7 @@ class HtmlHTML extends Html {
 			$startX = $html->GetX();
 			$startY = $html->GetY();
 			$width = $html->getRemainingWidth();
-			echo "<div style=\"position: absolute; top: ", $startY, "pt; ", $html->alignRTL, ": ", $startX, "pt; width: ", $width, "pt;\">";
+			echo "<div style=\"position: absolute;top: ", $startY, "pt;", $html->alignRTL, ": ", $startX, "pt;width: ", $width, "pt;\">";
 			$startY += $html->getCurrentStyleHeight() + 2;
 			$html->SetY($startY);
 		}
@@ -1035,26 +1033,26 @@ class TextBoxHTML extends TextBox {
 		$html->addMaxY($this->top + $cH);
 
 		// Start to print HTML
-		echo "<div style=\"position:absolute; top:", $this->top, "pt; ";
+		echo "<div style=\"position:absolute;top:", $this->top, "pt;";
 		// LTR (left) or RTL (right)
-		echo $html->alignRTL, ":", $cX, "pt; ";
+		echo $html->alignRTL, ":", $cX, "pt;";
 		// Background color
 		if ($this->fill) {
 			if (!empty($this->bgcolor)) {
-				echo " background-color:", $this->bgcolor, "; ";
+				echo " background-color:", $this->bgcolor, ";";
 			}
 		}
 		// Print padding only when it's set
 		if ($this->padding) {
 			// Use Cell around padding to support RTL also
-			echo "padding:", $cP, "pt; ";
+			echo "padding:", $cP, "pt;";
 		}
 		// Border setup
 		if ($this->border) {
-			echo " border:solid black 1pt; ";
-			echo "width:", ($this->width - 1 - ($cP * 2)), "pt; height:", $cH - 1, "pt; ";
+			echo " border:solid black 1pt;";
+			echo "width:", ($this->width - 1 - ($cP * 2)), "pt;height:", $cH - 1, "pt;";
 		} else {
-			echo "width:", ($this->width - ($cP * 2)), "pt; height:", $cH, "pt; ";
+			echo "width:", ($this->width - ($cP * 2)), "pt;height:", $cH, "pt;";
 		}
 		echo "\">";
 
@@ -1139,7 +1137,7 @@ class TextHTML extends Text {
 				if ($html->GetStringWidth($temptext) > $width) {
 					$lines = explode("\n", $temptext);
 					foreach ($lines as $line) {
-						echo "<div style=\"position:absolute; top:", $startY, "pt; ", $html->alignRTL, ":", $startX, "pt; width:", $width, "pt;\">";
+						echo "<div style=\"position:absolute;top:", $startY, "pt;", $html->alignRTL, ":", $startX, "pt;width:", $width, "pt;\">";
 						$line = $html->textWrap($line, $width);
 						$startY += $html->getTextCellHeight($line);
 						$html->SetY($startY);
@@ -1148,7 +1146,7 @@ class TextHTML extends Text {
 //echo "<br>CC"; //@@
 					}
 				} else {
-					echo "<div style=\"position:absolute; top:", $startY, "pt; ", $html->alignRTL, ":", $startX, "pt; width:", $width, "pt;\">";
+					echo "<div style=\"position:absolute;top:", $startY, "pt;", $html->alignRTL, ":", $startX, "pt;width:", $width, "pt;\">";
 					$html->write($temptext, $this->color);
 //echo "<br>DD"; //@@
 					echo "</div>\n";
@@ -1479,19 +1477,19 @@ class ImageHTML extends Image {
 		//@@ Indi picture		
 		switch($this->align) {
 			case "L":
-				echo "<div style=\"position:absolute; top:", $this->y, "pt; left:0pt; width:", $html->getRemainingWidth(), "pt; text-align:left;\">\n";
-				echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt; height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
+				echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $html->getRemainingWidth(), "pt;text-align:left;\">\n";
+				echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
 				break;
 			case "C":
-				echo "<div style=\"position:absolute; top:", $this->y, "pt; left:0pt; width:", $html->getRemainingWidth(), "pt; text-align:center;\">\n";
-				echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt; height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
+				echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $html->getRemainingWidth(), "pt;text-align:center;\">\n";
+				echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
 				break;
 			case "R":
-				echo "<div style=\"position:absolute; top:", $this->y, "pt; left:0pt; width:", $html->getRemainingWidth(), "pt; text-align:right;\">\n";
-				echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt; height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
+				echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $html->getRemainingWidth(), "pt;text-align:right;\">\n";
+				echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
 				break;
 			default:
-				echo "<img src=\"", $this->file, "\" style=\"position:absolute; ", $html->alignRTL, ":", $this->x, "pt; top:", $this->y, "pt; width:", $this->width, "pt; height:", $this->height, "pt;\" alt=\"\">\n";
+				echo "<img src=\"", $this->file, "\" style=\"position:absolute;", $html->alignRTL, ":", $this->x, "pt;top:", $this->y, "pt;width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n";
 		}
 
 		$lastpicpage = $html->PageNo();
@@ -1552,11 +1550,11 @@ class LineHTML extends Line {
 		// TODO Non verticle or horizontal lines can use a series of divs absolutely positioned
 		// Vertical line
 		if ($this->x1 == $this->x2) {
-			echo "<div style=\"position:absolute; overflow:hidden; border-", $html->alignRTL, ":solid black 1pt; ", $html->alignRTL, ":", $this->x1, "pt; top:", $this->y1 + 1, "pt; width:1pt; height:", $this->y2 - $this->y1, "pt;\"> </div>\n";
+			echo "<div style=\"position:absolute;overflow:hidden;border-", $html->alignRTL, ":solid black 1pt;", $html->alignRTL, ":", $this->x1, "pt;top:", $this->y1 + 1, "pt;width:1pt;height:", $this->y2 - $this->y1, "pt;\"> </div>\n";
 		}
 		// Horizontal line
 		if ($this->y1 == $this->y2) {
-			echo "<div style=\"position:absolute; overflow:hidden; border-top:solid black 1pt; ", $html->alignRTL, ":", $this->x1, "pt; top:", $this->y1 + 1, "pt; width:", $this->x2 - $this->x1, "pt; height:1pt;\"> </div>\n";
+			echo "<div style=\"position:absolute;overflow:hidden;border-top:solid black 1pt;", $html->alignRTL, ":", $this->x1, "pt;top:", $this->y1 + 1, "pt;width:", $this->x2 - $this->x1, "pt;height:1pt;\"> </div>\n";
 		}
 		// Keep max Y updated
 		// One or the other will be higher... lasy mans way...
