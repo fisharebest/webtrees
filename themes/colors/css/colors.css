@@ -60,8 +60,9 @@ html[dir="rtl"] input:required:valid, html[dir="rtl"] textarea:required:valid, h
 #header{height:70px;}
 #header td{height:4em;vertical-align:bottom;}
 
-.title{float:left;font-size:24px;margin-left:12px;margin-top:30px;}
-html[dir='rtl'] .title{float:right;margin-right:12px;}
+span.title{float:left;font-size:24px;margin-left:12px;margin-top:30px;}
+
+html[dir='rtl'] span.title{float:right;margin-right:12px;}
 
 #flash-messages{clear:both;}
 
