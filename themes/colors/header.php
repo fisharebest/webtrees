@@ -27,6 +27,9 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+
+global $subColor;
+
 echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',
@@ -37,7 +40,7 @@ echo
 	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">',
 	'<link rel="stylesheet" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css" type="text/css">',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'css/colors.css" type="text/css">',
-	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all">';
+	'<link rel="stylesheet" href="', WT_THEME_URL,  'css/',  $subColor,  '.css" type="text/css" media="all">';
 
 if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPad')) {
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.8, maximum-scale=2.0" />';

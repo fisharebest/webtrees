@@ -128,7 +128,6 @@ if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {
 $theme_name = "colors"; // need double quotes, as file is scanned/parsed by script
 $footerfile = WT_THEME_DIR . 'footer.php';
 $headerfile = WT_THEME_DIR . 'header.php';
-$stylesheet = WT_THEME_URL . 'css/' . $subColor . '.css';
 
 $WT_IMAGES=array(
 	// used to draw charts

@@ -33,7 +33,7 @@ echo
 	'<title>', htmlspecialchars($title), '</title>',
 	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery/jquery-ui_theme.css" type="text/css">',
-	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all">',
+	'<link rel="stylesheet" href="', WT_THEME_URL, 'style.css', '" type="text/css" media="all">',
 	'<meta name="robots" content="noindex,nofollow">';
 	
 switch ($BROWSERTYPE) {

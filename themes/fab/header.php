@@ -48,7 +48,7 @@ echo
 	
 echo
 	'<link type="text/css" rel="stylesheet" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css">',
-	'<link type="text/css" rel="stylesheet" href="', $stylesheet, '">';
+	'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'style.css', '">';
 
 switch ($BROWSERTYPE) {
 //case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
