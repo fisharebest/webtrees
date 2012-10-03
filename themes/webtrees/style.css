@@ -1033,3 +1033,17 @@ a.icon-udarrow:hover{width:20px;height:20px;background-image:url(images/udarrow2
 .icon-mime-video-quicktime{width:48px;height:48px;background-position:-99px -147px;}
 .icon-mime-video-msvideo{width:48px;height:48px;background-position:-99px -0px;}
 .icon-mime-video-ms-wmv{width:48px;height:48px;background-position:-50px -196px;}
+
+/* TableTools */
+.fg-toolbar div:first-child {float:left;}
+.DTTT_container {float:right;}
+.DTTT_container .DTTT_button_print {width:24px;height:24px;border:none; background:transparent url(images/print.png);vertical-align: top}
+.DTTT_container .DTTT_button_print:hover {width:24px;height:24px;background:transparent url(images/print_hover.png);}
+.DTTT_print_info {position:absolute;top:50%;left:50%;width:400px;height:150px;margin-left:-200px;margin-top:-75px;text-align:center;	background-color: #3f3f3f;color:white;padding: 10px 30px;opacity:0.9;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;box-shadow:5px 5px 5px rgba(0, 0, 0, 0.5);-moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);	-webkit-box-shadow:5px 5px 5px rgba(0, 0, 0, 0.5);}
+.DTTT_print_info h6 {font-weight:normal;font-size:28px;line-height:28px;margin:1em;}
+.DTTT_print_info p {font-size: 14px;line-height: 20px;}
+table.DTTT_selectable tbody tr {cursor: pointer;}
+table.dataTable tr.DTTT_selected.odd,table.dataTable tr.DTTT_selected.odd td.sorting_1 ,table.dataTable tr.DTTT_selected.odd td.sorting_2 ,table.dataTable tr.DTTT_selected.odd td.sorting_3 {background-color: #9FAFD1;}
+table.dataTable tr.DTTT_selected.even,table.dataTable tr.DTTT_selected.even td.sorting_1,table.dataTable tr.DTTT_selected.even td.sorting_2,table.dataTable tr.DTTT_selected.even td.sorting_3 {	background-color: #B0BED9;}
+
+
