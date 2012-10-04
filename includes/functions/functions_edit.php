@@ -1540,8 +1540,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo ' <a href="#edit_name" onclick="convertHidden(\'', $element_id, '\'); return false;" class="icon-edit_indi" title="'.WT_I18N::translate('Edit name').'"></a>';
 	} else {
 		// textarea
-		if ($rows>1) echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" rows=\"", $rows, "\" cols=\"", $cols, '" dir="auto">', htmlspecialchars($value), "</textarea><br>";
-		else {
+		if ($rows>1) {
+			echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" rows=\"", $rows, "\" cols=\"", $cols, '" dir="auto">', htmlspecialchars($value), "</textarea><br>";
+		} else {
 			// text
 			// If using GEDFact-assistant window
 			if ($action=="addnewnote_assisted") {
@@ -1550,11 +1551,21 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", htmlspecialchars($value), "\" size=\"", $cols, "\" dir=\"ltr\"";
 			}
 			echo " class=\"{$fact}\"";
-			if (in_array($fact, $subnamefacts)) echo " onblur=\"updatewholename();\" onkeyup=\"updatewholename();\"";
-			if ($fact=="DATE") echo " onblur=\"valid_date(this);\" onmouseout=\"valid_date(this);\"";
-			if ($fact=="LATI") echo " onblur=\"valid_lati_long(this, 'N', 'S');\" onmouseout=\"valid_lati_long(this, 'N', 'S');\"";
-			if ($fact=="LONG") echo " onblur=\"valid_lati_long(this, 'E', 'W');\" onmouseout=\"valid_lati_long(this, 'E', 'W');\"";
-			//if ($fact=="FILE") echo " onchange=\"if (updateFormat) updateFormat(this.value);\"";
+			if (in_array($fact, $subnamefacts)) {
+				echo " onblur=\"updatewholename();\" onkeyup=\"updatewholename();\"";
+			}
+			if ($fact=='GIVN') {
+				echo ' autofocus';
+			}
+			if ($fact=="DATE") {
+				echo " onblur=\"valid_date(this);\" onmouseout=\"valid_date(this);\"";
+			}
+			if ($fact=="LATI") {
+				echo " onblur=\"valid_lati_long(this, 'N', 'S');\" onmouseout=\"valid_lati_long(this, 'N', 'S');\"";
+			}
+			if ($fact=="LONG") {
+				echo " onblur=\"valid_lati_long(this, 'E', 'W');\" onmouseout=\"valid_lati_long(this, 'E', 'W');\"";
+			}
 			echo ' ', $readOnly, ">";
 		}
 		// split PLAC
@@ -1567,7 +1578,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				places_assistant_WT_Module::setup_place_subfields($element_id);
 				places_assistant_WT_Module::print_place_subfields($element_id);
 			}
-		} elseif (($cols>20 || $fact=="NPFX" || $fact=="NSFX" || $fact=="SPFX") && $readOnly=='') {
+		} elseif ($cols>20 && $readOnly=='') {
 			echo print_specialchar_link($element_id);
 		}
 	}
@@ -1718,9 +1729,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 	// pastable values
 	if ($readOnly=='') {
-//		if ($fact=="SPFX") print_autopaste_link($element_id, $SPFX_accept, true, true);
-//		if ($fact=="NSFX") print_autopaste_link($element_id, $NSFX_accept, true, true);
-		if ($fact=="FORM" && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept, false, false);
+		if ($fact=="FORM" && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept);
 	}
 
 	if ($noClose != "NOCLOSE") echo "</td></tr>";

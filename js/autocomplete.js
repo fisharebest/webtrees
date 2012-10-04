@@ -145,18 +145,3 @@ jQuery("#GIVN, input[name*=GIVN], input[name*=firstname]").autocomplete({
 jQuery("#SURN, input[name*=SURN], input[name*=lastname], #NAME, input[id=name]").autocomplete({
 	source: "autocomplete.php?field=SURN"
 });
-
-// SPFX
-jQuery("#SPFX, input[name*=SPFX]").autocomplete({
-	source: "autocomplete.php?field=SPFX"
-});
-
-// NPFX
-jQuery("#NPFX, input[name*=NPFX]").autocomplete({
-	source: "autocomplete.php?field=NPFX"
-});
-
-// NSFX
-jQuery("#NSFX, input[name*=NSFX]").autocomplete({
-	source: "autocomplete.php?field=NSFX"
-});

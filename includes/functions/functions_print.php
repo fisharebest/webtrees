@@ -1139,22 +1139,15 @@ function print_findfamily_link($element_id) {
 }
 
 function print_specialchar_link($element_id) {
-	return '<a href="#" onclick="findSpecialChar(document.getElementById(\''.$element_id.'\')); updatewholename(); return false;" class="icon-button_keyboard" title="'.WT_I18N::translate('Find a special character').'"></a>';
+	return '<span onclick="findSpecialChar(document.getElementById(\''.$element_id.'\')); updatewholename(); return false;" class="icon-button_keyboard" title="'.WT_I18N::translate('Find a special character').'"></span>';
 }
 
-function print_autopaste_link($element_id, $choices, $updatewholename, $append) {
+function print_autopaste_link($element_id, $choices) {
 	echo '<small>';
 	foreach ($choices as $indexval => $choice) {
-		echo '<a href="#" onclick="document.getElementById(\'', $element_id, '\').value=';
-		if ($append) {
-			echo 'trim(document.getElementById(\'', $element_id, '\').value + \' \' + \'', $choice, '\');';
-		} else {
-			echo '\'', $choice, '\';';
-		}
-		if ($updatewholename) {
-			echo " updatewholename();";
-		}
-		echo " return false;\">", $choice, '</a> ';
+		echo '<span onclick="document.getElementById(\'', $element_id, '\').value=';
+		echo '\'', $choice, '\';';
+		echo " return false;\">", $choice, '</span> ';
 	}
 	echo '</small>';
 }
