@@ -196,7 +196,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		var CB_Animation = "'.get_module_setting('lightbox', 'LB_TRANSITION', 'warp').'";'; // Next/Prev Image transition effect
 
 		$controller->addExternalJavascript('module.php?mod='.$this->getName().'&mod_action=js');
-		$controller->addInlineJavascript($js);
+		$controller->addInlineJavascript($js, WT_Controller_Base::JS_PRIORITY_HIGH); // Run this *before* loading the library files
 		return true;
 	}
 
