@@ -50,15 +50,6 @@ function format_indi_table($datalist, $option='') {
 			var oTable'.$table_id.' = jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'<"H"<"filtersH_'.$table_id.'">T<"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
 				'.WT_I18N::datatablesI18N().',
-				"oTableTools": {
-					"aButtons": [
-						{
-							"sExtends":"print",
-							"sButtonText":	"",
-							"sInfo": "'.WT_I18N::translate('<h6>Print preview</h6><p>Please use your browser\'s print function to print this table. Press escape when finished.</p>').'"
-						}
-					]				
-				},
 				"bJQueryUI": true,
 				"bAutoWidth":false,
 				"bProcessing": true,
