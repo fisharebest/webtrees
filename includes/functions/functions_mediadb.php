@@ -1423,6 +1423,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
 
 	// NOTE: add a table and form to easily add new values to the table
+	echo '<div id="addmedia-page">'; //container for media edit pop-up
 	echo "<form method=\"post\" name=\"newmedia\" action=\"addmedia.php\" enctype=\"multipart/form-data\">";
 	echo "<input type=\"hidden\" name=\"action\" value=\"", $action, "\">";
 	echo "<input type=\"hidden\" name=\"ged\" value=\"", WT_GEDCOM, "\">";
@@ -1448,7 +1449,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		echo ' ', print_findindi_link('gid');
 		echo ' ', print_findfamily_link('gid');
 		echo ' ', print_findsource_link('gid');
-		echo "<br><sub>", WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'), "</sub></td></tr>";
+		echo "<p class=\"sub\">", WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'), "</p></td></tr>";
 	}
 	$gedrec=find_gedcom_record($pid, WT_GED_ID, true);
 
@@ -1507,8 +1508,8 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	if ($gedfile == "FILE") {
 		if (WT_USER_GEDCOM_ADMIN) {
 			add_simple_tag("1 $gedfile", "", WT_I18N::translate('File name on server'), "", "NOCLOSE");
-			echo "<br><sub>" . WT_I18N::translate('Do not change to keep original file name.');
-			echo "<br>" . WT_I18N::translate('You may enter a URL, beginning with &laquo;http://&raquo;.') . "</sub></td></tr>";
+			echo "<p class=\"sub\">" . WT_I18N::translate('Do not change to keep original file name.');
+			echo WT_I18N::translate('You may enter a URL, beginning with &laquo;http://&raquo;.') . "</p></td></tr>";
 		}
 		$fileName = "";
 		$folder = "";
@@ -1533,7 +1534,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 			if ($isExternal)
 				echo ">";
 			else
-				echo "><br><sub>" . WT_I18N::translate('Do not change to keep original file name.') . "</sub>";
+				echo "><p class=\"sub\">" . WT_I18N::translate('Do not change to keep original file name.') . "</p>";
 		} else {
 /*   $thumbnail = thumbnail_file($fileName, true, false, $pid);
 			if (!empty($thumbnail)) {
@@ -1581,10 +1582,10 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		if (WT_USER_IS_ADMIN) {
 			echo '<br><span dir="ltr"><input type="text" name="folder" size="40" value="', $folder, '" onblur="checkpath(this)"></span>';
 			if ($MEDIA_DIRECTORY_LEVELS>0) {
-				echo '<br><sub>', WT_I18N::translate('You can enter up to %s folder names to follow the default &laquo;%s&raquo;.<br />Do not enter the &laquo;%s&raquo; part of the destination folder name.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY), '</sub>';
+				echo '<p class="sub">', WT_I18N::translate('You can enter up to %s folder names to follow the default &laquo;%s&raquo;.<br />Do not enter the &laquo;%s&raquo; part of the destination folder name.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY), '</p>';
 			}
 			if ($gedfile == "FILE") {
-				echo '<br><sub>', WT_I18N::translate('This entry is ignored if you have entered a URL into the file name field.'), '</sub>';
+				echo '<p class="sub">', WT_I18N::translate('This entry is ignored if you have entered a URL into the file name field.'), '</p>';
 			}
 		} else echo '<input name="folder" type="hidden" value="', addslashes($folder), '">';
 		echo '</td></tr>';
@@ -1776,6 +1777,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	print_add_layer("RESN", 1);
 	echo "<input type=\"submit\" value=\"" . WT_I18N::translate('Save') . "\">";
 	echo "</form>";
+	echo '</div>';//close #addmedia-page
 }
 
 // looks in both the standard and protected media directories

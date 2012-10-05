@@ -129,6 +129,7 @@ if (!empty($pid)) {
 	$edit = true;
 }
 
+echo '<div id="edit_interface-page">';// page container
 if (!WT_USER_CAN_EDIT || !$edit || !$ALLOW_EDIT_GEDCOM) {
 	echo
 		'<p class="error">', WT_I18N::translate('Privacy settings prevent you from editing this record.'), '</p>',
@@ -142,45 +143,45 @@ if (!isset($type)) {
 $level0type = $type;
 if ($type=='INDI') {
 	$record=WT_Person::getInstance($pid);
-	echo '<b>', $record->getFullName(), '</b><br>';
+	echo '<h4>', $record->getFullName(), '</h4>';
 } elseif ($type=='FAM') {
 	if (!empty($pid)) {
 		$record=WT_Family::getInstance($pid);
 	} else {
 		$record=WT_Family::getInstance($famid);
 	}
-	echo '<b>', $record->getFullName(), '</b><br>';
+	echo '<h4>', $record->getFullName(), '</h4>';
 } elseif ($type=='SOUR') {
 	$record=WT_Source::getInstance($pid);
-	echo '<b>', $record->getFullName(),  '</b><br>';
+	echo '<h4>', $record->getFullName(),  '</h4>';
 }
 
 if (strstr($action, 'addchild')) {
 	if (empty($famid)) {
-		echo '<b>', WT_I18N::translate('Add an unlinked person'), '</b>', help_link('edit_add_unlinked_person');
+		echo '<h4>', WT_I18N::translate('Add an unlinked person'), '</h4>', help_link('edit_add_unlinked_person');
 	} elseif ($gender=='F') {
-		echo '<b>', WT_I18N::translate('Add daughter'), '</b>', help_link('edit_add_child');
+		echo '<h4>', WT_I18N::translate('Add daughter'), '</h4>', help_link('edit_add_child');
 	} elseif ($gender=='M') {
-		echo '<b>', WT_I18N::translate('Add son'), '</b>', help_link('edit_add_child');
+		echo '<h4>', WT_I18N::translate('Add son'), '</h4>', help_link('edit_add_child');
 	} else {
-		echo '<b>', WT_I18N::translate('Add child'), '</b>', help_link('edit_add_child');
+		echo '<h4>', WT_I18N::translate('Add child'), '</h4>', help_link('edit_add_child');
 	}
 } elseif (strstr($action, 'addspouse')) {
 	if ($famtag=='WIFE') {
-		echo '<b>', WT_I18N::translate('Add wife'), '</b>';
+		echo '<h4>', WT_I18N::translate('Add wife'), '</h4>';
 	} else {
-		echo '<b>', WT_I18N::translate('Add husband'), '</b>';
+		echo '<h4>', WT_I18N::translate('Add husband'), '</h4>';
 	}
 	echo help_link('edit_add_spouse');
 } elseif (strstr($action, 'addnewparent')) {
 	if ($famtag=='WIFE') {
-		echo '<b>', WT_I18N::translate('Add a new mother'), '</b>';
+		echo '<h4>', WT_I18N::translate('Add a new mother'), '</h4>';
 	} else {
-		echo '<b>', WT_I18N::translate('Add a new father'), '</b>';
+		echo '<h4>', WT_I18N::translate('Add a new father'), '</h4>';
 	}
 	echo help_link('edit_add_parent');
 } elseif (strstr($action, 'addopfchild')) {
-	echo '<b>', WT_I18N::translate('Add a child to create a one-parent family'), '</b>', help_link('add_opf_child');
+	echo '<h4>', WT_I18N::translate('Add a child to create a one-parent family'), '</h4>', help_link('add_opf_child');
 }
 //------------------------------------------------------------------------------
 switch ($action) {
@@ -214,7 +215,7 @@ case 'editraw':
 	$tmp=new WT_GedcomRecord($gedrec);
 	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 
-	echo '<br><b>', WT_I18N::translate('Edit raw GEDCOM record'), '</b>', help_link('edit_edit_raw');
+	echo '<h4>', WT_I18N::translate('Edit raw GEDCOM record'), '</h4>', help_link('edit_edit_raw');
 	echo '<form method="post" action="edit_interface.php">';
 	echo '<input type="hidden" name="action" value="updateraw">';
 	echo '<input type="hidden" name="pid" value="', $pid, '">';
@@ -224,8 +225,8 @@ case 'editraw':
 	// Notes are special - they may contain data on the first line
 	$gedrec=preg_replace('/^(0 @'.WT_REGEX_XREF.'@ NOTE) (.+)/', "$1\n1 CONC $2", $gedrec);
 	list($gedrec1, $gedrec2)=explode("\n", $gedrec, 2);
-	echo '<textarea name="newgedrec1" rows="1"  cols="80" dir="ltr" readonly="readonly">', $gedrec1, '</textarea><br>';
-	echo '<textarea name="newgedrec2" id="newgedrec2" rows="20" cols="80" dir="ltr">', htmlspecialchars($gedrec2), "</textarea><br>";
+	echo '<textarea name="newgedrec1" id="newgedrec1" dir="ltr" readonly="readonly">', $gedrec1, '</textarea><br>';
+	echo '<textarea name="newgedrec2" id="newgedrec2" dir="ltr">', htmlspecialchars($gedrec2), "</textarea><br>";
 	if (WT_USER_IS_ADMIN) {
 		echo '<table class="facts_table">';
 		echo '<tr><td class="descriptionbox  wrap width25">';
@@ -2177,3 +2178,4 @@ if ($success && !WT_DEBUG) {
 } else {
 	echo '<p class="center"><a href="#" onclick="closePopupAndReloadParent(\'', $link, '\');">', WT_I18N::translate('Close Window'), '</a></p>';
 }
+echo '</div>';//close #edit_interface-page

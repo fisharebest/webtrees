@@ -3031,3 +3031,32 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(images/uarrow2.p
 input:required:valid, textarea:required:valid{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC);background-position:right top; background-repeat:no-repeat;}
 input:required:invalid, textarea:required:invalid{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);background-position:right top; background-repeat:no-repeat;}
 html[dir="rtl"] input:required:valid, html[dir="rtl"] textarea:required:valid, html[dir="rtl"] input:required:invalid, html[dir="rtl"] textarea:required:invalid {background-position:left top;}
+
+/* Edit interface pop-ups*/
+#edit_interface-page h4{color:#555;margin:5px;}
+#edit_interface-page .optionbox span {margin:0 5px;}
+#edit_interface-page #LATI,#edit_interface-page #LONG,#edit_interface-page #SPFX,#edit_interface-page #NSFX,#edit_interface-page #NPFX {line-height:18px;margin:0 5px;width:88px;}
+#edit_interface-page #GIVN,#edit_interface-page #SURN,#edit_interface-page #_MARNM{line-height:18px;margin:0 5px;width:180px;}
+#edit_interface-page input[type="text"], #edit_interface-page #NAME_display{line-height:18px;margin:0 5px;vertical-align:top;width:240px;}
+#edit_interface-page input[type="text"][id*="PAGE"], #edit_interface-page input[type="text"][id*="_UID"]{width:350px;}
+#edit_interface-page input[type="text"][id*="SOUR"], #edit_interface-page input[type="text"][id*="REPO"],#edit_interface-page input[type="text"][id*="OBJE"],#edit_interface-page input[type="text"][id*="FAMC"],#edit_interface-page input[type="text"][id*="ASSO"],#edit_interface-page input[type="text"][id^="AGE"],#edit_interface-page input[type="text"][id*="SHARED_NOTE"]{width:70px;}
+#edit_interface-page input[type="text"][id$="DATE"] {width:160px;}
+#edit_interface-page input[type="text"][id^="TIME"] {width:100px;}
+#edit_interface-page input[id*="TEXT"]{height:140px;width:440px;} 
+#edit_interface-page textarea {margin:0 5px;width:440px;}
+#edit_interface-page textarea[id*="NOTE"]{height:240px;}
+#edit_interface-page textarea[id*="TEXT"], #edit_interface-page textarea[id*="PUBL"]{height:140px;}
+#edit_interface-page textarea[id^="newgedrec"]{line-height:18px;width:605px;}
+#edit_interface-page textarea#newgedrec1 {height:20px;}
+#edit_interface-page textarea#newgedrec2 {height:364px;}
+#edit_interface-page textarea[id*="ADDR"], #edit_interface-page input[id*="ADDR"]{height:80px;width:300px;}
+
+/* Addmedia pop-ups*/
+#addmedia-page input[type="text"]{line-height:18px;margin:0 5px;width:180px;}
+#addmedia-page .optionbox select {margin:0 5px;}
+#addmedia-page .optionbox p.sub{font-size:11px;margin:0 5px;}
+#addmedia-page input[type="text"][id*="PAGE"], #addmedia-page input[type="text"][id*="_UID"]{width:350px;}
+#addmedia-page input[type="text"][id*="SOUR"], #addmedia-page input[type="text"][id*="REPO"],#addmedia-page input[type="text"][id*="OBJE"],#addmedia-page input[type="text"][id*="FAMC"],#addmedia-page input[type="text"][id*="ASSO"],#addmedia-page input[type="text"][id^="AGE"],#addmedia-page input[type="text"][id*="SHARED_NOTE"]{width:70px;}
+#addmedia-page input[id*="TEXT"]{height:140px;width:440px;} 
+#addmedia-page textarea {margin:0 5px;width:440px;}
+#addmedia-page textarea[id*="NOTE"]{height:240px;}

@@ -2167,3 +2167,32 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(images/uarrow2.p
 /* style needed for lightbox album icons */
 #medialist-page .list_value_wrap a {color:blue;font-weight:normal}
 #medialist-page .list_value_wrap a:hover {color:red;font-weight:normal}
+
+/* Edit interface pop-ups*/
+#edit_interface-page h4{color:#555;margin:5px;}
+#edit_interface-page .optionbox span {margin:0 5px;}
+#edit_interface-page #LATI,#edit_interface-page #LONG,#edit_interface-page #SPFX,#edit_interface-page #NSFX,#edit_interface-page #NPFX {line-height:18px;margin:0 5px;width:88px;}
+#edit_interface-page #GIVN,#edit_interface-page #SURN,#edit_interface-page #_MARNM{line-height:18px;margin:0 5px;width:180px;}
+#edit_interface-page input[type="text"], #edit_interface-page #NAME_display{line-height:18px;margin:0 5px;vertical-align:top;width:240px;}
+#edit_interface-page input[type="text"][id*="PAGE"], #edit_interface-page input[type="text"][id*="_UID"]{width:350px;}
+#edit_interface-page input[type="text"][id*="SOUR"], #edit_interface-page input[type="text"][id*="REPO"],#edit_interface-page input[type="text"][id*="OBJE"],#edit_interface-page input[type="text"][id*="FAMC"],#edit_interface-page input[type="text"][id*="ASSO"],#edit_interface-page input[type="text"][id^="AGE"],#edit_interface-page input[type="text"][id*="SHARED_NOTE"]{width:70px;}
+#edit_interface-page input[type="text"][id$="DATE"] {width:160px;}
+#edit_interface-page input[type="text"][id^="TIME"] {width:100px;}
+#edit_interface-page input[id*="TEXT"]{height:140px;width:440px;} 
+#edit_interface-page textarea {margin:0 5px;width:440px;}
+#edit_interface-page textarea[id*="NOTE"]{height:240px;}
+#edit_interface-page textarea[id*="TEXT"], #edit_interface-page textarea[id*="PUBL"]{height:140px;}
+#edit_interface-page textarea[id^="newgedrec"]{line-height:18px;width:605px;}
+#edit_interface-page textarea#newgedrec1 {height:20px;}
+#edit_interface-page textarea#newgedrec2 {height:364px;}
+#edit_interface-page textarea[id*="ADDR"], #edit_interface-page input[id*="ADDR"]{height:80px;width:300px;}
+
+/* Addmedia pop-ups*/
+#addmedia-page input[type="text"]{line-height:18px;margin:0 5px;width:180px;}
+#addmedia-page .optionbox select {margin:0 5px;}
+#addmedia-page .optionbox p.sub{font-size:11px;margin:0 5px;}
+#addmedia-page input[type="text"][id*="PAGE"], #addmedia-page input[type="text"][id*="_UID"]{width:350px;}
+#addmedia-page input[type="text"][id*="SOUR"], #addmedia-page input[type="text"][id*="REPO"],#addmedia-page input[type="text"][id*="OBJE"],#addmedia-page input[type="text"][id*="FAMC"],#addmedia-page input[type="text"][id*="ASSO"],#addmedia-page input[type="text"][id^="AGE"],#addmedia-page input[type="text"][id*="SHARED_NOTE"]{width:70px;}
+#addmedia-page input[id*="TEXT"]{height:140px;width:440px;} 
+#addmedia-page textarea {margin:0 5px;width:440px;}
+#addmedia-page textarea[id*="NOTE"]{height:240px;}

@@ -79,7 +79,7 @@ jQuery(".FAM, input[id*=famid], input[id*=FAMC], #famid").autocomplete({
 });
 
 // NOTE
-jQuery(".NOTE").autocomplete({
+jQuery(".NOTE, .SHARED_NOTE").autocomplete({
 	source: "autocomplete.php?field=NOTE",
 	html: true
 });

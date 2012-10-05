@@ -1242,78 +1242,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	if ($fact=='REPO' || $fact=='SOUR' || $fact=='OBJE' || $fact=='FAMC')
 		$islink = true;
 
-	// rows & cols
-	switch ($fact) {
-	case 'FORM':
-		if ($upperlevel=='OBJE') {
-			// FILE:FORM
-			$rows=1;
-			$cols=5;
-		} else {
-			// FACT:PLAC:FORM
-			$rows=1;
-			$cols=40;
-		}
-		break;
-	case 'LATI': case 'LONG':
-		$rows=1;
-		$cols=12;
-		break;
-	case 'DATE':
-		$rows=1;
-		$cols=30;
-		break;
-	case 'TIME': case 'TYPE':
-		$rows=1;
-		$cols=20;
-		break;
-	case 'GIVN': case 'SURN': case '_MARNM': case 'NPFX': case 'SPFX': case 'NSFX':
-		$rows=1;
-		$cols=25;
-		break;
-	case '_UID':
-		$rows=1;
-		$cols=50;
-		break;
-	case 'TEXT': case 'PUBL':
-		$rows=10;
-		$cols=70;
-		break;
-	case 'SHARED_NOTE_EDIT':
-		$islink=1;
-		$fact="NOTE";
-		$rows=15;
-		$cols=88;
-		break;
-	case 'SHARED_NOTE':
-		$islink=1;
-		$fact="NOTE";
-		$rows=1;
-		$cols=($islink ? 8 : 40);
-		break;
-	case 'NOTE':
-		if ($islink) {
-			$rows=1;
-			$cols=($islink ? 8 : 40);
-			break;
-		} else {
-			$rows=10;
-			$cols=70;
-			break;
-		}
-	case 'ADDR':
-		$rows=4;
-		$cols=40;
-		break;
-	case 'PAGE':
-		$rows=1;
-		$cols=50;
-		break;
-	default:
-		$rows=1;
-		$cols=($islink ? 8 : 40);
-		break;
-	}
+	if ($fact=='SHARED_NOTE_EDIT' || $fact=='SHARED_NOTE') {$islink=1;$fact="SHARED_NOTE";}
 
 	// label
 	echo "<tr id=\"", $element_id, "_tr\" ";
@@ -1333,7 +1262,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo $element_name, "<br>";
 	}
 
-
 	// tag name
 	if (!empty($label)) {
 		if ($label=="Note" && $islink) {
@@ -1342,15 +1270,8 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			echo $label;
 		}
 	} else {
-		if ($fact=="NOTE" && $islink) {
+		if ($fact=="SHARED_NOTE" && $islink) {
 			echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
-			/*
-			if ($pid && $label=='GEDFact Assistant' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-				// use $label (GEDFact Assistant);
-			} else {
-				echo WT_I18N::translate('Shared note');
-			}
-			*/
 		} else {
 			echo WT_Gedcom_Tag::getLabel($fact);
 		}
@@ -1368,7 +1289,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				echo help_link($fact);
 			}
 			break;
-		case 'NOTE':
+		case 'SHARED_NOTE':
 			if ($islink) {
 				echo help_link('edit_add_SHARED_NOTE');
 			} else {
@@ -1446,7 +1367,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 
 	// retrieve linked NOTE
-	if ($fact=="NOTE" && $islink) {		
+	if ($fact=="SHARED_NOTE" && $islink) {		
 		$note1=WT_Note::getInstance($value);
 		if ($note1) {
 			$noterec=$note1->getGedcomRecord();
@@ -1465,18 +1386,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			echo " onclick=\"if (this.checked) ", $element_id, ".value='Y'; else ", $element_id, ".value=''; \">";
 			echo WT_I18N::translate('yes');
 		}
-/*
-		// If GEDFAct_assistant/_CENS/ module exists && we are on the INDI page && action is ADD a new CENS event
-		// Then show the add Shared note input field and the GEDFact assisted icon.
-		// If GEDFAct_assistant/_CENS/ module not installed  ... do not show
-		if ($pid && $fact=='CENS' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-			$type_pid=GedcomRecord::getInstance($pid);
-			if ($type_pid->getType()=="INDI" && $action=="add" ) {
-				add_simple_tag("2 SHARED_NOTE", "", "GEDFact Assistant");
-			}
-		}
-		// -----------------------------------------------------------------------------------------------------
-*/
 
 	} else if ($fact=="TEMP") {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Temp::templeNames(), WT_I18N::translate('No Temple - Living Ordinance'), $value);
@@ -1535,20 +1444,20 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo '</select>';
 	} else if (($fact=='NAME' && $upperlevel!='REPO') || $fact=='_MARNM') {
 		// Populated in javascript from sub-tags
-		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" onchange=\"updateTextName('", $element_id, "');\" value=\"", htmlspecialchars($value), "\">";
+		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" onchange=\"updateTextName('", $element_id, "');\" value=\"", htmlspecialchars($value), "\" class=\"", $fact, "\">";
 		echo '<span id="', $element_id, '_display" dir="auto">', htmlspecialchars($value), '</span>';
 		echo ' <a href="#edit_name" onclick="convertHidden(\'', $element_id, '\'); return false;" class="icon-edit_indi" title="'.WT_I18N::translate('Edit name').'"></a>';
 	} else {
 		// textarea
-		if ($rows>1) {
-			echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" rows=\"", $rows, "\" cols=\"", $cols, '" dir="auto">', htmlspecialchars($value), "</textarea><br>";
+		if ($fact=='TEXT' || $fact=='ADDR' || $fact=='NOTE') {
+			echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" dir=\"auto\">", htmlspecialchars($value), "</textarea><br>";
 		} else {
 			// text
 			// If using GEDFact-assistant window
 			if ($action=="addnewnote_assisted") {
 				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", htmlspecialchars($value), "\" style=\"width:4.1em;\" dir=\"ltr\"";
 			} else {
-				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", htmlspecialchars($value), "\" size=\"", $cols, "\" dir=\"ltr\"";
+				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", htmlspecialchars($value), "\" dir=\"ltr\"";
 			}
 			echo " class=\"{$fact}\"";
 			if (in_array($fact, $subnamefacts)) {
@@ -1577,8 +1486,10 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
 				places_assistant_WT_Module::setup_place_subfields($element_id);
 				places_assistant_WT_Module::print_place_subfields($element_id);
-			}
-		} elseif ($cols>20 && $readOnly=='') {
+			}	
+		} else $tmp_array[]='';
+			$tmp_array = array('TYPE','TIME','SHARED_NOTE','ASSO','AGE');
+			if (!in_array($fact, $tmp_array) && $readOnly=='') {
 			echo print_specialchar_link($element_id);
 		}
 	}
@@ -1683,7 +1594,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		}
 
 		// Shared Notes Icons ========================================
-		if ($fact=="NOTE" && $islink) {
+		if ($fact=="SHARED_NOTE" && $islink) {
 			// Print regular Shared Note icons ---------------------------
 			echo ' ', print_findnote_link($element_id), ' ', print_addnewnote_link($element_id);
 			if ($value) {
