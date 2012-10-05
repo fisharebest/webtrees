@@ -1477,7 +1477,8 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			}
 			echo ' ', $readOnly, ">";
 		}
-		// split PLAC
+		$tmp_array[]='';
+			$tmp_array = array('TYPE','TIME','SHARED_NOTE','ASSO','AGE');// split PLAC
 		if ($fact=="PLAC" && $readOnly=='') {
 			echo "<div id=\"", $element_id, "_pop\" style=\"display: inline;\">";
 			echo print_specialchar_link($element_id), ' ', print_findplace_link($element_id);
@@ -1487,9 +1488,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				places_assistant_WT_Module::setup_place_subfields($element_id);
 				places_assistant_WT_Module::print_place_subfields($element_id);
 			}	
-		} else $tmp_array[]='';
-			$tmp_array = array('TYPE','TIME','SHARED_NOTE','ASSO','AGE');
-			if (!in_array($fact, $tmp_array) && $readOnly=='') {
+		} elseif (!in_array($fact, $tmp_array) && $readOnly=='') {
 			echo print_specialchar_link($element_id);
 		}
 	}
