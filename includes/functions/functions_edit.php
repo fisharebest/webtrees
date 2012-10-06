@@ -566,7 +566,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	global $pid, $WORD_WRAPPED_NOTES;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept;
 	global $bdm, $STANDARD_NAME_FACTS, $REVERSED_NAME_FACTS, $ADVANCED_NAME_FACTS, $ADVANCED_PLAC_FACTS;
-	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $NO_UPDATE_CHAN;
+	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $NO_UPDATE_CHAN, $controller;
 
 	$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
 
@@ -919,11 +919,13 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save and go to new record'), "\" onclick=\"document.addchildform.goto.value='new';\">";
 	}
 	echo "</form>";
-	?>
-	<script>
+	$controller->addInlineJavascript('
+	SURNAME_TRADITION="'.$SURNAME_TRADITION.'";
+	sextag="'.$sextag.'";
+	famtag="'.$famtag.'";
 	function trim(str) {
 		str=str.replace(/\s\s+/g, " ");
-		return str.replace(/(^\s+)|(\s+$)/g, '');
+		return str.replace(/(^\s+)|(\s+$)/g, "");
 	}
 
 	function lang_class(str) {
@@ -942,20 +944,20 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		var spfx=frm.SPFX.value;
 		var surn=frm.SURN.value;
 		var nsfx=frm.NSFX.value;
-		<?php if ($SURNAME_TRADITION=='polish' && ($sextag=='F' || $famtag=='WIFE')) { ?>
-			surn=surn.replace(/ski$/, 'ska');
-			surn=surn.replace(/cki$/, 'cka');
-			surn=surn.replace(/dzki$/, 'dzka');
-			surn=surn.replace(/żki$/, 'żka');
-		<?php } ?>
+		if (SURNAME_TRADITION=="polish" && (sextag=="F" || famtag=="WIFE")) {
+			surn=surn.replace(/ski$/, "ska");
+			surn=surn.replace(/cki$/, "cka");
+			surn=surn.replace(/dzki$/, "dzka");
+			surn=surn.replace(/żki$/, "żka");
+		}
 		// Commas are used in the GIVN and SURN field to separate lists of surnames.
 		// For example, to differentiate the two Spanish surnames from an English
 		// double-barred name.
 		// Commas *may* be used in other fields, and will form part of the NAME.
-		if (WT_LOCALE=='vi' || WT_LOCALE=='hu') {
+		if (WT_LOCALE=="vi" || WT_LOCALE=="hu") {
 			// Default format: /SURN/ GIVN
 			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */, " ")+"/ "+givn.replace(/ *, */, " ")+" "+nsfx);
-		} else if (WT_LOCALE=='zh') {
+		} else if (WT_LOCALE=="zh") {
 			// Default format: /SURN/GIVN
 			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */, " ")+"/"+givn.replace(/ *, */, " ")+" "+nsfx);
 		} else {
@@ -967,7 +969,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	// Update the NAME and _MARNM fields from the name components
 	// and also display the value in read-only "gedcom" format.
 	function updatewholename() {
-		// don't update the name if the user manually changed it
+		// don’t update the name if the user manually changed it
 		if (manualChange) return;
 		// Update NAME field from components and display it
 		var frm =document.forms[0];
@@ -976,16 +978,16 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		var spfx=frm.SPFX.value;
 		var surn=frm.SURN.value;
 		var nsfx=frm.NSFX.value;
-		document.getElementById('NAME').value=generate_name();
-		document.getElementById('NAME_display').innerHTML=frm.NAME.value;
+		document.getElementById("NAME").value=generate_name();
+		document.getElementById("NAME_display").innerHTML=frm.NAME.value;
 		// Married names inherit some NSFX values, but not these
-		nsfx=nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, '');
+		nsfx=nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, "");
 		// Update _MARNM field from _MARNM_SURN field and display it
 		// Be careful of mixing latin/hebrew/etc. character sets.
-		var ip=document.getElementsByTagName('input');
-		var marnm_id='';
-		var romn='';
-		var heb='';
+		var ip=document.getElementsByTagName("input");
+		var marnm_id="";
+		var romn="";
+		var heb="";
 		for (var i=0; i<ip.length; i++) {
 			var val=ip[i].value;
 			if (ip[i].id.indexOf("_HEB")==0)
@@ -994,15 +996,15 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 				romn=val;
 			if (ip[i].id.indexOf("_MARNM")==0) {
 				if (ip[i].id.indexOf("_MARNM_SURN")==0) {
-					var msurn='';
-					if (val!='') {
+					var msurn="";
+					if (val!="") {
 						var lc=lang_class(document.getElementById(ip[i].id).value);
 						if (lang_class(frm.NAME.value)==lc)
 							msurn=trim(npfx+" "+givn+" /"+val+"/ "+nsfx);
 						else if (lc=="hebrew")
-							msurn=heb.replace(/\/.*\//, '/'+val+'/');
+							msurn=heb.replace(/\/.*\//, "/"+val+"/");
 						else if (lang_class(romn)==lc)
-							msurn=romn.replace(/\/.*\//, '/'+val+'/');
+							msurn=romn.replace(/\/.*\//, "/"+val+"/");
 					}
 					document.getElementById(marnm_id).value=msurn;
 					document.getElementById(marnm_id+"_display").innerHTML=msurn;
@@ -1022,9 +1024,9 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		var element = document.getElementById(eid);
 		if (element) {
 			if (element.type=="hidden") {
-				// IE doesn't allow changing the "type" of an input field so we'll cludge it ( silly :P)
+				// IE doesn’t allow changing the "type" of an input field so we’ll cludge it ( silly :P)
 				if (IE) {
-					var newInput = document.createElement('input');
+					var newInput = document.createElement("input");
 					newInput.setAttribute("type", "text");
 					newInput.setAttribute("name", element.Name);
 					newInput.setAttribute("id", element.id);
@@ -1042,7 +1044,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 				manualChange = true;
 				var delement = document.getElementById(eid+"_display");
 				if (delement) {
-					delement.style.display='none';
+					delement.style.display="none";
 					// force FF ui to update the display
 					if (delement.innerHTML != oldName) {
 						oldName = delement.innerHTML;
@@ -1052,9 +1054,9 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			}
 			else {
 				manualChange = false;
-				// IE doesn't allow changing the "type" of an input field so we'll cludge it ( silly :P)
+				// IE doesn’t allow changing the "type" of an input field so we’ll cludge it ( silly :P)
 				if (IE) {
-					var newInput = document.createElement('input');
+					var newInput = document.createElement("input");
 					newInput.setAttribute("type", "hidden");
 					newInput.setAttribute("name", element.Name);
 					newInput.setAttribute("id", element.id);
@@ -1069,7 +1071,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 				}
 				var delement = document.getElementById(eid+"_display");
 				if (delement) {
-					delement.style.display='inline';
+					delement.style.display="inline";
 				}
 			}
 		}
@@ -1079,7 +1081,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	* if the user manually changed the NAME field, then update the textual
 	* HTML representation of it
 	* If the value changed set manualChange to true so that changing
-	* the other fields doesn't change the NAME line
+	* the other fields doesn’t change the NAME line
 	*/
 	function updateTextName(eid) {
 		var element = document.getElementById(eid);
@@ -1093,27 +1095,29 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	}
 
 	function checkform() {
-		var ip=document.getElementsByTagName('input');
+		var ip=document.getElementsByTagName("input");
 		for (var i=0; i<ip.length; i++) {
 			// ADD slashes to _HEB and _AKA names
-			if (ip[i].id.indexOf('_AKA')==0 || ip[i].id.indexOf('_HEB')==0 || ip[i].id.indexOf('ROMN')==0)
-				if (ip[i].value.indexOf('/')<0 && ip[i].value!='')
+			if (ip[i].id.indexOf("_AKA")==0 || ip[i].id.indexOf("_HEB")==0 || ip[i].id.indexOf("ROMN")==0)
+				if (ip[i].value.indexOf("/")<0 && ip[i].value!="")
 					ip[i].value=ip[i].value.replace(/([^\s]+)\s*$/, "/$1/");
 			// Blank out temporary _MARNM_SURN
 			if (ip[i].id.indexOf("_MARNM_SURN")==0)
-					ip[i].value='';
+					ip[i].value="";
 			// Convert "xxx yyy" and "xxx y yyy" surnames to "xxx,yyy"
-			if ('<?php echo $SURNAME_TRADITION; ?>'=='spanish' || '<?php echo $SURNAME_TRADITION; ?>'=='portuguese')
-				if (ip[i].id.indexOf("SURN")==0) ip[i].value=document.forms[0].SURN.value.replace(/^\s*([^\s,]{2,})\s+([iIyY] +)?([^\s,]{2,})\s*$/, "$1,$3");
+			if ((SURNAME_TRADITION=="spanish" || "SURNAME_TRADITION"=="portuguese") && ip[i].id.indexOf("SURN")==0) {
+				ip[i].value=document.forms[0].SURN.value.replace(/^\s*([^\s,]{2,})\s+([iIyY] +)?([^\s,]{2,})\s*$/, "$1,$3");
+			}
 		}
 		return true;
 	}
 
-	// If the name isn't initially formed from the components in a standard way,
-	// then don't automatically update it.
-	if (document.getElementById("NAME").value!=generate_name() && document.getElementById("NAME").value!="//") convertHidden("NAME");
-	</script>
-	<?php
+	// If the name isn’t initially formed from the components in a standard way,
+	// then don’t automatically update it.
+	if (document.getElementById("NAME").value!=generate_name() && document.getElementById("NAME").value!="//") {
+		convertHidden("NAME");
+	}
+	');
 }
 
 // generates javascript code for calendar popup in user's language
