@@ -321,9 +321,6 @@ function wt_error_handler($errno, $errstr, $errfile, $errline) {
 		if (WT_ERROR_LEVEL==0) {
 			return;
 		}
-		if (stristr($errstr, "by reference")==true) {
-			return;
-		}
 		$fmt_msg="<br>ERROR {$errno}: {$errstr}<br>";
 		$log_msg="ERROR {$errno}: {$errstr};";
 		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
