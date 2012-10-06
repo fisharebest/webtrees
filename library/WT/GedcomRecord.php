@@ -69,7 +69,7 @@ class WT_GedcomRecord {
 	// an XREF (in the current gedcom), or we can provide a row
 	// from the database (if we anticipate the record hasn't
 	// been fetched previously).
-	static public function &getInstance($data) {
+	static public function getInstance($data) {
 		global $gedcom_record_cache, $GEDCOM;
 
 		$is_pending=false; // Did this record come from a pending edit
