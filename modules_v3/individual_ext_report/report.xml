@@ -203,11 +203,6 @@
 					<!-- facts without descriptions -->
 					<if condition="@desc==''">
 						<TextBox bgcolor="$fbbgcolor" border="1" newline="1" width="$width2">
-							<Text color="$tcolor" style="text">
-								<GedcomValue tag="@fact:PLAC"/>
-								<!-- Print only when exist to reduce some spaces in the text, might avoid a line break -->
-								<if condition="@fact:TEMP!=''">  <GedcomValue tag="@fact:TEMP"/></if>
-							</Text>
 							<Gedcom id="@_WTS">
 								<if condition="@SEX=='M'">
 									<Text color="$tcolor" style="fact">  <var var="WT_I18N::translate('Husband')"/></Text>

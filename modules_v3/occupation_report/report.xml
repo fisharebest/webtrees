@@ -84,9 +84,6 @@
 					<Cell style="text" newline="1">
 						<RepeatTag tag="OCCU">
 							<GedcomValue tag="OCCU:NOTE"/>
-							<if condition="OCCU:NOTE!=''">
-								<br /><GedcomValue tag="OCCU:NOTE"/>
-							</if>
 						</RepeatTag>
 					</Cell>
 					<SetVar name="moreoccupation" value="1" />
