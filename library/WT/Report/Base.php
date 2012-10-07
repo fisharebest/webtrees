@@ -2040,14 +2040,14 @@ function GedcomValueSHandler($attrs) {
 			if (isset($attrs['truncate'])) {
 				$truncate=$attrs['truncate'];
 			}
-			$tags = explode(":", $tag);
+			$tags = preg_split('/[: ]/', $tag);
 			$value = get_gedcom_value($tag, $level, $gedrec, $truncate);
-			switch (substr($tag, -5)) {
-			case ':DATE':
+			switch (end($tags)) {
+			case 'DATE':
 				$tmp=new WT_Date($value);
 				$value=$tmp->Display();
 				break;
-			case ':PLAC':
+			case 'PLAC':
 				$tmp=new WT_Place($value, WT_GED_ID);
 				$value=$tmp->getFullName();
 				break;
