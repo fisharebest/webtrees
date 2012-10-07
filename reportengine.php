@@ -265,9 +265,7 @@ elseif ($action=='setup') {
 		</div>
 		<div>
 		<label for="HTML"><i class="icon-mime-text-html"></i></label>
-		<p><input type="radio" name="output" id="HTML" value="HTML"';
-		if ($output=='HTML') echo ' checked="checked"', '>';
-	echo '</p>
+		<p><input type="radio" name="output" id="HTML" value="HTML"></p>
 		</div>
 		</div>
 		</td>
