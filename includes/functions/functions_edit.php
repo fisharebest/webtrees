@@ -1246,7 +1246,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	if ($fact=='REPO' || $fact=='SOUR' || $fact=='OBJE' || $fact=='FAMC')
 		$islink = true;
 
-	if ($fact=='SHARED_NOTE_EDIT' || $fact=='SHARED_NOTE') {$islink=1;$fact="SHARED_NOTE";}
+	if ($fact=='SHARED_NOTE_EDIT' || $fact=='SHARED_NOTE') {$islink=1;$fact="NOTE";}
 
 	// label
 	echo "<tr id=\"", $element_id, "_tr\" ";
@@ -1293,7 +1293,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				echo help_link($fact);
 			}
 			break;
-		case 'SHARED_NOTE':
+		case 'NOTE':
 			if ($islink) {
 				echo help_link('edit_add_SHARED_NOTE');
 			} else {
@@ -1371,7 +1371,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 
 	// retrieve linked NOTE
-	if ($fact=="SHARED_NOTE" && $islink) {		
+	if ($fact=="NOTE" && $islink) {		
 		$note1=WT_Note::getInstance($value);
 		if ($note1) {
 			$noterec=$note1->getGedcomRecord();
@@ -1453,7 +1453,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo ' <a href="#edit_name" onclick="convertHidden(\'', $element_id, '\'); return false;" class="icon-edit_indi" title="'.WT_I18N::translate('Edit name').'"></a>';
 	} else {
 		// textarea
-		if ($fact=='TEXT' || $fact=='ADDR' || $fact=='NOTE') {
+		if ($fact=='TEXT' || $fact=='ADDR' || ($fact=='NOTE' && !$islink)) {
 			echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" dir=\"auto\">", htmlspecialchars($value), "</textarea><br>";
 		} else {
 			// text
@@ -1481,8 +1481,11 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			}
 			echo ' ', $readOnly, ">";
 		}
+		
 		$tmp_array[]='';
-			$tmp_array = array('TYPE','TIME','SHARED_NOTE','ASSO','AGE');// split PLAC
+			$tmp_array = array('TYPE','TIME','NOTE','ASSO','AGE');
+		
+		// split PLAC
 		if ($fact=="PLAC" && $readOnly=='') {
 			echo "<div id=\"", $element_id, "_pop\" style=\"display: inline;\">";
 			echo print_specialchar_link($element_id), ' ', print_findplace_link($element_id);
@@ -1597,7 +1600,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		}
 
 		// Shared Notes Icons ========================================
-		if ($fact=="SHARED_NOTE" && $islink) {
+		if ($fact=="NOTE" && $islink) {
 			// Print regular Shared Note icons ---------------------------
 			echo ' ', print_findnote_link($element_id), ' ', print_addnewnote_link($element_id);
 			if ($value) {
