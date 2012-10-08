@@ -3050,6 +3050,16 @@ html[dir="rtl"] input:required:valid, html[dir="rtl"] textarea:required:valid, h
 #edit_interface-page textarea#newgedrec1 {height:20px;}
 #edit_interface-page textarea#newgedrec2 {height:364px;}
 #edit_interface-page textarea[id*="ADDR"], #edit_interface-page input[id*="ADDR"]{height:80px;width:300px;}
+#edit_interface-page #changefam {padding:5px;}
+#edit_interface-page #changefam table{margin:10px auto;min-width:400px;max-width:650px;}
+#edit_interface-page #changefam span{margin:0;}
+#edit_interface-page #changefam td{padding:5px; white-space:normal;}
+#edit_interface-page #changefam td.child{text-align:center;}
+#edit_interface-page #changefam #save-cancel {margin:0 auto 50px auto;width:400px;}
+#edit_interface-page #changefam #save-cancel .save {float:left;}
+#edit_interface-page #changefam #save-cancel .cancel {float:right;}
+html[dir='rtl'] #edit_interface-page #changefam #save-cancel .save {float:right;}
+html[dir='rtl'] #edit_interface-page #changefam #save-cancel .cancel {float:left;}
 
 /* Addmedia pop-ups*/
 #addmedia-page input[type="text"]{line-height:18px;margin:0 5px;width:180px;}
