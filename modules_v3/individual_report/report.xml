@@ -201,9 +201,8 @@
 							<Text color="$tcolor" style="text">
 								<GedcomValue tag="@fact:PLAC"/>
 								<!-- Print only when exist to reduce some spaces in the text, might avoid a line break -->
-									<if condition="@TEMP!=''">  
-										<var var="WT_I18N::translate(', Temple ')"/>
-										<GedcomValue tag="@fact:TEMP"/>
+									<if condition="@TEMP!=''">
+										; <var var="WT_I18N::translate('Temple')"/>: <GedcomValue tag="@fact:TEMP"/>
 									</if>
 							</Text>
 							<Gedcom id="@_WTS">
