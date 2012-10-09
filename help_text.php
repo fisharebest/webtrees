@@ -1014,29 +1014,52 @@ case 'SURNAME_TRADITION':
 	$text=
 		WT_I18N::translate('When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition.').
 		'<br /><br /><dl><dt>'.
+		/* I18N: https://en.wikipedia.org/wiki/Patrilineal (a system where children take their father’s surname */
+		WT_I18N::translate('patrilineal').
+		'</dt><dd>'.
+		/* I18N: In the patrilineal surname tradition, ... */
+		WT_I18N::translate('Children take their father’s surname.').
+		'</dd></dl><dl><dt>'.
+		/* I18N: https://en.wikipedia.org/wiki/Matrilineal (a system where children take their mother’s surname */
+		WT_I18N::translate('matrilineal').
+		'</dt><dd>'.
+		/* I18N: In the matrilineal surname tradition, ... */
+		WT_I18N::translate('Children take their mother’s surname.').
+		'</dd></dl><dl><dt>'.
 		WT_I18N::translate_c('Surname tradition', 'paternal').
 		'</dt><dd>'.
-		/* I18N: In the paternal surname tradition, ... */ WT_I18N::translate('All family members take the father\'s surname.').
+		WT_I18N::translate('Children take their father’s surname.') . '<br>' .
+		/* I18N: In the paternal surname tradition, ... */
+		WT_I18N::translate('Wives take their husband’s surname.').
 		'</dd></dl><dl><dt>'.
 		WT_I18N::translate_c('Surname tradition', 'Spanish').
 		'</dt><dd>'.
-		/* I18N: In the Spanish surname tradition, ... */ WT_I18N::translate('Children take one surname from the father and one surname from the mother.').
+		/* I18N: In the Spanish surname tradition, ... */
+		WT_I18N::translate('Children take one surname from the father and one surname from the mother.').
 		'</dd></dl><dl><dt>'.
 		WT_I18N::translate_c('Surname tradition', 'Portuguese').
 		'</dt><dd>'.
-		/* I18N: In the Portuguese surname tradition, ... */ WT_I18N::translate('Children take one surname from the mother and one surname from the father.').
+		/* I18N: In the Portuguese surname tradition, ... */
+		WT_I18N::translate('Children take one surname from the mother and one surname from the father.').
 		'</dd></dl><dl><dt>'.
 		WT_I18N::translate_c('Surname tradition', 'Icelandic').
 		'</dt><dd>'.
-		/* I18N: In the Icelandic surname tradition, ... */ WT_I18N::translate('Children take a surname based on their father\'s given name.').
+		/* I18N: In the Icelandic surname tradition, ... */
+		WT_I18N::translate('Children take a patronym instead of a surname.').
 		'</dd></dl><dl><dt>'.
 		WT_I18N::translate_c('Surname tradition', 'Polish').
 		'</dt><dd>'.
-		/* I18N: In the Polish surname tradition, ... */ WT_I18N::translate('All family members take the father\'s surname, but the suffix may change to indicate the person\'s gender.').
+		WT_I18N::translate('Children take their father’s surname.') . '<br>' .
+		WT_I18N::translate('Wives take their husband’s surname.') . '<br>' .
+		/* I18N: In the Polish surname tradition, ... */
+		WT_I18N::translate('Surnames are inflected to indicate an individual’s gender.').
 		'</dd></dl><dl><dt>'.
 		WT_I18N::translate_c('Surname tradition', 'Lithuanian').
 		'</dt><dd>'.
-		/* I18N: In the Lithuanian surname tradition, ... */ WT_I18N::translate('All family members take the father\'s surname, but the suffix may change to indicate the person\'s gender and marital status.').
+		WT_I18N::translate('Children take their father’s surname.') . '<br>' .
+		WT_I18N::translate('Wives take their husband’s surname.') . '<br>' .
+		/* I18N: In the Lithuanian surname tradition, ... */
+		WT_I18N::translate('Surnames are inflected to indicate an individual’s gender and marital status.').
 		'</dd></dl>';
 	break;
 
