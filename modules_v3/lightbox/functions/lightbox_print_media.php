@@ -516,15 +516,8 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 
 		// Check if allowed to View media
 		if ($isExternal || media_exists($thumbnail) && canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['m_gedrec'])) {
-			$mainFileExists = false;
-
 			// Get Media info
 			if ($isExternal || media_exists($rowm['m_file']) || media_exists($mainMedia)) {
-				$mainFileExists = true;
-				$imgsize = findImageSize($rowm['m_file']);
-				$imgwidth = $imgsize[0]+40;
-				$imgheight = $imgsize[1]+150;
-
 				// Start Thumbnail Enclosure table ---------------------------------------------
 				// Pull table up 90px if media object is a "streetview"
 				if (strpos($rowm['m_file'], 'http://maps.google.')===0) {
@@ -536,18 +529,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 				echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="100px" alt=""></img>';
 				echo '</td>';
 				echo '<td colspan="3" valign="middle" align="center">';
-				echo '<a href="', $mediaInfo['url'], '">';
-			}
-
-			// Now finally print the thumbnail -----------------------------------------------------
-			echo '<img src="', $mediaInfo['thumb'], '"';
-
-			// print browser tooltips associated with image ----------------------------------------
-			echo ' alt="" title="' . strip_tags($mediaTitle) . '">';
-
-			// Close anchor --------------------------------------------------------------
-			if ($mainFileExists) {
-				echo '</a>';
+				echo $media->displayMedia();
 			}
 			echo '</td></tr>';
 
