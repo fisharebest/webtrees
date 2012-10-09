@@ -528,40 +528,37 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 				// Start Thumbnail Enclosure table ---------------------------------------------
 				// Pull table up 90px if media object is a "streetview"
 				if (strpos($rowm['m_file'], 'http://maps.google.')===0) {
-					echo "<table width=\"10px\" style=\"margin-top:-90px;\" class=\"pic\" border=\"0\"><tr>";
+					echo '<table width="10px" style="margin-top:-90px;" class="pic" border="0"><tr>';
 				} else {
-					echo "<table width=\"10px\" class=\"pic\" border=\"0\"><tr>";
+					echo '<table width="10px" class="pic" border="0"><tr>';
 				}
-				echo "<td align=\"center\" rowspan=\"2\" >";
+				echo '<td align="center" rowspan="2">';
 				echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="100px" alt=""></img>';
-				echo "</td>";
-				echo "<td colspan=\"3\" valign=\"middle\" align=\"center\" >";
+				echo '</td>';
+				echo '<td colspan="3" valign="middle" align="center">';
 				echo '<a href="', $mediaInfo['url'], '">';
 			}
 
 			// Now finally print the thumbnail -----------------------------------------------------
-			$height = 78;
-			$size = findImageSize($mediaInfo['thumb']);
-			if ($size[1]<$height) $height = $size[1];
-			echo "<img src=\"{$mediaInfo['thumb']}\" height=\"{$height}\"" ;
+			echo '<img src="', $mediaInfo['thumb'], '"';
 
 			// print browser tooltips associated with image ----------------------------------------
-			echo " alt=\"\" title=\"" . strip_tags($mediaTitle) . "\">";
+			echo ' alt="" title="' . strip_tags($mediaTitle) . '">';
 
 			// Close anchor --------------------------------------------------------------
 			if ($mainFileExists) {
-				echo "</a>";
+				echo '</a>';
 			}
-			echo "</td></tr>";
+			echo '</td></tr>';
 
 			//View Edit Menu ----------------------------------
-			echo "<tr>";
-			echo "<td width=\"5px\"></td>";
-			echo "<td valign=\"bottom\" align=\"center\" class=\"nowrap\">";
+			echo '<tr>';
+			echo '<td width="5px"></td>';
+			echo '<td valign="bottom" align="center" class="nowrap">';
 			echo $menu->getMenu();
-			echo "</td>";
-			echo "<td width=\"5px\"></td>";
-			echo "</tr>";
+			echo '</td>';
+			echo '<td width="5px"></td>';
+			echo '</tr>';
 		}
 	} // NOTE End If Show fact details
 

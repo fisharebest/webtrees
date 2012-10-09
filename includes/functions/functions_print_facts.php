@@ -1374,15 +1374,11 @@ function print_main_media_row($rtype, $rowm, $pid) {
 }
 
 // -----------------------------------------------------------------------------
-//  Extra print_facts_functions for lightbox and reorder media
+//  Extra print_facts_functions for reorder media
 // -----------------------------------------------------------------------------
-
-if (WT_USE_LIGHTBOX) {
-	require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lightbox_print_media.php';
-}
 
 require_once WT_ROOT.'includes/functions/functions_media_reorder.php';
 
 // -----------------------------------------------------------------------------
-//  End extra print_facts_functions for lightbox and reorder media
+//  End extra print_facts_functions for reorder media
 // -----------------------------------------------------------------------------
