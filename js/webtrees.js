@@ -319,7 +319,7 @@ function getMouseXY(e) {
  */
 function edit_interface(params, windowspecs, pastefield) {
   var features = windowspecs || edit_window_specs;
-  var url = 'edit_interface.php?' + jQuery.param(params) + '&accesstime=' + accesstime;
+  var url = 'edit_interface.php?' + jQuery.param(params) + '&accesstime=' + accesstime + '&ged=' + WT_GEDCOM;
   window.open(url, '_blank', features);
 }
 
@@ -363,7 +363,7 @@ function add_record(pid, fact) {
 	if (factfield) {
 		var factvalue = factfield.options[factfield.selectedIndex].value;
 		if (factvalue == "OBJE") {
-			window.open('addmedia.php?action=showmediaform&linkid='+pid, '_blank', edit_window_specs);
+			window.open('addmedia.php?action=showmediaform&linkid='+pid+'&ged='+WT_GEDCOM, '_blank', edit_window_specs);
 		} else {
 			edit_interface({
 				"action": "add",
@@ -536,12 +536,12 @@ function reorder_families(pid) {
 }
 
 function reply(username, subject) {
-	window.open('message.php?to='+username+'&subject='+subject, '_blank', mesg_window_specs);
+	window.open('message.php?to='+username+'&subject='+subject+'&ged='+WT_GEDCOM, '_blank', mesg_window_specs);
 	return false;
 }
 
 function delete_message(id) {
-	window.open('message.php?action=delete&id='+id, '_blank', mesg_window_specs);
+	window.open('message.php?action=delete&id='+id, '_blank'+'&ged='+WT_GEDCOM, mesg_window_specs);
 	return false;
 }
 
@@ -1247,53 +1247,68 @@ var monthLabels = new Array();
   	cal_toggleDate(dateDivId, dateFieldId);
   	return false;
   }
+
 function findIndi(field, indiname, ged) {
-        pastefield = field;
-        nameElement = indiname;
-        window.open('find.php?type=indi&ged='+ged, '_blank', find_window_specs);
-        return false;
+	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
+	pastefield = field;
+	nameElement = indiname;
+	window.open('find.php?type=indi&ged='+ged, '_blank', find_window_specs);
+	return false;
 }
 
 function findPlace(field, ged) {
+	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
 	window.open('find.php?type=place&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
 
 function findFamily(field, ged) {
+	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
 	window.open('find.php?type=fam&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
+
 function findMedia(field, choose, ged) {
+	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
 	if (!choose) choose="0all";
 	window.open('find.php?type=media&choose='+choose+'&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
+
 function findSource(field, sourcename, ged) {
+	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
 	nameElement = sourcename;
 	window.open('find.php?type=source&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
+
 function findnote(field, notename, ged) {
+	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
 	nameElement = notename;
 	window.open('find.php?type=note&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
+
 function findRepository(field, ged) {
+	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
 	window.open('find.php?type=repo&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
+
 function findSpecialChar(field) {
 	pastefield = field;
 	window.open('find.php?type=specialchar', '_blank', find_window_specs);
 	return false;
 }
+
 function findFact(field, ged) {
+	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
 	tags = field.value;
 	window.open('find.php?type=facts&tags='+tags+'&ged='+ged, '_blank', find_window_specs);
@@ -1301,7 +1316,7 @@ function findFact(field, ged) {
 }
 
 function ilinkitem(mediaid, type) {
-	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type, '_blank', find_window_specs);
+	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type+'&ged='+WT_GEDCOM, '_blank', find_window_specs);
 	return false;
 }
 
