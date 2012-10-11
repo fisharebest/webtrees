@@ -1394,8 +1394,8 @@ class WT_Person extends WT_GedcomRecord {
 								break;
 							}
 						}
-						$this->indifacts[] = new WT_Event($factrec, $associate, 0);
 					}
+					$this->indifacts[] = new WT_Event($factrec, $associate, 0);
 				}
 			}
 		}
