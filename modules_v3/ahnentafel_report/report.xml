@@ -244,10 +244,12 @@
 						<SetVar name="cpid" value="@ID" />
 						<if condition="$cpid!=$spid">
 							<Gedcom id="@FAMS">
-								<if condition="$cpid==@HUSB">
+								<SetVar name="hpid" value="@HUSB"/>
+								<SetVar name="wpid" value="@WIFE"/>
+								<if condition="$cpid==$hpid">
 									<SetVar name="spid" value="@WIFE" />
 								</if>
-								<if condition="$cpid==@WIFE">
+								<if condition="$cpid==$wpid">
 									<SetVar name="spid" value="@HUSB" />
 								</if>
 								<Gedcom id="MARR">
