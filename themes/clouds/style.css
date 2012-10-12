@@ -2236,7 +2236,7 @@ text-align:center;
 }
 
 .ui-accordion .ui-accordion-header a {
-padding:2px;
+padding:2px 25px;
 }
 
 .ui-helper-reset {
