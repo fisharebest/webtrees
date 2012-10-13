@@ -482,8 +482,12 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 #link_change_blocks span span {padding:0 3px;}
 
 /* ======== Random picture block ====== */
+.random_media_block{height:250px;}
 #random_picture {text-align:center;}
 #random_picture_box {width:100%;}
+div [id^="random_picture_controls545"] {height:24px;margin:-17px auto 20px;}
+#random_picture_box  .details1 a.media_container{box-shadow:0 0 15px 5px #696969 ;border:1px solid #555 ;width:150px;height:150px;display:block;margin:auto;overflow:hidden;background-color:antiquewhite;}
+#random_picture_box  .details1 a.media_container .thumbnail {padding:0;width:100%;}
 
 /* ======= Favourites block ========== */
 .gedcom_favorites_block .person_box .details2, .gedcom_favorites_block .person_boxF.details2, .gedcom_favorites_block .person_boxNN.details2 {min-height:40px;}
