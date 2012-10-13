@@ -86,8 +86,6 @@ $glevels    =safe_REQUEST($_REQUEST, 'glevels',     WT_REGEX_UNSAFE);
 
 $update_CHAN=!safe_POST_bool('preserve_last_changed');
 
-$success=false; // If successful, we close this window automatically
-
 $disp = true;
 if (empty($pid) && !empty($mid)) $pid = $mid;
 if (!empty($pid)) {
@@ -113,9 +111,6 @@ if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
 	}
 	if (!$disp) {
 		echo '<br>', WT_I18N::translate('Privacy settings prevent you from editing this record.');
-		if (!empty($pid)) {
-			echo '<br>', WT_I18N::translate('You have no access to'), ' pid ', $pid;
-		}
 	}
 	echo '<p class="center"><a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
 	exit;
@@ -127,11 +122,8 @@ if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
 // thumbFolderName - this is the link to the thumb folder in the standard media directory
 // serverThumbFolderName - this is where the thumbnail file is physically located
 
-if (empty($action)) $action='showmediaform';
-
-// **** begin action 'newentry'
-// NOTE: Store the entered data
-if ($action=='newentry') {
+switch ($action) {
+case 'newentry':
 	if (empty($level)) $level = 1;
 
 	$error = '';
@@ -405,28 +397,21 @@ if ($action=='newentry') {
 
 		$media_obje = new WT_Media($newged);
 		$mediaid = WT_Media::in_obje_list($media_obje, WT_GED_ID);
-		if (!$mediaid) $mediaid = append_gedrec($newged, WT_GED_ID);
+		if (!$mediaid) {
+			$mediaid = append_gedrec($newged, WT_GED_ID);
+		}
 		if ($mediaid) {
 			AddToLog('Media ID '.$mediaid.' successfully added.', 'edit');
-			if ($linktoid!='') $link = linkMedia($mediaid, $linktoid, $level);
-			else $link = false;
-			if ($link) {
+			if ($linktoid) {
+				linkMedia($mediaid, $linktoid, $level);
 				AddToLog('Media ID '.$media_id." successfully added to $linktoid.", 'edit');
-				$success=true;
-			} else {
-				if (!WT_DEBUG) {
-					echo '<script>if (window.opener.paste_id("'.$mediaid.'"); window.close();</script>';
-				} 
-				echo '<a href="#" onclick="window.opener.paste_id(\'', $mediaid, '\'); window.close();">', WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), ' <b>', $mediaid, '</b></a><br><br>';
 			}
+			$controller->addInlineJavascript('openerpasteid("' . $mediaid . '");');
 		}
-		echo WT_I18N::translate('Update successful');
 	}
-}
-// **** end action 'newentry'
-
-// **** begin action 'update'
-if ($action == 'update') {
+	break;
+	
+case 'update':
 	if (empty($level)) $level = 1;
 	//-- check if the file is used in more than one gedcom
 	//-- do not allow it to be moved or renamed if it is
@@ -576,46 +561,26 @@ if ($action == 'update') {
 				AddToLog('Media ID '.$pid." successfully added to $linktoid.", 'edit');
 			}
 		}
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
-
-	if ($finalResult) {
-		echo WT_I18N::translate('Update successful');
-		$success=true;
-	}
-}
-// **** end action 'update'
-
-// **** begin action 'delete'
-if ($action=='delete') {
+	break;
+	
+case 'delete':
 	if (delete_gedrec($pid, WT_GED_ID)) {
 		AddToLog('Media ID '.$pid.' successfully deleted.', 'edit');
-		echo WT_I18N::translate('Update successful');
-		$success=true;
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
-}
-// **** end action 'delete'
+	break;
 
-// **** begin action 'showmediaform'
-if ($action=='showmediaform') {
-	if (!isset($pid)) $pid = '';
+case 'showmediaform':
 	if (empty($level)) $level = 1;
-	if (!isset($linktoid)) $linktoid = '';
 	show_media_form($pid, 'newentry', $filename, $linktoid, $level);
-}
-// **** end action 'showmediaform'
-
-
-// **** begin action 'editmedia'
-if ($action=='editmedia') {
-	if (!isset($pid)) $pid = '';
+	break;
+	
+case 'editmedia':
 	if (empty($level)) $level = 1;
 	show_media_form($pid, 'update', $filename, $linktoid, $level);
+	break;
 }
-// **** end action 'editmedia'
 
-// autoclose window when update successful unless debug on
-if ($success && !WT_DEBUG) {
-	$controller->addInlineJavascript('closePopupAndReloadParent();');
-} else {
-	echo '<p class="center"><a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
-}
+echo '<p class="center"><a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';

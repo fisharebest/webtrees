@@ -688,10 +688,8 @@ case 'addsourceaction':
 		if (!empty($CALN)) $newgedrec .= "\n2 CALN $CALN";
 	}
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
-	$link = "source.php?sid=$xref";
 	if ($xref) {
-		echo '<br><br>', WT_I18N::translate('New source created successfully.'), '<br><br>';
-		echo "<a href=\"#\" onclick=\"openerpasteid('$xref'); return false;\">", WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), " <b>$xref</b></a>";
+		$controller->addInlineJavascript('openerpasteid("' . $xref . '");');
 	}
 	break;
 //------------------------------------------------------------------------------
@@ -749,13 +747,8 @@ case 'addnoteaction':
 	}
 
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
-	$link = "note.php?nid=$xref";
-
-	if ($xref != "none") {
-		echo "<br><br>".WT_I18N::translate('New Shared Note created successfully.')." (".$xref.")<br><br>";
-		echo "<a href=\"#\" onclick=\"openerpasteid('$xref'); return false;\">".WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record ')." <b>$xref</b></a>";
-		echo "<br><br><br><br>";
-		echo "<br><br><br><br>";
+	if ($xref) {
+		$controller->addInlineJavascript('openerpasteid("' . $xref . '");');
 	}
 	break;
 //------------------------------------------------------------------------------
@@ -1024,10 +1017,8 @@ case 'addrepoaction':
 	if (!empty($WWW)) $newgedrec .= "\n1 WWW $WWW";
 
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
-	$link = "repo.php?rid=$xref";
 	if ($xref) {
-		echo '<br><br>', WT_I18N::translate('New Repository created'), '<br><br>';
-		echo "<a href=\"#\" onclick=\"openerpasteid('$xref'); return false;\">", WT_I18N::translate('Paste the following Repository ID into your editing fields to reference this Repository '), " <b>$xref</b></a>";
+		$controller->addInlineJavascript('openerpasteid("' . $xref . '");');
 	}
 	break;
 //------------------------------------------------------------------------------

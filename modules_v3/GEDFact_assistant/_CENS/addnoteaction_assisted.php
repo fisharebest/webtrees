@@ -71,8 +71,6 @@ if (!empty($NOTE)) {
 
 if (!empty($ABBR)) $newgedrec .= "1 ABBR $ABBR\n";
 if (!empty($TITL)) {
-	// $newgedrec .= "1 TITL $TITL\n";
-	// $newgedrec .= "2 DATE $DATE\n";
 	if (!empty($_HEB)) $newgedrec .= "2 _HEB $_HEB\n";
 	if (!empty($ROMN)) $newgedrec .= "2 ROMN $ROMN\n";
 }
@@ -88,50 +86,26 @@ if (!empty($PUBL)) {
 	}
 }
 if (!empty($NOTE)) {
-	//$newgedrec .= "1 NOTE @$NOTE@\n";
 	if (!empty($CALN)) $newgedrec .= "2 CALN $CALN\n";
 }
-if (WT_DEBUG) {
-	echo "<pre>$newgedrec</pre>";
-}
-// $xref = "Test";
+
 if ($pid_array != '') {
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
 } else {
-	$xref='none';
-	echo '<br><br><br>';
-	echo '<div class="indent"> No individuals entered, close and try again </div>';
-	echo '<br><br><br>';
+	$xref='';
+	echo '<div class="indent">No individuals entered, close and try again </div>';
 }
 
-if ($xref != "none") {
-	echo "<br><br>".WT_I18N::translate('New Shared Note created successfully.')." (".$xref.")<br><br>";
-	echo '<br><br>';
-	echo " &nbsp;&nbsp;&nbsp; The Census event (when saved) will be linked to Indi id's: &nbsp;&nbsp;&nbsp;&nbsp; ". $pid_array;
-	echo '<br><br>';
-	echo '<br><br>';
-	echo "&nbsp;&nbsp;&nbsp; <a href=\"#\" onclick=\"openerpasteid('$xref'); return false;\">".WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record ')." <b>$xref</b></a>\n";
-	echo '<br><br><br><br>';
-
-	?>
-	<script>
-	if (parent.opener.document.getElementById('pids_array_edit') == null || parent.opener.document.getElementById('pids_array_edit') == 'undefined') {
-		//alert ("EDIT NOT HERE");
+if ($xref) {
+	$controller->addInlineJavascript('
+	if (parent.opener.document.getElementById("pids_array_edit") == null || parent.opener.document.getElementById("pids_array_edit") == "undefined") {
 	} else {
-		//alert("WE ARE EDITING an EVENT");
-		//alert(parent.opener.document.editform.pids_array_edit.value);
-		parent.opener.document.editform.pids_array_edit.value="<?php echo $pid_array; ?>";
-		//alert(parent.opener.document.editform.pids_array_edit.value);
+		parent.opener.document.editform.pids_array_edit.value="' . $pid_array .'";
 	}
-	if (parent.opener.document.getElementById('pids_array_add') == null || parent.opener.document.getElementById('pids_array_add') == 'undefined') {
-		//alert ("ADD NOT HERE");
+	if (parent.opener.document.getElementById("pids_array_add") == null || parent.opener.document.getElementById("pids_array_add") == "undefined") {
 	} else {
-		//alert("WE ARE ADDING an EVENT");
-		//alert(parent.opener.document.addform.pids_array_add.value);
-		parent.opener.document.addform.pids_array_add.value="<?php echo $pid_array; ?>";
-		//alert(parent.opener.document.addform.pids_array_add.value);
+		parent.opener.document.addform.pids_array_add.value="' . $pid_array . '";
 	}
-	</script>
-	<?php
-	echo '<br><br><br><br>';
+	openerpasteid("' . $xref . '")
+	');
 }
