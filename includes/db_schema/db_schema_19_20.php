@@ -1,5 +1,5 @@
 <?php
-// Update the database schema from version 18 to 19
+// Update the database schema from version 19 to 20
 // - fix some broken data caused by a bug
 //
 // The script should assume that it can be interrupted at
