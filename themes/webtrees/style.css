@@ -482,12 +482,8 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 #link_change_blocks span span {padding:0 3px;}
 
 /* ======== Random picture block ====== */
-.random_media_block{height:250px;}
 #random_picture {text-align:center;}
 #random_picture_box {width:100%;}
-div [id^="random_picture_controls"] {height:24px;margin:-17px auto 20px;}
-#random_picture_box  .details1 a.media_container{box-shadow:0 0 15px 5px #696969;border:1px solid #555;width:150px;height:150px;display:block;margin:auto;overflow:hidden;background-color:antiquewhite;}
-#random_picture_box  .details1 a.media_container .thumbnail {padding:0;width:100%;}
 
 /* ======= Favourites block ========== */
 .gedcom_favorites_block .person_box .details2, .gedcom_favorites_block .person_boxF.details2, .gedcom_favorites_block .person_boxNN.details2 {min-height:40px;}
@@ -906,7 +902,7 @@ html[dir='rtl'] #edituser-table .value {margin:0 260px 0 0;}
 /* Icons */
 [class^="icon-"],[class*=" icon-"]{display:inline-block;vertical-align:text-bottom;background-repeat:no-repeat;}
 .icon-add{width:14px;height:15px;background-image:url(images/add.png);}
-.icon-admin{width:15px;height:15px;background-image:url(images/admin.png);}
+.icon-admin{width:15px;height:15px;background-image:url(images/admin.png);margin:0 5px;}
 .icon-bing{width:16px;height:16px;background-image:url(images/bing.png);}
 .icon-button_addmedia{width:18px;height:16px;background-image:url(images/buttons/addmedia.png);vertical-align: middle;}
 .icon-button_addnote{width:17px;height:15px;background-image:url(images/buttons/addnote.png);}
