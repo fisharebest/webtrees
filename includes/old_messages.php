@@ -45,6 +45,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Maximum number of surnames on family list');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Media filter');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('New Shared Note created successfully.');
+/* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('New Repository created');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('New source created successfully.');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('OK');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record ');
