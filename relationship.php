@@ -68,7 +68,7 @@ $controller
 	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
-if ($person1 && $person1->canDisplayDetails() && $person2 && $person2->canDisplayDetails()) {	
+if ($person1 && $person1->canDisplayName() && $person2 && $person2->canDisplayName()) {	
 	$controller
 		->setPageTitle(WT_I18N::translate(/* I18N: %s are people's names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
 		->PageHeader();
