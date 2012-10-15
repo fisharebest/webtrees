@@ -69,6 +69,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo
 	// Top row left
 	'<div id="header">',
+	'<div id="spacer""></div>',
 	'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>';
 
 	// Top row right 
@@ -108,7 +109,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 			'<form style="display:inline;" action="search.php" method="post">',
 			'<input type="hidden" name="action" value="general">',
 			'<input type="hidden" name="topsearch" value="yes">',
-			'<input type="search" name="query" size="10" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
+			'<input type="search" name="query" size="15" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
 			'<input class="search-icon" type="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
 			'</form>',
 		'</li>',
