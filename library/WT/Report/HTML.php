@@ -289,6 +289,10 @@ class WT_Report_HTML extends WT_Report_Base {
 		return new ImageHTML($file, $x, $y, $w, $h, $align, $ln);
 	}
 
+	function createImageFromObject($mediaobject, $x, $y, $w, $h, $align, $ln) {
+		return new ImageHTML($mediaobject->getHtmlUrlDirect('thumb'), $x, $y, $w, $h, $align, $ln);
+	}
+
 	function createLine($x1, $y1, $x2, $y2) {
 		return new LineHTML($x1, $y1, $x2, $y2);
 	}

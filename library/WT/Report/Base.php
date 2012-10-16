@@ -2795,23 +2795,21 @@ function HighlightedImageSHandler($attrs) {
 	if (!empty($attrs['height'])) $height = (int)$attrs['height'];
 
 	$media = find_highlighted_object($id, WT_GED_ID, $gedrec);
-	if (!empty($media)) {
-		if (preg_match("/(jpg|jpeg|png|gif)$/i", $media['file'])) {
-			$mediaobject=WT_Media::getInstance($media['mid']);
-			$size = findImageSize($mediaobject->getFilename());
-			if (($width>0) and ($height==0)) {
-				$perc = $width / $size[0];
-				$height= round($size[1]*$perc);
-			} elseif (($height>0) and ($width==0)) {
-				$perc = $height / $size[1];
-				$width= round($size[0]*$perc);
-			} else {
-				$width = $size[0];
-				$height = $size[1];
-			}
-			$image = $ReportRoot->createImage($mediaobject->getFilename(), $left, $top, $width, $height, $align, $ln);
-			$wt_report->addElement($image);
+	$mediaobject=WT_Media::getInstance($media['mid']);
+	$attributes=$mediaobject->getImageAttributes('thumb');
+	if (in_array($attributes['ext'], array('GIF','JPG','PNG','SWF','PSD','BMP','TIFF','TIFF','JPC','JP2','JPX','JB2','SWC','IFF','WBMP','XBM')) && $mediaobject->canDisplayDetails() && $mediaobject->fileExists('thumb')) {
+		if (($width>0) and ($height==0)) {
+			$perc = $width / $attributes['adjW'];
+			$height= round($attributes['adjH']*$perc);
+		} elseif (($height>0) and ($width==0)) {
+			$perc = $height / $attributes['adjH'];
+			$width= round($attributes['adjW']*$perc);
+		} else {
+			$width = $attributes['adjW'];
+			$height = $attributes['adjH'];
 		}
+		$image = $ReportRoot->createImageFromObject($mediaobject, $left, $top, $width, $height, $align, $ln);
+		$wt_report->addElement($image);
 	}
 }
 
@@ -2865,44 +2863,38 @@ function ImageSHandler($attrs) {
 		$match = array();
 		if (preg_match("/\d OBJE @(.+)@/", $gedrec, $match)) {
 			$mediaobject=WT_Media::getInstance($match[1], WT_GED_ID);
-		}
-		$filename = $mediaobject->getFilename();
-		if (!empty($filename)) {
-			if (preg_match("/(jpg|jpeg|png|gif)$/i", $filename)) {
-				$size = findImageSize($filename);
-				if (($width > 0) and ($height == 0)) {
-					$perc = $width / $size[0];
-					$height= round($size[1]*$perc);
-				} elseif (($height > 0) and ($width == 0)) {
-					$perc = $height / $size[1];
-					$width= round($size[0]*$perc);
-				} else {
-					$width = $size[0];
-					$height = $size[1];
-				}
-				$image = $ReportRoot->createImage($mediaobject->getFilename(), $left, $top, $width, $height, $align, $ln);
-				$wt_report->addElement($image);
-			}
-		}
-	}
-	else {
-		$filename = $file;
-		if (preg_match("/(jpg|jpeg|png|gif)$/i", $filename)) {
-			if (file_exists($filename)) {
-				$size = findImageSize($filename);
+			$attributes=$mediaobject->getImageAttributes('thumb');
+			if (in_array($attributes['ext'], array('GIF','JPG','PNG','SWF','PSD','BMP','TIFF','TIFF','JPC','JP2','JPX','JB2','SWC','IFF','WBMP','XBM')) && $mediaobject->canDisplayDetails() && $mediaobject->fileExists('thumb')) {
 				if (($width>0) and ($height==0)) {
-					$perc = $width / $size[0];
-					$height= round($size[1]*$perc);
+					$perc = $width / $attributes['adjW'];
+					$height= round($attributes['adjH']*$perc);
 				} elseif (($height>0) and ($width==0)) {
-					$perc = $height / $size[1];
-					$width= round($size[0]*$perc);
+					$perc = $height / $attributes['adjH'];
+					$width= round($attributes['adjW']*$perc);
 				} else {
-					$width = $size[0];
-					$height = $size[1];
+					$width = $attributes['adjW'];
+					$height = $attributes['adjH'];
 				}
-				$image = $ReportRoot->createImage($filename, $left, $top, $width, $height, $align, $ln);
+				$image = $ReportRoot->createImageFromObject($mediaobject, $left, $top, $width, $height, $align, $ln);
 				$wt_report->addElement($image);
 			}
+		}
+	} else {
+		$filename = $file;
+		if (file_exists($filename) && preg_match("/(jpg|jpeg|png|gif)$/i", $filename)) {
+			$size = findImageSize($filename);
+			if (($width>0) and ($height==0)) {
+				$perc = $width / $size[0];
+				$height= round($size[1]*$perc);
+			} elseif (($height>0) and ($width==0)) {
+				$perc = $height / $size[1];
+				$width= round($size[0]*$perc);
+			} else {
+				$width = $size[0];
+				$height = $size[1];
+			}
+			$image = $ReportRoot->createImage($filename, $left, $top, $width, $height, $align, $ln);
+			$wt_report->addElement($image);
 		}
 	}
 }
