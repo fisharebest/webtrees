@@ -1391,6 +1391,9 @@ function old_paths() {
 		WT_ROOT.'js/jquery/jquery.scrollfollow.js',
 		WT_ROOT.'modules_v3/googlemap/wt_v3_pedigree_map.js.php',
 		WT_ROOT.'modules_v3/lightbox/js/tip_balloon_RTL.js',
+		WT_ROOT.'modules_v3/address_report/module.php',
+		WT_ROOT.'modules_v3/address_report/report.xml',
+		WT_ROOT.'modules_v3/address_report',
 		// Removed in 1.3.2
 	);
 }
