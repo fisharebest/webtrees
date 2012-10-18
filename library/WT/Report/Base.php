@@ -3241,17 +3241,6 @@ function ListSHandler($attrs) {
 									$keep=true;
 								}
 							break;
-						case "SUBCONTAINS":
-							$v = get_sub_record($level, $level." ".$tag, $grec);
-							if (empty($v) && $tag=="ADDR") {
-								$v = get_sub_record($level+1, ($level+1)." ".$tag, $grec);
-							}
-							if (strripos($v, $val)!==false) {
-								$keep = true;
-							} else {
-								$keep = false;
-							}
-							break;
 						default:
 							if ($v==$val) {
 								$keep=true;
