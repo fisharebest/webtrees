@@ -70,6 +70,8 @@ define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
 define('WT_SCHEMA_VERSION', 20);
 
 // Regular expressions for validating user input, etc.
+define('WT_MINIMUM_PASSWORD_LENGTH', 6);
+
 define('WT_REGEX_XREF',     '[A-Za-z0-9:_-]+');
 define('WT_REGEX_TAG',      '[_A-Z][_A-Z0-9]*');
 define('WT_REGEX_INTEGER',  '-?\d+');
@@ -77,7 +79,7 @@ define('WT_REGEX_ALPHA',    '[a-zA-Z]+');
 define('WT_REGEX_ALPHANUM', '[a-zA-Z0-9]+');
 define('WT_REGEX_BYTES',    '[0-9]+[bBkKmMgG]?');
 define('WT_REGEX_USERNAME', '[^<>"%{};]+');
-define('WT_REGEX_PASSWORD', '.{6,}');
+define('WT_REGEX_PASSWORD', '.{'.WT_MINIMUM_PASSWORD_LENGTH.',}');
 define('WT_REGEX_NOSCRIPT', '[^<>"&%{};]*');
 define('WT_REGEX_URL',      '[\/0-9A-Za-z_!~*\'().;?:@&=+$,%#-]+'); // Simple list of valid chars
 define('WT_REGEX_EMAIL',    '[^\s<>"&%{};@]+@[^\s<>"&%{};@]+');

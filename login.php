@@ -43,7 +43,6 @@ $user_name      =safe_POST('user_name',       WT_REGEX_USERNAME);
 $user_email     =safe_POST('user_email',      WT_REGEX_EMAIL);
 $user_password01=safe_POST('user_password01', WT_REGEX_PASSWORD);
 $user_password02=safe_POST('user_password02', WT_REGEX_PASSWORD);
-$user_language  =safe_POST('user_language', array_keys(WT_I18N::installed_languages()), WT_LOCALE);
 $user_comments  =safe_POST('user_comments');
 $user_password  =safe_POST('user_password',   WT_REGEX_UNSAFE); // Can use any password that was previously stored
 $user_hashcode  =safe_POST('user_hashcode');
@@ -290,19 +289,13 @@ case 'register':
 		$user_email_false = false;
 	}
 
-	if (!$user_language) {
-		$user_language_false = true;
-	} else {
-		$user_language_false = false;
-	}
-
 	if (!$user_comments) {
 		$user_comments_false = true;
 	} else {
 		$user_comments_false = false;
 	}
 
-	if ($user_name_false == false && $user_password01_false == false && $user_password02_false == false && $user_realname_false == false && $user_email_false == false && $user_language_false == false && $user_comments_false == false && $password_mismatch == false) {
+	if ($user_name_false == false && $user_password01_false == false && $user_password02_false == false && $user_realname_false == false && $user_email_false == false && $user_comments_false == false && $password_mismatch == false) {
 		if (!WT_Site::preference('USE_REGISTRATION_MODULE')) {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 			exit;
@@ -370,7 +363,7 @@ case 'register':
 				echo '<div class="warning">', WT_I18N::translate('Passwords do not match.'), '</div>';
 				echo '<div class="back"><a href="#" onclick="history.back()">', WT_I18N::translate('Back'), '</a></div>';
 			} elseif ($user_id=create_user($user_name, $user_realname, $user_email, $user_password01)) {
-					set_user_setting($user_id, 'language',          $user_language);
+					set_user_setting($user_id, 'language',          WT_LOCALE);
 					set_user_setting($user_id, 'verified',          0);
 					set_user_setting($user_id, 'verified_by_admin', !$REQUIRE_ADMIN_AUTH_REGISTRATION);
 					set_user_setting($user_id, 'reg_timestamp',     date('U'));
@@ -473,22 +466,17 @@ case 'register':
 				</div>
 				<div>
 					<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'),
-						'<input type="password" id="user_password01" name="user_password01" value="" required placeholder="', /* WT_I18N::translate('At least 6 characters'),*/'" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = regex_quote(this.value);">
+						'<input type="password" id="user_password01" name="user_password01" value="" required placeholder="', /* I18N: placeholder text for new-password field */ WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)), '" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = regex_quote(this.value);">
 					</label>
 				</div>
 				<div>
 					<label for="user_password02">', WT_I18N::translate('Confirm password'), help_link('password_confirm'),
-						'<input type="password" id="user_password02" name="user_password02" value="" required placeholder="', /* WT_I18N::translate('Same password as above'),*/'" pattern="'. WT_REGEX_PASSWORD .'">
+						'<input type="password" id="user_password02" name="user_password02" value="" required placeholder="', /* I18N: placeholder text for repeat-password field */ WT_I18N::translate('Type the password again.'), '" pattern="'. WT_REGEX_PASSWORD .'">
 					</label>
 				</div>
 				<div>
-					<label for="user_language">', WT_I18N::translate('Language'), help_link('edituser_change_lang'),
-						edit_field_language('user_language', WT_LOCALE),
-					'</label>
-				</div>
-				<div>
 					<label for="user_comments">', WT_I18N::translate('Comments'), help_link('register_comments'),
-						'<textarea cols="50" rows="5" id="user_comments" name="user_comments" required placeholder="', /*WT_I18N::translate('Please explain why you are requesting an account.'),*/'">',
+						'<textarea cols="50" rows="5" id="user_comments" name="user_comments" required placeholder="', /* I18N: placeholder text for registration-comments field */ WT_I18N::translate('Explain why you are requesting an account.'), '">',
 							htmlspecialchars($user_comments),
 						'</textarea>
 					</label>
