@@ -11,9 +11,11 @@ WT_VERSION=$(shell grep "'WT_VERSION'" ../includes/session.php | cut -d "'" -f 4
 WT_VERSION_RELEASE=$(shell grep "'WT_VERSION_RELEASE'" ../includes/session.php | cut -d "'" -f 4)
 BUILD_VERSION=$(if $(WT_VERSION_RELEASE),$(SVN_VERSION),$(WT_VERSION)$(WT_VERSION_RELEASE))
 
-# Location of google's "closure" tools for compressing CSS and JS
-CLOSURE_JS=~/bin/compiler.jar
-CLOSURE_CSS=~/bin/closure-stylesheets.jar
+# Location of minification tools
+CLOSURE_JS=~/bin/compiler-20120917.jar
+CLOSURE_CSS=~/bin/closure-stylesheets-20111230.jar
+YUI_COMPRESSOR=~/bin/yuicompressor.2.4.2.jar
+HTML_COMPRESSION=~/bin/htmlcompressor-1.5.3.jar
 
 # Use maximum compression
 GZIP=gzip -9
@@ -61,8 +63,8 @@ dist-clean: clean
 ################################################################################
 webtrees: $(PO_DIR) $(MO_DIR)
 	svn export --quiet .. $@
-	bzr revert $(PO_DIR)
-	bzr update $(PO_DIR)
+	bzr revert --quiet $(PO_DIR)
+	bzr update --quiet $(PO_DIR)
 	make $(MO_FILES)
 	# Embed the SVN version number in the code (for SVN builds only)
 	sed -i "s/define('WT_VERSION_RELEASE', 'svn')/define('WT_VERSION_RELEASE', 'svn$(SVN_VERSION)')/" $@/includes/session.php
