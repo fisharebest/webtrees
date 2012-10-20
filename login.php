@@ -473,12 +473,12 @@ case 'register':
 				</div>
 				<div>
 					<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'),
-						'<input type="password" id="user_password01" name="user_password01" value="" required placeholder="', WT_I18N::translate('At least 6 characters'),'" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = regex_quote(this.value);">
+						'<input type="password" id="user_password01" name="user_password01" value="" required placeholder="', /* WT_I18N::translate('At least 6 characters'),*/'" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = regex_quote(this.value);">
 					</label>
 				</div>
 				<div>
 					<label for="user_password02">', WT_I18N::translate('Confirm password'), help_link('password_confirm'),
-						'<input type="password" id="user_password02" name="user_password02" value="" required placeholder="', WT_I18N::translate('Same password as above'),'" pattern="'. WT_REGEX_PASSWORD .'">
+						'<input type="password" id="user_password02" name="user_password02" value="" required placeholder="', /* WT_I18N::translate('Same password as above'),*/'" pattern="'. WT_REGEX_PASSWORD .'">
 					</label>
 				</div>
 				<div>
@@ -488,7 +488,7 @@ case 'register':
 				</div>
 				<div>
 					<label for="user_comments">', WT_I18N::translate('Comments'), help_link('register_comments'),
-						'<textarea cols="50" rows="5" id="user_comments" name="user_comments" required placeholder="', WT_I18N::translate('Please explain why you are requesting an account.'),'">',
+						'<textarea cols="50" rows="5" id="user_comments" name="user_comments" required placeholder="', /*WT_I18N::translate('Please explain why you are requesting an account.'),*/'">',
 							htmlspecialchars($user_comments),
 						'</textarea>
 					</label>
