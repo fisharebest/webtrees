@@ -388,12 +388,12 @@ case 'createform':
 			</tr>
 			<tr>
 				<td>', WT_I18N::translate('Password'), help_link('password'), '</td>
-				<td><input type="password" name="pass1" style="width:95%;" value="', htmlspecialchars($pass1), '" required placeholder="', WT_I18N::translate('At least 6 characters'), '" pattern="', WT_REGEX_PASSWORD, '" onchange="form.user_password02.pattern = regex_quote(this.value);"></td>
+				<td><input type="password" name="pass1" style="width:95%;" value="', htmlspecialchars($pass1), '" required placeholder="',  WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)), '" pattern="', WT_REGEX_PASSWORD, '" onchange="form.user_password02.pattern = regex_quote(this.value);"></td>
 				<td>', WT_I18N::translate('Automatically approve changes made by this user'), help_link('useradmin_auto_accept'), '</td>
 				<td><input type="checkbox" name="new_auto_accept" value="1"></td>
 			</tr>
 				<td>', WT_I18N::translate('Confirm password'), help_link('password_confirm'), '</td>
-				<td><input type="password" name="pass2" style="width:95%;" value="', htmlspecialchars($pass2), '" required placeholder="', WT_I18N::translate('Same password as above'), '" pattern="', WT_REGEX_PASSWORD, '"></td>
+				<td><input type="password" name="pass2" style="width:95%;" value="', htmlspecialchars($pass2), '" required placeholder="', WT_I18N::translate('Type the password again.'), '" pattern="', WT_REGEX_PASSWORD, '"></td>
 				<td>', WT_I18N::translate('Allow this user to edit his account information'), help_link('useradmin_editaccount'), '</td>
 				<td><input type="checkbox" name="editaccount" value="1" checked="checked"></td>
 			<tr>
