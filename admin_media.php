@@ -1172,11 +1172,17 @@ if (check_media_structure()) {
 							// if Streetview object
 							if (strpos($media["FILE"], 'http://maps.google.')===0) {
 								echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $media["FILE"], '&amp;output=svembed"></iframe>';
+							} elseif ($media['THUMBEXISTS']==3) {
+								// TODO: if the file is linked to an object, use a media-firewall link (to a browser cached version)
+								$thumbsize=findImageSize($mediaInfo['realThumb']);
+								echo '<center><a href="', $mediaInfo['url'], '" title="', $name, '">';
+								echo '<img src="data:image/', $media['FORM'], ';base64,', base64_encode(file_get_contents($mediaInfo['realThumb'])), '" class="thumbnail" width="', $thumbsize[0], '" height="', $thumbsize[1], '">';
+								echo '</a></center>';
 							} else {
-								echo '<center><a href="', $mediaInfo['url'], '">';
-								//echo '<center><a href="'.$url2.'">';
-								echo '<img src="', $mediaInfo['thumb'], '" align="middle" class="thumbnail"', $mediaInfo['width'];
-								echo ' title="', $name, '"></a></center>';
+								// TODO: Display a mime-type icon - these don't exist in the admin theme yet.
+								echo '<center><a href="', $mediaInfo['url'], '" title="', $name, '">';
+								echo '<img src="', $mediaInfo['thumb'], '" align="middle" class="thumbnail">';
+								echo '</a></center>';
 							}
 							echo '</td>';
 						}
