@@ -252,9 +252,7 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'MAX_PEDIGREE_GENERATIONS',     '10');
 		set_gedcom_setting($tree_id, 'MEDIA_DIRECTORY',              'media/');
 		set_gedcom_setting($tree_id, 'MEDIA_DIRECTORY_LEVELS',       '0');
-		set_gedcom_setting($tree_id, 'MEDIA_EXTERNAL',               true);
 		set_gedcom_setting($tree_id, 'MEDIA_FIREWALL_ROOTDIR',       WT_Site::preference('INDEX_DIRECTORY'));
-		set_gedcom_setting($tree_id, 'MEDIA_FIREWALL_THUMBS',        false);
 		set_gedcom_setting($tree_id, 'MEDIA_ID_PREFIX',              'M');
 		set_gedcom_setting($tree_id, 'MEDIA_UPLOAD',                 WT_PRIV_USER); 
 		set_gedcom_setting($tree_id, 'META_DESCRIPTION',             '');
@@ -316,7 +314,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'THEME_DIR',                    'webtrees');
 		set_gedcom_setting($tree_id, 'THUMBNAIL_WIDTH',              '100');
 		set_gedcom_setting($tree_id, 'USE_GEONAMES',                 false);
-		set_gedcom_setting($tree_id, 'USE_MEDIA_FIREWALL',           false);
 		set_gedcom_setting($tree_id, 'USE_MEDIA_VIEWER',             true);
 		set_gedcom_setting($tree_id, 'USE_RIN',                      false);
 		set_gedcom_setting($tree_id, 'USE_SILHOUETTE',               true);

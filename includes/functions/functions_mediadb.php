@@ -108,7 +108,7 @@ function check_media_structure() {
 			if (!mkdir($MEDIA_DIRECTORY))
 				return false;
 			if (!file_exists($MEDIA_DIRECTORY . "index.php")) {
-				$inddata = "<?php header('Location: ../medialist.php'); exit; ?>";
+				$inddata = "<"."?php header('Location: ../medialist.php'); exit; ?".">";
 				$fp = @ fopen($MEDIA_DIRECTORY . "index.php", "w+");
 				if (!$fp)
 					echo "<div class=\"error\">" . WT_I18N::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . "thumbs</div>";
@@ -171,7 +171,6 @@ function check_media_structure() {
 function get_medialist($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true, $excludeLinks = false) {
 	global $MEDIA_DIRECTORY_LEVELS, $BADMEDIA, $thumbdir, $MEDIATYPE;
 	global $level, $dirs, $MEDIA_DIRECTORY;
-	global $MEDIA_EXTERNAL;
 
 	// Create the medialist array of media in the DB and on disk
 	// NOTE: Get the media in the DB
@@ -197,7 +196,7 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 	foreach ($rows as $row) {
 		$fileName = check_media_depth($row->m_file, "NOTRUNC", "QUIET");
 		$isExternal = isFileExternal($fileName);
-		if ($isExternal && (!$MEDIA_EXTERNAL || !$includeExternal)) {
+		if ($isExternal && !$includeExternal) {
 			continue;
 		}
 		if ($isExternal || !$currentdir || $directory == dirname($fileName) . "/") {
@@ -454,7 +453,6 @@ if (!$excludeLinks) {
 function get_medialist2($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true, $sortby = 'title') {
 	global $MEDIA_DIRECTORY_LEVELS, $BADMEDIA, $thumbdir, $MEDIATYPE;
 	global $level, $dirs, $MEDIA_DIRECTORY;
-	global $MEDIA_EXTERNAL;
 
 	// get_medialist2 currently only works with $linkonly=true
 	if (!$linkonly) {
@@ -471,7 +469,7 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? ORDER BY RAND() LIMIT 5")
 			->execute(array(WT_GED_ID))
 			->fetchAll();
-	} else if ($MEDIA_EXTERNAL && $includeExternal) {
+	} elseif ($includeExternal) {
 		$rows=
 			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND (m_file LIKE ? OR m_file LIKE ?) ".$orderby." COLLATE '".WT_I18N::$collation."'")
 			->execute(array(WT_GED_ID, "%{$myDir}%", "%://%"))
@@ -749,7 +747,7 @@ function filterMedia2($mediaobject, $filter) {
 * @return string the location of the thumbnail
 */
 function thumbnail_file($filename, $generateThumb=true, $overwrite=false, $icon_image=true) {
-	global $MEDIA_DIRECTORY, $WT_IMAGES, $MEDIA_DIRECTORY_LEVELS, $MEDIA_EXTERNAL;
+	global $MEDIA_DIRECTORY, $WT_IMAGES, $MEDIA_DIRECTORY_LEVELS;
 
 	if (strlen($filename) == 0)
 		return false;
@@ -972,9 +970,9 @@ function display_silhouette(array $config = array()) {
 *  to know about every Media folder that's being created.
 */
 function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
-	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $MEDIA_EXTERNAL, $USE_MEDIA_FIREWALL, $MEDIA_FIREWALL_THUMBS;
+	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS;
 
-	if (empty($filename) || ($MEDIA_EXTERNAL && isFileExternal($filename)))
+	if (empty($filename) || isFileExternal($filename))
 		return $filename;
 
 	if (empty($truncate) || ($truncate != "NOTRUNC" && $truncate != "BACK" && $truncate != "FRONT"))
@@ -1057,13 +1055,8 @@ function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
 	while ($n < $nEnd) {
 		$folderName .= $folderList[$n];
 
-		$destFolder = $MEDIA_DIRECTORY . $folderName;
-		$destThumbFolder = $MEDIA_DIRECTORY . "thumbs/" . $folderName;
-
-		if ($USE_MEDIA_FIREWALL) {
-			$destFolder = get_media_firewall_path($MEDIA_DIRECTORY . $folderName);
-			if ($MEDIA_FIREWALL_THUMBS) $destThumbFolder = get_media_firewall_path($MEDIA_DIRECTORY . "thumbs/" . $folderName);
-		}
+		$destFolder = get_media_firewall_path($MEDIA_DIRECTORY . $folderName);
+		$destThumbFolder = get_media_firewall_path($MEDIA_DIRECTORY . "thumbs/" . $folderName);
 
 		if (!is_dir(filename_decode($destFolder))) {
 			if (!mkdir(filename_decode($destFolder))) {
@@ -1074,21 +1067,6 @@ function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
 				if ($noise == "VERBOSE") {
 					echo WT_I18N::translate('Directory created') . ": " . $destFolder . "/<br>";
 				}
-				if (!$USE_MEDIA_FIREWALL) { // create index.php in standard media directory only when media firewall is not the default
-					$fp = @ fopen(filename_decode($MEDIA_DIRECTORY . $folderName . "/index.php"), "w+");
-					if (!$fp) {
-						if ($noise == "VERBOSE") {
-							echo "<div class=\"error\">" . WT_I18N::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . $folderName . "</div>";
-						}
-					} else {
-						fwrite($fp, "<?php\r\n");
-						fwrite($fp, "header(\"Location: {$backPointer}medialist.php\");\r\n");
-						fwrite($fp, "exit;\r\n");
-						fwrite($fp, "?>\r\n");
-						fclose($fp);
-					}
-				}
-
 			}
 		}
 		if (!is_dir(filename_decode($destThumbFolder))) {
@@ -1099,20 +1077,6 @@ function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
 			} else {
 				if ($noise == "VERBOSE") {
 					echo WT_I18N::translate('Directory created') . ": " . $destThumbFolder . "/<br>";
-				}
-				if (!$USE_MEDIA_FIREWALL || !$MEDIA_FIREWALL_THUMBS) { // create index.php in standard media directory only when media firewall is not the default
-					$fp = @ fopen(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName . "/index.php"), "w+");
-					if (!$fp) {
-						if ($noise == "VERBOSE") {
-							echo "<div class=\"error\">" . WT_I18N::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "</div>";
-						}
-					} else {
-						fwrite($fp, "<?php\r\n");
-						fwrite($fp, "header(\"Location: {$backPointer}../medialist.php\");\r\n");
-						fwrite($fp, "exit;\r\n");
-						fwrite($fp, "?>\r\n");
-						fclose($fp);
-					}
 				}
 			}
 		}
@@ -1181,7 +1145,7 @@ function get_media_folders() {
 * process the form for uploading media files
 */
 function process_uploadMedia_form() {
-	global $MEDIA_DIRECTORY, $USE_MEDIA_FIREWALL, $MEDIA_FIREWALL_THUMBS, $MEDIATYPE;
+	global $MEDIA_DIRECTORY, $MEDIATYPE;
 	global $thumbnail, $whichFile1, $whichFile2;
 
 	echo "<table class=\"list_table width100\">";
@@ -1194,13 +1158,8 @@ function process_uploadMedia_form() {
 			$folderName = dirname($folderName)."/";
 			$thumbFolderName = str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $folderName);
 
-			$destFolder = $folderName;  // This is where the actual image will be stored
-			$destThumbFolder = $thumbFolderName;  // ditto for the thumbnail
-
-			if ($USE_MEDIA_FIREWALL) {
-				$destFolder = get_media_firewall_path($folderName);
-				if ($MEDIA_FIREWALL_THUMBS) $destThumbFolder = get_media_firewall_path($thumbFolderName);
-			}
+			$destFolder = get_media_firewall_path($folderName);
+			$destThumbFolder = get_media_firewall_path($thumbFolderName);
 
 			// make sure the destination dirs exist
 			@mkdirs($destFolder);
@@ -2149,7 +2108,7 @@ function hasMemoryForImage($serverFilename, $debug_verboseLogging=false) {
 * @param string $thumbnail
 */
 function generate_thumbnail($filename, $thumbnail) {
-	global $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH, $USE_MEDIA_FIREWALL, $MEDIA_FIREWALL_THUMBS;
+	global $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH;
 
 	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
 
@@ -2165,22 +2124,18 @@ function generate_thumbnail($filename, $thumbnail) {
 
 	if (!isFileExternal($filename)) {
 		// internal
-		if ($USE_MEDIA_FIREWALL) {
-			// Look for the original file in either possible location
-			if (!file_exists(filename_decode($filename))) {
-				$filename = get_media_firewall_path($filename);
-			}
-			if ($MEDIA_FIREWALL_THUMBS) {
-				// Look for the thumbnail in either possible location (so we can overwrite it)
-				if (!file_exists(filename_decode($thumbnail))) {
-					$thumbnail = get_media_firewall_path($thumbnail);
-				}
-			}
-			// Ensure the directory exists
-			if (!is_dir(dirname($thumbnail))) {
-				if (!mkdirs(dirname($thumbnail))) {
-					return false;
-				}
+		// Look for the original file in either possible location
+		if (!file_exists(filename_decode($filename))) {
+			$filename = get_media_firewall_path($filename);
+		}
+		// Look for the thumbnail in either possible location (so we can overwrite it)
+		if (!file_exists(filename_decode($thumbnail))) {
+			$thumbnail = get_media_firewall_path($thumbnail);
+		}
+		// Ensure the directory exists
+		if (!is_dir(dirname($thumbnail))) {
+			if (!mkdirs(dirname($thumbnail))) {
+				return false;
 			}
 		}
 		if (!file_exists(filename_decode($filename))) return false;  // Can't thumbnail a non-existent image

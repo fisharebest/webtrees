@@ -136,12 +136,8 @@ case 'newentry':
 		$folderName = dirname($folderName).'/';
 		$thumbFolderName = str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $folderName);
 
-		$realFolderName = $folderName;
-		$realThumbFolderName = $thumbFolderName;
-		if ($USE_MEDIA_FIREWALL) {
-			$realFolderName = get_media_firewall_path($folderName);
-			if ($MEDIA_FIREWALL_THUMBS) $realThumbFolderName = get_media_firewall_path($thumbFolderName);
-		}
+		$realFolderName = get_media_firewall_path($folderName);
+		$realThumbFolderName = get_media_firewall_path($thumbFolderName);
 		// make sure the dirs exist
 		@mkdirs($realFolderName);
 		@mkdirs($realThumbFolderName);

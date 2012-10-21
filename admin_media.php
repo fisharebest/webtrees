@@ -117,7 +117,7 @@ function move_file($src, $dest) {
 * and vice-versa.  Operates directly on the filesystem, does not use the db.
 */
 function move_files($path, $protect) {
-	global $MEDIA_FIREWALL_THUMBS, $starttime, $operation_count;
+	global $starttime, $operation_count;
 	$timelimit=WT_Site::preference('MAX_EXECUTION_TIME');
 	if ($dir=@opendir($path)) {
 		while (($element=readdir($dir))!== false) {
@@ -144,11 +144,9 @@ function move_files($path, $protect) {
 						if (file_exists($filename)) {
 							move_file($filename, get_media_firewall_path($filename));
 						}
-						if ($MEDIA_FIREWALL_THUMBS) {
-							$thumbnail = thumbnail_file($filename, false);
-							if (file_exists($thumbnail)) {
-								move_file($thumbnail, get_media_firewall_path($thumbnail));
-							}
+						$thumbnail = thumbnail_file($filename, false);
+						if (file_exists($thumbnail)) {
+							move_file($thumbnail, get_media_firewall_path($thumbnail));
 						}
 					} else {
 						// Move single file and its corresponding thumbnail to standard dir
@@ -449,7 +447,7 @@ if (check_media_structure()) {
 		if ($all == 'yes') {
 			$medialist = get_medialist(true, $directory);
 			foreach ($medialist as $key => $media) {
-				if (!($MEDIA_EXTERNAL && isFileExternal($filename))) {
+				if (!isFileExternal($filename)) {
 					$thumbnail = str_replace("$MEDIA_DIRECTORY", $MEDIA_DIRECTORY."thumbs/", check_media_depth($media["FILE"], "NOTRUNC"));
 					if (!media_exists($thumbnail)) {  
 						// can't use thumbnail_file or $media["THUMB"] or $media["THUMBEXISTS"] because it they reference the icon from WT_IMAGES 
@@ -468,7 +466,7 @@ if (check_media_structure()) {
 			}
 		}
 		else if ($all != 'yes') {
-			if (!($MEDIA_EXTERNAL && isFileExternal($filename))) {
+			if (!isFileExternal($filename)) {
 				$thumbnail = str_replace("$MEDIA_DIRECTORY", $MEDIA_DIRECTORY."thumbs/", check_media_depth($filename, "NOTRUNC"));
 				if (generate_thumbnail($filename, $thumbnail)) {
 					echo WT_I18N::translate('Thumbnail %s generated automatically.', $thumbnail);
@@ -497,11 +495,9 @@ if (check_media_structure()) {
 			if (file_exists($filename)) {
 				move_file($filename, get_media_firewall_path($filename));
 			}
-			if ($MEDIA_FIREWALL_THUMBS) {
-				$thumbnail = thumbnail_file($filename, false);
-				if (file_exists($thumbnail)) {
-					move_file($thumbnail, get_media_firewall_path($thumbnail));
-				}
+			$thumbnail = thumbnail_file($filename, false);
+			if (file_exists($thumbnail)) {
+				move_file($thumbnail, get_media_firewall_path($thumbnail));
 			}
 		}
 		echo "</td></tr></table>";
@@ -833,8 +829,6 @@ if (check_media_structure()) {
 		echo '<td colspan="4">';
 			echo WT_I18N::translate('Current directory');
 			echo ': ';
-//			if ($USE_MEDIA_FIREWALL) { echo $MEDIA_FIREWALL_ROOTDIR; }
-
 			echo '<span dir="auto">'.substr($directory, 0, -1).'</span>';
 			echo '<br>';
 
@@ -895,7 +889,7 @@ if (check_media_structure()) {
 			echo "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\">";
 			echo "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\">";
 
-			if ($USE_MEDIA_FIREWALL && $is_std_media_writable) {
+			if ($is_std_media_writable) {
 				if ($protected_files < $standard_files) {
 					echo '<div class="error">';
 					echo WT_I18N::translate('Some of your media files are not in the protected media directory.').'<br>';
@@ -973,7 +967,7 @@ if (check_media_structure()) {
 						echo '<input type="hidden" name="showthumb" value="'.$showthumb.'">';
 						echo '<input type="hidden" name="sortby" value="'.$sortby.'">';
 						echo '<input type="image" src="'.$WT_IMAGES['remove'].'" alt="'.WT_I18N::translate('Delete').'" title="'.WT_I18N::translate('Delete').'" onclick="this.form.action.value=\'deletedir\';return confirm(\''.WT_I18N::translate('Are you sure you want to delete this folder?').'\');"></td>';
-						if ($USE_MEDIA_FIREWALL && $is_std_media_writable) {
+						if ($is_std_media_writable) {
 							echo '<td width="120"><input type="submit" value="'.WT_I18N::translate('Move to standard').'" onclick="this.form.level.value=(this.form.level.value*1)+1;this.form.action.value=\'movedirstandard\';"></td>';
 							echo '<td width="120"><input type="submit" value="'.WT_I18N::translate('Move to protected').'" onclick="this.form.level.value=(this.form.level.value*1)+1;this.form.action.value=\'movedirprotected\';"></td>';
 						}

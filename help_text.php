@@ -699,19 +699,9 @@ case 'MEDIA_DIRECTORY':
 		'</p>';
 	break;
 
-case 'MEDIA_EXTERNAL':
-	$title=WT_I18N::translate('Keep links');
-	$text=WT_I18N::translate('When a multimedia link is found starting with for example http://, ftp://, mms:// it will not be altered when set to <b>Yes</b>. For example, http://www.myfamily.com/photo/dad.jpg will stay http://www.myfamily.com/photo/dad.jpg.  When set to <b>No</b>, the link will be handled as a standard reference and the media depth will be used.  For example: http://www.myfamily.com/photo/dad.jpg will be changed to ./media/dad.jpg');
-	break;
-
 case 'MEDIA_FIREWALL_ROOTDIR':
 	$title=WT_I18N::translate('Media firewall root directory');
 	$text=WT_I18N::translate('Directory in which the protected Media directory can be created.  When this field is empty, the <b>%s</b> directory will be used.', WT_Site::preference('INDEX_DIRECTORY'));
-	break;
-
-case 'MEDIA_FIREWALL_THUMBS':
-	$title=WT_I18N::translate('Protect thumbnails of protected images');
-	$text=WT_I18N::translate('When an image is in the protected Media directory, should its thumbnail be protected as well?');
 	break;
 
 case 'MEDIA_ID_PREFIX':
@@ -1079,11 +1069,6 @@ case 'THUMBNAIL_WIDTH':
 case 'USE_GEONAMES':
 	$title=WT_I18N::translate('Use GeoNames database for autocomplete on places');
 	$text=WT_I18N::translate('Should the GeoNames database be used to provide more suggestions for place names?<br /><br />When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br /><br />The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names.');
-	break;
-
-case 'USE_MEDIA_FIREWALL':
-	$title=WT_I18N::translate('Automatically protect new images');
-	$text=WT_I18N::translate('Should new images automatically go in the protected media directory when they are uploaded?'); 
 	break;
 
 case 'USE_MEDIA_VIEWER':

@@ -676,9 +676,7 @@ foreach (WT_Tree::getAll() as $tree) {
 	@set_gedcom_setting($tree->tree_id, 'MAX_RELATION_PATH_LENGTH',     $MAX_RELATION_PATH_LENGTH);
 	@set_gedcom_setting($tree->tree_id, 'MEDIA_DIRECTORY',              'media/');
 	@set_gedcom_setting($tree->tree_id, 'MEDIA_DIRECTORY_LEVELS',       $MEDIA_DIRECTORY_LEVELS);
-	@set_gedcom_setting($tree->tree_id, 'MEDIA_EXTERNAL',               $MEDIA_EXTERNAL);
 	@set_gedcom_setting($tree->tree_id, 'MEDIA_FIREWALL_ROOTDIR',       $MEDIA_FIREWALL_ROOTDIR);
-	@set_gedcom_setting($tree->tree_id, 'MEDIA_FIREWALL_THUMBS',        $MEDIA_FIREWALL_THUMBS);
 	@set_gedcom_setting($tree->tree_id, 'MEDIA_ID_PREFIX',              $MEDIA_ID_PREFIX);
 	@set_gedcom_setting($tree->tree_id, 'META_DESCRIPTION',             $META_DESCRIPTION);
 	@set_gedcom_setting($tree->tree_id, 'META_TITLE',                   $META_TITLE);
@@ -749,7 +747,6 @@ foreach (WT_Tree::getAll() as $tree) {
 	}
 	@set_gedcom_setting($tree->tree_id, 'THUMBNAIL_WIDTH',              $THUMBNAIL_WIDTH);
 	@set_gedcom_setting($tree->tree_id, 'USE_GEONAMES',                 $USE_GEONAMES);
-	@set_gedcom_setting($tree->tree_id, 'USE_MEDIA_FIREWALL',           $USE_MEDIA_FIREWALL);
 	@set_gedcom_setting($tree->tree_id, 'USE_MEDIA_VIEWER',             $USE_MEDIA_VIEWER);
 	@set_gedcom_setting($tree->tree_id, 'USE_RELATIONSHIP_PRIVACY',     $USE_RELATIONSHIP_PRIVACY);
 	@set_gedcom_setting($tree->tree_id, 'USE_RIN',                      $USE_RIN);

@@ -199,8 +199,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'MAX_DESCENDANCY_GENERATIONS',  safe_POST('NEW_MAX_DESCENDANCY_GENERATIONS'));
 	set_gedcom_setting(WT_GED_ID, 'MAX_PEDIGREE_GENERATIONS',     safe_POST('NEW_MAX_PEDIGREE_GENERATIONS'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY_LEVELS',       safe_POST('NEW_MEDIA_DIRECTORY_LEVELS'));
-	set_gedcom_setting(WT_GED_ID, 'MEDIA_EXTERNAL',               safe_POST_bool('NEW_MEDIA_EXTERNAL'));
-	set_gedcom_setting(WT_GED_ID, 'MEDIA_FIREWALL_THUMBS',        safe_POST_bool('NEW_MEDIA_FIREWALL_THUMBS'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_ID_PREFIX',              safe_POST('NEW_MEDIA_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD',                 safe_POST('NEW_MEDIA_UPLOAD'));
 	set_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION',             safe_POST('NEW_META_DESCRIPTION'));
@@ -252,7 +250,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'THEME_DIR',                    safe_POST('NEW_THEME_DIR'));
 	set_gedcom_setting(WT_GED_ID, 'THUMBNAIL_WIDTH',              safe_POST('NEW_THUMBNAIL_WIDTH'));
 	set_gedcom_setting(WT_GED_ID, 'USE_GEONAMES',                 safe_POST_bool('NEW_USE_GEONAMES'));
-	set_gedcom_setting(WT_GED_ID, 'USE_MEDIA_FIREWALL',           safe_POST_bool('NEW_USE_MEDIA_FIREWALL'));
 	set_gedcom_setting(WT_GED_ID, 'USE_MEDIA_VIEWER',             safe_POST_bool('NEW_USE_MEDIA_VIEWER'));
 	set_gedcom_setting(WT_GED_ID, 'USE_RIN',                      safe_POST_bool('NEW_USE_RIN'));
 	set_gedcom_setting(WT_GED_ID, 'USE_SILHOUETTE',               safe_POST_bool('NEW_USE_SILHOUETTE'));
@@ -736,14 +733,6 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</tr>
 					<tr>
 						<td>
-							<?php echo WT_I18N::translate('Keep links'), help_link('MEDIA_EXTERNAL'); ?>
-						</td>
-						<td>
-							<?php  echo edit_field_yes_no('NEW_MEDIA_EXTERNAL', get_gedcom_setting(WT_GED_ID, 'MEDIA_EXTERNAL')); ?>
-						</td>
-					</tr>
-					<tr>
-						<td>
 							<?php echo WT_I18N::translate('Media directory'), help_link('MEDIA_DIRECTORY'); ?>
 						</td>
 						<td>
@@ -827,30 +816,6 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</tr>
 					<tr>
 						<td>
-							<?php echo WT_I18N::translate('Automatically protect new images'), help_link('USE_MEDIA_FIREWALL'); ?>
-						</td>
-						<td>
-							<?php echo edit_field_yes_no('NEW_USE_MEDIA_FIREWALL', get_gedcom_setting(WT_GED_ID, 'USE_MEDIA_FIREWALL')); ?>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Protect thumbnails of protected images'), help_link('MEDIA_FIREWALL_THUMBS'); ?>
-						</td>
-						<td>
-							<?php echo edit_field_yes_no('NEW_MEDIA_FIREWALL_THUMBS', get_gedcom_setting(WT_GED_ID, 'MEDIA_FIREWALL_THUMBS')); ?>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Who can view non-watermarked images?'), help_link('SHOW_NO_WATERMARK'); ?>
-						</td>
-						<td>
-							<?php echo edit_field_access_level("NEW_SHOW_NO_WATERMARK", $SHOW_NO_WATERMARK); ?>
-						</td>
-					</tr>
-					<tr>
-						<td>
 							<?php echo WT_I18N::translate('Add watermarks to thumbnails?'), help_link('WATERMARK_THUMB'); ?>
 						</td>
 						<td>
@@ -883,6 +848,14 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						<td>
 							<?php echo select_edit_control('NEW_MEDIA_UPLOAD', array(WT_PRIV_USER=>WT_I18N::translate('Show to members'),
  WT_PRIV_NONE=>WT_I18N::translate('Show to managers'), WT_PRIV_HIDE=>WT_I18N::translate('Hide from everyone')), null, get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD')); ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<?php echo WT_I18N::translate('Who can view non-watermarked images?'), help_link('SHOW_NO_WATERMARK'); ?>
+						</td>
+						<td>
+							<?php echo edit_field_access_level("NEW_SHOW_NO_WATERMARK", $SHOW_NO_WATERMARK); ?>
 						</td>
 					</tr>
 				</table>
