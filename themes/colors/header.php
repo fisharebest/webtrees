@@ -69,7 +69,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo
 	// Top row left
 	'<div id="header">',
-	'<div id="spacer""></div>',
+	'<div id="spacer"></div>',
 	'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>';
 
 	// Top row right 
