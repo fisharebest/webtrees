@@ -31,6 +31,10 @@
 
 exit;
 
+/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('"UK census images have been obtained from "The National Archives", the custodian of the original records, and appear here with their approval on the condition that no commercial use is made of them without permission.
+Requests for commercial publication of these or other UK census images appearing on this website should be directed to: Image Library, The National Archives, Kew, Surrey, TW9 4DU, United Kingdom."
+');
+
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Keep links');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Automatically protect new images');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Protect thumbnails of protected images');
