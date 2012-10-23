@@ -47,7 +47,6 @@ $controller->pageHeader();
 				<a href="#" onclick="addnewchild(''); return false;">
 					<?php echo WT_I18N::translate('Add an unlinked person'); ?>
 				</a>
-				<?php echo help_link('edit_add_unlinked_person'); ?>
 			</td>
 		</tr>
 		<tr>
@@ -55,7 +54,6 @@ $controller->pageHeader();
 				<a href="#" onclick="addnewnote(''); return false;">
 					<?php echo WT_I18N::translate('Add an unlinked note'); ?>
 				</a>
-				<?php echo help_link('edit_add_unlinked_note'); ?>
 			</td>
 		</tr>
 		<tr>
@@ -63,7 +61,6 @@ $controller->pageHeader();
 				<a href="#" onclick="addnewsource(''); return false;">
 					<?php echo WT_I18N::translate('Add an unlinked source'); ?>
 				</a>
-				<?php echo help_link('edit_add_unlinked_source'); ?>
 			</td>
 		</tr>
 	</table>

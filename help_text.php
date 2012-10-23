@@ -1140,11 +1140,6 @@ case 'add_facts':
 	$text.=WT_I18N::translate('<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the Clippings Cart that you can use to export portions of your database.<br /><br />You can select any of the facts from the clipboard and copy the selected fact to the Individual, Family, Media, Source, or Repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a Marriage fact to a Source or an Individual record since the Marriage fact is associated only with Family records.<br /><br />This is very helpful when entering similar facts, such as census facts, for many individuals or families.');
 	break;
 
-case 'add_husband':
-	$title=WT_I18N::translate('Add a new husband');
-	$text=WT_I18N::translate('By clicking this link, you can add a <u>new</u> male person and link this person to the principal individual as a new husband.<br /><br />Just click the link, and you will get a pop up window to add the new person.  Fill out as many boxes as you can and click the <b>Save</b> button.<br /><br />That\'s all.');
-	break;
-
 case 'add_media_linkid':
 	$title=WT_I18N::translate('Link ID');
 	$text=WT_I18N::translate('Each media item should be associated with one or more person, family, or source records in your database.<br /><br />To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages.');
@@ -1179,11 +1174,6 @@ case 'add_source':
 	// This is a general help text for multiple pages
 	$title=WT_I18N::translate('Add a new source citation');
 	$text=WT_I18N::translate('Here you can add a source <b>Citation</b> to this record.<br /><br />Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br /><br />Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information.');
-	break;
-
-case 'add_wife':
-	$title=WT_I18N::translate('Add a new wife');
-	$text=WT_I18N::translate('By clicking this link, you can add a <u>new</u> female person and link this person to the principal individual as a new wife.<br /><br />Just click the link, and you will get a pop up window to add the new person.  Fill out as many boxes as you can and click the <b>Save</b> button.<br /><br />That\'s all.');
 	break;
 
 case 'annivers_year_select':
@@ -1262,36 +1252,6 @@ case 'edit_add_SHARED_NOTE':
 case 'edit_add_SOUR':
 	$title=WT_I18N::translate('Add a new source citation');
 	$text=WT_I18N::translate('This section allows you to add a new source citation to the fact that you are currently editing.<br /><br />In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source.');
-	break;
-
-case 'edit_add_child':
-	$title=WT_I18N::translate('Add a new child');
-	$text=WT_I18N::translate('With this page you can add a new child to the selected family.  Fill out the name of the child and the birth and death information if it is known.  If you don\'t know some information leave it blank.<br /><br />To add other facts besides birth and death, first add the new child to the database by saving the changes.  Then click on the child\'s name in the updated Family page or Close Relatives tab to view the child\'s Individual Information page.  From the Individual Information page you can add more detailed information.');
-	break;
-
-case 'edit_add_parent':
-	$title=WT_I18N::translate('Add a new parent');
-	$text=WT_I18N::translate('With this page you can add a new mother or father to the selected person.  Fill out the new person\'s name and the birth and death information if it is known.  If you don\'t know some information, leave it blank.<br /><br />To add other facts besides birth and death, first add the new person to the database by saving the changes.  Then click on the person\'s name in the updated Family page or Close Relatives tab to view the person\'s Individual Information page.  From the Individual Information page you can add more detailed information.');
-	break;
-
-case 'edit_add_spouse':
-	$title=WT_I18N::translate('Add a new spouse');
-	$text=WT_I18N::translate('With this page you can add a new husband or wife to the selected person.  Fill out the new person\'s name and the birth and death information if it is known.  If you don\'t know some information leave it blank.<br /><br />To add other facts besides birth and death, first add the new person to the database by saving the changes.  Then click on the person\'s name in the updated Family page or Close Relatives tab to view the person\'s Individual Information page.  From the Individual Information page you can add more detailed information.');
-	break;
-
-case 'edit_add_unlinked_note':
-	$title=WT_I18N::translate('Add an unlinked shared note');
-	$text=WT_I18N::translate('Use this link to add a new shared note to your database without linking the note to any record.<br /><br />The new note will appear in the Shared Note list, but will not appear on any charts or anywhere else in the program until it is linked to an individual, family or event.');
-	break;
-
-case 'edit_add_unlinked_person':
-	$title=WT_I18N::translate('Add an unlinked person');
-	$text=WT_I18N::translate('Use this form to add an unlinked person.<br /><br />When you add an unlinked person to your family tree, the person will not be linked to any other people until you link them.  Later, you can link people together from the Close Relatives tab on the Individual Information page.');
-	break;
-
-case 'edit_add_unlinked_source':
-	$title=WT_I18N::translate('Add an unlinked source');
-	$text=WT_I18N::translate('Use this link to add a new source to your database without linking the source to a source citation in another record.  The new source will appear in the source list, but will not appear on any charts or anywhere else in the program until it is linked up to a source citation.');
 	break;
 
 case 'edit_edit_raw':
@@ -1420,26 +1380,6 @@ case 'link_child':
 	$text=WT_I18N::translate('You can link this person as a child to an existing family when you click this link.<br /><br />Suppose that at one time the parents of the person were unknown, and you discovered later that the parents have a record in this database.<br /><br />Just click the link, enter the ID of the family, and you have competed the task.  If you don\'t know the family\'s ID, you can search for it.');
 	break;
 
-case 'link_husband':
-	$title=WT_I18N::translate('Link to an existing family as a husband');
-	$text=WT_I18N::translate('This item will allow you to link the current individual as a husband to a family that is already in the database. By clicking this link you can add this person to an existing family, of which the husband was unknown until now. This person will take the place of the previously unknown husband. All events, marriage information, and children will keep their existing links to the family.<br /><br />Just click the link, enter the ID of the family, and you have competed the task. This is an advanced editing option that should only be used if the family you want to link to already exists.  If you want to add a <u>new</u> family to this individual, use the <b>Add a new wife</b> link.');
-	break;
-
-case 'link_new_husb':
-	$title=WT_I18N::translate('Add a husband using an existing person');
-	$text=WT_I18N::translate('This will allow you to link another individual, who already exists, as a new husband to this person.  This will create a new family with the husband you select.  You will also have the option of specifying a marriage for this new family.');
-	break;
-
-case 'link_new_wife':
-	$title=WT_I18N::translate('Add a wife using an existing person');
-	$text=WT_I18N::translate('This will allow you to link another individual, who already exists, as a new wife to this person.  This will create a new family with the wife you select.  You will also have the option of specifying a marriage for this new family.');
-	break;
-
-case 'link_wife':
-	$title=WT_I18N::translate('Link to an existing family as a wife');
-	$text=WT_I18N::translate('This item will allow you to link the current individual as a wife to a family that is already in the database.<br /><br />This is an advanced editing option that should only be used if the family you want to link to already exists.  If you want to add a <u>new</u> family to this individual, use the <b>Add a new husband</b> link.');
-	break;
-
 case 'manage_media':
 	$title=WT_I18N::translate('Media');
 	$text=WT_I18N::translate('On this page you can easily manage your Media files and directories.<br /><br />When you create new Media subdirectories, <b>webtrees</b> will ensure that the identical directory structure is maintained within the <b>%sthumbs</b> directory.  When you upload new Media files, <b>webtrees</b> can automatically create the thumbnails for you.<br /><br />Beside each image in the Media list you\'ll find the following options.  The options actually shown depend on the current status of the Media file.<ul><li><b>Edit</b>&nbsp;&nbsp;When you click on this option, you\'ll see a page where you can change the title of the Media object.  If the Media object is not yet linked to a person, family, or source in the currently active database, you can establish this link here.  You can rename the file or even change its location within the <b>%s</b> directory structure.  When necessary, <b>webtrees</b> will automatically create the required subdirectories or any missing thumbnails.</li><li><b>Edit raw GEDCOM record</b>&nbsp;&nbsp;This option is only available when the administrator has enabled it.  You can view or edit the raw GEDCOM data associated with this Media object.  You should be very careful when you use this option.</li><li><b>Delete file</b>&nbsp;&nbsp;This option lets you erase all knowledge of the Media file from the current database.  Other databases will not be affected.  If this Media file is not mentioned in any other database, it, and its associated thumbnail, will be deleted.</li><li><b>Remove object</b>&nbsp;&nbsp;This option lets you erase all knowledge of the Media file from the current database.  Other databases will not be affected.  The Media file, and its associated thumbnail, will not be deleted.</li><li><b>Remove links</b>&nbsp;&nbsp;This option lets you remove all links to the media object from the current database.  The file will not be deleted, and the Media object by which this file is known to the current database will be retained.  Other databases will not be affected.</li><li><b>Set link</b>&nbsp;&nbsp;This option lets you establish links between the media file and persons, families, or sources of the current database.  When necessary, <b>webtrees</b> will also create the Media object by which the Media file is known to the database.</li><li><b>Create thumbnail</b>&nbsp;&nbsp;When you select this option, <b>webtrees</b> will create the missing thumbnail.</li></ul>', $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
@@ -1547,16 +1487,6 @@ case 'register_gedcomid':
 case 'remove_person':
 	$title=WT_I18N::translate('Remove person');
 	$text=WT_I18N::translate('Click this link to remove the person from the timeline.');
-	break;
-
-case 'reorder_children':
-	$title=WT_I18N::translate('Reorder children');
-	$text=WT_I18N::translate('Children are displayed in the order in which they appear in the family record.  Children are not automatically sorted by birth date because often the birth dates of some of the children are uncertain but the order of their birth <u>is</u> known.<br /><br />This option will allow you to change the order of the children within the family\'s record.  Since you might want to sort the children by their birth dates, there is a button you can press that will do this for you.<br /><br />You can also drag-and-drop any information box to change the order of the children.  As you move the mouse cursor over an information box, its shape will change to a pair of double-headed crossed arrows. If you push and hold the left mouse button before moving the mouse cursor, the information box will follow the mouse cursor up or down in the list.  As the information box is moved, the other boxes will make room.  When you release the left mouse button, the information box will take its new place in the list.');
-	break;
-
-case 'reorder_families':
-	$title=WT_I18N::translate('Reorder families');
-	$text=WT_I18N::translate('Families on the Close Relatives tab are displayed in the order in which they appear in the individual\'s GEDCOM record.  Families are not sorted by the marriage date because often the marriage dates are unknown but the order of the marriages <u>is</u> known.<br /><br />This option will allow you to change the order of the families in which they are listed on the Close Relatives tab.  If you want to sort the families by their marriage dates, there is a button you can press that will automatically do this for you.');
 	break;
 
 case 'role':

@@ -358,7 +358,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			}
 
 			if (count($this->record->getSpouseFamilies())>1) {
-				$submenu = new WT_Menu(WT_I18N::translate('Reorder families'), '#', 'menu-indi-orderfam');
+				$submenu = new WT_Menu(WT_I18N::translate('Re-order families'), '#', 'menu-indi-orderfam');
 				$submenu->addOnclick("return reorder_families('".$this->record->getXref()."');");
 				$menu->addSubmenu($submenu);
 			}
@@ -468,7 +468,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 
 	/**
 	* build an array of Person that will be used to build a list
-	* of family members on the close relatives tab
+	* of family members on the families tab
 	* @param Family $family the family we are building for
 	* @return array an array of Person that will be used to iterate through on the indivudal.php page
 	*/

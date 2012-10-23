@@ -158,28 +158,22 @@ if ($type=='INDI') {
 
 if (strstr($action, 'addchild')) {
 	if (empty($famid)) {
-		echo '<h4>', WT_I18N::translate('Add an unlinked person'), '</h4>', help_link('edit_add_unlinked_person');
-	} elseif ($gender=='F') {
-		echo '<h4>', WT_I18N::translate('Add daughter'), '</h4>', help_link('edit_add_child');
-	} elseif ($gender=='M') {
-		echo '<h4>', WT_I18N::translate('Add son'), '</h4>', help_link('edit_add_child');
+		echo '<h4>', WT_I18N::translate('Add an unlinked person'), '</h4>';
 	} else {
-		echo '<h4>', WT_I18N::translate('Add child'), '</h4>', help_link('edit_add_child');
+		echo '<h4>', WT_I18N::translate('Add a new child'), '</h4>';
 	}
 } elseif (strstr($action, 'addspouse')) {
 	if ($famtag=='WIFE') {
-		echo '<h4>', WT_I18N::translate('Add wife'), '</h4>';
+		echo '<h4>', WT_I18N::translate('Add a new wife'), '</h4>';
 	} else {
-		echo '<h4>', WT_I18N::translate('Add husband'), '</h4>';
+		echo '<h4>', WT_I18N::translate('Add a new husband'), '</h4>';
 	}
-	echo help_link('edit_add_spouse');
 } elseif (strstr($action, 'addnewparent')) {
 	if ($famtag=='WIFE') {
 		echo '<h4>', WT_I18N::translate('Add a new mother'), '</h4>';
 	} else {
 		echo '<h4>', WT_I18N::translate('Add a new father'), '</h4>';
 	}
-	echo help_link('edit_add_parent');
 } elseif (strstr($action, 'addopfchild')) {
 	echo '<h4>', WT_I18N::translate('Add a child to create a one-parent family'), '</h4>', help_link('add_opf_child');
 }
@@ -1716,7 +1710,7 @@ case 'reorder_children':
 		//-- update the order numbers after drag-n-drop sorting is complete
 		->addInlineJavascript('jQuery("#reorder_list").bind("sortupdate", function(event, ui) { jQuery("#"+jQuery(this).attr("id")+" input").each( function (index, value) { value.value = index+1; }); });');
 
-	echo '<br><b>', WT_I18N::translate('Re-order children'), '</b>', help_link('reorder_children');
+	echo '<br><b>', WT_I18N::translate('Re-order children'), '</b>';
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="action" value="reorder_update">
@@ -2111,7 +2105,7 @@ case 'reorder_fams':
 		//-- update the order numbers after drag-n-drop sorting is complete
 		->addInlineJavascript('jQuery("#reorder_list").bind("sortupdate", function(event, ui) { jQuery("#"+jQuery(this).attr("id")+" input").each( function (index, value) { value.value = index+1; }); });');
 
-	echo "<br><b>", WT_I18N::translate('Reorder families'), "</b>", help_link('reorder_families');
+	echo "<br><b>", WT_I18N::translate('Re-order families'), "</b>";
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="action" value="reorder_fams_update">
