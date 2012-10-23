@@ -31,4 +31,9 @@
 
 exit;
 
-/* I18N: This message is deleted in webtrees-1.3.3  */ //WT_I18N::translate('');
+/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Keep links');
+/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Automatically protect new images');
+/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Protect thumbnails of protected images');
+/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('When a multimedia link is found starting with for example http://, ftp://, mms:// it will not be altered when set to <b>Yes</b>. For example, http://www.myfamily.com/photo/dad.jpg will stay http://www.myfamily.com/photo/dad.jpg.  When set to <b>No</b>, the link will be handled as a standard reference and the media depth will be used.  For example: http://www.myfamily.com/photo/dad.jpg will be changed to ./media/dad.jpg');
+/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('When an image is in the protected Media directory, should its thumbnail be protected as well?');
+/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Should new images automatically go in the protected media directory when they are uploaded?');
