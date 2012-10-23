@@ -472,7 +472,7 @@ if (WT_Site::preference('LOGIN_URL')) {
 
 // If we are in the middle of importing (or have not imported) the current tree,
 // then stay on the manage-trees page.
-if (!WT_IMPORTED && WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='import.php' && WT_SCRIPT_NAME!='login.php' && WT_SCRIPT_NAME!='help_text.php') {
+if (!WT_IMPORTED && WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='import.php' && WT_SCRIPT_NAME!='login.php' && WT_SCRIPT_NAME!='help_text.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt.php') {
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
 	exit;
 }
