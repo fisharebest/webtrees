@@ -401,7 +401,11 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 
 		//  Get the title of the media
 		$media=WT_Media::getInstance($rowm['m_media']);
-		$mediaTitle = $media->getFullName();
+		if ($media) {
+			$mediaTitle = $media->getFullName();
+		} else {
+			$mediaTitle = '';
+		}
 
 		$mainMedia = check_media_depth($rowm['m_file'], 'NOTRUNC');
 		$mainFileExists = true;
