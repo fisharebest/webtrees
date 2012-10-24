@@ -58,16 +58,9 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		$tv = new TreeView('tvTab');
 		list($html, $js) = $tv->drawViewport($controller->record->getXref(), 3);
 		return
-			'<script src="'.$this->js().'"></script>'.
-			$html.
-			'<script>
-			if (document.createStyleSheet) {
-				document.createStyleSheet("'.$this->css().'"); // For Internet Explorer
-			} else {
-				jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="'.$this->css().'">\');
-			}'.
-			$js.
-			'</script>';
+			'<script src="' . $this->js() . '"></script>' .
+			'<script>' . $js . '</script>' .
+			$html;
 	}
 
 	// Implement WT_Module_Tab
@@ -87,6 +80,19 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
+		// We cannot use jQuery("head").append(<link rel="stylesheet" ...as jQuery is not loaded at this time
+		return
+			'<script>
+			if (document.createStyleSheet) {
+				document.createStyleSheet("'.$this->css().'"); // For Internet Explorer
+			} else {
+				var newSheet=document.createElement("link");
+    		newSheet.setAttribute("rel","stylesheet");
+    		newSheet.setAttribute("type","text/css");
+   			newSheet.setAttribute("href","'.$this->css().'");
+		    document.getElementsByTagName("head")[0].appendChild(newSheet);
+			}
+			</script>';
 	}
 
 	// Extend WT_Module
