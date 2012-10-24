@@ -164,11 +164,10 @@ function check_media_structure() {
 * - $media["LINKS"]       Array of gedcom ids that this is linked to
 * - $media["CHANGE"]      Indicates the type of change waiting admin approval
 *
-* @param boolean $random If $random is true then the function will return 5 random pictures.
 * @return mixed A media list array.
 */
 
-function get_medialist($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true, $excludeLinks = false) {
+function get_medialist($currentdir = false, $directory = "", $linkonly = false, $includeExternal = true, $excludeLinks = false) {
 	global $MEDIA_DIRECTORY_LEVELS, $BADMEDIA, $thumbdir, $MEDIATYPE;
 	global $level, $dirs, $MEDIA_DIRECTORY;
 
@@ -178,17 +177,10 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 	if (empty($directory))
 		$directory = $MEDIA_DIRECTORY;
 	$myDir = str_replace($MEDIA_DIRECTORY, "", $directory);
-	if ($random) {
-		$rows=
-			WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? ORDER BY RAND() LIMIT 5")
-			->execute(array(WT_GED_ID))
-			->fetchAll();
-	} else {
-		$rows=
-			WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND (m_file LIKE ? OR m_file LIKE ?) ORDER BY m_id desc")
-			->execute(array(WT_GED_ID, "%{$myDir}%", "%://%"))
-			->fetchAll();
-	}
+	$rows=
+		WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND (m_file LIKE ? OR m_file LIKE ?) ORDER BY m_id desc")
+		->execute(array(WT_GED_ID, "%{$myDir}%", "%://%"))
+		->fetchAll();
 	$mediaObjects = array ();
 
 	// Build the raw medialist array,
@@ -446,11 +438,10 @@ if (!$excludeLinks) {
 * - REMOVED $media["LINKS"]       Array of gedcom ids that this is linked to
 * - REMOVED $media["CHANGE"]      Indicates the type of change waiting admin approval
 *
-* @param boolean $random If $random is true then the function will return 5 random pictures.
 * @return mixed A media list array.
 */
 
-function get_medialist2($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true, $sortby = 'title') {
+function get_medialist2($currentdir = false, $directory = "", $linkonly = false, $includeExternal = true, $sortby = 'title') {
 	global $MEDIA_DIRECTORY_LEVELS, $BADMEDIA, $thumbdir, $MEDIATYPE;
 	global $level, $dirs, $MEDIA_DIRECTORY;
 
@@ -464,12 +455,7 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 	if (empty($directory)) $directory = $MEDIA_DIRECTORY;
 	$myDir = str_replace($MEDIA_DIRECTORY, "", $directory);
 	$orderby = ($sortby == 'file') ? " ORDER BY SUBSTRING_INDEX(m_file, '/', -1) " : ' ORDER by m_titl ';
-	if ($random) {
-		$rows=
-			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? ORDER BY RAND() LIMIT 5")
-			->execute(array(WT_GED_ID))
-			->fetchAll();
-	} elseif ($includeExternal) {
+	if ($includeExternal) {
 		$rows=
 			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND (m_file LIKE ? OR m_file LIKE ?) ".$orderby." COLLATE '".WT_I18N::$collation."'")
 			->execute(array(WT_GED_ID, "%{$myDir}%", "%://%"))

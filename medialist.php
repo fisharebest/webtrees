@@ -113,7 +113,7 @@ if ($build == 'yes') {
 	}
 	// show external links only if looking at top level directory
 	$showExternal = ($folder == $MEDIA_DIRECTORY) ? true : false;
-	$medialist=get_medialist2($currentdironly, $folder, true, false, $showExternal, $sortby);
+	$medialist=get_medialist2($currentdironly, $folder, true, $showExternal, $sortby);
 
 	foreach ($medialist as $key => $media) {
 		// remove all private media objects

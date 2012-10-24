@@ -925,7 +925,7 @@ if (check_media_structure()) {
  */
 		// only check for externalLinks when dealing with the root folder
 		$showExternal = ($directory == $MEDIA_DIRECTORY) ? true : false;
-		$medialist=get_medialist(true, $directory, false, false, $showExternal);
+		$medialist=get_medialist(true, $directory, false, $showExternal);
 
 		// Show link to previous folder
 		$levels = explode('/', $directory);
