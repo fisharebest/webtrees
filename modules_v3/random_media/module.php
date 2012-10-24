@@ -48,212 +48,158 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		$start   =get_block_setting($block_id, 'start',    false) || safe_GET_bool('start');
 		$block   =get_block_setting($block_id, 'block',    true);
 
-		$filters=array(
-			'avi'        =>get_block_setting($block_id, 'filter_avi', false),
-			'bmp'        =>get_block_setting($block_id, 'filter_bmp', true),
-			'gif'        =>get_block_setting($block_id, 'filter_gif', true),
-			'jpg'        =>get_block_setting($block_id, 'filter_jpeg', true),
-			'jpeg'       =>get_block_setting($block_id, 'filter_jpeg', true),
-			'mp3'        =>get_block_setting($block_id, 'filter_mp3', false),
-			'ole'        =>get_block_setting($block_id, 'filter_ole', true),
-			'pcx'        =>get_block_setting($block_id, 'filter_pcx', true),
-			'pdf'        =>get_block_setting($block_id, 'filter_pdf', false),
-			'png'        =>get_block_setting($block_id, 'filter_png', true),
-			'tiff'       =>get_block_setting($block_id, 'filter_tiff', true),
-			'wav'        =>get_block_setting($block_id, 'filter_wav', false),
-			'audio'      =>get_block_setting($block_id, 'filter_audio', false),
-			'book'       =>get_block_setting($block_id, 'filter_book', true),
-			'card'       =>get_block_setting($block_id, 'filter_card', true),
-			'certificate'=>get_block_setting($block_id, 'filter_certificate', true),
-			'coat'       =>get_block_setting($block_id, 'filter_coat', true),
-			'document'   =>get_block_setting($block_id, 'filter_document', true),
-			'electronic' =>get_block_setting($block_id, 'filter_electronic', true),
-			'fiche'      =>get_block_setting($block_id, 'filter_fiche', true),
-			'film'       =>get_block_setting($block_id, 'filter_film', true),
-			'magazine'   =>get_block_setting($block_id, 'filter_magazine', true),
-			'manuscript' =>get_block_setting($block_id, 'filter_manuscript', true),
-			'map'        =>get_block_setting($block_id, 'filter_map', true),
-			'newspaper'  =>get_block_setting($block_id, 'filter_newspaper', true),
-			'other'      =>get_block_setting($block_id, 'filter_other', true),
-			'painting'   =>get_block_setting($block_id, 'filter_painting', true),
-			'photo'      =>get_block_setting($block_id, 'filter_photo', true),
-			'tombstone'  =>get_block_setting($block_id, 'filter_tombstone', true),
-			'video'      =>get_block_setting($block_id, 'filter_video', false),
-		);
-		if (WT_DEBUG) {
-			echo "<br>";print_r($filters);echo "<br>\n";
+		// We can apply the filters using SQL
+		// Do not use "ORDER BY RAND()" - it is very slow on large tables.  Use PHP::array_rand() instead.
+		$all_media=WT_DB::prepare(
+			"SELECT m_media FROM `##media`" .
+			" WHERE m_gedfile=?" .
+			" AND m_ext IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" .
+			" AND (".
+			"  SUBSTRING_INDEX(SUBSTRING_INDEX(m_gedrec, '2 TYPE ', -1), '\n', 1) IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" .
+			"  OR m_gedrec NOT LIKE '%2 TYPE %'" .
+			" )"
+		)->execute(array(
+			WT_GED_ID,
+			get_block_setting($block_id, 'filter_avi',         false) ? 'avi'         : NULL,
+			get_block_setting($block_id, 'filter_bmp',         true ) ? 'bmp'         : NULL,
+			get_block_setting($block_id, 'filter_gif',         true ) ? 'gif'         : NULL,
+			get_block_setting($block_id, 'filter_jpg',         true ) ? 'jpg'         : NULL,
+			get_block_setting($block_id, 'filter_jpeg',        true ) ? 'jpeg'        : NULL,
+			get_block_setting($block_id, 'filter_mp3',         false) ? 'mp3'         : NULL,
+			get_block_setting($block_id, 'filter_ole',         true ) ? 'ole'         : NULL,
+			get_block_setting($block_id, 'filter_pcx',         true ) ? 'pcx'         : NULL,
+			get_block_setting($block_id, 'filter_pdf',         false) ? 'pdf'         : NULL,
+			get_block_setting($block_id, 'filter_png',         true ) ? 'png'         : NULL,
+			get_block_setting($block_id, 'filter_tiff',        true ) ? 'tiff'        : NULL,
+			get_block_setting($block_id, 'filter_wav',         false) ? 'wav'         : NULL,
+			get_block_setting($block_id, 'filter_audio',       false) ? 'audio'       : NULL,
+			get_block_setting($block_id, 'filter_book',        true ) ? 'book'        : NULL,
+			get_block_setting($block_id, 'filter_card',        true ) ? 'card'        : NULL,
+			get_block_setting($block_id, 'filter_certificate', true ) ? 'certificate' : NULL,
+			get_block_setting($block_id, 'filter_coat',        true ) ? 'coat'        : NULL,
+			get_block_setting($block_id, 'filter_document',    true ) ? 'document'    : NULL,
+			get_block_setting($block_id, 'filter_electronic',  true ) ? 'electronic'  : NULL,
+			get_block_setting($block_id, 'filter_fiche',       true ) ? 'fiche'       : NULL,
+			get_block_setting($block_id, 'filter_film',        true ) ? 'film'        : NULL,
+			get_block_setting($block_id, 'filter_magazine',    true ) ? 'magazine'    : NULL,
+			get_block_setting($block_id, 'filter_manuscript',  true ) ? 'manuscript'  : NULL,
+			get_block_setting($block_id, 'filter_map',         true ) ? 'map'         : NULL,
+			get_block_setting($block_id, 'filter_newspaper',   true ) ? 'newspaper'   : NULL,
+			get_block_setting($block_id, 'filter_other',       true ) ? 'other'       : NULL,
+			get_block_setting($block_id, 'filter_painting',    true ) ? 'painting'    : NULL,
+			get_block_setting($block_id, 'filter_photo',       true ) ? 'photo'       : NULL,
+			get_block_setting($block_id, 'filter_tombstone',   true ) ? 'tombstone'   : NULL,
+			get_block_setting($block_id, 'filter_video',       false) ? 'video'       : NULL,
+		))->fetchOneColumn();
+
+		// Keep looking through the media until a suitable one is found.
+		$random_media=null;
+		while ($all_media) {
+			$n=array_rand($all_media);
+			$media=WT_Media::getInstance($all_media[$n]);
+			if ($media->canDisplayDetails() && !$media->isExternal() && $media->fileExists('thumb')) {
+				// Check if it is linked to a suitable individual
+				foreach ($media->fetchLinkedIndividuals() as $indi) {
+					if (
+						$filter=='all' ||
+						$filter=='indi'  && strpos($indi->getGedcomRecord(), '\n1 OBJE @' . $media->getXref.'@') !==false ||
+						$filter=='event' && strpos($indi->getGedcomRecord(), '\n2 OBJE @' . $media->getXref.'@') !==false
+					) {
+						// Found one :-)
+						$random_media=$media;
+						break 2;
+					}
+				}
+			}
+			unset($all_media[$n]);
+		};
+
+		// Nothing found :-(
+		if (!$random_media) {
+			return false;
 		}
-		if ($cfg) {
-			foreach (array('filter', 'controls', 'start', 'filter_avi', 'filter_bmp', 'filter_gif', 'filter_jpeg', 'filter_mp3', 'filter_ole', 'filter_pcx', 'filter_pdf', 'filter_png', 'filter_tiff', 'filter_wav', 'filter_audio', 'filter_book', 'filter_card', 'filter_certificate', 'filter_coat', 'filter_document', 'filter_electronic', 'filter_fiche', 'filter_film', 'filter_magazine', 'filter_manuscript', 'filter_map', 'filter_newspaper', 'filter_other', 'filter_painting', 'filter_photo', 'filter_tombstone', 'filter_video', 'block') as $name) {
-				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
-				}
-			}
+
+		$id=$this->getName().$block_id;
+		$class=$this->getName().'_block';
+		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
+			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		} else {
+			$title='';
 		}
-
-		$medialist = array();
-		$foundlist = array();
-
-		$medialist = get_medialist(false, '', true, true);
-		$ct = count($medialist);
-		if ($ct>0) {
-			$i=0;
-			$disp = false;
-			//-- try up to 40 times to get a media to display
-			while ($i<40) {
-				$error = false;
-				$value = array_rand($medialist);
-				$mediaobject = WT_Media::getInstance($medialist[$value]["XREF"]);
-				if (WT_DEBUG) {
-					echo "<br>";print_r($medialist[$value]);echo "<br>\n";
-					$mediaobject->fileExists('main');
-					$mediaobject->fileExists('thumb');
-					echo "<br>";print_r($mediaobject);echo "<br>\n";
-					echo "Trying ".$mediaobject->getXref()."<br>\n";
-				}
-				$links = $medialist[$value]["LINKS"];
-				$disp = ($mediaobject->fileExists('main') || $mediaobject->isExternal())&& $medialist[$value]["LINKED"] && $medialist[$value]["CHANGE"]!="delete" ;
-				if (WT_DEBUG && !$disp && !$error) {
-					$error = true;
-					echo "<span class=\"error\">".$mediaobject->getXref()." File does not exist, or is not linked to anyone, or is marked for deletion.</span><br>";
-				}
-
-				$disp = $disp && $mediaobject->canDisplayDetails();
-				if (WT_DEBUG && !$disp && !$error) {
-					$error = true;
-					echo "<span class=\"error\">".$mediaobject->getXref()." Failed to pass privacy</span><br>";
-				}
-
-				if ($block && !$mediaobject->isExternal()) {
-					$disp = $disp && $mediaobject->fileExists('thumb'); // external files are ok w/o thumb
-				}
-				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." thumbnail file could not be found</span><br>";}
-
-				$mediaformat=strtolower($mediaobject->getMediaFormat());
-				if ($mediaformat) {
-					if (!array_key_exists($mediaformat, $filters) || !$filters[$mediaformat]) {
-						$disp=false;
-					}
-				}
-				$mediatype=strtolower($mediaobject->getMediaType());
-				if ($mediatype) {
-					if (!array_key_exists($mediatype, $filters) || !$filters[$mediatype]) {
-						$disp=false;
-					}
-				}
-				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." failed Format or Type filters</span><br>";}
-
-				if ($disp && count($links) != 0) {
-					if ($disp && $filter!="all") {
-						// Apply filter criteria
-						$ct = preg_match("/0 (@.*@) OBJE/", $mediaobject->getGedcomRecord(), $match);
-						$objectID = $match[1];
-						//-- we could probably use the database for this filter
-						foreach ($links as $key=>$type) {
-							$gedrec = find_gedcom_record($key, WT_GED_ID);
-							$ct2 = preg_match("/(\d) OBJE {$objectID}/", $gedrec, $match2);
-							if ($ct2>0) {
-								$objectRefLevel = $match2[1];
-								if ($filter=="indi" && $objectRefLevel!="1") $disp = false;
-								if ($filter=="event" && $objectRefLevel=="1") $disp = false;
-								if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." failed to pass config filter</span><br>";}
-							}
-							else $disp = false;
-						}
-					}
-				}
-				//-- leave the loop if we find an image that works
-				if ($disp) {
-					break;
-				}
-				//-- otherwise remove the private media item from the list
-				else {
-					if (WT_DEBUG) echo "<span class=\"error\">".$mediaobject->getXref()." Will not be shown</span><br>";
-					unset($medialist[$value]);
-				}
-				//-- if there are no more media items, then try to get some more
-				if (count($medialist)==0) $medialist = get_medialist(false, '', true, true);
-				$i++;
-			}
-			if (!$disp) {
-				return false;
-			}
-			$id=$this->getName().$block_id;
-			$class=$this->getName().'_block';
-			if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-				$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
-			} else {
-				$title='';
-			}
-			$title.=$this->getTitle();
-			
-			$content = "<div id=\"random_picture_container$block_id\">";
-			if ($controls) {
-				if ($start) {
-					$icon_class = 'icon-media-stop';
-				} else {
-					$icon_class = 'icon-media-play';
-				}
-				$linkNextImage = '<a href="#" onclick="jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;" title="'.WT_I18N::translate('Next image').'" class="icon-media-next"></a>';
-				$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br>";
-				if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
-				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"".$icon_class."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop').'"></a>';
-				if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
-				$content .= '</div><script>
-					var play = false;
-						function togglePlay() {
-							if (play) {
-								play = false;
-								jQuery("#play_stop").removeClass("icon-media-stop").addClass("icon-media-play");
-							}
-							else {
-								play = true;
-								playSlideShow();
-								jQuery("#play_stop").removeClass("icon-media-play").addClass("icon-media-stop");
-							}
-						}
-
-						function playSlideShow() {
-							if (play) {
-								window.setTimeout("reload_image()", 6000);
-							}
-						}
-						function reload_image() {
-							if (play) {
-								jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'&start=1");
-							}
-						}
-					</script>';
-			}
+		$title.=$this->getTitle();
+		
+		$content = "<div id=\"random_picture_container$block_id\">";
+		if ($controls) {
 			if ($start) {
-				$content .= '<script>togglePlay();</script>';
-			}
-			$content .= '<div class="center" id="random_picture_content'.$block_id.'">';
-			$content .= '<table id="random_picture_box"><tr><td';
-
-			if ($block) $content .= ' class="details1"';
-			else $content .= ' class="details2"';
-			$content .= ' >';
-			$content .= $mediaobject->displayMedia(array('align'=>'none', 'uselightbox'=>false, 'uselightbox_fallback'=>false));
-
-			if ($block) $content .= '<br>';
-			else $content .= '</td><td class="details2">';
-			$content .= '<a href="'.$mediaobject->getHtmlUrl().'"><b>'. $mediaobject->getFullName() .'</b></a><br>';
-
-			ob_start();
-			$content .= $mediaobject->printLinkedRecords('normal');
-			$content .= ob_get_clean();
-			$content .= "<br><div class=\"indent" . ($TEXT_DIRECTION=="rtl"?"_rtl":"") . "\">";
-			$content .= print_fact_notes($mediaobject->getGedcomRecord(), "1", false, true);
-			$content .= "</div>";
-			$content .= "</td></tr></table>";
-			$content .= "</div>"; // random_picture_content
-			$content .= "</div>"; // random_picture_container
-			if ($template) {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
+				$icon_class = 'icon-media-stop';
 			} else {
-				return $content;
+				$icon_class = 'icon-media-play';
 			}
+			$linkNextImage = '<a href="#" onclick="jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;" title="'.WT_I18N::translate('Next image').'" class="icon-media-next"></a>';
+			$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br>";
+			if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
+			$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"".$icon_class."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop').'"></a>';
+			if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
+			$content .= '</div><script>
+				var play = false;
+					function togglePlay() {
+						if (play) {
+							play = false;
+							jQuery("#play_stop").removeClass("icon-media-stop").addClass("icon-media-play");
+						}
+						else {
+							play = true;
+							playSlideShow();
+							jQuery("#play_stop").removeClass("icon-media-play").addClass("icon-media-stop");
+						}
+					}
+
+					function playSlideShow() {
+						if (play) {
+							window.setTimeout("reload_image()", 6000);
+						}
+					}
+					function reload_image() {
+						if (play) {
+							jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'&start=1");
+						}
+					}
+				</script>';
+		}
+		if ($start) {
+			$content .= '<script>togglePlay();</script>';
+		}
+		$content .= '<div class="center" id="random_picture_content'.$block_id.'">';
+		$content .= '<table id="random_picture_box"><tr><td';
+
+		if ($block) {
+			$content .= ' class="details1"';
+		} else {
+			$content .= ' class="details2"';
+		}
+		$content .= ' >';
+		$content .= $random_media->displayMedia(array('align'=>'none', 'uselightbox'=>false, 'uselightbox_fallback'=>false));
+
+		if ($block) {
+			$content .= '<br>';
+		} else {
+			$content .= '</td><td class="details2">';
+		}
+		$content .= '<a href="'.$random_media->getHtmlUrl().'"><b>'. $random_media->getFullName() .'</b></a><br>';
+
+		ob_start();
+		$content .= $random_media->printLinkedRecords('normal');
+		$content .= ob_get_clean();
+		$content .= "<br><div class=\"indent" . ($TEXT_DIRECTION=="rtl"?"_rtl":"") . "\">";
+		$content .= print_fact_notes($random_media->getGedcomRecord(), "1", false, true);
+		$content .= "</div>";
+		$content .= "</td></tr></table>";
+		$content .= "</div>"; // random_picture_content
+		$content .= "</div>"; // random_picture_container
+		if ($template) {
+			require WT_THEME_DIR.'templates/block_main_temp.php';
+		} else {
+			return $content;
 		}
 	}
 
