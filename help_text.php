@@ -73,7 +73,7 @@ case 'CAUS':
 	break;
 
 case 'CEME':
-	$title=WT_Gedcom_Tag::getLabel('Cemetery');
+	$title=WT_Gedcom_Tag::getLabel('CEME');
 	$text=WT_I18N::translate('Enter the name of the cemetery or other resting place where individual is buried.');
 	break;
 

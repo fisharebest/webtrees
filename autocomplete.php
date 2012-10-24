@@ -140,9 +140,11 @@ case 'CEME': // Cemetery fields, that contain the search term
 	foreach ($rows as $row) {
 		$person=WT_Person::getInstance($row);
 		if (preg_match('/\n2 CEME (.*'.preg_quote($term, '/').'.*)/i', $person->getGedcomRecord(), $match)) {
-			$data[]=$match[1];
+			if (!in_array($match[1], $data)) {
+				$data[]=$match[1];
+			}
 		}
-	}	
+	}
 	echo json_encode($data);
 	exit;
 

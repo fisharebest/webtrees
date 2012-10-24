@@ -132,7 +132,7 @@ jQuery("input[name=place2], input[id=birthplace], input[id=marrplace], input[id=
 });
 
 // INDI:BURI:CEME
-jQuery("input[id=BURI_CEME]").autocomplete({
+jQuery("input[id*=_CEME]").autocomplete({
 	source: "autocomplete.php?field=CEME"
 });
 
