@@ -414,36 +414,11 @@ class WT_Media extends WT_GedcomRecord {
 			} else {
 				return $this->getFilename();
 			}
-		} else if ($this->getXref()) {
-			// this file has gedcom record
-			if ($this->fileExists($which) == 3) {
-				// file is in protected media directory, access through media firewall
-				// 'cb' is 'cache buster', so clients will make new request if anything significant about the user or the file changes
-				$thumbstr = ($which=='thumb') ? $separator.'thumb=1' : '';
-				$downloadstr = ($download) ? $separator.'dl=1' : '';
-				return 'mediafirewall.php?mid='.$this->getXref().$thumbstr.$downloadstr.$separator.'ged='.rawurlencode(get_gedcom_from_id($this->ged_id)).$separator.'cb='.$this->getEtag($which);
-			} else {
-				// file is in standard media directory (or doesn't exist), no need to use media firewall script
-				if ($separator == '&') {
-					return rawurlencode($this->getLocalFilename($which));
-				} else {
-					return $this->getLocalFilename($which);
-				}
-			}
 		} else {
-			// this file is not in the gedcom
-			if ($this->fileExists($which) == 3) {
-				// file is in protected media directory, access through media firewall
-				$downloadstr = ($download) ? $separator.'dl=1' : '';
-				return 'mediafirewall.php?filename='.$this->getLocalFilename($which).$downloadstr.$separator.'cb='.$this->getEtag($which);
-			} else {
-				// file is in standard media directory (or doesn't exist), no need to use media firewall script
-				if ($separator == '&') {
-					return rawurlencode($this->getLocalFilename($which));
-				} else {
-					return $this->getLocalFilename($which);
-				}
-			}
+			// 'cb' is 'cache buster', so clients will make new request if anything significant about the user or the file changes
+			$thumbstr = ($which=='thumb') ? $separator.'thumb=1' : '';
+			$downloadstr = ($download) ? $separator.'dl=1' : '';
+			return 'mediafirewall.php?mid='.$this->getXref().$thumbstr.$downloadstr.$separator.'ged='.rawurlencode(get_gedcom_from_id($this->ged_id)).$separator.'cb='.$this->getEtag($which);
 		}
 	}
 	// Generate a URL directly to the media file, suitable for use in javascript, HTTP headers, etc.

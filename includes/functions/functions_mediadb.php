@@ -1495,12 +1495,6 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 			else
 				echo "><p class=\"sub\">" . WT_I18N::translate('Do not change to keep original file name.') . "</p>";
 		} else {
-/*   $thumbnail = thumbnail_file($fileName, true, false, $pid);
-			if (!empty($thumbnail)) {
-				echo "<img src=\"".$thumbnail."\" class=\"thumbnail\"";
-				if ($isExternal) echo " width=\"".$THUMBNAIL_WIDTH."\"";
-				echo " alt=\"\" title=\"\">";
-			} */
 			echo $fileName;
 			echo "<input name=\"filename\" type=\"hidden\" value=\"" . htmlspecialchars($fileName) . "\" size=\"40\">";
 		}
@@ -1952,16 +1946,6 @@ function cropImage($image, $dest_image, $left, $top, $right, $bottom) { //$image
 		imagegif($img, $dest_image);
 		imagedestroy($img);
 		break;
-/*  "wbmp" is NOT "Windows BMP" -- it's "Wireless BMP", a simple B&W bit mapped format
-		if (!function_exists('imagecreatefromwbmp') || !function_exists('imagewbmp')) break;
-		$img = imagecreatetruecolor(($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		$org_img = imagecreatefromwbmp($image);
-		$ims = @getimagesize($image);
-		imagecopyresampled($img, $org_img, 0, 0, $left, $top, $width, $height, ($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		imagewbmp($img, $dest_image);
-		imagedestroy($img);
-		break;
-*/
 	}
 }
 
