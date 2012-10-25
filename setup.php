@@ -194,7 +194,7 @@ if (empty($_POST['lang'])) {
 	if (!$errors) {
 		echo '<input type="hidden" name="maxcpu" value="', $maxcpu, '">';
 		echo '<input type="hidden" name="maxmem" value="', $maxmem, '">';
-		echo '<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">';
+		echo '<br><hr><input type="submit" id="btncontinue" value="', /* I18N: button label */ WT_I18N::translate('continue'), '">';
 
 	}
 	echo '</form></body></html>';
