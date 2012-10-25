@@ -1632,6 +1632,10 @@ padding:2px 5px;
 background:#eee;
 }
 
+.ui-autocomplete a.ui-state-hover {
+	font-weight:bold !important;
+}
+
 .sublinks_cell .submenuitem {
 background:#fff;
 }

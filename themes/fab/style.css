@@ -459,6 +459,10 @@ right:10px;
 	color:white;
 }
 
+.ui-autocomplete a.ui-state-hover {
+	font-weight:bold !important;
+}
+
 .center {
 	text-align:center;
 	margin-left:auto;

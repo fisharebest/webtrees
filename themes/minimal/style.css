@@ -1165,6 +1165,11 @@ a.showit:hover > span {
 .ui-autocomplete li:nth-child(odd) {
 	background-color:#eee;
 }
+
+.ui-autocomplete a.ui-state-hover {
+	font-weight:bold !important;
+}
+
 /* End of Autocomplete styles*/
 
 /* Flyout menu Styles */
