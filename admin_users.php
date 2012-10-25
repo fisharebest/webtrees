@@ -551,9 +551,8 @@ case 'cleanup':
 	<p>
 	<?php
 	if ($ucnt >0) {
-		?><input type="submit" value="<?php echo WT_I18N::translate('Continue'); ?>">&nbsp;&nbsp;<?php
+		?><input type="submit" value="<?php echo WT_I18N::translate('continue'); ?>">&nbsp;&nbsp;<?php
 	} ?>
-	<input type="button" value="<?php echo WT_I18N::translate('Back'); ?>" onclick="window.location='admin_users.php';">
 	</p>
 	</form><?php
 	break;

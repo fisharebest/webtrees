@@ -103,7 +103,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 					'<input type="text" id="new_passwd_username" name="new_passwd_username" value="">
 				</label>
 			</div>
-			<div><input type="submit" value="'. WT_I18N::translate('Continue'). '"></div>
+			<div><input type="submit" value="'. WT_I18N::translate('continue'). '"></div>
 			</form>
 		</div>'; //"new_passwd"
 		$content.= '</div>';//"login-box"

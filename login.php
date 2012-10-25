@@ -185,7 +185,7 @@ default:
 				'<input type="text" id="new_passwd_username" name="new_passwd_username" value="">
 			</label>
 		</div>
-		<div><input type="submit" value="', /* I18N: button label */ WT_I18N::translate('Continue'), '"></div>
+		<div><input type="submit" value="', /* I18N: button label */ WT_I18N::translate('continue'), '"></div>
 		</form>
 	</div>'; //"new_passwd"
 	echo '</div>'; //"login-box"
@@ -439,7 +439,7 @@ case 'register':
 			->addInlineJavascript('function regex_quote(str) {return str.replace(/[\\\\.?+*()[\](){}|]/g, "\\\\$&");}');
 
 		echo '<div id="login-register-page">
-			<h2>', WT_I18N::translate('Request new user account'), '</h2>';
+			<h2>', $controller->getPageTitle(), '</h2>';
 			if ($SHOW_REGISTER_CAUTION) {
 				echo '<div id="register-text">';
 				echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>');
@@ -483,7 +483,7 @@ case 'register':
 				</div>
 				<hr>
 				<div id="registration-submit">
-					<input type="submit" value="', WT_I18N::translate('Request new user account'), '">
+					<input type="submit" value="', WT_I18N::translate('continue'), '">
 				</div>
 			</form>
 		</div>

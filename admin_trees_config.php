@@ -1524,11 +1524,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			<table border="0">
 				<tr>
 					<td style="padding: 5px" class="topbottombar">
-						<div class="btn">
 						<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php echo WT_I18N::translate('Save'); ?>">
-						&nbsp;&nbsp;
-						<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php echo WT_I18N::translate('Reset'); ?>">
-						</div>
 					</td>
 				</tr>
 			</table>
