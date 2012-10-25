@@ -43,23 +43,10 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 	}
 }
 
-if (!empty($_POST['action']) && $_POST['action']=='download') {
-	header('Content-Type: text/plain');
-	header('Content-Disposition: attachment; filename="'.WT_CONFIG_FILE.'"');
-	echo '; <?php exit; ?> DO NOT DELETE THIS LINE'."\r\n";
-	echo 'dbhost="', addcslashes($_POST['dbhost'], '"').'"'."\r\n";
-	echo 'dbport="', addcslashes($_POST['dbport'], '"').'"'."\r\n";
-	echo 'dbuser="', addcslashes($_POST['dbuser'], '"').'"'."\r\n";
-	echo 'dbpass="', addcslashes($_POST['dbpass'], '"').'"'."\r\n";
-	echo 'dbname="', addcslashes($_POST['dbname'], '"').'"'."\r\n";
-	echo 'tblpfx="', addcslashes($_POST['tblpfx'], '"').'"'."\r\n";
-	exit;
-}
-
-header('Content-Type: text/html; charset=UTF-8');
 
 if (version_compare(PHP_VERSION, '5.2')<0) {
 	// Our translation system requires PHP 5.2, so we cannot translate this message :-(
+	header('Content-Type: text/html; charset=UTF-8');
 	echo
 		'<!DOCTYPE html>',
 		'<html lang="en" dir="ltr">',
@@ -95,6 +82,11 @@ define('WT_PRIV_USER',   1);
 define('WT_PRIV_NONE',   0);
 define('WT_PRIV_HIDE',  -1);
 
+if (file_exists(WT_DATA_DIR.WT_CONFIG_FILE)) {
+	header('Location: index.php');
+	exit;
+}
+
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
 set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
@@ -105,6 +97,7 @@ require 'includes/functions/functions_edit.php';
 $WT_SESSION=new Zend_Session_Namespace('WEBTREES');
 define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
 
+header('Content-Type: text/html; charset=UTF-8');
 echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',
@@ -118,55 +111,12 @@ echo
 		legend {color:#81A9CB; font-style: italic; font-weight:bold; padding: 0 5px 5px; align: top;}
 		.good {color: green;}
 		.bad {color: red; font-weight: bold;}
-		.indifferent {color: blue;}
+		.info {color: blue;}
 	</style>',
 	'</head><body>',
 	'<h1>', WT_I18N::translate('Setup wizard for <b>webtrees</b>'), '</h1>';
 
-if (file_exists(WT_DATA_DIR.WT_CONFIG_FILE)) {
-	$error=false;
-	$warning=false;
-	echo '<p class="good">', WT_I18N::translate('The configuration file has been successfully uploaded to the server.'), '</p>';
-	echo '<p>', WT_I18N::translate('Checking the access permissions...'), '</p>';
-	if (!is_readable(WT_DATA_DIR)) {
-		echo '<p class="bad">', WT_I18N::translate('The directory <b>%s</b> does not have read permission.  You must change this.', WT_DATA_DIR), '</p>';
-		$error=true;
-	} elseif (!is_writable(WT_DATA_DIR)) {
-		echo '<p class="bad">', WT_I18N::translate('The directory <b>%s</b> does not have write permission.  You must change this.', WT_DATA_DIR), '</p>';
-		$error=true;
-	} else {
-		echo '<p class="good">', WT_I18N::translate('The directory <b>%s</b> has read-write permission.  Good.', WT_DATA_DIR), '</p>';
-	}
-	if (!is_writable(WT_MEDIA_DIR)) {
-		echo '<p class="bad">', WT_I18N::translate('The directory <b>%s</b> does not have write permission.  You must change this.', WT_MEDIA_DIR), '</p>';
-		$error=true;
-	} elseif (!is_readable(WT_MEDIA_DIR)) {
-		echo '<p class="bad">', WT_I18N::translate('The directory <b>%s</b> does not have read permission.  You must change this.', WT_MEDIA_DIR), '</p>';
-		$error=true;
-	} else {
-		echo '<p class="good">', WT_I18N::translate('The directory <b>%s</b> has read-write permission.  Good.', WT_MEDIA_DIR), '</p>';
-	}
-	if (!is_readable(WT_DATA_DIR.WT_CONFIG_FILE)) {
-		echo '<p class="bad">', WT_I18N::translate('The file <b>%s</b> does not have read permission.  You must change this.', WT_DATA_DIR.WT_CONFIG_FILE), '</p>';
-		$error=true;
-	} elseif (is_writable(WT_DATA_DIR.WT_CONFIG_FILE) && DIRECTORY_SEPARATOR=='/') {
-		echo '<p class="indifferent">', WT_I18N::translate('The file <b>%s</b> has write permission.  This will work, but for better security, you should make it read only.', WT_DATA_DIR.WT_CONFIG_FILE), '</p>';
-		$warning=true;
-	} else {
-		echo '<p class="good">', WT_I18N::translate('The file <b>%s</b> has read-only permission.  Good.', WT_DATA_DIR.WT_CONFIG_FILE), '</p>';
-	}
-	if ($error || $warning) {
-		echo '<p><a href="setup.php"><button>', WT_I18N::translate('Test the permissions again'), '</button></a></p>';
-	}
-	if (!$error) {
-		echo '<p><a href="index.php"><button>', WT_I18N::translate('Start using webtrees'), '</button></a></p>';
-	}
-	// The config file exists - do not go any further.
-	// This is an important security feature, to protect existing installations.
-	exit;
-}
-
-echo '<form name="config" action="', WT_SCRIPT_NAME, '" method="post">';
+echo '<form name="config" action="', WT_SCRIPT_NAME, '" method="post" onsubmit="this.btncontinue.disabled=\'disabled\';">';
 echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -176,7 +126,7 @@ echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 if (empty($_POST['lang'])) {
 	echo
 		'<p>', WT_I18N::translate('Change language'), ' ',
-		edit_field_language('change_lang', WT_LOCALE, 'onChange="parent.location=\''.WT_SCRIPT_NAME.'?lang=\'+this.value;">'),
+		edit_field_language('change_lang', WT_LOCALE, 'onChange="parent.location=\'',  WT_SCRIPT_NAME,  '?lang=\'+this.value;">'),
 		'</p>',
 		'<h2>', WT_I18N::translate('Checking server configuration'), '</h2>';
 	$warnings=false;
@@ -191,9 +141,10 @@ if (empty($_POST['lang'])) {
 	}
 	// Recommended extensions
 	foreach (array(
-		'calendar'=>/* I18N: a program feature */ WT_I18N::translate('jewish calendar'),
-		'gd'      =>/* I18N: a program feature */ WT_I18N::translate('creating thumbnails of images'),
-		'xml'     =>/* I18N: a program feature */ WT_I18N::translate('reporting'),
+		'calendar'  => /* I18N: a program feature */ WT_I18N::translate('jewish calendar'),
+		'gd'        => /* I18N: a program feature */ WT_I18N::translate('creating thumbnails of images'),
+		'xml'       => /* I18N: a program feature */ WT_I18N::translate('reporting'),
+		'simplexml' => /* I18N: a program feature */ WT_I18N::translate('reporting'),
 	) as $extension=>$features) {
 		if (!extension_loaded($extension)) {
 			echo '<p class="bad">', WT_I18N::translate('PHP extension "%1$s" is disabled.  Without it, the following features will not work: %2$s.  Please ask your server\'s administrator to enable it.', $extension, $features), '</p>';
@@ -241,21 +192,39 @@ if (empty($_POST['lang'])) {
 		WT_I18N::translate('If your server\'s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server\'s administrator.'),
 		'</p>';
 	if (!$errors) {
-		echo '<input type="hidden" name="maxcpu" value="'.$maxcpu.'">';
-		echo '<input type="hidden" name="maxmem" value="'.$maxmem.'">';
-		echo '<br><hr><input type="submit" value="'.WT_I18N::translate('Continue').'">';
+		echo '<input type="hidden" name="maxcpu" value="', $maxcpu, '">';
+		echo '<input type="hidden" name="maxmem" value="', $maxmem, '">';
+		echo '<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">';
 
 	}
 	echo '</form></body></html>';
 	exit;
 } else {
 	// Copy these values through to the next step
-	echo '<input type="hidden" name="maxcpu" value="'.$_POST['maxcpu'].'">';
-	echo '<input type="hidden" name="maxmem" value="'.$_POST['maxmem'].'">';
+	echo '<input type="hidden" name="maxcpu" value="', $_POST['maxcpu'], '">';
+	echo '<input type="hidden" name="maxmem" value="', $_POST['maxmem'], '">';
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Step two - Database connection.
+// Step two - The data folder needs to be writable
+////////////////////////////////////////////////////////////////////////////////
+
+@file_put_contents(WT_DATA_DIR . 'test.txt', 'FAB!');
+$FAB = @file_get_contents(WT_DATA_DIR . 'test.txt');
+@unlink(WT_DATA_DIR . 'test.txt');
+
+if ($FAB != 'FAB!') {
+	echo '<h2>', realpath(WT_DATA_DIR), '</h2>';
+	echo '<p class="bad">', WT_I18N::translate('Oops!  webtrees was unable to create files in this folder.'), '</p>';
+	echo '<p>', WT_I18N::translate('This usually means that you need to change the folder permissions to 777.'), '</p>';
+	echo '<p>', WT_I18N::translate('You must change this before you can continue.'), '</p>';
+	echo '<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">';
+	echo '</form></body></html>';
+	exit;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Step three - Database connection.
 ////////////////////////////////////////////////////////////////////////////////
 
 if (empty($_POST['dbhost'])) $_POST['dbhost']='localhost';
@@ -264,7 +233,6 @@ if (empty($_POST['dbuser'])) $_POST['dbuser']='';
 if (empty($_POST['dbpass'])) $_POST['dbpass']='';
 if (empty($_POST['dbname'])) $_POST['dbname']='';
 if (empty($_POST['tblpfx'])) $_POST['tblpfx']='wt_';
-
 
 define('WT_TBLPREFIX', $_POST['tblpfx']);
 try {
@@ -310,7 +278,7 @@ if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 		WT_I18N::translate('Most sites are configured to use the default value of 3306.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Database user account'), '</td><td>',
-		'<input type="text" name="dbuser" value="', htmlspecialchars($_POST['dbuser']), '"></td><td>',
+		'<input type="text" name="dbuser" value="', htmlspecialchars($_POST['dbuser']), '" autofocus></td><td>',
 		WT_I18N::translate('This is case sensitive.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Database password'), '</td><td>',
@@ -319,21 +287,20 @@ if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 		'</td></tr><tr><td>',
 		'</td></tr></table>',
 		'</fieldset>',
-		'<br><hr><input type="submit" value="'.WT_I18N::translate('Continue').'">',
+		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
-		'<script>document.config.dbuser.focus();</script>',
 		'</body></html>';
 		exit;
 } else {
 	// Copy these values through to the next step
-	echo '<input type="hidden" name="dbhost" value="'.htmlspecialchars($_POST['dbhost']).'">';
-	echo '<input type="hidden" name="dbport" value="'.htmlspecialchars($_POST['dbport']).'">';
-	echo '<input type="hidden" name="dbuser" value="'.htmlspecialchars($_POST['dbuser']).'">';
-	echo '<input type="hidden" name="dbpass" value="'.htmlspecialchars($_POST['dbpass']).'">';
+	echo '<input type="hidden" name="dbhost" value="', htmlspecialchars($_POST['dbhost']), '">';
+	echo '<input type="hidden" name="dbport" value="', htmlspecialchars($_POST['dbport']), '">';
+	echo '<input type="hidden" name="dbuser" value="', htmlspecialchars($_POST['dbuser']), '">';
+	echo '<input type="hidden" name="dbpass" value="', htmlspecialchars($_POST['dbpass']), '">';
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Step three - Database connection.
+// Step four - Database connection.
 ////////////////////////////////////////////////////////////////////////////////
 
 // The character "`" is not valid in database or table names (even if escaped).
@@ -397,7 +364,7 @@ if (!$dbname_ok) {
 		'<fieldset><legend>', WT_I18N::translate('Database name'), '</legend>',
 		'<table border="0"><tr><td>',
 		WT_I18N::translate('Database name'), '</td><td>',
-		'<input type="text" name="dbname" value="', htmlspecialchars($_POST['dbname']), '"></td><td>',
+		'<input type="text" name="dbname" value="', htmlspecialchars($_POST['dbname']), '" autofocus></td><td>',
 		WT_I18N::translate('This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Table prefix'), '</td><td>',
@@ -405,19 +372,18 @@ if (!$dbname_ok) {
 		WT_I18N::translate('The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. "wt_" is suggested, but can be anything you want.'),
 		'</td></tr></table>',
 		'</fieldset>',
-		'<br><hr><input type="submit" value="'.WT_I18N::translate('Continue').'">',
+		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
-		'<script>document.config.dbname.focus();</script>',
 		'</body></html>';
 		exit;
 } else {
 	// Copy these values through to the next step
-	echo '<input type="hidden" name="dbname" value="'.htmlspecialchars($_POST['dbname']).'">';
-	echo '<input type="hidden" name="tblpfx" value="'.htmlspecialchars($_POST['tblpfx']).'">';
+	echo '<input type="hidden" name="dbname" value="', htmlspecialchars($_POST['dbname']), '">';
+	echo '<input type="hidden" name="tblpfx" value="', htmlspecialchars($_POST['tblpfx']), '">';
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Step four - site setup data
+// Step five - site setup data
 ////////////////////////////////////////////////////////////////////////////////
 
 if (empty($_POST['wtname'    ])) $_POST['wtname'    ]='';
@@ -450,7 +416,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'<fieldset><legend>', WT_I18N::translate('Administrator account'), '</legend>',
 		'<table border="0"><tr><td>',
 		WT_I18N::translate('Your name'), '</td><td>',
-		'<input type="text" name="wtname" value="', htmlspecialchars($_POST['wtname']), '"></td><td>',
+		'<input type="text" name="wtname" value="', htmlspecialchars($_POST['wtname']), '" autofocus></td><td>',
 		WT_I18N::translate('This is your real name, as you would like it displayed on screen.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Login ID'), '</td><td>',
@@ -543,9 +509,8 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'</td></tr><tr><td>',
 		'</td></tr></table>',
 		'</fieldset>',
-		'<br><hr><input type="submit" value="'.WT_I18N::translate('Continue').'">',
+		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
-		'<script>document.config.wtname.focus();</script>',
 		'</body></html>';
 		exit;
 } else {
@@ -567,7 +532,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Step five - We have a database connection.  Create the tables.
+// Step six  We have a database connection and a writable folder.  Do it!
 ////////////////////////////////////////////////////////////////////////////////
 
 try {
@@ -1047,32 +1012,28 @@ try {
 		"INSERT IGNORE INTO `##block` (gedcom_id, location, block_order, module_name) VALUES (-1, 'main', 1, 'gedcom_stats'), (-1, 'main', 2, 'gedcom_news'), (-1, 'main', 3, 'gedcom_favorites'), (-1, 'main', 4, 'review_changes'), (-1, 'side', 1, 'gedcom_block'), (-1, 'side', 2, 'random_media'), (-1, 'side', 3, 'todays_events'), (-1, 'side', 4, 'logged_in')"
 	)->execute();
 
+	// Write the config file.  We already checked that this would work.
+	$config_ini_php=
+		'; <'.'?php exit; ?'.'> DO NOT DELETE THIS LINE'      . PHP_EOL.
+		'dbhost="' . addcslashes($_POST['dbhost'], '"') . '"' . PHP_EOL.
+		'dbport="' . addcslashes($_POST['dbport'], '"') . '"' . PHP_EOL.
+		'dbuser="' . addcslashes($_POST['dbuser'], '"') . '"' . PHP_EOL.
+		'dbpass="' . addcslashes($_POST['dbpass'], '"') . '"' . PHP_EOL.
+		'dbname="' . addcslashes($_POST['dbname'], '"') . '"' . PHP_EOL.
+		'tblpfx="' . addcslashes($_POST['tblpfx'], '"') . '"' . PHP_EOL;
+
+	file_put_contents(WT_DATA_DIR . 'config.ini.php', $config_ini_php);
+
+	// Done - start using webtrees
 	echo
-		'<p>', WT_I18N::translate('Your system is almost ready for use.  The final step is to download a configuration file <b>%1$s</b> and copy this to the <b>%2$s</b> directory on your webserver.  This is a security measure to ensure only the website\'s owner can configure it.', WT_CONFIG_FILE, realpath(WT_DATA_DIR)), '</p>';
-	if (DIRECTORY_SEPARATOR=='/') {
-		// These hints only apply to UNIX based servers.
-		// For Windows/XAMPP, defaults are fine
-		// For Windows/IIS, the defaults are probably fine.  Anyone confirm?
-		echo
-			'<p>', WT_I18N::translate('You should set the directory <b>%s</b> so that the webserver has read-write access.<br/>This normally means setting the permissions to "777" or "drwxrwxrwx".', WT_DATA_DIR), '</p>',
-			'<p>', WT_I18N::translate('You should set the file <b>%s</b> so that the webserver has read-only access.<br/>This normally means setting the permissions to "444" or "-r--r--r--".', WT_DATA_DIR.WT_CONFIG_FILE), '</p>',
-			'<p>', WT_I18N::translate('<b>webtrees</b> will check the permissions in the next step.'), '</p>';
-	}
-	echo
-		'<input type="hidden" name="action" value="download">',
-		'<input type="submit" value="'. /* I18N: Button label/action: %s is a filename */ WT_I18N::translate('Download %s', WT_CONFIG_FILE).'" onclick="document.contform.contbtn.disabled=false; return true;">',
-		'</form>',
-		'<p>', WT_I18N::translate('After you have copied this file to the webserver and set the access permissions, click here to continue'), '</p>',
-		'<form name="contform" action="', WT_SCRIPT_NAME, '" method="get" onsubmit="alert(\'', /* I18N: %s is a filename */ WT_I18N::translate('Reminder: you must copy %s to your webserver', WT_CONFIG_FILE), '\');return true;">',
-		'<input type="hidden" name="lang" value="', WT_LOCALE, '">',
-		'<input type="submit" name="contbtn" value="'.WT_I18N::translate('Continue').'" disabled>',
+		'<script>document.location=document.location;</script>',
 		'</form></body></html>';
 	exit;
 } catch (PDOException $ex) {
 	echo
 		'<p class="bad">', WT_I18N::translate('An unexpected database error occured.'), '</p>',
 		'<pre>', $ex->getMessage(), '</pre>',
-		'<p class="indifferent">', WT_I18N::translate('The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
+		'<p class="info">', WT_I18N::translate('The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
 }
 echo '</form>';
 echo '</body>';
