@@ -225,7 +225,7 @@ case 'OBJE':
 	foreach ($rows as $row) {
 		$media=WT_Media::getInstance($row);
 		if ($media->canDisplayName()) {
-			$data[]=array('value'=>$row['xref'], 'label'=>'<img src="'.$media->getThumbnail().'" width="25"> '.$media->getFullName());
+			$data[]=array('value'=>$row['xref'], 'label'=>'<img src="'.$media->getHtmlUrlDirect().'" width="25"> '.$media->getFullName());
 		}
 	}	
 	echo json_encode($data);
