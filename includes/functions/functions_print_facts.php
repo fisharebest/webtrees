@@ -1293,12 +1293,12 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	}
 
 	$styleadd='';
-	if ($rtype=='new') $styleadd = 'change_new';
-	if ($rtype=='old') $styleadd = 'change_old';
+	if ($rtype=='new') $styleadd = ' change_new';
+	if ($rtype=='old') $styleadd = ' change_old';
 
 	$linenum = 0;
 	echo '<tr><td class="descriptionbox', $styleadd,' width20">';
-	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($mediaobject->getXref(), $mediaobject->getGedcomRecord())) && ($styleadd!='change_old') && $rowm['m_gedrec']!='') {
+	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($mediaobject->getXref(), $mediaobject->getGedcomRecord())) && ($styleadd!=' change_old') && $rowm['m_gedrec']!='') {
 		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=", $mediaobject->getXref(), "&amp;linktoid={$rowm['mm_gid']}', '_blank', edit_window_specs);\" href=\"#\" title=\"", WT_I18N::translate('Edit'), "\">";
 		if ($SHOW_FACT_ICONS) {
 			echo '<i class="icon-media"></i> ';
