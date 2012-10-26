@@ -170,6 +170,7 @@ $emptyfacts=array(
 	'WILL',
 	'_HOL',
 	'_NMR',
+	'_NMAR',
 	'_SEPR',
 );
 
