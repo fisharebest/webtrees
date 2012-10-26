@@ -28,92 +28,29 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-/**
- * print a media row in a table
- * @param string $rtype whether this is a 'new', 'old', or 'normal' media row... this is used to determine if the rows should be printed with an outline color
- * @param array $rowm        An array with the details about this media item
- * @param string $pid        The record id this media item was attached to
- */
-function media_reorder_row($rtype, $rowm, $pid) {
-	global $MEDIA_DIRECTORY, $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $SEARCH_SPIDER;
-	global $t, $n, $item, $items, $p, $edit, $reorder, $note, $rowm, $order1, $mediaType;
+function media_reorder_row($rowm) {
+	$media = WT_Media::getInstance($rowm['m_media']);
 
-	echo "<li class=\"facts_value\" style=\"list-style:none;cursor:move;margin-bottom:2px;\" id=\"li_" . $rowm['m_media'] . "\" >";
-
-    //echo $rtype." ".$rowm["m_media"]." ".$pid;
-    if (!WT_Media::getInstance($rowm['m_media'])->canDisplayDetails() || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['mm_gedrec'])) {
-        //echo $rowm['m_media']." no privacy ";
-        return false;
-    }
-
-    $styleadd="";
-    if ($rtype=='new') $styleadd = "change_new";
-    if ($rtype=='old') $styleadd = "change_old";
-
-    // NOTE Start printing the media details
-
-    $thumbnail = thumbnail_file($rowm["m_file"], true, false, $pid);
-    // $isExternal = stristr($thumbnail,"://");
-	$isExternal = isFileExternal($thumbnail);
-
-    $linenum = 0;
-
-
-
-    // NOTE Get the title of the media
-    $mediaTitle = $rowm["m_titl"];
-    $subtitle = get_gedcom_value("TITL", 2, $rowm["mm_gedrec"]);
-
-    if (!empty($subtitle)) $mediaTitle = $subtitle;
-		$mainMedia = check_media_depth($rowm["m_file"], "NOTRUNC");
-    if ($mediaTitle=="") $mediaTitle = basename($rowm["m_file"]);
-
-		echo "<table class=\"pic\"><tr>";
-		echo "<td width=\"80\" valign=\"top\" align=\"center\" >";
-
-		// Get info on how to handle this media file
-		$mediaInfo = mediaFileInfo($mainMedia, $thumbnail, $rowm["m_media"], $mediaTitle, '');
-
-		//-- Thumbnail field
-		echo "<img src=\"".$mediaInfo['thumb']."\" height=\"38\"";
-
-		if (strpos($rowm['m_gedrec'], "1 SOUR")!==false) {
-			echo " alt=\"" . htmlspecialchars($mediaTitle) . "\" title=\"" . htmlspecialchars($mediaTitle) . " Source info available\">";
-		} else {
-			echo " alt=\"" . htmlspecialchars($mediaTitle) . "\" title=\"" . htmlspecialchars($mediaTitle) . "\">";
-		}
-
-		//print media info
-		$ttype2 = preg_match("/\d TYPE (.*)/", $rowm["m_gedrec"], $match);
-		if ($ttype2>0) {
-			$mediaType = WT_Gedcom_Tag::getFileFormTypeValue($match[1]);
-			// echo "<br><span class=\"label\">".WT_I18N::translate('Type').": </span> <span class=\"field\">$mediaType</span>";
-		}
-
-		echo "</td><td>&nbsp;</td>";
-		echo "<td valign=\"top\" align=\"left\">";
-		//echo "<font color=\"blue\">";
-		echo $rowm['m_media'];
-		//echo "</font>";
-
-		echo "<b>";
-		echo "&nbsp;&nbsp;" . $mediaType;
-		echo "</b>";
-
-		echo "<br>";
-		echo $mediaTitle;
-
-		echo "</td>";
-		echo "</tr>";
-		echo "</table>";
-	if (!isset($j)) {
-		$j=0;
-	} else {
-		$j=$j;
+	if (!$media->canDisplayDetails() || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['mm_gedrec'])) {
+		return false;
 	}
-	$media_data = $rowm['m_media'];
-	echo "<input type=\"hidden\" name=\"order1[", $media_data, "]\" value=\"", $j, "\">";
 
+	echo "<li class=\"facts_value\" style=\"list-style:none;cursor:move;margin-bottom:2px;\" id=\"li_" . $media->getXref() . "\" >";
+	echo "<table class=\"pic\"><tr>";
+	echo "<td width=\"80\" valign=\"top\" align=\"center\" >";
+	echo $media->displayMedia();
+	echo "</td><td>&nbsp;</td>";
+	echo "<td valign=\"top\" align=\"left\">";
+	echo $media->getXref();
+	echo "<b>";
+	echo "&nbsp;&nbsp;", WT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType());
+	echo "</b>";
+	echo "<br>";
+	echo $media->getFullName();
+	echo "</td>";
+	echo "</tr>";
+	echo "</table>";
+	echo "<input type=\"hidden\" name=\"order1[",$media->getXref(), "]\" value=\"0\">";
 	echo "</li>";
 	return true;
 }

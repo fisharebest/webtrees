@@ -162,11 +162,10 @@ $controller->addInlineJavascript('
 		$rows = array();
 		$rows['normal'] = $rowm;
 		if (isset($current_objes[$rowm['m_media']])) $current_objes[$rowm['m_media']]--;
-		foreach ($rows as $rtype => $rowm) {
-			$res = media_reorder_row($rtype, $rowm, $pid);
+		foreach ($rows as $rowm) {
+			$res = media_reorder_row($rowm);
 			$media_found = $media_found || $res;
 			$foundObjs[$rowm['m_media']] = true;
-			$j++;
 		}
 	}
 	?>
