@@ -61,6 +61,7 @@ textarea#NOTE {font-size: 12px;height:250px; width:98.5%; overflow:auto;}
 .note1 {font-weight: bold;}
 .note2 {font-weight: bold;}
 .notecell {white-space: nowrap;}
+#edit_interface-page input#personid {width:160px;}
 
 html[dir='rtl'] .cens_header {text-align:right;}
 html[dir='rtl'] .cens_container {float:right;}
