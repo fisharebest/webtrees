@@ -40,7 +40,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 // Create all of the tables needed for this module
-//try {
+try {
 	WT_DB::exec(
 		"ALTER TABLE `##placelocation` ADD (".
 		" pl_media      VARCHAR(60)     NULL,".
@@ -51,9 +51,9 @@ if (!defined('WT_WEBTREES')) {
 		" sv_zoom       FLOAT           NOT NULL DEFAULT 1".
 		")"
 	);
-//} catch (PDOException $ex) {
+} catch (PDOException $ex) {
 	// Already done this?
-//}
+}
 
 // Update the version to indicate success
 WT_Site::preference($schema_name, $next_version);
