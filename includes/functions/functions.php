@@ -1056,74 +1056,16 @@ function gedcomsort($a, $b) {
 	return utf8_strcasecmp($a["title"], $b["title"]);
 }
 
-// ************************************************* START OF MISCELLANEOUS FUNCTIONS ********************************* //
 /**
  * Get relationship between two individuals in the gedcom
  *
- * function to calculate the relationship between two people.  It uses heuristics based on the
- * individual's birthyears to try and calculate the shortest path between the two individuals.
- * It uses a node cache to help speed up calculations when using relationship privacy.
- * This cache is indexed using the string "$pid1-$pid2"
  * @param string $pid1 - the ID of the first person to compute the relationship from
  * @param string $pid2 - the ID of the second person to compute the relatiohip to
  * @param bool $followspouse = whether to add spouses to the path
  * @param int $maxlength - the maximum length of path
- * @param bool $ignore_cache - enable or disable the relationship cache
  * @param int $path_to_find - which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
  */
-function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignore_cache=false, $path_to_find=0) {
-	global $start_time;
-	static $NODE_CACHE, $NODE_CACHE_LENGTH;
-	if (is_null($NODE_CACHE)) {
-		$NODE_CACHE=array();
-	}
-
-	$indi = WT_Person::getInstance($pid2);
-	//-- check the cache
-	if (!$ignore_cache) {
-		if (isset($NODE_CACHE["$pid1-$pid2"])) {
-			if ($NODE_CACHE["$pid1-$pid2"]=="NOT FOUND") return false;
-			if (($maxlength==0)||(count($NODE_CACHE["$pid1-$pid2"]["path"])-1<=$maxlength))
-				return $NODE_CACHE["$pid1-$pid2"];
-			else
-				return false;
-		}
-		//-- check the cache for person 2's children
-		foreach ($indi->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
-			foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
-				if (isset($NODE_CACHE["$pid1-".$child->getXref()])) {
-					if (($maxlength==0)||(count($NODE_CACHE["$pid1-".$child->getXref()]["path"])+1<=$maxlength)) {
-						$node1 = $NODE_CACHE["$pid1-".$child->getXref()];
-						if ($node1!="NOT FOUND") {
-							$node1["path"][] = $pid2;
-							$node1["pid"] = $pid2;
-							if ($child->getSex()=='F') {
-								$node1["relations"][] = "mother";
-							} else {
-								$node1["relations"][] = "father";
-							}
-						}
-						$NODE_CACHE["$pid1-$pid2"] = $node1;
-						if ($node1=="NOT FOUND")
-							return false;
-						return $node1;
-					} else
-						return false;
-				}
-			}
-		}
-
-		if ((!empty($NODE_CACHE_LENGTH))&&($maxlength>0)) {
-			if ($NODE_CACHE_LENGTH>=$maxlength)
-				return false;
-		}
-	}
-	//-- end cache checking
-
-	//-- get the birth date of p2 for calculating heuristics
-	// removed (temporarily) to fix #880475
-	//$bdate2=$indi->getBirthDate();
-
+function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $path_to_find=0) {
 	//-- current path nodes
 	$p1nodes = array();
 	//-- ids visited
@@ -1131,12 +1073,12 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 
 	//-- set up first node for person1
 	$node1 = array();
-	$node1["path"] = array();
-	$node1["path"][] = $pid1;
-	$node1["length"] = 0;
-	$node1["pid"] = $pid1;
-	$node1["relations"] = array();
-	$node1["relations"][] = "self";
+	$node1['path'] = array();
+	$node1['path'][] = $pid1;
+	$node1['length'] = 0;
+	$node1['pid'] = $pid1;
+	$node1['relations'] = array();
+	$node1['relations'][] = 'self';
 	$p1nodes[] = $node1;
 
 	$visited[$pid1] = true;
@@ -1144,26 +1086,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 	$found = false;
 	$count=0;
 	while (!$found) {
-		//-- the following 2 lines ensure that the user can abort a long relationship calculation
-		//-- refer to http://www.php.net/manual/en/features.connection-handling.php for more
-		//-- information about why these lines are included
-		if (headers_sent()) {
-			echo " ";
-			if ($count%100 == 0)
-				flush();
-		}
 		$count++;
-		if (count($p1nodes)==0) {
-			if ($maxlength!=0) {
-				if (!isset($NODE_CACHE_LENGTH)) {
-					$NODE_CACHE_LENGTH = $maxlength;
-				} elseif ($NODE_CACHE_LENGTH<$maxlength) {
-					$NODE_CACHE_LENGTH = $maxlength;
-				}
-			}
-			$NODE_CACHE["$pid1-$pid2"] = "NOT FOUND";
-			return false;
-		}
 		//-- search the node list for the shortest path length
 		$shortest = -1;
 		foreach ($p1nodes as $index=>$node) {
@@ -1171,7 +1094,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				$shortest = $index;
 			} else {
 				$node1 = $p1nodes[$shortest];
-				if ($node1["length"] > $node["length"]) {
+				if ($node1['length'] > $node['length']) {
 					$shortest = $index;
 				}
 			}
@@ -1179,8 +1102,8 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 		if ($shortest==-1)
 			return false;
 		$node = $p1nodes[$shortest];
-		if (($maxlength==0)||(count($node["path"])<=$maxlength)) {
-			if ($node["pid"]==$pid2) {
+		if (($maxlength==0)||(count($node['path'])<=$maxlength)) {
+			if ($node['pid']==$pid2) {
 			} else {
 				//-- heuristic values
 				$fatherh = 1;
@@ -1189,109 +1112,48 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				$spouseh = 2;
 				$childh = 3;
 
-	// removed (temporarily) to fix #880475
-	//			//-- generate heuristic values based on the birthdates of the current node and p2
 				$indi = WT_Person::getInstance($node['pid']);
-	//			$bdate1=$indi->getBirthDate();
-	//			if ($bdate1->isOK() && $bdate2->isOK()) {
-	//				$yeardiff = ($bdate1->minJD() - $bdate2->minJD()) / 365;
-	//				if ($yeardiff < -140) {
-	//					$fatherh = 20;
-	//					$motherh = 20;
-	//					$siblingh = 15;
-	//					$spouseh = 15;
-	//					$childh = 1;
-	//				} else
-	//					if ($yeardiff < -100) {
-	//						$fatherh = 15;
-	//						$motherh = 15;
-	//						$siblingh = 10;
-	//						$spouseh = 10;
-	//						$childh = 1;
-	//					} else
-	//						if ($yeardiff < -60) {
-	//							$fatherh = 10;
-	//							$motherh = 10;
-	//							$siblingh = 5;
-	//							$spouseh = 5;
-	//							$childh = 1;
-	//						} else
-	//							if ($yeardiff < -20) {
-	//								$fatherh = 5;
-	//								$motherh = 5;
-	//								$siblingh = 3;
-	//								$spouseh = 3;
-	//								$childh = 1;
-	//							} else
-	//								if ($yeardiff<20) {
-	//									$fatherh = 3;
-	//									$motherh = 3;
-	//									$siblingh = 1;
-	//									$spouseh = 1;
-	//									$childh = 5;
-	//								} else
-	//									if ($yeardiff<60) {
-	//										$fatherh = 1;
-	//										$motherh = 1;
-	//										$siblingh = 5;
-	//										$spouseh = 2;
-	//										$childh = 10;
-	//									} else
-	//										if ($yeardiff<100) {
-	//											$fatherh = 1;
-	//											$motherh = 1;
-	//											$siblingh = 10;
-	//											$spouseh = 3;
-	//											$childh = 15;
-	//										} else {
-	//											$fatherh = 1;
-	//											$motherh = 1;
-	//											$siblingh = 15;
-	//											$spouseh = 4;
-	//											$childh = 20;
-	//										}
-	//			}
 				//-- check all parents and siblings of this node
 				foreach ($indi->getChildFamilies(WT_PRIV_HIDE) as $family) {
 					$visited[$family->getXref()] = true;
 					foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
 						if (!isset($visited[$spouse->getXref()])) {
 							$node1 = $node;
-							$node1["length"]+=$fatherh;
-							$node1["path"][] = $spouse->getXref();
-							$node1["pid"] = $spouse->getXref();
-							$node1["relations"][] = "parent";
+							$node1['length']+=$fatherh;
+							$node1['path'][] = $spouse->getXref();
+							$node1['pid'] = $spouse->getXref();
+							$node1['relations'][] = 'parent';
 							$p1nodes[] = $node1;
-							if ($node1["pid"]==$pid2) {
+							if ($node1['pid']==$pid2) {
 								if ($path_to_find>0)
 									$path_to_find--;
 								else {
 									$found=true;
 									$resnode = $node1;
 								}
-							} else
+							} else {
 								$visited[$spouse->getXref()] = true;
-							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
+							}
 						}
 					}
 					foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
 						if (!isset($visited[$child->getXref()])) {
 							$node1 = $node;
-							$node1["length"]+=$siblingh;
-							$node1["path"][] = $child->getXref();
-							$node1["pid"] = $child->getXref();
-							$node1["relations"][] = "sibling";
+							$node1['length']+=$siblingh;
+							$node1['path'][] = $child->getXref();
+							$node1['pid'] = $child->getXref();
+							$node1['relations'][] = 'sibling';
 							$p1nodes[] = $node1;
-							if ($node1["pid"]==$pid2) {
-								if ($path_to_find>0)
+							if ($node1['pid']==$pid2) {
+								if ($path_to_find>0) {
 									$path_to_find--;
-								else {
+								} else {
 									$found=true;
 									$resnode = $node1;
 								}
-							} else
+							} else {
 								$visited[$child->getXref()] = true;
-							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
+							}
 						}
 					}
 				}
@@ -1302,52 +1164,51 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 						foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
 							if (!in_arrayr($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
 								$node1 = $node;
-								$node1["length"]+=$spouseh;
-								$node1["path"][] = $spouse->getXref();
-								$node1["pid"] = $spouse->getXref();
-								$node1["relations"][] = "spouse";
+								$node1['length']+=$spouseh;
+								$node1['path'][] = $spouse->getXref();
+								$node1['pid'] = $spouse->getXref();
+								$node1['relations'][] = 'spouse';
 								$p1nodes[] = $node1;
-								if ($node1["pid"]==$pid2) {
-									if ($path_to_find>0)
+								if ($node1['pid']==$pid2) {
+									if ($path_to_find>0) {
 										$path_to_find--;
-									else {
+									} else {
 										$found=true;
 										$resnode = $node1;
 									}
-								} else
+								} else {
 									$visited[$spouse->getXref()] = true;
-								$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
+								}
 							}
 						}
 					}
 					foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
 						if (!isset($visited[$child->getXref()])) {
 							$node1 = $node;
-							$node1["length"]+=$childh;
-							$node1["path"][] = $child->getXref();
-							$node1["pid"] = $child->getXref();
-							$node1["relations"][] = "child";
+							$node1['length']+=$childh;
+							$node1['path'][] = $child->getXref();
+							$node1['pid'] = $child->getXref();
+							$node1['relations'][] = 'child';
 							$p1nodes[] = $node1;
-							if ($node1["pid"]==$pid2) {
-								if ($path_to_find>0)
+							if ($node1['pid']==$pid2) {
+								if ($path_to_find>0) {
 									$path_to_find--;
-								else {
+								} else {
 									$found=true;
 									$resnode = $node1;
 								}
 							} else {
 								$visited[$child->getXref()] = true;
 							}
-							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
 						}
 					}
 				}
 			}
 		}
 		unset($p1nodes[$shortest]);
-	} //-- end while loop
+	}
 
-	// Convert "generic" relationships into sex-specific ones.
+	// Convert generic relationships into sex-specific ones.
 	foreach ($resnode['path'] as $n=>$pid) {
 		switch ($resnode['relations'][$n]) {
 		case 'parent':

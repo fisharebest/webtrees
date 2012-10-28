@@ -666,7 +666,7 @@ function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
 					$label=WT_Gedcom_Code_Rela::getValue($rela, $person);
 				} else {
 					// Generate an automatic RELA
-					$label=get_relationship_name(get_relationship($associate->getXref(), $person->getXref(), true, 4, true));
+					$label=get_relationship_name(get_relationship($associate->getXref(), $person->getXref(), true, 4));
 				}
 				if (!$label) {
 					$label=WT_I18N::translate('Relationships');

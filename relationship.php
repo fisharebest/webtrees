@@ -72,11 +72,11 @@ if ($person1 && $person1->canDisplayName() && $person2 && $person2->canDisplayNa
 	$controller
 		->setPageTitle(WT_I18N::translate(/* I18N: %s are people's names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
 		->PageHeader();
-	$node=get_relationship($pid1, $pid2, $followspouse, 0, true, $path_to_find);
+	$node=get_relationship($pid1, $pid2, $followspouse, 0, $path_to_find);
 	// If no blood relationship exists, look for relationship via marriage
 	if ($path_to_find==0 && $node==false && $followspouse==false) {
 		$followspouse=true;
-		$node=get_relationship($pid1, $pid2, $followspouse, 0, true, $path_to_find);
+		$node=get_relationship($pid1, $pid2, $followspouse, 0, $path_to_find);
 	}
 	$disp=true;
 } else {

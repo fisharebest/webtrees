@@ -1310,7 +1310,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				if ($i+1 >= pow(2, $curgen)) {
 					$curgen++;
 				}
-				$relationship=get_relationship_name(get_relationship($controller->root->getXref(), $pid, false, 0, true));
+				$relationship=get_relationship_name(get_relationship($controller->root->getXref(), $pid, false, 0));
 				if (empty($relationship)) $relationship=WT_I18N::translate('self');
 				$event = '<img src=\"'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/sq'.$curgen.'.png\" width=\"10\" height=\"10\">'.
 					 '<strong>&nbsp;'.$relationship.':&nbsp;</strong>';
