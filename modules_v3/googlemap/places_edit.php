@@ -339,6 +339,6 @@ $api='v3';
 			</div></td>
 	</tr>
 	</table>
-	<input name="save2" type="submit" value="<?php echo WT_I18N::translate('Save'); onclick="closePopupAndReloadParent();" ?>"><br>
+	<input name="save2" type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" onclick="closePopupAndReloadParent();"><br>
 </form>
 <?php
