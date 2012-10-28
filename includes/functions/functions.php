@@ -1162,7 +1162,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $path_
 					$visited[$family->getXref()] = true;
 					if ($followspouse) {
 						foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
-							if (!in_arrayr($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
+							if (!in_array($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
 								$node1 = $node;
 								$node1['length']+=$spouseh;
 								$node1['path'][] = $spouse->getXref();
@@ -2418,21 +2418,6 @@ function filename_encode($filename) {
 		return utf8_encode($filename);
 	else
 		return $filename;
-}
-
-/**
- * checks if the value is in an array recursively
- * @param string $needle
- * @param array $haystack
- */
-function in_arrayr($needle, $haystack) {
-	foreach ($haystack as $v) {
-		if ($needle == $v) return true;
-		else if (is_array($v)) {
-			if (in_arrayr($needle, $v) === true) return true;
-		}
-	}
-	return false;
 }
 
 // Function to build an URL querystring from GET variables
