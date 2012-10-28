@@ -41,7 +41,6 @@ function format_indi_table($datalist, $option='') {
 	$html = '';
 	$controller
 		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-		->addExternalJavascript(WT_STATIC_URL.'js/jquery/TableTools.min.js')
 		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc"  ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc" ]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
