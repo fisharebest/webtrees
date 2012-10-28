@@ -1072,21 +1072,18 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $path_
 	$visited = array();
 
 	//-- set up first node for person1
-	$node1 = array();
-	$node1['path'] = array();
-	$node1['path'][] = $pid1;
-	$node1['length'] = 0;
-	$node1['pid'] = $pid1;
-	$node1['relations'] = array();
-	$node1['relations'][] = 'self';
+	$node1 = array(
+		'path'      => array($pid1),
+		'length'    => 0,
+		'pid'       => $pid1,
+		'relations' => array('self'),
+	);
 	$p1nodes[] = $node1;
 
 	$visited[$pid1] = true;
 
 	$found = false;
-	$count=0;
 	while (!$found) {
-		$count++;
 		//-- search the node list for the shortest path length
 		$shortest = -1;
 		foreach ($p1nodes as $index=>$node) {
@@ -1102,32 +1099,68 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $path_
 		if ($shortest==-1)
 			return false;
 		$node = $p1nodes[$shortest];
-		if (($maxlength==0)||(count($node['path'])<=$maxlength)) {
-			if ($node['pid']==$pid2) {
-			} else {
-				//-- heuristic values
-				$fatherh = 1;
-				$motherh = 1;
-				$siblingh = 2;
-				$spouseh = 2;
-				$childh = 3;
-
-				$indi = WT_Person::getInstance($node['pid']);
-				//-- check all parents and siblings of this node
-				foreach ($indi->getChildFamilies(WT_PRIV_HIDE) as $family) {
-					$visited[$family->getXref()] = true;
+		if ($maxlength==0 || count($node['path'])<=$maxlength) {
+			$indi = WT_Person::getInstance($node['pid']);
+			//-- check all parents and siblings of this node
+			foreach ($indi->getChildFamilies(WT_PRIV_HIDE) as $family) {
+				$visited[$family->getXref()] = true;
+				foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
+					if (!isset($visited[$spouse->getXref()])) {
+						$node1 = $node;
+						$node1['length']+=10;
+						$node1['path'][] = $spouse->getXref();
+						$node1['pid'] = $spouse->getXref();
+						$node1['relations'][] = 'parent';
+						$p1nodes[] = $node1;
+						if ($node1['pid']==$pid2) {
+							if ($path_to_find>0)
+								$path_to_find--;
+							else {
+								$found=true;
+								$resnode = $node1;
+							}
+						} else {
+							$visited[$spouse->getXref()] = true;
+						}
+					}
+				}
+				foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
+					if (!isset($visited[$child->getXref()])) {
+						$node1 = $node;
+						$node1['length']+=50;
+						$node1['path'][] = $child->getXref();
+						$node1['pid'] = $child->getXref();
+						$node1['relations'][] = 'sibling';
+						$p1nodes[] = $node1;
+						if ($node1['pid']==$pid2) {
+							if ($path_to_find>0) {
+								$path_to_find--;
+							} else {
+								$found=true;
+								$resnode = $node1;
+							}
+						} else {
+							$visited[$child->getXref()] = true;
+						}
+					}
+				}
+			}
+			//-- check all spouses and children of this node
+			foreach ($indi->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
+				$visited[$family->getXref()] = true;
+				if ($followspouse) {
 					foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
-						if (!isset($visited[$spouse->getXref()])) {
+						if (!in_array($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
 							$node1 = $node;
-							$node1['length']+=$fatherh;
+							$node1['length']+=100;
 							$node1['path'][] = $spouse->getXref();
 							$node1['pid'] = $spouse->getXref();
-							$node1['relations'][] = 'parent';
+							$node1['relations'][] = 'spouse';
 							$p1nodes[] = $node1;
 							if ($node1['pid']==$pid2) {
-								if ($path_to_find>0)
+								if ($path_to_find>0) {
 									$path_to_find--;
-								else {
+								} else {
 									$found=true;
 									$resnode = $node1;
 								}
@@ -1136,70 +1169,24 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $path_
 							}
 						}
 					}
-					foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
-						if (!isset($visited[$child->getXref()])) {
-							$node1 = $node;
-							$node1['length']+=$siblingh;
-							$node1['path'][] = $child->getXref();
-							$node1['pid'] = $child->getXref();
-							$node1['relations'][] = 'sibling';
-							$p1nodes[] = $node1;
-							if ($node1['pid']==$pid2) {
-								if ($path_to_find>0) {
-									$path_to_find--;
-								} else {
-									$found=true;
-									$resnode = $node1;
-								}
-							} else {
-								$visited[$child->getXref()] = true;
-							}
-						}
-					}
 				}
-				//-- check all spouses and children of this node
-				foreach ($indi->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
-					$visited[$family->getXref()] = true;
-					if ($followspouse) {
-						foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
-							if (!in_array($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
-								$node1 = $node;
-								$node1['length']+=$spouseh;
-								$node1['path'][] = $spouse->getXref();
-								$node1['pid'] = $spouse->getXref();
-								$node1['relations'][] = 'spouse';
-								$p1nodes[] = $node1;
-								if ($node1['pid']==$pid2) {
-									if ($path_to_find>0) {
-										$path_to_find--;
-									} else {
-										$found=true;
-										$resnode = $node1;
-									}
-								} else {
-									$visited[$spouse->getXref()] = true;
-								}
-							}
-						}
-					}
-					foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
-						if (!isset($visited[$child->getXref()])) {
-							$node1 = $node;
-							$node1['length']+=$childh;
-							$node1['path'][] = $child->getXref();
-							$node1['pid'] = $child->getXref();
-							$node1['relations'][] = 'child';
-							$p1nodes[] = $node1;
-							if ($node1['pid']==$pid2) {
-								if ($path_to_find>0) {
-									$path_to_find--;
-								} else {
-									$found=true;
-									$resnode = $node1;
-								}
+				foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
+					if (!isset($visited[$child->getXref()])) {
+						$node1 = $node;
+						$node1['length']+=5;
+						$node1['path'][] = $child->getXref();
+						$node1['pid'] = $child->getXref();
+						$node1['relations'][] = 'child';
+						$p1nodes[] = $node1;
+						if ($node1['pid']==$pid2) {
+							if ($path_to_find>0) {
+								$path_to_find--;
 							} else {
-								$visited[$child->getXref()] = true;
+								$found=true;
+								$resnode = $node1;
 							}
+						} else {
+							$visited[$child->getXref()] = true;
 						}
 					}
 				}
