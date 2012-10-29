@@ -398,14 +398,12 @@ table#gm_manage {background:OldLace; border:1px inset #D9D6C4; border-collapse:s
 #gm_active input {height: auto; vertical-align: top;}
 
 /* Place check */
-table.gm_check_outer {border-collapse:separate; border-spacing:0; height:100px; overflow:auto; width:98%}
-.gm_check_top {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:0; padding:0;}
-.gm_check_top th {border-bottom:2px solid LightGrey; font-size:105%; font-weight:bold; padding:5px; text-align:center; white-space:nowrap;}
-.gm_check_top td {border-bottom:1px solid LightGrey; padding:3px; white-space:nowrap;}
-.gm_check_top a, .gm_check_top a:hover, .gm_check_details a, .details:hover {color:blue;}
-div.gm_check_top {padding:5px;}
-#gm_check_title {padding:5px;}
-#gm_check_title span {font-weight:bold;}
+.gm_check {background:OldLace; border:1px inset #D9D6C4; padding:5px;}
+.gm_check a, .gm_check_top a:hover, .gm_check_details a, .details:hover {color:blue;}
+.gm_check label{margin-left:20px; margin-right:0; white-space:nowrap;}
+html[dir='rtl'] .gm_check label{margin-right:20px;margin-left:0;}
+.gm_check input[type="checkbox"]{vertical-align: text-bottom;}
+#gm_check_title {font-weight:bold;padding:5px;}
 div.gm_check_details {width:100%; max-height:530px; overflow:auto;}
 table.gm_check_details {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:10px 0; width:100%;}
 .gm_check_details th {border-right:1px solid LightGrey; border-left:1px solid LightGrey; border-bottom:2px solid LightGrey; border-top:0; font-size:95%; font-weight:bold; padding:2px; text-align:center;}

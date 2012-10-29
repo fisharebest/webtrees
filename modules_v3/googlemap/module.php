@@ -1507,11 +1507,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$action   =safe_GET('action'                                             );
-		$gedcom_id=safe_GET('gedcom_id', array_keys(WT_Tree::getAll()), WT_GED_ID);
-		$country  =safe_GET('country',   WT_REGEX_UNSAFE,               'XYZ'    );
-		$state    =safe_GET('state',     WT_REGEX_UNSAFE,               'XYZ'    );
-		$matching =safe_GET_bool('matching');
+		$action		=safe_GET('action', '','go');
+		$gedcom_id	=safe_GET('gedcom_id', array_keys(WT_Tree::getAll()), WT_GED_ID);
+		$country	=safe_GET('country', WT_REGEX_UNSAFE, 'XYZ');
+		$state		=safe_GET('state', WT_REGEX_UNSAFE, 'XYZ');
+		$matching	=safe_GET_bool('matching');
 
 		if (!empty($WT_SESSION['placecheck_gedcom_id'])) {
 			$gedcom_id = $WT_SESSION['placecheck_gedcom_id'];
@@ -1554,83 +1554,57 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</tr>
 			</table>';
 
-
 		//Start of User Defined options
-		echo '<form method="get" name="placecheck" action="module.php">';
-		echo '<input type="hidden" name="mod" value="', $this->getName(), '">';
-		echo '<input type="hidden" name="mod_action" value="admin_placecheck">';
-		echo '<table id="gm_check_outer">';
-		echo '<tr valign="top">';
-		echo '<td>';
-		echo '<table class="gm_check_top" align="left">';
-		echo '<tr><th colspan="2">', WT_I18N::translate('PlaceCheck List Options'), '</th></tr>';
-		//Option box to select gedcom
-		echo '<tr><td>', WT_I18N::translate('Family tree'), '</td>';
-		echo '<td>';
-		echo select_edit_control('gedcom_id', WT_Tree::getIdList(), null, $gedcom_id);
-		echo '</td></tr>';
-		//Option box to select Country within Gedcom
-		echo '<tr><td>', WT_I18N::translate('Country'), '</td>';
-		echo '<td><select name="country">';
-		echo '<option value="XYZ" selected="selected">', /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('&lt;select&gt;'), '</option>';
-		echo '<option value="XYZ">', WT_I18N::translate('All'), '</option>';
-		$rows=
-			WT_DB::prepare("SELECT pl_id, pl_place FROM `##placelocation` WHERE pl_level=0 ORDER BY pl_place")
-			->fetchAssoc();
-		foreach ($rows as $id=>$place) {
-			echo '<option value="', $place, '"';
-			if ($place==$country) {
-				echo ' selected="selected"';
-				$par_id=$id;
-			}
-			echo '>', $place, '</option>';
-		}
-		echo '</select></td></tr>';
-
-		//Option box to select level 2 place within the selected Country
-		if ($country!='XYZ') {
-			echo '<tr><td>', /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'), '</td>';
-			echo '<td><select name="state">';
-			echo '<option value="XYZ" selected="selected">', WT_I18N::translate('&lt;select&gt;'), '</option>';
-			echo '<option value="XYZ">', WT_I18N::translate('All'), '</option>';
-			$places=
-				WT_DB::prepare("SELECT pl_place FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
-				->execute(array($par_id))
-				->fetchOneColumn();
-			foreach ($places as $place) {
-				echo '<option value="', $place, '"', $place==$state?' selected="selected"':'', '>', $place, '</option>';
-			}
-			echo '</select></td></tr>';
-		}
-		echo '</table>';
-		echo '</td>';
-		//Show Filter table
-		echo '<td>';
-		echo '<table class="gm_check_top"  align="center">';
-		echo '<tr><th colspan="2">';
-		echo WT_I18N::translate('List filtering options');
-		echo '</th></tr><tr><td>';
-		echo WT_I18N::translate('Include fully matched places: ');
-		echo '</td><td><input type="checkbox" name="matching" value="1"';
-		if ($matching) {
-			echo ' checked="checked"';
-		}
-		echo '></td></tr>';
-		echo '</table>';
-		echo '</td>';
-		echo '<td>';
-		echo '<input type="submit" value="', WT_I18N::translate('Show'), '"><input type="hidden" name="action" value="go">';
-		echo '</td>';
-		echo '</tr>';
-		echo '</form>';
-		echo '</table>';
-		echo '<hr>';
+		echo '
+			<form method="get" name="placecheck" action="module.php">
+				<input type="hidden" name="mod" value="', $this->getName(), '">
+				<input type="hidden" name="mod_action" value="admin_placecheck">
+				<div class="gm_check">
+					<label>', WT_I18N::translate('Family tree'), '</label>';
+					echo select_edit_control('gedcom_id', WT_Tree::getIdList(), null, $gedcom_id, ' onchange="this.form.submit();"');
+					echo '<label>', WT_I18N::translate('Country'), '</label>
+					<select name="country" onchange="this.form.submit();">
+						<option value="XYZ" selected="selected">', /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('&lt;select&gt;'), '</option>
+						<option value="XYZ">', WT_I18N::translate('All'), '</option>';
+							$rows=WT_DB::prepare("SELECT pl_id, pl_place FROM `##placelocation` WHERE pl_level=0 ORDER BY pl_place")
+								->fetchAssoc();
+							foreach ($rows as $id=>$place) {
+								echo '<option value="', $place, '"';
+								if ($place==$country) {
+									echo ' selected="selected"';
+									$par_id=$id;
+								}
+								echo '>', $place, '</option>';
+							}
+					echo '</select>';
+					if ($country!='XYZ') {
+						echo '<label>', /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'), '</label>
+							<select name="state" onchange="this.form.submit();">
+								<option value="XYZ" selected="selected">', WT_I18N::translate('&lt;select&gt;'), '</option>
+								<option value="XYZ">', WT_I18N::translate('All'), '</option>';
+								$places=WT_DB::prepare("SELECT pl_place FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
+									->execute(array($par_id))
+									->fetchOneColumn();
+								foreach ($places as $place) {
+									echo '<option value="', $place, '"', $place==$state?' selected="selected"':'', '>', $place, '</option>';
+								}
+								echo '</select>';
+							}
+					echo '<label>', WT_I18N::translate('Include fully matched places: '), '</label>
+					<input type="checkbox" name="matching" value="1" onchange="this.form.submit();"';
+					if ($matching) {
+						echo ' checked="checked"';
+					}
+				echo '</div>';// close div gm_check
+				echo '<input type="hidden" name="action" value="go">';
+			echo '</form>';//close form placecheck
+			echo '<hr>';
 
 		switch ($action) {
 		case 'go':
 			//Identify gedcom file
 			$trees=WT_Tree::getAll();
-			echo '<div id="gm_check_title"><span>', $trees[$gedcom_id]->tree_title_html, '</span></div>';
+			echo '<div id="gm_check_title">', $trees[$gedcom_id]->tree_title_html, '</div>';
 			//Select all '2 PLAC ' tags in the file and create array
 			$place_list=array();
 			$ged_data=WT_DB::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_gedcom LIKE ? AND i_file=?")

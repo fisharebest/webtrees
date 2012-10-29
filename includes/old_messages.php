@@ -52,7 +52,9 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Keep links');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Link to an existing family as a husband');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Link to an existing family as a wife');
+/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('List filtering options');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Personal Facts and Details');
+/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('PlaceCheck List Options')
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Protect thumbnails of protected images');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Reminder: you must copy %s to your webserver');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Reorder children');
