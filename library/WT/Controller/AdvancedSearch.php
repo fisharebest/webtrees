@@ -490,7 +490,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			$person=WT_Person::getInstance($row);
 			// Check for XXXX:PLAC fields, which were only partially matched by SQL
 			foreach ($this->fields as $n=>$field) {
-				if (preg_match('/^('.WT_REGEX_TAG.'):PLAC$/', $field, $match)) {
+				if ($this->values[$n] && preg_match('/^('.WT_REGEX_TAG.'):PLAC$/', $field, $match)) {
 					if (!preg_match('/\n1 '.$match[1].'(\n[2-9].*)*\n2 PLAC .*'.preg_quote($this->values[$n], '/').'/i', $person->getGedcomRecord())) {
 						continue 2;
 				 }
