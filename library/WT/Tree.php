@@ -241,7 +241,7 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'GENERATE_UIDS',                false);
 		set_gedcom_setting($tree_id, 'HIDE_GEDCOM_ERRORS',           true);
 		set_gedcom_setting($tree_id, 'HIDE_LIVE_PEOPLE',             true);
-		set_gedcom_setting($tree_id, 'INDI_FACTS_ADD',               'ADDR,AFN,BIRT,DEAT,BURI,CREM,ADOP,BAPM,BARM,BASM,BLES,CHRA,CONF,EMAIL,FAX,FCOM,ORDN,NATU,EMIG,IMMI,CENS,PROB,WILL,GRAD,RETI,CAST,DSCR,EDUC,IDNO,NATI,NCHI,NMR,OCCU,PROP,RELI,RESI,SSN,TITL,BAPL,CONL,ENDL,SLGC,_MILI,ASSO,RESN');
+		set_gedcom_setting($tree_id, 'INDI_FACTS_ADD',               'AFN,BIRT,DEAT,BURI,CREM,ADOP,BAPM,BARM,BASM,BLES,CHRA,CONF,FCOM,ORDN,NATU,EMIG,IMMI,CENS,PROB,WILL,GRAD,RETI,DSCR,EDUC,IDNO,NATI,NCHI,NMR,OCCU,PROP,RELI,RESI,SSN,TITL,BAPL,CONL,ENDL,SLGC,_MILI,ASSO,RESN');
 		set_gedcom_setting($tree_id, 'INDI_FACTS_QUICK',             'BIRT,BURI,BAPM,CENS,DEAT,OCCU,RESI');
 		set_gedcom_setting($tree_id, 'INDI_FACTS_UNIQUE',            '');
 		set_gedcom_setting($tree_id, 'KEEP_ALIVE_YEARS_BIRTH',       '');
