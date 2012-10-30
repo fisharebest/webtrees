@@ -29,6 +29,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
+
 $controller->addInlineJavascript('
 	jQuery("#reorder_media_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});
 
@@ -42,22 +43,18 @@ $controller->addInlineJavascript('
 		});
 	');
 
-	echo '<br><b>', WT_I18N::translate('Re-order media'), '</b>';
-	echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to re-order media ');
+echo '<br><b>', WT_I18N::translate('Re-order media'), '</b>';
+echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to re-order media ');
 
-	global $MEDIATYPE;
-	global $ids, $pid, $related, $level, $gedrec, $j;
+global $MEDIATYPE;
+global $ids, $pid, $related, $level, $gedrec, $j;
 
-	?>
-	<form name="reorder_form" method="post" action="edit_interface.php">
-		<input type="hidden" name="action" value="reorder_media_update">
-		<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+?>
+<form name="reorder_form" method="post" action="edit_interface.php">
+	<input type="hidden" name="action" value="reorder_media_update">
+	<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 
-		<p><center>
-		<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
-		<button type="submit" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php echo WT_I18N::translate('Reset'); ?></button>
-		</center>
-<ul id="reorder_media_list">
+	<ul id="reorder_media_list">
 	<?php
 	$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 
@@ -168,24 +165,24 @@ $controller->addInlineJavascript('
 		}
 	}
 	?>
-</ul>
-	<center>
+	</ul>
 	<?php
-	if (WT_USER_IS_ADMIN) {
-		echo '<table width=97%><tr><td class="descriptionbox wrap width25">';
-		echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
-		if ($NO_UPDATE_CHAN) {
-			echo '<input type="checkbox" checked="checked" name="preserve_last_changed">';
-		} else {
-			echo '<input type="checkbox" name="preserve_last_changed">';
+		if (WT_USER_IS_ADMIN) {
+			echo '<table width=97%><tr><td class="descriptionbox wrap width25">';
+			echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
+			if ($NO_UPDATE_CHAN) {
+				echo '<input type="checkbox" checked="checked" name="preserve_last_changed">';
+			} else {
+				echo '<input type="checkbox" name="preserve_last_changed">';
+			}
+			echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br>';
+			$event = new WT_Event(get_sub_record(1, '1 CHAN', $gedrec), null, 0);
+			echo format_fact_date($event, new WT_Person(''), false, true);
+			echo '</td></tr></table>';
 		}
-		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br>';
-		$event = new WT_Event(get_sub_record(1, '1 CHAN', $gedrec), null, 0);
-		echo format_fact_date($event, new WT_Person(''), false, true);
-		echo '</td></tr></table><br>';
-	}
 	?>
-	<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
-	<button type="submit" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php echo WT_I18N::translate('Reset'); ?></button>
-	</center></p>
-	</form>
+	<p id="save-cancel">
+		<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+		<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+	</p>
+</form>

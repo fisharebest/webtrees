@@ -448,7 +448,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</div>
 			</div>
 			<p>
-				<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>">
+				<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
 			</p>
 		</form>
 		<?php
@@ -531,7 +531,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		?>
 		<script>
 			function enableButtons() {
-				document.flags.save1.disabled = '';
 				document.flags.save2.disabled = '';
 			}
 
@@ -578,11 +577,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			asort($stateList);
 		}
 		?>
+		<h4><?php echo WT_I18N::translate('Change flag'); ?></h4>
 		<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&amp;mod_action=flags&amp;countrySelected=<?php echo $countrySelected; ?>&amp;stateSelected=<?php echo $stateSelected; ?>">
 			<input type="hidden" name="action" value="ChangeFlag">
 			<input type="hidden" name="selcountry" value="<?php echo $countrySelected; ?>">
 			<input type="hidden" name="selstate" value="<?php echo $stateSelected; ?>">
-			<input id="savebutton" name="save1" type="submit" disabled="true" value="<?php echo WT_I18N::translate('Save'); ?>"><br>
 			<table class="facts_table">
 				<tr>
 					<td class="optionbox" colspan="4">
@@ -656,10 +655,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		?>
 				</tr>
 			</table>
-			<input id="savebutton" name="save2" type="submit" disabled="true" value="<?php echo WT_I18N::translate('Save'); ?>"><br>
+			<p id="save-cancel">
+				<input id="savebutton" name="save2" type="submit" class="save" disabled="true" value="<?php echo WT_I18N::translate('save'); ?>">
+				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+			</p>
 		</form>
 		<?php
-		echo '<div class="center"><a href="#" onclick="closePopupAndReloadParent();">', WT_I18N::translate('Close Window'), '</a></div><br>';
 	}
 
 	private function pedigree_map() {

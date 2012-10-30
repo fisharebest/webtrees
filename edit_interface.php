@@ -1643,20 +1643,6 @@ case 'reorder_media': // Sort page using Popup
 	break;
 
 //------------------------------------------------------------------------------
-case 'reset_media_update': // Reset sort using popup
-	$lines = explode("\n", $gedrec);
-	$newgedrec = '';
-	foreach ($lines as $line) {
-		if (strpos($line, '1 _WT_OBJE_SORT')===false) {
-			$newgedrec .= $line."\n";
-		}
-	}
-	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
-		$success=true;
-	}
-	break;
-
-//------------------------------------------------------------------------------
 case 'reorder_media_update': // Update sort using popup
 	if (isset($_REQUEST['order1'])) $order1 = $_REQUEST['order1'];
 	$lines = explode("\n", $gedrec);

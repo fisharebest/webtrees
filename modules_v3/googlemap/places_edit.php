@@ -244,7 +244,6 @@ $api='v3';
 	<input type="hidden" name="place_lati" value="<?php echo $place_lati; ?>">
 	<input type="hidden" name="parent_long" value="<?php echo $parent_long; ?>">
 	<input type="hidden" name="parent_lati" value="<?php echo $parent_lati; ?>">
-	<input name="save1" type="submit" value="<?php echo WT_I18N::translate('Save'); ?>"><br>
 
 	<table class="facts_table">
 	<tr>
@@ -339,7 +338,8 @@ $api='v3';
 			</div></td>
 	</tr>
 	</table>
-	<input name="save2" type="submit" value="<?php echo WT_I18N::translate('Save'); ?>"><br>
+	<p id="save-cancel">
+		<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+		<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+	</p>
 </form>
-<?php
-echo '<p class="center"><a href="#" onclick="closePopupAndReloadParent();">', WT_I18N::translate('Close Window'), '</a></p>';

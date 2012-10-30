@@ -2194,10 +2194,10 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(images/uarrow2.p
 #edit_interface-page #changefam span{margin:0;}
 #edit_interface-page #changefam td{padding:5px; white-space:normal;}
 #edit_interface-page #changefam td.child{text-align:center;}
-#edit_interface-page #save-cancel .save {float:left;margin:5px;}
-#edit_interface-page #save-cancel .cancel {float:right;margin:5px;}
-html[dir='rtl'] #edit_interface-page #save-cancel .save {float:right;}
-html[dir='rtl'] #edit_interface-page #save-cancel .cancel {float:left;}
+#save-cancel .save {float:left;margin:5px;}
+#save-cancel .cancel {float:right;margin:5px;}
+html[dir='rtl'] #save-cancel .save {float:right;}
+html[dir='rtl'] #save-cancel .cancel {float:left;}
 
 /* Addmedia pop-ups*/
 #addmedia-page input[type="text"]{line-height:18px;margin:0 5px;width:180px;}
