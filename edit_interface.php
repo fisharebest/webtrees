@@ -129,17 +129,13 @@ if (!empty($pid)) {
 	$edit = true;
 }
 
-echo '<div id="edit_interface-page">';// page container
 if (!WT_USER_CAN_EDIT || !$edit || !$ALLOW_EDIT_GEDCOM) {
-	echo
-		'<p class="error">', WT_I18N::translate('Privacy settings prevent you from editing this record.'), '</p>',
-		'<p><a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
+	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	exit;
 }
 
-if (!isset($type)) {
-	$type='';
-}
+echo '<div id="edit_interface-page">';// page container
+
 $level0type = $type;
 if ($type=='INDI') {
 	$record=WT_Person::getInstance($pid);
@@ -175,7 +171,7 @@ if (strstr($action, 'addchild')) {
 		echo '<h4>', WT_I18N::translate('Add a new father'), '</h4>';
 	}
 } elseif (strstr($action, 'addopfchild')) {
-	echo '<h4>', WT_I18N::translate('Add a child to create a one-parent family'), '</h4>', help_link('add_opf_child');
+	echo '<h4>', WT_I18N::translate('Add a child to create a one-parent family'), '</h4>';
 }
 //------------------------------------------------------------------------------
 switch ($action) {
@@ -209,11 +205,10 @@ case 'editraw':
 	$tmp=new WT_GedcomRecord($gedrec);
 	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 
-	echo '<h4>', WT_I18N::translate('Edit raw GEDCOM record'), '</h4>', help_link('edit_edit_raw');
+	echo '<h4>', WT_I18N::translate('Edit raw GEDCOM record'), help_link('edit_edit_raw'), print_specialchar_link('newgedrec2'), '</h4>';
 	echo '<form method="post" action="edit_interface.php">';
 	echo '<input type="hidden" name="action" value="updateraw">';
 	echo '<input type="hidden" name="pid" value="', $pid, '">';
-	echo '<input id="savebutton2" type="submit" value="', WT_I18N::translate('Save'), '"><br>';
 	// Remove the first line of the gedrec - things go wrong when users
 	// change either the TYPE or XREF
 	// Notes are special - they may contain data on the first line
@@ -236,17 +231,13 @@ case 'editraw':
 		echo '</td></tr>';
 		echo '</table>';
 	}
-	echo print_specialchar_link('newgedrec2');
-	echo '<br>';
-	echo '<input id="savebutton" type="submit" value="', WT_I18N::translate('Save'), '"><br>';
-	echo '</form>';
-	echo '<script>';
-	echo "textbox = document.getElementById('newgedrec');";
-	echo "savebutton = document.getElementById('savebutton');";
-	echo 'if (textbox && savebutton) {';
-	echo ' window.resizeTo(textbox.offsetLeft+textbox.offsetWidth+100, savebutton.offsetTop+savebutton.offsetHeight+150);';
-	echo '}';
-	echo '</script>';
+	?>
+		<p id="save-cancel">
+			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		</p>
+	</form>
+	<?php
 	break;
 //------------------------------------------------------------------------------
 //-- edit a fact record in a form
@@ -261,7 +252,6 @@ case 'edit':
 	echo '<input type="hidden" name="linenum" value="', $linenum, '">';
 	echo '<input type="hidden" name="pid" value="', $pid, '">';
 	echo '<input type="hidden" id="pids_array_edit" name="pids_array_edit" value="no_array">';
-	echo '<br><input type="submit" value="', WT_I18N::translate('Save'), '"><br>';
 
 	echo "<table class=\"facts_table\">";
 	$level1type = create_edit_form($gedrec, $linenum, $level0type);
@@ -320,9 +310,13 @@ case 'edit':
 		}
 		break;
 	}
-
-	echo '<br><input type="submit" value="', WT_I18N::translate('Save'), '"><br>';
-	echo '</form>';
+	?>
+		<p id="save-cancel">
+			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		</p>
+	</form>
+	<?php
 	break;
 //------------------------------------------------------------------------------
 case 'add':
@@ -335,7 +329,6 @@ case 'add':
 	echo '<input type="hidden" name="linenum" value="new">';
 	echo '<input type="hidden" name="pid" value="', $pid, '">';
 	echo '<input type="hidden" id="pids_array_add" name="pids_array_add" value="no_array">';
-	echo '<br><input type="submit" value="', WT_I18N::translate('Add'), '"><br>';
 	echo '<table class="facts_table">';
 
 	create_add_form($fact);
@@ -374,10 +367,13 @@ case 'add':
 			print_add_layer('RESN');
 		}
 	}
-
-	echo '<br><input type="submit" value="', WT_I18N::translate('Add'), '"><br>';
-	echo '</form>';
-// }
+	?>
+		<p id="save-cancel">
+			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		</p>
+	</form>
+	<?php
 	break;
 //------------------------------------------------------------------------------
 case 'addchild':
@@ -430,8 +426,13 @@ case 'addfamlink':
 		echo '</td></tr>';
 	}
 	echo '</table>';
-	echo '<input type="submit" value="', WT_I18N::translate('Set link'), '"><br>';
-	echo '</form>';
+	?>
+		<p id="save-cancel">
+			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		</p>
+	</form>
+	<?php
 	break;
 //------------------------------------------------------------------------------
 case 'linkspouse':
@@ -477,8 +478,13 @@ case 'linkspouse':
 	// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
 	print_add_layer("ASSO2");
 	print_add_layer("RESN");
-	echo '<input type="submit" value="', WT_I18N::translate('Set link'), '"><br>';
-	echo '</form>';
+	?>
+		<p id="save-cancel">
+			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		</p>
+	</form>
+	<?php
 	break;
 //------------------------------------------------------------------------------
 case 'linkfamaction':
@@ -635,9 +641,11 @@ case 'addnewsource':
 			add_simple_tag('0 AGNC');
 			?>
 			</table>
-			</div>
-		<br><br>
-		<input type="submit" value="<?php echo WT_I18N::translate('Create a new source'); ?>">
+		</div>
+		<p id="save-cancel">
+			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		</p>
 	</form>
 	<?php
 	break;
@@ -716,10 +724,12 @@ case 'addnewnote':
 				echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 				echo "</td></tr>";
 			}
-			echo '</table>';
-			echo '<br><br>';
-			echo '<input type="submit" value="', WT_I18N::translate('Save'), '">';
-		?>
+	?>
+		</table>
+		<p id="save-cancel">
+			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		</p>
 	</form>
 	<?php
 	break;
@@ -810,7 +820,6 @@ case 'editsource':
 	echo '<form method="post" action="edit_interface.php" enctype="multipart/form-data">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="pid" value="', $pid, '">';
-	echo '<br><input type="submit" value="', WT_I18N::translate('Save'), '"><br>';
 
 	echo '<table class="facts_table">';
 	$gedlines = explode("\n", $gedrec); // -- find the number of lines in the record
@@ -858,8 +867,13 @@ case 'editsource':
 	print_add_layer("NOTE");
 	print_add_layer("SHARED_NOTE");
 	print_add_layer("RESN");
-	echo '<br><input type="submit" value="', WT_I18N::translate('Save'), '"><br>';
-	echo '</form>';
+	?>
+		<p id="save-cancel">
+			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		</p>
+	</form>
+	<?php
 	break;
 //------------------------------------------------------------------------------
 //-- edit a Shared Note
@@ -912,9 +926,11 @@ case 'editnote':
 				}
 			?>
 		</table>
-		<br><br>
 		<input type="hidden" name="num_note_lines" value="<?php echo $num_note_lines; ?>">
-		<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>">
+		<p id="save-cancel">
+			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		</p>
 	</form>
 	<?php
 	break;
@@ -974,7 +990,10 @@ case 'addnewrepository':
 			}
 		?>
 		</table>
-		<input type="submit" value="<?php echo WT_I18N::translate('Create Repository'); ?>">
+		<p id="save-cancel">
+			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		</p>
 	</form>
 	<?php
 	break;
@@ -1751,7 +1770,7 @@ case 'reorder_children':
 			}
 		echo '</ul>';
 		if (WT_USER_IS_ADMIN) {
-			echo "<center><table width=93%><tr><td class=\"descriptionbox wrap width25\">";
+			echo "<table width=93%><tr><td class=\"descriptionbox wrap width25\">";
 			echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
 			echo '<input type="checkbox" name="preserve_last_changed"';
 			if ($NO_UPDATE_CHAN) {
@@ -1761,14 +1780,15 @@ case 'reorder_children':
 			echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 			echo WT_Gedcom_Tag::getLabelValue('DATE', $family->LastChangeTimestamp());
 			echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $family->LastChangeUser());
-			echo '</td></tr></table></center><br>';
+			echo '</td></tr></table>';
 		}
 		?>
-		<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
-		<button type="submit" onclick="document.reorder_form.action.value='reorder_children'; document.reorder_form.submit();"><?php echo WT_I18N::translate('sort by date of birth'); ?></button>
-		<button type="submit" onclick="window.close();"><?php echo WT_I18N::translate('Cancel'); ?></button>
+		<p id="save-cancel">
+			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+			<button type="submit" class="save" onclick="document.reorder_form.action.value='reorder_children'; document.reorder_form.submit();"><?php echo WT_I18N::translate('sort by date of birth'); ?></button>
+			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		</p>
 	</form>
-	<br>
 	<?php
 	break;
 //------------------------------------------------------------------------------
@@ -1916,11 +1936,10 @@ case 'changefamily':
 				</td>
 			</tr>
 		</table>
-		<!-- <p><a href="#" onclick="addnewchild(''); return false;"><?php echo WT_I18N::translate('Add an unlinked person'); ?></a></p> -->
-		<div id="save-cancel">
-			<div class="save"><input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>"></div>
-			<div class="cancel"><input type="button" value="<?php echo WT_I18N::translate('Cancel'); ?>" onclick="window.close();"></div>
-		</div>
+		<p id="save-cancel">
+			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		</p>
 	</form>
 	<?php
 	echo '</div>';//close #changefam
@@ -2129,9 +2148,11 @@ case 'reorder_fams':
 			}
 		?>
 		</ul>
-		<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
-		<button type="submit" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();"><?php echo WT_I18N::translate('sort by date of marriage'); ?></button>
-		<button type="submit" onclick="window.close();"><?php echo WT_I18N::translate('Cancel'); ?></button>
+		<p id="save-cancel">
+			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+			<button type="submit" class="save" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();"><?php echo WT_I18N::translate('sort by date of marriage'); ?></button>
+			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		</p>
 	</form>
 	<?php
 	break;
@@ -2171,7 +2192,5 @@ if (empty($goto) || empty($link)) {
 // autoclose window when update successful unless debug on
 if ($success && !WT_DEBUG) {
 	$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
-} else {
-	echo '<p class="center"><a href="#" onclick="closePopupAndReloadParent(\'', $link, '\');">', WT_I18N::translate('Close Window'), '</a></p>';
 }
 echo '</div>';//close #edit_interface-page

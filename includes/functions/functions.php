@@ -1113,9 +1113,9 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $path_
 						$node1['relations'][] = 'parent';
 						$p1nodes[] = $node1;
 						if ($node1['pid']==$pid2) {
-							if ($path_to_find>0)
+							if ($path_to_find>0) {
 								$path_to_find--;
-							else {
+							} else {
 								$found=true;
 								$resnode = $node1;
 							}

@@ -267,8 +267,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<td class="optionbox">';
 				echo edit_language_checkboxes('lang_', $languages);
 				echo '</td></tr></table>';
-				echo '<p><input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="5">';
-				echo '&nbsp;<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6">';
+				echo '<p><input type="submit" value="', WT_I18N::translate('save'), '" tabindex="5">';
 				echo '</p>';
 				echo '</form>';
 

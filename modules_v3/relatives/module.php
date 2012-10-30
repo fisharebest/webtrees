@@ -327,7 +327,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		?>
 		<table class="facts_table"><tr><td colspan="2" class="descriptionbox rela">
 		<input id="checkbox_elder" type="checkbox" onclick="jQuery('div.elderdate').toggle();" <?php if ($SHOW_AGE_DIFF) echo "checked=\"checked\""; ?>>
-		<label for="checkbox_elder"><?php echo WT_I18N::translate('Show date differences'), help_link('age_differences'); ?></label>
+		<label for="checkbox_elder"><?php echo WT_I18N::translate('Show date differences'); ?></label>
 		</td></tr></table>
 		<?php
 		$personcount=0;
@@ -406,7 +406,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_value">
 				<a href="#" onclick="return add_famc('<?php echo $controller->record->getXref(); ?>');"><?php echo WT_I18N::translate('Link this person to an existing family as a child'); ?></a>
-				<?php echo help_link('link_child'); ?>
 				</td>
 			</tr>
 			<?php if ($controller->record->getSex()!="F") { ?>
@@ -446,7 +445,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_value">
 				<a href="#" onclick="return addopfchild('<?php echo $controller->record->getXref(); ?>','U');"><?php echo WT_I18N::translate('Add a child to create a one-parent family'); ?></a>
-				<?php echo help_link('add_opf_child'); ?>
 				</td>
 			</tr>
 		</table>

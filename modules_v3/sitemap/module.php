@@ -250,7 +250,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			echo '>', $tree->tree_title_html, '</p>';
 		}
 		echo
-			'<input type="submit" value="', WT_I18N::translate('Save'), '">',
+			'<input type="submit" value="', WT_I18N::translate('save'), '">',
 			'</form>',
 			'<hr>';
 

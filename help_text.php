@@ -1159,11 +1159,6 @@ case 'add_note':
 	$text=WT_I18N::translate('If you have a note to add to this record, this is the place to do so.<br /><br />Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that\'s all.');
 	break;
 
-case 'add_opf_child':
-	$title=WT_I18N::translate('Add a child to create a one-parent family');
-	$text=WT_I18N::translate('By clicking this link, you can add a <u>new</u> child to this person, creating a one-parent family.<br /><br />Just click the link, and you will get a pop up window to add the new person.  Fill out as many boxes as you can and click the <b>Save</b> button.<br /><br />That\'s all.');
-	break;
-
 case 'add_shared_note':
 	// This is a general help text for multiple pages
 	$title=WT_I18N::translate('Add a new shared note');
@@ -1373,11 +1368,6 @@ case 'include_media':
 case 'lifespan_chart':
 	$title=WT_I18N::translate('Lifespans');
 	$text=WT_I18N::translate('On this chart you can display one or more persons along a horizontal timeline.  This chart allows you to see how the lives of different people overlapped.<br /><br />You can add people to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more people to the chart.  You can clear the chart at any time with the <b>Clear Chart</b> button.<br /><br />You can also add people to the chart by searching for them by date range or locality.');
-	break;
-
-case 'link_child':
-	$title=WT_I18N::translate('Link to an existing family as a child');
-	$text=WT_I18N::translate('You can link this person as a child to an existing family when you click this link.<br /><br />Suppose that at one time the parents of the person were unknown, and you discovered later that the parents have a record in this database.<br /><br />Just click the link, enter the ID of the family, and you have competed the task.  If you don\'t know the family\'s ID, you can search for it.');
 	break;
 
 case 'manage_media':

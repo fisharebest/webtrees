@@ -180,6 +180,6 @@ echo '<div id="edituser-page">
 		<div class="label">', WT_I18N::translate('Visible to other users when online'), help_link('useradmin_visibleonline'), '</div>
 		<div class="value">', checkbox('form_visible_online', get_user_setting(WT_USER_ID, 'visibleonline')), '</div>
 	</div>'; // close edituser-table
-	echo '<div id="edituser_submit"><input type="submit" value="', WT_I18N::translate('Save'), '"></div>';
+	echo '<div id="edituser_submit"><input type="submit" value="', WT_I18N::translate('save'), '"></div>';
 	echo '</form>
 </div>'; // close edituser-page

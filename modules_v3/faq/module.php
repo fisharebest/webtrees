@@ -187,8 +187,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			echo '</td></tr>';
 			echo '</table>';
 
-			echo '<p><input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="5">';
-			echo '&nbsp;<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6"></p>';
+			echo '<p><input type="submit" value="', WT_I18N::translate('save'), '" tabindex="5">';
 			echo '</form>';
 			exit;
 		}

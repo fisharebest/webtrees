@@ -307,7 +307,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 					</td>
 				</tr>
 			</table>
-			<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>">
+			<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
 		</form>
 		<?php
 	}

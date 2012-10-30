@@ -89,6 +89,6 @@ if ($action=='update_mods') {
 					?>
 			</tbody>
 		</table>
-		<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>">
+		<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
 	</form>
 </div>

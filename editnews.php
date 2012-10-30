@@ -74,7 +74,7 @@ case 'compose':
 		echo '<textarea name="text" cols="80" rows="10" dir="auto">'.htmlspecialchars($news['text']).'</textarea>';
 	}
 	echo '</td></tr>';
-	echo '<tr><td></td><td><input type="submit" value="'.WT_I18N::translate('Save').'"></td></tr>';
+	echo '<tr><td></td><td><input type="submit" value="'.WT_I18N::translate('save').'"></td></tr>';
 	echo '</table>';
 	echo '</form>';
 	break;

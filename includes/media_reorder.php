@@ -56,7 +56,6 @@ $controller->addInlineJavascript('
 		<p><center>
 		<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
 		<button type="submit" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php echo WT_I18N::translate('Reset'); ?></button>
-		<button type="submit" onclick="window.close();"><?php echo WT_I18N::translate('Cancel'); ?></button>
 		</center>
 <ul id="reorder_media_list">
 	<?php
@@ -188,6 +187,5 @@ $controller->addInlineJavascript('
 	?>
 	<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
 	<button type="submit" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php echo WT_I18N::translate('Reset'); ?></button>
-	<button type="submit" onclick="window.close();"><?php echo WT_I18N::translate('Cancel'); ?></button>
 	</center></p>
 	</form>

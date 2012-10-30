@@ -1386,7 +1386,6 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	}
 	echo help_link('OBJE');
 	echo "</td></tr>";
-	echo "<tr><td colspan=\"2\" class=\"descriptionbox\"><input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\"></td></tr>";
 	if ($linktoid == "new" || ($linktoid == "" && $action != "update")) {
 		echo "<tr><td class=\"descriptionbox wrap width25\">";
 		echo WT_I18N::translate('Enter a Person, Family, or Source ID'), help_link('add_media_linkid');
@@ -1714,7 +1713,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	print_add_layer("NOTE", 1);
 	print_add_layer("SHARED_NOTE", 1);
 	print_add_layer("RESN", 1);
-	echo "<input type=\"submit\" value=\"" . WT_I18N::translate('Save') . "\">";
+	echo "<input type=\"submit\" value=\"" . WT_I18N::translate('save') . "\">";
 	echo "</form>";
 	echo '</div>';//close #addmedia-page
 }

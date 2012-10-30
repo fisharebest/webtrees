@@ -578,11 +578,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	echo "<input type=\"hidden\" name=\"famid\" value=\"$famid\">";
 	echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\">";
 	echo "<input type=\"hidden\" name=\"famtag\" value=\"$famtag\">";
-	echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\">";
 	echo "<input type=\"hidden\" name=\"goto\" value=\"\">";
-	if (preg_match('/^add(child|spouse|newparent|newrepository)/', $nextaction)) {
-		echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save and go to new record'), "\" onclick=\"document.addchildform.goto.value='new';\">";
-	}
 	echo "<table class=\"facts_table\">";
 
 	// When adding a new child, specify the pedigree
@@ -946,11 +942,14 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		print_add_layer('NOTE', 1);
 		print_add_layer('SHARED_NOTE', 1);
 	}
-	echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\">";
-	if (preg_match('/^add(child|spouse|newparent|source)/', $nextaction)) {
-		echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save and go to new record'), "\" onclick=\"document.addchildform.goto.value='new';\">";
+	echo '<p id="save-cancel">';
+	echo '<input type="submit" class="save" value="', /* I18N: button label */ WT_I18N::translate('save'), '">';
+	if (preg_match('/^add(child|spouse|newparent)/', $nextaction)) {
+		echo '<input type="submit" class="save" value="', /* I18N: button label */ WT_I18N::translate('go to new individual'), '" onclick="document.addchildform.goto.value=\'new\';">';
 	}
-	echo "</form>";
+	echo '<input type="button" class="cancel" value="', /* I18N: button label */ WT_I18N::translate('close'), '" onclick="window.close();">';
+	echo '</p>';
+	echo '</form>';
 	$controller->addInlineJavascript('
 	SURNAME_TRADITION="'.$SURNAME_TRADITION.'";
 	sextag="'.$sextag.'";
@@ -1691,7 +1690,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 *
 * @param string $tag Gedcom tag name
 */
-function print_add_layer($tag, $level=2, $printSaveButton=true) {
+function print_add_layer($tag, $level=2) {
 	global $MEDIA_DIRECTORY, $TEXT_DIRECTION, $gedrec, $FULL_SOURCES, $islink;
 
 	if ($tag=='OBJE' && get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') < WT_USER_ACCESS_LEVEL) {
@@ -1704,7 +1703,6 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo help_link('edit_add_SOUR');
 		echo "<br>";
 		echo "<div id=\"newsource\" style=\"display: none;\">";
-		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\">";
 		echo "<table class=\"facts_table\">";
 		// 2 SOUR
 		$source = "SOUR @";
@@ -1741,7 +1739,6 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 			echo "<br>";
 			echo "<div id=\"newasso2\" style=\"display: none;\">";
 		}
-		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\">";
 		echo "<table class=\"facts_table\">";
 		// 2 ASSO
 		add_simple_tag(($level)." ASSO @");
@@ -1760,7 +1757,6 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo help_link('edit_add_NOTE');
 		echo "<br>";
 		echo "<div id=\"newnote\" style=\"display: none;\">";
-		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\">";
 		echo "<table class=\"facts_table\">";
 		// 2 NOTE
 		add_simple_tag(($level)." NOTE ".$text);
@@ -1773,7 +1769,6 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo help_link('edit_add_SHARED_NOTE');
 		echo "<br>";
 		echo "<div id=\"newshared_note\" style=\"display: none;\">";
-		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\">";
 		echo "<table class=\"facts_table\">";
 		// 2 SHARED NOTE
 		add_simple_tag(($level)." SHARED_NOTE ");
@@ -1786,7 +1781,6 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo help_link('OBJE');
 		echo "<br>";
 		echo "<div id=\"newobje\" style=\"display: none;\">";
-		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\">";
 		echo "<table class=\"facts_table\">";
 		add_simple_tag($level." OBJE");
 		echo "</table></div>";
@@ -1798,7 +1792,6 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo help_link('RESN');
 		echo "<br>";
 		echo "<div id=\"newresn\" style=\"display: none;\">";
-		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\">";
 		echo "<table class=\"facts_table\">";
 		// 2 RESN
 		add_simple_tag(($level)." RESN ".$text);

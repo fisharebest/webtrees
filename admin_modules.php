@@ -153,7 +153,7 @@ case 'delete_module':
 					?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>">
+			<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
 		</form>
 	</div>
 </div>

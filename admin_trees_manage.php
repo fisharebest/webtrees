@@ -250,7 +250,7 @@ if (WT_USER_IS_ADMIN) {
 		'<form name="createform" method="post" action="', WT_SCRIPT_NAME, '">',
 		'<input type="hidden" name="action" value="new_ged">',
 		'<input name="ged_name">',
-		' <input type="submit" value="', WT_I18N::translate('Save') , '">',
+		' <input type="submit" value="', WT_I18N::translate('save') , '">',
 		'</form>',
 		'</td>',
 		'</tr></table><br>';

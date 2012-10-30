@@ -334,6 +334,6 @@ echo '<tr><td class="descriptionbox wrap" colspan="7"><div id="instructions">';
 echo WT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.');
 echo '</div></td></tr>';
 echo '<tr><td class="topbottombar" colspan="7">';
-echo '<input type="submit" value="', WT_I18N::translate('Save'), '">';
+echo '<input type="submit" value="', WT_I18N::translate('save'), '">';
 echo '</td></tr></table>';
 echo '</form>';
