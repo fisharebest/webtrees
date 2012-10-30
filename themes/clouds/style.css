@@ -508,7 +508,7 @@ color:#000;
 .block,.descriptionbox,.facts_label,.facts_label02,.facts_label03,.facts_value,
 .lifespan_outer,.subbar,.list_label,.list_label_wrap,.list_value,.list_value_wrap,
 .messagebox,.optionbox,.person_box,.person_boxF,.person_boxNN,
-.person0,.person1,.person2,.person3,.person4,.person5,#sidebar,.topbottombar {
+.person0,.person1,.person2,.person3,.person4,.person5,#sidebar,.topbottombar,#save-cancel {
 border-radius:3px;
 }
 
@@ -3059,6 +3059,8 @@ html[dir="rtl"] input:required:valid, html[dir="rtl"] textarea:required:valid, h
 #edit_interface-page #changefam span{margin:0;}
 #edit_interface-page #changefam td{padding:5px; white-space:normal;}
 #edit_interface-page #changefam td.child{text-align:center;}
+#save-cancel{position:fixed;bottom: 0;background-color:#ECF5FF;border:1px solid #8bf;margin:0;width:98%;}
+#save-cancel input{padding:2px 8px;}
 #save-cancel .save {float:left;margin:5px;}
 #save-cancel .cancel {float:right;margin:5px;}
 html[dir='rtl'] #save-cancel .save {float:right;}
