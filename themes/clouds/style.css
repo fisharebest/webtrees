@@ -1288,6 +1288,7 @@ color:#555;
 input,button,textarea  {
 border-width:1px;
 border-color:#fff #006 #006 #fff;
+font-size: 12px;
 }
 
 input,textarea {
