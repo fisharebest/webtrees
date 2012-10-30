@@ -72,7 +72,7 @@
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BIRT:DATE')" /></Cell>
@@ -84,7 +84,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BIRT:PLAC')" /></Cell>
@@ -99,7 +99,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BIRT:SOUR')" /></Cell>
@@ -120,7 +120,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BAPM:DATE')" /></Cell>
@@ -131,7 +131,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BAPM:PLAC')" /></Cell>
@@ -144,7 +144,7 @@
 									<Cell style="list_value" width="$name"> </Cell>
 								</if>
 								<if condition="$printname=='0'">
-									<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
 								<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BAPM:SOUR')" /></Cell>
@@ -161,7 +161,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('CHR:DATE')" /></Cell>
@@ -172,7 +172,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('CHR:PLAC')" /></Cell>
@@ -185,7 +185,7 @@
 									<Cell style="list_value" width="$name"> </Cell>
 								</if>
 								<if condition="$printname=='0'">
-									<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
 								<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('CHR:SOUR')" /></Cell>
@@ -203,7 +203,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BARM:DATE')" /></Cell>
@@ -214,7 +214,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BARM:PLAC')" /></Cell>
@@ -227,7 +227,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BARM:SOUR')" /></Cell>
@@ -244,7 +244,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BASM:DATE')" /></Cell>
@@ -255,7 +255,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BASM:PLAC')" /></Cell>
@@ -268,7 +268,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BASM:SOUR')" /></Cell>
@@ -285,7 +285,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('CONF:DATE')" /></Cell>
@@ -296,7 +296,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('CONF:PLAC')" /></Cell>
@@ -309,7 +309,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('CONF:SOUR')" /></Cell>
@@ -327,7 +327,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('ENGA:DATE')" /></Cell>
@@ -338,7 +338,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('ENGA:PLAC')" /></Cell>
@@ -351,7 +351,7 @@
 									<Cell style="list_value" width="$name"> </Cell>
 								</if>
 								<if condition="$printname=='0'">
-									<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
 								<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('ENGA:SOUR')" /></Cell>
@@ -369,7 +369,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('FCOM:DATE')" /></Cell>
@@ -380,7 +380,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('FCOM:PLAC')" /></Cell>
@@ -393,7 +393,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('FCOM:SOUR')" /></Cell>
@@ -411,7 +411,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('MARB:DATE')" /></Cell>
@@ -422,7 +422,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('MARB:PLAC')" /></Cell>
@@ -435,7 +435,7 @@
 									<Cell style="list_value" width="$name"> </Cell>
 								</if>
 								<if condition="$printname=='0'">
-									<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
 								<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('MARB:SOUR')" /></Cell>
@@ -454,7 +454,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('MARR:DATE')" /></Cell>
@@ -465,7 +465,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('MARR:PLAC')" /></Cell>
@@ -478,7 +478,7 @@
 									<Cell style="list_value" width="$name"> </Cell>
 								</if>
 								<if condition="$printname=='0'">
-									<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
 								<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('MARR:SOUR')" /></Cell>
@@ -496,7 +496,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('DEAT:DATE')" /></Cell>
@@ -507,7 +507,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('DEAT:PLAC')" /></Cell>
@@ -520,7 +520,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('DEAT:SOUR')" /></Cell>
@@ -537,7 +537,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BURI:DATE')" /></Cell>
@@ -548,7 +548,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BURI:PLAC')" /></Cell>
@@ -561,7 +561,7 @@
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('BURI:SOUR')" /></Cell>
@@ -578,7 +578,7 @@
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="WT_Gedcom_Tag::getLabel('RELI')" /></Cell>

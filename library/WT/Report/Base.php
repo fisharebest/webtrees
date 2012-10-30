@@ -2049,7 +2049,7 @@ function GedcomValueSHandler($attrs) {
 				break;
 			case 'PLAC':
 				$tmp=new WT_Place($value, WT_GED_ID);
-				$value=$tmp->getFullName();
+				$value=$tmp->getShortName();
 				break;
 			}
 			if ($useBreak == "1") {

@@ -166,10 +166,12 @@
 								<br />
 								<var var="WT_I18N::translate('Spouse')" />
 								: 
-								<if condition="$spid==@WIFE">
+								<SetVar name="hpid" value="@HUSB"/>
+								<SetVar name="wpid" value="@WIFE"/>
+								<if condition="$spid==$wpid">
 									<GetPersonName id="@HUSB" />
 								</if>
-								<if condition="$spid==@HUSB">
+								<if condition="$spid==$hpid">
 									<GetPersonName id="@WIFE" />
 								</if>
 								<SetVar name="more" value="1" />
