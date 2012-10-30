@@ -102,8 +102,8 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				foreach ($media->fetchLinkedIndividuals() as $indi) {
 					if (
 						$filter=='all' ||
-						$filter=='indi'  && strpos($indi->getGedcomRecord(), '\n1 OBJE @' . $media->getXref() . '@') !==false ||
-						$filter=='event' && strpos($indi->getGedcomRecord(), '\n2 OBJE @' . $media->getXref() . '@') !==false
+						$filter=='indi'  && strpos($indi->getGedcomRecord(), "\n1 OBJE @" . $media->getXref() . '@') !==false ||
+						$filter=='event' && strpos($indi->getGedcomRecord(), "\n2 OBJE @" . $media->getXref() . '@') !==false
 					) {
 						// Found one :-)
 						$random_media=$media;
