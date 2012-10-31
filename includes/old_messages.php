@@ -53,6 +53,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Keep links');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Link to %s added');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Link to %s deleted');
+/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Link to an existing family as a child');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Link to an existing family as a husband');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Link to an existing family as a wife');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('List filtering options');
@@ -60,10 +61,13 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Open Family Navigator');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Personal Facts and Details');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('PlaceCheck List Options');
+/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Preview');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Protect thumbnails of protected images');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Reminder: you must copy %s to your webserver');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Reorder children');
+/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Reorder families');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Save and go to new record');
+/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Save');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Should new images automatically go in the protected media directory when they are uploaded?');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Start using webtrees');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Start using webtrees');
