@@ -551,8 +551,8 @@ if ($WT_TREE && $WT_TREE->preference('SHOW_COUNTER') && !$SEARCH_SPIDER) {
 
 // define constants to be used when setting permissions after creating files/directories
 if (substr(PHP_SAPI, 0, 3) == 'cgi') {  // cgi-mode, should only be writable by owner
-	define('WT_PERM_EXE',  0755);  // to be used on directories, php files and htaccess files
-	define('WT_PERM_FILE', 0644);  // to be used on images, text files, etc
+	define('WT_PERM_EXE',  0755);  // to be used on directories, php files, etc.
+	define('WT_PERM_FILE', 0644);  // to be used on images, text files, etc.
 } else { // mod_php mode, should be writable by everyone
 	define('WT_PERM_EXE',  0777);
 	define('WT_PERM_FILE', 0666);
