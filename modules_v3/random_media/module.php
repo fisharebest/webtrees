@@ -55,8 +55,8 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			" WHERE m_gedfile=?" .
 			" AND m_ext IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" .
 			" AND (".
-			"  SUBSTRING_INDEX(SUBSTRING_INDEX(m_gedrec, '2 TYPE ', -1), '\n', 1) IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" .
-			"  OR m_gedrec NOT LIKE '%2 TYPE %'" .
+			"  SUBSTRING_INDEX(SUBSTRING_INDEX(m_gedrec, '3 TYPE ', -1), '\n', 1) IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" .
+			"  OR m_gedrec NOT LIKE '%3 TYPE %'" .
 			" )"
 		)->execute(array(
 			WT_GED_ID,
