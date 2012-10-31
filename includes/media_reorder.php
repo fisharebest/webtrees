@@ -88,33 +88,41 @@ echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to
 		$ids[] = $family->getXref();
 	}
 
-	//-- If  they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
+	//-- If they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
 	$sort_current_objes = array();
 	$sort_ct = preg_match_all('/\n1 _WT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
 	for ($i=0; $i<$sort_ct; $i++) {
-		if (!isset($sort_current_objes[$sort_match[$i][1]])) $sort_current_objes[$sort_match[$i][1]] = 1;
-		else $sort_current_objes[$sort_match[$i][1]]++;
+		if (!isset($sort_current_objes[$sort_match[$i][1]])) {
+			$sort_current_objes[$sort_match[$i][1]] = 1;
+		} else {
+			$sort_current_objes[$sort_match[$i][1]]++;
+		}
 		$sort_obje_links[$sort_match[$i][1]][] = $sort_match[$i][0];
 	}
 
 	// create ORDER BY list from Gedcom sorted records list  ---------------------------
 	$orderbylist = 'ORDER BY '; // initialize
-	foreach ($sort_match as $media_id) {
-		$orderbylist .= "m_media='$media_id[1]' DESC, ";
+	foreach ($sort_match as $id) {
+		$orderbylist .= "m_media='$id[1]' DESC, ";
 	}
 	$orderbylist = rtrim($orderbylist, ', ');
 
 	//-- get a list of the current objects in the record
 	$current_objes = array();
-	$ct = preg_match_all('/\n\d OBJE @(.*)@/', $person->getGedcomRecord(), $match, PREG_SET_ORDER);
+	$regexp = '/\n\d OBJE @(.*)@/';
+	$ct = preg_match_all($regexp, $person->getGedcomRecord(), $match, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
-		if (!isset($current_objes[$match[$i][1]])) $current_objes[$match[$i][1]] = 1;
-		else $current_objes[$match[$i][1]]++;
+		if (!isset($current_objes[$match[$i][1]])) {
+			$current_objes[$match[$i][1]] = 1;
+		}  else {
+			$current_objes[$match[$i][1]]++;
+		}
 		$obje_links[$match[$i][1]][] = $match[$i][0];
 	}
 
 	$media_found = false;
 
+	// Get the related media items
 	$sqlmm =
 		"SELECT DISTINCT m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec" .
 		" FROM `##media`" .
@@ -122,7 +130,7 @@ echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to
 		" WHERE m_gedfile=? AND l_from IN (";
 	$i=0;
 	$vars=array(WT_GED_ID);
-	foreach ($ids as $key=>$media_id) {
+	foreach ($ids as $media_id) {
 		if ($i>0) $sqlmm .= ",";
 		$sqlmm .= "?";
 		$vars[]=$media_id;
@@ -139,7 +147,9 @@ echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to
 	$foundObjs = array();
 	foreach ($rows as $rowm) {
 		if (isset($foundObjs[$rowm['m_media']])) {
-			if (isset($current_objes[$rowm['m_media']])) $current_objes[$rowm['m_media']]--;
+			if (isset($current_objes[$rowm['m_media']])) {
+				$current_objes[$rowm['m_media']]--;
+			}
 			continue;
 		}
 		// NOTE: Determine the size of the mediafile

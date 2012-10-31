@@ -43,25 +43,25 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 	global $rownum, $rownum1, $rownum2, $rownum3, $rownum4;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
-	$gedrec = find_gedcom_record($pid, $ged_id, WT_USER_CAN_EDIT);
-	$ids = array($pid);
+	$person = WT_Person::getInstance($pid);
 
 	//-- find all of the related ids
+	$ids = array($person->getXref());
 	if ($related) {
-		$ct = preg_match_all("/1 FAMS @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
-		for ($i=0; $i<$ct; $i++) {
-			$ids[] = trim($match[$i][1]);
+		foreach ($person->getSpouseFamilies() as $family) {
+			$ids[] = $family->getXref();
 		}
 	}
 
-	//LBox -- if  exists, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
+	//-- If they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
 	$sort_current_objes = array();
-	if ($level>0) $sort_regexp = "/".$level." _WT_OBJE_SORT @(.*)@/";
-	else $sort_regexp = "/_WT_OBJE_SORT @(.*)@/";
-	$sort_ct = preg_match_all($sort_regexp, $gedrec, $sort_match, PREG_SET_ORDER);
+	$sort_ct = preg_match_all('/\n1 _WT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
 	for ($i=0; $i<$sort_ct; $i++) {
-		if (!isset($sort_current_objes[$sort_match[$i][1]])) $sort_current_objes[$sort_match[$i][1]] = 1;
-		else $sort_current_objes[$sort_match[$i][1]]++;
+		if (!isset($sort_current_objes[$sort_match[$i][1]])) {
+			$sort_current_objes[$sort_match[$i][1]] = 1;
+		} else {
+			$sort_current_objes[$sort_match[$i][1]]++;
+		}
 		$sort_obje_links[$sort_match[$i][1]][] = $sort_match[$i][0];
 	}
 
@@ -71,13 +71,15 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		$orderbylist .= "m_media='$id[1]' DESC, ";
 	}
 	$orderbylist = rtrim($orderbylist, ', ');
-	// ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 	//-- get a list of the current objects in the record
 	$current_objes = array();
-	if ($level>0) $regexp = "/".$level." OBJE @(.*)@/";
-	else $regexp = "/OBJE @(.*)@/";
-	$ct = preg_match_all($regexp, $gedrec, $match, PREG_SET_ORDER);
+	if ($level>0) {
+		$regexp = '/\n' . $level . ' OBJE @(.*)@/';
+	} else {
+		$regexp = '/\n\d OBJE @(.*)@/';
+	}
+	$ct = preg_match_all($regexp, $person->getGedcomRecord(), $match, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
 		if (!isset($current_objes[$match[$i][1]])) {
 			$current_objes[$match[$i][1]] = 1;
@@ -90,17 +92,20 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 	$media_found = false;
 
 	// Get the related media items
-	$sqlmm = "SELECT DISTINCT ";
-	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM `##media`, `##media_mapping` where ";
-	$sqlmm .= "mm_gid IN (";
-	$vars=array();
-	foreach ($ids as $id) {
-		$sqlmm .= "?, ";
-		$vars[]=$id;
+	$sqlmm =
+		"SELECT DISTINCT m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec" .
+		" FROM `##media`, `##media_mapping`" .
+		" WHERE mm_gedfile=? AND mm_gid IN (";
+	$i=0;
+	$vars=array(WT_GED_ID);
+	foreach ($ids as $media_id) {
+		if ($i>0) $sqlmm .= ", ";
+		$sqlmm .= "?";
+		$vars[]=$media_id;
+		$i++;
 	}
-	$sqlmm = rtrim($sqlmm, ', ');
-	$sqlmm .= ") AND mm_gedfile=? AND mm_media=m_media AND mm_gedfile=m_gedfile ";
-	$vars[]=WT_GED_ID;
+	$sqlmm .= ')';
+	$sqlmm .= " AND mm_media=m_media AND mm_gedfile=m_gedfile ";
 	//-- for family and source page only show level 1 obje references
 	if ($level>0) {
 		$sqlmm .= "AND mm_gedrec LIKE ?";
@@ -152,11 +157,10 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 
 	if ($sort_ct>0) {
 		$sqlmm .= $orderbylist;
-	} else {
-		$sqlmm .= " ORDER BY mm_gid DESC ";
 	}
 
 	$rows=WT_DB::prepare($sqlmm)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
+
 	$foundObjs = array();
 	$numm = count($rows);
 
@@ -278,7 +282,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 					if ($et>0) $ext = substr(trim($ematch[1]), 1);
 					$row['m_ext'] = $ext;
 					$row['mm_gid'] = $pid;
-					$row['mm_gedrec'] = get_sub_record($objSubrec{0}, $objSubrec, $gedrec);
+					$row['mm_gedrec'] = get_sub_record($objSubrec{0}, $objSubrec, $person->getGedcomRecord());
 					$res = lightbox_print_media_row('new', $row, $pid);
 					$media_found = $media_found || $res;
 					$value--;
@@ -360,7 +364,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	// Else Media files are present in "media" directory
 	} else {
 		//If media is linked to a 'private' person
-		if (!WT_Media::getInstance($rowm['m_media'])->canDisplayDetails() || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['mm_gedrec'])) {
+		if (!WT_Media::getInstance($rowm['m_media'])->canDisplayDetails()) {
 			return false;
 		} else {
 			// Media is NOT linked to private person

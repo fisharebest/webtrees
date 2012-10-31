@@ -1099,23 +1099,25 @@ function print_main_notes(WT_Event $fact, $level, $pid, $noedit=false) {
 function print_main_media($pid, $level=1, $related=false) {
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
-
 	$person = WT_Person::getInstance($pid);
 
 	//-- find all of the related ids
+	$ids = array($person->getXref());
 	if ($related) {
-		$ids = array($person->getXref());
 		foreach ($person->getSpouseFamilies() as $family) {
 			$ids[] = $family->getXref();
 		}
 	}
 
-	//-- If  they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
+	//-- If they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
 	$sort_current_objes = array();
 	$sort_ct = preg_match_all('/\n1 _WT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
 	for ($i=0; $i<$sort_ct; $i++) {
-		if (!isset($sort_current_objes[$sort_match[$i][1]])) $sort_current_objes[$sort_match[$i][1]] = 1;
-		else $sort_current_objes[$sort_match[$i][1]]++;
+		if (!isset($sort_current_objes[$sort_match[$i][1]])) {
+			$sort_current_objes[$sort_match[$i][1]] = 1;
+		} else {
+			$sort_current_objes[$sort_match[$i][1]]++;
+		}
 		$sort_obje_links[$sort_match[$i][1]][] = $sort_match[$i][0];
 	}
 
@@ -1128,25 +1130,32 @@ function print_main_media($pid, $level=1, $related=false) {
 
 	//-- get a list of the current objects in the record
 	$current_objes = array();
-	if ($level>0) $regexp = "/".$level." OBJE @(.*)@/";
-	else $regexp = "/OBJE @(.*)@/";
+	if ($level>0) {
+		$regexp = '/\n' . $level . ' OBJE @(.*)@/';
+	} else {
+		$regexp = '/\n\d OBJE @(.*)@/';
+	}
 	$ct = preg_match_all($regexp, $person->getGedcomRecord(), $match, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
-		if (!isset($current_objes[$match[$i][1]])) $current_objes[$match[$i][1]] = 1;
-		else $current_objes[$match[$i][1]]++;
+		if (!isset($current_objes[$match[$i][1]])) {
+			$current_objes[$match[$i][1]] = 1;
+		} else {
+			$current_objes[$match[$i][1]]++;
+		}
 		$obje_links[$match[$i][1]][] = $match[$i][0];
 	}
 
 	$media_found = false;
+
+	// Get the related media items
 	$sqlmm =
 		"SELECT DISTINCT m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, l_from AS pid" .
 		" FROM `##media`" .
 		" JOIN `##link` ON (m_media=l_to AND m_gedfile=l_file AND l_type='OBJE')" .
-		" JOIN `##individuals` ON (i_file=l_file AND i_id=l_from)" .
 		" WHERE m_gedfile=? AND l_from IN (";
 	$i=0;
 	$vars=array(WT_GED_ID);
-	foreach ($ids as $key=>$media_id) {
+	foreach ($ids as $media_id) {
 		if ($i>0) $sqlmm .= ", ";
 		$sqlmm .= "?";
 		$vars[]=$media_id;
@@ -1168,7 +1177,9 @@ function print_main_media($pid, $level=1, $related=false) {
 			continue;
 		}
 		if (isset($foundObjs[$rowm['m_media']])) {
-			if (isset($current_objes[$rowm['m_media']])) $current_objes[$rowm['m_media']]--;
+			if (isset($current_objes[$rowm['m_media']])) {
+				$current_objes[$rowm['m_media']]--;
+			}
 			continue;
 		}
 		$rows=array();
