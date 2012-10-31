@@ -48,7 +48,7 @@ class WT_Media extends WT_GedcomRecord {
 		if (is_array($data)) {
 			// Construct from a row from the database
 			$this->title=$data['m_titl'];
-			$this->file =$data['m_file'];
+			$this->file =$data['m_filename'];
 		} else {
 			// Construct from raw GEDCOM data
 			$this->title = get_gedcom_value('TITL', 1, $data);
@@ -85,8 +85,8 @@ class WT_Media extends WT_GedcomRecord {
 
 		if ($statement===null) {
 			$statement=WT_DB::prepare(
-				"SELECT 'OBJE' AS type, m_media AS xref, m_gedfile AS ged_id, m_gedrec AS gedrec, m_titl, m_file ".
-				"FROM `##media` WHERE m_media=? AND m_gedfile=?"
+				"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename".
+				" FROM `##media` WHERE m_id=? AND m_file=?"
 			);
 		}
 		return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
@@ -732,7 +732,7 @@ class WT_Media extends WT_GedcomRecord {
 	 */
 	static function in_obje_list($obje, $ged_id) {
 		return
-			WT_DB::prepare("SELECT m_media FROM `##media` WHERE m_file=? AND m_titl LIKE ? AND m_gedfile=?")
+			WT_DB::prepare("SELECT m_id FROM `##media` WHERE m_filename=? AND m_titl LIKE ? AND m_file=?")
 			->execute(array($obje->file, $obje->title, $ged_id))
 			->fetchOne();
 	}

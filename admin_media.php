@@ -589,9 +589,9 @@ if (check_media_structure()) {
 		//-- figure out how many levels are in this file
 		$mlevels = preg_split("~[/\\\]~", $filename);
 
-		$statement=WT_DB::prepare("SELECT * FROM `##media` WHERE m_file LIKE ?")->execute(array("%{$myFile}"));
-		while ($row=$statement->fetch(PDO::FETCH_ASSOC)) {
-			$rlevels = preg_split("~[/\\\]~", $row["m_file"]);
+		$statement=WT_DB::prepare("SELECT m_file, m_id, m_filename FROM `##media` WHERE m_filename LIKE ?")->execute(array("%{$myFile}"));
+		while ($row=$statement->fetch()) {
+			$rlevels = preg_split("~[/\\\]~", $row->m_filename);
 			//-- make sure we only delete a file at the same level of directories
 			//-- see 1825257
 			$match = true;
@@ -609,8 +609,11 @@ if (check_media_structure()) {
 				if ($k>$MEDIA_DIRECTORY_LEVELS) break;
 			}
 			if ($match) {
-				if ($row["m_gedfile"]!=WT_GED_ID) $onegedcom = false;
-				else $xrefs[] = $row["m_media"];
+				if ($row->m_file != WT_GED_ID) {
+					$onegedcom = false;
+				} else {
+					$xrefs[] = $row->m_id;
+				}
 			}
 		}
 		$statement->closeCursor();

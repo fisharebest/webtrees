@@ -195,7 +195,7 @@ class WT_Query_Admin {
 		return
 			WT_DB::prepare(
 				"SELECT count(change_id) FROM `##change`".
-				" JOIN `##media` ON (gedcom_id=m_gedfile AND m_media=xref)".
+				" JOIN `##media` ON (gedcom_id=m_file AND m_id=xref)".
 				" WHERE status='accepted' AND DATE(change_time)= DATE(NOW()) AND gedcom_id=?"
 			)
 			->execute(array($ged_id))
@@ -206,7 +206,7 @@ class WT_Query_Admin {
 		return
 			WT_DB::prepare(
 				"SELECT count(change_id) FROM `##change`".
-				" JOIN `##media` ON (gedcom_id=m_gedfile AND m_media=xref)".
+				" JOIN `##media` ON (gedcom_id=m_file AND m_id=xref)".
 				" WHERE status='accepted' AND WEEK(change_time,2)= WEEK(NOW(),2) AND gedcom_id=?"
 			)
 			->execute(array($ged_id))
@@ -217,7 +217,7 @@ class WT_Query_Admin {
 		return
 			WT_DB::prepare(
 				"SELECT count(change_id) FROM `##change`".
-				" JOIN `##media` ON (gedcom_id=m_gedfile AND m_media=xref)".
+				" JOIN `##media` ON (gedcom_id=m_file AND m_id=xref)".
 				" WHERE status='accepted' AND MONTH(change_time)= MONTH(NOW()) AND gedcom_id=?"
 			)
 			->execute(array($ged_id))

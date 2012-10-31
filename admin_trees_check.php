@@ -50,15 +50,15 @@ if (!safe_GET('go')) {
 // which may prevent the WT_GedcomRecord objects from working...
 
 $rows=WT_DB::prepare(
-	"SELECT i_id    AS xref, 'INDI' AS type, i_gedcom AS gedrec FROM `##individuals` WHERE i_file=?".
+	"SELECT i_id AS xref, 'INDI' AS type, i_gedcom AS gedrec FROM `##individuals` WHERE i_file=?".
 	" UNION ".
-	"SELECT f_id    AS xref, 'FAM'  AS type, f_gedcom AS gedrec FROM `##families`    WHERE f_file=?".
+	"SELECT f_id AS xref, 'FAM'  AS type, f_gedcom AS gedrec FROM `##families`    WHERE f_file=?".
 	" UNION ".
-	"SELECT s_id    AS xref, 'SOUR' AS type, s_gedcom AS gedrec FROM `##sources`     WHERE s_file=?".
+	"SELECT s_id AS xref, 'SOUR' AS type, s_gedcom AS gedrec FROM `##sources`     WHERE s_file=?".
 	" UNION ".
-	"SELECT m_media AS xref, 'OBJE' AS type, m_gedrec AS gedrec FROM `##media`       WHERE m_gedfile=?".
+	"SELECT m_id AS xref, 'OBJE' AS type, m_gedcom AS gedrec FROM `##media`       WHERE m_file=?".
 	" UNION ".
-	"SELECT o_id    AS xref, o_type AS type, o_gedcom AS gedrec FROM `##other`       WHERE o_file=? AND o_type NOT IN ('HEAD', 'TRLR')"
+	"SELECT o_id AS xref, o_type AS type, o_gedcom AS gedrec FROM `##other`       WHERE o_file=? AND o_type NOT IN ('HEAD', 'TRLR')"
 )->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchAll();
 
 $records=array();

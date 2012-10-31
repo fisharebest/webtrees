@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
 function media_reorder_row($rowm) {
-	$media = WT_Media::getInstance($rowm['m_media']);
+	$media = WT_Media::getInstance($rowm['m_id']);
 
 	if (!$media->canDisplayDetails()) {
 		return false;
@@ -103,7 +103,7 @@ echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to
 	// create ORDER BY list from Gedcom sorted records list  ---------------------------
 	$orderbylist = 'ORDER BY '; // initialize
 	foreach ($sort_match as $id) {
-		$orderbylist .= "m_media='$id[1]' DESC, ";
+		$orderbylist .= "m_id='$id[1]' DESC, ";
 	}
 	$orderbylist = rtrim($orderbylist, ', ');
 
@@ -124,10 +124,10 @@ echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to
 
 	// Get the related media items
 	$sqlmm =
-		"SELECT DISTINCT m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec" .
+		"SELECT DISTINCT m_id, m_ext, m_filename, m_titl, m_file, m_gedcom" .
 		" FROM `##media`" .
-		" JOIN `##link` ON (m_media=l_to AND m_gedfile=l_file AND l_type='OBJE')" .
-		" WHERE m_gedfile=? AND l_from IN (";
+		" JOIN `##link` ON (m_id=l_to AND m_file=l_file AND l_type='OBJE')" .
+		" WHERE m_file=? AND l_from IN (";
 	$i=0;
 	$vars=array(WT_GED_ID);
 	foreach ($ids as $media_id) {
@@ -146,16 +146,16 @@ echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to
 
 	$foundObjs = array();
 	foreach ($rows as $rowm) {
-		if (isset($foundObjs[$rowm['m_media']])) {
-			if (isset($current_objes[$rowm['m_media']])) {
-				$current_objes[$rowm['m_media']]--;
+		if (isset($foundObjs[$rowm['m_id']])) {
+			if (isset($current_objes[$rowm['m_id']])) {
+				$current_objes[$rowm['m_id']]--;
 			}
 			continue;
 		}
 		// NOTE: Determine the size of the mediafile
 		$imgwidth = 300+40;
 		$imgheight = 300+150;
-		if (preg_match("'://'", $rowm['m_file'])) {
+		if (preg_match("'://'", $rowm['m_filename'])) {
 			if (in_array($rowm['m_ext'], $MEDIATYPE)) {
 				$imgwidth = 400+40;
 				$imgheight = 500+150;
@@ -164,18 +164,18 @@ echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to
 				$imgheight = 400+150;
 			}
 		}
-		else if (file_exists(filename_decode(check_media_depth($rowm["m_file"], "NOTRUNC")))) {
-			$imgsize = findImageSize(check_media_depth($rowm["m_file"], "NOTRUNC"));
+		else if (file_exists(filename_decode(check_media_depth($rowm["m_filename"], "NOTRUNC")))) {
+			$imgsize = findImageSize(check_media_depth($rowm["m_filename"], "NOTRUNC"));
 			$imgwidth = $imgsize[0]+40;
 			$imgheight = $imgsize[1]+150;
 		}
 		$rows = array();
 		$rows['normal'] = $rowm;
-		if (isset($current_objes[$rowm['m_media']])) $current_objes[$rowm['m_media']]--;
+		if (isset($current_objes[$rowm['m_id']])) $current_objes[$rowm['m_id']]--;
 		foreach ($rows as $rowm) {
 			$res = media_reorder_row($rowm);
 			$media_found = $media_found || $res;
-			$foundObjs[$rowm['m_media']] = true;
+			$foundObjs[$rowm['m_id']] = true;
 		}
 	}
 	?>

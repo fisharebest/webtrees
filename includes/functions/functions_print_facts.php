@@ -1124,7 +1124,7 @@ function print_main_media($pid, $level=1, $related=false) {
 	// create ORDER BY list from Gedcom sorted records list  ---------------------------
 	$orderbylist = 'ORDER BY '; // initialize
 	foreach ($sort_match as $id) {
-		$orderbylist .= "m_media='$id[1]' DESC, ";
+		$orderbylist .= "m_id='$id[1]' DESC, ";
 	}
 	$orderbylist = rtrim($orderbylist, ', ');
 
@@ -1149,10 +1149,10 @@ function print_main_media($pid, $level=1, $related=false) {
 
 	// Get the related media items
 	$sqlmm =
-		"SELECT DISTINCT m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, l_from AS pid" .
+		"SELECT DISTINCT m_id, m_ext, m_filename, m_titl, m_file, m_gedcom, l_from AS pid" .
 		" FROM `##media`" .
-		" JOIN `##link` ON (m_media=l_to AND m_gedfile=l_file AND l_type='OBJE')" .
-		" WHERE m_gedfile=? AND l_from IN (";
+		" JOIN `##link` ON (m_id=l_to AND m_file=l_file AND l_type='OBJE')" .
+		" WHERE m_file=? AND l_from IN (";
 	$i=0;
 	$vars=array(WT_GED_ID);
 	foreach ($ids as $media_id) {
@@ -1173,12 +1173,12 @@ function print_main_media($pid, $level=1, $related=false) {
 	foreach ($rows as $rowm) {
 		//-- for family, repository, note and source page only show level 1 obje references
 		$tmp=WT_GedcomRecord::getInstance($rowm['pid']);
-		if ($level && !preg_match('/\n'.$level.' OBJE @'.$rowm['m_media'].'@/', $tmp->getGedcomRecord())) {
+		if ($level && !preg_match('/\n'.$level.' OBJE @'.$rowm['m_id'].'@/', $tmp->getGedcomRecord())) {
 			continue;
 		}
-		if (isset($foundObjs[$rowm['m_media']])) {
-			if (isset($current_objes[$rowm['m_media']])) {
-				$current_objes[$rowm['m_media']]--;
+		if (isset($foundObjs[$rowm['m_id']])) {
+			if (isset($current_objes[$rowm['m_id']])) {
+				$current_objes[$rowm['m_id']]--;
 			}
 			continue;
 		}
@@ -1186,14 +1186,14 @@ function print_main_media($pid, $level=1, $related=false) {
 
 		//-- if there is a change to this media item then get the
 		//-- updated media item and show it
-		if ($newrec=find_updated_record($rowm["m_media"], $ged_id)) {
+		if ($newrec=find_updated_record($rowm["m_id"], $ged_id)) {
 			$row = array();
-			$row['m_media'] = $rowm["m_media"];
-			$row['m_gedfile']=$rowm["m_gedfile"];
-			$row['m_file'] = get_gedcom_value("FILE", 1, $newrec);
+			$row['m_id'] = $rowm["m_id"];
+			$row['m_file']=$rowm["m_file"];
+			$row['m_filename'] = get_gedcom_value("FILE", 1, $newrec);
 			$row['m_titl'] = get_gedcom_value("TITL", 1, $newrec);
 			if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value("FILE:TITL", 1, $newrec);
-			$row['m_gedrec'] = $newrec;
+			$row['m_gedcom'] = $newrec;
 			$et = preg_match("/(\.\w+)$/", $row['m_file'], $ematch);
 			$ext = "";
 			if ($et>0) $ext = substr(trim($ematch[1]), 1);
@@ -1201,21 +1201,21 @@ function print_main_media($pid, $level=1, $related=false) {
 			$row['pid'] = $pid;
 			$rows['new'] = $row;
 			$rows['old'] = $rowm;
-			$current_objes[$rowm['m_media']]--;
+			$current_objes[$rowm['m_id']]--;
 		} else {
-			if (!isset($current_objes[$rowm['m_media']]) && ($rowm['pid']==$pid)) {
+			if (!isset($current_objes[$rowm['m_id']]) && ($rowm['pid']==$pid)) {
 				$rows['old'] = $rowm;
 			} else {
 				$rows['normal'] = $rowm;
-				if (isset($current_objes[$rowm['m_media']])) {
-					$current_objes[$rowm['m_media']]--;
+				if (isset($current_objes[$rowm['m_id']])) {
+					$current_objes[$rowm['m_id']]--;
 				}
 			}
 		}
 		foreach ($rows as $rtype => $rowm) {
 			$res = print_main_media_row($rtype, $rowm, $pid);
 			$media_found = $media_found || $res;
-			$foundObjs[$rowm['m_media']]=true;
+			$foundObjs[$rowm['m_id']]=true;
 		}
 	}
 
@@ -1227,12 +1227,12 @@ function print_main_media($pid, $level=1, $related=false) {
 			$objSubrec = array_pop($obje_links[$media_id]);
 			$row = array();
 			$newrec = find_gedcom_record($media_id, $ged_id, true);
-			$row['m_media'] = $media_id;
-			$row['m_gedfile']=$ged_id;
-			$row['m_file'] = get_gedcom_value("FILE", 1, $newrec);
+			$row['m_id'] = $media_id;
+			$row['m_file']=$ged_id;
+			$row['m_filename'] = get_gedcom_value("FILE", 1, $newrec);
 			$row['m_titl'] = get_gedcom_value("TITL", 1, $newrec);
 			if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value("FILE:TITL", 1, $newrec);
-			$row['m_gedrec'] = $newrec;
+			$row['m_gedcom'] = $newrec;
 			$et = preg_match("/(\.\w+)$/", $row['m_file'], $ematch);
 			$ext = "";
 			if ($et>0) $ext = substr(trim($ematch[1]), 1);
@@ -1255,7 +1255,7 @@ function print_main_media($pid, $level=1, $related=false) {
 function print_main_media_row($rtype, $rowm, $pid) {
 	global $SHOW_FACT_ICONS, $SEARCH_SPIDER;
 
-	$mediaobject = new WT_Media($rowm['m_gedrec']);
+	$mediaobject = new WT_Media($rowm['m_gedcom']);
 	if (!$mediaobject || !$mediaobject->canDisplayDetails()) {
 		return false;
 	}
@@ -1266,7 +1266,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 
 	$linenum = 0;
 	echo '<tr><td class="descriptionbox', $styleadd,' width20">';
-	if ($rowm['pid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($mediaobject->getXref(), $mediaobject->getGedcomRecord())) && ($styleadd!=' change_old') && $rowm['m_gedrec']!='') {
+	if ($rowm['pid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($mediaobject->getXref(), $mediaobject->getGedcomRecord())) && ($styleadd!=' change_old') && $rowm['m_gedcom']!='') {
 		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=", $mediaobject->getXref(), "&amp;linktoid={$rowm['pid']}', '_blank', edit_window_specs);\" href=\"#\" title=\"", WT_I18N::translate('Edit'), "\">";
 		if ($SHOW_FACT_ICONS) {
 			echo '<i class="icon-media"></i> ';

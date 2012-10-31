@@ -291,7 +291,7 @@ class WT_MenuBar {
 			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file=?                  ) AS sour,".
 			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='REPO') AS repo,".
 			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='NOTE') AS note,".
-			" EXISTS(SELECT 1 FROM `##media`   WHERE m_gedfile=?               ) AS obje"
+			" EXISTS(SELECT 1 FROM `##media`   WHERE m_file=?                  ) AS obje"
 		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchOneRow();
 
 		// Build a list of submenu items and then sort it in localized name order

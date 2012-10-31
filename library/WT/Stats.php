@@ -750,19 +750,19 @@ class WT_Stats {
 		if (!in_array($type, self::$_media_types) && $type != 'all' && $type != 'unknown') {
 			return 0;
 		}
-		$sql="SELECT SQL_CACHE COUNT(*) AS tot FROM `##media` WHERE m_gedfile=?";
+		$sql="SELECT SQL_CACHE COUNT(*) AS tot FROM `##media` WHERE m_file=?";
 		$vars=array($this->_ged_id);
 
 		if ($type != 'all') {
 			if ($type=='unknown') {
 				// There has to be a better way then this :(
 				foreach (self::$_media_types as $t) {
-					$sql.=" AND (m_gedrec NOT LIKE ? AND m_gedrec NOT LIKE ?)";
+					$sql.=" AND (m_gedcom NOT LIKE ? AND m_gedcom NOT LIKE ?)";
 					$vars[]="%3 TYPE {$t}%";
 					$vars[]="%1 _TYPE {$t}%";
 				}
 			} else {
-				$sql.=" AND (m_gedrec LIKE ? OR m_gedrec LIKE ?)";
+				$sql.=" AND (m_gedcom LIKE ? OR m_gedcom LIKE ?)";
 				$vars[]="%3 TYPE {$type}%";
 				$vars[]="%1 _TYPE {$type}%";
 			}

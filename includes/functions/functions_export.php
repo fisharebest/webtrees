@@ -278,8 +278,8 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$rows=WT_DB::prepare(
-		"SELECT 'OBJE' AS type, m_media AS xref, m_gedfile AS ged_id, m_gedrec AS gedrec, m_titl, m_file".
-		" FROM `##media` WHERE m_gedfile=? ORDER BY m_media"
+		"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename".
+		" FROM `##media` WHERE m_file=? ORDER BY m_id"
 	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
 		list($rec)=WT_Media::getInstance($row)->privatizeGedcom($access_level);

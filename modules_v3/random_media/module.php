@@ -51,13 +51,10 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		// We can apply the filters using SQL
 		// Do not use "ORDER BY RAND()" - it is very slow on large tables.  Use PHP::array_rand() instead.
 		$all_media=WT_DB::prepare(
-			"SELECT m_media FROM `##media`" .
-			" WHERE m_gedfile=?" .
-			" AND m_ext IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" .
-			" AND (".
-			"  SUBSTRING_INDEX(SUBSTRING_INDEX(m_gedrec, '3 TYPE ', -1), '\n', 1) IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" .
-			"  OR m_gedrec NOT LIKE '%3 TYPE %'" .
-			" )"
+			"SELECT m_id FROM `##media`" .
+			" WHERE m_file = ?" .
+			" AND m_ext  IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" .
+			" AND m_type IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')"
 		)->execute(array(
 			WT_GED_ID,
 			get_block_setting($block_id, 'filter_avi',         false) ? 'avi'         : NULL,

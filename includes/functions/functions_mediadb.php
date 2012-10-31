@@ -178,7 +178,7 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 		$directory = $MEDIA_DIRECTORY;
 	$myDir = str_replace($MEDIA_DIRECTORY, "", $directory);
 	$rows=
-		WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND (m_file LIKE ? OR m_file LIKE ?) ORDER BY m_id desc")
+		WT_DB::prepare("SELECT m_filename, m_id, m_gedcom, m_titl, m_file FROM `##media` WHERE m_file=? AND (m_filename LIKE ? OR m_filename LIKE ?)")
 		->execute(array(WT_GED_ID, "%{$myDir}%", "%://%"))
 		->fetchAll();
 	$mediaObjects = array ();
@@ -186,16 +186,15 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 	// Build the raw medialist array,
 	// but weed out any folders we're not interested in
 	foreach ($rows as $row) {
-		$fileName = check_media_depth($row->m_file, "NOTRUNC", "QUIET");
+		$fileName = check_media_depth($row->m_filename, "NOTRUNC", "QUIET");
 		$isExternal = isFileExternal($fileName);
 		if ($isExternal && !$includeExternal) {
 			continue;
 		}
 		if ($isExternal || !$currentdir || $directory == dirname($fileName) . "/") {
 			$media = array ();
-			$media["ID"] = $row->m_id;
-			$media["XREF"] = $row->m_media;
-			$media["GEDFILE"] = $row->m_gedfile;
+			$media["XREF"] = $row->m_id;
+			$media["GEDFILE"] = $row->m_file;
 			$media["FILE"] = $fileName;
 			if ($isExternal) {
 				$media["THUMB"] = $fileName;
@@ -207,18 +206,18 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 				$media["EXISTS"] = media_exists($fileName);
 			}
 			$media["TITL"] = $row->m_titl;
-			$media["GEDCOM"] = $row->m_gedrec;
+			$media["GEDCOM"] = $row->m_gedcom;
 			$media["LEVEL"] = '0';
 			$media["LINKED"] = false;
 			$media["LINKS"] = array ();
 			$media["CHANGE"] = "";
 			// Extract Format and Type from GEDCOM record
-			if (preg_match('/\n\d FORM (.+)/', $row->m_gedrec, $match)) {
+			if (preg_match('/\n\d FORM (.+)/', $row->m_gedcom, $match)) {
 				$media['FORM']=strtolower($match[1]);
 			} else {
 				$media['FORM']='';
 			}
-			if (preg_match('/\n\d _?TYPE (.+)/', $row->m_gedrec, $match)) {
+			if (preg_match('/\n\d _?TYPE (.+)/', $row->m_gedcom, $match)) {
 				$media['TYPE']=strtolower($match[1]);
 			} else {
 				$media['TYPE']='';
@@ -368,7 +367,6 @@ if (!$excludeLinks) {
 
 				// This media item is not yet in the database
 				$media = array ();
-				$media["ID"] = "";
 				$media["XREF"] = "";
 				$media["GEDFILE"] = "";
 				$media["FILE"] = $directory . $fileName;
@@ -457,12 +455,12 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 	$orderby = ($sortby == 'file') ? " ORDER BY SUBSTRING_INDEX(m_file, '/', -1) " : ' ORDER by m_titl ';
 	if ($includeExternal) {
 		$rows=
-			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND (m_file LIKE ? OR m_file LIKE ?) ".$orderby." COLLATE '".WT_I18N::$collation."'")
+			WT_DB::prepare("SELECT m_filename, m_id, m_titl, m_file FROM `##media` WHERE m_file=? AND (m_filename LIKE ? OR m_filename LIKE ?) ".$orderby." COLLATE '".WT_I18N::$collation."'")
 			->execute(array(WT_GED_ID, "%{$myDir}%", "%://%"))
 			->fetchAll();
 	} else {
 		$rows=
-			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND m_file LIKE ? ".$orderby." COLLATE '".WT_I18N::$collation."'")
+			WT_DB::prepare("SELECT m_filename, m_id, m_titl, m_file FROM `##media` WHERE m_file=? AND m_filename LIKE ? ".$orderby." COLLATE '".WT_I18N::$collation."'")
 			->execute(array(WT_GED_ID, "%{$myDir}%"))
 			->fetchAll();
 	}
@@ -470,11 +468,11 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 	// Build the raw medialist array,
 	// but weed out any folders we're not interested in
 	foreach ($rows as $row) {
-		$fileName = check_media_depth($row->m_file, "NOTRUNC", "QUIET");
+		$fileName = check_media_depth($row->m_filename, "NOTRUNC", "QUIET");
 		$isExternal = isFileExternal($fileName);
 		if ($isExternal || !$currentdir || $directory == dirname($fileName) . "/") {
 			$media = array ();
-			$media["XREF"] = $row->m_media;
+			$media["XREF"] = $row->m_id;
 			// Build a sortable key for the medialist
 			$firstChar = substr($media["XREF"], 0, 1);
 			$restChar = substr($media["XREF"], 1);
@@ -482,7 +480,7 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 				$firstChar = "";
 				$restChar = $media["XREF"];
 			}
-			$keyMediaList = $firstChar . substr("000000" . $restChar, -6) . "_" . $row->m_gedfile;
+			$keyMediaList = $firstChar . substr("000000" . $restChar, -6) . "_" . $row->m_file;
 			$medialist[$keyMediaList] = $media;
 		}
 	}
@@ -1828,7 +1826,7 @@ function PrintMediaLinks($links, $size = "small") {
 
 function get_media_id_from_file($filename) {
 	return
-		WT_DB::prepare("SELECT m_media FROM `##media` WHERE m_file LIKE ? AND m_gedfile=?")
+		WT_DB::prepare("SELECT m_id FROM `##media` WHERE m_filename LIKE ? AND m_file=?")
 		->execute(array("%{$filename}", WT_GED_ID))
 		->fetchOne();
 }
@@ -1873,7 +1871,7 @@ function picture_clip($person_id, $image_id, $filename, $thumbDir)
 {
 	// This gets the gedrec
 	$gedrec=
-		WT_DB::prepare("SELECT m_gedrec FROM `##media` WHERE m_media=? AND m_gedfile=?")
+		WT_DB::prepare("SELECT m_gedcom FROM `##media` WHERE m_id=? AND m_file=?")
 		->execute(array($image_id, WT_GED_ID))
 		->fetchOne();
 

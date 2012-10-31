@@ -519,9 +519,9 @@ function get_NOTE_rows($term) {
 function get_OBJE_rows($term) {
 	return
 		WT_DB::prepare(
-			"SELECT 'OBJE' AS type, m_media AS xref, m_gedfile AS ged_id, m_gedrec AS gedrec, m_titl, m_file".
+			"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename".
 			" FROM `##media`".
-			" WHERE (m_titl LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR m_media LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND m_gedfile=?"
+			" WHERE (m_titl LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR m_id LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND m_file=?"
 		)
 		->execute(array($term, $term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);

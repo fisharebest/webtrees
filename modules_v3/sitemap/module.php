@@ -100,7 +100,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 							$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$tree->tree_id.'-n-'.$i.'.xml</loc>'.$lastmod.'</sitemap>'.PHP_EOL;
 						}
 					}
-					$n=WT_DB::prepare("SELECT COUNT(*) FROM `##media` WHERE m_gedfile=?")->execute(array($tree->tree_id))->fetchOne();
+					$n=WT_DB::prepare("SELECT COUNT(*) FROM `##media` WHERE m_file=?")->execute(array($tree->tree_id))->fetchOne();
 					if ($n) {
 						for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
 							$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$tree->tree_id.'-m-'.$i.'.xml</loc>'.$lastmod.'</sitemap>'.PHP_EOL;
@@ -178,10 +178,10 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				break;
 			case 'm':
 				$rows=WT_DB::prepare(
-					"SELECT 'OBJE' AS type, m_media AS xref, m_gedfile AS ged_id, m_gedrec AS gedrec, m_titl, m_file".
+					"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename".
 					" FROM `##media`".
-					" WHERE m_gedfile=?".
-					" ORDER BY m_media".
+					" WHERE m_file=?".
+					" ORDER BY m_id".
 					" LIMIT ".self::RECORDS_PER_VOLUME." OFFSET ".($volume*self::RECORDS_PER_VOLUME)
 				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 				foreach ($rows as $row) {

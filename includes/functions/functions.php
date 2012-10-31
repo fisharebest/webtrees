@@ -654,6 +654,9 @@ function find_highlighted_object(WT_Person $person) {
 	preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $person->getGedcomRecord(), $matches, PREG_SET_ORDER);
 	foreach ($matches as $match) {
 		$media=WT_Media::getInstance($match[2]);
+		if (!$media) {
+			continue;
+		}
 		$level = $match[1];
 		if (preg_match('/\n1 _PRIM ([NY])/', $media->getGedcomRecord(), $pmatch)) {
 			$prim = $pmatch[1];

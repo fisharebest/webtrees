@@ -68,7 +68,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 	// create ORDER BY list from Gedcom sorted records list  ---------------------------
 	$orderbylist = 'ORDER BY '; // initialize
 	foreach ($sort_match as $id) {
-		$orderbylist .= "m_media='$id[1]' DESC, ";
+		$orderbylist .= "m_id='$id[1]' DESC, ";
 	}
 	$orderbylist = rtrim($orderbylist, ', ');
 
@@ -93,10 +93,10 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 
 	// Get the related media items
 	$sqlmm =
-		"SELECT DISTINCT m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, l_from AS pid" .
+		"SELECT DISTINCT m_id, m_ext, m_filename, m_titl, m_file, m_gedcom, l_from AS pid" .
 		" FROM `##media`" .
-		" JOIN `##link` ON (m_media=l_to AND m_gedfile=l_file AND l_type='OBJE')" .
-		" WHERE m_gedfile=? AND l_from IN (";
+		" JOIN `##link` ON (m_id=l_to AND m_file=l_file AND l_type='OBJE')" .
+		" WHERE m_file=? AND l_from IN (";
 	$i=0;
 	$vars=array(WT_GED_ID);
 	foreach ($ids as $media_id) {
@@ -111,7 +111,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 	switch ($kind) {
 	case 1:
 		$tt=WT_I18N::translate('Photo');
-		$sqlmm.="AND (m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ?)";
+		$sqlmm.="AND (m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ?)";
 		$vars[]='%TYPE photo%';
 		$vars[]='%TYPE map%';
 		$vars[]='%TYPE painting%';
@@ -119,7 +119,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		break;
 	case 2:
 		$tt=WT_I18N::translate('Document');
-		$sqlmm.="AND (m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ?)";
+		$sqlmm.="AND (m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ?)";
 		$vars[]='%TYPE card%';
 		$vars[]='%TYPE certificate%';
 		$vars[]='%TYPE document%';
@@ -129,14 +129,14 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		break;
 	case 3:
 		$tt=WT_I18N::translate('Census');
-		$sqlmm.="AND (m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ?)";
+		$sqlmm.="AND (m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ?)";
 		$vars[]='%TYPE electronic%';
 		$vars[]='%TYPE fiche%';
 		$vars[]='%TYPE film%';
 		break;
 	case 4:
 		$tt=WT_I18N::translate('Other');
-		$sqlmm.="AND (m_gedrec NOT LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ?)";
+		$sqlmm.="AND (m_gedcom NOT LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ?)";
 		$vars[]='%TYPE %';
 		$vars[]='%TYPE coat%';
 		$vars[]='%TYPE book%';
@@ -174,16 +174,16 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		// ==================================================
 		// Start pulling media items into thumbcontainer div ==============================
 		foreach ($rows as $rowm) {
-			if (isset($foundObjs[$rowm['m_media']])) {
-				if (isset($current_objes[$rowm['m_media']])) {
-					$current_objes[$rowm['m_media']]--;
+			if (isset($foundObjs[$rowm['m_id']])) {
+				if (isset($current_objes[$rowm['m_id']])) {
+					$current_objes[$rowm['m_id']]--;
 				}
 				continue;
 			}
 			// NOTE: Determine the size of the mediafile
 			$imgwidth = 300+40;
 			$imgheight = 300+150;
-			if (isFileExternal($rowm['m_file'])) {
+			if (isFileExternal($rowm['m_filename'])) {
 				if (in_array($rowm['m_ext'], $MEDIATYPE)) {
 					$imgwidth = 400+40;
 					$imgheight = 500+150;
@@ -191,8 +191,8 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 					$imgwidth = 800+40;
 					$imgheight = 400+150;
 				}
-			} else if (media_exists(check_media_depth($rowm['m_file'], 'NOTRUNC'))) {
-				$imgsize = findImageSize(check_media_depth($rowm['m_file'], 'NOTRUNC'));
+			} else if (media_exists(check_media_depth($rowm['m_filename'], 'NOTRUNC'))) {
+				$imgsize = findImageSize(check_media_depth($rowm['m_filename'], 'NOTRUNC'));
 				$imgwidth = $imgsize[0]+40;
 				$imgheight = $imgsize[1]+150;
 			}
@@ -200,28 +200,28 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 
 			//-- if there is a change to this media item then get the
 			//-- updated media item and show it
-			if (($newrec=find_updated_record($rowm['m_media'], $ged_id)) && $kind!=5  ) {
+			if (($newrec=find_updated_record($rowm['m_id'], $ged_id)) && $kind!=5  ) {
 				$row = array();
-				$row['m_media'] = $rowm['m_media'];
-				$row['m_file'] = get_gedcom_value("FILE", 1, $newrec);
+				$row['m_id'] = $rowm['m_id'];
+				$row['m_filename'] = get_gedcom_value("FILE", 1, $newrec);
 				$row['m_titl'] = get_gedcom_value("TITL", 1, $newrec);
 				if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value("FILE:TITL", 1, $newrec);
-				$row['m_gedrec'] = $newrec;
+				$row['m_gedcom'] = $newrec;
 				$et = preg_match("/(\.\w+)$/", $row['m_file'], $ematch);
 				$ext = "";
 				if ($et>0) $ext = substr(trim($ematch[1]), 1);
 				$row['m_ext'] = $ext;
 				$row['pid'] = $pid;
-				$row['m_gedfile'] = $rowm['m_gedfile'];
+				$row['m_file'] = $rowm['m_file'];
 				$rows['new'] = $row;
 				$rows['old'] = $rowm;
 			} else {
-				if (!isset($current_objes[$rowm['m_media']]) && ($rowm['pid']==$pid)) {
+				if (!isset($current_objes[$rowm['m_id']]) && ($rowm['pid']==$pid)) {
 					$rows['old'] = $rowm;
 				} else {
 					$rows['normal'] = $rowm;
-					if (isset($current_objes[$rowm['m_media']])) {
-						$current_objes[$rowm['m_media']]--;
+					if (isset($current_objes[$rowm['m_id']])) {
+						$current_objes[$rowm['m_id']]--;
 					}
 				}
 			}
@@ -230,7 +230,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 					$res = lightbox_print_media_row($rtype, $rowm, $pid);
 				}
 				$media_found = $media_found || $res;
-				$foundObjs[$rowm['m_media']]=true;
+				$foundObjs[$rowm['m_id']]=true;
 			}
 		}
 
@@ -260,17 +260,17 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 					$objSubrec = array_pop($obje_links[$media_id]);
 					$row = array();
 					$newrec = find_gedcom_record($media_id, $ged_id, true);
-					$row['m_media'] = $media_id;
-					$row['m_gedfile']=$ged_id;
-					$row['m_file'] = get_gedcom_value("FILE", 1, $newrec);
+					$row['m_id'] = $media_id;
+					$row['m_file']=$ged_id;
+					$row['m_filename'] = get_gedcom_value("FILE", 1, $newrec);
 					$row['m_titl'] = get_gedcom_value("TITL", 1, $newrec);
 					if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value("FILE:TITL", 1, $newrec);
-					$row['m_gedrec'] = $newrec;
+					$row['m_gedcom'] = $newrec;
 					$et = preg_match("/(\.\w+)$/", $row['m_file'], $ematch);
 					$ext = "";
 					if ($et>0) $ext = substr(trim($ematch[1]), 1);
 					$row['m_ext'] = $ext;
-					$row['mm_gid'] = $pid;
+					$row['pid'] = $pid;
 					$res = lightbox_print_media_row('new', $row, $pid);
 					$media_found = $media_found || $res;
 					$value--;
@@ -320,20 +320,20 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 
 	global $TEXT_DIRECTION, $sort_i, $notes;
 
-	$mainMedia = check_media_depth($rowm['m_file'], 'NOTRUNC');
+	$mainMedia = check_media_depth($rowm['m_filename'], 'NOTRUNC');
 	// If media file is missing from "media" directory, but is referenced in Gedcom
 	if (!media_exists($mainMedia)) {
-		if (!file_exists($rowm['m_file']) && !isset($rowm['m_file'])) {
+		if (!file_exists($rowm['m_filename']) && !isset($rowm['m_filename'])) {
 			echo '<tr>';
 			echo '<td valign="top" rowspan="2" >';
 			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="82px" alt=""></img>';
 			echo '</td>';
 			echo '<td class="description_box nowrap" valign="top" colspan="3">';
 			echo '<center><br><img src="', WT_THEME_URL, 'images/media.gif" height="30">';
-			echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $rowm['m_file']), '</p>';
+			echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $rowm['m_filename']), '</p>';
 			echo '</td>';
 			echo '</tr>';
-		} else if (!file_exists($rowm['m_file'])) {
+		} else if (!file_exists($rowm['m_filename'])) {
 			echo '<li class="li_norm" >';
 			echo '<table class="pic" width="50px" border="0">';
 			echo '<tr>';
@@ -342,7 +342,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo '</td>';
 			echo '<td class="description_box nowrap" valign="top" colspan="3">';
 			echo '<center><br><img src="', WT_THEME_URL, 'images/media.gif" height="30">';
-			echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $rowm['m_file']), '</p>';
+			echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $rowm['m_filename']), '</p>';
 			echo '</td>';
 			echo '</tr>';
 		} else {
@@ -352,7 +352,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	// Else Media files are present in "media" directory
 	} else {
 		//If media is linked to a 'private' person
-		if (!WT_Media::getInstance($rowm['m_media'])->canDisplayDetails()) {
+		if (!WT_Media::getInstance($rowm['m_id'])->canDisplayDetails()) {
 			return false;
 		} else {
 			// Media is NOT linked to private person
@@ -374,11 +374,11 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 
 	// NOTE Start printing the media details
 	if (!media_exists($mainMedia)) {
-		if (!media_exists($rowm['m_file'])) {
+		if (!media_exists($rowm['m_filename'])) {
 			$thumbnail = '';
 			$isExternal = ''; // isFileExternal($thumbnail);
 		} else {
-			$thumbnail = thumbnail_file($rowm['m_file'], true, false, $pid);
+			$thumbnail = thumbnail_file($rowm['m_filename'], true, false, $pid);
 			$isExternal = isFileExternal($thumbnail);
 		}
 	} else {
@@ -389,24 +389,24 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	$linenum = 0;
 
 	//  Get the title of the media
-	$media=WT_Media::getInstance($rowm['m_media']);
+	$media=WT_Media::getInstance($rowm['m_id']);
 	if ($media) {
 		$mediaTitle = $media->getFullName();
 	} else {
 		$mediaTitle = '';
 	}
 
-	$mainMedia = check_media_depth($rowm['m_file'], 'NOTRUNC');
+	$mainMedia = check_media_depth($rowm['m_filename'], 'NOTRUNC');
 	$mainFileExists = true;
 	$imgsize = findImageSize($mainMedia);
 	$imgwidth = $imgsize[0]+40;
 	$imgheight = $imgsize[1]+150;
 
 	// Get the tooltip link for source
-	$sour = WT_Source::getInstance(get_gedcom_value('SOUR', 1, $rowm['m_gedrec']));
+	$sour = WT_Source::getInstance(get_gedcom_value('SOUR', 1, $rowm['m_gedcom']));
 
 	//Get media item Notes
-	$haystack = $rowm['m_gedrec'];
+	$haystack = $rowm['m_gedcom'];
 	$needle   = '1 NOTE';
 	$before   = substr($haystack, 0, strpos($haystack, $needle));
 	$after    = substr(strstr($haystack, $needle), strlen($needle));
@@ -414,15 +414,15 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	$notes    = htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)), ENT_QUOTES);
 
 	// Get info on how to handle this media file
-	$mediaInfo = mediaFileInfo($mainMedia, $thumbnail, $rowm['m_media'], $mediaTitle, $notes);
+	$mediaInfo = mediaFileInfo($mainMedia, $thumbnail, $rowm['m_id'], $mediaTitle, $notes);
 
 	// Prepare Below Thumbnail  menu ----------------------------------------------------
 	$menu = new WT_Menu();
 	// Truncate media title to 13 chars (45 chars if Streetview) and add ellipsis
 	$mtitle = strip_tags($mediaTitle);
-	if (strpos($rowm['m_file'], 'http://maps.google.')===0) {
+	if (strpos($rowm['m_filename'], 'http://maps.google.')===0) {
 		if (utf8_strlen($mtitle)>16) {
-			$mtitle = utf8_substr($rowm['m_file'], 0, 45).WT_I18N::translate('…');
+			$mtitle = utf8_substr($rowm['m_filename'], 0, 45).WT_I18N::translate('…');
 		}
 	} else {
 		if (utf8_strlen($mtitle)>16) {
@@ -432,8 +432,8 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 
 	// Continue menu construction
 	// If media file is missing from 'media' directory, but is referenced in Gedcom
-	if (!media_exists($rowm['m_file']) && !media_exists($mainMedia)) {
-		$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\">" . WT_I18N::translate('Edit')." (". $rowm['m_media'].")", 'right');
+	if (!media_exists($rowm['m_filename']) && !media_exists($mainMedia)) {
+		$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\">" . WT_I18N::translate('Edit')." (". $rowm['m_id'].")", 'right');
 	} else {
 		$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\">" . $mtitle, 'right');
 	}
@@ -445,7 +445,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		$menu->addClass('', 'submenu');
 
 		// View Notes
-		if (strpos($rowm['m_gedrec'], "\n1 NOTE")) {
+		if (strpos($rowm['m_gedcom'], "\n1 NOTE")) {
 			$submenu = new WT_Menu('&nbsp;&nbsp;' . WT_I18N::translate('View Notes') . '&nbsp;&nbsp;', '#');
 			// Notes Tooltip ----------------------------------------------------
 			$submenu->addOnclick("modalNotes('". $notes ."','". WT_I18N::translate('View Notes') ."'); return false;");
@@ -453,7 +453,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			$menu->addSubMenu($submenu);
 		}
 		//View Details
-		$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('View Details') . "&nbsp;&nbsp;", WT_SERVER_NAME.WT_SCRIPT_PATH . "mediaviewer.php?mid=".$rowm['m_media'].'&amp;ged='.WT_GEDURL, 'right');
+		$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('View Details') . "&nbsp;&nbsp;", WT_SERVER_NAME.WT_SCRIPT_PATH . "mediaviewer.php?mid=".$rowm['m_id'].'&amp;ged='.WT_GEDURL, 'right');
 		$submenu->addClass("submenuitem");
 		$menu->addSubMenu($submenu);
 		//View Source
@@ -465,14 +465,14 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		if (WT_USER_CAN_EDIT) {
 			// Edit Media
 			$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('Edit media') . "&nbsp;&nbsp;");
-			$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid={$rowm['m_media']}}', '_blank', edit_window_specs);");
+			$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid={$rowm['m_id']}}', '_blank', edit_window_specs);");
 			$submenu->addClass("submenuitem");
 			$menu->addSubMenu($submenu);
 			if (WT_USER_IS_ADMIN) {
 				// Manage Links
 				if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 					$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('Manage links') . "&nbsp;&nbsp;");
-					$submenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_media']}&amp;linkto=manage', '_blank', find_window_specs);");
+					$submenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_id']}&amp;linkto=manage', '_blank', find_window_specs);");
 					$submenu->addClass("submenuitem");
 					$menu->addSubMenu($submenu);
 				} else {
@@ -480,17 +480,17 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 					$submenu->addClass('submenuitem', 'submenu');
 
 					$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'));
-					$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_media']}&amp;linkto=person', '_blank', find_window_specs);");
+					$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_id']}&amp;linkto=person', '_blank', find_window_specs);");
 					$ssubmenu->addClass('submenuitem', 'submenu');
 					$submenu->addSubMenu($ssubmenu);
 
 					$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'));
-					$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_media']}&amp;linkto=family', '_blank', find_window_specs);");
+					$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_id']}&amp;linkto=family', '_blank', find_window_specs);");
 					$ssubmenu->addClass('submenuitem', 'submenu');
 					$submenu->addSubMenu($ssubmenu);
 
 					$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'));
-					$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_media']}&amp;linkto=source', '_blank', find_window_specs);");
+					$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_id']}&amp;linkto=source', '_blank', find_window_specs);");
 					$ssubmenu->addClass('submenuitem', 'submenu');
 					$submenu->addSubMenu($ssubmenu);
 
@@ -498,7 +498,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 				}
 				// Unlink Media
 				$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('Unlink Media') . "&nbsp;&nbsp;");
-				$submenu->addOnclick("return delete_fact('$pid', 'OBJE', '".$rowm['m_media']."', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');");
+				$submenu->addOnclick("return delete_fact('$pid', 'OBJE', '".$rowm['m_id']."', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');");
 				$submenu->addClass("submenuitem");
 				$menu->addSubMenu($submenu);
 			}
@@ -506,12 +506,12 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	}
 
 	// Check if allowed to View media
-	if ($isExternal || media_exists($thumbnail) && canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['m_gedrec'])) {
+	if ($isExternal || media_exists($thumbnail) && canDisplayFact($rowm['m_id'], $rowm['m_file'], $rowm['m_gedcom'])) {
 		// Get Media info
-		if ($isExternal || media_exists($rowm['m_file']) || media_exists($mainMedia)) {
+		if ($isExternal || media_exists($rowm['m_filename']) || media_exists($mainMedia)) {
 			// Start Thumbnail Enclosure table ---------------------------------------------
 			// Pull table up 90px if media object is a "streetview"
-			if (strpos($rowm['m_file'], 'http://maps.google.')===0) {
+			if (strpos($rowm['m_filename'], 'http://maps.google.')===0) {
 				echo '<table width="10px" style="margin-top:-90px;" class="pic" border="0"><tr>';
 			} else {
 				echo '<table width="10px" class="pic" border="0"><tr>';
@@ -535,7 +535,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	}
 
 	// If media file is missing but details are in Gedcom then add the menu as well
-	if (!media_exists($mainMedia) && !media_exists($rowm['m_file'])) {
+	if (!media_exists($mainMedia) && !media_exists($rowm['m_filename'])) {
 		echo '<tr>';
 		echo '<td ></td>';
 		echo '<td valign="bottom" align="center" class="nowrap">';
@@ -545,7 +545,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		echo '</tr>';
 	}
 	echo '</table>';
-	$media_data = $rowm['m_media'];
+	$media_data = $rowm['m_id'];
 	echo '<input type="hidden" name="order1[', $media_data, ']" value="', $sort_i, '">';
 	$sort_i++;
 	echo '</li>';

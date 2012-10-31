@@ -350,6 +350,7 @@ class WT_Tree {
 		self::$trees=null;
 	}
 
+	// Delete everything relating to a tree
 	public static function delete($tree_id) {
 		// If this is the default tree, then unset 
 		if (WT_Site::preference('DEFAULT_GEDCOM')==self::getNameFromId($tree_id)) {
@@ -366,8 +367,7 @@ class WT_Tree {
 		WT_DB::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id =?")->execute(array($tree_id));
 		WT_DB::prepare("DELETE FROM `##individuals`         WHERE i_file    =?")->execute(array($tree_id));
 		WT_DB::prepare("DELETE FROM `##link`                WHERE l_file    =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##media`               WHERE m_gedfile =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##media_mapping`       WHERE mm_gedfile=?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##media`               WHERE m_file    =?")->execute(array($tree_id));
 		WT_DB::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id =?")->execute(array($tree_id));
 		WT_DB::prepare("DELETE FROM `##name`                WHERE n_file    =?")->execute(array($tree_id));
 		WT_DB::prepare("DELETE FROM `##next_id`             WHERE gedcom_id =?")->execute(array($tree_id));

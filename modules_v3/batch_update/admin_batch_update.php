@@ -248,7 +248,7 @@ class batch_update {
 				$vars[]=WT_GED_ID;
 				break;
 			case 'OBJE':
-				$sql[]="SELECT m_media, 'OBJE' FROM `##media` WHERE m_gedfile=?";
+				$sql[]="SELECT m_id, 'OBJE' FROM `##media` WHERE m_file=?";
 				$vars[]=WT_GED_ID;
 				break;
 			default:

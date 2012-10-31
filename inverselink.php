@@ -93,7 +93,7 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 		if (!empty($mediaid)) {
 			//-- Get the title of this existing Media item
 			$title=
-				WT_DB::prepare("SELECT m_titl FROM `##media` where m_media=? AND m_gedfile=?")
+				WT_DB::prepare("SELECT m_titl FROM `##media` where m_id=? AND m_file=?")
 				->execute(array($mediaid, WT_GED_ID))
 				->fetchOne();
 			if ($title) {

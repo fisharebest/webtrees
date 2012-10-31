@@ -92,7 +92,7 @@ if ($action == 'choose' && $paramok) {
 	if (!empty($mediaid)) {
 		//-- Get the title of this existing Media item
 		$title=
-			WT_DB::prepare("SELECT m_titl FROM `##media` where m_media=? AND m_gedfile=?")
+			WT_DB::prepare("SELECT m_titl FROM `##media` where m_id=? AND m_file=?")
 			->execute(array($mediaid, WT_GED_ID))
 			->fetchOne();
 		if ($title) {
@@ -103,7 +103,7 @@ if ($action == 'choose' && $paramok) {
 		echo '<table><tr><td>';
 		//-- Get the filename of this existing Media item
 		$filename=
-			WT_DB::prepare("SELECT m_file FROM `##media` where m_media=? AND m_gedfile=?")
+			WT_DB::prepare("SELECT m_file FROM `##media` where m_id=? AND m_file=?")
 			->execute(array($mediaid, WT_GED_ID))
 			->fetchOne();
 		$thumbnail = thumbnail_file($filename, false);

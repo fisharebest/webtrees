@@ -730,29 +730,17 @@ try {
 	);
 	WT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##media` (".
-		" m_id      INTEGER AUTO_INCREMENT NOT NULL,".
-		" m_media   VARCHAR(20)            NOT NULL,".
-		" m_ext     VARCHAR(6)                 NULL,".
-		" m_titl    VARCHAR(255)               NULL,".
-		" m_file    VARCHAR(512)               NULL,".
-		" m_gedfile INTEGER                NOT NULL,".
-		" m_gedrec  MEDIUMTEXT                 NULL,".
-		" PRIMARY KEY (m_id),".
-		"         KEY ix1 (m_media, m_gedfile)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
-	WT_DB::exec(
-		"CREATE TABLE IF NOT EXISTS `##media_mapping` (".
-		" mm_id      INTEGER AUTO_INCREMENT NOT NULL,".
-		" mm_media   VARCHAR(20)            NOT NULL,".
-		" mm_gid     VARCHAR(20)            NOT NULL,".
-		" mm_order   INTEGER                NOT NULL DEFAULT '0',".
-		" mm_gedfile INTEGER                NOT NULL,".
-		" mm_gedrec  MEDIUMTEXT             NOT NULL,".
-		" PRIMARY KEY (mm_id),".
-		"         KEY ix1 (mm_media, mm_gedfile),".
-		"         KEY ix2 (mm_gid, mm_gedfile),".
-		"         KEY ix3 (mm_gedfile)".
+		" m_id       VARCHAR(20)            NOT NULL,".
+		" m_ext      VARCHAR(6)                 NULL,".
+		" m_type     VARCHAR(20)                NULL,".
+		" m_titl     VARCHAR(255)               NULL,".
+		" m_filename VARCHAR(512)               NULL,".
+		" m_file     INTEGER                NOT NULL,".
+		" m_gedcom   MEDIUMTEXT                 NULL,".
+		" PRIMARY KEY     (m_file, m_id),".
+		" UNIQUE  KEY ix1 (m_id, m_file),".
+		"         KEY ix2 (m_ext, m_type),".
+		"         KEY ix3 (m_titl)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
