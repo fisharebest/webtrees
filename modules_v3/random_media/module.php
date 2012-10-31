@@ -114,11 +114,6 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			unset($all_media[$n]);
 		};
 
-		// Nothing found :-(
-		if (!$random_media) {
-			return false;
-		}
-
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
 		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
@@ -128,74 +123,78 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$title.=$this->getTitle();
 		
-		$content = "<div id=\"random_picture_container$block_id\">";
-		if ($controls) {
-			if ($start) {
-				$icon_class = 'icon-media-stop';
-			} else {
-				$icon_class = 'icon-media-play';
+		if ($random_media) {
+			$content = "<div id=\"random_picture_container$block_id\">";
+			if ($controls) {
+				if ($start) {
+					$icon_class = 'icon-media-stop';
+				} else {
+					$icon_class = 'icon-media-play';
+				}
+				$linkNextImage = '<a href="#" onclick="jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;" title="'.WT_I18N::translate('Next image').'" class="icon-media-next"></a>';
+				$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br>";
+				if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
+				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"".$icon_class."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop').'"></a>';
+				if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
+				$content .= '</div><script>
+					var play = false;
+						function togglePlay() {
+							if (play) {
+								play = false;
+								jQuery("#play_stop").removeClass("icon-media-stop").addClass("icon-media-play");
+							}
+							else {
+								play = true;
+								playSlideShow();
+								jQuery("#play_stop").removeClass("icon-media-play").addClass("icon-media-stop");
+							}
+						}
+
+						function playSlideShow() {
+							if (play) {
+								window.setTimeout("reload_image()", 6000);
+							}
+						}
+						function reload_image() {
+							if (play) {
+								jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'&start=1");
+							}
+						}
+					</script>';
 			}
-			$linkNextImage = '<a href="#" onclick="jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;" title="'.WT_I18N::translate('Next image').'" class="icon-media-next"></a>';
-			$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br>";
-			if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
-			$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"".$icon_class."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop').'"></a>';
-			if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
-			$content .= '</div><script>
-				var play = false;
-					function togglePlay() {
-						if (play) {
-							play = false;
-							jQuery("#play_stop").removeClass("icon-media-stop").addClass("icon-media-play");
-						}
-						else {
-							play = true;
-							playSlideShow();
-							jQuery("#play_stop").removeClass("icon-media-play").addClass("icon-media-stop");
-						}
-					}
+			if ($start) {
+				$content .= '<script>togglePlay();</script>';
+			}
+			$content .= '<div class="center" id="random_picture_content'.$block_id.'">';
+			$content .= '<table id="random_picture_box"><tr><td';
 
-					function playSlideShow() {
-						if (play) {
-							window.setTimeout("reload_image()", 6000);
-						}
-					}
-					function reload_image() {
-						if (play) {
-							jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'&start=1");
-						}
-					}
-				</script>';
-		}
-		if ($start) {
-			$content .= '<script>togglePlay();</script>';
-		}
-		$content .= '<div class="center" id="random_picture_content'.$block_id.'">';
-		$content .= '<table id="random_picture_box"><tr><td';
+			if ($block) {
+				$content .= ' class="details1"';
+			} else {
+				$content .= ' class="details2"';
+			}
+			$content .= ' >';
+			$content .= $random_media->displayMedia(array('align'=>'none', 'uselightbox'=>false, 'uselightbox_fallback'=>false));
 
-		if ($block) {
-			$content .= ' class="details1"';
+			if ($block) {
+				$content .= '<br>';
+			} else {
+				$content .= '</td><td class="details2">';
+			}
+			$content .= '<a href="'.$random_media->getHtmlUrl().'"><b>'. $random_media->getFullName() .'</b></a><br>';
+	
+			ob_start();
+			$content .= $random_media->printLinkedRecords('normal');
+			$content .= ob_get_clean();
+			$content .= "<br><div class=\"indent" . ($TEXT_DIRECTION=="rtl"?"_rtl":"") . "\">";
+			$content .= print_fact_notes($random_media->getGedcomRecord(), "1", false, true);
+			$content .= "</div>";
+			$content .= "</td></tr></table>";
+			$content .= "</div>"; // random_picture_content
+			$content .= "</div>"; // random_picture_container
 		} else {
-			$content .= ' class="details2"';
+			$content = WT_I18N::translate('This family tree has no images to display.');
 		}
-		$content .= ' >';
-		$content .= $random_media->displayMedia(array('align'=>'none', 'uselightbox'=>false, 'uselightbox_fallback'=>false));
-
-		if ($block) {
-			$content .= '<br>';
-		} else {
-			$content .= '</td><td class="details2">';
-		}
-		$content .= '<a href="'.$random_media->getHtmlUrl().'"><b>'. $random_media->getFullName() .'</b></a><br>';
-
-		ob_start();
-		$content .= $random_media->printLinkedRecords('normal');
-		$content .= ob_get_clean();
-		$content .= "<br><div class=\"indent" . ($TEXT_DIRECTION=="rtl"?"_rtl":"") . "\">";
-		$content .= print_fact_notes($random_media->getGedcomRecord(), "1", false, true);
-		$content .= "</div>";
-		$content .= "</td></tr></table>";
-		$content .= "</div>"; // random_picture_content
-		$content .= "</div>"; // random_picture_container
 		if ($template) {
 			require WT_THEME_DIR.'templates/block_main_temp.php';
 		} else {
