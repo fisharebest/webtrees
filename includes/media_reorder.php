@@ -96,7 +96,6 @@ echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to
 		else $sort_current_objes[$sort_match[$i][1]]++;
 		$sort_obje_links[$sort_match[$i][1]][] = $sort_match[$i][0];
 	}
-	// -----------------------------------------------------------------------------------------------
 
 	// create ORDER BY list from Gedcom sorted records list  ---------------------------
 	$orderbylist = 'ORDER BY '; // initialize
@@ -104,8 +103,6 @@ echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to
 		$orderbylist .= "m_media='$media_id[1]' DESC, ";
 	}
 	$orderbylist = rtrim($orderbylist, ', ');
-	//  print_r($orderbylist);
-	// -----------------------------------------------------------------------------------------------
 
 	//-- get a list of the current objects in the record
 	$current_objes = array();

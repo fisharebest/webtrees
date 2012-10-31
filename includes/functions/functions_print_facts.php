@@ -1097,31 +1097,27 @@ function print_main_notes(WT_Event $fact, $level, $pid, $noedit=false) {
  * @param boolean $related Whether or not to grab media from related records
  */
 function print_main_media($pid, $level=1, $related=false) {
-	global $GEDCOM, $MEDIATYPE;
+	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
-	$gedrec = find_gedcom_record($pid, $ged_id, true);
-	$ids = array($pid);
+	$person = WT_Person::getInstance($pid);
 
 	//-- find all of the related ids
 	if ($related) {
-		$ct = preg_match_all("/1 FAMS @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
-		for ($i=0; $i<$ct; $i++) {
-			$ids[] = trim($match[$i][1]);
+		$ids = array($person->getXref());
+		foreach ($person->getSpouseFamilies() as $family) {
+			$ids[] = $family->getXref();
 		}
 	}
 
-	//LBox -- if  exists, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
+	//-- If  they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
 	$sort_current_objes = array();
-	if ($level>0) $sort_regexp = "/".$level." _WT_OBJE_SORT @(.*)@/";
-	else $sort_regexp = "/_WT_OBJE_SORT @(.*)@/";
-	$sort_ct = preg_match_all($sort_regexp, $gedrec, $sort_match, PREG_SET_ORDER);
+	$sort_ct = preg_match_all('/\n1 _WT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
 	for ($i=0; $i<$sort_ct; $i++) {
 		if (!isset($sort_current_objes[$sort_match[$i][1]])) $sort_current_objes[$sort_match[$i][1]] = 1;
 		else $sort_current_objes[$sort_match[$i][1]]++;
 		$sort_obje_links[$sort_match[$i][1]][] = $sort_match[$i][0];
 	}
-	// -----------------------------------------------------------------------------------------------
 
 	// create ORDER BY list from Gedcom sorted records list  ---------------------------
 	$orderbylist = 'ORDER BY '; // initialize
@@ -1129,52 +1125,48 @@ function print_main_media($pid, $level=1, $related=false) {
 		$orderbylist .= "m_media='$id[1]' DESC, ";
 	}
 	$orderbylist = rtrim($orderbylist, ', ');
-	// -----------------------------------------------------------------------------------------------
 
 	//-- get a list of the current objects in the record
 	$current_objes = array();
 	if ($level>0) $regexp = "/".$level." OBJE @(.*)@/";
 	else $regexp = "/OBJE @(.*)@/";
-	$ct = preg_match_all($regexp, $gedrec, $match, PREG_SET_ORDER);
+	$ct = preg_match_all($regexp, $person->getGedcomRecord(), $match, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
-		$match[$i][1]=strtoupper($match[$i][1]); // Force PHP to copy MySQL's case-insensitivity
 		if (!isset($current_objes[$match[$i][1]])) $current_objes[$match[$i][1]] = 1;
 		else $current_objes[$match[$i][1]]++;
 		$obje_links[$match[$i][1]][] = $match[$i][0];
 	}
 
 	$media_found = false;
-	$sqlmm = "SELECT ";
-	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM `##media`, `##media_mapping` WHERE mm_gid IN (";
-	$vars=array();
+	$sqlmm =
+		"SELECT DISTINCT m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, l_from AS pid" .
+		" FROM `##media`" .
+		" JOIN `##link` ON (m_media=l_to AND m_gedfile=l_file AND l_type='OBJE')" .
+		" JOIN `##individuals` ON (i_file=l_file AND i_id=l_from)" .
+		" WHERE m_gedfile=? AND l_from IN (";
 	$i=0;
-	foreach ($ids as $key=>$id) {
+	$vars=array(WT_GED_ID);
+	foreach ($ids as $key=>$media_id) {
 		if ($i>0) $sqlmm .= ", ";
 		$sqlmm .= "?";
-		$vars[]=$id;
+		$vars[]=$media_id;
 		$i++;
 	}
-	$sqlmm .= ") AND mm_gedfile=? AND mm_media=m_media AND mm_gedfile=m_gedfile ";
-	$vars[]=WT_GED_ID;
-	//-- for family and source page only show level 1 obje references
-	if ($level>0) {
-		$sqlmm .= "AND mm_gedrec LIKE ?";
-		$vars[]="{$level} OBJE%";
-	}
+	$sqlmm .= ')';
 
-	// LBox --- media sort -------------------------------------
 	if ($sort_ct>0) {
 		$sqlmm .= $orderbylist;
-	} else {
-		$sqlmm .= " ORDER BY mm_gid DESC ";
 	}
-	// ---------------------------------------------------------------
 
 	$rows=WT_DB::prepare($sqlmm)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
 
 	$foundObjs = array();
 	foreach ($rows as $rowm) {
-		$rowm['m_media']=strtoupper($rowm['m_media']); // Force PHP to copy MySQL's case-insensitivity
+		//-- for family and source page only show level 1 obje references
+		$tmp=WT_GedcomRecord::getInstance($rowm['pid']);
+		if ($level && !preg_match('/\n'.$level.' OBJE @'.$rowm['m_media'].'@/', $tmp->getGedcomRecord())) {
+			continue;
+		}
 		if (isset($foundObjs[$rowm['m_media']])) {
 			if (isset($current_objes[$rowm['m_media']])) $current_objes[$rowm['m_media']]--;
 			continue;
@@ -1195,13 +1187,12 @@ function print_main_media($pid, $level=1, $related=false) {
 			$ext = "";
 			if ($et>0) $ext = substr(trim($ematch[1]), 1);
 			$row['m_ext'] = $ext;
-			$row['mm_gid'] = $pid;
-			$row['mm_gedrec'] = $rowm["mm_gedrec"];
+			$row['pid'] = $pid;
 			$rows['new'] = $row;
 			$rows['old'] = $rowm;
 			$current_objes[$rowm['m_media']]--;
 		} else {
-			if (!isset($current_objes[$rowm['m_media']]) && ($rowm['mm_gid']==$pid)) {
+			if (!isset($current_objes[$rowm['m_media']]) && ($rowm['pid']==$pid)) {
 				$rows['old'] = $rowm;
 			} else {
 				$rows['normal'] = $rowm;
@@ -1236,15 +1227,13 @@ function print_main_media($pid, $level=1, $related=false) {
 			$ext = "";
 			if ($et>0) $ext = substr(trim($ematch[1]), 1);
 			$row['m_ext'] = $ext;
-			$row['mm_gid'] = $pid;
-			$row['mm_gedrec'] = get_sub_record($objSubrec{0}, $objSubrec, $gedrec);
+			$row['pid'] = $pid;
 			$res = print_main_media_row('new', $row, $pid);
 			$media_found = $media_found || $res;
 			$value--;
 		}
 	}
-	if ($media_found) return true;
-	else return false;
+	return $media_found;
 }
 
 /**
@@ -1267,14 +1256,14 @@ function print_main_media_row($rtype, $rowm, $pid) {
 
 	$linenum = 0;
 	echo '<tr><td class="descriptionbox', $styleadd,' width20">';
-	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($mediaobject->getXref(), $mediaobject->getGedcomRecord())) && ($styleadd!=' change_old') && $rowm['m_gedrec']!='') {
-		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=", $mediaobject->getXref(), "&amp;linktoid={$rowm['mm_gid']}', '_blank', edit_window_specs);\" href=\"#\" title=\"", WT_I18N::translate('Edit'), "\">";
+	if ($rowm['pid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($mediaobject->getXref(), $mediaobject->getGedcomRecord())) && ($styleadd!=' change_old') && $rowm['m_gedrec']!='') {
+		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=", $mediaobject->getXref(), "&amp;linktoid={$rowm['pid']}', '_blank', edit_window_specs);\" href=\"#\" title=\"", WT_I18N::translate('Edit'), "\">";
 		if ($SHOW_FACT_ICONS) {
 			echo '<i class="icon-media"></i> ';
 		}
 		echo WT_Gedcom_Tag::getLabel('OBJE'), '</a>';
 		echo '<div class="editfacts">';
-		echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."&amp;linktoid={$rowm['mm_gid']}', '_blank', edit_window_specs);\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
+		echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."&amp;linktoid={$rowm['pid']}', '_blank', edit_window_specs);\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
 		echo '<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\'1 OBJE @'.$mediaobject->getXref().'@\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
 		echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_fact('$pid', 'OBJE', '".$mediaobject->getXref()."', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
 		echo '</div>';
@@ -1314,9 +1303,9 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	}
 	echo '</span>';
 	//-- print spouse name for marriage events
-	if ($rowm['mm_gid']!=$pid) {
+	if ($rowm['pid']!=$pid) {
 		$person=WT_Person::getInstance($pid);
-		$family=WT_Family::getInstance($rowm['mm_gid']);
+		$family=WT_Family::getInstance($rowm['pid']);
 		if ($family) {
 			$spouse=$family->getSpouse($person);
 			if ($spouse) {
