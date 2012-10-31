@@ -553,37 +553,7 @@ function print_media_links($factrec, $level, $pid='') {
 				$imgheight = $imgsize[1]+150;
 				if ($objectNum > 0) echo '<br class="media-separator" style="clear:both;">';
 				echo '<div id="media-display"><div id="media-display-image">';
-				if ($isExternal || media_exists($thumbnail)) {
-	
-					//LBox --------  change for Lightbox Album --------------------------------------------
-					if (WT_USE_LIGHTBOX && preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
-						echo '<a href="', $mainMedia, '" rel="clearbox[general_1]" rev="', $media->getXref(), '::', $GEDCOM, '::', strip_tags($media->getFullName()), '">';
-					} else if (WT_USE_LIGHTBOX && preg_match("/\.(pdf|avi|txt)$/i", $mainMedia)) {
-						echo '<a href="', $mainMedia, "\" rel='clearbox(", get_module_setting('lightbox', 'LB_URL_WIDTH',  '1000'), ", ", get_module_setting('lightbox', 'LB_URL_HEIGHT', '600'), ", click)' rev=\"", $media->getXref(), '::', $GEDCOM, '::', strip_tags($media->getFullName()), '">';
-					// extra for Streetview ----------------------------------------
-					} else if (WT_USE_LIGHTBOX && strpos($media->getFileName(), 'http://maps.google.')===0) {
-						echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $media->getFileName(), '&amp;output=svembed"></iframe>';
-					// --------------------------------------------------------------------------------------
-					} else if ($USE_MEDIA_VIEWER) {
-						echo '<a href="mediaviewer.php?mid=', $media->getXref(), '&amp;ged=', WT_GEDURL, '">';
-					} else if (preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
-						echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($mainMedia), "', $imgwidth, $imgheight);\">";
-					// extra for Streetview ----------------------------------------
-					} else if (strpos($media->getFileName(), 'http://maps.google.')===0) {
-						echo '<iframe width="300" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $media->getFileName(), '&amp;output=svembed"></iframe>';
-					} else {
-						echo '<a href="mediaviewer.php?mid=', $media->getXref(), '&amp;ged=', WT_GEDURL, '">';
-					}
-
-					echo '<img src="', $thumbnail, '" align="' , $TEXT_DIRECTION== 'rtl'?'right':'left', '" class="thumbnail"';
-					if (strpos($mainMedia, 'http://maps.google.')===0) {
-						// Do not print Streetview title here (PF&D tab)
-					} else {
-						if ($isExternal) echo ' width="', $THUMBNAIL_WIDTH, '"';
-						echo ' alt="', strip_tags($media->getFullName()), '"';
-					}
-					echo ' title="', strip_tags($media->getFullName()), '"></a>';
-				}
+				echo $media->displayMedia(array('alertnotfound'=>true));
 				echo '</div>'; // close div "media-display-image"
 				echo '<div id="media-display-title">';
 				if ($SEARCH_SPIDER) {
