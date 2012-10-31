@@ -1145,8 +1145,7 @@ function print_main_media($pid, $level=1, $related=false) {
 
 	$media_found = false;
 	$sqlmm = "SELECT ";
-	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM `##media`, `##media_mapping` where ";
-	$sqlmm .= "mm_gid IN (";
+	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM `##media`, `##media_mapping` WHERE mm_gid IN (";
 	$vars=array();
 	$i=0;
 	foreach ($ids as $key=>$id) {
@@ -1342,13 +1341,3 @@ function print_main_media_row($rtype, $rowm, $pid) {
 
 	return true;
 }
-
-// -----------------------------------------------------------------------------
-//  Extra print_facts_functions for reorder media
-// -----------------------------------------------------------------------------
-
-require_once WT_ROOT.'includes/functions/functions_media_reorder.php';
-
-// -----------------------------------------------------------------------------
-//  End extra print_facts_functions for reorder media
-// -----------------------------------------------------------------------------

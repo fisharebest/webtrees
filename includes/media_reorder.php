@@ -30,6 +30,33 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
+function media_reorder_row($rowm) {
+	$media = WT_Media::getInstance($rowm['m_media']);
+
+	if (!$media->canDisplayDetails()) {
+		return false;
+	}
+
+	echo "<li class=\"facts_value\" style=\"list-style:none;cursor:move;margin-bottom:2px;\" id=\"li_" . $media->getXref() . "\" >";
+	echo "<table class=\"pic\"><tr>";
+	echo "<td width=\"80\" valign=\"top\" align=\"center\" >";
+	echo $media->displayMedia();
+	echo "</td><td>&nbsp;</td>";
+	echo "<td valign=\"top\" align=\"left\">";
+	echo $media->getXref();
+	echo "<b>";
+	echo "&nbsp;&nbsp;", WT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType());
+	echo "</b>";
+	echo "<br>";
+	echo $media->getFullName();
+	echo "</td>";
+	echo "</tr>";
+	echo "</table>";
+	echo "<input type=\"hidden\" name=\"order1[",$media->getXref(), "]\" value=\"0\">";
+	echo "</li>";
+	return true;
+}
+
 $controller->addInlineJavascript('
 	jQuery("#reorder_media_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});
 
@@ -46,9 +73,6 @@ $controller->addInlineJavascript('
 echo '<br><b>', WT_I18N::translate('Re-order media'), '</b>';
 echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to re-order media ');
 
-global $MEDIATYPE;
-global $ids, $pid, $related, $level, $gedrec, $j;
-
 ?>
 <form name="reorder_form" method="post" action="edit_interface.php">
 	<input type="hidden" name="action" value="reorder_media_update">
@@ -56,25 +80,17 @@ global $ids, $pid, $related, $level, $gedrec, $j;
 
 	<ul id="reorder_media_list">
 	<?php
-	$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
-
-	//related=true means show related items
-	$related="true";
+	$person = WT_Person::getInstance($pid);
 
 	//-- find all of the related ids
-	$ids = array($pid);
-	if ($related) {
-		$ct = preg_match_all("/1 FAMS @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
-		for ($i=0; $i<$ct; $i++) {
-			$ids[] = trim($match[$i][1]);
-		}
+	$ids = array($person->getXref());
+	foreach ($person->getSpouseFamilies() as $family) {
+		$ids[] = $family->getXref();
 	}
 
 	//-- If  they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
 	$sort_current_objes = array();
-	if ($level>0) $sort_regexp = "/".$level." _WT_OBJE_SORT @(.*)@/";
-	else $sort_regexp = "/_WT_OBJE_SORT @(.*)@/";
-	$sort_ct = preg_match_all($sort_regexp, $gedrec, $sort_match, PREG_SET_ORDER);
+	$sort_ct = preg_match_all('/\n1 _WT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
 	for ($i=0; $i<$sort_ct; $i++) {
 		if (!isset($sort_current_objes[$sort_match[$i][1]])) $sort_current_objes[$sort_match[$i][1]] = 1;
 		else $sort_current_objes[$sort_match[$i][1]]++;
@@ -93,9 +109,7 @@ global $ids, $pid, $related, $level, $gedrec, $j;
 
 	//-- get a list of the current objects in the record
 	$current_objes = array();
-	if ($level>0) $regexp = "/".$level." OBJE @(.*)@/";
-	else $regexp = "/OBJE @(.*)@/";
-	$ct = preg_match_all($regexp, $gedrec, $match, PREG_SET_ORDER);
+	$ct = preg_match_all('/\n\d OBJE @(.*)@/', $person->getGedcomRecord(), $match, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
 		if (!isset($current_objes[$match[$i][1]])) $current_objes[$match[$i][1]] = 1;
 		else $current_objes[$match[$i][1]]++;
@@ -104,30 +118,23 @@ global $ids, $pid, $related, $level, $gedrec, $j;
 
 	$media_found = false;
 
-	$sqlmm = "SELECT DISTINCT ";
-	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM `##media`, `##media_mapping` WHERE ";
-	$sqlmm .= "mm_gid IN (";
+	$sqlmm =
+		"SELECT DISTINCT m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec" .
+		" FROM `##media`" .
+		" JOIN `##link` ON (m_media=l_to AND m_gedfile=l_file AND l_type='OBJE')" .
+		" WHERE m_gedfile=? AND l_from IN (";
 	$i=0;
-	$vars=array();
+	$vars=array(WT_GED_ID);
 	foreach ($ids as $key=>$media_id) {
 		if ($i>0) $sqlmm .= ",";
 		$sqlmm .= "?";
 		$vars[]=$media_id;
 		$i++;
 	}
-	$sqlmm .= ") AND mm_gedfile=? AND mm_media=m_media AND mm_gedfile=m_gedfile ";
-	$vars[]=WT_GED_ID;
-	//-- for family and source page only show level 1 obje references
-	if ($level>0) {
-		$sqlmm .= "AND mm_gedrec LIKE ?";
-		$vars[]="{$level} OBJE%";
-	}
-
+	$sqlmm .= ')';
 
 	if ($sort_ct>0) {
 		$sqlmm .= $orderbylist;
-	} else {
-		$sqlmm .= " ORDER BY mm_gid DESC ";
 	}
 
 	$rows=WT_DB::prepare($sqlmm)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
@@ -176,7 +183,7 @@ global $ids, $pid, $related, $level, $gedrec, $j;
 				echo '<input type="checkbox" name="preserve_last_changed">';
 			}
 			echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br>';
-			$event = new WT_Event(get_sub_record(1, '1 CHAN', $gedrec), null, 0);
+			$event = $person->getChangeEvent();
 			echo format_fact_date($event, new WT_Person(''), false, true);
 			echo '</td></tr></table>';
 		}
