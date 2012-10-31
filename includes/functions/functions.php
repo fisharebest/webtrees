@@ -646,72 +646,61 @@ function find_parents_in_record($famrec) {
  * Criterion (d) will be present in the code but will be commented out for now.
  *
  * @param string $pid the individual, source, or family id
- * @param string $indirec the gedcom record to look in
  * @return array an object array with indexes "thumb" and "file" for thumbnail and filename
  */
-function find_highlighted_object($pid, $ged_id, $indirec) {
-	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $WT_IMAGES;
-
-	$media   = array();
+function find_highlighted_object($pid) {
 	$objectA = array();
 	$objectB = array();
 	$objectC = array();
 	$objectD = array();
 
 	//-- find all of the media items for a person
-	$media=
-		WT_DB::prepare("SELECT m_media, m_file, m_gedrec, mm_gedrec FROM `##media`, `##media_mapping` WHERE m_media=mm_media AND m_gedfile=mm_gedfile AND m_gedfile=? AND mm_gid=? ORDER BY mm_order")
-		->execute(array($ged_id, $pid))
-		->fetchAll(PDO::FETCH_NUM);
+	$person=WT_Person::getInstance($pid);
+	preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $person->getGedcomRecord(), $matches, PREG_SET_ORDER);
+	foreach ($matches as $match) {
+		$media=WT_Media::getInstance($match[2]);
+		$level = $match[1];
+		if (preg_match('/\n1 _PRIM ([NY])/', $media->getGedcomRecord(), $pmatch)) {
+			$prim = $pmatch[1];
+		} else {
+			$prim = '';
+		}
 
-	foreach ($media as $i=>$row) {
-		$obj=WT_Media::getInstance($row[0]);
-		if ($obj->canDisplayDetails() && canDisplayFact($row[0], $ged_id, $row[3])) {
-			$level=0;
-			$ct = preg_match("/(\d+) OBJE/", $row[3], $match);
-			if ($ct>0) {
-				$level = $match[1];
-			}
-			if (strstr($row[3], "_PRIM ")) {
-				$prim = get_gedcom_value('_PRIM', $level+1, $row[3]);
-			} else {
-				$prim = get_gedcom_value('_PRIM', 1, $row[2]);
-			}
-
-			if ($prim=='N') continue; // Skip _PRIM N objects
-			$file = check_media_depth($row[1]);
-			$thumb = thumbnail_file($row[1], true, false, $pid);
-			if ($level == 1) {
-				if ($prim == 'Y') {
-					if (empty($objectA)) {
-						$objectA['file'] = $file;
-						$objectA['thumb'] = $thumb;
-						$objectA['level'] = $level;
-						$objectA['mid'] = $row[0];
-					}
-				} else {
-					if (empty($objectB)) {
-						$objectB['file'] = $file;
-						$objectB['thumb'] = $thumb;
-						$objectB['level'] = $level;
-						$objectB['mid'] = $row[0];
-					}
+		if ($prim=='N') {
+			continue; // Skip _PRIM N objects
+		}
+		$file = check_media_depth($media->getFilename());
+		$thumb = thumbnail_file($media->getFilename(), true, false, $pid);
+		if ($level == 1) {
+			if ($prim == 'Y') {
+				if (empty($objectA)) {
+					$objectA['file'] = $file;
+					$objectA['thumb'] = $thumb;
+					$objectA['level'] = $level;
+					$objectA['mid'] = $media->getXref();
 				}
 			} else {
-				if ($prim == 'Y') {
-					if (empty($objectC)) {
-						$objectC['file'] = $file;
-						$objectC['thumb'] = $thumb;
-						$objectC['level'] = $level;
-						$objectC['mid'] = $row[0];
-					}
-				} else {
-					if (empty($objectD)) {
-						$objectD['file'] = $file;
-						$objectD['thumb'] = $thumb;
-						$objectD['level'] = $level;
-						$objectD['mid'] = $row[0];
-					}
+				if (empty($objectB)) {
+					$objectB['file'] = $file;
+					$objectB['thumb'] = $thumb;
+					$objectB['level'] = $level;
+					$objectB['mid'] = $media->getXref();
+				}
+			}
+		} else {
+			if ($prim == 'Y') {
+				if (empty($objectC)) {
+					$objectC['file'] = $file;
+					$objectC['thumb'] = $thumb;
+					$objectC['level'] = $level;
+					$objectC['mid'] = $media->getXref();
+				}
+			} else {
+				if (empty($objectD)) {
+					$objectD['file'] = $file;
+					$objectD['thumb'] = $thumb;
+					$objectD['level'] = $level;
+					$objectD['mid'] = $media->getXref();
 				}
 			}
 		}
