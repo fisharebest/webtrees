@@ -1171,7 +1171,7 @@ function print_main_media($pid, $level=1, $related=false) {
 
 	$foundObjs = array();
 	foreach ($rows as $rowm) {
-		//-- for family and source page only show level 1 obje references
+		//-- for family, repository, note and source page only show level 1 obje references
 		$tmp=WT_GedcomRecord::getInstance($rowm['pid']);
 		if ($level && !preg_match('/\n'.$level.' OBJE @'.$rowm['m_media'].'@/', $tmp->getGedcomRecord())) {
 			continue;
@@ -1217,7 +1217,6 @@ function print_main_media($pid, $level=1, $related=false) {
 			$media_found = $media_found || $res;
 			$foundObjs[$rowm['m_media']]=true;
 		}
-		$media_found = true;
 	}
 
 	//-- objects are removed from the $current_objes list as they are printed
