@@ -70,7 +70,6 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Save');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Should new images automatically go in the protected media directory when they are uploaded?');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Start using webtrees');
-/* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Start using webtrees');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('Test the permissions again');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('The configuration file has been successfully uploaded to the server.');
 /* I18N: This message is deleted in webtrees-1.3.3  */ WT_I18N::translate('The directory <b>%s</b> does not have read permission.  You must change this.');
