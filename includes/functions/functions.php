@@ -633,7 +633,6 @@ function find_parents_in_record($famrec) {
 	return $parents;
 }
 
-// ************************************************* START OF MULTIMEDIA FUNCTIONS ********************************* //
 /**
  * find the highlighted media object for a gedcom entity
  * 1. Ignore all media objects that are not displayable because of Privacy rules
@@ -644,18 +643,14 @@ function find_parents_in_record($famrec) {
  *    (c) Level 2 or higher object with the Highlight option set to "Y"
  *    (d) Level 2 or higher object with the Highlight option missing or set to other than "Y" or "N"
  * Criterion (d) will be present in the code but will be commented out for now.
- *
- * @param string $pid the individual, source, or family id
- * @return array an object array with indexes "thumb" and "file" for thumbnail and filename
  */
-function find_highlighted_object($pid) {
+function find_highlighted_object(WT_Person $person) {
 	$objectA = array();
 	$objectB = array();
 	$objectC = array();
 	$objectD = array();
 
-	//-- find all of the media items for a person
-	$person=WT_Person::getInstance($pid);
+	// Iterate over all of the media items for the person
 	preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $person->getGedcomRecord(), $matches, PREG_SET_ORDER);
 	foreach ($matches as $match) {
 		$media=WT_Media::getInstance($match[2]);
@@ -670,7 +665,7 @@ function find_highlighted_object($pid) {
 			continue; // Skip _PRIM N objects
 		}
 		$file = check_media_depth($media->getFilename());
-		$thumb = thumbnail_file($media->getFilename(), true, false, $pid);
+		$thumb = thumbnail_file($media->getFilename(), true, false, $person->getXref());
 		if ($level == 1) {
 			if ($prim == 'Y') {
 				if (empty($objectA)) {

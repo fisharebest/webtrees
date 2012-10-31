@@ -251,7 +251,7 @@ class WT_Person extends WT_GedcomRecord {
 	*/
 	function findHighlightedMedia() {
 		if (is_null($this->highlightedimage)) {
-			$this->highlightedimage = find_highlighted_object($this->xref, $this->ged_id, $this->getGedcomRecord());
+			$this->highlightedimage = find_highlighted_object($this);
 		}
 		return $this->highlightedimage;
 	}

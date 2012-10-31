@@ -457,7 +457,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 						$image = '';
 						if ($SHOW_HIGHLIGHT_IMAGES) {
 							if (!empty($pid)) {
-								$object = find_highlighted_object($pid, WT_GED_ID, $indirec);
+								$object = find_highlighted_object($this_person);
 							}
 							if (!empty($object)) {
 								$mediaobject=WT_Media::getInstance($object['mid']);
@@ -476,7 +476,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					$image2 = '';
 					if ($SHOW_HIGHLIGHT_IMAGES) {
 						if (!empty($gmark['name'])) {
-							$object2 = find_highlighted_object($gmark['name'], WT_GED_ID, $indirec2);
+							$object2 = find_highlighted_object($person);
 						}
 						if (!empty($object2)) {
 							$mediaobject=WT_Media::getInstance($object2['mid']);

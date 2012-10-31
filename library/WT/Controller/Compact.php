@@ -64,7 +64,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 			$addname=$indi->getAddName();
 
 			if ($this->show_thumbs && $SHOW_HIGHLIGHT_IMAGES) {
-				$object=find_highlighted_object($pid, WT_GED_ID, $indi->getGedcomRecord());
+				$object=find_highlighted_object($indi);
 				$birth_date=$indi->getBirthDate();
 				$death_date=$indi->getDeathDate();
 				$img_title=$name.' - '.$birth_date->Display(false).' - '.$death_date->Display(false);

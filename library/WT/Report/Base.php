@@ -2794,7 +2794,8 @@ function HighlightedImageSHandler($attrs) {
 	if (!empty($attrs['width'])) $width = (int)$attrs['width'];
 	if (!empty($attrs['height'])) $height = (int)$attrs['height'];
 
-	$media = find_highlighted_object($id, WT_GED_ID, $gedrec);
+	$person=WT_Person::getInstance($id);
+	$media = find_highlighted_object($person);
 	if ($media) {
 		$mediaobject=WT_Media::getInstance($media['mid']);
 		$attributes=$mediaobject->getImageAttributes('thumb');
