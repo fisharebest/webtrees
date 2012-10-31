@@ -1289,12 +1289,11 @@ input,button,textarea  {
 border-width:1px;
 border-color:#fff #006 #006 #fff;
 font-size: 12px;
+font-family: inherit;
 }
 
-input,textarea {
-padding-left:3px;
-padding-right:3px;
-font-family: inherit;
+input, textarea {
+padding:0 3px;
 }
 
 .optionbox input {

@@ -467,8 +467,9 @@ html[dir="rtl"] .pedigree_image {float:right;margin:0 0 0 3px;}
 .person5{background:#5f5;border:outset #5f5 1px;border-radius:3px;vertical-align:top;}
 
 button{border-width:1px;}
-input,textarea{padding-left:0;padding-right:3px;border-width:1px;font-family:inherit;}
-html[dir="rtl"] input, textarea{padding-left:10px;padding-right:0;}
+
+input,button,textarea{border-color:#fff #494949 #494949 #fff;border-width:1px;font-size: 12px;font-family:inherit;}
+input, textarea {padding:0 3px;}
 
 .optionbox{border:solid #999 1px;border-radius:3px;font-size:12px;padding:3px;vertical-align:top;white-space:nowrap;}
 .optionbox input{margin-right:5px;}

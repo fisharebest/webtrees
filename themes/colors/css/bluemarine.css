@@ -78,12 +78,6 @@ border:solid #6598cb 2px;
 color:#FFFFFF;
 }
 
-/*  Dark Text Color  */
-input,button,textarea {
-border-color:#fff #000000 #494949 #fff;
-font-size: 12px;
-}
-
 .subheaders {
 color:#000000;
 }
