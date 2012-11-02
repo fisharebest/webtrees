@@ -397,12 +397,14 @@ case 'newentry':
 			$mediaid = append_gedrec($newged, WT_GED_ID);
 		}
 		if ($mediaid) {
-			AddToLog('Media ID '.$mediaid.' successfully added.', 'edit');
 			if ($linktoid) {
 				linkMedia($mediaid, $linktoid, $level);
 				AddToLog('Media ID '.$media_id." successfully added to $linktoid.", 'edit');
+				$controller->addInlineJavascript('closePopupAndReloadParent();');
+			} else {
+				AddToLog('Media ID '.$mediaid.' successfully added.', 'edit');
+				$controller->addInlineJavascript('openerpasteid("' . $mediaid . '");');
 			}
-			$controller->addInlineJavascript('openerpasteid("' . $mediaid . '");');
 		}
 	}
 	break;
