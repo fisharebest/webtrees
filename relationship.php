@@ -53,30 +53,19 @@ $Dbaseyoffset	= 0;
 $person1=WT_Person::getInstance($pid1);
 $person2=WT_Person::getInstance($pid2);
 
-if ($person1) {
-	$pid1=$person1->getXref(); // i1 => I1
-} else {
-	$pid1='';
-}
-if ($person2) {
-	$pid2=$person2->getXref(); // i2 => I2
-} else {
-	$pid2='';
-}
-
 $controller
 	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 if ($person1 && $person1->canDisplayName() && $person2 && $person2->canDisplayName()) {	
 	$controller
-		->setPageTitle(WT_I18N::translate(/* I18N: %s are people's names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
+		->setPageTitle(WT_I18N::translate(/* I18N: %s are individual’s names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
 		->PageHeader();
-	$node=get_relationship($pid1, $pid2, $followspouse, 0, $path_to_find);
+	$node=get_relationship($person1->getXref(), $person2->getXref(), $followspouse, 0, $path_to_find);
 	// If no blood relationship exists, look for relationship via marriage
 	if ($path_to_find==0 && $node==false && $followspouse==false) {
 		$followspouse=true;
-		$node=get_relationship($pid1, $pid2, $followspouse, 0, $path_to_find);
+		$node=get_relationship($person1->getXref(), $person2->getXref(), $followspouse, 0, $path_to_find);
 	}
 	$disp=true;
 } else {
@@ -242,7 +231,7 @@ if ($person1 && $person2) {
 			} else {
 				$right_arrow='icon-larrow';
 			}
-			// Up and down get reversed, for the "oldest at top" option
+			// Up and down get reversed, for the “oldest at top” option
 			if ($asc==1) {
 				$up_arrow   ='icon-uarrow';
 				$down_arrow ='icon-darrow';

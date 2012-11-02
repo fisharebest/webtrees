@@ -1053,6 +1053,10 @@ function gedcomsort($a, $b) {
  * @param int $path_to_find - which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
  */
 function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $path_to_find=0) {
+	if ($pid1==$pid2) {
+		return false;
+	}
+
 	//-- current path nodes
 	$p1nodes = array();
 	//-- ids visited
