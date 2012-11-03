@@ -50,6 +50,11 @@ if (WT_USE_LIGHTBOX) {
 		echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen">';
 }
 
+if ($view=='simple') {
+	// Popup windows need space for the save/close buttons
+	echo '<style>body{margin-bottom:50px;}</style>';
+}
+
 echo
 	'</head>',
 	'<body id="body">';
