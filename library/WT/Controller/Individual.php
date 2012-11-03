@@ -199,6 +199,8 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 
 		// Create a dummy record, so we can extract the formatted NAME value from the event.
 		$dummy=new WT_Person('0 @'.$event->getParentObject()->getXref()."@ INDI\n1 DEAT Y\n".$factrec);
+		$all_names=$dummy->getAllNames();
+		$primary_name=$all_names[0];
 		
 		$this->name_count++;
 		if ($this->name_count >1) { echo '<h3 class="name_two">',$dummy->getFullName(), '</h3>'; } //Other names accordion element
@@ -235,7 +237,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		for ($i=0; $i<$ct; $i++) {
 			echo '<div>';
 				$fact = $nmatch[$i][1];
-				if (($fact!="SOUR") && ($fact!="NOTE") && ($fact!="SPFX")) {
+				if ($fact!='SOUR' && $fact!='NOTE' && $fact!='SPFX') {
 					echo '<dl><dt class="label">', WT_Gedcom_Tag::getLabel($fact, $this->record), '</dt>';
 					echo '<dd class="field">'; // Before using dir="auto" on this field, note that Gecko treats this as an inline element but WebKit treats it as a block element
 					if (isset($nmatch[$i][2])) {
@@ -244,6 +246,10 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 							$name=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
 							if ($fact=='TYPE') {
 								echo WT_Gedcom_Code_Name::getValue($name, $this->record);
+							} elseif ($fact=='SURN') {
+								// Don't show the SURN field contents.  When it differs from the surname
+								// (i.e. the part of the name field between the slashes), it causes confusion.
+								echo $primary_name['surname'];
 							} else {
 								echo $name;
 							}
