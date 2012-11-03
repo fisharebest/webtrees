@@ -480,7 +480,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 			$data .= '<div class="fact_NOTE"><span class="label">';
 			if ($brpos !== false) {
 				if ($EXPAND_NOTES) $plusminus='minus'; else $plusminus='plus';
-				$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-plus"></i></a> ';
+				$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-'.$plusminus.'"></i></a> ';
 			}
 
 			// Check if Shared Note -----------------------------
