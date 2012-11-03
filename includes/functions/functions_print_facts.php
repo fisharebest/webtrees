@@ -1099,7 +1099,7 @@ function print_main_notes(WT_Event $fact, $level, $pid, $noedit=false) {
 function print_main_media($pid, $level=1, $related=false) {
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
-	$person = WT_Person::getInstance($pid);
+	$person = WT_GedcomRecord::getInstance($pid);
 
 	//-- find all of the related ids
 	$ids = array($person->getXref());
