@@ -40,7 +40,7 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, n_full".
 			" FROM `##individuals`".
 			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
-			" WHERE (n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND i_file=? ORDER BY n_full"
+			" WHERE (n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND i_file=? ORDER BY n_full COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, $term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -132,7 +132,7 @@ case 'CEME': // Cemetery fields, that contain the search term
 			"SELECT SQL_CACHE 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 			" FROM `##individuals`".
 			" WHERE i_gedcom LIKE '%\n2 CEME %' AND i_file=?".
-			" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 CEME ', -1)"
+			" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 CEME ', -1) COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array(WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -174,7 +174,7 @@ case 'GIVN': // Given names, that start with the search term
 			"SELECT SQL_CACHE DISTINCT n_givn".
 			" FROM `##name`".
 			" WHERE n_givn LIKE CONCAT(?, '%') AND n_file=?".
-			" ORDER BY n_givn"
+			" ORDER BY n_givn COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchOneColumn()
@@ -189,7 +189,7 @@ case 'INDI': // Individuals, whose name contains the search terms
 			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, n_full".
 			" FROM `##individuals`".
 			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
-			" WHERE (n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND i_file=? ORDER BY n_full"
+			" WHERE (n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND i_file=? ORDER BY n_full COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, $term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -277,7 +277,7 @@ case 'PLAC2': // Place names (without hierarchy), that include the search term
 			"SELECT SQL_CACHE p_place".
 			" FROM `##places`".
 			" WHERE p_place LIKE CONCAT('%', ?, '%') AND p_file=?".
-			" ORDER BY p_place"
+			" ORDER BY p_place COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchOneColumn()
@@ -379,10 +379,9 @@ case 'SOUR_TITL': // Source titles, that include the search terms
 	// Fetch all data, regardless of privacy
 	$rows=
 		WT_DB::prepare(
-			"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec, n_full".
+			"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec, s_name".
 			" FROM `##sources`".
-			" JOIN `##name` ON (s_id=n_id AND s_file=n_file)".
-			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY n_full"
+			" WHERE s_name LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY s_name COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -390,7 +389,7 @@ case 'SOUR_TITL': // Source titles, that include the search terms
 	foreach ($rows as $row) {
 		$source=WT_Source::getInstance($row);
 		if ($source->canDisplayName()) {
-			$data[]=$row['n_full'];
+			$data[]=$row['s_name'];
 		}
 	}	
 	echo json_encode($data);
@@ -403,7 +402,7 @@ case 'SURN': // Surnames, that start with the search term
 			"SELECT SQL_CACHE DISTINCT n_surname".
 			" FROM `##name`".
 			" WHERE n_surname LIKE CONCAT(?, '%') AND n_file=?".
-			" ORDER BY n_surname"
+			" ORDER BY n_surname COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchOneColumn()
@@ -485,7 +484,7 @@ function get_FAM_rows($term) {
 			" JOIN `##name` AS wife_name ON (f_wife=wife_name.n_id AND f_file=wife_name.n_file)".
 			" WHERE CONCAT(husb_name.n_full, ' ', wife_name.n_full) LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND f_file=?".
 			" AND husb_name.n_type<>'_MARNM' AND wife_name.n_type<>'_MARNM'".
-			" ORDER BY husb_name.n_sort, wife_name.n_sort"
+			" ORDER BY husb_name.n_sort, wife_name.n_sort COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -497,7 +496,7 @@ function get_INDI_rows($term) {
 			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, n_full".
 			" FROM `##individuals`".
 			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
-			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND i_file=? ORDER BY n_full"
+			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND i_file=? ORDER BY n_full COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -510,7 +509,7 @@ function get_NOTE_rows($term) {
 			" FROM `##other`".
 			" JOIN `##name` ON (o_id=n_id AND o_file=n_file)".
 			" WHERE o_gedcom LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND o_file=? AND o_type='NOTE'".
-			" ORDER BY n_full"
+			" ORDER BY n_full COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -534,7 +533,7 @@ function get_REPO_rows($term) {
 			" FROM `##other`".
 			" JOIN `##name` ON (o_id=n_id AND o_file=n_file)".
 			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND o_file=? AND o_type='REPO'".
-			" ORDER BY n_full"
+			" ORDER BY n_full COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -543,10 +542,9 @@ function get_REPO_rows($term) {
 function get_SOUR_rows($term) {
 	return
 		WT_DB::prepare(
-			"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec, n_full".
+			"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec, s_name AS n_full".
 			" FROM `##sources`".
-			" JOIN `##name` ON (s_id=n_id AND s_file=n_file)".
-			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY n_full"
+			" WHERE s_name LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY s_name COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);

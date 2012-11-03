@@ -127,9 +127,8 @@ function fetch_linked_sour($xref, $link, $ged_id) {
 			"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec".
 			" FROM `##sources`".
 			" JOIN `##link` ON (s_file=l_file AND s_id=l_from)".
-			" LEFT JOIN `##name` ON (s_file=n_file AND s_id=n_id AND n_num=0)".
 			" WHERE s_file=? AND l_type=? AND l_to=?".
-			" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'"
+			" ORDER BY s_name COLLATE '".WT_I18N::$collation."'"
 		)->execute(array($ged_id, $link, $xref))->fetchAll(PDO::FETCH_ASSOC);
 
 	$list=array();

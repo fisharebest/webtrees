@@ -1332,7 +1332,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			}
 			break;
 		case 'NAME':
-			if ($upperlevel=='INDI') {
+			if ($upperlevel!='REPO') {
 				echo help_link($fact);
 			}
 			break;
@@ -1351,7 +1351,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		case 'GIVN':
 		case 'NICK':
 		case 'NPFX':
-		case 'NSPX':
+		case 'NSFX':
 		case 'OBJE':
 		case 'PAGE':
 		case 'PEDI':
