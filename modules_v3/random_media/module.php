@@ -53,14 +53,14 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		$all_media=WT_DB::prepare(
 			"SELECT m_id FROM `##media`" .
 			" WHERE m_file = ?" .
-			" AND m_ext  IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" .
+			" AND m_ext  IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')" .
 			" AND m_type IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')"
 		)->execute(array(
 			WT_GED_ID,
 			get_block_setting($block_id, 'filter_avi',         false) ? 'avi'         : NULL,
 			get_block_setting($block_id, 'filter_bmp',         true ) ? 'bmp'         : NULL,
 			get_block_setting($block_id, 'filter_gif',         true ) ? 'gif'         : NULL,
-			get_block_setting($block_id, 'filter_jpg',         true ) ? 'jpg'         : NULL,
+			get_block_setting($block_id, 'filter_jpeg',        true ) ? 'jpg'         : NULL,
 			get_block_setting($block_id, 'filter_jpeg',        true ) ? 'jpeg'        : NULL,
 			get_block_setting($block_id, 'filter_mp3',         false) ? 'mp3'         : NULL,
 			get_block_setting($block_id, 'filter_ole',         true ) ? 'ole'         : NULL,
@@ -369,7 +369,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 	<?php
 
-		$controls=get_block_setting($block_id, 'controls', false);
+		$controls=get_block_setting($block_id, 'controls', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show slide show controls?');
 		echo '</td><td class="optionbox">';
