@@ -1348,10 +1348,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		case 'EMAL':
 		case '_EMAIL':
 		case 'FAX':
-		case 'GIVN':
-		case 'NICK':
-		case 'NPFX':
-		case 'NSFX':
 		case 'OBJE':
 		case 'PAGE':
 		case 'PEDI':
@@ -1363,7 +1359,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		case 'ROMN':
 		case 'SEX':
 		case 'SOUR':
-		case 'SPFX':
 		case 'STAT':
 		case 'SURN':
 		case 'TEMP':
@@ -1373,7 +1368,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		case 'TYPE':
 		case 'URL':
 		case '_HEB':
-		case '_MARNM':
 		case '_PRIM':
 			echo help_link($fact);
 			break;

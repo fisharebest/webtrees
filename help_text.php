@@ -275,34 +275,38 @@ case 'FORM':
 	$text=WT_I18N::translate('This is an optional field that can be used to enter the file format of the multimedia object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important.');
 	break;
 
-case 'GIVN':
-	$title=WT_Gedcom_Tag::getLabel('GIVN');
-	$text=WT_I18N::translate('In this field you should enter the given names for the person.  As an example, in the name "John Robert Finlay", the given names that should be entered here are "John Robert"');
-	break;
-
+// This help text is used for all NAME components
 case 'NAME':
 	$title=WT_Gedcom_Tag::getLabel('NAME');
-	$text=WT_I18N::translate('This is the most important field in a person\'s Name record.<br /><br />This field should be filled automatically as the other fields are filled in, but it is provided so that you can edit the information according to your personal preference.<br /><br />The name in this field should be entered according to the GEDCOM 5.5.1 standards with the surname surrounded by forward slashes "/".  As an example, the name "John Robert Finlay Jr." should be entered like this: "John Robert /Finlay/ Jr.".');
+	$text=
+		'<p>' .
+		WT_I18N::translate('The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogical annotations to identify different parts of the name.') .
+		'</p>' .
+		'<ul><li>' .
+		WT_I18N::translate('The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>', 'span style="color:#0000ff;"', '/span') .
+		'</li><li>' .
+		WT_I18N::translate('If the surname is unknown, use empty slashes: <%s>Mary //<%s>', 'span style="color:#0000ff;"', '/span') .
+		'</li><li>' .
+		WT_I18N::translate('If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>', 'span style="color:#0000ff;"', '/span') .
+		'</li><li>' .
+		WT_I18N::translate('If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>', 'span style="color:#0000ff;"', '/span') .
+		'</li><li>' .
+		WT_I18N::translate('If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>', 'span style="color:#0000ff;"', '/span') .
+		'</li><li>' .
+		WT_I18N::translate('If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John "Nobby" /Clark/<%s>.', 'span style="color:#0000ff;"', '/span') .
+		'</li></ul>';
 	break;
 
-case 'NICK':
-	$title=WT_Gedcom_Tag::getLabel('NICK');
-	$text=WT_I18N::translate('In this field you should enter any nicknames for the person.<br />This is an optional field.<br /><br />Ways to add a nickname:<ul><li>Select <b>modify name</b> then enter nickname and save</li><li>Select <b>add new name</b> then enter nickname AND name and save</li><li>Select <b>edit GEDCOM record</b> to add multiple [2&nbsp;NICK] records subordinate to the main [1&nbsp;NAME] record.</li></ul>');
+case 'SURN':
+	$title=WT_Gedcom_Tag::getLabel('SURN');
+	$text='<p>' .
+		WT_I18N::translate('The <b>surname</b> field contains a name which used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, these should be separated by commas.') .
+		'</p>';
 	break;
 
 case 'NOTE':
 	$title=WT_Gedcom_Tag::getLabel('NOTE');
 	$text=WT_I18N::translate('Notes are free-form text and will appear in the Fact Details section of the page.');
-	break;
-
-case 'NPFX':
-	$title=WT_Gedcom_Tag::getLabel('NPFX');
-	$text=WT_I18N::translate('This optional field allows you to enter a name prefix such as "Dr." or "Adm."');
-	break;
-
-case 'NSFX':
-	$title=WT_Gedcom_Tag::getLabel('NSFX');
-	$text=WT_I18N::translate('In this optional field you should enter the name suffix for the person.  Examples of name suffixes are "Sr.", "Jr.", and "III".');
 	break;
 
 case 'OBJE':
@@ -371,24 +375,9 @@ case 'SOUR':
 	$text=WT_I18N::translate('This field allows you to change the source record that this fact\'s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source\'s ID number.  To remove the entire citation, make this field blank.');
 	break;
 
-case 'SPFX':
-	$title=WT_Gedcom_Tag::getLabel('SPFX');
-	$text=WT_I18N::translate('Enter or select from the list words that precede the main part of the Surname.  Examples of such words are <b>von</b> Braun, <b>van der</b> Kloot, <b>de</b> Graaf, etc.');
-	break;
-
 case 'STAT':
 	$title=WT_Gedcom_Tag::getLabel('STAT');
 	$text=WT_I18N::translate('This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program.');
-	break;
-
-case 'SURN':
-	$john_doe=WT_I18N::translate('John /DOE/'); // Same text used in admin_trees_manage.php
-	$fullname=str_replace('/', '', $john_doe);
-	list(,$surname)=explode('/', $john_doe);
-	$title=WT_Gedcom_Tag::getLabel('SURN');
-	$text=WT_I18N::translate('In this field you should enter the surname for the person.  In the name %1$s, the surname is %2$s.', "<b>{$fullname}</b>", "<b>{$surname}</b>");
-	$text.='<br/><br/>';
-	$text.=WT_I18N::translate('Individuals with multiple surnames, common in Spain and Portugal, should separate the surnames with a comma.  This indicates that the person is to be listed under each of the names.  For example, <b>Cortes,Vega</b> will be listed under both <b>C</b> and <b>V</b>, whereas <b>Cortes Vega</b> will only be listed under <b>C</b>.');
 	break;
 
 case 'TEMP':
@@ -424,11 +413,6 @@ case 'URL':
 case '_HEB':
 	$title=WT_Gedcom_Tag::getLabel('_HEB');
 	$text=WT_I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br /><br />If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br /><br />Although this field is labeled "Hebrew", it is not restricted to containing only Hebrew characters.');
-	break;
-
-case '_MARNM':
-	$title=WT_Gedcom_Tag::getLabel('_MARNM');
-	$text=WT_I18N::translate('Enter the married name for this person, using the same formatting rules that apply to the Name field.  This field is optional.<br /><br />For example, if Mary Jane Brown married John White, you might enter (without the quotation marks, of course)<ul><li>American usage:&nbsp;&nbsp;"Mary Jane Brown /White/"</li><li>European usage:&nbsp;&nbsp;"Mary Jane /White/"</li><li>Alternate European usage:&nbsp;&nbsp;"Mary Jane /White-Brown/" or "Mary Jane /Brown-White/"</li></ul>You should do this only if Mary Brown began calling herself by the new name after marrying John White.  In some places, Quebec (Canada) for example, it\'s illegal for names to be changed in this way.<br /><br />Men sometimes change their name after marriage, most often using the hyphenated form but occasionally taking the wife\'s surname.');
 	break;
 
 case '_PRIM':
