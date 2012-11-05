@@ -1,6 +1,4 @@
 <?php
-// Popup window that will allow a user to search for a media
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2012 webtrees development team.
 //
@@ -23,43 +21,25 @@
 //
 // $Id$
 
- /* TODO:
- * Add check for missing index.php files when creating a directory
- * Add an option to generate thumbnails for all files on the page
- * Add filter for correct media like php, gif etc.
- * Check for URL instead of physical file
- * Check array buld up use ID_GEDCOM for aray key
- */
-
- /* Standard variable convention admin_media.php
- * $filename = Filename of the media item
- * $thumbnail = Filename of the thumbnail of the media item
- * $gedfile = Name of the GEDCOM file
- * $medialist = Array with all media items
- * $directory = Current directory, starting with $MEDIA_DIRECTORY.  Has trailing "/".
- * $dirs = list of subdirectories within current directory.  Built with medialist.
- */
-
 define('WT_SCRIPT_NAME', 'admin_media.php');
 require './includes/session.php';
+require WT_ROOT . 'includes/functions/functions_print_lists.php';
+require WT_ROOT . 'includes/functions/functions_print_facts.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_import.php';
+require WT_ROOT . 'includes/functions/functions_mediadb.php';
 
 $controller=new WT_Controller_Base();
 $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('Media'));
 
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
-require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/functions/functions_edit.php';
-require_once WT_ROOT.'includes/functions/functions_import.php';
-require_once WT_ROOT.'includes/functions/functions_mediadb.php';
-
 // editing must be enabled
 if (!$ALLOW_EDIT_GEDCOM) {
 	$controller->pageHeader();
-	echo "<span class=\"error\"><b>";
+	echo '<p class="error">';
 	echo WT_I18N::translate('Media management features are not available when online editing is disabled.');
-	echo "</b></span><br>";
+	echo '</p>';
 	exit;
 }
 
