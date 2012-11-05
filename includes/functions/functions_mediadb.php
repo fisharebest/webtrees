@@ -1224,19 +1224,12 @@ function process_uploadMedia_form() {
 				}
 			}
 			// Let's see if there are any errors generated and print it
-			if (!empty($error)) echo '<span class="error">', $error, "</span><br>";
-			// No errors found then tell the user all is successful
-			else {
-				echo WT_I18N::translate('Upload successful.')."<br><br>";
-				$imgsize = findImageSize($folderName.$mediaFile);
-				$imgwidth = $imgsize[0]+40;
-				$imgheight = $imgsize[1]+150;
-				echo "<a href=\"#\" onclick=\"return openImage('".htmlspecialchars($folderName.$mediaFile)."', $imgwidth, $imgheight);\">".$mediaFile."</a>";
-				echo "<br><br>";
+			if ($error) {
+				echo '<span class="error">', $error, "</span><br>";
 			}
 		}
 	}
-	echo "</td></tr></table>";
+	echo '</td></tr></table>';
 }
 
 /**
