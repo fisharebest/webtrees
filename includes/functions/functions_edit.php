@@ -987,13 +987,13 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		// Commas *may* be used in other fields, and will form part of the NAME.
 		if (WT_LOCALE=="vi" || WT_LOCALE=="hu") {
 			// Default format: /SURN/ GIVN
-			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */, " ")+"/ "+givn.replace(/ *, */, " ")+" "+nsfx);
+			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/ "+givn.replace(/ *, */g, " ")+" "+nsfx);
 		} else if (WT_LOCALE=="zh") {
 			// Default format: /SURN/GIVN
-			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */, " ")+"/"+givn.replace(/ *, */, " ")+" "+nsfx);
+			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/"+givn.replace(/ *, */g, " ")+" "+nsfx);
 		} else {
 			// Default format: GIVN /SURN/
-			return trim(npfx+" "+givn.replace(/ *, */, " ")+" /"+trim(spfx+" "+surn).replace(/ *, */, " ")+"/ "+nsfx);
+			return trim(npfx+" "+givn.replace(/ *, */g, " ")+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/ "+nsfx);
 		}
 	}
 
