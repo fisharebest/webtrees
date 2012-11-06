@@ -508,7 +508,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			sort($flags_s);
 		}
 
-		if ($action == 'ChangeFlag') {
+		if ($action == 'ChangeFlag' && isset($_POST['FLAGS'])) {
 		?>
 			<script>
 		<?php if ($_POST['selcountry'] == 'Countries') { ?>
@@ -530,10 +530,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		else {
 		?>
 		<script>
-			function enableButtons() {
-				document.flags.save2.disabled = '';
-			}
-
 			function selectCountry() {
 				if (document.flags.COUNTRYSELECT.value == 'Countries') {
 					window.location="module.php?mod=googlemap&mod_action=flags";
@@ -601,7 +597,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$j = 1;
 				for ($i = 0; $i < count($flags); $i++) {
 					if ($countrySelected == 'Countries') {
-						$tempstr = '<td><input type="radio" dir="ltr" name="FLAGS" value="'.$i.'" onchange="enableButtons();"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/places/flags/'.$flags[$i].'.png" alt="'.$flags[$i].'"  title="';
+						$tempstr = '<td><input type="radio" dir="ltr" name="FLAGS" value="'.$i.'"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/places/flags/'.$flags[$i].'.png" alt="'.$flags[$i].'"  title="';
 						if ($flags[$i]!='blank') {
 							if (isset($countries[$flags[$i]])) {
 								$tempstr.=$countries[$flags[$i]];
@@ -613,7 +609,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						}
 						echo $tempstr, '">&nbsp;&nbsp;', $flags[$i], '</input></td>';
 					} else {
-						echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i, '" onchange="enableButtons();"><img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $flags[$i], '.png">&nbsp;&nbsp;', $flags[$i], '</input></td>';
+						echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i, '"><img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $flags[$i], '.png">&nbsp;&nbsp;', $flags[$i], '</input></td>';
 					}
 					if ($j == 4) {
 						echo '</tr><tr>';
@@ -644,7 +640,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$j = 1;
 				for ($i = 0; $i < count($flags_s); $i++) {
 					if ($stateSelected != 'States') {
-						echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i, '" onchange="enableButtons();"><img src="', WT_STATIC_URL.WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $stateSelected, '/', $flags_s[$i], '.png">&nbsp;&nbsp;', $flags_s[$i], '</input></td>';
+						echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i, '"><img src="', WT_STATIC_URL.WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $stateSelected, '/', $flags_s[$i], '.png">&nbsp;&nbsp;', $flags_s[$i], '</input></td>';
 					}
 					if ($j == 4) {
 						echo '</tr><tr>';
@@ -656,7 +652,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</tr>
 			</table>
 			<p id="save-cancel">
-				<input id="savebutton" name="save2" type="submit" class="save" disabled="true" value="<?php echo WT_I18N::translate('save'); ?>">
+				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
 				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 			</p>
 		</form>

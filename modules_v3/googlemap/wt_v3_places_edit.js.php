@@ -76,7 +76,6 @@ if (!defined('WT_WEBTREES')) {
 		var longitude;
 		var i;		
 
-		document.editplaces.save2.disabled = '';
 		zoom = parseInt(document.editplaces.NEW_ZOOM_FACTOR.value);
 
 		prec = 20;
