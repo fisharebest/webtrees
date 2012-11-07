@@ -26,7 +26,6 @@ require './includes/session.php';
 require WT_ROOT . 'includes/functions/functions_print_lists.php';
 require WT_ROOT . 'includes/functions/functions_print_facts.php';
 require WT_ROOT . 'includes/functions/functions_edit.php';
-require WT_ROOT . 'includes/functions/functions_mediadb.php';
 
 $controller=new WT_Controller_Base();
 $controller
