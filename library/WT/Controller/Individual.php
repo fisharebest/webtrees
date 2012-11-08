@@ -244,14 +244,22 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 							$name = htmlspecialchars($nmatch[$i][2]);
 							$name = str_replace('/', '', $name);
 							$name=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
-							if ($fact=='TYPE') {
+							switch ($fact) {
+							case 'TYPE':
 								echo WT_Gedcom_Code_Name::getValue($name, $this->record);
-							} elseif ($fact=='SURN') {
-								// Don't show the SURN field contents.  When it differs from the surname
-								// (i.e. the part of the name field between the slashes), it causes confusion.
-								echo $primary_name['surname'];
-							} else {
+								break;
+							case 'SURN':
+								// The SURN field is not necessarily the surname.
+								// Where it differs, show it after the real surname.
+								if (str_replace(',', ' ', $name)==$primary_name['surname']) {
+									echo $primary_name['surname'];
+								} else {
+									echo WT_I18N::translate('%1$s (%2$s)', $primary_name['surname'], $name);
+								}
+								break;
+							default:
 								echo $name;
+								break;
 							}
 						}
 					echo '</dd>';
