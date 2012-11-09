@@ -1170,6 +1170,14 @@ a.showit:hover > span {
 	font-weight:bold !important;
 }
 
+.ui-sortable li{
+	list-style-type: none;
+}
+
+.ui-sortable .noprint{
+	display:none;
+}
+
 /* End of Autocomplete styles*/
 
 /* Flyout menu Styles */

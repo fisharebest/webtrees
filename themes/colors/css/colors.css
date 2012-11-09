@@ -538,6 +538,9 @@ a.showit:hover > span{background:#444;border-bottom:2px solid #000;border-left:1
 
 .ui-autocomplete li:nth-child(odd){background:#eee;}
 
+.ui-sortable li{list-style-type: none;}
+.ui-sortable .noprint{display:none;}
+
 .alpha_index{margin-top:10px;}
 .clearfloat{clear:both;}
 .execution_stats{padding:12px;text-align:center;}

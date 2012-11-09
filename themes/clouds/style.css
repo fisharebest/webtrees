@@ -1632,6 +1632,13 @@ padding:2px 5px;
 background:#eee;
 }
 
+.ui-sortable li{
+list-style-type: none;
+}
+.ui-sortable .noprint{
+display:none;
+}
+
 .sublinks_cell .submenuitem {
 background:#fff;
 }

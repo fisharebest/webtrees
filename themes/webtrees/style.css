@@ -331,6 +331,8 @@ a.showit:hover > span {display:block;position:absolute;top:22px;left:0;width:225
 .ui-autocomplete-loading {background:#fff url(images/indicator.gif) right center no-repeat;}
 .ui-autocomplete li:nth-child(odd) {background-color:#eee;}
 .ui-autocomplete a.ui-state-hover {font-weight:bold !important;}
+.ui-sortable li{list-style-type: none;}
+.ui-sortable .noprint{display:none;}
 /* End of Autocomplete styles*/
 
 .nowrap {white-space:nowrap;}
