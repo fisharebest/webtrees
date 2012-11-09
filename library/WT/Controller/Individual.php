@@ -250,8 +250,8 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 								break;
 							case 'SURN':
 								// The SURN field is not necessarily the surname.
-								// Where it differs, show it after the real surname.
-								if (str_replace(',', ' ', $name)==$primary_name['surname']) {
+								// Where it is not a substring of the real surname, show it after the real surname.
+								if (strpos($primary_name['surname'], str_replace(',', ' ', $name))!==false) {
 									echo $primary_name['surname'];
 								} else {
 									echo WT_I18N::translate('%1$s (%2$s)', $primary_name['surname'], $name);
