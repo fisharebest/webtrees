@@ -788,7 +788,9 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		}
 		if (empty($name_fields['SPFX']) && empty($name_fields['SURN'])) {
 			$name_fields['SPFX']=trim($name_bits[7]);
-			$name_fields['SURN']=$name_bits[9];
+			// For names with two surnames, there will be four slashes.
+			// Turn them into a list
+			$name_fields['SURN']=preg_replace('~/[^/]*/~', ',', $name_bits[9]);
 		}
 		if (empty($name_fields['GIVN'])) {
 			$name_fields['GIVN']=$name_bits[4];
