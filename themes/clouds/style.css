@@ -1632,10 +1632,6 @@ padding:2px 5px;
 background:#eee;
 }
 
-.ui-autocomplete a.ui-state-hover {
-	font-weight:bold !important;
-}
-
 .sublinks_cell .submenuitem {
 background:#fff;
 }
@@ -2281,6 +2277,14 @@ border:1px solid #fff;
 
 span.link_text {
 display:none;
+}
+
+.ui-menu .ui-menu-item a 
+{
+font-size: 12px;}
+
+.ui-menu .ui-menu-item a.ui-state-hover,.ui-menu .ui-menu-item a.ui-state-active {
+color: red;
 }
 
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
