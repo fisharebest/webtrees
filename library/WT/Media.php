@@ -725,18 +725,6 @@ class WT_Media extends WT_GedcomRecord {
 		return ($output);
 	}
 
-	/**
-	 * check if the given Media object is in the objectlist
-	 * @param Media $obje
-	 * @return mixed  returns the ID for the for the matching media or null if not found
-	 */
-	static function in_obje_list($obje, $ged_id) {
-		return
-			WT_DB::prepare("SELECT m_id FROM `##media` WHERE m_filename=? AND m_titl LIKE ? AND m_file=?")
-			->execute(array($obje->file, $obje->title, $ged_id))
-			->fetchOne();
-	}
-
 	// If this object has no name, what do we call it?
 	public function getFallBackName() {
 		if ($this->canDisplayDetails()) {

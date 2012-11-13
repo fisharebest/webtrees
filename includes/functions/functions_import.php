@@ -639,7 +639,7 @@ function import_record($gedrec, $ged_id, $update) {
 	if ($newrec!=$gedrec) {
 		$gedrec=$newrec;
 		// make sure we have the correct media id
-		if (preg_match('/0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
+		if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
 			list(,$xref, $type)=$match;
 		} else {
 			echo WT_I18N::translate('Invalid GEDCOM format'), '<br><pre>', $gedrec, '</pre>';
@@ -914,7 +914,7 @@ function update_names($xref, $ged_id, $record) {
 * @param int $count The count of OBJE records in the parent record
 */
 function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
-	global $media_count, $found_ids;
+	global $found_ids;
 
 	static $sql_insert_media=null;
 	if (!$sql_insert_media) {
@@ -948,17 +948,9 @@ function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 
 		//-- check if another picture with the same file and title was previously imported
 		$media = new WT_Media($objrec);
-		$new_media = WT_Media::in_obje_list($media, $ged_id);
-		if (!$new_media) {
-			//-- add it to the media database table
-			$imgsize = $media->getImageAttributes();
-			$sql_insert_media->execute(array($m_media, $media->getMediaFormat(), $media->getMediaType(), $media->title, $media->file, $ged_id, $objrec));
-			$media_count++;
-		} else {
-			//-- already added so update the local id
-			$objref = str_replace("@$m_media@", "@$new_media@", $objref);
-			$m_media = $new_media;
-		}
+		//-- add it to the media database table
+		$imgsize = $media->getImageAttributes();
+		$sql_insert_media->execute(array($m_media, $media->getMediaFormat(), $media->getMediaType(), $media->title, $media->file, $ged_id, $objrec));
 	}
 	if (isset($m_media)) {
 		return "{$objlevel} OBJE @{$m_media}@\n";
@@ -973,7 +965,7 @@ function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 * @return string an updated record
 */
 function update_media($gid, $ged_id, $gedrec, $update = false) {
-	global $media_count, $found_ids, $zero_level_media, $keepmedia;
+	global $found_ids, $zero_level_media, $keepmedia;
 
 	static $sql_insert_media=null;
 	if (!$sql_insert_media) {
@@ -982,9 +974,6 @@ function update_media($gid, $ged_id, $gedrec, $update = false) {
 		);
 	}
 
-	if (!isset ($media_count)) {
-		$media_count = 0;
-	}
 	if (!isset ($found_ids)) {
 		$found_ids = array ();
 	}
@@ -993,25 +982,13 @@ function update_media($gid, $ged_id, $gedrec, $update = false) {
 	}
 
 	//-- handle level 0 media OBJE seperately
-	$ct = preg_match("/0 @(.*)@ OBJE/", $gedrec, $match);
+	$ct = preg_match("/^0 @(.*)@ OBJE/", $gedrec, $match);
 	if ($ct > 0) {
 		$old_m_media = $match[1];
 		$new_m_media = $old_m_media;
 		$gedrec = str_replace("@" . $old_m_media . "@", "@" . $new_m_media . "@", $gedrec);
 		$media = new WT_Media($gedrec);
-		//--check if we already have a similar object
-		$new_media = WT_Media::in_obje_list($media, $ged_id);
-		if (!$new_media) {
-			$imgsize = $media->getImageAttributes();
-			$sql_insert_media->execute(array($new_m_media, $media->getMediaFormat(), $media->getMediaType(), $media->title, $media->file, $ged_id, $gedrec));
-			$media_count++;
-		} else {
-			$new_m_media = $new_media;
-			$found_ids[$old_m_media]["old_id"] = $old_m_media;
-			$found_ids[$old_m_media]["new_id"] = $new_media;
-			//-- record was replaced by a duplicate record so leave it out.
-			return '';
-		}
+		$sql_insert_media->execute(array($new_m_media, $media->getMediaFormat(), $media->getMediaType(), $media->title, $media->file, $ged_id, $gedrec));
 		return $gedrec;
 	}
 

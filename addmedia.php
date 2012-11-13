@@ -392,10 +392,7 @@ case 'newentry':
 		$newged = handle_updates($newged);
 
 		$media_obje = new WT_Media($newged);
-		$mediaid = WT_Media::in_obje_list($media_obje, WT_GED_ID);
-		if (!$mediaid) {
-			$mediaid = append_gedrec($newged, WT_GED_ID);
-		}
+		$mediaid = append_gedrec($newged, WT_GED_ID);
 		if ($mediaid) {
 			if ($linktoid) {
 				linkMedia($mediaid, $linktoid, $level);
