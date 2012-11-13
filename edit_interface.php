@@ -25,6 +25,7 @@
 
 define('WT_SCRIPT_NAME', 'edit_interface.php');
 require './includes/session.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Simple();
 $controller
@@ -32,11 +33,7 @@ $controller
 	->addExternalJavascript(WT_JQUERY_URL)
 	->addExternalJavascript(WT_JQUERYUI_URL)
 	->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-	->setPageTitle(WT_I18N::translate('Edit'))
-	->pageHeader();
-
-require WT_ROOT.'includes/functions/functions_edit.php';
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 // TODO work out whether to use GET/POST for these
 // TODO decide what (if any) validation is required on these parameters
@@ -52,7 +49,6 @@ $islink =safe_REQUEST($_REQUEST, 'islink',  WT_REGEX_UNSAFE);
 $type   =safe_REQUEST($_REQUEST, 'type',    WT_REGEX_UNSAFE);
 $fact   =safe_REQUEST($_REQUEST, 'fact',    WT_REGEX_UNSAFE);
 $option =safe_REQUEST($_REQUEST, 'option',  WT_REGEX_UNSAFE);
-$gender =safe_REQUEST($_REQUEST, 'gender',  WT_REGEX_UNSAFE);
 
 $assist =safe_REQUEST($_REQUEST, 'assist',  WT_REGEX_UNSAFE);
 $noteid =safe_REQUEST($_REQUEST, 'noteid',  WT_REGEX_UNSAFE);
@@ -65,36 +61,42 @@ $update_CHAN=!safe_POST_bool('preserve_last_changed');
 
 $uploaded_files = array();
 
-echo '<script>';
-?>
-	var locale_date_format='<?php echo preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))); ?>';
+$controller->addInlineJavascript('
+	var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))). '";
+');
 
+$controller->addInlineJavascript('
 	function addnewrepository(field) {
 		pastefield = field;
-		window.open('edit_interface.php?action=addnewrepository&pid=newrepo', '_blank', find_window_specs);
+		window.open("edit_interface.php?action=addnewrepository&pid=newrepo", "_blank", find_window_specs);
 		return false;
 	}
+');
 
+$controller->addInlineJavascript('
 	function openerpasteid(id) {
 		window.opener.paste_id(id);
 		window.close();
 	}
+');
 
+$controller->addInlineJavascript('
 	function paste_id(value) {
 		pastefield.value = value;
 	}
+');
 
+$controller->addInlineJavascript('
 	function paste_char(value) {
 		pastefield.value += value;
-		if (pastefield.id=='NPFX' || pastefield.id=='GIVN' || pastefield.id=='SPFX' || pastefield.id=='SURN' || pastefield.id=='NSFX') {
+		if (pastefield.id=="NPFX" || pastefield.id=="GIVN" || pastefield.id=="SPFX" || pastefield.id=="SURN" || pastefield.id=="NSFX") {
 			updatewholename();
 		}
 	}
-<?php
-echo '</script>';
+');
+
 //-- check if user has access to the gedcom record
 $edit = false;
-$success = false;
 
 if (!empty($pid)) {
 	if (($pid!="newsour") && ($pid!="newrepo") && ($noteid!="newnote")) {
@@ -122,9 +124,6 @@ if (!empty($pid)) {
 		// Don't allow edits if the record has changed since the edit-link was created
 		checkChangeTime($famid, $gedrec, safe_GET('accesstime', WT_REGEX_INTEGER));
 	}
-} elseif (($action!="addchild")&&($action!="addchildaction")&&($action!="addnewsource")&&($action!="mod_edit_fact")&&($action!="addnewnote")&&($action!="addmedia_links")&&($action!="addnoteaction")&&($action!="addnoteaction_assisted")) {
-	// No $pid?  Internal error of some sort
-	$edit = true;
 } else {
 	$edit = true;
 }
@@ -134,48 +133,15 @@ if (!WT_USER_CAN_EDIT || !$edit || !$ALLOW_EDIT_GEDCOM) {
 	exit;
 }
 
-echo '<div id="edit_interface-page">';// page container
-
 $level0type = $type;
-if ($type=='INDI') {
-	$record=WT_Person::getInstance($pid);
-	echo '<h4>', $record->getFullName(), '</h4>';
-} elseif ($type=='FAM') {
-	if (!empty($pid)) {
-		$record=WT_Family::getInstance($pid);
-	} else {
-		$record=WT_Family::getInstance($famid);
-	}
-	echo '<h4>', $record->getFullName(), '</h4>';
-} elseif ($type=='SOUR') {
-	$record=WT_Source::getInstance($pid);
-	echo '<h4>', $record->getFullName(),  '</h4>';
-}
 
-if (strstr($action, 'addchild')) {
-	if (empty($famid)) {
-		echo '<h4>', WT_I18N::translate('Add an unlinked person'), '</h4>';
-	} else {
-		echo '<h4>', WT_I18N::translate('Add a new child'), '</h4>';
-	}
-} elseif (strstr($action, 'addspouse')) {
-	if ($famtag=='WIFE') {
-		echo '<h4>', WT_I18N::translate('Add a new wife'), '</h4>';
-	} else {
-		echo '<h4>', WT_I18N::translate('Add a new husband'), '</h4>';
-	}
-} elseif (strstr($action, 'addnewparent')) {
-	if ($famtag=='WIFE') {
-		echo '<h4>', WT_I18N::translate('Add a new mother'), '</h4>';
-	} else {
-		echo '<h4>', WT_I18N::translate('Add a new father'), '</h4>';
-	}
-} elseif (strstr($action, 'addopfchild')) {
-	echo '<h4>', WT_I18N::translate('Add a child to create a one-parent family'), '</h4>';
-}
-//------------------------------------------------------------------------------
 switch ($action) {
+////////////////////////////////////////////////////////////////////////////////
 case 'delete':
+	$controller
+		->setPageTitle(WT_I18N::translate('Delete'))
+		->pageHeader();
+
 	if (!empty($linenum)) {
 		if ($linenum===0) {
 			delete_gedrec($pid, WT_GED_ID);
@@ -185,67 +151,74 @@ case 'delete':
 			$tmp=new WT_GedcomRecord($gedrec);
 			list($gedcom, $private_gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 			
-			//-- when deleting a media link
-			//-- $linenum comes is an OBJE and the $mediaid to delete should be set
+			// When deleting a media link, $linenum comes is an OBJE and the $mediaid to delete should be set
 			if ($linenum=='OBJE') {
 				$newged = remove_subrecord($gedrec, $linenum, $_REQUEST['mediaid']);
 			} else {
 				$newged = remove_subline($gedrec, $linenum);
 			}
-			if (replace_gedrec($pid, WT_GED_ID, $newged.$private_gedrec, $update_CHAN)) {
-				$success=true;
-			}
+			$success = replace_gedrec($pid, WT_GED_ID, $newged.$private_gedrec, $update_CHAN);
 		}
 	}
-	break;
-//------------------------------------------------------------------------------
-//-- echo a form to edit the raw gedcom record in a large textarea
-case 'editraw':
-	// Hide the private data
-	$tmp=new WT_GedcomRecord($gedrec);
-	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 
-	echo '<h4>', WT_I18N::translate('Edit raw GEDCOM record'), help_link('edit_edit_raw'), print_specialchar_link('newgedrec2'), '</h4>';
-	echo '<form method="post" action="edit_interface.php">';
-	echo '<input type="hidden" name="action" value="updateraw">';
-	echo '<input type="hidden" name="pid" value="', $pid, '">';
-	// Remove the first line of the gedrec - things go wrong when users
-	// change either the TYPE or XREF
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+	}
+	break;
+
+////////////////////////////////////////////////////////////////////////////////
+case 'editraw':
+	$pid    = safe_GET('pid', WT_REGEX_XREF); // print_indi_form() uses this
+	$record = WT_GedcomRecord::getInstance($pid);
+
+	// Hide the private data
+	list($gedrec)=$record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+
+	// Remove the first line of the gedrec - things go wrong when users change either the TYPE or XREF
 	// Notes are special - they may contain data on the first line
 	$gedrec=preg_replace('/^(0 @'.WT_REGEX_XREF.'@ NOTE) (.+)/', "$1\n1 CONC $2", $gedrec);
 	list($gedrec1, $gedrec2)=explode("\n", $gedrec, 2);
-	echo '<textarea name="newgedrec1" id="newgedrec1" dir="ltr" readonly="readonly">', $gedrec1, '</textarea><br>';
-	echo '<textarea name="newgedrec2" id="newgedrec2" dir="ltr">', htmlspecialchars($gedrec2), "</textarea><br>";
-	if (WT_USER_IS_ADMIN) {
-		echo '<table class="facts_table">';
-		echo '<tr><td class="descriptionbox  wrap width25">';
-		echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
-		echo '<input type="checkbox" name="preserve_last_changed"';
-		if ($NO_UPDATE_CHAN) {
-			echo ' checked="checked"';
-		} 
-		echo '>';
-		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
-		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
-		echo '</td></tr>';
-		echo '</table>';
-	}
+
+	$controller
+		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit raw GEDCOM record'))
+		->pageHeader();
+
 	?>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
+	<div id="edit_interface-page">
+		<h4>
+			<?php echo $controller->getPageTitle(); ?>
+			<?php echo help_link('edit_edit_raw'); ?>
+			<?php print_specialchar_link('newgedrec2'); ?>
+		</h4>
+		<form method="post" action="edit_interface.php">
+			<input type="hidden" name="action" value="updateraw">
+			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+			<textarea name="newgedrec1" id="newgedrec1" dir="ltr" readonly="readonly"><?php echo htmlspecialchars($gedrec1); ?></textarea>
+			<br>
+			<textarea name="newgedrec2" id="newgedrec2" dir="ltr"><?php echo htmlspecialchars($gedrec2); ?></textarea>
+			<br>
+			<?php echo no_update_chan($record); ?>
+			<p id="save-cancel">
+				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+			</p>
+		</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
-//------------------------------------------------------------------------------
-//-- edit a fact record in a form
+
+////////////////////////////////////////////////////////////////////////////////
 case 'edit':
+	$controller
+		->setPageTitle(WT_I18N::translate('Edit'))
+		->pageHeader();
+
 	// Hide the private data
 	$tmp=new WT_GedcomRecord($gedrec);
 	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
 	init_calendar_popup();
 	echo '<form name="editform" method="post" action="edit_interface.php" enctype="multipart/form-data">';
 	echo '<input type="hidden" name="action" value="update">';
@@ -253,7 +226,7 @@ case 'edit':
 	echo '<input type="hidden" name="pid" value="', $pid, '">';
 	echo '<input type="hidden" id="pids_array_edit" name="pids_array_edit" value="no_array">';
 
-	echo "<table class=\"facts_table\">";
+	echo '<table class="facts_table">';
 	$level1type = create_edit_form($gedrec, $linenum, $level0type);
 	if (WT_USER_IS_ADMIN) {
 		echo '<tr><td class="descriptionbox wrap width25">';
@@ -316,13 +289,19 @@ case 'edit':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'add':
-	//
-	// Start of add section...
-	//
+	$controller
+		->setPageTitle(WT_I18N::translate('Add'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	init_calendar_popup();
 	echo '<form name="addform" method="post" action="edit_interface.php" enctype="multipart/form-data">';
 	echo '<input type="hidden" name="action" value="update">';
@@ -373,26 +352,102 @@ case 'add':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addchild':
+	$gender = safe_GET('gender', '[MF]', 'U');
+	$famid  = safe_GET('famid', WT_REGEX_XREF);
+	$pid    = safe_GET('pid',    WT_REGEX_XREF); // print_indi_form() uses this
+
+	$person = WT_Person::getInstance($pid);
+
+	if ($famid) {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add child'));
+	} else {
+		$controller->setPageTitle(WT_I18N::translate('Add an unlinked person'));
+	}
+	$controller->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	print_indi_form('addchildaction', $famid, '', '', 'CHIL', $gender);
+
+	echo '</div><!-- id="edit_interface-page" -->';
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addspouse':
+	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
+	$famid  = safe_GET('famid',  WT_REGEX_XREF);
+	$pid    = safe_GET('pid',    WT_REGEX_XREF); // print_indi_form() uses this
+
+	$person = WT_Person::getInstance($pid);
+
+	if ($famtag=='WIFE') {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a new wife'));
+	} else {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a new husband'));
+	}
+	$controller->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	print_indi_form('addspouseaction', $famid, '', '', $famtag);
+
+	echo '</div><!-- id="edit_interface-page" -->';
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addnewparent':
+	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
+	$famid  = safe_GET('famid',  WT_REGEX_XREF);
+	$pid    = safe_GET('pid',    WT_REGEX_XREF); // print_indi_form() uses this
+
+	$person = WT_Person::getInstance($pid);
+
+	if ($famtag=='WIFE') {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a new mother'));
+	} else {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a new father'));
+	}
+	$controller->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	print_indi_form('addnewparentaction', $famid, '', '', $famtag);
+
+	echo '</div><!-- id="edit_interface-page" -->';
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addopfchild':
+	$controller
+		->setPageTitle(WT_I18N::translate('Add a child to create a one-parent family'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	print_indi_form('addopfchildaction', $famid, '', '', 'CHIL');
+
+	echo '</div><!-- id="edit_interface-page" -->';
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addfamlink':
+	$controller
+		->setPageTitle(WT_I18N::translate('Add child'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	echo '<form method="post" name="addchildform" action="edit_interface.php">';
 	echo '<input type="hidden" name="action" value="linkfamaction">';
 	echo '<input type="hidden" name="pid" value="', $pid, '">';
@@ -432,10 +487,19 @@ case 'addfamlink':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'linkspouse':
+	$controller
+		->setPageTitle(WT_I18N::translate('Add child'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	init_calendar_popup();
 	echo '<form method="post" name="addchildform" action="edit_interface.php">';
 	echo '<input type="hidden" name="action" value="linkspouseaction">';
@@ -484,13 +548,20 @@ case 'linkspouse':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'linkfamaction':
+	$controller
+		->setPageTitle(WT_I18N::translate('Add child'))
+		->pageHeader();
+
 	// Make sure we have the right ID (f123 vs. F123)
 	$famid=WT_Family::getInstance($famid)->getXref();
 	$famrec = find_gedcom_record($famid, WT_GED_ID, true);
+	$success=false;
 	if (!empty($famrec)) {
 		$itag = "FAMC";
 		if ($famtag=="HUSB" || $famtag=="WIFE") $itag="FAMS";
@@ -510,18 +581,14 @@ case 'linkfamaction':
 				$gedrec.="\n1 FAMS @$famid@";
 				break;
 			}
-			if (replace_gedrec($pid, WT_GED_ID, $gedrec, $update_CHAN)) {
-				$success=true;
-			}
+			$success=replace_gedrec($pid, WT_GED_ID, $gedrec, $update_CHAN);
 		}
 
 		//-- if it is adding a new child to a family
 		if ($famtag=="CHIL") {
 			if (strpos($famrec, "1 $famtag @$pid@")===false) {
 				$famrec .= "\n1 $famtag @$pid@";
-				if (replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN)) {
-					$success=true;
-				}
+				$success=replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 			}
 		} else {
 			//-- if it is adding a husband or wife
@@ -534,34 +601,39 @@ case 'linkfamaction':
 				if ($spid!=$pid) {
 					//-- change a of the old ids to the new id
 					$famrec = str_replace("\n1 $famtag @$spid@", "\n1 $famtag @$pid@", $famrec);
-					if (replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN)) {
-						$success=true;
-					}
+					$success=replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 					//-- remove the FAMS reference from the old husb/wife
 					if (!empty($spid)) {
 						$srec = find_gedcom_record($spid, WT_GED_ID, true);
 						if ($srec) {
 							$srec = str_replace("\n1 $itag @$famid@", "", $srec);
-							if (replace_gedrec($spid, WT_GED_ID, $srec, $update_CHAN)) {
-								$success=true;
-							}
+							$success=replace_gedrec($spid, WT_GED_ID, $srec, $update_CHAN);
 						}
 					}
 				}
 			} else {
 				$famrec .= "\n1 $famtag @$pid@";
-				if (replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN)) {
-					$success=true;
-				}
+				$success=replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 			}
 		}
 	} else {
 		echo "Family record not found";
 	}
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+	}
 	break;
-//------------------------------------------------------------------------------
-//-- add new source
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addnewsource':
+	$controller
+		->setPageTitle(WT_I18N::translate('Create a new source'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	echo '<script>';
 	?>
 		function check_form(frm) {
@@ -575,7 +647,6 @@ case 'addnewsource':
 	<?php
 	echo '</script>';
 	?>
-	<b><?php echo WT_I18N::translate('Create a new source'); ?></b>
 	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
 		<input type="hidden" name="action" value="addsourceaction">
 		<input type="hidden" name="pid" value="newsour">
@@ -647,11 +718,16 @@ case 'addnewsource':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
-//------------------------------------------------------------------------------
-//-- create a source record from the incoming variables
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addsourceaction':
+	$controller
+		->setPageTitle(WT_I18N::translate('Add source'))
+		->pageHeader();
+
 	$newgedrec = "0 @XREF@ SOUR";
 	if (isset($_REQUEST['EVEN'])) $EVEN = $_REQUEST['EVEN'];
 	if (!empty($EVEN) && count($EVEN)>0) {
@@ -693,12 +769,23 @@ case 'addsourceaction':
 	if ($xref) {
 		$controller->addInlineJavascript('openerpasteid("' . $xref . '");');
 	}
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+	}
 	break;
-//------------------------------------------------------------------------------
-//-- add new Shared Note
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addnewnote':
+	$controller
+		->setPageTitle(WT_I18N::translate('Create a new Shared Note'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	?>
-	<b><?php echo WT_I18N::translate('Create a new Shared Note'); ?></b>
+	<b><?php echo $controller->getPageTitle(); ?></b>
 	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
 		<input type="hidden" name="action" value="addnoteaction">
 		<input type="hidden" name="noteid" value="newnote">
@@ -731,11 +818,16 @@ case 'addnewnote':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
-//------------------------------------------------------------------------------
-//-- create a shared note record from the incoming variables
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addnoteaction':
+	$controller
+		->setPageTitle(WT_I18N::translate('Create a new Shared Note'))
+		->pageHeader();
+
 	$newgedrec  = "0 @XREF@ NOTE";
 
 	if (isset($_REQUEST['NOTE'])) $NOTE = $_REQUEST['NOTE'];
@@ -754,16 +846,27 @@ case 'addnoteaction':
 	if ($xref) {
 		$controller->addInlineJavascript('openerpasteid("' . $xref . '");');
 	}
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+	}
 	break;
-//------------------------------------------------------------------------------
-//-- add new Shared Note census event using GEDFact assistant
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addnewnote_assisted':
+	$controller
+		->setPageTitle(WT_I18N::translate('Create a new Shared Note using Assistant'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	if (isset($_REQUEST['pid'])) $pid = $_REQUEST['pid'];
 	global $pid;
 
 	?>
 	<div class="center font11" style="width:100%;">
-		<b><?php echo WT_I18N::translate('Create a new Shared Note using Assistant'); ?></b>
+		<b><?php echo $controller->getPageTitle(); ?></b>
 		<?php
 			// When more languages are added to the wiki, we can expand or redesign this
 			switch (WT_LOCALE) {
@@ -787,40 +890,60 @@ case 'addnewnote_assisted':
 		</form>
 	</div>
 	<div style="clear:both;"></div>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
-//------------------------------------------------------------------------------
-//-- create a shared note assisted record from the incoming variables
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addnoteaction_assisted':
+	$controller
+		->setPageTitle(WT_I18N::translate('Create a new Shared Note using Assistant'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/addnoteaction_assisted.php';
+
+	echo 	'</div><!-- id="edit_interface-page" -->';
 	break;
 
-//-- add new Media Links
+////////////////////////////////////////////////////////////////////////////////
 case 'addmedia_links':
-	global $pid;
+	$controller
+		->setPageTitle(WT_I18N::translate('Add media links'))
+		->pageHeader();
+
 	?>
-	<!-- <form method="post" action="edit_interface.php" onsubmit="return check_form(this);"> -->
-	<form method="post" action="edit_interface.php?pid=<?php echo $pid; ?>" onsubmit="findindi()">
-		<input type="hidden" name="action" value="addmedia_links">
-		<input type="hidden" name="noteid" value="newnote">
-		<?php
-		require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/MEDIA_ctrl.php';
-		?>
-	</form>
+	<div id="edit_interface-page">
+		<h4><?php echo $controller->getPageTitle(); ?></h4>
+		<form method="post" action="edit_interface.php?pid=<?php echo $pid; ?>" onsubmit="findindi()">
+			<input type="hidden" name="action" value="addmedia_links">
+			<input type="hidden" name="noteid" value="newnote">
+			<?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/MEDIA_ctrl.php'; ?>
+		</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
 
-//-- edit source
+////////////////////////////////////////////////////////////////////////////////
 case 'editsource':
+	$pid    = safe_GET('pid', WT_REGEX_XREF);
+	$record = WT_GedcomRecord::getInstance($pid);
+
 	// Hide the private data
-	$tmp=new WT_GedcomRecord($gedrec);
-	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+	list($gedrec)=$record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 	
+	$controller
+		->setPageTitle($record->getFullName())
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
 	init_calendar_popup();
 	echo '<form method="post" action="edit_interface.php" enctype="multipart/form-data">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="pid" value="', $pid, '">';
-
 	echo '<table class="facts_table">';
 	$gedlines = explode("\n", $gedrec); // -- find the number of lines in the record
 	$uniquefacts = preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
@@ -873,17 +996,25 @@ case 'editsource':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
-//------------------------------------------------------------------------------
-//-- edit a Shared Note
+
+////////////////////////////////////////////////////////////////////////////////
 case 'editnote':
+	$controller
+		->setPageTitle(WT_I18N::translate('Edit Shared Note'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	// Hide the private data
 	$tmp=new WT_GedcomRecord($gedrec);
 	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 	
 	?>
-	<b><?php echo WT_I18N::translate('Edit Shared Note'), "&nbsp;&nbsp;(" . $pid . ")"; ?></b><br><br>
+	<b><?php echo $controller->getPageTitle(), "&nbsp;&nbsp;(" . $pid . ")"; ?></b><br><br>
 	<form method="post" action="edit_interface.php" >
 		<input type="hidden" name="action" value="update">
 		<input type="hidden" name="pid" value="<?php echo $pid; ?>">
@@ -932,11 +1063,19 @@ case 'editnote':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
-//------------------------------------------------------------------------------
-//-- add new repository
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addnewrepository':
+	$controller
+		->setPageTitle(WT_I18N::translate('Create Repository'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	echo '<script>';
 	?>
 		function check_form(frm) {
@@ -950,8 +1089,7 @@ case 'addnewrepository':
 	<?php
 	echo '</script>';
 	?>
-	<b><?php echo WT_I18N::translate('Create Repository');
-	?></b>
+	<b><?php echo $controller->getPageTitle(); ?></b>
 	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
 		<input type="hidden" name="action" value="addrepoaction">
 		<input type="hidden" name="pid" value="newrepo">
@@ -995,11 +1133,16 @@ case 'addnewrepository':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
-//------------------------------------------------------------------------------
-//-- create a repository record from the incoming variables
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addrepoaction':
+	$controller
+		->setPageTitle(WT_I18N::translate('Create Repository'))
+		->pageHeader();
+
 	$newgedrec = "0 @XREF@ REPO";
 	if (isset($_REQUEST['REPO_NAME'])) $NAME = $_REQUEST['REPO_NAME'];
 	if (isset($_REQUEST['_HEB'])) $_HEB = $_REQUEST['_HEB'];
@@ -1033,25 +1176,38 @@ case 'addrepoaction':
 	if ($xref) {
 		$controller->addInlineJavascript('openerpasteid("' . $xref . '");');
 	}
-	break;
-//------------------------------------------------------------------------------
-//-- get the new incoming raw gedcom record and store it in the file
-case 'updateraw':
-	// Retrieve the private data
-	$tmp=new WT_GedcomRecord($gedrec);
-	list(, $private_gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
-			
-	if (isset($_POST['newgedrec1']) && isset($_POST['newgedrec2'])) {
-		$newgedrec = $_POST['newgedrec1']."\n".$_POST['newgedrec2'];
-		if (replace_gedrec($pid, WT_GED_ID, $newgedrec.$private_gedrec, $update_CHAN)) {
-			$success=true;
-		}
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
 	}
 	break;
 
-//----------------------------------------------------------------------------------
-//-- reconstruct the gedcom from the incoming fields and store it in the file
+////////////////////////////////////////////////////////////////////////////////
+case 'updateraw':
+	$controller
+		->setPageTitle(WT_I18N::translate('Edit raw GEDCOM record'))
+		->pageHeader();
+
+	$pid    = safe_POST('pid', WT_REGEX_XREF);
+	$record = WT_GedcomRecord::getInstance($pid);
+
+	// Retrieve the private data
+	list(, $private_gedrec)=$record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+
+	$newgedrec = $_POST['newgedrec1'] . "\n" . $_POST['newgedrec2'] . $private_gedrec;
+	$success = replace_gedrec($pid, WT_GED_ID, $newgedrec, !safe_POST_bool('preserve_last_changed'));
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+	}
+	break;
+
+////////////////////////////////////////////////////////////////////////////////
 case 'update':
+	$controller
+		->setPageTitle(WT_I18N::translate('Edit'))
+		->pageHeader();
+
 	/* -----------------------------------------------------------------------------
 	 * $pids_array is a text file passed via js from the CENS GEDFact Assistant
 	 * to the hidden field id=\"pids_array\" in the case 'add'.
@@ -1079,6 +1235,7 @@ case 'update':
 	}
 
 	// Cycle through each individual concerned defined by $cens_pids array.
+	$success = true;
 	foreach ($cens_pids as $pid) {
 		if (isset($pid)) {
 			$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
@@ -1264,14 +1421,20 @@ case 'update':
 			}
 
 		}
-		if (replace_gedrec($pid, WT_GED_ID, $newged.$private_gedrec, $update_CHAN)) {
-			$success=true;
-		}
+		$success = $success && replace_gedrec($pid, WT_GED_ID, $newged.$private_gedrec, $update_CHAN);
 	} // end foreach $cens_pids  -------------
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+	}
 	break;
 
-//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////////
 case 'addchildaction':
+	$controller
+		->setPageTitle(WT_I18N::translate('Add child'))
+		->pageHeader();
+
 	splitSOUR(); // separate SOUR record from the rest
 
 	$gedrec ="0 @REF@ INDI";
@@ -1299,9 +1462,8 @@ case 'addchildaction':
 	}
 
 	$xref = append_gedrec($gedrec, WT_GED_ID);
-	$link = "individual.php?pid=$xref";
+	$gedrec = "";
 	if ($xref) {
-		$gedrec = "";
 		if (!empty($famid)) {
 			// Insert new child at the right place [ 1686246 ]
 			$newchild = WT_Person::getInstance($xref);
@@ -1327,14 +1489,28 @@ case 'addchildaction':
 															"\n1 CHIL @".$child->getXref()."@\n1 CHIL @$xref@",
 															$gedrec);
 			}
-			if (replace_gedrec($famid, WT_GED_ID, $gedrec, $update_CHAN)) {
-				$success=true;
-			}
+			$success=replace_gedrec($famid, WT_GED_ID, $gedrec, $update_CHAN);
 		}
+	} else {
+		$success=false;
+	}
+	if (safe_POST('goto')=='new') {
+		$link = "individual.php?pid=$xref";
+	} else {
+		$link='';
+	}
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
 	}
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addspouseaction':
+	$controller
+		->setPageTitle(WT_I18N::translate('Add spouse'))
+		->pageHeader();
+
 	splitSOUR(); // separate SOUR record from the rest
 
 	$gedrec ="0 @REF@ INDI";
@@ -1353,7 +1529,6 @@ case 'addspouseaction':
 	}
 
 	$xref = append_gedrec($gedrec, WT_GED_ID);
-	$link = "individual.php?pid=$xref";
 	$success = true;
 	if ($famid=="new") {
 		$famrec = "0 @new@ FAM";
@@ -1398,32 +1573,42 @@ case 'addspouseaction':
 				$famrec = updateRest($famrec);
 			}
 
-			if (replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN)) {
-				$success=true;
-			}
+			$success = $success && replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 		}
 	}
 	if ((!empty($famid))&&($famid!="new")) {
 		$gedrec = find_gedcom_record($xref, WT_GED_ID, true) . "\n1 FAMS @$famid@";
-		if (replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN)) {
-			$success=true;
-		}
+		$success = $success && replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN);
 	}
 	if (!empty($pid)) {
 		$indirec = find_gedcom_record($pid, WT_GED_ID, true);
 		if ($indirec) {
 			$indirec .= "\n1 FAMS @$famid@";
-			if (replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN)) {
-				$success=true;
-			}
+			$success = $success && replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
 		}
 	}
+
+	if (safe_POST('goto')=='new') {
+		$link = "individual.php?pid=$xref";
+	} else {
+		$link='';
+	}
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+	}
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'linkspouseaction':
+	$controller
+		->setPageTitle(WT_I18N::translate('Add child'))
+		->pageHeader();
+
 	splitSOUR(); // separate SOUR record from the rest
 
 	if (isset($_REQUEST['spid'])) $spid = $_REQUEST['spid'];
+	$success=false;
 	if (!empty($spid)) {
 		$gedrec = find_gedcom_record($spid, WT_GED_ID, true);
 		if ($gedrec) {
@@ -1459,25 +1644,29 @@ case 'linkspouseaction':
 			}
 			if ((!empty($famid))&&($famid!="new")) {
 				$gedrec .= "\n1 FAMS @$famid@";
-				if (replace_gedrec($spid, WT_GED_ID, $gedrec, $update_CHAN)) {
-					$success=true;
-				}
-				
+				$success=replace_gedrec($spid, WT_GED_ID, $gedrec, $update_CHAN);				
 			}
 			if (!empty($pid)) {
 				$indirec = find_gedcom_record($pid, WT_GED_ID, true);
 				if (!empty($indirec)) {
 					$indirec = trim($indirec) . "\n1 FAMS @$famid@";
-					if (replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN)) {
-						$success=true;
-					}
+					$success=replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
 				}
 			}
 		}
 	}
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+	}
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addnewparentaction':
+	$controller
+		->setPageTitle(WT_I18N::translate('Add parent'))
+		->pageHeader();
+
 	splitSOUR(); // separate SOUR record from the rest
 
 	$gedrec ="0 @REF@ INDI";
@@ -1496,7 +1685,6 @@ case 'addnewparentaction':
 	}
 
 	$xref = append_gedrec($gedrec, WT_GED_ID);
-	$link = "individual.php?pid=$xref";
 	$success = true;
 	if ($famid=="new") {
 		$famrec = "0 @new@ FAM";
@@ -1535,32 +1723,38 @@ case 'addnewparentaction':
 			} else {
 				$famrec = updateRest($famrec);
 			}
-			if (replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN)) {
-				$success=true;
-			}
+			$success = $success && replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 		}
 	}
 	if (!empty($famid) && $famid!="new") {
 		$gedrec = find_gedcom_record($xref, WT_GED_ID, true);
 		$gedrec.= "\n1 FAMS @$famid@";
-		if (replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN)) {
-			$success=true;
-		}
+		$success = $success && replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN);
 	}
 	if (!empty($pid)) {
 		$indirec = find_gedcom_record($pid, WT_GED_ID, true);
 		if ($indirec) {
 			if (strpos($indirec, "1 FAMC @$famid@")===false) {
 				$indirec .= "\n1 FAMC @$famid@";
-				if (replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN)) {
-					$success=true;
-				}
+				$success = $success && replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
 			}
 		}
 	}
+
+	if (safe_POST('goto')=='new') {
+		$link = "individual.php?pid=$xref";
+	} else {
+		$link='';
+	}
+	$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addopfchildaction':
+	$controller
+		->setPageTitle(WT_I18N::translate('Add child'))
+		->pageHeader();
+
 	splitSOUR(); // separate SOUR record from the rest
 
 	$newindixref=get_new_xref('INDI');
@@ -1597,15 +1791,28 @@ case 'addopfchildaction':
 	$indirec=find_gedcom_record($pid, WT_GED_ID, true);
 	if ($indirec) {
 		$indirec.="\n1 FAMS @{$newfamxref}@";
-		if (replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN)) {
-			$success=true;
-		}
-		append_gedrec($gedrec, WT_GED_ID);
-		append_gedrec($famrec, WT_GED_ID);
+		$success =
+			replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN) &&
+			append_gedrec($gedrec, WT_GED_ID) &&
+			append_gedrec($famrec, WT_GED_ID);
+	} else {
+		$success = false;
+	}
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
 	}
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'editname':
+	$controller
+		->setPageTitle(WT_I18N::translate('Edit name'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	// Hide the private data
 	$tmp=new WT_GedcomRecord($gedrec);
 	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
@@ -1620,30 +1827,48 @@ case 'editname':
 		$i++;
 	}
 	print_indi_form('update', '', $linenum, $namerec, '', $person->getSex());
+	echo '</div><!-- id="edit_interface-page" -->';
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'addname':
+	$controller
+		->setPageTitle(WT_I18N::translate('Add name'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	$person=WT_Person::getInstance($pid);
 	print_indi_form('update', '', 'new', 'NEW', '', $person->getSex());
+	echo '</div><!-- id="edit_interface-page" -->';
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'paste':
+	$controller
+		->setPageTitle(WT_I18N::translate('Paste'))
+		->pageHeader();
+
 	$gedrec .= "\n".$WT_SESSION->clipboard[$fact]['factrec'];
-	if (replace_gedrec($pid, WT_GED_ID, $gedrec, $NO_UPDATE_CHAN)) {
-		$success=true;
+	$success=replace_gedrec($pid, WT_GED_ID, $gedrec, $NO_UPDATE_CHAN);
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
 	}
 	break;
 
-
-//LBox  Reorder Media ========================================================
-
-//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////////
 case 'reorder_media': // Sort page using Popup
 	require_once WT_ROOT.'includes/media_reorder.php';
 	break;
 
-//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////////
 case 'reorder_media_update': // Update sort using popup
+	$controller
+		->setPageTitle(WT_I18N::translate('Re-order media'))
+		->pageHeader();
+
 	if (isset($_REQUEST['order1'])) $order1 = $_REQUEST['order1'];
 	$lines = explode("\n", $gedrec);
 	$newgedrec = "";
@@ -1655,15 +1880,21 @@ case 'reorder_media_update': // Update sort using popup
 	foreach ($order1 as $m_media=>$num) {
 		$newgedrec .= "\n1 _WT_OBJE_SORT @".$m_media."@";
 	}
-	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
-		$success=true;
-	}
+	$success=replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 
 	$link = "individual.php?pid=$pid";
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+	}
 	break;
 
-//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////////
 case 'al_reset_media_update': // Reset sort using Album Page
+	$controller
+		->setPageTitle(WT_I18N::translate('Re-order media'))
+		->pageHeader();
+
 	$lines = explode("\n", $gedrec);
 	$newgedrec = "";
 	foreach ($lines as $line) {
@@ -1671,14 +1902,20 @@ case 'al_reset_media_update': // Reset sort using Album Page
 			$newgedrec .= $line."\n";
 		}
 	}
-	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
-		$success=true;
-	}
+	$success=replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 	$link = "individual.php?pid=$pid";
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+	}
 	break;
 
-//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////////
 case 'al_reorder_media_update': // Update sort using Album Page
+	$controller
+		->setPageTitle(WT_I18N::translate('Re-order media'))
+		->pageHeader();
+
 	if (isset($_REQUEST['order1'])) $order1 = $_REQUEST['order1'];
 	function SwapArray($Array) {
 		$Values = array();
@@ -1699,23 +1936,26 @@ case 'al_reorder_media_update': // Update sort using Album Page
 	foreach ($order2 as $m_media=>$num) {
 		$newgedrec .= "\n1 _WT_OBJE_SORT @".$m_media."@";
 	}
-	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
-		$success=true;
-	}
+	$success=replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 	$link = "individual.php?pid=$pid";
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+	}
 	break;
 
-//LBox ===================================================
-
-
-//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////////
 case 'reorder_children':
 	$controller
 		->addInlineJavascript('jQuery("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});')
 		//-- update the order numbers after drag-n-drop sorting is complete
-		->addInlineJavascript('jQuery("#reorder_list").bind("sortupdate", function(event, ui) { jQuery("#"+jQuery(this).attr("id")+" input").each( function (index, value) { value.value = index+1; }); });');
+		->addInlineJavascript('jQuery("#reorder_list").bind("sortupdate", function(event, ui) { jQuery("#"+jQuery(this).attr("id")+" input").each( function (index, value) { value.value = index+1; }); });')
+		->setPageTitle(WT_I18N::translate('Re-order children'))
+		->pageHeader();
 
-	echo '<br><b>', WT_I18N::translate('Re-order children'), '</b>';
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="action" value="reorder_update">
@@ -1775,11 +2015,22 @@ case 'reorder_children':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'changefamily':
-	$family = new WT_Family($gedrec);
+	$famid  = safe_GET('famid', WT_REGEX_XREF);
+	$family = WT_Family::getInstance($famid);
+	
+	$controller
+		->setPageTitle(WT_I18N::translate('Change family members'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	$father = $family->getHusband();
 	$mother = $family->getWife();
 	$children = $family->getChildren();
@@ -1850,7 +2101,6 @@ case 'changefamily':
 		<input type="hidden" name="action" value="changefamily_update">
 		<input type="hidden" name="famid" value="<?php echo $famid; ?>">
 		<table>
-			<tr><td colspan="4" class="topbottombar"><?php echo WT_I18N::translate('Change Family Members'); ?></td></tr>
 			<tr>
 			<?php
 			if (!is_null($father)) {
@@ -1927,11 +2177,17 @@ case 'changefamily':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
-	echo '</div>';//close #changefam
+	echo '</div>'; //close #changefam
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'changefamily_update':
+	$controller
+		->setPageTitle(WT_I18N::translate('Change family members'))
+		->pageHeader();
+
 	$family = new WT_Family($gedrec);
 	$father = $family->getHusband();
 	$mother = $family->getWife();
@@ -2082,12 +2338,22 @@ case 'changefamily_update':
 	}
 
 	if ($updated) {
-		replace_gedrec($famid, WT_GED_ID, $gedrec, $update_CHAN);
-		$success = true;
+		$success = replace_gedrec($famid, WT_GED_ID, $gedrec, $update_CHAN);
+	} else {
+		$success = false;
+	}
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
 	}
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'reorder_update':
+	$controller
+		->setPageTitle(WT_I18N::translate('Re-order children'))
+		->pageHeader();
+
 	if (isset($_REQUEST['order'])) $order = $_REQUEST['order'];
 	asort($order);
 	reset($order);
@@ -2099,18 +2365,25 @@ case 'reorder_update':
 		$newgedrec = str_replace($subrec, '', $newgedrec);
 		$newgedrec .= "\n".$subrec."\n";
 	}
-	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
-		$success=true;
+	$success = replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("");');
 	}
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'reorder_fams':
-		$controller
+	$controller
 		->addInlineJavascript('jQuery("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});')
 		//-- update the order numbers after drag-n-drop sorting is complete
-		->addInlineJavascript('jQuery("#reorder_list").bind("sortupdate", function(event, ui) { jQuery("#"+jQuery(this).attr("id")+" input").each( function (index, value) { value.value = index+1; }); });');
+		->addInlineJavascript('jQuery("#reorder_list").bind("sortupdate", function(event, ui) { jQuery("#"+jQuery(this).attr("id")+" input").each( function (index, value) { value.value = index+1; }); });')
+		->setPageTitle(WT_I18N::translate('Re-order families'))
+		->pageHeader();
 
-	echo "<br><b>", WT_I18N::translate('Re-order families'), "</b>";
+	echo '<div id="edit_interface-page">';
+	echo '<h4>', $controller->getPageTitle(), '</h4>';
+
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="action" value="reorder_fams_update">
@@ -2140,10 +2413,16 @@ case 'reorder_fams':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
+	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 case 'reorder_fams_update':
+	$controller
+		->setPageTitle(WT_I18N::translate('Re-order families'))
+		->pageHeader();
+
 	if (isset($_REQUEST['order'])) $order = $_REQUEST['order'];
 	asort($order);
 	reset($order);
@@ -2157,26 +2436,34 @@ case 'reorder_fams_update':
 	foreach ($order as $famid=>$num) {
 		$newgedrec .= "\n1 FAMS @".$famid."@";
 	}
-	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
-		$success=true;
+	$success = replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+
+	if ($success && !WT_DEBUG) {
+		$controller->addInlineJavascript('closePopupAndReloadParent("");');
 	}
 	break;
 }
 
+// Keep the existing CHAN record when editing
+function no_update_chan(WT_GedcomRecord $record) {
+	global $NO_UPDATE_CHAN;
 
-// Redirect to new record, if requested
-if (isset($_REQUEST['goto'])) {
-	$goto = $_REQUEST['goto'];
+	$checked = $NO_UPDATE_CHAN ? ' checked="checked"' : '';
+	
+	if (WT_USER_IS_ADMIN) {
+		return
+			'<table class="facts_table">' .
+			'<tr><td class="descriptionbox  wrap width25">' .
+			WT_Gedcom_Tag::getLabel('CHAN') .
+			'</td><td class="optionbox wrap">' .
+			'<input type="checkbox" name="preserve_last_changed"' . $checked . '>' .
+			WT_I18N::translate('Do not update the “last change” record') .
+			help_link('no_update_CHAN') .
+			WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp()) .
+			WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser()) .
+			'</td></tr>' .
+			'</table>';
+	} else {
+		return '';
+	}
 }
-if (isset($_REQUEST['link'])) {
-	$link = $_REQUEST['link'];
-}
-if (empty($goto) || empty($link)) {
-	$link='';
-}
-
-// autoclose window when update successful unless debug on
-if ($success && !WT_DEBUG) {
-	$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
-}
-echo '</div>';//close #edit_interface-page

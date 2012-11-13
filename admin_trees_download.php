@@ -148,5 +148,5 @@ $controller->pageHeader();
 		</dl>
 	</div>
 	<br>
-	<input type="submit" value="<?php echo WT_I18N::translate('Download Now'); ?>">
+	<input type="submit" value="<?php echo WT_I18N::translate('continue'); ?>">
 </form>

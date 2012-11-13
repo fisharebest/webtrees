@@ -120,7 +120,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 
 		if (WT_USER_CAN_EDIT) {
 			// edit_fam / members
-			$submenu = new WT_Menu(WT_I18N::translate('Change Family Members'), '#', 'menu-fam-change');
+			$submenu = new WT_Menu(WT_I18N::translate('Change family members'), '#', 'menu-fam-change');
 			$submenu->addOnclick("return change_family_members('".$this->record->getXref()."');");
 			$menu->addSubmenu($submenu);
 
