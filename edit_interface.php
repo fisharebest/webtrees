@@ -362,10 +362,10 @@ case 'addchild':
 	$famid  = safe_GET('famid', WT_REGEX_XREF);
 	$pid    = safe_GET('pid',    WT_REGEX_XREF); // print_indi_form() uses this
 
-	$person = WT_Person::getInstance($pid);
+	$family = WT_Family::getInstance($famid);
 
-	if ($famid) {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add child'));
+	if ($family) {
+		$controller->setPageTitle($family->getFullName() . ' - ' . WT_I18N::translate('Add child'));
 	} else {
 		$controller->setPageTitle(WT_I18N::translate('Add an unlinked person'));
 	}
