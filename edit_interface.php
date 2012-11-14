@@ -142,24 +142,17 @@ case 'delete':
 		->setPageTitle(WT_I18N::translate('Delete'))
 		->pageHeader();
 
-	if (!empty($linenum)) {
-		if ($linenum===0) {
-			delete_gedrec($pid, WT_GED_ID);
-			$success=true;
-		} else {
-			// Retrieve the private data
-			$tmp=new WT_GedcomRecord($gedrec);
-			list($gedcom, $private_gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+	// Retrieve the private data
+	$tmp=new WT_GedcomRecord($gedrec);
+	list($gedcom, $private_gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 			
-			// When deleting a media link, $linenum comes is an OBJE and the $mediaid to delete should be set
-			if ($linenum=='OBJE') {
-				$newged = remove_subrecord($gedrec, $linenum, $_REQUEST['mediaid']);
-			} else {
-				$newged = remove_subline($gedrec, $linenum);
-			}
-			$success = replace_gedrec($pid, WT_GED_ID, $newged.$private_gedrec, $update_CHAN);
-		}
+	// When deleting a media link, $linenum comes is an OBJE and the $mediaid to delete should be set
+	if ($linenum=='OBJE') {
+		$newged = remove_subrecord($gedrec, $linenum, $_REQUEST['mediaid']);
+	} else {
+		$newged = remove_subline($gedrec, $linenum);
 	}
+	$success = replace_gedrec($pid, WT_GED_ID, $newged.$private_gedrec, $update_CHAN);
 
 	if ($success && !WT_DEBUG) {
 		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
