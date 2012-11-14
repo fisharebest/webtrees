@@ -2795,9 +2795,8 @@ function HighlightedImageSHandler($attrs) {
 	if (!empty($attrs['height'])) $height = (int)$attrs['height'];
 
 	$person=WT_Person::getInstance($id);
-	$media = find_highlighted_object($person);
-	if ($media) {
-		$mediaobject=WT_Media::getInstance($media['mid']);
+	$mediaobject = $person->findHighlightedMedia();
+	if ($mediaobject) {
 		$attributes=$mediaobject->getImageAttributes('thumb');
 		if (in_array($attributes['ext'], array('GIF','JPG','PNG','SWF','PSD','BMP','TIFF','TIFF','JPC','JP2','JPX','JB2','SWC','IFF','WBMP','XBM')) && $mediaobject->canDisplayDetails() && $mediaobject->fileExists('thumb')) {
 			if (($width>0) and ($height==0)) {

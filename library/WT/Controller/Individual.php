@@ -154,11 +154,11 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		global $SHOW_HIGHLIGHT_IMAGES, $USE_SILHOUETTE;
 
 		if (($this->record->canDisplayDetails()) && $SHOW_HIGHLIGHT_IMAGES) {
-			$firstmediarec = $this->record->findHighlightedMedia();
-			if ($firstmediarec) return true;
+			if ($this->record->findHighlightedMedia()) {
+				return true;
+			}
 		}
-		if ($USE_SILHOUETTE) { return true; }
-		return false;
+		return $USE_SILHOUETTE;
 	}
 
 	/**
@@ -166,19 +166,14 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	* @return string HTML string for the <img> tag
 	*/
 	function getHighlightedObject() {
-		global $sex;
-
 		if ($this->canShowHighlightedObject()) {
-			$firstmediarec=$this->record->findHighlightedMedia();
-			if (!empty($firstmediarec)) {
-				$mediaobject=WT_Media::getInstance($firstmediarec['mid']);
-				$result=$mediaobject->displayMedia(array('uselightbox_fallback'=>false,'clearbox'=>'general_1'));
-				return $result;
+			$mediaobject=$this->record->findHighlightedMedia();
+			if ($mediaobject) {
+				return $mediaobject->displayMedia(array('uselightbox_fallback'=>false,'clearbox'=>'general_1'));
 			}
 		}
 
-		$sex=$this->record->getSex();
-		return display_silhouette(array('sex'=>$sex)); // may return ''
+		return display_silhouette(array('sex'=>$this->record->getSex()));
 
 	}
 

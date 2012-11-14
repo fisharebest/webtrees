@@ -453,39 +453,37 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					if (in_array($gmark['fact'], array('CENS', 'BIRT', 'BAPM', 'CHR', '_MILI', 'OCCU', 'RESI', 'DEAT', 'CREM', 'BURI', 'RETI'))) {
 						$image = "<i class='icon_".$gmark['fact']."'></i>";
 					} else {
-						$indirec = $this_person->getGedcomRecord();
-						$image = '';
 						if ($SHOW_HIGHLIGHT_IMAGES) {
-							if (!empty($pid)) {
-								$object = find_highlighted_object($this_person);
-							}
-							if (!empty($object)) {
-								$mediaobject=WT_Media::getInstance($object['mid']);
+							$mediaobject = $this_person->findHighlightedMedia();
+							if ($mediaobject) {
 								$image=$mediaobject->displayMedia(array('display_type'=>'googlemap'));
 							} else {
 								$sex=$this_person->getSex();
-								$image=display_silhouette(array('sex'=>$sex,'display_type'=>'googlemap')); // may return ''
+								$image=display_silhouette(array('sex'=>$sex, 'display_type'=>'googlemap'));
 							}
-						} // end of add image
+						} else {
+							$image = '';
+						}
 					}
-			}
+				}
 
 				// Other people
-				if (!empty($person)) {
-					$indirec2 = $person->getGedcomRecord();
-					$image2 = '';
+				if ($person) {
 					if ($SHOW_HIGHLIGHT_IMAGES) {
 						if (!empty($gmark['name'])) {
-							$object2 = find_highlighted_object($person);
-						}
-						if (!empty($object2)) {
-							$mediaobject=WT_Media::getInstance($object2['mid']);
-							$image2=$mediaobject->displayMedia(array('display_type'=>'googlemap'));
+							$mediaobject = $person->findHighlightedMedia();
+							if ($mediaobject) {
+								$image2=$mediaobject->displayMedia(array('display_type'=>'googlemap'));
+							} else {
+								$sex=$this_person->getSex();
+								$image2=display_silhouette(array('sex'=>$sex, 'display_type'=>'googlemap'));
+							}
 						} else {
-							$sex=$person->getSex();
-							$image2=display_silhouette(array('sex'=>$sex,'display_type'=>'googlemap')); // may return ''
+							$image2 = '';
 						}
-					} // end of add image
+					} else {
+						$image2 = '';
+					}
 				}
 			?>
 				[

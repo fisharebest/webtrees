@@ -245,15 +245,59 @@ class WT_Person extends WT_GedcomRecord {
 		return false;
 	}
 
-	/**
-	* get highlighted media
-	* @return array
-	*/
+	// Find the highlighted media object for an individual
+	// 1. Ignore all media objects that are not displayable because of Privacy rules
+	// 2. Ignore all media objects with the Highlight option set to "N"
+	// 3. Pick the first media object that matches these criteria, in order of preference:
+	//    (a) Level 1 object with the Highlight option set to "Y"
+	//    (b) Level 1 object with the Highlight option missing or set to other than "Y" or "N"
+	//    (c) Level 2 or higher object with the Highlight option set to "Y"
 	function findHighlightedMedia() {
-		if (is_null($this->highlightedimage)) {
-			$this->highlightedimage = find_highlighted_object($this);
+		$objectA = null;
+		$objectB = null;
+		$objectC = null;
+
+		// Iterate over all of the media items for the person
+		preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcomRecord(), $matches, PREG_SET_ORDER);
+		foreach ($matches as $match) {
+			$media=WT_Media::getInstance($match[2]);
+			if (!$media || !$media->canDisplayDetails()) {
+				continue;
+			}
+			$level = $match[1];
+			if (preg_match('/\n1 _PRIM ([NY])/', $media->getGedcomRecord(), $pmatch)) {
+				$prim = $pmatch[1];
+			} else {
+				$prim = '';
+			}
+
+			if ($prim=='N') {
+				continue; // Skip _PRIM N objects
+			}
+			if ($level == 1) {
+				if ($prim == 'Y') {
+					if (empty($objectA)) {
+						$objectA = $media;
+					}
+				} else {
+					if (empty($objectB)) {
+						$objectB = $media;
+					}
+				}
+			} else {
+				if ($prim == 'Y') {
+					if (empty($objectC)) {
+						$objectC = $media;
+					}
+				}
+			}
 		}
-		return $this->highlightedimage;
+
+		if ($objectA) return $objectA;
+		if ($objectB) return $objectB;
+		if ($objectC) return $objectC;
+
+		return null;
 	}
 
 	/**

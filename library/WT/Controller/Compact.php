@@ -64,16 +64,15 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 			$addname=$indi->getAddName();
 
 			if ($this->show_thumbs && $SHOW_HIGHLIGHT_IMAGES) {
-				$object=find_highlighted_object($indi);
+				$mediaobject=$indi->findHighlightedMedia();
 				$birth_date=$indi->getBirthDate();
 				$death_date=$indi->getDeathDate();
 				$img_title=$name.' - '.$birth_date->Display(false).' - '.$death_date->Display(false);
 				$img_id='box-'.$pid;
-				if (!empty($object)) {
-					$mediaobject=WT_Media::getInstance($object['mid']);
+				if ($mediaobject) {
 					$text=$mediaobject->displayMedia(array('display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title));
 				} else {
-					$text=display_silhouette(array('sex'=>$indi->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title)); // may return ''
+					$text=display_silhouette(array('sex'=>$indi->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title));
 				}
 			}
 

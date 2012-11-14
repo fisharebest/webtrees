@@ -1314,9 +1314,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				// add thumbnail image
 				$image = '';
 				if ($SHOW_HIGHLIGHT_IMAGES) {
-					$object = find_highlighted_object($person);
-					if (!empty($object)) {
-						$mediaobject=WT_Media::getInstance($object['mid']);
+					$mediaobject = $person->findHighlightedMedia();
+					if ($mediaobject) {
 						$image=$mediaobject->displayMedia(array('display_type'=>'googlemap'));
 					} else {
 						$sex=$person->getSex();

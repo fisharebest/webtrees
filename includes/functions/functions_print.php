@@ -75,7 +75,6 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$BirthDeath = "";
 	$birthplace = "";
 	$outBoxAdd = "";
-	$thumbnail = "";
 	$showid = "";
 	$iconsStyleAdd = "float: right; ";
 	if ($TEXT_DIRECTION=="rtl") $iconsStyleAdd="float: left; ";
@@ -161,14 +160,15 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		$shortname = $person->getShortName();
 	
 	if ($SHOW_HIGHLIGHT_IMAGES) {
-		$object=$person->findHighlightedMedia();
+		$mediaobject=$person->findHighlightedMedia();
 		$img_id='box-'.$boxID.'.-thumb';
-		if (!empty($object)) {
-			$mediaobject=WT_Media::getInstance($object['mid']);
+		if ($mediaobject) {
 			$thumbnail=$mediaobject->displayMedia(array('display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name));
 		} else {
-			$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name)); // may return ''
+			$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name));
 		}
+	} else {
+		$thumbnail = '';
 	}
 	
 	//-- find additional name, e.g. Hebrew

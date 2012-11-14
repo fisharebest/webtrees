@@ -373,17 +373,16 @@ class TreeView {
 	private function getThumbnail($personGroup, $person) {
 		global $SHOW_HIGHLIGHT_IMAGES;
 
-		$thumbnail='';
 		if ($SHOW_HIGHLIGHT_IMAGES) {
-			$object=$person->findHighlightedMedia();
-			if (!empty($object)) {
-				$mediaobject=WT_Media::getInstance($object['mid']);
-				$thumbnail=$mediaobject->displayMedia(array('display_type'=>'treeview','img_title'=>$person->getFullName(),'clearbox'=>'tvlb'.$personGroup->getXref()));
+			$mediaobject=$person->findHighlightedMedia();
+			if ($mediaobject) {
+				return $mediaobject->displayMedia(array('display_type'=>'treeview','img_title'=>$person->getFullName(),'clearbox'=>'tvlb'.$personGroup->getXref()));
 			} else {
-				$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'treeview','img_title'=>$person->getFullName())); // may return ''
+				return display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'treeview','img_title'=>$person->getFullName()));
 			}
+		} else {
+			return '';
 		}
-		return $thumbnail;
 	}
 
 	/**
