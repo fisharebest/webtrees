@@ -1096,7 +1096,7 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(../images/uarrow
 #edit_interface-page #changefam span{margin:0;}
 #edit_interface-page #changefam td{padding:5px; white-space:normal;}
 #edit_interface-page #changefam td.child{text-align:center;}
-#save-cancel{position:fixed;bottom: 0;background-color:#fff;border-radius:3px;width:98%;border:solid #999 1px;margin:0;}
+#save-cancel{position:fixed;bottom: 0;border-radius:3px;width:96.5%;border:solid #999 1px;margin:0;}
 #save-cancel input{padding:2px 8px;}
 #save-cancel .save {float:left;margin:5px;}
 #save-cancel .cancel {float:right;margin:5px;}
