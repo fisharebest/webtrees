@@ -265,14 +265,9 @@ class WT_Person extends WT_GedcomRecord {
 				continue;
 			}
 			$level = $match[1];
-			if (preg_match('/\n1 _PRIM ([NY])/', $media->getGedcomRecord(), $pmatch)) {
-				$prim = $pmatch[1];
-			} else {
-				$prim = '';
-			}
-
+			$prim=$media->isPrimary();
 			if ($prim=='N') {
-				continue; // Skip _PRIM N objects
+				continue;
 			}
 			if ($level == 1) {
 				if ($prim == 'Y') {

@@ -1324,19 +1324,19 @@ function print_main_media_row($rtype, $rowm, $pid) {
 			echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a><br>';
 		}
 	}
-	//-- don't show _PRIM option to regular users
-	if (WT_USER_GEDCOM_ADMIN) {
-		$prim=$mediaobject->isPrimary();
-		if ($prim) {
-			echo WT_Gedcom_Tag::getLabelValue('_PRIM', $prim=='Y' ? WT_I18N::translate('yes') : WT_I18N::translate('no'));
-		}
+	
+	switch ($mediaobject->isPrimary()) {
+	case 'Y':
+		echo WT_Gedcom_Tag::getLabelValue('_PRIM', WT_I18N::translate('yes'));
+		break;
+	case 'N':
+		echo WT_Gedcom_Tag::getLabelValue('_PRIM', WT_I18N::translate('no'));
+		break;
 	}
 	print_fact_notes($mediaobject->getGedcomRecord(), 1);
 	print_fact_sources($mediaobject->getGedcomRecord(), 1);
 
 	echo '</td></tr>';
-
-	// echo '<pre>'; print_r($rowm); print_r($mediaobject); echo '</pre>';
 
 	return true;
 }

@@ -2372,7 +2372,9 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 		if ($level<=$glevel) break;
 	}
 
-	insert_missing_subtags($level1type, $add_date);
+	if ($level1type!='_PRIM') {
+		insert_missing_subtags($level1type, $add_date);
+	}
 	return $level1type;
 }
 
@@ -2386,9 +2388,9 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 
 	// handle  MARRiage TYPE
 	$type_val = '';
-	if (substr($level1tag, 0, 5)=="MARR_") {
+	if (substr($level1tag, 0, 5)=='MARR_') {
 		$type_val = substr($level1tag, 5);
-		$level1tag = "MARR";
+		$level1tag = 'MARR';
 	}
 
 	foreach ($level2_tags as $key=>$value) {
@@ -2396,57 +2398,57 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 			continue;
 		}
 		if (in_array($level1tag, $value) && !in_array($key, $tags)) {
-			if ($key=="TYPE") {
-				add_simple_tag("2 TYPE ".$type_val, $level1tag);
+			if ($key=='TYPE') {
+				add_simple_tag('2 TYPE '.$type_val, $level1tag);
 			} elseif ($level1tag=='_TODO' && $key=='DATE') {
-				add_simple_tag("2 ".$key.' '.strtoupper(date('d M Y')), $level1tag);
+				add_simple_tag('2 '.$key.' '.strtoupper(date('d M Y')), $level1tag);
 			} elseif ($level1tag=='_TODO' && $key=='_WT_USER') {
-				add_simple_tag("2 ".$key.' '.WT_USER_NAME, $level1tag);
+				add_simple_tag('2 '.$key.' '.WT_USER_NAME, $level1tag);
 			} else if ($level1tag=='TITL' && strstr($ADVANCED_NAME_FACTS, $key)!==false) {
-				add_simple_tag("2 ".$key, $level1tag);
+				add_simple_tag('2 '.$key, $level1tag);
 			} else if ($level1tag=='NAME' && strstr($ADVANCED_NAME_FACTS, $key)!==false) {
-				add_simple_tag("2 ".$key, $level1tag);
+				add_simple_tag('2 '.$key, $level1tag);
 			} else if ($level1tag!='TITL' && $level1tag!='NAME') {
-				add_simple_tag("2 ".$key, $level1tag);
+				add_simple_tag('2 '.$key, $level1tag);
 			}
 			switch ($key) { // Add level 3/4 tags as appropriate
-				case "PLAC":
+				case 'PLAC':
 					if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
 						foreach ($match[1] as $tag) {
 							add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
 						}
 					}
-					add_simple_tag("3 MAP");
-					add_simple_tag("4 LATI");
-					add_simple_tag("4 LONG");
+					add_simple_tag('3 MAP');
+					add_simple_tag('4 LATI');
+					add_simple_tag('4 LONG');
 					break;
-				case "FILE":
-					add_simple_tag("3 FORM");
+				case 'FILE':
+					add_simple_tag('3 FORM');
 					break;
-				case "EVEN":
-					add_simple_tag("3 DATE");
-					add_simple_tag("3 PLAC");
+				case 'EVEN':
+					add_simple_tag('3 DATE');
+					add_simple_tag('3 PLAC');
 					break;
-				case "STAT":
+				case 'STAT':
 					if (WT_Gedcom_Code_Temp::isTagLDS($level1tag)) {
-						add_simple_tag("3 DATE", '', WT_Gedcom_Tag::getLabel('STAT:DATE'));
+						add_simple_tag('3 DATE', '', WT_Gedcom_Tag::getLabel('STAT:DATE'));
 					}
 					break;
-				case "DATE":
+				case 'DATE':
 					if (in_array($level1tag, $date_and_time))
-						add_simple_tag("3 TIME"); // TIME is NOT a valid 5.5.1 tag
+						add_simple_tag('3 TIME'); // TIME is NOT a valid 5.5.1 tag
 					break;
-				case "HUSB":
-				case "WIFE":
-					add_simple_tag("3 AGE");
+				case 'HUSB':
+				case 'WIFE':
+					add_simple_tag('3 AGE');
 					break;
-				case "FAMC":
+				case 'FAMC':
 					if ($level1tag=='ADOP')
-						add_simple_tag("3 ADOP BOTH");
+						add_simple_tag('3 ADOP BOTH');
 					break;
 			}
-		} elseif ($key=="DATE" && $add_date) {
-			add_simple_tag("2 DATE", $level1tag, WT_Gedcom_Tag::getLabel("{$level1tag}:DATE"));
+		} elseif ($key=='DATE' && $add_date) {
+			add_simple_tag('2 DATE', $level1tag, WT_Gedcom_Tag::getLabel("{$level1tag}:DATE"));
 		}
 	}
 	// Do something (anything!) with unrecognised custom tags
@@ -2460,9 +2462,9 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 							add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
 						}
 					}
-					add_simple_tag("3 MAP");
-					add_simple_tag("4 LATI");
-					add_simple_tag("4 LONG");
+					add_simple_tag('3 MAP');
+					add_simple_tag('4 LATI');
+					add_simple_tag('4 LONG');
 				}
 			}
 }

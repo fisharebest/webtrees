@@ -306,13 +306,13 @@ class WT_Media extends WT_GedcomRecord {
 		return $mediaType;
 	}
 
-	/**
-	 * get the media _PRIM from the gedcom
-	 * @return string
-	 */
+	// Is this object marked as a highlighted image?
 	public function isPrimary() {
-		$prim = get_gedcom_value("_PRIM", 1, $this->getGedcomRecord());
-		return $prim;
+		if (preg_match('/\n\d _PRIM ([YN])/', $this->getGedcomRecord(), $match)) {
+			return $match[1];
+		} else {
+			return '';
+		}
 	}
 
 	/**

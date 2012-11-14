@@ -1589,7 +1589,6 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	if ($gedrec == "") {
 		$gedprim = "_PRIM";
 	} else {
-		//  $gedprim = get_sub_record(1, "_PRIM", $gedrec);
 		$gedprim = get_first_tag(1, "_PRIM", $gedrec);
 		if (empty($gedprim)) {
 			$gedprim = "_PRIM";
