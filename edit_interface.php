@@ -365,7 +365,7 @@ case 'addchild':
 	$family = WT_Family::getInstance($famid);
 
 	if ($family) {
-		$controller->setPageTitle($family->getFullName() . ' - ' . WT_I18N::translate('Add child'));
+		$controller->setPageTitle($family->getFullName() . ' - ' . WT_I18N::translate('Add a new child'));
 	} else {
 		$controller->setPageTitle(WT_I18N::translate('Add an unlinked person'));
 	}
@@ -725,7 +725,7 @@ case 'addnewsource':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addsourceaction':
 	$controller
-		->setPageTitle(WT_I18N::translate('Add source'))
+		->setPageTitle(WT_I18N::translate('Create a new source'))
 		->pageHeader();
 
 	$newgedrec = "0 @XREF@ SOUR";
@@ -911,7 +911,7 @@ case 'addnoteaction_assisted':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addmedia_links':
 	$controller
-		->setPageTitle(WT_I18N::translate('Add media links'))
+		->setPageTitle(WT_I18N::translate('Family navigator'))
 		->pageHeader();
 
 	?>
@@ -1508,7 +1508,7 @@ case 'addchildaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addspouseaction':
 	$controller
-		->setPageTitle(WT_I18N::translate('Add spouse'))
+		->setPageTitle(WT_I18N::translate('Add a new spouse'))
 		->pageHeader();
 
 	splitSOUR(); // separate SOUR record from the rest
@@ -1664,7 +1664,7 @@ case 'linkspouseaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewparentaction':
 	$controller
-		->setPageTitle(WT_I18N::translate('Add parent'))
+		->setPageTitle(WT_I18N::translate('Add a new father'))
 		->pageHeader();
 
 	splitSOUR(); // separate SOUR record from the rest
@@ -1833,7 +1833,7 @@ case 'editname':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addname':
 	$controller
-		->setPageTitle(WT_I18N::translate('Add name'))
+		->setPageTitle(WT_I18N::translate('Add new Name'))
 		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
@@ -1847,7 +1847,7 @@ case 'addname':
 ////////////////////////////////////////////////////////////////////////////////
 case 'paste':
 	$controller
-		->setPageTitle(WT_I18N::translate('Paste'))
+		->setPageTitle(WT_I18N::translate('Add from clipboard'))
 		->pageHeader();
 
 	$gedrec .= "\n".$WT_SESSION->clipboard[$fact]['factrec'];
@@ -2031,7 +2031,7 @@ case 'changefamily':
 	$family = WT_Family::getInstance($famid);
 	
 	$controller
-		->setPageTitle(WT_I18N::translate('Change family members'))
+		->setPageTitle(WT_I18N::translate('Change Family Members'))
 		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
@@ -2191,7 +2191,7 @@ case 'changefamily':
 ////////////////////////////////////////////////////////////////////////////////
 case 'changefamily_update':
 	$controller
-		->setPageTitle(WT_I18N::translate('Change family members'))
+		->setPageTitle(WT_I18N::translate('Change Family Members'))
 		->pageHeader();
 
 	$family = new WT_Family($gedrec);
