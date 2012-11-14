@@ -1906,6 +1906,7 @@ a.icon-udarrow{width:20px;height:20px;background-image:url(images/udarrow2.png);
 #save-cancel .cancel {float:right;margin:5px;}
 html[dir='rtl'] #save-cancel .save {float:right;}
 html[dir='rtl'] #save-cancel .cancel {float:left;}
+#edit_interface-page {margin-bottom:50px;}
 
 /* Addmedia pop-ups*/
 #addmedia-page input[type="text"]{line-height:18px;margin:0 5px;width:180px;}
