@@ -193,6 +193,11 @@ if (!isset($_SERVER['REQUEST_URI']))  {
 	}
 }
 
+// Enable this code when we release webtrees 1.5
+//if (version_compare(PHP_VERSION, '5.3.3', '<')) {
+//	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'site-php-version.php');
+//}
+
 // Common functions
 require WT_ROOT.'includes/functions/functions.php';
 require WT_ROOT.'includes/functions/functions_db.php';
