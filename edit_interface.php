@@ -1860,7 +1860,13 @@ case 'paste':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'reorder_media': // Sort page using Popup
+	$controller
+		->setPageTitle(WT_I18N::translate('Re-order media'))
+		->pageHeader();
+
+	echo '<div id="edit_interface-page">';
 	require_once WT_ROOT.'includes/media_reorder.php';
+	echo '</div><!-- id="edit_interface-page" -->';
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
