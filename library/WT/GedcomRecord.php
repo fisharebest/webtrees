@@ -764,40 +764,25 @@ class WT_GedcomRecord {
 		return $places;
 	}
 
-	/**
-	* Get the first WT_Event for the given Fact type
-	*
-	* @param string $fact
-	* @return WT_Event
-	*/
-	public function getFactByType($factType) {
-		$this->parseFacts();
-		if (empty($this->facts)) {
-			return null;
-		}
-		foreach ($this->facts as $f=>$fact) {
-			if ($fact->getTag()==$factType || $fact->getType()==$factType) {
+	// Get the first WT_Event for the given fact type
+	public function getFactByType($tag) {
+		foreach ($this->getFacts() as $fact) {
+			if ($fact->getTag()==$tag) {
 				return $fact;
 			}
 		}
 		return null;
 	}
 
-	/**
-	* Return an array of events that match the given types
-	*
-	* @param mixed $factTypes  may be a single string or an array of strings
-	* @return WT_Event
-	*/
-	public function getAllFactsByType($factTypes) {
-		$this->parseFacts();
-		if (is_string($factTypes)) {
-			$factTypes = array($factTypes);
+	// Return an array of events that match the given types
+	public function getAllFactsByType($tags) {
+		if (is_string($tags)) {
+			$tags = array($tags);
 		}
 		$facts = array();
-		foreach ($factTypes as $factType) {
-			foreach ($this->facts as $fact) {
-				if ($fact->getTag()==$factType) {
+		foreach ($tags as $tag) {
+			foreach ($this->getFacts() as $fact) {
+				if ($fact->getTag()==$tag) {
 					$facts[]=$fact;
 				}
 			}
