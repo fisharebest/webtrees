@@ -45,9 +45,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		return;
 	}
 
-	if (!is_null($fact->getFamilyId())) {
-		$pid = $fact->getFamilyId();
-	} elseif ($fact->getParentObject()) {
+	if ($fact->getParentObject()) {
 		$pid = $fact->getParentObject()->getXref();
 	} else {
 		$pid = '';
@@ -86,9 +84,9 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	}
 
 	// Who is this fact about?  Need it to translate fact label correctly
-	if (preg_match('/2 ASSO @('.WT_REGEX_XREF.')@/', $fact->getGedcomRecord(), $match)) {
+	if ($fact->getSpouse()) {
 		// Event of close relative
-		$label_person=WT_Person::getInstance($match[1]);
+		$label_person = $fact->getSpouse();
 	} else if (preg_match('/2 _WTS @('.WT_REGEX_XREF.')@/', $fact->getGedcomRecord(), $match)) {
 		// Event of close relative
 		$label_person=WT_Person::getInstance($match[1]);
@@ -189,23 +187,11 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	echo '</td><td class="optionbox ', $styleadd, ' wrap">';
 
 	// Print the spouse and family of this fact/event
-	if (preg_match('/_WTS @(.*)@/', $fact->getGedcomRecord(), $match)) {
-		$spouse=WT_Person::getInstance($match[1]);
-		if ($spouse) {
-			echo ' <a href="', $spouse->getHtmlUrl(), '">';
-			if ($spouse->canDisplayName()) {
-				echo $spouse->getFullName();
-			} else {
-				echo WT_I18N::translate('Private');
-			}
-			echo '</a>';
-		}
-		$family = WT_Family::getInstance($pid);
-		if ($family) {
-			if ($spouse) echo ' - ';
-			echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
-			echo '<br>';
-		}
+	if ($fact->getSpouse()) {
+		echo '<a href="', $fact->getSpouse()->getHtmlUrl(), '">', $fact->getSpouse()->getFullName(), '</a> - ';
+	}
+	if ($fact->getParentObject() instanceof WT_Family) {
+		echo '<a href="', $fact->getParentObject()->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a><br>';
 	}
 
 	// Print the value of this fact/event

@@ -90,7 +90,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			echo '</td></tr>';
 		}
 		foreach ($indifacts as $fact) {
-			if ($fact->getFamilyId()) {
+			if ($fact->getParentObject() instanceof WT_Family) {
 				// Print all family facts
 				print_fact($fact, $controller->record);
 			} else {

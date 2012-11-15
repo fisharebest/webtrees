@@ -58,6 +58,9 @@ class WT_Event {
 	private $is_old = false;
 	private $is_new = false;
 
+	// For family facts on individual pages - who is the significant spouse.
+	private $spouse;
+
 	/**
 	 * Get the value for the first given GEDCOM tag
 	 *
@@ -164,12 +167,12 @@ class WT_Event {
 		return $this->place;
 	}
 
-	function getFamilyId() {
-		return $this->getValue("_WTFS");
+	// For family facts on individual pages, we need to know the spouse
+	public function setSpouse(WT_Person $spouse) {
+		$this->spouse=$spouse;
 	}
-
-	function getSpouseId() {
-		return $this->getValue("_WTS");
+	public function getSpouse() {
+		return $this->spouse;
 	}
 
 	// We can call this function many times, especially when sorting,
@@ -395,7 +398,7 @@ class WT_Event {
 		// Facts from same families stay grouped together
 		// Keep MARR and DIV from the same families from mixing with events from other FAMs
 		// Use the original order in which the facts were added
-		if ($a->getFamilyId() && $b->getFamilyId() && $a->getFamilyId()!=$b->getFamilyId()) {
+		if ($a->parentObject instanceof WT_Family && $b->parentObject instanceof WT_Family && !$a->parentObject->equals($b->parentObject)) {
 			return $a->sortOrder - $b->sortOrder;
 		}
 

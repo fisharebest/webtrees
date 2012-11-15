@@ -1078,12 +1078,9 @@ class WT_Person extends WT_GedcomRecord {
 				$fact = $event->getTag();
 				if ($fact=='DIV') $hasdiv = true;
 				// -- handle special source fact case
-				if (($fact!='SOUR') && ($fact!='NOTE') && ($fact!='CHAN') && ($fact!='_UID') && ($fact!='RIN')) {
-					if ((!in_array($fact, $nonfacts))&&(!in_array($fact, $nonfamfacts))) {
-						$factrec = $event->getGedcomRecord();
-						if (!is_null($spouse)) $factrec.="\n2 _WTS @".$spouse->getXref().'@';
-						$factrec.="\n2 _WTFS @".$family->getXref()."@\n";
-						$event->gedcomRecord = $factrec;
+				if ($fact!='SOUR' && $fact!='NOTE' && $fact!='CHAN' && $fact!='_UID' && $fact!='RIN') {
+					if (!in_array($fact, $nonfacts) && !in_array($fact, $nonfamfacts)) {
+						$event->setSpouse($spouse);
 						if ($fact!='OBJE') {
 							$this->indifacts[]=$event;
 						} else {
@@ -1189,8 +1186,16 @@ class WT_Person extends WT_GedcomRecord {
 									$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_PARE ', $sEvent->getGedcomRecord()); // Full
 									$tmp_rec="1 _".$sEvent->getTag()."_PARE\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 								}
+								// Add links to both spouses
+								foreach ($sfamily->getSpouses() as $spouse) {
+									$tmp_rec .= "\n2 ASSO @" . $spouse->getXref() . '@';
+								}
 								// Create a new event
-								$this->indifacts[]=new WT_Event($tmp_rec."\n2 ASSO @".$parent->getXref()."@\n2 ASSO @".$sEvent->getSpouseId().'@', $sfamily, 0);
+								$tmp = new WT_Event($tmp_rec, $sfamily, 0);
+								if (!$sfamily->equals($family)) {
+									$tmp->setSpouse($parent);
+								}
+								$this->indifacts[]=$tmp;
 							}
 						}
 					}
@@ -1298,21 +1303,25 @@ class WT_Person extends WT_GedcomRecord {
 						if ($sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
 							if ($option=='_GCHI' && $relation=='son') {
 								// Convert the event to a close relatives event.
-								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_GCH1', $sEvent->getGedcomRecord()); // Full
+								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_GCH1', $sEvent->getGedcomRecord());
 								$tmp_rec="1 _".$sEvent->getTag()."_GCH1\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 							} elseif ($option=='_GCHI' && $relation=='dau') {
 								// Convert the event to a close relatives event.
-								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_GCH2', $sEvent->getGedcomRecord()); // Full
+								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_GCH2', $sEvent->getGedcomRecord());
 								$tmp_rec="1 _".$sEvent->getTag()."_GCH2\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 							} else {
 								// Convert the event to a close relatives event.
-								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1'.$option, $sEvent->getGedcomRecord()); // Full
+								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1'.$option, $sEvent->getGedcomRecord());
 								$tmp_rec="1 _".$sEvent->getTag().$option."\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 							}
-							$event=new WT_Event($tmp_rec."\n2 ASSO @".$child->getXref()."@\n2 ASSO @".$sEvent->getSpouseId()."@", $child, 0);
-							if (!in_array($event, $this->indifacts)) {
-								$this->indifacts[]=$event;
+							// Add links to both spouses
+							foreach ($sfamily->getSpouses() as $spouse) {
+								$tmp_rec .= "\n2 ASSO @" . $spouse->getXref() . '@';
 							}
+							// Create a new event
+							$tmp = new WT_Event($tmp_rec, $sfamily, 0);
+							$tmp->setSpouse($child);
+							$this->indifacts[]=$tmp;
 						}
 					}
 				}

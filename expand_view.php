@@ -84,13 +84,12 @@ foreach ($events as $event) {
 			}
 			echo format_fact_date($event, $person, false, false);
 			// Show spouse/family for family events
-			$spouse=WT_Person::getInstance($event->getSpouseId());
+			$spouse=$event->getSpouse();
 			if ($spouse) {
 				echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
 			}
-			$family=WT_Family::getInstance($event->getFamilyId());
-			if ($family) {
-				echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), ' - </a>';
+			if ($event->getParentObject() instanceof WT_Family) {
+				echo '<a href="', $event->getParentObject()->getHtmlUrl(), '">', WT_I18N::translate('View Family'), ' - </a>';
 			}
 			echo ' ',format_fact_place($event, true, true);
 			echo '</div>';

@@ -271,10 +271,9 @@ function build_indiv_map($indifacts, $famids) {
 		if (!empty($placerec)) {
 			$ctla = preg_match("/\d LATI (.*)/", $placerec, $match1);
 			$ctlo = preg_match("/\d LONG (.*)/", $placerec, $match2);
-			$spouserec = get_sub_record(2, '2 _WTS', $factrec);
-			$ctlp = preg_match("/\d _WTS @(.*)@/", $spouserec, $spouseid);
-			if ($ctlp>0) {
-				$useThisItem = WT_Family::getInstance($spouseid[1])->canDisplayDetails();
+			$spouse = $value->getSpouse();
+			if ($spouse) {
+				$useThisItem = $spouse->canDisplayDetails();
 			} else {
 				$useThisItem = true;
 			}
@@ -297,7 +296,7 @@ function build_indiv_map($indifacts, $famids) {
 					$markers[$i]['date'] = $match[1];
 				}
 				if ($ctlp>0) {
-					$markers[$i]['name']=$spouseid[1];
+					$markers[$i]['name']=$spouse->getXref();
 				}
 			} else {
 				if ($useThisItem==true && $addrFound==false) {
@@ -339,7 +338,7 @@ function build_indiv_map($indifacts, $famids) {
 							$markers[$i]['date'] = $match[1];
 						}
 						if ($ctlp>0) {
-							$markers[$i]['name']=$spouseid[1];
+							$markers[$i]['name']=$spouse->getXref();
 						}
 					}
 				}
