@@ -56,8 +56,8 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	// NOTE: Start div out-rand()
 	if (!$person) {
 		echo "<div id=\"out-", rand(), "\" class=\"person_boxNN\" style=\"width: ", $bwidth, "px; height: ", $bheight, "px; overflow: hidden;\">";
-		echo "<br>";
-		echo "</div>";
+		echo '<br>';
+		echo '</div>';
 		return false;
 	}
 	$pid=$person->getXref();
@@ -68,20 +68,20 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$tmp=array('M'=>'', 'F'=>'F', 'U'=>'NN');
 	$isF=$tmp[$person->getSex()];
 
-	$personlinks = "";
-	$icons = "";
-	$classfacts = "";
-	$genderImage = "";
-	$BirthDeath = "";
-	$birthplace = "";
-	$outBoxAdd = "";
-	$showid = "";
-	$iconsStyleAdd = "float: right; ";
-	if ($TEXT_DIRECTION=="rtl") $iconsStyleAdd="float: left; ";
+	$personlinks = '';
+	$icons = '';
+	$classfacts = '';
+	$genderImage = '';
+	$BirthDeath = '';
+	$birthplace = '';
+	$outBoxAdd = '';
+	$showid = '';
+	$iconsStyleAdd = 'float:right;';
+	if ($TEXT_DIRECTION=='rtl') $iconsStyleAdd='float:left;';
 
 	$disp=$person->canDisplayDetails();
 	$uniqueID = (int)(microtime() * 1000000);
-	$boxID = $pid.".".$personcount.".".$count.".".$uniqueID;
+	$boxID = $pid.'.'.$personcount.'.'.$count.'.'.$uniqueID;
 	$mouseAction4 = " onclick=\"expandbox('".$boxID."', $style); return false;\"";
 	if ($person->canDisplayName()) {
 		if (empty($SEARCH_SPIDER)) {

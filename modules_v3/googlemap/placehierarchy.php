@@ -184,7 +184,7 @@ function create_map($placelevels) {
 	}
 	echo '</td></tr></table>';
 	echo '</td>';
-	echo '<td style="margin-left:15px; float:right; ">';
+	echo '<td style="margin-left:15px; float:right;">';
 
 	if ($STREETVIEW) {
 		$controller->addInlineJavascript('
