@@ -36,7 +36,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Media" module */ WT_I18N::translate('A tab showing the media objects linked to an individual.');
+		return /* I18N: Description of the “Media” module */ WT_I18N::translate('A tab showing the media objects linked to an individual.');
 	}
 
 	// Implement WT_Module_Tab

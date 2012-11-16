@@ -36,7 +36,7 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Home page" module */ WT_I18N::translate('A greeting message for site visitors.');
+		return /* I18N: Description of the “Home page” module */ WT_I18N::translate('A greeting message for site visitors.');
 	}
 
 	// Implement class WT_Module_Block

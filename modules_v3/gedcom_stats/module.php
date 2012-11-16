@@ -36,7 +36,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of "Statistics" module */ WT_I18N::translate('The size of the family tree, earliest and latest events, common names, etc.');
+		return /* I18N: Description of “Statistics” module */ WT_I18N::translate('The size of the family tree, earliest and latest events, common names, etc.');
 	}
 
 	// Implement class WT_Module_Block

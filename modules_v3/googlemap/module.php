@@ -52,7 +52,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Google Maps™" module */ WT_I18N::translate('Show the location of places and events using the Google Maps™ mapping service.');
+		return /* I18N: Description of the “Google Maps™” module */ WT_I18N::translate('Show the location of places and events using the Google Maps™ mapping service.');
 	}
 
 	// Extend WT_Module
@@ -687,7 +687,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		// End of internal configuration variables
 		$controller
-			->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Pedigree map of %s', $controller->getPersonName()))
+			->setPageTitle(/* I18N: %s is an individual’s name */ WT_I18N::translate('Pedigree map of %s', $controller->getPersonName()))
 			->pageHeader()
 			->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 			->addInLineJavascript('var pastefield; function paste_id(value) {pastefield.value=value;}');

@@ -94,7 +94,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 
 		if ($this->root && $this->root->canDisplayName()) {
 			$this->setPageTitle(
-				/* I18N: %s is a person's name */
+				/* I18N: %s is an individual’s name */
 				WT_I18N::translate('Descendants of %s', $this->root->getFullName())
 			);
 		} else {

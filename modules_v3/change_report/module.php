@@ -38,7 +38,7 @@ class change_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the "Changes" module */ WT_I18N::translate('A report of recent and pending changes.');
+		return /* I18N: Description of the “Changes” module */ WT_I18N::translate('A report of recent and pending changes.');
 	}
 
 	// Extend class WT_Module

@@ -76,7 +76,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 
 		if ($this->root && $this->root->canDisplayName()) {
 			$this->setPageTitle(
-				/* I18N: %s is a person's name */
+				/* I18N: %s is an individual’s name */
 				WT_I18N::translate('Ancestors of %s', $this->root->getFullName())
 			);
 		} else {

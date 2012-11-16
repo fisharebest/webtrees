@@ -176,7 +176,7 @@ foreach ($all_links as $xref1=>$links) {
 			// Target XREF does exist - but is invalid
 			echo error(
 				link_message($type1, $xref1, $type2, $xref2).' '.
-				/* I18N: %1$s is an internal ID numbers such as "R123".  %2$s and %3$s are record types, such as INDI or SOUR */ WT_I18N::translate('%1$s is a %2$s but a %3$s is expected.', format_link($xref2), format_type($type3), format_type($type2))
+				/* I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR */ WT_I18N::translate('%1$s is a %2$s but a %3$s is expected.', format_link($xref2), format_type($type3), format_type($type2))
 			);
 		} elseif (
 			$type2=='FAMC' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='CHIL') ||
@@ -187,7 +187,7 @@ foreach ($all_links as $xref1=>$links) {
 		) {
 			echo error(
 			link_message($type1, $xref1, $type2, $xref2).' '.
-				/* I18N: %1$s and %2$s are internal ID numbers such as "R123" */ WT_I18N::translate('%1$s does not have a link back to %2$s.', format_link($xref2), format_link($xref1))
+				/* I18N: %1$s and %2$s are internal ID numbers such as R123 */ WT_I18N::translate('%1$s does not have a link back to %2$s.', format_link($xref2), format_link($xref1))
 			);
 		}
 	}
@@ -195,7 +195,7 @@ foreach ($all_links as $xref1=>$links) {
 
 function link_message($type1, $xref1, $type2, $xref2) {
 	return
-		/* I18N: The placeholders are GEDCOM identifiers and tags.  e.g. "INDI I123 contains a FAMC link to F234 */ WT_I18N::translate(
+		/* I18N: The placeholders are GEDCOM identifiers and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */ WT_I18N::translate(
 			'%1$s %2$s has a %3$s link to %4$s.',
 			format_type($type1),
 			format_link($xref1),

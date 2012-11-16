@@ -36,7 +36,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Pending changes" module */ WT_I18N::translate('A list of changes that need moderator approval, and email notifications.');
+		return /* I18N: Description of the “Pending changes” module */ WT_I18N::translate('A list of changes that need moderator approval, and email notifications.');
 	}
 
 	// Implement class WT_Module_Block

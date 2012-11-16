@@ -36,7 +36,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Login" module */ WT_I18N::translate('An alternative way to login and logout.');
+		return /* I18N: Description of the “Login” module */ WT_I18N::translate('An alternative way to login and logout.');
 	}
 
 	// Implement class WT_Module_Block

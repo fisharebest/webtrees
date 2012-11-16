@@ -36,7 +36,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Sources" module */ WT_I18N::translate('A tab showing the sources linked to an individual.');
+		return /* I18N: Description of the “Sources” module */ WT_I18N::translate('A tab showing the sources linked to an individual.');
 	}
 
 	// Implement WT_Module_Tab

@@ -36,7 +36,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Descendants" module */ WT_I18N::translate('A sidebar showing the descendants of an individual.');
+		return /* I18N: Description of the “Descendants” module */ WT_I18N::translate('A sidebar showing the descendants of an individual.');
 	}
 
 	// Implement WT_Module

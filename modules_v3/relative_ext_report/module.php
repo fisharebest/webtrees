@@ -38,7 +38,7 @@ class relative_ext_report_WT_Module extends WT_Module implements WT_Module_Repor
 	// Extend class WT_Module
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the "Related individuals" module */ WT_I18N::translate('A report of the individuals that are closely related to an individual.');
+		return /* I18N: Description of the “Related individuals” module */ WT_I18N::translate('A report of the individuals that are closely related to an individual.');
 	}
 
 	// Extend class WT_Module

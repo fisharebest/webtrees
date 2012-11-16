@@ -36,7 +36,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of "Research tasks" module */ WT_I18N::translate('A list of tasks and activities that are linked to the family tree.');
+		return /* I18N: Description of “Research tasks” module */ WT_I18N::translate('A list of tasks and activities that are linked to the family tree.');
 	}
 
 	// Implement class WT_Module_Block

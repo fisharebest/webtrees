@@ -36,7 +36,7 @@ class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Edit" module */ WT_I18N::translate('An edit menu for individuals, families, sources, etc.');
+		return /* I18N: Description of the “Edit” module */ WT_I18N::translate('An edit menu for individuals, families, sources, etc.');
 	}
 
 	// Implement WT_Module_Menu

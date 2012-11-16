@@ -38,7 +38,7 @@ class descendancy_report_WT_Module extends WT_Module implements WT_Module_Report
 	// Extend class WT_Module
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the "Descendants" module */ WT_I18N::translate('A report of an individual’s descendants, in a narrative style.');
+		return /* I18N: Description of the “Descendants” module */ WT_I18N::translate('A report of an individual’s descendants, in a narrative style.');
 	}
 
 	// Extend class WT_Module

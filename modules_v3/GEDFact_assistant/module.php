@@ -36,7 +36,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Census assistant" module */ WT_I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
+		return /* I18N: Description of the “Census assistant” module */ WT_I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
 	}
 
 	// Extend WT_Module

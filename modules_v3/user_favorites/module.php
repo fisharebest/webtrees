@@ -34,7 +34,7 @@ require_once WT_ROOT.WT_MODULES_DIR.'gedcom_favorites/module.php';
 class user_favorites_WT_Module extends gedcom_favorites_WT_Module {
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Favorites" module */ WT_I18N::translate('Display and manage a user’s favorite pages.');
+		return /* I18N: Description of the “Favorites” module */ WT_I18N::translate('Display and manage a user’s favorite pages.');
 	}
 
 	// Implement class WT_Module_Block
@@ -77,7 +77,7 @@ class user_favorites_WT_Module extends gedcom_favorites_WT_Module {
 					'note'     =>null,
 					'title'    =>null,
 				));
-				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of a person, source or other record */ WT_I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
+				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
 			}
 			break;
 		}

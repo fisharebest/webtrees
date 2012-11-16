@@ -458,13 +458,13 @@ class WT_Person extends WT_GedcomRecord {
 		return $tmp;
 	}
 
-	// Get the range of years in which a person lived.  e.g. "1870–", "1870–1920", "–1920".
+	// Get the range of years in which a person lived.  e.g. “1870–”, “1870–1920”, “–1920”.
 	// Provide the full date using a tooltip.
-	// For consistent layout in charts, etc., show just a "–" when no dates are known.
+	// For consistent layout in charts, etc., show just a “–” when no dates are known.
 	// Note that this is a (non-breaking) en-dash, and not a hyphen.
 	public function getLifeSpan() {
 		return
-			/* I18N: A range of years, e.g. "1870–", "1870–1920", "–1920" */ WT_I18N::translate(
+			/* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */ WT_I18N::translate(
 				'%1$s–%2$s',
 				'<span title="'.strip_tags($this->getBirthDate()->Display()).'">'.$this->getBirthDate()->MinDate()->Format('%Y').'</span>',
 				'<span title="'.strip_tags($this->getDeathDate()->Display()).'">'.$this->getDeathDate()->MinDate()->Format('%Y').'</span>'
@@ -1597,7 +1597,7 @@ class WT_Person extends WT_GedcomRecord {
 			// want the default name, not the one selected for display on the indilist.
 			$primary=$husb->getPrimaryName();
 			$husb->setPrimaryName(null);
-			$txt .= /* I18N: %s is the name of a person's father */ WT_I18N::translate('Father: %s', $husb->getFullName()).'<br>';
+			$txt .= /* I18N: %s is the name of an individual’s father */ WT_I18N::translate('Father: %s', $husb->getFullName()).'<br>';
 			$husb->setPrimaryName($primary);
 		}
 		$wife = $fam->getWife();
@@ -1606,7 +1606,7 @@ class WT_Person extends WT_GedcomRecord {
 			// want the default name, not the one selected for display on the indilist.
 			$primary=$wife->getPrimaryName();
 			$wife->setPrimaryName(null);
-			$txt .= /* I18N: %s is the name of a person's mother */ WT_I18N::translate('Mother: %s', $wife->getFullName());
+			$txt .= /* I18N: %s is the name of an individual’s mother */ WT_I18N::translate('Mother: %s', $wife->getFullName());
 			$wife->setPrimaryName($primary);
 		}
 		$txt .= '</div>';

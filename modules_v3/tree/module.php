@@ -37,7 +37,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Interactive tree" module */ WT_I18N::translate('An interactive tree, showing all the ancestors and descendants of a person.');
+		return /* I18N: Description of the “Interactive tree” module */ WT_I18N::translate('An interactive tree, showing all the ancestors and descendants of a person.');
 	}
 	
 	// Implement WT_Module_Tab

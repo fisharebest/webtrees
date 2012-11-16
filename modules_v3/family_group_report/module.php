@@ -38,7 +38,7 @@ class family_group_report_WT_Module extends WT_Module implements WT_Module_Repor
 	// Extend class WT_Module
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the "Family" module */ WT_I18N::translate('A report of family members and their details.');
+		return /* I18N: Description of the “Family” module */ WT_I18N::translate('A report of family members and their details.');
 	}
 
 	// Extend class WT_Module

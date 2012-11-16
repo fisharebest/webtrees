@@ -36,7 +36,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Album" module */ WT_I18N::translate('An alternative to the “media” tab, and an enhanced image viewer.');
+		return /* I18N: Description of the “Album” module */ WT_I18N::translate('An alternative to the “media” tab, and an enhanced image viewer.');
 	}
 
 	// Extend WT_Module

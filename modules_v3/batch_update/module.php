@@ -33,7 +33,7 @@ class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Batch update" module */ WT_I18N::translate('Apply automatic corrections to your genealogy data.');
+		return /* I18N: Description of the “Batch update” module */ WT_I18N::translate('Apply automatic corrections to your genealogy data.');
 	}
 
 	// Extend WT_Module

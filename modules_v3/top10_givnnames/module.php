@@ -36,7 +36,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Top given names" module */ WT_I18N::translate('A list of the most popular given names.');
+		return /* I18N: Description of the “Top given names” module */ WT_I18N::translate('A list of the most popular given names.');
 	}
 
 	// Implement class WT_Module_Block

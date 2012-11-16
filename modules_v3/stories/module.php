@@ -36,7 +36,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Stories" module */ WT_I18N::translate('Add narrative stories to individuals in the family tree.');
+		return /* I18N: Description of the “Stories” module */ WT_I18N::translate('Add narrative stories to individuals in the family tree.');
 	}
 
 	// Extend WT_Module

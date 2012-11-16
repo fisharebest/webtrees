@@ -36,7 +36,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Top surnames" module */ WT_I18N::translate('A list of the most popular surnames.');
+		return /* I18N: Description of the “Top surnames” module */ WT_I18N::translate('A list of the most popular surnames.');
 	}
 
 	// Implement class WT_Module_Block

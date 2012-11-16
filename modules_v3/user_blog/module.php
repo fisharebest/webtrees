@@ -44,7 +44,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Journal" module */ WT_I18N::translate('A private area to record notes or keep a journal.');
+		return /* I18N: Description of the “Journal” module */ WT_I18N::translate('A private area to record notes or keep a journal.');
 	}
 
 	// Implement class WT_Module_Block

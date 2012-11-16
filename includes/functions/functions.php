@@ -1178,7 +1178,7 @@ function cousin_name($n, $sex) {
 	switch ($sex) {
 	case 'M':
 		switch ($n) {
-		case  1: // I18N: Note that for Italian and Polish, "N'th cousins" are different from English "N'th cousins", and the software has already generated the correct "N" for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
+		case  1: // I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 		         return WT_I18N::translate_c('MALE', 'first cousin');
 		case  2: return WT_I18N::translate_c('MALE', 'second cousin');
 		case  3: return WT_I18N::translate_c('MALE', 'third cousin');
@@ -2210,34 +2210,34 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				return cousin_name($cousin, $sex2);
 			case 1:
 				if ($up>$down) {
-					/* I18N: %s="fifth cousin", etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
+					/* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
 					return WT_I18N::translate('%s once removed ascending', cousin_name($cousin, $sex2));
 				} else {
-					/* I18N: %s="fifth cousin", etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
+					/* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
 					return WT_I18N::translate('%s once removed descending', cousin_name($cousin, $sex2));
 				}
 			case 2:
 				if ($up>$down) {
-					/* I18N: %s="fifth cousin", etc. */
+					/* I18N: %s=“fifth cousin”, etc. */
 					return WT_I18N::translate('%s twice removed ascending', cousin_name($cousin, $sex2));
 				} else {
-					/* I18N: %s="fifth cousin", etc. */
+					/* I18N: %s=“fifth cousin”, etc. */
 					return WT_I18N::translate('%s twice removed descending', cousin_name($cousin, $sex2));
 				}
 			case 3:
 				if ($up>$down) {
-					/* I18N: %s="fifth cousin", etc. */
+					/* I18N: %s=“fifth cousin”, etc. */
 					return WT_I18N::translate('%s thrice removed ascending', cousin_name($cousin, $sex2));
 				} else {
-					/* I18N: %s="fifth cousin", etc. */
+					/* I18N: %s=“fifth cousin”, etc. */
 					return WT_I18N::translate('%s thrice removed descending', cousin_name($cousin, $sex2));
 				}
 			default:
 				if ($up>$down) {
-					/* I18N: %1$s="fifth cousin", etc., %2$d>=4 */
+					/* I18N: %1$s=“fifth cousin”, etc., %2$d>=4 */
 					return WT_I18N::translate('%1$s %2$d times removed ascending', cousin_name($cousin, $sex2), $removed);
 				} else {
-					/* I18N: %1$s="fifth cousin", etc., %2$d>=4 */
+					/* I18N: %1$s=“fifth cousin”, etc., %2$d>=4 */
 					return WT_I18N::translate('%1$s %2$d times removed descending', cousin_name($cousin, $sex2), $removed);
 				}
 			}
@@ -2252,7 +2252,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	$path2=substr($path, 3);
 	while ($path2) {
 		$tmp=WT_I18N::translate(
-			// I18N: A complex relationship, such as "third-cousin's great-uncle"
+			// I18N: A complex relationship, such as “third-cousin’s great-uncle”
 			'%1$s\'s %2$s',
 			get_relationship_name_from_path($path1, null, null), // TODO: need the actual people
 			get_relationship_name_from_path($path2, null, null)

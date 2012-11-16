@@ -36,7 +36,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Slide show" module */ WT_I18N::translate('Random images from the current family tree.');
+		return /* I18N: Description of the “Slide show” module */ WT_I18N::translate('Random images from the current family tree.');
 	}
 
 	// Implement class WT_Module_Block

@@ -36,7 +36,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Notes" module */ WT_I18N::translate('A tab showing the notes attached to an individual.');
+		return /* I18N: Description of the “Notes” module */ WT_I18N::translate('A tab showing the notes attached to an individual.');
 	}
 
 	// Implement WT_Module_Tab

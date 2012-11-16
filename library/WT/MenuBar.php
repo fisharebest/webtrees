@@ -418,7 +418,7 @@ class WT_MenuBar {
 		$submenu = new WT_Menu(WT_I18N::translate('General search'), 'search.php?ged='.WT_GEDURL, 'menu-search-general');
 		$menu->addSubmenu($submenu);
 		//-- search_soundex sub menu
-		$submenu = new WT_Menu(/* I18N: search using "sounds like", rather than exact spelling */ WT_I18N::translate('Phonetic search'), 'search.php?ged='.WT_GEDURL.'&amp;action=soundex', 'menu-search-soundex');
+		$submenu = new WT_Menu(/* I18N: search using “sounds like”, rather than exact spelling */ WT_I18N::translate('Phonetic search'), 'search.php?ged='.WT_GEDURL.'&amp;action=soundex', 'menu-search-soundex');
 		$menu->addSubmenu($submenu);
 		//-- advanced search
 		$submenu = new WT_Menu(WT_I18N::translate('Advanced search'), 'search_advanced.php?ged='.WT_GEDURL, 'menu-search-advanced');

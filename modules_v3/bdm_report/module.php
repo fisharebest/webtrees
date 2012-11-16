@@ -32,13 +32,13 @@ class bdm_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Name of a module/report. "Vital records" are life events - birth/marriage/death */ WT_I18N::translate('Vital records');
+		return /* I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death */ WT_I18N::translate('Vital records');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the "Vital records" module. "Vital records" are life events - birth/marriage/death */ WT_I18N::translate('A report of vital records for a given date or place.');
+		return /* I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death */ WT_I18N::translate('A report of vital records for a given date or place.');
 	}
 
 	// Extend class WT_Module

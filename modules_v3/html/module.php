@@ -36,7 +36,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "HTML" module */ WT_I18N::translate('Add your own text and graphics.');
+		return /* I18N: Description of the “HTML” module */ WT_I18N::translate('Add your own text and graphics.');
 	}
 
 	// Implement class WT_Module_Block

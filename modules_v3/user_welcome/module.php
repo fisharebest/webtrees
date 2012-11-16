@@ -36,14 +36,14 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "My page" module */ WT_I18N::translate('A greeting message and useful links for a user.');
+		return /* I18N: Description of the “My page” module */ WT_I18N::translate('A greeting message and useful links for a user.');
 	}
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		$title = '<span dir="auto">'./* I18N: A greeting; %s is the user's name */ WT_I18N::translate('Welcome %s', getUserFullName(WT_USER_ID)).'</span>';
+		$title = '<span dir="auto">'./* I18N: A greeting; %s is the user’s name */ WT_I18N::translate('Welcome %s', getUserFullName(WT_USER_ID)).'</span>';
 		$content = '<table><tr>';
 		if (get_user_setting(WT_USER_ID, 'editaccount')) {
 			$content .= '<td><a href="edituser.php"><i class="icon-mypage"></i><br>'.WT_I18N::translate('My account').'</a></td>';

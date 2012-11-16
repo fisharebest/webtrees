@@ -38,7 +38,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Favorites" module */ WT_I18N::translate('Display and manage a family tree’s favorite pages.');
+		return /* I18N: Description of the “Favorites” module */ WT_I18N::translate('Display and manage a family tree’s favorite pages.');
 	}
 
 	// Implement class WT_Module_Block

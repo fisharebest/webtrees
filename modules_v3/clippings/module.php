@@ -36,7 +36,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Clippings cart" module */ WT_I18N::translate('Select records from your family tree and save them as a GEDCOM file.');
+		return /* I18N: Description of the “Clippings cart” module */ WT_I18N::translate('Select records from your family tree and save them as a GEDCOM file.');
 	}
 
 	// Extend class WT_Module

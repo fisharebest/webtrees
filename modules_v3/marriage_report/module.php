@@ -38,7 +38,7 @@ class marriage_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the "Marriages" module */ WT_I18N::translate('A report of individuals who were married in a given time or place.');
+		return /* I18N: Description of the “Marriages” module */ WT_I18N::translate('A report of individuals who were married in a given time or place.');
 	}
 
 	// Extend class WT_Module

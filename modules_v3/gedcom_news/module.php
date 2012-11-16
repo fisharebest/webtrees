@@ -44,7 +44,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "GEDCOM News" module */ WT_I18N::translate('Family news and site announcements.');
+		return /* I18N: Description of the “GEDCOM News” module */ WT_I18N::translate('Family news and site announcements.');
 	}
 
 	// Implement class WT_Module_Block

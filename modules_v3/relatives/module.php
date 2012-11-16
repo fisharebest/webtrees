@@ -40,7 +40,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Families" module */ WT_I18N::translate('A tab showing the close relatives of an individual.');
+		return /* I18N: Description of the “Families” module */ WT_I18N::translate('A tab showing the close relatives of an individual.');
 	}
 
 	// Implement WT_Module_Tab

@@ -38,7 +38,7 @@ class missing_facts_report_WT_Module extends WT_Module implements WT_Module_Repo
 	// Extend class WT_Module
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the "Missing data" */ WT_I18N::translate('A report of the information that is missing for an individual and their relatives.');
+		return /* I18N: Description of the “Missing data” */ WT_I18N::translate('A report of the information that is missing for an individual and their relatives.');
 	}
 
 	// Extend class WT_Module

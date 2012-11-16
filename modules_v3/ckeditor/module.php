@@ -36,7 +36,7 @@ class ckeditor_WT_Module extends WT_Module {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "CKEditor" module.  WYSIWYG = "what you see is what you get" */ WT_I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
+		return /* I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get” */ WT_I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
 	}
 
 	// Convert <textarea class="html-edit"> fields to CKEditor fields

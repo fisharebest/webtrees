@@ -36,7 +36,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Families" module */ WT_I18N::translate('A sidebar showing an alphabetic list of all the families in the family tree.');
+		return /* I18N: Description of the “Families” module */ WT_I18N::translate('A sidebar showing an alphabetic list of all the families in the family tree.');
 	}
 
 	// Implement WT_Module

@@ -49,7 +49,7 @@ case 'accept-changes':
 	require WT_ROOT.'includes/functions/functions_edit.php';
 	$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
 	if ($record && WT_USER_CAN_ACCEPT && $record->canDisplayDetails() && $record->canEdit()) {
-		Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of a person, source or other record */ WT_I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
+		Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
 		accept_all_changes($record->getXref(), $record->getGedId());
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');
@@ -105,7 +105,7 @@ case 'delete-source':
 			$gedrec=preg_replace('/\n5 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[6-9].*)*/', '', $gedrec);
 			$tmp=WT_GedcomRecord::getInstance($xref);
 			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedrec) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) /', $gedrec, $dummy)<2) {
-				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of a family, e.g. Husband name + Wife name" */ WT_I18N::translate('The family “%s” has been deleted, as it only has one member.', $tmp->getFullName()));
+				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ WT_I18N::translate('The family “%s” has been deleted, as it only has one member.', $tmp->getFullName()));
 				delete_gedrec($xref, $record->getGedId());
 			} else {
 				// Just remove the links
@@ -125,7 +125,7 @@ case 'reject-changes':
 	require WT_ROOT.'includes/functions/functions_edit.php';
 	$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
 	if ($record && WT_USER_CAN_ACCEPT && $record->canDisplayDetails() && $record->canEdit()) {
-		Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of a person, source or other record */ WT_I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
+		Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
 		reject_all_changes($record->getXref(), $record->getGedId());
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');

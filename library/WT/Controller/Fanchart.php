@@ -48,7 +48,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 		if ($this->root && $this->root->canDisplayName()) {
 			$this->setPageTitle(
-				/* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is a person's name */
+				/* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name */
 				WT_I18N::translate('Fan chart of %s', $this->root->getFullName())
 			);
 		} else {

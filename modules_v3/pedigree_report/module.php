@@ -38,7 +38,7 @@ class pedigree_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the "Pedigree" module */ WT_I18N::translate('A report of an individual’s ancestors, formatted as a tree.');
+		return /* I18N: Description of the “Pedigree” module */ WT_I18N::translate('A report of an individual’s ancestors, formatted as a tree.');
 	}
 
 	// Extend class WT_Module

@@ -254,7 +254,7 @@ class WT_I18N {
 	// de: 12,3%
 	static public function percentage($n, $precision=0) {
 		return
-			/* I18N: This is a percentage, such as "32.5%". "%s" is the number, "%%" is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol. */
+			/* I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol. */
 			self::translate('%s%%', self::number($n*100.0, $precision));
 	}
 
@@ -321,13 +321,13 @@ class WT_I18N {
 	static public function gedcom_age($string) {
 		switch ($string) {
 		case 'STILLBORN':
-			// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (stillborn)
+			// I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
 			return self::translate('(stillborn)');
 		case 'INFANT':
-			// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (in infancy)
+			// I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
 			return self::translate('(in infancy)');
 		case 'CHILD':
-			// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (in childhood)
+			// I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
 			return self::translate('(in childhood)');
 		}
 		$age=array();
@@ -356,13 +356,13 @@ class WT_I18N {
 		}
 		if ($age) {
 			if (!substr_compare($string, '<', 0, 1)) {
-				// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+				// I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
 				return self::translate('(aged less than %s)', $age);
 			} elseif (!substr_compare($string, '>', 0, 1)) {
-				// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+				// I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
 				return self::translate('(aged more than %s)', $age);
 			} else {
-				// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+				// I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
 				return self::translate('(aged %s)', $age);
 			}
 		} else {
@@ -413,7 +413,7 @@ class WT_I18N {
 		foreach ($lengths as $length) {
 			$length_menu.=
 				'<option value="'.$length.'">'.
-				($length==-1 ? /* I18N: listbox option, e.g. "10,25,50,100,all" */ self::translate('All') : self::number($length)).
+				($length==-1 ? /* I18N: listbox option, e.g. “10,25,50,100,all” */ self::translate('All') : self::number($length)).
 				'</option>';
 		}
 		$length_menu='<select>'.$length_menu.'</select>';

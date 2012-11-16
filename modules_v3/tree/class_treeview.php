@@ -344,13 +344,13 @@ class TreeView {
 			if ($f) {
 				switch ($p->getSex()) {
 				case 'M':
-					$title=' title="'.strip_tags(/* I18N: e.g. "Son of [father name & mother name]" */ WT_I18N::translate('Son of %s', $f->getFullName())).'"';
+					$title=' title="'.strip_tags(/* I18N: e.g. “Son of [father name & mother name]” */ WT_I18N::translate('Son of %s', $f->getFullName())).'"';
 					break;
 				case 'F':
-					$title=' title="'.strip_tags(/* I18N: e.g. "Daughter of [father name & mother name]" */ WT_I18N::translate('Daughter of %s', $f->getFullName())).'"';
+					$title=' title="'.strip_tags(/* I18N: e.g. “Daughter of [father name & mother name]” */ WT_I18N::translate('Daughter of %s', $f->getFullName())).'"';
 					break;
 				case 'U':
-					$title=' title="'.strip_tags(/* I18N: e.g. "Child of [father name & mother name]" */ WT_I18N::translate('Child of %s', $f->getFullName())).'"';
+					$title=' title="'.strip_tags(/* I18N: e.g. “Child of [father name & mother name]” */ WT_I18N::translate('Child of %s', $f->getFullName())).'"';
 					break;
 				}
 			} else {

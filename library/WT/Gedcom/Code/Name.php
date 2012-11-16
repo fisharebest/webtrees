@@ -53,37 +53,37 @@ class WT_Gedcom_Code_Name {
 		case 'aka':
 			switch ($sex) {
 			case 'M':
-				/* I18N: The name by which someone is also known.  e.g. a professional name or a stage name */
+				/* I18N: The name by which an individual is also known.  e.g. a professional name or a stage name */
 				return WT_I18N::translate_c('MALE', 'also known as');
 			case 'F':
-				/* I18N: The name by which someone is also known.  e.g. a professional name or a stage name */
+				/* I18N: The name by which an individual is also known.  e.g. a professional name or a stage name */
 				return WT_I18N::translate_c('FEMALE', 'also known as');
 			default:
-				/* I18N: The name by which someone is also known.  e.g. a professional name or a stage name */
+				/* I18N: The name by which an individual is also known.  e.g. a professional name or a stage name */
 				return WT_I18N::translate('also known as');
 			}
 		case 'birth':
 			switch ($sex) {
 			case 'M':
-				/* I18N: The name given to someone at their birth */
+				/* I18N: The name given to an individual at their birth */
 				return WT_I18N::translate_c('MALE', 'birth name');
 			case 'F':
-				/* I18N: The name given to someone at their birth */
+				/* I18N: The name given to an individual at their birth */
 				return WT_I18N::translate_c('FEMALE', 'birth name');
 			default:
-				/* I18N: The name given to someone at their birth */
+				/* I18N: The name given to an individual at their birth */
 				return WT_I18N::translate('birth name');
 			}
 		case 'change':
 			switch ($sex) {
 			case 'M':
-				/* I18N: A name chosen by a person, to replace their existing name (whether legal or otherwise) */
+				/* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
 				return WT_I18N::translate_c('MALE', 'change of name');
 			case 'F':
-				/* I18N: A name chosen by a person, to replace their existing name (whether legal or otherwise) */
+				/* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
 				return WT_I18N::translate_c('FEMALE', 'change of name');
 			default:
-				/* I18N: A name chosen by a person, to replace their existing name (whether legal or otherwise) */
+				/* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
 				return WT_I18N::translate('change of name');
 			}
 		case 'immigrant':
@@ -99,20 +99,20 @@ class WT_Gedcom_Code_Name {
 				return WT_I18N::translate('immigration name');
 			}
 		case 'maiden':
-			// Only women have "maiden" names!
+			// Only women have “maiden” names!
 			return
-				/* I18N: A woman's name, before she marries (in cultures where women take their new husband's name on marriage) */
+				/* I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage) */
 				WT_I18N::translate('maiden name');
 		case 'married':
 			switch ($sex) {
 			case 'M':
-				/* I18N: A name taken on marriage - usually the wife takes the husband's surname */
+				/* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
 				return WT_I18N::translate_c('MALE', 'married name');
 			case 'F':
-				/* I18N: A name taken on marriage - usually the wife takes the husband's surname */
+				/* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
 				return WT_I18N::translate_c('FEMALE', 'married name');
 			default:
-				/* I18N: A name taken on marriage - usually the wife takes the husband's surname */
+				/* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
 				return WT_I18N::translate('married name');
 			}
 		case 'religious':

@@ -102,7 +102,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		$this->dgenerations = $this->max_descendency_generations($this->pid, 0);
 		if ($this->dgenerations<1) $this->dgenerations=1;
 
-		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Hourglass chart of %s', $this->name));
+		$this->setPageTitle(/* I18N: %s is an individual’s name */ WT_I18N::translate('Hourglass chart of %s', $this->name));
 	}
 
 	/**

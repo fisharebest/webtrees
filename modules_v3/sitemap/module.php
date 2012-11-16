@@ -39,7 +39,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Sitemaps" module */ WT_I18N::translate('Generate sitemap files for search engines.');
+		return /* I18N: Description of the “Sitemaps” module */ WT_I18N::translate('Generate sitemap files for search engines.');
 	}
 
 	// Extend WT_Module

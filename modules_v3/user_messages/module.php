@@ -36,7 +36,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Messages" module */ WT_I18N::translate('Communicate directly with other users, using private messages.');
+		return /* I18N: Description of the “Messages” module */ WT_I18N::translate('Communicate directly with other users, using private messages.');
 	}
 
 	// Implement class WT_Module_Block
@@ -110,7 +110,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$content.='</tr>';
 				$content.='<tr><td class="list_value_wrap" colspan="5"><div id="message'.$message->message_id.'" style="display:none;">';
 				$content.=expand_urls(nl2br(htmlspecialchars($message->body))).'<br><br>';
-				if (strpos($message->subject, /* I18N: When replying to an email, the subject becomes "RE: <subject>" */ WT_I18N::translate('RE: '))!==0) {
+				if (strpos($message->subject, /* I18N: When replying to an email, the subject becomes “RE: <subject>” */ WT_I18N::translate('RE: '))!==0) {
 					$message->subject= WT_I18N::translate('RE: ').$message->subject;
 				}
 				if ($user_id) {

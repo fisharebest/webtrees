@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block, WT_Module_Config {
 	// Extend class WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module.  Abbreviation for "Frequently Asked Questions" */ WT_I18N::translate('FAQ');
+		return /* I18N: Name of a module.  Abbreviation for “Frequently Asked Questions” */ WT_I18N::translate('FAQ');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "FAQ" module */ WT_I18N::translate('A list of frequently asked questions and answers.');
+		return /* I18N: Description of the “FAQ” module */ WT_I18N::translate('A list of frequently asked questions and answers.');
 	}
 
 	// Extend WT_Module

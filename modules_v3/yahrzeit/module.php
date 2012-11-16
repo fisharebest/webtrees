@@ -36,7 +36,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Yahrzeiten" module.  A "Hebrew death" is a death where the date is recorded in the Hebrew calendar. */ WT_I18N::translate('A list of the Hebrew death anniversaries that will occur in the near future.');
+		return /* I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar. */ WT_I18N::translate('A list of the Hebrew death anniversaries that will occur in the near future.');
 	}
 
 	// Implement class WT_Module_Block

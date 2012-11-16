@@ -886,11 +886,11 @@ class WT_Gedcom_Tag {
 		}
 	}
 
-	// Translate a label/value pair, such as "Occupation: Farmer"
+	// Translate a label/value pair, such as “Occupation: Farmer”
 	public static function getLabelValue($tag, $value, $record=null, $element='div') {
 			return
 			'<'.$element.' class="fact_'.preg_replace('/[^_A-Za-z0-9]/', '', $tag).'">'.
-			/* I18N: a label/value pair, such as "Occupation: Farmer".  Some languages may need to change the punctuation. */
+			/* I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation. */
 			WT_I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', self::getLabel($tag, $record), $value).
 			'</'.$element.'>';
 	}
