@@ -938,37 +938,43 @@ class WT_Person extends WT_GedcomRecord {
 		}
 	}
 
-	/**
-	* get the correct label for a step family
-	* @param Family $family the family to get the label for
-	* @return string
-	*/
-	function getStepFamilyLabel($family) {
-		$label = 'Unknown Family';
-		if (is_null($family)) return $label;
-		$childfams = $this->getChildFamilies();
-		$mother = $family->getWife();
-		$father = $family->getHusband();
-		foreach ($childfams as $fam) {
+	// Create a label for a step family
+	function getStepFamilyLabel(WT_Family $family) {
+		foreach ($this->getChildFamilies() as $fam) {
 			if (!$fam->equals($family)) {
-				$wife = $fam->getWife();
-				$husb = $fam->getHusband();
-				if ((is_null($husb) || !$husb->equals($father)) && (is_null($wife)||$wife->equals($mother))) {
-					if ($mother->getSex()=='M') $label = WT_I18N::translate('Father\'s Family with ');
-					else $label = WT_I18N::translate('Mother\'s Family with ');
-					if (!is_null($father)) $label .= $father->getFullName();
-					else $label .= WT_I18N::translate('unknown person');
+				if ((is_null($fam->getHusband()) || !$fam->getHusband()->equals($family->getHusband())) && (is_null($fam->getWife()) || $fam->getWife()->equals($family->getWife()))) {
+					if ($family->getHusband()) {
+						if ($family->getWife()->getSex()=='F') {
+							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Mother’s family with %s', $family->getHusband()->getFullName());
+						} else {
+							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Father’s family with %s', $family->getHusband()->getFullName());
+						}
+					} else {
+						if ($family->getWife()->getSex()=='F') {
+							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Mother’s family with an unknown individual');
+						} else {
+							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Father’s family with an unknown individual');
+						}
+					}
+				} elseif ((is_null($fam->getWife()) || !$fam->getWife()->equals($family->getWife())) && (is_null($fam->getHusband()) || $fam->getHusband()->equals($family->getHusband()))) {
+					if ($family->getWife()) {
+						if ($family->getHusband()->getSex()=='F') {
+							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Mother’s family with %s', $family->getWife()->getFullName());
+						} else {
+							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Father’s family with %s', $family->getWife()->getFullName());
+						}
+					} else {
+						if ($family->getHusband()->getSex()=='F') {
+							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Mother’s family with an unknown individual');
+						} else {
+							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Father’s family with an unknown individual');
+						}
+					}
 				}
-				else if ((is_null($wife) || !$wife->equals($mother)) && (is_null($husb)||$husb->equals($father))) {
-					if ($father->getSex()=='F') $label = WT_I18N::translate('Mother\'s Family with ');
-					else $label = WT_I18N::translate('Father\'s Family with ');
-					if (!is_null($mother)) $label .= $mother->getFullName();
-					else $label .= WT_I18N::translate('unknown person');
-				}
-				if ($label!='Unknown Family') return $label;
 			}
 		}
-		return $label;
+		// It should not be possible to get here
+		throw new Exception('Invalid family in WT_Person::getStepFamilyLabel(' . $family . ')');
 	}
 	/**
 	* get the correct label for a family
