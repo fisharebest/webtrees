@@ -778,7 +778,6 @@ case 'addnewnote':
 	echo '<h4>', $controller->getPageTitle(), '</h4>';
 
 	?>
-	<b><?php echo $controller->getPageTitle(); ?></b>
 	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
 		<input type="hidden" name="action" value="addnoteaction">
 		<input type="hidden" name="noteid" value="newnote">
@@ -859,7 +858,6 @@ case 'addnewnote_assisted':
 
 	?>
 	<div class="center font11" style="width:100%;">
-		<b><?php echo $controller->getPageTitle(); ?></b>
 		<?php
 			// When more languages are added to the wiki, we can expand or redesign this
 			switch (WT_LOCALE) {
@@ -1007,7 +1005,6 @@ case 'editnote':
 	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 	
 	?>
-	<b><?php echo $controller->getPageTitle(), "&nbsp;&nbsp;(" . $pid . ")"; ?></b><br><br>
 	<form method="post" action="edit_interface.php" >
 		<input type="hidden" name="action" value="update">
 		<input type="hidden" name="pid" value="<?php echo $pid; ?>">
@@ -1082,7 +1079,6 @@ case 'addnewrepository':
 	<?php
 	echo '</script>';
 	?>
-	<b><?php echo $controller->getPageTitle(); ?></b>
 	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
 		<input type="hidden" name="action" value="addrepoaction">
 		<input type="hidden" name="pid" value="newrepo">
