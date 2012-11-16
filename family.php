@@ -143,9 +143,12 @@ echo '</script>';
 				</tr>
 				<tr>
 					<td colspan="2">
+					<span class="subheaders"><?php echo WT_I18N::translate('Family Group Information'); ?></span>
 						<?php
 							if ($controller->record->canDisplayDetails()) {
-								print_family_facts($controller->record);
+								echo '<table class="facts_table">';
+								$controller->printFamilyFacts();
+								echo '</table>';
 							} else {
 								echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this family are private.'), '</p>';
 							}
