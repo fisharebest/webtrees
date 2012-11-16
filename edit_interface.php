@@ -143,8 +143,8 @@ case 'delete':
 		->pageHeader();
 
 	// Retrieve the private data
-	$tmp=new WT_GedcomRecord($gedrec);
-	list($gedcom, $private_gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+	$record = new WT_GedcomRecord($gedrec);
+	list($gedcom, $private_gedrec)=$record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 			
 	// When deleting a media link, $linenum comes is an OBJE and the $mediaid to delete should be set
 	if ($linenum=='OBJE') {
@@ -155,7 +155,7 @@ case 'delete':
 	$success = replace_gedrec($pid, WT_GED_ID, $newged.$private_gedrec, $update_CHAN);
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -202,13 +202,15 @@ case 'editraw':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'edit':
+	$pid    = safe_GET('pid', WT_REGEX_XREF);
+	$record = WT_GedcomRecord::getInstance($pid);
+
 	$controller
-		->setPageTitle(WT_I18N::translate('Edit'))
+		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit'))
 		->pageHeader();
 
 	// Hide the private data
-	$tmp=new WT_GedcomRecord($gedrec);
-	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+	list($gedrec)=$record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 
 	echo '<div id="edit_interface-page">';
 	echo '<h4>', $controller->getPageTitle(), '</h4>';
@@ -230,8 +232,8 @@ case 'edit':
 		} 
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
-		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
+		echo WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp());
+		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser());
 		echo '</td></tr>';
 	}
 	echo '</table>';
@@ -288,8 +290,12 @@ case 'edit':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'add':
+	$pid    = safe_GET('pid',  WT_REGEX_XREF);
+	$fact   = safe_GET('fact', WT_REGEX_TAG);
+	$record = WT_GedcomRecord::getInstance($pid);
+
 	$controller
-		->setPageTitle(WT_I18N::translate('Add'))
+		->setPageTitle($record->getFullName() . ' - ' . WT_Gedcom_Tag::getLabel($fact, $record))
 		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
@@ -314,8 +320,8 @@ case 'add':
 		} 
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
-		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
+		echo WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp());
+		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser());
 		echo '</td></tr>';
 	}
 	echo '</table>';
@@ -352,9 +358,8 @@ case 'add':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addchild':
 	$gender = safe_GET('gender', '[MF]', 'U');
-	$famid  = safe_GET('famid', WT_REGEX_XREF);
+	$famid  = safe_GET('famid',  WT_REGEX_XREF);
 	$pid    = safe_GET('pid',    WT_REGEX_XREF); // print_indi_form() uses this
-
 	$family = WT_Family::getInstance($famid);
 
 	if ($family) {
@@ -377,7 +382,6 @@ case 'addspouse':
 	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
 	$famid  = safe_GET('famid',  WT_REGEX_XREF);
 	$pid    = safe_GET('pid',    WT_REGEX_XREF); // print_indi_form() uses this
-
 	$person = WT_Person::getInstance($pid);
 
 	if ($famtag=='WIFE') {
@@ -400,7 +404,6 @@ case 'addnewparent':
 	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
 	$famid  = safe_GET('famid',  WT_REGEX_XREF);
 	$pid    = safe_GET('pid',    WT_REGEX_XREF); // print_indi_form() uses this
-
 	$person = WT_Person::getInstance($pid);
 
 	if ($famtag=='WIFE') {
@@ -420,8 +423,12 @@ case 'addnewparent':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addopfchild':
+	$pid    = safe_GET('pid',   WT_REGEX_XREF);
+	$famid  = safe_GET('famid', WT_REGEX_XREF);
+	$person = WT_Person::getInstance($pid);
+
 	$controller
-		->setPageTitle(WT_I18N::translate('Add a child to create a one-parent family'))
+		->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a child to create a one-parent family'))
 		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
@@ -434,9 +441,17 @@ case 'addopfchild':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addfamlink':
-	$controller
-		->setPageTitle(WT_I18N::translate('Add child'))
-		->pageHeader();
+	$person=WT_Person::getInstance($pid);
+	
+	if ($famtag=='CHIL') {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a child'));
+	} elseif ($person->getSex()=='F') {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a wife'));
+	} else {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a husband'));
+	}
+
+	$controller->pageHeader();
 
 	echo '<div id="edit_interface-page">';
 	echo '<h4>', $controller->getPageTitle(), '</h4>';
@@ -452,7 +467,7 @@ case 'addfamlink':
 	echo '</td></tr>';
 	if ($famtag=='CHIL') {
 		echo '<tr><td class="facts_label">', WT_Gedcom_Tag::getLabel('PEDI'), '</td><td class="facts_value">';
-		switch (WT_Person::getInstance($pid)->getSex()) {
+		switch ($person->getSex()) {
 		case 'M': echo edit_field_pedi_m('PEDI'); break;
 		case 'F': echo edit_field_pedi_f('PEDI'); break;
 		case 'U': echo edit_field_pedi_u('PEDI'); break;
@@ -469,8 +484,8 @@ case 'addfamlink':
 		} 
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
-		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
+		echo WT_Gedcom_Tag::getLabelValue('DATE', $person->LastChangeTimestamp());
+		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $person->LastChangeUser());
 		echo '</td></tr>';
 	}
 	echo '</table>';
@@ -486,9 +501,15 @@ case 'addfamlink':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'linkspouse':
-	$controller
-		->setPageTitle(WT_I18N::translate('Add child'))
-		->pageHeader();
+	$person=WT_Person::getInstance($pid);
+	
+	if ($person->getSex()=='F') {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing person'));
+	} else {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a wife using an existing person'));
+	}
+
+	$controller->pageHeader();
 
 	echo '<div id="edit_interface-page">';
 	echo '<h4>', $controller->getPageTitle(), '</h4>';
@@ -522,8 +543,8 @@ case 'linkspouse':
 		} 
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
-		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
+		echo WT_Gedcom_Tag::getLabelValue('DATE', $person->LastChangeTimestamp());
+		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $person->LastChangeUser());
 		echo '</td></tr>';
 	}
 	echo '</table>';
@@ -547,9 +568,17 @@ case 'linkspouse':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'linkfamaction':
-	$controller
-		->setPageTitle(WT_I18N::translate('Add child'))
-		->pageHeader();
+	$person=WT_Person::getInstance($pid);
+	
+	if ($famtag=='CHIL') {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a child'));
+	} elseif ($person->getSex()=='F') {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a wife'));
+	} else {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a husband'));
+	}
+
+	$controller->pageHeader();
 
 	// Make sure we have the right ID (f123 vs. F123)
 	$famid=WT_Family::getInstance($famid)->getXref();
@@ -614,7 +643,7 @@ case 'linkfamaction':
 	}
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -764,7 +793,7 @@ case 'addsourceaction':
 	}
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -840,7 +869,7 @@ case 'addnoteaction':
 	}
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -920,13 +949,13 @@ case 'addmedia_links':
 ////////////////////////////////////////////////////////////////////////////////
 case 'editsource':
 	$pid    = safe_GET('pid', WT_REGEX_XREF);
-	$record = WT_GedcomRecord::getInstance($pid);
+	$source = WT_Source::getInstance($pid);
 
 	// Hide the private data
-	list($gedrec)=$record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+	list($gedrec)=$source->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 	
 	$controller
-		->setPageTitle($record->getFullName())
+		->setPageTitle($source->getFullName())
 		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
@@ -972,8 +1001,8 @@ case 'editsource':
 		} 
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
-		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
+		echo WT_Gedcom_Tag::getLabelValue('DATE', $source->LastChangeTimestamp());
+		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $source->LastChangeUser());
 		echo '</td></tr>';
 	}
 	echo '</table>';
@@ -993,6 +1022,9 @@ case 'editsource':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'editnote':
+	$pid  = safe_GET('pid', WT_REGEX_XREF);
+	$note = WT_Note::getInstance($pid);
+
 	$controller
 		->setPageTitle(WT_I18N::translate('Edit Shared Note'))
 		->pageHeader();
@@ -1001,8 +1033,7 @@ case 'editnote':
 	echo '<h4>', $controller->getPageTitle(), '</h4>';
 
 	// Hide the private data
-	$tmp=new WT_GedcomRecord($gedrec);
-	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+	list($gedrec)=$note->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 	
 	?>
 	<form method="post" action="edit_interface.php" >
@@ -1041,8 +1072,8 @@ case 'editnote':
 					} 
 					echo '>';
 					echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-					echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
-					echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
+					echo WT_Gedcom_Tag::getLabelValue('DATE', $note->LastChangeTimestamp());
+					echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $note->LastChangeUser());
 					echo '</td></tr>';
 				}
 			?>
@@ -1167,7 +1198,7 @@ case 'addrepoaction':
 	}
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -1187,7 +1218,7 @@ case 'updateraw':
 	$success = replace_gedrec($pid, WT_GED_ID, $newgedrec, !safe_POST_bool('preserve_last_changed'));
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -1414,7 +1445,7 @@ case 'update':
 	} // end foreach $cens_pids  -------------
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -1486,9 +1517,9 @@ case 'addchildaction':
 		$success=false;
 	}
 	if (safe_POST('goto')=='new') {
-		$link = "individual.php?pid=$xref";
+		$link = 'individual.php?pid=' . $xref . '&amp;ged=' . WT_GED_URL;
 	} else {
-		$link='';
+		$link = '';
 	}
 
 	if ($success && !WT_DEBUG) {
@@ -1580,9 +1611,9 @@ case 'addspouseaction':
 	}
 
 	if (safe_POST('goto')=='new') {
-		$link = "individual.php?pid=$xref";
+		$link = 'individual.php?pid=' . $xref . '&amp;ged=' . WT_GED_URL;
 	} else {
-		$link='';
+		$link = '';
 	}
 
 	if ($success && !WT_DEBUG) {
@@ -1648,7 +1679,7 @@ case 'linkspouseaction':
 	}
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -1733,9 +1764,9 @@ case 'addnewparentaction':
 	}
 
 	if (safe_POST('goto')=='new') {
-		$link = "individual.php?pid=$xref";
+		$link = 'individual.php?pid=' . $xref . '&amp;ged=' . WT_GED_URL;
 	} else {
-		$link='';
+		$link = '';
 	}
 	$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
 	break;
@@ -1791,12 +1822,15 @@ case 'addopfchildaction':
 	}
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'editname':
+	$pid    = safe_GET('pid', WT_REGEX_XREF); // print_indi_form() needs this global
+	$person = WT_Person::getInstance($pid);
+
 	$controller
 		->setPageTitle(WT_I18N::translate('Edit name'))
 		->pageHeader();
@@ -1805,9 +1839,7 @@ case 'editname':
 	echo '<h4>', $controller->getPageTitle(), '</h4>';
 
 	// Hide the private data
-	$tmp=new WT_GedcomRecord($gedrec);
-	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
-	$person=WT_Person::getInstance($pid);
+	list($gedrec)=$person->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 	$gedlines = explode("\n", trim($gedrec));
 	$fields = explode(' ', $gedlines[$linenum]);
 	$glevel = $fields[0];
@@ -1845,7 +1877,7 @@ case 'paste':
 	$success=replace_gedrec($pid, WT_GED_ID, $gedrec, $NO_UPDATE_CHAN);
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -1879,10 +1911,8 @@ case 'reorder_media_update': // Update sort using popup
 	}
 	$success=replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 
-	$link = "individual.php?pid=$pid";
-
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -1900,10 +1930,9 @@ case 'al_reset_media_update': // Reset sort using Album Page
 		}
 	}
 	$success=replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
-	$link = "individual.php?pid=$pid";
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -1934,10 +1963,9 @@ case 'al_reorder_media_update': // Update sort using Album Page
 		$newgedrec .= "\n1 _WT_OBJE_SORT @".$m_media."@";
 	}
 	$success=replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
-	$link = "individual.php?pid=$pid";
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -2341,7 +2369,7 @@ case 'changefamily_update':
 	}
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -2365,7 +2393,7 @@ case 'reorder_update':
 	$success = replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 
@@ -2436,7 +2464,7 @@ case 'reorder_fams_update':
 	$success = replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("");');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
 }
