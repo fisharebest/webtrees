@@ -1457,7 +1457,9 @@ case 'addchildaction':
 	$xref = append_gedrec($gedrec, WT_GED_ID);
 	$gedrec = "";
 	if ($xref) {
-		if (!empty($famid)) {
+		if (empty($famid)) {
+			$success=true;
+		} else {
 			// Insert new child at the right place [ 1686246 ]
 			$newchild = WT_Person::getInstance($xref);
 			$gedrec=find_gedcom_record($famid, WT_GED_ID, true);
