@@ -295,7 +295,7 @@ function build_indiv_map($indifacts, $famids) {
 				if ($ctd>0) {
 					$markers[$i]['date'] = $match[1];
 				}
-				if ($ctlp>0) {
+				if ($spouse) {
 					$markers[$i]['name']=$spouse->getXref();
 				}
 			} else {
@@ -337,7 +337,7 @@ function build_indiv_map($indifacts, $famids) {
 						if ($ctd>0) {
 							$markers[$i]['date'] = $match[1];
 						}
-						if ($ctlp>0) {
+						if ($spouse) {
 							$markers[$i]['name']=$spouse->getXref();
 						}
 					}
