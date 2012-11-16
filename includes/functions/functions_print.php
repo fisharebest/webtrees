@@ -1071,7 +1071,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	}
 	uasort($translated_addfacts, 'factsort');
 	echo '<tr><td class="descriptionbox">';
-	echo WT_I18N::translate('Add new fact');
+	echo WT_I18N::translate('Fact or event');
 	echo help_link('add_facts'), '</td>';
 	echo '<td class="optionbox wrap">';
 	echo '<form method="get" name="newfactform" action="" onsubmit="return false;">';

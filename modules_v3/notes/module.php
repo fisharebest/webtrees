@@ -89,17 +89,21 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 		if ($controller->record->canEdit()) {
 			?>
 		<tr>
-			<td class="facts_label"><?php echo WT_I18N::translate('Add Note'), help_link('add_note'); ?></td>
-			<td class="facts_value"><a href="#"
-				onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','NOTE'); return false;"><?php echo WT_I18N::translate('Add a new note'); ?></a>
-			<br>
+			<td class="facts_label"><?php echo WT_Gedcom_Tag::getLabel('NOTE'); ?></td>
+			<td class="facts_value">
+				<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','NOTE'); return false;">
+					<?php echo WT_I18N::translate('Add a new note'); ?>
+				</a>
+				<?php echo help_link('add_note'); ?>
 			</td>
 		</tr>
 		<tr>
-			<td class="facts_label"><?php echo WT_I18N::translate('Add Shared Note'), help_link('add_shared_note'); ?></td>
-			<td class="facts_value"><a href="#"
-				onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SHARED_NOTE'); return false;"><?php echo WT_I18N::translate('Add a new shared note'); ?></a>
-			<br>
+			<td class="facts_label"><?php echo WT_Gedcom_Tag::getLabel('SHARED_NOTE'); ?></td>
+			<td class="facts_value">
+				<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SHARED_NOTE'); return false;">
+					<?php echo WT_I18N::translate('Add a new shared note'); ?>
+				</a>
+				<?php echo help_link('add_shared_note'); ?>
 			</td>
 		</tr>
 		<?php

@@ -86,7 +86,7 @@ if ($action == 'choose' && $paramok) {
 	echo '<input type="hidden" name="ged" value="', $GEDCOM, '">';
 	echo '<table class="facts_table center">';
 	echo '<tr><td class="topbottombar" colspan="2">';
-	echo WT_I18N::translate('Link media'), help_link('add_media_linkid');
+	echo WT_I18N::translate('Link to an existing media object'), help_link('add_media_linkid');
 	echo '</td></tr><tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Media'), '</td>';
 	echo '<td class="optionbox wrap">';
 	if (!empty($mediaid)) {

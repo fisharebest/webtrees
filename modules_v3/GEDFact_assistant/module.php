@@ -791,7 +791,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$iid2 = safe_GET('iid');
 
 		$controller=new WT_Controller_Simple();
-		$controller->setPageTitle(WT_I18N::translate('Link media'));
+		$controller->setPageTitle(WT_I18N::translate('Link to an existing media object'));
 		$controller->pageHeader();
 		
 		$record=WT_GedcomRecord::getInstance($iid2);

@@ -210,31 +210,35 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 			print_add_new_fact($this->record->getXref(), $indifacts, 'FAM');
 
 			echo '<tr><td class="descriptionbox">';
-			echo WT_I18N::translate('Add Note'), help_link('add_note');
+			echo WT_Gedcom_Tag::getLabel('NOTE');
 			echo '</td><td class="optionbox">';
 			echo "<a href=\"#\" onclick=\"return add_new_record('".$this->record->getXref()."','NOTE');\">", WT_I18N::translate('Add a new note'), '</a>';
+			echo help_link('add_note');
 			echo '</td></tr>';
 
 			echo '<tr><td class="descriptionbox">';
-			echo WT_I18N::translate('Add Shared Note'), help_link('add_shared_note');
+			echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
 			echo '</td><td class="optionbox">';
 			echo "<a href=\"#\" onclick=\"return add_new_record('".$this->record->getXref()."','SHARED_NOTE');\">", WT_I18N::translate('Add a new shared note'), '</a>';
+			echo help_link('add_shared_note');
 			echo '</td></tr>';
 
 			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 				echo '<tr><td class="descriptionbox">';
-				echo WT_I18N::translate('Add media'), help_link('OBJE');
+				echo WT_Gedcom_Tag::getLabel('OBJE');
 				echo '</td><td class="optionbox">';
 				echo "<a href=\"#\" onclick=\"window.open('addmedia.php?action=showmediaform&amp;linktoid=".$this->record->getXref()."', '_blank', edit_window_specs); return false;\">", WT_I18N::translate('Add a new media object'), '</a>';
+				echo help_link('OBJE');
 				echo '<br>';
 				echo "<a href=\"#\" onclick=\"window.open('inverselink.php?linktoid=".$this->record->getXref()."&amp;linkto=family', '_blank', find_window_specs); return false;\">", WT_I18N::translate('Link to an existing media object'), '</a>';
 				echo '</td></tr>';
 			}
 
 			echo '<tr><td class="descriptionbox">';
-			echo WT_I18N::translate('Add Source Citation'), help_link('add_source');
+			echo WT_Gedcom_Tag::getLabel('SOUR');
 			echo '</td><td class="optionbox">';
 			echo "<a href=\"#\" onclick=\"return add_new_record('".$this->record->getXref()."','SOUR');\">", WT_I18N::translate('Add a new source citation'), '</a>';
+			echo help_link('add_source');
 			echo '</td></tr>';
 		}
 	}
