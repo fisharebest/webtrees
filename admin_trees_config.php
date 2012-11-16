@@ -917,7 +917,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</tr>
 					<tr>
 						<th colspan="2">
-							<?php echo WT_I18N::translate('Individual list'), WT_I18N::$list_separator, WT_I18N::translate('Family list'); ?>
+							<?php echo WT_I18N::translate('Lists'); ?>
 						</th>
 					</tr>
 					<tr>
@@ -938,6 +938,22 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						</td>
 						<td>
 							<input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I'); ?>" size="5" maxlength="5">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<?php echo WT_I18N::translate('Estimated dates for birth and death'), help_link('SHOW_EST_LIST_DATES'); ?>
+						</td>
+						<td>
+							<?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES')); ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<?php echo WT_I18N::translate('The date and time of the last update'); ?>
+						</td>
+						<td>
+							<?php echo radio_buttons('NEW_SHOW_LAST_CHANGE', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_LAST_CHANGE); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1188,14 +1204,6 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						</td>
 					</tr>
 					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Estimated dates for birth and death'), help_link('SHOW_EST_LIST_DATES'); ?>
-						</td>
-						<td>
-							<?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES')); ?>
-						</td>
-					</tr>
-					<tr>
 						<th colspan="2">
 							<?php echo WT_I18N::translate('General'); ?>
 						</th>
@@ -1230,14 +1238,6 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						</td>
 						<td>
 							<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')); ?>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('GEDCOM record last change date on lists'), help_link('SHOW_LAST_CHANGE'); ?>
-						</td>
-						<td>
-							<?php echo radio_buttons('NEW_SHOW_LAST_CHANGE', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_LAST_CHANGE); ?>
 						</td>
 					</tr>
 				</table>

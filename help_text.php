@@ -902,11 +902,6 @@ case 'SHOW_GEDCOM_RECORD':
 	$text=WT_I18N::translate('Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file.');
 	break;
 
-case 'SHOW_LAST_CHANGE':
-	$title=WT_I18N::translate('Show GEDCOM record last change date on lists');
-	$text=WT_I18N::translate('This option controls whether or not to show GEDCOM record last change date on lists.');
-	break;
-
 case 'SHOW_LDS_AT_GLANCE':
 	$title=WT_I18N::translate('LDS ordinance codes in chart boxes');
 	$text=WT_I18N::translate('Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>A person who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances.');

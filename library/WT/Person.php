@@ -951,9 +951,9 @@ class WT_Person extends WT_GedcomRecord {
 						}
 					} else {
 						if ($family->getWife()->getSex()=='F') {
-							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Mother’s family with an unknown individual');
+							return /* I18N: A step-family. */ WT_I18N::translate('Mother’s family with an unknown individual');
 						} else {
-							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Father’s family with an unknown individual');
+							return /* I18N: A step-family. */ WT_I18N::translate('Father’s family with an unknown individual');
 						}
 					}
 				} elseif ((is_null($fam->getWife()) || !$fam->getWife()->equals($family->getWife())) && (is_null($fam->getHusband()) || $fam->getHusband()->equals($family->getHusband()))) {
@@ -965,9 +965,9 @@ class WT_Person extends WT_GedcomRecord {
 						}
 					} else {
 						if ($family->getHusband()->getSex()=='F') {
-							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Mother’s family with an unknown individual');
+							return /* I18N: A step-family. */ WT_I18N::translate('Mother’s family with an unknown individual');
 						} else {
-							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Father’s family with an unknown individual');
+							return /* I18N: A step-family. */ WT_I18N::translate('Father’s family with an unknown individual');
 						}
 					}
 				}
