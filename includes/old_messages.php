@@ -66,6 +66,9 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('In this optional field you should enter the name suffix for the person.  Examples of name suffixes are "Sr.", "Jr.", and "III".');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Individuals with multiple surnames, common in Spain and Portugal, should separate the surnames with a comma.  This indicates that the person is to be listed under each of the names.  For example, <b>Cortes,Vega</b> will be listed under both <b>C</b> and <b>V</b>, whereas <b>Cortes Vega</b> will only be listed under <b>C</b>.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Keep links');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('LDS spouse sealing date');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('LDS spouse sealing place');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('LDS spouse sealing temple');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Link media');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Link to %s added');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Link to %s deleted');

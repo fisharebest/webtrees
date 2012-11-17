@@ -250,9 +250,8 @@ class WT_Gedcom_Tag {
 		case 'FAMS:MARR:DAT': return WT_I18N::translate('Date of marriage');
 		case 'FAMS:MARR:PLAC': return WT_I18N::translate('Place of marriage');
 		case 'FAMS:NOTE': return WT_I18N::translate('Spouse note');
-		case 'FAMS:SLGS:DATE': return WT_I18N::translate('LDS spouse sealing date');
-		case 'FAMS:SLGS:PLAC': return WT_I18N::translate('LDS spouse sealing place');
-		case 'FAMS:SLGS:TEMP': return WT_I18N::translate('LDS spouse sealing temple');
+		case 'FAMS:SLGS:DATE': return WT_I18N::translate('Date of LDS Spouse Sealing');
+		case 'FAMS:SLGS:PLAC': return WT_I18N::translate('Place of LDS Spouse Sealing');
 		case 'FAMS:SPOUSE:BIRT:PLAC': return WT_I18N::translate('Spouse\'s birth place');
 		case 'FAMS:SPOUSE:DEAT:PLAC': return WT_I18N::translate('Spouse\'s death place');
 		case 'FAX': return /* I18N: gedcom tag FAX */ WT_I18N::translate('Fax');
@@ -354,8 +353,6 @@ class WT_Gedcom_Tag {
 		case 'SLGC:DATE': return WT_I18N::translate('Date of LDS Child Sealing');
 		case 'SLGC:PLAC': return WT_I18N::translate('Place of LDS Child Sealing');
 		case 'SLGS': return /* I18N: gedcom tag SLGS */ WT_I18N::translate('LDS spouse sealing');
-		case 'SLGS:DATE': return WT_I18N::translate('Date of LDS Spouse Sealing');
-		case 'SLGS:PLAC': return WT_I18N::translate('Place of LDS Spouse Sealing');
 		case 'SOUR': return /* I18N: gedcom tag SOUR */ WT_I18N::translate('Source');
 		case 'SPFX': return /* I18N: gedcom tag SPFX */ WT_I18N::translate('Surname prefix');
 		case 'SSN': return /* I18N: gedcom tag SSN */ WT_I18N::translate('Social Security Number');
