@@ -97,7 +97,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			'EVEN',
 			'EVEN:DATE','EVEN:PLAC',
 			'FAMS:CENS:DATE','FAMS:CENS:PLAC',
-			'FAMS:DIV:DATE','FAMS:DIV:PLAC',
+			'FAMS:DIV:DATE',
 			'FAMS:NOTE',
 			'FAMS:SLGS:DATE','FAMS:SLGS:PLAC',
 			'FAX',
