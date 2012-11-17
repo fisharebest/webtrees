@@ -406,10 +406,18 @@ case 'addnewparent':
 	$pid    = safe_GET('pid',    WT_REGEX_XREF); // print_indi_form() uses this
 	$person = WT_Person::getInstance($pid);
 
-	if ($famtag=='WIFE') {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a new mother'));
+	if ($person) {
+		// Adding a parent to an individual
+		$name=$person->getFullName() . ' - ';
 	} else {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a new father'));
+		// Adding a spouse to a family
+		$name='';
+	}
+
+	if ($famtag=='WIFE') {
+		$controller->setPageTitle($name . WT_I18N::translate('Add a new mother'));
+	} else {
+		$controller->setPageTitle($name . WT_I18N::translate('Add a new father'));
 	}
 	$controller->pageHeader();
 
