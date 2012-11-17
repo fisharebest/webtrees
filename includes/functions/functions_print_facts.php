@@ -188,9 +188,11 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 
 	// Print the spouse and family of this fact/event
 	if ($fact->getSpouse()) {
+		// The significant spouse is set on family events of close relatives
 		echo '<a href="', $fact->getSpouse()->getHtmlUrl(), '">', $fact->getSpouse()->getFullName(), '</a> - ';
 	}
-	if ($fact->getParentObject() instanceof WT_Family) {
+	if ($fact->getParentObject() instanceof WT_Family && $record instanceof WT_Person) {
+		// Family events on an individual page
 		echo '<a href="', $fact->getParentObject()->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a><br>';
 	}
 
