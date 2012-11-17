@@ -168,7 +168,7 @@ class WT_Event {
 	}
 
 	// For family facts on individual pages, we need to know the spouse
-	public function setSpouse(WT_Person $spouse) {
+	public function setSpouse(WT_Person $spouse=null) {
 		$this->spouse=$spouse;
 	}
 	public function getSpouse() {
