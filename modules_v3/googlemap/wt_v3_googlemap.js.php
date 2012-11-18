@@ -445,6 +445,8 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				}
 				if (!empty($gmark['name'])) {
 					$person = WT_Person::getInstance($gmark['name']);
+				} else {
+					$person = null;
 				}
 
 				// The current indi ================================
@@ -484,6 +486,8 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					} else {
 						$image2 = '';
 					}
+				} else {
+					$image2 = '';
 				}
 			?>
 				[
