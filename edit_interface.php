@@ -381,13 +381,11 @@ case 'addchild':
 case 'addspouse':
 	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
 	$famid  = safe_GET('famid',  WT_REGEX_XREF);
-	$pid    = safe_GET('pid',    WT_REGEX_XREF); // print_indi_form() uses this
-	$person = WT_Person::getInstance($pid);
 
 	if ($famtag=='WIFE') {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a new wife'));
+		$controller->setPageTitle(WT_I18N::translate('Add a new wife'));
 	} else {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a new husband'));
+		$controller->setPageTitle(WT_I18N::translate('Add a new husband'));
 	}
 	$controller->pageHeader();
 
