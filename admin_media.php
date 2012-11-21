@@ -1044,7 +1044,7 @@ if (check_media_structure()) {
 							$tempURL = "addmedia.php?action=";
 							if ($media["XREF"] != "") {
 								$tempURL .= "editmedia&amp;pid={$media['XREF']}&amp;linktoid=";
-								if (!$media["LINKED"]) {
+								if (!$media["LINKS"]) {
 									$tempURL .= "new";
 								} else {
 									foreach ($media["LINKS"] as $linkToID => $temp) break;
@@ -1086,7 +1086,7 @@ if (check_media_structure()) {
 							}
 
 							// Remove links
-							if ($media["LINKED"]) {
+							if ($media["LINKS"]) {
 								$tempURL = WT_SCRIPT_NAME.'?';
 								if (!empty($filter)) $tempURL .= "filter={$filter}&";
 								$tempURL .= "action=removelinks&showthumb={$showthumb}&sortby={$sortby}&filter={$filter}&subclick={$subclick}&filename=".urlencode($media['FILE'])."&directory={$directory}&level={$level}&xref={$media['XREF']}&gedfile={$media['GEDFILE']}";
@@ -1186,7 +1186,7 @@ if (check_media_structure()) {
 						}
 						print_fact_notes($media["GEDCOM"], 1);
 						print_fact_sources($media["GEDCOM"], 1);
-						if ($media["LINKED"]) {
+						if ($media["LINKS"]) {
 							PrintMediaLinks($media["LINKS"], "normal");
 						} else {
 							echo "<br>".WT_I18N::translate('This media object is not linked to any GEDCOM record.');

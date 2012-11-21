@@ -665,7 +665,7 @@ if ($action=="filter") {
 							else if (!isFileExternal($media["FILE"]) && !empty($imgsize[0])) {
 								echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize[0].' × '.$imgsize[1]);
 							}
-							if ($media["LINKED"]) {
+							if ($media["LINKS"]) {
 								echo '<p>', WT_I18N::translate('This media object is linked to the following:'), '</p>',
 								'<ul>';
 								foreach ($media["LINKS"] as $indi => $type_record) {

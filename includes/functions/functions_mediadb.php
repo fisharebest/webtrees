@@ -158,7 +158,6 @@ function check_media_structure() {
 * - $media["FORM"]        the format of the item (ie bmp, gif, jpeg, pcx etc)
 * - $media["TITL"]        a title for the item, used for list display
 * - $media["GEDCOM"]      gedcom record snippet
-* - $media["LINKED"]      Flag for front end to indicate this is linked
 * - $media["LINKS"]       Array of gedcom ids that this is linked to
 * - $media["CHANGE"]      Indicates the type of change waiting admin approval
 *
@@ -205,7 +204,6 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 			}
 			$media["TITL"] = $row->m_titl;
 			$media["GEDCOM"] = $row->m_gedcom;
-			$media["LINKED"] = false;
 			$media["LINKS"] = array ();
 			$media["CHANGE"] = "";
 			// Extract Format and Type from GEDCOM record
@@ -237,20 +235,16 @@ if (!$excludeLinks) {
 	foreach ($medialist as $key=>$media) {
 		foreach (fetch_linked_indi($media["XREF"], 'OBJE', WT_GED_ID) as $indi) {
 			$medialist[$key]["LINKS"][$indi->getXref()]='INDI';
-			$medialist[$key]["LINKED"]=true;
 		}
 		foreach (fetch_linked_fam($media["XREF"], 'OBJE', WT_GED_ID) as $fam) {
 			$medialist[$key]["LINKS"][$fam->getXref()]='FAM';
-			$medialist[$key]["LINKED"]=true;
 		}
 		foreach (fetch_linked_sour($media["XREF"], 'OBJE', WT_GED_ID) as $sour) {
 			$medialist[$key]["LINKS"][$sour->getXref()]='SOUR';
-			$medialist[$key]["LINKED"]=true;
 		}
 		// Notes cannot link to media objects directly - but source citations may link to them.
 		foreach (fetch_linked_note($media["XREF"], 'OBJE', WT_GED_ID) as $note) {
 			$medialist[$key]["LINKS"][$note->getXref()]='NOTE';
-			$medialist[$key]["LINKED"]=true;
 		}
 	}
 }
@@ -283,7 +277,6 @@ if (!$excludeLinks) {
 					// Add this GEDCOM ID to the link list of the media object
 					if (isset ($medialist[$keyMediaList])) {
 						$medialist[$keyMediaList]["LINKS"][$pid] = gedcom_record_type($pid, WT_GED_ID);
-						$medialist[$keyMediaList]["LINKED"] = true;
 					}
 				}
 			}
@@ -372,7 +365,6 @@ if (!$excludeLinks) {
 					$media["FORM"] = "tiff";
 				$media["TITL"] = "";
 				$media["GEDCOM"] = "";
-				$media["LINKED"] = false;
 				$media["LINKS"] = array ();
 				$media["CHANGE"] = "";
 				if ($oldObject)
@@ -420,7 +412,6 @@ if (!$excludeLinks) {
 * - REMOVED $media["FORM"]        the format of the item (ie bmp, gif, jpeg, pcx etc)
 * - REMOVED $media["TITL"]        a title for the item, used for list display
 * - REMOVED $media["GEDCOM"]      gedcom record snippet
-* - REMOVED $media["LINKED"]      Flag for front end to indicate this is linked
 * - REMOVED $media["LINKS"]       Array of gedcom ids that this is linked to
 * - REMOVED $media["CHANGE"]      Indicates the type of change waiting admin approval
 *
@@ -555,7 +546,6 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 					$media["FORM"] = "tiff";
 				$media["TITL"] = "";
 				$media["GEDCOM"] = "";
-				$media["LINKED"] = false;
 				$media["LINKS"] = array ();
 				$media["CHANGE"] = "";
 				if ($oldObject)

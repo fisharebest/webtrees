@@ -619,7 +619,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 								else if (!isFileExternal($media["FILE"]) && !empty($imgsize[0])) {
 									echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize[0].' × '.$imgsize[1]);
 								}
-								if ($media["LINKED"]) {
+								if ($media["LINKS"]) {
 									echo WT_I18N::translate('This media object is linked to the following:'), "<br>";
 									foreach ($media["LINKS"] as $indi => $type_record) {
 										if ($type_record!='INDI' && $type_record!='FAM' && $type_record!='SOUR' && $type_record!='OBJE') continue;
