@@ -500,9 +500,12 @@ function print_fact_sources($factrec, $level, $return=false) {
 				$data .= print_fact_notes($srec, $nlevel, false, true);
 				$data .= '</div>';
 				$data .= '</div>';
+			} else {
+				// Show that we do actually have sources for this data
+				$data .= WT_Gedcom_Tag::getLabelValue('SOUR', WT_I18N::translate('yes'));
 			}
 		} else {
-			$data='<div class="fact_SOUR"><span class="label">'.WT_I18N::translate('Source').'</span>: <span class="field error">'.$sid.'</span></div>';
+			$data .= WT_Gedcom_Tag::getLabelValue('SOUR', '<span class="error">'.$sid.'</span>');
 		}
 	}
 
