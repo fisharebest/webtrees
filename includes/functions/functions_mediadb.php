@@ -156,10 +156,8 @@ function check_media_structure() {
 * - $media["THUMB"]       the filename of the thumbnail
 * - $media["THUMBEXISTS"] whether the thumbnail exists.  0=no, 1=external, 2=std dir, 3=protected dir
 * - $media["FORM"]        the format of the item (ie bmp, gif, jpeg, pcx etc)
-* - $media["TYPE"]        the type of media item (ie certificate, document, photo, tombstone etc)
 * - $media["TITL"]        a title for the item, used for list display
 * - $media["GEDCOM"]      gedcom record snippet
-* - $media["LEVEL"]       level number (normally zero)
 * - $media["LINKED"]      Flag for front end to indicate this is linked
 * - $media["LINKS"]       Array of gedcom ids that this is linked to
 * - $media["CHANGE"]      Indicates the type of change waiting admin approval
@@ -207,7 +205,6 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 			}
 			$media["TITL"] = $row->m_titl;
 			$media["GEDCOM"] = $row->m_gedcom;
-			$media["LEVEL"] = '0';
 			$media["LINKED"] = false;
 			$media["LINKS"] = array ();
 			$media["CHANGE"] = "";
@@ -216,11 +213,6 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 				$media['FORM']=strtolower($match[1]);
 			} else {
 				$media['FORM']='';
-			}
-			if (preg_match('/\n\d _?TYPE (.+)/', $row->m_gedcom, $match)) {
-				$media['TYPE']=strtolower($match[1]);
-			} else {
-				$media['TYPE']='';
 			}
 
 			// Build a sortable key for the medialist
@@ -378,10 +370,8 @@ if (!$excludeLinks) {
 					$media["FORM"] = "jpeg";
 				if ($ext == "tif")
 					$media["FORM"] = "tiff";
-				$media["TYPE"] = "";
 				$media["TITL"] = "";
 				$media["GEDCOM"] = "";
-				$media["LEVEL"] = "0";
 				$media["LINKED"] = false;
 				$media["LINKS"] = array ();
 				$media["CHANGE"] = "";
@@ -428,10 +418,8 @@ if (!$excludeLinks) {
 * - REMOVED $media["THUMB"]       the filename of the thumbnail
 * - REMOVED $media["THUMBEXISTS"] whether the thumbnail exists.  0=no, 1=external, 2=std dir, 3=protected dir
 * - REMOVED $media["FORM"]        the format of the item (ie bmp, gif, jpeg, pcx etc)
-* - REMOVED $media["TYPE"]        the type of media item (ie certificate, document, photo, tombstone etc)
 * - REMOVED $media["TITL"]        a title for the item, used for list display
 * - REMOVED $media["GEDCOM"]      gedcom record snippet
-* - REMOVED $media["LEVEL"]       level number (normally zero)
 * - REMOVED $media["LINKED"]      Flag for front end to indicate this is linked
 * - REMOVED $media["LINKS"]       Array of gedcom ids that this is linked to
 * - REMOVED $media["CHANGE"]      Indicates the type of change waiting admin approval
@@ -565,10 +553,8 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 					$media["FORM"] = "jpeg";
 				if ($ext == "tif")
 					$media["FORM"] = "tiff";
-				$media["TYPE"] = "";
 				$media["TITL"] = "";
 				$media["GEDCOM"] = "";
-				$media["LEVEL"] = "0";
 				$media["LINKED"] = false;
 				$media["LINKS"] = array ();
 				$media["CHANGE"] = "";
