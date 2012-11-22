@@ -72,12 +72,18 @@ default:
 		case -1: // not validated
 			$message=WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.');
 			break;
+			
 		case -2: // not approved
 			$message=WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.');
 			break;
+
 		case -3: // bad password
 		case -4: // bad username
 			$message=WT_I18N::translate('The username or password is incorrect.');
+			break;
+
+		case -5: // no cookies
+			$message=WT_I18N::translate('You cannot login because your browser does not accept cookies.');
 			break;
 
 		default: // Success
@@ -138,13 +144,6 @@ default:
 			}
 			break;
 		}
-	}
-
-	if (!isset($_COOKIE[WT_SESSION_NAME])) {
-		echo
-			'<p class="ui-state-error">'.
-			WT_I18N::translate('This site uses cookies to keep track of your login status.<br /><br />Cookies do not appear to be enabled in your browser. You must enable cookies for this site before you can login.  You can consult your browser\'s help documentation for information on enabling cookies.').
-			'</p>';
 	}
 
 	echo '</div>'; //close "login-text"

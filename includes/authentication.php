@@ -42,6 +42,11 @@ if (!defined('WT_WEBTREES')) {
 function authenticateUser($user_name, $password) {
 	global $WT_SESSION;
 	
+	// If no cookies are available, then we cannot log in.
+	if (!isset($_COOKIE[WT_SESSION_NAME])) {
+		return -5;
+	}
+
 	// If we were already logged in, log out first
 	if (getUserId()) {
 		userLogout(getUserId());
