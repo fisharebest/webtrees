@@ -227,7 +227,10 @@ if ($changed_gedcoms) {
 
 	echo
 		$output2, $output, $output2,
-		'<p class="center"><a href="#" onclick="closePopupAndReloadParent();">', WT_I18N::translate('Close Window'), '</a></p>';
+		'<br><br><br><br>',  // TODO use margin-bottom instead of this
+		'<p id="save-cancel">',
+		'<input type="button" class="cancel" value="', WT_I18N::translate('close'), '" onclick="window.close();">',
+		'</p>';
 } else {
 	// No pending changes - refresh the parent window and close this one
 	$controller->addInlineJavascript('closePopupAndReloadParent();');

@@ -144,7 +144,11 @@ case 'compose':
 	if ($method=='messaging2') {
 		echo WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.');
 	}
-	echo '<center><br><br><a href="#" onclick="window.opener.location.reload(); window.close();">', WT_I18N::translate('Close Window'), '</a></center>';
+	echo
+		'<br><br><br><br>',  // TODO use margin-bottom instead of this
+		'<p id="save-cancel">',
+		'<input type="button" class="cancel" value="', WT_I18N::translate('close'), '" onclick="window.close();">',
+		'</p>';
 	break;
 
 case 'send':
