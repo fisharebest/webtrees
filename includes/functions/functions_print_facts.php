@@ -297,6 +297,8 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	
 	// Print the place of this fact/event
 	echo '<div class="place">', format_fact_place($fact, true, true, true), '</div>';
+	// A blank line between the primary attributes (value, date, place) and the secondary ones
+	echo '<br>';
 	print_address_structure($fact->getGedcomRecord(), 2);
 
 	// Print the associates of this fact/event
@@ -625,7 +627,6 @@ function print_address_structure($factrec, $level) {
 		if ($cont) {
 			$resultText .= $cont;
 		} else {
-			if (strlen(trim($omatch[$i][1])) > 0) echo '<br>';
 			$cs = preg_match("/$nlevel ADR1 (.*)/", $arec, $cmatch);
 			if ($cs>0) {
 				$resultText .= $cmatch[1];
