@@ -181,44 +181,41 @@ class TreeView {
 	*/
 	private function drawChildren($familyList, $gen=1, $ajax=false) {
 		$r ='';
-		$flWithChildren = array();
+		$children2draw = array();
 		$f2load = array();
-		$tc = 0;
+
 		foreach($familyList as $f) {
 			if (empty($f)) {
 				continue;
 			}
-			$nbcf = $f->getNumberOfChildren();
-			if ($nbcf > 0) {
-				$flWithChildren[] = $f;
+			$children = $f->getChildren();
+			if (count($children) > 0) {
 				$f2load[] = $f->getXref();
-				$tc += $nbcf;
-			}
-		}
-		if ($tc) {
-			$f2load = implode(',', $f2load);
-			if (!$ajax) {
-				$r .= '<td align="right"'.($gen == 0 ? ' abbr="c'.$f2load.'"' : '').'>';
-			}
-			$nbc = 0;
-			foreach($flWithChildren as $f) {
-				foreach ($f->getChildren() as $child) {
-					$nbc++;
-					if ($tc == 1) {
-						$co = 'c'; // unique
-					} elseif ($nbc == 1) {
-						$co = 't'; // first
-					} elseif($nbc == $tc) {
-						$co = 'b'; //last
-					} else {
-						$co = 'h';
-					}
-					$fam = null;
-					$r .= $this->drawPerson($child, $gen-1, -1, $fam, $co);
+				foreach ($children as $ch) {
+				  // Eliminate duplicates - e.g. when adopted by a step-parent
+					$children2draw[$ch->getXref()] = $ch;
 				}
 			}
+		}
+		$tc = count($children2draw);		
+		if ($tc) {
+			$f2load = implode(',', $f2load);
+			$nbc = 0;
+			foreach ($children2draw as $child) {
+				$nbc++;
+				if ($tc == 1) {
+					$co = 'c'; // unique
+				} elseif ($nbc == 1) {
+					$co = 't'; // first
+				} elseif ($nbc == $tc) {
+					$co = 'b'; //last
+				} else {
+					$co = 'h';
+				}
+				$r .= $this->drawPerson($child, $gen-1, -1, null, $co);
+			}
 			if (!$ajax) {
-				$r .= '</td>'.$this->drawHorizontalLine();
+				$r = '<td align="right"' . ($gen == 0 ? ' abbr="c'.$f2load.'"' : '') . '>' . $r . '</td>'.$this->drawHorizontalLine();
 			}
 		}
 		return $r;
