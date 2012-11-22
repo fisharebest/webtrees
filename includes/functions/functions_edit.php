@@ -1300,18 +1300,12 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 
 	// tag name
-	if (!empty($label)) {
-		if ($label=="Note" && $islink) {
-			echo WT_I18N::translate('Shared note');
-		} else {
-			echo $label;
-		}
+	if ($label) {
+		echo $label;
+	} elseif ($upperlevel) {
+		echo WT_Gedcom_Tag::getLabel($upperlevel.':'.$fact);
 	} else {
-		if ($fact=="SHARED_NOTE" && $islink) {
-			echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
-		} else {
-			echo WT_Gedcom_Tag::getLabel($fact);
-		}
+		echo WT_Gedcom_Tag::getLabel($fact);
 	}
 
 // help link
