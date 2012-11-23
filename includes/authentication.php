@@ -61,7 +61,7 @@ function authenticateUser($user_name, $password) {
 				// Whenever we change our authorisation level change the session ID
 				Zend_Session::regenerateId();
 				$WT_SESSION->wt_user = $user_id;
-				AddToLog('Login successful', 'auth');
+				AddToLog('Login successful ->'.$user_name.'<-', 'auth');
 				return $user_id;
 			} elseif (!$is_admin && !$verified) {
 				AddToLog('Login failed ->'.$user_name.'<- not verified', 'auth');
