@@ -250,11 +250,9 @@ class WT_Controller_Base {
 			var accesstime     = '.WT_TIMESTAMP.';
 		', self::JS_PRIORITY_HIGH);
 	
-		// Temporary fix for access to main menu hover elements on android touch devices
+		// Temporary fix for access to main menu hover elements on android/blackberry touch devices
 		$this->addInlineJavascript('
-			var ua = navigator.userAgent.toLowerCase();
-			var isAndroid = ua.indexOf("android") > -1;
-			if(isAndroid) {
+			if(navigator.userAgent.match(/Android|PlayBook/i)) {
 				jQuery("#main-menu > li > a").attr("href", "#");
 				jQuery("a.icon_arrow").attr("href", "#");
 			}
