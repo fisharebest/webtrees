@@ -1255,11 +1255,11 @@ class WT_Person extends WT_GedcomRecord {
 					$sgdate=$sEvent->getDate();
 					// Always show _BIRT_CHIL, even if the dates are not known
 					if ($option=='_CHIL' || $sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-						if ($option=='_GCHI' && $relation=='son') {
+						if ($option=='_GCHI' && $relation=='dau') {
 							// Convert the event to a close relatives event.
 							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_BIRT.')/', '1 _$1_GCH1', $sEvent->getGedcomRecord()); // Full
 							$tmp_rec="1 _".$sEvent->getTag()."_GCH1\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-						} elseif ($option=='_GCHI' && $relation=='dau') {
+						} elseif ($option=='_GCHI' && $relation=='son') {
 							// Convert the event to a close relatives event.
 							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_BIRT.')/', '1 _$1_GCH2', $sEvent->getGedcomRecord()); // Full
 							$tmp_rec="1 _".$sEvent->getTag()."_GCH2\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
@@ -1281,11 +1281,11 @@ class WT_Person extends WT_GedcomRecord {
 					$sgdate=$sEvent->getDate();
 					$srec = $sEvent->getGedcomRecord();
 					if ($sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-						if ($option=='_GCHI' && $relation=='son') {
+						if ($option=='_GCHI' && $relation=='dau') { 
 							// Convert the event to a close relatives event.
 							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_GCH1', $sEvent->getGedcomRecord()); // Full
 							$tmp_rec="1 _".$sEvent->getTag()."_GCH1\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-						} elseif ($option=='_GCHI' && $relation=='dau') {
+						} elseif ($option=='_GCHI' && $relation=='son') {
 							// Convert the event to a close relatives event.
 							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_GCH2', $sEvent->getGedcomRecord()); // Full
 							$tmp_rec="1 _".$sEvent->getTag()."_GCH2\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
@@ -1307,11 +1307,11 @@ class WT_Person extends WT_GedcomRecord {
 					foreach ($sfamily->getAllFactsByType(explode('|', WT_EVENTS_MARR)) as $sEvent) {
 						$sgdate=$sEvent->getDate();
 						if ($sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-							if ($option=='_GCHI' && $relation=='son') {
+						if ($option=='_GCHI' && $relation=='dau') {
 								// Convert the event to a close relatives event.
 								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_GCH1', $sEvent->getGedcomRecord());
 								$tmp_rec="1 _".$sEvent->getTag()."_GCH1\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-							} elseif ($option=='_GCHI' && $relation=='dau') {
+						} elseif ($option=='_GCHI' && $relation=='son') {
 								// Convert the event to a close relatives event.
 								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_GCH2', $sEvent->getGedcomRecord());
 								$tmp_rec="1 _".$sEvent->getTag()."_GCH2\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
