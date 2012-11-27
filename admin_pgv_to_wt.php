@@ -722,7 +722,6 @@ foreach ($GEDCOMS as $GEDCOM=>$GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'PEDIGREE_LAYOUT',              $PEDIGREE_LAYOUT));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'PEDIGREE_ROOT_ID',             $PEDIGREE_ROOT_ID));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'PEDIGREE_SHOW_GENDER',         $PEDIGREE_SHOW_GENDER));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'POSTAL_CODE',                  $POSTAL_CODE));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'PREFER_LEVEL2_SOURCES',        $PREFER_LEVEL2_SOURCES));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'QUICK_REQUIRED_FACTS',         $QUICK_REQUIRED_FACTS));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'QUICK_REQUIRED_FAMFACTS',      $QUICK_REQUIRED_FAMFACTS));

@@ -812,11 +812,6 @@ case 'WEBTREES_EMAIL':
 	$text=WT_I18N::translate('E-mail address to be used in the &laquo;From:&raquo; field of e-mails that <b>webtrees</b> creates automatically.<br /><br /><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br /><br />Usually, the &laquo;From:&raquo; field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message\'s &laquo;From:&raquo; field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>.');
 	break;
 
-case 'POSTAL_CODE':
-	$title=WT_I18N::translate('Postal code position');
-	$text=WT_I18N::translate('Different countries use different ways to write the address. This option will enable you to place the postal code either before or after the city name.');
-	break;
-
 case 'PREFER_LEVEL2_SOURCES':
 	$title=WT_I18N::translate('Source type');
 	$text=WT_I18N::translate('When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default.');

@@ -498,7 +498,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					"<?php if (!empty($gmark['date'])) { $date=new WT_Date($gmark['date']); echo addslashes($date->Display(true)); } else { echo WT_I18N::translate('Date not known'); } ?>",
 					"<?php if (!empty($gmark['info'])) { echo $gmark['info']; } else { echo NULL; } ?>",
 					"<?php if (!empty($gmark['name'])) { $person=WT_Person::getInstance($gmark['name']); if ($person) { echo '<a href=\"', $person->getHtmlUrl(), '\">', addslashes($person->getFullName()), '<\/a>'; } } ?>",
-					"<?php if (preg_match('/2 PLAC (.*)/', $gmark['placerec']) == 0) { print_address_structure_map($gmark['placerec'], 1); } else { echo preg_replace('/\"/', '\\\"', print_fact_place_map($gmark['placerec'])); } ?>",
+					"<?php echo addslashes(print_fact_place_map($gmark['placerec'])); ?>",
 					"<?php echo $gmark['index'].''; ?>",
 					"<?php echo $gmark['tabindex'].''; ?>",
 					"<?php echo $gmark['placed'].''; ?>",

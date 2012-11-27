@@ -49,96 +49,6 @@ function print_fact_place_map($factrec) {
 	return '';
 }
 
-
-function print_address_structure_map($factrec, $level) {
-	global $POSTAL_CODE;
-
-	//  $POSTAL_CODE = 'false' - before city, 'true' - after city and/or state
-	//-- define per gedcom till can do per address countries in address languages
-	//-- then this will be the default when country not recognized or does not exist
-	//-- both Finland and Suomi are valid for Finland etc.
-	//-- see http://www.bitboost.com/ref/international-address-formats.html
-
-	$nlevel = $level+1;
-	$ct = preg_match_all("/$level ADDR(.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	for ($i=0; $i<$ct; $i++) {
-		$arec = get_sub_record($level, "$level ADDR", $factrec, $i+1);
-		$resultText = '';
-		$cn = preg_match("/$nlevel _NAME (.*)/", $arec, $cmatch);
-		if ($cn>0) $resultText .= str_replace("/", "", $cmatch[1]).'<br>';
-		$resultText .= $omatch[$i][1];
-		$cont = get_cont($nlevel, $arec);
-		if (!empty($cont)) $resultText .= str_replace(array(' ', "<br&nbsp;"), array("&nbsp;", "<br "), $cont);
-		else {
-			if (strlen(trim($omatch[$i][1])) > 0) echo '<br>';
-				$cs = preg_match("/$nlevel ADR1 (.*)/", $arec, $cmatch);
-			if ($cs>0) {
-				if ($cn==0) {
-					$resultText .= '<br>';
-					$cn=0;
-				}
-				$resultText .= $cmatch[1];
-			}
-			$cs = preg_match("/$nlevel ADR2 (.*)/", $arec, $cmatch);
-			if ($cs>0) {
-				if ($cn==0) {
-					$resultText .= '<br>';
-					$cn=0;
-				}
-				$resultText .= $cmatch[1];
-			}
-
-			if ($POSTAL_CODE) {
-				if (preg_match("/$nlevel CITY (.*)/", $arec, $cmatch))
-					$resultText.=' '.$cmatch[1];
-				if (preg_match("/$nlevel STAE (.*)/", $arec, $cmatch))
-					$resultText.=', '.$cmatch[1];
-				if (preg_match("/$nlevel POST (.*)/", $arec, $cmatch))
-					$resultText.='<br>'.$cmatch[1];
-			} else {
-				if (preg_match("/$nlevel POST (.*)/", $arec, $cmatch))
-					$resultText.='<br>'.$cmatch[1];
-				if (preg_match("/$nlevel CITY (.*)/", $arec, $cmatch))
-					$resultText.=' '.$cmatch[1];
-				if (preg_match("/$nlevel STAE (.*)/", $arec, $cmatch))
-					$resultText.=', '.$cmatch[1];
-			}
-		}
-		if (preg_match("/$nlevel CTRY (.*)/", $arec, $cmatch))
-			$resultText.='<br>'.$cmatch[1];
-		$resultText.= '<br>';
-		// Here we can examine the resultant text and remove empty tags
-		echo str_replace(chr(10), ' ' , $resultText);
-	}
-	$resultText = "<table>";
-	$ct = preg_match_all("/$level PHON (.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	for ($i=0; $i<$ct; $i++) {
-		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('PHON').': </b></span></td><td><span class="field" dir="auto">';
-		$resultText .= $omatch[$i][1];
-		$resultText .= '</span></td></tr>';
-	}
-	$ct = preg_match_all("/$level FAX (.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	for ($i=0; $i<$ct; $i++) {
-		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('FAX').': </b></span></td><td><span class="field" dir="auto">';
-		$resultText .= $omatch[$i][1];
-		$resultText .= '</span></td></tr>';
-	}
-	$ct = preg_match_all("/$level EMAIL (.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	for ($i=0; $i<$ct; $i++) {
-		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('EMAIL').': </b></span></td><td><span class="field" dir="auto">';
-		$resultText .= '<a href="mailto:'.$omatch[$i][1].'">'.$omatch[$i][1].'</a>';
-		$resultText .= '</span></td></tr>';
-	}
-	$ct = preg_match_all("/$level (WWW|URL) (.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	for ($i=0; $i<$ct; $i++) {
-		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('URL').': </b></span></td><td><span class="field" dir="auto">';
-		$resultText .= '<a href="'.$omatch[$i][2].'" target="_blank">'.$omatch[$i][2].'</a>';
-		$resultText .= '</span></td></tr>';
-	}
-	$resultText .= '</table>';
-	if ($resultText!='<table></table>') echo str_replace(chr(10), ' ' , $resultText);
-}
-
 function rem_prefix_from_placename($prefix_list, $place, $placelist) {
 	if ($prefix_list) {
 		foreach (explode(';', $prefix_list) as $prefix) {
@@ -520,11 +430,7 @@ function build_indiv_map($indifacts, $famids) {
 				}
 				echo '<br>';
 			}
-			if (preg_match("/2 PLAC (.*)/", $marker['placerec']) == 0) {
-				print_address_structure_map($marker['placerec'], 1);
-			} else {
-				echo print_fact_place_map($marker['placerec']), '<br>';
-			}
+			echo print_fact_place_map($marker['placerec']), '<br>';
 			if (!empty($marker['date'])) {
 				$date=new WT_Date($marker['date']);
 				echo $date->Display(true), '<br>';

@@ -2541,14 +2541,13 @@ function SetVarSHandler($attrs) {
 * @param array $attrs an array of key value pairs for the attributes
 */
 function ifSHandler($attrs) {
-	global $vars, $gedrec, $processIfs, $fact, $desc, $generation, $POSTAL_CODE;
+	global $vars, $gedrec, $processIfs, $fact, $desc, $generation;
 
 	if ($processIfs>0) {
 		$processIfs++;
 		return;
 	}
 
-	$vars['POSTAL_CODE']['id'] = $POSTAL_CODE;
 	$condition = $attrs['condition'];
 	$condition = preg_replace("/\\$(\w+)/", "\$vars[\"$1\"][\"id\"]", $condition);
 	$condition = str_replace(array(" LT ", " GT "), array("<", ">"), $condition);

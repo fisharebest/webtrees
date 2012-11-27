@@ -162,7 +162,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_LAYOUT',              safe_POST_bool('NEW_PEDIGREE_LAYOUT'));
 	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID',             safe_POST_xref('NEW_PEDIGREE_ROOT_ID'));
 	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_SHOW_GENDER',         safe_POST_bool('NEW_PEDIGREE_SHOW_GENDER'));
-	set_gedcom_setting(WT_GED_ID, 'POSTAL_CODE',                  safe_POST_bool('NEW_POSTAL_CODE'));
 	set_gedcom_setting(WT_GED_ID, 'PREFER_LEVEL2_SOURCES',        safe_POST('NEW_PREFER_LEVEL2_SOURCES'));
 	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FACTS',         safe_POST('NEW_QUICK_REQUIRED_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FAMFACTS',      safe_POST('NEW_QUICK_REQUIRED_FAMFACTS'));
@@ -1051,7 +1050,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</tr>
 					<tr>
 						<th colspan="2">
-							<?php echo WT_I18N::translate('Other'); ?>
+							<?php echo WT_I18N::translate('Places'); ?>
 						</th>
 					</tr>
 					<tr>
@@ -1087,17 +1086,6 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 								)
 							);
 							?>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Postal code position'), help_link('POSTAL_CODE'); ?>
-						</td>
-						<td>
-							<select name="NEW_POSTAL_CODE">
-								<option value="yes" <?php if ($POSTAL_CODE) echo "selected=\"selected\""; ?>><?php echo ucfirst(WT_I18N::translate('after')); ?></option>
-								<option value="no" <?php if (!$POSTAL_CODE) echo "selected=\"selected\""; ?>><?php echo ucfirst(WT_I18N::translate('before')); ?></option>
-							</select>
 						</td>
 					</tr>
 				</table>

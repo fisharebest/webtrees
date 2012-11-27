@@ -266,7 +266,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'PEDIGREE_LAYOUT',              true);
 		set_gedcom_setting($tree_id, 'PEDIGREE_ROOT_ID',             '');
 		set_gedcom_setting($tree_id, 'PEDIGREE_SHOW_GENDER',         false);
-		set_gedcom_setting($tree_id, 'POSTAL_CODE',                  true);
 		set_gedcom_setting($tree_id, 'PREFER_LEVEL2_SOURCES',        '1');
 		set_gedcom_setting($tree_id, 'QUICK_REQUIRED_FACTS',         'BIRT,DEAT');
 		set_gedcom_setting($tree_id, 'QUICK_REQUIRED_FAMFACTS',      'MARR');

@@ -316,16 +316,10 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		case 'ALIA':
 		case 'ASSO':
 		case 'DESC':
-		case 'EMAIL':
-		case 'FAX':
-		case 'PHON':
 		case 'RELA':
 		case 'STAT':
 		case 'TEMP':
 		case 'TYPE':
-		case 'WWW':
-		case '_EMAIL':
-		case 'URL':
 		case 'FAMS':
 		case '_WTS':
 		case '_WTFS':
@@ -608,110 +602,15 @@ function print_media_links($factrec, $level, $pid='') {
  * @param int $level The gedcom line level of the main ADDR record
  */
 function print_address_structure($factrec, $level) {
-	global $POSTAL_CODE;
-
-	//   $POSTAL_CODE = 'false' - before city, 'true' - after city and/or state
-	//-- define per gedcom till can do per address countries in address languages
-	//-- then this will be the default when country not recognized or does not exist
-	//-- both Finland and Suomi are valid for Finland etc.
-	//-- see http://www.bitboost.com/ref/international-address-formats.html
-
-	$nlevel = $level+1;
-	$ct = preg_match_all("/$level ADDR(.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	for ($i=0; $i<$ct; $i++) {
-		$arec = get_sub_record($level, "$level ADDR", $factrec, $i+1);
-		$resultText = "";
-		if ($level>1) $resultText .= "<span class=\"label\">".WT_Gedcom_Tag::getLabel('ADDR').': </span><br><div class="indent">';
-		$resultText .= $omatch[$i][1];
-		$cont = get_cont($nlevel, $arec);
-		if ($cont) {
-			$resultText .= $cont;
-		} else {
-			$cs = preg_match("/$nlevel ADR1 (.*)/", $arec, $cmatch);
-			if ($cs>0) {
-				$resultText .= $cmatch[1];
-			}
-			$cs = preg_match("/$nlevel ADR2 (.*)/", $arec, $cmatch);
-			if ($cs>0) {
-				$resultText .= $cmatch[1];
-			}
-
-			if (!$POSTAL_CODE) {
-				$cs = preg_match("/$nlevel POST (.*)/", $arec, $cmatch);
-				if ($cs>0) {
-					$resultText .= "<br>".$cmatch[1];
-				}
-				$cs = preg_match("/$nlevel CITY (.*)/", $arec, $cmatch);
-				if ($cs>0) {
-					$resultText .= " ".$cmatch[1];
-				}
-				$cs = preg_match("/$nlevel STAE (.*)/", $arec, $cmatch);
-				if ($cs>0) {
-					$resultText .= ", ".$cmatch[1];
-				}
-			} else {
-				$cs = preg_match("/$nlevel CITY (.*)/", $arec, $cmatch);
-				if ($cs>0) {
-					$resultText .= "<br>".$cmatch[1];
-				}
-				$cs = preg_match("/$nlevel STAE (.*)/", $arec, $cmatch);
-				if ($cs>0) {
-					$resultText .= ", ".$cmatch[1];
-				}
-				$cs = preg_match("/$nlevel POST (.*)/", $arec, $cmatch);
-				if ($cs>0) {
-					$resultText .= " ".$cmatch[1];
-				}
-			}
-
-			$cs = preg_match("/$nlevel CTRY (.*)/", $arec, $cmatch);
-			if ($cs>0) {
-				$resultText .= "<br>".$cmatch[1];
-			}
+	if (preg_match("/$level ADDR (.*)/", $factrec, $omatch)) {
+		$arec = get_sub_record($level, "$level ADDR", $factrec, 1);
+		$cont = get_cont($level+1, $arec);
+		$resultText = $omatch[1] . get_cont($level+1, $arec);
+		if ($level>1) {
+			$resultText = '<span class="label">'.WT_Gedcom_Tag::getLabel('ADDR').': </span><br><div class="indent">' . $resultText . '</div>';
 		}
-		if ($level>1) $resultText .= "</div>";
-		// Here we can examine the resultant text and remove empty tags
 		echo $resultText;
 	}
-	$resultText = '<table>';
-	$ct = preg_match_all("/$level PHON (.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	if ($ct>0) {
-		for ($i=0; $i<$ct; $i++) {
-			$resultText .= '<tr>';
-			$resultText .= '<td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('PHON').': </b></span></td><td><span class="field" dir="auto">';
-			$resultText .= $omatch[$i][1];
-			$resultText .= '</span></td></tr>';
-		}
-	}
-	$ct = preg_match_all("/$level FAX (.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	if ($ct>0) {
-		for ($i=0; $i<$ct; $i++) {
-			$resultText .= '<tr>';
-			$resultText .= '<td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('FAX').': </b></span></td><td><span class="field" dir="auto">';
-			$resultText .= $omatch[$i][1];
-			$resultText .= '</span></td></tr>';
-		}
-	}
-	$ct = preg_match_all("/$level EMAIL (.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	if ($ct>0) {
-		for ($i=0; $i<$ct; $i++) {
-			$resultText .= '<tr>';
-			$resultText .= '<td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('EMAIL').': </b></span></td><td><span class="field">';
-			$resultText .= '<a href="mailto:'.$omatch[$i][1].'" dir="auto">'.$omatch[$i][1].'</a>';
-			$resultText .= '</span></td></tr>';
-		}
-	}
-	$ct = preg_match_all("/$level (WWW|URL) (.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	if ($ct>0) {
-		for ($i=0; $i<$ct; $i++) {
-			$resultText .= '<tr>';
-			$resultText .= '<td><span class="label"><b>'.WT_Gedcom_Tag::getLabel($omatch[$i][1]).': </b></span></td><td><span class="field" dir="auto">';
-			$resultText .= '<a href="'.$omatch[$i][2].'" target="_blank" dir="auto">'.$omatch[$i][2].'</a>';
-			$resultText .= '</span></td></tr>';
-		}
-	}
-	$resultText .= '</table>';
-	if ($resultText!='<table></table>') echo $resultText;
 }
 
 function print_main_sources(WT_Event $fact, $level, $pid, $noedit=false) {

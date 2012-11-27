@@ -54,6 +54,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Child\'s birth place');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Children are displayed in the order in which they appear in the family record.  Children are not automatically sorted by birth date because often the birth dates of some of the children are uncertain but the order of their birth <u>is</u> known.<br /><br />This option will allow you to change the order of the children within the family\'s record.  Since you might want to sort the children by their birth dates, there is a button you can press that will do this for you.<br /><br />You can also drag-and-drop any information box to change the order of the children.  As you move the mouse cursor over an information box, its shape will change to a pair of double-headed crossed arrows. If you push and hold the left mouse button before moving the mouse cursor, the information box will follow the mouse cursor up or down in the list.  As the information box is moved, the other boxes will make room.  When you release the left mouse button, the information box will take its new place in the list.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Continue');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Different countries use different ways to write the address. This option will enable you to place the postal code either before or after the city name.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Download %s');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('E R R O R !!!<br />Could not write to file <i>%s</i>.  Please check it for proper Write permissions.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Enter or select from the list words that precede the main part of the Surname.  Examples of such words are <b>von</b> Braun, <b>van der</b> Kloot, <b>de</b> Graaf, etc.');
@@ -95,6 +96,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Paternal grandmother\'s given name');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Personal Facts and Details');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('PlaceCheck List Options');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Postal code position');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Preview');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Protect thumbnails of protected images');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Reminder: you must copy %s to your webserver');
