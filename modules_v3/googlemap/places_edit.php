@@ -176,7 +176,7 @@ if ($action=="update") {
 
 	$success = false;
 
-	echo '<b>', str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true))), '</b><br>';
+	echo '<b>', htmlspecialchars(str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
 }
 
 if ($action=='add') {
@@ -225,7 +225,7 @@ if ($action=='add') {
 	if (!isset($place_name) || $place_name=="") echo '<b>', WT_I18N::translate('unknown');
 	else echo '<b>', $place_name;
 	if (count($where_am_i)>0)
-		echo ', ', str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true))), '</b><br>';
+		echo ', ', htmlspecialchars(str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
 	echo '</b><br>';
 }
 

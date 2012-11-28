@@ -130,7 +130,7 @@ function create_map($placelevels) {
 	// *** ENABLE STREETVIEW *** (boolean) =========================================================
 	$STREETVIEW = get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	// =============================================================================================
-	$parent = safe_GET('parent');
+	$parent = safe_GET('parent', WT_REGEX_UNSAFE);
 	
 	// create the map
 	echo '<table style="margin:20px auto 0 auto;"><tr valign="top"><td>';

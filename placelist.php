@@ -37,7 +37,7 @@ if ($use_googlemap) {
 
 $action =safe_GET('action',  array('find', 'show'), 'find');
 $display=safe_GET('display', array('hierarchy', 'list'), 'hierarchy');
-$parent =safe_GET('parent');
+$parent =safe_GET('parent', WT_REGEX_UNSAFE); // Place names may include HTML chars.  "Sunny View Cemetery", Smallville, <unknown>, Texas, USA"
 if (!is_array($parent)) {
 	$parent = array();
 }
@@ -86,31 +86,22 @@ if ($display=='hierarchy') {
 		echo ', <a href="', WT_SCRIPT_NAME, '">', WT_I18N::translate('Top Level'), '</a></h4>';
 	}
 
-	//-- create a string to hold the variable links and place names
-	$linklevels='';
 	if ($use_googlemap) {
+		$linklevels='';
 		$placelevels='';
 		$place_names=array();
-	}
-	for ($j=0; $j<$level; $j++) {
-		$linklevels .= '&amp;parent['.$j.']='.urlencode($parent[$j]);
-		if ($use_googlemap) {
-			if (trim($parent[$j])=='') {
-				$placelevels = ', '.WT_I18N::translate('unknown').$placelevels;
+		for ($j=0; $j<$level; $j++) {
+			$linklevels .= '&amp;parent['.$j.']='.rawurlencode($parent[$j]);
+			if ($parent[$j]=='') {
+				$placelevels = ', ' . WT_I18N::translate('unknown') . $placelevels;
 			} else {
-				$placelevels = ', '.$parent[$j].$placelevels;
+				$placelevels = ', ' . $parent[$j] . $placelevels;
 			}
 		}
-	}
-
-	if ($use_googlemap) {
 		create_map($placelevels);
-	} else {
-		echo '<br><br>';
-		if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
-			// show clickable map if found
-			places_assistant_WT_Module::display_map($level, $parent);
-		}
+	} elseif (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
+		// Places Assistant is a custom/add-on module that was once part of the core code.
+		places_assistant_WT_Module::display_map($level, $parent);
 	}
 
 	// -- echo the array
@@ -133,7 +124,9 @@ if ($display=='hierarchy') {
 		}
 
 		echo '<li><a href="', $child_place->getURL(), '" class="list_item">', $child_place->getPlaceName(), '</a></li>';
-		if ($use_googlemap) $place_names[$n]=$child_place->getPlaceName();
+		if ($use_googlemap) {
+			$place_names[$n]=$child_place->getPlaceName();
+		}
 		$n++;
 		if ($numfound > 20) {
 			if ($n == (int)($numfound / 3)) {
