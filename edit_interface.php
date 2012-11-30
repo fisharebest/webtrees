@@ -1518,14 +1518,14 @@ case 'addchildaction':
 	} else {
 		$success=false;
 	}
-	if (safe_POST('goto')=='new') {
-		$link = 'individual.php?pid=' . $xref . '&amp;ged=' . WT_GED_URL;
-	} else {
-		$link = '';
-	}
 
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		if (safe_POST('goto')=='new') {
+			$record = WT_Person::getInstance($xref);
+			$controller->addInlineJavascript('closePopupAndReloadParent("' . $record->getRawUrl() . '");');
+		} else {
+			$controller->addInlineJavascript('closePopupAndReloadParent();');
+		}
 	}
 	break;
 
@@ -1612,14 +1612,13 @@ case 'addspouseaction':
 		}
 	}
 
-	if (safe_POST('goto')=='new') {
-		$link = 'individual.php?pid=' . $xref . '&amp;ged=' . WT_GED_URL;
-	} else {
-		$link = '';
-	}
-
 	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
+		if (safe_POST('goto')=='new') {
+			$record = WT_Person::getInstance($xref);
+			$controller->addInlineJavascript('closePopupAndReloadParent("' . $record->getRawUrl() . '");');
+		} else {
+			$controller->addInlineJavascript('closePopupAndReloadParent();');
+		}
 	}
 	break;
 
@@ -1765,12 +1764,14 @@ case 'addnewparentaction':
 		}
 	}
 
-	if (safe_POST('goto')=='new') {
-		$link = 'individual.php?pid=' . $xref . '&amp;ged=' . WT_GED_URL;
-	} else {
-		$link = '';
+	if ($success && !WT_DEBUG) {
+		if (safe_POST('goto')=='new') {
+			$record = WT_Person::getInstance($xref);
+			$controller->addInlineJavascript('closePopupAndReloadParent("' . $record->getRawUrl() . '");');
+		} else {
+			$controller->addInlineJavascript('closePopupAndReloadParent();');
+		}
 	}
-	$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
