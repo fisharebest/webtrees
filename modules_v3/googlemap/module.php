@@ -223,8 +223,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			set_module_setting('googlemap', 'GM_PH_YSIZE',          $_POST['NEW_GM_PH_YSIZE']);
 			set_module_setting('googlemap', 'GM_PH_MARKER',         $_POST['NEW_GM_PH_MARKER']);
 			set_module_setting('googlemap', 'GM_DISP_SHORT_PLACE',  $_POST['NEW_GM_DISP_SHORT_PLACE']);
-			set_module_setting('googlemap', 'GM_PH_WHEEL',          $_POST['NEW_GM_PH_WHEEL']);
-			set_module_setting('googlemap', 'GM_PH_CONTROLS',       $_POST['NEW_GM_PH_CONTROLS']);
 			set_module_setting('googlemap', 'GM_DISP_COUNT',        $_POST['NEW_GM_DISP_COUNT']);
 
 			for ($i=1; $i<=9; $i++) {
@@ -429,20 +427,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							<td><?php echo edit_field_yes_no('NEW_GM_DISP_SHORT_PLACE', $GM_DISP_SHORT_PLACE); ?></td>
 						</tr>
 						<tr>
-							<th><?php echo WT_I18N::translate('Use mouse wheel for zoom'), help_link('GOOGLEMAP_PH_WHEEL','googlemap'); ?></th>
-							<td><?php echo edit_field_yes_no('NEW_GM_PH_WHEEL', $GOOGLEMAP_PH_WHEEL); ?></td>
-						</tr>
-						<tr>
 							<th><?php echo WT_I18N::translate('Display indis and families count'), help_link('GM_DISP_COUNT','googlemap'); ?></th>
 							<td><?php echo edit_field_yes_no('NEW_GM_DISP_COUNT', $GM_DISP_COUNT); ?></td>
 						</tr>
 						<tr>
 							<th><?php echo WT_I18N::translate('Display Map Coordinates'), help_link('GOOGLEMAP_COORD','googlemap'); ?></th>
 							<td><?php echo edit_field_yes_no('NEW_GM_COORD', $GOOGLEMAP_COORD); ?></td>
-						</tr>
-						<tr>
-							<th><?php echo WT_I18N::translate('Hide map controls'), help_link('GOOGLEMAP_PH_CONTROLS','googlemap'); ?></th>
-							<td><?php echo edit_field_yes_no('NEW_GM_PH_CONTROLS', $GOOGLEMAP_PH_CONTROLS); ?></td>
 						</tr>
 					</table>
 				</div>
@@ -1383,7 +1373,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						// Construct the polygon lines
 						if (!$hidelines) {
 							$to_child = (intval(($i-1)/2)); // Draw a line from parent to child
-							if ($to_child && ($lat[$to_child] || $lon[$to_child])) {
+							if (array_key_exists($to_child, $lat)) {
 								$js.='
 								var linecolor;
 								var plines;

@@ -103,16 +103,6 @@ case 'GM_DISP_COUNT':
 	$text=WT_I18N::translate('Here you can specify if the counts of indis and families connected to the place is displayed. Now if GEDCOM file contains many people is recomended to turn it off.');
 	break;
 
-case 'GOOGLEMAP_PH_WHEEL':
-	$title=WT_I18N::translate('Use mouse wheel for zoom');
-	$text=WT_I18N::translate('Here you can specify if the mouse wheel is enebled for zooming.');
-	break;
-
-case 'GOOGLEMAP_PH_CONTROLS':
-	$title=WT_I18N::translate('Hide map controls');
-	$text=WT_I18N::translate('This option allow to hide map controls (i.e. the map type choice) if mouse is outside the map.');
-	break;
-
 // Pedigree map
 
 case 'PEDIGREE_MAP_clustersize':

@@ -29,7 +29,7 @@ $controller=new WT_Controller_Individual();
 
 echo '<link href="'.WT_STATIC_URL.WT_MODULES_DIR.'GEDFact_assistant/css/gf_styles.css" rel="stylesheet" type="text/css" media="screen">';
 
-global $tabno, $linkToID, $SEARCH_SPIDER, $GOOGLEMAP_PH_CONTROLS;
+global $tabno, $linkToID, $SEARCH_SPIDER;
 global $SHOW_AGE_DIFF;
 global $GEDCOM, $ABBREVIATE_CHART_LABELS;
 global $show_full;
