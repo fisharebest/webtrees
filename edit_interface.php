@@ -1194,10 +1194,6 @@ case 'addrepoaction':
 	if ($xref) {
 		$controller->addInlineJavascript('openerpasteid("' . $xref . '");');
 	}
-
-	if ($success && !WT_DEBUG) {
-		$controller->addInlineJavascript('closePopupAndReloadParent();');
-	}
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
