@@ -657,7 +657,7 @@ class WT_Stats {
 				WT_I18N::translate_c('unknown people', 'Unknown').' - '.$per_u;
 			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		} else {
-			$chd = self::_array_to_extended_encoding(array($tot_f, $tot_m));
+			$chd = self::_array_to_extended_encoding(array(4095*$tot_f/$tot, 4095*$tot_m/$tot));
 			$chl =
 				WT_I18N::translate('Females').' - '.$per_f.'|'.
 				WT_I18N::translate('Males').' - '.$per_m;
