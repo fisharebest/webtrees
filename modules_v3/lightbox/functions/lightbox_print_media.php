@@ -465,7 +465,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		if (WT_USER_CAN_EDIT) {
 			// Edit Media
 			$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('Edit media') . "&nbsp;&nbsp;");
-			$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid={$rowm['m_id']}}', '_blank', edit_window_specs);");
+			$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid={$rowm['m_id']}', '_blank', edit_window_specs);");
 			$submenu->addClass("submenuitem");
 			$menu->addSubMenu($submenu);
 			if (WT_USER_IS_ADMIN) {
