@@ -98,11 +98,6 @@ case 'GM_DISP_SHORT_PLACE':
 	$text=WT_I18N::translate('Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br /><b>Examples:<br />Full name: </b>Chicago, Illinois, USA<br /><b>Short name: </b>Chicago<br /><b>Full name: </b>Illinois, USA<br /><b>Short name: </b>Illinois');
 	break;
 
-case 'GM_DISP_COUNT':
-	$title=WT_I18N::translate('Display indis and families counts');
-	$text=WT_I18N::translate('Here you can specify if the counts of indis and families connected to the place is displayed. Now if GEDCOM file contains many people is recomended to turn it off.');
-	break;
-
 // Pedigree map
 
 case 'PEDIGREE_MAP_clustersize':

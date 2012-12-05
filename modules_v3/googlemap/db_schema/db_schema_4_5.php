@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 self::exec(
-	"DELETE FROM `##module_setting` WHERE module_name='googlemap' AND setting_name IN ('GM_PRE_POST_MODE_1', 'GM_PRE_POST_MODE_2', 'GM_PRE_POST_MODE_3', 'GM_PRE_POST_MODE_4', 'GM_PRE_POST_MODE_5', 'GM_PRE_POST_MODE_6', 'GM_PRE_POST_MODE_7', 'GM_PRE_POST_MODE_8', 'GM_PRE_POST_MODE_9', 'GM_PH_WHEEL', 'GM_PH_CONTROLS')");
+	"DELETE FROM `##module_setting` WHERE module_name='googlemap' AND setting_name IN ('GM_PRE_POST_MODE_1', 'GM_PRE_POST_MODE_2', 'GM_PRE_POST_MODE_3', 'GM_PRE_POST_MODE_4', 'GM_PRE_POST_MODE_5', 'GM_PRE_POST_MODE_6', 'GM_PRE_POST_MODE_7', 'GM_PRE_POST_MODE_8', 'GM_PRE_POST_MODE_9', 'GM_PH_WHEEL', 'GM_PH_CONTROLS', 'GM_DISP_COUNT')");
 );
 
 // Update the version to indicate success

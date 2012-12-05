@@ -306,7 +306,7 @@ function print_how_many_people($level, $parent) {
 }
 
 function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $placelevels, $lastlevel=false) {
-	global $GOOGLEMAP_COORD, $GOOGLEMAP_PH_MARKER, $GM_DISP_SHORT_PLACE, $GM_DISP_COUNT;
+	global $GOOGLEMAP_COORD, $GOOGLEMAP_PH_MARKER, $GM_DISP_SHORT_PLACE;
 	
 	if (($place2['lati'] == NULL) || ($place2['long'] == NULL) || (($place2['lati'] == '0') && ($place2['long'] == '0'))) {
 		echo 'var icon_type = new google.maps.MarkerImage();';
@@ -357,13 +357,11 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			}
 		}
 		echo '</a>';
-		if ($GM_DISP_COUNT) {
-			if ($lastlevel) {
-				print_how_many_people($level, $parent);
-			} else {
-				$parent[$level]=$place2['place'];
-				print_how_many_people($level+1, $parent);
-			}
+		if ($lastlevel) {
+			print_how_many_people($level, $parent);
+		} else {
+			$parent[$level]=$place2['place'];
+			print_how_many_people($level+1, $parent);
 		}
 		echo '<br>', WT_I18N::translate('This place has no coordinates');
 		if (WT_USER_IS_ADMIN)
@@ -440,13 +438,11 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			}
 		}
 		echo '</a>';
-		if ($GM_DISP_COUNT) {
-			if ($lastlevel) {
-				print_how_many_people($level, $parent);
-			} else {
-				$parent[$level]=$place2['place'];
-				print_how_many_people($level+1, $parent);
-			}
+		if ($lastlevel) {
+			print_how_many_people($level, $parent);
+		} else {
+			$parent[$level]=$place2['place'];
+			print_how_many_people($level+1, $parent);
 		}
 		$temp=addslashes($place2['place']);
 		$temp=str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), $temp);
