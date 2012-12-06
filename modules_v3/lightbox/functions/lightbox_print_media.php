@@ -203,16 +203,16 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 			if (($newrec=find_updated_record($rowm['m_id'], $ged_id)) && $kind!=5  ) {
 				$row = array();
 				$row['m_id'] = $rowm['m_id'];
-				$row['m_filename'] = get_gedcom_value("FILE", 1, $newrec);
-				$row['m_titl'] = get_gedcom_value("TITL", 1, $newrec);
-				if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value("FILE:TITL", 1, $newrec);
+				$row['m_file'] = $ged_id;
+				$row['m_filename'] = get_gedcom_value('FILE', 1, $newrec);
+				$row['m_titl'] = get_gedcom_value('TITL', 1, $newrec);
+				if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value('FILE:TITL', 1, $newrec);
 				$row['m_gedcom'] = $newrec;
-				$et = preg_match("/(\.\w+)$/", $row['m_file'], $ematch);
-				$ext = "";
-				if ($et>0) $ext = substr(trim($ematch[1]), 1);
+				$et = preg_match('/\.(\w+)$/', $row['m_filename'], $ematch);
+				$ext = '';
+				if ($et>0) $ext = $ematch[1];
 				$row['m_ext'] = $ext;
 				$row['pid'] = $pid;
-				$row['m_file'] = $rowm['m_file'];
 				$rows['new'] = $row;
 				$rows['old'] = $rowm;
 			} else {
