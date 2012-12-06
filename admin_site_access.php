@@ -213,6 +213,8 @@ $controller
 			"bAutoWidth":false,
 			"bProcessing": true,
 			"sPaginationType": "full_numbers",
+			"bStateSave": true,
+			"iCookieDuration": 180,
 			"aoColumns": [
 				/* 0 ip_address_start        */ {"iDataSort": 1, "sClass": "ip_address"},
 				/* 1 ip_address_start (sort) */ {"sType": "numeric", "bVisible": false},
@@ -241,6 +243,8 @@ $controller
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bProcessing": true,
+			"bStateSave": true,
+			"iCookieDuration": 180,
 			"sPaginationType": "full_numbers",
 			"aoColumns": [
 				/* 0 ip_address         */ {"iDataSort": 1, "sClass": "ip_address"},
