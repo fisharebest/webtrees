@@ -276,19 +276,6 @@ class WT_GedcomRecord {
 		}
 	}
 
-	// Get an HTML link to this object, for use in sortable lists.
-	public function getXrefLink($target='') {
-		global $SEARCH_SPIDER;
-		if (empty($SEARCH_SPIDER)) {
-			if ($target) {
-				$target='target="'.$target.'"';
-			}
-			return '<a href="'.$this->getHtmlUrl().'#content" name="'.preg_replace('/\D/','',$this->getXref()).'" '.$target.'>'.$this->getXref().'</a>';
-		} else {
-			return $this->getXref();
-		}
-	}
-
 	/**
 	* return an absolute url for linking to this record from another site
 	*

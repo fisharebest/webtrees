@@ -225,7 +225,13 @@ if ($action!='choose') {
 
 					replace_gedrec($gid1, WT_GED_ID, $newgedrec);
 					$rec=WT_GedcomRecord::getInstance($gid1);
-					echo '<br>', WT_I18N::translate('Record %s successfully updated.', $rec->getXrefLink()), '<br>';
+					echo
+						'<br>',
+							WT_I18N::translate(
+								'Record %s successfully updated.',
+								'<a href="'.$rec->getHtmlUrl().'">'.$rec->getXref().'</a>'
+							),
+						'<br>';
 					$fav_count=update_favorites($gid2, $gid1);
 					if ($fav_count > 0) {
 						echo '<br>', $fav_count, ' ', WT_I18N::translate('favorites updated.'), '<br>';
