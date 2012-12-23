@@ -30,7 +30,9 @@ require './includes/session.php';
 
 Zend_Session::writeClose();
 
-$controller=new WT_Controller_Media();
+$mid   = safe_GET_xref('mid');
+$thumb = safe_GET_bool('thumb');
+$media = WT_Media::getInstance($mid);
 
 $debug_mediafirewall   = 0; // set to 1 if you want to see media firewall values displayed instead of images
 $debug_watermark       = 0; // set to 1 if you want to see error messages from the watermark module instead of broken images
@@ -45,36 +47,18 @@ $debug_verboseLogging  = 0; // set to 1 for extra logging details
 //   sends html version of error message and exits the script
 // basic idea from http://us.php.net/manual/en/function.imagecreatefromjpeg.php
 // type  - file extension: JPG, GIF, PNG
-// line1 - the error message
-// line2 - the media file which caused the error (shown only to admins/editors)
-function sendErrorAndExit($type, $line1, $line2 = false) {
+// error - the error message
+function sendErrorAndExit($type, $error) {
 	global $useTTF;
-
-	// line2 contains the information that only an admin/editor should see, such as the full path to a file
-	if (!WT_USER_CAN_EDIT) {
-		$line2 = false;
-	}
 
 	// arbitrary maxlen to keep images from getting too wide
 	$maxlen = 100;
-	$numchars = utf8_strlen($line1);
+	$numchars = utf8_strlen($error);
 	if ($numchars > $maxlen) {
-		$line1 = utf8_substr($line1, 0, $maxlen);
+		$error = utf8_substr($error, 0, $maxlen);
 		$numchars = $maxlen;
 	}
-	$line1 = reverseText($line1);
-	if ($line2) {
-		$numchars2 = utf8_strlen($line2);
-		if ($numchars2 > $maxlen) {
-			$line2 = utf8_substr($line2, $maxlen);
-			$numchars2 = $maxlen;
-		}
-		if ($numchars2 > $numchars) {
-			$numchars = $numchars2;
-		}
-		$line2 = reverseText($line2);
-	}
-
+	$error = reverseText($error);
 	$type = isImageTypeSupported($type);
 	if ($type) {
 		// there are two ways to embed text with PHP
@@ -98,12 +82,8 @@ function sendErrorAndExit($type, $line1, $line2 = false) {
 			$tc  = imagecolorallocate($im, 0, 0, 0);       /* set text color */
 			$tsc = imagecolorallocate($im, 128, 128, 128); /* set text shadow color */
 			imagefilledrectangle($im, 2, 2, $width-4, $height-4, $bgc); /* create a rectangle, leaving 2 px border */
-			imagettftext($im, 10, 0, 9, 26, $tsc, 'includes/fonts/'.$font, $line1);
-			imagettftext($im, 10, 0, 8, 25, $tc, 'includes/fonts/'.$font, $line1);
-			if ($line2) {
-				imagettftext($im, 10, 0, 9, 43, $tsc, 'includes/fonts/'.$font, $line2);
-				imagettftext($im, 10, 0, 8, 42, $tc, 'includes/fonts/'.$font, $line2);
-			}
+			imagettftext($im, 10, 0, 9, 26, $tsc, 'includes/fonts/'.$font, $error);
+			imagettftext($im, 10, 0, 8, 25, $tc, 'includes/fonts/'.$font, $error);
 			restore_error_handler();
 		}
 		// don't use an 'else' here since imagettftextErrorHandler may have changed the value of $useTTF from true to false
@@ -116,13 +96,8 @@ function sendErrorAndExit($type, $line1, $line2 = false) {
 			$tc  = imagecolorallocate($im, 0, 0, 0);       /* set text color */
 			$tsc = imagecolorallocate($im, 128, 128, 128); /* set text shadow color */
 			imagefilledrectangle($im, 2, 2, $width-4, $height-4, $bgc); /* create a rectangle, leaving 2 px border */
-			imagestring($im, 2, 6, 6, $line1, $tsc);
-			imagestring($im, 2, 5, 5, $line1, $tc);
-			if ($line2) {
-				imagestring($im, 2, 6, 31, $line2, $tsc);
-				imagestring($im, 2, 5, 30, $line2, $tc);
-				
-			}
+			imagestring($im, 2, 6, 6, $error, $tsc);
+			imagestring($im, 2, 5, 5, $error, $tc);
 		}
 
 		// if we are using mod rewrite, there will be no error status.  be sure to set it
@@ -137,21 +112,17 @@ function sendErrorAndExit($type, $line1, $line2 = false) {
 		// if we are using mod rewrite, there will be no error status.  be sure to set it
 		header('HTTP/1.0 404 Not Found');
 		header('Status: 404 Not Found');
-		echo "<html ", WT_I18N::html_markup(), "><body>\n";
-		echo "<!-- filler space so IE will display the custom 404 error -->";
-		echo "<!-- filler space so IE will display the custom 404 error -->";
-		echo "<!-- filler space so IE will display the custom 404 error -->";
-		echo "<!-- filler space so IE will display the custom 404 error -->";
-		echo "<!-- filler space so IE will display the custom 404 error -->";
-		echo "<!-- filler space so IE will display the custom 404 error -->";
-		echo "<!-- filler space so IE will display the custom 404 error -->";
-		echo "<!-- filler space so IE will display the custom 404 error -->";
-		echo "\n<div align=\"center\">", $line1, "</div>\n";
-		if ($line2) {
-			// line2 comes from url, so escape
-			echo "<div align=\"center\">", htmlspecialchars($line2), "</div>\n";
-		}
-		echo "</body></html>\n";
+		echo '<html ', WT_I18N::html_markup(), '><body>';
+		echo '<!-- filler space so IE will display the custom 404 error -->';
+		echo '<!-- filler space so IE will display the custom 404 error -->';
+		echo '<!-- filler space so IE will display the custom 404 error -->';
+		echo '<!-- filler space so IE will display the custom 404 error -->';
+		echo '<!-- filler space so IE will display the custom 404 error -->';
+		echo '<!-- filler space so IE will display the custom 404 error -->';
+		echo '<!-- filler space so IE will display the custom 404 error -->';
+		echo '<!-- filler space so IE will display the custom 404 error -->';
+		echo '<div>', $error, '</div>';
+		echo '</body></html>';
 	}
 	exit;
 }
@@ -330,63 +301,33 @@ function imagettftextErrorHandler($errno, $errstr, $errfile, $errline) {
 // ******************************************************
 // start processing here
 
-// to allow watermarking of large images, attempt to disable or raise memory limits
-// @ini_set("memory_limit", "-1");
-// @ini_set("memory_limit", "64M");
-
 // this needs to be a global variable so imagettftextErrorHandler can set it
 $useTTF = (function_exists("imagettftext")) ? true : false;
 
 // get serverfilename from the media controller
-$serverFilename = $controller->getServerFilename();
-if (!$serverFilename) {
-	// either the server is not setting the REQUEST_URI variable as we expect,
-	// or the media firewall is being used from outside the media directory
-	// or the media file requested is in a different GEDCOM
-	$requestedfile = ( isset($_SERVER['REQUEST_URI']) ) ? $_SERVER['REQUEST_URI'] : "REQUEST_URI NOT SET";
-	$exp = explode("?", $requestedfile);
-	$pathinfo = pathinfo($exp[0]);
-	$ext = @strtolower($pathinfo['extension']);
-	// have to exit even if debug_mediafirewall is enabled because $controller->record doesn't exist and is required below
-	sendErrorAndExit($ext, WT_I18N::translate('The media file was not found in this family tree'), $requestedfile);
+if (!$media) {
+	sendErrorAndExit($ext, WT_I18N::translate('The media file was not found in this family tree'));
 }
 
-$which = 'main';
-if (strpos($_SERVER['REQUEST_URI'], '/thumbs/') || safe_GET_bool('thumb')) {
-	// the user requested a thumbnail, but the $controller only knows how to lookup information on the main file
-	// display the thumbnail file instead of the main file
-	// NOTE: since this script was called when a 404 error occured, we know the requested file
-	// does not exist in the main media directory.  just check the media firewall directory
-	$serverFilename = $controller->record->getServerFilename('thumb');
-	$which = 'thumb';
-}
+$which = $thumb ? 'thumb' : 'main';
+$serverFilename = $media->getServerFilename($which);
 
-$imgsize = $controller->record->getImageAttributes($which);
+$imgsize = $media->getImageAttributes($which);
 if (!file_exists($serverFilename)) {
 	// the requested file MAY be in the gedcom, but it does NOT exist on the server.  bail.
 	// Note: the 404 error status is still in effect.
-	if (!$debug_mediafirewall) sendErrorAndExit($imgsize['ext'], WT_I18N::translate('The media file was not found in this family tree'), $serverFilename);
-}
-
-if (empty($controller->pid)) {
-	// the requested file IS NOT in the gedcom, but it exists (the check for fileExists was above)
-	if (!WT_USER_IS_ADMIN) {
-		// only show these files to admin users
-		// bail since current user is not admin
-		// Note: the 404 error status is still in effect.
-		// if (!$debug_mediafirewall) sendErrorAndExit($imgsize['ext'], WT_I18N::translate('The media file was not found in this family tree'), $serverFilename);
-	}
+	if (!$debug_mediafirewall) sendErrorAndExit($imgsize['ext'], WT_I18N::translate('The media file was not found in this family tree'));
 }
 
 // check webtrees permissions
-if (!$controller->record->canDisplayDetails()) {
+if (!$media->canDisplayDetails()) {
 	// if no permissions, bail
 	// Note: the 404 error status is still in effect
 	if (!$debug_mediafirewall) sendErrorAndExit($imgsize['ext'], WT_I18N::translate('The media file was not found in this family tree'));
 }
 
 $protocol = $_SERVER["SERVER_PROTOCOL"];  // determine if we are using HTTP/1.0 or HTTP/1.1
-$filetime = $controller->record->getFiletime($which);
+$filetime = $media->getFiletime($which);
 $filetimeHeader = gmdate("D, d M Y H:i:s", $filetime).' GMT';
 $expireOffset = 3600 * 24;  // tell browser to cache this image for 24 hours
 if (safe_GET('cb')) $expireOffset = $expireOffset * 7; // if cb parameter was sent, cache for 7 days 
@@ -433,7 +374,7 @@ if ($usewatermark) {
 	}
 }
 
-$etag = $controller->record->getEtag($which);
+$etag = $media->getEtag($which);
 $mimetype = $imgsize['mime'];
 $disposition = 'inline';
 if (safe_GET('dl')) {
@@ -462,20 +403,20 @@ if ($debug_mediafirewall) {
 	echo  '<table border="1">';
 	echo  '<tr><td>GEDCOM</td><td>', WT_GEDCOM, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>MEDIA_DIRECTORY_LEVELS</td><td>', $MEDIA_DIRECTORY_LEVELS, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>$controller->pid</td><td>', $controller->pid, '</td><td>&nbsp;</td></tr>';
+	echo  '<tr><td>$mid</td><td>', $mid, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>Requested URL</td><td>', urldecode($_SERVER['REQUEST_URI']), '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>serverFilename</td><td>', $serverFilename, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>controller->record->getFilename()</td><td>', $controller->record->getFilename(), '</td><td>this is direct from the gedcom</td></tr>';
-	echo  '<tr><td>controller->record->getLocalFilename()</td><td>', $controller->record->getLocalFilename(), '</td><td></td></tr>';
-	echo  '<tr><td>controller->record->getServerFilename()</td><td>', $controller->record->getServerFilename(), '</td><td></td></tr>';
-	echo  '<tr><td>controller->record->fileExists()</td><td>', $controller->record->fileExists(), '</td><td></td></tr>';
+	echo  '<tr><td>controller->record->getFilename()</td><td>', $media->getFilename(), '</td><td>this is direct from the gedcom</td></tr>';
+	echo  '<tr><td>controller->record->getLocalFilename()</td><td>', $media->getLocalFilename(), '</td><td></td></tr>';
+	echo  '<tr><td>controller->record->getServerFilename()</td><td>', $media->getServerFilename(), '</td><td></td></tr>';
+	echo  '<tr><td>controller->record->fileExists()</td><td>', $media->fileExists(), '</td><td></td></tr>';
 	echo  '<tr><td>mimetype</td><td>', $mimetype, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>disposition</td><td>', $disposition, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>controller->record->getFilesize()</td><td>', $controller->record->getFilesize(), '</td><td>cannot use this</td></tr>';
+	echo  '<tr><td>controller->record->getFilesize()</td><td>', $media->getFilesize(), '</td><td>cannot use this</td></tr>';
 	echo  '<tr><td>filesize</td><td>', @filesize($serverFilename), '</td><td>this is right</td></tr>';
-	echo  '<tr><td>controller->record->getThumbnail()</td><td>', $controller->record->getThumbnail(), '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>controller->record->canDisplayDetails()</td><td>', $controller->record->canDisplayDetails(), '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>controller->record->getFullName()</td><td>', $controller->record->getFullName(), '</td><td>&nbsp;</td></tr>';
+	echo  '<tr><td>controller->record->getThumbnail()</td><td>', $media->getThumbnail(), '</td><td>&nbsp;</td></tr>';
+	echo  '<tr><td>controller->record->canDisplayDetails()</td><td>', $media->canDisplayDetails(), '</td><td>&nbsp;</td></tr>';
+	echo  '<tr><td>controller->record->getFullName()</td><td>', $media->getFullName(), '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>basename($serverFilename)</td><td>', basename($serverFilename), '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>filetime</td><td>', $filetime, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>filetimeHeader</td><td>', $filetimeHeader, '</td><td>&nbsp;</td></tr>';
@@ -497,7 +438,7 @@ if ($debug_mediafirewall) {
 
 	echo '<pre>';
 	print_r (@getimagesize($serverFilename));
-	print_r ($controller->record);
+	print_r ($media);
 	print_r (WT_GEDCOM);
 	echo '</pre>';
 
