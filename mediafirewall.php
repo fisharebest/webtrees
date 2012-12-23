@@ -39,91 +39,25 @@ $debug_watermark       = 0; // set to 1 if you want to see error messages from t
 $debug_forceImageRegen = 0; // set to 1 if you want to force an image to be regenerated (for debugging only)
 $debug_verboseLogging  = 0; // set to 1 for extra logging details
 
+// Send a "Not found" error as an image
+function send404AndExit() {
+	$error = WT_I18N::translate('The media file was not found in this family tree');
 
-// pass in an image type and an error message
-// if the image type is supported:
-//   creates an image, adds the text, sends headers, outputs the image and exits the script
-// if the image type is not supported:
-//   sends html version of error message and exits the script
-// basic idea from http://us.php.net/manual/en/function.imagecreatefromjpeg.php
-// type  - file extension: JPG, GIF, PNG
-// error - the error message
-function sendErrorAndExit($type, $error) {
-	global $useTTF;
-
-	// arbitrary maxlen to keep images from getting too wide
-	$maxlen = 100;
-	$numchars = utf8_strlen($error);
-	if ($numchars > $maxlen) {
-		$error = utf8_substr($error, 0, $maxlen);
-		$numchars = $maxlen;
-	}
 	$error = reverseText($error);
-	$type = isImageTypeSupported($type);
-	if ($type) {
-		// there are two ways to embed text with PHP
-		// (preferred) using GD and FreeType you can embed text using any True Type font
-		// (fall back) if that is not available, you can insert basic monospaced text
-		if ($useTTF) {
-			$font = 'DejaVuSans.ttf'; // this font ships with webtrees
-			if (!file_exists(WT_ROOT.'includes/fonts/'.$font)) {
-				$useTTF = false;
-			}
-		}
-		// apply the text
-		if ($useTTF) {
-			// if imagettftext throws errors, catch them with a custom error handler
-			set_error_handler("imagettftextErrorHandler");
-			// width of image is based on the number of characters
-			$width = $numchars * 8 + 15;
-			$height = 60;
-			$im  = imagecreatetruecolor($width, $height);  /* Create a black image */
-			$bgc = imagecolorallocate($im, 255, 255, 255); /* set background color */
-			$tc  = imagecolorallocate($im, 0, 0, 0);       /* set text color */
-			$tsc = imagecolorallocate($im, 128, 128, 128); /* set text shadow color */
-			imagefilledrectangle($im, 2, 2, $width-4, $height-4, $bgc); /* create a rectangle, leaving 2 px border */
-			imagettftext($im, 10, 0, 9, 26, $tsc, 'includes/fonts/'.$font, $error);
-			imagettftext($im, 10, 0, 8, 25, $tc, 'includes/fonts/'.$font, $error);
-			restore_error_handler();
-		}
-		// don't use an 'else' here since imagettftextErrorHandler may have changed the value of $useTTF from true to false
-		if (!$useTTF) {
-			// width of image is based on the number of characters
-			$width = ($numchars+1) * 6.5;
-			$height = 60;
-			$im  = imagecreatetruecolor($width, $height);  /* Create a black image */
-			$bgc = imagecolorallocate($im, 255, 255, 255); /* set background color */
-			$tc  = imagecolorallocate($im, 0, 0, 0);       /* set text color */
-			$tsc = imagecolorallocate($im, 128, 128, 128); /* set text shadow color */
-			imagefilledrectangle($im, 2, 2, $width-4, $height-4, $bgc); /* create a rectangle, leaving 2 px border */
-			imagestring($im, 2, 6, 6, $error, $tsc);
-			imagestring($im, 2, 5, 5, $error, $tc);
-		}
+	// width of image is based on the number of characters
+	$width = (utf8_strlen($error)) * 6.5;
+	$height = 60;
+	$im  = imagecreatetruecolor($width, $height);  /* Create a black image */
+	$bgc = imagecolorallocate($im, 255, 255, 255); /* set background color */
+	$tc  = imagecolorallocate($im, 0, 0, 0);       /* set text color */
+	imagefilledrectangle($im, 2, 2, $width-4, $height-4, $bgc); /* create a rectangle, leaving 2 px border */
+	imagestring($im, 2, 5, 5, $error, $tc);
 
-		// if we are using mod rewrite, there will be no error status.  be sure to set it
-		header('HTTP/1.0 404 Not Found');
-		header('Status: 404 Not Found');
-		header('Content-Type: image/'.$type);
-		$imSendFunc = 'image'.$type;
-		$imSendFunc($im);
-		imagedestroy($im);
-	} else {
-		// output a standard html string
-		// if we are using mod rewrite, there will be no error status.  be sure to set it
-		header('HTTP/1.0 404 Not Found');
-		header('Status: 404 Not Found');
-		echo '<html ', WT_I18N::html_markup(), '><body>';
-		echo '<!-- filler space so IE will display the custom 404 error -->';
-		echo '<!-- filler space so IE will display the custom 404 error -->';
-		echo '<!-- filler space so IE will display the custom 404 error -->';
-		echo '<!-- filler space so IE will display the custom 404 error -->';
-		echo '<!-- filler space so IE will display the custom 404 error -->';
-		echo '<!-- filler space so IE will display the custom 404 error -->';
-		echo '<!-- filler space so IE will display the custom 404 error -->';
-		echo '<!-- filler space so IE will display the custom 404 error -->';
-		echo '<div>', $error, '</div>';
-		echo '</body></html>';
-	}
+	header('HTTP/1.0 404 Not Found');
+	header('Status: 404 Not Found');
+	header('Content-Type: image/png');
+	imagepng($im);
+	imagedestroy($im);
 	exit;
 }
 
@@ -304,9 +238,9 @@ function imagettftextErrorHandler($errno, $errstr, $errfile, $errline) {
 // this needs to be a global variable so imagettftextErrorHandler can set it
 $useTTF = (function_exists("imagettftext")) ? true : false;
 
-// get serverfilename from the media controller
-if (!$media) {
-	sendErrorAndExit($ext, WT_I18N::translate('The media file was not found in this family tree'));
+// Media missing/private?
+if (!$media || !$media->canDisplayDetails()) {
+	send404AndExit();
 }
 
 $which = $thumb ? 'thumb' : 'main';
@@ -316,14 +250,7 @@ $imgsize = $media->getImageAttributes($which);
 if (!file_exists($serverFilename)) {
 	// the requested file MAY be in the gedcom, but it does NOT exist on the server.  bail.
 	// Note: the 404 error status is still in effect.
-	if (!$debug_mediafirewall) sendErrorAndExit($imgsize['ext'], WT_I18N::translate('The media file was not found in this family tree'));
-}
-
-// check webtrees permissions
-if (!$media->canDisplayDetails()) {
-	// if no permissions, bail
-	// Note: the 404 error status is still in effect
-	if (!$debug_mediafirewall) sendErrorAndExit($imgsize['ext'], WT_I18N::translate('The media file was not found in this family tree'));
+	if (!$debug_mediafirewall) send404AndExit();
 }
 
 $protocol = $_SERVER["SERVER_PROTOCOL"];  // determine if we are using HTTP/1.0 or HTTP/1.1
