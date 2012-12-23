@@ -726,14 +726,6 @@ function thumbnail_file($filename, $generateThumb=true, $overwrite=false, $icon_
 	else
 		$thumbExt = "";
 
-	// how does $pid ever get set?
-	if (!empty($pid)) {
-		$media_id_number = get_media_id_from_file($filename);
-		// run the clip method foreach person associated with the picture
-		$thumbnail = picture_clip($pid, $media_id_number, $filename, $thumbDir);
-		if (!empty($thumbnail)) return $thumbnail;
-	}
-
 	if (!$generateThumb && file_exists($thumbDir . $thumbName)) {
 		return $thumbDir . $thumbName;
 	}
@@ -1792,12 +1784,6 @@ function PrintMediaLinks($links, $size = "small") {
 	return true;
 }
 
-function get_media_id_from_file($filename) {
-	return
-		WT_DB::prepare("SELECT m_id FROM `##media` WHERE m_filename LIKE ? AND m_file=?")
-		->execute(array("%{$filename}", WT_GED_ID))
-		->fetchOne();
-}
 //returns an array of rows from the database containing the Person ID's for the people associated with this picture
 function get_media_relations($mid) {
 	global $medialist;
@@ -1832,72 +1818,6 @@ function get_media_relations($mid) {
 		}
 	$medialist[$keyMediaList]['LINKS'] = $media;
 	return $media;
-}
-
-// clips a media item based on data from the gedcom
-function picture_clip($person_id, $image_id, $filename, $thumbDir)
-{
-	// This gets the gedrec
-	$gedrec=
-		WT_DB::prepare("SELECT m_gedcom FROM `##media` WHERE m_id=? AND m_file=?")
-		->execute(array($image_id, WT_GED_ID))
-		->fetchOne();
-
-	//Get the location of the file, and then make a location for the clipped image
-
-	//store values to the variables
-	$top = get_gedcom_value("_TOP", 2, $gedrec);
-	$bottom = get_gedcom_value("_BOTTOM", 2, $gedrec);
-	$left = get_gedcom_value("_LEFT", 2, $gedrec);
-	$right = get_gedcom_value("_RIGHT", 2, $gedrec);
-	//check to see if all values were retrived
-	if ($top != null || $bottom != null || $left != null || $right != null)
-	{
-		$image_filename = check_media_depth($filename);
-		$image_dest = $thumbDir.$person_id."_".$image_filename[count($image_filename)-1].".jpg";
-		//call the cropimage function
-		cropImage($filename, $image_dest, $left, $top, $right, $bottom); //removed offset 50
-		return  $image_dest;
-	}
-	return "";
-}
-
-function cropImage($image, $dest_image, $left, $top, $right, $bottom) { //$image is the string location of the original image, $dest_image is the string file location of the new image, $fx is the..., $fy is the...
-	global $THUMBNAIL_WIDTH;
-	$ims = @getimagesize($image);
-	$cwidth = ($ims[0]-$right)-$left;
-	$cheight = ($ims[1]-$bottom)-$top;
-	$width = $THUMBNAIL_WIDTH;
-	$height = round($cheight * ($width/$cwidth));
-	switch ($ims['mime']) {
-	case 'image/png':
-		if (!function_exists('imagecreatefrompng') || !function_exists('imagepng')) break;
-		$img = imagecreatetruecolor(($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		$org_img = imagecreatefrompng($image);
-		$ims = @getimagesize($image);
-		imagecopyresampled($img, $org_img, 0, 0, $left, $top, $width, $height, ($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		imagepng($img, $dest_image);
-		imagedestroy($img);
-		break;
-	case 'image/jpeg':
-		if (!function_exists('imagecreatefromjpeg') || !function_exists('imagejpeg')) break;
-		$img = imagecreatetruecolor($width, $height);
-		$org_img = imagecreatefromjpeg($image);
-		$ims = @getimagesize($image);
-		imagecopyresampled($img, $org_img, 0, 0, $left, $top, $width, $height, ($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		imagejpeg($img, $dest_image, 90);
-		imagedestroy($img);
-		break;
-	case 'image/gif':
-		if (!function_exists('imagecreatefromgif') || !function_exists('imagegif')) break;
-		$img = imagecreatetruecolor(($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		$org_img = imagecreatefromgif($image);
-		$ims = @getimagesize($image);
-		imagecopyresampled($img, $org_img, 0, 0, $left, $top, $width, $height, ($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		imagegif($img, $dest_image);
-		imagedestroy($img);
-		break;
-	}
 }
 
 // checks whether a media file exists.

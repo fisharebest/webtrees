@@ -34,62 +34,34 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 class WT_Controller_Media extends WT_Controller_GedcomRecord {
 
 	public function __construct() {
-		global $MEDIA_DIRECTORY;
-
-		$filename = safe_GET('filename');
 		$xref = safe_GET_xref('mid');
 
-		if (empty($filename) && empty($xref)) {
-			// this section used by mediafirewall.php to determine what media file was requested
+		$gedrec=find_media_record($xref, WT_GED_ID);
+		if (WT_USER_CAN_EDIT) {
+			$newrec=find_updated_record($xref, WT_GED_ID);
+		} else {
+			$newrec=null;
+		}
 
-			if (isset($_SERVER['REQUEST_URI'])) {
-				// NOTE: format of this server variable:
-				// Apache: /phpGedView/media/a.jpg
-				// IIS:    /phpGedView/mediafirewall.php?404;http://server/phpGedView/media/a.jpg
-				$requestedfile = $_SERVER['REQUEST_URI'];
-				// urldecode the request
-				$requestedfile = rawurldecode($requestedfile);
-				// make sure the requested file is in the media directory
-				if (strpos($requestedfile, $MEDIA_DIRECTORY) !== false) {
-					// strip off the wt directory and media directory from the requested url so just the image information is left
-					$filename = substr($requestedfile, strpos($requestedfile, $MEDIA_DIRECTORY) + strlen($MEDIA_DIRECTORY) - 1);
-					// strip the ged param if it was passed on the querystring
-					// would be better if this could remove any querystring, but '?' are valid in unix filenames
-					if (strpos($filename, '?ged=') !== false) {
-						$filename = substr($filename, 0, strpos($filename, '?ged='));
-					}
-					// if user requested a thumbnail, lookup permissions based on the original image
-					$filename = str_replace('/thumbs', '', $filename);
-				} else {
-					// the MEDIA_DIRECTORY of the current GEDCOM was not part of the requested file
-					// either the requested file is in a different GEDCOM (with a different MEDIA_DIRECTORY)
-					// or the Media Firewall is being called from outside the MEDIA_DIRECTORY
-					// this condition can be detected by the media firewall by calling controller->getServerFilename()
-				}
+		if ($gedrec===null) {
+			if ($newrec===null) {
+				// Nothing to see here.
+				return;
+			} else {
+				// Create a dummy record from the first line of the new record.
+				// We need it for diffMerge(), getXref(), etc.
+				list($gedrec)=explode("\n", $newrec);
 			}
 		}
 
-		//Checks to see if the filename ($filename) exists
-		if (!empty($filename)) {
-			//If the filename ($filename) is set, then it will call the method to get the Media ID ($xref) from the filename ($filename)
-			$xref = get_media_id_from_file($filename);
-			if (!$xref) {
-				//This will set the Media ID to be false if the File given doesn't match to anything in the database
-				$xref = false;
-				// create a very basic gedcom record for this file so that the functions of the media object will work
-				// this is used by the media firewall when requesting an object that exists in the media firewall directory but not in the gedcom
-				$this->record = new WT_Media("0 @"."0"."@ OBJE\n1 FILE ".$filename);
-			}
-		}
+		$this->record = new WT_Media($gedrec);
 
-		//checks to see if the Media ID ($xref) is set. If the Media ID isn't set then there isn't any information avaliable for that picture the picture doesn't exist.
-		if ($xref) {
-			//This creates a Media Object from the getInstance method of the Media Class. It takes the Media ID ($xref) and creates the object.
-			$this->record = WT_Media::getInstance($xref);
+		// If there are pending changes, merge them in.
+		if ($newrec!==null) {
+			$diff_record=new WT_Media($newrec);
+			$diff_record->setChanged(true);
+			$this->record->diffMerge($diff_record);
 		}
-
-		if (is_null($this->record)) return false;
-		$this->record->ged_id=WT_GED_ID; // This record is from a file
 
 		parent::__construct();
 	}
