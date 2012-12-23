@@ -236,7 +236,7 @@ function imagettftextErrorHandler($errno, $errstr, $errfile, $errline) {
 // start processing here
 
 // this needs to be a global variable so imagettftextErrorHandler can set it
-$useTTF = (function_exists("imagettftext")) ? true : false;
+$useTTF = function_exists('imagettftext');
 
 // Media missing/private?
 if (!$media || !$media->canDisplayDetails()) {
@@ -392,14 +392,9 @@ if (($if_modified_since == $filetimeHeader) && !$debug_forceImageRegen) {
 	}
 }
 
-// reset the 404 error
-header($protocol." 200 OK");
-header("Status: 200 OK");
-
 // send headers for the image
 if (!$debug_watermark) {
 	header("Content-Type: " . $mimetype);
-	header('Content-Disposition: '.$disposition.'; filename="'.basename($serverFilename).'"');
 }
 
 if ($generatewatermark) {
