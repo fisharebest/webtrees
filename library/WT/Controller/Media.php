@@ -172,28 +172,4 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 		sort_facts($facts);
 		return $facts;
 	}
-
-	/**
-	* get the relative file path of the image on the server
-	* @return string
-	*/
-	function getLocalFilename() {
-		if ($this->record) {
-			return $this->record->getLocalFilename();
-		} else {
-			return false;
-		}
-	}
-
-	/**
-	* get the filename on the server
-	* @return string
-	*/
-	function getServerFilename() {
-		if ($this->record) {
-			return $this->record->getServerFilename();
-		} else {
-			return false;
-		}
-	}
 }

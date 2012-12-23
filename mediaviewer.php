@@ -87,13 +87,6 @@ $controller
 	->addInlineJavascript('jQuery("#media-tabs").tabs();')
 	->addInlineJavascript('jQuery("#media-tabs").css("visibility", "visible");');
 
-
-/* Note:
- *  if $controller->getLocalFilename() is not set, then an invalid MID was passed in
- *  if $controller->m_pid is not set, then a filename was passed in that is not in the gedcom
- */
-$filename = $controller->getLocalFilename();
-global $tmb;
 echo '<div id="media-details">';
 echo '<h2>', $controller->record->getFullName(), ' ', $controller->record->getAddName(), '</h2>';
 echo '<div id="media-tabs">';
