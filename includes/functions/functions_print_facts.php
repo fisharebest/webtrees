@@ -389,6 +389,12 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		case 'CALN':
 			echo WT_Gedcom_Tag::getLabelValue('CALN', expand_urls($match[2]));
 			break;
+		case 'FORM': // 0 OBJE / 1 FILE / 2 FORM / 3 TYPE
+			echo WT_Gedcom_Tag::getLabelValue('FORM', $match[2]);
+			if (preg_match('/\n3 TYPE (.+)/', $fact->getGedcomRecord(), $type_match)) {
+				echo WT_Gedcom_Tag::getLabelValue('TYPE', WT_Gedcom_Tag::getFileFormTypeValue($type_match[1]));
+			}
+			break;
 		default:
 			if (!$HIDE_GEDCOM_ERRORS || WT_Gedcom_Tag::isTag($match[1])) {
 				echo WT_Gedcom_Tag::getLabelValue($fact->getTag().':'.$match[1], htmlspecialchars($match[2]));

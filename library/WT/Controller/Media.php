@@ -157,48 +157,8 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	*/
 	function getFacts($includeFileName=true) {
 		$facts = $this->record->getFacts(array());
-		sort_facts($facts);
-		//if ($includeFileName) $facts[] = new WT_Event("1 FILE ".$this->record->getFilename(), $this->record, 0);
-		$mediaType = $this->record->getMediatype();
-		$facts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType), $this->record, 0);
 
-		if (($newrec=find_updated_record($this->record->getXref(), WT_GED_ID))!==null) {
-			$newmedia = new WT_Media($newrec);
-			$newfacts = $newmedia->getFacts(array());
-			$newimgsize = $newmedia->getImageAttributes();
-			if ($includeFileName) $newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType), $this->record, 0);
-			$newfacts[] = new WT_Event("1 FORM ".$newimgsize['ext'], $this->record, 0);
-			$mediaType = $newmedia->getMediatype();
-			$newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType), $this->record, 0);
-			//-- loop through new facts and add them to the list if they are any changes
-			//-- compare new and old facts of the Personal Fact and Details tab 1
-			for ($i=0; $i<count($facts); $i++) {
-				$found=false;
-				foreach ($newfacts as $indexval => $newfact) {
-					if (trim($newfact->gedcomRecord)==trim($facts[$i]->gedcomRecord)) {
-						$found=true;
-						break;
-					}
-				}
-				if (!$found) {
-					$facts[$i]->setIsOld();
-				}
-			}
-			foreach ($newfacts as $indexval => $newfact) {
-				$found=false;
-				foreach ($facts as $indexval => $fact) {
-					if (trim($fact->gedcomRecord)==trim($newfact->gedcomRecord)) {
-						$found=true;
-						break;
-					}
-				}
-				if (!$found) {
-					$newfact->setIsNew();
-					$facts[]=$newfact;
-				}
-			}
-		}
-
+		// Add some dummy facts to show additional information
 		if ($this->record->fileExists()) {
 			// get height and width of image, when available
 			$imgsize = $this->record->getImageAttributes();
