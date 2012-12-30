@@ -140,7 +140,7 @@ $upper_links=array();
 foreach ($records as $record) {
 	$all_links[$record->xref]=array();
 	$upper_links[strtoupper($record->xref)]=$record->xref;
-	preg_match_all('/\n\d ([^ ]+) @([^#@][^@]*)@/', $record->gedrec, $matches, PREG_SET_ORDER);
+	preg_match_all('/\n\d ('.WT_REGEX_TAG.') @([^#@\n][^\n@]*)@/', $record->gedrec, $matches, PREG_SET_ORDER);
 	foreach ($matches as $match) {
 		$all_links[$record->xref][$match[2]]=$match[1];
 	}
