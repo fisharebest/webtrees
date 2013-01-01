@@ -103,11 +103,12 @@ if ($action == 'choose' && $paramok) {
 		echo '<table><tr><td>';
 		//-- Get the filename of this existing Media item
 		$filename=
-			WT_DB::prepare("SELECT m_file FROM `##media` where m_id=? AND m_file=?")
+			WT_DB::prepare("SELECT m_filename FROM `##media` where m_id=? AND m_file=?")
 			->execute(array($mediaid, WT_GED_ID))
 			->fetchOne();
-		$thumbnail = thumbnail_file($filename, false);
-		echo '<img src="', htmlspecialchars($thumbnail), '" class="thumbheight">';
+		$media=WT_Media::getInstance($mediaid);
+		$thumbUrl  = $media->getRawUrlDirect('thumb');
+		echo '<img src="', $thumbUrl, '" class="thumbheight">';
 		echo '</td></tr></table>';
 		echo '</td></tr>';
 		echo '<tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Links'), '</td>';
