@@ -2,7 +2,7 @@
 // Add media to gedcom file
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -30,13 +30,13 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Simple();
 $controller
-	->requireMemberLogin()
 	->addExternalJavascript(WT_JQUERY_URL)
 	->addExternalJavascript(WT_JQUERYUI_URL)
 	->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->setPageTitle(WT_I18N::translate('Add a new media object'))
 	->pageHeader()
+	->requireMemberLogin()
 	->addInlineJavascript('
 	// Shared Notes =========================
 	function findnote(field) {
@@ -101,18 +101,7 @@ if ($action=='update' || $action=='newentry') {
 }
 
 if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
-	echo WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
-	//-- display messages as to why the editing access was denied
-	if (!WT_USER_CAN_EDIT) {
-		echo '<br>', WT_I18N::translate('This user name cannot edit this GEDCOM.');
-	}
-	if (!$ALLOW_EDIT_GEDCOM) {
-		echo '<br>', WT_I18N::translate('Editing this GEDCOM has been disabled by the administrator.');
-	}
-	if (!$disp) {
-		echo '<br>', WT_I18N::translate('Privacy settings prevent you from editing this record.');
-	}
-	echo '<p class="center"><a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
+	$controller->addInlineJavascript('opener.window.location.reload(); window.close();');
 	exit;
 }
 
