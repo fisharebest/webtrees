@@ -673,9 +673,9 @@ case 'MEDIA_DIRECTORY':
 		'<p>'.
 		WT_I18N::translate('This folder will be used to store the media files for this family tree.').
 		'</p><p>'.
-		WT_I18N::translate('If you change this folder, you must also move any media files to the new location.').
+		WT_I18N::translate('If you select a different folder, you must also move any media files from the existing folder to the new one.').
 		'</p><p>'.
-		WT_I18N::translate('If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then they will be able to use the same filename for different media files.').
+		WT_I18N::translate('If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate.').
 		'</p>';
 	break;
 
