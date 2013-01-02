@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -78,7 +78,7 @@ function move_file($src, $dest) {
 	if (!is_dir($destdir)) {
 		@mkdirs($destdir);
 		if (!is_dir($destdir)) {
-			echo '<div class="error">', WT_I18N::translate('Directory could not be created'), ' (', $destdir, ')</div>';
+			echo '<div class="error">', WT_I18N::translate('The folder %s does not exist, and it could not be created.', $destdir), '</div>';
 			return false;
 		}
 	}

@@ -2,7 +2,7 @@
 // Interface to edit place locations
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
@@ -84,7 +84,7 @@ if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 	if (!WT_DEBUG) {
 		$controller->addInlineJavaScript('closePopupAndReloadParent();');
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
+	echo "<div class=\"center\"><button onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('close'), "</button></div>";
 	exit;
 }
 
@@ -102,7 +102,7 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 	if (!WT_DEBUG) {
 		$controller->addInlineJavaScript('closePopupAndReloadParent();');
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
+	echo "<div class=\"center\"><button onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('close'), "</button></div>";
 	exit;
 }
 
@@ -122,7 +122,7 @@ if ($action=='update_sv_params' && WT_USER_IS_ADMIN) {
 	if (!WT_DEBUG) {
 		$controller->addInlineJavaScript('closePopupAndReloadParent();');
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
+	echo "<div class=\"center\"><button onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('close'), "</button></div>";
 	exit;
 }
 

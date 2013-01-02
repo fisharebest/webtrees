@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -439,7 +439,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		echo "</table>"; // Close table with find options
 		
 		echo "<br>";
-		echo "<a href=\"#\" onclick=\"window.close();\">", WT_I18N::translate('Close Window'), "</a><br>";
+		echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 		echo "<br>";
 		
 		if ($action=="filter") {

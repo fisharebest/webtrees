@@ -4,7 +4,7 @@
 // This is the page that does the work of linking items.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -171,12 +171,8 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 		echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Set link'), '"></td></tr>';
 		echo '</table>';
 		echo '</form>';
-		echo '<p class="center"><a href="#" onclick="closePopupAndReloadParent();">', WT_I18N::translate('Close Window'), '</a></p>';
 	} elseif ($action == "update" && $paramok) {
 		linkMedia($mediaid, $linktoid);
-		echo '<p class="center"><a href="#" onclick="closePopupAndReloadParent();">', WT_I18N::translate('Close Window'), '</a></p>';
-	} else {
-		echo '<center>nothing to do<center>';
-		echo '<p class="center"><a href="#" onclick="closePopupAndReloadParent();">', WT_I18N::translate('Close Window'), '</a></p>';
 	}
+	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 }

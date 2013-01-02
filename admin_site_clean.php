@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -82,7 +82,7 @@ foreach (WT_Tree::getAll() as $tree) {
 }
 
 echo
-	'<h3>', WT_I18N::translate('Cleanup data directory'), '</h3>',
+	'<h3>', $controller->getPageTitle(), '</h3>',
 	'<p>',
 	WT_I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', '<i class="icon-resn-confidential"></i>'),
 	'</p>';

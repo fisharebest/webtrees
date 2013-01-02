@@ -2,7 +2,7 @@
 // Popup window for viewing images
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -200,4 +200,4 @@ if (!$controller->record->isExternal() && !$controller->record->fileExists() ) {
 echo "</form>";
 echo "<div style=\"position: relative; \">";
 echo "</div>";
-echo "<div class=\"center\"><br><a href=\"#\" onclick=\"window.close();\">".WT_I18N::translate('Close Window')."</a></div>";
+echo '<button onclick="window.close();">', WT_I18N::translate('close'), '</button>';

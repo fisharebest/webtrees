@@ -567,4 +567,4 @@ case 'editmedia':
 	break;
 }
 
-echo '<p class="center"><a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
+echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';

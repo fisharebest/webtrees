@@ -2,7 +2,7 @@
 // Popup window that will allow a user to search for a family id, person id
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -822,7 +822,7 @@ if ($action=="filter") {
 		echo '</p></div>';
 	}
 }
-echo '<h4><a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></h4>';
+echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 echo "</div>"; // Close div="find-page"
 
 // Set focus to the input field
