@@ -1340,11 +1340,6 @@ case 'manage_media':
 	$text=WT_I18N::translate('On this page you can easily manage your Media files and directories.<br /><br />When you create new Media subdirectories, <b>webtrees</b> will ensure that the identical directory structure is maintained within the <b>%sthumbs</b> directory.  When you upload new Media files, <b>webtrees</b> can automatically create the thumbnails for you.<br /><br />Beside each image in the Media list you\'ll find the following options.  The options actually shown depend on the current status of the Media file.<ul><li><b>Edit</b>&nbsp;&nbsp;When you click on this option, you\'ll see a page where you can change the title of the Media object.  If the Media object is not yet linked to a person, family, or source in the currently active database, you can establish this link here.  You can rename the file or even change its location within the <b>%s</b> directory structure.  When necessary, <b>webtrees</b> will automatically create the required subdirectories or any missing thumbnails.</li><li><b>Edit raw GEDCOM record</b>&nbsp;&nbsp;This option is only available when the administrator has enabled it.  You can view or edit the raw GEDCOM data associated with this Media object.  You should be very careful when you use this option.</li><li><b>Delete file</b>&nbsp;&nbsp;This option lets you erase all knowledge of the Media file from the current database.  Other databases will not be affected.  If this Media file is not mentioned in any other database, it, and its associated thumbnail, will be deleted.</li><li><b>Remove object</b>&nbsp;&nbsp;This option lets you erase all knowledge of the Media file from the current database.  Other databases will not be affected.  The Media file, and its associated thumbnail, will not be deleted.</li><li><b>Remove links</b>&nbsp;&nbsp;This option lets you remove all links to the media object from the current database.  The file will not be deleted, and the Media object by which this file is known to the current database will be retained.  Other databases will not be affected.</li><li><b>Set link</b>&nbsp;&nbsp;This option lets you establish links between the media file and persons, families, or sources of the current database.  When necessary, <b>webtrees</b> will also create the Media object by which the Media file is known to the database.</li><li><b>Create thumbnail</b>&nbsp;&nbsp;When you select this option, <b>webtrees</b> will create the missing thumbnail.</li></ul>', $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
 	break;
 
-case 'medialist_recursive':
-	$title=WT_I18N::translate('List files in subdirectories');
-	$text=WT_I18N::translate('When this option is selected, the MultiMedia Objects will search not only the directory selected from the Filter list but all its subdirectories as well. When this option is not selected, only the selected directory is searched.<br /><br />The titles of all media objects found are then examined to determine whether they contain the text entered in the Filter.  The result of these two actions determines the multimedia objects to be listed.');
-	break;
-
 case 'move_mediadirs':
 	$title=WT_I18N::translate('Move media directories');
 	$text=WT_I18N::translate('When the Media Firewall is enabled, Multi-Media files can be stored in a server directory that is not accessible from the Internet.<br /><br />These buttons allow you to easily move an entire Media directory structure between the protected (not web-addressable) <b>%s%s</b> and the normal <b>%s</b> directories.', $MEDIA_FIREWALL_ROOTDIR, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
@@ -1578,14 +1573,6 @@ case 'username':
 case 'utf8_ansi':
 	$title=WT_I18N::translate('Convert from UTF-8 to ANSI');
 	$text=WT_I18N::translate('For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br /><br />The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren\'t sure, consult the documentation of that program.<br /><br />Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program\'s method for handling these special characters by some other means.  Consult your program\'s manufacturer or author.<br /><br />This <a href=\'http://en.wikipedia.org/wiki/UTF-8\' target=\'_blank\' title=\'Wikipedia article\'><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8.');
-	break;
-
-case 'view_server_folder':
-	$title=WT_I18N::translate('View server folder');
-	$text=WT_I18N::translate('The administrator has enabled up to %s folder levels below the default <b>%s</b>.  This helps to organize the media files and reduces the possibility of name collisions.<br /><br />In this field, you select the media folder whose contents you wish to view.  When you select <b>ALL</b>, all media files will be shown without regard to the folder in which they are stored.  This can produce a very long list of media items.',
-		get_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY_LEVELS'),
-		get_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY')
-	);
 	break;
 
 case 'zip':

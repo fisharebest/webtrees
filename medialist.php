@@ -185,10 +185,9 @@ if (WT_USE_LIGHTBOX) {
 <!-- // NOTE: Row 1, left: -->
 	<!-- // begin select media folders -->
 		<td class="descriptionbox wrap width25">
-			<?php echo WT_I18N::translate('Media folder'), help_link('view_server_folder'); ?></td>
+			<?php echo WT_I18N::translate('Media folder'); ?></td>
 		<td class="optionbox wrap width25">
 			<?php
-				//if ($MEDIA_DIRECTORY_LEVELS > 0) {
 				if (!$folder) {
 					$folder = 'ALL';
 				}
@@ -203,7 +202,6 @@ if (WT_USE_LIGHTBOX) {
 					echo '</option>';
 				}
 				echo '</select></span><br>';
-		//} else echo $MEDIA_DIRECTORY, '<input name="folder" type="hidden" value="ALL">';
 					?>
 			</td>
 	<!-- // end select media folders -->
@@ -233,7 +231,7 @@ if (WT_USE_LIGHTBOX) {
 <!-- // NOTE: Row 2 left:-->
 	<!-- // begin sub directories -->
 			<td class="descriptionbox wrap width25">
-				<?php echo WT_I18N::translate('Include subdirectories'), help_link('medialist_recursive'); ?>
+				<?php echo /* I18N: Label for check-box.  Sub-folders are folders inside other folders */ WT_I18N::translate('Include sub-folders'); ?>
 			</td>
 			<td class="optionbox wrap width25">
 				<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?>>
