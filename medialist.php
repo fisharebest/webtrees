@@ -185,7 +185,7 @@ if (WT_USE_LIGHTBOX) {
 <!-- // NOTE: Row 1, left: -->
 	<!-- // begin select media folders -->
 		<td class="descriptionbox wrap width25">
-			<?php echo WT_I18N::translate('Media folder'); ?></td>
+			<?php echo WT_I18N::translate('Folder'); ?></td>
 		<td class="optionbox wrap width25">
 			<?php
 				if (!$folder) {

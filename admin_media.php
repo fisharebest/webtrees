@@ -784,7 +784,7 @@ if (check_media_structure()) {
 				}
 				if ($MEDIA_DIRECTORY_LEVELS >= 0) {
 					$folders = get_media_folders();
-					echo "<td colspan=\"2\" dir=\"ltr\"><select name=\"directory\">";
+					echo '<td colspan="2" dir="ltr">', WT_DATA_DIR,  '<select name="directory">';
 					foreach ($folders as $f) {
 						echo "<option value=\"".$f."\"";
 						if ($directory==$f) echo " selected=\"selected\"";
@@ -808,11 +808,6 @@ if (check_media_structure()) {
 		// Tell the user where he is
 		echo '<tr>';
 		echo '<td colspan="4">';
-			echo WT_I18N::translate('Current directory');
-			echo ': ';
-			echo '<span dir="auto">'.substr($directory, 0, -1).'</span>';
-			echo '<br>';
-
 			// Calculation to determine whether files are protected or not -------------------------
 			// Check if media directory and thumbs directory are empty
 			$clean = false;

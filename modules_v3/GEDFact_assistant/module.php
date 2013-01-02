@@ -534,9 +534,9 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				// Tell the user where he is
 				echo "<tr>";
 					echo "<td class=\"topbottombar\" colspan=\"2\">";
-						echo WT_I18N::translate('Current directory');
+						echo WT_I18N::translate('Folder');
 						echo "<br>";
-						echo substr($directory, 0, -1);
+						echo $directory;
 					echo "</td>";
 				echo "</tr>";
 		

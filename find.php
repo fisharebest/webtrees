@@ -588,7 +588,7 @@ if ($action=="filter") {
 
 		// Start of media directory table
 		// Tell the user where he is
-		echo '<div id="find-media"><span>', WT_I18N::translate('Current directory'), '&nbsp;=&nbsp;</span>', substr($directory, 0, -1), '</div>';
+		echo '<div id="find-media"><span>', WT_I18N::translate('Folder'), '&nbsp;=&nbsp;</span>', substr($directory, 0, -1), '</div>';
 
 		// display the directory list
 		if (count($dirs) || $level) {
