@@ -2,7 +2,7 @@
 // Header for webtrees administration theme
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -166,5 +166,10 @@ if (WT_USER_IS_ADMIN) {
 }
 echo
 	'</div>',
-	// Content -->
-	'<div id="admin_content" class="ui-widget-content">';
+	'<div id="admin_content" class="ui-widget-content">',
+	'<div id="flash-messages">';
+	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
+		echo '<p class="ui-state-highlight">', $message, '</p>';
+	}
+echo
+	'</div>';
