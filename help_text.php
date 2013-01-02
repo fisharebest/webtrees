@@ -2,7 +2,7 @@
 // Show help text in a popup window.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This file also serves as a database of fact and label descriptions,
 // allowing them to be discovered by xgettext, so we may use them dynamically
@@ -668,24 +668,15 @@ case 'MEDIA_DIRECTORY_LEVELS':
 	break;
 
 case 'MEDIA_DIRECTORY':
-	$MEDIA_DIRECTORY=get_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY');
-	$title=WT_I18N::translate('Media directory');
+	$title=WT_I18N::translate('Media folder');
 	$text=
 		'<p>'.
-		/* I18N: %1$s is an example media directory, such as “media/”, %2$s is an example URL, such as “http://localhost/webtrees/media/img123.jpg”, and %3$s is an example file path, such as “/home/greg/public_html/webtrees/media/img123.jpg” */
-		WT_I18N::translate('The media directory is used to create URLs for your media items.  It is also the sub-directory in which the media items are stored.  For example, a media directory of %1$s will create URLs of the form %2$s and store these items as %3$s.', '<tt dir="ltr" lang="en" style="white-space:nowrap; color:#0000ff; font-weight:bold;">'.$MEDIA_DIRECTORY.'</tt>', '<tt dir="ltr" lang="en" style="white-space:nowrap; font-weight:bold;">'.WT_SERVER_NAME.WT_SCRIPT_PATH.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span>img123.jpg</tt>', '<tt dir="ltr" lang="en" style="white-space:nowrap; font-weight:bold;">'.WT_ROOT.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span>img123.jpg</tt>').
+		WT_I18N::translate('This folder will be used to store the media files for this family tree.').
 		'</p><p>'.
-		/* I18N: %1$s and %2$s are both directory names */ WT_I18N::translate('If your server supports it, you can enable the media firewall.  This changes the location of the media directory from the public directory %1$s to a private directory such as %2$s.  This allows webtrees to apply privacy filtering to media items.', '<tt dir="ltr" lang="en" style="white-space:nowrap; font-weight:bold;">'.WT_ROOT.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span></tt>', '<tt dir="ltr" lang="en" style="white-space:nowrap; font-weight:bold;">'.WT_DATA_DIR.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span></tt>').
+		WT_I18N::translate('If you change this folder, you must also move any media files to the new location.').
 		'</p><p>'.
-		/* I18N: %s is a directory name */ WT_I18N::translate('The media directory %s must exist, and the webserver must have read and write access to it.', '<tt dir="ltr" lang="en" style="white-space:nowrap; font-weight:bold;">'.WT_ROOT.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span></tt>').
-		'</p><p>'.
-		WT_I18N::translate('If two family trees share the same media directory, then they will be able to share media items.  If they use different media directories, then they will be able to use the same filename to access different media items.').
+		WT_I18N::translate('If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then they will be able to use the same filename for different media files.').
 		'</p>';
-	break;
-
-case 'MEDIA_FIREWALL_ROOTDIR':
-	$title=WT_I18N::translate('Media firewall root directory');
-	$text=WT_I18N::translate('Directory in which the protected Media directory can be created.  When this field is empty, the <b>%s</b> directory will be used.', WT_Site::preference('INDEX_DIRECTORY'));
 	break;
 
 case 'MEDIA_ID_PREFIX':

@@ -2,7 +2,7 @@
 // Displays a list of the media objects
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -185,7 +185,7 @@ if (WT_USE_LIGHTBOX) {
 <!-- // NOTE: Row 1, left: -->
 	<!-- // begin select media folders -->
 		<td class="descriptionbox wrap width25">
-			<?php echo WT_I18N::translate('Media directory'), help_link('view_server_folder'); ?></td>
+			<?php echo WT_I18N::translate('Media folder'), help_link('view_server_folder'); ?></td>
 		<td class="optionbox wrap width25">
 			<?php
 				//if ($MEDIA_DIRECTORY_LEVELS > 0) {

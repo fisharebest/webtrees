@@ -10,7 +10,7 @@
 // seconds, for systems with low timeout values.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 Greg Roach
+// Copyright (C) 2013 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -36,6 +36,22 @@ if (!defined('WT_WEBTREES')) {
 // Delete old settings
 self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('POSTAL_CODE')");
 
+// Previous versions of webtrees included the MEDIA_DIRECTORY setting in the
+// FILE tag of the OBJE records.  Remove it.
+self::exec(
+	"UPDATE `##media` m".
+	" JOIN `##gedcom_setting` gs ON (m.m_file = gs.gedcom_id AND gs.setting_name = 'MEDIA_DIRECTORY')".
+	" SET".
+	"  m_filename = TRIM(LEADING gs.setting_value FROM m_filename),".
+	"  m_gedcom   = REPLACE(m_gedcom, CONCAT('\n1 FILE ', gs.setting_value), '\n1 FILE ')"
+);
+
+self::exec(
+	"UPDATE `##change` c".
+	" JOIN `##gedcom_setting` gs ON (c.gedcom_id = gs.gedcom_id AND gs.setting_name = 'MEDIA_DIRECTORY')".
+	" SET new_gedcom = REPLACE(new_gedcom, CONCAT('\n1 FILE ', gs.setting_value), '\n1 FILE ')".
+	" WHERE status = 'pending'"
+);
+
 // Update the version to indicate success
 WT_Site::preference($schema_name, $next_version);
-

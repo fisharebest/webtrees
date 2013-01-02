@@ -2,7 +2,7 @@
 // Setup Wizard
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,10 +23,10 @@
 define('WT_SCRIPT_NAME', 'setup.php');
 define('WT_CONFIG_FILE', 'config.ini.php');
 
-// magic quotes were deprecated in PHP5.3.0 and removed in PHP6.0.0
+// magic quotes were deprecated in PHP5.3.0
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 	set_magic_quotes_runtime(0);
-	// magic_quotes_gpc can't be disabled at run-time, so clean them up as necessary.
+	// magic_quotes_gpc can’t be disabled at run-time, so clean them up as necessary.
 	if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc() ||
 		ini_get('magic_quotes_sybase') && strtolower(ini_get('magic_quotes_sybase'))!='off') {
 		$in = array(&$_POST);
@@ -63,13 +63,12 @@ if (version_compare(PHP_VERSION, '5.2')<0) {
 }
 
 // This script (uniquely) does not load session.php.
-// session.php won't run until a configuration file exists...
+// session.php won’t run until a configuration file exists…
 // This next block of code is a minimal version of session.php
 define('WT_WEBTREES',    'webtrees');
 require 'includes/authentication.php'; // for AddToLog()
 require 'includes/functions/functions_db.php'; // for get/setSiteSetting()
 define('WT_DATA_DIR',    'data/');
-define('WT_MEDIA_DIR',   'media/');
 define('WT_DEBUG_LANG',  false);
 define('WT_DEBUG_SQL',   false);
 define('WT_REQUIRED_MYSQL_VERSION', '5.0.13'); // For: prepared statements within stored procedures
@@ -154,8 +153,6 @@ if (empty($_POST['lang'])) {
 	// Settings
 	foreach (array(
 		'file_uploads'=>/* I18N: a program feature */ WT_I18N::translate('file upload capability'),
-		// Do not include this check.  The consequences are minimal, but many users are worried by the message.
-		//'date.timezone'=>/* I18N: a program feature */ WT_I18N::translate('the correct date and time in logs and messages'),
 	) as $setting=>$features) {
 		if (!ini_get($setting)) {
 			echo '<p class="bad">', WT_I18N::translate('PHP setting "%1$s" is disabled. Without it, the following features will not work: %2$s.  Please ask your server\'s administrator to enable it.', $setting, $features), '</p>';
@@ -254,7 +251,7 @@ try {
 } catch (PDOException $ex) {
 	WT_DB::disconnect();
 	if ($_POST['dbuser']) {
-		// If we've supplied a login, then show the error
+		// If we’ve supplied a login, then show the error
 		echo
 			'<p class="bad">', WT_I18N::translate('Unable to connect using these settings.  Your server gave the following error.'), '</p>',
 			'<pre>', $ex->getMessage(), '</pre>',
@@ -303,11 +300,11 @@ if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 // Step four - Database connection.
 ////////////////////////////////////////////////////////////////////////////////
 
-// The character "`" is not valid in database or table names (even if escaped).
+// The character ` is not valid in database or table names (even if escaped).
 // By removing it, we can ensure that our SQL statements are quoted correctly.
 //
 // Other characters may be invalid (objects must be valid filenames on the
-// MySQL server's filesystem), so block the usual ones.
+// MySQL server’s filesystem), so block the usual ones.
 $DBNAME   =str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['dbname']);
 $TBLPREFIX=str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['tblpfx']);
 
@@ -319,8 +316,8 @@ if ($DBNAME && $DBNAME==$_POST['dbname'] && $TBLPREFIX==$_POST['tblpfx']) {
 		// Try to create the database, if it does not exist.
 		WT_DB::exec("CREATE DATABASE IF NOT EXISTS `{$DBNAME}` COLLATE utf8_unicode_ci");
 	} catch (PDOException $ex) {
-		// If we have no permission to do this, there's nothing helpful we can say.
-		// We'll get a more helpful error message from the next test.
+		// If we have no permission to do this, there’s nothing helpful we can say.
+		// We’ll get a more helpful error message from the next test.
 	}
 	try {
 		WT_DB::exec("USE `{$DBNAME}`");
@@ -536,7 +533,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 ////////////////////////////////////////////////////////////////////////////////
 
 try {
-	// These shouldn't fail.
+	// These shouldn’t fail.
 	WT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##gedcom` (".
 		" gedcom_id     INTEGER AUTO_INCREMENT NOT NULL,".
@@ -789,12 +786,12 @@ try {
 		" n_id               VARCHAR(20)  NOT NULL,".
 		" n_num              INTEGER      NOT NULL,".
 		" n_type             VARCHAR(15)  NOT NULL,".
-		" n_sort             VARCHAR(255) NOT NULL,". // e.g. "GOGH,VINCENT WILLEM"
-		" n_full             VARCHAR(255) NOT NULL,". // e.g. "Vincent Willem van GOGH"
+		" n_sort             VARCHAR(255) NOT NULL,". // e.g. “GOGH,VINCENT WILLEM”
+		" n_full             VARCHAR(255) NOT NULL,". // e.g. “Vincent Willem van GOGH”
 		// These fields are only used for INDI records
-		" n_surname          VARCHAR(255)     NULL,". // e.g. "van GOGH"
-		" n_surn             VARCHAR(255)     NULL,". // e.g. "GOGH"
-		" n_givn             VARCHAR(255)     NULL,". // e.g. "Vincent Willem"
+		" n_surname          VARCHAR(255)     NULL,". // e.g. “van GOGH”
+		" n_surn             VARCHAR(255)     NULL,". // e.g. “GOGH”
+		" n_givn             VARCHAR(255)     NULL,". // e.g. “Vincent Willem”
 		" n_soundex_givn_std VARCHAR(255)     NULL,".
 		" n_soundex_surn_std VARCHAR(255)     NULL,".
 		" n_soundex_givn_dm  VARCHAR(255)     NULL,".

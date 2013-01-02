@@ -11,7 +11,7 @@
 // translated messages.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -55,6 +55,8 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Children are displayed in the order in which they appear in the family record.  Children are not automatically sorted by birth date because often the birth dates of some of the children are uncertain but the order of their birth <u>is</u> known.<br /><br />This option will allow you to change the order of the children within the family\'s record.  Since you might want to sort the children by their birth dates, there is a button you can press that will do this for you.<br /><br />You can also drag-and-drop any information box to change the order of the children.  As you move the mouse cursor over an information box, its shape will change to a pair of double-headed crossed arrows. If you push and hold the left mouse button before moving the mouse cursor, the information box will follow the mouse cursor up or down in the list.  As the information box is moved, the other boxes will make room.  When you release the left mouse button, the information box will take its new place in the list.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Continue');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Different countries use different ways to write the address. This option will enable you to place the postal code either before or after the city name.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Directory in which the protected Media directory can be created.  When this field is empty, the <b>%s</b> directory will be used.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Display indis and families count');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Display indis and families counts');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Download %s');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('E R R O R !!!<br />Could not write to file <i>%s</i>.  Please check it for proper Write permissions.');
@@ -70,11 +72,14 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Here you can specify if the counts of indis and families connected to the place is displayed. Now if GEDCOM file contains many people is recomended to turn it off.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Here you can specify if the mouse wheel is enebled for zooming.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Hide map controls');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('If two family trees share the same media directory, then they will be able to share media items.  If they use different media directories, then they will be able to use the same filename to access different media items.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('If your server supports it, you can enable the media firewall.  This changes the location of the media directory from the public directory %1$s to a private directory such as %2$s.  This allows webtrees to apply privacy filtering to media items.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('In this field you should enter any nicknames for the person.<br />This is an optional field.<br /><br />Ways to add a nickname:<ul><li>Select <b>modify name</b> then enter nickname and save</li><li>Select <b>add new name</b> then enter nickname AND name and save</li><li>Select <b>edit GEDCOM record</b> to add multiple [2&nbsp;NICK] records subordinate to the main [1&nbsp;NAME] record.</li></ul>');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('In this field you should enter the given names for the person.  As an example, in the name "John Robert Finlay", the given names that should be entered here are "John Robert"');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('In this field you should enter the surname for the person.  In the name %1$s, the surname is %2$s.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('In this optional field you should enter the name suffix for the person.  Examples of name suffixes are "Sr.", "Jr.", and "III".');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Individuals with multiple surnames, common in Spain and Portugal, should separate the surnames with a comma.  This indicates that the person is to be listed under each of the names.  For example, <b>Cortes,Vega</b> will be listed under both <b>C</b> and <b>V</b>, whereas <b>Cortes Vega</b> will only be listed under <b>C</b>.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Invalid media directory, it should be in the format of "media/", not "%s". ');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Keep links');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('LDS spouse sealing date');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('LDS spouse sealing place');
@@ -88,6 +93,11 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('List filtering options');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Maternal grandfather\'s given name');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Maternal grandmother\'s Given Name');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Media Firewall');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Media directory');;
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Media firewall root directory');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Media path should not contain "../" or "./"');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Media path should not contain a drive letter.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Module Name');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Mother\'s Family with ');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Mother\'s birthplace');
@@ -132,6 +142,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Spouse\'s death place');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Start using webtrees');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Test the permissions again');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The Media Firewall root directory you requested does not exist.  You must create it first.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The configuration file has been successfully uploaded to the server.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The directory <b>%s</b> does not have read permission.  You must change this.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The directory <b>%s</b> does not have write permission.  You must change this.');
@@ -139,6 +150,10 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The file <b>%s</b> does not have read permission.  You must change this.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The file <b>%s</b> has read-only permission.  Good.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The file <b>%s</b> has write permission.  This will work, but for better security, you should make it read only.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The media directory %s must exist, and the webserver must have read and write access to it.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The media directory is used to create URLs for your media items.  It is also the sub-directory in which the media items are stored.  For example, a media directory of %1$s will create URLs of the form %2$s and store these items as %3$s.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The protected media directory could not be created in the Media Firewall root directory.  Please create this directory and make it world-writable.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The protected media directory in the Media Firewall root directory is not world writable. ');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This is the most important field in a person\'s Name record.<br /><br />This field should be filled automatically as the other fields are filled in, but it is provided so that you can edit the information according to your personal preference.<br /><br />The name in this field should be entered according to the GEDCOM 5.5.1 standards with the surname surrounded by forward slashes "/".  As an example, the name "John Robert Finlay Jr." should be entered like this: "John Robert /Finlay/ Jr.".');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This item will allow you to link the current individual as a husband to a family that is already in the database. By clicking this link you can add this person to an existing family, of which the husband was unknown until now. This person will take the place of the previously unknown husband. All events, marriage information, and children will keep their existing links to the family.<br /><br />Just click the link, enter the ID of the family, and you have competed the task. This is an advanced editing option that should only be used if the family you want to link to already exists.  If you want to add a <u>new</u> family to this individual, use the <b>Add a new wife</b> link.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This item will allow you to link the current individual as a wife to a family that is already in the database.<br /><br />This is an advanced editing option that should only be used if the family you want to link to already exists.  If you want to add a <u>new</u> family to this individual, use the <b>Add a new husband</b> link.');
@@ -155,6 +170,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Use this link to add a new source to your database without linking the source to a source citation in another record.  The new source will appear in the source list, but will not appear on any charts or anywhere else in the program until it is linked up to a source citation.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('When a multimedia link is found starting with for example http://, ftp://, mms:// it will not be altered when set to <b>Yes</b>. For example, http://www.myfamily.com/photo/dad.jpg will stay http://www.myfamily.com/photo/dad.jpg.  When set to <b>No</b>, the link will be handled as a standard reference and the media depth will be used.  For example: http://www.myfamily.com/photo/dad.jpg will be changed to ./media/dad.jpg');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('When an image is in the protected Media directory, should its thumbnail be protected as well?');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('When this field is empty, the <b>%s</b> directory will be used.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('With this page you can add a new child to the selected family.  Fill out the name of the child and the birth and death information if it is known.  If you don\'t know some information leave it blank.<br /><br />To add other facts besides birth and death, first add the new child to the database by saving the changes.  Then click on the child\'s name in the updated Family page or Close Relatives tab to view the child\'s Individual Information page.  From the Individual Information page you can add more detailed information.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('With this page you can add a new husband or wife to the selected person.  Fill out the new person\'s name and the birth and death information if it is known.  If you don\'t know some information leave it blank.<br /><br />To add other facts besides birth and death, first add the new person to the database by saving the changes.  Then click on the person\'s name in the updated Family page or Close Relatives tab to view the person\'s Individual Information page.  From the Individual Information page you can add more detailed information.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('With this page you can add a new husband or wife to the selected person.  Fill out the new person\'s name and the birth and death information if it is known.  If you don\'t know some information leave it blank.<br /><br />To add other facts besides birth and death, first add the new person to the database by saving the changes.  Then click on the person\'s name in the updated Family page or Close Relatives tab to view the person\'s Individual Information page.  From the Individual Information page you can add more detailed information.');
@@ -163,3 +179,4 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('You should set the directory <b>%s</b> so that the webserver has read-write access.<br/>This normally means setting the permissions to "777" or "drwxrwxrwx".');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('You should set the file <b>%s</b> so that the webserver has read-only access.<br/>This normally means setting the permissions to "444" or "-r--r--r--".');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Your system is almost ready for use.  The final step is to download a configuration file <b>%1$s</b> and copy this to the <b>%2$s</b> directory on your webserver.  This is a security measure to ensure only the website\'s owner can configure it.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('see the wiki');

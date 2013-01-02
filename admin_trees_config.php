@@ -2,7 +2,7 @@
 // UI for online updating of the GEDCOM config file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -34,54 +34,11 @@ $controller
 
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-/**
- * find the name of the first GEDCOM file in a zipfile
- * @param string $zipfile the path and filename
- * @param boolean $extract  true = extract and return filename, false = return filename
- * @return string the path and filename of the gedcom file
- */
-function GetGEDFromZIP($zipfile, $extract=true) {
-	require_once WT_ROOT.'library/pclzip.lib.php';
-	$zip = new PclZip($zipfile);
-	// if it's not a valid zip, just return the filename
-	if (($list = $zip->listContent()) == 0) {
-		return $zipfile;
-	}
-
-	// Determine the extract directory
-	$slpos = strrpos($zipfile, "/");
-	if (!$slpos) $slpos = strrpos($zipfile, "\\");
-	if ($slpos) $path = substr($zipfile, 0, $slpos+1);
-	else $path = WT_DATA_DIR;
-	// Scan the files and return the first .ged found
-	foreach ($list as $key=>$listitem) {
-		if (($listitem["status"]="ok") && (strstr(strtolower($listitem["filename"]), ".")==".ged")) {
-			$filename = basename($listitem["filename"]);
-			if ($extract == false) return $filename;
-
-			// if the gedcom exists, save the old one. NOT to bak as it will be overwritten on import
-			if (file_exists($path.$filename)) {
-				if (file_exists($path.$filename.".old")) unlink($path.$filename.".old");
-				copy($path.$filename, $path.$filename.".old");
-				unlink($path.$filename);
-			}
-			if ($zip->extract(PCLZIP_OPT_REMOVE_ALL_PATH, PCLZIP_OPT_PATH, $path, PCLZIP_OPT_BY_NAME, $listitem["filename"]) == 0) {
-				echo "ERROR cannot extract ZIP";
-			}
-			return $filename;
-		}
-	}
-	return $zipfile;
-}
-
-$errors=false;
-$error_msg='';
-
-$PRIVACY_CONSTANTS=array(
-	'none'        =>WT_I18N::translate('Show to visitors'),
-	'privacy'     =>WT_I18N::translate('Show to members'),
-	'confidential'=>WT_I18N::translate('Show to managers'),
-	'hidden'      =>WT_I18N::translate('Hide from everyone')
+$PRIVACY_CONSTANTS = array(
+	'none'         => WT_I18N::translate('Show to visitors'),
+	'privacy'      => WT_I18N::translate('Show to members'),
+	'confidential' => WT_I18N::translate('Show to managers'),
+	'hidden'       => WT_I18N::translate('Hide from everyone')
 );
 
 switch (safe_POST('action')) {
@@ -216,67 +173,23 @@ case 'update':
 		set_gedcom_setting(WT_GED_ID, 'title',                        safe_POST('gedcom_title', WT_REGEX_UNSAFE));
 	}
 
-	// process NEW_MEDIA_DIRECTORY
-	$errors_mediadir = false;
-	$_POST["NEW_MEDIA_DIRECTORY"] = trim(str_replace('\\','/',$_POST["NEW_MEDIA_DIRECTORY"])); // silently convert backslashes to forward slashes
-	$_POST["NEW_MEDIA_DIRECTORY"] = str_replace('"','',$_POST["NEW_MEDIA_DIRECTORY"]); // silently remove quote marks
-	$_POST["NEW_MEDIA_DIRECTORY"] = str_replace("'",'',$_POST["NEW_MEDIA_DIRECTORY"]); // silently remove quote marks
-	$_POST["NEW_MEDIA_DIRECTORY"] = str_replace("//",'/',$_POST["NEW_MEDIA_DIRECTORY"]); // silently remove duplicate slashes
-	if (substr ($_POST["NEW_MEDIA_DIRECTORY"], -1) != "/") $_POST["NEW_MEDIA_DIRECTORY"] = $_POST["NEW_MEDIA_DIRECTORY"] . "/"; // silently add trailing slash
-	if (substr($_POST["NEW_MEDIA_DIRECTORY"], 0, 1)=="/")                  { $errors_mediadir = true; } // don't allow absolute path
-	if (preg_match("/.*[a-zA-Z]{1}:.*/", $_POST["NEW_MEDIA_DIRECTORY"])>0) { $errors_mediadir = true; } // don't allow drive letters
-	if (preg_match('/([\.]?[\.][\/])+/', $_POST["NEW_MEDIA_DIRECTORY"])>0) { $errors_mediadir = true; } // don't allow ./ or ../ 
-	if ($errors_mediadir) {
-		$errors = true;
-		$error_msg .= "<span class=\"error\">".WT_I18N::translate('Invalid media directory, it should be in the format of "media/", not "%s". ', $_POST["NEW_MEDIA_DIRECTORY"])."</span><br>";
-	} else {
-		// only save the setting if there were no errors
-		set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY',              safe_POST('NEW_MEDIA_DIRECTORY'));
-		$MEDIA_DIRECTORY = safe_POST('NEW_MEDIA_DIRECTORY');
+	// Only accept valid folders for NEW_MEDIA_DIRECTORY
+	$NEW_MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', safe_POST('NEW_MEDIA_DIRECTORY') . '/');
+	if (substr($NEW_MEDIA_DIRECTORY, 0, 1) == '/') {
+		$NEW_MEDIA_DIRECTORY = substr($NEW_MEDIA_DIRECTORY, 1);
 	}
 
-	// process NEW_MEDIA_FIREWALL_ROOTDIR
-	if (!$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"]) {
-		$NEW_MEDIA_FIREWALL_ROOTDIR = WT_DATA_DIR;
-	} else {
-		$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"] = trim(str_replace('\\','/',$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"])); // silently convert backslashes to forward slashes
-		if (substr ($_POST["NEW_MEDIA_FIREWALL_ROOTDIR"], -1) != "/") $_POST["NEW_MEDIA_FIREWALL_ROOTDIR"] = $_POST["NEW_MEDIA_FIREWALL_ROOTDIR"] . "/"; // silently add trailing slash
-		$NEW_MEDIA_FIREWALL_ROOTDIR = safe_POST("NEW_MEDIA_FIREWALL_ROOTDIR");
-	}
-	if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR)) {
-		$errors = true;
-		$error_msg .= "<span class=\"error\">".WT_I18N::translate('The Media Firewall root directory you requested does not exist.  You must create it first.')."</span><br>";
-	}
-	if (!$errors) {
-		// Since the media firewall is always enabled, need to verify that the protected media dir exists
-			if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) {
-				@mkdir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY, WT_PERM_EXE);
-				if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) {
-					$errors = true;
-					$error_msg .= "<span class=\"error\">".WT_I18N::translate('The protected media directory could not be created in the Media Firewall root directory.  Please create this directory and make it world-writable.')." ".$NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."</span><br>";
-				}
-			}
-	}
-	if (!$errors) {
-		// Since the media firewall is always enabled, need to verify that the protected thumbs dir exists
-			if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs")) {
-				@mkdir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs", WT_PERM_EXE);
-				if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs")) {
-					$errors = true;
-					$error_msg .= "<span class=\"error\">".WT_I18N::translate('The protected media directory in the Media Firewall root directory is not world writable. ')." ".$NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."</span><br>";
-				}
-			}
-	}
-	if (!$errors) {
-		// only save the setting if there were no errors
-		set_gedcom_setting(WT_GED_ID, 'MEDIA_FIREWALL_ROOTDIR', safe_POST('NEW_MEDIA_FIREWALL_ROOTDIR'));
+	if ($NEW_MEDIA_DIRECTORY) {
+		if (is_dir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY) || @mkdir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY, 0755, true)) {
+			set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY', $NEW_MEDIA_DIRECTORY);
+		} else {
+			Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', WT_DATA_DIR . $NEW_MEDIA_DIRECTORY));
+		}
 	}
 
-	if (!$errors) {
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
-		exit;
-	}
-	break;
+	// Reload the page, so that the settings take effect immediately.	
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+	exit;
 }
 
 $controller
@@ -292,10 +205,6 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 <form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
 <input type="hidden" name="action" value="update">
 <input type="hidden" name="ged" value="<?php echo htmlspecialchars(WT_GEDCOM); ?>">
-<?php
-	if (!empty($error_msg)) echo "<br><span class=\"error\">".$error_msg."</span><br>";
-	$i = 0;
-?>
 
 <table>
 	<tr>
@@ -663,19 +572,14 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			<div id="config-media">
 				<table>
 					<tr>
-						<th colspan="2"><?php echo WT_I18N::translate('General'); ?></th>
+						<th colspan="2"><?php echo WT_I18N::translate('Media folders'); ?></th>
 					</tr>
 					<tr>
 						<td>
-							<?php echo WT_I18N::translate('Media directory'), help_link('MEDIA_DIRECTORY'); ?>
+							<?php echo WT_I18N::translate('Media folder'), help_link('MEDIA_DIRECTORY'); ?>
 						</td>
 						<td>
-							<input type="text" name="NEW_MEDIA_DIRECTORY" value="<?php echo $MEDIA_DIRECTORY; ?>" dir="ltr" size="50" maxlength="255">
-							<?php
-							// these error messages are not duplicates of the checks above, they warn admins that have problems with their existing settings
-							if (preg_match("/.*[a-zA-Z]{1}:.*/", $MEDIA_DIRECTORY)>0) echo "<br><span class=\"error\">".WT_I18N::translate('Media path should not contain a drive letter.')."</span>";
-							if (preg_match('/([\.]?[\.][\/])+/', $MEDIA_DIRECTORY)>0) echo "<br><span class=\"error\">".WT_I18N::translate('Media path should not contain "../" or "./"')."</span>";
-							?>
+							<?php echo WT_DATA_DIR; ?><input type="text" name="NEW_MEDIA_DIRECTORY" value="<?php echo $MEDIA_DIRECTORY; ?>" dir="ltr" size="15" maxlength="255">
 						</td>
 					</tr>
 					<tr>
@@ -685,6 +589,37 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						<td>
 							<input type="text" name="NEW_MEDIA_DIRECTORY_LEVELS" value="<?php echo $MEDIA_DIRECTORY_LEVELS; ?>" size="5" maxlength="2">
 						</td>
+					</tr>
+					<tr>
+						<th colspan="2"><?php echo WT_I18N::translate('Media files'); ?></th>
+					</tr>
+					<tr>
+						<td>
+							<?php echo WT_I18N::translate('Who can upload new media files?'), help_link('MEDIA_UPLOAD'); ?>
+						</td>
+						<td>
+							<?php echo select_edit_control('NEW_MEDIA_UPLOAD', array(WT_PRIV_USER=>WT_I18N::translate('Show to members'),
+ WT_PRIV_NONE=>WT_I18N::translate('Show to managers'), WT_PRIV_HIDE=>WT_I18N::translate('Hide from everyone')), null, get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD')); ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<?php echo WT_I18N::translate('Use media viewer'), help_link('USE_MEDIA_VIEWER'); ?>
+						</td>
+						<td>
+							<?php echo edit_field_yes_no('NEW_USE_MEDIA_VIEWER', get_gedcom_setting(WT_GED_ID, 'USE_MEDIA_VIEWER')); ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<?php echo WT_I18N::translate('Show download link in media viewer'), help_link('SHOW_MEDIA_DOWNLOAD'); ?>
+						</td>
+						<td>
+							<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_DOWNLOAD', get_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_DOWNLOAD')); ?>
+						</td>
+					</tr>
+					<tr>
+						<th colspan="2"><?php echo /* I18N: Small versions of images */ WT_I18N::translate('Thumbnail images'); ?></th>
 					</tr>
 					<tr>
 						<td>
@@ -719,34 +654,9 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						</td>
 					</tr>
 					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Use media viewer'), help_link('USE_MEDIA_VIEWER'); ?>
-						</td>
-						<td>
-							<?php echo edit_field_yes_no('NEW_USE_MEDIA_VIEWER', get_gedcom_setting(WT_GED_ID, 'USE_MEDIA_VIEWER')); ?>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Show download link in media viewer'), help_link('SHOW_MEDIA_DOWNLOAD'); ?>
-						</td>
-						<td>
-							<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_DOWNLOAD', get_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_DOWNLOAD')); ?>
-						</td>
-					</tr>
-					<tr>
 						<th colspan="2">
-							<?php echo WT_I18N::translate('Media Firewall'); ?> (<a href="http://wiki.webtrees.net/Media_Firewall" target="_blank"><?php echo WT_I18N::translate('see the wiki'); ?></a>)
+							<?php echo /* I18N: Copyright messages, added to images */ WT_I18N::translate('Watermarks'); ?>
 						</th>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Media firewall root directory'), help_link('MEDIA_FIREWALL_ROOTDIR'); ?>
-						</td>
-						<td>
-							<input type="text" name="NEW_MEDIA_FIREWALL_ROOTDIR" dir="ltr" value="<?php echo ($MEDIA_FIREWALL_ROOTDIR == WT_DATA_DIR) ? "" : $MEDIA_FIREWALL_ROOTDIR; ?>" size="50" maxlength="255"><br>
-						<?php echo WT_I18N::translate('When this field is empty, the <b>%s</b> directory will be used.', WT_DATA_DIR); ?>
-						</td>
 					</tr>
 					<tr>
 						<td>
@@ -770,18 +680,6 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						</td>
 						<td>
 							<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_THUMB', get_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_THUMB')); ?>
-						</td>
-					</tr>
-					<tr>
-						<th colspan="2"><?php echo WT_I18N::translate('Access'); ?></th>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Who can upload new media files?'), help_link('MEDIA_UPLOAD'); ?>
-						</td>
-						<td>
-							<?php echo select_edit_control('NEW_MEDIA_UPLOAD', array(WT_PRIV_USER=>WT_I18N::translate('Show to members'),
- WT_PRIV_NONE=>WT_I18N::translate('Show to managers'), WT_PRIV_HIDE=>WT_I18N::translate('Hide from everyone')), null, get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD')); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1447,7 +1345,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			<table border="0">
 				<tr>
 					<td style="padding: 5px" class="topbottombar">
-						<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php echo WT_I18N::translate('save'); ?>">
+						<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
 					</td>
 				</tr>
 			</table>
