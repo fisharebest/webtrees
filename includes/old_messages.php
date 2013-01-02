@@ -35,6 +35,7 @@ exit;
 Requests for commercial publication of these or other UK census images appearing on this website should be directed to: Image Library, The National Archives, Kew, Surrey, TW9 4DU, United Kingdom."
 ');
 
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('<b>webtrees</b> will check the permissions in the next step.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add Note');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add Shared Note');
@@ -60,6 +61,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Display indis and families counts');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Download %s');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('E R R O R !!!<br />Could not write to file <i>%s</i>.  Please check it for proper Write permissions.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Editing this GEDCOM has been disabled by the administrator.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Enter or select from the list words that precede the main part of the Surname.  Examples of such words are <b>von</b> Braun, <b>van der</b> Kloot, <b>de</b> Graaf, etc.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Enter the married name for this person, using the same formatting rules that apply to the Name field.  This field is optional.<br /><br />For example, if Mary Jane Brown married John White, you might enter (without the quotation marks, of course)<ul><li>American usage:&nbsp;&nbsp;"Mary Jane Brown /White/"</li><li>European usage:&nbsp;&nbsp;"Mary Jane /White/"</li><li>Alternate European usage:&nbsp;&nbsp;"Mary Jane /White-Brown/" or "Mary Jane /Brown-White/"</li></ul>You should do this only if Mary Brown began calling herself by the new name after marrying John White.  In some places, Quebec (Canada) for example, it\'s illegal for names to be changed in this way.<br /><br />Men sometimes change their name after marriage, most often using the hyphenated form but occasionally taking the wife\'s surname.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Families on the Close Relatives tab are displayed in the order in which they appear in the individual\'s GEDCOM record.  Families are not sorted by the marriage date because often the marriage dates are unknown but the order of the marriages <u>is</u> known.<br /><br />This option will allow you to change the order of the families in which they are listed on the Close Relatives tab.  If you want to sort the families by their marriage dates, there is a button you can press that will automatically do this for you.');
@@ -112,6 +114,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('PlaceCheck List Options');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Postal code position');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Preview');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Privacy settings prevent you from editing this record.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Protect thumbnails of protected images');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Reminder: you must copy %s to your webserver');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Reorder children');
@@ -162,6 +165,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This option controls whether or not to show GEDCOM record last change date on lists.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This optional field allows you to enter a name prefix such as "Dr." or "Adm."');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This site uses cookies to keep track of your login status.<br /><br />Cookies do not appear to be enabled in your browser. You must enable cookies for this site before you can login.  You can consult your browser\'s help documentation for information on enabling cookies.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This user name cannot edit this GEDCOM.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This will allow you to link another individual, who already exists, as a new husband to this person.  This will create a new family with the husband you select.  You will also have the option of specifying a marriage for this new family.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This will allow you to link another individual, who already exists, as a new wife to this person.  This will create a new family with the wife you select.  You will also have the option of specifying a marriage for this new family.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Use mouse wheel for zoom');
