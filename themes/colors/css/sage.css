@@ -48,6 +48,9 @@ color:#FFFFFF;}
 background-color:#ccccaa;
 color: #333333;
 }
+.ui-state-active, .ui-widget-content .ui-state-active {
+    background: none repeat scroll 0 0 #ccccaa;
+}
 
 /* Top Menu  */
 #topMenu {
