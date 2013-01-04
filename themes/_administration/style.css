@@ -232,7 +232,7 @@ table.gedcom_table2 {background:OldLace; border:1px inset #D9D6C4; border-collap
 #file-options, #privacy, #config-media, #access-options, #layout-options, #hide-show, #edit-options {padding:10px;}
 #file-options table, #privacy table, #config-media table, #access-options table, #layout-options table, #hide-show table, #edit-options table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
 #file-options td, #privacy td, #config-media td, #access-options td, #layout-options td, #hide-show td, #edit-options td {border-bottom:1px solid LightGrey;vertical-align:middle;}
-#file-options th, #privacy th, #config-media th, #access-options th, #layout-options th, #hide-show th, #edit-options th {border-bottom:2px solid LightGrey; color:green; font-weight:bold; text-align:left;}
+#file-options th, #privacy th, #config-media th, #access-options th, #layout-options th, #hide-show th, #edit-options th {border-bottom:2px solid LightGrey; color:green; font-weight:bold; text-align:inherit;}
 #relatives {margin-left:120px;}
 html[dir='rtl'] #relatives {margin-right:120px;}
 #NEW_CALENDAR_FORMAT1 {margin:0 20px;}
