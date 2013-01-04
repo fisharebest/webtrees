@@ -393,6 +393,7 @@ case 'newentry':
 			}
 		}
 	}
+	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 	break;
 	
 case 'update':
@@ -547,6 +548,7 @@ case 'update':
 		}
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
+	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 	break;
 	
 case 'delete':
@@ -554,6 +556,7 @@ case 'delete':
 		AddToLog('Media ID '.$pid.' successfully deleted.', 'edit');
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
+	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 	break;
 
 case 'showmediaform':
@@ -567,4 +570,366 @@ case 'editmedia':
 	break;
 }
 
-echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
+
+// print a form for editing or adding media items
+// $pid      the id of the media item to edit
+// $action   the action to take after the form is posted
+// $filename allows you to provide a filename to go in the FILE tag for new media items
+// $linktoid the id of the person/family/source to link a new media item to
+// $level    The level at which this media item should be added
+function show_media_form($pid, $action = 'newentry', $filename = '', $linktoid = '', $level = 1) {
+	global $WORD_WRAPPED_NOTES, $ADVANCED_NAME_FACTS, $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH, $NO_UPDATE_CHAN;
+
+	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
+
+	// NOTE: add a table and form to easily add new values to the table
+	echo '<div id="addmedia-page">'; //container for media edit pop-up
+	echo '<form method="post" name="newmedia" action="addmedia.php" enctype="multipart/form-data">';
+	echo '<input type="hidden" name="action" value="', $action, '">';
+	echo '<input type="hidden" name="ged" value="', WT_GEDCOM, '">';
+	echo '<input type="hidden" name="pid" value="', $pid, '">';
+	if (!empty($linktoid)) {
+		echo '<input type="hidden" name="linktoid" value="', $linktoid, '">';
+	}
+	echo '<input type="hidden" name="level" value="', $level, '">';
+	echo '<table class="facts_table">';
+	echo '<tr><td class="topbottombar" colspan="2">';
+	if ($action == 'newentry') {
+		echo WT_I18N::translate('Add a new media object');
+	} else {
+		echo WT_I18N::translate('Edit media object');
+	}
+	echo help_link('OBJE');
+	echo '</td></tr>';
+	if ($linktoid == 'new' || ($linktoid == '' && $action != 'update')) {
+		echo '<tr><td class="descriptionbox wrap width25">';
+		echo WT_I18N::translate('Enter a Person, Family, or Source ID'), help_link('add_media_linkid');
+		echo '</td><td class="optionbox wrap"><input type="text" name="gid" id="gid" size="6" value="">';
+		echo ' ', print_findindi_link('gid');
+		echo ' ', print_findfamily_link('gid');
+		echo ' ', print_findsource_link('gid');
+		echo '<p class="sub">', WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'), '</p></td></tr>';
+	}
+	$gedrec=find_gedcom_record($pid, WT_GED_ID, true);
+
+	// 0 OBJE
+	// 1 FILE
+	if ($gedrec == '') {
+		$gedfile = 'FILE';
+		if ($filename != '')
+			$gedfile = 'FILE ' . $filename;
+	} else {
+		//  $gedfile = get_sub_record(1, 'FILE', $gedrec);
+		$gedfile = get_first_tag(1, 'FILE', $gedrec);
+		if (empty($gedfile))
+			$gedfile = 'FILE';
+	}
+	if ($gedfile != 'FILE') {
+		$gedfile = 'FILE ' . check_media_depth(substr($gedfile, 5));
+		$readOnly = 'READONLY';
+	} else {
+		$readOnly = '';
+	}
+	if ($gedfile == 'FILE') {
+		// Box for user to choose to upload file from local computer
+		echo '<tr><td class="descriptionbox wrap width25">';
+		echo WT_I18N::translate('Media file to upload').help_link('upload_media_file').'</td><td class="optionbox wrap"><input type="file" name="mediafile" onchange="updateFormat(this.value);" size="40"></td></tr>';
+		// Check for thumbnail generation support
+		if (WT_USER_GEDCOM_ADMIN) {
+			$ThumbSupport = '';
+		// Check for thumbnail generation support
+			$thumbSupport = '';
+			if ($AUTO_GENERATE_THUMBS) {
+				if (function_exists('imagecreatefromgif') && function_exists('imagegif')) $thumbSupport .= ', GIF';
+				if (function_exists('imagecreatefromjpeg') && function_exists('imagejpeg')) $thumbSupport .= ', JPG';
+				if (function_exists('imagecreatefrompng') && function_exists('imagepng')) $thumbSupport .= ', PNG';
+			}
+
+			if ($thumbSupport != '') {
+				$thumbSupport = substr($thumbSupport, 2); // Trim off first ', '
+				echo '<tr><td class="descriptionbox wrap width25">';
+				echo WT_I18N::translate('Automatic thumbnail'), help_link('generate_thumb');
+				echo '</td><td class="optionbox wrap">';
+				echo '<input type="checkbox" name="genthumb" value="yes" checked="checked">';
+				echo '&nbsp;&nbsp;&nbsp;' . WT_I18N::translate('Generate thumbnail automatically from ') . $thumbSupport;
+				echo '</td></tr>';
+			}
+			echo '<tr><td class="descriptionbox wrap width25">';
+			echo WT_I18N::translate('Thumbnail to upload').help_link('upload_thumbnail_file').'</td><td class="optionbox wrap"><input type="file" name="thumbnail" size="40"></td></tr>';
+		} else {
+			echo '<input type="hidden" name="genthumb" value="yes">';
+		}
+	}
+	// Filename on server
+	$isExternal = isFileExternal($gedfile);
+	if ($gedfile == 'FILE') {
+		if (WT_USER_GEDCOM_ADMIN) {
+			add_simple_tag("1 $gedfile", '', WT_I18N::translate('File name on server'), '', 'NOCLOSE');
+			echo '<p class="sub">' . WT_I18N::translate('Do not change to keep original file name.');
+			echo WT_I18N::translate('You may enter a URL, beginning with &laquo;http://&raquo;.') . '</p></td></tr>';
+		}
+		$fileName = '';
+		$folder = '';
+	} else {
+		if ($isExternal) {
+			$fileName = substr($gedfile, 5);
+			$folder = '';
+		} else {
+			$parts = pathinfo_utf(substr($gedfile, 5));
+			$fileName = $parts['basename'];
+			$folder = $parts['dirname'] . '/';
+		}
+
+		echo '<tr>';
+		echo '<td class="descriptionbox wrap width25">';
+		echo '<input name="oldFilename" type="hidden" value="' . htmlspecialchars($fileName) . '">';
+		echo WT_I18N::translate('File name on server'), help_link('upload_server_file');
+		echo '</td>';
+		echo '<td class="optionbox wrap wrap">';
+		if (WT_USER_GEDCOM_ADMIN) {
+			echo '<input name="filename" type="text" value="' . htmlspecialchars($fileName) . '" size="40"';
+			if ($isExternal)
+				echo '>';
+			else
+				echo '><p class="sub">' . WT_I18N::translate('Do not change to keep original file name.') . '</p>';
+		} else {
+			echo $fileName;
+			echo '<input name="filename" type="hidden" value="' . htmlspecialchars($fileName) . '" size="40">';
+		}
+		echo '</td>';
+		echo '</tr>';
+
+	}
+
+	// Box for user to choose the folder to store the image
+	if (!$isExternal && $MEDIA_DIRECTORY_LEVELS > 0) {
+		echo '<tr><td class="descriptionbox wrap width25">';
+		// Strip $MEDIA_DIRECTORY from the folder name
+		if (substr($folder, 0, strlen($MEDIA_DIRECTORY)) == $MEDIA_DIRECTORY) $folder = substr($folder, strlen($MEDIA_DIRECTORY));
+		echo WT_I18N::translate('Folder name on server'), help_link('upload_server_folder'), '</td><td class="optionbox wrap">';
+		//-- don't let regular users change the location of media items
+		if ($action!='update' || WT_USER_GEDCOM_ADMIN) {
+			$mediaFolders = get_media_folders();
+			echo '<span dir="ltr"><select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">';
+			echo '<option';
+			if ($folder == '/') echo ' selected="selected"';
+			echo ' value="/"> ', WT_I18N::translate('Choose: '), ' </option>';
+			if (WT_USER_IS_ADMIN) echo '<option value="other" disabled>', WT_I18N::translate('Other folder... please type in'), "</option>";
+			foreach ($mediaFolders as $f) {
+				if (!strpos($f, ".svn")) {    //Do not echo subversion directories
+					// Strip $MEDIA_DIRECTORY from the folder name
+					if (substr($f, 0, strlen($MEDIA_DIRECTORY)) == $MEDIA_DIRECTORY) $f = substr($f, strlen($MEDIA_DIRECTORY));
+					if ($f == '') $f = '/';
+					echo '<option value="', $f, '"';
+					if ($folder == $f && $f != '/')
+						echo ' selected="selected"';
+					echo '>', $f, "</option>";
+				}
+			}
+			echo '</select></span>';
+		}
+		else echo $folder;
+		echo '<input name="oldFolder" type="hidden" value="', addslashes($folder), '">';
+		if (WT_USER_IS_ADMIN) {
+			echo '<br><span dir="ltr"><input type="text" name="folder" size="40" value="', $folder, '" onblur="checkpath(this)"></span>';
+			if ($MEDIA_DIRECTORY_LEVELS>0) {
+				echo '<p class="sub">', WT_I18N::translate('You can enter up to %s folder names to follow the default &laquo;%s&raquo;.<br />Do not enter the &laquo;%s&raquo; part of the destination folder name.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY), '</p>';
+			}
+			if ($gedfile == 'FILE') {
+				echo '<p class="sub">', WT_I18N::translate('This entry is ignored if you have entered a URL into the file name field.'), '</p>';
+			}
+		} else echo '<input name="folder" type="hidden" value="', addslashes($folder), '">';
+		echo '</td></tr>';
+	} else {
+		echo '<input name="oldFolder" type="hidden" value="">';
+		echo '<input name="folder" type="hidden" value="">';
+	}
+	// 2 FORM
+	if ($gedrec == '')
+		$gedform = 'FORM';
+	else {
+		$gedform = get_first_tag(2, 'FORM', $gedrec);
+		if (empty($gedform))
+			$gedform = 'FORM';
+	}
+	$formid = add_simple_tag("2 $gedform");
+
+	// 3 TYPE
+	if ($gedrec == '')
+		$gedtype = 'TYPE photo'; // default to 'Photo' unless told otherwise
+	else {
+		$temp = str_replace("\r\n", "\n", $gedrec) . "\n";
+		$types = preg_match("/3 TYPE(.*)\n/", $temp, $matches);
+		if (empty($matches[0]))
+			$gedtype = 'TYPE photo'; // default to 'Photo' unless told otherwise
+		else
+			$gedtype = 'TYPE ' . trim($matches[1]);
+	}
+	add_simple_tag("3 $gedtype");
+
+	// 2 TITL
+	if ($gedrec == '') {
+		$gedtitl = 'TITL';
+	} else {
+		$gedtitl = get_first_tag(2, 'TITL', $gedrec);
+		if (empty($gedtitl)) {
+			$gedtitl = get_first_tag(1, 'TITL', $gedrec);
+		}
+		if (empty($gedtitl)) {
+			$gedtitl = 'TITL';
+		}
+	}
+	add_simple_tag("2 $gedtitl");
+
+	if (strstr($ADVANCED_NAME_FACTS, '_HEB')!==false) {
+		// 3 _HEB
+		if ($gedrec == '') {
+			$gedtitl = '_HEB';
+		} else {
+			$gedtitl = get_first_tag(3, '_HEB', $gedrec);
+			if (empty($gedtitl)) {
+				$gedtitl = '_HEB';
+			}
+		}
+		add_simple_tag("3 $gedtitl");
+	}
+
+	if (strstr($ADVANCED_NAME_FACTS, 'ROMN')!==false) {
+		// 3 ROMN
+		if ($gedrec == '') {
+			$gedtitl = 'ROMN';
+		} else {
+			$gedtitl = get_first_tag(3, 'ROMN', $gedrec);
+			if (empty($gedtitl)) {
+				$gedtitl = 'ROMN';
+			}
+		}
+		add_simple_tag("3 $gedtitl");
+	}
+
+	// 2 _PRIM
+	if ($gedrec == '') {
+		$gedprim = '_PRIM';
+	} else {
+		$gedprim = get_first_tag(1, '_PRIM', $gedrec);
+		if (empty($gedprim)) {
+			$gedprim = '_PRIM';
+		}
+	}
+	add_simple_tag("1 $gedprim");
+
+	//-- print out editing fields for any other data in the media record
+	$sourceSOUR = '';
+	if (!empty($gedrec)) {
+		preg_match_all('/\n(1 (?!FILE|FORM|TYPE|TITL|_PRIM|_THUM|CHAN|DATA).*(\n[2-9] .*)*)/', $gedrec, $matches);
+		foreach ($matches[1] as $subrec) {
+			$pieces = explode("\n", $subrec);
+			foreach ($pieces as $piece) {
+				$ft = preg_match("/(\d) (\w+)(.*)/", $piece, $match);
+				if ($ft == 0) continue;
+				$subLevel = $match[1];
+				$fact = trim($match[2]);
+				$event = trim($match[3]);
+				if ($fact=='NOTE' || $fact=='TEXT') {
+					$event .= get_cont(($subLevel +1), $subrec, false);
+				}
+				if ($sourceSOUR!='' && $subLevel<=$sourceLevel) {
+					// Get rid of all saved Source data
+					add_simple_tag($sourceLevel .' SOUR '. $sourceSOUR);
+					add_simple_tag(($sourceLevel+1) .' PAGE '. $sourcePAGE);
+					add_simple_tag(($sourceLevel+2) .' TEXT '. $sourceTEXT);
+					add_simple_tag(($sourceLevel+2) .' DATE '. $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+					add_simple_tag(($sourceLevel+1) .' QUAY '. $sourceQUAY);
+					$sourceSOUR = '';
+				}
+
+				if ($fact=='SOUR') {
+					$sourceLevel = $subLevel;
+					$sourceSOUR = $event;
+					$sourcePAGE = '';
+					$sourceTEXT = '';
+					$sourceDATE = '';
+					$sourceQUAY = '';
+					continue;
+				}
+
+				// Save all incoming data about this source reference
+				if ($sourceSOUR!='') {
+					if ($fact=='PAGE') {
+						$sourcePAGE = $event;
+						continue;
+					}
+					if ($fact=='TEXT') {
+						$sourceTEXT = $event;
+						continue;
+					}
+					if ($fact=='DATE') {
+						$sourceDATE = $event;
+						continue;
+					}
+					if ($fact=='QUAY') {
+						$sourceQUAY = $event;
+						continue;
+					}
+					continue;
+				}
+
+				// Output anything that isn't part of a source reference
+				if (!empty($fact) && $fact != 'CONC' && $fact != 'CONT' && $fact != 'DATA') {
+					add_simple_tag($subLevel .' '. $fact .' '. $event);
+				}
+			}
+		}
+
+		if ($sourceSOUR!='') {
+			// Get rid of all saved Source data
+			add_simple_tag($sourceLevel .' SOUR '. $sourceSOUR);
+			add_simple_tag(($sourceLevel+1) .' PAGE '. $sourcePAGE);
+			add_simple_tag(($sourceLevel+2) .' TEXT '. $sourceTEXT);
+			add_simple_tag(($sourceLevel+2) .' DATE '. $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+			add_simple_tag(($sourceLevel+1) .' QUAY '. $sourceQUAY);
+		}
+	}
+	if (WT_USER_IS_ADMIN) {
+		echo "<tr><td class=\"descriptionbox wrap width25\">";
+		echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
+		if ($NO_UPDATE_CHAN) {
+			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\">";
+		} else {
+			echo "<input type=\"checkbox\" name=\"preserve_last_changed\">";
+		}
+		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br>';
+		$event = new WT_Event(get_sub_record(1, '1 CHAN', $gedrec), null, 0);
+		echo format_fact_date($event, new WT_Person(''), false, true);
+		echo '</td></tr>';
+	}
+	echo '</table>';
+	?>
+	<script>
+		var formid = '<?php echo $formid; ?>';
+		function updateFormat(filename) {
+			var extsearch=/\.([a-zA-Z]{3,4})$/;
+			ext='';
+			if (extsearch.exec(filename)) {
+				ext = RegExp.$1.toLowerCase();
+				if (ext=='jpg') ext='jpeg';
+				if (ext=='tif') ext='tiff';
+			}
+			formfield = document.getElementById(formid);
+			formfield.value = ext;
+		}
+	</script>
+			<?php
+			print_add_layer('SOUR', 1);
+			print_add_layer('NOTE', 1);
+			print_add_layer('SHARED_NOTE', 1);
+			print_add_layer('RESN', 1);
+			?>
+			<p id="save-cancel">
+				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+			</p>
+		</form>
+	</div>
+	<?php
+}
