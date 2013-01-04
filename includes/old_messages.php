@@ -115,6 +115,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Paternal grandfather\'s given name');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Paternal grandmother\'s given name');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Personal Facts and Details');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Place connections found');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('PlaceCheck List Options');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Postal code position');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Preview');
@@ -173,6 +174,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This user name cannot edit this GEDCOM.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This will allow you to link another individual, who already exists, as a new husband to this person.  This will create a new family with the husband you select.  You will also have the option of specifying a marriage for this new family.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This will allow you to link another individual, who already exists, as a new wife to this person.  This will create a new family with the wife you select.  You will also have the option of specifying a marriage for this new family.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Total unique places');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Use mouse wheel for zoom');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Use this form to add an unlinked person.<br /><br />When you add an unlinked person to your family tree, the person will not be linked to any other people until you link them.  Later, you can link people together from the Close Relatives tab on the Individual Information page.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Use this link to add a new shared note to your database without linking the note to any record.<br /><br />The new note will appear in the Shared Note list, but will not appear on any charts or anywhere else in the program until it is linked to an individual, family or event.');
