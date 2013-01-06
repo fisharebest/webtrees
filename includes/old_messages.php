@@ -36,6 +36,7 @@ Requests for commercial publication of these or other UK census images appearing
 ');
 
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('<b>webtrees</b> requires a directory with read/write permission, where it can create temporary files and export data.  By default, it uses the data/ directory.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('<b>webtrees</b> will check the permissions in the next step.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add Note');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add Shared Note');
@@ -57,6 +58,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Close Window');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Continue');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Current directory');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Data file directory');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Different countries use different ways to write the address. This option will enable you to place the postal code either before or after the city name.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Directory in which the protected Media directory can be created.  When this field is empty, the <b>%s</b> directory will be used.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Display indis and families count');
@@ -77,6 +79,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Here you can specify if the mouse wheel is enebled for zooming.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Hide map controls');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('If two family trees share the same media directory, then they will be able to share media items.  If they use different media directories, then they will be able to use the same filename to access different media items.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('If your server does not support ".htaccess" files (e.g. Microsoft IIS), and you cannot set access controls for this directory, then you should move this directory to another location.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('If your server supports it, you can enable the media firewall.  This changes the location of the media directory from the public directory %1$s to a private directory such as %2$s.  This allows webtrees to apply privacy filtering to media items.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('In this field you should enter any nicknames for the person.<br />This is an optional field.<br /><br />Ways to add a nickname:<ul><li>Select <b>modify name</b> then enter nickname and save</li><li>Select <b>add new name</b> then enter nickname AND name and save</li><li>Select <b>edit GEDCOM record</b> to add multiple [2&nbsp;NICK] records subordinate to the main [1&nbsp;NAME] record.</li></ul>');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('In this field you should enter the given names for the person.  As an example, in the name "John Robert Finlay", the given names that should be entered here are "John Robert"');
@@ -128,6 +131,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Save');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Should new images automatically go in the protected media directory when they are uploaded?');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Show GEDCOM record last change date on lists');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Some site administrators prefer not to have writable files or directories in the public HTML directory.  By specifying an alternative location to write data, you can make the existing data/ directory read-only.  Note that the file data/config.ini.php cannot be moved, and must remain in this location.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Source for Adoption');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Source for Blessing');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Source for Cremation');
@@ -156,6 +160,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The directory <b>%s</b> does not have read permission.  You must change this.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The directory <b>%s</b> does not have write permission.  You must change this.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The directory <b>%s</b> has read-write permission.  Good.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The directory can be specified in full (e.g. /home/user_name/genealogy_data/) or relative to the installation directory (e.g. ../../genealogy_data/).');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The file <b>%s</b> does not have read permission.  You must change this.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The file <b>%s</b> has read-only permission.  Good.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The file <b>%s</b> has write permission.  This will work, but for better security, you should make it read only.');

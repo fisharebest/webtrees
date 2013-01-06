@@ -589,15 +589,17 @@ case 'HIDE_LIVE_PEOPLE':
         break;
 
 case 'INDEX_DIRECTORY':
-	$title=WT_I18N::translate('Data file directory');
+	$title=WT_I18N::translate('Data folder');
 	$text=
-		WT_I18N::translate('<b>webtrees</b> requires a directory with read/write permission, where it can create temporary files and export data.  By default, it uses the data/ directory.').
-	'<br/><br/>'.
-		WT_I18N::translate('Some site administrators prefer not to have writable files or directories in the public HTML directory.  By specifying an alternative location to write data, you can make the existing data/ directory read-only.  Note that the file data/config.ini.php cannot be moved, and must remain in this location.').
-	'<br/><br/>'.
-		WT_I18N::translate('If your server does not support ".htaccess" files (e.g. Microsoft IIS), and you cannot set access controls for this directory, then you should move this directory to another location.').
-	'<br/><br/>'.
-		WT_I18N::translate('The directory can be specified in full (e.g. /home/user_name/genealogy_data/) or relative to the installation directory (e.g. ../../genealogy_data/).');
+		'<p>'.
+		WT_I18N::translate('This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet.').
+		'</p><p>'.
+		/* I18N: “Apache” is a software program. */ WT_I18N::translate('To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents.').
+		'</p><p>'.
+		WT_I18N::translate('If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder.').
+		'</p><p>'.
+		WT_I18N::translate('The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/).').
+		'</p>';
 	break;
 
 case 'INDI_FACTS_ADD':

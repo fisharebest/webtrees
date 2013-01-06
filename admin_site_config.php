@@ -42,7 +42,7 @@ echo
 				'<li><a href="#mail"><span>', WT_I18N::translate('Mail configuration'), '</span></a></li>',
 			'</ul>',
 			'<div id="site"><table><tr><td><dl>',
-			'<dt>', WT_I18N::translate('Data file directory'), help_link('INDEX_DIRECTORY'), '</dt>',
+			'<dt>', WT_I18N::translate('Data folder'), help_link('INDEX_DIRECTORY'), '</dt>',
 			'<dd>', edit_field_inline('site_setting-INDEX_DIRECTORY', WT_Site::preference('INDEX_DIRECTORY'), $controller), '</dd>',
 			'<dt>', WT_I18N::translate('Memory limit'), help_link('MEMORY_LIMIT'), '</dt>',
 			'<dd>', edit_field_inline('site_setting-MEMORY_LIMIT', WT_Site::preference('MEMORY_LIMIT'), $controller), '</dd>',
