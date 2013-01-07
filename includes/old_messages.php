@@ -75,6 +75,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Father\'s occupation');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Father\'s surname');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('GEDCOM record last change date on lists');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Genealogy from [%s]');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Here you can specify if the counts of indis and families connected to the place is displayed. Now if GEDCOM file contains many people is recomended to turn it off.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Here you can specify if the mouse wheel is enebled for zooming.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Hide map controls');
@@ -117,6 +118,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Parents\' marriage place');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Paternal grandfather\'s given name');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Paternal grandmother\'s given name');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Permanently delete the GEDCOM %s and all its settings?');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Personal Facts and Details');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Place connections found');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('PlaceCheck List Options');
