@@ -42,7 +42,7 @@ if (!$ALLOW_EDIT_GEDCOM) {
 }
 
 /**
- * This functions checks if an existing directory is physically writeable
+ * This functions checks if an existing folder is physically writeable
  * The standard PHP function only checks for the R/O attribute and doesn't
  * detect authorisation by ACL.
  */
@@ -58,13 +58,13 @@ function dir_is_writable($dir) {
 }
 
 /**
- * Moves a file from one location to another, creating destination directory if needed
- * used by the routines that move files between the standard media directory and the protected media directory
+ * Moves a file from one location to another, creating destination folder if needed
+ * used by the routines that move files between the standard media folder and the protected media folder
  */
 function move_file($src, $dest) {
 	global $MEDIA_FIREWALL_ROOTDIR, $MEDIA_DIRECTORY;
 
-	// sometimes thumbnail files are set to something like "images/media.gif", this ensures we do not move them
+	// sometimes thumbnail files are set to something like “images/media.gif”, this ensures we do not move them
 	// check to make sure the src file is in the standard or protected media directories
 	if (strpos($src, $MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)!==0 && strpos($src, $MEDIA_DIRECTORY)!==0) {
 		return false;
@@ -91,7 +91,7 @@ function move_file($src, $dest) {
 }
 
 /**
-* Recursively moves files from standard media directory to the protected media directory
+* Recursively moves files from standard media folder to the protected media folder
 * and vice-versa.  Operates directly on the filesystem, does not use the db.
 */
 function move_files($path, $protect) {
@@ -109,7 +109,7 @@ function move_files($path, $protect) {
 			if ($element!= "." && $element!= ".." && $element!=".svn" && $element!="watermark" && $element!="thumbs" && $element!=".htaccess" && $element!="index.php" && $element!="MediaInfo.txt" && $element!="ThumbsInfo.txt") {
 				$filename = $path."/".$element;
 				if (is_dir($filename)) {
-					// call this function recursively on this directory
+					// call this function recursively on this folder
 					move_files($filename, $protect);
 				} else {
 					$operation_count++;
@@ -174,7 +174,7 @@ function set_perms($path) {
 					} else {
 						echo '<div>', WT_I18N::translate('Permissions Not Set'), ' (', decoct(WT_PERM_EXE), ') (', $fullpath, ')</div>';
 					}
-					// call this function recursively on this directory
+					// call this function recursively on this folder
 					set_perms($fullpath);
 				} else {
 					if (@chmod($fullpath, WT_PERM_FILE)) {
@@ -224,7 +224,7 @@ $is_std_media_writable = dir_is_writable($MEDIA_DIRECTORY);
 $thumbget = '';
 if ($showthumb) $thumbget = '&amp;showthumb=true';
 
-//-- prevent script from accessing an area outside of the media directory
+//-- prevent script from accessing an area outside of the media folder
 //-- and keep level consistency
 if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)) {
 	$directory = $MEDIA_DIRECTORY;
@@ -288,7 +288,7 @@ if (check_media_structure()) {
 	if ($action == "deletedir") {
 		echo "<table class=\"media_items\">";
 		echo "<tr><td>";
-		// Check if media directory and thumbs directory are empty
+		// Check if media folder and thumbs folder are empty
 		$clean = false;
 		$files = array();
 		$thumbfiles = array();
@@ -296,7 +296,7 @@ if (check_media_structure()) {
 		$thumbfiles_fw = array();
 		$resdir = false;
 		$resthumb = false;
-		// Media directory check
+		// Media folder check
 		if (@is_dir(filename_decode($directory))) {
 			$handle = opendir(filename_decode($directory));
 			$files = array();
@@ -308,7 +308,7 @@ if (check_media_structure()) {
 			AddToLog('Directory does not exist.'.$directory, 'media');
 		}
 
-		// Thumbs directory check
+		// Thumbs folder check
 		if (@is_dir(filename_decode($thumbdir))) {
 			$handle = opendir(filename_decode($thumbdir));
 			$thumbfiles = array();
@@ -318,7 +318,7 @@ if (check_media_structure()) {
 			closedir($handle);
 		}
 
-		// Media Firewall Media directory check
+		// Media Firewall Media folder check
 		if (@is_dir(filename_decode($directory_fw))) {
 			$handle = opendir(filename_decode($directory_fw));
 			$files_fw = array();
@@ -327,7 +327,7 @@ if (check_media_structure()) {
 			}
 		}
 
-		// Media Firewall Thumbs directory check
+		// Media Firewall Thumbs folder check
 		if (@is_dir(filename_decode($thumbdir_fw))) {
 			$handle = opendir(filename_decode($thumbdir_fw));
 			$thumbfiles_fw = array();
@@ -403,7 +403,7 @@ if (check_media_structure()) {
 			}
 		}
 
-		// Back up to this directory's parent
+		// Back up to this folder’s parent
 		$i = strrpos(substr($directory, 0, -1), '/');
 		$directory = trim(substr($directory, 0, $i), '/').'/';
 		$action="filter";
@@ -428,7 +428,7 @@ if (check_media_structure()) {
 				if (!isFileExternal($filename)) {
 					$thumbnail = str_replace("$MEDIA_DIRECTORY", $MEDIA_DIRECTORY."thumbs/", check_media_depth($media["FILE"], "NOTRUNC"));
 					if (!media_exists($thumbnail)) {  
-						// can't use thumbnail_file or $media["THUMB"] or $media["THUMBEXISTS"] because it they reference the icon from WT_IMAGES 
+						// can’t use thumbnail_file or $media["THUMB"] or $media["THUMBEXISTS"] because it they reference the icon from WT_IMAGES 
 						if (generate_thumbnail($media["FILE"], $thumbnail)) {
 							echo WT_I18N::translate('Thumbnail %s generated automatically.', $thumbnail);
 							AddToLog("Thumbnail {$thumbnail} generated automatically.", 'edit');
@@ -467,7 +467,7 @@ if (check_media_structure()) {
 		echo "<table class=\"media_items\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		if (strpos($filename, "../") !== false) {
-			// don't allow user to access directories outside of media dir
+			// Don’t allow user to access directories outside of media dir
 			echo "<div class=\"error\">".WT_I18N::translate('Blank name or illegal characters in name')."</div>";
 		} else {
 			if (file_exists($filename)) {
@@ -487,7 +487,7 @@ if (check_media_structure()) {
 		echo "<table class=\"media_items\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		if (strpos($filename, "../") !== false) {
-			// don't allow user to access directories outside of media dir
+			// Don’t allow user to access directories outside of media dir
 			echo "<div class=\"error\">".WT_I18N::translate('Blank name or illegal characters in name')."</div>";
 		} else {
 			if (file_exists(get_media_firewall_path($filename))) {
@@ -541,14 +541,14 @@ if (check_media_structure()) {
 
 	$allowDelete = true;
 	$removeObject = true;
-	// Remove object: same as Delete file, except file isn't deleted
+	// Remove object: same as Delete file, except file isn’t deleted
 	if ($action == "removeobject") {
 		$action = "deletefile";
 		$allowDelete = false;
 		$removeObject = true;
 	}
 
-	// Remove link: same as Delete file, except file isn't deleted
+	// Remove link: same as Delete file, except file isn’t deleted
 	if ($action == "removelinks") {
 		$action = "deletefile";
 		$allowDelete = false;
@@ -658,29 +658,6 @@ if (check_media_structure()) {
 					echo "<span class=\"error\">".WT_I18N::translate('This media object does not exist as a file on this server.  It cannot be deleted, moved, or renamed.')."</span><br>";
 					$finalResult = false;
 				}
-
-/* I've commented this out, as I have no idea what it is supposed to do.  We've just deleted a
- * file, so why are we creating a new media object for it???
-
-				// Record changes to the Media object
-				accept_all_changes($xref, WT_GED_ID);
-				$objerec = find_gedcom_record($xref, WT_GED_ID);
-
-				// Add the same file as a new object
-				if ($finalResult && !$removeObject && $objerec!="") {
-					$xref = get_new_xref("OBJE");
-					$objerec = preg_replace("/0 @.*@ OBJE/", "0 @".$xref."@ OBJE", $objerec);
-					if (append_gedrec($objerec, WT_GED_ID)) {
-						echo WT_I18N::translate('Record %s successfully added to GEDCOM.', $xref);
-					} else {
-						$finalResult = false;
-						echo "<span class=\"error\">";
-						echo WT_I18N::translate('Record %s could not be added to GEDCOM.', $xref);
-						echo "</span>";
-					}
-					echo "<br>";
-				}
-*/
 			}
 		}
 		if ($finalResult) echo WT_I18N::translate('Update successful');
@@ -732,7 +709,7 @@ if (check_media_structure()) {
 
 	$savedOutput = ob_get_clean();
 
-	// "Help for this page" link
+	// “Help for this page” link
 	echo '<div id="page_help">', help_link('manage_media'), '</div>';
 ?>
 	<form name="managemedia" id="managemedia" method="post" onsubmit="return checknames(this);" action="<?php echo WT_SCRIPT_NAME; ?>">
@@ -778,7 +755,7 @@ if (check_media_structure()) {
 		</tr>
 		<tr align="center">	
 			<?php
-				// Directory pick list
+				// Folder pick list
 				if (!$directory) {
 					$directory = $MEDIA_DIRECTORY;
 				}
@@ -803,13 +780,13 @@ if (check_media_structure()) {
 	if ($action == "filter") {
 		if (empty($directory)) $directory = $MEDIA_DIRECTORY;
 
-		// Start of media directory table
+		// Start of media folder table
 		echo '<table class="media_items">';
 		// Tell the user where he is
 		echo '<tr>';
 		echo '<td colspan="4">';
 			// Calculation to determine whether files are protected or not -------------------------
-			// Check if media directory and thumbs directory are empty
+			// Check if media folder and thumbs folder are empty
 			$clean = false;
 			$files = array();
 			$thumbfiles = array();
@@ -817,7 +794,7 @@ if (check_media_structure()) {
 			$thumbfiles_fw = array();
 			$resdir = false;
 			$resthumb = false;
-			// Media directory check
+			// Media folder check
 			if (@is_dir(filename_decode($directory))) {
 				$handle = opendir(filename_decode($directory));
 				$files = array();
@@ -826,7 +803,7 @@ if (check_media_structure()) {
 				}
 				closedir($handle);
 			}
-			// Thumbs directory check
+			// Thumbs folder check
 			if (@is_dir(filename_decode($thumbdir))) {
 				$handle = opendir(filename_decode($thumbdir));
 				$thumbfiles = array();
@@ -835,7 +812,7 @@ if (check_media_structure()) {
 				}
 				closedir($handle);
 			}
-			// Media Firewall Media directory check
+			// Media Firewall Media folder check
 			if (@is_dir(filename_decode($directory_fw))) {
 				$handle = opendir(filename_decode($directory_fw));
 				$files_fw = array();
@@ -844,7 +821,7 @@ if (check_media_structure()) {
 				}
 				closedir($handle);
 			}
-			// Media Firewall Thumbs directory check
+			// Media Firewall Thumbs folder check
 			if (@is_dir(filename_decode($thumbdir_fw))) {
 				$handle = opendir(filename_decode($thumbdir_fw));
 				$thumbfiles_fw = array();
@@ -856,7 +833,6 @@ if (check_media_structure()) {
 			$protected_files = count($files_fw);
 			$standard_files = count($files);
 
-//			echo "<br>";
 			echo "<form name=\"blah3\" action=\"".WT_SCRIPT_NAME."\" method=\"post\">";
 			echo "<input type=\"hidden\" name=\"directory\" value=\"".$directory."\">";
 			echo "<input type=\"hidden\" name=\"level\" value=\"".($level)."\">";
@@ -915,7 +891,7 @@ if (check_media_structure()) {
 			$uplink2 = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;sortby={$sortby}&amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\" class=\"icon-larrow\"  title=\"".WT_I18N::translate('Back')."\"></a>";
 		}
 
-		// display the directory list
+		// display the folder list
 		if (count($dirs) || $pdir != '') {
 			sort($dirs);
 			if ($pdir != '') {
@@ -933,7 +909,7 @@ if (check_media_structure()) {
 				if ($dir{0}!='.') {
 				echo '<tr>';
 					echo '<td class="center">';
-						// directory options
+						// folder options
 						echo '<form name="blah" action="'.WT_SCRIPT_NAME.'" method="post">';
 						echo '<input type="hidden" name="directory" value="'.$directory.$dir.'/">';
 						echo '<input type="hidden" name="parentdir" value="'.$directory.'">';
@@ -963,14 +939,7 @@ if (check_media_structure()) {
 
 		// display the images
 		if (count($medialist) && ($subclick=='search' || $subclick=='all')) {
-			if (WT_USE_LIGHTBOX) {
-				// Get Lightbox config variables
-				// Following two lines are temporarily removed as they cause problems. BH 07/01/2011
-				//$album = new lightbox_WT_Module();
-				//$album->getPreLoadContent();
-			}
-
-			// Sort the media list according to the user's wishes
+			// Sort the media list according to the user’s wishes
 			$sortedMediaList = $medialist; // Default sort (by title) has already been done
 			if ($sortby=='file') uasort($sortedMediaList, 'filesort');
 
@@ -1017,7 +986,7 @@ if (check_media_structure()) {
 				$printDone = false;
 				foreach ($sortedMediaList as $indexval => $media) {
 					while (true) {
-						$isExternal = isFileExternal($media["FILE"]); // isExternal must be defined before any "break", so the if statement at the end of the loop doesn't fail
+						$isExternal = isFileExternal($media["FILE"]); // isExternal must be defined before any “break”, so the if statement at the end of the loop doesn’t fail
 						if (!filterMedia($media, $filter, $httpFilter)) break;
 						if ($passCount==1 && !$isExternal) break;
 						if ($passCount==2 && $isExternal) break;
@@ -1056,8 +1025,8 @@ if (check_media_structure()) {
 							}
 
 							// Delete File
-							// don't delete external files
-							// don't delete files linked to more than 1 object
+							// Don’t delete external files
+							// Don’t delete files linked to more than 1 object
 							$objectCount = 0;
 							if (!$isExternal) {
 								foreach ($medialist as $tempMedia) {
@@ -1155,7 +1124,7 @@ if (check_media_structure()) {
 								echo '<img src="data:image/', $media['FORM'], ';base64,', base64_encode(file_get_contents($mediaInfo['realThumb'])), '" class="thumbnail" width="', $thumbsize[0], '" height="', $thumbsize[1], '">';
 								echo '</a></center>';
 							} else {
-								// TODO: Display a mime-type icon - these don't exist in the admin theme yet.
+								// TODO: Display a mime-type icon - these don’t exist in the admin theme yet.
 								echo '<center><a href="', $mediaInfo['url'], '" title="', $name, '">';
 								echo '<img src="', $mediaInfo['thumb'], '" align="middle" class="thumbnail">';
 								echo '</a></center>';

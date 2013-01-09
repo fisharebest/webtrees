@@ -2,7 +2,7 @@
 // Functions for exporting data
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -36,7 +36,7 @@ function reformat_record_export($rec) {
 	foreach (preg_split('/[\r\n]+/', $rec, -1, PREG_SPLIT_NO_EMPTY) as $line) {
 		// Escape @ characters
 		// TODO:
-		// Need to replace '@' with '@@', unless it is either
+		// Need to replace “@” with “@@”, unless it is either
 		// a) an xref, such as @I123@
 		// b) an escape, such as @#D FRENCH R@
 		if (false) {
@@ -60,7 +60,7 @@ function reformat_record_export($rec) {
 						--$pos;
 					}
 					if ($pos==strpos($line, ' ', 3)+1) {
-						// No spaces in the data! Can't split it :-(
+						// No spaces in the data! Can’t split it :-(
 						break;
 					} else {
 						$newrec.=utf8_substr($line, 0, $pos-1).WT_EOL;
@@ -72,7 +72,7 @@ function reformat_record_export($rec) {
 						--$pos;
 					}
 					if ($pos==strpos($line, ' ', 3)) {
-						// No non-spaces in the data! Can't split it :-(
+						// No non-spaces in the data! Can’t split it :-(
 						break;
 					}
 					$newrec.=utf8_substr($line, 0, $pos).WT_EOL;
@@ -141,15 +141,15 @@ function gedcom_header($gedfile) {
 }
 
 // Convert media path by:
-// - removing current media directory
+// - removing current media folder
 // - adding a new prefix
-// - making directory name separators consistent
+// - making folder name separators consistent
 function convert_media_path($rec, $path, $slashes) {
 	global $MEDIA_DIRECTORY;
 
 	if (preg_match('/\n1 FILE (.+)/', $rec, $match)) {
 		$old_file_name=$match[1];
-		if (!preg_match('~^(https?|ftp):~', $old_file_name)) { // Don't modify external links
+		if (!preg_match('~^(https?|ftp):~', $old_file_name)) { // Don’t modify external links
 			if (strpos($old_file_name, $MEDIA_DIRECTORY)===0) {
 				$new_file_name=substr_replace($old_file_name, $path, 0, strlen($MEDIA_DIRECTORY));
 			} else {

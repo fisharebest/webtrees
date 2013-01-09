@@ -106,9 +106,9 @@ if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
 }
 
 // Naming conventions used in this script:
-// folderName - this is the link to the folder in the standard media directory; the one that is stored in the gedcom.
-// serverFolderName - this is where the file is physically located.  if the media firewall is enabled it is in the protected media directory.  if not it is the same as folderName.
-// thumbFolderName - this is the link to the thumb folder in the standard media directory
+// folderName - this is the link to the folder in the standard media folder; the one that is stored in the gedcom.
+// serverFolderName - this is where the file is physically located.  if the media firewall is enabled it is in the protected media folder.  if not it is the same as folderName.
+// thumbFolderName - this is the link to the thumb folder in the standard media folder
 // serverThumbFolderName - this is where the thumbnail file is physically located
 
 switch ($action) {
@@ -157,7 +157,7 @@ case 'newentry':
 		}
 		if (!empty($_FILES['mediafile']['name'])) {
 			$newFile = $realFolderName.$mediaFile;
-			// Copy main media file into the destination directory
+			// Copy main media file into the destination folder
 			if (file_exists(filename_decode($newFile))) {
 				$error .= WT_I18N::translate('Media file already exists.').'&nbsp;&nbsp;'.$newFile.'<br>';
 			} else {
@@ -172,7 +172,7 @@ case 'newentry':
 		}
 		if ($error=='' && !empty($_FILES['thumbnail']['name'])) {
 			$newThum = $realThumbFolderName.$mediaFile;
-			// Copy user-supplied thumbnail file into the destination directory
+			// Copy user-supplied thumbnail file into the destination folder
 			if (file_exists(filename_decode($newThum))) {
 				$error .= WT_I18N::translate('Media thumbnail already exists.').'&nbsp;&nbsp;'.$newThum.'<br>';
 			} else {
@@ -186,7 +186,7 @@ case 'newentry':
 			}
 		}
 		if ($error=='' && empty($_FILES['mediafile']['name']) && !empty($_FILES['thumbnail']['name'])) {
-			// Copy user-supplied thumbnail file into the main destination directory
+			// Copy user-supplied thumbnail file into the main destination folder
 			if (!copy(filename_decode($whichFile1), filename_decode($whichFile2))) {
 				// the file cannot be copied
 				$error .= WT_I18N::translate('There was an error uploading your file.').'<br>'.WT_I18N::translate('The file %s could not be copied from %s', $realThumbFolderName.$mediaFile, $realThumbFolderName.$mediaFile).'<br>';
@@ -215,7 +215,7 @@ case 'newentry':
 				}
 			}
 		}
-		// Let's see if there are any errors generated and print it
+		// Let’s see if there are any errors generated and print it
 		if (!empty($error)) {
 			echo '<span class="error">', $error, '</span><br>';
 			$mediaFile = '';
@@ -281,7 +281,7 @@ case 'newentry':
 					$oldThumFile = str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $oldMainFile);
 					$newThumFile = str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $newMainFile);
 					if (media_exists($oldMainFile) == 3) {
-						// the file is in the media firewall directory
+						// the file is in the media firewall folder
 						$oldMainFile = get_media_firewall_path($oldMainFile);
 						$newMainFile = get_media_firewall_path($newMainFile);
 					}
@@ -374,7 +374,7 @@ case 'newentry':
 		// NOTE: Level 0
 		$media_id = get_new_xref('OBJE');
 		$newged = '0 @'.$media_id."@ OBJE\n";
-		//-- set the FILE text to the correct file location in the standard media directory
+		//-- set the FILE text to the correct file location in the standard media folder
 		if (WT_USER_GEDCOM_ADMIN) $text[0] = $folderName.$mediaFile;
 		else $newged .= '1 FILE '.$folderName.$mediaFile."\n";
 
@@ -443,7 +443,7 @@ case 'update':
 			$oldThumFile = str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $oldMainFile);
 			$newThumFile = str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $newMainFile);
 			if (media_exists($oldMainFile) == 3) {
-				// the file is in the media firewall directory
+				// the file is in the media firewall folder
 				$oldMainFile = get_media_firewall_path($oldMainFile);
 				$newMainFile = get_media_firewall_path($newMainFile);
 			}
@@ -619,7 +619,6 @@ function show_media_form($pid, $action = 'newentry', $filename = '', $linktoid =
 		if ($filename != '')
 			$gedfile = 'FILE ' . $filename;
 	} else {
-		//  $gedfile = get_sub_record(1, 'FILE', $gedrec);
 		$gedfile = get_first_tag(1, 'FILE', $gedrec);
 		if (empty($gedfile))
 			$gedfile = 'FILE';
@@ -646,7 +645,7 @@ function show_media_form($pid, $action = 'newentry', $filename = '', $linktoid =
 			}
 
 			if ($thumbSupport != '') {
-				$thumbSupport = substr($thumbSupport, 2); // Trim off first ', '
+				$thumbSupport = substr($thumbSupport, 2); // Trim off first “, ”
 				echo '<tr><td class="descriptionbox wrap width25">';
 				echo WT_I18N::translate('Automatic thumbnail'), help_link('generate_thumb');
 				echo '</td><td class="optionbox wrap">';
@@ -707,7 +706,7 @@ function show_media_form($pid, $action = 'newentry', $filename = '', $linktoid =
 		// Strip $MEDIA_DIRECTORY from the folder name
 		if (substr($folder, 0, strlen($MEDIA_DIRECTORY)) == $MEDIA_DIRECTORY) $folder = substr($folder, strlen($MEDIA_DIRECTORY));
 		echo WT_I18N::translate('Folder name on server'), help_link('upload_server_folder'), '</td><td class="optionbox wrap">';
-		//-- don't let regular users change the location of media items
+		//-- don’t let regular users change the location of media items
 		if ($action!='update' || WT_USER_GEDCOM_ADMIN) {
 			$mediaFolders = get_media_folders();
 			echo '<span dir="ltr"><select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">';
@@ -756,12 +755,12 @@ function show_media_form($pid, $action = 'newentry', $filename = '', $linktoid =
 
 	// 3 TYPE
 	if ($gedrec == '')
-		$gedtype = 'TYPE photo'; // default to 'Photo' unless told otherwise
+		$gedtype = 'TYPE photo'; // default to ‘Photo’ unless told otherwise
 	else {
 		$temp = str_replace("\r\n", "\n", $gedrec) . "\n";
 		$types = preg_match("/3 TYPE(.*)\n/", $temp, $matches);
 		if (empty($matches[0]))
-			$gedtype = 'TYPE photo'; // default to 'Photo' unless told otherwise
+			$gedtype = 'TYPE photo'; // default to ‘Photo’ unless told otherwise
 		else
 			$gedtype = 'TYPE ' . trim($matches[1]);
 	}
@@ -874,7 +873,7 @@ function show_media_form($pid, $action = 'newentry', $filename = '', $linktoid =
 					continue;
 				}
 
-				// Output anything that isn't part of a source reference
+				// Output anything that isn’t part of a source reference
 				if (!empty($fact) && $fact != 'CONC' && $fact != 'CONT' && $fact != 'DATA') {
 					add_simple_tag($subLevel .' '. $fact .' '. $event);
 				}

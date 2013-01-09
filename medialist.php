@@ -89,7 +89,7 @@ if (
 	unset($WT_SESSION->Medialist);
 }
 
-// If SESSION_medialist then it's a return
+// If SESSION_medialist then it’s a return
 if (isset($WT_SESSION->Medialist)) {
 	$show = 'yes';
 	$search = 'yes';
@@ -105,13 +105,13 @@ if (isset($WT_SESSION->Medialist)) {
 	}
 }
 
-// ************************  BEGIN = 'Build the medialist array' ************************
+// ************************  BEGIN Build the medialist array ************************
 if ($build == 'yes') {
 	if ($folder == 'ALL') {
 		$folder = $MEDIA_DIRECTORY;
 		$currentdironly = false;
 	}
-	// show external links only if looking at top level directory
+	// show external links only if looking at top level folder
 	$showExternal = ($folder == $MEDIA_DIRECTORY) ? true : false;
 	$medialist=get_medialist2($currentdironly, $folder, true, $showExternal, $sortby);
 
@@ -120,12 +120,11 @@ if ($build == 'yes') {
 		$mediaobject=WT_Media::getInstance($media['XREF']);
 		// Display when user has Edit rights or when object belongs to current GEDCOM
 		$disp = WT_USER_CAN_EDIT || $mediaobject->ged_id==WT_GED_ID;
-		// Display when Media objects aren't restricted by global privacy
+		// Display when Media objects aren’t restricted by global privacy
 		$disp &= $mediaobject->canDisplayDetails();
-		// Display when this Media object isn't restricted
+		// Display when this Media object isn’t restricted
 		$disp &= canDisplayFact($mediaobject->getXref(), $mediaobject->ged_id, $mediaobject->getGedcomRecord());
 		if (!$disp) {
-			// echo "removing $key - disp<br>";
 			unset($medialist[$key]);
 			continue;
 		}
@@ -138,12 +137,10 @@ if ($build == 'yes') {
 
 			if ($filter_type == $or) {
 				if (!$found1 && !$found2) {
-					// echo "removing $key - OR<br>";
 					unset($medialist[$key]);
 				}
 			} else {
 				if (!$found1 || !$found2) {
-					// echo "removing $key - AND<br>";
 					unset($medialist[$key]);
 				}
 			}
@@ -173,7 +170,7 @@ if (WT_USE_LIGHTBOX) {
 	$album = new lightbox_WT_Module();
 	$album->getPreLoadContent();
 }
-// ************************  BEGIN = 'Build the input form' ************************
+// ************************  BEGIN Build the input form ************************
 // A form for filtering the media items
 ?>
 <form action="medialist.php" method="get">
@@ -262,7 +259,7 @@ if (WT_USE_LIGHTBOX) {
 				<?php echo WT_I18N::translate('Search filters'); ?>
 			</td>
 			<td class="optionbox wrap width25">
-		<!-- // begin Text field for filter and "submit" button -->
+		<!-- // begin Text field for filter and “submit” button -->
 				<input id="filter1" name="filter1" value="<?php echo $filter1; ?>" size="14" dir="auto">
 				<select name="filter_type">
 					<?php
@@ -319,8 +316,8 @@ if (WT_USE_LIGHTBOX) {
 </form>
 <!-- // end form for filtering the media items -->
 <?php
-// ************************  END = 'Build the input form' ************************
-// ************************  BEGIN = 'Print the medialist array' ************************
+// ************************  END Build the input form ************************
+// ************************  BEGIN Print the medialist array ************************
 if ($show == 'yes') {
 	if (!empty($medialist)) {
 		// Count the number of items in the medialist

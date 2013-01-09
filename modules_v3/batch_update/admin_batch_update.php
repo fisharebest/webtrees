@@ -2,7 +2,7 @@
 // Batch update module
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2008  PGV Development Team.  All rights reserved.
@@ -265,7 +265,7 @@ class batch_update {
 			->fetchAssoc();
 	}
 
-	// Scan the plugin directory for a list of plugins
+	// Scan the plugin folder for a list of plugins
 	static function getPluginList() {
 		$array=array();
 		$dir=dirname(__FILE__).'/plugins/';

@@ -1,6 +1,6 @@
 ﻿README file for the Google Maps™ module for webtrees
 
-The files in this archive should be extracted into your modules directory.
+The files in this archive should be extracted into your modules folder.
 
 These are the instruction on getting your Google Maps™ interface to work:
 
@@ -63,7 +63,7 @@ from the top down – which, in 99% of cases, will mean starting by entering
 a country. When that is done, we move to the next layer (state, county,
 whatever is appropriate for your locale.) 
 
-To make the flags work make sure that ./places/flags directory exists.
+To make the flags work make sure that ./places/flags folder exists.
 
 More information:
 http://wiki.webtrees.net/Google_Map_module

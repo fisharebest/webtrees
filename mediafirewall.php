@@ -1,10 +1,8 @@
 <?php
-// Media Firewall
-// Called when a 404 error occurs in the media directory
-// Serves images from the index directory
+// Media Firewall - Serves media images, after checking access
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -39,7 +37,7 @@ $debug_watermark       = 0; // set to 1 if you want to see error messages from t
 $debug_forceImageRegen = 0; // set to 1 if you want to force an image to be regenerated (for debugging only)
 $debug_verboseLogging  = 0; // set to 1 for extra logging details
 
-// Send a "Not found" error as an image
+// Send a “Not found” error as an image
 function send404AndExit() {
 	$error = WT_I18N::translate('The media file was not found in this family tree');
 
@@ -79,11 +77,11 @@ function applyWatermark($im) {
 
 	// text to watermark with
 	$word1_text   = WT_TREE_TITLE;
-	// maximum font size for "word1" ; will be automaticaly reduced to fit in the image
+	// maximum font size for “word1” ; will be automaticaly reduced to fit in the image
 	$word1_maxsize = 100;
 	// rgb color codes for text
 	$word1_color  = "0, 0, 0";
-	// ttf font file to use. must exist in the includes/fonts/ directory
+	// ttf font file to use. must exist in the includes/fonts/ folder
 	$word1_font   = "";
 	// vertical position for the text to past; possible values are: top, middle or bottom, across
 	$word1_vpos   = "across";
@@ -128,9 +126,9 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 	if (!isset($vpos) || ($vpos!="top" && $vpos!="middle" && $vpos!="bottom" && $vpos!="across")) $vpos = "middle";
 	if (($vpos=="across") && (!isset($hpos) || ($hpos!="left" && $hpos!="right" && $hpos!="top2bottom" && $hpos!="bottom2top"))) $hpos = "left";
 
-	// make adjustments to settings that imagestring and imagestringup can't handle
+	// make adjustments to settings that imagestring and imagestringup can’t handle
 	if (!$useTTF) {
-		// imagestringup only writes up, can't use top2bottom
+		// imagestringup only writes up, can’t use top2bottom
 		if ($hpos=="top2bottom") $hpos = "bottom2top";
 	}
 
@@ -200,7 +198,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 		imagettftext($im, $taille, $rotation, $pos_x, $pos_y, $textcolor, 'includes/fonts/'.$font, $text);
 		restore_error_handler();
 	}
-	// don't use an 'else' here since imagettftextErrorHandler may have changed the value of $useTTF from true to false
+	// Don’t use an ‘else’ here since imagettftextErrorHandler may have changed the value of $useTTF from true to false
 	if (!$useTTF) {
 		if ($rotation!=90) {
 			imagestring($im, 5, $pos_x, $pos_y, $text, $textcolor);
@@ -267,7 +265,7 @@ $usewatermark = false;
 if ($type && function_exists("applyWatermark")) {
 	// if this is not a thumbnail, or WATERMARK_THUMB is true
 	if (($which=='main') || $WATERMARK_THUMB ) {
-		// if the user's priv's justify it...
+		// if the user’s priv’s justify it...
 		if (WT_USER_ACCESS_LEVEL > $SHOW_NO_WATERMARK ) {
 			// add a watermark
 			$usewatermark = true;
@@ -383,7 +381,7 @@ if (!$debug_forceImageRegen) {
 	header("Cache-Control: max-age=".$expireOffset.", s-maxage=0, proxy-revalidate");
 }
 
-// if this file is already in the user's cache, don't resend it
+// if this file is already in the user’s cache, don’t resend it
 // first check if the if_modified_since param matches
 if (($if_modified_since == $filetimeHeader) && !$debug_forceImageRegen) {
 	// then check if the etag matches
@@ -411,7 +409,7 @@ if ($generatewatermark) {
 		$imSendFunc = 'image'.$type;
 		// save the image, if preferences allow
 		if ((($which=='thumb') && $SAVE_WATERMARK_THUMB) || (($which=='main') && $SAVE_WATERMARK_IMAGE)) {
-			// make sure the directory exists
+			// make sure the folder exists
 			if (!is_dir(dirname($watermarkfile))) {
 				mkdirs(dirname($watermarkfile));
 			}

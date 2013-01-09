@@ -4,7 +4,7 @@
 // NOTE THAT THIS IS NOT A PAGE CONTROLLER, AND DOES NOT EXTEND WT_CONTROLLER_BASE
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -248,7 +248,7 @@ class WT_Controller_Clippings {
 							} else {
 								$filename = $MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.extract_filename($match[$k][1]);
 								if (file_exists($filename)) {
-									// Don't include firewall directory in zipfile.  It may start ../
+									// Don't include firewall folder in zipfile.  It may start ../
 									$media[$mediacount] = array (
 										PCLZIP_ATT_FILE_NAME => $filename,
 										PCLZIP_ATT_FILE_NEW_FULL_NAME => $MEDIA_DIRECTORY.extract_filename($match[$k][1])
@@ -291,7 +291,7 @@ class WT_Controller_Clippings {
 			$fname = WT_DATA_DIR.$zipName;
 			$comment = "Created by ".WT_WEBTREES." ".WT_VERSION_TEXT." on ".date("d M Y").".";
 			$archive = new PclZip($fname);
-			// add the ged file to the root of the zip file (strip off the index_directory)
+			// add the ged file to the root of the zip file (strip off the data folder)
 			$this->media_list[]= array (PCLZIP_ATT_FILE_NAME => WT_DATA_DIR.$tempFileName, PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName);
 			$v_list = $archive->create($this->media_list, PCLZIP_OPT_COMMENT, $comment);
 			if ($v_list == 0) {

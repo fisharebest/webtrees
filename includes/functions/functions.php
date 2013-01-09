@@ -2,7 +2,7 @@
 // Core Functions
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -154,7 +154,7 @@ function fetch_remote_file($host, $path, $timeout=3) {
 	}
 	fclose($fp);
 
-	// Take account of a "moved" response.
+	// Take account of a “moved” response.
 	if (substr($response, 0, 12)=='HTTP/1.1 303' && preg_match('/\nLocation: http:\/\/([a-z0-9.-]+)(.+)/', $response, $match)) {
 		return fetch_remote_file($match[1], $match[2]);
 	} else {
@@ -655,7 +655,7 @@ function extract_fullpath($mediarec) {
  * get the relative filename for a media item
  *
  * gets the relative file path from the full media path for a media item.  checks the
- * <var>$MEDIA_DIRECTORY_LEVELS</var> to make sure the directory structure is maintained.
+ * <var>$MEDIA_DIRECTORY_LEVELS</var> to make sure the folder structure is maintained.
  * @param string $fullpath the full path from the media record
  * @return string a relative path that can be appended to the <var>$MEDIA_DIRECTORY</var> to reference the item
  */
@@ -798,7 +798,7 @@ function mediasort($a, $b) {
 function filesort($a, $b) {
 	$aKey = "";
 	if (!empty($a["FILESORT"])) {
-		$aKey = $a["FILESORT"]; // set in get_medialist2, has already been basename'd
+		$aKey = $a["FILESORT"]; // set in get_medialist2, has already been basename’d
 	} else {
 		if (!empty($a["FILE"])) {
 			$aKey = basename($a["FILE"]); // set in get_medialist
@@ -837,7 +837,7 @@ function compare_facts_date($arec, $brec) {
 
 	$adate = new WT_Date($amatch[1]);
 	$bdate = new WT_Date($bmatch[1]);
-	// If either date can't be parsed, don't sort.
+	// If either date can’t be parsed, don’t sort.
 	if (!$adate->isOK() || !$bdate->isOK()) {
 		if (preg_match('/2 _SORT (\d+)/', $arec, $match1) && preg_match('/2 _SORT (\d+)/', $brec, $match2)) {
 			return $match1[1]-$match2[1];
@@ -886,7 +886,7 @@ function compare_facts_date($arec, $brec) {
 					//-- fact is prefered to come after, so compare using the max of the ranges
 					return ($bmax-$amax);
 				} else {
-					//-- facts are the same or the ranges don't give enough info, so use the average of the range
+					//-- facts are the same or the ranges don’t give enough info, so use the average of the range
 					$aavg = ($amin+$amax)/2;
 					$bavg = ($bmin+$bmax)/2;
 					if ($aavg<$bavg) {
@@ -1149,7 +1149,7 @@ function get_relationship_name($nodes) {
 	// Look for paths with *specific* names first.
 	// Note that every combination must be listed separately, as the same English
 	// name can be used for many different relationships.  e.g.
-	// brother's wife & husband's sister = sister-in-law.
+	// brother’s wife & husband’s sister = sister-in-law.
 	//
 	// $path is an array of the 12 possible gedcom family relationships:
 	// mother/father/parent
@@ -1157,7 +1157,7 @@ function get_relationship_name($nodes) {
 	// husband/wife/spouse
 	// son/daughter/child
 	//
-	// This is always the shortest path, so "father, daughter" is "half-sister", not "sister".
+	// This is always the shortest path, so “father, daughter” is “half-sister”, not “sister”.
 	//
 	// This is very repetitive in English, but necessary in order to handle the
 	// complexities of other languages.
@@ -1236,7 +1236,7 @@ function cousin_name($n, $sex) {
 	}
 }
 
-// A variation on cousin_name(), for constructs such as "sixth great-nephew"
+// A variation on cousin_name(), for constructs such as “sixth great-nephew”
 // Currently used only by Spanish relationship names.
 function cousin_name2($n, $sex, $relation) {
 	switch ($sex) {
@@ -1279,13 +1279,13 @@ function cousin_name2($n, $sex, $relation) {
 
 function get_relationship_name_from_path($path, $pid1, $pid2) {
 	if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
-		// TODO: Update all the "3 RELA " values in class_person
+		// TODO: Update all the “3 RELA ” values in class_person
 		return '<span class="error">'.$path.'</span>';
 	}
 	$person1=$pid1 ? WT_Person::GetInstance($pid1) : null;
 	$person2=$pid2 ? WT_Person::GetInstance($pid2) : null;
 	// The path does not include the starting person.  In some languages, the
-	// translation for a man's (relative) is different to a woman's (relative),
+	// translation for a man’s (relative) is different to a woman’s (relative),
 	// due to inflection.
 	$sex1=$person1 ? $person1->getSex() : 'U';
 
@@ -1478,9 +1478,6 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'chisondau': return WT_I18N::translate_c('child\'s son\'s daughter',         'great-granddaughter');
 	case 'chisonson': return WT_I18N::translate_c('child\'s son\'s son',              'great-grandson');
 	case 'chisonwif': return WT_I18N::translate_c('child\'s son\'s wife',             'grandson\'s wife');
-//case 'chispomot': return WT_I18N::translate_c('child\'s spouse\'s mother',        'daughter/son-in-law\'s father');
-//case 'chispofat': return WT_I18N::translate_c('child\'s spouse\'s father',        'daughter/son-in-law\'s father');
-//case 'chispopar': return WT_I18N::translate_c('child\'s spouse\'s parent',        'daughter/son-in-law\'s parent');
 	case 'dauchichi': return WT_I18N::translate_c('daughter\'s child\'s child',       'great-grandchild');
 	case 'dauchidau': return WT_I18N::translate_c('daughter\'s child\'s daughter',    'great-granddaughter');
 	case 'dauchison': return WT_I18N::translate_c('daughter\'s child\'s son',         'great-grandson');
@@ -1525,7 +1522,6 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'fatwifdau': return WT_I18N::translate_c('father\'s wife\'s daughter',       'step-sister');
 	case 'fatwifson': return WT_I18N::translate_c('father\'s wife\'s son',            'step-brother');
 	case 'husbrowif': return WT_I18N::translate_c('husband\'s brother\'s wife',       'sister-in-law');
-//case 'hussibspo': return WT_I18N::translate_c('husband\'s sibling\'s spouse',     'brother/sister-in-law');
 	case 'hussishus': return WT_I18N::translate_c('husband\'s sister\'s husband',     'brother-in-law');
 	case 'motbrochi': return WT_I18N::translate_c('mother\'s brother\'s child',       'first cousin');
 	case 'motbrodau': return WT_I18N::translate_c('mother\'s brother\'s daughter',    'first cousin');
@@ -1590,9 +1586,6 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'sibsondau': return WT_I18N::translate_c('sibling\'s son\'s daughter',       'great-niece');
 	case 'sibsonson': return WT_I18N::translate_c('sibling\'s son\'s son',            'great-nephew');
 	case 'sibsonwif': return WT_I18N::translate_c('sibling\'s son\'s wife',           'niece-in-law');
-//case 'sibspobro': return WT_I18N::translate_c('sibling\'s spouse\'s brother',     'brother-in-law');
-//case 'sibsposib': return WT_I18N::translate_c('sibling\'s spouse\'s sibling',     'brother/sister-in-law');
-//case 'sibsposis': return WT_I18N::translate_c('sibling\'s spouse\'s sister',      'sister-in-law');
 	case 'sischichi': if ($sex1=='M') return WT_I18N::translate_c('(a man\'s) sister\'s child\'s child',          'great-nephew/niece');
 	                  else            return WT_I18N::translate_c('(a woman\'s) sister\'s child\'s child',        'great-nephew/niece');
 	case 'sischidau': if ($sex1=='M') return WT_I18N::translate_c('(a man\'s) sister\'s child\'s daughter',       'great-niece');
@@ -1630,14 +1623,10 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'sonwiffat': return WT_I18N::translate_c('son\'s wife\'s father',            'daughter-in-law\'s father');
 	case 'sonwifmot': return WT_I18N::translate_c('son\'s wife\'s mother',            'daughter-in-law\'s mother');
 	case 'sonwifpar': return WT_I18N::translate_c('son\'s wife\'s parent',            'daughter-in-law\'s parent');
-//case 'spobrowif': return WT_I18N::translate_c('spouse\'s brother\'s wife',        'sister-in-law');
-//case 'sposibspo': return WT_I18N::translate_c('spouse\'s sibling\'s spouse',      'brother/sister-in-law');
-//case 'sposishus': return WT_I18N::translate_c('spouse\'s sister\'s husband',      'brother-in-law');
 	case 'wifbrowif': return WT_I18N::translate_c('wife\'s brother\'s wife',          'sister-in-law');
-//case 'wifsibspo': return WT_I18N::translate_c('wife\'s sibling\'s spouse',        'brother/sister-in-law');
 	case 'wifsishus': return WT_I18N::translate_c('wife\'s sister\'s husband',        'brother-in-law');
 
-	// Some "special case" level four relationships that have specific names in certain languages
+	// Some “special case” level four relationships that have specific names in certain languages
 	case 'fatfatbrowif': return WT_I18N::translate_c('father\'s father\'s brother\'s wife',    'great-aunt');
 	case 'fatfatsibspo': return WT_I18N::translate_c('father\'s father\'s sibling\'s spouse',  'great-aunt/uncle');
 	case 'fatfatsishus': return WT_I18N::translate_c('father\'s father\'s sister\'s husband',  'great-uncle');
@@ -1691,7 +1680,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'motmotsischi': return WT_I18N::translate_c('mother\'s mother\'s sister\'s child',    'first cousin once removed ascending');
 	}
 
-	// Some "special case" level five relationships that have specific names in certain languages
+	// Some “special case” level five relationships that have specific names in certain languages
 	if (preg_match('/^(mot|fat|par)fatbro(son|dau|chi)dau$/', $path)) {
 		return WT_I18N::translate_c('grandfather\'s brother\'s granddaughter',  'second cousin');
 	} else if (preg_match('/^(mot|fat|par)fatbro(son|dau|chi)son$/', $path)) {
@@ -2157,7 +2146,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				}
 			case 'en':
 			case 'it': // Source: Michele Locati
-			case 'es': // Source: Wes Groleau (adding doesn't change behavior, but needs to be better researched)
+			case 'es': // Source: Wes Groleau (adding doesn’t change behavior, but needs to be better researched)
 			default:
 				switch ($sex2) {
 
@@ -2179,7 +2168,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		$removed=abs($down-$up);  // Spanish (and other languages) can use it, too.
 
 		// Different languages have different rules for naming cousins.  For example,
-		// an English "second cousin once removed" is a Polish "cousin of 7th degree".
+		// an English “second cousin once removed” is a Polish “cousin of 7th degree”.
 		//
 		// Need to find out which languages use which rules.
 		switch (WT_LOCALE) {
@@ -2243,7 +2232,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		}
 	}
 
-	// Split the relationship into sub-relationships, e.g., third-cousin's great-uncle.
+	// Split the relationship into sub-relationships, e.g., third-cousin’s great-uncle.
 	// Try splitting at every point, and choose the path with the shorted translated name.
 
 	$relationship=null;
@@ -2269,9 +2258,9 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
  * get theme names
  *
  * function to get the names of all of the themes as an array
- * it searches the themes directory and reads the name from the theme_name variable
+ * it searches the themes folder and reads the name from the theme_name variable
  * in the theme.php file.
- * @return array and array of theme names and their corresponding directory
+ * @return array and array of theme names and their corresponding folder
  */
 function get_theme_names() {
 	static $themes;
@@ -2342,7 +2331,7 @@ function get_query_url($overwrite=null, $separator='&') {
 			}
 		}
 	}
-	$query_string=substr($query_string, strlen($separator)); // Remove leading '&amp;'
+	$query_string=substr($query_string, strlen($separator)); // Remove leading “&amp;”
 	if ($query_string) {
 		return WT_SCRIPT_NAME.'?'.$query_string;
 	} else {
@@ -2352,7 +2341,7 @@ function get_query_url($overwrite=null, $separator='&') {
 
 //This function works with a specified generation limit.  It will completely fill
 //the PDF without regard to whether a known person exists in each generation.
-//ToDo: If a known individual is found in a generation, add prior empty positions
+//TODO: If a known individual is found in a generation, add prior empty positions
 //and add remaining empty spots automatically.
 function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_empty=false) {
 	$total_num_skipped = 0;
@@ -2362,7 +2351,7 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 	$list[$pid]->generation = 1;
 	while (count($genlist)>0) {
 		$id = array_shift($genlist);
-		if (strpos($id, "empty")===0) continue; // id can be something like "empty7"
+		if (strpos($id, "empty")===0) continue; // id can be something like “empty7”
 		$person = WT_Person::getInstance($id);
 		$famids = $person->getChildFamilies();
 		if (count($famids)>0) {
@@ -2529,7 +2518,7 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
 
 	while (find_gedcom_record($prefix.$num, $ged_id, true)) {
 		// Applications such as ancestry.com generate XREFs with numbers larger than
-		// PHP's signed integer.  MySQL can handle large integers.
+		// PHP’s signed integer.  MySQL can handle large integers.
 		$num=WT_DB::prepare("SELECT 1+?")->execute(array($num))->fetchOne();
 	}
 
@@ -2558,7 +2547,7 @@ function has_utf8($string) {
 }
 
 /**
- * determines whether the passed in filename is a link to an external source (i.e. contains '://')
+ * determines whether the passed in filename is a link to an external source (i.e. contains “://”)
  */
 function isFileExternal($file) {
 	return strpos($file, '://') !== false;
@@ -2736,22 +2725,22 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $admin=
 	}
 
 	// -- Use an overriding thumbnail if one has been provided
-	// Don't accept any overriding thumbnails that are in the "images" or "themes" directories
+	// Don’t accept any overriding thumbnails that are in the “images” or “themes” directories
 	$realThumb = $thumb;
 	if (strpos($thumbName, 'images/')!==0 && strpos($thumbName, WT_THEMES_DIR)!==0) {
 		switch (media_exists($thumbName)) {
-			case false: // file doesn't exist
+			case false: // file doesn’t exist
 				$thumb = $WT_IMAGES['media'];
 				$realThumb = $WT_IMAGES['media'];
 				break;
 			case 1: // external file
 				// do nothing
 				break;
-			case 2: // file in standard media directory
+			case 2: // file in standard media folder
 				$thumb = $thumbName;
 				$realThumb = $thumbName;
 				break;
-			case 3: // file in protected media directory
+			case 3: // file in protected media folder
 				$thumb = $thumbName;
 				$realThumb = get_media_firewall_path($thumbName);
 				break;
@@ -2766,7 +2755,7 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $admin=
 	return $result;
 }
 
-// PHP's native pathinfo() function does not work with filenames that contain UTF8 characters.
+// PHP’s native pathinfo() function does not work with filenames that contain UTF8 characters.
 // See http://uk.php.net/pathinfo
 function pathinfo_utf($path) {
 	if (empty($path)) {
@@ -2802,7 +2791,7 @@ function pathinfo_utf($path) {
 function expand_urls($text) {
 	// Some versions of RFC3987 have an appendix B which gives the following regex
 	// (([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?
-	// This matches far too much while a "precise" regex is several pages long.
+	// This matches far too much while a “precise” regex is several pages long.
 	// This is a compromise.
 	$URL_REGEX='((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
 

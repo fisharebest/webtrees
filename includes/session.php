@@ -2,7 +2,7 @@
 // Startup and session logic
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
@@ -32,7 +32,7 @@ if (!defined('WT_SCRIPT_NAME')) {
 // Identify ourself
 define('WT_WEBTREES',        'webtrees');
 define('WT_VERSION',         '1.4.0');
-define('WT_VERSION_RELEASE', 'svn'); // 'svn', 'beta', 'rc1', '', etc.
+define('WT_VERSION_RELEASE', 'svn'); // “svn”, “beta”, “rc1”, “”, etc.
 define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
 
 // External URLs
@@ -41,10 +41,10 @@ define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net/');
 define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
-// For example, "http://my.cdn.com/webtrees-static-1.3.1/"
-define('WT_STATIC_URL', ''); // For example, "http://my.cdn.com/webtrees-static-1.3.1/"
+// For example, http://my.cdn.com/webtrees-static-1.3.1/
+define('WT_STATIC_URL', ''); // For example, http://my.cdn.com/webtrees-static-1.3.1/
 
-// Optionally, load major JS libraries from Google's public CDN
+// Optionally, load major JS libraries from Google’s public CDN
 define ('WT_USE_GOOGLE_API', false);
 if (WT_USE_GOOGLE_API) {
 	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js');
@@ -54,7 +54,7 @@ if (WT_USE_GOOGLE_API) {
 	define('WT_JQUERYUI_URL',      WT_STATIC_URL.'js/jquery/jquery-ui.min.js');
 }
 
-// Location of our modules and themes.  These are used as URLs and directory paths.
+// Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
 define('WT_THEMES_DIR',  'themes/' );
 
@@ -140,7 +140,7 @@ if (version_compare(PHP_VERSION, '6.0', '<')) {
 		// Disabling them on PHP5.3 will cause a strict-warning, so ignore errors.
 		@set_magic_quotes_runtime(false);
 	}
-	// magic_quotes_gpc can't be disabled at run-time, so clean them up as necessary.
+	// magic_quotes_gpc can’t be disabled at run-time, so clean them up as necessary.
 	if (get_magic_quotes_gpc() || ini_get('magic_quotes_sybase') && strtolower(ini_get('magic_quotes_sybase'))!='off') {
 		$in = array(&$_GET, &$_POST, &$_REQUEST, &$_COOKIE);
 		while (list($k,$v) = each($in)) {
@@ -160,7 +160,7 @@ if (!ini_get('date.timezone')) {
 	date_default_timezone_set(@date_default_timezone_get());
 }
 
-// Split the request "protocol://host:port/path/to/script.php?var=value" into parts
+// Split the request protocol://host:port/path/to/script.php?var=value into parts
 // WT_SERVER_NAME  = protocol://host:port
 // WT_SCRIPT_PATH  = /path/to/   (begins and ends with /)
 // WT_SCRIPT_NAME  = script.php  (already defined in the calling script)
@@ -185,7 +185,7 @@ if (!empty($_SERVER['SCRIPT_NAME'])) {
 	define('WT_SCRIPT_PATH', '/');
 }
 
-// Microsoft IIS servers don't set REQUEST_URI, so generate it for them.
+// Microsoft IIS servers don’t set REQUEST_URI, so generate it for them.
 if (!isset($_SERVER['REQUEST_URI']))  {
 	$_SERVER['REQUEST_URI']=substr($_SERVER['PHP_SELF'], 1);
 	if (isset($_SERVER['QUERY_STRING'])) {
@@ -195,7 +195,7 @@ if (!isset($_SERVER['REQUEST_URI']))  {
 
 // Enable this code when we release webtrees 1.5
 //if (version_compare(PHP_VERSION, '5.3.3', '<')) {
-//	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'site-php-version.php');
+//	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-php-version.php');
 //}
 
 // Common functions
@@ -310,7 +310,7 @@ case 'deny':
 	exit;
 case 'robot':
 case 'unknown':
-	// Search engines don't send cookies, and so create a new session with every visit.
+	// Search engines don’t send cookies, and so create a new session with every visit.
 	// Make sure they always use the same one
 	Zend_Session::setId('search-engine-'.str_replace('.', '-', $_SERVER['REMOTE_ADDR']));
 	$SEARCH_SPIDER=true;
@@ -347,7 +347,7 @@ $cfg=array(
 	'cookie_httponly' => true,
 );
 
-// Search engines don't send cookies, and so create a new session with every visit.
+// Search engines don’t send cookies, and so create a new session with every visit.
 // Make sure they always use the same one
 if ($SEARCH_SPIDER) {
 	Zend_Session::setId('search-engine-'.str_replace('.', '-', $_SERVER['REMOTE_ADDR']));
@@ -355,9 +355,9 @@ if ($SEARCH_SPIDER) {
 
 Zend_Session::start($cfg);
 
-// Register a session "namespace" to store session data.  This is better than
+// Register a session “namespace” to store session data.  This is better than
 // using $_SESSION, as we can avoid clashes with other modules or applications,
-// and problems with servers that have enabled "register_globals".
+// and problems with servers that have enabled “register_globals”.
 $WT_SESSION=new Zend_Session_Namespace('WEBTREES');
 
 if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
@@ -455,7 +455,7 @@ define('WT_CLIENT_TIMESTAMP', WT_TIMESTAMP - $WT_SESSION->timediff);
 define('WT_SERVER_JD', 2440588 + (int)(WT_TIMESTAMP       /86400));
 define('WT_CLIENT_JD', 2440588 + (int)(WT_CLIENT_TIMESTAMP/86400));
 
-// Application configuration data - things that aren't (yet?) user-editable
+// Application configuration data - things that aren’t (yet?) user-editable
 require WT_ROOT.'includes/config_data.php';
 
 //-- load the privacy functions
@@ -504,7 +504,7 @@ if (WT_USER_ID) {
 
 // Set the theme
 if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && substr(safe_GET('mod_action'), 0, 5)=='admin') {
-	// Administration scripts begin with 'admin' and use a special administration theme
+	// Administration scripts begin with “admin” and use a special administration theme
 	define('WT_THEME_DIR', WT_THEMES_DIR.'_administration/');
 } else {
 	if (WT_Site::preference('ALLOW_USER_THEMES')) {

@@ -2,7 +2,7 @@
 // Allow admin users to upload media files using a web interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -28,7 +28,7 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_mediadb.php';
 
 /**
- * This functions checks if an existing directory is physically writeable
+ * This functions checks if an existing folder is physically writeable
  * The standard PHP function only checks for the R/O attribute and doesn't
  * detect authorisation by ACL.
  */
@@ -68,7 +68,7 @@ if ($action == "upload") {
 	process_uploadMedia_form();
 }
 
-// Check if Media Directory is writeable.
+// Check if the media folder is writeable.
 // If not, then do not continue
 if (!dir_is_writable($MEDIA_DIRECTORY)) {
 	echo '<p class="ui-state-error">';

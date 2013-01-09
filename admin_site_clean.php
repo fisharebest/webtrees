@@ -35,25 +35,25 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 function full_rmdir($dir) {
 	if (!is_writable($dir)) {
 		if (!@chmod($dir, WT_PERM_EXE)) {
-			return FALSE;
+			return false;
 		}
 	}
 
 	$d = dir($dir);
-	while (FALSE !== ($entry = $d->read())) {
+	while (false !== ($entry = $d->read())) {
 		if ($entry == '.' || $entry == '..') {
 			continue;
 		}
 		$entry = $dir . '/' . $entry;
 		if (is_dir($entry)) {
 			if (!full_rmdir($entry)) {
-				return FALSE;
+				return false;
 			}
 			continue;
 		}
 		if (!@unlink($entry)) {
 			$d->close();
-			return FALSE;
+			return false;
 		}
 	}
 
@@ -66,8 +66,8 @@ function full_rmdir($dir) {
 $ajaxdeleted = false;
 $locked_by_context = array('index.php', 'config.ini.php');
 
-// If we are storing the media in the data directory (this is the
-// default for the media firewall), then don't delete it.
+// If we are storing the media in the data folder (this is the
+// default for the media firewall), then don’t delete it.
 // Need to consider the settings for all gedcoms
 foreach (WT_Tree::getAll() as $tree) {
 	$MEDIA_FIREWALL_ROOTDIR=$tree->preference('MEDIA_FIREWALL_ROOTDIR');

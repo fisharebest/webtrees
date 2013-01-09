@@ -77,13 +77,13 @@ if ($chooseType!="media" && $chooseType!="0file") {
 	$chooseType = "all";
 }
 
-//-- force the thumbnail directory to have the same layout as the media directory
+//-- force the thumbnail folder to have the same layout as the media folder
 //-- Dots and slashes should be escaped for the preg_replace
 $srch = "/".addcslashes($MEDIA_DIRECTORY, '/.')."/";
 $repl = addcslashes($MEDIA_DIRECTORY."thumbs/", '/.');
 $thumbdir = stripcslashes(preg_replace($srch, $repl, $directory));
 
-//-- prevent script from accessing an area outside of the media directory
+//-- prevent script from accessing an area outside of the media folder
 //-- and keep level consistency
 if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)) {
 	$directory = $MEDIA_DIRECTORY;
@@ -586,11 +586,11 @@ if ($action=="filter") {
 			$uplink = '<a href="find.php?directory='.$pdir.'&amp;thumbdir='.$pthumb.'&amp;level='.($level-1).$thumbget.'&amp;type=media&amp;choose='.$choose.'&amp;filter='.htmlspecialchars($filter).'&amp;action=filter">&nbsp;&nbsp;&nbsp;&lt;-- <span dir="ltr">'.$pdir.'</span>&nbsp;&nbsp;&nbsp;</a>';
 		}
 
-		// Start of media directory table
+		// Start of media folder table
 		// Tell the user where he is
 		echo '<div id="find-media"><span>', WT_I18N::translate('Folder'), '&nbsp;=&nbsp;</span>', substr($directory, 0, -1), '</div>';
 
-		// display the directory list
+		// display the folder list
 		if (count($dirs) || $level) {
 			sort($dirs);
 			if ($level) {
@@ -720,7 +720,7 @@ if ($action=="filter") {
 				if (!$filter || $all) {
 					echo $place->getReverseName(); // When displaying all names, sort/display by the country, then region, etc.
 				} else {
-					echo $place->getFullName(); // When we've searched for a place, sort by this place
+					echo $place->getFullName(); // When we’ve searched for a place, sort by this place
 				}
 				echo '</a></li>';
 			}

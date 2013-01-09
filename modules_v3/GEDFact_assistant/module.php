@@ -94,13 +94,13 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			$chooseType = "all";
 		}
 		
-		//-- force the thumbnail directory to have the same layout as the media directory
+		//-- force the thumbnail folder to have the same layout as the media folder
 		//-- Dots and slashes should be escaped for the preg_replace
 		$srch = "/".addcslashes($MEDIA_DIRECTORY, '/.')."/";
 		$repl = addcslashes($MEDIA_DIRECTORY."thumbs/", '/.');
 		$thumbdir = stripcslashes(preg_replace($srch, $repl, $directory));
 		
-		//-- prevent script from accessing an area outside of the media directory
+		//-- prevent script from accessing an area outside of the media folder
 		//-- and keep level consistency
 		if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)) {
 			$directory = $MEDIA_DIRECTORY;
@@ -528,7 +528,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 					$uplink = "<a href=\"find.php?directory=".rawurlencode($pdir)."&amp;thumbdir=".rawurlencode($pthumb)."&amp;level=".($level-1)."{$thumbget}&amp;type=media&amp;choose={$choose}\">&nbsp;&nbsp;&nbsp;&lt;-- <span dir=\"ltr\">".$pdir."</span>&nbsp;&nbsp;&nbsp;</a><br>";
 				}
 		
-				// Start of media directory table
+				// Start of media folder table
 				echo "<table class=\"list_table width90\">";
 		
 				// Tell the user where he is
@@ -540,7 +540,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 					echo "</td>";
 				echo "</tr>";
 		
-				// display the directory list
+				// display the folder list
 				if (count($dirs) || $level) {
 					sort($dirs);
 					if ($level) {

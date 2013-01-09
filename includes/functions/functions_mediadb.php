@@ -100,7 +100,7 @@ function real_path($path) {
 function check_media_structure() {
 	global $MEDIA_DIRECTORY;
 
-	// Check if the media directory is not a .
+	// Check if the media folder is not a .
 	// If so, do not try to create it since it does exist
 	if (substr($MEDIA_DIRECTORY, 0, 1) != ".") {
 		// Check first if the $MEDIA_DIRECTORY exists
@@ -181,7 +181,7 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 	$mediaObjects = array ();
 
 	// Build the raw medialist array,
-	// but weed out any folders we're not interested in
+	// but weed out any folders we’re not interested in
 	foreach ($rows as $row) {
 		$fileName = check_media_depth($row->m_filename, "NOTRUNC", "QUIET");
 		$isExternal = isFileExternal($fileName);
@@ -249,15 +249,15 @@ if (!$excludeLinks) {
 	}
 }
 	// Search the list of GEDCOM changes pending approval.  There may be some new
-	// links to new or old media items that haven't been approved yet.
+	// links to new or old media items that haven’t been approved yet.
 	// Logic:
 	//   Make sure the array $changedRecords contains unique entries.  Ditto for array
 	//   $mediaObjects.
 	//   Read each of the entries in array $changedRecords.  Get the matching record from
 	//   the GEDCOM file.  Search the GEDCOM record for each of the entries in array
 	//   $mediaObjects.  A hit means that the GEDCOM record contains a link to the
-	//   media object.  If we don't already know about the link, add it to that media
-	//   object's link table.
+	//   media object.  If we don’t already know about the link, add it to that media
+	//   object’s link table.
 	$mediaObjects = array_unique($mediaObjects);
 	$changedRecords = array_unique($changedRecords);
 	foreach ($changedRecords as $pid) {
@@ -285,16 +285,16 @@ if (!$excludeLinks) {
 
 	uasort($medialist, "mediasort");
 
-	//-- for the media list do not look in the directory
+	//-- for the media list do not look in the folder
 	if ($linkonly)
 		return $medialist;
 
 	// The database part of the medialist is now complete.
 	// We still have to get a list of all media items that exist as files but
-	// have not yet been entered into the database.  We'll do this only for the
+	// have not yet been entered into the database.  We’ll do this only for the
 	// current folder.
 	//
-	// At the same time, we'll build a list of all the sub-folders in this folder.
+	// At the same time, we’ll build a list of all the sub-folders in this folder.
 	$temp = str_replace($MEDIA_DIRECTORY, "", $directory);
 	if ($temp == "")
 		$folderDepth = 0;
@@ -375,15 +375,12 @@ if (!$excludeLinks) {
 		}
 		$d->close();
 	}
-	//print_r($images); echo "<br>";
 	$dirs = array_unique($dirs); // remove duplicates that were added because we checked both the regular dir and the media firewall dir
 	sort($dirs);
-	//print_r($dirs); echo "<br>";
 	if (count($images) > 0) {
 		ksort($images);
 		$medialist = array_merge($images, $medialist);
 	}
-	//print_r($medialist); echo "<br>";
 	return $medialist;
 }
 /**
@@ -445,7 +442,7 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 	}
 
 	// Build the raw medialist array,
-	// but weed out any folders we're not interested in
+	// but weed out any folders we’re not interested in
 	foreach ($rows as $row) {
 		$fileName = check_media_depth($row->m_filename, "NOTRUNC", "QUIET");
 		$isExternal = isFileExternal($fileName);
@@ -464,17 +461,17 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 		}
 	}
 
-	//-- for the media list do not look in the directory
+	//-- for the media list do not look in the folder
 	if ($linkonly)
 		return $medialist;
 	// NOTE: the code below this has not been optimized for get_medialist2 yet
 
 	// The database part of the medialist is now complete.
 	// We still have to get a list of all media items that exist as files but
-	// have not yet been entered into the database.  We'll do this only for the
+	// have not yet been entered into the database.  We’ll do this only for the
 	// current folder.
 	//
-	// At the same time, we'll build a list of all the sub-folders in this folder.
+	// At the same time, we’ll build a list of all the sub-folders in this folder.
 	$temp = str_replace($MEDIA_DIRECTORY, "", $directory);
 	if ($temp == "")
 		$folderDepth = 0;
@@ -556,15 +553,12 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 		}
 		$d->close();
 	}
-	//print_r($images); echo "<br>";
 	$dirs = array_unique($dirs); // remove duplicates that were added because we checked both the regular dir and the media firewall dir
 	sort($dirs);
-	//print_r($dirs); echo "<br>";
 	if (count($images) > 0) {
 		ksort($images);
 		$medialist = array_merge($images, $medialist);
 	}
-	//print_r($medialist); echo "<br>";
 	return $medialist;
 }
 
@@ -584,12 +578,12 @@ function filterMedia($media, $filter, $acceptExt) {
 	if (empty($acceptExt) || $acceptExt != "http")
 		$acceptExt = "";
 
-	//-- Check Privacy first.  No point in proceeding if Privacy says "don't show"
+	//-- Check Privacy first.  No point in proceeding if Privacy says “don’t show”
 	if ($media["XREF"] && !WT_Media::getInstance($media["XREF"])->canDisplayDetails()) {
 		return false;
 	}
 
-	//-- Accept when filter string contained in Media item's id
+	//-- Accept when filter string contained in Media item’s id
 	if ($media["XREF"] == $filter) {
 		return true;
 	}
@@ -608,7 +602,7 @@ function filterMedia($media, $filter, $acceptExt) {
 	if (WT_USER_CAN_EDIT && strstr(utf8_strtoupper(basename($media["FILE"])), $filter))
 		return true;
 
-	//-- Accept when filter string contained in Media item's title
+	//-- Accept when filter string contained in Media item’s title
 	$record=WT_Media::getInstance($media['XREF']);
 	if ($record) {
 		foreach ($record->getAllNames() as $name) {
@@ -660,7 +654,7 @@ function filterMedia2($mediaobject, $filter) {
 		return true;
 
 
-	//-- Accept when filter string contained in Media item's id
+	//-- Accept when filter string contained in Media item’s id
 	if ($mediaobject->getXref() == $filter)
 		return true;
 
@@ -670,7 +664,7 @@ function filterMedia2($mediaobject, $filter) {
 	if (WT_USER_CAN_EDIT && strstr(utf8_strtoupper(basename($mediaobject->getFilename())), $filter))
 		return true;
 
-	//-- Accept when filter string contained in Media item's title
+	//-- Accept when filter string contained in Media item’s title
 	foreach ($mediaobject->getAllNames() as $name) {
 		if (strpos(utf8_strtoupper($name['full']), $filter)!==false) {
 			return true;
@@ -679,18 +673,6 @@ function filterMedia2($mediaobject, $filter) {
 
 	if (strpos(utf8_strtoupper($mediaobject->title), $filter)!==false)
 		return true;
-
-	// TODO: convert this to the API
-	//-- Accept when filter string contained in name of any item
-	//-- this Media item is linked to.  (Privacy already checked)
-//	foreach ($media['LINKS'] as $id=>$type) {
-//		$record=WT_GedcomRecord::getInstance($id);
-//		foreach ($record->getAllNames() as $name) {
-//			if (strpos(utf8_strtoupper($name['full']), $filter)!==false) {
-//				return true;
-//			}
-//		}
-//	}
 
 	return false;
 }
@@ -744,7 +726,7 @@ function thumbnail_file($filename, $generateThumb=true, $overwrite=false, $icon_
 	}
 
 	if ($icon_image) {
-		// Thumbnail doesn't exist and could not be generated:
+		// Thumbnail doesn’t exist and could not be generated:
 		// Return an icon image instead
 		return media_icon_file($filename);
 	} else {
@@ -943,7 +925,6 @@ function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
 
 	// NOTE: Check media depth
 	$parts = pathinfo_utf($filename);
-	//print_r($parts); echo "<br>";
 	if (empty($parts["dirname"]) || ($MEDIA_DIRECTORY_LEVELS == 0 && $truncate != "NOTRUNC"))
 		return $MEDIA_DIRECTORY . $parts["basename"];
 
@@ -993,7 +974,7 @@ function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
 		if ($nStart > $nEnd)
 			return $MEDIA_DIRECTORY . $fileName;
 	}
-	// Now check for, and skip, "./" at the beginning of the folder list
+	// Now check for, and skip, “./” at the beginning of the folder list
 	if ($folderList[$nStart] == ".") {
 		$nStart++;
 		if ($nStart > $nEnd)
@@ -1041,7 +1022,7 @@ function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
 }
 
 /**
-* get the list of current folders in the media directory
+* get the list of current folders in the media folder
 * @return array
 */
 function get_media_folders() {
@@ -1061,7 +1042,7 @@ function get_media_folders() {
 		// get the folder depth
 		$folders = explode($currentFolder, "/");
 		$currentDepth = count($folders) - 2;
-		// If we're not at the limit, look for more sub-folders within the current folder
+		// If we’re not at the limit, look for more sub-folders within the current folder
 		if ($currentDepth <= $MEDIA_DIRECTORY_LEVELS) {
 			$dir = dir($currentFolder);
 			while (true) {
@@ -1069,7 +1050,7 @@ function get_media_folders() {
 				if (!$entry)
 					break;
 				if (is_dir($currentFolder . $entry)) {
-					// Weed out some folders we're not interested in
+					// Weed out some folders we’re not interested in
 					if (!in_array($entry, $BADMEDIA)) {
 						$folderList[$nextFolderNum] = $currentFolder . $entry . "/";
 						$nextFolderNum++;
@@ -1079,7 +1060,7 @@ function get_media_folders() {
 			$dir->close();
 		}
 	}
-	// remove the media firewall path from the directory listings
+	// remove the media firewall path from the folder listings
 	$currentFolderNum = 0;
 	while ($currentFolderNum < count($folderList)) {
 		$folderList[$currentFolderNum] = get_media_standard_path($folderList[$currentFolderNum]);
@@ -1142,7 +1123,7 @@ function process_uploadMedia_form() {
 			}
 
 			if (!empty($_FILES["mediafile".$i]["name"])) {
-				// Copy main media file into the destination directory
+				// Copy main media file into the destination folder
 				if (!move_uploaded_file($_FILES["mediafile".$i]["tmp_name"], filename_decode($destFolder.$mediaFile))) {
 					// the file cannot be copied
 					$error .= WT_I18N::translate('There was an error uploading your file.')."<br>".file_upload_error_text($_FILES["mediafile".$i]["error"])."<br>";
@@ -1152,7 +1133,7 @@ function process_uploadMedia_form() {
 				}
 			}
 			if ($error=="" && !empty($_FILES["thumbnail".$i]["name"])) {
-				// Copy user-supplied thumbnail file into the destination directory
+				// Copy user-supplied thumbnail file into the destination folder
 				if (!move_uploaded_file($_FILES["thumbnail".$i]["tmp_name"], filename_decode($destThumbFolder.$mediaFile))) {
 					// the file cannot be copied
 					$error .= WT_I18N::translate('There was an error uploading your file.')."<br>".file_upload_error_text($_FILES["thumbnail".$i]["error"])."<br>";
@@ -1162,7 +1143,7 @@ function process_uploadMedia_form() {
 				}
 			}
 			if ($error=="" && empty($_FILES["mediafile".$i]["name"]) && !empty($_FILES["thumbnail".$i]["name"])) {
-				// Copy user-supplied thumbnail file into the main destination directory
+				// Copy user-supplied thumbnail file into the main destination folder
 				if (!copy(filename_decode($destThumbFolder.$mediaFile), filename_decode($destFolder.$mediaFile))) {
 					// the file cannot be copied
 					$error .= WT_I18N::translate('There was an error uploading your file.')."<br>".file_upload_error_text($_FILES["thumbnail".$i]["error"])."<br>";
@@ -1191,7 +1172,7 @@ function process_uploadMedia_form() {
 					}
 				}
 			}
-			// Let's see if there are any errors generated and print it
+			// Let’s see if there are any errors generated and print it
 			if ($error) {
 				echo '<span class="error">', $error, "</span><br>";
 			}
@@ -1215,14 +1196,11 @@ function show_mediaUpload_form($URL, $showthumb=false) {
 	// Check for thumbnail generation support
 	$thumbSupport = "";
 	if ($AUTO_GENERATE_THUMBS) {
-/*  "wbmp" is NOT "Windows BMP" -- it's "Wireless BMP", a simple B&W bit mapped format
-		if (function_exists("imagecreatefromwbmp") && function_exists("imagewbmp")) $thumbSupport .= ", BMP";
-*/
 		if (function_exists("imagecreatefromgif") && function_exists("imagegif")) $thumbSupport .= ", GIF";
 		if (function_exists("imagecreatefromjpeg") && function_exists("imagejpeg")) $thumbSupport .= ", JPG";
 		if (function_exists("imagecreatefrompng") && function_exists("imagepng")) $thumbSupport .= ", PNG";
 	}
-	if ($thumbSupport != '') $thumbSupport = substr($thumbSupport, 2); // Trim off first ", "
+	if ($thumbSupport != '') $thumbSupport = substr($thumbSupport, 2); // Trim off first “, ”
 
 	// Determine file size limit
 	// TODO: do we need to check post_max_size size too?
@@ -1420,7 +1398,7 @@ function PrintMediaLinks($links, $size = "small") {
 	return true;
 }
 
-//returns an array of rows from the database containing the Person ID's for the people associated with this picture
+//returns an array of rows from the database containing the Person ID’s for the people associated with this picture
 function get_media_relations($mid) {
 	global $medialist;
 
@@ -1458,8 +1436,8 @@ function get_media_relations($mid) {
 
 // checks whether a media file exists.
 // returns 1 for external media
-// returns 2 if it was found in the standard directory
-// returns 3 if it was found in the media firewall directory
+// returns 2 if it was found in the standard folder
+// returns 3 if it was found in the media firewall folder
 // returns false if not found
 function media_exists($filename) {
 	if (empty($filename)) { return false; }
@@ -1490,17 +1468,17 @@ function get_server_filename($filename) {
 		return($filename); // TODO: should this return null?
 }
 
-// pass in the standard media directory
-// returns protected media directory
-// strips off any "../" which may be configured in your MEDIA_DIRECTORY variable
+// pass in the standard media folder
+// returns protected media folder
+// strips off any “../” which may be configured in your MEDIA_DIRECTORY variable
 function get_media_firewall_path($path) {
 	global $MEDIA_FIREWALL_ROOTDIR;
 	$path = str_replace("../", "", $path);
 	return ($MEDIA_FIREWALL_ROOTDIR . $path);
 }
 
-// pass in the protected media directory
-// returns standard media directory
+// pass in the protected media folder
+// returns standard media folder
 function get_media_standard_path($path) {
 	global $MEDIA_FIREWALL_ROOTDIR;
 	$path = str_replace($MEDIA_FIREWALL_ROOTDIR, "", $path);
@@ -1565,7 +1543,7 @@ function getImageInfoForLog($filename) {
 function hasMemoryForImage($serverFilename, $debug_verboseLogging=false) {
 	// find out how much total memory this script can access
 	$memoryAvailable = return_bytes(@ini_get('memory_limit'));
-	// if memory is unlimited, it will return -1 and we don't need to worry about it
+	// if memory is unlimited, it will return -1 and we don’t need to worry about it
 	if ($memoryAvailable == -1) return true;
 
 	// find out how much memory we are already using
@@ -1623,15 +1601,15 @@ function generate_thumbnail($filename, $thumbnail) {
 		if (!file_exists(filename_decode($thumbnail))) {
 			$thumbnail = get_media_firewall_path($thumbnail);
 		}
-		// Ensure the directory exists
+		// Ensure the folder exists
 		if (!is_dir(dirname($thumbnail))) {
 			if (!mkdirs(dirname($thumbnail))) {
 				return false;
 			}
 		}
-		if (!file_exists(filename_decode($filename))) return false;  // Can't thumbnail a non-existent image
+		if (!file_exists(filename_decode($filename))) return false;  // Can’t thumbnail a non-existent image
 		$imgsize = @getimagesize(filename_decode($filename));
-		if (!$imgsize) return false;  // Can't thumbnail an image of unknown size
+		if (!$imgsize) return false;  // Can’t thumbnail an image of unknown size
 
 		//-- check if file is small enough to be its own thumbnail
 		if (($imgsize[0]<150)&&($imgsize[1]<150)) {

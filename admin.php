@@ -2,7 +2,7 @@
 // Welcome page for the administration module
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -1396,7 +1396,7 @@ function old_paths() {
 	);
 }
 
-// Delete a file or directory, ignoring errors
+// Delete a file or folder, ignoring errors
 function delete_recursively($path) {
 	@chmod($path, 0777);
 	if (is_dir($path)) {

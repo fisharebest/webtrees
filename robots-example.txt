@@ -1,10 +1,10 @@
 # robots.txt file for webtrees
 #
-# (c) Greg Roach, 2011
+# (c) Greg Roach, 2013
 #
-# This file needs to be placed in the domain root directory,
+# This file needs to be placed in the domain root folder,
 # such as "www.example.com/robots.txt".  It will not work in a
-# subdirectory, such as "www.example.com/webtrees/robots.txt"
+# subfolder, such as "www.example.com/webtrees/robots.txt"
 # If you need to move it, then remember to adjust the paths as well.
 # e.g. "Allow: /index.php" becomes "Allow: /webtrees/index.php".
 #
@@ -32,8 +32,8 @@ User-Agent: msnbot        # Microsoft
 User-Agent: robozilla     # DMOZ
 User-Agent: slurp         # Yahoo!
 User-Agent: teoma         # Ask Jeeves
-#User-Agent: yandex        # Popular Russian search engine
-#User-Agent: baiduspider   # Popular Chinese search engine
+User-Agent: yandex        # Popular Russian search engine
+User-Agent: baiduspider   # Popular Chinese search engine
 Allow: /family.php
 Allow: /index.php
 Allow: /indilist.php

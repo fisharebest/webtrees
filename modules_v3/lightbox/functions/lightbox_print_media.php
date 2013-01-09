@@ -4,7 +4,7 @@
 // Display media Items using Lightbox
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2007 to 2009  PGV Development Team.  All rights reserved.
@@ -240,13 +240,13 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 
 		// =====================================================================================
 		//-- Objects are removed from the $current_objes list as they are printed.
-		//-- Any "Extra" objects left in the list are new objects recently added to the gedcom
+		//-- Any “Extra” objects left in the list are new objects recently added to the gedcom
 		//-- but not yet accepted into the database.
-		//-- We will print them too, and put any "Extra Items not in DB" into a new Row.
+		//-- We will print them too, and put any “Extra Items not in DB” into a new Row.
 
 		// Compare Items count in Database versus Item count in GEDCOM
 		if ($kind==5 && $ct!=$numm) {
-			// If any items are left in $current_objes list for this individual, put them into $kind 5 ("Not in DB") row
+			// If any items are left in $current_objes list for this individual, put them into $kind 5 (“Not in DB”) row
 			echo '<table cellpadding="0" border="0" width="100%" class="facts_table"><tr>';
 			echo '<td width="100" align="center" class="descriptionbox" style="vertical-align:middle;">';
 			echo '<b>', $tt, '</b>';
@@ -277,9 +277,9 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 				}
 			}
 		}
-		// No "Extra" Media Items ============================
+		// No “Extra” Media Items ============================
 		if ($kind==5 && $ct==$numm) {
-		// "Extra" Media Item in GEDCOM but NOT in DB ========
+		// “Extra” Media Item in GEDCOM but NOT in DB ========
 		} else if ($kind==5 && $ct!=$numm) {
 			echo '</ul>';
 			echo '</div>';
@@ -321,7 +321,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	global $TEXT_DIRECTION, $sort_i, $notes;
 
 	$mainMedia = check_media_depth($rowm['m_filename'], 'NOTRUNC');
-	// If media file is missing from "media" directory, but is referenced in Gedcom
+	// If media file is missing from media folder, but is referenced in Gedcom
 	if (!media_exists($mainMedia)) {
 		if (!file_exists($rowm['m_filename']) && !isset($rowm['m_filename'])) {
 			echo '<tr>';
@@ -349,9 +349,9 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo '<li class="li_norm" >';
 			echo '<table class="pic" width="50px" border="0" >';
 		}
-	// Else Media files are present in "media" directory
+	// Else Media files are present in media folder
 	} else {
-		//If media is linked to a 'private' person
+		//If media is linked to a private person
 		if (!WT_Media::getInstance($rowm['m_id'])->canDisplayDetails()) {
 			return false;
 		} else {
@@ -431,7 +431,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	}
 
 	// Continue menu construction
-	// If media file is missing from 'media' directory, but is referenced in Gedcom
+	// If media file is missing from media folder, but is referenced in Gedcom
 	if (!media_exists($rowm['m_filename']) && !media_exists($mainMedia)) {
 		$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\">" . WT_I18N::translate('Edit')." (". $rowm['m_id'].")", 'right');
 	} else {
@@ -510,7 +510,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		// Get Media info
 		if ($isExternal || media_exists($rowm['m_filename']) || media_exists($mainMedia)) {
 			// Start Thumbnail Enclosure table ---------------------------------------------
-			// Pull table up 90px if media object is a "streetview"
+			// Pull table up 90px if media object is a “streetview”
 			if (strpos($rowm['m_filename'], 'http://maps.google.')===0) {
 				echo '<table width="10px" style="margin-top:-90px;" class="pic" border="0"><tr>';
 			} else {
