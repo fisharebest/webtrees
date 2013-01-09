@@ -1,4 +1,0 @@
-
-Place all media associated with your GEDCOM file in this folder.
-
-See README for more details.
