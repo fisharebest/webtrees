@@ -49,7 +49,7 @@ case 'accept-changes':
 	require WT_ROOT.'includes/functions/functions_edit.php';
 	$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
 	if ($record && WT_USER_CAN_ACCEPT && $record->canDisplayDetails() && $record->canEdit()) {
-		Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
+		WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
 		accept_all_changes($record->getXref(), $record->getGedId());
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');
@@ -81,7 +81,7 @@ case 'copy-fact':
 	while (count($WT_SESSION->clipboard)>10) {
 		array_pop($WT_SESSION->clipboard);
 	}
-	Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('Record copied to clipboard'));
+	WT_FlashMessages::addMessage(WT_I18N::translate('Record copied to clipboard'));
 	break;
 
 case 'delete-family':
@@ -105,11 +105,11 @@ case 'delete-source':
 			$gedrec=preg_replace('/\n5 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[6-9].*)*/', '', $gedrec);
 			$tmp=WT_GedcomRecord::getInstance($xref);
 			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedrec) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) /', $gedrec, $dummy)<2) {
-				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ WT_I18N::translate('The family “%s” has been deleted, as it only has one member.', $tmp->getFullName()));
+				WT_FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ WT_I18N::translate('The family “%s” has been deleted, as it only has one member.', $tmp->getFullName()));
 				delete_gedrec($xref, $record->getGedId());
 			} else {
 				// Just remove the links
-				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $tmp->getFullName(), $record->getFullName()));
+				WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $tmp->getFullName(), $record->getFullName()));
 				replace_gedrec($xref, $record->getGedId(), $gedrec, false);
 			}
 		}
@@ -125,7 +125,7 @@ case 'reject-changes':
 	require WT_ROOT.'includes/functions/functions_edit.php';
 	$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
 	if ($record && WT_USER_CAN_ACCEPT && $record->canDisplayDetails() && $record->canEdit()) {
-		Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
+		WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
 		reject_all_changes($record->getXref(), $record->getGedId());
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');

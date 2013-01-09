@@ -148,12 +148,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 
 	// NOTE: in other themes, the flash-messages are inside #header.
 	// However, in this theme, it causes them to overlap with #content.
-	// Display feedback from asynchronous actions
-	echo '<div id="flash-messages">';
-	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
-		echo '<p class="ui-state-highlight">', $message, '</p>';
-	}
-	echo '</div>'; // <div id="flash-messages">
+	echo WT_FlashMessages::getHtmlMessages(); // Feedback from asynchronous actions
 }
 // Remove list from home when only 1 gedcom 
 $this->addInlineJavaScript(

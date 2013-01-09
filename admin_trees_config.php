@@ -183,7 +183,7 @@ case 'update':
 		if (is_dir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY) || @mkdir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY, 0755, true)) {
 			set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY', $NEW_MEDIA_DIRECTORY);
 		} else {
-			Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', WT_DATA_DIR . $NEW_MEDIA_DIRECTORY));
+			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', WT_DATA_DIR . $NEW_MEDIA_DIRECTORY));
 		}
 	}
 

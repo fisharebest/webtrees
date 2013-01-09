@@ -46,7 +46,7 @@ $to_user_id=get_user_id($to);
 // Only admins can send broadcast messages
 if ((!$to_user_id || $to=='all' || $to=='last_6mo' || $to=='never_logged') && !WT_USER_IS_ADMIN) {
 	// TODO, what if we have a user called "all" or "last_6mo" or "never_logged" ???
-	Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('Message was not sent'));
+	WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
 	$controller->pageHeader();
 	$controller->addInlineJavascript('window.opener.location.reload(); window.close();');
 	exit;
@@ -199,9 +199,9 @@ case 'send':
 		$message['url'] = $url;
 		if ($i>0) $message['no_from'] = true;
 		if (addMessage($message)) {
-			Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('Message successfully sent to %s', htmlspecialchars($to)));
+			WT_FlashMessages::addMessage(WT_I18N::translate('Message successfully sent to %s', htmlspecialchars($to)));
 		} else {
-			Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('Message was not sent'));
+			WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
 			AddToLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (failed to send)', 'error');
 		}
 		$i++;

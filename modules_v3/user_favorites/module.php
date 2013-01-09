@@ -77,7 +77,7 @@ class user_favorites_WT_Module extends gedcom_favorites_WT_Module {
 					'note'     =>null,
 					'title'    =>null,
 				));
-				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
+				WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
 			}
 			break;
 		}

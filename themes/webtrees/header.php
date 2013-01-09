@@ -113,14 +113,9 @@ if ($view!='simple') {
 	unset($menu_items, $menu);
 	echo
 		'</ul>',  // <ul id="main-menu">
-		'</div>'; // <div id="topMenu">
-	// Display feedback from asynchronous actions
-	echo '<div id="flash-messages">';
-	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
-		echo '<p class="ui-state-highlight">', $message, '</p>';
-	}
-	echo '</div>'; // <div id="flash-messages">
-	echo '</div>'; // <div id="header">
+		'</div>', // <div id="topMenu">
+		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
+		'</div>'; // <div id="header">
 }
 echo $javascript, '<div id="content">';
 

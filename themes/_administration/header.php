@@ -142,9 +142,4 @@ echo
 	'</ul>',
 	'</div>',
 	'<div id="admin_content" class="ui-widget-content">',
-	'<div id="flash-messages">';
-	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
-		echo '<p class="ui-state-highlight">', $message, '</p>';
-	}
-echo
-	'</div>';
+	WT_FlashMessages::getHtmlMessages(); // Feedback from asynchronous actions;
