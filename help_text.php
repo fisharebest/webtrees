@@ -1269,9 +1269,11 @@ case 'email':
 case 'export_gedcom':
 	$title=WT_I18N::translate('Export family tree');
 	$text=
-		WT_I18N::translate('This option will save the family tree to a GEDCOM file on the server.').
-		'<br/><br/>'.
-		/* I18N: %s is a directory name */ WT_I18N::translate('Files are stored in the %s directory.', '<b>'.WT_DATA_DIR.'</b>');
+		'<p>' .
+		WT_I18N::translate('This option will save the family tree to a GEDCOM file on the server.') .
+		'</p><p>' .
+		/* I18N: %s is a folder name */ WT_I18N::translate('GEDCOM files are stored in the %s folder.', '<b style="dir:auto;">' . WT_DATA_DIR . '</b>') .
+		'</p>';
 	break;
 
 case 'fambook_descent':
@@ -1322,9 +1324,11 @@ case 'header_favorites':
 case 'import_gedcom':
 	$title=WT_I18N::translate('Import family tree');
 	$text=
-		WT_I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on the server.').
-		'<br/><br/>'.
-		/* I18N: %s is a directory name */ WT_I18N::translate('Files are stored in the %s directory.', '<b>'.WT_DATA_DIR.'</b>');
+		'<p>' .
+		WT_I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on the server.') .
+		'</p><p>' .
+		/* I18N: %s is a folder name */ WT_I18N::translate('GEDCOM files are stored in the %s folder.', '<b style="dir:auto;">' . WT_DATA_DIR . '</b>') .
+		'</p>';
 	break;
 
 case 'include_media':

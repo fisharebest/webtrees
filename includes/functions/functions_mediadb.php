@@ -107,36 +107,12 @@ function check_media_structure() {
 		if (!is_dir($MEDIA_DIRECTORY)) {
 			if (!mkdir($MEDIA_DIRECTORY))
 				return false;
-			if (!file_exists($MEDIA_DIRECTORY . "index.php")) {
-				$inddata = "<"."?php header('Location: ../medialist.php'); exit; ?".">";
-				$fp = @ fopen($MEDIA_DIRECTORY . "index.php", "w+");
-				if (!$fp)
-					echo "<div class=\"error\">" . WT_I18N::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . "thumbs</div>";
-				else {
-					// Write the index.php for the media folder
-					fputs($fp, $inddata);
-					fclose($fp);
-				}
-			}
 		}
 	}
 	// Check if the thumbs folder exists
 	if (!is_dir($MEDIA_DIRECTORY . "thumbs")) {
-		echo $MEDIA_DIRECTORY . "thumbs";
 		if (!mkdir($MEDIA_DIRECTORY . "thumbs"))
 			return false;
-		if (file_exists($MEDIA_DIRECTORY . "index.php")) {
-			$inddata = file_get_contents($MEDIA_DIRECTORY . "index.php");
-			$inddatathumb = str_replace(": ../", ": ../../", $inddata);
-			$fpthumb = @ fopen($MEDIA_DIRECTORY . "thumbs/index.php", "w+");
-			if (!$fpthumb)
-				echo "<div class=\"error\">" . WT_I18N::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . "thumbs</div>";
-			else {
-				// Write the index.php for the thumbs media folder
-				fputs($fpthumb, $inddatathumb);
-				fclose($fpthumb);
-			}
-		}
 	}
 	return true;
 }

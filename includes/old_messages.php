@@ -74,6 +74,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Father\'s given name');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Father\'s occupation');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Father\'s surname');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Files are stored in the %s directory.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('GEDCOM record last change date on lists');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Genealogy from [%s]');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Here you can specify if the counts of indis and families connected to the place is displayed. Now if GEDCOM file contains many people is recomended to turn it off.');
@@ -132,6 +133,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Reorder families');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Save and go to new record');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Save');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Should new images automatically go in the protected media directory when they are uploaded?');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Show GEDCOM record last change date on lists');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Some site administrators prefer not to have writable files or directories in the public HTML directory.  By specifying an alternative location to write data, you can make the existing data/ directory read-only.  Note that the file data/config.ini.php cannot be moved, and must remain in this location.');
