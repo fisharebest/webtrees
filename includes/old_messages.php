@@ -118,6 +118,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Parents\' marriage place');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Paternal grandfather\'s given name');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Paternal grandmother\'s given name');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Permanently delete "%s"?');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Permanently delete the GEDCOM %s and all its settings?');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Personal Facts and Details');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Place connections found');

@@ -2,7 +2,7 @@
 // Provide an interface to the wt_gedcom table
 //
 // webtrees: Web based Family History software
-// Copyright (c) 2012 webtrees development team
+// Copyright (c) 2013 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -323,7 +323,7 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'WELCOME_TEXT_CUST_HEAD',       false);
 		set_gedcom_setting($tree_id, 'WORD_WRAPPED_NOTES',           false);
 		set_gedcom_setting($tree_id, 'imported',                     0);
-		set_gedcom_setting($tree_id, 'title',                        WT_I18N::translate('Genealogy from [%s]', $tree_name));
+		set_gedcom_setting($tree_id, 'title',                        /* I18N: Default title for new family trees */ WT_I18N::translate('My family tree'));
 
 		// Default restriction settings
 		$statement=WT_DB::prepare(
