@@ -191,7 +191,6 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 	}
 
 	// apply the text
-	$useTTF=false;
 	if ($useTTF) {
 		// if imagettftext throws errors, catch them with a custom error handler
 		set_error_handler("imagettftextErrorHandler");
