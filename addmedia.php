@@ -34,7 +34,7 @@ $controller
 	->addExternalJavascript(WT_JQUERYUI_URL)
 	->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-	->setPageTitle(WT_I18N::translate('Add a new media object'))
+	->setPageTitle(WT_I18N::translate('Create a new media object'))
 	->pageHeader()
 	->requireMemberLogin()
 	->addInlineJavascript('
@@ -595,7 +595,7 @@ function show_media_form($pid, $action = 'newentry', $filename = '', $linktoid =
 	echo '<table class="facts_table">';
 	echo '<tr><td class="topbottombar" colspan="2">';
 	if ($action == 'newentry') {
-		echo WT_I18N::translate('Add a new media object');
+		echo WT_I18N::translate('Create a new media object');
 	} else {
 		echo WT_I18N::translate('Edit media object');
 	}

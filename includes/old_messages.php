@@ -41,7 +41,11 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add Note');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add Shared Note');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add Source Citation');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add an unlinked note');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add an unlinked source');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add an unlinked shared note');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('New Account confirmation');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Unable to add user.  Please try again.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add child');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add daughter');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add media');

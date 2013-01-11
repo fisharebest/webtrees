@@ -730,7 +730,8 @@ if (check_media_structure()) {
 				<input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) echo "checked=\"checked\""; ?> onclick="submit();">
 			</td>
 			<td class="wrap">
-				<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=new', '_blank', edit_window_specs); return false;"> <?php echo WT_I18N::translate('Add a new media object')."</a>". help_link('OBJE'); ?>
+				<input type="submit" value="<?php echo WT_I18N::translate('Correct read/write/execute permissions'); ?>" onclick="this.form.action.value='setpermsfix';">
+				<?php echo help_link('setperms'); ?>
 			</td>
 				<?php
 					$tempURL = WT_SCRIPT_NAME.'?';
@@ -854,8 +855,6 @@ if (check_media_structure()) {
 				echo "&nbsp;&nbsp;&nbsp;";
 			}
 
-			echo "<input type=\"submit\" value=\"".WT_I18N::translate('Correct read/write/execute permissions')."\" onclick=\"this.form.action.value='setpermsfix';\">";
-			echo help_link('setperms');
 			echo "</form>";
 			echo "</td>";
 		echo "</tr>\n";

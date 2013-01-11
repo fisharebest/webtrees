@@ -45,21 +45,28 @@ $controller->pageHeader();
 		<tr>
 			<td>
 				<a href="#" onclick="addnewchild(''); return false;">
-					<?php echo WT_I18N::translate('Add an unlinked person'); ?>
+					<?php echo /* I18N: An individual that is not linked to any other record */ WT_I18N::translate('Create a new individual'); ?>
 				</a>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<a href="#" onclick="addnewnote(''); return false;">
-					<?php echo WT_I18N::translate('Add an unlinked note'); ?>
+					<?php echo /* I18N: An note that is not linked to any other record */ WT_I18N::translate('Create a new note'); ?>
 				</a>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<a href="#" onclick="addnewsource(''); return false;">
-					<?php echo WT_I18N::translate('Add an unlinked source'); ?>
+					<?php echo /* I18N: A source that is not linked to any other record */ WT_I18N::translate('Create a new source'); ?>
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=new', '_blank', edit_window_specs); return false;">
+					<?php echo /* I18N: A media object that is not linked to any other record */ WT_I18N::translate('Create a new media object'); ?>
 				</a>
 			</td>
 		</tr>
