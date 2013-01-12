@@ -123,12 +123,8 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 
 		// delete
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(
-				WT_I18N::translate('Remove object'),
-				"admin_media.php?action=removeobject&amp;xref=".$this->record->getXref(),
-				'menu-obje-del'
-			);
-			$submenu->addOnclick("return confirm('".WT_I18N::translate('Are you sure you want to remove this object from the database?')."')");
+			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-obje-del');
+			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName()))."')) jQuery.post('action.php',{action:'delete-media',xref:'".$this->record->getXref()."'},function(){location.reload();})");
 			$menu->addSubmenu($submenu);
 		}
 
