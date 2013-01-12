@@ -35,7 +35,6 @@ exit;
 Requests for commercial publication of these or other UK census images appearing on this website should be directed to: Image Library, The National Archives, Kew, Surrey, TW9 4DU, United Kingdom."
 ');
 
-/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('You can enter no more than %s subdirectory names');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('<b>webtrees</b> requires a directory with read/write permission, where it can create temporary files and export data.  By default, it uses the data/ directory.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('<b>webtrees</b> will check the permissions in the next step.');
@@ -52,6 +51,8 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add new fact');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Add son');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('After you have copied this file to the webserver and set the access permissions, click here to continue');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Automatic thumbnail');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Automatically generate thumbnails');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Automatically protect new images');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('By clicking this link, you can add a <u>new</u> child to this person, creating a one-parent family.<br /><br />Just click the link, and you will get a pop up window to add the new person.  Fill out as many boxes as you can and click the <b>Save</b> button.<br /><br />That\'s all.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('By clicking this link, you can add a <u>new</u> female person and link this person to the principal individual as a new wife.<br /><br />Just click the link, and you will get a pop up window to add the new person.  Fill out as many boxes as you can and click the <b>Save</b> button.<br /><br />That\'s all.');
@@ -81,6 +82,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Files are stored in the %s directory.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('GEDCOM record last change date on lists');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Genealogy from [%s]');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Generate thumbnail automatically from ');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Here you can specify if the counts of indis and families connected to the place is displayed. Now if GEDCOM file contains many people is recomended to turn it off.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Here you can specify if the mouse wheel is enebled for zooming.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Hide map controls');
@@ -141,6 +143,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Save');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Should new images automatically go in the protected media directory when they are uploaded?');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Should the system automatically generate thumbnails for images that do not have them.  Your PHP installation might not support this functionality.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Show GEDCOM record last change date on lists');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Some site administrators prefer not to have writable files or directories in the public HTML directory.  By specifying an alternative location to write data, you can make the existing data/ directory read-only.  Note that the file data/config.ini.php cannot be moved, and must remain in this location.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Source for Adoption');
@@ -206,9 +209,11 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('With this page you can add a new husband or wife to the selected person.  Fill out the new person\'s name and the birth and death information if it is known.  If you don\'t know some information leave it blank.<br /><br />To add other facts besides birth and death, first add the new person to the database by saving the changes.  Then click on the person\'s name in the updated Family page or Close Relatives tab to view the person\'s Individual Information page.  From the Individual Information page you can add more detailed information.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('With this page you can add a new husband or wife to the selected person.  Fill out the new person\'s name and the birth and death information if it is known.  If you don\'t know some information leave it blank.<br /><br />To add other facts besides birth and death, first add the new person to the database by saving the changes.  Then click on the person\'s name in the updated Family page or Close Relatives tab to view the person\'s Individual Information page.  From the Individual Information page you can add more detailed information.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('With this page you can add a new mother or father to the selected person.  Fill out the new person\'s name and the birth and death information if it is known.  If you don\'t know some information, leave it blank.<br /><br />To add other facts besides birth and death, first add the new person to the database by saving the changes.  Then click on the person\'s name in the updated Family page or Close Relatives tab to view the person\'s Individual Information page.  From the Individual Information page you can add more detailed information.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('You can enter no more than %s subdirectory names');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('You can enter up to %s folder names to follow the default &laquo;%s&raquo;.<br />Do not enter the &laquo;%s&raquo; part of the destination folder name.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('You can link this person as a child to an existing family when you click this link.<br /><br />Suppose that at one time the parents of the person were unknown, and you discovered later that the parents have a record in this database.<br /><br />Just click the link, enter the ID of the family, and you have competed the task.  If you don\'t know the family\'s ID, you can search for it.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('You should set the directory <b>%s</b> so that the webserver has read-write access.<br/>This normally means setting the permissions to "777" or "drwxrwxrwx".');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('You should set the file <b>%s</b> so that the webserver has read-only access.<br/>This normally means setting the permissions to "444" or "-r--r--r--".');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Your system can generate thumbnails for certain types of images automatically.  There may be support for BMP, GIF, JPG, and PNG files.  The types that your system supports are listed beside the checkbox.<br /><br />By clicking this checkbox, you signal the system that you are uploading images of this type and that you want it to try to generate thumbnails for them.  Leave the box unchecked if you want to provide your own thumbnails.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Your system is almost ready for use.  The final step is to download a configuration file <b>%1$s</b> and copy this to the <b>%2$s</b> directory on your webserver.  This is a security measure to ensure only the website\'s owner can configure it.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('see the wiki');

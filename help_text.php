@@ -459,11 +459,6 @@ case 'ALLOW_USER_THEMES':
 	$text=WT_I18N::translate('Gives users the option of selecting their own theme.');
 	break;
 
-case 'AUTO_GENERATE_THUMBS':
-	$title=WT_I18N::translate('Automatically generate thumbnails');
-	$text=WT_I18N::translate('Should the system automatically generate thumbnails for images that do not have them.  Your PHP installation might not support this functionality.');
-	break;
-
 case 'CALENDAR_FORMAT':
 	$d1=new WT_Date('22 SEP 1792'); $d1=$d1->Display(false, null, array());
 	$d2=new WT_Date('31 DEC 1805'); $d2=$d2->Display(false, null, array());
@@ -1300,11 +1295,6 @@ case 'gedcom_news_limit':
 case 'gen_missing_thumbs':
 	$title=WT_I18N::translate('Create missing thumbnails');
 	$text=WT_I18N::translate('This option will generate thumbnails for all files in the current directory which don\'t already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br /><br />If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links.');
-	break;
-
-case 'generate_thumb':
-	$title=WT_I18N::translate('Automatic thumbnail');
-	$text=WT_I18N::translate('Your system can generate thumbnails for certain types of images automatically.  There may be support for BMP, GIF, JPG, and PNG files.  The types that your system supports are listed beside the checkbox.<br /><br />By clicking this checkbox, you signal the system that you are uploading images of this type and that you want it to try to generate thumbnails for them.  Leave the box unchecked if you want to provide your own thumbnails.');
 	break;
 
 case 'google_chart_surname':

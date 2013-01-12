@@ -695,7 +695,7 @@ function thumbnail_file($filename, $generateThumb=true, $overwrite=false, $icon_
 	$altthumb = $parts["filename"] . '.png';
 	if (!$overwrite && media_exists($thumbDir . $altthumb)) return $thumbDir . $altthumb;
 
-	if ($generateThumb && get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS')) {
+	if ($generateThumb) {
 		if (generate_thumbnail($mainDir . $thumbName, $thumbDir . $thumbName)) {
 			return $thumbDir . $thumbName;
 		}
@@ -1129,21 +1129,19 @@ function process_uploadMedia_form() {
 				}
 			}
 			if ($error=="" && !empty($_FILES["mediafile".$i]["name"]) && empty($_FILES["thumbnail".$i]["name"])) {
-				if (safe_POST('genthumb'.$i, 'yes', 'no') == 'yes') {
-					// Generate thumbnail from main image
-					$parts = pathinfo_utf($mediaFile);
-					if (!empty($parts["extension"])) {
-						$ext = strtolower($parts["extension"]);
-						if (isImageTypeSupported($ext)) {
-							$thumbnail = $thumbFolderName.$mediaFile;
-							$okThumb = generate_thumbnail($folderName.$mediaFile, $thumbnail, "OVERWRITE");
-							if (!$okThumb) {
-								$error .= WT_I18N::translate('Thumbnail %s could not be generated automatically.', $thumbnail);
-							} else {
-								echo WT_I18N::translate('Thumbnail %s generated automatically.', $thumbnail);
-								echo "<br>";
-								AddToLog("Media thumbnail {$thumbnail} generated", 'media');
-							}
+				// Generate thumbnail from main image
+				$parts = pathinfo_utf($mediaFile);
+				if (!empty($parts["extension"])) {
+					$ext = strtolower($parts["extension"]);
+					if (isImageTypeSupported($ext)) {
+						$thumbnail = $thumbFolderName.$mediaFile;
+						$okThumb = generate_thumbnail($folderName.$mediaFile, $thumbnail, "OVERWRITE");
+						if (!$okThumb) {
+							$error .= WT_I18N::translate('Thumbnail %s could not be generated automatically.', $thumbnail);
+						} else {
+							echo WT_I18N::translate('Thumbnail %s generated automatically.', $thumbnail);
+							echo "<br>";
+							AddToLog("Media thumbnail {$thumbnail} generated", 'media');
 						}
 					}
 				}
@@ -1165,18 +1163,7 @@ function process_uploadMedia_form() {
 function show_mediaUpload_form($URL, $showthumb=false) {
 	global $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY;
 
-	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
-
 	$mediaFolders = get_media_folders();
-
-	// Check for thumbnail generation support
-	$thumbSupport = "";
-	if ($AUTO_GENERATE_THUMBS) {
-		if (function_exists("imagecreatefromgif") && function_exists("imagegif")) $thumbSupport .= ", GIF";
-		if (function_exists("imagecreatefromjpeg") && function_exists("imagejpeg")) $thumbSupport .= ", JPG";
-		if (function_exists("imagecreatefrompng") && function_exists("imagepng")) $thumbSupport .= ", PNG";
-	}
-	if ($thumbSupport != '') $thumbSupport = substr($thumbSupport, 2); // Trim off first “, ”
 
 	// Determine file size limit
 	// TODO: do we need to check post_max_size size too?
@@ -1201,16 +1188,6 @@ function show_mediaUpload_form($URL, $showthumb=false) {
 		echo '<td>';
 		echo '<input name="mediafile', $i, '" type="file" size="40">';
 		echo '</td></tr>';
-
-		if ($thumbSupport != "") {
-			echo '<tr><td>';
-			echo WT_I18N::translate('Automatic thumbnail'), help_link('generate_thumb');
-			echo '</td><td>';
-			echo '<input type="checkbox" name="genthumb', $i, '" value="yes" checked="checked">';
-			echo '&nbsp;&nbsp;&nbsp;', WT_I18N::translate('Generate thumbnail automatically from '), $thumbSupport;
-			echo '</td></tr>';
-		}
-
 		echo '<tr><td>';
 		echo WT_I18N::translate('Thumbnail to upload'), help_link('upload_thumbnail_file');
 		echo '</td>';
@@ -1555,9 +1532,6 @@ function hasMemoryForImage($serverFilename, $debug_verboseLogging=false) {
 function generate_thumbnail($filename, $thumbnail) {
 	global $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH;
 
-	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
-
-	if (!$AUTO_GENERATE_THUMBS) return false;
 	if (!is_writable($MEDIA_DIRECTORY."thumbs")) return false;
 
 	// Can we generate thumbnails for this file type?

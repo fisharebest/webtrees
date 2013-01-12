@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 // Delete old settings
-self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('POSTAL_CODE', 'MEDIA_DIRECTORY_LEVELS')");
+self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('AUTO_GENERATE_THUMBS', 'POSTAL_CODE', 'MEDIA_DIRECTORY_LEVELS')");
 
 // Previous versions of webtrees included the MEDIA_DIRECTORY setting in the
 // FILE tag of the OBJE records.  Remove it.

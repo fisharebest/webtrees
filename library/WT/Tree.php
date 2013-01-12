@@ -221,7 +221,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'ADVANCED_PLAC_FACTS',          '');
 		set_gedcom_setting($tree_id, 'ALLOW_EDIT_GEDCOM',            true);
 		set_gedcom_setting($tree_id, 'ALLOW_THEME_DROPDOWN',         true);
-		set_gedcom_setting($tree_id, 'AUTO_GENERATE_THUMBS',         true);
 		set_gedcom_setting($tree_id, 'CALENDAR_FORMAT',              'gregorian');
 		set_gedcom_setting($tree_id, 'CHART_BOX_TAGS',               '');
 		set_gedcom_setting($tree_id, 'COMMON_NAMES_ADD',             '');

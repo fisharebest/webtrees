@@ -196,21 +196,19 @@ case 'newentry':
 			}
 		}
 		if ($error=='' && !empty($_FILES['mediafile']['name']) && empty($_FILES['thumbnail']['name'])) {
-			if (safe_POST('genthumb', 'yes', 'no') == 'yes') {
-				// Generate thumbnail from main image
-				$parts = pathinfo_utf($mediaFile);
-				if (!empty($parts['extension'])) {
-					$ext = strtolower($parts['extension']);
-					if (isImageTypeSupported($ext)) {
-						$thumbnail = $thumbFolderName.$mediaFile;
-						$okThumb = generate_thumbnail($folderName.$mediaFile, $thumbnail, 'OVERWRITE');
-						if (!$okThumb) {
-							$error .= WT_I18N::translate('Thumbnail %s could not be generated automatically.', $thumbnail);
-						} else {
-							echo WT_I18N::translate('Thumbnail %s generated automatically.', $thumbnail);
-							echo '<br>';
-							AddToLog("Media thumbnail {$thumbnail} generated", 'media');
-						}
+			// Generate thumbnail from main image
+			$parts = pathinfo_utf($mediaFile);
+			if (!empty($parts['extension'])) {
+				$ext = strtolower($parts['extension']);
+				if (isImageTypeSupported($ext)) {
+					$thumbnail = $thumbFolderName.$mediaFile;
+					$okThumb = generate_thumbnail($folderName.$mediaFile, $thumbnail, 'OVERWRITE');
+					if (!$okThumb) {
+						$error .= WT_I18N::translate('Thumbnail %s could not be generated automatically.', $thumbnail);
+					} else {
+						echo WT_I18N::translate('Thumbnail %s generated automatically.', $thumbnail);
+						echo '<br>';
+						AddToLog("Media thumbnail {$thumbnail} generated", 'media');
 					}
 				}
 			}
@@ -580,8 +578,6 @@ case 'editmedia':
 function show_media_form($pid, $action = 'newentry', $filename = '', $linktoid = '', $level = 1) {
 	global $WORD_WRAPPED_NOTES, $ADVANCED_NAME_FACTS, $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH, $NO_UPDATE_CHAN;
 
-	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
-
 	// NOTE: add a table and form to easily add new values to the table
 	echo '<div id="addmedia-page">'; //container for media edit pop-up
 	echo '<form method="post" name="newmedia" action="addmedia.php" enctype="multipart/form-data">';
@@ -635,28 +631,8 @@ function show_media_form($pid, $action = 'newentry', $filename = '', $linktoid =
 		echo WT_I18N::translate('Media file to upload').help_link('upload_media_file').'</td><td class="optionbox wrap"><input type="file" name="mediafile" onchange="updateFormat(this.value);" size="40"></td></tr>';
 		// Check for thumbnail generation support
 		if (WT_USER_GEDCOM_ADMIN) {
-			$ThumbSupport = '';
-		// Check for thumbnail generation support
-			$thumbSupport = '';
-			if ($AUTO_GENERATE_THUMBS) {
-				if (function_exists('imagecreatefromgif') && function_exists('imagegif')) $thumbSupport .= ', GIF';
-				if (function_exists('imagecreatefromjpeg') && function_exists('imagejpeg')) $thumbSupport .= ', JPG';
-				if (function_exists('imagecreatefrompng') && function_exists('imagepng')) $thumbSupport .= ', PNG';
-			}
-
-			if ($thumbSupport != '') {
-				$thumbSupport = substr($thumbSupport, 2); // Trim off first “, ”
-				echo '<tr><td class="descriptionbox wrap width25">';
-				echo WT_I18N::translate('Automatic thumbnail'), help_link('generate_thumb');
-				echo '</td><td class="optionbox wrap">';
-				echo '<input type="checkbox" name="genthumb" value="yes" checked="checked">';
-				echo '&nbsp;&nbsp;&nbsp;' . WT_I18N::translate('Generate thumbnail automatically from ') . $thumbSupport;
-				echo '</td></tr>';
-			}
 			echo '<tr><td class="descriptionbox wrap width25">';
 			echo WT_I18N::translate('Thumbnail to upload').help_link('upload_thumbnail_file').'</td><td class="optionbox wrap"><input type="file" name="thumbnail" size="40"></td></tr>';
-		} else {
-			echo '<input type="hidden" name="genthumb" value="yes">';
 		}
 	}
 	// Filename on server
