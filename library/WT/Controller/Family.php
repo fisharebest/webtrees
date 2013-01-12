@@ -57,7 +57,8 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 			$this->record = new WT_Family($gedrec);
 			$this->record->ged_id=WT_GED_ID; // This record is from a file
 		} else if (!$this->record) {
-			return false;
+			parent::__construct();
+			return;
 		}
 
 		$xref=$this->record->getXref(); // Correct upper/lower case mismatch

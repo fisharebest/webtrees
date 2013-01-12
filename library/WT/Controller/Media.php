@@ -46,6 +46,7 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 		if ($gedrec===null) {
 			if ($newrec===null) {
 				// Nothing to see here.
+				parent::__construct();
 				return;
 			} else {
 				// Create a dummy record from the first line of the new record.
