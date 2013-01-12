@@ -1315,8 +1315,9 @@ function findFact(field, ged) {
 	return false;
 }
 
-function ilinkitem(mediaid, type) {
-	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type+'&ged='+WT_GEDCOM, '_blank', find_window_specs);
+function ilinkitem(mediaid, type, ged) {
+	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
+	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type+'&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
 
