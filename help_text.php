@@ -664,11 +664,6 @@ case 'MAX_PEDIGREE_GENERATIONS':
 	$text=WT_I18N::translate('Set the maximum number of generations to display on Pedigree charts.');
 	break;
 
-case 'MEDIA_DIRECTORY_LEVELS':
-	$title=WT_I18N::translate('Multimedia directory levels to keep');
-	$text=WT_I18N::translate('A value of 0 will ignore all directories in the file path for the media object.  A value of 1 will retain the first directory containing this image.  Increasing the numbers increases number of parent directories to retain in the path.<br /><br />For example, if you link an image in your GEDCOM with a path like <b>C:\Documents&nbsp;and&nbsp;Settings\User\My&nbsp;Documents\My&nbsp;Pictures\Genealogy\Surname&nbsp;Line\grandpa.jpg</b>, a value of 0 will translate this path to <b>./media/grandpa.jpg</b>.  A value of 1 will translate this to <b>./media/Surname&nbsp;Line/grandpa.jpg</b>, etc.  Most people will only need to use a 0.  However, it is possible that some media objects kept in different directories have identical names and would overwrite each other when this option is set to 0.  Non-zero settings allow you to keep some organization in your media thereby preventing name collisions.');
-	break;
-
 case 'MEDIA_DIRECTORY':
 	$title=WT_I18N::translate('Media folder');
 	$text=
@@ -1528,7 +1523,12 @@ case 'upload_server_file':
 
 case 'upload_server_folder':
 	$title=WT_I18N::translate('Folder name on server');
-	$text=WT_I18N::translate('The administrator has enabled up to %s folder levels below the default <b>%s</b>.  This helps to organize the media files and reduces the possibility of name collisions.<br /><br />In this field, you specify the destination folder where the uploaded media file should be stored.  The matching thumbnail file, either uploaded separately or generated automatically, will be stored in a similar folder structure starting at <b>%sthumbs/</b> instead of <b>%s</b>.  You do not need to enter the <b>%s</b> part of the destination folder name.<br /><br />If you are not sure about what to enter here, you should contact your site administrator for advice.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
+	$text=
+		'<p>' .
+		WT_I18N::translate('If you have a large number of media files, you can organize them into folders and sub-folders.') .
+		'</p><p>' .
+		WT_I18N::translate('Only a manager is allowed to create new folders.') .
+		'</p>';
 	break;
 
 case 'upload_thumbnail_file':
