@@ -97,7 +97,7 @@ html[dir='rtl'] #page_help {text-align:left;}
 #page_help a img {display:none; height:24px; margin:-5px; padding:0; width:24px;}
 
 /* HEADER */
-#admin_head {position:relative; height:70px; margin-bottom:10px; min-width:1070px; z-index:1000;}
+#admin_head {position:relative; height:70px; margin-bottom:10px; min-width:970px; z-index:1000;}
 #title {position:absolute; left:47%; top:20px; font-size:18px; font-weight:bold;}
 #info {position:absolute; right:10px; bottom:0; text-align:right;}
 html[dir='rtl'] #info {right:auto; left:10px; text-align:left;}
@@ -114,7 +114,7 @@ html[dir='rtl'] #links li ul {left:auto; right:0;}
 
 /* SIDE and CONTENT panels */
 #admin_menu, #admin_content {min-height:580px;}
-#admin_content {min-width:830px;}
+#admin_content {min-width:750px;}
 
 /* SIDE MENU */
 #admin_menu {padding:10px 0 10px 5px;top:92px; left:10px; right:auto; width:200px; float:left; position:absolute; color:#2E6E9E; white-space:nowrap; overflow:hidden;}
@@ -231,8 +231,8 @@ table.gedcom_table2 {background:OldLace; border:1px inset #D9D6C4; border-collap
 /* FAMILY TREE CONFIG */
 #file-options, #privacy, #config-media, #access-options, #layout-options, #hide-show, #edit-options {padding:10px;}
 #file-options table, #privacy table, #config-media table, #access-options table, #layout-options table, #hide-show table, #edit-options table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
-#file-options td, #privacy td, #config-media td, #access-options td, #layout-options td, #hide-show td, #edit-options td {border-bottom:1px solid LightGrey;vertical-align:middle;}
-#file-options th, #privacy th, #config-media th, #access-options th, #layout-options th, #hide-show th, #edit-options th {border-bottom:2px solid LightGrey; color:green; font-weight:bold; text-align:inherit;}
+#file-options td, #privacy td, #config-media td, #access-options td, #layout-options td, #hide-show td, #edit-options td {border-bottom:1px solid LightGrey;}
+#file-options th, #privacy th, #config-media th, #access-options th, #layout-options th, #hide-show th, #edit-options th {border-bottom:2px solid LightGrey; color:green; font-weight:bold; text-align:left;}
 #relatives {margin-left:120px;}
 html[dir='rtl'] #relatives {margin-right:120px;}
 #NEW_CALENDAR_FORMAT1 {margin:0 20px;}
