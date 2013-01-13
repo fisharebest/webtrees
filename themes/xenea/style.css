@@ -1468,6 +1468,7 @@ a.showit:hover > span {
 	list-style:none;
 	margin:0;
 	max-height:200px;
+	overflow-y:auto;
 }
 
 .ui-autocomplete li {
