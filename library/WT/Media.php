@@ -119,17 +119,9 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * get the relative file path of the image on the server
-	 * @param which string - specify either 'main' or 'thumb'
-	 * @return string
 	 */
-	public function getLocalFilename($which='main') {
-		if ($which=='main') {
-			if (!$this->localfilename) $this->localfilename=check_media_depth($this->file);
-			return $this->localfilename;
-		} else {
-			// this is a convenience method
-			return $this->getThumbnail(false);
-		}
+	public function getLocalFilename() {
+		return check_media_depth($this->file);
 	}
 
 	/**
@@ -140,7 +132,7 @@ class WT_Media extends WT_GedcomRecord {
 	public function getServerFilename($which='main') {
 		if ($which=='main') {
 			if ($this->serverfilename) return $this->serverfilename;
-			$localfilename = $this->getLocalFilename($which);
+			$localfilename = $this->getLocalFilename();
 			if (!empty($localfilename) && !$this->isExternal()) {
 				if (file_exists($localfilename)) {
 					// found image in unprotected directory
