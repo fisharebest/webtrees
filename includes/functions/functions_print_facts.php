@@ -4,7 +4,7 @@
 // Various printing functions used to print fact records
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -539,7 +539,6 @@ function print_media_links($factrec, $level, $pid='') {
 		if ($media) {
 			if ($media->canDisplayDetails()) {
 				$mainMedia = check_media_depth($media->getFileName(), 'NOTRUNC');
-				$thumbnail = thumbnail_file($mainMedia, true, false, $pid);
 				$isExternal = isFileExternal($media->getFileName());
 
 				// Determine the size of the mediafile

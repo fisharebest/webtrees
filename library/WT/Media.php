@@ -179,7 +179,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return boolean
 	 */
 	public function isExternal() {
-		return isFileExternal($this->getLocalFilename('main'));
+		return isFileExternal($this->getLocalFilename());
 	}
 
 	/**

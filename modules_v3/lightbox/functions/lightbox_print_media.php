@@ -413,9 +413,6 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	$final    = $before.$needle.$after;
 	$notes    = htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)), ENT_QUOTES);
 
-	// Get info on how to handle this media file
-	$mediaInfo = mediaFileInfo($mainMedia, $thumbnail, $rowm['m_id'], $mediaTitle, $notes);
-
 	// Prepare Below Thumbnail  menu ----------------------------------------------------
 	$menu = new WT_Menu();
 	// Truncate media title to 13 chars (45 chars if Streetview) and add ellipsis
