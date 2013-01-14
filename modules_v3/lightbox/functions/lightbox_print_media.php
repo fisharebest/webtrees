@@ -430,9 +430,9 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	// Continue menu construction
 	// If media file is missing from media folder, but is referenced in Gedcom
 	if (!media_exists($rowm['m_filename']) && !media_exists($mainMedia)) {
-		$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\">" . WT_I18N::translate('Edit')." (". $rowm['m_id'].")", 'right');
+		$menu->addLabel(WT_I18N::translate('Edit')." (". $rowm['m_id'].")", 'right');
 	} else {
-		$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\">" . $mtitle, 'right');
+		$menu->addLabel($mtitle, 'right');
 	}
 
 	if ($rtype=='old') {
@@ -534,11 +534,11 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	// If media file is missing but details are in Gedcom then add the menu as well
 	if (!media_exists($mainMedia) && !media_exists($rowm['m_filename'])) {
 		echo '<tr>';
-		echo '<td ></td>';
+		echo '<td></td>';
 		echo '<td valign="bottom" align="center" class="nowrap">';
 		echo $menu->getMenu();
 		echo '</td>';
-		echo '<td ></td>';
+		echo '<td></td>';
 		echo '</tr>';
 	}
 	echo '</table>';
