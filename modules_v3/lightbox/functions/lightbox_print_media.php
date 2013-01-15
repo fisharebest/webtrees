@@ -328,51 +328,19 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		return false;
 	}
 
-	// If media file is missing from media folder, but is referenced in Gedcom
-	if (!media_exists($mainMedia)) {
-		if (!file_exists($rowm['m_filename'])) {
-			echo '<li class="li_norm" >';
-			echo '<table class="pic" width="50px" border="0">';
-			echo '<tr>';
-			echo '<td valign="top" rowspan="2" >';
-			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="100px" alt=""></img>';
-			echo '</td>';
-			echo '<td class="description_box nowrap" valign="top" colspan="3">';
-			echo '<center><br><img src="', WT_THEME_URL, 'images/media.gif" height="30">';
-			echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $rowm['m_filename']), '</p>';
-			echo '</td>';
-			echo '</tr>';
-		} else {
-			echo '<li class="li_norm" >';
-			echo '<table class="pic" width="50px" border="0" >';
-		}
-	// Else Media files are present in media folder
-	} else {
-		// Highlight Album Thumbnails - Changed=new (blue), Changed=old (red), Changed=no (none)
-		 if ($rtype=='new') {
-			echo '<li class="li_new">';
-		} else if ($rtype=='old') {
-			echo '<li class="li_old">';
-		} else {
-			echo '<li class="li_norm">';
-		}
+	if (!canDisplayFact($rowm['m_id'], $rowm['m_file'], $rowm['m_gedcom'])) {
+		// The link to this media object is private.  e.g. 1 OBJE/2 RESN
+		return false;
 	}
 
-	// NOTE Start printing the media details
-	if (!media_exists($mainMedia)) {
-		if (!media_exists($rowm['m_filename'])) {
-			$thumbnail = '';
-			$isExternal = ''; // isFileExternal($thumbnail);
-		} else {
-			$thumbnail = thumbnail_file($rowm['m_filename'], true, false, $pid);
-			$isExternal = isFileExternal($thumbnail);
-		}
+	// Highlight Album Thumbnails - Changed=new (blue), Changed=old (red), Changed=no (none)
+	 if ($rtype=='new') {
+		echo '<li class="li_new">';
+	} else if ($rtype=='old') {
+		echo '<li class="li_old">';
 	} else {
-		$thumbnail = thumbnail_file($mainMedia, true, false, $pid);
-		$isExternal = isFileExternal($thumbnail);
-		// echo $thumbnail;
+		echo '<li class="li_norm">';
 	}
-	$linenum = 0;
 
 	//  Get the title of the media
 	if ($media) {
@@ -486,45 +454,30 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		}
 	}
 
-	// Check if allowed to View media
-	if ($isExternal || media_exists($thumbnail) && canDisplayFact($rowm['m_id'], $rowm['m_file'], $rowm['m_gedcom'])) {
-		// Get Media info
-		if ($isExternal || media_exists($rowm['m_filename']) || media_exists($mainMedia)) {
-			// Start Thumbnail Enclosure table ---------------------------------------------
-			// Pull table up 90px if media object is a “streetview”
-			if (strpos($rowm['m_filename'], 'http://maps.google.')===0) {
-				echo '<table width="10px" style="margin-top:-90px;" class="pic" border="0"><tr>';
-			} else {
-				echo '<table width="10px" class="pic" border="0"><tr>';
-			}
-			echo '<td align="center" rowspan="2">';
-			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="100px" alt=""></img>';
-			echo '</td>';
-			echo '<td colspan="3" valign="middle" align="center">';
-			echo $media->displayMedia();
-		}
-		echo '</td></tr>';
-
-		//View Edit Menu ----------------------------------
-		echo '<tr>';
-		echo '<td width="5px"></td>';
-		echo '<td valign="bottom" align="center" class="nowrap">';
-		echo $menu->getMenu();
-		echo '</td>';
-		echo '<td width="5px"></td>';
-		echo '</tr>';
+	// Start Thumbnail Enclosure table ---------------------------------------------
+	// Pull table up 90px if media object is a “streetview”
+	if (strpos($rowm['m_filename'], 'http://maps.google.')===0) {
+		echo '<table width="10px" style="margin-top:-90px;" class="pic" border="0"><tr>';
+	} else {
+		echo '<table width="10px" class="pic" border="0"><tr>';
 	}
-
-	// If media file is missing but details are in Gedcom then add the menu as well
-	if (!media_exists($mainMedia) && !media_exists($rowm['m_filename'])) {
-		echo '<tr>';
-		echo '<td></td>';
-		echo '<td valign="bottom" align="center" class="nowrap">';
-		echo $menu->getMenu();
-		echo '</td>';
-		echo '<td></td>';
-		echo '</tr>';
+	echo '<td align="center" rowspan="2">';
+	echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="100px" alt=""></img>';
+	echo '</td>';
+	echo '<td colspan="3" valign="middle" align="center">';
+	if ($media) {
+		echo $media->displayMedia();
 	}
+	echo '</td></tr>';
+
+	//View Edit Menu ----------------------------------
+	echo '<tr>';
+	echo '<td width="5px"></td>';
+	echo '<td valign="bottom" align="center" class="nowrap">';
+	echo $menu->getMenu();
+	echo '</td>';
+	echo '<td width="5px"></td>';
+	echo '</tr>';
 	echo '</table>';
 	$media_data = $rowm['m_id'];
 	echo '<input type="hidden" name="order1[', $media_data, ']" value="', $sort_i, '">';
