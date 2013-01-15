@@ -346,7 +346,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	if ($media) {
 		$mediaTitle = $media->getFullName();
 	} else {
-		$mediaTitle = '';
+		$mediaTitle = $rowm['m_id'];
 	}
 
 	$mainFileExists = true;
@@ -379,13 +379,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		}
 	}
 
-	// Continue menu construction
-	// If media file is missing from media folder, but is referenced in Gedcom
-	if (!media_exists($rowm['m_filename']) && !media_exists($mainMedia)) {
-		$menu->addLabel(WT_I18N::translate('Edit')." (". $rowm['m_id'].")", 'right');
-	} else {
-		$menu->addLabel($mtitle, 'right');
-	}
+	$menu->addLabel($mtitle, 'right');
 
 	if ($rtype=='old') {
 		// Do not print menu if item has changed and this is the old item
