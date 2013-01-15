@@ -320,7 +320,6 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 
 	global $TEXT_DIRECTION, $sort_i, $notes;
 
-	$mainMedia = check_media_depth($rowm['m_filename'], 'NOTRUNC');
 	$media=WT_Media::getInstance($rowm['m_id']);
 
 	if ($media && !$media->canDisplayDetails()) {
@@ -348,11 +347,6 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	} else {
 		$mediaTitle = $rowm['m_id'];
 	}
-
-	$mainFileExists = true;
-	$imgsize = findImageSize($mainMedia);
-	$imgwidth = $imgsize[0]+40;
-	$imgheight = $imgsize[1]+150;
 
 	// Get the tooltip link for source
 	$sour = WT_Source::getInstance(get_gedcom_value('SOUR', 1, $rowm['m_gedcom']));
