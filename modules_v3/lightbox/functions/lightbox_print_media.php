@@ -321,19 +321,16 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	global $TEXT_DIRECTION, $sort_i, $notes;
 
 	$mainMedia = check_media_depth($rowm['m_filename'], 'NOTRUNC');
+	$media=WT_Media::getInstance($rowm['m_id']);
+
+	if ($media && !$media->canDisplayDetails()) {
+		// This media object is private;
+		return false;
+	}
+
 	// If media file is missing from media folder, but is referenced in Gedcom
 	if (!media_exists($mainMedia)) {
-		if (!file_exists($rowm['m_filename']) && !isset($rowm['m_filename'])) {
-			echo '<tr>';
-			echo '<td valign="top" rowspan="2" >';
-			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="82px" alt=""></img>';
-			echo '</td>';
-			echo '<td class="description_box nowrap" valign="top" colspan="3">';
-			echo '<center><br><img src="', WT_THEME_URL, 'images/media.gif" height="30">';
-			echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $rowm['m_filename']), '</p>';
-			echo '</td>';
-			echo '</tr>';
-		} else if (!file_exists($rowm['m_filename'])) {
+		if (!file_exists($rowm['m_filename'])) {
 			echo '<li class="li_norm" >';
 			echo '<table class="pic" width="50px" border="0">';
 			echo '<tr>';
@@ -351,26 +348,15 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		}
 	// Else Media files are present in media folder
 	} else {
-		//If media is linked to a private person
-		if (!WT_Media::getInstance($rowm['m_id'])->canDisplayDetails()) {
-			return false;
+		// Highlight Album Thumbnails - Changed=new (blue), Changed=old (red), Changed=no (none)
+		 if ($rtype=='new') {
+			echo '<li class="li_new">';
+		} else if ($rtype=='old') {
+			echo '<li class="li_old">';
 		} else {
-			// Media is NOT linked to private person
-			// Highlight Album Thumbnails - Changed=new (blue), Changed=old (red), Changed=no (none)
-			 if ($rtype=='new') {
-				echo '<li class="li_new">';
-			} else if ($rtype=='old') {
-				echo '<li class="li_old">';
-			} else {
-				echo '<li class="li_norm">';
-			}
+			echo '<li class="li_norm">';
 		}
 	}
-
-	// Add blue or red borders
-	$styleadd='';
-	if ($rtype=='new') $styleadd = 'change_new';
-	if ($rtype=='old') $styleadd = 'change_old';
 
 	// NOTE Start printing the media details
 	if (!media_exists($mainMedia)) {
@@ -389,14 +375,12 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	$linenum = 0;
 
 	//  Get the title of the media
-	$media=WT_Media::getInstance($rowm['m_id']);
 	if ($media) {
 		$mediaTitle = $media->getFullName();
 	} else {
 		$mediaTitle = '';
 	}
 
-	$mainMedia = check_media_depth($rowm['m_filename'], 'NOTRUNC');
 	$mainFileExists = true;
 	$imgsize = findImageSize($mainMedia);
 	$imgwidth = $imgsize[0]+40;
