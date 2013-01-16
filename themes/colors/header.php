@@ -143,15 +143,14 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	unset($menu_items, $menu);
 	echo
 		'</ul>',
-		'</div>'; // <div id="topMenu">
-	echo '</div>'; // <div id="header">
-
-	// NOTE: in other themes, the flash-messages are inside #header.
-	// However, in this theme, it causes them to overlap with #content.
-	echo WT_FlashMessages::getHtmlMessages(); // Feedback from asynchronous actions
+		'</div>', // <div id="topMenu">
+		'</div>'; // <div id="header">
 }
 // Remove list from home when only 1 gedcom 
 $this->addInlineJavaScript(
 	'if (jQuery("#menu-tree ul li").length == 2) jQuery("#menu-tree ul li:last-child").remove();'
 );
-echo $javascript, '<div id="content">';
+echo
+	$javascript,
+	WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
+	'<div id="content">';

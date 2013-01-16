@@ -126,7 +126,9 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 		'</ul>',
 		'</div>', // <div id="menu-right">
 		'</div>', // <div id="topMenu">
-		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 		'</div>'; // <div id="clouds-container">
 }
-echo $javascript, '<div id="content">';
+echo
+	$javascript,
+	WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
+	'<div id="content">';

@@ -114,8 +114,9 @@ if ($view!='simple') {
 	echo
 		'</ul>',  // <ul id="main-menu">
 		'</div>', // <div id="topMenu">
-		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 		'</div>'; // <div id="header">
 }
-echo $javascript, '<div id="content">';
-
+echo
+	$javascript,
+	WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
+	'<div id="content">';
