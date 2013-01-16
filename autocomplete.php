@@ -2,7 +2,7 @@
 // Returns data for autocompletion
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -444,7 +444,7 @@ case 'IFSRO':
 	foreach ($rows as $row) {
 		$media=WT_Media::getInstance($row);
 		if ($media->canDisplayName()) {
-			$data[]=array('value'=>$row['xref'], 'label'=>'<img src="'.$media->getThumbnail().'" width="25"> '.$media->getFullName());
+			$data[]=array('value'=>$row['xref'], 'label'=>'<img src="'.$media->getHtmlUrlDirect().'" width="25"> '.$media->getFullName());
 		}
 	}	
 	// Fetch all data, regardless of privacy
