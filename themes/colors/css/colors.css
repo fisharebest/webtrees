@@ -1063,7 +1063,7 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(../images/uarrow
 .icon-zoomin{width:25px;height:25px;background-image:url(../images/zoomin.png);}
 .icon-zoomout{width:25px;height:25px;background-image:url(../images/zoomout.png);}
 /* Generic MIME types */
-[class^="icon-mime-"],[class*=" icon-mime-"]{width:48px;height:48px;background-image:url(../images/media/unknown.png);}
+[class^="icon-mime-"],[class*=" icon-mime-"]{width:48px;height:48px;background-image:url(../images/media/doc.png);}
 [class^="icon-mime-application-"],[class*=" icon-mime-audio-"]{}
 [class^="icon-mime-audio-"],[class*=" icon-mime-audio-"]{width:48px;height:48px;background-image:url(../images/media/audio.png);}
 [class^="icon-mime-image-"],[class*=" icon-mime-image-"]{}

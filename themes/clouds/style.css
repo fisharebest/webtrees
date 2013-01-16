@@ -3033,9 +3033,9 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(images/uarrow2.p
 .icon-zoomin{width:25px;height:25px;background-image:url(images/zoomin.png);}
 .icon-zoomout{width:25px;height:25px;background-image:url(images/zoomout.png);}
 /* Generic MIME types */
-[class^="icon-mime-"],[class*=" icon-mime-"]{}
+[class^="icon-mime-"],[class*=" icon-mime-"]{width:64px;height:64px;background-image:url(images/media/globe.png);}
 [class^="icon-mime-application-"],[class*=" icon-mime-audio-"]{}
-[class^="icon-mime-audio-"],[class*=" icon-mime-audio-"]{width:48px;height:64px;background-image:url(images/media/audio.png);}
+[class^="icon-mime-audio-"],[class*=" icon-mime-audio-"]{width:64px;height:64px;background-image:url(images/media/audio.png);}
 [class^="icon-mime-image-"],[class*=" icon-mime-image-"]{}
 [class^="icon-mime-text-"],[class*=" icon-mime-text-"]{}
 [class^="icon-mime-video-"],[class*=" icon-mime-video-"]{}

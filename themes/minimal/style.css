@@ -1867,9 +1867,9 @@ a.icon-udarrow{width:20px;height:20px;background-image:url(images/udarrow2.png);
 .icon-tree{width:24px;height:24px;background-image:url(images/gedcom.png);}
 .icon-user_add{width:24px;height:24px;background-image:url(images/user_add.png);}
 /* Generic MIME types */
-[class^="icon-mime-"],[class*=" icon-mime-"]{}
+[class^="icon-mime-"],[class*=" icon-mime-"]{width:64px;height:64px;background-image:url(images/media/globe.png);}
 [class^="icon-mime-application-"],[class*=" icon-mime-audio-"]{}
-[class^="icon-mime-audio-"],[class*=" icon-mime-audio-"]{width:48px;height:64px;background-image:url(images/media/audio.png);}
+[class^="icon-mime-audio-"],[class*=" icon-mime-audio-"]{width:64px;height:64px;background-image:url(images/media/audio.png);}
 [class^="icon-mime-image-"],[class*=" icon-mime-image-"]{}
 [class^="icon-mime-text-"],[class*=" icon-mime-text-"]{}
 [class^="icon-mime-video-"],[class*=" icon-mime-video-"]{}
