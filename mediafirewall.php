@@ -331,14 +331,12 @@ if ($debug_mediafirewall) {
 	echo  '<tr><td>Requested URL</td><td>', urldecode($_SERVER['REQUEST_URI']), '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>serverFilename</td><td>', $serverFilename, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>media->getFilename()</td><td>', $media->getFilename(), '</td><td>this is direct from the gedcom</td></tr>';
-	echo  '<tr><td>media->getLocalFilename()</td><td>', $media->getLocalFilename(), '</td><td></td></tr>';
 	echo  '<tr><td>media->getServerFilename()</td><td>', $media->getServerFilename(), '</td><td></td></tr>';
 	echo  '<tr><td>media->fileExists()</td><td>', $media->fileExists(), '</td><td></td></tr>';
 	echo  '<tr><td>mimetype</td><td>', $mimetype, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>disposition</td><td>', $disposition, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>media->getFilesize()</td><td>', $media->getFilesize(), '</td><td>cannot use this</td></tr>';
 	echo  '<tr><td>filesize</td><td>', @filesize($serverFilename), '</td><td>this is right</td></tr>';
-	echo  '<tr><td>media->getThumbnail()</td><td>', $media->getThumbnail(), '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>media->canDisplayDetails()</td><td>', $media->canDisplayDetails(), '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>media->getFullName()</td><td>', $media->getFullName(), '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>basename($serverFilename)</td><td>', basename($serverFilename), '</td><td>&nbsp;</td></tr>';
