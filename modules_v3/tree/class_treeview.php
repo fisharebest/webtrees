@@ -1,11 +1,8 @@
 <?php
 // Class file for the tree navigator
 //
-// Note : NEVER use person or family id as ids because a same person could
-// appear more than once in the tree.
-//
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -136,22 +133,6 @@ class TreeView {
 			}
 		}
 		return $r;
-	}
-
-	/**
-	* Get full resolution medias
-	* @param string $medias the list of medias to return
-	*/
-	public function getMedias($medias) {
-		$medias = explode(';', $medias);
-		$nb = count($medias);
-		$r = array();
-		for ($i=0; $i<$nb; $i++) {
-			$mid = $medias[$i];
-			$m = WT_Media::getInstance($mid);
-			$r[] = $m->getServerFilename();
-		}
-		return json_encode($r);
 	}
 
 	/**

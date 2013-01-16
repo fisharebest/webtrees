@@ -130,7 +130,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 				$album->getPreLoadContent();
 			}
 			echo $html;
-		break;
+			break;
 
 		case 'getDetails':
 			header('Content-Type: text/html; charset=UTF-8');
@@ -138,25 +138,18 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			$i = safe_GET('instance');
 			$tv = new TreeView($i);
 			echo $tv->getDetails($pid);
-		break;
+			break;
 
 		case 'getPersons':
 			$q = $_REQUEST["q"];
 			$i = safe_GET('instance');
 			$tv = new TreeView($i);
 			echo $tv->getPersons($q);
-		break;
-
-		// dynamically load full medias instead of thumbnails for opened boxes before printing
-		case 'getMedias':
-			$q = $_REQUEST["q"];
-			$i = safe_GET('instance');
-			$tv = new TreeView($i);
-			echo $tv->getMedias($q);
-		break;
+			break;
 
 		default:
 			header('HTTP/1.0 404 Not Found');
+			break;
 		}
 	}
 
