@@ -265,7 +265,7 @@ case 'register':
 				WT_I18N::translate('You are not allowed to send messages that contain external links.') . ' ' .
 				WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1])
 			);
-			AddToLog('Possible spam registration from "'.$user_name.'"/"'.$user_email.'", IP="'.$_SERVER['REMOTE_ADDR'].'", comments="'.$user_comments.'"', 'auth');
+			AddToLog('Possible spam registration from "'.$user_name.'"/"'.$user_email.'", IP="'.$WT_REQUEST->getClientIp().'", comments="'.$user_comments.'"', 'auth');
 		} else {
 			// Everything looks good - create the user
 			$controller->pageHeader();
@@ -305,8 +305,8 @@ case 'register':
 			}
 			$mail1_body.=
 				"\r\n".
-				"=--------------------------------------=\r\nIP ADDRESS: ".$_SERVER['REMOTE_ADDR']."\r\n".
-				"DNS LOOKUP: ".gethostbyaddr($_SERVER['REMOTE_ADDR'])."\r\n".
+				"=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n".
+				"DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n".
 				"LANGUAGE: ".WT_LOCALE."\r\n";
 
 			$mail1_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
@@ -352,7 +352,7 @@ case 'register':
 			webtreesMail($mail1_to, $mail1_from, $mail1_subject, $mail1_body);
 			if (WT_Site::preference('STORE_MESSAGES') && $mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute(array($user_email, $_SERVER['REMOTE_ADDR'], $webmaster_user_id, $mail1_subject, $mail1_body));
+					->execute(array($user_email, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));
 			}
 
 			echo '<div class="confirm"><p>', WT_I18N::translate('Hello %s ...<br />Thank you for your registration.', $user_realname), '</p><p>';
@@ -493,8 +493,8 @@ case 'verify_hash':
 	$mail1_body.=
 		"\r\n\r\n".
 		"=--------------------------------------=\r\n".
-		"IP ADDRESS: ".$_SERVER['REMOTE_ADDR']."\r\n".
-		"DNS LOOKUP: ".gethostbyaddr($_SERVER['REMOTE_ADDR'])."\r\n".
+		"IP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n".
+		"DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n".
 		"LANGUAGE: ".WT_LOCALE."\r\n";
 
 	$mail1_to=$WEBTREES_EMAIL;
@@ -520,7 +520,7 @@ case 'verify_hash':
 			webtreesMail($mail1_to, $mail1_from, $mail1_subject, $mail1_body);
 			if (WT_Site::preference('STORE_MESSAGES') && $mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute(array($user_name, $_SERVER['REMOTE_ADDR'], $webmaster_user_id, $mail1_subject, $mail1_body));
+					->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));
 			}
 
 			set_user_setting($user_id, 'verified', 1);

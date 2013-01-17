@@ -196,12 +196,13 @@ function setUserEmail($user_id, $email) {
 // Note that while transfering data from PhpGedView to WT, we delete the WT users and
 // replace with PhpGedView users.  Hence the current user_id is not always available.
 function AddToLog($log_message, $log_type='error') {
+	global $WT_REQUEST;
 	WT_DB::prepare(
 		"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
 	)->execute(array(
 		$log_type,
 		$log_message,
-		$_SERVER['REMOTE_ADDR'],
+		$WT_REQUEST->getClientIp(),
 		defined('WT_USER_ID') && WT_USER_ID && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' ? WT_USER_ID : null,
 		defined('WT_GED_ID') ? WT_GED_ID : null
 	));
@@ -210,12 +211,13 @@ function AddToLog($log_message, $log_type='error') {
 //----------------------------------- AddToSearchLog
 //-- requires a string to add into the searchlog-file
 function AddToSearchLog($log_message, $geds) {
+	global $WT_REQUEST;
 	foreach (WT_Tree::getAll() as $tree) {
 		WT_DB::prepare(
 			"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('search', ?, ?, ?, ?)"
 		)->execute(array(
 			(count(WT_Tree::getAll())==count($geds) ? 'Global search: ' : 'Gedcom search: ').$log_message,
-			$_SERVER['REMOTE_ADDR'],
+			$WT_REQUEST->getClientIp(),
 			WT_USER_ID ? WT_USER_ID : null,
 			$tree->tree_id
 		));
@@ -225,7 +227,7 @@ function AddToSearchLog($log_message, $geds) {
 //----------------------------------- addMessage
 //-- stores a new message in the database
 function addMessage($message) {
-	global $TEXT_DIRECTION, $WEBTREES_EMAIL;
+	global $TEXT_DIRECTION, $WEBTREES_EMAIL, $WT_REQUEST;
 
 	$user_id_from=get_user_id($message['from']);
 	$user_id_to  =get_user_id($message['to']);
@@ -245,8 +247,8 @@ function addMessage($message) {
 		}
 		$copy_email .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".$message['url']."\r\n";
 	}
-	$copy_email .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$_SERVER['REMOTE_ADDR']."\r\n";
-	$copy_email .= "DNS LOOKUP: ".gethostbyaddr($_SERVER['REMOTE_ADDR'])."\r\n";
+	$copy_email .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n";
+	$copy_email .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n";
 	$copy_email .= "LANGUAGE: ".WT_LOCALE."\r\n";
 	$copy_subject = "[".WT_I18N::translate('webtrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
 	$from ='';
@@ -296,15 +298,15 @@ function addMessage($message) {
 	if (!userIsAdmin($user_id_from)) {
 		if (!empty($message['url']))
 			$message['body'] .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".$message['url']."\r\n";
-		$message['body'] .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$_SERVER['REMOTE_ADDR']."\r\n";
-		$message['body'] .= "DNS LOOKUP: ".gethostbyaddr($_SERVER['REMOTE_ADDR'])."\r\n";
+		$message['body'] .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n";
+		$message['body'] .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n";
 		$message['body'] .= "LANGUAGE: ".WT_LOCALE."\r\n";
 	}
 	if (empty($message['created']))
 		$message['created'] = gmdate ("D, d M Y H:i:s T");
 	if (WT_Site::preference('STORE_MESSAGES') && ($message['method']!='messaging3' && $message['method']!='mailto' && $message['method']!='none')) {
 		WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-			->execute(array($message['from'], $_SERVER['REMOTE_ADDR'], get_user_id($message['to']), $message['subject'], $message['body']));
+			->execute(array($message['from'], $WT_REQUEST->getClientIp(), get_user_id($message['to']), $message['subject'], $message['body']));
 	}
 	if ($message['method']!='messaging') {
 		$oryginal_subject = "[".WT_I18N::translate('webtrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];

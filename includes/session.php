@@ -294,12 +294,14 @@ if (stristr($_SERVER['HTTP_USER_AGENT'], 'Opera')) {
 	$BROWSERTYPE = 'other';
 }
 
+$WT_REQUEST=new Zend_Controller_Request_Http();
+
 $rule=WT_DB::prepare(
 	"SELECT SQL_CACHE rule FROM `##site_access_rule`".
 	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end".
 	" AND ? LIKE user_agent_pattern".
 	" ORDER BY ip_address_end-ip_address_start"
-)->execute(array( $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']))->fetchOne();
+)->execute(array($WT_REQUEST->getClientIp(), $_SERVER['HTTP_USER_AGENT']))->fetchOne();
 
 switch ($rule) {
 case 'allow':
@@ -312,13 +314,13 @@ case 'robot':
 case 'unknown':
 	// Search engines don’t send cookies, and so create a new session with every visit.
 	// Make sure they always use the same one
-	Zend_Session::setId('search-engine-'.str_replace('.', '-', $_SERVER['REMOTE_ADDR']));
+	Zend_Session::setId('search-engine-'.str_replace('.', '-', $WT_REQUEST->getClientIp()));
 	$SEARCH_SPIDER=true;
 	break;
 case '':
 	WT_DB::prepare(
 		"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, comment) VALUES (IFNULL(INET_ATON(?), 0), IFNULL(INET_ATON(?), 4294967295), ?, '')"
-	)->execute(array($_SERVER['REMOTE_ADDR'], $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']));
+	)->execute(array($WT_REQUEST->getClientIp(), $WT_REQUEST->getClientIp(), $_SERVER['HTTP_USER_AGENT']));
 	$SEARCH_SPIDER=true;
 	break;
 }
@@ -329,7 +331,7 @@ session_set_save_handler(
 	create_function('', 'return true;'), // open
 	create_function('', 'return true;'), // close
 	create_function('$id', 'return WT_DB::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();'), // read
-	create_function('$id,$data', 'WT_DB::prepare("INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time) VALUES (?,?,?,?,CURRENT_TIMESTAMP-SECOND(CURRENT_TIMESTAMP)) ON DUPLICATE KEY UPDATE user_id=VALUES(user_id), ip_address=VALUES(ip_address), session_data=VALUES(session_data), session_time=CURRENT_TIMESTAMP-SECOND(CURRENT_TIMESTAMP)")->execute(array($id, WT_USER_ID, $_SERVER["REMOTE_ADDR"], $data));return true;'), // write
+	create_function('$id,$data', 'global $WT_REQUEST;WT_DB::prepare("INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time) VALUES (?,?,?,?,CURRENT_TIMESTAMP-SECOND(CURRENT_TIMESTAMP)) ON DUPLICATE KEY UPDATE user_id=VALUES(user_id), ip_address=VALUES(ip_address), session_data=VALUES(session_data), session_time=CURRENT_TIMESTAMP-SECOND(CURRENT_TIMESTAMP)")->execute(array($id, WT_USER_ID, $WT_REQUEST->getClientIp(), $data));return true;'), // write
 	create_function('$id', 'WT_DB::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));return true;'), // destroy
 	create_function('$maxlifetime', 'WT_DB::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));return true;') // gc
 );
@@ -350,7 +352,7 @@ $cfg=array(
 // Search engines don’t send cookies, and so create a new session with every visit.
 // Make sure they always use the same one
 if ($SEARCH_SPIDER) {
-	Zend_Session::setId('search-engine-'.str_replace('.', '-', $_SERVER['REMOTE_ADDR']));
+	Zend_Session::setId('search-engine-'.str_replace('.', '-', $WT_REQUEST->getClientIp()));
 }
 
 Zend_Session::start($cfg);
