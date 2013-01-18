@@ -164,8 +164,8 @@ echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to
 				$imgheight = 400+150;
 			}
 		}
-		else if (file_exists(filename_decode(check_media_depth($rowm["m_filename"], "NOTRUNC")))) {
-			$imgsize = findImageSize(check_media_depth($rowm["m_filename"], "NOTRUNC"));
+		else if (file_exists($rowm["m_filename"])) {
+			$imgsize = findImageSize($rowm["m_filename"]);
 			$imgwidth = $imgsize[0]+40;
 			$imgheight = $imgsize[1]+150;
 		}

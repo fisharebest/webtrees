@@ -102,14 +102,6 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
-	 * get the media icon filename
-	 * @return string
-	 */
-	public function getMediaIcon() {
-		return media_icon_file($this->file);
-	}
-
-	/**
 	 * get the main media filename
 	 * @return string
 	 */
@@ -120,41 +112,82 @@ class WT_Media extends WT_GedcomRecord {
 	/**
 	 * get the relative file path of the image on the server
 	 */
-	public function getLocalFilename() {
-		return check_media_depth($this->file);
+	public function getLocalFilename() {		
+		return $this->file;
 	}
 
-	/**
-	 * get the filename on the server, either in the standard or protected directory
-	 * @param which string - specify either 'main' or 'thumb'
-	 * @return string
-	 */
+	// Get the filename on the server - for those (very few!) functions which actually
+	// need the filename, such as mediafirewall.php and the PDF reports.
 	public function getServerFilename($which='main') {
-		if ($which=='main') {
-			if ($this->serverfilename) return $this->serverfilename;
-			$localfilename = $this->getLocalFilename();
-			if (!empty($localfilename) && !$this->isExternal()) {
-				if (file_exists($localfilename)) {
-					// found image in unprotected directory
-					$this->fileexists = 2;
-					$this->serverfilename = $localfilename;
-					return $this->serverfilename;
-				}
-				$protectedfilename = get_media_firewall_path($localfilename);
-				if (file_exists($protectedfilename)) {
-					// found image in protected directory
-					$this->fileexists = 3;
-					$this->serverfilename = $protectedfilename;
-					return $this->serverfilename;
+		global $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH;
+
+		if ($this->isExternal()) {
+			// External image
+			return $this->file;
+		} elseif ($which=='main') {
+			// Main image
+			return WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
+		} else {
+			// Thumbnail
+			$file = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $this->file;
+			// Does the thumbnail exist?
+			if (file_exists($file)) {
+				return $file;
+			}
+			// Does a user-generated thumbnail exist?
+			$user_thumb = preg_replace('/\.[a-z0-9]{3,5}/i', '.png', $file);
+			if (file_exists($user_thumb)) {
+				return $user_thumb;
+			}
+			// Does the folder exist for this thumbnail?
+			if (!is_dir(dirname($file)) && !@mkdir(dirname($file, WT_PERM_EXE, true))) {
+				AddToLog('The folder ' . dirname($file) . ' could not be created for ' . $this->getXref(), 'media');
+				return $file;
+			}
+			// Is there a corresponding main image?
+			$main_file = WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
+			if (!file_exists($main_file)) {
+				AddToLog('The file ' . $main_file . ' does not exist for ' . $this->getXref(), 'media');
+				return $file;
+			}
+			// Try to create a thumbnail automatically
+			$imgsize = getimagesize($main_file);
+			if ($imgsize[0] && $imgsize[1]) {
+				// Image small enough to be its own thumbnail?
+				if ($imgsize[0] < $THUMBNAIL_WIDTH) {
+					AddToLog('Thumbnail created for ' . $main_file . ' (copy of main image)', 'media');
+					@copy($main_file, $file);
+				} else {
+					if (hasMemoryForImage($main_file)) {
+						switch ($imgsize['mime']) {
+						case 'image/png':  $main_image = @imagecreatefrompng ($main_file); break;
+						case 'image/gif':  $main_image = @imagecreatefromgif ($main_file); break;
+						case 'image/jpeg': $main_image = @imagecreatefromjpeg($main_file); break;
+						default:           return $file; // Nothing else we can do :-(
+						}
+						if ($main_image) {
+							// How big should the thumbnail be?
+							$width  = $THUMBNAIL_WIDTH;
+							$height = round($imgsize[1] * ($width/$imgsize[0]));
+							$thumb_image = @imagecreatetruecolor($width, $height);
+							@imagecopyresampled($thumb_image, $main_image, 0, 0, 0, 0, $width, $height, $imgsize[0], $imgsize[1]);
+							switch ($imgsize['mime']) {
+							case 'image/png':  @imagepng ($thumb_image, $file); break;
+							case 'image/gif':  @imagegif ($thumb_image, $file); break;
+							case 'image/jpeg': @imagejpeg($thumb_image, $file); break;
+							}
+							@imagedestroy($main_image);
+							@imagedestroy($thumb_image);
+							AddToLog('Thumbnail created for ' . $main_file, 'media');
+						} else {
+							AddToLog('Failed to create thumbnail for ' . $main_file, 'media');
+						}
+					} else {
+						AddToLog('Not enough memory to create thumbnail for ' . $main_file, 'media');
+					}
 				}
 			}
-			// file doesn’t exist or is external, return the standard localfilename for backwards compatibility
-			$this->fileexists = false;
-			$this->serverfilename = $localfilename;
-			return $this->serverfilename;
-		} else {
-			if (!$this->thumbfilename) $this->getThumbnail(false);
-			return $this->thumbserverfilename;
+			return $file;
 		}
 	}
 
@@ -164,66 +197,13 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return boolean
 	 */
 	public function fileExists($which='main') {
-		if ($which=='main') {
-			if (!$this->serverfilename) $this->getServerFilename();
-			return $this->fileexists;
-		} else {
-			if (!$this->thumbfilename) $this->getThumbnail(false);
-			return $this->thumbfileexists;
-		}
+		return file_exists($this->getServerFilename($which));
 	}
 
-	/**
-	 * determine if the file is an external url
-	 * operates on the main url
-	 * @return boolean
-	 */
+	// determine if the file is an external url
 	public function isExternal() {
-		return isFileExternal($this->getLocalFilename());
+		return strpos($this->file, '://') !== false;
 	}
-
-	/**
-	 * determine if the thumb file is a media icon
-	 * operates on the thumb file
-	 * @return boolean
-	 */
-	public function isMediaIcon() {
-		$thumb=$this->getThumbnail(false);
-		return (strpos($thumb, "themes/")!==false); 
-	}
-
-	/**
-	 * get the thumbnail filename
-	 * @return string
-	 */
-	public function getThumbnail($generateThumb = true) {
-		if ($this->thumbfilename) return $this->thumbfilename;
-
-		$localfilename = thumbnail_file($this->getLocalFilename(),$generateThumb);
-		// Note that localfilename could be in WT_IMAGES
-		$this->thumbfilename = $localfilename;
-		if (!empty($localfilename) && !$this->isExternal()) {
-			if (file_exists($localfilename)) {
-				// found image in unprotected directory
-				$this->thumbfileexists = 2;
-				$this->thumbserverfilename = $localfilename;
-				return $this->thumbfilename;
-			}
-			$protectedfilename = get_media_firewall_path($localfilename);
-			if (file_exists($protectedfilename)) {
-				// found image in protected directory
-				$this->thumbfileexists = 3;
-				$this->thumbserverfilename = $protectedfilename;
-				return $this->thumbfilename;
-			}
-		}
-
-		// this should never happen, since thumbnail_file will return something in WT_IMAGES if a thumbnail can’t be found
-		$this->thumbfileexists = false;
-		$this->thumbserverfilename = $localfilename;
-		return $this->thumbfilename;
-	}
-
 
 	/**
 	 * get the media file size in KB
@@ -563,10 +543,46 @@ class WT_Media extends WT_GedcomRecord {
 		return $url;
 	}
 
+	// What is the mime-type of this object?
+	// For simplicity and efficiency, use the extension, rather than the contents.
+	public function mimeType() {
+		if (preg_match('/\.([a-zA-Z0-9]+)$/', $this->file, $match)) {
+			$extension = strtolower($match[1]);
+		} else {
+			$extension = '';
+		}
+
+		// Themes contain icon definitions for some/all of these mime-types
+		switch ($extension) {
+		case 'bmp':  return 'image/bmp';
+		case 'doc':  return 'application/msword';
+		case 'docx': return 'application/msword';
+		case 'dvi':  return 'application/dvi';
+		case 'ged':  return 'text/gedcom';
+		case 'gif':  return 'image/gif';
+		case 'htm':  return 'text/html';
+		case 'html': return 'text/html';
+		case 'jpeg': return 'image/jpeg';
+		case 'jpg':  return 'image/jpeg';
+		case 'mov':  return 'video/quicktime';
+		case 'pdf':  return 'application/pdf';
+		case 'png':  return 'image/png';
+		case 'rar':  return 'application/rar';
+		case 'swf':  return 'application/shock-wave-flash';
+		case 'svg':  return 'image/svg';
+		case 'tif':  return 'image/tiff';
+		case 'tiff': return 'image/tiff';
+		case 'xls':  return 'application/excel';
+		case 'xlsx': return 'application/excel';
+		case 'wmv':  return 'video/ms-wmv';
+		case 'zip':  return 'application/zip';
+		default:     return 'application/octet-stream';
+		}
+	}
+
 	/**
 	 * returns the complete HTML needed to render a thumbnail image that is linked to the main image
 	 * @param array with optional parameters: 
-	 *    'download'=>true|false, default is false - whether or not to show a 'download file' link
 	 *    'display_type'=>'normal'|'pedigree_person'|'treeview'|'googlemap' the type of image this is
 	 *    'img_id'=>string (optional) - if this image needs an id, set it here
 	 *    'class'=>string (optional) - class to assign to image
@@ -592,6 +608,21 @@ class WT_Media extends WT_GedcomRecord {
 			'show_full'=>true
 		 );
 		$config=array_merge($default_config, $config);
+
+		// Thumbnails can either be images (files) or icons (css)
+/*
+		if ($this->isExternal() || !file_exists($this->getServerFilename('thumb')) {
+			if (strpos($this->file, 'http://maps.google.')===0) {
+				$icon = '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="' . $this->file . '&amp;output=svembed"></iframe>';
+			} else {
+				$icon = '<i class="icon-mime-' . str_replace('/', '-', $this->mimeType()) . '"></i>';
+			}
+		} else {
+			$icon = '<img src="' . $this->getHtmlUrlDirect('thumb') . '">';
+		}
+ */
+
+
 		if ($this->getHtmlForStreetview()) {
 			$output=$this->getHtmlForStreetview();
 		} else {
@@ -617,7 +648,9 @@ class WT_Media extends WT_GedcomRecord {
 				$config['class']='pedigree_image';
 			}
 
-			$mainexists=$this->isExternal() || $this->fileExists('main');
+			$mainexists  = $this->isExternal() || $this->fileExists('main');
+			$thumbexists = $this->fileExists('thumb');
+
 			$idstr=($config['img_id']) ? 'id="'.$config['img_id'].'"' : '';
 			$stylestr=($config['show_full']) ? '' : ' style="display: none;" ';
 			if ($config['img_title']) {
@@ -634,14 +667,14 @@ class WT_Media extends WT_GedcomRecord {
 
 			$output='';
 			if ($config['oktolink'] && $mainexists) $output .= '<a class="media_container" href="'.$this->getHtmlUrlSnippet($config).'">';
-			$output .= '<img '.$idstr.' src="'.$this->getHtmlUrlDirect('thumb').'" '.$sizestr.' class="'.$config['class'].'"';
-			$output .= ' alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.'>';
+			if ($mainexists && $thumbexists) {
+				$output .= '<img '.$idstr.' src="'.$this->getHtmlUrlDirect('thumb').'" '.$sizestr.' class="'.$config['class'].'" alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.'>';
+			} else {
+				$output .= '<i class="icon-mime-' . str_replace('/', '-', $this->mimeType()) . '"></i>';
+			}
 			if ($config['oktolink'] && $mainexists) {
 				$output .= '</a>';
-				if ($config['download'] && $SHOW_MEDIA_DOWNLOAD) {
-					$output .= '<div><a href="'.$this->getHtmlUrlDirect('main', true).'">'.WT_I18N::translate('Download File').'</a></div>';
-				}
-			} else if ($config['alertnotfound'] && !$mainexists) {
+			} elseif ($config['alertnotfound'] && !$mainexists) {
 				$output .= '<p class="ui-state-error">' . WT_I18N::translate('The file “%s” does not exist.', $this->getLocalFilename()) . '</p>';
 				
 			}

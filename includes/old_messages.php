@@ -58,6 +58,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Automatically generate thumbnails');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Automatically protect new images');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Back');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Backslashes : \\');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Blank name or illegal characters in name');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('By clicking this link, you can add a <u>new</u> child to this person, creating a one-parent family.<br /><br />Just click the link, and you will get a pop up window to add the new person.  Fill out as many boxes as you can and click the <b>Save</b> button.<br /><br />That\'s all.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('By clicking this link, you can add a <u>new</u> female person and link this person to the principal individual as a new wife.<br /><br />Just click the link, and you will get a pop up window to add the new person.  Fill out as many boxes as you can and click the <b>Save</b> button.<br /><br />That\'s all.');
@@ -65,8 +66,11 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Checking the access permissions...');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Child\'s birth place');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Children are displayed in the order in which they appear in the family record.  Children are not automatically sorted by birth date because often the birth dates of some of the children are uncertain but the order of their birth <u>is</u> known.<br /><br />This option will allow you to change the order of the children within the family\'s record.  Since you might want to sort the children by their birth dates, there is a button you can press that will do this for you.<br /><br />You can also drag-and-drop any information box to change the order of the children.  As you move the mouse cursor over an information box, its shape will change to a pair of double-headed crossed arrows. If you push and hold the left mouse button before moving the mouse cursor, the information box will follow the mouse cursor up or down in the list.  As the information box is moved, the other boxes will make room.  When you release the left mouse button, the information box will take its new place in the list.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Cleanup data directory');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Close Window');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Continue');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Convert media folder separators to');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Convert media path to');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Correct read/write/execute permissions');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Create thumbnail');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Current directory');
@@ -92,6 +96,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Father\'s occupation');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Father\'s surname');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Files are stored in the %s directory.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Forward slashes : /');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('GEDCOM record last change date on lists');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Genealogy from [%s]');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Generate thumbnail automatically from ');
@@ -236,6 +241,8 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This media object is not linked to any GEDCOM record.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This option allow to hide map controls (i.e. the map type choice) if mouse is outside the map.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This option controls whether or not to show GEDCOM record last change date on lists.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This option defines a constant path to be prefixed to all media paths in the output file.<br /><br />For example, if the media directory has been configured to be "/media" and if the media file being exported has a path "/media/pictures/xyz.jpg" and you have entered "c:\my pictures\my family" into this field, the resultant media path will be "c:\my pictures\my family/pictures/xyz.jpg".<br /><br />You will notice in this example:<ul><li>the current media directory name is stripped from the path</li><li>and the resultant path will not have correct folder name separators.</li></ul><br />If you wish to retain the media directory in media file paths of the output file, you will need to include that name in the <b>Convert media path to</b> field.<br /><br />You should also use the <b>Convert media folder separators to</b> option to ensure that the folder name separators are consistent and agree with the requirements of the receiving operating system.<br /><br />Media paths that are actually URLs will not be changed.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This option determines whether folder names in the FILE specification of media objects should be separated by forward slashes or by backslashes.  Your choice depends on the requirements of the receiving operating system.<br /><br />The choice <b>Forward slashes : /</b> is appropriate for most operating systems other than Microsoft Windows.  The choice <b>Backslashes : \</b> should be used when the destination program is running on a Microsoft Windows system.<br /><br />Media paths that are actually URLs will not be changed.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This optional field allows you to enter a name prefix such as "Dr." or "Adm."');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This site uses cookies to keep track of your login status.<br /><br />Cookies do not appear to be enabled in your browser. You must enable cookies for this site before you can login.  You can consult your browser\'s help documentation for information on enabling cookies.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This thumbnail is in the protected media directory');
@@ -253,6 +260,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Total unique places');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Unable to add user.  Please try again.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Update successful');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Uploading media files is not allowed because the media folder is not writable.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Use mouse wheel for zoom');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Use this form to add an unlinked person.<br /><br />When you add an unlinked person to your family tree, the person will not be linked to any other people until you link them.  Later, you can link people together from the Close Relatives tab on the Individual Information page.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Use this link to add a new shared note to your database without linking the note to any record.<br /><br />The new note will appear in the Shared Note list, but will not appear on any charts or anywhere else in the program until it is linked to an individual, family or event.');
@@ -277,3 +285,5 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Your system can generate thumbnails for certain types of images automatically.  There may be support for BMP, GIF, JPG, and PNG files.  The types that your system supports are listed beside the checkbox.<br /><br />By clicking this checkbox, you signal the system that you are uploading images of this type and that you want it to try to generate thumbnails for them.  Leave the box unchecked if you want to provide your own thumbnails.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Your system is almost ready for use.  The final step is to download a configuration file <b>%1$s</b> and copy this to the <b>%2$s</b> directory on your webserver.  This is a security measure to ensure only the website\'s owner can configure it.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('see the wiki');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Web URL');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Web home page');

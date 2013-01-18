@@ -298,16 +298,17 @@ html[dir='rtl'] #clean th {text-align:right;}
 #clean td {border-bottom:1px solid LightGrey; padding:3px;}
 #clean td p {font-weight:bold;}
 
-/* MANAGE MEDIA */
-table#media_table {width:100%;}
-#media_table th {min-width:200px;}
-#media_table th+th {min-width:120px;}
-#media_table td {padding:5px;}
-.media_items {width:100%; margin:0;}
-.media_items td {background:OldLace; border:1px inset #D9D6C4;}
-.media_items td+td+td {vertical-align:middle;}
-.media_items td.center{width:16px;}
-.media_items  input {vertical-align:middle; margin:0;}
+/* admin_media.php */
+table.media_items {width:100%; margin:0;}
+table.media_items td {background:OldLace; border:1px inset #D9D6C4;}
+table.media_items td+td+td {vertical-align:middle;}
+table.media_items td.center{width:16px;}
+table.media_items  input {vertical-align:middle; margin:0;}
+
+table.media_table {width:100%;}
+table.media_table th {min-width:200px;}
+table.media_table th+th {min-width:120px;}
+table.media_table td {padding:5px;}
 
 /* UPLOAD MEDIA */
 table.upload_media {border-collapse:separate; border-spacing:0; margin:10px 0;}

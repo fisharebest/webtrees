@@ -538,13 +538,6 @@ function print_media_links($factrec, $level, $pid='') {
 		$media=WT_Media::getInstance($media_id);
 		if ($media) {
 			if ($media->canDisplayDetails()) {
-				$mainMedia = check_media_depth($media->getFileName(), 'NOTRUNC');
-				$isExternal = isFileExternal($media->getFileName());
-
-				// Determine the size of the mediafile
-				$imgsize = findImageSize($mainMedia);
-				$imgwidth = $imgsize[0]+40;
-				$imgheight = $imgsize[1]+150;
 				if ($objectNum > 0) echo '<br class="media-separator" style="clear:both;">';
 				echo '<div id="media-display"><div id="media-display-image">';
 				echo $media->displayMedia(array('alertnotfound'=>true));
@@ -1099,7 +1092,9 @@ function print_main_media($pid, $level=1, $related=false) {
 			$row['pid'] = $pid;
 			$rows['new'] = $row;
 			$rows['old'] = $rowm;
-			$current_objes[$rowm['m_id']]--;
+			if (isset($current_objes[$rowm['m_id']])) {
+				$current_objes[$rowm['m_id']]--;
+			}
 		} else {
 			if (!isset($current_objes[$rowm['m_id']]) && ($rowm['pid']==$pid)) {
 				$rows['old'] = $rowm;

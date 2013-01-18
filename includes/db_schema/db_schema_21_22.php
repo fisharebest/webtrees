@@ -1,6 +1,7 @@
 <?php
 // Update the database schema from version 21-22
 // - delete some old/unused configuration settings
+// - data update for 1.4.0 media changes
 //
 // The script should assume that it can be interrupted at
 // any point, and be able to continue by re-running the script.
@@ -52,27 +53,6 @@ self::exec(
 	" SET new_gedcom = REPLACE(new_gedcom, CONCAT('\n1 FILE ', gs.setting_value), '\n1 FILE ')".
 	" WHERE status = 'pending'"
 );
-
-// The MEDIA_FIREWALL_ROOTDIR is now fixed as WT_DATA_DIR - filter these out
-self::prepare(
-	"DELETE FROM `##gedcom_setting`".
-	" WHERE setting_name='MEDIA_FIREWALL_ROOTDIR' AND setting_value IN ('', ?)'"
-)->execute(array(WT_DATA_DIR));
-
-// We cannot easily move media folders.  There may be all sorts of complicated configurations.
-// For example these two 
-// GEDCOM_ID=1 / MEDIA_FIREWALL_ROOTDIR=firewall-dir1 / MEDIA_DIRECTORY=media
-// GEDCOM_ID=2 / MEDIA_FIREWALL_ROOTDIR=firewall-dir2 / MEDIA_DIRECTORY=media
-//
-// Just move the simple/obvious/safe one
-if (is_dir('media') && !is_file(WT_DATA_DIR . 'media')) {
-	@unlink('media/.htaccess');
-	@unlink('media/index.php');
-	@unlink('media/MediaInfo.txt');
-	@unlink('media/thumbs/index.php');
-	@unlink('media/thumbs/ThumbsInfo.txt');
-	@rename('media', WT_DATA_DIR . 'media');
-}
 
 // Update the version to indicate success
 WT_Site::preference($schema_name, $next_version);

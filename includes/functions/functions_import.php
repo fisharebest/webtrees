@@ -34,7 +34,7 @@ require_once WT_ROOT.'includes/functions/functions_export.php';
 
 // Tidy up a gedcom record on import, so that we can access it consistently/efficiently.
 function reformat_record_import($rec) {
-	global $WORD_WRAPPED_NOTES;
+	global $WORD_WRAPPED_NOTES, $GEDCOM_MEDIA_PATH;
 
 	// Strip out UTF8 formatting characters
 	$rec=str_replace(array(WT_UTF8_BOM, WT_UTF8_LRM, WT_UTF8_RLM), '', $rec);
@@ -565,6 +565,10 @@ function reformat_record_import($rec) {
 		case 'DATA':
 		case 'CONT':
 		case 'FILE':
+			// Strip off the user-defined path prefix
+			if (strpos($data, $GEDCOM_MEDIA_PATH)===0) {
+				$data=substr($data, strlen($GEDCOM_MEDIA_PATH));
+			}
 			// convert backslashes in filenames to forward slashes
 			$data = preg_replace("/\\\/", "/", $data);
 			// Don't strip tabs, even though they are not valid in gedcom data.

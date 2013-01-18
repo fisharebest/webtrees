@@ -90,14 +90,23 @@ $controller
 echo '<div id="media-details">';
 echo '<h2>', $controller->record->getFullName(), ' ', $controller->record->getAddName(), '</h2>';
 echo '<div id="media-tabs">';
-	// Media Object details ---------------------
 	echo '<div id="media-edit">';
 		echo '<table class="facts_table">
 			<tr>
 				<td align="center" width="150">';
-					// display image
-					if ($controller->record->canDisplayDetails()) {
-						echo $controller->record->displayMedia(array('download'=>true, 'alertnotfound'=>true));
+					// When we have a pending edit, $controller->record shows the *old* data.
+					// As a temporary kludge, fetch a "normal" version of the record - which includes pending changes
+					// TODO - check both, and use RED/BLUE boxes.
+					$tmp = WT_Media::getInstance($controller->record->getXref());
+					echo $tmp->displayMedia();
+					if (!$tmp->isExternal()) {
+						if ($tmp->fileExists('main')) {
+							if ($SHOW_MEDIA_DOWNLOAD) {
+								echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true).'">' . WT_I18N::translate('Download File') . '</a></p>';
+							}
+						} else {
+							echo '<p class="ui-state-error">' . WT_I18N::translate('The file “%s” does not exist.', $tmp->getFilename()) . '</p>';
+						}
 					}
 				echo '</td>
 				<td valign="top">

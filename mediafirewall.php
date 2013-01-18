@@ -32,11 +32,6 @@ $mid   = safe_GET_xref('mid');
 $thumb = safe_GET_bool('thumb');
 $media = WT_Media::getInstance($mid);
 
-$debug_mediafirewall   = 0; // set to 1 if you want to see media firewall values displayed instead of images
-$debug_watermark       = 0; // set to 1 if you want to see error messages from the watermark module instead of broken images
-$debug_forceImageRegen = 0; // set to 1 if you want to force an image to be regenerated (for debugging only)
-$debug_verboseLogging  = 0; // set to 1 for extra logging details
-
 // Send a “Not found” error as an image
 function send404AndExit() {
 	$error = WT_I18N::translate('The media file was not found in this family tree');
@@ -57,16 +52,6 @@ function send404AndExit() {
 	imagepng($im);
 	imagedestroy($im);
 	exit;
-}
-
-// pass in the complete serverpath to an image
-// this returns the complete serverpath to be used by the saved watermarked image
-// note that each gedcom gets a unique path to store images, this allows each gedcom to have their own watermarking config
-function getWatermarkPath ($path) {
-	global $MEDIA_DIRECTORY;
-	$serverroot = get_media_firewall_path($MEDIA_DIRECTORY);
-	$path = str_replace($serverroot, $serverroot . 'watermark/'.WT_GEDCOM.'/', $path);
-	return $path;
 }
 
 // the media firewall passes in an image
@@ -230,27 +215,40 @@ function imagettftextErrorHandler($errno, $errstr, $errfile, $errline) {
 	return true;
 }
 
-// ******************************************************
-// start processing here
+// pass in an image type and this will determine if your system supports editing of that image type
+function isImageTypeSupported($reqtype) {
+	$supportByGD = array('jpg'=>'jpeg', 'jpeg'=>'jpeg', 'gif'=>'gif', 'png'=>'png');
+	$reqtype = strtolower($reqtype);
+
+	if (empty($supportByGD[$reqtype])) return false;
+	$type = $supportByGD[$reqtype];
+
+	if (function_exists('imagecreatefrom'.$type) && function_exists('image'.$type)) return $type;
+	// Here we could check for image types that are supported by other than the GD library
+	return false;
+}
+
+////////////////////////////////////////////////////////////////////////////////
 
 // this needs to be a global variable so imagettftextErrorHandler can set it
 $useTTF = function_exists('imagettftext');
 
-// Media missing/private?
-if (!$media || !$media->canDisplayDetails()) {
+// Media missing/private/not here?
+if (!$media || !$media->canDisplayDetails() || $media->isExternal()) {
 	send404AndExit();
 }
 
 $which = $thumb ? 'thumb' : 'main';
+
 $serverFilename = $media->getServerFilename($which);
 
-$imgsize = $media->getImageAttributes($which);
 if (!file_exists($serverFilename)) {
-	// the requested file MAY be in the gedcom, but it does NOT exist on the server.  bail.
-	// Note: the 404 error status is still in effect.
-	if (!$debug_mediafirewall) send404AndExit();
+	send404AndExit();
 }
 
+$mimetype = $media->mimeType();
+
+$imgsize = $media->getImageAttributes($which);
 $protocol = $_SERVER["SERVER_PROTOCOL"];  // determine if we are using HTTP/1.0 or HTTP/1.1
 $filetime = $media->getFiletime($which);
 $filetimeHeader = gmdate("D, d M Y H:i:s", $filetime).' GMT';
@@ -274,7 +272,7 @@ if ($type && function_exists("applyWatermark")) {
 
 // determine whether we have enough memory to watermark this image
 if ($usewatermark) {
-	if (!hasMemoryForImage($serverFilename, $debug_verboseLogging)) {
+	if (!hasMemoryForImage($serverFilename)) {
 		// not enough memory to watermark this file
 		$usewatermark = false;
 	}
@@ -284,8 +282,9 @@ $watermarkfile = "";
 $generatewatermark = false;
 
 if ($usewatermark) {
-	$watermarkfile = getWatermarkPath($serverFilename);
-	if (!file_exists($watermarkfile) || $debug_forceImageRegen) {
+	$watermarkfile = WT_DATA_DIR . $MEDIA_DIRECTORY . 'watermark/' . WT_GEDCOM . '/' . $media->getFilename();
+
+	if (!file_exists($watermarkfile)) {
 		// no saved watermark file exists
 		// generate the watermark file
 		$generatewatermark = true;
@@ -300,13 +299,6 @@ if ($usewatermark) {
 }
 
 $etag = $media->getEtag($which);
-$mimetype = $imgsize['mime'];
-$disposition = 'inline';
-if (safe_GET('dl')) {
-	// if user requested to download the file, adjust headers accordingly
-	$mimetype = 'application/octet-stream';
-	$disposition = 'attachment';
-}
 
 // parse IF_MODIFIED_SINCE header from client
 $if_modified_since = 'x';
@@ -320,66 +312,15 @@ if (@$_SERVER["HTTP_IF_NONE_MATCH"]) {
 	$if_none_match = str_replace("\"", "", $_SERVER["HTTP_IF_NONE_MATCH"]);
 }
 
-if ($debug_mediafirewall) {
-	// this is for debugging the media firewall
-	header("Last-Modified: " . $filetimeHeader);
-	header('ETag: "'.$etag.'"');
-
-	echo  '<table border="1">';
-	echo  '<tr><td>GEDCOM</td><td>', WT_GEDCOM, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>$mid</td><td>', $mid, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>Requested URL</td><td>', urldecode($_SERVER['REQUEST_URI']), '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>serverFilename</td><td>', $serverFilename, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>media->getFilename()</td><td>', $media->getFilename(), '</td><td>this is direct from the gedcom</td></tr>';
-	echo  '<tr><td>media->getServerFilename()</td><td>', $media->getServerFilename(), '</td><td></td></tr>';
-	echo  '<tr><td>media->fileExists()</td><td>', $media->fileExists(), '</td><td></td></tr>';
-	echo  '<tr><td>mimetype</td><td>', $mimetype, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>disposition</td><td>', $disposition, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>media->getFilesize()</td><td>', $media->getFilesize(), '</td><td>cannot use this</td></tr>';
-	echo  '<tr><td>filesize</td><td>', @filesize($serverFilename), '</td><td>this is right</td></tr>';
-	echo  '<tr><td>media->canDisplayDetails()</td><td>', $media->canDisplayDetails(), '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>media->getFullName()</td><td>', $media->getFullName(), '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>basename($serverFilename)</td><td>', basename($serverFilename), '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>filetime</td><td>', $filetime, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>filetimeHeader</td><td>', $filetimeHeader, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>if_modified_since</td><td>', $if_modified_since, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>if_none_match</td><td>', $if_none_match, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>etag</td><td>', $etag, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>expireHeader</td><td>', $expireHeader, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>protocol</td><td>', $protocol, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>SHOW_NO_WATERMARK</td><td>', $SHOW_NO_WATERMARK, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>WT_USER_ACCESS_LEVEL</td><td>', WT_USER_ACCESS_LEVEL, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>usewatermark</td><td>', $usewatermark, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>generatewatermark</td><td>', $generatewatermark, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>watermarkfile</td><td>', $watermarkfile, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>type</td><td>', $type, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>WATERMARK_THUMB</td><td>', $WATERMARK_THUMB, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>SAVE_WATERMARK_THUMB</td><td>', $SAVE_WATERMARK_THUMB, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>SAVE_WATERMARK_IMAGE</td><td>', $SAVE_WATERMARK_IMAGE, '</td><td>&nbsp;</td></tr>';
-	echo  '</table>';
-
-	echo '<pre>';
-	print_r (@getimagesize($serverFilename));
-	print_r ($media);
-	print_r (WT_GEDCOM);
-	echo '</pre>';
-
-	phpinfo();
-	exit;
-}
-// do the real work here
-
 // add caching headers.  allow browser to cache file, but not proxy
-if (!$debug_forceImageRegen) {
-	header("Last-Modified: " . $filetimeHeader);
-	header('ETag: "'.$etag.'"');
-	header("Expires: ".$expireHeader);
-	header("Cache-Control: max-age=".$expireOffset.", s-maxage=0, proxy-revalidate");
-}
+header("Last-Modified: " . $filetimeHeader);
+header('ETag: "'.$etag.'"');
+header("Expires: ".$expireHeader);
+header("Cache-Control: max-age=".$expireOffset.", s-maxage=0, proxy-revalidate");
 
 // if this file is already in the user’s cache, don’t resend it
 // first check if the if_modified_since param matches
-if (($if_modified_since == $filetimeHeader) && !$debug_forceImageRegen) {
+if (($if_modified_since == $filetimeHeader)) {
 	// then check if the etag matches
 	if ($if_none_match == $etag) {
 		header($protocol." 304 Not Modified");
@@ -388,8 +329,10 @@ if (($if_modified_since == $filetimeHeader) && !$debug_forceImageRegen) {
 }
 
 // send headers for the image
-if (!$debug_watermark) {
-	header("Content-Type: " . $mimetype);
+header('Content-Type: ' . $mimetype);
+
+if (safe_GET_bool('dl')) {
+	header('Content-Disposition: attachment; filename="' . addslashes(basename($media->file)) . '"');
 }
 
 if ($generatewatermark) {
@@ -398,9 +341,7 @@ if ($generatewatermark) {
 	$im = @$imCreateFunc($serverFilename);
 
 	if ($im) {
-		if ($debug_verboseLogging) AddToLog("Media Firewall log: >about to watermark< file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage(), 'media');
 		$im = applyWatermark($im);
-		if ($debug_verboseLogging) AddToLog("Media Firewall log: >watermark complete< file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage(), 'media');
 
 		$imSendFunc = 'image'.$type;
 		// save the image, if preferences allow
@@ -417,7 +358,6 @@ if ($generatewatermark) {
 		$imSendFunc($im);
 		imagedestroy($im);
 
-		if ($debug_verboseLogging) AddToLog("Media Firewall log: >done with < file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage(), 'media');
 		exit;
 
 	} else {

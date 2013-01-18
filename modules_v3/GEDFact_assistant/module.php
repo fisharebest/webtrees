@@ -59,7 +59,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	}
 
 	private static function media_3_find() {
-		global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $ABBREVIATE_CHART_LABELS;
+		global $MEDIA_DIRECTORY, $ABBREVIATE_CHART_LABELS;
 
 		$controller=new WT_Controller_Simple();
 		
@@ -67,7 +67,6 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$filter         =safe_GET('filter');
 		$action         =safe_GET('action');
 		$callback       =safe_GET('callback', WT_REGEX_NOSCRIPT, 'paste_id');
-		$create         =safe_GET('create');
 		$media          =safe_GET('media');
 		$external_links =safe_GET('external_links');
 		$directory      =safe_GET('directory', WT_REGEX_NOSCRIPT, $MEDIA_DIRECTORY);
@@ -102,7 +101,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		
 		//-- prevent script from accessing an area outside of the media folder
 		//-- and keep level consistency
-		if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)) {
+		if ($level < 0) {
 			$directory = $MEDIA_DIRECTORY;
 			$level = 0;
 		} elseif (preg_match("'^$MEDIA_DIRECTORY'", $directory)==0) {
@@ -558,16 +557,6 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				}
 				echo "<tr><td class=\"descriptionbox\" colspan=\"2\"></td></tr>";
 		
-				/**
-				 * This action generates a thumbnail for the file
-				 *
-				 * @name $create->thumbnail
-				 */
-				if ($create=="thumbnail") {
-					$filename = $_REQUEST["file"];
-					generate_thumbnail($directory.$filename, $thumbdir.$filename);
-				}
-		
 				echo "<br>";
 		
 				// display the images TODO x across if lots of files??
@@ -580,7 +569,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		
 						if (($ct <= $level+1 && $external_links != "http" && !isFileExternal($media["FILE"])) || (isFileExternal($media["FILE"]) && $external_links == "http")) {
 							// simple filter to reduce the number of items to view
-							$isvalid = filterMedia($media, $filter, 'http');
+							//$isvalid = filterMedia($media, $filter, 'http');
 							if ($isvalid && $chooseType!="all") {
 								if ($chooseType=="0file" && !empty($media["XREF"])) $isvalid = false; // skip linked media files
 								if ($chooseType=="media" && empty($media["XREF"])) $isvalid = false; // skip unlinked media files
@@ -601,7 +590,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 								//-- thumbnail field
 								if ($showthumb) {
 									echo "<td class=\"list_value width10\">";
-									if (isset($media["THUMB"])) echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\"><img src=\"", filename_decode($media["THUMB"]), "\" width=\"50\" alt=\"\"></a>";
+									if (isset($media["THUMB"])) echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\"><img src=\"", $media["THUMB"], "\" width=\"50\" alt=\"\"></a>";
 									else echo "&nbsp;";
 								}
 		

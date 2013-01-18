@@ -5,7 +5,7 @@
 // used on the indilist, famlist, find, and search pages.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -1295,7 +1295,7 @@ function format_media_table($datalist) {
 			$name = $media->getFullName();
 			$html .= "<tr>";
 			//-- Object thumbnail
-			$html .= '<td><img src="'. $media->getThumbnail(). '" alt="'. htmlspecialchars(strip_tags($name)). '"></td>';
+			$html .= '<td>'. $media->DisplayMedia(). '</td>';
 			//-- Object name(s)
 			$html .= '<td>';
 			$html .= '<a href="'. $media->getHtmlUrl(). '" class="list_item name2">';

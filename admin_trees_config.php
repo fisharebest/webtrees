@@ -95,9 +95,11 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'FAM_ID_PREFIX',                safe_POST('NEW_FAM_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'FULL_SOURCES',                 safe_POST_bool('NEW_FULL_SOURCES'));
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_ID_PREFIX',             safe_POST('NEW_GEDCOM_ID_PREFIX'));
+	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            safe_POST('NEW_GEDCOM_MEDIA_PATH'));
 	set_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS',                safe_POST_bool('NEW_GENERATE_UIDS'));
 	set_gedcom_setting(WT_GED_ID, 'HIDE_GEDCOM_ERRORS',          !safe_POST_bool('NEW_HIDE_GEDCOM_ERRORS'));
 	set_gedcom_setting(WT_GED_ID, 'HIDE_LIVE_PEOPLE',             safe_POST_bool('NEW_HIDE_LIVE_PEOPLE'));
+	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            safe_POST('GEDCOM_MEDIA_PATH'));
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD',               str_replace(' ', '', safe_POST('NEW_INDI_FACTS_ADD')));
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK',             str_replace(' ', '', safe_POST('NEW_INDI_FACTS_QUICK')));
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE',            str_replace(' ', '', safe_POST('NEW_INDI_FACTS_UNIQUE')));
@@ -107,7 +109,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE',                safe_POST('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
 	set_gedcom_setting(WT_GED_ID, 'MAX_DESCENDANCY_GENERATIONS',  safe_POST('NEW_MAX_DESCENDANCY_GENERATIONS'));
 	set_gedcom_setting(WT_GED_ID, 'MAX_PEDIGREE_GENERATIONS',     safe_POST('NEW_MAX_PEDIGREE_GENERATIONS'));
-	set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY_LEVELS',       safe_POST('NEW_MEDIA_DIRECTORY_LEVELS'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_ID_PREFIX',              safe_POST('NEW_MEDIA_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD',                 safe_POST('NEW_MEDIA_UPLOAD'));
 	set_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION',             safe_POST('NEW_META_DESCRIPTION'));
@@ -179,8 +180,11 @@ case 'update':
 	}
 
 	if ($NEW_MEDIA_DIRECTORY) {
-		if (is_dir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY) || @mkdir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY, 0755, true)) {
+		if (is_dir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY)) {
 			set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY', $NEW_MEDIA_DIRECTORY);
+		} elseif (@mkdir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY, 0755, true)) {
+			set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY', $NEW_MEDIA_DIRECTORY);
+			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', WT_DATA_DIR . $NEW_MEDIA_DIRECTORY));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', WT_DATA_DIR . $NEW_MEDIA_DIRECTORY));
 		}
@@ -585,10 +589,10 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Multimedia directory levels to keep'), help_link('MEDIA_DIRECTORY_LEVELS'); ?>
+						<?php echo /* I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file */ WT_I18N::translate('GEDCOM media path'), help_link('GEDCOM_MEDIA_PATH'); ?>
 					</td>
 					<td>
-						<input type="text" name="NEW_MEDIA_DIRECTORY_LEVELS" value="<?php echo $MEDIA_DIRECTORY_LEVELS; ?>" size="5" maxlength="2">
+						<input type="text" name="NEW_GEDCOM_MEDIA_PATH" value="<?php echo $GEDCOM_MEDIA_PATH; ?>" dir="ltr" size="30" maxlength="255">
 					</td>
 				</tr>
 				<tr>

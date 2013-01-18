@@ -344,19 +344,8 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	$notes    = htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)), ENT_QUOTES);
 
 	// Prepare Below Thumbnail  menu ----------------------------------------------------
+	$mtitle = '<div style="max-width:120px;overflow:hidden;text-overflow:ellipsis;">' . $mediaTitle . '</div>';
 	$menu = new WT_Menu();
-	// Truncate media title to 13 chars (45 chars if Streetview) and add ellipsis
-	$mtitle = strip_tags($mediaTitle);
-	if (strpos($rowm['m_filename'], 'http://maps.google.')===0) {
-		if (utf8_strlen($mtitle)>16) {
-			$mtitle = utf8_substr($rowm['m_filename'], 0, 45).WT_I18N::translate('…');
-		}
-	} else {
-		if (utf8_strlen($mtitle)>16) {
-			$mtitle = utf8_substr($mtitle, 0, 13).WT_I18N::translate('…');
-		}
-	}
-
 	$menu->addLabel($mtitle, 'right');
 
 	if ($rtype=='old') {

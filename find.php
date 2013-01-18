@@ -33,11 +33,9 @@ $type           =safe_GET('type', WT_REGEX_ALPHA, 'indi');
 $filter         =safe_GET('filter');
 $action         =safe_GET('action');
 $callback       =safe_GET('callback', WT_REGEX_NOSCRIPT, 'paste_id');
-$create         =safe_GET('create');
 $media          =safe_GET('media');
 $external_links =safe_GET('external_links');
-$directory      =safe_GET('directory', WT_REGEX_NOSCRIPT, $MEDIA_DIRECTORY);
-$showthumb      =safe_GET_bool('showthumb');
+$directory      =safe_GET('directory', WT_REGEX_NOSCRIPT);
 $all            =safe_GET_bool('all');
 $subclick       =safe_GET('subclick');
 $choose         =safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
@@ -61,12 +59,6 @@ function getPreselectedTags(&$preselDefault, &$preselCustom) {
 	}
 }
 
-if ($showthumb) {
-	$thumbget='&amp;showthumb=true';
-} else {
-	$thumbget='';
-}
-
 if ($subclick=='all') {
 	$all=true;
 }
@@ -85,11 +77,8 @@ $thumbdir = stripcslashes(preg_replace($srch, $repl, $directory));
 
 //-- prevent script from accessing an area outside of the media folder
 //-- and keep level consistency
-if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)) {
-	$directory = $MEDIA_DIRECTORY;
-	$level = 0;
-} elseif (preg_match("'^$MEDIA_DIRECTORY'", $directory)==0) {
-	$directory = $MEDIA_DIRECTORY;
+if ($level < 0) {
+	$directory = '';
 	$level = 0;
 }
 // End variables for find media
@@ -247,10 +236,7 @@ if ($type == 'media') {
 	if ($filter) echo $filter;
 	echo '">',
 	help_link('simple_filter'),
-	'<p><input type="checkbox" name="showthumb" value="true"';
-	if ($showthumb) echo 'checked="checked" ';
-	echo 'onclick="this.form.submit();"><span>', WT_I18N::translate('Show thumbnails'), '</span></p>
-	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	'<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
 	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick=\"this.form.subclick.value=this.name\">
 	</p></form></div>';
 }
@@ -572,7 +558,7 @@ if ($action=="filter") {
 	if ($type == "media") {
 		global $dirs;
 
-		$medialist = get_medialist(true, $directory);
+		$medialist = WT_Query_Media::mediaList($directory, 'exclude', 'title', $filter);
 
 		echo '<div id="find-output">';
 		// Show link to previous folder
@@ -583,12 +569,12 @@ if ($action=="filter") {
 			$levels = explode("/", $thumbdir);
 			$pthumb = "";
 			for ($i=0; $i<count($levels)-2; $i++) $pthumb.=$levels[$i]."/";
-			$uplink = '<a href="find.php?directory='.$pdir.'&amp;thumbdir='.$pthumb.'&amp;level='.($level-1).$thumbget.'&amp;type=media&amp;choose='.$choose.'&amp;filter='.htmlspecialchars($filter).'&amp;action=filter">&nbsp;&nbsp;&nbsp;&lt;-- <span dir="ltr">'.$pdir.'</span>&nbsp;&nbsp;&nbsp;</a>';
+			$uplink = '<a href="find.php?directory='.$pdir.'&amp;thumbdir='.$pthumb.'&amp;level='.($level-1).'&amp;type=media&amp;choose='.$choose.'&amp;filter='.htmlspecialchars($filter).'&amp;action=filter">&nbsp;&nbsp;&nbsp;&lt;-- <span dir="ltr">'.$pdir.'</span>&nbsp;&nbsp;&nbsp;</a>';
 		}
 
 		// Start of media folder table
 		// Tell the user where he is
-		echo '<div id="find-media"><span>', WT_I18N::translate('Folder'), '&nbsp;=&nbsp;</span>', substr($directory, 0, -1), '</div>';
+		echo '<div id="find-media"><span>', WT_I18N::translate('Folder'), '&nbsp;=&nbsp;</span>', $directory, '</div>';
 
 		// display the folder list
 		if (count($dirs) || $level) {
@@ -597,108 +583,59 @@ if ($action=="filter") {
 				echo '<div class="find-media-dirs">', $uplink, '</div>';
 			}
 			echo '<div class="find-media-dirs">
-				<a href="find.php?directory=', $directory, '&amp;thumbdir='.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs', $directory).'&amp;level=',$level,$thumbget, '&amp;external_links=http&amp;type=media&amp;choose=', $choose, '&amp;filter=', htmlspecialchars($filter), '&amp;action=filter">', WT_I18N::translate('External objects'), '</a>';
+				<a href="find.php?directory=', $directory, '&amp;thumbdir='.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs', $directory).'&amp;level=', $level, '&amp;external_links=http&amp;type=media&amp;choose=', $choose, '&amp;filter=', htmlspecialchars($filter), '&amp;action=filter">', WT_I18N::translate('External objects'), '</a>';
 			echo '</div>';
 			foreach ($dirs as $indexval => $dir) {
 				echo '<div class="find-media-dirs">
-					<a href="find.php?directory=', $directory.$dir, '/&amp;thumbdir=', $directory.$dir, '&amp;level=', ($level+1).$thumbget, '&amp;type=media&amp;choose=', $choose, '&amp;filter=', htmlspecialchars($filter), '&amp;action=filter"><span dir="ltr">', $dir, '</span></a>
+					<a href="find.php?directory=', $directory.$dir, '/&amp;thumbdir=', $directory.$dir, '&amp;level=', ($level+1), '&amp;type=media&amp;choose=', $choose, '&amp;filter=', htmlspecialchars($filter), '&amp;action=filter"><span dir="ltr">', $dir, '</span></a>
 				</div>';
 			}
 		}
 
-		/**
-		 * This action generates a thumbnail for the file
-		 *
-		 * @name $create->thumbnail
-		 */
-		if ($create=="thumbnail") {
-			$filename = $_REQUEST["file"];
-			generate_thumbnail($directory.$filename, $thumbdir.$filename);
-		}
-
-		// display the images TODO x across if lots of files??
-		if (count($medialist) > 0) {
-			foreach ($medialist as $indexval => $media) {
-				// Check if the media belongs to the current folder
-				preg_match_all("/\//", $media["FILE"], $hits);
-				$ct = count($hits[0]);
-
-				if (($ct <= $level+1 && $external_links != "http" && !isFileExternal($media["FILE"])) || (isFileExternal($media["FILE"]) && $external_links == "http")) {
-					// simple filter to reduce the number of items to view
-					$isvalid = filterMedia($media, $filter, 'http');
-					if ($isvalid && $chooseType!="all") {
-						if ($chooseType=="0file" && !empty($media["XREF"])) $isvalid = false; // skip linked media files
-						if ($chooseType=="media" && empty($media["XREF"])) $isvalid = false; // skip unlinked media files
-					}
-					if ($isvalid) {
-						if ($media["EXISTS"] && media_filesize($media["FILE"]) != 0) {
-							$imgsize = findImageSize($media["FILE"]);
-							$imgwidth = $imgsize[0]+40;
-							$imgheight = $imgsize[1]+150;
-						}
-						else {
-							$imgwidth = 0;
-							$imgheight = 0;
-						}
-
-						echo '<div class="find-media-media">';
-
-						//-- thumbnail field
-						if ($showthumb) {
-							echo '<div class="find-media-thumb">';
-							if (isset($media["THUMB"])) echo '<a href="#" onclick="return openImage(\'', rawurlencode($media["FILE"]), '\',', $imgwidth, $imgheight,');"><img src="', filename_decode($media["THUMB"]), '" alt=""></a>';
-							else echo '&nbsp;';
-							echo '</div>';
-						}
-
-						//-- name and size field
-						echo '<div class="find-media-details">';
-							if ($media["TITL"] != '') {
-								echo '<p class="find-media-title">', htmlspecialchars($media["TITL"]), '</p>';
-							}
-							if (!$embed) {
-								echo '<p><a href="#" dir="auto" onclick="pasteid(\'', htmlspecialchars($media['FILE']), '\');">', $media["FILE"], '</a></p>';
-							}
-							else echo '<p><a href="#" onclick="pasteid(\'', $media["XREF"], '\', \'', addslashes($media["TITL"]), '\', \'', addslashes($media["THUMB"]), '\');"><span dir="ltr">', $media["FILE"], '</span></a> -- ';
-							echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\">", WT_I18N::translate('View'), "</a></p>";
-							if (!$media["EXISTS"] && !isFileExternal($media["FILE"])) echo $media["FILE"], "<p><span class=\"error\">", WT_I18N::translate('The filename entered does not exist.'), "</span></p>";
-							else if (!isFileExternal($media["FILE"]) && !empty($imgsize[0])) {
-								echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize[0].' × '.$imgsize[1]);
-							}
-							if ($media["LINKS"]) {
-								echo '<p>', WT_I18N::translate('This media object is linked to the following:'), '</p>',
-								'<ul>';
-								foreach ($media["LINKS"] as $indi => $type_record) {
-									if ($type_record!='INDI' && $type_record!='FAM' && $type_record!='SOUR' && $type_record!='OBJE') continue;
-									$record=WT_GedcomRecord::getInstance($indi);
-									echo '<li><a href="', $record->getHtmlUrl(), '">';
-									switch($type_record) {
-									case 'INDI':
-										echo WT_I18N::translate('View Person'), ' - ';
-										break;
-									case 'FAM':
-										echo WT_I18N::translate('View Family'), ' - ';
-										break;
-									case 'SOUR':
-										echo WT_I18N::translate('View Source'), ' - ';
-										break;
-									case 'OBJE':
-										echo WT_I18N::translate('View Object'), ' - ';
-										break;
-									}
-									echo $record->getFullName(), '</a></li>';
-								}
-								echo '</ul>';
-							} else {
-								echo WT_I18N::translate('This media object is not linked to any GEDCOM record.');
-							}
-						echo '</div>'; // close div
-						echo '</div>'; // close div="find-media-media"
-					}
+		// display the images
+		if ($medialist) {
+			foreach ($medialist as $media) {
+				echo '<div class="find-media-media">';
+				echo '<div class="find-media-thumb">', $media->displayMedia(), '</div>';
+				echo '<div class="find-media-details">', $media->getFullName(), '</div>';
+				if (!$embed) {
+					echo '<p><a href="#" dir="auto" onclick="pasteid(\'', addslashes($media->getXref()), '\');">', $media->getFilename(), '</a></p>';
+				} else {
+					echo '<p><a href="#" onclick="pasteid(\'', $media->getXref(), '\', \'', '\', \'', addslashes($media->getFilename()), '\');"><span dir="ltr">', $media->getFilename(), '</span></a></p> ';
 				}
+				if ($media->fileExists()) {
+					$imgsize = $media->getImageAttributes();
+					echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+				}
+				echo '<ul>';
+				$found=false;
+				foreach ($media->fetchLinkedIndividuals() as $indindividual) {
+					echo '<li>', $indindividual->getFullName(), '</li>';
+					$found=true;
+				}
+				foreach ($media->fetchLinkedFamilies() as $family) {
+					echo '<li>', $family->getFullName(), '</li>';
+					$found=true;
+				}
+				foreach ($media->fetchLinkedSources() as $source) {
+					echo '<li>', $source->getFullName(), '</li>';
+					$found=true;
+				}
+				foreach ($media->fetchLinkedNotes() as $note) {
+					echo '<li>', $note->getFullName(), '</li>';
+					$found=true;
+				}
+				foreach ($media->fetchLinkedRepositories() as $repository) {
+					echo '<li>', $repository->getFullName(), '</li>';
+					$found=true;
+				}
+				if (!$found) {
+					echo '<li>', WT_I18N::translate('This media object is not linked to any GEDCOM record.'), '</li>';
+				}
+				echo '</ul>';
+				echo '</div>'; // close div="find-media-media"
 			}
-		}
-		else {
+		} else {
 			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 		}
 		echo '<div style="clear:both;">&nbsp;</div>';

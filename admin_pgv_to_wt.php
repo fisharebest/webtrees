@@ -706,8 +706,6 @@ foreach ($GEDCOMS as $GEDCOM=>$GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MAX_PEDIGREE_GENERATIONS',     $MAX_PEDIGREE_GENERATIONS));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MAX_RELATION_PATH_LENGTH',     $MAX_RELATION_PATH_LENGTH));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MEDIA_DIRECTORY',              'media/'));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MEDIA_DIRECTORY_LEVELS',       $MEDIA_DIRECTORY_LEVELS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MEDIA_FIREWALL_ROOTDIR',       $MEDIA_FIREWALL_ROOTDIR));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MEDIA_ID_PREFIX',              $MEDIA_ID_PREFIX));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'META_DESCRIPTION',             $META_DESCRIPTION));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'META_TITLE',                   $META_TITLE));

@@ -335,11 +335,11 @@ class WT_Gedcom_Tag {
 		case 'TITL:_HEB': return WT_I18N::translate('Title in Hebrew');
 		case 'TRLR': return /* I18N: gedcom tag TRLR */ WT_I18N::translate('Trailer');
 		case 'TYPE': return /* I18N: gedcom tag TYPE */ WT_I18N::translate('Type');
-		case 'URL': return /* I18N: gedcom tag URL */ WT_I18N::translate('Web URL');
+		case 'URL': return /* I18N: gedcom tag URL (A web address / URL) */ WT_I18N::translate('URL');
 		case 'VERS': return /* I18N: gedcom tag VERS */ WT_I18N::translate('Version');
 		case 'WIFE': return /* I18N: gedcom tag WIFE */ WT_I18N::translate('Wife');
 		case 'WILL': return /* I18N: gedcom tag WILL */ WT_I18N::translate('Will');
-		case 'WWW': return /* I18N: gedcom tag WWW */ WT_I18N::translate('Web home page');
+		case 'WWW': return /* I18N: gedcom tag WWW (A web address / URL) */ WT_I18N::translate('URL');
 		case '_ADOP_CHIL':
 			switch ($sex) {
 			case 'M': return WT_I18N::translate('Adoption of a son');

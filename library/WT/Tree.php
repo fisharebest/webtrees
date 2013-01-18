@@ -237,6 +237,7 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'FAM_ID_PREFIX',                'F');
 		set_gedcom_setting($tree_id, 'FULL_SOURCES',                 false);
 		set_gedcom_setting($tree_id, 'GEDCOM_ID_PREFIX',             'I');
+		set_gedcom_setting($tree_id, 'GEDCOM_MEDIA_PATH',            '');
 		set_gedcom_setting($tree_id, 'GENERATE_UIDS',                false);
 		set_gedcom_setting($tree_id, 'HIDE_GEDCOM_ERRORS',           true);
 		set_gedcom_setting($tree_id, 'HIDE_LIVE_PEOPLE',             true);
@@ -250,8 +251,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'MAX_DESCENDANCY_GENERATIONS',  '15');
 		set_gedcom_setting($tree_id, 'MAX_PEDIGREE_GENERATIONS',     '10');
 		set_gedcom_setting($tree_id, 'MEDIA_DIRECTORY',              'media/');
-		set_gedcom_setting($tree_id, 'MEDIA_DIRECTORY_LEVELS',       '0');
-		set_gedcom_setting($tree_id, 'MEDIA_FIREWALL_ROOTDIR',       WT_Site::preference('INDEX_DIRECTORY'));
 		set_gedcom_setting($tree_id, 'MEDIA_ID_PREFIX',              'M');
 		set_gedcom_setting($tree_id, 'MEDIA_UPLOAD',                 WT_PRIV_USER); 
 		set_gedcom_setting($tree_id, 'META_DESCRIPTION',             '');

@@ -194,16 +194,22 @@ function file_upload_error_text($error_code) {
 		return WT_I18N::translate('File successfully uploaded');
 	case UPLOAD_ERR_INI_SIZE:
 	case UPLOAD_ERR_FORM_SIZE:
+		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 		return WT_I18N::translate('Uploaded file exceeds the allowed size');
 	case UPLOAD_ERR_PARTIAL:
+		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 		return WT_I18N::translate('File was only partially uploaded, please try again');
 	case UPLOAD_ERR_NO_FILE:
+		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 		return WT_I18N::translate('No file was received. Please upload again.');
 	case UPLOAD_ERR_NO_TMP_DIR:
+		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 		return WT_I18N::translate('Missing PHP temporary directory');
 	case UPLOAD_ERR_CANT_WRITE:
+		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 		return WT_I18N::translate('PHP failed to write to disk');
 	case UPLOAD_ERR_EXTENSION:
+		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 		return WT_I18N::translate('PHP blocked file by extension');
 	}
 }
@@ -225,6 +231,7 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $FAM_ID_PREFIX;                $FAM_ID_PREFIX                =get_gedcom_setting($ged_id, 'FAM_ID_PREFIX');
 	global $FULL_SOURCES;                 $FULL_SOURCES                 =get_gedcom_setting($ged_id, 'FULL_SOURCES');
 	global $GEDCOM_ID_PREFIX;             $GEDCOM_ID_PREFIX             =get_gedcom_setting($ged_id, 'GEDCOM_ID_PREFIX');
+	global $GEDCOM_MEDIA_PATH;            $GEDCOM_MEDIA_PATH            =get_gedcom_setting($ged_id, 'GEDCOM_MEDIA_PATH');
 	global $GENERATE_UIDS;                $GENERATE_UIDS                =get_gedcom_setting($ged_id, 'GENERATE_UIDS');
 	global $HIDE_GEDCOM_ERRORS;           $HIDE_GEDCOM_ERRORS           =get_gedcom_setting($ged_id, 'HIDE_GEDCOM_ERRORS');
 	global $HIDE_LIVE_PEOPLE;             $HIDE_LIVE_PEOPLE             =get_gedcom_setting($ged_id, 'HIDE_LIVE_PEOPLE');
@@ -235,11 +242,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $MAX_DESCENDANCY_GENERATIONS;  $MAX_DESCENDANCY_GENERATIONS  =get_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS');
 	global $MAX_PEDIGREE_GENERATIONS;     $MAX_PEDIGREE_GENERATIONS     =get_gedcom_setting($ged_id, 'MAX_PEDIGREE_GENERATIONS');
 	global $MEDIA_DIRECTORY;              $MEDIA_DIRECTORY              =get_gedcom_setting($ged_id, 'MEDIA_DIRECTORY');
-	global $MEDIA_DIRECTORY_LEVELS;       $MEDIA_DIRECTORY_LEVELS       =get_gedcom_setting($ged_id, 'MEDIA_DIRECTORY_LEVELS');
-	global $MEDIA_FIREWALL_ROOTDIR;       $MEDIA_FIREWALL_ROOTDIR       =get_gedcom_setting($ged_id, 'MEDIA_FIREWALL_ROOTDIR');
-	if (!$MEDIA_FIREWALL_ROOTDIR) {
-		$MEDIA_FIREWALL_ROOTDIR=WT_DATA_DIR;
-	}
 	global $MEDIA_ID_PREFIX;              $MEDIA_ID_PREFIX              =get_gedcom_setting($ged_id, 'MEDIA_ID_PREFIX');
 	global $NOTE_ID_PREFIX;               $NOTE_ID_PREFIX               =get_gedcom_setting($ged_id, 'NOTE_ID_PREFIX');
 	global $NO_UPDATE_CHAN;               $NO_UPDATE_CHAN               =get_gedcom_setting($ged_id, 'NO_UPDATE_CHAN');
@@ -651,48 +653,6 @@ function extract_fullpath($mediarec) {
 	return $fullpath;
 }
 
-/**
- * get the relative filename for a media item
- *
- * gets the relative file path from the full media path for a media item.  checks the
- * <var>$MEDIA_DIRECTORY_LEVELS</var> to make sure the folder structure is maintained.
- * @param string $fullpath the full path from the media record
- * @return string a relative path that can be appended to the <var>$MEDIA_DIRECTORY</var> to reference the item
- */
-function extract_filename($fullpath) {
-	global $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY;
-
-	$filename="";
-	$regexp = "'[/\\\]'";
-	$srch = "/".addcslashes($MEDIA_DIRECTORY, '/.')."/";
-	$repl = "";
-	if (!isFileExternal($fullpath)) {
-		$nomedia = stripcslashes(preg_replace($srch, $repl, $fullpath));
-	} else {
-		$nomedia = $fullpath;
-	}
-	$ct = preg_match($regexp, $nomedia, $match);
-	if ($ct>0) {
-		$subelements = preg_split($regexp, $nomedia);
-		$subelements = array_reverse($subelements);
-		$max = $MEDIA_DIRECTORY_LEVELS;
-		if ($max>=count($subelements)) {
-			$max=count($subelements)-1;
-		}
-		for ($s=$max; $s>=0; $s--) {
-			if ($s!=$max) {
-				$filename = $filename."/".$subelements[$s];
-			} else {
-				$filename = $subelements[$s];
-			}
-		}
-	} else {
-		$filename = $nomedia;
-	}
-	return $filename;
-}
-
-
 // ************************************************* START OF SORTING FUNCTIONS ********************************* //
 /**
  * Function to sort GEDCOM fact tags based on their tanslations
@@ -744,7 +704,7 @@ function mediasort($a, $b) {
 				if (!empty($a["NAME"])) {
 					$aKey = $a["NAME"];
 				} else {
-					if (!empty($a["name"])) { // set in PrintMediaLinks
+					if (!empty($a["name"])) {
 						$aKey = $a["name"];
 					} else {
 						if (!empty($a["FILE"])) {
@@ -2281,32 +2241,6 @@ function get_theme_names() {
 	return $themes;
 }
 
-/**
- * decode a filename
- *
- * windows doesn't use UTF-8 for its file system so we have to decode the filename
- * before it can be used on the filesystem
- */
-function filename_decode($filename) {
-	if (DIRECTORY_SEPARATOR=='\\')
-		return utf8_decode($filename);
-	else
-		return $filename;
-}
-
-/**
- * encode a filename
- *
- * windows doesn't use UTF-8 for its file system so we have to encode the filename
- * before it can be used
- */
-function filename_encode($filename) {
-	if (DIRECTORY_SEPARATOR=='\\')
-		return utf8_encode($filename);
-	else
-		return $filename;
-}
-
 // Function to build an URL querystring from GET variables
 // Optionally, add/replace specified values
 function get_query_url($overwrite=null, $separator='&') {
@@ -2551,239 +2485,6 @@ function has_utf8($string) {
  */
 function isFileExternal($file) {
 	return strpos($file, '://') !== false;
-}
-
-/*
- * Get useful information on how to handle this media file
- */
-function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $admin='', $obeyViewerOption=true) {
-	global $THUMBNAIL_WIDTH, $WT_IMAGES;
-	global $GEDCOM, $USE_MEDIA_VIEWER;
-
-	$result = array();
-
-	// -- Classify the incoming media file
-	if (preg_match('~^https?://~i', $fileName)) $type = 'url_';
-	else $type = 'local_';
-	if ((preg_match('/\.flv$/i', $fileName) || preg_match('~^https?://.*\.youtube\..*/watch\?~i', $fileName)) && is_dir(WT_ROOT.'js/jw_player')) {
-		$type .= 'flv';
-	} else if (preg_match('~^https?://picasaweb*\.google\..*/.*/~i', $fileName)) {
-		$type .= 'picasa';
-	} else if (preg_match('/\.(jpg|jpeg|gif|png)$/i', $fileName)) {
-		$type .= 'image';
-	} else if (preg_match('/\.(avi|txt)$/i', $fileName)) {
-		$type .= 'page';
-	} else if (preg_match('/\.mp3$/i', $fileName)) {
-		$type .= 'audio';
-	} else if (preg_match('/\.pdf$/i', $fileName)) {
-		$type .= 'pdf';
-	} else if (preg_match('/\.wmv$/i', $fileName)) {
-		$type .= 'wmv';
-	} else if (strpos($fileName, 'http://maps.google.')===0) {
-		$type .= 'streetview';
-	} else {
-		$type .= 'other';
-	}
-	// $type is now: (url | local) _ (flv | picasa | image | page | audio | wmv | streetview |other)
-	$result['type'] = $type;
-
-	// -- Determine the correct URL to open this media file
-	while (true) {
-		if (WT_USE_LIGHTBOX && $admin!="ADMIN") {
-			// Lightbox is installed
-			switch ($type) {
-			case 'url_flv':
-				$url = 'js/jw_player/flvVideo.php?flvVideo='.rawurlencode($fileName) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . htmlspecialchars($name) . "::" . htmlspecialchars($notes);
-				break 2;
-			case 'local_flv':
-				$url = 'js/jw_player/flvVideo.php?flvVideo='.rawurlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . htmlspecialchars($name) . "::" . htmlspecialchars($notes);
-				break 2;
-			case 'url_wmv':
-				$url = 'js/jw_player/wmvVideo.php?wmvVideo='.rawurlencode($fileName) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . htmlspecialchars($name) . "::" . htmlspecialchars($notes);
-				break 2;
-			case 'local_audio':
-			case 'local_wmv':
-				$url = 'js/jw_player/wmvVideo.php?wmvVideo='.rawurlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . htmlspecialchars($name) . "::" . htmlspecialchars($notes);
-				break 2;
-			case 'url_image':
-			case 'local_image':
-				$url = $fileName . "\" rel=\"clearbox[general]\" rev=\"" . $mid . "::" . $GEDCOM . "::" . htmlspecialchars($name) . "::" . htmlspecialchars($notes);
-				break 2;
-			case 'url_picasa':
-			case 'url_page':
-			case 'url_pdf':
-			case 'url_other':
-			case 'local_page':
-			case 'local_pdf':
-			// case 'local_other':
-				$url = $fileName . "\" rel='clearbox(" . get_module_setting('lightbox', 'LB_URL_WIDTH',  '1000') . ',' . get_module_setting('lightbox', 'LB_URL_HEIGHT', '600') . ", click)' rev=\"" . $mid . '::' . $GEDCOM . '::' . htmlspecialchars($name) . "::" . htmlspecialchars($notes);
-				break 2;
-			case 'url_streetview':
-				if (WT_SCRIPT_NAME != "admin_media.php") {
-					echo  '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="'. $fileName. '&amp;output=svembed"></iframe>';
-				}
-				break 2;
-			}
-		}
-
-		// Lightbox is not installed or Lightbox is not appropriate for this media type
-		switch ($type) {
-		case 'url_flv':
-			$url = "#\" onclick=\" var winflv = window.open('".'js/jw_player/flvVideo.php?flvVideo='.rawurlencode($fileName) . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
-			break 2;
-		case 'local_flv':
-			$url = "#\" onclick=\" var winflv = window.open('".'js/jw_player/flvVideo.php?flvVideo='.rawurlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName) . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
-			break 2;
-		case 'url_wmv':
-			$url = "#\" onclick=\" var winwmv = window.open('".'js/jw_player/wmvVideo.php?wmvVideo='.rawurlencode($fileName) . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
-			break 2;
-		case 'local_wmv':
-		case 'local_audio':
-			$url = "#\" onclick=\" var winwmv = window.open('".'js/jw_player/wmvVideo.php?wmvVideo='.rawurlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName) . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
-			break 2;
-		case 'url_image':
-		case 'local_image':
-			$imgsize = findImageSize($fileName);
-			$imgwidth = $imgsize[0]+40;
-			$imgheight = $imgsize[1]+150;
-			$url = "#\" onclick=\"var winimg = window.open('".$fileName."', 'winimg', 'width=".$imgwidth.", height=".$imgheight.", left=200, top=200'); if (window.focus) {winimg.focus();}";
-			break 2;
-		case 'url_picasa':
-		case 'url_page':
-		case 'url_pdf':
-		case 'url_other':
-		case 'local_other';
-			$url = "#\" onclick=\"var winurl = window.open('".$fileName."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
-			break 2;
-		case 'local_page':
-		case 'local_pdf':
-			$url = "#\" onclick=\"var winurl = window.open('".WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
-			break 2;
-		case 'url_streetview':
-			//echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $fileName, '&amp;output=svembed"></iframe>';
-			//$url = "#";
-			break 2;
-		}
-		if ($USE_MEDIA_VIEWER && $obeyViewerOption) {
-			$url = 'mediaviewer.php?mid='.$mid.'&amp;ged='.WT_GEDURL;
-		} else {
-			$imgsize = findImageSize($fileName);
-			$imgwidth = $imgsize[0]+40;
-			$imgheight = $imgsize[1]+150;
-			$url = "#\" onclick=\"return openImage('".urlencode($fileName)."', $imgwidth, $imgheight);";
-		}
-		break;
-	}
-	// At this point, $url describes how to handle the image when its thumbnail is clicked
-	if ($type == 'url_streetview') {
-		$result['url'] = "#";
-	} else {
-		$result['url'] = $url;
-	}
-
-	// -- Determine the correct thumbnail or pseudo-thumbnail
-	$width = '';
-	switch ($type) {
-		case 'url_flv':
-			$thumb = $WT_IMAGES['media_flashrem'];
-			break;
-		case 'local_flv':
-			$thumb = $WT_IMAGES['media_flash'];
-			break;
-		case 'url_wmv':
-			$thumb = $WT_IMAGES['media_wmvrem'];
-			break;
-		case 'local_wmv':
-			$thumb = $WT_IMAGES['media_wmv'];
-			break;
-		case 'url_picasa':
-			$thumb = $WT_IMAGES['media_picasa'];
-			break;
-		case 'url_page':
-		case 'url_other':
-			$thumb = $WT_IMAGES['media_globe'];
-			break;
-		case 'local_page':
-			$thumb = $WT_IMAGES['media_doc'];
-			break;
-		case 'url_pdf':
-		case 'local_pdf':
-			$thumb = $WT_IMAGES['media_pdf'];
-			break;
-		case 'url_audio':
-		case 'local_audio':
-			$thumb = $WT_IMAGES['media_audio'];
-			break;
-		case 'url_streetview':
-			$thumb = null;
-			break;
-		default:
-			$thumb = $thumbName;
-			if (substr($type, 0, 4)=='url_') {
-				$width = ' width="'.$THUMBNAIL_WIDTH.'"';
-			}
-	}
-
-	// -- Use an overriding thumbnail if one has been provided
-	// Don’t accept any overriding thumbnails that are in the “images” or “themes” directories
-	$realThumb = $thumb;
-	if (strpos($thumbName, 'images/')!==0 && strpos($thumbName, WT_THEMES_DIR)!==0) {
-		switch (media_exists($thumbName)) {
-			case false: // file doesn’t exist
-				$thumb = $WT_IMAGES['media'];
-				$realThumb = $WT_IMAGES['media'];
-				break;
-			case 1: // external file
-				// do nothing
-				break;
-			case 2: // file in standard media folder
-				$thumb = $thumbName;
-				$realThumb = $thumbName;
-				break;
-			case 3: // file in protected media folder
-				$thumb = $thumbName;
-				$realThumb = get_media_firewall_path($thumbName);
-				break;
-		} 
-	}
-
-	// At this point, $width, $realThumb, and $thumb describe the thumbnail to be displayed
-	$result['thumb'] = $thumb;
-	$result['realThumb'] = $realThumb;
-	$result['width'] = $width;
-
-	return $result;
-}
-
-// PHP’s native pathinfo() function does not work with filenames that contain UTF8 characters.
-// See http://uk.php.net/pathinfo
-function pathinfo_utf($path) {
-	if (empty($path)) {
-		return array('dirname'=>'', 'basename'=>'', 'extension'=>'', 'filename'=>'');
-	}
-	if (strpos($path, '/')!==false) {
-		$tmp=explode('/', $path);
-		$basename=end($tmp);
-		$dirname=substr($path, 0, strlen($path) - strlen($basename) - 1);
-	} else if (strpos($path, '\\') !== false) {
-		$tmp=explode('\\', $path);
-		$basename=end($tmp);
-		$dirname=substr($path, 0, strlen($path) - strlen($basename) - 1);
-	} else {
-		$basename=$path; // We have just a filename
-		$dirname='.';    // For compatibility with pathinfo()
-	}
-
-	if (strpos($basename, '.')!==false) {
-		$tmp=explode('.', $path);
-		$extension=end($tmp);
-		$filename=substr($basename, 0, strlen($basename) - strlen($extension) - 1);
-	} else {
-		$extension='';
-		$filename=$basename;
-	}
-
-	return array('dirname'=>$dirname, 'basename'=>$basename, 'extension'=>$extension, 'filename'=>$filename);
 }
 
 // Turn URLs in text into HTML links.  Insert breaks into long URLs

@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -54,7 +54,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			echo $html;
 			break;
 		case 'index':
-			global $MAX_PEDIGREE_GENERATIONS, $controller, $WT_SESSION;
+			global $MAX_PEDIGREE_GENERATIONS, $controller, $WT_SESSION, $GEDCOM_MEDIA_PATH;
 
 			require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 			require_once WT_ROOT.'includes/functions/functions_export.php';
@@ -218,13 +218,10 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
 					<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
 
-					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert media path to'), help_link('convertPath'); ?></td>
-					<td class="list_value"><input type="text" name="conv_path" size="30" value="<?php echo $clip_ctrl->conv_path; ?>" dir="auto"></td></tr>
-
-					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert media folder separators to'), help_link('convertSlashes'); ?></td>
+					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('GEDCOM media path'), help_link('GEDCOM_MEDIA_PATH'); ?></td>
 					<td class="list_value">
-					<input type="radio" name="conv_slashes" value="forward" <?php if ($clip_ctrl->conv_slashes=='forward') echo "checked=\"checked\" "; ?>>&nbsp;<?php echo WT_I18N::translate('Forward slashes : /'); ?><br>
-					<input type="radio" name="conv_slashes" value="backward" <?php if ($clip_ctrl->conv_slashes=='backward') echo "checked=\"checked\" "; ?>>&nbsp;<?php echo WT_I18N::translate('Backslashes : \\'); ?>
+						<input type="checkbox" name="conv_path" value="<?php echo htmlspecialchars($GEDCOM_MEDIA_PATH); ?>">
+						<span dir="auto"><?php echo htmlspecialchars($GEDCOM_MEDIA_PATH); ?></span>
 					</td></tr>
 
 					<tr><td class="topbottombar" colspan="2">
@@ -559,6 +556,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	}
 
 	public function downloadForm($clip_ctrl) {
+		global $GEDCOM_MEDIA_PATH;
 		$pid=safe_GET_xref('pid');
 
 		$out = '<script>';
@@ -584,7 +582,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		if (WT_USER_GEDCOM_ADMIN) {
 			$out.=
 				'<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Apply privacy settings?').help_link('apply_privacy').'</td>'.
-				'<td class="list_value">'.
+				'<td class="optionbox">'.
 				'	<input type="radio" name="privatize_export" value="none" checked="checked"> '.WT_I18N::translate('None').'<br>'.
 				'	<input type="radio" name="privatize_export" value="gedadmin"> '.WT_I18N::translate('Manager').'<br>'.
 				'	<input type="radio" name="privatize_export" value="user"> '.WT_I18N::translate('Member').'<br>'.
@@ -602,7 +600,16 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)').help_link('utf8_ansi').'</td>
 		<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
 
-		<input type="hidden" name="conv_path" value="'.$clip_ctrl->conv_path.'"></td></tr>
+		<tr>
+		<td class="descriptionbox width50 wrap">'.WT_I18N::translate('GEDCOM media path').help_link('GEDCOM_MEDIA_PATH').'</td>
+		<td class="optionbox">
+		<input type="checkbox" name="conv_path" value="' . htmlspecialchars($GEDCOM_MEDIA_PATH) . '">
+		<span dir="auto">' . htmlspecialchars($GEDCOM_MEDIA_PATH) . '</span></td>
+		</tr>
+
+		<input type="hidden" name="conv_path" value="'.$clip_ctrl->conv_path.'">
+		
+		</td></tr>
 
 		<tr><td class="topbottombar" colspan="2">
 		<input type="button" value="'.WT_I18N::translate('Cancel').'" onclick="cancelDownload();">

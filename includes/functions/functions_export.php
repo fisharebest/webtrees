@@ -140,28 +140,23 @@ function gedcom_header($gedfile) {
 	return $HEAD.$SOUR.$DEST.$DATE.$GEDC.$CHAR.$FILE.$COPR.$LANG.$PLAC.$SUBN.$SUBM."\n";
 }
 
-// Convert media path by:
-// - removing current media folder
-// - adding a new prefix
-// - making folder name separators consistent
-function convert_media_path($rec, $path, $slashes) {
+// Prepend the GEDCOM_MEDIA_PATH to media filenames
+function convert_media_path($rec, $path) {
 	global $MEDIA_DIRECTORY;
 
 	if (preg_match('/\n1 FILE (.+)/', $rec, $match)) {
 		$old_file_name=$match[1];
 		if (!preg_match('~^(https?|ftp):~', $old_file_name)) { // Don’t modify external links
-			if (strpos($old_file_name, $MEDIA_DIRECTORY)===0) {
-				$new_file_name=substr_replace($old_file_name, $path, 0, strlen($MEDIA_DIRECTORY));
-			} else {
-				$new_file_name=$old_file_name;
-			}
-			switch ($slashes) {
-			case 'backward':
+			// Adding a windows path?  Convert the slashes.
+			if (strpos($path, '\\')!==false) {
 				$new_file_name=preg_replace('~/+~', '\\', $new_file_name);
-				break;
-			case 'forward':
-				$new_file_name=preg_replace('~\\\\+~', '/', $new_file_name);
-				break;
+			}
+			if (strpos($old_file_name, $path)===0) {
+				// Path already present
+				$new_file_name=$old_file_name;
+			} else {
+				// Add path
+				$new_file_name=$path . $old_file_name;
 			}
 			$rec=str_replace("\n1 FILE ".$old_file_name, "\n1 FILE ".$new_file_name, $rec);
 		}

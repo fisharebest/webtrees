@@ -46,7 +46,6 @@ class WT_Controller_Clippings {
 	var $id="";
 	var $IncludeMedia;
 	var $conv_path;
-	var $conv_slashes;
 	var $privatize_export;
 	var $Zip;
 	var $level1;  // number of levels of ancestors
@@ -54,7 +53,7 @@ class WT_Controller_Clippings {
 	var $level3; // number of levels of descendents
 
 	public function __construct() {
-		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $MEDIA_FIREWALL_ROOTDIR, $WT_SESSION;
+		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $WT_SESSION;
 		
 		// Our cart is an array of items in the session
 		if (!is_array($WT_SESSION->cart)) {
@@ -77,7 +76,6 @@ class WT_Controller_Clippings {
 		$this->Zip = safe_GET('Zip');
 		$this->IncludeMedia = safe_GET('IncludeMedia');
 		$this->conv_path = safe_GET('conv_path', WT_REGEX_NOSCRIPT, $WT_SESSION->exportConvPath);
-		$this->conv_slashes = safe_GET('conv_slashes', array('forward', 'backward'), $WT_SESSION->exportConvSlashes);
 		$this->privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'), 'visitor');
 		$this->level1 = safe_GET('level1', WT_REGEX_INTEGER, PHP_INT_MAX);
 		$this->level2 = safe_GET('level2', WT_REGEX_INTEGER, PHP_INT_MAX);
@@ -93,7 +91,6 @@ class WT_Controller_Clippings {
 		}
 
 		$WT_SESSION->exportConvPath = $this->conv_path; // remember this for the next Download
-		$WT_SESSION->exportConvSlashes = $this->conv_slashes;
 
 		if ($this->action == 'add') {
 			if (empty($this->type) && !empty($this->id)) {
@@ -218,7 +215,7 @@ class WT_Controller_Clippings {
 							$record=str_replace($match[0], '', $record);
 						}
 					}
-					$record = convert_media_path($record, $this->conv_path, $this->conv_slashes);
+					$record = convert_media_path($record, $this->conv_path);
 					$savedRecord = $record; // Save this for the "does this file exist" check
 					if ($convert=='yes') {
 						$record=utf8_decode($record);
@@ -241,20 +238,13 @@ class WT_Controller_Clippings {
 					default:
 						$ft = preg_match_all("/\n\d FILE (.+)/", $savedRecord, $match, PREG_SET_ORDER);
 						for ($k = 0; $k < $ft; $k++) {
-							$filename = $MEDIA_DIRECTORY.extract_filename($match[$k][1]);
-							if (file_exists($filename)) {
-								$media[$mediacount] = array (PCLZIP_ATT_FILE_NAME => $filename);
+							// Skip external files and non-existant files
+							if (file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1])) {
+								$media[$mediacount] = array (
+									PCLZIP_ATT_FILE_NAME          =>                                  $match[$k][1],
+									PCLZIP_ATT_FILE_NEW_FULL_NAME => WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1],
+								);
 								$mediacount++;
-							} else {
-								$filename = $MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.extract_filename($match[$k][1]);
-								if (file_exists($filename)) {
-									// Don't include firewall folder in zipfile.  It may start ../
-									$media[$mediacount] = array (
-										PCLZIP_ATT_FILE_NAME => $filename,
-										PCLZIP_ATT_FILE_NEW_FULL_NAME => $MEDIA_DIRECTORY.extract_filename($match[$k][1])
-									);
-									$mediacount++;
-								}
 							}
 						}
 						$filetext .= trim($record) . "\n";

@@ -178,7 +178,7 @@ if (!$controller->record->canDisplayDetails()) {
 
 echo "<form name=\"zoomform\" onsubmit=\"setzoom(document.getElementById('zoomval').value); return false;\" action=\"imageview.php\">";
 if (!$controller->record->isExternal() && !$controller->record->fileExists() ) {
-	echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $controller->record->getLocalFilename()), '</p>';
+	echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $controller->record->getFilename()), '</p>';
 } else {
 	echo "<center><font size=\"6\"><a href=\"#\" onclick=\"zoomin(); return false;\">+</a> <a href=\"#\" onclick=\"zoomout();\">&ndash;</a> </font>";
 	echo "<input type=\"text\" size=\"2\" name=\"zoomval\" id=\"zoomval\" value=\"100\">%";

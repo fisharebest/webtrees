@@ -458,7 +458,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 						if ($SHOW_HIGHLIGHT_IMAGES) {
 							$mediaobject = $this_person->findHighlightedMedia();
 							if ($mediaobject) {
-								$image=$mediaobject->displayMedia(array('display_type'=>'googlemap'));
+								$image=addslashes($mediaobject->displayMedia(array('display_type'=>'googlemap')));
 							} else {
 								$sex=$this_person->getSex();
 								$image=display_silhouette(array('sex'=>$sex, 'display_type'=>'googlemap'));
@@ -475,7 +475,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 						if (!empty($gmark['name'])) {
 							$mediaobject = $person->findHighlightedMedia();
 							if ($mediaobject) {
-								$image2=$mediaobject->displayMedia(array('display_type'=>'googlemap'));
+								$image2=addslashes($mediaobject->displayMedia(array('display_type'=>'googlemap')));
 							} else {
 								$sex=$this_person->getSex();
 								$image2=display_silhouette(array('sex'=>$sex, 'display_type'=>'googlemap'));

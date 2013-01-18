@@ -37,7 +37,6 @@ $action           = safe_GET('action',           'download');
 $convert          = safe_GET('convert',          'yes', 'no');
 $zip              = safe_GET('zip',              'yes', 'no');
 $conv_path        = safe_GET('conv_path',        WT_REGEX_NOSCRIPT);
-$conv_slashes     = safe_GET('conv_slashes',     array('forward', 'backward'), 'forward');
 $privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'));
 
 if ($action == 'download') {
@@ -48,7 +47,6 @@ if ($action == 'download') {
 	$exportOptions['privatize'] = $privatize_export;
 	$exportOptions['toANSI'] = $convert;
 	$exportOptions['path'] = $conv_path;
-	$exportOptions['slashes'] = $conv_slashes;
 }
 
 $fileName = WT_GEDCOM;
@@ -61,24 +59,24 @@ if ($action == "download" && $zip == "yes") {
 	$gedname = $temppath . $fileName;
 
 	$removeTempDir = false;
-	if (!is_dir(filename_decode($temppath))) {
-		$res = mkdir(filename_decode($temppath));
+	if (!is_dir($temppath)) {
+		$res = mkdir($temppath);
 		if ($res !== true) {
 			echo "Error : Could not create temporary path!";
 			exit;
 		}
 		$removeTempDir = true;
 	}
-	$gedout = fopen(filename_decode($gedname), "w");
+	$gedout = fopen($gedname, "w");
 	export_gedcom($GEDCOM, $gedout, $exportOptions);
 	fclose($gedout);
 	$comment = "Created by ".WT_WEBTREES." ".WT_VERSION_TEXT." on " . date("r") . ".";
-	$archive = new PclZip(filename_decode($zipfile));
-	$v_list = $archive->create(filename_decode($gedname), PCLZIP_OPT_COMMENT, $comment, PCLZIP_OPT_REMOVE_PATH, filename_decode($temppath));
+	$archive = new PclZip($zipfile);
+	$v_list = $archive->create($gedname, PCLZIP_OPT_COMMENT, $comment, PCLZIP_OPT_REMOVE_PATH, $temppath);
 	if ($v_list == 0) echo "Error : " . $archive->errorInfo(true);
 	else {
-		unlink(filename_decode($gedname));
-		if ($removeTempDir) rmdir(filename_decode($temppath));
+		unlink($gedname);
+		if ($removeTempDir) rmdir($temppath);
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH."downloadbackup.php?fname=".$zipname);
 		exit;
 	}
@@ -132,18 +130,11 @@ $controller->pageHeader();
 				<input type="checkbox" name="convert" value="yes">
 			</dd>
 			<dt>
-				<?php echo WT_I18N::translate('Convert media path to'), help_link('convertPath'); ?>
+				<?php echo WT_I18N::translate('GEDCOM media path'), help_link('GEDCOM_MEDIA_PATH'); ?>
 			</dt>
 			<dd>
-				<input type="text" name="conv_path" size="30" value="<?php echo $conv_path; ?>" dir="auto">
-			</dd>
-			<dt>
-				<?php echo WT_I18N::translate('Convert media folder separators to'), help_link('convertSlashes'); ?>
-			</dt>
-			<dd>
-				<input type="radio" name="conv_slashes" value="forward" <?php if ($conv_slashes=='forward') echo "checked=\"checked\" "; ?>>&nbsp;&nbsp;<?php echo WT_I18N::translate('Forward slashes : /'); ?>
-				<br>
-				<input type="radio" name="conv_slashes" value="backward" <?php if ($conv_slashes=='backward') echo "checked=\"checked\" "; ?>>&nbsp;&nbsp;<?php echo WT_I18N::translate('Backslashes : \\'); ?>
+				<input type="checkbox" name="conv_path" value="<?php echo htmlspecialchars($GEDCOM_MEDIA_PATH); ?>">
+				<span dir="auto"><?php echo htmlspecialchars($GEDCOM_MEDIA_PATH); ?></span>
 			</dd>
 		</dl>
 	</div>

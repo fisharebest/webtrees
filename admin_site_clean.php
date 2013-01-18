@@ -27,7 +27,7 @@ require './includes/session.php';
 $controller=new WT_Controller_Base();
 $controller
 	->requireAdminLogin()
-	->setPageTitle(WT_I18N::translate('Cleanup data directory'))
+	->setPageTitle(/* I18N: The “Data folder” is a configuration setting */ WT_I18N::translate('Clean up data folder'))
 	->pageHeader();
 
 require WT_ROOT.'includes/functions/functions_edit.php';
@@ -67,17 +67,15 @@ $ajaxdeleted = false;
 $locked_by_context = array('index.php', 'config.ini.php');
 
 // If we are storing the media in the data folder (this is the
-// default for the media firewall), then don’t delete it.
+// defaultl), then don’t delete it.
 // Need to consider the settings for all gedcoms
 foreach (WT_Tree::getAll() as $tree) {
-	$MEDIA_FIREWALL_ROOTDIR=$tree->preference('MEDIA_FIREWALL_ROOTDIR');
-	if (!$MEDIA_FIREWALL_ROOTDIR) {
-		$MEDIA_FIREWALL_ROOTDIR=WT_DATA_DIR;
-	}
 	$MEDIA_DIRECTORY=$tree->preference('MEDIA_DIRECTORY');
 
-	if (realpath($MEDIA_FIREWALL_ROOTDIR)==realpath(WT_DATA_DIR)) {
-		$locked_by_context[]=trim($MEDIA_DIRECTORY, '/');
+	if (substr($MEDIA_DIRECTORY, 0, 3) !='../') {
+		// Just need to add the first part of the path
+		$tmp = explode('/', $MEDIA_DIRECTORY);
+		$locked_by_context[] = $tmp[0];
 	}
 }
 

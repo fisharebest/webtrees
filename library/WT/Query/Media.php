@@ -26,10 +26,10 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Query_Media {
-	// Generate a list of folders for the media list.
+	// Generate a list of all the folders in the current tree - for the media list.
 	public static function folderList() {
 		$folders = WT_DB::prepare(
-			"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(REPLACE(m_filename, '\\\\', '/'), '/', -1))) AS media_path" .
+			"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
 			" FROM  `##media`" .
 			" WHERE m_file = ?" .
 			"	AND   m_filename NOT LIKE 'http://%'" .
@@ -41,13 +41,27 @@ class WT_Query_Media {
 		return array_combine($folders, $folders);
 	}
 
-	// Generate a filtered, sourced, privacy-checked list of media objects for the media list.
+	// Generate a list of all folders from all the trees - for the media admin.
+	public static function folderListAll() {
+		$folders = WT_DB::prepare(
+			"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
+			" FROM  `##media`" .
+			" WHERE m_filename NOT LIKE 'http://%'" .
+			" AND   m_filename NOT LIKE 'https://%'" .
+			" GROUP BY 1" .
+			" ORDER BY 1"
+		)->execute()->fetchOneColumn();
+
+		return array_combine($folders, $folders);
+	}
+
+	// Generate a filtered, sourced, privacy-checked list of media objects - for the media list.
 	public static function mediaList($folder, $subfolders, $sort, $filter) {
 		$sql = 
 			"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename" .
 			" FROM `##media`" .
 			" WHERE m_file=?" .
-			" AND   (REPLACE(m_filename, '\\\\', '/') LIKE CONCAT(?, '%', ?, '%')" .
+			" AND   (m_filename LIKE CONCAT(?, '%', ?, '%')" .
 			"  OR   m_filename LIKE CONCAT('http://%', ?, '%')" .
 			"  OR   m_filename LIKE CONCAT('https://%', ?, '%')" .
 			"  OR   m_titl LIKE CONCAT('%', ?, '%')" .
@@ -66,7 +80,7 @@ class WT_Query_Media {
 			// subfolders are included by default
 			break;
 		case 'exclude':
-			$sql .= " AND REPLACE(m_filename, '\\\\', '/') NOT LIKE CONCAT(?, '%/%')";
+			$sql .= " AND m_filename NOT LIKE CONCAT(?, '%/%')";
 			$args[] = $folder;
 			break;
 		default:
