@@ -108,9 +108,9 @@ case 'load_json':
 		$ARGS2 = array($media_folder, $media_path);
 
 		if ($subfolders=='exclude') {
-			$SELECT1 .= " AND m_filename NOT LIKE CONCAT(?, '%/%')" .
+			$SELECT1 .= " AND m_filename NOT LIKE CONCAT(?, '%/%')";
 			$ARGS1[] = $media_path;
-			$SELECT2 .= " AND m_filename NOT LIKE CONCAT(?, '%/%')" .
+			$SELECT2 .= " AND m_filename NOT LIKE CONCAT(?, '%/%')";
 			$ARGS2[] = $media_path;
 		}
 
