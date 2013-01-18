@@ -62,7 +62,7 @@ case 'add':
 			)->execute(array(WT_GED_ID, safe_POST('xref')));
 		}
 		WT_DB::prepare(
-			"REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, ?, ?, ?)"
+			"REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, NULLIF(?, ''), NULLIF(?, ''), ?)"
 		)->execute(array(WT_GED_ID, safe_POST_xref('xref'), safe_POST('tag_type'), safe_POST('resn')));
 	}
 	// Reload the page, so that the new privacy restrictions are reflected in the header

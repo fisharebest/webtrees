@@ -1,7 +1,6 @@
 <?php
 // Update the database schema from version 15 to 16
 // - delete old config settings
-// - add extra columns to wt_default_resn
 // - increase size of session_id column, to account for new session hash algorithms
 //
 // The script should assume that it can be interrupted at

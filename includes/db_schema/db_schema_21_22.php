@@ -34,6 +34,10 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+// Data fix for bug #1072477
+self::exec("UPDATE `##default_resn` SET xref    =NULL WHERE xref    =''");
+self::exec("UPDATE `##default_resn` SET tag_type=NULL WHERE tag_type=''");
+
 // Delete old settings
 self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('AUTO_GENERATE_THUMBS', 'POSTAL_CODE', 'MEDIA_DIRECTORY_LEVELS')");
 
