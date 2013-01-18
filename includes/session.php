@@ -230,6 +230,8 @@ if (file_exists(WT_ROOT.'data/config.ini.php')) {
 	exit;
 }
 
+$WT_REQUEST=new Zend_Controller_Request_Http();
+
 require WT_ROOT.'includes/authentication.php';
 
 // Connect to the database
@@ -293,8 +295,6 @@ if (stristr($_SERVER['HTTP_USER_AGENT'], 'Opera')) {
 } else {
 	$BROWSERTYPE = 'other';
 }
-
-$WT_REQUEST=new Zend_Controller_Request_Http();
 
 $rule=WT_DB::prepare(
 	"SELECT SQL_CACHE rule FROM `##site_access_rule`".
