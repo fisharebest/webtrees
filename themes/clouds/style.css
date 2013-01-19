@@ -1632,6 +1632,8 @@ padding:2px 5px;
 background:#eee;
 }
 
+.ui-autocomplete a.ui-state-focus {color:#ff0000;}
+
 .ui-sortable li{
 list-style-type: none;
 }

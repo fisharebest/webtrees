@@ -431,6 +431,7 @@ table#story_table {width:100%}
 .ui-autocomplete li {margin:0; padding:2px 5px; cursor:default; display:block; font:menu;font-size:12px; line-height:14px; overflow:hidden;}
 .ui-autocomplete-loading {background:white url(images/indicator.gif) right center no-repeat;}
 .ui-autocomplete li:nth-child(odd) {background-color:#eee;}
+.ui-autocomplete a.ui-state-focus {color:#ff0000;}
 
 /* IMAGE SPRITE */
 [class^="icon-"], [class*=" icon-"] {display:inline-block; background:url('images/admin_icon_sprite.png') no-repeat; vertical-align:middle;}

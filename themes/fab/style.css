@@ -454,13 +454,9 @@ right:10px;
 	background-color:#eee;
 }
 
-.ui-autocomplete li  a:hover{
+.ui-autocomplete a.ui-state-focus {
 	background:DarkSlateGray;
 	color:white;
-}
-
-.ui-autocomplete a.ui-state-hover {
-	font-weight:bold !important;
 }
 
 .ui-sortable li{

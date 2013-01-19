@@ -1166,8 +1166,8 @@ a.showit:hover > span {
 	background-color:#eee;
 }
 
-.ui-autocomplete a.ui-state-hover {
-	font-weight:bold !important;
+.ui-autocomplete a.ui-state-focus {
+	color:#ff0000 !important;
 }
 
 .ui-sortable li{
