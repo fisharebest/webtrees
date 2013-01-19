@@ -24,10 +24,10 @@ require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $files         = safe_GET('files', array('local', 'external', 'unused'), 'local'); // type of file/object to include
 $media_folders = all_media_folders();
-$media_folder  = safe_GET('media_folder', $media_folders, reset($media_folders));      // family tree setting MEDIA_DIRECTORY
+$media_folder  = safe_GET('media_folder', $media_folders, reset($media_folders));  // family tree setting MEDIA_DIRECTORY
 $media_paths   = media_paths($media_folder);
 $media_paths   = array_combine($media_paths, $media_paths);
-$media_path    = safe_GET('media_path', $media_paths);                             // prefix to filename
+$media_path    = safe_GET('media_path', $media_paths, reset($media_paths));        // prefix to filename
 $subfolders    = safe_GET('subfolders', array('include', 'exclude'), 'include');   // subfolders within $media_path
 $action        = safe_GET('action');
 
