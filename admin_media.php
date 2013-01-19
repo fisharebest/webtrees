@@ -470,6 +470,11 @@ function media_object_info(WT_Media $media) {
 // Start here
 ////////////////////////////////////////////////////////////////////////////////
 
+// Preserver the pagination/filtering/sorting between requests, so that the
+// browser’s back button works.  Pagination is dependent on the currently
+// selected folder.
+$table_id=md5($files.$media_folder.$media_path.$subfolders);
+
 $controller=new WT_Controller_Base();
 $controller
 	->requireAdminLogin()
@@ -477,7 +482,7 @@ $controller
 	->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 	->pageHeader()
 	->addInlineJavascript('
-	var oTable=jQuery("#media-table-' . $files . '").dataTable( {
+	var oTable=jQuery("#media-table-' . $table_id . '").dataTable( {
 		sDom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 		bProcessing: true,
 		bServerSide: true,
@@ -489,7 +494,7 @@ $controller
 		iDisplayLength: 10,
 		sPaginationType: "full_numbers",
 		bStateSave: true,
-		iCookieDuration: 1800,
+		iCookieDuration: 300,
 		aoColumns: [
 			{},
 			{bSortable: false},
@@ -557,7 +562,7 @@ $controller
 </form>
 <br>
 <br>
-<table class="media_table" id="media-table-<?php echo $files ?>">
+<table class="media_table" id="media-table-<?php echo $table_id ?>">
 	<thead>
 		<tr>
 			<th><?php echo WT_I18N::translate('Media file'); ?></th>
