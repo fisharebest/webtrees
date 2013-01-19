@@ -99,7 +99,7 @@ if ($action == "download") {
 $controller->pageHeader();
 
 ?>
-<h2><?php echo WT_I18N::translate('Download GEDCOM'); ?> - <?php echo htmlspecialchars(WT_GEDCOM); ?></h2>
+<h2><?php echo $controller->getPageTitle(); ?> - <?php echo htmlspecialchars(WT_GEDCOM); ?></h2>
 <form name="convertform" method="get">
 	<input type="hidden" name="action" value="download">
 	<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">

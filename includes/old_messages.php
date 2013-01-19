@@ -98,6 +98,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Files are stored in the %s directory.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Forward slashes : /');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('GEDCOM record last change date on lists');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('GEDCOM record successfully deleted.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Genealogy from [%s]');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Generate thumbnail automatically from ');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Here you can specify if the counts of indis and families connected to the place is displayed. Now if GEDCOM file contains many people is recomended to turn it off.');
@@ -266,6 +267,8 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Use this link to add a new shared note to your database without linking the note to any record.<br /><br />The new note will appear in the Shared Note list, but will not appear on any charts or anywhere else in the program until it is linked to an individual, family or event.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Use this link to add a new source to your database without linking the source to a source citation in another record.  The new source will appear in the source list, but will not appear on any charts or anywhere else in the program until it is linked up to a source citation.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('View server folder');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Web URL');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Web home page');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('When a multimedia link is found starting with for example http://, ftp://, mms:// it will not be altered when set to <b>Yes</b>. For example, http://www.myfamily.com/photo/dad.jpg will stay http://www.myfamily.com/photo/dad.jpg.  When set to <b>No</b>, the link will be handled as a standard reference and the media depth will be used.  For example: http://www.myfamily.com/photo/dad.jpg will be changed to ./media/dad.jpg');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('When an image is in the protected Media directory, should its thumbnail be protected as well?');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('When the Media Firewall is enabled, Multi-Media files can be stored in a server directory that is not accessible from the Internet.<br /><br />These buttons allow you to easily move an entire Media directory structure between the protected (not web-addressable) <b>%s%s</b> and the normal <b>%s</b> directories.');
@@ -285,5 +288,3 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Your system can generate thumbnails for certain types of images automatically.  There may be support for BMP, GIF, JPG, and PNG files.  The types that your system supports are listed beside the checkbox.<br /><br />By clicking this checkbox, you signal the system that you are uploading images of this type and that you want it to try to generate thumbnails for them.  Leave the box unchecked if you want to provide your own thumbnails.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Your system is almost ready for use.  The final step is to download a configuration file <b>%1$s</b> and copy this to the <b>%2$s</b> directory on your webserver.  This is a security measure to ensure only the website\'s owner can configure it.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('see the wiki');
-/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Web URL');
-/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Web home page');
