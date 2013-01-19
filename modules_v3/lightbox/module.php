@@ -46,6 +46,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 			$this->config();
 			break;
 		case 'js':
+			Zend_Session::writeClose();
 			// tell browser to cache this javascript for 5 minutes
 			$expireOffset = 60 * 5;
 			$expireHeader = gmdate("D, d M Y H:i:s", WT_TIMESTAMP + $expireOffset) . " GMT";
