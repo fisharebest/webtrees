@@ -5,7 +5,7 @@
 // about the family tree.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
@@ -2718,6 +2718,8 @@ class WT_Stats {
 					$return .= $child1->format_list('span', false, $child1->getFullName());
 					$return .= "<br><a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>";
 					return $return;
+				} else {
+					return WT_I18N::translate('This information is private and cannot be shown.');
 				}
 			}
 		}
