@@ -255,7 +255,8 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		echo '<div class="field"><a href="', htmlspecialchars($fact->getDetail()), '">', htmlspecialchars($fact->getDetail()), '</a></div>';
 		break;
 	case 'TEXT': // 0 SOUR / 1 TEXT
-		echo '<div class="field">', nl2br(htmlspecialchars($fact->getDetail()), false), '</div>';
+		// PHP5.3 echo '<div class="field">', nl2br(htmlspecialchars($fact->getDetail()), false), '</div>';
+		echo '<div class="field">', nl2br(htmlspecialchars($fact->getDetail())), '</div>';
 		break;
 	default:
 		// Display the value for all other facts/events

@@ -313,7 +313,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 				echo '<a href="#body">', WT_I18N::translate('back to top'), '</a>';
 				echo '</div>';
 				echo '</div>';
-				echo '<div class="faq_body">', substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody, false), '</div>';
+				// PHP5.3 echo '<div class="faq_body">', substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody, false), '</div>';
+				echo '<div class="faq_body">', substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody), '</div>';
 				echo '<hr>';
 			}
 		}

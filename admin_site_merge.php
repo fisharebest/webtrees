@@ -128,6 +128,7 @@ if ($action!='choose') {
 								$skip2[] = $j;
 								$equal_count++;
 								echo '<tr><td>', WT_I18N::translate($fact1['fact']);
+								// PHP5.3 echo '<input type="hidden" name="keep1[]" value="', $i, '"></td><td>', nl2br($fact1['subrec']), '</td></tr>';
 								echo '<input type="hidden" name="keep1[]" value="', $i, '"></td><td>', nl2br($fact1['subrec'], false), '</td></tr>';
 							}
 						}
@@ -144,7 +145,8 @@ if ($action!='choose') {
 					foreach ($facts1 as $i=>$fact1) {
 						if (($fact1['fact']!='CHAN')&&(!in_array($i, $skip1))) {
 							echo '<tr><td><input type="checkbox" name="keep1[]" value="', $i, '" checked="checked"></td>';
-							echo '<td>', nl2br($fact1['subrec'], false), '</td></tr>';
+							// PHP5.3 echo '<td>', nl2br($fact1['subrec'], false), '</td></tr>';
+							echo '<td>', nl2br($fact1['subrec']), '</td></tr>';
 						}
 					}
 					echo '</table>';
@@ -153,7 +155,8 @@ if ($action!='choose') {
 					foreach ($facts2 as $j=>$fact2) {
 						if (($fact2['fact']!='CHAN')&&(!in_array($j, $skip2))) {
 							echo '<tr><td><input type="checkbox" name="keep2[]" value="', $j, '" checked="checked"></td>';
-							echo '<td>', nl2br($fact2['subrec'], false), '</td></tr>';
+							// PHP5.3 echo '<td>', nl2br($fact2['subrec'], false), '</td></tr>';
+							echo '<td>', nl2br($fact2['subrec']), '</td></tr>';
 						}
 					}
 					echo '</table>';
