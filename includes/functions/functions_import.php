@@ -566,7 +566,7 @@ function reformat_record_import($rec) {
 		case 'CONT':
 		case 'FILE':
 			// Strip off the user-defined path prefix
-			if (strpos($data, $GEDCOM_MEDIA_PATH)===0) {
+			if ($GEDCOM_MEDIA_PATH && strpos($data, $GEDCOM_MEDIA_PATH)===0) {
 				$data=substr($data, strlen($GEDCOM_MEDIA_PATH));
 			}
 			// convert backslashes in filenames to forward slashes
