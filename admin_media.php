@@ -490,7 +490,6 @@ $controller
 		'.WT_I18N::datatablesI18N(array(5,10,20,50,100,500,1000,-1)).',
 		bJQueryUI: true,
 		bAutoWidth:false,
-		aaSorting: [[ 0, "desc" ]],
 		iDisplayLength: 10,
 		sPaginationType: "full_numbers",
 		bStateSave: true,
