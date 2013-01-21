@@ -94,7 +94,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		while ($all_media) {
 			$n=array_rand($all_media);
 			$media=WT_Media::getInstance($all_media[$n]);
-			if ($media->canDisplayDetails() && !$media->isExternal() && $media->fileExists('thumb')) {
+			if ($media->canDisplayDetails() && !$media->isExternal()) {
 				// Check if it is linked to a suitable individual
 				foreach ($media->fetchLinkedIndividuals() as $indi) {
 					if (
