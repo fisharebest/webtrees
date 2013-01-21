@@ -3059,6 +3059,7 @@ html[dir="rtl"] input:required:valid, html[dir="rtl"] textarea:required:valid, h
 #edit_interface-page input[type="text"][id*="SOUR"], #edit_interface-page input[type="text"][id*="REPO"],#edit_interface-page input[type="text"][id*="OBJE"],#edit_interface-page input[type="text"][id*="FAMC"],#edit_interface-page input[type="text"][id*="ASSO"],#edit_interface-page input[type="text"][id^="AGE"],#edit_interface-page input[type="text"][id*="SHARED_NOTE"]{width:70px;}
 #edit_interface-page input[type="text"][id$="DATE"] {width:160px;}
 #edit_interface-page input[type="text"][id^="TIME"] {width:100px;}
+#edit_interface-page input[type="text"][id*="OBJE_FILE"] {width:200px;}
 #edit_interface-page input[id*="TEXT"]{height:140px;width:440px;} 
 #edit_interface-page textarea {margin:0 5px;width:440px;}
 #edit_interface-page textarea[id*="NOTE"]{height:240px;}
