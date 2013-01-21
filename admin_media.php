@@ -526,7 +526,9 @@ $controller
 					case 'local':
 					case 'unused':
 						$extra = 'onchange="this.form.submit();"';
-						echo WT_DATA_DIR;
+						echo
+							'<span dir="ltr">', // The full path will be LTR or mixed LTR/RTL.  Force LTR.
+							WT_DATA_DIR;
 						// Don’t show a list of media folders if it just contains one folder
 						if (count($media_folders)>1) {
 							echo '&nbsp;', select_edit_control('media_folder', $media_folders, null, $media_folder, $extra);
@@ -540,6 +542,7 @@ $controller
 							echo $media_path, '<input type="hidden" name="media_path" value="', htmlspecialchars($media_path), '">';
 						}
 						echo
+							'</span>',
 							'<div>',
 							'<input type="radio" name="subfolders" value="include"', ($subfolders=='include' ? ' checked="checked"' : ''), ' onchange="this.form.submit();">',
 							WT_I18N::translate('Include subfolders'),
