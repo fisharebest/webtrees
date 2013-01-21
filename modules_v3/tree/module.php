@@ -133,6 +133,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			break;
 
 		case 'getDetails':
+			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
 			$pid = safe_GET('pid');
 			$i = safe_GET('instance');
