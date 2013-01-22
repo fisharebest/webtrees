@@ -453,10 +453,10 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				if (!empty($this_person)) {
 					$class = 'pedigree_image';
 					if (in_array($gmark['fact'], array('CENS', 'BIRT', 'BAPM', 'CHR', '_MILI', 'OCCU', 'RESI', 'DEAT', 'CREM', 'BURI', 'RETI'))) {
-						$image = "<i class='icon_".$gmark['fact']."'></i>";
+						$image = addslashes('<i class="icon_'.$gmark['fact'].'"></i>');
 					} else {
 						if ($SHOW_HIGHLIGHT_IMAGES) {
-							$image = $this_person->displayImage();
+							$image = addslashes($this_person->displayImage());
 						} else {
 							$image = '';
 						}
@@ -467,7 +467,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				if ($person) {
 					if ($SHOW_HIGHLIGHT_IMAGES) {
 						if (!empty($gmark['name'])) {
-							$image2 = $person->displayImage();
+							$image2 = addslashes($person->displayImage());
 						} else {
 							$image2 = '';
 						}
