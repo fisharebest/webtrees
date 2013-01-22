@@ -192,7 +192,7 @@ if ($pid=="") {
 							<?php
 							if (($people["husb"]->canDisplayDetails())) {
 							?>
-							<a href='javaScript:opener.insertRowToTable("<?php
+							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["husb"]->getXref() ; // pid = PID
 								?>", "<?php
 								// echo $people["husb"]->getFullName(); // nam = Name
@@ -272,7 +272,7 @@ if ($pid=="") {
 							<?php
 							if (($people["wife"]->canDisplayDetails())) {
 								?>
-							<a href='javaScript:opener.insertRowToTable("<?php
+							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["wife"]->getXref() ; // pid = PID
 								?>", "<?php
 								// if ($married>=0 && isset($nam[1])) {
@@ -375,7 +375,7 @@ if ($pid=="") {
 									<?php
 									if (($child->canDisplayDetails())) {
 										?>
-										<a href='javaScript:opener.insertRowToTable("<?php
+										<a href='#' onclick='opener.insertRowToTable("<?php
 												echo $child->getXref() ; // pid = PID
 											?>", "<?php
 											//if ($married>=0 && isset($nam[1])) {
@@ -487,7 +487,7 @@ if ($pid=="") {
 							<?php
 							if (($people["husb"]->canDisplayDetails())) {
 								?>
-								<a href='javaScript:opener.insertRowToTable("<?php
+								<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["husb"]->getXref() ; // pid = PID
 								?>", "<?php
 									//echo $people["husb"]->getFullName(); // nam = Name
@@ -576,7 +576,7 @@ if ($pid=="") {
 							<?php
 							if (($people["wife"]->canDisplayDetails())) {
 							?>
-							<a href='javaScript:opener.insertRowToTable("<?php
+							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["wife"]->getXref() ; // pid = PID
 								?>", "<?php
 								// if ($married>=0 && isset($nam[1])) {
@@ -668,7 +668,7 @@ if ($pid=="") {
 								<?php
 								if (($child->canDisplayDetails())) {
 								?>
-								<a href='javaScript:opener.insertRowToTable("<?php
+								<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $child->getXref() ; // pid = PID
 									?>", "<?php
 										//echo $child->getFullName(); // nam = Name
@@ -766,7 +766,7 @@ if ($pid=="") {
 							<?php
 							if (($people["husb"]->canDisplayDetails())) {
 							?>
-							<a href='javaScript:opener.insertRowToTable("<?php
+							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["husb"]->getXref() ; // pid = PID
 								?>", "<?php
 									//echo $people["husb"]->getFullName(); // nam = Name
@@ -861,7 +861,7 @@ if ($pid=="") {
 							<?php
 							if (($people["wife"]->canDisplayDetails())) {
 							?>
-								<a href='javaScript:opener.insertRowToTable("<?php
+								<a href='#' onclick='opener.insertRowToTable("<?php
 										echo $people["wife"]->getXref() ; // pid = PID
 								?>", "<?php
 								// if ($married>=0 && isset($nam[1])) {
@@ -958,7 +958,7 @@ if ($pid=="") {
 							<?php
 							if (($child->canDisplayDetails())) {
 							?>
-							<a href='javaScript:opener.insertRowToTable("<?php
+							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $child->getXref() ; // pid = PID
 								?>", "<?php
 								// if ($married>0 && isset($nam[1])) {

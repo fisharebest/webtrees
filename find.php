@@ -761,6 +761,3 @@ if ($action=="filter") {
 }
 echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 echo "</div>"; // Close div="find-page"
-
-// Set focus to the input field
-if ($type!='facts') echo '<script>', 'document.filter', $type, '.filter.focus();', '</script>';

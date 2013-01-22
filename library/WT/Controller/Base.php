@@ -2,7 +2,7 @@
 // Base controller for all other controllers
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -51,9 +51,9 @@ class WT_Controller_Base {
 	public function __construct() {
 		// (almost?) every page uses these scripts....
 		$this
-			->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
 			->addExternalJavascript(WT_JQUERY_URL)
-			->addExternalJavascript(WT_JQUERYUI_URL);
+			->addExternalJavascript(WT_JQUERYUI_URL)
+			->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js');
 	}
 
 	// Shutdown activity

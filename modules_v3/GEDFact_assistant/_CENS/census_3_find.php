@@ -190,6 +190,3 @@ if ($action=="filter") {
 }
 echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 echo "</div>"; // Close div that centers table
-
-// Set focus to the input field
-echo '<script>document.filterindi.filter.focus();</script>';

@@ -179,7 +179,7 @@ if (!defined('WT_WEBTREES')) {
 									<?php
 									if (($people["husb"]->canDisplayDetails())) {
 									?>
-									<a href='javaScript:insertRowToTable("<?php
+									<a href='#' onclick='insertRowToTable("<?php
 											echo $people["husb"]->getXref() ; // pid = PID
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
@@ -311,7 +311,7 @@ if (!defined('WT_WEBTREES')) {
 									<?php
 									if (($people["wife"]->canDisplayDetails())) {
 										?>
-									<a href='javaScript:insertRowToTable2("<?php
+									<a href='#' onclick='insertRowToTable2("<?php
 											echo $people["wife"]->getXref() ;  // pid = PID
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
@@ -456,7 +456,7 @@ if (!defined('WT_WEBTREES')) {
 										<?php
 										if (($child->canDisplayDetails())) {
 											?>
-											<a href='javaScript:insertRowToTable("<?php
+											<a href='#' onclick='insertRowToTable("<?php
 													echo $child->getXref(); // pid = PID
 												?>", "<?php
 													echo addslashes($fulln); // nam = Full Name
@@ -619,7 +619,7 @@ if (!defined('WT_WEBTREES')) {
 									<?php
 									if (($people["husb"]->canDisplayDetails())) {
 									?>
-									<a href='javaScript:insertRowToTable("<?php
+									<a href='#' onclick='insertRowToTable("<?php
 											echo $people["husb"]->getXref(); // pid = PID
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
@@ -763,7 +763,7 @@ if (!defined('WT_WEBTREES')) {
 									<?php
 									if (($people["wife"]->canDisplayDetails())) {
 									?>
-									<a href='javaScript:insertRowToTable("<?php
+									<a href='#' onclick='insertRowToTable("<?php
 											echo $people["wife"]->getXref() ; // pid = PID
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
@@ -897,7 +897,7 @@ if (!defined('WT_WEBTREES')) {
 										<?php
 										if (($child->canDisplayDetails())) {
 										?>
-										<a href='javaScript:insertRowToTable("<?php
+										<a href='#' onclick='insertRowToTable("<?php
 												echo $child->getXref() ; // pid = PID
 											?>", "<?php
 												echo addslashes($fulln); // nam = Full Name
@@ -1055,7 +1055,7 @@ if (!defined('WT_WEBTREES')) {
 									<?php
 									if (($people["husb"]->canDisplayDetails())) {
 									?>
-									<a href='javaScript:insertRowToTable("<?php
+									<a href='#' onclick='insertRowToTable("<?php
 											echo $people["husb"]->getXref() ; // pid = PID
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
@@ -1200,7 +1200,7 @@ if (!defined('WT_WEBTREES')) {
 									<?php
 									if (($people["wife"]->canDisplayDetails())) {
 									?>
-										<a href='javaScript:insertRowToTable("<?php
+										<a href='#' onclick='insertRowToTable("<?php
 												echo $people["wife"]->getXref() ; // pid = PID
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
@@ -1338,7 +1338,7 @@ if (!defined('WT_WEBTREES')) {
 									<?php
 									if (($child->canDisplayDetails())) {
 									?>
-									<a href='javaScript:insertRowToTable("<?php
+									<a href='#' onclick='insertRowToTable("<?php
 											echo $child->getXref() ; // pid = PID
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
