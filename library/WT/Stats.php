@@ -253,51 +253,6 @@ class WT_Stats {
 		}
 	}
 
-	function gedcomHighlight() {
-		$highlight=false;
-		if (file_exists("images/gedcoms/{$this->_gedcom}.jpg")) {
-			$highlight="images/gedcoms/{$this->_gedcom}.jpg";
-		}
-		elseif (file_exists("images/gedcoms/{$this->_gedcom}.png")) {
-			$highlight="images/gedcoms/{$this->_gedcom}.png";
-		}
-		if (!$highlight) {return '';}
-		$imgsize=findImageSize($highlight);
-		return "<a href=\"index.php?ctype=gedcom&amp;ged={$this->_gedcom_url}\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" class=\"gedcom_highlight\" alt=\"\" /></a>";
-	}
-
-	function gedcomHighlightLeft() {
-		$highlight=false;
-		if (file_exists("images/gedcoms/{$this->_gedcom}.jpg")) {
-			$highlight="images/gedcoms/{$this->_gedcom}.jpg";
-		} else {
-			if (file_exists("images/gedcoms/{$this->_gedcom}.png")) {
-				$highlight="images/gedcoms/{$this->_gedcom}.png";
-			}
-		}
-		if (!$highlight) {
-			return '';
-		}
-		$imgsize=findImageSize($highlight);
-		return "<a href=\"index.php?ctype=gedcom&amp;ged={$this->_gedcom_url}\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" align=\"left\" class=\"gedcom_highlight\" alt=\"\" /></a>";
-	}
-
-	function gedcomHighlightRight() {
-		$highlight=false;
-		if (file_exists("images/gedcoms/{$this->_gedcom}.jpg")) {
-			$highlight="images/gedcoms/{$this->_gedcom}.jpg";
-		} else {
-			if (file_exists("images/gedcoms/{$this->_gedcom}.png")) {
-				$highlight="images/gedcoms/{$this->_gedcom}.png";
-			}
-		}
-		if (!$highlight) {
-			return '';
-		}
-		$imgsize=findImageSize($highlight);
-		return "<a href=\"index.php?ctype=gedcom&amp;ged={$this->_gedcom_url}\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" align=\"right\" class=\"gedcom_highlight\" alt=\"\" /></a>";
-	}
-
 	function gedcomRootID() {
 		$root = WT_Person::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
 		$root = substr($root, 0, stripos($root, "@") );
