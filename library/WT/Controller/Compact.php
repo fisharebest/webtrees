@@ -64,16 +64,11 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 			$addname=$indi->getAddName();
 
 			if ($this->show_thumbs && $SHOW_HIGHLIGHT_IMAGES) {
-				$mediaobject=$indi->findHighlightedMedia();
 				$birth_date=$indi->getBirthDate();
 				$death_date=$indi->getDeathDate();
 				$img_title=$name.' - '.$birth_date->Display(false).' - '.$death_date->Display(false);
 				$img_id='box-'.$pid;
-				if ($mediaobject) {
-					$text=$mediaobject->displayImage();
-				} else {
-					$text=display_silhouette(array('sex'=>$indi->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title));
-				}
+				$text=$indi->displayImage();
 			}
 
 			$text .= '<a class="name1" href="'.$indi->getHtmlUrl().'">';
@@ -101,9 +96,9 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 		}
 		// -- box size
 		if ($n==1) {
-			$text='<td class="person_box'.$isF.'" style="text-align:center; vertical-align:top;">'.$text.'</td>';
+			$text='<td class="person_box'.$isF.' person_box_template" style="text-align:center; vertical-align:top;">'.$text.'</td>';
 		} else {
-			$text='<td class="person_box'.$isF.'" style="text-align:center; vertical-align:top;" width="15%">'.$text.'</td>';
+			$text='<td class="person_box'.$isF.' person_box_template" style="text-align:center; vertical-align:top;" width="15%">'.$text.'</td>';
 		}
 		return $text;
 	}

@@ -181,12 +181,8 @@ echo
 	'<div id="indi_left">',
 	'<div id="indi_header">';
 if ($controller->record->canDisplayDetails()) {
-	echo '<div id="indi_mainimage" '; // Display highlight image
-	if ($USE_SILHOUETTE) {echo 'style="min-width:', $THUMBNAIL_WIDTH, 'px;">';} else {echo '>';}
-	if ($controller->canShowHighlightedObject()) {
-		echo $controller->getHighlightedObject();
-	}
-	echo '</div>'; // close #indi_mainimage
+	// Highlight image or silhouette
+	echo '<div id="indi_mainimage">', $controller->record->displayImage(), '</div>';
 	$globalfacts=$controller->getGlobalFacts();
 	echo '<div id="header_accordion1">'; // contain accordions for names
 	echo '<h3 class="name_one ', $controller->getPersonStyle($controller->record), '"><span>', $controller->record->getFullName(), '</span>'; // First name accordion header

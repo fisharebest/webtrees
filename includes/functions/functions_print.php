@@ -156,17 +156,11 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		}
 	}
 	//-- find the name
-		$name = $person->getFullName();
-		$shortname = $person->getShortName();
+	$name = $person->getFullName();
+	$shortname = $person->getShortName();
 	
 	if ($SHOW_HIGHLIGHT_IMAGES) {
-		$mediaobject=$person->findHighlightedMedia();
-		$img_id='box-'.$boxID.'.-thumb';
-		if ($mediaobject) {
-			$thumbnail=$mediaobject->displayImage();
-		} else {
-			$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name));
-		}
+		$thumbnail = $person->displayImage();
 	} else {
 		$thumbnail = '';
 	}

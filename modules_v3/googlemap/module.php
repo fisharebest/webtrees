@@ -1290,15 +1290,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$event = '<img src=\"'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/sq'.$curgen.'.png\" width=\"10\" height=\"10\">'.
 					'<strong>&nbsp;'.$relationship.':&nbsp;</strong>';
 				// add thumbnail image
-				$image = '';
 				if ($SHOW_HIGHLIGHT_IMAGES) {
-					$mediaobject = $person->findHighlightedMedia();
-					if ($mediaobject) {
-						$image=addslashes($mediaobject->displayImage());
-					} else {
-						$sex=$person->getSex();
-						$image=display_silhouette(array('sex'=>$sex,'display_type'=>'googlemap')); // may return ''
-					}
+					$image = $person->displayImage();
+				} else {
+					$image = '';
 				}
 				// end of add image
 

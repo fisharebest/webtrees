@@ -148,37 +148,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* check if we can show the highlighted media object
-	* @return boolean
-	*/
-	function canShowHighlightedObject() {
-		global $SHOW_HIGHLIGHT_IMAGES, $USE_SILHOUETTE;
-
-		if (($this->record->canDisplayDetails()) && $SHOW_HIGHLIGHT_IMAGES) {
-			if ($this->record->findHighlightedMedia()) {
-				return true;
-			}
-		}
-		return $USE_SILHOUETTE;
-	}
-
-	/**
-	* get the highlighted object HTML
-	* @return string HTML string for the <img> tag
-	*/
-	function getHighlightedObject() {
-		if ($this->canShowHighlightedObject()) {
-			$mediaobject=$this->record->findHighlightedMedia();
-			if ($mediaobject) {
-				return $mediaobject->displayImage();
-			}
-		}
-
-		return display_silhouette(array('sex'=>$this->record->getSex()));
-
-	}
-
-	/**
 	* print information for a name record
 	*
 	* Called from the individual information page

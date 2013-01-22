@@ -260,8 +260,8 @@ class WT_Person extends WT_GedcomRecord {
 		// Iterate over all of the media items for the person
 		preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcomRecord(), $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
-			$media=WT_Media::getInstance($match[2]);
-			if (!$media || !$media->canDisplayDetails()) {
+			$media = WT_Media::getInstance($match[2]);
+			if (!$media || !$media->canDisplayDetails() || $media->isExternal() || !file_exists($media->getServerFilename('thumb'))) {
 				continue;
 			}
 			$level = $match[1];
@@ -293,6 +293,23 @@ class WT_Person extends WT_GedcomRecord {
 		if ($objectC) return $objectC;
 
 		return null;
+	}
+
+	// Display the prefered image for this individual.
+	// Use an icon if no image is available.
+	public function displayImage() {
+		global $USE_SILHOUETTE;
+
+		$media = $this->findHighlightedMedia();
+		if ($media) {
+			// Thumbnail exists - use it.
+			return $media->displayImage();
+		} elseif ($USE_SILHOUETTE) {
+			// No thumbnail exists - use an icon
+			return '<i class="icon-silhouette-' . $this->getSex() . '"></i>';
+		} else {
+			return '';
+		}
 	}
 
 	/**

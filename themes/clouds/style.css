@@ -1704,6 +1704,8 @@ overflow:visible !important;
 .person_box_template  .details div {display:block;}
 .person_box_template img {float:left; max-height:50px; max-width:37px; margin:0 3px 0 0;}
 html[dir="rtl"] .person_box_template img {float:right; margin:0 0 0 3px;}
+.person_box_template i {float:left;}
+html[dir="rtl"] .person_box_template i {float:right;}
 
 .gedcom_favorites_block .person_box .details2,
 .gedcom_favorites_block .person_boxF.details2,
@@ -2946,9 +2948,6 @@ html[dir='rtl'] #edituser-table .value {margin:0 260px 0 0;}
 .icon-darrow{width:20px;height:20px;background-image:url(images/darrow.png);}
 a.icon-darrow:hover{width:20px;height:20px;background-image:url(images/darrow2.png);}
 .icon-ddarrow{width:20px;height:20px;background-image:url(images/ddarrow.png);}
-.icon-default_image_F{width:99px;height:106px;background-image:url(images/silhouette_female.png);}
-.icon-default_image_M{width:99px;height:99px;background-image:url(images/silhouette_male.png);}
-.icon-default_image_U{width:100px;height:97px;background-image:url(images/silhouette_unknown.png);}
 .icon-edit_indi{width:22px;height:22px;background-image:url(images/edit_indi.png);}
 .icon-email{width:16px;height:16px;background-image:url(images/email.png);}
 .icon-fam-list{width:22px;height:22px;background-image:url(images/sfamily.png);}
@@ -3017,6 +3016,16 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(images/uarrow2.p
 .icon-wiki{width:16px;height:16px;background-image:url(images/w_button.png);}
 .icon-zoomin{width:25px;height:25px;background-image:url(images/zoomin.png);}
 .icon-zoomout{width:25px;height:25px;background-image:url(images/zoomout.png);}
+
+/* Silhouettes on charts */
+.icon-silhouette-F {width:37px; height:50px; background-image:url(images/silhouette_female_small.png);}
+.icon-silhouette-M {width:37px; height:50px; background-image:url(images/silhouette_male_small.png);}
+.icon-silhouette-U {width:37px; height:50px; background-image:url(images/silhouette_unknown_small.png);}
+/* Silhouettes on individual pages */
+#indi_mainimage {min-width:100px;}
+#indi_mainimage .icon-silhouette-F {width: 99px; height:106px; background-image:url(images/silhouette_female.png);}
+#indi_mainimage .icon-silhouette-M {width: 99px; height: 99px; background-image:url(images/silhouette_male.png);}
+#indi_mainimage .icon-silhouette-U {width:100px; height: 97px; background-image:url(images/silhouette_unknown.png);}
 
 [class^="icon-mime-"], [class*=" icon-mime-"] {display:inline-block;background-image:url(images/icon-mime-sprite.png);background-color:transparent;background-repeat:no-repeat;width:48px;height:48px;}
 /* Generic MIME types */

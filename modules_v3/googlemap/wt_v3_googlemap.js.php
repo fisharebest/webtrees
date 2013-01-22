@@ -456,13 +456,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 						$image = "<i class='icon_".$gmark['fact']."'></i>";
 					} else {
 						if ($SHOW_HIGHLIGHT_IMAGES) {
-							$mediaobject = $this_person->findHighlightedMedia();
-							if ($mediaobject) {
-								$image=addslashes($mediaobject->displayImage());
-							} else {
-								$sex=$this_person->getSex();
-								$image=display_silhouette(array('sex'=>$sex, 'display_type'=>'googlemap'));
-							}
+							$image = $this_person->displayImage();
 						} else {
 							$image = '';
 						}
@@ -473,13 +467,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				if ($person) {
 					if ($SHOW_HIGHLIGHT_IMAGES) {
 						if (!empty($gmark['name'])) {
-							$mediaobject = $person->findHighlightedMedia();
-							if ($mediaobject) {
-								$image2=addslashes($mediaobject->displayImage());
-							} else {
-								$sex=$this_person->getSex();
-								$image2=display_silhouette(array('sex'=>$sex, 'display_type'=>'googlemap'));
-							}
+							$image2 = $person->displayImage();
 						} else {
 							$image2 = '';
 						}
