@@ -766,7 +766,7 @@ function printSourceStructure($textSOUR) {
 	}
 
 	if ($textSOUR['QUAY']!='') {
-		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('QUAY').':</span> <span class="field" dir="auto">'.$textSOUR['QUAY'].'</span></div>';
+		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('QUAY').':</span> <span class="field" dir="auto">'.WT_Gedcom_Code_Quay::getValue($textSOUR['QUAY']).'</span></div>';
 	}
 
 	return $html;

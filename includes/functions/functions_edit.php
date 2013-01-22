@@ -79,7 +79,7 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 		$html='<option value=""></option>';
 	}
 	foreach ($values as $key=>$value) {
-		if ($key==$selected) {
+		if ((string)$key===$selected) { // Beware PHP array keys are cast to integers!  Cast them back
 			$html.='<option value="'.htmlspecialchars($key).'" selected="selected" dir="auto">'.htmlspecialchars($value).'</option>';
 		} else {
 			$html.='<option value="'.htmlspecialchars($key).'" dir="auto">'.htmlspecialchars($value).'</option>';
@@ -122,7 +122,7 @@ function radio_buttons($name, $values, $selected, $extra='') {
 	foreach ($values as $key=>$value) {
 		$uniqueID = $name.(int)(microtime() * 1000000);
 		$html.='<input type="radio" name="'.$name.'" id="'.$uniqueID.'" value="'.htmlspecialchars($key).'"';
-		if ($key==$selected) {
+		if ((string)$key===$selected) { // Beware PHP array keys are cast to integers!  Cast them back
 			$html.=' checked';
 		}
 		$html.='><label for="'.$uniqueID.'">'.htmlspecialchars($value).'</label>';
@@ -1349,7 +1349,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		case 'PEDI':
 		case 'PHON':
 		case 'PLAC':
-		case 'QUAY':
 		case 'RELA':
 		case 'RESN':
 		case 'ROMN':
@@ -1430,6 +1429,8 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo select_edit_control($element_name, WT_Gedcom_Code_Stat::statusNames($upperlevel), '', $value);
 	} else if ($fact=='RELA') {
 		echo edit_field_rela($element_name, strtolower($value));
+	} else if ($fact=='QUAY') {
+		echo select_edit_control($element_name, WT_Gedcom_Code_Quay::getValues(), '', $value);
 	} else if ($fact=='_WT_USER') {
 		echo edit_field_username($element_name, $value);
 	} else if ($fact=='RESN') {
