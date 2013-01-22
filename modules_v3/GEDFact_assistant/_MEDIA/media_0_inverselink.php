@@ -4,7 +4,7 @@
 // Media Link information about an individual
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -118,7 +118,7 @@ if ($action == 'choose' && $paramok) {
 		echo "<table id=\"existLinkTbl\" width=\"430\" cellspacing=\"1\" >";
 		echo "<tr>";
 		echo '<td class="topbottombar" width="15"  style="font-weight:100;" >#</td>';
-		echo '<td class="topbottombar" width="50"  style="font-weight:100;" >ID:</td>';
+		echo '<td class="topbottombar" width="50"  style="font-weight:100;" >', WT_I18N::translate('Record'), '</td>';
 		echo '<td class="topbottombar" width="340" style="font-weight:100;" >', WT_I18N::translate('Name'), '</td>';
 		echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', WT_I18N::translate('Keep'), '</td>';
 		echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', WT_I18N::translate('Remove'), '</td>';
@@ -566,7 +566,7 @@ function shiftlinks() {
 					<thead>
 						<tr>
 							<th class="topbottombar" width="10"  style="font-weight:100;" align="left">#</th>
-							<th class="topbottombar" width="55"  style="font-weight:100;" align="left">ID:</th>
+							<th class="topbottombar" width="55"  style="font-weight:100;" align="left"><?php echo WT_I18N::translate('Record'); ?></th>
 							<th class="topbottombar" width="370" style="font-weight:100;" align="left"><?php echo WT_I18N::translate('Name'); ?></th>
 							<th class="topbottombar" width="20"  style="font-weight:100;" align="left"><?php echo WT_I18N::translate('Remove'); ?></th>
 							<th class="topbottombar" width="20"  style="font-weight:100;" align="left"><?php echo WT_I18N::translate('Navigator'); ?></th>
