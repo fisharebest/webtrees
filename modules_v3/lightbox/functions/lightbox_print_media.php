@@ -38,7 +38,7 @@ if (!defined('WT_WEBTREES')) {
  * @param boolean $related        Whether or not to grab media from related records
  */
 function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=false) {
-	global $GEDCOM, $MEDIATYPE;
+	global $GEDCOM;
 	global $res, $rowm;
 	global $rownum, $rownum1, $rownum2, $rownum3, $rownum4;
 

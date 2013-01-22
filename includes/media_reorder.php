@@ -152,23 +152,6 @@ echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to
 			}
 			continue;
 		}
-		// NOTE: Determine the size of the mediafile
-		$imgwidth = 300+40;
-		$imgheight = 300+150;
-		if (preg_match("'://'", $rowm['m_filename'])) {
-			if (in_array($rowm['m_ext'], $MEDIATYPE)) {
-				$imgwidth = 400+40;
-				$imgheight = 500+150;
-			} else {
-				$imgwidth = 800+40;
-				$imgheight = 400+150;
-			}
-		}
-		else if (file_exists($rowm["m_filename"])) {
-			$imgsize = findImageSize($rowm["m_filename"]);
-			$imgwidth = $imgsize[0]+40;
-			$imgheight = $imgsize[1]+150;
-		}
 		$rows = array();
 		$rows['normal'] = $rowm;
 		if (isset($current_objes[$rowm['m_id']])) $current_objes[$rowm['m_id']]--;
