@@ -1295,7 +1295,7 @@ function format_media_table($datalist) {
 			$name = $media->getFullName();
 			$html .= "<tr>";
 			//-- Object thumbnail
-			$html .= '<td>'. $media->DisplayMedia(). '</td>';
+			$html .= '<td>'. $media->displayImage(). '</td>';
 			//-- Object name(s)
 			$html .= '<td>';
 			$html .= '<a href="'. $media->getHtmlUrl(). '" class="list_item name2">';
