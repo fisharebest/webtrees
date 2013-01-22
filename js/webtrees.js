@@ -1375,6 +1375,7 @@ function activate_colorbox() {
 	// TODO - gallery feature not working correctly...
 	jQuery("a[rel=gallery]").live("click",function(e){
 		e.preventDefault();
+		jQuery("a[rel=gallery]").colorbox();
 		jQuery(this).colorbox({open:true});
 	});
 }
