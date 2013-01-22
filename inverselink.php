@@ -33,11 +33,11 @@ $controller=new WT_Controller_Simple();
 $controller
 	->requireEditorLogin()
 	->setPageTitle(WT_I18N::translate('Link to an existing media object'))
-	->pageHeader()
 	->addExternalJavascript(WT_JQUERY_URL)
 	->addExternalJavascript(WT_JQUERYUI_URL)
 	->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->pageHeader();
 
 //-- page parameters and checking
 $linktoid = safe_GET_xref('linktoid');
