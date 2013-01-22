@@ -94,6 +94,7 @@ require 'includes/functions/functions.php';
 require 'includes/functions/functions_utf-8.php';
 require 'includes/functions/functions_edit.php';
 $WT_SESSION=new Zend_Session_Namespace('WEBTREES');
+$WT_REQUEST=new Zend_Controller_Request_Http();
 define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
 
 header('Content-Type: text/html; charset=UTF-8');
