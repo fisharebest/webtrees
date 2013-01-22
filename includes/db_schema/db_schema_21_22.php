@@ -39,7 +39,10 @@ self::exec("UPDATE `##default_resn` SET xref    =NULL WHERE xref    =''");
 self::exec("UPDATE `##default_resn` SET tag_type=NULL WHERE tag_type=''");
 
 // Delete old settings
-self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('AUTO_GENERATE_THUMBS', 'POSTAL_CODE', 'MEDIA_DIRECTORY_LEVELS')");
+self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('AUTO_GENERATE_THUMBS', 'POSTAL_CODE', 'MEDIA_DIRECTORY_LEVELS', 'USE_MEDIA_VIEWER')");
+
+// Delete old settings
+self::exec("DELETE FROM `##module_setting` WHERE module_name='lightbox'");
 
 // Previous versions of webtrees included the MEDIA_DIRECTORY setting in the
 // FILE tag of the OBJE records.  Remove it…

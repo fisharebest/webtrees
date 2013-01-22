@@ -72,14 +72,9 @@ $medialist = WT_Query_Media::mediaList(
 
 $controller->pageHeader();
 
-echo '<div id="medialist-page"><h2>', $controller->getPageTitle(), '</h2>';
-if (WT_USE_LIGHTBOX) {
-	$album = new lightbox_WT_Module();
-	$album->getPreLoadContent();
-}
-// ************************  BEGIN Build the input form ************************
-// A form for filtering the media items
 ?>
+<div id="medialist-page"><h2><?php echo $controller->getPageTitle(); ?></h2>
+
 <form action="medialist.php" method="get">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="search" value="yes">
@@ -257,7 +252,7 @@ if ($search) {
 		if ($columns == '2') echo '<td class="list_value_wrap" width="50%">';
 
 		echo '<table><tr><td valign="top" style="white-space:normal;">';
-		echo $mediaobject->displayMedia();
+		echo $mediaobject->displayImage();
 		echo '</td><td class="list_value_wrap" style="border:none;" width="100%">';
 		if (WT_USE_LIGHTBOX && WT_USER_CAN_EDIT) {
 			echo lightbox_WT_Module::getMediaListMenu($mediaobject);

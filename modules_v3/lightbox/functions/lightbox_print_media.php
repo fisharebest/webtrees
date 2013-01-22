@@ -427,7 +427,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	echo '</td>';
 	echo '<td colspan="3" valign="middle" align="center">';
 	if ($media) {
-		echo $media->displayMedia();
+		echo $media->displayImage();
 	}
 	echo '</td></tr>';
 

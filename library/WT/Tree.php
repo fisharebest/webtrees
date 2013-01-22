@@ -311,7 +311,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'THEME_DIR',                    'webtrees');
 		set_gedcom_setting($tree_id, 'THUMBNAIL_WIDTH',              '100');
 		set_gedcom_setting($tree_id, 'USE_GEONAMES',                 false);
-		set_gedcom_setting($tree_id, 'USE_MEDIA_VIEWER',             true);
 		set_gedcom_setting($tree_id, 'USE_RIN',                      false);
 		set_gedcom_setting($tree_id, 'USE_SILHOUETTE',               true);
 		set_gedcom_setting($tree_id, 'WATERMARK_THUMB',              false);

@@ -596,7 +596,7 @@ if ($action=="filter") {
 		if ($medialist) {
 			foreach ($medialist as $media) {
 				echo '<div class="find-media-media">';
-				echo '<div class="find-media-thumb">', $media->displayMedia(), '</div>';
+				echo '<div class="find-media-thumb">', $media->displayImage(), '</div>';
 				echo '<div class="find-media-details">', $media->getFullName(), '</div>';
 				if (!$embed) {
 					echo '<p><a href="#" dir="auto" onclick="pasteid(\'', addslashes($media->getXref()), '\');">', $media->getFilename(), '</a></p>';

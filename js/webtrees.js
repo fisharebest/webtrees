@@ -106,20 +106,6 @@ function closePopupAndReloadParent(url) {
 	window.close();
 }
 
-function openImage(filename, width, height) {
-	height=height+50;
-	screenW = screen.width;
-	screenH = screen.height;
-	if (width>screenW-100) width=screenW-100;
-	if (height>screenH-110) height=screenH-120;
-	if (filename.indexOf('imageview.php')!=0) {
-		// just a filename was passed in, turn it into a full url
-		filename = 'imageview.php?filename='+filename;
-	}
-	window.open(filename,'_blank','top=50,left=50,height='+height+',width='+width+',scrollbars=1,resizable=1');
-	return false;
-}
-
 // variables to hold mouse x-y pos.s
 	var msX = 0;
 	var msY = 0;
@@ -1380,4 +1366,15 @@ function findPosY(obj) {
 	else if(obj.y)
 		curtop += obj.y;
 	return curtop;
+}
+
+// This is the default way to show image galleries.  Custom themes may choose their own.
+function activate_colorbox() {
+	$.extend($.colorbox.settings, {maxWidth:"80%",maxHeight:"80%"});
+
+	// TODO - gallery feature not working correctly...
+	jQuery("a[rel=gallery]").live("click",function(e){
+		e.preventDefault();
+		jQuery(this).colorbox({open:true});
+	});
 }

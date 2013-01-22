@@ -28,7 +28,10 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-global $DATE_FORMAT;
+// This theme uses the jQuery “colorbox” plugin to display images
+$this
+	->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.colorbox.min.js')
+	->addInlineJavascript('activate_colorbox();');
 
 echo
 	'<!DOCTYPE html>',

@@ -80,11 +80,6 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 	exit;
 }
 
-if (WT_USE_LIGHTBOX) {
-	$album = new lightbox_WT_Module();
-	$album->getPreLoadContent();
-}
-
 $PEDIGREE_FULL_DETAILS = '1'; // Override GEDCOM configuration
 $show_full = '1';
 

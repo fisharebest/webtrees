@@ -33,13 +33,7 @@ $controller
 	->setupJavascript()
 	->addInlineJavascript('sizeLines();');
 
-if (WT_USE_LIGHTBOX) {
-	$album = new lightbox_WT_Module();
-	$album->getPreLoadContent();
-}
-
 ?>
-
 <table>
 	<tr>
 		<td class="tdtop">
@@ -109,16 +103,6 @@ if (WT_USE_LIGHTBOX) {
 		</td>
 	</tr>
 </table>
-
-<?php
-
-if ($controller->error_message) {
-	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
-	exit;
-}
-
-?>
-
 <div id="familybook_chart" style="width:98%; z-index:1;">
 <?php $controller->print_family_book($controller->root, $controller->descent); ?>
 </div>

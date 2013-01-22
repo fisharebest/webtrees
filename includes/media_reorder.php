@@ -40,7 +40,7 @@ function media_reorder_row($rowm) {
 	echo "<li class=\"facts_value\" style=\"list-style:none;cursor:move;margin-bottom:2px;\" id=\"li_" . $media->getXref() . "\" >";
 	echo "<table class=\"pic\"><tr>";
 	echo "<td width=\"80\" valign=\"top\" align=\"center\" >";
-	echo $media->displayMedia();
+	echo $media->displayImage();
 	echo "</td><td>&nbsp;</td>";
 	echo "<td valign=\"top\" align=\"left\">";
 	echo $media->getXref();

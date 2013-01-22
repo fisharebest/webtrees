@@ -77,11 +77,6 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 	exit;
 }
 
-if (WT_USE_LIGHTBOX) {
-	$album = new lightbox_WT_Module();
-	$album->getPreLoadContent();
-}
-
 $controller
 	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
 	->addInlineJavascript('jQuery("#media-tabs").tabs();')
@@ -98,7 +93,7 @@ echo '<div id="media-tabs">';
 					// As a temporary kludge, fetch a "normal" version of the record - which includes pending changes
 					// TODO - check both, and use RED/BLUE boxes.
 					$tmp = WT_Media::getInstance($controller->record->getXref());
-					echo $tmp->displayMedia();
+					echo $tmp->displayImage();
 					if (!$tmp->isExternal()) {
 						if ($tmp->fileExists('main')) {
 							if ($SHOW_MEDIA_DOWNLOAD) {

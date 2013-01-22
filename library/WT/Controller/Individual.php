@@ -170,7 +170,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		if ($this->canShowHighlightedObject()) {
 			$mediaobject=$this->record->findHighlightedMedia();
 			if ($mediaobject) {
-				return $mediaobject->displayMedia(array('uselightbox_fallback'=>false,'clearbox'=>'general_1'));
+				return $mediaobject->displayImage();
 			}
 		}
 

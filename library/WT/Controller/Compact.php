@@ -70,7 +70,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 				$img_title=$name.' - '.$birth_date->Display(false).' - '.$death_date->Display(false);
 				$img_id='box-'.$pid;
 				if ($mediaobject) {
-					$text=$mediaobject->displayMedia(array('display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title));
+					$text=$mediaobject->displayImage();
 				} else {
 					$text=display_silhouette(array('sex'=>$indi->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title));
 				}

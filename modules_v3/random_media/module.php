@@ -171,7 +171,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= ' class="details2"';
 			}
 			$content .= ' >';
-			$content .= $random_media->displayMedia(array('align'=>'none', 'uselightbox'=>false, 'uselightbox_fallback'=>false));
+			$content .= $random_media->displayImage();
 
 			if ($block) {
 				$content .= '<br>';

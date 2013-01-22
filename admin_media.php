@@ -151,7 +151,7 @@ case 'load_json':
 			$media = WT_Media::getInstance($row);
 			$aaData[] = array(
 				media_file_info($media_folder, $media_path, $row['media_path']),
-				$media->displayMedia(),
+				$media->displayImage(),
 				media_object_info($media),
 			);
 		}
@@ -210,7 +210,7 @@ case 'load_json':
 			$media = WT_Media::getInstance($row);
 			$aaData[] = array(
 			 	WT_Gedcom_Tag::getLabelValue('URL', $row['m_filename']),
-				$media->displayMedia(),
+				$media->displayImage(),
 				media_object_info($media),
 			);
 		}

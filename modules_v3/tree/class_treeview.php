@@ -354,7 +354,7 @@ class TreeView {
 		if ($SHOW_HIGHLIGHT_IMAGES) {
 			$mediaobject=$person->findHighlightedMedia();
 			if ($mediaobject) {
-				return $mediaobject->displayMedia(array('display_type'=>'treeview','img_title'=>$person->getFullName(),'clearbox'=>'tvlb'.$personGroup->getXref()));
+				return $mediaobject->displayImage();
 			} else {
 				return display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'treeview','img_title'=>$person->getFullName()));
 			}

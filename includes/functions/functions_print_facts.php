@@ -525,7 +525,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 function print_media_links($factrec, $level, $pid='') {
 	global $TEXT_DIRECTION;
 	global $SEARCH_SPIDER;
-	global $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
+	global $THUMBNAIL_WIDTH;
 	global $GEDCOM, $HIDE_GEDCOM_ERRORS;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
@@ -541,7 +541,7 @@ function print_media_links($factrec, $level, $pid='') {
 			if ($media->canDisplayDetails()) {
 				if ($objectNum > 0) echo '<br class="media-separator" style="clear:both;">';
 				echo '<div id="media-display"><div id="media-display-image">';
-				echo $media->displayMedia(array('alertnotfound'=>true));
+				echo $media->displayImage();
 				echo '</div>'; // close div "media-display-image"
 				echo '<div id="media-display-title">';
 				if ($SEARCH_SPIDER) {
@@ -1176,7 +1176,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 
 	// NOTE Print the title of the media
 	echo '<td class="optionbox wrap', $styleadd, '"><span class="field">';
-	echo $mediaobject->displayMedia(array('alertnotfound'=>true));
+	echo $mediaobject->displayImage();
 	if (empty($SEARCH_SPIDER)) {
 		echo '<a href="'.$mediaobject->getHtmlUrl().'">';
 	}

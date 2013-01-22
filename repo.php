@@ -76,11 +76,6 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 	exit;
 }
 
-if (WT_USE_LIGHTBOX) {
-	$album = new lightbox_WT_Module();
-	$album->getPreLoadContent();
-}
-
 $linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
 
 $controller

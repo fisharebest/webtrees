@@ -2,7 +2,7 @@
 // Header for webtrees theme
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -27,6 +27,11 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+
+// This theme uses the jQuery “colorbox” plugin to display images
+$this
+	->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.colorbox.min.js')
+	->addInlineJavascript('activate_colorbox();');
 
 echo
 	'<!DOCTYPE html>',

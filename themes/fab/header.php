@@ -37,6 +37,11 @@ if ($TEXT_DIRECTION=='ltr') {
 	define ('WT_CSS_REVERSE_ALIGN', 'left');
 }
 
+// This theme uses the jQuery “colorbox” plugin to display images
+$this
+	->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.colorbox.min.js')
+	->addInlineJavascript('activate_colorbox();');
+
 echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',

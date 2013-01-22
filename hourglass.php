@@ -38,13 +38,6 @@ $controller
 echo '<table><tr><td valign="top">';
 echo '<h2>', WT_I18N::translate('Hourglass chart of %s', $controller->name), '</h2>';
 
-// LBox =====================================================================================
-if (WT_USE_LIGHTBOX) {
-	$album = new lightbox_WT_Module();
-	$album->getPreLoadContent();
-}
-// ==========================================================================================
-
 $gencount=0;
 ?>
 <!-- // NOTE: Start form and table -->

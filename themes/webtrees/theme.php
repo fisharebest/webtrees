@@ -55,21 +55,6 @@ $WT_IMAGES=array(
 	'default_image_M'=>WT_THEME_URL.'images/silhouette_male.png',
 	'default_image_F'=>WT_THEME_URL.'images/silhouette_female.png',
 	'default_image_U'=>WT_THEME_URL.'images/silhouette_unknown.png',
-
-	// need to replace with a system based on mime-types
-	'media'          =>WT_THEME_URL.'images/media/image-jpeg.png',
-	'media_audio'    =>WT_THEME_URL.'images/media/audio-x-generic.png',
-	'media_doc'      =>WT_THEME_URL.'images/media/gnome-mime-application-msword.png',
-	'media_flash'    =>WT_THEME_URL.'images/media/gnome-mime-application-x-shockwave-flash.png',
-	'media_flashrem' =>WT_THEME_URL.'images/media/gnome-mime-application-x-shockwave-flash.png',
-	'media_ged'      =>WT_THEME_URL.'images/media/text-x-gedcom.png',
-	'media_globe'     =>WT_THEME_URL.'images/media/text-html.png',
-	'media_html'     =>WT_THEME_URL.'images/media/text-html.png',
-	'media_pdf'      =>WT_THEME_URL.'images/media/gnome-mime-application-pdf.png',
-	'media_picasa'   =>WT_THEME_URL.'images/media/image-x-generic.png',
-	'media_tex'      =>WT_THEME_URL.'images/media/text-x-tex.png',
-	'media_wmv'      =>WT_THEME_URL.'images/media/video-x-ms-wmv.png',
-	'media_wmvrem'      =>WT_THEME_URL.'images/media/video-x-ms-wmv.png',
 );
 
 //-- variables for the fan chart

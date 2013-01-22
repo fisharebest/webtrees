@@ -33,11 +33,6 @@ $controller
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the "find indi" link
 
-if (WT_USE_LIGHTBOX) {
-	$album = new lightbox_WT_Module();
-	$album->getPreLoadContent();
-}
-
 echo '<table><tr><td valign="top"><h2>', $controller->getPageTitle(), '</h2>';
 echo '</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">';
 echo '<input type="hidden" name="ged" value="', WT_GEDCOM, '">';

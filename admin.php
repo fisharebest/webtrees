@@ -1393,6 +1393,8 @@ function old_paths() {
 		WT_ROOT.'modules_v3/lightbox/js/tip_balloon_RTL.js',
 		// Removed in 1.3.2
 		WT_ROOT.'modules_v3/address_report',
+		// Removed in 1.4.0
+		WT_ROOT.'imageview.php',
 	);
 }
 

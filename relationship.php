@@ -76,13 +76,7 @@ if ($person1 && $person1->canDisplayName() && $person2 && $person2->canDisplayNa
 	$disp=false;
 }
 
-if (WT_USE_LIGHTBOX) {
-	$album = new lightbox_WT_Module();
-	$album->getPreLoadContent();
-}
-
 ?>
-
 <h2><?php echo $controller->getPageTitle(); ?></h2>
 <form name="people" method="get" action="relationship.php">
 	<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">

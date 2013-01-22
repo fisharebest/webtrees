@@ -210,12 +210,17 @@ table#tvTreeBorder td, #tv_tree {
   min-height: 55px;
   padding: 2px;
 }
-#tv_tree div.tv_box img.pedigree_image {
+#tv_tree div.tv_box img {
   max-width: 50px;
   _width: 50px; /* hack for IE versions that do not understand max-width */
   max-height: 50px;
   margin: 2px;
+	float: left;
 }
+html[dir=rtl] #tv_tree div.tv_box img {
+	float:right;
+}
+
 #tv_tree div.tv_box div.tv_person_expanded a {
   font-weight: bold;
 }

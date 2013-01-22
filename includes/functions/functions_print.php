@@ -163,7 +163,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		$mediaobject=$person->findHighlightedMedia();
 		$img_id='box-'.$boxID.'.-thumb';
 		if ($mediaobject) {
-			$thumbnail=$mediaobject->displayMedia(array('display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name));
+			$thumbnail=$mediaobject->displayImage();
 		} else {
 			$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name));
 		}
