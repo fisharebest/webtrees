@@ -77,21 +77,6 @@ function get_media_relations($mid) {
 	return $media;
 }
 
-// recursively make directories
-// taken from http://us3.php.net/manual/en/function.mkdir.php#60861
-function mkdirs($dir, $mode = WT_PERM_EXE, $recursive = true) {
-	if (is_null($dir) || $dir==="") {
-		return FALSE;
-	}
-	if (is_dir($dir) || $dir==="/") {
-		return TRUE;
-	}
-	if (mkdirs(dirname($dir), $mode, $recursive)) {
-		return mkdir($dir, $mode);
-	}
-	return FALSE;
-}
-
 // converts raw values from php.ini file into bytes
 // from http://www.php.net/manual/en/function.ini-get.php
 function return_bytes($val) {
