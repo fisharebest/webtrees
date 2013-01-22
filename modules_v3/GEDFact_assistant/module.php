@@ -575,7 +575,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 								if ($chooseType=="media" && empty($media["XREF"])) $isvalid = false; // skip unlinked media files
 							}
 							if ($isvalid) {
-								if ($media["EXISTS"] && media_filesize($media["FILE"]) != 0) {
+								if ($media["EXISTS"]) {
 									$imgsize = findImageSize($media["FILE"]);
 									$imgwidth = $imgsize[0]+40;
 									$imgheight = $imgsize[1]+150;

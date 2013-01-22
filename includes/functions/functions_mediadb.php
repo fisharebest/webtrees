@@ -34,9 +34,6 @@ function findImageSize($file) {
 		$file = "http://" . rawurlencode(substr($file, 7));
 	$imgsize = @getimagesize($file);
 	if (!$imgsize) {
-		$imgsize = @getimagesize(get_media_firewall_path($file));
-	}
-	if (!$imgsize) {
 		$imgsize[0] = 300;
 		$imgsize[1] = 300;
 		$imgsize[2] = false;
@@ -78,33 +75,6 @@ function get_media_relations($mid) {
 		}
 	$medialist[$keyMediaList]['LINKS'] = $media;
 	return $media;
-}
-
-// checks whether a media file exists.
-// returns 1 for external media
-// returns 2 if it was found in the standard folder
-// returns 3 if it was found in the media firewall folder
-// returns false if not found
-function media_exists($filename) {
-	if (empty($filename)) { return false; }
-	if (isFileExternal($filename)) { return 1; }
-	if (file_exists($filename)) { return 2; }
-	if (file_exists(get_media_firewall_path($filename))) { return 3; }
-	return false;
-}
-
-// returns size of file.  looks in both the standard and protected media directories
-function media_filesize($filename) {
-	if (file_exists($filename)) { return filesize($filename); }
-	if (file_exists(get_media_firewall_path($filename))) { return filesize(get_media_firewall_path($filename)); }
-	return;
-}
-
-// pass in the standard media folder
-// returns protected media folder
-// strips off any “../” which may be configured in your MEDIA_DIRECTORY variable
-function get_media_firewall_path($path) {
-	return WT_DATA_DIR . $path;
 }
 
 // recursively make directories
