@@ -2881,9 +2881,8 @@ function ImageSHandler($attrs) {
 			}
 		}
 	} else {
-		$filename = $file;
-		if (file_exists($filename) && preg_match("/(jpg|jpeg|png|gif)$/i", $filename)) {
-			$size = findImageSize($filename);
+		if (file_exists($file) && preg_match("/(jpg|jpeg|png|gif)$/i", $file)) {
+			$size = getimagesize($file);
 			if (($width>0) and ($height==0)) {
 				$perc = $width / $size[0];
 				$height= round($size[1]*$perc);
@@ -2894,7 +2893,7 @@ function ImageSHandler($attrs) {
 				$width = $size[0];
 				$height = $size[1];
 			}
-			$image = $ReportRoot->createImage($filename, $left, $top, $width, $height, $align, $ln);
+			$image = $ReportRoot->createImage($file, $left, $top, $width, $height, $align, $ln);
 			$wt_report->addElement($image);
 		}
 	}

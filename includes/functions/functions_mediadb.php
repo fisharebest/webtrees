@@ -28,19 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// looks in both the standard and protected media directories
-function findImageSize($file) {
-	if (strtolower(substr($file, 0, 7)) == "http://")
-		$file = "http://" . rawurlencode(substr($file, 7));
-	$imgsize = @getimagesize($file);
-	if (!$imgsize) {
-		$imgsize[0] = 300;
-		$imgsize[1] = 300;
-		$imgsize[2] = false;
-	}
-	return $imgsize;
-}
-
 // converts raw values from php.ini file into bytes
 // from http://www.php.net/manual/en/function.ini-get.php
 function return_bytes($val) {
