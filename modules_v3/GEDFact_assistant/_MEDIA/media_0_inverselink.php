@@ -113,7 +113,6 @@ if ($action == 'choose' && $paramok) {
 		echo '</td></tr>';
 		echo '<tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Links'), '</td>';
 		echo '<td class="optionbox wrap">';
-		$links = get_media_relations($mediaid);
 		echo "<table><tr><td>";
 		echo "<table id=\"existLinkTbl\" width=\"430\" cellspacing=\"1\" >";
 		echo "<tr>";
@@ -124,23 +123,27 @@ if ($action == 'choose' && $paramok) {
 		echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', WT_I18N::translate('Remove'), '</td>';
 		echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', WT_I18N::translate('Navigator'), '</td>';
 		echo "</tr>";
-	
+
+		$links = array_merge(
+			$media->fetchLinkedIndividuals(),
+			$media->fetchLinkedFamilies(),
+			$media->fetchLinkedSources()
+		);
 		$i=1;
-		foreach (array_keys($links) as $link) {
-			$record=WT_GedcomRecord::getInstance($link);
+		foreach ($links as $record) {
 			echo "<tr ><td>";
 			echo $i++;
 			echo "</td><td id=\"existId_", $i, "\" class=\"row2\">";
-			echo $link;
+			echo $record->getXref();
 			echo "</td><td>";
 			echo $record->getFullName();
 			echo "</td>";
-			echo "<td align='center'><input alt='", WT_I18N::translate('Keep Link in list'), "', title='", WT_I18N::translate('Keep Link in list'), "' type='radio' id='", $link, "_off' name='", $link, "' checked></td>";
-			echo "<td align='center'><input alt='", WT_I18N::translate('Remove Link from list'), "', title='", WT_I18N::translate('Remove Link from list'), "' type='radio' id='", $link, "_on'  name='", $link, "'></td>";
+			echo "<td align='center'><input alt='", WT_I18N::translate('Keep Link in list'), "', title='", WT_I18N::translate('Keep Link in list'), "' type='radio' id='", $record->getXref(), "_off' name='", $record->getXref(), "' checked></td>";
+			echo "<td align='center'><input alt='", WT_I18N::translate('Remove Link from list'), "', title='", WT_I18N::translate('Remove Link from list'), "' type='radio' id='", $record->getXref(), "_on'  name='", $record->getXref(), "'></td>";
 	
 			if ($record->getType()=='INDI') {
 				?>
-				<td align="center"><a href="#" class="icon-button_family" title="<?php echo WT_I18N::translate('Family navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="openFamNav('<?php echo $link; ?>'); return false;"></a></td>
+				<td align="center"><a href="#" class="icon-button_family" title="<?php echo WT_I18N::translate('Family navigator'); ?>" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $record->getXref(); ?>'); return false;"></a></td>
 				<?php
 			} elseif ($record->getType()=='FAM') {
 				if ($record->getHusband()) {
@@ -151,7 +154,7 @@ if ($action == 'choose' && $paramok) {
 					$head='';
 				}
 				?>
-				<td align="center"><a href="#" class="icon-button_family" title="<?php echo WT_I18N::translate('Family navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="openFamNav('<?php echo $head; ?>');"></a></td>
+				<td align="center"><a href="#" class="icon-button_family" title="<?php echo WT_I18N::translate('Family navigator'); ?>" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $head; ?>');"></a></td>
 				<?php
 			} else {
 				echo '<td></td>';

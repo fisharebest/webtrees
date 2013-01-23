@@ -41,42 +41,6 @@ function findImageSize($file) {
 	return $imgsize;
 }
 
-//returns an array of rows from the database containing the Person ID’s for the people associated with this picture
-function get_media_relations($mid) {
-	global $medialist;
-
-	//-- check in the medialist cache first
-	$firstChar = substr($mid, 0, 1);
-	$restChar = substr($mid, 1);
-	if (is_numeric($firstChar)) {
-		$firstChar = "";
-		$restChar = $mid;
-	}
-	$keyMediaList = $firstChar . substr("000000" . $restChar, -6) . "_" . WT_GED_ID;
-	if (isset ($medialist[$keyMediaList]['LINKS'])) {
-		return $medialist[$keyMediaList]['LINKS'];
-	}
-
-	$media = array();
-		foreach (fetch_linked_indi($mid, 'OBJE', WT_GED_ID) as $indi) {
-			if ($mid!=$indi->getXref()) {
-				$media[$indi->getXref()]='INDI';
-			}
-		}
-		foreach (fetch_linked_fam($mid, 'OBJE', WT_GED_ID) as $fam) {
-			if ($mid!=$fam->getXref()) {
-				$media[$fam->getXref()]='FAM';
-			}
-		}
-		foreach (fetch_linked_sour($mid, 'OBJE', WT_GED_ID) as $sour) {
-			if ($mid!=$sour->getXref()) {
-				$media[$sour->getXref()]='SOUR';
-			}
-		}
-	$medialist[$keyMediaList]['LINKS'] = $media;
-	return $media;
-}
-
 // converts raw values from php.ini file into bytes
 // from http://www.php.net/manual/en/function.ini-get.php
 function return_bytes($val) {
