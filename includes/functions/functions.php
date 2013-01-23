@@ -633,29 +633,8 @@ function find_parents_in_record($famrec) {
 	return $parents;
 }
 
-/**
- * get the full file path
- *
- * get the file path from a media gedcom record
- * @param string $mediarec a OBJE subrecord
- * @return the fullpath from the FILE record
- */
-function extract_fullpath($mediarec) {
-	preg_match("/(\d) _*FILE (.*)/", $mediarec, $amatch);
-	if (empty($amatch[2])) {
-		return "";
-	}
-	$level = trim($amatch[1]);
-	$fullpath = trim($amatch[2]);
-	$filerec = get_sub_record($level, $amatch[0], $mediarec);
-	$fullpath .= get_cont($level+1, $filerec);
-	return $fullpath;
-}
-
 // ************************************************* START OF SORTING FUNCTIONS ********************************* //
-/**
- * Function to sort GEDCOM fact tags based on their tanslations
- */
+// Function to sort GEDCOM fact tags based on their tanslations
 function factsort($a, $b) {
 	return utf8_strcasecmp(WT_I18N::translate($a), WT_I18N::translate($b));
 }
@@ -821,10 +800,6 @@ function sort_facts(&$arr) {
 		$k++;
 	}
 
-}
-
-function gedcomsort($a, $b) {
-	return utf8_strcasecmp($a["title"], $b["title"]);
 }
 
 /**
