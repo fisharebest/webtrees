@@ -45,17 +45,8 @@ function return_bytes($val) {
 	return $val;
 }
 
-// pass in the full path to an image, returns string with size/height/width/bits/channels
-function getImageInfoForLog($filename) {
-	$filesize = sprintf("%.2f", filesize($filename)/1024);
-	$imgsize = @getimagesize($filename);
-	$strinfo = $filesize."kb ";
-	if (is_array($imgsize)) { $strinfo .= @$imgsize[0].' × '.@$imgsize[1]." ".@$imgsize['bits']." bits ".@$imgsize['channels']. " channels"; }
-	return ($strinfo);
-}
-
 // attempts to determine whether there is enough memory to load a particular image
-function hasMemoryForImage($serverFilename, $debug_verboseLogging=false) {
+function hasMemoryForImage($serverFilename) {
 	// find out how much total memory this script can access
 	$memoryAvailable = return_bytes(@ini_get('memory_limit'));
 	// if memory is unlimited, it will return -1 and we don’t need to worry about it
@@ -68,15 +59,15 @@ function hasMemoryForImage($serverFilename, $debug_verboseLogging=false) {
 	// find out how much memory this image needs for processing, probably only works for jpegs
 	// from comments on http://www.php.net/imagecreatefromjpeg
 	if (is_array($imgsize) && isset($imgsize['bits']) && (isset($imgsize['channels']))) {
-		$memoryNeeded = Round(($imgsize[0] * $imgsize[1] * $imgsize['bits'] * $imgsize['channels'] / 8 + Pow(2, 16)) * 1.65);
+		$memoryNeeded = round(($imgsize[0] * $imgsize[1] * $imgsize['bits'] * $imgsize['channels'] / 8 + Pow(2, 16)) * 1.65);
 		$memorySpare = $memoryAvailable - $memoryUsed - $memoryNeeded;
 		if ($memorySpare > 0) {
 			// we have enough memory to load this file
-			if ($debug_verboseLogging) AddToLog("Media: >about to load< file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory avail: ".$memoryAvailable." used: ".$memoryUsed." needed: ".$memoryNeeded." spare: ".$memorySpare, 'media');
 			return true;
 		} else {
 			// not enough memory to load this file
-			AddToLog("Media: >image too large to load< file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory avail: ".$memoryAvailable." used: ".$memoryUsed." needed: ".$memoryNeeded." spare: ".$memorySpare, 'media');
+			$image_info =  sprintf('%.2fKB, %d × %d %d bits %d channels', filesize($serverFilename)/1024, $imgsize[0], $imgsize[1], $imgsize['bits'], $imgsize['channels']);
+			AddToLog('Cannot create thumbnail '.$serverFilename.' ('.$image_info.') memory avail: '.$memoryAvailable.' used: '.$memoryUsed.' needed: '.$memoryNeeded.' spare: '.$memorySpare, 'media');
 			return false;
 		}
 	} else {
