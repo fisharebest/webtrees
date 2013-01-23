@@ -475,61 +475,34 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return string
 	 */
 	public function printLinkedRecords($size = "small") {
-		if ($size != "small") $size = "normal";
-		$linkList = array ();
+		$html = '';
 
-		foreach ($this->fetchLinkedIndividuals() as $indi) {
-			if ($indi->canDisplaydetails()) {
-				$linkItem=array ();
-				$linkItem['MEDIASORT']='A'.$indi->getSortName();
-				$linkItem['record']=$indi;
-				$linkList[]=$linkItem;
-			}
-		}
-		foreach ($this->fetchLinkedFamilies() as $fam) {
-			if ($fam->canDisplaydetails()) {
-				$linkItem=array ();
-				$linkItem['MEDIASORT']='B'.$fam->getSortName();
-				$linkItem['record']=$fam;
-				$linkList[]=$linkItem;
-			}
-		}
-		foreach ($this->fetchLinkedSources() as $sour) {
-			if ($sour->canDisplaydetails()) {
-				$linkItem=array ();
-				$linkItem['MEDIASORT']='C'.$sour->getSortName();
-				$linkItem['record']=$sour;
-				$linkList[]=$linkItem;
-			}
+		// Linked individuals
+		$records = $this->fetchLinkedIndividuals();
+		uasort($records, array('WT_GedcomRecord', 'compare'));
+		foreach ($records as $record) {
+			$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View Person') . ' -- ' . $record->getFullname().'</a><br>';;
 		}
 
-		uasort($linkList, "mediasort");
-
-		$output="";
-		if ($size == "small") $output.="<sub>";
-		$prev_record=null;
-		foreach ($linkList as $linkItem) {
-			$record=$linkItem['record'];
-			if ($prev_record && $prev_record->getType()!=$record->getType()) {
-				$output.='<br>';
-			}
-			$output.='<br><a class="media_link" href="'.$record->getHtmlUrl().'">';
-			switch ($record->getType()) {
-			case 'INDI':
-				$output.=WT_I18N::translate('View Person');
-				break;
-			case 'FAM':
-				$output.=WT_I18N::translate('View Family');
-				break;
-			case 'SOUR':
-				$output.=WT_I18N::translate('View Source');
-				break;
-			}
-			$output.=' -- '.$record->getFullname().'</a>';
-			$prev_record=$record;
+		// Linked families
+		$records = $this->fetchLinkedFamilies();
+		uasort($records, array('WT_GedcomRecord', 'compare'));
+		foreach ($records as $record) {
+			$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View Family') . ' -- ' . $record->getFullname().'</a><br>';;
 		}
-		if ($size == "small") $output.="</sub>";
-		return ($output);
+
+		// Linked sources
+		$records = $this->fetchLinkedSources();
+		uasort($records, array('WT_GedcomRecord', 'compare'));
+		foreach ($records as $record) {
+			$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View Family') . ' -- ' . $record->getFullname().'</a><br>';;
+		}
+
+		if ($size=='small') {
+			return '<sub>' . $html . '</sub>';
+		} else {
+			return $html;
+		}
 	}
 
 	// If this object has no name, what do we call it?
