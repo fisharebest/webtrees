@@ -4,7 +4,7 @@
 // GEDFact information about an individual
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
@@ -35,15 +35,8 @@ global $GEDCOM, $ABBREVIATE_CHART_LABELS;
 global $show_full;
 global $famid, $censyear, $censdate;
 
-$summary=$controller->record->format_first_major_fact(WT_EVENTS_BIRT, 2);
-if (!($controller->record->isDead())) {
-	// If alive display age
-	$bdate=$controller->record->getBirthDate();
-	$age = WT_Date::GetAgeGedcom($bdate);
-	//if ($age!="") {
-		//$summary.= "<span class=\"label\">".WT_I18N::translate('Age').":</span><span class=\"field\"> ".get_age_at_event($age, true)."</span>";
-	//}
-}
-$summary.=$controller->record->format_first_major_fact(WT_EVENTS_DEAT, 2);
+$summary=
+	$controller->record->format_first_major_fact(WT_EVENTS_BIRT, 2).
+	$controller->record->format_first_major_fact(WT_EVENTS_DEAT, 2);
 
 $controller->medialink_assistant();
