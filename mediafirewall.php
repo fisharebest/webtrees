@@ -282,7 +282,11 @@ $watermarkfile = "";
 $generatewatermark = false;
 
 if ($usewatermark) {
-	$watermarkfile = WT_DATA_DIR . $MEDIA_DIRECTORY . 'watermark/' . WT_GEDCOM . '/' . $media->getFilename();
+	if ($which=='thumb') {
+		$watermarkfile = WT_DATA_DIR . $MEDIA_DIRECTORY . 'watermark/' . WT_GEDCOM . '/thumb/' . $media->getFilename();
+	} else {
+		$watermarkfile = WT_DATA_DIR . $MEDIA_DIRECTORY . 'watermark/' . WT_GEDCOM . '/' . $media->getFilename();
+	}
 
 	if (!file_exists($watermarkfile)) {
 		// no saved watermark file exists
