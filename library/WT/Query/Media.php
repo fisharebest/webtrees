@@ -38,7 +38,11 @@ class WT_Query_Media {
 			" ORDER BY 1"
 		)->execute(array(WT_GED_ID))->fetchOneColumn();
 
-		return array_combine($folders, $folders);
+		if ($folders) {
+			return array_combine($folders, $folders);
+		} else {
+			return array();
+		}
 	}
 
 	// Generate a list of all folders from all the trees - for the media admin.
@@ -52,7 +56,11 @@ class WT_Query_Media {
 			" ORDER BY 1"
 		)->execute()->fetchOneColumn();
 
-		return array_combine($folders, $folders);
+		if ($folders) {
+			return array_combine($folders, $folders);
+		} else {
+			return array();
+		}
 	}
 
 	// Generate a filtered, sourced, privacy-checked list of media objects - for the media list.
