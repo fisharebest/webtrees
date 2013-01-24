@@ -46,6 +46,8 @@ $controller
 			"aaSorting": [[ 1, "asc" ]],
 			"iDisplayLength": 10,
 			"sPaginationType": "full_numbers",
+			"bStateSave": true,
+			"iCookieDuration": 180,
 			"aoColumns" : [
 				{ bSortable: false, sClass: "center" },
 				null,
