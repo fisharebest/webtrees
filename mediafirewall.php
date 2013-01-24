@@ -36,15 +36,13 @@ $media = WT_Media::getInstance($mid);
 function send404AndExit() {
 	$error = WT_I18N::translate('The media file was not found in this family tree');
 
-	$error = reverseText($error);
-	// width of image is based on the number of characters
-	$width = (utf8_strlen($error)) * 6.5;
+	$width = (utf8_strlen($error)) * 6.5 + 50;
 	$height = 60;
 	$im  = imagecreatetruecolor($width, $height);  /* Create a black image */
 	$bgc = imagecolorallocate($im, 255, 255, 255); /* set background color */
-	$tc  = imagecolorallocate($im, 0, 0, 0);       /* set text color */
 	imagefilledrectangle($im, 2, 2, $width-4, $height-4, $bgc); /* create a rectangle, leaving 2 px border */
-	imagestring($im, 2, 5, 5, $error, $tc);
+
+	embedText($im, $error, 100, "255, 0, 0", "", "top", "left");
 
 	header('HTTP/1.0 404 Not Found');
 	header('Status: 404 Not Found');
@@ -58,8 +56,6 @@ function send404AndExit() {
 // this function can manipulate the image however it wants
 // before returning it back to the media firewall
 function applyWatermark($im) {
-	// in the future these options will be set in the gedcom configuration area
-
 	// text to watermark with
 	$word1_text   = WT_TREE_TITLE;
 	// maximum font size for “word1” ; will be automaticaly reduced to fit in the image
