@@ -223,7 +223,7 @@ html[dir=rtl] #tv_tree div.tv_box img {
 #tv_tree div.tv_box .icon-silhouette-M, #tv_tree div.tv_box .icon-silhouette-F, #tv_tree div.tv_box .icon-silhouette-U {
 	float:left;
 }
-html[dir=rtl] #tv_tree div.tv_box .icon-silhouette-M, #tv_tree div.tv_box .icon-silhouette-F, #tv_tree div.tv_box .icon-silhouette-U {
+html[dir=rtl] #tv_tree div.tv_box .icon-silhouette-M, html[dir=rtl] #tv_tree div.tv_box .icon-silhouette-F, html[dir=rtl] #tv_tree div.tv_box .icon-silhouette-U {
 	float:right;
 }
 
