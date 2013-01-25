@@ -610,7 +610,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'); ?></option>
 							<?php foreach ($stateList as $state_key=>$state_name) {
 								echo '<option value="', $state_key, '"';
-								if ($stateSelected == $state_key) echo ' selected="selected" ';
+								if ($stateSelected == $state_key) echo ' selected="selected"';
 								echo '>', $state_name, '</option>';
 							} ?>
 						</select>
@@ -1533,12 +1533,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							$rows=WT_DB::prepare("SELECT pl_id, pl_place FROM `##placelocation` WHERE pl_level=0 ORDER BY pl_place")
 								->fetchAssoc();
 							foreach ($rows as $id=>$place) {
-								echo '<option value="', $place, '"';
+								echo '<option value="', htmlspecialchars($place), '"';
 								if ($place==$country) {
 									echo ' selected="selected"';
 									$par_id=$id;
 								}
-								echo '>', $place, '</option>';
+								echo '>', htmlspecialchars($place), '</option>';
 							}
 					echo '</select>';
 					if ($country!='XYZ') {
@@ -1550,15 +1550,16 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 									->execute(array($par_id))
 									->fetchOneColumn();
 								foreach ($places as $place) {
-									echo '<option value="', $place, '"', $place==$state?' selected="selected"':'', '>', $place, '</option>';
+									echo '<option value="', htmlspecialchars($place), '"', $place==$state?' selected="selected"':'', '>', htmlspecialchars($place), '</option>';
 								}
 								echo '</select>';
 							}
-					echo '<label>', WT_I18N::translate('Include fully matched places: '), '</label>
-					<input type="checkbox" name="matching" value="1" onchange="this.form.submit();"';
+					echo '<label>', WT_I18N::translate('Include fully matched places: '), '</label>';
+					echo '<input type="checkbox" name="matching" value="1" onchange="this.form.submit();"';
 					if ($matching) {
 						echo ' checked="checked"';
 					}
+					echo '>';
 				echo '</div>';// close div gm_check
 				echo '<input type="hidden" name="action" value="go">';
 			echo '</form>';//close form placecheck
@@ -1652,7 +1653,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '</tr><tr>';
 			$cols=0;
 			while ($cols<$max) {
-				echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th><th>', WT_I18N::translate('Latitude'), '</th><th>', WT_I18N::translate('Longitude'), '</th></td>';
+				echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th><th>', WT_I18N::translate('Latitude'), '</th><th>', WT_I18N::translate('Longitude'), '</th>';
 				$cols++;
 			}
 			echo '</tr>';
@@ -1720,14 +1721,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					} elseif ($row['pl_lati']!='') {
 						$lati[$z]="<td>".$row['pl_lati']."</td>";
 					} else {
-						$lati[$z]="<td class='error' align='center'><strong>X</strong></td>";$matched[$x]++;
+						$lati[$z]="<td class='error center'><strong>X</strong></td>";$matched[$x]++;
 					}
 					if ($row['pl_long']=='0') {
 						$long[$z]="<td class='error'><strong>".$row['pl_long']."</strong></td>";
 					} elseif ($row['pl_long']!='') {
 						$long[$z]="<td>".$row['pl_long']."</td>";
 					} else {
-						$long[$z]="<td class='error' align='center'><strong>X</strong></td>";$matched[$x]++;
+						$long[$z]="<td class='error center'><strong>X</strong></td>";$matched[$x]++;
 					}
 					$level++;
 					$mapstr3=$mapstr3."&amp;parent[".$z."]=".addslashes($row['pl_placerequested']);
