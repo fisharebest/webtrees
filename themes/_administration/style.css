@@ -125,6 +125,7 @@ html[dir='rtl'] #admin_menu ul {margin:0 -40px 0 0;}
 html[dir='rtl'] #admin_menu li ul {margin:0 -25px 0 0;}
 #admin_menu li span {font-style:italic;}
 #admin_menu ul {list-style:none outside none;}
+#admin_menu ul li {padding-top: 2px;}
 
 /* CONTENT */
 #admin_content {margin:0 0 0 220px; padding:10px;}
@@ -176,6 +177,7 @@ table#log_list {width:100%}
 #log_list pre {margin:0 0 20px 0;max-width:250px;white-space:pre-wrap;word-wrap: break-word;-ms-word-break: break-all;word-break: break-all;-webkit-hyphens: auto;-moz-hyphens: auto; hyphens: auto;}
  #log_list a {color:blue;}
  #log_list a:hover, #log_list a:visited {color:red;}
+ #log_list {font-size:10px;}
  
 /* README */
 #readme {font-size:12px; padding:10px 20px;}
