@@ -445,6 +445,7 @@ class WT_Media extends WT_GedcomRecord {
 			$mime_type = str_replace('/', '-', $this->mimeType());
 			$image =
 				'<i' .
+				' dir="'   . 'auto'                           . '"' . // For the tool-tip
 				' class="' . 'icon-mime-' . $mime_type        . '"' .
 				' title="' . strip_tags($this->getFullName()) . '"' .
 				'></i>';
