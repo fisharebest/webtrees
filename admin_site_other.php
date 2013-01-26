@@ -2,7 +2,7 @@
 // Miscellaneous administrative functions
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Partly Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -25,14 +25,13 @@
 
 define('WT_SCRIPT_NAME', 'admin_site_other.php');
 require './includes/session.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Base();
 $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Add unlinked records'))
 	->pageHeader();
-
-require WT_ROOT.'includes/functions/functions_edit.php';
 
 ?>
 <div id="other">

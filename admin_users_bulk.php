@@ -2,7 +2,7 @@
 // Administrative User Interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -34,11 +34,21 @@ $controller
 	->setPageTitle(WT_I18N::translate('Send broadcast messages'))
 	->pageHeader();
 
-require_once WT_ROOT.'includes/functions/functions_edit.php';
-
 ?>
 <div id="users_bulk">
-	<p><a href="#" onclick="message('all', 'messaging2', '', ''); return false;"><?php echo WT_I18N::translate('Send message to all users'); ?></a></p>
-	<p><a href="#" onclick="message('never_logged', 'messaging2', '', ''); return false;"><?php echo WT_I18N::translate('Send message to users who have never logged in'); ?></a></p>
-	<p><a href="#" onclick="message('last_6mo', 'messaging2', '', ''); return false;"><?php echo WT_I18N::translate('Send message to users who have not logged in for 6 months'); ?></a></p>
+	<p>
+		<a href="#" onclick="message('all', 'messaging2', '', ''); return false;">
+			<?php echo WT_I18N::translate('Send message to all users'); ?>
+		</a>
+	</p>
+	<p>
+		<a href="#" onclick="message('never_logged', 'messaging2', '', ''); return false;">
+			<?php echo WT_I18N::translate('Send message to users who have never logged in'); ?>
+		</a>
+	</p>
+	<p>
+		<a href="#" onclick="message('last_6mo', 'messaging2', '', ''); return false;">
+			<?php echo WT_I18N::translate('Send message to users who have not logged in for 6 months'); ?>
+		</a>
+	</p>
 </div>
