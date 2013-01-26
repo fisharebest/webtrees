@@ -29,7 +29,7 @@ require './includes/session.php';
 $controller=new WT_Controller_Base();
 $controller
 	->requireManagerLogin()
-	->setPageTitle(WT_I18N::translate('Merge records'))
+	->setPageTitle(WT_I18N::translate('Add unlinked records'))
 	->pageHeader();
 
 require WT_ROOT.'includes/functions/functions_edit.php';
