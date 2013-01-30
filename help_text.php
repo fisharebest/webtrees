@@ -562,10 +562,10 @@ case 'GEDCOM_MEDIA_PATH':
 	$title=WT_I18N::translate('GEDCOM media path');
 	$text=
 		'<p>'.
-		// I18N: A "path" is something like "C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg"
+		// I18N: A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
 		WT_I18N::translate('Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed.').
 		'</p><p>'.
-		// I18N: %s are all folder names.
+		// I18N: %s are all folder names; “GEDCOM media path” is a configuration setting
 		WT_I18N::translate('For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s.', '<span class="filename">/home/fab/documents/family/photo.jpeg</span>', '<span class="filename">family/photo.jpeg</span>', '<span class="filename">/home/fab/documents/</span>').
 		'</p><p>'.
 		WT_I18N::translate('This setting is only used when you read or write GEDCOM files.').
