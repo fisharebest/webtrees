@@ -109,13 +109,6 @@ class WT_Media extends WT_GedcomRecord {
 		return $this->file;
 	}
 
-	/**
-	 * get the relative file path of the image on the server
-	 */
-	public function getLocalFilename() {		
-		return $this->file;
-	}
-
 	// Get the filename on the server - for those (very few!) functions which actually
 	// need the filename, such as mediafirewall.php and the PDF reports.
 	public function getServerFilename($which='main') {

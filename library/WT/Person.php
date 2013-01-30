@@ -261,7 +261,7 @@ class WT_Person extends WT_GedcomRecord {
 		preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcomRecord(), $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
 			$media = WT_Media::getInstance($match[2]);
-			if (!$media || !$media->canDisplayDetails() || $media->isExternal() || !file_exists($media->getServerFilename('thumb'))) {
+			if (!$media || !$media->canDisplayDetails() || $media->isExternal()) {
 				continue;
 			}
 			$level = $match[1];
