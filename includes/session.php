@@ -451,7 +451,8 @@ if (empty($WEBTREES_EMAIL)) {
 
 // Use the server date to calculate privacy, etc.
 // Use the client date to show ages, etc.
-define('WT_TIMESTAMP',        time());
+// Note that the database/webservers may not be synchronised, so use DB time throughout.
+define('WT_TIMESTAMP', WT_DB::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
 define('WT_CLIENT_TIMESTAMP', WT_TIMESTAMP - $WT_SESSION->timediff);
 
 define('WT_SERVER_JD', 2440588 + (int)(WT_TIMESTAMP       /86400));
