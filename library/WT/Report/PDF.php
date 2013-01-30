@@ -4,7 +4,7 @@
 // used by the SAX parser to generate PDF reports from the XML report file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -740,7 +740,6 @@ class CellPDF extends Cell {
 				$this->top = $pdf->GetY();
 			}
 			$temptext = spanLTRRTL($temptext, "BOTH");
-//DumpString($temptext); //@@@
 		}
 		// HTML ready - last value is true
 		$pdf->MultiCell($this->width, $this->height, $temptext, $this->border, $this->align, $this->fill, $this->newline, $cX, $this->top, $this->reseth, $this->stretch, true);
@@ -1198,12 +1197,9 @@ class TextPDF extends Text {
 		} else {
 			$pdf->SetTextColor(0, 0, 0);
 		}
-//DumpString($temptext); //@@@
 		$temptext = spanLTRRTL($temptext, "BOTH");
 		$temptext = str_replace(array('<br><span dir="rtl" >', '<br><span dir="ltr" >', '> ',  ' <'), array('<span dir="rtl" ><br>', '<span dir="ltr" ><br>', '>&nbsp;', '&nbsp;<'), $temptext);
-//DumpString($temptext); //@@@
  		$pdf->writeHTML($temptext, false, false, true, false, ""); //change height - line break etc. - the form is mirror on rtl pages
-//@@	$pdf->writeHTML($temptext.'@2', false, false, true, false, ""); //@@
 		// Reset the text color to black or it will be inherited
 		$pdf->SetTextColor(0, 0, 0);
 	}
@@ -1345,14 +1341,9 @@ class FootnotePDF extends Footnote {
 		} else {
 			$temptext = "<span>".$this->num.". </span>".$temptext;
 		}
-//DumpString($temptext); //@@@
-		//do not add span to '<u>', '</u>' and to special characters (- . , : ?) What about + in phone numbers?. Day together with the rest of the date in page orientation.
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
-//DumpString($temptext); //@@@
-		$pdf->writeHTML($temptext, true, false, true, false, ''); //@@Source-list
-//		$pdf->writeHTML($temptext.'@4', true, false, true, false, ''); //@@
-		//$pdf->Write($pdf->getCurrentStyleHeight(), $this->num.". ".$temptext."\n\n"); //@@ indi list of sources
+		$pdf->writeHTML($temptext, true, false, true, false, '');
 	}
 
 	/**
