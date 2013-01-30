@@ -65,24 +65,18 @@ class WT_Query_Media {
 
 	// Generate a filtered, sourced, privacy-checked list of media objects - for the media list.
 	public static function mediaList($folder, $subfolders, $sort, $filter) {
+		// All files in the folder, plus external files
 		$sql = 
 			"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename" .
 			" FROM `##media`" .
 			" WHERE m_file=?" .
-			" AND   (m_filename LIKE CONCAT(?, '%', ?, '%')" .
-			"  OR   m_filename LIKE CONCAT('http://%', ?, '%')" .
-			"  OR   m_filename LIKE CONCAT('https://%', ?, '%')" .
-			"  OR   m_titl LIKE CONCAT('%', ?, '%')" .
-			" )";
+			" AND   (m_filename LIKE CONCAT(?, '%') OR m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')";
 		$args = array(
 			WT_GED_ID,
 			$folder,
-			$filter,
-			$filter,
-			$filter,
-			$filter,
 		);
 
+		// Exclude subfolders
 		switch ($subfolders) {
 		case 'include':
 			// subfolders are included by default
@@ -93,6 +87,13 @@ class WT_Query_Media {
 			break;
 		default:
 			throw new Exception('Bad argument (subfolders=', $subfolders, ') in WT_Query_Media::mediaList()');
+		}
+
+		// Apply search terms
+		if ($filter) {
+			$sql .= " AND (m_filename LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
+			$args[] = $filter;
+			$args[] = $filter;
 		}
 
 		switch ($sort) {
