@@ -625,7 +625,7 @@ class WT_Stats {
 	// The totalLiving/totalDeceased queries assume that every dead person will
 	// have a DEAT record.  It will not include individuals who were born more
 	// than MAX_ALIVE_AGE years ago, and who have no DEAT record.
-	// A good reason to run the "Add missing DEAT records" batch-update!
+	// A good reason to run the “Add missing DEAT records” batch-update!
 	// However, SQL cannot provide the same logic used by Person::isDead().
 	function _totalLiving() {
 		return
@@ -1124,7 +1124,7 @@ class WT_Stats {
 				}
 			}
 		}
-		// get all the user's countries names
+		// get all the user’s countries names
 		$all_countries = self::get_all_countries();
 		foreach ($all_db_countries as $country_code=>$country) {
 			$top10[]='<li>';
@@ -3258,9 +3258,10 @@ class WT_Stats {
 			->fetchAll();
 		$nameList=array();
 		foreach ($rows as $row) {
-			// Split "John Thomas" into "John" and "Thomas" and count against both totals
+			// Split “John Thomas” into “John” and “Thomas” and count against both totals
 			foreach (explode(' ', $row->n_givn) as $given) {
-				if (utf8_strlen($given)>1) {
+				// Exclude initials and particles.
+				if (!preg_match('/^([A-Z]|[a-z]{1,3})$/', $given)) {
 					if (array_key_exists($given, $nameList)) {
 						$nameList[$given]+=$row->num;
 					} else {
