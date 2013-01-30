@@ -22,14 +22,28 @@ define('WT_SCRIPT_NAME', 'admin_media.php');
 require './includes/session.php';
 require WT_ROOT . 'includes/functions/functions_edit.php';
 
-$files         = safe_GET('files', array('local', 'external', 'unused'), 'local'); // type of file/object to include
+// type of file/object to include
+$files = safe_GET('files', array('local', 'external', 'unused'), 'local');
+
+// family tree setting MEDIA_DIRECTORY
 $media_folders = all_media_folders();
-$media_folder  = safe_GET('media_folder', $media_folders, reset($media_folders));  // family tree setting MEDIA_DIRECTORY
-$media_paths   = media_paths($media_folder);
-$media_paths   = array_combine($media_paths, $media_paths);
-$media_path    = safe_GET('media_path', $media_paths, reset($media_paths));        // prefix to filename
-$subfolders    = safe_GET('subfolders', array('include', 'exclude'), 'include');   // subfolders within $media_path
-$action        = safe_GET('action');
+$media_folder  = safe_GET('media_folder', WT_REGEX_UNSAFE);
+// User folders may contain special characters.  Restrict to actual folders.
+if (!array_key_exists($media_folder, $media_folders)) {
+	$media_folder = reset($media_folders);
+}
+
+// prefix to filename
+$media_paths = media_paths($media_folder);
+$media_path  = safe_GET('media_path', WT_REGEX_UNSAFE);
+// User paths may contain special characters.  Restrict to actual paths.
+if (!array_key_exists($media_path, $media_paths)) {
+	$media_path = reset($media_paths);
+}
+
+// subfolders within $media_path
+$subfolders = safe_GET('subfolders', array('include', 'exclude'), 'include');
+$action     = safe_GET('action');
 
 // Some trees may be read-only
 $allow_edit_gedcom = WT_DB::prepare(
@@ -298,7 +312,7 @@ function all_media_folders() {
 }
 
 function media_paths($media_folder) {
-	return WT_DB::prepare(
+	$media_paths = WT_DB::prepare(
 		"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
 		" FROM  `##media`" .
 		" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
@@ -308,6 +322,12 @@ function media_paths($media_folder) {
 		" GROUP BY 1" .
 		" ORDER BY 1"
 	)->execute(array($media_folder))->fetchOneColumn();
+
+	if ($media_paths) {
+		return array_combine($media_paths, $media_paths);
+	} else {
+		return array();
+	}
 }
 
 function scan_dirs($dir, $recursive, $filter) {
