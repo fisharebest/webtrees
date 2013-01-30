@@ -2,7 +2,7 @@
 // PopUp Window to provide editing features.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -66,16 +66,10 @@ $controller->addInlineJavascript('
 ');
 
 $controller->addInlineJavascript('
-	function addnewrepository(field) {
-		pastefield = field;
-		window.open("edit_interface.php?action=addnewrepository&pid=newrepo", "_blank", find_window_specs);
-		return false;
-	}
-');
-
-$controller->addInlineJavascript('
 	function openerpasteid(id) {
-		window.opener.paste_id(id);
+		if (window.opener.paste_id) {
+			window.opener.paste_id(id);
+		}
 		window.close();
 	}
 ');
