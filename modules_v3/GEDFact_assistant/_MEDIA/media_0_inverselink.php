@@ -107,7 +107,7 @@ if ($action == 'choose' && $paramok) {
 			->execute(array($mediaid, WT_GED_ID))
 			->fetchOne();
 		$media=WT_Media::getInstance($mediaid);
-		$thumbUrl  = $media->getRawUrlDirect('thumb');
+		$thumbUrl  = $media->getHtmlUrlDirect('thumb');
 		echo '<img src="', $thumbUrl, '" class="thumbheight">';
 		echo '</td></tr></table>';
 		echo '</td></tr>';

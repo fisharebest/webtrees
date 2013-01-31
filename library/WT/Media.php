@@ -369,25 +369,14 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return string
 	 */
 	public function getHtmlUrlDirect($which='main', $download=false, $separator = '&amp;') {
-
-	 	if ($this->isExternal()) {
-			// this is an external file, do not try to access it through the media firewall
-			if ($separator == '&') {
-				return rawurlencode($this->getFilename());
-			} else {
-				return $this->getFilename();
-			}
-		} else {
-			// “cb” is “cache buster”, so clients will make new request if anything significant about the user or the file changes
-			// The file parameter is a dummy, so that image viewers (e.g. colorbox) can do something sensible
-			$thumbstr = ($which=='thumb') ? $separator.'thumb=1' : '';
-			$downloadstr = ($download) ? $separator.'dl=1' : '';
-			return 'mediafirewall.php?mid='.$this->getXref().$thumbstr.$downloadstr.$separator.'ged='.rawurlencode(get_gedcom_from_id($this->ged_id)).$separator.'cb='.$this->getEtag($which).$separator.'file=x.'.$this->extension();
-		}
-	}
-	// Generate a URL directly to the media file, suitable for use in javascript, HTTP headers, etc.
-	public function getRawUrlDirect($which='main', $download=false) {
-		return $this->getHtmlUrlDirect($which, $download, '&');
+		// “cb” is “cache buster”, so clients will make new request if anything significant about the user or the file changes
+		// The file parameter is a dummy, so that image viewers (e.g. colorbox) can do something sensible
+		$thumbstr = ($which=='thumb') ? $separator.'thumb=1' : '';
+		$downloadstr = ($download) ? $separator.'dl=1' : '';
+		return
+			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr . $separator .
+			'ged=' . rawurlencode(get_gedcom_from_id($this->ged_id)) . $separator .
+			'cb=' . $this->getEtag($which) . '.' . $this->extension();
 	}
 
 	// What file extension is used by this file?

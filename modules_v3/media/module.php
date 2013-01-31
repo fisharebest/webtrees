@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -70,7 +70,6 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 			echo '</a></span>';
 			echo '</td></tr>';
 		}
-		$media_found = false;
 		$media_found = print_main_media($controller->record->getXref(), 0, true);
 		if (!$media_found) {
 			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no media objects for this individual.'), '</td></tr>';

@@ -229,9 +229,14 @@ function isImageTypeSupported($reqtype) {
 // this needs to be a global variable so imagettftextErrorHandler can set it
 $useTTF = function_exists('imagettftext');
 
-// Media missing/private/not here?
-if (!$media || !$media->canDisplayDetails() || $media->isExternal()) {
+// Media object missing/private?
+if (!$media || !$media->canDisplayDetails()) {
 	send404AndExit();
+}
+// Media file somewhere else?
+if ($media->isExternal()) {
+	header('Location: ' . $media->getFilename());
+	exit;
 }
 
 $which = $thumb ? 'thumb' : 'main';
@@ -255,7 +260,7 @@ $expireHeader = gmdate("D, d M Y H:i:s", WT_TIMESTAMP + $expireOffset) . " GMT";
 $type = isImageTypeSupported($imgsize['ext']);
 $usewatermark = false;
 // if this image supports watermarks and the watermark module is intalled...
-if ($type && function_exists("applyWatermark")) {
+if ($type) {
 	// if this is not a thumbnail, or WATERMARK_THUMB is true
 	if (($which=='main') || $WATERMARK_THUMB ) {
 		// if the user’s priv’s justify it...
