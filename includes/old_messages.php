@@ -133,6 +133,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('List files in subdirectories');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('List filtering options');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Location of sound track file (Leave blank for no sound track)');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Magnify');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Maternal grandfather\'s given name');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Maternal grandmother\'s Given Name');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Media Firewall');
@@ -200,6 +201,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Should new images automatically go in the protected media directory when they are uploaded?');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Should the system automatically generate thumbnails for images that do not have them.  Your PHP installation might not support this functionality.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Show GEDCOM record last change date on lists');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Show thumbnails');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Slide Show speed');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Slide show timing in seconds');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Slideshow sound track');
@@ -242,6 +244,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The file <b>%s</b> does not have read permission.  You must change this.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The file <b>%s</b> has read-only permission.  Good.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The file <b>%s</b> has write permission.  This will work, but for better security, you should make it read only.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The filename entered does not exist.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The media directory %s must exist, and the webserver must have read and write access to it.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The media directory is used to create URLs for your media items.  It is also the sub-directory in which the media items are stored.  For example, a media directory of %1$s will create URLs of the form %2$s and store these items as %3$s.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The media folder is corrupted.');
@@ -254,6 +257,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This media object does not exist as a file on this server.  It cannot be deleted, moved, or renamed.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This media object is in the protected media directory');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This media object is in the standard media directory');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This media object is linked to the following:');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This media object is located on an external server');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This media object is not linked to any GEDCOM record.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This option allow to hide map controls (i.e. the map type choice) if mouse is outside the map.');
@@ -289,6 +293,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Use this form to add an unlinked person.<br /><br />When you add an unlinked person to your family tree, the person will not be linked to any other people until you link them.  Later, you can link people together from the Close Relatives tab on the Individual Information page.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Use this link to add a new shared note to your database without linking the note to any record.<br /><br />The new note will appear in the Shared Note list, but will not appear on any charts or anywhere else in the program until it is linked to an individual, family or event.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Use this link to add a new source to your database without linking the source to a source citation in another record.  The new source will appear in the source list, but will not appear on any charts or anywhere else in the program until it is linked up to a source citation.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('View Object');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('View image details');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('View server folder');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Warp');
