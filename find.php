@@ -630,7 +630,7 @@ if ($action=="filter") {
 					$found=true;
 				}
 				if (!$found) {
-					echo '<li>', WT_I18N::translate('This media object is not linked to any GEDCOM record.'), '</li>';
+					echo '<li>', WT_I18N::translate('This media object is not linked to any other record.'), '</li>';
 				}
 				echo '</ul>';
 				echo '</div>'; // close div="find-media-media"
