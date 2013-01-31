@@ -361,22 +361,16 @@ class WT_Media extends WT_GedcomRecord {
 		return parent::_getLinkUrl('mediaviewer.php?mid=', '&');
 	}
 
-
-	/**
-	 * Generate a URL directly to the media file, suitable for use in HTML
-	 * @param which string - specify either 'main' or 'thumb'
-	 * @param separator string - specify either '&amp;' or '&'
-	 * @return string
-	 */
-	public function getHtmlUrlDirect($which='main', $download=false, $separator = '&amp;') {
+	// Generate a URL directly to the media file
+	public function getHtmlUrlDirect($which='main', $download=false) {
 		// “cb” is “cache buster”, so clients will make new request if anything significant about the user or the file changes
-		// The file parameter is a dummy, so that image viewers (e.g. colorbox) can do something sensible
-		$thumbstr = ($which=='thumb') ? $separator.'thumb=1' : '';
-		$downloadstr = ($download) ? $separator.'dl=1' : '';
+		// The extension is there so that image viewers (e.g. colorbox) can do something sensible
+		$thumbstr = ($which=='thumb') ? '&thumb=1' : '';
+		$downloadstr = ($download) ? '&dl=1' : '';
 		return
-			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr . $separator .
-			'ged=' . rawurlencode(get_gedcom_from_id($this->ged_id)) . $separator .
-			'cb=' . $this->getEtag($which) . '.' . $this->extension();
+			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr .
+			'&ged=' . rawurlencode(get_gedcom_from_id($this->ged_id)) .
+			'&cb=' . $this->getEtag($which) . '.' . $this->extension();
 	}
 
 	// What file extension is used by this file?
@@ -457,35 +451,31 @@ class WT_Media extends WT_GedcomRecord {
 	 * @param size='small'|'normal'
 	 * @return string
 	 */
-	public function printLinkedRecords($size = "small") {
+	public function printLinkedRecords() {
 		$html = '';
 
 		// Linked individuals
 		$records = $this->fetchLinkedIndividuals();
 		uasort($records, array('WT_GedcomRecord', 'compare'));
 		foreach ($records as $record) {
-			$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View Person') . ' -- ' . $record->getFullname().'</a><br>';;
+			$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View Person') . ' -- ' . $record->getFullname().'</a><br>';
 		}
 
 		// Linked families
 		$records = $this->fetchLinkedFamilies();
 		uasort($records, array('WT_GedcomRecord', 'compare'));
 		foreach ($records as $record) {
-			$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View Family') . ' -- ' . $record->getFullname().'</a><br>';;
+			$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View Family') . ' -- ' . $record->getFullname().'</a><br>';
 		}
 
 		// Linked sources
 		$records = $this->fetchLinkedSources();
 		uasort($records, array('WT_GedcomRecord', 'compare'));
 		foreach ($records as $record) {
-			$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View Family') . ' -- ' . $record->getFullname().'</a><br>';;
+			$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View Source') . ' -- ' . $record->getFullname().'</a><br>';
 		}
 
-		if ($size=='small') {
-			return '<sub>' . $html . '</sub>';
-		} else {
-			return $html;
-		}
+		return $html;
 	}
 
 	// If this object has no name, what do we call it?

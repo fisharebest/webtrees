@@ -247,7 +247,6 @@ if ($search) {
 	for ($i=$start, $n=0; $i<$start+$count; ++$i) {
 		$mediaobject = $medialist[$i];
 
-		$isExternal = $mediaobject->isExternal();
 		if ($columns == '1') echo '<td class="list_value_wrap" width="80%">';
 		if ($columns == '2') echo '<td class="list_value_wrap" width="50%">';
 
@@ -269,7 +268,7 @@ if ($search) {
 			echo WT_Gedcom_Tag::getLabelValue('TITL', $mediaobject->getFullName());
 		}
 		// Show file details
-		if ($isExternal) {
+		if ($mediaobject->isExternal()) {
 			echo WT_Gedcom_Tag::getLabelValue('URL', $mediaobject->getFilename());
 		} else {
 			if ($mediaobject->fileExists()) {
@@ -291,7 +290,7 @@ if ($search) {
 		print_fact_sources($mediaobject->getGedcomRecord(), 1);
 		print_fact_notes($mediaobject->getGedcomRecord(), 1);
 		echo '</div>';
-		echo $mediaobject->printLinkedRecords('small');
+		echo $mediaobject->printLinkedRecords();
 		echo '</td></tr></table>';
 		echo '</td>';
 		if ((++$n) % $columns == 0) {

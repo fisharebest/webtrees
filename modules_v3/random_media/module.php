@@ -181,7 +181,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<a href="'.$random_media->getHtmlUrl().'"><b>'. $random_media->getFullName() .'</b></a><br>';
 	
 			ob_start();
-			$content .= $random_media->printLinkedRecords('normal');
+			$content .= $random_media->printLinkedRecords();
 			$content .= ob_get_clean();
 			$content .= "<br><div class=\"indent" . ($TEXT_DIRECTION=="rtl"?"_rtl":"") . "\">";
 			$content .= print_fact_notes($random_media->getGedcomRecord(), "1", false, true);
