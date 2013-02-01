@@ -426,6 +426,7 @@ class WT_Media extends WT_GedcomRecord {
 			'<a' .
 			' rel="'            . 'gallery'                          . '"' .
 			' href="'           . $this->getHtmlUrlDirect('main')    . '"' .
+			' type="'           . $this->mimeType()                  . '"' .
 			' data-obje-url="'  . $this->getHtmlUrl()                . '"' .
 			' data-obje-note="' . htmlspecialchars($this->getNote()) . '"' .
 			' data-title="'     . strip_tags($this->getFullName())   . '"' .
