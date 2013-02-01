@@ -38,11 +38,11 @@ class WT_Query_Media {
 			" ORDER BY 1"
 		)->execute(array(WT_GED_ID))->fetchOneColumn();
 
-		if ($folders) {
-			return array_combine($folders, $folders);
-		} else {
-			return array();
+		if (!$folders || reset($folders)!='') {
+			array_unshift($folders, '');
 		}
+
+		return array_combine($folders, $folders);
 	}
 
 	// Generate a list of all folders from all the trees - for the media admin.
@@ -69,20 +69,27 @@ class WT_Query_Media {
 		$sql = 
 			"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename" .
 			" FROM `##media`" .
-			" WHERE m_file=?" .
-			" AND   (m_filename LIKE CONCAT(?, '%') OR m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')";
+			" WHERE m_file=?";
 		$args = array(
 			WT_GED_ID,
-			$folder,
 		);
 
-		// Exclude subfolders
+		// Only show external files when we are looking at the root folder
+		if ($folder=='') {
+			$sql_external = " OR m_filename LIKE 'http://%' OR m_filename LIKE 'https://%'";
+		} else {
+			$sql_external = "";
+		}
+
+		// Include / exclude subfolders (but always include external)
 		switch ($subfolders) {
 		case 'include':
-			// subfolders are included by default
+			$sql .= " AND (m_filename LIKE CONCAT(?, '%') $sql_external)";
+			$args[] = $folder;
 			break;
 		case 'exclude':
-			$sql .= " AND m_filename NOT LIKE CONCAT(?, '%/%')";
+			$sql .= " AND (m_filename LIKE CONCAT(?, '%')  AND m_filename NOT LIKE CONCAT(?, '%/%') $sql_external)";
+			$args[] = $folder;
 			$args[] = $folder;
 			break;
 		default:
