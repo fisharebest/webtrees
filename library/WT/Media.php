@@ -31,15 +31,6 @@ if (!defined('WT_WEBTREES')) {
 class WT_Media extends WT_GedcomRecord {
 	var $title         =null;
 	var $file          =null;
-	var $note          =null;
-	var $localfilename =null;
-	var $serverfilename=null;
-	var $fileexists    =false;
-	var $thumbfilename =null;
-	var $thumbserverfilename=null;
-	var $thumbfileexists=false;
-	var $mainimagesize  =null;
-	var $thumbimagesize =null;
 
 	// Create a Media object from either raw GEDCOM data or a database row
 	public function __construct($data) {
@@ -95,10 +86,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return string
 	 */
 	public function getNote() {
-		if (is_null($this->note)) {
-			$this->note=get_gedcom_value('NOTE', 1, $this->getGedcomRecord());
-		}
-		return $this->note;
+		return get_gedcom_value('NOTE', 1, $this->getGedcomRecord());
 	}
 
 	/**
