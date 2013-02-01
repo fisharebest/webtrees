@@ -246,20 +246,6 @@ class WT_Media extends WT_GedcomRecord {
 		return ($etag_string);
 	}
 
-
-	/**
-	 * get the media FORM from the gedcom.  if not defined, calculate from file extension 
-	 * @return string
-	 */
-	public function getMediaFormat() {
-		$mediaFormat = get_gedcom_value('FORM', 2, $this->getGedcomRecord());
-		if (!$mediaFormat) {
-			$imgsize=$this->getImageAttributes('main');
-			$mediaFormat=$imgsize['ext'];
-		}
-		return $mediaFormat;
-	}
-
 	/**
 	 * get the media type from the gedcom
 	 * @return string

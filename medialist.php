@@ -275,7 +275,7 @@ if ($search) {
 				if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
 					echo WT_Gedcom_Tag::getLabelValue('FILE', $mediaobject->getFilename());
 				}
-				echo WT_Gedcom_Tag::getLabelValue('FORM', $mediaobject->getMediaFormat());
+				echo WT_Gedcom_Tag::getLabelValue('FORM', $mediaobject->mimeType());
 				echo WT_Gedcom_Tag::getLabelValue('__FILE_SIZE__', $mediaobject->getFilesize());
 				$imgsize = $mediaobject->getImageAttributes();
 				if ($imgsize['WxH']) {

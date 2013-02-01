@@ -41,13 +41,7 @@ function media_reorder_row($rowm) {
 	echo "<table class=\"pic\"><tr>";
 	echo "<td width=\"80\" valign=\"top\" align=\"center\" >";
 	echo $media->displayImage();
-	echo "</td><td>&nbsp;</td>";
-	echo "<td valign=\"top\" align=\"left\">";
-	echo $media->getXref();
-	echo "<b>";
-	echo "&nbsp;&nbsp;", WT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType());
-	echo "</b>";
-	echo "<br>";
+	echo "</td><td>";
 	echo $media->getFullName();
 	echo "</td>";
 	echo "</tr>";

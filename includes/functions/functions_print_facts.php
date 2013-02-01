@@ -1190,10 +1190,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		echo '</a>';
 	}
 
-	$mediaformat=$mediaobject->getMediaFormat();
-	if ($mediaformat) {
-		echo WT_Gedcom_Tag::getLabelValue('FORM', $mediaformat);
-	}
+	echo WT_Gedcom_Tag::getLabelValue('FORM', $mediaobject->mimeType());
 	$imgsize = $mediaobject->getImageAttributes('main');
 	if (!empty($imgsize['WxH'])) {
 		echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);

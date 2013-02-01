@@ -2,7 +2,7 @@
 // Import-specific functions
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -952,7 +952,7 @@ function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 		$media = new WT_Media($objrec);
 		//-- add it to the media database table
 		$imgsize = $media->getImageAttributes();
-		$sql_insert_media->execute(array($m_media, $media->getMediaFormat(), $media->getMediaType(), $media->title, $media->file, $ged_id, $objrec));
+		$sql_insert_media->execute(array($m_media, $media->extension(), $media->getMediaType(), $media->title, $media->file, $ged_id, $objrec));
 	}
 	if (isset($m_media)) {
 		return "{$objlevel} OBJE @{$m_media}@\n";
@@ -990,7 +990,7 @@ function update_media($gid, $ged_id, $gedrec, $update = false) {
 		$new_m_media = $old_m_media;
 		$gedrec = str_replace("@" . $old_m_media . "@", "@" . $new_m_media . "@", $gedrec);
 		$media = new WT_Media($gedrec);
-		$sql_insert_media->execute(array($new_m_media, $media->getMediaFormat(), $media->getMediaType(), $media->title, $media->file, $ged_id, $gedrec));
+		$sql_insert_media->execute(array($new_m_media, $media->extension(), $media->getMediaType(), $media->title, $media->file, $ged_id, $gedrec));
 		return $gedrec;
 	}
 
