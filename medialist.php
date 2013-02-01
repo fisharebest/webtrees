@@ -290,7 +290,15 @@ if ($search) {
 		print_fact_sources($mediaobject->getGedcomRecord(), 1);
 		print_fact_notes($mediaobject->getGedcomRecord(), 1);
 		echo '</div>';
-		echo $mediaobject->printLinkedRecords();
+		foreach ($random_media->fetchLinkedIndividuals() as $individual) {
+			echo '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View Person') . ' — ' . $individual->getFullname().'</a><br>';
+		}
+		foreach ($random_media->fetchLinkedFamilies() as $family) {
+			echo '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View Family') . ' — ' . $family->getFullname().'</a><br>';
+		}
+		foreach ($random_media->fetchLinkedSources() as $source) {
+			echo '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View Source') . ' — ' . $source->getFullname().'</a><br>';
+		}
 		echo '</td></tr></table>';
 		echo '</td>';
 		if ((++$n) % $columns == 0) {

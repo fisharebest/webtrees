@@ -179,10 +179,15 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= '</td><td class="details2">';
 			}
 			$content .= '<a href="'.$random_media->getHtmlUrl().'"><b>'. $random_media->getFullName() .'</b></a><br>';
-	
-			ob_start();
-			$content .= $random_media->printLinkedRecords();
-			$content .= ob_get_clean();
+			foreach ($random_media->fetchLinkedIndividuals() as $individual) {
+				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View Person') . ' — ' . $individual->getFullname().'</a><br>';
+			}
+			foreach ($random_media->fetchLinkedFamilies() as $family) {
+				$content .= '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View Family') . ' — ' . $family->getFullname().'</a><br>';
+			}
+			foreach ($random_media->fetchLinkedSources() as $source) {
+				$content .= '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View Source') . ' — ' . $source->getFullname().'</a><br>';
+			}
 			$content .= "<br><div class=\"indent" . ($TEXT_DIRECTION=="rtl"?"_rtl":"") . "\">";
 			$content .= print_fact_notes($random_media->getGedcomRecord(), "1", false, true);
 			$content .= "</div>";

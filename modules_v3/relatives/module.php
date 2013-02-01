@@ -184,7 +184,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						}
 						if ($place) {
 							if ($details) {
-								$details .= ' -- ';
+								$details .= ' — ';
 							}
 							$tmp=new WT_Place($place, WT_GED_ID);
 							$details .= $tmp->getShortName();

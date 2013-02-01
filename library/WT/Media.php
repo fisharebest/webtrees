@@ -446,38 +446,6 @@ class WT_Media extends WT_GedcomRecord {
 			'>' . $image . '</a>';
 	}
 
-	/**
-	 * output the list of linked records
-	 * @param size='small'|'normal'
-	 * @return string
-	 */
-	public function printLinkedRecords() {
-		$html = '';
-
-		// Linked individuals
-		$records = $this->fetchLinkedIndividuals();
-		uasort($records, array('WT_GedcomRecord', 'compare'));
-		foreach ($records as $record) {
-			$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View Person') . ' -- ' . $record->getFullname().'</a><br>';
-		}
-
-		// Linked families
-		$records = $this->fetchLinkedFamilies();
-		uasort($records, array('WT_GedcomRecord', 'compare'));
-		foreach ($records as $record) {
-			$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View Family') . ' -- ' . $record->getFullname().'</a><br>';
-		}
-
-		// Linked sources
-		$records = $this->fetchLinkedSources();
-		uasort($records, array('WT_GedcomRecord', 'compare'));
-		foreach ($records as $record) {
-			$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View Source') . ' -- ' . $record->getFullname().'</a><br>';
-		}
-
-		return $html;
-	}
-
 	// If this object has no name, what do we call it?
 	public function getFallBackName() {
 		if ($this->canDisplayDetails()) {
