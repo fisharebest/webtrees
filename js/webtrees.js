@@ -1377,14 +1377,33 @@ function findPosY(obj) {
 	return curtop;
 }
 
-// This is the default way to show image galleries.  Custom themes may choose their own.
+// This is the default way for webtrees to show image galleries.
+// Custom themes may use a different viewer.
 function activate_colorbox() {
-	$.extend($.colorbox.settings, {maxWidth:"80%",maxHeight:"80%"});
-
-	// TODO - gallery feature not working correctly...
-	jQuery("a[rel=gallery]").live("click",function(e){
-		e.preventDefault();
-		jQuery("a[rel=gallery]").colorbox();
-		jQuery(this).colorbox({open:true});
+	// Trigger an event when we click on an (any) image
+	jQuery("body").on("click", "a.gallery", function() {
+		// Remove colorbox from hidden media (e.g. on other tabs)
+		$.colorbox.remove();
+		// Add colorbox to all visible media
+		jQuery("a[type^=image].gallery:visible").colorbox({
+			maxWidth: "80%",
+			maxHeight:"80%",
+			rel:      "gallery",
+			// Add wheelzoom to the displayed image
+			onComplete: function() {
+				jQuery('.cboxPhoto').wheelzoom();
+				// Drag events cause the slideshow to advance.  Prevent this.
+				// TODO - only when the click was the end of a drag..
+				jQuery('.cboxPhoto img').on("click", function(e) {e.preventDefault();});
+			}
+		});
+		// Add colorbox to all visible non-images
+			jQuery("a[type^=application].gallery:visible,a[type^=audio].gallery:visible,a[type^=text].gallery:visible,a[type^=video].gallery:visible").colorbox({
+			innerWidth: "425px",
+			innerHeight:"344px",
+			rel:        "gallery",
+			iframe:     true,
+			photo:      false
+		});
 	});
 }

@@ -412,7 +412,7 @@ class WT_Media extends WT_GedcomRecord {
 
 		return
 			'<a' .
-			' rel="'            . 'gallery'                          . '"' .
+			' class="'          . 'gallery'                          . '"' .
 			' href="'           . $this->getHtmlUrlDirect('main')    . '"' .
 			' type="'           . $this->mimeType()                  . '"' .
 			' data-obje-url="'  . $this->getHtmlUrl()                . '"' .
