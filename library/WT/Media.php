@@ -178,7 +178,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return boolean
 	 */
 	public function fileExists($which='main') {
-		return file_exists($this->getServerFilename($which));
+		return @file_exists($this->getServerFilename($which));
 	}
 
 	// determine if the file is an external url
