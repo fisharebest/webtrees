@@ -39,7 +39,8 @@ if ($TEXT_DIRECTION=='ltr') {
 
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
-	->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.colorbox.min.js')
+	->addExternalJavascript(WT_STATIC_URL.'js/jquery.colorbox-1.3.32.js')
+	->addExternalJavascript(WT_STATIC_URL.'js/jquery.wheelzoom-1.1.2.js')
 	->addInlineJavascript('activate_colorbox();');
 
 echo
