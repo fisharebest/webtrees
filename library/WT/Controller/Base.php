@@ -53,7 +53,7 @@ class WT_Controller_Base {
 		$this
 			->addExternalJavascript(WT_JQUERY_URL)
 			->addExternalJavascript(WT_JQUERYUI_URL)
-			->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js');
+			->addExternalJavascript(WT_STATIC_URL.'js/webtrees-1.4.0.js');
 	}
 
 	// Shutdown activity

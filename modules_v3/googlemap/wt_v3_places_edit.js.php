@@ -32,7 +32,7 @@ if (!defined('WT_WEBTREES')) {
 <head>
 	<script src="<?php echo WT_GM_SCRIPT; ?>"></script>
 	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/wt_v3_places_edit_overlays.js.php"></script>
-	<script src="<?php echo WT_STATIC_URL; ?>js/webtrees.js"></script>
+	<script src="<?php echo WT_STATIC_URL; ?>js/webtrees-1.4.0.js"></script>
 	<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/wt_v3_googlemap.css" rel="stylesheet">
 
 	<script>

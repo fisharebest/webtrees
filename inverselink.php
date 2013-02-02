@@ -35,7 +35,7 @@ $controller
 	->setPageTitle(WT_I18N::translate('Link to an existing media object'))
 	->addExternalJavascript(WT_JQUERY_URL)
 	->addExternalJavascript(WT_JQUERYUI_URL)
-	->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
+	->addExternalJavascript(WT_STATIC_URL.'js/webtrees-1.4.0.js')
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->pageHeader();
 
@@ -72,7 +72,6 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 			pastefield.value += value;
 		}
 		</script>
-	<script src="<?php echo WT_STATIC_URL; ?>js/webtrees.js"></script>
 
 		<?php
 		echo '<form name="link" method="get" action="inverselink.php">';

@@ -45,7 +45,7 @@ $controller = new WT_Controller_Simple();
 $controller
 	->addExternalJavascript(WT_JQUERY_URL)
 	->addExternalJavascript(WT_JQUERYUI_URL)
-	->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
+	->addExternalJavascript(WT_STATIC_URL.'js/webtrees-1.4.0.js')
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->requireMemberLogin()
 	->addInlineJavascript('

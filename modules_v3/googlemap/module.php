@@ -445,7 +445,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		$controller=new WT_Controller_Simple();
 		$controller
-			->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
+			->addExternalJavascript(WT_STATIC_URL.'js/webtrees-1.4.0.js')
 			->setPageTitle(WT_I18N::translate('Select flag'))
 			->pageHeader();
 

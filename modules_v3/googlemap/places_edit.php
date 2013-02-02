@@ -39,7 +39,7 @@ $controller=new WT_Controller_Simple();
 $controller
 		->requireAdminLogin()
 		->setPageTitle(WT_I18N::translate('Geographic data'))
-		->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
+		->addExternalJavascript(WT_STATIC_URL.'js/webtrees-1.4.0.js')
 		->pageHeader();
 
 echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
