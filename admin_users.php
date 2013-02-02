@@ -593,8 +593,8 @@ default:
 		'</table>';
 	
 	$controller
-		->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
-		->addExternalJavascript(WT_STATIC_URL.'js/jquery.jeditable-1.7.1.js')
+		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+		->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 		->addInlineJavascript('
 			var oTable = jQuery("#list").dataTable({
 				"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',

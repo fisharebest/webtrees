@@ -121,7 +121,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		default:
 			$table_id = "ID".(int)(microtime()*1000000); // table requires a unique ID
 			$controller
-				->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
+				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 				->addInlineJavascript('
 					jQuery("#'.$table_id.'").dataTable({
 						"sDom": \'t\',

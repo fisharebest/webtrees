@@ -27,8 +27,8 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Base();
 $controller
 	->requireAdminLogin()
-	->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
-	->addExternalJavascript(WT_STATIC_URL.'js/jquery.jeditable-1.7.1.js')
+	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 	->setPageTitle(WT_I18N::translate('Site access rules'));
 
 $action=safe_GET('action');

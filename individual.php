@@ -31,7 +31,7 @@ define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
 $controller=new WT_Controller_Individual();
 $controller
-	->addExternalJavascript(WT_STATIC_URL.'js/jquery.cookie-1.3.1.js') // We use this to record the sidebar state
+	->addExternalJavascript(WT_JQUERY_COOKIE_URL) // We use this to record the sidebar state
 	->addInlineJavascript('var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}'); // For the "find" links
 	
 if ($controller->record && $controller->record->canDisplayDetails()) {

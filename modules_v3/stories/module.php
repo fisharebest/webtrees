@@ -307,7 +307,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			$controller->setPageTitle($this->getTitle());
 			$controller->pageHeader();
 			$controller
-				->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
+				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 				->addInlineJavascript('
 					jQuery("#story_table").dataTable({
 						"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
@@ -374,7 +374,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		$controller->setPageTitle($this->getTitle());
 		$controller->pageHeader();
 		$controller
-			->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
+			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
 					"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',

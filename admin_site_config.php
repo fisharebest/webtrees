@@ -26,7 +26,7 @@ require './includes/session.php';
 $controller=new WT_Controller_Base();
 $controller
 	->requireAdminLogin()
-	->addExternalJavascript(WT_STATIC_URL.'js/jquery.jeditable-1.7.1.js')
+	->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 	->addInlineJavascript('jQuery("#tabs").tabs();')
 	->setPageTitle(WT_I18N::translate('Site configuration'))
 	->pageHeader();

@@ -47,12 +47,18 @@ define('WT_STATIC_URL', ''); // For example, http://my.cdn.com/webtrees-static-1
 // Optionally, load major JS libraries from Google’s public CDN
 define ('WT_USE_GOOGLE_API', false);
 if (WT_USE_GOOGLE_API) {
-	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js');
+	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.9/0/jquery.min.js');
 	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js');
 } else {
-	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery/jquery.min.js');
+	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery/jquery-1.9.0.js');
 	define('WT_JQUERYUI_URL',      WT_STATIC_URL.'js/jquery/jquery-ui.min.js');
 }
+define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL.'js/jquery.colorbox-1.3.32.js');
+define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL.'js/jquery.cookie-1.3.1.js');
+define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.datatables-1.9.4.js');
+define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable-1.7.1.js');
+define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom-1.1.2.js');
+define('WT_MODERNIZR_URL',         WT_STATIC_URL.'js/modernizr.custom-2.6.1.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes

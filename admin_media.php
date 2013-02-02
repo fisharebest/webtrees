@@ -499,7 +499,7 @@ $controller=new WT_Controller_Base();
 $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('Media'))
-	->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
+	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->pageHeader()
 	->addInlineJavascript('
 	var oTable=jQuery("#media-table-' . $table_id . '").dataTable( {
