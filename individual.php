@@ -4,7 +4,7 @@
 // Display all of the information about an individual
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
@@ -31,7 +31,7 @@ define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
 $controller=new WT_Controller_Individual();
 $controller
-	->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.cookie.js') // We use this to record the sidebar state
+	->addExternalJavascript(WT_STATIC_URL.'js/jquery.cookie-1.3.1.js') // We use this to record the sidebar state
 	->addInlineJavascript('var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}'); // For the "find" links
 	
 if ($controller->record && $controller->record->canDisplayDetails()) {
