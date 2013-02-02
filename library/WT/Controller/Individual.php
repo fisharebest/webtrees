@@ -748,7 +748,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		$controller
 			->addInlineJavascript('
 				jQuery("#sidebarAccordion").accordion({
-					active:"#family_nav",
+					active: 1,
 					autoHeight: false,
 					collapsible: true,
 					icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }
