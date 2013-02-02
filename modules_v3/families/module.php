@@ -103,11 +103,11 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				if (famtimerid) window.clearTimeout(famtimerid);
 				famtimerid = window.setTimeout("fsearchQ()", 500);
 			});
-			jQuery(".sb_fam_letter").live("click", function() {
+			jQuery(".sb_fam_letter").on("click", function() {
 				jQuery("#sb_fam_content").load(this.href);
 				return false;
 			});
-			jQuery(".sb_fam_surname").live("click", function() {
+			jQuery(".sb_fam_surname").on("click", function() {
 				var surname = jQuery(this).attr("title");
 				var alpha = jQuery(this).attr("alt");
 

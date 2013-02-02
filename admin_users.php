@@ -2,7 +2,7 @@
 // Administrative User Interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -636,13 +636,13 @@ default:
 			});
 			
 			/* When clicking on the +/- icon, we expand/collapse the details block */
-			jQuery("#list tbody td.icon-close").live("click", function () {
+			jQuery("#list tbody").on("click", "td.icon-close", function () {
 				var nTr=this.parentNode;
 				jQuery(this).removeClass("icon-close");
 				oTable.fnClose(nTr);
 				jQuery(this).addClass("icon-open");
 			});
-			jQuery("#list tbody td.icon-open").live("click", function () {
+			jQuery("#list tbody").on("click", "td.icon-open", function () {
 				var nTr=this.parentNode;
 				jQuery(this).removeClass("icon-open");
 				var aData=oTable.fnGetData(nTr);

@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -103,7 +103,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				dtimerid = window.setTimeout("dsearchQ()", 500);
 			});
 
-			jQuery(".sb_desc_indi").live("click", function() {
+			jQuery(".sb_desc_indi").on("click", function() {
 				var pid=this.title;
 				if (!dloadedNames[pid]) {
 					jQuery("#sb_desc_"+pid+" div").load(this.href);

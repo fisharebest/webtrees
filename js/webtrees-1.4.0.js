@@ -44,7 +44,7 @@ function helpDialog(which, mod) {
 			modal: true,
 			width: 500
 		});
-	jQuery(".ui-widget-overlay").live("click", function () {
+	jQuery(".ui-widget-overlay").on("click", function () {
 		jQuery("div:ui-dialog:visible").dialog("close");
 	});
 	jQuery('.ui-dialog-title').load(url+' .helpheader');
@@ -61,7 +61,7 @@ function modalDialog(url, title) {
 			close: function(event, ui) { $(this).remove(); }
 		});
 	// Close the window when we click outside it.
-	jQuery(".ui-widget-overlay").live("click", function () {
+	jQuery(".ui-widget-overlay").on("click", function () {
 		jQuery("div:ui-dialog:visible").dialog("close");
 	});
 	return false;
@@ -77,7 +77,7 @@ function modalNotes(content, title) {
 			close: function(event, ui) { $(this).remove(); }
 		});
 	// Close the window when we click outside it.
-	jQuery(".ui-widget-overlay").live("click", function () {
+	jQuery(".ui-widget-overlay").on("click", function () {
 		jQuery("div:ui-dialog:visible").dialog("close");
 	});
 	return false;

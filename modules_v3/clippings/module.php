@@ -360,7 +360,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		global $controller;
 
 		$controller->addInlineJavascript('
-				jQuery(".add_cart, .remove_cart").live("click", function() {
+				jQuery(".add_cart, .remove_cart").on("click", function() {
 					jQuery("#sb_clippings_content").load(this.href);
 					return false;
 				});

@@ -451,7 +451,7 @@ if (!$ajax) {
 						width: 964
 					});
 					// Close the window when we click outside it.
-					jQuery(".ui-widget-overlay").live("click", function () {
+					jQuery(".ui-widget-overlay").on("click", function () {
 						jQuery("div:ui-dialog:visible").dialog("close");
 					});
 				});

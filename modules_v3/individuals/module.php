@@ -103,11 +103,11 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				if (timerid) window.clearTimeout(timerid);
 				timerid = window.setTimeout("isearchQ()", 500);
 			});
-			jQuery(".sb_indi_letter").live("click", function() {
+			jQuery(".sb_indi_letter").on("click", function() {
 				jQuery("#sb_indi_content").load(this.href);
 				return false;
 			});
-			jQuery(".sb_indi_surname").live("click", function() {
+			jQuery(".sb_indi_surname").on("click", function() {
 				var surname = jQuery(this).attr("title");
 				var alpha = jQuery(this).attr("alt");
 

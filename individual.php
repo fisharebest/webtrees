@@ -105,7 +105,7 @@ $controller->addInlineJavascript('
 		spinner: \'<i class="icon-loading-small"></i>\',
 		cache: true
 	});
-	jQuery("#tabs").tabs("select",jQuery.cookie("indi-tab"));
+	jQuery("#tabs").tabs("option", "active", jQuery.cookie("indi-tab"));
 	jQuery("#tabs").bind("tabsshow", function(event, ui) {
 		jQuery.cookie("indi-tab", ui.panel.id);'.$callbacks.
 	'});

@@ -46,6 +46,7 @@ class WT_Controller_Base {
 		self::JS_PRIORITY_LOW   =>array(),
 	);
 	private $external_javascript=array();
+	private $external_stylesheet=array();
 
 	// Startup activity
 	public function __construct() {
@@ -142,6 +143,12 @@ class WT_Controller_Base {
 	// Make a list of external Javascript, so we can render them in the footer
 	public function addExternalJavascript($script_name) {
 		$this->external_javascript[$script_name]=true;
+		return $this;
+	}
+
+	// Make a list of external stylesheets, so we can render them in the header
+	public function addExternalStylesheet($stylesheet, $attributes=array()) {
+		$this->external_stylesheet[$stylesheet]=$attributes;
 		return $this;
 	}
 
