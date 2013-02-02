@@ -66,7 +66,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$table_id = 'ID'.(int)(microtime()*1000000); // create a unique ID
 		$controller
-			->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+			->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.datatables-1.9.4.js')
 			->addInlineJavascript('
 				jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'t\',

@@ -40,7 +40,7 @@ function format_indi_table($datalist, $option='') {
 	if ($option=='MARR_PLAC') return;
 	$html = '';
 	$controller
-		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
 		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc"  ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc" ]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
@@ -451,7 +451,7 @@ function format_fam_table($datalist, $option='') {
 	$html = '';
 
 	$controller
-		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
 		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
@@ -902,7 +902,7 @@ function format_sour_table($datalist) {
 	$html = '';
 	$table_id = "ID".(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
-		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
 		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
@@ -1042,7 +1042,7 @@ function format_note_table($datalist) {
 	$html = '';
 	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
-		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
 		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
@@ -1143,7 +1143,7 @@ function format_repo_table($repos) {
 	$html = '';
 	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
-		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
 		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
@@ -1235,7 +1235,7 @@ function format_media_table($datalist) {
 	$html = '';
 	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
-		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
 		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
@@ -1340,7 +1340,7 @@ function format_surname_table($surnames, $script) {
 	global $controller;
 	$html = '';
 	$controller
-		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
 		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["num-asc" ]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a<b) ? -1 : (a>b ? 1 : 0);};
 			jQuery.fn.dataTableExt.oSort["num-desc"]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a>b) ? -1 : (a<b ? 1 : 0);};
@@ -1596,7 +1596,7 @@ function print_changes_table($change_ids, $sort) {
 	}
 	$html = '';
 	$controller
-		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
 		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
@@ -1698,7 +1698,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	$html = '';
 	$table_id = "ID".(int)(microtime()*1000000); // each table requires a unique ID
 	$controller
-		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery.datatables-1.9.4.js')
 		->addInlineJavascript('
 			jQuery("#'.$table_id.'").dataTable({
 				"sDom": \'t\',
