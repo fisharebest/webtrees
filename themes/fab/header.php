@@ -53,7 +53,7 @@ echo
 	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">';
 	
 echo
-	'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui.custom.css">',
+	'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.0/jquery-ui-1.10.0.custom.css">',
 	'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'style.css', '">';
 
 switch ($BROWSERTYPE) {

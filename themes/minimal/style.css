@@ -1518,26 +1518,6 @@ html[dir='rtl'] dd .editlink, html[dir='rtl'] dd .deletelink {float:left;}
 #media-display-title {float:left;font-style:italic;margin:10px;}
 
 /* ========= jquery-ui.custom.css changes ============ */
-.ui-widget-content {color:#555;}
-.ui-widget-content {color:#555;border-color:#999999;}
-.ui-widget-content a {color:#555;}
-.ui-widget-content a:hover {color:#555;}
-.ui-state-active, .ui-widget-content .ui-state-active {background:#888;font-weight:normal;color:#555;outline:none;}
-.ui-state-active .ui-icon {background-image:url(../../js/jquery/css/images/ui-icons_222222_256x240.png);}
-.ui-state-default .ui-icon {background-image:url(../../js/jquery/css/images/ui-icons_222222_256x240.png);}
-
-.ui-tabs .ui-tabs-nav {padding:.3em .3em 0 .3em;border-color:#888;background:#dddddd;}
-.ui-tabs .ui-tabs-nav li {font-size:1em;bottom:0;margin:0 0.15em 0 0.1em;border-color:#888;background:#efefef;}
-.ui-tabs .ui-tabs-nav li a {color:#555555;}
-.ui-tabs .ui-tabs-nav li:hover {color:#555;background:#dfdfdf;}
-.ui-tabs .ui-tabs-nav li a:hover {color:#555;}
-
-.ui-tabs-nav li.ui-tabs-selected {color:#555;padding-top:0;top:1px;bottom:0;border-color:#888;border-bottom-width:0;background:#f8f8f8;}
-.ui-tabs-nav li.ui-tabs-selected a {font-weight:600;color:#555;}
-.ui-tabs-nav li.ui-tabs-selected a:hover {font-weight:600;color:#555;background:#f8f8f8;}
-.ui-tabs-nav li.ui-tabs-selected:hover {background:#f8f8f8;}
-.ui-tabs .ui-tabs-panel {background:#f8f8f8;}
-
 .ui-accordion .ui-accordion-header .ui-icon {position:absolute;left:.5em;top:50%;margin-top:-8px;}
 .ui-accordion .ui-accordion-content {padding:1em .05em;border-top:0;margin-top:1px;position:relative;top:1px;padding:0 5px;overflow:visible;display:none;}
 .ui-accordion .ui-accordion-content-active {display:block;}
@@ -1567,8 +1547,6 @@ html[dir='rtl'] .ui-dialog-titlebar-close{left:.3em;right:auto;}
 .upcoming_events_block button, .todays_events_block button {margin:5px 20px;}
 .dataTables_length {float:right;}
 .dataTables_length select, .dataTables_filter input {font-size:11px;padding:1px;}
-.ui-widget-header {background:#fff;border:1px solid #555;font-weight:normal;}
-.ui-widget-header .ui-icon {background-image:url(../../js/jquery/css/images/ui-icons_222222_256x240.png);}
 .dt-clear {clear:both;}
 #loading {text-align:center;}
 .DataTables_sort_wrapper {position:relative;margin:0 20px;}
