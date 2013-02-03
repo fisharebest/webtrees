@@ -2,7 +2,7 @@
 // Controller for the individual page
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team. All rights reserved.
@@ -738,17 +738,24 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		global $controller;
 
 		$html='';
+		$active=0;
+		$n=0;
 		foreach (WT_Module::getActiveSidebars() as $mod) {
 			if ($mod->hasSidebarContent()) {
 				$html.='<h3 id="'.$mod->getName().'"><a href="#">'.$mod->getTitle().'</a></h3>';
 				$html.='<div id="sb_content_'.$mod->getName().'">'.$mod->getSidebarContent().'</div>';
+				// The family navigator should be opened by default
+				if ($mod->getName()=='family_nav') {
+					$active=$n;
+				}
+				++$n;
 			}
 		}
 
 		$controller
 			->addInlineJavascript('
 				jQuery("#sidebarAccordion").accordion({
-					active: 1,
+					active:' . $active . ',
 					autoHeight: false,
 					collapsible: true,
 					icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }
