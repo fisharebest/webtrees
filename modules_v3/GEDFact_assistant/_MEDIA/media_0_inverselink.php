@@ -71,7 +71,6 @@ if ($action == 'choose' && $paramok) {
 
 	var GEDFact_assist = 'installed';
 	</script>
-	<link href ="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>GEDFact_assistant/css/media_0_inverselink.css" rel="stylesheet" type="text/css" media="screen">
 
 	<?php
 	echo '<form class="medialink" name="link" method="get" action="inverselink.php">';
@@ -107,8 +106,7 @@ if ($action == 'choose' && $paramok) {
 			->execute(array($mediaid, WT_GED_ID))
 			->fetchOne();
 		$media=WT_Media::getInstance($mediaid);
-		$thumbUrl  = $media->getHtmlUrlDirect('thumb');
-		echo '<img src="', $thumbUrl, '" class="thumbheight">';
+		echo $media->displayImage();
 		echo '</td></tr></table>';
 		echo '</td></tr>';
 		echo '<tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Links'), '</td>';
