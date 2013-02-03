@@ -12,10 +12,10 @@ WT_VERSION_RELEASE=$(shell grep "'WT_VERSION_RELEASE'" ../includes/session.php |
 BUILD_VERSION=$(if $(WT_VERSION_RELEASE),$(SVN_VERSION),$(WT_VERSION)$(WT_VERSION_RELEASE))
 
 # Location of minification tools
-CLOSURE_JS=~/bin/compiler-20120917.jar
-CLOSURE_CSS=~/bin/closure-stylesheets-20111230.jar
-YUI_COMPRESSOR=~/bin/yuicompressor.2.4.2.jar
-HTML_COMPRESSION=~/bin/htmlcompressor-1.5.3.jar
+CLOSURE_JS=compiler-20121212.jar
+CLOSURE_CSS=closure-stylesheets-20111230.jar
+YUI_COMPRESSOR=yuicompressor-2.4.7.jar
+HTML_COMPRESSION=htmlcompressor-1.5.3.jar
 
 # Use maximum compression
 GZIP=gzip -9
@@ -76,6 +76,12 @@ webtrees: $(PO_DIR) $(MO_DIR)
 	if find $@ -name '*.php' -exec php -l {} \; | grep -v "No syntax errors"; then false; else true; fi
 	# Add standard language files
 	cp $(MO_FILES) $@/language/
+	# Minification - first pass - using closure tools
+	#find $@ -name "*.js" -exec java -jar $(CLOSURE_JS) --js "{}" --js_output_file "{}.tmp" \; -exec mv "{}.tmp" "{}" \;
+	#find $@ -name "*.css" -exec java -jar $(CLOSURE_CSS) --output-file "{}.tmp" "{}" \; -exec mv "{}.tmp" "{}" \;
+	# Minification - second pass - using YUI tools
+	#find $@ -name "*.js"  -exec java -jar $(YUI_COMPRESSOR) -o "{}" "{}" \;
+	#find $@ -name "*.css" -exec java -jar $(YUI_COMPRESSOR) -o "{}" "{}" \;
 
 ################################################################################
 # PO files are stored in launchpad.net
