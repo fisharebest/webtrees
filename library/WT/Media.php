@@ -372,6 +372,7 @@ class WT_Media extends WT_GedcomRecord {
 		case 'jpg':  return 'image/jpeg';
 		case 'mov':  return 'video/quicktime';
 		case 'mp3':  return 'audio/mpeg';
+		case 'ogv':  return 'video/ogg';
 		case 'pdf':  return 'application/pdf';
 		case 'png':  return 'image/png';
 		case 'rar':  return 'application/x-rar-compressed';
