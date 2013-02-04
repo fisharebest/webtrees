@@ -130,9 +130,7 @@ a:hover .nameZoom {color:#f00;font-weight:bold;font-size:14px;}
 .thumbnail {height:auto;padding:3px;}
 .icon {border:none;}
 
-.sublinks_table {border:solid #81a9cb 1px;background-color:#edf7fd;}
 .sublinks_cell {font-size:12px;background-color:#edf7fd;}
-.sublinks_table .icon, .sublinks_table_rtl .icon {vertical-align:middle;width:20px;height:20px;}
 .menuitem .icon {width:50px;height:50px;}
 .menuitem_hover .icon {width:50px;height:50px;}
 .submenu .icon {vertical-align:middle;width:20px;height:20px;}

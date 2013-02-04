@@ -454,19 +454,9 @@ html[dir='rtl'] .icon {
 	text-align:center;
 }
 
-.sublinks_table {
-	border:solid #555 1px;
-}
-
 .sublinks_cell {
 	font-size:12px;
 	background-color:#eee;
-}
-
-.sublinks_table .icon {
-	vertical-align:middle;
-	width:25px;
-	height:25px;
 }
 
 .subheaders {
