@@ -135,13 +135,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 
 		echo $mod->getTabContent();
 		
-		// Allow the other tabs to modify this one - e.g. lightbox does this.
-		echo '<script>';
-		foreach ($this->tabs as $module) {
-			echo $module->getJSCallback();
-		}
-		echo '</script>';
-
 		if (WT_DEBUG_SQL) {
 			echo WT_DB::getQueryLog();
 		}

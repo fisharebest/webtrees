@@ -115,11 +115,6 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 		return '';
 	}
 
-	// Implement WT_Module_Tab
-	public function getJSCallback() {
-		return '';
-	}
-
 	protected $mediaCount = null;
 
 	private function get_media_count() {

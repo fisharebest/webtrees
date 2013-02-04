@@ -96,10 +96,6 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 
 $linkToID=$controller->record->getXref(); // -- Tell addmedia.php what to link to
 
-$callbacks='';
-foreach ($controller->tabs as $tab) {
-  $callbacks.=$tab->getJSCallback()."\n";
-}
 $controller->addInlineJavascript('
 	jQuery("#tabs").tabs({
 		spinner: \'<i class="icon-loading-small"></i>\',
@@ -107,8 +103,8 @@ $controller->addInlineJavascript('
 	});
 	jQuery("#tabs").tabs("option", "active", jQuery.cookie("indi-tab"));
 	jQuery("#tabs").bind("tabsshow", function(event, ui) {
-		jQuery.cookie("indi-tab", ui.panel.id);'.$callbacks.
-	'});
+		jQuery.cookie("indi-tab", ui.panel.id);
+	});
 
 	// sidebar settings 
 	// Variables

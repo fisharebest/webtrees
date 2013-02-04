@@ -153,6 +153,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '<img src="', $WT_IMAGES['spacer'], '" id="marker6" width="1" height="1" alt="">';
 			// end
 			echo '</td></tr></table>';
+			echo '<script>loadMap();</script>';
 			return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 		} else {
 			$html='<table class="facts_table">';
@@ -177,16 +178,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
 		return false;
-	}
-	// Implement WT_Module_Tab
-	public function getJSCallback() {
-		if ($this->checkMapData()) {
-			$out=
-			'if (jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title")=="'.$this->getName().'") {loadMap();}';
-		} else {
-			$out='';
-		}
-		return $out;
 	}
 
 	private function config() {

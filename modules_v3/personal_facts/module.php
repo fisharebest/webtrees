@@ -124,9 +124,4 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getPreLoadContent() {
 		return '';
 	}
-
-	// Implement WT_Module_Tab
-	public function getJSCallback() {
-		return '';
-	}
 }
