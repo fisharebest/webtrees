@@ -384,7 +384,7 @@ html[dir=rtl] .list_value, html[dir=rtl] .list_value_wrap{text-align:right;}
 
 .tabs_table{max-width:98%;}
 
-.facts_table,.facts_table_rtl{width:100%;}
+.facts_table {width:100%;}
 .facts_label .submenu a{background:#fff;color:#000;}
 .facts_label{border:1px solid #999;border-radius:3px;padding:4px;text-align:center;width:20%;}
 .facts_label02,.facts_label03{border-radius:3px;font-weight:700;padding:4px;text-align:center;}

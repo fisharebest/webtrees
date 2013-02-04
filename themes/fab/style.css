@@ -299,7 +299,7 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 .user_welcome_block table, .gedcom_block_block  table{margin:auto;}
 .user_welcome_block td, .gedcom_block_block  td{width:33%;text-align:center;vertical-align:top;}
 
-.facts_table, .facts_table_rtl {
+.facts_table {
 	width:100%;
 }
 

@@ -83,7 +83,7 @@ table.center {margin-left:auto;margin-right:auto;}
 .list_label_wrap, .list_value_wrap {white-space:normal;}
 .list_item {font-size:12px;}
 
-.facts_table, .facts_table_rtl {width:100%;}
+.facts_table {width:100%;}
 .facts_label {background-color:#81a9cb;font-size:12px;padding:4px 4px 4px 4px;width:20%;text-align:center;}
 .facts_label02, .facts_label03 {color:#fff;font-size:12px;padding:4px;text-align:center;font-weight:bold;}
 .facts_label02 {background-color:#c4c9e6;}
