@@ -70,6 +70,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Cleanup data directory');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Close Lightbox window');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Close Window');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Cluster size');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Continue');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Convert media folder separators to');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Convert media path to');
@@ -248,6 +249,7 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The media directory %s must exist, and the webserver must have read and write access to it.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The media directory is used to create URLs for your media items.  It is also the sub-directory in which the media items are stored.  For example, a media directory of %1$s will create URLs of the form %2$s and store these items as %3$s.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The media folder is corrupted.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The number of markers to be placed at one point before a trail of pins is started in a north east line behind the younger generations.  The \'trail\' is usually only visable at high zoom values.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The protected media directory could not be created in the Media Firewall root directory.  Please create this directory and make it world-writable.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('The protected media directory in the Media Firewall root directory is not world writable. ');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('This is the most important field in a person\'s Name record.<br /><br />This field should be filled automatically as the other fields are filled in, but it is provided so that you can edit the information according to your personal preference.<br /><br />The name in this field should be entered according to the GEDCOM 5.5.1 standards with the surname surrounded by forward slashes "/".  As an example, the name "John Robert Finlay Jr." should be entered like this: "John Robert /Finlay/ Jr.".');

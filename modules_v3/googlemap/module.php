@@ -643,16 +643,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		$controller=new WT_Controller_Pedigree();
 
-		// Default of 5
-		$clustersize = 5;
-		if (!empty($_REQUEST['clustersize'])) {
-			if ($_REQUEST['clustersize'] == '3') {
-				$clustersize = 3;
-			} elseif ($_REQUEST['clustersize'] == '1') {
-				$clustersize = 1;
-			}
-		}
-
 		// Start of internal configuration variables
 		// Limit this to match available number of icons.
 		// 8 generations equals 255 individuals
@@ -686,9 +676,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							<?php echo WT_I18N::translate('Generations'); ?>
 						</td>
 						<td class="descriptionbox wrap">
-							<?php echo WT_I18N::translate('Cluster size'), help_link('PEDIGREE_MAP_clustersize','googlemap'); ?>
-						</td>
-						<td class="descriptionbox wrap">
 							<?php echo WT_I18N::translate('Hide flags'), help_link('PEDIGREE_MAP_hideflags','googlemap'); ?>
 						</td>
 						<td class="descriptionbox wrap">
@@ -706,19 +693,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								for ($p=3; $p<=$MAX_PEDIGREE_GENERATIONS; $p++) {
 									echo '<option value="', $p, '" ';
 									if ($p == $controller->PEDIGREE_GENERATIONS) {
-										echo 'selected="selected"';
-									}
-									echo '>', $p, '</option>';
-								}
-							?>
-							</select>
-						</td>
-						<td class="optionbox">
-							<select name="clustersize">
-							<?php
-								for ($p=1; $p<6; $p = $p+2) {
-									echo '<option value="', $p, '" ';
-									if ($p == $clustersize) {
 										echo 'selected="selected"';
 									}
 									echo '>', $p, '</option>';
@@ -872,10 +846,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<!-- Start of map scripts -->
 		<?php
 		echo '<script src="', WT_GM_SCRIPT, '"></script>';
-		$controller->addInlineJavascript($this->pedigree_map_js($hideflags, $hidelines, $clustersize));
+		$controller->addInlineJavascript($this->pedigree_map_js($hideflags, $hidelines));
 	}
 
-	private function pedigree_map_js($hideflags, $hidelines, $clustersize) {
+	private function pedigree_map_js($hideflags, $hidelines) {
 		global $controller, $SHOW_HIGHLIGHT_IMAGES, $PEDIGREE_GENERATIONS;
 		// The HomeControl returns the map to the original position and style
 		$js='function HomeControl(controlDiv, pm_map) {'.
@@ -1288,7 +1262,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				}
 				// end of add image
 
-				$dataleft  = $image . $event . addslashes($name);
+				$dataleft  = addslashes($image) . $event . addslashes($name);
 				$datamid   = " <span><a href='".$person->getHtmlUrl()."' id='alturl' title='" . WT_I18N::translate('Individual information') . "'>";
 				$datamid .= '('.WT_I18N::translate('View Person').')';
 				$datamid  .= '</a></span>';
@@ -1320,26 +1294,17 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						$dups=0;
 						for ($k=0; $k<$i; $k++) {
 							if ($latlongval[$i] == $latlongval[$k]) {
-								if ($clustersize == 1) {
-									$lon[$i] = $lon[$i]+0.0025;
-									$lat[$i] = $lat[$i]+0.0025;
-								} else {
-									$dups++;
-									switch($dups) {
-										case 1: $marker_number = $curgen . 'L'; break;
-										case 2: $marker_number = $curgen . 'R'; break;
-										case 3: if ($clustersize==5) {
-											$marker_number = $curgen . 'Ls'; break;
-											}
-										case 4: if ($clustersize==5) {
-											$marker_number = $curgen . 'Rs'; break;
-											}
-										case 5: //adjust position where markers have same coodinates
-										default: $marker_number = $curgen;
-											$lon[$i] = $lon[$i]+0.0025;
-											$lat[$i] = $lat[$i]+0.0025;
-											break;
-									}
+								$dups++;
+								switch($dups) {
+									case 1: $marker_number = $curgen . 'L'; break;
+									case 2: $marker_number = $curgen . 'R'; break;
+									case 3: $marker_number = $curgen . 'Ls'; break;
+									case 4: $marker_number = $curgen . 'Rs'; break;
+									case 5: //adjust position where markers have same coodinates
+									default: $marker_number = $curgen;
+										$lon[$i] = $lon[$i]+0.0025;
+										$lat[$i] = $lat[$i]+0.0025;
+										break;
 								}
 							}
 						}
@@ -1349,7 +1314,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						$js.= "<a href='module.php?ged=".WT_GEDURL."&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid={$pid}&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
 						if ($hideflags) $js.= '&amp;hideflags=1';
 						if ($hidelines) $js.= '&amp;hidelines=1';
-						if ($clustersize != 5) $js.= '&amp;clustersize='.$clustersize; // ignoring the default of 5
 						$js.= "' title='".WT_I18N::translate('Pedigree map')."'>".$dataleft."</a>".$datamid.$dataright."</div>\", \"".$marker_number."\");";
 						// Construct the polygon lines
 						if (!$hidelines) {

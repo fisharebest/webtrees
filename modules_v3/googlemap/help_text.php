@@ -100,11 +100,6 @@ case 'GM_DISP_SHORT_PLACE':
 
 // Pedigree map
 
-case 'PEDIGREE_MAP_clustersize':
-	$title=WT_I18N::translate('Cluster size');
-	$text=WT_I18N::translate('The number of markers to be placed at one point before a trail of pins is started in a north east line behind the younger generations.  The \'trail\' is usually only visable at high zoom values.');
-	break;
-
 case 'PEDIGREE_MAP_hidelines':
 	$title=WT_I18N::translate('Hide lines');
 	$text=WT_I18N::translate('Hide the lines connecting the child to each parent if they exist on the map.');
