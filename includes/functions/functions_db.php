@@ -1,11 +1,8 @@
 <?php
-// Functions to query the database.
-//
-// This file implements the datastore functions necessary for webtrees
-// to use an SQL database as its datastore.
+// General functions to query the database.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -961,39 +958,6 @@ function search_repos($query, $geds, $match) {
 		load_gedcom_settings(WT_GED_ID);
 	}
 	return $list;
-}
-
-// THIS FUNCTION IS OLD AND DEPRECATED.  Use WT_Place::findPlaces() instead.
-//
-// It is still called from the GEDFact_assistant module (although the calling
-// code seems to be unreachable??)
-function find_place_list($place) {
-	$rows=
-		WT_DB::prepare("SELECT p_id, p_place, p_parent_id  FROM `##places` WHERE p_file=? ORDER BY p_parent_id, p_id")
-		->execute(array(WT_GED_ID))
-		->fetchAll();
-
-	$placelist=array();
-	foreach ($rows as $row) {
-		if ($row->p_parent_id==0) {
-			$placelist[$row->p_id] = $row->p_place;
-		} else {
-			$placelist[$row->p_id] = $placelist[$row->p_parent_id].", ".$row->p_place;
-		}
-	}
-	if (!empty($place)) {
-		$found = array();
-		foreach ($placelist as $indexval => $pplace) {
-			if (stripos($pplace, $place)!==false) {
-				$upperplace = utf8_strtoupper($pplace);
-				if (!isset($found[$upperplace])) {
-					$found[$upperplace] = $pplace;
-				}
-			}
-		}
-		$placelist = array_values($found);
-	}
-	return $placelist;
 }
 
 //-- function to find the gedcom id for the given rin
