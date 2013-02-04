@@ -125,7 +125,22 @@ html[dir="rtl"] input:required:valid, html[dir="rtl"] textarea:required:valid, h
 	color:#888;
 	text-align:center;
 }
-#topMenu {
+#header-user-links {
+	float:right;
+}
+html[dir=rtl] #header-user-links {
+	float:left;
+}
+#header-title {
+	font-size:175%;
+	float:left;
+	clear:left;
+}
+html[dir=rtl] #header-title {
+	float:right;
+	clear:right;
+}
+#header-menu {
 	clear:both;
 	text-align:center;
 	padding-top:1em;

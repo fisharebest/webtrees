@@ -28,15 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// Definitions to simplify logic on pages with right-to-left languages
-if ($TEXT_DIRECTION=='ltr') {
-	define ('WT_CSS_ALIGN',         'left');
-	define ('WT_CSS_REVERSE_ALIGN', 'right');
-} else {
-	define ('WT_CSS_ALIGN',         'right');
-	define ('WT_CSS_REVERSE_ALIGN', 'left');
-}
-
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
@@ -57,7 +48,6 @@ echo
 	'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'style.css', '">';
 
 switch ($BROWSERTYPE) {
-//case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
 case 'msie':
 	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css">';
 	break;
@@ -72,9 +62,9 @@ echo
 	'</head>',
 	'<body id="body">';
 
-if ($view!='simple') { // Use "simple" headers for popup windows
+if ($view!='simple') { // Use “simple” headers for popup windows
 	echo '<div id="header" class="block">';
-	echo '<div style="float:', WT_CSS_REVERSE_ALIGN, ';"><ul class="makeMenu">';
+	echo '<div id="header-user-links"><ul class="makeMenu">';
 	if (WT_USER_ID) {
 		echo '<li><a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
 		if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
@@ -115,10 +105,10 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 		$menu_items[]=$menu;
 	}
 
-	echo '<div style="float:', WT_CSS_ALIGN, '; clear:', WT_CSS_ALIGN, '; font-size:175%;" dir="auto">', WT_TREE_TITLE, '</div>';
+	echo '<div id="header-title" dir="auto">', WT_TREE_TITLE, '</div>';
 
 	// Print the menu bar
-	echo '<div id="topMenu"><ul class="makeMenu">';
+	echo '<div id="header-menu"><ul class="makeMenu">';
 	foreach ($menu_items as $menu) {
 		if ($menu) {
 			echo $menu->getMenuAsList();
@@ -126,8 +116,8 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 	}
 	unset($menu_items, $menu);
 	echo
-		'</ul>',  // <ul id="main-menu">
-		'</div>', // <div id="topMenu">
+		'</ul>',  // <ul class="makeMenu">
+		'</div>', // <div id="header-menu">
 		'</div>'; // <div id="header">
 }
 echo
