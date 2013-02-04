@@ -1172,7 +1172,7 @@ vertical-align:top;
 
 }
 
-.submenuitem,.submenuitem_rtl {
+.submenuitem {
 height:20px;
 color:#555;
 text-decoration:none;
@@ -1183,7 +1183,7 @@ white-space:nowrap;
 padding:3px 3px 0 3px;
 }
 
-.submenuitem_hover,.submenuitem_hover_rtl {
+.submenuitem_hover {
 height:20px;
 font-size:11px;
 white-space:nowrap;

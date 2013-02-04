@@ -447,7 +447,7 @@ a:hover .nameZoom{font-size:14px;color:red;font-weight:700;}
 .subheaders{font-size:16px;font-weight:700;margin:15px 0 0 15px;padding:10px;vertical-align:bottom;}
 .sublinks_cell{background:#9be;}
 .submenu{font-size:11px;white-space:nowrap;}
-.submenuitem,.submenuitem_rtl,.submenuitem_hover,.submenuitem_hover_rtl{background-color:#fff;border:1px solid #ccc;height:20px;padding:3px 3px 0;white-space:nowrap;}
+.submenuitem,.submenuitem_hover {background-color:#fff;border:1px solid #ccc;height:20px;padding:3px 3px 0;white-space:nowrap;}
 .theme_form {font-size:14px;margin:3px;margin-top:0;}
 .thumbnail{height:auto;padding:5px;}
 
