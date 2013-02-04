@@ -1634,6 +1634,7 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(images/uarrow2.p
 #edit_interface-page input[type="text"][id$="DATE"] {width:160px;}
 #edit_interface-page input[type="text"][id^="TIME"] {width:100px;}
 #edit_interface-page input[type="text"][id*="OBJE_FILE"] {width:200px;}
+#edit_interface-page input[type="text"][id*="SOUR_TITL"] {width:250px;}
 #edit_interface-page input[id*="TEXT"]{height:140px;width:440px;} 
 #edit_interface-page textarea {margin:0 5px;width:440px;}
 #edit_interface-page textarea[id*="NOTE"]{height:240px;}
