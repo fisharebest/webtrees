@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -128,11 +128,9 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				} else {
 					$icon_class = 'icon-media-play';
 				}
-				$linkNextImage = '<a href="#" onclick="jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;" title="'.WT_I18N::translate('Next image').'" class="icon-media-next"></a>';
-				$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br>";
-				if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
+				$content .= '<div dir="ltr" class="center" id="random_picture_controls' . $block_id .'"><br>';
 				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"".$icon_class."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop').'"></a>';
-				if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
+				$content .= '<a href="#" onclick="jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;" title="'.WT_I18N::translate('Next image').'" class="icon-media-next"></a>';
 				$content .= '</div><script>
 					var play = false;
 						function togglePlay() {
@@ -188,12 +186,12 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			foreach ($random_media->fetchLinkedSources() as $source) {
 				$content .= '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View Source') . ' — ' . $source->getFullname().'</a><br>';
 			}
-			$content .= "<br><div class=\"indent" . ($TEXT_DIRECTION=="rtl"?"_rtl":"") . "\">";
+			$content .= '<br><div class="indent">';
 			$content .= print_fact_notes($random_media->getGedcomRecord(), "1", false, true);
-			$content .= "</div>";
-			$content .= "</td></tr></table>";
-			$content .= "</div>"; // random_picture_content
-			$content .= "</div>"; // random_picture_container
+			$content .= '</div>';
+			$content .= '</td></tr></table>';
+			$content .= '</div>'; // random_picture_content
+			$content .= '</div>'; // random_picture_container
 		} else {
 			$content = WT_I18N::translate('This family tree has no images to display.');
 		}
