@@ -128,8 +128,8 @@ if ($action!='choose') {
 								$skip2[] = $j;
 								$equal_count++;
 								echo '<tr><td>', WT_I18N::translate($fact1['fact']);
-								// PHP5.3 echo '<input type="hidden" name="keep1[]" value="', $i, '"></td><td>', nl2br($fact1['subrec']), '</td></tr>';
-								echo '<input type="hidden" name="keep1[]" value="', $i, '"></td><td>', nl2br($fact1['subrec'], false), '</td></tr>';
+								// PHP5.3 echo '<input type="hidden" name="keep1[]" value="', $i, '"></td><td>', nl2br($fact1['subrec'], false), '</td></tr>';
+								echo '<input type="hidden" name="keep1[]" value="', $i, '"></td><td>', nl2br($fact1['subrec']), '</td></tr>';
 							}
 						}
 					}
