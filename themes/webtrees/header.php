@@ -46,7 +46,6 @@ echo
 	'<link rel="stylesheet" type="text/css" href="', WT_THEME_URL, 'style.css', '">';
 
 switch ($BROWSERTYPE) {
-//case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
 case 'msie':
 	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css">';
 	break;
