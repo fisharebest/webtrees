@@ -154,6 +154,10 @@ Requests for commercial publication of these or other UK census images appearing
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Media path should not contain "../" or "./"');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Media path should not contain a drive letter.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Media thumbnail already exists.');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Merge Step 1 of 3');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Merge Step 2 of 3');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Merge Step 3 of 3');
+/* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Merge more records.');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Module Name');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Mother\'s Family with ');
 /* I18N: This message is deleted in webtrees-1.4.0  */ WT_I18N::translate('Mother\'s birthplace');
