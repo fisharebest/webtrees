@@ -1673,7 +1673,7 @@ class WT_Person extends WT_GedcomRecord {
 	// 2 GIVN Carlos
 	// 2 SURN Vasquez,Sante
 	protected function _addName($type, $full, $gedrec) {
-		global $UNKNOWN_NN, $UNKNOWN_PN, $TEXT_DIRECTION;
+		global $UNKNOWN_NN, $UNKNOWN_PN;
 
 		////////////////////////////////////////////////////////////////////////////
 		// Extract the structured name parts - use for "sortable" names and indexes

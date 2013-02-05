@@ -302,7 +302,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
  */
 function lightbox_print_media_row($rtype, $rowm, $pid) {
 
-	global $TEXT_DIRECTION, $sort_i, $notes;
+	global $sort_i, $notes;
 
 	$media=WT_Media::getInstance($rowm['m_id']);
 
