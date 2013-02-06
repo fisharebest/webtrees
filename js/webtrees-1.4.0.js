@@ -1398,7 +1398,7 @@ function activate_colorbox() {
 			}
 		});
 		// Add colorbox to all visible non-images
-			jQuery("a[type^=application].gallery:visible,a[type^=audio].gallery:visible,a[type^=text].gallery:visible,a[type^=video].gallery:visible").colorbox({
+		jQuery("a[type^=application].gallery:visible,a[type^=audio].gallery:visible,a[type^=text].gallery:visible,a[type^=video].gallery:visible").colorbox({
 			innerWidth: "425px",
 			innerHeight:"344px",
 			rel:        "gallery",
