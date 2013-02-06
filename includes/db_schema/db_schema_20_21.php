@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 // Delete old settings
-self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('MEDIA_EXTERNAL', 'USE_MEDIA_FIREWALL', 'MEDIA_FIREWALL_THUMBS')");
+self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('MEDIA_EXTERNAL')");
 
 // Delete old table
 self::exec("DROP TABLE IF EXISTS `##media_mapping`");
