@@ -3,7 +3,7 @@
 // that have no dedicated page of their own.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 define('WT_SCRIPT_NAME', 'gedrecord.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 
 $obj=WT_GedcomRecord::getInstance(safe_GET_xref('pid'));
 

@@ -28,7 +28,7 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 $controller->setPageTitle(WT_I18N::translate('Media objects'));
 
 $search = safe_GET('search');

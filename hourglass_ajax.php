@@ -4,7 +4,7 @@
 // Set the root person using the $pid variable
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2007  John Finlay and Others
@@ -37,6 +37,9 @@ require './includes/session.php';
 $controller=new WT_Controller_Hourglass();
 
 header('Content-type: text/html; charset=UTF-8');
+
+Zend_Session::writeClose();
+
 // -- print html header information
 if (isset($_REQUEST['type']) && $_REQUEST['type']=='desc')
 	$controller->print_descendency(WT_Person::getInstance($controller->pid), 1, false);

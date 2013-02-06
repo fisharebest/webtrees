@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -186,7 +186,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		$action=safe_REQUEST($_REQUEST, 'action');
 
-		$controller=new WT_Controller_Base();
+		$controller=new WT_Controller_Page();
 		$controller
 			->requireAdminLogin()
 			->setPageTitle(WT_I18N::translate('Google Maps™'))
@@ -436,7 +436,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		$controller=new WT_Controller_Simple();
 		$controller
-			->addExternalJavascript(WT_STATIC_URL.'js/webtrees-1.4.0.js')
 			->setPageTitle(WT_I18N::translate('Select flag'))
 			->pageHeader();
 
@@ -1448,7 +1447,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$WT_SESSION['placecheck_state'] = $state;
 		}
 
-		$controller=new WT_Controller_Base();
+		$controller=new WT_Controller_Page();
 		$controller
 			->requireAdminLogin()
 			->setPageTitle(WT_I18N::translate('Google Maps™'))

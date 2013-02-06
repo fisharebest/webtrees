@@ -4,7 +4,7 @@
 // Provides links for administrators to get to other administrative areas of the site
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -28,7 +28,7 @@
 define('WT_SCRIPT_NAME', 'admin_site_info.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('PHP information'))

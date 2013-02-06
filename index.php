@@ -74,7 +74,7 @@ if ($action=='ajax') {
 	exit;
 }
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 if ($ctype=='user') {
 	$controller->requireMemberLogin();
 }

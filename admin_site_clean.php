@@ -24,7 +24,7 @@
 define('WT_SCRIPT_NAME', 'admin_site_clean.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 $controller
 	->requireAdminLogin()
 	->setPageTitle(/* I18N: The “Data folder” is a configuration setting */ WT_I18N::translate('Clean up data folder'))

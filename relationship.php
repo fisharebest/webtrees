@@ -2,7 +2,7 @@
 // Calculates the relationship between two individuals in the gedcom
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 
 $pid1        =safe_GET_xref('pid1');
 $pid2        =safe_GET_xref('pid2');

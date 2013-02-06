@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'admin_media_upload.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_mediadb.php';
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
 	->requireEditorLogin() /* Editing may be disabled, even for admins */

@@ -2,7 +2,7 @@
 // Parses gedcom file and displays a list of the shared notes in the file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2009  PGV Development Team.  All rights reserved.
@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'notelist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 $controller->setPageTitle(WT_I18N::translate('Shared notes'));
 $controller->pageHeader();
 

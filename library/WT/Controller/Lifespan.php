@@ -2,7 +2,7 @@
 // Controller for the timeline chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
@@ -32,7 +32,7 @@ function compare_people($a, $b) {
 	return WT_Date::Compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
 }
 
-class WT_Controller_Lifespan extends WT_Controller_Base {
+class WT_Controller_Lifespan extends WT_Controller_Page {
 	var $pids = array ();
 	var $people = array();
 	var $place = '';

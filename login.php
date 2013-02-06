@@ -33,7 +33,7 @@ if (WT_USER_ID) {
 	exit;
 }
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 
 $REQUIRE_ADMIN_AUTH_REGISTRATION=WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION');
 

@@ -2,7 +2,7 @@
 // Restrict/allow site access based on IP address and user-agent string
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ define('WT_SCRIPT_NAME', 'admin_site_access.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 $controller
 	->requireAdminLogin()
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)

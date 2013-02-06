@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -214,7 +214,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	}
 
 	private function admin() {
-		$controller=new WT_Controller_Base();
+		$controller=new WT_Controller_Page();
 		$controller
 			->requireAdminLogin()
 			->setPageTitle($this->getTitle())

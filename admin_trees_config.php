@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'admin_trees_config.php');
 
 require './includes/session.php';
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Family tree configuration'));

@@ -112,7 +112,7 @@ $gencount=0;
 
 	<!-- // NOTE: Close table header -->
 	</td></tr></table>
-<div id="hourglass_chart" <?php echo "style=\"width:98%; direction:".$TEXT_DIRECTION."; z-index:1;\""; ?> >
+<div id="hourglass_chart" <?php echo "style=\"width:98%; z-index:1;\""; ?> >
 <table cellspacing="0" cellpadding="0" border="0"><tr>
 <!-- // descendancy -->
 <td valign="middle">

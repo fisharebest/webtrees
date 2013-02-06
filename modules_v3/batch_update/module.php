@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'admin_batch_update':
-			$controller=new WT_Controller_Base();
+			$controller=new WT_Controller_Page();
 			$controller
 				->setPageTitle(WT_I18N::translate('Batch update'))
 				->requireAdminLogin()

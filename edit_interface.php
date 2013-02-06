@@ -30,9 +30,6 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Simple();
 $controller
 	->requireMemberLogin()
-	->addExternalJavascript(WT_JQUERY_URL)
-	->addExternalJavascript(WT_JQUERYUI_URL)
-	->addExternalJavascript(WT_STATIC_URL.'js/webtrees-1.4.0.js')
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 // TODO work out whether to use GET/POST for these

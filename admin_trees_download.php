@@ -2,7 +2,7 @@
 // Allow an admin user to download the entire gedcom file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'admin_trees_download.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_export.php';
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 $controller
 	->setPageTitle(WT_I18N::translate('Download GEDCOM'))
 	->requireManagerLogin();

@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -201,7 +201,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			} else {
 				$block_id=safe_GET('block_id');
 
-				$controller=new WT_Controller_Base();
+				$controller=new WT_Controller_Page();
 				if ($block_id) {
 					$controller->setPageTitle(WT_I18N::translate('Edit story'));
 					$title=get_block_setting($block_id, 'title');
@@ -299,10 +299,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		require_once 'includes/functions/functions_edit.php';
 		if (WT_USER_GEDCOM_ADMIN) {
 
-			$controller=new WT_Controller_Base();
-			$controller->setPageTitle($this->getTitle());
-			$controller->pageHeader();
+			$controller=new WT_Controller_Page();
 			$controller
+				->setPageTitle($this->getTitle())
+				->pageHeader()
 				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 				->addInlineJavascript('
 					jQuery("#story_table").dataTable({
@@ -375,10 +375,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	private function show_list() {
 		global $controller;
 
-		$controller=new WT_Controller_Base();
-		$controller->setPageTitle($this->getTitle());
-		$controller->pageHeader();
+		$controller=new WT_Controller_Page();
 		$controller
+			->setPageTitle($this->getTitle())
+			->pageHeader()
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({

@@ -2,7 +2,7 @@
 // Interface to edit place locations
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team. All rights reserved.
@@ -139,7 +139,7 @@ function findFiles($path) {
 	}
 }
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 $controller->requireAdminLogin();
 	
 if ($action=='ExportFile' && WT_USER_IS_ADMIN) {

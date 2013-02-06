@@ -30,8 +30,9 @@ $action         =safe_GET('action');
 $callback       =safe_GET('callback', WT_REGEX_NOSCRIPT, 'paste_id');
 $multiple       =safe_GET_bool('multiple');
 
-$controller->setPageTitle(WT_I18N::translate('Find an individual'));
-$controller->pageHeader();
+$controller
+	->setPageTitle(WT_I18N::translate('Find an individual'))
+	->pageHeader();
 
 ?>
 <script>

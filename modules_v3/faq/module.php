@@ -132,7 +132,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			$this->config();
 		} else {
 			$block_id=safe_GET('block_id');
-			$controller=new WT_Controller_Base();
+			$controller=new WT_Controller_Page();
 			if ($block_id) {
 				$controller->setPageTitle(WT_I18N::translate('Edit FAQ item'));
 				$header=get_block_setting($block_id, 'header');
@@ -257,9 +257,10 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 
 	private function show() {
 		global $controller;
-		$controller=new WT_Controller_Base();
-		$controller->setPageTitle($this->getTitle());
-		$controller->pageHeader();
+		$controller=new WT_Controller_Page();
+		$controller
+			->setPageTitle($this->getTitle())
+			->pageHeader();
 
 		$faqs=WT_DB::prepare(
 			"SELECT block_id, bs1.setting_value AS header, bs2.setting_value AS body".
@@ -323,9 +324,10 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 	private function config() {
 		require_once 'includes/functions/functions_edit.php';
 
-		$controller=new WT_Controller_Base();
-		$controller->setPageTitle($this->getTitle());
-		$controller->pageHeader();
+		$controller=new WT_Controller_Page();
+		$controller
+			->setPageTitle($this->getTitle())
+			->pageHeader();
 
 		$faqs=WT_DB::prepare(
 			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS header, bs2.setting_value AS faqbody".

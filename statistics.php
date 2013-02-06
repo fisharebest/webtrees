@@ -5,7 +5,7 @@
 // age -> periodes of 10 years (different for 0-1,1-5,5-10,10-20 etc)
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -34,7 +34,7 @@ $tab = safe_GET('tab', WT_REGEX_NOSCRIPT, 0);
 $ajax = safe_GET('ajax', WT_REGEX_NOSCRIPT, 0);
 
 if (!$ajax) {
-	$controller=new WT_Controller_Base();
+	$controller=new WT_Controller_Page();
 	$controller->setPageTitle(WT_I18N::translate('Statistics'))
 		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 		->addInlineJavascript('jQuery("#stats-tabs").tabs({ spinner: "<i class=\"icon-loading-small\"></i>", cache: true });')

@@ -2,7 +2,7 @@
 // PGV to webtrees transfer wizard
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ if (WT_GED_ID || get_user_count()>1) {
 	exit;
 }
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('PhpGedView to webtrees transfer wizard'));

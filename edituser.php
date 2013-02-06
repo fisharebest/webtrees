@@ -2,7 +2,7 @@
 // User Account Edit Interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -34,9 +34,8 @@ if (!get_user_setting(WT_USER_ID, 'editaccount')) {
 	exit;
 }
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 $controller->setPageTitle(WT_I18N::translate('User administration'));
-
 
 // Valid values for form variables
 $ALL_THEMES_DIRS=array();

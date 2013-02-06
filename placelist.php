@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'placelist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 
 $action =safe_GET('action',  array('find', 'show'), 'find');
 $display=safe_GET('display', array('hierarchy', 'list'), 'hierarchy');

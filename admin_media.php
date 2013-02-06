@@ -495,7 +495,7 @@ function media_object_info(WT_Media $media) {
 // selected folder.
 $table_id=md5($files.$media_folder.$media_path.$subfolders);
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Page();
 $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('Media'))

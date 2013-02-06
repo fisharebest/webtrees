@@ -76,8 +76,9 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$subclick       =safe_GET('subclick');
 		$choose         =safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
 		
-		$controller->setPageTitle(WT_I18N::translate('Find an individual'));
-		$controller->pageHeader();
+		$controller
+			->setPageTitle(WT_I18N::translate('Find an individual'))
+			->pageHeader();
 		
 		echo '<script>';
 		?>
@@ -172,8 +173,9 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$iid2 = safe_GET('iid');
 
 		$controller=new WT_Controller_Simple();
-		$controller->setPageTitle(WT_I18N::translate('Link to an existing media object'));
-		$controller->pageHeader();
+		$controller
+			->setPageTitle(WT_I18N::translate('Link to an existing media object'))
+			->pageHeader();
 		
 		$record=WT_GedcomRecord::getInstance($iid2);
 		if ($record) {

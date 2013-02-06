@@ -33,9 +33,6 @@ $controller=new WT_Controller_Simple();
 $controller
 	->requireEditorLogin()
 	->setPageTitle(WT_I18N::translate('Link to an existing media object'))
-	->addExternalJavascript(WT_JQUERY_URL)
-	->addExternalJavascript(WT_JQUERYUI_URL)
-	->addExternalJavascript(WT_STATIC_URL.'js/webtrees-1.4.0.js')
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->pageHeader();
 

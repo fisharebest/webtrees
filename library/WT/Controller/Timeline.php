@@ -2,7 +2,7 @@
 // Controller for the timeline chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class WT_Controller_Timeline extends WT_Controller_Base {
+class WT_Controller_Timeline extends WT_Controller_Page {
 	var $bheight = 30;
 	var $placements = array();
 	var $indifacts = array(); // array to store the fact records in for sorting and displaying

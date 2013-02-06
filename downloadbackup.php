@@ -2,7 +2,7 @@
 // Allow an admin user to download the backup file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2005  John Finlay and Others
@@ -29,9 +29,10 @@ require './includes/session.php';
 $fname=safe_GET('fname');
 
 if (!WT_USER_GEDCOM_ADMIN || !preg_match('/\.zip$/', $fname)) {
-	$controller=new WT_Controller_Base();
-	$controller->setPageTitle(WT_I18N::translate('Error'));
-	$controller->pageHeader();
+	$controller=new WT_Controller_Page();
+	$controller
+		->setPageTitle(WT_I18N::translate('Error'))
+		->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('You do not have permission to view this page.'), '</p>';
 	exit;
 }
