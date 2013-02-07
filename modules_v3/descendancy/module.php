@@ -103,20 +103,18 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				dtimerid = window.setTimeout("dsearchQ()", 500);
 			});
 
-			jQuery(".sb_desc_indi").on("click", function() {
+			jQuery("#sb_desc_content").on("click", ".sb_desc_indi", function() {
 				var pid=this.title;
 				if (!dloadedNames[pid]) {
 					jQuery("#sb_desc_"+pid+" div").load(this.href);
 					jQuery("#sb_desc_"+pid+" div").show("fast");
 					jQuery("#sb_desc_"+pid+" .plusminus").removeClass("icon-plus").addClass("icon-minus");
 					dloadedNames[pid]=2;
-				}
-				else if (dloadedNames[pid]==1) {
+				} else if (dloadedNames[pid]==1) {
 					dloadedNames[pid]=2;
 					jQuery("#sb_desc_"+pid+" div").show("fast");
 					jQuery("#sb_desc_"+pid+" .plusminus").removeClass("icon-plus").addClass("icon-minus");
-				}
-				else {
+				} else {
 					dloadedNames[pid]=1;
 					jQuery("#sb_desc_"+pid+" div").hide("fast");
 					jQuery("#sb_desc_"+pid+" .plusminus").removeClass("icon-minus").addClass("icon-plus");
