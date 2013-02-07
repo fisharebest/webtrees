@@ -58,7 +58,7 @@ define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL.'js/jquery.cookie-1.3.1.js');
 define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.datatables-1.9.4.js');
 define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable-1.7.1.js');
 define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom-1.1.2.js');
-define('WT_MODERNIZR_URL',         WT_STATIC_URL.'js/modernizr.custom-2.6.1.js');
+define('WT_MODERNIZR_URL',         WT_STATIC_URL.'js/modernizr.custom-2.6.2.js');
 define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees-1.4.0.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
