@@ -402,6 +402,7 @@ class WT_Media extends WT_GedcomRecord {
 				' title="' . strip_tags($this->getFullName()) . '"' .
 				'></i>';
 		} else {
+			$imgsize = getimagesize($this->getServerFilename('thumb'));
 			// Use a thumbnail image
 			$image =
 				'<img' . 
@@ -409,6 +410,7 @@ class WT_Media extends WT_GedcomRecord {
 				' src="'   . $this->getHtmlUrlDirect('thumb') . '"' .
 				' alt="'   . strip_tags($this->getFullName()) . '"' .
 				' title="' . strip_tags($this->getFullName()) . '"' .
+				$imgsize[3] . // height="yyy" width="xxx"
 				'>';
 		}
 
