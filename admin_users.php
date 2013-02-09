@@ -624,13 +624,9 @@ default:
 					/* delete            */ { bSortable:false }
 				],
 				"fnDrawCallback": function() {
-					// Our JSON responses include Javascript as well as HTML.  This does not get
-					// executed (except for some versions of Firefox?).  So, extract it, and add
-					// it to its own DOM element
+					// Our JSON responses include Javascript as well as HTML.  This does not get executed automatically…
 					jQuery("#list script").each(function() {
-						var script=document.createElement("script");
-						jQuery("#list script").appendTo("body"); 
-						document.body.appendChild(script);
+						eval(this.text);
 					}).remove();
 				}				
 			});
