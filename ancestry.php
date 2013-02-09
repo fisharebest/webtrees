@@ -4,7 +4,7 @@
 // ($rootid=1, father=2, mother=3 ...)
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -167,8 +167,6 @@ case 1:
 	// Booklet
 	// first page : show indi facts
 	print_pedigree_person($controller->root, 1, 1);
-	// expand the layer
-	echo '<script>expandbox("', $controller->root->getXref(), '.1", 2);</script>';
 	// process the tree
 	$treeid=ancestry_array($controller->root->getXref(), $PEDIGREE_GENERATIONS-1);
 	foreach ($treeid as $i=>$pid) {
