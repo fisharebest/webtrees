@@ -549,6 +549,22 @@ else {
 }
 $formid = add_simple_tag("2 $gedform");
 
+// automatically set the format field from the filename
+$controller->addInlineJavascript('
+	function updateFormat(filename) {
+		var extsearch=/\.([a-zA-Z]{3,4})$/;
+		if (extsearch.exec(filename)) {
+			ext = RegExp.$1.toLowerCase();
+			if (ext=="jpg") ext="jpeg";
+			if (ext=="tif") ext="tiff";
+		} else {
+			ext = "";
+		}
+		formfield = document.getElementById("' . $formid . '");
+		formfield.value = ext;
+	}
+');
+
 // 3 TYPE
 if ($gedrec == '')
 	$gedtype = 'TYPE photo'; // default to ‘Photo’ unless told otherwise
@@ -699,22 +715,6 @@ if (WT_USER_IS_ADMIN) {
 	echo '</td></tr>';
 }
 echo '</table>';
-?>
-		<script>
-			var formid = '<?php echo $formid; ?>';
-			function updateFormat(filename) {
-				var extsearch=/\.([a-zA-Z]{3,4})$/;
-				ext='';
-				if (extsearch.exec(filename)) {
-					ext = RegExp.$1.toLowerCase();
-					if (ext=='jpg') ext='jpeg';
-					if (ext=='tif') ext='tiff';
-				}
-				formfield = document.getElementById(formid);
-				formfield.value = ext;
-			}
-		</script>
-		<?php
 			print_add_layer('SOUR', 1);
 			print_add_layer('NOTE', 1);
 			print_add_layer('SHARED_NOTE', 1);
