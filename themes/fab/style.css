@@ -1033,6 +1033,8 @@ overflow:visible !important;
 .person_box_template  .details div {display:block;}
 .person_box_template img {float:left; max-height:45px; max-width:37px; margin:0 3px 0 0;}
 html[dir="rtl"] .person_box_template img {float:right; margin:0 0 0 3px;}
+.person_box_template i[class^="icon-silhouette"]{float:left;}
+html[dir="rtl"] .person_box_template i[class^="icon-silhouette"]{float:right;}
 
 #branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls  {margin:0 auto;}
 #medialist-page .list_table_controls  {width:100%;}
