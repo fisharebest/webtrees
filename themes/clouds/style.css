@@ -1692,8 +1692,6 @@ overflow:visible !important;
 .person_box_template  .details div {display:block;}
 .person_box_template img {float:left; max-height:50px; max-width:37px; margin:0 3px 0 0;}
 html[dir="rtl"] .person_box_template img {float:right; margin:0 0 0 3px;}
-.person_box_template i {float:left;}
-html[dir="rtl"] .person_box_template i {float:right;}
 
 .gedcom_favorites_block .person_box .details2,
 .gedcom_favorites_block .person_boxF.details2,
