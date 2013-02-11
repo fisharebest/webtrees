@@ -398,7 +398,19 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 			break;
 		default:
 			if (!$HIDE_GEDCOM_ERRORS || WT_Gedcom_Tag::isTag($match[1])) {
-				echo WT_Gedcom_Tag::getLabelValue($fact->getTag().':'.$match[1], htmlspecialchars($match[2]));
+				if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[2], $xmatch)) {
+					// Links
+					$linked_record = WT_GedcomRecord::getInstance($xmatch[1]);
+					if ($linked_record) {
+						$link = '<a href="' .$linked_record->getHtmlUrl()  . '">' . $linked_record->getFullName() . '</a>';
+						echo WT_Gedcom_Tag::getLabelValue($fact->getTag().':'.$match[1], $link);
+					} else {
+						echo WT_Gedcom_Tag::getLabelValue($fact->getTag().':'.$match[1], htmlspecialchars($match[2]));
+					}
+				} else {
+					// Non links
+					echo WT_Gedcom_Tag::getLabelValue($fact->getTag().':'.$match[1], htmlspecialchars($match[2]));
+				}
 			}
 			break;
 		}
