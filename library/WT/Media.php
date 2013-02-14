@@ -116,7 +116,7 @@ class WT_Media extends WT_GedcomRecord {
 				return $file;
 			}
 			// Does a user-generated thumbnail exist?
-			$user_thumb = preg_replace('/\.[a-z0-9]{3,5}/i', '.png', $file);
+			$user_thumb = preg_replace('/\.[a-z0-9]{3,5}$/i', '.png', $file);
 			if (file_exists($user_thumb)) {
 				return $user_thumb;
 			}
