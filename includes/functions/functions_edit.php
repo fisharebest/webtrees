@@ -856,7 +856,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		$tags=array();
 		$i = 0;
 		do {
-			if (!isset($name_fields[$type]) && !isset($adv_name_fields[$type])) {
+			if ($type!='TYPE' && !isset($name_fields[$type]) && !isset($adv_name_fields[$type])) {
 				$text = '';
 				for ($j=2; $j<count($fields); $j++) {
 					if ($j>2) $text .= ' ';
@@ -879,7 +879,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 				$level = $fields[0];
 				if (isset($fields[1])) $type = $fields[1];
 			}
-		} while (($level>$glevel)&&($i<count($gedlines))&&($type!='TYPE'));
+		} while (($level>$glevel)&&($i<count($gedlines)));
 	}
 
 	// If we are adding a new individual, add the basic details
