@@ -92,7 +92,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			var famloadedNames = new Array();
 
 			function fsearchQ() {
-				var query = jQuery("#sb_fam_name").attr("value");
+				var query = jQuery("#sb_fam_name").val();
 				if (query.length>1) {
 					jQuery("#sb_fam_content").load("module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=families&search="+query);
 				}

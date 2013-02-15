@@ -92,7 +92,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			var loadedNames = new Array();
 
 			function isearchQ() {
-				var query = jQuery("#sb_indi_name").attr("value");
+				var query = jQuery("#sb_indi_name").val();
 				if (query.length>1) {
 					jQuery("#sb_indi_content").load("module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=individuals&search="+query);
 				}
