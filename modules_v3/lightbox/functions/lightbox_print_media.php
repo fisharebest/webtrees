@@ -423,7 +423,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		echo '<table width="10px" class="pic" border="0"><tr>';
 	}
 	echo '<td align="center" rowspan="2">';
-	echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="100px" alt=""></img>';
+	echo '<div style="width:1px; height:100px;"></div>';
 	echo '</td>';
 	echo '<td colspan="3" valign="middle" align="center">';
 	if ($media) {
