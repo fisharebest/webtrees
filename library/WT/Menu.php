@@ -97,6 +97,11 @@ class WT_Menu {
 		$this->submenus[] = $obj;
 	}
 
+	// 
+	public function __toString() {
+		return $this->getMenuAsList();
+	}
+
 	// Get the menu as a simple list - for accessible interfaces, search engines and CSS menus
 	function getMenuAsList() {
 		$link = '';
