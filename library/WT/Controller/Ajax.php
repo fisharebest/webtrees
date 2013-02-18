@@ -25,7 +25,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class WT_Controller_Ajax extends WT_Controller_Base {
+class WT_Controller_Ajax extends WT_Controller_Page {
 
 	public function pageHeader() {
 		// We have finished writing session data, so release the lock
