@@ -27,7 +27,6 @@ require WT_ROOT.'includes/functions/functions_export.php';
 $controller=new WT_Controller_Ajax();
 $controller
 	->pageHeader()
-	->setPageTitle(WT_I18N::translate('Export'))
 	->requireManagerLogin();
 
 $filename = WT_Site::preference('INDEX_DIRECTORY').WT_GEDCOM;

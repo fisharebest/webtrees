@@ -25,7 +25,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class WT_Controller_Ajax extends WT_Controller_Page {
+class WT_Controller_Ajax extends WT_Controller_Base {
 
 	public function pageHeader() {
 		// We have finished writing session data, so release the lock
@@ -39,6 +39,18 @@ class WT_Controller_Ajax extends WT_Controller_Page {
 	public function pageFooter() {
 		// Ajax responses may have Javascript
 		echo $this->getJavascript();
+		return $this;
+	}
+	
+	// Restrict access
+	public function requireManagerLogin($ged_id=WT_GED_ID) {
+		if (
+			$ged_id==WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
+			$ged_id!=WT_GED_ID && userGedcomAdmin(WT_USER_ID, $gedcom_id)
+		) {
+			header('HTTP/1.0 403 Access Denied');
+			exit;
+		}
 		return $this;
 	}
 }
