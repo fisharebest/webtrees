@@ -1365,7 +1365,7 @@ html[dir='rtl'] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-2
 #source-tabs, #note-tabs, #repo-tabs, #media-tabs {margin:auto;visibility:hidden;width:80%;}
 #stats-tabs {margin:auto;visibility:hidden;width:90%;}
 #source-edit, #note-edit, #repo-edit, #media-edit {overflow-x:auto;}
-.media-list td img {display:block;height:40px;margin:3px auto;}
+.media-list td img {display:block;height:40px;width:auto;margin:3px auto;}
 .filtersH, .filtersF {margin:4px}
 .filtersH img {margin-bottom:2px;}
 .filtersH .ui-state-default,.filtersF .ui-state-default {margin:0 2px;padding:2px;}

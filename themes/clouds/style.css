@@ -2441,6 +2441,7 @@ margin:50px;
 .media-list td img {
 display:block;
 height:40px;
+width: auto;
 margin:3px auto;
 }
 
