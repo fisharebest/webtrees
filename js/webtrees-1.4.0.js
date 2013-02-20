@@ -1380,49 +1380,48 @@ function findPosY(obj) {
 // This is the default way for webtrees to show image galleries.
 // Custom themes may use a different viewer.
 function activate_colorbox(config) {
-	// TODO: something like this....	
-	//if (config) {
-	//	$.colorbox(config);
-	//} else {
-	//	$.colorbox(}
-	//		// Simple I18N
-	//		current:   "",
-	//		previous:  "◀",
-	//		next:      "▶",
-	//		close:     "×",
-	//	});
-	//}
+	if (config) {
+		jQuery.extend(jQuery.colorbox.settings, config);
+	} else {
+		jQuery.extend(jQuery.colorbox.settings, {
+			// Simple I18N
+			current:   '',
+			previous:  '◀',
+			next:      '▶',
+			close:     '×',
+		});
+	}
 
 	// Trigger an event when we click on an (any) image
-	jQuery("body").on("click", "a.gallery", function(event) {
+	jQuery('body').on('click', 'a.gallery', function(event) {
 		// Remove colorbox from hidden media (e.g. on other tabs)
 		// (not needed unless we add :visible to our selectors - which may not
 		// work on all browsers?)
 		//$.colorbox.remove();
 
 		// Enable colorbox for images
-		jQuery("a[type^=image].gallery").colorbox({
+		jQuery('a[type^=image].gallery').colorbox({
 			photo:     true,
-			maxWidth:  "80%",
-			maxHeight: "80%",
-			rel:       "gallery", // Turn all images on the page into a slideshow
+			maxWidth:  '80%',
+			maxHeight: '80%',
+			rel:       'gallery', // Turn all images on the page into a slideshow
 			// Add wheelzoom to the displayed image
 			onComplete: function() {
 				jQuery('.cboxPhoto').wheelzoom();
 				// Drag events cause the slideshow to advance.  Prevent this.
 				// TODO - only when the click was the end of a drag..
-				jQuery('.cboxPhoto img').on("click", function(e) {e.preventDefault();});
+				jQuery('.cboxPhoto img').on('click', function(e) {e.preventDefault();});
 			}
 		});
 
 		// Enable colorbox for audio using <audio></audio>
-		//jQuery("a[type^=video].gallery").colorbox({
-		//	rel:         "nofollow" // Slideshows are just for images
+		//jQuery('a[type^=video].gallery').colorbox({
+		//	rel:         'nofollow' // Slideshows are just for images
 		//});
 
 		// Enable colorbox for video using <video></video>
-		//jQuery("a[type^=audio].gallery").colorbox({
-		//	rel:         "nofollow", // Slideshows are just for images
+		//jQuery('a[type^=audio].gallery').colorbox({
+		//	rel:         'nofollow', // Slideshows are just for images
 		//});
 		
 		// Allow all other media types remain as download links
