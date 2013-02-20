@@ -344,7 +344,7 @@ class WT_Media extends WT_GedcomRecord {
 		return
 			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr .
 			'&ged=' . rawurlencode(get_gedcom_from_id($this->ged_id)) .
-			'&cb=' . $this->getEtag($which) . '.' . $this->extension();
+			'&cb=' . $this->getEtag($which);
 	}
 
 	// What file extension is used by this file?
