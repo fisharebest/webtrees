@@ -1386,8 +1386,8 @@ function activate_colorbox(config) {
 		jQuery.extend(jQuery.colorbox.settings, {
 			// Simple I18N
 			current:   '',
-			previous:  '◀',
-			next:      '▶',
+			previous:  textDirection=='ltr' ? '◀' : '▶',
+			next:      textDirection=='ltr' ? '▶' : '◀',
 			close:     '×',
 		});
 	}
@@ -1397,7 +1397,7 @@ function activate_colorbox(config) {
 		// Remove colorbox from hidden media (e.g. on other tabs)
 		// (not needed unless we add :visible to our selectors - which may not
 		// work on all browsers?)
-		//$.colorbox.remove();
+		//jQuery.colorbox.remove();
 
 		// Enable colorbox for images
 		jQuery('a[type^=image].gallery').colorbox({
