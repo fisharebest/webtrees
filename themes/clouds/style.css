@@ -2209,7 +2209,7 @@ margin:10px;
 }
 
 /* ========= jquery-ui.custom.css changes ============ */
-.ui-accordion .ui-accordion-content {margin-top:1px;overflow:visible;padding:0 5px;}
+.ui-accordion .ui-accordion-content {margin-top:1px;overflow:visible;padding:0 5px;position:relative;}
 }
 
 .ui-accordion .ui-accordion-header {
