@@ -506,7 +506,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			function selectCountry() {
 				if (document.flags.COUNTRYSELECT.value == 'Countries') {
 					window.location="module.php?mod=googlemap&mod_action=flags";
-				} elseif (document.flags.STATESELECT.value != 'States') {
+				} else if (document.flags.STATESELECT.value != 'States') {
 					window.location="module.php?mod=googlemap&mod_action=flags&countrySelected=" + document.flags.COUNTRYSELECT.value + "&stateSelected=" + document.flags.STATESELECT.value;
 				} else {
 					window.location="module.php?mod=googlemap&mod_action=flags&countrySelected=" + document.flags.COUNTRYSELECT.value;
