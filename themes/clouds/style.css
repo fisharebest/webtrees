@@ -1265,6 +1265,15 @@ input, textarea {
 padding:0 3px;
 }
 
+button, input[type="submit"], input[type="reset"], input[type="button"], input[type="file"] 
+{border:1px solid #CBC7BD; 
+color:#654B24; 
+font-weight:700; 
+border-radius:3px;
+font-size: 10px;
+padding: 0 3px;
+}
+
 .optionbox input {
 margin-right:5px;
 }
@@ -1690,7 +1699,7 @@ overflow:visible !important;
 .person_box_template .noprint { width:25px;height:50px; position:relative;}
 .person_box_template .chart_textbox {height:auto;overflow: hidden;}
 .person_box_template  .details div {display:block;}
-.person_box_template img {float:left; max-height:50px; max-width:37px; margin:0 3px 0 0;}
+.person_box_template img {float:left; max-height:40px; max-width:37px; margin:0 3px 0 0;}
 html[dir="rtl"] .person_box_template img {float:right; margin:0 0 0 3px;}
 .person_box_template i[class^="icon-silhouette"]{float:left;}
 html[dir="rtl"] .person_box_template i[class^="icon-silhouette"]{float:right;}
