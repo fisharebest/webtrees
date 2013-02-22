@@ -460,7 +460,7 @@ a:hover .nameZoom{font-size:14px;color:red;font-weight:700;}
 
 button{border-width:1px;}
 input,button,textarea{border-color:#fff #494949 #494949 #fff;border-width:1px;font-size: 12px;font-family:inherit;}
-button, input[type="submit"], input[type="reset"], input[type="button"], input[type="file"] {border:1px solid #CBC7BD; color:#654B24; font-weight:700; border-radius:3px;padding: 0 2px;}
+button, input[type="submit"], input[type="reset"], input[type="button"], input[type="file"] {border:1px solid #CBC7BD; color:#654B24; font-weight:700; border-radius:3px;padding: 0 6px;}
 input, textarea {padding:0 3px;}
 
 .optionbox{border:solid #999 1px;border-radius:3px;font-size:12px;padding:3px;vertical-align:top;white-space:nowrap;}
