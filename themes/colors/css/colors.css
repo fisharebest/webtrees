@@ -831,7 +831,6 @@ html[dir='rtl'] .DataTables_sort_wrapper span{left:auto;right:0;margin-right:-20
 #source-edit,#note-edit,#repo-edit,#media-edit{overflow-x:auto;}
 
 .media-list td img{display:block;height:40px;width:auto;margin:3px auto;}
-
 .filtersH,.filtersF{margin:4px;}
 .filtersH img{margin-bottom:2px;}
 .filtersH .ui-state-default,.filtersF .ui-state-default{margin:0 2px;padding:2px;}
@@ -999,7 +998,7 @@ a.icon-darrow:hover{width:20px;height:20px;background-image:url(../images/darrow
 .icon-larrow{width:20px;height:20px;background-image:url(../images/larrow.png);}
 a.icon-larrow:hover{width:20px;height:20px;background-image:url(../images/larrow2.png);}
 .icon-ldarrow{width:20px;height:20px;background-image:url(../images/ldarrow.png);}
-.icon-lifespan-chunk{width:50px;height:37px;background-image:url(../images/lifespan-chunk.png);}
+.icon-lifespan-chunk{width:40px;height:37px;background-image:url(../images/lifespan-chunk.png);}
 .icon-loading-small{width:16px;height:16px;background-image:url(../images/indicator.gif);}
 .icon-loading-large{width:32px;height:32px;background-image:url(../images/loading.gif);}
 .icon-lsdnarrow{width:48px;height:48px;background-image:url(../images/lifespan-down.png);}
@@ -1150,7 +1149,7 @@ html[dir='rtl'] #save-cancel .cancel {float:left;}
 #cboxLoadedContent {overflow:auto;}
 #cboxTitle {margin:0;}
 #cboxLoadingOverlay, #cboxLoadingGraphic {position:absolute; top:0; left:0; width:100%; height:100%;}
-#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {cursor:pointer;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {cursor:pointer;font-size:10px;}
 .cboxPhoto {float:left; margin:auto; border:0; display:block; max-width:none;}
 .cboxIframe {width:100%; height:100%; display:block; border:0;}
 #colorbox, #cboxContent, #cboxLoadedContent {box-sizing:content-box;}
