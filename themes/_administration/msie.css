@@ -18,3 +18,23 @@ html[dir='rtl'] #admin_menu ul {*margin:0 10px 0 0;}
 html[dir='rtl'] #admin_menu li ul {*margin:0 20px 0 0;}
 #admin_menu ul li ul, html[dir='rtl'] #admin_menu li ul {*margin-top:-20px;}
 
+/* IE <= 8 does not support text-align:start */
+#file-options th,
+#privacy th,
+#config-media th,
+#access-options th,
+#layout-options th,
+#hide-show th,
+#edit-options th {
+	text-align:left;
+}
+html[dir=rtl] #file-options th,
+html[dir=rtl] #privacy th,
+html[dir=rtl] #config-media th,
+html[dir=rtl] #access-options th,
+html[dir=rtl] #layout-options th,
+html[dir=rtl] #hide-show th,
+html[dir=rtl] #edit-options th {
+	text-align:right;
+}
+
