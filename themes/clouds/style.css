@@ -2,7 +2,7 @@
 * Style for clouds theme
 *
 * webtrees: Web based Family History software
-* Copyright (C) 2012 webtrees development team.
+* Copyright (C) 2013 webtrees development team.
 *
 * Derived from PhpGedView Cloudy theme
 * Original author w.a. bastein http://genealogy.bastein.biz
@@ -2135,6 +2135,11 @@ margin:3px 0;
 
 #indi_note .note_details,#indi_note .fact_SOUR a {
 font-size:100%;
+}
+
+#indi_note .fact_NOTE,
+#indi_note .fact_SOUR {
+	clear: both;
 }
 
 #main_name {

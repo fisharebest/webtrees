@@ -2,7 +2,7 @@
 * Style for Minimal theme
 *
 * webtrees: Web based Family History software
-* Copyright (C) 2012 webtrees development team.
+* Copyright (C) 2013 webtrees development team.
 *
 * Derived from PhpGedView
 * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -1470,6 +1470,8 @@ html[dir='rtl'].field .editlink, html[dir='rtl'].field .deletelink {float:left;}
 #indi_note , #indi_note .fact_NOTE .label {font-size:12px;}
 #indi_note .note_details {font-size:12px;}
 #indi_note .fact_SOUR a {font-size:12px;}
+#indi_note .fact_NOTE,
+#indi_note .fact_SOUR {clear: both;}
 
 #header_accordion1 {border:1px solid #DDD;border-radius:3px 3px 3px 3px;float:left;}
 

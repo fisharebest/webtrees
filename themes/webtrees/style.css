@@ -2,7 +2,7 @@
 * Style for Standard theme
 *
 * webtrees: Web based Family History software
-* Copyright (C) 2012 webtrees development team.
+* Copyright (C) 2013 webtrees development team.
 *
 * Derived from PhpGedView
 * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -703,6 +703,8 @@ dd .editlink, dd .deletelink {float:right;}
 #indi_note .note_details {font-size:100%;}
 #indi_note .fact_SOUR {margin:3px 0;}
 #indi_note .fact_SOUR a {font-size:100%;}
+#indi_note .fact_NOTE,
+#indi_note .fact_SOUR {clear: both;}
 
 html[dir='rtl'] #indi_header {float:right;}
 html[dir='rtl'] #indi_header h3 {padding:0 30px 0 10px;text-align:right;}
