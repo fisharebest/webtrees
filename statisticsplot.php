@@ -5,7 +5,7 @@
 // age -> periodes of 10 years (different for 0-1,1-5,5-10,10-20 etc)
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -30,9 +30,6 @@ define('WT_SCRIPT_NAME', 'statisticsplot.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Ajax();
-$controller->setPageTitle(WT_I18N::translate('Statistics plot'));
-// TODO: why does this line break the modal dialog boxes?
-//$controller->pageHeader();
 
 $stats = new WT_Stats($GEDCOM);
 
@@ -887,6 +884,7 @@ if ($action=='update') {
 	$surname = $savedInput['SURN'];
 	unset($savedInput);
 }
+Zend_Session::writeClose();
 
 echo '<div class="statistics_chart" title="', WT_I18N::translate('Statistics plot'), '">';
 
