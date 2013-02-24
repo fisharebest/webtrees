@@ -370,7 +370,7 @@ td.descriptionbox a {color:#fff;}/* this keeps the tag color the same when it is
 .person_box_template .noprint {width:25px;height:50px; position:relative;}
 .person_box_template .chart_textbox {height:auto;overflow: hidden;}
 .person_box_template  .details div {display:block;}
-.person_box_template img {float:left;margin:0 4px 0 0;max-height:50px;width:auto;}
+.person_box_template img {float:left;margin:0 4px 0 0;max-height:50px;max-width:37px;}
 html[dir="rtl"] .person_box_template img {float:right;margin:0 0 0 4px;}
 .person_box_template i[class^="icon-silhouette"]{float:left;}
 html[dir="rtl"] .person_box_template i[class^="icon-silhouette"]{float:right;}
