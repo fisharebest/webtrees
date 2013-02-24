@@ -574,7 +574,7 @@ a.showit:hover > span{background:#444;border-bottom:2px solid #000;border-left:1
 .person_box_template .noprint { width:25px;height:50px; position:relative;}
 .person_box_template .chart_textbox {height:auto;overflow: hidden;}
 .person_box_template  .details div {display:block;}
-.person_box_template img {float:left;margin:0 3px 0 0;max-height:50px;max-width:37px;}
+.person_box_template img {float:left;margin:0 3px 0 0;height:50px;width:auto;max-width:50px;}
 html[dir="rtl"] .person_box_template img {float:right;margin:0 0 0 3px;}
 .person_box_template i[class^="icon-silhouette"]{float:left;}
 html[dir="rtl"] .person_box_template i[class^="icon-silhouette"]{float:right;}
