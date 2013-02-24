@@ -44,6 +44,20 @@ self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('AUTO_GENERATE
 // Delete old settings
 self::exec("DELETE FROM `##module_setting` WHERE module_name='lightbox'");
 
+// Very old versions of phpGedView allowed media paths beginning “./”
+// Remove these
+self::exec(
+	"UPDATE `##media` m".
+	" SET".
+	"  m_filename = TRIM(LEADING './' FROM m_filename),".
+	"  m_gedcom   = REPLACE(m_gedcom, '\n1 FILE ./', '\n1 FILE ')"
+);
+self::exec(
+	"UPDATE `##change` c".
+	" SET new_gedcom = REPLACE(new_gedcom, '\n1 FILE ./', '\n1 FILE ')"
+	" WHERE status = 'pending'"
+);
+
 // Previous versions of webtrees included the MEDIA_DIRECTORY setting in the
 // FILE tag of the OBJE records.  Remove it…
 self::exec(

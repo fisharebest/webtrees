@@ -62,6 +62,7 @@ echo
 
 // begin header section
 if ($view!='simple') {
+	global $WT_IMAGES;
 	echo
 		'<div id="header">',
 		'<div class="header_img"><img src="', WT_THEME_URL, 'images/webtrees.png" width="242" height="50" alt="', WT_WEBTREES, '"></div>',
@@ -71,20 +72,11 @@ if ($view!='simple') {
 	} else {
 		echo '<li>', login_link(), '</li> ';
 	}
-	$menu=WT_MenuBar::getFavoritesMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	$menu=WT_MenuBar::getThemeMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	$menu=WT_MenuBar::getLanguageMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	global $WT_IMAGES;
-	echo '</ul>',
+	echo
+		WT_MenuBar::getFavoritesMenu(),
+		WT_MenuBar::getThemeMenu(),
+		WT_MenuBar::getLanguageMenu(),
+		'</ul>',
 		'<div class="title" dir="auto">', WT_TREE_TITLE, '</div>',
 		'<div class="header_search">',
 		'<form action="search.php" method="post">',
@@ -93,8 +85,9 @@ if ($view!='simple') {
 		'<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
 		'<input type="image" class="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
 		'</form>',
-		'</div>';
-	$menu_items=array(
+		'</div>',
+		'<div id="topMenu">',
+		'<ul id="main-menu">',
 		WT_MenuBar::getGedcomMenu(),
 		WT_MenuBar::getMyPageMenu(),
 		WT_MenuBar::getChartsMenu(),
@@ -102,21 +95,7 @@ if ($view!='simple') {
 		WT_MenuBar::getCalendarMenu(),
 		WT_MenuBar::getReportsMenu(),
 		WT_MenuBar::getSearchMenu(),
-	);
-	foreach (WT_MenuBar::getModuleMenus() as $menu) {
-		$menu_items[]=$menu;
-	}
-	// Print the menu bar
-	echo
-		'<div id="topMenu">',
-		'<ul id="main-menu">';
-	foreach ($menu_items as $menu) {
-		if ($menu) {
-			echo $menu->getMenuAsList();
-		}
-	}
-	unset($menu_items, $menu);
-	echo
+		implode('', WT_MenuBar::getModuleMenus()),
 		'</ul>',  // <ul id="main-menu">
 		'</div>', // <div id="topMenu">
 		'</div>'; // <div id="header">

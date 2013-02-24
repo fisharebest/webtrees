@@ -1565,7 +1565,7 @@ overflow:visible !important;
 .person_box_template .noprint { width:25px;height:50px; position:relative;}
 .person_box_template .chart_textbox {height:auto;overflow: hidden;}
 .person_box_template  .details div {display:block;}
-.person_box_template img {height:50px;width:auto;max-width:50px;border:solid black 1px;margin:0 3px 0 0;float:left;}
+.person_box_template img {height:50px;width:auto;max-width:80px;border:solid black 1px;margin:0 3px 0 0;float:left;}
 html[dir="rtl"] .person_box_template img {float:right;margin:0 0 0 3px;}
 .person_box_template i[class^="icon-silhouette"]{float:left;}
 html[dir="rtl"] .person_box_template i[class^="icon-silhouette"]{float:right;}
