@@ -410,7 +410,7 @@ class WT_Media extends WT_GedcomRecord {
 				' src="'   . $this->getHtmlUrlDirect('thumb') . '"' .
 				' alt="'   . strip_tags($this->getFullName()) . '"' .
 				' title="' . strip_tags($this->getFullName()) . '"' .
-				//$imgsize[3] . // height="yyy" width="xxx"
+				$imgsize[3] . // height="yyy" width="xxx"
 				'>';
 		}
 
