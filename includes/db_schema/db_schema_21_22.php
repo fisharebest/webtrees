@@ -54,7 +54,7 @@ self::exec(
 );
 self::exec(
 	"UPDATE `##change` c".
-	" SET new_gedcom = REPLACE(new_gedcom, '\n1 FILE ./', '\n1 FILE ')"
+	" SET new_gedcom = REPLACE(new_gedcom, '\n1 FILE ./', '\n1 FILE ')".
 	" WHERE status = 'pending'"
 );
 
