@@ -147,7 +147,7 @@ case 'create': // Save the information from the “showcreateform” action
 	}
 
 	// Thumbnails must be images.
-	if (!empty($_FILES['thumbnail']['name']) && !preg_match('/^image\/(png|gif|jpeg)', $_FILES['thumbnail']['type'])) {
+	if (!empty($_FILES['thumbnail']['name']) && !preg_match('/^image/', $_FILES['thumbnail']['type'])) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnails must be images.'));
 		break;
 	}
