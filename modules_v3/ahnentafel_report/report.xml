@@ -253,7 +253,7 @@
 									<SetVar name="spid" value="@HUSB" />
 								</if>
 								<Gedcom id="MARR">
-									<if condition="$spid!='' and @DATE!='' and @PLAC!=''">
+									<if condition="(($spid!='') and (@DATE!='' or @PLAC!='' or @desc=='Y'))">
 										<Text style="text">
 											<if condition="$gender=='m'"><var var="WT_I18N::translate('He married')" /> </if>
 											<if condition="$gender=='f'"><var var="WT_I18N::translate('She married')" /> </if>
