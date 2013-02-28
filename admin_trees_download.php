@@ -84,6 +84,7 @@ if ($action == "download" && $zip == "yes") {
 }
 
 if ($action == "download") {
+	Zend_Session::writeClose();
 	header('Content-Type: text/plain; charset=UTF-8');
 	// We could open "php://compress.zlib" to create a .gz file or "php://compress.bzip2" to create a .bz2 file
 	$gedout = fopen('php://output', 'w');
