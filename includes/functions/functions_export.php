@@ -278,7 +278,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
 		list($rec)=WT_Media::getInstance($row)->privatizeGedcom($access_level);
-		$rec = convert_media_path($rec, $exportOptions['path'], $exportOptions['slashes']);
+		$rec = convert_media_path($rec, $exportOptions['path']);
 		if ($exportOptions['toANSI']=="yes") {
 			$rec=utf8_decode($rec);
 		}
