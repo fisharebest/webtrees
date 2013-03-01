@@ -477,7 +477,7 @@ case 'verify_hash':
 		WT_I18N::translate('Hello Administrator ...') . "\r\n\r\n".
 		/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */
 		WT_I18N::translate('A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s).', getUserFullName($user_id), $user_name,  getUserEmail($user_id))."\r\n\r\n";
-	if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
+	if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !get_user_setting($user_id, 'verified_by_admin')) {
 		$mail1_body .= WT_I18N::translate('You now need to review the account details, and set the “approved” status to “yes”.') . "\r\n";
 	} else {
 		$mail1_body .= WT_I18N::translate('You do not have to take any action; the user can now login.') . "\r\n";
@@ -533,7 +533,7 @@ case 'verify_hash':
 			AddToLog('User verified: '.$user_name, 'auth');
 
 			echo '<br><br>'.WT_I18N::translate('You have confirmed your request to become a registered user.').'<br><br>';
-			if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
+			if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !get_user_setting($user_id, 'verified_by_admin')) {
 				echo WT_I18N::translate('The Administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password.');
 			} else {
 				echo WT_I18N::translate('You can now login with your user name and password.');
