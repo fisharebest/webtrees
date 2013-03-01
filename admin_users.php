@@ -627,7 +627,7 @@ default:
 					// Our JSON responses include Javascript as well as HTML.  This does not get executed automatically…
 					jQuery("#list script").each(function() {
 						eval(this.text);
-					}).remove();
+					});
 				}				
 			});
 			

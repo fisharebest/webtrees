@@ -227,12 +227,10 @@ $controller
 			],
 			"fnDrawCallback": function() {
 				// Our JSON responses include Javascript as well as HTML.  This does not get
-				// executed, So extract it, and add it to its own DOM element
+				// executed, So extract it, and execute it
 				jQuery("#site_access_rules script").each(function() {
-					var script=document.createElement("script");
-					jQuery("#site_access_rules script").appendTo("body"); 
-					document.body.appendChild(script);
-				}).remove();
+					eval(this.text);
+				});
 			}
 		});
 		jQuery("#unknown_site_visitors").dataTable({
