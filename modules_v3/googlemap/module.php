@@ -522,7 +522,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$rep = opendir(WT_MODULES_DIR.'googlemap/places/'.$country[$i].'/');
 				while ($file = readdir($rep)) {
 					if (stristr($file, 'flags')) {
-						$countryList[$country[$i]] = $countries[$country[$i]];
+						if (isset($countries[$country[$i]])) {
+							$countryList[$country[$i]] = $countries[$country[$i]];
+						} else {
+							$countryList[$country[$i]] = $country[$i];
+						}
 					}
 				}
 				closedir($rep);
