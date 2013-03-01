@@ -142,9 +142,7 @@ function gedcom_header($gedfile) {
 
 // Prepend the GEDCOM_MEDIA_PATH to media filenames
 function convert_media_path($rec, $path) {
-	global $MEDIA_DIRECTORY;
-
-	if (preg_match('/\n1 FILE (.+)/', $rec, $match)) {
+	if ($path && preg_match('/\n1 FILE (.+)/', $rec, $match)) {
 		$old_file_name=$match[1];
 		if (!preg_match('~^(https?|ftp):~', $old_file_name)) { // Don’t modify external links
 			// Adding a windows path?  Convert the slashes.
