@@ -231,14 +231,6 @@ case 'load_json':
 		break;
 
 	case 'unused':
-		// Which trees use this media folder?
-		$media_trees = WT_DB::prepare(
-			"SELECT gedcom_name, gedcom_name" .
-			" FROM `##gedcom`" .
-			" JOIN `##gedcom_setting` USING (gedcom_id)" .
-			" WHERE setting_name='MEDIA_DIRECTORY' AND setting_value=?"
-		)->execute(array($media_folder))->fetchAssoc();
-
 		$disk_files = all_disk_files ($media_folder, $media_path, $subfolders, $sSearch);
 		$db_files   = all_media_files($media_folder, $media_path, $subfolders, $sSearch);
 
@@ -281,24 +273,6 @@ case 'load_json':
 				$img = '-';
 			}
 
-			// Is there a pending record for this file?
-			$exists_pending = WT_DB::prepare(
-				"SELECT 1 FROM `##change` WHERE status='pending' AND new_gedcom LIKE CONCAT('%\n1 FILE ', ?, '\n%')"
-			)->execute(array($unused_file))->fetchOne();
-
-			// Form to create new media object in each tree
-			$create_form='';
-			if (!$exists_pending) {
-				foreach ($media_trees as $media_tree) {
-					$create_form .= '<p><a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode(reset($media_trees)) . '&amp;filename=' . rawurlencode(basename($unused_file)) . '&amp;folder=' . rawurlencode(dirname($unused_file)) . '\', \'_blank\', edit_window_specs); return false;">' .  WT_I18N::translate('Create') . '';
-					// More than one tree?  Tell the user which one.
-					if (count($media_trees)>1) {
-						$create_form .= ' — ' . htmlspecialchars($media_tree);
-					}
-					$create_form .= '</a><p>';
-				}
-			}
-
 			$conf        = WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($unused_file));
 			$delete_link =
 				'<p><a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'admin_media.php\',{delete:\'' . $unused_file . '\',media_folder:\'' . $media_folder . '\',},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a></p>';
@@ -306,7 +280,7 @@ case 'load_json':
 			$aaData[] = array(
 				media_file_info($media_folder, $media_path, $unused_file) . $delete_link,
 				$img,
-				$create_form,
+				'',
 			);
 		}
 		break;
@@ -349,12 +323,11 @@ function media_paths($media_folder) {
 		" ORDER BY 1"
 	)->execute(array($media_folder))->fetchOneColumn();
 
-	if (!$media_paths || reset($media_paths)!='') {
-		// Always include a (possibly empty) top-level folder
-		array_unshift($media_paths, '');
+	if ($media_paths) {
+		return array_combine($media_paths, $media_paths);
+	} else {
+		return array();
 	}
-
-	return array_combine($media_paths, $media_paths);
 }
 
 function scan_dirs($dir, $recursive, $filter) {
@@ -517,7 +490,7 @@ function media_object_info(WT_Media $media) {
 // Start here
 ////////////////////////////////////////////////////////////////////////////////
 
-// Preserve the pagination/filtering/sorting between requests, so that the
+// Preserver the pagination/filtering/sorting between requests, so that the
 // browser’s back button works.  Pagination is dependent on the currently
 // selected folder.
 $table_id=md5($files.$media_folder.$media_path.$subfolders);
