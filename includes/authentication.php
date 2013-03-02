@@ -361,8 +361,8 @@ function getUserMessages($user_id) {
  */
 function addNews($news) {
 	if (array_key_exists('id', $news)) {
-		WT_DB::prepare("UPDATE `##news` SET subject=?, body=? WHERE news_id=?")
-		->execute(array($news['title'], $news['text'], $news['id']));
+		WT_DB::prepare("UPDATE `##news` SET subject=?, body=?, updated=FROM_UNIXTIME(?) WHERE news_id=?")
+		->execute(array($news['title'], $news['text'], $news['date'], $news['id']));
 	} else {
 		WT_DB::prepare("INSERT INTO `##news` (user_id, gedcom_id, subject, body) VALUES (NULLIF(?, ''), NULLIF(?, '') ,? ,?)")
 		->execute(array($news['user_id'], $news['gedcom_id'],  $news['title'], $news['text']));

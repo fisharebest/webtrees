@@ -1,8 +1,10 @@
 <?php
 // Popup window for Editing news items
 //
+// TODO: this needs to be part of the news module
+//
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2005  PGV Development Team
@@ -36,7 +38,7 @@ $action   =safe_GET('action', array('compose', 'save', 'delete'), 'compose');
 $news_id  =safe_GET('news_id');
 $user_id  =safe_REQUEST($_REQUEST, 'user_id');
 $gedcom_id=safe_REQUEST($_REQUEST, 'gedcom_id');
-$date     =safe_POST('date', WT_REGEX_UNSAFE);
+$date     =safe_POST('date', WT_REGEX_INTEGER, WT_TIMESTAMP);
 $title    =safe_POST('title', WT_REGEX_UNSAFE);
 $text     =safe_POST('text', WT_REGEX_UNSAFE);
 
@@ -85,7 +87,7 @@ case 'save':
 	}
 	$message['user_id'] = $user_id;
 	$message['gedcom_id'] = $gedcom_id;
-	$message['date'] = WT_TIMESTAMP;
+	$message['date'] = $date;
 	$message['title'] = $title;
 	$message['text']  = $text;
 	addNews($message);
