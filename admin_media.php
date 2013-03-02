@@ -323,11 +323,12 @@ function media_paths($media_folder) {
 		" ORDER BY 1"
 	)->execute(array($media_folder))->fetchOneColumn();
 
-	if ($media_paths) {
-		return array_combine($media_paths, $media_paths);
-	} else {
-		return array();
+	if (!$media_paths || reset($media_paths)!='') {
+		// Always include a (possibly empty) top-level folder
+		array_unshift($media_paths, '');
 	}
+
+	return array_combine($media_paths, $media_paths);
 }
 
 function scan_dirs($dir, $recursive, $filter) {
