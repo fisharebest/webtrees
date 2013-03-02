@@ -290,27 +290,25 @@ case 'update': // Save the information from the “editmedia” action
 		}
 	}
 
+	$fileName=$text[0];
 	// Validate the media path and filename
-	if (preg_match('/^https?:\/\//i', $filename, $match)) {
+	if (preg_match('/^https?:\/\//i', $fileName, $match)) {
 		// External media needs no further validation
-		$fileName   = $filename;
 		$folderName = '';
 		unset($_FILES['mediafile'], $_FILES['thumbnail']);
-	} elseif (preg_match('/([\/\\\\<>])/', $filename, $match)) {
+	} elseif (preg_match('/([\/\\\\<>])/', $fileName, $match)) {
 		// Local media files cannot contain certain special characters
 		WT_FlashMessages::addMessage(WT_I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
-		$filename = '';
+		$fileName = '';
 		break;
-	} elseif (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com))$/', $filename)) {
+	} elseif (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com))$/', $fileName)) {
 		// Do not allow obvious script files.
 		WT_FlashMessages::addMessage(WT_I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
-		$filename = '';
+		$fileName = '';
 		break;
-	} elseif (!$filename) {
+	} elseif (!$fileName) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('No media file was provided.'));
 		break;
-	} else {
-		$fileName = $filename;
 	}
 
 	$oldFilename = $media->getFilename();
@@ -325,7 +323,7 @@ case 'update': // Save the information from the “editmedia” action
 	}
 
 	// Cannot rename local to external or vice-versa
-	if (isFileExternal($oldFilename) != isFileExternal($filename)) {
+	if (isFileExternal($oldFilename) != isFileExternal($newFilename)) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('Media file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
 		break;
 	}
@@ -368,11 +366,8 @@ case 'update': // Save the information from the “editmedia” action
 		}
 	}
 
-	// Insert the 1 FILE xxx record into the arrays used by function handle_updates()
-	$glevels = array_merge(array('1'), $glevels);
-	$tag = array_merge(array('FILE'), $tag);
-	$islink = array_merge(array(0), $islink);
-	$text = array_merge(array($newFilename), $text);
+	// Put the filename where handle_updates() will find it.
+	$text[0] = $newFilename;
 
 	if (!empty($pid)) {
 		$gedrec=find_gedcom_record($pid, WT_GED_ID, true);
