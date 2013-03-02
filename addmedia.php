@@ -461,6 +461,9 @@ if ($gedfile) {
 		echo WT_I18N::translate('You may enter a URL, beginning with &laquo;http://&raquo;.') . '</p></td></tr>';
 	}
 	$fileName = '';
+	if ($folder=='.') {
+		$folder='';
+	}
 } else {
 	if ($isExternal) {
 		$fileName = substr($gedfile, 5);
