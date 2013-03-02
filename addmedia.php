@@ -37,8 +37,8 @@ $text        = safe_REQUEST($_REQUEST, 'text',        WT_REGEX_UNSAFE);
 $tag         = safe_REQUEST($_REQUEST, 'tag',         WT_REGEX_UNSAFE);
 $islink      = safe_REQUEST($_REQUEST, 'islink',      WT_REGEX_UNSAFE);
 $glevels     = safe_REQUEST($_REQUEST, 'glevels',     WT_REGEX_UNSAFE);
+$folder      = safe_REQUEST($_REQUEST, 'folder',      WT_REGEX_UNSAFE);
 
-$folder      = safe_POST('folder',      WT_REGEX_UNSAFE);
 $update_CHAN = !safe_POST_bool('preserve_last_changed');
 
 $controller = new WT_Controller_Simple();
@@ -88,7 +88,7 @@ if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
 // .... and also in the admin_media_upload.php script
 
 switch ($action) {
-case 'create': // Save the information from the “showcreateform” action
+case 'create': // Save the information from the “showmediaform” action
 	$controller->setPageTitle(WT_I18N::translate('Create a new media object'));
 
 	// Validate the media folder
@@ -433,24 +433,22 @@ if ($linktoid == 'new' || ($linktoid == '' && $action != 'update')) {
 }
 $gedrec=find_gedcom_record($pid, WT_GED_ID, true);
 
-// 0 OBJE
-// 1 FILE
-if ($gedrec == '') {
+// generate a tag (with or without a filename) to populate the edit field
+if (preg_match('/\n\d (FILE (.+))/', $gedrec, $match)) {
+	// From an existing GEDCOM record
+	$gedfile = $match[1];
+	$isExternal = isFileExternal($match[2]);
+} elseif ($filename) {
+	// From Admin->Media->Unused
+	$gedfile = 'FILE ' . $filename;
+	$isExternal = false;
+} else {
+	// A new record
 	$gedfile = 'FILE';
-	if ($filename != '')
-		$gedfile = 'FILE ' . $filename;
-} else {
-	$gedfile = get_first_tag(1, 'FILE', $gedrec);
-	if (empty($gedfile))
-		$gedfile = 'FILE';
+	$isExternal = false;
 }
-if ($gedfile != 'FILE') {
-	$gedfile = 'FILE ' . substr($gedfile, 5);
-	$readOnly = 'READONLY';
-} else {
-	$readOnly = '';
-}
-if ($gedfile == 'FILE') {
+
+if ($gedfile) {
 	// Box for user to choose to upload file from local computer
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo WT_I18N::translate('Media file to upload').help_link('upload_media_file').'</td><td class="optionbox wrap"><input type="file" name="mediafile" onchange="updateFormat(this.value);" size="40"></td></tr>';
@@ -458,19 +456,11 @@ if ($gedfile == 'FILE') {
 	if (WT_USER_GEDCOM_ADMIN) {
 		echo '<tr><td class="descriptionbox wrap width25">';
 		echo WT_I18N::translate('Thumbnail to upload').help_link('upload_thumbnail_file').'</td><td class="optionbox wrap"><input type="file" name="thumbnail" size="40"></td></tr>';
-	}
-}
-
-// Filename on server
-$isExternal = isFileExternal($gedfile);
-if ($gedfile == 'FILE') {
-	if (WT_USER_GEDCOM_ADMIN) {
 		add_simple_tag("1 $gedfile", '', WT_I18N::translate('File name on server'), '', 'NOCLOSE');
 		echo '<p class="sub">' . WT_I18N::translate('Do not change to keep original file name.');
 		echo WT_I18N::translate('You may enter a URL, beginning with &laquo;http://&raquo;.') . '</p></td></tr>';
 	}
 	$fileName = '';
-	$folder = '';
 } else {
 	if ($isExternal) {
 		$fileName = substr($gedfile, 5);
@@ -490,13 +480,12 @@ if ($gedfile == 'FILE') {
 	echo '</td>';
 	echo '<td class="optionbox wrap wrap">';
 	if (WT_USER_GEDCOM_ADMIN) {
-		echo '<input name="filename" type="text" value="' . htmlspecialchars($fileName) . '" size="40"';
-		if ($isExternal)
-			echo '>';
-		else
-			echo '><p class="sub">' . WT_I18N::translate('Do not change to keep original file name.') . '</p>';
+		echo '<input name="filename" type="text" value="' . htmlspecialchars($fileName) . '" size="40">';
+		if (!$isExternal) {
+			echo '<p class="sub">' . WT_I18N::translate('Do not change to keep original file name.') . '</p>';
+		}
 	} else {
-		echo $fileName;
+		echo htmlspecialchars($fileName);
 		echo '<input name="filename" type="hidden" value="' . htmlspecialchars($fileName) . '" size="40">';
 	}
 	echo '</td>';
