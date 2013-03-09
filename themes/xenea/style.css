@@ -81,16 +81,16 @@ html[dir='rtl'] .hsearch {float:left;padding-left:10px;}
 }
 
 #theme-menu {float:left;margin-left:10px;margin-top:5px;}
-#fav-menu {position:absolute;left:10px;top:20px;}
-#login-menu {position:absolute;left:30%;top:15px;}
+#fav-menu {position:absolute;left:80px;top:5px;}
+#login-menu {position:absolute;left:50%;top:15px;}
 #lang-menu {float:right;margin-right:10px;margin-top:5px;text-align:right;}
 #lang-menu .makeMenu li ul {left:auto;right:0;}
 .lang-active, .theme-active{color:#006;font-weight:900;}
 
 /* LTR to RTL Translation */
 html[dir='rtl'] #theme-menu {float:right;margin-right:10px;}
-html[dir='rtl'] #fav-menu {left:auto;right:10px;}
-html[dir='rtl'] #login-menu {left:auto;right:30%}
+html[dir='rtl'] #fav-menu {position:absolute;right:80px;}
+html[dir='rtl'] #login-menu {left:auto;right:50%}
 html[dir='rtl'] #lang-menu {float:left;margin-left:10px;text-align:left;}
 html[dir='rtl'] #lang-menu .makeMenu li ul {right:auto;left:0;}
 
