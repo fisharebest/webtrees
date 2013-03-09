@@ -1384,6 +1384,8 @@ function activate_colorbox(config) {
 		jQuery.extend(jQuery.colorbox.settings, config);
 	} else {
 		jQuery.extend(jQuery.colorbox.settings, {
+			// Don't scroll window with document
+			fixed:     true,
 			// Simple I18N
 			current:   '',
 			previous:  textDirection=='ltr' ? '◀' : '▶',
