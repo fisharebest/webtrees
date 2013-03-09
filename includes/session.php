@@ -271,9 +271,6 @@ if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
 	exit;
 }
 
-//-- allow user to cancel
-ignore_user_abort(false);
-
 // Request more resources - if we can/want to
 if (!ini_get('safe_mode')) {
 	$memory_limit=WT_Site::preference('MEMORY_LIMIT');
