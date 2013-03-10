@@ -519,16 +519,16 @@ html[dir='rtl'] .faq_edit {float:left;}
 
 /* ======= Header menu styles ========== */
 #topMenu {border-top:2px solid #81A9CB;border-bottom:2px solid #81A9CB;float:left;margin:5px auto;padding:5px 0;position:relative;width:100%;}
-#main-menu {clear:both;position:relative;z-index:500;float:right;right:50%;}
+#main-menu {clear:both;position:relative;z-index:50;float:right;right:50%;}
 #main-menu,
 #main-menu ul {padding:0;margin:0;list-style-type:none;}
-#main-menu ul ul {z-index:600;}
+#main-menu ul ul {z-index:60;}
 #main-menu li {float:left;position:relative;left:50%;}
 #main-menu li li {clear:both;}
 #main-menu li:hover > ul {display:block;position:absolute;top:0;left:100%;right:auto;}
 #main-menu > li:hover > ul {left:0;right:auto;top:66px;}
 #main-menu a {display:block;white-space:nowrap;overflow:hidden;}
-#main-menu ul {position:absolute;display:none;background:#fff;border:thin solid #aaa;padding:5px 0;z-index:999;}
+#main-menu ul {position:absolute;display:none;background:#fff;border:thin solid #aaa;padding:5px 0;z-index:99;}
 #main-menu li a {margin:auto;padding-top:52px;width:100%;}
 #main-menu li li a {display:block;position:relative;float:left;font-size:11px;line-height:1.5;padding:1px 10px 1px 5px;}
 

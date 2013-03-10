@@ -76,7 +76,7 @@ html[dir='rtl'] .hsearch {float:left;padding-left:10px;}
 	font-weight:bold;
 	font-size:11px;
 	height:40px;
-	z-index:1000;
+	z-index:100;
 	position:relative;
 }
 
@@ -113,16 +113,16 @@ html[dir='rtl'] #extra-menu.makeMenu li ul {left:0;right:auto;}
 
 /* ======= Main menu items ========== */
 #topMenu                   {border-bottom:2px solid #0073CF;float:left;height:45px;margin-bottom:10px;padding:5px 0 10px 0;position:relative;width:100%;}
-#main-menu                 {clear:both;position:relative;z-index:500;float:right;right:50%;margin-top:5px;}
+#main-menu                 {clear:both;position:relative;z-index:50;float:right;right:50%;margin-top:5px;}
 #main-menu,
 #main-menu ul              {padding:0;list-style-type:none;}
-#main-menu ul ul           {z-index:600;}
+#main-menu ul ul           {z-index:60;}
 #main-menu li              {float:left;position:relative;left:50%;}
 #main-menu li li           {clear:both;}
 #main-menu li:hover > ul   {display:block;position:absolute;top:0;left:100%;right:auto;margin-top:0;}
 #main-menu > li:hover > ul {left:0;right:auto;top:42px;}
 #main-menu a               {display:block;white-space:nowrap;overflow:hidden;}
-#main-menu ul              {position:absolute;display:none;background:#ffffff;border:thin solid #aaaaaa;padding:0;z-index:999;}
+#main-menu ul              {position:absolute;display:none;background:#ffffff;border:thin solid #aaaaaa;padding:0;z-index:99;}
 #main-menu li a            {margin:auto;padding-top:22px;width:100%;}
 #main-menu li li a         {display:block;position:relative;float:left;font-size:11px;line-height:1.5;padding:0 10px 1px 5px;}
 
