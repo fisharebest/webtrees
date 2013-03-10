@@ -1692,5 +1692,5 @@ html[dir='rtl'] #save-cancel .cancel {float:left;}
 .cboxPhoto {float:left; margin:auto; border:0; display:block; max-width:none;}
 .cboxIframe {width:100%; height:100%; display:block; border:0;}
 #colorbox, #cboxContent, #cboxLoadedContent {box-sizing:content-box;}
-button, input[type="submit"], input[type="reset"], input[type="button"], input[type="file"] {background:url(jquery-ui-1.10.0/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #F8F7F6; border:1px solid #CBC7BD; color:#654B24; font-weight:700; border-radius:3px; padding: 0 6px;;}
-button:hover, input:hover[type="submit"], input:hover[type="reset"], input:hover[type="button"], input:hover[type="file"] {background:url(jquery-ui-1.10.0/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654B24; border:1px solid #654B24; color:#FFFFFF; font-weight:700; border-radius:3px;}
+#cboxContent button, #cboxContent input[type="submit"], #cboxContent input[type="reset"], #cboxContent input[type="button"], #cboxContent input[type="file"] {background:url(jquery-ui-1.10.0/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #F8F7F6; border:1px solid #CBC7BD; color:#654B24; font-weight:700; border-radius:3px; padding: 0 6px;;}
+#cboxContent button:hover, #cboxContent input:hover[type="submit"], #cboxContent input:hover[type="reset"], #cboxContent input:hover[type="button"], #cboxContent input:hover[type="file"] {background:url(jquery-ui-1.10.0/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654B24; border:1px solid #654B24; color:#FFFFFF; font-weight:700; border-radius:3px;}
