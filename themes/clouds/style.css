@@ -2807,35 +2807,31 @@ margin:10px;
 text-align:center;
 }
 
-.find-media-details {
+#find-output .find-media-details {
 float:left;
 }
 
-.find-media-details ul {
+#find-output .find-media-details ul {
 list-style-type:none;
 margin:0 20px 10px;
 padding:0;
 }
 
-.find-media-dirs {
+#find-output .find-media-dirs {
 border-bottom:1px solid #95B8E0;
 padding:3px;
 }
 
-.find-media-media {
+#find-output .find-media-media {
 border:1px solid #95B8E0;
 margin:1px;
 overflow:hidden;
 padding:2px;
 }
 
-.find-media-thumb {
+#find-output .find-media-thumb {
 clear:left;
 float:left;
-}
-
-.find-media-thumb img {
-width:50px;
 }
 
 /* ==== search.php ==== */

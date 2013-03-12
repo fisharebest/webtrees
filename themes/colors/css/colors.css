@@ -914,15 +914,14 @@ html[dir='rtl'] .desc_tree_div ul{margin-left:0;margin-right:10px;}
 #find-media{border:1px solid #999;border-radius:3px;color:#fff;padding:5px;text-align:center;}
 #find-media span{border:0;font-weight:700;margin:auto;padding:5px;}
 
-.find-media-dirs{border-bottom:1px solid #999;padding:3px;}
-.find-media-media{border:1px solid #999;margin:1px;overflow:hidden;padding:2px;}
-.find-media-thumb{clear:left;float:left;}
-.find-media-thumb img{width:50px;}
+#find-output .find-media-dirs{border-bottom:1px solid #999;padding:3px;}
+#find-output .find-media-media{border:1px solid #999;margin:1px;overflow:hidden;padding:2px;}
+#find-output .find-media-thumb{clear:left;float:left;}
 
 #find-output .find-media-details p{border:0;font-weight:400;padding:0 5px 2px;text-align:left;}
 #find-output .find-media-details div span{font-weight:400;padding:0 5px 2px;}
 
-.find-media-details ul{list-style-type:none;margin:0 20px 10px;padding:0;}
+#find-output .find-media-details ul{list-style-type:none;margin:0 20px 10px;padding:0;}
 
 #find-facts-header .list_label{text-align:inherit;}
 #find-header span,#find-output p.find-media-title{font-weight:700;}
