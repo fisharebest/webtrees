@@ -1,6 +1,6 @@
-LANGUAGES_BUILD=ar bg bs ca cs da de en_GB en_US es et fa fi fr he hr hu is it lt nb nl nn pl pt pt_BR ru sk sl sv tr tt uk vi
-LANGUAGES_EXTRA=af dv el en_AU fo fr_CA gl id ja ko lv ka mr ms ne oc ro sr sr@Latn ta zh
-# Note that we also have translations for mi (maori) and yi (yiddish), although Zend Framework v1 does not include support for these.
+LANGUAGES_BUILD=ar bg bs ca cs da de en_GB en_US es et fa fi fr he hr hu is it lt nb nl nn pl pt pt_BR ru sk sl sv tr tt uk vi zh_CN
+LANGUAGES_EXTRA=af dv el en_AU fo fr_CA gl id ja ko lv ka mr ms ne oc ro sr sr@Latn ta
+# Note that we also have translations for mi (maori) and yi (yiddish), although Zend Framework V1 does not include support for these.
 PO_DIR=po
 MO_DIR=mo
 MO_FILES=$(patsubst %,$(MO_DIR)/%.mo,$(LANGUAGES_BUILD) $(LANGUAGES_EXTRA))
