@@ -2,7 +2,7 @@
  * webtrees googlemap V3 css
  *
  * webtrees:Web based Family History software
- * Copyright (C) 2012 webtrees development team.
+ * Copyright (C) 2013 webtrees development team.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -102,3 +102,8 @@ ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#0
 #map_type li.active {background:gray; color:white; font-weight:bold;}
 #map_type li:hover {background:#ddd;}
 #googlemap_left {margin-top:-14px !important;}
+
+#side_bar .gallery img, .iwstyle .gallery img {float:left;margin:0 4px 0 0;height:50px;width:auto;max-width:50px;}
+html[dir="rtl"] #side_bar .gallery img, html[dir="rtl"] .iwstyle .gallery img {float:right;margin:0 0 0 4px;}
+#side_bar .icon-silhouette-M, #side_bar .icon-silhouette-F, #side_bar .icon-silhouette-U, .iwstyle .icon-silhouette-M, .iwstyle .icon-silhouette-F, .iwstyle .icon-silhouette-U {float:left;}
+html[dir="rtl"] #side_bar .icon-silhouette-M, html[dir="rtl"] #side_bar .icon-silhouette-F, html[dir="rtl"] #side_bar .icon-silhouette-U, html[dir="rtl"] .iwstyle .icon-silhouette-M, html[dir="rtl"] .iwstyle .icon-silhouette-F, html[dir="rtl"] .iwstyle .icon-silhouette-U  {float:right;}

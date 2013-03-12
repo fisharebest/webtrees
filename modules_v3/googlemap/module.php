@@ -1192,7 +1192,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			// save the info we need to use later for the side_bar
 			'gmarkers[i] = marker;'.
 			// add a line to the side_bar html
-			'side_bar_html += "<br><div id=\'"+linkid+"\'><a href=\'#\' onclick=\'myclick(" + i + ")\'>" + html +"</a><br></div>";
+			'side_bar_html += "<br><div id=\'"+linkid+"\' onclick=\'myclick(" + i + ")\'>" + html +"<br></div>";
 			i++;
 			return marker;
 		};'.
