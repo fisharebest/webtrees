@@ -1504,8 +1504,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			echo ' ', $readOnly, ">";
 		}
 		
-		$tmp_array[]='';
-			$tmp_array = array('TYPE','TIME','NOTE','ASSO','AGE');
+		$tmp_array = array('TYPE','TIME','NOTE','SOUR','REPO','OBJE','ASSO','AGE');
 		
 		// split PLAC
 		if ($fact=="PLAC" && $readOnly=='') {
