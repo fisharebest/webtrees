@@ -34,12 +34,9 @@ $filter         =safe_GET('filter');
 $action         =safe_GET('action');
 $callback       =safe_GET('callback', WT_REGEX_NOSCRIPT, 'paste_id');
 $media          =safe_GET('media');
-$external_links =safe_GET('external_links');
-$directory      =safe_GET('directory', WT_REGEX_NOSCRIPT);
 $all            =safe_GET_bool('all');
 $subclick       =safe_GET('subclick');
 $choose         =safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
-$level          =safe_GET('level', WT_REGEX_INTEGER, 0);
 $qs             =safe_GET('tags');
 
 // Retrives the currently selected tags in the opener window (reading curTags value of the query string)
@@ -69,18 +66,6 @@ if ($chooseType!="media" && $chooseType!="0file") {
 	$chooseType = "all";
 }
 
-//-- force the thumbnail folder to have the same layout as the media folder
-//-- Dots and slashes should be escaped for the preg_replace
-$srch = "/".addcslashes($MEDIA_DIRECTORY, '/.')."/";
-$repl = addcslashes($MEDIA_DIRECTORY."thumbs/", '/.');
-$thumbdir = stripcslashes(preg_replace($srch, $repl, $directory));
-
-//-- prevent script from accessing an area outside of the media folder
-//-- and keep level consistency
-if ($level < 0) {
-	$directory = '';
-	$level = 0;
-}
 // End variables for find media
 
 switch ($type) {
@@ -224,9 +209,6 @@ if ($type == 'media') {
 	echo '<div id="find-header">
 	<form name="filtermedia" method="get" onsubmit="return checknames(this);" action="find.php">
 	<input type="hidden" name="choose" value="', $choose, '">
-	<input type="hidden" name="directory" value="', $directory, '">
-	<input type="hidden" name="thumbdir" value="', $thumbdir, '">
-	<input type="hidden" name="level" value="', $level, '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="media">
 	<input type="hidden" name="callback" value="', $callback, '">
@@ -558,41 +540,10 @@ if ($action=="filter") {
 	if ($type == "media") {
 		global $dirs;
 
-		$medialist = WT_Query_Media::mediaList($directory, 'exclude', 'title', $filter);
+		$medialist = WT_Query_Media::mediaList('', 'include', 'title', $filter);
 
 		echo '<div id="find-output">';
-		// Show link to previous folder
-		if ($level>0) {
-			$levels = explode("/", $directory);
-			$pdir = "";
-			for ($i=0; $i<count($levels)-2; $i++) $pdir.=$levels[$i]."/";
-			$levels = explode("/", $thumbdir);
-			$pthumb = "";
-			for ($i=0; $i<count($levels)-2; $i++) $pthumb.=$levels[$i]."/";
-			$uplink = '<a href="find.php?directory='.$pdir.'&amp;thumbdir='.$pthumb.'&amp;level='.($level-1).'&amp;type=media&amp;choose='.$choose.'&amp;filter='.htmlspecialchars($filter).'&amp;action=filter">&nbsp;&nbsp;&nbsp;&lt;-- <span dir="ltr">'.$pdir.'</span>&nbsp;&nbsp;&nbsp;</a>';
-		}
 
-		// Start of media folder table
-		// Tell the user where he is
-		echo '<div id="find-media"><span>', WT_I18N::translate('Folder'), '&nbsp;=&nbsp;</span>', $directory, '</div>';
-
-		// display the folder list
-		if (count($dirs) || $level) {
-			sort($dirs);
-			if ($level) {
-				echo '<div class="find-media-dirs">', $uplink, '</div>';
-			}
-			echo '<div class="find-media-dirs">
-				<a href="find.php?directory=', $directory, '&amp;thumbdir='.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs', $directory).'&amp;level=', $level, '&amp;external_links=http&amp;type=media&amp;choose=', $choose, '&amp;filter=', htmlspecialchars($filter), '&amp;action=filter">', WT_I18N::translate('External objects'), '</a>';
-			echo '</div>';
-			foreach ($dirs as $indexval => $dir) {
-				echo '<div class="find-media-dirs">
-					<a href="find.php?directory=', $directory.$dir, '/&amp;thumbdir=', $directory.$dir, '&amp;level=', ($level+1), '&amp;type=media&amp;choose=', $choose, '&amp;filter=', htmlspecialchars($filter), '&amp;action=filter"><span dir="ltr">', $dir, '</span></a>
-				</div>';
-			}
-		}
-
-		// display the images
 		if ($medialist) {
 			foreach ($medialist as $media) {
 				echo '<div class="find-media-media">';
@@ -601,7 +552,7 @@ if ($action=="filter") {
 				if (!$embed) {
 					echo '<p><a href="#" dir="auto" onclick="pasteid(\'', addslashes($media->getXref()), '\');">', $media->getFilename(), '</a></p>';
 				} else {
-					echo '<p><a href="#" onclick="pasteid(\'', $media->getXref(), '\', \'', '\', \'', addslashes($media->getFilename()), '\');"><span dir="ltr">', $media->getFilename(), '</span></a></p> ';
+					echo '<p><a href="#" dir="auto" onclick="pasteid(\'', $media->getXref(), '\', \'', '\', \'', addslashes($media->getFilename()), '\');">', $media->getFilename(), '</a></p> ';
 				}
 				if ($media->fileExists()) {
 					$imgsize = $media->getImageAttributes();
@@ -638,7 +589,6 @@ if ($action=="filter") {
 		} else {
 			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 		}
-		echo '<div style="clear:both;">&nbsp;</div>';
 		echo '</div>';
 	}
 
