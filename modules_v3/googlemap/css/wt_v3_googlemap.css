@@ -41,7 +41,7 @@ h4 {margin-bottom:-0.1em;}
 #txt {width:300px; margin-top:-8px; margin-left:-8px; background:#ffffcc; text-align:center;}
 #pano {width:297px; height:216px; margin-left:0px; margin-top:0em; border-top:1px solid #aaaaaa;}
 
-.highlt_img {width:60px; background-color:#eeeeee; text-align:center;}
+.highlt_img {background-color:#eeeeee; text-align:center;}
 .highlt_img img{float:none; border:none;}
 
 /* root element for tabs */
@@ -103,7 +103,7 @@ ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#0
 #map_type li:hover {background:#ddd;}
 #googlemap_left {margin-top:-14px !important;}
 
-#side_bar .gallery img, .iwstyle .gallery img {float:left;margin:0 4px 0 0;height:50px;width:auto;max-width:50px;}
-html[dir="rtl"] #side_bar .gallery img, html[dir="rtl"] .iwstyle .gallery img {float:right;margin:0 0 0 4px;}
+#side_bar .gallery img, .iwstyle .gallery img, .highlt_img .gallery img {float:left;margin:0 4px 0 0;height:50px;width:auto;max-width:50px;}
+html[dir="rtl"] #side_bar .gallery img, html[dir="rtl"] .iwstyle .gallery img, html[dir="rtl"] .highlt_img .gallery img {float:right;margin:0 0 0 4px;}
 #side_bar .icon-silhouette-M, #side_bar .icon-silhouette-F, #side_bar .icon-silhouette-U, .iwstyle .icon-silhouette-M, .iwstyle .icon-silhouette-F, .iwstyle .icon-silhouette-U {float:left;}
 html[dir="rtl"] #side_bar .icon-silhouette-M, html[dir="rtl"] #side_bar .icon-silhouette-F, html[dir="rtl"] #side_bar .icon-silhouette-U, html[dir="rtl"] .iwstyle .icon-silhouette-M, html[dir="rtl"] .iwstyle .icon-silhouette-F, html[dir="rtl"] .iwstyle .icon-silhouette-U  {float:right;}
