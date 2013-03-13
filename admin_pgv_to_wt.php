@@ -88,9 +88,8 @@ if ($PGV_PATH) {
 }
 
 if ($PGV_PATH && !$error) {
-	// We have everything we need to run the wizard.
-	// Log out, as the account we are using is about to be deleted.
-	userLogout(WT_USER_ID);
+	// The account we are using is about to be deleted.
+	$WT_SESSION->wt_user = null;
 }
 
 $controller->pageHeader();
