@@ -345,7 +345,6 @@ function scan_dirs($dir, $recursive, $filter) {
 					}
 				}
 			} elseif (!$filter || stripos($path, $filter)!==false) {
-				if ($path=='Duckphoto.JPG') {var_dump($dir);exit;}
 				$files[] = $path;
 			}
 		}
