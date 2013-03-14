@@ -1321,7 +1321,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						// Construct the polygon lines
 						if (!$hidelines) {
 							$to_child = (intval(($i-1)/2)); // Draw a line from parent to child
-							if (array_key_exists($to_child, $lat)) {
+							if (array_key_exists($to_child, $lat) && $lat[$to_child]!=0 && $lon[$to_child]!=0) {
 								$js.='
 								var linecolor;
 								var plines;
@@ -1331,11 +1331,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								plines = new google.maps.Polygon({
 									paths: lines,
 									strokeColor: linecolor,
-									// strokeColor: '.$colored_line[$curgen].',
 									strokeOpacity: 0.8,
 									strokeWeight: 3,
 									fillColor: "#FF0000",
-									//fillOpacity: 0.35
 									fillOpacity: 0.1
 								});
 								plines.setMap(pm_map);';
