@@ -169,4 +169,30 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 		sort_facts($facts);
 		return $facts;
 	}
+	
+	/**
+	* edit menu items used in album tab and media list
+	*/
+	static function getMediaListMenu($mediaobject) {
+		$html='<div id="lightbox-menu"><ul class="makeMenu lb-menu">';
+		$menu = new WT_Menu(WT_I18N::translate('Edit Details'), '#', 'lb-image_edit');
+		$menu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."', '_blank', edit_window_specs);");
+		$html.=$menu->getMenuAsList().'</ul><ul class="makeMenu lb-menu">';
+		$menu = new WT_Menu(WT_I18N::translate('Set link'), '#', 'lb-image_link');
+		$menu->addOnclick("return ilinkitem('".$mediaobject->getXref()."','person')");
+		$submenu = new WT_Menu(WT_I18N::translate('To Person'), '#');
+		$submenu->addOnclick("return ilinkitem('".$mediaobject->getXref()."','person')");
+		$menu->addSubMenu($submenu);
+		$submenu = new WT_Menu(WT_I18N::translate('To Family'), '#');
+		$submenu->addOnclick("return ilinkitem('".$mediaobject->getXref()."','family')");
+		$menu->addSubMenu($submenu);
+		$submenu = new WT_Menu(WT_I18N::translate('To Source'), '#');
+		$submenu->addOnclick("return ilinkitem('".$mediaobject->getXref()."','source')");
+		$menu->addSubMenu($submenu);
+		$html.=$menu->getMenuAsList().'</ul><ul class="makeMenu lb-menu">';
+		$menu = new WT_Menu(WT_I18N::translate('View Details'), $mediaobject->getHtmlUrl(), 'lb-image_view');
+		$html.=$menu->getMenuAsList();
+		$html.='</ul></div>';
+		return $html;
+	}
 }

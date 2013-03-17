@@ -1574,6 +1574,23 @@ html[dir="rtl"] .person_box_template i[class^="icon-silhouette"]{float:right;}
 #medialist-page .list_table_controls {width:100%;}
 .list_table_controls td {min-width:40px;text-align:center;}
 
+/* ============== medialist.php ======================= */
+#lightbox-menu {margin-bottom:60px;}
+.lb-menu {position:relative; float:left; list-style-type:none; margin:0;}
+.lb-menu ul {list-style-type:none;}
+.lb-menu li {font-weight:normal; float:left; top:0;}
+.lb-menu > li ul {display:none;width:80px;}
+.lb-menu > li:hover  ul {display:block; top:36px;}
+.lb-menu a {display:block;}
+.lb-menu li a {padding-top:24px;}
+.lb-menu li li a {padding:1px 10px 1px 5px;}
+html[dir='rtl'] .lb-menu {float:right;}
+html[dir='rtl'] .lb-menu li {float:right;}
+
+li#lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
+li#lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
+li#lb-image_view {background:url(images/image_view.png) no-repeat 50% 20%;}
+
 /* ============== login.php ======================= */
 #login-register-page h2 {text-align:center;}
 #login-register-page .warning {margin:20px auto;text-align:center;}

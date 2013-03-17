@@ -253,8 +253,8 @@ if ($search) {
 		echo '<table><tr><td valign="top" style="white-space:normal;">';
 		echo $mediaobject->displayImage();
 		echo '</td><td class="list_value_wrap" style="border:none;" width="100%">';
-		if (WT_USE_LIGHTBOX && WT_USER_CAN_EDIT) {
-			echo lightbox_WT_Module::getMediaListMenu($mediaobject);
+		if (WT_USER_CAN_EDIT) {
+			echo WT_Controller_Media::getMediaListMenu($mediaobject);
 		}
 		// If sorting by title, highlight the title.  If sorting by filename, highlight the filename
 		if ($sortby=='title') {
