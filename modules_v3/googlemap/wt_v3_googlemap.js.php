@@ -1,8 +1,8 @@
 <?php
-// Google map module for phpGedView
+// Google map module for webtrees
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -484,7 +484,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					"<?php echo $gmark['lati']; ?>",
 					"<?php echo $gmark['lng']; ?>",
 					"<?php if (!empty($gmark['date'])) { $date=new WT_Date($gmark['date']); echo addslashes($date->Display(true)); } else { echo WT_I18N::translate('Date not known'); } ?>",
-					"<?php if (!empty($gmark['info'])) { echo $gmark['info']; } else { echo NULL; } ?>",
+					"<?php if (!empty($gmark['info'])) { echo addslashes($gmark['info']); } else { echo NULL; } ?>",
 					"<?php if (!empty($gmark['name'])) { $person=WT_Person::getInstance($gmark['name']); if ($person) { echo '<a href=\"', $person->getHtmlUrl(), '\">', addslashes($person->getFullName()), '<\/a>'; } } ?>",
 					"<?php echo addslashes(print_fact_place_map($gmark['placerec'])); ?>",
 					"<?php echo $gmark['index'].''; ?>",
