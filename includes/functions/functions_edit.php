@@ -2,7 +2,7 @@
 // Various functions used by the Edit interface
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -354,9 +354,13 @@ function checkChangeTime($pid, $gedrec, $last_time) {
 		$changeUser = '';
 	}
 	if (isset($_REQUEST['linenum']) && $changeTime!=0 && $last_time && $changeTime > $last_time) {
-		echo "<span class=\"error\">", WT_I18N::translate('The record with id %s was changed by another user since you last accessed it.', $pid), "<br><br>";
-		if (!empty($changeUser)) echo /* I18N: %s placeholders are a user-ID and a timestamp */ WT_I18N::translate('This record was last changed by <i>%s</i> at %s', $changeUser, date("d M Y H:i:s", $changeTime)), "<br><br>";
-		echo WT_I18N::translate('Please reload the previous page to make sure you are working with the most recent record.'), "</span>";
+		global $controller;
+		$controller->pageHeader();
+		echo '<p class="error">', WT_I18N::translate('The record with id %s was changed by another user since you last accessed it.', $pid), '</p>';
+		if (!empty($changeUser)) {
+			echo '<p>', /* I18N: %s placeholders are a user-ID and a timestamp */ WT_I18N::translate('This record was last changed by <i>%s</i> at %s', $changeUser, date("d M Y H:i:s", $changeTime)), '</p>';
+		}
+		echo '<p>', WT_I18N::translate('Please reload the previous page to make sure you are working with the most recent record.'), "</p>";
 		exit;
 	}
 }
