@@ -94,6 +94,7 @@ ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#0
 #iwcontent_edit {background-color:#eeeeee; border:1px solid #bbbbbb; height:60px; margin-right:0em;}
 #iwcontent_edit a {color:black;}
 #iwcontent_edit a:hover {color:red;}
+.optionbox #gname{white-space:normal;}
 
 /* googlemap_style */
 #map_type {margin:0; padding:0; font-family:Arial; font-size:10px; list-style:none;}
