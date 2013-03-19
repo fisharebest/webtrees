@@ -704,14 +704,6 @@ html[dir='rtl'] .icon {
 	border:solid black 1px;
 }
 
-.header_select {
-	font-size:9pt;
-}
-
-.lang_form {
-	margin-bottom:1px;
-}
-
 .selected-option {
 	background-color:#ECF5FF;
 	border:solid #84BEFF 1px;

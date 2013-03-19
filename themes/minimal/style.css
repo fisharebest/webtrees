@@ -474,10 +474,6 @@ html[dir='rtl'] .icon {
 	display:none;
 }
 
-.lang_form {
-	margin-top:0;
-}
-
 .selected-option {
 	background-color:#eee;
 	border:solid #555 1px;
@@ -500,10 +496,6 @@ html[dir='rtl'] .icon {
 
 .border1 {
 	border:solid #555 1px;
-}
-
-.header_select {
-	font-size:9pt;
 }
 
 .favorites_form {

@@ -1113,16 +1113,12 @@ font-weight:bold;
 border:solid #000 1px;
 }
 
-.header_select {
-font-size:12px;
-}
-
-.theme_form,.lang_form {
+.theme_form {
 margin-top:0;
 font-size:14px;
 }
 
-.theme_form option,.lang_form option,.color_form option {
+.theme_form option,.color_form option {
 margin:3px;
 }
 
