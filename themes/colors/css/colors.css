@@ -1162,14 +1162,15 @@ html[dir='rtl'] #save-cancel .cancel {float:left;}
 #colorbox, #cboxOverlay, #cboxWrapper {position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
 #cboxOverlay {position:fixed; width:100%; height:100%;}
 #cboxMiddleLeft, #cboxBottomLeft {clear:left;}
-#cboxContent {position:relative; border:solid #ffffff 8px;border-bottom-width:25px;}
+#cboxContent {position:relative; border:solid #ffffff 25px;border-bottom-width:25px;}
 #cboxLoadedContent {overflow:auto;}
-#cboxTitle {margin:0;}
+#cboxTitle {margin:0;color: #444444;font-weight: 800;left: 0;position: absolute;text-align: center;top: -20px;width: 100%;}
 #cboxLoadingOverlay, #cboxLoadingGraphic {position:absolute; top:0; left:0; width:100%; height:100%;}
 #cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {cursor:pointer;font-size:14px;}
 .cboxPhoto {float:left; margin:auto; border:0; display:block; max-width:none;}
 .cboxIframe {width:100%; height:100%; display:block; border:0;}
 #colorbox, #cboxContent, #cboxLoadedContent {box-sizing:content-box;}
+#colorbox {border: 2px solid #ccc;border-radius: 15px;}
 #cboxContent button, #cboxContent input[type="submit"], #cboxContent input[type="reset"], #cboxContent input[type="button"], #cboxContent input[type="file"] {
 background:url(../jquery-ui-1.10.0/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #F8F7F6;border:1px solid #CBC7BD;color:#654B24;font-weight:700;border-radius:3px;padding: 0 6px;
 }

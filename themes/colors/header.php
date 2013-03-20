@@ -34,8 +34,15 @@ global $subColor;
 $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
-	->addInlineJavascript('activate_colorbox();');
-
+	->addInlineJavascript('activate_colorbox();')
+	->addInlineJavascript('
+		jQuery.extend(jQuery.colorbox.settings, {
+			title:	function(){
+					var img_title = jQuery(this).data("title");
+					return img_title;
+			}
+		});
+	');
 echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',
