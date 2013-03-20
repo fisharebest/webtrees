@@ -96,7 +96,7 @@ if ($action == "upload") {
 			}
 
 			// Thumbnails must be images.
-			if (!empty($_FILES['thumbnail' . $i]['name']) && !preg_match('/^image\/(png|gif|jpeg)', $_FILES['thumbnail' . $i]['type'])) {
+			if (!empty($_FILES['thumbnail' . $i]['name']) && !preg_match('/^image\/(png|gif|jpeg)/', $_FILES['thumbnail' . $i]['type'])) {
 				WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnails must be images.'));
 				break;
 			}
@@ -149,7 +149,7 @@ if ($action == "upload") {
 				}
 
 				// Now copy the (optional thumbnail)
-				if (!empty($_FILES['thumbnail' . $i]['name']) && preg_match('/^image\/(png|gif|jpeg)', $_FILES['thumbnail' . $i]['type'], $match)) {
+				if (!empty($_FILES['thumbnail' . $i]['name']) && preg_match('/^image\/(png|gif|jpeg)/', $_FILES['thumbnail' . $i]['type'], $match)) {
 					$extension = $match[1];
 					$thumbFile = preg_replace('/\.[a-z0-9]{3,5}$/', '.' . $extension, $fileName);
 					$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName .  $thumbFile;

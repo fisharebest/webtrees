@@ -204,7 +204,7 @@ case 'create': // Save the information from the “showcreateform” action
 		}
 
 		// Now copy the (optional thumbnail)
-		if (!empty($_FILES['thumbnail']['name']) && preg_match('/^image\/(png|gif|jpeg)', $_FILES['thumbnail']['type'], $match)) {
+		if (!empty($_FILES['thumbnail']['name']) && preg_match('/^image\/(png|gif|jpeg)/', $_FILES['thumbnail']['type'], $match)) {
 			$extension = $match[1];
 			$thumbFile = preg_replace('/\.[a-z0-9]{3,5}$/', '.' . $extension, $fileName);
 			$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName .  $thumbFile;
