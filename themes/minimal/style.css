@@ -36,6 +36,7 @@ legend {font-weight:bold;}
 
 a {color:#666;text-decoration:none;}
 a:hover {color:#555;text-decoration:underline;}
+:focus{outline-style:none;}
 
 input:required:valid, textarea:required:valid{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC);background-position:right top; background-repeat:no-repeat;}
 input:required:invalid, textarea:required:invalid{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);background-position:right top; background-repeat:no-repeat;}
@@ -1907,15 +1908,18 @@ html[dir='rtl'] #save-cancel .cancel {float:left;}
 #colorbox, #cboxOverlay, #cboxWrapper {position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
 #cboxOverlay {position:fixed; width:100%; height:100%;}
 #cboxMiddleLeft, #cboxBottomLeft {clear:left;}
-#cboxContent {position:relative; border:solid #ffffff 18px; border-bottom-width:25px; border-radius:10px;}
+#cboxContent {position:relative; border:solid #ffffff 25px;border-bottom-width:25px;}
 #cboxLoadedContent {overflow:auto;}
-#cboxTitle {margin:0;}
+#cboxTitle {margin:0;color: #444444;font-weight: 800;left: 0;position: absolute;text-align: center;top: -20px;width: 100%;}
 #cboxLoadingOverlay, #cboxLoadingGraphic {position:absolute; top:0; left:0; width:100%; height:100%;}
 #cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {cursor:pointer;font-size:14px;}
 .cboxPhoto {float:left; margin:auto; border:0; display:block; max-width:none;}
 .cboxIframe {width:100%; height:100%; display:block; border:0;}
 #colorbox, #cboxContent, #cboxLoadedContent {box-sizing:content-box;}
-#cboxContent button, #cboxContent input[type="submit"], #cboxContent input[type="reset"], #cboxContent input[type="button"], #cboxContent input[type="file"] {background:url(jquery-ui-1.10.0/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #F8F7F6; border:1px solid #CBC7BD; color:#654B24; font-weight:700; border-radius:3px; padding: 0 6px;;}
-#cboxContent button:hover, #cboxContent input:hover[type="submit"], #cboxContent input:hover[type="reset"], #cboxContent input:hover[type="button"], #cboxContent input:hover[type="file"] {background:url(jquery-ui-1.10.0/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654B24; border:1px solid #654B24; color:#FFFFFF; font-weight:700; border-radius:3px;}
-#save-cancel .save, #save-cancel .cancel {background:url(../jquery-ui-1.10.0/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #F8F7F6;border:1px solid #CBC7BD;color:#654B24;font-weight:700;font-size:14px;}
+#colorbox {border: 2px solid #ccc;border-radius: 15px;}
+#cboxContent button, #cboxContent input[type="submit"], #cboxContent input[type="reset"], #cboxContent input[type="button"], #cboxContent input[type="file"] {background:url(jquery-ui-1.10.0/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #F8F7F6;border:1px solid #CBC7BD;color:#654B24;font-weight:700;border-radius:3px;padding: 0 6px;}
+#cboxContent button:hover, #cboxContent input:hover[type="submit"], #cboxContent input:hover[type="reset"], #cboxContent input:hover[type="button"], #cboxContent input:hover[type="file"] {background:url(jquery-ui-1.10.0/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654B24;border:1px solid #654B24;color:#FFFFFF;font-weight:700;border-radius:3px;}
+#save-cancel .save, #save-cancel .cancel {background:url(jquery-ui-1.10.0/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #F8F7F6;border:1px solid #CBC7BD;color:#654B24;font-weight:700;font-size:14px;}
 #save-cancel .save:hover, #save-cancel .cancel:hover {background:url(../jquery-ui-1.10.0/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654B24;border:1px solid #654B24;color:#FFFFFF;font-weight:700;border-radius:3px;}
+#cboxClose {bottom:-20px;position:absolute;right:0;width:25px;}
+html[dir='rtl'] #cboxClose{position:absolute;right:auto;left:0}
