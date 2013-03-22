@@ -1380,18 +1380,19 @@ function findPosY(obj) {
 // This is the default way for webtrees to show image galleries.
 // Custom themes may use a different viewer.
 function activate_colorbox(config) {
+	jQuery.extend(jQuery.colorbox.settings, {
+		// Don't scroll window with document
+		fixed:         true,
+		// Simple I18N - the text will need to come from PHP
+		current:        '',
+		previous:       textDirection=='ltr' ? '◀' : '▶',
+		next:           textDirection=='ltr' ? '▶' : '◀',
+		slideshowStart: '○',
+		slideshowStop:  '●',
+		close:          '×',
+	});
 	if (config) {
 		jQuery.extend(jQuery.colorbox.settings, config);
-	} else {
-		jQuery.extend(jQuery.colorbox.settings, {
-			// Don't scroll window with document
-			fixed:     true,
-			// Simple I18N
-			current:   '',
-			previous:  textDirection=='ltr' ? '◀' : '▶',
-			next:      textDirection=='ltr' ? '▶' : '◀',
-			close:     '×',
-		});
 	}
 
 	// Trigger an event when we click on an (any) image
@@ -1403,12 +1404,14 @@ function activate_colorbox(config) {
 
 		// Enable colorbox for images
 		jQuery('a[type^=image].gallery').colorbox({
-			photo:     true,
-			maxWidth:  '80%',
-			maxHeight: '80%',
-			rel:       'gallery', // Turn all images on the page into a slideshow
+			photo:         true,
+			maxWidth:      '95%',
+			maxHeight:     '95%',
+			rel:           'gallery', // Turn all images on the page into a slideshow
+			slideshow:     true,
+			slideshowAuto: false,
 			// Add wheelzoom to the displayed image
-			onComplete: function() {
+			onComplete:    function() {
 				jQuery('.cboxPhoto').wheelzoom();
 				// Drag events cause the slideshow to advance.  Prevent this.
 				// TODO - only when the click was the end of a drag..
