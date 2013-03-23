@@ -318,8 +318,8 @@ height: auto;
 #menu-obje-edit		{background-position:left -852px;} html[dir=rtl] #menu-obje-edit	{background-position:right -852px;}
 #menu-obje-editraw	{background-position:left -667px;} html[dir=rtl] #menu-obje-editraw	{background-position:right -667px;}
 #menu-obje-link		{background-position:left -875px;} html[dir=rtl] #menu-obje-link	{background-position:right -875px;}
-#menu-obje-link-fam	{background-position:left -437px;} html[dir=rtl] #menu-obje-linkfam	{background-position:right -437px;}
-#menu-obje-link-indi{background-position:left -460px;} html[dir=rtl] #menu-obje-link-ind{background-position:right -460px;}
+#menu-obje-link-fam	{background-position:left -437px;} html[dir=rtl] #menu-obje-link-fam	{background-position:right -437px;}
+#menu-obje-link-indi{background-position:left -460px;} html[dir=rtl] #menu-obje-link-indi{background-position:right -460px;}
 #menu-obje-link-sour{background-position:left -391px;} html[dir=rtl] #menu-obje-link-sour{background-position:right -391px;}
 
 /* Repository */
