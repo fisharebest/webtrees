@@ -87,34 +87,97 @@ html[dir='rtl'] .makeMenu li ul li{text-align:right;}
 /* Top Menu  */
 #topMenu{float:left;height:48px;width:100%;}
 #topMenu ul {margin:0;padding:0;}
-html[dir='rtl'] #topMenu{float:right;}
-
-
 #main-menu > li > a {display:block;height:40px;}
 #main-menu li{float:left;list-style:none;position:relative;}
+
+html[dir='rtl'] #topMenu{float:right;}
 html[dir='rtl'] #main-menu li{float:right;}
 
-#main-menu ul{background:#fff;border:1px solid #ccc;display:none;left:0;position:absolute;right:auto;top:40px;z-index:2001;}
-html[dir='rtl'] #main-menu ul{right:0;left:auto;}
+/* Subnavigation */
+#topMenu ul ul{
+position:absolute;
+top:40px;
+left:0;
+right:auto;
+z-index:2001;
+background:#fff;
+border:1px solid #ccc;
+display:none;
+}
 
-#main-menu ul li{white-space:nowrap;}
-#main-menu ul li a{font-size:12px;padding:0 5px;line-height:30px;text-align:left; }
+#main-menu ul li{
+white-space:nowrap;
+}
+
+#main-menu ul li a{
+font-size:12px;
+padding:0 5px;
+line-height:30px;
+text-align:left; 
+}
+
+html[dir='rtl'] #main-menu ul{right:0;left:auto;}
 html[dir='rtl'] #main-menu ul li a{text-align:right;float:right;padding-right:30px;line-height: 26px;}
 
-#main-menu #menu-chart li ul{display:none;}
-#main-menu li:hover ul{display:block;} /* main menu hover */
-#main-menu li:hover li{float:none;}
+/* Submenu horizontal */
+#main-menu #menu-chart li ul, #main-menu #menu-obje li ul {
+display:none;
+}
 
-#main-menu #menu-chart li:hover ul{display:block;left:100%;right:auto;margin-top:-47px;position:absolute;}
-html[dir='rtl'] #main-menu #menu-chart li:hover ul{right:100%;left:auto;} 
+/* Set up hover layout and style */
+#main-menu li:hover ul{
+display:block;
+} 
 
-#main-menu > li{background-image:url(../images/sprites-top-menu.png);background-repeat:no-repeat;height:40px;line-height:40px;margin:4px 0 0 16px;text-indent:32px;width:40px;}
+/* main menu hover */
+#main-menu li:hover li{
+float:none;
+}
+
+/* fix second level submenus */
+#main-menu #menu-chart li:hover ul, #main-menu #menu-obje li:hover ul{
+display:block;
+margin-left:100%;
+margin-top:-47px;
+position:absolute;
+}
+
+#main-menu > li{
+background-image:url(../images/sprites-top-menu.png);
+background-repeat:no-repeat;
+height:40px;
+line-height:40px;
+margin:4px 0 0 16px;
+text-indent:32px;
+width:40px;
+}
+
+#main-menu li ul li{
+background-image:url(../images/sprites-sub-menu.png);
+background-repeat:no-repeat;
+height:28px;
+line-height:15px;
+margin:0;
+text-indent:22px;
+}
+
+#main-menu > li > ul > li:first-child{
+background: none;color: #333;
+font-weight: 700;
+font-size:14px;
+text-align: center;
+text-indent: 0;
+padding:5px 5px 0 5px;
+height:19px;
+line-height: 1;
+border-bottom:1px solid #ddd;
+height: auto;
+}
+
+html[dir='rtl'] #main-menu #menu-chart li:hover ul{right:100%;left:auto;}
+html[dir='rtl'] #main-menu #menu-obje li:hover ul{right:100%;left:auto;}
 html[dir='rtl'] #main-menu > li{margin:4px 16px 0 0px;}
-
-#main-menu li ul li{background-image:url(../images/sprites-sub-menu.png);background-repeat:no-repeat;height:28px;line-height:15px;margin:0;text-indent:22px;}
 html[dir='rtl'] #main-menu li ul li{text-indent:0;}
-
-#main-menu li ul li:first-child{background-image:none;color:#333;font-weight:700;text-align:center;text-indent:0;font-size:14px;padding:5px 5px 0 5px;height:19px;border-bottom:1px solid #ddd;}
 
 /*** End Header Layout  ***/
 
@@ -226,8 +289,8 @@ html[dir='rtl'] #main-menu li ul li{text-indent:0;}
 #menu-obje-edit		{background-position:left -962px;} html[dir=rtl] #menu-obje-edit	{background-position:right -962px;}
 #menu-obje-editraw	{background-position:left -754px;} html[dir=rtl] #menu-obje-editraw	{background-position:right -754px;}
 #menu-obje-link		{background-position:left -988px;} html[dir=rtl] #menu-obje-link	{background-position:right -988px;}
-#menu-obje-linkfam	{background-position:left -494px;} html[dir=rtl] #menu-obje-linkfam	{background-position:right -494px;}
-#menu-obje-link-ind	{background-position:left -520px;} html[dir=rtl] #menu-obje-link-ind{background-position:right -520px;}
+#menu-obje-link-fam	{background-position:left -494px;} html[dir=rtl] #menu-obje-linkfam	{background-position:right -494px;}
+#menu-obje-link-indi{background-position:left -520px;} html[dir=rtl] #menu-obje-link-ind{background-position:right -520px;}
 #menu-obje-link-sour{background-position:left -442px;} html[dir=rtl] #menu-obje-link-sour{background-position:right -442px;}
 
 /* Repository */
@@ -1164,7 +1227,7 @@ html[dir='rtl'] #save-cancel .cancel {float:left;}
 #cboxMiddleLeft, #cboxBottomLeft {clear:left;}
 #cboxContent {position:relative; border:solid #ffffff 25px;border-bottom-width:25px;}
 #cboxLoadedContent {overflow:auto;}
-#cboxTitle {margin:0;color: #444444;font-weight: 800;left: 0;position: absolute;text-align: center;top: -20px;width: 100%;}
+#cboxTitle {margin:0;color: #444444;font-weight: 800;left: 0;position: absolute;text-align: center;top: -22px;width: 100%;}
 #cboxLoadingOverlay, #cboxLoadingGraphic {position:absolute; top:0; left:0; width:100%; height:100%;}
 #cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {cursor:pointer;font-size:14px;}
 .cboxPhoto {float:left; margin:auto; border:0; display:block; max-width:none;}
