@@ -31,4 +31,4 @@
 
 exit;
 
-// /* I18N: This message is deleted in webtrees-1.4.1  */ WT_I18N::translate('');
+/* I18N: This message is deleted in webtrees-1.4.1  */ WT_I18N::translate('Enter associate GEDCOM ID.');

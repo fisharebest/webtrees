@@ -639,7 +639,7 @@ function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
 	}
 
 	preg_match_all('/^1 ASSO @('.WT_REGEX_XREF.')@((\n[2-9].*)*)/', $event->getGedcomRecord(), $amatches1, PREG_SET_ORDER);
-	preg_match_all('/\n2 ASSO @('.WT_REGEX_XREF.')@((\n[3-9].*)*)/', $event->getGedcomRecord(), $amatches2, PREG_SET_ORDER);
+	preg_match_all('/\n2 _?ASSO @('.WT_REGEX_XREF.')@((\n[3-9].*)*)/', $event->getGedcomRecord(), $amatches2, PREG_SET_ORDER);
 	// For each ASSO record
 	foreach (array_merge($amatches1, $amatches2) as $amatch) {
 		$person=WT_Person::getInstance($amatch[1]);

@@ -7,7 +7,7 @@
 // customised their local copy of this file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 PGV Development Team.
@@ -256,6 +256,7 @@ $level2_tags=array(
 	),
 	'RELA'=>array(
 		'ASSO',
+		'_ASSO',
 	),
 	'DATE'=>array(
 		'ADOP',

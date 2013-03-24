@@ -60,7 +60,7 @@ class WT_Gedcom_Tag {
 		'SPFX', 'SSN', 'STAE', 'STAT', 'STAT:DATE', 'SUBM', 'SUBN', 'SURN', 'TEMP',
 		'TEXT', 'TIME', 'TITL', 'TITL:FONE', 'TITL:ROMN', 'TITL:_HEB', 'TRLR', 'TYPE',
 		'URL', 'VERS', 'WIFE', 'WILL', 'WWW', '_ADOP_CHIL', '_ADOP_GCHI', '_ADOP_GCH1',
-		'_ADOP_GCH2', '_ADOP_HSIB', '_ADOP_SIBL', '_ADPF', '_ADPM', '_AKA', '_AKAN',
+		'_ADOP_GCH2', '_ADOP_HSIB', '_ADOP_SIBL', '_ADPF', '_ADPM', '_AKA', '_AKAN', '_ASSO',
 		'_BAPM_CHIL', '_BAPM_GCHI', '_BAPM_GCH1', '_BAPM_GCH2', '_BAPM_HSIB', '_BAPM_SIBL',
 		'_BIBL', '_BIRT_CHIL', '_BIRT_GCHI', '_BIRT_GCH1', '_BIRT_GCH2', '_BIRT_HSIB', '_BIRT_SIBL',
 		'_BRTM', '_BRTM:DATE', '_BRTM:PLAC', '_BURI_CHIL',
@@ -123,7 +123,7 @@ class WT_Gedcom_Tag {
 		case 'ANCE': return /* I18N: gedcom tag ANCE */ WT_I18N::translate('Generations of ancestors');
 		case 'ANCI': return /* I18N: gedcom tag ANCI */ WT_I18N::translate('Ancestors interest');
 		case 'ANUL': return /* I18N: gedcom tag ANUL */ WT_I18N::translate('Annulment');
-		case 'ASSO': return /* I18N: gedcom tag ASSO */ WT_I18N::translate('Associate');
+		case 'ASSO': return /* I18N: gedcom tag ASSO */ WT_I18N::translate('Associate'); /* see also _ASSO */
 		case 'AUTH': return /* I18N: gedcom tag AUTH */ WT_I18N::translate('Author');
 		case 'BAPL': return /* I18N: gedcom tag BAPL */ WT_I18N::translate('LDS baptism');
 		case 'BAPL:DATE': return WT_I18N::translate('Date of LDS Baptism');
@@ -395,6 +395,7 @@ class WT_Gedcom_Tag {
 			case 'F': return /* I18N: gedcom tag _AKA */ WT_I18N::translate_c('FEMALE', 'Also known as');
 			default:  return /* I18N: gedcom tag _AKA */ WT_I18N::translate('Also known as');
 			}
+		case '_ASSO': return /* I18N: gedcom tag _ASSO */ WT_I18N::translate('Associate'); /* see also ASSO */
 		case '_BAPM_CHIL':
 			switch ($sex) {
 			case 'M': return WT_I18N::translate('Baptism of a son');

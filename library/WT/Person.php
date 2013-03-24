@@ -1182,7 +1182,7 @@ class WT_Person extends WT_GedcomRecord {
 								break;
 							}
 							// Create a new event
-							$this->indifacts[]=new WT_Event($tmp_rec."\n2 ASSO @".$parent->getXref()."@", $parent, 0);
+							$this->indifacts[]=new WT_Event($tmp_rec."\n2 _ASSO @".$parent->getXref()."@", $parent, 0);
 						}
 					}
 				}
@@ -1211,7 +1211,7 @@ class WT_Person extends WT_GedcomRecord {
 								}
 								// Add links to both spouses
 								foreach ($sfamily->getSpouses() as $spouse) {
-									$tmp_rec .= "\n2 ASSO @" . $spouse->getXref() . '@';
+									$tmp_rec .= "\n2 _ASSO @" . $spouse->getXref() . '@';
 								}
 								// Create a new event
 								$tmp = new WT_Event($tmp_rec, $sfamily, 0);
@@ -1285,7 +1285,7 @@ class WT_Person extends WT_GedcomRecord {
 							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_BIRT.')/', '1 _$1'.$option, $sEvent->getGedcomRecord()); // Full
 							$tmp_rec="1 _".$sEvent->getTag().$option."\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 						}
-						$event=new WT_Event($tmp_rec."\n2 ASSO @".$child->getXref()."@", $child, 0);
+						$event=new WT_Event($tmp_rec."\n2 _ASSO @".$child->getXref()."@", $child, 0);
 						if (!in_array($event, $this->indifacts)) {
 							$this->indifacts[]=$event;
 						}
@@ -1311,7 +1311,7 @@ class WT_Person extends WT_GedcomRecord {
 							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1'.$option, $sEvent->getGedcomRecord()); // Full
 							$tmp_rec="1 _".$sEvent->getTag().$option."\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 						}
-						$event=new WT_Event($tmp_rec."\n2 ASSO @".$child->getXref()."@", $child, 0);
+						$event=new WT_Event($tmp_rec."\n2 _ASSO @".$child->getXref()."@", $child, 0);
 						if (!in_array($event, $this->indifacts)) {
 							$this->indifacts[]=$event;
 						}
@@ -1339,7 +1339,7 @@ class WT_Person extends WT_GedcomRecord {
 							}
 							// Add links to both spouses
 							foreach ($sfamily->getSpouses() as $spouse) {
-								$tmp_rec .= "\n2 ASSO @" . $spouse->getXref() . '@';
+								$tmp_rec .= "\n2 _ASSO @" . $spouse->getXref() . '@';
 							}
 							// Create a new event
 							$tmp = new WT_Event($tmp_rec, $sfamily, 0);
@@ -1381,7 +1381,7 @@ class WT_Person extends WT_GedcomRecord {
 					$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_SPOU ', $sEvent->getGedcomRecord()); // Full
 					$tmp_rec="1 _".$sEvent->getTag()."_SPOU\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 					// Create a new event
-					$this->indifacts[]=new WT_Event($tmp_rec."\n2 ASSO @".$spouse->getXref()."@", $spouse, 0);
+					$this->indifacts[]=new WT_Event($tmp_rec."\n2 _ASSO @".$spouse->getXref()."@", $spouse, 0);
 				}
 			}
 		}
@@ -1430,43 +1430,47 @@ class WT_Person extends WT_GedcomRecord {
 	function add_asso_facts() {
 		$associates=array_merge(
 			fetch_linked_indi($this->getXref(), 'ASSO', $this->ged_id),
-			fetch_linked_fam ($this->getXref(), 'ASSO', $this->ged_id)
+			fetch_linked_indi($this->getXref(), '_ASSO', $this->ged_id),
+			fetch_linked_fam ($this->getXref(), 'ASSO', $this->ged_id),
+			fetch_linked_fam ($this->getXref(), '_ASSO', $this->ged_id)
 		);
 		foreach ($associates as $associate) {
 			foreach ($associate->getFacts() as $event) {
 				$srec = $event->getGedcomRecord();
-				$arec = get_sub_record(2, '2 ASSO @'.$this->getXref().'@', $srec);
-				if ($arec) {
-					// Extract the important details from the fact
-					$factrec='1 '.$event->getTag();
-					if (preg_match('/\n2 DATE .*/', $srec, $match)) {
-						$factrec.=$match[0];
-					}
-					if (preg_match('/\n2 PLAC .*/', $srec, $match)) {
-						$factrec.=$match[0];
-					}
-					if ($associate instanceof WT_Family) {
-						foreach ($associate->getSpouses() as $spouse) {
-							$factrec.="\n2 ASSO @".$spouse->getXref().'@';
+				foreach (array('ASSO', '_ASSO') as $asso_tag) {
+					$arec = get_sub_record(2, '2 ' . $asso_tag . ' @' . $this->getXref() . '@', $srec);
+					if ($arec) {
+						// Extract the important details from the fact
+						$factrec='1 '.$event->getTag();
+						if (preg_match('/\n2 DATE .*/', $srec, $match)) {
+							$factrec.=$match[0];
 						}
-					} else {
-						$factrec.="\n2 ASSO @".$associate->getXref().'@';
-						// CHR/BAPM events are commonly used.  Generate the reverse relationship
-						if ($event->getTag()=='CHR' || $event->getTag()=='BAPM') {
-							switch ($associate->getSex()) {
-							case 'M':
-								$factrec.="\n3 RELA godson";
-								break;
-							case 'F':
-								$factrec.="\n3 RELA goddaughter";
-								break;
-							case 'U':
-								$factrec.="\n3 RELA godchild";
-								break;
+						if (preg_match('/\n2 PLAC .*/', $srec, $match)) {
+							$factrec.=$match[0];
+						}
+						if ($associate instanceof WT_Family) {
+							foreach ($associate->getSpouses() as $spouse) {
+								$factrec.="\n2 $asso_tag @".$spouse->getXref().'@';
+							}
+						} else {
+							$factrec.="\n2 $asso_tag @".$associate->getXref().'@';
+							// CHR/BAPM events are commonly used.  Generate the reverse relationship
+							if ($event->getTag()=='CHR' || $event->getTag()=='BAPM') {
+								switch ($associate->getSex()) {
+								case 'M':
+									$factrec.="\n3 RELA godson";
+									break;
+								case 'F':
+									$factrec.="\n3 RELA goddaughter";
+									break;
+								case 'U':
+									$factrec.="\n3 RELA godchild";
+									break;
+								}
 							}
 						}
+						$this->indifacts[] = new WT_Event($factrec, $associate, 0);
 					}
-					$this->indifacts[] = new WT_Event($factrec, $associate, 0);
 				}
 			}
 		}

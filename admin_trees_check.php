@@ -97,27 +97,28 @@ foreach (array_keys($records) as $key) {
 
 // LOOK FOR BROKEN LINKS
 $XREF_LINKS=array(
-	'NOTE'=>'NOTE',
-	'SOUR'=>'SOUR',
-	'REPO'=>'REPO',
-	'OBJE'=>'OBJE',
-	'FAMC'=>'FAM',
-	'FAMS'=>'FAM',
+	'NOTE'          => 'NOTE',
+	'SOUR'          => 'SOUR',
+	'REPO'          => 'REPO',
+	'OBJE'          => 'OBJE',
+	'FAMC'          => 'FAM',
+	'FAMS'          => 'FAM',
 	//'ADOP'=>'FAM', // Need to handle this case specially.  We may have both ADOP and FAMC links to the same FAM, but only store one.
-	'HUSB'=>'INDI',
-	'WIFE'=>'INDI',
-	'CHIL'=>'INDI',
-	'ASSO'=>'INDI',
-	'ALIA'=>'INDI',
-	'AUTH'=>'INDI', // A webtrees extension
-	'ANCI'=>'SUBM',
-	'DESI'=>'SUBM',
-	'_WT_OBJE_SORT'=>'OBJE'
+	'HUSB'          => 'INDI',
+	'WIFE'          => 'INDI',
+	'CHIL'          => 'INDI',
+	'ASSO'          => 'INDI',
+	'_ASSO'         => 'INDI', // A webtrees extension
+	'ALIA'          => 'INDI',
+	'AUTH'          => 'INDI', // A webtrees extension
+	'ANCI'          => 'SUBM',
+	'DESI'          => 'SUBM',
+	'_WT_OBJE_SORT' => 'OBJE'
 );
 
 $RECORD_LINKS=array(
-	'INDI'=>array('NOTE', 'OBJE', 'SOUR', 'ASSO', 'FAMC', 'FAMS', 'ALIA', '_WT_OBJE_SORT'),
-	'FAM' =>array('NOTE', 'OBJE', 'SOUR', 'ASSO', 'HUSB', 'WIFE', 'CHIL'),
+	'INDI'=>array('NOTE', 'OBJE', 'SOUR', 'ASSO', '_ASSO', 'FAMC', 'FAMS', 'ALIA', '_WT_OBJE_SORT'),
+	'FAM' =>array('NOTE', 'OBJE', 'SOUR', 'ASSO', '_ASSO', 'HUSB', 'WIFE', 'CHIL'),
 	'SOUR'=>array('NOTE', 'OBJE', 'REPO', 'AUTH'),
 	'REPO'=>array('NOTE'),
 	'OBJE'=>array('NOTE'), // The spec also allows SOUR, but we treat this as a warning
