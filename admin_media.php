@@ -69,7 +69,7 @@ if ($delete_file) {
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The file %s could not be deleted.', $tmp));
 		}
-		$tmp = WT_DATA_DIR . $media_folder . 'thumb/' . $delete_file;
+		$tmp = WT_DATA_DIR . $media_folder . 'thumbs/' . $delete_file;
 		if (file_exists($tmp)) {
 			if (@unlink($tmp)) {
 				WT_FlashMessages::addMessage(WT_I18N::translate('The file %s was deleted.', $tmp));
