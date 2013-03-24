@@ -448,8 +448,11 @@ function reformat_record_import($rec) {
 		case 'RESTRICTION':
 			$tag='RESN';
 		case 'RESN':
-			// RESN values are lower case (confidential, privacy, locked)
+			// RESN values are lower case (confidential, privacy, locked, none)
 			$data=strtolower($data);
+			if ($data=='invisible') {
+				$data='confidential'; // From old versions of Legacy.
+			}
 			break;
 		case 'RETIREMENT':
 			$tag='RETI';
