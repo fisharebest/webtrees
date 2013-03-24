@@ -79,7 +79,7 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 		$html='<option value=""></option>';
 	}
 	foreach ($values as $key=>$value) {
-		if ((string)$key===$selected) { // Beware PHP array keys are cast to integers!  Cast them back
+		if ((string)$key===(string)$selected) { // Because "0" != ""
 			$html.='<option value="'.htmlspecialchars($key).'" selected="selected" dir="auto">'.htmlspecialchars($value).'</option>';
 		} else {
 			$html.='<option value="'.htmlspecialchars($key).'" dir="auto">'.htmlspecialchars($value).'</option>';
