@@ -65,40 +65,33 @@ html[dir='rtl'] .makeMenu ul ul {top:0;left:auto;right:100px;}
 html[dir='rtl'] .makeMenu li ul li {text-align:right;}
 
 /* set up container for menu */
-#topMenu {border-bottom:1px solid;clear:both;float:left;width:100%;margin:10px 0 0 0;padding:0 0 10px 0;margin-top:18px;position:relative;}
-#topMenu ul {	margin:0;padding:0;list-style:none;float:right;position:relative;right:50%;}
-#topMenu ul li {margin:0;padding:0;	width:auto;padding-left:5px;padding-right:5px;border:1px solid #999;float:left;position:relative;left:50%;}
-#topMenu ul li a {display:block;font-size:14px;text-align:center;padding:5px 5px 5px 5px;background-color:#fff;}
-/* Subnavigation section */
-#topMenu ul ul {display:none;position:absolute;top:27px;left:0;right:auto;border:1px solid #999;white-space:nowrap;background:#fff;z-index:600;}
-/* sub-sub-menus */
-#topMenu ul ul ul {z-index:2100;top:0;left:100px;}
-#topMenu ul ul li {border:0;left:auto;margin:0;padding-left:0;	padding-right:0;clear:left;float:left;width:100%;}
-#topMenu ul ul li a {	font-size:12px;padding:5px 5px 5px 5px;text-align:left;}
-/* header hover */
-#topMenu ul li:hover {color:#555;}
-#topMenu ul li:hover > ul {display:block;text-align:left;position:absolute;margin:0;	padding:0;}
-#topMenu ul li:hover li {float:none;}
-#topMenu ul li:hover li a {background-color:#fff;border-bottom:1px solid #fff;}
-#topMenu ul li li a:hover {background-color:#fff;width:auto;}
+#topMenu {position:relative;float:left;width:100%;margin-top:18px;border-bottom:1px solid;}
+#topMenu ul {position:relative;float:right;right:50%;list-style:none;}
+#topMenu ul li {position:relative;float:left;left:50%;clear:right;width:auto;padding: 0 5px 0 5px; border:1px solid #999;}
+#topMenu ul li a {display:block;font-size:14px;text-align:center;padding:5px;background-color:#fff;}
 
+/* Subnavigation section */	
+#topMenu ul li ul {position:absolute;top:27px;left:0;right:auto;display:none;background:#fff;white-space:nowrap;border:1px solid #999;z-index:600;}
+
+/* sub-sub-menus */
+#topMenu ul ul ul {top:0;left:96px;border:1px solid #999;z-index:2100;} 
+#topMenu ul ul li {float:left;width:100%;border:0;left:auto;margin:0;padding:0;clear:left;}
+#topMenu ul ul li a {padding:5px;text-align:left;font-size:12px;}
+
+/* header hover */
+#topMenu ul li:hover > ul {position:absolute;margin:0;display:block;text-align:left;padding:0;}
+#topMenu ul #menu-chart li:hover ul, #topMenu ul #menu-obje li:hover ul{position:absolute;display:block;margin-left:100%;left:0px;}
+	
 /* --- RTL --- */
-html[dir='rtl'] #topMenu {float:left;width:100%;}
-html[dir='rtl'] #topMenu ul li {float:left;}
-html[dir='rtl'] #topMenu ul ul li a {text-align:left;}
-html[dir='rtl'] #topMenu ul ul li {text-align:left;}
-html[dir='rtl'] #topMenu ul li:hover ul {text-align:left;}
-html[dir='rtl'] #topMenu ul li ul li {text-align:left;}
-html[dir='rtl'] #topMenu ul li {float:right;}
-html[dir='rtl'] #topMenu ul ul li a {text-align:right;}
-html[dir='rtl'] #topMenu ul ul li {text-align:right;}
-html[dir='rtl'] #topMenu ul li:hover ul {text-align:right;}
-html[dir='rtl'] #topMenu ul li ul li {text-align:right;}
-html[dir='rtl'] #topMenu ul ul {right:0;left:auto;}
-html[dir='rtl'] #topMenu ul ul ul {left:auto;right:100px;}
+html[dir='rtl'] #topMenu {float:right;}
 html[dir='rtl'] #topMenu ul {right:auto;float:left;left:50%;}
-html[dir='rtl'] #topMenu ul li {float:right;right:50%;}
+html[dir='rtl'] #topMenu ul li {float:right;clear:left;right:50%;}
+html[dir='rtl'] #topMenu ul ul {right:0;left:auto;}
 html[dir='rtl'] #topMenu ul ul li {right:auto;/*resets the right:50% on the parent li */ clear:right;float:right;width:100%;}
+html[dir='rtl'] #topMenu ul ul li a {text-align:right;}
+html[dir='rtl'] #topMenu ul li:hover > ul {text-align:right;}
+html[dir='rtl'] #topMenu ul #menu-chart li:hover ul {margin-right:100%;right:0px;left:auto;}
+html[dir='rtl'] #topMenu ul #menu-obje li:hover ul {margin-right:100%;right:0px;left:auto;}
 
 #flash-messages {clear:both;}
 
