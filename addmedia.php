@@ -153,8 +153,11 @@ case 'create': // Save the information from the “showcreateform” action
 	}
 
 	// User-specified filename?
-	$filename = $text[0];
+	if ($tag[0]=='FILE' && $text[0]) {
+		$filename = $text[0];
+	}
 	// Use the name of the uploaded file?
+	// If no filename specified, use the name of the uploaded file?
 	if (!$filename && !empty($_FILES['mediafile']['name'])) {
 		$filename = $_FILES['mediafile']['name'];
 	}
@@ -220,8 +223,13 @@ case 'create': // Save the information from the “showcreateform” action
 	$media_id = get_new_xref('OBJE');
 	if ($media_id) {
 		$newged = '0 @' . $media_id . "@ OBJE\n";
-		// Put the filename where handle_updates() will find it
-		$text[0] = $folderName . $fileName;
+		if ($tag[0]=='FILE') {
+			// The admin has an edit field to change the file name
+			$text[0] = $folderName . $fileName;
+		} else {
+			// Users keep the original filename
+			$newged .= '1 FILE ' . $folderName . $fileName;
+		}
 
 		$newged  = handle_updates($newged);
 
