@@ -696,34 +696,37 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			break;
 		case 'patrilineal':
 			// Father gives his surname to his children
-			if ($nextaction=='addchildaction' && WT_Family::getInstance($famid)->getHusband()) {
-				//$father_surname=WT_Family::getInstance($famid)->getHusband()->getAllNames()[0]['surn']; // PHP5.4 only
-				$tmp=WT_Family::getInstance($famid)->getHusband()->getAllNames();
-				$father_surname=$tmp[0]['surn'];
-				$name_fields['SURN']=$father_surname;
-				$name_fields['NAME']='/'.$father_surname.'/';
-			} elseif ($nextaction=='addnewparentaction' && $famtag=='HUSB' && WT_Person::getInstance($pid)) {
-				//$child_surname=WT_Person::getInstance($pid)->getAllNames()[0]['surn']; // PHP5.4 only
-				$tmp=WT_Person::getInstance($pid)->getAllNames();
-				$child_surname=$tmp[0]['surn'];
-				$name_fields['SURN']=$child_surname;
-				$name_fields['NAME']='/'.$child_surname.'/';
+			switch ($nextaction) {
+			case 'addchildaction':
+				if (preg_match('/\/(.*)\//', $father_name, $match)) {
+					$name_fields['SURN']=$match[1];
+					$name_fields['NAME']='/'.$match[1].'/';
+				}
+				break;
+			case 'addnewparentaction':
+				if ($famtag=='HUSB' && preg_match('/\/(.*)\//', $indi_name, $match)) {
+					$name_fields['SURN']=$match[1];
+					$name_fields['NAME']='/'.$match[1].'/';
+				}
+				break;
 			}
 			break;
 		case 'matrilineal':
 			// Mother gives her surname to her children
-			if ($nextaction=='addchildaction' && WT_Family::getInstance($famid)->getWife()) {
-				//$mother_surname=WT_Family::getInstance($famid)->getWife()->getAllNames()[0]['surn']; // PHP5.4 only
-				$tmp=WT_Family::getInstance($famid)->getWife()->getAllNames();
-				$mother_surname=$tmp[0]['surn'];
-				$name_fields['SURN']=$mother_surname;
-				$name_fields['NAME']='/'.$mother_surname.'/';
-			} elseif ($nextaction=='addnewparentaction' && $famtag=='WIFE' && WT_Person::getInstance($pid)) {
-				//$child_surname=WT_Person::getInstance($pid)->getAllNames()[0]['surn']; // PHP5.4 only
-				$tmp=WT_Person::getInstance($pid)->getAllNames();
-				$child_surname=$tmp[0]['surn'];
-				$name_fields['SURN']=$child_surname;
-				$name_fields['NAME']='/'.$child_surname.'/';
+			// Father gives his surname to his children
+			switch ($nextaction) {
+			case 'addchildaction':
+				if (preg_match('/\/(.*)\//', $mother_name, $match)) {
+					$name_fields['SURN']=$match[1];
+					$name_fields['NAME']='/'.$match[1].'/';
+				}
+				break;
+			case 'addnewparentaction':
+				if ($famtag=='WIFE' && preg_match('/\/(.*)\//', $indi_name, $match)) {
+					$name_fields['SURN']=$match[1];
+					$name_fields['NAME']='/'.$match[1].'/';
+				}
+				break;
 			}
 			break;
 		case 'paternal':
