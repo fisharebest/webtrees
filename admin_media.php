@@ -275,7 +275,7 @@ case 'load_json':
 
 			$conf        = WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($unused_file));
 			$delete_link =
-				'<p><a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'admin_media.php\',{delete:\'' . $unused_file . '\',media_folder:\'' . $media_folder . '\',},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a></p>';
+				'<p><a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'admin_media.php\',{delete:\'' .addslashes($media_path . $unused_file) . '\',media_folder:\'' . addslashes($media_folder) . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a></p>';
 
 			$aaData[] = array(
 				media_file_info($media_folder, $media_path, $unused_file) . $delete_link,
