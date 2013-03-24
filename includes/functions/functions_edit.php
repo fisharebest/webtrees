@@ -698,33 +698,36 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			// Father gives his surname to his children
 			switch ($nextaction) {
 			case 'addchildaction':
-				if (preg_match('/\/(.*)\//', $father_name, $match)) {
-					$name_fields['SURN']=$match[1];
-					$name_fields['NAME']='/'.$match[1].'/';
+				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $father_name, $match)) {
+					$name_fields['SURN']=$match[2];
+					$name_fields['SPFX']=trim($match[1]);
+					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
 				}
 				break;
 			case 'addnewparentaction':
-				if ($famtag=='HUSB' && preg_match('/\/(.*)\//', $indi_name, $match)) {
-					$name_fields['SURN']=$match[1];
-					$name_fields['NAME']='/'.$match[1].'/';
+				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
+					$name_fields['SURN']=$match[2];
+					$name_fields['SPFX']=trim($match[1]);
+					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
 				}
 				break;
 			}
 			break;
 		case 'matrilineal':
 			// Mother gives her surname to her children
-			// Father gives his surname to his children
 			switch ($nextaction) {
 			case 'addchildaction':
-				if (preg_match('/\/(.*)\//', $mother_name, $match)) {
-					$name_fields['SURN']=$match[1];
-					$name_fields['NAME']='/'.$match[1].'/';
+				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $mother, $match)) {
+					$name_fields['SURN']=$match[2];
+					$name_fields['SPFX']=trim($match[1]);
+					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
 				}
 				break;
 			case 'addnewparentaction':
-				if ($famtag=='WIFE' && preg_match('/\/(.*)\//', $indi_name, $match)) {
-					$name_fields['SURN']=$match[1];
-					$name_fields['NAME']='/'.$match[1].'/';
+				if ($famtag=='WIFE' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
+					$name_fields['SURN']=$match[2];
+					$name_fields['SPFX']=trim($match[1]);
+					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
 				}
 				break;
 			}
@@ -745,7 +748,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 				}
 				break;
 			case 'addchildaction':
-				if (preg_match('/\/((?:[a-z]{2,3}\s+)*)(.*)\//i', $father_name, $match)) {
+				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $father_name, $match)) {
 					$name_fields['SURN']=$match[2];
 					if ($SURNAME_TRADITION=='polish' && $sextag=='F') {
 						$match[2]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
@@ -757,7 +760,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 				}
 				break;
 			case 'addnewparentaction':
-				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3}\s+)*)(.*)\//i', $indi_name, $match)) {
+				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
 					if ($SURNAME_TRADITION=='polish' && $sextag=='M') {
 						$match[2]=preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $match[2]);
 					} else if ($SURNAME_TRADITION=='lithuanian') {
@@ -768,7 +771,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 					$name_fields['SURN']=$match[2];
 					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
 				}
-				if ($famtag=='WIFE' && preg_match('/\/((?:[a-z]{2,3}\s+)*)(.*)\//i', $indi_name, $match)) {
+				if ($famtag=='WIFE' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
 					if ($SURNAME_TRADITION=='lithuanian') {
 						$match[2]=preg_replace(array('/as$/', '/is$/', '/ys$/', '/us$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[2]);
 						$match[2]=preg_replace(array('/aitė$/', '/ytė$/', '/iūtė$/', '/utė$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[2]);
