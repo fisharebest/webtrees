@@ -241,8 +241,8 @@ case 'load_json':
 		// Filter unused files
 		if ($sSearch) {
 			// Lambda functions can't be used until PHP5.3
-			//$unused_files = array_filter($unused_files, function($x) use ($sSearch) {return strpos($x, $sSearch)!==0;});
-			function substr_search($x) {global $sSearch; return strpos($x, $sSearch)!==0;}
+			//$unused_files = array_filter($unused_files, function($x) use ($sSearch) {return strpos($x, $sSearch)!==false;});
+			function substr_search($x) {global $sSearch; return strpos($x, $sSearch)!==false;}
 			$unused_files = array_filter($unused_files, 'substr_search');
 		}
 		$iTotalDisplayRecords = count($unused_files);
