@@ -342,6 +342,14 @@ class WT_Tree {
 			"0 HEAD\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n"
 		));
 
+		// Set the initial blocks
+		WT_DB::prepare(
+			"INSERT INTO `##block` (gedcom_id, location, block_order, module_name)".
+			" SELECT ?, location, block_order, module_name".
+			" FROM `##block`".
+			" WHERE gedcom_id=-1"
+		)->execute(array($tree_id));
+
 		// Update the list of trees - to include the new configuration settings
 		self::$trees=null;
 	}
