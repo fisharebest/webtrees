@@ -147,14 +147,13 @@ function convert_media_path($rec, $path) {
 		if (!preg_match('~^(https?|ftp):~', $old_file_name)) { // Don’t modify external links
 			// Adding a windows path?  Convert the slashes.
 			if (strpos($path, '\\')!==false) {
-				$new_file_name=preg_replace('~/+~', '\\', $new_file_name);
-			}
-			if (strpos($old_file_name, $path)===0) {
-				// Path already present
-				$new_file_name=$old_file_name;
+				$new_file_name=preg_replace('~/+~', '\\', $old_file_name);
 			} else {
-				// Add path
-				$new_file_name=$path . $old_file_name;
+				$new_file_name=$old_file_name;
+			}
+			// Path not present - add it.
+			if (strpos($new_file_name, $path)===false) {
+				$new_file_name=$path . $new_file_name;
 			}
 			$rec=str_replace("\n1 FILE ".$old_file_name, "\n1 FILE ".$new_file_name, $rec);
 		}

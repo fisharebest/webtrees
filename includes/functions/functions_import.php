@@ -562,11 +562,14 @@ function reformat_record_import($rec) {
 			while (strpos($data, '  ')) {
 				$data=str_replace('  ', ' ', $data);
 			}
-			// no break - just fall through
+			$newrec.=($newrec ? "\n" : '').$level.' '.($level=='0' && $xref ? $xref.' ' : '').$tag.($data==='' && $tag!="NOTE" ? '' : ' '.$data);
+			break;
 		case 'NOTE':
 		case 'TEXT':
 		case 'DATA':
 		case 'CONT':
+			$newrec.=($newrec ? "\n" : '').$level.' '.($level=='0' && $xref ? $xref.' ' : '').$tag.($data==='' && $tag!="NOTE" ? '' : ' '.$data);
+			break;
 		case 'FILE':
 			// Strip off the user-defined path prefix
 			if ($GEDCOM_MEDIA_PATH && strpos($data, $GEDCOM_MEDIA_PATH)===0) {
@@ -574,11 +577,8 @@ function reformat_record_import($rec) {
 			}
 			// convert backslashes in filenames to forward slashes
 			$data = preg_replace("/\\\/", "/", $data);
-			// Don't strip tabs, even though they are not valid in gedcom data.
-			if ($newrec) {
-				$newrec.="\n";
-			}
-			$newrec.=$level.' '.($level=='0' && $xref ? $xref.' ' : '').$tag.($data==='' && $tag!="NOTE" ? '' : ' '.$data);
+
+			$newrec.=($newrec ? "\n" : '').$level.' '.($level=='0' && $xref ? $xref.' ' : '').$tag.($data==='' && $tag!="NOTE" ? '' : ' '.$data);
 			break;
 		case 'CONC':
 			// Merge CONC lines, to simplify access later on.

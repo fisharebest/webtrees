@@ -40,9 +40,6 @@ $conv_path        = safe_GET('conv_path',        WT_REGEX_NOSCRIPT);
 $privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'));
 
 if ($action == 'download') {
-	$conv_path = rtrim(str_replace('\\', '/', trim($conv_path)), '/').'/'; // make sure we have a trailing slash here
-	if ($conv_path=='/') $conv_path = '';
-
 	$exportOptions = array();
 	$exportOptions['privatize'] = $privatize_export;
 	$exportOptions['toANSI'] = $convert;
