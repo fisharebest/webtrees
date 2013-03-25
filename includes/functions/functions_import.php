@@ -598,11 +598,12 @@ function reformat_record_import($rec) {
 * @param boolean $update whether or not this is an updated record that has been accepted
 */
 function import_record($gedrec, $ged_id, $update) {
-	global $USE_RIN, $GENERATE_UIDS;
+	global $USE_RIN, $GENERATE_UIDS, $keepmedia;
 
 	static $sql_insert_indi=null;
 	static $sql_insert_fam=null;
 	static $sql_insert_sour=null;
+	static $sql_insert_media=null;
 	static $sql_insert_other=null;
 	if (!$sql_insert_indi) {
 		$sql_insert_indi=WT_DB::prepare(
@@ -613,6 +614,9 @@ function import_record($gedrec, $ged_id, $update) {
 		);
 		$sql_insert_sour=WT_DB::prepare(
 			"INSERT INTO `##sources` (s_id, s_file, s_name, s_gedcom) VALUES (?,?,?,?)"
+		);
+		$sql_insert_media=WT_DB::prepare(
+			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
 		);
 		$sql_insert_other=WT_DB::prepare(
 			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?,?,?,?)"
@@ -642,56 +646,39 @@ function import_record($gedrec, $ged_id, $update) {
 		return;
 	}
 
-	$newrec=update_media($xref, $ged_id, $gedrec, $update);
-	if ($newrec!=$gedrec) {
-		$gedrec=$newrec;
-		// make sure we have the correct media id
-		if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
-			list(,$xref, $type)=$match;
-		} else {
-			echo WT_I18N::translate('Invalid GEDCOM format'), '<br><pre>', $gedrec, '</pre>';
-			return;
+	// Convert inline media into media objects
+	$gedrec = convert_inline_media($xref, $ged_id, $gedrec);
+
+	// If the user has downloaded their GEDCOM data (containing media objects) and edited it
+	// using an application which does not support (and deletes) media objects, then add them
+	// back in.
+	if ($keepmedia) {
+		$old_linked_media=
+			WT_DB::prepare("SELECT l_to FROM `##link` WHERE l_from=? AND l_file=? AND l_type='OBJE'")
+			->execute(array($gid, $ged_id))
+			->fetchOneColumn();
+		foreach ($old_linked_media as $media_id) {
+			$newrec .= '1 OBJE @' . $media_id . "@\n";
 		}
 	}
 
 	switch ($type) {
 	case 'INDI':
 		$record=new WT_Person($gedrec);
-		break;
-	case 'FAM':
-		$record=new WT_Family($gedrec);
-		break;
-	case 'SOUR':
-		$record=new WT_Source($gedrec);
-		break;
-	case 'REPO':
-		$record=new WT_Repository($gedrec);
-		break;
-	case 'OBJE':
-		$record=new WT_Media($gedrec);
-		break;
-	default:
-		$record=new WT_GedcomRecord($gedrec);
-		$type=$record->getType();
-		break;
-	}
-
-	// Update the cross-reference/index tables.
-	update_places($xref, $ged_id, $gedrec);
-	update_dates ($xref, $ged_id, $gedrec);
-	update_links ($xref, $ged_id, $gedrec);
-	update_names ($xref, $ged_id, $record);
-
-	switch ($type) {
-	case 'INDI':
 		if ($USE_RIN && preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
 			$rin=$match[1];
 		} else {
 			$rin=$xref;
 		}
 		$sql_insert_indi->execute(array($xref, $ged_id, $rin, $record->getSex(), $gedrec));
+		// Update the cross-reference/index tables.
+		update_places($xref, $ged_id, $gedrec);
+		update_dates ($xref, $ged_id, $gedrec);
+		update_links ($xref, $ged_id, $gedrec);
+		update_names ($xref, $ged_id, $record);
 		break;
 	case 'FAM':
+		$record=new WT_Family($gedrec);
 		if (preg_match('/\n1 HUSB @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {
 			$husb=$match[1];
 		} else {
@@ -711,8 +698,14 @@ function import_record($gedrec, $ged_id, $update) {
 			$nchi=max($nchi, $match[1]);
 		}
 		$sql_insert_fam->execute(array($xref, $ged_id, $husb, $wife, $gedrec, $nchi));
+		// Update the cross-reference/index tables.
+		update_places($xref, $ged_id, $gedrec);
+		update_dates ($xref, $ged_id, $gedrec);
+		update_links ($xref, $ged_id, $gedrec);
+		//update_names ($xref, $ged_id, $record); We do not store family names in wt_names
 		break;
 	case 'SOUR':
+		$record=new WT_Source($gedrec);
 		if (preg_match('/\n1 TITL (.+)/', $gedrec, $match)) {
 			$name=$match[1];
 		} elseif (preg_match('/\n1 ABBR (.+)/', $gedrec, $match)) {
@@ -721,18 +714,36 @@ function import_record($gedrec, $ged_id, $update) {
 			$name=$xref;
 		}
 		$sql_insert_sour->execute(array($xref, $ged_id, $name, $gedrec));
+		// Update the cross-reference/index tables.
+		update_links ($xref, $ged_id, $gedrec);
+		update_names ($xref, $ged_id, $record);
+		break;
+	case 'REPO':
+		$record=new WT_Repository($gedrec);
+		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
+		// Update the cross-reference/index tables.
+		update_links ($xref, $ged_id, $gedrec);
+		update_names ($xref, $ged_id, $record);
 		break;
 	case 'OBJE':
-		// OBJE records are imported by update_media function
+		$record=new WT_Media($gedrec);
+		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
+		// Update the cross-reference/index tables.
+		update_links ($xref, $ged_id, $gedrec);
+		update_names ($xref, $ged_id, $record);
 		break;
-	case 'HEAD':
-		if (!strpos($gedrec, "\n1 DATE ")) {
-			$gedrec.="\n1 DATE ".date('j M Y');
-		}
-		// no break
 	default:
+		// Custom records beginning with frequently do not contain unique
+		// identifiers - so we cannot load them.
 		if (substr($type, 0, 1)!='_') {
+			$record=new WT_GedcomRecord($gedrec);
+			if ($type=='HEAD' && !strpos($gedrec, "\n1 DATE ")) {
+				$gedrec.="\n1 DATE ".date('j M Y');
+			}
 			$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
+			// Update the cross-reference/index tables.
+			update_links ($xref, $ged_id, $gedrec);
+			update_names ($xref, $ged_id, $record);
 		}
 		break;
 	}
@@ -885,194 +896,84 @@ function update_names($xref, $ged_id, $record) {
 		$sql_insert_name_other=WT_DB::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full) VALUES (?,?,?,?,?,?)");
 	}
 
-	if ($record->getType()!='FAM' && $record->getXref()) {
-		foreach ($record->getAllNames() as $n=>$name) {
-			if ($record->getType()=='INDI') {
-				if ($name['givn']=='@P.N.') {
-					$soundex_givn_std=null;
-					$soundex_givn_dm=null;
-				} else {
-					$soundex_givn_std="'".WT_Soundex::soundex_std($name['givn'])."'";
-					$soundex_givn_dm="'".WT_Soundex::soundex_dm($name['givn'])."'";
-				}
-				if ($name['surn']=='@N.N.') {
-					$soundex_surn_std=null;
-					$soundex_surn_dm=null;
-				} else {
-					$soundex_surn_std="'".WT_Soundex::soundex_std($name['surname'])."'";
-					$soundex_surn_dm="'".WT_Soundex::soundex_dm($name['surname'])."'";
-				}
-				$sql_insert_name_indi->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'], $name['surname'], $name['surn'], $name['givn'], $soundex_givn_std, $soundex_surn_std, $soundex_givn_dm, $soundex_surn_dm));
+	foreach ($record->getAllNames() as $n=>$name) {
+		if ($record->getType()=='INDI') {
+			if ($name['givn']=='@P.N.') {
+				$soundex_givn_std=null;
+				$soundex_givn_dm=null;
 			} else {
-				$sql_insert_name_other->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN']));
+				$soundex_givn_std="'".WT_Soundex::soundex_std($name['givn'])."'";
+				$soundex_givn_dm="'".WT_Soundex::soundex_dm($name['givn'])."'";
 			}
+			if ($name['surn']=='@N.N.') {
+				$soundex_surn_std=null;
+				$soundex_surn_dm=null;
+			} else {
+				$soundex_surn_std="'".WT_Soundex::soundex_std($name['surname'])."'";
+				$soundex_surn_dm="'".WT_Soundex::soundex_dm($name['surname'])."'";
+			}
+			$sql_insert_name_indi->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'], $name['surname'], $name['surn'], $name['givn'], $soundex_givn_std, $soundex_surn_std, $soundex_givn_dm, $soundex_surn_dm));
+		} else {
+			$sql_insert_name_other->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN']));
 		}
 	}
 }
-/**
-* Insert media items into the database
-* This method is used in conjuction with the gedcom import/update routines
-* @param string $objrec The OBJE subrecord
-* @param int $objlevel The original level of this OBJE
-* @param boolean $update Whether or not this is an update or an import
-* @param string $gid The XREF ID of the record this OBJE is related to
-* @param int $count The count of OBJE records in the parent record
-*/
-function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
-	global $found_ids;
 
+// Extract inline media data, and convert to media objects
+function convert_inline_media($gid, $ged_id, $gedrec) {
+	while (preg_match('/\n1 OBJE(?:\n[2-9].+)+/', $gedrec, $match)) {
+		$gedrec = str_replace($match[0], create_media_object(1, $match[0], $ged_id), $gedrec);
+	}
+	while (preg_match('/\n2 OBJE(?:\n[3-9].+)+/', $gedrec, $match)) {
+		$gedrec = str_replace($match[0], create_media_object(2, $match[0], $ged_id), $gedrec);
+	}
+	while (preg_match('/\n3 OBJE(?:\n[4-9].+)+/', $gedrec, $match)) {
+		$gedrec = str_replace($match[0], create_media_object(3, $match[0], $ged_id), $gedrec);
+	}
+	return $gedrec;
+}
+
+// Create a new media object, from inline media data
+function create_media_object($level, $gedrec, $ged_id) {
 	static $sql_insert_media=null;
+	static $sql_select_media=null;
 	if (!$sql_insert_media) {
 		$sql_insert_media=WT_DB::prepare(
 			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
 		);
-	}
-
-	//-- check for linked OBJE records
-	//-- linked records don't need to insert to media table
-	$ct = preg_match("/OBJE @(.*)@/", $objrec, $match);
-	if ($ct>0) {
-		//-- get the old id
-		$old_m_media = $match[1];
-		$objref = $objrec;
-		$new_m_media = $old_m_media;
-		$m_media = $new_m_media;
-		if ($m_media != $old_m_media) {
-			$objref = str_replace("@$old_m_media@", "@$m_media@", $objref);
-		}
-	}
-	//-- handle embedded OBJE records
-	else {
-		$m_media = get_new_xref("OBJE", $ged_id);
-		$objref = subrecord_createobjectref($objrec, $objlevel, $m_media);
-
-		//-- restructure the record to be a linked record
-		$objrec = str_replace(" OBJE", " @" . $m_media . "@ OBJE", $objrec);
-		//-- renumber the lines
-		$objrec = preg_replace("/^(\d+) /me", "($1-$objlevel).' '", $objrec);
-
-		//-- check if another picture with the same file and title was previously imported
-		$media = new WT_Media($objrec);
-		//-- add it to the media database table
-		$imgsize = $media->getImageAttributes();
-		$sql_insert_media->execute(array($m_media, $media->extension(), $media->getMediaType(), $media->title, $media->file, $ged_id, $objrec));
-	}
-	if (isset($m_media)) {
-		return "{$objlevel} OBJE @{$m_media}@\n";
-	} else {
-		echo "Media reference error ".$objrec;
-		return "";
-	}
-}
-/**
-* import media items from record
-* @todo Decide whether or not to update the original gedcom file
-* @return string an updated record
-*/
-function update_media($gid, $ged_id, $gedrec, $update = false) {
-	global $found_ids, $zero_level_media, $keepmedia;
-
-	static $sql_insert_media=null;
-	if (!$sql_insert_media) {
-		$sql_insert_media=WT_DB::prepare(
-			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
+		$sql_select_media=WT_DB::prepare(
+			"SELECT m_id FROM `##media` WHERE m_filename=? AND m_titl=? AND m_file=?"
 		);
 	}
 
-	if (!isset ($found_ids)) {
-		$found_ids = array ();
-	}
-	if (!isset ($zero_level_media)) {
-		$zero_level_media = false;
-	}
-
-	//-- handle level 0 media OBJE seperately
-	$ct = preg_match("/^0 @(.*)@ OBJE/", $gedrec, $match);
-	if ($ct > 0) {
-		$old_m_media = $match[1];
-		$new_m_media = $old_m_media;
-		$gedrec = str_replace("@" . $old_m_media . "@", "@" . $new_m_media . "@", $gedrec);
-		$media = new WT_Media($gedrec);
-		$sql_insert_media->execute(array($new_m_media, $media->extension(), $media->getMediaType(), $media->title, $media->file, $ged_id, $gedrec));
-		return $gedrec;
-	}
-
-	if ($keepmedia) {
-		$old_linked_media=
-			WT_DB::prepare("SELECT l_to FROM `##link` WHERE l_from=? AND l_file=? AND l_type='OBJE'")
-			->execute(array($gid, $ged_id))
-			->fetchOneColumn();
-	}
-
-	//-- check to see if there are any media records
-	//-- if there aren't any media records then don't look for them just return
-	$pt = preg_match("/\d OBJE/", $gedrec, $match);
-	if ($pt > 0) {
-		//-- go through all of the lines and replace any local
-		//--- OBJE to referenced OBJEs
-		$newrec = "";
-		$lines = explode("\n", $gedrec);
-		$inobj = false;
-		$processed = false;
-		$objlevel = 0;
-		$objrec = "";
-		$count = 1;
-		foreach ($lines as $key => $line) {
-			// NOTE: Match lines that resemble n OBJE @0000@
-			// NOTE: Renumber the old ID to a new ID and save the old ID
-			// NOTE: in case there are more references to it
-			$level = $line{0};
-			//-- putting this code back since $objlevel, $objrec, etc vars will be
-			//-- reset in sections after this
-			if ($objlevel>0 && ($level<=$objlevel)) {
-				$objref = insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count);
-				$count++;
-				// NOTE: Add the new media object to the record
-				$newrec .= $objref;
-
-				// NOTE: Set the details for the next media record
-				$objlevel = 0;
-				$inobj = false;
-			}
-			if (preg_match("/^[1-9] OBJE @(.*)@/", $line, $match) != 0) {
-				// NOTE: Set object level
-				$objlevel = $level;
-				$inobj = true;
-				$objrec = $line . "\n";
-			} elseif (preg_match("/^[1-9] OBJE/", $line, $match)) {
-				// NOTE: Set the details for the next media record
-				$objlevel = $level;
-				$inobj = true;
-				$objrec = $line . "\n";
-			} else {
-				if ($inobj) {
-					$objrec .= $line . "\n";
-				} else {
-					$newrec .= $line . "\n";
-				}
-			}
-		}
-		//-- make sure the last line gets handled
-		if ($inobj) {
-			$objref = insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count);
-			$count++;
-			$newrec .= $objref;
-
-			// NOTE: Set the details for the next media record
-			$objlevel = 0;
-			$inobj = false;
-		}
+	if (preg_match('/\n\d FILE (.+)/', $gedrec, $file_match)) {
+		$file = $file_match[1];
 	} else {
-		$newrec = $gedrec;
+		$file = '';
 	}
 
-	if ($keepmedia) {
-		foreach ($old_linked_media as $media_id) {
-			$newrec .= '1 OBJE @' . $media_id . "@\n";
-		}
+	if (preg_match('/\n\d TITL (.+)/', $gedrec, $file_match)) {
+		$titl = $file_match[1];
+	} else {
+		$titl = $file;
 	}
 
-	return trim($newrec);
+	// Have we already created a media object with the same title/filename?
+	$xref = $sql_select_media->execute(array($file, $titl, $ged_id))->fetchOne();
+
+	if (!$xref) {
+		$xref = get_new_xref("OBJE", $ged_id);
+		// renumber the lines
+		$gedrec = preg_replace("/^(\d+) /me", "($1-$level).' '", $gedrec);
+		// convert to an object
+		$gedrec = str_replace("\n0 OBJE\n", '0 @' . $xref . "@ OBJE\n", $gedrec);
+		// Fix Legacy GEDCOMS
+		$gedrec = preg_replace('/\n1 FORM (.+)\n1 FILE (.+)\n1 TITL (.+)/', "\n1 FILE $2\n2 FORM $1\n2 TITL $3", $gedrec);
+		// Create new record
+		$record = new WT_Media($gedrec);
+		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
+	}
+	return "\n" . $level . ' OBJE @' . $xref . '@';
 }
 
 /**
@@ -1259,59 +1160,4 @@ function getCheckSums($uid) {
 		$checkB += $checkA & 0xFF;
 	}
 	return strtoupper(sprintf('%s%s', substr(dechex($checkA), -2), substr(dechex($checkB), -2)));
-}
-
-/**
-* parse out specific subrecords (NOTE, _PRIM, _THUM) from a given OBJE record
-*
-* @author Joseph King
-* @param string $objrec the OBJE record to retrieve the subrecords from
-* @param int $objlevel the level of the OBJE record
-* @param string $m_media that media id of the OBJE record
-* @return string containing NOTE, _PRIM, and _THUM subrecords parsed from the passed object record
-*/
-function subrecord_createobjectref($objrec, $objlevel, $m_media) {
-
-	//- level of subrecords is object record level + 1
-	$level = $objlevel + 1;
-
-	//- get and concatenate NOTE subrecords
-	$n = 1;
-	$nt = "";
-	$note = "";
-	do {
-		$nt = get_sub_record($level, $level . " NOTE", $objrec, $n);
-		if ($nt != "") {
-			$note = $note . trim($nt)."\n";
-		}
-		$n++;
-	} while ($nt != "");
-	//- get and concatenate PRIM subrecords
-	$n = 1;
-	$pm = "";
-	$prim = "";
-	do {
-		$pm = get_sub_record($level, $level . " _PRIM", $objrec, $n);
-		if ($pm != "") {
-			$prim = $prim . trim($pm)."\n";
-		}
-		$n++;
-	} while ($pm != "");
-	//- get and concatenate THUM subrecords
-	$n = 1;
-	$tm = "";
-	$thum = "";
-	do {
-		$tm = get_sub_record($level, $level . " _THUM", $objrec, $n);
-		if ($tm != "") {
-			//- call image cropping function ($tm contains thum data)
-			$thum = $thum . trim($tm)."\n";
-		}
-		$n++;
-	} while ($tm != "");
-	//- add object reference
-	$objmed = addslashes($objlevel . ' OBJE @' . $m_media . "@\n" . $note . $prim . $thum);
-
-	//- return the object media reference
-	return $objmed;
 }
