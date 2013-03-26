@@ -42,7 +42,8 @@ function helpDialog(which, mod) {
 		.load(url+' .helpcontent')
 		.dialog({
 			modal: true,
-			width: 500
+			width: 500,
+			closeText: ""
 		});
 	jQuery(".ui-widget-overlay").on("click", function () {
 		jQuery("div:ui-dialog:visible").dialog("close");
@@ -58,6 +59,7 @@ function modalDialog(url, title) {
 		.dialog({
 			modal: true,
 			width: 700,
+			closeText: "",
 			close: function(event, ui) { $(this).remove(); }
 		});
 	// Close the window when we click outside it.
@@ -74,6 +76,7 @@ function modalNotes(content, title) {
 		.dialog({
 			modal: true,
 			width: 500,
+			closeText: "",
 			close: function(event, ui) { $(this).remove(); }
 		});
 	// Close the window when we click outside it.

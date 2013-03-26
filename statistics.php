@@ -448,7 +448,8 @@ if (!$ajax) {
 				jQuery.post(form.attr('action'), form.serialize(), function(response) {
 					jQuery(response).dialog({
 						modal: true,
-						width: 964
+						width: 964,
+						closeText: ""
 					});
 					// Close the window when we click outside it.
 					jQuery(".ui-widget-overlay").on("click", function () {
