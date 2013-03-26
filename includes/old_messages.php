@@ -32,3 +32,5 @@
 exit;
 
 /* I18N: This message is deleted in webtrees-1.4.1  */ WT_I18N::translate('Enter associate GEDCOM ID.');
+/* I18N: This message is deleted in webtrees-1.4.1  */ WT_I18N::translate('External objects');
+/* I18N: This message is deleted in webtrees-1.4.1  */ WT_I18N::translate('You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br /><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM\'s FAQ list.</li></ul>');

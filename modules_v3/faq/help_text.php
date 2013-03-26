@@ -44,7 +44,7 @@ case 'add_faq_order':
 
 case 'add_faq_visibility':
 	$title=WT_I18N::translate('FAQ visibility');
-	$text=WT_I18N::translate('You can determine whether this FAQ will be visible regardless of family tree, or whether it will be visible only to the current family tree.<br /><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of family tree.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active family tree\'s FAQ list.</li></ul>', WT_GEDCOM);
+	$text=WT_I18N::translate('A FAQ item can be displayed on just one of the family trees, or on all the family trees.');
 	break;
 
 case 'delete_faq_item':
