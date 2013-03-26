@@ -709,5 +709,5 @@ if ($action=="filter") {
 		echo '</p></div>';
 	}
 }
-echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
+echo '<button onclick="window.close();">', WT_I18N::translate('close'), '</button>';
 echo "</div>"; // Close div="find-page"
