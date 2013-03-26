@@ -2,7 +2,7 @@
 // Reorder media Items using drag and drop
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -168,7 +168,11 @@ echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to
 			}
 			echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br>';
 			$event = $person->getChangeEvent();
-			echo format_fact_date($event, new WT_Person(''), false, true);
+			if (!is_null($event)) {
+				echo format_fact_date($event, new WT_Person(''), false, true);
+			} else {
+				echo format_fact_date(new WT_Event('1 CHAN', $person, 0), new WT_Person(''), false, true);
+			}
 			echo '</td></tr></table>';
 		}
 	?>
