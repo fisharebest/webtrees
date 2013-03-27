@@ -64,12 +64,12 @@ case 'AGNC':
 
 case 'ASSO':
 	$title=WT_Gedcom_Tag::getLabel('ASSO');
-	$text=WT_I18N::translate('An associate is another indivdual who was involved with this individual, such as a friend or an employer.');
+	$text=WT_I18N::translate('An associate is another individual who was involved with this individual, such as a friend or an employer.');
 	break;
 
 case '_ASSO':
 	$title=WT_Gedcom_Tag::getLabel('ASSO');
-	$text=WT_I18N::translate('An associate is another indivdual who was involved with this fact or event, such as a witness or a priest.');
+	$text=WT_I18N::translate('An associate is another individual who was involved with this fact or event, such as a witness or a priest.');
 	break;
 
 case 'CAUS':
