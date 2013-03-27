@@ -46,61 +46,54 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 				/* I18N: %s is an individual’s name */
 			WT_I18N::translate('Compact tree of %s', $this->root->getFullName())
 		);
-			$this->treeid=ancestry_array($this->rootid, 5);
 		} else {
 			$this->setPageTitle(WT_I18N::translate('Compact tree'));
 		}
+		$this->treeid=ancestry_array($this->rootid, 5);
 	}
 	
 	function sosa_person($n) {
 		global $SHOW_HIGHLIGHT_IMAGES;
 
-		$text = "";
-		$pid = $this->treeid[$n];
+		$indi=WT_Person::getInstance($this->treeid[$n]);
 
-		if ($pid) {
-			$indi=WT_Person::getInstance($pid);
+		if ($indi && $indi->canDisplayName()) {
 			$name=$indi->getFullName();
 			$addname=$indi->getAddName();
 
 			if ($this->show_thumbs && $SHOW_HIGHLIGHT_IMAGES) {
-				$birth_date=$indi->getBirthDate();
-				$death_date=$indi->getDeathDate();
-				$img_title=$name.' - '.$birth_date->Display(false).' - '.$death_date->Display(false);
-				$img_id='box-'.$pid;
-				$text=$indi->displayImage();
+				$html=$indi->displayImage();
 			}
 
-			$text .= '<a class="name1" href="'.$indi->getHtmlUrl().'">';
-			$text .= $name;
-			if ($addname) $text .= '<br>' . $addname;
-			$text .= '</a>';
-			$text .= '<br>';
+			$html .= '<a class="name1" href="'.$indi->getHtmlUrl().'">';
+			$html .= $name;
+			if ($addname) $html .= '<br>' . $addname;
+			$html .= '</a>';
+			$html .= '<br>';
 			if ($indi->canDisplayDetails()) {
-				$text.='<span class="details1">'.$indi->getLifeSpan().'</span>';
+				$html.='<div class="details1">'.$indi->getLifeSpan().'</div>';
 			}
+		} else {
+			// Empty box
+			$html = '&nbsp;';
 		}
 
-		// -- empty box
-		if (empty($text)) {
-			$text = '&nbsp;';
-		}
 		// -- box color
-		$isF="";
+		$isF='';
 		if ($n==1) {
-			if ($indi->getSex()=='F') {
-				$isF="F";
+			if ($indi && $indi->getSex()=='F') {
+				$isF='F';
 			}
 		} elseif ($n%2) {
-			$isF="F";
+			$isF='F';
 		}
+
 		// -- box size
 		if ($n==1) {
-			$text='<td class="person_box'.$isF.' person_box_template" style="text-align:center; vertical-align:top;">'.$text.'</td>';
+			return '<td class="person_box'.$isF.' person_box_template" style="text-align:center; vertical-align:top;">'.$html.'</td>';
 		} else {
-			$text='<td class="person_box'.$isF.' person_box_template" style="text-align:center; vertical-align:top;" width="15%">'.$text.'</td>';
+			return '<td class="person_box'.$isF.' person_box_template" style="text-align:center; vertical-align:top;" width="15%">'.$html.'</td>';
 		}
-		return $text;
 	}
 
 	function sosa_arrow($n, $arrow_dir) {
