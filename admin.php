@@ -1416,6 +1416,10 @@ function old_paths() {
 		WT_ROOT.'themes/webtrees/chrome.css',
 		WT_ROOT.'themes/webtrees/images/media',
 		WT_ROOT.'themes/xenea/images/media',
+		// Removed in 1.4.1
+		WT_ROOT.'js/webtrees-1.4.0.js',
+		WT_ROOT.'modules_v3/lightbox/images/image_edit.png',
+		WT_ROOT.'modules_v3/lightbox/images/image_view.png',
 	);
 }
 
