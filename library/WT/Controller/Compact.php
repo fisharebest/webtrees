@@ -63,6 +63,8 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 
 			if ($this->show_thumbs && $SHOW_HIGHLIGHT_IMAGES) {
 				$html=$indi->displayImage();
+			} else {
+				$html='';
 			}
 
 			$html .= '<a class="name1" href="'.$indi->getHtmlUrl().'">';
