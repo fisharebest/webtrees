@@ -38,7 +38,6 @@ Allow: /family.php
 Allow: /index.php
 Allow: /indilist.php
 Allow: /individual.php
-Allow: /media.php
 Allow: /mediafirewall.php
 Allow: /mediaviewer.php
 Allow: /module.php?mod=sitemap
@@ -52,3 +51,6 @@ Disallow: /
 # Disallow all other robots
 User-Agent: *
 Disallow: /
+
+# Put your sitemap here:
+#Sitemap: http://www.example.com/module.php?mod=sitemap&mod_action=generate&file=sitemap.xml
