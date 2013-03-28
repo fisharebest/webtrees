@@ -307,6 +307,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				->addInlineJavascript('
 					jQuery("#story_table").dataTable({
 						"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+						'.WT_I18N::datatablesI18N().',
 						"bAutoWidth":false,
 						"bPaginate": true,
 						"sPaginationType": "full_numbers",
@@ -383,6 +384,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
 					"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+					'.WT_I18N::datatablesI18N().',
 					"bAutoWidth":false,
 					"bPaginate": true,
 					"sPaginationType": "full_numbers",
