@@ -29,8 +29,8 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Media extends WT_GedcomRecord {
-	private $title = null;
-	private $file  = null;
+	public $title = null; // TODO: these should be private, with getTitle() and getFilename() functions
+	public $file  = null;
 
 	// Create a Media object from either raw GEDCOM data or a database row
 	public function __construct($data) {
