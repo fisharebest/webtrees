@@ -120,7 +120,9 @@ if (!empty($pid)) {
 }
 
 if (!WT_USER_CAN_EDIT || !$edit || !$ALLOW_EDIT_GEDCOM) {
-	$controller->addInlineJavascript('closePopupAndReloadParent();');
+	$controller
+		->pageHeader()
+		->addInlineJavascript('closePopupAndReloadParent();');
 	exit;
 }
 
