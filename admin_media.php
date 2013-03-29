@@ -405,7 +405,7 @@ function media_file_info($media_folder, $media_path, $file) {
 	$html = '<b>' . htmlspecialchars($file). '</b>';
 
 	$full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
-	if (file_exists($full_path)) {
+	if ($file && file_exists($full_path)) {
 		$size = @filesize($full_path);
 		if ($size!==false) {
 			$size = (int)(($size+1023)/1024); // Round up to next KB

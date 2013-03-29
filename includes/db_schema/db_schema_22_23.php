@@ -1,5 +1,5 @@
 <?php
-// Update the database schema from version 21-22
+// Update the database schema from version 22-23
 // - data update for 1.4.0 media changes
 //
 // The script should assume that it can be interrupted at

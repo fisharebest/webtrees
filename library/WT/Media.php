@@ -29,26 +29,30 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Media extends WT_GedcomRecord {
-	var $title         =null;
-	var $file          =null;
+	private $title = null;
+	private $file  = null;
 
 	// Create a Media object from either raw GEDCOM data or a database row
 	public function __construct($data) {
+		parent::__construct($data);
+
 		if (is_array($data)) {
 			// Construct from a row from the database
-			$this->title=$data['m_titl'];
 			$this->file =$data['m_filename'];
+			$this->title=$data['m_titl'];
 		} else {
 			// Construct from raw GEDCOM data
-			$this->title = get_gedcom_value('TITL', 1, $data);
-			if (empty($this->title)) {
-				$this->title = get_gedcom_value('TITL', 2, $data);
+			if (preg_match('/\n1 FILE (.+)/', $data, $match)) {
+				$this->file = $match[1];
+			} else {
+				$this->file = '';
 			}
-			$this->file = get_gedcom_value('FILE', 1, $data);
+			if (preg_match('/\n\d TITL (.+)/', $data, $match)) {
+				$this->title = $match[1];
+			} else {
+				$this->title = $this->file;
+			}
 		}
-		if (empty($this->title)) $this->title = $this->file;
-
-		parent::__construct($data);
 	}
 
 	// Implement media-specific privacy logic ...
@@ -102,8 +106,8 @@ class WT_Media extends WT_GedcomRecord {
 	public function getServerFilename($which='main') {
 		global $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH;
 
-		if ($this->isExternal()) {
-			// External image
+		if ($this->isExternal() || !$this->file) {
+			// External image, or (in the case of corrupt GEDCOM data) no image at all
 			return $this->file;
 		} elseif ($which=='main') {
 			// Main image
