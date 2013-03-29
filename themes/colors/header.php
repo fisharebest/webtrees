@@ -82,12 +82,10 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo
 	// Top row left
 	'<div id="header">',
-	'<div id="spacer"></div>',
 	'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>';
 
 	// Top row right 
 	echo 
-	'<div class="optionsMenu" >',
 	'<ul class="makeMenu">';
 
 	if (WT_USER_ID) {
@@ -127,7 +125,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 			'</form>',
 		'</li>',
 	'</ul>',
-	'</div>';
+'</div>';
 
 	// Second Row menu and palette selection
 	// Menu
@@ -146,7 +144,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 
 	// Print the menu bar
 	echo
-		'<div id="topMenu">',
+
 		'<ul id="main-menu">'; 
 		foreach ($menu_items as $menu) {
 			if ($menu) {
@@ -155,9 +153,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 		}
 	unset($menu_items, $menu);
 	echo
-		'</ul>',
-		'</div>', // <div id="topMenu">
-		'</div>'; // <div id="header">
+		'</ul>'; 
 }
 // Remove list from home when only 1 gedcom 
 $this->addInlineJavaScript(
