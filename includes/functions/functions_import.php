@@ -598,7 +598,7 @@ function reformat_record_import($rec) {
 * @param boolean $update whether or not this is an updated record that has been accepted
 */
 function import_record($gedrec, $ged_id, $update) {
-	global $USE_RIN, $GENERATE_UIDS, $keepmedia;
+	global $USE_RIN, $GENERATE_UIDS, $keep_media;
 
 	static $sql_insert_indi=null;
 	static $sql_insert_fam=null;
@@ -652,13 +652,13 @@ function import_record($gedrec, $ged_id, $update) {
 	// If the user has downloaded their GEDCOM data (containing media objects) and edited it
 	// using an application which does not support (and deletes) media objects, then add them
 	// back in.
-	if ($keepmedia) {
+	if ($keep_media) {
 		$old_linked_media=
 			WT_DB::prepare("SELECT l_to FROM `##link` WHERE l_from=? AND l_file=? AND l_type='OBJE'")
-			->execute(array($gid, $ged_id))
+			->execute(array($xref, $ged_id))
 			->fetchOneColumn();
 		foreach ($old_linked_media as $media_id) {
-			$newrec .= '1 OBJE @' . $media_id . "@\n";
+			$gedrec .= "\n1 OBJE @" . $media_id . "@";
 		}
 	}
 
