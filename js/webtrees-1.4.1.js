@@ -54,17 +54,24 @@ function helpDialog(which, mod) {
 
 // Create a modal dialog, fetching the contents from a URL
 function modalDialog(url, title) {
+	jQuery(document).ajaxComplete(function() {
+		jQuery('.ui-dialog').before('<div class="ui-widget-overlay" />');
+	});
 	dialog=jQuery('<div title="'+title+'"></div>')
 		.load(url)
 		.dialog({
-			modal: true,
+			modal: false,
 			width: 700,
 			closeText: "",
-			close: function(event, ui) { $(this).remove(); }
+			close: function(event, ui) { 
+				$(this).remove();
+				jQuery('.ui-widget-overlay').remove();
+			}
 		});
 	// Close the window when we click outside it.
 	jQuery(".ui-widget-overlay").on("click", function () {
 		jQuery("div:ui-dialog:visible").dialog("close");
+		jQuery(this).remove();	
 	});
 	return false;
 }
