@@ -97,7 +97,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_ID_PREFIX',             safe_POST('NEW_GEDCOM_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            safe_POST('NEW_GEDCOM_MEDIA_PATH'));
 	set_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS',                safe_POST_bool('NEW_GENERATE_UIDS'));
-	set_gedcom_setting(WT_GED_ID, 'HIDE_GEDCOM_ERRORS',          !safe_POST_bool('NEW_HIDE_GEDCOM_ERRORS'));
+	set_gedcom_setting(WT_GED_ID, 'HIDE_GEDCOM_ERRORS',           safe_POST_bool('NEW_HIDE_GEDCOM_ERRORS'));
 	set_gedcom_setting(WT_GED_ID, 'HIDE_LIVE_PEOPLE',             safe_POST_bool('NEW_HIDE_LIVE_PEOPLE'));
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            safe_POST('GEDCOM_MEDIA_PATH'));
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD',               str_replace(' ', '', safe_POST('NEW_INDI_FACTS_ADD')));
@@ -1095,7 +1095,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						<?php echo WT_I18N::translate('GEDCOM errors'), help_link('HIDE_GEDCOM_ERRORS'); ?>
 					</td>
 					<td>
-						<?php echo radio_buttons('NEW_HIDE_GEDCOM_ERRORS', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), !$HIDE_GEDCOM_ERRORS); /* Note: name of object is reverse of description */ ?>
+						<?php echo radio_buttons('NEW_HIDE_GEDCOM_ERRORS', array(false=>WT_I18N::translate('show'),true=>WT_I18N::translate('hide')), $HIDE_GEDCOM_ERRORS); /* Note: name of object is reverse of description */ ?>
 					</td>
 				</tr>
 				<tr>
