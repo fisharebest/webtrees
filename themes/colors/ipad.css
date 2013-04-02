@@ -3,8 +3,6 @@
 /*
  * iPad Specific style
  */
-#main-menu li a {margin:auto;padding-top:7px;width:100%;white-space:nowrap;}
-#main-menu li li a {display:block;position:relative;float:left;line-height:1.5;}
 @media only screen and (orientation:portrait){
    /* portrait styles here */
    #wrap {width:768px;}
