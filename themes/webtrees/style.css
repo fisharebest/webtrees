@@ -1064,7 +1064,7 @@ a.icon-udarrow:hover{width:20px;height:20px;background-image:url(images/udarrow2
 #edit_interface-page #GIVN,#edit_interface-page #SURN,#edit_interface-page #_MARNM{line-height:18px;margin:0 5px;width:180px;}
 #edit_interface-page input[type="text"], #edit_interface-page #NAME_display{line-height:18px;margin:0 5px;vertical-align:top;width:240px;}
 #edit_interface-page input[type="text"][id*="PAGE"], #edit_interface-page input[type="text"][id*="_UID"]{width:350px;}
-#edit_interface-page input[type="text"][id*="SOUR"], #edit_interface-page input[type="text"][id*="REPO"],#edit_interface-page input[type="text"][id*="OBJE"],#edit_interface-page input[type="text"][id*="FAMC"],#edit_interface-page input[type="text"][id*="ASSO"],#edit_interface-page input[type="text"][id^="AGE"],#edit_interface-page input[type="text"][id*="SHARED_NOTE"]{width:70px;}
+#edit_interface-page input[type="text"][id*="SOUR"], #edit_interface-page input[type="text"][id*="REPO"],#edit_interface-page input[type="text"][id*="OBJE"],#edit_interface-page input[type="text"][id*="FAMC"],#edit_interface-page input[type="text"][id*="ASSO"],#edit_interface-page input[type="text"][id^="AGE"],#edit_interface-page input[type="text"][id*="SHARED_NOTE"]{width:250px;}
 #edit_interface-page input[type="text"][id$="DATE"] {width:160px;}
 #edit_interface-page input[type="text"][id^="TIME"] {width:100px;}
 #edit_interface-page input[type="text"][id*="OBJE_FILE"] {width:200px;}
@@ -1091,7 +1091,7 @@ html[dir='rtl'] #save-cancel .cancel {float:left;}
 #edit_interface-page {margin-bottom:50px;}
 
 /* Addmedia pop-ups*/
-#addmedia-page input[type="text"]{line-height:18px;margin:0 5px;width:180px;}
+#addmedia-page input[type="text"]{line-height:18px;margin:0 5px;width:300px;}
 #addmedia-page .optionbox select {margin:0 5px;}
 #addmedia-page .optionbox p.sub{font-size:11px;margin:0 5px;}
 #addmedia-page input[type="text"][id*="PAGE"], #addmedia-page input[type="text"][id*="_UID"]{width:350px;}
