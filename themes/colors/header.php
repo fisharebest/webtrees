@@ -30,11 +30,13 @@ if (!defined('WT_WEBTREES')) {
 
 global $subColor;
 
+
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addInlineJavascript('activate_colorbox();')
+	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"50%", height:"50%"})')
 	->addInlineJavascript('
 		jQuery.extend(jQuery.colorbox.settings, {
 			title:	function(){
@@ -159,7 +161,9 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 $this->addInlineJavaScript(
 	'if (jQuery("#menu-tree ul li").length == 2) jQuery("#menu-tree ul li:last-child").remove();'
 );
+
 echo
 	$javascript,
 	WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 	'<div id="content">';
+
