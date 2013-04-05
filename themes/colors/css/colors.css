@@ -1157,26 +1157,28 @@ html[dir='rtl'] #save-cancel .cancel {float:left;}
 
 /* Styling for the jquery.colorbox gallery */
 #colorbox, #cboxOverlay, #cboxWrapper {position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
-#cboxOverlay {position:fixed; width:100%; height:100%;}
-#cboxMiddleLeft, #cboxBottomLeft {clear:left;}
-#cboxContent {position:relative; border:solid #ffffff 25px;border-bottom-width:25px;}
-#cboxLoadedContent {overflow:auto;}
-#cboxTitle {margin:0;color: #444444;font-weight: 800;left: 0;position: absolute;text-align: center;top: -22px;width: 100%;}
-#cboxLoadingOverlay, #cboxLoadingGraphic {position:absolute; top:0; left:0; width:100%; height:100%;}
-#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {cursor:pointer;font-size:14px;}
+#colorbox {border: 2px solid #ccc;}
+#cboxOverlay {position:fixed; width:100%; height:100%;background:#ccc;}
+#cboxContent{margin-top: 20px;background:#fff;border:5px solid #888;}
+#cboxLoadedContent{overflow:auto;background:#fff;margin-bottom: 30px;}
+
+#cboxTitle {position: absolute;left: 0;bottom: 4px;color: #949494;text-align:center;width: 100%;margin:10px;font-weight: 800;font-size: 14px;}
+
 .cboxPhoto {float:left; margin:auto; border:0; display:block; max-width:none;}
 .cboxIframe {width:100%; height:100%; display:block; border:0;}
-#colorbox, #cboxContent, #cboxLoadedContent {box-sizing:content-box;}
-#colorbox {border: 2px solid #ccc;border-radius: 15px;}
-#cboxContent button, #cboxContent input[type="submit"], #cboxContent input[type="reset"], #cboxContent input[type="button"], #cboxContent input[type="file"] {background:url(../jquery-ui-1.10.0/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #F8F7F6;border:1px solid #CBC7BD;color:#654B24;font-weight:700;border-radius:3px;padding: 0 6px;}
-#cboxContent button:hover, #cboxContent input:hover[type="submit"], #cboxContent input:hover[type="reset"], #cboxContent input:hover[type="button"], #cboxContent input:hover[type="file"] {background:url(../jquery-ui-1.10.0/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654B24;border:1px solid #654B24;color:#FFFFFF;font-weight:700;border-radius:3px;}
-#save-cancel .save, #save-cancel .cancel {background:url(../jquery-ui-1.10.0/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #F8F7F6;border:1px solid #CBC7BD;color:#654B24;font-weight:700;font-size:14px;}
-#save-cancel .save:hover, #save-cancel .cancel:hover {background:url(../jquery-ui-1.10.0/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654B24;border:1px solid #654B24;color:#FFFFFF;font-weight:700;border-radius:3px;}
-#cboxClose {bottom:-22px;position:absolute;right:0;width:25px;}
-html[dir='rtl'] #cboxClose{position:absolute;right:auto;left:0}
 
-/* test colorbox code */
-#cboxOverlay{background:#ccc;}
-#cboxContent{margin-top: 20px;background:#ccc;background:#fff;}
-#cboxLoadedContent{border:5px solid #ccc; background:#fff;}
-#cboxTitle {font-size: 14px;}
+#cboxPrevious{position:absolute; bottom:0; left:0; background:url(../images/controls.png) no-repeat -75px 0; width:25px; height:25px; text-indent:-9999px;margin:10px; border:0;}
+#cboxPrevious:hover{background-position:-75px -25px;}
+#cboxNext{position:absolute; bottom:0; left:27px; background:url(../images/controls.png) no-repeat -50px 0; width:25px; height:25px; text-indent:-9999px;margin:10px; border:0;}
+#cboxNext:hover{background-position:-50px -25px;}
+#cboxClose{position:absolute; bottom:0; right:0; background:url(../images/controls.png) no-repeat -25px 0; width:25px; height:25px; text-indent:-9999px;margin:10px; border:0;}
+#cboxClose:hover{background-position:-25px -25px;}
+#cboxCurrent {bottom: 4px;color: #949494;left: 58px;position: absolute;}
+#cboxSlideshow{position:absolute; bottom:4px; left:60px; background:#fff;margin:10px; border:0;cursor:pointer;font-size:14px;}
+#cboxSlideshow:before{content:" Slideshow ";}
+
+html[dir='rtl'] #cboxPrevious{right:27px;left:auto}
+html[dir='rtl'] #cboxNext{right:0;left:auto}
+html[dir='rtl'] #cboxCurrent{right:auto;left:0}
+html[dir='rtl'] #cboxClose{right:auto;left:0}
+html[dir='rtl'] #cboxSlideshow{right:60px;left:0}
