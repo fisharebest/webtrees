@@ -1160,7 +1160,7 @@ html[dir='rtl'] #save-cancel .cancel {float:left;}
 #cboxOverlay {position:fixed; width:100%; height:100%;}
 #cboxMiddleLeft, #cboxBottomLeft {clear:left;}
 #cboxContent {position:relative; border:solid #ffffff 25px;border-bottom-width:25px;}
-#cboxLoadedContent {overflow:auto;background:#fff;}
+#cboxLoadedContent {overflow:auto;}
 #cboxTitle {margin:0;color: #444444;font-weight: 800;left: 0;position: absolute;text-align: center;top: -22px;width: 100%;}
 #cboxLoadingOverlay, #cboxLoadingGraphic {position:absolute; top:0; left:0; width:100%; height:100%;}
 #cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {cursor:pointer;font-size:14px;}
@@ -1174,3 +1174,9 @@ html[dir='rtl'] #save-cancel .cancel {float:left;}
 #save-cancel .save:hover, #save-cancel .cancel:hover {background:url(../jquery-ui-1.10.0/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654B24;border:1px solid #654B24;color:#FFFFFF;font-weight:700;border-radius:3px;}
 #cboxClose {bottom:-22px;position:absolute;right:0;width:25px;}
 html[dir='rtl'] #cboxClose{position:absolute;right:auto;left:0}
+
+/* test colorbox code */
+#cboxOverlay{background:#ccc;}
+#cboxContent{margin-top: 20px;background:#ccc;background:#fff;}
+#cboxLoadedContent{border:5px solid #ccc; background:#fff;}
+#cboxTitle {font-size: 14px;}
