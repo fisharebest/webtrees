@@ -19,7 +19,7 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 // $Id$
- 
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -112,8 +112,8 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	// A function to create the marker and set up the event window
 	function createMarker(i, latlng, event, html, category, placed, index, tab, address, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
 		var contentString = '<div id="iwcontent">'+html+'<\/div>';
-		
-		// === Use flag icon (if defined) instead of regular marker icon ===
+
+		// Use flag icon (if defined) instead of regular marker icon
 		if (marker_icon) {
 			var icon_image = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/'+marker_icon,
 				new google.maps.Size(25, 15),
@@ -122,21 +122,21 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			var icon_shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/images/flag_shadow.png',
 				new google.maps.Size(35, 45),	// Shadow size
 				new google.maps.Point(0,0),		// Shadow origin
-				new google.maps.Point(1, 45)	// Shadow anchor is base of flagpole				
+				new google.maps.Point(1, 45)	// Shadow anchor is base of flagpole
 			);
 		} else {
 			var icon_image = gicons[category];
 			var icon_shadow = iconShadow;
 		}
-			
-		// === Decide if marker point is Regular (latlng) or StreetView (sv_point) derived ===
+
+		// Decide if marker point is Regular (latlng) or StreetView (sv_point) derived
 		if (sv_point == '(0, 0)' || sv_point == '(null, null)') {
 			placer = latlng;
 		} else {
 			placer = sv_point;
 		}
 
-		// === Define the marker ===
+		// Define the marker
 		var marker = new google.maps.Marker({
 			position: placer,
 			icon: icon_image,
@@ -146,7 +146,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			zIndex: Math.round(latlng.lat()*-100000)<<5
 		});
 
-		// === Store the tab, category and event info as marker properties ===
+		// Store the tab, category and event info as marker properties
 		marker.myindex = index;
 		marker.mytab = tab;
 		marker.myplaced = placed;
@@ -185,7 +185,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 		var sv_zoom = [];
 			sv_zoom[i] = parseFloat(gmarkers[i].sv_zoom);
 
-		// == Open infowindow when marker is clicked ==
+		// Open infowindow when marker is clicked
 		google.maps.event.addListener(marker, 'click', function() {
 			infowindow.close();
 			infowindow.setContent(contentString);
@@ -205,10 +205,9 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				}
 			};
 
-			// === Use jquery for info window tabs ===		
-     		google.maps.event.addListener(infowindow, 'domready', function(){ 
-     		
-         		//jQuery code here     
+			// Use jquery for info window tabs
+     		google.maps.event.addListener(infowindow, 'domready', function(){
+         		//jQuery code here
 				jQuery('#EV').click(function() {
 					document.tabLayerEV = eval('document.getElementById("EV")');
 					document.tabLayerEV.style.background = '#ffffff';
@@ -222,7 +221,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			//		document.tabLayerPH = eval('document.getElementById("PH")');
 			//		document.tabLayerPH.style.background = '#cccccc';
 			//		document.tabLayerPH.style.paddingBottom = '0px';
-			// =====================================================================
+			// =================================================================
 					document.panelLayer1 = eval('document.getElementById("pane1")');
 					document.panelLayer1.style.display = 'block';
 					<?php if ($STREETVIEW) { ?>
@@ -232,10 +231,10 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			// Please leave (windmillway) ==========================================
 			//		document.panelLayer3 = eval('document.getElementById("pane3")');
 			//		document.panelLayer3.style.display = 'none';
-			// =====================================================================
+			// =================================================================
 				});
 
-				jQuery('#SV').click(function() {			
+				jQuery('#SV').click(function() {
 					document.tabLayerEV = eval('document.getElementById("EV")');
 					document.tabLayerEV.style.background = '#cccccc';
 					document.tabLayerEV.style.paddingBottom = '0px';
@@ -243,25 +242,25 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					document.tabLayerSV = eval('document.getElementById("SV")');
 					document.tabLayerSV.style.background = '#ffffff';
 					document.tabLayerSV.style.paddingBottom = '1px';
-					<?php } ?>			
+					<?php } ?>
 			// Please leave (windmillway) ==========================================
 			//		document.tabLayerPH = eval('document.getElementById("PH")');
 			//		document.tabLayerPH.style.background = '#cccccc';
 			//		document.tabLayerPH.style.paddingBottom = '0px';
-			// =====================================================================				
+			// =================================================================
 					document.panelLayer1 = eval('document.getElementById("pane1")');
 					document.panelLayer1.style.display = 'none';
 					<?php if ($STREETVIEW) { ?>
 					document.panelLayer2 = eval('document.getElementById("pane2")');
 					document.panelLayer2.style.display = 'block';
-					<?php } ?>		
+					<?php } ?>
 			// Please leave (windmillway) ==========================================
 			//		document.panelLayer3 = eval('document.getElementById("pane3")');
 			//		document.panelLayer3.style.display = "none";
-			// =====================================================================
+			// =================================================================
 					var panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
 					setTimeout(function() { panorama.setVisible(true); }, 100);
-      				setTimeout(function() { panorama.setVisible(true); }, 500);				
+      				setTimeout(function() { panorama.setVisible(true); }, 500);
 				});
 
 				jQuery('#PH').click(function() {
@@ -289,58 +288,56 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			//		document.panelLayer3.style.display = 'block';
 			// =================================================================
 				});
-			
-		  	}); 
-			
+		  	});
 		});
 	}
-	
-	// == shows all markers of a particular category, and ensures the checkbox is checked ==
+
+	// shows all markers of a particular category, and ensures the checkbox is checked
 	function show(category) {
 		for (var i=0; i<gmarkers.length; i++) {
 			if (gmarkers[i].mycategory == category) {
 				gmarkers[i].setVisible(true);
 			}
 		}
-		// == close any info window for clarity
+		// close any info window for clarity
 		infowindow.close();
 	}
 
-	// == hides all markers of a particular category, and ensures the checkbox is cleared ==
+	// hides all markers of a particular category, and ensures the checkbox is cleared
 	function hide(category) {
 		for (var i=0; i<gmarkers.length; i++) {
 			if (gmarkers[i].mycategory == category) {
 				gmarkers[i].setVisible(false);
 			}
 		}
-		// == close the info window, in case its open on a marker that we just hid
+		// close the info window, in case its open on a marker that we just hid
 		infowindow.close();
 	}
 
-	// == a checkbox has been clicked ==
+	// a checkbox has been clicked
 	function boxclick(box,category) {
 		if (box.checked) {
 			show(category);
 		} else {
 			hide(category);
 		}
-		// == rebuild the side bar ==
+		// rebuild the side bar
 		makeSidebar();
 		loadMap();
 	}
 
-	// == Opens Marker infowindow when corresponding Sidebar item is clicked ==
+	// Opens Marker infowindow when corresponding Sidebar item is clicked
 	function myclick(i, index, tab) {
 		infowindow.close();
 		google.maps.event.trigger(gmarkers[i], 'click');
 	}
 
-	// == rebuild sidebar (hidden item) when any marker's infowindow is closed ==
+	// rebuild sidebar (hidden item) when any marker's infowindow is closed
 	google.maps.event.addListener(infowindow, 'closeclick', function() {
 		makeSidebar();
 	});
 
-	// == rebuilds the sidebar (hidden item) to match the markers currently displayed ==
+	// rebuilds the sidebar (hidden item) to match the markers currently displayed
 	function makeSidebar(x) {
 		var html = '';
 		//var tab = gmarkers.mytab;
@@ -364,7 +361,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 		x=null;
 	}
 
-	// Home control ====================================================================
+	// Home control
 	// returns the user to the original map position ... loadMap() function
 	// This constructor takes the control DIV as an argument.
 	function HomeControl(controlDiv, map) {
@@ -409,14 +406,14 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			center: map_center,
 			mapTypeId: google.maps.MapTypeId.<?php echo $GOOGLEMAP_MAP_TYPE; ?>,					// ROADMAP, SATELLITE, HYBRID, TERRAIN
 			mapTypeControlOptions: {
-				style: google.maps.MapTypeControlStyle.DROPDOWN_MENU // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
+				style: google.maps.MapTypeControlStyle.DROPDOWN_MENU	// DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
 			},
 			navigationControl: true,
 			navigationControlOptions: {
-			position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-			style: google.maps.NavigationControlStyle.SMALL   // ANDROID, DEFAULT, SMALL, ZOOM_PAN
+			position: google.maps.ControlPosition.TOP_RIGHT,	// BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
+			style: google.maps.NavigationControlStyle.SMALL		// ANDROID, DEFAULT, SMALL, ZOOM_PAN
 			},
-			streetViewControl: false,									// Show Pegman or not
+			streetViewControl: false,							// Show Pegman or not
 			scrollwheel: false
 		};
 		map = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
@@ -424,7 +421,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 		// Close any infowindow when map is clicked
 		google.maps.event.addListener(map, 'click', function() {
 			infowindow.close();
-			// == rebuild sidebar (hidden item) ==
+			// rebuild sidebar (hidden item)
 			makeSidebar();
 		});
 
@@ -434,12 +431,12 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 		homeControlDiv.index = 1;
 		map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
 
-		// Add the markers to the map from the $gmarks array =======
+		// Add the markers to the map from the $gmarks array
 		var locations = [
 			<?php
 			foreach($gmarks as $gmark) {
 
-				// create thumbnail images of highlighted images ===
+				// create thumbnail images of highlighted images
 				if (!empty($pid)) {
 					$this_person = WT_Person::getInstance($pid);
 				}
@@ -449,7 +446,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					$person = null;
 				}
 
-				// The current indi ================================
+				// The current indi
 				if (!empty($this_person)) {
 					$class = 'pedigree_image';
 					if (in_array($gmark['fact'], array('CENS', 'BIRT', 'BAPM', 'CHR', '_MILI', 'OCCU', 'RESI', 'DEAT', 'CREM', 'BURI', 'RETI'))) {
@@ -515,7 +512,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 			<?php } ?>
 		];
-		// Fix IE bug reporting one too many in locations.length statement =====
+		// Fix IE bug reporting one too many in locations.length statement
 		if (ie==1) {
 			locations.length=locations.length - 1;
 		}
@@ -565,13 +562,13 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			var marker_icon = locations[i][20];						// Marker icon image (flag)
 			var sv_point = new google.maps.LatLng(sv_lati,sv_long); // StreetView Latitude and Longitide
 
-			// === Employ of image tab function using an information image =====
+			// Employ of image tab function using an information image
 			if (media == null || media == '') {
 				media = WT_STATIC_URL+WT_MODULES_DIR+'googlemap/images/facts/v3_image_info.png';
 			} else {
 				media = media;
 			}
-			
+
 			if (document.getElementById('golfbox').checked == false) {
 				var category = 'theatre';							// Category for future pedigree map use etc
 				var addr2 = locations[i][10];						// printable address for marker title
@@ -587,20 +584,19 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			var divhead = '<h4 id="iwhead" >'+address+'<\/h4>';
 
 			for (var n = 0; n < locations.length; n++) {
-				//if (i==npo[n][i]) {
 				if (i==npo[n][0] || i==npo[n][1] || i==npo[n][2] || i==npo[n][3] || i==npo[n][4] || i==npo[n][5] || i==npo[n][6] || i==npo[n][7] || i==npo[n][8] || i==npo[n][9] || i==npo[n][10] || i==npo[n][11] || i==npo[n][12] || i==npo[n][13] || i==npo[n][14] || i==npo[n][15] || i==npo[n][16] || i==npo[n][17] || i==npo[n][18] || i==npo[n][19] || i==npo[n][20] || i==npo[n][21] || i==npo[n][22] || i==npo[n][23] || i==npo[n][24] || i==npo[n][25]) {
 					for (var x=0; x<numtabs[n]; x++) {
 						tabcontid=npo[n][x];
-						// If a fact with a persons name and extra info---
+						// If a fact with a persons name and extra info
 						if (locations[tabcontid][4] && locations[tabcontid][5]) {
 							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][12]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br>'+locations[tabcontid][4]+'<br><b>'+locations[tabcontid][5]+'<\/b><br>'+locations[tabcontid][3]+'<br><\/p><\/td><\/tr><\/table>' ];
-						// or if a fact with a persons name ---
+						// or if a fact with a persons name
 						} else if (locations[tabcontid][5]) {
 							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][12]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br><b>'+locations[tabcontid][5]+'<\/b><br>'+locations[tabcontid][3]+'<br><\/p><\/td><\/tr><\/table>' ];
-						// or if a fact with extra info ---
+						// or if a fact with extra info
 						} else if (locations[tabcontid][4]) {
 							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][13]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br>'+locations[tabcontid][4]+'<br>'+locations[tabcontid][3]+'<br><\/p><\/td><\/tr><\/table>' ];
-						// or just a simple fact ---
+						// or just a simple fact
 						} else {
 							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][13]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br>'+locations[tabcontid][3]+'<br><\/p><\/td><\/tr><\/table>' ];
 						}
@@ -610,87 +606,81 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			var multitabs = [
 			'<div class="infowindow">',
 				'<div id = "gmtabs">',
+					'<ul class="tabs" >',
+						'<li><a href="#event" id="EV"><?php echo WT_I18N::translate('Events'); ?><\/a><\/li>',
+						<?php if ($STREETVIEW) { ?>
+						'<li><a href="#sview" id="SV"><?php echo WT_I18N::translate('Google Street View™'); ?><\/a><\/li>',
+						<?php } ?>
 
-						'<ul class="tabs" >',
-							'<li><a href="#event" id="EV"><?php echo WT_I18N::translate('Events'); ?><\/a><\/li>',
-							<?php if ($STREETVIEW) { ?>
-							'<li><a href="#sview" id="SV"><?php echo WT_I18N::translate('Google Street View™'); ?><\/a><\/li>',
-							<?php } ?>
-							
-						// === To be used later === Do not delete ==============
-						//	'<li><a href="#image" id="PH">Image<\/a><\/li>',
-						//	'<li><a href="#" id="SP">Aerial<\/a><\/li>',
-						// =====================================================
-					
-						'<\/ul>',
+					// To be used later === Do not delete
+					//	'<li><a href="#image" id="PH">Image<\/a><\/li>',
+					//	'<li><a href="#" id="SP">Aerial<\/a><\/li>',
 
-						'<div class="panes">',
-							'<div id = "pane1">',
-								divhead,
-								event_tab,
-							'<\/div>',
-							<?php if ($STREETVIEW) { ?>
-							'<div id = "pane2">',
-								divhead,
-								'<div id="pano"><\/div>',
-							'<\/div>',
-							<?php } ?>
-							
-						// === To be used later === Do not delete ==============
-						//	'<div id = "pane3">',
-						//		divhead,
-						//		'<div id = "pane3_text">',
-						//			'<img style="margin-left: -10px; margin-top: 1px;" src="'+media+'" height= "216px" width= "298px">',
-						//		'<\/div>',
-						//	'<\/div>',
-						//	'<div id = "pane4">',
-						//		divhead,
-						//		'<div id = "pane4_text">',
-						//			'<br>',
-						//			'<br> Spare Tab Content',
-						//			'<br>',
-						//		'<\/div>',
-						//	'<\/div>',
-						// =====================================================
-					
+					'<\/ul>',
+
+					'<div class="panes">',
+						'<div id = "pane1">',
+							divhead,
+							event_tab,
 						'<\/div>',
+						<?php if ($STREETVIEW) { ?>
+						'<div id = "pane2">',
+							divhead,
+							'<div id="pano"><\/div>',
+						'<\/div>',
+						<?php } ?>
+
+					// To be used later === Do not delete
+					//	'<div id = "pane3">',
+					//		divhead,
+					//		'<div id = "pane3_text">',
+					//			'<img style="margin-left: -10px; margin-top: 1px;" src="'+media+'" height= "216px" width= "298px">',
+					//		'<\/div>',
+					//	'<\/div>',
+					//	'<div id = "pane4">',
+					//		divhead,
+					//		'<div id = "pane4_text">',
+					//			'<br>',
+					//			'<br> Spare Tab Content',
+					//			'<br>',
+					//		'<\/div>',
+					//	'<\/div>',
+
+					'<\/div>',
 				'<\/div>',
 			'<\/div>'
 			].join('');
 
-			// create the marker ===============================================
+			// create the marker
 			var html = multitabs;
 			var zoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM; ?>;
 			var marker = createMarker(i, point, event, html, category, placed, index, tab, addr2, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon);
 
-			// if streetview coordinates are available, use them for marker, ===
-			// else use the place coordinates  =========
+			// if streetview coordinates are available, use them for marker,
+			// else use the place coordinates
 			if (sv_point && sv_point != "(0, 0)") {
 				var myLatLng = sv_point;
 			} else {
 				var myLatLng = point;
 			}
-			
-			// Correct zoom level when only one marker is present ==============
+
+			// Correct zoom level when only one marker is present
 			if (i < 1) {
 				bounds.extend(myLatLng);
 				map.setZoom(zoomLevel);
 				map.setCenter(myLatLng);
-			} else {				
+			} else {
 				bounds.extend(myLatLng);
 				map.fitBounds(bounds);
-				// Correct zoom level when multiple markers have the same coordinates ==
-				// This code commented out to reolve bug #1022362 "google maps won't zoom in occasionally"
-//				var listener1 = google.maps.event.addListener(map, "idle", function() { 
-//  					if (map.getZoom() > zoomLevel) {
-//  						map.setZoom(zoomLevel);
-//  					}
-// 					google.maps.event.removeListener(listener1); 
-//				}); 
-			}	
-		
-		}  // end loop through location markers
-		
-	}	// end loadMap()
-	
+				// Correct zoom level when multiple markers have the same coordinates
+				var listener1 = google.maps.event.addListenerOnce(map, "idle", function() {
+					if (map.getZoom() > zoomLevel) {
+  						map.setZoom(zoomLevel);
+					}
+ 					google.maps.event.removeListener(listener1);
+				});
+			}
+		} // end loop through location markers
+	} // end loadMap()
+
 </script>
