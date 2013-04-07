@@ -543,9 +543,9 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 #cboxPrevious:hover{background-position:-75px -25px;}
 #cboxNext{position:absolute; bottom:0; left:27px; background:url(images/controls.png) no-repeat -50px 0; width:25px; height:25px; text-indent:-9999px;margin:10px; border:0;}
 #cboxNext:hover{background-position:-50px -25px;}
-#cboxSlideshow{position:absolute; bottom:5px; left:57px; margin:10px; border:0; background:none; font-size:14px;}
+#cboxSlideshow{position:absolute; bottom:5px; left:57px; margin:10px; border:0; background:none; font-size:14px;font-weight:400;}
 #cboxSlideshow:hover{color:red;background:#fff;}
-#cboxClose{position:absolute; bottom:0; right:0; background:url(../images/controls.png) no-repeat -25px 0; width:25px; height:25px; text-indent:-9999px;margin:10px; border:0;}
+#cboxClose{position:absolute; bottom:0; right:0; background:url(images/controls.png) no-repeat -25px 0; width:25px; height:25px; text-indent:-9999px;margin:10px; border:0;}
 #cboxClose:hover{background-position:-25px -25px;}
 #cboxCurrent {bottom: 4px;color: #949494;left: 58px;position: absolute;}
 
