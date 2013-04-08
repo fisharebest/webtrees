@@ -268,7 +268,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						</tr>
 						<tr>
 							<th><?php echo WT_I18N::translate('Google Street View™'); ?></th>
-							<td><?php echo radio_buttons('NEW_GM_USE_STREETVIEW', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_module_setting('googlemap', 'GM_USE_STREETVIEW')); ?></td>
+							<td><?php echo radio_buttons('NEW_GM_USE_STREETVIEW', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_module_setting('googlemap', 'GM_USE_STREETVIEW', '0')); ?></td>
 						</tr>
 						<tr>
 							<th><?php echo WT_I18N::translate('Size of map (in pixels)'); ?></th>
@@ -392,7 +392,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					<table class="gm_edit_config">
 						<tr>
 							<th><?php echo WT_I18N::translate('Use Google Maps™ for the place hierarchy'); ?></th>
-							<td><?php echo edit_field_yes_no('NEW_GM_PLACE_HIERARCHY', get_module_setting('googlemap', 'GM_PLACE_HIERARCHY')); ?></td>
+							<td><?php echo edit_field_yes_no('NEW_GM_PLACE_HIERARCHY', get_module_setting('googlemap', 'GM_PLACE_HIERARCHY', '0')); ?></td>
 						</tr>
 						<tr>
 							<th><?php echo WT_I18N::translate('Size of map (in pixels)'); ?></th>
