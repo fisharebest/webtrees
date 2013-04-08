@@ -133,7 +133,8 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
 			break;
-		case 'IBMPC':   // IBMPC and MS_DOS could be anything.  Mostly it means CP850.
+		case 'IBMPC':   // IBMPC, IBM WINDOWS and MS-DOS could be anything.  Mostly it means CP850.
+		case 'IBM WINDOWS':
 		case 'MS-DOS':
 		case 'CP437':
 		case 'CP850':
