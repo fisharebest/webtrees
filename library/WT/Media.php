@@ -343,12 +343,12 @@ class WT_Media extends WT_GedcomRecord {
 	public function getHtmlUrlDirect($which='main', $download=false) {
 		// “cb” is “cache buster”, so clients will make new request if anything significant about the user or the file changes
 		// The extension is there so that image viewers (e.g. colorbox) can do something sensible
-		$thumbstr = ($which=='thumb') ? '&thumb=1' : '';
+		$thumbstr = ($which=='thumb') ? '&amp;thumb=1' : '';
 		$downloadstr = ($download) ? '&dl=1' : '';
 		return
 			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr .
-			'&ged=' . rawurlencode(get_gedcom_from_id($this->ged_id)) .
-			'&cb=' . $this->getEtag($which);
+			'&amp;ged=' . rawurlencode(get_gedcom_from_id($this->ged_id)) .
+			'&amp;cb=' . $this->getEtag($which);
 	}
 
 	// What file extension is used by this file?
@@ -414,7 +414,7 @@ class WT_Media extends WT_GedcomRecord {
 				' src="'   . $this->getHtmlUrlDirect('thumb') . '"' .
 				' alt="'   . strip_tags($this->getFullName()) . '"' .
 				' title="' . strip_tags($this->getFullName()) . '"' .
-				$imgsize[3] . // height="yyy" width="xxx"
+				' '. $imgsize[3] . // height="yyy" width="xxx"
 				'>';
 		}
 

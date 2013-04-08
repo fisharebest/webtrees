@@ -79,13 +79,13 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			if ($EXPAND_RELATIVES_EVENTS) {
 				echo ' checked="checked"';
 			}
-			echo 'onclick="jQuery(\'tr.row_rela\').toggle();"><label for="checkbox_rela_facts">', WT_I18N::translate('Events of close relatives'), '</label>';
+			echo ' onclick="jQuery(\'tr.row_rela\').toggle();"><label for="checkbox_rela_facts">', WT_I18N::translate('Events of close relatives'), '</label>';
 			if (file_exists(WT_Site::preference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
 				echo ' <input id="checkbox_histo" type="checkbox"';
 				if ($EXPAND_HISTO_EVENTS) {
 					echo ' checked="checked"';
 				}
-				echo 'onclick="jQuery(\'tr.row_histo\').toggle();"><label for="checkbox_histo">', WT_I18N::translate('Historical facts'), '</label>';
+				echo ' onclick="jQuery(\'tr.row_histo\').toggle();"><label for="checkbox_histo">', WT_I18N::translate('Historical facts'), '</label>';
 			}
 			echo '</td></tr>';
 		}

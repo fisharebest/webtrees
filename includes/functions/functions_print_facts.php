@@ -553,10 +553,10 @@ function print_media_links($factrec, $level, $pid='') {
 		if ($media) {
 			if ($media->canDisplayDetails()) {
 				if ($objectNum > 0) echo '<br class="media-separator" style="clear:both;">';
-				echo '<div id="media-display"><div id="media-display-image">';
+				echo '<div class="media-display"><div class="media-display-image">';
 				echo $media->displayImage();
 				echo '</div>'; // close div "media-display-image"
-				echo '<div id="media-display-title">';
+				echo '<div class="media-display-title">';
 				if ($SEARCH_SPIDER) {
 					echo $media->getFullName();
 				} else {

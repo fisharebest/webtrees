@@ -313,7 +313,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		ob_start();
 		?>
-		<table class="facts_table"><tr><td colspan="2" class="descriptionbox rela">
+		<table class="facts_table"><tr><td class="descriptionbox rela">
 		<input id="checkbox_elder" type="checkbox" onclick="jQuery('div.elderdate').toggle();" <?php if ($SHOW_AGE_DIFF) echo "checked=\"checked\""; ?>>
 		<label for="checkbox_elder"><?php echo WT_I18N::translate('Show date differences'); ?></label>
 		</td></tr></table>

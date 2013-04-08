@@ -162,7 +162,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 	// Begin to Layout the Album Media Rows
 	if ($numm>0 || $kind==5) {
 		if ($kind!=5) {
-			echo '<table cellpadding="0" border="0" width="100%" class="facts_table"><tr>';
+			echo '<table width="100%" class="facts_table"><tr>';
 			echo '<td width="100" align="center" class="descriptionbox" style="vertical-align:middle;">';
 			echo '<b>', $tt, '</b>';
 			echo '</td>';
@@ -231,7 +231,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		// Compare Items count in Database versus Item count in GEDCOM
 		if ($kind==5 && $ct+$ctf!=$numm) {
 			// If any items are left in $current_objes list for this individual, put them into $kind 5 (“Not in DB”) row
-			echo '<table cellpadding="0" border="0" width="100%" class="facts_table"><tr>';
+			echo '<table width="100%" class="facts_table"><tr>';
 			echo '<td width="100" align="center" class="descriptionbox" style="vertical-align:middle;">';
 			echo '<b>', $tt, '</b>';
 			echo '</td>';
