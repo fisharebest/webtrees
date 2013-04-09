@@ -139,22 +139,6 @@ class WT_Menu {
 		}
 	}
 
-	// Get the menu as a dropdown form element
-	function getMenuAsDropdown() {
-		if (!$this->link && !$this->submenus) {
-			return '';
-		}
-		if ($this->submenus) {
-			$options='<option value="'.$this->link.'">'.$this->label.'</option>';
-			foreach ($this->submenus as $submenu) {
-				$options.=$submenu->getMenuAsDropdown();
-			}
-			return '<select onchange="document.location=this.value;">'.$options.'</select>';
-		} else {
-			return '<option value="'.$this->link.'">'.$this->label.'</option>';
-		}
-	}
-
 	function getMenu() {
 		global $menucount, $TEXT_DIRECTION, $WT_IMAGES;
 
