@@ -1719,6 +1719,12 @@ min-height:40px;
 .gedcom_stats_block table td td {vertical-align:middle;}
 .gedcom_stats_block td .stats_value {text-align:center;}
 
+/* ============= Theme select block ============ */
+.theme_form ul {margin:-10px auto;-webkit-padding-start:0;width:90%;overflow:hidden;}
+.theme_form li {list-style:none;visibility:hidden;}
+.theme_form li ul li {float:left;padding:10px;visibility:visible;}
+html[dir='rtl'] .theme_form li ul li  {float:right;}
+
 /* ======= Favourites block ========== */
 .user_favorites_block .person_box, .gedcom_favorites_block .person_box {margin:5px 0;}
 .add_fav_head {font-weight:900;margin:5px 0;}
