@@ -1885,7 +1885,7 @@ a.icon-udarrow{width:20px;height:20px;background-image:url(images/udarrow2.png);
 #edit_interface-page #changefam span{margin:0;}
 #edit_interface-page #changefam td{padding:5px; white-space:normal;}
 #edit_interface-page #changefam td.child{text-align:center;}
-#save-cancel{position:fixed;bottom: 0;background-color:#d1d9ef;width:98%;border:solid #81a9cb 1px;margin:0;}
+#save-cancel{position:fixed;bottom: 0;width:98%;border:solid #555 1px;margin:0;}
 #save-cancel input{padding:2px 8px;}
 #save-cancel .save {float:left;margin:5px;}
 #save-cancel .cancel {float:right;margin:5px;}
