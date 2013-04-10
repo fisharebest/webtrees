@@ -2,7 +2,7 @@
 // Base controller for all chart pages
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -33,8 +33,14 @@ class WT_Controller_Chart extends WT_Controller_Page {
 	public function __construct() {
 		parent::__construct();
 
-		$this->rootid=safe_GET_xref('rootid');
-		$this->root=WT_Person::getInstance($this->rootid);
+		$this->rootid = safe_GET_xref('rootid');
+		if ($this->rootid) {
+			$this->root = WT_Person::getInstance($this->rootid);
+		} else {
+			// Missing rootid parameter?  Do something.
+			$this->root   = $this->getSignificantIndividual();
+			$this->rootid = $this->root->getXref();
+		}
 		
 		if (!$this->root || !$this->root->canDisplayName()) {
 			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
