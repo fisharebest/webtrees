@@ -419,12 +419,15 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			foreach ($stories as $story) {
 				$indi=WT_Person::getInstance($story->xref);
 				$story_title = get_block_setting($story->block_id, 'title');
-				if ($indi) {
-					if ($indi->canDisplayDetails()) {
-						echo '<tr><td><a href="'.$indi->getHtmlUrl().'#stories">'.$story_title.'</a></td><td><a href="'.$indi->getHtmlUrl().'#stories">'.$indi->getFullName().'</a></td></tr>';
+				$languages=get_block_setting($story->block_id, 'languages');
+				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
+					if ($indi) {
+						if ($indi->canDisplayDetails()) {
+							echo '<tr><td><a href="'.$indi->getHtmlUrl().'#stories">'.$story_title.'</a></td><td><a href="'.$indi->getHtmlUrl().'#stories">'.$indi->getFullName().'</a></td></tr>';
+						}
+					} else {
+						echo '<tr><td>', $story_title, '</td><td class="error">', $story->xref, '</td></tr>';
 					}
-				} else {
-					echo '<tr><td>', $story_title, '</td><td class="error">', $story->xref, '</td></tr>';
 				}
 			}
 			echo '</tbody></table>';
