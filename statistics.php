@@ -37,8 +37,14 @@ if (!$ajax) {
 	$controller=new WT_Controller_Page();
 	$controller->setPageTitle(WT_I18N::translate('Statistics'))
 		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-		->addInlineJavascript('jQuery("#stats-tabs").tabs({ spinner: "<i class=\"icon-loading-small\"></i>", cache: true });')
-		->addInlineJavascript('jQuery("#stats-tabs").css("visibility", "visible");')
+		->addInlineJavascript('
+			jQuery("#stats-tabs").css("visibility", "visible");
+			jQuery("#stats-tabs").tabs({
+				beforeLoad: function() {jQuery("#loading-indicator").addClass("loading-image");},
+				load: function() {jQuery("#loading-indicator").removeClass("loading-image");},
+				cache: true
+			});
+		')		
 		->pageHeader();
 
 	echo '<div id="stats-details"><h2>', WT_I18N::translate('Statistics'), '</h2>',
@@ -53,6 +59,7 @@ if (!$ajax) {
 			'<li><a href="statistics.php?ged=', WT_GEDURL, '&amp;ajax=1&amp;tab=3">',
 			'<span id="stats-own">', WT_I18N::translate('Own charts'), '</span></a></li>',
 		'</ul>',
+		'<div id="loading-indicator" style="margin:auto;width:100%;"></div>',
 		'</div>', // stats-tabs
 		'</div>', // stats-details
 	'<br><br>';
@@ -60,7 +67,8 @@ if (!$ajax) {
 	$controller=new WT_Controller_Ajax();
 	$controller
 		->pageHeader()
-		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+		->addInlineJavascript('jQuery("#loading-indicator").removeClass("loading-image");');
 	$stats = new WT_Stats($GEDCOM);
 	if ($tab==0) {
 		echo '<fieldset>
