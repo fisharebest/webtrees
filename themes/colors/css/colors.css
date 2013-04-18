@@ -782,7 +782,8 @@ span.link_text{display:none;}
 .ui-accordion .ui-accordion-header a{padding:2px;}
 .ui-helper-reset{line-height:1.5;}
 .ui-tabs .ui-tabs-panel{padding:1em 0;}
-.ui-tabs{padding:0;}
+.ui-tabs, .ui-tabs .ui-tabs-nav li a {padding:0;}
+.ui-tabs .ui-tabs-nav li a div {padding:.5em 1em;}
 .ui-state-active,.ui-widget-content .ui-state-active{border:0 solid #999;color:#000;font-weight:400;outline:none;}
 .ui-state-highlight a{color:red;}
 .ui-widget-header{border:1px solid #fff;font-weight:400;}

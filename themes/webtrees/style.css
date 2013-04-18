@@ -759,7 +759,8 @@ html[dir='rtl'] dd .editlink, html[dir='rtl'] dd .deletelink {float:left;}
 #media-display-title {float:left;font-style:italic;margin:10px;}
 
 /* ========= jquery-ui.custom.css changes ============ */
-.ui-tabs {padding:0;}
+.ui-tabs, .ui-tabs .ui-tabs-nav li a {padding:0;}
+.ui-tabs .ui-tabs-nav li a div {padding:.5em 1em;}
 .ui-tabs .ui-tabs-panel {padding:1em 0;}
 .ui-accordion .ui-accordion-content {margin-top: 1px;overflow:visible;padding:0 5px;position:relative;}
 .ui-accordion .ui-accordion-header {text-align:center;margin-top:0;}

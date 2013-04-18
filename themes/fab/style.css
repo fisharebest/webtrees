@@ -1324,6 +1324,8 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 .ui-tabs-nav li.ui-tabs-selected  {background:#f8f8f8;}
 .ui-tabs-nav li.ui-tabs-selected a  {font-weight:600;color:black;}
 .ui-tabs-nav li.ui-tabs-selected a:hover  {font-weight:600;color:black;}
+.ui-tabs, .ui-tabs .ui-tabs-nav li a {padding:0;}
+.ui-tabs .ui-tabs-nav li a div {padding:.5em 1em;}
 .ui-tabs .ui-tabs-panel {padding:1em 0;}
 .ui-state-active, .ui-widget-content .ui-state-active {border:1px solid darkGray;background:#ccc;font-weight:normal;color:black;outline:none;}
 .ui-accordion .ui-accordion-header .ui-icon {position:absolute;left:0.5em;top:50%;margin-top:-8px;}

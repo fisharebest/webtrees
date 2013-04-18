@@ -1838,17 +1838,18 @@ html[dir='rtl'] dd .editlink, html[dir='rtl'] dd .deletelink {float:left;}
 .ui-state-active .ui-icon {background-image:url(jquery-ui-1.10.0/images/ui-icons_222222_256x240.png);}
 .ui-state-default .ui-icon {background-image:url(jquery-ui-1.10.0/images/ui-icons_222222_256x240.png);}
 
-
+.ui-tabs, .ui-tabs .ui-tabs-nav li a {padding:0;}
+.ui-tabs .ui-tabs-nav li a div {padding:.5em 1em;}
 .ui-tabs .ui-tabs-nav {padding:.3em .3em 0 .3em;border-color:#888888;}
 .ui-tabs .ui-tabs-nav li {font-size:1em;bottom:0;margin:0 0.15em 0 0.1em;border-color:#888888;background:#eff8f8;}
 .ui-tabs .ui-tabs-nav li a {color:#555555;}
 .ui-tabs .ui-tabs-nav li:hover {color:red;background:#dfe8e8;}
 .ui-tabs .ui-tabs-nav li a:hover {color:red;}
 
-.ui-tabs-nav li.ui-tabs-selected {color:blue;padding-top:0;top:1px;bottom:0;border-color:#888888;border-bottom-width:0;background:#f8f8f8;}
-.ui-tabs-nav li.ui-tabs-selected a {font-weight:600;color:blue;}
-.ui-tabs-nav li.ui-tabs-selected a:hover {font-weight:600;color:blue;background:#f8f8f8;}
-.ui-tabs-nav li.ui-tabs-selected:hover {background:#f8f8f8;}
+.ui-tabs-nav li.ui-tabs-active {color:blue;padding-top:0;top:1px;bottom:0;border-color:#888888;border-bottom-width:0;background:#f8f8f8;}
+.ui-tabs-nav li.ui-tabs-active a {font-weight:600;color:blue;}
+.ui-tabs-nav li.ui-tabs-active a:hover {font-weight:600;color:blue;background:#f8f8f8;}
+.ui-tabs-nav li.ui-tabs-active:hover {background:#f8f8f8;}
 .ui-tabs .ui-tabs-panel {background:#f8f8f8;}
 
 .ui-accordion .ui-accordion-header .ui-icon {position:absolute;left:.5em;top:50%;margin-top:-8px;}
@@ -1859,7 +1860,7 @@ html[dir='rtl'] dd .editlink, html[dir='rtl'] dd .deletelink {float:left;}
 .ui-state-highlight a {color:red;}
 
 html[dir='rtl'] .ui-tabs {direction:rtl;}
-html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-active,
 html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
 html[dir='rtl'] .ui-dialog-title{float:right;}
