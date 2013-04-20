@@ -1839,7 +1839,7 @@ html[dir='rtl'] dd .editlink, html[dir='rtl'] dd .deletelink {float:left;}
 .ui-state-default .ui-icon {background-image:url(jquery-ui-1.10.0/images/ui-icons_222222_256x240.png);}
 
 .ui-tabs, .ui-tabs .ui-tabs-nav li a {padding:0;}
-.ui-tabs .ui-tabs-nav li a div {padding:.5em 1em;}
+.ui-tabs .ui-tabs-nav li a span {display:block; padding:.5em 1em;}
 .ui-tabs .ui-tabs-nav {padding:.3em .3em 0 .3em;border-color:#888888;}
 .ui-tabs .ui-tabs-nav li {font-size:1em;bottom:0;margin:0 0.15em 0 0.1em;border-color:#888888;background:#eff8f8;}
 .ui-tabs .ui-tabs-nav li a {color:#555555;}

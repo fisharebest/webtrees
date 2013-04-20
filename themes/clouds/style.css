@@ -2284,7 +2284,7 @@ color:red;
 }
 
 .ui-tabs, .ui-tabs .ui-tabs-nav li a {padding:0;}
-.ui-tabs .ui-tabs-nav li a div {padding:.5em 1em;}
+.ui-tabs .ui-tabs-nav li a span {display:block; padding:.5em 1em;}
 
 .ui-tabs .ui-tabs-panel {
 padding:1em 0;
