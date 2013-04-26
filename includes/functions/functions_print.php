@@ -679,9 +679,9 @@ function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
 		$html=array_unique($html);
 		echo
 			'<div class="fact_ASSO">',
-			'<a href="', $person->getHtmlUrl().'">', $person->getFullName(), '</a>',
+			implode(WT_I18N::$list_separator, $html),
 			' - ',
-			implode(WT_I18N::$list_separator, $html);
+			'<a href="', $person->getHtmlUrl().'">', $person->getFullName(), '</a>';
 			echo '</div>';
 	}
 }
