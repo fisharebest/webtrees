@@ -138,7 +138,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				$tv=new TreeView;
 				$content .= '<td>';
 
-				$content .= '<script>$("head").append(\'<link rel="stylesheet" href="'.$mod->css().'" type="text/css" />\');</script>';
+				$content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="'.$mod->css().'" type="text/css" />\');</script>';
 				$content .= '<script src="'.$mod->js().'"></script>';
 		    list($html, $js) = $tv->drawViewport($person->getXref(), 2);
 				$content .= $html.'<script>'.$js.'</script>';
