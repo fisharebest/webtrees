@@ -871,24 +871,25 @@ case 'addnewnote_assisted':
 		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
+	echo '<h3>', $controller->getPageTitle(), '&nbsp;&nbsp;';
+		// When more languages are added to the wiki, we can expand or redesign this
+		switch (WT_LOCALE) {
+		case 'fr':
+			echo wiki_help_link('/fr/Module_Assistant_Recensement');
+			break;
+		case 'en':
+		default:
+			echo wiki_help_link('/en/Census_Assistant_module');
+			break;
+		}
+	echo '</h3>';
+	
 	if (isset($_REQUEST['pid'])) $pid = $_REQUEST['pid'];
 	global $pid;
 
 	?>
-	<div class="center font11" style="width:100%;">
+	<div class="center" style="width:100%;">
 		<?php
-			// When more languages are added to the wiki, we can expand or redesign this
-			switch (WT_LOCALE) {
-			case 'fr':
-				echo wiki_help_link('fr:Module_Assistant_Recensement');
-				break;
-			case 'en':
-			default:
-				echo wiki_help_link('Census_Assistant_module');
-				break;
-			}
 		?>
 		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
 			<input type="hidden" name="action" value="addnoteaction_assisted">
