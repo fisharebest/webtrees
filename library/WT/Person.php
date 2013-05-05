@@ -988,6 +988,9 @@ class WT_Person extends WT_GedcomRecord {
 							return /* I18N: A step-family. */ WT_I18N::translate('Father’s family with an unknown individual');
 						}
 					}
+				} elseif ($family->getWife()==$fam->getWife() && $family->getHusband()==$fam->getHusband() || $family->getWife()==$fam->getHusband() && $family->getHusband()==$fam->getWife()) {
+					// Same parents - but a different family record.
+					return WT_I18N::translate('Family with parents');
 				}
 			}
 		}
