@@ -2,7 +2,7 @@
 // Class file for a person
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -157,11 +157,6 @@ class WT_Person extends WT_GedcomRecord {
 
 	// Calculate whether this person is living or dead.
 	// If not known to be dead, then assume living.
-	// NOTE: this function checks both parents and children.  Therefore we cannot
-	// use any function - e.g. getChildFamilies() - that calls canDisplayDetails(),
-	// as this will cause an infinite loop.  Also, we need to bypass privacy checks,
-	// as we are allowed to check the dates of the children.
-	// Therefore we must access the raw gedcom data directly.
 	public function isDead() {
 		global $MAX_ALIVE_AGE;
 
@@ -171,15 +166,21 @@ class WT_Person extends WT_GedcomRecord {
 		}
 
 		// If any event occured more than $MAX_ALIVE_AGE years ago, then assume the person is dead
-		preg_match_all('/\n2 DATE (.+)/', $this->_gedrec, $date_matches);
-		foreach ($date_matches[1] as $date_match) {
-			$date=new WT_Date($date_match);
-			if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*$MAX_ALIVE_AGE) {
-				return true;
+		if (preg_match_all('/\n2 DATE (.+)/', $this->_gedrec, $date_matches)) {
+			foreach ($date_matches[1] as $date_match) {
+				$date=new WT_Date($date_match);
+				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*$MAX_ALIVE_AGE) {
+					return true;
+				}
+			}
+			// The individual has one or more dated events.  All are less than $MAX_ALIVE_AGE years ago.
+			// If one of these is a birth, the person must be alive.
+			if (preg_match('/\n1 BIRT(?:\n[2-9].+)*\n2 DATE /', $this->_gedrec)) {
+				return false;
 			}
 		}
 
-		// If we found no dates then check the dates of close relatives.
+		// If we found no conclusive dates then check the dates of close relatives.
 
 		// Check parents (birth and adopted)
 		foreach ($this->getChildFamilies(WT_PRIV_HIDE) as $family) {
