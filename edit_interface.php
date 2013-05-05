@@ -79,7 +79,23 @@ $controller->addInlineJavascript('
 
 $controller->addInlineJavascript('
 	function paste_char(value) {
-		pastefield.value += value;
+		if (document.selection) {
+			// IE
+			pastefield.focus();
+			sel = document.selection.createRange();
+			sel.text = value;
+		} else if (pastefield.selectionStart || pastefield.selectionStart == 0) {
+			// Mozilla/Chrome/Safari
+			pastefield.value =
+				pastefield.value.substring(0, pastefield.selectionStart) +
+				value +
+				pastefield.value.substring(pastefield.selectionEnd, pastefield.value.length);
+			pastefield.selectionStart = pastefield.selectionEnd = pastefield.selectionStart + value.length;
+		} else {
+			// Fallback? - just append
+			pastefield.value += value;
+		}
+
 		if (pastefield.id=="NPFX" || pastefield.id=="GIVN" || pastefield.id=="SPFX" || pastefield.id=="SURN" || pastefield.id=="NSFX") {
 			updatewholename();
 		}
