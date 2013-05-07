@@ -93,8 +93,8 @@ Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
 require 'includes/functions/functions.php';
 require 'includes/functions/functions_utf-8.php';
 require 'includes/functions/functions_edit.php';
-$WT_SESSION=new Zend_Session_Namespace('WEBTREES');
 $WT_REQUEST=new Zend_Controller_Request_Http();
+$WT_SESSION=new stdClass; $WT_SESSION->locale=null; // Can't use Zend_Session until we've checked ini_set
 define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
 
 header('Content-Type: text/html; charset=UTF-8');
@@ -126,12 +126,20 @@ echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 if (empty($_POST['lang'])) {
 	echo
 		'<p>', WT_I18N::translate('Change language'), ' ',
-		edit_field_language('change_lang', WT_LOCALE, 'onChange="parent.location=\'',  WT_SCRIPT_NAME,  '?lang=\'+this.value;">'),
+		edit_field_language('change_lang', WT_LOCALE, 'onchange="window.location=\'' .  WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
 		'</p>',
 		'<h2>', WT_I18N::translate('Checking server configuration'), '</h2>';
 	$warnings=false;
 	$errors=false;
 
+	// Mandatory functions
+	$disable_functions=preg_split('/ *, */', ini_get('disable_functions'));
+	foreach (array('ini_set', 'parse_ini_file') as $function) {
+		if (in_array($function, $disable_functions)) {
+			echo '<p class="bad">', /* I18N: %s is a PHP function/module/setting */ WT_I18N::translate('%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it.', $function.'()'), '</p>';
+			$errors=true;
+		}
+	}
 	// Mandatory extensions
 	foreach (array('pcre', 'pdo', 'pdo_mysql', 'session', 'iconv') as $extension) {
 		if (!extension_loaded($extension)) {
