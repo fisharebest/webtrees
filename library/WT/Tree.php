@@ -120,11 +120,10 @@ class WT_Tree {
 	
 	// Can a user accept changes for this tree?
 	public function canAcceptChanges($user_id) {
-		// An admin/manager can always accept changes, even if editing is disabled
 		return
 			userIsAdmin($user_id) ||
 			$this->userPreference($user_id, 'canedit')=='admin' ||
-			$this->preference('ALLOW_EDIT_GEDCOM') && $this->userPreference($user_id, 'canedit')=='accept';
+			$this->userPreference($user_id, 'canedit')=='accept';
 	}
 
 	// Fetch all the trees that we have permission to access.
@@ -219,7 +218,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'ABBREVIATE_CHART_LABELS',      false);
 		set_gedcom_setting($tree_id, 'ADVANCED_NAME_FACTS',          'NICK,_AKA');
 		set_gedcom_setting($tree_id, 'ADVANCED_PLAC_FACTS',          '');
-		set_gedcom_setting($tree_id, 'ALLOW_EDIT_GEDCOM',            true);
 		set_gedcom_setting($tree_id, 'ALLOW_THEME_DROPDOWN',         true);
 		set_gedcom_setting($tree_id, 'CALENDAR_FORMAT',              'gregorian');
 		set_gedcom_setting($tree_id, 'CHART_BOX_TAGS',               '');

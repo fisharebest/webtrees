@@ -45,14 +45,6 @@ if (!array_key_exists($media_path, $media_paths)) {
 $subfolders = safe_GET('subfolders', array('include', 'exclude'), 'include');
 $action     = safe_GET('action');
 
-// Some trees may be read-only
-$allow_edit_gedcom = WT_DB::prepare(
-	"SELECT SQL_CACHE gedcom_id, setting_value" .
-	" FROM `##gedcom_setting`".
-	" WHERE setting_name='ALLOW_EDIT_GEDCOM'"
-)->execute()->fetchAssoc();
-
-
 ////////////////////////////////////////////////////////////////////////////////
 // POST callback for file deletion
 ////////////////////////////////////////////////////////////////////////////////
@@ -427,8 +419,6 @@ function media_file_info($media_folder, $media_path, $file) {
 }
 
 function media_object_info(WT_Media $media) {
-	global $allow_edit_gedcom;
-	
 	$xref   = $media->getXref();
 	$gedcom = WT_Tree::getNameFromId($media->getGedId());
 	$name   = $media->getFullName();
@@ -440,7 +430,6 @@ function media_object_info(WT_Media $media) {
 		'<br>' .
 		'<a href="' . $media->getHtmlUrl() . '">' . WT_I18N::translate('View') . '</a>';
 
-	if ($allow_edit_gedcom[$media->getGedId()]) {
 		$html .=
 			' - ' .
 			'<a onclick="window.open(\'addmedia.php?action=editmedia&pid=' . $xref . '&ged=' . $gedcom . '\', \'_blank\', edit_window_specs)" href="#">' . WT_I18N::Translate('Edit') . '</a>' .
@@ -448,31 +437,30 @@ function media_object_info(WT_Media $media) {
 			'<a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'action.php\',{action:\'delete-media\',xref:\'' . $xref . '\',ged:\'' . $gedcom . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a>' .
 			' - ';
 
-		if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-			$html .= '<a onclick="return ilinkitem(\'' . $xref . '\', \'manage\', \'' . $gedcom . '\')" href="#">' . WT_I18N::Translate('Manage links') . '</a>';
-		} else {
-			global $TEXT_DIRECTION;
-			$classSuffix = $TEXT_DIRECTION=='rtl' ? '_rtl' : '';
-	
-			$menu = new WT_Menu();
-			$menu->addLabel(WT_I18N::translate('Set link'));
-			$menu->addClass('', 'submenu');
-			$submenu = new WT_Menu(WT_I18N::translate('To Person'));
-			$submenu->addClass("submenuitem".$classSuffix);
-			$submenu->addOnClick("return ilinkitem('$xref', 'person', '$gedcom')");
-			$menu->addSubMenu($submenu);
-	
-			$submenu = new WT_Menu(WT_I18N::translate('To Family'));
-			$submenu->addClass("submenuitem".$classSuffix);
-			$submenu->addOnClick("return ilinkitem('$xref', 'family', '$gedcom')");
-			$menu->addSubMenu($submenu);
+	if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+		$html .= '<a onclick="return ilinkitem(\'' . $xref . '\', \'manage\', \'' . $gedcom . '\')" href="#">' . WT_I18N::Translate('Manage links') . '</a>';
+	} else {
+		global $TEXT_DIRECTION;
+		$classSuffix = $TEXT_DIRECTION=='rtl' ? '_rtl' : '';
 
-			$submenu = new WT_Menu(WT_I18N::translate('To Source'));
-			$submenu->addClass("submenuitem".$classSuffix);
-			$submenu->addOnClick("return ilinkitem('$xref', 'source', '$gedcom')");
-			$menu->addSubMenu($submenu);
-			$html .= '<div style="display:inline-block;">' . $menu->getMenu() . '</div>';
-		}
+		$menu = new WT_Menu();
+		$menu->addLabel(WT_I18N::translate('Set link'));
+		$menu->addClass('', 'submenu');
+		$submenu = new WT_Menu(WT_I18N::translate('To Person'));
+		$submenu->addClass("submenuitem".$classSuffix);
+		$submenu->addOnClick("return ilinkitem('$xref', 'person', '$gedcom')");
+		$menu->addSubMenu($submenu);
+
+		$submenu = new WT_Menu(WT_I18N::translate('To Family'));
+		$submenu->addClass("submenuitem".$classSuffix);
+		$submenu->addOnClick("return ilinkitem('$xref', 'family', '$gedcom')");
+		$menu->addSubMenu($submenu);
+
+		$submenu = new WT_Menu(WT_I18N::translate('To Source'));
+		$submenu->addClass("submenuitem".$classSuffix);
+		$submenu->addOnClick("return ilinkitem('$xref', 'source', '$gedcom')");
+		$menu->addSubMenu($submenu);
+		$html .= '<div style="display:inline-block;">' . $menu->getMenu() . '</div>';
 	}
 	$html .= '<br><br>';
 

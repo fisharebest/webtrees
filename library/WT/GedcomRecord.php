@@ -2,7 +2,7 @@
 // Base class for all gedcom records
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -393,11 +393,7 @@ class WT_GedcomRecord {
 	// We use the unprivatized _gedrec as we must take account
 	// of the RESN tag, even if we are not permitted to see it.
 	public function canEdit() {
-		return
-			get_gedcom_setting($this->ged_id, 'ALLOW_EDIT_GEDCOM') && (
-				WT_USER_GEDCOM_ADMIN ||
-				WT_USER_CAN_EDIT && strpos($this->_gedrec, "\n1 RESN locked")===false
-			);
+		return WT_USER_GEDCOM_ADMIN || WT_USER_CAN_EDIT && strpos($this->_gedrec, "\n1 RESN locked")===false;
 	}
 
 	// Remove private data from the raw gedcom record.

@@ -77,7 +77,7 @@ if ($action=='update' || $action=='create') {
 	}
 }
 
-if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
+if (!WT_USER_CAN_EDIT || !$disp) {
 	$controller
 		->pageHeader()
 		->addInlineJavascript('closePopupAndReloadParent();');

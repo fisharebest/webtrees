@@ -444,11 +444,6 @@ case 'ALLOW_CHANGE_GEDCOM':
 	$text=WT_I18N::translate('If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users.');
 	break;
 
-case 'ALLOW_EDIT_GEDCOM':
-	$title=WT_I18N::translate('Online editing');
-	$text=WT_I18N::translate('This option enables online editing features for this database so that users with Edit privileges may update data online.');
-	break;
-
 case 'ALLOW_THEME_DROPDOWN':
 	$title=WT_I18N::translate('Theme dropdown selector for theme changes');
 	$text=WT_I18N::translate('Gives users the option of selecting their own theme from a menu.<br /><br />Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well.');

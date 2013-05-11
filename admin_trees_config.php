@@ -72,7 +72,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS',      safe_POST_bool('NEW_ABBREVIATE_CHART_LABELS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_NAME_FACTS',          safe_POST('NEW_ADVANCED_NAME_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_PLAC_FACTS',          safe_POST('NEW_ADVANCED_PLAC_FACTS'));
-	set_gedcom_setting(WT_GED_ID, 'ALLOW_EDIT_GEDCOM',            safe_POST_bool('NEW_ALLOW_EDIT_GEDCOM'));
 	set_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN',         safe_POST_bool('NEW_ALLOW_THEME_DROPDOWN'));
 	// For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
 	// e.g. "gregorian_and_jewish"
@@ -1120,13 +1119,6 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 		<!-- EDIT -->
 		<div id="edit-options">
 			<table>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Online editing'), help_link('ALLOW_EDIT_GEDCOM'); ?>
-				</td>
-				<td><?php echo radio_buttons('NEW_ALLOW_EDIT_GEDCOM', array(false=>WT_I18N::translate('disable'),true=>WT_I18N::translate('enable')), $ALLOW_EDIT_GEDCOM); ?>
-				</td>
-			</tr>
 			<tr>
 				<th colspan="2">
 					<?php echo WT_I18N::translate('Facts for Individual records'); ?>

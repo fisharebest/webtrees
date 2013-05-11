@@ -135,7 +135,7 @@ if (!empty($pid)) {
 	$edit = true;
 }
 
-if (!WT_USER_CAN_EDIT || !$edit || !$ALLOW_EDIT_GEDCOM) {
+if (!WT_USER_CAN_EDIT || !$edit) {
 	$controller
 		->pageHeader()
 		->addInlineJavascript('closePopupAndReloadParent();');

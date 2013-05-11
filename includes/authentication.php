@@ -9,7 +9,7 @@
 // Other possible options are to use LDAP for authentication.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -158,9 +158,8 @@ function userCanAccess($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
  * check if the given user has write privileges for the given gedcom
  */
 function userCanEdit($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
-	global $ALLOW_EDIT_GEDCOM;
 
-	if ($user_id && WT_Tree::get($ged_id)->preference('ALLOW_EDIT_GEDCOM')) {
+	if ($user_id) {
 		if (userIsAdmin($user_id)) {
 			return true;
 		} else {
