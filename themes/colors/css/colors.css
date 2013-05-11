@@ -418,7 +418,9 @@ a:hover .nameZoom{font-size:14px;color:red;font-weight:700;}
 .gender_image{border:none;padding-left:3px;padding-right:3px;vertical-align:middle;}
 
 .helpheader {}
-.helptext{color:#000;}
+.helpcontent {margin-left:10px;margin-right:10px;}
+.helpcontent dt{clear:both;}
+
 .hit-counter{background:#000;color:#FFF;font-weight:700;}
 
 .image{height:150px;margin-right:15px;padding:5px;}
@@ -531,8 +533,6 @@ a.showit:hover > span{background:#444;border-bottom:2px solid #000;border-left:1
 .clearfloat{clear:both;}
 .execution_stats{padding:12px;text-align:center;}
 .gchart{border:1px solid #999;}
-.helpcontent {margin-left:10px;margin-right:10px;}
-.helpcontent dt{clear:both;}
 .iwstyle{width:360px;}
 .line1,.line2,.line3{vertical-align:bottom;}
 .line4{vertical-align:middle;}

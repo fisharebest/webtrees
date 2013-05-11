@@ -808,18 +808,17 @@ html[dir='rtl'] .icon {
 	color:blue;
 	font-weight:bold;
 }
-.helpcontent {
-	margin-left:10px;
-	margin-right:10px;
-}
-.helpcontent dt {clear:both;}
 
 .helpheader {
 }
 
-.helptext {
-	font-size:12px;
-	color:black;
+.helpcontent {
+	margin-left:10px;
+	margin-right:10px;
+}
+
+.helpcontent dt {
+	clear:both;
 }
 
 #content {

@@ -1160,9 +1160,10 @@ font-weight:700;
 text-align:left;
 }
 
-.helptext {
-color:#000;
+.helpcontent dt {
+clear:both;
 }
+
 
 .block {
 color:#000;
@@ -1665,10 +1666,6 @@ clear:both;
 }
 
 html[dir="rtl"] dt {float:right;margin-right:auto;margin-left:10px;}
-
-.helpcontent dt {
-clear:both;
-}
 
 #pending h2 {
 margin-bottom:20px;

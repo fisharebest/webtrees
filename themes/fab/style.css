@@ -606,17 +606,17 @@ right:10px;
 	color:blue;
 	font-weight:bold;
 }
-.helpcontent {
-	margin-left:10px;
-	margin-right:10px;
-}
-.helpcontent dt {clear:both;}
 
 .helpheader {
 }
 
-.helptext {
-	color:black;
+.helpcontent {
+	margin-left:10px;
+	margin-right:10px;
+}
+
+.helpcontent dt {
+	clear:both;
 }
 
 /*-- descendancy chart specific stylesheets --*/

@@ -160,10 +160,9 @@ a:hover .nameZoom {color:#f00;font-weight:bold;font-size:14px;}
 .cal_day {float:left;font-weight:bold;}
 .rtl_cal_day {direction:rtl;float:right;color:#00f;font-weight:bold;}
 
+.helpheader {}
 .helpcontent {margin-left:10px;margin-right:10px;}
 .helpcontent dt {clear:both;}
-.helpheader {}
-.helptext {font-size:12px;}
 
 #familybook_chart {margin-left:10px; }
 #familybook_chart table {border-collapse: collapse; empty-cells: show;}
