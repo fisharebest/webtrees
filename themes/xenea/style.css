@@ -817,13 +817,6 @@ html[dir='rtl'] .icon {
 .helpheader {
 }
 
-.helpstart {
-	margin:10px;
-	font-weight:bold;font-size:14px;
-	color:Blue;
-	text-decoration:none;
-}
-
 .helptext {
 	font-size:12px;
 	color:black;

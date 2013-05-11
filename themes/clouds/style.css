@@ -1156,13 +1156,8 @@ color:#00f;
 font-weight:700;
 }
 
-.helpheader {text-align:left;}
-
-.helpstart {
-font-size:14px;
-font-weight:bold;
-color:#00f;
-text-decoration:none;
+.helpheader {
+text-align:left;
 }
 
 .helptext {
@@ -1172,7 +1167,6 @@ color:#000;
 .block {
 color:#000;
 vertical-align:top;
-
 }
 
 .submenuitem {
