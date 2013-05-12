@@ -1155,11 +1155,11 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			$dob1=$person1->getBirthDate();
 			$dob2=$person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->JD()-$dob2->JD())<2) {
+				if (abs($dob1->JD()-$dob2->JD())<2 && !$dob1->qual1 && !$dob2->qual1) { // Exclude BEF, AFT, etc.
 					return WT_I18N::translate('twin brother');
-				} else if ($dob1->JD()<$dob2->JD()) {
+				} elseif ($dob1->MaxJD()<$dob2->MinJD()) {
 					return WT_I18N::translate('younger brother');
-				} else {
+				} elseif ($dob1->MinJD()>$dob2->MaxJD()) {
 					return WT_I18N::translate('elder brother');
 				}
 			}
@@ -1170,11 +1170,11 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			$dob1=$person1->getBirthDate();
 			$dob2=$person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->JD()-$dob2->JD())<2) {
+				if (abs($dob1->JD()-$dob2->JD())<2 && !$dob1->qual1 && !$dob2->qual1) { // Exclude BEF, AFT, etc.
 					return WT_I18N::translate('twin sister');
-				} else if ($dob1->JD()<$dob2->JD()) {
+				} elseif ($dob1->MaxJD()<$dob2->MinJD()) {
 					return WT_I18N::translate('younger sister');
-				} else {
+				} elseif ($dob1->MinJD()>$dob2->MaxJD()) {
 					return WT_I18N::translate('elder sister');
 				}
 			}
@@ -1185,11 +1185,11 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			$dob1=$person1->getBirthDate();
 			$dob2=$person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->JD()-$dob2->JD())<2) {
+				if (abs($dob1->JD()-$dob2->JD())<2 && !$dob1->qual1 && !$dob2->qual1) { // Exclude BEF, AFT, etc.
 					return WT_I18N::translate('twin sibling');
-				} else if ($dob1->JD()<$dob2->JD()) {
+				} elseif ($dob1->MaxJD()<$dob2->MinJD()) {
 					return WT_I18N::translate('younger sibling');
-				} else {
+				} elseif ($dob1->MinJD()>$dob2->MaxJD()) {
 					return WT_I18N::translate('elder sibling');
 				}
 			}
