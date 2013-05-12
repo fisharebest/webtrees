@@ -222,7 +222,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			// "SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction"
 			// The documentation says that if you get this error, wait and try again.....
 			sleep(1);
-			$controller->addInlineJavascript('jQuery("#import'.$gedcom_id.'").load("import.php?gedcom_id='.$gedcom_id.'");');
+			$controller->addInlineJavascript('jQuery("#import'.$gedcom_id.'").load("import.php?gedcom_id='.$gedcom_id.'&u='.uniqid().'");');
 		} else {
 			// A fatal error.  Nothing we can do?
 			echo '<span class="error">', $ex->getMessage(), '</span>';
@@ -235,4 +235,5 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 WT_DB::exec("COMMIT");
 
 // Reload.....
-$controller->addInlineJavascript('jQuery("#import'.$gedcom_id.'").load("import.php?gedcom_id='.$gedcom_id.'");');
+// Use uniqid() to prevent jQuery caching the previous response.
+$controller->addInlineJavascript('jQuery("#import'.$gedcom_id.'").load("import.php?gedcom_id='.$gedcom_id.'&u='.uniqid().'");');
