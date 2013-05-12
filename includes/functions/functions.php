@@ -1668,7 +1668,9 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				case 'U': return WT_I18N::translate('great x%d aunt/uncle', $up-2);
 				}
 			case 'it': // Source: Michele Locati
-			case 'en':
+			case 'en_AU':
+			case 'en_GB':
+			case 'en_US':
 			default:
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
@@ -1831,7 +1833,9 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				case 'U': return WT_I18N::translate('great x%d nephew/niece', $down-1);
 				}
 			case 'it': // Source: Michele Locati.
-			case 'en':
+			case 'en_AU':
+			case 'en_GB':
+			case 'en_US':
 			default:
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
@@ -1908,12 +1912,23 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				case 'U': return WT_I18N::translate('great x%d grandparent', $up);
 				}
 			case 'fr': // Source: Jacqueline Tetreault
+			case 'fr_CA':
 				switch ($sex2) {
 				case 'M': return WT_I18N::translate('great x%d grandfather', $up-1);
 				case 'F': return WT_I18N::translate('great x%d grandmother', $up-1);
 				case 'U': return WT_I18N::translate('great x%d grandparent', $up-1);
 				}
-			case 'en':
+			case 'nn': // Source: Hogne Røed Nilsen (https://bugs.launchpad.net/webtrees/+bug/1168553)
+			case 'nb':
+				switch ($sex2) {
+				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
+				          return WT_I18N::translate('great x%d grandfather', $up-3);
+				case 'F': return WT_I18N::translate('great x%d grandmother', $up-3);
+				case 'U': return WT_I18N::translate('great x%d grandparent', $up-3);
+				}
+			case 'en_AU':
+			case 'en_GB':
+			case 'en_US':
 			default:
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
@@ -1982,9 +1997,11 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				case 'F': return WT_I18N::translate('great x%d granddaughter', $up-3);
 				case 'U': return WT_I18N::translate('great x%d grandchild',    $up-3);
 				}
-			case 'en':
 			case 'it': // Source: Michele Locati
 			case 'es': // Source: Wes Groleau (adding doesn’t change behavior, but needs to be better researched)
+			case 'en_AU':
+			case 'en_GB':
+			case 'en_US':
 			default:
 				switch ($sex2) {
 
@@ -2029,7 +2046,12 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				case 'U': return cousin_name2($cousin+1, $sex2, get_relationship_name_from_path('sib' . $descent, null, null));
 				}
 			}
-		case 'en': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
+		case 'nb': // Source: Hogne Røed Nilsen (https://bugs.launchpad.net/webtrees/+bug/1168553)
+		case 'nn':
+			return cousin_name($cousin+1, $sex2);
+		case 'en_AU': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
+		case 'en_GB':
+		case 'en_US':
 		default:
 			switch ($removed) {
 			case 0:
