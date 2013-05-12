@@ -137,13 +137,13 @@ if ($error || !$PGV_PATH) {
 		'<dt>',WT_I18N::translate('Installation directory'), '</dt>';
 	switch (count($pgv_dirs)) {
 	case '0':
-		echo '<dd><input type="text" name="PGV_PATH" size="40" value=""></dd>';
+		echo '<dd><input type="text" name="PGV_PATH" size="40" value="" autofocus></dd>';
 		break;
 	case '1':
-		echo '<dd><input type="text" name="PGV_PATH" size="40" value="'.htmlspecialchars($pgv_dirs[0]).'"></dd>';
+		echo '<dd><input type="text" name="PGV_PATH" size="40" value="'.htmlspecialchars($pgv_dirs[0]).'" autofocus></dd>';
 		break;
 	default:
-		echo '<dd><input type="text" name="PGV_PATH" size="40" value=""></dd>';
+		echo '<dd><input type="text" name="PGV_PATH" size="40" value="" autofocus></dd>';
 		echo '<dt>', /* find better english before translating */ 'PhpGedView might be found in these locations', '</dt>';
 		echo '<dd>';
 		foreach ($pgv_dirs as $pgvpath) {
@@ -542,50 +542,49 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	if (ini_get('output_buffering')) {
 		ob_flush();
 	}
-	try {
-		$user_gedcom_settings=
-			WT_DB::prepare(
-				"SELECT user_id, u_gedcomid, u_rootid, u_canedit".
-				" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-				" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)"
-			)->fetchAll();
-		foreach ($user_gedcom_settings as $setting) {
-			@$array=unserialize($setting->u_gedcomid);
-			if (is_array($array)) {
-				foreach ($array as $gedcom=>$value) {
-					$id=get_id_from_gedcom($gedcom);
-					if ($id) {
-						// Allow for old/invalid gedcom values in array
-						WT_Tree::get($id)->userPreference($setting->user_id, 'gedcomid', $value);
-					}
-				}
-			}
-			@$array=unserialize($setting->u_rootid);
-			if (is_array($array)) {
-				foreach ($array as $gedcom=>$value) {
-					$id=get_id_from_gedcom($gedcom);
-					if ($id) {
-						// Allow for old/invalid gedcom values in array
-						WT_Tree::get($id)->userPreference($setting->user_id, 'rootid', $value);
-					}
-				}
-			}
-			@$array=unserialize($setting->u_canedit);
-			if (is_array($array)) {
-				foreach ($array as $gedcom=>$value) {
-					$id=get_id_from_gedcom($gedcom);
-					if ($id) {
-						// Allow for old/invalid gedcom values in array
-						WT_Tree::get($id)->userPreference($setting->user_id, 'canedit', $value);
-					}
+	$user_gedcom_settings=
+		WT_DB::prepare(
+			"SELECT user_id, u_gedcomid, u_rootid, u_canedit".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)"
+		)->fetchAll();
+	foreach ($user_gedcom_settings as $setting) {
+		@$array=unserialize($setting->u_gedcomid);
+		if (is_array($array)) {
+			foreach ($array as $gedcom=>$value) {
+				try {
+					WT_DB::prepare(
+						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
+					)->execute(array($setting->user_id, get_id_from_gedcom($gedcom), 'gedcomid', $value));
+				} catch (PDOException $ex) {
+					// Invalid data?  Reference to non-existing tree?
 				}
 			}
 		}
-
-	} catch (PDOException $ex) {
-		// This could only fail if;
-		// a) we've already done it (upgrade)
-		// b) it doesn't exist (new install)
+		@$array=unserialize($setting->u_rootid);
+		if (is_array($array)) {
+			foreach ($array as $gedcom=>$value) {
+				try {
+					WT_DB::prepare(
+						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
+					)->execute(array($setting->user_id, get_id_from_gedcom($gedcom), 'rootid', $value));
+				} catch (PDOException $ex) {
+					// Invalid data?  Reference to non-existing tree?
+				}
+			}
+		}
+		@$array=unserialize($setting->u_canedit);
+		if (is_array($array)) {
+			foreach ($array as $gedcom=>$value) {
+				try {
+					WT_DB::prepare(
+						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
+					)->execute(array($setting->user_id, get_id_from_gedcom($gedcom), 'canedit', $value));
+				} catch (PDOException $ex) {
+					// Invalid data?  Reference to non-existing tree?
+				}
+			}
+		}
 	}
 }
 
