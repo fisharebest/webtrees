@@ -38,7 +38,7 @@ h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 td {vertical-align:top;}
 .icon {border:none; padding-left:0;padding-right:5pt;}
 .warning, .error, .red {font-weight:bold; color:#ff0000;}
-.accepted, a.accepted {font-weight:bold; color:#00ff00;}
+.accepted, a.accepted {font-weight:bold; color:#008000;}
 .center {text-align:center;}
 .nowrap {white-space:nowrap;}
 .indent {padding-left:15px;}
@@ -110,7 +110,7 @@ html[dir=rtl] #links li ul {left:auto; right:0;}
  html[dir=rtl] #links li ul li {text-align:right;}
 #links, #links li ul {list-style:none; margin:0; padding:1px;}
 #links li:hover > ul {display:block;}
-.ui-widget-content a.lang-active {color:#00ff00;}
+.ui-widget-content a.lang-active {color:#008000;}
 
 /* SIDE and CONTENT panels */
 #admin_menu, #admin_content {min-height:580px;}
@@ -241,7 +241,7 @@ table.gedcom_table2 {background:#fdf5e6; border:1px inset #d9d6c4; border-collap
 #hide-show th,
 #edit-options th {
 	border-bottom:2px solid #d3d3d3;
-	color:#00ff00;
+	color:#008000;
 	font-weight:bold;
 	text-align:left;
 }
@@ -399,12 +399,12 @@ html[dir=rtl] .gm_edit_config th {text-align:right;}
 .gm_edit_config input {margin:0; vertical-align:middle;}
 .gm_edit_config label {margin:5px; vertical-align:middle;}
 html[dir=rtl] .gm_edit_config td {padding:1px 50px 0 0;}
-#gm_breadcrumb, #gm_breadcrumb a {color:#00ff00; font-weight:bold; font-size:105%; padding:5px;}
+#gm_breadcrumb, #gm_breadcrumb a {color:#008000; font-weight:bold; font-size:105%; padding:5px;}
 #gm_active {padding:5px; vertical-align:top;}
 #gm_advanced td {padding:0;}
 table#gm_levels {margin-left:20px;}
 html[dir=rtl] table#gm_levels {margin-right:20px;}
-.gm_levels th, .gm_prefix {color:#00ff00;}
+.gm_levels th, .gm_prefix {color:#008000;}
 #gm_level_titles th {text-align:center;}
 .gm_levels input {width:90%;}
 
