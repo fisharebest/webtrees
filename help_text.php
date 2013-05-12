@@ -1415,7 +1415,7 @@ case 'role':
 		WT_I18N::translate('A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree.').
 		'<br/><br>'.
 		'<dl>'.
-		'<dt>'.WT_I18N::translate('Visitors').'</dt><dd>'.
+		'<dt>'.WT_I18N::translate('Visitor').'</dt><dd>'.
 		WT_I18N::translate('Everybody has this role, including visitors to the site and search engines.').
 		'</dd>'.
 		'<dl>'.

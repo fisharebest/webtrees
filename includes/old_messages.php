@@ -57,4 +57,5 @@ exit;
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Use SMTP to send e-mails from <b>webtrees</b>.<br /><br />This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Use SMTP to send external mails');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Use name and password authentication to connect to the SMTP server.<br /><br />Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails.');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Visitors');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br /><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM\'s FAQ list.</li></ul>');
