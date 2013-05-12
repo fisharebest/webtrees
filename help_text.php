@@ -441,7 +441,7 @@ case 'ADVANCED_PLAC_FACTS':
 
 case 'ALLOW_CHANGE_GEDCOM':
 	$title=WT_I18N::translate('Allow GEDCOM switching');
-	$text=WT_I18N::translate('If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users.');
+	$text=/* I18N: Help text for the "Allow GEDCOM switching" site configuration setting */ WT_I18N::translate('If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users.');
 	break;
 
 case 'ALLOW_THEME_DROPDOWN':
@@ -596,7 +596,7 @@ case 'INDEX_DIRECTORY':
 	$title=WT_I18N::translate('Data folder');
 	$text=
 		'<p>'.
-		WT_I18N::translate('This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet.').
+		/* I18N: Help text for the "Data folder" site configuration setting */ WT_I18N::translate('This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet.').
 		'</p><p>'.
 		/* I18N: “Apache” is a software program. */ WT_I18N::translate('To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents.').
 		'</p><p>'.
@@ -633,7 +633,7 @@ case 'LANGUAGE':
 
 case 'LOGIN_URL':
 	$title=WT_I18N::translate('Login URL');
-	$text=WT_I18N::translate('You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php .');
+	$text=/* I18N: Help text for the "Login URL" site configuration setting */ WT_I18N::translate('You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php .');
 	break;
 
 case 'MAX_ALIVE_AGE':
@@ -743,13 +743,13 @@ case 'RELATIONSHIP_PATH_LENGTH':
 	break;
 
 case 'SESSION_TIME':
-	$title=WT_I18N::translate('Session timeout');
-	$text=WT_I18N::translate('The time in seconds that a <b>webtrees</b> session remains active before requiring a login.  The default is 7200, which is 2 hours.');
+	$title/* I18N: A site configuration setting */ =WT_I18N::translate('Session timeout');
+	$text=/* I18N: Help text for the "Session timeout" site configuration setting */ WT_I18N::translate('The time in seconds that a <b>webtrees</b> session remains active before requiring a login.  The default is 7200, which is 2 hours.');
 	break;
 
 case 'SMTP_ACTIVE':
-	$title=WT_I18N::translate('Use SMTP to send external mails');
-	$text=WT_I18N::translate('Use SMTP to send e-mails from <b>webtrees</b>.<br /><br />This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server.');
+	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Messages');
+	$text=/* I18N: Help text for the "Messages" site configuration setting */ WT_I18N::translate('<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server\'s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.');
 	break;
 
 case 'SMTP_AUTH_PASS':
@@ -764,39 +764,32 @@ case 'SMTP_AUTH_USER':
 
 case 'SMTP_AUTH':
 	$title=WT_I18N::translate('Use password');
-	$text=WT_I18N::translate('Use name and password authentication to connect to the SMTP server.<br /><br />Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails.');
+	$text=/* I18N: Help text for the "Use password" site configuration setting */ WT_I18N::translate('Most SMTP servers require a password.');
 	break;
 
 case 'SMTP_FROM_NAME':
-	$title=WT_I18N::translate('From email address');
-	// This text also exists in setup.php
-	$text=WT_I18N::translate('This is used in the "From:" header when sending mails.');
+	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Sender name');
+	$text=/* I18N: Help text for the "Sender name" site configuration setting */ WT_I18N::translate('This name is used in the “From” field, when sending automatic emails from this server.');
 	break;
 
 case 'SMTP_HELO':
-	$title=WT_I18N::translate('Sender email address');
-	// This text also exists in setup.php
-	$text=WT_I18N::translate('This is used in the "Sender:" header when sending mails.  It is often the same as the "From:" header.');
+	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Sending server name');
+	$text=/* I18N: Help text for the "Sending server name" site configuration setting */ WT_I18N::translate('Many mail servers require that the sending server identifies itself correctly, using a valid domain name.');
 	break;
 
 case 'SMTP_HOST':
-	$title=WT_I18N::translate('Outgoing server (SMTP) name');
-	$text=WT_I18N::translate('This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br /><br />Configuration values for some e-mail providers:<br /><br /><b>Gmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br /><b>SMTP Port:</b> 465 or 587<br /><b>Secure connection:</b> SSL<br /><br /><b>Hotmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.live.com<br /><b>SMTP Port:</b> 25 or 587<br /><b>Secure connection:</b> TLS<br /><br /><b>Yahoo Mail Plus (currently a paid service)<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br /><b>SMTP Port:</b> 25');
+	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Server name');
+	$text=/* I18N: Help text for the "Server name" site configuration setting */ WT_I18N::translate('This is the name of the SMTP server. \'localhost\' means that the mail service is running on the same computer as your web server.');
 	break;
 
 case 'SMTP_PORT':
-	$title=WT_I18N::translate('SMTP port');
-	$text=WT_I18N::translate('The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>.');
+	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Port number');
+	$text=/* I18N: Help text for the "Port number" site configuration setting */ WT_I18N::translate('By default, SMTP works on port 25.');
 	break;
 
 case 'SMTP_SSL':
-	$title=WT_I18N::translate('Secure connection');
-	$text=WT_I18N::translate('Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br /><br />TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br /><br />If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option.');
-	break;
-
-case 'STORE_MESSAGES':
-	$title=WT_I18N::translate('Allow messages to be stored online');
-	$text=WT_I18N::translate('Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed.');
+	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Secure connection');
+	$text=/* I18N: Help text for the "Secure connection" site configuration setting */ WT_I18N::translate('Most servers do not use secure connections.');
 	break;
 
 case 'WEBTREES_EMAIL':
@@ -861,7 +854,7 @@ case 'SAVE_WATERMARK_THUMB':
 
 case 'SERVER_URL':
 	$title=WT_I18N::translate('Website URL');
-	$text=WT_I18N::translate('If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.');
+	$text=/* I18N: Help text for the "Website URL" site configuration setting */ WT_I18N::translate('If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.');
 	break;
 
 case 'SHOW_COUNTER':
@@ -1022,7 +1015,7 @@ case 'SURNAME_TRADITION':
 case 'THEME':
 	$title=WT_I18N::translate('Theme');
 	$text=
-		WT_I18N::translate('You can change the appearance of <b>webtrees</b> using "themes".  Each theme has a different style, layout, color scheme, etc.').
+		/* I18N: Help text for the "Default Theme" site configuration setting */ WT_I18N::translate('You can change the appearance of <b>webtrees</b> using "themes".  Each theme has a different style, layout, color scheme, etc.').
 		'<br/><br/>'.
 		WT_I18N::translate('Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting "default theme" at user level will give the setting for the current GEDCOM.  Selecting "default theme" at GEDCOM level will give the site setting.');
 	break;

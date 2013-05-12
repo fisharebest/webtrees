@@ -303,7 +303,7 @@ function addMessage($message) {
 	}
 	if (empty($message['created']))
 		$message['created'] = gmdate ("D, d M Y H:i:s T");
-	if (WT_Site::preference('STORE_MESSAGES') && ($message['method']!='messaging3' && $message['method']!='mailto' && $message['method']!='none')) {
+	if ($message['method']!='messaging3' && $message['method']!='mailto' && $message['method']!='none') {
 		WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 			->execute(array($message['from'], $WT_REQUEST->getClientIp(), get_user_id($message['to']), $message['subject'], $message['body']));
 	}

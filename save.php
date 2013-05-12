@@ -92,7 +92,6 @@ case 'site_setting':
 			fail();
 		}
 		break;
-	case 'STORE_MESSAGES':
 	case 'USE_REGISTRATION_MODULE':
 	case 'REQUIRE_ADMIN_AUTH_REGISTRATION':
 	case 'ALLOW_USER_THEMES':

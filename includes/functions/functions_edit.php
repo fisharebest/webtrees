@@ -220,9 +220,6 @@ function edit_field_contact($name, $selected='', $extra='') {
 		'mailto'    =>WT_I18N::translate('Mailto link'),
 		'none'      =>WT_I18N::translate('No contact'),
 	);
-	if (!WT_Site::preference('STORE_MESSAGES')) {
-		unset($CONTACT_METHODS['messaging'], $CONTACT_METHODS['messaging2']);
-	}
 	return select_edit_control($name, $CONTACT_METHODS, null, $selected, $extra);
 }
 function edit_field_contact_inline($name, $selected='', $controller=null) {
@@ -234,9 +231,6 @@ function edit_field_contact_inline($name, $selected='', $controller=null) {
 		'mailto'    =>WT_I18N::translate('Mailto link'),
 		'none'      =>WT_I18N::translate('No contact'),
 	);
-	if (!WT_Site::preference('STORE_MESSAGES')) {
-		unset($CONTACT_METHODS['messaging'], $CONTACT_METHODS['messaging2']);
-	}
 	return select_edit_control_inline($name, $CONTACT_METHODS, null, $selected, $controller);
 }
 

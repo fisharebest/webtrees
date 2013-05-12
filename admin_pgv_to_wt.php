@@ -181,7 +181,6 @@ if (ini_get('output_buffering')) {
 	ob_flush();
 }
 // TODO May need to set 'DATA_DIRECTORY' to $INDEX_DIRECTORY when dealing with media??
-@WT_Site::preference('STORE_MESSAGES',                  $PGV_STORE_MESSAGES);
 @WT_Site::preference('USE_REGISTRATION_MODULE',         $USE_REGISTRATION_MODULE);
 @WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION', $REQUIRE_ADMIN_AUTH_REGISTRATION);
 @WT_Site::preference('ALLOW_USER_THEMES',               $ALLOW_USER_THEMES);

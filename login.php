@@ -350,7 +350,7 @@ case 'register':
 
 			// Send admin message by email and/or internal messaging
 			webtreesMail($mail1_to, $mail1_from, $mail1_subject, $mail1_body);
-			if (WT_Site::preference('STORE_MESSAGES') && $mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
+			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 					->execute(array($user_email, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));
 			}
@@ -518,7 +518,7 @@ case 'verify_hash':
 		if ($pw_ok && $hc_ok) {
 			require_once WT_ROOT.'includes/functions/functions_mail.php';
 			webtreesMail($mail1_to, $mail1_from, $mail1_subject, $mail1_body);
-			if (WT_Site::preference('STORE_MESSAGES') && $mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
+			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 					->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));
 			}
