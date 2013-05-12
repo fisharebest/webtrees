@@ -632,8 +632,8 @@ case 'LANGUAGE':
 	break;
 
 case 'LOGIN_URL':
-	$title=WT_I18N::translate('Login URL');
-	$text=/* I18N: Help text for the "Login URL" site configuration setting */ WT_I18N::translate('You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php .');
+	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Login URL');
+	$text=/* I18N: Help text for the “Login URL” site configuration setting */ WT_I18N::translate('You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php .');
 	break;
 
 case 'MAX_ALIVE_AGE':
@@ -718,13 +718,13 @@ case 'NOTE_ID_PREFIX':
 	break;
 
 case 'PEDIGREE_FULL_DETAILS':
-	$title=WT_I18N::translate('Birth and death details on charts');
-	$text=WT_I18N::translate('This option controls whether or not to show the Birth and Death details of an individual on charts.');
+	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Show chart details by default');
+	$text=/* I18N: Help text for the “Show chart details by default” tree configuration setting */ WT_I18N::translate('This is the initial setting for the “show details” option on the charts.');
 	break;
 
 case 'PEDIGREE_LAYOUT':
-	$title=WT_I18N::translate('Default pedigree chart layout');
-	$text=WT_I18N::translate('This option indicates whether the Pedigree chart should be generated in landscape or portrait mode.');
+	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Default pedigree chart layout');
+	$text=/* I18N: Help text for the “Default pedigree chart layout” tree configuration setting */ WT_I18N::translate('This option indicates whether the Pedigree chart should be generated in landscape or portrait mode.');
 	break;
 
 case 'PEDIGREE_SHOW_GENDER':
@@ -744,12 +744,12 @@ case 'RELATIONSHIP_PATH_LENGTH':
 
 case 'SESSION_TIME':
 	$title/* I18N: A site configuration setting */ =WT_I18N::translate('Session timeout');
-	$text=/* I18N: Help text for the "Session timeout" site configuration setting */ WT_I18N::translate('The time in seconds that a <b>webtrees</b> session remains active before requiring a login.  The default is 7200, which is 2 hours.');
+	$text=/* I18N: Help text for the “Session timeout” site configuration setting */ WT_I18N::translate('The time in seconds that a <b>webtrees</b> session remains active before requiring a login.  The default is 7200, which is 2 hours.');
 	break;
 
 case 'SMTP_ACTIVE':
 	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Messages');
-	$text=/* I18N: Help text for the "Messages" site configuration setting */ WT_I18N::translate('<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server\'s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.');
+	$text=/* I18N: Help text for the “Messages” site configuration setting */ WT_I18N::translate('<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server\'s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.');
 	break;
 
 case 'SMTP_AUTH_PASS':
@@ -764,22 +764,22 @@ case 'SMTP_AUTH_USER':
 
 case 'SMTP_AUTH':
 	$title=WT_I18N::translate('Use password');
-	$text=/* I18N: Help text for the "Use password" site configuration setting */ WT_I18N::translate('Most SMTP servers require a password.');
+	$text=/* I18N: Help text for the “Use password” site configuration setting */ WT_I18N::translate('Most SMTP servers require a password.');
 	break;
 
 case 'SMTP_FROM_NAME':
 	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Sender name');
-	$text=/* I18N: Help text for the "Sender name" site configuration setting */ WT_I18N::translate('This name is used in the “From” field, when sending automatic emails from this server.');
+	$text=/* I18N: Help text for the “Sender name” site configuration setting */ WT_I18N::translate('This name is used in the “From” field, when sending automatic emails from this server.');
 	break;
 
 case 'SMTP_HELO':
 	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Sending server name');
-	$text=/* I18N: Help text for the "Sending server name" site configuration setting */ WT_I18N::translate('Many mail servers require that the sending server identifies itself correctly, using a valid domain name.');
+	$text=/* I18N: Help text for the “Sending server name” site configuration setting */ WT_I18N::translate('Many mail servers require that the sending server identifies itself correctly, using a valid domain name.');
 	break;
 
 case 'SMTP_HOST':
 	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Server name');
-	$text=/* I18N: Help text for the "Server name" site configuration setting */ WT_I18N::translate('This is the name of the SMTP server. \'localhost\' means that the mail service is running on the same computer as your web server.');
+	$text=/* I18N: Help text for the “Server name” site configuration setting */ WT_I18N::translate('This is the name of the SMTP server. \'localhost\' means that the mail service is running on the same computer as your web server.');
 	break;
 
 case 'SMTP_PORT':

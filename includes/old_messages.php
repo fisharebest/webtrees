@@ -32,6 +32,7 @@
 exit;
 
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Allow messages to be stored online');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Birth and death details on charts');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Do not send messages');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Enter associate GEDCOM ID.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('External objects');
@@ -50,6 +51,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br /><br />Configuration values for some e-mail providers:<br /><br /><b>Gmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br /><b>SMTP Port:</b> 465 or 587<br /><b>Secure connection:</b> SSL<br /><br /><b>Hotmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.live.com<br /><b>SMTP Port:</b> 25 or 587<br /><b>Secure connection:</b> TLS<br /><br /><b>Yahoo Mail Plus (currently a paid service)<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br /><b>SMTP Port:</b> 25');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('This is used in the "From:" header when sending mails.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('This is used in the "Sender:" header when sending mails.  It is often the same as the "From:" header.');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('This option controls whether or not to show the Birth and Death details of an individual on charts.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('This option enables online editing features for this database so that users with Edit privileges may update data online.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br /><br />TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br /><br />If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Use SMTP to send e-mails from <b>webtrees</b>.<br /><br />This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server.');
