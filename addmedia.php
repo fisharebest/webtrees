@@ -338,6 +338,7 @@ case 'update': // Save the information from the “editmedia” action
 		break;
 	}
 
+	$messages = false;
 	// Move files on disk (if we can) to reflect the change to the GEDCOM data
 	if (!$media->isExternal()) {
 		$oldServerFile  = $media->getServerFilename('main');
@@ -355,10 +356,11 @@ case 'update': // Save the information from the “editmedia” action
 				} else {
 					WT_FlashMessages::addMessage(WT_I18N::translate('Media file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
 				}
+				$messages = true;
 			}
 			if (!file_exists($newServerFile)) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Media file %s does not exist.',
-					'<span class="filename">'.$newFilename.'</span>'));
+				WT_FlashMessages::addMessage(WT_I18N::translate('Media file %s does not exist.', '<span class="filename">'.$newFilename.'</span>'));
+				$messages = true;
 			}
 		}
 		if ($oldServerThumb != $newServerThumb) {
@@ -368,10 +370,11 @@ case 'update': // Save the information from the “editmedia” action
 				} else {
 					WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnail file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
 				}
+				$messages = true;
 			}
 			if (!file_exists($newServerThumb)) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnail file %s does not exist.',
-					'<span class="filename">'.$newFilename.'</span>'));
+				WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnail file %s does not exist.', '<span class="filename">'.$newFilename.'</span>'));
+				$messages = true;
 			}
 		}
 	}
@@ -402,7 +405,11 @@ case 'update': // Save the information from the “editmedia” action
 		}
 	}
 	$controller->pageHeader();
-	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
+	if ($messages) {
+		echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
+	} else {
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
+	}
 	exit;
 case 'showmediaform':
 	$controller->setPageTitle(WT_I18N::translate('Create a new media object'));
