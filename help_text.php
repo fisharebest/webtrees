@@ -62,12 +62,12 @@ case 'AGNC':
 	$text=WT_I18N::translate('The organization, institution, corporation, person, or other entity that has authority.<br /><br />For example, an employer of a person, or a church that administered rites or events, or an organization responsible for creating and/or archiving records.');
 	break;
 
-case 'ASSO':
+case 'ASSO_1':
 	$title=WT_Gedcom_Tag::getLabel('ASSO');
 	$text=WT_I18N::translate('An associate is another individual who was involved with this individual, such as a friend or an employer.');
 	break;
 
-case '_ASSO':
+case 'ASSO_2':
 	$title=WT_Gedcom_Tag::getLabel('ASSO');
 	$text=WT_I18N::translate('An associate is another individual who was involved with this fact or event, such as a witness or a priest.');
 	break;

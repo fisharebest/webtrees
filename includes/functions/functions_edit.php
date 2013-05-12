@@ -1342,10 +1342,17 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				echo help_link($fact);
 			}
 			break;
+		case 'ASSO':
+		case '_ASSO': // Some apps (including webtrees) use "2 _ASSO", since "2 ASSO" is not strictly valid GEDCOM
+			if ($level==1) {
+				echo help_link('ASSO_1');
+			} else {
+				echo help_link('ASSO_2');
+			}
+			break;
 		case 'ABBR':
 		case 'ADDR':
 		case 'AGNC':
-		case 'ASSO':
 		case 'CAUS':
 		case 'CEME':
 		case 'DATE':
@@ -1372,7 +1379,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		case 'TITL':
 		case 'TYPE':
 		case 'URL':
-		case '_ASSO':
 		case '_HEB':
 		case '_PRIM':
 			echo help_link($fact);
