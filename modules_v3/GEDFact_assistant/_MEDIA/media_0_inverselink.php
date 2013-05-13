@@ -637,7 +637,7 @@ function unlinkMedia($linktoid, $linenum, $mediaid, $level=1, $chan=true) {
 	//-- when deleting/unlinking a media link
 	//-- $linenum comes as an OBJE and the $mediaid to delete should be set
 	if (!is_numeric($linenum)) {
-		$newged = remove_subrecord($gedrec, $linenum, $mediaid);
+		$newged = remove_media_subrecord($gedrec, $mediaid);
 	} else {
 		$newged = remove_subline($gedrec, $linenum);
 	}

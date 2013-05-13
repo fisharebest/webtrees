@@ -487,33 +487,22 @@ function check_gedcom($gedrec, $chan=true) {
 	return $newrec;
 }
 
-/**
-* remove a subrecord from a parent record by gedcom tag
-*
-* @param string $oldrecord the parent record to remove the subrecord from
-* @param string $tag the GEDCOM subtag to start deleting at
-* @param string $gid [optional] gid can be used to limit to @gid@
-* @param int $num [optional] num specifies which multiple of the tag to remove, set to -1 to remove all
-* @return string returns the oldrecord minus the subrecord(s)
-*/
-function remove_subrecord($oldrecord, $tag, $gid='', $num=0) {
+// Remove a link to a media object from a GEDCOM record
+function remove_media_subrecord($oldrecord, $gid) {
 	$newrec = '';
 	$gedlines = explode("\n", $oldrecord);
 
-	$n = 0;
-	$matchstr = $tag;
-	if (!empty($gid)) $matchstr .= " @".$gid."@";
 	for ($i=0; $i<count($gedlines); $i++) {
-		if (preg_match("/".$matchstr."/", $gedlines[$i])>0) {
-			if ($num==-1 || $n==$num) {
-				$glevel = $gedlines[$i]{0};
+		if (preg_match('/^\d (?:OBJE|_WT_OBJE_SORT) @' . $gid . '@$/', $gedlines[$i])) {
+			$glevel = $gedlines[$i]{0};
+			$i++;
+			while ((isset($gedlines[$i]))&&(strlen($gedlines[$i])<4 || $gedlines[$i]{0}>$glevel)) {
 				$i++;
-				while ((isset($gedlines[$i]))&&(strlen($gedlines[$i])<4 || $gedlines[$i]{0}>$glevel)) $i++;
-				$i--;
 			}
-			else $n++;
+			$i--;
+		} else {
+			$newrec .= $gedlines[$i]."\n";
 		}
-		else $newrec .= $gedlines[$i]."\n";
 	}
 
 	return trim($newrec);

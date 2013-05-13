@@ -157,7 +157,7 @@ case 'delete':
 			
 	// When deleting a media link, $linenum comes is an OBJE and the $mediaid to delete should be set
 	if ($linenum=='OBJE') {
-		$newged = remove_subrecord($gedrec, $linenum, $_REQUEST['mediaid']);
+		$newged = remove_media_subrecord($gedrec, $_REQUEST['mediaid']);
 	} else {
 		$newged = remove_subline($gedrec, $linenum);
 	}
