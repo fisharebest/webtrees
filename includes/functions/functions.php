@@ -1991,6 +1991,8 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			//
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
+			case 'nn': // Source: Hogne Røed Nilsen
+			case 'nb':				
 			case 'da': // Source: Patrick Sorensen
 				switch ($sex2) {
 				case 'M': return WT_I18N::translate('great x%d grandson',      $up-3);
@@ -2006,7 +2008,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				switch ($sex2) {
 
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				            return WT_I18N::translate('great x%d grandson',      $up-2);
+				          return WT_I18N::translate('great x%d grandson',      $up-2);
 				case 'F': return WT_I18N::translate('great x%d granddaughter', $up-2);
 				case 'U': return WT_I18N::translate('great x%d grandchild',    $up-2);
 				}
