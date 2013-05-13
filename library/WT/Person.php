@@ -1459,7 +1459,7 @@ class WT_Person extends WT_GedcomRecord {
 						} else {
 							$factrec.="\n2 $asso_tag @".$associate->getXref().'@';
 							// CHR/BAPM events are commonly used.  Generate the reverse relationship
-							if ($event->getTag()=='CHR' || $event->getTag()=='BAPM') {
+							if (preg_match('/^(?:BAPM|CHR)$/', $event->getTag()) && preg_match('/3 RELA god(?:parent|mother|father)/', $event->getGedcomRecord())) {
 								switch ($associate->getSex()) {
 								case 'M':
 									$factrec.="\n3 RELA godson";
