@@ -29,46 +29,6 @@ if (!defined('WT_WEBTREES')) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Count the number of records linked to a given record
-////////////////////////////////////////////////////////////////////////////////
-function count_linked_indi($xref, $link, $ged_id) {
-	return
-		WT_DB::prepare("SELECT COUNT(*) FROM `##link`, `##individuals` WHERE i_file=l_file AND i_id=l_from AND l_file=? AND l_type=? AND l_to=?")
-		->execute(array($ged_id, $link, $xref))
-		->fetchOne();
-}
-function count_linked_fam($xref, $link, $ged_id) {
-	return
-		WT_DB::prepare("SELECT COUNT(*) FROM `##link`, `##families` WHERE f_file=l_file AND f_id=l_from AND l_file=? AND l_type=? AND l_to=?")
-		->execute(array($ged_id, $link, $xref))
-		->fetchOne();
-}
-function count_linked_note($xref, $link, $ged_id) {
-	return
-		WT_DB::prepare("SELECT COUNT(*) FROM `##link`, `##other` WHERE o_file=l_file AND o_id=l_from AND o_type=? AND l_file=? AND l_type=? AND l_to=?")
-		->execute(array('NOTE', $ged_id, $link, $xref))
-		->fetchOne();
-}
-function count_linked_sour($xref, $link, $ged_id) {
-	return
-		WT_DB::prepare("SELECT COUNT(*) FROM `##link`, `##sources` WHERE s_file=l_file AND s_id=l_from AND l_file=? AND l_type=? AND l_to=?")
-		->execute(array($ged_id, $link, $xref))
-		->fetchOne();
-}
-function count_linked_repo($xref, $link, $ged_id) {
-	return
-		WT_DB::prepare("SELECT COUNT(*) FROM `##link`, `##other` WHERE o_file=l_file AND o_id=l_from AND o_type=? AND l_file=? AND l_type=? AND l_to=?")
-		->execute(array('REPO', $ged_id, $link, $xref))
-		->fetchOne();
-}
-function count_linked_obje($xref, $link, $ged_id) {
-	return
-		WT_DB::prepare("SELECT COUNT(*) FROM `##link`, `##media` WHERE m_file=l_file AND m_id=l_from AND l_file=? AND l_type=? AND l_to=?")
-		->execute(array($ged_id, $link, $xref))
-		->fetchOne();
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // Fetch records linked to a given record
 ////////////////////////////////////////////////////////////////////////////////
 function fetch_linked_indi($xref, $link, $ged_id) {

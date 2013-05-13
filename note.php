@@ -3,7 +3,7 @@
 // reference this shared note.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2009 PGV Development Team.  All rights reserved.
@@ -84,21 +84,26 @@ $controller
 	->addInlineJavascript('jQuery("#note-tabs").tabs();')
 	->addInlineJavascript('jQuery("#note-tabs").css("visibility", "visible");');
 
+$linked_indi = $controller->record->fetchLinkedIndividuals();
+$linked_fam  = $controller->record->fetchLinkedFamilies();
+$linked_obje = $controller->record->fetchLinkedMedia();
+$linked_sour = $controller->record->fetchLinkedSources();
+
 echo '<div id="note-details">';
 echo '<h2>', $controller->record->getFullName(), '</h2>';
 echo '<div id="note-tabs">
 	<ul>
 		<li><a href="#note-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';
-		if ($controller->record->countLinkedIndividuals()) {
+		if ($linked_indi) {
 			echo '<li><a href="#indi-note"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';
 		}
-		if ($controller->record->countLinkedFamilies()) {
+		if ($linked_fam) {
 			echo '<li><a href="#fam-note"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>';
 		}
-		if ($controller->record->countLinkedMedia()) {
+		if ($linked_obje) {
 			echo '<li><a href="#media-note"><span id="mediasource">', WT_I18N::translate('Media objects'), '</span></a></li>';
 		}
-		if ($controller->record->countLinkedSources()) {
+		if ($linked_sour) {
 			echo '<li><a href="#source-note"><span id="notesource">', WT_I18N::translate('Sources'), '</span></a></li>';
 		}
 		echo '</ul>';
@@ -143,25 +148,25 @@ echo '<div id="note-tabs">
 	</div>'; // close "note-edit"
 
 	// Individuals linked to this shared note
-	if ($controller->record->countLinkedIndividuals()) {
+	if ($linked_indi) {
 		echo '<div id="indi-note">';
 		echo format_indi_table($controller->record->fetchLinkedIndividuals(), $controller->record->getFullName());
 		echo '</div>'; //close "indi-note"
 	}
 	// Families linked to this shared note
-	if ($controller->record->countLinkedFamilies()) {
+	if ($linked_fam) {
 		echo '<div id="fam-note">';
 		echo format_fam_table($controller->record->fetchLinkedFamilies(), $controller->record->getFullName());
 		echo '</div>'; //close "fam-note"
 	}
 	// Media Items linked to this shared note
-	if ($controller->record->countLinkedMedia()) {
+	if ($linked_obje) {
 		echo '<div id="media-note">';
 		echo format_media_table($controller->record->fetchLinkedMedia(), $controller->record->getFullName());
 		echo '</div>'; //close "media-note"
 	}
 	// Sources linked to this shared note
-	if ($controller->record->countLinkedSources()) {
+	if ($linked_sour) {
 		echo '<div id="source-note">';
 		echo format_sour_table($controller->record->fetchLinkedSources(), $controller->record->getFullName());
 		echo '</div>'; //close "source-note"

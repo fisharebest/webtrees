@@ -357,7 +357,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			// If ID cannot be displayed, continue to the search page.
 			if (count($this->myindilist)==1 && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist) {
 				$indi=$this->myindilist[0];
-				if (!count_linked_indi($indi->getXref(), 'ASSO', $indi->getGedId()) && !count_linked_fam($indi->getXref(), 'ASSO', $indi->getGedId()) && $indi->canDisplayName()) {
+				if ($indi->canDisplayName()) {
 					Zend_Session::writeClose();
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$indi->getRawUrl());
 					exit;

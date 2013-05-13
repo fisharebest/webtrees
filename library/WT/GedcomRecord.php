@@ -681,26 +681,6 @@ class WT_GedcomRecord {
 		return '';
 	}
 
-	// Count the number of records that link to this one
-	public function countLinkedIndividuals() {
-		return count_linked_indi($this->getXref(), $this->getType(), $this->ged_id);
-	}
-	public function countLinkedFamilies() {
-		return count_linked_fam($this->getXref(), $this->getType(), $this->ged_id);
-	}
-	public function countLinkedNotes() {
-		return count_linked_note($this->getXref(), $this->getType(), $this->ged_id);
-	}
-	public function countLinkedSources() {
-		return count_linked_sour($this->getXref(), $this->getType(), $this->ged_id);
-	}
-	public function countLinkedRepositories() {
-		return count_linked_repo($this->getXref(), $this->getType(), $this->ged_id);
-	}
-	public function countLinkedMedia() {
-		return count_linked_obje($this->getXref(), $this->getType(), $this->ged_id);
-	}
-
 	// Fetch the records that link to this one
 	public function fetchLinkedIndividuals() {
 		return fetch_linked_indi($this->getXref(), $this->getType(), $this->ged_id);
