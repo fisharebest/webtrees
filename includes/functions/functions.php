@@ -2046,9 +2046,6 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				case 'U': return cousin_name2($cousin+1, $sex2, get_relationship_name_from_path('sib' . $descent, null, null));
 				}
 			}
-		case 'nb': // Source: Hogne Røed Nilsen (https://bugs.launchpad.net/webtrees/+bug/1168553)
-		case 'nn':
-			return cousin_name($cousin+1, $sex2);
 		case 'en_AU': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
 		case 'en_GB':
 		case 'en_US':
