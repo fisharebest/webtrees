@@ -36,6 +36,7 @@ if (!defined('WT_WEBTREES')) {
  * for deatiled info on MIME (RFC 1521) email see: http://www.freesoft.org/CIE/RFC/1521/index.htm
  */
 function webtreesMail($to, $from, $subject, $message) {
+	$SMTP_ACTIVE   =WT_Site::preference('SMTP_ACTIVE');
 	$SMTP_HOST     =WT_Site::preference('SMTP_HOST');
 	$SMTP_HELO     =WT_Site::preference('SMTP_HELO');
 	$SMTP_FROM_NAME=WT_Site::preference('SMTP_FROM_NAME');
