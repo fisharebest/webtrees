@@ -4042,7 +4042,7 @@ class WT_Stats {
 	// century name, English => 21st, Polish => XXI, etc.
 	private static function _centuryName($century) {
 		if ($century<0) {
-			return str_replace(-$century, WT_I18N::_centuryName(-$century), WT_I18N::translate('%s&nbsp;BCE', WT_I18N::number(-$century)));
+			return str_replace(-$century, WT_Stats::_centuryName(-$century), /* I18N: a date BC/BCE */ WT_I18N::translate('%s BCE', WT_I18N::number(-$century)));
 		}
 		switch ($century) {
 		case 21: return WT_I18N::translate_c('CENTURY', '21st');
