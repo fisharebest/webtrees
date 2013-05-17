@@ -670,7 +670,7 @@ function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
 				}
 				// For family records (e.g. MARR), identify the spouse with a sex icon
 				if ($record instanceof WT_Family) {
-					$label_2=$associate->getSexImage().$label2;
+					$label_2=$associate->getSexImage().$label_2;
 				}
 
 				if ($SEARCH_SPIDER) {
