@@ -816,7 +816,33 @@ WT_DB::exec(
 );
 
 ////////////////////////////////////////////////////////////////////////////////
+// The PGV blocks don't migrate easily.
+// Just give everybody and every tree default blocks
+////////////////////////////////////////////////////////////////////////////////
 
+WT_DB::prepare(
+	"INSERT INTO `##block` (user_id, location, block_order, module_name)" .
+	" SELECT `##user`.user_id, location, block_order, module_name" .
+	" FROM `##block`" .
+	" JOIN `##user`" .
+	" WHERE `##block`.user_id = -1" .
+	" AND   `##user`.user_id  >  0"
+)->execute();
+
+WT_DB::prepare(
+	"INSERT INTO `##block` (gedcom_id, location, block_order, module_name)" .
+	" SELECT `##gedcom`.gedcom_id, location, block_order, module_name" .
+	" FROM `##block`" .
+	" JOIN `##gedcom`" .
+	" WHERE `##block`.gedcom_id = -1" .
+	" AND   `##gedcom`.gedcom_id  >  0"
+)->execute();
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Hit counter
+////////////////////////////////////////////////////////////////////////////////
+//
 if ($PGV_SCHEMA_VERSION>=13) {
 	echo '<p>pgv_hit_counter => wt_hit_counter ...</p>';
 	flush();
