@@ -987,27 +987,32 @@ echo '<p>Genealogy records ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data, imported)" .
 	" SELECT o_file, o_gedcom, 0 FROM `{$DBNAME}`.`{$TBLPREFIX}other`" .
+	" JOIN `##gedcom` ON (o_file = gedcom_id)" .
 	" ORDER BY o_type!='HEAD'" // Must load HEAD record first
 )->execute();
 
 WT_DB::prepare(
 	"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data, imported)" .
-	" SELECT i_file, i_gedcom, 0 FROM `{$DBNAME}`.`{$TBLPREFIX}individuals`"
+	" SELECT i_file, i_gedcom, 0 FROM `{$DBNAME}`.`{$TBLPREFIX}individuals`" .
+	" JOIN `##gedcom` ON (i_file = gedcom_id)"
 )->execute();
 
 WT_DB::prepare(
 	"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data, imported)" .
-	" SELECT f_file, f_gedcom, 0 FROM `{$DBNAME}`.`{$TBLPREFIX}families`"
+	" SELECT f_file, f_gedcom, 0 FROM `{$DBNAME}`.`{$TBLPREFIX}families`" .
+	" JOIN `##gedcom` ON (f_file = gedcom_id)"
 )->execute();
 
 WT_DB::prepare(
 	"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data, imported)" .
-	" SELECT s_file, s_gedcom, 0 FROM `{$DBNAME}`.`{$TBLPREFIX}sources`"
+	" SELECT s_file, s_gedcom, 0 FROM `{$DBNAME}`.`{$TBLPREFIX}sources`" .
+	" JOIN `##gedcom` ON (s_file = gedcom_id)"
 )->execute();
 
 WT_DB::prepare(
 	"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data, imported)" .
-	" SELECT m_gedfile, m_gedrec, 0 FROM `{$DBNAME}`.`{$TBLPREFIX}media`"
+	" SELECT m_gedfile, m_gedrec, 0 FROM `{$DBNAME}`.`{$TBLPREFIX}media`" .
+	" JOIN `##gedcom` ON (m_gedfile = gedcom_id)"
 )->execute();
 
 WT_DB::prepare(
