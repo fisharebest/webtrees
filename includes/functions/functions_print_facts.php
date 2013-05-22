@@ -202,7 +202,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		print_address_structure($fact->getGedcomRecord(), 1);
 		break;
 	case 'AFN':
-		echo '<div class="field"><a href="http://www.familysearch.org/Eng/Search/customsearchresults.asp?LDS=0&amp;file_number=', rawurlencode($fact->getDetail()), '" target="new">', htmlspecialchars($fact->getDetail()), '</a></div>';
+		echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getDetail()), '" target="new">', htmlspecialchars($fact->getDetail()), '</a></div>';
 		break;
 	case 'ASSO':
 		// we handle this later, in print_asso_rela_record()
