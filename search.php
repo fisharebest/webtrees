@@ -128,7 +128,7 @@ echo '<div id="search-page">
 				echo ' value="yes" id="srnote" name="srnote">
 					<label for="srnote">' ,  WT_I18N::translate('Shared notes'), '</label>
 			</p></div>
-			<div class="label">' , WT_I18N::translate('Associates'), help_link('search_include_ASSO'), '</div>
+			<div class="label">' , WT_I18N::translate('Associates'), '</div>
 			<div class="value"><input type="checkbox" id="showasso" name="showasso" value="on"';
 				if ($controller->showasso == 'on') echo ' checked="checked"'; 
 			echo '><label for="showasso">' , WT_I18N::translate('Show related persons/families'), '</label></div>';
