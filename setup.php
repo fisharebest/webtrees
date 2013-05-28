@@ -941,7 +941,7 @@ try {
 	exit;
 } catch (PDOException $ex) {
 	echo
-		'<p class="bad">', WT_I18N::translate('An unexpected database error occured.'), '</p>',
+		'<p class="bad">', WT_I18N::translate('An unexpected database error occurred.'), '</p>',
 		'<pre>', $ex->getMessage(), '</pre>',
 		'<p class="info">', WT_I18N::translate('The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
 }
