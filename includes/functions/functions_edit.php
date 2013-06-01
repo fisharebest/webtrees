@@ -2174,7 +2174,7 @@ function linkMedia($mediaid, $linktoid, $level=1, $chan=true) {
 		replace_gedrec($linktoid, WT_GED_ID, $newrec, $chan);
 		return true;
 	} else {
-		echo "<br><center>", WT_I18N::translate('No such ID exists in this GEDCOM file.'), "</center>";
+		// Record not found?  Maybe deleted since we started this action?
 		return false;
 	}
 }
