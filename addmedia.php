@@ -206,10 +206,16 @@ case 'create': // Save the information from the “showcreateform” action
 			break;
 		}
 
-		// Now copy the (optional thumbnail)
+		// Now copy the (optional) thumbnail
 		if (!empty($_FILES['thumbnail']['name']) && preg_match('/^image\/(png|gif|jpeg)/', $_FILES['thumbnail']['type'], $match)) {
-			$extension = $match[1];
-			$thumbFile = preg_replace('/\.[a-z0-9]{3,5}$/', '.' . $extension, $fileName);
+			// Thumbnails have either
+			// (a) the same filename as the main image
+			// (b) the same filename as the main image - but with a .png extension
+			if ($match[1]=='png' && !preg_match('/\.(png)$/i', $fileName)) {
+				$thumbFile = preg_replace('/\.[a-z0-9]{3,5}$/', '.png', $fileName);
+			} else {
+				$thumbFile = $fileName;
+			}
 			$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName .  $thumbFile;
 			if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], $serverFileName)) {
 				chmod($serverFileName, WT_PERM_FILE);
