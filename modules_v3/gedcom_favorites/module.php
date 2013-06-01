@@ -152,14 +152,11 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 							$content .= $favorite['note'];
 							$content .= '</div>';
 						} else {
-							$record=WT_GedcomRecord::getInstance($favorite['gid']);
 							$content .= '<div id="box'.$favorite['gid'].'.0" class="person_box">';
-							if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
-							if ($record) {
-								$content.=$record->format_list('span');
-							} else {
-								$content.=WT_I18N::translate('No such ID exists in this GEDCOM file.');
+							if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) {
+								$content .= $removeFavourite;
 							}
+							$content .= $record->format_list('span');
 							$content .= '<br>'.$favorite['note'];
 							$content .= '</div>';
 						}
