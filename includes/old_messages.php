@@ -34,6 +34,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Allow GEDCOM switching');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Allow messages to be stored online');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('An unexpected database error occured.');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Are you sure you want to undo all of the changes for this GEDCOM?');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Birth and death details on charts');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Do not send messages');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Enter associate GEDCOM ID.');

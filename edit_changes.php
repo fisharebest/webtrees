@@ -218,7 +218,7 @@ if ($changed_gedcoms) {
 		if ($count!=0) {
 			$output2.='<br>';
 		}
-		$output2 .= '<a href="edit_changes.php?action=undoall&amp;ged='.rawurlencode($gedcom_name)."\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to undo all of the changes for this GEDCOM?')."');\">$gedcom_name - ".WT_I18N::translate('Undo all changes').'</a>';
+		$output2 .= '<a href="edit_changes.php?action=undoall&amp;ged='.rawurlencode($gedcom_name)."\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to undo all the changes to this family tree?')."');\">$gedcom_name - ".WT_I18N::translate('Undo all changes').'</a>';
 		$count++;
 	}
 	$output2 .= '</td></tr></table>';
