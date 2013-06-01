@@ -252,6 +252,9 @@ class WT_Date {
 		case 'fromto': /* I18N: Gedcom FROM-TO dates */ $tmp=WT_I18N::translate('from %s to %s',       $d1.$conv1, $d2.$conv2); break;
 		default: $tmp=WT_I18N::translate('Invalid date'); break; // e.g. BET without AND
 		}
+		if ($this->text && !$q1) {
+			$tmp = WT_I18N::translate('%s (%s)', $tmp, $this->text);
+		}
 
 		// Return at least one printable character, for better formatting in tables.
 		if (strip_tags($tmp)=='')
