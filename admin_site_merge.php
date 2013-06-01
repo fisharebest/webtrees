@@ -169,9 +169,7 @@ if ($action!='choose') {
 					echo '<div id="merge3"><h3>', WT_I18N::translate('Merge records'), '</h3>';
 					if ($GEDCOM==$ged2) {
 						$success = delete_gedrec($gid2, WT_GED_ID);
-						if ($success) {
-							echo '<br>', WT_I18N::translate('GEDCOM record successfully deleted.'), '<br>';
-						}
+						echo WT_I18N::translate('GEDCOM record successfully deleted.'), '<br>';
 						//-- replace all the records that linked to gid2
 						$ids=fetch_all_links($gid2, WT_GED_ID);
 						foreach ($ids as $id) {
