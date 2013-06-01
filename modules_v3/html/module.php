@@ -163,7 +163,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			WT_I18N::translate('Statistics')=>
 			'<div class="gedcom_stats">
 				<span style="font-weight: bold"><a href="index.php?command=gedcom">#gedcomTitle#</a></span><br>
-				'.WT_I18N::translate('This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>.', '#gedcomCreatedSoftware#', '#gedcomDate#').'
+				' . WT_I18N::translate('This family tree was last updated on %s.', '#gedcomUpdated#') . '
 				<table id="keywords">
 					<tr>
 						<td valign="top" class="width20">
