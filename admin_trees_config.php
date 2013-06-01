@@ -643,12 +643,12 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 				</tr>
 				<tr>
 					<th colspan="2">
-						<?php echo /* I18N: Copyright messages, added to images */ WT_I18N::translate('Watermarks'); ?>
+						<?php echo /* I18N: Copyright messages, added to images */ WT_I18N::translate('Watermarks'), help_link('Watermarks'); ?>
 					</th>
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Add watermarks to thumbnails?'), help_link('WATERMARK_THUMB'); ?>
+						<?php echo WT_I18N::translate('Add watermarks to thumbnails?'); ?>
 					</td>
 					<td>
 						<?php echo edit_field_yes_no('NEW_WATERMARK_THUMB', get_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB')); ?>
@@ -656,7 +656,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Store watermarked full size images on server?'), help_link('SAVE_WATERMARK_IMAGE'); ?>
+						<?php echo WT_I18N::translate('Store watermarked full size images on server?'); ?>
 					</td>
 					<td>
 						<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_IMAGE', get_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_IMAGE')); ?>
@@ -664,7 +664,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Store watermarked thumbnails on server?'), help_link('SAVE_WATERMARK_THUMB'); ?>
+						<?php echo WT_I18N::translate('Store watermarked thumbnails on server?'); ?>
 					</td>
 					<td>
 						<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_THUMB', get_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_THUMB')); ?>
@@ -672,7 +672,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Who can view non-watermarked images?'), help_link('SHOW_NO_WATERMARK'); ?>
+						<?php echo WT_I18N::translate('Images without watermarks'); ?>
 					</td>
 					<td>
 						<?php echo edit_field_access_level("NEW_SHOW_NO_WATERMARK", $SHOW_NO_WATERMARK); ?>

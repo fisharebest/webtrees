@@ -842,16 +842,6 @@ case 'REQUIRE_AUTHENTICATION':
 	$text=WT_I18N::translate('Enabling this option will force all visitors to login before they can view any data on the site.');
 	break;
 
-case 'SAVE_WATERMARK_IMAGE':
-	$title=WT_I18N::translate('Store watermarked full size images on server?');
-	$text=WT_I18N::translate('If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br /><br />When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements.');
-	break;
-
-case 'SAVE_WATERMARK_THUMB':
-	$title=WT_I18N::translate('Store watermarked thumbnails on server?');
-	$text=WT_I18N::translate('If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br /><br />When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements.');
-	break;
-
 case 'SERVER_URL':
 	$title=WT_I18N::translate('Website URL');
 	$text=/* I18N: Help text for the "Website URL" site configuration setting */ WT_I18N::translate('If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.');
@@ -901,11 +891,6 @@ case 'SHOW_LIVING_NAMES':
 case 'SHOW_MEDIA_DOWNLOAD':
 	$title=WT_I18N::translate('Show download link in media viewer');
 	$text=WT_I18N::translate('The Media Viewer can show a link which, when clicked, will download the Media file to the local PC.<br /><br />You may want to hide the download link for security reasons.');
-	break;
-
-case 'SHOW_NO_WATERMARK':
-	$title=WT_I18N::translate('Who can view non-watermarked images?');
-	$text=WT_I18N::translate('If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here.');
 	break;
 
 case 'SHOW_PARENTS_AGE':
@@ -1051,9 +1036,16 @@ case 'USE_SILHOUETTE':
 	." </td><td><img src=\"".$WT_IMAGES["default_image_U"]."\" width=\"40\" alt=\"\" title=\"\" /></td></tr></table>";
 	break;
 
-case 'WATERMARK_THUMB':
-	$title=WT_I18N::translate('Add watermarks to thumbnails?');
-	$text=WT_I18N::translate('If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don\'t watermark the thumbnails.');
+case 'Watermarks':
+	$title = WT_I18N::translate('Watermarks');
+	$text  =
+		'<p>' .
+		WT_I18N::translate('A watermark is text that is added to an image, to discourage others from copying it without permission.') .
+		'</p><p>' .
+		WT_I18N::translate('Watermarks are optional and normally shown just to visitors.') .
+		'</p><p>' .
+		WT_I18N::translate('Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server.') .
+		'</p>';
 	break;
 
 case 'WEBMASTER_USER_ID':

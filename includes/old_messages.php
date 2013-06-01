@@ -32,11 +32,16 @@
 exit;
 
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Allow messages to be stored online');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('An unexpected database error occured.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Birth and death details on charts');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Do not send messages');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Enter associate GEDCOM ID.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('External objects');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('From email address');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br /><br />When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements.');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br /><br />When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements.');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don\'t watermark the thumbnails.');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If you do not know these settings, leave the default values.  They may work.  You can change them later.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If you don\'t want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Online editing');
@@ -59,4 +64,5 @@ exit;
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Use SMTP to send external mails');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Use name and password authentication to connect to the SMTP server.<br /><br />Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Visitors');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Who can view non-watermarked images?');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br /><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM\'s FAQ list.</li></ul>');
