@@ -440,8 +440,8 @@ case 'ADVANCED_PLAC_FACTS':
 	break;
 
 case 'ALLOW_CHANGE_GEDCOM':
-	$title=WT_I18N::translate('Allow GEDCOM switching');
-	$text=/* I18N: Help text for the "Allow GEDCOM switching" site configuration setting */ WT_I18N::translate('If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users.');
+	$title=WT_I18N::translate('Show list of family trees');
+	$text=/* I18N: Help text for the “Show list of family trees” site configuration setting */ WT_I18N::translate('For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.');
 	break;
 
 case 'ALLOW_THEME_DROPDOWN':

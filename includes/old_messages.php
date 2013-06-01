@@ -31,6 +31,7 @@
 
 exit;
 
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Allow GEDCOM switching');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Allow messages to be stored online');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('An unexpected database error occured.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Birth and death details on charts');
@@ -44,6 +45,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If you do not know these settings, leave the default values.  They may work.  You can change them later.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If you don\'t want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature.');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Online editing');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Outgoing server (SMTP) name');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Port');

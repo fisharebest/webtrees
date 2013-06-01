@@ -56,7 +56,7 @@ echo
 			'<dd>', edit_field_yes_no_inline('site_setting-ALLOW_USER_THEMES', WT_Site::preference('ALLOW_USER_THEMES'), $controller), '</dd>',
 			'<dt>', WT_I18N::translate('Default Theme'), help_link('THEME'), '</dt>',
 			'<dd>', select_edit_control_inline('site_setting-THEME_DIR', array_flip(get_theme_names()), null, WT_Site::preference('THEME_DIR'), $controller), '</dd>',
-			'<dt>', WT_I18N::translate('Allow GEDCOM switching'), help_link('ALLOW_CHANGE_GEDCOM'), '</dt>',
+			'<dt>', WT_I18N::translate('Show list of family trees'), help_link('ALLOW_CHANGE_GEDCOM'), '</dt>',
 			'<dd>', edit_field_yes_no_inline('site_setting-ALLOW_CHANGE_GEDCOM', WT_Site::preference('ALLOW_CHANGE_GEDCOM'), $controller), '</dd>',
 			'<dt>', WT_I18N::translate('Session timeout'), help_link('SESSION_TIME'), '</dt>',
 			'<dd>', edit_field_inline('site_setting-SESSION_TIME', WT_Site::preference('SESSION_TIME'), $controller), '</dd>',
