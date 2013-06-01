@@ -381,7 +381,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
 		global $SEARCH_SPIDER;
 
-		global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent, $tabno, $spousetag;
+		global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent, $tabno;
 		global $natdad, $natmom;
 
 		if ($style != 2) $style=1;

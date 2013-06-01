@@ -623,11 +623,6 @@ if ($pid=="") {
 			//$personcount = 0;
 			foreach ($families as $family) {
 				$people = $this->buildFamilyList($family, "spouse");
-				if ($this->record->equals($people["husb"])) {
-					$spousetag = 'WIFE';
-				} else {
-					$spousetag = 'HUSB';
-				}
 				$marrdate = $family->getMarriageDate();
 	
 				// Husband -------------------
@@ -714,7 +709,6 @@ if ($pid=="") {
 	
 	
 				// Wife -------------------
-				//if (isset($people["wife"]) && $spousetag == 'WIFE') {
 				if (isset($people["wife"])) {
 					$married = WT_Date::Compare($censdate, $marrdate);
 					$fulln = strip_tags($people['wife']->getFullName());
@@ -903,7 +897,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
 	global $SEARCH_SPIDER;
 
-	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent, $tabno, $spousetag;
+	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent, $tabno;
 	global $natdad, $natmom, $censyear, $censdate;
 
 	if ($style != 2) $style=1;
