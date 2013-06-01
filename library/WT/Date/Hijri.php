@@ -9,7 +9,7 @@
 // midday.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -25,8 +25,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @author Greg Roach
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -43,7 +42,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 	}
 
 	static function MONTH_TO_NUM($m) {
-		static $months=array(''=>0, 'muhar'=>1, 'safar'=>2, 'rabia'=>3, 'rabit'=>4, 'jumaa'=>5, 'jumat'=>6, 'rajab'=>7, 'shaab'=>8, 'ramad'=>9, 'shaww'=>10, 'dhuaq'=>11, 'dhuah'=>12);
+		static $months=array(''=>0, 'MUHAR'=>1, 'SAFAR'=>2, 'RABIA'=>3, 'RABIT'=>4, 'JUMAA'=>5, 'JUMAT'=>6, 'RAJAB'=>7, 'SHAAB'=>8, 'RAMAD'=>9, 'SHAWW'=>10, 'DHUAQ'=>11, 'DHUAH'=>12);
 		if (isset($months[$m])) {
 			return $months[$m];
 		} else {

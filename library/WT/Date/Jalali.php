@@ -41,7 +41,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 	}
 
 	static function MONTH_TO_NUM($m) {
-		static $months=array(''=>0, 'farva'=>1, 'ordib'=>2, 'khord'=>3, 'tir'=>4, 'morda'=>5, 'shahr'=>6, 'mehr'=>7, 'aban'=>8, 'azar'=>9, 'dey'=>10, 'bahma'=>11, 'esfan'=>12);
+		static $months=array(''=>0, 'FARVA'=>1, 'ORDIB'=>2, 'KHORD'=>3, 'TIR'=>4, 'MORDA'=>5, 'SHAHR'=>6, 'MEHR'=>7, 'ABAN'=>8, 'AZAR'=>9, 'DEY'=>10, 'BAHMA'=>11, 'ESFAN'=>12);
 		if (isset($months[$m])) {
 			return $months[$m];
 		} else {

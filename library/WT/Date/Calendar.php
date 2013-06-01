@@ -12,7 +12,7 @@
 // midday.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -28,8 +28,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @author Greg Roach
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -121,7 +120,7 @@ class WT_Date_Calendar {
 		return 12;
 	}
 	static function MONTH_TO_NUM($m) {
-		static $months=array(''=>0, 'jan'=>1, 'feb'=>2, 'mar'=>3, 'apr'=>4, 'may'=>5, 'jun'=>6, 'jul'=>7, 'aug'=>8, 'sep'=>9, 'oct'=>10, 'nov'=>11, 'dec'=>12);
+		static $months=array(''=>0, 'JAN'=>1, 'FEB'=>2, 'MAR'=>3, 'APR'=>4, 'MAY'=>5, 'JUN'=>6, 'JUL'=>7, 'AUG'=>8, 'SEP'=>9, 'OCT'=>10, 'NOV'=>11, 'DEC'=>12);
 		if (isset($months[$m])) {
 			return $months[$m];
 		} else {
@@ -395,16 +394,16 @@ class WT_Date_Calendar {
 		} else {
 			switch ($qualifier) {
 			case '':
-			case 'int':
-			case 'est':
-			case 'cal': $case='NOMINATIVE'; break;
-			case 'to':
-			case 'abt':
-			case 'from': $case='GENITIVE'; break;
-			case 'aft':  $case='LOCATIVE'; break;
-			case 'bef':
-			case 'bet':
-			case 'and': $case='INSTRUMENTAL'; break;
+			case 'INT':
+			case 'EST':
+			case 'CAL': $case='NOMINATIVE'; break;
+			case 'TO':
+			case 'ABT':
+			case 'FROM': $case='GENITIVE'; break;
+			case 'AFT':  $case='LOCATIVE'; break;
+			case 'BEF':
+			case 'BET':
+			case 'AND': $case='INSTRUMENTAL'; break;
 			}
 		}
 		// Build up the formated date, character at a time

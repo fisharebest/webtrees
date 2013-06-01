@@ -15,7 +15,7 @@
 // are all for internal use only.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -51,18 +51,12 @@ class WT_Date {
 			$date=$match[1];
 			$this->text=$match[2];
 		}
-		// Ignore punctuation and normalise whitespace
-		$date=preg_replace(
-			array('/(\d+|@#[^@]+@)/', '/[\s;:.,-]+/', '/^ /', '/ $/'),
-			array(' $1 ', ' ', '', ''),
-			strtolower($date)
-		);
-		if (preg_match('/^(from|bet) (.+) (and|to) (.+)/', $date, $match)) {
+		if (preg_match('/^(FROM|BET) (.+) (AND|TO) (.+)/', $date, $match)) {
 			$this->qual1=$match[1];
 			$this->date1=$this->ParseDate($match[2]);
 			$this->qual2=$match[3];
 			$this->date2=$this->ParseDate($match[4]);
-		} elseif (preg_match('/^(from|bet|to|and|bef|aft|cal|est|int|abt) (.+)/', $date, $match)) {
+		} elseif (preg_match('/^(FROM|BET|TO|AND|BEF|AFT|CAL|EST|INT|ABT) (.+)/', $date, $match)) {
 			$this->qual1=$match[1];
 			$this->date1=$this->ParseDate($match[2]);
 		} else {
@@ -81,20 +75,20 @@ class WT_Date {
 	// Convert an individual gedcom date string into a WT_Date_Calendar object
 	static function ParseDate($date) {
 		// Valid calendar escape specified? - use it
-		if (preg_match('/^(@#d(?:gregorian|julian|hebrew|hijri|jalali|french r|roman|jalali)+@) ?(.*)/', $date, $match)) {
+		if (preg_match('/^(@#d(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN|JALALI)+@) ?(.*)/', $date, $match)) {
 			$cal=$match[1];
 			$date=$match[2];
 		} else {
 			$cal='';
 		}
 		// A date with a month: DM, M, MY or DMY
-		if (preg_match('/^(\d?\d?) ?(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|tsh|csh|ksl|tvt|shv|adr|ads|nsn|iyr|svn|tmz|aav|ell|vend|brum|frim|nivo|pluv|vent|germ|flor|prai|mess|ther|fruc|comp|muhar|safar|rabi[at]|juma[at]|rajab|shaab|ramad|shaww|dhuaq|dhuah|farva|ordib|khord|tir|morda|shahr|mehr|aban|azar|dey|bahma|esfan) ?((?:\d+(?: b ?c)?|\d\d\d\d \/ \d{1,4})?)$/', $date, $match)) {
+		if (preg_match('/^(\d?\d?) ?(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC|TSH|CSH|KSL|TVT|SHV|ADR|ADS|NSN|IYR|SVN|TMZ|AAV|ELL|VEND|BRUM|FRIM|NIVO|PLUV|VENT|GERM|FLOR|PRAI|MESS|THER|FRUC|COMP|MUHAR|SAFAR|RABI[AT]|JUMA[AT]|RAJAB|SHAAB|RAMAD|SHAWW|DHUAQ|DHUAH|FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN) ?((?:\d+(?: B ?C)?|\d\d\d\d \/ \d{1,4})?)$/', $date, $match)) {
 			$d=$match[1];
 			$m=$match[2];
 			$y=$match[3];
 		} else
 			// A date with just a year
-			if (preg_match('/^(\d+(?: b ?c)?|\d\d\d\d \/ \d{1,4})$/', $date, $match)) {
+			if (preg_match('/^(\d+(?: B ?C)?|\d\d\d\d \/ \d{1,4})$/', $date, $match)) {
 				$d='';
 				$m='';
 				$y=$match[1];
@@ -108,7 +102,7 @@ class WT_Date {
 					$y=$match[1];
 				}
 				// Look for a month anywhere in the date
-				if (preg_match('/(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|tsh|csh|ksl|tvt|shv|adr|ads|nsn|iyr|svn|tmz|aav|ell|vend|brum|frim|nivo|pluv|vent|germ|flor|prai|mess|ther|fruc|comp|muhar|safar|rabi[at]|juma[at]|rajab|shaab|ramad|shaww|dhuaq|dhuah|farva|ordib|khord|tir|morda|shahr|mehr|aban|azar|dey|bahma|esfan)/', $date, $match)) {
+				if (preg_match('/(jAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC|TSH|CSH|KSL|TVT|SHV|ADR|ADS|NSN|IYR|SVN|TMZ|AAV|ELL|VEND|BRUM|FRIM|NIVO|PLUV|VENT|GERM|FLOR|PRAI|MESS|THER|FRUC|COMP|MUHAR|SAFAR|RABI[AT]|JUMA[AT]|RAJAB|SHAAB|RAMAD|SHAWW|DHUAQ|DHUAH|FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN)/', $date, $match)) {
 					$m=$match[1];
 					// Look for a day number anywhere in the date
 					if (preg_match('/\b(\d\d?)\b/', $date, $match))
@@ -116,19 +110,19 @@ class WT_Date {
 				}
 			}
 		// Unambiguous dates - override calendar escape
-		if (preg_match('/^(tsh|csh|ksl|tvt|shv|adr|ads|nsn|iyr|svn|tmz|aav|ell)$/', $m)) {
-			$cal='@#dhebrew@';
+		if (preg_match('/^(TSH|CSH|KSL|TVT|SHV|ADR|ADS|NSN|IYR|SVN|TMZ|AAV|ELL)$/', $m)) {
+			$cal='@#DHEBREW@';
 		} else {
-			if (preg_match('/^(vend|brum|frim|nivo|pluv|vent|germ|flor|prai|mess|ther|fruc|comp)$/', $m)) {
-				$cal='@#dfrench r@';
+			if (preg_match('/^(VEND|BRUM|FRIM|NIVO|PLUV|VENT|GERM|FLOR|PRAI|MESS|THER|FRUC|COMP)$/', $m)) {
+				$cal='@#DFRENCH R@';
 			} else {
-				if (preg_match('/^(muhar|safar|rabi[at]|juma[at]|rajab|shaab|ramad|shaww|dhuaq|dhuah)$/', $m)) {
-					$cal='@#dhijri@'; // This is a WT extension
+				if (preg_match('/^(MUHAR|SAFAR|RABI[AT]|JUMA[AT]|RAJAB|SHAAB|RAMAD|SHAWW|DHUAQ|DHUAH)$/', $m)) {
+					$cal='@#DHIJRI@'; // This is a WT extension
 				} else {
-					if (preg_match('/^(farva|ordib|khord|tir|morda|shahr|mehr|aban|azar|dey|bahma|esfan)$/', $m)) {
-						$cal='@#djalali@'; // This is a WT extension 
-					} elseif (preg_match('/^\d+( b ?c)|\d\d\d\d \/ \d{1,4}$/', $y)) {
-						$cal='@#djulian@';
+					if (preg_match('/^(FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN)$/', $m)) {
+						$cal='@#DJALALI@'; // This is a WT extension 
+					} elseif (preg_match('/^\d+( B ?C)|\d\d\d\d \/ \d{1,4}$/', $y)) {
+						$cal='@#DJULIAN@';
 					}
 
 				}
@@ -136,31 +130,31 @@ class WT_Date {
 		}
 		// Ambiguous dates - don't override calendar escape
 		if ($cal=='') {
-			if (preg_match('/^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)$/', $m)) {
-				$cal='@#dgregorian@';
+			if (preg_match('/^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)$/', $m)) {
+				$cal='@#DGREGORIAN@';
 			} else {
 				if (preg_match('/^[345]\d\d\d$/', $y)) { // Year 3000-5999
-					$cal='@#dhebrew@';
+					$cal='@#DHEBREW@';
 				} else {
-					$cal='@#dgregorian@';
+					$cal='@#DGREGORIAN@';
 				}
 			}
 		}
 		// Now construct an object of the correct type
 		switch ($cal) {
-		case '@#dgregorian@':
+		case '@#DGREGORIAN@':
 			return new WT_Date_Gregorian(array($y, $m, $d));
-		case '@#djulian@':
+		case '@#DJULIAN@':
 			return new WT_Date_Julian(array($y, $m, $d));
-		case '@#dhebrew@':
+		case '@#DHEBREW@':
 			return new WT_Date_Jewish(array($y, $m, $d));
-		case '@#dhijri@':
+		case '@#DHIJRI@':
 			return new WT_Date_Hijri(array($y, $m, $d));
-		case '@#dfrench r@':
+		case '@#DFRENCH R@':
 			return new WT_Date_French(array($y, $m, $d));
-		case '@#djalali@':
+		case '@#DJALALI@':
 			return new WT_Date_Jalali(array($y, $m, $d));
-		case '@#droman@':
+		case '@#DROMAN@':
 			return new WT_Date_Roman(array($y, $m, $d));
 		}
 	}
@@ -240,16 +234,16 @@ class WT_Date {
 		// Localise the date
 		switch ($q1.$q2) {
 		case '':       $tmp=$d1.$conv1; break;
-		case 'abt':    /* I18N: Gedcom ABT dates     */ $tmp=WT_I18N::translate('about %s',            $d1.$conv1); break;
-		case 'cal':    /* I18N: Gedcom CAL dates     */ $tmp=WT_I18N::translate('calculated %s',       $d1.$conv1); break;
-		case 'est':    /* I18N: Gedcom EST dates     */ $tmp=WT_I18N::translate('estimated %s',        $d1.$conv1); break;
-		case 'int':    /* I18N: Gedcom INT dates     */ $tmp=WT_I18N::translate('interpreted %s (%s)', $d1.$conv1, $this->text); break;
-		case 'bef':    /* I18N: Gedcom BEF dates     */ $tmp=WT_I18N::translate('before %s',           $d1.$conv1); break;
-		case 'aft':    /* I18N: Gedcom AFT dates     */ $tmp=WT_I18N::translate('after %s',            $d1.$conv1); break;
-		case 'from':   /* I18N: Gedcom FROM dates    */ $tmp=WT_I18N::translate('from %s',             $d1.$conv1); break;
-		case 'to':     /* I18N: Gedcom TO dates      */ $tmp=WT_I18N::translate('to %s',               $d1.$conv1); break;
-		case 'betand': /* I18N: Gedcom BET-AND dates */ $tmp=WT_I18N::translate('between %s and %s',   $d1.$conv1, $d2.$conv2); break;
-		case 'fromto': /* I18N: Gedcom FROM-TO dates */ $tmp=WT_I18N::translate('from %s to %s',       $d1.$conv1, $d2.$conv2); break;
+		case 'ABT':    /* I18N: Gedcom ABT dates     */ $tmp=WT_I18N::translate('about %s',            $d1.$conv1); break;
+		case 'CAL':    /* I18N: Gedcom CAL dates     */ $tmp=WT_I18N::translate('calculated %s',       $d1.$conv1); break;
+		case 'EST':    /* I18N: Gedcom EST dates     */ $tmp=WT_I18N::translate('estimated %s',        $d1.$conv1); break;
+		case 'INT':    /* I18N: Gedcom INT dates     */ $tmp=WT_I18N::translate('interpreted %s (%s)', $d1.$conv1, $this->text); break;
+		case 'BEF':    /* I18N: Gedcom BEF dates     */ $tmp=WT_I18N::translate('before %s',           $d1.$conv1); break;
+		case 'AFT':    /* I18N: Gedcom AFT dates     */ $tmp=WT_I18N::translate('after %s',            $d1.$conv1); break;
+		case 'FROM':   /* I18N: Gedcom FROM dates    */ $tmp=WT_I18N::translate('from %s',             $d1.$conv1); break;
+		case 'TO':     /* I18N: Gedcom TO dates      */ $tmp=WT_I18N::translate('to %s',               $d1.$conv1); break;
+		case 'BETAND': /* I18N: Gedcom BET-AND dates */ $tmp=WT_I18N::translate('between %s and %s',   $d1.$conv1, $d2.$conv2); break;
+		case 'FROMTO': /* I18N: Gedcom FROM-TO dates */ $tmp=WT_I18N::translate('from %s to %s',       $d1.$conv1, $d2.$conv2); break;
 		default: $tmp=WT_I18N::translate('Invalid date'); break; // e.g. BET without AND
 		}
 		if ($this->text && !$q1) {
@@ -366,11 +360,11 @@ class WT_Date {
 	static function Compare($a, $b) {
 		// Get min/max JD for each date.
 		switch ($a->qual1) {
-		case 'bef':
+		case 'BEF':
 			$amin=$a->MinJD()-1;
 			$amax=$amin;
 			break;
-		case 'aft':
+		case 'AFT':
 			$amax=$a->MaxJD()+1;
 			$amin=$amax;
 			break;
@@ -380,11 +374,11 @@ class WT_Date {
 			break;
 		}
 		switch ($b->qual1) {
-		case 'bef':
+		case 'BEF':
 			$bmin=$b->MinJD()-1;
 			$bmax=$bmin;
 			break;
-		case 'aft':
+		case 'AFT':
 			$bmax=$b->MaxJD()+1;
 			$bmin=$bmax;
 			break;
