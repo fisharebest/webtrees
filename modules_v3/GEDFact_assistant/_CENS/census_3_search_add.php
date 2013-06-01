@@ -970,7 +970,6 @@ if (!defined('WT_WEBTREES')) {
 					//$personcount = 0;
 					foreach ($families as $family) {
 						$people = $this->buildFamilyList($family, "spouse", false);
-						var_dump(array_keys($people));
 						$marrdate = $family->getMarriageDate();
 
 						//-- Get Children's Name, DOB, DOD --------------------------
