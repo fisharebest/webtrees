@@ -487,6 +487,16 @@ function check_gedcom($gedrec, $chan=true) {
 	return $newrec;
 }
 
+// Remove all links from $gedrec to $xref, and any sub-tags.
+function remove_links($gedrec, $xref) {
+	$gedrec = preg_replace('/\n1 '.WT_REGEX_TAG.' @'.$xref.'@(\n[2-9].*)*/', '', $gedrec);
+	$gedrec = preg_replace('/\n2 '.WT_REGEX_TAG.' @'.$xref.'@(\n[3-9].*)*/', '', $gedrec);
+	$gedrec = preg_replace('/\n3 '.WT_REGEX_TAG.' @'.$xref.'@(\n[4-9].*)*/', '', $gedrec);
+	$gedrec = preg_replace('/\n4 '.WT_REGEX_TAG.' @'.$xref.'@(\n[5-9].*)*/', '', $gedrec);
+	$gedrec = preg_replace('/\n5 '.WT_REGEX_TAG.' @'.$xref.'@(\n[6-9].*)*/', '', $gedrec);
+	return $gedrec;
+}
+
 // Remove a link to a media object from a GEDCOM record
 function remove_media_subrecord($oldrecord, $gid) {
 	$newrec = '';
