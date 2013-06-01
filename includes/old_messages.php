@@ -39,6 +39,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Enter associate GEDCOM ID.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('External objects');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('From email address');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('GEDCOM statistics');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br /><br />When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br /><br />When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don\'t watermark the thumbnails.');
