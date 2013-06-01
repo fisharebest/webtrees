@@ -1174,13 +1174,13 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	$linenum = 0;
 	echo '<tr><td class="descriptionbox', $styleadd,' width20">';
 	if ($rowm['pid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($mediaobject->getXref(), $mediaobject->getGedcomRecord())) && ($styleadd!=' change_old') && $rowm['m_gedcom']!='') {
-		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=", $mediaobject->getXref(), "&amp;linktoid={$rowm['pid']}', '_blank', edit_window_specs);\" href=\"#\" title=\"", WT_I18N::translate('Edit'), "\">";
+		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=", $mediaobject->getXref(), "', '_blank', edit_window_specs);\" href=\"#\" title=\"", WT_I18N::translate('Edit'), "\">";
 		if ($SHOW_FACT_ICONS) {
 			echo '<i class="icon-media"></i> ';
 		}
 		echo WT_Gedcom_Tag::getLabel('OBJE'), '</a>';
 		echo '<div class="editfacts">';
-		echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."&amp;linktoid={$rowm['pid']}', '_blank', edit_window_specs);\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
+		echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."', '_blank', edit_window_specs);\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
 		echo '<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\'1 OBJE @'.$mediaobject->getXref().'@\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
 		echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_fact('$pid', 'OBJE', '".$mediaobject->getXref()."', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
 		echo '</div>';
