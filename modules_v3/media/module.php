@@ -102,10 +102,23 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 		global $controller;
 
 		if ($this->mediaCount===null) {
-			$ct = preg_match_all("/\d OBJE/", $controller->record->getGedcomRecord(), $match);
-			foreach ($controller->record->getSpouseFamilies() as $sfam)
-				$ct += preg_match_all("/\d OBJE/", $sfam->getGedcomRecord(), $match);
-			$this->mediaCount = $ct;
+			$this->mediaCount = 0;
+			preg_match_all('/\d OBJE @(' . WT_REGEX_XREF . ')@/', $controller->record->getGedcomRecord(), $matches);
+			foreach ($matches[1] as $match) {
+				$obje = WT_Media::getInstance($match);
+				if ($obje && $obje->canDisplayDetails()) {
+					$this->mediaCount++;
+				}
+			}
+			foreach ($controller->record->getSpouseFamilies() as $sfam) {
+				preg_match_all('/\d OBJE @(' . WT_REGEX_XREF . ')@/', $sfam->getGedcomRecord(), $matches);
+				foreach ($matches[1] as $match) {
+					$obje = WT_Media::getInstance($match);
+					if ($obje && $obje->canDisplayDetails()) {
+						$this->mediaCount++;
+					}
+				}
+			}
 		}
 		return $this->mediaCount;
 	}
