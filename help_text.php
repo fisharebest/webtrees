@@ -1440,6 +1440,11 @@ case 'role':
 		'</dd>';
 	break;
 
+case 'SHOW_AGE_DIFF':
+	$title=WT_I18N::translate('Date differences');
+	$text=WT_I18N::translate('When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc.');
+	break;
+
 case 'show_fact_sources':
 	$title=WT_I18N::translate('Show all sources');
 	$text=WT_I18N::translate('When this option is checked, you can see all Source or Note records for this person.  When this option is unchecked, Source or Note records that are associated with other facts for this person will not be shown.');
