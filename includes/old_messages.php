@@ -52,6 +52,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Outgoing server (SMTP) name');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Port');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('SMTP port');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Security');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Sender email address');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Server');

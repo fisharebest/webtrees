@@ -38,7 +38,7 @@ class search_replace_bu_plugin extends base_plugin {
 	}
 
 	static function getDescription() {
-		return WT_I18N::translate('Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching.');
+		return /* I18N: Description of the “Search and replace” option of the batch update module */ WT_I18N::translate('Search and replace text, using simple searches or advanced pattern matching.');
 	}
 
 	// Default is to operate on INDI records
