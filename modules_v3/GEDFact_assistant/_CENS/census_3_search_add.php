@@ -311,7 +311,7 @@ if (!defined('WT_WEBTREES')) {
 									<?php
 									if (($people["wife"]->canDisplayDetails())) {
 										?>
-									<a href='#' onclick='insertRowToTable2("<?php
+									<a href='#' onclick='insertRowToTable("<?php
 											echo $people["wife"]->getXref() ;  // pid = PID
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
