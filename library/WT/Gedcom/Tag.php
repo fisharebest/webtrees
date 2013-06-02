@@ -228,7 +228,7 @@ class WT_Gedcom_Tag {
 		case 'FILE': return /* I18N: gedcom tag FILE */ WT_I18N::translate('Filename');
 		case 'FONE': return /* I18N: gedcom tag FONE */ WT_I18N::translate('Phonetic');
 		case 'FORM': return /* I18N: gedcom tag FORM */ WT_I18N::translate('Format');
-		case 'GEDC': return /* I18N: gedcom tag GEDC */ WT_I18N::translate('Gedcom');
+		case 'GEDC': return /* I18N: gedcom tag GEDC */ WT_I18N::translate('GEDCOM file');
 		case 'GIVN': return /* I18N: gedcom tag GIVN */ WT_I18N::translate('Given names');
 		case 'GRAD': return /* I18N: gedcom tag GRAD */ WT_I18N::translate('Graduation');
 		case 'HEAD': return /* I18N: gedcom tag HEAD */ WT_I18N::translate('Header');
