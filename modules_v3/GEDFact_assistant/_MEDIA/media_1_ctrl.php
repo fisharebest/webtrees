@@ -174,7 +174,7 @@ if ($pid=="") {
 							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["husb"]->getXref() ; // pid = PID
 								?>", "<?php
-									echo $fulln;
+									echo htmlentities($fulln);
 								?>", "<?php
 									echo $people["husb"]->getLabel(); // label = Relationship
 								?>", "<?php
@@ -212,7 +212,7 @@ if ($pid=="") {
 	
 				if (isset($people["wife"])) {
 					$married   = WT_Date::Compare($censdate, $marrdate);
-					$fulln = strip_tags($people['wife']->getFullName());
+					$fulln =strip_tags($people['wife']->getFullName());
 					$menu = new WT_Menu("&nbsp;" . $people["wife"]->getLabel());
 					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 					$slabel .= $parentlinks;
@@ -242,7 +242,7 @@ if ($pid=="") {
 							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["wife"]->getXref() ; // pid = PID
 								?>", "<?php
-									echo $fulln;
+									echo htmlentities($fulln);
 									?>", "<?php
 									echo $people["wife"]->getLabel(); // label = Relationship
 								?>", "<?php
@@ -288,7 +288,7 @@ if ($pid=="") {
 							$tmp=$childfamily->getMarriageDate();
 							$married = WT_Date::Compare($censdate, $tmp);
 						}
-						$fulln = strip_tags($child->getFullName());
+						$fulln =strip_tags($child->getFullName());
 						$menu = new WT_Menu("&nbsp;" . $child->getLabel());
 						$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 						$slabel .= $spouselinks;
@@ -328,7 +328,7 @@ if ($pid=="") {
 										<a href='#' onclick='opener.insertRowToTable("<?php
 												echo $child->getXref() ; // pid = PID
 											?>", "<?php
-												echo $fulln;
+												echo htmlentities($fulln);
 												?>", "<?php
 												if ($child->getXref()==$pid) {
 													echo "Head"; // label = Head
@@ -387,7 +387,7 @@ if ($pid=="") {
 				$elderdate = "";
 				if (isset($people["husb"]) ) {
 					$married   = WT_Date::Compare($censdate, $marrdate);
-					$fulln = strip_tags($people['husb']->getFullName());
+					$fulln =strip_tags($people['husb']->getFullName());
 					$menu = new WT_Menu();
 					if ($people["husb"]->getLabel() == ".") {
 						$menu->addLabel("&nbsp;" . WT_I18N::translate_c('mother\'s husband', 'step-father'));
@@ -424,7 +424,7 @@ if ($pid=="") {
 								<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["husb"]->getXref() ; // pid = PID
 								?>", "<?php
-									echo $fulln;
+									echo htmlentities($fulln);
 								?>", "<?php
 								if ($people["husb"]->getLabel() == ".") {
 									echo WT_I18N::translate_c('mother\'s husband', 'step-father'); // label = Relationship
@@ -468,7 +468,7 @@ if ($pid=="") {
 				// Wife -------------------
 				if (isset($people["wife"]) ) {
 					$married   = WT_Date::Compare($censdate, $marrdate);
-					$fulln = strip_tags($people['wife']->getFullName());
+					$fulln =strip_tags($people['wife']->getFullName());
 					$menu = new WT_Menu();
 					if ($people["husb"]->getLabel() == ".") {
 						$menu->addLabel("&nbsp;" . WT_I18N::translate_c('father\'s wife', 'step-mother'));
@@ -505,7 +505,7 @@ if ($pid=="") {
 							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["wife"]->getXref() ; // pid = PID
 								?>", "<?php
-									echo $fulln;
+									echo htmlentities($fulln);
 								?>", "<?php
 								if ($people["wife"]->getLabel() == ".") {
 									echo WT_I18N::translate_c('father\'s wife', 'step-mother'); // label = Relationship
@@ -550,7 +550,7 @@ if ($pid=="") {
 				if (isset($people["children"])) {
 					$elderdate = $family->getMarriageDate();
 					foreach ($people["children"] as $key=>$child) {
-						$fulln = strip_tags($child->getFullName());
+						$fulln =strip_tags($child->getFullName());
 						$menu = new WT_Menu("&nbsp;" . $child->getLabel());
 						$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 						$slabel .= $spouselinks;
@@ -581,7 +581,7 @@ if ($pid=="") {
 								<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $child->getXref() ; // pid = PID
 									?>", "<?php
-										echo $fulln;
+										echo htmlentities($fulln);
 									?>", "<?php
 										echo $child->getLabel(); // label = Relationship
 									?>", "<?php
@@ -628,7 +628,7 @@ if ($pid=="") {
 				// Husband -------------------
 				if (isset($people["husb"])) {
 					$married   = WT_Date::Compare($censdate, $marrdate);
-					$fulln = strip_tags($people['husb']->getFullName());
+					$fulln =strip_tags($people['husb']->getFullName());
 					$menu = new WT_Menu("&nbsp;" . $people["husb"]->getLabel());
 					$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 					$slabel .= $parentlinks;
@@ -666,7 +666,7 @@ if ($pid=="") {
 							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["husb"]->getXref() ; // pid = PID
 								?>", "<?php
-									echo $fulln;
+									echo htmlentities($fulln);
 								?>", "<?php
 									if ($people["husb"]->getXref()==$pid) {
 										echo "Head"; // label = Relationship
@@ -711,7 +711,7 @@ if ($pid=="") {
 				// Wife -------------------
 				if (isset($people["wife"])) {
 					$married = WT_Date::Compare($censdate, $marrdate);
-					$fulln = strip_tags($people['wife']->getFullName());
+					$fulln =strip_tags($people['wife']->getFullName());
 					$menu = new WT_Menu("&nbsp;" . $people["wife"]->getLabel());
 					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 					$slabel .= $parentlinks;
@@ -749,7 +749,7 @@ if ($pid=="") {
 								<a href='#' onclick='opener.insertRowToTable("<?php
 										echo $people["wife"]->getXref() ; // pid = PID
 								?>", "<?php
-										echo $fulln;
+										echo htmlentities($fulln);
 								?>", "<?php
 									if ($people["wife"]->getXref()==$pid) {
 										echo "Head"; // label = Head
@@ -797,7 +797,7 @@ if ($pid=="") {
 							$tmp=$childfamily->getMarriageDate();
 							$married = WT_Date::Compare($censdate, $tmp);
 						}
-						$fulln = strip_tags($child->getFullName());
+						$fulln =strip_tags($child->getFullName());
 						$menu = new WT_Menu("&nbsp;" . $child->getLabel());
 						$slabel = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $child->getLabel(), $censyear);
 						$slabel .= $spouselinks;
@@ -827,7 +827,7 @@ if ($pid=="") {
 							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $child->getXref() ; // pid = PID
 								?>", "<?php
-									echo $fulln; // nam = Full Name
+									echo htmlentities($fulln); // nam = Full Name
 								?>", "<?php
 									echo $child->getLabel(); // label = Relationship
 								?>", "<?php
@@ -959,10 +959,10 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						$person_parent="Yes";
 						$tmp=$husb->getXref();
 						if ($husb->canDisplayName()) {
-							$fulln = strip_tags($husb->getFullName());
+							$fulln =strip_tags($husb->getFullName());
 							$parentlinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
 							$parentlinks .= "'".$husb->getXref()."', "; // pid = PID
-							$parentlinks .= "'".$fulln."', "; // nam = Name
+							$parentlinks .= "'".htmlentities($fulln)."', "; // nam = Name
 							if ($currpid=="Wife" || $currpid=="Husband") {
 								$parentlinks .= "'Father in Law', "; // label = 1st Gen Male Relationship
 							} else {
@@ -997,10 +997,10 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						$tmp=$wife->getXref();
 						if ($wife->canDisplayName()) {
 							$married = WT_Date::Compare($censdate, $marrdate);
-							$fulln = strip_tags($wife->getFullName());
+							$fulln =strip_tags($wife->getFullName());
 							$parentlinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
 							$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
-							$parentlinks .= "'".$fulln."',"; // nam = Full Name
+							$parentlinks .= "'".htmlentities($fulln)."',"; // nam = Full Name
 							if ($currpid=="Wife" || $currpid=="Husband") {
 								$parentlinks .= "'Mother in Law',"; // label = 1st Gen Female Relationship
 							} else {
@@ -1049,7 +1049,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							$person_step="Yes";
 							$tmp=$husb->getXref();
 							if ($husb->canDisplayName()) {
-								$fulln = strip_tags($husb->getFullName());
+								$fulln =strip_tags($husb->getFullName());
 								$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".WT_GEDURL."\">";
 								$parentlinks .= $husb->getFullName();
 								$parentlinks .= "</a>";
@@ -1070,7 +1070,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							$tmp=$wife->getXref();
 							if ($wife->canDisplayName()) {
 								$married = WT_Date::Compare($censdate, $marrdate);
-								$fulln = addslashes($wife->getFullName());
+								$fulln =addslashes($wife->getFullName());
 								$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".WT_GEDURL."\">";
 								$parentlinks .= $wife->getFullName();
 								$parentlinks .= "</a>";
@@ -1098,7 +1098,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						$tmp=$spouse->getXref();
 						if ($spouse->canDisplayName()) {
 							$married = WT_Date::Compare($censdate, $marrdate);
-							$fulln = strip_tags($spouse->getFullName());
+							$fulln =strip_tags($spouse->getFullName());
 							$spouselinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
 							$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
 							$spouselinks .= "'".strip_tags($spouse->getFullName())."',"; // Full Name
@@ -1146,11 +1146,11 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 					if ($child) {
 						$persons="Yes";
 						if ($child->canDisplayName()) {
-							$fulln = strip_tags($child->getFullName());
+							$fulln =strip_tags($child->getFullName());
 							$spouselinks .= "<li>";
 							$spouselinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
 							$spouselinks .= "'".$child->getXref()."',"; // pid = PID
-							$spouselinks .= "'".$fulln."',"; // nam = Name
+							$spouselinks .= "'".htmlentities($fulln)."',"; // nam = Name
 							if ($currpid=="Son" || $currpid=="Daughter") {
 								if ($child->getSex()=="M") {
 									$spouselinks .= "'Grand-Son',"; // label = Male Relationship
