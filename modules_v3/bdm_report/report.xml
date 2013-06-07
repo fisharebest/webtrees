@@ -199,10 +199,6 @@
 							</RepeatTag>
 							<SetVar name="moreD" value="1" />
 						</RepeatTag>
-						<RepeatTag tag="BURI:CEME">
-							<br /><var var="WT_I18N::translate('Cemetery')" />
-							: <GedcomValue tag="CEME" />
-						</RepeatTag>
 					</Text>
 				</TextBox>
 				<Line />

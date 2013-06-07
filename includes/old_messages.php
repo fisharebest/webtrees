@@ -38,6 +38,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Birth and death details on charts');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Do not send messages');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Enter associate GEDCOM ID.');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Enter the name of the cemetery or other resting place where individual is buried.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('External objects');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('From email address');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('GEDCOM statistics');

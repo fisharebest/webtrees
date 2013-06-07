@@ -77,11 +77,6 @@ case 'CAUS':
 	$text=WT_I18N::translate('A description of the cause of the associated event or fact, such as the cause of death.');
 	break;
 
-case 'CEME':
-	$title=WT_Gedcom_Tag::getLabel('CEME');
-	$text=WT_I18N::translate('Enter the name of the cemetery or other resting place where individual is buried.');
-	break;
-
 case 'DATE':
 	$title=WT_Gedcom_Tag::getLabel('DATE');
 	$CALENDAR_FORMAT=null; // Don't perform conversions here - it will confuse the examples!

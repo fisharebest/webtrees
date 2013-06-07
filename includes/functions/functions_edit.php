@@ -1347,7 +1347,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		case 'ADDR':
 		case 'AGNC':
 		case 'CAUS':
-		case 'CEME':
 		case 'DATE':
 		case 'EMAI':
 		case 'EMAIL':
