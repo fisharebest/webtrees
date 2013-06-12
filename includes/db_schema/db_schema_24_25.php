@@ -33,8 +33,17 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+// Tree settings become site settings
 self::exec(
-	"DELETE FROM `##gedcom_setting` WHERE setting_name IN ('ALLOW_EDIT_GEDCOM'')"
+	"INSERT IGNORE INTO `##site_setting` (setting_name, setting_value)" .
+	" SELECT setting_name, setting_value" .
+	" FROM `##gedcom_setting`" .
+	" WHERE setting_name IN ('SHOW_REGISTER_CAUTION', 'WELCOME_TEXT_CUST_HEAD') OR setting_name like 'WELCOME_TEXT_AUTH_MODE%'" .
+	" GROUP BY setting_name"
+);
+
+self::exec(
+	"DELETE FROM `##gedcom_setting` WHERE setting_name IN ('ALLOW_EDIT_GEDCOM', 'SHOW_REGISTER_CAUTION', 'WELCOME_TEXT_CUST_HEAD') OR setting_name like 'WELCOME_TEXT_AUTH_MODE%'"
 );
 
 self::exec(

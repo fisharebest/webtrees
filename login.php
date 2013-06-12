@@ -28,14 +28,14 @@ require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 // If we are already logged in, then go to the home page
-if (WT_USER_ID) {
+if (WT_USER_ID && WT_GED_ID) {
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 	exit;
 }
 
 $controller=new WT_Controller_Page();
 
-$REQUIRE_ADMIN_AUTH_REGISTRATION=WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION');
+$REQUIRE_ADMIN_AUTH_REGISTRATION = WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION');
 
 $action         =safe_POST('action');
 $user_realname  =safe_POST('user_realname');
@@ -124,24 +124,22 @@ default:
 	echo '<div id="login-page">';
 	echo '<div id="login-text">';
 
-	if (WT_GED_ID) {
-		switch ($WELCOME_TEXT_AUTH_MODE) {
-		case 1:
-			echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
-			break;
-		case 2:
-			echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>authorized</u> users only.<br /><br />If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.');
-			break;
-		case 3:
-			echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
-			break;
-		case 4:
-			echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access is permitted to users who have an account and a password for this website.');
-			if (get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_CUST_HEAD')) {
-				echo '<p>', get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), '</p>';
-			}
-			break;
+	switch (WT_Site::preference('WELCOME_TEXT_AUTH_MODE')) {
+	case 1:
+		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
+		break;
+	case 2:
+		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>authorized</u> users only.<br /><br />If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.');
+		break;
+	case 3:
+		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
+		break;
+	case 4:
+		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access is permitted to users who have an account and a password for this website.');
+		if (WT_Site::preference('WELCOME_TEXT_CUST_HEAD')) {
+			echo '<p>', WT_Site::preference('WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), '</p>';
 		}
+		break;
 	}
 
 	echo '</div>';
@@ -375,7 +373,7 @@ case 'register':
 
 	echo '<div id="login-register-page">
 		<h2>', $controller->getPageTitle(), '</h2>';
-		if ($SHOW_REGISTER_CAUTION) {
+		if (WT_Site::preference('SHOW_REGISTER_CAUTION')) {
 			echo '<div id="register-text">';
 			echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>');
 			echo '</div>';

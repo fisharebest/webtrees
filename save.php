@@ -2,7 +2,7 @@
 // Callback function for inline editing.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -97,7 +97,13 @@ case 'site_setting':
 	case 'ALLOW_USER_THEMES':
 	case 'ALLOW_CHANGE_GEDCOM':
 	case 'SMTP_AUTH':
+	case 'WELCOME_TEXT_CUST_HEAD':
+	case 'SHOW_REGISTER_CAUTION':
 		$value=(int)$value;
+		break;
+	case 'WELCOME_TEXT_AUTH_MODE_4':
+		// Save a different version of this for each language.
+		$id1 = 'WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE;
 		break;
 	case 'LOGIN_URL':
 		if ($value=='') {
@@ -114,6 +120,7 @@ case 'site_setting':
 	case 'SMTP_HELO':
 	case 'SMTP_HOST':
 	case 'SMTP_SSL':
+	case 'WELCOME_TEXT_AUTH_MODE':
 		break;
 	case 'SMTP_AUTH_PASS':
 		// The password will be displayed as "click to edit" on screen.

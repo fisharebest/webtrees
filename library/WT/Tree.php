@@ -288,7 +288,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'SHOW_PEDIGREE_PLACES',         '9');
 		set_gedcom_setting($tree_id, 'SHOW_PEDIGREE_PLACES_SUFFIX',  false);
 		set_gedcom_setting($tree_id, 'SHOW_PRIVATE_RELATIONSHIPS',   true);
-		set_gedcom_setting($tree_id, 'SHOW_REGISTER_CAUTION',        true);
 		set_gedcom_setting($tree_id, 'SHOW_RELATIVES_EVENTS',        '_BIRT_CHIL,_BIRT_SIBL,_MARR_CHIL,_MARR_PARE,_DEAT_CHIL,_DEAT_PARE,_DEAT_GPAR,_DEAT_SIBL,_DEAT_SPOU');
 		set_gedcom_setting($tree_id, 'SHOW_STATS',                   false);
 		set_gedcom_setting($tree_id, 'SOURCE_ID_PREFIX',             'S');
@@ -314,8 +313,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'WATERMARK_THUMB',              false);
 		set_gedcom_setting($tree_id, 'WEBMASTER_USER_ID',            WT_USER_ID);
 		set_gedcom_setting($tree_id, 'WEBTREES_EMAIL',               '');
-		set_gedcom_setting($tree_id, 'WELCOME_TEXT_AUTH_MODE',       '1');
-		set_gedcom_setting($tree_id, 'WELCOME_TEXT_CUST_HEAD',       false);
 		set_gedcom_setting($tree_id, 'WORD_WRAPPED_NOTES',           false);
 		set_gedcom_setting($tree_id, 'imported',                     0);
 		set_gedcom_setting($tree_id, 'title',                        /* I18N: Default title for new family trees */ WT_I18N::translate('My family tree'));

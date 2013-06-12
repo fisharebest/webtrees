@@ -74,7 +74,7 @@ define('WT_DEBUG_LANG', false);
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 24);
+define('WT_SCHEMA_VERSION', 25);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
@@ -263,8 +263,7 @@ try {
 // Other user files can be stored elsewhere...
 define('WT_DATA_DIR', realpath(WT_Site::preference('INDEX_DIRECTORY') ? WT_Site::preference('INDEX_DIRECTORY') : 'data').DIRECTORY_SEPARATOR);
 
-// If we have a preferred URL (e.g. https instead of http, or www.example.com instead of
-// www.isp.com/~example), then redirect to it.
+// If we have a preferred URL (e.g. www.example.com instead of www.isp.com/~example), then redirect to it.
 $SERVER_URL=WT_Site::preference('SERVER_URL');
 if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
 	header('Location: '.$SERVER_URL.WT_SCRIPT_NAME.($QUERY_STRING ? '?'.$QUERY_STRING : ''), true, 301);
@@ -483,22 +482,16 @@ if (WT_Site::preference('LOGIN_URL')) {
 	define('WT_LOGIN_URL', WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php');
 }
 
-// If we are in the middle of importing (or have not imported) the current tree,
-// then stay on the manage-trees page.
-if (!WT_IMPORTED && WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='import.php' && WT_SCRIPT_NAME!='login.php' && WT_SCRIPT_NAME!='help_text.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt.php') {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
-	exit;
-}
-
-// If authentication is required for this tree, and we are not authenticated....
-if ((!$WT_TREE || $WT_TREE->preference('REQUIRE_AUTHENTICATION')) && !WT_USER_ID && WT_SCRIPT_NAME!='login.php' && WT_SCRIPT_NAME!='help_text.php' && WT_SCRIPT_NAME!='message.php') {
-	if (WT_SCRIPT_NAME=='index.php') {
-		$url='index.php?ged='.WT_GEDCOM;
-	} else {
-		$url=WT_SCRIPT_NAME.'?'.$QUERY_STRING;
+// If there is no current tree and we need one, then redirect somewhere
+if (WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' && WT_SCRIPT_NAME!='login.php' && WT_SCRIPT_NAME!='import.php' && WT_SCRIPT_NAME!='help_text.php' && WT_SCRIPT_NAME!='message.php') {
+	if (!$WT_TREE || !WT_IMPORTED) {
+		if (WT_USER_IS_ADMIN) {
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
+		} else {
+			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(WT_SCRIPT_NAME.'?'.$QUERY_STRING));
+		}
+		exit;
 	}
-	header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode($url));
-	exit;
 }
 
 if (WT_USER_ID) {

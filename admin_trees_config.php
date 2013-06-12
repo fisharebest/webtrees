@@ -145,7 +145,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES',         safe_POST('NEW_SHOW_PEDIGREE_PLACES'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX',  safe_POST_bool('NEW_SHOW_PEDIGREE_PLACES_SUFFIX'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS',   safe_POST('SHOW_PRIVATE_RELATIONSHIPS'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_REGISTER_CAUTION',        safe_POST_bool('NEW_SHOW_REGISTER_CAUTION'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_RELATIVES_EVENTS',        safe_POST('NEW_SHOW_RELATIVES_EVENTS'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_STATS',                   safe_POST_bool('NEW_SHOW_STATS'));
 	set_gedcom_setting(WT_GED_ID, 'SOURCE_ID_PREFIX',             safe_POST('NEW_SOURCE_ID_PREFIX'));
@@ -163,9 +162,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB',              safe_POST_bool('NEW_WATERMARK_THUMB'));
 	set_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID',            safe_POST('NEW_WEBMASTER_USER_ID'));
 	set_gedcom_setting(WT_GED_ID, 'WEBTREES_EMAIL',               safe_POST('NEW_WEBTREES_EMAIL'));
-	set_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_AUTH_MODE',       safe_POST('NEW_WELCOME_TEXT_AUTH_MODE'));
-	set_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE, safe_POST('NEW_WELCOME_TEXT_AUTH_MODE_4', WT_REGEX_UNSAFE));
-	set_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_CUST_HEAD',       safe_POST_bool('NEW_WELCOME_TEXT_CUST_HEAD'));
 	set_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES',           safe_POST_bool('NEW_WORD_WRAPPED_NOTES'));
 	if (safe_POST('gedcom_title', WT_REGEX_UNSAFE)) {
 		set_gedcom_setting(WT_GED_ID, 'title',                        safe_POST('gedcom_title', WT_REGEX_UNSAFE));
@@ -211,7 +207,6 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 	<div id="tabs">
 		<ul>
 			<li><a href="#file-options"><span><?php echo WT_I18N::translate('General'); ?></span></a></li>
-			<li><a href="#access-options"><span><?php echo WT_I18N::translate('Access'); ?></span></a></li>
 			<li><a href="#privacy"><span><?php echo WT_I18N::translate('Privacy'); ?></span></a></li>
 			<li><a href="#config-media"><span><?php echo WT_I18N::translate('Media'); ?></span></a></li>
 			<li><a href="#layout-options"><span><?php echo WT_I18N::translate('Layout'); ?></span></a></li>
@@ -434,11 +429,52 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						<?php echo WT_I18N::translate('Leave this field empty to use the title of the currently active database.'); ?>
 					</td>
 				</tr>
+				<tr>
+					<th colspan="2">
+						<?php echo WT_I18N::translate('User options'); ?>
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<?php echo WT_I18N::translate('Theme dropdown selector for theme changes'), help_link('ALLOW_THEME_DROPDOWN'); ?>
+					</td>
+					<td>
+						<?php echo radio_buttons('NEW_ALLOW_THEME_DROPDOWN', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN')); ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php echo WT_I18N::translate('Default Theme'), help_link('THEME'); ?>
+					</td>
+					<td>
+						<select name="NEW_THEME_DIR">
+							<?php
+								echo '<option value="">', htmlspecialchars(WT_I18N::translate('<default theme>')), '</option>';
+								$current_themedir=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
+								foreach (get_theme_names() as $themename=>$themedir) {
+									echo '<option value="', $themedir, '"';
+									if ($themedir==$current_themedir) {
+										echo ' selected="selected"';
+									}
+									echo '>', $themename, '</option>';
+								}
+							?>
+						</select>
+					</td>
+				</tr>
 			</table>
 		</div>
 		<!-- PRIVACY OPTIONS -->
 		<div id="privacy">
 			<table>
+				<tr>
+					<td>
+						<?php echo WT_I18N::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?>
+					</td>
+					<td>
+						<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', get_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION')); ?>
+					</td>
+				</tr>
 				<tr>
 					<td>
 						<?php echo WT_I18N::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?>
@@ -676,94 +712,6 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</td>
 					<td>
 						<?php echo edit_field_access_level("NEW_SHOW_NO_WATERMARK", $SHOW_NO_WATERMARK); ?>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<!-- ACCESS -->
-		<div id="access-options">
-			<table>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('Visitor options'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', get_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Welcome text on login page'), help_link('WELCOME_TEXT_AUTH_MODE'); ?>
-					</td>
-					<td><select name="NEW_WELCOME_TEXT_AUTH_MODE">
-							<option value="0" <?php if ($WELCOME_TEXT_AUTH_MODE=='0') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('No predefined text'); ?></option>
-							<option value="1" <?php if ($WELCOME_TEXT_AUTH_MODE=='1') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Predefined text that states all users can request a user account'); ?></option>
-							<option value="2" <?php if ($WELCOME_TEXT_AUTH_MODE=='2') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Predefined text that states admin will decide on each request for a user account'); ?></option>
-							<option value="3" <?php if ($WELCOME_TEXT_AUTH_MODE=='3') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Predefined text that states only family members can request a user account'); ?></option>
-							<option value="4" <?php if ($WELCOME_TEXT_AUTH_MODE=='4') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Choose user defined welcome text typed below'); ?></option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Standard header for custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST_HEAD'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('NEW_WELCOME_TEXT_CUST_HEAD', get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_CUST_HEAD')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?>
-					</td>
-					<td>
-						<textarea name="NEW_WELCOME_TEXT_AUTH_MODE_4" maxlength="255"><?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE)); ?></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Show acceptable use agreement on «Request new user account» page'), help_link('SHOW_REGISTER_CAUTION'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('NEW_SHOW_REGISTER_CAUTION', get_gedcom_setting(WT_GED_ID, 'SHOW_REGISTER_CAUTION')); ?>
-					</td>
-				</tr>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('User options'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Theme dropdown selector for theme changes'), help_link('ALLOW_THEME_DROPDOWN'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('NEW_ALLOW_THEME_DROPDOWN', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Default Theme'), help_link('THEME'); ?>
-					</td>
-					<td>
-						<select name="NEW_THEME_DIR">
-							<?php
-								echo '<option value="">', htmlspecialchars(WT_I18N::translate('<default theme>')), '</option>';
-								$current_themedir=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
-								foreach (get_theme_names() as $themename=>$themedir) {
-									echo '<option value="', $themedir, '"';
-									if ($themedir==$current_themedir) {
-										echo ' selected="selected"';
-									}
-									echo '>', $themename, '</option>';
-								}
-							?>
-						</select>
 					</td>
 				</tr>
 			</table>

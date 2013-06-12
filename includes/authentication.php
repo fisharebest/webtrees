@@ -47,11 +47,6 @@ function authenticateUser($user_name, $password) {
 		return -5;
 	}
 
-	// If we were already logged in, log out first
-	if (getUserId()) {
-		userLogout(getUserId());
-	}
-
 	if ($user_id=get_user_id($user_name)) {
 		if (check_user_password($user_id, $password)) {
 			$is_admin=get_user_setting($user_id, 'canadmin');

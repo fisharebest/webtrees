@@ -158,7 +158,7 @@ html[dir=rtl] #tree_stats td, html[dir=rtl] #recent td {padding:0 0 0 10px; text
 .ip_address span, .ua_string span, .raw_gedcom {direction:ltr;}
 
 /*SITE CONFIG */
-#site table, #mail table {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
+#site table, #mail table, #login table {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
 #site-config h2 {font-size:125%; font-weight:bold; margin:10px 0 5px;}
 #site-config dl {float:left;margin:0 0 0 20px;line-height:25px;max-width: 600px;}
 #site-config dt {clear:left; float:left; min-width:170px; margin:0; padding:5px 5px 5px 0; border-bottom:1px solid #999999; font-weight:bold;}
@@ -230,13 +230,12 @@ table.gedcom_table2 {background:#fdf5e6; border:1px inset #d9d6c4; border-collap
 .gedcom_table2 td {text-align:center;}
 
 /* FAMILY TREE CONFIG */
-#file-options, #privacy, #config-media, #access-options, #layout-options, #hide-show, #edit-options {padding:10px;}
-#file-options table, #privacy table, #config-media table, #access-options table, #layout-options table, #hide-show table, #edit-options table {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
-#file-options td, #privacy td, #config-media td, #access-options td, #layout-options td, #hide-show td, #edit-options td {border-bottom:1px solid #d3d3d3;}
+#file-options, #privacy, #config-media, #layout-options, #hide-show, #edit-options {padding:10px;}
+#file-options table, #privacy table, #config-media table, #layout-options table, #hide-show table, #edit-options table {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
+#file-options td, #privacy td, #config-media td, #layout-options td, #hide-show td, #edit-options td {border-bottom:1px solid #d3d3d3;}
 #file-options th,
 #privacy th,
 #config-media th,
-#access-options th,
 #layout-options th,
 #hide-show th,
 #edit-options th,
@@ -249,7 +248,6 @@ table.gedcom_table2 {background:#fdf5e6; border:1px inset #d9d6c4; border-collap
 html[dir=rtl] #file-options th,
 html[dir=rtl] #privacy th,
 html[dir=rtl] #config-media th,
-html[dir=rtl] #access-options th,
 html[dir=rtl] #layout-options th,
 html[dir=rtl] #hide-show th,
 html[dir=rtl] #edit-options th {
@@ -258,7 +256,7 @@ html[dir=rtl] #edit-options th {
 #relatives {margin-left:120px;}
 html[dir=rtl] #relatives {margin-right:120px;}
 #NEW_CALENDAR_FORMAT1 {margin:0 20px;}
-textarea[name="NEW_WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
+textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
 
 /* TREE DOWNLOAD */
 #tree-download {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px;}

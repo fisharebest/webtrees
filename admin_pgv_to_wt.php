@@ -740,7 +740,6 @@ foreach ($GEDCOMS as $GEDCOM=>$GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_PARENTS_AGE',             $SHOW_PARENTS_AGE));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_PEDIGREE_PLACES',         $SHOW_PEDIGREE_PLACES));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_PRIVATE_RELATIONSHIPS',   $SHOW_PRIVATE_RELATIONSHIPS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_REGISTER_CAUTION',        $SHOW_REGISTER_CAUTION));
 
 	// Update these - see db_schema_5_6.php
 	$SHOW_RELATIVES_EVENTS=preg_replace('/_(BIRT|MARR|DEAT)_(COUS|MSIB|FSIB|GGCH|NEPH|GGPA)/', '', $SHOW_RELATIVES_EVENTS);
@@ -786,9 +785,6 @@ foreach ($GEDCOMS as $GEDCOM=>$GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'USE_RIN',                      $USE_RIN));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WATERMARK_THUMB',              $WATERMARK_THUMB));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WEBMASTER_USER_ID',            get_user_id($WEBMASTER_EMAIL)));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WELCOME_TEXT_AUTH_MODE',       $WELCOME_TEXT_AUTH_MODE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE, $WELCOME_TEXT_AUTH_MODE_4));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WELCOME_TEXT_CUST_HEAD',       $WELCOME_TEXT_CUST_HEAD));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WORD_WRAPPED_NOTES',           $WORD_WRAPPED_NOTES));
 }
 WT_DB::prepare("DELETE FROM `##gedcom_setting` WHERE setting_name in ('config', 'privacy', 'path', 'pgv_ver', 'imported')")->execute();
