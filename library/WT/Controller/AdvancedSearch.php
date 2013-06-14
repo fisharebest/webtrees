@@ -117,7 +117,8 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			'_MILI',
 		);
 		// Allow (some of) the user-specified fields to be selected
-		foreach (explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD')) as $fact) {
+		preg_match_all('/(' . WT_REGEX_TAG . ')/', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'), $facts);
+		foreach ($facts[1] as $fact) {
 			if (
 				$fact!='BIRT' &&
 				$fact!='DEAT' &&
