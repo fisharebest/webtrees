@@ -47,11 +47,6 @@ switch ($help) {
 	// Generally, these tags need to be lists explicitly in add_simple_tag()
 	//////////////////////////////////////////////////////////////////////////////
 
-case 'ABBR':
-	$title=WT_Gedcom_Tag::getLabel('ABBR');
-	$text=WT_I18N::translate('Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br /><br />According to the GEDCOM 5.5 specification, "this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62)."<br /><br />In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required.');
-	break;
-
 case 'ADDR':
 	$title=WT_Gedcom_Tag::getLabel('ADDR');
 	$text=WT_I18N::translate('Enter the address into the field just as you would write it on an envelope.<br /><br />Leave this field blank if you do not want to include an address.');
@@ -388,11 +383,6 @@ case 'TEXT':
 case 'TIME':
 	$title=WT_Gedcom_Tag::getLabel('TIME');
 	$text=WT_I18N::translate('Enter the time for this event in 24-hour format with leading zeroes. Midnight is 00:00. Examples: 04:50 13:00 20:30.');
-	break;
-
-case 'TITL':
-	$title=WT_Gedcom_Tag::getLabel('TITL');
-	$text=WT_I18N::translate('Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user.');
 	break;
 
 case 'TYPE':

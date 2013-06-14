@@ -1343,7 +1343,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				echo help_link('ASSO_2');
 			}
 			break;
-		case 'ABBR':
 		case 'ADDR':
 		case 'AGNC':
 		case 'CAUS':
@@ -1368,7 +1367,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		case 'TEMP':
 		case 'TEXT':
 		case 'TIME':
-		case 'TITL':
 		case 'TYPE':
 		case 'URL':
 		case '_HEB':
