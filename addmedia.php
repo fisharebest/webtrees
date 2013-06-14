@@ -445,7 +445,7 @@ echo $controller->getPageTitle(), help_link('OBJE');
 echo '</td></tr>';
 if ($linktoid == 'new' || ($linktoid == '' && $action != 'update')) {
 	echo '<tr><td class="descriptionbox wrap width25">';
-	echo WT_I18N::translate('Enter a Person, Family, or Source ID'), help_link('add_media_linkid');
+	echo WT_I18N::translate('Enter a Person, Family, or Source ID');
 	echo '</td><td class="optionbox wrap"><input type="text" name="gid" id="gid" size="6" value="">';
 	echo ' ', print_findindi_link('gid');
 	echo ' ', print_findfamily_link('gid');
