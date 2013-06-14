@@ -1367,7 +1367,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		case 'TEMP':
 		case 'TEXT':
 		case 'TIME':
-		case 'TYPE':
 		case 'URL':
 		case '_HEB':
 		case '_PRIM':

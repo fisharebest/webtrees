@@ -385,11 +385,6 @@ case 'TIME':
 	$text=WT_I18N::translate('Enter the time for this event in 24-hour format with leading zeroes. Midnight is 00:00. Examples: 04:50 13:00 20:30.');
 	break;
 
-case 'TYPE':
-	$title=WT_Gedcom_Tag::getLabel('TYPE');
-	$text=WT_I18N::translate('The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want.');
-	break;
-
 case 'URL':
 	$title=WT_Gedcom_Tag::getLabel('URL');
 	$text=WT_I18N::translate('Enter the URL address including the http://.<br /><br />An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL.');

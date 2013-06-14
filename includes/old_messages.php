@@ -63,6 +63,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Sender email address');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Server');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed.');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('This block will show the 10 records that have been viewed the most.  This block requires that Hit Counters be enabled in the GEDCOM configuration settings.');
