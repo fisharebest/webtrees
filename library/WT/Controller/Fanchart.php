@@ -232,14 +232,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					$text = reverseText($name) . "\n";
 					if (!empty($addname)) $text .= reverseText($addname). "\n";
 
-					if ($person->canDisplayDetails()) {
-						$birthrec = get_sub_record(1, "1 BIRT", $person->getGedcomRecord());
-						$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $birthrec, $match);
-						if ($ct>0) $text.= trim($match[1]);
-						$deathrec = get_sub_record(1, "1 DEAT", $person->getGedcomRecord());
-						$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $deathrec, $match);
-						if ($ct>0) $text.= "-".trim($match[1]);
-					}
+					$text .= $person->getLifeSpan();
 
 					$text = unhtmlentities($text);
 					$text = strip_tags($text);
