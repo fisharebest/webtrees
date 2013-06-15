@@ -71,7 +71,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addClass('', 'submenu flyout2');
 				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['husb']) . $parentlinks);
 				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label nowrap" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['husb']), ' nam">';
+				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['husb']), ' nam">';
 				echo '<a class="famnav_link" href="' . $people["husb"]->getHtmlUrl() . '">';
 				echo $people['husb']->getFullName();
 				echo '</a>';
@@ -84,7 +84,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addClass('', 'submenu flyout2');
 				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['wife']) . $parentlinks);
 				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label nowrap" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['wife']), ' nam">';
+				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['wife']), ' nam">';
 				echo '<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">';
 				echo $people['wife']->getFullName();
 				echo '</a>';
@@ -101,7 +101,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addClass('', 'submenu flyout2');
 				$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
 				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label nowrap" style="width:75px;">';
+				echo '<tr><td class="facts_label" style="width:75px;">';
 				echo $menu->getMenu();
 				echo '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
 				echo '<a class="famnav_link" href="' . $child->getHtmlUrl() . '">';
@@ -127,7 +127,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addClass('', 'submenu flyout2');
 				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['husb']) . $parentlinks);
 				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label nowrap" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people["husb"]), ' nam">';
+				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people["husb"]), ' nam">';
 				echo '<a class="famnav_link" href="' . $people['husb']->getHtmlUrl() . '">';
 				echo $people['husb']->getFullName();
 				echo '</a>';
@@ -140,7 +140,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addClass('', 'submenu flyout2');
 				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['wife']) . $parentlinks);
 				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label nowrap" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['wife']), ' nam">';
+				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['wife']), ' nam">';
 				echo '<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">';
 				echo $people['wife']->getFullName();
 				echo '</a>';
@@ -152,7 +152,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addClass('', 'submenu flyout2');
 				$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
 				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label nowrap" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
+				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
 				echo '<a class="famnav_link" href="' . $child->getHtmlUrl() . '">';
 				echo $child->getFullName();
 				echo '</a>';
@@ -179,7 +179,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addClass('', 'submenu flyout2');
 				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['husb']) . $parentlinks);
 				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label nowrap" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['husb']), ' nam">';
+				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['husb']), ' nam">';
 				echo '<a class="famnav_link" href="' . $people['husb']->getHtmlUrl() . '">';
 				echo $people['husb']->getFullName();
 				echo '</a>';
@@ -196,7 +196,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addClass('', 'submenu flyout2');
 				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['wife']) . $parentlinks);
 				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label nowrap" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['wife']), ' nam">';
+				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['wife']), ' nam">';
 				echo '<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">';
 				echo $people['wife']->getFullName();
 				echo '</a>';
@@ -209,7 +209,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addClass('', 'submenu flyout2');
 				$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
 				$menu->addSubmenu($submenu);
-				echo '<tr><td class="facts_label nowrap" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
+				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
 				echo '<a class="famnav_link" href="' . $child->getHtmlUrl() . '">';
 				echo $child->getFullName();
 				echo '</a>';
@@ -232,7 +232,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addClass('', 'submenu flyout2');
 				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['husb']) . $parentlinks);
 				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label nowrap" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['husb']), ' nam">';
+				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['husb']), ' nam">';
 				echo '<a class="famnav_link" href="' . $people['husb']->getHtmlUrl() . '">';
 				echo $people['husb']->getFullName();
 				echo '</a>';
@@ -245,7 +245,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addClass('', 'submenu flyout2');
 				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['wife']) . $parentlinks);
 				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label nowrap" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['wife']), ' nam">';
+				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['wife']), ' nam">';
 				echo '<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">';
 				echo $people['wife']->getFullName();
 				echo '</a>';
@@ -257,7 +257,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addClass('', 'submenu flyout2');
 				$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
 				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label nowrap" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
+				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
 				echo '<a class="famnav_link" href="' . $child->getHtmlUrl() . '">';
 				echo $child->getFullName();
 				echo '</a>';
