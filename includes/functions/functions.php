@@ -819,7 +819,7 @@ function get_relationship($person1, $person2, $followspouse=true, $maxlength=0, 
 
 	//-- set up first node for person1
 	$node1 = array(
-		'path'      => array($person1->getXref()),
+		'path'      => array($person1),
 		'length'    => 0,
 		'indi'      => $person1,
 		'relations' => array('self'),
@@ -854,7 +854,7 @@ function get_relationship($person1, $person2, $followspouse=true, $maxlength=0, 
 					if (!isset($visited[$spouse->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
-						$node1['path'][] = $spouse->getXref();
+						$node1['path'][] = $spouse;
 						$node1['indi'] = $spouse;
 						$node1['relations'][] = 'parent';
 						$p1nodes[] = $node1;
@@ -874,7 +874,7 @@ function get_relationship($person1, $person2, $followspouse=true, $maxlength=0, 
 					if (!isset($visited[$child->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
-						$node1['path'][] = $child->getXref();
+						$node1['path'][] = $child;
 						$node1['indi'] = $child;
 						$node1['relations'][] = 'sibling';
 						$p1nodes[] = $node1;
@@ -899,7 +899,7 @@ function get_relationship($person1, $person2, $followspouse=true, $maxlength=0, 
 						if (!in_array($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
 							$node1 = $node;
 							$node1['length']++;
-							$node1['path'][] = $spouse->getXref();
+							$node1['path'][] = $spouse;
 							$node1['indi'] = $spouse;
 							$node1['relations'][] = 'spouse';
 							$p1nodes[] = $node1;
@@ -920,7 +920,7 @@ function get_relationship($person1, $person2, $followspouse=true, $maxlength=0, 
 					if (!isset($visited[$child->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
-						$node1['path'][] = $child->getXref();
+						$node1['path'][] = $child;
 						$node1['indi'] = $child;
 						$node1['relations'][] = 'child';
 						$p1nodes[] = $node1;
@@ -942,28 +942,28 @@ function get_relationship($person1, $person2, $followspouse=true, $maxlength=0, 
 	}
 
 	// Convert generic relationships into sex-specific ones.
-	foreach ($resnode['path'] as $n=>$pid) {
+	foreach ($resnode['path'] as $n=>$indi) {
 		switch ($resnode['relations'][$n]) {
 		case 'parent':
-			switch (WT_Person::getInstance($pid)->getSex()) {
+			switch ($indi->getSex()) {
 			case 'M': $resnode['relations'][$n]='father'; break;
 			case 'F': $resnode['relations'][$n]='mother'; break;
 			}
 			break;
 		case 'child':
-			switch (WT_Person::getInstance($pid)->getSex()) {
+			switch ($indi->getSex()) {
 			case 'M': $resnode['relations'][$n]='son'; break;
 			case 'F': $resnode['relations'][$n]='daughter'; break;
 			}
 			break;
 		case 'spouse':
-			switch (WT_Person::getInstance($pid)->getSex()) {
+			switch ($indi->getSex()) {
 			case 'M': $resnode['relations'][$n]='husband'; break;
 			case 'F': $resnode['relations'][$n]='wife'; break;
 			}
 			break;
 		case 'sibling':
-			switch (WT_Person::getInstance($pid)->getSex()) {
+			switch ($indi->getSex()) {
 			case 'M': $resnode['relations'][$n]='brother'; break;
 			case 'F': $resnode['relations'][$n]='sister'; break;
 			}
@@ -978,8 +978,8 @@ function get_relationship_name($nodes) {
 	if (!is_array($nodes)) {
 		return '';
 	}
-	$pid1=$nodes['path'][0];
-	$pid2=$nodes['path'][count($nodes['path'])-1];
+	$person1=$nodes['path'][0];
+	$person2=$nodes['path'][count($nodes['path'])-1];
 	$path=array_slice($nodes['relations'], 1);
 	// Look for paths with *specific* names first.
 	// Note that every combination must be listed separately, as the same English
@@ -1003,7 +1003,7 @@ function get_relationship_name($nodes) {
 		$combined_path.=substr($rel, 0, 3);
 	}
 
-	return get_relationship_name_from_path($combined_path, $pid1, $pid2);
+	return get_relationship_name_from_path($combined_path, $person1, $person2);
 }
 
 function cousin_name($n, $sex) {
@@ -1110,13 +1110,11 @@ function cousin_name2($n, $sex, $relation) {
 }
 
 
-function get_relationship_name_from_path($path, $pid1, $pid2) {
+function get_relationship_name_from_path($path, $person1, $person2) {
 	if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
 		// TODO: Update all the “3 RELA ” values in class_person
 		return '<span class="error">'.$path.'</span>';
 	}
-	$person1=$pid1 ? WT_Person::GetInstance($pid1) : null;
-	$person2=$pid2 ? WT_Person::GetInstance($pid2) : null;
 	// The path does not include the starting person.  In some languages, the
 	// translation for a man’s (relative) is different to a woman’s (relative),
 	// due to inflection.
