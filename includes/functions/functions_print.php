@@ -658,11 +658,11 @@ function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
 			if ($associate) {
 				if ($rela) {
 					$label='<span class="rela_type">'.WT_Gedcom_Code_Rela::getValue($rela, $person).':&nbsp;</span>';
-					$label_2='<span class="rela_name">'.get_relationship_name(get_relationship($associate->getXref(), $person->getXref(), true, 4)).'</span>';
+					$label_2='<span class="rela_name">'.get_relationship_name(get_relationship($associate, $person, true, 4)).'</span>';
 				} else {
 					// Generate an automatic RELA
 					$label='';
-					$label_2='<span class="rela_name">'.get_relationship_name(get_relationship($associate->getXref(), $person->getXref(), true, 4)).'</span>';
+					$label_2='<span class="rela_name">'.get_relationship_name(get_relationship($associate, $person, true, 4)).'</span>';
 				}
 				if (!$label && !$label_2) {
 					$label=WT_I18N::translate('Relationships');

@@ -807,8 +807,8 @@ function sort_facts(&$arr) {
  * @param int $maxlength - the maximum length of path
  * @param int $path_to_find - which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
  */
-function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $path_to_find=0) {
-	if ($pid1==$pid2) {
+function get_relationship($person1, $person2, $followspouse=true, $maxlength=0, $path_to_find=0) {
+	if (!$person1 || !$person2 || $person1->equals($person2)) {
 		return false;
 	}
 
@@ -819,14 +819,14 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $path_
 
 	//-- set up first node for person1
 	$node1 = array(
-		'path'      => array($pid1),
+		'path'      => array($person1->getXref()),
 		'length'    => 0,
-		'pid'       => $pid1,
+		'indi'      => $person1,
 		'relations' => array('self'),
 	);
 	$p1nodes[] = $node1;
 
-	$visited[$pid1] = true;
+	$visited[$person1->getXref()] = true;
 
 	$found = false;
 	while (!$found) {
@@ -846,19 +846,19 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $path_
 			return false;
 		$node = $p1nodes[$shortest];
 		if ($maxlength==0 || count($node['path'])<=$maxlength) {
-			$indi = WT_Person::getInstance($node['pid']);
+			$indi = $node['indi'];
 			//-- check all parents and siblings of this node
 			foreach ($indi->getChildFamilies(WT_PRIV_HIDE) as $family) {
 				$visited[$family->getXref()] = true;
 				foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
 					if (!isset($visited[$spouse->getXref()])) {
 						$node1 = $node;
-						$node1['length']+=10;
+						$node1['length']++;
 						$node1['path'][] = $spouse->getXref();
-						$node1['pid'] = $spouse->getXref();
+						$node1['indi'] = $spouse;
 						$node1['relations'][] = 'parent';
 						$p1nodes[] = $node1;
-						if ($node1['pid']==$pid2) {
+						if ($spouse->equals($person2)) {
 							if ($path_to_find>0) {
 								$path_to_find--;
 							} else {
@@ -873,12 +873,12 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $path_
 				foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
 					if (!isset($visited[$child->getXref()])) {
 						$node1 = $node;
-						$node1['length']+=50;
+						$node1['length']++;
 						$node1['path'][] = $child->getXref();
-						$node1['pid'] = $child->getXref();
+						$node1['indi'] = $child;
 						$node1['relations'][] = 'sibling';
 						$p1nodes[] = $node1;
-						if ($node1['pid']==$pid2) {
+						if ($child->equals($person2)) {
 							if ($path_to_find>0) {
 								$path_to_find--;
 							} else {
@@ -898,12 +898,12 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $path_
 					foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
 						if (!in_array($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
 							$node1 = $node;
-							$node1['length']+=100;
+							$node1['length']++;
 							$node1['path'][] = $spouse->getXref();
-							$node1['pid'] = $spouse->getXref();
+							$node1['indi'] = $spouse;
 							$node1['relations'][] = 'spouse';
 							$p1nodes[] = $node1;
-							if ($node1['pid']==$pid2) {
+							if ($spouse->equals($person2)) {
 								if ($path_to_find>0) {
 									$path_to_find--;
 								} else {
@@ -919,12 +919,12 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $path_
 				foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
 					if (!isset($visited[$child->getXref()])) {
 						$node1 = $node;
-						$node1['length']+=5;
+						$node1['length']++;
 						$node1['path'][] = $child->getXref();
-						$node1['pid'] = $child->getXref();
+						$node1['indi'] = $child;
 						$node1['relations'][] = 'child';
 						$p1nodes[] = $node1;
-						if ($node1['pid']==$pid2) {
+						if ($child->equals($person2)) {
 							if ($path_to_find>0) {
 								$path_to_find--;
 							} else {
@@ -996,8 +996,6 @@ function get_relationship_name($nodes) {
 	//
 	// This is very repetitive in English, but necessary in order to handle the
 	// complexities of other languages.
-	//
-	// TODO: handle unmarried partners, so need male-partner, female-partner, unknown-partner
 
 	// Make each relationship parts the same length, for simpler matching.
 	$combined_path='';
@@ -1141,9 +1139,45 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'mot': return WT_I18N::translate('mother');
 	case 'fat': return WT_I18N::translate('father');
 	case 'par': return WT_I18N::translate('parent');
-	case 'hus': return WT_I18N::translate('husband');
-	case 'wif': return WT_I18N::translate('wife');
-	case 'spo': return WT_I18N::translate('spouse');
+	case 'hus':
+		if ($person1 && $person2) {
+			foreach ($person1->getSpouseFamilies() as $family) {
+				if ($family->getSpouse($person1)->equals($person2)) {
+					if ($family->isNotMarried()) {
+						return WT_I18N::translate_c('MALE', 'partner');
+					} elseif($family->isDivorced()) {
+						return WT_I18N::translate('ex-husband');
+					}
+				}
+			}
+		}
+		return WT_I18N::translate('husband');
+	case 'wif':
+		if ($person1 && $person1) {
+			foreach ($person1->getSpouseFamilies() as $family) {
+				if ($family->getSpouse($person1)->equals($person2)) {
+					if ($family->isNotMarried()) {
+						return WT_I18N::translate_c('FEMALE', 'partner');
+					} elseif($family->isDivorced()) {
+						return WT_I18N::translate('ex-wife');
+					}
+				}
+			}
+		}
+		return WT_I18N::translate('wife');
+	case 'spo':
+		if ($person1 && $person2) {
+			foreach ($person1->getSpouseFamilies() as $family) {
+				if ($family->getSpouse($person1)->equals($person2)) {
+					if ($family->isNotMarried()) {
+						return WT_I18N::translate_c('MALE/FEMALE', 'partner');
+					} elseif($family->isDivorced()) {
+						return WT_I18N::translate('ex-spouse');
+					}
+				}
+			}
+		}
+		return WT_I18N::translate('spouse');
 	case 'son': return WT_I18N::translate('son');
 	case 'dau': return WT_I18N::translate('daughter');
 	case 'chi': return WT_I18N::translate('child');

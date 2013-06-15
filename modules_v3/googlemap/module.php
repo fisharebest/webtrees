@@ -746,7 +746,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			if ($i+1 >= pow(2, $curgen)) {$curgen++;}
 			$person = WT_Person::getInstance($controller->treeid[$i]);
 			if (!empty($person)) {
-				$pid = $controller->treeid[$i];
 				$name = $person->getFullName();
 				if ($name == WT_I18N::translate('Private')) $priv++;
 				$place = $person->getBirthPlace();
@@ -764,18 +763,20 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					if (($lat[$i] != NULL) && ($lon[$i] != NULL)) {
 						$count++;
 					} else { // The place is in the table but has empty values
-						if (!empty($name)) {
-							if (!empty($missing)) $missing .= ', ';
-							$addlist = '<a href="'.$person->getHtmlUrl().'">'. $name . '</a>';
-							$missing .= $addlist;
+						if ($name) {
+							if ($missing) {
+								$missing .= ', ';
+							}
+							$missing .= '<a href="' . $person->getHtmlUrl() . '">' . $name . '</a>';
 							$miscount++;
 						}
 					}
 				} else { // There was no place, or not listed in the map table
-					if (!empty($name)) {
-						if (!empty($missing)) $missing .= ', ';
-						$addlist = '<a href="'.$person->getHtmlUrl().'">'. $name . '</a>';
-						$missing .= $addlist;
+					if ($name) {
+						if ($missing) {
+							$missing .= ', ';
+						}
+						$missing .= '<a href="' . $person->getHtmlUrl() . '">' . $name . '</a>';
 						$miscount++;
 					}
 				}
@@ -1241,19 +1242,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		for ($i=0; $i<($controller->treesize); $i++) {
 			// moved up to grab the sex of the individuals
 			$person = WT_Person::getInstance($controller->treeid[$i]);
-			if (!empty($person)) {
-				$pid = $controller->treeid[$i];
-				$indirec = $person->getGedcomRecord();
-				$sex = $person->getSex();
-				$bplace = trim($person->getBirthPlace());
-				$bdate = $person->getBirthDate();
+			if ($person) {
 				$name = $person->getFullName();
 
 				// -- check to see if we have moved to the next generation
 				if ($i+1 >= pow(2, $curgen)) {
 					$curgen++;
 				}
-				$relationship=get_relationship_name(get_relationship($controller->root->getXref(), $pid, false, 0));
+				$relationship=get_relationship_name(get_relationship($controller->root, $person, false, 0));
 				if (empty($relationship)) $relationship=WT_I18N::translate('self');
 				$event = '<img src=\"'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/sq'.$curgen.'.png\" width=\"10\" height=\"10\">'.
 					'<strong>&nbsp;'.$relationship.':&nbsp;</strong>';
@@ -1270,7 +1266,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$datamid .= '('.WT_I18N::translate('View Person').')';
 				$datamid  .= '</a></span>';
 				$dataright = '<br><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .
-						addslashes($bdate->Display(false)).'<br>'.$bplace;
+						addslashes($person->getBirthDate()->Display(false)).'<br>'.$person->getBirthPlace();
 
 				$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
 				if ($latlongval[$i] != NULL) {
@@ -1314,7 +1310,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						$js.= 'var point = new google.maps.LatLng('.$lat[$i].','.$lon[$i].');';
 						$js.= "var marker = createMarker(point, \"".addslashes($name)."\",\n\t\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
 						$js.= "<div class='iwstyle'>";
-						$js.= "<a href='module.php?ged=".WT_GEDURL."&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid={$pid}&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
+						$js.= "<a href='module.php?ged=".WT_GEDURL."&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
 						if ($hideflags) $js.= '&amp;hideflags=1';
 						if ($hidelines) $js.= '&amp;hidelines=1';
 						$js.= "' title='".WT_I18N::translate('Pedigree map')."'>".$dataleft."</a>".$datamid.$dataright."</div>\", \"".$marker_number."\");";

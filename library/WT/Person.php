@@ -95,7 +95,7 @@ class WT_Person extends WT_GedcomRecord {
 		}
 		// Consider relationship privacy (unless an admin is applying download restrictions)
 		if (WT_USER_GEDCOM_ID && WT_USER_PATH_LENGTH && $this->getGedId()==WT_GED_ID && $access_level=WT_USER_ACCESS_LEVEL) {
-			return get_relationship(WT_USER_GEDCOM_ID, $this->getXref(), true, WT_USER_PATH_LENGTH)!==false;
+			return get_relationship(WT_Person::getInstance(WT_USER_GEDCOM_ID), $this, true, WT_USER_PATH_LENGTH)!==false;
 		}
 		// No restriction found - show living people to members only:
 		return WT_PRIV_USER>=$access_level;
