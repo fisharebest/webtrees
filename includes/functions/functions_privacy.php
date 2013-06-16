@@ -69,35 +69,3 @@ function canDisplayFact($xref, $ged_id, $gedrec, $access_level=WT_USER_ACCESS_LE
 	return true;
 }
 
-/**
-* Check fact record for editing restrictions
-*
-* Checks if the user is allowed to change fact information,
-* based on the existence of the RESN tag in the fact record.
-*
-* @return int Allowed or not allowed
-*/
-function FactEditRestricted($pid, $factrec) {
-	if (WT_USER_GEDCOM_ADMIN) {
-		return false;
-	}
-
-	if (preg_match("/2 RESN (.*)/", $factrec, $match)) {
-		$match[1] = strtolower(trim($match[1]));
-		if ($match[1] == "privacy" || $match[1]=="locked") {
-			$myindi=WT_USER_GEDCOM_ID;
-			if ($myindi == $pid) {
-				return false;
-			}
-			if (gedcom_record_type($pid, WT_GED_ID)=='FAM') {
-				$famrec = find_family_record($pid, WT_GED_ID);
-				$parents = find_parents_in_record($famrec);
-				if ($myindi == $parents["HUSB"] || $myindi == $parents["WIFE"]) {
-					return false;
-				}
-			}
-			return true;
-		}
-	}
-	return false;
-}
