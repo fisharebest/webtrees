@@ -188,7 +188,7 @@ if ($person1 && $person2) {
 			$dmin=0;
 			$dmax=0;
 			$depth=0;
-			foreach ($node['path'] as $index=>$pid) {
+			foreach ($node['path'] as $index=>$person) {
 				if ($node['relations'][$index]=='father' || $node['relations'][$index]=='mother' || $node['relations'][$index]=='parent') {
 					$depth++;
 					if ($depth>$dmax) {
@@ -233,11 +233,10 @@ if ($person1 && $person2) {
 				$up_arrow   ='icon-darrow';
 				$down_arrow ='icon-uarrow';
 			}
-			foreach ($node['path'] as $index=>$pid) {
+			foreach ($node['path'] as $index=>$person) {
 				$linex = $xoffset;
 				$liney = $yoffset;
 				$mfstyle = 'NN';
-				$person=WT_Person::getInstance($pid);
 				switch ($person->getSex()) {
 				case 'M': $mfstyle='';   break;
 				case 'F': $mfstyle='F';  break;
@@ -380,9 +379,9 @@ if ($person1 && $person2) {
 				// Determine the z-index for this box
 				$zIndex = 200 - ($colNum * $depth + $rowNum);
 
-				echo '<div id="box', $pid, '.0" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $pxoffset, 'px; top:', $pyoffset, 'px; width:', $Dbwidth, 'px; height:', $Dbheight, 'px; z-index:', $zIndex, ';"><table><tr><td colspan="2" width="', $Dbwidth, '" height="', $Dbheight, '">';
-				print_pedigree_person(WT_Person::getInstance($pid), 1);
-				echo '</td></tr></table></div>';
+				echo '<div style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $pxoffset, 'px; top:', $pyoffset, 'px; width:', $Dbwidth, 'px; height:', $Dbheight, 'px; z-index:', $zIndex, ';">';
+				print_pedigree_person($person, 1);
+				echo '</div>';
 			}
 		}
 		echo '</div>'; // <div id="relationship_chart">
