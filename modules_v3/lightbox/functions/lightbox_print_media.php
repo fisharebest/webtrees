@@ -371,7 +371,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			if ($source && $source->canDisplayDetails()) {
 				if (!$source_menu) {
 					// Group sources under a top level menu
-					$source_menu = new WT_Menu(WT_I18N::translate('View Sources'), '#', null, 'right', 'right');
+					$source_menu = new WT_Menu(WT_I18N::translate('Sources'), '#', null, 'right', 'right');
 					$source_menu->addClass('submenuitem', 'submenu');
 				}
 				//now add a link to the actual source as a submenu
