@@ -1110,7 +1110,7 @@ function cousin_name2($n, $sex, $relation) {
 }
 
 
-function get_relationship_name_from_path($path, $person1, $person2) {
+function get_relationship_name_from_path($path, WT_Person $person1=null, WT_Person $person2=null) {
 	if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
 		// TODO: Update all the “3 RELA ” values in class_person
 		return '<span class="error">'.$path.'</span>';
@@ -1118,7 +1118,7 @@ function get_relationship_name_from_path($path, $person1, $person2) {
 	// The path does not include the starting person.  In some languages, the
 	// translation for a man’s (relative) is different to a woman’s (relative),
 	// due to inflection.
-	$sex1=$person1 ? $person1->getSex() : 'U';
+	$sex1 = $person1 ? $person1->getSex() : 'U';
 
 	// The sex of the last person in the relationship determines the name in
 	// many cases.  e.g. great-aunt / great-uncle

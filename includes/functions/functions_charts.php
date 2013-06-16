@@ -530,19 +530,17 @@ function print_url_arrow($id, $url, $label, $dir=2) {
  * @param string $sosa sosa number
  */
 function get_sosa_name($sosa) {
-	$relations=array();
+	$path='';
 	while ($sosa>1) {
 		if ($sosa%2==1) {
 			$sosa-=1;
-			array_unshift($relations, 'mother');
+			$path = 'mot' . $path;
 		} else {
-			array_unshift($relations, 'father');
+			$path = 'fat' . $path;
 		}
 		$sosa/=2;
 	}
-	array_unshift($relations, 'self');
-	$path=array('relations'=>$relations, 'path'=>$relations); // path is just a dummy
-	return get_relationship_name($path);
+	return get_relationship_name_from_path($path, null, null);
 }
 
 /**
