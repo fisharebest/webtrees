@@ -31,6 +31,7 @@
 
 exit;
 
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Access');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Allow GEDCOM switching');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Allow messages to be stored online');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('An unexpected database error occured.');
@@ -53,6 +54,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If you don\'t want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Link ID');
+/* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Most Viewed Items');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('No such ID exists in this GEDCOM file.');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Online editing');
 /* I18N: This message is deleted in webtrees-1.4.2  */ WT_I18N::translate('Outgoing server (SMTP) name');
