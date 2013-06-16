@@ -807,7 +807,7 @@ function sort_facts(&$arr) {
  * @param int $maxlength - the maximum length of path
  * @param int $path_to_find - which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
  */
-function get_relationship($person1, $person2, $followspouse=true, $maxlength=0, $path_to_find=0) {
+function get_relationship(WT_Person $person1, WT_Person $person2, $followspouse=true, $maxlength=0, $path_to_find=0) {
 	if (!$person1 || !$person2 || $person1->equals($person2)) {
 		return false;
 	}
