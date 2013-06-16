@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 self::exec(
-	"ALTER TABLE `##media`" .
+	"ALTER IGNORE TABLE `##media`" .
 	" CHANGE m_ext      m_ext      VARCHAR(6)   COLLATE utf8_unicode_ci NOT NULL," .
 	" CHANGE m_type     m_type     VARCHAR(20)  COLLATE utf8_unicode_ci NOT NULL," .
 	" CHANGE m_filename m_filename VARCHAR(512) COLLATE utf8_unicode_ci NOT NULL," .
