@@ -854,10 +854,10 @@ function print_main_notes(WT_Event $fact, $level) {
 
 	$nlevel = $level+1;
 	if ($fact->getIsNew()) {
-		$styleadd = 'change_new';
+		$styleadd = ' change_new';
 		$can_edit = $level==1 && $fact->canEdit();
 	} elseif ($fact->getIsOld()) {
-		$styleadd='change_old';
+		$styleadd=' change_old';
 		$can_edit = false;
 	} else {
 		$styleadd='';
@@ -929,75 +929,66 @@ function print_main_notes(WT_Event $fact, $level) {
 			}
 		}
 		echo '</td>';
-			if ($nt==0) {
-				//-- print embedded note records
-				$text = preg_replace("/~~/", "<br>", trim($match[$j][1]));
-				$text .= get_cont($nlevel, $nrec);
-				$text = expand_urls($text);
-			} else {
-				//-- print linked/shared note records
-				$note=WT_Note::getInstance($nid);
-				if ($note) {
-					$noterec=$note->getGedcomRecord();				
-					$nt = preg_match("/^0 @[^@]+@ NOTE (.*)/", $noterec, $n1match);
-					$text = "";
-					$centitl = "";
-					if ($nt>0) {
-						// If Census assistant installed, enable hotspot link on shared note title ---------------------
-						if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-							$centitl  = str_replace("~~", "", trim($n1match[1]));
-							$centitl  = str_replace("<br>", "", $centitl);
-							$centitl  = "<a href=\"note.php?nid=$nid\">".$centitl."</a>";
-						} else {
-							$text = preg_replace("/~~/", "<br>", trim($n1match[1]));
-						}
-					}
-					$text .= get_cont(1, $noterec);
-					$text = expand_urls($text).'<br>';
-					// If Census assistant installed, and if Formatted Shared Note (using pipe "|" as delimiter) -------
-					if (strstr($text, '|') && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-						require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php';
-					} else {
-						$text = $centitl.''.$text;
-					}
+		if ($nt==0) {
+			//-- print embedded note records
+			$text = preg_replace("/~~/", "<br>", $match[$j][1]);
+			$text .= get_cont($nlevel, $nrec);
+			$text = expand_urls($text);
+		} else {
+			//-- print linked/shared note records
+			$note=WT_Note::getInstance($nid);
+			if ($note) {
+				$noterec=$note->getGedcomRecord();				
+				$nt = preg_match("/^0 @[^@]+@ NOTE (.*)/", $noterec, $n1match);
+				$line1 = $n1match[1];
+				$text  = get_cont(1, $noterec);
+				// If Census assistant installed,
+				if ($fact->getTag()=='CENS' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+					$centitl  = str_replace('~~', '', $line1);
+					$centitl  = str_replace('<br>', '', $centitl);
+					$centitl  = "<a href=\"note.php?nid=$nid\">" . $centitl . '</a>';
+					require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php';
+				} else {
+					$text = expand_urls($line1 . $text);
 				}
+			} else {
+				$text = '<span class="error">' . htmlspecialchars($nid) . '</span>';
 			}
+		}
 
 		echo '<td class="optionbox', $styleadd, ' wrap" align="', $TEXT_DIRECTION== "rtl"?"right": "left" , '">';
-		
-		if (!empty($text)) {
-			echo $text;
-			if (!empty($noterec)) print_fact_sources($noterec, 1);
+		echo $text;
 
-			// 2 RESN tags.  Note, there can be more than one, such as "privacy" and "locked"
-			if (preg_match_all("/\n2 RESN (.+)/", $factrec, $matches)) {
-				foreach ($matches[1] as $match) {
-					echo '<br><span class="label">', WT_Gedcom_Tag::getLabel('RESN'), ':</span> <span class="field">';
-					switch ($match) {
-					case 'none':
-						// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
-						// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
-						echo '<i class="icon-resn-none"></i> ', WT_I18N::translate('Show to visitors');
-						break;
-					case 'privacy':
-						echo '<i class="icon-resn-privacy"></i> ', WT_I18N::translate('Show to members');
-						break;
-					case 'confidential':
-						echo '<i class="icon-resn-confidential"></i> ', WT_I18N::translate('Show to managers');
-						break;
-					case 'locked':
-						echo '<i class="icon-resn-locked"></i> ', WT_I18N::translate('Only managers can edit');
-						break;
-					default:
-						echo $match;
-						break;
-					}
-					echo '</span>';
+		if (!empty($noterec)) print_fact_sources($noterec, 1);
+
+		// 2 RESN tags.  Note, there can be more than one, such as "privacy" and "locked"
+		if (preg_match_all("/\n2 RESN (.+)/", $factrec, $matches)) {
+			foreach ($matches[1] as $match) {
+				echo '<br><span class="label">', WT_Gedcom_Tag::getLabel('RESN'), ':</span> <span class="field">';
+				switch ($match) {
+				case 'none':
+					// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
+					// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
+					echo '<i class="icon-resn-none"></i> ', WT_I18N::translate('Show to visitors');
+					break;
+				case 'privacy':
+					echo '<i class="icon-resn-privacy"></i> ', WT_I18N::translate('Show to members');
+					break;
+				case 'confidential':
+					echo '<i class="icon-resn-confidential"></i> ', WT_I18N::translate('Show to managers');
+					break;
+				case 'locked':
+					echo '<i class="icon-resn-locked"></i> ', WT_I18N::translate('Only managers can edit');
+					break;
+				default:
+					echo $match;
+					break;
 				}
+				echo '</span>';
 			}
-			echo '<br>';
-			print_fact_sources($nrec, $nlevel);
 		}
+		echo '<br>';
+		print_fact_sources($nrec, $nlevel);
 		echo '</td></tr>';
 	}
 }
