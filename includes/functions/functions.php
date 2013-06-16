@@ -1140,7 +1140,7 @@ function get_relationship_name_from_path($path, $person1, $person2) {
 	case 'hus':
 		if ($person1 && $person2) {
 			foreach ($person1->getSpouseFamilies() as $family) {
-				if ($family->getSpouse($person1)->equals($person2)) {
+				if ($person2->equals($family->getSpouse($person1))) {
 					if ($family->isNotMarried()) {
 						return WT_I18N::translate_c('MALE', 'partner');
 					} elseif($family->isDivorced()) {
@@ -1153,7 +1153,7 @@ function get_relationship_name_from_path($path, $person1, $person2) {
 	case 'wif':
 		if ($person1 && $person1) {
 			foreach ($person1->getSpouseFamilies() as $family) {
-				if ($family->getSpouse($person1)->equals($person2)) {
+				if ($person2->equals($family->getSpouse($person1))) {
 					if ($family->isNotMarried()) {
 						return WT_I18N::translate_c('FEMALE', 'partner');
 					} elseif($family->isDivorced()) {
@@ -1166,7 +1166,7 @@ function get_relationship_name_from_path($path, $person1, $person2) {
 	case 'spo':
 		if ($person1 && $person2) {
 			foreach ($person1->getSpouseFamilies() as $family) {
-				if ($family->getSpouse($person1)->equals($person2)) {
+				if ($person2->equals($family->getSpouse($person1))) {
 					if ($family->isNotMarried()) {
 						return WT_I18N::translate_c('MALE/FEMALE', 'partner');
 					} elseif($family->isDivorced()) {
