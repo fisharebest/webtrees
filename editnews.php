@@ -45,7 +45,7 @@ $text     =safe_POST('text', WT_REGEX_UNSAFE);
 switch ($action) {
 case 'compose':
 	echo '<h3>'.WT_I18N::translate('Add/edit journal/news entry').'</h3>';
-	echo '<form name="messageform" method="post" action="editnews.php?action=save&news_id='.$news_id.'">';
+	echo '<form style="overflow: hidden;" name="messageform" method="post" action="editnews.php?action=save&news_id='.$news_id.'">';
 	if ($news_id) {
 		$news = getNewsItem($news_id);
 	} else {
@@ -60,9 +60,10 @@ case 'compose':
 	echo '<input type="hidden" name="gedcom_id" value="'.$news['gedcom_id'].'">';
 	echo '<input type="hidden" name="date" value="'.$news['date'].'">';
 	echo '<table>';
-	echo '<tr><td align="right">'.WT_I18N::translate('Title:').'</td><td><input type="text" name="title" size="50" dir="auto" autofocus value="'.$news['title'].'"></td></tr>';
-	echo '<tr><td valign="top" align="right">'.WT_I18N::translate('Entry Text:').'</td>';
-	echo '<td>';
+	echo '<tr><th style="text-align:left;font-weight:900;" dir="auto;">'.WT_I18N::translate('Title:').'</th><tr>';
+	echo '<tr><td><input type="text" name="title" size="50" dir="auto" autofocus value="'.$news['title'].'"></td></tr>';
+	echo '<tr><th valign="top" style="text-align:left;font-weight:900;" dir="auto;">'.WT_I18N::translate('Entry Text:').'</th></tr>';
+	echo '<tr><td>';
 	if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 		require_once WT_ROOT.WT_MODULES_DIR.'ckeditor/ckeditor.php';
 		$oCKeditor = new CKEditor();
@@ -76,7 +77,7 @@ case 'compose':
 		echo '<textarea name="text" cols="80" rows="10" dir="auto">'.htmlspecialchars($news['text']).'</textarea>';
 	}
 	echo '</td></tr>';
-	echo '<tr><td></td><td><input type="submit" value="'.WT_I18N::translate('save').'"></td></tr>';
+	echo '<tr><td><input type="submit" value="'.WT_I18N::translate('save').'"></td></tr>';
 	echo '</table>';
 	echo '</form>';
 	break;
