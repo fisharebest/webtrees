@@ -651,7 +651,7 @@ class WT_GedcomRecord {
 		}
 		$html='<a href="'.$this->getHtmlUrl().'"';
 		if ($find) {
-			$html.=' onclick="pasteid(\''.$this->getXref().'\');"';
+			$html.=' onclick="pasteid(\''.$this->getXref().'\', \'' . htmlentities($name) . '\');"';
 		}
 		$html.=' class="list_item"><b>'.$name.'</b>';
 		$html.=$this->format_list_details();
