@@ -168,10 +168,8 @@ echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to
 			}
 			echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br>';
 			$event = $person->getChangeEvent();
-			if (!is_null($event)) {
-				echo format_fact_date($event, new WT_Person(''), false, true);
-			} else {
-				echo format_fact_date(new WT_Event('1 CHAN', $person, 0), new WT_Person(''), false, true);
+			if ($event) {
+				echo format_fact_date($event, $person, false, true);
 			}
 			echo '</td></tr></table>';
 		}
