@@ -343,7 +343,7 @@ html[dir=rtl] #relationship_chart {margin-right:10px;}
 
 #timeline_chart {position:relative;top:0;left:0;}
 
-#compact_chart, #fan_chart, #ancestry_chart, #familybook_chart {margin:20px;}
+#compact_chart, #fan_chart, #ancestry_chart, #familybook_chart, #hourglass_chart {margin:20px;}
 
 .button {width:60px;}
 .center {text-align:center;}

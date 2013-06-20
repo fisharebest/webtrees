@@ -212,7 +212,7 @@ html[dir=rtl] #ancestry_chart li {margin:0;padding:0 2px 0 0;left:auto;}
 .person4 {background-color:#ff5555;border:outset #ff5555 1px;vertical-align:top;}
 .person5 {background-color:#55ff55;border:outset #55ff55 1px;vertical-align:top;}
 
-#compact_chart, #fan_chart, #ancestry_chart, #familybook_chart {margin:20px;}
+#compact_chart, #fan_chart, #ancestry_chart, #familybook_chart, #hourglass_chart {margin:20px;}
 
 .compact_view {cursor:url(images/zoomin.png), n-resize;}
 .compact_view p {font-size:90%;margin:0;}
