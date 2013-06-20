@@ -547,7 +547,6 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000000;border
 .nav_content {padding:0;width:100%;}
 .note_details,a.showit > span {display:none;}
 .nowrap,.tag_cloud a {white-space:nowrap;}
-.pedigree_table,dl {margin:0;}
 .place {padding-top:5px;}
 .statistics_chart {text-align:center;}
 .wrap {white-space:normal;}

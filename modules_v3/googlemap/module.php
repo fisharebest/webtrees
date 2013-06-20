@@ -659,78 +659,73 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			->addInLineJavascript('var pastefield; function paste_id(value) {pastefield.value=value;}');
 
 		echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
-		echo '<div><table><tr><td valign="middle">';
-		echo '<h2>', $controller->getPageTitle(), '</h2>';
+		echo '<div id="pedigreemap-page">
+				<h2>', $controller->getPageTitle(), '</h2>';
 
 		// -- print the form to change the number of displayed generations
 		?>
-		</td>
-		<td width="50px">&nbsp;</td>
-		<td>
-			<form name="people" method="get" action="module.php?ged=<?php echo WT_GEDURL; ?>&amp;mod=googlemap&amp;mod_action=pedigree_map">
-				<input type="hidden" name="mod" value="googlemap">
-				<input type="hidden" name="mod_action" value="pedigree_map">
-				<table class="pedigree_table" width="555">
-					<tr>
-						<td class="descriptionbox wrap">
-							<?php echo WT_I18N::translate('Individual'); ?>
-						</td>
-						<td class="descriptionbox wrap">
-							<?php echo WT_I18N::translate('Generations'); ?>
-						</td>
-						<td class="descriptionbox wrap">
-							<?php echo WT_I18N::translate('Hide flags'), help_link('PEDIGREE_MAP_hideflags','googlemap'); ?>
-						</td>
-						<td class="descriptionbox wrap">
-							<?php echo WT_I18N::translate('Hide lines'), help_link('PEDIGREE_MAP_hidelines','googlemap'); ?>
-						</td>
-					</tr>
-					<tr>
-						<td class="optionbox">
-							<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-							<?php echo print_findindi_link('rootid'); ?>
-						</td>
-						<td class="optionbox">
-							<select name="PEDIGREE_GENERATIONS">
-							<?php
-								for ($p=3; $p<=$MAX_PEDIGREE_GENERATIONS; $p++) {
-									echo '<option value="', $p, '" ';
-									if ($p == $controller->PEDIGREE_GENERATIONS) {
-										echo 'selected="selected"';
-									}
-									echo '>', $p, '</option>';
+		<form name="people" method="get" action="module.php?ged=<?php echo WT_GEDURL; ?>&amp;mod=googlemap&amp;mod_action=pedigree_map">
+			<input type="hidden" name="mod" value="googlemap">
+			<input type="hidden" name="mod_action" value="pedigree_map">
+			<table class="list_table" width="555">
+				<tr>
+					<td class="descriptionbox wrap">
+						<?php echo WT_I18N::translate('Individual'); ?>
+					</td>
+					<td class="descriptionbox wrap">
+						<?php echo WT_I18N::translate('Generations'); ?>
+					</td>
+					<td class="descriptionbox wrap">
+						<?php echo WT_I18N::translate('Hide flags'), help_link('PEDIGREE_MAP_hideflags','googlemap'); ?>
+					</td>
+					<td class="descriptionbox wrap">
+						<?php echo WT_I18N::translate('Hide lines'), help_link('PEDIGREE_MAP_hidelines','googlemap'); ?>
+					</td>
+				</tr>
+				<tr>
+					<td class="optionbox">
+						<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
+						<?php echo print_findindi_link('rootid'); ?>
+					</td>
+					<td class="optionbox">
+						<select name="PEDIGREE_GENERATIONS">
+						<?php
+							for ($p=3; $p<=$MAX_PEDIGREE_GENERATIONS; $p++) {
+								echo '<option value="', $p, '" ';
+								if ($p == $controller->PEDIGREE_GENERATIONS) {
+									echo 'selected="selected"';
 								}
-							?>
-							</select>
-						</td>
-						<td class="optionbox">
-							<?php
-							echo '<input name="hideflags" type="checkbox"';
-							if ($hideflags) {
-								echo ' checked="checked"';
+								echo '>', $p, '</option>';
 							}
-							echo '>';
-							?>
-						</td>
-						<td class="optionbox">
-							<?php
-							echo '<input name="hidelines" type="checkbox"';
-							if ($hidelines) {
-								echo ' checked="checked"';
-							}
-							echo '>';
-							?>
-						</td>
-					</tr>
-					<tr>
-						<td class="topbottombar" colspan="5">
-							<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
-						</td>
-					</tr>
-				</table>
-			</form>
-		</td></tr>
-		</table>
+						?>
+						</select>
+					</td>
+					<td class="optionbox">
+						<?php
+						echo '<input name="hideflags" type="checkbox"';
+						if ($hideflags) {
+							echo ' checked="checked"';
+						}
+						echo '>';
+						?>
+					</td>
+					<td class="optionbox">
+						<?php
+						echo '<input name="hidelines" type="checkbox"';
+						if ($hidelines) {
+							echo ' checked="checked"';
+						}
+						echo '>';
+						?>
+					</td>
+				</tr>
+				<tr>
+					<td class="topbottombar" colspan="5">
+						<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
+					</td>
+				</tr>
+			</table>
+		</form>
 		<!-- end of form -->
 
 		<!-- count records by type -->
@@ -784,6 +779,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 		//<!-- end of count records by type -->
 		//<!-- start of map display -->
+		echo '<div id="pedigreemap_chart">';
 		echo '<table class="tabs_table" cellspacing="0" cellpadding="0" border="0" width="100%">';
 		echo '<tr>';
 		echo '<td valign="top">';
@@ -844,7 +840,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		echo '</td>';
 		echo '</tr>';
 		echo '</table>';
-		echo '</div>';
+		echo '</div>';// close #pedigreemap_chart
+		echo '</div>';// close #pedigreemap-page
 		?>
 		<!-- end of map display -->
 		<!-- Start of map scripts -->

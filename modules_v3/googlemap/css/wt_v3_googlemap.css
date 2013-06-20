@@ -108,3 +108,4 @@ ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#0
 html[dir="rtl"] #side_bar .gallery img, html[dir="rtl"] .iwstyle .gallery img, html[dir="rtl"] .highlt_img .gallery img {float:right;margin:0 0 0 4px;}
 #side_bar .icon-silhouette-M, #side_bar .icon-silhouette-F, #side_bar .icon-silhouette-U, .iwstyle .icon-silhouette-M, .iwstyle .icon-silhouette-F, .iwstyle .icon-silhouette-U {float:left;}
 html[dir="rtl"] #side_bar .icon-silhouette-M, html[dir="rtl"] #side_bar .icon-silhouette-F, html[dir="rtl"] #side_bar .icon-silhouette-U, html[dir="rtl"] .iwstyle .icon-silhouette-M, html[dir="rtl"] .iwstyle .icon-silhouette-F, html[dir="rtl"] .iwstyle .icon-silhouette-U  {float:right;}
+#pedigreemap_chart {margin:20px;}
