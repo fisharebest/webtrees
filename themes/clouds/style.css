@@ -751,6 +751,11 @@ top:50px;
 left:0;
 }
 
+#compact_chart {
+margin:20px;
+}
+
+
 .compact_view {cursor:url(images/zoomin.png),n-resize;}
 .compact_view p {
 font-size:90%;

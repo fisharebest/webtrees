@@ -738,11 +738,15 @@ padding:0 2px 0 0;
 left:auto;
 }
 
-/*-- timeline chart specific styles --*/
+#compact_chart {
+margin:20px;
+}
+
 #timeline_chart {
 	position:relative;
 	top:0;
 }
+
 
 .timeline_table {
 }

@@ -691,12 +691,16 @@ padding:0 2px 0 0;
 left:auto;
 }
 
-/*-- timeline chart specific styles --*/
+#compact_chart {
+	margin:20px;
+}
+
 #timeline_chart {
 	position:relative;
 	top:0;
 	left:0;
 }
+
 
 .person0 {
 	background-color:#aaaaff;

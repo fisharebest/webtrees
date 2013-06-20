@@ -1016,6 +1016,10 @@ padding:0 2px 0 0;
 left:auto;
 }
 
+#compact_chart {
+margin:20px;
+}
+
 /*-- timeline chart specific styles --*/
 #timeline_chart {
 	position:relative;
