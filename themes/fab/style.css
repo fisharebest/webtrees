@@ -348,6 +348,7 @@ padding:5px;
 #familybook_chart .line3, #familybook_chart .pvline, #familybook_chart .spacer {width: 3px}
 #familybook_chart .line4 {width: 7px}
 [ID^="vline"] {width:3px;}
+#familybook_chart h3 {font-size: 16px;text-align:center;}
 
 .tdtop {vertical-align:top;}
 .tdmid {vertical-align:middle;}
@@ -692,7 +693,7 @@ padding:0 2px 0 0;
 left:auto;
 }
 
-#compact_chart, #fan_chart, #ancestry_chart {
+#compact_chart, #fan_chart, #ancestry_chart, #familybook_chart {
 	margin:20px;
 }
 

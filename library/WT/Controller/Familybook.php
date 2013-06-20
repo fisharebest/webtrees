@@ -367,9 +367,10 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		if (count($families)>0 || empty($firstrun)) {
 			$firstrun=true;
 			echo
-				'<h2>',
-				/* I18N: A title/heading. %s is an individual’s name */ WT_I18N::translate('Family of %s', $person->getFullName()),
-				'</h2><table class="t0"><tr><td class="tdmid">';
+				'<h3>',
+					/* I18N: A title/heading. %s is an individual’s name */ WT_I18N::translate('Family of %s', $person->getFullName()),
+				'</h3>
+				<table class="t0"><tr><td class="tdmid">';
 			$this->dgenerations = $this->generations;
 			$this->print_descendency($person, 1);
 			echo '</td><td class="tdmid">';

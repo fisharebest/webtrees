@@ -171,6 +171,7 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 #familybook_chart .line3, #familybook_chart .pvline, #familybook_chart .spacer {width: 3px;}
 #familybook_chart .line4 {width: 7px;}
 [ID^="vline"] {width:3px;}
+#familybook_chart h3 {color:#000066;font-size: 16px;text-align:center;}
 
 .tdtop {vertical-align:top;}
 .tdmid {vertical-align:middle;}
@@ -211,7 +212,7 @@ html[dir=rtl] #ancestry_chart li {margin:0;padding:0 2px 0 0;left:auto;}
 .person4 {background-color:#ff5555;border:outset #ff5555 1px;vertical-align:top;}
 .person5 {background-color:#55ff55;border:outset #55ff55 1px;vertical-align:top;}
 
-#compact_chart, #fan_chart, #ancestry_chart {margin:20px;}
+#compact_chart, #fan_chart, #ancestry_chart, #familybook_chart {margin:20px;}
 
 .compact_view {cursor:url(images/zoomin.png), n-resize;}
 .compact_view p {font-size:90%;margin:0;}
