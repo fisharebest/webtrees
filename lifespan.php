@@ -53,7 +53,7 @@ $controller
 			timer = setTimeout("scroll(\'"+move+"\')",speed); // Keeps the timeline moving as long as the user holds down the mouse button on one of the direction arrows
 			topInnerDiv = document.getElementById("topInner");
 			innerDiv = document.getElementById("inner");
-			myouterDiv = document.getElementById("outerDiv");
+			myouterDiv = document.getElementById("lifespan_chart");
 
 			//compares the direction the timeline is moving and how far it can move in each direction.
 			if (move == "left" && ((maxX+topInnerDiv.offsetLeft+350) > (myouterDiv.offsetLeft+myouterDiv.offsetWidth))) {
@@ -253,7 +253,8 @@ $controller
 			');
 
 echo
-	'<h2>', WT_I18N::translate('Lifespans'), help_link('lifespan_chart'), '</h2>
+	'<div id="lifespan-page">
+	<h2>', WT_I18N::translate('Lifespans'), help_link('lifespan_chart'), '</h2>
 	<table><tr><td>
 	<form name="people" action="lifespan.php">';
 
@@ -306,7 +307,7 @@ echo
 		echo '<br><b>', WT_I18N::plural('%d Individual', '%d Individuals', $people, $people), '</b>
 	</form>
 	</td></tr></table>
-	<div dir="ltr" id="outerDiv" class="lifespan_outer">
+	<div dir="ltr" id="lifespan_chart" class="lifespan_outer">
 		<div dir="ltr" id="topInner"  class="lifespan_timeline" onmousedown="pandiv(); return false;">';
 		$controller->PrintTimeline($controller->timelineMinYear,$controller->timelineMaxYear);
 		echo '</div>
@@ -335,7 +336,8 @@ echo
 			</table>
 		</div>
 		<!--  Floating div controls END-->
-	</div>';
+	</div>
+	</div>';// close #lifespan-page
 // Sets the boundaries for how far the timeline can move in the up direction
 $controller->addInlineJavascript('var maxY = 80-' . $maxY . ';');
 // Sets the boundaries for how far the timeline can move in the left direction

@@ -38,8 +38,8 @@ if (!$ajax) {
 	$controller->setPageTitle(WT_I18N::translate('Statistics'))
 		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 		->addInlineJavascript('
-			jQuery("#stats-tabs").css("visibility", "visible");
-			jQuery("#stats-tabs").tabs({
+			jQuery("#statistics_chart").css("visibility", "visible");
+			jQuery("#statistics_chart").tabs({
 				beforeLoad: function() {jQuery("#loading-indicator").addClass("loading-image");},
 				load: function() {jQuery("#loading-indicator").removeClass("loading-image");},
 				cache: true
@@ -47,8 +47,8 @@ if (!$ajax) {
 		')		
 		->pageHeader();
 
-	echo '<div id="stats-details"><h2>', WT_I18N::translate('Statistics'), '</h2>',
-		'<div id="stats-tabs">',
+	echo '<div id="statistics-page"><h2>', WT_I18N::translate('Statistics'), '</h2>',
+		'<div id="statistics_chart">',
 		'<ul>',
 			'<li><a href="statistics.php?ged=', WT_GEDURL, '&amp;ajax=1&amp;tab=0">',
 			'<span id="stats-indi">', WT_I18N::translate('Individuals'), '</span></a></li>',
@@ -60,8 +60,8 @@ if (!$ajax) {
 			'<span id="stats-own">', WT_I18N::translate('Own charts'), '</span></a></li>',
 		'</ul>',
 		'<div id="loading-indicator" style="margin:auto;width:100%;"></div>',
-		'</div>', // stats-tabs
-		'</div>', // stats-details
+		'</div>', // statistics_chart
+		'</div>', // statistics-page
 	'<br><br>';
 } else {
 	$controller=new WT_Controller_Ajax();
@@ -87,8 +87,8 @@ if (!$ajax) {
 				<td class="facts_value" align="center">', $stats->totalDeceased(), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value statistics_chart" colspan="2">', $stats->chartSex(), '</td>
-				<td class="facts_value statistics_chart" colspan="2">', $stats->chartMortality(), '</td>
+				<td class="facts_value statistics-page" colspan="2">', $stats->chartSex(), '</td>
+				<td class="facts_value statistics-page" colspan="2">', $stats->chartMortality(), '</td>
 			</tr>
 		</table>
 		<br>
@@ -107,8 +107,8 @@ if (!$ajax) {
 				<td class="facts_label">', WT_I18N::translate('Deaths by century'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value statistics_chart">', $stats->statsBirth(), '</td>
-				<td class="facts_value statistics_chart">', $stats->statsDeath(), '</td>
+				<td class="facts_value statistics-page">', $stats->statsBirth(), '</td>
+				<td class="facts_value statistics-page">', $stats->statsDeath(), '</td>
 			</tr>
 			<tr>
 				<td class="facts_label">', WT_I18N::translate('Earliest birth'), '</td>
@@ -141,7 +141,7 @@ if (!$ajax) {
 				<td class="facts_value" align="center">', $stats->averageLifespanFemale(true), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value statistics_chart" colspan="3">', $stats->statsAge(), '</td>
+				<td class="facts_value statistics-page" colspan="3">', $stats->statsAge(), '</td>
 			</tr>
 		</table>
 		<br>
@@ -186,8 +186,8 @@ if (!$ajax) {
 				<td class="facts_label">', WT_I18N::translate('Top given names'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value statistics_chart">', $stats->chartCommonSurnames(), '</td>
-				<td class="facts_value statistics_chart">', $stats->chartCommonGiven(), '</td>
+				<td class="facts_value statistics-page">', $stats->chartCommonSurnames(), '</td>
+				<td class="facts_value statistics-page">', $stats->chartCommonGiven(), '</td>
 			</tr>
 		</table>
 		</fieldset>';
@@ -209,8 +209,8 @@ if (!$ajax) {
 				<td class="facts_label">', WT_I18N::translate('Divorces by century'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value statistics_chart">', $stats->statsMarr(), '</td>
-				<td class="facts_value statistics_chart">', $stats->statsDiv(), '</td>
+				<td class="facts_value statistics-page">', $stats->statsMarr(), '</td>
+				<td class="facts_value statistics-page">', $stats->statsDiv(), '</td>
 			</tr>
 			<tr>
 				<td class="facts_label">', WT_I18N::translate('Earliest marriage'), '</td>
@@ -261,7 +261,7 @@ if (!$ajax) {
 				<td class="facts_value">', $stats->oldestMarriageFemale(), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value statistics_chart" colspan="2">', $stats->statsMarrAge(), '</td>
+				<td class="facts_value statistics-page" colspan="2">', $stats->statsMarrAge(), '</td>
 			</tr>
 		</table>
 		<br>
@@ -296,8 +296,8 @@ if (!$ajax) {
 				<td class="facts_value" align="center">', $stats->noChildrenFamilies(), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value statistics_chart">', $stats->statsChildren(), '</td>
-				<td class="facts_value statistics_chart">', $stats->chartNoChildrenFamilies(), '</td>
+				<td class="facts_value statistics-page">', $stats->statsChildren(), '</td>
+				<td class="facts_value statistics-page">', $stats->chartNoChildrenFamilies(), '</td>
 			</tr>
 			<tr>
 				<td class="facts_label">', WT_I18N::translate('Largest families'), '</td>
@@ -367,7 +367,7 @@ if (!$ajax) {
 				<td class="facts_label">', WT_I18N::translate('Media objects'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value statistics_chart">', $stats->chartMedia(), '</td>
+				<td class="facts_value statistics-page">', $stats->chartMedia(), '</td>
 			</tr>
 			</table>
 		</fieldset>
@@ -383,8 +383,8 @@ if (!$ajax) {
 				<td class="facts_value" align="center">', $stats->totalFamsWithSources(), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value statistics_chart">', $stats->chartIndisWithSources(), '</td>
-				<td class="facts_value statistics_chart">', $stats->chartFamsWithSources(), '</td>
+				<td class="facts_value statistics-page">', $stats->chartIndisWithSources(), '</td>
+				<td class="facts_value statistics-page">', $stats->chartFamsWithSources(), '</td>
 			</tr>
 			</table>
 		</fieldset>

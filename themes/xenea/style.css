@@ -930,6 +930,8 @@ width:100%;
 #familybook_chart .line4 {width: 7px}
 [ID^="vline"] {width:3px;}
 #familybook_chart h3 {font-size: 16px;text-align:center;}
+#relationship-page h3 {margin:20px 0 0 20px;}
+#relationship_chart {margin:0 20px 0;}
 
 .tdtop {vertical-align:top;}
 .tdmid {vertical-align:middle;}
@@ -1473,7 +1475,7 @@ ul.clist {
 	margin:0;
 }
 
-.statistics_chart {
+.statistics-page {
 	text-align:center;
 }
 
@@ -1895,9 +1897,9 @@ html[dir=rtl] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20p
 .source-list th, .note-list th, .repo-list th, .media-list th, .indi-list th, .fam-list th, .recent_changes_block th, .upcoming_events_block th, .todays_events_block th, .todo_block th, .yahrzeit_block th, .surname-list th, .givn-list th {cursor:pointer;white-space:nowrap;}
 .source-list th:last-child, .note-list th:last-child, .repo-list th:last-child {margin:0 -2px 1px 1px;padding:3px 0 4px;width:24px;}
 .givn-list th {cursor:pointer;white-space:nowrap;padding:2px;text-align:center;}
-#source-details h2, #sourcelist-page h2, #note-details h2, #notelist-page h2, #repo-details h2, #repolist-page h2, #media-details h2, #medialist-page h2, #stats-details h2 {margin-bottom:20px;text-align:center;}
+#source-details h2, #sourcelist-page h2, #note-details h2, #notelist-page h2, #repo-details h2, #repolist-page h2, #media-details h2, #medialist-page h2, #statistics-page h2 {margin-bottom:20px;text-align:center;}
 #source-tabs, #note-tabs, #repo-tabs, #media-tabs {margin:auto;visibility:hidden;width:80%;}
-#stats-tabs {margin:auto;visibility:hidden;width:90%;}
+#statistics_chart {margin:auto;visibility:hidden;width:90%;}
 #source-edit, #note-edit, #repo-edit, #media-edit {overflow-x:auto;}
 .media-list td img {display:block;height:40px;width:auto;margin:3px auto;}
 .filtersH, .filtersF {margin:4px}

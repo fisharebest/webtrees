@@ -720,6 +720,8 @@ html[dir=rtl] #descendancy_chart ul {background-position:right top;margin:0 15px
 #familybook_chart .line4 {width: 7px}
 [ID^="vline"] {width:3px;}
 #familybook_chart h3 {font-size: 16px;text-align:center;}
+#relationship-page h3 {margin:20px 0 0 20px;}
+#relationship_chart {margin:0 20px 0;}
 
 .tdtop {vertical-align:top;}
 .tdmid {vertical-align:middle;}
@@ -1634,7 +1636,7 @@ ul.clist {
 list-style-image:none;
 }
 
-.statistics_chart {
+.statistics-page {
 text-align:center;
 }
 
@@ -2411,7 +2413,7 @@ margin:auto;
 width:99%;
 }
 
-#source-details h2,#sourcelist-page h2,#note-details h2,#notelist-page h2,#repo-details h2,#repolist-page h2,#media-details h2,#medialist-page h2,#stats-details h2 {
+#source-details h2,#sourcelist-page h2,#note-details h2,#notelist-page h2,#repo-details h2,#repolist-page h2,#media-details h2,#medialist-page h2,#statistics-page h2 {
 margin-bottom:20px;
 text-align:center;
 }
@@ -2426,7 +2428,7 @@ visibility:hidden;
 width:80%;
 }
 
-#stats-tabs {
+#statistics_chart {
 margin:auto;
 visibility:hidden;
 width:90%;

@@ -322,6 +322,8 @@ html[dir=rtl] #descendancy_chart ul {background-position:right top;margin:0 15px
 #familybook_chart .line4 {width: 7px}
 [ID^="vline"] {width:3px;}
 #familybook_chart h3 {font-size: 16px;text-align:center;}
+#relationship-page h3 {margin:20px 0 0 20px;}
+#relationship_chart {margin:0 20px 0;}
 
 .tdtop {vertical-align:top;}
 .tdmid {vertical-align:middle;}
@@ -548,7 +550,7 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000000;border
 .note_details,a.showit > span {display:none;}
 .nowrap,.tag_cloud a {white-space:nowrap;}
 .place {padding-top:5px;}
-.statistics_chart {text-align:center;}
+.statistics-page {text-align:center;}
 .wrap {white-space:normal;}
 
 #pending h2 {margin-bottom:20px;text-align:center;}
@@ -848,9 +850,9 @@ html[dir=rtl] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20p
 
 .givn-list th {padding:2px;text-align:center;}
 
-#source-details h2,#sourcelist-page h2,#note-details h2,#notelist-page h2,#repo-details h2,#repolist-page h2,#media-details h2,#medialist-page h2,#stats-details h2 {margin-bottom:20px;text-align:center;}
+#source-details h2,#sourcelist-page h2,#note-details h2,#notelist-page h2,#repo-details h2,#repolist-page h2,#media-details h2,#medialist-page h2,#statistics-page h2 {margin-bottom:20px;text-align:center;}
 #source-tabs,#note-tabs,#repo-tabs,#media-tabs {margin:auto;visibility:hidden;width:80%;}
-#stats-tabs {margin:auto;visibility:hidden;width:90%;}
+#statistics_chart {margin:auto;visibility:hidden;width:90%;}
 #source-edit,#note-edit,#repo-edit,#media-edit {overflow-x:auto;}
 
 .media-list td img {display:block;height:40px;width:auto;margin:3px auto;}
