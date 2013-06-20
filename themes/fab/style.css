@@ -620,6 +620,7 @@ right:10px;
 }
 
 /*-- descendancy chart specific stylesheets --*/
+#descendancy_chart{margin:20px;}
 #descendancy_chart ul {
 	background-image:url(images/vline.png);
 	background-repeat:repeat-y;

@@ -307,6 +307,7 @@ html[dir=rtl] #ancestry_chart ul {background-position:right top;margin:0 15px 0 
 html[dir=rtl] #ancestry_chart li {margin:0;padding:0 2px 0 0;left:auto;}
 html[dir=rtl] #ancestry_chart {margin-right:10px;}
 
+#descendancy_chart{margin:20px;}
 #descendancy_chart ul {background-image:url(../images/vline.png);background-position:left top;background-repeat:repeat-y;list-style:none;margin:0 0 5px 15px;padding-bottom:0;padding-right:0;padding-top:0;}
 #descendancy_chart li {list-style:none;margin:0 0 0 -15px;padding-bottom:0;padding-right:0;padding-top:0;}
 

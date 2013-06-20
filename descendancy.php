@@ -33,8 +33,8 @@ $controller
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the "find indi" link
 
-echo '<table><tr><td valign="top"><h2>', $controller->getPageTitle(), '</h2>';
-echo '</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">';
+echo '<div id="descendancy-page"><h2>', $controller->getPageTitle(), '</h2>';
+echo '<form method="get" name="people" action="?">';
 echo '<input type="hidden" name="ged" value="', WT_GEDCOM, '">';
 echo '<input type="hidden" name="show_full" value="', $controller->show_full, '">';
 echo '<table class="list_table">';
@@ -93,7 +93,6 @@ if ($controller->show_full) {
 	echo '0" onclick="document.people.show_full.value=\'1\';"';
 }
 echo '></td></tr></table></form>';
-echo '</td></tr></table>';
 
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
@@ -125,6 +124,7 @@ case 3: //-- Family list
 	echo '</div>';
 	break;
 }
+echo '</div>';// close #descendancy-page
 
 function indi_desc($person, $n, $array) {
 	if ($n<1) {

@@ -188,6 +188,7 @@ html[dir=rtl] #pedigree_chart {left:auto;right:10px;}
 #pedigree_chart #childbox {border:1px solid;background-color:#ffffff;padding:5px;position:absolute;visibility:hidden;}
 
 /*-- descendancy chart specific stylesheets --*/
+#descendancy_chart{margin:20px;}
 #descendancy_chart ul {background-image:url(images/vline.png);background-repeat:repeat-y;background-position:left top;list-style:none;margin:0 0 5px 15px;padding-top:0;padding-right:0;padding-bottom:0;}
 #descendancy_chart li {list-style:none;margin:0 0 0 -15px;padding-top:0;padding-right:0;padding-bottom:0;}
 html[dir=rtl] #descendancy_chart ul {background-position:right top;margin:0 15px 0 0;left:auto;}
