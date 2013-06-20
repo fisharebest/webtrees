@@ -41,13 +41,8 @@ $controller
 	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the 'find indi' link
 
 ?>
-<table class="list_table">
-	<tr>
-		<td>
+<div id="page-fan">
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
-		</td>
-		<td width="50px">&nbsp;</td>
-		<td>
 			<form name="people" method="get" action="#">
 				<table class="list_table">
 					<tr>
@@ -95,5 +90,8 @@ if ($controller->error_message) {
 }
 
 if ($controller->root) {
-	echo $controller->generate_fan_chart('html');
+	echo '<div id="fan_chart">',
+		$controller->generate_fan_chart('html'),
+		'</div>';
 }
+echo '</div'; // close #page-chart

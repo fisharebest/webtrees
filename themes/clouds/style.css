@@ -751,10 +751,9 @@ top:50px;
 left:0;
 }
 
-#compact_chart {
+#compact_chart, #fan_chart {
 margin:20px;
 }
-
 
 .compact_view {cursor:url(images/zoomin.png),n-resize;}
 .compact_view p {
