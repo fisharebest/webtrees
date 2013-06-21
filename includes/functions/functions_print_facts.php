@@ -852,7 +852,6 @@ function print_main_notes(WT_Event $fact, $level) {
 	$parent  = $fact->getParentObject();
 	$pid     = $parent->getXref();
 
-	$nlevel = $level+1;
 	if ($fact->getIsNew()) {
 		$styleadd = ' change_new';
 		$can_edit = $level==1 && $fact->canEdit();
@@ -866,16 +865,6 @@ function print_main_notes(WT_Event $fact, $level) {
 
 	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
-		$nrec = get_sub_record($level, "$level NOTE", $factrec, $j+1);
-		$nt = preg_match("/\d NOTE @(.*)@/", $match[$j][0], $nmatch);
-		if ($nt>0) {
-			$nid = $nmatch[1];
-			if (empty($styleadd) && find_updated_record($nid, WT_GED_ID)!==null) {
-				$styleadd = 'change_old';
-				$newfactrec = $factrec.="\nWT_NEW";
-				print_main_notes($fact, $level);
-			}
-		}
 		if ($level>=2) echo '<tr class="row_note2">';
 		else echo '<tr>';
 		echo '<td valign="top" class="descriptionbox';
@@ -929,13 +918,10 @@ function print_main_notes(WT_Event $fact, $level) {
 			}
 		}
 		echo '</td>';
-		if ($nt==0) {
-			//-- print embedded note records
-			$text = preg_replace("/~~/", "<br>", $match[$j][1]);
-			$text .= get_cont($nlevel, $nrec);
-			$text = expand_urls($text);
-		} else {
+		$nrec = get_sub_record($level, "$level NOTE", $factrec, $j+1);
+		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
 			//-- print linked/shared note records
+			$nid = $nmatch[1];
 			$note=WT_Note::getInstance($nid);
 			if ($note) {
 				$noterec=$note->getGedcomRecord();				
@@ -954,6 +940,10 @@ function print_main_notes(WT_Event $fact, $level) {
 			} else {
 				$text = '<span class="error">' . htmlspecialchars($nid) . '</span>';
 			}
+		} else {
+			//-- print embedded note records
+			$text = $match[$j][1] . get_cont($level+1, $nrec);
+			$text = expand_urls($text);
 		}
 
 		echo '<td class="optionbox', $styleadd, ' wrap" align="', $TEXT_DIRECTION== "rtl"?"right": "left" , '">';
@@ -988,7 +978,7 @@ function print_main_notes(WT_Event $fact, $level) {
 			}
 		}
 		echo '<br>';
-		print_fact_sources($nrec, $nlevel);
+		print_fact_sources($nrec, $level+1);
 		echo '</td></tr>';
 	}
 }
