@@ -71,6 +71,7 @@ class WT_GedcomRecord {
 	// been fetched previously).
 	static public function getInstance($data) {
 		global $gedcom_record_cache, $GEDCOM;
+		static $pending_record_cache;
 
 		$is_pending=false; // Did this record come from a pending edit
 
@@ -102,10 +103,27 @@ class WT_GedcomRecord {
 			// Otherwise relationship privacy rules will not allow us to see
 			// newly added records.
 			if (WT_USER_CAN_EDIT) {
-				$tmp=find_updated_record($pid, $ged_id, true);
-				if ($tmp) {
-					$is_pending=true;
-					$data=$tmp;
+				if (!isset($pending_record_cache[$ged_id])) {
+					// Fetch all pending records in one database query
+					$pending_record_cache[$ged_id]=array();
+					$rows = WT_DB::prepare(
+						"SELECT xref, new_gedcom FROM `##change` WHERE status='pending' AND gedcom_id=?"
+					)->execute(array($ged_id))->fetchAll();
+					foreach ($rows as $row) {
+						$pending_record_cache[$ged_id][$row->xref] = $row->new_gedcom;
+					}
+				}
+
+				if (isset($pending_record_cache[$ged_id][$pid])) {
+					// A pending edit exists for this record
+					$tmp = $pending_record_cache[$ged_id][$pid];
+					// $tmp can be an empty string, indicating the record has
+					// a pending deletion.  Ignore this, as we handle pending
+					// deletions separately.
+					if ($tmp) {
+						$is_pending=true;
+						$data=$tmp;
+					}
 				}
 			}
 
