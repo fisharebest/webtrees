@@ -55,13 +55,9 @@ class TreeView {
 	* @param string $rootPersonId the id of the root person
 	* @param int $generations number of generations to draw
 	*/
-	public function drawViewport($rootPersonId, $generations) {
+	public function drawViewport(WT_Person $rootPerson, $generations) {
 		global $GEDCOM, $controller;
 
-		$rootPerson = WT_Person::getInstance($rootPersonId);
-		if (is_null($rootPerson)) {
-			$rootPerson = new WT_Person('');
-		}
 		if (WT_SCRIPT_NAME == 'individual.php') {
 			$path = 'individual.php?pid='.$rootPerson->getXref().'&amp;ged='.$GEDCOM.'&allPartners='.($this->allPartners ? "false" : "true").'#tree';
 		} else {

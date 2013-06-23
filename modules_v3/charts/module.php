@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -140,7 +140,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 				$content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="'.$mod->css().'" type="text/css" />\');</script>';
 				$content .= '<script src="'.$mod->js().'"></script>';
-		    list($html, $js) = $tv->drawViewport($person->getXref(), 2);
+				list($html, $js) = $tv->drawViewport($person, 2);
 				$content .= $html.'<script>'.$js.'</script>';
 				$content .= '</td>';
 			}

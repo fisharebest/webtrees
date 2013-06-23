@@ -3,7 +3,7 @@
 //
 // Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load 
 //
-// Copyright (C) 2012 webtrees development team
+// Copyright (C) 2013 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -51,7 +51,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		require_once WT_MODULES_DIR.$this->getName().'/class_treeview.php';
 		$tv = new TreeView('tvTab');
-		list($html, $js) = $tv->drawViewport($controller->record->getXref(), 3);
+		list($html, $js) = $tv->drawViewport($controller->record, 3);
 		return
 			'<script src="' . $this->js() . '"></script>' .
 			'<script>' . $js . '</script>' .
@@ -105,7 +105,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 
 				$person=$controller->getSignificantIndividual();
 
-				list($html, $js)=$tv->drawViewport($person->getXref(), 4);
+				list($html, $js)=$tv->drawViewport($person, 4);
 
 				$controller
 					->setPageTitle(WT_I18N::translate('Interactive tree of %s', $person->getFullName()))
