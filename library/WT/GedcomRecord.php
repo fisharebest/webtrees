@@ -33,7 +33,6 @@ class WT_GedcomRecord {
 	const URL_PREFIX  = 'gedrecord.php?pid=';
 
 	protected $xref       =null;  // The record identifier
-	protected $type       =null;  // INDI, FAM, etc.
 	public    $ged_id     =null;  // The gedcom file, only set if this record comes from the database
 	protected $_gedrec    =null;  // Raw gedcom text (unprivatised)
 	private   $gedrec     =null;  // Raw gedcom text (privatised)
@@ -54,7 +53,6 @@ class WT_GedcomRecord {
 		if (is_array($data)) {
 			// Construct from a row from the database
 			$this->xref   =$data['xref'];
-			$this->type   =$data['type'];
 			$this->ged_id =$data['ged_id'];
 			$this->_gedrec=$data['gedrec'];
 		} else {
@@ -62,7 +60,6 @@ class WT_GedcomRecord {
 			$this->_gedrec=$data;
 			if (preg_match('/^0 (?:@('.WT_REGEX_XREF.')@ )?('.WT_REGEX_TAG.')/', $data, $match)) {
 				$this->xref=$match[1];
-				$this->type=$match[2];
 				$this->ged_id=WT_GED_ID;
 			}
 		}
@@ -438,7 +435,7 @@ class WT_GedcomRecord {
 
 	// Generate a private version of this record
 	protected function createPrivateGedcomRecord($access_level) {
-		return "0 @".$this->xref."@ ".$this->type."\n1 NOTE ".WT_I18N::translate('Private');
+		return '0 @' . $this->xref . '@ ' . static::RECORD_TYPE . "\n1 NOTE " . WT_I18N::translate('Private');
 	}
 
 	// Convert a name record into sortable and full/display versions.  This default

@@ -49,7 +49,7 @@ class WT_Source extends WT_GedcomRecord {
 
 	// Generate a private version of this record
 	protected function createPrivateGedcomRecord($access_level) {
-		return "0 @".$this->xref."@ ".$this->type."\n1 TITL ".WT_I18N::translate('Private');
+		return '0 @' . $this->xref . "@ SOUR\n1 TITL " . WT_I18N::translate('Private');
 	}
 
 	// Fetch the record from the database
