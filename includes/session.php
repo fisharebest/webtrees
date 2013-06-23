@@ -140,28 +140,6 @@ set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
 
-// Check configuration issues that affect various versions of PHP
-if (version_compare(PHP_VERSION, '6.0', '<')) {
-	if (get_magic_quotes_runtime()) {
-		// Magic quotes were deprecated in PHP5.3 and removed in PHP6.0
-		// Disabling them on PHP5.3 will cause a strict-warning, so ignore errors.
-		@set_magic_quotes_runtime(false);
-	}
-	// magic_quotes_gpc can’t be disabled at run-time, so clean them up as necessary.
-	if (get_magic_quotes_gpc() || ini_get('magic_quotes_sybase') && strtolower(ini_get('magic_quotes_sybase'))!='off') {
-		$in = array(&$_GET, &$_POST, &$_REQUEST, &$_COOKIE);
-		while (list($k,$v) = each($in)) {
-			foreach ($v as $key => $val) {
-				if (!is_array($val)) {
-					$in[$k][$key] = stripslashes($val);
-					continue;
-				}
-				$in[] =& $in[$k][$key];
-			}
-		}
-		unset($in);
-	}
-}
 // PHP requires a time zone to be set in php.ini
 if (!ini_get('date.timezone')) {
 	date_default_timezone_set(@date_default_timezone_get());
@@ -199,11 +177,6 @@ if (!isset($_SERVER['REQUEST_URI']))  {
 		$_SERVER['REQUEST_URI'].='?'.$_SERVER['QUERY_STRING'];
 	}
 }
-
-// Enable this code when we release webtrees 1.5
-//if (version_compare(PHP_VERSION, '5.3.3', '<')) {
-//	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-php-version.php');
-//}
 
 // Common functions
 require WT_ROOT.'includes/functions/functions.php';
