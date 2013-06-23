@@ -90,14 +90,7 @@ class WT_GedcomRecord {
 
 		// Look for the record in the database
 		if (!is_array($data)) {
-			if (version_compare(PHP_VERSION, '5.3', '>')) {
-				// PHP 5.3 supports late static binding, but the syntax breaks PHP 5.2,
-				// so wrap it in eval() to hide it from PHP 5.2
-				eval('$data=static::fetchGedcomRecord($pid, $ged_id);');
-			} else {
-				// PHP 5.2 does not - use a (slower) fallback.
-				$data=self::fetchGedcomRecord($pid, $ged_id);
-			}
+			$data=static::fetchGedcomRecord($pid, $ged_id);
 
 			// If we can edit, then we also need to be able to see pending records.
 			// Otherwise relationship privacy rules will not allow us to see
