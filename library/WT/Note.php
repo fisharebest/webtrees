@@ -2,7 +2,7 @@
 // Class file for a Shared Note (NOTE) object
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2009  PGV Development Team.  All rights reserved.
@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -29,6 +29,9 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Note extends WT_GedcomRecord {
+	const RECORD_TYPE = 'NOTE';
+	const URL_PREFIX  = 'note.php?nid=';
+
 	// Implement note-specific privacy logic
 	protected function _canDisplayDetailsByType($access_level) {
 		// Hide notes if they are attached to private records
@@ -64,15 +67,6 @@ class WT_Note extends WT_GedcomRecord {
 		return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
 	}
 	
-	// Generate a URL to this record, suitable for use in HTML
-	public function getHtmlUrl() {
-		return parent::_getLinkUrl('note.php?nid=', '&amp;');
-	}
-	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
-	public function getRawUrl() {
-		return parent::_getLinkUrl('note.php?nid=', '&');
-	}
-
 	// The 'name' of a note record is the first line.  This can be
 	// somewhat unwieldy if lots of CONC records are used.  Limit to 100 chars
 	protected function _addName($type, $value, $gedrec) {

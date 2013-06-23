@@ -180,7 +180,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$record=WT_GedcomRecord::getInstance($iid2);
 		if ($record) {
 			$headjs='';
-			if ($record->getType()=='FAM') {
+			if ($record instanceof WT_Family) {
 				if ($record->getHusband()) {
 					$headjs=$record->getHusband()->getXref();
 				} elseif ($record->getWife()) {

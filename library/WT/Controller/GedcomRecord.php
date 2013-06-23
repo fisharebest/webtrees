@@ -42,7 +42,8 @@ class WT_Controller_GedcomRecord extends WT_Controller_Page {
 				$this->setPageTitle($this->record->getFullName());
 			} else {
 				// e.g. "Individual" or "Source"
-				$this->setPageTitle(WT_Gedcom_Tag::getLabel($this->record->getType()));
+				$record = $this->record;
+				$this->setPageTitle(WT_Gedcom_Tag::getLabel($record::RECORD_TYPE));
 			}
 		} else {
 			// No such record

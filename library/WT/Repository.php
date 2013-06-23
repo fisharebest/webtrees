@@ -2,7 +2,7 @@
 // Class file for a Repository (REPO) object
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -29,6 +29,9 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Repository extends WT_GedcomRecord {
+	const RECORD_TYPE = 'REPO';
+	const URL_PREFIX  = 'repo.php?rid=';
+
 	// Fetch the record from the database
 	protected static function fetchGedcomRecord($xref, $ged_id) {
 		static $statement=null;
@@ -36,22 +39,12 @@ class WT_Repository extends WT_GedcomRecord {
 		if ($statement===null) {
 			$statement=WT_DB::prepare(
 				"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec ".
-				"FROM `##other` WHERE o_id=? AND o_file=? AND o_type='REPO'"
+				"FROM `##other` WHERE o_id=? AND o_file=?"
 			);
 		}
 		return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
 	}
 	
-	// Generate a URL to this record, suitable for use in HTML
-	public function getHtmlUrl() {
-		return parent::_getLinkUrl('repo.php?rid=', '&amp;');
-	}
-
-	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
-	public function getRawUrl() {
-		return parent::_getLinkUrl('repo.php?rid=', '&');
-	}
-
 	// Generate a private version of this record
 	protected function createPrivateGedcomRecord($access_level) {
 		return "0 @".$this->xref."@ REPO\n1 NAME ".WT_I18N::translate('Private');

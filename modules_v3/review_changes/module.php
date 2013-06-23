@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -121,15 +121,8 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 					$record=WT_GedcomRecord::getInstance($change->xref);
 					if ($record->canDisplayDetails()) {
 						$content.='<b>'.$record->getFullName().'</b>';
-						switch ($record->getType()) {
-						case 'INDI':
-						case 'FAM':
-						case 'SOUR':
-						case 'OBJE':
-							$content.=$block ? '<br>' : ' ';
-							$content.='<a href="'.$record->getHtmlUrl().'">'.WT_I18N::translate('View the changes').'</a>';
-							break;
-						}
+						$content.=$block ? '<br>' : ' ';
+						$content.='<a href="'.$record->getHtmlUrl().'">'.WT_I18N::translate('View the changes').'</a>';
 						$content.='<br>';
 					}
 				}

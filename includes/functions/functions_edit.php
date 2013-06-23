@@ -1647,7 +1647,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 					// Check if a CENS event ---------------------------
 					if ($event_add=='census_add') {
 						$type_pid=WT_GedcomRecord::getInstance($pid);
-						if ($type_pid->getType()=='INDI' ) {
+						if ($type_pid instanceof WT_Person) {
 							echo '<br>', print_addnewnote_assisted_link($element_id, $pid);
 						}
 					}

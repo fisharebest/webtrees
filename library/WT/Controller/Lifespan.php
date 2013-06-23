@@ -140,7 +140,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 					$this->pids[$key] = $value;
 					$person = WT_Person::getInstance($value);
 					// list of linked records includes families as well as individuals.
-					if ($person && $person->getType()=='INDI') {
+					if ($person) {
 						$bdate = $person->getEstimatedBirthDate();
 						$ddate = $person->getEstimatedDeathDate();
 						//--Checks to see if the details of that person can be viewed

@@ -2,7 +2,7 @@
 // Class file for a Family
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -29,6 +29,9 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Family extends WT_GedcomRecord {
+	const RECORD_TYPE = 'FAM';
+	const URL_PREFIX  = 'family.php?famid=';
+
 	private $husb = null;
 	private $wife = null;
 	private $marriage = null;
@@ -328,15 +331,6 @@ class WT_Family extends WT_GedcomRecord {
 			}
 		}
 		return array();
-	}
-
-	// Generate a URL to this record, suitable for use in HTML
-	public function getHtmlUrl() {
-		return parent::_getLinkUrl('family.php?famid=', '&amp;');
-	}
-	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
-	public function getRawUrl() {
-		return parent::_getLinkUrl('family.php?famid=', '&');
 	}
 
 	// Get an array of structures containing all the names in the record

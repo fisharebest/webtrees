@@ -29,6 +29,9 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_GedcomRecord {
+	const RECORD_TYPE = 'UNKNOWN';
+	const URL_PREFIX  = 'gedrecord.php?pid=';
+
 	protected $xref       =null;  // The record identifier
 	protected $type       =null;  // INDI, FAM, etc.
 	public    $ged_id     =null;  // The gedcom file, only set if this record comes from the database
@@ -223,13 +226,7 @@ class WT_GedcomRecord {
 	public function getGedId() {
 		return $this->ged_id;
 	}
-	/**
-	* get the object type
-	* @return string returns the type of this object 'INDI','FAM', etc.
-	*/
-	public function getType() {
-		return $this->type;
-	}
+
 	/**
 	* get gedcom record
 	*/
@@ -270,14 +267,14 @@ class WT_GedcomRecord {
 
 	// Generate a URL to this record, suitable for use in HTML
 	public function getHtmlUrl() {
-		return self::_getLinkUrl('gedrecord.php?pid=', '&amp;');
+		return self::_getLinkUrl(static::URL_PREFIX, '&amp;');
 	}
 	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
 	public function getRawUrl() {
-		return self::_getLinkUrl('gedrecord.php?pid=', '&');
+		return self::_getLinkUrl(static::URL_PREFIX, '&');
 	}
 
-	protected function _getLinkUrl($link, $separator) {
+	private function _getLinkUrl($link, $separator) {
 		if ($this->ged_id) {
 			// If the record was created from the database, we know the gedcom
 			return $link.$this->getXref().$separator.'ged='.rawurlencode(get_gedcom_from_id($this->ged_id));
@@ -356,9 +353,9 @@ class WT_GedcomRecord {
 	protected function _canDisplayDetailsByType($access_level) {
 		global $global_facts;
 
-		if (isset($global_facts[$this->getType()])) {
+		if (isset($global_facts[static::RECORD_TYPE])) {
 			// Restriction found
-			return $global_facts[$this->getType()]>=$access_level;
+			return $global_facts[static::RECORD_TYPE]>=$access_level;
 		} else {
 			// No restriction found - must be public:
 			return true;
@@ -486,10 +483,10 @@ class WT_GedcomRecord {
 						}
 					}
 				} else {
-					$this->_addName($this->getType(), $this->getFallBackName(), null);
+					$this->_addName(static::RECORD_TYPE, $this->getFallBackName(), null);
 				}
 			} else {
-				$this->_addName($this->getType(), WT_I18N::translate('Private'), null);
+				$this->_addName(static::RECORD_TYPE, WT_I18N::translate('Private'), null);
 			}
 		}
 		return $this->_getAllNames;
@@ -694,22 +691,22 @@ class WT_GedcomRecord {
 
 	// Fetch the records that link to this one
 	public function fetchLinkedIndividuals() {
-		return fetch_linked_indi($this->getXref(), $this->getType(), $this->ged_id);
+		return fetch_linked_indi($this->getXref(), static::RECORD_TYPE, $this->ged_id);
 	}
 	public function fetchLinkedFamilies() {
-		return fetch_linked_fam($this->getXref(), $this->getType(), $this->ged_id);
+		return fetch_linked_fam($this->getXref(), static::RECORD_TYPE, $this->ged_id);
 	}
 	public function fetchLinkedNotes() {
-		return fetch_linked_note($this->getXref(), $this->getType(), $this->ged_id);
+		return fetch_linked_note($this->getXref(), static::RECORD_TYPE, $this->ged_id);
 	}
 	public function fetchLinkedSources() {
-		return fetch_linked_sour($this->getXref(), $this->getType(), $this->ged_id);
+		return fetch_linked_sour($this->getXref(), static::RECORD_TYPE, $this->ged_id);
 	}
 	public function fetchLinkedRepositories() {
-		return fetch_linked_repo($this->getXref(), $this->getType(), $this->ged_id);
+		return fetch_linked_repo($this->getXref(), static::RECORD_TYPE, $this->ged_id);
 	}
 	public function fetchLinkedMedia() {
-		return fetch_linked_obje($this->getXref(), $this->getType(), $this->ged_id);
+		return fetch_linked_obje($this->getXref(), static::RECORD_TYPE, $this->ged_id);
 	}
 
 	// Get all attributes (e.g. DATE or PLAC) from an event (e.g. BIRT or MARR).

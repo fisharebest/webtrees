@@ -897,7 +897,7 @@ function update_names($xref, $ged_id, $record) {
 	}
 
 	foreach ($record->getAllNames() as $n=>$name) {
-		if ($record->getType()=='INDI') {
+		if ($record instanceof WT_Person) {
 			if ($name['givn']=='@P.N.') {
 				$soundex_givn_std=null;
 				$soundex_givn_dm=null;

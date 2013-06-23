@@ -100,7 +100,7 @@ class WT_Controller_Clippings {
 					$this->id="";
 					$this->action="";
 				}
-				else $this->type = strtolower($obj->getType());
+				else $this->type = strtolower($obj::RECORD_TYPE);
 			}
 			else if (empty($this->id)) $this->action="";
 			if (!empty($this->id) && $this->type != 'fam' && $this->type != 'indi' && $this->type != 'sour')
@@ -220,7 +220,7 @@ class WT_Controller_Clippings {
 					if ($convert=='yes') {
 						$record=utf8_decode($record);
 					}
-					switch ($object->getType()) {
+					switch ($object::RECORD_TYPE) {
 					case 'INDI':
 						$filetext .= $record."\n";
 						$filetext .= "1 SOUR @WEBTREES@\n";
@@ -396,7 +396,7 @@ class WT_Controller_Clippings {
 		$a=WT_GedcomRecord::getInstance($a);
 		$b=WT_GedcomRecord::getInstance($b);
 		if ($a && $b) {
-			switch ($a->getType()) {
+			switch ($a::RECORD_TYPE) {
 			case 'INDI': $t1=1; break;
 			case 'FAM':  $t1=2; break;
 			case 'SOUR': $t1=3; break;
@@ -405,7 +405,7 @@ class WT_Controller_Clippings {
 			case 'NOTE': $t1=6; break;
 			default:     $t1=7; break;
 			}
-			switch ($b->getType()) {
+			switch ($b::RECORD_TYPE) {
 			case 'INDI': $t2=1; break;
 			case 'FAM':  $t2=2; break;
 			case 'SOUR': $t2=3; break;

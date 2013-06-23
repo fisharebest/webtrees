@@ -2,7 +2,7 @@
 // Class file for a Source (SOUR) object
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -29,6 +29,9 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Source extends WT_GedcomRecord {
+	const RECORD_TYPE = 'SOUR';
+	const URL_PREFIX  = 'source.php?sid=';
+
 	// Implement source-specific privacy logic
 	protected function _canDisplayDetailsByType($access_level) {
 		// Hide sources if they are attached to private repositories ...
@@ -64,15 +67,6 @@ class WT_Source extends WT_GedcomRecord {
 
 	public function getAuth() {
 		return get_gedcom_value('AUTH', 1, $this->getGedcomRecord());
-	}
-
-	// Generate a URL to this record, suitable for use in HTML
-	public function getHtmlUrl() {
-		return parent::_getLinkUrl('source.php?sid=', '&amp;');
-	}
-	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
-	public function getRawUrl() {
-		return parent::_getLinkUrl('source.php?sid=', '&');
 	}
 
 	// Get an array of structures containing all the names in the record

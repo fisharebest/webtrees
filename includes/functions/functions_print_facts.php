@@ -45,8 +45,10 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		return;
 	}
 
-	if ($fact->getParentObject()) {
-		$pid = $fact->getParentObject()->getXref();
+	$parent = $fact->getParentObject();
+
+	if ($parent) {
+		$pid = $parent->getXref();
 	} else {
 		$pid = '';
 	}
@@ -90,16 +92,16 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	} else if (preg_match('/2 _WTS @('.WT_REGEX_XREF.')@/', $fact->getGedcomRecord(), $match)) {
 		// Event of close relative
 		$label_person=WT_Person::getInstance($match[1]);
-	} else if ($fact->getParentObject() instanceof WT_Family) {
+	} else if ($parent instanceof WT_Family) {
 		// Family event
-		$husb = $fact->getParentObject()->getHusband();
-		$wife = $fact->getParentObject()->getWife();
+		$husb = $parent->getHusband();
+		$wife = $parent->getWife();
 		if (empty($wife) && !empty($husb)) $label_person=$husb;
 		else if (empty($husb) && !empty($wife)) $label_person=$wife;
-		else $label_person=$fact->getParentObject();
+		else $label_person=$parent;
 	} else {
 		// The actual person
-		$label_person=$fact->getParentObject();
+		$label_person=$parent;
 	}
 
 	$styleadd="";
@@ -166,7 +168,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 			'<a onclick="return edit_record(\'', $pid, '\', ', $fact->getLineNumber(), ');" href="#" title="', WT_I18N::translate('Edit'), '">',  $label,  '</a>',
 			'<div class="editfacts">',
 			'<div class="editlink"><a class="editicon" onclick="return edit_record(\'', $pid, '\', ', $fact->getLineNumber(), ');" href="#" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></a></div>',
-			'<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\''.$fact->getParentObject()->getType().'\',factgedcom:\''.rawurlencode($fact->getGedcomRecord()).'\'},function(){location.reload();})" title="', WT_I18N::translate('Copy'), '"><span class="link_text">', WT_I18N::translate('Copy'), '</span></a></div>',
+			'<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\''.$parent::RECORD_TYPE.'\',factgedcom:\''.rawurlencode($fact->getGedcomRecord()).'\'},function(){location.reload();})" title="', WT_I18N::translate('Copy'), '"><span class="link_text">', WT_I18N::translate('Copy'), '</span></a></div>',
 			'<div class="deletelink"><a class="deleteicon" onclick="return delete_fact(\'', $pid, '\', ', $fact->getLineNumber(), ', \'\', \' ', WT_I18N::translate('Are you sure you want to delete this fact?'), '\');" href="#" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '</span></a></div>',
 			'</div>';
 	} else {
@@ -191,9 +193,9 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		// The significant spouse is set on family events of close relatives
 		echo '<a href="', $fact->getSpouse()->getHtmlUrl(), '">', $fact->getSpouse()->getFullName(), '</a> - ';
 	}
-	if ($fact->getParentObject() instanceof WT_Family && $record instanceof WT_Person) {
+	if ($parent instanceof WT_Family && $record instanceof WT_Person) {
 		// Family events on an individual page
-		echo '<a href="', $fact->getParentObject()->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a><br>';
+		echo '<a href="', $parent->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a><br>';
 	}
 
 	// Print the value of this fact/event

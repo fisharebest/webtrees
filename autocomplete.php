@@ -53,13 +53,13 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 	$event_jd=$tmp->JD();
 	// INDI
 	$indi_birth_jd = 0;
-	if ($record && $record->getType()=="INDI") {
+	if ($record instanceof WT_Person) {
 		$indi_birth_jd=$record->getEstimatedBirthDate()->minJD();
 	}
 	// HUSB & WIFE
 	$husb_birth_jd = 0;
 	$wife_birth_jd = 0;
-	if ($record && $record->getType()=="FAM") {
+	if ($record instanceof WT_Family) {
 		$husb=$record->getHusband();
 		if ($husb) {
 			$husb_birth_jd = $husb->getEstimatedBirthDate()->minJD();

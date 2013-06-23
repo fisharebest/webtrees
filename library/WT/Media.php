@@ -29,6 +29,9 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Media extends WT_GedcomRecord {
+	const RECORD_TYPE = 'OBJE';
+	const URL_PREFIX  = 'mediaviewer.php?mid=';
+
 	public $title = null; // TODO: these should be private, with getTitle() and getFilename() functions
 	public $file  = null;
 
@@ -328,15 +331,6 @@ class WT_Media extends WT_GedcomRecord {
 		}
 		$this->$var=$imgsize;
 		return $this->$var;
-	}
-
-	// Generate a URL to this record, suitable for use in HTML
-	public function getHtmlUrl() {
-		return parent::_getLinkUrl('mediaviewer.php?mid=', '&amp;');
-	}
-	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
-	public function getRawUrl() {
-		return parent::_getLinkUrl('mediaviewer.php?mid=', '&');
 	}
 
 	// Generate a URL directly to the media file

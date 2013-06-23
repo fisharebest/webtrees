@@ -244,7 +244,6 @@ function format_indi_table($datalist, $option='') {
 			$person = WT_Person::getInstance($gid);
 		}
 		if (is_null($person)) continue;
-		if ($person->getType() !== 'INDI') continue;
 		if (!$person->canDisplayName()) {
 			continue;
 		}
@@ -658,7 +657,6 @@ function format_fam_table($datalist, $option='') {
 			else $family = WT_Family::getInstance($gid);
 		}
 		if (is_null($family)) continue;
-		if ($family->getType() !== 'FAM') continue;
 		//-- Retrieve husband and wife
 		$husb = $family->getHusband();
 		if (is_null($husb)) $husb = new WT_Person('');
@@ -1565,7 +1563,7 @@ function print_changes_list($change_ids, $sort) {
 	foreach ($arr as $value) {
 		$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item name2">' . $value['record']->getFullName() . '</a>';
 		$html .= '<div class="indent" style="margin-bottom:5px">';
-		if ($value['record']->getType() == 'INDI') {
+		if ($value['record'] instanceof WT_Person) {
 			if ($value['record']->getAddName()) {
 				$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $value['record']->getAddName() . '</a>';
 			}
@@ -1638,25 +1636,23 @@ function print_changes_table($change_ids, $sort) {
 			continue;
 		}
 		$html .= '<tr><td>';
-		$indi = false;
-		switch ($record->getType()) {
-			case "INDI":
+		switch ($record::RECORD_TYPE) {
+			case 'INDI':
 				$icon = $record->getSexImage('small', '', '', false);
-				$indi = true;
 				break;
-			case "FAM":
+			case 'FAM':
 				$icon = '<i class="icon-button_family"></i>';
 				break;
-			case "OBJE":
+			case 'OBJE':
 				$icon = '<i class="icon-button_media"></i>';
 				break;
-			case "NOTE":
+			case 'NOTE':
 				$icon = '<i class="icon-button_note"></i>';
 				break;
-			case "SOUR":
+			case 'SOUR':
 				$icon = '<i class="icon-button_source"></i>';
 				break;
-			case "REPO":
+			case 'REPO':
 				$icon = '<i class="icon-button_repository"></i>';
 				break;
 			default:
@@ -1670,7 +1666,7 @@ function print_changes_table($change_ids, $sort) {
 		$name = $record->getFullName();
 		$html .= '<td class="wrap">';
 		$html .= '<a href="'. $record->getHtmlUrl() .'">'. $name . '</a>';
-		if ($indi) {
+		if ($record instanceof WT_Person) {
 			$addname = $record->getAddName();
 			if ($addname) {
 				$html .= '<div class="indent"><a href="'. $record->getHtmlUrl() .'">'. $addname . '</a></div>';
@@ -1731,11 +1727,11 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$record=$value['record'];
 		//-- only living people ?
 		if ($only_living) {
-			if ($record->getType()=="INDI" && $record->isDead()) {
+			if ($record instanceof WT_Person && $record->isDead()) {
 				$filter ++;
 				continue;
 			}
-			if ($record->getType()=="FAM") {
+			if ($record instanceof WT_Family) {
 				$husb = $record->getHusband();
 				if (is_null($husb) || $husb->isDead()) {
 					$filter ++;
@@ -1772,7 +1768,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 
 		$value['name'] = $record->getFullName();
 		$value['url'] = $record->getHtmlUrl();
-		if ($record->getType()=="INDI") {
+		if ($record instanceof WT_Person) {
 			$value['sex'] = $record->getSexImage();
 		} else {
 			$value['sex'] = '';
@@ -1786,7 +1782,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$name = $value['name'];
 		$html .= '<td class="wrap">';
 		$html .= '<a href="'.$value['url'].'">'.$name.'</a>';
-		if ($value['record']->getType()=="INDI") {
+		if ($value['record'] instanceof WT_Person) {
 			$html .= $value['sex'];
 		}
 		$html .= '</td>';
@@ -1870,11 +1866,11 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		$record = WT_GedcomRecord::getInstance($value['id']);
 		//-- only living people ?
 		if ($only_living) {
-			if ($record->getType()=="INDI" && $record->isDead()) {
+			if ($record instanceof WT_Person && $record->isDead()) {
 				$filter ++;
 				continue;
 			}
-			if ($record->getType()=="FAM") {
+			if ($record instanceof WT_Family) {
 				$husb = $record->getHusband();
 				if (is_null($husb) || $husb->isDead()) {
 					$filter ++;
@@ -1896,7 +1892,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 
 		$value['name'] = $record->getFullName();
 		$value['url'] = $record->getHtmlUrl();
-		if ($record->getType()=="INDI") {
+		if ($record instanceof WT_Person) {
 			$value['sex'] = $record->getSexImage();
 		} else {
 			$value['sex'] = '';

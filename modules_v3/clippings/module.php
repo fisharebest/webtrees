@@ -282,14 +282,14 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
 					$record=WT_GedcomRecord::getInstance($xref);
 					if ($record) {
-						switch ($tag = $record->getType()) {
-						case 'INDI': $icon='icon-indis'; break;
-						case 'FAM': $icon='icon-sfamily'; break;
-						case 'SOUR': $icon='icon-source'; break;
+						switch ($record::RECORD_TYPE) {
+						case 'INDI': $icon='icon-indis';      break;
+						case 'FAM':  $icon='icon-sfamily';    break;
+						case 'SOUR': $icon='icon-source';     break;
 						case 'REPO': $icon='icon-repository'; break;
-						case 'NOTE': $icon='icon-note'; break;
-						case 'OBJE': $icon='icon-media'; break;
-						default:     $icon='icon-clippings'; break;
+						case 'NOTE': $icon='icon-note';       break;
+						case 'OBJE': $icon='icon-media';      break;
+						default:     $icon='icon-clippings';  break;
 						}
 						?>
 						<tr><td class="list_value">
@@ -388,7 +388,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$record = WT_GedcomRecord::getInstance($add);
 			if ($record) {
 				$clip_ctrl->id=$record->getXref();
-				$clip_ctrl->type=$record->getType();
+				$clip_ctrl->type=$record::RECORD_TYPE;
 				$ret = $clip_ctrl->add_clipping($record);
 				if ($ret) return $this->askAddOptions($record);
 			}
@@ -396,7 +396,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$record = WT_Person::getInstance($add1);
 			if ($record) {
 				$clip_ctrl->id=$record->getXref();
-				$clip_ctrl->type=strtolower($record->getType());
+				$clip_ctrl->type=strtolower($record::RECORD_TYPE);
 				if ($others == 'parents') {
 					foreach ($record->getChildFamilies() as $family) {
 						$clip_ctrl->add_clipping($family);
@@ -442,24 +442,21 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$out='<ul>';
 			foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
 				$record=WT_GedcomRecord::getInstance($xref);
-				if ($record && ($record->getType()=='INDI' || $record->getType()=='FAM')) { // Just show INDI/FAM in the sidbar
-					switch ($tag = $record->getType()) {
-					case 'INDI': $icon='icon-indis'; break;
+				if ($record && ($record::RECORD_TYPE=='INDI' || $record::RECORD_TYPE=='FAM')) { // Just show INDI/FAM in the sidbar
+					switch ($record::RECORD_TYPE) {
+					case 'INDI': $icon='icon-indis';  break;
 					case 'FAM': $icon='icon-sfamily'; break;
-					case 'SOUR': $icon='icon-source'; break;
-					case 'REPO': $icon='icon-repository'; break;
-					case 'NOTE': $icon='icon-note'; break;
-					case 'OBJE': $icon='icon-media'; break;
-					default:     $icon='icon-clippings'; break;
 					}
 					$out .= '<li>';
 					if (!empty($icon)) {
 						$out .= '<i class="'.$icon.'"></i>';
 					}
 					$out .= '<a href="'.$record->getHtmlUrl().'">';
-					if ($record->getType()=="INDI") $out .=$record->getSexImage();
+					if ($record::RECORD_TYPE == 'INDI') {
+						$out .=$record->getSexImage();
+					}
 					$out .= ' '.$record->getFullName().' ';
-					if ($record->getType()=="INDI" && $record->canDisplayDetails()) {
+					if ($record::RECORD_TYPE == 'INDI' && $record->canDisplayDetails()) {
 						$out .= ' ('.$record->getLifeSpan().')';
 					}
 					$out .= '</a>';
@@ -497,7 +494,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				jQuery("#sb_clippings_content").load(link);
 			}';
 		$out .= '</script>';
-		if ($person->getType()=='FAM') {
+		if ($person::RECORD_TYPE=='FAM') {
 
 			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
 			<input type="hidden" name="mod" value="clippings">
@@ -505,7 +502,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			<table>
 			<tr><td class="topbottombar">'.WT_I18N::translate('Which other links from this family would you like to add?').'
 			<input type="hidden" name="pid" value="'.$person->getXref().'">
-			<input type="hidden" name="type" value="'.$person->getType().'">
+			<input type="hidden" name="type" value="'.$person::RECORD_TYPE.'">
 			<input type="hidden" name="action" value="add1"></td></tr>
 			<tr><td class="optionbox"><input type="radio" name="others" checked value="none">'.WT_I18N::translate('Add just this family record.').'</td></tr>
 			<tr><td class="optionbox"><input type="radio" name="others" value="parents">'.WT_I18N::translate('Add parents\' records together with this family record.').'</td></tr>
@@ -515,13 +512,13 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			</table>
 			</form>';
 		}
-		else if ($person->getType()=='INDI') {
+		else if ($person::RECORD_TYPE=='INDI') {
 			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
 			<input type="hidden" name="mod" value="clippings">
 			<input type="hidden" name="mod_action" value="index">
 		'.WT_I18N::translate('Which links from this person would you also like to add?').'
 		<input type="hidden" name="pid" value="'.$person->getXref().'">
-		<input type="hidden" name="type" value="'.$person->getType().'">
+		<input type="hidden" name="type" value="'.$person::RECORD_TYPE.'">
 		<input type="hidden" name="action" value="add1">
 		<ul>
 		<li><input type="radio" name="others" checked value="none">'.WT_I18N::translate('Add just this person.').'</li>
@@ -536,14 +533,14 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		</ul>
 		<input type="submit" value="'.WT_I18N::translate('Continue Adding').'">
 		</form>';
-		} else if ($person->getType()=='SOUR')  {
+		} else if ($person::RECORD_TYPE == 'SOUR')  {
 			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
 		<input type="hidden" name="mod" value="clippings">
 		<input type="hidden" name="mod_action" value="index">
 		<table>
 		<tr><td class="topbottombar">'.WT_I18N::translate('Which records linked to this source should be added?').'
 		<input type="hidden" name="pid" value="'.$person->getXref().'">
-		<input type="hidden" name="type" value="'.$person->getType().'">
+		<input type="hidden" name="type" value="'.$person::RECORD_TYPE.'">
 		<input type="hidden" name="action" value="add1"></td></tr>
 		<tr><td class="optionbox"><input type="radio" name="others" checked value="none">'.WT_I18N::translate('Add just this source.').'</td></tr>
 		<tr><td class="optionbox"><input type="radio" name="others" value="linked">'.WT_I18N::translate('Add this source and families/people linked to it.').'</td></tr>

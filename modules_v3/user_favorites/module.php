@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -72,7 +72,7 @@ class user_favorites_WT_Module extends gedcom_favorites_WT_Module {
 					'user_id'  =>WT_USER_ID,
 					'gedcom_id'=>$record->getGedId(),
 					'gid'      =>$record->getXref(),
-					'type'     =>$record->getType(),
+					'type'     =>$record::RECORD_TYPE,
 					'url'      =>null,
 					'note'     =>null,
 					'title'    =>null,

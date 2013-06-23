@@ -4,7 +4,7 @@
 // used by the SAX parser to generate reports from the XML report file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -2350,23 +2350,6 @@ function FactsSHandler($attrs) {
 		}
 	} else {
 		$record = new WT_GedcomRecord($gedrec);
-		switch ($record->getType()) {
-			case "INDI":
-				$record=new WT_Person($gedrec);
-				break;
-			case "FAM":
-				$record=new WT_Family($gedrec);
-				break;
-			case "SOUR":
-				$record=new WT_Source($gedrec);
-				break;
-			case "REPO":
-				$record=new WT_Repository($gedrec);
-				break;
-			case "NOTE":
-				$record=new WT_Note($gedrec);
-				break;
-		}
 		$oldrecord = WT_GedcomRecord::getInstance($record->getXref());
 		$oldrecord->diffMerge($record);
 		$facts = $oldrecord->getFacts();

@@ -205,13 +205,11 @@ case 'hierarchy':
 		foreach ($positions as $position) {
 			$record=WT_GedcomRecord::getInstance($position);
 			if ($record && $record->canDisplayDetails()) {
-				switch ($record->getType()) {
-				case 'INDI':
+				if ($record instanceof WT_Person) {
 					$myindilist[]=$record;
-					break;
-				case 'FAM':
+				}
+				if ($record instanceof WT_Family) {
 					$myfamlist[]=$record;
-					break;
 				}
 			}
 		}

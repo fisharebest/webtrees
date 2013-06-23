@@ -29,6 +29,9 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Person extends WT_GedcomRecord {
+	const RECORD_TYPE = 'INDI';
+	const URL_PREFIX  = 'individual.php?pid=';
+
 	var $indifacts = array();
 	var $otherfacts = array();
 	var $globalfacts = array();
@@ -1645,15 +1648,6 @@ class WT_Person extends WT_GedcomRecord {
 		}
 		$txt .= '</div>';
 		return $txt;
-	}
-
-	// Generate a URL to this record, suitable for use in HTML
-	public function getHtmlUrl() {
-		return parent::_getLinkUrl('individual.php?pid=', '&amp;');
-	}
-	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
-	public function getRawUrl() {
-		return parent::_getLinkUrl('individual.php?pid=', '&');
 	}
 
 	// If this object has no name, what do we call it?

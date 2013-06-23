@@ -250,29 +250,6 @@ function find_updated_record($xref, $ged_id) {
 	return $gedcom=$statement->execute(array($ged_id, $xref))->fetchOne();
 }
 
-// Find the type of a gedcom record. Check the cache before querying the database.
-// Returns 'INDI', 'FAM', etc., or null if the record does not exist.
-function gedcom_record_type($xref, $ged_id) {
-	global $gedcom_record_cache;
-	static $statement=null;
-
-	if (is_null($statement)) {
-		$statement=WT_DB::prepare(
-			"SELECT 'INDI' FROM `##individuals` WHERE i_id=? AND i_file=? UNION ALL ".
-			"SELECT 'FAM'  FROM `##families`    WHERE f_id=? AND f_file=? UNION ALL ".
-			"SELECT 'SOUR' FROM `##sources`     WHERE s_id=? AND s_file=? UNION ALL ".
-			"SELECT 'OBJE' FROM `##media`       WHERE m_id=? AND m_file=? UNION ALL ".
-			"SELECT o_type FROM `##other`       WHERE o_id=? AND o_file=?"
-		);
-	}
-
-	if (isset($gedcom_record_cache[$xref][$ged_id])) {
-		return $gedcom_record_cache[$xref][$ged_id]->getType();
-	} else {
-		return $statement->execute(array($xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id))->fetchOne();
-	}
-}
-
 // Find out if there are any pending changes that a given user may accept
 function exists_pending_change($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 	return

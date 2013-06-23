@@ -139,11 +139,11 @@ if ($action == 'choose' && $paramok) {
 			echo "<td align='center'><input alt='", WT_I18N::translate('Keep Link in list'), "', title='", WT_I18N::translate('Keep Link in list'), "' type='radio' id='", $record->getXref(), "_off' name='", $record->getXref(), "' checked></td>";
 			echo "<td align='center'><input alt='", WT_I18N::translate('Remove Link from list'), "', title='", WT_I18N::translate('Remove Link from list'), "' type='radio' id='", $record->getXref(), "_on'  name='", $record->getXref(), "'></td>";
 	
-			if ($record->getType()=='INDI') {
+			if ($record instanceof WT_Person) {
 				?>
 				<td align="center"><a href="#" class="icon-button_family" title="<?php echo WT_I18N::translate('Family navigator'); ?>" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $record->getXref(); ?>'); return false;"></a></td>
 				<?php
-			} elseif ($record->getType()=='FAM') {
+			} elseif ($record instanceof WT_Family) {
 				if ($record->getHusband()) {
 					$head=$record->getHusband()->getXref();
 				} elseif ($record->getWife()) {
