@@ -286,7 +286,7 @@ function execution_stats() {
 			WT_I18N::number(microtime(true)-$start_time, 3),
 			WT_I18N::number(WT_DB::getQueryCount()),
 			WT_I18N::number($PRIVACY_CHECKS),
-			WT_I18N::number(version_compare(PHP_VERSION, '5.2.1', '>=') ? (memory_get_peak_usage(true)/1024) : (memory_get_usage()/1024))
+			WT_I18N::number(memory_get_peak_usage(true)/1024)
 		).
 		'</div>';
 }
