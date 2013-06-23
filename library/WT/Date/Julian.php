@@ -9,7 +9,7 @@
 // midday.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -33,11 +33,9 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Date_Julian extends WT_Date_Calendar {
-	var $new_old_style=false;
+	const CALENDAR_ESCAPE = '@#DJULIAN@';
 
-	static function CALENDAR_ESCAPE() {
-		return '@#DJULIAN@';
-	}
+	var $new_old_style=false;
 
 	static function calendarName() {
 		return /* I18N: The julian calendar */ WT_I18N::translate('Julian');

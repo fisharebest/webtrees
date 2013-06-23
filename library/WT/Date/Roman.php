@@ -35,9 +35,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Date_Roman extends WT_Date_Calendar {
-	static function CALENDAR_ESCAPE() {
-		return '@#DROMAN@';
-	}
+	const CALENDAR_ESCAPE = '@#DROMAN@';
 
 	function FormatGedcomYear() {
 		return sprintf('%04dAUC',$this->y);

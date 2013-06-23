@@ -8,7 +8,7 @@
 // midday.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -32,21 +32,14 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Date_Jalali extends WT_Date_Calendar {
-	static function CALENDAR_ESCAPE() {
-		return '@#DJALALI@';
-	}
+	const CALENDAR_ESCAPE = '@#DJALALI@';
+	const CAL_START_JD    = 1948321;
+	static $MONTH_ABBREV  = array(
+		''=>0, 'FARVA'=>1, 'ORDIB'=>2, 'KHORD'=>3, 'TIR'=>4, 'MORDA'=>5, 'SHAHR'=>6, 'MEHR'=>7, 'ABAN'=>8, 'AZAR'=>9, 'DEY'=>10, 'BAHMA'=>11, 'ESFAN'=>12
+	);
 
 	static function calendarName() {
 		return /* I18N: The Persian/Jalali calendar */ WT_I18N::translate('Jalali');
-	}
-
-	static function MONTH_TO_NUM($m) {
-		static $months=array(''=>0, 'FARVA'=>1, 'ORDIB'=>2, 'KHORD'=>3, 'TIR'=>4, 'MORDA'=>5, 'SHAHR'=>6, 'MEHR'=>7, 'ABAN'=>8, 'AZAR'=>9, 'DEY'=>10, 'BAHMA'=>11, 'ESFAN'=>12);
-		if (isset($months[$m])) {
-			return $months[$m];
-		} else {
-			return null;
-		}
 	}
 
 	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
@@ -139,28 +132,6 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_GEDCOM_MONTH($n, $leap_year) {
-		switch ($n) {
-		case 1:  return 'FARVA';
-		case 2:  return 'ORDIB';
-		case 3:  return 'KHORD';
-		case 4:  return 'TIR';
-		case 5:  return 'MORDA';
-		case 6:  return 'SHAHR';
-		case 7:  return 'MEHR';
-		case 8:  return 'ABAN';
-		case 9:  return 'AZAR';
-		case 10: return 'DEY';
-		case 11: return 'BAHMA';
-		case 12: return 'ESFAN';
-		default: return '';
-		}
-	}
-	
-	static function CAL_START_JD() {
-		return 1948321;
-	}
-
 	function IsLeapYear() {
 		return (((((($this->y - (($this->y > 0) ? 474 : 473)) % 2820) + 474) + 38) * 682) % 2816) < 682;
 	}
@@ -177,7 +148,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 				(int)((($epyear * 682) - 110) / 2816) +
 				($epyear - 1) * 365 +
 				(int)($epbase / 2820) * 1029983 +
-				(self::CAL_START_JD() - 1);
+				(self::CAL_START_JD - 1);
 	}
 
 	static function JDtoYMD($jd) {

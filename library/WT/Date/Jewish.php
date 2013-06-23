@@ -32,9 +32,12 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Date_Jewish extends WT_Date_Calendar {
-	static function CALENDAR_ESCAPE() {
-		return '@#DHEBREW@';
-	}
+	const CALENDAR_ESCAPE = '@#DHEBREW@';
+	const NUM_MONTHS      = 13;
+	const CAL_START_JD    = 347998; // 01 TSH 0001 = @#JULIAN@ 7 OCT 3761B.C.
+	static $MONTH_ABBREV  = array(
+		''=>0, 'TSH'=>1, 'CSH'=>2, 'KSL'=>3, 'TVT'=>4, 'SHV'=>5, 'ADR'=>6, 'ADS'=>7, 'NSN'=>8, 'IYR'=>9, 'SVN'=>10, 'TMZ'=>11, 'AAV'=>12, 'ELL'=>13
+	); 
 
 	static function calendarName() {
 		return /* I18N: The Hebrew/Jewish calendar */ WT_I18N::translate('Jewish');
@@ -76,14 +79,6 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		}
 	}
 
-	static function MONTH_TO_NUM($m) {
-		static $months=array(''=>0, 'TSH'=>1, 'CSH'=>2, 'KSL'=>3, 'TVT'=>4, 'SHV'=>5, 'ADR'=>6, 'ADS'=>7, 'NSN'=>8, 'IYR'=>9, 'SVN'=>10, 'TMZ'=>11, 'AAV'=>12, 'ELL'=>13);
-		if (isset($months[$m])) {
-			return $months[$m];
-		} else {
-			return null;
-		}
-	}
 	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('NOMINATIVE', 'Tishrei');
@@ -159,30 +154,6 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
 		// TODO: Do these have short names?
 		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
-	}
-	static function NUM_TO_GEDCOM_MONTH($n, $leap_year) {
-		switch ($n) {
-		case 1:  return 'TSH';
-		case 2:  return 'CSH';
-		case 3:  return 'KSL';
-		case 4:  return 'TVT';
-		case 5:  return 'SHV';
-		case 6:  return 'ADR';
-		case 7:  return 'ADS';
-		case 8:  return 'NSN';
-		case 9:  return 'IYR';
-		case 10: return 'SVN';
-		case 11: return 'TMZ';
-		case 12: return 'AAV';
-		case 13: return 'ELL';
-		default: return '';
-		}
-	}
-	static function NUM_MONTHS() {
-		return 13;
-	}
-	static function CAL_START_JD() {
-		return 347998; // 01 TSH 0001 = @#JULIAN@ 7 OCT 3761B.C.
 	}
 
 	function NextMonth() {

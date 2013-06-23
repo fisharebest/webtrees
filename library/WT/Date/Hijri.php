@@ -33,22 +33,16 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Date_Hijri extends WT_Date_Calendar {
-	static function CALENDAR_ESCAPE() {
-		return '@#DHIJRI@';
-	}
+	const CALENDAR_ESCAPE = '@#DHIJRI@';
+	const CAL_START_JD    = 1948440; // @#DHIJRI@ 1 MUHAR 0001 = @#JULIAN@ 16 JUL 0622
+	static $MONTH_ABBREV  = array(
+		''=>0, 'MUHAR'=>1, 'SAFAR'=>2, 'RABIA'=>3, 'RABIT'=>4, 'JUMAA'=>5, 'JUMAT'=>6, 'RAJAB'=>7, 'SHAAB'=>8, 'RAMAD'=>9, 'SHAWW'=>10, 'DHUAQ'=>11, 'DHUAH'=>12
+	);
 
 	static function calendarName() {
 		return /* I18N: The Arabic/Hijri calendar */ WT_I18N::translate('Hijri');
 	}
 
-	static function MONTH_TO_NUM($m) {
-		static $months=array(''=>0, 'MUHAR'=>1, 'SAFAR'=>2, 'RABIA'=>3, 'RABIT'=>4, 'JUMAA'=>5, 'JUMAT'=>6, 'RAJAB'=>7, 'SHAAB'=>8, 'RAMAD'=>9, 'SHAWW'=>10, 'DHUAQ'=>11, 'DHUAH'=>12);
-		if (isset($months[$m])) {
-			return $months[$m];
-		} else {
-			return null;
-		}
-	}
 	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('NOMINATIVE', 'Muharram'       );
@@ -117,29 +111,10 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
+
 	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
 		// TODO: Do these have short names?
 		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
-	}
-	static function NUM_TO_GEDCOM_MONTH($n, $leap_year) {
-		switch ($n) {
-		case 1:  return 'MUHAR';
-		case 2:  return 'SAFAR';
-		case 3:  return 'RABIA';
-		case 4:  return 'RABIT';
-		case 5:  return 'JUMAA';
-		case 6:  return 'JUMAT';
-		case 7:  return 'RAJAB';
-		case 8:  return 'SHAAB';
-		case 9:  return 'RAMAD';
-		case 10: return 'SHAWW';
-		case 11: return 'DHUAQ';
-		case 12: return 'DHUAH';
-		default: return '';
-		}
-	}
-	static function CAL_START_JD() {
-		return 1948440; // @#DHIJRI@ 1 MUHAR 0001 = @#JULIAN@ 16 JUL 0622
 	}
 
 	function IsLeapYear() {

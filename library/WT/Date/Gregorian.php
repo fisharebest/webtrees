@@ -8,7 +8,7 @@
 // midday.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -32,12 +32,8 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Date_Gregorian extends WT_Date_Calendar {
-	static function CALENDAR_ESCAPE() {
-		return '@#DGREGORIAN@';
-	}
-	static function CAL_START_JD() {
-		return 2299161; // 15 OCT 1582
-	}
+	const CALENDAR_ESCAPE = '@#DGREGORIAN@';
+	const CAL_START_JD    = 2299161; // 15 OCT 1582
 
 	static function calendarName() {
 		return /* I18N: The gregorian calendar */ WT_I18N::translate('Gregorian');

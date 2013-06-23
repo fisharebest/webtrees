@@ -148,9 +148,9 @@ echo '</td></tr>';
 echo '<tr><td class="descriptionbox vmiddle">';
 echo WT_I18N::translate('Month'), '</td>';
 echo '<td class="optionbox" colspan="3">';
-for ($n=1; $n<=$cal_date->NUM_MONTHS(); ++$n) {
+for ($n=1; $n<=$cal_date->MonthsInYear(); ++$n) {
 	$month_name=$cal_date->NUM_TO_MONTH_NOMINATIVE($n, $cal_date->IsLeapYear());
-	$m=$cal_date->NUM_TO_GEDCOM_MONTH($n, $cal_date->IsLeapYear());
+	$m = array_search($n, $cal_date::$MONTH_ABBREV);
 	if ($m=='ADS' && $cal_date instanceof WT_Date_Jewish && !$cal_date->IsLeapYear()) {
 		// No month 7 in Jewish leap years.
 		continue;
@@ -305,7 +305,7 @@ foreach (array(
 			echo "<span class=\"error\">{$cal_name}</span>";
 		} else {
 			$newcalesc=urlencode($tmp->Format('%@'));
-			$tmpmonth=$tmp->FormatGedcomMonth();
+			$tmpmonth=$tmp->Format('%O');
 			echo "<a href=\"calendar.php?cal={$newcalesc}&amp;day={$tmp->d}&amp;month={$tmpmonth}&amp;year={$tmp->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">{$cal_name}</a>";
 		}
 	}
