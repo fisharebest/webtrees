@@ -41,8 +41,8 @@ require 'includes/functions/functions.php';
 require WT_ROOT.'includes/functions/functions_utf-8.php';
 define('WT_LOCALE', WT_I18N::init());
 
-if (version_compare(PHP_VERSION, '5.3.3', '>=')) {
-	//header('Location: index.php');
+if (version_compare(PHP_VERSION, '5.3.2', '>=')) {
+	header('Location: index.php');
 }
 
 header('Content-Type: text/html; charset=UTF-8');
@@ -77,8 +77,8 @@ header('Content-Type: text/html; charset=UTF-8');
 				<?php echo WT_I18N::translate('You have the following options:'); ?>
 			</p>
 			<ul>
-				<li><?php /* I18N: %s is a version number */ echo WT_I18N::translate('Upgrade the web-server to PHP %s or higher.', '5.3.3'); ?></li>
-				<li><?php /* I18N: %s is a version number */ echo WT_I18N::translate('Install (or re-install) webtrees %s.', '<a href="https://launchpad.net/webtrees/1.4/1.4.0/+download/webtrees-1.4.0.zip">1.4.0</a>'); ?></li>
+				<li><?php /* I18N: %s is a version number */ echo WT_I18N::translate('Upgrade the web-server to PHP %s or higher.', '5.3.2'); ?></li>
+				<li><?php /* I18N: %s is a version number */ echo WT_I18N::translate('Install (or re-install) webtrees %s.', '<a href="https://launchpad.net/webtrees/1.4/1.4.2/+download/webtrees-1.4.2.zip">1.4.2</a>'); ?></li>
 			</ul>
 			<p class="good">
 				<?php echo WT_I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="http://webtrees.net">webtrees.net</a>'); ?>
