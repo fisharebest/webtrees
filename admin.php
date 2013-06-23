@@ -1420,6 +1420,19 @@ function old_paths() {
 		WT_ROOT.'js/webtrees-1.4.0.js',
 		WT_ROOT.'modules_v3/lightbox/images/image_edit.png',
 		WT_ROOT.'modules_v3/lightbox/images/image_view.png',
+		// Removed in 1.4.2
+		WT_ROOT.'modules_v3/lightbox/images/image_view.png',
+		WT_ROOT.'js/jquery.colorbox-1.4.3.js',
+		WT_ROOT.'js/jquery-ui-1.10.0.js',
+		WT_ROOT.'js/webtrees-1.4.1.js',
+		WT_ROOT.'modules_v3/top10_pageviews/help_text.php',
+		WT_ROOT.'themes/_administration/jquery-ui-1.10.0',
+		WT_ROOT.'themes/clouds/jquery-ui-1.10.0',
+		WT_ROOT.'themes/colors/jquery-ui-1.10.0',
+		WT_ROOT.'themes/fab/jquery-ui-1.10.0',
+		WT_ROOT.'themes/minimal/jquery-ui-1.10.0',
+		WT_ROOT.'themes/webtrees/jquery-ui-1.10.0',
+		WT_ROOT.'themes/xenea/jquery-ui-1.10.0',
 	);
 }
 
