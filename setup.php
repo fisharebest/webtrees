@@ -23,45 +23,6 @@
 define('WT_SCRIPT_NAME', 'setup.php');
 define('WT_CONFIG_FILE', 'config.ini.php');
 
-// magic quotes were deprecated in PHP5.3.0
-if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	set_magic_quotes_runtime(0);
-	// magic_quotes_gpc can’t be disabled at run-time, so clean them up as necessary.
-	if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc() ||
-		ini_get('magic_quotes_sybase') && strtolower(ini_get('magic_quotes_sybase'))!='off') {
-		$in = array(&$_POST);
-		while (list($k,$v) = each($in)) {
-			foreach ($v as $key => $val) {
-				if (!is_array($val)) {
-					$in[$k][$key] = stripslashes($val);
-					continue;
-				}
-				$in[] =& $in[$k][$key];
-			}
-		}
-		unset($in);
-	}
-}
-
-
-if (version_compare(PHP_VERSION, '5.2')<0) {
-	// Our translation system requires PHP 5.2, so we cannot translate this message :-(
-	header('Content-Type: text/html; charset=UTF-8');
-	echo
-		'<!DOCTYPE html>',
-		'<html lang="en" dir="ltr">',
-		'<head>',
-		'<meta charset="UTF-8">',
-		'<title>webtrees setup wizard</title>',
-		'<h1>Sorry, the setup wizard cannot start.</h1>',
-		'<p>This server is running PHP version ', PHP_VERSION, '</p>',
-		'<p><b>webtrees</b> requires PHP 5.2 or later.  PHP 5.3 is recommended.</p>';
-	if (version_compare(PHP_VERSION, '5.0')<0) {
-		echo '<p>Many servers offer both PHP4 and PHP5.  You may be able to change your default to PHP5 using a control panel or a configuration setting.</p>';
-	}
-	exit;
-}
-
 // This script (uniquely) does not load session.php.
 // session.php won’t run until a configuration file exists…
 // This next block of code is a minimal version of session.php
@@ -71,7 +32,8 @@ require 'includes/functions/functions_db.php'; // for get/setSiteSetting()
 define('WT_DATA_DIR',    'data/');
 define('WT_DEBUG_LANG',  false);
 define('WT_DEBUG_SQL',   false);
-define('WT_REQUIRED_MYSQL_VERSION', '5.0.13'); // For: prepared statements within stored procedures
+define('WT_REQUIRED_MYSQL_VERSION', '5.0.13');
+define('WT_REQUIRED_PHP_VERSION',   '5.3.2');
 define('WT_MODULES_DIR', 'modules_v3/');
 define('WT_ROOT', '');
 define('WT_GED_ID', null);
@@ -83,6 +45,15 @@ define('WT_PRIV_HIDE',  -1);
 
 if (file_exists(WT_DATA_DIR.WT_CONFIG_FILE)) {
 	header('Location: index.php');
+	exit;
+}
+
+if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION)<0) {
+	// We cannot translate these messages without a modern PHP
+	echo
+		'<h1>Sorry, the setup wizard cannot start.</h1>',
+		'<p>This server is running PHP version ', PHP_VERSION, '</p>',
+		'<p>PHP ', WT_REQUIRED_PHP_VERSION , ' (or any later version) is required</p>';
 	exit;
 }
 
@@ -98,12 +69,16 @@ $WT_SESSION=new stdClass; $WT_SESSION->locale=null; // Can't use Zend_Session un
 define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
 
 header('Content-Type: text/html; charset=UTF-8');
-echo
-	'<!DOCTYPE html>',
-	'<html ', WT_I18N::html_markup(), '>',
-	'<head>',
-	'<title>webtrees setup wizard</title>',
-	'<style type="text/css">
+
+?>
+<!DOCTYPE html>
+<html <?php echo WT_I18N::html_markup(); ?>>
+<head>
+	<meta charset="UTF-8">
+	<title>
+		webtrees setup wizard
+	</title>
+	<style type="text/css">
 		body {color: black; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif; padding:10px; }
 		a {color: black; font-weight: normal; text-decoration: none;}
 		a:hover {color: #81A9CB;}
@@ -112,9 +87,13 @@ echo
 		.good {color: green;}
 		.bad {color: red; font-weight: bold;}
 		.info {color: blue;}
-	</style>',
-	'</head><body>',
-	'<h1>', WT_I18N::translate('Setup wizard for <b>webtrees</b>'), '</h1>';
+	</style>
+	</head>
+	<body>
+		<h1>
+			<?php echo WT_I18N::translate('Setup wizard for <b>webtrees</b>'); ?>
+		</h1>
+<?php
 
 echo '<form name="config" action="', WT_SCRIPT_NAME, '" method="post" onsubmit="this.btncontinue.disabled=\'disabled\';">';
 echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
