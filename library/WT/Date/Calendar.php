@@ -36,12 +36,12 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Date_Calendar {
-	const CALENDAR_ESCAPE  = '@#DUNKNOWN@';
-	const NUM_MONTHS       = 12;
-	const CAL_START_JD     = 0; // @#DJULIAN@ 01 JAN 4713B.C.
-	const CAL_END_JD       = 99999999;
-	const NUM_DAYS_OF_WEEK = 7;
-	static $MONTH_ABBREV   = array(
+	const CALENDAR_ESCAPE = '@#DUNKNOWN@';
+	const MONTHS_IN_YEAR  = 12;
+	const CAL_START_JD    = 0; // @#DJULIAN@ 01 JAN 4713B.C.
+	const CAL_END_JD      = 99999999;
+	const DAYS_IN_WEEK    = 7;
+	static $MONTH_ABBREV  = array(
 		''=>0, 'JAN'=>1, 'FEB'=>2, 'MAR'=>3, 'APR'=>4, 'MAY'=>5, 'JUN'=>6, 'JUL'=>7, 'AUG'=>8, 'SEP'=>9, 'OCT'=>10, 'NOV'=>11, 'DEC'=>12
 	);
 
@@ -283,7 +283,7 @@ class WT_Date_Calendar {
 			$dm--;
 		}
 		if ($dm<0) {
-			$dm+=static::NUM_MONTHS;
+			$dm+=static::MONTHS_IN_YEAR;
 			$dy--;
 		}
 		// Not a full age?  Then just the years
@@ -292,7 +292,7 @@ class WT_Date_Calendar {
 		// Age in years?
 		if ($dy>1)
 			return $dy.'y';
-		$dm+=$dy*static::NUM_MONTHS;
+		$dm+=$dy*static::MONTHS_IN_YEAR;
 		// Age in months?
 		if ($dm>1)
 			return $dm.'m';
@@ -338,7 +338,7 @@ class WT_Date_Calendar {
 
 	// How many days in the current week
 	public function DaysInWeek() {
-		return static::NUM_DAYS_OF_WEEK;
+		return static::DAYS_IN_WEEK;
 	}
 
 	// Format a date
@@ -422,11 +422,11 @@ class WT_Date_Calendar {
 	}
 
 	private function FormatLongWeekday() {
-		return $this->LONG_DAYS_OF_WEEK($this->minJD % static::NUM_DAYS_OF_WEEK);
+		return $this->LONG_DAYS_OF_WEEK($this->minJD % static::DAYS_IN_WEEK);
 	}
 
 	private function FormatShortWeekday() {
-		return $this->SHORT_DAYS_OF_WEEK($this->minJD % static::NUM_DAYS_OF_WEEK);
+		return $this->SHORT_DAYS_OF_WEEK($this->minJD % static::DAYS_IN_WEEK);
 	}
 
 	private function FormatISOWeekday() {
@@ -442,7 +442,7 @@ class WT_Date_Calendar {
 	}
 
 	private function FormatNumericWeekday() {
-		return WT_I18N::digits(($this->minJD + 1) % static::NUM_DAYS_OF_WEEK);
+		return WT_I18N::digits(($this->minJD + 1) % static::DAYS_IN_WEEK);
 	}
 
 	private function FormatDayOfYear() {
@@ -507,8 +507,8 @@ class WT_Date_Calendar {
 	// Calendars with leap-months should redefine this.
 	private function NextMonth() {
 		return array(
-			$this->m==static::NUM_MONTHS ? $this->NextYear($this->y) : $this->y,
-			($this->m % static::NUM_MONTHS)+1
+			$this->m==static::MONTHS_IN_YEAR ? $this->NextYear($this->y) : $this->y,
+			($this->m % static::MONTHS_IN_YEAR)+1
 		);
 	}
 

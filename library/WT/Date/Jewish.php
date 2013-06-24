@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Date_Jewish extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DHEBREW@';
-	const NUM_MONTHS      = 13;
+	const MONTHS_IN_YEAR  = 13;
 	const CAL_START_JD    = 347998; // 01 TSH 0001 = @#JULIAN@ 7 OCT 3761B.C.
 	static $MONTH_ABBREV  = array(
 		''=>0, 'TSH'=>1, 'CSH'=>2, 'KSL'=>3, 'TVT'=>4, 'SHV'=>5, 'ADR'=>6, 'ADS'=>7, 'NSN'=>8, 'IYR'=>9, 'SVN'=>10, 'TMZ'=>11, 'AAV'=>12, 'ELL'=>13
