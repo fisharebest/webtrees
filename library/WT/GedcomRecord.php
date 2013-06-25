@@ -103,7 +103,8 @@ class WT_GedcomRecord {
 			// Otherwise relationship privacy rules will not allow us to see
 			// newly added records.
 			if (WT_USER_CAN_EDIT) {
-				if (!isset($pending_record_cache[$ged_id])) {
+				// edit_interface.php creates new pending records, and we need to see them.
+				if (!isset($pending_record_cache[$ged_id]) || WT_SCRIPT_NAME=='edit_interface.php') {
 					// Fetch all pending records in one database query
 					$pending_record_cache[$ged_id]=array();
 					$rows = WT_DB::prepare(
