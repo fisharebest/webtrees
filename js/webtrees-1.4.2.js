@@ -1400,7 +1400,7 @@ function activate_colorbox(config) {
 		next:           textDirection=='ltr' ? '▶' : '◀',
 		slideshowStart: '○',
 		slideshowStop:  '●',
-		close:          '×',
+		close:          '×'
 	});
 	if (config) {
 		jQuery.extend(jQuery.colorbox.settings, config);
