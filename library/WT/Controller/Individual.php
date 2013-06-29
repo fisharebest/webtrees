@@ -339,19 +339,23 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	* @return string returns 'person_box', 'person_boxF', or 'person_boxNN'
 	*/
 	function getPersonStyle($person) {
-		$sex = $person->getSex();
-		switch($sex) {
-			case "M":
-				$isf = "";
+		switch($person->getSex()) {
+			case 'M':
+				$class = 'person_box';
 				break;
-			case "F":
-				$isf = "F";
+			case 'F':
+				$class = 'person_boxF';
 				break;
 			default:
-				$isf = "NN";
+				$class = 'person_boxNN';
 				break;
 		}
-		return "person_box".$isf;
+		if ($person->isOld()) {
+			$class .= ' old';
+		} elseif ($person->isNew()) {
+			$class .= ' new';
+		}
+		return $class;
 	}
 
 	/**
