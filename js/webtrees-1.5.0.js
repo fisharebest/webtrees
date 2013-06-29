@@ -306,79 +306,69 @@ function getMouseXY(e) {
   return true;
 }
 
-/**
- * @param params
- *        Object containing URL parameters.
- * @param {optional} windowspecs
- *        Window features to use.  Defaults to edit_window_specs.
- * @param {optional} pastefield
- *        Field to paste a result into.
- */
+// Open the "edit interface" popup window
 function edit_interface(params, windowspecs, pastefield) {
   var features = windowspecs || edit_window_specs;
-  var url = 'edit_interface.php?' + jQuery.param(params) + '&accesstime=' + accesstime + '&ged=' + WT_GEDCOM;
+  var url = 'edit_interface.php?' + jQuery.param(params) + '&ged=' + WT_GEDCOM;
   window.open(url, '_blank', features);
 }
 
-function edit_record(pid, linenum) {
+function edit_record(xref, fact_id) {
   edit_interface({
-    "action": "edit",
-    "pid": pid,
-    "linenum": linenum
+    "action":    "edit",
+    "xref":      xref,
+    "fact_id":   fact_id
   });
   return false;
 }
 
-function edit_raw(pid) {
+function edit_raw(xref) {
   edit_interface({
     "action": "editraw",
-    "pid": pid
+    "xref":   xref
   });
   return false;
 }
 
-function edit_note(pid) {
+function edit_note(xref) {
   edit_interface({
     "action": "editnote",
-    "pid": pid,
-    "linenum": 1
+    "xref":   xref
   });
   return false;
 }
 
-function edit_source(pid) {
+function edit_source(xref) {
   edit_interface({
     "action": "editsource",
-    "pid": pid,
-    "linenum": 1
+    "xref":   xref,
   });
   return false;
 }
 
-function add_record(pid, fact) {
-	var factfield = document.getElementById(fact);
-	if (factfield) {
-		var factvalue = factfield.options[factfield.selectedIndex].value;
-		if (factvalue == "OBJE") {
-			window.open('addmedia.php?action=showmediaform&linkid='+pid+'&ged='+WT_GEDCOM, '_blank', edit_window_specs);
+function add_record(xref, fact_field) {
+	var fact = jQuery('#' + fact_field).val();
+	if (fact) {
+		if (fact == "OBJE") {
+			window.open('addmedia.php?action=showmediaform&linkid=' + xref + '&ged=' + WT_GEDCOM, '_blank', edit_window_specs);
 		} else {
 			edit_interface({
 				"action": "add",
-				"pid": pid,
-				"fact": factvalue
+				"xref":   xref,
+				"fact":   fact
 			});
 		}
 	}
 	return false;
 }
 
-function addClipboardRecord(pid, fact) {
+function addClipboardRecord(xref, fact) {
 	var factfield = document.getElementById(fact);
 	if (factfield) {
 		var factvalue = factfield.options[factfield.selectedIndex].value;
 	        edit_interface({
 			"action": "paste",
-			"pid": pid,
+			"xref": xref,
 			"fact": factvalue.substr(10)
 		});
 	}
@@ -388,16 +378,16 @@ function addClipboardRecord(pid, fact) {
 function reorder_media(xref) {
   edit_interface({
     "action": "reorder_media",
-    "pid": xref
+    "xref":   xref
   }, mord_window_specs);
   return false;
 }
 
-function add_new_record(pid, fact) {
+function add_new_record(xref, fact) {
   edit_interface({
     "action": "add",
-    "pid": pid,
-    "fact": fact
+    "xref":   xref,
+    "fact":   fact
   });
   return false;
 }
@@ -420,114 +410,121 @@ function addnewspouse(famid, famtag) {
   return false;
 }
 
-function addopfchild(pid, gender) {
+function addopfchild(xref, gender) {
   edit_interface({
     "action": "addopfchild",
-    "pid": pid,
+    "xref": xref,
     "gender": gender
   });
   return false;
 }
 
-function addspouse(pid, famtag) {
+function addspouse(xref, famtag) {
   edit_interface({
     "action": "addspouse",
-    "pid": pid,
+    "xref": xref,
     "famtag": famtag,
     "famid": "new"
   });
   return false;
 }
 
-function linkspouse(pid, famtag) {
+function linkspouse(xref, famtag) {
   edit_interface({
     "action": "linkspouse",
-    "pid": pid,
+    "xref": xref,
     "famtag": famtag,
     "famid": "new"
   });
   return false;
 }
 
-function add_famc(pid) {
+function add_famc(xref) {
   edit_interface({
     "action": "addfamlink",
-    "pid": pid,
-    "famtag": "CHIL"
+    "xref": xref,
   });
   return false;
 }
 
-function add_fams(pid, famtag) {
+function edit_name(xref, fact_id) {
   edit_interface({
-    "action": "addfamlink",
-    "pid": pid,
+    "action": "editname",
+    "xref": xref,
+    "fact_id": fact_id
+  });
+  return false;
+}
+
+function add_name(xref) {
+  edit_interface({
+    "action": "addname",
+    "xref": xref
+  });
+  return false;
+}
+
+function addnewparent(xref, famtag) {
+  edit_interface({
+    "action": "addnewparent",
+    "xref":   xref,
     "famtag": famtag
   });
   return false;
 }
 
-function edit_name(pid, linenum) {
-  edit_interface({
-    "action": "editname",
-    "pid": pid,
-    "linenum": linenum
-  });
-  return false;
-}
-
-function add_name(pid) {
-  edit_interface({
-    "action": "addname",
-    "pid": pid
-  });
-  return false;
-}
-
-function addnewparent(pid, famtag) {
+function addnewparentfamily(xref, famtag, famid) {
   edit_interface({
     "action": "addnewparent",
-    "pid": pid,
+    "xref":   xref,
     "famtag": famtag,
-    "famid": "new"
+    "famid":  famid
   });
   return false;
 }
 
-function addnewparentfamily(pid, famtag, famid) {
-  edit_interface({
-    "action": "addnewparent",
-    "pid": pid,
-    "famtag": famtag,
-    "famid": famid
-  });
-  return false;
-}
-
-function delete_fact(pid, linenum, mediaid, message) {
+// Delete a fact - and reload the page
+function delete_fact(message, xref, fact_id) {
   if (confirm(message)) {
-    edit_interface({
-      "action": "delete",
-      "pid": pid,
-      "linenum": linenum,
-      "mediaid": mediaid
-    });
+		jQuery.post('action.php', {
+			action:   'delete-fact',
+			xref:      xref,
+			fact_id:   fact_id,
+			ged:       WT_GEDCOM
+		},
+		function(){
+			location.reload();
+		});
   }
   return false;
 }
 
-function reorder_children(famid) {
+// Copy a fact to the clipboard
+function copy_fact(xref, fact_id) {
+	jQuery.post('action.php', {
+		action:   'copy-fact',
+		xref:      xref,
+		fact_id:   fact_id,
+		ged:       WT_GEDCOM
+	},
+	function(){
+		location.reload();
+	});
+  return false;
+}
+
+function reorder_children(xref) {
   edit_interface({
     "action": "reorder_children",
-    "pid": famid
+    "xref":   xref
   });
   return false;
 }
 
-function reorder_families(pid) {
+function reorder_families(xref) {
   edit_interface({
     "action": "reorder_fams",
-    "pid": pid
+    "xref":    xref
   });
   return false;
 }
@@ -542,10 +539,10 @@ function delete_message(id) {
 	return false;
 }
 
-function change_family_members(famid) {
+function change_family_members(xref) {
   edit_interface({
     "action": "changefamily",
-    "famid": famid
+    "xref":   xref
   });
   return false;
 }
@@ -554,7 +551,7 @@ function addnewsource(field) {
 	pastefield=field;
 	edit_interface({
 		"action": "addnewsource",
-		"pid": "newsour"
+		"xref":   "newsour"
 	}, null, field);
 	return false;
 }
@@ -563,7 +560,7 @@ function addnewrepository(field) {
 	pastefield=field;
 	edit_interface({
 		"action": "addnewrepository",
-		"pid": "newrepo"
+		"xref":   "newrepo"
 	}, null, field);
 	return false;
 }
@@ -577,12 +574,12 @@ function addnewnote(field) {
 	return false;
 }
 
-function addnewnote_assisted(field, iid) {
+function addnewnote_assisted(field, xref) {
 	pastefield=field;
 	edit_interface({
 		"action": "addnewnote_assisted",
 		"noteid": "newnote",
-		"pid": iid
+		"xref":   xref
 	}, assist_window_specs, field);
 	return false;
 }
@@ -1400,7 +1397,7 @@ function activate_colorbox(config) {
 		next:           textDirection=='ltr' ? '▶' : '◀',
 		slideshowStart: '○',
 		slideshowStop:  '●',
-		close:          '×',
+		close:          '×'
 	});
 	if (config) {
 		jQuery.extend(jQuery.colorbox.settings, config);

@@ -357,22 +357,6 @@ function wt_error_handler($errno, $errstr, $errfile, $errline) {
 // ************************************************* START OF GEDCOM FUNCTIONS ********************************* //
 
 /**
- * Get first tag in GEDCOM sub-record
- *
- * This routine uses function get_sub_record to retrieve the specified sub-record
- * and then returns the first tag.
- *
- */
-function get_first_tag($level, $tag, $gedrec, $num=1) {
-	$temp = get_sub_record($level, $level." ".$tag, $gedrec, $num)."\n";
-	$length = strpos($temp, "\n");
-	if ($length===false) {
-		$length = strlen($temp);
-	}
-	return substr($temp, 2, $length-2);
-}
-
-/**
  * get a gedcom subrecord
  *
  * searches a gedcom record and returns a subrecord of it.  A subrecord is defined starting at a
@@ -514,38 +498,6 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate='') {
 		return $value;
 	}
 	return "";
-}
-
-/**
- * create CONT lines
- *
- * Break input GEDCOM subrecord into pieces not more than 255 chars long,
- * with CONC and CONT lines as needed.  Routine also pays attention to the
- * word wrapped Notes option.  Routine also avoids splitting UTF-8 encoded
- * characters between lines.
- *
- * @param string $newline Input GEDCOM subrecord to be worked on
- * @return string $newged Output string with all necessary CONC and CONT lines
- */
-function breakConts($newline) {
-	global $WORD_WRAPPED_NOTES;
-
-	// Determine level number of CONC and CONT lines
-	$level = substr($newline, 0, 1);
-	$tag = substr($newline, 1, 6);
-	if ($tag!=" CONC " && $tag!=" CONT ") {
-		$level ++;
-	}
-
-	$newged = "";
-	$newlines = preg_split("/\n/", rtrim($newline));
-	for ($k=0; $k<count($newlines); $k++) {
-		if ($k>0) {
-			$newlines[$k] = "{$level} CONT ".$newlines[$k];
-		}
-		$newged .= trim($newlines[$k])."\n";
-	}
-	return $newged;
 }
 
 /**
@@ -761,13 +713,16 @@ function sort_facts(&$arr) {
 	foreach ($arr as $event) {
 		$event->sortOrder = $order;
 		$order++;
-		if ($event->getValue("DATE")==NULL || !$event->getDate()->isOk()) $nondated[] = $event;
-		else $dated[] = $event;
+		if ($event->getDate()->isOk()) {
+			$dated[] = $event;
+		} else {
+			$nondated[] = $event;
+		}
 	}
 
 	//-- sort each type of array
-	usort($dated, array("WT_Event", "CompareDate"));
-	usort($nondated, array("WT_Event", "CompareType"));
+	usort($dated, array("WT_Fact", "CompareDate"));
+	usort($nondated, array("WT_Fact", "CompareType"));
 
 	//-- merge the arrays back together comparing by Facts
 	$dc = count($dated);
@@ -778,7 +733,7 @@ function sort_facts(&$arr) {
 	// while there is anything in the dated array continue merging
 	while ($i<$dc) {
 		// compare each fact by type to merge them in order
-		if ($j<$nc && WT_Event::CompareType($dated[$i], $nondated[$j])>0) {
+		if ($j<$nc && WT_Fact::CompareType($dated[$i], $nondated[$j])>0) {
 			$arr[$k] = $nondated[$j];
 			$j++;
 		}
@@ -807,7 +762,7 @@ function sort_facts(&$arr) {
  * @param int $maxlength - the maximum length of path
  * @param int $path_to_find - which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
  */
-function get_relationship(WT_Person $person1, WT_Person $person2, $followspouse=true, $maxlength=0, $path_to_find=0) {
+function get_relationship(WT_Individual $person1, WT_Individual $person2, $followspouse=true, $maxlength=0, $path_to_find=0) {
 	if (!$person1 || !$person2 || $person1->equals($person2)) {
 		return false;
 	}
@@ -1110,7 +1065,7 @@ function cousin_name2($n, $sex, $relation) {
 }
 
 
-function get_relationship_name_from_path($path, WT_Person $person1=null, WT_Person $person2=null) {
+function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_Individual $person2=null) {
 	if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
 		// TODO: Update all the “3 RELA ” values in class_person
 		return '<span class="error">'.$path.'</span>';
@@ -2214,12 +2169,12 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 	while (count($genlist)>0) {
 		$id = array_shift($genlist);
 		if (strpos($id, "empty")===0) continue; // id can be something like “empty7”
-		$person = WT_Person::getInstance($id);
+		$person = WT_Individual::getInstance($id);
 		$famids = $person->getChildFamilies();
 		if (count($famids)>0) {
 			if ($show_empty) {
 				for ($i=0;$i<$num_skipped;$i++) {
-					$list["empty" . $total_num_skipped] = new WT_Person('');
+					$list["empty" . $total_num_skipped] = new WT_Individual('');
 					$list["empty" . $total_num_skipped]->generation = $list[$id]->generation+1;
 					array_push($genlist, "empty" . $total_num_skipped);
 					$total_num_skipped++;
@@ -2233,14 +2188,14 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 					$list[$husband->getXref()] = $husband;
 					$list[$husband->getXref()]->generation = $list[$id]->generation+1;
 				} elseif ($show_empty) {
-					$list["empty" . $total_num_skipped] = new WT_Person('');
+					$list["empty" . $total_num_skipped] = new WT_Individual('');
 					$list["empty" . $total_num_skipped]->generation = $list[$id]->generation+1;
 				}
 				if ($wife) {
 					$list[$wife->getXref()] = $wife;
 					$list[$wife->getXref()]->generation = $list[$id]->generation+1;
 				} elseif ($show_empty) {
-					$list["empty" . $total_num_skipped] = new WT_Person('');
+					$list["empty" . $total_num_skipped] = new WT_Individual('');
 					$list["empty" . $total_num_skipped]->generation = $list[$id]->generation+1;
 				}
 				if ($generations == -1 || $list[$id]->generation+1 < $generations) {
@@ -2271,10 +2226,10 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 		} else
 			if ($show_empty) {
 				if ($skipped_gen > $list[$id]->generation) {
-					$list["empty" . $total_num_skipped] = new WT_Person('');
+					$list["empty" . $total_num_skipped] = new WT_Individual('');
 					$list["empty" . $total_num_skipped]->generation = $list[$id]->generation+1;
 					$total_num_skipped++;
-					$list["empty" . $total_num_skipped] = new WT_Person('');
+					$list["empty" . $total_num_skipped] = new WT_Individual('');
 					$list["empty" . $total_num_skipped]->generation = $list[$id]->generation+1;
 					array_push($genlist, "empty" . ($total_num_skipped - 1));
 					array_push($genlist, "empty" . $total_num_skipped);
@@ -2288,7 +2243,7 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 
 //--- copied from class_reportpdf.php
 function add_descendancy(&$list, $pid, $parents=false, $generations=-1) {
-	$person = WT_Person::getInstance($pid);
+	$person = WT_Individual::getInstance($pid);
 	if ($person==null) return;
 	if (!isset($list[$pid])) {
 		$list[$pid] = $person;

@@ -1261,10 +1261,6 @@ function old_paths() {
 		WT_ROOT.'modules_v3/googlemap/pedigree_map.php',
 		WT_ROOT.'modules_v3/lightbox/admin_config.php',
 		WT_ROOT.'modules_v3/lightbox/album.php',
-		WT_ROOT.'modules_v3/lightbox/functions/lb_call_js.php',
-		WT_ROOT.'modules_v3/lightbox/functions/lb_head.php',
-		WT_ROOT.'modules_v3/lightbox/functions/lb_link.php',
-		WT_ROOT.'modules_v3/lightbox/functions/lightbox_print_media_row.php',
 		WT_ROOT.'modules_v3/tree/css/vline.jpg',
 		WT_ROOT.'themes/_administration/images/darrow2.png',
 		WT_ROOT.'themes/_administration/images/darrow.png',
@@ -1433,6 +1429,10 @@ function old_paths() {
 		WT_ROOT.'themes/minimal/jquery-ui-1.10.0',
 		WT_ROOT.'themes/webtrees/jquery-ui-1.10.0',
 		WT_ROOT.'themes/xenea/jquery-ui-1.10.0',
+		// Removed in 1.5.0
+		WT_ROOT.'library/WT/Person.php',
+		WT_ROOT.'library/WT/Event.php',
+		WT_ROOT.'modules_v3/lightbox/functions',
 	);
 }
 

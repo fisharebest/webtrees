@@ -29,7 +29,7 @@ $controller=new WT_Controller_Page();
 $obj=WT_GedcomRecord::getInstance(safe_GET_xref('pid'));
 
 if (
-	$obj instanceof WT_Person ||
+	$obj instanceof WT_Individual ||
 	$obj instanceof WT_Family ||
 	$obj instanceof WT_Source ||
 	$obj instanceof WT_Repository ||
@@ -38,7 +38,7 @@ if (
 ) {
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$obj->getRawUrl());
 	exit;
-} elseif (!$obj || !$obj->canDisplayDetails()) {
+} elseif (!$obj || !$obj->canShow()) {
 	$controller->pageHeader();
 	print_privacy_error();
 } else {
@@ -47,7 +47,7 @@ if (
 		'<pre style="white-space:pre-wrap; word-wrap:break-word;">',
 		preg_replace(
 			'/@('.WT_REGEX_XREF.')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
-			htmlspecialchars($obj->getGedcomRecord())
+			htmlspecialchars($obj->getGedcom())
 		),
 		'</pre>';
 }

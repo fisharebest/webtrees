@@ -4,7 +4,7 @@
 // Set the root person using the $pid variable
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -117,12 +117,12 @@ $gencount=0;
 		<!-- // descendancy -->
 		<td valign="middle">
 		<?php
-		$controller->print_descendency(WT_Person::getInstance($controller->pid), 1); ?>
+		$controller->print_descendency(WT_Individual::getInstance($controller->pid), 1); ?>
 		</td>
 		<!-- // pedigree -->
 		<td valign="middle">
 		<?php
-		$controller->print_person_pedigree(WT_Person::getInstance($controller->pid), 1); ?>
+		$controller->print_person_pedigree(WT_Individual::getInstance($controller->pid), 1); ?>
 		</td>
 		</tr></table>
 	</div><!-- close #hourglass_chart -->

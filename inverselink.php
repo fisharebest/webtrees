@@ -49,7 +49,7 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 
 	//-- check for admin
 	$paramok =  true;
-	if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
+	if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canShow();
 
 	if ($action == "choose" && $paramok) {
 		?>
@@ -113,7 +113,7 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="', $linktoid, '"> ';
 				echo print_findindi_link('linktopid');
 			} else {
-				$record=WT_Person::getInstance($linktoid);
+				$record=WT_Individual::getInstance($linktoid);
 				echo $record->format_list('span', false, $record->getFullName());
 			}
 		}

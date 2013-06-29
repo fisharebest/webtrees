@@ -2,7 +2,7 @@
 // Controller for the descendancy chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -92,7 +92,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 			$this->cellwidth=(strlen($this->name)*14);
 		}
 
-		if ($this->root && $this->root->canDisplayName()) {
+		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(
 				/* I18N: %s is an individual’s name */
 				WT_I18N::translate('Descendants of %s', $this->root->getFullName())
@@ -199,7 +199,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		$spouse=$family->getSpouse($person);
 		if (!$spouse) {
 			// One parent families have no spouse
-			$spouse=new WT_Person('');
+			$spouse=new WT_Individual('');
 		}
 	
 		// print marriage info
@@ -244,7 +244,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		} else {
 			// Distinguish between no children (NCHI 0) and no recorded
 			// children (no CHIL records)
-			if (strpos($family->getGedcomRecord(), '\n1 NCHI 0')) {
+			if (strpos($family->getGedcom(), '\n1 NCHI 0')) {
 				echo WT_Gedcom_Tag::getLabel('NCHI').': '.count($children);
 			} else {
 				echo WT_I18N::translate('No children');

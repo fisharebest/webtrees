@@ -91,7 +91,7 @@ case 'load_json':
 	case 'local':
 		// Filtered rows
 		$SELECT1 =
-				"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename" .
+				"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
 				" FROM  `##media`" .
 				" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 				" JOIN  `##gedcom`         USING (gedcom_id)" .
@@ -147,16 +147,16 @@ case 'load_json':
 			$ORDER_BY="1 ASC";
 		}
 
-		$rows = WT_DB::prepare($SELECT1.$ORDER_BY.$LIMIT)->execute($ARGS1)->fetchAll(PDO::FETCH_ASSOC);
+		$rows = WT_DB::prepare($SELECT1.$ORDER_BY.$LIMIT)->execute($ARGS1)->fetchAll();
 		// Total filtered/unfiltered rows
 		$iTotalDisplayRecords = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
 		$iTotalRecords        = WT_DB::prepare($SELECT2)->execute($ARGS2)->fetchColumn();
 
 		$aaData = array();
 		foreach ($rows as $row) {
-			$media = WT_Media::getInstance($row);
+			$media = WT_Media::getInstance($row->xref, $row->gedcom_id);
 			$aaData[] = array(
-				media_file_info($media_folder, $media_path, $row['media_path']),
+				media_file_info($media_folder, $media_path, $row->media_path),
 				$media->displayImage(),
 				media_object_info($media),
 			);
@@ -166,7 +166,7 @@ case 'load_json':
 	case 'external':
 		// Filtered rows
 		$SELECT1 =
-				"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m_filename AS media_path, 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename" .
+				"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom, m_filename" .
 				" FROM  `##media`" .
 				" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')" .
 				" AND   (m_filename LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
@@ -205,7 +205,7 @@ case 'load_json':
 			$ORDER_BY="1 ASC";
 		}
 
-		$rows = WT_DB::prepare($SELECT1.$ORDER_BY.$LIMIT)->execute($ARGS1)->fetchAll(PDO::FETCH_ASSOC);
+		$rows = WT_DB::prepare($SELECT1.$ORDER_BY.$LIMIT)->execute($ARGS1)->fetchAll();
 
 		// Total filtered/unfiltered rows
 		$iTotalDisplayRecords = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
@@ -213,9 +213,9 @@ case 'load_json':
 
 		$aaData = array();
 		foreach ($rows as $row) {
-			$media = WT_Media::getInstance($row);
+			$media = WT_Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			$aaData[] = array(
-			 	WT_Gedcom_Tag::getLabelValue('URL', $row['m_filename']),
+			 	WT_Gedcom_Tag::getLabelValue('URL', $row->m_filename),
 				$media->displayImage(),
 				media_object_info($media),
 			);
@@ -420,7 +420,7 @@ function media_file_info($media_folder, $media_path, $file) {
 
 function media_object_info(WT_Media $media) {
 	$xref   = $media->getXref();
-	$gedcom = WT_Tree::getNameFromId($media->getGedId());
+	$gedcom = WT_Tree::getNameFromId($media->getGedcomId());
 	$name   = $media->getFullName();
 	$conf   = WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($name));
 

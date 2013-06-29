@@ -2,7 +2,7 @@
 // Class that defines an event details object
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2008  PGV Development Team.  All rights reserved.
@@ -28,109 +28,83 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class WT_Event {
-// These objects need further refinement in their implementations and parsing
-// var $address = null;
-// var $notes = array(); //[0..*]: string
-// var $sourceCitations = array(); //[0..*]: SourceCitation
-// var $multimediaLinks = array(); //[0..*]: MultimediaLink
+class WT_Fact {
+	private $fact_id  = null;  // Unique identifier for this fact
+	private $parent   = null;  // The GEDCOM record from which this fact is taken.
+	private $gedcom   = null;  // The raw GEDCOM data for this fact
+	private $tag      = null;  // The GEDCOM tag for this record
 
-	var $lineNumber = null;
-	var $canShow = null;
-	var $state = "";
-	var $type = NULL;
-	var $tag = NULL;
-	var $date = NULL;
-	var $place = null;
-	var $gedcomRecord = null;
-	var $resn = null;
-	var $dest = false;
-	var $label = null;
-	var $parentObject = null;
-	var $detail = NULL;
-	var $values = NULL;
-	var $sortOrder = 0;
-	var $sortDate = NULL;
-	//-- temporary state variable that can be used by other scripts
-	var $temp = NULL;
+	private $is_old   = false; // Is this a pending record?
+	private $is_new   = false; // Is this a pending record?
 
-	// Is this an old/new pending record?
-	private $is_old = false;
-	private $is_new = false;
+	private $date     = null;  // The WT_Date object for the "2 DATE ..." attribute
+	private $place    = null;  // The WT_Place object for the "2 PLAC ..." attribute
 
-	// For family facts on individual pages - who is the significant spouse.
-	private $spouse;
-
-	/**
-	 * Get the value for the first given GEDCOM tag
-	 *
-	 * @param string $code
-	 * @return string
-	 */
-	function getValue($code) {
-		if (is_null($this->values)) {
-			$this->values=array();
-			preg_match_all('/\n2 ('.WT_REGEX_TAG.') (.+)/', $this->gedcomRecord, $matches, PREG_SET_ORDER);
-			foreach ($matches as $match) {
-				// If this is a link, remove the "@"
-				if (preg_match('/^@'.WT_REGEX_XREF.'@$/', $match[2])) {
-					$this->values[$match[1]]=trim($match[2], "@");
-				} else {
-					$this->values[$match[1]]=$match[2];
-				}
-			}
-		}
-		if (array_key_exists($code, $this->values)) {
-			return $this->values[$code];
-		}
-		return null;
-	}
+	// Temporary(!) variables that are used by other scripts
+	public $temp      = null; // Timeline controller
+	public $sortOrder = 0;    // sort_facts()
 
 	// Create an event objects from a gedcom fragment.
-	// We also need to know the parent (to check privacy, etc.) and
-	// the line number (from the original, privacy-filtered) gedcom
-	// record, to allow editing
-	function __construct($subrecord, $parent, $lineNumber) {
-		if (preg_match('/^1 ('.WT_REGEX_TAG.') ?(.*)((\n2 CONT.*)*)/', $subrecord, $match)) {
-			$this->tag   =$match[1];
-			$this->detail=$match[2];
-			// Some detail records contain multiple lines
-			if ($match[3]) {
-				$this->detail.=str_replace(array("\n2 CONT ", "\n2 CONT"), "\n", $match[3]);
-			}
+	// We need the parent object (to check privacy) and a (pseudo) fact ID to
+	// identify the fact within the record.
+	function __construct($gedcom, WT_GedcomRecord $parent, $fact_id) {
+		if (preg_match('/^1 ('.WT_REGEX_TAG.')/', $gedcom, $match)) {
+			$this->gedcom  = $gedcom;
+			$this->parent  = $parent;
+			$this->fact_id = $fact_id;
+			$this->tag     = $match[1];
 		} else {
-			// We are not ready for this yet.
-			// throw new Exception('Invalid GEDCOM data passed to WT_Event::_construct('.$subrecord.')');
+			// TODO need to rewrite code that passes dummy data to this function
+			//throw new Exception('Invalid GEDCOM data passed to WT_Fact::_construct('.$gedcom.')');
 		}
-		$this->gedcomRecord=$subrecord;
-		$this->parentObject=$parent;
-		$this->lineNumber  =$lineNumber;
 	}
 
-	function setState($s) {
-		$this->state = $s;
+	// Get the value of level 1 data in the fact
+	// Allow for multi-line values
+	function getValue() {
+		if (preg_match('/^1 (?:' . $this->tag . ') ?(.*(?:(?:\n2 CONT .*)*))/', $this->gedcom, $match)) {
+			return str_replace("\n2 CONT ", "\n", $match[1]);
+		} else {
+			return null;
+		}
 	}
 
-	function getState() {
-		return $this->state;
+	// Get the record to which this fact links
+	function getTarget() {
+		$xref = trim($this->getValue(), '@');
+		switch ($this->tag) {
+		case 'FAMC':
+		case 'FAMS':
+			return WT_Family::getInstance($xref);
+		case 'HUSB':
+		case 'WIFE':
+		case 'CHIL':
+			return WT_Individual::getInstance($xref);
+		case 'SOUR':
+			return WT_Source::getInstance($xref);
+		case 'OBJE':
+			return WT_Media::getInstance($xref);
+		case 'REPO':
+			return WT_Repository::getInstance($xref);
+		case 'NOTE':
+			return WT_Note::getInstance($xref);
+		default:
+			return WT_GedcomRecord::getInstance($xref);
+		}
 	}
 
-	/**
-	 * Check whether or not this event can be shown
-	 *
-	 * @return boolean
-	 */
+	// Get the value of level 2 data in the fact
+	function getAttribute($tag) {
+		if (preg_match('/\n2 (?:' . $tag . ') ?(.*(?:(?:\n3 CONT .*)*)*)/', $this->gedcom, $match)) {
+			return str_replace("\n2 CONT ", "\n", $match[1]);
+		} else {
+			return null;
+		}
+	}
+
+	// Do the privacy rules allow us to display this fact to the current user
 	function canShow() {
-		if (is_null($this->canShow)) {
-			if (empty($this->gedcomRecord)) {
-				$this->canShow = false;
-			} elseif (!is_null($this->parentObject)) {
-				$this->canShow = canDisplayFact($this->parentObject->getXref(), $this->parentObject->getGedId(), $this->gedcomRecord);
-			} else {
-				$this->canShow = true;
-			}
-		}
-		return $this->canShow;
+		return canDisplayFact($this->parent->getXref(), $this->parent->getGedcomId(), $this->gedcom);
 	}
 
 	// Check whether this fact is protected against edit
@@ -138,92 +112,52 @@ class WT_Event {
 		// Managers can edit anything
 		// Members cannot edit RESN, CHAN and locked records
 		return
-			$this->parentObject && $this->parentObject->canEdit() && (
+			$this->parent->canEdit() && !$this->isOld() && (
 				WT_USER_GEDCOM_ADMIN ||
-				WT_USER_CAN_EDIT && strpos($this->gedcomRecord, "\n2 RESN locked")===false && $this->getTag()!='RESN' && $this->getTag()!='CHAN'
+				WT_USER_CAN_EDIT && strpos($this->gedcom, "\n2 RESN locked")===false && $this->getTag()!='RESN' && $this->getTag()!='CHAN'
 			);
 	}
 
-	/**
-	 * The 4 character event type specified by GEDCom.
-	 *
-	 * @return string
-	 */
-	function getType() {
-		if (is_null($this->type))
-			$this->type=$this->getValue('TYPE');
-		return $this->type;
-	}
-
-	/**
-	 * The place where the event occured.
-	 *
-	 * @return string
-	 */
+	// The place where the event occured.
 	function getPlace() {
-		if (is_null($this->place)) {
-			$this->place=$this->getValue('PLAC');
+		if ($this->place === null) {
+			$this->place = $this->getAttribute('PLAC');
 		}
 		return $this->place;
-	}
-
-	// For family facts on individual pages, we need to know the spouse
-	public function setSpouse(WT_Person $spouse=null) {
-		$this->spouse=$spouse;
-	}
-	public function getSpouse() {
-		return $this->spouse;
 	}
 
 	// We can call this function many times, especially when sorting,
 	// so keep a copy of the date.
 	function getDate() {
-		if ($this->date===null) {
-			$this->date=new WT_Date($this->getValue('DATE'));
+		if ($this->date === null) {
+			$this->date = new WT_Date($this->getAttribute('DATE'));
 		}
-
 		return $this->date;
 	}
 
-	/**
-	 * The remaining unparsed GEDCom record
-	 *
-	 * @return string
-	 */
-	function getGedcomRecord() {
-		return $this->gedcomRecord;
+	// The raw GEDCOM data for this fact
+	function getGedcom() {
+		return $this->gedcom;
 	}
 
-	/**
-	 * The line number, or line of occurrence in the GEDCom record.
-	 *
-	 * @return unknown
-	 */
-	function getLineNumber() {
-		return $this->lineNumber;
+	// Unique identifier for the fact
+	function getFactId() {
+		return $this->fact_id;
 	}
 
-	/**
-	 *
-	 */
+	// What sort of fact is this?
 	function getTag() {
 		return $this->tag;
 	}
 
-	/**
-	 * The Person/Family record where this WT_Event came from
-	 *
-	 * @return GedcomRecord
-	 */
-	function getParentObject() {
-		return $this->parentObject;
+	// Used to convert a real fact (e.g. BIRT) into a close-relative’s fact (e.g. _BIRT_CHIL)
+	function setTag($tag) {
+		$this->tag = $tag;
 	}
 
-	/**
-	 *
-	 */
-	function getDetail() {
-		return $this->detail;
+	// The Person/Family record where this WT_Fact came from
+	function getParent() {
+		return $this->parent;
 	}
 
 	function getLabel($abbreviate=false) {
@@ -239,42 +173,39 @@ class WT_Event {
 				}
 				// no break - drop into next case
 			default:
-				return WT_Gedcom_Tag::getLabel($this->tag, $this->parentObject);
+				return WT_Gedcom_Tag::getLabel($this->tag, $this->parent);
 			}
 		}
 	}
 
+	// Is this a pending edit?
 	public function setIsOld() {
-		$this->is_old=true;
-		$this->is_new=false;
+		$this->is_old = true;
+		$this->is_new = false;
 	}
-	public function getIsOld() {
+	public function isOld() {
 		return $this->is_old;
 	}
 	public function setIsNew() {
-		$this->is_new=true;
-		$this->is_old=false;
+		$this->is_new = true;
+		$this->is_old = false;
 	}
-	public function getIsNew() {
+	public function isNew() {
 		return $this->is_new;
 	}
 
-	/**
-	 * Print a simple fact version of this event
-	 *
-	 * @param boolean $return whether to print or return
-	 * @param boolean $anchor whether to add anchor to date and place
-	 */
+	// Print a simple fact version of this event
 	function print_simple_fact($return=false, $anchor=false) {
-		global $SHOW_PEDIGREE_PLACES, $ABBREVIATE_CHART_LABELS;
+		global $ABBREVIATE_CHART_LABELS;
 
-		if (!$this->canShow()) return "";
+		$value = $this->getValue();
+
 		$data = '<span class="details_label">'.$this->getLabel($ABBREVIATE_CHART_LABELS).'</span>';
 		// Don't display "yes", because format_fact_date() does this for us.  (Should it?)
-		if ($this->detail && $this->detail!='Y') {
-			$data .= ' <span dir="auto">'.htmlspecialchars($this->detail).'</span>';
+		if ($value && $value != 'Y') {
+			$data .= ' <span dir="auto">' . htmlspecialchars($value) . '</span>';
 		}
-		$data .= ' '.format_fact_date($this, $this->getParentObject(), $anchor, false);
+		$data .= ' '.format_fact_date($this, $this->getParent(), $anchor, false);
 		$data .= ' '.format_fact_place($this, $anchor, false, false);
 		$data .= '<br>';
 		if ($return) {
@@ -300,13 +231,7 @@ class WT_Event {
 		}
 	}
 
-	/**
-	 * Static Helper functions to sort events
-	 *
-	 * @param WT_Event $a
-	 * @param WT_Event $b
-	 * @return int
-	 */
+	// Static Helper functions to sort events
 	static function CompareDate($a, $b) {
 		if ($a->getDate()->isOK() && $b->getDate()->isOK()) {
 			// If both events have dates, compare by date
@@ -326,13 +251,7 @@ class WT_Event {
 		}
 	}
 
-	/**
-	 * Static method to Compare two events by their type
-	 *
-	 * @param WT_Event $a
-	 * @param WT_Event $b
-	 * @return int
-	 */
+	// Static method to Compare two events by their type
 	static function CompareType($a, $b) {
 		global $factsort;
 
@@ -398,7 +317,7 @@ class WT_Event {
 		// Facts from same families stay grouped together
 		// Keep MARR and DIV from the same families from mixing with events from other FAMs
 		// Use the original order in which the facts were added
-		if ($a->parentObject instanceof WT_Family && $b->parentObject instanceof WT_Family && !$a->parentObject->equals($b->parentObject)) {
+		if ($a->parent instanceof WT_Family && $b->parent instanceof WT_Family && !$a->parent->equals($b->parent)) {
 			return $a->sortOrder - $b->sortOrder;
 		}
 
@@ -423,13 +342,13 @@ class WT_Event {
 
 		//-- don't let dated after DEAT/BURI facts sort non-dated facts before DEAT/BURI
 		//-- treat dated after BURI facts as BURI instead
-		if ($a->getValue('DATE')!=NULL && $factsort[$atag]>$factsort['BURI'] && $factsort[$atag]<$factsort['CHAN']) $atag='BURI';
-		if ($b->getValue('DATE')!=NULL && $factsort[$btag]>$factsort['BURI'] && $factsort[$btag]<$factsort['CHAN']) $btag='BURI';
+		if ($a->getAttribute('DATE')!=NULL && $factsort[$atag]>$factsort['BURI'] && $factsort[$atag]<$factsort['CHAN']) $atag='BURI';
+		if ($b->getAttribute('DATE')!=NULL && $factsort[$btag]>$factsort['BURI'] && $factsort[$btag]<$factsort['CHAN']) $btag='BURI';
 		$ret = $factsort[$atag]-$factsort[$btag];
 		//-- if facts are the same then put dated facts before non-dated facts
 		if ($ret==0) {
-			if ($a->getValue('DATE')!=NULL && $b->getValue('DATE')==NULL) return -1;
-			if ($b->getValue('DATE')!=NULL && $a->getValue('DATE')==NULL) return 1;
+			if ($a->getAttribute('DATE')!=NULL && $b->getAttribute('DATE')==NULL) return -1;
+			if ($b->getAttribute('DATE')!=NULL && $a->getAttribute('DATE')==NULL) return 1;
 			//-- if no sorting preference, then keep original ordering
 			$ret = $a->sortOrder - $b->sortOrder;
 		}

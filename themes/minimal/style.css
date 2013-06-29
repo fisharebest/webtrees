@@ -246,30 +246,6 @@ table.center {
 	padding:5px;
 }
 
-.facts_labelred, .facts_labelblue {
-	color:#333333;
-	background-color:#eeeeee;
-	font-size:12px;
-	padding:4px 4px 4px 4px;
-	width:20%;
-	text-align:center;
-}
-
-.facts_valuered, .facts_valueblue {
-	background-color:#ffffff;
-	color:#555555;
-	font-size:12px;
-	padding:4px 4px 4px 4px;
-}
-
-.facts_labelred, .facts_valuered {
-	border:solid #ff0000 2px;
-}
-
-.facts_labelblue, .facts_valueblue {
-	border:solid #0000ff 2px;
-}
-
 .quickfacts a {font-size:9px;padding:0 3px;}
 
 .tabs_table {
@@ -338,14 +314,6 @@ table.center {
 	font-weight:bold;
 	font-size:11px;
 	text-decoration:underline;
-}
-
-.namered {
-	border:solid #ff0000 1px;
-}
-
-.nameblue {
-	border:solid #0000ff 1px;
 }
 
 .details1 {
@@ -931,14 +899,9 @@ margin:20px;
 	border:solid #555555 1px;
 }
 
-/* Change indicators */
-.change_new {
-	border:solid #0000ff 2px;
-}
-
-.change_old {
-	border:solid #ff0000 2px;
-}
+/* Pending edits - TODO perhaps show differently in different contexts? */
+.new { outline: solid blue 1px; }
+.old { outline: solid red  1px; }
 
 .note_details {
 	display:none;
@@ -1887,8 +1850,7 @@ a.icon-udarrow             {width:20px;height:20px;background-image:url(images/u
 #edit_interface-page textarea[id*="NOTE"] {height:240px;}
 #edit_interface-page textarea[id*="TEXT"], #edit_interface-page textarea[id*="PUBL"] {height:140px;}
 #edit_interface-page textarea[id^="newgedrec"] {line-height:18px;width:605px;}
-#edit_interface-page textarea#newgedrec1 {height:20px;}
-#edit_interface-page textarea#newgedrec2 {height:364px;}
+#edit_interface-page textarea#gedcom {height:364px;}
 #edit_interface-page textarea[id*="ADDR"], #edit_interface-page input[id*="ADDR"] {height:80px;width:300px;}
 #edit_interface-page #changefam {padding:5px;}
 #edit_interface-page #changefam table {margin:10px auto;min-width:400px;max-width:650px;}

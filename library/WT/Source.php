@@ -30,21 +30,22 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Source extends WT_GedcomRecord {
 	const RECORD_TYPE = 'SOUR';
+	const SQL_FETCH   = "SELECT s_gedcom FROM `##sources` WHERE s_id=? AND s_file=?";
 	const URL_PREFIX  = 'source.php?sid=';
 
 	// Implement source-specific privacy logic
-	protected function _canDisplayDetailsByType($access_level) {
+	protected function _canShowByType($access_level) {
 		// Hide sources if they are attached to private repositories ...
-		preg_match_all('/\n1 REPO @(.+)@/', $this->_gedrec, $matches);
+		preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
 		foreach ($matches[1] as $match) {
 			$repo=WT_Repository::getInstance($match);
-			if ($repo && !$repo->canDisplayDetails($access_level)) {
+			if ($repo && !$repo->canShow($access_level)) {
 				return false;
 			}
 		}
 
 		// ... otherwise apply default behaviour
-		return parent::_canDisplayDetailsByType($access_level);
+		return parent::_canShowByType($access_level);
 	}
 
 	// Generate a private version of this record
@@ -53,20 +54,18 @@ class WT_Source extends WT_GedcomRecord {
 	}
 
 	// Fetch the record from the database
-	protected static function fetchGedcomRecord($xref, $ged_id) {
+	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement=null;
 
 		if ($statement===null) {
-			$statement=WT_DB::prepare(
-				"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec ".
-				"FROM `##sources` WHERE s_id=? AND s_file=?"
-			);
+			$statement=WT_DB::prepare("SELECT s_gedcom FROM `##sources` WHERE s_id=? AND s_file=?");
 		}
-		return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
+
+		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 	}
 
 	public function getAuth() {
-		return get_gedcom_value('AUTH', 1, $this->getGedcomRecord());
+		return get_gedcom_value('AUTH', 1, $this->getGedcom());
 	}
 
 	// Get an array of structures containing all the names in the record

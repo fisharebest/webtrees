@@ -333,7 +333,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$submenu = new WT_Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged='.WT_GEDURL, 'menu-clippingscart');
 			$menu->addSubmenu($submenu);
 		}
-		if (!empty($controller->record) && $controller->record->canDisplayDetails()) {
+		if (!empty($controller->record) && $controller->record->canShow()) {
 			$submenu = new WT_Menu(WT_I18N::translate('Add to clippings cart'), 'module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id='.$controller->record->getXref(), 'menu-clippingsadd');
 			$menu->addSubmenu($submenu);
 		}
@@ -393,7 +393,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				if ($ret) return $this->askAddOptions($record);
 			}
 		} elseif (!empty($add1)) {
-			$record = WT_Person::getInstance($add1);
+			$record = WT_Individual::getInstance($add1);
 			if ($record) {
 				$clip_ctrl->id=$record->getXref();
 				$clip_ctrl->type=strtolower($record::RECORD_TYPE);
@@ -456,7 +456,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						$out .=$record->getSexImage();
 					}
 					$out .= ' '.$record->getFullName().' ';
-					if ($record::RECORD_TYPE == 'INDI' && $record->canDisplayDetails()) {
+					if ($record::RECORD_TYPE == 'INDI' && $record->canShow()) {
 						$out .= ' ('.$record->getLifeSpan().')';
 					}
 					$out .= '</a>';
@@ -477,7 +477,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				WT_I18N::translate('Download Now').
 				'</a>';
 		}
-		$record=WT_Person::getInstance($pid);
+		$record=WT_Individual::getInstance($pid);
 		if ($record && !array_key_exists($record->getXref(), $WT_SESSION->cart[WT_GED_ID])) {
 			$out .= '<br><a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=clippings&amp;add='.$pid.'&amp;pid='.$pid.'" class="add_cart"><i class="icon-clippings"></i> '.WT_I18N::translate('Add %s to cart', $record->getFullName()).'</a>';
 		}

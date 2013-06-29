@@ -39,10 +39,8 @@ function reformat_record_import($rec) {
 	// Strip out UTF8 formatting characters
 	$rec=str_replace(array(WT_UTF8_BOM, WT_UTF8_LRM, WT_UTF8_RLM), '', $rec);
 
-	// Strip out control characters and mac/msdos line endings
-	static $control1="\r\x01\x02\x03\x04\x05\x06\x07\x08\x0B\x0C\x0E\x0F\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1A\x1B\x1C\x1D\x1E\x1F\x7F";
-	static $control2="\n?????????????????????????????";
-	$rec=strtr($rec, $control1, $control2);
+	// Strip out mac/msdos line endings
+	$rec=preg_replace("/[\r\n]+/", "\n", $rec);
 
 	// Extract lines from the record; lines consist of: level + optional xref + tag + optional data
 	$num_matches=preg_match_all('/^[ \t]*(\d+)[ \t]*(@[^@]*@)?[ \t]*(\w+)[ \t]?(.*)$/m', $rec, $matches, PREG_SET_ORDER);
@@ -664,7 +662,7 @@ function import_record($gedrec, $ged_id, $update) {
 
 	switch ($type) {
 	case 'INDI':
-		$record=new WT_Person($gedrec);
+		$record=new WT_Individual($xref, $gedrec, null, $ged_id);
 		if ($USE_RIN && preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
 			$rin=$match[1];
 		} else {
@@ -678,7 +676,7 @@ function import_record($gedrec, $ged_id, $update) {
 		update_names ($xref, $ged_id, $record);
 		break;
 	case 'FAM':
-		$record=new WT_Family($gedrec);
+		$record=new WT_Family($xref, $gedrec, null, $ged_id);
 		if (preg_match('/\n1 HUSB @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {
 			$husb=$match[1];
 		} else {
@@ -705,7 +703,7 @@ function import_record($gedrec, $ged_id, $update) {
 		//update_names ($xref, $ged_id, $record); We do not store family names in wt_names
 		break;
 	case 'SOUR':
-		$record=new WT_Source($gedrec);
+		$record=new WT_Source($xref, $gedrec, null, $ged_id);
 		if (preg_match('/\n1 TITL (.+)/', $gedrec, $match)) {
 			$name=$match[1];
 		} elseif (preg_match('/\n1 ABBR (.+)/', $gedrec, $match)) {
@@ -719,14 +717,14 @@ function import_record($gedrec, $ged_id, $update) {
 		update_names ($xref, $ged_id, $record);
 		break;
 	case 'REPO':
-		$record=new WT_Repository($gedrec);
+		$record=new WT_Repository($xref, $gedrec, null, $ged_id);
 		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links ($xref, $ged_id, $gedrec);
 		update_names ($xref, $ged_id, $record);
 		break;
 	case 'OBJE':
-		$record=new WT_Media($gedrec);
+		$record=new WT_Media($xref, $gedrec, null, $ged_id);
 		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links ($xref, $ged_id, $gedrec);
@@ -736,7 +734,7 @@ function import_record($gedrec, $ged_id, $update) {
 		// Custom records beginning with frequently do not contain unique
 		// identifiers - so we cannot load them.
 		if (substr($type, 0, 1)!='_') {
-			$record=new WT_GedcomRecord($gedrec);
+			$record=new WT_GedcomRecord($xref, $gedrec, null, $ged_id);
 			if ($type=='HEAD' && !strpos($gedrec, "\n1 DATE ")) {
 				$gedrec.="\n1 DATE ".date('j M Y');
 			}
@@ -897,7 +895,7 @@ function update_names($xref, $ged_id, $record) {
 	}
 
 	foreach ($record->getAllNames() as $n=>$name) {
-		if ($record instanceof WT_Person) {
+		if ($record instanceof WT_Individual) {
 			if ($name['givn']=='@P.N.') {
 				$soundex_givn_std=null;
 				$soundex_givn_dm=null;
@@ -1035,21 +1033,6 @@ function reject_all_changes($xref, $ged_id) {
 		" SET status='rejected'".
 		" WHERE status='pending' AND xref=? AND gedcom_id=?"
 	)->execute(array($xref, $ged_id));
-}
-
-// Find a string in a file, preceded by a any form of line-ending.
-// Although webtrees always writes them as WT_EOL, it is possible that the file was
-// edited externally by an editor that uses different endings.
-function find_newline_string($haystack, $needle, $offset=0) {
-	if ($pos=strpos($haystack, "\r\n{$needle}", $offset)) {
-		return $pos+2;
-	} elseif ($pos=strpos($haystack, "\n{$needle}", $offset)) {
-		return $pos+1;
-	} elseif ($pos=strpos($haystack, "\r{$needle}", $offset)) {
-		return $pos+1;
-	} else {
-		return false;
-	}
 }
 
 /**

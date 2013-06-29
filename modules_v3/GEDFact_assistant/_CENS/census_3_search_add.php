@@ -128,7 +128,7 @@ if (!defined('WT_WEBTREES')) {
 						if (isset($people["husb"])) {
 
 							//-- Parents Husbands Parents --------------------------------------
-							$gparent=WT_Person::getInstance($people["husb"]->getXref());
+							$gparent=WT_Individual::getInstance($people["husb"]->getXref());
 							$fams = $gparent->getChildFamilies();
 							foreach ($fams as $famid=>$family) {
 								if (!is_null($family)) {
@@ -177,7 +177,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
-									if (($people["husb"]->canDisplayDetails())) {
+									if (($people["husb"]->canShow())) {
 									?>
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $people["husb"]->getXref() ; // pid = PID
@@ -250,7 +250,7 @@ if (!defined('WT_WEBTREES')) {
 						if (isset($people["wife"])) {
 
 							//-- Parents Wifes Parent Family ---------------------------
-							$gparent=WT_Person::getInstance($people["wife"]->getXref());
+							$gparent=WT_Individual::getInstance($people["wife"]->getXref());
 							$fams = $gparent->getChildFamilies();
 							foreach ($fams as $famid=>$family) {
 								if (!is_null($family)) {
@@ -309,7 +309,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
-									if (($people["wife"]->canDisplayDetails())) {
+									if (($people["wife"]->canShow())) {
 										?>
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $people["wife"]->getXref() ;  // pid = PID
@@ -454,7 +454,7 @@ if (!defined('WT_WEBTREES')) {
 									<td align="left" class="facts_value nowrap">
 										<font size=1>
 										<?php
-										if (($child->canDisplayDetails())) {
+										if (($child->canShow())) {
 											?>
 											<a href='#' onclick='insertRowToTable("<?php
 													echo $child->getXref(); // pid = PID
@@ -562,7 +562,7 @@ if (!defined('WT_WEBTREES')) {
 						if (isset($people["husb"])) {
 
 							//-- Step Husbands Parent Family --------------------------------------
-							$gparent=WT_Person::getInstance($people["husb"]->getXref());
+							$gparent=WT_Individual::getInstance($people["husb"]->getXref());
 							$fams = $gparent->getChildFamilies();
 							foreach ($fams as $famid=>$family) {
 								if (!is_null($family)) {
@@ -617,7 +617,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
-									if (($people["husb"]->canDisplayDetails())) {
+									if (($people["husb"]->canShow())) {
 									?>
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $people["husb"]->getXref(); // pid = PID
@@ -695,7 +695,7 @@ if (!defined('WT_WEBTREES')) {
 						if (isset($people["wife"])) {
 
 							//-- Step Wifes Parent Family --------------------------------------
-							$gparent=WT_Person::getInstance($people["wife"]->getXref());
+							$gparent=WT_Individual::getInstance($people["wife"]->getXref());
 							$fams = $gparent->getChildFamilies();
 							foreach ($fams as $famid=>$family) {
 								if (!is_null($family)) {
@@ -761,7 +761,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
-									if (($people["wife"]->canDisplayDetails())) {
+									if (($people["wife"]->canShow())) {
 									?>
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $people["wife"]->getXref() ; // pid = PID
@@ -895,7 +895,7 @@ if (!defined('WT_WEBTREES')) {
 									<td align="left" class="facts_value nowrap">
 										<font size=1>
 										<?php
-										if (($child->canDisplayDetails())) {
+										if (($child->canShow())) {
 										?>
 										<a href='#' onclick='insertRowToTable("<?php
 												echo $child->getXref() ; // pid = PID
@@ -992,7 +992,7 @@ if (!defined('WT_WEBTREES')) {
 						if (isset($people["husb"])) {
 
 							//-- Spouse Husbands Parents --------------------------------------
-							$gparent=WT_Person::getInstance($people["husb"]->getXref());
+							$gparent=WT_Individual::getInstance($people["husb"]->getXref());
 							$fams = $gparent->getChildFamilies();
 							foreach ($fams as $family) {
 								if (!is_null($family)) {
@@ -1048,7 +1048,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
-									if (($people["husb"]->canDisplayDetails())) {
+									if (($people["husb"]->canShow())) {
 									?>
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $people["husb"]->getXref() ; // pid = PID
@@ -1125,7 +1125,7 @@ if (!defined('WT_WEBTREES')) {
 						if (isset($people["wife"])) {
 
 							//-- Spouse Wifes Parents --------------------------------------
-							$gparent=WT_Person::getInstance($people["wife"]->getXref());
+							$gparent=WT_Individual::getInstance($people["wife"]->getXref());
 							$fams = $gparent->getChildFamilies();
 							foreach ($fams as $family) {
 								if (!is_null($family)) {
@@ -1193,7 +1193,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
-									if (($people["wife"]->canDisplayDetails())) {
+									if (($people["wife"]->canShow())) {
 									?>
 										<a href='#' onclick='insertRowToTable("<?php
 												echo $people["wife"]->getXref() ; // pid = PID
@@ -1331,7 +1331,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
-									if (($child->canDisplayDetails())) {
+									if (($child->canShow())) {
 									?>
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $child->getXref() ; // pid = PID
@@ -1442,7 +1442,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 	if (!isset($OLD_PGENS)) $OLD_PGENS = $DEFAULT_PEDIGREE_GENERATIONS;
 	if (!isset($talloffset)) $talloffset = $PEDIGREE_LAYOUT;
 
-	$person=WT_Person::getInstance($pid);
+	$person=WT_Individual::getInstance($pid);
 	if ($pid==false || empty($person)) {
 		$spouselinks  = false;
 		$parentlinks  = false;
@@ -1454,9 +1454,9 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 	$spouselinks = "";
 	$parentlinks = "";
 	$step_parentlinks   = "";
-	$disp=$person->canDisplayDetails();
+	$disp=$person->canShow();
 
-	if ($person->canDisplayName() && !$SEARCH_SPIDER) {
+	if ($person->canShowName() && !$SEARCH_SPIDER) {
 		//-- draw a box for the family popup
 
 		if ($TEXT_DIRECTION=="rtl") {
@@ -1512,7 +1512,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				if ($husb || $num>0) {
 					if ($husb) {
 						//-- Parent Husbands Parents ----------------------
-						$gparent=WT_Person::getInstance($husb->getXref());
+						$gparent=WT_Individual::getInstance($husb->getXref());
 						$parfams = $gparent->getChildFamilies();
 						foreach ($parfams as $pfamily) {
 							if (!is_null($pfamily)) {
@@ -1525,7 +1525,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						//-- Parent Husbands Details ----------------------
 						$person_parent="Yes";
 						$tmp=$husb->getXref();
-						if ($husb->canDisplayName()) {
+						if ($husb->canShowName()) {
 							$nam   = $husb->getAllNames();
 							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 							$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
@@ -1594,7 +1594,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				if ($wife || $num>0) {
 					if ($wife) {
 						//-- Parent Wifes Parents ----------------------
-						$gparent=WT_Person::getInstance($wife->getXref());
+						$gparent=WT_Individual::getInstance($wife->getXref());
 						$parfams = $gparent->getChildFamilies();
 						foreach ($parfams as $pfamily) {
 							if (!is_null($pfamily)) {
@@ -1607,7 +1607,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						//-- Parent Wifes Details ----------------------
 						$person_parent="Yes";
 						$tmp=$wife->getXref();
-						if ($wife->canDisplayName()) {
+						if ($wife->canShowName()) {
 							$married = WT_Date::Compare($censdate, $marrdate);
 							$nam   = $wife->getAllNames();
 							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
@@ -1721,7 +1721,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 					if (($husb || $num>0) && $husb->getLabel() != ".") {
 						if ($husb) {
 							//-- Step Husbands Parents -----------------------------
-							$gparent=WT_Person::getInstance($husb->getXref());
+							$gparent=WT_Individual::getInstance($husb->getXref());
 							$parfams = $gparent->getChildFamilies();
 							foreach ($parfams as $pfamily) {
 								if (!is_null($pfamily)) {
@@ -1734,7 +1734,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							//-- Step Husband Details ------------------------------
 							$person_step="Yes";
 							$tmp=$husb->getXref();
-							if ($husb->canDisplayName()) {
+							if ($husb->canShowName()) {
 								$nam   = $husb->getAllNames();
 								$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 								$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
@@ -1806,7 +1806,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 					if ($wife || $num>0) {
 						if ($wife) {
 							//-- Step Wifes Parents ---------------------------
-							$gparent=WT_Person::getInstance($wife->getXref());
+							$gparent=WT_Individual::getInstance($wife->getXref());
 							$parfams = $gparent->getChildFamilies();
 							foreach ($parfams as $pfamily) {
 								if (!is_null($pfamily)) {
@@ -1819,7 +1819,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							//-- Step Wife Details ------------------------------
 							$person_step="Yes";
 							$tmp=$wife->getXref();
-							if ($wife->canDisplayName()) {
+							if ($wife->canShowName()) {
 								$married = WT_Date::Compare($censdate, $marrdate);
 								$nam   = $wife->getAllNames();
 								$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
@@ -1932,7 +1932,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 					if ($spouse) {
 
 						//-- Spouse Parents -----------------------------
-						$gparent=WT_Person::getInstance($spouse->getXref());
+						$gparent=WT_Individual::getInstance($spouse->getXref());
 						$spousefams = $gparent->getChildFamilies();
 						foreach ($spousefams as $pfamily) {
 							if (!is_null($pfamily)) {
@@ -1945,7 +1945,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 
 						//-- Spouse Details -----------------------------
 						$tmp=$spouse->getXref();
-						if ($spouse->canDisplayName()) {
+						if ($spouse->canShowName()) {
 							$married = WT_Date::Compare($censdate, $marrdate);
 							$nam   = $spouse->getAllNames();
 							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
@@ -2035,7 +2035,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						$persons="Yes";
 
 						//-- Childs Parents ---------------------
-						$gparent=WT_Person::getInstance($child->getXref());
+						$gparent=WT_Individual::getInstance($child->getXref());
 						$fams = $gparent->getChildFamilies();
 						$chfams = $gparent->getSpouseFamilies();
 						foreach ($fams as $family) {
@@ -2077,7 +2077,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						}
 						// Childs Details -------------------------
 						$spouselinks .= "<li>";
-						if ($child->canDisplayName()) {
+						if ($child->canShowName()) {
 							$nam   = $child->getAllNames();
 							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 							$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);

@@ -292,7 +292,6 @@ height: auto;
 #menu-fam-addfav    {background-position:left -736px;} html[dir=rtl] #menu-fam-addfav    {background-position:right -736px;}
 #menu-fam-change    {background-position:left -759px;} html[dir=rtl] #menu-fam-change    {background-position:right -759px;}
 #menu-fam-del	      {background-position:left -713px;} html[dir=rtl] #menu-fam-del	     {background-position:right -713px;}
-#menu-fam-editraw   {background-position:left -667px;} html[dir=rtl] #menu-fam-editraw   {background-position:right -667px;}
 #menu-fam-orderchil {background-position:left -759px;} html[dir=rtl] #menu-fam-orderchil {background-position:right -759px;}
 
 /* Clipping Icons */
@@ -300,7 +299,6 @@ height: auto;
 #menu-clippingsadd {background-position:left -621px;} html[dir=rtl] #menu-clippingsadd {background-position:right -621px;}
 
 /* Edit Icons */
-#menu-indi-editraw {background-position:left -667px;} html[dir=rtl] #menu-indi-editraw {background-position:right -667px;}
 #menu-indi-addname {background-position:left -690px;} html[dir=rtl] #menu-indi-addname {background-position:right -690px;}
 #menu-indi-editsex {background-position:left -690px;} html[dir=rtl] #menu-indi-editsex {background-position:right -690px;}
 #menu-indi-del	   {background-position:left -713px;} html[dir=rtl] #menu-indi-del  	 {background-position:right -713px;}
@@ -310,13 +308,11 @@ height: auto;
 #menu-note-addfav  {background-position:left -736px;} html[dir=rtl] #menu-note-fav  	 {background-position:right -736px;}
 #menu-note-del	   {background-position:left -713px;} html[dir=rtl] #menu-note-del 	   {background-position:right -713px;}
 #menu-note-edit	   {background-position:left -805px;} html[dir=rtl] #menu-note-edit    {background-position:right -805px;}
-#menu-note-editraw {background-position:left -667px;} html[dir=rtl] #menu-note-editraw {background-position:right -667px;}
 
 /* Objects  */
 #menu-obje-addfav    {background-position:left -736px;} html[dir=rtl] #menu-obje-addfav    {background-position:right -736px;}
 #menu-obje-del	     {background-position:left -713px;} html[dir=rtl] #menu-obje-del	     {background-position:right -713px;}
 #menu-obje-edit	     {background-position:left -852px;} html[dir=rtl] #menu-obje-edit      {background-position:right -852px;}
-#menu-obje-editraw   {background-position:left -667px;} html[dir=rtl] #menu-obje-editraw   {background-position:right -667px;}
 #menu-obje-link	     {background-position:left -875px;} html[dir=rtl] #menu-obje-link      {background-position:right -875px;}
 #menu-obje-link-fam  {background-position:left -437px;} html[dir=rtl] #menu-obje-link-fam  {background-position:right -437px;}
 #menu-obje-link-indi {background-position:left -460px;} html[dir=rtl] #menu-obje-link-indi {background-position:right -460px;}
@@ -326,13 +322,11 @@ height: auto;
 #menu-repo-addfav  {background-position:left -736px;} html[dir=rtl] #menu-repo-addfav  {background-position:right -736px;}
 #menu-repo-del  	 {background-position:left -713px;} html[dir=rtl] #menu-repo-de	     {background-position:right -713px;}
 #menu-repo-edit  	 {background-position:left -897px;} html[dir=rtl] #menu-repo-edit    {background-position:right -897px;}
-#menu-repo-editraw {background-position:left -667px;} html[dir=rtl] #menu-repo-editraw {background-position:right -667px;}
 
 /*  Source  */
 #menu-sour-addfav  {background-position:left -736px;} html[dir=rtl] #menu-sour-addfav  {background-position:right -736px;}
 #menu-sour-del  	 {background-position:left -713px;} html[dir=rtl] #menu-sour-del 	   {background-position:right -713px;}
 #menu-sour-edit	   {background-position:left -782px;} html[dir=rtl] #menu-sour-edit    {background-position:right -782px;}
-#menu-sour-editraw {background-position:left -667px;} html[dir=rtl] #menu-sour-editraw {background-position:right -667px;}
 
 /*  Stories  */
 #menu-story-sub {background-position:left -920px;} html[dir=rtl] #menu-story-sub {background-position:right -920px;}
@@ -447,10 +441,6 @@ text-decoration:none;
 }
 
 :focus {outline-style:none;}
-
-.facts_labelred,.facts_valuered {
-border:solid #ff0000 2px;
-}
 
 .subheaders {
 color:#000066;
@@ -918,22 +908,6 @@ color:#003399;
 background:#ffffff;
 border:1pt solid #dddddd;
 padding:5px;
-}
-
-.facts_labelred,.facts_labelblue {
-background:#99ddff;
-padding:4px 4px 4px 4px;
-width:20%;
-text-align:center;
-}
-
-.facts_valuered,.facts_valueblue {
-background:#ffffff;
-padding:4px 4px 4px 4px;
-}
-
-.facts_labelblue,.facts_valueblue {
-border:solid #0000ff 2px;
 }
 
 .quickfacts a {font-size:9px;padding:0 3px;}
@@ -1435,15 +1409,9 @@ font-size:9px;
 background:#dfeeff;
 }
 
-/* Pending edits */
-.change_new,.nameblue {
-border:solid #0000ff 2px!important;
-}
-
-.change_old,.namered {
-color:#000000 !important;
-text-decoration:line-through!important;
-}
+/* Pending edits - TODO perhaps show differently in different contexts? */
+.new { outline: solid blue 1px; }
+.old { outline: solid red  1px; }
 
 .note_details {
 display:none;
@@ -3095,8 +3063,7 @@ html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[
 #edit_interface-page textarea[id*="NOTE"] {height:240px;}
 #edit_interface-page textarea[id*="TEXT"], #edit_interface-page textarea[id*="PUBL"] {height:140px;}
 #edit_interface-page textarea[id^="newgedrec"] {line-height:18px;width:605px;}
-#edit_interface-page textarea#newgedrec1 {height:20px;}
-#edit_interface-page textarea#newgedrec2 {height:364px;}
+#edit_interface-page textarea#gedcom {height:364px;}
 #edit_interface-page textarea[id*="ADDR"], #edit_interface-page input[id*="ADDR"] {height:80px;width:300px;}
 #edit_interface-page #changefam {padding:5px;}
 #edit_interface-page #changefam table {margin:10px auto;min-width:400px;max-width:650px;}

@@ -194,7 +194,6 @@ html[dir=rtl] #main-menu > li > ul > li:first-child {text-align:center;}
 #menu-fam-addfav            {background-position:left -832px;} html[dir=rtl] #menu-fam-addfav            {background-position:right -832px;}
 #menu-fam-change            {background-position:left -858px;} html[dir=rtl] #menu-fam-change            {background-position:right -858px;}
 #menu-fam-del               {background-position:left -936px;} html[dir=rtl] #menu-fam-del               {background-position:right -936px;}
-#menu-fam-editraw           {background-position:left -754px;} html[dir=rtl] #menu-fam-editraw           {background-position:right -754px;}
 #menu-fam-orderchil         {background-position:left -858px;} html[dir=rtl] #menu-fam-orderchil         {background-position:right -858px;}
 
 /* Clipping Icons */
@@ -202,7 +201,6 @@ html[dir=rtl] #main-menu > li > ul > li:first-child {text-align:center;}
 #menu-clippingsadd          {background-position:left -702px;} html[dir=rtl] #menu-clippingsadd          {background-position:right -702px;}
 
 /* Edit Icons */
-#menu-indi-editraw          {background-position:left -754px;} html[dir=rtl] #menu-indi-editraw          {background-position:right -754px;}
 #menu-indi-addname          {background-position:left -780px;} html[dir=rtl] #menu-indi-addname          {background-position:right -780px;}
 #menu-indi-editsex          {background-position:left -780px;} html[dir=rtl] #menu-indi-editsex          {background-position:right -780px;}
 #menu-indi-del              {background-position:left -806px;} html[dir=rtl] #menu-indi-del              {background-position:right -806px;}
@@ -212,13 +210,11 @@ html[dir=rtl] #main-menu > li > ul > li:first-child {text-align:center;}
 #menu-note-addfav           {background-position:left -832px;} html[dir=rtl] #menu-note-fav              {background-position:right -832px;}
 #menu-note-del              {background-position:left -806px;} html[dir=rtl] #menu-note-del              {background-position:right -806px;}
 #menu-note-edit             {background-position:left -910px;} html[dir=rtl] #menu-note-edit             {background-position:right -910px;}
-#menu-note-editraw          {background-position:left -754px;} html[dir=rtl] #menu-note-editraw          {background-position:right -754px;}
 
 /* Objects */
 #menu-obje-addfav           {background-position:left -832px;} html[dir=rtl] #menu-obje-addfav           {background-position:right -832px;}
 #menu-obje-del              {background-position:left -1040px;} html[dir=rtl] #menu-obje-del             {background-position:right -1040px;}
 #menu-obje-edit             {background-position:left -962px;} html[dir=rtl] #menu-obje-edit             {background-position:right -962px;}
-#menu-obje-editraw          {background-position:left -754px;} html[dir=rtl] #menu-obje-editraw          {background-position:right -754px;}
 #menu-obje-link             {background-position:left -988px;} html[dir=rtl] #menu-obje-link             {background-position:right -988px;}
 #menu-obje-link-fam         {background-position:left -494px;} html[dir=rtl] #menu-obje-link-fam         {background-position:right -494px;}
 #menu-obje-link-indi        {background-position:left -520px;} html[dir=rtl] #menu-obje-link-indi        {background-position:right -520px;}
@@ -228,13 +224,11 @@ html[dir=rtl] #main-menu > li > ul > li:first-child {text-align:center;}
 #menu-repo-addfav           {background-position:left -832px;} html[dir=rtl] #menu-repo-addfav           {background-position:right -832px;}
 #menu-repo-del              {background-position:left -806px;} html[dir=rtl] #menu-repo-del              {background-position:right -806px;}
 #menu-repo-edit             {background-position:left -1014px;} html[dir=rtl] #menu-repo-edit            {background-position:right -1014px;}
-#menu-repo-editraw          {background-position:left -754px;} html[dir=rtl] #menu-repo-editraw          {background-position:right -754px;}
 
 /* Source */
 #menu-sour-addfav           {background-position:left -832px;} html[dir=rtl] #menu-sour-addfav           {background-position:right -832px;}
 #menu-sour-del              {background-position:left -1066px;} html[dir=rtl] #menu-sour-del             {background-position:right -1066px;}
 #menu-sour-edit             {background-position:left -884px;} html[dir=rtl] #menu-sour-edit             {background-position:right -884px;}
-#menu-sour-editraw          {background-position:left -754px;} html[dir=rtl] #menu-sour-editraw          {background-position:right -754px;}
 
 /* Stories */
 #menu-story-sub             {background-position:left -1092px;} html[dir=rtl] #menu-story-sub            {background-position:right -1040px;}
@@ -391,9 +385,6 @@ html[dir=rtl] .list_value, html[dir=rtl] .list_value_wrap {text-align:right;}
 .facts_label02,.facts_label03 {border-radius:3px;font-weight:700;padding:4px;text-align:center;}
 .facts_value {border:1pt solid #999999;border-radius:3px;padding:4px;}
 .facts_value02 {background:#ffffff;border:1pt solid #dddddd;padding:5px;}
-.facts_labelred,.facts_labelblue {background:#99ddff;padding:4px;text-align:center;width:20%;}
-.facts_valuered,.facts_valueblue {background:#ffffff;padding:4px;}
-.facts_labelblue,.facts_valueblue {border:solid #00f 2px;}
 .quickfacts a {font-size:9px;padding:0 3px;}
 
 .tab_cell_active {border-right:1pt solid #999999;font-size:10px;padding:2pt;text-align:center;width:20%;}
@@ -497,9 +488,9 @@ html[dir=rtl] .optionbox input {margin-left:5px;}
 .font11 {font-size:11px;}
 .font12 {font-size:12px;}
 
-/* Pending edits  */
-.change_new,.nameblue {border:solid #00f 2px !important;}
-.change_old,.namered {color:#000 !important;text-decoration:line-through !important;}
+/* Pending edits - TODO perhaps show differently in different contexts? */
+.new { outline: solid blue 1px; }
+.old { outline: solid red  1px; }
 
 a.showit {color:#000000;position:relative;text-decoration:none;z-index:24;}
 a.showit:hover {background:#ffff99;cursor:crosshair;z-index:25;}
@@ -1140,8 +1131,7 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(../image
 #edit_interface-page textarea[id*="NOTE"] {height:240px;}
 #edit_interface-page textarea[id*="TEXT"], #edit_interface-page textarea[id*="PUBL"] {height:140px;}
 #edit_interface-page textarea[id^="newgedrec"] {line-height:18px;width:605px;}
-#edit_interface-page textarea#newgedrec1 {height:20px;}
-#edit_interface-page textarea#newgedrec2 {height:364px;}
+#edit_interface-page textarea#gedcom {height:364px;}
 #edit_interface-page textarea[id*="ADDR"], #edit_interface-page input[id*="ADDR"] {height:80px;width:300px;}
 #edit_interface-page #changefam {padding:5px;}
 #edit_interface-page #changefam table {margin:10px auto;min-width:400px;max-width:650px;}

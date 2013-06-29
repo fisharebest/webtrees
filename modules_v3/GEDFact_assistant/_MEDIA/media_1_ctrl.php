@@ -35,7 +35,7 @@ global $summary, $censyear, $censdate;
 $pid = safe_get('pid');
 
 $year = "1901";
-$censevent  = new WT_Event("1 CENS\n2 DATE 03 MAR".$year."", null, 0);
+$censevent  = new WT_Fact("1 CENS\n2 DATE 03 MAR".$year."", null, 0);
 $censdate   = $censevent->getDate();
 $censyear   = $censdate->date1->y;
 $ctry       = "UK";
@@ -49,7 +49,7 @@ if ($pid=="") {
 	echo "<br><br>";
 } else {
 
-	$person=WT_Person::getInstance($pid);
+	$person=WT_Individual::getInstance($pid);
 	if ($person->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $person->getDeathYear(); }
 	if ($person->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $person->getBirthYear(); }
 	$currpid=$pid;
@@ -169,7 +169,7 @@ if ($pid=="") {
 						<td align="left" class="facts_value">
 							<font size=1>
 							<?php
-							if (($people["husb"]->canDisplayDetails())) {
+							if (($people["husb"]->canShow())) {
 							?>
 							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["husb"]->getXref() ; // pid = PID
@@ -237,7 +237,7 @@ if ($pid=="") {
 						<td align="left" class="facts_value">
 							<font size=1>
 							<?php
-							if (($people["wife"]->canDisplayDetails())) {
+							if (($people["wife"]->canShow())) {
 								?>
 							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["wife"]->getXref() ; // pid = PID
@@ -323,7 +323,7 @@ if ($pid=="") {
 								<td align="left" class="facts_value">
 									<font size=1>
 									<?php
-									if (($child->canDisplayDetails())) {
+									if (($child->canShow())) {
 										?>
 										<a href='#' onclick='opener.insertRowToTable("<?php
 												echo $child->getXref() ; // pid = PID
@@ -419,7 +419,7 @@ if ($pid=="") {
 						<td align="left" class="facts_value">
 							<font size=1>
 							<?php
-							if (($people["husb"]->canDisplayDetails())) {
+							if (($people["husb"]->canShow())) {
 								?>
 								<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["husb"]->getXref() ; // pid = PID
@@ -500,7 +500,7 @@ if ($pid=="") {
 						<td align="left" class="facts_value">
 							<font size=1>
 							<?php
-							if (($people["wife"]->canDisplayDetails())) {
+							if (($people["wife"]->canShow())) {
 							?>
 							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["wife"]->getXref() ; // pid = PID
@@ -576,7 +576,7 @@ if ($pid=="") {
 							<td align="left" class="facts_value">
 								<font size=1>
 								<?php
-								if (($child->canDisplayDetails())) {
+								if (($child->canShow())) {
 								?>
 								<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $child->getXref() ; // pid = PID
@@ -661,7 +661,7 @@ if ($pid=="") {
 						<td align="left" class="facts_value" >
 							<font size=1>
 							<?php
-							if (($people["husb"]->canDisplayDetails())) {
+							if (($people["husb"]->canShow())) {
 							?>
 							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $people["husb"]->getXref() ; // pid = PID
@@ -744,7 +744,7 @@ if ($pid=="") {
 						<td align="left" class="facts_value">
 							<font size=1>
 							<?php
-							if (($people["wife"]->canDisplayDetails())) {
+							if (($people["wife"]->canShow())) {
 							?>
 								<a href='#' onclick='opener.insertRowToTable("<?php
 										echo $people["wife"]->getXref() ; // pid = PID
@@ -822,7 +822,7 @@ if ($pid=="") {
 						<td align="left" class="facts_value">
 							<font size=1>
 							<?php
-							if (($child->canDisplayDetails())) {
+							if (($child->canShow())) {
 							?>
 							<a href='#' onclick='opener.insertRowToTable("<?php
 									echo $child->getXref() ; // pid = PID
@@ -907,7 +907,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 	if (!isset($OLD_PGENS)) $OLD_PGENS = $DEFAULT_PEDIGREE_GENERATIONS;
 	if (!isset($talloffset)) $talloffset = $PEDIGREE_LAYOUT;
 
-	$person=WT_Person::getInstance($pid);
+	$person=WT_Individual::getInstance($pid);
 	if ($pid==false || empty($person)) {
 		$spouselinks  = false;
 		$parentlinks  = false;
@@ -919,9 +919,9 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 	$spouselinks = "";
 	$parentlinks = "";
 	$step_parentlinks   = "";
-	$disp=$person->canDisplayDetails();
+	$disp=$person->canShow();
 
-	if ($person->canDisplayName() && !$SEARCH_SPIDER) {
+	if ($person->canShowName() && !$SEARCH_SPIDER) {
 		//-- draw a box for the family popup
 		if ($TEXT_DIRECTION=="rtl") {
 			$spouselinks .= "<table id=\"flyoutFamRTL\" class=\"person_box$isF\"><tr><td class=\"name2 font9 rtl\">";
@@ -958,7 +958,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 					if ($husb) {
 						$person_parent="Yes";
 						$tmp=$husb->getXref();
-						if ($husb->canDisplayName()) {
+						if ($husb->canShowName()) {
 							$fulln =strip_tags($husb->getFullName());
 							$parentlinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
 							$parentlinks .= "'".$husb->getXref()."', "; // pid = PID
@@ -995,7 +995,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 					if ($wife) {
 						$person_parent="Yes";
 						$tmp=$wife->getXref();
-						if ($wife->canDisplayName()) {
+						if ($wife->canShowName()) {
 							$married = WT_Date::Compare($censdate, $marrdate);
 							$fulln =strip_tags($wife->getFullName());
 							$parentlinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
@@ -1048,7 +1048,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						if ($husb) {
 							$person_step="Yes";
 							$tmp=$husb->getXref();
-							if ($husb->canDisplayName()) {
+							if ($husb->canShowName()) {
 								$fulln =strip_tags($husb->getFullName());
 								$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".WT_GEDURL."\">";
 								$parentlinks .= $husb->getFullName();
@@ -1068,7 +1068,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						if ($wife) {
 							$person_step="Yes";
 							$tmp=$wife->getXref();
-							if ($wife->canDisplayName()) {
+							if ($wife->canShowName()) {
 								$married = WT_Date::Compare($censdate, $marrdate);
 								$fulln =addslashes($wife->getFullName());
 								$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".WT_GEDURL."\">";
@@ -1096,7 +1096,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				if ($spouse || $num>0) {
 					if ($spouse) {
 						$tmp=$spouse->getXref();
-						if ($spouse->canDisplayName()) {
+						if ($spouse->canShowName()) {
 							$married = WT_Date::Compare($censdate, $marrdate);
 							$fulln =strip_tags($spouse->getFullName());
 							$spouselinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
@@ -1145,7 +1145,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				foreach ($children as $c=>$child) {
 					if ($child) {
 						$persons="Yes";
-						if ($child->canDisplayName()) {
+						if ($child->canShowName()) {
 							$fulln =strip_tags($child->getFullName());
 							$spouselinks .= "<li>";
 							$spouselinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";

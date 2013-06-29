@@ -2,7 +2,7 @@
 // Controller for the media page
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -34,35 +34,8 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 class WT_Controller_Media extends WT_Controller_GedcomRecord {
 
 	public function __construct() {
-		$xref = safe_GET_xref('mid');
-
-		$gedrec=find_media_record($xref, WT_GED_ID);
-		if (WT_USER_CAN_EDIT) {
-			$newrec=find_updated_record($xref, WT_GED_ID);
-		} else {
-			$newrec=null;
-		}
-
-		if ($gedrec===null) {
-			if ($newrec===null) {
-				// Nothing to see here.
-				parent::__construct();
-				return;
-			} else {
-				// Create a dummy record from the first line of the new record.
-				// We need it for diffMerge(), getXref(), etc.
-				list($gedrec)=explode("\n", $newrec);
-			}
-		}
-
-		$this->record = new WT_Media($gedrec);
-
-		// If there are pending changes, merge them in.
-		if ($newrec!==null) {
-			$diff_record=new WT_Media($newrec);
-			$diff_record->setChanged(true);
-			$this->record->diffMerge($diff_record);
-		}
+		$xref         = safe_GET_xref('mid');
+		$this->record = WT_Media::getInstance($xref);
 
 		parent::__construct();
 	}
@@ -73,7 +46,7 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	function getEditMenu() {
 		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
 
-		if (!$this->record || $this->record->isMarkedDeleted()) {
+		if (!$this->record || $this->record->isOld()) {
 			return null;
 		}
 
@@ -104,21 +77,6 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 				$submenu->addSubMenu($ssubmenu);
 			}
 
-			$menu->addSubmenu($submenu);
-		}
-
-		// edit/view raw gedcom
-		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-obje-editraw');
-			$submenu->addOnclick("return edit_raw('".$this->record->getXref()."');");
-			$menu->addSubmenu($submenu);
-		} elseif ($SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'), '#', 'menu-obje-viewraw');
-			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-				$submenu->addOnclick("return show_gedcom_record('new');");
-			} else {
-				$submenu->addOnclick("return show_gedcom_record();");
-			}
 			$menu->addSubmenu($submenu);
 		}
 
@@ -153,17 +111,17 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	* @return array
 	*/
 	function getFacts($includeFileName=true) {
-		$facts = $this->record->getFacts(array());
+		$facts = $this->record->getFacts();
 
 		// Add some dummy facts to show additional information
 		if ($this->record->fileExists()) {
 			// get height and width of image, when available
 			$imgsize = $this->record->getImageAttributes();
 			if (!empty($imgsize['WxH'])) {
-				$facts[] = new WT_Event('1 __IMAGE_SIZE__ '.$imgsize['WxH'], $this->record, 0);
+				$facts[] = new WT_Fact('1 __IMAGE_SIZE__ '.$imgsize['WxH'], $this->record, 0);
 			}
 			//Prints the file size
-			$facts[] = new WT_Event('1 __FILE_SIZE__ '.$this->record->getFilesize(), $this->record, 0);
+			$facts[] = new WT_Fact('1 __FILE_SIZE__ '.$this->record->getFilesize(), $this->record, 0);
 		}
 
 		sort_facts($facts);

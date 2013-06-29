@@ -2,7 +2,7 @@
 // Batch Update plugin for phpGedView - add missing 1 BIRT/DEAT Y
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2008 Greg Roach.  All rights reserved.
@@ -38,7 +38,7 @@ class death_y_bu_plugin extends base_plugin {
 	}
 
 	static function doesRecordNeedUpdate($xref, $gedrec) {
-		return !preg_match('/\n1 ('.WT_EVENTS_DEAT.')/', $gedrec) && WT_Person::getInstance($xref)->isDead();
+		return !preg_match('/\n1 ('.WT_EVENTS_DEAT.')/', $gedrec) && WT_Individual::getInstance($xref)->isDead();
 	}
 
 	static function updateRecord($xref, $gedrec) {

@@ -130,67 +130,67 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			switch ($rec_type) {
 			case 'i':
 				$rows=WT_DB::prepare(
-					"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+					"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
 					" FROM `##individuals`".
 					" WHERE i_file=?".
 					" ORDER BY i_id".
 					" LIMIT ".self::RECORDS_PER_VOLUME." OFFSET ".($volume*self::RECORDS_PER_VOLUME)
-				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
+				)->execute(array($ged_id))->fetchAll();
 				foreach ($rows as $row) {
-					$records[]=WT_Person::getInstance($row);
+					$records[]=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 				}
 				break;
 			case 's':
 				$rows=WT_DB::prepare(
-					"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec".
+					"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom".
 					" FROM `##sources`".
 					" WHERE s_file=?".
 					" ORDER BY s_id".
 					" LIMIT ".self::RECORDS_PER_VOLUME." OFFSET ".($volume*self::RECORDS_PER_VOLUME)
-				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
+				)->execute(array($ged_id))->fetchAll();
 				foreach ($rows as $row) {
-					$records[]=WT_Source::getInstance($row);
+					$records[]=WT_Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 				}
 				break;
 			case 'r':
 				$rows=WT_DB::prepare(
-					"SELECT 'REPO' AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec".
+					"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
 					" FROM `##other`".
 					" WHERE o_file=? AND o_type='REPO'".
 					" ORDER BY o_id".
 					" LIMIT ".self::RECORDS_PER_VOLUME." OFFSET ".($volume*self::RECORDS_PER_VOLUME)
-				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
+				)->execute(array($ged_id))->fetchAll();
 				foreach ($rows as $row) {
-					$records[]=WT_Repository::getInstance($row);
+					$records[]=WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 				}
 				break;
 			case 'n':
 				$rows=WT_DB::prepare(
-					"SELECT 'NOTE' AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec".
+					"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
 					" FROM `##other`".
 					" WHERE o_file=? AND o_type='NOTE'".
 					" ORDER BY o_id".
 					" LIMIT ".self::RECORDS_PER_VOLUME." OFFSET ".($volume*self::RECORDS_PER_VOLUME)
-				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
+				)->execute(array($ged_id))->fetchAll();
 				foreach ($rows as $row) {
-					$records[]=WT_Note::getInstance($row);
+					$records[]=WT_Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 				}
 				break;
 			case 'm':
 				$rows=WT_DB::prepare(
-					"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename".
+					"SELECT m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom".
 					" FROM `##media`".
 					" WHERE m_file=?".
 					" ORDER BY m_id".
 					" LIMIT ".self::RECORDS_PER_VOLUME." OFFSET ".($volume*self::RECORDS_PER_VOLUME)
-				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
+				)->execute(array($ged_id))->fetchAll();
 				foreach ($rows as $row) {
-					$records[]=WT_Media::getInstance($row);
+					$records[]=WT_Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 				}
 				break;
 			}
 			foreach ($records as $record) {
-				if ($record->canDisplayName()) {
+				if ($record->canShowName()) {
 					$data.='<url>';
 					$data.='<loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.$record->getHtmlUrl().'</loc>';
 					$chan=$record->getChangeEvent();

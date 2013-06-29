@@ -71,7 +71,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		foreach ($this->pids as $value) {
 			if ($value!=$remove) {
 				$newpids[] = $value;
-				$person = WT_Person::getInstance($value);
+				$person = WT_Individual::getInstance($value);
 				if ($person) {
 					$this->people[] = $person;
 				}
@@ -81,7 +81,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		$this->pidlinks = "";
 		/* @var $indi Person */
 		foreach ($this->people as $p=>$indi) {
-			if (!is_null($indi) && $indi->canDisplayDetails()) {
+			if (!is_null($indi) && $indi->canShow()) {
 				//-- setup string of valid pids for links
 				$this->pidlinks .= "pids%5B%5D=".$indi->getXref()."&amp;";
 				$bdate = $indi->getBirthDate();
@@ -95,8 +95,14 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 					}
 				}
 				// find all the fact information
-				$indi->add_family_facts(false);
-				foreach ($indi->getIndiFacts() as $event) {
+				$facts = $indi->getFacts();
+				foreach ($indi->getSpouseFamilies() as $family) {
+					foreach ($family->getFacts() as $fact) {
+						$fact->spouse = $family->getSpouse($indi);
+						$facts[] = $fact;
+					}
+				}
+				foreach ($facts as $event) {
 					//-- get the fact type
 					$fact = $event->getTag();
 					if (!in_array($fact, $this->nonfacts)) {
@@ -137,8 +143,8 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		$printed = false;
 		for ($i=0; $i<count($this->people); $i++) {
 			if (!is_null($this->people[$i])) {
-				if (!$this->people[$i]->canDisplayDetails()) {
-					if ($this->people[$i]->canDisplayName()) {
+				if (!$this->people[$i]->canShow()) {
+					if ($this->people[$i]->canShowName()) {
 						echo "&nbsp;<a href=\"".$this->people[$i]->getHtmlUrl()."\">".$this->people[$i]->getFullName()."</a>";
 						print_privacy_error();
 						echo "<br>";
@@ -153,15 +159,15 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		}
 	}
 
-	function print_time_fact(WT_Event $event) {
+	function print_time_fact(WT_Fact $event) {
 		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $SHOW_PEDIGREE_PLACES, $placements;
 
 		/* @var $event Event */
-		$factrec = $event->getGedComRecord();
+		$factrec = $event->getGedcom();
 		$fact = $event->getTag();
-		$desc = $event->getDetail();
+		$desc = $event->getValue();
 		if ($fact=="EVEN" || $fact=="FACT") {
-			$fact = $event->getType();
+			$fact = $event->getAttribute('TYPE');
 			}
 		//-- check if this is a family fact
 		$gdate=$event->getDate();
@@ -201,11 +207,11 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		echo ": 3px;\">";
 		$col = $event->temp % 6;
 		echo "</td><td valign=\"top\" class=\"person".$col."\">";
-		if (count($this->pids) > 6) echo $event->getParentObject()->getFullName()." - ";
-		$record=$event->getParentObject();
+		if (count($this->pids) > 6) echo $event->getParent()->getFullName()." - ";
+		$record=$event->getParent();
 		echo $event->getLabel();
 		echo " -- ";
-		if ($record instanceof WT_Person) {
+		if ($record instanceof WT_Individual) {
 			echo format_fact_date($event, $record, false, false);
 		} elseif ($record instanceof WT_Family) {
 			echo $gdate->Display(false);
@@ -242,7 +248,11 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 			}
 		}
 		//-- print spouse name for marriage events
-		$spouse = $event->getSpouse();
+		if (isset($event->spouse)) {
+			$spouse = $event->spouse;
+		} else {
+			$spouse = null;
+		}
 		if ($spouse) {
 			for ($p=0; $p<count($this->pids); $p++) {
 				if ($this->pids[$p]==$spouse->getXref()) break;
@@ -252,7 +262,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 			if ($spouse->getXref()!=$this->pids[$p]) {
 				echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a>';
 			} else {
-				echo ' <a href="', $event->getParentObject()->getHtmlUrl(), '">', $event->getParentObject()->getFullName(), '</a>';
+				echo ' <a href="', $event->getParent()->getHtmlUrl(), '">', $event->getParent()->getFullName(), '</a>';
 			}
 		}
 		echo "</td></tr></table>";
@@ -284,7 +294,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 
 	public function getSignificantIndividual() {
 		if ($this->pids) {
-			return WT_Person::getInstance($this->pids[0]);
+			return WT_Individual::getInstance($this->pids[0]);
 		} else {
 			return parent::getSignificantIndividual();
 		}

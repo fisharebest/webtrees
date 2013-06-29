@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -48,232 +48,167 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		return 20;
 	}
 
-	function printFamilyHeader($url, $label) {
-		echo '<table><tr>';
-		echo '<td><i class="icon-cfamily"></i></td>';
-		echo '<td><span class="subheaders">', $label, '</span>';
-		echo ' - <a href="', $url, '">', WT_I18N::translate('View Family'), '</a></td>';
-		echo '</tr></table>';
-	}
+	// print parents informations
+	function printFamily(WT_Family $family, $type, $label) {
+		global $controller;
+		global $personcount; // TODO: use a unique id instead?
 
-	/**
-	* print parents informations
-	* @param Family family
-	* @param Array people
-	* @param String family type
-	* @return html table rows
-	*/
-	function printParentsRows($family, $people, $type) {
-		global $personcount, $SHOW_PEDIGREE_PLACES, $controller, $SEARCH_SPIDER;
+		?>
+		<table>
+			<tr>
+				<td>
+					<i class="icon-cfamily"></i>
+				</td>
+				<td>
+					<span class="subheaders"> <?php echo $label; ?> </span> - 
+					<a href="<?php echo $family->getHtmlUrl() ; ?>"><?php echo WT_I18N::translate('View Family'); ?></a>
+				</td>
+			</tr>
+		</table>
+		<table class="facts_table">
+		<?php
 
-		$elderdate = "";
-		//-- new father/husband
-		$styleadd = "";
-		if (isset($people["newhusb"])) {
-			$styleadd = "red";
-			?>
-			<tr>
-				<td class="facts_labelblue"><?php echo $people["newhusb"]->getLabel(); ?></td>
-				<td class="<?php echo $controller->getPersonStyle($people["newhusb"]); ?>">
-					<?php print_pedigree_person($people["newhusb"], 2, 0, $personcount++); ?>
-				</td>
-			</tr>
-			<?php
-			$elderdate = $people["newhusb"]->getBirthDate();
-		}
-		//-- father/husband
-		if (isset($people["husb"])) {
-			?>
-			<tr>
-				<td class="facts_label<?php echo $styleadd; ?>"><?php echo $people["husb"]->getLabel(); ?></td>
-				<td class="<?php echo $controller->getPersonStyle($people["husb"]); ?>">
-					<?php print_pedigree_person($people["husb"], 2, 0, $personcount++); ?>
-				</td>
-			</tr>
-			<?php
-			$elderdate = $people["husb"]->getBirthDate();
-		}
-		//-- missing father
-		if ($type=="parents" && !isset($people["husb"]) && !isset($people["newhusb"])) {
-			if ($controller->record->canEdit()) {
-				?>
-				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Add a new father'); ?></td>
-					<td class="facts_value"><a href="#" onclick="return addnewparentfamily('<?php echo $controller->record->getXref(); ?>', 'HUSB', '<?php echo $family->getXref(); ?>');"><?php echo WT_I18N::translate('Add a new father'); ?></a></td>
-				</tr>
-				<?php
+		///// HUSB /////
+		$found = false;
+		foreach ($family->getFacts('HUSB') as $fact) {
+			$found |= !$fact->isOld();
+			if ($fact->isNew()) {
+				$class = 'facts_label new';
+			} elseif ($fact->isOld()) {
+				$class = 'facts_label old';
+			} else {
+				$class = 'facts_label';
 			}
-		}
-		//-- missing husband
-		if ($type=="spouse" && !isset($people["husb"]) && !isset($people["newhusb"])) {
-			if ($controller->record->canEdit()) {
-				?>
-				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Add husband'); ?></td>
-					<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a husband to this family'); ?></a></td>
-				</tr>
-				<?php
+			$person = $fact->getTarget();
+			if ($person->equals($controller->record)) {
+				$label = '<i class="icon-selected"></i>';
+			} else {
+				$label = get_relationship_name(get_relationship($controller->record, $person, true, 3));
 			}
-		}
-		//-- new mother/wife
-		$styleadd = "";
-		if (isset($people["newwife"])) {
-			$styleadd = "red";
 			?>
 			<tr>
-				<td class="facts_labelblue"><?php echo $people["newwife"]->getLabel($elderdate); ?></td>
-				<td class="<?php echo $controller->getPersonStyle($people["newwife"]); ?>">
-					<?php print_pedigree_person($people["newwife"], 2, 0, $personcount++); ?>
+				<td class="<?php echo $class; ?>">
+					<?php echo $label; ?>
+				</td>
+				<td class="<?php echo $controller->getPersonStyle($person); ?>">
+					<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
 				</td>
 			</tr>
 			<?php
 		}
-		//-- mother/wife
-		if (isset($people["wife"])) {
+		if (!$found && $family->canEdit()) {
 			?>
 			<tr>
-				<td class="facts_label<?php echo $styleadd; ?>"><?php echo $people["wife"]->getLabel($elderdate); ?></td>
-				<td class="<?php echo $controller->getPersonStyle($people["wife"]); ?>">
-					<?php print_pedigree_person($people["wife"], 2, 0, $personcount++); ?>
-				</td>
+				<td class="facts_label"><?php echo WT_I18N::translate('Add husband'); ?></td>
+				<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a husband to this family'); ?></a></td>
 			</tr>
 			<?php
 		}
-		//-- missing mother
-		if ($type=="parents" && !isset($people["wife"]) && !isset($people["newwife"])) {
-			if ($controller->record->canEdit()) {
-				?>
-				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Add a new mother'); ?></td>
-					<td class="facts_value"><a href="#" onclick="return addnewparentfamily('<?php echo $controller->record->getXref(); ?>', 'WIFE', '<?php echo $family->getXref(); ?>');"><?php echo WT_I18N::translate('Add a new mother'); ?></a></td>
-				</tr>
-				<?php
+
+		///// MARR /////
+		$found = false;
+		foreach ($family->getFacts('MARR|_NMR') as $fact) {
+			$found |= !$fact->isOld();
+			if ($fact->isNew()) {
+				$class = 'facts_label new';
+			} elseif ($fact->isOld()) {
+				$class = 'facts_label old';
+			} else {
+				$class = 'facts_label';
 			}
-		}
-		//-- missing wife
-		if ($type=="spouse" && !isset($people["wife"]) && !isset($people["newwife"])) {
-			if ($controller->record->canEdit()) {
-				?>
-				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Add wife'); ?></td>
-					<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
-				</tr>
-				<?php
-			}
-		}
-		//-- marriage row
-		if ($family->getMarriageRecord()!="" || WT_USER_CAN_EDIT) {
 			?>
 			<tr>
 				<td class="facts_label">
 					&nbsp;
 				</td>
 				<td class="facts_value">
-					<?php $marr_type = strtoupper($family->getMarriageType());
-					if ($marr_type=='CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='UNKNOWN') {
-						$marr_fact = 'MARR_' . $marr_type;
-					} else {
-						$marr_fact = 'MARR';
-					}
-					$famid = $family->getXref();
-					$place = $family->getMarriagePlace();
-					$date = $family->getMarriageDate();
-					if ($date && $date->isOK() || $place) {
-						if ($date) {
-							$details=$date->Display(false);
-						}
-						if ($place) {
-							if ($details) {
-								$details .= ' — ';
-							}
-							$tmp=new WT_Place($place, WT_GED_ID);
-							$details .= $tmp->getShortName();
-						}
-						echo WT_Gedcom_Tag::getLabelValue('MARR', $details);
-					} else if (get_sub_record(1, "1 _NMR", find_family_record($famid, WT_GED_ID))) {
-						$husb = $family->getHusband();
-						$wife = $family->getWife();
-						if (empty($wife) && !empty($husb)) {
-							echo WT_Gedcom_Tag::getLabel('_NMR', $husb);
-						} elseif (empty($husb) && !empty($wife)) {
-							echo WT_Gedcom_Tag::getLabel('_NMR', $wife);
-						} else {
-							echo WT_Gedcom_Tag::getLabel('_NMR');
-						}
-					} else if ($family->getMarriageRecord()=="" && $controller->record->canEdit()) {
-						echo "<a href=\"#\" onclick=\"return add_new_record('".$famid."', 'MARR');\">".WT_I18N::translate('Add marriage details')."</a>";
-					} else {
-						echo WT_Gedcom_Tag::getLabelValue($marr_fact, WT_I18N::translate('yes'));
-					}
-					?>
+					<?php echo WT_Gedcom_Tag::getLabelValue($fact->getTag(), $fact->getPlace() . ' — ' . $fact->getDate()->Display(false)); ?>
 				</td>
 			</tr>
 			<?php
 		}
-	}
+		if (!$found && $family->canEdit()) {
+			// Add a new marriage
+			?>
+			<tr>
+				<td class="facts_label">
+					&nbsp;
+				</td>
+				<td class="facts_value">
+					<a href="#" onclick="return add_new_record('<?php echo $family->getXref(); ?>', 'MARR');">
+						<?php echo WT_I18N::translate('Add marriage details'); ?>
+					</a>
+				</td>
+			</tr>
+			<?php
+		}
 
-	/**
-	* print children informations
-	* @param Family family
-	* @param Array people
-	* @param String family type
-	* @return html table rows
-	*/
-	function printChildrenRows($family, $people, $type) {
-		global $personcount, $controller;
+		///// WIFE /////
+		$found = false;
+		foreach ($family->getFacts('WIFE') as $fact) {
+			$found |= !$fact->isOld();
+			if ($fact->isNew()) {
+				$class = 'facts_label new';
+			} elseif ($fact->isOld()) {
+				$class = 'facts_label old';
+			} else {
+				$class = 'facts_label';
+			}
+			$person = $fact->getTarget();
+			if ($person->equals($controller->record)) {
+				$label = '<i class="icon-selected"></i>';
+			} else {
+				$label = get_relationship_name(get_relationship($controller->record, $person, true, 3));
+			}
+			?>
+			<tr>
+				<td class="<?php echo $class; ?>">
+					<?php echo $label; ?>
+				</td>
+				<td class="<?php echo $controller->getPersonStyle($person); ?>">
+					<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
+				</td>
+			</tr>
+			<?php
+		}
+		if (!$found && $family->canEdit()) {
+			?>
+			<tr>
+				<td class="facts_label"><?php echo WT_I18N::translate('Add wife'); ?></td>
+				<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
+			</tr>
+			<?php
+		}
 
-		$elderdate = $family->getMarriageDate();
-		$key=0;
-		foreach ($people["children"] as $child) {
-			$label = $child->getLabel();
-			$styleadd = "";
+		///// CHIL /////
+		foreach ($family->getFacts('CHIL') as $fact) {
+			if ($fact->isNew()) {
+				$class = 'facts_label new';
+			} elseif ($fact->isOld()) {
+				$class = 'facts_label old';
+			} else {
+				$class = 'facts_label';
+			}
+			$person = $fact->getTarget();
+			if ($person->equals($controller->record)) {
+				$label = '<i class="icon-selected"></i>';
+			} else {
+				$label = get_relationship_name(get_relationship($controller->record, $person, true, 3));
+			}
 			?>
 			<tr>
-				<td class="facts_label<?php echo $styleadd; ?>"><?php if ($styleadd=="red") echo $child->getLabel(); else echo $child->getLabel($elderdate, $key+1); ?></td>
-				<td class="<?php echo $controller->getPersonStyle($child); ?>">
-				<?php
-				print_pedigree_person($child, 2, 0, $personcount++);
-				?>
+				<td class="<?php echo $class; ?>">
+					<?php echo $label; ?>
+				</td>
+				<td class="<?php echo $controller->getPersonStyle($person); ?>">
+					<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
 				</td>
 			</tr>
 			<?php
-			$elderdate = $child->getBirthDate();
-			++$key;
 		}
-		foreach ($people["newchildren"] as $child) {
-			$label = $child->getLabel();
-			$styleadd = "blue";
-			?>
-			<tr>
-				<td class="facts_label<?php echo $styleadd; ?>"><?php if ($styleadd=="red") echo $child->getLabel(); else echo $child->getLabel($elderdate, $key+1); ?></td>
-				<td class="<?php echo $controller->getPersonStyle($child); ?>">
-				<?php
-				print_pedigree_person($child, 2, 0, $personcount++);
-				?>
-				</td>
-			</tr>
-			<?php
-			$elderdate = $child->getBirthDate();
-			++$key;
-		}
-		foreach ($people["delchildren"] as $child) {
-			$label = $child->getLabel();
-			$styleadd = "red";
-			?>
-			<tr>
-				<td class="facts_label<?php echo $styleadd; ?>"><?php if ($styleadd=="red") echo $child->getLabel(); else echo $child->getLabel($elderdate, $key+1); ?></td>
-				<td class="<?php echo $controller->getPersonStyle($child); ?>">
-				<?php
-				print_pedigree_person($child, 2, 0, $personcount++);
-				?>
-				</td>
-			</tr>
-			<?php
-			$elderdate = $child->getBirthDate();
-			++$key;
-		}
-		if (isset($family) && $controller->record->canEdit()) {
-			if ($type == "spouse") {
+		// Re-order children / add a new child
+		if ($family->canEdit()) {
+			if ($type == 'FAMS') {
 				$child_u = WT_I18N::translate('Add a new son or daughter');
 				$child_m = WT_I18N::translate('son');
 				$child_f = WT_I18N::translate('daughter');
@@ -282,10 +217,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				$child_m = WT_I18N::translate('brother');
 				$child_f = WT_I18N::translate('sister');
 			}
-		?>
+			?>
 			<tr>
 				<td class="facts_label">
-					<?php if (WT_USER_CAN_EDIT && isset($people["children"][1])) { ?>
+					<?php if (count($family->getChildren())>1) { ?>
 					<a href="#" onclick="reorder_children('<?php echo $family->getXref(); ?>');tabswitch(5);"><i class="icon-media-shuffle"></i> <?php echo WT_I18N::translate('Re-order children'); ?></a>
 					<?php } ?>
 				</td>
@@ -299,6 +234,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			</tr>
 			<?php
 		}
+
+		echo '</table>';
+
+		return;
 	}
 
 	// Implement WT_Module_Tab
@@ -320,60 +259,38 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		<?php
 		$personcount=0;
 		$families = $controller->record->getChildFamilies();
-		if (count($families)==0) {
-			if ($controller->record->canEdit()) {
-				?>
-				<table class="facts_table">
-					<tr>
-						<td class="facts_value"><a href="#" onclick="return addnewparent('<?php echo $controller->record->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a new father'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><a href="#" onclick="return addnewparent('<?php echo $controller->record->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a new mother'); ?></a></td>
-					</tr>
-				</table>
-				<?php
-			}
+		if (!$families && $controller->record->canEdit()) {
+			?>
+			<table class="facts_table">
+				<tr>
+					<td class="facts_value"><a href="#" onclick="return addnewparent('<?php echo $controller->record->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a new father'); ?></td>
+				</tr>
+				<tr>
+					<td class="facts_value"><a href="#" onclick="return addnewparent('<?php echo $controller->record->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a new mother'); ?></a></td>
+				</tr>
+			</table>
+			<?php
 		}
 
 		// parents
 		foreach ($families as $family) {
-			$people = $controller->buildFamilyList($family, "parents");
-			$this->printFamilyHeader($family->getHtmlUrl(), $controller->record->getChildFamilyLabel($family));
-			echo '<table class="facts_table">';
-			$this->printParentsRows($family, $people, "parents");
-			$this->printChildrenRows($family, $people, "parents");
-			echo '</table>';
+			$this->printFamily($family, 'FAMC', $controller->record->getChildFamilyLabel($family));
 		}
 
 		// step-parents
 		foreach ($controller->record->getChildStepFamilies() as $family) {
-			$people = $controller->buildFamilyList($family, "step-parents");
-			$this->printFamilyHeader($family->getHtmlUrl(), $controller->record->getStepFamilyLabel($family));
-			echo '<table class="facts_table">';
-			$this->printParentsRows($family, $people, "parents");
-			$this->printChildrenRows($family, $people, "parents");
-			echo '</table>';
+			$this->printFamily($family, 'FAMC', $controller->record->getStepFamilyLabel($family));
 		}
 
 		// spouses
 		$families = $controller->record->getSpouseFamilies();
 		foreach ($families as $family) {
-			$people = $controller->buildFamilyList($family, "spouse");
-			$this->printFamilyHeader($family->getHtmlUrl(), $controller->record->getSpouseFamilyLabel($family));
-			echo '<table class="facts_table">';
-			$this->printParentsRows($family, $people, "spouse");
-			$this->printChildrenRows($family, $people, "spouse");
-			echo '</table>';
+			$this->printFamily($family, 'FAMS', $controller->record->getSpouseFamilyLabel($family));
 		}
 
 		// step-children
 		foreach ($controller->record->getSpouseStepFamilies() as $family) {
-			$people = $controller->buildFamilyList($family, "step-children");
-			$this->printFamilyHeader($family->getHtmlUrl(), $family->getFullName());
-			echo '<table class="facts_table">';
-			$this->printParentsRows($family, $people, "spouse");
-			$this->printChildrenRows($family, $people, "spouse");
-			echo '</table>';
+			$this->printFamily($family, 'FAMS', $family->getFullName());
 		}
 
 		if (!$SHOW_AGE_DIFF) {
@@ -407,11 +324,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				<a href="#" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Add a wife using an existing person'); ?></a>
 				</td>
 			</tr>
-			<tr>
-				<td class="facts_value">
-				<a href="#" onclick="return add_fams('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Link this person to an existing family as a husband'); ?></a>
-				</td>
-			</tr>
 			<?php }
 			if ($controller->record->getSex()!="M") { ?>
 			<tr>
@@ -422,11 +334,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_value">
 				<a href="#" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Add a husband using an existing person'); ?></a>
-				</td>
-			</tr>
-			<tr>
-				<td class="facts_value">
-				<a href="#" onclick="return add_fams('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Link this person to an existing family as a wife'); ?></a>
 				</td>
 			</tr>
 			<?php } ?>

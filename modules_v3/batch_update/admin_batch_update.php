@@ -135,9 +135,9 @@ class batch_update {
 					$newrecord=$this->PLUGIN->updateRecord($this->xref, $record);
 					if ($newrecord!=$record) {
 						if ($newrecord) {
-							replace_gedrec($this->xref, WT_GED_ID, $newrecord, $this->PLUGIN->chan);
+							WT_GedcomRecord::getInstance($this->xref)->updateRecord($newrecord, $this->PLUGIN->chan);
 						} else {
-							delete_gedrec($this->xref, WT_GED_ID);
+							WT_GedcomRecord::getInstance($this->xref)->deleteRecord();
 						}
 					}
 				}
@@ -150,9 +150,9 @@ class batch_update {
 						$newrecord=$this->PLUGIN->updateRecord($xref, $record);
 						if ($newrecord!=$record) {
 							if ($newrecord) {
-								replace_gedrec($xref, WT_GED_ID, $newrecord, $this->PLUGIN->chan);
+								WT_GedcomRecord::getInstance($this->xref)->updateRecord($newrecord, $this->PLUGIN->chan);
 							} else {
-								delete_gedrec($xref, WT_GED_ID);
+								WT_GedcomRecord::getInstance($this->xref)->deleteRecord();
 							}
 						}
 					}
@@ -162,7 +162,7 @@ class batch_update {
 			case 'delete':
 				$record=self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]);
 				if ($this->PLUGIN->doesRecordNeedUpdate($this->xref, $record)) {
-					delete_gedrec($this->xref, WT_GED_ID);
+					WT_GedcomRecord::getInstance($this->xref)->deleteRecord();
 				}
 				$this->xref=$this->findNextXref($this->xref);
 				break;
@@ -170,7 +170,7 @@ class batch_update {
 				foreach ($this->all_xrefs as $xref=>$type) {
 					$record=self::getLatestRecord($xref, $type);
 					if ($this->PLUGIN->doesRecordNeedUpdate($xref, $record)) {
-						delete_gedrec($xref, WT_GED_ID);
+						WT_GedcomRecord::getInstance($this->xref)->deleteRecord();
 					}
 				}
 				$xref->xref='';

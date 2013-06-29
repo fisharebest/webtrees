@@ -68,12 +68,12 @@ $controller
 $disp = true;
 $media = WT_Media::getInstance($pid);
 if ($media) {
-	$disp = $media->canDisplayDetails();
+	$disp = $media->canShow();
 }
 if ($action=='update' || $action=='create') {
 	if (!isset($linktoid) || $linktoid=='new') $linktoid='';
 	if (!empty($linktoid)) {
-		$disp = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
+		$disp = WT_GedcomRecord::getInstance($linktoid)->canShow();
 	}
 }
 
@@ -226,29 +226,25 @@ case 'create': // Save the information from the “showcreateform” action
 
 	$controller->pageHeader();
 	// Build the gedcom record
-	$media_id = get_new_xref('OBJE');
-	if ($media_id) {
-		$newged = '0 @' . $media_id . "@ OBJE\n";
-		if ($tag[0]=='FILE') {
-			// The admin has an edit field to change the file name
-			$text[0] = $folderName . $fileName;
-		} else {
-			// Users keep the original filename
-			$newged .= '1 FILE ' . $folderName . $fileName;
-		}
+	$newged = "0 @new@ OBJE\n";
+	if ($tag[0]=='FILE') {
+		// The admin has an edit field to change the file name
+		$text[0] = $folderName . $fileName;
+	} else {
+		// Users keep the original filename
+		$newged .= '1 FILE ' . $folderName . $fileName;
+	}
 
-		$newged  = handle_updates($newged);
+	$newged  = handle_updates($newged);
 
-		if (append_gedrec($newged, WT_GED_ID)) {
-			if ($linktoid) {
-				linkMedia($media_id, $linktoid, 1);
-				AddToLog('Media ID '.$media_id." successfully added to $linktoid.", 'edit');
-				$controller->addInlineJavascript('closePopupAndReloadParent();');
-			} else {
-				AddToLog('Media ID '.$media_id.' successfully added.', 'edit');
-				$controller->addInlineJavascript('openerpasteid("' . $media_id . '");');
-			}
-		}
+	$media = WT_GedcomRecord::createRecord($newged, WT_GED_ID);
+	if ($linktoid) {
+		linkMedia($media->getXref(), $linktoid, 1);
+		AddToLog('Media ID '.$media->getXref()." successfully added to $linktoid.", 'edit');
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
+	} else {
+		AddToLog('Media ID '.$media->getXref().' successfully added.', 'edit');
+		$controller->addInlineJavascript('openerpasteid("' . $media->getXref() . '");');
 	}
 	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 	exit;
@@ -731,8 +727,8 @@ if (WT_USER_IS_ADMIN) {
 		echo "<input type=\"checkbox\" name=\"preserve_last_changed\">";
 	}
 	echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br>';
-	$event = new WT_Event(get_sub_record(1, '1 CHAN', $gedrec), null, 0);
-	echo format_fact_date($event, new WT_Person(''), false, true);
+	//$event = new WT_Fact(get_sub_record(1, '1 CHAN', $gedrec), null, 0);
+	//echo format_fact_date($event, new WT_Individual(''), false, true);
 	echo '</td></tr>';
 }
 echo '</table>';
@@ -747,3 +743,18 @@ echo '</table>';
 		</p>
 	</form>
 </div>
+
+<?php
+
+
+// Legacy/depracted function.  TODO: refactor this away....
+function get_first_tag($level, $tag, $gedrec, $num=1) {
+	$temp = get_sub_record($level, $level." ".$tag, $gedrec, $num)."\n";
+	$length = strpos($temp, "\n");
+	if ($length===false) {
+		$length = strlen($temp);
+	}
+	return substr($temp, 2, $length-2);
+}
+
+

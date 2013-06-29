@@ -268,48 +268,18 @@ function edit_field_username($name, $selected='', $extra='') {
 }
 
 // Print an edit control for a ADOP field
-function edit_field_adop_u($name, $selected='', $extra='') {
-	return select_edit_control($name, WT_Gedcom_Code_Adop::getValues(), null, $selected, $extra);
-}
-
-// Print an edit control for a ADOP female field
-function edit_field_adop_f($name, $selected='', $extra='') {
-	return select_edit_control($name, WT_Gedcom_Code_Adop::getValues(new WT_Person("0 @XXX@ INDI\n1 SEX F")), null, $selected, $extra);
-}
-
-// Print an edit control for a ADOP male field
-function edit_field_adop_m($name, $selected='', $extra='') {
-	return select_edit_control($name, WT_Gedcom_Code_Adop::getValues(new WT_Person("0 @XXX@ INDI\n1 SEX M")), null, $selected, $extra);
+function edit_field_adop($name, $selected='', $extra='', WT_Individual $individual=null) {
+	return select_edit_control($name, WT_Gedcom_Code_Adop::getValues($individual), null, $selected, $extra);
 }
 
 // Print an edit control for a PEDI field
-function edit_field_pedi_u($name, $selected='', $extra='') {
-	return select_edit_control($name, WT_Gedcom_Code_Pedi::getValues(), '', $selected, $extra);
-}
-
-// Print an edit control for a PEDI female field
-function edit_field_pedi_f($name, $selected='', $extra='') {
-	return select_edit_control($name, WT_Gedcom_Code_Pedi::getValues(new WT_Person("0 @XXX@ INDI\n1 SEX F")), '', $selected, $extra);
-}
-
-// Print an edit control for a PEDI male field
-function edit_field_pedi_m($name, $selected='', $extra='') {
-	return select_edit_control($name, WT_Gedcom_Code_Pedi::getValues(new WT_Person("0 @XXX@ INDI\n1 SEX M")), '', $selected, $extra);
+function edit_field_pedi($name, $selected='', $extra='', WT_Individual $individual=null) {
+	return select_edit_control($name, WT_Gedcom_Code_Pedi::getValues($individual), '', $selected, $extra);
 }
 
 // Print an edit control for a NAME TYPE field
-function edit_field_name_type_u($name, $selected='', $extra='') {
-	return select_edit_control($name, WT_Gedcom_Code_Name::getValues(), '', $selected, $extra);
-}
-
-// Print an edit control for a female NAME TYPE field
-function edit_field_name_type_f($name, $selected='', $extra='') {
-	return select_edit_control($name, WT_Gedcom_Code_Name::getValues(new WT_Person("0 @XXX@ INDI\n1 SEX F")), '', $selected, $extra);
-}
-
-// Print an edit control for a male NAME TYPE field
-function edit_field_name_type_m($name, $selected='', $extra='') {
-	return select_edit_control($name, WT_Gedcom_Code_Name::getValues(new WT_Person("0 @XXX@ INDI\n1 SEX M")), '', $selected, $extra);
+function edit_field_name_type($name, $selected='', $extra='', WT_Individual $individual=null) {
+	return select_edit_control($name, WT_Gedcom_Code_Name::getValues($individual), '', $selected, $extra);
 }
 
 // Print an edit control for a RELA field
@@ -320,171 +290,6 @@ function edit_field_rela($name, $selected='', $extra='') {
 		$rela_codes[$selected]=$selected;
 	}
 	return select_edit_control($name, $rela_codes, '', $selected, $extra);
-}
-
-/**
-* Check if the given gedcom record has changed since the last session access
-* This is used to check if the gedcom record changed between the time the user
-* loaded the individual page and the time they clicked on a link to edit
-* the data.
-*
-* @param string $pid The gedcom id of the record to check
-*/
-function checkChangeTime($pid, $gedrec, $last_time) {
-	$change=WT_DB::prepare(
-		"SELECT UNIX_TIMESTAMP(change_time) AS change_time, user_name".
-		" FROM `##change`".
-		" JOIN `##user` USING (user_id)".
-		" WHERE status<>'rejected' AND gedcom_id=? AND xref=? AND change_time>?".
-		" ORDER BY change_id DESC".
-		" LIMIT 1"
-	)->execute(array(WT_GED_ID, $pid, $last_time))->fetchOneRow();
-
-	if ($change) {
-		$changeTime=$change->change_time;
-		$changeUser=$change->user_name;
-	} else {
-		$changeTime = 0;
-		$changeUser = '';
-	}
-	if (isset($_REQUEST['linenum']) && $changeTime!=0 && $last_time && $changeTime > $last_time) {
-		global $controller;
-		$controller->pageHeader();
-		echo '<p class="error">', WT_I18N::translate('The record with id %s was changed by another user since you last accessed it.', $pid), '</p>';
-		if (!empty($changeUser)) {
-			echo '<p>', /* I18N: %s placeholders are a user-ID and a timestamp */ WT_I18N::translate('This record was last changed by <i>%s</i> at %s', $changeUser, date("d M Y H:i:s", $changeTime)), '</p>';
-		}
-		echo '<p>', WT_I18N::translate('Please reload the previous page to make sure you are working with the most recent record.'), "</p>";
-		exit;
-	}
-}
-
-// Replace an updated record with a newer version
-// $xref/$ged_id - the record to update
-// $gedrec       - the new gedcom record
-// $chan         - whether or not to update the CHAN record
-function replace_gedrec($xref, $ged_id, $gedrec, $chan=true) {
-	if (($gedrec = check_gedcom($gedrec, $chan))!==false) {
-		$old_gedrec=find_gedcom_record($xref, $ged_id, true);
-		if ($old_gedrec!=$gedrec) {
-			WT_DB::prepare(
-				"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
-			)->execute(array(
-				$ged_id,
-				$xref,
-				$old_gedrec,
-				$gedrec,
-				WT_USER_ID
-			));
-		}
-
-		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
-			accept_all_changes($xref, $ged_id);
-		}
-		return true;
-	}
-	return false;
-}
-
-//-- this function will append a new gedcom record at
-//-- the end of the gedcom file.
-function append_gedrec($gedrec, $ged_id) {
-	if (($gedrec = check_gedcom($gedrec, true))!==false && preg_match("/0 @(".WT_REGEX_XREF.")@ (".WT_REGEX_TAG.")/", $gedrec, $match)) {
-		$gid  = $match[1];
-		$type = $match[2];
-
-		if (preg_match("/\d/", $gid)==0) {
-			$xref = get_new_xref($type);
-		} else {
-			$xref = $gid;
-		}
-		$gedrec=preg_replace("/^0 @(.*)@/", "0 @$xref@", $gedrec);
-
-		WT_DB::prepare(
-			"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
-		)->execute(array(
-			$ged_id,
-			$xref,
-			'',
-			$gedrec,
-			WT_USER_ID
-		));
-
-		AddToLog("Appending new $type record $xref", 'edit');
-
-		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
-			accept_all_changes($xref, WT_GED_ID);
-		}
-		return $xref;
-	}
-	return false;
-}
-
-//-- this function will delete the gedcom record with
-//-- the given $xref
-function delete_gedrec($xref, $ged_id) {
-	WT_DB::prepare(
-		"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
-	)->execute(array(
-		$ged_id,
-		$xref,
-		find_gedcom_record($xref, $ged_id, true),
-		'',
-		WT_USER_ID
-	));
-
-	AddToLog("Deleting gedcom record $xref", 'edit');
-
-	if (get_user_setting(WT_USER_ID, 'auto_accept')) {
-		accept_all_changes($xref, WT_GED_ID);
-	}
-}
-
-//-- this function will check a GEDCOM record for valid gedcom format
-function check_gedcom($gedrec, $chan=true) {
-	$ct = preg_match("/0 @(.*)@ (.*)/", $gedrec, $match);
-	if ($ct==0) {
-		echo "ERROR 20: Invalid GEDCOM format";
-		AddToLog("ERROR 20: Invalid GEDCOM format:\n".$gedrec, 'edit');
-		if (WT_DEBUG) {
-			echo "<pre>$gedrec</pre>";
-			echo debug_print_backtrace();
-		}
-		return false;
-	}
-	$gedrec = trim($gedrec);
-	if ($chan) {
-		$pos1 = strpos($gedrec, "1 CHAN");
-		if ($pos1!==false) {
-			$pos2 = strpos($gedrec, "\n1", $pos1+4);
-			if ($pos2===false) $pos2 = strlen($gedrec);
-			$newgedrec = substr($gedrec, 0, $pos1);
-			$newgedrec .= "1 CHAN\n2 DATE ".strtoupper(date("d M Y"))."\n";
-			$newgedrec .= "3 TIME ".date("H:i:s")."\n";
-			$newgedrec .= "2 _WT_USER ".WT_USER_NAME."\n";
-			$newgedrec .= substr($gedrec, $pos2);
-			$gedrec = $newgedrec;
-		}
-		else {
-			$newgedrec = "\n1 CHAN\n2 DATE ".strtoupper(date("d M Y"))."\n";
-			$newgedrec .= "3 TIME ".date("H:i:s")."\n";
-			$newgedrec .= "2 _WT_USER ".WT_USER_NAME;
-			$gedrec .= $newgedrec;
-		}
-	}
-	$gedrec = preg_replace('/\\\+/', "\\", $gedrec);
-
-	//-- remove any empty lines
-	$lines = explode("\n", $gedrec);
-	$newrec = '';
-	foreach ($lines as $ind=>$line) {
-		//-- remove any whitespace
-		$line = trim($line);
-		if (!empty($line)) $newrec .= $line."\n";
-	}
-
-	$newrec = html_entity_decode($newrec, ENT_COMPAT, 'UTF-8');
-	return $newrec;
 }
 
 // Remove all links from $gedrec to $xref, and any sub-tags.
@@ -551,611 +356,6 @@ function remove_subline($oldrecord, $linenum) {
 	return $newrec;
 }
 
-/**
-* prints a form to add an individual or edit an individual's name
-*
-* @param string $nextaction the next action the edit_interface.php file should take after the form is submitted
-* @param string $famid the family that the new person should be added to
-* @param string $namerec the name subrecord when editing a name
-* @param string $famtag how the new person is added to the family
-*/
-function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag="CHIL", $sextag='') {
-	global $pid, $WORD_WRAPPED_NOTES;
-	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept;
-	global $bdm, $STANDARD_NAME_FACTS, $REVERSED_NAME_FACTS, $ADVANCED_NAME_FACTS, $ADVANCED_PLAC_FACTS;
-	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $NO_UPDATE_CHAN, $controller;
-
-	$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
-
-	$bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
-	init_calendar_popup();
-	echo "<form method=\"post\" name=\"addchildform\" onsubmit=\"return checkform();\">";
-	echo "<input type=\"hidden\" name=\"action\" value=\"$nextaction\">";
-	echo "<input type=\"hidden\" name=\"linenum\" value=\"$linenum\">";
-	echo "<input type=\"hidden\" name=\"famid\" value=\"$famid\">";
-	echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\">";
-	echo "<input type=\"hidden\" name=\"famtag\" value=\"$famtag\">";
-	echo "<input type=\"hidden\" name=\"goto\" value=\"\">";
-	echo "<table class=\"facts_table\">";
-
-	// When adding a new child, specify the pedigree
-	if ($nextaction=='addchildaction' || $nextaction=='addopfchildaction') {
-		add_simple_tag('0 PEDI');
-	}
-
-	if ($nextaction=='update') {
-		$name_type=get_gedcom_value('TYPE', 2, $namerec);
-		add_simple_tag('0 TYPE '.$name_type);
-	}
-	// Populate the standard NAME field and subfields
-	$name_fields=array();
-	foreach ($STANDARD_NAME_FACTS as $tag) {
-		$name_fields[$tag]=get_gedcom_value($tag, 0, $namerec);
-	}
-
-	$new_marnm='';
-	// Inherit surname from parents, spouse or child
-	if (empty($namerec)) {
-		// We'll need the parent's name to set the child's surname
-		$family=WT_Family::getInstance($famid);
-		if ($family && $family->getHusband()) {
-			$father_name=get_gedcom_value('NAME', 0, $family->getHusband()->getGedcomRecord());
-		} else {
-			$father_name='';
-		}
-		if ($family && $family->getWife()) {
-			$mother_name=get_gedcom_value('NAME', 0, $family->getWife()->getGedcomRecord());
-		} else {
-			$mother_name='';
-		}
-		// We'll need the spouse/child's name to set the spouse/parent's surname
-		$prec=find_gedcom_record($pid, WT_GED_ID, true);
-		$indi_name=get_gedcom_value('NAME', 0, $prec);
-		// Different cultures do surnames differently
-		switch ($SURNAME_TRADITION) {
-		case 'spanish':
-			//Mother: Maria /AAAA BBBB/
-			//Father: Jose  /CCCC DDDD/
-			//Child:  Pablo /CCCC AAAA/
-			switch ($nextaction) {
-			case 'addchildaction':
-				if (preg_match('/\/(\S+)\s+\S+\//', $mother_name, $matchm) &&
-						preg_match('/\/(\S+)\s+\S+\//', $father_name, $matchf)) {
-					$name_fields['SURN']=$matchf[1].' '.$matchm[1];
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
-				}
-				break;
-			case 'addnewparentaction':
-				if ($famtag=='HUSB' && preg_match('/\/(\S+)\s+\S+\//', $indi_name, $match)) {
-					$name_fields['SURN']=$match[1].' ';
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
-				}
-				if ($famtag=='WIFE' && preg_match('/\/\S+\s+(\S+)\//', $indi_name, $match)) {
-					$name_fields['SURN']=$match[1].' ';
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
-				}
-				break;
-			}
-			break;
-		case 'portuguese':
-			//Mother: Maria /AAAA BBBB/
-			//Father: Jose  /CCCC DDDD/
-			//Child:  Pablo /BBBB DDDD/
-			switch ($nextaction) {
-			case 'addchildaction':
-				if (preg_match('/\/\S+\s+(\S+)\//', $mother_name, $matchm) &&
-						preg_match('/\/\S+\s+(\S+)\//', $father_name, $matchf)) {
-					$name_fields['SURN']=$matchf[1].' '.$matchm[1];
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
-				}
-				break;
-			case 'addnewparentaction':
-				if ($famtag=='HUSB' && preg_match('/\/\S+\s+(\S+)\//', $indi_name, $match)) {
-					$name_fields['SURN']=' '.$match[1];
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
-				}
-				if ($famtag=='WIFE' && preg_match('/\/(\S+)\s+\S+\//', $indi_name, $match)) {
-					$name_fields['SURN']=' '.$match[1];
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
-				}
-				break;
-			}
-			break;
-		case 'icelandic':
-			// Sons get their father's given name plus "sson"
-			// Daughters get their father's given name plus "sdottir"
-			switch ($nextaction) {
-			case 'addchildaction':
-				if ($sextag=='M' && preg_match('/(\S+)\s+\/.*\//', $father_name, $match)) {
-					$name_fields['SURN']=preg_replace('/s$/', '', $match[1]).'sson';
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
-				}
-				if ($sextag=='F' && preg_match('/(\S+)\s+\/.*\//', $father_name, $match)) {
-					$name_fields['SURN']=preg_replace('/s$/', '', $match[1]).'sdottir';
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
-				}
-				break;
-			case 'addnewparentaction':
-				if ($famtag=='HUSB' && preg_match('/(\S+)sson\s+\/.*\//i', $indi_name, $match)) {
-					$name_fields['GIVN']=$match[1];
-					$name_fields['NAME']=$name_fields['GIVN'].' //';
-				}
-				if ($famtag=='WIFE' && preg_match('/(\S+)sdottir\s+\/.*\//i', $indi_name, $match)) {
-					$name_fields['GIVN']=$match[1];
-					$name_fields['NAME']=$name_fields['GIVN'].' //';
-				}
-				break;
-			}
-			break;
-		case 'patrilineal':
-			// Father gives his surname to his children
-			switch ($nextaction) {
-			case 'addchildaction':
-				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $father_name, $match)) {
-					$name_fields['SURN']=$match[2];
-					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
-				}
-				break;
-			case 'addnewparentaction':
-				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					$name_fields['SURN']=$match[2];
-					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
-				}
-				break;
-			}
-			break;
-		case 'matrilineal':
-			// Mother gives her surname to her children
-			switch ($nextaction) {
-			case 'addchildaction':
-				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $mother, $match)) {
-					$name_fields['SURN']=$match[2];
-					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
-				}
-				break;
-			case 'addnewparentaction':
-				if ($famtag=='WIFE' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					$name_fields['SURN']=$match[2];
-					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
-				}
-				break;
-			}
-			break;
-		case 'paternal':
-		case 'polish':
-		case 'lithuanian':
-			// Father gives his surname to his wife and children
-			switch ($nextaction) {
-			case 'addspouseaction':
-				if ($famtag=='WIFE' && preg_match('/\/(.*)\//', $indi_name, $match)) {
-					if ($SURNAME_TRADITION=='polish') {
-						$match[1]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[1]);
-					} else if ($SURNAME_TRADITION=='lithuanian') {
-						$match[1]=preg_replace(array('/as$/', '/is$/', '/ys$/', '/us$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[1]);
-					}
-					$new_marnm=$match[1];
-				}
-				break;
-			case 'addchildaction':
-				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $father_name, $match)) {
-					$name_fields['SURN']=$match[2];
-					if ($SURNAME_TRADITION=='polish' && $sextag=='F') {
-						$match[2]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
-					} else if ($SURNAME_TRADITION=='lithuanian' && $sextag=='F') {
-						$match[2]=preg_replace(array('/as$/', '/a$/', '/is$/', '/ys$/', '/ius$/', '/us$/'), array('aitė', 'aitė', 'ytė', 'ytė', 'iūtė', 'utė'), $match[2]);
-					}
-					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
-				}
-				break;
-			case 'addnewparentaction':
-				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					if ($SURNAME_TRADITION=='polish' && $sextag=='M') {
-						$match[2]=preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $match[2]);
-					} else if ($SURNAME_TRADITION=='lithuanian') {
-						// not a complete list as the rules are somewhat complicated but will do 95% correctly
-						$match[2]=preg_replace(array('/aitė$/', '/ytė$/', '/iūtė$/', '/utė$/'), array('as', 'is', 'ius', 'us'), $match[2]);
-					}
-					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['SURN']=$match[2];
-					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
-				}
-				if ($famtag=='WIFE' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					if ($SURNAME_TRADITION=='lithuanian') {
-						$match[2]=preg_replace(array('/as$/', '/is$/', '/ys$/', '/us$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[2]);
-						$match[2]=preg_replace(array('/aitė$/', '/ytė$/', '/iūtė$/', '/utė$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[2]);
-						$new_marnm=$match[2];
-					}
-				}
-				break;
-			}
-			break;
-		}
-	}
-
-	// Make sure there are two slashes in the name
-	if (!preg_match('/\//', $name_fields['NAME']))
-		$name_fields['NAME'].=' /';
-	if (!preg_match('/\/.*\//', $name_fields['NAME']))
-		$name_fields['NAME'].='/';
-
-	// Populate any missing 2 XXXX fields from the 1 NAME field
-	$npfx_accept=implode('|', $NPFX_accept);
-	if (preg_match ("/((($npfx_accept)\.? +)*)([^\n\/\"]*)(\"(.*)\")? *\/(([a-z]{2,3} +)*)(.*)\/ *(.*)/i", $name_fields['NAME'], $name_bits)) {
-		if (empty($name_fields['NPFX'])) {
-			$name_fields['NPFX']=$name_bits[1];
-		}
-		if (empty($name_fields['SPFX']) && empty($name_fields['SURN'])) {
-			$name_fields['SPFX']=trim($name_bits[7]);
-			// For names with two surnames, there will be four slashes.
-			// Turn them into a list
-			$name_fields['SURN']=preg_replace('~/[^/]*/~', ',', $name_bits[9]);
-		}
-		if (empty($name_fields['GIVN'])) {
-			$name_fields['GIVN']=$name_bits[4];
-		}
-		// Don't automatically create an empty NICK - it is an "advanced" field.
-		if (empty($name_fields['NICK']) && !empty($name_bits[6]) && !preg_match('/^2 NICK/m', $namerec)) {
-			$name_fields['NICK']=$name_bits[6];
-		}
-	}
-
-	// Edit the standard name fields
-	foreach ($name_fields as $tag=>$value) {
-		add_simple_tag("0 $tag $value");
-	}
-
-	// Get the advanced name fields
-	$adv_name_fields=array();
-	if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_NAME_FACTS, $match))
-		foreach ($match[1] as $tag)
-			$adv_name_fields[$tag]='';
-	// This is a custom tag, but webtrees uses it extensively.
-	if ($SURNAME_TRADITION=='paternal' || $SURNAME_TRADITION=='polish' || $SURNAME_TRADITION=='lithuanian' || (strpos($namerec, '2 _MARNM')!==false)) {
-		$adv_name_fields['_MARNM']='';
-	}
-	$person = WT_Person::getInstance($pid);
-	if (isset($adv_name_fields['TYPE'])) {
-		unset($adv_name_fields['TYPE']);
-	}
-	foreach ($adv_name_fields as $tag=>$dummy) {
-		// Edit existing tags
-		if (preg_match_all("/2 $tag (.+)/", $namerec, $match))
-			foreach ($match[1] as $value) {
-				if ($tag=='_MARNM') {
-					$mnsct = preg_match('/\/(.+)\//', $value, $match2);
-					$marnm_surn = '';
-					if ($mnsct>0) $marnm_surn = $match2[1];
-					add_simple_tag("2 _MARNM ".$value);
-					add_simple_tag("2 _MARNM_SURN ".$marnm_surn);
-				} else {
-					add_simple_tag("2 $tag $value", '', WT_Gedcom_Tag::getLabel("NAME:{$tag}", $person));
-				}
-			}
-			// Allow a new row to be entered if there was no row provided
-			if (count($match[1])==0 && empty($name_fields[$tag]) || $tag!='_HEB' && $tag!='NICK')
-				if ($tag=='_MARNM') {
-					if (strstr($ADVANCED_NAME_FACTS, '_MARNM')==false) {
-						add_simple_tag("0 _MARNM");
-						add_simple_tag("0 _MARNM_SURN $new_marnm");
-					}
-				} else {
-					add_simple_tag("0 $tag", '', WT_Gedcom_Tag::getLabel("NAME:{$tag}", $person));
-				}
-	}
-
-	// Handle any other NAME subfields that aren't included above (SOUR, NOTE, _CUSTOM, etc)
-	if ($namerec!='' && $namerec!="NEW") {
-		$gedlines = explode("\n", $namerec); // -- find the number of lines in the record
-		$fields = explode(' ', $gedlines[0]);
-		$glevel = $fields[0];
-		$level = $glevel;
-		$type = trim($fields[1]);
-		$level1type = $type;
-		$tags=array();
-		$i = 0;
-		do {
-			if ($type!='TYPE' && !isset($name_fields[$type]) && !isset($adv_name_fields[$type])) {
-				$text = '';
-				for ($j=2; $j<count($fields); $j++) {
-					if ($j>2) $text .= ' ';
-					$text .= $fields[$j];
-				}
-				$iscont = false;
-				while (($i+1<count($gedlines))&&(preg_match("/".($level+1)." (CON[CT]) ?(.*)/", $gedlines[$i+1], $cmatch)>0)) {
-					$iscont=true;
-					if ($cmatch[1]=="CONT") $text.="\n";
-					if ($WORD_WRAPPED_NOTES) $text .= ' ';
-					$text .= $cmatch[2];
-					$i++;
-				}
-				add_simple_tag($level.' '.$type.' '.$text);
-			}
-			$tags[]=$type;
-			$i++;
-			if (isset($gedlines[$i])) {
-				$fields = explode(' ', $gedlines[$i]);
-				$level = $fields[0];
-				if (isset($fields[1])) $type = $fields[1];
-			}
-		} while (($level>$glevel)&&($i<count($gedlines)));
-	}
-
-	// If we are adding a new individual, add the basic details
-	if ($nextaction!='update') {
-		echo '</table><br><table class="facts_table">';
-		// 1 SEX
-		if ($famtag=="HUSB" || $sextag=="M") {
-			add_simple_tag("0 SEX M");
-		} elseif ($famtag=="WIFE" || $sextag=="F") {
-			add_simple_tag("0 SEX F");
-		} else {
-			add_simple_tag("0 SEX");
-		}
-		$bdm = "BD";
-		if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
-			foreach ($matches[1] as $match) {
-				if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
-					addSimpleTags($match);
-				}
-			}
-		}
-		//-- if adding a spouse add the option to add a marriage fact to the new family
-		if ($nextaction=='addspouseaction' || ($nextaction=='addnewparentaction' && $famid!='new')) {
-			$bdm .= "M";
-			if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
-				foreach ($matches[1] as $match) {
-					addSimpleTags($match);
-				}
-			}
-		}
-		if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
-			foreach ($matches[1] as $match) {
-				if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
-					addSimpleTags($match);
-				}
-			}
-		}
-	}
-	if (WT_USER_IS_ADMIN) {
-		echo "<tr><td class=\"descriptionbox wrap width25\">";
-		echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
-		if ($NO_UPDATE_CHAN) {
-			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\">";
-		} else {
-			echo "<input type=\"checkbox\" name=\"preserve_last_changed\">";
-		}
-		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), "<br>";
-		if (isset($famrec)) {
-			$event = new WT_Event(get_sub_record(1, "1 CHAN", $famrec), null, 0);
-			echo format_fact_date($event, new WT_Person(''), false, true);
-		}
-		echo "</td></tr>";
-	}
-	echo "</table>";
-	if ($nextaction=='update') { // GEDCOM 5.5.1 spec says NAME doesn't get a OBJE
-		print_add_layer('SOUR');
-		print_add_layer('NOTE');
-		print_add_layer('SHARED_NOTE');
-	} else {
-		print_add_layer('SOUR', 1);
-		print_add_layer('OBJE', 1);
-		print_add_layer('NOTE', 1);
-		print_add_layer('SHARED_NOTE', 1);
-	}
-	echo '<p id="save-cancel">';
-	echo '<input type="submit" class="save" value="', /* I18N: button label */ WT_I18N::translate('save'), '">';
-	if (preg_match('/^add(child|spouse|newparent)/', $nextaction)) {
-		echo '<input type="submit" class="save" value="', /* I18N: button label */ WT_I18N::translate('go to new individual'), '" onclick="document.addchildform.goto.value=\'new\';">';
-	}
-	echo '<input type="button" class="cancel" value="', /* I18N: button label */ WT_I18N::translate('close'), '" onclick="window.close();">';
-	echo '</p>';
-	echo '</form>';
-	$controller->addInlineJavascript('
-	SURNAME_TRADITION="'.$SURNAME_TRADITION.'";
-	sextag="'.$sextag.'";
-	famtag="'.$famtag.'";
-	function trim(str) {
-		str=str.replace(/\s\s+/g, " ");
-		return str.replace(/(^\s+)|(\s+$)/g, "");
-	}
-
-	function lang_class(str) {
-		if (str.match(/[\u0370-\u03FF]/)) return "greek";
-		if (str.match(/[\u0400-\u04FF]/)) return "cyrillic";
-		if (str.match(/[\u0590-\u05FF]/)) return "hebrew";
-		if (str.match(/[\u0600-\u06FF]/)) return "arabic";
-		return "latin"; // No matched text implies latin :-)
-	}
-
-	// Generate a full name from the name components
-	function generate_name() {
-		var frm =document.forms[0];
-		var npfx=frm.NPFX.value;
-		var givn=frm.GIVN.value;
-		var spfx=frm.SPFX.value;
-		var surn=frm.SURN.value;
-		var nsfx=frm.NSFX.value;
-		if (SURNAME_TRADITION=="polish" && (sextag=="F" || famtag=="WIFE")) {
-			surn=surn.replace(/ski$/, "ska");
-			surn=surn.replace(/cki$/, "cka");
-			surn=surn.replace(/dzki$/, "dzka");
-			surn=surn.replace(/żki$/, "żka");
-		}
-		// Commas are used in the GIVN and SURN field to separate lists of surnames.
-		// For example, to differentiate the two Spanish surnames from an English
-		// double-barred name.
-		// Commas *may* be used in other fields, and will form part of the NAME.
-		if (WT_LOCALE=="vi" || WT_LOCALE=="hu") {
-			// Default format: /SURN/ GIVN
-			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/ "+givn.replace(/ *, */g, " ")+" "+nsfx);
-		} else if (WT_LOCALE=="zh") {
-			// Default format: /SURN/GIVN
-			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/"+givn.replace(/ *, */g, " ")+" "+nsfx);
-		} else {
-			// Default format: GIVN /SURN/
-			return trim(npfx+" "+givn.replace(/ *, */g, " ")+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/ "+nsfx);
-		}
-	}
-
-	// Update the NAME and _MARNM fields from the name components
-	// and also display the value in read-only "gedcom" format.
-	function updatewholename() {
-		// don’t update the name if the user manually changed it
-		if (manualChange) return;
-		// Update NAME field from components and display it
-		var frm =document.forms[0];
-		var npfx=frm.NPFX.value;
-		var givn=frm.GIVN.value;
-		var spfx=frm.SPFX.value;
-		var surn=frm.SURN.value;
-		var nsfx=frm.NSFX.value;
-		document.getElementById("NAME").value=generate_name();
-		document.getElementById("NAME_display").innerHTML=frm.NAME.value;
-		// Married names inherit some NSFX values, but not these
-		nsfx=nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, "");
-		// Update _MARNM field from _MARNM_SURN field and display it
-		// Be careful of mixing latin/hebrew/etc. character sets.
-		var ip=document.getElementsByTagName("input");
-		var marnm_id="";
-		var romn="";
-		var heb="";
-		for (var i=0; i<ip.length; i++) {
-			var val=ip[i].value;
-			if (ip[i].id.indexOf("_HEB")==0)
-				heb=val;
-			if (ip[i].id.indexOf("ROMN")==0)
-				romn=val;
-			if (ip[i].id.indexOf("_MARNM")==0) {
-				if (ip[i].id.indexOf("_MARNM_SURN")==0) {
-					var msurn="";
-					if (val!="") {
-						var lc=lang_class(document.getElementById(ip[i].id).value);
-						if (lang_class(frm.NAME.value)==lc)
-							msurn=trim(npfx+" "+givn+" /"+val+"/ "+nsfx);
-						else if (lc=="hebrew")
-							msurn=heb.replace(/\/.*\//, "/"+val+"/");
-						else if (lang_class(romn)==lc)
-							msurn=romn.replace(/\/.*\//, "/"+val+"/");
-					}
-					document.getElementById(marnm_id).value=msurn;
-					document.getElementById(marnm_id+"_display").innerHTML=msurn;
-				} else {
-					marnm_id=ip[i].id;
-				}
-			}
-		}
-	}
-
-	/**
-	* convert a hidden field to a text box
-	*/
-	var oldName = "";
-	var manualChange = false;
-	function convertHidden(eid) {
-		var element = document.getElementById(eid);
-		if (element) {
-			if (element.type=="hidden") {
-				// IE doesn’t allow changing the "type" of an input field so we’ll cludge it ( silly :P)
-				if (IE) {
-					var newInput = document.createElement("input");
-					newInput.setAttribute("type", "text");
-					newInput.setAttribute("name", element.Name);
-					newInput.setAttribute("id", element.id);
-					newInput.setAttribute("value", element.value);
-					newInput.setAttribute("onchange", element.onchange);
-					var parent = element.parentNode;
-					parent.replaceChild(newInput, element);
-					element = newInput;
-				}
-				else {
-					element.type="text";
-				}
-				element.size="40";
-				oldName = element.value;
-				manualChange = true;
-				var delement = document.getElementById(eid+"_display");
-				if (delement) {
-					delement.style.display="none";
-					// force FF ui to update the display
-					if (delement.innerHTML != oldName) {
-						oldName = delement.innerHTML;
-						element.value = oldName;
-					}
-				}
-			}
-			else {
-				manualChange = false;
-				// IE doesn’t allow changing the "type" of an input field so we’ll cludge it ( silly :P)
-				if (IE) {
-					var newInput = document.createElement("input");
-					newInput.setAttribute("type", "hidden");
-					newInput.setAttribute("name", element.Name);
-					newInput.setAttribute("id", element.id);
-					newInput.setAttribute("value", element.value);
-					newInput.setAttribute("onchange", element.onchange);
-					var parent = element.parentNode;
-					parent.replaceChild(newInput, element);
-					element = newInput;
-				}
-				else {
-					element.type="hidden";
-				}
-				var delement = document.getElementById(eid+"_display");
-				if (delement) {
-					delement.style.display="inline";
-				}
-			}
-		}
-	}
-
-	/**
-	* if the user manually changed the NAME field, then update the textual
-	* HTML representation of it
-	* If the value changed set manualChange to true so that changing
-	* the other fields doesn’t change the NAME line
-	*/
-	function updateTextName(eid) {
-		var element = document.getElementById(eid);
-		if (element) {
-			if (element.value!=oldName) manualChange = true;
-			var delement = document.getElementById(eid+"_display");
-			if (delement) {
-				delement.innerHTML = element.value;
-			}
-		}
-	}
-
-	function checkform() {
-		var ip=document.getElementsByTagName("input");
-		for (var i=0; i<ip.length; i++) {
-			// ADD slashes to _HEB and _AKA names
-			if (ip[i].id.indexOf("_AKA")==0 || ip[i].id.indexOf("_HEB")==0 || ip[i].id.indexOf("ROMN")==0)
-				if (ip[i].value.indexOf("/")<0 && ip[i].value!="")
-					ip[i].value=ip[i].value.replace(/([^\s]+)\s*$/, "/$1/");
-			// Blank out temporary _MARNM_SURN
-			if (ip[i].id.indexOf("_MARNM_SURN")==0)
-					ip[i].value="";
-			// Convert "xxx yyy" and "xxx y yyy" surnames to "xxx,yyy"
-			if ((SURNAME_TRADITION=="spanish" || "SURNAME_TRADITION"=="portuguese") && ip[i].id.indexOf("SURN")==0) {
-				ip[i].value=document.forms[0].SURN.value.replace(/^\s*([^\s,]{2,})\s+([iIyY] +)?([^\s,]{2,})\s*$/, "$1,$3");
-			}
-		}
-		return true;
-	}
-
-	// If the name isn’t initially formed from the components in a standard way,
-	// then don’t automatically update it.
-	if (document.getElementById("NAME").value!=generate_name() && document.getElementById("NAME").value!="//") {
-		convertHidden("NAME");
-	}
-	');
-}
-
 // generates javascript code for calendar popup in user's language
 function print_calendar_popup($id) {
 	return 
@@ -1181,7 +381,7 @@ function print_addnewnote_assisted_link($element_id, $pid) {
 }
 
 function print_editnote_link($note_id) {
-	return '<a href="#" onclick="var win02=window.open(\'edit_interface.php?action=editnote&amp;pid='.$note_id.'\', \'win02\', edit_window_specs);" class="icon-button_note" title="'.WT_I18N::translate('Edit Shared Note').'"></a>';
+	return '<a href="#" onclick="var win02=window.open(\'edit_interface.php?action=editnote&amp;xref='.$note_id.'\', \'win02\', edit_window_specs);" class="icon-button_note" title="'.WT_I18N::translate('Edit Shared Note').'"></a>';
 }
 
 function print_addnewsource_link($element_id) {
@@ -1210,7 +410,7 @@ function print_addnewsource_link($element_id) {
 function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose='', $rowDisplay=true) {
 	global $MEDIA_DIRECTORY, $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
-	global $pid, $gender, $linkToID, $bdm, $action, $event_add, $CensDate;
+	global $pid, $linkToID, $bdm, $action, $event_add, $CensDate;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 
 	if (substr($tag, 0, strpos($tag, "CENS"))) {
@@ -1400,7 +600,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	if ($fact=="NOTE" && $islink) {		
 		$note1=WT_Note::getInstance($value);
 		if ($note1) {
-			$noterec=$note1->getGedcomRecord();
+			$noterec=$note1->getGedcom();
 			preg_match("/$value/i", $noterec, $notematch);
 			$value=$notematch[0];
 		}		
@@ -1420,17 +620,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	} else if ($fact=="TEMP") {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Temp::templeNames(), WT_I18N::translate('No Temple - Living Ordinance'), $value);
 	} else if ($fact=="ADOP") {
-		switch ($gender) {
-		case 'M': echo edit_field_adop_m($element_name, $value); break;
-		case 'F': echo edit_field_adop_f($element_name, $value); break;
-		default:  echo edit_field_adop_u($element_name, $value); break;
-		}
+		echo edit_field_adop($element_name, $value, '', WT_Individual::getInstance($pid));
 	} else if ($fact=="PEDI") {
-		switch ($gender) {
-		case 'M': echo edit_field_pedi_m($element_name, $value); break;
-		case 'F': echo edit_field_pedi_f($element_name, $value); break;
-		default:  echo edit_field_pedi_u($element_name, $value); break;
-		}
+		echo edit_field_pedi($element_name, $value, '', WT_Individual::getInstance($pid));
 	} else if ($fact=='STAT') {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Stat::statusNames($upperlevel), '', $value);
 	} else if ($fact=='RELA') {
@@ -1546,11 +738,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	// NAME TYPE : hide text field and show a selection list
 	else if ($fact=='TYPE' && $level==0) {
 		$extra = 'onchange="document.getElementById(\''.$element_id.'\').value=this.value;"';
-		switch (WT_Person::getInstance($pid)->getSex()) {
-			case 'M': echo edit_field_name_type_m($element_name, $value, $extra); break;
-			case 'F': echo edit_field_name_type_f($element_name, $value, $extra); break;
-			default:  echo edit_field_name_type_u($element_name, $value, $extra); break;
-		}
+		echo edit_field_name_type($element_name, $value, $extra, WT_Individual::getInstance($pid));
 		echo '<script>';
 		echo "document.getElementById('", $element_id, "').style.display='none';";
 		echo '</script>';
@@ -1647,7 +835,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 					// Check if a CENS event ---------------------------
 					if ($event_add=='census_add') {
 						$type_pid=WT_GedcomRecord::getInstance($pid);
-						if ($type_pid instanceof WT_Person) {
+						if ($type_pid instanceof WT_Individual) {
 							echo '<br>', print_addnewnote_assisted_link($element_id, $pid);
 						}
 					}
@@ -2138,41 +1326,11 @@ function handle_updates($newged, $levelOverride="no") {
 				if ($islink[$j]) $newline .= " @".$text[$j]."@";
 				else $newline .= ' '.$text[$j];
 			}
-			$newged .= "\n".breakConts($newline);
+			$newged .= "\n".str_replace("\n", "\n" . (1 + substr($newline, 0, 1)) . ' CONT ', $newline);
 		}
 	}
 
 	return $newged;
-}
-
-/**
-* Link Media ID to Indi, Family, or Source ID
-*
-* Code was removed from inverselink.php to become a callable function
-*
-* @param  string  $mediaid Media ID to be linked
-* @param string $linktoid Indi, Family, or Source ID that the Media ID should link to
-* @param int $level Level where the Media Object reference should be created
-* @param boolean $chan Whether or not to update/add the CHAN record
-* @return  bool success or failure
-*/
-function linkMedia($mediaid, $linktoid, $level=1, $chan=true) {
-	if (empty($level)) $level = 1;
-	if ($level!=1) return false; // Level 2 items get linked elsewhere
-	// find Indi, Family, or Source record to link to
-	$gedrec = find_gedcom_record($linktoid, WT_GED_ID, true);
-
-	//-- check if we are re-editing an unaccepted link that is not already in the DB
-	if (strpos($gedrec, "1 OBJE @$mediaid@")!==false) return false;
-
-	if ($gedrec) {
-		$newrec = $gedrec."\n1 OBJE @".$mediaid."@";
-		replace_gedrec($linktoid, WT_GED_ID, $newrec, $chan);
-		return true;
-	} else {
-		// Record not found?  Maybe deleted since we started this action?
-		return false;
-	}
 }
 
 /**
@@ -2223,36 +1381,22 @@ function create_add_form($fact) {
 	}
 }
 
-/**
-* creates the form for editing the fact within the given gedcom record at the
-* given line number
-* @param string $gedrec the level 0 gedcom record
-* @param int $linenum the line number of the fact to edit within $gedrec
-* @param string $level0type the type of the level 0 gedcom record
-*/
-function create_edit_form($gedrec, $linenum, $level0type) {
-	global $WORD_WRAPPED_NOTES;
-	global $pid, $tags, $ADVANCED_PLAC_FACTS, $date_and_time;
-	global $FULL_SOURCES;
+// Create a form to edit a WT_Fact object
+function create_edit_form($fact) {
+	global $WORD_WRAPPED_NOTES, $ADVANCED_PLAC_FACTS, $date_and_time, $FULL_SOURCES;
+	global $pid, $tags;
 
 	$tags=array();
-	$gedlines = explode("\n", $gedrec); // -- find the number of lines in the record
-	if (!isset($gedlines[$linenum])) {
-		echo "<span class=\"error\">", WT_I18N::translate('An error occurred while creating the Edit form.  Another user may have changed this record since you previously viewed it.'), "<br><br>";
-		echo WT_I18N::translate('Please reload the previous page to make sure you are working with the most recent record.'), "</span>";
-		return;
-	}
+	$gedlines = explode("\n", $fact->getGedcom());
+
+	$linenum = 0;
 	$fields = explode(' ', $gedlines[$linenum]);
 	$glevel = $fields[0];
 	$level = $glevel;
 
-	if ($level!=1 && preg_match("~/@.*/@~i", trim($fields[1]))) {
-		echo "<span class=\"error\">", WT_I18N::translate('An error occurred while creating the Edit form.  Another user may have changed this record since you previously viewed it.'), "<br><br>";
-		echo WT_I18N::translate('Please reload the previous page to make sure you are working with the most recent record.'), "</span>";
-		return;
-	}
-
-	$type = trim($fields[1]);
+	$type = $fact->getTag();
+	$parent = $fact->getParent();
+	$level0type = $parent::RECORD_TYPE;
 	$level1type = $type;
 
 	// GEDFact_assistant ================================================
@@ -2318,7 +1462,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 
 		if ($type!="DATA" && $type!="CONT") {
 			$tags[]=$type;
-			$person = WT_Person::getInstance($pid);
+			$person = WT_Individual::getInstance($pid);
 			$subrecord = $level.' '.$type.' '.$text;
 			if ($inSource && $type=="DATE") {
 				add_simple_tag($subrecord, '', WT_Gedcom_Tag::getLabel($label, $person));

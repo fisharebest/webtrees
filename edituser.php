@@ -140,12 +140,12 @@ echo '<div id="edituser-page">
 		<div class="value"><input type="text" name="form_username" value="', WT_USER_NAME, '" autofocus></div>
 		<div class="label">', WT_I18N::translate('Real name'), help_link('real_name'), '</div>
 		<div class="value"><input type="text" name="form_realname" value="', getUserFullName(WT_USER_ID), '"></div>';
-		$person=WT_Person::getInstance(WT_USER_GEDCOM_ID);
+		$person=WT_Individual::getInstance(WT_USER_GEDCOM_ID);
 		if ($person) {
 			echo '<div class="label">', WT_I18N::translate('Individual record'), help_link('edituser_gedcomid'), '</div>
 				<div class="value">', $person->format_list('span'), '</div>';
 		}
-		$person=WT_Person::getInstance(WT_USER_ROOT_ID);
+		$person=WT_Individual::getInstance(WT_USER_ROOT_ID);
 		echo '<div class="label">', WT_I18N::translate('Default individual'), help_link('default_individual'), '</div>
 			<div class="value"><input type="text" name="form_rootid" id="rootid" value="', WT_USER_ROOT_ID, '">';
 				echo print_findindi_link('rootid'), '<br>';

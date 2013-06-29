@@ -2,7 +2,7 @@
 // Interface to moderate pending changes.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2103 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -158,12 +158,10 @@ if ($changed_gedcoms) {
 				// This prevents us from displaying it...
 				// This generates a record of some sorts from the last-but-one
 				// version of the record.
-				$record=new WT_GedcomRecord($change->gedcom);
+				$record=new WT_GedcomRecord($change->xref, $change->gedcom, null, $change->gedcom_id);
 			}
 			$output.='<b>'.$record->getFullName().'</b><br>';
 			$output.='<a href="#" onclick="return show_diff(\''.$record->getHtmlUrl().'\');">'.WT_I18N::translate('View the changes').'</a> | ';
-			$output.="<a href=\"#\" onclick=\"show_gedcom_record('".$change->xref."');\">".WT_I18N::translate('View GEDCOM Record')."</a> | ";
-			$output.="<a href=\"#\" onclick=\"return edit_raw('".$change->xref."');\">".WT_I18N::translate('Edit raw GEDCOM record').'</a><br>';
 			$output.='<div class="indent">';
 			$output.=WT_I18N::translate('The following changes were made to this record:').'<br>';
 			$output.='<table class="list_table"><tr>';

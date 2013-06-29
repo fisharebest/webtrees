@@ -2,7 +2,7 @@
 // Controller for the family page
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
@@ -32,46 +32,14 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class WT_Controller_Family extends WT_Controller_GedcomRecord {
-	var $diff_record;
-	var $record = null;
-	var $user = null;
-	var $display = false;
-	var $famrec = '';
-	var $title = '';
-
 	public function __construct() {
 		global $Dbwidth, $bwidth, $pbwidth, $pbheight, $bheight;
-		$bwidth = $Dbwidth;
-		$pbwidth = $bwidth + 12;
+		$bwidth   = $Dbwidth;
+		$pbwidth  = $bwidth + 12;
 		$pbheight = $bheight + 14;
 
-		$xref = safe_GET_xref('famid');
-
-		$gedrec = find_family_record($xref, WT_GED_ID);
-
-		if (empty($gedrec)) {
-			$gedrec = "0 @".$xref."@ FAM\n";
-		}
-
-		if (find_family_record($xref, WT_GED_ID) || find_updated_record($xref, WT_GED_ID)!==null) {
-			$this->record = new WT_Family($gedrec);
-			$this->record->ged_id=WT_GED_ID; // This record is from a file
-		} else if (!$this->record) {
-			parent::__construct();
-			return;
-		}
-
-		$xref=$this->record->getXref(); // Correct upper/lower case mismatch
-
-		//-- if the user can edit and there are changes then get the new changes
-		if (WT_USER_CAN_EDIT) {
-			$newrec = find_updated_record($xref, WT_GED_ID);
-			if (!empty($newrec)) {
-				$this->diff_record = new WT_Family($newrec);
-				$this->diff_record->setChanged(true);
-				$this->record->diffMerge($this->diff_record);
-			}
-		}
+		$xref         = safe_GET_xref('famid');
+		$this->record = WT_Family::getInstance($xref);
 
 		parent::__construct();
 	}
@@ -98,7 +66,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 
 	// $tags is an array of HUSB/WIFE/CHIL
 	function getTimelineIndis($tags) {
-		preg_match_all('/\n1 (?:'.implode('|', $tags).') @('.WT_REGEX_XREF.')@/', $this->record->getGedcomRecord(), $matches);
+		preg_match_all('/\n1 (?:'.implode('|', $tags).') @('.WT_REGEX_XREF.')@/', $this->record->getGedcom(), $matches);
 		foreach ($matches[1] as &$match) {
 			$match='pids[]='.$match;
 		}
@@ -111,7 +79,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 	function getEditMenu() {
 		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
 
-		if (!$this->record || $this->record->isMarkedDeleted()) {
+		if (!$this->record || $this->record->isOld()) {
 			return null;
 		}
 
@@ -136,21 +104,6 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 				$submenu->addOnclick("return reorder_children('".$this->record->getXref()."');");
 				$menu->addSubmenu($submenu);
 			}
-		}
-
-		// edit/view raw gedcom
-		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-fam-editraw');
-			$submenu->addOnclick("return edit_raw('".$this->record->getXref()."');");
-			$menu->addSubmenu($submenu);
-		} elseif ($SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'), '#', 'menu-fam-viewraw');
-			if (WT_USER_CAN_EDIT) {
-				$submenu->addOnclick("return show_gedcom_record('new');");
-			} else {
-				$submenu->addOnclick("return show_gedcom_record();");
-			}
-			$menu->addSubmenu($submenu);
 		}
 
 		// delete
@@ -202,7 +155,6 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 			foreach ($indifacts as $fact) {
 				print_fact($fact, $this->record);
 			}
-			print_main_media($this->record->getXref());
 		} else {
 			echo '<tr><td class="messagebox" colspan="2">', WT_I18N::translate('No facts for this family.'), '</td></tr>';
 		}

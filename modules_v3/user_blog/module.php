@@ -86,8 +86,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<div class=\"news_date\">".format_timestamp($news['date']).'</div>';
 			if ($news["text"]==strip_tags($news["text"])) {
 				// No HTML?
-				// PHP5.3 $news["text"]=nl2br($news["text"], false);
-				$news["text"]=nl2br($news["text"]);
+				$news["text"]=nl2br($news["text"], false);
 			}
 			$content .= $news["text"]."<br><br>";
 			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?news_id='+".$key.", '_blank', indx_window_specs); return false;\">".WT_I18N::translate('Edit')."</a> | ";

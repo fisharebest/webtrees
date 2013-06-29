@@ -144,8 +144,22 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			foreach ($families as $family) {
 				$famids[] = $family->getXref();
 			}
-			$controller->record->add_family_facts(false);
-			build_indiv_map($controller->record->getIndiFacts(), $famids);
+			$indifacts = array();
+			foreach ($controller->record->getFacts() as $fact) {
+				if ($fact->canShow()) {
+					$indifacts[] = $fact;
+				}
+			}
+			foreach ($controller->record->getSpouseFamilies() as $family) {
+				foreach ($family->getFacts() as $fact) {
+					if ($fact->canShow()) {
+						$indifacts[] = $fact;
+					}
+				}
+			}
+			sort_facts($indifacts);
+
+			build_indiv_map($controller->record, $indifacts, $famids);
 			echo '</div>';
 			echo '</td>';
 			echo '</tr></table>';
@@ -739,7 +753,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		for ($i=0; $i<($controller->treesize); $i++) {
 			// -- check to see if we have moved to the next generation
 			if ($i+1 >= pow(2, $curgen)) {$curgen++;}
-			$person = WT_Person::getInstance($controller->treeid[$i]);
+			$person = WT_Individual::getInstance($controller->treeid[$i]);
 			if (!empty($person)) {
 				$name = $person->getFullName();
 				if ($name == WT_I18N::translate('Private')) $priv++;
@@ -1238,7 +1252,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		for ($i=0; $i<($controller->treesize); $i++) {
 			// moved up to grab the sex of the individuals
-			$person = WT_Person::getInstance($controller->treeid[$i]);
+			$person = WT_Individual::getInstance($controller->treeid[$i]);
 			if ($person) {
 				$name = $person->getFullName();
 

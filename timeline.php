@@ -4,7 +4,7 @@
 // Use the $pids array to set which individuals to show on the chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -255,7 +255,7 @@ $controller->checkPrivacy();
 		?>
 		<td class="person<?php echo $col; ?>" style="padding: 5px;">
 		<?php
-		if ($indi && $indi->canDisplayDetails()) {
+		if ($indi && $indi->canShow()) {
 			if ($indi->getSex()=="M") {
 				echo $indi->getSexImage('large', '', WT_I18N::translate('Male'));
 			} elseif ($indi->getSex()=="F") {

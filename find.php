@@ -184,7 +184,7 @@ if ($type == "indi") {
 	<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
 	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo '">
+	echo '" autofocus>
 	<input type="submit" value="', WT_I18N::translate('Filter'), '">
 	</form></div>';
 }
@@ -199,7 +199,7 @@ if ($type == "fam") {
 	<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
 	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo '">
+	echo '" autofocus>
 	<input type="submit" value="', WT_I18N::translate('Filter'), '">
 	</form></div>';
 }
@@ -216,7 +216,7 @@ if ($type == 'media') {
 	<span>', WT_I18N::translate('Media contains:'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo '">',
+	echo '" autofocus>',
 	help_link('simple_filter'),
 	'<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
 	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick=\"this.form.subclick.value=this.name\">
@@ -234,7 +234,7 @@ if ($type == "place") {
 	<span>', WT_I18N::translate('Place contains:'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo '">
+	echo '" autofocus>
 	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
 	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
@@ -251,7 +251,7 @@ if ($type == "repo") {
 	<span>', WT_I18N::translate('Repository contains:'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo '">
+	echo '" autofocus>
 	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
 	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</td></tr></table>
@@ -269,7 +269,7 @@ if ($type == "note") {
 	<span>', WT_I18N::translate('Shared Note contains:'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo '">
+	echo '" autofocus>
 	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
 	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
@@ -286,7 +286,7 @@ if ($type == "source") {
 	<span>', WT_I18N::translate('Source contains:'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo '">
+	echo '" autofocus>
 	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
 	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';

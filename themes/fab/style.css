@@ -173,14 +173,9 @@ html[dir=rtl] #header-title {
 width:100%;
 }
 
-/* Pending edits */
-.change_new, .nameblue {
-	border:solid #0000ff 2px !important;
-}
-.change_old, .namered {
-	color:#888888 !important;
-	text-decoration:line-through !important;
-}
+/* Pending edits - TODO perhaps show differently in different contexts? */
+.new { outline: solid blue 1px; }
+.old { outline: solid red  1px; }
 
 /* Use CSS menus based on nested <ul> */
 .makeMenu li {
@@ -1670,8 +1665,7 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(images/u
 #edit_interface-page textarea[id*="NOTE"] {height:240px;}
 #edit_interface-page textarea[id*="TEXT"], #edit_interface-page textarea[id*="PUBL"] {height:140px;}
 #edit_interface-page textarea[id^="newgedrec"] {line-height:18px;width:605px;}
-#edit_interface-page textarea#newgedrec1 {height:20px;}
-#edit_interface-page textarea#newgedrec2 {height:364px;}
+#edit_interface-page textarea#gedcom {height:364px;}
 #edit_interface-page textarea[id*="ADDR"], #edit_interface-page input[id*="ADDR"] {height:80px;width:300px;}
 #edit_interface-page #changefam {padding:5px;}
 #edit_interface-page #changefam table {margin:10px auto;min-width:400px;max-width:650px;}

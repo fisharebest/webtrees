@@ -438,10 +438,10 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 				// create thumbnail images of highlighted images
 				if (!empty($pid)) {
-					$this_person = WT_Person::getInstance($pid);
+					$this_person = WT_Individual::getInstance($pid);
 				}
 				if (!empty($gmark['name'])) {
-					$person = WT_Person::getInstance($gmark['name']);
+					$person = WT_Individual::getInstance($gmark['name']);
 				} else {
 					$person = null;
 				}
@@ -482,7 +482,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					"<?php echo $gmark['lng']; ?>",
 					"<?php if (!empty($gmark['date'])) { $date=new WT_Date($gmark['date']); echo addslashes($date->Display(true)); } else { echo WT_I18N::translate('Date not known'); } ?>",
 					"<?php if (!empty($gmark['info'])) { echo addslashes($gmark['info']); } else { echo NULL; } ?>",
-					"<?php if (!empty($gmark['name'])) { $person=WT_Person::getInstance($gmark['name']); if ($person) { echo '<a href=\"', $person->getHtmlUrl(), '\">', addslashes($person->getFullName()), '<\/a>'; } } ?>",
+					"<?php if (!empty($gmark['name'])) { $person=WT_Individual::getInstance($gmark['name']); if ($person) { echo '<a href=\"', $person->getHtmlUrl(), '\">', addslashes($person->getFullName()), '<\/a>'; } } ?>",
 					"<?php echo addslashes(print_fact_place_map($gmark['placerec'])); ?>",
 					"<?php echo $gmark['index'].''; ?>",
 					"<?php echo $gmark['tabindex'].''; ?>",
@@ -492,7 +492,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					"<?php echo strip_tags(preg_replace('/\"/', '\\\"', print_fact_place_map($gmark['placerec']))); ?>",
 
 					// Element 11. persons Name
-					"<?php if (!empty($gmark['name'])) { $person=WT_Person::getInstance($gmark['name']); if ($person) { echo addslashes($person->getFullName()); } } ?>",
+					"<?php if (!empty($gmark['name'])) { $person=WT_Individual::getInstance($gmark['name']); if ($person) { echo addslashes($person->getFullName()); } } ?>",
 
 					// Element 12. Other people's Highlighted image.
 					"<?php if (!empty($gmark['name'])) { echo $image2; } else { echo ''; } ?>",

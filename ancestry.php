@@ -160,7 +160,7 @@ case 1:
 	$treeid=ancestry_array($controller->root->getXref(), $PEDIGREE_GENERATIONS-1);
 	foreach ($treeid as $i=>$pid) {
 		if ($pid) {
-			$person=WT_Person::getInstance($pid);
+			$person=WT_Individual::getInstance($pid);
 			if ($person) {
 				foreach ($person->getChildFamilies() as $family) {
 					print_sosa_family($family->getXref(), $pid, $i);
@@ -182,7 +182,7 @@ case 3:
 	$treeid=ancestry_array($controller->root->getXref(), $PEDIGREE_GENERATIONS-1);
 	$famlist=array();
 	foreach ($treeid as $pid) {
-		$person=WT_Person::getInstance($pid);
+		$person=WT_Individual::getInstance($pid);
 		if (is_null($person)) {
 			continue;
 		}

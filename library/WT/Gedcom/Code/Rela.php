@@ -2,7 +2,7 @@
 // Functions and logic for GEDCOM "RELA" codes
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ class WT_Gedcom_Code_Rela {
 
 	// Translate a code, for an (optional) record
 	public static function getValue($type, $record=null) {
-		if ($record instanceof WT_Person) {
+		if ($record instanceof WT_Individual) {
 			$sex=$record->getSex();
 		} else {
 			$sex='U';

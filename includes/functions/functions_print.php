@@ -79,11 +79,11 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$iconsStyleAdd = 'float:right;';
 	if ($TEXT_DIRECTION=='rtl') $iconsStyleAdd='float:left;';
 
-	$disp=$person->canDisplayDetails();
+	$disp=$person->canShow();
 	$uniqueID = (int)(microtime() * 1000000);
 	$boxID = $pid.'.'.$personcount.'.'.$count.'.'.$uniqueID;
 	$mouseAction4 = " onclick=\"expandbox('".$boxID."', $style); return false;\"";
-	if ($person->canDisplayName()) {
+	if ($person->canShowName()) {
 		if (empty($SEARCH_SPIDER)) {
 			//-- draw a box for the family popup
 			// NOTE: Start div I.$pid.$personcount.$count.links
@@ -169,7 +169,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$addname=$person->getAddName();
 	
 	// add optional CSS style for each fact
-	$indirec = $person->getGedcomRecord();
+	$indirec = $person->getGedcom();
 	$cssfacts = array("BIRT", "CHR", "DEAT", "BURI", "CREM", "ADOP", "BAPM", "BARM", "BASM", "BLES", "CHRA", "CONF", "FCOM", "ORDN", "NATU", "EMIG", "IMMI", "CENS", "PROB", "WILL", "GRAD", "RETI", "CAST", "DSCR", "EDUC", "IDNO",
 	"NATI", "NCHI", "NMR", "OCCU", "PROP", "RELI", "RESI", "SSN", "TITL", "BAPL", "CONL", "ENDL", "SLGC", "_MILI");
 	foreach ($cssfacts as $indexval => $fact) {
@@ -216,7 +216,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	if ($show_full) {
 		foreach (explode('|', WT_EVENTS_DEAT) as $deattag) {
 			$event = $person->getFactByType($deattag);
-			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace() || $event->getDetail()=='Y') && $event->canShow()) {
+			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace() || $event->getValue()=='Y') && $event->canShow()) {
 				$BirthDeath .= $event->print_simple_fact(true);
 				if (in_array($deattag, $opt_tags)) {
 					unset ($opt_tags[array_search($deattag, $opt_tags)]);
@@ -277,15 +277,14 @@ function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CA
 * prints out the execution time and the databse queries
 */
 function execution_stats() {
-	global $start_time, $PRIVACY_CHECKS;
+	global $start_time;
 
 	return
 		'<div class="execution_stats">'.
 		WT_I18N::translate(
-			'Execution time: %1$s seconds. Database queries: %2$s. Privacy checks: %3$s. Memory usage: %4$s KB.',
-			WT_I18N::number(microtime(true)-$start_time, 3),
+			'Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB.',
+			WT_I18N::number(microtime(true) - $start_time, 3),
 			WT_I18N::number(WT_DB::getQueryCount()),
-			WT_I18N::number($PRIVACY_CHECKS),
 			WT_I18N::number(memory_get_peak_usage(true)/1024)
 		).
 		'</div>';
@@ -541,8 +540,8 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 		} else {
 			$note=WT_Note::getInstance($nmatch[1]);
 			if ($note) {
-				if ($note->canDisplayDetails()) {
-					$noterec = $note->getGedcomRecord();
+				if ($note->canShow()) {
+					$noterec = $note->getGedcom();
 					//-- print linked note records
 					$nt = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
 					$closeSpan = print_note_record(($nt>0)?$n1match[1]:"", 1, $noterec, $textOnly, true);
@@ -623,11 +622,11 @@ function highlight_search_hits($string) {
 }
 
 // Print the associations from the associated individuals in $event to the individuals in $record
-function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
+function print_asso_rela_record(WT_Fact $event, WT_GedcomRecord $record) {
 	global $SEARCH_SPIDER;
 
 	// To whom is this record an assocate?
-	if ($record instanceof WT_Person) {
+	if ($record instanceof WT_Individual) {
 		// On an individual page, we just show links to the person
 		$associates=array($record);
 	} elseif ($record instanceof WT_Family) {
@@ -638,15 +637,15 @@ function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
 		return;
 	}
 
-	preg_match_all('/^1 ASSO @('.WT_REGEX_XREF.')@((\n[2-9].*)*)/', $event->getGedcomRecord(), $amatches1, PREG_SET_ORDER);
-	preg_match_all('/\n2 _?ASSO @('.WT_REGEX_XREF.')@((\n[3-9].*)*)/', $event->getGedcomRecord(), $amatches2, PREG_SET_ORDER);
+	preg_match_all('/^1 ASSO @('.WT_REGEX_XREF.')@((\n[2-9].*)*)/', $event->getGedcom(), $amatches1, PREG_SET_ORDER);
+	preg_match_all('/\n2 _?ASSO @('.WT_REGEX_XREF.')@((\n[3-9].*)*)/', $event->getGedcom(), $amatches2, PREG_SET_ORDER);
 	// For each ASSO record
 	foreach (array_merge($amatches1, $amatches2) as $amatch) {
-		$person=WT_Person::getInstance($amatch[1]);
+		$person=WT_Individual::getInstance($amatch[1]);
 		if (!$person) {
 			// If the target of the ASSO does not exist, create a dummy person, so
 			// the user can see that something is present.
-			$person=new WT_Person('');
+			$person=new WT_Individual('');
 		}
 		if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
 			$rela=$rmatch[1];
@@ -700,7 +699,7 @@ function format_parents_age($pid, $birth_date=null) {
 
 	$html='';
 	if ($SHOW_PARENTS_AGE) {
-		$person=WT_Person::getInstance($pid);
+		$person=WT_Individual::getInstance($pid);
 		$families=$person->getChildFamilies();
 		// Where an indi has multiple birth records, we need to know the
 		// date of it.  For person boxes, etc., use the default birth date.
@@ -752,12 +751,12 @@ function format_parents_age($pid, $birth_date=null) {
 // $record - the person (or couple) whose ages should be printed
 // $anchor option to print a link to calendar
 // $time option to print TIME value
-function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=false, $time=false) {
+function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false, $time=false) {
 	global $pid, $SEARCH_SPIDER;
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
-	$factrec = $event->getGedcomRecord();
+	$factrec = $event->getGedcom();
 	$html='';
 	// Recorded age
 	$fact_age=get_gedcom_value('AGE', 2, $factrec);
@@ -781,7 +780,7 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 			}
 		}
 		$fact = $event->getTag();
-		if ($record instanceof WT_Person) {
+		if ($record instanceof WT_Individual) {
 			// age of parents at child birth
 			if ($fact=='BIRT') {
 				$html .= format_parents_age($record->getXref(), $date);
@@ -825,7 +824,7 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 						} else {
 							$ageText = '('.$age.' '.WT_I18N::translate('after death').')';
 							// Family events which occur after death are probably errors
-							if ($event->getParentObject() instanceof WT_Family) {
+							if ($event->getParent() instanceof WT_Family) {
 								$ageText.='<i class="icon-warning"></i>';
 							}
 						}
@@ -834,26 +833,27 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 				if ($ageText) $html .= ' <span class="age">'.$ageText.'</span>';
 			}
 		} elseif ($record instanceof WT_Family) {
-			$indirec=find_person_record($pid, $ged_id);
-			$indi=new WT_Person($indirec);
-			$birth_date=$indi->getBirthDate();
-			$death_date=$indi->getDeathDate();
-			$ageText = '';
-			if (WT_Date::Compare($date, $death_date)<=0) {
-				$age=WT_Date::GetAgeGedcom($birth_date, $date);
-				// Only show calculated age if it differs from recorded age
-				if ($age!='' && $age>0) {
-					if (
-						$fact_age!='' && $fact_age!=$age ||
-						$fact_age=='' && $husb_age=='' && $wife_age=='' ||
-						$husb_age!='' && $indi->getSex()=='M' && $husb_age!= $age ||
-						$wife_age!='' && $indi->getSex()=='F' && $wife_age!=$age
-					) {
-						$ageText = '('.WT_I18N::translate('Age').' '.get_age_at_event($age, false).')';
+			$indi = WT_Individual::getInstance($pid);
+			if ($indi) {
+				$birth_date=$indi->getBirthDate();
+				$death_date=$indi->getDeathDate();
+				$ageText = '';
+				if (WT_Date::Compare($date, $death_date)<=0) {
+					$age=WT_Date::GetAgeGedcom($birth_date, $date);
+					// Only show calculated age if it differs from recorded age
+					if ($age!='' && $age>0) {
+						if (
+							$fact_age!='' && $fact_age!=$age ||
+							$fact_age=='' && $husb_age=='' && $wife_age=='' ||
+							$husb_age!='' && $indi->getSex()=='M' && $husb_age!= $age ||
+							$wife_age!='' && $indi->getSex()=='F' && $wife_age!=$age
+						) {
+							$ageText = '('.WT_I18N::translate('Age').' '.get_age_at_event($age, false).')';
+						}
 					}
 				}
+				if ($ageText) $html .= ' <span class="age">'.$ageText.'</span>';
 			}
-			if ($ageText) $html .= ' <span class="age">'.$ageText.'</span>';
 		}
 	} else {
 		// 1 DEAT Y with no DATE => print YES
@@ -881,10 +881,10 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 * @param boolean $sub option to print place subrecords
 * @param boolean $lds option to print LDS TEMPle and STATus
 */
-function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=false) {
+function format_fact_place(WT_Fact $event, $anchor=false, $sub=false, $lds=false) {
 	global $SHOW_PEDIGREE_PLACES, $SHOW_PEDIGREE_PLACES_SUFFIX, $SEARCH_SPIDER;
 
-	$factrec = $event->getGedcomRecord();
+	$factrec = $event->getGedcom();
 
 	$wt_place=new WT_Place($event->getPlace(), WT_GED_ID);
 

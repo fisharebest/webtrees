@@ -2,7 +2,7 @@
 // Controller for the hourglass chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -90,7 +90,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		$bhalfheight = (int)($bheight / 2);
 		
 		// Validate parameters
-		$this->hourPerson = WT_Person::getInstance($this->pid);
+		$this->hourPerson = WT_Individual::getInstance($this->pid);
 		if (!$this->hourPerson) {
 			$this->hourPerson=$this->getSignificantIndividual();
 			$this->pid=$this->hourPerson->getXref();
@@ -347,7 +347,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		// For the root person, print a down arrow that allows changing the root of tree
 		if ($showNav && $count==1) {
 			// NOTE: If statement OK
-			if ($person->canDisplayName()) {
+			if ($person->canShowName()) {
 				// -- print left arrow for decendants so that we can move down the tree
 				$famids = $person->getSpouseFamilies();
 				//-- make sure there is more than 1 child in the family with parents
@@ -435,7 +435,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	 */
 	function max_descendency_generations($pid, $depth) {
 		if ($depth > $this->generations) return $depth;
-		$person = WT_Person::getInstance($pid);
+		$person = WT_Individual::getInstance($pid);
 		if (is_null($person)) return $depth;
 		$maxdc = $depth;
 		foreach ($person->getSpouseFamilies() as $family) {

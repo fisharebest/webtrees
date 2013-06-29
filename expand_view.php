@@ -2,7 +2,7 @@
 // Used by AJAX to load the expanded view inside person boxes
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2008 PGV Development Team. All rights reserved.
@@ -29,16 +29,20 @@ require './includes/session.php';
 Zend_Session::writeClose();
 
 header('Content-Type: text/html; charset=UTF-8');
-$person = WT_Person::getInstance(safe_GET_xref('pid'));
-if (!$person || !$person->canDisplayDetails()) {
+$person = WT_Individual::getInstance(safe_GET_xref('pid'));
+if (!$person || !$person->canShow()) {
 	return WT_I18N::translate('Private');
 }
 
-$person->add_family_facts(false);
-$events=$person->getIndiFacts();
-sort_facts($events);
+$facts = $person->getFacts();
+foreach ($person->getSpouseFamilies() as $family) {
+	foreach ($family->getFacts() as $fact) {
+		$facts[] = $fact;
+	}
+}
+sort_facts($facts);
 
-foreach ($events as $event) {
+foreach ($facts as $event) {
 	if ($event->canShow()) {
 		switch ($event->getTag()) {
 		case 'SEX':
@@ -78,18 +82,18 @@ foreach ($events as $event) {
 			// Simple version of print_fact()
 			echo '<div>';
 			echo '<span class="details_label">', $event->getLabel(), '</span> ';
-			$details=$event->getDetail();
+			$details=$event->getValue();
 			if ($details!='Y' && $details!='N') {
 				echo '<span dir="auto">', $details, '</span>';
 			}
 			echo format_fact_date($event, $person, false, false);
 			// Show spouse/family for family events
-			$spouse=$event->getSpouse();
-			if ($spouse) {
-				echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
-			}
-			if ($event->getParentObject() instanceof WT_Family) {
-				echo '<a href="', $event->getParentObject()->getHtmlUrl(), '">', WT_I18N::translate('View Family'), ' - </a>';
+			if ($event->getParent() instanceof WT_Family) {
+				$spouse = $event->getParent()->getSpouse($person);
+				if ($spouse) {
+					echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
+				}
+				echo '<a href="', $event->getParent()->getHtmlUrl(), '">', WT_I18N::translate('View Family'), ' - </a>';
 			}
 			echo ' ',format_fact_place($event, true, true);
 			echo '</div>';

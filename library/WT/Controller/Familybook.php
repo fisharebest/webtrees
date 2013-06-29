@@ -2,7 +2,7 @@
 //	Controller for the familybook chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -64,7 +64,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		// Validate parameters
 		if (!empty($rootid)) $this->pid = $rootid;
 		$rootid=$this->rootid;
-		$this->hourPerson = WT_Person::getInstance($this->pid);
+		$this->hourPerson = WT_Individual::getInstance($this->pid);
 		if (!$this->hourPerson) {
 			$this->hourPerson=$this->getSignificantIndividual();
 			$this->pid=$this->hourPerson->getXref();
@@ -75,7 +75,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			$bheight = $cbheight;
 		}
 		$bhalfheight = $bheight / 2;
-		if ($this->root && $this->root->canDisplayName()) {
+		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(
 				/* I18N: %s is an individual’s name */
 				WT_I18N::translate('Family book of %s', $this->root->getFullName())
@@ -334,7 +334,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	 */
 	function max_descendency_generations($pid, $depth) {
 		if ($depth > $this->generations) return $depth;
-		$person = WT_Person::getInstance($pid);
+		$person = WT_Individual::getInstance($pid);
 		if (is_null($person)) return $depth;
 		$maxdc = $depth;
 		foreach ($person->getSpouseFamilies() as $family) {
@@ -360,7 +360,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	}
 	function print_family_book($person, $descent) {
 		global $firstrun;
-		if ($descent==0 || !$person->canDisplayName()) {
+		if ($descent==0 || !$person->canShowName()) {
 			return;
 		}
 		$families=$person->getSpouseFamilies();

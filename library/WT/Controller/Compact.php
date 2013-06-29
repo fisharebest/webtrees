@@ -2,7 +2,7 @@
 //	Controller for the compact chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -41,7 +41,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 		// Extract the request parameters
 		$this->show_thumbs=safe_GET_bool('show_thumbs');
 
-		if ($this->root && $this->root->canDisplayName()) {
+		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(
 				/* I18N: %s is an individual’s name */
 			WT_I18N::translate('Compact tree of %s', $this->root->getFullName())
@@ -55,9 +55,9 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 	function sosa_person($n) {
 		global $SHOW_HIGHLIGHT_IMAGES;
 
-		$indi=WT_Person::getInstance($this->treeid[$n]);
+		$indi=WT_Individual::getInstance($this->treeid[$n]);
 
-		if ($indi && $indi->canDisplayName()) {
+		if ($indi && $indi->canShowName()) {
 			$name=$indi->getFullName();
 			$addname=$indi->getAddName();
 
@@ -72,7 +72,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 			if ($addname) $html .= '<br>' . $addname;
 			$html .= '</a>';
 			$html .= '<br>';
-			if ($indi->canDisplayDetails()) {
+			if ($indi->canShow()) {
 				$html.='<div class="details1">'.$indi->getLifeSpan().'</div>';
 			}
 		} else {
@@ -115,7 +115,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 		}
 
 		if ($pid) {
-			$indi=WT_Person::getInstance($pid);
+			$indi=WT_Individual::getInstance($pid);
 			$title=WT_I18N::translate('Compact tree of %s', $indi->getFullName());
 			$text = '<a class="icon-'.$arrow_dir.'arrow" title="'.strip_tags($title).'" href="?rootid='.$pid;
 			if ($this->show_thumbs) $text .= "&amp;show_thumbs=".$this->show_thumbs;

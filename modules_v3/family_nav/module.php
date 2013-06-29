@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -293,7 +293,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$parentlinks      = '';
 		$step_parentlinks = '';
 
-		if ($person->canDisplayName() && !$SEARCH_SPIDER) {
+		if ($person->canShowName() && !$SEARCH_SPIDER) {
 			//-- draw a box for the family flyout
 			$parentlinks      .= '<div class="flyout4"><b>' . WT_I18N::translate('Parents') . '</b></div>';
 			$step_parentlinks .= '<div class="flyout4"><b>' . WT_I18N::translate('Parents') . '</b></div>';

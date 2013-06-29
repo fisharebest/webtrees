@@ -2,7 +2,7 @@
 // System for generating menus.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team. All rights reserved.
@@ -235,8 +235,8 @@ class WT_MenuBar {
 						// Add a submenu showing relationship from this person to each of our favorites
 						foreach (user_favorites_WT_Module::getFavorites(WT_USER_ID) as $favorite) {
 							if ($favorite['type']=='INDI' && $favorite['gedcom_id']==WT_GED_ID) {
-								$person=WT_Person::getInstance($favorite['gid']);
-								if ($person instanceof WT_Person) {
+								$person=WT_Individual::getInstance($favorite['gid']);
+								if ($person instanceof WT_Individual) {
 									$subsubmenu = new WT_Menu(
 										$person->getFullName(),
 										'relationship.php?pid1='.$person->getXref().'&amp;pid2='.$pid2.'&amp;ged='.WT_GEDURL,
@@ -517,7 +517,7 @@ class WT_MenuBar {
 			case 'OBJE':
 			case 'NOTE':
 				$obj=WT_GedcomRecord::getInstance($favorite['gid']);
-				if ($obj && $obj->canDisplayName()) {
+				if ($obj && $obj->canShowName()) {
 					$submenu=new WT_Menu($obj->getFullName(), $obj->getHtmlUrl());
 					$menu->addSubMenu($submenu);
 				}

@@ -36,7 +36,7 @@ $update_CHAN = safe_REQUEST($_REQUEST, 'preserve_last_changed', WT_REGEX_UNSAFE)
 $controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 $paramok =  true;
-if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
+if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canShow();
 
 if ($action == 'choose' && $paramok) {
 
@@ -139,7 +139,7 @@ if ($action == 'choose' && $paramok) {
 			echo "<td align='center'><input alt='", WT_I18N::translate('Keep Link in list'), "', title='", WT_I18N::translate('Keep Link in list'), "' type='radio' id='", $record->getXref(), "_off' name='", $record->getXref(), "' checked></td>";
 			echo "<td align='center'><input alt='", WT_I18N::translate('Remove Link from list'), "', title='", WT_I18N::translate('Remove Link from list'), "' type='radio' id='", $record->getXref(), "_on'  name='", $record->getXref(), "'></td>";
 	
-			if ($record instanceof WT_Person) {
+			if ($record instanceof WT_Individual) {
 				?>
 				<td align="center"><a href="#" class="icon-button_family" title="<?php echo WT_I18N::translate('Family navigator'); ?>" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $record->getXref(); ?>'); return false;"></a></td>
 				<?php
@@ -173,7 +173,7 @@ if ($action == 'choose' && $paramok) {
 	if ($linktoid=="") {
 		// ----
 	} else {
-		$record=WT_Person::getInstance($linktoid);
+		$record=WT_Individual::getInstance($linktoid);
 		echo '<b>', $record->getFullName(), '</b>';
 	}
 	echo '<table><tr><td>';

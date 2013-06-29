@@ -285,7 +285,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		// Then see if an ID is typed in. If so, we might want to jump there.
 		if (isset ($this->query)) {
 			$record=WT_GedcomRecord::getInstance($this->query);
-			if ($record && $record->canDisplayDetails()) {
+			if ($record && $record->canShow()) {
 				header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$record->getRawUrl());
 				exit;
 			}
@@ -357,7 +357,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			// If ID cannot be displayed, continue to the search page.
 			if (count($this->myindilist)==1 && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist) {
 				$indi=$this->myindilist[0];
-				if ($indi->canDisplayName()) {
+				if ($indi->canShowName()) {
 					Zend_Session::writeClose();
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$indi->getRawUrl());
 					exit;
@@ -365,7 +365,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			}
 			if (!$this->myindilist && count($this->myfamlist)==1 && !$this->mysourcelist && !$this->mynotelist) {
 				$fam=$this->myfamlist[0];
-				if ($fam->canDisplayName()) {
+				if ($fam->canShowName()) {
 					Zend_Session::writeClose();
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$fam->getRawUrl());
 					exit;
@@ -373,7 +373,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			}
 			if (!$this->myindilist && !$this->myfamlist && count($this->mysourcelist)==1 && !$this->mynotelist) {
 				$sour=$this->mysourcelist[0];
-				if ($sour->canDisplayName()) {
+				if ($sour->canShowName()) {
 					Zend_Session::writeClose();
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$sour->getRawUrl());
 					exit;
@@ -381,7 +381,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			}
 			if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && count($this->mynotelist)==1) {
 				$note=$this->mynotelist[0];
-				if ($note->canDisplayName()) {
+				if ($note->canShowName()) {
 					Zend_Session::writeClose();
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$note->getRawUrl());
 					exit;
@@ -443,7 +443,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if ($newRecord != $oldRecord) {
-				replace_gedrec($individual->getXref(), WT_GED_ID, $newRecord);
+				$individual->updateRecord($newRecord, true);
 			} else {
 				unset($this->myindilist[$id]);
 			}
@@ -465,7 +465,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if ($newRecord != $oldRecord) {
-				replace_gedrec($family->getXref(), WT_GED_ID, $newRecord);
+				$family->updateRecord($newRecord, true);
 			} else {
 				unset($this->myfamlist[$id]);
 			}
@@ -490,7 +490,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if ($newRecord != $oldRecord) {
-				replace_gedrec($source->getXref(), WT_GED_ID, $newRecord);
+				$source->updateRecord($newRecord, true);
 			} else {
 				unset($this->mysourcelist[$id]);
 			}
@@ -506,7 +506,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if ($newRecord != $oldRecord) {
-				replace_gedrec($note->getXref(), WT_GED_ID, $newRecord);
+				$noteource->updateRecord($newRecord, true);
 			} else {
 				unset($this->mynotelist[$id]);
 			}
@@ -557,10 +557,10 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 		if ($this->showasso == "on") {
 			foreach ($this->myindilist as $indi) {
-				foreach (fetch_linked_indi($indi->getXref(), 'ASSO', $indi->getGedId()) as $asso) {
+				foreach (fetch_linked_indi($indi->getXref(), 'ASSO', $indi->getGedcomId()) as $asso) {
 					$this->myindilist[]=$asso;
 				}
-				foreach (fetch_linked_fam($indi->getXref(), 'ASSO', $indi->getGedId()) as $asso) {
+				foreach (fetch_linked_fam($indi->getXref(), 'ASSO', $indi->getGedcomId()) as $asso) {
 					$this->myfamlist[]=$asso;
 				}
 			}
@@ -603,7 +603,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				foreach ($this->sgeds as $ged_id=>$gedcom) {
 					$datalist = array();
 					foreach ($this->myindilist as $individual) {
-						if ($individual->getGedId()==$ged_id) {
+						if ($individual->getGedcomId()==$ged_id) {
 							$datalist[]=$individual;
 						}
 					}
@@ -627,7 +627,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				foreach ($this->sgeds as $ged_id=>$gedcom) {
 					$datalist = array();
 					foreach ($this->myfamlist as $family) {
-						if ($family->getGedId()==$ged_id) {
+						if ($family->getGedcomId()==$ged_id) {
 							$datalist[]=$family;
 						}
 					}
@@ -651,7 +651,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				foreach ($this->sgeds as $ged_id=>$gedcom) {
 					$datalist = array();
 					foreach ($this->mysourcelist as $source) {
-						if ($source->getGedId()==$ged_id) {
+						if ($source->getGedcomId()==$ged_id) {
 							$datalist[]=$source;
 						}
 					}
@@ -675,7 +675,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				foreach ($this->sgeds as $ged_id=>$gedcom) {
 					$datalist = array();
 					foreach ($this->mynotelist as $note) {
-						if ($note->getGedId()==$ged_id) {
+						if ($note->getGedcomId()==$ged_id) {
 							$datalist[]=$note;
 						}
 					}

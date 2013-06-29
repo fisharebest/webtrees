@@ -90,13 +90,13 @@ if (!empty($NOTE)) {
 }
 
 if ($pid_array != '') {
-	$xref = append_gedrec($newgedrec, WT_GED_ID);
+	$record = WT_GedcomRecord::createRecord($newgedrec, WT_GED_ID);
 } else {
-	$xref='';
+	$record='';
 	echo '<div class="indent">No individuals entered, close and try again </div>';
 }
 
-if ($xref) {
+if ($record) {
 	$controller->addInlineJavascript('
 	if (parent.opener.document.getElementById("pids_array_edit") == null || parent.opener.document.getElementById("pids_array_edit") == "undefined") {
 	} else {
@@ -106,6 +106,6 @@ if ($xref) {
 	} else {
 		parent.opener.document.addform.pids_array_add.value="' . $pid_array . '";
 	}
-	openerpasteid("' . $xref . '")
+	openerpasteid("' . $record->getXref() . '")
 	');
 }

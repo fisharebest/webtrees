@@ -252,7 +252,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'">';
 				echo print_findindi_link('pid');
 				if ($xref) {
-					$person=WT_Person::getInstance($xref);
+					$person=WT_Individual::getInstance($xref);
 					if ($person) {
 						echo ' ', $person->format_list('span');
 					}
@@ -355,7 +355,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			echo '<tbody>';
 			foreach ($stories as $story) {
 				$story_title = get_block_setting($story->block_id, 'title');
-				$indi=WT_Person::getInstance($story->xref);
+				$indi=WT_Individual::getInstance($story->xref);
 					if ($indi) {
 						echo '<tr><td><a href="', $indi->getHtmlUrl().'#stories">', $story_title, '<a></td>
 							  <td><a href="', $indi->getHtmlUrl().'#stories">'.$indi->getFullName(), '</a></td>';
@@ -417,12 +417,12 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				</tr></thead>
 				<tbody>';
 			foreach ($stories as $story) {
-				$indi=WT_Person::getInstance($story->xref);
+				$indi=WT_Individual::getInstance($story->xref);
 				$story_title = get_block_setting($story->block_id, 'title');
 				$languages=get_block_setting($story->block_id, 'languages');
 				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 					if ($indi) {
-						if ($indi->canDisplayDetails()) {
+						if ($indi->canShow()) {
 							echo '<tr><td><a href="'.$indi->getHtmlUrl().'#stories">'.$story_title.'</a></td><td><a href="'.$indi->getHtmlUrl().'#stories">'.$indi->getFullName().'</a></td></tr>';
 						}
 					} else {

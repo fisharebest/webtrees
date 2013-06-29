@@ -31,4 +31,12 @@
 
 exit;
 
-// /* I18N: This message is deleted in webtrees-1.x.x  */ WT_I18N::translate('');
+/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('An error occurred while creating the Edit form.  Another user may have changed this record since you previously viewed it.');
+/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('Execution time: %1$s seconds. Database queries: %2$s. Privacy checks: %3$s. Memory usage: %4$s KB.');
+/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('Link this person to an existing family as a husband');
+/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('Link this person to an existing family as a wife');
+/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('Please reload the previous page to make sure you are working with the most recent record.');
+/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('The record with id %s was changed by another user since you last accessed it.');
+/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('This record was last changed by <i>%s</i> at %s');
+/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('UK census images have been obtained from The National Archives, the custodian of the original records, and appear here with their approval on the condition that no commercial use is made of them without permission.  Requests for commercial publication of these or other UK census images appearing on this website should be directed to: Image Library, The National Archives, Kew, Surrey, TW9 4DU, United Kingdom.');
+/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('View GEDCOM Record');

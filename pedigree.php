@@ -2,7 +2,7 @@
 // View for the pedigree tree.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -110,7 +110,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		$iref = $i;
 	}
 	// Can we go back to an earlier generation?
-	$can_go_back=$curgen==1 && WT_Person::getInstance($controller->treeid[$i]) && WT_Person::getInstance($controller->treeid[$i])->getChildFamilies();
+	$can_go_back=$curgen==1 && WT_Individual::getInstance($controller->treeid[$i]) && WT_Individual::getInstance($controller->treeid[$i])->getChildFamilies();
 
 	if ($talloffset == 2) { // oldest at top
 		echo '<div id="uparrow" dir="';
@@ -141,7 +141,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 	if (($talloffset == 3) && ($curgen ==2)) {$yoffset +=10;}
 	echo $xoffset, "px; top:", $yoffset, "px; width:", ($controller->pbwidth), "px; height:", $controller->pbheight, "px; z-index:", $zindex, ";\">";		
 	if (!isset($controller->treeid[$i])) {$controller->treeid[$i] = false;}	
-	print_pedigree_person(WT_Person::getInstance($controller->treeid[$i]), 1, $iref, 1);		
+	print_pedigree_person(WT_Individual::getInstance($controller->treeid[$i]), 1, $iref, 1);		
 	if ($can_go_back) {
 		$did = 1;
 		if ($i > (int)($controller->treesize/2) + (int)($controller->treesize/4)) {

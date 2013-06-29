@@ -85,9 +85,9 @@ function format_indi_table($datalist, $option='') {
 			});
 	
 			jQuery("div.filtersH_'.$table_id.'").html("'.addslashes(
-				'<button type="button" id="SEX_M_'.    $table_id.'" class="ui-state-default SEX_M" title="'.    WT_I18N::translate('Show only males.').'">&nbsp;'.WT_Person::sexImage('M', 'small').'&nbsp;</button>'.
-				'<button type="button" id="SEX_F_'.    $table_id.'" class="ui-state-default SEX_F" title="'.    WT_I18N::translate('Show only females.').'">&nbsp;'.WT_Person::sexImage('F', 'small').'&nbsp;</button>'.
-				'<button type="button" id="SEX_U_'.    $table_id.'" class="ui-state-default SEX_U" title="'.    WT_I18N::translate('Show only persons of whom the gender is not known.').'">&nbsp;'.WT_Person::sexImage('U', 'small').'&nbsp;</button>'.
+				'<button type="button" id="SEX_M_'.    $table_id.'" class="ui-state-default SEX_M" title="'.    WT_I18N::translate('Show only males.').'">&nbsp;'.WT_Individual::sexImage('M', 'small').'&nbsp;</button>'.
+				'<button type="button" id="SEX_F_'.    $table_id.'" class="ui-state-default SEX_F" title="'.    WT_I18N::translate('Show only females.').'">&nbsp;'.WT_Individual::sexImage('F', 'small').'&nbsp;</button>'.
+				'<button type="button" id="SEX_U_'.    $table_id.'" class="ui-state-default SEX_U" title="'.    WT_I18N::translate('Show only persons of whom the gender is not known.').'">&nbsp;'.WT_Individual::sexImage('U', 'small').'&nbsp;</button>'.
 				'<button type="button" id="DEAT_N_'.   $table_id.'" class="ui-state-default DEAT_N" title="'.   WT_I18N::translate('Show people who are alive or couples where both partners are alive.').'">'.WT_I18N::translate('Alive').'</button>'.
 				'<button type="button" id="DEAT_Y_'.   $table_id.'" class="ui-state-default DEAT_Y" title="'.   WT_I18N::translate('Show people who are dead or couples where both partners are deceased.').'">'.WT_I18N::translate('Dead').'</button>'.
 				'<button type="button" id="DEAT_YES_'. $table_id.'" class="ui-state-default DEAT_YES" title="'. WT_I18N::translate('Show people who died more than 100 years ago.').'">'.WT_Gedcom_Tag::getLabel('DEAT').'&gt;100</button>'.
@@ -236,15 +236,15 @@ function format_indi_table($datalist, $option='') {
 		if (is_object($value)) { // Array of objects
 			$person=$value;
 		} elseif (!is_array($value)) { // Array of IDs
-			$person = WT_Person::getInstance($value);
+			$person = WT_Individual::getInstance($value);
 		} else { // Array of search results
 			$gid = $key;
 			if (isset($value['gid'])) $gid = $value['gid']; // from indilist
 			if (isset($value[4])) $gid = $value[4]; // from indilist ALL
-			$person = WT_Person::getInstance($gid);
+			$person = WT_Individual::getInstance($gid);
 		}
 		if (is_null($person)) continue;
-		if (!$person->canDisplayName()) {
+		if (!$person->canShowName()) {
 			continue;
 		}
 		//-- place filtering
@@ -400,7 +400,7 @@ function format_indi_table($datalist, $option='') {
 		$html .= '</td>';
 		//-- Filtering by birth date
 		$html .= '<td>';
-		if (!$person->canDisplayDetails() || WT_Date::Compare($birth_date, $d100y)>0) {
+		if (!$person->canShow() || WT_Date::Compare($birth_date, $d100y)>0) {
 			$html .= 'Y100';
 		} else {
 			$html .= 'YES';
@@ -659,10 +659,10 @@ function format_fam_table($datalist, $option='') {
 		if (is_null($family)) continue;
 		//-- Retrieve husband and wife
 		$husb = $family->getHusband();
-		if (is_null($husb)) $husb = new WT_Person('');
+		if (is_null($husb)) $husb = new WT_Individual('');
 		$wife = $family->getWife();
-		if (is_null($wife)) $wife = new WT_Person('');
-		if (!$family->canDisplayDetails()) {
+		if (is_null($wife)) $wife = new WT_Individual('');
+		if (!$family->canShow()) {
 			continue;
 		}
 		//-- place filtering
@@ -771,13 +771,13 @@ function format_fam_table($datalist, $option='') {
 			if ($marriage_dates[0]->gregorianYear()>=1550 && $marriage_dates[0]->gregorianYear()<2030) {
 				$marr_by_decade[(int)($marriage_dates[0]->gregorianYear()/10)*10] .= $husb->getSex().$wife->getSex();
 			}
-		} else if (get_sub_record(1, '1 _NMR', $family->getGedcomRecord())) {
+		} else if (get_sub_record(1, '1 _NMR', $family->getGedcom())) {
 			$hus = $family->getHusband();
 			$wif = $family->getWife();
 			if (empty($wif) && !empty($hus)) $html .= WT_Gedcom_Tag::getLabel('_NMR', $hus);
 			else if (empty($hus) && !empty($wif)) $html .= WT_Gedcom_Tag::getLabel('_NMR', $wif);
 			else $html .= WT_Gedcom_Tag::getLabel('_NMR');
-		} else if (get_sub_record(1, '1 _NMAR', $family->getGedcomRecord())) {
+		} else if (get_sub_record(1, '1 _NMAR', $family->getGedcom())) {
 			$hus = $family->getHusband();
 			$wif = $family->getWife();
 			if (empty($wif) && !empty($hus)) $html .= WT_Gedcom_Tag::getLabel('_NMAR', $hus);
@@ -840,7 +840,7 @@ function format_fam_table($datalist, $option='') {
 		}
 		//-- Sorting by marriage date
 		$html .= '<td>';
-		if (!$family->canDisplayDetails() || !$mdate->isOK()) {
+		if (!$family->canShow() || !$mdate->isOK()) {
 			$html .= 'U';
 		} else {
 			if (WT_Date::Compare($mdate, $d100y)>0) {
@@ -976,7 +976,7 @@ function format_sour_table($datalist) {
 				$source=WT_Source::getInstance($gid);
 			}
 		}
-		if (!$source || !$source->canDisplayDetails()) {
+		if (!$source || !$source->canShow()) {
 			continue;
 		}
 		$html .= '<tr>';
@@ -1092,7 +1092,7 @@ function format_note_table($datalist) {
 	//-- table body
 	$html .= '<tbody>';
 	foreach ($datalist as $note) {
-		if (!$note->canDisplayDetails()) {
+		if (!$note->canShow()) {
 			continue;
 		}
 		$html .= '<tr>';
@@ -1182,7 +1182,7 @@ function format_repo_table($repos) {
 	$html .= '<tbody>';
 	$n=0;
 	foreach ($repos as $repo) {
-		if (!$repo->canDisplayDetails()) {
+		if (!$repo->canShow()) {
 			continue;
 		}
 		$html .= '<tr>';
@@ -1289,7 +1289,7 @@ function format_media_table($datalist) {
 			if (is_null($media)) $media = WT_Media::getInstance($key);
 			if (is_null($media)) continue;
 		}
-		if ($media->canDisplayDetails()) {
+		if ($media->canShow()) {
 			$name = $media->getFullName();
 			$html .= "<tr>";
 			//-- Object thumbnail
@@ -1538,7 +1538,7 @@ function print_changes_list($change_ids, $sort) {
 	$arr=array();
 	foreach ($change_ids as $change_id) {
 		$record = WT_GedcomRecord::getInstance($change_id);
-		if (!$record || !$record->canDisplayDetails()) {
+		if (!$record || !$record->canShow()) {
 			continue;
 		}
 		// setup sorting parameters
@@ -1563,7 +1563,7 @@ function print_changes_list($change_ids, $sort) {
 	foreach ($arr as $value) {
 		$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item name2">' . $value['record']->getFullName() . '</a>';
 		$html .= '<div class="indent" style="margin-bottom:5px">';
-		if ($value['record'] instanceof WT_Person) {
+		if ($value['record'] instanceof WT_Individual) {
 			if ($value['record']->getAddName()) {
 				$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $value['record']->getAddName() . '</a>';
 			}
@@ -1632,7 +1632,7 @@ function print_changes_table($change_ids, $sort) {
 		//-- table body
 		foreach ($change_ids as $change_id) {
 		$record = WT_GedcomRecord::getInstance($change_id);
-		if (!$record || !$record->canDisplayDetails()) {
+		if (!$record || !$record->canShow()) {
 			continue;
 		}
 		$html .= '<tr><td>';
@@ -1666,7 +1666,7 @@ function print_changes_table($change_ids, $sort) {
 		$name = $record->getFullName();
 		$html .= '<td class="wrap">';
 		$html .= '<a href="'. $record->getHtmlUrl() .'">'. $name . '</a>';
-		if ($record instanceof WT_Person) {
+		if ($record instanceof WT_Individual) {
 			$addname = $record->getAddName();
 			if ($addname) {
 				$html .= '<div class="indent"><a href="'. $record->getHtmlUrl() .'">'. $addname . '</a></div>';
@@ -1727,7 +1727,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$record=$value['record'];
 		//-- only living people ?
 		if ($only_living) {
-			if ($record instanceof WT_Person && $record->isDead()) {
+			if ($record instanceof WT_Individual && $record->isDead()) {
 				$filter ++;
 				continue;
 			}
@@ -1746,7 +1746,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		}
 
 		// Privacy
-		if (!$record->canDisplayDetails() || !canDisplayFact($record->getXref(), $record->getGedId(), $value['factrec'])) {
+		if (!$record->canShow() || !canDisplayFact($record->getXref(), $record->getGedcomId(), $value['factrec'])) {
 			continue;
 		}
 		//-- Counter
@@ -1768,7 +1768,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 
 		$value['name'] = $record->getFullName();
 		$value['url'] = $record->getHtmlUrl();
-		if ($record instanceof WT_Person) {
+		if ($record instanceof WT_Individual) {
 			$value['sex'] = $record->getSexImage();
 		} else {
 			$value['sex'] = '';
@@ -1782,7 +1782,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$name = $value['name'];
 		$html .= '<td class="wrap">';
 		$html .= '<a href="'.$value['url'].'">'.$name.'</a>';
-		if ($value['record'] instanceof WT_Person) {
+		if ($value['record'] instanceof WT_Individual) {
 			$html .= $value['sex'];
 		}
 		$html .= '</td>';
@@ -1866,7 +1866,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		$record = WT_GedcomRecord::getInstance($value['id']);
 		//-- only living people ?
 		if ($only_living) {
-			if ($record instanceof WT_Person && $record->isDead()) {
+			if ($record instanceof WT_Individual && $record->isDead()) {
 				$filter ++;
 				continue;
 			}
@@ -1885,14 +1885,14 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		}
 
 		// Privacy
-		if (!$record->canDisplayDetails() || !canDisplayFact($record->getXref(), $record->getGedId(), $value['factrec'])) {
+		if (!$record->canShow() || !canDisplayFact($record->getXref(), $record->getGedcomId(), $value['factrec'])) {
 			continue;
 		}
 		$output ++;
 
 		$value['name'] = $record->getFullName();
 		$value['url'] = $record->getHtmlUrl();
-		if ($record instanceof WT_Person) {
+		if ($record instanceof WT_Individual) {
 			$value['sex'] = $record->getSexImage();
 		} else {
 			$value['sex'] = '';

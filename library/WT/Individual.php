@@ -1,5 +1,5 @@
 <?php
-// Class file for a person
+// Class file for an individual
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2013 webtrees development team.
@@ -28,15 +28,11 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class WT_Person extends WT_GedcomRecord {
+class WT_Individual extends WT_GedcomRecord {
 	const RECORD_TYPE = 'INDI';
+	const SQL_FETCH   = "SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?";
 	const URL_PREFIX  = 'individual.php?pid=';
 
-	var $indifacts = array();
-	var $otherfacts = array();
-	var $globalfacts = array();
-	var $mediafacts = array();
-	var $facts_parsed = false;
 	var $label = '';
 	var $highlightedimage = null;
 	var $file = '';
@@ -59,21 +55,21 @@ class WT_Person extends WT_GedcomRecord {
 	private $_getEstimatedDeathDate=null;
 
 	// Can the name of this record be shown?
-	public function canDisplayName($access_level=WT_USER_ACCESS_LEVEL) {
+	public function canShowName($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_LIVING_NAMES;
 
-		return $SHOW_LIVING_NAMES>=$access_level || $this->canDisplayDetails($access_level);
+		return $SHOW_LIVING_NAMES>=$access_level || $this->canShow($access_level);
 	}
 
 	// Implement person-specific privacy logic
-	protected function _canDisplayDetailsByType($access_level) {
+	protected function _canShowByType($access_level) {
 		global $SHOW_DEAD_PEOPLE, $KEEP_ALIVE_YEARS_BIRTH, $KEEP_ALIVE_YEARS_DEATH;
 
 		// Dead people...
 		if ($SHOW_DEAD_PEOPLE>=$access_level && $this->isDead()) {
 			$keep_alive=false;
 			if ($KEEP_ALIVE_YEARS_BIRTH) {
-				preg_match_all('/\n1 (?:'.WT_EVENTS_BIRT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->_gedrec, $matches, PREG_SET_ORDER);
+				preg_match_all('/\n1 (?:'.WT_EVENTS_BIRT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->gedcom, $matches, PREG_SET_ORDER);
 				foreach ($matches as $match) {
 					$date=new WT_Date($match[1]);
 					if ($date->isOK() && $date->gregorianYear()+$KEEP_ALIVE_YEARS_BIRTH > date('Y')) {
@@ -83,7 +79,7 @@ class WT_Person extends WT_GedcomRecord {
 				}
 			}
 			if ($KEEP_ALIVE_YEARS_DEATH) {
-				preg_match_all('/\n1 (?:'.WT_EVENTS_DEAT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->_gedrec, $matches, PREG_SET_ORDER);
+				preg_match_all('/\n1 (?:'.WT_EVENTS_DEAT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->gedcom, $matches, PREG_SET_ORDER);
 				foreach ($matches as $match) {
 					$date=new WT_Date($match[1]);
 					if ($date->isOK() && $date->gregorianYear()+$KEEP_ALIVE_YEARS_DEATH > date('Y')) {
@@ -97,8 +93,8 @@ class WT_Person extends WT_GedcomRecord {
 			}
 		}
 		// Consider relationship privacy (unless an admin is applying download restrictions)
-		if (WT_USER_GEDCOM_ID && WT_USER_PATH_LENGTH && $this->getGedId()==WT_GED_ID && $access_level=WT_USER_ACCESS_LEVEL) {
-			$self = WT_Person::getInstance(WT_USER_GEDCOM_ID);
+		if (WT_USER_GEDCOM_ID && WT_USER_PATH_LENGTH && $this->getGedcomId()==WT_GED_ID && $access_level=WT_USER_ACCESS_LEVEL) {
+			$self = WT_Individual::getInstance(WT_USER_GEDCOM_ID);
 			if ($self) {
 				return get_relationship($this, $self, true, WT_USER_PATH_LENGTH)!==false;
 			}
@@ -114,9 +110,9 @@ class WT_Person extends WT_GedcomRecord {
 		$rec='0 @'.$this->xref.'@ INDI';
 		if ($SHOW_LIVING_NAMES>=$access_level) {
 			// Show all the NAME tags, including subtags
-			preg_match_all('/\n1 NAME.*(?:\n[2-9].*)*/', $this->_gedrec, $matches);
+			preg_match_all('/\n1 NAME.*(?:\n[2-9].*)*/', $this->gedcom, $matches);
 			foreach ($matches[0] as $match) {
-				if (canDisplayFact($this->xref, $this->ged_id, $match, $access_level)) {
+				if (canDisplayFact($this->xref, $this->gedcom_id, $match, $access_level)) {
 					$rec.=$match;
 				}
 			}
@@ -124,31 +120,29 @@ class WT_Person extends WT_GedcomRecord {
 			$rec.="\n1 NAME ".WT_I18N::translate('Private');
 		}
 		// Just show the 1 FAMC/FAMS tag, not any subtags, which may contain private data
-		preg_match_all('/\n1 (?:FAMC|FAMS) @('.WT_REGEX_XREF.')@/', $this->_gedrec, $matches, PREG_SET_ORDER);
+		preg_match_all('/\n1 (?:FAMC|FAMS) @('.WT_REGEX_XREF.')@/', $this->gedcom, $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
 			$rela=WT_Family::getInstance($match[1]);
-			if ($rela && ($SHOW_PRIVATE_RELATIONSHIPS || $rela->canDisplayDetails($access_level))) {
+			if ($rela && ($SHOW_PRIVATE_RELATIONSHIPS || $rela->canShow($access_level))) {
 				$rec.=$match[0];
 			}
 		}
 		// Don't privatize sex.
-		if (preg_match('/\n1 SEX [MFU]/', $this->_gedrec, $match)) {
+		if (preg_match('/\n1 SEX [MFU]/', $this->gedcom, $match)) {
 			$rec.=$match[0];
 		}
 		return $rec;
 	}
 
 	// Fetch the record from the database
-	protected static function fetchGedcomRecord($xref, $ged_id) {
+	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement=null;
 
 		if ($statement===null) {
-			$statement=WT_DB::prepare(
-				"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec ".
-				"FROM `##individuals` WHERE i_id=? AND i_file=?"
-			);
+			$statement=WT_DB::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?");
 		}
-		return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
+
+		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 	}
 
 	// Static helper function to sort an array of people by birth date
@@ -167,12 +161,12 @@ class WT_Person extends WT_GedcomRecord {
 		global $MAX_ALIVE_AGE;
 
 		// "1 DEAT Y" or "1 DEAT/2 DATE" or "1 DEAT/2 PLAC"
-		if (preg_match('/\n1 (?:'.WT_EVENTS_DEAT.')(?: Y|(?:\n[2-9].+)*\n2 (DATE|PLAC) )/', $this->_gedrec)) {
+		if (preg_match('/\n1 (?:'.WT_EVENTS_DEAT.')(?: Y|(?:\n[2-9].+)*\n2 (DATE|PLAC) )/', $this->gedcom)) {
 			return true;
 		}
 
 		// If any event occured more than $MAX_ALIVE_AGE years ago, then assume the person is dead
-		if (preg_match_all('/\n2 DATE (.+)/', $this->_gedrec, $date_matches)) {
+		if (preg_match_all('/\n2 DATE (.+)/', $this->gedcom, $date_matches)) {
 			foreach ($date_matches[1] as $date_match) {
 				$date=new WT_Date($date_match);
 				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*$MAX_ALIVE_AGE) {
@@ -181,7 +175,7 @@ class WT_Person extends WT_GedcomRecord {
 			}
 			// The individual has one or more dated events.  All are less than $MAX_ALIVE_AGE years ago.
 			// If one of these is a birth, the person must be alive.
-			if (preg_match('/\n1 BIRT(?:\n[2-9].+)*\n2 DATE /', $this->_gedrec)) {
+			if (preg_match('/\n1 BIRT(?:\n[2-9].+)*\n2 DATE /', $this->gedcom)) {
 				return false;
 			}
 		}
@@ -192,7 +186,7 @@ class WT_Person extends WT_GedcomRecord {
 		foreach ($this->getChildFamilies(WT_PRIV_HIDE) as $family) {
 			foreach ($family->getSpouses(WT_PRIV_HIDE) as $parent) {
 				// Assume parents are no more than 45 years older than their children
-				preg_match_all('/\n2 DATE (.+)/', $parent->_gedrec, $date_matches);
+				preg_match_all('/\n2 DATE (.+)/', $parent->gedcom, $date_matches);
 				foreach ($date_matches[1] as $date_match) {
 					$date=new WT_Date($date_match);
 					if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+45)) {
@@ -204,7 +198,7 @@ class WT_Person extends WT_GedcomRecord {
 
 		// Check spouses
 		foreach ($this->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
-			preg_match_all('/\n2 DATE (.+)/', $family->_gedrec, $date_matches);
+			preg_match_all('/\n2 DATE (.+)/', $family->gedcom, $date_matches);
 			foreach ($date_matches[1] as $date_match) {
 				$date=new WT_Date($date_match);
 				// Assume marriage occurs after age of 10
@@ -215,7 +209,7 @@ class WT_Person extends WT_GedcomRecord {
 			// Check spouse dates
 			$spouse=$family->getSpouse($this, WT_PRIV_HIDE);
 			if ($spouse) {
-				preg_match_all('/\n2 DATE (.+)/', $spouse->_gedrec, $date_matches);
+				preg_match_all('/\n2 DATE (.+)/', $spouse->gedcom, $date_matches);
 				foreach ($date_matches[1] as $date_match) {
 					$date=new WT_Date($date_match);
 					// Assume max age difference between spouses of 40 years
@@ -226,7 +220,7 @@ class WT_Person extends WT_GedcomRecord {
 			}
 			// Check child dates
 			foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
-				preg_match_all('/\n2 DATE (.+)/', $child->_gedrec, $date_matches);
+				preg_match_all('/\n2 DATE (.+)/', $child->gedcom, $date_matches);
 				// Assume children born after age of 15
 				foreach ($date_matches[1] as $date_match) {
 					$date=new WT_Date($date_match);
@@ -237,7 +231,7 @@ class WT_Person extends WT_GedcomRecord {
 				// Check grandchildren
 				foreach ($child->getSpouseFamilies(WT_PRIV_HIDE) as $child_family) {
 					foreach ($child_family->getChildren(WT_PRIV_HIDE) as $grandchild) {
-						preg_match_all('/\n2 DATE (.+)/', $grandchild->_gedrec, $date_matches);
+						preg_match_all('/\n2 DATE (.+)/', $grandchild->gedcom, $date_matches);
 						// Assume grandchildren born after age of 30
 						foreach ($date_matches[1] as $date_match) {
 							$date=new WT_Date($date_match);
@@ -265,10 +259,10 @@ class WT_Person extends WT_GedcomRecord {
 		$objectC = null;
 
 		// Iterate over all of the media items for the person
-		preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcomRecord(), $matches, PREG_SET_ORDER);
+		preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
 			$media = WT_Media::getInstance($match[2]);
-			if (!$media || !$media->canDisplayDetails() || $media->isExternal()) {
+			if (!$media || !$media->canShow() || $media->isExternal()) {
 				continue;
 			}
 			$level = $match[1];
@@ -325,7 +319,7 @@ class WT_Person extends WT_GedcomRecord {
 	*/
 	function getBirthDate() {
 		if (is_null($this->_getBirthDate)) {
-			if ($this->canDisplayDetails()) {
+			if ($this->canShow()) {
 				foreach ($this->getAllBirthDates() as $date) {
 					if ($date->isOK()) {
 						$this->_getBirthDate=$date;
@@ -348,7 +342,7 @@ class WT_Person extends WT_GedcomRecord {
 	*/
 	function getBirthPlace() {
 		if (is_null($this->_getBirthPlace)) {
-			if ($this->canDisplayDetails()) {
+			if ($this->canShow()) {
 				foreach ($this->getAllBirthPlaces() as $place) {
 					if ($place) {
 						$this->_getBirthPlace=$place;
@@ -371,7 +365,7 @@ class WT_Person extends WT_GedcomRecord {
 	*/
 	function getCensBirthPlace() {
 		if (is_null($this->_getBirthPlace)) {
-			if ($this->canDisplayDetails()) {
+			if ($this->canShow()) {
 				foreach ($this->getAllBirthPlaces() as $place) {
 					if ($place) {
 						$this->_getBirthPlace=$place;
@@ -408,7 +402,7 @@ class WT_Person extends WT_GedcomRecord {
 	*/
 	function getDeathDate($estimate = true) {
 		if (is_null($this->_getDeathDate)) {
-			if ($this->canDisplayDetails()) {
+			if ($this->canShow()) {
 				foreach ($this->getAllDeathDates() as $date) {
 					if ($date->isOK()) {
 						$this->_getDeathDate=$date;
@@ -431,7 +425,7 @@ class WT_Person extends WT_GedcomRecord {
 	*/
 	function getDeathPlace() {
 		if (is_null($this->_getDeathPlace)) {
-			if ($this->canDisplayDetails()) {
+			if ($this->canShow()) {
 				foreach ($this->getAllDeathPlaces() as $place) {
 					if ($place) {
 						$this->_getDeathPlace=$place;
@@ -498,7 +492,7 @@ class WT_Person extends WT_GedcomRecord {
 	// Get all the dates/places for births/deaths - for the INDI lists
 	function getAllBirthDates() {
 		if (is_null($this->_getAllBirthDates)) {
-			if ($this->canDisplayDetails()) {
+			if ($this->canShow()) {
 				foreach (explode('|', WT_EVENTS_BIRT) as $event) {
 					if ($this->_getAllBirthDates=$this->getAllEventDates($event)) {
 						break;
@@ -512,7 +506,7 @@ class WT_Person extends WT_GedcomRecord {
 	}
 	function getAllBirthPlaces() {
 		if (is_null($this->_getAllBirthPlaces)) {
-			if ($this->canDisplayDetails()) {
+			if ($this->canShow()) {
 				foreach (explode('|', WT_EVENTS_BIRT) as $event) {
 					if ($this->_getAllBirthPlaces=$this->getAllEventPlaces($event)) {
 						break;
@@ -526,7 +520,7 @@ class WT_Person extends WT_GedcomRecord {
 	}
 	function getAllDeathDates() {
 		if (is_null($this->_getAllDeathDates)) {
-			if ($this->canDisplayDetails()) {
+			if ($this->canShow()) {
 				foreach (explode('|', WT_EVENTS_DEAT) as $event) {
 					if ($this->_getAllDeathDates=$this->getAllEventDates($event)) {
 						break;
@@ -540,7 +534,7 @@ class WT_Person extends WT_GedcomRecord {
 	}
 	function getAllDeathPlaces() {
 		if (is_null($this->_getAllDeathPlaces)) {
-			if ($this->canDisplayDetails()) {
+			if ($this->canShow()) {
 				foreach (explode('|', WT_EVENTS_DEAT) as $event) {
 					if ($this->_getAllDeathPlaces=$this->getAllEventPlaces($event)) {
 						break;
@@ -664,7 +658,7 @@ class WT_Person extends WT_GedcomRecord {
 	// the privatize-gedcom function, and we are allowed to know this.
 	function getSex() {
 		if (is_null($this->sex)) {
-			if (preg_match('/\n1 SEX ([MF])/', $this->_gedrec, $match)) {
+			if (preg_match('/\n1 SEX ([MF])/', $this->gedcom, $match)) {
 				$this->sex=$match[1];
 			} else {
 				$this->sex='U';
@@ -753,7 +747,7 @@ class WT_Person extends WT_GedcomRecord {
 		if ($access_level==WT_PRIV_HIDE) {
 			// special case, (temporary - cannot make this generic as other code depends on the private cached values)
 			$families=array();
-			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->_gedrec, $match);
+			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->gedcom, $match);
 			foreach ($match[1] as $pid) {
 				$family=WT_Family::getInstance($pid);
 				if ($family) {
@@ -765,10 +759,10 @@ class WT_Person extends WT_GedcomRecord {
 
 		if ($this->_spouseFamilies===null) {
 			$this->_spouseFamilies=array();
-			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->_gedrec, $match);
+			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->gedcom, $match);
 			foreach ($match[1] as $pid) {
 				$family=WT_Family::getInstance($pid);
-				if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canDisplayDetails($access_level))) {
+				if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
 					$this->_spouseFamilies[]=$family;
 				}
 			}
@@ -794,7 +788,7 @@ class WT_Person extends WT_GedcomRecord {
 
 	// Get a count of the children for this individual
 	function getNumberOfChildren() {
-		if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->getGedcomRecord(), $match)) {
+		if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->getGedcom(), $match)) {
 			return $match[1];
 		} else {
 			$children=array();
@@ -814,7 +808,7 @@ class WT_Person extends WT_GedcomRecord {
 		if ($access_level==WT_PRIV_HIDE) {
 			// special case, (temporary - cannot make this generic as other code depends on the private cached values)
 			$families=array();
-			preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->_gedrec, $match);
+			preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->gedcom, $match);
 			foreach ($match[1] as $pid) {
 				$family=WT_Family::getInstance($pid);
 				if ($family) {
@@ -826,10 +820,10 @@ class WT_Person extends WT_GedcomRecord {
 
 		if ($this->_childFamilies===null) {
 			$this->_childFamilies=array();
-			preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->_gedrec, $match);
+			preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->gedcom, $match);
 			foreach ($match[1] as $pid) {
 				$family=WT_Family::getInstance($pid);
-				if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canDisplayDetails($access_level))) {
+				if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
 					$this->_childFamilies[]=$family;
 				}
 			}
@@ -852,19 +846,19 @@ class WT_Person extends WT_GedcomRecord {
 			// If there is more than one FAMC record, choose the preferred parents:
 			// a) records with '2 _PRIMARY'
 			foreach ($families as $famid=>$fam) {
-				if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 _PRIMARY Y)/", $this->getGedcomRecord())) {
+				if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 _PRIMARY Y)/", $this->getGedcom())) {
 					return $fam;
 				}
 			}
 			// b) records with '2 PEDI birt'
 			foreach ($families as $famid=>$fam) {
-				if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI birth)/", $this->getGedcomRecord())) {
+				if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI birth)/", $this->getGedcom())) {
 					return $fam;
 				}
 			}
 			// c) records with no '2 PEDI'
 			foreach ($families as $famid=>$fam) {
-				if (!preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI)/", $this->getGedcomRecord())) {
+				if (!preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI)/", $this->getGedcom())) {
 					return $fam;
 				}
 			}
@@ -877,7 +871,7 @@ class WT_Person extends WT_GedcomRecord {
 	* @return string FAMC:PEDI value [ adopted | birth | foster | sealing ]
 	*/
 	function getChildFamilyPedigree($famid) {
-		$subrec = get_sub_record(1, '1 FAMC @'.$famid.'@', $this->getGedcomRecord());
+		$subrec = get_sub_record(1, '1 FAMC @'.$famid.'@', $this->getGedcom());
 		$pedi = get_gedcom_value('PEDI', 2, $subrec);
 		// birth=default => return an empty string
 		return ($pedi=='birth') ? '' : $pedi;
@@ -925,35 +919,9 @@ class WT_Person extends WT_GedcomRecord {
 		return $step_families;
 	}
 
-	/**
-	* get global facts
-	* @return array
-	*/
-	function getGlobalFacts() {
-		$this->parseFacts();
-		return $this->globalfacts;
-	}
-	/**
-	* get indi facts
-	* @return array
-	*/
-	function getIndiFacts() {
-		$this->parseFacts();
-		return $this->indifacts;
-	}
-
-	/**
-	* get other facts
-	* @return array
-	*/
-	function getOtherFacts() {
-		$this->parseFacts();
-		return $this->otherfacts;
-	}
-	
 	// A label for a parental family group
 	function getChildFamilyLabel(WT_Family $family) {
-		if (preg_match('/\n1 FAMC @'.$family->getXref().'@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->getGedcomRecord(), $match)) {
+		if (preg_match('/\n1 FAMC @'.$family->getXref().'@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->getGedcom(), $match)) {
 			// A specified pedigree
 			return WT_Gedcom_Code_Pedi::getChildFamilyLabel($match[1]);
 		} else {
@@ -1001,8 +969,9 @@ class WT_Person extends WT_GedcomRecord {
 			}
 		}
 		// It should not be possible to get here
-		throw new Exception('Invalid family in WT_Person::getStepFamilyLabel(' . $family . ')');
+		throw new Exception('Invalid family in WT_Individual::getStepFamilyLabel(' . $family . ')');
 	}
+
 	/**
 	* get the correct label for a family
 	* @param Family $family the family to get the label for
@@ -1024,595 +993,6 @@ class WT_Person extends WT_GedcomRecord {
 		}
 		// I18N: %s is the spouse name
 		return WT_I18N::translate('Family with %s', $spouse);
-	}
-	/**
-	* get updated Person
-	* If there is an updated individual record in the gedcom file
-	* return a new person object for it
-	* @return Person
-	*/
-	function getUpdatedPerson() {
-		if ($this->getChanged()) {
-			return null;
-		}
-		if (WT_USER_CAN_EDIT && $this->canDisplayDetails()) {
-			$newrec = find_updated_record($this->xref, $this->ged_id);
-			if (!is_null($newrec)) {
-				$new = new WT_Person($newrec);
-				$new->setChanged(true);
-				return $new;
-			}
-		}
-		return null;
-	}
-	/**
-	* Parse the facts from the individual record
-	*/
-	function parseFacts() {
-		parent::parseFacts();
-		//-- only run this function once
-		if ($this->facts_parsed) return;
-		//-- don't run this function if privacy does not allow viewing of details
-		if (!$this->canDisplayDetails()) return;
-		$sexfound = false;
-		//-- run the parseFacts() method from the parent class
-		$this->facts_parsed = true;
-
-		//-- sort the fact info into different categories for people
-		foreach ($this->facts as $f=>$event) {
-			$fact = $event->getTag();
-			if ($fact=='NAME') {
-				// -- handle special name fact case
-				$this->globalfacts[] = $event;
-			} elseif ($fact=='SOUR') {
-				// -- handle special source fact case
-				$this->otherfacts[] = $event;
-			} elseif ($fact=='NOTE') {
-				// -- handle special note fact case
-				$this->otherfacts[] = $event;
-			} elseif ($fact=='SEX') {
-				// -- handle special sex case
-				$this->globalfacts[] = $event;
-				$sexfound = true;
-			} elseif ($fact=='OBJE') {
-			}	else {
-				$this->indifacts[] = $event;
-			}
-		}
-		//-- add a new sex fact if one was not found
-		if (!$sexfound) {
-			$this->globalfacts[] = new WT_Event('1 SEX U', $this, 'new');
-		}
-	}
-	/**
-	* add facts from the family record
-	* @param boolean $otherfacts whether or not to add other related facts such as parents facts, associated people facts, and historical facts
-	*/
-	function add_family_facts($otherfacts = true) {
-		global $GEDCOM, $nonfacts, $nonfamfacts;
-
-		if (!isset($nonfacts)) $nonfacts = array();
-		if (!isset($nonfamfacts)) $nonfamfacts = array();
-
-		if (!$this->canDisplayDetails()) return;
-		$this->parseFacts();
-		//-- Get the facts from the family with spouse (FAMS)
-		foreach ($this->getSpouseFamilies() as $family) {
-			$updfamily = $family->getUpdatedFamily(); //-- updated family ?
-			$spouse = $family->getSpouse($this);
-
-			if ($updfamily) {
-				$family->diffMerge($updfamily);
-			}
-			$facts = $family->getFacts();
-			$hasdiv = false;
-			/* @var $event WT_Event */
-			foreach ($facts as $event) {
-				$fact = $event->getTag();
-				if ($fact=='DIV') $hasdiv = true;
-				// -- handle special source fact case
-				if ($fact!='SOUR' && $fact!='NOTE' && $fact!='CHAN' && $fact!='_UID' && $fact!='RIN') {
-					if (!in_array($fact, $nonfacts) && !in_array($fact, $nonfamfacts)) {
-						$event->setSpouse($spouse);
-						if ($fact!='OBJE') {
-							$this->indifacts[]=$event;
-						} else {
-							$this->otherfacts[]=$event;
-						}
-					}
-				}
-			}
-			if ($otherfacts) {
-				if (!$hasdiv && !is_null($spouse)) $this->add_spouse_facts($spouse, $family->getGedcomRecord());
-				$this->add_children_facts($family, '_CHIL', '');
-			}
-		}
-		if ($otherfacts) {
-			$this->add_parents_facts($this, 1);
-			$this->add_historical_facts();
-			$this->add_asso_facts();
-		}
-	}
-
-	// Add parents' (and parents' relatives') events to individual facts array
-	function add_parents_facts($person, $sosa) {
-		global $SHOW_RELATIVES_EVENTS;
-
-		switch ($sosa) {
-		case 1:
-			foreach ($person->getChildFamilies() as $family) {
-				// Add siblings
-				$this->add_children_facts($family, '_SIBL', '');
-				foreach ($family->getSpouses() as $spouse) {
-					foreach ($spouse->getSpouseFamilies() as $sfamily) {
-						if (!$family->equals($sfamily)) {
-							// Add half-siblings
-							$this->add_children_facts($sfamily, '_HSIB', 'par');
-						}
-					}
-					// Add grandparents
-					$this->add_parents_facts($spouse, $spouse->getSex()=='F' ? 3 : 2);
-				}
-			}
-
-			$rela='';
-			break;
-		case 2:
-			$rela='fat';
-			break;
-		case 3:
-			$rela='mot';
-			break;
-		}
-
-		// Only include events between birth and death
-		$bDate=$this->getEstimatedBirthDate();
-		$dDate=$this->getEstimatedDeathDate();
-
-		foreach ($person->getChildFamilies() as $famid=>$family) {
-			foreach ($family->getSpouses() as $parent) {
-				if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT'.($sosa==1 ? '_PARE' : '_GPAR'))) {
-					foreach ($parent->getAllFactsByType(explode('|', WT_EVENTS_DEAT)) as $sEvent) {
-						if ($sEvent->getDate()->isOK() && WT_Date::Compare($bDate, $sEvent->getDate())<=0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
-							switch ($sosa) {
-							case 1:
-								// Convert the event to a close relatives event
-								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_PARE ', $sEvent->getGedcomRecord()); // Full
-								$tmp_rec="1 _".$sEvent->getTag()."_PARE\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-								break;
-							case 2:
-								// Convert the event to a close relatives event
-								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_GPA1 ', $sEvent->getGedcomRecord()); // Full
-								$tmp_rec="1 _".$sEvent->getTag()."_GPA1\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-								break;
-							case 3:
-								// Convert the event to a close relatives event
-								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_GPA2 ', $sEvent->getGedcomRecord()); // Full
-								$tmp_rec="1 _".$sEvent->getTag()."_GPA2\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-								break;
-							}
-							// Create a new event
-							$this->indifacts[]=new WT_Event($tmp_rec."\n2 _ASSO @".$parent->getXref()."@", $parent, 0);
-						}
-					}
-				}
-			}
-
-			if ($sosa==1 && strstr($SHOW_RELATIVES_EVENTS, '_MARR_PARE')) {
-				// add father/mother marriages
-				foreach ($family->getSpouses() as $parent) {
-					foreach ($parent->getSpouseFamilies() as $sfamily) {
-						foreach ($sfamily->getAllFactsByType(explode('|', WT_EVENTS_MARR)) as $sEvent) {
-							if ($sEvent->getDate()->isOK() && WT_Date::Compare($bDate, $sEvent->getDate())<=0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
-								if ($sfamily->equals($family)) {
-									if ($parent->getSex()=='F') {
-										// show current family marriage only once
-										continue;
-									}
-									// marriage of parents (to each other)
-									// Convert the event to a close relatives event
-									$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_FAMC ', $sEvent->getGedcomRecord()); // Full
-									$tmp_rec="1 _".$sEvent->getTag()."_FAMC\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-								} else {
-									// marriage of a parent (to another spouse)
-									// Convert the event to a close relatives event
-									$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_PARE ', $sEvent->getGedcomRecord()); // Full
-									$tmp_rec="1 _".$sEvent->getTag()."_PARE\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-								}
-								// Add links to both spouses
-								foreach ($sfamily->getSpouses() as $spouse) {
-									$tmp_rec .= "\n2 _ASSO @" . $spouse->getXref() . '@';
-								}
-								// Create a new event
-								$tmp = new WT_Event($tmp_rec, $sfamily, 0);
-								if (!$sfamily->equals($family)) {
-									$tmp->setSpouse($parent);
-								}
-								$this->indifacts[]=$tmp;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	* add children events to individual facts array
-	*
-	* @param string $family   Family object
-	* @param string $option   Family level indicator
-	* @param string $relation Relationship path indicator
-	* @return records added to indifacts array
-	*/
-	function add_children_facts($family, $option, $relation) {
-		global $SHOW_RELATIVES_EVENTS;
-
-		// Deal with recursion.
-		switch ($option) {
-		case '_CHIL':
-			// Add grandchildren
-			foreach ($family->getChildren() as $child) {
-				foreach ($child->getSpouseFamilies() as $cfamily) {
-					switch ($child->getSex()) {
-					case 'M':
-						$this->add_children_facts($cfamily, '_GCHI', 'son');
-						break;
-					case 'F':
-						$this->add_children_facts($cfamily, '_GCHI', 'dau');
-						break;
-					case 'U':
-						$this->add_children_facts($cfamily, '_GCHI', 'chi');
-						break;
-					}
-				}
-			}
-			break;
-		}
-
-		// For each child in the family
-		foreach ($family->getChildren() as $child) {
-			if ($child->getXref()==$this->getXref()) {
-				// We are not our own sibling!
-				continue;
-			}
-			// add child's birth
-			if (strpos($SHOW_RELATIVES_EVENTS, '_BIRT'.str_replace('_HSIB', '_SIBL', $option))!==false) {
-				foreach ($child->getAllFactsByType(explode('|', WT_EVENTS_BIRT)) as $sEvent) {
-					$sgdate=$sEvent->getDate();
-					// Always show _BIRT_CHIL, even if the dates are not known
-					if ($option=='_CHIL' || $sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-						if ($option=='_GCHI' && $relation=='dau') {
-							// Convert the event to a close relatives event.
-							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_BIRT.')/', '1 _$1_GCH1', $sEvent->getGedcomRecord()); // Full
-							$tmp_rec="1 _".$sEvent->getTag()."_GCH1\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-						} elseif ($option=='_GCHI' && $relation=='son') {
-							// Convert the event to a close relatives event.
-							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_BIRT.')/', '1 _$1_GCH2', $sEvent->getGedcomRecord()); // Full
-							$tmp_rec="1 _".$sEvent->getTag()."_GCH2\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-						} else {
-							// Convert the event to a close relatives event.
-							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_BIRT.')/', '1 _$1'.$option, $sEvent->getGedcomRecord()); // Full
-							$tmp_rec="1 _".$sEvent->getTag().$option."\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-						}
-						$event=new WT_Event($tmp_rec."\n2 _ASSO @".$child->getXref()."@", $child, 0);
-						if (!in_array($event, $this->indifacts)) {
-							$this->indifacts[]=$event;
-						}
-					}
-				}
-			}
-			// add child's death
-			if (strpos($SHOW_RELATIVES_EVENTS, '_DEAT'.str_replace('_HSIB', '_SIBL', $option))!==false) {
-				foreach ($child->getAllFactsByType(explode('|', WT_EVENTS_DEAT)) as $sEvent) {
-					$sgdate=$sEvent->getDate();
-					$srec = $sEvent->getGedcomRecord();
-					if ($sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-						if ($option=='_GCHI' && $relation=='dau') { 
-							// Convert the event to a close relatives event.
-							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_GCH1', $sEvent->getGedcomRecord()); // Full
-							$tmp_rec="1 _".$sEvent->getTag()."_GCH1\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-						} elseif ($option=='_GCHI' && $relation=='son') {
-							// Convert the event to a close relatives event.
-							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_GCH2', $sEvent->getGedcomRecord()); // Full
-							$tmp_rec="1 _".$sEvent->getTag()."_GCH2\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-						} else {
-							// Convert the event to a close relatives event.
-							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1'.$option, $sEvent->getGedcomRecord()); // Full
-							$tmp_rec="1 _".$sEvent->getTag().$option."\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-						}
-						$event=new WT_Event($tmp_rec."\n2 _ASSO @".$child->getXref()."@", $child, 0);
-						if (!in_array($event, $this->indifacts)) {
-							$this->indifacts[]=$event;
-						}
-					}
-				}
-			}
-			// add child's marriage
-			if (strstr($SHOW_RELATIVES_EVENTS, '_MARR'.str_replace('_HSIB', '_SIBL', $option))) {
-				foreach ($child->getSpouseFamilies() as $sfamily) {
-					foreach ($sfamily->getAllFactsByType(explode('|', WT_EVENTS_MARR)) as $sEvent) {
-						$sgdate=$sEvent->getDate();
-						if ($sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-						if ($option=='_GCHI' && $relation=='dau') {
-								// Convert the event to a close relatives event.
-								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_GCH1', $sEvent->getGedcomRecord());
-								$tmp_rec="1 _".$sEvent->getTag()."_GCH1\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-						} elseif ($option=='_GCHI' && $relation=='son') {
-								// Convert the event to a close relatives event.
-								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_GCH2', $sEvent->getGedcomRecord());
-								$tmp_rec="1 _".$sEvent->getTag()."_GCH2\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-							} else {
-								// Convert the event to a close relatives event.
-								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1'.$option, $sEvent->getGedcomRecord());
-								$tmp_rec="1 _".$sEvent->getTag().$option."\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-							}
-							// Add links to both spouses
-							foreach ($sfamily->getSpouses() as $spouse) {
-								$tmp_rec .= "\n2 _ASSO @" . $spouse->getXref() . '@';
-							}
-							// Create a new event
-							$tmp = new WT_Event($tmp_rec, $sfamily, 0);
-							$tmp->setSpouse($child);
-							$this->indifacts[]=$tmp;
-						}
-					}
-				}
-			}
-		}
-	}
-	/**
-	* add spouse events to individual facts array
-	*
-	* bdate = indi birth date record
-	* ddate = indi death date record
-	*
-	* @param string $spouse Person object
-	* @param string $famrec family Gedcom record
-	* @return records added to indifacts array
-	*/
-	function add_spouse_facts($spouse, $famrec='') {
-		global $SHOW_RELATIVES_EVENTS;
-
-		// do not show if divorced
-		if (preg_match('/\n1 (?:'.WT_EVENTS_DIV.')\b/', $famrec)) {
-			return;
-		}
-		// Only include events between birth and death
-		$bDate=$this->getEstimatedBirthDate();
-		$dDate=$this->getEstimatedDeathDate();
-
-		// add spouse death
-		if ($spouse && strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
-			foreach ($spouse->getAllFactsByType(explode('|', WT_EVENTS_DEAT)) as $sEvent) {
-				$sdate=$sEvent->getDate();
-				if ($sdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sdate)<=0 && WT_Date::Compare($sdate, $this->getEstimatedDeathDate())<=0) {
-					// Convert the event to a close relatives event.
-					$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_SPOU ', $sEvent->getGedcomRecord()); // Full
-					$tmp_rec="1 _".$sEvent->getTag()."_SPOU\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-					// Create a new event
-					$this->indifacts[]=new WT_Event($tmp_rec."\n2 _ASSO @".$spouse->getXref()."@", $spouse, 0);
-				}
-			}
-		}
-	}
-
-	/**
-	* add historical events to individual facts array
-	*
-	* @return records added to indifacts array
-	*
-	* Historical facts are imported from optional language file : histo.xx.php
-	* where xx is language code
-	* This file should contain records similar to :
-	*
-	* $histo[]="1 EVEN\n2 TYPE History\n2 DATE 11 NOV 1918\n2 NOTE WW1 Armistice";
-	* $histo[]="1 EVEN\n2 TYPE History\n2 DATE 8 MAY 1945\n2 NOTE WW2 Armistice";
-	* etc...
-	*
-	*/
-	function add_historical_facts() {
-		global $SHOW_RELATIVES_EVENTS;
-		if (!$SHOW_RELATIVES_EVENTS) return;
-
-		// Only include events between birth and death
-		$bDate=$this->getEstimatedBirthDate();
-		$dDate=$this->getEstimatedDeathDate();
-		if (!$bDate->isOK()) return;
-
-		if (file_exists(WT_Site::preference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
-			require WT_Site::preference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php';
-			foreach ($histo as $indexval=>$hrec) {
-				$sdate=new WT_Date(get_gedcom_value('DATE', 2, $hrec));
-				if ($sdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sdate)<=0 && WT_Date::Compare($sdate, $this->getEstimatedDeathDate())<=0) {
-					$event = new WT_Event($hrec, null, -1);
-					$this->indifacts[] = $event;
-				}
-			}
-		}
-	}
-	/**
-	* add events where pid is an ASSOciate
-	*
-	* @return records added to indifacts array
-	*
-	*/
-	function add_asso_facts() {
-		$associates=array_merge(
-			fetch_linked_indi($this->getXref(), 'ASSO', $this->ged_id),
-			fetch_linked_indi($this->getXref(), '_ASSO', $this->ged_id),
-			fetch_linked_fam ($this->getXref(), 'ASSO', $this->ged_id),
-			fetch_linked_fam ($this->getXref(), '_ASSO', $this->ged_id)
-		);
-		foreach ($associates as $associate) {
-			foreach ($associate->getFacts() as $event) {
-				$srec = $event->getGedcomRecord();
-				foreach (array('ASSO', '_ASSO') as $asso_tag) {
-					$arec = get_sub_record(2, '2 ' . $asso_tag . ' @' . $this->getXref() . '@', $srec);
-					if ($arec) {
-						// Extract the important details from the fact
-						$factrec='1 '.$event->getTag();
-						if (preg_match('/\n2 DATE .*/', $srec, $match)) {
-							$factrec.=$match[0];
-						}
-						if (preg_match('/\n2 PLAC .*/', $srec, $match)) {
-							$factrec.=$match[0];
-						}
-						if ($associate instanceof WT_Family) {
-							foreach ($associate->getSpouses() as $spouse) {
-								$factrec.="\n2 $asso_tag @".$spouse->getXref().'@';
-							}
-						} else {
-							$factrec.="\n2 $asso_tag @".$associate->getXref().'@';
-							// CHR/BAPM events are commonly used.  Generate the reverse relationship
-							if (preg_match('/^(?:BAPM|CHR)$/', $event->getTag()) && preg_match('/3 RELA god(?:parent|mother|father)/', $event->getGedcomRecord())) {
-								switch ($associate->getSex()) {
-								case 'M':
-									$factrec.="\n3 RELA godson";
-									break;
-								case 'F':
-									$factrec.="\n3 RELA goddaughter";
-									break;
-								case 'U':
-									$factrec.="\n3 RELA godchild";
-									break;
-								}
-							}
-						}
-						$this->indifacts[] = new WT_Event($factrec, $associate, 0);
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	* Merge the facts from another Person object into this object
-	* for generating a diff view
-	* @param Person $diff the person to compare facts with
-	*/
-	function diffMerge($diff) {
-		if (is_null($diff)) return;
-		$this->parseFacts();
-		$diff->parseFacts();
-		//-- loop through new facts and add them to the list if they are any changes
-		//-- compare new and old facts of the Personal Fact and Details tab 1
-		for ($i=0; $i<count($this->indifacts); $i++) {
-			$found=false;
-			$oldfactrec = $this->indifacts[$i]->getGedcomRecord();
-			foreach ($diff->indifacts as $newfact) {
-				$newfactrec = $newfact->getGedcomRecord();
-				//-- remove all whitespace for comparison
-				$tnf = preg_replace('/\s+/', ' ', $newfactrec);
-				$tif = preg_replace('/\s+/', ' ', $oldfactrec);
-				if ($tnf==$tif) {
-					$this->indifacts[$i] = $newfact; //-- make sure the correct linenumber is used
-					$found=true;
-					break;
-				}
-			}
-			//-- fact was deleted?
-			if (!$found) {
-				$this->indifacts[$i]->setIsOld();
-			}
-		}
-		//-- check for any new facts being added
-		foreach ($diff->indifacts as $newfact) {
-			$found=false;
-			foreach ($this->indifacts as $fact) {
-				$tif = preg_replace('/\s+/', ' ', $fact->getGedcomRecord());
-				$tnf = preg_replace('/\s+/', ' ', $newfact->getGedcomRecord());
-				if ($tif==$tnf) {
-					$found=true;
-					break;
-				}
-			}
-			if (!$found) {
-				$newfact->setIsNew();
-				$this->indifacts[]=$newfact;
-			}
-		}
-		//-- compare new and old facts of the Notes Sources and Media tab 2
-		for ($i=0; $i<count($this->otherfacts); $i++) {
-			$found=false;
-			foreach ($diff->otherfacts as $newfact) {
-				if (trim($newfact->getGedcomRecord())==trim($this->otherfacts[$i]->getGedcomRecord())) {
-					$this->otherfacts[$i] = $newfact; //-- make sure the correct linenumber is used
-					$found=true;
-					break;
-				}
-			}
-			if (!$found) {
-				$this->otherfacts[$i]->setIsOld();
-			}
-		}
-		foreach ($diff->otherfacts as $indexval => $newfact) {
-			$found=false;
-			foreach ($this->otherfacts as $indexval => $fact) {
-				if (trim($fact->getGedcomRecord())==trim($newfact->getGedcomRecord())) {
-					$found=true;
-					break;
-				}
-			}
-			if (!$found) {
-				$newfact->setIsNew();
-				$this->otherfacts[]=$newfact;
-			}
-		}
-
-		//-- compare new and old facts of the Global facts
-		for ($i=0; $i<count($this->globalfacts); $i++) {
-			$found=false;
-			foreach ($diff->globalfacts as $indexval => $newfact) {
-				if (trim($newfact->getGedcomRecord())==trim($this->globalfacts[$i]->getGedcomRecord())) {
-					$this->globalfacts[$i] = $newfact; //-- make sure the correct linenumber is used
-					$found=true;
-					break;
-				}
-			}
-			if (!$found) {
-				$this->globalfacts[$i]->setIsOld();
-			}
-		}
-		foreach ($diff->globalfacts as $indexval => $newfact) {
-			$found=false;
-			foreach ($this->globalfacts as $indexval => $fact) {
-				if (trim($fact->getGedcomRecord())==trim($newfact->getGedcomRecord())) {
-					$found=true;
-					break;
-				}
-			}
-			if (!$found) {
-				$newfact->setIsNew();
-				$this->globalfacts[]=$newfact;
-			}
-		}
-
-		foreach ($diff->getChildFamilies() as $diff_family) {
-			$exists=false;
-			foreach ($this->getChildFamilies() as $family) {
-				if ($family->equals($diff_family)) {
-					$exists=true;
-					break;
-				}
-			}
-			if (!$exists) {
-				$this->_childFamilies[]=$diff_family;
-			}
-		}
-
-		foreach ($diff->getSpouseFamilies() as $diff_family) {
-			$exists=false;
-			foreach ($this->getSpouseFamilies() as $family) {
-				if ($family->equals($diff_family)) {
-					$exists=true;
-					break;
-				}
-			}
-			if (!$exists) {
-				$this->_spouseFamilies[]=$diff_family;
-			}
-		}
 	}
 
 	/**
@@ -1677,19 +1057,19 @@ class WT_Person extends WT_GedcomRecord {
 	// 1 NAME Carlos /Vasquez y Sante/
 	// 2 GIVN Carlos
 	// 2 SURN Vasquez,Sante
-	protected function _addName($type, $full, $gedrec) {
+	protected function _addName($type, $full, $gedcom) {
 		global $UNKNOWN_NN, $UNKNOWN_PN;
 
 		////////////////////////////////////////////////////////////////////////////
 		// Extract the structured name parts - use for "sortable" names and indexes
 		////////////////////////////////////////////////////////////////////////////
 
-		$sublevel=1+(int)$gedrec[0];
-		$NPFX=preg_match("/\n{$sublevel} NPFX (.+)/", $gedrec, $match) ? $match[1] : '';
-		$GIVN=preg_match("/\n{$sublevel} GIVN (.+)/", $gedrec, $match) ? $match[1] : '';
-		$SURN=preg_match("/\n{$sublevel} SURN (.+)/", $gedrec, $match) ? $match[1] : '';
-		$NSFX=preg_match("/\n{$sublevel} NSFX (.+)/", $gedrec, $match) ? $match[1] : '';
-		$NICK=preg_match("/\n{$sublevel} NICK (.+)/", $gedrec, $match) ? $match[1] : '';
+		$sublevel=1+(int)$gedcom[0];
+		$NPFX=preg_match("/\n{$sublevel} NPFX (.+)/", $gedcom, $match) ? $match[1] : '';
+		$GIVN=preg_match("/\n{$sublevel} GIVN (.+)/", $gedcom, $match) ? $match[1] : '';
+		$SURN=preg_match("/\n{$sublevel} SURN (.+)/", $gedcom, $match) ? $match[1] : '';
+		$NSFX=preg_match("/\n{$sublevel} NSFX (.+)/", $gedcom, $match) ? $match[1] : '';
+		$NICK=preg_match("/\n{$sublevel} NICK (.+)/", $gedcom, $match) ? $match[1] : '';
 
 		// SURN is an comma-separated list of surnames...
 		if ($SURN) {
@@ -1867,7 +1247,7 @@ class WT_Person extends WT_GedcomRecord {
 		} else {
 			$char = ($bwidth/6.5);
 		}
-		if ($this->canDisplayName()) {
+		if ($this->canShowName()) {
 			$tmp=$this->getAllNames();
 			$givn = $tmp[$this->getPrimaryName()]['givn'];
 			$surn = $tmp[$this->getPrimaryName()]['surname'];

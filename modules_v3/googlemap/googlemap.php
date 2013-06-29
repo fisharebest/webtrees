@@ -154,7 +154,7 @@ function setup_map() {
 	<?php
 }
 
-function build_indiv_map($indifacts, $famids) {
+function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 	global $controller, $GOOGLEMAP_MAX_ZOOM, $GOOGLEMAP_YSIZE, $GM_DEFAULT_TOP_VALUE;
 
 	// Create the markers list array
@@ -165,8 +165,8 @@ function build_indiv_map($indifacts, $famids) {
 	$i = 0;
 	foreach ($indifacts as $key => $value) {
 		$fact = $value->getTag();
-		$fact_data=$value->getDetail();
-		$factrec = $value->getGedComRecord();
+		$fact_data=$value->getValue();
+		$factrec = $value->getGedcom();
 		$placerec = null;
 
 		if ($value->getPlace()!=null) {
@@ -181,9 +181,13 @@ function build_indiv_map($indifacts, $famids) {
 		if (!empty($placerec)) {
 			$ctla = preg_match("/\d LATI (.*)/", $placerec, $match1);
 			$ctlo = preg_match("/\d LONG (.*)/", $placerec, $match2);
-			$spouse = $value->getSpouse();
+			if ($value->getParent() instanceof WT_Family) {
+				$spouse = $value->getParent()->getSpouse($indi);
+			} else {
+				$spouse = null;
+			}
 			if ($spouse) {
-				$useThisItem = $spouse->canDisplayDetails();
+				$useThisItem = $spouse->canShow();
 			} else {
 				$useThisItem = true;
 			}
@@ -265,13 +269,13 @@ function build_indiv_map($indifacts, $famids) {
 				if ($famrec) {
 					$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch, PREG_SET_ORDER);
 					for ($j=0; $j<$num; $j++) {
-						$person=WT_Person::getInstance($smatch[$j][1]);
-						if ($person->canDisplayDetails()) {
+						$person=WT_Individual::getInstance($smatch[$j][1]);
+						if ($person->canShow()) {
 							$srec = find_person_record($smatch[$j][1], WT_GED_ID);
 							$birthrec = '';
 							$placerec = '';
-							foreach ($person->getAllFactsByType('BIRT') as $sEvent) {
-								$birthrec = $sEvent->getGedcomRecord();
+							foreach ($person->getFacts('BIRT') as $sEvent) {
+								$birthrec = $sEvent->getGedcom();
 								$placerec = get_sub_record(2, '2 PLAC', $birthrec);
 								if (!empty($placerec)) {
 									$ctd = preg_match("/\d DATE (.*)/", $birthrec, $matchd);
@@ -424,7 +428,7 @@ function build_indiv_map($indifacts, $famids) {
 				echo '<span class="field">', $marker['info'], '</span><br>';
 			}
 			if (!empty($marker['name'])) {
-				$person=WT_Person::getInstance($marker['name']);
+				$person=WT_Individual::getInstance($marker['name']);
 				if ($person) {
 					echo '<a href="', $person->getHtmlUrl(), '">', $person->getFullName(), '</a>';
 				}

@@ -35,14 +35,14 @@ class WT_Controller_Chart extends WT_Controller_Page {
 
 		$this->rootid = safe_GET_xref('rootid');
 		if ($this->rootid) {
-			$this->root = WT_Person::getInstance($this->rootid);
+			$this->root = WT_Individual::getInstance($this->rootid);
 		} else {
 			// Missing rootid parameter?  Do something.
 			$this->root   = $this->getSignificantIndividual();
 			$this->rootid = $this->root->getXref();
 		}
 		
-		if (!$this->root || !$this->root->canDisplayName()) {
+		if (!$this->root || !$this->root->canShowName()) {
 			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
 			$this->error_message=WT_I18N::translate('This individual does not exist or you do not have permission to view it.');
 			$this->rootid=null;

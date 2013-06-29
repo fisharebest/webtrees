@@ -37,7 +37,7 @@ if (empty($ged)) {
 
 $user_ancestors=array();
 if (WT_USER_GEDCOM_ID) {
-	load_ancestors_array(WT_Person::getInstance(WT_USER_GEDCOM_ID), 1);
+	load_ancestors_array(WT_Individual::getInstance(WT_USER_GEDCOM_ID), 1);
 }
 
 $controller=new WT_Controller_Page();
@@ -77,7 +77,7 @@ $controller
 if ($surn) {
 	echo '<fieldset><legend><i class="icon-patriarch"></i> ', $surn, '</legend>';
 	$indis = indis_array($surn, $soundex_std, $soundex_dm);
-	usort($indis, array('WT_Person', 'CompareBirtDate'));
+	usort($indis, array('WT_Individual', 'CompareBirtDate'));
 	echo '<ol>';
 	foreach ($indis as $person) {
 		$famc = $person->getPrimaryChildFamily();
@@ -138,7 +138,7 @@ function print_fams($person, $famid=null) {
 		$person->getLifeSpan().' '.$sosa;
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$sex = $person->getSex();
-		$famcrec = get_sub_record(1, '1 FAMC @'.$famid.'@', $person->getGedcomRecord());
+		$famcrec = get_sub_record(1, '1 FAMC @'.$famid.'@', $person->getGedcom());
 		$pedi = get_gedcom_value('PEDI', 2, $famcrec);
 		if ($pedi) {
 			$label = WT_Gedcom_Code_Pedi::getValue($pedi, $person);
@@ -196,7 +196,7 @@ function load_ancestors_array($person, $sosa=1) {
 
 function indis_array($surn, $soundex_std, $soundex_dm) {
 	$sql=
-		"SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+		"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
 		" FROM `##individuals`".
 		" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
 		" WHERE n_file=?".
@@ -219,10 +219,10 @@ function indis_array($surn, $soundex_std, $soundex_dm) {
 	$rows=
 		WT_DB::prepare($sql)
 		->execute($args)
-		->fetchAll(PDO::FETCH_ASSOC);
+		->fetchAll();
 	$data=array();
 	foreach ($rows as $row) {
-		$data[]=WT_Person::getInstance($row);
+		$data[]=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 	}
 	return $data;
 }

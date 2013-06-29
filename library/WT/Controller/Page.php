@@ -163,7 +163,6 @@ class WT_Controller_Page extends WT_Controller_Base {
 			var browserType    = "'.$BROWSERTYPE.'";
 			var WT_SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
 			var WT_LOCALE      = "'.WT_LOCALE.'";
-			var accesstime     = '.WT_TIMESTAMP.';
 		', self::JS_PRIORITY_HIGH);
 	
 		// Temporary fix for access to main menu hover elements on android/blackberry touch devices
@@ -220,16 +219,16 @@ class WT_Controller_Page extends WT_Controller_Base {
 		static $individual; // Only query the DB once.
 
 		if (!$individual && WT_USER_ROOT_ID) {
-			$individual=WT_Person::getInstance(WT_USER_ROOT_ID);
+			$individual=WT_Individual::getInstance(WT_USER_ROOT_ID);
 		}
 		if (!$individual && WT_USER_GEDCOM_ID) {
-			$individual=WT_Person::getInstance(WT_USER_GEDCOM_ID);
+			$individual=WT_Individual::getInstance(WT_USER_GEDCOM_ID);
 		}
 		if (!$individual) {
-			$individual=WT_Person::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
+			$individual=WT_Individual::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
 		}
 		if (!$individual) {
-			$individual=WT_Person::getInstance(
+			$individual=WT_Individual::getInstance(
 				WT_DB::prepare(
 					"SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?"
 				)->execute(array(WT_GED_ID))->fetchOne()
@@ -237,7 +236,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 		}
 		if (!$individual) {
 			// always return a record
-			$individual=new WT_Person('0 @I@ INDI');
+			$individual=new WT_Individual('I', '0 @I@ INDI', null, WT_GED_ID);
 		}
 		return $individual;
 	}
@@ -252,7 +251,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 			}
 		}
 		// always return a record
-		return new WT_Family('0 @F@ FAM');
+		return new WT_Family('F', '0 @F@ FAM', null, WT_GED_ID);
 	}
 	public function getSignificantSurname() {
 		return '';

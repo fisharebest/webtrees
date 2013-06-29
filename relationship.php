@@ -50,14 +50,14 @@ $Dbyspacing		= 0;
 $Dbasexoffset	= 0;
 $Dbaseyoffset	= 0;
 
-$person1=WT_Person::getInstance($pid1);
-$person2=WT_Person::getInstance($pid2);
+$person1=WT_Individual::getInstance($pid1);
+$person2=WT_Individual::getInstance($pid2);
 
 $controller
 	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
-if ($person1 && $person1->canDisplayName() && $person2 && $person2->canDisplayName()) {	
+if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) {	
 	$controller
 		->setPageTitle(WT_I18N::translate(/* I18N: %s are individual’s names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
 		->PageHeader();

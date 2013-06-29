@@ -67,10 +67,10 @@ class user_favorites_WT_Module extends gedcom_favorites_WT_Module {
 		case 'menu-add-favorite':
 			// Process the "add to user favorites" menu item on indi/fam/etc. pages
 			$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
-			if (WT_USER_ID && $record->canDisplayName()) {
+			if (WT_USER_ID && $record->canShowName()) {
 				self::addFavorite(array(
 					'user_id'  =>WT_USER_ID,
-					'gedcom_id'=>$record->getGedId(),
+					'gedcom_id'=>$record->getGedcomId(),
 					'gid'      =>$record->getXref(),
 					'type'     =>$record::RECORD_TYPE,
 					'url'      =>null,

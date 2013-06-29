@@ -30,62 +30,55 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Media extends WT_GedcomRecord {
 	const RECORD_TYPE = 'OBJE';
+	const SQL_FETCH   = "SELECT m_gedcom FROM `##media` WHERE m_id=? AND m_file=?";
 	const URL_PREFIX  = 'mediaviewer.php?mid=';
 
 	public $title = null; // TODO: these should be private, with getTitle() and getFilename() functions
 	public $file  = null;
 
 	// Create a Media object from either raw GEDCOM data or a database row
-	public function __construct($data) {
-		parent::__construct($data);
+	public function __construct($xref, $gedcom, $pending, $gedcom_id) {
+		parent::__construct($xref, $gedcom, $pending, $gedcom_id);
 
-		if (is_array($data)) {
-			// Construct from a row from the database
-			$this->file =$data['m_filename'];
-			$this->title=$data['m_titl'];
+		// TODO get this data from WT_Fact objects
+		if (preg_match('/\n1 FILE (.+)/', $gedcom.$pending, $match)) {
+			$this->file = $match[1];
 		} else {
-			// Construct from raw GEDCOM data
-			if (preg_match('/\n1 FILE (.+)/', $data, $match)) {
-				$this->file = $match[1];
-			} else {
-				$this->file = '';
-			}
-			if (preg_match('/\n\d TITL (.+)/', $data, $match)) {
-				$this->title = $match[1];
-			} else {
-				$this->title = $this->file;
-			}
+			$this->file = '';
+		}
+		if (preg_match('/\n\d TITL (.+)/', $gedcom.$pending, $match)) {
+			$this->title = $match[1];
+		} else {
+			$this->title = $this->file;
 		}
 	}
 
 	// Implement media-specific privacy logic ...
-	protected function _canDisplayDetailsByType($access_level) {
+	protected function _canShowByType($access_level) {
 		// Hide media objects if they are attached to private records
 		$linked_ids=WT_DB::prepare(
 			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
-		)->execute(array($this->xref, $this->ged_id))->fetchOneColumn();
+		)->execute(array($this->xref, $this->gedcom_id))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
 			$linked_record=WT_GedcomRecord::getInstance($linked_id);
-			if ($linked_record && !$linked_record->canDisplayDetails($access_level)) {
+			if ($linked_record && !$linked_record->canShow($access_level)) {
 				return false;
 			}
 		}
 
 		// ... otherwise apply default behaviour
-		return parent::_canDisplayDetailsByType($access_level);
+		return parent::_canShowByType($access_level);
 	}
 
 	// Fetch the record from the database
-	protected static function fetchGedcomRecord($xref, $ged_id) {
+	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement=null;
 
 		if ($statement===null) {
-			$statement=WT_DB::prepare(
-				"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename".
-				" FROM `##media` WHERE m_id=? AND m_file=?"
-			);
+			$statement=WT_DB::prepare("SELECT m_gedcom FROM `##media` WHERE m_id=? AND m_file=?");
 		}
-		return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
+
+		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 	}
 
 	/**
@@ -93,7 +86,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return string
 	 */
 	public function getNote() {
-		return get_gedcom_value('NOTE', 1, $this->getGedcomRecord());
+		return get_gedcom_value('NOTE', 1, $this->getGedcom());
 	}
 
 	/**
@@ -246,13 +239,13 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return string
 	 */
 	public function getMediaType() {
-		$mediaType = strtolower(get_gedcom_value('FORM:TYPE', 2, $this->getGedcomRecord()));
+		$mediaType = strtolower(get_gedcom_value('FORM:TYPE', 2, $this->getGedcom()));
 		return $mediaType;
 	}
 
 	// Is this object marked as a highlighted image?
 	public function isPrimary() {
-		if (preg_match('/\n\d _PRIM ([YN])/', $this->getGedcomRecord(), $match)) {
+		if (preg_match('/\n\d _PRIM ([YN])/', $this->getGedcom(), $match)) {
 			return $match[1];
 		} else {
 			return '';
@@ -341,7 +334,7 @@ class WT_Media extends WT_GedcomRecord {
 		$downloadstr = ($download) ? '&dl=1' : '';
 		return
 			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr .
-			'&amp;ged=' . rawurlencode(get_gedcom_from_id($this->ged_id)) .
+			'&amp;ged=' . rawurlencode(get_gedcom_from_id($this->gedcom_id)) .
 			'&amp;cb=' . $this->getEtag($which);
 	}
 
@@ -425,7 +418,7 @@ class WT_Media extends WT_GedcomRecord {
 
 	// If this object has no name, what do we call it?
 	public function getFallBackName() {
-		if ($this->canDisplayDetails()) {
+		if ($this->canShow()) {
 			return basename($this->file);
 		} else {
 			return $this->getXref();
@@ -434,7 +427,7 @@ class WT_Media extends WT_GedcomRecord {
 
 	// Get an array of structures containing all the names in the record
 	public function getAllNames() {
-		if (strpos($this->getGedcomRecord(), "\n1 TITL ")) {
+		if (strpos($this->getGedcom(), "\n1 TITL ")) {
 			// Earlier gedcom versions had level 1 titles
 			return parent::_getAllNames('TITL', 1);
 		} else {

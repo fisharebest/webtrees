@@ -130,19 +130,19 @@ class WT_Controller_Clippings {
 				}
 			} elseif ($this->type == 'indi') {
 				if ($others == 'parents') {
-					foreach (WT_Person::getInstance($this->id)->getChildFamilies() as $family) {
+					foreach (WT_Individual::getInstance($this->id)->getChildFamilies() as $family) {
 						$this->add_family_members($family);
 					}
 				} elseif ($others == 'ancestors') {
-					$this->add_ancestors_to_cart(WT_Person::getInstance($this->id), $this->level1);
+					$this->add_ancestors_to_cart(WT_Individual::getInstance($this->id), $this->level1);
 				} elseif ($others == 'ancestorsfamilies') {
-					$this->add_ancestors_to_cart_families(WT_Person::getInstance($this->id), $this->level2);
+					$this->add_ancestors_to_cart_families(WT_Individual::getInstance($this->id), $this->level2);
 				} elseif ($others == 'members') {
-					foreach (WT_Person::getInstance($this->id)->getSpouseFamilies() as $family) {
+					foreach (WT_Individual::getInstance($this->id)->getSpouseFamilies() as $family) {
 						$this->add_family_members($family);
 					}
 				} elseif ($others == 'descendants') {
-					foreach (WT_Person::getInstance($this->id)->getSpouseFamilies() as $family) {
+					foreach (WT_Individual::getInstance($this->id)->getSpouseFamilies() as $family) {
 						$this->add_clipping($family);
 						$this->add_family_descendancy($family, $this->level3);
 					}
@@ -195,7 +195,7 @@ class WT_Controller_Clippings {
 			foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
 				$object=WT_GedcomRecord::getInstance($xref);
 				if ($object) { // The object may have been deleted since we added it to the cart....
-					list($record)=$object->privatizeGedcom($access_level);
+					$record = $object->privatizeGedcom($access_level);
 					// Remove links to objects that aren't in the cart
 					preg_match_all('/\n1 '.WT_REGEX_TAG.' @('.WT_REGEX_XREF.')@(\n[2-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
@@ -319,10 +319,10 @@ class WT_Controller_Clippings {
 	function add_clipping($record) {
 		global $WT_SESSION;
 
-		if ($record->canDisplayName()) {
+		if ($record->canShowName()) {
 			$WT_SESSION->cart[WT_GED_ID][$record->getXref()]=true;
 			// Add directly linked records
-			preg_match_all('/\n\d (?:OBJE|NOTE|SOUR|REPO) @('.WT_REGEX_XREF.')@/', $record->getGedcomRecord(), $matches);
+			preg_match_all('/\n\d (?:OBJE|NOTE|SOUR|REPO) @('.WT_REGEX_XREF.')@/', $record->getGedcom(), $matches);
 			foreach ($matches[1] as $match) {
 				$WT_SESSION->cart[WT_GED_ID][$match]=true;
 			}

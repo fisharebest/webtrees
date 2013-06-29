@@ -544,7 +544,7 @@ function apply_filter($facts, $filterof, $filtersx) {
 		if ($filterof=='recent' && $fact['date']->MaxJD()<$hundred_years)
 			continue;
 		// Finally, check for privacy rules before adding fact.
-		if ($tmp->canDisplayDetails())
+		if ($tmp->canShow())
 			$filtered[]=$fact;
 	}
 	return $filtered;
@@ -572,7 +572,7 @@ function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
 	foreach ($list as $id=>$facts) {
 		$tmp=WT_GedcomRecord::GetInstance($id);
 		echo $tag1, '<a href="', $tmp->getHtmlUrl(), '">', $tmp->getFullName(), '</a> ';
-		if ($show_sex_symbols && $tmp instanceof WT_Person)
+		if ($show_sex_symbols && $tmp instanceof WT_Individual)
 			switch ($tmp->getSex()) {
 			case 'M':
 				echo '<i class="icon-sex_m_9x9" title="', WT_I18N::translate('Male'), '"></i>';

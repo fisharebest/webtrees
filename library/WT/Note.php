@@ -30,23 +30,33 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Note extends WT_GedcomRecord {
 	const RECORD_TYPE = 'NOTE';
+	const SQL_FETCH   = "SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?";
 	const URL_PREFIX  = 'note.php?nid=';
 
+	// Get the text contents of the note
+	public function getNote() {
+		if (preg_match('/^0 @' . WT_REGEX_TAG . '@ NOTE ?(.*(?:\n1 CONT .*)*)/', $this->gedcom, $match)) {
+			return str_replace("\n1 CONT ", "\n", $match[1]);
+		} else {
+			return null;
+		}
+	}
+
 	// Implement note-specific privacy logic
-	protected function _canDisplayDetailsByType($access_level) {
+	protected function _canShowByType($access_level) {
 		// Hide notes if they are attached to private records
 		$linked_ids=WT_DB::prepare(
 			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
-		)->execute(array($this->xref, $this->ged_id))->fetchOneColumn();
+		)->execute(array($this->xref, $this->gedcom_id))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
 			$linked_record=WT_GedcomRecord::getInstance($linked_id);
-			if ($linked_record && !$linked_record->canDisplayDetails($access_level)) {
+			if ($linked_record && !$linked_record->canShow($access_level)) {
 				return false;
 			}
 		}
 			
 		// Apply default behaviour
-		return parent::_canDisplayDetailsByType($access_level);
+		return parent::_canShowByType($access_level);
 	}
 
 	// Generate a private version of this record
@@ -55,16 +65,14 @@ class WT_Note extends WT_GedcomRecord {
 	}
 
 	// Fetch the record from the database
-	protected static function fetchGedcomRecord($xref, $ged_id) {
+	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement=null;
 
 		if ($statement===null) {
-			$statement=WT_DB::prepare(
-				"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec ".
-				"FROM `##other` WHERE o_id=? AND o_file=? AND o_type='NOTE'"
-			);
+			$statement=WT_DB::prepare("SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=? AND o_type='NOTE'");
 		}
-		return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
+
+		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 	}
 	
 	// The 'name' of a note record is the first line.  This can be

@@ -60,8 +60,8 @@ if ($action!='choose') {
 		$gedrec2 = find_gedcom_record($gid2, get_id_from_gedcom($ged2), true);
 
 		// Fetch the original XREF - may differ in case from the supplied value
-		$tmp=new WT_Person($gedrec1); $gid1=$tmp->getXref();
-		$tmp=new WT_Person($gedrec2); $gid2=$tmp->getXref();
+		$tmp=new WT_Individual($gedrec1); $gid1=$tmp->getXref();
+		$tmp=new WT_Individual($gedrec2); $gid2=$tmp->getXref();
 
 		if (empty($gedrec1)) {
 			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $gid1, ', ', $ged;
@@ -155,8 +155,7 @@ if ($action!='choose') {
 					foreach ($facts2 as $j=>$fact2) {
 						if (($fact2['fact']!='CHAN')&&(!in_array($j, $skip2))) {
 							echo '<tr><td><input type="checkbox" name="keep2[]" value="', $j, '" checked="checked"></td>';
-							// PHP5.3 echo '<td>', nl2br($fact2['subrec'], false), '</td></tr>';
-							echo '<td>', nl2br($fact2['subrec']), '</td></tr>';
+							echo '<td>', nl2br($fact2['subrec'], false), '</td></tr>';
 						}
 					}
 					echo '</table>';
@@ -168,7 +167,7 @@ if ($action!='choose') {
 					$manual_save = true;
 					echo '<div id="merge3"><h3>', WT_I18N::translate('Merge records'), '</h3>';
 					if ($GEDCOM==$ged2) {
-						$success = delete_gedrec($gid2, WT_GED_ID);
+						WT_GedcomRecord::getInstance($gid2)->deleteRecord();
 						echo WT_I18N::translate('GEDCOM record successfully deleted.'), '<br>';
 						//-- replace all the records that linked to gid2
 						$ids=fetch_all_links($gid2, WT_GED_ID);

@@ -64,7 +64,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 			if ($gid) {
 				$record=WT_GedcomRecord::getInstance($gid);
-				if ($record && $record->canDisplayDetails()) {
+				if ($record && $record->canShow()) {
 					self::addFavorite(array(
 						'user_id'  =>$ctype=='user' ? WT_USER_ID : null,
 						'gedcom_id'=>WT_GED_ID,
@@ -131,8 +131,8 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= '</div>';
 				} else {
 					$record=WT_GedcomRecord::getInstance($favorite['gid']);
-					if ($record && $record->canDisplayDetails()) {
-						if ($record instanceof WT_Person) {
+					if ($record && $record->canShow()) {
+						if ($record instanceof WT_Individual) {
 							$content .= '<div id="box'.$favorite["gid"].'.0" class="person_box action_header';
 							switch($record->getsex()) {
 								case 'M':

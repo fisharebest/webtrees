@@ -230,7 +230,7 @@ function isImageTypeSupported($reqtype) {
 $useTTF = function_exists('imagettftext');
 
 // Media object missing/private?
-if (!$media || !$media->canDisplayDetails()) {
+if (!$media || !$media->canShow()) {
 	send404AndExit();
 }
 // Media file somewhere else?

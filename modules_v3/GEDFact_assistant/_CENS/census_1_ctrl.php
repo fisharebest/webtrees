@@ -4,7 +4,7 @@
 // Census information about an individual
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -43,7 +43,7 @@ $ctry       = 'UK';
 // === Set $married to "Not married as we only want the Birth name here" ===
 $married=-1;
 
-$person=WT_Person::getInstance($pid);
+$person=WT_Individual::getInstance($pid);
 // var_dump($person->getAllNames());
 $nam = $person->getAllNames();
 if ($person->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $person->getDeathYear(); }

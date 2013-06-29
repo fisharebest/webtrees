@@ -55,7 +55,7 @@ class TreeView {
 	* @param string $rootPersonId the id of the root person
 	* @param int $generations number of generations to draw
 	*/
-	public function drawViewport(WT_Person $rootPerson, $generations) {
+	public function drawViewport(WT_Individual $rootPerson, $generations) {
 		global $GEDCOM, $controller;
 
 		if (WT_SCRIPT_NAME == 'individual.php') {
@@ -118,7 +118,7 @@ class TreeView {
 	*/
 	public function getDetails($pid) {
 
-		$person = WT_Person::getInstance($pid);
+		$person = WT_Individual::getInstance($pid);
 		$r = $this->getPersonDetails($person, $person, null);
 		foreach ($person->getSpouseFamilies() as $family) {
 			if (!empty($family)) {
@@ -309,7 +309,7 @@ class TreeView {
 
 	/**
 	* Draw a person name preceded by sex icon, with parents as tooltip
-	* @param WT_Person $p a person
+	* @param WT_Individual $p a person
 	* @param $dashed if = 'dashed' print dashed top border to separate multiple spuses
 	*/
 	private function drawPersonName($p, $dashed='') {

@@ -132,7 +132,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			'</div>';
 	}
 
-	public function getPersonLi(WT_Person $person, $generations=0) {
+	public function getPersonLi(WT_Individual $person, $generations=0) {
 		$out = '<li id="sb_desc_'.$person->getXref().'" class="sb_desc_indi_li"><a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=descendancy&amp;pid='.$person->getXref().'" title="'.$person->getXref().'" class="sb_desc_indi">';
 		if ($generations>0) {
 			$out .= '<i class="icon-minus plusminus"></i>';
@@ -140,7 +140,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$out .= '<i class="icon-plus plusminus"></i>';
 		}
 		$out .= $person->getSexImage().' '.$person->getFullName().' ';
-		if ($person->canDisplayDetails()) {
+		if ($person->canShow()) {
 			$out .= ' ('.$person->getLifeSpan().')';
 		}
 		$out .= '</a> <a href="'.$person->getHtmlUrl().'" class="icon-button_indi"></a>';
@@ -158,7 +158,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		return $out;
 	}
 
-	public function getFamilyLi(WT_Family $family, WT_Person $person, $generations=0) {
+	public function getFamilyLi(WT_Family $family, WT_Individual $person, $generations=0) {
 		$out = '<li id="sb_desc_'.$family->getXref().'" class="sb_desc_indi_li"><a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=descendancy&amp;famid='.$family->getXref().'" title="'.$family->getXref().'" class="sb_desc_indi">';
 		$out .= '<i class="icon-minus plusminus"></i>';
 		$out .= $person->getSexImage().$person->getFullName();
@@ -181,19 +181,19 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	public function search($query) {
 		if (strlen($query)<2) return '';
 		$rows=WT_DB::prepare(
-			"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+			"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
 			" FROM `##individuals`, `##name`".
 			" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".
 			" ORDER BY n_sort"
 		)
-		->execute(array('INDI', "%{$query}%", "%{$query}%", WT_GED_ID))
-		->fetchAll(PDO::FETCH_ASSOC);
+		->execute(array("%{$query}%", "%{$query}%", WT_GED_ID))
+		->fetchAll();
 
 		$out = '';
 		foreach ($rows as $row) {
-			$person=WT_Person::getInstance($row);
-			if ($person->canDisplayName()) {
+			$person=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			if ($person->canShowName()) {
 				$out .= $this->getPersonLi($person);
 			}
 		}
@@ -206,8 +206,8 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	public function loadSpouses($pid, $generations=0) {
 		$out = '';
-		$person = WT_Person::getInstance($pid);
-		if ($person && $person->canDisplayDetails()) {
+		$person = WT_Individual::getInstance($pid);
+		if ($person && $person->canShow()) {
 			foreach($person->getSpouseFamilies() as $family) {
 				$spouse = $family->getSpouse($person);
 				if ($spouse) {
@@ -229,7 +229,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	public function loadChildren($famid, $generations=0) {
 		$out = '';
 		$family = WT_Family::getInstance($famid);
-		if ($family->canDisplayDetails()) {
+		if ($family->canShow()) {
 			$children = $family->getChildren();
 			if (count($children)>0) {
 				foreach($children as $child) {

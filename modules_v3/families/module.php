@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -187,9 +187,9 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$families=WT_Query_Name::families($surname, $alpha, '', true, WT_GED_ID);
 		$out = '<ul>';
 		foreach ($families as $family) {
-			if ($family->canDisplayName()) {
+			if ($family->canShowName()) {
 				$out .= '<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().' ';
-				if ($family->canDisplayDetails()) {
+				if ($family->canShow()) {
 					$marriage_year=$family->getMarriageYear();
 					if ($marriage_year) {
 						$out.=' ('.$marriage_year.')';
@@ -209,17 +209,17 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		//-- search for INDI names
 		$rows=WT_DB::prepare(
-			"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+			"SELECT i_id AS xref".
 			" FROM `##individuals`, `##name`".
 			" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".
 			" ORDER BY n_sort"
 		)
-		->execute(array('INDI', "%{$query}%", "%{$query}%", WT_GED_ID))
-		->fetchAll(PDO::FETCH_ASSOC);
+		->execute(array("%{$query}%", "%{$query}%", WT_GED_ID))
+		->fetchAll();
 		$ids = array();
 		foreach ($rows as $row) {
-			$ids[] = $row['xref'];
+			$ids[] = $row->xref;
 		}
 
 		$vars=array('FAM');
@@ -235,16 +235,16 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 
 		$vars[]=WT_GED_ID;
-		$rows=WT_DB::prepare("SELECT ? AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec FROM `##families` WHERE {$where} AND f_file=?")
+		$rows=WT_DB::prepare("SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE {$where} AND f_file=?")
 		->execute($vars)
-		->fetchAll(PDO::FETCH_ASSOC);
+		->fetchAll();
 
 		$out = '<ul>';
 		foreach ($rows as $row) {
-			$family=WT_Family::getInstance($row);
-			if ($family->canDisplayName()) {
+			$family=WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			if ($family->canShowName()) {
 				$out .= '<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().' ';
-				if ($family->canDisplayDetails()) {
+				if ($family->canShow()) {
 					$marriage_year=$family->getMarriageYear();
 					if ($marriage_year) {
 						$out.=' ('.$marriage_year.')';

@@ -29,6 +29,8 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
+	private $facts;
+
 	// Extend WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Sources');
@@ -44,49 +46,60 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		return 30;
 	}
 
-	protected $sourceCount = null;
+	// Implement WT_Module_Tab
+	public function hasTabContent() {
+		return WT_USER_CAN_EDIT || $this->get_facts();
+	}
 
+	// Implement WT_Module_Tab
+	public function isGrayedOut() {
+		return !$this->get_facts();
+	}
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $SHOW_LEVEL2_NOTES, $NAV_SOURCES, $controller;
 
 		ob_start();
+		echo '<table class="facts_table">';
 		?>
-		<table class="facts_table">
+		<tr>
+			<td colspan="2" class="descriptionbox rela">
+				<input id="checkbox_sour2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?> onclick="jQuery('tr.row_sour2').toggle();">
+				<label for="checkbox_sour2"><?php echo WT_I18N::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
+			</td>
+		</tr>
+		<?php
+		foreach ($this->get_facts() as $fact) {
+			if ($fact->getTag() == 'SOUR') {
+				print_main_sources($fact, 1);
+				} else {
+				for ($i=2; $i<4; ++$i) {
+					print_main_sources($fact, $i);
+				}
+			}
+		}
+		if (!$this->get_facts()) {
+			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no Source citations for this individual.'), '</td></tr>';
+		}
+
+		// New Source Link
+		if ($controller->record->canEdit()) {
+		?>
 			<tr>
-				<td colspan="2" class="descriptionbox rela">
-					<input id="checkbox_sour2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?> onclick="jQuery('tr.row_sour2').toggle();">
-					<label for="checkbox_sour2"><?php echo WT_I18N::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
+				<td class="facts_label">
+					<?php echo WT_Gedcom_Tag::getLabel('SOUR'); ?>
+				</td>
+				<td class="facts_value">
+					<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;">
+						<?php echo WT_I18N::translate('Add a new source citation'); ?>
+					</a>
+					<?php echo help_link('add_source'); ?>
 				</td>
 			</tr>
 			<?php
-			$otheritems = $controller->getOtherFacts();
-				foreach ($otheritems as $event) {
-					if ($event->getTag()=='SOUR') {
-						print_main_sources($event, 1);
-					}
-			}
-			// 2nd level sources [ 1712181 ]
-			$controller->record->add_family_facts(false);
-			foreach ($controller->getIndiFacts() as $event) {
-				print_main_sources($event, 2);
-			}
-			if ($this->get_source_count()==0) echo "<tr><td id=\"no_tab3\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no Source citations for this individual.')."</td></tr>";
-			//-- New Source Link
-			if ($controller->record->canEdit()) {
-			?>
-				<tr>
-					<td class="facts_label"><?php echo WT_Gedcom_Tag::getLabel('SOUR'); ?></td>
-					<td class="facts_value">
-					<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;"><?php echo WT_I18N::translate('Add a new source citation'); ?></a>
-					<?php echo help_link('add_source'); ?>
-					</td>
-				</tr>
-			<?php
-			}
+		}
 		?>
 		</table>
-		<br>
 		<?php
 		if (!$SHOW_LEVEL2_NOTES) {
 			echo '<script>jQuery("tr.row_sour2").toggle();</script>';
@@ -94,26 +107,28 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
 
-	function get_source_count() {
+	function get_facts() {
 		global $controller;
 
-		if ($this->sourceCount===null) {
-			$ct = preg_match_all("/\d SOUR @(.*)@/", $controller->record->getGedcomRecord(), $match, PREG_SET_ORDER);
-			foreach ($controller->record->getSpouseFamilies() as $sfam)
-				$ct += preg_match("/\d SOUR /", $sfam->getGedcomRecord());
-			$this->sourceCount = $ct;
+		if ($this->facts === null) {
+			$facts = $controller->record->getFacts();
+			foreach ($controller->record->getSpouseFamilies() as $family) {
+				if ($family->canShow()) {
+					foreach ($family->getFacts() as $fact) {
+						$facts[] = $fact;
 		}
-		return $this->sourceCount;
+				}
+			}
+			$this->facts = array();
+			foreach ($facts as $fact) {
+				if (preg_match('/(?:^1|\n\d) SOUR/', $fact->getGedcom())) {
+					$this->facts[] = $fact;
+				}
+			}
+		}
+		return $this->facts;
 	}
 
-	// Implement WT_Module_Tab
-	public function hasTabContent() {
-		return WT_USER_CAN_EDIT || $this->get_source_count()>0;
-	}
-	// Implement WT_Module_Tab
-	public function isGrayedOut() {
-		return $this->get_source_count()==0;
-	}
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
 		global $SEARCH_SPIDER;

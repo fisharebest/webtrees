@@ -32,58 +32,29 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class WT_Controller_Individual extends WT_Controller_GedcomRecord {
-	var $name_count = 0;
-	var $total_names = 0;
-	var $SEX_COUNT = 0;
-	var $Fam_Navigator = 'YES';
-	var $NAME_LINENUM = null;
-	var $SEX_LINENUM = null;
-	var $globalfacts = null;
+	public $name_count = 0;
+	public $total_names = 0;
+
 	public $tabs;
 
 	function __construct() {
-		global $USE_RIN, $MAX_ALIVE_AGE, $SEARCH_SPIDER;
-		global $DEFAULT_PIN_STATE, $DEFAULT_SB_CLOSED_STATE;
-		global $Fam_Navigator;
+		global $USE_RIN;
 
-		$xref = safe_GET_xref('pid');
+		$xref         = safe_GET_xref('pid');
+		$this->record = WT_Individual::getInstance($xref);
 
-		$gedrec = find_person_record($xref, WT_GED_ID);
-
-		if ($USE_RIN && $gedrec==false) {
-			$xref = find_rin_id($xref);
-			$gedrec = find_person_record($xref, WT_GED_ID);
-		}
-		if (empty($gedrec)) {
-			$gedrec = "0 @".$xref."@ INDI\n";
+		if (!$this->record && $USE_RIN) {
+			$rin          = find_rin_id($xref);
+			$this->record = WT_Individual::getInstance($rin);
 		}
 
-		if (find_person_record($xref, WT_GED_ID) || find_updated_record($xref, WT_GED_ID)!==null) {
-				$this->record = new WT_Person($gedrec);
-				$this->record->ged_id=WT_GED_ID; // This record is from a file
-		} else if (!$this->record) {
-			parent::__construct();
-			return;
-		}
-
-		//-- if the user can edit and there are changes then get the new changes
-		if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-			$newrec = find_updated_record($xref, WT_GED_ID);
-			if (!empty($newrec)) {
-				$diff_record = new WT_Person($newrec);
-				$diff_record->setChanged(true);
-				$this->record->diffMerge($diff_record);
-			}
-		}
-
-		$this->tabs=WT_Module::getActiveTabs();
-
-		// Our parent needs $this->record
 		parent::__construct();
 
+		$this->tabs = WT_Module::getActiveTabs();
+
 		// If we can display the details, add them to the page header		
-		if ($this->record && $this->record->canDisplayDetails()) {
-			$this->setPageTitle($this->record->getFullName().' '.$this->record->getLifespan());
+		if ($this->record && $this->record->canShow()) {
+			$this->setPageTitle($this->record->getFullName() . ' ' . $this->record->getLifespan());
 		}
 	}
 
@@ -147,29 +118,33 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	* @see individual.php
 	* @param Event $event the event object
 	*/
-	function print_name_record(WT_Event $event) {
+	function print_name_record(WT_Fact $event) {
 
 		if (!$event->canShow()) {
 			return false;
 		}
-		$factrec = $event->getGedComRecord();
-		$linenum = $event->getLineNumber();
+		$factrec = $event->getGedcom();
 
 		// Create a dummy record, so we can extract the formatted NAME value from the event.
-		$dummy=new WT_Person('0 @'.$event->getParentObject()->getXref()."@ INDI\n1 DEAT Y\n".$factrec);
+		$dummy=new WT_Individual(
+			'xref',
+			"0 @xref@ INDI\n1 DEAT Y\n".$factrec,
+			null,
+			WT_GED_ID
+		);
 		$all_names=$dummy->getAllNames();
 		$primary_name=$all_names[0];
 		
 		$this->name_count++;
 		if ($this->name_count >1) { echo '<h3 class="name_two">',$dummy->getFullName(), '</h3>'; } //Other names accordion element
-		echo '<div class="indi_name_details"';
-		if ($event->getIsOld()) {
-			echo " class=\"namered\"";
+		echo '<div class="indi_name_details';
+		if ($event->isOld()) {
+			echo ' old';
 		}
-		if ($event->getIsNew()) {
-			echo " class=\"nameblue\"";
+		if ($event->isNew()) {
+			echo ' new';
 		}
-		echo ">";
+		echo '">';
 
 		echo '<div class="name1">';
 		echo '<dl><dt class="label">', WT_I18N::translate('Name'), '</dt>';
@@ -184,9 +159,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				}
 			}
 		}
-		if ($this->record->canEdit() && !$event->getIsOld()) {
-			echo "<div class=\"deletelink\"><a class=\"font9 deleteicon\" href=\"#\" onclick=\"return delete_fact('".$this->record->getXref()."', ".$linenum.", '', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');\" title=\"".WT_I18N::translate('Delete name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete name')."</span></a></div>";
-			echo "<div class=\"editlink\"><a href=\"#\" class=\"font9 editicon\" onclick=\"edit_name('".$this->record->getXref()."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Edit name')."\"><span class=\"link_text\">".WT_I18N::translate('Edit name')."</span></a></div>";
+		if ($this->record->canEdit() && !$event->isOld()) {
+			echo "<div class=\"deletelink\"><a class=\"font9 deleteicon\" href=\"#\" onclick=\"return delete_fact('".WT_I18N::translate('Are you sure you want to delete this fact?')."', '".$this->record->getXref()."', '".$event->getFactId()."');\" title=\"".WT_I18N::translate('Delete name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete name')."</span></a></div>";
+			echo "<div class=\"editlink\"><a href=\"#\" class=\"font9 editicon\" onclick=\"edit_name('".$this->record->getXref()."', '".$event->getFactId()."'); return false;\" title=\"".WT_I18N::translate('Edit name')."\"><span class=\"link_text\">".WT_I18N::translate('Edit name')."</span></a></div>";
 		}
 		echo '</dd>';
 		echo '</dl>';
@@ -243,50 +218,45 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	* @see individual.php
 	* @param Event $event the Event object
 	*/
-	function print_sex_record(WT_Event $event) {
-		global $sex;
-
-		if (!$event->canShow()) return false;
-		$factrec = $event->getGedComRecord();
-		$sex = $event->getDetail();
+	function print_sex_record(WT_Fact $event) {
+		$sex = $event->getValue();
 		if (empty($sex)) $sex = 'U';
-		echo '<span id="sex"';
-			echo ' class="';
-			if ($event->getIsOld()) {
-				echo 'namered ';
-			}
-			if ($event->getIsNew()) {
-				echo 'nameblue ';
-			}
-			switch ($sex) {
-			case 'M':
-				echo 'male_gender"';
-				if ($this->record->canEdit() && !$event->getIsOld()) {
-					echo ' title="', WT_I18N::translate('Male'), ' - ', WT_I18N::translate('Edit'), '"';
-					echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
-				 } else {
-					echo ' title="', WT_I18N::translate('Male'), '">&nbsp;';
-				 }
-				break;
-			case 'F':
-				echo 'female_gender"';
-				if ($this->record->canEdit() && !$event->getIsOld()) {
-					echo ' title="', WT_I18N::translate('Female'), ' - ', WT_I18N::translate('Edit'), '"';
-					echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
-				 } else {
-					echo ' title="', WT_I18N::translate('Female'), '">&nbsp;';
-				 }
-				break;
-			case 'U':
-				echo 'unknown_gender"';
-				if ($this->record->canEdit() && !$event->getIsOld()) {
-					echo ' title="', WT_I18N::translate_c('unknown gender', 'Unknown'), ' - ', WT_I18N::translate('Edit'), '"';
-					echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
-				 } else {
-					echo ' title="', WT_I18N::translate_c('unknown gender', 'Unknown'), '">&nbsp;';
-				 }
-				break;
-			}
+		echo '<span id="sex" class="';
+		if ($event->isOld()) {
+			echo 'old';
+		}
+		if ($event->isNew()) {
+			echo 'new';
+		}
+		switch ($sex) {
+		case 'M':
+			echo ' male_gender"';
+			if ($event->canEdit()) {
+				echo ' title="', WT_I18N::translate('Male'), ' - ', WT_I18N::translate('Edit'), '"';
+				echo ' onclick="edit_record(\''.$this->record->getXref().'\', \''.$event->getFactId().'\'); return false;">';
+			 } else {
+				echo ' title="', WT_I18N::translate('Male'), '">';
+			 }
+			break;
+		case 'F':
+			echo ' female_gender"';
+			if ($event->canEdit()) {
+				echo ' title="', WT_I18N::translate('Female'), ' - ', WT_I18N::translate('Edit'), '"';
+				echo ' onclick="edit_record(\''.$this->record->getXref().'\', \''.$event->getFactId().'\'); return false;">';
+			 } else {
+				echo ' title="', WT_I18N::translate('Female'), '">';
+			 }
+			break;
+		case 'U':
+			echo ' unknown_gender"';
+			if ($event->canEdit()) {
+				echo ' title="', WT_I18N::translate_c('unknown gender', 'Unknown'), ' - ', WT_I18N::translate('Edit'), '"';
+				echo ' onclick="edit_record(\''.$this->record->getXref().'\', \''.$event->getFactId().'\'); return false;">';
+			 } else {
+				echo ' title="', WT_I18N::translate_c('unknown gender', 'Unknown'), '">';
+			 }
+			break;
+		}
 		echo '</span>';
 	}
 	/**
@@ -295,60 +265,47 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	function getEditMenu() {
 		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
 
-		if (!$this->record || $this->record->isMarkedDeleted()) {
+		if (!$this->record || $this->record->isOld()) {
 			return null;
 		}
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-indi');
 		$menu->addLabel($menu->label, 'down');
 
-		$this->getGlobalFacts(); // sets NAME_LINENUM and SEX_LINENUM.  individual.php doesn't do it early enough for us....
-
 		// What behaviour shall we give the main menu?  If we leave it blank, the framework
 		// will copy the first submenu - which may be edit-raw or delete.
 		// As a temporary solution, make it edit the name
-		if (WT_USER_CAN_EDIT && $this->NAME_LINENUM) {
-			$menu->addOnclick("return edit_name('".$this->record->getXref()."', ".$this->NAME_LINENUM.");");
-		} else {
-			$menu->addOnclick("return false;");
-		}
-
+		$menu->addOnclick("return false;");
 		if (WT_USER_CAN_EDIT) {
-			//--make sure the totals are correct
+			foreach ($this->record->getFacts() as $fact) {
+				if ($fact->getTag()=='NAME' && $fact->canShow() && $fact->canEdit())
+					$menu->addOnclick("return edit_name('".$this->record->getXref() . "', '" . $fact->getFactId() . "');");
+					break;
+			}
+			
 			$submenu = new WT_Menu(WT_I18N::translate('Add new Name'), '#', 'menu-indi-addname');
 			$submenu->addOnclick("return add_name('".$this->record->getXref()."');");
 			$menu->addSubmenu($submenu);
 
-			if ($this->SEX_COUNT<2) {
-				$submenu = new WT_Menu(WT_I18N::translate('Edit gender'), '#', 'menu-indi-editsex');
-				if ($this->SEX_LINENUM=="new") {
-					$submenu->addOnclick("return add_new_record('".$this->record->getXref()."', 'SEX');");
-				} else {
-					$submenu->addOnclick("return edit_record('".$this->record->getXref()."', ".$this->SEX_LINENUM.");");
+			$has_sex_record = false;
+			$submenu = new WT_Menu(WT_I18N::translate('Edit gender'), '#', 'menu-indi-editsex');
+			foreach ($this->record->getFacts() as $fact) {
+				if ($fact->getTag()=='SEX' && $fact->canShow() && $fact->canEdit()) {
+					$submenu->addOnclick("return edit_record('" . $this->record->getXref() . "', '" . $fact->getFactId() . "');");
+					$has_sex_record = true;
+					break;
 				}
-				$menu->addSubmenu($submenu);
 			}
+			if (!$has_sex_record) {
+				$submenu->addOnclick("return add_new_record('" . $this->record->getXref() . "', 'SEX');");
+			}
+			$menu->addSubmenu($submenu);
 
 			if (count($this->record->getSpouseFamilies())>1) {
 				$submenu = new WT_Menu(WT_I18N::translate('Re-order families'), '#', 'menu-indi-orderfam');
 				$submenu->addOnclick("return reorder_families('".$this->record->getXref()."');");
 				$menu->addSubmenu($submenu);
 			}
-		}
-
-		// edit/view raw gedcom
-		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-indi-editraw');
-			$submenu->addOnclick("return edit_raw('".$this->record->getXref()."');");
-			$menu->addSubmenu($submenu);
-		} elseif ($SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'), '#', 'menu-indi-viewraw');
-			if (WT_USER_CAN_EDIT) {
-				$submenu->addOnclick("return show_gedcom_record('new');");
-			} else {
-				$submenu->addOnclick("return show_gedcom_record();");
-			}
-			$menu->addSubmenu($submenu);
 		}
 
 		// delete
@@ -372,48 +329,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		return $menu;
 	}
 
-	/**
-	* get global facts
-	* global facts are NAME and SEX
-	* @return array return the array of global facts
-	*/
-	function getGlobalFacts() {
-		if ($this->globalfacts==null) {
-			$this->globalfacts = $this->record->getGlobalFacts();
-			foreach ($this->globalfacts as $key => $value) {
-				$fact = $value->getTag();
-				if ($fact=="SEX") {
-					$this->SEX_COUNT++;
-					$this->SEX_LINENUM = $value->getLineNumber();
-				}
-				if ($fact=="NAME") {
-					$this->total_names++;
-					if ($this->NAME_LINENUM==null && !$value->getIsOld()) {
-						// This is the "primary" name and is edited from the menu
-						// Subsequent names get their own edit links
-						$this->NAME_LINENUM = $value->getLineNumber();
-					}
-				}
-			}
-		}
-		return $this->globalfacts;
-	}
-	/**
-	* get the individual facts shown on tab 1
-	* @return array
-	*/
-	function getIndiFacts() {
-		$indifacts = $this->record->getIndiFacts();
-		sort_facts($indifacts);
-		return $indifacts;
-	}
-	/**
-	* get the other facts shown on tab 2
-	* @return array
-	*/
-	function getOtherFacts() {
-		$otherfacts = $this->record->getOtherFacts();
-		return $otherfacts;
+	function add_asso_facts() {
 	}
 
 	/**
@@ -514,22 +430,10 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		$newwife = null;
 		$newchildren = array();
 		$delchildren = array();
-		$children = array();
-		$husb = null;
-		$wife = null;
-		if (!$family->getChanged()) {
-			$husb = $family->getHusband();
-			$wife = $family->getWife();
-			$children = $family->getChildren();
-		}
-		//-- step families : set the label for the common parent
-		if ($type=="step-parents") {
-			$fams = $this->record->getChildFamilies();
-			foreach ($fams as $key=>$fam) {
-				if ($fam->hasParent($husb)) $labels["father"] = get_relationship_name_from_path('fat', null, null);
-				if ($fam->hasParent($wife)) $labels["mother"] = get_relationship_name_from_path('mot', null, null);
-			}
-		}
+		$husb = $family->getHusband();
+		$wife = $family->getWife();
+		$children = $family->getChildren();
+
 		//-- set the label for the husband
 		if (!is_null($husb)) {
 			$label = $labels["parent"];
@@ -560,80 +464,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			}
 			$wife->setLabel($label);
 		}
-		if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-			$newfamily = $family->getUpdatedFamily();
-			if (!is_null($newfamily)) {
-				$newhusb = $newfamily->getHusband();
-				//-- check if the husband in the family has changed
-				if (!is_null($newhusb) && !$newhusb->equals($husb)) {
-					$label = $labels["parent"];
-					$sex = $newhusb->getSex();
-					if ($sex=="F") {
-						$label = $labels["mother"];
-					}
-					if ($sex=="M") {
-						$label = $labels["father"];
-					}
-					if ($newhusb->getXref()==$this->record->getXref()) {
-						$label = '<i class="icon-selected"></i>';
-					}
-					$newhusb->setLabel($label);
-				}
-				else $newhusb = null;
-				$newwife = $newfamily->getWife();
-				//-- check if the wife in the family has changed
-				if (!is_null($newwife) && !$newwife->equals($wife)) {
-					$label = $labels["parent"];
-					$sex = $newwife->getSex();
-					if ($sex=="F") {
-						$label = $labels["mother"];
-					}
-					if ($sex=="M") {
-						$label = $labels["father"];
-					}
-					if ($newwife->getXref()==$this->record->getXref()) {
-						$label = '<i class="icon-selected"></i>';
-					}
-					$newwife->setLabel($label);
-				}
-				else $newwife = null;
-				//-- check for any new children
-				$merged_children = array();
-				$new_children = $newfamily->getChildren();
-				$num = count($children);
-				for ($i=0; $i<$num; $i++) {
-					$child = $children[$i];
-					if (!is_null($child)) {
-						$found = false;
-						foreach ($new_children as $key=>$newchild) {
-							if (!is_null($newchild)) {
-								if ($child->equals($newchild)) {
-									$found = true;
-									break;
-								}
-							}
-						}
-						if (!$found) $delchildren[] = $child;
-						else $merged_children[] = $child;
-					}
-				}
-				foreach ($new_children as $key=>$newchild) {
-					if (!is_null($newchild)) {
-						$found = false;
-						foreach ($children as $key1=>$child) {
-							if (!is_null($child)) {
-								if ($child->equals($newchild)) {
-									$found = true;
-									break;
-								}
-							}
-						}
-						if (!$found) $newchildren[] = $newchild;
-					}
-				}
-				$children = $merged_children;
-			}
-		}
 		//-- set the labels for the children
 		$num = count($children);
 		for ($i=0; $i<$num; $i++) {
@@ -650,7 +480,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					$label = '<i class="icon-selected"></i>';
 				}
 				if ($include_pedi==true) {
-					$famcrec = get_sub_record(1, "1 FAMC @".$family->getXref()."@", $children[$i]->getGedcomRecord());
+					$famcrec = get_sub_record(1, "1 FAMC @".$family->getXref()."@", $children[$i]->getGedcom());
 					$pedi = get_gedcom_value("PEDI", 2, $famcrec);
 					if ($pedi) {
 						$label.='<br>('.WT_Gedcom_Code_Pedi::getValue($pedi, $children[$i]).')';

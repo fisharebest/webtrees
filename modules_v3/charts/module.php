@@ -72,11 +72,11 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$PEDIGREE_FULL_DETAILS = $show_full;
 
-		$person = WT_Person::getInstance($pid);
+		$person = WT_Individual::getInstance($pid);
 		if (!$person) {
 			$pid = $PEDIGREE_ROOT_ID;
 			set_block_setting($block_id, 'pid', $pid);
-			$person = WT_Person::getInstance($pid);
+			$person = WT_Individual::getInstance($pid);
 		}
 
 		if ($type!='treenav' && $person) {
@@ -223,7 +223,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				<input type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php
 				echo print_findindi_link('pid');
-				$root=WT_Person::getInstance($pid);
+				$root=WT_Individual::getInstance($pid);
 				if ($root) {
 					echo ' <span class="list_item">', $root->getFullName(), $root->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
 				}

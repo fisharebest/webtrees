@@ -206,11 +206,11 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	$buffer=reformat_record_export($head);
 
 	$rows=WT_DB::prepare(
-		"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+		"SELECT i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 		" FROM `##individuals` WHERE i_file=? ORDER BY i_id"
-	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
+	)->execute(array($ged_id))->fetchAll(C);
 	foreach ($rows as $row) {
-		list($rec)=WT_Person::getInstance($row)->privatizeGedcom($access_level);
+		$rec = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI']=="yes") {
 			$rec=utf8_decode($rec);
 		}
@@ -222,11 +222,11 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$rows=WT_DB::prepare(
-		"SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec".
+		"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom".
 		" FROM `##families` WHERE f_file=? ORDER BY f_id"
-	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
+	)->execute(array($ged_id))->fetchAll();
 	foreach ($rows as $row) {
-		list($rec)=WT_Family::getInstance($row)->privatizeGedcom($access_level);
+		$rec = WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI']=="yes") {
 			$rec=utf8_decode($rec);
 		}
@@ -238,11 +238,11 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$rows=WT_DB::prepare(
-		"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec".
+		"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom".
 		" FROM `##sources` WHERE s_file=? ORDER BY s_id"
-	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
+	)->execute(array($ged_id))->fetchAll();
 	foreach ($rows as $row) {
-		list($rec)=WT_Source::getInstance($row)->privatizeGedcom($access_level);
+		$rec = WT_Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI']=="yes") {
 			$rec=utf8_decode($rec);
 		}
@@ -254,11 +254,22 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$rows=WT_DB::prepare(
-		"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec".
-		" FROM `##other` WHERE o_file=? AND o_type!=? AND o_type!=? ORDER BY o_id"
-	)->execute(array($ged_id, 'HEAD', 'TRLR'))->fetchAll(PDO::FETCH_ASSOC);
+		"SELECT o_type AS type, o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
+		" FROM `##other` WHERE o_file=? AND o_type!='HEAD' AND o_type!='TRLR' ORDER BY o_id"
+	)->execute(array($ged_id))->fetchAll();
 	foreach ($rows as $row) {
-		list($rec)=WT_GedcomRecord::getInstance($row)->privatizeGedcom($access_level);
+		switch ($row->type) {
+		case 'NOTE':
+			$rec = WT_Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
+			break;
+		case 'REPO':
+			$rec = WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
+			break;
+		default:
+			$rec = WT_GedcomRecord::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
+			break;
+		}
+
 		if ($exportOptions['toANSI']=="yes") {
 			$rec=utf8_decode($rec);
 		}
@@ -272,9 +283,9 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	$rows=WT_DB::prepare(
 		"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename".
 		" FROM `##media` WHERE m_file=? ORDER BY m_id"
-	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
+	)->execute(array($ged_id))->fetchAll();
 	foreach ($rows as $row) {
-		list($rec)=WT_Media::getInstance($row)->privatizeGedcom($access_level);
+		$rec = WT_Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
 		$rec = convert_media_path($rec, $exportOptions['path']);
 		if ($exportOptions['toANSI']=="yes") {
 			$rec=utf8_decode($rec);

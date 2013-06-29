@@ -2,7 +2,7 @@
 //	Controller for the fan chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -46,7 +46,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		$this->fan_width  =safe_GET_integer('fan_width',   50, 300, 100);
 		$this->generations=safe_GET_integer('generations', 2, 9, $default_generations);
 
-		if ($this->root && $this->root->canDisplayName()) {
+		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(
 				/* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name */
 				WT_I18N::translate('Fan chart of %s', $this->root->getFullName())
@@ -211,7 +211,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 			while ($sosa >= $p2) {
 				$pid=$treeid[$sosa];
 				if ($pid) {
-					$person =WT_Person::getInstance($pid);
+					$person =WT_Individual::getInstance($pid);
 					$name   =$person->getFullName();
 					$addname=$person->getAddName();
 
@@ -234,8 +234,8 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 					$text .= $person->getLifeSpan();
 
-					$text = unhtmlentities($text);
 					$text = strip_tags($text);
+					$text = htmlspecialchars_decode($text);
 	
 					// split and center text by lines
 					$wmax = (int)($angle*7/$fanChart['size']*$scale);

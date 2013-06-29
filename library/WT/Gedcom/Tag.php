@@ -2,7 +2,7 @@
 // Static GEDCOM data for Tags
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -102,7 +102,7 @@ class WT_Gedcom_Tag {
 
 	// Translate a tag, for an (optional) record
 	public static function getLabel($tag, $record=null) {
-		if ($record instanceof WT_Person) {
+		if ($record instanceof WT_Individual) {
 			$sex=$record->getSex();
 		} else {
 			$sex='U';
@@ -879,12 +879,6 @@ class WT_Gedcom_Tag {
 		return $facts;
 	}
 	
-	// Get a list of reference facts that will be displayed in the "Extra information" sidebar module, and at the same time excluded from the personal_facts module
-	public static function getReferenceFacts() {
-		return array('CHAN', 'IDNO', 'RFN', 'AFN', 'REFN', 'RIN', '_UID', 'SSN');
-	}
-
-
 	//////////////////////////////////////////////////////////////////////////////
 	// Definitions for Object, File, Format, Types
 	//////////////////////////////////////////////////////////////////////////////

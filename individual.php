@@ -34,7 +34,7 @@ $controller
 	->addExternalJavascript(WT_JQUERY_COOKIE_URL) // We use this to record the sidebar state
 	->addInlineJavascript('var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}'); // For the "find" links
 	
-if ($controller->record && $controller->record->canDisplayDetails()) {
+if ($controller->record && $controller->record->canShow()) {
 	if (safe_GET('action')=='ajax') {
 		$controller->ajaxRequest();
 		exit;
@@ -44,7 +44,7 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 	$sidebar_html=$controller->getSideBarContent();
 
 	$controller->pageHeader();
-	if ($controller->record->isMarkedDeleted()) {
+	if ($controller->record->isOld()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
@@ -62,7 +62,7 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
-	} elseif (find_updated_record($controller->record->getXref(), WT_GED_ID)!==null) {
+	} elseif ($controller->record->isNew()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
@@ -81,7 +81,7 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 				'</p>';
 		}
 	}
-} elseif ($controller->record && $controller->record->canDisplayName()) {
+} elseif ($controller->record && $controller->record->canShowName()) {
 	// Just show the name.
 	$controller->pageHeader();
 	echo '<h2>', $controller->record->getFullName(), '</h2>';
@@ -174,10 +174,9 @@ echo
 	'<div id="main" class="use-sidebar sidebar-at-right" style="visibility:hidden;">', //overall page container
 	'<div id="indi_left">',
 	'<div id="indi_header">';
-if ($controller->record->canDisplayDetails()) {
+if ($controller->record->canShow()) {
 	// Highlight image or silhouette
 	echo '<div id="indi_mainimage">', $controller->record->displayImage(), '</div>';
-	$globalfacts=$controller->getGlobalFacts();
 	echo '<div id="header_accordion1">'; // contain accordions for names
 	echo '<h3 class="name_one ', $controller->getPersonStyle($controller->record), '"><span>', $controller->record->getFullName(), '</span>'; // First name accordion header
 	$bdate=$controller->record->getBirthDate();
@@ -193,17 +192,22 @@ if ($controller->record->canDisplayDetails()) {
 	echo '</span>';
 	// Display summary birth/death info.
 	echo '<span id="dates">', $controller->record->getLifeSpan(), '</span>';
-	//Display gender icon
-	foreach ($globalfacts as $key=>$value) {
-		$fact = $value->getTag();
-		if ($fact=="SEX") $controller->print_sex_record($value);
+
+	// Display gender icon
+	foreach ($controller->record->getFacts() as $fact) {
+		if ($fact->getTag() == 'SEX') {
+			$controller->print_sex_record($fact);
+		}
 	}
 	echo '</h3>'; // close first name accordion header	
-	//Display name details
-	foreach ($globalfacts as $key=>$value) {
-		$fact = $value->getTag();
-		if ($fact=="NAME") $controller->print_name_record($value);
+
+	// Display name details
+	foreach ($controller->record->getFacts() as $fact) {
+		if ($fact->getTag() == 'NAME' && $fact->canShow()) {
+			$controller->print_name_record($fact);
+		}
 	}
+
 	echo '</div>'; // close header_accordion1
 }
 echo '</div>';// close #indi_header

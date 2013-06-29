@@ -2,7 +2,7 @@
 // A sidebar to show extra/non-genealogical information about an individual
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -49,16 +49,21 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
 		global $SHOW_COUNTER, $controller;
+
+		$indifacts = array();
+		// The individual's own facts
+		foreach ($controller->record->getFacts() as $fact) {
+			if (self::showFact($fact) && $fact->canShow()) {
+				$indifacts[] = $fact;
+			}
+		}
 		
 		ob_start();
-		$indifacts = $controller->getIndiFacts();
-		if (count($indifacts)==0) {
+		if (!$indifacts) {
 			echo WT_I18N::translate('There are no Facts for this individual.');
 		} else {
 			foreach ($indifacts as $fact) {
-				if (in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts())) {
-					print_fact($fact, $controller->record);
-				}
+				print_fact($fact, $controller->record);
 			}
 		}
 		echo '<div id="hitcounter">';
@@ -74,5 +79,22 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Implement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		return '';
+	}
+
+	// Does this module display a particular fact
+	public static function showFact(WT_Fact $fact) {
+		switch ($fact->getTag()) {
+		case 'AFN':
+		case 'CHAN':
+		case 'IDNO':
+		case 'REFN':
+		case 'RFN':
+		case 'RIN':
+		case 'SSN':
+		case '_UID':
+			return true;
+		default:
+			return false;
+		}
 	}
 }

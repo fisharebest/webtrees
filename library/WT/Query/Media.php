@@ -67,7 +67,7 @@ class WT_Query_Media {
 	public static function mediaList($folder, $subfolders, $sort, $filter) {
 		// All files in the folder, plus external files
 		$sql = 
-			"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename" .
+			"SELECT m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
 			" FROM `##media`" .
 			" WHERE m_file=?";
 		$args = array(
@@ -114,11 +114,11 @@ class WT_Query_Media {
 			throw new Exception('Bad argument (sort=', $sort, ') in WT_Query_Media::mediaList()');
 		}
 
-		$rows = WT_DB::prepare($sql)->execute($args)->fetchAll(PDO::FETCH_ASSOC);
+		$rows = WT_DB::prepare($sql)->execute($args)->fetchAll();
 		$list = array();
 		foreach ($rows as $row) {
-			$media = WT_Media::getInstance($row);
-			if ($media->canDisplayDetails()) {
+			$media = WT_Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			if ($media->canShow()) {
 				$list[] = $media;
 			}
 		}

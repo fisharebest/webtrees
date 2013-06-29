@@ -94,13 +94,13 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		while ($all_media) {
 			$n=array_rand($all_media);
 			$media=WT_Media::getInstance($all_media[$n]);
-			if ($media->canDisplayDetails() && !$media->isExternal()) {
+			if ($media->canShow() && !$media->isExternal()) {
 				// Check if it is linked to a suitable individual
 				foreach ($media->fetchLinkedIndividuals() as $indi) {
 					if (
 						$filter=='all' ||
-						$filter=='indi'  && strpos($indi->getGedcomRecord(), "\n1 OBJE @" . $media->getXref() . '@') !==false ||
-						$filter=='event' && strpos($indi->getGedcomRecord(), "\n2 OBJE @" . $media->getXref() . '@') !==false
+						$filter=='indi'  && strpos($indi->getGedcom(), "\n1 OBJE @" . $media->getXref() . '@') !==false ||
+						$filter=='event' && strpos($indi->getGedcom(), "\n2 OBJE @" . $media->getXref() . '@') !==false
 					) {
 						// Found one :-)
 						$random_media=$media;
@@ -187,7 +187,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View Source') . ' — ' . $source->getFullname().'</a><br>';
 			}
 			$content .= '<br><div class="indent">';
-			$content .= print_fact_notes($random_media->getGedcomRecord(), "1", false, true);
+			$content .= print_fact_notes($random_media->getGedcom(), "1", false, true);
 			$content .= '</div>';
 			$content .= '</td></tr></table>';
 			$content .= '</div>'; // random_picture_content

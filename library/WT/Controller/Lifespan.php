@@ -122,7 +122,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 					}
 				}
 			} elseif ($newpid) {
-				$person=WT_Person::getInstance($newpid);
+				$person=WT_Individual::getInstance($newpid);
 				$this->addFamily($person, $addfam);
 			} elseif (!$this->pids) {
 				$this->addFamily($this->getSignificantIndividual(), false);
@@ -138,13 +138,13 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			foreach ($this->pids as $key => $value) {
 				if ($value != $remove) {
 					$this->pids[$key] = $value;
-					$person = WT_Person::getInstance($value);
+					$person = WT_Individual::getInstance($value);
 					// list of linked records includes families as well as individuals.
 					if ($person) {
 						$bdate = $person->getEstimatedBirthDate();
 						$ddate = $person->getEstimatedDeathDate();
 						//--Checks to see if the details of that person can be viewed
-						if ($bdate->isOK() && $person->canDisplayDetails()) {
+						if ($bdate->isOK() && $person->canShow()) {
 							$this->people[] = $person;
 						}
 					}
@@ -169,7 +169,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 					$bdate = $person->getEstimatedBirthDate();
 					$ddate = $person->getEstimatedDeathDate();
 					//--Checks to see if the details of that person can be viewed
-					if ($bdate->isOK() && $person->canDisplayDetails()) {
+					if ($bdate->isOK() && $person->canShow()) {
 						$this->people[] = $person;
 					}
 				}
@@ -424,7 +424,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 						$evntwdth = $eventwidth."%";
 						//-- if the fact is a generic EVENt then get the qualifying TYPE
 						if ($fact=="EVEN") {
-							$fact = $val->getType();
+							$fact = $val->getAttribute('TYPE');
 						}
 						$place = $val->getPlace();
 						$trans = WT_Gedcom_Tag::getLabel($fact);
@@ -532,18 +532,18 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		$endjd  =WT_Date_Gregorian::YMDtoJD($endyear+1, 1, 1)-1;
 
 		$sql=
-			"SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+			"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
 			" FROM `##individuals`".
 			" JOIN `##dates` ON i_id=d_gid AND i_file=d_file".
 			" WHERE i_file=? AND d_julianday1 BETWEEN ? AND ?";
 
 		$rows=WT_DB::prepare($sql)
 			->execute(array(WT_GED_ID, $startjd, $endjd))
-			->fetchAll(PDO::FETCH_ASSOC);
+			->fetchAll();
 
 		$list=array();
 		foreach ($rows as $row) {
-			$list[]=WT_Person::getInstance($row);
+			$list[]=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		}
 		return $list;
 	}

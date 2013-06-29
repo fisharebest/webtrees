@@ -2,7 +2,7 @@
 // Controller for the source page
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
@@ -33,35 +33,8 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class WT_Controller_Source extends WT_Controller_GedcomRecord {
 	public function __construct() {
-		$xref=safe_GET_xref('sid');
-
-		$gedrec=find_source_record($xref, WT_GED_ID);
-		if (WT_USER_CAN_EDIT) {
-			$newrec=find_updated_record($xref, WT_GED_ID);
-		} else {
-			$newrec=null;
-		}
-
-		if ($gedrec===null) {
-			if ($newrec===null) {
-				// Nothing to see here.
-				parent::__construct();
-				return;
-			} else {
-				// Create a dummy record from the first line of the new record.
-				// We need it for diffMerge(), getXref(), etc.
-				list($gedrec)=explode("\n", $newrec);
-			}
-		}
-
-		$this->record = new WT_Source($gedrec);
-
-		// If there are pending changes, merge them in.
-		if ($newrec!==null) {
-			$diff_record=new WT_Source($newrec);
-			$diff_record->setChanged(true);
-			$this->record->diffMerge($diff_record);
-		}
+		$xref         = safe_GET_xref('sid');
+		$this->record = WT_Source::getInstance($xref);
 
 		parent::__construct();
 	}
@@ -72,7 +45,7 @@ class WT_Controller_Source extends WT_Controller_GedcomRecord {
 	function getEditMenu() {
 		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
 
-		if (!$this->record || $this->record->isMarkedDeleted()) {
+		if (!$this->record || $this->record->isOld()) {
 			return null;
 		}
 
@@ -82,21 +55,6 @@ class WT_Controller_Source extends WT_Controller_GedcomRecord {
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit source'), '#', 'menu-sour-edit');
 			$submenu->addOnclick('return edit_source(\''.$this->record->getXref().'\');');
-			$menu->addSubmenu($submenu);
-		}
-
-		// edit/view raw gedcom
-		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-sour-editraw');
-			$submenu->addOnclick("return edit_raw('".$this->record->getXref()."');");
-			$menu->addSubmenu($submenu);
-		} elseif ($SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'), '#', 'menu-sour-viewraw');
-			if (WT_USER_CAN_EDIT) {
-				$submenu->addOnclick("return show_gedcom_record('new');");
-			} else {
-				$submenu->addOnclick("return show_gedcom_record();");
-			}
 			$menu->addSubmenu($submenu);
 		}
 

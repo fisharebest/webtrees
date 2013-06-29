@@ -204,8 +204,8 @@ case 'hierarchy':
 	
 		foreach ($positions as $position) {
 			$record=WT_GedcomRecord::getInstance($position);
-			if ($record && $record->canDisplayDetails()) {
-				if ($record instanceof WT_Person) {
+			if ($record && $record->canShow()) {
+				if ($record instanceof WT_Individual) {
 					$myindilist[]=$record;
 				}
 				if ($record instanceof WT_Family) {

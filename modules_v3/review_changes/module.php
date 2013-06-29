@@ -119,7 +119,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 				)->execute(array(WT_GED_ID))->fetchAll();
 				foreach ($changes as $change) {
 					$record=WT_GedcomRecord::getInstance($change->xref);
-					if ($record->canDisplayDetails()) {
+					if ($record->canShow()) {
 						$content.='<b>'.$record->getFullName().'</b>';
 						$content.=$block ? '<br>' : ' ';
 						$content.='<a href="'.$record->getHtmlUrl().'">'.WT_I18N::translate('View the changes').'</a>';

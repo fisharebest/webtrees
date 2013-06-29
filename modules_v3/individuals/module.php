@@ -186,9 +186,9 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$indis=WT_Query_Name::individuals($surname, $alpha, '', true, false, WT_GED_ID);
 		$out = '<ul>';
 		foreach ($indis as $person) {
-			if ($person->canDisplayName()) {
+			if ($person->canShowName()) {
 				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getFullName().' ';
-				if ($person->canDisplayDetails()) {
+				if ($person->canShow()) {
 					$bd = $person->getLifeSpan();
 					if (!empty($bd)) {
 						$out .= ' ('.$bd.')';
@@ -207,22 +207,22 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 		$rows=
 			WT_DB::prepare(
-				"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+				"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
 				" FROM `##individuals`, `##name`".
 				" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
 				" AND i_id=n_id AND i_file=n_file AND i_file=?".
 				" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'".
 				" LIMIT 50"
 			)
-			->execute(array('INDI', "%{$query}%", "%{$query}%", WT_GED_ID))
-			->fetchAll(PDO::FETCH_ASSOC);
+			->execute(array("%{$query}%", "%{$query}%", WT_GED_ID))
+			->fetchAll();
 
 		$out = '<ul>';
 		foreach ($rows as $row) {
-			$person=WT_Person::getInstance($row);
-			if ($person->canDisplayName()) {
+			$person = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			if ($person->canShowName()) {
 				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getFullName().' ';
-				if ($person->canDisplayDetails()) {
+				if ($person->canShow()) {
 					$bd = $person->getLifeSpan();
 					if (!empty($bd)) $out .= ' ('.$bd.')';
 				}

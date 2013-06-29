@@ -254,7 +254,7 @@ class WT_Stats {
 	}
 
 	function gedcomRootID() {
-		$root = WT_Person::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
+		$root = WT_Individual::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
 		$root = substr($root, 0, stripos($root, "@") );
 		return $root;
 	}
@@ -842,7 +842,7 @@ class WT_Stats {
 		switch($type) {
 			default:
 			case 'full':
-				if ($record->canDisplayDetails()) {
+				if ($record->canShow()) {
 					$result=$record->format_list('span', false, $record->getFullName());
 				} else {
 					$result=WT_I18N::translate('This information is private and cannot be shown.');
@@ -996,7 +996,7 @@ class WT_Stats {
 			$surn_countries=array();
 			$indis = WT_Query_Name::individuals(utf8_strtoupper($surname), '', '', false, false, WT_GED_ID);
 			foreach ($indis as $person) {
-				if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcomRecord(), $matches)) {
+				if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcom(), $matches)) {
 					// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 					foreach ($matches[1] as $country) {
 						$country=trim($country);
@@ -1377,11 +1377,11 @@ class WT_Stats {
 		);
 		if (!isset($rows[0])) {return '';}
 		$row = $rows[0];
-		$person=WT_Person::getInstance($row['id']);
+		$person=WT_Individual::getInstance($row['id']);
 		switch($type) {
 			default:
 			case 'full':
-				if ($person->canDisplayName()) {
+				if ($person->canShowName()) {
 					$result=$person->format_list('span', false, $person->getFullName());
 				} else {
 					$result= WT_I18N::translate('This information is private and cannot be shown.');
@@ -1435,7 +1435,7 @@ class WT_Stats {
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
 		foreach ($rows as $row) {
-			$person = WT_Person::getInstance($row['deathdate']);
+			$person = WT_Individual::getInstance($row['deathdate']);
 			$age = $row['age'];
 			if ((int)($age/365.25)>0) {
 				$age = (int)($age/365.25).'y';
@@ -1445,7 +1445,7 @@ class WT_Stats {
 				$age = $age.'d';
 			}
 			$age = get_age_at_event($age, true);
-			if ($person->canDisplayDetails()) {
+			if ($person->canShow()) {
 				if ($type == 'list') {
 					$top10[]="<li><a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> (".$age.")"."</li>";
 				} else {
@@ -1502,7 +1502,7 @@ class WT_Stats {
 		if (!isset($rows)) {return 0;}
 		$top10 = array();
 		foreach ($rows as $row) {
-			$person=WT_Person::getInstance($row['id']);
+			$person=WT_Individual::getInstance($row['id']);
 			$age = (WT_CLIENT_JD-$row['age']);
 			if ((int)($age/365.25)>0) {
 				$age = (int)($age/365.25).'y';
@@ -1776,7 +1776,7 @@ class WT_Stats {
 		switch($type) {
 			default:
 			case 'full':
-				if ($record->canDisplayDetails()) {
+				if ($record->canShow()) {
 					$result=$record->format_list('span', false, $record->getFullName());
 				} else {
 					$result=WT_I18N::translate('This information is private and cannot be shown.');
@@ -1871,11 +1871,11 @@ class WT_Stats {
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
 		if (isset($row['famid'])) $family=WT_Family::getInstance($row['famid']);
-		if (isset($row['i_id'])) $person=WT_Person::getInstance($row['i_id']);
+		if (isset($row['i_id'])) $person=WT_Individual::getInstance($row['i_id']);
 		switch($type) {
 			default:
 			case 'full':
-				if ($family->canDisplayDetails()) {
+				if ($family->canShow()) {
 					$result=$family->format_list('span', false, $person->getFullName());
 				} else {
 					$result=WT_I18N::translate('This information is private and cannot be shown.');
@@ -1990,7 +1990,7 @@ class WT_Stats {
 			$husb = $family->getHusband();
 			$wife = $family->getWife();
 			if (($husb->getAllDeathDates() && $wife->getAllDeathDates()) || !$husb->isDead() || !$wife->isDead()) {
-				if ($family->canDisplayDetails()) {
+				if ($family->canShow()) {
 					if ($type == 'list') {
 						$top10[] = "<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> (".$age.")"."</li>";
 					} else {
@@ -2054,7 +2054,7 @@ class WT_Stats {
 				$age = $age.'d';
 			}
 			$age = get_age_at_event($age, true);
-			if ($family->canDisplayDetails()) {
+			if ($family->canShow()) {
 				if ($type == 'list') {
 					$top10[] = "<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> (".$age.")"."</li>";
 				} else {
@@ -2102,11 +2102,11 @@ class WT_Stats {
 		);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
-		if (isset($row['id'])) $person=WT_Person::getInstance($row['id']);
+		if (isset($row['id'])) $person=WT_Individual::getInstance($row['id']);
 		switch($type) {
 			default:
 			case 'full':
-				if ($person->canDisplayDetails()) {
+				if ($person->canShow()) {
 					$result=$person->format_list('span', false, $person->getFullName());
 				} else {
 					$result=WT_I18N::translate('This information is private and cannot be shown.');
@@ -2523,7 +2523,7 @@ class WT_Stats {
 		switch($type) {
 			default:
 			case 'full':
-				if ($family->canDisplayDetails()) {
+				if ($family->canShow()) {
 					$result=$family->format_list('span', false, $family->getFullName());
 				} else {
 					$result = WT_I18N::translate('This information is private and cannot be shown.');
@@ -2556,7 +2556,7 @@ class WT_Stats {
 		$top10 = array();
 		for ($c = 0; $c < $total; $c++) {
 			$family=WT_Family::getInstance($rows[$c]['id']);
-			if ($family->canDisplayDetails()) {
+			if ($family->canShow()) {
 				if ($type == 'list') {
 					$top10[]=
 						'<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().'</a> - '.
@@ -2618,10 +2618,10 @@ class WT_Stats {
 		if ($one) $dist = array();
 		foreach ($rows as $fam) {
 			$family = WT_Family::getInstance($fam['family']);
-			$child1 = WT_Person::getInstance($fam['ch1']);
-			$child2 = WT_Person::getInstance($fam['ch2']);
+			$child1 = WT_Individual::getInstance($fam['ch1']);
+			$child2 = WT_Individual::getInstance($fam['ch2']);
 			if ($type == 'name') {
-				if ($child1->canDisplayDetails() && $child2->canDisplayDetails()) {
+				if ($child1->canShow() && $child2->canShow()) {
 					$return = '<a href="'.$child2->getHtmlUrl().'">'.$child2->getFullName().'</a> ';
 					$return .= WT_I18N::translate('and').' ';
 					$return .= '<a href="'.$child1->getHtmlUrl().'">'.$child1->getFullName().'</a>';
@@ -2645,7 +2645,7 @@ class WT_Stats {
 			}
 			if ($type == 'list') {
 				if ($one && !in_array($fam['family'], $dist)) {
-					if ($child1->canDisplayDetails() && $child2->canDisplayDetails()) {
+					if ($child1->canShow() && $child2->canShow()) {
 						$return = "<li>";
 						$return .= "<a href=\"".$child2->getHtmlUrl()."\">".$child2->getFullName()."</a> ";
 						$return .= WT_I18N::translate('and')." ";
@@ -2656,7 +2656,7 @@ class WT_Stats {
 						$top10[] = $return;
 						$dist[] = $fam['family'];
 					}
-				} else if (!$one && $child1->canDisplayDetails() && $child2->canDisplayDetails()) {
+				} else if (!$one && $child1->canShow() && $child2->canShow()) {
 					$return = "<li>";
 					$return .= "<a href=\"".$child2->getHtmlUrl()."\">".$child2->getFullName()."</a> ";
 					$return .= WT_I18N::translate('and')." ";
@@ -2667,7 +2667,7 @@ class WT_Stats {
 					$top10[] = $return;
 				}
 			} else {
-				if ($child1->canDisplayDetails() && $child2->canDisplayDetails()) {
+				if ($child1->canShow() && $child2->canShow()) {
 					$return = $child2->format_list('span', false, $child2->getFullName());
 					$return .= "<br>".WT_I18N::translate('and')."<br>";
 					$return .= $child1->format_list('span', false, $child1->getFullName());
@@ -2830,14 +2830,14 @@ class WT_Stats {
 		$chl = array();
 		foreach ($rows as $row) {
 			$family=WT_Family::getInstance($row['id']);
-			if ($family->canDisplayDetails()) {
+			if ($family->canShow()) {
 				if ($tot==0) {
 					$per = 0;
 				} else {
 					$per = round(100 * $row['tot'] / $tot, 0);
 				}
 				$chd .= self::_array_to_extended_encoding(array($per));
-				$chl[] = strip_tags(unhtmlentities($family->getFullName())).' - '.WT_I18N::number($row['tot']);
+				$chl[] = htmlspecialchars_decode(strip_tags($family->getFullName())).' - '.WT_I18N::number($row['tot']);
 			}
 		}
 		$chl = rawurlencode(join('|', $chl));
@@ -2968,7 +2968,7 @@ class WT_Stats {
 		$top10 = array();
 		foreach ($rows as $row) {
 			$family=WT_Family::getInstance($row['family']);
-			if ($family->canDisplayDetails()) {
+			if ($family->canShow()) {
 				if ($type == 'list') {
 					$top10[] = "<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a></li>";
 				} else {
@@ -3085,7 +3085,7 @@ class WT_Stats {
 		$top10 = array();
 		foreach ($rows as $row) {
 			$family=WT_Family::getInstance($row['id']);
-			if ($family->canDisplayDetails()) {
+			if ($family->canShow()) {
 				if ($type == 'list') {
 					$top10[]=
 						'<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().'</a> - '.
