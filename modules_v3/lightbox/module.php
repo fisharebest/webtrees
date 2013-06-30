@@ -183,7 +183,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 					//View Sources
 					$source_menu = null;
 					foreach ($media->getFacts('SOUR') as $source_fact) {
-						$source = WT_Source::getInstance(trim($source_fact->detail, '@'));
+						$source = $source_fact->getTarget();
 						if ($source && $source->canShow()) {
 							if (!$source_menu) {
 								// Group sources under a top level menu
