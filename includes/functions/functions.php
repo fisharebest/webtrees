@@ -50,10 +50,6 @@ if (!defined('WT_WEBTREES')) {
 // NOTE: when using listboxes, $regex can be an array of valid values.  For
 // example, you can use safe_POST('lang', array_keys($pgv_language), WT_LOCALE)
 // to validate against a list of valid languages and supply a sensible default.
-//
-// If the values are plain text, pass them through preg_quote_array() to
-// escape any regex special characters:
-// $export = safe_GET('export', preg_quote_array($gedcoms));
 ////////////////////////////////////////////////////////////////////////////////
 
 function safe_POST($var, $regex=WT_REGEX_NOSCRIPT, $default=null) {
@@ -101,22 +97,6 @@ function safe_REQUEST($arr, $var, $regex=WT_REGEX_NOSCRIPT, $default=null) {
 		return $arr[$var];
 	} else {
 		return $default;
-	}
-}
-
-function preg_quote_array($var) {
-	if (is_scalar($var)) {
-		return preg_quote($var);
-	} else {
-		if (is_array($var)) {
-			foreach ($var as &$v) {
-				$v = preg_quote($v);
-			}
-			return $var;
-		} else {
-			// Neither scalar nor array.  Object?
-			return false;
-		}
 	}
 }
 
