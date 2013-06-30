@@ -60,105 +60,23 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		//-- parent families -------------------------------------------------------------
 		foreach ($controller->record->getChildFamilies() as $family) {
-			$people = $controller->buildFamilyList($family, 'parents');
 			echo '<tr><td style="padding-bottom:4px;" class="center" colspan="2">';
 			echo '<a class="famnav_link" href="' . $family->getHtmlUrl() . '">';
 			echo '<b>' . $controller->record->getChildFamilyLabel($family) . '</b>';
 			echo '</a>';
 			echo '</td></tr>';
-			if (isset($people['husb'])) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['husb'])));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['husb']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['husb']), ' nam">';
-				echo '<a class="famnav_link" href="' . $people["husb"]->getHtmlUrl() . '">';
-				echo $people['husb']->getFullName();
-				echo '</a>';
-				echo '<div class="font9">' . $people['husb']->getLifeSpan() . '</div>';
-				echo '</td></tr>';
-			}
-
-			if (isset($people['wife'])) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['wife'])));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['wife']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['wife']), ' nam">';
-				echo '<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">';
-				echo $people['wife']->getFullName();
-				echo '</a>';
-				echo '<div class="font9">' . $people['wife']->getLifeSpan() . '</div>';
-				echo '</td></tr>';
-			}
-
-			foreach ($people['children'] as $child) {
-				if ($controller->record->equals($child)) {
-					$menu = new WT_Menu('<i class="icon-selected"></i>');
-				} else {
-					$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $child)));
-				}
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
-				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label" style="width:75px;">';
-				echo $menu->getMenu();
-				echo '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
-				echo '<a class="famnav_link" href="' . $child->getHtmlUrl() . '">';
-				echo $child->getFullName();
-				echo '</a>';
-				echo '<div class="font9">' . $child->getLifeSpan() . '</div>';
-				echo '</td></tr>';
-			}
+			$this->drawFamily($controller->record, $family);
 		}
 
 		//-- step parents ----------------------------------------------------------------
 		foreach ($controller->record->getChildStepFamilies() as $family) {
-			$people = $controller->buildFamilyList($family, 'step-parents');
 			echo '<tr><td><br></td><td></td></tr>';
 			echo '<tr><td style="padding-bottom: 4px;" class="center" colspan="2">';
 			echo '<a class="famnav_link" href="' . $family->getHtmlUrl() . '">';
 			echo '<b>' . $controller->record->getStepFamilyLabel($family) . '</b>';
 			echo '</a>';
 			echo '</td></tr>';
-
-			if (isset($people['husb']) ) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['husb'])));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['husb']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people["husb"]), ' nam">';
-				echo '<a class="famnav_link" href="' . $people['husb']->getHtmlUrl() . '">';
-				echo $people['husb']->getFullName();
-				echo '</a>';
-				echo '<div class="font9">' . $people['husb']->getLifeSpan() . '</div>';
-				echo '</td></tr>';
-			}
-
-			if (isset($people['wife']) ) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['wife'])));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['wife']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['wife']), ' nam">';
-				echo '<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">';
-				echo $people['wife']->getFullName();
-				echo '</a>';
-				echo '<div class="font9">' . $people['wife']->getLifeSpan() . '</div>';
-				echo '</td></tr>';
-			}
-			foreach ($people['children'] as $child) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $child)));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
-				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
-				echo '<a class="famnav_link" href="' . $child->getHtmlUrl() . '">';
-				echo $child->getFullName();
-				echo '</a>';
-				echo '<div class="font9">' . $child->getLifeSpan() . '</div>';
-				echo '</td></tr>';
-			}
+			$this->drawFamily($controller->record, $family);
 		}
 
 		//-- spouse and children --------------------------------------------------
@@ -169,53 +87,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			echo '<b>' . WT_I18N::translate('Immediate Family') . '</b>';
 			echo '</a>';
 			echo '</td></tr>';
-			$people = $controller->buildFamilyList($family, 'spouse');
-			if (isset($people['husb'])) {
-				if ($controller->record->equals($people['husb'])) {
-					$menu = new WT_Menu('<i class="icon-selected"></i>');
-				} else {
-					$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['husb'])));
-				}
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['husb']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['husb']), ' nam">';
-				echo '<a class="famnav_link" href="' . $people['husb']->getHtmlUrl() . '">';
-				echo $people['husb']->getFullName();
-				echo '</a>';
-				echo '<div class="font9">' . $people['husb']->getLifeSpan() . '</div>';
-				echo '</td></tr>';
-			}
-
-			if (isset($people['wife'])) {
-				if ($controller->record->equals($people['wife'])) {
-					$menu = new WT_Menu('<i class="icon-selected"></i>');
-				} else {
-					$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['wife'])));
-				}
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['wife']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['wife']), ' nam">';
-				echo '<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">';
-				echo $people['wife']->getFullName();
-				echo '</a>';
-				echo '<div class="font9">' . $people['wife']->getLifeSpan() . '</div>';
-				echo '</td></tr>';
-			}
-
-			foreach ($people['children'] as $child) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $child)));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
-				$menu->addSubmenu($submenu);
-				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
-				echo '<a class="famnav_link" href="' . $child->getHtmlUrl() . '">';
-				echo $child->getFullName();
-				echo '</a>';
-				echo '<div class="font9">' . $child->getLifeSpan() . '</div>';
-				echo '</td></tr>';
-			}
+			$this->drawFamily($controller->record, $family);
 		}
 		//-- step children ----------------------------------------------------------------
 		foreach ($controller->record->getSpouseStepFamilies() as $family) {
@@ -226,49 +98,52 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			echo '<b>' . $family->getFullName() . '</b>';
 			echo '</a>';
 			echo '</td></tr>';
-
-			if (isset($people['husb']) ) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['husb'])));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['husb']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['husb']), ' nam">';
-				echo '<a class="famnav_link" href="' . $people['husb']->getHtmlUrl() . '">';
-				echo $people['husb']->getFullName();
-				echo '</a>';
-				echo '<div class="font9">' . $people['husb']->getLifeSpan() . '</div>';
-				echo '</td></tr>';
-			}
-
-			if (isset($people['wife']) ) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['wife'])));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['wife']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($people['wife']), ' nam">';
-				echo '<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">';
-				echo $people['wife']->getFullName();
-				echo '</a>';
-				echo '<div class="font9">' . $people['wife']->getLifeSpan() . '</div>';
-				echo '</td></tr>';
-			}
-			foreach ($people['children'] as $child) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $child)));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
-				$menu->addSubMenu($submenu);
-				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
-				echo '<a class="famnav_link" href="' . $child->getHtmlUrl() . '">';
-				echo $child->getFullName();
-				echo '</a>';
-				echo '<div class="font9">' . $child->getLifeSpan() . '</div>';
-				echo '</td></tr>';
-			}
+			$this->drawFamily($controller->record, $family);
 		}
 
 		echo '</table></div>';
 
 		return ob_get_clean();
+	}
+
+	private function drawFamily(WT_Individual $root, WT_Family $family) {
+		global $controller;
+		global $spouselinks, $parentlinks;
+
+		foreach ($family->getSpouses() as $spouse) {
+			if ($root->equals($spouse)) {
+				$menu = new WT_Menu('<i class="icon-selected"></i>');
+			} else {
+				$menu = new WT_Menu(get_relationship_name(get_relationship($root, $spouse)));
+			}
+			$menu->addClass('', 'submenu flyout2');
+			$submenu = new WT_Menu($this->print_pedigree_person_nav($spouse) . $parentlinks);
+			$menu->addSubMenu($submenu);
+			echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($spouse), ' nam">';
+			echo '<a class="famnav_link" href="' . $spouse->getHtmlUrl() . '">';
+			echo $spouse->getFullName();
+			echo '</a>';
+			echo '<div class="font9">' . $spouse->getLifeSpan() . '</div>';
+			echo '</td></tr>';
+		}
+		foreach ($family->getChildren() as $child) {
+			if ($controller->record->equals($child)) {
+				$menu = new WT_Menu('<i class="icon-selected"></i>');
+			} else {
+				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $child)));
+			}
+			$menu->addClass('', 'submenu flyout2');
+			$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
+			$menu->addSubMenu($submenu);
+			echo '<tr><td class="facts_label" style="width:75px;">';
+			echo $menu->getMenu();
+			echo '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
+			echo '<a class="famnav_link" href="' . $child->getHtmlUrl() . '">';
+			echo $child->getFullName();
+			echo '</a>';
+			echo '<div class="font9">' . $child->getLifeSpan() . '</div>';
+			echo '</td></tr>';
+		}
 	}
 
 	// Implement WT_Module_Sidebar
