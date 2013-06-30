@@ -91,7 +91,6 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 		//-- step children ----------------------------------------------------------------
 		foreach ($controller->record->getSpouseStepFamilies() as $family) {
-			$people = $controller->buildFamilyList($family, 'step-children');
 			echo '<tr><td><br></td><td></td></tr>';
 			echo '<tr><td style="padding-bottom: 4px;" class="center" colspan="2">';
 			echo '<a class="famnav_link" href="' . $family->getHtmlUrl() . '">';
