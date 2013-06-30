@@ -469,9 +469,9 @@ case 'addnewparent':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addopfchild':
-	$pid = safe_GET('pid', WT_REGEX_XREF);
+	$xref = safe_GET('xref', WT_REGEX_XREF);
 
-	$person = WT_Individual::getInstance($pid);
+	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
 
 	$controller
@@ -522,9 +522,9 @@ case 'addfamlink':
 ////////////////////////////////////////////////////////////////////////////////
 case 'linkspouse':
 	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
-	$pid    = safe_GET('pid',   WT_REGEX_XREF);
+	$xref    = safe_GET('xref',   WT_REGEX_XREF);
 
-	$person = WT_Individual::getInstance($pid);
+	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
 	
 	if ($person->getSex()=='F') {
@@ -826,6 +826,11 @@ case 'addnoteaction_assisted':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addmedia_links':
+	$xref = safe_GET('xref', WT_REGEX_XREF);
+
+	$person = WT_Source::getInstance($xref);
+	check_record_access($person);
+
 	$controller
 		->setPageTitle(WT_I18N::translate('Family navigator'))
 		->pageHeader();
@@ -833,7 +838,7 @@ case 'addmedia_links':
 	?>
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
-		<form method="post" action="edit_interface.php?pid=<?php echo $pid; ?>" onsubmit="findindi()">
+		<form method="post" action="edit_interface.php?xref=<?php echo $person->getXref(); ?>" onsubmit="findindi()">
 			<input type="hidden" name="action" value="addmedia_links">
 			<input type="hidden" name="noteid" value="newnote">
 			<?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/MEDIA_ctrl.php'; ?>
@@ -1172,11 +1177,11 @@ case 'addspouseaction':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'linkspouseaction':
-	$pid    = safe_POST('pid',    WT_REGEX_XREF);
+	$xref   = safe_POST('xref',   WT_REGEX_XREF);
 	$spid   = safe_POST('spid',   WT_REGEX_XREF);
 	$famtag = safe_POST('famtag', '(HUSB|WIFE)');
 
-	$person = WT_Individual::getInstance($pid);
+	$person = WT_Individual::getInstance($xref);
 	$spouse = WT_Individual::getInstance($spid);
 	check_record_access($person);
 	check_record_access($spouse);
@@ -1303,10 +1308,10 @@ case 'addnewparentaction':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addopfchildaction':
-	$pid  = safe_POST('pid',  WT_REGEX_XREF);
+	$xref = safe_POST('xref',  WT_REGEX_XREF);
 	$PEDI = safe_POST('PEDI');
 
-	$person = WT_Individual::getInstance($pid);
+	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
 
 	$controller
@@ -1334,9 +1339,9 @@ case 'addopfchildaction':
 
 	$gedcom="0 @NEW@ FAM\n1 CHIL @" . $child->getXref() . "@";
 	if ($person->getSex()=='F') {
-		$gedcom.="\n1 WIFE @{$pid}@";
+		$gedcom.="\n1 WIFE @" . $person->getXref() . "@";
 	} else {
-		$gedcom.="\n1 HUSB @{$pid}@";
+		$gedcom.="\n1 HUSB @" . $person->getXref() . "@";
 	}
 	$family = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
 	$person->replaceFact(null, "1 FAMS @" . $family->getXref() . "@", true);
@@ -1346,10 +1351,10 @@ case 'addopfchildaction':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'editname':
-	$pid     = safe_GET('pid', WT_REGEX_XREF);
+	$xref    = safe_GET('xref', WT_REGEX_XREF);
 	$fact_id = safe_GET('fact_id');
 
-	$person = WT_Individual::getInstance($pid);
+	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
 
 	// Find the fact to edit
@@ -1371,13 +1376,21 @@ case 'editname':
 		->pageHeader();
 
 	print_indi_form('update', $person, null, $name_fact, '', $person->getSex());
+
+	if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
+		echo
+			'<br><br><a href="edit_interface.php?action=editraw&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', WT_GEDURL, '">',
+			WT_I18N::translate('Edit raw GEDCOM record'),
+			'</a>';
+	}
+	
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addname':
-	$pid = safe_GET('pid', WT_REGEX_XREF);
+	$xref = safe_GET('xref', WT_REGEX_XREF);
 
-	$person = WT_Individuual::getInstance($pid);
+	$person = WT_Individuual::getInstance($xref);
 	check_record_access($person);
 
 	$controller
@@ -1389,7 +1402,7 @@ case 'addname':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'paste':
-	$xref = safe_REQUEST($_REQUEST, 'pid',  WT_REGEX_XREF);
+	$xref = safe_REQUEST($_REQUEST, 'xref', WT_REGEX_XREF);
 	$fact = safe_REQUEST($_REQUEST, 'fact', WT_REGEX_UNSAFE);
 
 	$record = WT_GedcomRecord::getInstance($xref);
@@ -1405,7 +1418,7 @@ case 'paste':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'reorder_media': // Sort page using Popup
-	$xref = safe_REQUEST($_REQUEST, 'pid',  WT_REGEX_XREF);
+	$xref = safe_REQUEST($_REQUEST, 'xref',  WT_REGEX_XREF);
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
