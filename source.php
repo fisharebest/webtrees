@@ -110,17 +110,15 @@ echo '<div id="source-tabs">
 	echo '<div id="source-edit">';
 		echo '<table class="facts_table">';
 
-		$sourcefacts=$controller->record->getFacts();
-		foreach ($sourcefacts as $fact) {
+		$facts=$controller->record->getFacts();
+		// TODO: sort the facts.  See also https://bugs.launchpad.net/webtrees/+bug/635876
+		foreach ($facts as $fact) {
 			print_fact($fact, $controller->record);
 		}
 
-		// Print media
-		print_main_media($controller->record->getXref());
-
 		// new fact link
 		if ($controller->record->canEdit()) {
-			print_add_new_fact($controller->record->getXref(), $sourcefacts, 'SOUR');
+			print_add_new_fact($controller->record->getXref(), $facts, 'SOUR');
 			// new media
 			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 				echo '<tr><td class="descriptionbox">';
