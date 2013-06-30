@@ -129,8 +129,7 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Parents Husbands Parents --------------------------------------
 							$gparent=WT_Individual::getInstance($people["husb"]->getXref());
-							$fams = $gparent->getChildFamilies();
-							foreach ($fams as $family) {
+							foreach ($gparent->getChildFamilies() as $family) {
 								$phusb = $family->getHusband();
 								$pwife = $family->getWife();
 								if ($phusb) { $HusbFBP = $phusb->getBirthPlace(); }
@@ -249,8 +248,7 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Parents Wifes Parent Family ---------------------------
 							$gparent=WT_Individual::getInstance($people["wife"]->getXref());
-							$fams = $gparent->getChildFamilies();
-							foreach ($fams as $family) {
+							foreach ($gparent->getChildFamilies() as $family) {
 								$phusb = $family->getHusband();
 								$pwife = $family->getWife();
 								if ($phusb) { $WifeFBP = $phusb->getBirthPlace(); }
@@ -559,8 +557,7 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Step Husbands Parent Family --------------------------------------
 							$gparent=WT_Individual::getInstance($people["husb"]->getXref());
-							$fams = $gparent->getChildFamilies();
-							foreach ($fams as $family) {
+							foreach ($gparent->getChildFamilies() as $family) {
 								$phusb = $family->getHusband();
 								$pwife = $family->getWife();
 								if ($phusb) { $HusbFBP = $phusb->getBirthPlace(); }
@@ -690,8 +687,7 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Step Wifes Parent Family --------------------------------------
 							$gparent=WT_Individual::getInstance($people["wife"]->getXref());
-							$fams = $gparent->getChildFamilies();
-							foreach ($fams as $family) {
+							foreach ($gparent->getChildFamilies() as $family) {
 								$phusb = $family->getHusband();
 								$pwife = $family->getWife();
 								if ($phusb) { $WifeFBP = $phusb->getBirthPlace(); }
@@ -985,8 +981,7 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Spouse Husbands Parents --------------------------------------
 							$gparent=WT_Individual::getInstance($people["husb"]->getXref());
-							$fams = $gparent->getChildFamilies();
-							foreach ($fams as $family) {
+							foreach ($gparent->getChildFamilies() as $family) {
 								$phusb = $family->getHusband();
 								$pwife = $family->getWife();
 								if ($phusb) { $HusbFBP = $phusb->getBirthPlace(); }
@@ -1116,8 +1111,7 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Spouse Wifes Parents --------------------------------------
 							$gparent=WT_Individual::getInstance($people["wife"]->getXref());
-							$fams = $gparent->getChildFamilies();
-							foreach ($fams as $family) {
+							foreach ($gparent->getChildFamilies() as $family) {
 								$husb = $family->getHusband();
 								$wife = $family->getWife();
 								if ($husb) { $WifeFBP = $husb->getBirthPlace(); }
