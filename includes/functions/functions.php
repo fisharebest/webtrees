@@ -940,7 +940,6 @@ function cousin_name2($n, $sex, $relation) {
 	}
 }
 
-
 function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_Individual $person2=null) {
 	if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
 		// TODO: Update all the “3 RELA ” values in class_person
@@ -2222,21 +2221,6 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
 	WT_DB::prepare("UPDATE `##next_id` SET next_id=? WHERE record_type=? AND gedcom_id=?")
 		->execute(array($num+1, $type, $ged_id));
 	return $key;
-}
-
-/**
- * check if the given string has UTF-8 characters
- *
- */
-function has_utf8($string) {
-	$len = strlen($string);
-	for ($i=0; $i<$len; $i++) {
-		$letter = substr($string, $i, 1);
-		$ord = ord($letter);
-		if ($ord==95 || $ord>=195)
-			return true;
-	}
-	return false;
 }
 
 /**
