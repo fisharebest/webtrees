@@ -223,14 +223,14 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		if (empty($sex)) $sex = 'U';
 		echo '<span id="sex" class="';
 		if ($event->isOld()) {
-			echo 'old';
+			echo 'old ';
 		}
 		if ($event->isNew()) {
-			echo 'new';
+			echo 'new ';
 		}
 		switch ($sex) {
 		case 'M':
-			echo ' male_gender"';
+			echo 'male_gender"';
 			if ($event->canEdit()) {
 				echo ' title="', WT_I18N::translate('Male'), ' - ', WT_I18N::translate('Edit'), '"';
 				echo ' onclick="edit_record(\''.$this->record->getXref().'\', \''.$event->getFactId().'\'); return false;">';
@@ -239,7 +239,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			 }
 			break;
 		case 'F':
-			echo ' female_gender"';
+			echo 'female_gender"';
 			if ($event->canEdit()) {
 				echo ' title="', WT_I18N::translate('Female'), ' - ', WT_I18N::translate('Edit'), '"';
 				echo ' onclick="edit_record(\''.$this->record->getXref().'\', \''.$event->getFactId().'\'); return false;">';
@@ -248,7 +248,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			 }
 			break;
 		case 'U':
-			echo ' unknown_gender"';
+			echo 'unknown_gender"';
 			if ($event->canEdit()) {
 				echo ' title="', WT_I18N::translate_c('unknown gender', 'Unknown'), ' - ', WT_I18N::translate('Edit'), '"';
 				echo ' onclick="edit_record(\''.$this->record->getXref().'\', \''.$event->getFactId().'\'); return false;">';
