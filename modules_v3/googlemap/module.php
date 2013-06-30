@@ -1260,7 +1260,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				if ($i+1 >= pow(2, $curgen)) {
 					$curgen++;
 				}
-				$relationship=get_close_relationship_name($controller->root, $person);
+
+				// TODO: Work out which escaping is needed, as "self" relationships are generated with HTML
+				$relationship = strip_tags(get_close_relationship_name($controller->root, $person));
+
 				$event = '<img src=\"'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/sq'.$curgen.'.png\" width=\"10\" height=\"10\">'.
 					'<strong>'.$relationship.'</strong>';
 				// add thumbnail image
