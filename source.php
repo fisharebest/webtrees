@@ -106,12 +106,39 @@ echo '<div id="source-tabs">
 			echo '<li><a href="#note-sources"><span id="notesource">', WT_I18N::translate('Notes'), '</span></a></li>';
 		}
 		echo '</ul>';
-	// Edit this source
+
 	echo '<div id="source-edit">';
 		echo '<table class="facts_table">';
 
+		// Fetch the facts
 		$facts=$controller->record->getFacts();
-		// TODO: sort the facts.  See also https://bugs.launchpad.net/webtrees/+bug/635876
+
+		// Sort the facts
+		usort(
+			$facts,
+			function(WT_Fact $x, WT_Fact $y) {
+				static $order = array(
+					'TITL' => 0,
+					'ABBR' => 1,
+					'AUTH' => 2,
+					'DATA' => 3,
+					'PUBL' => 4,
+					'TEXT' => 5,
+					'NOTE' => 6,
+					'OBJE' => 7,
+					'REFN' => 8,
+					'RIN'  => 9,
+					'_UID' => 10,
+					'CHAN' => 11,
+				);
+				return
+					(array_key_exists($x->getTag(), $order) ? $order[$x->getTag()] : PHP_INT_MAX)
+					-
+					(array_key_exists($y->getTag(), $order) ? $order[$y->getTag()] : PHP_INT_MAX);
+			}
+		);
+
+		// Print the facts
 		foreach ($facts as $fact) {
 			print_fact($fact, $controller->record);
 		}
@@ -124,7 +151,7 @@ echo '<div id="source-tabs">
 				echo '<tr><td class="descriptionbox">';
 				echo WT_Gedcom_Tag::getLabel('OBJE');
 				echo '</td><td class="optionbox">';
-				echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', WT_I18N::translate('Add a new media object'), '</a>';		
+				echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', WT_I18N::translate('Add a new media object'), '</a>';
 				echo help_link('OBJE');
 				echo '<br>';
 				echo '<a href="#" onclick="window.open(\'inverselink.php?linktoid=', $controller->record->getXref(), '&amp;linkto=source\', \'_blank\', find_window_specs); return false;">', WT_I18N::translate('Link to an existing media object'), '</a>';
@@ -132,7 +159,8 @@ echo '<div id="source-tabs">
 			}
 		}
 		echo '</table>
-	</div>'; // close "details"
+	</div>';
+
 	// Individuals linked to this source
 	if ($linked_indi) {
 		echo '<div id="indi-sources">';

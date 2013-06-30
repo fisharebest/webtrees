@@ -95,33 +95,54 @@ echo '<div id="repo-tabs">
 		}
 		echo '</ul>';
 
-	// Shared Note details ---------------------
 	echo '<div id="repo-edit">';
 		echo '<table class="facts_table">';
-			$repositoryfacts=$controller->record->getFacts();
-			foreach ($repositoryfacts as $fact) {
-				print_fact($fact, $controller->record);
+		// Fetch the facts
+		$facts=$controller->record->getFacts();
+
+		// Sort the facts
+		usort(
+			$facts,
+			function(WT_Fact $x, WT_Fact $y) {
+				static $order = array(
+					'NAME' => 0,
+					'ADDR' => 1,
+					'NOTE' => 2,
+					'WWW'  => 3,
+					'REFN' => 4,
+					'RIN'  => 5,
+					'_UID' => 6,
+					'CHAN' => 7,
+				);
+				return
+					(array_key_exists($x->getTag(), $order) ? $order[$x->getTag()] : PHP_INT_MAX)
+					-
+					(array_key_exists($y->getTag(), $order) ? $order[$y->getTag()] : PHP_INT_MAX);
 			}
+		);
 
-			// Print media
-			print_main_media($controller->record->getXref());
+		// Print the facts
+		foreach ($facts as $fact) {
+			print_fact($fact, $controller->record);
+		}
 
-			// new fact link
-			if ($controller->record->canEdit()) {
-				print_add_new_fact($controller->record->getXref(), $repositoryfacts, 'REPO');
-				// new media
-				if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
-					echo '<tr><td class="descriptionbox">';
-					echo WT_Gedcom_Tag::getLabel('OBJE');
-					echo '</td><td class="optionbox">';
-					echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', WT_I18N::translate('Add a new media object'), '</a>';
-					echo help_link('OBJE');
-					echo '<br>';
-					echo '<a href="#" onclick="window.open(\'inverselink.php?linktoid=', $controller->record->getXref(), '&amp;linkto=repository\', \'_blank\', find_window_specs); return false;">', WT_I18N::translate('Link to an existing media object'), '</a>';
-					echo '</td></tr>';
-				}}
+		// new fact link
+		if ($controller->record->canEdit()) {
+			print_add_new_fact($controller->record->getXref(), $facts, 'REPO');
+			// new media
+			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+				echo '<tr><td class="descriptionbox">';
+				echo WT_Gedcom_Tag::getLabel('OBJE');
+				echo '</td><td class="optionbox">';
+				echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', WT_I18N::translate('Add a new media object'), '</a>';
+				echo help_link('OBJE');
+				echo '<br>';
+				echo '<a href="#" onclick="window.open(\'inverselink.php?linktoid=', $controller->record->getXref(), '&amp;linkto=repository\', \'_blank\', find_window_specs); return false;">', WT_I18N::translate('Link to an existing media object'), '</a>';
+				echo '</td></tr>';
+			}
+		}
 		echo '</table>
-	</div>'; // close "repo-edit"
+	</div>';
 
 
 	// Sources linked to this repository
