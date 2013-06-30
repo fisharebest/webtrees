@@ -192,7 +192,7 @@ case 'edit':
 	echo '<input type="hidden" name="fact_id" value="', $fact_id, '">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
 	echo '<table class="facts_table">';
-	create_edit_form($edit_fact);
+	create_edit_form($record, $edit_fact);
 	echo keep_chan($record);
 	echo '</table>';
 	

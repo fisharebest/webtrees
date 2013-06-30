@@ -376,8 +376,8 @@ function print_addnewnote_link($element_id) {
 }
 
 /// Used in GEDFact CENS assistant
-function print_addnewnote_assisted_link($element_id, $pid) {
-	return '<a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$pid.'\'); return false;">'.WT_I18N::translate('Create a new Shared Note using Assistant').'</a>';
+function print_addnewnote_assisted_link($element_id, $xref) {
+	return '<a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$xref.'\'); return false;">'.WT_I18N::translate('Create a new Shared Note using Assistant').'</a>';
 }
 
 function print_editnote_link($note_id) {
@@ -410,7 +410,7 @@ function print_addnewsource_link($element_id) {
 function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose='', $rowDisplay=true) {
 	global $MEDIA_DIRECTORY, $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
-	global $pid, $linkToID, $bdm, $action, $event_add, $CensDate;
+	global $xref, $linkToID, $bdm, $action, $event_add, $CensDate;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 
 	if (substr($tag, 0, strpos($tag, "CENS"))) {
@@ -454,7 +454,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	if (!isset($noClose) || $noClose!="NOCLOSE") $noClose = '';
 	if (!isset($readOnly) || $readOnly!="READONLY") $readOnly = '';
 
-	if (empty($linkToID)) $linkToID = $pid;
+	if (empty($linkToID)) $linkToID = $xref;
 
 	$subnamefacts = array("NPFX", "GIVN", "SPFX", "SURN", "NSFX", "_MARNM_SURN");
 	preg_match('/^(?:(\d+) ('.WT_REGEX_TAG.') ?(.*))/', $tag, $match);
@@ -620,9 +620,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	} else if ($fact=="TEMP") {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Temp::templeNames(), WT_I18N::translate('No Temple - Living Ordinance'), $value);
 	} else if ($fact=="ADOP") {
-		echo edit_field_adop($element_name, $value, '', WT_Individual::getInstance($pid));
+		echo edit_field_adop($element_name, $value, '', WT_Individual::getInstance($xref));
 	} else if ($fact=="PEDI") {
-		echo edit_field_pedi($element_name, $value, '', WT_Individual::getInstance($pid));
+		echo edit_field_pedi($element_name, $value, '', WT_Individual::getInstance($xref));
 	} else if ($fact=='STAT') {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Stat::statusNames($upperlevel), '', $value);
 	} else if ($fact=='RELA') {
@@ -738,7 +738,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	// NAME TYPE : hide text field and show a selection list
 	else if ($fact=='TYPE' && $level==0) {
 		$extra = 'onchange="document.getElementById(\''.$element_id.'\').value=this.value;"';
-		echo edit_field_name_type($element_name, $value, $extra, WT_Individual::getInstance($pid));
+		echo edit_field_name_type($element_name, $value, $extra, WT_Individual::getInstance($xref));
 		echo '<script>';
 		echo "document.getElementById('", $element_id, "').style.display='none';";
 		echo '</script>';
@@ -831,12 +831,12 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				}
 				// If GEDFact_assistant/_CENS/ module exists && we are on the INDI page and the action is a GEDFact CENS assistant addition.
 				// Then show the add Shared note assisted icon, if not  ... show regular Shared note icons.
-				if (($action=='add' || $action=='edit') && $pid && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+				if (($action=='add' || $action=='edit') && $xref && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 					// Check if a CENS event ---------------------------
 					if ($event_add=='census_add') {
-						$type_pid=WT_GedcomRecord::getInstance($pid);
+						$type_pid=WT_GedcomRecord::getInstance($xref);
 						if ($type_pid instanceof WT_Individual) {
-							echo '<br>', print_addnewnote_assisted_link($element_id, $pid);
+							echo '<br>', print_addnewnote_assisted_link($element_id, $xref);
 						}
 					}
 				}
@@ -1382,9 +1382,11 @@ function create_add_form($fact) {
 }
 
 // Create a form to edit a WT_Fact object
-function create_edit_form($fact) {
+function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 	global $WORD_WRAPPED_NOTES, $ADVANCED_PLAC_FACTS, $date_and_time, $FULL_SOURCES;
-	global $pid, $tags;
+	global $tags;
+
+	$pid = $record->getXref();
 
 	$tags=array();
 	$gedlines = explode("\n", $fact->getGedcom());
