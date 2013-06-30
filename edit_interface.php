@@ -108,8 +108,9 @@ case 'editraw':
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<input type="hidden" name="fact_id" value="<?php echo $fact_id; ?>">
 			<textarea name="gedcom" id="gedcom" dir="ltr"><?php echo htmlspecialchars($edit_fact->getGedcom()); ?></textarea>
-			<br>
-			<?php echo keep_chan($record); ?>
+			<table>
+				<?php echo keep_chan($record); ?>
+			</table>
 			<p id="save-cancel">
 				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
 				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
