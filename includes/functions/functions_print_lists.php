@@ -659,9 +659,7 @@ function format_fam_table($datalist, $option='') {
 		if (is_null($family)) continue;
 		//-- Retrieve husband and wife
 		$husb = $family->getHusband();
-		if (is_null($husb)) $husb = new WT_Individual('');
 		$wife = $family->getWife();
-		if (is_null($wife)) $wife = new WT_Individual('');
 		if (!$family->canShow()) {
 			continue;
 		}
@@ -670,27 +668,29 @@ function format_fam_table($datalist, $option='') {
 		$html .= '<tr>';
 		//-- Husband name(s)
 		$html .= '<td colspan="2">';
-		foreach ($husb->getAllNames() as $num=>$name) {
-			if ($name['type']=='NAME') {
-				$title='';
-			} else {
-				$title='title="'.strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $husb)).'"';
+		if ($husb) {
+			foreach ($husb->getAllNames() as $num=>$name) {
+				if ($name['type']=='NAME') {
+					$title='';
+				} else {
+					$title='title="'.strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $husb)).'"';
+				}
+				if ($num==$husb->getPrimaryName()) {
+					$class=' class="name2"';
+					$sex_image=$husb->getSexImage();
+					list($surn, $givn)=explode(',', $name['sort']);
+				} else {
+					$class='';
+					$sex_image='';
+				}
+				// Only show married names if they are the name we are filtering by.
+				if ($name['type']!='_MARNM' || $num==$husb->getPrimaryName()) {
+					$html .= '<a '. $title. ' href="'. $family->getHtmlUrl(). '"'. $class. '>'. highlight_search_hits($name['full']). '</a>'. $sex_image. '<br>';
+				}
 			}
-			if ($num==$husb->getPrimaryName()) {
-				$class=' class="name2"';
-				$sex_image=$husb->getSexImage();
-				list($surn, $givn)=explode(',', $name['sort']);
-			} else {
-				$class='';
-				$sex_image='';
-			}
-			// Only show married names if they are the name we are filtering by.
-			if ($name['type']!='_MARNM' || $num==$husb->getPrimaryName()) {
-				$html .= '<a '. $title. ' href="'. $family->getHtmlUrl(). '"'. $class. '>'. highlight_search_hits($name['full']). '</a>'. $sex_image. '<br>';
-			}
+			// Husband parents
+			$html .= $husb->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
 		}
-		// Husband parents
-		$html .= $husb->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
 		$html .= '</td>';
 		// Dummy column to match colspan in header
 		$html .= '<td style="display:none;"></td>';
@@ -715,27 +715,29 @@ function format_fam_table($datalist, $option='') {
 		$html .= '<td>'.WT_Date::getAge($hdate, $mdate, 2).'</td><td>'.WT_Date::getAge($hdate, $mdate, 1).'</td>';
 		//-- Wife name(s)
 		$html .= '<td colspan="2">';
-		foreach ($wife->getAllNames() as $num=>$name) {
-			if ($name['type']=='NAME') {
-				$title='';
-			} else {
-				$title='title="'.strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $wife)).'"';
+		if ($wife) {
+			foreach ($wife->getAllNames() as $num=>$name) {
+				if ($name['type']=='NAME') {
+					$title='';
+				} else {
+					$title='title="'.strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $wife)).'"';
+				}
+				if ($num==$wife->getPrimaryName()) {
+					$class=' class="name2"';
+					$sex_image=$wife->getSexImage();
+					list($surn, $givn)=explode(',', $name['sort']);
+				} else {
+					$class='';
+					$sex_image='';
+				}
+				// Only show married names if they are the name we are filtering by.
+				if ($name['type']!='_MARNM' || $num==$wife->getPrimaryName()) {
+					$html .= '<a '. $title. ' href="'. $family->getHtmlUrl(). '"'. $class. '>'. highlight_search_hits($name['full']). '</a>'. $sex_image. '<br>';
+				}
 			}
-			if ($num==$wife->getPrimaryName()) {
-				$class=' class="name2"';
-				$sex_image=$wife->getSexImage();
-				list($surn, $givn)=explode(',', $name['sort']);
-			} else {
-				$class='';
-				$sex_image='';
-			}
-			// Only show married names if they are the name we are filtering by.
-			if ($name['type']!='_MARNM' || $num==$wife->getPrimaryName()) {
-				$html .= '<a '. $title. ' href="'. $family->getHtmlUrl(). '"'. $class. '>'. highlight_search_hits($name['full']). '</a>'. $sex_image. '<br>';
-			}
+			// Wife parents
+			$html .= $wife->getPrimaryParentsNames("parents_".$table_id." details1", 'none');
 		}
-		// Wife parents
-		$html .= $wife->getPrimaryParentsNames("parents_".$table_id." details1", 'none');
 		$html .= '</td>';
 		// Dummy column to match colspan in header
 		$html .= '<td style="display:none;"></td>';
