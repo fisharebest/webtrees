@@ -1165,7 +1165,7 @@ case 'edit_edit_raw':
 	$text=
 		WT_I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly.  It is an advanced option, and you should not use it unless you understand the GEDCOM format.  If you make a mistake here, it can be difficult to fix.').
 		'<br/><br/>'.
-		/* I18N: %s is a URL */ WT_I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="http://wiki.webtrees.net/images/Ged551-5.pdf">http://wiki.webtrees.net/images/Ged551-5.pdf</a>');
+		/* I18N: %s is a URL */ WT_I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="http://wiki.webtrees.net/w/images-en/Ged551-5.pdf">http://wiki.webtrees.net/w/images-en/Ged551-5.pdf</a>');
 	break;
 
 case 'edit_merge':
