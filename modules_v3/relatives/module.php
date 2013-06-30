@@ -80,15 +80,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				$class = 'facts_label';
 			}
 			$person = $fact->getTarget();
-			if ($person->equals($controller->record)) {
-				$label = '<i class="icon-selected"></i>';
-			} else {
-				$label = get_relationship_name(get_relationship($controller->record, $person, true, 3));
-			}
 			?>
 			<tr>
 				<td class="<?php echo $class; ?>">
-					<?php echo $label; ?>
+					<?php echo get_close_relationship_name($controller->record, $person); ?>
 				</td>
 				<td class="<?php echo $controller->getPersonStyle($person); ?>">
 					<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
@@ -155,15 +150,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				$class = 'facts_label';
 			}
 			$person = $fact->getTarget();
-			if ($person->equals($controller->record)) {
-				$label = '<i class="icon-selected"></i>';
-			} else {
-				$label = get_relationship_name(get_relationship($controller->record, $person, true, 3));
-			}
 			?>
 			<tr>
 				<td class="<?php echo $class; ?>">
-					<?php echo $label; ?>
+					<?php echo get_close_relationship_name($controller->record, $person); ?>
 				</td>
 				<td class="<?php echo $controller->getPersonStyle($person); ?>">
 					<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
@@ -190,15 +180,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				$class = 'facts_label';
 			}
 			$person = $fact->getTarget();
-			if ($person->equals($controller->record)) {
-				$label = '<i class="icon-selected"></i>';
-			} else {
-				$label = get_relationship_name(get_relationship($controller->record, $person, true, 3));
-			}
 			?>
 			<tr>
 				<td class="<?php echo $class; ?>">
-					<?php echo $label; ?>
+					<?php echo get_close_relationship_name($controller->record, $person); ?>
 				</td>
 				<td class="<?php echo $controller->getPersonStyle($person); ?>">
 					<?php print_pedigree_person($person, 2, 0, $personcount++); ?>

@@ -753,6 +753,29 @@ function sort_facts(&$arr) {
 
 }
 
+// For close family relationships, such as the families tab and the family navigator
+// Display a tick if both individuals are the same.
+// Stop after 3 steps, because pending edits may mean that there is no longer a
+// relationship to find.
+function get_close_relationship_name(WT_Individual $person1, WT_Individual $person2) {
+	if ($person1->equals($person2)) {
+		$label = '<i class="icon-selected" title="' . WT_I18N::translate('self') . '"></i>';
+	} else {
+		$label = get_relationship_name(get_relationship($person1, $person2, true, 3));
+	}
+}
+
+// For facts on the individual/family pages.
+// Stop after 4 steps, as distant relationships may take a long time to find.
+// TODO review the limit of 4 when the performance of the function is improved
+function get_associate_relationship_name(WT_Individual $person1, WT_Individual $person2) {
+	if ($person1->equals($person2)) {
+		$label = WT_I18N::translate('self');
+	} else {
+		$label = get_relationship_name(get_relationship($person1, $person2, true, 4));
+	}
+}
+
 /**
  * Get relationship between two individuals in the gedcom
  *

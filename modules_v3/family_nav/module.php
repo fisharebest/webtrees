@@ -111,11 +111,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $spouselinks, $parentlinks;
 
 		foreach ($family->getSpouses() as $spouse) {
-			if ($root->equals($spouse)) {
-				$menu = new WT_Menu('<i class="icon-selected"></i>');
-			} else {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($root, $spouse)));
-			}
+			$menu = new WT_Menu(get_close_relationship_name($root, $spouse)));
 			$menu->addClass('', 'submenu flyout2');
 			$submenu = new WT_Menu($this->print_pedigree_person_nav($spouse) . $parentlinks);
 			$menu->addSubMenu($submenu);
@@ -127,11 +123,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			echo '</td></tr>';
 		}
 		foreach ($family->getChildren() as $child) {
-			if ($controller->record->equals($child)) {
-				$menu = new WT_Menu('<i class="icon-selected"></i>');
-			} else {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $child)));
-			}
+			$menu = new WT_Menu(get_close_relationship_name($root, $child)));
 			$menu->addClass('', 'submenu flyout2');
 			$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
 			$menu->addSubMenu($submenu);
