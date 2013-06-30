@@ -806,45 +806,8 @@ case 'addnoteaction':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewnote_assisted':
-	$controller
-		->setPageTitle(WT_I18N::translate('Create a new Shared Note using Assistant'))
-		->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h3>', $controller->getPageTitle(), '&nbsp;&nbsp;';
-		// When more languages are added to the wiki, we can expand or redesign this
-		switch (WT_LOCALE) {
-		case 'fr':
-			echo wiki_help_link('/fr/Module_Assistant_Recensement');
-			break;
-		case 'en':
-		default:
-			echo wiki_help_link('/en/Census_Assistant_module');
-			break;
-		}
-	echo '</h3>';
-	
-	if (isset($_REQUEST['pid'])) $pid = $_REQUEST['pid'];
-	global $pid;
-
-	?>
-	<div class="center" style="width:100%;">
-		<?php
-		?>
-		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
-			<input type="hidden" name="action" value="addnoteaction_assisted">
-			<input type="hidden" name="noteid" value="newnote">
-			<input id="pid_array" type="hidden" name="pid_array" value="none">
-			<input id="xref" type="hidden" name="xref" value=<?php echo $pid; ?>>
-			<?php
-				require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/CENS_ctrl.php';
-			?>
-		</form>
-	</div>
-	<div style="clear:both;"></div>
-	</div><!-- id="edit_interface-page" -->
-	<?php
-	break;
+	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/CENS_ctrl.php';
+break;
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnoteaction_assisted':

@@ -32,8 +32,6 @@
 
 global $summary, $censyear, $censdate;
 
-$pid = safe_get('pid');
-
 $censdate  = new WT_Date('31 MAR 1901');
 $censyear   = $censdate->date1->y;
 
@@ -43,7 +41,6 @@ $ctry       = 'UK';
 // === Set $married to "Not married as we only want the Birth name here" ===
 $married=-1;
 
-$person=WT_Individual::getInstance($pid);
 // var_dump($person->getAllNames());
 $nam = $person->getAllNames();
 if ($person->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $person->getDeathYear(); }
@@ -52,8 +49,6 @@ $fulln   = rtrim($nam[0]['givn'],'*')." ".$nam[0]['surname'];
 $fulln   = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 $fulln   = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 $wholename = $fulln;
-
-$currpid=$pid;
 
 echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/dynamicoptionlist.js"></script>';
 echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/date.js"></script>';
@@ -67,7 +62,7 @@ echo '</script>';
 echo '<div class="cens_header">';
 echo '<div class="cens_header_left">';
 echo WT_I18N::translate('Head of Household:');
-echo ' &nbsp;', $wholename, '&nbsp; (', $pid, ')';
+echo ' ', $wholename;
 echo '</div>';
 if ($summary) {
 	echo '<div class="cens_header_right">', $summary, '</div>';

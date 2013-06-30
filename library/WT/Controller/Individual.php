@@ -591,20 +591,4 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 
 		return '<div id="sidebar"><div id="sidebarAccordion">'.$html.'</div></div>';
 	}
-
-// -----------------------------------------------------------------------------
-// Functions for GedFact Assistant
-// -----------------------------------------------------------------------------
-	/**
-	* include GedFact controller
-	*/
-	function census_assistant() {
-		require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_1_ctrl.php';
-	}
-	function medialink_assistant() {
-		require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_1_ctrl.php';
-	}
-// -----------------------------------------------------------------------------
-// End GedFact Assistant Functions
-// -----------------------------------------------------------------------------
 }

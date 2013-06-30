@@ -102,9 +102,9 @@ if (!defined('WT_WEBTREES')) {
 
 					//-- Build Parents Family --------------------------------------
 					$personcount=0;
-					$families = $this->record->getChildFamilies();
+					$families = $person->getChildFamilies();
 					foreach ($families as $family) {
-						$label = $this->record->getChildFamilyLabel($family);
+						$label = $person->getChildFamilyLabel($family);
 						$people = $this->buildFamilyList($family, "parents", false);
 						$marrdate = $family->getMarriageDate();
 
@@ -529,8 +529,8 @@ if (!defined('WT_WEBTREES')) {
 					//-- Step families ---------------------------------------------------------
 
 					//-- Build step families ---------------------------------------------------
-					foreach ($this->record->getChildStepFamilies() as $family) {
-						$label = $this->record->getStepFamilyLabel($family);
+					foreach ($person->getChildStepFamilies() as $family) {
+						$label = $person->getStepFamilyLabel($family);
 						$people = $this->buildFamilyList($family, "step-parents", false);
 						if ($people) {
 							echo "<tr><td><br></td><td></td></tr>";
@@ -958,7 +958,7 @@ if (!defined('WT_WEBTREES')) {
 					echo "<tr><td><font size=1><br></font></td></tr>";
 
 					//-- Build Spouse Family ---------------------------------------------------
-					$families = $this->record->getSpouseFamilies();
+					$families = $person->getSpouseFamilies();
 					//$personcount = 0;
 					foreach ($families as $family) {
 						$people = $this->buildFamilyList($family, "spouse", false);

@@ -39,4 +39,4 @@ $summary=
 	$controller->record->format_first_major_fact(WT_EVENTS_BIRT, 2).
 	$controller->record->format_first_major_fact(WT_EVENTS_DEAT, 2);
 
-$controller->medialink_assistant();
+require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_1_ctrl.php';
