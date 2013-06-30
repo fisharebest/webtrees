@@ -127,7 +127,6 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	if ($hfams || $sosa) {
 		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
 		echo "<td><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
-		$hparents = false;
 		foreach ($hfams as $hfamily) {
 			$hparents = find_parents_in_record($hfamily->getGedcom());
 			$upfamid = $hfamily->getXref();
