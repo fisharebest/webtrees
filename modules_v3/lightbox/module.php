@@ -51,6 +51,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 		return WT_USER_CAN_EDIT || $this->get_facts();
 	}
 
+	
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
 		return !$this->get_facts();
@@ -62,24 +63,17 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		// Group the media objects by type.
 		// (The old code further grouped them into 5 categories - was this really wanted??)
-		$types = WT_Gedcom_Tag::getFileFormTypes();
-		$groups = array();
+		$media_list = array();
 		foreach ($this->get_facts() as $fact) {
 			preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
 			foreach ($matches[1] as $match) {
 				$media = WT_Media::getInstance($match);
 				if ($media->canShow()) {
-					$type = $media->getMediaType();
-					if (!array_key_exists($type, $types)) {
-						$type = 'other';
-					}
-					if (!isset($groups[$type])) {
-						$groups[$type] = array();
-					}
-					$groups[$type][] = array('fact' => $fact, 'media' => $media);
+					$media_list[] = array('fact' => $fact, 'media' => $media);
 				}
 			}
 		}
+		// TODO: sort these using _WT_OBJE_SORT
 
 		$html='<div id="'.$this->getName().'_content">';
 		//Show Lightbox-Album header Links
@@ -111,155 +105,151 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 		$media_found = false;
 
 		// Used when sorting media on album tab page
-		$html.='<table width="100%" cellpadding="0" border="0">';
-		foreach ($groups as $type=>$media_list) {
-			$html .= '<tr>';
-			$html .= '<td class="facts_label width20">';
-			$html .= $types[$type];
+		$html .= '<table width="100%" cellpadding="0" border="0">';
+		$html .= '<tr>';
+		$html .= '<td class="facts_value">';
+		$html .= '<div class="thumbcontainer">';
+		$html .= '<ul class="thumblist">';
+		foreach ($media_list as $media_list_item) {
+			if ($media_list_item['fact']->isNew()) {
+				$html .= '<li class="li_new">';
+			} elseif ($media_list_item['fact']->isOld()) {
+				$html .= '<li class="li_old">';
+			} else {
+				$html .= '<li class="li_norm">';
+			}
+			// ...and now the actual image
+			if (strpos($media_list_item['media']->getFilename(), 'http://maps.google.')===0) {
+				$html .= '<table width="10px" style="margin-top:-90px;" class="pic" border="0"><tr>';
+			} else {
+				$html .= '<table width="10px" class="pic" border="0"><tr>';
+			}
+			$html .= '<td align="center" rowspan="2">';
+			$html .= '<div style="width:1px; height:100px;"></div>';
 			$html .= '</td>';
-			$html .= '<td class="facts_value">';
-			$html .= '<div class="thumbcontainer">';
-			$html .= '<ul class="thumblist">';
-			foreach ($media_list as $media_list_item) {
-				if ($media_list_item['fact']->isNew()) {
-					$html .= '<li class="li_new">';
-				} elseif ($media_list_item['fact']->isOld()) {
-					$html .= '<li class="li_old">';
-				} else {
-					$html .= '<li class="li_norm">';
-				}
-				// ...and now the actual image
-				if (strpos($media_list_item['media']->getFilename(), 'http://maps.google.')===0) {
-					$html .= '<table width="10px" style="margin-top:-90px;" class="pic" border="0"><tr>';
-				} else {
-					$html .= '<table width="10px" class="pic" border="0"><tr>';
-				}
-				$html .= '<td align="center" rowspan="2">';
-				$html .= '<div style="width:1px; height:100px;"></div>';
-				$html .= '</td>';
-				$html .= '<td colspan="3" valign="middle" align="center">';
-				$html .= $media_list_item['media']->displayImage();
-				$html .= '</td></tr>';
+			$html .= '<td colspan="3" valign="middle" align="center">';
+			$html .= $media_list_item['media']->displayImage();
+			$html .= '</td></tr>';
 
-				//View Edit Menu ----------------------------------
-				$html .= '<tr>';
-				$html .= '<td width="5px"></td>';
-				$html .= '<td valign="bottom" align="center" class="nowrap">';
+			//View Edit Menu ----------------------------------
+			$html .= '<tr>';
+			$html .= '<td width="5px"></td>';
+			$html .= '<td valign="bottom" align="center" class="nowrap">';
 
 
 
-				//Get media item Notes
-				$haystack = $media_list_item['media']->getGedcom();
-				$needle   = '1 NOTE';
-				$before   = substr($haystack, 0, strpos($haystack, $needle));
-				$after    = substr(strstr($haystack, $needle), strlen($needle));
-				$final    = $before.$needle.$after;
-				$notes    = htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)), ENT_QUOTES);
+			//Get media item Notes
+			$haystack = $media_list_item['media']->getGedcom();
+			$needle   = '1 NOTE';
+			$before   = substr($haystack, 0, strpos($haystack, $needle));
+			$after    = substr(strstr($haystack, $needle), strlen($needle));
+			$final    = $before.$needle.$after;
+			$notes    = htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)), ENT_QUOTES);
 
-				// Prepare Below Thumbnail  menu ----------------------------------------------------
-				$mtitle = '<div style="max-width:120px;overflow:hidden;text-overflow:ellipsis;">' . $media_list_item['media']->getFullName() . '</div>';
-				$menu = new WT_Menu();
-				$menu->addLabel($mtitle, 'right');
-	
-				if ($media_list_item['fact']->isOld()) {
-					// Do not print menu if item has changed and this is the old item
-				} else {
-					// Continue printing menu
-					$menu->addClass('', 'submenu');
-	
-					// View Notes
-					if (strpos($media_list_item['media']->getGedcom(), "\n1 NOTE")) {
-						$submenu = new WT_Menu(WT_I18N::translate('View Notes'), '#');
-						// Notes Tooltip ----------------------------------------------------
-						$submenu->addOnclick("modalNotes('". $notes ."','". WT_I18N::translate('View Notes') ."'); return false;");
-						$submenu->addClass("submenuitem");
-						$menu->addSubMenu($submenu);
-					}
-					//View Details
-					$submenu = new WT_Menu(WT_I18N::translate('View Details'), WT_SERVER_NAME.WT_SCRIPT_PATH . "mediaviewer.php?mid=".$media_list_item['media']->getXref().'&amp;ged='.WT_GEDURL, 'right');
+			// Prepare Below Thumbnail  menu ----------------------------------------------------
+			$mtitle = '<div style="max-width:120px;overflow:hidden;text-overflow:ellipsis;">' . $media_list_item['media']->getFullName() . '</div>';
+			$menu = new WT_Menu();
+			$menu->addLabel($mtitle, 'right');
+
+			if ($media_list_item['fact']->isOld()) {
+				// Do not print menu if item has changed and this is the old item
+			} else {
+				// Continue printing menu
+				$menu->addClass('', 'submenu');
+
+				// View Notes
+				if (strpos($media_list_item['media']->getGedcom(), "\n1 NOTE")) {
+					$submenu = new WT_Menu(WT_I18N::translate('View Notes'), '#');
+					// Notes Tooltip ----------------------------------------------------
+					$submenu->addOnclick("modalNotes('". $notes ."','". WT_I18N::translate('View Notes') ."'); return false;");
 					$submenu->addClass("submenuitem");
 					$menu->addSubMenu($submenu);
-	
-					//View Sources
-					$source_menu = null;
-					foreach ($media->getFacts('SOUR') as $source_fact) {
-						$source = $source_fact->getTarget();
-						if ($source && $source->canShow()) {
-							if (!$source_menu) {
-								// Group sources under a top level menu
-								$source_menu = new WT_Menu(WT_I18N::translate('Sources'), '#', null, 'right', 'right');
-								$source_menu->addClass('submenuitem', 'submenu');
-							}
-							//now add a link to the actual source as a submenu
-							$submenu = new WT_Menu(new WT_Menu(strip_tags($source->getFullName()), $source->getHtmlUrl()));
-							$submenu->addClass('submenuitem', 'submenu');
-							$source_menu->addSubMenu($submenu);
+				}
+				//View Details
+				$submenu = new WT_Menu(WT_I18N::translate('View Details'), WT_SERVER_NAME.WT_SCRIPT_PATH . "mediaviewer.php?mid=".$media_list_item['media']->getXref().'&amp;ged='.WT_GEDURL, 'right');
+				$submenu->addClass("submenuitem");
+				$menu->addSubMenu($submenu);
+
+				//View Sources
+				$source_menu = null;
+				foreach ($media->getFacts('SOUR') as $source_fact) {
+					$source = $source_fact->getTarget();
+					if ($source && $source->canShow()) {
+						if (!$source_menu) {
+							// Group sources under a top level menu
+							$source_menu = new WT_Menu(WT_I18N::translate('Sources'), '#', null, 'right', 'right');
+							$source_menu->addClass('submenuitem', 'submenu');
 						}
+						//now add a link to the actual source as a submenu
+						$submenu = new WT_Menu(new WT_Menu(strip_tags($source->getFullName()), $source->getHtmlUrl()));
+						$submenu->addClass('submenuitem', 'submenu');
+						$source_menu->addSubMenu($submenu);
 					}
-					if ($source_menu) {
-						$menu->addSubMenu($source_menu);
-					}
-	
-					if (WT_USER_CAN_EDIT) {
-						// Edit Media
-						$submenu = new WT_Menu(WT_I18N::translate('Edit media'));
-						$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$media_list_item['media']->getXref()."', '_blank', edit_window_specs);");
-						$submenu->addClass("submenuitem");
-						$menu->addSubMenu($submenu);
-						if (WT_USER_IS_ADMIN) {
-							// Manage Links
-							if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-								$submenu = new WT_Menu(WT_I18N::translate('Manage links'));
-								$submenu->addOnclick("return window.open('inverselink.php?mediaid=".$media_list_item['media']->getXref()."&amp;linkto=manage', '_blank', find_window_specs);");
-								$submenu->addClass("submenuitem");
-								$menu->addSubMenu($submenu);
-							} else {
-								$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', null, 'right', 'right');
-								$submenu->addClass('submenuitem', 'submenu');
-	
-								$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'));
-								$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid=".$media_list_item['media']->getXref()."&amp;linkto=person', '_blank', find_window_specs);");
-								$ssubmenu->addClass('submenuitem', 'submenu');
-								$submenu->addSubMenu($ssubmenu);
-	
-								$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'));
-								$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid=".$media_list_item['media']->getXref()."&amp;linkto=family', '_blank', find_window_specs);");
-								$ssubmenu->addClass('submenuitem', 'submenu');
-								$submenu->addSubMenu($ssubmenu);
-	
-								$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'));
-								$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid=".$media_list_item['media']->getXref()."&amp;linkto=source', '_blank', find_window_specs);");
-								$ssubmenu->addClass('submenuitem', 'submenu');
-								$submenu->addSubMenu($ssubmenu);
-	
-								$menu->addSubMenu($submenu);
-							}
-							// Unlink Media
-							$submenu = new WT_Menu(WT_I18N::translate('Unlink Media'));
-							$submenu->addOnclick("return delete_fact('".$media_list_item['media']->getXref()."', 'OBJE', '".$media_list_item['media']->getXref()."', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');");
+				}
+				if ($source_menu) {
+					$menu->addSubMenu($source_menu);
+				}
+
+				if (WT_USER_CAN_EDIT) {
+					// Edit Media
+					$submenu = new WT_Menu(WT_I18N::translate('Edit media'));
+					$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$media_list_item['media']->getXref()."', '_blank', edit_window_specs);");
+					$submenu->addClass("submenuitem");
+					$menu->addSubMenu($submenu);
+					if (WT_USER_IS_ADMIN) {
+						// Manage Links
+						if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+							$submenu = new WT_Menu(WT_I18N::translate('Manage links'));
+							$submenu->addOnclick("return window.open('inverselink.php?mediaid=".$media_list_item['media']->getXref()."&amp;linkto=manage', '_blank', find_window_specs);");
 							$submenu->addClass("submenuitem");
 							$menu->addSubMenu($submenu);
+						} else {
+							$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', null, 'right', 'right');
+							$submenu->addClass('submenuitem', 'submenu');
+
+							$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'));
+							$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid=".$media_list_item['media']->getXref()."&amp;linkto=person', '_blank', find_window_specs);");
+							$ssubmenu->addClass('submenuitem', 'submenu');
+							$submenu->addSubMenu($ssubmenu);
+
+							$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'));
+							$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid=".$media_list_item['media']->getXref()."&amp;linkto=family', '_blank', find_window_specs);");
+							$ssubmenu->addClass('submenuitem', 'submenu');
+							$submenu->addSubMenu($ssubmenu);
+
+							$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'));
+							$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid=".$media_list_item['media']->getXref()."&amp;linkto=source', '_blank', find_window_specs);");
+							$ssubmenu->addClass('submenuitem', 'submenu');
+							$submenu->addSubMenu($ssubmenu);
+
+							$menu->addSubMenu($submenu);
 						}
+						// Unlink Media
+						$submenu = new WT_Menu(WT_I18N::translate('Unlink Media'));
+						$submenu->addOnclick("return delete_fact('".$media_list_item['media']->getXref()."', 'OBJE', '".$media_list_item['media']->getXref()."', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');");
+						$submenu->addClass("submenuitem");
+						$menu->addSubMenu($submenu);
 					}
-					$html .= $menu->getMenu();
 				}
-				$html .= '</td>';
-				$html .= '<td width="5px"></td>';
-				$html .= '</tr>';
-				$html .= '</table>';
-				$html .= '<input type="hidden" name="order1[' . $media_list_item['media']->getXref() . ']" value="' . $sort_i . '">';
-				$sort_i++;
-				$html .= '</li>';
+				$html .= $menu->getMenu();
 			}
-			$html .= '</ul>';
-			$html .= '<div class="clearlist"></div>';
 			$html .= '</td>';
+			$html .= '<td width="5px"></td>';
 			$html .= '</tr>';
+			$html .= '</table>';
+			$html .= '<input type="hidden" name="order1[' . $media_list_item['media']->getXref() . ']" value="' . $sort_i . '">';
+			$sort_i++;
+			$html .= '</li>';
 		}
+		$html .= '</ul>';
+		$html .= '<div class="clearlist"></div>';
+		$html .= '</td>';
+		$html .= '</tr>';
 		$html .= '</table></div>';
 		return $html;
 	}
 
+	// Get all facts containing media links for this person and their spouse-family records
 	private function get_facts() {
 		global $controller;
 

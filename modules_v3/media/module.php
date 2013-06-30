@@ -115,7 +115,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 
 	// Get all facts containing media links for this person and their spouse-family records
-	function get_facts() {
+	private function get_facts() {
 		global $controller;
 
 		if ($this->facts === null) {
