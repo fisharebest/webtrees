@@ -120,43 +120,38 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	echo "</td></tr></table>";
 	echo "</td>";
 	// husband's parents
-	$hfams = $husb->getChildFamilies();
-	$hparents = false;
-	$upfamid = "";
+	$hfam = $husb->getPrimaryChildFamily();
 
-	if ($hfams || $sosa) {
+	if ($hfam || $sosa) {
 		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
 		echo "<td><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
-		foreach ($hfams as $hfamily) {
-			$hparents = find_parents_in_record($hfamily->getGedcom());
-			$upfamid = $hfamily->getXref();
-			break;
-		}
-		if ($hparents || $sosa) {
-			// husband's father
+		// husband's father
+		if ($hfam->getHusband()) {
 			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
-			if ($sosa > 0) print_sosa_number($sosa * 4, $hparents['HUSB'], "down");
-			if (!empty($gparid) && $hparents['HUSB']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
+			if ($sosa > 0) print_sosa_number($sosa * 4, $hfam->getHusband()->getXref(), "down");
+			if (!empty($gparid) && $hfam->getHusband()->getXref()==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 			echo "<td valign=\"top\">";
-			print_pedigree_person(WT_Individual::getInstance($hparents['HUSB']), 1, 4, $personcount);
+			print_pedigree_person(WT_Individual::getInstance($hfam->getHusband()->getXref()), 1, 4, $personcount);
 			echo "</td></tr></table>";
 		}
 		echo "</td>";
 	}
-	if (!empty($upfamid) && ($sosa!=-1)) {
+	if ($hfam && ($sosa!=-1)) {
 		echo '<td valign="middle" rowspan="2">';
-		print_url_arrow($upfamid, ($sosa==0 ? '?famid='.$upfamid.'&amp;ged='.WT_GEDURL : '#'.$upfamid), $upfamid, 1);
+		print_url_arrow($hfam->getXref(), ($sosa==0 ? '?famid='.$hfam->getXref().'&amp;ged='.WT_GEDURL : '#'.$hfam->getXref()), $hfam->getXref(), 1);
 		echo '</td>';
 	}
-	if ($hparents || $sosa) {
+	if ($hfam || $sosa) {
 		// husband's mother
 		echo "</tr><tr><td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
-		echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
-		if ($sosa > 0) print_sosa_number($sosa * 4 + 1, $hparents['WIFE'], "down");
-		if (!empty($gparid) && $hparents['WIFE']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
-		echo "<td valign=\"top\">";
-		print_pedigree_person(WT_Individual::getInstance($hparents['WIFE']), 1, 5, $personcount);
-		echo "</td></tr></table>";
+		if ($hfam->getWife()) {
+			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
+			if ($sosa > 0) print_sosa_number($sosa * 4 + 1, $hfam->getWife()->getXref(), "down");
+			if (!empty($gparid) && $hfam->getWife()->getXref()==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
+			echo "<td valign=\"top\">";
+			print_pedigree_person(WT_Individual::getInstance($hfam->getWife()->getXref()), 1, 5, $personcount);
+			echo "</td></tr></table>";
+		}
 		echo "</td>";
 	}
 	echo "</tr></table>";
@@ -196,44 +191,38 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	echo "</td></tr></table>";
 	echo "</td>";
 	// wife's parents
-	$hfams = $wife->getChildFamilies();
-	$hparents = false;
-	$upfamid = "";
+	$hfam = $wife->getPrimaryChildFamily();
 	
-	if ($hfams || $sosa) {
+	if ($hfam || $sosa) {
 		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
 		echo "<td><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
-		$j = 0;
-		foreach ($hfams as $hfamily) {
-			$hparents = find_parents_in_record($hfamily->getGedcom());
-			$upfamid = $hfamily->getXref();
-			break;
-		}
-		if ($hparents || $sosa) {
-			// wife's father
+		// wife's father
+		if ($hfam->getHusband()) {
 			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\"><tr>";
-			if ($sosa > 0) print_sosa_number($sosa * 4 + 2, $hparents['HUSB'], "down");
-			if (!empty($gparid) && $hparents['HUSB']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
+			if ($sosa > 0) print_sosa_number($sosa * 4 + 2, $hfam->getHusband()->getXref(), "down");
+			if (!empty($gparid) && $hfam->getHusband()->getXref()==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 			echo "<td valign=\"top\">";
-			print_pedigree_person(WT_Individual::getInstance($hparents['HUSB']), 1, 6, $personcount);
+			print_pedigree_person(WT_Individual::getInstance($hfam->getHusband()->getXref()), 1, 6, $personcount);
 			echo "</td></tr></table>";
 		}
 		echo "</td>";
 	}
-	if (!empty($upfamid) && ($sosa!=-1)) {
+	if ($hfam && ($sosa!=-1)) {
 		echo '<td valign="middle" rowspan="2">';
-		print_url_arrow($upfamid, ($sosa==0 ? '?famid='.$upfamid.'&amp;ged='.WT_GEDURL : '#'.$upfamid), $upfamid, 1);
+		print_url_arrow($hfam->getXref(), ($sosa==0 ? '?famid='.$hfam->getXref().'&amp;ged='.WT_GEDURL : '#'.$hfam->getXref()), $hfam->getXref(), 1);
 		echo '</td>';
 	}
-	if ($hparents || $sosa) {
+	if ($hfam || $sosa) {
 		// wife's mother
 		echo "</tr><tr><td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
-		echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\"><tr>";
-		if ($sosa > 0) print_sosa_number($sosa * 4 + 3, $hparents['WIFE'], "down");
-		if (!empty($gparid) && $hparents['WIFE']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
-		echo "<td valign=\"top\">";
-		print_pedigree_person(WT_Individual::getInstance($hparents['WIFE']), 1, 7, $personcount);
-		echo "</td></tr></table>";
+		if ($hfam->getWife()) {
+			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\"><tr>";
+			if ($sosa > 0) print_sosa_number($sosa * 4 + 3, $hfam->getWife()->getXref(), "down");
+			if (!empty($gparid) && $hfam->getWife()->getXref()==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
+			echo "<td valign=\"top\">";
+			print_pedigree_person(WT_Individual::getInstance($hfam->getWife()->getXref()), 1, 7, $personcount);
+			echo "</td></tr></table>";
+		}
 		echo "</td>";
 	}
 	echo "</tr></table>";
@@ -310,9 +299,6 @@ function print_family_children(WT_Family $family, $childid = "", $sosa = 0, $lab
 				$maxfam = count($famids)-1;
 				for ($f=0; $f<=$maxfam; $f++) {
 					$famid_child = $famids[$f]->getXref();
-					$parents = find_parents($famid_child);
-					if ($parents["HUSB"] == $child->getXref()) $spouse = $parents["WIFE"];
-					else $spouse =  $parents["HUSB"];
 					// multiple marriages
 					if ($f>0) {
 						echo "</tr><tr><td>&nbsp;</td>";
@@ -323,8 +309,7 @@ function print_family_children(WT_Family $family, $childid = "", $sosa = 0, $lab
 						//else echo "<img height=\"100%\"";
 						
 						//find out how many cousins there are to establish vertical line on second families
-						$family=WT_Family::getInstance($famid_child);
-						$fchildren=$family->getChildren();
+						$fchildren=$famids[$f]->getChildren();
 						$kids = count($fchildren);
 						$PBheight = $bheight;
 						$Pheader = ($cbheight*$kids)-$bheight;
@@ -342,34 +327,25 @@ function print_family_children(WT_Family $family, $childid = "", $sosa = 0, $lab
 						echo "</td>";
 					}
 					echo "<td class=\"details1\" valign=\"middle\" align=\"center\">";
-					$famrec = find_family_record($famid_child, WT_GED_ID);
-					$marrec = get_sub_record(1, "1 MARR", $famrec);
-					$divrec = get_sub_record(1, "1 DIV",  $famrec);
-					if (canDisplayFact($famid_child, WT_GED_ID, $marrec)) {
+					$spouse = $famids[$f]->getSpouse($child);
+
+					$marr = $famids[$f]->getFactbyType('MARR');
+					$div  = $famids[$f]->getFactByType('DIV');
+					if ($marr && $marr->canShow()) {
 						// marriage date
-						$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $marrec, $match);
-						if ($ct>0) echo "<span class=\"date\">".trim($match[1])."</span>";
+						echo $marr->getDate()->minDate()->Format('%Y');
 						// divorce date
-						$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $divrec, $match);
-						if ($ct>0) echo "-<span class=\"date\">".trim($match[1])."</span>";
-					}
-					echo "<br><img width=\"100%\" class=\"line5\" height=\"3\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\">";
-					// family link
-					if ($famid_child) {
-						$family_child = WT_Family::getInstance($famid_child);
-						if ($family_child) {
-							echo "<br>";
-							echo '<a class="details1" href="', $family_child->getHtmlUrl(), '">';
-							// TODO: shouldn't there be something inside this <a></a>
-							echo "</a>";
+						if ($div && $div->canShow()) {
+							echo $div->getDate()->minDate()->Format('%Y');
 						}
 					}
+					echo "<br><img width=\"100%\" class=\"line5\" height=\"3\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\">";
 					echo "</td>";
 					// spouse information
 					echo "<td style=\"vertical-align: center;";
 					if (!empty($divrec)) echo " filter:alpha(opacity=40);opacity:0.4;\">";
 					else echo "\">";
-					print_pedigree_person(WT_Individual::getInstance($spouse), 1, 9, $personcount);
+					print_pedigree_person($spouse, 1, 9, $personcount);
 					$personcount++;
 					echo "</td>";
 					// cousins
@@ -414,11 +390,11 @@ function print_sosa_family($famid, $childid, $sosa, $label="", $parid="", $gpari
 	echo "<hr>";
 	echo "<p style='page-break-before:always'>";
 	if (!empty($famid)) echo "<a name=\"{$famid}\"></a>";
-	print_family_parents($famid, $sosa, $label, $parid, $gparid, $personcount);
+	print_family_parents(WT_Family::getInstance($famid), $sosa, $label, $parid, $gparid, $personcount);
 	$personcount++;
 	echo "<br>";
 	echo "<table width=\"95%\"><tr><td valign=\"top\" style=\"width: " . ($pbwidth) . "px;\">";
-	print_family_children($famid, $childid, $sosa, $label, $personcount);
+	print_family_children(WT_Family::getInstance($famid), $childid, $sosa, $label, $personcount);
 	echo "</td></tr></table>";
 	echo "<br>";
 }

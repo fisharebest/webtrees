@@ -537,50 +537,6 @@ function get_cont($nlevel, $nrec, $tobr=true) {
 	return rtrim($text, " ");
 }
 
-/**
- * find the parents in a family
- *
- * find and return a two element array containing the parents of the given family record
- * @author John Finlay (yalnifj)
- * @param string $famid the gedcom xref id for the family
- * @return array returns a two element array with indexes HUSB and WIFE for the parent ids
- */
-function find_parents($famid) {
-	$famrec = find_gedcom_record($famid, WT_GED_ID, WT_USER_CAN_EDIT);
-	if (empty($famrec)) {
-		return false;
-	}
-	return find_parents_in_record($famrec);
-}
-
-/**
- * find the parents in a family record
- *
- * find and return a two element array containing the parents of the given family record
- * @author John Finlay (yalnifj)
- * @param string $famrec the gedcom record of the family to search in
- * @return array returns a two element array with indexes HUSB and WIFE for the parent ids
- */
-function find_parents_in_record($famrec) {
-	if (empty($famrec)) {
-		return false;
-	}
-	$parents = array();
-	$ct = preg_match('/1 HUSB @('.WT_REGEX_XREF.')@/', $famrec, $match);
-	if ($ct>0) {
-		$parents["HUSB"]=$match[1];
-	} else {
-		$parents["HUSB"]="";
-	}
-	$ct = preg_match('/1 WIFE @('.WT_REGEX_XREF.')@/', $famrec, $match);
-	if ($ct>0) {
-		$parents["WIFE"]=$match[1];
-	} else {
-		$parents["WIFE"]="";
-	}
-	return $parents;
-}
-
 // ************************************************* START OF SORTING FUNCTIONS ********************************* //
 // Function to sort GEDCOM fact tags based on their tanslations
 function factsort($a, $b) {
