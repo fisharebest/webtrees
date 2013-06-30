@@ -763,6 +763,7 @@ function get_close_relationship_name(WT_Individual $person1, WT_Individual $pers
 	} else {
 		$label = get_relationship_name(get_relationship($person1, $person2, true, 3));
 	}
+	return $label;
 }
 
 // For facts on the individual/family pages.
@@ -774,6 +775,7 @@ function get_associate_relationship_name(WT_Individual $person1, WT_Individual $
 	} else {
 		$label = get_relationship_name(get_relationship($person1, $person2, true, 4));
 	}
+	return $label;
 }
 
 /**
