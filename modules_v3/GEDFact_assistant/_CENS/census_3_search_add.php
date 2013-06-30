@@ -104,24 +104,21 @@ if (!defined('WT_WEBTREES')) {
 					$personcount=0;
 					$families = $person->getChildFamilies();
 					foreach ($families as $family) {
-						$label = $person->getChildFamilyLabel($family);
 						$people = $this->buildFamilyList($family, "parents", false);
 						$marrdate = $family->getMarriageDate();
 
 						//-- Get Parents Children's Name, DOB, DOD --------------------------
-						if (isset($people["children"])) {
-							$chBLDarray = Array();
-							foreach ($people["children"] as $child) {
-								$chnam   = $child->getAllNames();
-								$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
-								$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
-								$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
-								$chfulln = addslashes($chfulln); // Child's Full Name
-								$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // Child's Date of Birth (Julian)
-								$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // Child's Date of Death (Julian)
-								$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
-								array_push($chBLDarray, $chBLD);
-							}
+						$chBLDarray = Array();
+						foreach ($people["children"] as $child) {
+							$chnam   = $child->getAllNames();
+							$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
+							$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
+							$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
+							$chfulln = addslashes($chfulln); // Child's Full Name
+							$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // Child's Date of Birth (Julian)
+							$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // Child's Date of Death (Julian)
+							$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
+							array_push($chBLDarray, $chBLD);
 						}
 
 						//-- Parents Husband -------------------
@@ -376,7 +373,6 @@ if (!defined('WT_WEBTREES')) {
 						if (isset($people["children"])) {
 
 							//-- Parent's Children's Details --------------------------------------
-							$elderdate = $family->getMarriageDate();
 							foreach ($people["children"] as $child) {
 
 								// Get Child's Children's Name DOB DOD ----
@@ -520,7 +516,6 @@ if (!defined('WT_WEBTREES')) {
 								</tr>
 								<?php
 							}
-							$elderdate = $child->getBirthDate(false);
 						}
 					}
 
@@ -528,11 +523,7 @@ if (!defined('WT_WEBTREES')) {
 
 					//-- Build step families ---------------------------------------------------
 					foreach ($person->getChildStepFamilies() as $family) {
-						$label = $person->getStepFamilyLabel($family);
 						$people = $this->buildFamilyList($family, "step-parents", false);
-						if ($people) {
-							echo "<tr><td><br></td><td></td></tr>";
-						}
 						$marrdate = $family->getMarriageDate();
 
 						//-- Get Children's Name, DOB, DOD --------------------------
@@ -552,7 +543,6 @@ if (!defined('WT_WEBTREES')) {
 						}
 
 						// Step Husband -----------------------------
-						$elderdate = "";
 						if (isset($people["husb"])) {
 
 							//-- Step Husbands Parent Family --------------------------------------
@@ -679,7 +669,6 @@ if (!defined('WT_WEBTREES')) {
 								</td>
 							</tr>
 							<?php
-							$elderdate = $people["husb"]->getBirthDate(false);
 						}
 
 						// Step Wife -------------------
@@ -824,7 +813,6 @@ if (!defined('WT_WEBTREES')) {
 
 						// Step Children ---------------------
 						if (isset($people["children"])) {
-							$elderdate = $family->getMarriageDate();
 							foreach ($people["children"] as $child) {
 
 								// Get Child's Children
@@ -946,7 +934,6 @@ if (!defined('WT_WEBTREES')) {
 									</td>
 								</tr>
 								<?php
-								//$elderdate = $child->getBirthDate(false);
 							}
 						}
 					}
