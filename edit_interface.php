@@ -108,7 +108,9 @@ case 'editraw':
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<input type="hidden" name="fact_id" value="<?php echo $fact_id; ?>">
 			<textarea name="gedcom" id="gedcom" dir="ltr"><?php echo htmlspecialchars($edit_fact->getGedcom()); ?></textarea>
-			<?php echo keep_chan($record); ?>
+			<table class="facts_table">
+				<?php echo keep_chan($record); ?>
+			</table>
 			<p id="save-cancel">
 				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
 				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
@@ -192,8 +194,8 @@ case 'edit':
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
 	echo '<table class="facts_table">';
 	create_edit_form($record, $edit_fact);
-	echo '</table>';
 	echo keep_chan($record);
+	echo '</table>';
 	
 	$level1type = $edit_fact->getTag();
 	switch ($record::RECORD_TYPE) {
@@ -278,8 +280,8 @@ case 'add':
 
 	create_add_form($fact);
 
-	echo '</table>';
 	echo keep_chan($record);
+	echo '</table>';
 
 	// Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...
 	if ($level0type=='INDI' || $level0type=='FAM') {
@@ -505,8 +507,8 @@ case 'addfamlink':
 	echo edit_field_pedi('PEDI', '', '', $person);
 	echo help_link('PEDI');
 	echo '</td></tr>';
-	echo '</table>';
 	echo keep_chan($person);
+	echo '</table>';
 	?>
 		<p id="save-cancel">
 			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
@@ -554,8 +556,8 @@ case 'linkspouse':
 	add_simple_tag("0 MARR Y");
 	add_simple_tag("0 DATE", "MARR");
 	add_simple_tag("0 PLAC", "MARR");
-	echo '</table>';
 	echo keep_chan($person);
+	echo '</table>';
 	print_add_layer("SOUR");
 	print_add_layer("OBJE");
 	print_add_layer("NOTE");
@@ -659,8 +661,8 @@ case 'addnewsource':
 				<td class="optionbox wrap"><input type="text" name="REPO" id="REPO" value="" size="10"> <?php echo print_findrepository_link('REPO'), ' ', print_addnewrepository_link('REPO'); ?></td></tr>
 				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('CALN'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="CALN" id="CALN" value=""></td></tr>
+				<?php echo $keep_chan(); ?>
 			</table>
-			<?php echo $keep_chan(); ?>
 				<a href="#"  onclick="return expand_layer('events');"><i id="events_img" class="icon-plus"></i>
 				<?php echo WT_I18N::translate('Associate events with this source'); ?></a><?php echo help_link('edit_SOUR_EVEN'); ?>
 				<div id="events" style="display: none;">
@@ -768,8 +770,8 @@ case 'addnewnote':
 			echo print_specialchar_link('NOTE');
 			echo '</td>';
 			echo '</tr>';
-			echo '</table>';
 			echo keep_chan();
+			echo '</table>';
 			?>
 			<p id="save-cancel">
 				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
@@ -891,8 +893,8 @@ case 'editsource':
 		echo '<input type="hidden" name="linenum[]" value="', $i, '">';
 	}
 
-	echo '</table>';
 	echo keep_chan($source);
+	echo '</table>';
 	print_add_layer("OBJE");
 	print_add_layer("NOTE");
 	print_add_layer("SHARED_NOTE");
@@ -933,8 +935,8 @@ case 'editnote':
 						<?php echo print_specialchar_link('NOTE'); ?>
 					</td>
 				</tr>
+				<?php echo keep_chan($note); ?>
 			</table>
-			<?php echo keep_chan($note); ?>
 			<p id="save-cancel">
 				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
 				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
@@ -990,8 +992,8 @@ case 'addnewrepository':
 			<td class="optionbox wrap"><input type="text" name="EMAIL" id="EMAIL" value="" size="40" maxlength="255"></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('WWW'), help_link('URL'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="WWW" id="WWW" value="" size="40" maxlength="255"> </td></tr>
+			<?php echo keep_chan(); ?>
 		</table>
-		<?php echo keep_chan(); ?>
 		<p id="save-cancel">
 			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
@@ -1491,7 +1493,9 @@ case 'reorder_media': // Sort page using Popup
 				</li>
 			<?php } ?>
 			</ul>
-			<?php echo keep_chan($person); ?>
+			<table class="facts_table">
+				<?php echo keep_chan($record); ?>
+			</table>
 			<p id="save-cancel">
 				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
 				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
@@ -1586,8 +1590,10 @@ case 'reorder_children':
 					$i++;
 				}
 			echo '</ul>';
-			echo keep_chan($family);
 			?>
+			<table>
+				<?php echo keep_chan($record); ?>
+			</table>
 			<p id="save-cancel">
 				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
 				<input type="submit" class="save" onclick="document.reorder_form.action.value='reorder_children'; document.reorder_form.submit();" value="<?php echo WT_I18N::translate('sort by date of birth'); ?>">
@@ -2089,16 +2095,14 @@ function keep_chan(WT_GedcomRecord $record=null) {
 		}
 	
 		return
-			'<table class="facts_table">' .
-			'<tr><td class="descriptionbox  wrap width25">' .
+			'<tr><td class="descriptionbox wrap width25">' .
 			WT_Gedcom_Tag::getLabel('CHAN') .
 			'</td><td class="optionbox wrap">' .
 			'<input type="checkbox" name="keep_chan"' . $checked . '>' .
 			WT_I18N::translate('Do not update the “last change” record') .
 			help_link('no_update_CHAN') .
 			$details;
-			'</td></tr>' .
-			'</table>';
+			'</td></tr>';
 	} else {
 		return '';
 	}
@@ -2496,21 +2500,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 			}
 		}
 	}
-	if (WT_USER_IS_ADMIN) {
-		echo "<tr><td class=\"descriptionbox wrap width25\">";
-		echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
-		if ($NO_UPDATE_CHAN) {
-			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\">";
-		} else {
-			echo "<input type=\"checkbox\" name=\"preserve_last_changed\">";
-		}
-		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), "<br>";
-		if (isset($famrec)) {
-			$event = new WT_Fact(get_sub_record(1, "1 CHAN", $famrec), null, 0);
-			echo format_fact_date($event, new WT_Individual(''), false, true);
-		}
-		echo "</td></tr>";
-	}
+	echo keep_chan($person);
 	echo "</table>";
 	if ($nextaction=='update') { // GEDCOM 5.5.1 spec says NAME doesn't get a OBJE
 		print_add_layer('SOUR');
