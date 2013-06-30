@@ -140,7 +140,6 @@ foreach ($controller->record->getFacts() as $fact) {
 				foreach ($facts as $fact) {
 					print_fact($fact, $controller->record);
 				}
-				print_main_media($controller->record->getXref());
 				if ($controller->record->canEdit()) {
 					print_add_new_fact($controller->record->getXref(), $facts, 'NOTE');
 				}
