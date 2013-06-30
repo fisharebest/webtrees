@@ -398,11 +398,15 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 				// event1 distance will be event - birthyear   that will be the distance. then each distance will chain off that
 
 				//$event[][]  = {"Cell 1 will hold events"}{"cell2 will hold time between that and the next value"};
-				//$value->add_historical_facts();
-				$value->add_family_facts(false);
+				$facts = $value->getFacts();
+				foreach ($value->getSpouseFamilies() as $family) {
+					foreach ($family->getFacts() as $fact) {
+						$facts[] = $fact;
+					}
+				}
 				$unparsedEvents = array();
 
-				foreach ($value->getIndiFacts() as $fact) {
+				foreach ($facts as $fact) {
 					if (!in_array($fact->getTag(), $this->nonfacts)) {
 						$unparsedEvents[]=$fact;
 					}
