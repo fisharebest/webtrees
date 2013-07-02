@@ -636,7 +636,7 @@ class WT_Individual extends WT_GedcomRecord {
 				$tmp=$this->getEstimatedBirthDate();
 				if ($tmp->MinJD()) {
 					global $MAX_ALIVE_AGE;
-					$tmp2=$tmp->AddYears($MAX_ALIVE_AGE, 'bef');
+					$tmp2=$tmp->AddYears($MAX_ALIVE_AGE, 'BEF');
 					if ($tmp2->MaxJD()<WT_SERVER_JD) {
 						$this->_getEstimatedDeathDate=$tmp2;
 					} else {
