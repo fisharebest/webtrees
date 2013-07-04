@@ -1045,10 +1045,10 @@ function print_main_media(WT_Fact $fact, $level) {
 				}
 			} else
 			if ($can_edit) {
-				echo '<a onclick="window.open(\'addmedia.php?action=editmedia&pid=', $media->getXref(), '\', \'_blank\', edit_window_specs); return false;" href="#" title="', WT_I18N::translate('Edit'), '">';
+				echo '<a onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=', $media->getXref(), '\', \'_blank\', edit_window_specs); return false;" href="#" title="', WT_I18N::translate('Edit'), '">';
 				echo WT_Gedcom_Tag::getLabel($factname, $parent), '</a>';
 				echo '<div class="editfacts">';
-				echo '<div class="editlink"><a class="editicon" onclick="window.open(\'addmedia.php?action=editmedia&pid=', $media->getXref(), '\', \'_blank\', edit_window_specs); return false;" href="#" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></a></div>';
+				echo '<div class="editlink"><a class="editicon" onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=', $media->getXref(), '\', \'_blank\', edit_window_specs); return false;" href="#" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></a></div>';
 				echo '<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\''.rawurlencode($factrec).'\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
 				echo '<div class="deletelink"><a class="deleteicon" onclick="return delete_fact(\'', WT_I18N::translate('Are you sure you want to delete this fact?'), '\', \'', $parent->getXref(), '\', \'', $fact->getFactId(), '\');" href="#" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '</span></a></div>';
 				echo '</div>';
