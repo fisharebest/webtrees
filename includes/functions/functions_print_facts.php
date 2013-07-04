@@ -77,18 +77,11 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	}
 
 	// Who is this fact about?  Need it to translate fact label correctly
-	if ($fact->getParent() instanceof WT_Family && $fact->getParent()->getSpouse($record)) {
-		// Event of close relative
-		$label_person = $fact->getParent()->getSpouse($record);
-	} else if ($parent instanceof WT_Family) {
+	if ($parent instanceof WT_Family && $record instanceof WT_Individual) {
 		// Family event
-		$husb = $parent->getHusband();
-		$wife = $parent->getWife();
-		if (empty($wife) && !empty($husb)) $label_person=$husb;
-		else if (empty($husb) && !empty($wife)) $label_person=$wife;
-		else $label_person=$parent;
+		$label_person = $fact->getParent()->getSpouse($record);
 	} else {
-		// The actual person
+		// Individual event
 		$label_person=$parent;
 	}
 
