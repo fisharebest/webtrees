@@ -254,14 +254,12 @@ class WT_Family extends WT_GedcomRecord {
 	// Get an array of structures containing all the names in the record
 	public function getAllNames() {
 		if (is_null($this->_getAllNames)) {
-			$husb=$this->husb ? $this->husb : new WT_Individual('M', '1 SEX M', null, $this->gedcom_id);
-			$wife=$this->wife ? $this->wife : new WT_Individual('F', '1 SEX F', null, $this->gedcom_id);
 			// Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
-			$husb_names=$husb->getAllNames();
+			$husb_names=$this->husb->getAllNames();
 			foreach ($husb_names as $n=>$husb_name) {
 				$husb_names[$n]['script']=utf8_script($husb_name['full']);
 			}
-			$wife_names=$wife->getAllNames();
+			$wife_names=$this->wife->getAllNames();
 			foreach ($wife_names as $n=>$wife_name) {
 				$wife_names[$n]['script']=utf8_script($wife_name['full']);
 			}
