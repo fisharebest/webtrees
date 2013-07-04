@@ -723,6 +723,13 @@ function import_record($gedrec, $ged_id, $update) {
 		update_links ($xref, $ged_id, $gedrec);
 		update_names ($xref, $ged_id, $record);
 		break;
+	case 'NOTE':
+		$record=new WT_Note($xref, $gedrec, null, $ged_id);
+		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
+		// Update the cross-reference/index tables.
+		update_links ($xref, $ged_id, $gedrec);
+		update_names ($xref, $ged_id, $record);
+		break;
 	case 'OBJE':
 		$record=new WT_Media($xref, $gedrec, null, $ged_id);
 		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
@@ -731,7 +738,7 @@ function import_record($gedrec, $ged_id, $update) {
 		update_names ($xref, $ged_id, $record);
 		break;
 	default:
-		// Custom records beginning with frequently do not contain unique
+		// Custom records beginning with _ frequently do not contain unique
 		// identifiers - so we cannot load them.
 		if (substr($type, 0, 1)!='_') {
 			$record=new WT_GedcomRecord($xref, $gedrec, null, $ged_id);
