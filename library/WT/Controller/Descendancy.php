@@ -196,26 +196,22 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		if (is_null($family)) return;
 		if (is_null($person)) return;
 	
-		$spouse=$family->getSpouse($person);
-		if (!$spouse) {
-			// One parent families have no spouse
-			$spouse=new WT_Individual('');
-		}
-	
 		// print marriage info
 		echo '<li>';
 		echo '<img src="', $WT_IMAGES['spacer'], '" height="2" width="', ($Dindent+4), '" alt="">';
 		echo '<span class="details1" style="white-space:nowrap;">';
 		echo "<a href=\"#\" onclick=\"expand_layer('".$family->getXref().$personcount."'); return false;\" class=\"top\"><i id=\"".$family->getXref().$personcount."_img\" class=\"icon-minus\" title=\"".WT_I18N::translate('View Family')."\"></i></a>";
-		$marriage = $family->getMarriage();
-		if ($marriage->canShow()) {
-			echo ' <a href="', $family->getHtmlUrl(), '" class="details1">';
-			$marriage->print_simple_fact();
-			echo '</a>';
+		foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
+			if ($fact->canShow()) {
+				echo ' <a href="', $family->getHtmlUrl(), '" class="details1">';
+				$fact->print_simple_fact();
+				echo '</a>';
+			}
 		}
 		echo '</span>';
 	
 		// print spouse
+		$spouse=$family->getSpouse($person);
 		echo '<ul style="list-style:none; display:block;" id="'.$family->getXref().$personcount.'">';
 		echo '<li>';
 		echo '<table border="0" cellpadding="0" cellspacing="0"><tr><td>';

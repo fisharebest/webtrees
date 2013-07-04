@@ -208,14 +208,12 @@ class WT_Individual extends WT_GedcomRecord {
 			}
 			// Check spouse dates
 			$spouse=$family->getSpouse($this, WT_PRIV_HIDE);
-			if ($spouse) {
-				preg_match_all('/\n2 DATE (.+)/', $spouse->gedcom, $date_matches);
-				foreach ($date_matches[1] as $date_match) {
-					$date=new WT_Date($date_match);
-					// Assume max age difference between spouses of 40 years
-					if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+40)) {
-						return true;
-					}
+			preg_match_all('/\n2 DATE (.+)/', $spouse->gedcom, $date_matches);
+			foreach ($date_matches[1] as $date_match) {
+				$date=new WT_Date($date_match);
+				// Assume max age difference between spouses of 40 years
+				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+40)) {
+					return true;
 				}
 			}
 			// Check child dates
@@ -907,12 +905,9 @@ class WT_Individual extends WT_GedcomRecord {
 		$step_families=array();
 		$families=$this->getSpouseFamilies();
 		foreach ($families as $family) {
-			$spouse=$family->getSpouse($this);
-			if ($spouse) {
-				foreach ($spouse->getSpouseFamilies() as $step_family) {
-					if (!in_array($step_family, $families, true)) {
-						$step_families[]=$step_family;
-					}
+			foreach ($family->getSpouse($this)->getSpouseFamilies() as $step_family) {
+				if (!in_array($step_family, $families, true)) {
+					$step_families[]=$step_family;
 				}
 			}
 		}
@@ -972,27 +967,9 @@ class WT_Individual extends WT_GedcomRecord {
 		throw new Exception('Invalid family in WT_Individual::getStepFamilyLabel(' . $family . ')');
 	}
 
-	/**
-	* get the correct label for a family
-	* @param Family $family the family to get the label for
-	* @return string
-	*/
-	function getSpouseFamilyLabel($family) {
-		if (is_null($family)) {
-			$spouse=WT_I18N::translate('unknown person');
-		} else {
-			$husb = $family->getHusband();
-			$wife = $family->getWife();
-			if ($this->equals($husb) && !is_null($wife)) {
-				$spouse = $wife->getFullName();
-			} elseif ($this->equals($wife) && !is_null($husb)) {
-				$spouse = $husb->getFullName();
-			} else {
-				$spouse = WT_I18N::translate('unknown person');
-			}
-		}
-		// I18N: %s is the spouse name
-		return WT_I18N::translate('Family with %s', $spouse);
+	// TODO - this function doesn't belong in this class
+	function getSpouseFamilyLabel(WT_Family $family) {
+		return /* I18N: %s is the spouse name */ WT_I18N::translate('Family with %s', $family->getSpouse($this)->getFullName());
 	}
 
 	/**

@@ -121,12 +121,7 @@ class TreeView {
 		$person = WT_Individual::getInstance($pid);
 		$r = $this->getPersonDetails($person, $person, null);
 		foreach ($person->getSpouseFamilies() as $family) {
-			if (!empty($family)) {
-				$partner = $family->getSpouse($person);
-				if (!empty($partner)) {
-					$r .= $this->getPersonDetails($person, $partner, $family);
-				}
-			}
+			$r .= $this->getPersonDetails($person, $family->getSpouse($person), $family);
 		}
 		return $r;
 	}

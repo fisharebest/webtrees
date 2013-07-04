@@ -216,22 +216,18 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		if ($count==1 ) { 
 			if ($this->show_spouse) {
 				foreach ($sfamilies as $family) {
-					if (!is_null($family)) {
-						$spouse = $family->getSpouse($person);
-						if ($spouse!=null) {
-							echo '</td></tr><tr><td>';
-							//-- shrink the box for the spouses
-							$tempw = $bwidth;
-							$temph = $bheight;
-							$bwidth -= 10;
-							$bheight -= 10;
-							print_pedigree_person($spouse);
-							$bwidth = $tempw;
-							$bheight = $temph;
-							$numkids += 0.95;
-							echo '</td><td></td>';
-						}
-					}
+					$spouse = $family->getSpouse($person);
+					echo '</td></tr><tr><td>';
+					//-- shrink the box for the spouses
+					$tempw = $bwidth;
+					$temph = $bheight;
+					$bwidth -= 10;
+					$bheight -= 10;
+					print_pedigree_person($spouse);
+					$bwidth = $tempw;
+					$bheight = $temph;
+					$numkids += 0.95;
+					echo '</td><td></td>';
 				}
 			}
 		}

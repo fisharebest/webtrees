@@ -246,16 +246,12 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$children = $family->getChildren();
 
 				// Spouse ------------------------------
-				if ($spouse || $children) {
-					if ($spouse) {
-						$spouselinks .= '<a class="flyout3" href="' . $spouse->getHtmlUrl() . '">';
-						$spouselinks .= $spouse->getFullName();
-						$spouselinks .= '</a>';
-						$spouselinks .= '<br>';
-						if ($spouse->getFullName() != '') {
-							$persons = 'Yes';
-						}
-					}
+				$spouselinks .= '<a class="flyout3" href="' . $spouse->getHtmlUrl() . '">';
+				$spouselinks .= $spouse->getFullName();
+				$spouselinks .= '</a>';
+				$spouselinks .= '<br>';
+				if ($spouse->getFullName() != '') {
+					$persons = 'Yes';
 				}
 
 				// Children ------------------------------   @var $child Person

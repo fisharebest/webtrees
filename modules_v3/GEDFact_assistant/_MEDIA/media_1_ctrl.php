@@ -285,8 +285,7 @@ if ($pid=="") {
 						// Get child's marriage status
 						$married="";
 						foreach ($child->getSpouseFamilies() as $childfamily) {
-							$tmp=$childfamily->getMarriageDate();
-							$married = WT_Date::Compare($censdate, $tmp);
+							$married = WT_Date::Compare($censdate, $childfamily->getMarriageDate());
 						}
 						$fulln =strip_tags($child->getFullName());
 						$menu = new WT_Menu("&nbsp;" . $child->getLabel());
@@ -794,8 +793,7 @@ if ($pid=="") {
 						// Get child's marriage status
 						$married="";
 						foreach ($child->getSpouseFamilies() as $childfamily) {
-							$tmp=$childfamily->getMarriageDate();
-							$married = WT_Date::Compare($censdate, $tmp);
+							$married = WT_Date::Compare($censdate, $childfamily->getMarriageDate());
 						}
 						$fulln =strip_tags($child->getFullName());
 						$menu = new WT_Menu("&nbsp;" . $child->getLabel());
@@ -897,7 +895,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
 	global $SEARCH_SPIDER;
 
-	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent, $tabno;
+	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent;
 	global $natdad, $natmom, $censyear, $censdate;
 
 	if ($style != 2) $style=1;
@@ -948,7 +946,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 			if (!is_null($family)) {
 				$husb = $family->getHusband($person);
 				$wife = $family->getWife($person);
-				// $spouse = $family->getSpouse($person);
 				$children = $family->getChildren();
 				$num = count($children);
 				$marrdate = $family->getMarriageDate();
@@ -957,7 +954,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				if ($husb || $num>0) {
 					if ($husb) {
 						$person_parent="Yes";
-						$tmp=$husb->getXref();
 						if ($husb->canShowName()) {
 							$fulln =strip_tags($husb->getFullName());
 							$parentlinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
@@ -994,7 +990,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				if ($wife || $num>0) {
 					if ($wife) {
 						$person_parent="Yes";
-						$tmp=$wife->getXref();
 						if ($wife->canShowName()) {
 							$married = WT_Date::Compare($censdate, $marrdate);
 							$fulln =strip_tags($wife->getFullName());
@@ -1036,7 +1031,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 			if (!is_null($family)) {
 				$husb = $family->getHusband($person);
 				$wife = $family->getWife($person);
-				// $spouse = $family->getSpouse($person);
 				$children = $family->getChildren();
 				$num = count($children);
 				$marrdate = $family->getMarriageDate();
@@ -1050,7 +1044,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							$tmp=$husb->getXref();
 							if ($husb->canShowName()) {
 								$fulln =strip_tags($husb->getFullName());
-								$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".WT_GEDURL."\">";
+								$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;&amp;gedcom=".WT_GEDURL."\">";
 								$parentlinks .= $husb->getFullName();
 								$parentlinks .= "</a>";
 							} else {
@@ -1071,7 +1065,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							if ($wife->canShowName()) {
 								$married = WT_Date::Compare($censdate, $marrdate);
 								$fulln =addslashes($wife->getFullName());
-								$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".WT_GEDURL."\">";
+								$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;gedcom=".WT_GEDURL."\">";
 								$parentlinks .= $wife->getFullName();
 								$parentlinks .= "</a>";
 							} else {
@@ -1093,50 +1087,45 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				$marrdate = $family->getMarriageDate();
 
 				// Spouse ------------------------------
-				if ($spouse || $num>0) {
-					if ($spouse) {
-						$tmp=$spouse->getXref();
-						if ($spouse->canShowName()) {
-							$married = WT_Date::Compare($censdate, $marrdate);
-							$fulln =strip_tags($spouse->getFullName());
-							$spouselinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
-							$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
-							$spouselinks .= "'".strip_tags($spouse->getFullName())."',"; // Full Name
-							if ($currpid=="Son" || $currpid=="Daughter") {
-								if ($spouse->getSex()=="M") {
-									$spouselinks .= "'Son in Law',"; // label = Male Relationship
-								} else {
-									$spouselinks .= "'Daughter in Law',"; // label = Female Relationship
-								}
-							} else {
-								if ($spouse->getSex()=="M") {
-									$spouselinks .= "'Brother in Law',"; // label = Male Relationship
-								} else {
-									$spouselinks .= "'Sister in Law',"; // label = Female Relationship
-								}
-							}
-								$spouselinks .= "'".$spouse->getSex()."',"; // sex = Gender
-								$spouselinks .= "''".","; // cond = Condition (Married etc)
-								$spouselinks .= "'".$spouse->getbirthyear()."',"; // yob = Year of Birth
-								if ($spouse->getbirthyear()>=1) {
-									$spouselinks .= "'".($censyear-$spouse->getbirthyear())."',"; // age =  Census Year - Year of Birth
-								} else {
-									$spouselinks .= "''".","; // age =  Undefined
-								}
-								$spouselinks .= "'Y'".","; // Y/M/D = Age in Years/Months/Days
-								$spouselinks .= "''".","; // occu  = Occupation
-								$spouselinks .= "'".$spouse->getcensbirthplace()."'"; // birthpl = Birthplace
-								$spouselinks .= ");\">";
-								$spouselinks .= $spouse->getFullName(); // Full Name
-								$spouselinks .= "</a>";
+				if ($spouse->canShowName()) {
+					$married = WT_Date::Compare($censdate, $marrdate);
+					$fulln =strip_tags($spouse->getFullName());
+					$spouselinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
+					$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
+					$spouselinks .= "'".strip_tags($spouse->getFullName())."',"; // Full Name
+					if ($currpid=="Son" || $currpid=="Daughter") {
+						if ($spouse->getSex()=="M") {
+							$spouselinks .= "'Son in Law',"; // label = Male Relationship
 						} else {
-							$spouselinks .= WT_I18N::translate('Private');
+							$spouselinks .= "'Daughter in Law',"; // label = Female Relationship
 						}
-						$spouselinks .= "</a>";
-						if ($spouse->getFullName() != "") {
-							$persons = "Yes";
+					} else {
+						if ($spouse->getSex()=="M") {
+							$spouselinks .= "'Brother in Law',"; // label = Male Relationship
+						} else {
+							$spouselinks .= "'Sister in Law',"; // label = Female Relationship
 						}
 					}
+					$spouselinks .= "'".$spouse->getSex()."',"; // sex = Gender
+					$spouselinks .= "''".","; // cond = Condition (Married etc)
+					$spouselinks .= "'".$spouse->getbirthyear()."',"; // yob = Year of Birth
+					if ($spouse->getbirthyear()>=1) {
+						$spouselinks .= "'".($censyear-$spouse->getbirthyear())."',"; // age =  Census Year - Year of Birth
+					} else {
+						$spouselinks .= "''".","; // age =  Undefined
+					}
+					$spouselinks .= "'Y'".","; // Y/M/D = Age in Years/Months/Days
+					$spouselinks .= "''".","; // occu  = Occupation
+					$spouselinks .= "'".$spouse->getcensbirthplace()."'"; // birthpl = Birthplace
+					$spouselinks .= ");\">";
+					$spouselinks .= $spouse->getFullName(); // Full Name
+					$spouselinks .= "</a>";
+				} else {
+					$spouselinks .= WT_I18N::translate('Private');
+				}
+				$spouselinks .= "</a>";
+				if ($spouse->getFullName() != "") {
+					$persons = "Yes";
 				}
 
 				// Children ------------------------------   @var $child Person

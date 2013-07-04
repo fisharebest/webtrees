@@ -107,19 +107,11 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			}			
 			foreach ($person->getSpouseFamilies() as $family) {
 				$spouse = $family->getSpouse($person);
-				$children = $family->getChildren();
-				$num = count($children);
 				$personlinks .= '<li>';
-				if ((!empty($spouse))||($num>0)) {
-					$personlinks .= '<a href="'.$family->getHtmlUrl().'"><b>'.WT_I18N::translate('Family with spouse').'</b></a><br>';
-					if (!empty($spouse)) {
-						$personlinks .= '<a href="'.$spouse->getHtmlUrl().'">';
-						$personlinks .= $spouse->getFullName();
-						$personlinks .= '</a>';
-					}
-				}
+				$personlinks .= '<a href="'.$family->getHtmlUrl().'"><b>'.WT_I18N::translate('Family with spouse').'</b></a><br>';
+				$personlinks .= '<a href="'.$spouse->getHtmlUrl().'">' . $spouse->getFullName() . '</a>';
 				$personlinks .= '</li><li><ul>';
-				foreach ($children as $child) {
+				foreach ($family->getChildren() as $child) {
 					$personlinks .= '<li><a href="'.$child->getHtmlUrl().'">';
 					$personlinks .= $child->getFullName();
 					$personlinks .= '</a></li>';

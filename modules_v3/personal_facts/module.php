@@ -190,7 +190,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		global $SHOW_RELATIVES_EVENTS;
 
 		$facts = array();
-		if ($spouse && strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
+		if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
 			// Only include events between birth and death
 			$birt_date = $person->getEstimatedBirthDate();
 			$deat_date = $person->getEstimatedDeathDate();

@@ -68,7 +68,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 	function getTimelineIndis($tags) {
 		preg_match_all('/\n1 (?:'.implode('|', $tags).') @('.WT_REGEX_XREF.')@/', $this->record->getGedcom(), $matches);
 		foreach ($matches[1] as &$match) {
-			$match='pids[]='.$match;
+			$match='pids%5B%5D='.$match;
 		}
 		return implode('&amp;', $matches[1]);
 	}

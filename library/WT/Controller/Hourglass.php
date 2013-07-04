@@ -301,13 +301,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				//-- move the arrow up to line up with the correct box
 				if ($this->show_spouse) {
 					foreach ($families as $family) {
-						/* @var $family Family */
-						if (!is_null($family)) {
-							$spouse = $family->getSpouse($person);
-							if ($spouse!=null) {
-								echo "<br><br><br>";
-							}
-						}
+						$spouse = $family->getSpouse($person);
+						echo "<br><br><br>";
 					}
 				}
 				echo "</td><td width=\"$bwidth\">";
@@ -321,23 +316,17 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		//----- Print the spouse
 		if ($this->show_spouse) {
 			foreach ($families as $family) {
-				/* @var $family Family */
-				if (!is_null($family)) {
-					$spouse = $family->getSpouse($person);
-					if ($spouse!=null) {
-						echo "</td></tr><tr><td align=\"$otablealign\">";
-						//-- shrink the box for the spouses
-						$tempw = $bwidth;
-						$temph = $bheight;
-						$bwidth -= 10;
-						$bheight -= 10;
-						print_pedigree_person($spouse);
-						$bwidth = $tempw;
-						$bheight = $temph;
-						$numkids += 0.95;
-						echo "</td><td></td>";
-					}
-				}
+				echo "</td></tr><tr><td align=\"$otablealign\">";
+				//-- shrink the box for the spouses
+				$tempw = $bwidth;
+				$temph = $bheight;
+				$bwidth -= 10;
+				$bheight -= 10;
+				print_pedigree_person($family->getSpouse($person));
+				$bwidth = $tempw;
+				$bheight = $temph;
+				$numkids += 0.95;
+				echo "</td><td></td>";
 			}
 			//-- add offset divs to make things line up better
 			if ($count==$this->dgenerations) echo "<tr><td colspan\"2\"><div style=\"height: ".($bhalfheight/2)."px; width: ".$bwidth."px;\"><br></div>";
@@ -365,16 +354,12 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 					foreach ($famids as $family) {
 						$spouse = $family->getSpouse($person);
-						if ($spouse) {
-							$spid = $spouse->getXref();
-							echo "<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\" class=\"name1\">";
-							echo $spouse->getFullName();
-							echo '</a><br>';
+						$spid = $spouse->getXref();
+						echo "<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\" class=\"name1\">";
+						echo $spouse->getFullName();
+						echo '</a><br>';
 
-						}
-
-						$children = $family->getChildren();
-						foreach ($children as $id=>$child) {
+						foreach ($family->getChildren() as $child) {
 							$cid = $child->getXref();
 							echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\" class=\"name1\">";
 							echo $child->getFullName();
@@ -401,11 +386,10 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 								echo '</a><br>';
 							}
 						}
-						$children = $family->getChildren();
 						$num = $family->getNumberOfChildren();
 						if ($num>2) echo "<span class=\"name1\"><br>".WT_I18N::translate('Siblings')."<br></span>";
 						if ($num==2) echo "<span class=\"name1\"><br>".WT_I18N::translate('Sibling')."<br></span>";
-						foreach ($children as $id=>$child) {
+						foreach ($family->getChildren() as $child) {
 							$cid = $child->getXref();
 							if ($cid!=$pid) {
 								echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\" class=\"name1\">";
