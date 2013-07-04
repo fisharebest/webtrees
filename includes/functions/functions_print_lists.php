@@ -956,27 +956,8 @@ function format_sour_table($datalist) {
 	//-- table body
 	$html .= '<tbody>';
 	$n=0;
-	foreach ($datalist as $key=>$value) {
-		if (is_object($value)) { // Array of objects
-			$source=$value;
-		} elseif (!is_array($value)) { // Array of IDs
-			$source=WT_Source::getInstance($key); // from placelist
-			if (is_null($source)) {
-				$source=WT_Source::getInstance($value);
-			}
-			unset($value);
-		} else { // Array of search results
-			$gid='';
-			if (isset($value['gid'])) {
-				$gid=$value['gid'];
-			}
-			if (isset($value['gedcom'])) {
-				$source=new WT_Source($value['gedcom']);
-			} else {
-				$source=WT_Source::getInstance($gid);
-			}
-		}
-		if (!$source || !$source->canShow()) {
+	foreach ($datalist as $source) {
+		if (!$source->canShow()) {
 			continue;
 		}
 		$html .= '<tr>';
