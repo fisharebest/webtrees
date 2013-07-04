@@ -1319,9 +1319,22 @@ case 'addopfchildaction':
 		->setPageTitle(WT_I18N::translate('Add child'))
 		->pageHeader();
 
+	// Create a family
+	$gedcom='0 @NEW@ FAM';
+	if ($person->getSex()=='F') {
+		$gedcom.="\n1 WIFE @" . $person->getXref() . "@";
+	} else {
+		$gedcom.="\n1 HUSB @" . $person->getXref() . "@";
+	}
+	$family = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
+
+	// Link the parent to the family
+	$person->updateFact(null, "1 FAMS @" . $family->getXref() . "@", true);
+
+	// Create a child
 	splitSOUR(); // separate SOUR record from the rest
 
-	$gedcom = "0 @{$newindixref}@ INDI";
+	$gedcom = "0 @NEW@ INDI";
 	$gedcom .= addNewName();
 	$gedcom .= addNewSex ();
 	$gedcom .= "\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $newfamxref);
@@ -1335,17 +1348,12 @@ case 'addopfchildaction':
 	} else {
 		$gedcom=updateRest($gedcom);
 	}
+	$gedcom .= "\n1 FAMC @" . $family->getXref() . "@";
 
 	$child = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
 
-	$gedcom="0 @NEW@ FAM\n1 CHIL @" . $child->getXref() . "@";
-	if ($person->getSex()=='F') {
-		$gedcom.="\n1 WIFE @" . $person->getXref() . "@";
-	} else {
-		$gedcom.="\n1 HUSB @" . $person->getXref() . "@";
-	}
-	$family = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
-	$person->replaceFact(null, "1 FAMS @" . $family->getXref() . "@", true);
+	// Link the family to the child
+	$family->updateFact(null, '1 CHIL @' . $child->getXref() . '@', true);
 
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
