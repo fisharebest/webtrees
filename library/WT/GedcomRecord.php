@@ -29,7 +29,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_GedcomRecord {
-	const DUMMY_XREF  = '_DUMMY_XREF_'
+	const DUMMY_XREF  = '_DUMMY_XREF_';
 	const RECORD_TYPE = 'UNKNOWN';
 	const SQL_FETCH   = "SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?";
 	const URL_PREFIX  = 'gedrecord.php?pid=';
