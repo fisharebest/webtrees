@@ -29,6 +29,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_GedcomRecord {
+	const DUMMY_XREF  = '_DUMMY_XREF_'
 	const RECORD_TYPE = 'UNKNOWN';
 	const SQL_FETCH   = "SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?";
 	const URL_PREFIX  = 'gedrecord.php?pid=';
@@ -134,9 +135,11 @@ class WT_GedcomRecord {
 			$pending = null;
 		}
 
-		// No such record exists
+		// No such record exists - create a dummy one
 		if ($gedcom === null && $pending === null) {
-			return null;
+			$xref      = self::DUMMY_XREF;
+			$gedcom    = "0 @$xref@ " . static::RECORD_TYPE . "\n1 RESN none";
+			$gedcom_id = 0;
 		}
 
 		// Create the object
@@ -262,6 +265,8 @@ class WT_GedcomRecord {
 	private function _getLinkUrl($link, $separator) {
 		if ($this->gedcom_id == WT_GED_ID) {
 			return $link . $this->getXref() . $separator . 'ged=' . WT_GEDURL;
+		} elseif ($this->gedcom_id == 0) {
+			return '#';
 		} else {
 			return $link . $this->getXref() . $separator . 'ged=' . rawurlencode(get_gedcom_from_id($this->gedcom_id));
 		}

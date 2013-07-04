@@ -41,19 +41,22 @@ class WT_Family extends WT_GedcomRecord {
 	function __construct($xref, $gedcom, $pending, $gedcom_id) {
 		parent::__construct($xref, $gedcom, $pending, $gedcom_id);
 
-		// TODO: fetch these from WT_Fact objects
+		// Fetch husband and wife
 		if (preg_match('/^1 HUSB @(.+)@/m', $gedcom.$pending, $match)) {
 			$this->husb = WT_Individual::getInstance($match[1]);
+		} else {
+			$this->husb = WT_Individual::getInstance(self::DUMMY_XREF);
 		}
 		if (preg_match('/^1 WIFE @(.+)@/m', $gedcom.$pending, $match)) {
 			$this->wife = WT_Individual::getInstance($match[1]);
+		} else {
+			$this->wife = WT_Individual::getInstance(self::DUMMY_XREF);
 		}
 
 		// Make sure husb/wife are the right way round.
-		if ($this->husb && $this->husb->getSex()=='F' || $this->wife && $this->wife->getSex()=='M') {
-			list($this->husb, $this->wife)=array($this->wife, $this->husb);
+		if ($this->husb->getSex()=='F' || $this->wife->getSex()=='M') {
+			list($this->husb, $this->wife) = array($this->wife, $this->husb);
 		}
-
 	}
 
 	// Generate a private version of this record
@@ -118,33 +121,18 @@ class WT_Family extends WT_GedcomRecord {
 		return true;
 	}
 
-	/**
-	 * return the spouse of the given person
-	 * @param Person $person
-	 * @return Person
-	 */
-	function getSpouse($person, $access_level=WT_USER_ACCESS_LEVEL) {
-		if (is_null($this->wife) || is_null($this->husb)) {
-			return null;
+	// Find the spouse of a person - or create a dummy person if this family
+	// record is missing one of the spouses.
+	function getSpouse(WT_Individual $person, $access_level=WT_USER_ACCESS_LEVEL) {
+		if ($person->equals($this->getWife())) {
+			return $this->getHusband();
+		} else {
+			return $this->getWife();
 		}
-		if ($this->wife->equals($person) && $this->husb->canShow($access_level)) {
-			return $this->husb;
-		}
-		if ($this->husb->equals($person) && $this->wife->canShow($access_level)) {
-			return $this->wife;
-		}
-		return null;
 	}
 
 	function getSpouses($access_level=WT_USER_ACCESS_LEVEL) {
-		$spouses=array();
-		if ($this->husb && $this->husb->canShow($access_level)) {
-			$spouses[]=$this->husb;
-		}
-		if ($this->wife && $this->wife->canShow($access_level)) {
-			$spouses[]=$this->wife;
-		}
-		return $spouses;
+		return array($this->husb, $this->wife);
 	}
 
 	/**
@@ -183,29 +171,12 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	/**
-	 * parse marriage record
-	 */
-	function _parseMarriageRecord() {
-		$this->marriage = new WT_Fact(get_sub_record(1, '1 MARR', $this->getGedcom()), $this, 0);
-	}
-
-	/**
 	 * get the marriage event
 	 *
 	 * @return WT_Fact
 	 */
 	function getMarriage() {
-		if (is_null($this->marriage)) $this->_parseMarriageRecord();
-		return $this->marriage;
-	}
-
-	/**
-	 * get marriage record
-	 * @return string
-	 */
-	function getMarriageRecord() {
-		if (is_null($this->marriage)) $this->_parseMarriageRecord();
-		return $this->marriage->getGedcom();
+		return $this->getFactByType('MARR');
 	}
 
 	// Return whether or not this family ended in a divorce or was never married.
@@ -223,13 +194,12 @@ class WT_Family extends WT_GedcomRecord {
 	 * @return string
 	 */
 	function getMarriageDate() {
-		if (!$this->canShow()) {
+		$marriage = $this->getMarriage();
+		if ($marriage && $marriage->canShow()) {
+			return $marriage->getDate();
+		} else {
 			return new WT_Date('');
 		}
-		if (is_null($this->marriage)) {
-			$this->_parseMarriageRecord();
-		}
-		return $this->marriage->getDate();
 	}
 
 	// Get the marriage year - displayed on lists of families
@@ -242,8 +212,12 @@ class WT_Family extends WT_GedcomRecord {
 	 * @return string
 	 */
 	function getMarriageType() {
-		if (is_null($this->marriage)) $this->_parseMarriageRecord();
-		return $this->marriage->getAttribute('TYPE');
+		$marriage = $this->getMarriage();
+		if ($marriage && $marriage->canShow()) {
+			return $marriage->getAttribute('TYPE');
+		} else {
+			return null;
+		}
 	}
 
 	/**
