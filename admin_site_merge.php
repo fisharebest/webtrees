@@ -56,188 +56,148 @@ if ($action!='choose') {
 		$action='choose';
 		echo '<span class="error">', WT_I18N::translate('You entered the same IDs.  You cannot merge the same records.'), '</span>';
 	} else {
-		$gedrec1 = find_gedcom_record($gid1, WT_GED_ID, true);
-		$gedrec2 = find_gedcom_record($gid2, get_id_from_gedcom($ged2), true);
+		$rec1 = WT_GedcomRecord::getInstance($gid1);
+		$rec2 = WT_GedcomRecord::getInstance($gid2);
 
-		// Fetch the original XREF - may differ in case from the supplied value
-		$tmp=new WT_Individual($gedrec1); $gid1=$tmp->getXref();
-		$tmp=new WT_Individual($gedrec2); $gid2=$tmp->getXref();
-
-		if (empty($gedrec1)) {
-			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $gid1, ', ', $ged;
+		if ($rec1->getXref()==WT_GedcomRecord::DUMMY_XREF) {
+			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $rec1->getXref(), ', ', $ged;
 			$action='choose';
-		} elseif (empty($gedrec2)) {
-			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $gid2, ', ', $ged2;
+		} elseif ($rec2->getXref()==WT_GedcomRecord::DUMMY_XREF) {
+			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $rec2->getXref(), ', ', $ged2;
 			$action='choose';
-		} else {
-			$type1 = '';
-			$ct = preg_match("/0 @$gid1@ (.*)/", $gedrec1, $match);
-			if ($ct>0) {
-				$type1 = trim($match[1]);
-			}
-			$type2 = "";
-			$ct = preg_match("/0 @$gid2@ (.*)/", $gedrec2, $match);
-			if ($ct>0) $type2 = trim($match[1]);
-			if (!empty($type1) && ($type1!=$type2)) {
+		} elseif ($rec1::RECORD_TYPE != $rec2::RECORD_TYPE) {
 				echo '<span class="error">', WT_I18N::translate('Records are not the same type.  Cannot merge records that are not the same type.'), '</span>';
 				$action='choose';
-			} else {
-				$facts1 = array();
-				$facts2 = array();
-				$prev_tags = array();
-				$ct = preg_match_all('/\n1 (\w+)/', $gedrec1, $match, PREG_SET_ORDER);
-				for ($i=0; $i<$ct; $i++) {
-					$fact = trim($match[$i][1]);
-					if (isset($prev_tags[$fact])) {
-						$prev_tags[$fact]++;
-					} else {
-						$prev_tags[$fact] = 1;
+		} else {
+			$facts1 = array();
+			$facts2 = array();
+			foreach ($rec1->getFacts() as $fact) {
+				$facts1[$fact->getFactId()]=$fact;
+			}
+			foreach ($rec2->getFacts() as $fact) {
+				$facts2[$fact->getFactId()]=$fact;
+			}
+			if ($action=='select') {
+				echo '<div id="merge2"><h3>', WT_I18N::translate('Merge records'), '</h3>';
+				echo '<form method="post" action="admin_site_merge.php">';
+				echo WT_I18N::translate('The following facts were exactly the same in both records and will be merged automatically.'), '<br>';
+				echo '<input type="hidden" name="gid1" value="', $rec1->getXref(), '">';
+				echo '<input type="hidden" name="gid2" value="', $rec2->getXref(), '">';
+				echo '<input type="hidden" name="ged" value="', $GEDCOM, '">';
+				echo '<input type="hidden" name="ged2" value="', $ged2, '">';
+				echo '<input type="hidden" name="action" value="merge">';
+				$skip = array();
+				echo '<table>';
+				foreach ($facts1 as $fact_id1 => $fact1) {
+					foreach ($facts2 as $fact_id2 => $fact2) {
+						if ($fact_id1 == $fact_id2) {
+							echo '<tr><td><input type="checkbox" name="keep1[]" value="', $fact_id1, '" checked="checked" disabled></td><td>', nl2br($fact1->getGedcom(), false), '</td></tr>';
+							$skip[] = $fact_id1;
+							unset($facts1[$fact_id1]);
+							unset($facts2[$fact_id2]);
+						}
 					}
-					$subrec = get_sub_record(1, "1 $fact", $gedrec1, $prev_tags[$fact]);
-					$facts1[] = array('fact'=>$fact, 'subrec'=>trim($subrec));
 				}
-				$prev_tags = array();
-				$ct = preg_match_all('/\n1 (\w+)/', $gedrec2, $match, PREG_SET_ORDER);
-				for ($i=0; $i<$ct; $i++) {
-					$fact = trim($match[$i][1]);
-					if (isset($prev_tags[$fact])) {
-						$prev_tags[$fact]++;
-					} else {
-						$prev_tags[$fact] = 1;
-					}
-					$subrec = get_sub_record(1, "1 $fact", $gedrec2, $prev_tags[$fact]);
-					$facts2[] = array('fact'=>$fact, 'subrec'=>trim($subrec));
+				if (!$skip) {
+					echo '<tr><td>', WT_I18N::translate('No matching facts found'), '</td></tr>';
 				}
-				if ($action=='select') {
-					echo '<div id="merge2"><h3>', WT_I18N::translate('Merge records'), '</h3>';
-					echo '<form method="post" action="admin_site_merge.php">';
-					echo WT_I18N::translate('The following facts were exactly the same in both records and will be merged automatically.'), '<br>';
-					echo '<input type="hidden" name="gid1" value="', $gid1, '">';
-					echo '<input type="hidden" name="gid2" value="', $gid2, '">';
-					echo '<input type="hidden" name="ged" value="', $GEDCOM, '">';
-					echo '<input type="hidden" name="ged2" value="', $ged2, '">';
-					echo '<input type="hidden" name="action" value="merge">';
-					$equal_count=0;
-					$skip1 = array();
-					$skip2 = array();
-					echo '<table>';
-					foreach ($facts1 as $i=>$fact1) {
-						foreach ($facts2 as $j=>$fact2) {
-							if (utf8_strtoupper($fact1['subrec'])==utf8_strtoupper($fact2['subrec'])) {
-								$skip1[] = $i;
-								$skip2[] = $j;
-								$equal_count++;
-								echo '<tr><td>', WT_I18N::translate($fact1['fact']);
-								// PHP5.3 echo '<input type="hidden" name="keep1[]" value="', $i, '"></td><td>', nl2br($fact1['subrec'], false), '</td></tr>';
-								echo '<input type="hidden" name="keep1[]" value="', $i, '"></td><td>', nl2br($fact1['subrec']), '</td></tr>';
-							}
-						}
+				echo '</table><br>';
+				echo WT_I18N::translate('The following facts did not match.  Select the information you would like to keep.');
+				echo '<table>';
+				echo '<tr><th>', WT_I18N::translate('Record'), ' ', $rec1->getXref(), '</th><th>', WT_I18N::translate('Record'), ' ', $rec2->getXref(), '</th></tr>';
+				echo '<tr><td>';
+				echo '<table>';
+				foreach ($facts1 as $i=>$fact1) {
+					if ($fact1->getTag() != 'CHAN') {
+						echo '<tr><td><input type="checkbox" name="keep1[]" value="', $i, '" checked="checked"></td>';
+						echo '<td>', nl2br($fact1->getGedcom(), false), '</td></tr>';
 					}
-					if ($equal_count==0) {
-						echo '<tr><td>', WT_I18N::translate('No matching facts found'), '</td></tr>';
+				}
+				echo '</table>';
+				echo '</td><td>';
+				echo '<table>';
+				foreach ($facts2 as $j=>$fact2) {
+					if ($fact2->getTag() != 'CHAN') {
+						echo '<tr><td><input type="checkbox" name="keep2[]" value="', $j, '" checked="checked"></td>';
+						echo '<td>', nl2br($fact2->getGedcom(), false), '</td></tr>';
 					}
-					echo '</table><br>';
-					echo WT_I18N::translate('The following facts did not match.  Select the information you would like to keep.');
-					echo '<table>';
-					echo '<tr><th>', WT_I18N::translate('Record'), ' ', $gid1, '</th><th>', WT_I18N::translate('Record'), ' ', $gid2, '</th></tr>';
-					echo '<tr><td>';
-					echo '<table>';
-					foreach ($facts1 as $i=>$fact1) {
-						if (($fact1['fact']!='CHAN')&&(!in_array($i, $skip1))) {
-							echo '<tr><td><input type="checkbox" name="keep1[]" value="', $i, '" checked="checked"></td>';
-							// PHP5.3 echo '<td>', nl2br($fact1['subrec'], false), '</td></tr>';
-							echo '<td>', nl2br($fact1['subrec']), '</td></tr>';
-						}
+				}
+				echo '</table>';
+				echo '</td></tr>';
+				echo '</table>';
+				echo '<input type="submit" value="', WT_I18N::translate('save'), '">';
+				echo '</form></div>';
+			} elseif ($action=='merge') {
+				$manual_save = true;
+				echo '<div id="merge3"><h3>', WT_I18N::translate('Merge records'), '</h3>';
+				if ($GEDCOM==$ged2) {
+					//-- replace all the records that linked to gid2
+					$ids=fetch_all_links($gid2, WT_GED_ID);
+					foreach ($ids as $id) {
+						$record=WT_GedcomRecord::getInstance($id);
+						echo WT_I18N::translate('Updating linked record'), ' ', $id, '<br>';
+						$gedcom=str_replace("@$gid2@", "@$gid1@", $record->getGedcom());
+						$gedcom=preg_replace(
+							'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
+							'$2',
+							$gedcom
+						);
+						$record->updateRecord($gedcom, true);
 					}
-					echo '</table>';
-					echo '</td><td>';
-					echo '<table>';
-					foreach ($facts2 as $j=>$fact2) {
-						if (($fact2['fact']!='CHAN')&&(!in_array($j, $skip2))) {
-							echo '<tr><td><input type="checkbox" name="keep2[]" value="', $j, '" checked="checked"></td>';
-							echo '<td>', nl2br($fact2['subrec'], false), '</td></tr>';
-						}
-					}
-					echo '</table>';
-					echo '</td></tr>';
-					echo '</table>';
-					echo '<input type="submit" value="', WT_I18N::translate('save'), '">';
-					echo '</form></div>';
-				} elseif ($action=='merge') {
-					$manual_save = true;
-					echo '<div id="merge3"><h3>', WT_I18N::translate('Merge records'), '</h3>';
-					if ($GEDCOM==$ged2) {
-						WT_GedcomRecord::getInstance($gid2)->deleteRecord();
-						echo WT_I18N::translate('GEDCOM record successfully deleted.'), '<br>';
-						//-- replace all the records that linked to gid2
-						$ids=fetch_all_links($gid2, WT_GED_ID);
-						foreach ($ids as $id) {
-							$record=find_gedcom_record($id, WT_GED_ID, true);
-							echo WT_I18N::translate('Updating linked record'), ' ', $id, '<br>';
-							$newrec=str_replace("@$gid2@", "@$gid1@", $record);
-							$newrec=preg_replace(
-								'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
-								'$2',
-								$newrec
-							);
-							replace_gedrec($id, WT_GED_ID, $newrec);
-						}
-						// Update any linked user-accounts
-						WT_DB::prepare(
-							"UPDATE `##user_gedcom_setting`".
-							" SET setting_value=?".
-							" WHERE gedcom_id=? AND setting_name='gedcomid' AND setting_value=?"
-						)->execute(array($gid2, WT_GED_ID, $gid1));
+					// Update any linked user-accounts
+					WT_DB::prepare(
+						"UPDATE `##user_gedcom_setting`".
+						" SET setting_value=?".
+						" WHERE gedcom_id=? AND setting_name='gedcomid' AND setting_value=?"
+					)->execute(array($gid2, WT_GED_ID, $gid1));
 
-						// Merge hit counters
-						$hits=WT_DB::prepare(
-							"SELECT page_name, SUM(page_count)".
-							" FROM `##hit_counter`".
-							" WHERE gedcom_id=? AND page_parameter IN (?, ?)".
-							" GROUP BY page_name"
-						)->execute(array(WT_GED_ID, $gid1, $gid2))->fetchAssoc();
-						foreach ($hits as $page_name=>$page_count) {
-							WT_DB::prepare(
-								"UPDATE `##hit_counter` SET page_count=?".
-								" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
-							)->execute(array($page_count, WT_GED_ID, $page_name, $gid1));
-						}
+					// Merge hit counters
+					$hits=WT_DB::prepare(
+						"SELECT page_name, SUM(page_count)".
+						" FROM `##hit_counter`".
+						" WHERE gedcom_id=? AND page_parameter IN (?, ?)".
+						" GROUP BY page_name"
+					)->execute(array(WT_GED_ID, $gid1, $gid2))->fetchAssoc();
+					foreach ($hits as $page_name=>$page_count) {
 						WT_DB::prepare(
-							"DELETE FROM `##hit_counter`".
-							" WHERE gedcom_id=? AND page_parameter=?"
-						)->execute(array(WT_GED_ID, $gid2));
+							"UPDATE `##hit_counter` SET page_count=?".
+							" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
+						)->execute(array($page_count, WT_GED_ID, $page_name, $gid1));
 					}
-					$newgedrec = "0 @$gid1@ $type1\n";
-					for ($i=0; ($i<count($facts1) || $i<count($facts2)); $i++) {
-						if (isset($facts1[$i])) {
-							if (in_array($i, $keep1)) {
-								$newgedrec .= $facts1[$i]['subrec']."\n";
-								echo WT_I18N::translate('Adding'), " ", $facts1[$i]['fact'], ' ', WT_I18N::translate('from'), ' ', $gid1, '<br>';
-							}
-						}
-						if (isset($facts2[$i])) {
-							if (in_array($i, $keep2)) {
-								$newgedrec .= $facts2[$i]['subrec']."\n";
-								echo WT_I18N::translate('Adding'), ' ', $facts2[$i]['fact'], ' ', WT_I18N::translate('from'), ' ', $gid2, '<br>';
-							}
-						}
-					}
-
-					replace_gedrec($gid1, WT_GED_ID, $newgedrec);
-					$rec=WT_GedcomRecord::getInstance($gid1);
-					echo
-						'<p>',
-							WT_I18N::translate(
-								'Record %s successfully updated.',
-								'<a href="'.$rec->getHtmlUrl().'">'.$rec->getXref().'</a>'
-							),
-						'</p';
-					$fav_count=update_favorites($gid2, $gid1);
-					if ($fav_count > 0) {
-						echo '<p>', $fav_count, ' ', WT_I18N::translate('favorites updated.'), '<p>';
-					}
-					echo '</div>';
+					WT_DB::prepare(
+						"DELETE FROM `##hit_counter`".
+						" WHERE gedcom_id=? AND page_parameter=?"
+					)->execute(array(WT_GED_ID, $gid2));
 				}
+				$gedcom = "0 @" . $rec1->getXref() . "@ " . $rec1::RECORD_TYPE;
+				foreach ($facts1 as $fact_id=>$fact) {
+					if (in_array($fact_id, $keep1)) {
+						$gedcom .= "\n" . $fact->getGedcom();
+						echo WT_I18N::translate('Adding'), " ", $fact->getTag(), ' ', WT_I18N::translate('from'), ' ', $rec1->getXref(), '<br>';
+					}
+				}
+				foreach ($facts2 as $fact_id=>$fact) {
+					if (in_array($fact_id, $keep2)) {
+						$gedcom .= "\n" . $fact->getGedcom();
+						echo WT_I18N::translate('Adding'), " ", $fact->getTag(), ' ', WT_I18N::translate('from'), ' ', $rec2->getXref(), '<br>';
+					}
+				}
+
+				$rec1->updateRecord($gedcom, true);
+				$rec2->deleteRecord();
+				echo WT_I18N::translate('GEDCOM record successfully deleted.'), '<br>';
+				echo
+					'<p>',
+						WT_I18N::translate(
+							'Record %s successfully updated.',
+							'<a href="'.$rec1->getHtmlUrl().'">'.$rec1->getXref().'</a>'
+						),
+					'</p';
+				$fav_count=update_favorites($gid2, $gid1);
+				if ($fav_count > 0) {
+					echo '<p>', $fav_count, ' ', WT_I18N::translate('favorites updated.'), '<p>';
+				}
+				echo '</div>';
 			}
 		}
 	}
