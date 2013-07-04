@@ -432,7 +432,7 @@ function media_object_info(WT_Media $media) {
 
 		$html .=
 			' - ' .
-			'<a onclick="window.open(\'addmedia.php?action=editmedia&pid=' . $xref . '&ged=' . $gedcom . '\', \'_blank\', edit_window_specs)" href="#">' . WT_I18N::Translate('Edit') . '</a>' .
+			'<a onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . $gedcom . '\', \'_blank\', edit_window_specs)" href="#">' . WT_I18N::Translate('Edit') . '</a>' .
 			' - ' .
 			'<a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'action.php\',{action:\'delete-media\',xref:\'' . $xref . '\',ged:\'' . $gedcom . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a>' .
 			' - ';
