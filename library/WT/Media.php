@@ -240,13 +240,13 @@ class WT_Media extends WT_GedcomRecord {
 		return ($etag_string);
 	}
 
-	/**
-	 * get the media type from the gedcom
-	 * @return string
-	 */
+	// TODO Deprecated? This does not need to be a function here.
 	public function getMediaType() {
-		$mediaType = strtolower(get_gedcom_value('FORM:TYPE', 2, $this->getGedcom()));
-		return $mediaType;
+		if (preg_match('\n\d TYPE (.+)', $this->gedcom, $match)) {
+			return strtolower($match[1]);
+		} else {
+			return '';
+		}
 	}
 
 	// Is this object marked as a highlighted image?
