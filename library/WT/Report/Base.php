@@ -3231,7 +3231,25 @@ function ListSHandler($attrs) {
 			uasort($list, array("WT_GedcomRecord", "Compare"));
 			break;
 		case "CHAN":
-			uasort($list, array("WT_GedcomRecord", "CompareChanDate"));
+			uasort($list, function($x, $y) {
+				$f1 = $x->getFactByType('CHAN');
+				$f2 = $y->getFactByType('CHAN');
+				if ($f1 && $f2) {
+					$d1 = $f1->getDate();
+					$d2 = $f2->getDate();
+					$cmp = WT_Date::compare($d1, $d2);
+					if ($cmp) {
+						return $cmp;
+					} else {
+						// Same date.  Compare times
+						preg_match('/\n3 TIME (.+)/', $f1->getGedcom(), $m1);
+						preg_match('/\n3 TIME (.+)/', $f2->getGedcom(), $m2);
+						return strcmp($m1[1], $m2[1]);
+					}
+				} else {
+					return 0;
+				}
+			});
 			break;
 		case "BIRT:DATE":
 			uasort($list, array("WT_Individual", "CompareBirtDate"));

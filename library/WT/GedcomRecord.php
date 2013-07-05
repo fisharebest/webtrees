@@ -570,25 +570,6 @@ class WT_GedcomRecord {
 		}
 	}
 
-	// Static helper function to sort an array of objects by Change Date
-	static function CompareChanDate($x, $y) {
-		$chan_x = $x->getChangeEvent();
-		$chan_y = $y->getChangeEvent();
-		$tmp=WT_Date::Compare($chan_x->getDate(), $chan_y->getDate());
-		if ($tmp) {
-			return $tmp;
-		} else {
-			if (
-				preg_match('/^\d\d:\d\d:\d\d/', get_gedcom_value('DATE:TIME', 2, $chan_x->getGedcom()).':00', $match_x) &&
-				preg_match('/^\d\d:\d\d:\d\d/', get_gedcom_value('DATE:TIME', 2, $chan_y->getGedcom()).':00', $match_y)
-			) {
-				return strcmp($match_x[0], $match_y[0]);
-			} else {
-				return 0;
-			}
-		}
-	}
-
 	// Get variants of the name
 	public function getFullName() {
 		if ($this->canShowName()) {
