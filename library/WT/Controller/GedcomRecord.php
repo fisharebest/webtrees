@@ -29,10 +29,6 @@ class WT_Controller_GedcomRecord extends WT_Controller_Page {
 	public $record; // individual, source, repository, etc.
 
 	public function __construct() {
-		// Non-existant record?
-		if ($this->record->getXref() == WT_GedcomRecord::DUMMY_XREF) {
-			$this->record = null;
-		}
 		// Automatically fix broken links
 		if ($this->record && $this->record->canEdit()) {
 			$broken_links=0;

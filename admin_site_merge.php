@@ -59,10 +59,10 @@ if ($action!='choose') {
 		$rec1 = WT_GedcomRecord::getInstance($gid1);
 		$rec2 = WT_GedcomRecord::getInstance($gid2);
 
-		if ($rec1->getXref()==WT_GedcomRecord::DUMMY_XREF) {
+		if (!$rec1) {
 			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $rec1->getXref(), ', ', $ged;
 			$action='choose';
-		} elseif ($rec2->getXref()==WT_GedcomRecord::DUMMY_XREF) {
+		} elseif (!$rec2) {
 			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $rec2->getXref(), ', ', $ged2;
 			$action='choose';
 		} elseif ($rec1::RECORD_TYPE != $rec2::RECORD_TYPE) {
