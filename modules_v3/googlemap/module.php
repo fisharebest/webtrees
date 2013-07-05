@@ -146,15 +146,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 			$indifacts = array();
 			foreach ($controller->record->getFacts() as $fact) {
-				if ($fact->canShow()) {
-					$indifacts[] = $fact;
-				}
+				$indifacts[] = $fact;
 			}
 			foreach ($controller->record->getSpouseFamilies() as $family) {
 				foreach ($family->getFacts() as $fact) {
-					if ($fact->canShow()) {
-						$indifacts[] = $fact;
-					}
+					$indifacts[] = $fact;
 				}
 			}
 			sort_facts($indifacts);

@@ -41,10 +41,6 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS;
 	static $n_chil=0, $n_gchi=0;
 
-	if (!$fact->canShow()) {
-		return;
-	}
-
 	$parent = $fact->getParent();
 
 	// Some facts don't get printed here ...

@@ -120,9 +120,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	*/
 	function print_name_record(WT_Fact $event) {
 
-		if (!$event->canShow()) {
-			return false;
-		}
 		$factrec = $event->getGedcom();
 
 		// Create a dummy record, so we can extract the formatted NAME value from the event.
@@ -278,7 +275,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		$menu->addOnclick("return false;");
 		if (WT_USER_CAN_EDIT) {
 			foreach ($this->record->getFacts() as $fact) {
-				if ($fact->getTag()=='NAME' && $fact->canShow() && $fact->canEdit())
+				if ($fact->getTag()=='NAME' && $fact->canEdit())
 					$menu->addOnclick("return edit_name('".$this->record->getXref() . "', '" . $fact->getFactId() . "');");
 					break;
 			}
@@ -290,7 +287,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			$has_sex_record = false;
 			$submenu = new WT_Menu(WT_I18N::translate('Edit gender'), '#', 'menu-indi-editsex');
 			foreach ($this->record->getFacts() as $fact) {
-				if ($fact->getTag()=='SEX' && $fact->canShow() && $fact->canEdit()) {
+				if ($fact->getTag()=='SEX' && $fact->canEdit()) {
 					$submenu->addOnclick("return edit_record('" . $this->record->getXref() . "', '" . $fact->getFactId() . "');");
 					$has_sex_record = true;
 					break;

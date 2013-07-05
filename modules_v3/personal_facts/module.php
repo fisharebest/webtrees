@@ -68,9 +68,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				break;
 			default:
 				if (!array_key_exists('extra_info', WT_Module::getActiveSidebars()) || !extra_info_WT_Module::showFact($fact)) {
-					if ($fact->canShow()) {
-						$indifacts[] = $fact;
-					}
+					$indifacts[] = $fact;
 				}
 				break;
 			}
@@ -79,7 +77,6 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		// Add spouse-family facts
 		foreach ($controller->record->getSpouseFamilies() as $family) {
 			$spouse = $family->getSpouse($controller->record);
-			$divorced = false;
 			foreach ($family->getFacts() as $fact) {
 				switch ($fact->getTag()) {
 				case 'SOUR':
@@ -92,20 +89,8 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				case 'CHIL':
 					break;
 				default:
-					if ($fact->getTag() == 'DIV') {
-						$divorced = true;
-					}
-					if ($fact->canShow()) {
-						$indifacts[] = $fact;
-					}
-					break;
-				}
-			}
-
-			// Don't show family facts for divorced spouses
-			if (!$divorced) {
-				foreach (self::spouse_facts($controller->record, $spouse) as $fact) {
 					$indifacts[] = $fact;
+					break;
 				}
 			}
 			foreach (self::child_facts($controller->record, $family, '_CHIL', '') as $fact) {

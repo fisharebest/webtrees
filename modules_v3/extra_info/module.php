@@ -53,7 +53,7 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$indifacts = array();
 		// The individual's own facts
 		foreach ($controller->record->getFacts() as $fact) {
-			if (self::showFact($fact) && $fact->canShow()) {
+			if (self::showFact($fact)) {
 				$indifacts[] = $fact;
 			}
 		}

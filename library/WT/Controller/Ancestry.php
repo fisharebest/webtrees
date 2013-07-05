@@ -144,7 +144,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 			echo '&nbsp;<span dir="ltr" class="person_box">&nbsp;', ($sosa*2), '&nbsp;</span>&nbsp;', WT_I18N::translate('and');
 			echo '&nbsp;<span dir="ltr" class="person_boxF">&nbsp;', ($sosa*2+1), '&nbsp;</span>&nbsp;';
 			$marriage = $family->getMarriage();
-			if ($marriage->canShow()) {
+			if ($marriage) {
 				echo ' <a href="', $family->getHtmlUrl(), '" class="details1">';
 				$marriage->print_simple_fact();
 				echo '</a>';

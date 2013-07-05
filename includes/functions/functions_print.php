@@ -187,7 +187,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
 			if (!in_array($birttag, $opt_tags)) {
 				$event = $person->getFactByType($birttag);
-				if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
+				if ($event && ($event->getDate()->isOK() || $event->getPlace())) {
 					$BirthDeath .= $event->print_simple_fact(true);
 					break;
 				}
@@ -198,7 +198,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		foreach ($opt_tags as $key=>$tag) {
 			if (!preg_match('/^('.WT_EVENTS_DEAT.')$/', $tag)) {
 				$event = $person->getFactByType($tag);
-				if (!is_null($event) && $event->canShow()) {
+				if (!is_null($event)) {
 					$BirthDeath .= $event->print_simple_fact(true);
 					unset ($opt_tags[$key]);
 				}
@@ -208,7 +208,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	if ($show_full) {
 		foreach (explode('|', WT_EVENTS_DEAT) as $deattag) {
 			$event = $person->getFactByType($deattag);
-			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace() || $event->getValue()=='Y') && $event->canShow()) {
+			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace() || $event->getValue()=='Y')) {
 				$BirthDeath .= $event->print_simple_fact(true);
 				if (in_array($deattag, $opt_tags)) {
 					unset ($opt_tags[array_search($deattag, $opt_tags)]);
@@ -220,7 +220,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	// Show remaining optional events (after death)
 	foreach ($opt_tags as $tag) {
 		$event = $person->getFactByType($tag);
-		if (!is_null($event) && $event->canShow()) {
+		if ($event) {
 			$BirthDeath .= $event->print_simple_fact(true);
 		}
 	}
@@ -229,7 +229,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
 		if (!in_array($birttag, $opt_tags)) {
 			$event = $person->getFactByType($birttag);
-			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
+			if ($event->getDate()->isOK() || $event->getPlace()) {
 				$tmp=new WT_Place($event->getPlace(), WT_GED_ID);
 				$birthplace .= $tmp->getShortName();
 				break;

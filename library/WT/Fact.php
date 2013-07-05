@@ -103,8 +103,32 @@ class WT_Fact {
 	}
 
 	// Do the privacy rules allow us to display this fact to the current user
-	function canShow() {
-		return canDisplayFact($this->parent->getXref(), $this->parent->getGedcomId(), $this->gedcom);
+	function canShow($access_level=WT_USER_ACCESS_LEVEL) {
+		// TODO - use the privacy settings for $ged_id, not the default gedcom.
+		global $person_facts, $global_facts;
+
+		// Does this record have an explicit RESN?
+		if (strpos($this->gedcom, "\n2 RESN confidential")) {
+			return WT_PRIV_NONE >= $access_level;
+		}
+		if (strpos($this->gedcom, "\n2 RESN privacy")) {
+			return WT_PRIV_USER >= $access_level;
+		}
+		if (strpos($this->gedcom, "\n2 RESN none")) {
+			return true;
+		}
+
+		// Does this record have a default RESN?
+		$xref = $this->parent->getXref();
+		if (isset($person_facts[$xref][$this->tag])) {
+			return $person_facts[$xref][$this->tag] >= $access_level;
+		}
+		if (isset($global_facts[$this->tag])) {
+			return $global_facts[$this->tag] >= $access_level;
+		}
+
+		// No restrictions - it must be public
+		return true;
 	}
 
 	// Check whether this fact is protected against edit

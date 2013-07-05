@@ -43,59 +43,57 @@ foreach ($person->getSpouseFamilies() as $family) {
 sort_facts($facts);
 
 foreach ($facts as $event) {
-	if ($event->canShow()) {
-		switch ($event->getTag()) {
-		case 'SEX':
-		case 'FAMS':
-		case 'FAMC':
-		case 'NAME':
-		case 'TITL':
-		case 'NOTE':
-		case 'SOUR':
-		case 'SSN':
-		case 'OBJE':
-		case 'HUSB':
-		case 'WIFE':
-		case 'CHIL':
-		case 'ALIA':
-		case 'ADDR':
-		case 'PHON':
-		case 'SUBM':
-		case '_EMAIL':
-		case 'CHAN':
-		case 'URL':
-		case 'EMAIL':
-		case 'WWW':
-		case 'RESI':
-		case 'RESN':
-		case '_UID':
-		case '_TODO':
-		case '_WT_OBJE_SORT':
-			// Do not show these
-			break;
-		case 'ASSO':
-			// Associates
-			echo '<div><span class="details_label">', $event->getLabel(), '</span> ';
-			echo print_asso_rela_record($event, $person), '</div>';
-			break;
-		default:
-			// Simple version of print_fact()
-			echo '<div>';
-			echo '<span class="details_label">', $event->getLabel(), '</span> ';
-			$details=$event->getValue();
-			if ($details!='Y' && $details!='N') {
-				echo '<span dir="auto">', $details, '</span>';
-			}
-			echo format_fact_date($event, $person, false, false);
-			// Show spouse/family for family events
-			if ($event->getParent() instanceof WT_Family) {
-				$spouse = $event->getParent()->getSpouse($person);
-				echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
-				echo '<a href="', $event->getParent()->getHtmlUrl(), '">', WT_I18N::translate('View Family'), ' - </a>';
-			}
-			echo ' ',format_fact_place($event, true, true);
-			echo '</div>';
-			break;
+	switch ($event->getTag()) {
+	case 'SEX':
+	case 'FAMS':
+	case 'FAMC':
+	case 'NAME':
+	case 'TITL':
+	case 'NOTE':
+	case 'SOUR':
+	case 'SSN':
+	case 'OBJE':
+	case 'HUSB':
+	case 'WIFE':
+	case 'CHIL':
+	case 'ALIA':
+	case 'ADDR':
+	case 'PHON':
+	case 'SUBM':
+	case '_EMAIL':
+	case 'CHAN':
+	case 'URL':
+	case 'EMAIL':
+	case 'WWW':
+	case 'RESI':
+	case 'RESN':
+	case '_UID':
+	case '_TODO':
+	case '_WT_OBJE_SORT':
+		// Do not show these
+		break;
+	case 'ASSO':
+		// Associates
+		echo '<div><span class="details_label">', $event->getLabel(), '</span> ';
+		echo print_asso_rela_record($event, $person), '</div>';
+		break;
+	default:
+		// Simple version of print_fact()
+		echo '<div>';
+		echo '<span class="details_label">', $event->getLabel(), '</span> ';
+		$details=$event->getValue();
+		if ($details!='Y' && $details!='N') {
+			echo '<span dir="auto">', $details, '</span>';
 		}
+		echo format_fact_date($event, $person, false, false);
+		// Show spouse/family for family events
+		if ($event->getParent() instanceof WT_Family) {
+			$spouse = $event->getParent()->getSpouse($person);
+			echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
+			echo '<a href="', $event->getParent()->getHtmlUrl(), '">', WT_I18N::translate('View Family'), ' - </a>';
+		}
+		echo ' ',format_fact_place($event, true, true);
+		echo '</div>';
+		break;
 	}
 }

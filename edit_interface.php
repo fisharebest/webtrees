@@ -80,7 +80,7 @@ case 'editraw':
 	// Find the fact to edit
 	$edit_fact = null;
 	foreach ($record->getFacts() as $fact) {
-		if ($fact->getFactId() == $fact_id && $fact->canShow() && $fact->canEdit()) {
+		if ($fact->getFactId() == $fact_id && $fact->canEdit()) {
 			$edit_fact = $fact;
 			break;
 		}
@@ -133,7 +133,7 @@ case 'updateraw':
 	// Find the fact to edit
 	$edit_fact = null;
 	foreach ($record->getFacts() as $fact) {
-		if ($fact->getFactId() == $fact_id && $fact->canShow() && $fact->canEdit()) {
+		if ($fact->getFactId() == $fact_id && $fact->canEdit()) {
 			$edit_fact = $fact;
 			break;
 		}
@@ -169,7 +169,7 @@ case 'edit':
 	// Find the fact to edit
 	$edit_fact = null;
 	foreach ($record->getFacts() as $fact) {
-		if ($fact->getFactId() == $fact_id && $fact->canShow() && $fact->canEdit()) {
+		if ($fact->getFactId() == $fact_id  && $fact->canEdit()) {
 			$edit_fact = $fact;
 			break;
 		}
@@ -1369,7 +1369,7 @@ case 'editname':
 	// Find the fact to edit
 	$name_fact = null;
 	foreach ($person->getFacts() as $fact) {
-		if ($fact->getFactId() == $fact_id && $fact->canShow() && $fact->canEdit()) {
+		if ($fact->getFactId() == $fact_id && $fact->canEdit()) {
 			$name_fact = $fact;
 		}
 	}
@@ -1465,7 +1465,7 @@ case 'reorder_media': // Sort page using Popup
 	foreach ($record_list as $record) {
 		if ($record->canShow()) {
 			foreach ($record->getFacts() as $fact) {
-				if ($fact->canShow() && !$fact->isOld()) {
+				if (!$fact->isOld()) {
 					preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
 					foreach ($matches[1] as $match) {
 						$media = WT_Media::getInstance($match);

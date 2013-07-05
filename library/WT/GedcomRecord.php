@@ -664,7 +664,7 @@ class WT_GedcomRecord {
 	public function getAllEventDates($event) {
 		$dates = array();
 		foreach ($this->getFacts($event) as $event) {
-			if ($event->getDate()->isOK()) {
+			if ($event->getDate()->isOK() && $event->canShow()) {
 				$dates[] = $event->getDate();
 			}
 		}
@@ -673,7 +673,7 @@ class WT_GedcomRecord {
 	public function getAllEventPlaces($event) {
 		$places = array();
 		foreach ($this->getFacts($event) as $event) {
-			if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->getGedcom(), $ged_places)) {
+			if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->getGedcom(), $ged_places) && $event->canShow()) {
 				foreach ($ged_places[1] as $ged_place) {
 					$places[] = $ged_place;
 				}
@@ -685,7 +685,7 @@ class WT_GedcomRecord {
 	// Get the first WT_Fact for the given fact type
 	public function getFactByType($tag) {
 		foreach ($this->getFacts() as $fact) {
-			if ($fact->getTag() == $tag) {
+			if ($fact->getTag() == $tag && $fact->canShow()) {
 				return $fact;
 			}
 		}

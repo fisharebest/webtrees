@@ -203,7 +203,7 @@ if ($controller->record->canShow()) {
 
 	// Display name details
 	foreach ($controller->record->getFacts() as $fact) {
-		if ($fact->getTag() == 'NAME' && $fact->canShow()) {
+		if ($fact->getTag() == 'NAME') {
 			$controller->print_name_record($fact);
 		}
 	}

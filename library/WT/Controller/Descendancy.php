@@ -202,11 +202,9 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '<span class="details1" style="white-space:nowrap;">';
 		echo "<a href=\"#\" onclick=\"expand_layer('".$family->getXref().$personcount."'); return false;\" class=\"top\"><i id=\"".$family->getXref().$personcount."_img\" class=\"icon-minus\" title=\"".WT_I18N::translate('View Family')."\"></i></a>";
 		foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
-			if ($fact->canShow()) {
-				echo ' <a href="', $family->getHtmlUrl(), '" class="details1">';
-				$fact->print_simple_fact();
-				echo '</a>';
-			}
+			echo ' <a href="', $family->getHtmlUrl(), '" class="details1">';
+			$fact->print_simple_fact();
+			echo '</a>';
 		}
 		echo '</span>';
 	
