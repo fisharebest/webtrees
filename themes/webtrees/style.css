@@ -248,7 +248,7 @@ html[dir=rtl] .header_search {float:left;}
 
 /* Colors */
 .red {color:#ff0000;}
-.rela, .histo {opacity:0.67;}
+.rela, .histo {opacity:0.8;}
 /* Width settings */
 .width10 {width:10%;}
 .width20 {width:20%;}

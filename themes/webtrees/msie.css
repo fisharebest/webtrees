@@ -13,11 +13,11 @@ form {
  * specification in place of its proprietary and non-standard method.
  */
 .rela {
-	filter: alpha(opacity=67);
+	filter: alpha(opacity=80);
 }
 
 a.showit:hover > span {
-	filter: alpha(opacity=85);
+	filter: alpha(opacity=80);
 }
 .itr {height: 30px;}
 .itr:hover .popup {top: 20px;}

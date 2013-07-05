@@ -5,8 +5,8 @@
  * specification in place of its proprietary and non-standard method.
  */
 
-.rela {filter: alpha(opacity=67);}
-a.showit:hover > span {filter: alpha(opacity=85);}
+.rela {filter: alpha(opacity=80);}
+a.showit:hover > span {filter: alpha(opacity=80);}
 .ltr {text-align: left;}
 
 #menu-theme, #menu-language, #menu-theme, #menu-favorites {*padding-right: 10px;}
