@@ -158,16 +158,13 @@ class WT_Family extends WT_GedcomRecord {
 		return WT_Date::Compare($x->getMarriageDate(), $y->getMarriageDate());
 	}
 
-	/**
-	 * get the number of children in this family
-	 * @return int the number of children
-	 */
+	// Number of children - for the individual list
 	function getNumberOfChildren() {
-
-		$nchi1=(int)get_gedcom_value('NCHI', 1, $this->getGedcom());
-		$nchi2=(int)get_gedcom_value('NCHI', 2, $this->getGedcom());
-		$nchi3=count($this->getChildren());
-		return max($nchi1, $nchi2, $nchi3);
+		$nchi = count($this->getChildren());
+		foreach ($this->getFacts('NCHI') as $fact) {
+			$nchi = max($nchi, (int)$fact->getValue());
+		}
+		return $nchi;
 	}
 
 	/**
