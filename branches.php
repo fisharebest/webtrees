@@ -103,7 +103,7 @@ if (false) {
 	WT_I18N::translate('Expand all');
 }
 
-function print_fams($person, $famid=null) {
+function print_fams(WT_Individual $person, WT_Family $family=null) {
 	global $surn, $soundex_std, $soundex_dm, $user_ancestors;
 	// select person name according to searched surname
 	$person_name = "";
@@ -136,14 +136,17 @@ function print_fams($person, $famid=null) {
 	$current = $person->getSexImage().
 		'<a target="_blank" class="'.$class.'" href="'.$person->getHtmlUrl().'">'.$person_name.'</a> '.
 		$person->getLifeSpan().' '.$sosa;
-	if ($famid && $person->getChildFamilyPedigree($famid)) {
-		$sex = $person->getSex();
-		$famcrec = get_sub_record(1, '1 FAMC @'.$famid.'@', $person->getGedcom());
-		$pedi = get_gedcom_value('PEDI', 2, $famcrec);
-		if ($pedi) {
-			$label = WT_Gedcom_Code_Pedi::getValue($pedi, $person);
+	if ($family) {
+		foreach ($person->getFacts('FAMC') as $fact) {
+			if ($fact->getTarget()->equals($family)) {
+				$pedi = $fact->getAttribute('PEDI');
+				break;
+			}
 		}
-		$current = '<span class="red">'.$label.'</span> '.$current;
+		if ($pedi && $pedi!='birth') {
+			$label = WT_Gedcom_Code_Pedi::getValue($pedi, $person);
+			$current = '<span class="red">'.$label.'</span> '.$current;
+		}
 	}
 	// spouses and children
 	if (count($person->getSpouseFamilies())<1) {
@@ -174,8 +177,8 @@ function print_fams($person, $famid=null) {
 		}
 		echo $txt;
 		echo '<ol>';
-		foreach ($family->getChildren() as $c=>$child) {
-			print_fams($child, $family->getXref());
+		foreach ($family->getChildren() as $child) {
+			print_fams($child, $family);
 		}
 		echo '</ol>';
 	}

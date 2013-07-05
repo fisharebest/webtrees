@@ -864,16 +864,6 @@ class WT_Individual extends WT_GedcomRecord {
 			return reset($families);
 		}
 	}
-	/**
-	* get family with child pedigree
-	* @return string FAMC:PEDI value [ adopted | birth | foster | sealing ]
-	*/
-	function getChildFamilyPedigree($famid) {
-		$subrec = get_sub_record(1, '1 FAMC @'.$famid.'@', $this->getGedcom());
-		$pedi = get_gedcom_value('PEDI', 2, $subrec);
-		// birth=default => return an empty string
-		return ($pedi=='birth') ? '' : $pedi;
-	}
 
 	// Get a list of step-parent families
 	function getChildStepFamilies() {
