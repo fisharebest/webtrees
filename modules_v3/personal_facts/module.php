@@ -465,41 +465,41 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		);
 		foreach ($associates as $associate) {
 			foreach ($associate->getFacts() as $fact) {
-				$srec = $fact->getGedcom();
-				foreach (array('ASSO', '_ASSO') as $asso_tag) {
-					$arec = get_sub_record(2, '2 ' . $asso_tag . ' @' . $person->getXref() . '@', $srec);
-					if ($arec) {
-						// Extract the important details from the fact
-						$factrec='1 '.$fact->getTag();
-						if (preg_match('/\n2 DATE .*/', $srec, $match)) {
-							$factrec.=$match[0];
-						}
-						if (preg_match('/\n2 PLAC .*/', $srec, $match)) {
-							$factrec.=$match[0];
-						}
-						if ($associate instanceof WT_Family) {
-							foreach ($associate->getSpouses() as $spouse) {
-								$factrec.="\n2 $asso_tag @".$spouse->getXref().'@';
-							}
-						} else {
-							$factrec.="\n2 $asso_tag @".$associate->getXref().'@';
-							// CHR/BAPM events are commonly used.  Generate the reverse relationship
-							if (preg_match('/^(?:BAPM|CHR)$/', $fact->getTag()) && preg_match('/3 RELA god(?:parent|mother|father)/', $fact->getGedcom())) {
-								switch ($associate->getSex()) {
-								case 'M':
-									$factrec.="\n3 RELA godson";
-									break;
-								case 'F':
-									$factrec.="\n3 RELA goddaughter";
-									break;
-								case 'U':
-									$factrec.="\n3 RELA godchild";
-									break;
-								}
-							}
-						}
-						$facts[] = new WT_Fact($factrec, $associate, 'asso');
+				$arec = $fact->getAttribute('_ASSO');
+				if (!$arec) {
+					$arec = $fact->getAttribute('ASSO');
+				}
+				if ($arec) {
+					// Extract the important details from the fact
+					$factrec='1 '.$fact->getTag();
+					if (preg_match('/\n2 DATE .*/', $srec, $match)) {
+						$factrec.=$match[0];
 					}
+					if (preg_match('/\n2 PLAC .*/', $srec, $match)) {
+						$factrec.=$match[0];
+					}
+					if ($associate instanceof WT_Family) {
+						foreach ($associate->getSpouses() as $spouse) {
+							$factrec.="\n2 $asso_tag @".$spouse->getXref().'@';
+						}
+					} else {
+						$factrec.="\n2 $asso_tag @".$associate->getXref().'@';
+						// CHR/BAPM events are commonly used.  Generate the reverse relationship
+						if (preg_match('/^(?:BAPM|CHR)$/', $fact->getTag()) && preg_match('/3 RELA god(?:parent|mother|father)/', $fact->getGedcom())) {
+							switch ($associate->getSex()) {
+							case 'M':
+								$factrec.="\n3 RELA godson";
+								break;
+							case 'F':
+								$factrec.="\n3 RELA goddaughter";
+								break;
+							case 'U':
+								$factrec.="\n3 RELA godchild";
+								break;
+							}
+						}
+					}
+					$facts[] = new WT_Fact($factrec, $associate, 'asso');
 				}
 			}
 		}
