@@ -178,7 +178,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	}
 	
 	if ($SHOW_LDS_AT_GLANCE && $show_full) {
-		$addname = ' <span class="details$style">'.get_lds_glance($indirec).'</span>' . $addname;
+		$addname = ' <span class="details$style">'.get_lds_glance($person).'</span>' . $addname;
 	}
 	
 	// Show BIRT or equivalent event
@@ -1162,38 +1162,18 @@ function print_findfact_link($element_id) {
 	return '<a href="#" onclick="findFact(document.getElementById(\''.$element_id.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_find_facts" title="'.WT_I18N::translate('Find a fact or event').'"></a>';
 }
 
-/**
-* get a quick-glance view of current LDS ordinances
-* @param string $indirec
-* @return string
-*/
-function get_lds_glance($indirec) {
-	global $GEDCOM;
-	$ged_id=get_id_from_gedcom($GEDCOM);
-	$text = "";
+// Summary of LDS ordinances
+function get_lds_glance(WT_Individual $indi) {
+	$BAPL = $indi->getFacts('BAPL') ? 'B' : '_';
+	$ENDL = $indi->getFacts('ENDL') ? 'E' : '_';
+	$ENDL = $indi->getFacts('SLGC') ? 'C' : '_';
+	$SLGS = '_';
 
-	$ord = get_sub_record(1, "1 BAPL", $indirec);
-	if ($ord) $text .= "B";
-	else $text .= "_";
-	$ord = get_sub_record(1, "1 ENDL", $indirec);
-	if ($ord) $text .= "E";
-	else $text .= "_";
-	$found = false;
-	$ct = preg_match_all("/1 FAMS @(.*)@/", $indirec, $match, PREG_SET_ORDER);
-	for ($i=0; $i<$ct; $i++) {
-		$famrec = find_family_record($match[$i][1], $ged_id);
-		if ($famrec) {
-			$ord = get_sub_record(1, "1 SLGS", $famrec);
-			if ($ord) {
-				$found = true;
-				break;
-			}
+	foreach ($indi->getSpouseFamilies() as $family) {
+		if ($family->getFacts('SLGS')) {
+			$SLGS = '';
 		}
 	}
-	if ($found) $text .= "S";
-	else $text .= "_";
-	$ord = get_sub_record(1, "1 SLGC", $indirec);
-	if ($ord) $text .= "P";
-	else $text .= "_";
-	return $text;
+
+	return $BAPL . $ENDL . $SLGS . $SLGC;
 }
