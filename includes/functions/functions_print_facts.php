@@ -220,7 +220,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	// Print the value of this fact/event
 	switch ($fact->getTag()) {
 	case 'ADDR':
-		print_address_structure($fact->getGedcom(), 1);
+		echo $fact->getValue();
 		break;
 	case 'AFN':
 		echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getValue()), '" target="new">', htmlspecialchars($fact->getValue()), '</a></div>';
@@ -320,7 +320,11 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	echo '<div class="place">', format_fact_place($fact, true, true, true), '</div>';
 	// A blank line between the primary attributes (value, date, place) and the secondary ones
 	echo '<br>';
-	print_address_structure($fact->getGedcom(), 2);
+
+	$addr = $fact->getAttribute('ADDR');
+	if ($addr) {
+		echo WT_Gedcom_Tag::getLabelValue('ADDR', $addr);
+	}
 
 	// Print the associates of this fact/event
 	print_asso_rela_record($fact, $record);
@@ -454,7 +458,6 @@ function print_repository_record($xref) {
 	$repository=WT_Repository::getInstance($xref);
 	if ($repository && $repository->canShow()) {
 		echo '<a class="field" href="', $repository->getHtmlUrl(), '">', $repository->getFullName(), '</a><br>';
-		print_address_structure($repository->getGedcom(), 1);
 		echo '<br>';
 		print_fact_notes($repository->getGedcom(), 1);
 	}
@@ -579,11 +582,6 @@ function print_media_links($factrec, $level, $pid='') {
 				// NOTE: echo the notes of the media
 				echo '<p>';
 				echo print_fact_notes($media->getGedcom(), 1);
-				if (preg_match('/2 DATE (.+)/', get_sub_record('FILE', 1, $media->getGedcom()), $match)) {
-					$media_date=new WT_Date($match[1]);
-					$md = $media_date->Display(true);
-					echo '<p class="label">', WT_Gedcom_Tag::getLabel('DATE'), ': </p> ', $md;
-				}
 				$ttype = preg_match("/".($nlevel+1)." TYPE (.*)/", $media->getGedcom(), $match);
 				if ($ttype>0) {
 					$mediaType = WT_Gedcom_Tag::getFileFormTypeValue($match[1]);
@@ -620,24 +618,6 @@ function print_media_links($factrec, $level, $pid='') {
 			echo '<p class="ui-state-error">', $media_id, '</p>';
 		}
 		$objectNum ++;
-	}
-}
-/**
- * print an address structure
- *
- * takes a gedcom ADDR structure and prints out a human readable version of it.
- * @param string $factrec The ADDR subrecord
- * @param int $level The gedcom line level of the main ADDR record
- */
-function print_address_structure($factrec, $level) {
-	if (preg_match("/$level ADDR (.*)/", $factrec, $omatch)) {
-		$arec = get_sub_record($level, "$level ADDR", $factrec, 1);
-		$cont = get_cont($level+1, $arec);
-		$resultText = $omatch[1] . get_cont($level+1, $arec);
-		if ($level>1) {
-			$resultText = '<span class="label">'.WT_Gedcom_Tag::getLabel('ADDR').': </span><br><div class="indent">' . $resultText . '</div>';
-		}
-		echo $resultText;
 	}
 }
 

@@ -153,7 +153,7 @@ case 'updateraw':
 	$gedcom = preg_replace('/\n\n+/', "\n", $gedcom); // Empty lines
 	$gedcom = trim($gedcom);                          // Leading/trailing spaces
 
-	$record->updateRecord($gedcom, !$keep_chan);
+	$record->updateFact($fact_id, $gedcom, !$keep_chan);
 
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;

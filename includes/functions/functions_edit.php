@@ -859,14 +859,27 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		$date=new WT_Date($value);
 		echo $date->Display(false);
 	}
-	if (($fact=='ASSO' || $fact=='_ASSO' || $fact=='SOUR' || $fact=='OBJE' || ($fact=='NOTE' && $islink)) && $value) {
-		$record=WT_GedcomRecord::getInstance($value);
-		if ($record) {
-			echo ' ', $record->getFullName();
-		} elseif ($value!='new') {
-			echo ' ', $value;
+	if ($value && $value!='new' && $islink) {
+		switch ($fact) {
+		case 'ASSO':
+		case 'ASSO':
+			echo ' ', WT_Individual::getInstance($value)->getFullname();
+			break;
+		case 'SOUR':
+			echo ' ', WT_Source::getInstance($value)->getFullname();
+			break;
+		case 'NOTE':
+			echo ' ', WT_Note::getInstance($value)->getFullname();
+			break;
+		case 'OBJE':
+			echo ' ', WT_Media::getInstance($value)->getFullname();
+			break;
+		case 'REPO':
+			echo ' ', WT_Repository::getInstance($value)->getFullname();
+			break;
 		}
 	}
+
 	// pastable values
 	if ($readOnly=='') {
 		if ($fact=='FORM' && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept);
@@ -877,13 +890,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	return $element_id;
 }
 
-/**
-* prints collapsable fields to add ASSO/RELA, SOUR, OBJE ...
-*
-* @param string $tag Gedcom tag name
-*/
+// prints collapsable fields to add ASSO/RELA, SOUR, OBJE ...
 function print_add_layer($tag, $level=2) {
-	global $MEDIA_DIRECTORY, $TEXT_DIRECTION, $gedrec, $FULL_SOURCES, $islink;
+	global $FULL_SOURCES;
 
 	if ($tag=='OBJE' && get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') < WT_USER_ACCESS_LEVEL) {
 		return;
