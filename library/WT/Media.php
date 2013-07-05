@@ -242,7 +242,7 @@ class WT_Media extends WT_GedcomRecord {
 
 	// TODO Deprecated? This does not need to be a function here.
 	public function getMediaType() {
-		if (preg_match('\n\d TYPE (.+)', $this->gedcom, $match)) {
+		if (preg_match('/\n\d TYPE (.+)/', $this->gedcom, $match)) {
 			return strtolower($match[1]);
 		} else {
 			return '';
