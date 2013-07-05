@@ -86,7 +86,7 @@ class WT_Media extends WT_GedcomRecord {
 		$note = $this->getFactByType('NOTE');
 		if ($note) {
 			$text = $note->getValue();
-			if (preg_match('//', $text)) {
+			if (preg_match('/@' . WT_REGEX_XREF . '@/', $text)) {
 				$text = $note->getTarget()->getNote();
 			}
 			return $text;

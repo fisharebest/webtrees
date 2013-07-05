@@ -137,9 +137,11 @@ class WT_GedcomRecord {
 
 		// No such record exists - create a dummy one
 		if ($gedcom === null && $pending === null) {
-			$xref      = self::DUMMY_XREF;
-			$gedcom    = "0 @$xref@ " . static::RECORD_TYPE . "\n1 RESN none";
-			$gedcom_id = 0;
+			// Is this a good idea?
+			//$xref      = self::DUMMY_XREF;
+			//$gedcom    = "0 @$xref@ " . static::RECORD_TYPE . "\n1 RESN none";
+			//$gedcom_id = 0;
+			return null;
 		}
 
 		// Create the object

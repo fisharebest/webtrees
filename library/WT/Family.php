@@ -44,13 +44,15 @@ class WT_Family extends WT_GedcomRecord {
 		// Fetch husband and wife
 		if (preg_match('/^1 HUSB @(.+)@/m', $gedcom.$pending, $match)) {
 			$this->husb = WT_Individual::getInstance($match[1]);
-		} else {
-			$this->husb = WT_Individual::getInstance(self::DUMMY_XREF);
+		}
+		if (!$this->husb) {
+			$this->husb = new WT_Individual('M', '0 @M@ INDI', null, $gedcom_id);
 		}
 		if (preg_match('/^1 WIFE @(.+)@/m', $gedcom.$pending, $match)) {
 			$this->wife = WT_Individual::getInstance($match[1]);
-		} else {
-			$this->wife = WT_Individual::getInstance(self::DUMMY_XREF);
+		}
+		if (!$this->wife) {
+			$this->wife = new WT_Individual('F', '0 @F@ INDI', null, $gedcom_id);
 		}
 
 		// Make sure husb/wife are the right way round.
