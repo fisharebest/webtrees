@@ -346,7 +346,7 @@ case 'update': // Save the information from the “editmedia” action
 		$oldServerFile  = $media->getServerFilename('main');
 		$oldServerThumb = $media->getServerFilename('thumb');
 
-		$newmedia = new WT_Media("xxx", "0 @xxx@ OBJE\n1 FILE " . $newFilename), null, WT_GED_ID;
+		$newmedia = new WT_Media("xxx", "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, WT_GED_ID);
 		$newServerFile  = $newmedia->getServerFilename('main');
 		$newServerThumb = $newmedia->getServerFilename('thumb');
 
