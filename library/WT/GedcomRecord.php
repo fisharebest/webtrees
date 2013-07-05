@@ -145,6 +145,8 @@ class WT_GedcomRecord {
 		// Create the object
 		if (preg_match('/^0 @' . WT_REGEX_XREF . '@ (' . WT_REGEX_TAG . ')/', $gedcom.$pending, $match)) {
 			$type = $match[1];
+		} elseif (preg_match('/^0 (HEAD|TRLR)/', $gedcom.$pending, $match)) {
+			$type = $match[1];
 		} else {
 			throw new Exception('Unrecognised GEDCOM record: ' . $gedcom);
 		}
@@ -167,6 +169,12 @@ class WT_GedcomRecord {
 			break;
 		case 'NOTE':
 			$record = new WT_Note($xref, $gedcom, $pending, $gedcom_id);
+			break;
+		case 'HEAD':
+		case 'TRLR':
+		case 'SUBM':
+		case 'SUBN':
+			$record = new WT_GedcomRecord($xref, $gedcom, $pending, $gedcom_id);
 			break;
 		default:
 			throw new Exception('No support for GEDCOM record type: ' . $type);
@@ -371,7 +379,7 @@ class WT_GedcomRecord {
 
 		if ($access_level==WT_PRIV_HIDE) {
 			// We may need the original record, for example when downloading a GEDCOM or clippings cart
-			return array($this->gedcom, '');
+			return $this->gedcom;
 		} elseif ($this->canShow($access_level)) {
 			// The record is not private, but the individual facts may be.
 
@@ -923,7 +931,7 @@ class WT_GedcomRecord {
 		self::$gedcom_record_cache = null;
 		self::$pending_record_cache = null;
 
-		AddToLog('Update: ' . self::RECORD_TYPE . ' ' . $this->xref, 'edit');
+		AddToLog('Update: ' . static::RECORD_TYPE . ' ' . $this->xref, 'edit');
 	}
 
 	public function deleteRecord() {
@@ -946,6 +954,6 @@ class WT_GedcomRecord {
 		self::$gedcom_record_cache = null;
 		self::$pending_record_cache = null;
 
-		AddToLog('Delete: ' . self::RECORD_TYPE . ' ' . $this->xref, 'edit');
+		AddToLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref, 'edit');
 	}
 }

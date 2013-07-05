@@ -106,35 +106,33 @@ function gedcom_header($gedfile) {
 	$SUBM="\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME ".WT_USER_NAME; // The SUBM record is mandatory
 
 	// Preserve some values from the original header
-	if (get_gedcom_setting($ged_id, 'imported')) {
-		$head=find_gedcom_record("HEAD", $ged_id);
-		if (preg_match("/\n1 PLAC\n2 FORM .+/", $head, $match)) {
-			$PLAC=$match[0];
-		}
-		if (preg_match("/\n1 LANG .+/", $head, $match)) {
-			$LANG=$match[0];
-		}
-		if (preg_match("/\n1 SUBN .+/", $head, $match)) {
-			$SUBN=$match[0];
-		}
-		if (preg_match("/\n1 COPR .+/", $head, $match)) {
-			$COPR=$match[0];
-		}
-		// Link to SUBM/SUBN records, if they exist
-		$subn=
-			WT_DB::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
-			->execute(array('SUBN', $ged_id))
-			->fetchOne();
-		if ($subn) {
-			$SUBN="\n1 SUBN @{$subn}@";
-		}
-		$subm=
-			WT_DB::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
-			->execute(array('SUBM', $ged_id))
-			->fetchOne();
-		if ($subm) {
-			$SUBM="\n1 SUBM @{$subm}@";
-		}
+	$record = WT_GedcomRecord::getInstance('HEAD');
+	if ($fact = $record->getFactByType('PLAC')) {
+		$PLAC = $fact->getAttribute('FORM');
+	}
+	if ($fact = $record->getFactByType('LANG')) {
+		$LANG = $fact->getValue();
+	}
+	if ($fact = $record->getFactByType('SUBN')) {
+		$SUBN = $fact->getValue();
+	}
+	if ($fact = $record->getFactByType('COPR')) {
+		$COPR = $fact->getValue();
+	}
+	// Link to actual SUBM/SUBN records, if they exist
+	$subn=
+		WT_DB::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
+		->execute(array('SUBN', $ged_id))
+		->fetchOne();
+	if ($subn) {
+		$SUBN="\n1 SUBN @{$subn}@";
+	}
+	$subm=
+		WT_DB::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
+		->execute(array('SUBM', $ged_id))
+		->fetchOne();
+	if ($subm) {
+		$SUBM="\n1 SUBM @{$subm}@";
 	}
 
 	return $HEAD.$SOUR.$DEST.$DATE.$GEDC.$CHAR.$FILE.$COPR.$LANG.$PLAC.$SUBN.$SUBM."\n";
@@ -206,9 +204,9 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	$buffer=reformat_record_export($head);
 
 	$rows=WT_DB::prepare(
-		"SELECT i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+		"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
 		" FROM `##individuals` WHERE i_file=? ORDER BY i_id"
-	)->execute(array($ged_id))->fetchAll(C);
+	)->execute(array($ged_id))->fetchAll();
 	foreach ($rows as $row) {
 		$rec = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI']=="yes") {
@@ -281,7 +279,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$rows=WT_DB::prepare(
-		"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename".
+		"SELECT 'OBJE' AS type, m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom".
 		" FROM `##media` WHERE m_file=? ORDER BY m_id"
 	)->execute(array($ged_id))->fetchAll();
 	foreach ($rows as $row) {
