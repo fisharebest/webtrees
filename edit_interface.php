@@ -2184,20 +2184,25 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	// Inherit surname from parents, spouse or child
 	if (!$namerec) {
 		// We'll need the parent's name to set the child's surname
-		$family=WT_Family::getInstance($famid);
-		if ($family && $family->getHusband()) {
-			$father_name=get_gedcom_value('NAME', 0, $family->getHusband()->getGedcom());
+		$family = WT_Family::getInstance($famid);
+		$father = $family->getHusband();
+		if ($father->getFactByType('NAME')) {
+			$father_name = $father->getFactByType('NAME')->getValue();
 		} else {
 			$father_name='';
 		}
-		if ($family && $family->getWife()) {
-			$mother_name=get_gedcom_value('NAME', 0, $family->getWife()->getGedcom());
+		$mother = $family->getWife();
+		if ($mother->getFactByType('NAME')) {
+			$mother_name = $mother->getFactByType('NAME')->getValue();
 		} else {
-			$mother_name='';
+			$mother_name = '';
 		}
 		// We'll need the spouse/child's name to set the spouse/parent's surname
-		$prec=find_gedcom_record($xref, WT_GED_ID, true);
-		$indi_name=get_gedcom_value('NAME', 0, $prec);
+		if ($person && $person->getFactByType('NAME')) {
+			$indi_name = $person->getFactByType('NAME')->getValue();
+		} else {
+			$indi_name = '';
+		}
 		// Different cultures do surnames differently
 		switch ($SURNAME_TRADITION) {
 		case 'spanish':
