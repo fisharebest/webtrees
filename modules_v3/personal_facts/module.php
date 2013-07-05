@@ -458,18 +458,18 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				if ($arec) {
 					// Extract the important details from the fact
 					$factrec='1 '.$fact->getTag();
-					if (preg_match('/\n2 DATE .*/', $srec, $match)) {
+					if (preg_match('/\n2 DATE .*/', $fact->getGedcom(), $match)) {
 						$factrec.=$match[0];
 					}
-					if (preg_match('/\n2 PLAC .*/', $srec, $match)) {
+					if (preg_match('/\n2 PLAC .*/', $fact->getGedcom(), $match)) {
 						$factrec.=$match[0];
 					}
 					if ($associate instanceof WT_Family) {
 						foreach ($associate->getSpouses() as $spouse) {
-							$factrec.="\n2 $asso_tag @".$spouse->getXref().'@';
+							$factrec.="\n2 _ASSO @".$spouse->getXref().'@';
 						}
 					} else {
-						$factrec.="\n2 $asso_tag @".$associate->getXref().'@';
+						$factrec.="\n2 _ASSO @".$associate->getXref().'@';
 						// CHR/BAPM events are commonly used.  Generate the reverse relationship
 						if (preg_match('/^(?:BAPM|CHR)$/', $fact->getTag()) && preg_match('/3 RELA god(?:parent|mother|father)/', $fact->getGedcom())) {
 							switch ($associate->getSex()) {
