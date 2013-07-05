@@ -104,7 +104,7 @@ class WT_Fact {
 
 	// Do the privacy rules allow us to display this fact to the current user
 	function canShow($access_level=WT_USER_ACCESS_LEVEL) {
-		// TODO - use the privacy settings for $ged_id, not the default gedcom.
+		// TODO - use the privacy settings for $this->gedcom_id, not the default gedcom.
 		global $person_facts, $global_facts;
 
 		// Does this record have an explicit RESN?
@@ -119,6 +119,7 @@ class WT_Fact {
 		}
 
 		// Does this record have a default RESN?
+		if (!$this->parent) die($eek);
 		$xref = $this->parent->getXref();
 		if (isset($person_facts[$xref][$this->tag])) {
 			return $person_facts[$xref][$this->tag] >= $access_level;

@@ -81,6 +81,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				switch ($fact->getTag()) {
 				case 'SOUR':
 				case 'NOTE':
+				case 'OBJE':
 				case 'CHAN':
 				case '_UID':
 				case 'RIN':
