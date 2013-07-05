@@ -977,7 +977,13 @@ function format_sour_table($datalist) {
 		// Sortable name
 		$html .= '<td>'. strip_tags($source->getFullName()). '</td>';
 		//-- Author
-		$html .= '<td>'. highlight_search_hits(htmlspecialchars($source->getAuth())). '</td>';
+		$auth = $source->getFactByType('AUTH');
+		if ($auth) {
+			$author = $auth->getValue();
+		} else {
+			$author = '';
+		}
+		$html .= '<td>'. highlight_search_hits($author). '</td>';
 		//-- Linked INDIs
 		$num=count($source->fetchLinkedIndividuals());
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';

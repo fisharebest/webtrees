@@ -64,10 +64,6 @@ class WT_Source extends WT_GedcomRecord {
 		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 	}
 
-	public function getAuth() {
-		return get_gedcom_value('AUTH', 1, $this->getGedcom());
-	}
-
 	// Get an array of structures containing all the names in the record
 	public function getAllNames() {
 		return parent::_getAllNames('TITL', 1);
