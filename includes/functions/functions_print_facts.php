@@ -521,10 +521,9 @@ function print_fact_sources($factrec, $level, $return=false) {
 				}
 				$data .= ' class="source_citations">';
 				// PUBL
-				$text = get_gedcom_value('PUBL', '1', $source->getGedcom());
-				if (!empty($text)) {
-					$data .= '<span class="label">'.WT_Gedcom_Tag::getLabel('PUBL').': </span>';
-					$data .= $text;
+				$publ = $source->getFactByType('PUBL');
+				if ($publ) {
+					$data .= WT_Gedcom_Tag::getLabelValue('PUBL', $publ->getValue());
 				}
 				$data .= printSourceStructure(getSourceStructure($srec));
 				$data .= '<div class="indent">';
