@@ -1262,14 +1262,7 @@ function format_media_table($datalist) {
 	//-- table body
 	$html .= '<tbody>';
 	$n = 0;
-	foreach ($datalist as $key => $value) {
-		if (is_object($value)) { // Array of objects
-			$media=$value;
-		} else {
-			$media = new WT_Media($value["GEDCOM"]);
-			if (is_null($media)) $media = WT_Media::getInstance($key);
-			if (is_null($media)) continue;
-		}
+	foreach ($datalist as $media) {
 		if ($media->canShow()) {
 			$name = $media->getFullName();
 			$html .= "<tr>";
