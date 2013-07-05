@@ -751,11 +751,21 @@ function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false
 	$factrec = $event->getGedcom();
 	$html='';
 	// Recorded age
-	$fact_age=get_gedcom_value('AGE', 2, $factrec);
-	if ($fact_age=='')
-		$fact_age=get_gedcom_value('DATE:AGE', 2, $factrec);
-	$husb_age=get_gedcom_value('HUSB:AGE', 2, $factrec);
-	$wife_age=get_gedcom_value('WIFE:AGE', 2, $factrec);
+	if (preg_match('/\n2 AGE (.+)/', $factrec, $match)) {
+		$fact_age = $match[1];
+	} else {
+		$fact_age = '';
+	}
+	if (preg_match('/\n2 HUSB\n3 AGE (.+)/', $factrec, $match)) {
+		$husb_age = $match[1];
+	} else {
+		$husb_age = '';
+	}
+	if (preg_match('/\n2 WIFE\n3 AGE (.+)/', $factrec, $match)) {
+		$wife_age = $match[1];
+	} else {
+		$wife_age = '';
+	}
 
 	// Calculated age
 	if (preg_match('/2 DATE (.+)/', $factrec, $match)) {
