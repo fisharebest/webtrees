@@ -81,12 +81,18 @@ class WT_Media extends WT_GedcomRecord {
 		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 	}
 
-	/**
-	 * get the media note from the gedcom
-	 * @return string
-	 */
+	// Get the first note attached to this media object
 	public function getNote() {
-		return get_gedcom_value('NOTE', 1, $this->getGedcom());
+		$note = $this->getFactByType('NOTE');
+		if ($note) {
+			$text = $note->getValue();
+			if (preg_match('//', $text)) {
+				$text = $note->getTarget()->getNote();
+			}
+			return $text;
+		} else {
+			return '';
+		}
 	}
 
 	/**
