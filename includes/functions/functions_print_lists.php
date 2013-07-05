@@ -771,25 +771,12 @@ function format_fam_table($datalist, $option='') {
 			if ($marriage_dates[0]->gregorianYear()>=1550 && $marriage_dates[0]->gregorianYear()<2030) {
 				$marr_by_decade[(int)($marriage_dates[0]->gregorianYear()/10)*10] .= $husb->getSex().$wife->getSex();
 			}
-		} elseif ($family->getFactByType('_NMR')) {
-			$hus = $family->getHusband();
-			$wif = $family->getWife();
-			if (empty($wif) && !empty($hus)) $html .= WT_Gedcom_Tag::getLabel('_NMR', $hus);
-			else if (empty($hus) && !empty($wif)) $html .= WT_Gedcom_Tag::getLabel('_NMR', $wif);
-			else $html .= WT_Gedcom_Tag::getLabel('_NMR');
+		} elseif ($family->getFacts('_NMR')) {
+			$html .= WT_I18N::translate('no');
+		} elseif ($family->getFacts(WT_EVENTS_MARR)) {
+			$html .= WT_I18N::translate('yes');
 		} else {
-			$factdetail = explode(' ', trim($family->getMarriageRecord()));
-			if (isset($factdetail)) {
-				if (count($factdetail) >= 3) {
-					if (strtoupper($factdetail[2]) != "N") {
-						$html .= WT_I18N::translate('yes');
-					} else {
-						$html .= WT_I18N::translate('no');
-					}
-				} else {
-					$html .= '&nbsp;';
-				}
-			}
+			$html .= '&nbsp;';
 		}
 		$html .= '</td>';
 		//-- Event date (sortable)hidden by datatables code
