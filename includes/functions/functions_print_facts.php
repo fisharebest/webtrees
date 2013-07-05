@@ -715,10 +715,9 @@ function print_main_sources(WT_Fact $fact, $level) {
 			if ($source) {
 				echo '<a href="', $source->getHtmlUrl(), '">', $source->getFullName(), '</a>';
 				// PUBL
-				$text = get_gedcom_value('PUBL', '1', $source->getGedcom());
-				if (!empty($text)) {
-					echo '<br><span class="label">', WT_Gedcom_Tag::getLabel('PUBL'), ': </span>';
-					echo $text;
+				$publ = $source->getFactByType('PUBL');
+				if ($publ) {
+					echo WT_Gedcom_Tag::getLabelValue('PUBL', $publ->getValue());
 				}
 				// 2 RESN tags.  Note, there can be more than one, such as "privacy" and "locked"
 				if (preg_match_all("/\n2 RESN (.+)/", $factrec, $rmatches)) {
