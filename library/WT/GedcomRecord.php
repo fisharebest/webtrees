@@ -725,15 +725,6 @@ class WT_GedcomRecord {
 		}
 	}
 
-	public function getEventDate($event) {
-		$srec = $this->getAllEvents($event);
-		if (!$srec) {
-			return '';
-		}
-		$srec = $srec[0];
-		return get_gedcom_value('DATE', 2, $srec);
-	}
-
 	//////////////////////////////////////////////////////////////////////////////
 	// Get the last-change timestamp for this record, either as a formatted string
 	// (for display) or as a unix timestamp (for sorting)
