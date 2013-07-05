@@ -174,39 +174,15 @@ class WT_Stats {
 		$title = "";
 		$version = '';
 		$source = '';
-		static $cache=null;
-		if (is_array($cache)) {
-			return $cache;
+
+		$head = WT_GedcomRecord::getInstance('HEAD');
+		$sour = $head->getFactByType('SOUR');
+		if ($sour) {
+			$source  = $sour->getValue();
+			$title   = $sour->getAttribute('NAME');
+			$version = $sour->getAttribute('VERS');
 		}
-		$head=find_other_record('HEAD', $this->_ged_id);
-		$ct=preg_match("/1 SOUR (.*)/", $head, $match);
-		if ($ct > 0) {
-			$softrec=get_sub_record(1, '1 SOUR', $head);
-			$tt=preg_match("/2 NAME (.*)/", $softrec, $tmatch);
-			if ($tt > 0) {
-				$title=trim($tmatch[1]);
-			} else {
-				$title=trim($match[1]);
-			}
-			if (!empty($title)) {
-				$tt=preg_match("/2 VERS (.*)/", $softrec, $tmatch);
-				if ($tt > 0) {
-					$version=trim($tmatch[1]);
-				} else {
-					$version='';
-				}
-			} else {
-				$version='';
-			}
-			$tt=preg_match("/1 SOUR (.*)/", $softrec, $tmatch);
-			if ($tt > 0) {
-				$source=trim($tmatch[1]);
-			} else {
-				$source=trim($match[1]);
-			}
-		}
-		$cache=array($title, $version, $source);
-		return $cache;
+		return array($title, $version, $source);
 	}
 
 	function gedcomCreatedSoftware() {
@@ -883,8 +859,7 @@ class WT_Stats {
 			}
 			$placelist = array();
 			foreach ($rows as $row) {
-				$factrec = trim(get_sub_record(1, "1 {$fact}", $row->ged, 1));
-				if (!empty($factrec) && preg_match("/2 PLAC (.+)/", $factrec, $match)) {
+				if (preg_match('/\n1 {$fact}(?:\n[2-9].*)*\n2 PLAC (.+)}/', $row->ged, $match)) {
 					if ($country) {
 						$tmp=explode(WT_Place::GEDCOM_SEPARATOR, $match[1]);
 						$place = end($tmp);
