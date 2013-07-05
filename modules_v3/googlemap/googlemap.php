@@ -278,8 +278,8 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 								$placerec = $sEvent->getAttribute('PLAC');
 								if ($placerec) {
 									$ctd = preg_match('/\n2 DATE (.*)/',  $birthrec, $matchd);
-									$ctla = preg_match('/\n3 LATI (.*)/', $birthrec, $match1);
-									$ctlo = preg_match('/\n3 LONG (.*)/', $birthrec, $match2);
+									$ctla = preg_match('/\n4 LATI (.*)/', $birthrec, $match1);
+									$ctlo = preg_match('/\n4 LONG (.*)/', $birthrec, $match2);
 									if (($ctla>0) && ($ctlo>0)) {
 										$i++;
 										$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
