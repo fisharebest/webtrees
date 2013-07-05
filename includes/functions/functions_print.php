@@ -229,7 +229,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
 		if (!in_array($birttag, $opt_tags)) {
 			$event = $person->getFactByType($birttag);
-			if ($event->getDate()->isOK() || $event->getPlace()) {
+			if ($event && ($event->getDate()->isOK() || $event->getPlace())) {
 				$tmp=new WT_Place($event->getPlace(), WT_GED_ID);
 				$birthplace .= $tmp->getShortName();
 				break;
