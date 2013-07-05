@@ -771,18 +771,12 @@ function format_fam_table($datalist, $option='') {
 			if ($marriage_dates[0]->gregorianYear()>=1550 && $marriage_dates[0]->gregorianYear()<2030) {
 				$marr_by_decade[(int)($marriage_dates[0]->gregorianYear()/10)*10] .= $husb->getSex().$wife->getSex();
 			}
-		} else if (get_sub_record(1, '1 _NMR', $family->getGedcom())) {
+		} elseif ($family->getFactByType('_NMR')) {
 			$hus = $family->getHusband();
 			$wif = $family->getWife();
 			if (empty($wif) && !empty($hus)) $html .= WT_Gedcom_Tag::getLabel('_NMR', $hus);
 			else if (empty($hus) && !empty($wif)) $html .= WT_Gedcom_Tag::getLabel('_NMR', $wif);
 			else $html .= WT_Gedcom_Tag::getLabel('_NMR');
-		} else if (get_sub_record(1, '1 _NMAR', $family->getGedcom())) {
-			$hus = $family->getHusband();
-			$wif = $family->getWife();
-			if (empty($wif) && !empty($hus)) $html .= WT_Gedcom_Tag::getLabel('_NMAR', $hus);
-			else if (empty($hus) && !empty($wif)) $html .= WT_Gedcom_Tag::getLabel('_NMAR', $wif);
-			else $html .= WT_Gedcom_Tag::getLabel('_NMAR');
 		} else {
 			$factdetail = explode(' ', trim($family->getMarriageRecord()));
 			if (isset($factdetail)) {

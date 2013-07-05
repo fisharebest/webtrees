@@ -273,14 +273,13 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 						if ($person->canShow()) {
 							$srec = find_person_record($smatch[$j][1], WT_GED_ID);
 							$birthrec = '';
-							$placerec = '';
 							foreach ($person->getFacts('BIRT') as $sEvent) {
 								$birthrec = $sEvent->getGedcom();
-								$placerec = get_sub_record(2, '2 PLAC', $birthrec);
-								if (!empty($placerec)) {
-									$ctd = preg_match("/\d DATE (.*)/", $birthrec, $matchd);
-									$ctla = preg_match("/\d LATI (.*)/", $placerec, $match1);
-									$ctlo = preg_match("/\d LONG (.*)/", $placerec, $match2);
+								$placerec = $sEvent->getAttribute('PLAC');
+								if ($placerec) {
+									$ctd = preg_match('/\n2 DATE (.*)/',  $birthrec, $matchd);
+									$ctla = preg_match('/\n3 LATI (.*)/', $birthrec, $match1);
+									$ctlo = preg_match('/\n3 LONG (.*)/', $birthrec, $match2);
 									if (($ctla>0) && ($ctlo>0)) {
 										$i++;
 										$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
@@ -309,10 +308,9 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 										}
 										$markers[$i]['name'] = $smatch[$j][1];
 									} else {
-										$ctpl = preg_match("/\d PLAC (.*)/", $placerec, $match1);
-										$latlongval = get_lati_long_placelocation($match1[1]);
+										$latlongval = get_lati_long_placelocation($placerec);
 										if ((count($latlongval) == 0) && (!empty($GM_DEFAULT_TOP_VALUE))) {
-											$latlongval = get_lati_long_placelocation($match1[1].', '.$GM_DEFAULT_TOP_VALUE);
+											$latlongval = get_lati_long_placelocation($placerec.', '.$GM_DEFAULT_TOP_VALUE);
 											if ((count($latlongval) != 0) && ($latlongval['level'] == 0)) {
 												$latlongval['lati'] = NULL;
 												$latlongval['long'] = NULL;
