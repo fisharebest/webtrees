@@ -2647,6 +2647,7 @@ function FootnoteTextsSHandler() {
 * @final
 */
 function AgeAtDeathSHandler() {
+	// TODO: This duplicates functionality in format_fact_date()
 	global $currentElement, $gedrec, $fact, $desc;
 
 	$id = "";
@@ -2654,12 +2655,22 @@ function AgeAtDeathSHandler() {
 	if (preg_match("/0 @(.+)@/", $gedrec, $match)) {
 		$person=WT_Individual::getInstance($match[1]);
 		// Recorded age
-		$fact_age=get_gedcom_value('AGE', 2, $gedrec);
-		if ($fact_age=='') {
-			$fact_age=get_gedcom_value('DATE:AGE', 2, $gedrec);
+		if (preg_match('/\n2 AGE (.+)/', $factrec, $match)) {
+			$fact_age = $match[1];
+		} else {
+			$fact_age = '';
 		}
-		$husb_age=get_gedcom_value('HUSB:AGE', 2, $gedrec);
-		$wife_age=get_gedcom_value('WIFE:AGE', 2, $gedrec);
+		if (preg_match('/\n2 HUSB\n3 AGE (.+)/', $factrec, $match)) {
+			$husb_age = $match[1];
+		} else {
+			$husb_age = '';
+		}
+		if (preg_match('/\n2 WIFE\n3 AGE (.+)/', $factrec, $match)) {
+			$wife_age = $match[1];
+		} else {
+			$wife_age = '';
+		}
+
 		// Calculated age
 		$birth_date=$person->getBirthDate();
 		// Can't use getDeathDate(), as this also gives BURI/CREM events, which
@@ -3701,4 +3712,90 @@ function DescriptionSHandler() {
 function DescriptionEHandler() {
 	global $reportDescription;
 	$reportDescription = false;
+}
+
+/**
+ * get gedcom tag value
+ *
+ * returns the value of a gedcom tag from the given gedcom record
+ * @param string $tag The tag to find, use : to delineate subtags
+ * @param int $level The gedcom line level of the first tag to find, setting level to 0 will cause it to use 1+ the level of the incoming record
+ * @param string $gedrec The gedcom record to get the value from
+ * @param int $truncate Should the value be truncated to a certain number of characters
+ * @return string
+ */
+function get_gedcom_value($tag, $level, $gedrec, $truncate='') {
+	global $GEDCOM;
+	$ged_id=get_id_from_gedcom($GEDCOM);
+
+	if (empty($gedrec)) {
+		return "";
+	}
+	$tags = explode(':', $tag);
+	$origlevel = $level;
+	if ($level==0) {
+		$level = $gedrec{0} + 1;
+	}
+
+	$subrec = $gedrec;
+	foreach ($tags as $indexval => $t) {
+		$lastsubrec = $subrec;
+		$subrec = get_sub_record($level, "$level $t", $subrec);
+		if (empty($subrec) && $origlevel==0) {
+			$level--;
+			$subrec = get_sub_record($level, "$level $t", $lastsubrec);
+		}
+		if (empty($subrec)) {
+			if ($t=="TITL") {
+				$subrec = get_sub_record($level, "$level ABBR", $lastsubrec);
+				if (!empty($subrec)) {
+					$t = "ABBR";
+				}
+			}
+			if (empty($subrec)) {
+				if ($level>0) {
+					$level--;
+				}
+				$subrec = get_sub_record($level, "@ $t", $gedrec);
+				if (empty($subrec)) {
+					return;
+				}
+			}
+		}
+		$level++;
+	}
+	$level--;
+	$ct = preg_match("/$level $t(.*)/", $subrec, $match);
+	if ($ct==0) {
+		$ct = preg_match("/$level @.+@ (.+)/", $subrec, $match);
+	}
+	if ($ct==0) {
+		$ct = preg_match("/@ $t (.+)/", $subrec, $match);
+	}
+	if ($ct > 0) {
+		$value = trim($match[1]);
+		if ($t=='NOTE' && preg_match('/^@(.+)@$/', $value, $match)) {
+			$oldsub = $subrec;
+			$subrec = find_other_record($match[1], $ged_id);
+			if ($subrec) {
+				$value=$match[1];
+				$ct = preg_match("/0 @$match[1]@ $t (.+)/", $subrec, $match);
+				if ($ct>0) {
+					$value = $match[1];
+					$level = 0;
+				} else
+					$subrec = $oldsub;
+			} else {
+				//-- set the value to the id without the @
+				$value = $match[1];
+			}
+		}
+		if ($level!=0 || $t!="NOTE") {
+			$value .= get_cont($level+1, $subrec);
+		}
+		$value = preg_replace("'\n'", "", $value);
+		$value = preg_replace("'<br>'", "\n", $value);
+		return $value;
+	}
+	return "";
 }

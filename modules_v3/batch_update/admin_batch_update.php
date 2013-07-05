@@ -89,19 +89,18 @@ class batch_update {
 			} else {
 				if ($this->curr_xref) {
 					// Create an object, so we can get the latest version of the name.
-					$object=WT_GedcomRecord::getInstance($this->curr_xref);
-					$object->setGedcomRecord($this->record);
+					$this->record=WT_GedcomRecord::getInstance($this->curr_xref);
 
 					$html.=
 						'</table><table id="batch_update2"><tr><td>'.
 						self::createSubmitButton(WT_I18N::translate('previous'), $this->prev_xref).
 						self::createSubmitButton(WT_I18N::translate('next'), $this->next_xref).
-						'</td><th><a href="'.$object->getHtmlUrl().'">'.$object->getFullName().'</a>'.
+						'</td><th><a href="'.$this->record->getHtmlUrl().'">'.$this->record->getFullName().'</a>'.
 						'</th>'.
 						'</tr><tr><td valign="top">'.
 						'<br>'.implode('<br>',$this->PLUGIN->getActionButtons($this->curr_xref, $this->record)).'<br>'.
 						'</td><td dir="ltr" align="left">'.
-						$this->PLUGIN->getActionPreview($this->curr_xref, $this->record);
+						$this->PLUGIN->getActionPreview($this->record);
 						'</td></tr>';
 				} else {
 					$html.='<tr><td class="accepted" colspan=2>'.WT_I18N::translate('Nothing found.').'</td></tr>';
@@ -308,7 +307,15 @@ class batch_update {
 
 	// Get the current view of a record, allowing for pending changes
 	static function getLatestRecord($xref, $type) {
-		return find_gedcom_record($xref, WT_GED_ID, true);
+		switch ($type) {
+		case 'INDI': return WT_Individual::getInstance($xref)->getGedcom();
+		case 'FAM':  return WT_Family::getInstance($xref)->getGedcom();
+		case 'SOUR': return WT_Source::getInstance($xref)->getGedcom();
+		case 'REPO': return WT_Repository::getInstance($xref)->getGedcom();
+		case 'OBJE': return WT_Media::getInstance($xref)->getGedcom();
+		case 'NOTE': return WT_Note::getInstance($xref)->getGedcom();
+		default:     return WT_GedcomRecord::getInstance($xref)->getGedcom();
+		}
 	}
 }
 
@@ -356,7 +363,19 @@ class base_plugin {
 	}
 
 	// Default previewer for plugins with no custom preview.
-	function getActionPreview($xref, $gedrec) {
+	function getActionPreview(WT_GedcomRecord $record) {
+		$gedcom = "0 @" . $record->getXref() . "@ " . $record::RECORD_TYPE;
+		foreach ($record->getFacts() as $fact) {
+			if ($fact->isNew()) {
+				$gedcom .= "\n" . self::decorateInsertedText($fact->getGedcom());
+			} elseif ($fact->isOld()) {
+				$gedcom .= "\n" . self::decorateDeletedText($fact->getGedcom());
+			} else {
+				$gedcom .= "\n" . $fact->getGedcom();
+			}
+		}
+		return '<pre>'.self::createEditLinks($gedcom).'</pre>';
+		
 		$old_lines=preg_split('/[\n]+/', $gedrec);
 		$new_lines=preg_split('/[\n]+/', $this->updateRecord($xref, $gedrec));
 		// Find matching lines using longest-common-subsequence algorithm.
