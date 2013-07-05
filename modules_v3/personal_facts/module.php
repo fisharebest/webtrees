@@ -443,9 +443,10 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		if (file_exists(WT_Site::preference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
 			require WT_Site::preference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
 			foreach ($histo as $hist) {
-				$sdate = new WT_Date(get_gedcom_value('DATE', 2, $hist));
+				$fact = new WT_Fact($hist, null, 'histo');
+				$sdate = $fact->getDate();
 				if ($sdate->isOK() && WT_Date::Compare($birt_date, $sdate)<=0 && WT_Date::Compare($sdate, $deat_date)<=0) {
-					$facts[] = new WT_Fact($hist, null, 'histo');
+					$facts[] = $fact;
 				}
 			}
 		}
