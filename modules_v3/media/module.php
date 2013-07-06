@@ -67,7 +67,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
 					<span>
-						<a href="#" onclick="reorder_media(\''.$controller->record->getXref().'\'); return false;">
+					<a href="#" onclick="reorder_media('<?php echo $controller->record->getXref(); ?>'); return false;">
 						<i class="icon-media-shuffle"></i>
 						<?php echo WT_I18N::translate('Re-order media'); ?>
 						</a>
