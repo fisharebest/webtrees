@@ -1085,9 +1085,9 @@ case 'addchildaction':
 		// Insert new child at the right place
 		foreach ($family->getFacts('CHIL') as $fact) {
 			$old_child = $fact->getTarget();
-			if ($old_child && WT_Date::Compare($newchild->getEstimatedBirthDate(), $child->getEstimatedBirthDate())<0) {
+			if ($old_child && WT_Date::Compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate())<0) {
 				// Insert before this child
-				$family->updateFact($fact->fact_id, "1 CHIL @" . $new_child->getXref()."@\n" . $fact->getGedcom(), !$keep_chan);
+				$family->updateFact($fact->getFactId(), "1 CHIL @" . $new_child->getXref()."@\n" . $fact->getGedcom(), !$keep_chan);
 				$done = true;
 				break;
 			}
