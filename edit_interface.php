@@ -1600,7 +1600,7 @@ case 'reorder_children':
 			echo '</ul>';
 			?>
 			<table>
-				<?php echo keep_chan($record); ?>
+				<?php echo keep_chan($family); ?>
 			</table>
 			<p id="save-cancel">
 				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
