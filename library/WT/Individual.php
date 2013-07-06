@@ -742,30 +742,14 @@ class WT_Individual extends WT_GedcomRecord {
 	function getSpouseFamilies($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
-		if ($access_level==WT_PRIV_HIDE) {
-			// special case, (temporary - cannot make this generic as other code depends on the private cached values)
-			$families=array();
-			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->gedcom, $match);
-			foreach ($match[1] as $pid) {
-				$family=WT_Family::getInstance($pid);
-				if ($family) {
-					$families[]=$family;
-				}
-			}
-			return $families;
-		}
-
-		if ($this->_spouseFamilies===null) {
-			$this->_spouseFamilies=array();
-			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->gedcom, $match);
-			foreach ($match[1] as $pid) {
-				$family=WT_Family::getInstance($pid);
-				if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
-					$this->_spouseFamilies[]=$family;
-				}
+		$families = array();
+		foreach ($this->getFacts('FAMS', $access_level) as $fact) {
+			$family = $fact->getTarget();
+			if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
+				$families[] = $family;
 			}
 		}
-		return $this->_spouseFamilies;
+		return $families;
 	}
 
 	/**
@@ -803,30 +787,14 @@ class WT_Individual extends WT_GedcomRecord {
 	function getChildFamilies($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
-		if ($access_level==WT_PRIV_HIDE) {
-			// special case, (temporary - cannot make this generic as other code depends on the private cached values)
-			$families=array();
-			preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->gedcom, $match);
-			foreach ($match[1] as $pid) {
-				$family=WT_Family::getInstance($pid);
-				if ($family) {
-					$families[]=$family;
-				}
-			}
-			return $families;
-		}
-
-		if ($this->_childFamilies===null) {
-			$this->_childFamilies=array();
-			preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->gedcom, $match);
-			foreach ($match[1] as $pid) {
-				$family=WT_Family::getInstance($pid);
-				if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
-					$this->_childFamilies[]=$family;
-				}
+		$families = array();
+		foreach ($this->getFacts('FAMC', $access_level) as $fact) {
+			$family = $fact->getTarget();
+			if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
+				$families[] = $family;
 			}
 		}
-		return $this->_childFamilies;
+		return $families;
 	}
 
 	/**
