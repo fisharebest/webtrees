@@ -325,7 +325,11 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		$facts = array();
 
-		if ($sosa==1) {
+		// Only include events between birth and death
+		$birt_date = $person->getEstimatedBirthDate();
+		$deat_date = $person->getEstimatedDeathDate();
+
+		if ($sosa == 1) {
 			foreach ($person->getChildFamilies() as $family) {
 				// Add siblings
 				foreach (self::child_facts($person, $family, '_SIBL', '') as $fact) {
@@ -346,11 +350,32 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 					}
 				}
 			}
-		}
 
-		// Only include events between birth and death
-		$birt_date=$person->getEstimatedBirthDate();
-		$deat_date=$person->getEstimatedDeathDate();
+			if (strstr($SHOW_RELATIVES_EVENTS, '_MARR_PARE')) {
+				// add father/mother marriages
+				foreach ($person->getChildFamilies() as $sfamily) {
+					foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
+						if ($fact->getDate()->isOK() && WT_Date::Compare($birt_date, $fact->getDate())<=0 && WT_Date::Compare($fact->getDate(), $deat_date)<=0) {
+							// marriage of parents (to each other)
+							$rela_fact = clone($fact);
+							$rela_fact->setTag('_'.$fact->getTag().'_FAMC');
+							$facts[] = $rela_fact;
+						}
+					}
+				}
+				foreach ($person->getChildStepFamilies() as $sfamily) {
+					foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
+						if ($fact->getDate()->isOK() && WT_Date::Compare($birt_date, $fact->getDate())<=0 && WT_Date::Compare($fact->getDate(), $deat_date)<=0) {
+							// marriage of a parent (to another spouse)
+							// Convert the event to a close relatives event
+							$rela_fact = clone($fact);
+							$rela_fact->setTag('_'.$fact->getTag().'_PARE');
+							$facts[] = $rela_fact;
+						}
+					}
+				}
+			}
+		}
 
 		foreach ($person->getChildFamilies() as $family) {
 			foreach ($family->getSpouses() as $parent) {
@@ -376,36 +401,6 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 								$rela_fact->setTag('_'.$fact->getTag().'_GPA2');
 								$facts[] = $rela_fact;
 								break;
-							}
-						}
-					}
-				}
-			}
-
-			if ($sosa==1 && strstr($SHOW_RELATIVES_EVENTS, '_MARR_PARE')) {
-				// add father/mother marriages
-				foreach ($family->getSpouses() as $parent) {
-					foreach ($parent->getSpouseFamilies() as $sfamily) {
-						foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
-							if ($fact->getDate()->isOK() && WT_Date::Compare($birt_date, $fact->getDate())<=0 && WT_Date::Compare($fact->getDate(), $deat_date)<=0) {
-								if ($sfamily->equals($family)) {
-									if ($parent->getSex()=='F') {
-										// show current family marriage only once
-										continue;
-									}
-									// marriage of parents (to each other)
-									$rela_fact = clone($fact);
-									$rela_fact->setTag('_'.$fact->getTag().'_FAMC');
-									$facts[] = $rela_fact;
-									break;
-
-								} else {
-									// marriage of a parent (to another spouse)
-									// Convert the event to a close relatives event
-									$rela_fact = clone($fact);
-									$rela_fact->setTag('_'.$fact->getTag().'_PARE');
-									$facts[] = $rela_fact;
-								}
 							}
 						}
 					}
