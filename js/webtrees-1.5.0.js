@@ -392,19 +392,19 @@ function add_new_record(xref, fact) {
   return false;
 }
 
-function addnewchild(famid, gender) {
+function addnewchild(xref, gender) {
   edit_interface({
     "action": "addchild",
     "gender": gender,
-    "famid": famid
+    "xerf":   xref
   });
   return false;
 }
 
-function addnewspouse(famid, famtag) {
+function addnewspouse(xref, famtag) {
   edit_interface({
     "action": "addspouse",
-    "famid": famid,
+    "xref":   xref,
     "famtag": famtag
   });
   return false;
