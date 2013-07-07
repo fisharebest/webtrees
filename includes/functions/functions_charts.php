@@ -422,8 +422,8 @@ function ancestry_array($rootid, $maxgen=0) {
 	for ($i = 1; $i < ($treesize / 2); $i++) {
 		$treeid[($i * 2)] = false; // -- father
 		$treeid[($i * 2) + 1] = false; // -- mother
-		if (!empty($treeid[$i])) {
-			$person = WT_Individual::getInstance($treeid[$i]);
+		$person = WT_Individual::getInstance($treeid[$i]);
+		if ($person) {
 			$family = $person->getPrimaryChildFamily();
 			if ($family) {
 				if ($family->getHusband()) {
