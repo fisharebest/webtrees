@@ -209,11 +209,11 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 			// draw each cell
 			while ($sosa >= $p2) {
-				$pid=$treeid[$sosa];
-				if ($pid) {
-					$person =WT_Individual::getInstance($pid);
-					$name   =$person->getFullName();
-					$addname=$person->getAddName();
+				$pid = $treeid[$sosa];
+				$person = WT_Individual::getInstance($pid);
+				if ($person) {
+					$name    = $person->getFullName();
+					$addname = $person->getAddName();
 
 					switch($person->getSex()) {
 					case 'M':
