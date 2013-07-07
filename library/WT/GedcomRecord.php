@@ -134,19 +134,17 @@ class WT_GedcomRecord {
 			$pending = null;
 		}
 
-		// No such record exists - create a dummy one
+		// No such record exists
 		if ($gedcom === null && $pending === null) {
-			// Is this a good idea?
-			//$xref      = self::DUMMY_XREF;
-			//$gedcom    = "0 @$xref@ " . static::RECORD_TYPE . "\n1 RESN none";
-			//$gedcom_id = 0;
 			return null;
 		}
 
 		// Create the object
-		if (preg_match('/^0 @' . WT_REGEX_XREF . '@ (' . WT_REGEX_TAG . ')/', $gedcom.$pending, $match)) {
-			$type = $match[1];
+		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom.$pending, $match)) {
+			$xref = $match[1]; // Collation - we may have requested I123 and found i123
+			$type = $match[2];
 		} elseif (preg_match('/^0 (HEAD|TRLR)/', $gedcom.$pending, $match)) {
+			$xref = $match[1];
 			$type = $match[1];
 		} else {
 			throw new Exception('Unrecognised GEDCOM record: ' . $gedcom);
