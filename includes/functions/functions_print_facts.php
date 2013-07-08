@@ -151,7 +151,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 		echo $fact->Icon(), ' ';
 	}
 
-	if ($fact->canEdit()) {
+	if ($fact->getFactId()!='histo' && $fact->canEdit()) {
 		?>
 		<a
 			href="#"
