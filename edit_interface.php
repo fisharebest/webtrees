@@ -1399,7 +1399,7 @@ case 'editname':
 case 'addname':
 	$xref = safe_GET('xref', WT_REGEX_XREF);
 
-	$person = WT_Individuual::getInstance($xref);
+	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
 
 	$controller
