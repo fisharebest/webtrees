@@ -94,13 +94,63 @@ class WT_Individual extends WT_GedcomRecord {
 		}
 		// Consider relationship privacy (unless an admin is applying download restrictions)
 		if (WT_USER_GEDCOM_ID && WT_USER_PATH_LENGTH && $this->getGedcomId()==WT_GED_ID && $access_level=WT_USER_ACCESS_LEVEL) {
-			$self = WT_Individual::getInstance(WT_USER_GEDCOM_ID);
-			if ($self) {
-				return get_relationship($this, $self, true, WT_USER_PATH_LENGTH)!==false;
-			}
+			return self::isRelated($this, WT_USER_PATH_LENGTH);
 		}
 		// No restriction found - show living people to members only:
 		return WT_PRIV_USER>=$access_level;
+	}
+
+	// For relationship privacy calculations - is this individual a close relative?
+	private static function isRelated(WT_Individual $individual, $distance) {
+		static $cache = null;
+
+		if (!$cache) {
+			$root = WT_Individual::getInstance(WT_USER_GEDCOM_ID);
+			$cache = array(
+				0 => array($root),
+				1 => array(),
+			);
+			foreach ($root->getFacts('FAM[CS]') as $fact) {
+				$cache[1][] = $fact->getTarget();
+			}
+		}
+
+		// Double the distance, as we count the INDI-FAM and FAM-INDI links separately
+		$distance *= 2;
+
+		// Consider each path length in turn
+		for ($n=0; $n<=$distance; ++$n) {
+			if (!array_key_exists($n, $cache)) {
+				$cache[$n] = array();
+				if ($n % 2 == 0) {
+					// Add FAM->INDI links
+					foreach ($cache[$n-1] as $fam) {
+						foreach ($fam->getFacts('HUSB|WIFE|CHIL') as $fact) {
+							$indi = $fact->getTarget();
+							// Don't backtrack
+							if (!in_array($indi, $cache[$n-2])) {
+								$cache[$n][] = $indi;
+							}
+						}
+					}
+					if (in_array($individual, $cache[$n])) {
+						return true;
+					}
+				} else {
+					// Add INDI->FAM links
+					foreach ($cache[$n-1] as $indi) {
+						foreach ($indi->getFacts('FAM[CS]') as $fact) {
+							$fam = $fact->getTarget();
+							// Don't backtrack
+							if (!in_array($fam, $cache[$n-2])) {
+								$cache[$n][] = $fam;
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 
 	// Generate a private version of this record
