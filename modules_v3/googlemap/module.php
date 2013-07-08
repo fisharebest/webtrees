@@ -1264,13 +1264,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					'<strong>'.$relationship.'</strong>';
 				// add thumbnail image
 				if ($SHOW_HIGHLIGHT_IMAGES) {
-					$image = $person->displayImage();
+					$image = addslashes($person->displayImage());
+					$image = str_replace("\n", "\\\n", $image); // May contain multi-line notes
 				} else {
 					$image = '';
 				}
 				// end of add image
 
-				$dataleft  = addslashes($image) . $event . addslashes($name);
+				$dataleft  = $image . $event . addslashes($name);
 				$datamid   = " <span><a href='".$person->getHtmlUrl()."' id='alturl' title='" . WT_I18N::translate('Individual information') . "'>";
 				$datamid .= '('.WT_I18N::translate('View Person').')';
 				$datamid  .= '</a></span>';

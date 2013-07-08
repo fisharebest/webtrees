@@ -454,6 +454,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					} else {
 						if ($SHOW_HIGHLIGHT_IMAGES) {
 							$image = addslashes($this_person->displayImage());
+							$image = str_replace("\n", "\\\n", $image); // May contain multi-line notes
 						} else {
 							$image = '';
 						}
@@ -465,6 +466,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					if ($SHOW_HIGHLIGHT_IMAGES) {
 						if (!empty($gmark['name'])) {
 							$image2 = addslashes($person->displayImage());
+							$image2 = str_replace("\n", "\\\n", $image2); // May contain multi-line notes
 						} else {
 							$image2 = '';
 						}
