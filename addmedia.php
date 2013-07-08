@@ -387,18 +387,10 @@ case 'update': // Save the information from the “editmedia” action
 	$islink = array_merge(array(0), $islink);
 	$text = array_merge(array($newFilename), $text);
 
-	if (!empty($pid)) {
-		$gedrec=find_gedcom_record($pid, WT_GED_ID, true);
-	}
+	$record = WT_GedcomRecord::getInstance($pid);
 	$newrec = "0 @$pid@ OBJE\n";
 	$newrec = handle_updates($newrec);
-	if (!$update_CHAN) {
-		$newrec .= get_sub_record(1, '1 CHAN', $gedrec);
-	}
-	//-- look for the old record media in the file
-	//-- if the old media record does not exist that means it was
-	//-- generated at import and we need to append it
-	replace_gedrec($pid, WT_GED_ID, $newrec, $update_CHAN);
+	$record->updateRecord($newrec, $update_CHAN);
 
 	if ($pid && $linktoid!='') {
 		$link = linkMedia($pid, $linktoid, 1);
