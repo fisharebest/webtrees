@@ -102,9 +102,9 @@ case 'delete-fact':
 	$fact_id = safe_POST('fact_id');
 	
 	$record = WT_GedcomRecord::getInstance($xref);
-	if ($record && $record->canEdit()) {
+	if ($record && $record->canShow() && $record->canEdit()) {
 		foreach ($record->getFacts() as $fact) {
-			if ($fact->getfactId() == $fact_id && $$fact->canEdit()) {
+			if ($fact->getfactId() == $fact_id && $fact->canShow() && $fact->canEdit()) {
 				$record->updateFact($fact_id, '', true);
 				break 2;
 			}
