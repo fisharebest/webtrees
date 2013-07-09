@@ -82,13 +82,8 @@ case 'PLIF_LOCALFILE':
 	break;
 
 case 'PLE_ACTIVE':
-	$title=WT_I18N::translate('Show inactive places');
-	$text=
-		'<p>'.
-		WT_I18N::translate('By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used.').
-		'</p><p class="warning">'.
-		WT_I18N::translate('If you have a large number of inactive places, it can be slow to generate the list.').
-		'</p>';
+	$title=WT_I18N::translate('List places');
+	$text=WT_I18N::translate('By default the list shows only those places which can be matched between the Google Maps place list and your family trees.  You may have details for other places, such as those imported in bulk from an external file.  This option also allows you to list all the places that exist the Google Maps list, or just those that exist in the Google Maps table but not on your family trees.');
 	break;
 
 // Help text for Place Hierarchy display

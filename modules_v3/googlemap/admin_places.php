@@ -33,12 +33,12 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $action=safe_REQUEST($_REQUEST, 'action');
 if (isset($_REQUEST['parent'])) $parent=safe_REQUEST($_REQUEST, 'parent');
-if (isset($_REQUEST['inactive'])) $inactive=safe_GET_bool('inactive');
+if (isset($_REQUEST['inactive'])) $inactive=safe_REQUEST($_REQUEST, 'inactive');
 if (isset($_REQUEST['mode'])) $mode=safe_REQUEST($_REQUEST, 'mode');
 if (isset($_REQUEST['deleteRecord'])) $deleteRecord=safe_REQUEST($_REQUEST, 'deleteRecord');
 
 if (!isset($parent)) $parent=0;
-if (!isset($inactive)) $inactive=false;
+if (!isset($inactive)) $inactive='active';
 
 // Take a place id and find its place in the hierarchy
 // Input: place ID
@@ -69,22 +69,43 @@ function getHighestLevel() {
 /**
  * Find all of the places in the hierarchy
  */
-function get_place_list_loc($parent_id, $inactive=false) {
-	if ($inactive) {
-		$rows=
-			WT_DB::prepare("SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place COLLATE ".WT_I18N::$collation)
-			->execute(array($parent_id))
-			->fetchAll();
-	} else {
-		$rows=
-			WT_DB::prepare(
-				"SELECT DISTINCT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon".
+function get_place_list_loc($parent_id, $inactive='active') {
+	switch ($inactive) {
+		case 'all':
+			$rows=
+				WT_DB::prepare("SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon".
 				" FROM `##placelocation`".
-				" INNER JOIN `##places` ON `##placelocation`.pl_place=`##places`.p_place".
-				" WHERE pl_parent_id=? ORDER BY pl_place COLLATE ".WT_I18N::$collation
-			)
-			->execute(array($parent_id))
-			->fetchAll();
+				" WHERE pl_parent_id=?".
+				" ORDER BY pl_place COLLATE ".WT_I18N::$collation
+				)
+				->execute(array($parent_id))
+				->fetchAll();
+			break;
+		case 'inactive':
+			$rows=
+				WT_DB::prepare(
+					"SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon".
+					" FROM `##placelocation`".
+					" LEFT JOIN `##places` ON `##placelocation`.pl_place=`##places`.p_place".
+					" WHERE `##places`.p_place IS NULL AND pl_parent_id=?".				
+					" ORDER BY pl_place COLLATE ".WT_I18N::$collation
+				)
+				->execute(array($parent_id))
+				->fetchAll();
+			break;
+		case 'active':
+		default: 
+			$rows=
+				WT_DB::prepare(
+					"SELECT DISTINCT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon".
+					" FROM `##placelocation`".
+					" INNER JOIN `##places` ON `##placelocation`.pl_place=`##places`.p_place".
+					" WHERE pl_parent_id=?".
+					" ORDER BY pl_place COLLATE ".WT_I18N::$collation
+				)
+				->execute(array($parent_id))
+				->fetchAll();
+			break;
 	}
 
 	$placelist=array();
@@ -550,33 +571,47 @@ function delete_place(placeid) {
 </script>
 <?php
 echo '<div id="gm_breadcrumb">';
-$where_am_i=place_id_to_hierarchy($parent);
-foreach (array_reverse($where_am_i, true) as $id=>$place) {
-	if ($id==$parent) {
-		if ($place != 'Unknown') {
-			echo htmlspecialchars($place);
+	$where_am_i=place_id_to_hierarchy($parent);
+	foreach (array_reverse($where_am_i, true) as $id=>$place) {
+		if ($id==$parent) {
+			if ($place != 'Unknown') {
+				echo htmlspecialchars($place);
+			} else {
+				echo WT_I18N::translate('unknown');
+			}
 		} else {
-			echo WT_I18N::translate('unknown');
+			echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $id, '&inactive=', $inactive, '">';
+			if ($place != 'Unknown') {
+				echo htmlspecialchars($place), '</a>';
+			} else {
+				echo WT_I18N::translate('unknown'), '</a>';
+			}
 		}
-	} else {
-		echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $id, '&inactive=', $inactive, '">';
-		if ($place != 'Unknown') {
-			echo htmlspecialchars($place), '</a>';
-		} else {
-			echo WT_I18N::translate('unknown'), '</a>';
-		}
+		echo ' - ';
 	}
-	echo ' - ';
-}
-echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '">', WT_I18N::translate('Top Level'), '</a></div>';
-echo '<form name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&inactive=', $inactive, '"><div id="gm_active">';
-echo '<label for="inactive">', WT_I18N::translate('Show inactive places'), '</label>';
-echo '<input type="checkbox" name="inactive" id="inactive"';
-if ($inactive) echo ' checked="checked"';
-echo ' onclick="updateList(this.checked)"';
-echo '>',  help_link('PLE_ACTIVE','googlemap'), '</div></form>';
-
-$placelist=get_place_list_loc($parent, $inactive);
+	echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '">', WT_I18N::translate('Top Level'), '</a>
+</div>';
+echo '<div id="gm_active">
+		<form name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&inactive=', $inactive, '" style="display:inline;">
+			<label for="inactive">', WT_I18N::translate('List places'), '</label>',  help_link('PLE_ACTIVE','googlemap'), '			
+			<select id="inactive" name="inactive" onchange="updateList(this.value)">
+				<option value="all"';
+					if ($inactive=='all') echo ' selected="selected"';
+					echo '>', WT_I18N::translate('All'), '
+				</option>
+				<option value="active"';
+					if ($inactive=='active') echo ' selected="selected"';
+					echo '>', WT_I18N::translate('Active'), '
+				</option>
+				<option value="inactive"';
+					if ($inactive=='inactive') echo ' selected="selected"';
+					echo '>', WT_I18N::translate('Inactive'), '
+				</option>
+			</select>
+		</form>';
+		$placelist=get_place_list_loc($parent, $inactive);
+		echo '<span>(', WT_I18N::translate('%s places', count($placelist)), ')</span>
+</div>';
 echo '<div class="gm_plac_edit">';
 echo '<table class="gm_plac_edit"><tr>';
 echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
