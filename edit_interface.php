@@ -1743,7 +1743,7 @@ case 'changefamily':
 							</a>
 						</td>
 						<td class="optionbox">
-							<a href="#" onclick="return findIndi(document.changefamform.WIFEdocument.getElementById('WIFEName'));">
+							<a href="#" onclick="return findIndi(document.changefamform.WIFE, document.getElementById('WIFEName'));">
 								<?php echo WT_I18N::translate('Change'); ?>
 							</a>
 						</td>
