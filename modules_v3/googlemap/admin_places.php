@@ -33,12 +33,12 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $action=safe_REQUEST($_REQUEST, 'action');
 if (isset($_REQUEST['parent'])) $parent=safe_REQUEST($_REQUEST, 'parent');
-if (isset($_REQUEST['inactive'])) $inactive=safe_REQUEST($_REQUEST, 'inactive');
+if (isset($_REQUEST['status'])) $status=safe_REQUEST($_REQUEST, 'status');
 if (isset($_REQUEST['mode'])) $mode=safe_REQUEST($_REQUEST, 'mode');
 if (isset($_REQUEST['deleteRecord'])) $deleteRecord=safe_REQUEST($_REQUEST, 'deleteRecord');
 
 if (!isset($parent)) $parent=0;
-if (!isset($inactive)) $inactive='active';
+if (!isset($status)) $status='active';
 
 // Take a place id and find its place in the hierarchy
 // Input: place ID
@@ -69,8 +69,8 @@ function getHighestLevel() {
 /**
  * Find all of the places in the hierarchy
  */
-function get_place_list_loc($parent_id, $inactive='active') {
-	switch ($inactive) {
+function get_place_list_loc($parent_id, $status='active') {
+	switch ($status) {
 		case 'all':
 			$rows=
 				WT_DB::prepare("SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon".
@@ -548,8 +548,8 @@ if ($action=='DeleteRecord') {
 
 ?>
 <script>
-function updateList(inactive) {
-	window.location.href='<?php if (strstrb($_SERVER['REQUEST_URI'], '&inactive')) { $uri=strstrb($_SERVER['REQUEST_URI'], '&inactive');} else { $uri=$_SERVER['REQUEST_URI']; } echo $uri, '&inactive='; ?>'+inactive;
+function updateList(status) {
+	window.location.href='<?php if (strstrb($_SERVER['REQUEST_URI'], '&status')) { $uri=strstrb($_SERVER['REQUEST_URI'], '&status');} else { $uri=$_SERVER['REQUEST_URI']; } echo $uri, '&status='; ?>'+status;
 }
 
 function edit_place_location(placeid) {
@@ -580,7 +580,7 @@ echo '<div id="gm_breadcrumb">';
 				echo WT_I18N::translate('unknown');
 			}
 		} else {
-			echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $id, '&inactive=', $inactive, '">';
+			echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $id, '&status=', $status, '">';
 			if ($place != 'Unknown') {
 				echo htmlspecialchars($place), '</a>';
 			} else {
@@ -589,27 +589,27 @@ echo '<div id="gm_breadcrumb">';
 		}
 		echo ' - ';
 	}
-	echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '">', WT_I18N::translate('Top Level'), '</a>
+	echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&status=', $status, '">', WT_I18N::translate('Top Level'), '</a>
 </div>';
 echo '<div id="gm_active">
-		<form name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&inactive=', $inactive, '" style="display:inline;">
-			<label for="inactive">', WT_I18N::translate('List places'), '</label>',  help_link('PLE_ACTIVE','googlemap'), '			
-			<select id="inactive" name="inactive" onchange="updateList(this.value)">
+		<form name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&status=', $status, '" style="display:inline;">
+			<label for="status">', WT_I18N::translate('List places'), '</label>',  help_link('PLE_ACTIVE','googlemap'), '			
+			<select id="status" name="status" onchange="updateList(this.value)">
 				<option value="all"';
-					if ($inactive=='all') echo ' selected="selected"';
+					if ($status=='all') echo ' selected="selected"';
 					echo '>', WT_I18N::translate('All'), '
 				</option>
 				<option value="active"';
-					if ($inactive=='active') echo ' selected="selected"';
+					if ($status=='active') echo ' selected="selected"';
 					echo '>', WT_I18N::translate('Active'), '
 				</option>
 				<option value="inactive"';
-					if ($inactive=='inactive') echo ' selected="selected"';
+					if ($status=='inactive') echo ' selected="selected"';
 					echo '>', WT_I18N::translate('Inactive'), '
 				</option>
 			</select>
 		</form>';
-		$placelist=get_place_list_loc($parent, $inactive);
+		$placelist=get_place_list_loc($parent, $status);
 		echo '<span>(', WT_I18N::translate('%s places', count($placelist)), ')</span>
 </div>';
 echo '<div class="gm_plac_edit">';
@@ -624,7 +624,7 @@ echo WT_I18N::translate('Edit'), '</th><th>', WT_I18N::translate('Delete'), '</t
 if (count($placelist) == 0)
 	echo '<tr><td colspan="7" class="accepted">', WT_I18N::translate('No places found'), '</td></tr>';
 foreach ($placelist as $place) {
-	echo '<tr><td><a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $place['place_id'], '&inactive=', $inactive, '">';
+	echo '<tr><td><a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $place['place_id'], '&status=', $status, '">';
 	if ($place['place'] != 'Unknown')
 			echo htmlspecialchars($place['place']), '</a></td>';
 		else
