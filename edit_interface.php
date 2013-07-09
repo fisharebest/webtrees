@@ -2156,7 +2156,7 @@ case 'changefamily':
 					<a href="#" id="wiferem" style="display: <?php echo is_null($mother) ? 'none':'block'; ?>;" onclick="document.changefamform.WIFE.value=''; document.getElementById('WIFEName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
 				</td>
 				<td class="optionbox">
-					<a href="#" onclick="return findIndi(document.changefamform.WIFEdocument.getElementById('WIFEName'));"><?php echo WT_I18N::translate('Change'); ?></a>
+					<a href="#" onclick="return findIndi(document.changefamform.WIFE, document.getElementById('WIFEName'));"><?php echo WT_I18N::translate('Change'); ?></a>
 				</td>
 			</tr>
 			<?php $i=0; foreach ($children as $child) { ?>
