@@ -127,7 +127,7 @@ class WT_Media extends WT_GedcomRecord {
 				return $user_thumb;
 			}
 			// Does the folder exist for this thumbnail?
-			if (!is_dir(dirname($file)) && !@mkdir(dirname($file, WT_PERM_EXE, true))) {
+			if (!is_dir(dirname($file)) && !@mkdir(dirname($file), WT_PERM_EXE, true)) {
 				AddToLog('The folder ' . dirname($file) . ' could not be created for ' . $this->getXref(), 'media');
 				return $file;
 			}
