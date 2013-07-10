@@ -407,16 +407,24 @@ html[dir=rtl] table#gm_levels {margin-right:20px;}
 #gm_level_titles th {text-align:center;}
 .gm_levels input {width:90%;}
 
-
 /* Georgraphic data */
-table.gm_plac_edit {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:0 5px; width:100%;}
-div.gm_plac_edit {width:100%; max-height:535px; overflow:auto;}
-.gm_plac_edit th {border-bottom:2px solid #d3d3d3; font-size:105%; font-weight:bold; padding:5px; text-align:left;}
+table.gm_plac_edit {border-spacing:0;width: 993px;}
+div.gm_plac_edit {}
+.gm_plac_edit th {font-size:105%; font-weight:bold; padding:5px; text-align:left;}
 html[dir=rtl] .gm_plac_edit th {text-align:right;}
-.gm_plac_edit td {border-bottom:1px solid #d3d3d3;}
+.gm_plac_edit td {border-bottom:1px solid #d3d3d3; padding:0 3px;}
 table#gm_manage {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:10px 0 0; padding:0 5px; width:98%;}
 #gm_manage td {border-bottom:1px solid #d3d3d3; vertical-align:middle;}
 #gm_active input {height: auto; vertical-align: top;}
+div.scrollableContainer{background:#fdf5e6;border:1px solid #888;color:#555;margin-top:10px;padding:42px 0;position:relative;width:1016px;}
+div.scrollingArea{height:636px;overflow-x:auto;overflow-y:scroll;}
+table.gm_plac_edit thead {background:#fcefd7; border-bottom:2px solid #d3d3d3; left: 0;top: 0;position: absolute;width: 1014px;}
+table.gm_plac_edit tfoot {background:#fcefd7; border-top:2px solid #d3d3d3; left: 0;bottom: 0;position: absolute;width: 1014px;}
+.col1 {width:300px;}
+.col2, .col3 {width:150px;}
+.col4 {width:120px;}
+.col5, .col6 {text-align: center;width:55px;}
+.col7 {text-align:center; width:90px; white-space:nowrap;}
 
 /* Place check */
 .gm_check {background:#fdf5e6; border:1px inset #d9d6c4; padding:5px;}

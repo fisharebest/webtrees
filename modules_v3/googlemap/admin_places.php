@@ -533,23 +533,14 @@ if ($action=='ImportFile2') {
 }
 
 if ($action=='DeleteRecord') {
-	$exists=
-		WT_DB::prepare("SELECT 1 FROM `##placelocation` WHERE pl_parent_id=?")
-		->execute(array($deleteRecord))
-		->fetchOne();
-
-	if (!$exists) {
-		WT_DB::prepare("DELETE FROM `##placelocation` WHERE pl_id=?")
-			->execute(array($deleteRecord));
-	} else {
-		echo '<table class="facts_table"><tr><td>', WT_I18N::translate('Location not removed: this location contains sub-locations'), '</td></tr></table>';
-	}
+	$sql="DELETE FROM `##placelocation` WHERE pl_id IN (".$deleteRecord.")";
+	WT_DB::prepare($sql)->execute();
 }
 
 ?>
 <script>
 function updateList(status) {
-	window.location.href='<?php if (strstrb($_SERVER['REQUEST_URI'], '&status')) { $uri=strstrb($_SERVER['REQUEST_URI'], '&status');} else { $uri=$_SERVER['REQUEST_URI']; } echo $uri, '&status='; ?>'+status;
+	window.location.href='<?php if (strstrb($_SERVER['REQUEST_URI'], '&status')) { $uri=strstrb($_SERVER['REQUEST_URI'], '&status');} else { $uri=$_SERVER['REQUEST_URI']; } echo $uri, '&status='; ?>'+ status;
 }
 
 function edit_place_location(placeid) {
@@ -562,11 +553,35 @@ function add_place_location(placeid) {
 	return false;
 }
 
-function delete_place(placeid) {
-	var answer=confirm('<?php echo WT_I18N::translate('Remove this location?'); ?>');
-	if (answer == true) {
-		window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&action=DeleteRecord&deleteRecord=' + placeid;
+function checkbox_delete() {
+	var i = 0, counter = 0, delete_list = [];
+	input_obj = document.getElementsByClassName("check"); 
+	for (i = 0; i < input_obj.length; i++) {
+		if (input_obj[i].checked === true) {
+			counter++;
+			delete_list.push(input_obj[i].value);
+		}
 	}
+	switch(counter) {
+		case 0:
+			var answer=confirm('<?php echo WT_I18N::translate('No places selected.');?>');
+		  break;
+		case 1:
+			var answer=confirm('<?php echo WT_I18N::translate('You are about to remove one place.');?>');
+			break;
+		default:
+			var answer=confirm('<?php echo WT_I18N::translate('You are about to remove multiple places.');?>' + ' (' + counter + ') ');
+	}
+	if (counter > 0) {
+		window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&action=DeleteRecord&deleteRecord=' + delete_list;
+	}
+}
+
+function toggle(source) {
+  checkboxes = document.getElementsByClassName("check");
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
 }
 </script>
 <?php
@@ -612,106 +627,135 @@ echo '<div id="gm_active">
 		$placelist=get_place_list_loc($parent, $status);
 		echo '<span>(', WT_I18N::translate('%s places', count($placelist)), ')</span>
 </div>';
-echo '<div class="gm_plac_edit">';
-echo '<table class="gm_plac_edit"><tr>';
-echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
-echo '<th>', WT_Gedcom_Tag::getLabel('LATI'), '</th>';
-echo '<th>', WT_Gedcom_Tag::getLabel('LONG'), '</th>';
-echo '<th>', WT_I18N::translate('Zoom factor'), '</th>';
-echo '<th>', WT_I18N::translate('Icon'), '</th>';
-echo '<th>';
-echo WT_I18N::translate('Edit'), '</th><th>', WT_I18N::translate('Delete'), '</th></tr>';
-if (count($placelist) == 0)
-	echo '<tr><td colspan="7" class="accepted">', WT_I18N::translate('No places found'), '</td></tr>';
-foreach ($placelist as $place) {
-	echo '<tr><td><a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $place['place_id'], '&status=', $status, '">';
-	if ($place['place'] != 'Unknown')
-			echo htmlspecialchars($place['place']), '</a></td>';
-		else
-			echo WT_I18N::translate('unknown'), '</a></td>';
-	echo '<td>', $place['lati'], '</td>';
-	echo '<td>', $place['long'], '</td>';
-	echo '<td>', $place['zoom'], '</td>';
-	echo '<td>';
-	if (($place['icon'] == NULL) || ($place['icon'] == '')) {
-		if (($place['lati'] == NULL) || ($place['long'] == NULL) || (($place['lati'] == '0') && ($place['long'] == '0'))) {
-			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/mm_20_yellow.png">';
+echo '<div class="gm_plac_edit scrollableContainer">
+	<div class="scrollingArea">
+	<table class="gm_plac_edit">
+		<thead>
+			<tr>
+				<th><div class="col1">', WT_Gedcom_Tag::getLabel('PLAC'), '</div></th>
+				<th><div class="col2">', WT_Gedcom_Tag::getLabel('LATI'), '</div></th>
+				<th><div class="col3">', WT_Gedcom_Tag::getLabel('LONG'), '</div></th>
+				<th><div class="col4">', WT_I18N::translate('Zoom factor'), '</div></th>
+				<th><div class="col5">', WT_I18N::translate('Icon'), '</div></th>
+				<th><div class="col6">', WT_I18N::translate('Edit'), '</div></th>
+				<th><div class="col7">
+					<input type="button" value="', WT_I18N::translate('Delete'), '" onclick="return checkbox_delete();">			
+					<input type="checkbox" onClick="toggle(this)" style="vertical-align:middle;">
+				</div></th>
+			</tr>
+		</thead>
+		<tbody>';
+		if (count($placelist) == 0)
+			echo '<tr><td colspan="7" class="accepted">', WT_I18N::translate('No places found'), '</td></tr>';
+		foreach ($placelist as $place) {
+			echo '<tr>
+				<td><div class="col1">
+					<a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $place['place_id'], '&status=', $status, '">';
+					if ($place['place'] != 'Unknown') {
+							echo htmlspecialchars($place['place']), '</a></div></td>';
+					} else {
+							echo WT_I18N::translate('unknown'), '</a></div></td>';
+					}
+				echo '<td><div class="col2">', $place['lati'], '</div></td>
+				<td><div class="col3">', $place['long'], '</div></td>
+				<td><div class="col4">', $place['zoom'], '</div></td>
+				<td><div class="col5">';
+					if (($place['icon'] == NULL) || ($place['icon'] == '')) {
+						if (($place['lati'] == NULL) || ($place['long'] == NULL) || (($place['lati'] == '0') && ($place['long'] == '0'))) {
+							echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/mm_20_yellow.png">';
+						}
+						else {
+							echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/mm_20_red.png">';
+						}
+					} else {
+						echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place['icon'], '" width="25" height="15">';
+					}
+				echo '</div></td>
+				<td><div class="col6">
+					<a href="#" onclick="edit_place_location(', $place['place_id'], ');return false;" class="icon-edit" title="', WT_I18N::translate('Edit'), '"></a>
+				</div></td>';
+				$noRows=
+					WT_DB::prepare("SELECT COUNT(pl_id) FROM `##placelocation` WHERE pl_parent_id=?")
+					->execute(array($place['place_id']))
+					->fetchOne();
+				if ($noRows==0) {
+					echo '<td><div class="col7">
+						<input type="checkbox" name="del_places[]" class="check" value="'.$place["place_id"].'" title="', WT_I18N::translate('Remove'), '">',
+					'</div></td>';
+				} else {
+					echo '<td><div class="col7"><i class="icon-delete-grey"></i></div></td>';
+				}
+			echo '</tr>';
 		}
-		else {
-			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/mm_20_red.png">';
-		}
-	} else {
-		echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place['icon'], '" width="25" height="15">';
-	}
-	echo '</td>';
-	echo '<td class="narrow"><a href="#" onclick="edit_place_location(', $place['place_id'], ');return false;" class="icon-edit" title="', WT_I18N::translate('Edit'), '"></a></td>';
-	$noRows=
-		WT_DB::prepare("SELECT COUNT(pl_id) FROM `##placelocation` WHERE pl_parent_id=?")
-		->execute(array($place['place_id']))
-		->fetchOne();
-	if ($noRows==0) { ?>
-		<td><a href="#" onclick="delete_place(<?php echo $place['place_id']?>);return false;" class="icon-delete" title="<?php echo WT_I18N::translate('Remove'); ?>"></a></td>
-<?php       } else { ?>
-		<td><i class="icon-delete-grey"></i></td>
-<?php       } ?>
-	</tr>
-	<?php
-}
-?>
-</table>
+	echo '</tbody>
+		<tfoot>
+			<tr>
+				<th><div class="col1">', WT_Gedcom_Tag::getLabel('PLAC'), '</div></th>
+				<th><div class="col2">', WT_Gedcom_Tag::getLabel('LATI'), '</div></th>
+				<th><div class="col3">', WT_Gedcom_Tag::getLabel('LONG'), '</div></th>
+				<th><div class="col4">', WT_I18N::translate('Zoom factor'), '</div></th>
+				<th><div class="col5">', WT_I18N::translate('Icon'), '</div></th>
+				<th><div class="col6">', WT_I18N::translate('Edit'), '</div></th>
+				<th><div class="col7">
+					<input type="button" value="', WT_I18N::translate('Delete'), '" onclick="return checkbox_delete();">			
+					<input type="checkbox" onClick="toggle(this)" style="vertical-align:middle;">
+				</div></th>
+			</tr>
+		</tfoot>
+	</table>
 </div>
-
+</div>
 <table id="gm_manage">
 	<tr>
+		<td>', 
+			WT_I18N::translate('Add  a new geographic location'),
+		'</td>
 		<td>
-			<?php echo WT_I18N::translate('Add  a new geographic location'); ?>
-		</td>
-		<td>
-			<form action="#" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
-				<?php echo select_edit_control('parent_id', $where_am_i, WT_I18N::translate('Top Level'), $parent); ?>
-				<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>">
+			<form action="#" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">',
+				select_edit_control("parent_id", $where_am_i, WT_I18N::translate('Top Level'), $parent), '
+				<input type="submit" value="', WT_I18N::translate('Add'), '">
 			</form>
 		</td>
 	</tr>
 	<tr>
-		<td>
-			<?php echo WT_I18N::translate('Import all places from a family tree'); ?>
-		</td>
+		<td>',
+			WT_I18N::translate('Import all places from a family tree'),
+		'</td>
 		<td>
 			<form action="module.php" method="get">
 				<input type="hidden" name="mod" value="googlemap">
 				<input type="hidden" name="mod_action" value="admin_places">
-				<input type="hidden" name="action" value="ImportGedcom">
-				<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
-				<input type="submit" value="<?php echo WT_I18N::translate('Import'); ?>">
+				<input type="hidden" name="action" value="ImportGedcom">',
+				select_edit_control("ged", WT_Tree::getNameList(), null, WT_GEDCOM),
+				'<input type="submit" value="', WT_I18N::translate('Import'), '">
 			</form>
 		</td>
 	</tr>
 	<tr>
-		<td>
-			<?php echo WT_I18N::translate('Upload geographic data'); ?>
-		</td>
+		<td>',
+			WT_I18N::translate('Upload geographic data'),
+		'</td>
 		<td>
 			<form action="module.php" method="get">
 				<input type="hidden" name="mod" value="googlemap">
 				<input type="hidden" name="mod_action" value="admin_places">
 				<input type="hidden" name="action" value="ImportFile">
-				<input type="submit" value="<?php echo WT_I18N::translate('Upload'); ?>">
+				<input type="submit" value="', WT_I18N::translate('Upload'), '">
 			</form>
 		</td>
 	</tr>
 	<tr>
-		<td>
-			<?php echo WT_I18N::translate('Download geographic data'); ?>
-		</td>
+		<td>',
+			WT_I18N::translate('Download geographic data'),
+		'</td>
 		<td>
 			<form action="module.php" method="get">
 				<input type="hidden" name="mod" value="googlemap">
 				<input type="hidden" name="mod_action" value="admin_places">
-				<input type="hidden" name="action" value="ExportFile">
-				<?php echo select_edit_control('parent', $where_am_i, WT_I18N::translate('All'), WT_GED_ID); ?>
-				<input type="submit" value="<?php echo WT_I18N::translate('Download'); ?>">
+				<input type="hidden" name="action" value="ExportFile">',
+				select_edit_control("parent", $where_am_i, WT_I18N::translate('All'), WT_GED_ID),
+				'<input type="submit" value="', WT_I18N::translate('Download'), '">
 			</form>
 		</td>
 	</tr>
-</table>
+</table>';
