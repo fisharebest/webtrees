@@ -1873,7 +1873,7 @@ case 'changefamily_update':
 	}
 
 	foreach ($old_children as $old_child) {
-		if (!in_array($old_child, $new_children) {
+		if (!in_array($old_child, $new_children)) {
 			// Remove old FAMC link
 			foreach ($old_child->getFacts('FAMC') as $fact) {
 				if ($fact->getTarget() == $family) {
