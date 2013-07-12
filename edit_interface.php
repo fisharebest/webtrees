@@ -315,8 +315,9 @@ case 'add':
 ////////////////////////////////////////////////////////////////////////////////
 case 'update':
 	// Update a fact
-	$xref    = safe_POST('xref',    WT_REGEX_XREF);
-	$fact_id = safe_POST('fact_id');
+	$xref      = safe_POST('xref',    WT_REGEX_XREF);
+	$fact_id   = safe_POST('fact_id');
+	$keep_chan = safe_POST_bool('keep_chan');
 	
 	$record = WT_GedcomRecord::getInstance($xref);
 	check_record_access($record);
@@ -394,7 +395,7 @@ case 'update':
 
 	$newged = handle_updates($newged);
 	$newged = substr($newged, 1); // Remove leading newline
-	$record->updateFact($fact_id, $newged, $update_CHAN);
+	$record->updateFact($fact_id, $newged, !$keep_chan);
 
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
@@ -1797,170 +1798,104 @@ case 'changefamily':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'changefamily_update':
-	$xref = safe_POST('xref', WT_REGEX_XREF);
+	$xref      = safe_POST('xref', WT_REGEX_XREF);
+	$HUSB      = safe_POST('HUSB', WT_REGEX_XREF);
+	$WIFE      = safe_POST('WIFE', WT_REGEX_XREF);
+	$CHIL      = safe_POST('CHIL', WT_REGEX_XREF);
+	$keep_chan = safe_POST_bool('keep_chan');
 
-	$family = WT_Family::getInstance($xref);
+	$family    = WT_Family::getInstance($xref);
 	check_record_access($family);
 
 	$controller
 		->setPageTitle(WT_I18N::translate('Change Family Members'))
 		->pageHeader();
 
-	$father   = $family->getHusband();
-	$mother   = $family->getWife();
-	$children = $family->getChildren();
+	// Current family members
+	$old_father   = $family->getHusband();
+	$old_mother   = $family->getWife();
+	$old_children = $family->getChildren();
 
-	$gedrec = $family->getGedcom();
-	$updated = false;
-	//-- add the new father link
-	if (isset($_REQUEST['HUSB'])) $HUSB = $_REQUEST['HUSB'];
-	if (!empty($HUSB) && (is_null($father) || $father->getXref()!=$HUSB)) {
-		if (strstr($gedrec, "1 HUSB")!==false) {
-			$gedrec = preg_replace("/1 HUSB @.*@/", "1 HUSB @$HUSB@", $gedrec);
-		} else {
-			$gedrec .= "\n1 HUSB @$HUSB@";
-		}
-		$indirec = $father->getGedcom();
-		if (!empty($indirec) && (strpos($indirec, "1 FAMS @$xref@")===false)) {
-			$indirec .= "\n1 FAMS @$xref@";
-			$father->updateRecord($indirec, $update_CHAN);
-		}
-		$updated = true;
-	}
-	//-- remove the father link
-	if (empty($HUSB)) {
-		$pos1 = strpos($gedrec, "1 HUSB @");
-		if ($pos1!==false) {
-			$pos2 = strpos($gedrec, "\n1", $pos1+5);
-			if ($pos2===false) {
-				$pos2 = strlen($gedrec);
-			} else {
-				$pos2++;
-			}
-			$gedrec = substr($gedrec, 0, $pos1) . substr($gedrec, $pos2);
-		}
-		$updated = true;
-	}
-	//-- remove the FAMS link from the old father
-	if (!is_null($father) && $father->getXref()!=$HUSB) {
-		$indirec = find_gedcom_record($father->getXref(), WT_GED_ID, true);
-		$pos1 = strpos($indirec, "1 FAMS @$xref@");
-		if ($pos1!==false) {
-			$pos2 = strpos($indirec, "\n1", $pos1+5);
-			if ($pos2===false) {
-				$pos2 = strlen($indirec);
-			} else {
-				$pos2++;
-			}
-			$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
-			$father->updateRecord($indirec, $update_CHAN);
-		}
-	}
-	//-- add the new mother link
-	if (isset($_REQUEST['WIFE'])) $WIFE = $_REQUEST['WIFE'];
-	if (!empty($WIFE) && (is_null($mother) || $mother->getXref()!=$WIFE)) {
-		if (strstr($gedrec, "1 WIFE")!==false) {
-			$gedrec = preg_replace("/1 WIFE @.*@/", "1 WIFE @$WIFE@", $gedrec);
-		} else {
-			$gedrec .= "\n1 WIFE @$WIFE@";
-		}
-		$indirec = find_gedcom_record($WIFE, WT_GED_ID, true);
-		if (!empty($indirec) && (strpos($indirec, "1 FAMS @$xref@")===false)) {
-			$indirec .= "\n1 FAMS @$xref@";
-			$record = WT_GedcomRecord::getInstance($WI);
-			$record->updateRecord($indirec, $update_CHAN);
-		}
-		$updated = true;
-	}
-	//-- remove the father link
-	if (empty($WIFE)) {
-		$pos1 = strpos($gedrec, "1 WIFE @");
-		if ($pos1!==false) {
-			$pos2 = strpos($gedrec, "\n1", $pos1+5);
-			if ($pos2===false) {
-				$pos2 = strlen($gedrec);
-			} else {
-				$pos2++;
-			}
-			$gedrec = substr($gedrec, 0, $pos1) . substr($gedrec, $pos2);
-		}
-		$updated = true;
-	}
-	//-- remove the FAMS link from the old father
-	if (!is_null($mother) && $mother->getXref()!=$WIFE) {
-		$indirec = find_gedcom_record($mother->getXref(), WT_GED_ID, true);
-		$pos1 = strpos($indirec, "1 FAMS @$xref@");
-		if ($pos1!==false) {
-			$pos2 = strpos($indirec, "\n1", $pos1+5);
-			if ($pos2===false) {
-				$pos2 = strlen($indirec);
-			} else {
-				$pos2++;
-			}
-			$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
-			$mother->updateRecord($indirec, $update_CHAN);
+	// New family members
+	$new_father = WT_Individual::getInstance($HUSB);
+	$new_mother = WT_Individual::getInstance($WIFE);
+	$new_children = array();
+	if (is_array($CHIL)) {
+		foreach ($CHIL as $child) {
+			$new_children[] = WT_Individaul::getInstance($child);
 		}
 	}
 
-	//-- update the children
-	$i=0;
-	$var = "CHIL".$i;
-	$newchildren = array();
-	while (isset($_REQUEST[$var])) {
-		$CHIL = $_REQUEST[$var];
-		if (!empty($CHIL)) {
-			$newchildren[] = $CHIL;
-			if (strpos($gedrec, "1 CHIL @$CHIL@")===false) {
-				$gedrec .= "\n1 CHIL @$CHIL@";
-				$updated = true;
-				$indirec = find_gedcom_record($CHIL, WT_GED_ID, true);
-				if (!empty($indirec) && (strpos($indirec, "1 FAMC @$xref@")===false)) {
-					$indirec .= "\n1 FAMC @$xref@";
-					$record = WT_GedcomRecord::getInstance($CHIL);
-					$record->updateRecord($indirec, $update_CHAN);
+	if ($old_father != $new_father) {
+		if ($old_father) {
+			// Remove old FAMS link
+			foreach ($old_father->getFacts('FAMS') as $fact) {
+				if ($fact->getTarget() == $family) {
+					$old_father->updateFact($fact->getFactId(), null, !$keep_chan);
+				}
+			}
+			// Remove old HUSB link
+			foreach ($family->getFacts('HUSB|WIFE') as $fact) {
+				if ($fact->getTarget() == $old_father) {
+					$family->updateFact($fact->getFactId(), null, !$keep_chan);
 				}
 			}
 		}
-		$i++;
-		$var = "CHIL".$i;
+		if ($new_father) {
+			// Add new FAMS link
+			$new_father->updateFact(null, '1 FAMS @' . $family->getXref() . '@', !$keep_chan);
+			// Add new HUSB link
+			$family->updateFact(null, '1 HUSB @' . $new_father->getXref() . '@', !$keep_chan);
+		}
 	}
 
-	//-- remove the old children
-	foreach ($children as $key=>$child) {
-		if (!is_null($child)) {
-			if (!in_array($child->getXref(), $newchildren)) {
-				//-- remove the CHIL link from the family record
-				$pos1 = strpos($gedrec, "1 CHIL @".$child->getXref()."@");
-				if ($pos1!==false) {
-					$pos2 = strpos($gedrec, "\n1", $pos1+5);
-					if ($pos2===false) {
-						$pos2 = strlen($gedrec);
-					} else {
-						$pos2++;
-					}
-					$gedrec = substr($gedrec, 0, $pos1) . substr($gedrec, $pos2);
-					$updated = true;
+	if ($old_mother != $new_mother) {
+		if ($old_mother) {
+			// Remove old FAMS link
+			foreach ($old_mother->getFacts('FAMS') as $fact) {
+				if ($fact->getTarget() == $family) {
+					$old_mother->updateFact($fact->getFactId(), null, !$keep_chan);
 				}
-				//-- remove the FAMC link from the child record
-				$indirec = find_gedcom_record($child->getXref(), WT_GED_ID, true);
-				$pos1 = strpos($indirec, "1 FAMC @$xref@");
-				if ($pos1!==false) {
-					$pos2 = strpos($indirec, "\n1", $pos1+5);
-					if ($pos2===false) {
-						$pos2 = strlen($indirec);
-					} else {
-						$pos2++;
-					}
-					$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
-					$child->updateRecord($indirec, $update_CHAN);
+			}
+			// Remove old WIFE link
+			foreach ($family->getFacts('HUSB|WIFE') as $fact) {
+				if ($fact->getTarget() == $old_mother) {
+					$family->updateFact($fact->getFactId(), null, !$keep_chan);
+				}
+			}
+		}
+		if ($new_mother) {
+			// Add new FAMS link
+			$new_mother->updateFact(null, '1 FAMS @' . $family->getXref() . '@', !$keep_chan);
+			// Add new WIFE link
+			$family->updateFact(null, '1 WIFE @' . $new_mother->getXref() . '@', !$keep_chan);
+		}
+	}
+
+	foreach ($old_children as $old_child) {
+		if (!in_array($old_child, $new_children) {
+			// Remove old FAMC link
+			foreach ($old_child->getFacts('FAMC') as $fact) {
+				if ($fact->getTarget() == $family) {
+					$old_child->updateFact($fact->getFactId(), null, !$keep_chan);
+				}
+			}
+			// Remove old CHIL link
+			foreach ($family->getFacts('CHIL') as $fact) {
+				if ($fact->getTarget() == $old_child) {
+					$family->updateFact($fact->getFactId(), null, !$keep_chan);
 				}
 			}
 		}
 	}
 
-	if ($updated) {
-		$record = WT_Family::getInstance($xref);
-		$record->updateRecord($gedrec, $update_CHAN);
+	foreach ($new_children as $new_child) {
+		if (!in_array($new_child, $old_children)) {
+			// Add new FAMC link
+			$new_child->updateFact(null, '1 FAMS @' . $family->getXref() . '@', !$keep_chan);
+			// Add new CHIL link
+			$family->updateFact(null, '1 CHIL @' . $new_child->getXref() . '@', !$keep_chan);
+		}
 	}
 
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
