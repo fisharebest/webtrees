@@ -424,10 +424,9 @@ class WT_Controller_Search extends WT_Controller_Page {
 		$adv_name_tags = preg_split("/[\s,;: ]+/", $ADVANCED_NAME_FACTS);
 		$name_tags = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
 		$name_tags[] = "_MARNM";
-		foreach ($this->myindilist as $id=>$individual) {
-			$indirec=find_gedcom_record($individual->getXref(), WT_GED_ID, true);
-			$oldRecord = $indirec;
-			$newRecord = $indirec;
+		foreach ($this->myindilist as $id=>$record) {
+			$oldRecord = $record->getGedcom();
+			$newRecord = $record;
 			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
 			} else {
@@ -443,16 +442,15 @@ class WT_Controller_Search extends WT_Controller_Page {
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if ($newRecord != $oldRecord) {
-				$individual->updateRecord($newRecord, true);
+				$record->updateRecord($newRecord, true);
 			} else {
 				unset($this->myindilist[$id]);
 			}
 		}
 
-		foreach ($this->myfamlist as $id=>$family) {
-			$indirec=find_gedcom_record($family->getXref(), WT_GED_ID, true);
-			$oldRecord = $indirec;
-			$newRecord = $indirec;
+		foreach ($this->myfamlist as $id=>$record) {
+			$oldRecord = $record->getGedcom();
+			$newRecord = $record;
 
 			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
@@ -465,16 +463,15 @@ class WT_Controller_Search extends WT_Controller_Page {
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if ($newRecord != $oldRecord) {
-				$family->updateRecord($newRecord, true);
+				$record->updateRecord($newRecord, true);
 			} else {
 				unset($this->myfamlist[$id]);
 			}
 		}
 
-		foreach ($this->mysourcelist as $id=>$source) {
-			$indirec=find_gedcom_record($source->getXref(), WT_GED_ID, true);
-			$oldRecord = $indirec;
-			$newRecord = $indirec;
+		foreach ($this->mysourcelist as $id=>$record) {
+			$oldRecord = $record->getGedcom();
+			$newRecord = $record;
 
 			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
@@ -490,23 +487,22 @@ class WT_Controller_Search extends WT_Controller_Page {
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if ($newRecord != $oldRecord) {
-				$source->updateRecord($newRecord, true);
+				$record->updateRecord($newRecord, true);
 			} else {
 				unset($this->mysourcelist[$id]);
 			}
 		}
 
-		foreach ($this->mynotelist as $id=>$note) {
-			$indirec=find_gedcom_record($note->getXref(), WT_GED_ID, true);
-			$oldRecord = $indirec;
-			$newRecord = $indirec;
+		foreach ($this->mynotelist as $id=>$record) {
+			$oldRecord = $record->getGedcom();
+			$newRecord = $record;
 
 			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if ($newRecord != $oldRecord) {
-				$noteource->updateRecord($newRecord, true);
+				$record->updateRecord($newRecord, true);
 			} else {
 				unset($this->mynotelist[$id]);
 			}
