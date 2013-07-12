@@ -396,7 +396,7 @@ function addnewchild(xref, gender) {
   edit_interface({
     "action": "addchild",
     "gender": gender,
-    "xerf":   xref
+    "xref":   xref
   });
   return false;
 }
