@@ -127,10 +127,10 @@ case 'delete-source':
 		// Delete links to this record
 		foreach (fetch_all_links($record->getXref(), $record->getGedcomId()) as $xref) {
 			$linker = WT_GedcomRecord::getInstance($xref);
-			$gedrec = find_gedcom_record($xref, $record->getGedcomId(), true);
-			$gedrec = remove_links($gedrec, $record->getXref());
+			$gedcom =$linker->getGedcom();
+			$gedcom = remove_links($gedcom, $record->getXref());
 			// If we have removed a link from a family to an individual, and it has only one member
-			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedrec) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $gedrec, $match)<2) {
+			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $gedcom, $match)<2) {
 				// Delete the family
 				$family = WT_GedcomRecord::getInstance($xref);
 				WT_FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ WT_I18N::translate('The family “%s” has been deleted, as it only has one member.', $family->getFullName()));
@@ -138,15 +138,15 @@ case 'delete-source':
 				// Delete any remaining link to this family
 				if ($match) {
 					$relict = WT_GedcomRecord::getInstance($match[2][0]);
-					$gedrec = find_gedcom_record($relict->getXref(), $relict->getGedcomId(), true);
-					$gedrec = remove_links($gedrec, $linker->getXref());
-					replace_gedrec($relict->getXref(), $relict->getGedcomId(), $gedrec, false);
+					$gedcom = $relict->getGedcom();
+					$gedcom = remove_links($gedcom, $linker->getXref());
+					$relict->updateRecord($gedcom, false);
 					WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->getFullName(), $family->getFullName()));
 				}
 			} else {
 				// Remove links from $linker to $record
 				WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $linker->getFullName(), $record->getFullName()));
-				replace_gedrec($linker->getXref(), $linker->getGedcomId(), $gedrec, false);
+				$linker->updateRecord($gedcom, false);
 			}
 		}
 		// Delete the record itself
