@@ -208,9 +208,10 @@ class WT_Stats {
 	function gedcomDate() {
 		global $DATE_FORMAT;
 
-		$head=find_other_record('HEAD', $this->_ged_id);
-		if (preg_match("/1 DATE (.+)/", $head, $match)) {
-			$date=new WT_Date($match[1]);
+		$head = WT_GedcomRecord::getInstance('HEAD');
+		$fact = $head->getFactByType('DATE');
+		if ($fact) {
+			$date=new WT_Date($fact->getValue());
 			return $date->Display(false, $DATE_FORMAT); // Override $PUBLIC_DATE_FORMAT
 		}
 		return '';
