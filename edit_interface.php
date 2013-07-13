@@ -619,7 +619,7 @@ case 'linkfamaction':
 		}
 	}
 	if (!$edit_fact) {
-		$family->updateFact(null, '1 CHIL @' . $person->getXref() . '@', true);
+		$family->createFact('1 CHIL @' . $person->getXref() . '@', true);
 	}
 
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -1091,14 +1091,14 @@ case 'addchildaction':
 		$old_child = $fact->getTarget();
 		if ($old_child && WT_Date::Compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate())<0) {
 			// Insert before this child
-			$family->updateFact($fact->getFactId(), "1 CHIL @" . $new_child->getXref()."@\n" . $fact->getGedcom(), !$keep_chan);
+			$family->updateFact($fact->getFactId(), '1 CHIL @' . $new_child->getXref() . '@' . $fact->getGedcom(), !$keep_chan);
 			$done = true;
 			break;
 		}
 	}
 	if (!$done) {
 		// Append child at end
-		$family->updateFact(null, "1 CHIL @" . $new_child->getXref()."@\n", !$keep_chan);
+		$family->createFact('1 CHIL @' . $new_child->getXref() . '@', !$keep_chan);
 	}
 
 	if (safe_POST('goto')=='new') {
@@ -1185,9 +1185,9 @@ case 'addspouseaction':
 		$spouse = WT_GedcomRecord::createRecord($indi_gedcom, WT_GED_ID);
 		// Link the family
 		if ($sex=='F') {
-			$family->updateFact(null, '1 WIFE @' . $spouse->getXref() . '@' . $fam_gedcom, true);
+			$family->createFact('1 WIFE @' . $spouse->getXref() . '@' . $fam_gedcom, true);
 		} else {
-			$family->updateFact(null, '1 HUSB @' . $spouse->getXref() . '@' . $fam_gedcom, true);
+			$family->createFact('1 HUSB @' . $spouse->getXref() . '@' . $fam_gedcom, true);
 		}
 	} else {
 		// Create the new spouse
@@ -1199,8 +1199,8 @@ case 'addspouseaction':
 			$family = WT_GedcomRecord::createRecord("0 @NEW@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $person->getXref() . "@" . $fam_gedcom, WT_GED_ID);
 		}
 		// Link the spouses to the family
-		$spouse->updateFact(null, '1 FAMS @' . $family->getXref() . '@', true);
-		$person->updateFact(null, '1 FAMS @' . $family->getXref() . '@', true);
+		$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
+		$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
 	}
 
 	if (safe_POST('goto')=='new') {
@@ -1251,8 +1251,8 @@ case 'linkspouseaction':
 	}
 
 	$family = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
-	$person->updateFact(null, '1 FAMS @' . $family->getXref() .'@', true);	
-	$spouse->updateFact(null, '1 FAMS @' . $family->getXref() .'@', true);	
+	$person->createFact('1 FAMS @' . $family->getXref() .'@', true);	
+	$spouse->createFact('1 FAMS @' . $family->getXref() .'@', true);	
 
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
@@ -1305,8 +1305,8 @@ case 'addnewparentaction':
 		} else {
 			$famrec = updateRest($famrec);
 		}
-		$family->updateFact(null, $famrec, true);
-		$parent->updateFact(null, '1 FAMS @' . $family->getXref() . '@', true);
+		$family->createFact($famrec, true);
+		$parent->createFact('1 FAMS @' . $family->getXref() . '@', true);
 	} else {
 		// Create a new family
 		$famrec = '0 @new@ FAM';
@@ -1330,8 +1330,8 @@ case 'addnewparentaction':
 		}
 
 		$family = WT_GedcomRecord::createRecord($famrec, WT_GED_ID);
-		$person->updateFact(null, '1 FAMC @' . $family->getXref() . '@', true);
-		$parent->updateFact(null, '1 FAMS @' . $family->getXref() . '@', true);
+		$person->createFact('1 FAMC @' . $family->getXref() . '@', true);
+		$parent->createFact('1 FAMS @' . $family->getXref() . '@', true);
 	}
 
 	if (safe_POST('goto')=='new') {
@@ -1354,21 +1354,20 @@ case 'addopfchildaction':
 		->pageHeader();
 
 	// Create a family
-	$gedcom='0 @NEW@ FAM';
 	if ($person->getSex()=='F') {
-		$gedcom.="\n1 WIFE @" . $person->getXref() . "@";
+		$gedcom = "0 @NEW@ FAM\n1 WIFE @" . $person->getXref() . "@";
 	} else {
-		$gedcom.="\n1 HUSB @" . $person->getXref() . "@";
+		$gedcom = "0 @NEW@ FAM\n1 HUSB @" . $person->getXref() . "@";
 	}
 	$family = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
 
 	// Link the parent to the family
-	$person->updateFact(null, "1 FAMS @" . $family->getXref() . "@", true);
+	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
 
 	// Create a child
 	splitSOUR(); // separate SOUR record from the rest
 
-	$gedcom = "0 @NEW@ INDI";
+	$gedcom = '0 @NEW@ INDI';
 	$gedcom .= addNewName();
 	$gedcom .= addNewSex ();
 	$gedcom .= "\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $newfamxref);
@@ -1387,7 +1386,7 @@ case 'addopfchildaction':
 	$child = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
 
 	// Link the family to the child
-	$family->updateFact(null, '1 CHIL @' . $child->getXref() . '@', true);
+	$family->createFact('1 CHIL @' . $child->getXref() . '@', true);
 
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
@@ -1455,7 +1454,7 @@ case 'paste':
 		->setPageTitle(WT_I18N::translate('Add from clipboard'))
 		->pageHeader();
 
-	$record->updateFact(null, $WT_SESSION->clipboard[$fact]['factrec']);
+	$record->createFact($WT_SESSION->clipboard[$fact]['factrec']);
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
 
@@ -1864,21 +1863,21 @@ case 'changefamily_update':
 			// Remove old FAMS link
 			foreach ($old_father->getFacts('FAMS') as $fact) {
 				if ($fact->getTarget() == $family) {
-					$old_father->updateFact($fact->getFactId(), null, !$keep_chan);
+					$old_father->deleteFact($fact->getFactId(), !$keep_chan);
 				}
 			}
 			// Remove old HUSB link
 			foreach ($family->getFacts('HUSB|WIFE') as $fact) {
 				if ($fact->getTarget() == $old_father) {
-					$family->updateFact($fact->getFactId(), null, !$keep_chan);
+					$family->deleteFact($fact->getFactId(), !$keep_chan);
 				}
 			}
 		}
 		if ($new_father) {
 			// Add new FAMS link
-			$new_father->updateFact(null, '1 FAMS @' . $family->getXref() . '@', !$keep_chan);
+			$new_father->createFact('1 FAMS @' . $family->getXref() . '@', !$keep_chan);
 			// Add new HUSB link
-			$family->updateFact(null, '1 HUSB @' . $new_father->getXref() . '@', !$keep_chan);
+			$family->createFact('1 HUSB @' . $new_father->getXref() . '@', !$keep_chan);
 		}
 	}
 
@@ -1887,21 +1886,21 @@ case 'changefamily_update':
 			// Remove old FAMS link
 			foreach ($old_mother->getFacts('FAMS') as $fact) {
 				if ($fact->getTarget() == $family) {
-					$old_mother->updateFact($fact->getFactId(), null, !$keep_chan);
+					$old_mother->deleteFact($fact->getFactId(), !$keep_chan);
 				}
 			}
 			// Remove old WIFE link
 			foreach ($family->getFacts('HUSB|WIFE') as $fact) {
 				if ($fact->getTarget() == $old_mother) {
-					$family->updateFact($fact->getFactId(), null, !$keep_chan);
+					$family->deleteFact($fact->getFactId(), !$keep_chan);
 				}
 			}
 		}
 		if ($new_mother) {
 			// Add new FAMS link
-			$new_mother->updateFact(null, '1 FAMS @' . $family->getXref() . '@', !$keep_chan);
+			$new_mother->createFact('1 FAMS @' . $family->getXref() . '@', !$keep_chan);
 			// Add new WIFE link
-			$family->updateFact(null, '1 WIFE @' . $new_mother->getXref() . '@', !$keep_chan);
+			$family->createFact('1 WIFE @' . $new_mother->getXref() . '@', !$keep_chan);
 		}
 	}
 
@@ -1910,13 +1909,13 @@ case 'changefamily_update':
 			// Remove old FAMC link
 			foreach ($old_child->getFacts('FAMC') as $fact) {
 				if ($fact->getTarget() == $family) {
-					$old_child->updateFact($fact->getFactId(), null, !$keep_chan);
+					$old_child->deleteFact($fact->getFactId(), !$keep_chan);
 				}
 			}
 			// Remove old CHIL link
 			foreach ($family->getFacts('CHIL') as $fact) {
 				if ($fact->getTarget() == $old_child) {
-					$family->updateFact($fact->getFactId(), null, !$keep_chan);
+					$family->deleteFact($fact->getFactId(), !$keep_chan);
 				}
 			}
 		}
@@ -1925,9 +1924,9 @@ case 'changefamily_update':
 	foreach ($new_children as $new_child) {
 		if (!in_array($new_child, $old_children)) {
 			// Add new FAMC link
-			$new_child->updateFact(null, '1 FAMS @' . $family->getXref() . '@', !$keep_chan);
+			$new_child->createFact('1 FAMS @' . $family->getXref() . '@', !$keep_chan);
 			// Add new CHIL link
-			$family->updateFact(null, '1 CHIL @' . $new_child->getXref() . '@', !$keep_chan);
+			$family->createFact('1 CHIL @' . $new_child->getXref() . '@', !$keep_chan);
 		}
 	}
 

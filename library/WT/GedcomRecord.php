@@ -758,8 +758,17 @@ class WT_GedcomRecord {
 	// CRUD operations
 	//////////////////////////////////////////////////////////////////////////////
 
-	// Replace a (possibly empty) fact with a new (possibly empty) fact.
-	// This allows create/update/delete of individual facts
+	// Add a new fact to this record
+	public function createFact($gedcom, $update_chan) {
+		$this->updateFact(null, $gedcom, $update_chan);
+	}
+
+	// Delete a fact from this record
+	public function deleteFact($fact_id, $update_chan) {
+		$this->updateFact($fact_id, null, $update_chan);
+	}
+
+	// Replace a fact with a new gedcom data.
 	public function updateFact($fact_id, $gedcom, $update_chan) {
 		if (strpos("\r", $gedcom)!==false) {
 			// MSDOS line endings will break things in horrible ways

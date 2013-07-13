@@ -34,7 +34,7 @@ class WT_Controller_GedcomRecord extends WT_Controller_Page {
 			$broken_links=0;
 			foreach ($this->record->getFacts('HUSB|WIFE|CHIL|FAMS|FAMC|SOUR|REPO|OBJE') as $fact) { // Not NOTE!
 				if (!$fact->isOld() && $fact->getTarget() === null) {
-					$this->record->updateFact($fact->getFactId(), null, false);
+					$this->record->deleteFact($fact->getFactId(), false);
 					WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $this->record->getFullName(), $fact->getValue()));
 					$broken_links = true;
 				}

@@ -105,7 +105,7 @@ case 'delete-fact':
 	if ($record && $record->canShow() && $record->canEdit()) {
 		foreach ($record->getFacts() as $fact) {
 			if ($fact->getfactId() == $fact_id && $fact->canShow() && $fact->canEdit()) {
-				$record->updateFact($fact_id, '', true);
+				$record->deleteFact($fact_id, true);
 				break 2;
 			}
 		}
