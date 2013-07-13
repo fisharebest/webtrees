@@ -67,21 +67,20 @@ $newvars = array();
 foreach ($vars as $name=>$var) {
 	$newvars[$name]['id'] = $var;
 	if (!empty($type[$name]) && (($type[$name]=='INDI') || ($type[$name]=='FAM') || ($type[$name]=='SOUR'))) {
-		$gedcom = find_gedcom_record($var, WT_GED_ID);
-		if (empty($gedcom)) {
+		$record = WT_GedcomRecord::getInstance($var);
+		if (!$record) {
 			$action='setup';
 		}
+		$gedcom = $record->getGedcom();
 		// If we wanted a FAM, and were given an INDI, look for a spouse
-		if ($type[$name]=='FAM') {
-			if (preg_match('/0 @.+@ INDI/', $gedcom)>0) {
-				if (preg_match('/\n1 FAMS @(.+)@/', $gedcom, $match)) {
-					$gedcom = find_family_record($match[1], WT_GED_ID);
-					if (!empty($gedcom)) {
-						$vars[$name] = $match[1];
-					} else {
-						$action='setup';
-					}
-				}
+		if ($type[$name]=='FAM' && $record instanceof WT_Individual) {
+			$tmp = false;
+			foreach ($record->getSpouseFamilies() as $family) {
+				$gedcom = $family->getGedcom();
+				$tmp = true;
+			}
+			if (!$tmp) {
+				$action='setup';
 			}
 		}
 		$newvars[$name]['gedcom'] = $gedcom;
