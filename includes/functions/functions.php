@@ -2077,12 +2077,7 @@ function add_descendancy(&$list, $pid, $parents=false, $generations=-1) {
 	}
 }
 
-/**
- * get the next available xref
- * calculates the next available XREF id for the given type of record
- * @param string $type the type of record, defaults to 'INDI'
- * @return string
- */
+// Generate a new XREF, unique across all family trees
 function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
 	global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX;
 
@@ -2107,8 +2102,7 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
 		break;
 	}
 
-	$num=
-		WT_DB::prepare("SELECT next_id FROM `##next_id` WHERE record_type=? AND gedcom_id=?")
+	$num = WT_DB::prepare("SELECT next_id FROM `##next_id` WHERE record_type=? AND gedcom_id=?")
 		->execute(array($type, $ged_id))
 		->fetchOne();
 
@@ -2122,19 +2116,30 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
 			->execute(array($ged_id, $type));
 	}
 
-	while (find_gedcom_record($prefix.$num, $ged_id, true)) {
+	$statement = WT_DB::prepare(
+		"SELECT i_id FROM `##individuals` WHERE i_id = ?" .
+		" UNION ALL " .
+		"SELECT f_id FROM `##families` WHERE f_id = ?" .
+		" UNION ALL " .
+		"SELECT s_id FROM `##sources` WHERE s_id = ?" .
+		" UNION ALL " .
+		"SELECT m_id FROM `##media` WHERE m_id = ?" .
+		" UNION ALL " .
+		"SELECT o_id FROM `##other` WHERE o_id = ?" .
+		" UNION ALL " .
+		"SELECT xref FROM `##change` WHERE xref = ?"
+	);
+
+	while ($statement->execute(array_fill(0, 6, $prefix.$num))->fetchOne()) {
 		// Applications such as ancestry.com generate XREFs with numbers larger than
 		// PHP’s signed integer.  MySQL can handle large integers.
-		$num=WT_DB::prepare("SELECT 1+?")->execute(array($num))->fetchOne();
+		$num = WT_DB::prepare("SELECT 1+?")->execute(array($num))->fetchOne();
 	}
-
-	//-- the key is the prefix and the number
-	$key = $prefix.$num;
 
 	//-- update the next id number in the DB table
 	WT_DB::prepare("UPDATE `##next_id` SET next_id=? WHERE record_type=? AND gedcom_id=?")
 		->execute(array($num+1, $type, $ged_id));
-	return $key;
+	return $prefix.$num;
 }
 
 /**
