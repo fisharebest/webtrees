@@ -406,16 +406,23 @@ case 'addchild':
 	$famid  = safe_GET('famid',  WT_REGEX_XREF);
 
 	$family = WT_Family::getInstance($famid);
+	check_record_access($family);
 
-	if ($family) {
-		check_record_access($family);
-		$controller->setPageTitle($family->getFullName() . ' - ' . WT_I18N::translate('Add a new child'));
-	} else {
-		$controller->setPageTitle(WT_I18N::translate('Add an unlinked person'));
-	}
-	$controller->pageHeader();
+	$controller
+		->setPageTitle($family->getFullName() . ' - ' . WT_I18N::translate('Add a new child'))
+		->pageHeader();
 
 	print_indi_form('addchildaction', null, $family, null, 'CHIL', $gender);
+	break;
+
+////////////////////////////////////////////////////////////////////////////////
+case 'add_unlinked_indi':
+	$controller
+		->requireManagerLogin()
+		->setPageTitle(WT_I18N::translate('Add an unlinked person'))
+		->pageHeader();
+
+	print_indi_form('add_unlinked_indi_action', null, null, null, null, null);
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -424,7 +431,6 @@ case 'addspouse':
 	$xref   = safe_GET('xref', WT_REGEX_XREF);
 
 	$family = WT_Family::getInstance($xref);
-	
 	check_record_access($family);
 
 	if ($famtag=='WIFE') {
@@ -1064,15 +1070,12 @@ case 'addchildaction':
 			$gedrec.=addNewFact($match);
 		}
 	}
-	if ($family) {
-		// $family is not set when creating unlinked individuals
-		if (isset($_REQUEST['PEDI'])) {
-			$PEDI = $_REQUEST['PEDI'];
-		} else {
-			$PEDI = '';
-		}
-		$gedrec .= "\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $famid);
+	if (isset($_REQUEST['PEDI'])) {
+		$PEDI = $_REQUEST['PEDI'];
+	} else {
+		$PEDI = '';
 	}
+	$gedrec .= "\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $famid);
 	if (safe_POST_bool('SOUR_INDI')) {
 		$gedrec = handle_updates($gedrec);
 	} else {
@@ -1082,25 +1085,55 @@ case 'addchildaction':
 	// Create the new child
 	$new_child = WT_GedcomRecord::createRecord($gedrec, WT_GED_ID);
 
-	if ($family) {
-		// Insert new child at the right place
-		foreach ($family->getFacts('CHIL') as $fact) {
-			$old_child = $fact->getTarget();
-			if ($old_child && WT_Date::Compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate())<0) {
-				// Insert before this child
-				$family->updateFact($fact->getFactId(), "1 CHIL @" . $new_child->getXref()."@\n" . $fact->getGedcom(), !$keep_chan);
-				$done = true;
-				break;
-			}
+	// Insert new child at the right place
+	$done = false;
+	foreach ($family->getFacts('CHIL') as $fact) {
+		$old_child = $fact->getTarget();
+		if ($old_child && WT_Date::Compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate())<0) {
+			// Insert before this child
+			$family->updateFact($fact->getFactId(), "1 CHIL @" . $new_child->getXref()."@\n" . $fact->getGedcom(), !$keep_chan);
+			$done = true;
+			break;
 		}
-		if (!$done) {
-			// Append to end
-			$family->updateFact(null, "1 CHIL @" . $new_child->getXref()."@\n", !$keep_chan);
-		}
+	}
+	if (!$done) {
+		// Append child at end
+		$family->updateFact(null, "1 CHIL @" . $new_child->getXref()."@\n", !$keep_chan);
 	}
 
 	if (safe_POST('goto')=='new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $new_child->getRawUrl() . '");');
+	} else {
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
+	}
+	break;
+
+////////////////////////////////////////////////////////////////////////////////
+case 'add_unlinked_indi_action':
+	$controller
+		->requireManagerLogin()
+		->setPageTitle(WT_I18N::translate('Add an unlinked person'))
+		->pageHeader();
+
+	splitSOUR();
+	$gedrec ="0 @REF@ INDI";
+	$gedrec.=addNewName();
+	$gedrec.=addNewSex ();
+	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
+		foreach ($matches[1] as $match) {
+			$gedrec.=addNewFact($match);
+		}
+	}
+	if (safe_POST_bool('SOUR_INDI')) {
+		$gedrec = handle_updates($gedrec);
+	} else {
+		$gedrec = updateRest($gedrec);
+	}
+
+	$new_indi = WT_GedcomRecord::createRecord($gedrec, WT_GED_ID);
+
+	if (safe_POST('goto')=='new') {
+		$controller->addInlineJavascript('closePopupAndReloadParent("' . $new_indi->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}

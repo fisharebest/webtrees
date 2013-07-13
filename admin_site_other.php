@@ -46,7 +46,7 @@ $controller
 	<table id="other">
 		<tr>
 			<td>
-				<a href="#" onclick="addnewchild(''); return false;">
+				<a href="#" onclick="add_unlinked_indi(); return false;">
 					<?php echo /* I18N: An individual that is not linked to any other record */ WT_I18N::translate('Create a new individual'); ?>
 				</a>
 			</td>

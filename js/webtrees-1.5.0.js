@@ -392,11 +392,18 @@ function add_new_record(xref, fact) {
   return false;
 }
 
-function addnewchild(xref, gender) {
+function addnewchild(famid, gender) {
   edit_interface({
     "action": "addchild",
     "gender": gender,
-    "xref":   xref
+    "famid":  famid
+  });
+  return false;
+}
+
+function add_unlinked_indi() {
+  edit_interface({
+    "action": "add_unlinked_indi",
   });
   return false;
 }
