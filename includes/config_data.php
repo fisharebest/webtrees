@@ -252,7 +252,7 @@ $level2_tags=array(
 		'REPO',
 	),
 	'CEME'=>array( // CEME is NOT a valid 5.5.1 tag
-		'BURI',
+		//'BURI',
 	),
 	'RELA'=>array(
 		'ASSO',
