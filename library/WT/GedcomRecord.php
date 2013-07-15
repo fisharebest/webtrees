@@ -825,7 +825,7 @@ class WT_GedcomRecord {
 			self::$pending_record_cache = null;
 
 			if (get_user_setting(WT_USER_ID, 'auto_accept')) {
-				accept_all_changes($xref, $ged_id);
+				accept_all_changes($this->xref, $this->gedcom_id);
 			}
 		}
 	}
