@@ -4,9 +4,6 @@
 // webtrees: Web based Family History software
 // Copyright (C) 2013 webtrees development team.
 //
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
-//
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation; either version 2 of the License, or
@@ -193,7 +190,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				if ($record->canShowName()) {
 					$data.='<url>';
 					$data.='<loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.$record->getHtmlUrl().'</loc>';
-					$chan=$record->getChangeEvent();
+					$chan=$record->getFactByType('CHAN');
 					if ($chan) {
 						$date=$chan->getDate();
 						if ($date->isOK()) {
