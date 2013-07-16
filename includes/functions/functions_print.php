@@ -1010,7 +1010,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 					$newRow = false;
 					echo '<tr><td class="descriptionbox">';
 					echo WT_I18N::translate('Add from clipboard'), '</td>';
-					echo '<td class="optionbox wrap"><form method="get" name="newFromClipboard" action="" onsubmit="return false;">';
+					echo '<td class="optionbox wrap"><form method="get" name="newFromClipboard" action="#" onsubmit="return false;">';
 					echo '<select id="newClipboardFact" name="newClipboardFact">';
 				}
 				$fact_type=WT_Gedcom_Tag::getLabel($fact['fact']);

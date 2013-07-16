@@ -114,20 +114,12 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		ob_start();
 
 		echo '<table class="facts_table">';
-		echo '<script>';
-		if (!$EXPAND_RELATIVES_EVENTS) {
-			echo "jQuery('tr.rela').toggle();";
-		}
-		if (!$EXPAND_HISTO_EVENTS) {
-			echo "jQuery('tr.histo').toggle();";
-		}
-		echo '</script>';
-
+		echo '<tbody>';
 		if (!$indifacts) {
 			echo '<tr><td colspan="2" class="facts_value">', WT_I18N::translate('There are no Facts for this individual.'), '</td></tr>';
 		}
 
-		echo '<tr><td colspan="2" class="descriptionbox rela"><input id="checkbox_rela_facts" type="checkbox"';
+		echo '<tr><td colspan="2" class="descriptionbox rela"><form action="#"><input id="checkbox_rela_facts" type="checkbox"';
 		if ($EXPAND_RELATIVES_EVENTS) {
 			echo ' checked="checked"';
 		}
@@ -139,7 +131,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 			echo ' onclick="jQuery(\'tr.histo\').toggle();"><label for="checkbox_histo">', WT_I18N::translate('Historical facts'), '</label>';
 		}
-		echo '</td></tr>';
+		echo '</form></td></tr>';
 
 		foreach ($indifacts as $fact) {
 			print_fact($fact, $controller->record);
@@ -149,7 +141,16 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		if ($controller->record->canEdit()) {
 			print_add_new_fact($controller->record->getXref(), $indifacts, 'INDI');
 		}
+		echo '</tbody>';
 		echo '</table>';
+
+		if (!$EXPAND_RELATIVES_EVENTS) {
+			echo '<script>jQuery("tr.rela").toggle();</script>';
+		}
+		if (!$EXPAND_HISTO_EVENTS) {
+			echo '<script>jQuery("tr.histo").toggle();</script>';
+		}
+
 
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}

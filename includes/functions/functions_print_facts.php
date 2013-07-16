@@ -92,17 +92,17 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 
 	// Event of close relative
 	if (preg_match('/^_[A-Z_]{4,5}_[A-Z0-9]{4}$/', $fact->getTag())) {
-		$styleadd .= ' rela';
+		$styleadd = trim($styleadd . ' rela');
 	}
 
 	// Event of close associates
 	if ($fact->getFactId()=='asso') {
-		$styleadd .= ' rela';
+		$styleadd = trim($styleadd . ' rela');
 	}
 
 	// historical facts
 	if ($fact->getFactId()=='histo') {
-		$styleadd .= ' histo';
+		$styleadd = trim($styleadd . ' histo');
 	}
 
 	// Does this fact have a type?
