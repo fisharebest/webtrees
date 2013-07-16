@@ -326,9 +326,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		return $menu;
 	}
 
-	function add_asso_facts() {
-	}
-
 	/**
 	* get the person box stylesheet class
 	* for the given person

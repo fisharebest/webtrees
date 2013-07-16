@@ -225,7 +225,7 @@ if (count($famids)>0) {
 				echo '<span class="name1"><br>', WT_I18N::translate('Sibling'), '<br></span>';
 			}
 			foreach ($children as $child) {
-				if (!$controller->root->equals($child) && !is_null($child)) {
+				if ($controller->root != $child) {
 					echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 					$name = $child->getFullName();
 					echo 'class="name1"> ';

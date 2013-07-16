@@ -250,11 +250,6 @@ class WT_GedcomRecord {
 		return $this->pending === '';
 	}
 
-	// Are two records the same?
-	public function equals($obj) {
-		return $obj && $this->xref==$obj->getXref();
-	}
-
 	// Generate a URL to this record, suitable for use in HTML, etc.
 	public function getHtmlUrl() {
 		return $this->_getLinkUrl(static::URL_PREFIX, '&amp;');

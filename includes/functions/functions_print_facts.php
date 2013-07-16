@@ -205,7 +205,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	// Print the spouse and family of this fact/event
 	if ($parent instanceof WT_Family && $record instanceof WT_Individual) {
 		foreach ($parent->getSpouses() as $spouse) {
-			if (!$record->equals($spouse)) {
+			if (!$record == $spouse) {
 				echo '<a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
 			}
 		}

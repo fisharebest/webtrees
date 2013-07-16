@@ -601,7 +601,7 @@ case 'linkfamaction':
 	// Replace any existing child->family link (we may be changing the PEDI);
 	$fact_id = null;
 	foreach ($person->getFacts('FAMC') as $fact) {
-		if ($family->equals($fact->getTarget())) {
+		if ($family == $fact->getTarget()) {
 			$fact_id = $fact->getFactId();
 			break;
 		}
@@ -613,7 +613,7 @@ case 'linkfamaction':
 	// Only set the family->child link if it does not already exist
 	$edit_fact = null;
 	foreach ($family->getFacts('CHIL') as $fact) {
-		if ($person->equals($fact->getTarget())) {
+		if ($person == $fact->getTarget()) {
 			$edit_fact = $fact;
 			break;
 		}
