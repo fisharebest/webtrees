@@ -96,7 +96,7 @@ class WT_Fact {
 	// Get the value of level 2 data in the fact
 	function getAttribute($tag) {
 		if (preg_match('/\n2 (?:' . $tag . ') ?(.*(?:(?:\n3 CONT .*)*)*)/', $this->gedcom, $match)) {
-			return str_replace("\n2 CONT ", "\n", $match[1]);
+			return str_replace("\n3 CONT ", "\n", $match[1]);
 		} else {
 			return null;
 		}
