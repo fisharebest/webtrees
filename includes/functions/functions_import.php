@@ -975,7 +975,7 @@ function create_media_object($level, $gedrec, $ged_id) {
 		// Fix Legacy GEDCOMS
 		$gedrec = preg_replace('/\n1 FORM (.+)\n1 FILE (.+)\n1 TITL (.+)/', "\n1 FILE $2\n2 FORM $1\n2 TITL $3", $gedrec);
 		// Create new record
-		$record = new WT_Media($gedrec);
+		$record = new WT_Media($xref, $gedrec, null, $ged_id);
 		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
 	}
 	return "\n" . $level . ' OBJE @' . $xref . '@';
