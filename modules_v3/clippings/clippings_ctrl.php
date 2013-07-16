@@ -63,19 +63,12 @@ class WT_Controller_Clippings {
 			$WT_SESSION->cart[WT_GED_ID]=array();
 		}
 
-		if (!$WT_SESSION->exportConvPath) {
-			$WT_SESSION->exportConvPath = $MEDIA_DIRECTORY;
-		}
-		if (!$WT_SESSION->exportConvSlashes) {
-			$WT_SESSION->exportConvSlashes = 'forward';
-		}
-
 		$this->action = safe_GET("action");
 		$this->id = safe_GET('id');
 		$convert = safe_GET('convert',"yes","no");
 		$this->Zip = safe_GET('Zip');
 		$this->IncludeMedia = safe_GET('IncludeMedia');
-		$this->conv_path = safe_GET('conv_path', WT_REGEX_NOSCRIPT, $WT_SESSION->exportConvPath);
+		$this->conv_path = safe_GET('conv_path', WT_REGEX_NOSCRIPT);
 		$this->privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'), 'visitor');
 		$this->level1 = safe_GET('level1', WT_REGEX_INTEGER, PHP_INT_MAX);
 		$this->level2 = safe_GET('level2', WT_REGEX_INTEGER, PHP_INT_MAX);
@@ -89,8 +82,6 @@ class WT_Controller_Clippings {
 		if ($this->privatize_export=='user' && !WT_USER_CAN_ACCESS) {
 			$this->privatize_export='visitor';
 		}
-
-		$WT_SESSION->exportConvPath = $this->conv_path; // remember this for the next Download
 
 		if ($this->action == 'add') {
 			if (empty($this->type) && !empty($this->id)) {
