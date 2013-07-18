@@ -101,18 +101,26 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	// For relationship privacy calculations - is this individual a close relative?
-	private static function isRelated(WT_Individual $individual, $distance) {
+	private static function isRelated(WT_Individual $target, $distance) {
 		static $cache = null;
 
-		if (!$cache) {
-			$root = WT_Individual::getInstance(WT_USER_GEDCOM_ID);
-			$cache = array(
-				0 => array($root),
-				1 => array(),
-			);
-			foreach ($root->getFacts('FAM[CS]') as $fact) {
-				$cache[1][] = $fact->getTarget();
+		$user_individual = WT_Individual::getInstance(WT_USER_GEDCOM_ID);
+		if ($user_individual) {
+			if (!$cache) {
+				$cache = array(
+					0 => array($user_individual),
+					1 => array(),
+				);
+				foreach ($user_individual->getFacts('FAM[CS]') as $fact) {
+					$family = $fact->getTarget();
+					if ($family) {
+						$cache[1][] = $family;
+					}
+				}
 			}
+		} else {
+			// No individual linked to this account?  Cannot use relationship privacy.
+			return true;
 		}
 
 		// Double the distance, as we count the INDI-FAM and FAM-INDI links separately
@@ -120,30 +128,36 @@ class WT_Individual extends WT_GedcomRecord {
 
 		// Consider each path length in turn
 		for ($n=0; $n<=$distance; ++$n) {
-			if (!array_key_exists($n, $cache)) {
+			if (array_key_exists($n, $cache)) {
+				// We have already calculated all records with this length
+				if ($n % 2 == 0 && in_array($target, $cache[$n], true)) {
+					return true;
+				}
+			} else {
+				// Need to calculate these paths
 				$cache[$n] = array();
 				if ($n % 2 == 0) {
 					// Add FAM->INDI links
-					foreach ($cache[$n-1] as $fam) {
-						foreach ($fam->getFacts('HUSB|WIFE|CHIL') as $fact) {
-							$indi = $fact->getTarget();
+					foreach ($cache[$n-1] as $family) {
+						foreach ($family->getFacts('HUSB|WIFE|CHIL') as $fact) {
+							$individual = $fact->getTarget();
 							// Don't backtrack
-							if (!in_array($indi, $cache[$n-2])) {
-								$cache[$n][] = $indi;
+							if ($individual && !in_array($individual, $cache[$n-2], true)) {
+								$cache[$n][] = $individual;
 							}
 						}
 					}
-					if (in_array($individual, $cache[$n])) {
+					if (in_array($target, $cache[$n], true)) {
 						return true;
 					}
 				} else {
 					// Add INDI->FAM links
-					foreach ($cache[$n-1] as $indi) {
-						foreach ($indi->getFacts('FAM[CS]') as $fact) {
-							$fam = $fact->getTarget();
+					foreach ($cache[$n-1] as $individual) {
+						foreach ($individual->getFacts('FAM[CS]') as $fact) {
+							$family = $fact->getTarget();
 							// Don't backtrack
-							if (!in_array($fam, $cache[$n-2])) {
-								$cache[$n][] = $fam;
+							if ($family && !in_array($family, $cache[$n-2], true)) {
+								$cache[$n][] = $family;
 							}
 						}
 					}
@@ -936,8 +950,8 @@ class WT_Individual extends WT_GedcomRecord {
 	// Create a label for a step family
 	function getStepFamilyLabel(WT_Family $family) {
 		foreach ($this->getChildFamilies() as $fam) {
-			if ($fam != $family) {
-				if ((is_null($fam->getHusband()) || $fam->getHusband() != $family->getHusband()) && (is_null($fam->getWife()) || $fam->getWife() == $family->getWife())) {
+			if ($fam !== $family) {
+				if ((is_null($fam->getHusband()) || $fam->getHusband() !== $family->getHusband()) && (is_null($fam->getWife()) || $fam->getWife() == $family->getWife())) {
 					if ($family->getHusband()) {
 						if ($family->getWife()->getSex()=='F') {
 							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Mother’s family with %s', $family->getHusband()->getFullName());
@@ -951,7 +965,7 @@ class WT_Individual extends WT_GedcomRecord {
 							return /* I18N: A step-family. */ WT_I18N::translate('Father’s family with an unknown individual');
 						}
 					}
-				} elseif ((is_null($fam->getWife()) || $fam->getWife() != $family->getWife()) && (is_null($fam->getHusband()) || $fam->getHusband() == $family->getHusband())) {
+				} elseif ((is_null($fam->getWife()) || $fam->getWife() !== $family->getWife()) && (is_null($fam->getHusband()) || $fam->getHusband() === $family->getHusband())) {
 					if ($family->getWife()) {
 						if ($family->getHusband()->getSex()=='F') {
 							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Mother’s family with %s', $family->getWife()->getFullName());
@@ -965,7 +979,7 @@ class WT_Individual extends WT_GedcomRecord {
 							return /* I18N: A step-family. */ WT_I18N::translate('Father’s family with an unknown individual');
 						}
 					}
-				} elseif ($family->getWife()==$fam->getWife() && $family->getHusband()==$fam->getHusband() || $family->getWife()==$fam->getHusband() && $family->getHusband()==$fam->getWife()) {
+				} elseif ($family->getWife()===$fam->getWife() && $family->getHusband()===$fam->getHusband() || $family->getWife()===$fam->getHusband() && $family->getHusband()===$fam->getWife()) {
 					// Same parents - but a different family record.
 					return WT_I18N::translate('Family with parents');
 				}
