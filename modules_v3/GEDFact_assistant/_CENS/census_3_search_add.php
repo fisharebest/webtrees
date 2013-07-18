@@ -1086,7 +1086,7 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											if ($gparent == $person) {
+											if ($gparent === $person) {
 												echo "Head"; // label = Head
 											} else {
 												echo $label; // label = Relationship
@@ -1582,7 +1582,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 			//-- Step Husband --------------------------------------
 			if ($natdad == "yes") {
 			} else {
-				if (($husb || $num>0) && $husb != $person) {
+				if (($husb || $num>0) && $husb !== $person) {
 					if ($husb) {
 						//-- Step Husbands Parents -----------------------------
 						$gparent=WT_Individual::getInstance($husb->getXref());

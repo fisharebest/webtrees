@@ -523,7 +523,7 @@ function sort_facts(&$arr) {
 // Stop after 3 steps, because pending edits may mean that there is no longer a
 // relationship to find.
 function get_close_relationship_name(WT_Individual $person1, WT_Individual $person2) {
-	if ($person1 == $person2) {
+	if ($person1 === $person2) {
 		$label = '<i class="icon-selected" title="' . WT_I18N::translate('self') . '"></i>';
 	} else {
 		$label = get_relationship_name(get_relationship($person1, $person2, true, 3));
@@ -535,7 +535,7 @@ function get_close_relationship_name(WT_Individual $person1, WT_Individual $pers
 // Stop after 4 steps, as distant relationships may take a long time to find.
 // TODO review the limit of 4 when the performance of the function is improved
 function get_associate_relationship_name(WT_Individual $person1, WT_Individual $person2) {
-	if ($person1 == $person2) {
+	if ($person1 === $person2) {
 		$label = WT_I18N::translate('self');
 	} else {
 		$label = get_relationship_name(get_relationship($person1, $person2, true, 4));
@@ -553,7 +553,7 @@ function get_associate_relationship_name(WT_Individual $person1, WT_Individual $
  * @param int $path_to_find - which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
  */
 function get_relationship(WT_Individual $person1, WT_Individual $person2, $followspouse=true, $maxlength=0, $path_to_find=0) {
-	if ($person1 == $person2) {
+	if ($person1 === $person2) {
 		return false;
 	}
 
@@ -603,7 +603,7 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 						$node1['indi'] = $spouse;
 						$node1['relations'][] = 'parent';
 						$p1nodes[] = $node1;
-						if ($spouse == $person2) {
+						if ($spouse === $person2) {
 							if ($path_to_find>0) {
 								$path_to_find--;
 							} else {
@@ -623,7 +623,7 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 						$node1['indi'] = $child;
 						$node1['relations'][] = 'sibling';
 						$p1nodes[] = $node1;
-						if ($child == $person2) {
+						if ($child === $person2) {
 							if ($path_to_find>0) {
 								$path_to_find--;
 							} else {
@@ -648,7 +648,7 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 							$node1['indi'] = $spouse;
 							$node1['relations'][] = 'spouse';
 							$p1nodes[] = $node1;
-							if ($spouse == $person2) {
+							if ($spouse === $person2) {
 								if ($path_to_find>0) {
 									$path_to_find--;
 								} else {
@@ -669,7 +669,7 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 						$node1['indi'] = $child;
 						$node1['relations'][] = 'child';
 						$p1nodes[] = $node1;
-						if ($child == $person2) {
+						if ($child === $person2) {
 							if ($path_to_find>0) {
 								$path_to_find--;
 							} else {
@@ -884,7 +884,7 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 	case 'hus':
 		if ($person1 && $person2) {
 			foreach ($person1->getSpouseFamilies() as $family) {
-				if ($person2 == $family->getSpouse($person1)) {
+				if ($person2 === $family->getSpouse($person1)) {
 					if ($family->isNotMarried()) {
 						return WT_I18N::translate_c('MALE', 'partner');
 					} elseif($family->isDivorced()) {
@@ -897,7 +897,7 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 	case 'wif':
 		if ($person1 && $person1) {
 			foreach ($person1->getSpouseFamilies() as $family) {
-				if ($person2 == $family->getSpouse($person1)) {
+				if ($person2 === $family->getSpouse($person1)) {
 					if ($family->isNotMarried()) {
 						return WT_I18N::translate_c('FEMALE', 'partner');
 					} elseif($family->isDivorced()) {
@@ -910,7 +910,7 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 	case 'spo':
 		if ($person1 && $person2) {
 			foreach ($person1->getSpouseFamilies() as $family) {
-				if ($person2 == $family->getSpouse($person1)) {
+				if ($person2 === $family->getSpouse($person1)) {
 					if ($family->isNotMarried()) {
 						return WT_I18N::translate_c('MALE/FEMALE', 'partner');
 					} elseif($family->isDivorced()) {

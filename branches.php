@@ -138,7 +138,7 @@ function print_fams(WT_Individual $person, WT_Family $family=null) {
 		$person->getLifeSpan().' '.$sosa;
 	if ($family) {
 		foreach ($person->getFacts('FAMC') as $fact) {
-			if ($fact->getTarget() == $family) {
+			if ($fact->getTarget() === $family) {
 				$pedi = $fact->getAttribute('PEDI');
 				break;
 			}

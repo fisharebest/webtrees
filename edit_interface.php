@@ -601,7 +601,7 @@ case 'linkfamaction':
 	// Replace any existing child->family link (we may be changing the PEDI);
 	$fact_id = null;
 	foreach ($person->getFacts('FAMC') as $fact) {
-		if ($family == $fact->getTarget()) {
+		if ($family === $fact->getTarget()) {
 			$fact_id = $fact->getFactId();
 			break;
 		}
@@ -613,7 +613,7 @@ case 'linkfamaction':
 	// Only set the family->child link if it does not already exist
 	$edit_fact = null;
 	foreach ($family->getFacts('CHIL') as $fact) {
-		if ($person == $fact->getTarget()) {
+		if ($person === $fact->getTarget()) {
 			$edit_fact = $fact;
 			break;
 		}
@@ -1858,17 +1858,17 @@ case 'changefamily_update':
 		}
 	}
 
-	if ($old_father != $new_father) {
+	if ($old_father !== $new_father) {
 		if ($old_father) {
 			// Remove old FAMS link
 			foreach ($old_father->getFacts('FAMS') as $fact) {
-				if ($fact->getTarget() == $family) {
+				if ($fact->getTarget() === $family) {
 					$old_father->deleteFact($fact->getFactId(), !$keep_chan);
 				}
 			}
 			// Remove old HUSB link
 			foreach ($family->getFacts('HUSB|WIFE') as $fact) {
-				if ($fact->getTarget() == $old_father) {
+				if ($fact->getTarget() === $old_father) {
 					$family->deleteFact($fact->getFactId(), !$keep_chan);
 				}
 			}
@@ -1881,17 +1881,17 @@ case 'changefamily_update':
 		}
 	}
 
-	if ($old_mother != $new_mother) {
+	if ($old_mother !== $new_mother) {
 		if ($old_mother) {
 			// Remove old FAMS link
 			foreach ($old_mother->getFacts('FAMS') as $fact) {
-				if ($fact->getTarget() == $family) {
+				if ($fact->getTarget() === $family) {
 					$old_mother->deleteFact($fact->getFactId(), !$keep_chan);
 				}
 			}
 			// Remove old WIFE link
 			foreach ($family->getFacts('HUSB|WIFE') as $fact) {
-				if ($fact->getTarget() == $old_mother) {
+				if ($fact->getTarget() === $old_mother) {
 					$family->deleteFact($fact->getFactId(), !$keep_chan);
 				}
 			}
@@ -1908,13 +1908,13 @@ case 'changefamily_update':
 		if (!in_array($old_child, $new_children)) {
 			// Remove old FAMC link
 			foreach ($old_child->getFacts('FAMC') as $fact) {
-				if ($fact->getTarget() == $family) {
+				if ($fact->getTarget() === $family) {
 					$old_child->deleteFact($fact->getFactId(), !$keep_chan);
 				}
 			}
 			// Remove old CHIL link
 			foreach ($family->getFacts('CHIL') as $fact) {
-				if ($fact->getTarget() == $old_child) {
+				if ($fact->getTarget() === $old_child) {
 					$family->deleteFact($fact->getFactId(), !$keep_chan);
 				}
 			}

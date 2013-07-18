@@ -245,7 +245,7 @@ class TreeView {
 			foreach ($sfams as $famid=>$family) {
 				$p = $family->getSpouse($person);
 				if ($p) {
-					if (($p == $partner) || $this->allPartners) {
+					if (($p === $partner) || $this->allPartners) {
 						$pf = $p->getPrimaryChildFamily();
 						if (!empty($pf)) {
 							$fop[] = Array($pf->getHusband(), $pf);

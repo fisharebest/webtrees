@@ -338,7 +338,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				}
 				foreach ($family->getSpouses() as $spouse) {
 					foreach ($spouse->getSpouseFamilies() as $sfamily) {
-						if ($family != $sfamily) {
+						if ($family !== $sfamily) {
 							// Add half-siblings
 							foreach (self::child_facts($person, $sfamily, '_HSIB', '') as $fact) {
 								$facts[] = $fact;
