@@ -676,7 +676,7 @@ class WT_GedcomRecord {
 	}
 
 	// Get the first WT_Fact for the given fact type
-	public function getFactByType($tag) {
+	public function getFirstFact($tag) {
 		foreach ($this->getFacts() as $fact) {
 			if ($fact->getTag() == $tag && $fact->canShow()) {
 				return $fact;
@@ -705,7 +705,7 @@ class WT_GedcomRecord {
 	// (for display) or as a unix timestamp (for sorting)
 	//////////////////////////////////////////////////////////////////////////////
 	public function LastChangeTimestamp($sorting=false) {
-		$chan = $this->getFactByType('CHAN');
+		$chan = $this->getFirstFact('CHAN');
 
 		if ($chan) {
 			// The record does have a CHAN event
@@ -736,7 +736,7 @@ class WT_GedcomRecord {
 	// Get the last-change user for this record
 	//////////////////////////////////////////////////////////////////////////////
 	public function LastChangeUser() {
-		$chan = $this->getFactByType('CHAN');
+		$chan = $this->getFirstFact('CHAN');
 
 		if (is_null($chan)) {
 			return '&nbsp;';
@@ -783,7 +783,7 @@ class WT_GedcomRecord {
 		}
 
 		$new_gedcom = '0 @' . $this->getXref() . '@ ' . static::RECORD_TYPE;
-		$old_chan = $this->getFactByType('CHAN');
+		$old_chan = $this->getFirstFact('CHAN');
 		// Replacing (or deleting) an existing fact
 		foreach ($this->getFacts() as $fact) {
 			if ($fact->getFactId() == $fact_id) {
@@ -932,5 +932,23 @@ class WT_GedcomRecord {
 		self::$pending_record_cache = null;
 
 		AddToLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref, 'edit');
+	}
+
+	// Remove all links from this record to $xref
+	public function removeLinks($xref) {
+		$value = '@' . $xref . '@';
+
+		foreach ($this->getFacts() as $fact) {
+			if ($fact->getValue() == $value) {
+				$this->deleteFact($fact->factId());
+			} elseif (preg_match('/\n(\d) ' . WT_REGEX_TAG . ' ' . $value . '/', $fact->getGedcom(), $matches, PREG_SET_ORDER)) {
+				$gedcom = $fact->getGedcom();
+				foreach ($matches as $match) {
+					$next_levels = '[' . $match[1]+1 . '-9]';
+					$gedcom = preg_replace('/' . $match[1] . '(\n' . $next_levels .'.*)*/', '', $gedcom);
+				}
+				$this->updateFact($fact->factId(), $gedcom);
+			}
+		}
 	}
 }

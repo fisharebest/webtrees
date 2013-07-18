@@ -175,7 +175,7 @@ class WT_Family extends WT_GedcomRecord {
 	 * @return WT_Fact
 	 */
 	function getMarriage() {
-		return $this->getFactByType('MARR');
+		return $this->getFirstFact('MARR');
 	}
 
 	// Return whether or not this family ended in a divorce or was never married.

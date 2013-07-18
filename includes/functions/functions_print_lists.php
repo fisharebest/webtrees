@@ -958,7 +958,7 @@ function format_sour_table($datalist) {
 		// Sortable name
 		$html .= '<td>'. strip_tags($source->getFullName()). '</td>';
 		//-- Author
-		$auth = $source->getFactByType('AUTH');
+		$auth = $source->getFirstFact('AUTH');
 		if ($auth) {
 			$author = $auth->getValue();
 		} else {

@@ -107,16 +107,16 @@ function gedcom_header($gedfile) {
 
 	// Preserve some values from the original header
 	$record = WT_GedcomRecord::getInstance('HEAD');
-	if ($fact = $record->getFactByType('PLAC')) {
+	if ($fact = $record->getFirstFact('PLAC')) {
 		$PLAC = $fact->getAttribute('FORM');
 	}
-	if ($fact = $record->getFactByType('LANG')) {
+	if ($fact = $record->getFirstFact('LANG')) {
 		$LANG = $fact->getValue();
 	}
-	if ($fact = $record->getFactByType('SUBN')) {
+	if ($fact = $record->getFirstFact('SUBN')) {
 		$SUBN = $fact->getValue();
 	}
-	if ($fact = $record->getFactByType('COPR')) {
+	if ($fact = $record->getFirstFact('COPR')) {
 		$COPR = $fact->getValue();
 	}
 	// Link to actual SUBM/SUBN records, if they exist

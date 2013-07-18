@@ -83,7 +83,7 @@ class WT_Media extends WT_GedcomRecord {
 
 	// Get the first note attached to this media object
 	public function getNote() {
-		$note = $this->getFactByType('NOTE');
+		$note = $this->getFirstFact('NOTE');
 		if ($note) {
 			$text = $note->getValue();
 			if (preg_match('/@' . WT_REGEX_XREF . '@/', $text)) {

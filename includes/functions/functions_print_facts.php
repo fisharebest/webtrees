@@ -517,7 +517,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 				}
 				$data .= ' class="source_citations">';
 				// PUBL
-				$publ = $source->getFactByType('PUBL');
+				$publ = $source->getFirstFact('PUBL');
 				if ($publ) {
 					$data .= WT_Gedcom_Tag::getLabelValue('PUBL', $publ->getValue());
 				}
@@ -688,7 +688,7 @@ function print_main_sources(WT_Fact $fact, $level) {
 			if ($source) {
 				echo '<a href="', $source->getHtmlUrl(), '">', $source->getFullName(), '</a>';
 				// PUBL
-				$publ = $source->getFactByType('PUBL');
+				$publ = $source->getFirstFact('PUBL');
 				if ($publ) {
 					echo WT_Gedcom_Tag::getLabelValue('PUBL', $publ->getValue());
 				}

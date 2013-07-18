@@ -2676,7 +2676,7 @@ function AgeAtDeathSHandler() {
 		// Can't use getDeathDate(), as this also gives BURI/CREM events, which
 		// wouldn't give the correct "days after death" result for people with
 		// no DEAT.
-		$death_event=$person->getFactByType('DEAT');
+		$death_event=$person->getFirstFact('DEAT');
 		if ($death_event) {
 			$death_date=$death_event->getDate();
 		} else {
@@ -3243,8 +3243,8 @@ function ListSHandler($attrs) {
 			break;
 		case "CHAN":
 			uasort($list, function($x, $y) {
-				$f1 = $x->getFactByType('CHAN');
-				$f2 = $y->getFactByType('CHAN');
+				$f1 = $x->getFirstFact('CHAN');
+				$f2 = $y->getFirstFact('CHAN');
 				if ($f1 && $f2) {
 					$d1 = $f1->getDate();
 					$d2 = $f2->getDate();

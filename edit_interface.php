@@ -2154,14 +2154,14 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 		$family = WT_Family::getInstance($famid);
 		if ($family) {
 			$father = $family->getHusband();
-			if ($father->getFactByType('NAME')) {
-				$father_name = $father->getFactByType('NAME')->getValue();
+			if ($father->getFirstFact('NAME')) {
+				$father_name = $father->getFirstFact('NAME')->getValue();
 			} else {
 				$father_name='';
 			}
 			$mother = $family->getWife();
-			if ($mother->getFactByType('NAME')) {
-				$mother_name = $mother->getFactByType('NAME')->getValue();
+			if ($mother->getFirstFact('NAME')) {
+				$mother_name = $mother->getFirstFact('NAME')->getValue();
 			} else {
 				$mother_name = '';
 			}
@@ -2170,8 +2170,8 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 			$father_name = '';
 		}
 		// We'll need the spouse/child's name to set the spouse/parent's surname
-		if ($person && $person->getFactByType('NAME')) {
-			$indi_name = $person->getFactByType('NAME')->getValue();
+		if ($person && $person->getFirstFact('NAME')) {
+			$indi_name = $person->getFirstFact('NAME')->getValue();
 		} else {
 			$indi_name = '';
 		}

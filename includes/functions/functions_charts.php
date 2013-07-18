@@ -329,8 +329,8 @@ function print_family_children(WT_Family $family, $childid = "", $sosa = 0, $lab
 					echo "<td class=\"details1\" valign=\"middle\" align=\"center\">";
 					$spouse = $famids[$f]->getSpouse($child);
 
-					$marr = $famids[$f]->getFactbyType('MARR');
-					$div  = $famids[$f]->getFactByType('DIV');
+					$marr = $famids[$f]->getFirstFact('MARR');
+					$div  = $famids[$f]->getFirstFact('DIV');
 					if ($marr && $marr->canShow()) {
 						// marriage date
 						echo $marr->getDate()->minDate()->Format('%Y');

@@ -176,7 +176,7 @@ class WT_Stats {
 		$source = '';
 
 		$head = WT_GedcomRecord::getInstance('HEAD');
-		$sour = $head->getFactByType('SOUR');
+		$sour = $head->getFirstFact('SOUR');
 		if ($sour) {
 			$source  = $sour->getValue();
 			$title   = $sour->getAttribute('NAME');
@@ -209,7 +209,7 @@ class WT_Stats {
 		global $DATE_FORMAT;
 
 		$head = WT_GedcomRecord::getInstance('HEAD');
-		$fact = $head->getFactByType('DATE');
+		$fact = $head->getFirstFact('DATE');
 		if ($fact) {
 			$date=new WT_Date($fact->getValue());
 			return $date->Display(false, $DATE_FORMAT); // Override $PUBLIC_DATE_FORMAT
@@ -833,7 +833,7 @@ class WT_Stats {
 				$result="<a href=\"".$record->getHtmlUrl()."\">".$record->getFullName()."</a>";
 				break;
 			case 'place':
-				$fact=WT_GedcomRecord::getInstance($row['d_gid'])->getFactByType($row['d_fact']);
+				$fact=WT_GedcomRecord::getInstance($row['d_gid'])->getFirstFact($row['d_fact']);
 				if ($fact) {
 					$result=format_fact_place($fact, true, true, true);
 				} else {
@@ -1773,7 +1773,7 @@ class WT_Stats {
 				$result="<a href=\"".$record->getHtmlUrl()."\">".$record->getFullName()."</a>";
 				break;
 			case 'place':
-				$fact=$record->getFactByType($row['fact']);
+				$fact=$record->getFirstFact($row['fact']);
 				if ($fact) {
 					$result=format_fact_place($fact, true, true, true);
 				} else {

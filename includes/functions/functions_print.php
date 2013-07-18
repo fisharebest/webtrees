@@ -186,7 +186,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	if ($show_full) {
 		foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
 			if (!in_array($birttag, $opt_tags)) {
-				$event = $person->getFactByType($birttag);
+				$event = $person->getFirstFact($birttag);
 				if ($event && ($event->getDate()->isOK() || $event->getPlace())) {
 					$BirthDeath .= $event->print_simple_fact(true);
 					break;
@@ -197,7 +197,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		// Show optional events (before death)
 		foreach ($opt_tags as $key=>$tag) {
 			if (!preg_match('/^('.WT_EVENTS_DEAT.')$/', $tag)) {
-				$event = $person->getFactByType($tag);
+				$event = $person->getFirstFact($tag);
 				if (!is_null($event)) {
 					$BirthDeath .= $event->print_simple_fact(true);
 					unset ($opt_tags[$key]);
@@ -207,7 +207,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	// Show DEAT or equivalent event
 	if ($show_full) {
 		foreach (explode('|', WT_EVENTS_DEAT) as $deattag) {
-			$event = $person->getFactByType($deattag);
+			$event = $person->getFirstFact($deattag);
 			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace() || $event->getValue()=='Y')) {
 				$BirthDeath .= $event->print_simple_fact(true);
 				if (in_array($deattag, $opt_tags)) {
@@ -219,7 +219,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	}
 	// Show remaining optional events (after death)
 	foreach ($opt_tags as $tag) {
-		$event = $person->getFactByType($tag);
+		$event = $person->getFirstFact($tag);
 		if ($event) {
 			$BirthDeath .= $event->print_simple_fact(true);
 		}
@@ -228,7 +228,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$opt_tags=preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
 	foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
 		if (!in_array($birttag, $opt_tags)) {
-			$event = $person->getFactByType($birttag);
+			$event = $person->getFirstFact($birttag);
 			if ($event && ($event->getDate()->isOK() || $event->getPlace())) {
 				$tmp=new WT_Place($event->getPlace(), WT_GED_ID);
 				$birthplace .= $tmp->getShortName();
@@ -793,7 +793,7 @@ function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false
 				// Can't use getDeathDate(), as this also gives BURI/CREM events, which
 				// wouldn't give the correct "days after death" result for people with
 				// no DEAT.
-				$death_event=$record->getFactByType('DEAT');
+				$death_event=$record->getFirstFact('DEAT');
 				if ($death_event) {
 					$death_date=$death_event->getDate();
 				} else {
