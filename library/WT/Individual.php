@@ -951,7 +951,7 @@ class WT_Individual extends WT_GedcomRecord {
 	function getStepFamilyLabel(WT_Family $family) {
 		foreach ($this->getChildFamilies() as $fam) {
 			if ($fam !== $family) {
-				if ((is_null($fam->getHusband()) || $fam->getHusband() !== $family->getHusband()) && (is_null($fam->getWife()) || $fam->getWife() == $family->getWife())) {
+				if ((is_null($fam->getHusband()) || $fam->getHusband() !== $family->getHusband()) && (is_null($fam->getWife()) || $fam->getWife() === $family->getWife())) {
 					if ($family->getHusband()) {
 						if ($family->getWife()->getSex()=='F') {
 							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Mother’s family with %s', $family->getHusband()->getFullName());
