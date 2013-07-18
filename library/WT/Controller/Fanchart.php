@@ -335,7 +335,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 							$html.= '<br><span class="name1">'.WT_I18N::translate('Sibling').'</span>';
 						}
 						foreach ($children as $sibling) {
-							if ($sibling == $person) {
+							if ($sibling === $person) {
 								$html.= '<br>&nbsp;&nbsp;<a href="'.$sibling->getHtmlUrl().'" class="name1"> '.$sibling->getFullName().'</a>';
 							}
 						}

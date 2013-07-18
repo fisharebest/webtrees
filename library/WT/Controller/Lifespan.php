@@ -221,7 +221,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 						$this->pids[]=$parent->getXref();
 					}
 					foreach ($family->getChildren() as $sibling) {
-						if ($person != $sibling) {
+						if ($person !== $sibling) {
 							$this->pids[]=$sibling->getXref();
 						}
 					}

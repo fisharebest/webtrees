@@ -126,7 +126,7 @@ class WT_Family extends WT_GedcomRecord {
 	// Find the spouse of a person - or create a dummy person if this family
 	// record is missing one of the spouses.
 	function getSpouse(WT_Individual $person, $access_level=WT_USER_ACCESS_LEVEL) {
-		if ($person == $this->getWife()) {
+		if ($person === $this->getWife()) {
 			return $this->getHusband();
 		} else {
 			return $this->getWife();

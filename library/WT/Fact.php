@@ -342,7 +342,7 @@ class WT_Fact {
 		// Facts from same families stay grouped together
 		// Keep MARR and DIV from the same families from mixing with events from other FAMs
 		// Use the original order in which the facts were added
-		if ($a->parent instanceof WT_Family && $b->parent instanceof WT_Family && $a->parent != $b->parent) {
+		if ($a->parent instanceof WT_Family && $b->parent instanceof WT_Family && $a->parent !== $b->parent) {
 			return $a->sortOrder - $b->sortOrder;
 		}
 
