@@ -860,18 +860,16 @@ class WT_Stats {
 			}
 			$placelist = array();
 			foreach ($rows as $row) {
-				if (preg_match('/\n1 {$fact}(?:\n[2-9].*)*\n2 PLAC (.+)}/', $row->ged, $match)) {
+				if (preg_match('/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC (.+)/', $row->ged, $match)) {
 					if ($country) {
 						$tmp=explode(WT_Place::GEDCOM_SEPARATOR, $match[1]);
 						$place = end($tmp);
-					}
-					else {
+					} else {
 						$place = $match[1];
 					}
 					if (!isset($placelist[$place])) {
 						$placelist[$place] = 1;
-					}
-					else {
+					} else {
 						$placelist[$place] ++;
 					}
 				}
