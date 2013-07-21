@@ -57,7 +57,7 @@ html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[
 
 
 /* Title Line    */
-#header {height:49px;}
+#header {height:50px;}
 span.title {float:left;font-size:24px; margin:16px 0px 3px 12px;}
 html[dir=rtl] span.title {float:right;margin:16px 12px 3px 3px;}
 
