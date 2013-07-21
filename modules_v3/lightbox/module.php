@@ -68,7 +68,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
 			foreach ($matches[1] as $match) {
 				$media = WT_Media::getInstance($match);
-				if ($media->canShow()) {
+				if ($media && $media->canShow()) {
 					$media_list[] = array('fact' => $fact, 'media' => $media);
 				}
 			}
