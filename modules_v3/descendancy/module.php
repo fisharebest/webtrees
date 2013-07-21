@@ -70,12 +70,15 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$pid   =safe_GET('pid', WT_REGEX_XREF);
 		$famid =safe_GET('famid', WT_REGEX_XREF);
 
+		$individual = WT_Individual::getInstance($pid);
+		$family     = WT_Family::getInstance($famid);
+
 		if ($search) {
 			return $this->search($search);
-		} elseif ($pid) {
-			return $this->loadSpouses($pid, 1);
-		} elseif ($famid) {
-			return $this->loadChildren($famid, 1);
+		} elseif ($individual) {
+			return $this->loadSpouses($individual, 1);
+		} elseif ($family) {
+			return $this->loadChildren($family, 1);
 		} else {
 			return '';
 		}
@@ -89,7 +92,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			var dloadedNames = new Array();
 
 			function dsearchQ() {
-				var query = jQuery("#sb_desc_name").attr("value");
+				var query = jQuery("#sb_desc_name").val();
 				if (query.length>1) {
 					jQuery("#sb_desc_content").load("module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=descendancy&search="+query);
 				}
@@ -146,9 +149,9 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out .= '</a> <a href="'.$person->getHtmlUrl().'" class="icon-button_indi"></a>';
 		if ($generations>0) {
 			$out .= '<div class="desc_tree_div_visible">';
-			$out .= $this->loadSpouses($person->getXref());
+			$out .= $this->loadSpouses($person, 0);
 			$out .= '</div>';
-			$base_controller=new WT_Controller_Base();
+			$base_controller = new WT_Controller_Base();
 			$base_controller->addInlineJavascript('dloadedNames["'.$person->getXref().'"]=2;');
 		} else {
 			$out .= '<div class="desc_tree_div">';
@@ -170,7 +173,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out .= '</a> <a href="'.$person->getHtmlUrl().'" class="icon-button_indi"></a>';
 		$out .= '<a href="'.$family->getHtmlUrl().'" class="icon-button_family"></a>';
 		$out .= '<div class="desc_tree_div_visible">';
-		$out .= $this->loadChildren($family->getXref(), $generations);
+		$out .= $this->loadChildren($family, $generations);
 		$out .= '</div>';
 		$base_controller=new WT_Controller_Base();
 		$base_controller->addInlineJavascript('dloadedNames["'.$family->getXref().'"]=2;');
@@ -180,8 +183,8 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	public function search($query) {
 		if (strlen($query)<2) return '';
-		$rows=WT_DB::prepare(
-			"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
+		$rows = WT_DB::prepare(
+			"SELECT i_id AS xref".
 			" FROM `##individuals`, `##name`".
 			" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".
@@ -192,40 +195,38 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		$out = '';
 		foreach ($rows as $row) {
-			$person=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$person = WT_Individual::getInstance($row->xref);
 			if ($person->canShowName()) {
 				$out .= $this->getPersonLi($person);
 			}
 		}
 		if ($out) {
-			return '<ul>'.$out.'</ul>';
+			return '<ul>' . $out . '</ul>';
 		} else {
 			return '';
 		}
 	}
 
-	public function loadSpouses($pid, $generations=0) {
+	public function loadSpouses(WT_Individual $person, $generations) {
 		$out = '';
-		$person = WT_Individual::getInstance($pid);
 		if ($person && $person->canShow()) {
 			foreach($person->getSpouseFamilies() as $family) {
 				$out .= $this->getFamilyLi($family, $family->getSpouse($person), $generations-1);
 			}
 		}
 		if ($out) {
-			return '<ul>'.$out.'</ul>';
+			return '<ul>' . $out . '</ul>';
 		} else {
 			return '';
 		}
 	}
 
-	public function loadChildren($famid, $generations=0) {
+	public function loadChildren(WT_Family $family, $generations) {
 		$out = '';
-		$family = WT_Family::getInstance($famid);
 		if ($family->canShow()) {
 			$children = $family->getChildren();
-			if (count($children)>0) {
-				foreach($children as $child) {
+			if ($children) {
+				foreach ($children as $child) {
 					$out .= $this->getPersonLi($child, $generations-1);
 				}
 			} else {
@@ -233,7 +234,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 		if ($out) {
-			return '<ul>'.$out.'</ul>';
+			return '<ul>' . $out . '</ul>';
 		} else {
 			return '';
 		}
