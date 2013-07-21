@@ -414,21 +414,22 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	private static function historical_facts(WT_Individual $person) {
 		global $SHOW_RELATIVES_EVENTS;
-		if (!$SHOW_RELATIVES_EVENTS) return;
 
 		$facts = array();
 
-		// Only include events between birth and death
-		$birt_date = $person->getEstimatedBirthDate();
-		$deat_date = $person->getEstimatedDeathDate();
-
-		if (file_exists(WT_Site::preference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
-			require WT_Site::preference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
-			foreach ($histo as $hist) {
-				$fact = new WT_Fact($hist, $person, 'histo');
-				$sdate = $fact->getDate();
-				if ($sdate->isOK() && WT_Date::Compare($birt_date, $sdate)<=0 && WT_Date::Compare($sdate, $deat_date)<=0) {
-					$facts[] = $fact;
+		if ($SHOW_RELATIVES_EVENTS) {
+			// Only include events between birth and death
+			$birt_date = $person->getEstimatedBirthDate();
+			$deat_date = $person->getEstimatedDeathDate();
+	
+			if (file_exists(WT_Site::preference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
+				require WT_Site::preference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
+				foreach ($histo as $hist) {
+					$fact = new WT_Fact($hist, $person, 'histo');
+					$sdate = $fact->getDate();
+					if ($sdate->isOK() && WT_Date::Compare($birt_date, $sdate)<=0 && WT_Date::Compare($sdate, $deat_date)<=0) {
+						$facts[] = $fact;
+					}
 				}
 			}
 		}
