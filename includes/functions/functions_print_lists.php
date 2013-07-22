@@ -645,18 +645,7 @@ function format_fam_table($datalist, $option='') {
 	$html .= '<tbody>';
 	$num = 0;
 	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
-	foreach ($datalist as $key => $value) {
-		if (is_object($value)) { // Array of objects
-			$family=$value;
-		} elseif (!is_array($value)) { // Array of IDs
-			$family=WT_Family::getInstance($value);
-		} else { // Array of search results
-			$gid = "";
-			if (isset($value['gid'])) $gid = $value['gid'];
-			if (isset($value['gedcom'])) $family = new WT_Family($value['gedcom']);
-			else $family = WT_Family::getInstance($gid);
-		}
-		if (is_null($family)) continue;
+	foreach ($datalist as $family) {
 		//-- Retrieve husband and wife
 		$husb = $family->getHusband();
 		if (is_null($husb)) $husb = new WT_Individual('H', '0 @H@ INDI', null, WT_GED_ID);
