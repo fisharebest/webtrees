@@ -409,7 +409,7 @@ class WT_Date_Calendar {
 
 	// Functions to extract bits of the date in various formats.  Individual calendars
 	// will want to redefine some of these.
-	private function FormatDayZeros() {
+	protected function FormatDayZeros() {
 		if ($this->d>9) {
 			return WT_I18N::digits($this->d);
 		} else {
@@ -417,23 +417,23 @@ class WT_Date_Calendar {
 		}
 	}
 
-	private function FormatDay() {
+	protected function FormatDay() {
 		return WT_I18N::digits($this->d);
 	}
 
-	private function FormatLongWeekday() {
+	protected function FormatLongWeekday() {
 		return $this->LONG_DAYS_OF_WEEK($this->minJD % static::DAYS_IN_WEEK);
 	}
 
-	private function FormatShortWeekday() {
+	protected function FormatShortWeekday() {
 		return $this->SHORT_DAYS_OF_WEEK($this->minJD % static::DAYS_IN_WEEK);
 	}
 
-	private function FormatISOWeekday() {
+	protected function FormatISOWeekday() {
 		return WT_I18N::digits($this->minJD % 7 + 1);
 	}
 
-	private function FormatOrdinalSuffix() {
+	protected function FormatOrdinalSuffix() {
 		$func="ordinal_suffix_".WT_LOCALE;
 		if (function_exists($func))
 			return $func($this->d);
@@ -441,19 +441,19 @@ class WT_Date_Calendar {
 			return '';
 	}
 
-	private function FormatNumericWeekday() {
+	protected function FormatNumericWeekday() {
 		return WT_I18N::digits(($this->minJD + 1) % static::DAYS_IN_WEEK);
 	}
 
-	private function FormatDayOfYear() {
+	protected function FormatDayOfYear() {
 		return WT_I18N::digits($this->minJD - $this->YMDtoJD($this->y, 1, 1));
 	}
 
-	private function FormatMonth() {
+	protected function FormatMonth() {
 		return WT_I18N::digits($this->m);
 	}
 
-	private function FormatMonthZeros() {
+	protected function FormatMonthZeros() {
 		if ($this->m>9) {
 			return WT_I18N::digits($this->m);
 		} else {
@@ -461,7 +461,7 @@ class WT_Date_Calendar {
 		}
 	}
 
-	private function FormatLongMonth($case='NOMINATIVE') {
+	protected function FormatLongMonth($case='NOMINATIVE') {
 		switch ($case) {
 		case 'GENITIVE':     return $this->NUM_TO_MONTH_GENITIVE    ($this->m, $this->IsLeapYear());
 		case 'NOMINATIVE':   return $this->NUM_TO_MONTH_NOMINATIVE  ($this->m, $this->IsLeapYear());
@@ -470,17 +470,17 @@ class WT_Date_Calendar {
 		}
 	}
 
-	private function FormatShortMonth() {
+	protected function FormatShortMonth() {
 		return $this->NUM_TO_SHORT_MONTH($this->m, $this->IsLeapYear());
 	}
 
 	// NOTE Short year is NOT a 2-digit year.  It is for calendars such as hebrew
 	// which have a 3-digit form of 4-digit years.
-	private function FormatShortYear() {
+	protected function FormatShortYear() {
 		return WT_I18N::digits($this->y);
 	}
 
-	private function FormatGedcomDay() {
+	protected function FormatGedcomDay() {
 		if ($this->d==0) {
 			return '';
 		} else {
@@ -488,11 +488,11 @@ class WT_Date_Calendar {
 		}
 	}
 
-	private function FormatGedcomMonth() {
+	protected function FormatGedcomMonth() {
 		return array_search($this->m, static::$MONTH_ABBREV);
 	}
 
-	private function FormatGedcomYear() {
+	protected function FormatGedcomYear() {
 		if ($this->y==0) {
 			return '';
 		} else {
@@ -500,12 +500,12 @@ class WT_Date_Calendar {
 		}
 	}
 
-	private function FormatLongYear() {
+	protected function FormatLongYear() {
 		return WT_I18N::digits($this->y);
 	}
 
 	// Calendars with leap-months should redefine this.
-	private function NextMonth() {
+	protected function NextMonth() {
 		return array(
 			$this->m==static::MONTHS_IN_YEAR ? $this->NextYear($this->y) : $this->y,
 			($this->m % static::MONTHS_IN_YEAR)+1
@@ -526,7 +526,7 @@ class WT_Date_Calendar {
 	}
 
 	// Convert a roman numeral to decimal
-	private static function RomanToNum($roman) {
+	protected static function RomanToNum($roman) {
 		static $lookup=array(1000=>'M', '900'=>'CM', '500'=>'D', 400=>'CD', 100=>'C', 90=>'XC', 50=>'L', 40=>'XL', 10=>'X', 9=>'IX', 5=>'V', 4=>'IV', 1=>'I');
 		$num=0;
 		foreach ($lookup as $key=>$value)

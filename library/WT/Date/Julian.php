@@ -73,24 +73,26 @@ class WT_Date_Julian extends WT_Date_Calendar {
 		$day=$e-(int)((153*$m+2)/5)+1;
 		$month=$m+3-12*(int)($m/10);
 		$year=$d-4800+(int)($m/10);
-		if ($year<1) // 0=1BC, -1=2BC, etc.
-		--$year;
+		if ($year<1) {
+			// 0=1BC, -1=2BC, etc.
+			--$year;
+		}
 		return array($year, $month, $day);
 	}
 
 	// Process new-style/old-style years and years BC
-	function ExtractYear($year) {
-		if (preg_match('/^(\d\d\d\d) \/ \d{1,4}$/', $year, $match)) { // Assume the first year is correct
+	public function ExtractYear($year) {
+		if (preg_match('/^(\d\d\d\d)\/\d{1,4}$/', $year, $match)) { // Assume the first year is correct
 			$this->new_old_style=true;
 			return $match[1]+1;
 		} else
-			if (preg_match('/^(\d+) b ?c$/', $year, $match))
+			if (preg_match('/^(\d+) B\.C\.$/', $year, $match))
 				return -$match[1];
 			else
 				return (int)$year;
 	}
 
-	function FormatLongYear() {
+	protected function FormatLongYear() {
 		if ($this->y<0) {
 			return /*  I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */ WT_I18N::translate('%s&nbsp;BCE', WT_I18N::digits(-$this->y));
 		} else {
@@ -101,9 +103,9 @@ class WT_Date_Julian extends WT_Date_Calendar {
 		}
 	}
 
-	function FormatGedcomYear() {
+	protected function FormatGedcomYear() {
 		if ($this->y<0) {
-			return sprintf('%04dB.C.', -$this->y);
+			return sprintf('%04d B.C.', -$this->y);
 		} else {
 			if ($this->new_old_style) {
 				return sprintf('%04d/%02d', $this->y-1, $this->y % 100);

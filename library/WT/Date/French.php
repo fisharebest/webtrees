@@ -156,7 +156,7 @@ class WT_Date_French extends WT_Date_Calendar {
 	}
 
 	// Years were written using roman numerals
-	function FormatLongYear() {
+	protected function FormatLongYear() {
 		return $this->NumToRoman($this->y);
 	}
 }

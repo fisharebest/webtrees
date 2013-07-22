@@ -34,9 +34,9 @@ $controller->setPageTitle(WT_I18N::translate('Anniversary calendar'));
 $controller->pageHeader();
 
 $cal     =safe_GET('cal',      '@#D[A-Z ]+@');
-$day     =safe_GET('day',      '[0-9]+');
+$day     =safe_GET('day',      '\d\d?');
 $month   =safe_GET('month',    '[A-Z]{3,5}');
-$year    =safe_GET('year',     '[0-9]+(-[0-9]+|[?]+)?');
+$year    =safe_GET('year',     '\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d|\d+(-\d+|[?]+)?');
 $action  =safe_GET('action',   array('year', 'today', 'calendar'), 'today');
 $filterev=safe_GET('filterev', array('all', 'bdm', WT_REGEX_TAG), 'bdm');
 $filterof=safe_GET('filterof', array('all', 'living', 'recent'), 'all');
@@ -54,13 +54,19 @@ if ($cal.$day.$month.$year=='') {
 
 // Create a WT_Date_Calendar from the parameters
 
+// We cannot display new-style/old-style years, so convert to new style
+if (preg_match('/^(\d\d)\d\d\/(\d\d)$/', $year, $match)) {
+	$year=$match[1].$match[2];
+}
+
 // advance-year "year range"
 if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
-	if (strlen($match[1]) > strlen($match[2]))
+	if (strlen($match[1]) > strlen($match[2])) {
 		$match[2]=substr($match[1], 0, strlen($match[1])-strlen($match[2])).$match[2];
+	}
 	$ged_date=new WT_Date("FROM {$cal} {$match[1]} TO {$cal} {$match[2]}");
 	$action='year';
-} else
+} else {
 	// advanced-year "decade/century wildcard"
 	if (preg_match('/^(\d+)(\?+)$/', $year, $match)) {
 		$y1=$match[1].str_replace('?', '0', $match[2]);
@@ -69,10 +75,11 @@ if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
 		$action='year';
 	} else {
 		if ($year<0)
-			$year=(-$year)."B.C."; // need BC to parse date
+			$year=(-$year)." B.C."; // need BC to parse date
 		$ged_date=new WT_Date("{$cal} {$day} {$month} {$year}");
 		$year=$ged_date->date1->y; // need negative year for year entry field.
 	}
+}
 $cal_date=&$ged_date->date1;
 
 // Invalid month?  Pick a sensible one.
