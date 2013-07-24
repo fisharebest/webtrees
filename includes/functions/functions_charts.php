@@ -336,7 +336,7 @@ function print_family_children(WT_Family $family, $childid = "", $sosa = 0, $lab
 						echo $marr->getDate()->minDate()->Format('%Y');
 						// divorce date
 						if ($div && $div->canShow()) {
-							echo $div->getDate()->minDate()->Format('%Y');
+							echo '–', $div->getDate()->minDate()->Format('%Y');
 						}
 					}
 					echo "<br><img width=\"100%\" class=\"line5\" height=\"3\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\">";
