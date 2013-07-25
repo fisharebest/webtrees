@@ -268,11 +268,9 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 
 	if ($sosa==0 && WT_USER_CAN_EDIT) {
 		echo '<br>';
-		echo '<span class="nowrap font12">';
 		echo "<a href=\"#\" onclick=\"return addnewchild('$famid','');\">" . WT_I18N::translate('Add a child to this family') . "</a>";
 		echo ' <a class="icon-sex_m_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'M\');" title="',WT_I18N::translate('son'), '"></a>';
 		echo ' <a class="icon-sex_f_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'F\');" title="',WT_I18N::translate('daughter'), '"></a>';
-		echo '</span>';
 		echo '<br><br>';
 	}
 	echo '</td>';
