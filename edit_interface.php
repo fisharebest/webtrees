@@ -834,9 +834,9 @@ case 'addnoteaction_assisted':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addmedia_links':
-	$xref = safe_GET('xref', WT_REGEX_XREF);
+	$pid = safe_GET('pid', WT_REGEX_XREF);
 
-	$person = WT_Source::getInstance($xref);
+	$person = WT_Individual::getInstance($pid);
 	check_record_access($person);
 
 	$controller
