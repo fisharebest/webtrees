@@ -174,13 +174,13 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Extra facts to be shown on this tabparent
 	private static function spouse_facts(WT_Individual $person, WT_Individual $spouse) {
-		global $SHOW_RELATIVES_EVENTS;
+		global $controller, $SHOW_RELATIVES_EVENTS;
 
 		$facts = array();
 		if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
 			// Only include events between birth and death
-			$birt_date = $person->getEstimatedBirthDate();
-			$deat_date = $person->getEstimatedDeathDate();
+			$birt_date = $controller->record->getEstimatedBirthDate();
+			$deat_date = $controller->record->getEstimatedDeathDate();
 
 			foreach ($spouse->getFacts(WT_EVENTS_DEAT) as $fact) {
 
@@ -198,13 +198,13 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 
 	private static function child_facts(WT_Individual $person, WT_Family $family, $option, $relation) {
-		global $SHOW_RELATIVES_EVENTS;
+		global $controller, $SHOW_RELATIVES_EVENTS;
 
 		$facts = array();
 
 		// Only include events between birth and death
-		$birt_date = $person->getEstimatedBirthDate();
-		$deat_date = $person->getEstimatedDeathDate();
+		$birt_date = $controller->record->getEstimatedBirthDate();
+		$deat_date = $controller->record->getEstimatedDeathDate();
 
 		// Deal with recursion.
 		switch ($option) {
@@ -322,13 +322,13 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 
 	private static function parent_facts(WT_Individual $person, $sosa) {
-		global $SHOW_RELATIVES_EVENTS;
+		global $controller, $SHOW_RELATIVES_EVENTS;
 
 		$facts = array();
 
 		// Only include events between birth and death
-		$birt_date = $person->getEstimatedBirthDate();
-		$deat_date = $person->getEstimatedDeathDate();
+		$birt_date = $controller->record->getEstimatedBirthDate();
+		$deat_date = $controller->record->getEstimatedDeathDate();
 
 		if ($sosa == 1) {
 			foreach ($person->getChildFamilies() as $family) {
