@@ -170,10 +170,10 @@ class WT_Place {
 				" LEFT JOIN `##places` AS p7 ON (p6.p_parent_id=p7.p_id)".
 				" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)".
 				" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)".
-				" WHERE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) LIKE CONCAT('%', ?, '%') AND CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) NOT LIKE CONCAT('%,%', ?, '%') AND p1.p_file=?".
+				" WHERE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) LIKE CONCAT('%', ?, '%') AND CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) REGEXP CONCAT('^[^,]*', ?) AND p1.p_file=?".
 				" ORDER BY  CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) COLLATE '".WT_I18N::$collation."'"
 			)
-			->execute(array($filter, $filter, $gedcom_id))
+			->execute(array($filter, preg_quote($filter), $gedcom_id))
 			->fetchOneColumn();
 		foreach ($rows as $row) {
 			$places[]=new WT_Place($row, $gedcom_id);
