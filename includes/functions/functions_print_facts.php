@@ -91,7 +91,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	}
 
 	// Event of close relative
-	if (preg_match('/^_[A-Z_]{4,5}_[A-Z0-9]{4}$/', $fact->getTag())) {
+	if (preg_match('/^_[A-Z_]{3,5}_[A-Z0-9]{4}$/', $fact->getTag())) {
 		$styleadd = trim($styleadd . ' rela');
 	}
 
