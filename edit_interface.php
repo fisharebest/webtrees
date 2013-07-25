@@ -1657,10 +1657,10 @@ case 'changefamily':
 		->pageHeader()
 		->addInlineJavascript('
 				function pastename(name) {
-					if (nameElement) {
+					if (typeof(nameElement) != "undefined") {
 						nameElement.innerHTML = name;
 					}
-					if (remElement) {
+					if (typeof(remElement) != "undefined") {
 						remElement.style.display = "block";
 					}
 				}
