@@ -973,7 +973,6 @@ class WT_Stats {
 				if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcom(), $matches)) {
 					// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 					foreach ($matches[1] as $country) {
-						$country=trim($country);
 						if (array_key_exists($country, $country_to_iso3166)) {
 							if (array_key_exists($country_to_iso3166[$country], $surn_countries)) {
 								$surn_countries[$country_to_iso3166[$country]]++;
@@ -991,7 +990,7 @@ class WT_Stats {
 			$surn_countries=array();
 			$b_countries=$this->_statsPlaces('INDI', 'BIRT', 0, true);
 			foreach ($b_countries as $place=>$count) {
-				$country=$place;
+				$country = $place;
 				if (array_key_exists($country, $country_to_iso3166)) {
 					if (!isset($surn_countries[$country_to_iso3166[$country]])) {
 						$surn_countries[$country_to_iso3166[$country]]=$count;
@@ -1008,7 +1007,7 @@ class WT_Stats {
 			$surn_countries=array();
 			$d_countries=$this->_statsPlaces('INDI', 'DEAT', 0, true);
 			foreach ($d_countries as $place=>$count) {
-				$country=$place;
+				$country = $place;
 				if (array_key_exists($country, $country_to_iso3166)) {
 					if (!isset($surn_countries[$country_to_iso3166[$country]])) {
 						$surn_countries[$country_to_iso3166[$country]]=$count;
@@ -1026,11 +1025,13 @@ class WT_Stats {
 			$m_countries=$this->_statsPlaces('FAM');
 			// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 			foreach ($m_countries as $place) {
-				$country=trim($place['country']);
-				if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-					$surn_countries[$country_to_iso3166[$country]]=$place['tot'];
-				} else {
-					$surn_countries[$country_to_iso3166[$country]]+=$place['tot'];
+				$country = $place['country'];
+				if (array_key_exists($country, $country_to_iso3166)) {
+					if (!isset($surn_countries[$country_to_iso3166[$country]])) {
+						$surn_countries[$country_to_iso3166[$country]]=$place['tot'];
+					} else {
+						$surn_countries[$country_to_iso3166[$country]]+=$place['tot'];
+					}
 				}
 			}
 			break;
@@ -1042,7 +1043,7 @@ class WT_Stats {
 			$a_countries=$this->_statsPlaces('INDI');
 			// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 			foreach ($a_countries as $place) {
-				$country=trim($place['country']);
+				$country = $place['country'];
 				if (array_key_exists($country, $country_to_iso3166)) {
 					if (!isset($surn_countries[$country_to_iso3166[$country]])) {
 						$surn_countries[$country_to_iso3166[$country]]=$place['tot'];
