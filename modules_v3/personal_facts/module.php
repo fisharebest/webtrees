@@ -468,7 +468,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 					} else {
 						$factrec.="\n2 _ASSO @".$associate->getXref().'@';
 						// CHR/BAPM events are commonly used.  Generate the reverse relationship
-						if (preg_match('/^(?:BAPM|CHR)$/', $fact->getTag()) && preg_match('/3 RELA god(?:parent|mother|father)/', $fact->getGedcom())) {
+						if (preg_match('/^(?:BAPM|CHR)$/', $fact->getTag()) && preg_match('/2 _?ASSO @('.$person->getXref().')@\n3 RELA god(?:parent|mother|father)/', $fact->getGedcom())) {
 							switch ($associate->getSex()) {
 							case 'M':
 								$factrec.="\n3 RELA godson";
