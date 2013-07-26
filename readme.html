@@ -46,7 +46,7 @@
 <!-- LICENSE -->
 <div style="float:left;"><a name="licence"><h3>LICENSE</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
  * <b>webtrees: Web based Family History software</b><br>
- * Copyright (C) 2012 webtrees development team.<br>
+ * Copyright (C) 2013 webtrees development team.<br>
  *<br>
  * Derived from PhpGedView - Copyright (C) 2002 to 2010  PGV Development Team.<br>
  * <br>
@@ -89,20 +89,20 @@ To install <b>webtrees</b>, you need:
 			</ul>
 	</ul>
 	<li>MySQL 5.0.13 or later. Note that <b>webtrees</b> can share a single database with other applications, by choosing a unique table prefix during configuration. If the number of databases is not restricted, you can set up a database purely for use by <b>webtrees</b> and create a separate user and password for only your genealogy.</li>
-	<li>Internet browser compatability. <b>webtrees</b> supports the use of most current versions of open-source browsers such as Firefox, Chrome, and Safari. We will do our best to support others such as Opera and Internet Explorer, though not their earlier versions. Currently many things do not work well in IE6, and some not in IE7 either. We strongly recommend anyone using these obsolete browsers upgrade as soon as possible. We are also aware that IE and Opera browsers provide poor RTL language support generally, so cannot recommend those for sites requiring RTL languages.</li>
+	<li>Internet browser compatability. <b>webtrees</b> supports the use of most current versions of open-source browsers such as Firefox, Chrome, and Safari. We will do our best to support others such as Opera and Internet Explorer, though not their earlier versions. Currently many things do not work well in IE7, and some not in IE8 either. We strongly recommend anyone using these obsolete browsers upgrade as soon as possible. We are also aware that IE and Opera browsers provide poor RTL language support generally, so cannot recommend those for sites requiring RTL languages.</li>
 	<li>To view sites that contain both left-to-right and right-to-left text (e.g. English data on Hebrew pages), you will need to use a browser that provides support for the HTML5 dir="auto" attribute. At present, only browsers based on the WebKit engine (Chrome and Safari) have this. The Gecko (Firefox) and Presto (Opera) engines promise to provide this soon.</li>
 	<li>HTML Frames. Note that <b>webtrees</b> uses cookies to track login sessions. Sites that make <b>webtrees</b> pages available inside an HTML Frames will encounter problems with login for versions 7, 8, and 9 of Internet Explorer. IE users should review the Privacy settings Tools / Internet Options for more details.</li>
 	</ul>
 <hr width="100%">
 <!-- INSTALLATION -->
 <div style="float:left;"><a name="install"><h3>INSTALLATION</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
-Installing <b>webtrees</b> is really easy. All you need is a webserver with PHP and MySQL. Almost every web hosting service provides these.
+Installing <b>webtrees</b> is really easy. All you need is a webserver with PHP and MySQL. Almost every web hosting service provides these, but be sure to confirm that those supplied meet or exceed the minimum system requirements.
 <br><br>
 <ol>
-	<li>Download the latest version of <b>webtrees</b> available from <a href="http://launchpad.net/webtrees">http://launchpad.net/webtrees</a></li>
+	<li>Download <b>webtrees-1.3.2.zip</b> from <a href="https://launchpad.net/webtrees">http://launchpad.net/webtrees</a></li>
 	<li>Unzip the files and upload them to an empty directory on your web server.</li>
 	<li>Open your web browser and type the URL for your <b>webtrees</b> site (for example, http://www.yourserver.com/webtrees) into the address bar.</li>
-	<li>The <b>webtrees</b> setup wizard will start automatically. This will ask you a few questions about your server, and then generate a configuration file for you. At the end of the setup you will be asked to upload the configuration file to the webserver. This is a security check to make sure only the site owner can configure it.</li>
+	<li>The <b>webtrees</b> setup wizard will start automatically. Simply follow the steps, answering each question as you proceed. (See '''Step Six''' procedure below.)</li>
 </ol>
 <p>That's it!</p>
 <p>However, before you can use <b>webtrees</b>, you need one (or possibly more) GEDCOM (family tree) files. If you have been doing your research using a desktop program such as Family Tree Maker, you can use it's "save as GEDCOM" function to create a GEDCOM file. If you are starting from scratch, then <b>webtrees</b> can create a GEDCOM file for you. Alternatively, you can import data directly from PhpGedView.
