@@ -863,19 +863,34 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		switch ($fact) {
 		case 'ASSO':
 		case 'ASSO':
-			echo ' ', WT_Individual::getInstance($value)->getFullname();
+			$tmp = WT_Individual::getInstance($value);
+			if ($tmp) {
+				echo ' ', $tmp->getFullname();
+			}
 			break;
 		case 'SOUR':
-			echo ' ', WT_Source::getInstance($value)->getFullname();
+			$tmp = WT_Source::getInstance($value);
+			if ($tmp) {
+				echo ' ', $tmp->getFullname();
+			}
 			break;
 		case 'NOTE':
-			echo ' ', WT_Note::getInstance($value)->getFullname();
+			$tmp = WT_Note::getInstance($value);
+			if ($tmp) {
+				echo ' ', $tmp->getFullname();
+			}
 			break;
 		case 'OBJE':
-			echo ' ', WT_Media::getInstance($value)->getFullname();
+			$tmp = WT_Media::getInstance($value);
+			if ($tmp) {
+				echo ' ', $tmp->getFullname();
+			}
 			break;
 		case 'REPO':
-			echo ' ', WT_Repository::getInstance($value)->getFullname();
+			$tmp = WT_Repository::getInstance($value);
+			if ($tmp) {
+				echo ' ', $tmp->getFullname();
+			}
 			break;
 		}
 	}
