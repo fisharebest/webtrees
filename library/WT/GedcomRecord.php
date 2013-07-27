@@ -855,7 +855,7 @@ class WT_GedcomRecord {
 			$gedcom_id,
 			$xref,
 			$gedcom,
-			$gedcom_id
+			WT_USER_ID
 		));
 
 		// Accept this pending change
