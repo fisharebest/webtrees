@@ -1004,6 +1004,18 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
+try {
+	echo '<p>pgv_placelocation => wt_placelocation ...</p>'; ob_flush(); flush(); usleep(50000);
+	WT_DB::prepare(
+		"REPLACE INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)".
+		" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `{$DBNAME}`.`{$TBLPREFIX}placelocation`"
+	)->execute();
+} catch (PDOexception $ex) {
+	// This table will only exist if the gm module is installed in PGV/WT
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 echo '<p>Genealogy records ...</p>'; ob_flush(); flush(); usleep(50000);
 
 WT_DB::prepare(
