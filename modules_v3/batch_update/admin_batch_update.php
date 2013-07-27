@@ -364,20 +364,8 @@ class base_plugin {
 
 	// Default previewer for plugins with no custom preview.
 	function getActionPreview(WT_GedcomRecord $record) {
-		$gedcom = "0 @" . $record->getXref() . "@ " . $record::RECORD_TYPE;
-		foreach ($record->getFacts() as $fact) {
-			if ($fact->isNew()) {
-				$gedcom .= "\n" . self::decorateInsertedText($fact->getGedcom());
-			} elseif ($fact->isOld()) {
-				$gedcom .= "\n" . self::decorateDeletedText($fact->getGedcom());
-			} else {
-				$gedcom .= "\n" . $fact->getGedcom();
-			}
-		}
-		return '<pre>'.self::createEditLinks($gedcom).'</pre>';
-		
-		$old_lines=preg_split('/[\n]+/', $gedrec);
-		$new_lines=preg_split('/[\n]+/', $this->updateRecord($xref, $gedrec));
+		$old_lines=preg_split('/[\n]+/', $record->getGedcom());
+		$new_lines=preg_split('/[\n]+/', $this->updateRecord($record->getXref(), $record->getGedcom()));
 		// Find matching lines using longest-common-subsequence algorithm.
 		$lcs=self::LCS($old_lines, $new_lines, 0, count($old_lines)-1, 0, count($new_lines)-1);
 
