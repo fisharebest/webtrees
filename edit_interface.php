@@ -430,8 +430,8 @@ case 'addspouse':
 	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
 	$xref   = safe_GET('xref', WT_REGEX_XREF);
 
-	$family = WT_Family::getInstance($xref);
-	check_record_access($family);
+	$individual = WT_Individual::getInstance($xref);
+	check_record_access($individual);
 
 	if ($famtag=='WIFE') {
 		$controller->setPageTitle(WT_I18N::translate('Add a new wife'));
@@ -440,7 +440,7 @@ case 'addspouse':
 	}
 	$controller->pageHeader();
 
-	print_indi_form('addspouseaction', null, $family, null, $famtag);
+	print_indi_form('addspouseaction', $individual, null, null, $famtag);
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1141,11 +1141,11 @@ case 'add_unlinked_indi_action':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addspouseaction':
-	$famid = safe_POST('famid', WT_REGEX_XREF); // Add a spouse to this family
+	$xref  = safe_POST('xref',  WT_REGEX_XREF); // Add a spouse to this individual
 	$sex   = safe_POST('SEX', '[MFU]');
 
-	$family = WT_Family::getInstance($famid);
-	check_record_access($family);
+	$person = WT_Individual::getInstance($xref);
+	check_record_access($person);
 	
 	$controller
 		->setPageTitle(WT_I18N::translate('Add a new spouse'))
@@ -1178,30 +1178,17 @@ case 'addspouseaction':
 		$fam_gedcom = updateRest($fam_gedcom);
 	}
 
-	if ($family) {
-		// Append to an existing family
-		$indi_gedcom .= "\n1 FAMS @" . $family->getXref() . '@';
-		// Create the new spouse
-		$spouse = WT_GedcomRecord::createRecord($indi_gedcom, WT_GED_ID);
-		// Link the family
-		if ($sex=='F') {
-			$family->createFact('1 WIFE @' . $spouse->getXref() . '@' . $fam_gedcom, true);
-		} else {
-			$family->createFact('1 HUSB @' . $spouse->getXref() . '@' . $fam_gedcom, true);
-		}
+	// Create the new spouse
+	$spouse = WT_GedcomRecord::createRecord($indi_gedcom, WT_GED_ID);
+	// Create a new family
+	if ($sex == 'F') {
+		$family = WT_GedcomRecord::createRecord("0 @NEW@ FAM\n1 WIFE @" . $spouse->getXref() . "@\n1 HUSB @" . $person->getXref() . "@" . $fam_gedcom, WT_GED_ID);
 	} else {
-		// Create the new spouse
-		$spouse = WT_GedcomRecord::createRecord($indi_gedcom, WT_GED_ID);
-		// Create a new family
-		if ($sex == 'F') {
-			$family = WT_GedcomRecord::createRecord("0 @NEW@ FAM\n1 WIFE @" . $spouse->getXref() . "@\n1 HUSB @" . $person->getXref() . "@" . $fam_gedcom, WT_GED_ID);
-		} else {
-			$family = WT_GedcomRecord::createRecord("0 @NEW@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $person->getXref() . "@" . $fam_gedcom, WT_GED_ID);
-		}
-		// Link the spouses to the family
-		$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
-		$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
+		$family = WT_GedcomRecord::createRecord("0 @NEW@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $person->getXref() . "@" . $fam_gedcom, WT_GED_ID);
 	}
+	// Link the spouses to the family
+	$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
+	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
 
 	if (safe_POST('goto')=='new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $new_spouse->getRawUrl() . '");');
