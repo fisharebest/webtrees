@@ -1121,7 +1121,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 						}
 					} else
 						$year_regex='0*' . $row->d_year;
-					$ged_date_regex='/2 DATE.*(' . ($row->d_day > 0 ? '0?' . $row->d_day .'\s*' : '') . $row->d_month . '\s*' . ($row->d_year != 0 ? $year_regex : '') . ')/i';
+					$ged_date_regex='/2 DATE (.*(' . ($row->d_day > 0 ? '0?' . $row->d_day .'\s*' : '') . $row->d_month . '\s*' . ($row->d_year != 0 ? $year_regex : '') . '))/i';
 					preg_match_all('/\n(1 ('.WT_REGEX_TAG.').*(\n[2-9] .*)*)/', $row->gedcom, $matches);
 					foreach ($matches[1] as $factrec) {
 						if (preg_match('/^1 ' . $row->d_fact . '[ \n]/', $factrec) && preg_match($ged_date_regex, $factrec, $match)) {
