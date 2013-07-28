@@ -179,13 +179,11 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	// Return whether or not this family ended in a divorce or was never married.
-	// Note that this is calculated using unprivatized data, so we can
-	// always distinguish spouses from ex-spouses.
 	function isDivorced() {
-		return (bool)preg_match('/\n1 ('.WT_EVENTS_DIV.')( Y|\n)/', $this->gedcom);
+		return $this->getFirstFact('MARR') !== null;
 	}
 	function isNotMarried() {
-		return (bool)preg_match('/\n1 _NMR( Y|\n)/', $this->gedcom);
+		return $this->getFirstFact('_NMR') !== null;
 	}
 
 	/**
