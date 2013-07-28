@@ -636,50 +636,49 @@ function print_asso_rela_record(WT_Fact $event, WT_GedcomRecord $record) {
 	// For each ASSO record
 	foreach (array_merge($amatches1, $amatches2) as $amatch) {
 		$person=WT_Individual::getInstance($amatch[1]);
-		if (!$person) {
-			// If the target of the ASSO does not exist, create a dummy person, so
-			// the user can see that something is present.
-			$person=new WT_Individual('');
-		}
-		if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
-			$rela=$rmatch[1];
-		} else {
-			$rela='';
-		}
-		$html=array();
-		foreach ($associates as $associate) {
-			if ($associate) {
-				if ($rela) {
-					$label='<span class="rela_type">'.WT_Gedcom_Code_Rela::getValue($rela, $person).':&nbsp;</span>';
-					$label_2='<span class="rela_name">'.get_associate_relationship_name($associate, $person).'</span>';
-				} else {
-					// Generate an automatic RELA
-					$label='';
-					$label_2='<span class="rela_name">'.get_associate_relationship_name($associate, $person).'</span>';
-				}
-				if (!$label && !$label_2) {
-					$label=WT_I18N::translate('Relationships');
-					$label_2='';
-				}
-				// For family records (e.g. MARR), identify the spouse with a sex icon
-				if ($record instanceof WT_Family) {
-					$label_2=$associate->getSexImage().$label_2;
-				}
-
-				if ($SEARCH_SPIDER) {
-					$html[]=$label_2; // Search engines cannot use the relationship chart.
-				} else {
-					$html[]='<a href="relationship.php?pid1='.$associate->getXref().'&amp;pid2='.$person->getXref().'&amp;ged='.WT_GEDURL.'">'.$label_2.'</a>';
+		if ($person) {
+			if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
+				$rela=$rmatch[1];
+			} else {
+				$rela='';
+			}
+			$html=array();
+			foreach ($associates as $associate) {
+				if ($associate) {
+					if ($rela) {
+						$label='<span class="rela_type">'.WT_Gedcom_Code_Rela::getValue($rela, $person).':&nbsp;</span>';
+						$label_2='<span class="rela_name">'.get_associate_relationship_name($associate, $person).'</span>';
+					} else {
+						// Generate an automatic RELA
+						$label='';
+						$label_2='<span class="rela_name">'.get_associate_relationship_name($associate, $person).'</span>';
+					}
+					if (!$label && !$label_2) {
+						$label=WT_I18N::translate('Relationships');
+						$label_2='';
+					}
+					// For family records (e.g. MARR), identify the spouse with a sex icon
+					if ($record instanceof WT_Family) {
+						$label_2=$associate->getSexImage().$label_2;
+					}
+	
+					if ($SEARCH_SPIDER) {
+						$html[]=$label_2; // Search engines cannot use the relationship chart.
+					} else {
+						$html[]='<a href="relationship.php?pid1='.$associate->getXref().'&amp;pid2='.$person->getXref().'&amp;ged='.WT_GEDURL.'">'.$label_2.'</a>';
+					}
 				}
 			}
+			$html=array_unique($html);
+			echo
+				'<div class="fact_ASSO">',$label,
+				implode(WT_I18N::$list_separator, $html),
+				' - ',
+				'<a href="', $person->getHtmlUrl().'">', $person->getFullName(), '</a>';
+				echo '</div>';
+		} else {
+			echo WT_Gedcom_Tag::getLabelValue('ASSO', '<span class="error">' . $amatch[1] . '</span>');
 		}
-		$html=array_unique($html);
-		echo
-			'<div class="fact_ASSO">',$label,
-			implode(WT_I18N::$list_separator, $html),
-			' - ',
-			'<a href="', $person->getHtmlUrl().'">', $person->getFullName(), '</a>';
-			echo '</div>';
 	}
 }
 
