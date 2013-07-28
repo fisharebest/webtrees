@@ -290,9 +290,9 @@ case 'REPO': // Repositories, that include the search terms
 	$rows=get_REPO_rows($term);
 	// Filter for privacy
 	foreach ($rows as $row) {
-		$repository=WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
-		if ($repository->canShowName()) {
-			$data[]=array('value'=>$row['xref'], 'label'=>$row['n_full']);
+		$record = WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		if ($record->canShowName()) {
+			$data[] = array('value'=>$record->getXref(), 'label'=>strip_tags($record->getFullName()));
 		}
 	}	
 	echo json_encode($data);
@@ -304,9 +304,9 @@ case 'REPO_NAME': // Repository names, that include the search terms
 	$rows=get_REPO_rows($term);
 	// Filter for privacy
 	foreach ($rows as $row) {
-		$repository=WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
-		if ($repository->canShowName()) {
-			$data[]=$row['n_full'];
+		$record = WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		if ($record->canShowName()) {
+			$data[] = strip_tags($record->getFullName());
 		}
 	}	
 	echo json_encode($data);
@@ -318,9 +318,9 @@ case 'SOUR': // Sources, that include the search terms
 	$rows=get_SOUR_rows($term);
 	// Filter for privacy
 	foreach ($rows as $row) {
-		$source=WT_Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
-		if ($source->canShowName()) {
-			$data[]=array('value'=>$row->xref, 'label'=>$row->n_full);
+		$record = WT_Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		if ($record->canShowName()) {
+			$data[] = array('value'=>$record->getXref(), 'label'=>strip_tags($record->getFullName()));
 		}
 	}	
 	echo json_encode($data);
