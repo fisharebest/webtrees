@@ -192,9 +192,9 @@ class WT_Fact {
 			switch($this->tag) {
 			case 'EVEN':
 			case 'FACT':
-				if ($this->getType()) {
+				if ($this->getAttribute('TYPE')) {
 					// Custom FACT/EVEN - with a TYPE
-					return WT_I18N::translate(htmlspecialchars($this->type));
+					return WT_I18N::translate(htmlspecialchars($this->getAttribute('TYPE')));
 				}
 				// no break - drop into next case
 			default:
