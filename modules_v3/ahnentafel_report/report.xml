@@ -54,7 +54,7 @@
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')" /> <PageNum /> <var var="WT_I18N::translate('of')" /> <TotalPages /></Cell>
 		</Header>
 		<Body>
-			<Relatives id="$pid" group="direct-ancestors" sortby="none" maxgen="$maxgen" showempty="true">
+			<Relatives id="$pid" group="direct-ancestors" sortby="none" maxgen="$maxgen">
 				<SetVar name="gender" value="m" />
 				<if condition="@SEX=='F'">
 					<SetVar name="gender" value="f" />

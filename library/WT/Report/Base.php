@@ -3419,13 +3419,6 @@ function RelativesSHandler($attrs) {
 		$id = trim($id);
 	}
 
-	$showempty = false;
-	if (isset($attrs['showempty'])) $showempty = $attrs['showempty'];
-	if (preg_match("/\\$(\w+)/", $showempty, $match)) {
-		$showempty = $vars[$match[1]]['id'];
-		$showempty = trim($showempty);
-	}
-
 	$list = array();
 	$person = WT_Individual::getInstance($id);
 	if (!empty($person)) {
@@ -3464,17 +3457,17 @@ function RelativesSHandler($attrs) {
 				}
 				break;
 			case "direct-ancestors":
-				add_ancestors($list, $id, false, $maxgen, $showempty);
+				add_ancestors($list, $id, false, $maxgen);
 				break;
 			case "ancestors":
-				add_ancestors($list, $id, true, $maxgen, $showempty);
+				add_ancestors($list, $id, true, $maxgen);
 				break;
 			case "descendants":
 				$list[$id]->generation = 1;
 				add_descendancy($list, $id, false, $maxgen);
 				break;
 			case "all":
-				add_ancestors($list, $id, true, $maxgen, $showempty);
+				add_ancestors($list, $id, true, $maxgen);
 				add_descendancy($list, $id, true, $maxgen);
 				break;
 		}
@@ -3569,9 +3562,6 @@ function RelativesEHandler() {
 		foreach ($list as $key => $value) {
 			if (isset($value->generation)) {
 				$generation = $value->generation;
-			}
-			if (strpos($key, "empty")===0) {
-				continue; // key can be something like "empty7"
 			}
 			$tmp=WT_GedcomRecord::getInstance($key);
 			$gedrec = $tmp->getGedcom();
@@ -3789,4 +3779,99 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate='') {
 		return $value;
 	}
 	return "";
+}
+
+function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_empty=false) {
+	$total_num_skipped = 0;
+	$skipped_gen = 0;
+	$num_skipped = 0;
+	$genlist = array($pid);
+	$list[$pid]->generation = 1;
+	while (count($genlist)>0) {
+		$id = array_shift($genlist);
+		if (strpos($id, "empty")===0) continue; // id can be something like “empty7”
+		$person = WT_Individual::getInstance($id);
+		$famids = $person->getChildFamilies();
+		if (count($famids)>0) {
+			$num_skipped = 0;
+			foreach ($famids as $famid => $family) {
+				$husband = $family->getHusband();
+				$wife = $family->getWife();
+				if ($husband) {
+					$list[$husband->getXref()] = $husband;
+					$list[$husband->getXref()]->generation = $list[$id]->generation+1;
+				}
+				if ($wife) {
+					$list[$wife->getXref()] = $wife;
+					$list[$wife->getXref()]->generation = $list[$id]->generation+1;
+				}
+				if ($generations == -1 || $list[$id]->generation+1 < $generations) {
+					$skipped_gen = $list[$id]->generation+1;
+					if ($husband) {
+						array_push($genlist, $husband->getXref());
+					}
+					if ($wife) {
+						array_push($genlist, $wife->getXref());
+					}
+				}
+				$total_num_skipped++;
+				if ($children) {
+					$childs = $family->getChildren();
+					foreach ($childs as $child) {
+						$list[$child->getXref()] = $child;
+						if (isset($list[$id]->generation))
+							$list[$child->getXref()]->generation = $list[$id]->generation;
+						else
+							$list[$child->getXref()]->generation = 1;
+					}
+				}
+			}
+		}
+	}
+}
+
+function add_descendancy(&$list, $pid, $parents=false, $generations=-1) {
+	$person = WT_Individual::getInstance($pid);
+	if ($person==null) return;
+	if (!isset($list[$pid])) {
+		$list[$pid] = $person;
+	}
+	if (!isset($list[$pid]->generation)) {
+		$list[$pid]->generation = 0;
+	}
+	foreach ($person->getSpouseFamilies() as $family) {
+		if ($parents) {
+			$husband = $family->getHusband();
+			$wife = $family->getWife();
+			if ($husband) {
+				$list[$husband->getXref()] = $husband;
+				if (isset($list[$pid]->generation))
+					$list[$husband->getXref()]->generation = $list[$pid]->generation-1;
+				else
+					$list[$husband->getXref()]->generation = 1;
+			}
+			if ($wife) {
+				$list[$wife->getXref()] = $wife;
+				if (isset($list[$pid]->generation))
+					$list[$wife->getXref()]->generation = $list[$pid]->generation-1;
+				else
+					$list[$wife->getXref()]->generation = 1;
+			}
+		}
+		$children = $family->getChildren();
+		foreach ($children as $child) {
+			if ($child) {
+				$list[$child->getXref()] = $child;
+				if (isset($list[$pid]->generation))
+					$list[$child->getXref()]->generation = $list[$pid]->generation+1;
+				else
+					$list[$child->getXref()]->generation = 2;
+			}
+		}
+		if ($generations == -1 || $list[$pid]->generation+1 < $generations) {
+			foreach ($children as $child) {
+				add_descendancy($list, $child->getXref(), $parents, $generations); // recurse on the childs family
+			}
+		}
+	}
 }
