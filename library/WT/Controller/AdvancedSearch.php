@@ -268,13 +268,34 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 		if ($indi_plac) {
 			$sql.=" JOIN `##placelinks`   i_pl ON (i_pl.pl_file=ind.i_file AND i_pl.pl_gid =ind.i_id)";
-			$sql.=" JOIN `##places`       i_p  ON (i_p.p_file  =ind.i_file AND i_pl.pl_p_id=i_p.p_id)";
+			$sql.=" JOIN (".
+					"SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) AS place, p1.p_id AS id, p1.p_file AS file".
+					" FROM      `##places` AS p1".
+					" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id=p2.p_id)".
+					" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id=p3.p_id)".
+					" LEFT JOIN `##places` AS p4 ON (p3.p_parent_id=p4.p_id)".
+					" LEFT JOIN `##places` AS p5 ON (p4.p_parent_id=p5.p_id)".
+					" LEFT JOIN `##places` AS p6 ON (p5.p_parent_id=p6.p_id)".
+					" LEFT JOIN `##places` AS p7 ON (p6.p_parent_id=p7.p_id)".
+					" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)".
+					" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)".
+					") AS i_p ON (i_p.file  =ind.i_file AND i_pl.pl_p_id= i_p.id)";
 		}
 		if ($fam_plac) {
 			$sql.=" JOIN `##placelinks`   f_pl ON (f_pl.pl_file=ind.i_file AND f_pl.pl_gid =fam.f_id)";
-			$sql.=" JOIN `##places`       f_p  ON (f_p.p_file  =ind.i_file AND f_pl.pl_p_id=f_p.p_id)";
+			$sql.=" JOIN (".
+					"SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) AS place, p1.p_id AS id, p1.p_file AS file".
+					" FROM      `##places` AS p1".
+					" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id=p2.p_id)".
+					" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id=p3.p_id)".
+					" LEFT JOIN `##places` AS p4 ON (p3.p_parent_id=p4.p_id)".
+					" LEFT JOIN `##places` AS p5 ON (p4.p_parent_id=p5.p_id)".
+					" LEFT JOIN `##places` AS p6 ON (p5.p_parent_id=p6.p_id)".
+					" LEFT JOIN `##places` AS p7 ON (p6.p_parent_id=p7.p_id)".
+					" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)".
+					" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)".
+					") AS f_p ON (f_p.file  =ind.i_file AND f_pl.pl_p_id= f_p.id)";
 		}
-
 		// Add the where clause
 		$sql.=" WHERE ind.i_file=?";
 		$bind[]=WT_GED_ID;
@@ -400,12 +421,13 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			} elseif ($parts[1]=='PLAC') {
 				// *:PLAC
 				// SQL can only link a place to a person/family, not to an event.
-				$sql.=" AND i_p.p_place=?";
+				$sql.=" AND i_p.place LIKE CONCAT('%', ?, '%')";
+				//$sql.=" AND i_p.p_place=?";
 				$bind[]=$value;
 			} elseif ($parts[0]=='FAMS' && $parts[2]=='PLAC') {
 				// FAMS:*:PLAC
 				// SQL can only link a place to a person/family, not to an event.
-				$sql.=" AND f_p.p_place=?";
+				$sql.=" AND f_p.place LIKE CONCAT('%', ?, '%')";
 				$bind[]=$value;
 			} elseif ($parts[0]=='FAMC' && $parts[2]=='NAME') {
 				$table=$parts[1]=='HUSB' ? 'f_n' : 'm_n';
