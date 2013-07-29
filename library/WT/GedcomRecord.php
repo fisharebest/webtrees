@@ -687,17 +687,13 @@ class WT_GedcomRecord {
 
 	// The facts and events for this record
 	public function getFacts($filter=null) {
-		if ($filter === null) {
-			return $this->facts;
-		} else {
-			$facts=array();
-			foreach ($this->facts as $fact) {
-				if (preg_match('/^' . $filter . '$/', $fact->getTag())) {
-					$facts[] = $fact;
-				}
+		$facts=array();
+		foreach ($this->facts as $fact) {
+			if (($filter==null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow()) {
+				$facts[] = $fact;
 			}
-			return $facts;
 		}
+		return $facts;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
