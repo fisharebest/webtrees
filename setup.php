@@ -123,7 +123,7 @@ echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 // Step one - choose language and confirm server configuration
 ////////////////////////////////////////////////////////////////////////////////
 
-if (empty($_POST['lang'])) {
+if (!isset($_POST['lang'])) {
 	echo
 		'<p>', WT_I18N::translate('Change language'), ' ',
 		edit_field_language('change_lang', WT_LOCALE, 'onchange="window.location=\'' .  WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
@@ -233,12 +233,12 @@ if ($FAB != 'FAB!') {
 // Step three - Database connection.
 ////////////////////////////////////////////////////////////////////////////////
 
-if (empty($_POST['dbhost'])) $_POST['dbhost']='localhost';
-if (empty($_POST['dbport'])) $_POST['dbport']='3306';
-if (empty($_POST['dbuser'])) $_POST['dbuser']='';
-if (empty($_POST['dbpass'])) $_POST['dbpass']='';
-if (empty($_POST['dbname'])) $_POST['dbname']='';
-if (empty($_POST['tblpfx'])) $_POST['tblpfx']='wt_';
+if (!isset($_POST['dbhost'])) $_POST['dbhost']='localhost';
+if (!isset($_POST['dbport'])) $_POST['dbport']='3306';
+if (!isset($_POST['dbuser'])) $_POST['dbuser']='';
+if (!isset($_POST['dbpass'])) $_POST['dbpass']='';
+if (!isset($_POST['dbname'])) $_POST['dbname']='';
+if (!isset($_POST['tblpfx'])) $_POST['tblpfx']='wt_';
 
 define('WT_TBLPREFIX', $_POST['tblpfx']);
 try {
@@ -392,11 +392,11 @@ if (!$dbname_ok) {
 // Step five - site setup data
 ////////////////////////////////////////////////////////////////////////////////
 
-if (empty($_POST['wtname'    ])) $_POST['wtname'    ]='';
-if (empty($_POST['wtuser'    ])) $_POST['wtuser'    ]='';
-if (empty($_POST['wtpass'    ])) $_POST['wtpass'    ]='';
-if (empty($_POST['wtpass2'   ])) $_POST['wtpass2'   ]='';
-if (empty($_POST['wtemail'   ])) $_POST['wtemail'   ]='';
+if (!isset($_POST['wtname'    ])) $_POST['wtname'    ]='';
+if (!isset($_POST['wtuser'    ])) $_POST['wtuser'    ]='';
+if (!isset($_POST['wtpass'    ])) $_POST['wtpass'    ]='';
+if (!isset($_POST['wtpass2'   ])) $_POST['wtpass2'   ]='';
+if (!isset($_POST['wtemail'   ])) $_POST['wtemail'   ]='';
 
 if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'])<6 || strlen($_POST['wtpass2'])<6 || empty($_POST['wtemail']) || $_POST['wtpass']<>$_POST['wtpass2']) {
 	if (strlen($_POST['wtpass'])>0 && strlen($_POST['wtpass'])<6) {
