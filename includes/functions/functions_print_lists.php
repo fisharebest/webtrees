@@ -819,7 +819,7 @@ function format_fam_table($datalist, $option='') {
 				$html .= 'YES';
 			}
 		}
-		if ($family->isDivorced()) {
+		if ($family->getFacts(WT_EVENTS_DIV)) {
 			$html .= 'D';
 		}
 		if (count($husb->getSpouseFamilies())>1 || count($wife->getSpouseFamilies())>1) {

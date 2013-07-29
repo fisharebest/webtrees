@@ -178,14 +178,6 @@ class WT_Family extends WT_GedcomRecord {
 		return $this->getFirstFact('MARR');
 	}
 
-	// Return whether or not this family ended in a divorce or was never married.
-	function isDivorced() {
-		return $this->getFirstFact('MARR') !== null;
-	}
-	function isNotMarried() {
-		return $this->getFirstFact('_NMR') !== null;
-	}
-
 	/**
 	 * get marriage date
 	 * @return string
