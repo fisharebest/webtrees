@@ -125,9 +125,9 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Parents Husbands Parents --------------------------------------
 							$gparent=$family->getHusband();
-							foreach ($gparent->getChildFamilies() as $family) {
-								$phusb = $family->getHusband();
-								$pwife = $family->getWife();
+							foreach ($gparent->getChildFamilies() as $cfamily) {
+								$phusb = $cfamily->getHusband();
+								$pwife = $cfamily->getWife();
 								if ($phusb) { $HusbFBP = $phusb->getBirthPlace(); }
 								if ($pwife) { $HusbMBP = $pwife->getBirthPlace(); }
 							}
@@ -162,7 +162,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value" style="text-decoration:none;" >
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -181,7 +181,7 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo $label; // label = Relationship
+											echo addslashes($label); // label = Relationship
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
 										?>", "<?php
@@ -237,9 +237,9 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Parents Wifes Parent Family ---------------------------
 							$gparent=$family->getWife();
-							foreach ($gparent->getChildFamilies() as $family) {
-								$phusb = $family->getHusband();
-								$pwife = $family->getWife();
+							foreach ($gparent->getChildFamilies() as $cfamily) {
+								$phusb = $cfamily->getHusband();
+								$pwife = $cfamily->getWife();
 								if ($phusb) { $WifeFBP = $phusb->getBirthPlace(); }
 								if ($pwife) { $WifeMBP = $pwife->getBirthPlace(); }
 							}
@@ -254,8 +254,8 @@ if (!defined('WT_WEBTREES')) {
 							$surn    = $nam[0]['surname'];
 							$husbnam = null;
 							// Get wifes married name if available
-							if ($family->getHusband()) {
-								$husbnams = $family->getHusband()->getAllNames();
+							if ($cfamily->getHusband()) {
+								$husbnams = $cfamily->getHusband()->getAllNames();
 								if ($husbnams[0]['surname']=="@N.N." || $husbnams[0]['surname']=="") {
 									// if Husband or his name is not known then use wifes birth name
 									$husbnam = $nam[0]['surname'];
@@ -284,7 +284,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -303,7 +303,7 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo $label; // label = Relationship
+											echo addslashes($label); // label = Relationship
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
 										?>", "<?php
@@ -413,7 +413,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$child->getXref()."&amp;gedcom=".WT_GEDURL."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -438,7 +438,7 @@ if (!defined('WT_WEBTREES')) {
 												if ($child->getXref()==$pid) {
 													echo "Head"; // label = Head
 												} else {
-													echo $label; // label = Relationship
+													echo addslashes($label); // label = Relationship
 												}
 											?>", "<?php
 												echo $child->getSex(); // gend = Gender
@@ -521,9 +521,9 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Step Husbands Parent Family --------------------------------------
 							$gparent=$family->getHusband();
-							foreach ($gparent->getChildFamilies() as $family) {
-								$phusb = $family->getHusband();
-								$pwife = $family->getWife();
+							foreach ($gparent->getChildFamilies() as $cfamily) {
+								$phusb = $cfamily->getHusband();
+								$pwife = $cfamily->getWife();
 								if ($phusb) { $HusbFBP = $phusb->getBirthPlace(); }
 								if ($pwife) { $HusbMBP = $pwife->getBirthPlace(); }
 							}
@@ -559,7 +559,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -578,7 +578,7 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo $label; // label = Relationship
+											echo addslashes($label); // label = Relationship
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
 										?>", "<?php
@@ -634,9 +634,9 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Step Wifes Parent Family --------------------------------------
 							$gparent=$family->getWife();
-							foreach ($gparent->getChildFamilies() as $family) {
-								$phusb = $family->getHusband();
-								$pwife = $family->getWife();
+							foreach ($gparent->getChildFamilies() as $cfamily) {
+								$phusb = $cfamily->getHusband();
+								$pwife = $cfamily->getWife();
 								if ($phusb) { $WifeFBP = $phusb->getBirthPlace(); }
 								if ($pwife) { $WifeMBP = $pwife->getBirthPlace(); }
 							}
@@ -651,8 +651,8 @@ if (!defined('WT_WEBTREES')) {
 							$surn  = $nam[0]['surname'];
 							$husbnam = null;
 							// Get wifes married name if available
-							if ($family->getHusband()) {
-								$husbnams = $family->getHusband()->getAllNames();
+							if ($cfamily->getHusband()) {
+								$husbnams = $cfamily->getHusband()->getAllNames();
 								if ($husbnams[0]['surname']=="@N.N." || $husbnams[0]['surname']=="") {
 									// if Husband or his name is not known then use wifes birth name
 									$husbnam = $nam[0]['surname'];
@@ -683,7 +683,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -804,7 +804,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$child->getXref()."&amp;gedcom=".WT_GEDURL."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -826,7 +826,7 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo $label; // label = Relationship
+											echo addslashes($label); // label = Relationship
 										?>", "<?php
 											echo $child->getSex(); // gend = Gender
 										?>", "<?php
@@ -904,9 +904,9 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Spouse Husbands Parents --------------------------------------
 							$gparent=$family->getHusband();
-							foreach ($gparent->getChildFamilies() as $family) {
-								$phusb = $family->getHusband();
-								$pwife = $family->getWife();
+							foreach ($gparent->getChildFamilies() as $cfamily) {
+								$phusb = $cfamily->getHusband();
+								$pwife = $cfamily->getWife();
 								if ($phusb) { $HusbFBP = $phusb->getBirthPlace(); }
 								if ($pwife) { $HusbMBP = $pwife->getBirthPlace(); }
 							}
@@ -942,7 +942,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -1017,9 +1017,9 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Spouse Wifes Parents --------------------------------------
 							$gparent=$family->getWife();
-							foreach ($gparent->getChildFamilies() as $family) {
-								$husb = $family->getHusband();
-								$wife = $family->getWife();
+							foreach ($gparent->getChildFamilies() as $cfamily) {
+								$husb = $cfamily->getHusband();
+								$wife = $cfamily->getWife();
 								if ($husb) { $WifeFBP = $husb->getBirthPlace(); }
 								if ($wife) { $WifeMBP = $wife->getBirthPlace(); }
 							}
@@ -1035,8 +1035,8 @@ if (!defined('WT_WEBTREES')) {
 							$surn    = $nam[0]['surname'];
 							$husbnam = null;
 							// Get wifes married name if available
-							if ($family->getHusband()) {
-								$husbnams = $family->getHusband()->getAllNames();
+							if ($cfamily->getHusband()) {
+								$husbnams = $cfamily->getHusband()->getAllNames();
 								if ($husbnams[0]['surname']=="@N.N." || $husbnams[0]['surname']=="") {
 									// if Husband or his name is not known then use wifes birth name
 									$husbnam = $nam[0]['surname'];
@@ -1067,7 +1067,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -1198,7 +1198,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$child->getXref()."&amp;gedcom=".WT_GEDURL."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -1220,7 +1220,7 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo $label; // label = Relationship
+											echo addslashes($label); // label = Relationship
 										?>", "<?php
 											echo $child->getSex(); // gend = Gender
 										?>", "<?php
