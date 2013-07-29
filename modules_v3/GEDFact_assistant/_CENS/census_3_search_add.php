@@ -181,7 +181,11 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo addslashes($label); // label = Relationship
+											if ($person === $gparent) {
+												echo 'head';
+											} else {
+												echo addslashes($label);
+											}
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
 										?>", "<?php
@@ -303,7 +307,11 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo addslashes($label); // label = Relationship
+											if ($person === $gparent) {
+												echo 'head';
+											} else {
+												echo addslashes($label);
+											}
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
 										?>", "<?php
@@ -435,11 +443,11 @@ if (!defined('WT_WEBTREES')) {
 													echo addslashes($fulln); // mnam = Full Name
 												}
 											?>", "<?php
-												if ($child->getXref()==$pid) {
-													echo "Head"; // label = Head
-												} else {
-													echo addslashes($label); // label = Relationship
-												}
+											if ($person === $child) {
+												echo 'head';
+											} else {
+												echo addslashes($label);
+											}
 											?>", "<?php
 												echo $child->getSex(); // gend = Gender
 											?>", "<?php
@@ -578,7 +586,11 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo addslashes($label); // label = Relationship
+											if ($person === $gparent) {
+												echo 'head';
+											} else {
+												echo addslashes($label);
+											}
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
 										?>", "<?php
@@ -702,7 +714,11 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo get_close_relationship_name($person, $gparent);
+											if ($person ===$gparent) {
+												echo 'head';
+											} else {
+												echo addslashes($label);
+											}
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
 										?>", "<?php
@@ -826,7 +842,11 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo addslashes($label); // label = Relationship
+											if ($person === $child) {
+												echo 'head';
+											} else {
+												echo addslashes($label);
+											}
 										?>", "<?php
 											echo $child->getSex(); // gend = Gender
 										?>", "<?php
@@ -961,7 +981,11 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo get_close_relationship_name($person, $gparent);
+											if ($person === $gparent) {
+												echo 'head';
+											} else {
+												echo addslashes($label);
+											}
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
 										?>", "<?php
@@ -1086,10 +1110,10 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											if ($gparent === $person) {
-												echo "Head"; // label = Head
+											if ($person === $gparent) {
+												echo 'head';
 											} else {
-												echo $label; // label = Relationship
+												echo addslashes($label);
 											}
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
@@ -1220,7 +1244,11 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo addslashes($label); // label = Relationship
+											if ($person === $child) {
+												echo 'head';
+											} else {
+												echo addslashes($label);
+											}
 										?>", "<?php
 											echo $child->getSex(); // gend = Gender
 										?>", "<?php
