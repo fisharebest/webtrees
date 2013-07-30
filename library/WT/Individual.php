@@ -34,10 +34,6 @@ class WT_Individual extends WT_GedcomRecord {
 	const URL_PREFIX  = 'individual.php?pid=';
 
 	var $label = '';
-	var $highlightedimage = null;
-	var $file = '';
-	var $age = null;
-	var $sex=null;
 	var $generation; // used in some lists to keep track of this Person's generation in that list
 
 	// Cached results from various functions.
@@ -712,21 +708,15 @@ class WT_Individual extends WT_GedcomRecord {
 		return $this->_getEstimatedDeathDate;
 	}
 
-	/**
-	* get the sex
-	* @return string  return M, F, or U
-	*/
+	// Get the sex - M F or U
 	// Use the un-privatised gedcom record.  We call this function during
 	// the privatize-gedcom function, and we are allowed to know this.
 	function getSex() {
-		if (is_null($this->sex)) {
-			if (preg_match('/\n1 SEX ([MF])/', $this->gedcom, $match)) {
-				$this->sex=$match[1];
-			} else {
-				$this->sex='U';
-			}
+		if (preg_match('/\n1 SEX ([MF])/', $this->gedcom.$this->pending, $match)) {
+			return $match[1];
+		} else {
+			return 'U';
 		}
-		return $this->sex;
 	}
 
 	/**

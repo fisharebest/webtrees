@@ -1656,52 +1656,6 @@ case 'changefamily':
 	$father = $family->getHusband();
 	$mother = $family->getWife();
 	$children = $family->getChildren();
-	if (count($children)>0) {
-		if (!is_null($father)) {
-			if ($father->getSex()=="F") {
-				$father->setLabel(WT_I18N::translate('mother'));
-			} else {
-				$father->setLabel(WT_I18N::translate('father'));
-			}
-		}
-		if (!is_null($mother)) {
-			if ($mother->getSex()=="M") {
-				$mother->setLabel(WT_I18N::translate('father'));
-			} else {
-				$mother->setLabel(WT_I18N::translate('mother'));
-			}
-		}
-		for ($i=0; $i<count($children); $i++) {
-			if (!is_null($children[$i])) {
-				if ($children[$i]->getSex()=="M") {
-					$children[$i]->setLabel(WT_I18N::translate('son'));
-				} elseif ($children[$i]->getSex()=="F") {
-					$children[$i]->setLabel(WT_I18N::translate('daughter'));
-				} else {
-					$children[$i]->setLabel(WT_I18N::translate('child'));
-				}
-			}
-		}
-	} else {
-		if (!is_null($father)) {
-			if ($father->getSex()=="F") {
-				$father->setLabel(WT_I18N::translate('wife'));
-			} elseif ($father->getSex()=="M") {
-				$father->setLabel(WT_I18N::translate('husband'));
-			} else {
-				$father->setLabel(WT_I18N::translate('spouse'));
-			}
-		}
-		if (!is_null($mother)) {
-			if ($mother->getSex()=="F") {
-				$mother->setLabel(WT_I18N::translate('wife'));
-			} elseif ($mother->getSex()=="M") {
-				$mother->setLabel(WT_I18N::translate('husband'));
-			} else {
-				$father->setLabel(WT_I18N::translate('spouse'));
-			}
-		}
-	}
 	?>
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
@@ -1716,7 +1670,15 @@ case 'changefamily':
 					<tr>
 					<?php if ($father) { ?>
 						<td class="descriptionbox">
-							<b><?php echo $father->getLabel(); ?></b>
+							<b>
+								<?php
+								switch ($father->getSex()) {
+								case 'M': echo WT_I18N::translate('husband'); break;
+								case 'F': echo WT_I18N::translate('wife');    break;
+								default:  echo WT_I18N::translate('spouse');  break;
+								}
+								?>
+							</b>
 							<input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>">
 						</td>
 						<td id="HUSBName" class="optionbox"><?php echo $father->getFullName(); ?>
@@ -1743,7 +1705,15 @@ case 'changefamily':
 					<tr>
 					<?php if ($mother) { ?>
 						<td class="descriptionbox">
-							<b><?php echo $mother->getLabel(); ?></b>
+							<b>
+								<?php
+								switch ($mother->getSex()) {
+								case 'M': echo WT_I18N::translate('husband'); break;
+								case 'F': echo WT_I18N::translate('wife');    break;
+								default:  echo WT_I18N::translate('spouse');  break;
+								}
+								?>
+							</b>
 							<input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>">
 						</td>
 						<td id="WIFEName" class="optionbox">
@@ -1771,7 +1741,15 @@ case 'changefamily':
 					<?php $i=0; foreach ($children as $child) { ?>
 					<tr>
 						<td class="descriptionbox">
-							<b><?php echo $child->getLabel(); ?></b>
+							<b>
+								<?php
+								switch ($child->getSex()) {
+								case 'M': echo WT_I18N::translate('son');      break;
+								case 'F': echo WT_I18N::translate('daughter'); break;
+								default:  echo WT_I18N::translate('child');    break;
+								}
+								?>
+							</b>
 							<input type="hidden" name="CHIL<?php echo $i; ?>" value="<?php echo $child->getXref(); ?>">
 						</td>
 						<td id="CHILName<?php echo $i; ?>" class="optionbox"><?php echo $child->getFullName(); ?>
