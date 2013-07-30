@@ -33,7 +33,6 @@ class WT_Individual extends WT_GedcomRecord {
 	const SQL_FETCH   = "SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?";
 	const URL_PREFIX  = 'individual.php?pid=';
 
-	var $label = '';
 	var $generation; // used in some lists to keep track of this Person's generation in that list
 
 	// Cached results from various functions.
@@ -734,62 +733,6 @@ class WT_Individual extends WT_GedcomRecord {
 	function getBoxStyle() {
 		$tmp=array('M'=>'','F'=>'F', 'U'=>'NN');
 		return 'person_box'.$tmp[$this->getSex()];
-	}
-
-	/**
-	* set a label for this person
-	* The label can be used when building a list of people
-	* to display the relationship between this person
-	* and the person listed on the page
-	* @param string $label
-	*/
-	function setLabel($label) {
-		$this->label = $label;
-	}
-	/**
-	* get the label for this person
-	* The label can be used when building a list of people
-	* to display the relationship between this person
-	* and the person listed on the page
-	* @param string $elderdate optional elder sibling birthdate to calculate gap
-	* @param int $counter optional children counter
-	* @return string
-	*/
-	function getLabel($elderdate='', $counter=0) {
-		$label = '';
-		$gap = 0;
-		if (is_object($elderdate) && $elderdate->isOK()) {
-			$p2 = $this->getBirthDate();
-			if ($p2->isOK()) {
-				$gap = $p2->MinJD()-$elderdate->MinJD(); // days
-				$label .= "<div class=\"elderdate age\">";
-				// warning if negative gap : wrong order
-				if ($gap<0 && $counter>0) $label .= '<i class="icon-warning"></i> ';
-				// warning if gap<6 months
-				if ($gap>1 && $gap<180 && $counter>0) $label .= '<i class="icon-warning"></i> ';
-				// children with same date means twin
-				/**if ($gap==0 && $counter>1) {
-					if ($this->getSex()=='M') $label .= WT_I18N::translate('Twin brother');
-					else if ($this->getSex()=='F') $label .= WT_I18N::translate('Twin sister');
-					else $label .= WT_I18N::translate('Twin');
-					}**/
-				// gap in years or months
-				$gap = round($gap*12/365.25); // months
-				if (($gap==12)||($gap==-12)) {
-					$label .= WT_I18N::plural('%d year', '%d years', round($gap/12), round($gap/12));
-				} elseif ($gap>23 or $gap<-23) {
-					$label .= WT_I18N::plural('%d year', '%d years', round($gap/12), round($gap/12));
-				} elseif ($gap!=0) {
-					$label .= WT_I18N::plural('%d month', '%d months', $gap, $gap);
-				}
-				$label .= '</div>';
-			}
-		}
-		// I18N: This is an abbreviation for a number.  i.e. #7 means number 7
-		if ($counter) $label .= '<div>'.WT_I18N::translate('#%d', $counter).'</div>';
-		$label .= $this->label;
-		if ($gap!=0 && $counter<1) $label .= '<br>&nbsp;';
-		return $label;
 	}
 
 	// Get a list of this person's spouse families
