@@ -263,27 +263,27 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				echo 'male_gender"';
 				if ($this->record->canEdit() && !$event->getIsOld()) {
 					echo ' title="', WT_I18N::translate('Male'), ' - ', WT_I18N::translate('Edit'), '"';
-					echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
+					echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">';
 				 } else {
-					echo ' title="', WT_I18N::translate('Male'), '">&nbsp;';
+					echo ' title="', WT_I18N::translate('Male'), '">';
 				 }
 				break;
 			case 'F':
 				echo 'female_gender"';
 				if ($this->record->canEdit() && !$event->getIsOld()) {
 					echo ' title="', WT_I18N::translate('Female'), ' - ', WT_I18N::translate('Edit'), '"';
-					echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
+					echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">';
 				 } else {
-					echo ' title="', WT_I18N::translate('Female'), '">&nbsp;';
+					echo ' title="', WT_I18N::translate('Female'), '">';
 				 }
 				break;
 			case 'U':
 				echo 'unknown_gender"';
 				if ($this->record->canEdit() && !$event->getIsOld()) {
 					echo ' title="', WT_I18N::translate_c('unknown gender', 'Unknown'), ' - ', WT_I18N::translate('Edit'), '"';
-					echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
+					echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">';
 				 } else {
-					echo ' title="', WT_I18N::translate_c('unknown gender', 'Unknown'), '">&nbsp;';
+					echo ' title="', WT_I18N::translate_c('unknown gender', 'Unknown'), '">';
 				 }
 				break;
 			}

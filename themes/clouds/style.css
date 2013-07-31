@@ -2212,15 +2212,18 @@ height:16px;
 .female_gender {
 background-position:-45px 3px;
 width:24px;
+height:30px;
 }
 .male_gender {
 background-position:-72px 3px;
 width:24px;
+height:30px;
 }
 
 .unknown_gender {
 background-position:-100px 4px;
 width:24px;
+height:30px;
 }
 
 /* ==== Indi tabs ==== */
