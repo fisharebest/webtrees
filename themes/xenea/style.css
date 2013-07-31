@@ -1761,9 +1761,9 @@ html[dir=rtl] dd .editlink, html[dir=rtl] dd .deletelink {float:left;}
 
 /* INDI IMAGE SPRITE */
 .male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon {display:block;background:url(images/indi_sprite.png) no-repeat;}
-.female_gender {background-position:-45px 3px;width:24px;}
-.male_gender {background-position:-72px 3px;width:24px;}
-.unknown_gender {background-position:-100px 4px;width:24px;}
+.female_gender {background-position:-45px 3px;width:24px;height:30px;}
+.male_gender {background-position:-72px 3px;width:24px;height:30px;}
+.unknown_gender {background-position:-100px 4px;width:24px;height:30px;}
 .editicon {background-position:-40px -32px;width:24px;height:16px;}
 .copyicon {background-position:-70px -32px;width:24px;height:16px;}
 .deleteicon {background-position:-100px -32px;width:24px;height:16px;}

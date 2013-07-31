@@ -1445,9 +1445,9 @@ html[dir=rtl] dd .editlink, html[dir=rtl] dd .deletelink {float:left;}
 
 /* INDI IMAGE SPRITE */
 .male_gender, .female_gender, .unknown_gender {display:block;background:url(images/indi_sprite.png) no-repeat;}
-.female_gender {background-position:-45px 3px;width:24px;}
-.male_gender {background-position:-79px 3px;width:24px;}
-.unknown_gender {background-position:-107px 4px;width:24px;}
+.female_gender {background-position:-45px 3px;width:24px;height:30px;}
+.male_gender {background-position:-79px 3px;width:24px;height:30px;}
+.unknown_gender {background-position:-107px 4px;width:24px;height:30px;}
 
 /* =========== Indi tabs ================== */
 /* Facts & Events tab */

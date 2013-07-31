@@ -755,9 +755,9 @@ html[dir=rtl] .indi_table {clear:right;}
 .editicon {background-position:-40px -32px;height:16px;width:24px;}
 .copyicon {background-position:-70px -32px;height:16px;width:24px;}
 .deleteicon {background-position:-100px -32px;height:16px;width:24px;}
-.female_gender {background-position:-45px 3px;width:24px;}
-.male_gender {background-position:-72px 3px;width:24px;}
-.unknown_gender {background-position:-100px 4px;width:24px;}
+.female_gender {background-position:-45px 3px;width:24px;height:30px;}
+.male_gender {background-position:-72px 3px;width:24px;height:30px;}
+.unknown_gender {background-position:-100px 4px;width:24px;height:30px;}
 
 .icon_arrow:after {content:" »";}
 
