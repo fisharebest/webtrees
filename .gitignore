@@ -1,2 +1,5 @@
-data/config.ini.php
 *.swp
+
+data/config.ini.php
+language/*.pot
+language/*.mo
