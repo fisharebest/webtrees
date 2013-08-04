@@ -534,7 +534,7 @@ html[dir=rtl] .faq_edit {float:left;}
 #topMenu {border-top:2px solid #81A9CB;border-bottom:2px solid #81A9CB;float:left;margin:5px auto;padding:5px 0;position:relative;width:100%;}
 #main-menu {clear:both;position:relative;z-index:50;float:right;right:50%;}
 #main-menu,
-#main-menu ul {padding:0;margin:0;list-style-type:none;}
+#main-menu ul {padding:0;margin:0;list-style-type:none;z-index:201;}
 #main-menu ul ul {z-index:60;}
 #main-menu li {float:left;position:relative;left:50%;}
 #main-menu li li {clear:both;}
