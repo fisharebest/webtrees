@@ -23,7 +23,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 *
-* $Id$
+* $Id: style.css 15235 2013-07-05 06:46:28Z greg $
 */
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
@@ -266,6 +266,7 @@ html[dir=rtl] .header_search {float:left;}
 .width100 {width:100%;}
 
 /* Font sizes */
+.font11 {font-size:11px;}
 .font9 {font-size:9px;}
 
 /* Message box */
@@ -534,7 +535,7 @@ html[dir=rtl] .faq_edit {float:left;}
 #topMenu {border-top:2px solid #81A9CB;border-bottom:2px solid #81A9CB;float:left;margin:5px auto;padding:5px 0;position:relative;width:100%;}
 #main-menu {clear:both;position:relative;z-index:50;float:right;right:50%;}
 #main-menu,
-#main-menu ul {padding:0;margin:0;list-style-type:none;z-index:201;}
+#main-menu ul {padding:0;margin:0;list-style-type:none;z-index:210;}
 #main-menu ul ul {z-index:60;}
 #main-menu li {float:left;position:relative;left:50%;}
 #main-menu li li {clear:both;}
@@ -729,9 +730,9 @@ html[dir=rtl] dd .editlink, html[dir=rtl] dd .deletelink {float:left;}
 /* General sprite */
 .male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon {display:block;background:url(images/general_sprite.png) no-repeat left 0;}
 
-.female_gender {background-position:-45px 1px;width:24px;height:30px;}
-.male_gender {background-position:-72px 3px;width:24px;height:30px;}
-.unknown_gender {background-position:-100px 4px;width:24px;height:30px;}
+.female_gender {background-position:-45px 1px;width:24px;}
+.male_gender {background-position:-72px 3px;width:24px;}
+.unknown_gender {background-position:-100px 4px;width:24px;}
 .editicon {background-position:-40px -32px;width:24px;height:16px;}
 .copyicon {background-position:-70px -32px;width:24px;height:16px;}
 .deleteicon {background-position:-100px -32px;width:24px;height:16px;}
