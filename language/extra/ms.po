@@ -8,36 +8,36 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2012-09-05 06:11+0000\n"
-"Last-Translator: shahrizan kamarulzaman <shahkamarul@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 16:37+0000\n"
+"Last-Translator: Kilik G <kgkingaran774@gmail.com>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:32+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: ms\n"
 
 #: webtrees/admin_site_access.php:32
 #: webtrees/themes/_administration/header.php:97
 msgid "Site access rules"
-msgstr ""
+msgstr "Peraturan akses Laman"
 
 #. I18N: An access rule - allow access to the site
 #: webtrees/admin_site_access.php:109 webtrees/admin_site_access.php:300
 msgid "allow"
-msgstr ""
+msgstr "benarkan"
 
 #. I18N: An access rule - deny access to the site
 #: webtrees/admin_site_access.php:110 webtrees/admin_site_access.php:301
 msgid "deny"
-msgstr ""
+msgstr "nafikan"
 
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: webtrees/admin_site_access.php:111 webtrees/admin_site_access.php:302
 msgid "robot"
-msgstr ""
+msgstr "robot"
 
 #: webtrees/admin_site_access.php:114 webtrees/admin_trees_manage.php:229
 #: webtrees/admin_users.php:172
@@ -52,13 +52,14 @@ msgstr ""
 #: webtrees/library/WT/Controller/Note.php:106
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "Adakah anda pasti mahu padam \"%s\"?"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: webtrees/admin_site_access.php:270
 msgid ""
 "Restrict access to the site, using IP addresses and user-agent strings"
 msgstr ""
+"Sekat akses ke laman web, menggunakan alamat IP dan rentetan ejen pengguna"
 
 #: webtrees/admin_site_access.php:272
 msgid ""
@@ -66,21 +67,25 @@ msgid ""
 "(allow full access), a search-engine robot (allow restricted access) or an "
 "unwanted crawler (deny all access)."
 msgstr ""
+"Kaedah-kaedah berikut digunakan untuk membuat keputusan sama ada pengunjung "
+"adalah seorang manusia (membenarkan akses penuh), sebuah robot enjin carian "
+"(membolehkan akses terhad) atau crawler yang tidak diingini (menafikan semua "
+"akses)."
 
 #. I18N [...] of a range of addresses
 #: webtrees/admin_site_access.php:277
 msgid "Start IP address"
-msgstr ""
+msgstr "Permulaan alamat IP"
 
 #. I18N [...] of a range of addresses
 #: webtrees/admin_site_access.php:279
 msgid "End IP address"
-msgstr ""
+msgstr "Alamat IP akhir"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: webtrees/admin_site_access.php:281 webtrees/admin_site_access.php:296
 msgid "User-agent string"
-msgstr ""
+msgstr "Rentetan ejen pengguna"
 
 #. I18N: noun
 #: webtrees/admin_site_access.php:282

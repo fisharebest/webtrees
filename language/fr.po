@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2013-07-18 20:16+0000\n"
-"Last-Translator: Patrick CHARRA <Unknown>\n"
+"PO-Revision-Date: 2013-08-04 16:48+0000\n"
+"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2013-07-19 06:15+0000\n"
-"X-Generator: Launchpad (build 16696)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: \n"
 "X-Poedit-Language: French\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -1285,7 +1285,7 @@ msgstr ""
 #. I18N: a program feature
 #: webtrees/setup.php:164
 msgid "file upload capability"
-msgstr "capacité de chargement de fichier"
+msgstr "possibilité de téléverser des fichiers"
 
 #: webtrees/setup.php:167
 #, php-format
@@ -1824,7 +1824,7 @@ msgstr "Afficher un curseur indiquant l’âge"
 
 #: webtrees/timeline.php:296 webtrees/lifespan.php:265
 msgid "Add another person to the chart"
-msgstr "Ajouter une autre personne au graphique"
+msgstr "Ajouter une autre personne au diagramme"
 
 #: webtrees/timeline.php:308 webtrees/modules_v3/googlemap/module.php:1362
 msgid "Zoom in"
@@ -2997,7 +2997,7 @@ msgstr "Modifications récentes"
 #. I18N: Description of the “Recent changes” module
 #: webtrees/modules_v3/recent_changes/module.php:41
 msgid "A list of records that have been updated recently."
-msgstr "Liste des documents mis à jour récemment."
+msgstr "Liste des enregistrements mis à jour récemment."
 
 #. I18N: title for list of recent changes
 #: webtrees/modules_v3/recent_changes/module.php:75
@@ -3072,7 +3072,7 @@ msgstr "Afficher ce bloc pour quelles langues&nbsp;?"
 #: webtrees/modules_v3/faq/module.php:177
 #: webtrees/modules_v3/faq/help_text.php:41
 msgid "FAQ position"
-msgstr "Position :"
+msgstr "Position"
 
 #: webtrees/modules_v3/faq/module.php:178
 #: webtrees/modules_v3/faq/help_text.php:46
@@ -4207,14 +4207,14 @@ msgstr "Une liste des noms de famille les plus populaires."
 #. I18N: i.e. most popular surname.
 #: webtrees/modules_v3/top10_surnames/module.php:90
 msgid "Top surname"
-msgstr "Top des patronymes"
+msgstr "Le nom de famille le plus populaire"
 
 #. I18N: Title for a list of the most common surnames, %s is a number.  Note that a separate translation exists when %s is 1
 #: webtrees/modules_v3/top10_surnames/module.php:93
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "Les %s noms de famille les plus populaires"
+msgstr[0] "Le %s nom de famille le plus populaire"
 msgstr[1] "Les %s noms de familles les plus populaires"
 
 #: webtrees/modules_v3/top10_surnames/module.php:164
@@ -5456,8 +5456,8 @@ msgstr "Panier"
 #: webtrees/modules_v3/clippings/module.php:39
 msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr ""
-"Sélectionner les documents de votre arbre généalogique et les enregistrer "
-"dans un fichier GEDCOM."
+"Sélectionner des enregistrements de votre arbre généalogique et les "
+"enregistrer dans un fichier GEDCOM."
 
 #: webtrees/modules_v3/clippings/module.php:75
 #: webtrees/modules_v3/clippings/module.php:273
@@ -5508,7 +5508,7 @@ msgstr "Ajouter cette personne, ses parents, ses frères et ses sœurs."
 #: webtrees/modules_v3/clippings/module.php:110
 #: webtrees/modules_v3/clippings/module.php:529
 msgid "Add this person and his direct line ancestors."
-msgstr "Ajouter cette personne et ses ascendants."
+msgstr "Ajouter cette personne et ses ascendants en ligne directe."
 
 #: webtrees/modules_v3/clippings/module.php:111
 #: webtrees/modules_v3/clippings/module.php:113
@@ -5644,8 +5644,7 @@ msgstr "Visiteur"
 #: webtrees/modules_v3/clippings/module.php:600
 #: webtrees/admin_trees_download.php:125
 msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr ""
-"Convertir ce fichier GEDCOM format UTF-8 en format ANSI (ISO-8859-1) ?"
+msgstr "Convertir du format UTF-8 au format ANSI (ISO-8859-1)&nbsp;?"
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: webtrees/modules_v3/clippings/module.php:221
@@ -6300,7 +6299,7 @@ msgstr "enfants"
 #: webtrees/library/WT/Controller/Family.php:147
 #: webtrees/library/WT/Controller/Note.php:94
 msgid "View GEDCOM Record"
-msgstr "Voir les balises GEDCOM"
+msgstr "Voir l'enregistrement GEDCOM"
 
 #: webtrees/edit_changes.php:168
 msgid "The following changes were made to this record:"
@@ -6730,11 +6729,11 @@ msgstr "intervalle 2 enfants"
 
 #: webtrees/statistics.php:603 webtrees/library/WT/Stats.php:1065
 msgid "Individual distribution chart"
-msgstr "Carte de répartition des individus"
+msgstr "Diagramme de distribution des individus"
 
 #: webtrees/statistics.php:604 webtrees/library/WT/Stats.php:994
 msgid "Surname distribution chart"
-msgstr "carte de répartition des prénoms"
+msgstr "Diagramme de distribution des prénoms"
 
 #: webtrees/statistics.php:612
 msgid "Geographical area"
@@ -7098,7 +7097,7 @@ msgstr "Accès et configuration des arbres généalogiques"
 #: webtrees/edituser.php:145 webtrees/help_text.php:1237
 #: webtrees/help_text.php:1403 webtrees/help_text.php:1511
 msgid "Individual record"
-msgstr "Code GEDCOM de l’individu"
+msgstr "Enregistrement indivuel"
 
 #. I18N: gedcom tag ROLE
 #: webtrees/admin_users.php:237 webtrees/admin_users.php:440
@@ -7276,7 +7275,7 @@ msgstr "Voir les lieux classés par niveaux"
 #: webtrees/placelist.php:147
 #, php-format
 msgid "Places in %s"
-msgstr "Lieux d’/de/du/des %s"
+msgstr "Lieux - %s"
 
 #: webtrees/placelist.php:180
 msgid "View all records found in this place"
@@ -7459,7 +7458,7 @@ msgstr "Nocturne"
 #. I18N: The name of a colour-scheme
 #: webtrees/themes/colors/theme.php:89
 msgid "Olivia"
-msgstr "Olivia"
+msgstr "Olivine"
 
 #. I18N: The name of a colour-scheme
 #: webtrees/themes/colors/theme.php:90
@@ -7632,17 +7631,17 @@ msgstr "Horodatage"
 
 #: webtrees/includes/functions/functions.php:194
 msgid "File successfully uploaded"
-msgstr "Fichier chargé avec succès"
+msgstr "Fichier téléversé avec succès"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: webtrees/includes/functions/functions.php:198
 msgid "Uploaded file exceeds the allowed size"
-msgstr "Le fichier chargé dépasse la taille autorisée"
+msgstr "Le fichier téléversé dépasse la taille autorisée"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: webtrees/includes/functions/functions.php:201
 msgid "File was only partially uploaded, please try again"
-msgstr "Fichier reçu partiellement. Veuillez recommencer."
+msgstr "Fichier téléversé partiellement. Veuillez recommencer."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: webtrees/includes/functions/functions.php:204
@@ -7678,7 +7677,7 @@ msgstr "cousin issu de germain"
 #: webtrees/includes/functions/functions.php:1021
 msgctxt "MALE"
 msgid "third cousin"
-msgstr "petit cousin"
+msgstr "petit-cousin"
 
 #: webtrees/includes/functions/functions.php:1022
 msgctxt "MALE"
@@ -10700,7 +10699,7 @@ msgstr ""
 
 #: webtrees/includes/functions/functions_print_lists.php:91
 msgid "Alive"
-msgstr "Vivant"
+msgstr "Vivants"
 
 #: webtrees/includes/functions/functions_print_lists.php:92
 #: webtrees/includes/functions/functions_print_lists.php:499
@@ -10712,7 +10711,7 @@ msgstr ""
 #: webtrees/includes/functions/functions_print_lists.php:92
 #: webtrees/library/WT/Stats.php:680 webtrees/library/WT/Stats.php:682
 msgid "Dead"
-msgstr "Décédés"
+msgstr "Décédé(e)"
 
 #: webtrees/includes/functions/functions_print_lists.php:93
 msgid "Show people who died more than 100 years ago."
@@ -10774,7 +10773,7 @@ msgstr "Voir les parents"
 #: webtrees/includes/functions/functions_print_lists.php:104
 #: webtrees/includes/functions/functions_print_lists.php:512
 msgid "Show statistics charts"
-msgstr "Afficher les tableaux de statistiques"
+msgstr "Afficher les diagrammes de statistiques"
 
 #: webtrees/includes/functions/functions_print_lists.php:215
 #: webtrees/includes/functions/functions_print_lists.php:637
@@ -11574,7 +11573,7 @@ msgstr "Les détails de cette famille sont privés."
 
 #: webtrees/admin_trees_download.php:32
 msgid "Download GEDCOM"
-msgstr "Télécharger le fichier GEDCOM sur votre poste (download)"
+msgstr "Télécharger le fichier GEDCOM"
 
 #: webtrees/admin.php:60
 msgid ""
@@ -11864,7 +11863,7 @@ msgstr ""
 
 #: webtrees/admin_trees_config.php:554
 msgid "this record does not exist"
-msgstr "ce document n’existe pas"
+msgstr "cet enregistrement n’existe pas"
 
 #: webtrees/admin_trees_config.php:579 webtrees/admin_media.php:540
 msgid "Media folders"
@@ -11901,7 +11900,7 @@ msgstr "Utilisez des silhouettes"
 
 #: webtrees/admin_trees_config.php:638 webtrees/compact.php:60
 msgid "Show highlight images in people boxes"
-msgstr "Afficher les miniatures des individus"
+msgstr "Afficher les vignettes des individus"
 
 #. I18N: Copyright messages, added to images
 #: webtrees/admin_trees_config.php:646
@@ -12004,7 +12003,7 @@ msgstr "Listes"
 
 #: webtrees/admin_trees_config.php:810
 msgid "Surname list style"
-msgstr "Style de présentation des listes"
+msgstr "Style des listes de noms de famille"
 
 #: webtrees/admin_trees_config.php:822 webtrees/help_text.php:957
 msgid "Maximum number of surnames on individual list"
@@ -12068,11 +12067,11 @@ msgstr "Afficher les %1$s %2$s parties du nom d’un lieu."
 
 #: webtrees/admin_trees_config.php:989 webtrees/help_text.php:428
 msgid "Abbreviate chart labels"
-msgstr "Abréger les intitulés dans les tableaux"
+msgstr "Abréger les intitulés dans les diagrammes"
 
 #: webtrees/admin_trees_config.php:997 webtrees/help_text.php:721
 msgid "Birth and death details on charts"
-msgstr "Afficher les détails de la naissance et du décès sur les graphiques"
+msgstr "Afficher les détails de la naissance et du décès sur les diagrammes"
 
 #: webtrees/admin_trees_config.php:1005 webtrees/help_text.php:731
 msgid "Gender icon on charts"
@@ -12088,7 +12087,7 @@ msgstr "Codes d’ordination SDJ sur les diagrammes"
 
 #: webtrees/admin_trees_config.php:1029 webtrees/help_text.php:482
 msgid "Other facts to show in charts"
-msgstr "Autres évènements à afficher dans les tableaux"
+msgstr "Autres évènements à afficher dans les diagrammes"
 
 #: webtrees/admin_trees_config.php:1042
 msgid "Fact icons"
@@ -12228,12 +12227,12 @@ msgstr "aucun"
 
 #: webtrees/admin_trees_config.php:1290 webtrees/help_text.php:552
 msgid "Use full source citations"
-msgstr "Enregistrer tous les détails des sources"
+msgstr "Citations complètes des sources"
 
 #: webtrees/admin_trees_config.php:1298 webtrees/help_text.php:801
 #: webtrees_tmp/modules_v3_fact_sources_report.xml.php:7
 msgid "Source type"
-msgstr "Enregistrer les sources au niveau des évènements"
+msgstr "Type de source"
 
 #: webtrees/admin_trees_config.php:1301
 #: webtrees_tmp/modules_v3_fact_sources_report.xml.php:7
@@ -14032,19 +14031,18 @@ msgid ""
 "account and will not accept messages that are apparently from account "
 "<i>webtrees-noreply</i>."
 msgstr ""
-"Adresse courriel utilisés dans le champ &laquo;De:&raquo;domaine pour un "
-"courriel que <b>webtrees</b> crée automatiquement.<br /><br "
-"/><b>webtrees</b> peut créer automatiquement des courriels pour informer les "
-"administrateurs des changements survenus. <b>webtrees</b> envoie également "
-"des notifications par courriel à des utilisateurs qui ont demandé un "
-"compte.<br /><br />Habituellement, le champ &laquo;From:&raquo; des "
-"créations automatiquement des courriels est quelque chose comme<i>De: "
-"webtrees-noreply@yoursite</i> montre qu’il n’y a pas de réponse nécessaire à "
-"faire pour ce courriel. Pour se prémunir contre le spam ou autres abus de "
-"courriel, certains systèmes de courrier électronique exige que tous les "
-"champs d’adresse de message doit être celui d’un compte courriel valide et "
-"les messages venant de <i>webtrees-noreply</i> ne seront pas acceptés\r\n"
-"."
+"Adresse courriel utilisés dans le champ &laquo;De:&raquo; pour un courriel "
+"que <b>webtrees</b> crée automatiquement.<br /><br /><b>webtrees</b> peut "
+"créer automatiquement des courriels pour informer les administrateurs des "
+"changements survenus. <b>webtrees</b> envoie également des notifications par "
+"courriel aux utilisateurs qui ont demandé un compte.<br /><br "
+"/>Habituellement, le champ &laquo;From:&raquo; des créations automatiquement "
+"des courriels est quelque chose comme<i>De: webtrees-noreply@yoursite</i> "
+"montre qu’il n’y a pas de réponse nécessaire à faire pour ce courriel. Pour "
+"se prémunir contre le spam ou autres abus de courriel, certains systèmes de "
+"courrier électronique exige que tous les champs d’adresse de message doit "
+"être celui d’un compte courriel valide et les messages venant de <i>webtrees-"
+"noreply</i> ne seront pas acceptés."
 
 #: webtrees/help_text.php:802
 msgid ""
@@ -15866,8 +15864,8 @@ msgid ""
 "Select the media file that you want to upload.  If a file already exists "
 "with the same name, it will be overwritten."
 msgstr ""
-"Choisissez le fichier multimédia à télécharger sur le serveur (upload). Si "
-"un fichier avec le même nom existe, il sera écrasé."
+"Choisissez le fichier multimédia à téléverser (upload). Si un fichier du "
+"même nom existe, il sera écrasé."
 
 #: webtrees/help_text.php:1473
 msgid ""
@@ -15885,7 +15883,7 @@ msgid ""
 "Upload one or more media files from your local computer.  Media files can be "
 "pictures, video, audio, or other formats."
 msgstr ""
-"Téléchargez un ou plusieurs fichiers multimédia sur le serveur. Les fichiers "
+"Téléversez un ou plusieurs fichiers multimédia sur le serveur. Les fichiers "
 "peuvent être des images, des vidéos, des sons ou autres."
 
 #: webtrees/help_text.php:1483
@@ -15902,19 +15900,19 @@ msgid ""
 "etc.)<br /><br />Leave this field blank to keep the original name of the "
 "file you have uploaded from your local computer."
 msgstr ""
-"Le fichier multimédia que vous téléchargez peut être, et devrait "
-"probablement être, nommé différemment sur le serveur que sur votre "
-"ordinateur local. Il en est ainsi parce que souvent le nom du fichier local "
-"a une signification pour vous, mais est beaucoup moins significatif pour les "
-"autres visiteurs. Considérez aussi la possibilité que vous ou quelqu’un "
-"d’autre essaie de transférer différents fichiers appelés «&nbsp;grands-"
-"parents.jpg&nbsp;».<br /><br />Dans ce champ, vous spécifiez le nouveau nom "
-"du fichier que vous téléchargez. Le nom que vous entrez ici sera également "
-"utilisé pour nommer la miniature, qui peut être téléchargée séparément ou "
-"générée automatiquement. Vous n’avez pas besoin d’entrer l’extension dans le "
-"nom de fichier (jpg, gif, pdf, doc, etc)<br /><br />Laissez ce champ vide "
-"pour garder le nom original du fichier que vous avez téléchargé à partir de "
-"votre ordinateur local."
+"Le fichier multimédia que vous téléversez peut être, et devrait probablement "
+"être, nommé différemment sur le serveur que sur votre ordinateur local. Il "
+"en est ainsi parce que souvent le nom du fichier local a une signification "
+"pour vous, mais est beaucoup moins significatif pour les autres visiteurs. "
+"Considérez aussi la possibilité que vous ou quelqu’un d’autre essaie de "
+"transférer différents fichiers appelés «&nbsp;grands-parents.jpg&nbsp;».<br "
+"/><br />Dans ce champ, vous spécifiez le nouveau nom du fichier que vous "
+"téléchargez. Le nom que vous entrez ici sera également utilisé pour nommer "
+"la miniature, qui peut être téléchargée séparément ou générée "
+"automatiquement. Vous n’avez pas besoin d’entrer l’extension dans le nom de "
+"fichier (jpg, gif, pdf, doc, etc)<br /><br />Laissez ce champ vide pour "
+"garder le nom original du fichier que vous avez téléchargé à partir de votre "
+"ordinateur local."
 
 #: webtrees/help_text.php:1490
 msgid ""
@@ -15932,11 +15930,11 @@ msgid ""
 "still image from a video, or a photograph of the person who made an audio "
 "recording."
 msgstr ""
-"Choisissez la miniature à télécharger sur le serveur. Bien que les "
-"miniatures des images puissent être générées automatiquement, vous pouvez "
-"vouloir utiliser votre propre miniature, en particulier pour les autres "
-"types de fichiers. Par exemple vous pouvez mettre une image figée d’une "
-"vidéo, ou la photo de la personne ayant réalisé un enregistrement audio."
+"Choisissez la miniature à téléverser sur le serveur. Bien que les miniatures "
+"des images puissent être générées automatiquement, vous pouvez vouloir "
+"utiliser votre propre miniature, en particulier pour les autres types de "
+"fichiers. Par exemple vous pouvez mettre une image figée d’une vidéo, ou la "
+"photo de la personne ayant réalisé un enregistrement audio."
 
 #: webtrees/help_text.php:1501
 msgid ""
@@ -16419,7 +16417,7 @@ msgstr "Afficher %s"
 #. I18N: button label, first page
 #: webtrees/library/WT/I18N.php:466
 msgid "first"
-msgstr "début"
+msgstr "premier"
 
 #. I18N: button label, last page
 #: webtrees/library/WT/I18N.php:467
@@ -16527,15 +16525,15 @@ msgstr "Livret de famille"
 
 #: webtrees/library/WT/MenuBar.php:172 webtrees/library/WT/MenuBar.php:183
 msgid "Show couple on timeline chart"
-msgstr "Voir l’échelle de temps"
+msgstr "Voir sur l’échelle chronologique"
 
 #: webtrees/library/WT/MenuBar.php:173 webtrees/library/WT/MenuBar.php:193
 msgid "Show children on timeline chart"
-msgstr "Voir les enfants sur l’échelle de temps"
+msgstr "Voir les enfants sur l’échelle chronologique"
 
 #: webtrees/library/WT/MenuBar.php:174 webtrees/library/WT/MenuBar.php:203
 msgid "Show family on timeline chart"
-msgstr "Voir la famille sur l’échelle de temps"
+msgstr "Voir la famille sur l’échelle chronologique"
 
 #: webtrees/library/WT/MenuBar.php:374
 msgid "Calendar"
@@ -18104,7 +18102,7 @@ msgstr "Inconnu(e)"
 
 #: webtrees/library/WT/Stats.php:679 webtrees/library/WT/Stats.php:681
 msgid "Living"
-msgstr "Personne vivante"
+msgstr "Vivant(e)"
 
 #: webtrees/library/WT/Stats.php:1094
 msgid "Highest population"
@@ -18183,7 +18181,7 @@ msgstr "Aucun utilisateur connecté"
 
 #: webtrees/library/WT/Stats.php:3772
 msgid "Unknown"
-msgstr "Total inconnu"
+msgstr "Inconnu"
 
 #: webtrees/library/WT/Stats.php:3773
 msgid "Aruba"
@@ -19068,7 +19066,7 @@ msgstr "URRS"
 
 #: webtrees/library/WT/Stats.php:3993
 msgid "Suriname"
-msgstr "Suriname"
+msgstr "Surinam"
 
 #: webtrees/library/WT/Stats.php:3994
 msgid "Slovakia"
@@ -19779,7 +19777,7 @@ msgstr "Lieu de naissance"
 #. I18N: gedcom tag BLES
 #: webtrees/library/WT/Gedcom/Tag.php:143
 msgid "Blessing"
-msgstr "Bénédiction religieuse"
+msgstr "Bénédiction"
 
 #: webtrees/library/WT/Gedcom/Tag.php:144
 msgid "Date of Blessing"
@@ -19920,7 +19918,7 @@ msgstr "Copyright"
 #. I18N: gedcom tag CORP
 #: webtrees/library/WT/Gedcom/Tag.php:176
 msgid "Corporation"
-msgstr "Société"
+msgstr "Entreprise"
 
 #. I18N: gedcom tag CREM
 #: webtrees/library/WT/Gedcom/Tag.php:177
@@ -20049,11 +20047,11 @@ msgstr "Fiançailles"
 
 #: webtrees/library/WT/Gedcom/Tag.php:206
 msgid "Date of engagement"
-msgstr "Date d’engagement"
+msgstr "Date de fianciailles"
 
 #: webtrees/library/WT/Gedcom/Tag.php:207
 msgid "Place of engagement"
-msgstr "Lieu d’engagement"
+msgstr "Lieu de fianciailles"
 
 #. I18N: gedcom tag EVEN
 #: webtrees/library/WT/Gedcom/Tag.php:208
@@ -20171,7 +20169,7 @@ msgstr "Diplôme"
 #. I18N: gedcom tag HEAD
 #: webtrees/library/WT/Gedcom/Tag.php:234
 msgid "Header"
-msgstr "Bandeau"
+msgstr "Entête"
 
 #. I18N: gedcom tag IDNO
 #: webtrees/library/WT/Gedcom/Tag.php:236
@@ -21659,7 +21657,7 @@ msgstr "Version courte"
 #. I18N: gedcom tag _TODO
 #: webtrees/library/WT/Gedcom/Tag.php:822
 msgid "Research task"
-msgstr "Tâche à faire"
+msgstr "Tâche de recherche"
 
 #. I18N: gedcom tag _UID
 #: webtrees/library/WT/Gedcom/Tag.php:824
@@ -21908,7 +21906,7 @@ msgstr "Parents nourriciers"
 #: webtrees/library/WT/Gedcom/Code/Pedi.php:56
 msgctxt "Male pedigree"
 msgid "Foster"
-msgstr "Adoptif"
+msgstr "Parents nourriciers"
 
 #: webtrees/library/WT/Gedcom/Code/Pedi.php:57
 msgctxt "Female pedigree"
@@ -22138,7 +22136,7 @@ msgstr "Locataire"
 
 #: webtrees/library/WT/Gedcom/Code/Rela.php:147
 msgid "Nanny"
-msgstr "Bonne d’enfants"
+msgstr "Nounou"
 
 #: webtrees/library/WT/Gedcom/Code/Rela.php:150
 msgctxt "MALE"

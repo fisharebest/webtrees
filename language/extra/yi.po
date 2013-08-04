@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2013-07-26 20:03+0000\n"
+"PO-Revision-Date: 2013-08-02 18:53+0000\n"
 "Last-Translator: KosherJava <Unknown>\n"
 "Language-Team: Yiddish <yi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-07-27 05:07+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: yi\n"
 
 #: webtrees/admin_site_access.php:32
@@ -5332,7 +5332,7 @@ msgstr "פאַרוואַלטער"
 #: webtrees/modules_v3/clippings/module.php:594 webtrees/admin_users.php:44
 #: webtrees/admin_trees_download.php:120 webtrees/help_text.php:1422
 msgid "Member"
-msgstr ""
+msgstr "מיטגליד"
 
 #. I18N: Listbox entry; name of a role
 #: webtrees/modules_v3/clippings/module.php:208
@@ -5347,7 +5347,7 @@ msgstr "גאַסט"
 #: webtrees/modules_v3/clippings/module.php:600
 #: webtrees/admin_trees_download.php:125
 msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr ""
+msgstr "בייַטן פון UTF-8 צו ANSI ISO-8859-1"
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: webtrees/modules_v3/clippings/module.php:221
@@ -5367,7 +5367,7 @@ msgstr "אָפּלאָדירן יעצט"
 #: webtrees/modules_v3/clippings/module.php:476
 #: webtrees/modules_v3/clippings/help_text.php:38
 msgid "Empty Cart"
-msgstr ""
+msgstr "ליידיק וואָגן"
 
 #: webtrees/modules_v3/clippings/module.php:278
 msgid "Name / Description"
@@ -5375,12 +5375,12 @@ msgstr "נאָמען / באַשרייַבונג"
 
 #: webtrees/modules_v3/clippings/module.php:337
 msgid "Add to clippings cart"
-msgstr ""
+msgstr "לייג צו ויסשניט וואָגן"
 
 #: webtrees/modules_v3/clippings/module.php:485
 #, php-format
 msgid "Add %s to cart"
-msgstr ""
+msgstr "לייג %s צו וואָגן"
 
 #: webtrees/modules_v3/clippings/module.php:615
 msgid "Cancel"

@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2013-03-09 16:46+0000\n"
-"Last-Translator: Alex <alex@smoc.com.tw>\n"
+"PO-Revision-Date: 2013-08-04 17:04+0000\n"
+"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:38+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:04+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: webtrees/admin_site_access.php:32
 #: webtrees/themes/_administration/header.php:97
@@ -51,7 +51,7 @@ msgstr "機器人"
 #: webtrees/library/WT/Controller/Note.php:106
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "確定要刪除“%s”?"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: webtrees/admin_site_access.php:270
@@ -121,7 +121,7 @@ msgstr "刪除"
 msgid ""
 "The following visitors were not recognised, and were assumed to be search "
 "engines."
-msgstr "以下訪客不被認可，被認為是搜索引擎。"
+msgstr "無法辨識下列訪客, 假設他們是搜尋引擎"
 
 #. I18N: http://en.wikipedia.org/wiki/IP_address
 #: webtrees/admin_site_access.php:294 webtrees/admin_site_logs.php:230
@@ -131,7 +131,7 @@ msgstr "IP 位址"
 
 #: webtrees/admin_site_access.php:297
 msgid "Create a new rule"
-msgstr "建立新的規則"
+msgstr "增加一個新規則"
 
 #. I18N: %s is a surname
 #: webtrees/branches.php:45
@@ -151,14 +151,14 @@ msgstr "支派"
 #: webtrees/admin_media.php:431 webtrees/familybook.php:62
 #: webtrees/compact.php:54
 msgid "View"
-msgstr "查看"
+msgstr "檢視"
 
 #. I18N: search using “sounds like”, rather than exact spelling
 #: webtrees/branches.php:64 webtrees/library/WT/MenuBar.php:421
 #: webtrees/library/WT/Controller/Search.php:244 webtrees/search.php:241
 #: webtrees/search.php:247
 msgid "Phonetic search"
-msgstr "語音搜索"
+msgstr "發音搜尋"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: webtrees/branches.php:67 webtrees/library/WT/Soundex.php:31
@@ -326,7 +326,7 @@ msgstr "加入一個子女"
 
 #: webtrees/edit_interface.php:377
 msgid "Add an unlinked person"
-msgstr "加入一個未連結的個人資料"
+msgstr "加入一個未連結的個人"
 
 #: webtrees/edit_interface.php:395
 #: webtrees/modules_v3/relatives/module.php:402
@@ -355,22 +355,22 @@ msgstr "加入父親"
 #: webtrees/edit_interface.php:446
 #: webtrees/modules_v3/relatives/module.php:435
 msgid "Add a child to create a one-parent family"
-msgstr "加入一個子女成為單親家庭"
+msgstr "加入一個子女到單親家庭"
 
 #: webtrees/edit_interface.php:462 webtrees/edit_interface.php:589
 #: webtrees/modules_v3/relatives/module.php:396
 msgid "Link this person to an existing family as a child"
-msgstr "將此人連結到已存在的家庭中"
+msgstr "連結這個人到一個已存在的家庭 為此一家庭的子女"
 
 #: webtrees/edit_interface.php:464 webtrees/edit_interface.php:591
 #: webtrees/modules_v3/relatives/module.php:429
 msgid "Link this person to an existing family as a wife"
-msgstr "此人連結到現有的家庭成為妻子"
+msgstr "連結這個人到一個已存在的家庭 為此一家庭的妻子"
 
 #: webtrees/edit_interface.php:466 webtrees/edit_interface.php:593
 #: webtrees/modules_v3/relatives/module.php:412
 msgid "Link this person to an existing family as a husband"
-msgstr "此人連結到現有的家庭成為丈夫"
+msgstr "連結這個人到一個已存在的家庭 為此一家庭的丈夫"
 
 #. I18N: Name of a module/report
 #. I18N: gedcom tag FAM
@@ -387,17 +387,17 @@ msgstr "此人連結到現有的家庭成為丈夫"
 #: webtrees_tmp/modules_v3_family_group_report_report.xml.php:86
 #: webtrees_tmp/modules_v3_family_group_report_report.xml.php:94
 msgid "Family"
-msgstr "家庭"
+msgstr "家族"
 
 #: webtrees/edit_interface.php:522
 #: webtrees/modules_v3/relatives/module.php:424
 msgid "Add a husband using an existing person"
-msgstr "為現有的人加入丈夫資料"
+msgstr "加入一個已存在的人為丈夫"
 
 #: webtrees/edit_interface.php:524
 #: webtrees/modules_v3/relatives/module.php:407
 msgid "Add a wife using an existing person"
-msgstr "為現有的人加入妻子資料"
+msgstr "加入一個已存在的人為妻子"
 
 #. I18N: gedcom tag WIFE
 #: webtrees/edit_interface.php:541 webtrees/library/WT/Gedcom/Tag.php:340
@@ -432,15 +432,15 @@ msgstr "丈夫"
 #: webtrees/admin_site_other.php:64
 #: webtrees/includes/functions/functions_edit.php:1189
 msgid "Create a new source"
-msgstr "建立新來源"
+msgstr "新一個來源"
 
 #: webtrees/edit_interface.php:678
 msgid "You must provide a source title"
-msgstr "必須提供來源標題"
+msgstr "你必須填寫來源標題"
 
 #: webtrees/edit_interface.php:726 webtrees/help_text.php:1210
 msgid "Associate events with this source"
-msgstr "建立事件與此來源的關連"
+msgstr "事件與此來源的關聯"
 
 #: webtrees/edit_interface.php:730
 msgid "Select Events"
@@ -461,7 +461,7 @@ msgstr "共享的筆記"
 #: webtrees/edit_interface.php:886 webtrees/edit_interface.php:928
 #: webtrees/includes/functions/functions_edit.php:1181
 msgid "Create a new Shared Note using Assistant"
-msgstr "使用助理立新的註記"
+msgstr "使用註記助理建立一個新的共享"
 
 #. I18N: Name of a module/sidebar
 #: webtrees/edit_interface.php:942
@@ -673,7 +673,7 @@ msgstr "分享註記"
 #: webtrees/admin_site_config.php:31 webtrees/admin_site_config.php:41
 #: webtrees/themes/_administration/header.php:93
 msgid "Site configuration"
-msgstr "網站設定"
+msgstr "網站配置"
 
 #: webtrees/admin_site_config.php:42
 msgid "Mail configuration"
@@ -899,7 +899,7 @@ msgstr "拒絕"
 msgid ""
 "This source has been deleted.  You should review the deletion and then %1$s "
 "or %2$s it."
-msgstr ""
+msgstr "此來源已被刪除。你應該審閱這刪除操作以及%1$s或%2$s"
 
 #: webtrees/source.php:49
 msgid ""
@@ -925,7 +925,7 @@ msgstr "拒絕"
 msgid ""
 "This source has been edited.  You should review the changes and then %1$s or "
 "%2$s them."
-msgstr ""
+msgstr "此來源已被編輯。你應該審閱的更改，然後%1$s 或%2$s的他們。"
 
 #: webtrees/source.php:67
 msgid ""
@@ -1289,7 +1289,7 @@ msgstr "大型系統（50000人）：64-128MB,40-80秒"
 #, php-format
 msgid ""
 "This server's memory limit is %dMB and its CPU time limit is %d seconds."
-msgstr ""
+msgstr "此伺服器的記憶體限制是%dMB和它的CPU時間上限是%d秒。"
 
 #: webtrees/setup.php:196
 msgid ""

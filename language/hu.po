@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2012-06-02 04:14+0000\n"
-"Last-Translator: B. <vankos@resist.hu>\n"
+"PO-Revision-Date: 2013-08-04 18:03+0000\n"
+"Last-Translator: Szabolcs <a.sz.szelp@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:29+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: \n"
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -22,22 +22,22 @@ msgstr ""
 #: webtrees/admin_site_access.php:32
 #: webtrees/themes/_administration/header.php:97
 msgid "Site access rules"
-msgstr ""
+msgstr "Hozzáférési szabályok"
 
 #. I18N: An access rule - allow access to the site
 #: webtrees/admin_site_access.php:109 webtrees/admin_site_access.php:300
 msgid "allow"
-msgstr ""
+msgstr "engedélyezve"
 
 #. I18N: An access rule - deny access to the site
 #: webtrees/admin_site_access.php:110 webtrees/admin_site_access.php:301
 msgid "deny"
-msgstr ""
+msgstr "tiltva"
 
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: webtrees/admin_site_access.php:111 webtrees/admin_site_access.php:302
 msgid "robot"
-msgstr ""
+msgstr "keresőrobot"
 
 #: webtrees/admin_site_access.php:114 webtrees/admin_trees_manage.php:229
 #: webtrees/admin_users.php:172
@@ -52,13 +52,15 @@ msgstr ""
 #: webtrees/library/WT/Controller/Note.php:106
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "Biztos, hogy törölni akarod ezt: „%s”?"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: webtrees/admin_site_access.php:270
 msgid ""
 "Restrict access to the site, using IP addresses and user-agent strings"
 msgstr ""
+"Korlátozd az oldalhoz való hozzáférést IP-címek és böngésző-azonosítók "
+"segítségével"
 
 #: webtrees/admin_site_access.php:272
 msgid ""
@@ -66,26 +68,29 @@ msgid ""
 "(allow full access), a search-engine robot (allow restricted access) or an "
 "unwanted crawler (deny all access)."
 msgstr ""
+"A következő szabályok arra valók, hogy megállapíthassuk, hogy egy látogató "
+"egy emberi lény (teljes hozzáférés) vagy egy keresőrobot (korlátozott "
+"hozzáférés) vagy egy nemkívánatos robot (tiltott hozzáférés)."
 
 #. I18N [...] of a range of addresses
 #: webtrees/admin_site_access.php:277
 msgid "Start IP address"
-msgstr ""
+msgstr "első IP-cím"
 
 #. I18N [...] of a range of addresses
 #: webtrees/admin_site_access.php:279
 msgid "End IP address"
-msgstr ""
+msgstr "utolsó IP-cím"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: webtrees/admin_site_access.php:281 webtrees/admin_site_access.php:296
 msgid "User-agent string"
-msgstr ""
+msgstr "böngésző-azonosító"
 
 #. I18N: noun
 #: webtrees/admin_site_access.php:282
 msgid "Rule"
-msgstr ""
+msgstr "Szabály"
 
 #. I18N: gedcom tag COMM
 #: webtrees/admin_site_access.php:283 webtrees/library/WT/Gedcom/Tag.php:168
@@ -123,6 +128,8 @@ msgid ""
 "The following visitors were not recognised, and were assumed to be search "
 "engines."
 msgstr ""
+"A következő látogatók eddig nem voltak ismertek, és ezért keresőrobotnak "
+"lettek feltételezve:"
 
 #. I18N: http://en.wikipedia.org/wiki/IP_address
 #: webtrees/admin_site_access.php:294 webtrees/admin_site_logs.php:230
@@ -132,13 +139,13 @@ msgstr "IP cím"
 
 #: webtrees/admin_site_access.php:297
 msgid "Create a new rule"
-msgstr ""
+msgstr "Új szabály létrehozása"
 
 #. I18N: %s is a surname
 #: webtrees/branches.php:45
 #, php-format
 msgid "Branches of the %s family"
-msgstr ""
+msgstr "A %s család ágai"
 
 #: webtrees/branches.php:47 webtrees/library/WT/MenuBar.php:301
 msgid "Branches"
@@ -165,7 +172,7 @@ msgstr "Fonetikus keresés"
 #: webtrees/branches.php:67 webtrees/library/WT/Soundex.php:31
 #: webtrees/search.php:192
 msgid "Russell"
-msgstr ""
+msgstr "Russell"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: webtrees/branches.php:69 webtrees/library/WT/Soundex.php:32
@@ -175,17 +182,17 @@ msgstr "Daitch-Mokotoff"
 
 #: webtrees/branches.php:102
 msgid "Collapse all"
-msgstr ""
+msgstr "Az összes összecsukása"
 
 #: webtrees/branches.php:103
 msgid "Expand all"
-msgstr ""
+msgstr "Az összes kibontása"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is a individual’s surname, so may need transliterating into non-latin alphabets.
 #: webtrees/branches.php:134 webtrees/branches.php:160
 #: webtrees/includes/functions/functions_print_lists.php:209
 msgid "Sosa"
-msgstr ""
+msgstr "Sosa"
 
 #: webtrees/branches.php:169 webtrees/modules_v3/charts/module.php:216
 #: webtrees/modules_v3/relatives/module.php:206
@@ -323,7 +330,7 @@ msgstr "Ne frissítse az \"utolsó módosítás\" mezőt"
 
 #: webtrees/edit_interface.php:375
 msgid "Add a new child"
-msgstr ""
+msgstr "Új gyermek hozzáadása"
 
 #: webtrees/edit_interface.php:377
 msgid "Add an unlinked person"
@@ -506,7 +513,7 @@ msgstr "Gyermek hozzáadása"
 #: webtrees/edit_interface.php:1537
 #: webtrees/modules_v3/relatives/module.php:37
 msgid "Add a new spouse"
-msgstr ""
+msgstr "Új férj/feleség hozzáadása"
 
 #: webtrees/edit_interface.php:1840
 #: webtrees/includes/functions/functions_edit.php:1486
@@ -661,7 +668,7 @@ msgstr "Hozzáadás"
 #: webtrees/modules_v3/relatives/module.php:390
 #: webtrees/library/WT/Controller/Individual.php:333
 msgid "Re-order families"
-msgstr ""
+msgstr "Családok sorrendjének átrendezése"
 
 #. I18N: An option in a list-box
 #: webtrees/edit_interface.php:2442 webtrees/reportengine.php:514
@@ -686,7 +693,7 @@ msgstr "Levelezés beállítása"
 
 #: webtrees/admin_site_config.php:45 webtrees/help_text.php:596
 msgid "Data folder"
-msgstr ""
+msgstr "Adatfájlok mappája"
 
 #: webtrees/admin_site_config.php:47 webtrees/help_text.php:697
 msgid "Memory limit"
@@ -829,7 +836,7 @@ msgstr ""
 #: webtrees/relationship.php:62
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr ""
+msgstr "%1$s és %2$s közti rokoni kapcsolat"
 
 #: webtrees/relationship.php:73 webtrees/relationship.php:87
 #: webtrees/includes/functions/functions_print.php:666
@@ -837,7 +844,7 @@ msgstr ""
 #: webtrees/library/WT/MenuBar.php:112 webtrees/library/WT/MenuBar.php:230
 #: webtrees/library/WT/MenuBar.php:255
 msgid "Relationships"
-msgstr ""
+msgstr "Rokoni kapcsolat"
 
 #: webtrees/relationship.php:90 webtrees/admin_users.php:509
 msgid "Options:"
@@ -1335,20 +1342,23 @@ msgstr ""
 #: webtrees/admin_pgv_to_wt.php:1023 webtrees/admin_trees_download.php:140
 #: webtrees/login.php:185 webtrees/login.php:421
 msgid "continue"
-msgstr ""
+msgstr "tovább"
 
 #: webtrees/setup.php:224
 msgid "Oops!  webtrees was unable to create files in this folder."
 msgstr ""
+"Elnézést, a webtrees nem tudott fájlokat létrehozni ebben a mappában."
 
 #: webtrees/setup.php:225
 msgid ""
 "This usually means that you need to change the folder permissions to 777."
 msgstr ""
+"Ez általában azt jelenti, hogy a mappa hozzáférési engedélyeit 777-re kell "
+"állítani."
 
 #: webtrees/setup.php:226
 msgid "You must change this before you can continue."
-msgstr ""
+msgstr "Enélkül a változtatás nélkül nem lehet folytatni a telepítést."
 
 #: webtrees/setup.php:256
 #, php-format
@@ -1536,6 +1546,9 @@ msgid ""
 "notifications, and messages from other family members who are registered on "
 "the site."
 msgstr ""
+"Erre az e-mail-címre érkeznek majd a jelszó-emlékeztető üzenetek, az "
+"oldallal kapcsolatos jelentések és más az oldalon regisztrált felhasználók "
+"(családtagok) üzenetei."
 
 #: webtrees/setup.php:944
 msgid "An unexpected database error occured."
@@ -1560,7 +1573,7 @@ msgstr "Média állomány feltöltése"
 #: webtrees/admin_trees_config.php:185
 #, php-format
 msgid "The folder %s was created."
-msgstr ""
+msgstr "A %s mappa létre lett hozva."
 
 #: webtrees/admin_media_upload.php:63 webtrees/admin_media_upload.php:74
 #: webtrees/admin_media_upload.php:86 webtrees/addmedia.php:114
@@ -1569,7 +1582,7 @@ msgstr ""
 #: webtrees/addmedia.php:296 webtrees/admin_trees_config.php:187
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
-msgstr ""
+msgstr "A %s mappa nem létezik és nem lehetett létrehozni"
 
 #: webtrees/admin_media_upload.php:100 webtrees/addmedia.php:151
 msgid "Thumbnails must be images."
@@ -1579,13 +1592,13 @@ msgstr ""
 #: webtrees/addmedia.php:309
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr ""
+msgstr "A fájlnevek nem tartalmazhatják a következő jeleket: „%s”."
 
 #: webtrees/admin_media_upload.php:119 webtrees/addmedia.php:178
 #: webtrees/addmedia.php:314
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr ""
+msgstr "A kiterjesztés nem lehet  „%s”."
 
 #: webtrees/admin_media_upload.php:123 webtrees/addmedia.php:182
 #: webtrees/addmedia.php:318
@@ -1595,12 +1608,12 @@ msgstr ""
 #: webtrees/admin_media_upload.php:133 webtrees/addmedia.php:192
 #, php-format
 msgid "The file %s already exists.  Use another filename."
-msgstr ""
+msgstr "A „%s” fájl már létezik. Használj más nevet."
 
 #: webtrees/admin_media_upload.php:138 webtrees/admin_media_upload.php:157
 #, php-format
 msgid "The file %s was uploaded."
-msgstr ""
+msgstr "A  „%s” fájl sikeresen feltöltődött."
 
 #: webtrees/admin_media_upload.php:179
 msgid "Maximum upload size: "
@@ -1656,31 +1669,31 @@ msgstr ""
 
 #: webtrees/admin_trees_check.php:132
 msgid "Types of error"
-msgstr ""
+msgstr "Hibák típusai"
 
 #: webtrees/admin_trees_check.php:133
 msgid "This may cause a problem for webtrees."
-msgstr ""
+msgstr "Ez gondot okozhat a webtreesnek."
 
 #: webtrees/admin_trees_check.php:134
 msgid "This may cause a problem for other applications."
-msgstr ""
+msgstr "Ez más programoknak okozhat gondot."
 
 #: webtrees/admin_trees_check.php:135
 msgid "This may be a mistake in your data."
-msgstr ""
+msgstr "Ez lehet, hogy hiba az adataidban."
 
 #. I18N: placeholders are GEDCOM IDs, such as R123
 #: webtrees/admin_trees_check.php:158
 #, php-format
 msgid "%1$s does not exist.  Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s nem létezik. %2$s-ra/re gondoltál?"
 
 #. I18N: placeholders are GEDCOM IDs, such as R123
 #: webtrees/admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s nem létezik."
 
 #: webtrees/admin_trees_check.php:174
 msgid "This type of link is not allowed here."
@@ -1690,13 +1703,13 @@ msgstr ""
 #: webtrees/admin_trees_check.php:180
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s egy %2$s típusú azonosító, de %3$s típusú a várt bejegyzés."
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: webtrees/admin_trees_check.php:191
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s-nak/nek nincs visszacsatolása %2$s-hoz/hez/höz."
 
 #. I18N: The placeholders are GEDCOM identifiers and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
 #: webtrees/admin_trees_check.php:200
@@ -1706,7 +1719,7 @@ msgstr ""
 
 #: webtrees/admin_trees_check.php:228
 msgid "No errors were found."
-msgstr ""
+msgstr "Nincs hiba."
 
 #: webtrees/timeline.php:130 webtrees/timeline.php:132
 #: webtrees/timeline.php:133
@@ -1866,21 +1879,21 @@ msgstr "Források"
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_find.php:77
 #: webtrees/includes/functions/functions_print.php:1124
 msgid "Find an individual"
-msgstr ""
+msgstr "Személy keresése"
 
 #: webtrees/find.php:76 webtrees/admin_site_merge.php:296
 #: webtrees/admin_site_merge.php:317
 #: webtrees/includes/functions/functions_print.php:1132
 msgid "Find a family"
-msgstr ""
+msgstr "Család keresése"
 
 #: webtrees/find.php:79 webtrees/includes/functions/functions_print.php:1162
 msgid "Find a media object"
-msgstr ""
+msgstr "Média keresése"
 
 #: webtrees/find.php:82 webtrees/includes/functions/functions_print.php:1128
 msgid "Find a place"
-msgstr ""
+msgstr "Hely keresése"
 
 #: webtrees/find.php:85 webtrees/includes/functions/functions_print.php:1158
 msgid "Find a repository"
@@ -1888,14 +1901,14 @@ msgstr ""
 
 #: webtrees/find.php:88 webtrees/includes/functions/functions_print.php:1154
 msgid "Find a note"
-msgstr ""
+msgstr "Jegyzet/megjegyzés keresése"
 
 #: webtrees/find.php:91 webtrees/admin_site_merge.php:297
 #: webtrees/admin_site_merge.php:318
 #: webtrees/includes/functions/functions_print.php:1150
 #: webtrees_tmp/modules_v3_fact_sources_report.xml.php:6
 msgid "Find a source"
-msgstr ""
+msgstr "Forrás keresése"
 
 #: webtrees/find.php:94 webtrees/includes/functions/functions_print.php:1136
 msgid "Find a special character"
@@ -1903,7 +1916,7 @@ msgstr ""
 
 #: webtrees/find.php:109 webtrees/includes/functions/functions_print.php:1166
 msgid "Find a fact or event"
-msgstr ""
+msgstr "Tény vagy esemény keresése"
 
 #: webtrees/find.php:144 webtrees/modules_v3/GEDFact_assistant/module.php:117
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_find.php:62
@@ -1988,7 +2001,7 @@ msgstr "Családok összesen: %s"
 
 #: webtrees/find.php:584 webtrees/admin_media.php:493
 msgid "This media object is not linked to any other record."
-msgstr ""
+msgstr "Ez a média egyetlen bejegyzéshez sincs kötve."
 
 #: webtrees/find.php:615
 msgid "Places found"
@@ -2190,7 +2203,7 @@ msgstr "Elhalálozások"
 #: webtrees/modules_v3/death_report/module.php:41
 #: webtrees_tmp/modules_v3_death_report_report.xml.php:5
 msgid "A report of individuals who died in a given time or place."
-msgstr ""
+msgstr "Adott időhatárok között elhalálozott személyekről készüt jelentés."
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/upcoming_events/module.php:34
@@ -2509,7 +2522,7 @@ msgstr "Lista a leggyakoribb keresztnevekről."
 #. I18N: i.e. most popular given name.
 #: webtrees/modules_v3/top10_givnnames/module.php:68
 msgid "Top given name"
-msgstr ""
+msgstr "A leggyakoribb utónév"
 
 #. I18N: Title for a list of the most common given names, %s is a number.  Note that a separate translation exists when %s is 1
 #: webtrees/modules_v3/top10_givnnames/module.php:71
@@ -2517,7 +2530,7 @@ msgstr ""
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
 msgstr[0] ""
-msgstr[1] ""
+msgstr[1] "Leggyakoribb utónevek"
 
 #: webtrees/modules_v3/top10_givnnames/module.php:142
 #: webtrees/modules_v3/top10_surnames/module.php:155
@@ -2541,7 +2554,7 @@ msgstr "Lista azokról a személyekről akiknek meg van adva a foglalkozása."
 #. I18N: Description of the “Sources” module
 #: webtrees/modules_v3/sources_tab/module.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "A személyhez kötött forrásokat mutató fül."
 
 #: webtrees/modules_v3/sources_tab/module.php:59 webtrees/help_text.php:1449
 msgid "Show all sources"
@@ -2659,7 +2672,7 @@ msgstr "Házasságok"
 #: webtrees/modules_v3/marriage_report/module.php:41
 #: webtrees_tmp/modules_v3_marriage_report_report.xml.php:5
 msgid "A report of individuals who were married in a given time or place."
-msgstr ""
+msgstr "Adott időben vagy helyen esküdött személyekről készüt jelentés."
 
 #. I18N: Name of a module/block
 #: webtrees/modules_v3/charts/module.php:34
@@ -2933,15 +2946,15 @@ msgstr "Aktuális változások blokk"
 #. I18N: Description of the “Recent changes” module
 #: webtrees/modules_v3/recent_changes/module.php:41
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "Nemrég módosított bejegyzések listázása."
 
 #. I18N: title for list of recent changes
 #: webtrees/modules_v3/recent_changes/module.php:75
 #, php-format
 msgid "Changes in the last day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Az elmúlt 24 óra módosításai"
+msgstr[1] "Az elmúlt %s nap módosításai"
 
 #: webtrees/modules_v3/recent_changes/module.php:80
 #, php-format
@@ -2951,7 +2964,7 @@ msgstr "Nem történtek változások az elmúlt %s napon."
 #. I18N: An option in a list-box
 #: webtrees/modules_v3/recent_changes/module.php:155
 msgid "sort by date, oldest first"
-msgstr ""
+msgstr "rendezés dátum szerint (legrégibb legelöl)"
 
 #. I18N: An option in a list-box
 #: webtrees/modules_v3/recent_changes/module.php:156
@@ -3188,12 +3201,12 @@ msgstr ""
 
 #: webtrees/modules_v3/relatives/module.php:38
 msgid "Add a new parent"
-msgstr ""
+msgstr "Szülő hozzáadása"
 
 #. I18N: Description of the “Families” module
 #: webtrees/modules_v3/relatives/module.php:43
 msgid "A tab showing the close relatives of an individual."
-msgstr ""
+msgstr "A személy közvetlen hozzátartazóit megjelenítő fül."
 
 #: webtrees/modules_v3/relatives/module.php:55
 #: webtrees/modules_v3/random_media/module.php:184
@@ -3230,7 +3243,7 @@ msgstr "Házasság részleteinek hozzáadása"
 
 #: webtrees/modules_v3/relatives/module.php:277
 msgid "Add a new son or daughter"
-msgstr ""
+msgstr "Gyermek hozzáadása"
 
 #: webtrees/modules_v3/relatives/module.php:281
 msgid "Add a new brother or sister"
@@ -3284,6 +3297,12 @@ msgid ""
 "reminder to check facts against more reliable sources, to obtain documents "
 "or photographs, to resolve conflicting information, etc."
 msgstr ""
+"Kutatási teendők speciális \"esemény\"-bejegyzések, amelyeket a családfa "
+"egyedeihez lehet csatolni, és abban segítenek, hogy további kutatómunka "
+"igényét jelölik. Például emlékeztetőként használhatod őket, hogy egy "
+"adatokat még több vagy megbízhatóbb forrásból kellene ellenőrizni, hogy "
+"dokumentumokat vagy fényképeket kellene még beszerezni vagy hogy még "
+"dolgozni kell még ellentmondó információk feloldásán, stb."
 
 #: webtrees/modules_v3/todo/help_text.php:36
 msgid ""
@@ -3296,6 +3315,8 @@ msgid ""
 "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other "
 "genealogy applications may not recognise this tag."
 msgstr ""
+"Kutatási teendők a „_TODO” GEDCOM-címke segítségével lesznek eltárolva. Más "
+"családkutatási programok eseteg nem ismerik ezt a címkét."
 
 #. I18N: Description of the “Edit” module
 #: webtrees/modules_v3/page_menu/module.php:39
@@ -3647,7 +3668,7 @@ msgstr "Online felhasználók"
 #. I18N: Description of the “Who is online” module
 #: webtrees/modules_v3/logged_in/module.php:39
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "Az éppen online levő felhasználók és látogatók listája."
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: webtrees/modules_v3/bdm_report/module.php:35
@@ -3800,16 +3821,22 @@ msgid ""
 "sitemaps.  For more information, see <a "
 "href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
+"Oldaltérképeket arra használnak web-adminisztrátorok, hogy információt "
+"szolgáltassanak keresőmotoroknak az oldal feltérképezéséhez. Minden jelentős "
+"keresőmotor támogatja az oldaltérképeket. Több információért lásd: <a "
+"href=\"http://www.sitemaps.org/\">www.sitemaps.org</a> (angolul)."
 
 #: webtrees/modules_v3/sitemap/module.php:241
 msgid "Which family trees should be included in the sitemaps?"
-msgstr ""
+msgstr "Melyik családfát vegyük bele ebbe az oldaltérképbe?"
 
 #: webtrees/modules_v3/sitemap/module.php:260
 msgid ""
 "To tell search engines that sitemaps are available, you should add the "
 "following line to your robots.txt file."
 msgstr ""
+"Hogy értesíts a keresőmotorokat arról, hogy melyik oldaltérképek állnak "
+"rendelkezésre, illesztd a következő sort a „robots.txt” fájlba."
 
 #: webtrees/modules_v3/sitemap/module.php:264
 msgid ""
@@ -4186,7 +4213,7 @@ msgstr "Saját Személyes Adataim"
 #: webtrees/modules_v3/googlemap/module.php:1462
 #: webtrees/modules_v3/googlemap/admin_places.php:178
 msgid "Google Maps™ preferences"
-msgstr ""
+msgstr "Google Maps™ beállítások"
 
 #: webtrees/modules_v3/googlemap/placehierarchy.php:172
 #: webtrees/modules_v3/googlemap/placehierarchy.php:368
@@ -4198,7 +4225,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/places_edit.php:41
 #: webtrees/modules_v3/googlemap/admin_places.php:183
 msgid "Geographic data"
-msgstr ""
+msgstr "Földrajzi adatok"
 
 #: webtrees/modules_v3/googlemap/placehierarchy.php:174
 #: webtrees/modules_v3/googlemap/module.php:134
@@ -4239,7 +4266,7 @@ msgstr "Visszaállít"
 #: webtrees/modules_v3/googlemap/wt_v3_googlemap.js.php:612
 #: webtrees/modules_v3/googlemap/module.php:270
 msgid "Google Street View™"
-msgstr ""
+msgstr "Google Street View™"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: webtrees/modules_v3/googlemap/placehierarchy.php:244
@@ -4436,7 +4463,7 @@ msgstr "Szint"
 
 #: webtrees/modules_v3/googlemap/module.php:394
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr ""
+msgstr "Google Maps™ használata a földrajzi helyek hierarchiájához"
 
 #: webtrees/modules_v3/googlemap/module.php:407
 msgid "Type of place markers in Place Hierarchy"
@@ -4854,7 +4881,7 @@ msgstr ""
 
 #: webtrees/modules_v3/googlemap/admin_places.php:348
 msgid "Overwrite existing coordinates."
-msgstr ""
+msgstr "Meglévő koordináták átírása."
 
 #: webtrees/modules_v3/googlemap/admin_places.php:352
 #: webtrees/modules_v3/clippings/module.php:94
@@ -4882,7 +4909,7 @@ msgstr "Felső szint"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:632
 msgid "Add  a new geographic location"
-msgstr ""
+msgstr "Új földrajzi hely hozzáadása"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:643
 msgid "Import all places from a family tree"
@@ -4895,11 +4922,11 @@ msgstr "Importálás"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:657
 msgid "Upload geographic data"
-msgstr ""
+msgstr "Földrajzi adatok feltöltése."
 
 #: webtrees/modules_v3/googlemap/admin_places.php:670
 msgid "Download geographic data"
-msgstr ""
+msgstr "Földrajzi adatok letöltése"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:678
 #: webtrees/admin_trees_manage.php:221
@@ -5253,7 +5280,7 @@ msgstr "Forrás megjelenítése"
 
 #: webtrees/modules_v3/random_media/module.php:196
 msgid "This family tree has no images to display."
-msgstr ""
+msgstr "Ennek a családfának nincsenek kijelezhető képei."
 
 #: webtrees/modules_v3/random_media/module.php:262
 msgid "Show only persons, events, or all?"
@@ -5493,7 +5520,7 @@ msgstr ""
 #: webtrees/admin_trees_download.php:131 webtrees/admin_trees_config.php:591
 #: webtrees/help_text.php:562
 msgid "GEDCOM media path"
-msgstr ""
+msgstr "GEDCOM média elérési ösvény"
 
 #: webtrees/modules_v3/clippings/module.php:228
 #: webtrees/modules_v3/clippings/module.php:480
@@ -5884,13 +5911,15 @@ msgstr "Szövegbevitel:"
 #: webtrees/site-offline.php:73 webtrees/site-unavailable.php:65
 #: webtrees/site-php-version.php:70
 msgid "This website is temporarily unavailable"
-msgstr ""
+msgstr "Ez az oldal ideiglenesen nem elérhető."
 
 #: webtrees/site-offline.php:79
 msgid ""
 "The site is down for maintenance.  You should <a href=\"index.php\">try "
 "again</a> in a few minutes."
 msgstr ""
+"Az oldalon éppen karbantartás folyik. <a href=\"index.php\">Próbáld meg "
+"újra</a> pár perc múlva."
 
 #: webtrees/downloadbackup.php:34
 msgid "Error"
@@ -5898,7 +5927,7 @@ msgstr "Hiba"
 
 #: webtrees/downloadbackup.php:36 webtrees/includes/session.php:586
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "Nincs kellő jogosultságod, hogy ezt az oldalt megjelenítsük."
 
 #: webtrees/index_edit.php:249 webtrees/index_edit.php:334
 msgid ""
@@ -6643,12 +6672,12 @@ msgstr "Hivatkozás nélküli elem hozzáadása"
 #. I18N: An individual that is not linked to any other record
 #: webtrees/admin_site_other.php:50
 msgid "Create a new individual"
-msgstr ""
+msgstr "Új (senkihez rokoni viszonyban nem álló) személy létrehozása"
 
 #. I18N: An note that is not linked to any other record
 #: webtrees/admin_site_other.php:57
 msgid "Create a new note"
-msgstr ""
+msgstr "Új jegyzet/megjegyzés létrehozása"
 
 #: webtrees/hourglass.php:91 webtrees/help_text.php:1454
 #: webtrees/familybook.php:81
@@ -6772,13 +6801,13 @@ msgstr "Írjon be egy érvényes e-mail címet!"
 
 #: webtrees/message.php:70 webtrees/login.php:265
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "Külső hivatkozásokat tartalmazó üzeneteket nem lehet küldeni."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: webtrees/message.php:71 webtrees/login.php:266
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr ""
+msgstr "Próbáld meg a „%2$s” címet beadni „%1$s” nélkül."
 
 #: webtrees/message.php:106
 msgid "Please enter a message subject."
@@ -6994,8 +7023,8 @@ msgstr "E-mail cím ellenőrizve"
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Használj legalább %s karaktert."
+msgstr[1] "Használj legalább %s karaktert."
 
 #: webtrees/admin_users.php:395 webtrees/login.php:408
 #: webtrees/edituser.php:158 webtrees/help_text.php:1339
@@ -7005,7 +7034,7 @@ msgstr "Jelszó még egyszer"
 #. I18N: placeholder text for repeat-password field
 #: webtrees/admin_users.php:396 webtrees/login.php:409
 msgid "Type the password again."
-msgstr ""
+msgstr "Add be újra a jelszót."
 
 #. I18N: gedcom tag LANG
 #: webtrees/admin_users.php:410 webtrees/admin_users.php:581
@@ -7230,7 +7259,7 @@ msgstr "Blue Marine"
 #. I18N: The name of a colour-scheme
 #: webtrees/themes/colors/theme.php:83
 msgid "Coffee and Cream"
-msgstr ""
+msgstr "Kávé tejszínnel"
 
 #. I18N: The name of a colour-scheme
 #: webtrees/themes/colors/theme.php:84
@@ -7270,7 +7299,7 @@ msgstr "Pink Plastic"
 #. I18N: The name of a colour-scheme
 #: webtrees/themes/colors/theme.php:91
 msgid "Sage"
-msgstr ""
+msgstr "Zsálya"
 
 #. I18N: The name of a colour-scheme
 #: webtrees/themes/colors/theme.php:92
@@ -7310,7 +7339,7 @@ msgstr ""
 
 #: webtrees/themes/_administration/header.php:118
 msgid "Changes log"
-msgstr ""
+msgstr "Változtatások naplója"
 
 #: webtrees/themes/_administration/header.php:119
 msgid "Set the default blocks for new family trees"
@@ -7410,6 +7439,7 @@ msgstr "Telepítési mappa"
 #: webtrees/admin_pgv_to_wt.php:1022
 msgid "You need to login again, using your PhpGedView username and password."
 msgstr ""
+"Újra be kell jelentkezned a PhpGedView felhasználóneveddel és jelszavaddal."
 
 #. I18N: %s are both user-input date fields
 #: webtrees/admin_site_logs.php:220 webtrees/admin_site_change.php:250
@@ -10248,14 +10278,14 @@ msgstr "Rokonsági kapcsolat hozzám"
 #: webtrees/library/WT/Controller/Fanchart.php:322
 #: webtrees/library/WT/Controller/Compact.php:50
 msgid "Compact tree"
-msgstr ""
+msgstr "Kompakt családfa"
 
 #: webtrees/includes/functions/functions_print.php:102
 #: webtrees/library/WT/MenuBar.php:116
 #: webtrees/library/WT/Controller/Fanchart.php:55
 #: webtrees/library/WT/Controller/Fanchart.php:323
 msgid "Fan chart"
-msgstr ""
+msgstr "Legyezős ábrázolás"
 
 #: webtrees/includes/functions/functions_print.php:114
 msgid "Family with spouse"
@@ -10271,6 +10301,8 @@ msgid ""
 "Execution time: %1$s seconds. Database queries: %2$s. Privacy checks: %3$s. "
 "Memory usage: %4$s KB."
 msgstr ""
+"Végrehajtási idő: %1$s másodperc. Adatbank lekérések száma: %2$s. "
+"Adatvédelmi ellenőrzések: %3$s. Memóriafelhasználás: %4$s kB."
 
 #: webtrees/includes/functions/functions_print.php:335
 #: webtrees/library/WT/Stats.php:3419
@@ -10327,7 +10359,7 @@ msgstr "További információt itt kérhet:"
 
 #: webtrees/includes/functions/functions_print.php:601
 msgid "webtrees wiki"
-msgstr ""
+msgstr "webtrees wiki"
 
 #: webtrees/includes/functions/functions_print.php:720
 msgid "Mother's age"
@@ -10362,7 +10394,7 @@ msgstr "Státusz"
 
 #: webtrees/includes/functions/functions_print.php:1068
 msgid "Fact or event"
-msgstr ""
+msgstr "Tény ill. esemény"
 
 #: webtrees/includes/functions/functions_print.php:1077
 #: webtrees/calendar.php:264
@@ -10676,8 +10708,8 @@ msgstr "Semmi esemény nincs holnap."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nincsenek események az elkövetkező napon."
+msgstr[1] "Nincsenek események az elkövetkező %s napon."
 
 #: webtrees/includes/functions/functions_print_lists.php:1843
 #: webtrees/includes/functions/functions_print_lists.php:1952
@@ -10690,8 +10722,8 @@ msgstr "Semmi esemény nincs holnap az élők között."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nincsenek élő embereket érintő események az elkövetkező napon."
+msgstr[1] "Nincsenek élő embereket érintő események az elkövetkező %s napon."
 
 #: webtrees/includes/functions/functions_print_lists.php:1987
 #: webtrees/library/WT/Stats.php:2392
@@ -10717,22 +10749,22 @@ msgstr "Halva született"
 #. I18N: time format “%a” - exactly 00:00:00
 #: webtrees/includes/functions/functions_date.php:101
 msgid "midnight"
-msgstr ""
+msgstr "éjfél"
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: webtrees/includes/functions/functions_date.php:103
 msgid "a.m."
-msgstr ""
+msgstr "de."
 
 #. I18N: time format “%a” - exactly 12:00:00
 #: webtrees/includes/functions/functions_date.php:105
 msgid "noon"
-msgstr ""
+msgstr "dél"
 
 #. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: webtrees/includes/functions/functions_date.php:107
 msgid "p.m."
-msgstr ""
+msgstr "du."
 
 #. I18N: time format “%A” - exactly 00:00:00
 #: webtrees/includes/functions/functions_date.php:113
@@ -10855,7 +10887,7 @@ msgstr ""
 #. I18N: button label
 #: webtrees/includes/functions/functions_edit.php:954
 msgid "go to new individual"
-msgstr ""
+msgstr "Folytatás az új személlyel."
 
 #: webtrees/includes/functions/functions_edit.php:1163
 #: webtrees/reportengine.php:253
@@ -10874,7 +10906,7 @@ msgstr "Új kapcsolat hozzáadás"
 
 #: webtrees/includes/functions/functions_edit.php:1800
 msgid "Add a new restriction"
-msgstr ""
+msgstr "Új korlátozás hozzáadása"
 
 #: webtrees/includes/functions/functions_edit.php:2246
 #: webtrees/includes/functions/functions_edit.php:2255
@@ -10984,7 +11016,7 @@ msgstr "Online szerkesztés"
 #. I18N: This message is deleted in webtrees-1.4.2
 #: webtrees/includes/old_messages.php:42
 msgid "Outgoing server (SMTP) name"
-msgstr ""
+msgstr "kimenő e-mail (SMTP) szerver neve"
 
 #. I18N: This message is deleted in webtrees-1.4.2
 #: webtrees/includes/old_messages.php:43
@@ -10994,7 +11026,7 @@ msgstr "Port"
 #. I18N: This message is deleted in webtrees-1.4.2
 #: webtrees/includes/old_messages.php:44
 msgid "SMTP port"
-msgstr ""
+msgstr "SMTP port"
 
 #. I18N: This message is deleted in webtrees-1.4.2
 #: webtrees/includes/old_messages.php:45
@@ -11117,12 +11149,12 @@ msgstr ""
 #: webtrees/includes/config_data.php:37
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: webtrees/includes/config_data.php:40
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: webtrees/includes/authentication.php:247
 #: webtrees/includes/authentication.php:299
@@ -11147,7 +11179,7 @@ msgstr "Ön a következő üzenetet kapta a következő címről: "
 
 #: webtrees/includes/session.php:584
 msgid "Search engine"
-msgstr ""
+msgstr "Keresőmotor"
 
 #: webtrees/calendar.php:33
 msgid "Anniversary calendar"
@@ -11263,22 +11295,23 @@ msgstr "elhalálozás dátuma szerint rendezve"
 #: webtrees/site-php-version.php:74
 msgid "This version of webtrees cannot be installed on this web-server."
 msgstr ""
+"Webtreesnek ezt a változatát nem lehet ezen a webszerveren telepíteni."
 
 #: webtrees/site-php-version.php:77
 msgid "You have the following options:"
-msgstr ""
+msgstr "A következő lehetőségeid vannak:"
 
 #. I18N: %s is a version number
 #: webtrees/site-php-version.php:80
 #, php-format
 msgid "Upgrade the web-server to PHP %s or higher."
-msgstr ""
+msgstr "Frissítsd a webszerver PHP-ját a %s-os/es/ös verzióra."
 
 #. I18N: %s is a version number
 #: webtrees/site-php-version.php:81
 #, php-format
 msgid "Install (or re-install) webtrees %s."
-msgstr ""
+msgstr "Telepítsd (újra) a webtrees %s-ot/et/öt."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: webtrees/family.php:40
@@ -11476,7 +11509,7 @@ msgstr "Beállítások módosítása"
 
 #: webtrees/admin_trees_config.php:226
 msgid "Family tree title"
-msgstr ""
+msgstr "Családfa címe"
 
 #: webtrees/admin_trees_config.php:255 webtrees/help_text.php:461
 msgid "Calendar conversion"
@@ -11590,7 +11623,7 @@ msgstr "az utóbbi %1$s évben születtek vagy %2$s évben hunytak el"
 
 #: webtrees/admin_trees_config.php:474 webtrees/help_text.php:896
 msgid "Names of private individuals"
-msgstr ""
+msgstr "Korlátozott hozzáférésű személyek neve"
 
 #: webtrees/admin_trees_config.php:482 webtrees/help_text.php:922
 msgid "Show private relationships"
@@ -11614,7 +11647,7 @@ msgstr "ez a bejegyzés nem létezik"
 
 #: webtrees/admin_trees_config.php:579 webtrees/admin_media.php:540
 msgid "Media folders"
-msgstr ""
+msgstr "Médiamappák"
 
 #: webtrees/admin_trees_config.php:583 webtrees/help_text.php:672
 msgid "Media folder"
@@ -11622,11 +11655,11 @@ msgstr ""
 
 #: webtrees/admin_trees_config.php:598 webtrees/admin_media.php:539
 msgid "Media files"
-msgstr ""
+msgstr "Médiafájlok"
 
 #: webtrees/admin_trees_config.php:602 webtrees/help_text.php:689
 msgid "Who can upload new media files?"
-msgstr ""
+msgstr "Ki jogosult új médiafájlok feltöltésére?"
 
 #: webtrees/admin_trees_config.php:611 webtrees/help_text.php:902
 msgid "Show download link in media viewer"
@@ -11635,7 +11668,7 @@ msgstr "Letöltési hivatkozás használata a médiaböngészőben"
 #. I18N: Small versions of images
 #: webtrees/admin_trees_config.php:618
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Kisméretű képek"
 
 #: webtrees/admin_trees_config.php:622 webtrees/help_text.php:1024
 msgid "Width of generated thumbnails"
@@ -11652,7 +11685,7 @@ msgstr "Mutassunk képrészletet a személyek dobozában"
 #. I18N: Copyright messages, added to images
 #: webtrees/admin_trees_config.php:646
 msgid "Watermarks"
-msgstr ""
+msgstr "Vízjegyek"
 
 #: webtrees/admin_trees_config.php:651 webtrees/help_text.php:1055
 msgid "Add watermarks to thumbnails?"
@@ -11762,7 +11795,7 @@ msgstr "Születés és elhalálozás becsült dátuma"
 
 #: webtrees/admin_trees_config.php:838
 msgid "The date and time of the last update"
-msgstr ""
+msgstr "Utolsó módosítás ideje"
 
 #: webtrees/admin_trees_config.php:851 webtrees/help_text.php:726
 msgid "Default pedigree chart layout"
@@ -11794,7 +11827,7 @@ msgstr "Közeli hozzátartozók eseményeinek mutatása a saját lapon"
 
 #: webtrees/admin_trees_config.php:944 webtrees/help_text.php:917
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "Helynevek rövidítése"
 
 #: webtrees/admin_trees_config.php:952
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -11810,7 +11843,7 @@ msgstr "utolsó"
 #: webtrees/admin_trees_config.php:949
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr ""
+msgstr "A helynevek %1$s %2$s részének megjelenítése."
 
 #: webtrees/admin_trees_config.php:989 webtrees/help_text.php:428
 msgid "Abbreviate chart labels"
@@ -11936,12 +11969,12 @@ msgstr "apai"
 #. I18N: https://en.wikipedia.org/wiki/Patrilineal (a system where children take their father’s surname
 #: webtrees/admin_trees_config.php:1285 webtrees/help_text.php:967
 msgid "patrilineal"
-msgstr ""
+msgstr "patrilineáris (apai ági)"
 
 #. I18N: https://en.wikipedia.org/wiki/Matrilineal (a system where children take their mother’s surname
 #: webtrees/admin_trees_config.php:1285 webtrees/help_text.php:973
 msgid "matrilineal"
-msgstr ""
+msgstr "matrilineáris (anyai ági)"
 
 #: webtrees/admin_trees_config.php:1285 webtrees/help_text.php:984
 msgctxt "Surname tradition"
@@ -12001,20 +12034,24 @@ msgid ""
 "This account has not been verified.  Please check your email for a "
 "verification message."
 msgstr ""
+"Ez a fiók még nem lett visszaigazolva. Kérjük ellenőrizd az e-mail-fiókodat "
+"a visszaigazoló levél megérkeztére."
 
 #: webtrees/login.php:77
 msgid ""
 "This account has not been approved.  Please wait for an administrator to "
 "approve it."
 msgstr ""
+"Ez a fiók még nincs engedélyezve, Kérjük türelmedet míg egy adminisztrátor "
+"engedélyezi megnyitását."
 
 #: webtrees/login.php:82
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "A felhasználónév vagy jelszó helytelen."
 
 #: webtrees/login.php:86
 msgid "You cannot login because your browser does not accept cookies."
-msgstr ""
+msgstr "Nem tudsz bejelentkezni, mert a böngésződ nem engedi a HTTP-sütiket."
 
 #: webtrees/login.php:130
 msgid ""
@@ -12117,6 +12154,7 @@ msgid ""
 "A new password has been created and emailed to %s.  You can change this "
 "password after you login."
 msgstr ""
+"Egy új jelszó el lett küldve %s címére. Bejelentkezés után megváltoztathatod."
 
 #: webtrees/login.php:293 webtrees/login.php:477
 msgid "Hello Administrator ..."
@@ -12261,7 +12299,7 @@ msgstr ""
 
 #: webtrees/login.php:386
 msgid "All fields must be completed."
-msgstr ""
+msgstr "Minden mezőt ki kell tölteni."
 
 #: webtrees/login.php:398
 msgid "Desired user name"
@@ -12274,7 +12312,7 @@ msgstr "Válasszon jelszót"
 #. I18N: placeholder text for registration-comments field
 #: webtrees/login.php:414
 msgid "Explain why you are requesting an account."
-msgstr ""
+msgstr "Írd le, miért folyamodsz felhasználói fiókhoz."
 
 #: webtrees/login.php:438 webtrees/login.php:444 webtrees/login.php:508
 #: webtrees/login.php:512
@@ -12288,12 +12326,16 @@ msgid ""
 "A new user (%1$s) has requested an account (%2$s) and verified an email "
 "address (%3$s)."
 msgstr ""
+"Egy új felhasználó (%1$s) egy fiókért (%2$s) folyamodott és igazolta az e-"
+"mail-címét (%3$s)."
 
 #: webtrees/login.php:481
 msgid ""
 "You now need to review the account details, and set the “approved” status to "
 "“yes”."
 msgstr ""
+"Ellenőrizned kell a fiók részleteit és az engedélyezési státuszt „igen”-re "
+"kell állítanod."
 
 #: webtrees/login.php:483
 msgid "You do not have to take any action; the user can now login."
@@ -12359,13 +12401,13 @@ msgstr ""
 #: webtrees/action.php:112
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr ""
+msgstr "„%1$s” kapcsolata „%2$s”-val/vel törlésre került."
 
 #. I18N: %s is the name of an individual, source or other record
 #: webtrees/action.php:128
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr ""
+msgstr "A „%s”-t illető módosítások elutasításra kerültek."
 
 #: webtrees/edituser.php:157
 msgid "Leave password blank if you want to keep the current password."
@@ -12401,12 +12443,13 @@ msgstr ""
 
 #: webtrees/individual.php:88
 msgid "The details of this individual are private."
-msgstr ""
+msgstr "E személy részleteire adatvédelmi korlátozások vannak érvényben."
 
 #: webtrees/individual.php:93 webtrees/library/WT/Controller/Chart.php:47
 msgid ""
 "This individual does not exist or you do not have permission to view it."
 msgstr ""
+"Ilyen azonosítójú személy nem létezik vagy nincs jogosultságod megtekinteni."
 
 #: webtrees/individual.php:256
 msgid "Click here to open or close the sidebar"
@@ -12445,18 +12488,22 @@ msgid ""
 "An associate is another individual who was involved with this individual, "
 "such as a friend or an employer."
 msgstr ""
+"Egy kapcsolódó személy egy másik személy akinek valamilyen köze, kapcsolata "
+"volt ezzel a személlyel, mint pl. egy barát vagy egy munkaadó."
 
 #: webtrees/help_text.php:72
 msgid ""
 "An associate is another individual who was involved with this fact or event, "
 "such as a witness or a priest."
 msgstr ""
+"Egy kapcsolódó személy egy másik személy akinek valamilyen kapcsolata volt "
+"ezzel a személlyel, mint pl. egy tanú vagy eskető pap."
 
 #: webtrees/help_text.php:77
 msgid ""
 "A description of the cause of the associated event or fact, such as the "
 "cause of death."
-msgstr ""
+msgstr "A tény ill. esemény okának leírása, mint pl. az elhalálozás oka."
 
 #: webtrees/help_text.php:82
 msgid ""
@@ -12504,6 +12551,10 @@ msgid ""
 "in another calendar, add a keyword before the date.  This keyword is "
 "optional if the month or year format make the date unambiguous."
 msgstr ""
+"Egyszerű dátumokat alapértelmezetten Gergely-naptárbeliekként leszenek "
+"feltételezve. Más naptárak dátumait a dátumot megelőző speciális "
+"kulcsszavakkal lehet megadni. (Ez a kulcsszó elhagyható, ha a hónap vagy év "
+"formátuma egyértelműen csak egy naptárral értelmezhető)."
 
 #. I18N: The julian calendar
 #: webtrees/help_text.php:218 webtrees/library/WT/Date/Julian.php:43
@@ -12564,12 +12615,14 @@ msgstr ""
 #: webtrees/help_text.php:291
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "A családnevet per-jelek (/) közé zárjuk:  <%s>/Kovács/ István<%s>"
 
 #: webtrees/help_text.php:293
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
 msgstr ""
+"Ha a családnév ismeretlen, használj két közvetlenül egymást követő /-jelet: "
+"<%s>// Erzsébet<%s>"
 
 #: webtrees/help_text.php:295
 #, php-format
@@ -12577,6 +12630,8 @@ msgid ""
 "If an individual has two separate surnames, both should be enclosed by "
 "slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 msgstr ""
+"Ha több családneve is van valakinek, mindkettőt külön-külön tegyük /-jelek "
+"közé: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 
 #: webtrees/help_text.php:297
 #, php-format
@@ -12584,6 +12639,8 @@ msgid ""
 "If an individual does not have a surname, no slashes are needed: <%s>Jón "
 "Einarsson<%s>"
 msgstr ""
+"Ha nincs vagy nem volt valakinek családneve, ne használjunk //-t. <%s>Jón "
+"Einarsson<%s>"
 
 #: webtrees/help_text.php:299
 #, php-format
@@ -12591,6 +12648,8 @@ msgid ""
 "If an individual was not known by their first given name, the preferred name "
 "should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
 msgstr ""
+"Ha valakit környezete nem az első utóneve alatt ismert, a hétköznapokban "
+"használt nevet csillag kövesse: <%s>/Szabó/ Gáspár János*<%s>"
 
 #: webtrees/help_text.php:301
 #, php-format
@@ -12599,6 +12658,8 @@ msgid ""
 "name, it should be enclosed by quotation marks.  For example, <%s>John "
 "\"Nobby\" /Clark/<%s>."
 msgstr ""
+"Ha valakit más néven ismert a környezete, mint ami része a hivatalos "
+"nevének, idézőjelekbe helyezve jelöljük:  <%s>/Kiskőrösi/ Gábor \"Tibi\"<%s>."
 
 #: webtrees/help_text.php:308
 msgid ""
@@ -12610,6 +12671,13 @@ msgid ""
 "be listed under more than one surname, each name should be separated by a "
 "comma."
 msgstr ""
+"A <b>családnév</b> mező sorrendbe szedés, csoportosítás és keresési célokat "
+"szolgál. Különbözhet a személy valós vagy hivatalos családnevétől, amely "
+"mindig a <b>név</b> mezőből származik. Az említett mezőt használhatjuk arra, "
+"hogy pl. előtagos neveket helyesen soroljuk ábécérendbe (Gogh / van Gogh) "
+"vagy hogy különböző írásos változatokat egy alá csoportosítsunk (Széchenyi / "
+"Széchényi). Ha több mint egy családnévforma alatt legyen valaki fellelhető, "
+"vesszővel elválasztott listát írjunk ide."
 
 #: webtrees/help_text.php:314
 msgid ""
@@ -12691,6 +12759,9 @@ msgid ""
 "Restrictions can be added to records and/or facts.  They restrict who can "
 "view the data and who can edit it."
 msgstr ""
+"Adatvédelmi korlátozásokat teljes bejegyzésekhez vagy egyes tényekhez is "
+"lehet sorolni. A megtekintésre, módosításra jogosultak körét lehet velük "
+"szabályozni."
 
 #: webtrees/help_text.php:355
 msgid ""
@@ -18295,7 +18366,7 @@ msgstr "Jegyzet szerkesztése"
 #: webtrees/library/WT/Date.php:243
 #, php-format
 msgid "about %s"
-msgstr "%s névjegy"
+msgstr "%s körül"
 
 #. I18N: Gedcom CAL dates
 #: webtrees/library/WT/Date.php:244

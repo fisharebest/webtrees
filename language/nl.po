@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2013-07-24 18:12+0000\n"
-"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 16:27+0000\n"
+"Last-Translator: Peter Buyk <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-07-25 05:22+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: \n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -9875,21 +9875,21 @@ msgstr "oudovergroottante/oom"
 #: webtrees/includes/functions/functions.php:1677
 #, php-format
 msgid "great x%d uncle"
-msgstr ""
+msgstr "oud x%d oom"
 
 #: webtrees/includes/functions/functions.php:1658
 #: webtrees/includes/functions/functions.php:1667
 #: webtrees/includes/functions/functions.php:1678
 #, php-format
 msgid "great x%d aunt"
-msgstr ""
+msgstr "oud x%d tante"
 
 #: webtrees/includes/functions/functions.php:1659
 #: webtrees/includes/functions/functions.php:1668
 #: webtrees/includes/functions/functions.php:1679
 #, php-format
 msgid "great x%d aunt/uncle"
-msgstr ""
+msgstr "oud x%d oom/tante"
 
 #: webtrees/includes/functions/functions.php:1664
 #, php-format

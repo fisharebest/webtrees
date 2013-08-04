@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2010-12-13 09:06+0000\n"
-"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 16:58+0000\n"
+"Last-Translator: Caslav Nedeljkovic <caslav.nedeljkovic@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:34+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: \n"
 "X-Poedit-Language: Serbian\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -23,22 +23,22 @@ msgstr ""
 #: webtrees/admin_site_access.php:32
 #: webtrees/themes/_administration/header.php:97
 msgid "Site access rules"
-msgstr ""
+msgstr "Правила приступања сајту"
 
 #. I18N: An access rule - allow access to the site
 #: webtrees/admin_site_access.php:109 webtrees/admin_site_access.php:300
 msgid "allow"
-msgstr ""
+msgstr "дозволи"
 
 #. I18N: An access rule - deny access to the site
 #: webtrees/admin_site_access.php:110 webtrees/admin_site_access.php:301
 msgid "deny"
-msgstr ""
+msgstr "одбаци"
 
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: webtrees/admin_site_access.php:111 webtrees/admin_site_access.php:302
 msgid "robot"
-msgstr ""
+msgstr "робот"
 
 #: webtrees/admin_site_access.php:114 webtrees/admin_trees_manage.php:229
 #: webtrees/admin_users.php:172
@@ -53,13 +53,13 @@ msgstr ""
 #: webtrees/library/WT/Controller/Note.php:106
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "Желите ли заиста да обришете „%s“?"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: webtrees/admin_site_access.php:270
 msgid ""
 "Restrict access to the site, using IP addresses and user-agent strings"
-msgstr ""
+msgstr "Ограничите приступ сајту помоћу ИП адреса и низова корисник-агент"
 
 #: webtrees/admin_site_access.php:272
 msgid ""
@@ -71,12 +71,12 @@ msgstr ""
 #. I18N [...] of a range of addresses
 #: webtrees/admin_site_access.php:277
 msgid "Start IP address"
-msgstr ""
+msgstr "Почетна ИП адреса"
 
 #. I18N [...] of a range of addresses
 #: webtrees/admin_site_access.php:279
 msgid "End IP address"
-msgstr ""
+msgstr "Завршна ИП адреса"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: webtrees/admin_site_access.php:281 webtrees/admin_site_access.php:296
@@ -86,12 +86,12 @@ msgstr ""
 #. I18N: noun
 #: webtrees/admin_site_access.php:282
 msgid "Rule"
-msgstr ""
+msgstr "Правило"
 
 #. I18N: gedcom tag COMM
 #: webtrees/admin_site_access.php:283 webtrees/library/WT/Gedcom/Tag.php:168
 msgid "Comment"
-msgstr "Primedba"
+msgstr "Напомена"
 
 #: webtrees/admin_site_access.php:284 webtrees/edit_interface.php:151
 #: webtrees/modules_v3/gedcom_news/module.php:123
@@ -117,7 +117,7 @@ msgstr "Primedba"
 #: webtrees/library/WT/Controller/Note.php:105
 #: webtrees/admin_site_clean.php:126
 msgid "Delete"
-msgstr ""
+msgstr "Избриши"
 
 #: webtrees/admin_site_access.php:289
 msgid ""
@@ -129,21 +129,21 @@ msgstr ""
 #: webtrees/admin_site_access.php:294 webtrees/admin_site_logs.php:230
 #: webtrees/admin_site_logs.php:257
 msgid "IP address"
-msgstr ""
+msgstr "ИП адреса"
 
 #: webtrees/admin_site_access.php:297
 msgid "Create a new rule"
-msgstr ""
+msgstr "Направи ново правило"
 
 #. I18N: %s is a surname
 #: webtrees/branches.php:45
 #, php-format
 msgid "Branches of the %s family"
-msgstr ""
+msgstr "Огранци породице %s"
 
 #: webtrees/branches.php:47 webtrees/library/WT/MenuBar.php:301
 msgid "Branches"
-msgstr ""
+msgstr "Огранци"
 
 #. I18N: Submit button, on a form
 #: webtrees/branches.php:63 webtrees/relationship.php:154
@@ -153,20 +153,20 @@ msgstr ""
 #: webtrees/admin_media.php:431 webtrees/familybook.php:62
 #: webtrees/compact.php:54
 msgid "View"
-msgstr ""
+msgstr "Приказ"
 
 #. I18N: search using “sounds like”, rather than exact spelling
 #: webtrees/branches.php:64 webtrees/library/WT/MenuBar.php:421
 #: webtrees/library/WT/Controller/Search.php:244 webtrees/search.php:241
 #: webtrees/search.php:247
 msgid "Phonetic search"
-msgstr ""
+msgstr "Фонетска претрага"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: webtrees/branches.php:67 webtrees/library/WT/Soundex.php:31
 #: webtrees/search.php:192
 msgid "Russell"
-msgstr ""
+msgstr "Расел"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: webtrees/branches.php:69 webtrees/library/WT/Soundex.php:32
@@ -176,11 +176,11 @@ msgstr ""
 
 #: webtrees/branches.php:102
 msgid "Collapse all"
-msgstr ""
+msgstr "Сажми све"
 
 #: webtrees/branches.php:103
 msgid "Expand all"
-msgstr ""
+msgstr "Рашири све"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is a individual’s surname, so may need transliterating into non-latin alphabets.
 #: webtrees/branches.php:134 webtrees/branches.php:160
@@ -208,11 +208,11 @@ msgstr ""
 #: webtrees_tmp/modules_v3_individual_report_report.xml.php:172
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:177
 msgid "yes"
-msgstr ""
+msgstr "да"
 
 #: webtrees/branches.php:232
 msgid "Generation"
-msgstr ""
+msgstr "Генерација"
 
 #: webtrees/edit_interface.php:185 webtrees/edit_interface.php:1212
 #: webtrees/edit_changes.php:166 webtrees/help_text.php:1197
@@ -223,7 +223,7 @@ msgstr ""
 #: webtrees/library/WT/Controller/Family.php:143
 #: webtrees/library/WT/Controller/Note.php:90
 msgid "Edit raw GEDCOM record"
-msgstr ""
+msgstr "Уреди сирови GEDCOM запис"
 
 #. I18N: button label
 #: webtrees/edit_interface.php:204 webtrees/edit_interface.php:292
@@ -254,7 +254,7 @@ msgstr ""
 #: webtrees/block_edit.php:57 webtrees/edituser.php:182
 #: webtrees/admin_module_blocks.php:92
 msgid "save"
-msgstr ""
+msgstr "сачувај"
 
 #. I18N: button label
 #: webtrees/edit_interface.php:205 webtrees/edit_interface.php:293
@@ -277,7 +277,7 @@ msgstr ""
 #: webtrees/includes/functions/functions_edit.php:956
 #: webtrees/includes/media_reorder.php:181
 msgid "close"
-msgstr ""
+msgstr "затвори"
 
 #. I18N: Name of a module/menu
 #: webtrees/edit_interface.php:218 webtrees/edit_interface.php:1232
@@ -958,7 +958,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_fact_sources_report.xml.php:52
 #: webtrees_tmp/modules_v3_fact_sources_report.xml.php:256
 msgid "Individuals"
-msgstr "Pojedinaca"
+msgstr "Појединци"
 
 #. I18N: Name of a module
 #: webtrees/source.php:95 webtrees/modules_v3/gedcom_stats/module.php:101
@@ -1026,11 +1026,12 @@ msgstr ""
 
 #: webtrees/mediafirewall.php:37
 msgid "The media file was not found in this family tree"
-msgstr ""
+msgstr "Мултимедијална датотека није пронађена у овом породичном стаблу"
 
 #: webtrees/mediafirewall.php:367
 msgid "This media file is broken and cannot be watermarked"
 msgstr ""
+"Мултимедијална датотека је оштећена и не може јој бити додат водени жиг."
 
 #. I18N: Name of a module
 #: webtrees/inverselink.php:87
@@ -2826,7 +2827,7 @@ msgstr "Prijava"
 #. I18N: Description of the “Login” module
 #: webtrees/modules_v3/login_block/module.php:39
 msgid "An alternative way to login and logout."
-msgstr ""
+msgstr "Другачији начин за пријаву и одјаву"
 
 #: webtrees/modules_v3/login_block/module.php:56
 #: webtrees/modules_v3/login_block/module.php:61
@@ -2837,26 +2838,26 @@ msgstr "Odjava"
 #: webtrees/modules_v3/login_block/module.php:59
 #: webtrees/themes/webtrees/header.php:79
 msgid "Logged in as "
-msgstr "Prijavljen kao "
+msgstr "Пријављен(а) као "
 
 #: webtrees/modules_v3/login_block/module.php:88 webtrees/login.php:168
 msgid "Request new password"
-msgstr "Zahtevajte novu lozinku"
+msgstr "Затражи нову лозинку"
 
 #: webtrees/modules_v3/login_block/module.php:91
 #: webtrees/modules_v3/gedcom_block/module.php:54 webtrees/login.php:171
 #: webtrees/login.php:253
 msgid "Request new user account"
-msgstr "Zahtevajte novi nalog"
+msgstr "Затражи нови кориснички налог"
 
 #: webtrees/modules_v3/login_block/module.php:100 webtrees/login.php:179
 #: webtrees/login.php:195 webtrees/login.php:233
 msgid "Lost password request"
-msgstr "Zahtev za novu lozinku"
+msgstr "Захтев због изгубљене лозинке"
 
 #: webtrees/modules_v3/login_block/module.php:102 webtrees/login.php:181
 msgid "Username or email address"
-msgstr ""
+msgstr "Корисничко име или адреса е-поште"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/recent_changes/module.php:36 webtrees/admin.php:244
@@ -3723,7 +3724,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_individual_report_report.xml.php:146
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:151
 msgid "Facts and events"
-msgstr ""
+msgstr "Чињенице и догађаји"
 
 #. I18N: Description of the “Facts and events” module
 #: webtrees/modules_v3/personal_facts/module.php:39
@@ -3972,7 +3973,7 @@ msgstr ""
 #: webtrees/modules_v3/family_group_report/module.php:41
 #: webtrees_tmp/modules_v3_family_group_report_report.xml.php:5
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "Извештај о члановима породице са детаљима"
 
 #. I18N: Name of a module.  Top=Most common
 #: webtrees/modules_v3/top10_surnames/module.php:34
@@ -5047,12 +5048,12 @@ msgstr ""
 #: webtrees/modules_v3/random_media/module.php:34
 #: webtrees/library/WT/Gedcom/Tag.php:819
 msgid "Slide show"
-msgstr ""
+msgstr "Аутоматско приказивање слика"
 
 #. I18N: Description of the “Slide show” module
 #: webtrees/modules_v3/random_media/module.php:39
 msgid "Random images from the current family tree."
-msgstr ""
+msgstr "Насумичне слике из тренутно одабраног породичног стабла"
 
 #: webtrees/modules_v3/random_media/module.php:132
 #: webtrees/themes/colors/header.php:39 webtrees/themes/clouds/header.php:36
@@ -5060,7 +5061,7 @@ msgstr ""
 #: webtrees/themes/xenea/header.php:36 webtrees/themes/minimal/header.php:36
 #: webtrees/themes/_administration/header.php:33
 msgid "Play"
-msgstr ""
+msgstr "Пусти"
 
 #: webtrees/modules_v3/random_media/module.php:132
 #: webtrees/themes/colors/header.php:39 webtrees/themes/clouds/header.php:36
@@ -5072,7 +5073,7 @@ msgstr ""
 
 #: webtrees/modules_v3/random_media/module.php:133
 msgid "Next image"
-msgstr "Sledeća slika"
+msgstr "Следећа слика"
 
 #: webtrees/modules_v3/random_media/module.php:187
 #: webtrees/modules_v3/lightbox/functions/lightbox_print_media.php:371
@@ -5086,15 +5087,15 @@ msgstr ""
 
 #: webtrees/modules_v3/random_media/module.php:262
 msgid "Show only persons, events, or all?"
-msgstr ""
+msgstr "Прикажи само особе, догађаје или све?"
 
 #: webtrees/modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
-msgstr ""
+msgstr "Прикажи контроле аутоматског приказа слика?"
 
 #: webtrees/modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
-msgstr ""
+msgstr "Започни аутоматски приказ слике кад се учита страница?"
 
 #. I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: webtrees/modules_v3/yahrzeit/module.php:34

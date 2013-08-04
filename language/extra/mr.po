@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2013-03-30 11:24+0000\n"
-"Last-Translator: Manoj Modak <manoj434@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 17:01+0000\n"
+"Last-Translator: Hemant Modak <hemant.modak@gmail.com>\n"
 "Language-Team: Marathi <mr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:32+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:04+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: mr\n"
 
 #: webtrees/admin_site_access.php:32
@@ -388,7 +388,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_family_group_report_report.xml.php:86
 #: webtrees_tmp/modules_v3_family_group_report_report.xml.php:94
 msgid "Family"
-msgstr "परिवार"
+msgstr "कुटूंब"
 
 #: webtrees/edit_interface.php:522
 #: webtrees/modules_v3/relatives/module.php:424
@@ -823,7 +823,7 @@ msgstr ""
 #: webtrees/relationship.php:62
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr ""
+msgstr "%1$s आणि %2$s मधील नाते"
 
 #: webtrees/relationship.php:73 webtrees/relationship.php:87
 #: webtrees/includes/functions/functions_print.php:666
@@ -1043,7 +1043,7 @@ msgstr ""
 #: webtrees/admin_trees_config.php:216 webtrees/admin_media.php:511
 #: webtrees/admin_media.php:601
 msgid "Media"
-msgstr ""
+msgstr "माध्यम"
 
 #. I18N: Name of a module/report
 #. I18N: gedcom tag INDI
@@ -1867,7 +1867,7 @@ msgstr "वस्तुस्थिती अथवा घटना शोधा
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_find.php:62
 #: webtrees/search.php:42 webtrees/search.php:64
 msgid "Please enter more than one character"
-msgstr "कृपया एकापेक्ष्या आधिक कॅरक्टर लिहा"
+msgstr "कृपया एकापेक्षा अधिक अक्षरे लिहा"
 
 #: webtrees/find.php:184 webtrees/find.php:199
 msgid "Name contains:"
@@ -2856,7 +2856,7 @@ msgstr ""
 #: webtrees/modules_v3/login_block/module.php:100 webtrees/login.php:179
 #: webtrees/login.php:195 webtrees/login.php:233
 msgid "Lost password request"
-msgstr ""
+msgstr "संकेत शब्द हरवला आहे."
 
 #: webtrees/modules_v3/login_block/module.php:102 webtrees/login.php:181
 msgid "Username or email address"
@@ -4986,7 +4986,7 @@ msgstr "आडनावाचे पर्याय"
 
 #: webtrees/modules_v3/batch_update/plugins/married_names.php:108
 msgid "Wife's surname replaced by husband's surname"
-msgstr ""
+msgstr "पत्नीच्या आडनावा ऐवजी पतीचे आडनाव वापरा."
 
 #: webtrees/modules_v3/batch_update/plugins/married_names.php:110
 msgid "Wife's maiden surname becomes new given name"
@@ -8919,7 +8919,7 @@ msgstr "विहीणबाई"
 #: webtrees/includes/functions/functions.php:1463
 msgctxt "son's wife's parent"
 msgid "daughter-in-law's parent"
-msgstr ""
+msgstr "व्याहीमंडळी"
 
 #: webtrees/includes/functions/functions.php:1464
 msgctxt "wife's brother's wife"
@@ -18840,7 +18840,7 @@ msgstr ""
 
 #: webtrees/library/WT/Gedcom/Tag.php:352
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "नात दत्तक घेणे."
 
 #: webtrees/library/WT/Gedcom/Tag.php:353
 #: webtrees/library/WT/Gedcom/Tag.php:359
@@ -18856,7 +18856,7 @@ msgstr ""
 #: webtrees/library/WT/Gedcom/Tag.php:358
 msgctxt "daughter's daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "नात दत्तक घेणे"
 
 #: webtrees/library/WT/Gedcom/Tag.php:363
 msgctxt "son's son"
@@ -19030,7 +19030,7 @@ msgstr "मुलाचा जन्म"
 
 #: webtrees/library/WT/Gedcom/Tag.php:439
 msgid "Birth of a daughter"
-msgstr ""
+msgstr "मुलगी होणे."
 
 #: webtrees/library/WT/Gedcom/Tag.php:440
 msgid "Birth of a child"
@@ -19042,7 +19042,7 @@ msgstr ""
 
 #: webtrees/library/WT/Gedcom/Tag.php:445
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "नात होणे."
 
 #: webtrees/library/WT/Gedcom/Tag.php:446
 #: webtrees/library/WT/Gedcom/Tag.php:452
@@ -19058,7 +19058,7 @@ msgstr ""
 #: webtrees/library/WT/Gedcom/Tag.php:451
 msgctxt "daughter's daughter"
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "नात होणे."
 
 #: webtrees/library/WT/Gedcom/Tag.php:456
 msgctxt "son's son"
@@ -19243,7 +19243,7 @@ msgstr ""
 
 #: webtrees/library/WT/Gedcom/Tag.php:544
 msgid "Christening of a daughter"
-msgstr ""
+msgstr "मुलीचे नामकरण करणे."
 
 #: webtrees/library/WT/Gedcom/Tag.php:545
 msgid "Christening of a child"
@@ -19255,7 +19255,7 @@ msgstr ""
 
 #: webtrees/library/WT/Gedcom/Tag.php:550
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "नातीचे नामकरण करणे."
 
 #: webtrees/library/WT/Gedcom/Tag.php:551
 #: webtrees/library/WT/Gedcom/Tag.php:557
@@ -19271,7 +19271,7 @@ msgstr ""
 #: webtrees/library/WT/Gedcom/Tag.php:556
 msgctxt "daughter's daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "नातीचे नामकरण करणे."
 
 #: webtrees/library/WT/Gedcom/Tag.php:561
 msgctxt "son's son"
@@ -19281,7 +19281,7 @@ msgstr ""
 #: webtrees/library/WT/Gedcom/Tag.php:562
 msgctxt "son's daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "नातीचे नामकरण करणे."
 
 #: webtrees/library/WT/Gedcom/Tag.php:567
 msgid "Christening of a half-brother"
@@ -19447,7 +19447,7 @@ msgstr ""
 
 #: webtrees/library/WT/Gedcom/Tag.php:648
 msgid "Death of a daughter"
-msgstr ""
+msgstr "मुलीचा मृत्यू होणे."
 
 #: webtrees/library/WT/Gedcom/Tag.php:649
 msgid "Death of a child"
@@ -19459,7 +19459,7 @@ msgstr ""
 
 #: webtrees/library/WT/Gedcom/Tag.php:654
 msgid "Death of a granddaughter"
-msgstr ""
+msgstr "नातीचा मृत्यू होणे."
 
 #: webtrees/library/WT/Gedcom/Tag.php:655
 #: webtrees/library/WT/Gedcom/Tag.php:661
@@ -19475,7 +19475,7 @@ msgstr ""
 #: webtrees/library/WT/Gedcom/Tag.php:660
 msgctxt "daughter's daughter"
 msgid "Death of a granddaughter"
-msgstr ""
+msgstr "नातीचा मृत्यू होणे."
 
 #: webtrees/library/WT/Gedcom/Tag.php:665
 msgctxt "son's son"
@@ -19485,7 +19485,7 @@ msgstr ""
 #: webtrees/library/WT/Gedcom/Tag.php:666
 msgctxt "son's daughter"
 msgid "Death of a granddaughter"
-msgstr ""
+msgstr "नातीचा मृत्यू होणे."
 
 #: webtrees/library/WT/Gedcom/Tag.php:671
 msgid "Death of a grandfather"
@@ -21524,7 +21524,7 @@ msgstr "थेट पूर्वज"
 #: webtrees_tmp/modules_v3_missing_facts_report_report.xml.php:7
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:7
 msgid "Direct line ancestors and their families"
-msgstr ""
+msgstr "थेट पूर्वज कुटुंबसहित"
 
 #: webtrees_tmp/modules_v3_relative_ext_report_report.xml.php:7
 #: webtrees_tmp/modules_v3_missing_facts_report_report.xml.php:7
@@ -21542,7 +21542,7 @@ msgstr "घटनांचे स्रोत"
 
 #: webtrees_tmp/modules_v3_fact_sources_report.xml.php:5
 msgid "A report of facts which are supported by a given source."
-msgstr ""
+msgstr "ज्ञात स्रोतानुसार  प्राप्त घटनांचे विवरण"
 
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:8
 #: webtrees_tmp/modules_v3_family_group_report_report.xml.php:8

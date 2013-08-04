@@ -8,33 +8,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2013-06-11 09:37+0000\n"
-"Last-Translator: Jano <janobarnard@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 16:33+0000\n"
+"Last-Translator: Corney Keller <knight.owl@hetnet.nl>\n"
 "Language-Team: Afrikaans <af@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-06-12 05:31+0000\n"
-"X-Generator: Launchpad (build 16667)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: af\n"
-
-#. I18N: Name of a module/report
-#. I18N: gedcom tag FAM
-#: webtrees/edit_interface.php:479 webtrees/inverselink.php:122
-#: webtrees/modules_v3/family_nav/module.php:412
-#: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:934
-#: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:941
-#: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1472
-#: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1479
-#: webtrees/modules_v3/family_group_report/module.php:35
-#: webtrees/includes/functions/functions_edit.php:1628
-#: webtrees/library/WT/Gedcom/Tag.php:212
-#: webtrees_tmp/modules_v3_family_group_report_report.xml.php:4
-#: webtrees_tmp/modules_v3_family_group_report_report.xml.php:86
-#: webtrees_tmp/modules_v3_family_group_report_report.xml.php:94
-msgid "Family"
-msgstr "Gesin"
 
 #: webtrees/modules_v3/googlemap/module.php:271
 #: webtrees/admin_trees_config.php:746 webtrees/admin_trees_config.php:833
@@ -399,6 +382,23 @@ msgstr "Koppel hierdie persoon as eggenote aan 'n bestaande gesin"
 #: webtrees/modules_v3/relatives/module.php:412
 msgid "Link this person to an existing family as a husband"
 msgstr "Koppel hierdie persoon as eggenoot aan 'n bestaande gesin"
+
+#. I18N: Name of a module/report
+#. I18N: gedcom tag FAM
+#: webtrees/edit_interface.php:479 webtrees/inverselink.php:122
+#: webtrees/modules_v3/family_nav/module.php:412
+#: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:934
+#: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:941
+#: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1472
+#: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1479
+#: webtrees/modules_v3/family_group_report/module.php:35
+#: webtrees/includes/functions/functions_edit.php:1628
+#: webtrees/library/WT/Gedcom/Tag.php:212
+#: webtrees_tmp/modules_v3_family_group_report_report.xml.php:4
+#: webtrees_tmp/modules_v3_family_group_report_report.xml.php:86
+#: webtrees_tmp/modules_v3_family_group_report_report.xml.php:94
+msgid "Family"
+msgstr "Familie"
 
 #: webtrees/edit_interface.php:522
 #: webtrees/modules_v3/relatives/module.php:424
@@ -2774,7 +2774,7 @@ msgstr ""
 #. I18N: Description of the “Family navigator” module
 #: webtrees/modules_v3/family_nav/module.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr ""
+msgstr "'n Sybalk wat 'n persoon se nabye families en verwante toon."
 
 #: webtrees/modules_v3/family_nav/module.php:170
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:393
@@ -2798,7 +2798,7 @@ msgstr "stiefmoeder"
 
 #: webtrees/modules_v3/family_nav/module.php:230
 msgid "Immediate Family"
-msgstr ""
+msgstr "Direkte Familie"
 
 #: webtrees/modules_v3/family_nav/module.php:410
 #: webtrees/modules_v3/family_nav/module.php:411
@@ -3834,14 +3834,15 @@ msgstr ""
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s boodskap"
 
 #: webtrees/modules_v3/user_messages/module.php:73
 #: webtrees/modules_v3/user_messages/module.php:120
 msgid ""
 "Are you sure you want to delete this message?  It cannot be retrieved later."
 msgstr ""
+"Is u seker u wil hierdie boodskap verwyder? Dit kan nie later herwin word "
+"nie."
 
 #: webtrees/modules_v3/user_messages/module.php:75
 #: webtrees/edit_changes.php:188 webtrees/message.php:118
@@ -3855,16 +3856,16 @@ msgstr "Stuur Boodskap"
 #: webtrees/modules_v3/googlemap/module.php:1487
 #: webtrees/modules_v3/googlemap/module.php:1503
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;kies&gt;"
 
 #: webtrees/modules_v3/user_messages/module.php:84 webtrees/message.php:141
 #: webtrees/login.php:458
 msgid "Send"
-msgstr ""
+msgstr "Verstuur"
 
 #: webtrees/modules_v3/user_messages/module.php:87
 msgid "You have no pending messages."
-msgstr ""
+msgstr "U het geen boodskappe in afwagting nie."
 
 #: webtrees/modules_v3/user_messages/module.php:92 webtrees/message.php:132
 msgid "Subject:"
@@ -3872,7 +3873,7 @@ msgstr "Onderwerp:"
 
 #: webtrees/modules_v3/user_messages/module.php:93
 msgid "Date Sent:"
-msgstr ""
+msgstr "Gestuur op:"
 
 #: webtrees/modules_v3/user_messages/module.php:94 webtrees/message.php:130
 #: webtrees/includes/authentication.php:242
@@ -4737,7 +4738,7 @@ msgstr ""
 
 #: webtrees/modules_v3/googlemap/admin_places.php:156
 msgid "County"
-msgstr ""
+msgstr "Distrik"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:164
 #: webtrees/modules_v3/googlemap/admin_places.php:586
@@ -4801,7 +4802,7 @@ msgstr "Voer alle plekke in vanuit 'n familiestamboom"
 #: webtrees/modules_v3/googlemap/admin_places.php:651
 #: webtrees/admin_trees_manage.php:217
 msgid "Import"
-msgstr ""
+msgstr "Voer in"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:657
 msgid "Upload geographic data"
@@ -4919,7 +4920,7 @@ msgstr ""
 
 #: webtrees/modules_v3/top10_pageviews/module.php:144
 msgid "after"
-msgstr ""
+msgstr "ná"
 
 #: webtrees/modules_v3/top10_pageviews/help_text.php:33
 msgid "Most Viewed Items"
@@ -4998,7 +4999,7 @@ msgstr "Vervangende teks"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:109
 msgid "Search method"
-msgstr ""
+msgstr "Soektogmetode"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:111
 msgid "Exact text"
@@ -5015,7 +5016,7 @@ msgstr ""
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:114
 msgid "Regular expression"
-msgstr ""
+msgstr "Gewone uitdrukking"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:117
 msgid "Case insensitive"
@@ -5067,7 +5068,7 @@ msgstr ""
 
 #: webtrees/modules_v3/batch_update/plugins/name_format.php:33
 msgid "Fix name slashes and spaces"
-msgstr ""
+msgstr "Maak naamstrepe en -spasies reg"
 
 #: webtrees/modules_v3/batch_update/plugins/name_format.php:37
 msgid ""
@@ -5100,16 +5101,16 @@ msgstr "Niks gevind nie."
 
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:337
 msgid "Update the CHAN record"
-msgstr ""
+msgstr "Werk die CHAN rekord by"
 
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:348
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:353
 msgid "Update"
-msgstr ""
+msgstr "Werk by"
 
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:349
 msgid "Update all"
-msgstr ""
+msgstr "Werk alles by"
 
 #. I18N: Name of a module
 #. I18N: gedcom tag _SSHOW
@@ -5129,7 +5130,7 @@ msgstr "Willekeurige beelde van die huidige familiestamboom."
 #: webtrees/themes/xenea/header.php:36 webtrees/themes/minimal/header.php:36
 #: webtrees/themes/_administration/header.php:33
 msgid "Play"
-msgstr ""
+msgstr "Speel af"
 
 #: webtrees/modules_v3/random_media/module.php:132
 #: webtrees/themes/colors/header.php:39 webtrees/themes/clouds/header.php:36
@@ -5183,7 +5184,7 @@ msgstr ""
 #: webtrees/calendar.php:560
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s jarige herdenking"
 
 #: webtrees/modules_v3/yahrzeit/module.php:157
 #: webtrees/includes/functions/functions_print_lists.php:213
@@ -5452,7 +5453,7 @@ msgstr ""
 #. I18N: Description of the “Extra information” module
 #: webtrees/modules_v3/extra_info/module.php:36
 msgid "A sidebar showing non-genealogical information about an indivdual."
-msgstr ""
+msgstr "'n Sybalk wat nie-genealogiese inligting oor 'n persoon toon."
 
 #. I18N: Name of a module/report
 #: webtrees/modules_v3/change_report/module.php:35
