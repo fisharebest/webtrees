@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2013-02-22 08:17+0000\n"
-"Last-Translator: DW <Unknown>\n"
+"PO-Revision-Date: 2013-08-04 16:55+0000\n"
+"Last-Translator: Roman Koshkin <mar2008m@rambler.ru>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:34+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: \n"
 "X-Language: ru_RU\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -820,7 +820,7 @@ msgstr "tls (протокол безопасных соединений)"
 #. I18N: A site configuration setting
 #: webtrees/admin_site_config.php:96 webtrees/help_text.php:776
 msgid "Sending server name"
-msgstr ""
+msgstr "Имя сервера отправки"
 
 #: webtrees/admin_site_config.php:100
 msgid ""
@@ -1233,6 +1233,8 @@ msgid ""
 "%s is disabled on this server.  You cannot install webtrees until it is "
 "enabled.  Please ask your server’s administrator to enable it."
 msgstr ""
+"%s отключена на этом сервере. Вы не можете установить webtrees, пока она не "
+"включена. Пожалуйста, обратитесь к администратору сервера, чтобы включить её."
 
 #: webtrees/setup.php:146
 #, php-format
@@ -3171,6 +3173,8 @@ msgid ""
 "A FAQ item can be displayed on just one of the family trees, or on all the "
 "family trees."
 msgstr ""
+"Записи ЧаВО могут быть показаны во всех семейных деревьях или только в одном "
+"из семейных деревьев."
 
 #: webtrees/modules_v3/faq/help_text.php:51
 msgid "Delete FAQ item"
@@ -3290,7 +3294,7 @@ msgstr "Показывать разницy дат"
 #: webtrees/modules_v3/todo/module.php:34
 #: webtrees/modules_v3/todo/help_text.php:33
 msgid "Research tasks"
-msgstr "Уточнить"
+msgstr "Исследовательские задачи"
 
 #. I18N: Description of “Research tasks” module
 #: webtrees/modules_v3/todo/module.php:39
@@ -3320,18 +3324,28 @@ msgid ""
 "reminder to check facts against more reliable sources, to obtain documents "
 "or photographs, to resolve conflicting information, etc."
 msgstr ""
+"Задачами исследования являются специальные мероприятия, которые определяют "
+"необходимость дополнительного проведения дальнейших исследований к персонам "
+"в Вашем фамильном дереве. Вы можете использовать их в качестве напоминания "
+"для проверки фактов от более надежных источников, получить документы или "
+"фотографии, проверить противоречивую информацию и т.д."
 
 #: webtrees/modules_v3/todo/help_text.php:36
 msgid ""
 "To create new research tasks, you must first add “research task” to the list "
 "of facts and events in the family tree’s preferences."
 msgstr ""
+"Чтобы создать новое исследовательское задание, вам необходимо сперва "
+"добавить \"исследовательское задание\" в список фактов и событий в оцпиях "
+"вашего семейного древа."
 
 #: webtrees/modules_v3/todo/help_text.php:38
 msgid ""
 "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other "
 "genealogy applications may not recognise this tag."
 msgstr ""
+"Исследовательские задания хранятся с применением тега \"_TODO\" в файле "
+"GEDCOM. Другие генеалогические программы могут не распознавать этот тег."
 
 #. I18N: Description of the “Edit” module
 #: webtrees/modules_v3/page_menu/module.php:39
@@ -8470,7 +8484,7 @@ msgstr "шурин (брат жены брата)"
 #: webtrees/includes/functions/functions.php:1306
 msgctxt "brother's wife's sibling"
 msgid "brother/sister-in-law"
-msgstr "брат/сестра жены брата"
+msgstr "шурин/свояченица"
 
 #: webtrees/includes/functions/functions.php:1307
 msgctxt "brother's wife's sister"
@@ -9140,17 +9154,17 @@ msgstr "внучатый племянник"
 #: webtrees/includes/functions/functions.php:1440
 msgctxt "sister's husband's brother"
 msgid "brother-in-law"
-msgstr "брат мужа сестры"
+msgstr "деверь"
 
 #: webtrees/includes/functions/functions.php:1441
 msgctxt "sister's husband's sibling"
 msgid "brother/sister-in-law"
-msgstr "брат/сестра мужа сестры"
+msgstr "Деверь/Золовка"
 
 #: webtrees/includes/functions/functions.php:1442
 msgctxt "sister's husband's sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "золовка"
 
 #: webtrees/includes/functions/functions.php:1443
 msgctxt "(a man's) sister's son's child"
@@ -9260,12 +9274,12 @@ msgstr "сват"
 #: webtrees/includes/functions/functions.php:1464
 msgctxt "wife's brother's wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "золовка"
 
 #: webtrees/includes/functions/functions.php:1465
 msgctxt "wife's sister's husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "деверь"
 
 #: webtrees/includes/functions/functions.php:1468
 msgctxt "father's father's brother's wife"
@@ -10282,55 +10296,55 @@ msgstr "пра(х%d) внук/внучка"
 #: webtrees/includes/functions/functions.php:2062
 #, php-format
 msgid "%s once removed ascending"
-msgstr ""
+msgstr "%s двоюродных по возрастанию"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: webtrees/includes/functions/functions.php:2065
 #, php-format
 msgid "%s once removed descending"
-msgstr ""
+msgstr "%s двоюродных по убыванию"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: webtrees/includes/functions/functions.php:2070
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s троюродных по возрастанию"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: webtrees/includes/functions/functions.php:2073
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "%s отсортировать двоюродных по убыванию"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: webtrees/includes/functions/functions.php:2078
 #, php-format
 msgid "%s thrice removed ascending"
-msgstr ""
+msgstr "%s отсортировать троюродных по возрастанию"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: webtrees/includes/functions/functions.php:2081
 #, php-format
 msgid "%s thrice removed descending"
-msgstr ""
+msgstr "%s отсортировать троюродных по убыванию"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: webtrees/includes/functions/functions.php:2086
 #, php-format
 msgid "%1$s %2$d times removed ascending"
-msgstr ""
+msgstr "%1$s %2$d-юродных по возрастанию"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: webtrees/includes/functions/functions.php:2089
 #, php-format
 msgid "%1$s %2$d times removed descending"
-msgstr ""
+msgstr "%1$s %2$d-юродных по убыванию"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: webtrees/includes/functions/functions.php:2104
 #, php-format
 msgid "%1$s's %2$s"
-msgstr ""
+msgstr "%1$sой %2$s"
 
 #: webtrees/includes/functions/functions.php:2134
 #, php-format
@@ -11183,8 +11197,8 @@ msgid ""
 "This option enables online editing features for this database so that users "
 "with Edit privileges may update data online."
 msgstr ""
-"Позволяет редактировать данные в режиме онлайн пользователям с правами "
-"редактора."
+"Эта опция позволяет включить/отключить возможность редактировать данные в "
+"режиме онлайн."
 
 #. I18N: This message is deleted in webtrees-1.4.2
 #: webtrees/includes/old_messages.php:54
@@ -11811,7 +11825,7 @@ msgstr "Сохранять миниатюры с водяными знаками
 
 #: webtrees/admin_trees_config.php:675 webtrees/help_text.php:907
 msgid "Who can view non-watermarked images?"
-msgstr "Кто может видеть картинки без водяных знаков?"
+msgstr "Кому показывать картинки без водяных знаков?"
 
 #: webtrees/admin_trees_config.php:688
 msgid "Visitor options"
@@ -12501,7 +12515,7 @@ msgid ""
 "The Administrator has been informed.  As soon as he gives you permission to "
 "login, you can login with your user name and password."
 msgstr ""
-"Администратор информирован. Как только он проверит Ваши данные и дасть "
+"Администратор информирован. Как только он проверит Ваши данные и даст "
 "доступ, Вы сможете войти на сайт, введя имя пользователя и пароль."
 
 #: webtrees/login.php:539
@@ -12647,12 +12661,16 @@ msgid ""
 "An associate is another individual who was involved with this individual, "
 "such as a friend or an employer."
 msgstr ""
+"Другой человек, который был связан с этим человеком, например, как друг или "
+"работодатель."
 
 #: webtrees/help_text.php:72
 msgid ""
 "An associate is another individual who was involved with this fact or event, "
 "such as a witness or a priest."
 msgstr ""
+"Другой человек, который был связан с этим фактом или событием, таков как "
+"свидетель или священник."
 
 #: webtrees/help_text.php:77
 msgid ""
@@ -14141,6 +14159,22 @@ msgid ""
 "record.  These are <i>level 2</i> Notes and Source references because the "
 "various Facts are at level 1."
 msgstr ""
+"Этот параметр определяет, будут ли показаны примечания и ссылки на "
+"источники, которые связаны с фактами выбранной персоны, на странице \"Моя "
+"страница\" во вкладке примечаний и источников.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"<i>Уровень 1</i>\r\n"
+"<br/>\r\n"
+"Обычно, на вкладках примечаний и источников, выводится информация которая "
+"относится непосредственно к человеку.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"<i>Уровень 2</i>\r\n"
+"<br/>\r\n"
+"Примечания и ссылки на источники. Опция  <b>Да</b> выводит на вкладке, "
+"примечания и ссылки на источники, которые являются частью различных фактов "
+"человека."
 
 #: webtrees/help_text.php:897
 msgid ""
@@ -14405,6 +14439,20 @@ msgid ""
 "database is accessible free of charge. It currently contains over 8,000,000 "
 "geographical names."
 msgstr ""
+"Используете ли Вы базу данных Geonames в качестве предложений для "
+"географических названий?\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Когда эта опция установлена ​​в <b>Да</b>, база данных Geonames будет "
+"предлагать географические названия на основе ввода. При установке <b>Нет</b> "
+"поиск производится только в текущей базе генеалогического дерева. Чем больше "
+"имен Вы вводите, тем более точные предложения. Эта опция может привести к "
+"замедлению ввода данных, особенно, если Вы используете медленное соединение "
+"с Интернетом.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Географическая база данных Geonames доступна бесплатно. Она содержит более "
+"восьми миллионов географических названий."
 
 #: webtrees/help_text.php:1035
 msgid ""
@@ -14488,6 +14536,21 @@ msgid ""
 "website</b></center><br />Access is permitted to users who have an account "
 "and a password for this website.<br /></div>"
 msgstr ""
+"Выберите, чтобы вывести стандартный заголовок для Вашего приветственного "
+"текста. Когда пользователь изменит язык, этот заголовок будет отображаться в "
+"новом языке.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Если установлено <b>Да</b>, заголовок будет выглядеть следующим образом: \r\n"
+"<div class=\"list_value_wrap\">\r\n"
+"<center>\r\n"
+"<b>ДОБРО ПОЖАЛОВАТЬ НА ЭТОТ ГЕНЕАЛОГИЧЕСКИЙ САЙТ</b>\r\n"
+"</center>\r\n"
+"<br/>\r\n"
+"Доступ к данным сайта разрешён посетителям, которые зарегистрированы тут и "
+"имеют свою учётную запись.\r\n"
+"<br/>\r\n"
+"</div>"
 
 #: webtrees/help_text.php:1071
 msgid ""
@@ -14534,6 +14597,83 @@ msgid ""
 "your request for an account.  You will receive an email when your request is "
 "approved.</div></li></ul>"
 msgstr ""
+"Здесь вы можете выбрать текст который появится на странице входа. Вы должны "
+"определить, какой предопределенный текст является наиболее подходящим.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Вы также можете ввести свой собственный текст приветствия. Пожалуйста, "
+"обратитесь к справке, связанной с <b>Свой текст с приветствием</b> в поле "
+"для дополнительной информации.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Предопределенные тексты: \r\n"
+"<ul>\r\n"
+"<li>\r\n"
+"<b>Заданный текст, в котором говорится, что Все пользователи могут запросить "
+"учетную запись пользователя:</b>\r\n"
+"<div class=\"list_value_wrap\">\r\n"
+"<center><b>ДОБРО ПОЖАЛОВАТЬ НА ЭТОТ ГЕНЕАЛОГИЧЕСКИЙ САЙТ</b></center>\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Доступ к данным сайта разрешён посетителям, которые зарегистрированы тут и "
+"имеют свою учётную запись.\r\n"
+"<br/>\r\n"
+"Если Вы зарегистрированы, пожалуйста войдите на сайт на этой странице.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Если Вы не зарегистрированы, то можете послать запрос на регистрацию перейдя "
+"по соответствующей ссылке на этой странице.\r\n"
+"<br/>\r\n"
+"После того как администратор проверит Вашу информацию, он создаст для Вас "
+"учётную запись и отправит Вам письмо (email) для активации этой учётной "
+"записи.\r\n"
+"</div>\r\n"
+"<br/>\r\n"
+"</li>\r\n"
+"<li>\r\n"
+"<b>Заданный текст, в котором говорится, что администратор примет решение по "
+"каждому запросу для учетной записи пользователя.</b>\r\n"
+"<div class=\"list_value_wrap\">\r\n"
+"<center><b>ДОБРО ПОЖАЛОВАТЬ НА ЭТОТ ГЕНЕАЛОГИЧЕСКИЙ САЙТ</b></center>\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Доступ к данным сайта разрешён посетителям, которые зарегистрированы и "
+"<b>авторизованы</b> тут.\r\n"
+"<br/>\r\n"
+"Если Вы зарегистрированы, пожалуйста войдите на сайт на этой странице.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Если Вы тут не зарегистрированы, то можете послать запрос на регистрацию "
+"перейдя по соответствующей ссылке на этой странице.\r\n"
+"<br/>\r\n"
+"После того как администратор проверит Вашу информацию, он создаст для Вас "
+"учётную запись и отправит Вам письмо (email) для активации этой учётной "
+"записи.\r\n"
+"</div>\r\n"
+"<br/>\r\n"
+"</li>\r\n"
+"<li>\r\n"
+"<b>Заданный текст, в котором говорится, что только члены семьи могут "
+"запросить учетную запись пользователя</b>\r\n"
+"<div class=\"list_value_wrap\">\r\n"
+"<center><b>ДОБРО ПОЖАЛОВАТЬ НА ЭТОТ ГЕНЕАЛОГИЧЕСКИЙ САЙТ</b></center>\r\n"
+" <br/>\r\n"
+" <br/>\r\n"
+" Доступ к данным сайта разрешён посетителям, которые зарегистрированы и "
+"<b>авторизованы</b> тут.\r\n"
+" <br/>Если Вы зарегистрированы, пожалуйста войдите на сайт на этой "
+"странице.\r\n"
+" <br/>\r\n"
+" <br/>\r\n"
+" Если Вы тут не зарегистрированы, то можете послать запрос на регистрацию "
+"перейдя по соответствующей ссылке на этой странице.\r\n"
+" <br/>\r\n"
+" После того как администратор проверит Вашу информацию, он создаст для Вас "
+"учётную запись и отправит Вам письмо (email) для активации этой учётной "
+"записи.\r\n"
+"</div>\r\n"
+"</li>\r\n"
+"</ul>"
 
 #: webtrees/help_text.php:1081
 msgid ""
@@ -14685,6 +14825,49 @@ msgid ""
 "events from 1600 to 1699.<br /><br/>Selecting a range of years will change "
 "the calendar to the year view.</dd></dl>"
 msgstr ""
+"Это поле позволяет изменить год. Введите нужный год и нажмите "
+"<b>Enter</b>.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"<b>Расширенные возможности </b> для <b>Показать год</b>\r\n"
+"<dl>\r\n"
+" <dt>\r\n"
+"   <b>Более чем на один год</b>\r\n"
+" </dt>\r\n"
+"  <dd>\r\n"
+"    Вы можете найти даты в диапазоне лет.\r\n"
+"     <br/>\r\n"
+"     <br/>\r\n"
+"      Диапазоны лет <u>включительно</u>. Это означает, что диапазон лет "
+"простирается с 1 января первого года до 31 декабря последнего года. Вот "
+"несколько примеров диапазона лет.\r\n"
+"     <br/>\r\n"
+"     <br/>\r\n"
+"      <b>1992-5</b> для всех событий с 1992 по 1995.\r\n"
+"     <br/>\r\n"
+"      <b>1972-89</b> для всех событий с 1972 по 1989 год. \r\n"
+"     <br/>\r\n"
+"      <b>1610-759</b> для всех событий с 1610 по 1759.\r\n"
+"     <br/>\r\n"
+"      <b>1880-1905</b> для всех событий с 1880 по 1905 .\r\n"
+"     <br/>\r\n"
+"      <b>880-1105</b> для всех событий с 880 до 1105.\r\n"
+"     <br/>\r\n"
+"     <br/>\r\n"
+"      Чтобы увидеть все события в данном десятилетии или веке, Вы можете "
+"использовать символ <b>?</b>, вставив его вместо цифры. Например, "
+"<b>197?</b> для всех событий с 1970 по 1979 или <b>16??</b> для всех "
+"событий, от 1600 до 1699.\r\n"
+"     <br/>\r\n"
+"     <br/>\r\n"
+"       Выбор диапазона лет изменит календарь на год просмотра.\r\n"
+"  </dd>\r\n"
+" </dl>\r\n"
+"     <br/>\r\n"
+"     <br/>\r\n"
+"       <b>ВНИМАНИЕ!</b> Когда Вы вводите год, экран автоматически не "
+"обновляется,  потому что это поле, а не ссылка. Чтобы увидеть изминения, "
+"нажмите на ссылку <b>Показать месяц</b> или <b>Показать год</b>."
 
 #: webtrees/help_text.php:1135
 msgid ""
@@ -14779,6 +14962,16 @@ msgid ""
 "the maximum allowed execution time, resulting in incompletely downloaded "
 "files.  The ZIP option should reduce the download time by 75 percent."
 msgstr ""
+"При выборе этого варианта, копия файла GEDCOM будет сжата в формате .ZIP, "
+"еще до начала загрузки. Это позволит значительно уменьшить его размер, но Вы "
+"должны будете использовать совместные программы Unzip (WinZIP, например), "
+"чтобы распаковать файл GEDCOM прежде чем вы сможете его использовать.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Это полезная опция для загрузки больших файлов GEDCOM. Существует риск того, "
+"что время загрузки исходного файла может превышать максимально допустимое "
+"время выполнения, в результате чего полностью загруженных файлов. ZIP опция "
+"должна уменьшить время загрузки на 75%."
 
 #: webtrees/help_text.php:1170
 msgid ""
@@ -14792,7 +14985,7 @@ msgstr ""
 
 #: webtrees/help_text.php:1174
 msgid "GEDFact shared note assistant"
-msgstr ""
+msgstr "Помощник по общим заметкам GEDFact"
 
 #: webtrees/help_text.php:1175
 msgid ""
@@ -14800,6 +14993,13 @@ msgid ""
 "window.<br />Specific help will be found there.<br /><br />When you click "
 "the \"Save\" button, the ID of the Shared Note will be pasted here."
 msgstr ""
+"Нажатие на значок \"+\" откроет окно Мастера Общего Примечания GEDФакта.\r\n"
+"<br/>\r\n"
+"Там же можно найти конкретную помощь.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"При нажатии на кнопку \"Сохранить\", вставляется идентификатор (ID) Общего "
+"Примечания."
 
 #: webtrees/help_text.php:1180
 msgid ""
@@ -14944,6 +15144,36 @@ msgid ""
 "online.</li></ol>Someone with Accept rights will have to authorize your "
 "changes to make them permanent."
 msgstr ""
+"Эта страница позволит Вам объединить две GEDCOM-записи в том же файле "
+"GEDCOM.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Эта опция полезна, когда объединились GEDCOM-файлы, и сейчас есть много "
+"людей, семей в которых источники одинаковы.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Обединение страницы состоит из трех этапов.\r\n"
+"<br/>\r\n"
+"<ol><li>\r\n"
+"Вводятся два GEDCOM-идентификаторов. Идентификаторы <u>должны</u> быть того "
+"же типа. Например, Вы не можете объединить персону и семью или семью и "
+"источник.\r\n"
+"<br/>\r\n"
+"<b>Объединить в ID:</b>, в поле введите идентификатор записи, и после "
+"слияния создастся новая запись.\r\n"
+"<br/>\r\n"
+"<b>Объединить с ID:</ b>, в поле введите идентификатор записи, информация о "
+"котором будет объединена в ID-записи. Старая ID-запись будет удалена после "
+"слияния.\r\n"
+"</li>\r\n"
+"<li>\r\n"
+"После объединения, выберите, какие факты, из двух записей, Вы хотите "
+"сохранить. Просто нажмите на флажок выбранными для сохранения.\r\n"
+"</li>\r\n"
+"<li>\r\n"
+"Проверьте результаты слияния, как и все другие изменения.\r\n"
+"</li></ol>\r\n"
+"Что-бы эти Изминения вступили в силу, требуется подтверждение."
 
 #: webtrees/help_text.php:1211
 msgid ""
@@ -15109,6 +15339,17 @@ msgid ""
 "hidden from view.<br /><br />Zeros entered here will disable the limit, "
 "causing all News articles to be shown."
 msgstr ""
+"Введите пороговое значение.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Если Вы решили ограничить показ новостных статей в зависимости от возраста, "
+"то любая статья старше, чем количество дней, введен здесь, будут скрыты от "
+"просмотра. Если Вы решили ограничить показ новостных статей числом, то будет "
+"показано, только указанное количество последних статей, упорядоченности по "
+"возрасту создания. Остальные статьи будут скрыты от просмотра.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Если введете ноль, то будут показаны все новостные статьи."
 
 #: webtrees/help_text.php:1279
 msgid ""
@@ -15166,6 +15407,14 @@ msgid ""
 "Information page of that person.<br /><br />More help about adding Favorites "
 "is available in your personalized My Page."
 msgstr ""
+"В списке \"Избранные\", отображаются элементы, которые были добавлены на "
+"свою персональную страницу. Также отображаются элементы, выбранные "
+"администратором семейного древа. Нажатие на одну из самых любимых записей, "
+"приведет Вас прямо на индивидуальную страницу этой персоны.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Дополнительная информация о добавлении в \"Избранные\", доступна в Вашей "
+"персональной странице."
 
 #: webtrees/help_text.php:1298
 msgid "Import family tree"
@@ -15233,6 +15482,17 @@ msgid ""
 "session.  With this option selected, Administrators also have the ability to "
 "modify or delete the information associated with the original CHAN tag."
 msgstr ""
+"Администраторы иногда нужно очистить и исправить данные, представленные "
+"пользователями. Например, им может понадобиться, исправить положение мест "
+"(PLAC), вставив отсутствуют страны. Когда администраторы делают такие "
+"поправки, информация о предыдущих изменении, как правило, заменяются. Это "
+"может быть не желательно.\r\n"
+"<br/>\r\n"
+"<br/>\r\n"
+"Когда выбрана эта опция, <b>webtrees</b> будет сохранить первоначальную "
+"изменять информацию вместо того, чтобы заменить ее, в этой текущей сессии. "
+"Если выбран этот параметр, Администраторы также имеют возможность изменять "
+"или удалять информацию, связанную с оригинальным тегом CHAN."
 
 #: webtrees/help_text.php:1330
 msgid ""
@@ -15259,6 +15519,11 @@ msgid ""
 "information directly to your new <b>webtrees</b> database. The following "
 "requirements are necessary:"
 msgstr ""
+"Мастер переноса PGV в <b>webtrees</b> представляет собой автоматизированный "
+"процесс, который поможет администраторам сделать переход PGV к новой системе "
+"<b>webtrees</B>. Это позволит переместить все файлы GEDCOM и другой "
+"информации, содержащейся в базе данных PGV непосредственно в новую базу "
+"данных <b>webtrees</b>. Необходимы следующие параметры:"
 
 #: webtrees/help_text.php:1347
 msgid "webtrees database must be on the same server as PGV's"
@@ -15296,6 +15561,9 @@ msgid ""
 "media items. You will need to set up and move or copy your media "
 "configuration and objects separately after the transfer wizard is finished."
 msgstr ""
+"<b>Важное Примечание:</b> Мастер переноса не в состоянии поддерживать "
+"передачу мультимедийных объектов. Вам нужно будет установить, перемещать или "
+"копировать Вашу медиа-конфигурацию и объекты отдельно после передачи мастера."
 
 #: webtrees/help_text.php:1365
 msgid ""
@@ -15492,6 +15760,20 @@ msgid ""
 "will not be included automatically since there is no matching ASSO tag in "
 "the GEDCOM record of person <b>A</b>."
 msgstr ""
+"Эта опция заставляет <b>webtrees</b>, чтобы показать все лица, которые "
+"зарегистрированы в качестве имеющих отношение ассоциации человека или семьи, "
+"который был найден, как прямой результат поиска. Обратное, где все лица или "
+"семьи, показано, когда человек находится как прямой результат поиска не "
+"имеет отношения к ассоциации этих других лиц или семей, не представляется "
+"возможным.  <br /><br />Пример: Предположим, человек <b>A</b> является "
+"крестным к человеку <b>B</b>. Эти отношения отражаются в отчете GEDCOM "
+"человек <b>B</b> с помощью тега ASSO. Не соответствующий тег присутствует в "
+"записи GEDCOM человек <b>A</b>.<br /><br /> Когда эта опция установлена ​​в "
+"<b>Да</b> и списка результатов поиска включает в себя <b>B</b>, <b>A</b> "
+"будут включены автоматически по тегу ASSO в GEDCOM запись <b>B</b>. Однако, "
+"если в списке Результаты поиска включают <b>A</b>, <b>B</b> не будет "
+"включена автоматически, так как нет соответствующих ASSO тегов в записи "
+"GEDCOM человек <b>A</b>."
 
 #: webtrees/help_text.php:1450
 msgid ""
@@ -15775,7 +16057,7 @@ msgstr ""
 
 #: webtrees/help_text.php:1547
 msgid "Zip clippings"
-msgstr ""
+msgstr "Архивация вырезки"
 
 #: webtrees/help_text.php:1548
 msgid ""
@@ -15783,6 +16065,9 @@ msgid ""
 "information about ZIP files, please visit <a href=\"http://www.winzip.com\" "
 "target=\"_blank\">http://www.winzip.com</a>."
 msgstr ""
+"Выберите эту опцию, чтобы сохранить вырезки в файл .ZIP. Для получения "
+"дополнительной информации о файлах .ZIP, пожалуйста, посетите <a "
+"href=\"http://www.winzip.com\" target=\"_blank\">http://www.winzip.com</a>."
 
 #: webtrees/help_text.php:1552
 msgid "Help"
@@ -15831,7 +16116,7 @@ msgstr "Файл %s не может быть удален."
 
 #: webtrees/admin_media.php:286
 msgid "Create"
-msgstr ""
+msgstr "Создать"
 
 #. I18N: size of file in KB
 #: webtrees/admin_media.php:404 webtrees/library/WT/Media.php:201
@@ -19067,7 +19352,7 @@ msgstr "Удалить имя"
 #: webtrees/library/WT/Controller/Individual.php:215
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #: webtrees/library/WT/Controller/Individual.php:323
 msgid "Edit gender"
@@ -21350,7 +21635,7 @@ msgstr "Краткая версия"
 #. I18N: gedcom tag _TODO
 #: webtrees/library/WT/Gedcom/Tag.php:822
 msgid "Research task"
-msgstr "Уточнить"
+msgstr "Задачи исследования"
 
 #. I18N: gedcom tag _UID
 #: webtrees/library/WT/Gedcom/Tag.php:824

@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2013-01-05 12:21+0000\n"
-"Last-Translator: Tauri Mihklepp <Unknown>\n"
+"PO-Revision-Date: 2013-08-04 16:36+0000\n"
+"Last-Translator: Maidu Leever <maidu.leever@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:27+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: \n"
 "X-Poedit-Language: Estonian\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -1098,7 +1098,7 @@ msgstr "Seosta"
 #: webtrees/themes/_administration/header.php:68
 #: webtrees/library/WT/MenuBar.php:61 webtrees/library/WT/MenuBar.php:64
 msgid "My page"
-msgstr ""
+msgstr "Minu leht"
 
 #: webtrees/index.php:141 webtrees/index.php:142 webtrees/admin_users.php:224
 msgid "Change the blocks on this page"
@@ -2322,7 +2322,7 @@ msgstr ""
 #: webtrees/modules_v3/gedcom_stats/module.php:88
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "Seda sugupuud on viimati uuendatud %s."
 
 #: webtrees/modules_v3/gedcom_stats/module.php:94
 #: webtrees/modules_v3/gedcom_stats/module.php:166
@@ -2493,8 +2493,8 @@ msgstr ""
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Top %s eesnimi"
+msgstr[1] "Top %s eesnime"
 
 #: webtrees/modules_v3/top10_givnnames/module.php:142
 #: webtrees/modules_v3/top10_surnames/module.php:155
@@ -2909,8 +2909,8 @@ msgstr ""
 #, php-format
 msgid "Changes in the last day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Viimase päeva muudatused"
+msgstr[1] "Viimase %s päeva muudatused"
 
 #: webtrees/modules_v3/recent_changes/module.php:80
 #, php-format
@@ -4036,8 +4036,8 @@ msgstr ""
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Top %s perekonnanimi"
+msgstr[1] "Top %s perekonnanime"
 
 #: webtrees/modules_v3/top10_surnames/module.php:164
 msgid "bullet list"
@@ -4107,7 +4107,7 @@ msgstr "Minu konto"
 #: webtrees/modules_v3/user_welcome/module.php:52
 #: webtrees/library/WT/MenuBar.php:74
 msgid "My pedigree"
-msgstr ""
+msgstr "Minu põlvnemine"
 
 #: webtrees/modules_v3/user_welcome/module.php:53
 #: webtrees/library/WT/MenuBar.php:80
@@ -4479,7 +4479,7 @@ msgstr[1] ""
 
 #: webtrees/modules_v3/googlemap/module.php:1236
 msgid "Root"
-msgstr ""
+msgstr "Juur"
 
 #: webtrees/modules_v3/googlemap/module.php:1257
 #: webtrees/includes/functions/functions.php:1141
@@ -4600,7 +4600,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/admin_places.php:164
 #: webtrees/modules_v3/googlemap/admin_places.php:585
 msgid "Zoom factor"
-msgstr ""
+msgstr "Suurendustegur"
 
 #: webtrees/modules_v3/googlemap/help_text.php:34
 msgid ""
@@ -17861,7 +17861,7 @@ msgstr ""
 #: webtrees/library/WT/Controller/Pedigree.php:91
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr ""
+msgstr "%s põlvnemine"
 
 #: webtrees/library/WT/Controller/Media.php:178
 msgid "Edit Details"
@@ -20711,18 +20711,18 @@ msgstr ""
 #: webtrees/library/WT/Gedcom/Code/Name.php:57
 msgctxt "MALE"
 msgid "also known as"
-msgstr ""
+msgstr "tuntud ka kui"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: webtrees/library/WT/Gedcom/Code/Name.php:60
 msgctxt "FEMALE"
 msgid "also known as"
-msgstr ""
+msgstr "tuntud ka kui"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: webtrees/library/WT/Gedcom/Code/Name.php:63
 msgid "also known as"
-msgstr ""
+msgstr "tuntud ka kui"
 
 #. I18N: The name given to an individual at their birth
 #: webtrees/library/WT/Gedcom/Code/Name.php:69

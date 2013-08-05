@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2012-09-05 08:16+0000\n"
+"PO-Revision-Date: 2013-08-04 17:48+0000\n"
 "Last-Translator: saurab limbu <saurablimbu@gmail.com>\n"
 "Language-Team: Nepali <ne@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:32+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:04+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: webtrees/admin_site_access.php:32
 #: webtrees/themes/_administration/header.php:97
@@ -331,26 +331,26 @@ msgstr ""
 #: webtrees/edit_interface.php:395
 #: webtrees/modules_v3/relatives/module.php:402
 msgid "Add a new wife"
-msgstr ""
+msgstr "नयाँ श्रमती थप"
 
 #: webtrees/edit_interface.php:397
 #: webtrees/modules_v3/relatives/module.php:419
 msgid "Add a new husband"
-msgstr ""
+msgstr "नयाँ श्रीमान थप"
 
 #: webtrees/edit_interface.php:425
 #: webtrees/modules_v3/relatives/module.php:147
 #: webtrees/modules_v3/relatives/module.php:148
 #: webtrees/modules_v3/relatives/module.php:331 webtrees/family.php:132
 msgid "Add a new mother"
-msgstr ""
+msgstr "नयाँ आमा थप"
 
 #: webtrees/edit_interface.php:427 webtrees/edit_interface.php:1692
 #: webtrees/modules_v3/relatives/module.php:101
 #: webtrees/modules_v3/relatives/module.php:102
 #: webtrees/modules_v3/relatives/module.php:328 webtrees/family.php:124
 msgid "Add a new father"
-msgstr ""
+msgstr "नया बाबु थप"
 
 #: webtrees/edit_interface.php:446
 #: webtrees/modules_v3/relatives/module.php:435
@@ -365,7 +365,7 @@ msgstr ""
 #: webtrees/edit_interface.php:464 webtrees/edit_interface.php:591
 #: webtrees/modules_v3/relatives/module.php:429
 msgid "Link this person to an existing family as a wife"
-msgstr ""
+msgstr "यो व्यात्तिलाई प्रस्तुत परिवारमा श्रीमतीको रुपमा लिङ्क गराऊ"
 
 #: webtrees/edit_interface.php:466 webtrees/edit_interface.php:593
 #: webtrees/modules_v3/relatives/module.php:412
@@ -392,7 +392,7 @@ msgstr "परिवार"
 #: webtrees/edit_interface.php:522
 #: webtrees/modules_v3/relatives/module.php:424
 msgid "Add a husband using an existing person"
-msgstr ""
+msgstr "प्रस्तुत व्यात्तिको श्रीमान थप"
 
 #: webtrees/edit_interface.php:524
 #: webtrees/modules_v3/relatives/module.php:407
@@ -537,7 +537,7 @@ msgstr ""
 #: webtrees/modules_v3/relatives/module.php:289
 #: webtrees/library/WT/Controller/Family.php:135
 msgid "Re-order children"
-msgstr ""
+msgstr "बच्चाहरुको क्रम मिलाऊ"
 
 #. I18N: An option in a list-box
 #: webtrees/edit_interface.php:2044 webtrees/reportengine.php:513
@@ -976,7 +976,7 @@ msgstr "व्याक्तिहरु"
 #: webtrees_tmp/modules_v3_fact_sources_report.xml.php:150
 #: webtrees_tmp/modules_v3_fact_sources_report.xml.php:312
 msgid "Families"
-msgstr ""
+msgstr "परिवारहरु"
 
 #: webtrees/source.php:98 webtrees/modules_v3/gedcom_stats/module.php:107
 #: webtrees/modules_v3/gedcom_stats/module.php:332
@@ -1086,7 +1086,7 @@ msgstr "भण्डार"
 #: webtrees/admin_media.php:447 webtrees/library/WT/Controller/Media.php:93
 #: webtrees/library/WT/Controller/Media.php:181
 msgid "Set link"
-msgstr ""
+msgstr "लिकं बनाऊ"
 
 #. I18N: Name of a module
 #: webtrees/index.php:82 webtrees/index.php:90 webtrees/admin_modules.php:140
@@ -1818,7 +1818,7 @@ msgstr "स्रोतहरू"
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_find.php:77
 #: webtrees/includes/functions/functions_print.php:1124
 msgid "Find an individual"
-msgstr ""
+msgstr "व्याक्तिलाई खोज"
 
 #: webtrees/find.php:76 webtrees/admin_site_merge.php:296
 #: webtrees/admin_site_merge.php:317
@@ -1832,7 +1832,7 @@ msgstr ""
 
 #: webtrees/find.php:82 webtrees/includes/functions/functions_print.php:1128
 msgid "Find a place"
-msgstr ""
+msgstr "स्थल खोज"
 
 #: webtrees/find.php:85 webtrees/includes/functions/functions_print.php:1158
 msgid "Find a repository"
@@ -1840,14 +1840,14 @@ msgstr ""
 
 #: webtrees/find.php:88 webtrees/includes/functions/functions_print.php:1154
 msgid "Find a note"
-msgstr ""
+msgstr "टिपोट खोज"
 
 #: webtrees/find.php:91 webtrees/admin_site_merge.php:297
 #: webtrees/admin_site_merge.php:318
 #: webtrees/includes/functions/functions_print.php:1150
 #: webtrees_tmp/modules_v3_fact_sources_report.xml.php:6
 msgid "Find a source"
-msgstr ""
+msgstr "श्रोत खोज"
 
 #: webtrees/find.php:94 webtrees/includes/functions/functions_print.php:1136
 msgid "Find a special character"
@@ -1855,7 +1855,7 @@ msgstr ""
 
 #: webtrees/find.php:109 webtrees/includes/functions/functions_print.php:1166
 msgid "Find a fact or event"
-msgstr ""
+msgstr "तथ्य अथवा कार्यक्रम खोज"
 
 #: webtrees/find.php:144 webtrees/modules_v3/GEDFact_assistant/module.php:117
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_find.php:62
@@ -1883,7 +1883,7 @@ msgstr ""
 #: webtrees/find.php:222 webtrees/find.php:239 webtrees/find.php:256
 #: webtrees/find.php:274 webtrees/find.php:291
 msgid "Display all"
-msgstr ""
+msgstr "सबै देखाऊ"
 
 #: webtrees/find.php:234
 msgid "Place contains:"
@@ -1944,7 +1944,7 @@ msgstr ""
 
 #: webtrees/find.php:615
 msgid "Places found"
-msgstr ""
+msgstr "स्थानहरु भेटियो"
 
 #: webtrees/find.php:638
 msgid "Repositories found"
@@ -2136,7 +2136,7 @@ msgstr ""
 #. I18N: Name of a module
 #: webtrees/modules_v3/upcoming_events/module.php:34
 msgid "Upcoming events"
-msgstr ""
+msgstr "आउदो कार्यक्रमहरु"
 
 #. I18N: Description of the “Upcoming events” module
 #: webtrees/modules_v3/upcoming_events/module.php:39
@@ -2164,7 +2164,7 @@ msgstr "कन्फिगर गर्नुहोस्"
 #: webtrees/modules_v3/recent_changes/module.php:136
 #: webtrees/modules_v3/yahrzeit/module.php:239
 msgid "Number of days to show"
-msgstr ""
+msgstr "देखाइने दिनहरुको संख्या"
 
 #: webtrees/modules_v3/upcoming_events/module.php:134
 #: webtrees/modules_v3/recent_changes/module.php:139
@@ -2178,12 +2178,12 @@ msgstr[1] ""
 #: webtrees/modules_v3/upcoming_events/module.php:139
 #: webtrees/modules_v3/todays_events/module.php:127
 msgid "Show only events of living people?"
-msgstr ""
+msgstr "बाच्ने व्यात्तिहरुको मात्र घट्नक्रमहरु देखाऊ"
 
 #: webtrees/modules_v3/upcoming_events/module.php:146
 #: webtrees/modules_v3/todays_events/module.php:134
 msgid "Show only Births, Deaths, and Marriages?"
-msgstr ""
+msgstr "जन्महरु,मृत्युहरु र विवाहहरु मात्र देखाऊ ?"
 
 #: webtrees/modules_v3/upcoming_events/module.php:153
 #: webtrees/modules_v3/top10_givnnames/module.php:149
@@ -2299,7 +2299,7 @@ msgstr ""
 #: webtrees/library/WT/Stats.php:618 webtrees/library/WT/Stats.php:619
 #: webtrees/library/WT/Stats.php:1654 webtrees/library/WT/Stats.php:2392
 msgid "Males"
-msgstr ""
+msgstr "पुरुषहरु"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:95
 #: webtrees/modules_v3/gedcom_stats/module.php:167
@@ -2312,13 +2312,13 @@ msgstr ""
 #: webtrees/library/WT/Stats.php:617 webtrees/library/WT/Stats.php:620
 #: webtrees/library/WT/Stats.php:1654 webtrees/library/WT/Stats.php:2392
 msgid "Females"
-msgstr ""
+msgstr "महिलाहरु"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:98
 #: webtrees/modules_v3/gedcom_stats/module.php:308
 #: webtrees/modules_v3/html/module.php:184 webtrees/statistics.php:177
 msgid "Total surnames"
-msgstr ""
+msgstr "सम्पूर्ण थरहरु"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:110
 #: webtrees/modules_v3/gedcom_stats/module.php:340
@@ -2334,13 +2334,13 @@ msgstr ""
 #: webtrees/modules_v3/html/module.php:204 webtrees/statistics.php:351
 #: webtrees_tmp/modules_v3_missing_facts_report_report.xml.php:599
 msgid "Total events"
-msgstr ""
+msgstr "सम्पूर्ण घट्नाक्रमहरु"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:116
 #: webtrees/modules_v3/gedcom_stats/module.php:364
 #: webtrees/modules_v3/html/module.php:208
 msgid "Total users"
-msgstr ""
+msgstr "सम्पूर्ण प्रयोगकर्ताहरु"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:128
 #: webtrees/modules_v3/gedcom_stats/module.php:303
@@ -2370,7 +2370,7 @@ msgstr ""
 #: webtrees/modules_v3/gedcom_stats/module.php:335
 #: webtrees/modules_v3/html/module.php:237
 msgid "Person who lived the longest"
-msgstr ""
+msgstr "धेरै समय बाँच्ने व्यात्ति"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:164
 #: webtrees/modules_v3/gedcom_stats/module.php:343
@@ -2383,7 +2383,7 @@ msgstr ""
 #: webtrees/modules_v3/gedcom_stats/module.php:351
 #: webtrees/modules_v3/html/module.php:247
 msgid "Family with the most children"
-msgstr ""
+msgstr "धेरै बाच्चाहरु भएको परिवार"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:180
 #: webtrees/modules_v3/gedcom_stats/module.php:359
@@ -2416,7 +2416,7 @@ msgstr ""
 
 #: webtrees/modules_v3/gedcom_stats/module.php:348
 msgid "Other records"
-msgstr ""
+msgstr "अरु रेकर्डहरु"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:373
 msgid "Show link to Statistics charts?"
@@ -2463,7 +2463,7 @@ msgstr[1] ""
 #: webtrees/modules_v3/top10_surnames/module.php:155
 #: webtrees/modules_v3/top10_pageviews/module.php:135
 msgid "Number of items to show"
-msgstr ""
+msgstr "देखाइन राखिने विषयहरुको संख्या"
 
 #. I18N: Name of a report
 #: webtrees/modules_v3/occupation_report/module.php:35
@@ -2547,7 +2547,7 @@ msgstr "सीमा:"
 #. I18N: Name of a module
 #: webtrees/modules_v3/individuals/module.php:34
 msgid "Individual list"
-msgstr ""
+msgstr "व्याक्ति सुची"
 
 #. I18N: Description of “Individuals” module
 #: webtrees/modules_v3/individuals/module.php:39
@@ -2607,7 +2607,7 @@ msgstr ""
 #: webtrees/admin_trees_config.php:846 webtrees/admin_trees_config.php:984
 #: webtrees/library/WT/MenuBar.php:100
 msgid "Charts"
-msgstr ""
+msgstr "चार्टहरु"
 
 #. I18N: Description of the “Charts” module
 #: webtrees/modules_v3/charts/module.php:39
@@ -2640,7 +2640,7 @@ msgstr ""
 #: webtrees/modules_v3/tree/module.php:111
 #, php-format
 msgid "Interactive tree of %s"
-msgstr ""
+msgstr "%s को पारस्परिक वृक्ष"
 
 #: webtrees/modules_v3/charts/module.php:149
 msgid ""
@@ -2662,7 +2662,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_pedigree_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_pedigree_report_report.xml.php:41
 msgid "Pedigree"
-msgstr ""
+msgstr "वंशावली"
 
 #. I18N: Name of a module/sidebar
 #. I18N: Name of a module/report
@@ -2680,7 +2680,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:7
 msgid "Descendants"
-msgstr ""
+msgstr "संततिहरु"
 
 #: webtrees/modules_v3/charts/module.php:207
 #: webtrees/includes/functions/functions_print.php:104
@@ -2696,7 +2696,7 @@ msgstr ""
 #: webtrees/library/WT/MenuBar.php:120
 #: webtrees/library/WT/Controller/Fanchart.php:326
 msgid "Interactive tree"
-msgstr ""
+msgstr "पारस्परिक वृक्ष"
 
 #: webtrees/modules_v3/charts/module.php:215
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:339
@@ -2738,7 +2738,7 @@ msgstr ""
 #: webtrees/library/WT/Controller/Ancestry.php:83
 #: webtrees_tmp/modules_v3_ahnentafel_report_report.xml.php:5
 msgid "Ancestors"
-msgstr ""
+msgstr "पूर्वजहरु"
 
 #. I18N: Description of the “Ancestors” module
 #: webtrees/modules_v3/ahnentafel_report/module.php:41
@@ -2804,7 +2804,7 @@ msgstr "अज्ञात"
 #: webtrees_tmp/modules_v3_birth_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_birth_report_report.xml.php:29
 msgid "Births"
-msgstr ""
+msgstr "जन्महरु"
 
 #. I18N: Description of the “Births” module
 #: webtrees/modules_v3/birth_report/module.php:41
@@ -2860,7 +2860,7 @@ msgstr "प्रयोगकर्ता नाम अथवा ई–मेल
 #: webtrees/modules_v3/recent_changes/module.php:36 webtrees/admin.php:244
 #: webtrees_tmp/modules_v3_change_report_report.xml.php:90
 msgid "Recent changes"
-msgstr ""
+msgstr "हालको परिवर्तनहरु"
 
 #. I18N: Description of the “Recent changes” module
 #: webtrees/modules_v3/recent_changes/module.php:41
@@ -2999,7 +2999,7 @@ msgstr ""
 #: webtrees/admin_site_logs.php:236 webtrees/admin_site_logs.php:259
 #: webtrees/admin_site_change.php:269 webtrees/admin_site_change.php:293
 msgid "Family tree"
-msgstr ""
+msgstr "परिवार वृक्ष"
 
 #: webtrees/modules_v3/faq/module.php:358
 #: webtrees/modules_v3/stories/module.php:342
@@ -3117,51 +3117,51 @@ msgstr "परिवार हेर्नुहोस"
 
 #: webtrees/modules_v3/relatives/module.php:112
 msgid "Add husband"
-msgstr ""
+msgstr "श्रीमान थप"
 
 #: webtrees/modules_v3/relatives/module.php:113
 msgid "Add a husband to this family"
-msgstr ""
+msgstr "यो परिवारमा श्रीमान थप"
 
 #: webtrees/modules_v3/relatives/module.php:158
 msgid "Add wife"
-msgstr ""
+msgstr "श्रीमती थप"
 
 #: webtrees/modules_v3/relatives/module.php:159
 msgid "Add a wife to this family"
-msgstr ""
+msgstr "यो परिवारमा श्रमती थप"
 
 #: webtrees/modules_v3/relatives/module.php:204
 msgid "Add marriage details"
-msgstr ""
+msgstr "विवाहको विस्तृत विवरण् थप"
 
 #: webtrees/modules_v3/relatives/module.php:277
 msgid "Add a new son or daughter"
-msgstr ""
+msgstr "नयाँ छोरा अथवा छोरी थप"
 
 #: webtrees/modules_v3/relatives/module.php:281
 msgid "Add a new brother or sister"
-msgstr ""
+msgstr "नयाँ भाई अथवा बहिनी थप"
 
 #: webtrees/modules_v3/relatives/module.php:282
 #: webtrees/includes/functions/functions.php:1167
 msgid "brother"
-msgstr ""
+msgstr "भाई"
 
 #: webtrees/modules_v3/relatives/module.php:283
 #: webtrees/includes/functions/functions.php:1182
 msgid "sister"
-msgstr ""
+msgstr "बहि"
 
 #: webtrees/modules_v3/relatives/module.php:318
 msgid "Show date differences"
-msgstr ""
+msgstr "मिती अन्तरहरु देखाऊ"
 
 #. I18N: Name of a module.  Tasks that need further research.
 #: webtrees/modules_v3/todo/module.php:34
 #: webtrees/modules_v3/todo/help_text.php:33
 msgid "Research tasks"
-msgstr ""
+msgstr "अनुसन्धानात्मक कार्यहरु"
 
 #. I18N: Description of “Research tasks” module
 #: webtrees/modules_v3/todo/module.php:39
@@ -3231,7 +3231,7 @@ msgstr ""
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:77
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:50
 msgid "You must enter a name"
-msgstr ""
+msgstr "तपाईले नाम अवश्य हाल्नु पर्छ"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:118
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:86
@@ -3349,11 +3349,11 @@ msgstr "लिङ्क सुचीमा राख"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:140
 msgid "Remove Link from list"
-msgstr ""
+msgstr "सुचीबाट लिङ्क हटाऊ"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:171
 msgid "Add links"
-msgstr ""
+msgstr "लिङ्कहरु थप"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
 #: webtrees/addmedia.php:447
@@ -3378,7 +3378,7 @@ msgstr ""
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:567
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1128
 msgid "Household"
-msgstr ""
+msgstr "घरेलु"
 
 #. I18N: gedcom tag CTRY
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1037
@@ -3427,7 +3427,7 @@ msgstr "स्थान"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:41
 msgid "Add people"
-msgstr ""
+msgstr "व्याक्तिहरु थप"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:117
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:118
@@ -3570,7 +3570,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:89
 msgid "Related families"
-msgstr ""
+msgstr "सम्बन्धीत परिवारहरु"
 
 #. I18N: Description of the “Related families”
 #: webtrees/modules_v3/individual_ext_report/module.php:41
@@ -3581,7 +3581,7 @@ msgstr ""
 #. I18N: Name of a module
 #: webtrees/modules_v3/html/module.php:34
 msgid "HTML"
-msgstr ""
+msgstr "एचटीएमएल"
 
 #. I18N: Description of the “HTML” module
 #: webtrees/modules_v3/html/module.php:39
@@ -3640,7 +3640,7 @@ msgstr "सामग्री"
 
 #: webtrees/modules_v3/html/module.php:319
 msgid "Show the date and time of update"
-msgstr ""
+msgstr "नवीनीकरणको समय र मिती देखाऊ"
 
 #: webtrees/modules_v3/html/help_text.php:34
 msgid ""
@@ -3668,17 +3668,17 @@ msgstr ""
 #: webtrees/includes/functions/functions_charts.php:263
 #: webtrees/library/WT/Controller/Descendancy.php:250
 msgid "No children"
-msgstr ""
+msgstr "बच्चाहरु छैन"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/todays_events/module.php:34
 msgid "On this day"
-msgstr ""
+msgstr "यो दिनमा"
 
 #. I18N: Description of the “On This Day” module
 #: webtrees/modules_v3/todays_events/module.php:39
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "आजको दिनमा पर्ने वार्षिकीहरुको सूची"
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: webtrees/modules_v3/sitemap/module.php:37
@@ -3773,7 +3773,7 @@ msgstr ""
 #. I18N: Name of a module/sidebar
 #: webtrees/modules_v3/families/module.php:34
 msgid "Family list"
-msgstr ""
+msgstr "परिवार सूची"
 
 #. I18N: Description of the “Families” module
 #: webtrees/modules_v3/families/module.php:39
@@ -3837,7 +3837,7 @@ msgstr "पठाउनुहोस्"
 
 #: webtrees/modules_v3/user_messages/module.php:87
 msgid "You have no pending messages."
-msgstr ""
+msgstr "तपाँईको हेर्न बाँकी रहेको खबरहरु छैन"
 
 #: webtrees/modules_v3/user_messages/module.php:92 webtrees/message.php:132
 msgid "Subject:"
@@ -3845,7 +3845,7 @@ msgstr "विषय:"
 
 #: webtrees/modules_v3/user_messages/module.php:93
 msgid "Date Sent:"
-msgstr ""
+msgstr "पठाईएको मितीः"
 
 #: webtrees/modules_v3/user_messages/module.php:94 webtrees/message.php:130
 #: webtrees/includes/authentication.php:242
@@ -3865,7 +3865,7 @@ msgstr "जवाफ दिनुहोस्"
 
 #: webtrees/modules_v3/user_messages/module.php:123
 msgid "Delete Selected Messages"
-msgstr ""
+msgstr "छनौट गरिएको खबरहरु मेट्नुहोस"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/gedcom_favorites/module.php:36
@@ -3895,7 +3895,7 @@ msgstr ""
 #: webtrees/modules_v3/gedcom_favorites/module.php:183
 #: webtrees/addmedia.php:442
 msgid "Enter a Person, Family, or Source ID"
-msgstr ""
+msgstr "व्यात्ति,परिवार अथवा श्रोतको आइडी राख"
 
 #: webtrees/modules_v3/gedcom_favorites/module.php:196
 msgid "Enter an optional note about this favorite"
@@ -3903,35 +3903,35 @@ msgstr ""
 
 #: webtrees/modules_v3/tree/class_treeview.php:74
 msgid "Use compact layout"
-msgstr ""
+msgstr "कम्प्याक्ट लेआउट प्रयोग गर"
 
 #: webtrees/modules_v3/tree/class_treeview.php:75
 msgid "Show all spouses and ancestors"
-msgstr ""
+msgstr "सबै श्रीमतीहरु र पूर्वजहरु देखाऊ"
 
 #. I18N: e.g. “Son of [father name & mother name]”
 #: webtrees/modules_v3/tree/class_treeview.php:325
 #, php-format
 msgid "Son of %s"
-msgstr ""
+msgstr "%s को छोरा"
 
 #. I18N: e.g. “Daughter of [father name & mother name]”
 #: webtrees/modules_v3/tree/class_treeview.php:328
 #, php-format
 msgid "Daughter of %s"
-msgstr ""
+msgstr "%s को छोरी"
 
 #. I18N: e.g. “Child of [father name & mother name]”
 #: webtrees/modules_v3/tree/class_treeview.php:331
 #, php-format
 msgid "Child of %s"
-msgstr ""
+msgstr "%s को सन्तान"
 
 #. I18N: Description of the “Interactive tree” module
 #: webtrees/modules_v3/tree/module.php:40
 msgid ""
 "An interactive tree, showing all the ancestors and descendants of a person."
-msgstr ""
+msgstr "एक व्याक्तिको सम्पूण पूर्वज र सन्नतीहरु देखाइएको पारस्परिक वृक्ष"
 
 #. I18N: Description of the “Descendants” module
 #: webtrees/modules_v3/descendancy_report/module.php:41
@@ -3976,17 +3976,17 @@ msgstr "परिवर सदस्यको बिवरण र उनीह�
 #: webtrees/modules_v3/top10_surnames/module.php:34
 #: webtrees/statistics.php:185
 msgid "Top surnames"
-msgstr ""
+msgstr "उच्च थरहरु"
 
 #. I18N: Description of the “Top surnames” module
 #: webtrees/modules_v3/top10_surnames/module.php:39
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "धेरै प्रचलित थरहरुको सुची"
 
 #. I18N: i.e. most popular surname.
 #: webtrees/modules_v3/top10_surnames/module.php:90
 msgid "Top surname"
-msgstr ""
+msgstr "उच्च थर"
 
 #. I18N: Title for a list of the most common surnames, %s is a number.  Note that a separate translation exists when %s is 1
 #: webtrees/modules_v3/top10_surnames/module.php:93
@@ -3998,7 +3998,7 @@ msgstr[1] ""
 
 #: webtrees/modules_v3/top10_surnames/module.php:164
 msgid "bullet list"
-msgstr ""
+msgstr "बुलेट सुची"
 
 #: webtrees/modules_v3/top10_surnames/module.php:164
 msgid "compact list"
@@ -4013,7 +4013,7 @@ msgstr ""
 #: webtrees/modules_v3/stories/module.php:34
 #: webtrees/modules_v3/stories/module.php:411
 msgid "Stories"
-msgstr ""
+msgstr "कथाहरु"
 
 #. I18N: Description of the “Stories” module
 #: webtrees/modules_v3/stories/module.php:39
@@ -4023,19 +4023,19 @@ msgstr ""
 #: webtrees/modules_v3/stories/module.php:122
 #: webtrees/modules_v3/stories/module.php:206
 msgid "Edit story"
-msgstr ""
+msgstr "कथा सम्पादन गर"
 
 #: webtrees/modules_v3/stories/module.php:129
 #: webtrees/modules_v3/stories/module.php:216
 #: webtrees/modules_v3/stories/module.php:345
 msgid "Add story"
-msgstr ""
+msgstr "कथा थप"
 
 #: webtrees/modules_v3/stories/module.php:238
 #: webtrees/modules_v3/stories/module.php:349
 #: webtrees/modules_v3/stories/module.php:415
 msgid "Story title"
-msgstr ""
+msgstr "कथाको शिर्षक"
 
 #: webtrees/modules_v3/stories/module.php:241
 msgid "Story"
@@ -4043,7 +4043,7 @@ msgstr "कथा"
 
 #: webtrees/modules_v3/stories/module.php:366
 msgid "Are you sure you want to delete this story?"
-msgstr ""
+msgstr "के तपाई यो कथा मेट्न निश्चित हुनुहुन्छ ।"
 
 #. I18N: Description of the “My page” module
 #: webtrees/modules_v3/user_welcome/module.php:39
@@ -4125,7 +4125,7 @@ msgstr ""
 #: webtrees/includes/functions/functions_print_lists.php:507
 #: webtrees/medialist.php:158
 msgid "Reset"
-msgstr "रिसेट गर्नुहोस्"
+msgstr "फेरि मिलाउनुहोला ।"
 
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
 #: webtrees/modules_v3/googlemap/placehierarchy.php:234
@@ -4156,7 +4156,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/module.php:881
 #: webtrees/modules_v3/googlemap/wt_v3_places_edit.js.php:175
 msgid "Redraw map"
-msgstr ""
+msgstr "नस्सा पुनः बनाऊ"
 
 #: webtrees/modules_v3/googlemap/wt_v3_googlemap.js.php:483
 msgid "Date not known"
@@ -4176,7 +4176,7 @@ msgstr ""
 
 #: webtrees/modules_v3/googlemap/module.php:160
 msgid "No map data for this person"
-msgstr ""
+msgstr "यो व्याक्तिको नक्साकोआँकडा छैन"
 
 #: webtrees/modules_v3/googlemap/module.php:252
 msgid "Basic"
@@ -4228,7 +4228,7 @@ msgstr "लुकाउनुहोस्"
 #: webtrees/modules_v3/googlemap/module.php:274
 #: webtrees/modules_v3/googlemap/module.php:398
 msgid "Size of map (in pixels)"
-msgstr ""
+msgstr "नक्साको आकार(पिक्सेलमा)"
 
 #: webtrees/modules_v3/googlemap/module.php:276
 #: webtrees/modules_v3/googlemap/module.php:400 webtrees/fanchart.php:79
@@ -4250,7 +4250,7 @@ msgstr ""
 
 #: webtrees/modules_v3/googlemap/module.php:285
 msgid "minimum"
-msgstr ""
+msgstr "न्यूनतम"
 
 #: webtrees/modules_v3/googlemap/module.php:290
 msgid "maximum"
@@ -4268,7 +4268,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/module.php:346
 #: webtrees/modules_v3/googlemap/module.php:354
 msgid "digits"
-msgstr ""
+msgstr "अंकहरु"
 
 #. I18N: gedcom tag STAE
 #: webtrees/modules_v3/googlemap/module.php:316
@@ -4289,7 +4289,7 @@ msgstr "शहर"
 #: webtrees/modules_v3/googlemap/module.php:333
 #: webtrees/modules_v3/googlemap/places_edit.php:292
 msgid "Neighborhood"
-msgstr ""
+msgstr "छिमेकी"
 
 #: webtrees/modules_v3/googlemap/module.php:341
 #: webtrees/modules_v3/googlemap/places_edit.php:294
@@ -4317,7 +4317,7 @@ msgstr "उपसर्गहरु"
 
 #: webtrees/modules_v3/googlemap/module.php:372
 msgid "Suffixes"
-msgstr ""
+msgstr "पत्य्यहरु"
 
 #: webtrees/modules_v3/googlemap/module.php:380
 #: webtrees/modules_v3/googlemap/module.php:1605
@@ -4347,7 +4347,7 @@ msgstr "झण्डा"
 #: webtrees/modules_v3/googlemap/module.php:416
 #: webtrees/modules_v3/googlemap/help_text.php:97
 msgid "Display short placenames"
-msgstr ""
+msgstr "छोटो नामको स्थानहरु देखाऊ"
 
 #: webtrees/modules_v3/googlemap/module.php:420
 #: webtrees/modules_v3/googlemap/help_text.php:53
@@ -4357,7 +4357,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/module.php:439
 #: webtrees/modules_v3/googlemap/help_text.php:75
 msgid "Select flag"
-msgstr ""
+msgstr "झण्डा छान"
 
 #: webtrees/modules_v3/googlemap/module.php:490
 #: webtrees/modules_v3/googlemap/module.php:493
@@ -4367,14 +4367,14 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/places_edit.php:330
 #: webtrees/modules_v3/googlemap/places_edit.php:334
 msgid "Change flag"
-msgstr ""
+msgstr "झण्डा बदल"
 
 #: webtrees/modules_v3/googlemap/module.php:490
 #: webtrees/modules_v3/googlemap/module.php:493
 #: webtrees/modules_v3/googlemap/module.php:496
 #: webtrees/modules_v3/googlemap/places_edit.php:335
 msgid "Remove flag"
-msgstr ""
+msgstr "झण्डा हटाऊ"
 
 #: webtrees/modules_v3/googlemap/module.php:561
 msgid "Countries"
@@ -4443,31 +4443,31 @@ msgstr "स्वयं"
 
 #: webtrees/modules_v3/googlemap/module.php:1269
 msgid "Individual information"
-msgstr ""
+msgstr "व्यक्तिगत जानकारी"
 
 #: webtrees/modules_v3/googlemap/module.php:1270
 #: webtrees/modules_v3/random_media/module.php:181 webtrees/medialist.php:294
 msgid "View Person"
-msgstr ""
+msgstr "व्याक्ति हेर्नुहोस"
 
 #: webtrees/modules_v3/googlemap/module.php:1272
 msgid "Birth:"
-msgstr ""
+msgstr "जन्म"
 
 #: webtrees/modules_v3/googlemap/module.php:1320
 #: webtrees/includes/functions/functions_print.php:93
 #: webtrees/library/WT/MenuBar.php:123
 #: webtrees/library/WT/Controller/Fanchart.php:315
 msgid "Pedigree map"
-msgstr ""
+msgstr "वंशको नक्सा"
 
 #: webtrees/modules_v3/googlemap/module.php:1364
 msgid "Zoom in here"
-msgstr ""
+msgstr "यहाँ जुम गर्नुहोस"
 
 #: webtrees/modules_v3/googlemap/module.php:1365
 msgid "Zoom out here"
-msgstr ""
+msgstr "यहाँ जुम घटाउनुहोस"
 
 #: webtrees/modules_v3/googlemap/module.php:1366
 msgid "Center map here"
@@ -4499,7 +4499,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/module.php:1716
 #, php-format
 msgid "Total places: %s"
-msgstr ""
+msgstr "सम्पूर्ण स्थानहरुः%s"
 
 #: webtrees/modules_v3/googlemap/module.php:1721
 msgid ""
@@ -4511,15 +4511,15 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/wt_v3_places_edit.js.php:393
 #: webtrees/modules_v3/googlemap/admin_places.php:590
 msgid "No places found"
-msgstr ""
+msgstr "स्थानहरु भेटिएन"
 
 #: webtrees/modules_v3/googlemap/wt_v3_places_edit.js.php:398
 msgid "Use this value"
-msgstr ""
+msgstr "यो मान प्रयोग गर"
 
 #: webtrees/modules_v3/googlemap/places_edit.php:258
 msgid "Search globally"
-msgstr ""
+msgstr "व्यापक खोज"
 
 #: webtrees/modules_v3/googlemap/places_edit.php:260
 msgid "Search locally"
@@ -4615,7 +4615,7 @@ msgstr ""
 
 #: webtrees/modules_v3/googlemap/help_text.php:70
 msgid "Select an icon"
-msgstr ""
+msgstr "आइकन छान"
 
 #: webtrees/modules_v3/googlemap/help_text.php:71
 msgid ""
@@ -4632,7 +4632,7 @@ msgstr ""
 
 #: webtrees/modules_v3/googlemap/help_text.php:80
 msgid "Enter filename"
-msgstr ""
+msgstr "फाइलको नाम राख"
 
 #: webtrees/modules_v3/googlemap/help_text.php:81
 msgid ""
@@ -4658,6 +4658,7 @@ msgid ""
 "If you have a large number of inactive places, it can be slow to generate "
 "the list."
 msgstr ""
+"यदि तपाई सँग ठूलो मात्रामा निष्क्रिय स्थानहरु छन भने सुची बनाउन ढिलाइ हुनसक्छ"
 
 #: webtrees/modules_v3/googlemap/help_text.php:98
 msgid ""
@@ -4682,7 +4683,7 @@ msgstr ""
 
 #: webtrees/modules_v3/googlemap/admin_places.php:156
 msgid "County"
-msgstr ""
+msgstr "देश"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:164
 #: webtrees/modules_v3/googlemap/admin_places.php:586
@@ -4699,7 +4700,7 @@ msgstr ""
 
 #: webtrees/modules_v3/googlemap/admin_places.php:340
 msgid "Delete all existing geographic data before importing the file."
-msgstr ""
+msgstr "फाईल भित्र्याउन पहिले रहेको सबै  भोगोलिक आँकडाहरु मेटाऊ"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:344
 msgid ""
@@ -4718,15 +4719,15 @@ msgstr ""
 #: webtrees/modules_v3/clippings/module.php:537
 #: webtrees/modules_v3/clippings/module.php:550
 msgid "Continue Adding"
-msgstr ""
+msgstr "थप जारी राख"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:524
 msgid "Location not removed: this location contains sub-locations"
-msgstr ""
+msgstr "स्थल मेटिएन यस स्थानको उप–स्थलहरु छ"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:545
 msgid "Remove this location?"
-msgstr ""
+msgstr "यो स्थललाई हटाऊ ?"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:571
 #: webtrees/modules_v3/googlemap/admin_places.php:636
@@ -4736,11 +4737,11 @@ msgstr "उच्च तह"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:632
 msgid "Add  a new geographic location"
-msgstr ""
+msgstr "नयाँ भौगोलिक स्थल थप"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:643
 msgid "Import all places from a family tree"
-msgstr ""
+msgstr "परिवार वृक्ष बाट सम्पूर्ण स्थानहरु आयात गर्नुहोस्"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:651
 #: webtrees/admin_trees_manage.php:217
@@ -4749,7 +4750,7 @@ msgstr "आयात गर्नुहोस्"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:657
 msgid "Upload geographic data"
-msgstr ""
+msgstr "भौगोलिक आँकडा अप्लोड गर्नुहोस"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:670
 msgid "Download geographic data"
@@ -4892,7 +4893,7 @@ msgstr ""
 #: webtrees/library/WT/Controller/Search.php:248 webtrees/search.php:243
 #: webtrees/search.php:253
 msgid "Search and replace"
-msgstr ""
+msgstr "खोज र बदल"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:41
 msgid ""
@@ -4936,7 +4937,7 @@ msgstr ""
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:109
 msgid "Search method"
-msgstr ""
+msgstr "खोज्ने प्रणाली"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:111
 msgid "Exact text"
@@ -5025,7 +5026,7 @@ msgstr "अघिल्लो"
 
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:107
 msgid "Nothing found."
-msgstr ""
+msgstr "केही भेटिएन"
 
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:337
 msgid "Update the CHAN record"
@@ -5084,11 +5085,11 @@ msgstr ""
 
 #: webtrees/modules_v3/random_media/module.php:262
 msgid "Show only persons, events, or all?"
-msgstr ""
+msgstr "व्याक्तिहरु,घट्नाहरु अथवा सबै देखाऊ"
 
 #: webtrees/modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
-msgstr ""
+msgstr "स्लाईड दृश्यको नियन्त्रक देखाऊ"
 
 #: webtrees/modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
@@ -5374,7 +5375,7 @@ msgstr ""
 #. I18N: Name of a module/sidebar
 #: webtrees/modules_v3/extra_info/module.php:31
 msgid "Extra information"
-msgstr ""
+msgstr "अतिरिक्त जानकारी"
 
 #. I18N: Description of the “Extra information” module
 #: webtrees/modules_v3/extra_info/module.php:36
@@ -5402,18 +5403,18 @@ msgstr ""
 
 #: webtrees/modules_v3/notes/module.php:59
 msgid "Show all notes"
-msgstr ""
+msgstr "सबै टिप्पणीहरु देखाऊ"
 
 #: webtrees/modules_v3/notes/module.php:86
 msgid "There are no Notes for this individual."
-msgstr ""
+msgstr "यो व्याक्तिको लागि टिप्पणीहरु छैन"
 
 #: webtrees/modules_v3/notes/module.php:95
 #: webtrees/includes/functions/functions_edit.php:1765
 #: webtrees/help_text.php:1112 webtrees/help_text.php:1179
 #: webtrees/library/WT/Controller/Family.php:216
 msgid "Add a new note"
-msgstr ""
+msgstr "नयाँ टिप्पणी थप"
 
 #: webtrees/modules_v3/notes/module.php:104
 #: webtrees/includes/functions/functions_edit.php:1777
@@ -5481,19 +5482,19 @@ msgstr ""
 #: webtrees/admin_media.php:449 webtrees/library/WT/Controller/Media.php:94
 #: webtrees/library/WT/Controller/Media.php:183
 msgid "To Person"
-msgstr ""
+msgstr "व्याक्तिलाई"
 
 #: webtrees/modules_v3/lightbox/functions/lightbox_print_media.php:397
 #: webtrees/admin_media.php:454 webtrees/library/WT/Controller/Media.php:98
 #: webtrees/library/WT/Controller/Media.php:186
 msgid "To Family"
-msgstr ""
+msgstr "परिवारलाई"
 
 #: webtrees/modules_v3/lightbox/functions/lightbox_print_media.php:402
 #: webtrees/admin_media.php:459 webtrees/library/WT/Controller/Media.php:102
 #: webtrees/library/WT/Controller/Media.php:189
 msgid "To Source"
-msgstr ""
+msgstr "श्रोतलाई"
 
 #: webtrees/modules_v3/lightbox/functions/lightbox_print_media.php:410
 msgid "Unlink Media"
@@ -5511,12 +5512,12 @@ msgstr ""
 #. I18N: Name of a module
 #: webtrees/modules_v3/theme_select/module.php:34
 msgid "Theme change"
-msgstr ""
+msgstr "थिम बदल"
 
 #. I18N: Description of the “Theme change” module
 #: webtrees/modules_v3/theme_select/module.php:39
 msgid "An alternative way to select a new theme."
-msgstr ""
+msgstr "नया थिम छान्न वैकल्पिक उपाय"
 
 #. I18N: A media object that is not linked to any other record
 #: webtrees/addmedia.php:92 webtrees/addmedia.php:415
@@ -10695,7 +10696,7 @@ msgstr ""
 #. I18N: This message is deleted in webtrees-1.4.2
 #: webtrees/includes/old_messages.php:37
 msgid "External objects"
-msgstr ""
+msgstr "बाह्य वस्तुहरु"
 
 #. I18N: This message is deleted in webtrees-1.4.2
 #: webtrees/includes/old_messages.php:38
@@ -21587,13 +21588,13 @@ msgstr " मा "
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:434
 msgctxt "MALE"
 msgid "died"
-msgstr ""
+msgstr "मरेको"
 
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:137
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:364
 msgctxt "FEMALE"
 msgid "died"
-msgstr ""
+msgstr "मरेकी"
 
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:172
 #: webtrees_tmp/modules_v3_ahnentafel_report_report.xml.php:258
@@ -21603,7 +21604,7 @@ msgstr "उनले विवाह"
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:175
 msgctxt "MALE"
 msgid "married"
-msgstr ""
+msgstr "बिवाहित"
 
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:225
 msgid "daughter of"
@@ -21617,7 +21618,7 @@ msgstr "उनीले विवाह"
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:244
 msgctxt "FEMALE"
 msgid "married"
-msgstr ""
+msgstr "बिवाहित"
 
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:294
 msgid "son of"
@@ -21633,7 +21634,7 @@ msgstr "उनी "
 
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:400
 msgid "He was born"
-msgstr ""
+msgstr "उ जन्मेको"
 
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:427
 msgid "He "
@@ -21780,7 +21781,7 @@ msgstr ""
 
 #: webtrees_tmp/modules_v3_ahnentafel_report_report.xml.php:346
 msgid "She was buried"
-msgstr ""
+msgstr "उनलाई दफनाइएको थियो"
 
 #: webtrees_tmp/modules_v3_marriage_report_report.xml.php:7
 msgid "Marriage Place contains"

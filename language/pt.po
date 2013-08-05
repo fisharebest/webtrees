@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2012-11-14 18:21+0000\n"
-"Last-Translator: Almufadado <Unknown>\n"
+"PO-Revision-Date: 2013-08-04 17:22+0000\n"
+"Last-Translator: jandresen <jhandresen@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:33+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: \n"
 "X-Poedit-Language: Portuguese\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -22,22 +22,22 @@ msgstr ""
 #: webtrees/admin_site_access.php:32
 #: webtrees/themes/_administration/header.php:97
 msgid "Site access rules"
-msgstr ""
+msgstr "Regras de acesso ao site"
 
 #. I18N: An access rule - allow access to the site
 #: webtrees/admin_site_access.php:109 webtrees/admin_site_access.php:300
 msgid "allow"
-msgstr ""
+msgstr "permitir"
 
 #. I18N: An access rule - deny access to the site
 #: webtrees/admin_site_access.php:110 webtrees/admin_site_access.php:301
 msgid "deny"
-msgstr ""
+msgstr "rejeitar"
 
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: webtrees/admin_site_access.php:111 webtrees/admin_site_access.php:302
 msgid "robot"
-msgstr ""
+msgstr "robô"
 
 #: webtrees/admin_site_access.php:114 webtrees/admin_trees_manage.php:229
 #: webtrees/admin_users.php:172
@@ -52,13 +52,14 @@ msgstr ""
 #: webtrees/library/WT/Controller/Note.php:106
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "Tem certeza de que deseja excluir «%s»?"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: webtrees/admin_site_access.php:270
 msgid ""
 "Restrict access to the site, using IP addresses and user-agent strings"
 msgstr ""
+"Restringir o acesso ao site, usando endereços IP e cadeias usuário-agente"
 
 #: webtrees/admin_site_access.php:272
 msgid ""
@@ -66,6 +67,9 @@ msgid ""
 "(allow full access), a search-engine robot (allow restricted access) or an "
 "unwanted crawler (deny all access)."
 msgstr ""
+"As seguintes regras decidir se um visitante é um ser humano (acesso "
+"completo), um robô motor de busca (acesso restrito) ou um rastreador "
+"indesejada (negar todo o acesso)."
 
 #. I18N [...] of a range of addresses
 #: webtrees/admin_site_access.php:277
@@ -80,12 +84,12 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: webtrees/admin_site_access.php:281 webtrees/admin_site_access.php:296
 msgid "User-agent string"
-msgstr ""
+msgstr "Cadeia usuário-agente"
 
 #. I18N: noun
 #: webtrees/admin_site_access.php:282
 msgid "Rule"
-msgstr ""
+msgstr "Regra"
 
 #. I18N: gedcom tag COMM
 #: webtrees/admin_site_access.php:283 webtrees/library/WT/Gedcom/Tag.php:168
@@ -128,11 +132,11 @@ msgstr ""
 #: webtrees/admin_site_access.php:294 webtrees/admin_site_logs.php:230
 #: webtrees/admin_site_logs.php:257
 msgid "IP address"
-msgstr ""
+msgstr "Endereço IP"
 
 #: webtrees/admin_site_access.php:297
 msgid "Create a new rule"
-msgstr ""
+msgstr "Criar uma nova regra"
 
 #. I18N: %s is a surname
 #: webtrees/branches.php:45
@@ -165,7 +169,7 @@ msgstr ""
 #: webtrees/branches.php:67 webtrees/library/WT/Soundex.php:31
 #: webtrees/search.php:192
 msgid "Russell"
-msgstr ""
+msgstr "Russell"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: webtrees/branches.php:69 webtrees/library/WT/Soundex.php:32
@@ -175,11 +179,11 @@ msgstr "Judaico"
 
 #: webtrees/branches.php:102
 msgid "Collapse all"
-msgstr ""
+msgstr "Recolher todos"
 
 #: webtrees/branches.php:103
 msgid "Expand all"
-msgstr ""
+msgstr "Expandir todos"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is a individual’s surname, so may need transliterating into non-latin alphabets.
 #: webtrees/branches.php:134 webtrees/branches.php:160
@@ -276,7 +280,7 @@ msgstr ""
 #: webtrees/includes/functions/functions_edit.php:956
 #: webtrees/includes/media_reorder.php:181
 msgid "close"
-msgstr ""
+msgstr "fechar"
 
 #. I18N: Name of a module/menu
 #: webtrees/edit_interface.php:218 webtrees/edit_interface.php:1232
@@ -787,7 +791,7 @@ msgstr "Senha"
 #. I18N: A site configuration setting
 #: webtrees/admin_site_config.php:94 webtrees/help_text.php:791
 msgid "Secure connection"
-msgstr ""
+msgstr "Conexão segura"
 
 #: webtrees/admin_site_config.php:95
 #: webtrees/modules_v3/family_nav/module.php:532
@@ -1668,7 +1672,7 @@ msgstr "Carregar"
 #: webtrees/admin_trees_check.php:36
 #: webtrees/themes/_administration/header.php:117
 msgid "Check for errors"
-msgstr ""
+msgstr "Verificar erros"
 
 #: webtrees/admin_trees_check.php:132
 msgid "Types of error"
@@ -1882,44 +1886,44 @@ msgstr "Fontes"
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_find.php:77
 #: webtrees/includes/functions/functions_print.php:1124
 msgid "Find an individual"
-msgstr ""
+msgstr "Procurar um indivíduo"
 
 #: webtrees/find.php:76 webtrees/admin_site_merge.php:296
 #: webtrees/admin_site_merge.php:317
 #: webtrees/includes/functions/functions_print.php:1132
 msgid "Find a family"
-msgstr ""
+msgstr "Procurar uma família"
 
 #: webtrees/find.php:79 webtrees/includes/functions/functions_print.php:1162
 msgid "Find a media object"
-msgstr ""
+msgstr "Encontrar um objecto mídia"
 
 #: webtrees/find.php:82 webtrees/includes/functions/functions_print.php:1128
 msgid "Find a place"
-msgstr ""
+msgstr "Procurar um lugar"
 
 #: webtrees/find.php:85 webtrees/includes/functions/functions_print.php:1158
 msgid "Find a repository"
-msgstr ""
+msgstr "Encontrar um repositório"
 
 #: webtrees/find.php:88 webtrees/includes/functions/functions_print.php:1154
 msgid "Find a note"
-msgstr ""
+msgstr "Encontrar uma nota"
 
 #: webtrees/find.php:91 webtrees/admin_site_merge.php:297
 #: webtrees/admin_site_merge.php:318
 #: webtrees/includes/functions/functions_print.php:1150
 #: webtrees_tmp/modules_v3_fact_sources_report.xml.php:6
 msgid "Find a source"
-msgstr ""
+msgstr "Procurar uma fonte"
 
 #: webtrees/find.php:94 webtrees/includes/functions/functions_print.php:1136
 msgid "Find a special character"
-msgstr ""
+msgstr "Encontrar um caracter especial"
 
 #: webtrees/find.php:109 webtrees/includes/functions/functions_print.php:1166
 msgid "Find a fact or event"
-msgstr ""
+msgstr "Encontrar um facto ou evento"
 
 #: webtrees/find.php:144 webtrees/modules_v3/GEDFact_assistant/module.php:117
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_find.php:62
@@ -2533,8 +2537,8 @@ msgstr "Nome mais frequente"
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nome %s mais frequente"
+msgstr[1] "Nomes %s mais frequentes"
 
 #: webtrees/modules_v3/top10_givnnames/module.php:142
 #: webtrees/modules_v3/top10_surnames/module.php:155
@@ -2901,7 +2905,7 @@ msgstr "Nascimentos"
 #: webtrees/modules_v3/birth_report/module.php:41
 #: webtrees_tmp/modules_v3_birth_report_report.xml.php:5
 msgid "A report of individuals who were born in a given time or place."
-msgstr "Um relatório de pessoas que nasceram um um dado tempo ou local"
+msgstr "Um relatório de pessoas que nasceram num dado tempo ou local"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/login_block/module.php:34
@@ -2941,7 +2945,7 @@ msgstr "Cadastrar-se como novo usuário"
 #: webtrees/modules_v3/login_block/module.php:100 webtrees/login.php:179
 #: webtrees/login.php:195 webtrees/login.php:233
 msgid "Lost password request"
-msgstr "Solicitação de cadastramento de nova senha"
+msgstr "Pedido de nova senha"
 
 #: webtrees/modules_v3/login_block/module.php:102 webtrees/login.php:181
 msgid "Username or email address"
@@ -3256,11 +3260,11 @@ msgstr "Adicionar detalhes do casamento"
 
 #: webtrees/modules_v3/relatives/module.php:277
 msgid "Add a new son or daughter"
-msgstr ""
+msgstr "Adicionar novo filhou ou filha"
 
 #: webtrees/modules_v3/relatives/module.php:281
 msgid "Add a new brother or sister"
-msgstr ""
+msgstr "Adicionar novo irmão ou irmã"
 
 #: webtrees/modules_v3/relatives/module.php:282
 #: webtrees/includes/functions/functions.php:1167
@@ -3900,7 +3904,7 @@ msgstr "Eventos de parentes próximos"
 
 #: webtrees/modules_v3/personal_facts/module.php:88
 msgid "Historical facts"
-msgstr "Fatos históricos"
+msgstr "Factos históricos"
 
 #. I18N: Description of the “Media” module
 #: webtrees/modules_v3/media/module.php:39
@@ -4156,7 +4160,7 @@ msgstr "Uma lista dos sobrenomes mais populares"
 #. I18N: i.e. most popular surname.
 #: webtrees/modules_v3/top10_surnames/module.php:90
 msgid "Top surname"
-msgstr ""
+msgstr "Apelido mais frequente"
 
 #. I18N: Title for a list of the most common surnames, %s is a number.  Note that a separate translation exists when %s is 1
 #: webtrees/modules_v3/top10_surnames/module.php:93
@@ -4261,7 +4265,7 @@ msgstr "Preferências de Google Maps™"
 #: webtrees/modules_v3/googlemap/places_edit.php:41
 #: webtrees/modules_v3/googlemap/admin_places.php:183
 msgid "Geographic data"
-msgstr ""
+msgstr "Dados geográficos"
 
 #: webtrees/modules_v3/googlemap/placehierarchy.php:174
 #: webtrees/modules_v3/googlemap/module.php:134
@@ -4307,7 +4311,7 @@ msgstr ""
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: webtrees/modules_v3/googlemap/placehierarchy.php:244
 msgid "Bearing"
-msgstr ""
+msgstr "Azimute"
 
 #. I18N: Angle of elevation (in degrees), for street-view mapping
 #: webtrees/modules_v3/googlemap/placehierarchy.php:245
@@ -4343,8 +4347,8 @@ msgid ""
 "Show the location of places and events using the Google Maps™ mapping "
 "service."
 msgstr ""
-"Exibe a localização de locais e eventos usando o serviço de mapas do Google "
-"Maps™"
+"Exibe a localização de locais e acontecimentos usando o serviço de mapas do "
+"Google Maps™"
 
 #: webtrees/modules_v3/googlemap/module.php:160
 msgid "No map data for this person"
@@ -4481,7 +4485,7 @@ msgstr "Valor padrão para o nível mais alto"
 #: webtrees/modules_v3/googlemap/module.php:367
 #: webtrees/modules_v3/googlemap/help_text.php:48
 msgid "Optional prefixes and suffixes"
-msgstr ""
+msgstr "Sufixos e prefixos opcionais"
 
 #: webtrees/modules_v3/googlemap/module.php:371
 msgid "Prefixes"
@@ -4499,7 +4503,7 @@ msgstr "Nível"
 
 #: webtrees/modules_v3/googlemap/module.php:394
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr ""
+msgstr "Usar o Google Maps™ para hierarquia de locais"
 
 #: webtrees/modules_v3/googlemap/module.php:407
 msgid "Type of place markers in Place Hierarchy"
@@ -4917,15 +4921,18 @@ msgstr "Arquivo servidor contendo locais (CVS)"
 #: webtrees/modules_v3/googlemap/admin_places.php:340
 msgid "Delete all existing geographic data before importing the file."
 msgstr ""
+"Apagar toda a informação geográfica existente antes de importar ficheiro."
 
 #: webtrees/modules_v3/googlemap/admin_places.php:344
 msgid ""
 "Do not create new locations, just import coordinates for existing locations."
 msgstr ""
+"Não criar novas localizações, apenas importar coordenadas de localizações "
+"existentes."
 
 #: webtrees/modules_v3/googlemap/admin_places.php:348
 msgid "Overwrite existing coordinates."
-msgstr ""
+msgstr "Sobrepor coordenadas existentes."
 
 #: webtrees/modules_v3/googlemap/admin_places.php:352
 #: webtrees/modules_v3/clippings/module.php:94
@@ -4953,7 +4960,7 @@ msgstr "Países"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:632
 msgid "Add  a new geographic location"
-msgstr ""
+msgstr "Adiciona um novo local geográfico"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:643
 msgid "Import all places from a family tree"
@@ -4970,7 +4977,7 @@ msgstr ""
 
 #: webtrees/modules_v3/googlemap/admin_places.php:670
 msgid "Download geographic data"
-msgstr ""
+msgstr "Baixar dados geográficos"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:678
 #: webtrees/admin_trees_manage.php:221
@@ -5060,13 +5067,13 @@ msgstr "Uma mensagem de saudação para os visitantes do site"
 
 #: webtrees/modules_v3/gedcom_block/module.php:51
 msgid "Default chart"
-msgstr ""
+msgstr "Gráfico por defeito"
 
 #: webtrees/modules_v3/gedcom_block/module.php:52 webtrees/admin_users.php:235
 #: webtrees/admin_users.php:438 webtrees/admin_trees_config.php:238
 #: webtrees/edituser.php:149 webtrees/help_text.php:1154
 msgid "Default individual"
-msgstr ""
+msgstr "Indivíduo  por defeito"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/top10_pageviews/module.php:34
@@ -5107,7 +5114,7 @@ msgstr ""
 
 #: webtrees/modules_v3/batch_update/plugins/death_y.php:33
 msgid "Add missing death records"
-msgstr "Adicionar registros faltantes de falecimento"
+msgstr "Acrescentar registos de falecimento em falta"
 
 #: webtrees/modules_v3/batch_update/plugins/death_y.php:37
 msgid ""
@@ -5117,7 +5124,7 @@ msgid ""
 msgstr ""
 "Você pode acelerar os cálculos de privacidade adicionando um registro de "
 "falecimento das pessoas cuja morte pode ser deduzida a partir de outras "
-"datas, mas que não têm um registro de falecimento, o enterro, cremação, etc"
+"datas, mas que não têm um registro de falecimento, enterro, cremação, etc"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:37
 #: webtrees/library/WT/MenuBar.php:428
@@ -5208,7 +5215,7 @@ msgstr ""
 
 #: webtrees/modules_v3/batch_update/plugins/married_names.php:35
 msgid "Add missing married names"
-msgstr "Adicionar nomes faltantes de casada"
+msgstr "Acrescente nomes de casada em falta"
 
 #: webtrees/modules_v3/batch_update/plugins/married_names.php:39
 msgid ""
@@ -5995,11 +6002,11 @@ msgstr ""
 
 #: webtrees/downloadbackup.php:34
 msgid "Error"
-msgstr ""
+msgstr "Erro"
 
 #: webtrees/downloadbackup.php:36 webtrees/includes/session.php:586
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "Você não têm permissão para ver esta página"
 
 #: webtrees/index_edit.php:249 webtrees/index_edit.php:334
 msgid ""
@@ -7421,16 +7428,16 @@ msgstr ""
 
 #: webtrees/themes/_administration/header.php:118
 msgid "Changes log"
-msgstr ""
+msgstr "Lista de alterações"
 
 #: webtrees/themes/_administration/header.php:119
 msgid "Set the default blocks for new family trees"
-msgstr ""
+msgstr "Definir blocos por defeito para novas árvores genealógicas"
 
 #: webtrees/themes/_administration/header.php:119
 #: webtrees/themes/_administration/header.php:131
 msgid "Set the default blocks"
-msgstr ""
+msgstr "Definir blocos por defeito"
 
 #: webtrees/themes/_administration/header.php:125 webtrees/admin.php:124
 msgid "Users"
@@ -7446,7 +7453,7 @@ msgstr "Excluir usuários inativos"
 
 #: webtrees/themes/_administration/header.php:131
 msgid "Set the default blocks for new users"
-msgstr ""
+msgstr "Definir blocos por defeito para novos utilizadores"
 
 #: webtrees/themes/_administration/header.php:140
 msgid "Modules"
@@ -7822,7 +7829,7 @@ msgstr "primo de %dº grau"
 #, php-format
 msgctxt "MALE"
 msgid "first %s"
-msgstr ""
+msgstr "primeiro %s"
 
 #: webtrees/includes/functions/functions.php:1085
 #, php-format
@@ -7860,7 +7867,7 @@ msgstr ""
 #, php-format
 msgctxt "FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "primeira %s"
 
 #: webtrees/includes/functions/functions.php:1096
 #, php-format
@@ -8073,7 +8080,7 @@ msgstr "avó paterna"
 #: webtrees/includes/functions/functions.php:1219
 msgctxt "father's parent"
 msgid "paternal grandparent"
-msgstr ""
+msgstr "avô paterno"
 
 #: webtrees/includes/functions/functions.php:1220
 msgctxt "father's sibling"
@@ -8158,7 +8165,7 @@ msgstr "avó materna"
 #: webtrees/includes/functions/functions.php:1238
 msgctxt "mother's parent"
 msgid "maternal grandparent"
-msgstr ""
+msgstr "avó materna"
 
 #: webtrees/includes/functions/functions.php:1239
 msgctxt "mother's sibling"
@@ -10607,7 +10614,7 @@ msgstr ""
 
 #: webtrees/includes/functions/functions_print_lists.php:91
 msgid "Alive"
-msgstr ""
+msgstr "Vivo"
 
 #: webtrees/includes/functions/functions_print_lists.php:92
 #: webtrees/includes/functions/functions_print_lists.php:499
@@ -10836,7 +10843,7 @@ msgstr ""
 #. I18N: time format “%a” - exactly 12:00:00
 #: webtrees/includes/functions/functions_date.php:105
 msgid "noon"
-msgstr ""
+msgstr "meio-dia"
 
 #. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: webtrees/includes/functions/functions_date.php:107
@@ -10846,7 +10853,7 @@ msgstr ""
 #. I18N: time format “%A” - exactly 00:00:00
 #: webtrees/includes/functions/functions_date.php:113
 msgid "Midnight"
-msgstr ""
+msgstr "meia-noite"
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: webtrees/includes/functions/functions_date.php:115
@@ -10856,7 +10863,7 @@ msgstr ""
 #. I18N: time format “%A” - exactly 12:00:00
 #: webtrees/includes/functions/functions_date.php:117
 msgid "Noon"
-msgstr ""
+msgstr "Meio-dia"
 
 #. I18N: time format “%A” - between 12:00:01 and 23:59:59
 #: webtrees/includes/functions/functions_date.php:119
@@ -10867,7 +10874,7 @@ msgstr ""
 #: webtrees/includes/functions/functions_edit.php:50
 #: webtrees/includes/functions/functions_edit.php:104
 msgid "click to edit"
-msgstr ""
+msgstr "clique para editar"
 
 #: webtrees/includes/functions/functions_edit.php:193
 #: webtrees/includes/functions/functions_edit.php:205
@@ -11027,8 +11034,8 @@ msgstr "Erro de e-mail: %s"
 #, php-format
 msgid "%d Child"
 msgid_plural "%d Children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d Filho"
+msgstr[1] "%d Filhos"
 
 #: webtrees/includes/functions/functions_charts.php:272
 #: webtrees/library/WT/Controller/Family.php:129
@@ -11106,7 +11113,7 @@ msgstr "Porta"
 #. I18N: This message is deleted in webtrees-1.4.2
 #: webtrees/includes/old_messages.php:44
 msgid "SMTP port"
-msgstr ""
+msgstr "Porta SMTP"
 
 #. I18N: This message is deleted in webtrees-1.4.2
 #: webtrees/includes/old_messages.php:45
@@ -11228,12 +11235,12 @@ msgstr ""
 #: webtrees/includes/config_data.php:37
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: webtrees/includes/config_data.php:40
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: webtrees/includes/authentication.php:247
 #: webtrees/includes/authentication.php:299
@@ -11259,7 +11266,7 @@ msgstr ""
 
 #: webtrees/includes/session.php:584
 msgid "Search engine"
-msgstr ""
+msgstr "Ferramenta de busca"
 
 #: webtrees/calendar.php:33
 msgid "Anniversary calendar"
@@ -11936,7 +11943,7 @@ msgstr "último"
 #: webtrees/admin_trees_config.php:949
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr ""
+msgstr "Mostrar as %1$s %2$s partes do nome de uma localização"
 
 #: webtrees/admin_trees_config.php:989 webtrees/help_text.php:428
 msgid "Abbreviate chart labels"
@@ -12782,6 +12789,9 @@ msgid ""
 "and tradition.  If no pedigree is specified, then a biological relationship "
 "will be assumed."
 msgstr ""
+"Um filho pode ter mais de um conjunto de pais.  A relação entre pais e "
+"filhos pode ser biológica, legal ou baseada em culturas e tradições. Se a "
+"relação não for especificada assume-se ser biológica."
 
 #: webtrees/help_text.php:337
 msgid ""
@@ -15269,12 +15279,12 @@ msgstr "Pasta"
 #. I18N: An option in a list-box
 #: webtrees/medialist.php:96
 msgid "sort by title"
-msgstr ""
+msgstr "classificar por título"
 
 #. I18N: An option in a list-box
 #: webtrees/medialist.php:99
 msgid "sort by filename"
-msgstr ""
+msgstr "classificar por nome de arquivo"
 
 #: webtrees/medialist.php:117
 msgid "Media objects per page"
@@ -15286,7 +15296,7 @@ msgstr ""
 
 #: webtrees/medialist.php:139
 msgid "Columns per page"
-msgstr ""
+msgstr "Colunas por página"
 
 #: webtrees/medialist.php:179
 msgid "Media Objects found"
@@ -15295,7 +15305,7 @@ msgstr "Mídias encontradas"
 #: webtrees/medialist.php:216 webtrees/medialist.php:339
 #, php-format
 msgid "Page %s of %s"
-msgstr ""
+msgstr "Página %s de %s"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: webtrees/library/WT/I18N.php:152
@@ -15309,11 +15319,11 @@ msgstr "%G:%i:%s"
 
 #: webtrees/library/WT/I18N.php:156
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-msgstr "ALPHABET_upper=AÁÂÃBCÇDEÉÊFGHIÍJKLMNÑOÓÔÕPQRSTUÚÜVWXYZ"
+msgstr "ALPHABET_upper=AÁÀÂÃBCÇDEÉÊFGHIÍJKLMNOÓÔÕPQRSTUÚVWXYZ"
 
 #: webtrees/library/WT/I18N.php:159
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-msgstr "ALPHABET_lower=aáâãbcçdeéêfghiíjklmnñoóôõpqrstuúüvwxyz"
+msgstr "ALPHABET_lower=aáàâãbcçdeéêfghiíjklmnoóôõpqrstuúvwxyz"
 
 #. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
 #: webtrees/library/WT/I18N.php:162
@@ -15323,7 +15333,7 @@ msgstr "WEEK_START=0"
 #. I18N: This punctuation is used to separate lists of items.
 #: webtrees/library/WT/I18N.php:173
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: webtrees/library/WT/I18N.php:176
@@ -15355,32 +15365,32 @@ msgstr "(na infância)"
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ano"
+msgstr[1] "%s anos"
 
 #. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
 #: webtrees/library/WT/I18N.php:345
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s mês"
+msgstr[1] "%s meses"
 
 #. I18N: Part of an age string. e.g 7 weeks and 3 days
 #: webtrees/library/WT/I18N.php:349
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s semana"
+msgstr[1] "%s semanas"
 
 #. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
 #: webtrees/library/WT/I18N.php:353
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s dia"
+msgstr[1] "%s dias"
 
 #. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
 #: webtrees/library/WT/I18N.php:362
@@ -15404,36 +15414,36 @@ msgstr "(idade de %s)"
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ano atrás"
+msgstr[1] "%s anos atrás"
 
 #: webtrees/library/WT/I18N.php:393
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s mês atrás"
+msgstr[1] "%s meses atrás"
 
 #: webtrees/library/WT/I18N.php:396
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s dia atrás"
+msgstr[1] "%s dias atrás"
 
 #: webtrees/library/WT/I18N.php:399
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s hora atrás"
+msgstr[1] "%s horas atrás"
 
 #: webtrees/library/WT/I18N.php:402
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s minuto atrás"
+msgstr[1] "%s minutos atrás"
 
 #: webtrees/library/WT/I18N.php:404
 #, php-format
@@ -15538,19 +15548,19 @@ msgstr "Família com %s"
 #: webtrees/library/WT/Person.php:1631
 #, php-format
 msgid "Father: %s"
-msgstr ""
+msgstr "Pai: %s"
 
 #. I18N: %s is the name of an individual’s mother
 #: webtrees/library/WT/Person.php:1640
 #, php-format
 msgid "Mother: %s"
-msgstr ""
+msgstr "Mãe: %s"
 
 #. I18N: Place a nickname in quotation marks
 #: webtrees/library/WT/Person.php:1788
 #, php-format
 msgid "“%s”"
-msgstr ""
+msgstr "“%s”"
 
 #: webtrees/library/WT/MenuBar.php:109
 #: webtrees/library/WT/Controller/Familybook.php:84
@@ -15594,7 +15604,7 @@ msgstr "Pesquisa avançada"
 #: webtrees/library/WT/Controller/Family.php:166
 #: webtrees/library/WT/Controller/Note.php:113
 msgid "Add to favorites"
-msgstr ""
+msgstr "Adicionar aos favoritos"
 
 #. I18N: The Persian/Jalali calendar
 #: webtrees/library/WT/Date/Jalali.php:40
@@ -17194,8 +17204,8 @@ msgstr "Média de idade no século de casamento"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s filho"
+msgstr[1] "%s filhos"
 
 #: webtrees/library/WT/Stats.php:3041
 msgctxt "unknown century"
@@ -17206,8 +17216,8 @@ msgstr "Desconhecido"
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s neto"
+msgstr[1] "%s netos"
 
 #: webtrees/library/WT/Stats.php:3416
 msgid "No logged-in and no anonymous users"
@@ -18088,7 +18098,7 @@ msgstr "São Pedro e Miquelon"
 
 #: webtrees/library/WT/Stats.php:3990
 msgid "South Sudan"
-msgstr ""
+msgstr "Sudão do Sul"
 
 #: webtrees/library/WT/Stats.php:3991
 msgid "Sao Tome and Principe"
@@ -18443,12 +18453,12 @@ msgstr ""
 #. I18N: A previous wife, now divorced
 #: webtrees/library/WT/Controller/Individual.php:473
 msgid "ex-wife"
-msgstr ""
+msgstr "ex-esposa"
 
 #. I18N: A previous husband, now divorced
 #: webtrees/library/WT/Controller/Individual.php:474
 msgid "ex-husband"
-msgstr ""
+msgstr "ex-marido"
 
 #: webtrees/library/WT/Controller/Descendancy.php:152
 #: webtrees/library/WT/Controller/Descendancy.php:230
@@ -18461,7 +18471,7 @@ msgstr ""
 
 #: webtrees/library/WT/Controller/Source.php:83
 msgid "Edit source"
-msgstr ""
+msgstr "Editar fonte"
 
 #. I18N: %s is an individual’s name
 #: webtrees/library/WT/Controller/Pedigree.php:91
@@ -18698,7 +18708,7 @@ msgstr "Gerações de antepassados"
 #. I18N: gedcom tag ANCI
 #: webtrees/library/WT/Gedcom/Tag.php:124
 msgid "Ancestors interest"
-msgstr ""
+msgstr "Interesse dos antepassados"
 
 #. I18N: gedcom tag ANUL
 #: webtrees/library/WT/Gedcom/Tag.php:125
@@ -18878,12 +18888,12 @@ msgstr "Última alteração"
 #. I18N: gedcom tag CHAN:DATE
 #: webtrees/library/WT/Gedcom/Tag.php:158
 msgid "Date of last change"
-msgstr ""
+msgstr "Data da última alteração"
 
 #. I18N: gedcom tag CHAN:_WT_USER
 #: webtrees/library/WT/Gedcom/Tag.php:159
 msgid "Author of last change"
-msgstr ""
+msgstr "Autor da última alteração"
 
 #. I18N: gedcom tag CHAR
 #: webtrees/library/WT/Gedcom/Tag.php:160
@@ -19022,7 +19032,7 @@ msgstr "Local do falecimeto"
 #. I18N: gedcom tag DESI
 #: webtrees/library/WT/Gedcom/Tag.php:189
 msgid "Descendants interest"
-msgstr ""
+msgstr "Interesse dos descendentes"
 
 #. I18N: gedcom tag DEST
 #: webtrees/library/WT/Gedcom/Tag.php:190
@@ -20578,7 +20588,7 @@ msgstr "Ligação Familiar"
 #. I18N: gedcom tag _MDCL
 #: webtrees/library/WT/Gedcom/Tag.php:793
 msgid "Medical"
-msgstr "Prontuário"
+msgstr "Médico"
 
 #. I18N: gedcom tag _MEDC
 #: webtrees/library/WT/Gedcom/Tag.php:794
@@ -20747,7 +20757,7 @@ msgstr "Brit milá de um irmão"
 
 #: webtrees/library/WT/Gedcom/Tag.php:837
 msgid "File size"
-msgstr ""
+msgstr "Tamanho do arquivo"
 
 #: webtrees/library/WT/Gedcom/Tag.php:838
 msgid "Image dimensions"
@@ -21016,7 +21026,7 @@ msgstr "Atendendo"
 
 #: webtrees/library/WT/Gedcom/Code/Rela.php:63
 msgid "Best Man"
-msgstr "Padrinho"
+msgstr "Padrinho de casamento"
 
 #: webtrees/library/WT/Gedcom/Code/Rela.php:66
 msgid "Bridesmaid"
@@ -21182,7 +21192,7 @@ msgstr "Ama"
 
 #: webtrees/library/WT/Gedcom/Code/Rela.php:152
 msgid "Nurse"
-msgstr "Ama-Seca"
+msgstr "Ama"
 
 #: webtrees/library/WT/Gedcom/Code/Rela.php:156
 msgctxt "MALE"
@@ -21300,18 +21310,18 @@ msgstr ""
 #: webtrees/library/WT/Gedcom/Code/Name.php:45
 msgctxt "MALE"
 msgid "adopted name"
-msgstr ""
+msgstr "nome de adoção"
 
 #. I18N: The name given to a child by its adoptive parents
 #: webtrees/library/WT/Gedcom/Code/Name.php:48
 msgctxt "FEMALE"
 msgid "adopted name"
-msgstr ""
+msgstr "nome de adoção"
 
 #. I18N: The name given to a child by its adoptive parents
 #: webtrees/library/WT/Gedcom/Code/Name.php:51
 msgid "adopted name"
-msgstr ""
+msgstr "nome de adoção"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: webtrees/library/WT/Gedcom/Code/Name.php:57
@@ -21384,24 +21394,24 @@ msgstr ""
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: webtrees/library/WT/Gedcom/Code/Name.php:105
 msgid "maiden name"
-msgstr ""
+msgstr "nome de solteira"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: webtrees/library/WT/Gedcom/Code/Name.php:110
 msgctxt "MALE"
 msgid "married name"
-msgstr ""
+msgstr "nome de casado"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: webtrees/library/WT/Gedcom/Code/Name.php:113
 msgctxt "FEMALE"
 msgid "married name"
-msgstr ""
+msgstr "nome de casada"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: webtrees/library/WT/Gedcom/Code/Name.php:116
 msgid "married name"
-msgstr ""
+msgstr "nome de casada"
 
 #. I18N: A name taken when entering a religion or a religous order
 #: webtrees/library/WT/Gedcom/Code/Name.php:122
@@ -21948,8 +21958,7 @@ msgstr "Arquivos excluídos:"
 
 #: webtrees/search.php:79
 msgid "Please enter a Given name, Last name, or Place in addition to Year"
-msgstr ""
-"Favor informar um Nome, Sobrenome ou Local. Opcionalmente informe o Ano"
+msgstr "Por favor indique Nome, Apelido ou Local, além do Ano"
 
 #: webtrees/search.php:105 webtrees/search.php:139
 msgid "Search for"
@@ -22000,12 +22009,12 @@ msgstr "Outras Pesquisas"
 #: webtrees_tmp/modules_v3_bdm_report_report.xml.php:8
 #: webtrees_tmp/modules_v3_birth_report_report.xml.php:8
 msgid "Birth Date range start"
-msgstr ""
+msgstr "Início da série de Data de Nascimento"
 
 #: webtrees_tmp/modules_v3_bdm_report_report.xml.php:9
 #: webtrees_tmp/modules_v3_birth_report_report.xml.php:9
 msgid "Birth Date range end"
-msgstr ""
+msgstr "Fim da série de Data de Nascimento"
 
 #: webtrees_tmp/modules_v3_bdm_report_report.xml.php:10
 #: webtrees_tmp/modules_v3_death_report_report.xml.php:8
@@ -22015,7 +22024,7 @@ msgstr "Início da série de Data de Falecimento"
 #: webtrees_tmp/modules_v3_bdm_report_report.xml.php:11
 #: webtrees_tmp/modules_v3_death_report_report.xml.php:9
 msgid "Death Date range end"
-msgstr ""
+msgstr "Fim da série de Data de Falecimento"
 
 #: webtrees_tmp/modules_v3_bdm_report_report.xml.php:13
 #: webtrees_tmp/modules_v3_pedigree_report_report.xml.php:8

@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2011-11-03 04:14+0000\n"
+"PO-Revision-Date: 2013-08-04 17:00+0000\n"
 "Last-Translator: Hisakuni NOGAMI <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:30+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:04+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: ja\n"
 
 #: webtrees/admin_site_access.php:32
@@ -152,7 +152,7 @@ msgstr ""
 #: webtrees/admin_media.php:431 webtrees/familybook.php:62
 #: webtrees/compact.php:54
 msgid "View"
-msgstr ""
+msgstr "ビュー"
 
 #. I18N: search using “sounds like”, rather than exact spelling
 #: webtrees/branches.php:64 webtrees/library/WT/MenuBar.php:421
@@ -1075,7 +1075,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_fact_sources_report.xml.php:41
 #: webtrees_tmp/modules_v3_marriage_report_report.xml.php:52
 msgid "Source"
-msgstr ""
+msgstr "ソース"
 
 #. I18N: gedcom tag REPO
 #: webtrees/inverselink.php:145 webtrees/library/WT/Gedcom/Tag.php:302
@@ -1168,7 +1168,7 @@ msgstr ""
 #: webtrees/modules_v3/gedcom_block/module.php:34
 #: webtrees/library/WT/MenuBar.php:35
 msgid "Home page"
-msgstr ""
+msgstr "ホームページ"
 
 #: webtrees/admin_modules.php:151
 msgid "This module cannot be found.  Delete its configuration settings."
@@ -1945,11 +1945,11 @@ msgstr ""
 
 #: webtrees/find.php:615
 msgid "Places found"
-msgstr ""
+msgstr "見つかった場所"
 
 #: webtrees/find.php:638
 msgid "Repositories found"
-msgstr ""
+msgstr "見つかった埋葬所"
 
 #: webtrees/find.php:661
 msgid "Shared Notes found"
@@ -2192,7 +2192,7 @@ msgstr ""
 #: webtrees/modules_v3/top10_surnames/module.php:162
 #: webtrees/modules_v3/yahrzeit/module.php:247
 msgid "Presentation style"
-msgstr ""
+msgstr "表示スタイル"
 
 #: webtrees/modules_v3/upcoming_events/module.php:155
 #: webtrees/modules_v3/top10_givnnames/module.php:151
@@ -3236,13 +3236,13 @@ msgstr "名前を入力する必要があります"
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:118
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:86
 msgid "Click to choose person as Head of family."
-msgstr ""
+msgstr "家族の長としての人をクリックして選択"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:119
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:87
 #, php-format
 msgid "Click %s to choose person as Head of family."
-msgstr ""
+msgstr "家族の長として　%s をクリックして選択"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:122
 msgid "Click Name to add person to Add Links List."
@@ -3390,7 +3390,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/admin_places.php:154
 #: webtrees/library/WT/Gedcom/Tag.php:180
 msgid "Country"
-msgstr ""
+msgstr "カントリー"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1114
 #: webtrees/calendar.php:166 webtrees/library/WT/MenuBar.php:382
@@ -3427,7 +3427,7 @@ msgstr "場所"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:41
 msgid "Add people"
-msgstr ""
+msgstr "人々の追加"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:117
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:118
@@ -4208,11 +4208,11 @@ msgstr "衛星画像"
 
 #: webtrees/modules_v3/googlemap/module.php:264
 msgid "Hybrid"
-msgstr ""
+msgstr "ハイブリッド"
 
 #: webtrees/modules_v3/googlemap/module.php:265
 msgid "Terrain"
-msgstr ""
+msgstr "地形"
 
 #: webtrees/modules_v3/googlemap/module.php:271
 #: webtrees/admin_trees_config.php:746 webtrees/admin_trees_config.php:833
@@ -4275,7 +4275,7 @@ msgstr "桁数"
 #: webtrees/modules_v3/googlemap/admin_places.php:155
 #: webtrees/library/WT/Gedcom/Tag.php:323
 msgid "State"
-msgstr ""
+msgstr "ステート"
 
 #. I18N: gedcom tag CITY
 #: webtrees/modules_v3/googlemap/module.php:325
@@ -4394,7 +4394,7 @@ msgstr "%s　の家系の地図"
 #: webtrees/modules_v3/googlemap/module.php:682
 #: webtrees/modules_v3/googlemap/help_text.php:109
 msgid "Hide flags"
-msgstr ""
+msgstr "フラグを隠す"
 
 #: webtrees/modules_v3/googlemap/module.php:685
 #: webtrees/modules_v3/googlemap/help_text.php:104
@@ -4421,7 +4421,7 @@ msgstr[1] ""
 
 #: webtrees/modules_v3/googlemap/module.php:833
 msgid "No ancestors in the database."
-msgstr ""
+msgstr "データベースに祖先なし"
 
 #. I18N: %1$d is a count of individuals, %2$s is a list of their names
 #: webtrees/modules_v3/googlemap/module.php:836
@@ -4458,7 +4458,7 @@ msgstr "誕生："
 #: webtrees/library/WT/MenuBar.php:123
 #: webtrees/library/WT/Controller/Fanchart.php:315
 msgid "Pedigree map"
-msgstr ""
+msgstr "家系の地図"
 
 #: webtrees/modules_v3/googlemap/module.php:1364
 msgid "Zoom in here"
@@ -4470,7 +4470,7 @@ msgstr "ここを縮小"
 
 #: webtrees/modules_v3/googlemap/module.php:1366
 msgid "Center map here"
-msgstr ""
+msgstr "ここを地図の中心に"
 
 #: webtrees/modules_v3/googlemap/module.php:1513
 msgid "Include fully matched places: "
@@ -4526,7 +4526,7 @@ msgstr ""
 
 #: webtrees/modules_v3/googlemap/places_edit.php:264
 msgid "Precision"
-msgstr ""
+msgstr "精度"
 
 #. I18N: Measure of latitude/longitude
 #: webtrees/modules_v3/googlemap/places_edit.php:302
@@ -4554,7 +4554,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/admin_places.php:164
 #: webtrees/modules_v3/googlemap/admin_places.php:585
 msgid "Zoom factor"
-msgstr ""
+msgstr "拡大縮小倍率"
 
 #: webtrees/modules_v3/googlemap/help_text.php:34
 msgid ""
@@ -4613,7 +4613,7 @@ msgstr "拡大／縮小レベル入力"
 msgid ""
 "Here the zoom level can be entered. This value will be used as the minimal "
 "value when displaying this geographic location on a map."
-msgstr ""
+msgstr "ここで、拡大／縮小レベルを入力できます。この値は地図上の地理的位置を表示するときの最小値として使われます。"
 
 #: webtrees/modules_v3/googlemap/help_text.php:70
 msgid "Select an icon"
@@ -4624,6 +4624,7 @@ msgid ""
 "Here an icon can be set or removed. Using this link a flag can be selected. "
 "When this geographic location is shown, this flag will be displayed."
 msgstr ""
+"ここで、アイコンを設定するか、削除ができます。このリンクを用いてフラグを選択できます。この地理的位置が表示されるとき、このフラグが表示されます。"
 
 #: webtrees/modules_v3/googlemap/help_text.php:76
 msgid ""
@@ -4631,6 +4632,8 @@ msgid ""
 "can be selected. If no flags are shown, then there are no flags defined for "
 "this country."
 msgstr ""
+"プルダウンメニューを使って、選択可能のフラグになっているカントリーを選択できます。フラグが表示されていないなら、このカントリーで定義されているフラグがあり"
+"ません。"
 
 #: webtrees/modules_v3/googlemap/help_text.php:80
 msgid "Enter filename"
@@ -4640,12 +4643,12 @@ msgstr "ファイル名入力"
 msgid ""
 "Select a file from the list of files already on the server which contains "
 "the place locations in CSV format."
-msgstr ""
+msgstr "サーバーに既に入っているファイルのリストから、CSV形式で入っている場所の位置を含むファイルを選択します。"
 
 #: webtrees/modules_v3/googlemap/help_text.php:85
 #: webtrees/modules_v3/googlemap/admin_places.php:573
 msgid "Show inactive places"
-msgstr ""
+msgstr "非アクティブの場所を表示"
 
 #: webtrees/modules_v3/googlemap/help_text.php:88
 msgid ""
@@ -4654,12 +4657,14 @@ msgid ""
 "in bulk from an external file.  Selecting this option will show all places, "
 "including ones that are not currently used."
 msgstr ""
+"デフォルトでは、貴方の家系図に見つけられる場所のリストしか表示しません。外部のファイルからインポートするなどして、その他の場所の詳細をお持ちかもしれません"
+"。このオプションを選択すれば、場所の全てを表示します、現在使われていない場所も含まれます。"
 
 #: webtrees/modules_v3/googlemap/help_text.php:90
 msgid ""
 "If you have a large number of inactive places, it can be slow to generate "
 "the list."
-msgstr ""
+msgstr "非アクティブな場所を多数貴方が保有しているなら、リストを作成するのに時間がかかるかもしれません。"
 
 #: webtrees/modules_v3/googlemap/help_text.php:98
 msgid ""
@@ -4684,7 +4689,7 @@ msgstr ""
 
 #: webtrees/modules_v3/googlemap/admin_places.php:156
 msgid "County"
-msgstr ""
+msgstr "カントリー"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:164
 #: webtrees/modules_v3/googlemap/admin_places.php:586
@@ -4693,11 +4698,11 @@ msgstr "アイコン"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:321
 msgid "File containing places (CSV)"
-msgstr ""
+msgstr "位置情報を含むファイル（CSV）"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:326
 msgid "Server file containing places (CSV)"
-msgstr ""
+msgstr "位置情報を含むサーバーのファイル（CSV）"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:340
 msgid "Delete all existing geographic data before importing the file."
@@ -4724,7 +4729,7 @@ msgstr "追加を継続"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:524
 msgid "Location not removed: this location contains sub-locations"
-msgstr ""
+msgstr "位置は削除されません：この位置にはサブ位置が入っています"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:545
 msgid "Remove this location?"
@@ -4889,6 +4894,7 @@ msgid ""
 "individuals whose death can be inferred from other dates, but who do not "
 "have a record of death, burial, cremation, etc."
 msgstr ""
+"死亡、埋葬、葬送などのレコードを持たないけれども、その他の日付が影響する、個人の死亡レコードの追加によって、プライバシーの計算を高速化できます。"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:37
 #: webtrees/library/WT/MenuBar.php:428
@@ -4994,7 +5000,7 @@ msgstr "夫の姓で置き換えられた妻の姓"
 
 #: webtrees/modules_v3/batch_update/plugins/married_names.php:110
 msgid "Wife's maiden surname becomes new given name"
-msgstr ""
+msgstr "妻の旧姓を新しい姓にします"
 
 #: webtrees/modules_v3/batch_update/plugins/duplicate_links.php:33
 msgid "Remove duplicate links"
@@ -5014,7 +5020,7 @@ msgstr "名前のスラッシュと空白の修正"
 msgid ""
 "Correct NAME records of the form 'John/DOE/' or 'John /DOE', as produced by "
 "older genealogy programs."
-msgstr ""
+msgstr "旧式の家系図プログラムが作った、 'John/DOE/' とか'John /DOE'　の形を持つNAMEレコードの修正"
 
 #. I18N: Description of the “Batch update” module
 #: webtrees/modules_v3/batch_update/module.php:36
@@ -5107,13 +5113,13 @@ msgstr "ページを取り込んだらスライドショーを開始？"
 #. I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: webtrees/modules_v3/yahrzeit/module.php:34
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "ユダヤ式命日"
 
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: webtrees/modules_v3/yahrzeit/module.php:39
 msgid ""
 "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "近い将来予定の、ユダヤ式回忌のリスト。"
 
 #: webtrees/modules_v3/yahrzeit/module.php:116
 #: webtrees/includes/functions/functions_print_lists.php:1921
@@ -21537,7 +21543,7 @@ msgstr ""
 
 #: webtrees_tmp/modules_v3_birth_report_report.xml.php:7
 msgid "Birth Place contains"
-msgstr ""
+msgstr "生まれた場所にある"
 
 #: webtrees_tmp/modules_v3_missing_facts_report_report.xml.php:12
 msgid "Sources to the events"
@@ -21545,7 +21551,7 @@ msgstr ""
 
 #: webtrees_tmp/modules_v3_fact_sources_report.xml.php:5
 msgid "A report of facts which are supported by a given source."
-msgstr ""
+msgstr "与えられた資料で支持された事実のレポート"
 
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:8
 #: webtrees_tmp/modules_v3_family_group_report_report.xml.php:8

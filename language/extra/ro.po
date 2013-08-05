@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2013-07-13 18:33+0000\n"
-"Last-Translator: Mihai Badea <mtz_ro_2003@yahoo.com>\n"
+"PO-Revision-Date: 2013-08-04 18:19+0000\n"
+"Last-Translator: Nagy Ákos <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2013-07-14 05:48+0000\n"
-"X-Generator: Launchpad (build 16696)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:04+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: \n"
 "X-Poedit-Language: Romanian\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -1007,7 +1007,7 @@ msgstr "Obiecte media"
 #: webtrees_tmp/modules_v3_individual_report_report.xml.php:223
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:221
 msgid "Notes"
-msgstr ""
+msgstr "Note"
 
 #: webtrees/source.php:124 webtrees/repo.php:115
 #: webtrees/modules_v3/media/module.php:83
@@ -1017,7 +1017,7 @@ msgstr ""
 #: webtrees/includes/functions/functions_edit.php:1789
 #: webtrees/library/WT/Controller/Family.php:231
 msgid "Add a new media object"
-msgstr ""
+msgstr "Adaugă un nou obiect media"
 
 #: webtrees/source.php:127 webtrees/inverselink.php:35
 #: webtrees/inverselink.php:86 webtrees/repo.php:118
@@ -1028,15 +1028,15 @@ msgstr ""
 #: webtrees/modules_v3/lightbox/module.php:76
 #: webtrees/library/WT/Controller/Family.php:234
 msgid "Link to an existing media object"
-msgstr ""
+msgstr "Leagă de un obiect media existent"
 
 #: webtrees/mediafirewall.php:37
 msgid "The media file was not found in this family tree"
-msgstr ""
+msgstr "Fişierul media nu a fost găsit în acest arbore de familie"
 
 #: webtrees/mediafirewall.php:367
 msgid "This media file is broken and cannot be watermarked"
-msgstr "Acest fişier media este corupt şi nu poate fi marcat"
+msgstr "Acest fişier media este corupt şi nu poate fi aplicat watermark"
 
 #. I18N: Name of a module
 #: webtrees/inverselink.php:87
@@ -1047,7 +1047,7 @@ msgstr "Acest fişier media este corupt şi nu poate fi marcat"
 #: webtrees/admin_trees_config.php:216 webtrees/admin_media.php:511
 #: webtrees/admin_media.php:601
 msgid "Media"
-msgstr ""
+msgstr "Fişiere media"
 
 #. I18N: Name of a module/report
 #. I18N: gedcom tag INDI
@@ -1175,7 +1175,7 @@ msgstr ""
 #: webtrees/modules_v3/gedcom_block/module.php:34
 #: webtrees/library/WT/MenuBar.php:35
 msgid "Home page"
-msgstr ""
+msgstr "Pagină inițială"
 
 #: webtrees/admin_modules.php:151
 msgid "This module cannot be found.  Delete its configuration settings."
@@ -1205,7 +1205,7 @@ msgstr ""
 
 #: webtrees/setup.php:128 webtrees/find.php:303
 msgid "Change language"
-msgstr ""
+msgstr "Schimba limba"
 
 #: webtrees/setup.php:131
 msgid "Checking server configuration"
@@ -1608,7 +1608,7 @@ msgstr "Alt director... vă rugăm tipăriţi"
 #: webtrees/modules_v3/googlemap/admin_places.php:664
 #: webtrees/admin_trees_manage.php:225
 msgid "Upload"
-msgstr ""
+msgstr "Încarcă"
 
 #: webtrees/admin_trees_check.php:36
 #: webtrees/themes/_administration/header.php:117
@@ -1672,12 +1672,12 @@ msgstr ""
 #: webtrees/timeline.php:130 webtrees/timeline.php:132
 #: webtrees/timeline.php:133
 msgid "Month:"
-msgstr "Lună:"
+msgstr "Luna:"
 
 #: webtrees/timeline.php:130 webtrees/timeline.php:132
 #: webtrees/timeline.php:133
 msgid "Day:"
-msgstr "Zi:"
+msgstr "Ziua:"
 
 #: webtrees/timeline.php:132
 msgid "years"
@@ -1720,12 +1720,12 @@ msgstr "Femeie"
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:590
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr ""
+msgstr "Necunoscut(ă)"
 
 #: webtrees/timeline.php:272 webtrees/timeline.php:288
 #: webtrees/help_text.php:1408
 msgid "Remove person"
-msgstr ""
+msgstr "Sterge persoana"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: webtrees/timeline.php:275
@@ -1738,11 +1738,11 @@ msgstr ""
 
 #: webtrees/timeline.php:308 webtrees/modules_v3/googlemap/module.php:1362
 msgid "Zoom in"
-msgstr ""
+msgstr "Mărește"
 
 #: webtrees/timeline.php:309 webtrees/modules_v3/googlemap/module.php:1363
 msgid "Zoom out"
-msgstr ""
+msgstr "Micșorează"
 
 #: webtrees/timeline.php:310 webtrees/lifespan.php:302
 msgid "Clear Chart"
@@ -1763,7 +1763,7 @@ msgstr ""
 #: webtrees/library/WT/Controller/Timeline.php:227
 #: webtrees/library/WT/Gedcom/Tag.php:120
 msgid "Age"
-msgstr ""
+msgstr "Vârstă"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: webtrees/repo.php:40
@@ -1883,7 +1883,7 @@ msgstr "Numele conţine:"
 #: webtrees/admin_site_logs.php:240 webtrees/admin_site_change.php:273
 #: webtrees/library/WT/I18N.php:480
 msgid "Filter"
-msgstr ""
+msgstr "Filtru"
 
 #: webtrees/find.php:216
 msgid "Media contains:"
@@ -1904,7 +1904,7 @@ msgstr "Depozitul conţine:"
 
 #: webtrees/find.php:269
 msgid "Shared Note contains:"
-msgstr ""
+msgstr "Nota comună conţine:"
 
 #: webtrees/find.php:286
 msgid "Source contains:"
@@ -1912,25 +1912,25 @@ msgstr "Sursa conţine:"
 
 #: webtrees/find.php:468
 msgid "Tag"
-msgstr ""
+msgstr "Etichetă"
 
 #: webtrees/find.php:476
 msgid "Show only selected tags"
-msgstr ""
+msgstr "Arată doar etichetele selectate"
 
 #: webtrees/find.php:477
 msgid "Show all tags"
-msgstr ""
+msgstr "Arată toate etichetele"
 
 #: webtrees/find.php:482
 msgid "Custom tags"
-msgstr ""
+msgstr "Etichete personalizate"
 
 #: webtrees/find.php:507 webtrees/modules_v3/GEDFact_assistant/module.php:162
 #: webtrees/statistics.php:75 webtrees/calendar.php:438
 #, php-format
 msgid "Total individuals: %s"
-msgstr ""
+msgstr "Total indivizi: %s"
 
 #: webtrees/find.php:509 webtrees/find.php:534 webtrees/find.php:590
 #: webtrees/find.php:618 webtrees/find.php:641 webtrees/find.php:664
@@ -1945,7 +1945,7 @@ msgstr "Nu au fost găsite rezultate."
 #: webtrees/find.php:532 webtrees/statistics.php:196 webtrees/calendar.php:446
 #, php-format
 msgid "Total families: %s"
-msgstr ""
+msgstr "Total familii: %s"
 
 #: webtrees/find.php:584 webtrees/admin_media.php:493
 msgid "This media object is not linked to any other record."
@@ -1961,12 +1961,12 @@ msgstr "Găsit depozite"
 
 #: webtrees/find.php:661
 msgid "Shared Notes found"
-msgstr ""
+msgstr "Note comune găsite"
 
 #: webtrees/find.php:684
 #, php-format
 msgid "Total sources: %s"
-msgstr ""
+msgstr "Total surse: %s"
 
 #: webtrees/admin_module_tabs.php:75 webtrees/admin_module_menus.php:75
 #: webtrees/admin_module_sidebar.php:75
@@ -1988,7 +1988,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_ahnentafel_report_report.xml.php:8
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:8
 msgid "Generations"
-msgstr ""
+msgstr "Generaţii"
 
 #: webtrees/pedigree.php:45 webtrees/descendancy.php:52
 #: webtrees/fanchart.php:62 webtrees/admin_trees_config.php:217
@@ -2124,12 +2124,12 @@ msgstr "Contopiţi de la ID-ul:"
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:98
 #: webtrees/admin_pgv_to_wt.php:157 webtrees/library/WT/I18N.php:468
 msgid "next"
-msgstr ""
+msgstr "următor(-oare)"
 
 #. I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com
 #: webtrees/modules_v3/ckeditor/module.php:34
 msgid "CKEditor™"
-msgstr ""
+msgstr "CKEditor™"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: webtrees/modules_v3/ckeditor/module.php:39
@@ -2137,6 +2137,9 @@ msgid ""
 "Allow other modules to edit text using a “WYSIWYG” editor, instead of using "
 "HTML codes."
 msgstr ""
+"Permite altor module să editeze textul utilizând un editor \"WYSIWYG\" (What "
+"You See Is What You Get - ceea ce vezi este ceea ce obţii), în loc să "
+"folosească coduri HTML."
 
 #. I18N: Name of a module/report
 #: webtrees/modules_v3/death_report/module.php:35
@@ -2154,12 +2157,12 @@ msgstr ""
 #. I18N: Name of a module
 #: webtrees/modules_v3/upcoming_events/module.php:34
 msgid "Upcoming events"
-msgstr ""
+msgstr "Evenimente apropiate"
 
 #. I18N: Description of the “Upcoming events” module
 #: webtrees/modules_v3/upcoming_events/module.php:39
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "O listă de aniversări ce urmează să survină în viitorul apropiat."
 
 #: webtrees/modules_v3/upcoming_events/module.php:69
 #: webtrees/modules_v3/gedcom_stats/module.php:77
@@ -2190,8 +2193,8 @@ msgstr "Numărul de zile de arătat"
 #, php-format
 msgid "maximum %d day"
 msgid_plural "maximum %d days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "maxim %d zi"
+msgstr[1] "maxim %d zile"
 
 #: webtrees/modules_v3/upcoming_events/module.php:139
 #: webtrees/modules_v3/todays_events/module.php:127
@@ -2210,7 +2213,7 @@ msgstr "Arată doar naşterile, decesele şi căsătoriile ?"
 #: webtrees/modules_v3/top10_surnames/module.php:162
 #: webtrees/modules_v3/yahrzeit/module.php:247
 msgid "Presentation style"
-msgstr ""
+msgstr "Stil prezentare"
 
 #: webtrees/modules_v3/upcoming_events/module.php:155
 #: webtrees/modules_v3/top10_givnnames/module.php:151
@@ -2219,7 +2222,7 @@ msgstr ""
 #: webtrees/modules_v3/yahrzeit/module.php:249
 #: webtrees/admin_trees_config.php:814
 msgid "list"
-msgstr ""
+msgstr "listă"
 
 #: webtrees/modules_v3/upcoming_events/module.php:155
 #: webtrees/modules_v3/top10_givnnames/module.php:151
@@ -2229,7 +2232,7 @@ msgstr ""
 #: webtrees/modules_v3/yahrzeit/module.php:249
 #: webtrees/admin_trees_config.php:815
 msgid "table"
-msgstr ""
+msgstr "tabel"
 
 #: webtrees/modules_v3/upcoming_events/module.php:160
 #: webtrees/modules_v3/recent_changes/module.php:151
@@ -2245,7 +2248,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_cemetery_report_report.xml.php:7
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:9
 msgid "Sort order"
-msgstr ""
+msgstr "Ordine sortare"
 
 #. I18N: An option in a list-box
 #: webtrees/modules_v3/upcoming_events/module.php:163
@@ -2262,14 +2265,14 @@ msgstr ""
 #: webtrees_tmp/modules_v3_cemetery_report_report.xml.php:7
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:9
 msgid "sort by name"
-msgstr ""
+msgstr "sortează după nume"
 
 #. I18N: An option in a list-box
 #: webtrees/modules_v3/upcoming_events/module.php:164
 #: webtrees/modules_v3/todays_events/module.php:152
 #: webtrees_tmp/modules_v3_change_report_report.xml.php:8
 msgid "sort by date"
-msgstr ""
+msgstr "sortează după dată"
 
 #. I18N: label for a yes/no option
 #: webtrees/modules_v3/upcoming_events/module.php:170
@@ -2285,7 +2288,7 @@ msgstr ""
 #: webtrees/modules_v3/top10_pageviews/module.php:149
 #: webtrees/modules_v3/yahrzeit/module.php:254
 msgid "Add a scrollbar when block contents grow"
-msgstr ""
+msgstr "Adaugă bară de derulare atunci când conţinutul blocului creşte"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/gedcom_stats/module.php:34 webtrees/statistics.php:38
@@ -2298,12 +2301,14 @@ msgstr "Statistici"
 msgid ""
 "The size of the family tree, earliest and latest events, common names, etc."
 msgstr ""
+"Dimensiunea arborelui de familie, cele mai vechi şi cele mai recente "
+"evenimente, nume comune, etc."
 
 #. I18N: %s is a date
 #: webtrees/modules_v3/gedcom_stats/module.php:88
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "Acest arbore de familie a fost actualizat pe %s."
 
 #: webtrees/modules_v3/gedcom_stats/module.php:94
 #: webtrees/modules_v3/gedcom_stats/module.php:166
@@ -2317,7 +2322,7 @@ msgstr ""
 #: webtrees/library/WT/Stats.php:618 webtrees/library/WT/Stats.php:619
 #: webtrees/library/WT/Stats.php:1654 webtrees/library/WT/Stats.php:2392
 msgid "Males"
-msgstr ""
+msgstr "Bărbaţi"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:95
 #: webtrees/modules_v3/gedcom_stats/module.php:167
@@ -2330,13 +2335,13 @@ msgstr ""
 #: webtrees/library/WT/Stats.php:617 webtrees/library/WT/Stats.php:620
 #: webtrees/library/WT/Stats.php:1654 webtrees/library/WT/Stats.php:2392
 msgid "Females"
-msgstr ""
+msgstr "Femei"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:98
 #: webtrees/modules_v3/gedcom_stats/module.php:308
 #: webtrees/modules_v3/html/module.php:184 webtrees/statistics.php:177
 msgid "Total surnames"
-msgstr ""
+msgstr "Total nume de familie"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:110
 #: webtrees/modules_v3/gedcom_stats/module.php:340
@@ -2412,7 +2417,7 @@ msgstr "Numărul mediu de copii per familie"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:188
 msgid "View statistics as graphs"
-msgstr ""
+msgstr "Vezi statisticile ca grafice"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:194
 #: webtrees/modules_v3/html/module.php:260
@@ -2422,7 +2427,7 @@ msgstr "Cele mai comune nume de familie"
 #. I18N: label for yes/no option
 #: webtrees/modules_v3/gedcom_stats/module.php:262
 msgid "Show date of last update?"
-msgstr ""
+msgstr "Afişează data ultimei actualizări?"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:269
 msgid "Show common surnames?"
@@ -2438,20 +2443,20 @@ msgstr "Alte înregistrări"
 
 #: webtrees/modules_v3/gedcom_stats/module.php:373
 msgid "Show link to Statistics charts?"
-msgstr ""
+msgstr "Afişează legătura către Diagrama de statistici?"
 
 #. I18N: Name of a module/report
 #: webtrees/modules_v3/cemetery_report/module.php:35
 #: webtrees_tmp/modules_v3_cemetery_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_cemetery_report_report.xml.php:33
 msgid "Cemeteries"
-msgstr ""
+msgstr "Cimitire"
 
 #. I18N: Description of the “Cemeteries” module
 #: webtrees/modules_v3/cemetery_report/module.php:41
 #: webtrees_tmp/modules_v3_cemetery_report_report.xml.php:5
 msgid "A report of individuals who were buried in a given place."
-msgstr ""
+msgstr "Un raport despre indivizii care sunt înhumaţi într-un anumit loc."
 
 #. I18N: Name of a module.  Top=Most common
 #: webtrees/modules_v3/top10_givnnames/module.php:34
@@ -2481,7 +2486,7 @@ msgstr[1] ""
 #: webtrees/modules_v3/top10_surnames/module.php:155
 #: webtrees/modules_v3/top10_pageviews/module.php:135
 msgid "Number of items to show"
-msgstr "Numarul de elemente de arătat"
+msgstr "Numarul de elemente de afişat"
 
 #. I18N: Name of a report
 #: webtrees/modules_v3/occupation_report/module.php:35
@@ -2524,7 +2529,7 @@ msgstr "Ştiri"
 #. I18N: Description of the “GEDCOM News” module
 #: webtrees/modules_v3/gedcom_news/module.php:47
 msgid "Family news and site announcements."
-msgstr ""
+msgstr "Noutăţi de familie şi anunţuri."
 
 #: webtrees/modules_v3/gedcom_news/module.php:95
 msgid "No News articles have been submitted."
@@ -2565,7 +2570,7 @@ msgstr "Limita:"
 #. I18N: Name of a module
 #: webtrees/modules_v3/individuals/module.php:34
 msgid "Individual list"
-msgstr ""
+msgstr "Lista indivizi"
 
 #. I18N: Description of “Individuals” module
 #: webtrees/modules_v3/individuals/module.php:39
@@ -2573,6 +2578,8 @@ msgid ""
 "A sidebar showing an alphabetic list of all the individuals in the family "
 "tree."
 msgstr ""
+"O listă laterală ce afişează alfabetic toţi indivizii dintr-un arbore de "
+"familie."
 
 #: webtrees/modules_v3/individuals/module.php:141
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:95
@@ -2630,12 +2637,12 @@ msgstr "Diagrame"
 #. I18N: Description of the “Charts” module
 #: webtrees/modules_v3/charts/module.php:39
 msgid "An alternative way to display charts."
-msgstr ""
+msgstr "Un mod alternativ de afişare a diagramelor."
 
 #: webtrees/modules_v3/charts/module.php:98
 #, php-format
 msgid "Pedigree of %s"
-msgstr ""
+msgstr "Generalogie pentru %s"
 
 #. I18N: %s is an individual’s name
 #: webtrees/modules_v3/charts/module.php:101 webtrees/descendancy.php:118
@@ -2643,14 +2650,14 @@ msgstr ""
 #: webtrees/library/WT/Controller/Descendancy.php:98
 #, php-format
 msgid "Descendants of %s"
-msgstr ""
+msgstr "Descendenţi pentru %s"
 
 #. I18N: %s is an individual’s name
 #: webtrees/modules_v3/charts/module.php:104 webtrees/hourglass.php:39
 #: webtrees/library/WT/Controller/Hourglass.php:105
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr ""
+msgstr "Diagramă \"clepsidră\" pentru %s"
 
 #: webtrees/modules_v3/charts/module.php:107
 #: webtrees/modules_v3/tree/class_treeview.php:79
@@ -2658,17 +2665,19 @@ msgstr ""
 #: webtrees/modules_v3/tree/module.php:111
 #, php-format
 msgid "Interactive tree of %s"
-msgstr ""
+msgstr "Arborele interactivpentru %s"
 
 #: webtrees/modules_v3/charts/module.php:149
 msgid ""
 "You must select an individual and chart type in the block configuration "
 "settings."
 msgstr ""
+"Trebuie să selectezi un individ şi un tip diagramă în setările de "
+"configurare ale blocului."
 
 #: webtrees/modules_v3/charts/module.php:202 webtrees/statistics.php:601
 msgid "Chart type"
-msgstr ""
+msgstr "Tip diagramă"
 
 #. I18N: Name of a report
 #: webtrees/modules_v3/charts/module.php:205
@@ -2705,7 +2714,7 @@ msgstr "Descendenţi"
 #: webtrees/library/WT/MenuBar.php:108
 #: webtrees/library/WT/Controller/Fanchart.php:324
 msgid "Hourglass chart"
-msgstr ""
+msgstr "Diagramă \"clepsidră\""
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/charts/module.php:208
@@ -2714,7 +2723,7 @@ msgstr ""
 #: webtrees/library/WT/MenuBar.php:120
 #: webtrees/library/WT/Controller/Fanchart.php:326
 msgid "Interactive tree"
-msgstr ""
+msgstr "Arbore interactiv"
 
 #: webtrees/modules_v3/charts/module.php:215
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:339
@@ -2733,7 +2742,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_individual_report_report.xml.php:175
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:180
 msgid "no"
-msgstr ""
+msgstr "nu"
 
 #: webtrees/modules_v3/charts/help_text.php:34
 msgid ""
@@ -2747,6 +2756,15 @@ msgid ""
 "when they are called up from the menus.  Click on the box of a person to see "
 "more details about them."
 msgstr ""
+"Acest bloc permite afişarea unei diagrame Genealogie, Descendenţi sau "
+"\"Clepsidră\" pe Pagina Mea sau pe Pagina de Start. Din cauza limitărilor de "
+"spaţiu, diagrama trebuie plasată numai în partea stângă a paginii.<br /><br "
+"/>Când blocul apare pe Pagina de Start, persoana rădăcină şi tipul diagramei "
+"vor fi stabilite de administrator. Când blocul apare pe pagina Pagina Mea a "
+"utilizatorului, aceste opţiuni sunt determinate de utilizator.<br /><br "
+"/>Comportamentul acestor diagrame este identic cu comportamentul lor atunci "
+"când sunt apelate din meniu. Dă click pe căsuţa unei persoane pentru a vedea "
+"mai multe detalii despre respectiva persoană."
 
 #. I18N: Name of a module/report
 #: webtrees/modules_v3/ahnentafel_report/module.php:35
@@ -2756,13 +2774,13 @@ msgstr ""
 #: webtrees/library/WT/Controller/Ancestry.php:83
 #: webtrees_tmp/modules_v3_ahnentafel_report_report.xml.php:5
 msgid "Ancestors"
-msgstr ""
+msgstr "Strămoşi"
 
 #. I18N: Description of the “Ancestors” module
 #: webtrees/modules_v3/ahnentafel_report/module.php:41
 #: webtrees_tmp/modules_v3_ahnentafel_report_report.xml.php:6
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr ""
+msgstr "Un raport ce enumeră strămoşii unui individ"
 
 #. I18N: Description of the “Family navigator” module
 #: webtrees/modules_v3/family_nav/module.php:39
@@ -2777,7 +2795,7 @@ msgstr ""
 #: webtrees/includes/functions/functions.php:1236
 msgctxt "mother's husband"
 msgid "step-father"
-msgstr ""
+msgstr "tată vitreg"
 
 #: webtrees/modules_v3/family_nav/module.php:190
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:474
@@ -2787,11 +2805,11 @@ msgstr ""
 #: webtrees/includes/functions/functions.php:1223
 msgctxt "father's wife"
 msgid "step-mother"
-msgstr ""
+msgstr "mamă vitregă"
 
 #: webtrees/modules_v3/family_nav/module.php:230
 msgid "Immediate Family"
-msgstr ""
+msgstr "Familie Apropiată"
 
 #: webtrees/modules_v3/family_nav/module.php:410
 #: webtrees/modules_v3/family_nav/module.php:411
@@ -2805,7 +2823,7 @@ msgstr ""
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1483
 #: webtrees/family.php:109 webtrees/library/WT/Controller/Hourglass.php:388
 msgid "Parents"
-msgstr "Părinţi:"
+msgstr "Părinţi"
 
 #: webtrees/modules_v3/family_nav/module.php:535
 #: webtrees/modules_v3/family_nav/module.php:538
@@ -2815,20 +2833,21 @@ msgstr "Părinţi:"
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2190
 msgctxt "unknown family"
 msgid "unknown"
-msgstr ""
+msgstr "necunoscut(ă)"
 
 #. I18N: Name of a module/report
 #: webtrees/modules_v3/birth_report/module.php:35
 #: webtrees_tmp/modules_v3_birth_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_birth_report_report.xml.php:29
 msgid "Births"
-msgstr ""
+msgstr "Naşteri"
 
 #. I18N: Description of the “Births” module
 #: webtrees/modules_v3/birth_report/module.php:41
 #: webtrees_tmp/modules_v3_birth_report_report.xml.php:5
 msgid "A report of individuals who were born in a given time or place."
 msgstr ""
+"Un raport despre indivizii născuţi la o anumită dată sau într-un anumit loc."
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/login_block/module.php:34
@@ -2842,13 +2861,13 @@ msgstr "Autentificare"
 #. I18N: Description of the “Login” module
 #: webtrees/modules_v3/login_block/module.php:39
 msgid "An alternative way to login and logout."
-msgstr ""
+msgstr "Un mod alternativ de autentificare şi deconectare"
 
 #: webtrees/modules_v3/login_block/module.php:56
 #: webtrees/modules_v3/login_block/module.php:61
 #: webtrees/includes/functions/functions_print.php:316
 msgid "Logout"
-msgstr "Ieşire"
+msgstr "Deconectare"
 
 #: webtrees/modules_v3/login_block/module.php:59
 #: webtrees/themes/webtrees/header.php:79
@@ -2872,41 +2891,41 @@ msgstr "Cerere pentru parolă uitată"
 
 #: webtrees/modules_v3/login_block/module.php:102 webtrees/login.php:181
 msgid "Username or email address"
-msgstr ""
+msgstr "Nume utilizator sau adresă email"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/recent_changes/module.php:36 webtrees/admin.php:244
 #: webtrees_tmp/modules_v3_change_report_report.xml.php:90
 msgid "Recent changes"
-msgstr ""
+msgstr "Schimbări recente"
 
 #. I18N: Description of the “Recent changes” module
 #: webtrees/modules_v3/recent_changes/module.php:41
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "O listă a înregistrărilor care au fost modificate recent."
 
 #. I18N: title for list of recent changes
 #: webtrees/modules_v3/recent_changes/module.php:75
 #, php-format
 msgid "Changes in the last day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Modificări în ultima zi"
+msgstr[1] "Modificări în ultimele %s zile"
 
 #: webtrees/modules_v3/recent_changes/module.php:80
 #, php-format
 msgid "There have been no changes within the last %s days."
-msgstr ""
+msgstr "Nu au fost modificări în ultimele %s zile."
 
 #. I18N: An option in a list-box
 #: webtrees/modules_v3/recent_changes/module.php:155
 msgid "sort by date, oldest first"
-msgstr ""
+msgstr "sortează dupa dată, cel mai vechi primul"
 
 #. I18N: An option in a list-box
 #: webtrees/modules_v3/recent_changes/module.php:156
 msgid "sort by date, newest first"
-msgstr ""
+msgstr "sortează după dată, cel mai recent primul"
 
 #: webtrees/modules_v3/recent_changes/module.php:169
 msgid "Should this block be hidden when it is empty?"
@@ -2953,7 +2972,7 @@ msgstr ""
 #: webtrees/modules_v3/html/module.php:327
 #: webtrees/modules_v3/stories/module.php:248
 msgid "Show this block for which languages?"
-msgstr ""
+msgstr "Afişează acest bloc pentru ce limbi?"
 
 #: webtrees/modules_v3/faq/module.php:177
 #: webtrees/modules_v3/faq/help_text.php:41
@@ -2989,7 +3008,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:8
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:12
 msgid "All"
-msgstr ""
+msgstr "Toate"
 
 #: webtrees/modules_v3/faq/module.php:278
 #: webtrees/modules_v3/faq/help_text.php:33
@@ -3031,7 +3050,7 @@ msgstr "Arborele genealogic"
 #: webtrees/admin_trees_config.php:1077 webtrees/admin_trees_config.php:1098
 #: webtrees/admin_trees_config.php:1106 webtrees/admin_trees_config.php:1114
 msgid "show"
-msgstr ""
+msgstr "arată"
 
 #: webtrees/modules_v3/faq/module.php:366
 msgid "The FAQ list is empty."
@@ -3120,7 +3139,7 @@ msgstr ""
 #. I18N: Description of the “Families” module
 #: webtrees/modules_v3/relatives/module.php:43
 msgid "A tab showing the close relatives of an individual."
-msgstr ""
+msgstr "un dosar ce afişează rudele apropiate ale unui individ."
 
 #: webtrees/modules_v3/relatives/module.php:55
 #: webtrees/modules_v3/random_media/module.php:184
@@ -3166,43 +3185,43 @@ msgstr ""
 #: webtrees/modules_v3/relatives/module.php:282
 #: webtrees/includes/functions/functions.php:1167
 msgid "brother"
-msgstr ""
+msgstr "frate"
 
 #: webtrees/modules_v3/relatives/module.php:283
 #: webtrees/includes/functions/functions.php:1182
 msgid "sister"
-msgstr ""
+msgstr "soră"
 
 #: webtrees/modules_v3/relatives/module.php:318
 msgid "Show date differences"
-msgstr ""
+msgstr "Arată diferenţele între date"
 
 #. I18N: Name of a module.  Tasks that need further research.
 #: webtrees/modules_v3/todo/module.php:34
 #: webtrees/modules_v3/todo/help_text.php:33
 msgid "Research tasks"
-msgstr ""
+msgstr "Activităţi de cercetare"
 
 #. I18N: Description of “Research tasks” module
 #: webtrees/modules_v3/todo/module.php:39
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "O listă a sarcinilor şi activităţilor legate de arborele de familie"
 
 #: webtrees/modules_v3/todo/module.php:131
 msgid "There are no research tasks in this family tree."
-msgstr ""
+msgstr "Nu sunt sarcini de cercetare în acest arbore de familie."
 
 #: webtrees/modules_v3/todo/module.php:174
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "Afişează sarcinile de cercetare atribuite altor utilizatori"
 
 #: webtrees/modules_v3/todo/module.php:181
 msgid "Show research tasks that are not assigned to any user"
-msgstr ""
+msgstr "Afişează sarcinile de cercetare neatribuite nici unui utilizator"
 
 #: webtrees/modules_v3/todo/module.php:188
 msgid "Show research tasks that have a date in the future"
-msgstr ""
+msgstr "Afişează sarcinile de cercetare care au dată în viitor"
 
 #: webtrees/modules_v3/todo/help_text.php:34
 msgid ""
@@ -3211,28 +3230,38 @@ msgid ""
 "reminder to check facts against more reliable sources, to obtain documents "
 "or photographs, to resolve conflicting information, etc."
 msgstr ""
+"Sarcinile de cercetare sunt evenimente special, ataşate indivizilor din "
+"arborele de familie, care identifica nevoia unei cercetări viitoare. Le poţi "
+"folosi ca o alertă pentru a verifica anume fapte prin surse mai credibile, "
+"pentru a obţine documente sau fotografii, pentru a rezolva informaţiile "
+"contradictorii, etc."
 
 #: webtrees/modules_v3/todo/help_text.php:36
 msgid ""
 "To create new research tasks, you must first add “research task” to the list "
 "of facts and events in the family tree’s preferences."
 msgstr ""
+"Pentru a crea o noua sarcină de cercetare, trebuie să adaugi întâi \"sarcină "
+"de cercetare\" la lista faptelor şi evenimentelor în preferinţele arborelui "
+"de familie."
 
 #: webtrees/modules_v3/todo/help_text.php:38
 msgid ""
 "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other "
 "genealogy applications may not recognise this tag."
 msgstr ""
+"Sarcinile de cercetare sunt salvate cu eticheta personalizată \"_TODO\". "
+"Alte programe de genealogie s-ar putea să nu recunoască această etichetă."
 
 #. I18N: Description of the “Edit” module
 #: webtrees/modules_v3/page_menu/module.php:39
 msgid "An edit menu for individuals, families, sources, etc."
-msgstr ""
+msgstr "Un meniu de modificare pentru indivizi, familii, surse, etc."
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/GEDFact_assistant/module.php:34
 msgid "Census assistant"
-msgstr ""
+msgstr "Asistent Recensământ"
 
 #. I18N: Description of the “Census assistant” module
 #: webtrees/modules_v3/GEDFact_assistant/module.php:39
@@ -3242,31 +3271,31 @@ msgstr ""
 
 #: webtrees/modules_v3/GEDFact_assistant/module.php:206
 msgid "Not a valid Individual, Family or Source ID"
-msgstr ""
+msgstr "Nu este un individ, familie sau Id sursă valid"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:72
 msgid "Search for People to add to Add Links list."
-msgstr ""
+msgstr "Caută persoane pe care să le adaugi la lista de Adăugare legături."
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:77
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:50
 msgid "You must enter a name"
-msgstr ""
+msgstr "Trebuie să introduci un nume"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:118
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:86
 msgid "Click to choose person as Head of family."
-msgstr ""
+msgstr "Dă click ca să selectezi persoana care este Capul de familiei"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:119
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:87
 #, php-format
 msgid "Click %s to choose person as Head of family."
-msgstr ""
+msgstr "Click pe %s ca să alegi persoana ca fiind Cap de familie"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:122
 msgid "Click Name to add person to Add Links List."
-msgstr ""
+msgstr "Click Nume ca să adaugi persoana la lista de Adăugare legături."
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:204
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:273
@@ -3317,15 +3346,15 @@ msgstr "Privat"
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:734
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:69
 msgid "Head of Household:"
-msgstr ""
+msgstr "Capul familiei:"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a Link, the ID field cannot be empty."
-msgstr ""
+msgstr "Cănd adaugi o Legătură, câmpul ID nu poate fi vid."
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:112
 msgid "Links"
-msgstr ""
+msgstr "Legături"
 
 #. I18N: gedcom tag NAME
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:119
@@ -3356,24 +3385,24 @@ msgstr "Nume"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:120
 msgid "Keep"
-msgstr ""
+msgstr "Păstrează"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:122
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:573
 msgid "Navigator"
-msgstr ""
+msgstr "Navigator"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:139
 msgid "Keep Link in list"
-msgstr ""
+msgstr "Păstrează Legătura în listă"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:140
 msgid "Remove Link from list"
-msgstr ""
+msgstr "Scoate Legătura din listă"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:171
 msgid "Add links"
-msgstr ""
+msgstr "Adaugă legături"
 
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
 #: webtrees/addmedia.php:447
@@ -3386,21 +3415,21 @@ msgstr ""
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_note_decode.php:49
 msgid "Father's Birthplace - (Chapman format)"
-msgstr ""
+msgstr "Locul de naştere al tatălui (format Chapman)"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_note_decode.php:50
 msgid "Mother's Birthplace - (Chapman format)"
-msgstr ""
+msgstr "Locul de naştere al mamei (format Chapman)"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:567
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1128
 msgid "Census transcript"
-msgstr ""
+msgstr "Transcriere recensământ"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:567
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1128
 msgid "Household"
-msgstr ""
+msgstr "Gospodărie"
 
 #. I18N: gedcom tag CTRY
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1037
@@ -3412,7 +3441,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/admin_places.php:154
 #: webtrees/library/WT/Gedcom/Tag.php:180
 msgid "Country"
-msgstr ""
+msgstr "Țară"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1114
 #: webtrees/calendar.php:166 webtrees/library/WT/MenuBar.php:382
@@ -3449,7 +3478,7 @@ msgstr "Loc"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:41
 msgid "Add people"
-msgstr ""
+msgstr "Adaugă persoane"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:117
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:118
@@ -3526,12 +3555,12 @@ msgstr ""
 #: webtrees/placelist.php:125 webtrees/library/WT/Place.php:93
 #: webtrees/library/WT/Controller/Pedigree.php:242
 msgid "unknown"
-msgstr ""
+msgstr "necunoscut(ă)"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_asst_date.php:46
 #: webtrees/library/WT/Gedcom/Tag.php:155
 msgid "Census date"
-msgstr ""
+msgstr "Dată recensamânt"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_4_text.php:37
 msgid "Preview"
@@ -3543,18 +3572,18 @@ msgstr ""
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_4_text.php:39
 msgid "Save"
-msgstr ""
+msgstr "Salvare"
 
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:98
 msgid "Add/Insert Blank Row"
-msgstr ""
+msgstr "Adaugă/Inserează un rând gol"
 
 #. I18N: Name of a module/report
 #: webtrees/modules_v3/missing_facts_report/module.php:35
 #: webtrees_tmp/modules_v3_missing_facts_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_missing_facts_report_report.xml.php:50
 msgid "Missing data"
-msgstr ""
+msgstr "Date lipsă"
 
 #. I18N: Description of the “Missing data”
 #: webtrees/modules_v3/missing_facts_report/module.php:41
@@ -3562,7 +3591,7 @@ msgstr ""
 msgid ""
 "A report of the information that is missing for an individual and their "
 "relatives."
-msgstr ""
+msgstr "Un raport al informaţiilor lipsă despre un individ şi rudele sale."
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: webtrees/modules_v3/logged_in/module.php:34
@@ -3592,18 +3621,18 @@ msgstr ""
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:89
 msgid "Related families"
-msgstr ""
+msgstr "Familii înrudite"
 
 #. I18N: Description of the “Related families”
 #: webtrees/modules_v3/individual_ext_report/module.php:41
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:5
 msgid "A report of the families that are closely related to an individual."
-msgstr ""
+msgstr "Un raport al familiilor înrudite apropiat cu un individ."
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/html/module.php:34
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #. I18N: Description of the “HTML” module
 #: webtrees/modules_v3/html/module.php:39
@@ -3612,7 +3641,7 @@ msgstr ""
 
 #: webtrees/modules_v3/html/module.php:157
 msgid "Keyword examples"
-msgstr ""
+msgstr "Exemple cuvinte-cheie"
 
 #: webtrees/modules_v3/html/module.php:160
 msgid "Narrative description"
@@ -3628,6 +3657,13 @@ msgid ""
 "#lastEventYear#.<br /><br />If you have any comments or feedback please "
 "contact #contactWebmaster#."
 msgstr ""
+"Acest GEDCOM (arbore de familie) a fost actualizat ultima dată pe "
+"#gedcomUpdated#. Sunt #totalSurnames# nume de familiei în acest arbore. Cel "
+"mai vechi eveniment înregistrat este #firstEventType# pentru "
+"#firstEventName# în #firstEventYear#. Cel mai recent eveniment este "
+"#lastEventType# pentru #lastEventName# în #lastEventYear#.<br /><br />Dacă "
+"ai de făcut vreun comentariu sau o recomandare ia legătura cu "
+"#contactWebmaster#."
 
 #: webtrees/modules_v3/html/module.php:163
 msgid "GEDCOM statistics"
@@ -3636,7 +3672,7 @@ msgstr "Statistici GEDCOM"
 #: webtrees/modules_v3/html/module.php:166
 #, php-format
 msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
-msgstr ""
+msgstr "Acest GEDCOM a fost creat utilizând <b>%1$s</b> pe <b>%2$s</b>."
 
 #: webtrees/modules_v3/html/module.php:274
 #: webtrees/modules_v3/html/help_text.php:38
@@ -3662,7 +3698,7 @@ msgstr "Conţinut"
 
 #: webtrees/modules_v3/html/module.php:319
 msgid "Show the date and time of update"
-msgstr ""
+msgstr "Afişează data şi ora ultimei actualizări"
 
 #: webtrees/modules_v3/html/help_text.php:34
 msgid ""
@@ -3673,6 +3709,12 @@ msgid ""
 "may wish to apply CSS classes to their text, so that the formatting matches "
 "the currently selected theme."
 msgstr ""
+"Aşa cum poţi folosi bara de unelte pentru a aplica formatare HTML, poţi "
+"insera câmpuri din baza de date care vor fi actualizate automat. Aceste "
+"câmpuri speciale sunt marcate cu caractere <b>#</b>. De exemplu, "
+"<b>#totalFamilies#</b> va fi înlocuit cu numărul de familii din baza de "
+"date. Utilizatorii avansaţi ar putea aplica clase CSS la text, astfel încât "
+"formatarea va coincide cu tema selectata."
 
 #: webtrees/modules_v3/html/help_text.php:39
 msgid ""
@@ -3680,11 +3722,15 @@ msgid ""
 "standard templates.  When you select one of these templates, the text area "
 "will contain a copy that you can then alter to suit your site's requirements."
 msgstr ""
+"Pentru a te ajuta să începi cu acest bloc, am create câteva şabloane "
+"standard. Când selectezi unul dintre aceste şabloane, zona de text va "
+"conţine o copie a textului pe care o poţi edita pentru a se potrivi cu "
+"cerinţele tale."
 
 #. I18N: Description of the “Descendants” module
 #: webtrees/modules_v3/descendancy/module.php:39
 msgid "A sidebar showing the descendants of an individual."
-msgstr ""
+msgstr "O listă laterală ce afişează descendenţii unui individ."
 
 #: webtrees/modules_v3/descendancy/module.php:239
 #: webtrees/includes/functions/functions_charts.php:263
@@ -3695,22 +3741,22 @@ msgstr "Nu există copii înregistraţi"
 #. I18N: Name of a module
 #: webtrees/modules_v3/todays_events/module.php:34
 msgid "On this day"
-msgstr ""
+msgstr "În această zi"
 
 #. I18N: Description of the “On This Day” module
 #: webtrees/modules_v3/todays_events/module.php:39
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "O listă de aniversări din această zi."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: webtrees/modules_v3/sitemap/module.php:37
 msgid "Sitemaps"
-msgstr ""
+msgstr "Hărţi site"
 
 #. I18N: Description of the “Sitemaps” module
 #: webtrees/modules_v3/sitemap/module.php:42
 msgid "Generate sitemap files for search engines."
-msgstr ""
+msgstr "Generează hărţi site pentru motoarele de căutare."
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: webtrees/modules_v3/sitemap/module.php:239
@@ -3720,22 +3766,30 @@ msgid ""
 "sitemaps.  For more information, see <a "
 "href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
+"Hărţile site sunt o modalitate prin care poţi informa motoarele de căutare "
+"despre paginile ce pot fi indexate. Toate marile motoare de căutare suportă "
+"hărţi site. Pentru mai multe informaţii, accesează <a "
+"href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 
 #: webtrees/modules_v3/sitemap/module.php:241
 msgid "Which family trees should be included in the sitemaps?"
-msgstr ""
+msgstr "Ce arbori de familie să fie incluşi în hărţile site?"
 
 #: webtrees/modules_v3/sitemap/module.php:260
 msgid ""
 "To tell search engines that sitemaps are available, you should add the "
 "following line to your robots.txt file."
 msgstr ""
+"Pentru a informa motoarele de căutare ce hărţi site sunt disponibile, adaugă "
+"următoarea linie în fişierul robots.txt."
 
 #: webtrees/modules_v3/sitemap/module.php:264
 msgid ""
 "To tell search engines that sitemaps are available, you can use the "
 "following links."
 msgstr ""
+"Pentru a informa motoarele de căutare ce hărţi site sunt disponibile, poţi "
+"folosi următoarele legături."
 
 #. I18N: Name of a module/tab on the individual page.
 #: webtrees/modules_v3/personal_facts/module.php:34
@@ -3743,12 +3797,12 @@ msgstr ""
 #: webtrees_tmp/modules_v3_individual_report_report.xml.php:146
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:151
 msgid "Facts and events"
-msgstr ""
+msgstr "Fapte si evenimente"
 
 #. I18N: Description of the “Facts and events” module
 #: webtrees/modules_v3/personal_facts/module.php:39
 msgid "A tab showing the facts and events of an individual."
-msgstr ""
+msgstr "Un dosar ce afişează fapte si evenimente ale unui individ."
 
 #: webtrees/modules_v3/personal_facts/module.php:75
 #: webtrees/modules_v3/extra_info/module.php:56
@@ -3766,7 +3820,7 @@ msgstr "Fapte istorice"
 #. I18N: Description of the “Media” module
 #: webtrees/modules_v3/media/module.php:39
 msgid "A tab showing the media objects linked to an individual."
-msgstr ""
+msgstr "Dosar ce afişează obiecte media legate de un individ."
 
 #: webtrees/modules_v3/media/module.php:75
 msgid "There are no media objects for this individual."
@@ -3790,47 +3844,49 @@ msgstr ""
 #: webtrees/modules_v3/individual_report/module.php:41
 #: webtrees_tmp/modules_v3_individual_report_report.xml.php:5
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "Un raport ce afişează detalii despre un individ."
 
 #. I18N: Name of a module/sidebar
 #: webtrees/modules_v3/families/module.php:34
 msgid "Family list"
-msgstr ""
+msgstr "Listă familii"
 
 #. I18N: Description of the “Families” module
 #: webtrees/modules_v3/families/module.php:39
 msgid ""
 "A sidebar showing an alphabetic list of all the families in the family tree."
 msgstr ""
+"O listă laterală ce afişează alfabetic toate familiile dintr-un arbore de "
+"familie."
 
 #. I18N: Description of the “Favorites” module
 #: webtrees/modules_v3/user_favorites/module.php:37
 msgid "Display and manage a user’s favorite pages."
-msgstr ""
+msgstr "Afişează şi administrează pagina de favorite a unui utilizator."
 
 #. I18N: %s is the name of an individual, source or other record
 #: webtrees/modules_v3/user_favorites/module.php:80
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr ""
+msgstr "Persoana \"%s\" a fost adaugată la favorite."
 
 #. I18N: Description of the “Pedigree” module
 #: webtrees/modules_v3/pedigree_report/module.php:41
 #: webtrees_tmp/modules_v3_pedigree_report_report.xml.php:5
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Un raport al strămoşilor unui individ, formatat ca un arbore"
 
 #. I18N: Description of the “Messages” module
 #: webtrees/modules_v3/user_messages/module.php:39
 msgid "Communicate directly with other users, using private messages."
-msgstr ""
+msgstr "Comunică direct cu alţi utilizatori folosind mesaje private."
 
 #: webtrees/modules_v3/user_messages/module.php:72
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s mesaj"
+msgstr[1] "%s mesaje"
 
 #: webtrees/modules_v3/user_messages/module.php:73
 #: webtrees/modules_v3/user_messages/module.php:120
@@ -3852,7 +3908,7 @@ msgstr "Trimite mesaj"
 #: webtrees/modules_v3/googlemap/module.php:1487
 #: webtrees/modules_v3/googlemap/module.php:1503
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;selectat&gt;"
 
 #: webtrees/modules_v3/user_messages/module.php:84 webtrees/message.php:141
 #: webtrees/login.php:458
@@ -3881,7 +3937,7 @@ msgstr "Adresa de email:"
 #: webtrees/modules_v3/user_messages/module.php:114
 #: webtrees/modules_v3/user_messages/module.php:115
 msgid "RE: "
-msgstr ""
+msgstr "RE: "
 
 #: webtrees/modules_v3/user_messages/module.php:118
 msgid "Reply"
@@ -3901,6 +3957,7 @@ msgstr "Favoriţi"
 #: webtrees/modules_v3/gedcom_favorites/module.php:41
 msgid "Display and manage a family tree’s favorite pages."
 msgstr ""
+"Afişează şi administrează pagina de favorite a unui arbore de familie."
 
 #: webtrees/modules_v3/gedcom_favorites/module.php:125
 msgid ""
@@ -3929,51 +3986,53 @@ msgstr "Introduceţi o notă opţională pentru acest favorit"
 
 #: webtrees/modules_v3/tree/class_treeview.php:74
 msgid "Use compact layout"
-msgstr ""
+msgstr "Folosește aranjament compact"
 
 #: webtrees/modules_v3/tree/class_treeview.php:75
 msgid "Show all spouses and ancestors"
-msgstr ""
+msgstr "Afişează toate soţiile şi toţi stramoşii"
 
 #. I18N: e.g. “Son of [father name & mother name]”
 #: webtrees/modules_v3/tree/class_treeview.php:325
 #, php-format
 msgid "Son of %s"
-msgstr ""
+msgstr "Fiul lui %s"
 
 #. I18N: e.g. “Daughter of [father name & mother name]”
 #: webtrees/modules_v3/tree/class_treeview.php:328
 #, php-format
 msgid "Daughter of %s"
-msgstr ""
+msgstr "Fiica lui %s"
 
 #. I18N: e.g. “Child of [father name & mother name]”
 #: webtrees/modules_v3/tree/class_treeview.php:331
 #, php-format
 msgid "Child of %s"
-msgstr ""
+msgstr "Copilul lui %s"
 
 #. I18N: Description of the “Interactive tree” module
 #: webtrees/modules_v3/tree/module.php:40
 msgid ""
 "An interactive tree, showing all the ancestors and descendants of a person."
 msgstr ""
+"Un arbore interactiv ce afişează toţi strămoşii şi descendenţii unei "
+"persoane."
 
 #. I18N: Description of the “Descendants” module
 #: webtrees/modules_v3/descendancy_report/module.php:41
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:5
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr ""
+msgstr "Un raport ce enumeră descendenţii unui individ"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/user_blog/module.php:42
 msgid "Journal"
-msgstr ""
+msgstr "Jurnal"
 
 #. I18N: Description of the “Journal” module
 #: webtrees/modules_v3/user_blog/module.php:47
 msgid "A private area to record notes or keep a journal."
-msgstr ""
+msgstr "O zonă privată pentru a adăuga note sau a ţine un jurnal."
 
 #: webtrees/modules_v3/user_blog/module.php:78
 msgid "You have not created any Journal items."
@@ -3990,37 +4049,37 @@ msgstr "Adaugă o intrare nouă în jurnal"
 #. I18N: Description of the “Source” module
 #: webtrees/modules_v3/fact_sources/module.php:41
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "Un raport al informaţiilor provenite dintr-o anumită sursă."
 
 #. I18N: Description of the “Family” module
 #: webtrees/modules_v3/family_group_report/module.php:41
 #: webtrees_tmp/modules_v3_family_group_report_report.xml.php:5
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "Un raport al membrilor familiei şi a detaliilor lor."
 
 #. I18N: Name of a module.  Top=Most common
 #: webtrees/modules_v3/top10_surnames/module.php:34
 #: webtrees/statistics.php:185
 msgid "Top surnames"
-msgstr ""
+msgstr "Topul nume de familie"
 
 #. I18N: Description of the “Top surnames” module
 #: webtrees/modules_v3/top10_surnames/module.php:39
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "O listă a celor mai comune nume de familie."
 
 #. I18N: i.e. most popular surname.
 #: webtrees/modules_v3/top10_surnames/module.php:90
 msgid "Top surname"
-msgstr ""
+msgstr "Cel mai întâlnit nume de familie"
 
 #. I18N: Title for a list of the most common surnames, %s is a number.  Note that a separate translation exists when %s is 1
 #: webtrees/modules_v3/top10_surnames/module.php:93
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cel mai întâlnit nume de familie: %s"
+msgstr[1] "Cele mai întâlnite nume de familie: %s"
 
 #: webtrees/modules_v3/top10_surnames/module.php:164
 msgid "bullet list"
@@ -4028,7 +4087,7 @@ msgstr ""
 
 #: webtrees/modules_v3/top10_surnames/module.php:164
 msgid "compact list"
-msgstr ""
+msgstr "listă compactă"
 
 #: webtrees/modules_v3/top10_surnames/module.php:164
 #: webtrees/admin_trees_config.php:816
@@ -4039,37 +4098,37 @@ msgstr ""
 #: webtrees/modules_v3/stories/module.php:34
 #: webtrees/modules_v3/stories/module.php:411
 msgid "Stories"
-msgstr ""
+msgstr "Articole"
 
 #. I18N: Description of the “Stories” module
 #: webtrees/modules_v3/stories/module.php:39
 msgid "Add narrative stories to individuals in the family tree."
-msgstr ""
+msgstr "Adaugă articole indivizilor dintr-un arbore de familie."
 
 #: webtrees/modules_v3/stories/module.php:122
 #: webtrees/modules_v3/stories/module.php:206
 msgid "Edit story"
-msgstr ""
+msgstr "Modificare articol"
 
 #: webtrees/modules_v3/stories/module.php:129
 #: webtrees/modules_v3/stories/module.php:216
 #: webtrees/modules_v3/stories/module.php:345
 msgid "Add story"
-msgstr ""
+msgstr "Adaugă articol"
 
 #: webtrees/modules_v3/stories/module.php:238
 #: webtrees/modules_v3/stories/module.php:349
 #: webtrees/modules_v3/stories/module.php:415
 msgid "Story title"
-msgstr ""
+msgstr "Titlul articolului"
 
 #: webtrees/modules_v3/stories/module.php:241
 msgid "Story"
-msgstr ""
+msgstr "Articol"
 
 #: webtrees/modules_v3/stories/module.php:366
 msgid "Are you sure you want to delete this story?"
-msgstr ""
+msgstr "Eşti sigur că doreşti să stergi acest articol?"
 
 #. I18N: Description of the “My page” module
 #: webtrees/modules_v3/user_welcome/module.php:39
@@ -4105,7 +4164,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/module.php:1462
 #: webtrees/modules_v3/googlemap/admin_places.php:178
 msgid "Google Maps™ preferences"
-msgstr ""
+msgstr "Preferințe Google Maps™"
 
 #: webtrees/modules_v3/googlemap/placehierarchy.php:172
 #: webtrees/modules_v3/googlemap/placehierarchy.php:368
@@ -4117,7 +4176,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/places_edit.php:41
 #: webtrees/modules_v3/googlemap/admin_places.php:183
 msgid "Geographic data"
-msgstr ""
+msgstr "Date geografice"
 
 #: webtrees/modules_v3/googlemap/placehierarchy.php:174
 #: webtrees/modules_v3/googlemap/module.php:134
@@ -4126,7 +4185,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/module.php:1471
 #: webtrees/modules_v3/googlemap/admin_places.php:188
 msgid "Place Check"
-msgstr ""
+msgstr "Verificări locuri"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/googlemap/placehierarchy.php:181
@@ -4134,7 +4193,7 @@ msgstr ""
 #: webtrees/modules_v3/batch_update/module.php:45
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:65
 msgid "Batch update"
-msgstr ""
+msgstr "Actualizare multiplă"
 
 #. I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps
 #: webtrees/modules_v3/googlemap/placehierarchy.php:232
@@ -4144,7 +4203,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/admin_places.php:170
 #: webtrees/includes/functions/functions_print.php:933
 msgid "Google Maps™"
-msgstr ""
+msgstr "Google Maps™"
 
 #: webtrees/modules_v3/googlemap/placehierarchy.php:233
 #: webtrees/includes/functions/functions_print_lists.php:99
@@ -4158,40 +4217,40 @@ msgstr "Resetare"
 #: webtrees/modules_v3/googlemap/wt_v3_googlemap.js.php:612
 #: webtrees/modules_v3/googlemap/module.php:270
 msgid "Google Street View™"
-msgstr ""
+msgstr "Google Street View™"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: webtrees/modules_v3/googlemap/placehierarchy.php:244
 msgid "Bearing"
-msgstr ""
+msgstr "Curs"
 
 #. I18N: Angle of elevation (in degrees), for street-view mapping
 #: webtrees/modules_v3/googlemap/placehierarchy.php:245
 msgid "Elevation"
-msgstr ""
+msgstr "Elevație"
 
 #: webtrees/modules_v3/googlemap/placehierarchy.php:246
 msgid "Zoom"
-msgstr ""
+msgstr "Mărire"
 
 #: webtrees/modules_v3/googlemap/placehierarchy.php:366
 msgid "This place has no coordinates"
-msgstr ""
+msgstr "Această loc nu are coordonate"
 
 #: webtrees/modules_v3/googlemap/wt_v3_googlemap.js.php:389
 #: webtrees/modules_v3/googlemap/module.php:881
 #: webtrees/modules_v3/googlemap/wt_v3_places_edit.js.php:175
 msgid "Redraw map"
-msgstr ""
+msgstr "Re-desenează harta"
 
 #: webtrees/modules_v3/googlemap/wt_v3_googlemap.js.php:483
 msgid "Date not known"
-msgstr ""
+msgstr "Dată necunoscută"
 
 #: webtrees/modules_v3/googlemap/wt_v3_googlemap.js.php:610
 #: webtrees/statistics.php:95 webtrees/statistics.php:197
 msgid "Events"
-msgstr ""
+msgstr "Evenimente"
 
 #. I18N: Description of the “Google Maps™” module
 #: webtrees/modules_v3/googlemap/module.php:55
@@ -4199,10 +4258,12 @@ msgid ""
 "Show the location of places and events using the Google Maps™ mapping "
 "service."
 msgstr ""
+"Afișează locurile și evenimentele utilizând serviciul cartografic Google "
+"Maps™."
 
 #: webtrees/modules_v3/googlemap/module.php:160
 msgid "No map data for this person"
-msgstr ""
+msgstr "Nici o informaţie geografică pentru această persoană"
 
 #: webtrees/modules_v3/googlemap/module.php:252
 msgid "Basic"
@@ -4210,17 +4271,17 @@ msgstr "De bază"
 
 #: webtrees/modules_v3/googlemap/module.php:253
 msgid "Advanced"
-msgstr ""
+msgstr "Setări avansate"
 
 #: webtrees/modules_v3/googlemap/module.php:254 webtrees/placelist.php:42
 #: webtrees/placelist.php:44 webtrees/placelist.php:149
 #: webtrees/library/WT/MenuBar.php:302
 msgid "Place hierarchy"
-msgstr ""
+msgstr "Ierarhie locuri geografice"
 
 #: webtrees/modules_v3/googlemap/module.php:259
 msgid "Default map type"
-msgstr ""
+msgstr "Tip implicit de hartă"
 
 #. I18N: gedcom tag MAP
 #: webtrees/modules_v3/googlemap/module.php:262
@@ -4231,15 +4292,15 @@ msgstr "Hartă"
 
 #: webtrees/modules_v3/googlemap/module.php:263
 msgid "Satellite"
-msgstr ""
+msgstr "Satelit"
 
 #: webtrees/modules_v3/googlemap/module.php:264
 msgid "Hybrid"
-msgstr ""
+msgstr "Hibrid"
 
 #: webtrees/modules_v3/googlemap/module.php:265
 msgid "Terrain"
-msgstr ""
+msgstr "Teren"
 
 #: webtrees/modules_v3/googlemap/module.php:271
 #: webtrees/admin_trees_config.php:746 webtrees/admin_trees_config.php:833
@@ -4249,12 +4310,12 @@ msgstr ""
 #: webtrees/admin_trees_config.php:1077 webtrees/admin_trees_config.php:1098
 #: webtrees/admin_trees_config.php:1106 webtrees/admin_trees_config.php:1114
 msgid "hide"
-msgstr ""
+msgstr "ascunde"
 
 #: webtrees/modules_v3/googlemap/module.php:274
 #: webtrees/modules_v3/googlemap/module.php:398
 msgid "Size of map (in pixels)"
-msgstr ""
+msgstr "Dimensiunea hărţii (în pixeli)"
 
 #: webtrees/modules_v3/googlemap/module.php:276
 #: webtrees/modules_v3/googlemap/module.php:400 webtrees/fanchart.php:79
@@ -4267,25 +4328,25 @@ msgstr "Lăţime"
 #: webtrees/modules_v3/googlemap/module.php:402
 #: webtrees/library/WT/Gedcom/Tag.php:735
 msgid "Height"
-msgstr ""
+msgstr "Înălțime"
 
 #: webtrees/modules_v3/googlemap/module.php:283
 #: webtrees/modules_v3/googlemap/help_text.php:33
 msgid "Zoom factor of map"
-msgstr ""
+msgstr "Factor mărire hartă"
 
 #: webtrees/modules_v3/googlemap/module.php:285
 msgid "minimum"
-msgstr ""
+msgstr "minim"
 
 #: webtrees/modules_v3/googlemap/module.php:290
 msgid "maximum"
-msgstr ""
+msgstr "maxim"
 
 #: webtrees/modules_v3/googlemap/module.php:303
 #: webtrees/modules_v3/googlemap/help_text.php:38
 msgid "Precision of the latitude and longitude"
-msgstr ""
+msgstr "Precizia latitudinii și longitudinii"
 
 #: webtrees/modules_v3/googlemap/module.php:312
 #: webtrees/modules_v3/googlemap/module.php:321
@@ -4294,7 +4355,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/module.php:346
 #: webtrees/modules_v3/googlemap/module.php:354
 msgid "digits"
-msgstr ""
+msgstr "cifre"
 
 #. I18N: gedcom tag STAE
 #: webtrees/modules_v3/googlemap/module.php:316
@@ -4302,7 +4363,7 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/admin_places.php:155
 #: webtrees/library/WT/Gedcom/Tag.php:323
 msgid "State"
-msgstr ""
+msgstr "Stat"
 
 #. I18N: gedcom tag CITY
 #: webtrees/modules_v3/googlemap/module.php:325
@@ -4310,80 +4371,80 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/admin_places.php:157
 #: webtrees/library/WT/Gedcom/Tag.php:167
 msgid "City"
-msgstr ""
+msgstr "Oraș"
 
 #: webtrees/modules_v3/googlemap/module.php:333
 #: webtrees/modules_v3/googlemap/places_edit.php:292
 msgid "Neighborhood"
-msgstr ""
+msgstr "Vecinătate"
 
 #: webtrees/modules_v3/googlemap/module.php:341
 #: webtrees/modules_v3/googlemap/places_edit.php:294
 msgid "House"
-msgstr ""
+msgstr "Casă"
 
 #: webtrees/modules_v3/googlemap/module.php:349
 #: webtrees/modules_v3/googlemap/places_edit.php:296
 msgid "Max"
-msgstr ""
+msgstr "Maxim"
 
 #: webtrees/modules_v3/googlemap/module.php:362
 #: webtrees/modules_v3/googlemap/help_text.php:43
 msgid "Default value for top-level"
-msgstr ""
+msgstr "Valaore implicită pentru nivel-principal"
 
 #: webtrees/modules_v3/googlemap/module.php:367
 #: webtrees/modules_v3/googlemap/help_text.php:48
 msgid "Optional prefixes and suffixes"
-msgstr ""
+msgstr "Prefixe și sufixe opționale"
 
 #: webtrees/modules_v3/googlemap/module.php:371
 msgid "Prefixes"
-msgstr ""
+msgstr "Prefixe"
 
 #: webtrees/modules_v3/googlemap/module.php:372
 msgid "Suffixes"
-msgstr ""
+msgstr "Sufixe"
 
 #: webtrees/modules_v3/googlemap/module.php:380
 #: webtrees/modules_v3/googlemap/module.php:1605
 #: webtrees/modules_v3/googlemap/admin_places.php:154
 msgid "Level"
-msgstr ""
+msgstr "Nivel"
 
 #: webtrees/modules_v3/googlemap/module.php:394
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr ""
+msgstr "Foloseşte oogle Maps™ pentru ierarhia locurilor geografice"
 
 #: webtrees/modules_v3/googlemap/module.php:407
 msgid "Type of place markers in Place Hierarchy"
-msgstr ""
+msgstr "Tipuri de locuri in Ierarhia locurilor"
 
 #: webtrees/modules_v3/googlemap/module.php:410
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 #. I18N: The emblem of a country or region
 #: webtrees/modules_v3/googlemap/module.php:411
 #: webtrees/modules_v3/googlemap/places_edit.php:325
 #: webtrees/modules_v3/googlemap/places_edit.php:333
 msgid "Flag"
-msgstr ""
+msgstr "Steag"
 
 #: webtrees/modules_v3/googlemap/module.php:416
 #: webtrees/modules_v3/googlemap/help_text.php:97
 msgid "Display short placenames"
-msgstr ""
+msgstr "Afişează nume scurte de locuri"
 
 #: webtrees/modules_v3/googlemap/module.php:420
 #: webtrees/modules_v3/googlemap/help_text.php:53
 msgid "Display Map Coordinates"
-msgstr ""
+msgstr "Afişează coordonatele hărţii"
 
 #: webtrees/modules_v3/googlemap/module.php:439
 #: webtrees/modules_v3/googlemap/help_text.php:75
 msgid "Select flag"
-msgstr ""
+msgstr "Selecție steag"
 
 #: webtrees/modules_v3/googlemap/module.php:490
 #: webtrees/modules_v3/googlemap/module.php:493
@@ -4393,40 +4454,40 @@ msgstr ""
 #: webtrees/modules_v3/googlemap/places_edit.php:330
 #: webtrees/modules_v3/googlemap/places_edit.php:334
 msgid "Change flag"
-msgstr ""
+msgstr "Schimbă steag"
 
 #: webtrees/modules_v3/googlemap/module.php:490
 #: webtrees/modules_v3/googlemap/module.php:493
 #: webtrees/modules_v3/googlemap/module.php:496
 #: webtrees/modules_v3/googlemap/places_edit.php:335
 msgid "Remove flag"
-msgstr ""
+msgstr "Elimină steag"
 
 #: webtrees/modules_v3/googlemap/module.php:561
 msgid "Countries"
-msgstr ""
+msgstr "Țări"
 
 #. I18N: Part of a country, state/region/county
 #: webtrees/modules_v3/googlemap/module.php:604
 #: webtrees/modules_v3/googlemap/module.php:1501
 msgid "Subdivision"
-msgstr ""
+msgstr "Subdiviziune"
 
 #. I18N: %s is an individual’s name
 #: webtrees/modules_v3/googlemap/module.php:656
 #, php-format
 msgid "Pedigree map of %s"
-msgstr ""
+msgstr "Harta genealogică pentru %s"
 
 #: webtrees/modules_v3/googlemap/module.php:682
 #: webtrees/modules_v3/googlemap/help_text.php:109
 msgid "Hide flags"
-msgstr ""
+msgstr "Ascunde steagurile"
 
 #: webtrees/modules_v3/googlemap/module.php:685
 #: webtrees/modules_v3/googlemap/help_text.php:104
 msgid "Hide lines"
-msgstr ""
+msgstr "Ascunde liniile"
 
 #: webtrees/modules_v3/googlemap/module.php:819
 #, php-format
@@ -4437,18 +4498,20 @@ msgid_plural ""
 "%1$d individuals displayed, out of the normal total of %2$d, from %3$d "
 "generations."
 msgstr[0] ""
+"%1$d individ afişat dintr-un total normal de %2$d, din %3$d generaţii."
 msgstr[1] ""
+"%1$d indivizi afişaţi dintr-un total normal de %2$d, din %3$d generaţii."
 
 #: webtrees/modules_v3/googlemap/module.php:829
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s individ este privat."
+msgstr[1] "%s indivizi sunt privaţi."
 
 #: webtrees/modules_v3/googlemap/module.php:833
 msgid "No ancestors in the database."
-msgstr ""
+msgstr "Nici un strămoş în baza de date."
 
 #. I18N: %1$d is a count of individuals, %2$s is a list of their names
 #: webtrees/modules_v3/googlemap/module.php:836
@@ -4456,20 +4519,22 @@ msgstr ""
 msgid "%1$d individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
 msgstr[0] ""
+"%1$d individ nu are coordonate geografice pentru locul naşterii: %2$s."
 msgstr[1] ""
+"%1$d indivizi nu au coordonate geografice pentru locul naşterii: %2$s."
 
 #: webtrees/modules_v3/googlemap/module.php:1236
 msgid "Root"
-msgstr ""
+msgstr "Rădăcină"
 
 #: webtrees/modules_v3/googlemap/module.php:1257
 #: webtrees/includes/functions/functions.php:1141
 msgid "self"
-msgstr ""
+msgstr "propriu"
 
 #: webtrees/modules_v3/googlemap/module.php:1269
 msgid "Individual information"
-msgstr ""
+msgstr "Informaţii individ"
 
 #: webtrees/modules_v3/googlemap/module.php:1270
 #: webtrees/modules_v3/random_media/module.php:181 webtrees/medialist.php:294
@@ -4485,47 +4550,47 @@ msgstr "Născut:"
 #: webtrees/library/WT/MenuBar.php:123
 #: webtrees/library/WT/Controller/Fanchart.php:315
 msgid "Pedigree map"
-msgstr ""
+msgstr "Hartă genealogie"
 
 #: webtrees/modules_v3/googlemap/module.php:1364
 msgid "Zoom in here"
-msgstr ""
+msgstr "Măreşte aici"
 
 #: webtrees/modules_v3/googlemap/module.php:1365
 msgid "Zoom out here"
-msgstr ""
+msgstr "Micşorează aici"
 
 #: webtrees/modules_v3/googlemap/module.php:1366
 msgid "Center map here"
-msgstr ""
+msgstr "Centrează harta aici"
 
 #: webtrees/modules_v3/googlemap/module.php:1513
 msgid "Include fully matched places: "
-msgstr ""
+msgstr "Include locuri găsite complet: "
 
 #. I18N: gedcom tag LATI
 #: webtrees/modules_v3/googlemap/module.php:1612
 #: webtrees/modules_v3/googlemap/admin_places.php:163
 #: webtrees/library/WT/Gedcom/Tag.php:243
 msgid "Latitude"
-msgstr ""
+msgstr "Latitudine"
 
 #. I18N: gedcom tag LONG
 #: webtrees/modules_v3/googlemap/module.php:1612
 #: webtrees/modules_v3/googlemap/admin_places.php:163
 #: webtrees/library/WT/Gedcom/Tag.php:245
 msgid "Longitude"
-msgstr ""
+msgstr "Longitudine"
 
 #: webtrees/modules_v3/googlemap/module.php:1664
 msgid "Zoom="
-msgstr ""
+msgstr "Mărire="
 
 #. I18N: A count of places
 #: webtrees/modules_v3/googlemap/module.php:1716
 #, php-format
 msgid "Total places: %s"
-msgstr ""
+msgstr "Număr total de locuri: %s"
 
 #: webtrees/modules_v3/googlemap/module.php:1721
 msgid ""
@@ -4533,61 +4598,67 @@ msgid ""
 "will NOT INCLUDE places that are fully matched between the GEDCOM file and "
 "the GoogleMap tables"
 msgstr ""
+"Această opţiune va afişa  toate locurile din GEDCOM-ul selectat. Implicit, "
+"aceasta NU VA INCLUDE locuri care sunt potrivite perfect intre fişierul "
+"GEDCOM si tabelele GoogleMap"
 
 #: webtrees/modules_v3/googlemap/wt_v3_places_edit.js.php:393
 #: webtrees/modules_v3/googlemap/admin_places.php:590
 msgid "No places found"
-msgstr ""
+msgstr "Nu fost găsit niciun loc"
 
 #: webtrees/modules_v3/googlemap/wt_v3_places_edit.js.php:398
 msgid "Use this value"
-msgstr ""
+msgstr "Foloseşte această valoare"
 
 #: webtrees/modules_v3/googlemap/places_edit.php:258
 msgid "Search globally"
-msgstr ""
+msgstr "Căutare globală"
 
 #: webtrees/modules_v3/googlemap/places_edit.php:260
 msgid "Search locally"
-msgstr ""
+msgstr "Căutare locală"
 
 #: webtrees/modules_v3/googlemap/places_edit.php:264
 msgid "Precision"
-msgstr ""
+msgstr "Precizie"
 
 #. I18N: Measure of latitude/longitude
 #: webtrees/modules_v3/googlemap/places_edit.php:302
 #: webtrees/modules_v3/googlemap/places_edit.php:312
 msgid "degrees"
-msgstr ""
+msgstr "grade"
 
 #: webtrees/modules_v3/googlemap/places_edit.php:304
 msgid "north"
-msgstr ""
+msgstr "nord"
 
 #: webtrees/modules_v3/googlemap/places_edit.php:305
 msgid "south"
-msgstr ""
+msgstr "sud"
 
 #: webtrees/modules_v3/googlemap/places_edit.php:314
 msgid "east"
-msgstr ""
+msgstr "est"
 
 #: webtrees/modules_v3/googlemap/places_edit.php:315
 msgid "west"
-msgstr ""
+msgstr "vest"
 
 #: webtrees/modules_v3/googlemap/places_edit.php:320
 #: webtrees/modules_v3/googlemap/admin_places.php:164
 #: webtrees/modules_v3/googlemap/admin_places.php:585
 msgid "Zoom factor"
-msgstr ""
+msgstr "Factor de mărire"
 
 #: webtrees/modules_v3/googlemap/help_text.php:34
 msgid ""
 "Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is "
 "single house. Note that 15 is only available in certain areas."
 msgstr ""
+"Minimul și maximul factor de mărire pentru hărțile Google. 1 reprezintă "
+"întreaga hartă, 15 este o singură casă. 15 este utilizabil doar în anumite "
+"zone."
 
 #: webtrees/modules_v3/googlemap/help_text.php:39
 msgid ""
@@ -4595,6 +4666,9 @@ msgid ""
 "geographic locations. For example a country will be specified with precision "
 "0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
 msgstr ""
+"Specifică precizia diferitelor nivele atunci când introduci noi puncte "
+"geografice. De exemplu, o țară va fi specificată cu precizie 0 (=0 "
+"zecimale), pe când un oraș are nevoie de 3 sau 4 zecimale."
 
 #: webtrees/modules_v3/googlemap/help_text.php:44
 msgid ""
@@ -4602,6 +4676,9 @@ msgid ""
 "defined. If a place cannot be found this name is added as the highest level "
 "(country) and the database is searched again."
 msgstr ""
+"Aici poate fi definită valoarea implicită pentru cel mai înalt nivel într-o "
+"ierarhie. Dacă un loc nu poate fi găsit, atunci este adăugat la cel mai "
+"înalt nivel (țară) și se caută din nou în baza de date."
 
 #: webtrees/modules_v3/googlemap/help_text.php:49
 msgid ""
@@ -4612,42 +4689,56 @@ msgid ""
 "disregarded.  Multiple options should be separated with semicolons.  For "
 "example “County;County of” or “Township;Twp;Twp.”."
 msgstr ""
+"Numele unor locuri pot fi scrise cu prefixe sau sufixe opţionale. De "
+"exemplu, \"Orange\" sau \"Orange County\". Dacă arborele de familie conţine "
+"nume complete de locuri, dar baza de date geografice conţine doar numele "
+"scurte, atunci ar trebui specifică o listă de prefixe şi sufixe care vor fi "
+"ignorate. Variantele multiple vor fi separate cu \";\". De exemplu \"County; "
+"County of\" sau \"Township;Twp;Twp.\"."
 
 #: webtrees/modules_v3/googlemap/help_text.php:54
 msgid ""
 "This options sets whether Latitude and Longitude are displayed on the pop-up "
 "window attached to map markers."
 msgstr ""
+"Această opţiune specifică dacă latitudinea şi longitudinea vor fi afişate în "
+"fereastra de tip \"pop-up\" ataşată hărţii."
 
 #: webtrees/modules_v3/googlemap/help_text.php:60
 msgid "Enter precision"
-msgstr ""
+msgstr "Introdu precizia"
 
 #: webtrees/modules_v3/googlemap/help_text.php:61
 msgid ""
 "Here you can enter the precision. Based on this setting the number of digits "
 "that will be used in the latitude and longitude is determined."
 msgstr ""
+"Aici poţi introduce precizia. Reprezintă numărul de zecimale care va fi "
+"folosit la determinarea latitudinii şi longitudinii."
 
 #: webtrees/modules_v3/googlemap/help_text.php:65
 msgid "Enter zoom level"
-msgstr ""
+msgstr "Introdu factorul de mărire"
 
 #: webtrees/modules_v3/googlemap/help_text.php:66
 msgid ""
 "Here the zoom level can be entered. This value will be used as the minimal "
 "value when displaying this geographic location on a map."
 msgstr ""
+"Aici poţi introduce factorul de mărire. Această valoare va fi utilizată când "
+"se va afişa harta."
 
 #: webtrees/modules_v3/googlemap/help_text.php:70
 msgid "Select an icon"
-msgstr ""
+msgstr "Selectare iconiţă"
 
 #: webtrees/modules_v3/googlemap/help_text.php:71
 msgid ""
 "Here an icon can be set or removed. Using this link a flag can be selected. "
 "When this geographic location is shown, this flag will be displayed."
 msgstr ""
+"Aici se poate selecta sau înlătura iconiţa. Când va fi afişată harta, acest "
+"steag va fi afişat."
 
 #: webtrees/modules_v3/googlemap/help_text.php:76
 msgid ""
@@ -4655,21 +4746,26 @@ msgid ""
 "can be selected. If no flags are shown, then there are no flags defined for "
 "this country."
 msgstr ""
+"Folosind meniul \"pull down\", este posibilă selectarea unei ţări a cărei "
+"steag poate fi folosit. dacă nu este afişat nici un steag, atunci nu sunt "
+"definite steaguri pentru ţara respectivă."
 
 #: webtrees/modules_v3/googlemap/help_text.php:80
 msgid "Enter filename"
-msgstr ""
+msgstr "Introdu numele fişierului"
 
 #: webtrees/modules_v3/googlemap/help_text.php:81
 msgid ""
 "Select a file from the list of files already on the server which contains "
 "the place locations in CSV format."
 msgstr ""
+"Selectează un fişier dintre cele existente deja pe server şi care conţine "
+"coordonatele locurilor în format CSV."
 
 #: webtrees/modules_v3/googlemap/help_text.php:85
 #: webtrees/modules_v3/googlemap/admin_places.php:573
 msgid "Show inactive places"
-msgstr ""
+msgstr "Arată locurile inactive"
 
 #: webtrees/modules_v3/googlemap/help_text.php:88
 msgid ""
@@ -4678,12 +4774,18 @@ msgid ""
 "in bulk from an external file.  Selecting this option will show all places, "
 "including ones that are not currently used."
 msgstr ""
+"Implicit, lista afişează doar acele locuri care pot fi găsite în arborele de "
+"familie. Poţi avea detalii despre alte locuri, cum ar fi cele importate bulk "
+"dintr-un fişier. Selectând această opţiune vor fi afişate toate locurile, "
+"inclusiv cele care nu sunt momentan folosite."
 
 #: webtrees/modules_v3/googlemap/help_text.php:90
 msgid ""
 "If you have a large number of inactive places, it can be slow to generate "
 "the list."
 msgstr ""
+"Dacă ai nu număr mare de locuri inactive, generarea listei poate dura destul "
+"de mult."
 
 #: webtrees/modules_v3/googlemap/help_text.php:98
 msgid ""
@@ -4693,11 +4795,18 @@ msgid ""
 "/><b>Short name: </b>Chicago<br /><b>Full name: </b>Illinois, USA<br "
 "/><b>Short name: </b>Illinois"
 msgstr ""
+"Aici poţi alege între cele două moduri de afişare a numelor locurilor în "
+"ierarhie. Dacă este selectat Da, locul are numele scurt sau numele "
+"actualului nivel, dacă Nu - numele complet.<br /><b>Exemple:<br />Nume "
+"complet: </b>Chicago, Illinois, USA<br /><b>Nume scurt: </b>Chicago<br "
+"/><b>Nume complet: </b>Illinois, USA<br /><b>Nume scurt: </b>Illinois"
 
 #: webtrees/modules_v3/googlemap/help_text.php:105
 msgid ""
 "Hide the lines connecting the child to each parent if they exist on the map."
 msgstr ""
+"Ascunde liniile care conectează copilul de fiecare părinte dacă există pe "
+"hartă."
 
 #: webtrees/modules_v3/googlemap/help_text.php:110
 msgid ""
@@ -4705,36 +4814,41 @@ msgid ""
 "are for countries and states. This serves as a visual cue that the markers "
 "around the flag are from the general area, and not the specific spot."
 msgstr ""
+"Ascunde steagurile care sunt configurate în modulul Google Map. De obicei "
+"acestea sunt pentru ţări şi state. Servesc ca indicaţie vizuală că "
+"indicatorii plasaţi în apropierea steagului sunt din zona generală şi nu din "
+"locul exact indicat."
 
 #: webtrees/modules_v3/googlemap/admin_places.php:156
 msgid "County"
-msgstr ""
+msgstr "Județ"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:164
 #: webtrees/modules_v3/googlemap/admin_places.php:586
 msgid "Icon"
-msgstr ""
+msgstr "Iconiță"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:321
 msgid "File containing places (CSV)"
-msgstr ""
+msgstr "Fişier conţinând locuri (CSV)"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:326
 msgid "Server file containing places (CSV)"
-msgstr ""
+msgstr "Fişier de pe server conţinând locuri (CSV)"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:340
 msgid "Delete all existing geographic data before importing the file."
-msgstr ""
+msgstr "Şterge toate datele geografice înaintea importării fişierului."
 
 #: webtrees/modules_v3/googlemap/admin_places.php:344
 msgid ""
 "Do not create new locations, just import coordinates for existing locations."
 msgstr ""
+"Nu crea noi locuri, doar importă coordinatele pentru locurile existente."
 
 #: webtrees/modules_v3/googlemap/admin_places.php:348
 msgid "Overwrite existing coordinates."
-msgstr ""
+msgstr "Suprascrie coordonatele existente"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:352
 #: webtrees/modules_v3/clippings/module.php:94
@@ -4748,11 +4862,11 @@ msgstr "Continuă adăugarea"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:524
 msgid "Location not removed: this location contains sub-locations"
-msgstr ""
+msgstr "Locul nu a fost şters; conţine alte locuri"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:545
 msgid "Remove this location?"
-msgstr ""
+msgstr "Şerg acest loc?"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:571
 #: webtrees/modules_v3/googlemap/admin_places.php:636
@@ -4762,29 +4876,29 @@ msgstr "Nivelul superior"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:632
 msgid "Add  a new geographic location"
-msgstr ""
+msgstr "Adaugă un nou loc"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:643
 msgid "Import all places from a family tree"
-msgstr ""
+msgstr "Importă toate locurile dintr-un arbore de familie"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:651
 #: webtrees/admin_trees_manage.php:217
 msgid "Import"
-msgstr ""
+msgstr "Importă"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:657
 msgid "Upload geographic data"
-msgstr ""
+msgstr "Încarcă date geografice"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:670
 msgid "Download geographic data"
-msgstr ""
+msgstr "Descarcă date geografice"
 
 #: webtrees/modules_v3/googlemap/admin_places.php:678
 #: webtrees/admin_trees_manage.php:221
 msgid "Download"
-msgstr ""
+msgstr "Descarcă"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/review_changes/module.php:34
@@ -4856,31 +4970,31 @@ msgstr ""
 #. I18N: Description of the “Home page” module
 #: webtrees/modules_v3/gedcom_block/module.php:39
 msgid "A greeting message for site visitors."
-msgstr ""
+msgstr "Un mesaj de întâmpinare pentru vizitatori"
 
 #: webtrees/modules_v3/gedcom_block/module.php:51
 msgid "Default chart"
-msgstr ""
+msgstr "Diagrama implicită"
 
 #: webtrees/modules_v3/gedcom_block/module.php:52 webtrees/admin_users.php:235
 #: webtrees/admin_users.php:438 webtrees/admin_trees_config.php:238
 #: webtrees/edituser.php:149 webtrees/help_text.php:1154
 msgid "Default individual"
-msgstr ""
+msgstr "Individ implicit"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/top10_pageviews/module.php:34
 msgid "Most viewed pages"
-msgstr ""
+msgstr "Paginile cele mai vizualizate"
 
 #. I18N: Description of the “Most visited pages” module
 #: webtrees/modules_v3/top10_pageviews/module.php:39
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "O listă de pagini care au fost vizualizate de cele mai multe ori."
 
 #: webtrees/modules_v3/top10_pageviews/module.php:142
 msgid "Place counts before or after name?"
-msgstr "Plasează numerele inainte sau dupa nume ?"
+msgstr "Plasează contoarele înainte sau după nume ?"
 
 #: webtrees/modules_v3/top10_pageviews/module.php:144
 #: webtrees/statisticsplot.php:673
@@ -4893,7 +5007,7 @@ msgstr "după"
 
 #: webtrees/modules_v3/top10_pageviews/help_text.php:33
 msgid "Most Viewed Items"
-msgstr "Cele mai vizualizate articole"
+msgstr "Articolele cele mai vizualizate"
 
 #: webtrees/modules_v3/top10_pageviews/help_text.php:34
 msgid ""
@@ -4907,7 +5021,7 @@ msgstr ""
 
 #: webtrees/modules_v3/batch_update/plugins/death_y.php:33
 msgid "Add missing death records"
-msgstr ""
+msgstr "Adaugă câmpurile Dată deces lipsă"
 
 #: webtrees/modules_v3/batch_update/plugins/death_y.php:37
 msgid ""
@@ -4915,37 +5029,44 @@ msgid ""
 "individuals whose death can be inferred from other dates, but who do not "
 "have a record of death, burial, cremation, etc."
 msgstr ""
+"Poţi mări viteza calculelor de confidenţialitate adăugând câmpul Dată deces "
+"indivizilor a căror dată de deces poate fi dedusă din alte date, dar care nu "
+"au un câmp de Dată deces, Înmormântare, Incinerare, etc."
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:37
 #: webtrees/library/WT/MenuBar.php:428
 #: webtrees/library/WT/Controller/Search.php:248 webtrees/search.php:243
 #: webtrees/search.php:253
 msgid "Search and replace"
-msgstr ""
+msgstr "Caută și înlocuiește"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:41
 msgid ""
 "Search and/or replace data in your GEDCOM using simple searches or advanced "
 "pattern matching."
 msgstr ""
+"Caută și/sau înlocuiește date în GEDCOM-ul tău folosind căutări simple sau "
+"reguli avansate."
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:84
 msgid "The regex appears to contain an error.  It can't be used."
-msgstr ""
+msgstr "Formula regex pare să conțină o eroare. Nu poate fi folosită."
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:92
 msgid "Match the exact text, even if it occurs in the middle of a word."
-msgstr ""
+msgstr "Găsește textul exact, chiar dacă apare în mijlocul unui cuvânt."
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Match the exact text, unless it occurs in the middle of a word."
-msgstr ""
+msgstr "Găsește textul exact, doar dacă nu apare în mijlocul unui cuvânt."
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:94
 msgid ""
 "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to "
 "match zero or more characters."
 msgstr ""
+"Folosește &laquo;?&raquo; pentru a găsi un singur caracter, folosește "
+"&laquo;*&raquo; pentru a găsi zero sau mai multe caractere."
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:95
 msgid ""
@@ -4954,22 +5075,26 @@ msgid ""
 "target=\"_new\">php.net/manual/en/regexp.reference.php</a> for futher "
 "details."
 msgstr ""
+"Expresiile regex sunt o tehnică avansată de căutare. Vizitează <a "
+"href=\"http://php.net/manual/en/regexp.reference.php\" "
+"target=\"_new\">php.net/manual/en/regexp.reference.php</a> pentru mai multe "
+"detalii."
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:99
 msgid "Search text/pattern"
-msgstr ""
+msgstr "Caută text/model"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:104
 msgid "Replacement text"
-msgstr ""
+msgstr "Text înlocuitor"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:109
 msgid "Search method"
-msgstr ""
+msgstr "Metodă de căutare"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:111
 msgid "Exact text"
-msgstr ""
+msgstr "Text exact"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:112
 #: webtrees/search.php:172
@@ -4978,23 +5103,24 @@ msgstr "Doar cuvinte întregi"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:113
 msgid "Wildcards"
-msgstr ""
+msgstr "Caractere generice"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:114
 msgid "Regular expression"
-msgstr ""
+msgstr "Expresie regex"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:117
 msgid "Case insensitive"
-msgstr ""
+msgstr "Insensibil la majuscule"
 
 #: webtrees/modules_v3/batch_update/plugins/search_replace.php:120
 msgid "Tick this box to match both upper and lower case letters."
 msgstr ""
+"Marchează această căsuță pentru a găsi și litere mari și litere mici."
 
 #: webtrees/modules_v3/batch_update/plugins/married_names.php:35
 msgid "Add missing married names"
-msgstr ""
+msgstr "Adaugă nume după căsătorie lipsă"
 
 #: webtrees/modules_v3/batch_update/plugins/married_names.php:39
 msgid ""
@@ -5002,28 +5128,33 @@ msgid ""
 "married name.<br />However not all women take their husband's surname, so "
 "beware of introducing incorrect information into your database."
 msgstr ""
+"Poți face căutarea femeilor măritate mai ușoară înregistrând numele lor după "
+"căsătorie.<br /> Totuși, nu toate femeile preiau numele soțului, așa că "
+"atenție la introducerea datelor incorecte în baza de date."
 
 #: webtrees/modules_v3/batch_update/plugins/married_names.php:105
 msgid "Surname Option"
-msgstr ""
+msgstr "Opțiuni nume de familie"
 
 #: webtrees/modules_v3/batch_update/plugins/married_names.php:108
 msgid "Wife's surname replaced by husband's surname"
-msgstr ""
+msgstr "Numele de fată al soției este înlocit de numele soțului"
 
 #: webtrees/modules_v3/batch_update/plugins/married_names.php:110
 msgid "Wife's maiden surname becomes new given name"
-msgstr ""
+msgstr "Numele de fată devine noul nume de familie"
 
 #: webtrees/modules_v3/batch_update/plugins/duplicate_links.php:33
 msgid "Remove duplicate links"
-msgstr ""
+msgstr "Elimină legăturile duble"
 
 #: webtrees/modules_v3/batch_update/plugins/duplicate_links.php:37
 msgid ""
 "A common error is to have multiple links to the same record, for example "
 "listing the same child more than once in a family record."
 msgstr ""
+"O eroare comună este să ai legături multiple către aceeași înregistrare, "
+"spre exemplu, adăugând de mai multe ori același copil într-o familie."
 
 #: webtrees/modules_v3/batch_update/plugins/name_format.php:33
 msgid "Fix name slashes and spaces"
@@ -5034,52 +5165,56 @@ msgid ""
 "Correct NAME records of the form 'John/DOE/' or 'John /DOE', as produced by "
 "older genealogy programs."
 msgstr ""
+"Corectează câmpurile NUME de forma 'John/DOE/' sau 'John /DOE' produse de "
+"programe vechi de genealogie."
 
 #. I18N: Description of the “Batch update” module
 #: webtrees/modules_v3/batch_update/module.php:36
 msgid "Apply automatic corrections to your genealogy data."
-msgstr ""
+msgstr "Aplică corecţii automate la datele tale genealogice."
 
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:80
 msgid ""
 "Your user account does not have \"automatically approve changes\" enabled.  "
 "You will only be able to change one record at a time."
 msgstr ""
+"Utilizatorul nu are setată \"aprobarea automată a modificărilor\". Vei putea "
+"edita doar o înregistrare odată."
 
 #. I18N: button label, previous page
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:97
 #: webtrees/library/WT/I18N.php:469
 msgid "previous"
-msgstr ""
+msgstr "precedent(ă)"
 
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:107
 msgid "Nothing found."
-msgstr ""
+msgstr "Nu s-a găsit nimic."
 
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:337
 msgid "Update the CHAN record"
-msgstr ""
+msgstr "Actualizare câmp CHAN"
 
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:348
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:353
 msgid "Update"
-msgstr ""
+msgstr "Actualizare"
 
 #: webtrees/modules_v3/batch_update/admin_batch_update.php:349
 msgid "Update all"
-msgstr ""
+msgstr "Actualizează tot"
 
 #. I18N: Name of a module
 #. I18N: gedcom tag _SSHOW
 #: webtrees/modules_v3/random_media/module.php:34
 #: webtrees/library/WT/Gedcom/Tag.php:819
 msgid "Slide show"
-msgstr ""
+msgstr "Secvenţă imagini"
 
 #. I18N: Description of the “Slide show” module
 #: webtrees/modules_v3/random_media/module.php:39
 msgid "Random images from the current family tree."
-msgstr ""
+msgstr "Imagini aleatoare din arborele de familie curent."
 
 #: webtrees/modules_v3/random_media/module.php:132
 #: webtrees/themes/colors/header.php:39 webtrees/themes/clouds/header.php:36
@@ -5095,7 +5230,7 @@ msgstr "Start"
 #: webtrees/themes/xenea/header.php:36 webtrees/themes/minimal/header.php:36
 #: webtrees/themes/_administration/header.php:33
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: webtrees/modules_v3/random_media/module.php:133
 msgid "Next image"
@@ -5113,26 +5248,26 @@ msgstr ""
 
 #: webtrees/modules_v3/random_media/module.php:262
 msgid "Show only persons, events, or all?"
-msgstr "Arată doar persoane, evenimente, sau toate"
+msgstr "Arată doar persoane, evenimente sau toate?"
 
 #: webtrees/modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
-msgstr ""
+msgstr "Afişez controalele secvenţei de imagini?"
 
 #: webtrees/modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
-msgstr ""
+msgstr "Pornire secvenţă imagini la încărcarea paginii?"
 
 #. I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: webtrees/modules_v3/yahrzeit/module.php:34
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "Yahrzeiten"
 
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: webtrees/modules_v3/yahrzeit/module.php:39
 msgid ""
 "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "O listă cu aniversările ce se apropie a datelor iudaice de deces."
 
 #: webtrees/modules_v3/yahrzeit/module.php:116
 #: webtrees/includes/functions/functions_print_lists.php:1921
@@ -5410,12 +5545,14 @@ msgstr ""
 #. I18N: Name of a module/sidebar
 #: webtrees/modules_v3/extra_info/module.php:31
 msgid "Extra information"
-msgstr ""
+msgstr "Informaţii suplimentare"
 
 #. I18N: Description of the “Extra information” module
 #: webtrees/modules_v3/extra_info/module.php:36
 msgid "A sidebar showing non-genealogical information about an indivdual."
 msgstr ""
+"O listă laterală ce afişează alte informaţii decât cele genealogice despre "
+"un individ."
 
 #. I18N: Name of a module/report
 #: webtrees/modules_v3/change_report/module.php:35
@@ -5423,18 +5560,18 @@ msgstr ""
 #: webtrees_tmp/modules_v3_change_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_change_report_report.xml.php:42
 msgid "Changes"
-msgstr ""
+msgstr "Modificări"
 
 #. I18N: Description of the “Changes” module
 #: webtrees/modules_v3/change_report/module.php:41
 #: webtrees_tmp/modules_v3_change_report_report.xml.php:5
 msgid "A report of recent and pending changes."
-msgstr ""
+msgstr "Un raport al schimbărilor recente şi/sau neaprobate."
 
 #. I18N: Description of the “Notes” module
 #: webtrees/modules_v3/notes/module.php:39
 msgid "A tab showing the notes attached to an individual."
-msgstr ""
+msgstr "Un dosar conţinând notele ataşate unui individ."
 
 #: webtrees/modules_v3/notes/module.php:59
 msgid "Show all notes"
@@ -5449,24 +5586,26 @@ msgstr "Nu există note pentru acest individ."
 #: webtrees/help_text.php:1112 webtrees/help_text.php:1179
 #: webtrees/library/WT/Controller/Family.php:216
 msgid "Add a new note"
-msgstr ""
+msgstr "Adaugă o notă nouă"
 
 #: webtrees/modules_v3/notes/module.php:104
 #: webtrees/includes/functions/functions_edit.php:1777
 #: webtrees/help_text.php:1118 webtrees/help_text.php:1184
 #: webtrees/library/WT/Controller/Family.php:223
 msgid "Add a new shared note"
-msgstr ""
+msgstr "Adaugă o noua Notă comună"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/lightbox/module.php:34
 msgid "Album"
-msgstr ""
+msgstr "Album"
 
 #. I18N: Description of the “Album” module
 #: webtrees/modules_v3/lightbox/module.php:39
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
 msgstr ""
+"O alternativă la dosarul \"media\" şi un instrument îmbunătăţit de "
+"vizualizare imagini."
 
 #: webtrees/modules_v3/lightbox/functions/lightbox_print_media.php:113
 #: webtrees/library/WT/Gedcom/Tag.php:914
@@ -5547,12 +5686,12 @@ msgstr "Sunteţi sigur(ă) că doriţi să ştergeţi acest fapt GEDCOM ?"
 #. I18N: Name of a module
 #: webtrees/modules_v3/theme_select/module.php:34
 msgid "Theme change"
-msgstr ""
+msgstr "Schimbare temă"
 
 #. I18N: Description of the “Theme change” module
 #: webtrees/modules_v3/theme_select/module.php:39
 msgid "An alternative way to select a new theme."
-msgstr ""
+msgstr "Un mod alternativ de a selecta o nouă temă"
 
 #. I18N: A media object that is not linked to any other record
 #: webtrees/addmedia.php:92 webtrees/addmedia.php:415
@@ -17883,7 +18022,7 @@ msgstr ""
 #: webtrees/library/WT/Controller/Familybook.php:371
 #, php-format
 msgid "Family of %s"
-msgstr ""
+msgstr "Familia lui %s"
 
 #. I18N: %s is an individual’s name
 #: webtrees/library/WT/Controller/Compact.php:47

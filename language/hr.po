@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2011-11-19 22:54+0000\n"
-"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 16:35+0000\n"
+"Last-Translator: mimo <mimo0511@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:34+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: \n"
 "X-Poedit-Language: Croatian\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -412,7 +412,7 @@ msgstr "Dodaj suprugu koristeci postojecu osobu"
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:211
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:477
 msgid "Wife"
-msgstr "אישה"
+msgstr "Supruga"
 
 #. I18N: gedcom tag HUSB
 #: webtrees/edit_interface.php:543 webtrees/library/WT/Gedcom/Tag.php:235
@@ -427,7 +427,7 @@ msgstr "אישה"
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:208
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:441
 msgid "Husband"
-msgstr "בעל"
+msgstr "Suprug"
 
 #. I18N: A source that is not linked to any other record
 #: webtrees/edit_interface.php:668 webtrees/edit_interface.php:765
@@ -507,7 +507,7 @@ msgstr "Dodaj dijete"
 #: webtrees/edit_interface.php:1537
 #: webtrees/modules_v3/relatives/module.php:37
 msgid "Add a new spouse"
-msgstr ""
+msgstr "Dodaj novog supružnika"
 
 #: webtrees/edit_interface.php:1840
 #: webtrees/includes/functions/functions_edit.php:1486
@@ -617,11 +617,12 @@ msgid ""
 "that person from the family.<br /><br />When you have finished changing the "
 "family members, click the Save button to save the changes."
 msgstr ""
-"Use this page to change or remove family members.<br /><br />For each member "
-"in the family, you can use the Change link to choose a different person to "
-"fill that role in the family.  You can also use the Remove link to remove "
-"that person from the family.<br /><br />When you have finished changing the "
-"family members, click the Save button to save the changes.<br />"
+"Koristite ovu stranicu kako bi ste promijenili ili uklonili članove "
+"obitelji. <br /> <br /> Za svakog člana u obitelji, možete koristiti link "
+"promijene za odabrati drugu osobu da popuni tu ulogu u obitelji. Također "
+"možete koristiti link Ukloni da uklonite osobu iz obitelji. <br /> <br /> "
+"Kad ste završili s promjenom članova obitelji, pritisnite gumb Spremi da "
+"biste spremili promjene."
 
 #: webtrees/edit_interface.php:2149 webtrees/edit_interface.php:2170
 #: webtrees/edit_interface.php:2185 webtrees/edit_interface.php:2200
@@ -1131,7 +1132,7 @@ msgstr ""
 #: webtrees/admin_module_reports.php:56 webtrees/admin_module_sidebar.php:74
 #: webtrees/admin_module_blocks.php:56 webtrees/library/WT/Gedcom/Tag.php:193
 msgid "Description"
-msgstr "תיאור"
+msgstr "Opis"
 
 #: webtrees/admin_modules.php:119 webtrees/admin_modules.php:137
 #: webtrees/admin_module_menus.php:73
@@ -1141,7 +1142,7 @@ msgstr "Izbornik"
 #: webtrees/admin_modules.php:120 webtrees/admin_modules.php:138
 #: webtrees/admin_module_tabs.php:73
 msgid "Tab"
-msgstr ""
+msgstr "Kartica"
 
 #: webtrees/admin_modules.php:121 webtrees/admin_modules.php:139
 #: webtrees/themes/_administration/header.php:146
@@ -1151,7 +1152,7 @@ msgstr "Rubna traka"
 
 #: webtrees/admin_modules.php:122 webtrees/admin_module_blocks.php:55
 msgid "Block"
-msgstr ""
+msgstr "Blok"
 
 #: webtrees/admin_modules.php:123 webtrees/admin_modules.php:141
 msgid "Chart"
@@ -1748,7 +1749,7 @@ msgstr "Očisti prikaz"
 
 #: webtrees/timeline.php:315
 msgid "Show lifespans"
-msgstr ""
+msgstr "Pokaži životni vijek"
 
 #. I18N: gedcom tag AGE
 #: webtrees/timeline.php:375 webtrees/autocomplete.php:117
@@ -1825,13 +1826,13 @@ msgstr "Izvori"
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_3_find.php:77
 #: webtrees/includes/functions/functions_print.php:1124
 msgid "Find an individual"
-msgstr ""
+msgstr "Nađi pojedinca"
 
 #: webtrees/find.php:76 webtrees/admin_site_merge.php:296
 #: webtrees/admin_site_merge.php:317
 #: webtrees/includes/functions/functions_print.php:1132
 msgid "Find a family"
-msgstr ""
+msgstr "Nađi Obitelj"
 
 #: webtrees/find.php:79 webtrees/includes/functions/functions_print.php:1162
 msgid "Find a media object"
@@ -2132,7 +2133,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_death_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_death_report_report.xml.php:30
 msgid "Deaths"
-msgstr ""
+msgstr "Smrti"
 
 #. I18N: Description of the “Deaths” module
 #: webtrees/modules_v3/death_report/module.php:41
@@ -2669,7 +2670,7 @@ msgstr "Vrsta grafa"
 #: webtrees_tmp/modules_v3_pedigree_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_pedigree_report_report.xml.php:41
 msgid "Pedigree"
-msgstr "יחוס"
+msgstr "Rodovnik"
 
 #. I18N: Name of a module/sidebar
 #. I18N: Name of a module/report
@@ -2766,7 +2767,7 @@ msgstr ""
 #: webtrees/includes/functions/functions.php:1236
 msgctxt "mother's husband"
 msgid "step-father"
-msgstr ""
+msgstr "očuh"
 
 #: webtrees/modules_v3/family_nav/module.php:190
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:474
@@ -3412,7 +3413,7 @@ msgstr "Godina"
 #: webtrees/modules_v3/gedcom_favorites/module.php:195
 #: webtrees/library/WT/Gedcom/Tag.php:332
 msgid "Title"
-msgstr "כותרת"
+msgstr "Naslov"
 
 #. I18N: gedcom tag PLAC
 #: webtrees/modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1136
@@ -14114,7 +14115,7 @@ msgstr ""
 #. I18N: gedcom tag SURN
 #: webtrees/help_text.php:1288 webtrees/library/WT/Gedcom/Tag.php:328
 msgid "Surname"
-msgstr "שם משפחה"
+msgstr "Prezime"
 
 #: webtrees/help_text.php:1289
 msgid ""

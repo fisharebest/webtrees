@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2010-12-13 11:06+0000\n"
-"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 17:09+0000\n"
+"Last-Translator: ma'arif <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:29+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: \n"
 "X-Poedit-Language: Indonesian\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -437,7 +437,7 @@ msgstr "Ciptakan sumber baru"
 
 #: webtrees/edit_interface.php:678
 msgid "You must provide a source title"
-msgstr ""
+msgstr "Anda harus memberikan judul sumber"
 
 #: webtrees/edit_interface.php:726 webtrees/help_text.php:1210
 msgid "Associate events with this source"
@@ -457,7 +457,7 @@ msgstr ""
 #: webtrees/includes/functions/functions_print.php:482
 #: webtrees/library/WT/Gedcom/Tag.php:315
 msgid "Shared note"
-msgstr "Közös jegyzetek"
+msgstr "Catatan bersama"
 
 #: webtrees/edit_interface.php:886 webtrees/edit_interface.php:928
 #: webtrees/includes/functions/functions_edit.php:1181
@@ -477,7 +477,7 @@ msgstr ""
 #: webtrees/edit_interface.php:1037
 #: webtrees/includes/functions/functions_edit.php:1185
 msgid "Edit Shared Note"
-msgstr ""
+msgstr "Ubah catatan bersama"
 
 #: webtrees/edit_interface.php:1102 webtrees/edit_interface.php:1171
 #: webtrees/includes/functions/functions_edit.php:1172
@@ -550,7 +550,7 @@ msgstr "Susun anak"
 #: webtrees_tmp/modules_v3_occupation_report_report.xml.php:7
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:9
 msgid "sort by date of birth"
-msgstr ""
+msgstr "pilihan berdasar tanggal lahir"
 
 #: webtrees/edit_interface.php:2058 webtrees/edit_interface.php:2218
 #: webtrees/library/WT/Controller/Family.php:124
@@ -565,7 +565,7 @@ msgstr ""
 #: webtrees/edit_interface.php:2072 webtrees/edit_interface.php:2077
 #: webtrees/includes/functions/functions.php:1145
 msgid "father"
-msgstr ""
+msgstr "ayah"
 
 #: webtrees/edit_interface.php:2085
 #: webtrees/modules_v3/relatives/module.php:278
@@ -777,7 +777,7 @@ msgstr ""
 #: webtrees/edituser.php:139 webtrees/help_text.php:761
 #: webtrees/help_text.php:1532
 msgid "Username"
-msgstr ""
+msgstr "Nama pengguna"
 
 #: webtrees/admin_site_config.php:91 webtrees/setup.php:423
 #: webtrees/modules_v3/login_block/module.php:80 webtrees/admin_users.php:202
@@ -785,7 +785,7 @@ msgstr ""
 #: webtrees/login.php:450 webtrees/edituser.php:156 webtrees/help_text.php:756
 #: webtrees/help_text.php:1334
 msgid "Password"
-msgstr "Sandi"
+msgstr "Kata sandi"
 
 #. I18N: A site configuration setting
 #: webtrees/admin_site_config.php:94 webtrees/help_text.php:791
@@ -1016,7 +1016,7 @@ msgstr ""
 #: webtrees/includes/functions/functions_edit.php:1789
 #: webtrees/library/WT/Controller/Family.php:231
 msgid "Add a new media object"
-msgstr ""
+msgstr "Menambah objek media baru"
 
 #: webtrees/source.php:127 webtrees/inverselink.php:35
 #: webtrees/inverselink.php:86 webtrees/repo.php:118
@@ -1027,11 +1027,11 @@ msgstr ""
 #: webtrees/modules_v3/lightbox/module.php:76
 #: webtrees/library/WT/Controller/Family.php:234
 msgid "Link to an existing media object"
-msgstr ""
+msgstr "Mengaitkan ke objek media yang sudah ada"
 
 #: webtrees/mediafirewall.php:37
 msgid "The media file was not found in this family tree"
-msgstr ""
+msgstr "Berkas media tidak di temukan di silsilah keluarga ini"
 
 #: webtrees/mediafirewall.php:367
 msgid "This media file is broken and cannot be watermarked"
@@ -1046,7 +1046,7 @@ msgstr "Berkas media ini rusak dan tidak dapat di-watermark-kan"
 #: webtrees/admin_trees_config.php:216 webtrees/admin_media.php:511
 #: webtrees/admin_media.php:601
 msgid "Media"
-msgstr ""
+msgstr "Media"
 
 #. I18N: Name of a module/report
 #. I18N: gedcom tag INDI
@@ -1101,7 +1101,7 @@ msgstr "Tetapkan kaitan"
 #: webtrees/themes/_administration/header.php:68
 #: webtrees/library/WT/MenuBar.php:61 webtrees/library/WT/MenuBar.php:64
 msgid "My page"
-msgstr ""
+msgstr "Halaman pribadi"
 
 #: webtrees/index.php:141 webtrees/index.php:142 webtrees/admin_users.php:224
 msgid "Change the blocks on this page"
@@ -2174,7 +2174,7 @@ msgstr ""
 #: webtrees/modules_v3/random_media/module.php:117
 #: webtrees/modules_v3/yahrzeit/module.php:63
 msgid "Configure"
-msgstr "Pengaturan"
+msgstr "Konfigurasi"
 
 #: webtrees/modules_v3/upcoming_events/module.php:131
 #: webtrees/modules_v3/recent_changes/module.php:136
@@ -2283,7 +2283,7 @@ msgstr ""
 #: webtrees/modules_v3/top10_pageviews/module.php:149
 #: webtrees/modules_v3/yahrzeit/module.php:254
 msgid "Add a scrollbar when block contents grow"
-msgstr ""
+msgstr "Tambahkan scrollbar ketika isi blok penuh"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/gedcom_stats/module.php:34 webtrees/statistics.php:38
@@ -2479,14 +2479,14 @@ msgstr[1] ""
 #: webtrees/modules_v3/top10_surnames/module.php:155
 #: webtrees/modules_v3/top10_pageviews/module.php:135
 msgid "Number of items to show"
-msgstr "Jumlah item yang dimunculkan"
+msgstr "Jumlah item yang tampil"
 
 #. I18N: Name of a report
 #: webtrees/modules_v3/occupation_report/module.php:35
 #: webtrees_tmp/modules_v3_occupation_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_occupation_report_report.xml.php:35
 msgid "Occupations"
-msgstr ""
+msgstr "Pekerjaan"
 
 #. I18N: Description of the “Occupations” module
 #: webtrees/modules_v3/occupation_report/module.php:41
@@ -2775,7 +2775,7 @@ msgstr ""
 #: webtrees/includes/functions/functions.php:1236
 msgctxt "mother's husband"
 msgid "step-father"
-msgstr ""
+msgstr "ayah tiri"
 
 #: webtrees/modules_v3/family_nav/module.php:190
 #: webtrees/modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:474
@@ -2820,7 +2820,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_birth_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_birth_report_report.xml.php:29
 msgid "Births"
-msgstr ""
+msgstr "Kelahiran"
 
 #. I18N: Description of the “Births” module
 #: webtrees/modules_v3/birth_report/module.php:41
@@ -2835,23 +2835,23 @@ msgstr ""
 #: webtrees/includes/functions/functions_print.php:304 webtrees/login.php:113
 #: webtrees/login.php:165
 msgid "Login"
-msgstr "Catatmasuk"
+msgstr "Masuk"
 
 #. I18N: Description of the “Login” module
 #: webtrees/modules_v3/login_block/module.php:39
 msgid "An alternative way to login and logout."
-msgstr ""
+msgstr "Cara lain untuk masuk dan keluar."
 
 #: webtrees/modules_v3/login_block/module.php:56
 #: webtrees/modules_v3/login_block/module.php:61
 #: webtrees/includes/functions/functions_print.php:316
 msgid "Logout"
-msgstr "Catatkeluar"
+msgstr "Keluar"
 
 #: webtrees/modules_v3/login_block/module.php:59
 #: webtrees/themes/webtrees/header.php:79
 msgid "Logged in as "
-msgstr "Tercatatmasuk sebagai "
+msgstr "Masuk sebagai "
 
 #: webtrees/modules_v3/login_block/module.php:88 webtrees/login.php:168
 msgid "Request new password"
@@ -2870,7 +2870,7 @@ msgstr "Permintaan kehilangan sandi"
 
 #: webtrees/modules_v3/login_block/module.php:102 webtrees/login.php:181
 msgid "Username or email address"
-msgstr ""
+msgstr "Nama pengguna atau alamat email"
 
 #. I18N: Name of a module
 #: webtrees/modules_v3/recent_changes/module.php:36 webtrees/admin.php:244
@@ -2987,7 +2987,7 @@ msgstr "Penampakan FAQ"
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:8
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:12
 msgid "All"
-msgstr "SEMUA"
+msgstr "Semua"
 
 #: webtrees/modules_v3/faq/module.php:278
 #: webtrees/modules_v3/faq/help_text.php:33
@@ -3552,7 +3552,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_missing_facts_report_report.xml.php:4
 #: webtrees_tmp/modules_v3_missing_facts_report_report.xml.php:50
 msgid "Missing data"
-msgstr ""
+msgstr "Data hilang"
 
 #. I18N: Description of the “Missing data”
 #: webtrees/modules_v3/missing_facts_report/module.php:41
@@ -3741,7 +3741,7 @@ msgstr ""
 #: webtrees_tmp/modules_v3_individual_report_report.xml.php:146
 #: webtrees_tmp/modules_v3_individual_ext_report_report.xml.php:151
 msgid "Facts and events"
-msgstr ""
+msgstr "Fakta dan peristiwa"
 
 #. I18N: Description of the “Facts and events” module
 #: webtrees/modules_v3/personal_facts/module.php:39
@@ -3764,11 +3764,11 @@ msgstr "Fakta sejarah"
 #. I18N: Description of the “Media” module
 #: webtrees/modules_v3/media/module.php:39
 msgid "A tab showing the media objects linked to an individual."
-msgstr ""
+msgstr "Sebuah tab menunjukkan objek media terkait dengan individu."
 
 #: webtrees/modules_v3/media/module.php:75
 msgid "There are no media objects for this individual."
-msgstr "Tidak ada objek media untuk orang ini."
+msgstr "Tidak ada objek media untuk individu ini."
 
 #. I18N: Name of a report
 #: webtrees/modules_v3/relative_ext_report/module.php:35
@@ -3991,7 +3991,7 @@ msgstr ""
 #: webtrees/modules_v3/family_group_report/module.php:41
 #: webtrees_tmp/modules_v3_family_group_report_report.xml.php:5
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "Laporan anggota keluarga dan detilnya masing-masing"
 
 #. I18N: Name of a module.  Top=Most common
 #: webtrees/modules_v3/top10_surnames/module.php:34
@@ -4866,25 +4866,25 @@ msgstr ""
 #. I18N: Name of a module
 #: webtrees/modules_v3/top10_pageviews/module.php:34
 msgid "Most viewed pages"
-msgstr ""
+msgstr "Halaman yang sering ditampilkan"
 
 #. I18N: Description of the “Most visited pages” module
 #: webtrees/modules_v3/top10_pageviews/module.php:39
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "Daftar halaman yang paling banyak di tampilkan."
 
 #: webtrees/modules_v3/top10_pageviews/module.php:142
 msgid "Place counts before or after name?"
-msgstr "Letakkan hitungan sebelum atau sesudah nama?"
+msgstr "Tempatkan jumlah sebelum atau setelah nama?"
 
 #: webtrees/modules_v3/top10_pageviews/module.php:144
 #: webtrees/statisticsplot.php:673
 msgid "before"
-msgstr "Sebelum"
+msgstr "sebelum"
 
 #: webtrees/modules_v3/top10_pageviews/module.php:144
 msgid "after"
-msgstr "Setelah"
+msgstr "setelah"
 
 #: webtrees/modules_v3/top10_pageviews/help_text.php:33
 msgid "Most Viewed Items"
@@ -4896,9 +4896,8 @@ msgid ""
 "block requires that Hit Counters be enabled in the GEDCOM configuration "
 "settings."
 msgstr ""
-"Blok ini akan menunjukkan 10 rekaman yang paling banyak ditampilkan. Blok "
-"ini memerlukan Penghitung Kunjungan diaktikfna pada pengaturan konfigurasi "
-"GEDCOM."
+"Blok ini menampilkan 10 data yang banyak ditampilkan. Blok ini memerlukan "
+"Penghitung Kunjungan di aktifkan pada pengaturan konfigurasi GEDCOM."
 
 #: webtrees/modules_v3/batch_update/plugins/death_y.php:33
 msgid "Add missing death records"
@@ -5069,12 +5068,12 @@ msgstr ""
 #: webtrees/modules_v3/random_media/module.php:34
 #: webtrees/library/WT/Gedcom/Tag.php:819
 msgid "Slide show"
-msgstr ""
+msgstr "Slide show"
 
 #. I18N: Description of the “Slide show” module
 #: webtrees/modules_v3/random_media/module.php:39
 msgid "Random images from the current family tree."
-msgstr ""
+msgstr "Gambar acak dari silsilah keluarga"
 
 #: webtrees/modules_v3/random_media/module.php:132
 #: webtrees/themes/colors/header.php:39 webtrees/themes/clouds/header.php:36
@@ -5082,7 +5081,7 @@ msgstr ""
 #: webtrees/themes/xenea/header.php:36 webtrees/themes/minimal/header.php:36
 #: webtrees/themes/_administration/header.php:33
 msgid "Play"
-msgstr "Maikan"
+msgstr "Mainkan"
 
 #: webtrees/modules_v3/random_media/module.php:132
 #: webtrees/themes/colors/header.php:39 webtrees/themes/clouds/header.php:36
@@ -5090,7 +5089,7 @@ msgstr "Maikan"
 #: webtrees/themes/xenea/header.php:36 webtrees/themes/minimal/header.php:36
 #: webtrees/themes/_administration/header.php:33
 msgid "Stop"
-msgstr ""
+msgstr "Berhenti"
 
 #: webtrees/modules_v3/random_media/module.php:133
 msgid "Next image"
@@ -5112,11 +5111,11 @@ msgstr "Hanya perlihatkan orang, peristiwa, atau semua?"
 
 #: webtrees/modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
-msgstr ""
+msgstr "Tampilkan kontrol slide show?"
 
 #: webtrees/modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
-msgstr ""
+msgstr "Mulai slide show di halaman pembuka?"
 
 #. I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: webtrees/modules_v3/yahrzeit/module.php:34
@@ -5667,6 +5666,7 @@ msgid ""
 "This media object has been deleted.  The deletion will need to be reviewed "
 "by a moderator."
 msgstr ""
+"Gambar ini telah dihapus. Penghapusan memerlukan peninajauan oleh moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: webtrees/mediaviewer.php:59
@@ -5681,11 +5681,12 @@ msgid ""
 "This media object has been edited.  The changes need to be reviewed by a "
 "moderator."
 msgstr ""
+"Gambar ini telah dirubah. Perubahan memerlukan peninajauan oleh moderator."
 
 #: webtrees/mediaviewer.php:76
 msgid ""
 "This media object does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Gambar/Foto tidak ada atau membutuhkan persetujuan."
 
 #: webtrees/mediaviewer.php:100
 msgid "Download File"
@@ -6229,7 +6230,7 @@ msgstr ""
 
 #: webtrees/statistics.php:271
 msgid "Youngest father"
-msgstr ""
+msgstr "Ayah termuda"
 
 #: webtrees/statistics.php:272
 msgid "Youngest mother"
@@ -6237,7 +6238,7 @@ msgstr ""
 
 #: webtrees/statistics.php:279
 msgid "Oldest father"
-msgstr ""
+msgstr "Ayah tertua"
 
 #: webtrees/statistics.php:280
 msgid "Oldest mother"
@@ -6487,7 +6488,7 @@ msgstr "Perlihatkan pasangan"
 #: webtrees/library/WT/MenuBar.php:111
 #: webtrees/library/WT/Controller/Lifespan.php:76
 msgid "Lifespans"
-msgstr ""
+msgstr "Rentang hidup"
 
 #: webtrees/lifespan.php:269
 msgid "Include the person's immediate family?"
@@ -6689,7 +6690,7 @@ msgstr ""
 #: webtrees/admin_users.php:205 webtrees/admin_users.php:400
 #: webtrees/edituser.php:177 webtrees/help_text.php:1215
 msgid "Preferred contact method"
-msgstr ""
+msgstr "Pilihan metode kontak"
 
 #: webtrees/admin_users.php:208 webtrees/admin_users.php:397
 msgid "Allow this user to edit his account information"
@@ -6709,7 +6710,7 @@ msgstr ""
 #: webtrees/admin_users.php:217 webtrees/admin_users.php:404
 #: webtrees/edituser.php:179
 msgid "Visible to other users when online"
-msgstr ""
+msgstr "Dilihat oleh pengguna lain ketika online"
 
 #: webtrees/admin_users.php:220 webtrees/login.php:299 webtrees/login.php:341
 #: webtrees/login.php:413 webtrees/help_text.php:1398
@@ -6724,7 +6725,7 @@ msgstr ""
 #: webtrees/edituser.php:145 webtrees/help_text.php:1237
 #: webtrees/help_text.php:1403 webtrees/help_text.php:1511
 msgid "Individual record"
-msgstr ""
+msgstr "Simpan individu"
 
 #. I18N: gedcom tag ROLE
 #: webtrees/admin_users.php:237 webtrees/admin_users.php:440
@@ -7879,7 +7880,7 @@ msgstr ""
 #: webtrees/includes/functions/functions.php:1245
 msgctxt "parent's father"
 msgid "grandfather"
-msgstr ""
+msgstr "kakek"
 
 #: webtrees/includes/functions/functions.php:1246
 msgctxt "parent's mother"
@@ -8327,7 +8328,7 @@ msgstr ""
 #: webtrees/includes/functions/functions.php:1338
 msgctxt "father's father's father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "kakek buyut"
 
 #: webtrees/includes/functions/functions.php:1339
 msgctxt "father's father's mother"
@@ -13417,12 +13418,14 @@ msgstr ""
 msgid ""
 "Children take one surname from the father and one surname from the mother."
 msgstr ""
+"Anak-anak mengambil nama keluarga dari ayah dan nama keluarga dari ibu."
 
 #. I18N: In the Portuguese surname tradition, ...
 #: webtrees/help_text.php:992
 msgid ""
 "Children take one surname from the mother and one surname from the father."
 msgstr ""
+"Anak-anak mengambil nama keluarga dari ibu dan nama keluarga dari ayah."
 
 #. I18N: In the Icelandic surname tradition, ...
 #: webtrees/help_text.php:997
@@ -17862,13 +17865,13 @@ msgstr ""
 #: webtrees/library/WT/Controller/Familybook.php:81
 #, php-format
 msgid "Family book of %s"
-msgstr ""
+msgstr "Buku Keluarga %s"
 
 #. I18N: A title/heading. %s is an individual’s name
 #: webtrees/library/WT/Controller/Familybook.php:371
 #, php-format
 msgid "Family of %s"
-msgstr ""
+msgstr "Keluarga Dari %s"
 
 #. I18N: %s is an individual’s name
 #: webtrees/library/WT/Controller/Compact.php:47
@@ -19466,7 +19469,7 @@ msgstr ""
 
 #: webtrees/library/WT/Gedcom/Tag.php:604
 msgid "Cremation of a grandfather"
-msgstr ""
+msgstr "Kremasi kakek"
 
 #: webtrees/library/WT/Gedcom/Tag.php:605
 msgid "Cremation of a grandmother"
@@ -21748,11 +21751,11 @@ msgstr ""
 
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:400
 msgid "He was born"
-msgstr ""
+msgstr "Dia lahir"
 
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:427
 msgid "He "
-msgstr ""
+msgstr "Dia "
 
 #: webtrees_tmp/modules_v3_descendancy_report_report.xml.php:479
 #: webtrees_tmp/modules_v3_ahnentafel_report_report.xml.php:394
@@ -21824,7 +21827,7 @@ msgstr ""
 
 #: webtrees_tmp/modules_v3_ahnentafel_report_report.xml.php:11
 msgid "Show occupations?"
-msgstr ""
+msgstr "Tampilkan pekerjaan"
 
 #: webtrees_tmp/modules_v3_ahnentafel_report_report.xml.php:12
 msgid "Show residences?"
@@ -21857,11 +21860,11 @@ msgstr ""
 
 #: webtrees_tmp/modules_v3_ahnentafel_report_report.xml.php:193
 msgid "His occupation was"
-msgstr ""
+msgstr "Pekerjaan sebelumnya"
 
 #: webtrees_tmp/modules_v3_ahnentafel_report_report.xml.php:194
 msgid "Her occupation was"
-msgstr ""
+msgstr "Pekerjaan sebelumnya"
 
 #: webtrees_tmp/modules_v3_ahnentafel_report_report.xml.php:220
 msgid "He resided at"

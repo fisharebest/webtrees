@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-05-12 20:44+0100\n"
-"PO-Revision-Date: 2010-09-14 20:10+0000\n"
-"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 16:28+0000\n"
+"Last-Translator: Gunleif Joensen <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:27+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "Language: fo\n"
 
 #: webtrees/admin_site_access.php:32
@@ -6078,7 +6078,7 @@ msgstr "Tal á føðslum"
 
 #: webtrees/statistics.php:99
 msgid "Total deaths"
-msgstr ""
+msgstr "Tal á deyðsfall"
 
 #: webtrees/statistics.php:106 webtrees/library/WT/Stats.php:1243
 msgid "Births by century"
@@ -6567,7 +6567,7 @@ msgstr ""
 
 #: webtrees/message.php:111
 msgid "Please enter some message text before sending."
-msgstr "Vinarliga skriva eini bo"
+msgstr "Vinarliga skriva eini boð, áðrenn tú sendur."
 
 #: webtrees/message.php:122
 msgid ""
