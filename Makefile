@@ -82,7 +82,7 @@ language/webtrees.pot: $(LANGUAGE_SRC)
 # Gettext catalog (.PO) files
 ################################################################################
 $(PO_FILES): language/webtrees.pot
-	msgmerge --no-wrap --sort-output --output=$@ $@ $<
+	msgmerge --no-wrap --sort-output --no-fuzzy-matching --output=$@ $@ $<
 
 ################################################################################
 # Gettext translation (.MO) files

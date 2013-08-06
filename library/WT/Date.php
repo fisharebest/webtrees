@@ -247,7 +247,7 @@ class WT_Date {
 		default: $tmp=WT_I18N::translate('Invalid date'); break; // e.g. BET without AND
 		}
 		if ($this->text && !$q1) {
-			$tmp = WT_I18N::translate('%s (%s)', $tmp, $this->text);
+			$tmp = WT_I18N::translate('%1$s (%2$s)', $tmp, $this->text);
 		}
 
 		// Return at least one printable character, for better formatting in tables.
