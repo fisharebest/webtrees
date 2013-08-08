@@ -318,7 +318,7 @@ case 'update':
 	$xref      = safe_POST('xref',    WT_REGEX_XREF);
 	$fact_id   = safe_POST('fact_id');
 	$keep_chan = safe_POST_bool('keep_chan');
-	
+
 	$record = WT_GedcomRecord::getInstance($xref);
 	check_record_access($record);
 
@@ -327,6 +327,7 @@ case 'update':
 	$tag     = safe_POST('tag',     WT_REGEX_TAG);
 	$text    = safe_POST('text',    WT_REGEX_UNSAFE);
 	$islink  = safe_POST('islink');
+var_dump($glevels, $tag, $text, $islink);exit;	
 
 	$controller
 		->setPageTitle(WT_I18N::translate('Edit'))
@@ -931,7 +932,7 @@ case 'editnote':
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<form method="post" action="edit_interface.php" >
-			<input type="hidden" name="action" value="update">
+			<input type="hidden" name="action" value="editnoteaction">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<table class="facts_table">
 				<tr>
@@ -951,6 +952,30 @@ case 'editnote':
 		</form>
 	</div><!-- id="edit_interface-page" -->
 	<?php
+	break;
+
+////////////////////////////////////////////////////////////////////////////////
+case 'editnoteaction':
+	$xref      = safe_POST('xref', WT_REGEX_XREF);
+	$keep_chan = safe_POST_bool('keep_chan');
+	$note      = safe_POST('NOTE', WT_REGEX_UNSAFE);
+
+	$record = WT_Note::getInstance($xref);
+	check_record_access($record);
+
+	$controller
+		->setPageTitle(WT_I18N::translate('Edit Shared Note'))
+		->pageHeader();
+
+	$gedrec = preg_replace(
+		'/^0 @' . $record->getXref() . '@ NOTE.*(\n1 CONT.*)*/',
+		'0 @' . $record->getXref() . '@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", $note),
+		$record->getGedcom()
+	);
+
+	$record->updateRecord($gedrec, !$keep_chan);
+
+	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
