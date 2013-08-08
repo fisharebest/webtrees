@@ -292,6 +292,82 @@ function edit_field_rela($name, $selected='', $extra='') {
 	return select_edit_control($name, $rela_codes, '', $selected, $extra);
 }
 
+//@@ added back from svn 15042 ->
+// Replace an updated record with a newer version
+// $xref/$ged_id - the record to update
+// $gedrec       - the new gedcom record
+// $chan         - whether or not to update the CHAN record
+function replace_gedrec($xref, $ged_id, $gedrec, $chan=true) {
+	if (($gedrec = check_gedcom($gedrec, $chan))!==false) {
+		$old_gedrec=find_gedcom_record($xref, $ged_id, true);
+		if ($old_gedrec!=$gedrec) {
+			WT_DB::prepare(
+				"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
+			)->execute(array(
+				$ged_id,
+				$xref,
+				$old_gedrec,
+				$gedrec,
+				WT_USER_ID
+			));
+		}
+
+		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+			accept_all_changes($xref, $ged_id);
+		}
+		return true;
+	}
+	return false;
+}
+
+//-- this function will check a GEDCOM record for valid gedcom format
+function check_gedcom($gedrec, $chan=true) {
+	$ct = preg_match("/0 @(.*)@ (.*)/", $gedrec, $match);
+	if ($ct==0) {
+		echo "ERROR 20: Invalid GEDCOM format";
+		AddToLog("ERROR 20: Invalid GEDCOM format:\n".$gedrec, 'edit');
+		if (WT_DEBUG) {
+			echo "<pre>$gedrec</pre>";
+			echo debug_print_backtrace();
+		}
+		return false;
+	}
+	$gedrec = trim($gedrec);
+	if ($chan) {
+		$pos1 = strpos($gedrec, "1 CHAN");
+		if ($pos1!==false) {
+			$pos2 = strpos($gedrec, "\n1", $pos1+4);
+			if ($pos2===false) $pos2 = strlen($gedrec);
+			$newgedrec = substr($gedrec, 0, $pos1);
+			$newgedrec .= "1 CHAN\n2 DATE ".strtoupper(date("d M Y"))."\n";
+			$newgedrec .= "3 TIME ".date("H:i:s")."\n";
+			$newgedrec .= "2 _WT_USER ".WT_USER_NAME."\n";
+			$newgedrec .= substr($gedrec, $pos2);
+			$gedrec = $newgedrec;
+		}
+		else {
+			$newgedrec = "\n1 CHAN\n2 DATE ".strtoupper(date("d M Y"))."\n";
+			$newgedrec .= "3 TIME ".date("H:i:s")."\n";
+			$newgedrec .= "2 _WT_USER ".WT_USER_NAME;
+			$gedrec .= $newgedrec;
+		}
+	}
+	$gedrec = preg_replace('/\\\+/', "\\", $gedrec);
+
+	//-- remove any empty lines
+	$lines = explode("\n", $gedrec);
+	$newrec = '';
+	foreach ($lines as $ind=>$line) {
+		//-- remove any whitespace
+		$line = trim($line);
+		if (!empty($line)) $newrec .= $line."\n";
+	}
+
+	$newrec = html_entity_decode($newrec, ENT_COMPAT, 'UTF-8');
+	return $newrec;
+}
+//@@ <-
+
 // Remove all links from $gedrec to $xref, and any sub-tags.
 function remove_links($gedrec, $xref) {
 	$gedrec = preg_replace('/\n1 '.WT_REGEX_TAG.' @'.$xref.'@(\n[2-9].*)*/', '', $gedrec);
