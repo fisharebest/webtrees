@@ -931,7 +931,7 @@ class WT_GedcomRecord {
 	}
 
 	// Remove all links from this record to $xref
-	public function removeLinks($xref) {
+	public function removeLinks($xref, $update_chan) {
 		$value = '@' . $xref . '@';
 
 		foreach ($this->getFacts() as $fact) {
@@ -943,7 +943,7 @@ class WT_GedcomRecord {
 					$next_levels = '[' . $match[1]+1 . '-9]';
 					$gedcom = preg_replace('/' . $match[1] . '(\n' . $next_levels .'.*)*/', '', $gedcom);
 				}
-				$this->updateFact($fact->factId(), $gedcom);
+				$this->updateFact($fact->factId(), $gedcom, $update_chan);
 			}
 		}
 	}

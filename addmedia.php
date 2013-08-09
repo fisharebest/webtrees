@@ -239,7 +239,8 @@ case 'create': // Save the information from the “showcreateform” action
 
 	$media = WT_GedcomRecord::createRecord($newged, WT_GED_ID);
 	if ($linktoid) {
-		linkMedia($media->getXref(), $linktoid, 1);
+		$record = WT_GedcomRecord::getInstance($linktoid);
+		$record->createFact('1 OBJE @' . $media->getXref() . '@', true);
 		AddToLog('Media ID '.$media->getXref()." successfully added to $linktoid.", 'edit');
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	} else {
@@ -392,11 +393,10 @@ case 'update': // Save the information from the “editmedia” action
 	$newrec = handle_updates($newrec);
 	$record->updateRecord($newrec, $update_CHAN);
 
-	if ($pid && $linktoid!='') {
-		$link = linkMedia($pid, $linktoid, 1);
-		if ($link) {
-			AddToLog('Media ID '.$pid." successfully added to $linktoid.", 'edit');
-		}
+	if ($pid && $linktoid) {
+		$record = WT_GedcomRecord::getInstance($linktoid);
+		$record->createFact('1 OBJE @' . $pid . '@', true);
+		AddToLog('Media ID '.$pid." successfully added to $linktoid.", 'edit');
 	}
 	$controller->pageHeader();
 	if ($messages) {

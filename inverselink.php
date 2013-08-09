@@ -168,7 +168,8 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 		echo '</table>';
 		echo '</form>';
 	} elseif ($action == "update" && $paramok) {
-		linkMedia($mediaid, $linktoid);
+		$record = WT_GedcomRecord::getInstance($linktoid);
+		$record->createFact('1 OBJE @' . $mediaid . '@', true);
 	}
 	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 }
