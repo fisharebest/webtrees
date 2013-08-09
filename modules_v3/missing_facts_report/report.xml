@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
-	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Missing data')" /></Title>
 	<Description><var var="WT_I18N::translate('A report of the information that is missing for an individual and their relatives.')" /></Description>
 	<Input name="pid" type="text" default="" lookup="INDI"><var var="WT_I18N::translate('Enter Individual ID')"/></Input>

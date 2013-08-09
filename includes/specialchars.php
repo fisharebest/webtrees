@@ -2,8 +2,6 @@
 // Special Character tables, for use by Javascript to input characters
 // that aren't on your keyboard
 //
-// THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost)
-//
 // When updating, be sure to add the language into the array $specialchar_languages,
 // add a case for that language into the switch, and add any new special characters
 // into the default case of the switch near the bottom.
@@ -20,10 +18,10 @@
 // Other special characters are all listed at the bottom.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2007  PGV Development Team
+// Copyright (C) 2002 to 2007 PGV Development Team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -38,8 +36,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');

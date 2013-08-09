@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Includes 2010 work done by John Hawthornthwaite(hagershorn1) for an ancestry report in PhpGedView -->
 <Report>
-	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Ancestors')" /></Title>
 	<Description><var var="WT_I18N::translate('A report of an individual’s ancestors, in a narrative style.')" /></Description>
 	<Input name="pid" lookup="INDI" type="text"><var var="WT_I18N::translate('Enter Individual ID')" /></Input>

@@ -5,7 +5,7 @@
  * - for loops are much faster than using each
  * - return false is required in functions
  *
- * Copyright (C) 2012 webtrees development team
+ * Copyright (C) 2013 webtrees development team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
