@@ -302,60 +302,6 @@ function remove_links($gedrec, $xref) {
 	return $gedrec;
 }
 
-// Remove a link to a media object from a GEDCOM record
-function remove_media_subrecord($oldrecord, $gid) {
-	$newrec = '';
-	$gedlines = explode("\n", $oldrecord);
-
-	for ($i=0; $i<count($gedlines); $i++) {
-		if (preg_match('/^\d (?:OBJE|_WT_OBJE_SORT) @' . $gid . '@$/', $gedlines[$i])) {
-			$glevel = $gedlines[$i]{0};
-			$i++;
-			while ((isset($gedlines[$i]))&&(strlen($gedlines[$i])<4 || $gedlines[$i]{0}>$glevel)) {
-				$i++;
-			}
-			$i--;
-		} else {
-			$newrec .= $gedlines[$i]."\n";
-		}
-	}
-
-	return trim($newrec);
-}
-
-/**
-* delete a subrecord from a parent record using the linenumber
-*
-* @param string $oldrecord parent record to delete from
-* @param int $linenum linenumber where the subrecord to delete starts
-* @return string the new record
-*/
-function remove_subline($oldrecord, $linenum) {
-	$newrec = '';
-	$gedlines = explode("\n", $oldrecord);
-
-	for ($i=0; $i<$linenum; $i++) {
-		if (trim($gedlines[$i])!='') $newrec .= $gedlines[$i]."\n";
-	}
-	if (isset($gedlines[$linenum])) {
-		$fields = explode(' ', $gedlines[$linenum]);
-		$glevel = $fields[0];
-		$i++;
-		if ($i<count($gedlines)) {
-			//-- don't put empty lines in the record
-			while ((isset($gedlines[$i]))&&(strlen($gedlines[$i])<4 || $gedlines[$i]{0}>$glevel)) $i++;
-			while ($i<count($gedlines)) {
-				if (trim($gedlines[$i])!='') $newrec .= $gedlines[$i]."\n";
-				$i++;
-			}
-		}
-	}
-	else return $oldrecord;
-
-	$newrec = trim($newrec);
-	return $newrec;
-}
-
 // generates javascript code for calendar popup in user's language
 function print_calendar_popup($id) {
 	return 
