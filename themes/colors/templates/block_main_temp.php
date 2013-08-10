@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 
 ?>
 <div id="<?php echo $id; ?>" class="block" >
-	<table class="blockheader" cellpadding="0" cellspacing="0" style="padding:0;margin:0;">
+	<table class="blockheader">
 		<tr>
 			<td class="blockh1" ></td>
 			<td class="blockh2" >

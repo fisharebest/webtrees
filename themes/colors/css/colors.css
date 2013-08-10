@@ -264,7 +264,7 @@ html[dir=rtl] #index_small_blocks {float:left;}
 .block {border-radius:3px;color:#000000;margin-bottom:5px;padding:1px;vertical-align:top;}
 .blockcontent {border:solid #999 1px;margin-bottom:10px;margin-left:auto;margin-right:2px;overflow:auto;padding:5px;}
 .blockcontent p {font-size:13px;}
-.blockheader {width:100%;}
+.blockheader {width:100%;padding:0;margin:0;border-collapse:collapse;}
 
 .blockh1 {background-image:url(../images/left1B.png);background-repeat:no-repeat;height:24px;width:26px;}
 .blockh2 {background-image:url(../images/left2.png);background-repeat:repeat-x;font-size:13px;font-weight:700;}
