@@ -86,7 +86,7 @@ html[dir=rtl] .makeMenu li ul li {text-align:right;}
 #main-menu li {display:block; position:relative;float:left;list-style:none;}
 #main-menu li a {display:block;}
 #main-menu li > ul {display:block;position:absolute;top:0;left:100%;right:auto;}
-#main-menu > li > a {height:37px;width:27px:}
+#main-menu > li > a {height:37px;width:27px;}
 #main-menu > li > ul {left:0;right:auto;top:40px;}
 #main-menu a {display: block;text-decoration: none;padding: 0px 10px;margin: 0;white-space:nowrap;}
 #main-menu ul li:hover a, #main-menu li:hover li a {background: none;border: none;}
