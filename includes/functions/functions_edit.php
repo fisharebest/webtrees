@@ -352,7 +352,7 @@ function print_addnewsource_link($element_id) {
 function add_simple_tag($tag, $upperlevel='', $label='', $noClose='') {
 	global $MEDIA_DIRECTORY, $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
-	global $xref, $linkToID, $bdm, $action, $event_add, $CensDate;
+	global $xref, $bdm, $action, $event_add, $CensDate;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 
 	if (substr($tag, 0, strpos($tag, "CENS"))) {
@@ -390,8 +390,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $noClose='') {
 	}
 
 	if ($noClose!="NOCLOSE") $noClose = '';
-
-	if (empty($linkToID)) $linkToID = $xref;
 
 	$subnamefacts = array("NPFX", "GIVN", "SPFX", "SURN", "NSFX", "_MARNM_SURN");
 	preg_match('/^(?:(\d+) ('.WT_REGEX_TAG.') ?(.*))/', $tag, $match);
