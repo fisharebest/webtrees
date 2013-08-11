@@ -23,6 +23,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
+	list($centitl, $text) = explode("\n", $text, 2);
+	$centitl  = "<a href=\"note.php?nid=$nid\">" . $centitl . '</a>';
+
 	$text = "xCxAx<table><tr><td>" . $text;
 	$text = str_replace("<br>.start_formatted_area.<br>", "</td></tr></table><table><tr><td class=\"notecell\">", $text);
 
@@ -88,5 +91,5 @@
 	$text = str_replace(".end_formatted_area.<br>", "</td></tr></table><table><tr><td>", $text);
 	$text = str_replace("<br>", "</td></tr><tr><td class=\"notecell\">", $text);
 	$text = $text . "</td></tr></table>";
-	$text = str_replace("xCxAx", $centitl."<br>", $text);
+	$text = $centitl . '<br>' . $text;
 	$text = str_replace("Notes:", "<b>Notes:</b>", $text);
