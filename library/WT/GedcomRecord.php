@@ -62,15 +62,20 @@ class WT_GedcomRecord {
 		$this->pending   = $pending;
 		$this->gedcom_id = $gedcom_id;
 
+		$this->parseFacts();
+	}
+
+	// Split the record into facts
+	private function parseFacts() {
 		// Split the record into facts
-		if ($gedcom) {
-			$gedcom_facts = preg_split('/\n(?=1)/s', $gedcom);
+		if ($this->gedcom) {
+			$gedcom_facts = preg_split('/\n(?=1)/s', $this->gedcom);
 			array_shift($gedcom_facts);
 		} else {
 			$gedcom_facts = array();
 		}
-		if ($pending) {
-			$pending_facts = preg_split('/\n(?=1)/s', $pending);
+		if ($this->pending) {
+			$pending_facts = preg_split('/\n(?=1)/s', $this->pending);
 			array_shift($pending_facts);
 		} else {
 			$pending_facts = array();
@@ -80,7 +85,7 @@ class WT_GedcomRecord {
 
 		foreach ($gedcom_facts as $gedcom_fact) {
 			$fact = new WT_Fact($gedcom_fact, $this, md5($gedcom_fact));
-			if ($pending !== null && !in_array($gedcom_fact, $pending_facts)) {
+			if ($this->pending !== null && !in_array($gedcom_fact, $pending_facts)) {
 				$fact->setIsOld();
 			}
 			$this->facts[] = $fact;
@@ -809,14 +814,15 @@ class WT_GedcomRecord {
 				WT_USER_ID
 			));
 
-			// Clear the cache
-			self::$gedcom_record_cache = null;
-			self::$pending_record_cache = null;
+			$this->pending = $new_gedcom;
 
 			if (get_user_setting(WT_USER_ID, 'auto_accept')) {
 				accept_all_changes($this->xref, $this->gedcom_id);
+				$this->gedcom  = $new_gedcom;
+				$this->pending = null;
 			}
 		}
+		$this->parseFacts();
 	}
 	
 	static public function createRecord($gedcom, $gedcom_id) {
@@ -893,14 +899,17 @@ class WT_GedcomRecord {
 			WT_USER_ID
 		));
 
+		// Clear the cache
+		$this->pending = $gedcom;
+
 		// Accept this pending change
 		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
 			accept_all_changes($this->xref, $this->gedcom_id);
+			$this->gedcom  = $gedcom;
+			$this->pending = null;
 		}
 
-		// Clear the cache
-		self::$gedcom_record_cache = null;
-		self::$pending_record_cache = null;
+		$this->parseFacts();
 
 		AddToLog('Update: ' . static::RECORD_TYPE . ' ' . $this->xref, 'edit');
 	}

@@ -93,7 +93,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 
 			// edit_fam / add child
 			$submenu = new WT_Menu(WT_I18N::translate('Add a child to this family'), '#', 'menu-fam-addchil');
-			$submenu->addOnclick("return addnewchild('".$this->record->getXref()."');");
+			$submenu->addOnclick("return add_child_to_family('".$this->record->getXref()."', 'U');");
 			$menu->addSubmenu($submenu);
 
 			// edit_fam / reorder_children

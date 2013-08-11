@@ -858,9 +858,12 @@ class WT_Individual extends WT_GedcomRecord {
 		$step_families=array();
 		$families=$this->getSpouseFamilies();
 		foreach ($families as $family) {
-			foreach ($family->getSpouse($this)->getSpouseFamilies() as $step_family) {
-				if (!in_array($step_family, $families, true)) {
-					$step_families[]=$step_family;
+			$spouse = $family->getSpouse($this);
+			if ($spouse) {
+				foreach ($family->getSpouse($this)->getSpouseFamilies() as $step_family) {
+					if (!in_array($step_family, $families, true)) {
+						$step_families[]=$step_family;
+					}
 				}
 			}
 		}
@@ -922,7 +925,12 @@ class WT_Individual extends WT_GedcomRecord {
 
 	// TODO - this function doesn't belong in this class
 	function getSpouseFamilyLabel(WT_Family $family) {
-		return /* I18N: %s is the spouse name */ WT_I18N::translate('Family with %s', $family->getSpouse($this)->getFullName());
+		$spouse = $family->getSpouse($this);
+		if ($spouse) {
+			return /* I18N: %s is the spouse name */ WT_I18N::translate('Family with %s', $spouse->getFullName());
+		} else {
+			return $family->getFullName();
+		}
 	}
 
 	/**

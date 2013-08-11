@@ -552,9 +552,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	} else if ($fact=="TEMP") {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Temp::templeNames(), WT_I18N::translate('No Temple - Living Ordinance'), $value);
 	} else if ($fact=="ADOP") {
-		echo edit_field_adop($element_name, $value, '', WT_Individual::getInstance($xref));
+		echo edit_field_adop($element_name, $value);
 	} else if ($fact=="PEDI") {
-		echo edit_field_pedi($element_name, $value, '', WT_Individual::getInstance($xref));
+		echo edit_field_pedi($element_name, $value);
 	} else if ($fact=='STAT') {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Stat::statusNames($upperlevel), '', $value);
 	} else if ($fact=='RELA') {
@@ -670,7 +670,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	// NAME TYPE : hide text field and show a selection list
 	else if ($fact=='TYPE' && $level==0) {
 		$extra = 'onchange="document.getElementById(\''.$element_id.'\').value=this.value;"';
-		echo edit_field_name_type($element_name, $value, $extra, WT_Individual::getInstance($xref));
+		echo edit_field_name_type($element_name, $value, $extra);
 		echo '<script>';
 		echo "document.getElementById('", $element_id, "').style.display='none';";
 		echo '</script>';

@@ -209,7 +209,10 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out = '';
 		if ($person && $person->canShow()) {
 			foreach($person->getSpouseFamilies() as $family) {
-				$out .= $this->getFamilyLi($family, $family->getSpouse($person), $generations-1);
+				$spouse = $family->getSpouse($person);
+				if ($spouse) {
+					$out .= $this->getFamilyLi($family, $spouse, $generations-1);
+				}
 			}
 		}
 		if ($out) {

@@ -83,8 +83,8 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 		$husb = new WT_Individual('M', "0 @M@ INDI\n1 SEX M", null, WT_GED_ID);
 	}
 	$wife = $family->getWife();
-		echo '<a name="', $wife->getXref(), '"></a>';
 	if ($wife) {
+		echo '<a name="', $wife->getXref(), '"></a>';
 	} else {
 		$wife = new WT_Individual('F', "0 @F@ INDI\n1 SEX F", null, WT_GED_ID);
 	}
@@ -252,9 +252,9 @@ function print_family_children(WT_Family $family, $childid = "", $sosa = 0, $lab
 
 	if ($sosa==0 && WT_USER_CAN_EDIT) {
 		echo '<br>';
-		echo "<a href=\"#\" onclick=\"return addnewchild('", $family->getXref(), "','');\">" . WT_I18N::translate('Add a child to this family') . "</a>";
-		echo ' <a class="icon-sex_m_15x15" href="#" onclick="return addnewchild(\'', $family->getXref(), '\',\'M\');" title="',WT_I18N::translate('son'), '"></a>';
-		echo ' <a class="icon-sex_f_15x15" href="#" onclick="return addnewchild(\'', $family->getXref(), '\',\'F\');" title="',WT_I18N::translate('daughter'), '"></a>';
+		echo "<a href=\"#\" onclick=\"return add_child_to_family('", $family->getXref(), "', 'U');\">" . WT_I18N::translate('Add a child to this family') . "</a>";
+		echo ' <a class="icon-sex_m_15x15" href="#" onclick="return add_child_to_family(\'', $family->getXref(), '\', \'M\');" title="',WT_I18N::translate('son'), '"></a>';
+		echo ' <a class="icon-sex_f_15x15" href="#" onclick="return add_child_to_family(\'', $family->getXref(), '\', \'F\');" title="',WT_I18N::translate('daughter'), '"></a>';
 		echo '<br><br>';
 	}
 	echo '</td>';

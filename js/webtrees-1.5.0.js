@@ -309,39 +309,36 @@ function edit_interface(params, windowspecs, pastefield) {
   var features = windowspecs || edit_window_specs;
   var url = 'edit_interface.php?' + jQuery.param(params) + '&ged=' + WT_GEDCOM;
   window.open(url, '_blank', features);
+	return false;
 }
 
 function edit_record(xref, fact_id) {
-  edit_interface({
+  return edit_interface({
     "action":    "edit",
     "xref":      xref,
     "fact_id":   fact_id
   });
-  return false;
 }
 
 function edit_raw(xref) {
-  edit_interface({
+  return edit_interface({
     "action": "editraw",
     "xref":   xref
   });
-  return false;
 }
 
 function edit_note(xref) {
-  edit_interface({
+  return edit_interface({
     "action": "editnote",
     "xref":   xref
   });
-  return false;
 }
 
 function edit_source(xref) {
-  edit_interface({
+  return edit_interface({
     "action": "editsource",
     "xref":   xref,
   });
-  return false;
 }
 
 function add_record(xref, fact_field) {
@@ -350,7 +347,7 @@ function add_record(xref, fact_field) {
 		if (fact == "OBJE") {
 			window.open('addmedia.php?action=showmediaform&linkid=' + xref + '&ged=' + WT_GEDCOM, '_blank', edit_window_specs);
 		} else {
-			edit_interface({
+			return edit_interface({
 				"action": "add",
 				"xref":   xref,
 				"fact":   fact
@@ -364,7 +361,7 @@ function addClipboardRecord(xref, fact) {
 	var factfield = document.getElementById(fact);
 	if (factfield) {
 		var factvalue = factfield.options[factfield.selectedIndex].value;
-	        edit_interface({
+		return edit_interface({
 			"action": "paste",
 			"xref": xref,
 			"fact": factvalue.substr(10)
@@ -374,118 +371,100 @@ function addClipboardRecord(xref, fact) {
 }
 
 function reorder_media(xref) {
-  edit_interface({
+  return edit_interface({
     "action": "reorder_media",
     "xref":   xref
   }, mord_window_specs);
-  return false;
 }
 
 function add_new_record(xref, fact) {
-  edit_interface({
+  return edit_interface({
     "action": "add",
     "xref":   xref,
     "fact":   fact
   });
-  return false;
 }
 
-function addnewchild(famid, gender) {
-  edit_interface({
-    "action": "addchild",
+// Add a new child to an existing family
+function add_child_to_family(xref, gender) {
+  return edit_interface({
+    "action": "add_child_to_family",
     "gender": gender,
-    "famid":  famid
+    "xref":   xref
   });
-  return false;
 }
 
-function add_unlinked_indi() {
-  edit_interface({
-    "action": "add_unlinked_indi",
+// Add a new child to an existing individual (creating a one-parent family)
+function add_child_to_individual(xref, gender) {
+  return edit_interface({
+    "action": "add_child_to_individual",
+    "gender": gender,
+    "xref":   xref
   });
-  return false;
 }
 
-function addnewspouse(xref, famtag) {
-  edit_interface({
-    "action": "addspouse",
+// Add a new parent to an existing individual (creating a one-parent family)
+function add_parent_to_individual(xref, gender) {
+  return edit_interface({
+    "action": "add_parent_to_individual",
+    "xref":   xref,
+    "gender": gender
+  });
+}
+
+// Add a new spouse to an existing family
+function add_spouse_to_family(xref, famtag) {
+  return edit_interface({
+    "action": "add_spouse_to_family",
     "xref":   xref,
     "famtag": famtag
   });
-  return false;
 }
 
-function addopfchild(xref, gender) {
-  edit_interface({
-    "action": "addopfchild",
-    "xref": xref,
-    "gender": gender
+function add_unlinked_indi() {
+  return edit_interface({
+    "action": "add_unlinked_indi",
   });
-  return false;
 }
 
-function addspouse(xref, famtag) {
-  edit_interface({
-    "action": "addspouse",
-    "xref": xref,
-    "famtag": famtag,
-    "famid": "new"
+// Add a new spouse to an existing individual (creating a new family)
+function add_spouse_to_individual(xref, famtag) {
+  return edit_interface({
+    "action": "add_spouse_to_individual",
+    "xref":   xref,
+    "famtag": famtag
   });
-  return false;
 }
 
 function linkspouse(xref, famtag) {
-  edit_interface({
+  return edit_interface({
     "action": "linkspouse",
     "xref": xref,
     "famtag": famtag,
     "famid": "new"
   });
-  return false;
 }
 
 function add_famc(xref) {
-  edit_interface({
+  return edit_interface({
     "action": "addfamlink",
     "xref": xref,
   });
-  return false;
 }
 
 function edit_name(xref, fact_id) {
-  edit_interface({
+  return edit_interface({
     "action": "editname",
     "xref": xref,
     "fact_id": fact_id
   });
-  return false;
 }
 
 function add_name(xref) {
-  edit_interface({
+  return edit_interface({
     "action": "addname",
     "xref": xref
   });
-  return false;
-}
-
-function addnewparent(xref, famtag) {
-  edit_interface({
-    "action": "addnewparent",
-    "xref":   xref,
-    "famtag": famtag
-  });
-  return false;
-}
-
-function addnewparentfamily(xref, famtag, famid) {
-  edit_interface({
-    "action": "addnewparent",
-    "xref":   xref,
-    "famtag": famtag,
-    "famid":  famid
-  });
-  return false;
 }
 
 // Delete a fact - and reload the page
@@ -519,19 +498,17 @@ function copy_fact(xref, fact_id) {
 }
 
 function reorder_children(xref) {
-  edit_interface({
+  return edit_interface({
     "action": "reorder_children",
     "xref":   xref
   });
-  return false;
 }
 
 function reorder_families(xref) {
-  edit_interface({
+  return edit_interface({
     "action": "reorder_fams",
     "xref":    xref
   });
-  return false;
 }
 
 function reply(username, subject) {
@@ -545,48 +522,43 @@ function delete_message(id) {
 }
 
 function change_family_members(xref) {
-  edit_interface({
+  return edit_interface({
     "action": "changefamily",
     "xref":   xref
   });
-  return false;
 }
 
 function addnewsource(field) {
 	pastefield=field;
-	edit_interface({
+	return edit_interface({
 		"action": "addnewsource",
 		"xref":   "newsour"
 	}, null, field);
-	return false;
 }
 
 function addnewrepository(field) {
 	pastefield=field;
-	edit_interface({
+	return edit_interface({
 		"action": "addnewrepository",
 		"xref":   "newrepo"
 	}, null, field);
-	return false;
 }
 
 function addnewnote(field) {
 	pastefield=field;
-	edit_interface({
+	return edit_interface({
 		"action": "addnewnote",
 		"noteid": "newnote"
 	}, null, field);
-	return false;
 }
 
 function addnewnote_assisted(field, xref) {
 	pastefield=field;
-	edit_interface({
+	return edit_interface({
 		"action": "addnewnote_assisted",
 		"noteid": "newnote",
 		"xref":   xref
 	}, assist_window_specs, field);
-	return false;
 }
 
 function addmedia_links(field, iid, iname) {

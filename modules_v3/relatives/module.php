@@ -93,7 +93,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<tr>
 				<td class="facts_label"><?php echo WT_I18N::translate('Add husband'); ?></td>
-				<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a husband to this family'); ?></a></td>
+				<td class="facts_value"><a href="#" onclick="return add_spouse_to_family('<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a husband to this family'); ?></a></td>
 			</tr>
 			<?php
 		}
@@ -163,7 +163,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<tr>
 				<td class="facts_label"><?php echo WT_I18N::translate('Add wife'); ?></td>
-				<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
+				<td class="facts_value"><a href="#" onclick="return add_spouse_to_family('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
 			</tr>
 			<?php
 		}
@@ -208,10 +208,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					<?php } ?>
 				</td>
 				<td class="facts_value">
-					<a href="#" onclick="return addnewchild('<?php echo $family->getXref(); ?>');"><?php echo $child_u; ?></a>
+					<a href="#" onclick="return add_child_to_family('<?php echo $family->getXref(); ?>');"><?php echo $child_u; ?></a>
 					<span style='white-space:nowrap;'>
-						<a href="#" class="icon-sex_m_15x15" onclick="return addnewchild('<?php echo $family->getXref(); ?>','M');"></a>
-						<a href="#" class="icon-sex_f_15x15" onclick="return addnewchild('<?php echo $family->getXref(); ?>','F');"></a>
+						<a href="#" class="icon-sex_m_15x15" onclick="return add_child_to_family('<?php echo $family->getXref(); ?>','M');"></a>
+						<a href="#" class="icon-sex_f_15x15" onclick="return add_child_to_family('<?php echo $family->getXref(); ?>','F');"></a>
 					</span>
 				</td>
 			</tr>
@@ -246,10 +246,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<table class="facts_table">
 				<tr>
-					<td class="facts_value"><a href="#" onclick="return addnewparent('<?php echo $controller->record->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a new father'); ?></td>
+					<td class="facts_value"><a href="#" onclick="return add_parent_to_individual('<?php echo $controller->record->getXref(); ?>', 'M');"><?php echo WT_I18N::translate('Add a new father'); ?></td>
 				</tr>
 				<tr>
-					<td class="facts_value"><a href="#" onclick="return addnewparent('<?php echo $controller->record->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a new mother'); ?></a></td>
+					<td class="facts_value"><a href="#" onclick="return add_parent_to_individual('<?php echo $controller->record->getXref(); ?>', 'F');"><?php echo WT_I18N::translate('Add a new mother'); ?></a></td>
 				</tr>
 			</table>
 			<?php
@@ -299,7 +299,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<?php if ($controller->record->getSex()!="F") { ?>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return addspouse('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Add a new wife'); ?></a>
+				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Add a new wife'); ?></a>
 				</td>
 			</tr>
 			<tr>
@@ -311,7 +311,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			if ($controller->record->getSex()!="M") { ?>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return addspouse('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Add a new husband'); ?></a>
+				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Add a new husband'); ?></a>
 				</td>
 			</tr>
 			<tr>
@@ -322,7 +322,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<?php } ?>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return addopfchild('<?php echo $controller->record->getXref(); ?>','U');"><?php echo WT_I18N::translate('Add a child to create a one-parent family'); ?></a>
+				<a href="#" onclick="return add_child_to_individual('<?php echo $controller->record->getXref(); ?>','U');"><?php echo WT_I18N::translate('Add a child to create a one-parent family'); ?></a>
 				</td>
 			</tr>
 		</table>

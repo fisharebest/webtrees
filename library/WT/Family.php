@@ -43,18 +43,12 @@ class WT_Family extends WT_GedcomRecord {
 		if (preg_match('/^1 HUSB @(.+)@/m', $gedcom.$pending, $match)) {
 			$this->husb = WT_Individual::getInstance($match[1]);
 		}
-		if (!$this->husb) {
-			$this->husb = new WT_Individual('M', '0 @M@ INDI', null, $gedcom_id);
-		}
 		if (preg_match('/^1 WIFE @(.+)@/m', $gedcom.$pending, $match)) {
 			$this->wife = WT_Individual::getInstance($match[1]);
 		}
-		if (!$this->wife) {
-			$this->wife = new WT_Individual('F', '0 @F@ INDI', null, $gedcom_id);
-		}
 
 		// Make sure husb/wife are the right way round.
-		if ($this->husb->getSex()=='F' || $this->wife->getSex()=='M') {
+		if ($this->husb && $this->husb->getSex()=='F' || $this->wife && $this->wife->getSex()=='M') {
 			list($this->husb, $this->wife) = array($this->wife, $this->husb);
 		}
 	}
@@ -132,7 +126,14 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	function getSpouses($access_level=WT_USER_ACCESS_LEVEL) {
-		return array($this->husb, $this->wife);
+		$spouses=array();
+		if ($this->husb) {
+			$spouses[] = $this->husb;
+		}
+		if ($this->wife) {
+			$spouses[] = $this->wife;
+		}
+		return $spouses;
 	}
 
 	/**
@@ -240,13 +241,35 @@ class WT_Family extends WT_GedcomRecord {
 
 	// Get an array of structures containing all the names in the record
 	public function getAllNames() {
+		global $UNKNOWN_NN, $UNKNOWN_PN;
+
 		if (is_null($this->_getAllNames)) {
 			// Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
-			$husb_names=$this->husb->getAllNames();
+			if ($this->husb) {
+				$husb_names=$this->husb->getAllNames();
+			} else {
+				$husb_names = array(
+					0 => array(
+						'type' => 'BIRT',
+						'sort' => '@N.N.',
+						'full' => $UNKNOWN_PN, ' ', $UNKNOWN_NN,
+					),
+				);
+			}
 			foreach ($husb_names as $n=>$husb_name) {
 				$husb_names[$n]['script']=utf8_script($husb_name['full']);
 			}
-			$wife_names=$this->wife->getAllNames();
+			if ($this->wife) {
+				$wife_names=$this->wife->getAllNames();
+			} else {
+				$wife_names = array(
+					0 => array(
+						'type' => 'BIRT',
+						'sort' => '@N.N.',
+						'full' => $UNKNOWN_PN, ' ', $UNKNOWN_NN,
+					),
+				);
+			}
 			foreach ($wife_names as $n=>$wife_name) {
 				$wife_names[$n]['script']=utf8_script($wife_name['full']);
 			}

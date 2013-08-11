@@ -240,19 +240,21 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 			// Spouse Families -------------------------------------- @var $family Family
 			foreach ($person->getSpouseFamilies() as $family) {
-				$spouse = $family->getSpouse($person);
-				$children = $family->getChildren();
 
 				// Spouse ------------------------------
-				$spouselinks .= '<a class="flyout3" href="' . $spouse->getHtmlUrl() . '">';
-				$spouselinks .= $spouse->getFullName();
-				$spouselinks .= '</a>';
-				$spouselinks .= '<br>';
-				if ($spouse->getFullName() != '') {
-					$persons = 'Yes';
+				$spouse = $family->getSpouse($person);
+				if ($spouse) {
+					$spouselinks .= '<a class="flyout3" href="' . $spouse->getHtmlUrl() . '">';
+					$spouselinks .= $spouse->getFullName();
+					$spouselinks .= '</a>';
+					$spouselinks .= '<br>';
+					if ($spouse->getFullName() != '') {
+						$persons = 'Yes';
+					}
 				}
 
 				// Children ------------------------------   @var $child Person
+				$children = $family->getChildren();
 				foreach ($children as $child) {
 					$persons='Yes';
 					$spouselinks .= '<ul class="clist">';
