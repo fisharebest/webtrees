@@ -199,18 +199,18 @@ case 'edit':
 	switch ($record::RECORD_TYPE) {
 	case 'OBJE':
 	case 'NOTE':
-		// OBJE and NOTE "facts" are all special, and none can take lower-level links
+		// OBJE and NOTE facts are all special, and none can take lower-level links
 		break;
 	case 'SOUR':
 	case 'REPO':
-		// SOUR and REPO "facts" may only take a NOTE
+		// SOUR and REPO facts may only take a NOTE
 		if ($level1type!='NOTE') {
 			print_add_layer('NOTE');
 		}
 		break;
 	case 'FAM':
 	case 'INDI':
-		// FAM and INDI records have "real facts".  They can take NOTE/SOUR/OBJE/etc.
+		// FAM and INDI records have real facts.  They can take NOTE/SOUR/OBJE/etc.
 		if ($level1type!='SEX') {
 			if ($level1type!='SOUR' && $level1type!='REPO') {
 				print_add_layer('SOUR');
@@ -287,7 +287,7 @@ case 'add':
 		if ($fact!='OBJE' && $fact!='SHARED_NOTE' && $fact!='OBJE' && $fact!='REPO' && $fact!='SOUR' && $fact!='ASSO') {
 			print_add_layer('SOUR');
 			print_add_layer('OBJE');
-			// Don't add notes to notes!
+			// Don’t add notes to notes!
 			if ($fact!='NOTE') {
 				print_add_layer('NOTE');
 				print_add_layer('SHARED_NOTE');
@@ -540,7 +540,7 @@ case 'add_parent_to_individual':
 	$individual = WT_Individual::getInstance($xref);
 	check_record_access($individual);
 
-	if ($sex='F') {
+	if ($gender=='F') {
 		$controller->setPageTitle(WT_I18N::translate('Add a new mother'));
 		$famtag = 'WIFE';
 	} else {
@@ -790,7 +790,7 @@ case 'add_spouse_to_family_action':
 	} else {
 		$famrec = updateRest($famrec);
 	}
-	$family->createFact(trim($famrec), true); // trim leading "\n"
+	$family->createFact(trim($famrec), true); // trim leading \n
 
 	if (safe_POST('goto')=='new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $spouse->getRawUrl() . '");');
@@ -2101,7 +2101,7 @@ function keep_chan(WT_GedcomRecord $record=null) {
 	}
 }
 
-// prints a form to add an individual or edit an individual's name
+// prints a form to add an individual or edit an individual’s name
 function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $family=null, WT_Fact $name_fact=null, $famtag='CHIL', $sextag='U') {
 	global $WORD_WRAPPED_NOTES;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept;
@@ -2165,7 +2165,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	$new_marnm='';
 	// Inherit surname from parents, spouse or child
 	if (!$namerec) {
-		// We'll need the parent's name to set the child's surname
+		// We’ll need the parent’s name to set the child’s surname
 		if ($family) {
 			$father = $family->getHusband();
 			if ($father && $father->getFirstFact('NAME')) {
@@ -2181,9 +2181,9 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 			}
 		} else {
 			$father_name = '';
-			$father_name = '';
+			$mother_name = '';
 		}
-		// We'll need the spouse/child's name to set the spouse/parent's surname
+		// We’ll need the spouse/child’s name to set the spouse/parent’s surname
 		if ($person && $person->getFirstFact('NAME')) {
 			$indi_name = $person->getFirstFact('NAME')->getValue();
 		} else {
@@ -2197,21 +2197,25 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 			//Child:  Pablo /CCCC AAAA/
 			switch ($nextaction) {
 			case 'add_child_to_family_action':
-				if (preg_match('/\/(\S+)\s+\S+\//', $mother_name, $matchm) &&
-						preg_match('/\/(\S+)\s+\S+\//', $father_name, $matchf)) {
+				if (preg_match('/\/(\S+) \S+\//', $mother_name, $matchm) &&
+						preg_match('/\/(\S+) \S+\//', $father_name, $matchf)) {
 					$name_fields['SURN']=$matchf[1].' '.$matchm[1];
 					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
 				}
 				break;
+			case 'add_parent_to_individual_action':
+				if ($famtag=='HUSB' && preg_match('/\/(\S+) \S+\//', $indi_name, $match)) {
+					$name_fields['SURN']=$match[1];
+					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
+				}
+				if ($famtag=='WIFE' && preg_match('/\/\S+ (\S+)\//', $indi_name, $match)) {
+					$name_fields['SURN']=$match[1];
+					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
+				}
+				break;
+			case 'add_child_to_individual_action':
+			case 'add_spouse_to_individual_action':
 			case 'add_spouse_to_family_action':
-				if ($famtag=='HUSB' && preg_match('/\/(\S+)\s+\S+\//', $indi_name, $match)) {
-					$name_fields['SURN']=$match[1].' ';
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
-				}
-				if ($famtag=='WIFE' && preg_match('/\/\S+\s+(\S+)\//', $indi_name, $match)) {
-					$name_fields['SURN']=$match[1].' ';
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
-				}
 				break;
 			}
 			break;
@@ -2227,21 +2231,25 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
 				}
 				break;
-			case 'add_spouse_to_family_action':
+			case 'add_parent_to_individual_action':
 				if ($famtag=='HUSB' && preg_match('/\/\S+\s+(\S+)\//', $indi_name, $match)) {
-					$name_fields['SURN']=' '.$match[1];
+					$name_fields['SURN']=$match[1];
 					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
 				}
 				if ($famtag=='WIFE' && preg_match('/\/(\S+)\s+\S+\//', $indi_name, $match)) {
-					$name_fields['SURN']=' '.$match[1];
+					$name_fields['SURN']=$match[1];
 					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
 				}
+				break;
+			case 'add_child_to_individual_action':
+			case 'add_spouse_to_individual_action':
+			case 'add_spouse_to_family_action':
 				break;
 			}
 			break;
 		case 'icelandic':
-			// Sons get their father's given name plus "sson"
-			// Daughters get their father's given name plus "sdottir"
+			// Sons get their father’s given name plus “sson”
+			// Daughters get their father’s given name plus “sdottir”
 			switch ($nextaction) {
 			case 'add_child_to_family_action':
 				if ($sextag=='M' && preg_match('/(\S+)\s+\/.*\//', $father_name, $match)) {
@@ -2253,7 +2261,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
 				}
 				break;
-			case 'add_spouse_to_family_action':
+			case 'add_parent_to_individual_action':
 				if ($famtag=='HUSB' && preg_match('/(\S+)sson\s+\/.*\//i', $indi_name, $match)) {
 					$name_fields['GIVN']=$match[1];
 					$name_fields['NAME']=$name_fields['GIVN'].' //';
@@ -2262,6 +2270,10 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 					$name_fields['GIVN']=$match[1];
 					$name_fields['NAME']=$name_fields['GIVN'].' //';
 				}
+				break;
+			case 'add_child_to_individual_action':
+			case 'add_spouse_to_individual_action':
+			case 'add_spouse_to_family_action':
 				break;
 			}
 			break;
@@ -2275,12 +2287,16 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
 				}
 				break;
-			case 'add_spouse_to_family_action':
+			case 'add_parent_to_individual_action':
 				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
 					$name_fields['SURN']=$match[2];
 					$name_fields['SPFX']=trim($match[1]);
 					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
 				}
+				break;
+			case 'add_child_to_individual_action':
+			case 'add_spouse_to_individual_action':
+			case 'add_spouse_to_family_action':
 				break;
 			}
 			break;
@@ -2294,12 +2310,16 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
 				}
 				break;
-			case 'add_spouse_to_family_action':
+			case 'add_parent_to_individual_action':
 				if ($famtag=='WIFE' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
 					$name_fields['SURN']=$match[2];
 					$name_fields['SPFX']=trim($match[1]);
 					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
 				}
+				break;
+			case 'add_child_to_individual_action':
+			case 'add_spouse_to_individual_action':
+			case 'add_spouse_to_family_action':
 				break;
 			}
 			break;
@@ -2330,7 +2350,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
 				}
 				break;
-			case 'add_spouse_to_family_action':
+			case 'add_parent_to_individual_action':
 				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
 					if ($SURNAME_TRADITION=='polish' && $sextag=='M') {
 						$match[2]=preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $match[2]);
@@ -2349,6 +2369,9 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 						$new_marnm=$match[2];
 					}
 				}
+				break;
+			case 'add_child_to_individual_action':
+			case 'add_spouse_to_family_action':
 				break;
 			}
 			break;
@@ -2376,7 +2399,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 		if (empty($name_fields['GIVN'])) {
 			$name_fields['GIVN']=$name_bits[4];
 		}
-		// Don't automatically create an empty NICK - it is an "advanced" field.
+		// Don’t automatically create an empty NICK - it is an “advanced” field.
 		if (empty($name_fields['NICK']) && !empty($name_bits[6]) && !preg_match('/^2 NICK/m', $namerec)) {
 			$name_fields['NICK']=$name_bits[6];
 		}
@@ -2425,7 +2448,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 				}
 	}
 
-	// Handle any other NAME subfields that aren't included above (SOUR, NOTE, _CUSTOM, etc)
+	// Handle any other NAME subfields that aren’t included above (SOUR, NOTE, _CUSTOM, etc)
 	if ($namerec) {
 		$gedlines = explode("\n", $namerec); // -- find the number of lines in the record
 		$fields = explode(' ', $gedlines[0]);
@@ -2500,7 +2523,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	}
 	echo keep_chan($person);
 	echo "</table>";
-	if ($nextaction=='update') { // GEDCOM 5.5.1 spec says NAME doesn't get a OBJE
+	if ($nextaction=='update') { // GEDCOM 5.5.1 spec says NAME doesn’t get a OBJE
 		print_add_layer('SOUR');
 		print_add_layer('NOTE');
 		print_add_layer('SHARED_NOTE');
