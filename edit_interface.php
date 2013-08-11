@@ -1075,6 +1075,7 @@ case 'addrepoaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addchildaction':
 	$famid     = safe_POST('famid', WT_REGEX_XREF); // Add a child to this family
+	$PEDI      = safe_POST('PEDI');
 	$keep_chan = safe_POST_bool('keep_chan');
 
 	$family = WT_Family::getInstance($famid);
@@ -1092,11 +1093,6 @@ case 'addchildaction':
 		foreach ($matches[1] as $match) {
 			$gedrec.=addNewFact($match);
 		}
-	}
-	if (isset($_REQUEST['PEDI'])) {
-		$PEDI = $_REQUEST['PEDI'];
-	} else {
-		$PEDI = '';
 	}
 	$gedrec .= "\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $famid);
 	if (safe_POST_bool('SOUR_INDI')) {
