@@ -453,9 +453,6 @@ if ($gedrec == '') {
 }
 if ($gedfile != 'FILE') {
 	$gedfile = 'FILE ' . substr($gedfile, 5);
-	$readOnly = 'READONLY';
-} else {
-	$readOnly = '';
 }
 if ($gedfile == 'FILE') {
 	// Box for user to choose to upload file from local computer
@@ -472,7 +469,7 @@ if ($gedfile == 'FILE') {
 $isExternal = isFileExternal($gedfile);
 if ($gedfile == 'FILE') {
 	if (WT_USER_GEDCOM_ADMIN) {
-		add_simple_tag("1 $gedfile", '', WT_I18N::translate('File name on server'), '', 'NOCLOSE');
+		add_simple_tag("1 $gedfile", '', WT_I18N::translate('File name on server'), 'NOCLOSE');
 		echo '<p class="sub">' . WT_I18N::translate('Do not change to keep original file name.');
 		echo WT_I18N::translate('You may enter a URL, beginning with &laquo;http://&raquo;.') . '</p></td></tr>';
 	}

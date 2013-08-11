@@ -346,12 +346,10 @@ function print_addnewsource_link($element_id) {
 * @param string $tag fact record to edit (eg 2 DATE xxxxx)
 * @param string $upperlevel optional upper level tag (eg BIRT)
 * @param string $label An optional label to echo instead of the default
-* @param string $readOnly optional, when "READONLY", fact data can't be changed
 * @param string $noClose optional, when "NOCLOSE", final "</td></tr>" won't be printed
 * (so that additional text can be printed in the box)
-* @param boolean $rowDisplay True to have the row displayed by default, false to hide it by default
 */
-function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose='', $rowDisplay=true) {
+function add_simple_tag($tag, $upperlevel='', $label='', $noClose='') {
 	global $MEDIA_DIRECTORY, $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
 	global $xref, $linkToID, $bdm, $action, $event_add, $CensDate;
@@ -390,13 +388,8 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		</script>
 		<?php
 	}
-	if (!isset($noClose) && isset($readOnly) && $readOnly=="NOCLOSE") {
-		$noClose = "NOCLOSE";
-		$readOnly = '';
-	}
 
-	if (!isset($noClose) || $noClose!="NOCLOSE") $noClose = '';
-	if (!isset($readOnly) || $readOnly!="READONLY") $readOnly = '';
+	if ($noClose!="NOCLOSE") $noClose = '';
 
 	if (empty($linkToID)) $linkToID = $xref;
 
@@ -643,13 +636,13 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			if ($fact=="LONG") {
 				echo " onblur=\"valid_lati_long(this, 'E', 'W');\" onmouseout=\"valid_lati_long(this, 'E', 'W');\"";
 			}
-			echo ' ', $readOnly, ">";
+			echo '>';
 		}
 		
 		$tmp_array = array('TYPE','TIME','NOTE','SOUR','REPO','OBJE','ASSO','_ASSO','AGE');
 		
 		// split PLAC
-		if ($fact=="PLAC" && $readOnly=='') {
+		if ($fact=='PLAC') {
 			echo "<div id=\"", $element_id, "_pop\" style=\"display: inline;\">";
 			echo print_specialchar_link($element_id), ' ', print_findplace_link($element_id);
 			echo '<span  onclick="jQuery(\'#', $upperlevel, '_LATI_tr,#', $upperlevel, '_LONG_tr,#INDI_LATI_tr,#INDI_LONG_tr,tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', WT_Gedcom_Tag::getLabel('LATI'), ' / ', WT_Gedcom_Tag::getLabel('LONG'), '"></span>';
@@ -658,7 +651,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				places_assistant_WT_Module::setup_place_subfields($element_id);
 				places_assistant_WT_Module::print_place_subfields($element_id);
 			}	
-		} elseif (!in_array($fact, $tmp_array) && $readOnly=='') {
+		} elseif (!in_array($fact, $tmp_array)) {
 			echo print_specialchar_link($element_id);
 		}
 	}
@@ -689,114 +682,110 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 
 	// popup links
-	if (!$readOnly) {
-		switch ($fact) {
-		case 'DATE':
-			echo print_calendar_popup($element_id);
-			// If GEDFact_assistant/_CENS/ module is installed -------------------------------------------------
-			if ($action=='add' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-				if (isset($CensDate) && $CensDate=='yes') {
-					require_once WT_ROOT.WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_asst_date.php';
-				}
+	switch ($fact) {
+	case 'DATE':
+		echo print_calendar_popup($element_id);
+		// If GEDFact_assistant/_CENS/ module is installed -------------------------------------------------
+		if ($action=='add' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+			if (isset($CensDate) && $CensDate=='yes') {
+				require_once WT_ROOT.WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_asst_date.php';
 			}
-			// -------------------------------------------------------------------------------------------------
-			break;
-		case 'FAMC':
-		case 'FAMS':
-			echo print_findfamily_link($element_id);
-			break;
-		case 'ASSO':
-		case '_ASSO':
-			echo print_findindi_link($element_id);
-			break;
-		case 'FILE':
-			print_findmedia_link($element_id, "0file");
-			break;
-		case 'SOUR':
-			echo print_findsource_link($element_id), ' ', print_addnewsource_link($element_id);
-			//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
-			if ($level==1) {
-				echo '<br>';
-				if ($PREFER_LEVEL2_SOURCES==='0') {
-					$level1_checked='';
-					$level2_checked='';
-				} else if ($PREFER_LEVEL2_SOURCES==='1' || $PREFER_LEVEL2_SOURCES===true) {
-					$level1_checked='';
-					$level2_checked=' checked="checked"';
-				} else {
-					$level1_checked=' checked="checked"';
-					$level2_checked='';
-
-				}
-				if (strpos($bdm, 'B')!==false) {
-					echo '&nbsp;<input type="checkbox" name="SOUR_INDI" ', $level1_checked, ' value="Y">';
-					echo WT_I18N::translate('Individual');
-					if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
-						foreach ($matches[1] as $match) {
-							if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
-								echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
-								echo WT_Gedcom_Tag::getLabel($match);
-							}
-						}
-					}
-				}
-				if (strpos($bdm, 'D')!==false) {
-					if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
-						foreach ($matches[1] as $match) {
-							if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
-								echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
-								echo WT_Gedcom_Tag::getLabel($match);
-							}
-						}
-					}
-				}
-				if (strpos($bdm, 'M')!==false) {
-					echo '&nbsp;<input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="Y">';
-					echo WT_I18N::translate('Family');
-					if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
-						foreach ($matches[1] as $match) {
+		}
+		break;
+	case 'FAMC':
+	case 'FAMS':
+		echo print_findfamily_link($element_id);
+		break;
+	case 'ASSO':
+	case '_ASSO':
+		echo print_findindi_link($element_id);
+		break;
+	case 'FILE':
+		print_findmedia_link($element_id, "0file");
+		break;
+	case 'SOUR':
+		echo print_findsource_link($element_id), ' ', print_addnewsource_link($element_id);
+		//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
+		if ($level==1) {
+			echo '<br>';
+			if ($PREFER_LEVEL2_SOURCES==='0') {
+				$level1_checked='';
+				$level2_checked='';
+			} else if ($PREFER_LEVEL2_SOURCES==='1' || $PREFER_LEVEL2_SOURCES===true) {
+				$level1_checked='';
+				$level2_checked=' checked="checked"';
+			} else {
+				$level1_checked=' checked="checked"';
+				$level2_checked='';
+			}
+			if (strpos($bdm, 'B')!==false) {
+				echo '&nbsp;<input type="checkbox" name="SOUR_INDI" ', $level1_checked, ' value="Y">';
+				echo WT_I18N::translate('Individual');
+				if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
+					foreach ($matches[1] as $match) {
+						if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
 							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
 							echo WT_Gedcom_Tag::getLabel($match);
 						}
 					}
 				}
 			}
-			break;
-		case 'REPO':
-			echo print_findrepository_link($element_id), ' ', print_addnewrepository_link($element_id);
-			break;
-		case 'NOTE':
-			// Shared Notes Icons ========================================
-			if ($islink) {
-				// Print regular Shared Note icons ---------------------------
-				echo ' ', print_findnote_link($element_id), ' ', print_addnewnote_link($element_id);
-				if ($value) {
-					echo ' ', print_editnote_link($value);
-				}
-				// If GEDFact_assistant/_CENS/ module exists && we are on the INDI page and the action is a GEDFact CENS assistant addition.
-				// Then show the add Shared note assisted icon, if not  ... show regular Shared note icons.
-				if (($action=='add' || $action=='edit') && $xref && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-					// Check if a CENS event ---------------------------
-					if ($event_add=='census_add') {
-						$type_pid=WT_GedcomRecord::getInstance($xref);
-						if ($type_pid instanceof WT_Individual) {
-							echo '<br>', print_addnewnote_assisted_link($element_id, $xref);
+			if (strpos($bdm, 'D')!==false) {
+				if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
+					foreach ($matches[1] as $match) {
+						if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
+							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
+							echo WT_Gedcom_Tag::getLabel($match);
 						}
 					}
 				}
 			}
-			break;
-		case 'OBJE':
-			echo print_findmedia_link($element_id, '1media');
-			if (!$value) {
-				echo ' ', print_addnewmedia_link($element_id);
-				$value = 'new';
+			if (strpos($bdm, 'M')!==false) {
+				echo '&nbsp;<input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="Y">';
+				echo WT_I18N::translate('Family');
+				if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
+					foreach ($matches[1] as $match) {
+						echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
+						echo WT_Gedcom_Tag::getLabel($match);
+					}
+				}
 			}
-			break;
 		}
-
-		echo '<br>';
+		break;
+	case 'REPO':
+		echo print_findrepository_link($element_id), ' ', print_addnewrepository_link($element_id);
+		break;
+	case 'NOTE':
+		// Shared Notes Icons ========================================
+		if ($islink) {
+			// Print regular Shared Note icons ---------------------------
+			echo ' ', print_findnote_link($element_id), ' ', print_addnewnote_link($element_id);
+			if ($value) {
+				echo ' ', print_editnote_link($value);
+			}
+			// If GEDFact_assistant/_CENS/ module exists && we are on the INDI page and the action is a GEDFact CENS assistant addition.
+			// Then show the add Shared note assisted icon, if not  ... show regular Shared note icons.
+			if (($action=='add' || $action=='edit') && $xref && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+				// Check if a CENS event ---------------------------
+				if ($event_add=='census_add') {
+					$type_pid=WT_GedcomRecord::getInstance($xref);
+					if ($type_pid instanceof WT_Individual) {
+						echo '<br>', print_addnewnote_assisted_link($element_id, $xref);
+					}
+				}
+			}
+		}
+		break;
+	case 'OBJE':
+		echo print_findmedia_link($element_id, '1media');
+		if (!$value) {
+			echo ' ', print_addnewmedia_link($element_id);
+			$value = 'new';
+		}
+		break;
 	}
+
+	echo '<br>';
 
 	// current value
 	if ($fact=='DATE') {
@@ -840,9 +829,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 
 	// pastable values
-	if ($readOnly=='') {
-		if ($fact=='FORM' && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept);
-	}
+	if ($fact=='FORM' && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept);
 
 	if ($noClose != 'NOCLOSE') echo '</td></tr>';
 
