@@ -347,7 +347,6 @@ function print_addnewsource_link($element_id) {
 * @param string $upperlevel optional upper level tag (eg BIRT)
 * @param string $label An optional label to echo instead of the default
 * @param string $extra optional text to display after the input field
-* (so that additional text can be printed in the box)
 */
 function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	global $MEDIA_DIRECTORY, $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
@@ -836,109 +835,104 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 function print_add_layer($tag, $level=2) {
 	global $FULL_SOURCES;
 
-	if ($tag=='OBJE' && get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') < WT_USER_ACCESS_LEVEL) {
-		return;
-	}
-
-	if ($tag=="SOUR") {
-		//-- Add new source to fact
-		echo "<a href=\"#\" onclick=\"return expand_layer('newsource');\"><i id=\"newsource_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new source citation'), "</a>";
+	switch ($tag) {
+	case 'SOUR':
+		echo "<a href=\"#\" onclick=\"return expand_layer('newsource');\"><i id=\"newsource_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new source citation'), '</a>';
 		echo help_link('edit_add_SOUR');
-		echo "<br>";
-		echo "<div id=\"newsource\" style=\"display: none;\">";
-		echo "<table class=\"facts_table\">";
+		echo '<br>';
+		echo '<div id="newsource" style="display: none;">';
+		echo '<table class="facts_table">';
 		// 2 SOUR
-		$source = "SOUR @";
-		add_simple_tag("$level $source");
+		add_simple_tag($level . ' SOUR @');
 		// 3 PAGE
-		$page = "PAGE";
-		add_simple_tag(($level+1)." $page");
+		add_simple_tag(($level+1) . ' PAGE');
 		// 3 DATA
 		// 4 TEXT
-		$text = "TEXT";
-		add_simple_tag(($level+2)." $text");
+		add_simple_tag(($level+2) . ' TEXT');
 		if ($FULL_SOURCES) {
 			// 4 DATE
-			add_simple_tag(($level+2)." DATE", '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+			add_simple_tag(($level+2) . ' DATE', '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
 			// 3 QUAY
-			add_simple_tag(($level+1)." QUAY");
+			add_simple_tag(($level+1) . ' QUAY');
 		}
 		// 3 OBJE
-		add_simple_tag(($level+1)." OBJE");
+		add_simple_tag(($level+1) . ' OBJE');
 		// 3 SHARED_NOTE
-		add_simple_tag(($level+1)." SHARED_NOTE");
-		echo "</table></div>";
-	}
-	if ($tag=="ASSO" || $tag=="ASSO2") {
-		//-- Add a new ASSOciate
-		if ($tag=="ASSO") {
-			echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><i id=\"newasso_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new associate'), "</a>";
-			echo help_link('edit_add_ASSO');
-			echo "<br>";
-			echo "<div id=\"newasso\" style=\"display: none;\">";
-		} else {
-			echo "<a href=\"#\" onclick=\"return expand_layer('newasso2');\"><i id=\"newasso2_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new associate'), "</a>";
-			echo help_link('edit_add_ASSO');
-			echo "<br>";
-			echo "<div id=\"newasso2\" style=\"display: none;\">";
-		}
-		echo "<table class=\"facts_table\">";
-		// 2 ASSO
-		add_simple_tag(($level)." ASSO @");
-		// 3 RELA
-		add_simple_tag(($level+1)." RELA");
-		// 3 NOTE
-		add_simple_tag(($level+1)." NOTE");
-		// 3 SHARED_NOTE
-		add_simple_tag(($level+1)." SHARED_NOTE");
-		echo "</table></div>";
-	}
-	if ($tag=="NOTE") {
-		//-- Retrieve existing note or add new note to fact
-		$text = '';
-		echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><i id=\"newnote_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new note'), "</a>";
-		echo help_link('edit_add_NOTE');
-		echo "<br>";
-		echo "<div id=\"newnote\" style=\"display: none;\">";
-		echo "<table class=\"facts_table\">";
-		// 2 NOTE
-		add_simple_tag(($level)." NOTE ".$text);
-		echo "</table></div>";
-	}
-	if ($tag=="SHARED_NOTE") {
-		//-- Retrieve existing shared note or add new shared note to fact
-		$text = '';
-		echo "<a href=\"#\" onclick=\"return expand_layer('newshared_note');\"><i id=\"newshared_note_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new shared note'), "</a>";
-		echo help_link('edit_add_SHARED_NOTE');
-		echo "<br>";
-		echo "<div id=\"newshared_note\" style=\"display: none;\">";
-		echo "<table class=\"facts_table\">";
-		// 2 SHARED NOTE
-		add_simple_tag(($level)." SHARED_NOTE ");
+		add_simple_tag(($level+1) . ' SHARED_NOTE');
+		echo '</table></div>';
+		break;
 
-		echo "</table></div>";
-	}
-	if ($tag=="OBJE") {
-		//-- Add new obje to fact
-		echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new media object'), "</a>";
-		echo help_link('OBJE');
-		echo "<br>";
-		echo "<div id=\"newobje\" style=\"display: none;\">";
-		echo "<table class=\"facts_table\">";
-		add_simple_tag($level." OBJE");
-		echo "</table></div>";
-	}
-	if ($tag=="RESN") {
-		//-- Retrieve existing resn or add new resn to fact
-		$text = '';
-		echo "<a href=\"#\" onclick=\"return expand_layer('newresn');\"><i id=\"newresn_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new restriction'), "</a>";
+	case 'ASSO':
+	case 'ASSO2':
+		//-- Add a new ASSOciate
+		if ($tag=='ASSO') {
+			echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><i id=\"newasso_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new associate'), '</a>';
+			echo help_link('edit_add_ASSO');
+			echo '<br>';
+			echo '<div id="newasso" style="display: none;">';
+		} else {
+			echo "<a href=\"#\" onclick=\"return expand_layer('newasso2');\"><i id=\"newasso2_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new associate'), '</a>';
+			echo help_link('edit_add_ASSO');
+			echo '<br>';
+			echo '<div id="newasso2" style="display: none;">';
+		}
+		echo '<table class="facts_table">';
+		// 2 ASSO
+		add_simple_tag($level . ' ASSO @');
+		// 3 RELA
+		add_simple_tag(($level+1) . ' RELA');
+		// 3 NOTE
+		add_simple_tag(($level+1) . ' NOTE');
+		// 3 SHARED_NOTE
+		add_simple_tag(($level+1) . ' SHARED_NOTE');
+		echo '</table></div>';
+		break;
+	
+	case 'NOTE':
+		//-- Retrieve existing note or add new note to fact
+		echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><i id=\"newnote_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new note'), '</a>';
+		echo help_link('edit_add_NOTE');
+		echo '<br>';
+		echo '<div id="newnote" style="display: none;">';
+		echo '<table class="facts_table">';
+		// 2 NOTE
+		add_simple_tag($level . ' NOTE');
+		echo '</table></div>';
+		break;
+
+	case 'SHARED_NOTE':
+		echo "<a href=\"#\" onclick=\"return expand_layer('newshared_note');\"><i id=\"newshared_note_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new shared note'), '</a>';
+		echo help_link('edit_add_SHARED_NOTE');
+		echo '<br>';
+		echo '<div id="newshared_note" style="display: none;">';
+		echo '<table class="facts_table">';
+		// 2 SHARED NOTE
+		add_simple_tag($level . ' SHARED_NOTE');
+		echo '</table></div>';
+		break;
+
+	case 'OBJE':
+		if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+			echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new media object'), '</a>';
+			echo help_link('OBJE');
+			echo '<br>';
+			echo '<div id="newobje" style="display: none;">';
+			echo '<table class="facts_table">';
+			add_simple_tag($level . ' OBJE');
+			echo '</table></div>';
+		}
+		break;
+
+	case 'RESN':
+		echo "<a href=\"#\" onclick=\"return expand_layer('newresn');\"><i id=\"newresn_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new restriction'), '</a>';
 		echo help_link('RESN');
-		echo "<br>";
-		echo "<div id=\"newresn\" style=\"display: none;\">";
-		echo "<table class=\"facts_table\">";
+		echo '<br>';
+		echo '<div id="newresn" style="display: none;">';
+		echo '<table class="facts_table">';
 		// 2 RESN
-		add_simple_tag(($level)." RESN ".$text);
-		echo "</table></div>";
+		add_simple_tag($level . ' RESN');
+		echo '</table></div>';
+		break;
 	}
 }
 
