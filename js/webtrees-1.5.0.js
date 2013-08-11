@@ -62,7 +62,7 @@ function modalDialog(url, title) {
 			modal: false,
 			width: 700,
 			closeText: "",
-			close: function(event, ui) { 
+			close: function(event, ui) {
 				$(this).remove();
 				jQuery('.ui-widget-overlay').remove();
 			}
@@ -70,7 +70,7 @@ function modalDialog(url, title) {
 	// Close the window when we click outside it.
 	jQuery(".ui-widget-overlay").on("click", function () {
 		jQuery("div:ui-dialog:visible").dialog("close");
-		jQuery(this).remove();	
+		jQuery(this).remove();
 	});
 	return false;
 }
@@ -122,62 +122,58 @@ function closePopupAndReloadParent(url) {
 //  the following javascript function is for the positioning and hide/show of
 //  DIV layers used in the display of the pedigree chart.
 function MM_showHideLayers() { //v6.0
-  var i,p,v,obj,args=MM_showHideLayers.arguments;
-  for (i=0; i<(args.length-3); i+=4) {
-	  if ((obj=document.getElementById(args[i]))!=null) {
-    	if (obj.style) {
-	      div=obj;
-	      obj=obj.style;
-	    }
-	    v=args[i+2];
-	    if (v=='toggle') {
-		    if (obj.visibility.indexOf('hid')!=-1) v='show';
-		    else v='hide';
-	    }
-	    v=(v=='show')?'visible':(v=='hide')?'hidden':v;
-    	obj.visibility=v;
-    	if (args[i+1]=='followmouse') {
-	    	pobj = document.getElementById(args[i+3]);
-	    	if (pobj!=null) {
-//		    	if (pobj.style.top!="auto") {
-		    	if (pobj.style.top!="auto" && args[i+3]!="relatives") {
-			    	obj.top=5+msY-parseInt(pobj.style.top)+'px';
-			    	if (textDirection=="ltr") obj.left=5+msX-parseInt(pobj.style.left)+'px';
-			    	if (textDirection=="rtl") obj.right=5+msX-parseInt(pobj.style.right)+'px';
-		    	}
-		    	else {
-			    	obj.top="auto";
-			    	//obj.left="80%";
-			    	pagewidth = document.documentElement.offsetWidth+document.documentElement.scrollLeft;
-			    	if (textDirection=="rtl") pagewidth -= document.documentElement.scrollLeft;
-			    	if (msX > pagewidth-160) msX = msX-150-pobj.offsetLeft;
-			    	contentdiv = document.getElementById("content");
-			    	msX = msX - contentdiv.offsetLeft;
-			    	if (textDirection=="ltr") obj.left=(5+msX)+'px';
-			    	obj.zIndex=1000;
-		    	}
-	    	}
-	    	else {
-	    		//obj.top="auto";
-	    		if (WT_SCRIPT_NAME.indexOf("fanchart")>0) {
-		    		obj.top=(msY-20)+'px';
-			    	obj.left=(msX-20)+'px';
-	    		}
-	    		else if (WT_SCRIPT_NAME.indexOf("index.php")==-1) {
-		    		Xadjust = document.getElementById('content').offsetLeft;
-		    		obj.left=(5+(msX-Xadjust))+'px';
-		    		obj.top="auto";
-	    		}
-	    		else {
-		    		Xadjust = document.getElementById('content').offsetLeft;
-		    		obj.top=(msY-50)+'px';
-			    	obj.left=(10+(msX-Xadjust))+'px';
-	    		}
-	    		obj.zIndex=1000;
-    		}
-    	}
-    }
-  }
+	var i,p,v,obj,args=MM_showHideLayers.arguments;
+	for (i=0; i<(args.length-3); i+=4) {
+		if ((obj=document.getElementById(args[i]))!=null) {
+			if (obj.style) {
+				div=obj;
+				obj=obj.style;
+			}
+			v=args[i+2];
+			if (v=='toggle') {
+				if (obj.visibility.indexOf('hid')!=-1) {
+					v='show';
+				} else {
+					v='hide';
+				}
+			}
+			v=(v=='show')?'visible':(v=='hide')?'hidden':v;
+			obj.visibility=v;
+			if (args[i+1]=='followmouse') {
+				pobj = document.getElementById(args[i+3]);
+				if (pobj!=null) {
+					if (pobj.style.top!="auto" && args[i+3]!="relatives") {
+						obj.top=5+msY-parseInt(pobj.style.top)+'px';
+						if (textDirection=="ltr") obj.left=5+msX-parseInt(pobj.style.left)+'px';
+						if (textDirection=="rtl") obj.right=5+msX-parseInt(pobj.style.right)+'px';
+					} else {
+						obj.top="auto";
+						pagewidth = document.documentElement.offsetWidth+document.documentElement.scrollLeft;
+						if (textDirection=="rtl") pagewidth -= document.documentElement.scrollLeft;
+						if (msX > pagewidth-160) msX = msX-150-pobj.offsetLeft;
+						contentdiv = document.getElementById("content");
+						msX = msX - contentdiv.offsetLeft;
+						if (textDirection=="ltr") obj.left=(5+msX)+'px';
+						obj.zIndex=1000;
+					}
+				} else {
+					if (WT_SCRIPT_NAME.indexOf("fanchart")>0) {
+						obj.top=(msY-20)+'px';
+						obj.left=(msX-20)+'px';
+					} else if (WT_SCRIPT_NAME.indexOf("index.php")==-1) {
+						Xadjust = document.getElementById('content').offsetLeft;
+						obj.left=(5+(msX-Xadjust))+'px';
+						obj.top="auto";
+					} else {
+						Xadjust = document.getElementById('content').offsetLeft;
+						obj.top=(msY-50)+'px';
+						obj.left=(10+(msX-Xadjust))+'px';
+					}
+					obj.zIndex=1000;
+				}
+			}
+		}
+	}
 }
 
 var show = false;
@@ -187,8 +183,7 @@ var show = false;
 		if (show) {
 			MM_showHideLayers('childbox'+pid, ' ', 'hide',' ');
 			show=false;
-		}
-		else {
+		} else {
 			MM_showHideLayers('childbox'+pid, ' ', 'show', ' ');
 			show=true;
 		}
@@ -205,7 +200,6 @@ var show = false;
 			famlinks = document.getElementById("I"+boxid+"links");
 			divbox = document.getElementById("out-"+boxid);
 			parentbox = document.getElementById("box"+boxid);
-			//alert(famlinks+" "+divbox+" "+parentbox);
 			if (famlinks && divbox && parentbox) {
 				famlinks.style.top = "0px";
 				if (textDirection=="ltr") famleft = parseInt(divbox.style.width)+15;
@@ -223,45 +217,6 @@ var show = false;
 				return;
 			}
 			MM_showHideLayers('I'+boxid+'links', 'followmouse', 'show',''+pboxid);
-		}
-	}
-
-	function toggle_family_box(boxid, pboxid) {
-		if (popupopen==1) {
-			MM_showHideLayers('I'+lastfamilybox+'links', ' ', 'hide',''+pboxid);
-			popupopen = 0;
-		}
-		if (boxid==lastfamilybox) {
-			lastfamilybox = "";
-			return;
-		}
-		popupopen = 1;
-		lastfamilybox=boxid;
-		if (pboxid=='relatives') MM_showHideLayers('I'+boxid+'links', 'followmouse', 'show',''+pboxid);
-		else {
-			famlinks = document.getElementById("I"+boxid+"links");
-			divbox = document.getElementById("out-"+boxid);
-			parentbox = document.getElementById("box"+boxid);
-			if (!parentbox) parentbox = document.getElementById(pboxid+".0");
-			if (famlinks && divbox && parentbox) {
-				divWidth = parseInt(divbox.style.width);
-				linkWidth = parseInt(famlinks.style.width);
-				parentWidth = parseInt(parentbox.style.width);
-				//alert('Widths div:'+divWidth+' parent:'+parentWidth+' links:'+linkWidth);
-				famlinks.style.top = "3px";
-				famleft = divWidth+8;
-				if (textDirection=="rtl") {
-					famleft -= (divWidth+linkWidth+5);
-					if (browserType!="mozilla") famleft -= 11;
-				}
-				pagewidth = document.documentElement.offsetWidth+document.documentElement.scrollLeft;
-				//alert(pagewidth);
-				if (famleft+parseInt(parentbox.style.left) > pagewidth-100) famleft=25;
-				famlinks.style.left = famleft + "px";
-				if (WT_SCRIPT_NAME.indexOf("index.php")!=-1) famlinks.style.left = "100%";
-				MM_showHideLayers('I'+boxid+'links', ' ', 'show',''+pboxid);
-			}
-			else MM_showHideLayers('I'+boxid+'links', 'followmouse', 'show',''+pboxid);
 		}
 	}
 
@@ -294,51 +249,51 @@ var show = false;
 
 // Main function to retrieve mouse x-y pos.s
 function getMouseXY(e) {
-  if (IE) { // grab the x-y pos.s if browser is IE
-    msX = event.clientX + document.documentElement.scrollLeft;
-    msY = event.clientY + document.documentElement.scrollTop;
-  } else {  // grab the x-y pos.s if browser is NS
-    msX = e.pageX;
-    msY = e.pageY;
-  }
+	if (IE) { // grab the x-y pos.s if browser is IE
+		msX = event.clientX + document.documentElement.scrollLeft;
+		msY = event.clientY + document.documentElement.scrollTop;
+	} else {  // grab the x-y pos.s if browser is NS
+		msX = e.pageX;
+		msY = e.pageY;
+	}
   return true;
 }
 
 // Open the "edit interface" popup window
 function edit_interface(params, windowspecs, pastefield) {
-  var features = windowspecs || edit_window_specs;
-  var url = 'edit_interface.php?' + jQuery.param(params) + '&ged=' + WT_GEDCOM;
-  window.open(url, '_blank', features);
+	var features = windowspecs || edit_window_specs;
+	var url = 'edit_interface.php?' + jQuery.param(params) + '&ged=' + WT_GEDCOM;
+	window.open(url, '_blank', features);
 	return false;
 }
 
 function edit_record(xref, fact_id) {
-  return edit_interface({
-    "action":    "edit",
-    "xref":      xref,
-    "fact_id":   fact_id
-  });
+	return edit_interface({
+		"action":    "edit",
+		"xref":      xref,
+		"fact_id":   fact_id
+	});
 }
 
 function edit_raw(xref) {
-  return edit_interface({
-    "action": "editraw",
-    "xref":   xref
-  });
+	return edit_interface({
+		"action": "editraw",
+		"xref":   xref
+	});
 }
 
 function edit_note(xref) {
-  return edit_interface({
-    "action": "editnote",
-    "xref":   xref
-  });
+	return edit_interface({
+		"action": "editnote",
+		"xref":   xref
+	});
 }
 
 function edit_source(xref) {
-  return edit_interface({
-    "action": "editsource",
-    "xref":   xref,
-  });
+	return edit_interface({
+		"action": "editsource",
+		"xref":   xref,
+	});
 }
 
 function add_record(xref, fact_field) {
@@ -371,105 +326,105 @@ function addClipboardRecord(xref, fact) {
 }
 
 function reorder_media(xref) {
-  return edit_interface({
-    "action": "reorder_media",
-    "xref":   xref
-  }, mord_window_specs);
+	return edit_interface({
+		"action": "reorder_media",
+		"xref":   xref
+	}, mord_window_specs);
 }
 
 function add_new_record(xref, fact) {
-  return edit_interface({
-    "action": "add",
-    "xref":   xref,
-    "fact":   fact
-  });
+	return edit_interface({
+		"action": "add",
+		"xref":   xref,
+		"fact":   fact
+	});
 }
 
 // Add a new child to an existing family
 function add_child_to_family(xref, gender) {
-  return edit_interface({
-    "action": "add_child_to_family",
-    "gender": gender,
-    "xref":   xref
-  });
+	return edit_interface({
+		"action": "add_child_to_family",
+		"gender": gender,
+		"xref":   xref
+	});
 }
 
 // Add a new child to an existing individual (creating a one-parent family)
 function add_child_to_individual(xref, gender) {
-  return edit_interface({
-    "action": "add_child_to_individual",
-    "gender": gender,
-    "xref":   xref
-  });
+	return edit_interface({
+		"action": "add_child_to_individual",
+		"gender": gender,
+		"xref":   xref
+	});
 }
 
 // Add a new parent to an existing individual (creating a one-parent family)
 function add_parent_to_individual(xref, gender) {
-  return edit_interface({
-    "action": "add_parent_to_individual",
-    "xref":   xref,
-    "gender": gender
-  });
+	return edit_interface({
+		"action": "add_parent_to_individual",
+		"xref":   xref,
+		"gender": gender
+	});
 }
 
 // Add a new spouse to an existing family
 function add_spouse_to_family(xref, famtag) {
-  return edit_interface({
-    "action": "add_spouse_to_family",
-    "xref":   xref,
-    "famtag": famtag
-  });
+	return edit_interface({
+		"action": "add_spouse_to_family",
+		"xref":   xref,
+		"famtag": famtag
+	});
 }
 
 function add_unlinked_indi() {
-  return edit_interface({
-    "action": "add_unlinked_indi",
-  });
+	return edit_interface({
+		"action": "add_unlinked_indi",
+	});
 }
 
 // Add a new spouse to an existing individual (creating a new family)
 function add_spouse_to_individual(xref, famtag) {
-  return edit_interface({
-    "action": "add_spouse_to_individual",
-    "xref":   xref,
-    "famtag": famtag
-  });
+	return edit_interface({
+		"action": "add_spouse_to_individual",
+		"xref":   xref,
+		"famtag": famtag
+	});
 }
 
 function linkspouse(xref, famtag) {
-  return edit_interface({
-    "action": "linkspouse",
-    "xref": xref,
-    "famtag": famtag,
-    "famid": "new"
-  });
+	return edit_interface({
+		"action": "linkspouse",
+		"xref": xref,
+		"famtag": famtag,
+		"famid": "new"
+	});
 }
 
 function add_famc(xref) {
-  return edit_interface({
-    "action": "addfamlink",
-    "xref": xref,
-  });
+	return edit_interface({
+		"action": "addfamlink",
+		"xref": xref,
+	});
 }
 
 function edit_name(xref, fact_id) {
-  return edit_interface({
-    "action": "editname",
-    "xref": xref,
-    "fact_id": fact_id
-  });
+	return edit_interface({
+		"action": "editname",
+		"xref": xref,
+		"fact_id": fact_id
+	});
 }
 
 function add_name(xref) {
-  return edit_interface({
-    "action": "addname",
-    "xref": xref
-  });
+	return edit_interface({
+		"action": "addname",
+		"xref": xref
+	});
 }
 
 // Delete a fact - and reload the page
 function delete_fact(message, xref, fact_id) {
-  if (confirm(message)) {
+	if (confirm(message)) {
 		jQuery.post('action.php', {
 			action:   'delete-fact',
 			xref:      xref,
@@ -479,8 +434,8 @@ function delete_fact(message, xref, fact_id) {
 		function(){
 			location.reload();
 		});
-  }
-  return false;
+	}
+	return false;
 }
 
 // Copy a fact to the clipboard
@@ -494,21 +449,21 @@ function copy_fact(xref, fact_id) {
 	function(){
 		location.reload();
 	});
-  return false;
+	return false;
 }
 
 function reorder_children(xref) {
-  return edit_interface({
-    "action": "reorder_children",
-    "xref":   xref
-  });
+	return edit_interface({
+		"action": "reorder_children",
+		"xref":   xref
+	});
 }
 
 function reorder_families(xref) {
-  return edit_interface({
-    "action": "reorder_fams",
-    "xref":    xref
-  });
+	return edit_interface({
+		"action": "reorder_fams",
+		"xref":    xref
+	});
 }
 
 function reply(username, subject) {
@@ -522,10 +477,10 @@ function delete_message(id) {
 }
 
 function change_family_members(xref) {
-  return edit_interface({
-    "action": "changefamily",
-    "xref":   xref
-  });
+	return edit_interface({
+		"action": "changefamily",
+		"xref":   xref
+	});
 }
 
 function addnewsource(field) {
@@ -589,18 +544,18 @@ function valid_date(datefield) {
 	datestr=datestr.replace(/([A-Z])(\d)/, "$1 $2");
 
 	// Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900".  See [ 1509083 ]
- 	if (datestr.match(/^Q ([1-4]) (\d\d\d\d)$/)) {
+	if (datestr.match(/^Q ([1-4]) (\d\d\d\d)$/)) {
 		datestr = "BET "+months[RegExp.$1*3-3]+" "+RegExp.$2+" AND "+months[RegExp.$1*3-1]+" "+RegExp.$2;
 	}
 
 	// e.g. 17.11.1860, 03/04/2005 or 1999-12-31.  Use locale settings where DMY order is ambiguous.
 	var qsearch = /^([^\d]*)(\d+)[^\d](\d+)[^\d](\d+)$/i;
- 	if (qsearch.exec(datestr)) {
- 		var f0=RegExp.$1;
+	if (qsearch.exec(datestr)) {
+		var f0=RegExp.$1;
 		var f1=parseInt(RegExp.$2, 10);
 		var f2=parseInt(RegExp.$3, 10);
 		var f3=parseInt(RegExp.$4, 10);
- 		var f4=RegExp.$5;
+		var f4=RegExp.$5;
 		var dmy='DMY';
 		if (typeof(locale_date_format)!='undefined')
 			if (locale_date_format=='MDY' || locale_date_format=='YMD')
@@ -608,7 +563,7 @@ function valid_date(datefield) {
 		var yyyy=new Date().getUTCFullYear();
 		var yy=yyyy % 100;
 		var cc=yyyy - yy;
-	 	if (dmy=='DMY' && f1<=31 && f2<=12 || f1>13 && f1<=31 && f2<=12 && f3>31)
+		if (dmy=='DMY' && f1<=31 && f2<=12 || f1>13 && f1<=31 && f2<=12 && f3>31)
 			datestr=f0+f1+" "+months[f2-1]+" "+(f3>=100?f3:(f3<=yy?f3+cc:f3+cc-100));
 		else if (dmy=='MDY' && f1<=12 && f2<=31 || f2>13 && f2<=31 && f1<=12 && f3>31)
 			datestr=f0+f2+" "+months[f1-1]+" "+(f3>=100?f3:(f3<=yy?f3+cc:f3+cc-100));
@@ -677,11 +632,11 @@ function expandbox(boxid, bstyle) {
 		restorebox(oldboxid, bstyle);
 		if (boxid==oldboxid) return true;
 	}
-	
+
 	jQuery(document).ready(function() {
 		clength = jQuery(".compact_view").length;
-	}); 
-	
+	});
+
 	url = window.location.toString();
 	divbox = document.getElementById("out-"+boxid);
 	inbox = document.getElementById("inout-"+boxid);
@@ -689,7 +644,6 @@ function expandbox(boxid, bstyle) {
 	parentbox = document.getElementById("box"+boxid);
 	if (!parentbox) {
 		parentbox=divbox;
-	//	if (bstyle!=2) divbox.style.position="absolute";
 	}
 	gender = document.getElementById("box-"+boxid+"-gender");
 	thumb1 = document.getElementById("box-"+boxid+"-thumb");
@@ -720,7 +674,6 @@ function expandbox(boxid, bstyle) {
 				famleft = parseInt(famlinks.style.left);
 				famlinks.style.left = (famleft+diff)+"px";
 			}
-			//parentbox.style.width = parseInt(parentbox.style.width)+diff;
 		}
 		divleft = parseInt(parentbox.style.left);
 		if (textDirection=="rtl") divleft = parseInt(parentbox.style.right);
@@ -743,20 +696,16 @@ function expandbox(boxid, bstyle) {
 				oXmlHttp.open("get", "expand_view.php?pid=" + pid, true);
 				oXmlHttp.onreadystatechange=function()
 				{
-		  			if (oXmlHttp.readyState==4)
-		  			{
-		   				inbox.innerHTML = oXmlHttp.responseText;
-		   			}
-		  		};
-		  		oXmlHttp.send(null);
-	  		}
-		}
-		else
-		{
+					if (oXmlHttp.readyState==4)
+					{
+						inbox.innerHTML = oXmlHttp.responseText;
+					}
+				};
+				oXmlHttp.send(null);
+			}
+		} else {
 			inbox.style.display='none';
 		}
-
-		
 
 		if (inbox2) inbox2.style.display='none';
 
@@ -795,12 +744,9 @@ function expandbox(boxid, bstyle) {
 }
 function createXMLHttp()
 {
-	if (typeof XMLHttpRequest != "undefined")
-	{
+	if (typeof XMLHttpRequest != "undefined") {
 		return new XMLHttpRequest();
-	}
-	else if (window.ActiveXObject)
-	{
+	} else if (window.ActiveXObject) {
 		var ARR_XMLHTTP_VERS=["MSXML2.XmlHttp.5.0","MSXML2.XmlHttp.4.0",
 			"MSXML2.XmlHttp.3.0","MSXML2.XmlHttp","Microsoft.XmlHttp"];
 
@@ -827,14 +773,13 @@ function restorebox(boxid, bstyle) {
 	}
 	thumb1 = document.getElementById("box-"+boxid+"-thumb");
 	icons = document.getElementById("icons-"+boxid);
-	iconz = document.getElementById("iconz-"+boxid);	// This is the Zoom icon
+	iconz = document.getElementById("iconz-"+boxid); // This is the Zoom icon
 	if (divbox) {
 		if (icons) icons.style.display = oldiconsdislpay;
 		if (jQuery(iconz).hasClass("icon-zoomin")) {
 			jQuery(iconz).removeClass("icon-zoomin").addClass("icon-zoomout");
 		} else {
 			jQuery(iconz).removeClass("icon-zoomout").addClass("icon-zoomin");
-		
 		}
 		big = 0;
 		if (gender) {
@@ -853,8 +798,6 @@ function restorebox(boxid, bstyle) {
 		divbox.style.height=oldheight;
 		divbox.style.width=oldwidth;
 		if (parentbox) {
-			//if (parentbox!=divbox) parentbox.style.width = parseInt(parentbox.style.width)-diff;
-			//alert("here");
 			parentbox.style.zIndex=oldz;
 		}
 		if (inbox) inbox.style.display='none';
@@ -870,21 +813,14 @@ function restorebox(boxid, bstyle) {
 }
 
 var menutimeouts = new Array();
-/**
- * Shows a submenu
- *
- * @author John Finlay
- * @param string elementid the id for the dom element you want to show
- */
+
 function show_submenu(elementid, parentid, dir) {
 	var pagewidth = document.body.scrollWidth+document.documentElement.scrollLeft;
 	var element = document.getElementById(elementid);
 	if (element && element.style) {
 				if (document.all) {
 					pagewidth = document.body.offsetWidth;
-					//if (textDirection=="rtl") element.style.left = (element.offsetLeft-70)+'px';
-				}
-				else {
+				} else {
 					pagewidth = document.body.scrollWidth+document.documentElement.scrollLeft-55;
 					if (textDirection=="rtl") {
 						boxright = element.offsetLeft+element.offsetWidth+10;
@@ -921,15 +857,11 @@ function show_submenu(elementid, parentid, dir) {
 				var boxright = boxleft+element.offsetWidth+10;
 				if (boxright > pagewidth) {
 					element.style.right = pelement.offsetLeft + "px";
-				}
-				else {
+				} else {
 					element.style.left=boxleft+"px";
 				}
-				}
-				else {
-//					element.style.right = pelement.offsetLeft+"px";
+				} else {
 					element.style.left = (pelement.offsetLeft-element.offsetWidth)+"px";
-//					alert(element.style.left);
 				}
 				element.style.top = pelement.offsetTop+"px";
 			}
@@ -949,12 +881,6 @@ function show_submenu(elementid, parentid, dir) {
 	menutimeouts[elementid] = null;
 }
 
-/**
- * Hides a submenu
- *
- * @author John Finlay
- * @param string elementid the id for the dom element you want to hide
- */
 function hide_submenu(elementid) {
 if (menutimeouts[elementid] != null) {
 	element = document.getElementById(elementid);
@@ -966,12 +892,6 @@ if (menutimeouts[elementid] != null) {
 }
 }
 
-/**
- * Sets a timeout to hide a submenu
- *
- * @author John Finlay
- * @param string elementid the id for the dom element you want to hide
- */
 function timeout_submenu(elementid) {
 	if (menutimeouts[elementid] == null) {
 		tout = setTimeout("hide_submenu('"+elementid+"')", 100);
@@ -1023,130 +943,130 @@ function statusChecked(sel) {
 }
 
 var monthLabels = new Array();
-  monthLabels[1] = "January";
-  monthLabels[2] = "February";
-  monthLabels[3] = "March";
-  monthLabels[4] = "April";
-  monthLabels[5] = "May";
-  monthLabels[6] = "June";
-  monthLabels[7] = "July";
-  monthLabels[8] = "August";
-  monthLabels[9] = "September";
-  monthLabels[10] = "October";
-  monthLabels[11] = "November";
-  monthLabels[12] = "December";
+monthLabels[1] = "January";
+monthLabels[2] = "February";
+monthLabels[3] = "March";
+monthLabels[4] = "April";
+monthLabels[5] = "May";
+monthLabels[6] = "June";
+monthLabels[7] = "July";
+monthLabels[8] = "August";
+monthLabels[9] = "September";
+monthLabels[10] = "October";
+monthLabels[11] = "November";
+monthLabels[12] = "December";
 
-  var monthShort = new Array();
-  monthShort[1] = "JAN";
-  monthShort[2] = "FEB";
-  monthShort[3] = "MAR";
-  monthShort[4] = "APR";
-  monthShort[5] = "MAY";
-  monthShort[6] = "JUN";
-  monthShort[7] = "JUL";
-  monthShort[8] = "AUG";
-  monthShort[9] = "SEP";
-  monthShort[10] = "OCT";
-  monthShort[11] = "NOV";
-  monthShort[12] = "DEC";
+var monthShort = new Array();
+monthShort[1] = "JAN";
+monthShort[2] = "FEB";
+monthShort[3] = "MAR";
+monthShort[4] = "APR";
+monthShort[5] = "MAY";
+monthShort[6] = "JUN";
+monthShort[7] = "JUL";
+monthShort[8] = "AUG";
+monthShort[9] = "SEP";
+monthShort[10] = "OCT";
+monthShort[11] = "NOV";
+monthShort[12] = "DEC";
 
-  var daysOfWeek = new Array();
-  daysOfWeek[0] = "S";
-  daysOfWeek[1] = "M";
-  daysOfWeek[2] = "T";
-  daysOfWeek[3] = "W";
-  daysOfWeek[4] = "T";
-  daysOfWeek[5] = "F";
-  daysOfWeek[6] = "S";
+var daysOfWeek = new Array();
+daysOfWeek[0] = "S";
+daysOfWeek[1] = "M";
+daysOfWeek[2] = "T";
+daysOfWeek[3] = "W";
+daysOfWeek[4] = "T";
+daysOfWeek[5] = "F";
+daysOfWeek[6] = "S";
 
-  var weekStart = 0;
+var weekStart = 0;
 
-  function cal_setMonthNames(jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec) {
-  	monthLabels[1] = jan;
-  	monthLabels[2] = feb;
-  	monthLabels[3] = mar;
-  	monthLabels[4] = apr;
-  	monthLabels[5] = may;
-  	monthLabels[6] = jun;
-  	monthLabels[7] = jul;
-  	monthLabels[8] = aug;
-  	monthLabels[9] = sep;
-  	monthLabels[10] = oct;
-  	monthLabels[11] = nov;
-  	monthLabels[12] = dec;
-  }
+function cal_setMonthNames(jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec) {
+	monthLabels[1] = jan;
+	monthLabels[2] = feb;
+	monthLabels[3] = mar;
+	monthLabels[4] = apr;
+	monthLabels[5] = may;
+	monthLabels[6] = jun;
+	monthLabels[7] = jul;
+	monthLabels[8] = aug;
+	monthLabels[9] = sep;
+	monthLabels[10] = oct;
+	monthLabels[11] = nov;
+	monthLabels[12] = dec;
+}
 
-  function cal_setDayHeaders(sun, mon, tue, wed, thu, fri, sat) {
-  	daysOfWeek[0] = sun;
-  	daysOfWeek[1] = mon;
-  	daysOfWeek[2] = tue;
-  	daysOfWeek[3] = wed;
-  	daysOfWeek[4] = thu;
-  	daysOfWeek[5] = fri;
-  	daysOfWeek[6] = sat;
-  }
+function cal_setDayHeaders(sun, mon, tue, wed, thu, fri, sat) {
+	daysOfWeek[0] = sun;
+	daysOfWeek[1] = mon;
+	daysOfWeek[2] = tue;
+	daysOfWeek[3] = wed;
+	daysOfWeek[4] = thu;
+	daysOfWeek[5] = fri;
+	daysOfWeek[6] = sat;
+}
 
-  function cal_setWeekStart(day) {
-  	if (day >=0 && day < 7) weekStart = day;
-  }
+function cal_setWeekStart(day) {
+	if (day >=0 && day < 7) weekStart = day;
+}
 
-  function cal_toggleDate(dateDivId, dateFieldId) {
-  	var dateDiv = document.getElementById(dateDivId);
-  	if (!dateDiv) return false;
+function cal_toggleDate(dateDivId, dateFieldId) {
+	var dateDiv = document.getElementById(dateDivId);
+	if (!dateDiv) return false;
 
-  	if (dateDiv.style.visibility=='visible') {
-  		dateDiv.style.visibility = 'hidden';
-  		return false;
-  	}
-  	if (dateDiv.style.visibility=='show') {
-  		dateDiv.style.visibility = 'hide';
-  		return false;
-  	}
+	if (dateDiv.style.visibility=='visible') {
+		dateDiv.style.visibility = 'hidden';
+		return false;
+	}
+	if (dateDiv.style.visibility=='show') {
+		dateDiv.style.visibility = 'hide';
+		return false;
+	}
 
-  	var dateField = document.getElementById(dateFieldId);
-  	if (!dateField) return false;
+	var dateField = document.getElementById(dateFieldId);
+	if (!dateField) return false;
 
-		/* Javascript calendar functions only work with precise gregorian dates "D M Y" or "Y" */
-		var greg_regex = /((\d+ (JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) )?\d+)/;
-		if (greg_regex.exec(dateField.value)) {
-			var date = new Date(RegExp.$1);
-		} else {
-			var date = new Date();
-		}
-		
-  	dateDiv.innerHTML = cal_generateSelectorContent(dateFieldId, dateDivId, date);
-  	if (dateDiv.style.visibility=='hidden') {
-  		dateDiv.style.visibility = 'visible';
-  		return false;
-  	}
-  	if (dateDiv.style.visibility=='hide') {
-  		dateDiv.style.visibility = 'show';
-  		return false;
-  	}
-  	return false;
-  }
+	/* Javascript calendar functions only work with precise gregorian dates "D M Y" or "Y" */
+	var greg_regex = /((\d+ (JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) )?\d+)/;
+	if (greg_regex.exec(dateField.value)) {
+		var date = new Date(RegExp.$1);
+	} else {
+		var date = new Date();
+	}
 
-  function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
-  	var content = '<table border="1"><tr>';
-  	content += '<td><select name="'+dateFieldId+'_daySelect" id="'+dateFieldId+'_daySelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
-  	for (i=1; i<32; i++) {
-  		content += '<option value="'+i+'"';
-  		if (date.getUTCDate()==i) content += ' selected="selected"';
-  		content += '>'+i+'</option>';
-  	}
-  	content += '</select></td>';
-  	content += '<td><select name="'+dateFieldId+'_monSelect" id="'+dateFieldId+'_monSelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
-  	for (i=1; i<13; i++) {
-  		content += '<option value="'+i+'"';
-  		if (date.getUTCMonth()+1==i) content += ' selected="selected"';
-  		content += '>'+monthLabels[i]+'</option>';
-  	}
-  	content += '</select></td>';
-  	content += '<td><input type="text" name="'+dateFieldId+'_yearInput" id="'+dateFieldId+'_yearInput" size="5" value="'+date.getUTCFullYear()+'" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');" /></td></tr>';
-  	content += '<tr><td colspan="3">';
-  	content += '<table width="100%">';
-  	content += '<tr>';
-  	j = weekStart;
+	dateDiv.innerHTML = cal_generateSelectorContent(dateFieldId, dateDivId, date);
+	if (dateDiv.style.visibility=='hidden') {
+		dateDiv.style.visibility = 'visible';
+		return false;
+	}
+	if (dateDiv.style.visibility=='hide') {
+		dateDiv.style.visibility = 'show';
+		return false;
+	}
+	return false;
+}
+
+function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
+	var content = '<table border="1"><tr>';
+	content += '<td><select name="'+dateFieldId+'_daySelect" id="'+dateFieldId+'_daySelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
+	for (i=1; i<32; i++) {
+		content += '<option value="'+i+'"';
+		if (date.getUTCDate()==i) content += ' selected="selected"';
+		content += '>'+i+'</option>';
+	}
+	content += '</select></td>';
+	content += '<td><select name="'+dateFieldId+'_monSelect" id="'+dateFieldId+'_monSelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
+	for (i=1; i<13; i++) {
+		content += '<option value="'+i+'"';
+		if (date.getUTCMonth()+1==i) content += ' selected="selected"';
+		content += '>'+monthLabels[i]+'</option>';
+	}
+	content += '</select></td>';
+	content += '<td><input type="text" name="'+dateFieldId+'_yearInput" id="'+dateFieldId+'_yearInput" size="5" value="'+date.getUTCFullYear()+'" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');" /></td></tr>';
+	content += '<tr><td colspan="3">';
+	content += '<table width="100%">';
+	content += '<tr>';
+	j = weekStart;
 	for (i=0; i<7; i++) {
 		content += '<td ';
 		content += 'class="descriptionbox"';
@@ -1158,75 +1078,75 @@ var monthLabels = new Array();
 	}
 	content += '</tr>';
 
-  	var tdate = new Date(date.getUTCFullYear(), date.getUTCMonth(), 1);
-  	var day = tdate.getUTCDay();
-  	day = day - weekStart;
-  	var daymilli = (1000*60*60*24);
-  	tdate = tdate.getTime() - (day*daymilli) + (daymilli/2);
-  	tdate = new Date(tdate);
+	var tdate = new Date(date.getUTCFullYear(), date.getUTCMonth(), 1);
+	var day = tdate.getUTCDay();
+	day = day - weekStart;
+	var daymilli = (1000*60*60*24);
+	tdate = tdate.getTime() - (day*daymilli) + (daymilli/2);
+	tdate = new Date(tdate);
 
-  	for (j=0; j<6; j++) {
-  		content += '<tr>';
-  		for (i=0; i<7; i++) {
-  			content += '<td ';
-  			if (tdate.getUTCMonth()==date.getUTCMonth()) {
-  				if (tdate.getUTCDate()==date.getUTCDate()) content += 'class="descriptionbox"';
-  				else content += 'class="optionbox"';
-  			}
-  			else content += 'style="background-color:#EAEAEA; border: solid #AAAAAA 1px;"';
-  			content += '><a href="#" onclick="return cal_dateClicked(\''+dateFieldId+'\', \''+dateDivId+'\', '+tdate.getUTCFullYear()+', '+tdate.getUTCMonth()+', '+tdate.getUTCDate()+');">';
-  			content += tdate.getUTCDate();
-  			content += '</a></td>';
-  			datemilli = tdate.getTime() + daymilli;
-  			tdate = new Date(datemilli);
-  		}
-  		content += '</tr>';
-  	}
-  	content += '</table>';
-  	content += '</td></tr>';
-  	content += '</table>';
+	for (j=0; j<6; j++) {
+		content += '<tr>';
+		for (i=0; i<7; i++) {
+			content += '<td ';
+			if (tdate.getUTCMonth()==date.getUTCMonth()) {
+				if (tdate.getUTCDate()==date.getUTCDate()) content += 'class="descriptionbox"';
+				else content += 'class="optionbox"';
+			}
+			else content += 'style="background-color:#EAEAEA; border: solid #AAAAAA 1px;"';
+			content += '><a href="#" onclick="return cal_dateClicked(\''+dateFieldId+'\', \''+dateDivId+'\', '+tdate.getUTCFullYear()+', '+tdate.getUTCMonth()+', '+tdate.getUTCDate()+');">';
+			content += tdate.getUTCDate();
+			content += '</a></td>';
+			datemilli = tdate.getTime() + daymilli;
+			tdate = new Date(datemilli);
+		}
+		content += '</tr>';
+	}
+	content += '</table>';
+	content += '</td></tr>';
+	content += '</table>';
 
-  	return content;
-  }
+	return content;
+}
 
-  function cal_setDateField(dateFieldId, year, month, day) {
-  	var dateField = document.getElementById(dateFieldId);
-  	if (!dateField) return false;
-  	if (day<10) day = "0"+day;
-  	dateField.value = day+' '+monthShort[month+1]+' '+year;
-  	return false;
-  }
+function cal_setDateField(dateFieldId, year, month, day) {
+	var dateField = document.getElementById(dateFieldId);
+	if (!dateField) return false;
+	if (day<10) day = "0"+day;
+	dateField.value = day+' '+monthShort[month+1]+' '+year;
+	return false;
+}
 
-  function cal_updateCalendar(dateFieldId, dateDivId) {
-  	var dateSel = document.getElementById(dateFieldId+'_daySelect');
-  	if (!dateSel) return false;
-  	var monthSel = document.getElementById(dateFieldId+'_monSelect');
-  	if (!monthSel) return false;
-  	var yearInput = document.getElementById(dateFieldId+'_yearInput');
-  	if (!yearInput) return false;
+function cal_updateCalendar(dateFieldId, dateDivId) {
+	var dateSel = document.getElementById(dateFieldId+'_daySelect');
+	if (!dateSel) return false;
+	var monthSel = document.getElementById(dateFieldId+'_monSelect');
+	if (!monthSel) return false;
+	var yearInput = document.getElementById(dateFieldId+'_yearInput');
+	if (!yearInput) return false;
 
-  	var month = parseInt(monthSel.options[monthSel.selectedIndex].value);
-  	month = month-1;
+	var month = parseInt(monthSel.options[monthSel.selectedIndex].value);
+	month = month-1;
 
-  	var date = new Date(yearInput.value, month, dateSel.options[dateSel.selectedIndex].value);
-  	if (!date) alert('Date error '+date);
-  	cal_setDateField(dateFieldId, date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
+	var date = new Date(yearInput.value, month, dateSel.options[dateSel.selectedIndex].value);
+	if (!date) alert('Date error '+date);
+	cal_setDateField(dateFieldId, date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
 
-  	var dateDiv = document.getElementById(dateDivId);
-  	if (!dateDiv) {
-  		alert('no dateDiv '+dateDivId);
-  		return false;
-  	}
-  	dateDiv.innerHTML = cal_generateSelectorContent(dateFieldId, dateDivId, date);
+	var dateDiv = document.getElementById(dateDivId);
+	if (!dateDiv) {
+		alert('no dateDiv '+dateDivId);
+		return false;
+	}
+	dateDiv.innerHTML = cal_generateSelectorContent(dateFieldId, dateDivId, date);
 
-  	return false;
-  }
+	return false;
+}
 
-  function cal_dateClicked(dateFieldId, dateDivId, year, month, day) {
-  	cal_setDateField(dateFieldId, year, month, day);
-  	cal_toggleDate(dateDivId, dateFieldId);
-  	return false;
-  }
+function cal_dateClicked(dateFieldId, dateDivId, year, month, day) {
+	cal_setDateField(dateFieldId, year, month, day);
+	cal_toggleDate(dateDivId, dateFieldId);
+	return false;
+}
 
 function findIndi(field, indiname, ged) {
 	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
@@ -1306,62 +1226,6 @@ function message(username, method, url, subject) {
 	return false;
 }
 
-/**
- * Load a CSS file from the body of a document
- *
- * CSS files are normally loaded through a <link rel="stylesheet" type="text/css" href="something" />
- * statement.  This statement is only allowed in the <head> section of the document.
- *
- * See : http://www.phpied.com/javascript-include-ready-onload/
- *
- */
-function include_css(css_file) {
-	var html_doc = document.getElementsByTagName('head')[0];
-	var css = document.createElement('link');
-	css.setAttribute('rel', 'stylesheet');
-	css.setAttribute('type', 'text/css');
-	css.setAttribute('href', css_file);
-	html_doc.appendChild(css);
-}
-
-function include_js(file) {
-	var html_doc = document.getElementsByTagName('head')[0];
-	var js = document.createElement('script');
-	js.setAttribute('type', 'text/javascript');
-	js.setAttribute('src', file);
-	html_doc.appendChild(js);
-}
-
-function findPosX(obj) {
-	var curleft = 0;
-	if(obj.offsetParent)
-		while(1) {
-			curleft += obj.offsetLeft;
-			if(!obj.offsetParent)
-				break;
-			obj = obj.offsetParent;
-		}
-	else if(obj.x)
-		curleft += obj.x;
-	return curleft;
-}
-
-function findPosY(obj) {
-	var curtop = 0;
-	if(obj.offsetParent)
-		while(1) {
-			if (obj.style.position=="relative")
-				break;
-			curtop += obj.offsetTop;
-			if(!obj.offsetParent)
-				break;
-			obj = obj.offsetParent;
-		}
-	else if(obj.y)
-		curtop += obj.y;
-	return curtop;
-}
-
 // This is the default way for webtrees to show image galleries.
 // Custom themes may use a different viewer.
 function activate_colorbox(config) {
@@ -1413,7 +1277,7 @@ function activate_colorbox(config) {
 		//jQuery('html.audio a[type^=audio].gallery').colorbox({
 		//	rel:         'nofollow', // Slideshows are just for images
 		//});
-		
+
 		// Allow all other media types remain as download links
 	});
 }
