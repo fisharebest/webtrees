@@ -2366,8 +2366,8 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 					if ($SURNAME_TRADITION=='lithuanian') {
 						$match[2]=preg_replace(array('/as$/', '/is$/', '/ys$/', '/us$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[2]);
 						$match[2]=preg_replace(array('/aitė$/', '/ytė$/', '/iūtė$/', '/utė$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[2]);
-						$new_marnm=$match[2];
 					}
+					$new_marnm=$match[2];
 				}
 				break;
 			case 'add_child_to_individual_action':
