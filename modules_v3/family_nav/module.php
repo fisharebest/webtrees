@@ -107,7 +107,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $controller;
 		global $spouselinks, $parentlinks;
 
-		foreach ($family->getSpouses() as $spouse) {
+		foreach ($family->getFacts('HUSB') as $fact) {
+			$spouse = $fact->getTarget();
 			$menu = new WT_Menu(get_close_relationship_name($root, $spouse));
 			$menu->addClass('', 'submenu flyout2');
 			$submenu = new WT_Menu($this->print_pedigree_person_nav($spouse) . $parentlinks);
@@ -119,7 +120,23 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			echo '<div class="font9">' . $spouse->getLifeSpan() . '</div>';
 			echo '</td></tr>';
 		}
-		foreach ($family->getChildren() as $child) {
+
+		foreach ($family->getFacts('WIFE') as $fact) {
+			$spouse = $fact->getTarget();
+			$menu = new WT_Menu(get_close_relationship_name($root, $spouse));
+			$menu->addClass('', 'submenu flyout2');
+			$submenu = new WT_Menu($this->print_pedigree_person_nav($spouse) . $parentlinks);
+			$menu->addSubMenu($submenu);
+			echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($spouse), ' nam">';
+			echo '<a class="famnav_link" href="' . $spouse->getHtmlUrl() . '">';
+			echo $spouse->getFullName();
+			echo '</a>';
+			echo '<div class="font9">' . $spouse->getLifeSpan() . '</div>';
+			echo '</td></tr>';
+		}
+
+		foreach ($family->getFacts('CHIL') as $fact) {
+			$child = $fact->getTarget();
 			$menu = new WT_Menu(get_close_relationship_name($root, $child));
 			$menu->addClass('', 'submenu flyout2');
 			$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
