@@ -346,10 +346,10 @@ function print_addnewsource_link($element_id) {
 * @param string $tag fact record to edit (eg 2 DATE xxxxx)
 * @param string $upperlevel optional upper level tag (eg BIRT)
 * @param string $label An optional label to echo instead of the default
-* @param string $noClose optional, when "NOCLOSE", final "</td></tr>" won't be printed
+* @param string $extra optional text to display after the input field
 * (so that additional text can be printed in the box)
 */
-function add_simple_tag($tag, $upperlevel='', $label='', $noClose='') {
+function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	global $MEDIA_DIRECTORY, $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
 	global $xref, $bdm, $action, $event_add, $CensDate;
@@ -388,8 +388,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $noClose='') {
 		</script>
 		<?php
 	}
-
-	if ($noClose!="NOCLOSE") $noClose = '';
 
 	$subnamefacts = array("NPFX", "GIVN", "SPFX", "SURN", "NSFX", "_MARNM_SURN");
 	preg_match('/^(?:(\d+) ('.WT_REGEX_TAG.') ?(.*))/', $tag, $match);
@@ -829,7 +827,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $noClose='') {
 	// pastable values
 	if ($fact=='FORM' && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept);
 
-	if ($noClose != 'NOCLOSE') echo '</td></tr>';
+	echo $extra, '</td></tr>';
 
 	return $element_id;
 }
