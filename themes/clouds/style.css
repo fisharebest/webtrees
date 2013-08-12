@@ -577,6 +577,9 @@ padding:5px;
 
 .blockheader {
 width:100%;
+padding:0;
+margin:0;
+border-collapse:collapse;
 }
 
 img {
@@ -1203,7 +1206,7 @@ vertical-align:top;
 
 .person2 {
 background:#ffaaaa;
-border:outset #ffaaa 1px;
+border:outset #ffaaaa 1px;
 border-width:1px;
 vertical-align:top;
 }

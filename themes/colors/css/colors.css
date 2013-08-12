@@ -86,7 +86,7 @@ html[dir=rtl] .makeMenu li ul li {text-align:right;}
 #main-menu li {display:block; position:relative;float:left;list-style:none;}
 #main-menu li a {display:block;}
 #main-menu li > ul {display:block;position:absolute;top:0;left:100%;right:auto;}
-#main-menu > li > a {height:37px;width:27px:}
+#main-menu > li > a {height:37px;width:27px;}
 #main-menu > li > ul {left:0;right:auto;top:40px;}
 #main-menu a {display: block;text-decoration: none;padding: 0px 10px;margin: 0;white-space:nowrap;}
 #main-menu ul li:hover a, #main-menu li:hover li a {background: none;border: none;}
@@ -264,7 +264,7 @@ html[dir=rtl] #index_small_blocks {float:left;}
 .block {border-radius:3px;color:#000000;margin-bottom:5px;padding:1px;vertical-align:top;}
 .blockcontent {border:solid #999 1px;margin-bottom:10px;margin-left:auto;margin-right:2px;overflow:auto;padding:5px;}
 .blockcontent p {font-size:13px;}
-.blockheader {width:100%;}
+.blockheader {width:100%;padding:0;margin:0;border-collapse:collapse;}
 
 .blockh1 {background-image:url(../images/left1B.png);background-repeat:no-repeat;height:24px;width:26px;}
 .blockh2 {background-image:url(../images/left2.png);background-repeat:repeat-x;font-size:13px;font-weight:700;}
