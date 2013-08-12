@@ -114,7 +114,7 @@ case 'editraw':
 				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 			</p>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div>
 	<?php
 	break;
 
@@ -249,7 +249,7 @@ case 'edit':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
-	</div><!-- id="edit_interface-page" -->
+	</div>
 	<?php
 	break;
 
@@ -306,7 +306,7 @@ case 'add':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
-	</div><!-- id="edit_interface-page" -->
+	</div>
 	<?php
 	break;
 
@@ -800,6 +800,8 @@ case 'add_spouse_to_family_action':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
+// Link an individual to an existing family, as a child
+////////////////////////////////////////////////////////////////////////////////
 case 'addfamlink':
 	$xref = safe_GET('xref', WT_REGEX_XREF);
 
@@ -810,91 +812,42 @@ case 'addfamlink':
 		->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a child'))
 		->pageHeader();
 
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
-	echo '<form method="post" name="addchildform" action="edit_interface.php">';
-	echo '<input type="hidden" name="action" value="linkfamaction">';
-	echo '<input type="hidden" name="xref" value="', $person->getXref(), '">';
-	echo '<table class="facts_table">';
-	echo '<tr><td class="facts_label">', WT_I18N::translate('Family'), '</td>';
-	echo '<td class="facts_value"><input type="text" id="famid" name="famid" size="8"> ';
-	echo print_findfamily_link('famid');
-	echo '</td></tr>';
-	echo '<tr><td class="facts_label">', WT_Gedcom_Tag::getLabel('PEDI'), '</td><td class="facts_value">';
-	echo edit_field_pedi('PEDI', '', '', $person);
-	echo help_link('PEDI');
-	echo '</td></tr>';
-	echo keep_chan($person);
-	echo '</table>';
 	?>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
-	</div><!-- id="edit_interface-page" -->
+	<div id="edit_interface-page">
+		<h4><?php echo $controller->getPageTitle(); ?></h4>
+		<form method="post" name="addchildform" action="edit_interface.php">
+			<input type="hidden" name="action" value="linkfamaction">
+			<input type="hidden" name="xref" value="<?php echo $person->getXref(); ?>">
+			<table class="facts_table">
+				<tr>
+					<td class="facts_label">
+						<?php echo WT_I18N::translate('Family'); ?>
+					</td>
+					<td class="facts_value">
+						<input type="text" id="famid" name="famid" size="8">
+						<?php echo print_findfamily_link('famid'); ?>
+					</td>
+				</tr>
+				<tr>
+					<td class="facts_label">
+						<?php echo WT_Gedcom_Tag::getLabel('PEDI'); ?>
+					</td>
+					<td class="facts_value">
+						<?php echo edit_field_pedi('PEDI', '', '', $person); ?>
+						<?php echo help_link('PEDI'); ?>
+					</td>
+				</tr>
+				<?php echo keep_chan($person); ?>
+			</table>
+			<p id="save-cancel">
+				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+			</p>
+		</form>
+	</div>
 	<?php
 	break;
 
-////////////////////////////////////////////////////////////////////////////////
-case 'linkspouse':
-	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
-	$xref    = safe_GET('xref',   WT_REGEX_XREF);
-
-	$person = WT_Individual::getInstance($xref);
-	check_record_access($person);
-	
-	if ($person->getSex()=='F') {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing person'));
-	} else {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a wife using an existing person'));
-	}
-
-	$controller->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-	init_calendar_popup();
-	echo '<form method="post" name="addchildform" action="edit_interface.php">';
-	echo '<input type="hidden" name="action" value="linkspouseaction">';
-	echo '<input type="hidden" name="xref" value="', $person->getXref(), '">';
-	echo '<input type="hidden" name="famtag" value="', $famtag, '">';
-	echo '<table class="facts_table">';
-	echo '<tr><td class="facts_label">';
-	if ($famtag=="WIFE") {
-		echo WT_I18N::translate('Wife');
-	} else {
-		echo WT_I18N::translate('Husband');
-	}
-	echo '</td>';
-	echo '<td class="facts_value"><input id="spouseid" type="text" name="spid" size="8"> ';
-	echo print_findindi_link('spouseid');
-	echo '</td></tr>';
-	add_simple_tag("0 MARR Y");
-	add_simple_tag("0 DATE", "MARR");
-	add_simple_tag("0 PLAC", "MARR");
-	echo keep_chan($person);
-	echo '</table>';
-	print_add_layer("SOUR");
-	print_add_layer("OBJE");
-	print_add_layer("NOTE");
-	print_add_layer("SHARED_NOTE");
-	print_add_layer("ASSO");
-	// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-	print_add_layer("ASSO2");
-	print_add_layer("RESN");
-	?>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
-	</div><!-- id="edit_interface-page" -->
-	<?php
-	break;
-
-////////////////////////////////////////////////////////////////////////////////
 case 'linkfamaction':
 	$xref   = safe_POST('xref',  WT_REGEX_XREF);
 	$famid  = safe_POST('famid', WT_REGEX_XREF);
@@ -936,6 +889,113 @@ case 'linkfamaction':
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
 
+////////////////////////////////////////////////////////////////////////////////
+// Link and individual to an existing individual as a spouse
+////////////////////////////////////////////////////////////////////////////////
+case 'linkspouse':
+	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
+	$xref    = safe_GET('xref',   WT_REGEX_XREF);
+
+	$person = WT_Individual::getInstance($xref);
+	check_record_access($person);
+	
+	if ($person->getSex()=='F') {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing person'));
+		$label = WT_I18N::translate('Husband');
+	} else {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a wife using an existing person'));
+		$label = WT_I18N::translate('Wife');
+	}
+
+	$controller->pageHeader();
+	init_calendar_popup();
+
+	?>
+	<div id="edit_interface-page">
+		<h4><?php echo $controller->getPageTitle(); ?></h4>
+		<form method="post" name="addchildform" action="edit_interface.php">
+			<input type="hidden" name="action" value="linkspouseaction">
+			<input type="hidden" name="xref" value="<?php echo $person->getXref(); ?>">
+			<input type="hidden" name="famtag" value="<?php echo $famtag; ?>">
+			<table class="facts_table">
+				<tr>
+					<td class="facts_label">
+						<?php echo $label; ?>
+					</td>
+					<td class="facts_value">
+						<input id="spouseid" type="text" name="spid" size="8">
+						<?php echo print_findindi_link('spouseid');?>
+					</td>
+				</tr>
+				<?php add_simple_tag("0 MARR Y"); ?>
+				<?php add_simple_tag("0 DATE", "MARR"); ?>
+				<?php add_simple_tag("0 PLAC", "MARR");?>
+				<?php echo keep_chan($person);?>
+			</table>
+			<?php print_add_layer("SOUR"); ?>
+			<?php print_add_layer("OBJE"); ?>
+			<?php print_add_layer("NOTE"); ?>
+			<?php print_add_layer("SHARED_NOTE"); ?>
+			<?php print_add_layer("ASSO"); ?>
+			<?php print_add_layer("ASSO2"); ?>
+			<?php print_add_layer("RESN"); ?>
+			<p id="save-cancel">
+				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+			</p>
+		</form>
+	</div>
+	<?php
+	break;
+
+case 'linkspouseaction':
+	$xref   = safe_POST('xref',   WT_REGEX_XREF);
+	$spid   = safe_POST('spid',   WT_REGEX_XREF);
+	$famtag = safe_POST('famtag', '(HUSB|WIFE)');
+
+	$person = WT_Individual::getInstance($xref);
+	$spouse = WT_Individual::getInstance($spid);
+	check_record_access($person);
+	check_record_access($spouse);
+
+	if ($person->getSex()=='F') {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing person'));
+	} else {
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a wife using an existing person'));
+	}
+	$controller->pageHeader();
+
+	if ($person->getSex()=='M') {
+		$gedcom = "0 @new@ FAM\n1 HUSB @" . $person->getXref() . "@\n1 WIFE @" . $spouse->getXref() . "@";
+	} else {
+		$gedcom = "0 @new@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $person->getXref() . "@";
+	}
+	splitSOUR();
+	$gedcom .= addNewFact('MARR');
+
+	if (safe_POST_bool('SOUR_FAM') || count($tagSOUR)>0) {
+		// before adding 2 SOUR it needs to add 1 MARR Y first
+		if (addNewFact('MARR') == '') {
+			$gedcom .= "\n1 MARR Y";
+		}
+		$gedcom = handle_updates($gedcom);
+	} else {
+		// before adding level 2 facts it needs to add 1 MARR Y first
+		if (addNewFact('MARR')=='') {
+			$gedcom .= "\n1 MARR Y";
+		}
+		$gedcom = updateRest($gedcom);
+	}
+
+	$family = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
+	$person->createFact('1 FAMS @' . $family->getXref() .'@', true);	
+	$spouse->createFact('1 FAMS @' . $family->getXref() .'@', true);	
+
+	$controller->addInlineJavascript('closePopupAndReloadParent();');
+	break;
+
+////////////////////////////////////////////////////////////////////////////////
+// Create a new source record
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewsource':
 	$controller
@@ -1014,11 +1074,10 @@ case 'addnewsource':
 				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 			</p>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div>
 	<?php
 	break;
 
-////////////////////////////////////////////////////////////////////////////////
 case 'addsourceaction':
 	$controller
 		->setPageTitle(WT_I18N::translate('Create a new source'))
@@ -1066,6 +1125,8 @@ case 'addsourceaction':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
+// Create a new note record
+////////////////////////////////////////////////////////////////////////////////
 case 'addnewnote':
 	$controller
 		->setPageTitle(WT_I18N::translate('Create a new Shared Note'))
@@ -1096,11 +1157,10 @@ case 'addnewnote':
 				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 			</p>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div>
 	<?php
 	break;
 
-////////////////////////////////////////////////////////////////////////////////
 case 'addnoteaction':
 	$controller
 		->setPageTitle(WT_I18N::translate('Create a new Shared Note'))
@@ -1140,7 +1200,7 @@ case 'addnoteaction_assisted':
 
 	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/addnoteaction_assisted.php';
 
-	echo 	'</div><!-- id="edit_interface-page" -->';
+	echo 	'</div>';
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1162,7 +1222,7 @@ case 'addmedia_links':
 			<input type="hidden" name="noteid" value="newnote">
 			<?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/MEDIA_ctrl.php'; ?>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div>
 	<?php
 	break;
 
@@ -1223,10 +1283,12 @@ case 'editsource':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
-	</div><!-- id="edit_interface-page" -->
+	</div>
 	<?php
 	break;
 
+////////////////////////////////////////////////////////////////////////////////
+// Edit a note record
 ////////////////////////////////////////////////////////////////////////////////
 case 'editnote':
 	$xref = safe_GET('xref', WT_REGEX_XREF);
@@ -1260,11 +1322,10 @@ case 'editnote':
 				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 			</p>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div>
 	<?php
 	break;
 
-////////////////////////////////////////////////////////////////////////////////
 case 'editnoteaction':
 	$xref      = safe_POST('xref', WT_REGEX_XREF);
 	$keep_chan = safe_POST_bool('keep_chan');
@@ -1288,6 +1349,8 @@ case 'editnoteaction':
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
 
+////////////////////////////////////////////////////////////////////////////////
+// Create a new repository
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewrepository':
 	$controller
@@ -1341,11 +1404,10 @@ case 'addnewrepository':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
-	</div><!-- id="edit_interface-page" -->
+	</div>
 	<?php
 	break;
 
-////////////////////////////////////////////////////////////////////////////////
 case 'addrepoaction':
 	$controller
 		->setPageTitle(WT_I18N::translate('Create Repository'))
@@ -1382,53 +1444,6 @@ case 'addrepoaction':
 
 	$record = WT_GedcomRecord::createRecord($newgedrec, WT_GED_ID);
 	$controller->addInlineJavascript('openerpasteid("' . $record->getXref() . '");');
-	break;
-
-////////////////////////////////////////////////////////////////////////////////
-case 'linkspouseaction':
-	$xref   = safe_POST('xref',   WT_REGEX_XREF);
-	$spid   = safe_POST('spid',   WT_REGEX_XREF);
-	$famtag = safe_POST('famtag', '(HUSB|WIFE)');
-
-	$person = WT_Individual::getInstance($xref);
-	$spouse = WT_Individual::getInstance($spid);
-	check_record_access($person);
-	check_record_access($spouse);
-
-	if ($person->getSex()=='F') {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing person'));
-	} else {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a wife using an existing person'));
-	}
-	$controller->pageHeader();
-
-	if ($person->getSex()=='M') {
-		$gedcom = "0 @new@ FAM\n1 HUSB @" . $person->getXref() . "@\n1 WIFE @" . $spouse->getXref() . "@";
-	} else {
-		$gedcom = "0 @new@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $person->getXref() . "@";
-	}
-	splitSOUR();
-	$gedcom .= addNewFact('MARR');
-
-	if (safe_POST_bool('SOUR_FAM') || count($tagSOUR)>0) {
-		// before adding 2 SOUR it needs to add 1 MARR Y first
-		if (addNewFact('MARR') == '') {
-			$gedcom .= "\n1 MARR Y";
-		}
-		$gedcom = handle_updates($gedcom);
-	} else {
-		// before adding level 2 facts it needs to add 1 MARR Y first
-		if (addNewFact('MARR')=='') {
-			$gedcom .= "\n1 MARR Y";
-		}
-		$gedcom = updateRest($gedcom);
-	}
-
-	$family = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
-	$person->createFact('1 FAMS @' . $family->getXref() .'@', true);	
-	$spouse->createFact('1 FAMS @' . $family->getXref() .'@', true);	
-
-	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1499,7 +1514,9 @@ case 'paste':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-case 'reorder_media': // Sort page using Popup
+// Change the order of media objects
+////////////////////////////////////////////////////////////////////////////////
+case 'reorder_media':
 	$xref = safe_REQUEST($_REQUEST, 'xref',  WT_REGEX_XREF);
 
 	$person = WT_Individual::getInstance($xref);
@@ -1586,8 +1603,7 @@ case 'reorder_media': // Sort page using Popup
 	<?php
 	break;
 
-////////////////////////////////////////////////////////////////////////////////
-case 'reorder_media_update': // Update sort using popup
+case 'reorder_media_update':
 	$xref      = safe_POST('xref',  WT_REGEX_XREF);
 	$order1    = safe_POST('order1');
 	$keep_chan = safe_POST_bool('keep_chan');
@@ -1618,6 +1634,8 @@ case 'reorder_media_update': // Update sort using popup
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
 
+////////////////////////////////////////////////////////////////////////////////
+// Change the order of children within a family record
 ////////////////////////////////////////////////////////////////////////////////
 case 'reorder_children':
 	$xref   = safe_GET('xref',  WT_REGEX_XREF);
@@ -1681,10 +1699,48 @@ case 'reorder_children':
 				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 			</p>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div>
 	<?php
 	break;
 
+case 'reorder_update':
+	$xref      = safe_POST('xref', WT_REGEX_XREF);
+	$order     = safe_POST('order');
+	$keep_chan = safe_POST_bool('keep_chan');
+
+	$family = WT_Family::getInstance($xref);
+	check_record_access($family);
+
+	$controller
+		->setPageTitle(WT_I18N::translate('Re-order children'))
+		->pageHeader();
+
+	if (is_array($order)) {
+		$gedcom = array('0 @' . $family->getXref() . '@ FAM');
+		$facts  = $family->getFacts();
+
+		// Move children to the end of the record
+		foreach ($order as $child=>$num) {
+			foreach ($facts as $n=>$fact) {
+				if ($fact->getValue() == '@'.$child.'@') {
+					$facts[]=$fact;
+					unset($facts[$n]);
+					break;
+				}
+			}
+		}
+		foreach ($facts as $fact) {
+			$gedcom[] = $fact->getGedcom();
+		}
+		
+		$family->updateRecord(implode("\n", $gedcom), !$keep_chan);
+	}
+
+	$controller->addInlineJavascript('closePopupAndReloadParent();');
+	break;
+
+////////////////////////////////////////////////////////////////////////////////
+// Change the members of a family record
 ////////////////////////////////////////////////////////////////////////////////
 case 'changefamily':
 	$xref = safe_GET('xref', WT_REGEX_XREF);
@@ -1841,12 +1897,11 @@ case 'changefamily':
 					<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 				</p>
 			</form>
-		</div><!-- id="changefam" -->
-	</div><!-- id="edit_interface-page" -->
+		</div>
+	</div>
 	<?php
 	break;
 
-////////////////////////////////////////////////////////////////////////////////
 case 'changefamily_update':
 	$xref      = safe_POST('xref', WT_REGEX_XREF);
 	$HUSB      = safe_POST('HUSB', WT_REGEX_XREF);
@@ -1952,42 +2007,7 @@ case 'changefamily_update':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-case 'reorder_update':
-	$xref      = safe_POST('xref', WT_REGEX_XREF);
-	$order     = safe_POST('order');
-	$keep_chan = safe_POST_bool('keep_chan');
-
-	$family = WT_Family::getInstance($xref);
-	check_record_access($family);
-
-	$controller
-		->setPageTitle(WT_I18N::translate('Re-order children'))
-		->pageHeader();
-
-	if (is_array($order)) {
-		$gedcom = array('0 @' . $family->getXref() . '@ FAM');
-		$facts  = $family->getFacts();
-
-		// Move children to the end of the record
-		foreach ($order as $child=>$num) {
-			foreach ($facts as $n=>$fact) {
-				if ($fact->getValue() == '@'.$child.'@') {
-					$facts[]=$fact;
-					unset($facts[$n]);
-					break;
-				}
-			}
-		}
-		foreach ($facts as $fact) {
-			$gedcom[] = $fact->getGedcom();
-		}
-		
-		$family->updateRecord(implode("\n", $gedcom), !$keep_chan);
-	}
-
-	$controller->addInlineJavascript('closePopupAndReloadParent();');
-	break;
-
+// Change the order of FAMS records within an INDI record
 ////////////////////////////////////////////////////////////////////////////////
 case 'reorder_fams':
 	$xref   = safe_GET('xref', WT_REGEX_XREF);
@@ -2030,11 +2050,10 @@ case 'reorder_fams':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
-	</div><!-- id="edit_interface-page" -->
+	</div>
 	<?php
 	break;
 
-////////////////////////////////////////////////////////////////////////////////
 case 'reorder_fams_update':
 	$xref      = safe_POST('xref', WT_REGEX_XREF);
 	$order     = safe_POST('order');
@@ -2740,7 +2759,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 		convertHidden("NAME");
 	}
 	');
-	echo '</div><!-- id="edit_interface-page" -->';
+	echo '</div>';
 }
 
 // Can we edit a WT_GedcomRecord object
