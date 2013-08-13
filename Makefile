@@ -96,8 +96,8 @@ $(PO_FILES): language/webtrees.pot
 ################################################################################
 # Automatically generate RTL stylesheets from LTR stylesheets
 ################################################################################
-CSS_LTR_FILES=$(shell find build/webtrees -name "*-ltr.css")
+CSS_LTR_FILES=$(shell find . -name "*-ltr.css")
 CSS_RTL_FILES=$(patsubst %-ltr.css,%-rtl.css,$(CSS_LTR_FILES))
 
 %-rtl.css: %-ltr.css
-	java -jar $(CLOSURE_STYLESHEETS) --output-orientation RTL -o $@ $<
+	java -jar $(CLOSURE_CSS) --output-orientation RTL --pretty-print -o $@ $<
