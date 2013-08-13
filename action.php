@@ -85,7 +85,7 @@ case 'copy-fact':
 					);
 				// The clipboard only holds 10 facts
 				while (count($WT_SESSION->clipboard)>10) {
-					array_pop($WT_SESSION->clipboard);
+					array_shift($WT_SESSION->clipboard);
 				}
 				WT_FlashMessages::addMessage(WT_I18N::translate('Record copied to clipboard'));
 				break 2;
