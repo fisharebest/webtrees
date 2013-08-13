@@ -69,7 +69,7 @@ build/webtrees: clean update
 ################################################################################
 clean:
 	rm -Rf build/webtrees*
-	find language -name "*.mo" -not -path "en_US.mo" -delete
+	find language -name "*.mo" -not -path "language/en_US.mo" -delete
 
 ################################################################################
 # Gettext template (.POT) file
