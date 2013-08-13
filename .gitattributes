@@ -1,11 +1,8 @@
 # Exclude the following files when we build webtrees
 
 .git*                       export-ignore
-
-build                       export-ignore
-
-language/*.po               export-ignore
-
+Makefile                    export-ignore
+build/                      export-ignore
 library/Zend/Acl/           export-ignore
 library/Zend/Amf/           export-ignore
 library/Zend/Application/   export-ignore
@@ -31,29 +28,29 @@ library/Zend/Json/          export-ignore
 library/Zend/Layout/        export-ignore
 library/Zend/Ldap/          export-ignore
 library/Zend/Log/           export-ignore
-library/Zend/Mail           export-ignore
-library/Zend/Markup         export-ignore
-library/Zend/Measure        export-ignore
-library/Zend/Memory         export-ignore
-library/Zend/Mime           export-ignore
-library/Zend/Navigation     export-ignore
-library/Zend/Oauth          export-ignore
-library/Zend/OpenId         export-ignore
-library/Zend/Paginator      export-ignore
-library/Zend/Pdf            export-ignore
-library/Zend/ProgressBar    export-ignore
-library/Zend/Queue          export-ignore
-library/Zend/Reflection     export-ignore
-library/Zend/Rest           export-ignore
-library/Zend/Search         export-ignore
-library/Zend/Serializer     export-ignore
-library/Zend/Service        export-ignore
-library/Zend/Soap           export-ignore
-library/Zend/Test           export-ignore
-library/Zend/Text           export-ignore
-library/Zend/TimeSync       export-ignore
-library/Zend/Tool           export-ignore
-library/Zend/Validate       export-ignore
-library/Zend/View           export-ignore
-library/Zend/Wildfire       export-ignore
-library/Zend/XmlRpc         export-ignore
+library/Zend/Mail/          export-ignore
+library/Zend/Markup/        export-ignore
+library/Zend/Measure/       export-ignore
+library/Zend/Memory/        export-ignore
+library/Zend/Mime/          export-ignore
+library/Zend/Navigation/    export-ignore
+library/Zend/Oauth/         export-ignore
+library/Zend/OpenId/        export-ignore
+library/Zend/Paginator/     export-ignore
+library/Zend/Pdf/           export-ignore
+library/Zend/ProgressBar/   export-ignore
+library/Zend/Queue/         export-ignore
+library/Zend/Reflection/    export-ignore
+library/Zend/Rest/          export-ignore
+library/Zend/Search/        export-ignore
+library/Zend/Serializer/    export-ignore
+library/Zend/Service/       export-ignore
+library/Zend/Soap/          export-ignore
+library/Zend/Test/          export-ignore
+library/Zend/Text/          export-ignore
+library/Zend/TimeSync/      export-ignore
+library/Zend/Tool/          export-ignore
+library/Zend/Validate/      export-ignore
+library/Zend/View/          export-ignore
+library/Zend/Wildfire/      export-ignore
+library/Zend/XmlRpc/        export-ignore
