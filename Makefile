@@ -63,14 +63,13 @@ build/webtrees: clean update
 	rm -Rf $@
 	# Done!
 	ls -l $@-$(BUILD_VERSION).zip*
-	false
-	find webtrees/modules_v3 -name "*.xml" | while read file; do sed -e 's~\(WT_I18N::[^)]*[)]\)~<?php echo \1; ?>~g' $$file > webtrees_tmp/$$(echo $$file.php | cut -c 10- | tr / _); done
 
 ################################################################################
 # Remove temporary and intermediate files
 ################################################################################
 clean:
 	rm -Rf build/webtrees*
+	find language -name "*.mo" -not -path "en_US.mo" -delete
 
 ################################################################################
 # Gettext template (.POT) file
