@@ -2338,7 +2338,7 @@ function FactsSHandler($attrs) {
 			}
 		}
 	} else {
-		foreach ($record->getFacts as $fact) {
+		foreach ($record->getFacts() as $fact) {
 			if ($fact->isNew() && $fact->getTag()<>'CHAN') {
 				$repeats[]=$fact->getGedcom();
 			}
