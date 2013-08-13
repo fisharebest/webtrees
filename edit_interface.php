@@ -574,7 +574,6 @@ case 'add_parent_to_individual_action':
 	$gedcom = '0 @NEW@ INDI';
 	$gedcom .= addNewName();
 	$gedcom .= addNewSex ();
-	$gedcom .= "\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $newfamxref);
 	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
 		foreach ($matches[1] as $match) {
 			$gedcom.=addNewFact($match);
@@ -585,11 +584,7 @@ case 'add_parent_to_individual_action':
 	} else {
 		$gedcom=updateRest($gedcom);
 	}
-	if (safe_POST('SEX')=='F') {
-		$gedcom .= "\n1 WIFE @" . $family->getXref() . "@";
-	} else {
-		$gedcom .= "\n1 HUSB @" . $family->getXref() . "@";
-	}
+	$gedcom .= "\n1 FAMS @" . $family->getXref() . "@";
 
 	$parent = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
 
