@@ -120,7 +120,7 @@ function radio_buttons($name, $values, $selected, $extra='') {
 	foreach ($values as $key=>$value) {
 		$uniqueID = $name.(int)(microtime() * 1000000);
 		$html.='<input type="radio" name="'.$name.'" id="'.$uniqueID.'" value="'.htmlspecialchars($key).'"';
-		if ((string)$key===$selected) { // Beware PHP array keys are cast to integers!  Cast them back
+		if ((string)$key===(string)$selected) { // Beware PHP array keys are cast to integers!  Cast them back
 			$html.=' checked';
 		}
 		$html.='><label for="'.$uniqueID.'">'.htmlspecialchars($value).'</label>';
@@ -131,7 +131,7 @@ function radio_buttons($name, $values, $selected, $extra='') {
 // Print an edit control for a Yes/No field
 function edit_field_yes_no($name, $selected=false, $extra='') {
 	return radio_buttons(
-		$name, array(false=>WT_I18N::translate('no'),true=>WT_I18N::translate('yes')), $selected, $extra
+		$name, array(false=>WT_I18N::translate('no'), true=>WT_I18N::translate('yes')), $selected, $extra
 	);
 }
 
@@ -321,7 +321,7 @@ function print_addnewnote_link($element_id) {
 
 /// Used in GEDFact CENS assistant
 function print_addnewnote_assisted_link($element_id, $xref) {
-	return '<a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$xref.'\'); return false;">'.WT_I18N::translate('Create a new Shared Note using Assistant').'</a>';
+	return '<input type="hidden" name="pid_array" id="pid_array" value="fish"><script>function set_pid_array(pa){alert(111);jQuery("#pid_array").val(pa);alert(222);}</script><a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$xref.'\'); return false;">'.WT_I18N::translate('Create a new Shared Note using Assistant').'</a>';
 }
 
 function print_editnote_link($note_id) {
