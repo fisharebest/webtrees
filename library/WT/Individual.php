@@ -264,13 +264,15 @@ class WT_Individual extends WT_GedcomRecord {
 				}
 			}
 			// Check spouse dates
-			$spouse=$family->getSpouse($this, WT_PRIV_HIDE);
-			preg_match_all('/\n2 DATE (.+)/', $spouse->gedcom, $date_matches);
-			foreach ($date_matches[1] as $date_match) {
-				$date=new WT_Date($date_match);
-				// Assume max age difference between spouses of 40 years
-				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+40)) {
-					return true;
+			$spouse = $family->getSpouse($this, WT_PRIV_HIDE);
+			if ($spouse) {
+				preg_match_all('/\n2 DATE (.+)/', $spouse->gedcom, $date_matches);
+				foreach ($date_matches[1] as $date_match) {
+					$date = new WT_Date($date_match);
+					// Assume max age difference between spouses of 40 years
+					if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+40)) {
+						return true;
+					}
 				}
 			}
 			// Check child dates
