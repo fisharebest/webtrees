@@ -2364,6 +2364,18 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
 				}
 				break;
+			case 'add_child_to_individual_action':
+				if ($person->getSex()=='M' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
+					$name_fields['SURN']=$match[2];
+					if ($SURNAME_TRADITION=='polish' && $sextag=='F') {
+						$match[2]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
+					} else if ($SURNAME_TRADITION=='lithuanian' && $sextag=='F') {
+						$match[2]=preg_replace(array('/as$/', '/a$/', '/is$/', '/ys$/', '/ius$/', '/us$/'), array('aitė', 'aitė', 'ytė', 'ytė', 'iūtė', 'utė'), $match[2]);
+					}
+					$name_fields['SPFX']=trim($match[1]);
+					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
+				}
+				break;
 			case 'add_parent_to_individual_action':
 				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
 					if ($SURNAME_TRADITION=='polish' && $sextag=='M') {
