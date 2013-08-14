@@ -217,12 +217,14 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		// check if spouse has parents and add an arrow
 		echo '<td>&nbsp;</td>';
 		echo '<td>';
-		foreach ($spouse->getChildFamilies() as $cfamily) {
-			foreach ($cfamily->getSpouses() as $parent) {
-				print_url_arrow($parent->getXref().$personcount.$person->getXref(), '?rootid='.$parent->getXref().'&amp;generations='.$this->generations.'&amp;chart_style='.$this->chart_style.'&amp;show_full='.$this->show_full.'&amp;box_width='.$this->box_width.'&amp;ged='.WT_GEDURL, WT_I18N::translate('Start at parents'), 2);
-				$personcount++;
-				// only show the arrow for one of the parents
-				break;
+		if ($spouse) {
+			foreach ($spouse->getChildFamilies() as $cfamily) {
+				foreach ($cfamily->getSpouses() as $parent) {
+					print_url_arrow($parent->getXref().$personcount.$person->getXref(), '?rootid='.$parent->getXref().'&amp;generations='.$this->generations.'&amp;chart_style='.$this->chart_style.'&amp;show_full='.$this->show_full.'&amp;box_width='.$this->box_width.'&amp;ged='.WT_GEDURL, WT_I18N::translate('Start at parents'), 2);
+					$personcount++;
+					// only show the arrow for one of the parents
+					break;
+				}
 			}
 		}
 		if ($this->show_full) echo '<br><br>&nbsp;';
