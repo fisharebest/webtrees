@@ -209,9 +209,12 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			$this->pids[]=$person->getXref();
 			if ($add_family) {
 				foreach ($person->getSpouseFamilies() as $family) {
-					$this->pids[]=$family->getSpouse($person)->getXref();
-					foreach ($family->getChildren() as $child) {
-						$this->pids[]=$child->getXref();
+					$spouse = $family->getSpouse($person);
+					if ($spouse) {
+						$this->pids[]=$spouse->getXref();
+						foreach ($family->getChildren() as $child) {
+							$this->pids[]=$child->getXref();
+						}
 					}
 				}
 				foreach ($person->getChildFamilies() as $family) {
