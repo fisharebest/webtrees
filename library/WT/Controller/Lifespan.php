@@ -175,7 +175,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			$WT_SESSION->timeline_pids=null;
 		}
 
-		//--Sort the arrar in order of being year
+		// Sort the array in order of birth year
 		uasort($this->people, "compare_people");
 		//If there is people in the array posted back this if occurs
 		if (isset ($this->people[0])) {
