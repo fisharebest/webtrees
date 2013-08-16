@@ -760,7 +760,7 @@ function format_fam_table($datalist, $option='') {
 			}
 		} elseif ($family->getFacts('_NMR')) {
 			$html .= WT_I18N::translate('no');
-		} elseif ($family->getFacts(WT_EVENTS_MARR)) {
+		} elseif ($family->getFacts('MARR')) {
 			$html .= WT_I18N::translate('yes');
 		} else {
 			$html .= '&nbsp;';

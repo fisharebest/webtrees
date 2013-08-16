@@ -105,7 +105,7 @@ define('WT_UTF8_PDF',    "\xE2\x80\xAC"); // U+202C  (Pop directional formatting
 // Alternatives to BMD events for lists, charts, etc.
 define('WT_EVENTS_BIRT', 'BIRT|CHR|BAPM|_BRTM|ADOP');
 define('WT_EVENTS_DEAT', 'DEAT|BURI|CREM');
-define('WT_EVENTS_MARR', 'MARR');
+define('WT_EVENTS_MARR', 'MARR|_NMR');
 define('WT_EVENTS_DIV',  'DIV|ANUL|_SEPR');
 
 // Use these line endings when writing files on the server

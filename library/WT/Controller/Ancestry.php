@@ -142,10 +142,9 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 			echo '&nbsp;<span dir="ltr" class="person_box">&nbsp;', ($sosa*2), '&nbsp;</span>&nbsp;', WT_I18N::translate('and');
 			echo '&nbsp;<span dir="ltr" class="person_boxF">&nbsp;', ($sosa*2+1), '&nbsp;</span>&nbsp;';
 			if ($family->canShow()) {
-				$marriage = $family->getFirstFact('MARR');
-				if ($marriage) {
+				foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 					echo ' <a href="', $family->getHtmlUrl(), '" class="details1">';
-					$marriage->print_simple_fact();
+					$fact->print_simple_fact();
 					echo '</a>';
 				}
 			}
