@@ -34,15 +34,9 @@ class WT_Individual extends WT_GedcomRecord {
 	var $generation; // used in some lists to keep track of this Person's generation in that list
 
 	// Cached results from various functions.
-	private $_spouseFamilies=null;
-	private $_childFamilies=null;
-	private $_getBirthDate=null;
-	private $_getBirthPlace=null;
 	private $_getAllBirthDates=null;
 	private $_getAllBirthPlaces=null;
 	private $_getEstimatedBirthDate=null;
-	private $_getDeathDate=null;
-	private $_getDeathPlace=null;
 	private $_getAllDeathDates=null;
 	private $_getAllDeathPlaces=null;
 	private $_getEstimatedDeathDate=null;
@@ -370,79 +364,32 @@ class WT_Individual extends WT_GedcomRecord {
 		}
 	}
 
-	/**
-	* get birth date
-	* @return WT_Date the birth date
-	*/
+	// Get the date of birth
 	function getBirthDate() {
-		if (is_null($this->_getBirthDate)) {
-			if ($this->canShow()) {
-				foreach ($this->getAllBirthDates() as $date) {
-					if ($date->isOK()) {
-						$this->_getBirthDate=$date;
-						break;
-					}
+		if ($this->canShow()) {
+			foreach ($this->getAllBirthDates() as $date) {
+				if ($date->isOK()) {
+					return $date;
 				}
-				if (is_null($this->_getBirthDate)) {
-					$this->_getBirthDate=new WT_Date('');
-				}
-			} else {
-				$this->_getBirthDate=new WT_Date("(".WT_I18N::translate('Private').")");
 			}
+			return new WT_Date('');
+		} else {
+			return new WT_Date('(' . WT_I18N::translate('Private') . ')');
 		}
-		return $this->_getBirthDate;
 	}
 
-	/**
-	* get the birth place
-	* @return string
-	*/
+	// Get the place of birth
 	function getBirthPlace() {
-		if (is_null($this->_getBirthPlace)) {
-			if ($this->canShow()) {
-				foreach ($this->getAllBirthPlaces() as $place) {
-					if ($place) {
-						$this->_getBirthPlace=$place;
-						break;
-					}
+		if ($this->canShow()) {
+			foreach ($this->getAllBirthPlaces() as $place) {
+				if ($place) {
+					return $place;
 				}
-				if (is_null($this->_getBirthPlace)) {
-					$this->_getBirthPlace='';
-				}
-			} else {
-				$this->_getBirthPlace=WT_I18N::translate('Private');
 			}
+			return '';
+		} else {
+			return WT_I18N::translate('Private');
 		}
-		return $this->_getBirthPlace;
-	}
-
-	/**
-	* get the Census birth place (Town and County (reversed))
-	* @return string
-	*/
-	function getCensBirthPlace() {
-		if (is_null($this->_getBirthPlace)) {
-			if ($this->canShow()) {
-				foreach ($this->getAllBirthPlaces() as $place) {
-					if ($place) {
-						$this->_getBirthPlace=$place;
-						break;
-					}
-				}
-				if (is_null($this->_getBirthPlace)) {
-					$this->_getBirthPlace='';
-				}
-			} else {
-				$this->_getBirthPlace=WT_I18N::translate('Private');
-			}
-		}
-		$censbirthplace = $this->_getBirthPlace;
-		$censbirthplace = explode(', ', $censbirthplace);
-		$censbirthplace = array_reverse($censbirthplace);
-		$censbirthplace = array_slice($censbirthplace, 1);
-		$censbirthplace = array_slice($censbirthplace, 0, 2);
-		$censbirthplace = implode(', ', $censbirthplace);
-		return $censbirthplace;
 	}
 
 	/**
@@ -453,50 +400,32 @@ class WT_Individual extends WT_GedcomRecord {
 		return $this->getBirthDate()->MinDate()->Format('%Y');
 	}
 
-	/**
-	* get death date
-	* @return WT_Date the death date in the GEDCOM format of '1 JAN 2006'
-	*/
-	function getDeathDate($estimate = true) {
-		if (is_null($this->_getDeathDate)) {
-			if ($this->canShow()) {
-				foreach ($this->getAllDeathDates() as $date) {
-					if ($date->isOK()) {
-						$this->_getDeathDate=$date;
-						break;
-					}
+	// Get the date of death
+	function getDeathDate() {
+		if ($this->canShow()) {
+			foreach ($this->getAllDeathDates() as $date) {
+				if ($date->isOK()) {
+					return $date;
 				}
-				if (is_null($this->_getDeathDate)) {
-					$this->_getDeathDate=new WT_Date('');
-				}
-			} else {
-				$this->_getDeathDate=new WT_Date("(".WT_I18N::translate('Private').")");
 			}
+			return new WT_Date('');
+		} else {
+			return new WT_Date('(' . WT_I18N::translate('Private') . ')');
 		}
-		return $this->_getDeathDate;
 	}
 
-	/**
-	* get the death place
-	* @return string
-	*/
+	// Get the place of death
 	function getDeathPlace() {
-		if (is_null($this->_getDeathPlace)) {
-			if ($this->canShow()) {
-				foreach ($this->getAllDeathPlaces() as $place) {
-					if ($place) {
-						$this->_getDeathPlace=$place;
-						break;
-					}
+		if ($this->canShow()) {
+			foreach ($this->getAllDeathPlaces() as $place) {
+				if ($place) {
+					return $place;
 				}
-				if (is_null($this->_getDeathPlace)) {
-					$this->_getDeathPlace='';
-				}
-			} else {
-				$this->_getDeathPlace=WT_I18N::translate('Private');
 			}
+			return '';
+		} else {
+			return WT_I18N::translate('Private');
 		}
-		return $this->_getDeathPlace;
 	}
 
 	/**
@@ -505,32 +434,6 @@ class WT_Individual extends WT_GedcomRecord {
 	*/
 	function getDeathYear() {
 		return $this->getDeathDate()->MinDate()->Format('%Y');
-	}
-
-	/**
-	* get the birth and death years
-	* @return string
-	*/
-	function getBirthDeathYears($age_at_death=true, $classname='details1') {
-		if (!$this->getBirthYear()) {
-			return '';
-		}
-		$tmp = '<span dir="ltr" title="'.strip_tags($this->getBirthDate()->Display()).'">'.$this->getBirthYear();
-			if (strip_tags($this->getDeathYear()) =='') { $tmp .= '</span>'; } else { $tmp .= '-</span>'; } 		
-		$tmp .= '<span title="'.strip_tags($this->getDeathDate()->Display()).'">'.$this->getDeathYear().'</span>';
-		// display age only for exact dates (empty date qualifier)
-		if ($age_at_death
-			&& $this->getBirthYear() && empty($this->getBirthDate()->qual1)
-			&& $this->getDeathYear() && empty($this->getDeathDate()->qual1)) {
-			$age = get_age_at_event(WT_Date::GetAgeGedcom($this->getBirthDate(), $this->getDeathDate()), false);
-			if (!empty($age)) {
-				$tmp .= '<span class="age"> ('.WT_I18N::translate('Age').' '.$age.')</span>';
-			}
-		}
-		if ($classname) {
-			return '<span class="'.$classname.'">'.$tmp.'</span>';
-		}
-		return $tmp;
 	}
 
 	// Get the range of years in which a person lived.  e.g. “1870–”, “1870–1920”, “–1920”.
