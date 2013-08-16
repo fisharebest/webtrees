@@ -68,7 +68,6 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 
 	$personlinks = '';
 	$icons = '';
-	$classfacts = '';
 	$genderImage = '';
 	$BirthDeath = '';
 	$birthplace = '';
@@ -77,7 +76,6 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$iconsStyleAdd = 'float:right;';
 	if ($TEXT_DIRECTION=='rtl') $iconsStyleAdd='float:left;';
 
-	$disp=$person->canShow();
 	$uniqueID = (int)(microtime() * 1000000);
 	$boxID = $pid.'.'.$personcount.'.'.$count.'.'.$uniqueID;
 	$mouseAction4 = " onclick=\"expandbox('".$boxID."', $style); return false;\"";
@@ -161,14 +159,6 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	//-- find additional name, e.g. Hebrew
 	$addname=$person->getAddName();
 	
-	// add optional CSS style for each fact
-	$indirec = $person->getGedcom();
-	$cssfacts = array("BIRT", "CHR", "DEAT", "BURI", "CREM", "ADOP", "BAPM", "BARM", "BASM", "BLES", "CHRA", "CONF", "FCOM", "ORDN", "NATU", "EMIG", "IMMI", "CENS", "PROB", "WILL", "GRAD", "RETI", "CAST", "DSCR", "EDUC", "IDNO",
-	"NATI", "NCHI", "NMR", "OCCU", "PROP", "RELI", "RESI", "SSN", "TITL", "BAPL", "CONL", "ENDL", "SLGC", "_MILI");
-	foreach ($cssfacts as $indexval => $fact) {
-		if (strpos($indirec, "1 $fact")!==false) $classfacts .= " $fact";
-	}
-	
 	if ($PEDIGREE_SHOW_GENDER && $show_full) {
 		$genderImage = " ".$person->getSexImage('small', "box-$boxID-gender");
 	}
@@ -182,9 +172,9 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		$addname = ' <span class="details$style">'.get_lds_glance($person).'</span>' . $addname;
 	}
 	
-	// Show BIRT or equivalent event
-	$opt_tags=preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
-	if ($show_full) {
+	if ($show_full && $person->canShow()) {
+		$opt_tags=preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
+		// Show BIRT or equivalent event
 		foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
 			if (!in_array($birttag, $opt_tags)) {
 				$event = $person->getFirstFact($birttag);
@@ -194,7 +184,6 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				}
 			}
 		}
-	}
 		// Show optional events (before death)
 		foreach ($opt_tags as $key=>$tag) {
 			if (!preg_match('/^('.WT_EVENTS_DEAT.')$/', $tag)) {
@@ -205,8 +194,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				}
 			}
 		}
-	// Show DEAT or equivalent event
-	if ($show_full) {
+		// Show DEAT or equivalent event
 		foreach (explode('|', WT_EVENTS_DEAT) as $deattag) {
 			$event = $person->getFirstFact($deattag);
 			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace() || $event->getValue()=='Y')) {
@@ -217,27 +205,17 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				break;
 			}
 		}
-	}
-	// Show remaining optional events (after death)
-	foreach ($opt_tags as $tag) {
-		$event = $person->getFirstFact($tag);
-		if ($event) {
-			$BirthDeath .= $event->print_simple_fact(true);
-		}
-	}
-	// Find the short birth place for compact chart
-	$opt_tags=preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
-	foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
-		if (!in_array($birttag, $opt_tags)) {
-			$event = $person->getFirstFact($birttag);
-			if ($event && ($event->getDate()->isOK() || $event->getPlace())) {
-				$tmp=new WT_Place($event->getPlace(), WT_GED_ID);
-				$birthplace .= $tmp->getShortName();
-				break;
+		// Show remaining optional events (after death)
+		foreach ($opt_tags as $tag) {
+			$event = $person->getFirstFact($tag);
+			if ($event) {
+				$BirthDeath .= $event->print_simple_fact(true);
 			}
 		}
 	}
+
 	// Output to template
+	$classfacts='';
 	if ($show_full) {
 	   require WT_THEME_DIR.'templates/personbox_template.php';
 	} else {
