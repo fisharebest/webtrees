@@ -131,7 +131,9 @@ function indi_desc($person, $n, $array) {
 	$array[$person->getXref()]=$person;
 	foreach ($person->getSpouseFamilies() as $family) {
 		$spouse = $family->getSpouse($person);
-		$array[$spouse->getXref()] = $spouse;
+		if ($spouse) {
+			$array[$spouse->getXref()] = $spouse;
+		}
 		foreach ($family->getChildren() as $child) {
 			$array=indi_desc($child, $n-1, $array);
 		}
