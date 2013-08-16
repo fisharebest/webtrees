@@ -87,8 +87,10 @@ foreach ($facts as $event) {
 		// Show spouse/family for family events
 		if ($event->getParent() instanceof WT_Family) {
 			$spouse = $event->getParent()->getSpouse($person);
-			echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
-			echo '<a href="', $event->getParent()->getHtmlUrl(), '">', WT_I18N::translate('View Family'), ' - </a>';
+			if ($spouse) {
+				echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
+				echo '<a href="', $event->getParent()->getHtmlUrl(), '">', WT_I18N::translate('View Family'), ' - </a>';
+			}
 		}
 		echo ' ',format_fact_place($event, true, true);
 		echo '</div>';
