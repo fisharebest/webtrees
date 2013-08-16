@@ -718,7 +718,7 @@ function print_pedigree_person_nav2($pid) {
 				$marrdate = $family->getMarriageDate();
 
 				// Spouse ------------------------------
-				if ($spouse->canShowName()) {
+				if ($spouse && $spouse->canShowName()) {
 					$fulln =strip_tags($spouse->getFullName());
 					$spouselinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
 					$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
