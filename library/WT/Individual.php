@@ -656,9 +656,10 @@ class WT_Individual extends WT_GedcomRecord {
 						$min[]=$tmp->MaxJD()-365*45;
 						$max[]=$tmp->MinJD()-365*15;
 					}
-					if ($spouse=$family->getSpouse($this)) {
+					$spouse=$family->getSpouse($this);
+					if ($spouse) {
 						$tmp=$spouse->getBirthDate();
-						if (is_object($tmp) && $tmp->MinJD()) {
+						if ($tmp->MinJD()) {
 							$min[]=$tmp->MaxJD()-365*25;
 							$max[]=$tmp->MinJD()+365*25;
 						}
