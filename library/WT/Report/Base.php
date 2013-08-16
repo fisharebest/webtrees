@@ -403,14 +403,6 @@ class WT_Report_Base {
 		}
 		return $this->Styles[$s];
 	}
-
-	// static callback functions to sort data
-	static function CompareBirthDate($x, $y) {
-		return WT_Date::Compare($x->getBirthDate(), $y->getBirthDate());
-	}
-	static function CompareDeathDate($x, $y) {
-		return WT_Date::Compare($x->getDeathDate(), $y->getDeathDate());
-	}
 }
 
 /**
@@ -3476,10 +3468,10 @@ function RelativesSHandler($attrs) {
 			uasort($list, array("WT_GedcomRecord", "Compare"));
 			break;
 		case "BIRT:DATE":
-			uasort($list, array("WT_Report_Base", "CompareBirthDate"));
+			uasort($list, array("WT_Individual", "CompareBirtDate"));
 			break;
 		case "DEAT:DATE":
-			uasort($list, array("WT_Report_Base", "CompareDeathDate"));
+			uasort($list, array("WT_Individual", "CompareDeatDate"));
 			break;
 		case "generation":
 			$newarray = array();
