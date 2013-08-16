@@ -74,7 +74,6 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		// Add spouse-family facts
 		foreach ($controller->record->getSpouseFamilies() as $family) {
-			$spouse = $family->getSpouse($controller->record);
 			foreach ($family->getFacts() as $fact) {
 				switch ($fact->getTag()) {
 				case 'SOUR':
