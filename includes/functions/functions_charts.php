@@ -153,7 +153,7 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 		echo "</td>";
 	}
 	echo "</tr></table>";
-	if ($sosa!=0) {
+	if ($sosa && $family->canShow()) {
 		echo '<a href="', $family->getHtmlUrl(), '" class="details1">';
 		echo str_repeat("&nbsp;", 10);
 		$marriage = $family->getMarriage();
