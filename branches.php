@@ -165,7 +165,7 @@ function print_fams(WT_Individual $person, WT_Family $family=null) {
 				$txt .= ' <a href="'.$family->getHtmlUrl().'">';
 				$txt .= '<span class="details1" title="'.strip_tags($family->getMarriageDate()->Display()).'"><i class="icon-rings"></i>'.$marriage_year.'</span></a>';
 			}
-			else if ($family->getMarriage()) {
+			else if ($family->getFirstFact('MARR')) {
 				$txt .= ' <a href="'.$family->getHtmlUrl().'">';
 				$txt .= '<span class="details1" title="'.WT_I18N::translate('yes').'"><i class="icon-rings"></i></span></a>';
 			}
