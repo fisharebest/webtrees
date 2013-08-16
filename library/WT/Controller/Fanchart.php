@@ -319,9 +319,11 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					// spouse(s) and children
 					foreach ($person->getSpouseFamilies() as $family) {
 						$spouse=$family->getSpouse($person);
-						$html.= '<br><a href="'.$spouse->getHtmlUrl().'" class="name1">'.$spouse->getFullName().'</a>';
-						foreach ($family->getChildren() as $child) {
-							$html.= '<br>&nbsp;&nbsp;<a href="'.$child->getHtmlUrl().'" class="name1">&lt; '.$child->getFullName().'</a>';
+						if ($spouse) {
+							$html.= '<br><a href="'.$spouse->getHtmlUrl().'" class="name1">'.$spouse->getFullName().'</a>';
+							foreach ($family->getChildren() as $child) {
+								$html.= '<br>&nbsp;&nbsp;<a href="'.$child->getHtmlUrl().'" class="name1">&lt; '.$child->getFullName().'</a>';
+							}
 						}
 					}
 					// siblings
