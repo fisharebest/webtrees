@@ -146,23 +146,22 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
 			if ($sosa > 0) print_sosa_number($sosa * 4 + 1, $hfam->getWife()->getXref(), "down");
 			if (!empty($gparid) && $hfam->getWife()->getXref()==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
-			echo "<td valign=\"top\">";
+			echo '<td valign="top">';
 			print_pedigree_person(WT_Individual::getInstance($hfam->getWife()->getXref()), 1, 5, $personcount);
-			echo "</td></tr></table>";
+			echo '</td></tr></table>';
 		}
-		echo "</td>";
+		echo '</td>';
 	}
-	echo "</tr></table>";
+	echo '</tr></table>';
 	if ($sosa && $family->canShow()) {
-		echo '<a href="', $family->getHtmlUrl(), '" class="details1">';
-		echo str_repeat("&nbsp;", 10);
-		$marriage = $family->getMarriage();
-		if ($marriage) {
-			$marriage->print_simple_fact();
+		foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
+			echo '<a href="', $family->getHtmlUrl(), '" class="details1">';
+			echo str_repeat('&nbsp;', 10);
+			$fact->print_simple_fact();
+			echo '</a>';
 		}
-		echo "</a>";
 	}
-	else echo "<br>";
+	else echo '<br>';
 
 	/**
 	 * wife side
