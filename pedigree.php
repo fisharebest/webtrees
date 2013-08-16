@@ -198,17 +198,15 @@ if (count($famids)>0) {
 	echo $xoffset, 'px; top:', $yoffset, 'px;">';
 	foreach ($famids as $family) {
 		$spouse=$family->getSpouse($controller->root);
-		echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$spouse->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
-		$name = $spouse->getFullName();
-		echo 'class="name1">';
-		echo $name;
-		echo '<br></span></a>';
+		if ($spouse) {
+			echo '<a href="pedigree.php?PEDIGREE_GENERATIONS=', $controller->PEDIGREE_GENERATIONS, '&amp;rootid=', $spouse->getXref(), '&amp;show_full=', $controller->show_full, '&amp;talloffset=', $talloffset, '"><span class="name1">';
+			echo $spouse->getFullName();
+			echo '<br></span></a>';
+		}
 		$children = $family->getChildren();
 		foreach ($children as $child) {
-			echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
-			$name = $child->getFullName();
-			echo "class=\"name1\">&lt; ";
-			echo $name;
+			echo '&nbsp;&nbsp;<a href="pedigree.php?PEDIGREE_GENERATIONS=', $controller->PEDIGREE_GENERATIONS, '&amp;rootid=', $child->getXref(), '&amp;show_full=', $controller->show_full, '&amp;talloffset=', $talloffset, '"><span class="name1">';
+			echo $child->getFullName();
 			echo '<br></span></a>';
 		}
 	}
