@@ -299,8 +299,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				//-- move the arrow up to line up with the correct box
 				if ($this->show_spouse) {
 					foreach ($families as $family) {
-						$spouse = $family->getSpouse($person);
-						echo "<br><br><br>";
+						echo '<br><br><br>';
 					}
 				}
 				echo "</td><td width=\"$bwidth\">";
@@ -352,10 +351,12 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 					foreach ($famids as $family) {
 						$spouse = $family->getSpouse($person);
-						$spid = $spouse->getXref();
-						echo "<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\" class=\"name1\">";
-						echo $spouse->getFullName();
-						echo '</a><br>';
+						if ($spouse) {
+							$spid = $spouse->getXref();
+							echo "<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\" class=\"name1\">";
+							echo $spouse->getFullName();
+							echo '</a><br>';
+						}
 
 						foreach ($family->getChildren() as $child) {
 							$cid = $child->getXref();
