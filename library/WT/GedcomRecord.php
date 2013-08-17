@@ -632,24 +632,119 @@ class WT_GedcomRecord {
 		return '';
 	}
 
-	// Fetch the records that link to this one
-	public function fetchLinkedIndividuals() {
-		return fetch_linked_indi($this->getXref(), static::RECORD_TYPE, $this->gedcom_id);
+	//////////////////////////////////////////////////////////////////////////////
+	// Fetch records that link to this one
+	//////////////////////////////////////////////////////////////////////////////
+	public function linkedIndividuals($link) {
+		$rows = WT_DB::prepare(
+			"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
+			" FROM `##individuals`" .
+			" JOIN `##link` ON (i_file=l_file AND i_id=l_from)" .
+			" LEFT JOIN `##name` ON (i_file=n_file AND i_id=n_id AND n_num=0)" .
+			" WHERE i_file=? AND l_type=? AND l_to=?" .
+			" ORDER BY n_sort COLLATE '" . WT_I18N::$collation . "'"
+		)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
+
+		$list = array();
+		foreach ($rows as $row) {
+			$record = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			if ($record->canShowName()) {
+				$list[] = $record;
+			}
+		}
+		return $list;
 	}
-	public function fetchLinkedFamilies() {
-		return fetch_linked_fam($this->getXref(), static::RECORD_TYPE, $this->gedcom_id);
+	public function linkedFamilies($link) {
+		$rows = WT_DB::prepare(
+			"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom" .
+			" FROM `##families`" .
+			" JOIN `##link` ON (f_file=l_file AND f_id=l_from)" .
+			" LEFT JOIN `##name` ON (f_file=n_file AND f_id=n_id AND n_num=0)" .
+			" WHERE f_file=? AND l_type=? AND l_to=?"
+		)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
+
+		$list = array();
+		foreach ($rows as $row) {
+			$record = WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			if ($record->canShowName()) {
+				$list[] = $record;
+			}
+		}
+		return $list;
 	}
-	public function fetchLinkedNotes() {
-		return fetch_linked_note($this->getXref(), static::RECORD_TYPE, $this->gedcom_id);
+	public function linkedSources($link) {
+		$rows = WT_DB::prepare(
+				"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom" .
+				" FROM `##sources`" .
+				" JOIN `##link` ON (s_file=l_file AND s_id=l_from)" .
+				" WHERE s_file=? AND l_type=? AND l_to=?" .
+				" ORDER BY s_name COLLATE '" . WT_I18N::$collation . "'"
+			)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
+
+		$list = array();
+		foreach ($rows as $row) {
+			$record = WT_Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			if ($record->canShowName()) {
+				$list[] = $record;
+			}
+		}
+		return $list;
 	}
-	public function fetchLinkedSources() {
-		return fetch_linked_sour($this->getXref(), static::RECORD_TYPE, $this->gedcom_id);
+	public function linkedMedia($link) {
+		$rows = WT_DB::prepare(
+			"SELECT m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
+			" FROM `##media`" .
+			" JOIN `##link` ON (m_file=l_file AND m_id=l_from)" .
+			" WHERE m_file=? AND l_type=? AND l_to=?" .
+			" ORDER BY m_titl COLLATE '" . WT_I18N::$collation . "'"
+		)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
+
+		$list = array();
+		foreach ($rows as $row) {
+			$record = WT_Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			if ($record->canShowName()) {
+				$list[] = $record;
+			}
+		}
+		return $list;
 	}
-	public function fetchLinkedRepositories() {
-		return fetch_linked_repo($this->getXref(), static::RECORD_TYPE, $this->gedcom_id);
+	public function linkedNotes($link) {
+		$rows=WT_DB::prepare(
+			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
+			" FROM `##other`".
+			" JOIN `##link` ON (o_file=l_file AND o_id=l_from)".
+			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)".
+			" WHERE o_file=? AND o_type='NOTE' AND l_type=? AND l_to=?".
+			" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'"
+		)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
+	
+		$list = array();
+		foreach ($rows as $row) {
+			$record = WT_Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			if ($record->canShowName()) {
+				$list[] = $record;
+			}
+		}
+		return $list;
 	}
-	public function fetchLinkedMedia() {
-		return fetch_linked_obje($this->getXref(), static::RECORD_TYPE, $this->gedcom_id);
+	public function linkedRepositories($link) {
+		$rows=WT_DB::prepare(
+			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
+			" FROM `##other`".
+			" JOIN `##link` ON (o_file=l_file AND o_id=l_from)".
+			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)".
+			" WHERE o_file=? AND o_type='REPO' AND l_type=? AND l_to=?".
+			" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'"
+		)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
+
+		$list = array();
+		foreach ($rows as $row) {
+			$record = WT_Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			if ($record->canShowName()) {
+				$list[] = $record;
+			}
+		}
+		return $list;
 	}
 
 	// Get all attributes (e.g. DATE or PLAC) from an event (e.g. BIRT or MARR).

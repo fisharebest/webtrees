@@ -74,18 +74,16 @@ if ($controller->record && $controller->record->canShow()) {
 	exit;
 }
 
-$linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
-
 $controller
 	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
-	->addInlineJavascript('function edit_note() {var win04 = window.open("edit_interface.php?action=editnote&xref=' . $linkToID . '", "win04", edit_window_specs);if (window.focus) {win04.focus();}}')
+	->addInlineJavascript('function edit_note() {window.open("edit_interface.php?action=editnote&xref=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
 	->addInlineJavascript('jQuery("#note-tabs").tabs();')
 	->addInlineJavascript('jQuery("#note-tabs").css("visibility", "visible");');
 
-$linked_indi = $controller->record->fetchLinkedIndividuals();
-$linked_fam  = $controller->record->fetchLinkedFamilies();
-$linked_obje = $controller->record->fetchLinkedMedia();
-$linked_sour = $controller->record->fetchLinkedSources();
+$linked_indi = $controller->record->linkedIndividuals('NOTE');
+$linked_fam  = $controller->record->linkedFamilies('NOTE');
+$linked_obje = $controller->record->linkedMedia('NOTE');
+$linked_sour = $controller->record->linkedSources('NOTE');
 
 $facts = array();
 foreach ($controller->record->getFacts() as $fact) {
@@ -104,7 +102,7 @@ foreach ($controller->record->getFacts() as $fact) {
 	<li><a href="#indi-note"><span id="indisource"><?php echo WT_I18N::translate('Individuals'); ?></span></a></li>
 	<?php } ?>
 	<?php if ($linked_fam) { ?>
-	<li><a href="#fam-note"><span id="famsource"><?php echo WT_I18N::translate('Families'); ?>/span></a></li>
+	<li><a href="#fam-note"><span id="famsource"><?php echo WT_I18N::translate('Families'); ?></span></a></li>
 	<?php } ?>
 	<?php if ($linked_obje) { ?>
 			echo '<li><a href="#media-note"><span id="mediasource"><?php echo WT_I18N::translate('Media objects'); ?></span></a></li>
@@ -147,22 +145,22 @@ foreach ($controller->record->getFacts() as $fact) {
 <?php
 	if ($linked_indi) {
 		echo '<div id="indi-note">';
-		echo format_indi_table($controller->record->fetchLinkedIndividuals(), $controller->record->getFullName());
+		echo format_indi_table($linked_indi, $controller->record->getFullName());
 		echo '</div>';
 	}
 	if ($linked_fam) {
 		echo '<div id="fam-note">';
-		echo format_fam_table($controller->record->fetchLinkedFamilies(), $controller->record->getFullName());
+		echo format_fam_table($linked_fam, $controller->record->getFullName());
 		echo '</div>';
 	}
 	if ($linked_obje) {
 		echo '<div id="media-note">';
-		echo format_media_table($controller->record->fetchLinkedMedia(), $controller->record->getFullName());
+		echo format_media_table($linked_obje, $controller->record->getFullName());
 		echo '</div>';
 	}
 	if ($linked_sour) {
 		echo '<div id="source-note">';
-		echo format_sour_table($controller->record->fetchLinkedSources(), $controller->record->getFullName());
+		echo format_sour_table($linked_sour, $controller->record->getFullName());
 		echo '</div>';
 	}
 ?>

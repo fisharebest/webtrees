@@ -80,11 +80,11 @@ $controller
 	->addInlineJavascript('jQuery("#media-tabs").tabs();')
 	->addInlineJavascript('jQuery("#media-tabs").css("visibility", "visible");');
 
-$linked_indi = $controller->record->fetchLinkedIndividuals();
-$linked_fam  = $controller->record->fetchLinkedFamilies();
-$linked_sour = $controller->record->fetchLinkedSources();
-$linked_repo = $controller->record->fetchLinkedRepositories();
-$linked_note = $controller->record->fetchLinkedNotes();
+$linked_indi = $controller->record->linkedIndividuals('OBJE');
+$linked_fam  = $controller->record->linkedFamilies('OBJE');
+$linked_sour = $controller->record->linkedSources('OBJE');
+$linked_repo = $controller->record->linkedRepositories('OBJE'); // Invalid GEDCOM - you cannot link a REPO to an OBJE
+$linked_note = $controller->record->linkedNotes('OBJE');        // Invalid GEDCOM - you cannot link a NOTE to an OBJE
 
 echo '<div id="media-details">';
 echo '<h2>', $controller->record->getFullName(), ' ', $controller->record->getAddName(), '</h2>';
@@ -124,7 +124,7 @@ echo '<div id="media-tabs">';
 				</td>
 			</tr>
 		</table>
-	</div>'; // close "media-edit"
+	</div>';
 	echo '<ul>';
 		if ($linked_indi) {
 			echo '<li><a href="#indi-media"><span id="indimedia">', WT_I18N::translate('Individuals'), '</span></a></li>';
@@ -146,36 +146,36 @@ echo '<div id="media-tabs">';
 	// Individuals linked to this media object
 	if ($linked_indi) {
 		echo '<div id="indi-media">';
-		echo format_indi_table($controller->record->fetchLinkedIndividuals(), $controller->record->getFullName());
-		echo '</div>'; //close "indi-media"
+		echo format_indi_table($linked_indi, $controller->record->getFullName());
+		echo '</div>';
 	}
 
 	// Families linked to this media object
 	if ($linked_fam) {
 		echo '<div id="fam-media">';
-		echo format_fam_table($controller->record->fetchLinkedFamilies(), $controller->record->getFullName());
-		echo '</div>'; //close "fam-media"
+		echo format_fam_table($linked_fam, $controller->record->getFullName());
+		echo '</div>';
 	}
 
 	// Sources linked to this media object
 	if ($linked_sour) {
 		echo '<div id="sources-media">';
-		echo format_sour_table($controller->record->fetchLinkedSources(), $controller->record->getFullName());
-		echo '</div>'; //close "source-media"
+		echo format_sour_table($linked_sour, $controller->record->getFullName());
+		echo '</div>';
 	}
 
 	// Repositories linked to this media object
 	if ($linked_repo) {
 		echo '<div id="repo-media">';
-		echo format_repo_table($controller->record->fetchLinkedRepositories(), $controller->record->getFullName());
-		echo '</div>'; //close "repo-media"
+		echo format_repo_table($linked_repo, $controller->record->getFullName());
+		echo '</div>';
 	}
 
 	// medias linked to this media object
 	if ($linked_note) {
 		echo '<div id="notes-media">';
-		echo format_note_table($controller->record->fetchLinkedNotes(), $controller->record->getFullName());
-		echo '</div>'; //close "notes-media"
+		echo format_note_table($linked_note, $controller->record->getFullName());
+		echo '</div>';
 	}
-echo '</div>'; //close div "media-tabs"
-echo '</div>'; //close div "media-details"
+echo '</div>';
+echo '</div>';

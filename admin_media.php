@@ -463,22 +463,19 @@ function media_object_info(WT_Media $media) {
 	$html .= '<br><br>';
 
 	$linked = array();
-	foreach ($media->fetchLinkedIndividuals() as $link) {
+	foreach ($media->linkedIndividuals('OBJE') as $link) {
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
-	foreach ($media->fetchLinkedFamilies() as $link) {
+	foreach ($media->linkedFamilies('OBJE') as $link) {
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
-	foreach ($media->fetchLinkedNotes() as $link) {
+	foreach ($media->linkedSources('OBJE') as $link) {
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
-	foreach ($media->fetchLinkedSources() as $link) {
+	foreach ($media->linkedNotes('OBJE') as $link) { // Invalid GEDCOM - you cannot link a NOTE to an OBJE
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
-	foreach ($media->fetchLinkedRepositories() as $link) {
-		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
-	}
-	foreach ($media->fetchLinkedMedia() as $link) {
+	foreach ($media->linkedRepositories('OBJE') as $link) { // Invalid GEDCOM - you cannot link a REPO to an OBJE
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
 	if ($linked) {

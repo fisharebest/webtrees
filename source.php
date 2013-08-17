@@ -77,14 +77,14 @@ if ($controller->record && $controller->record->canShow()) {
 $linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
 
 $controller
-	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
+	->addInlineJavascript('function show_gedcom_record() {window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
 	->addInlineJavascript('jQuery("#source-tabs").tabs();')
 	->addInlineJavascript('jQuery("#source-tabs").css("visibility", "visible");');
 
-$linked_indi = $controller->record->fetchLinkedIndividuals();
-$linked_fam  = $controller->record->fetchLinkedFamilies();
-$linked_obje = $controller->record->fetchLinkedMedia();
-$linked_note = $controller->record->fetchLinkedNotes();
+$linked_indi = $controller->record->linkedIndividuals('SOUR');
+$linked_fam  = $controller->record->linkedFamilies('SOUR');
+$linked_obje = $controller->record->linkedMedia('SOUR');
+$linked_note = $controller->record->linkedNotes('SOUR');
 
 echo '<div id="source-details">';
 echo '<h2>', $controller->record->getFullName(), '</h2>';

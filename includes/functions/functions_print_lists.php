@@ -953,16 +953,16 @@ function format_sour_table($datalist) {
 		}
 		$html .= '<td>'. highlight_search_hits($author). '</td>';
 		//-- Linked INDIs
-		$num=count($source->fetchLinkedIndividuals());
+		$num = count($source->linkedIndividuals('SOUR'));
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked FAMs
-		$num=count($source->fetchLinkedfamilies());
+		$num = count($source->linkedfamilies('SOUR'));
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked OBJEcts
-		$num=count($source->fetchLinkedMedia());
+		$num = count($source->linkedMedia('SOUR'));
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked NOTEs
-		$num=count($source->fetchLinkedNotes());
+		$num = count($source->linkedNotes('SOUR'));
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
@@ -1054,16 +1054,16 @@ function format_note_table($datalist) {
 		//-- Shared Note name
 		$html .= '<td><a class="name2" href="'. $note->getHtmlUrl(). '">'. highlight_search_hits($note->getFullName()). '</a></td>';
 		//-- Linked INDIs
-		$num=count($note->fetchLinkedIndividuals());
+		$num = count($note->linkedIndividuals('NOTE'));
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked FAMs
-		$num=count($note->fetchLinkedfamilies());
+		$num = count($note->linkedfamilies('NOTE'));
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked OBJEcts
-		$num=count($note->fetchLinkedMedia());
+		$num = count($note->linkedMedia('NOTE'));
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked SOURs
-		$num=count($note->fetchLinkedSources());
+		$num = count($note->linkedSources('NOTE'));
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
@@ -1155,7 +1155,7 @@ function format_repo_table($repos) {
 		}	
 		$html .= '</td>';
 		//-- Linked SOURces
-		$num=count($repo->fetchLinkedSources());
+		$num = count($repo->linkedSources('REPO'));
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
@@ -1251,13 +1251,13 @@ function format_media_table($datalist) {
 			$html .= '</td>';
 
 			//-- Linked INDIs
-			$num=count($media->fetchLinkedIndividuals());
+			$num = count($media->linkedIndividuals('OBJE'));
 			$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 			//-- Linked FAMs
-			$num=count($media->fetchLinkedfamilies());
+			$num = count($media->linkedfamilies('OBJE'));
 			$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 			//-- Linked SOURces
-			$num=count($media->fetchLinkedSources());
+			$num = count($media->linkedSources('OBJE'));
 			$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 			//-- Last change
 			if ($SHOW_LAST_CHANGE) {

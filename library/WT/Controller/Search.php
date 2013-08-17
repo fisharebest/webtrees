@@ -549,12 +549,18 @@ class WT_Controller_Search extends WT_Controller_Page {
 		// Now we have the final list of indi's to be printed.
 		// We may add the assos at this point.
 
-		if ($this->showasso == "on") {
+		if ($this->showasso == 'on') {
 			foreach ($this->myindilist as $indi) {
-				foreach (fetch_linked_indi($indi->getXref(), 'ASSO', $indi->getGedcomId()) as $asso) {
+				foreach ($indi->linkedIndividuals('ASSO') as $asso) {
 					$this->myindilist[]=$asso;
 				}
-				foreach (fetch_linked_fam($indi->getXref(), 'ASSO', $indi->getGedcomId()) as $asso) {
+				foreach ($indi->linkedIndividuals('_ASSO') as $asso) {
+					$this->myindilist[]=$asso;
+				}
+				foreach ($indi->linkedFamilies('ASSO') as $asso) {
+					$this->myfamlist[]=$asso;
+				}
+				foreach ($indi->linkedFamilies('_ASSO') as $asso) {
 					$this->myfamlist[]=$asso;
 				}
 			}

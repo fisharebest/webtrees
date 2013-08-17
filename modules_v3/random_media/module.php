@@ -94,7 +94,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$media=WT_Media::getInstance($all_media[$n]);
 			if ($media->canShow() && !$media->isExternal()) {
 				// Check if it is linked to a suitable individual
-				foreach ($media->fetchLinkedIndividuals() as $indi) {
+				foreach ($media->linkedIndividuals('OBJE') as $indi) {
 					if (
 						$filter=='all' ||
 						$filter=='indi'  && strpos($indi->getGedcom(), "\n1 OBJE @" . $media->getXref() . '@') !==false ||
@@ -175,13 +175,13 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= '</td><td class="details2">';
 			}
 			$content .= '<a href="'.$random_media->getHtmlUrl().'"><b>'. $random_media->getFullName() .'</b></a><br>';
-			foreach ($random_media->fetchLinkedIndividuals() as $individual) {
+			foreach ($random_media->linkedIndividuals('OBJE') as $individual) {
 				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View Person') . ' — ' . $individual->getFullname().'</a><br>';
 			}
-			foreach ($random_media->fetchLinkedFamilies() as $family) {
+			foreach ($random_media->linkedFamilies('OBJE') as $family) {
 				$content .= '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View Family') . ' — ' . $family->getFullname().'</a><br>';
 			}
-			foreach ($random_media->fetchLinkedSources() as $source) {
+			foreach ($random_media->linkedSources('OBJE') as $source) {
 				$content .= '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View Source') . ' — ' . $source->getFullname().'</a><br>';
 			}
 			$content .= '<br><div class="indent">';

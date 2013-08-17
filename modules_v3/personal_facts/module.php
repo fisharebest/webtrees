@@ -438,10 +438,10 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		$facts = array();
 
 		$associates=array_merge(
-			fetch_linked_indi($person->getXref(), 'ASSO', $person->getGedcomId()),
-			fetch_linked_indi($person->getXref(), '_ASSO', $person->getGedcomId()),
-			fetch_linked_fam ($person->getXref(), 'ASSO', $person->getGedcomId()),
-			fetch_linked_fam ($person->getXref(), '_ASSO', $person->getGedcomId())
+			$person->linkedIndividuals('ASSO'),
+			$person->linkedIndividuals('_ASSO'),
+			$person->linkedFamilies('ASSO'),
+			$person->linkedFamilies('_ASSO')
 		);
 		foreach ($associates as $associate) {
 			foreach ($associate->getFacts() as $fact) {

@@ -558,23 +558,23 @@ if ($action=="filter") {
 				}
 				echo '<ul>';
 				$found=false;
-				foreach ($media->fetchLinkedIndividuals() as $indindividual) {
+				foreach ($media->linkedIndividuals('OBJE') as $indindividual) {
 					echo '<li>', $indindividual->getFullName(), '</li>';
 					$found=true;
 				}
-				foreach ($media->fetchLinkedFamilies() as $family) {
+				foreach ($media->linkedFamilies('OBJE') as $family) {
 					echo '<li>', $family->getFullName(), '</li>';
 					$found=true;
 				}
-				foreach ($media->fetchLinkedSources() as $source) {
+				foreach ($media->linkedSources('OBJE') as $source) {
 					echo '<li>', $source->getFullName(), '</li>';
 					$found=true;
 				}
-				foreach ($media->fetchLinkedNotes() as $note) {
+				foreach ($media->linkedNotes('OBJE') as $note) { // Invalid GEDCOM - you cannot link a NOTE to an OBJE
 					echo '<li>', $note->getFullName(), '</li>';
 					$found=true;
 				}
-				foreach ($media->fetchLinkedRepositories() as $repository) {
+				foreach ($media->linkedRepositories('OBJE') as $repository) { // Invalid GEDCOM - you cannot link a REPO to an OBJE
 					echo '<li>', $repository->getFullName(), '</li>';
 					$found=true;
 				}

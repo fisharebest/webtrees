@@ -77,11 +77,11 @@ if ($controller->record && $controller->record->canShow()) {
 $linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
 
 $controller
-	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
+	->addInlineJavascript('function show_gedcom_record() {window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
 	->addInlineJavascript('jQuery("#repo-tabs").tabs();')
 	->addInlineJavascript('jQuery("#repo-tabs").css("visibility", "visible");');
 
-$linked_sour = $controller->record->fetchLinkedSources();
+$linked_sour = $controller->record->linkedSources('REPO');
 
 echo '<div id="repo-details">';
 echo '<h2>', $controller->record->getFullName(), '</h2>';
@@ -147,8 +147,8 @@ echo '<div id="repo-tabs">
 	if ($linked_sour) {
 		echo '<div id="source-repo">';
 		echo format_sour_table($linked_sour, $controller->record->getFullName());
-		echo '</div>'; //close "source-repo"
+		echo '</div>';
 	}
 
-echo '</div>'; //close div "repo-tabs"
-echo '</div>'; //close div "repo-details"
+echo '</div>';
+echo '</div>';

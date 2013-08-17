@@ -121,9 +121,11 @@ if ($action == 'choose' && $paramok) {
 		echo "</tr>";
 
 		$links = array_merge(
-			$media->fetchLinkedIndividuals(),
-			$media->fetchLinkedFamilies(),
-			$media->fetchLinkedSources()
+			$media->linkedIndividuals('OBJE'),
+			$media->linkedFamilies('OBJE'),
+			$media->linkedSources('OBJE'),
+			$media->linkedNotes('OBJE'),       // Invalid GEDCOM - you cannot link a NOTE to an OBJE
+			$media->linkedRepositories('OBJE') // Invalid GEDCOM - you cannot link a REPO to an OBJE
 		);
 		$i=1;
 		foreach ($links as $record) {

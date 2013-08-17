@@ -97,13 +97,14 @@ class WT_Controller_Clippings {
 		}
 
 		if ($this->action == 'add1') {
-			$this->add_clipping(WT_GedcomRecord::getInstance($this->id));
+			$obj = WT_GedcomRecord::getInstance($this->id);
+			$this->add_clipping($obj);
 			if ($this->type == 'sour') {
 				if ($others == 'linked') {
-					foreach (fetch_linked_indi($this->id, 'SOUR', WT_GED_ID) as $indi) {
+					foreach ($obj->linkedIndividuals('SOUR') as $indi) {
 						$this->add_clipping($indi);
 					}
-					foreach (fetch_linked_fam($this->id, 'SOUR', WT_GED_ID) as $fam) {
+					foreach ($obj->linkedFamilies('SOUR') as $fam) {
 						$this->add_clipping($fam);
 					}
 				}
