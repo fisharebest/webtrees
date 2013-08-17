@@ -34,11 +34,7 @@ class WT_Individual extends WT_GedcomRecord {
 	var $generation; // used in some lists to keep track of this Person's generation in that list
 
 	// Cached results from various functions.
-	private $_getAllBirthDates=null;
-	private $_getAllBirthPlaces=null;
 	private $_getEstimatedBirthDate=null;
-	private $_getAllDeathDates=null;
-	private $_getAllDeathPlaces=null;
 	private $_getEstimatedDeathDate=null;
 
 	// Can the name of this record be shown?
@@ -451,60 +447,48 @@ class WT_Individual extends WT_GedcomRecord {
 
 	// Get all the dates/places for births/deaths - for the INDI lists
 	function getAllBirthDates() {
-		if (is_null($this->_getAllBirthDates)) {
-			if ($this->canShow()) {
-				foreach (explode('|', WT_EVENTS_BIRT) as $event) {
-					if ($this->_getAllBirthDates=$this->getAllEventDates($event)) {
-						break;
-					}
+		if ($this->canShow()) {
+			foreach (explode('|', WT_EVENTS_BIRT) as $event) {
+				$tmp = $this->getAllEventDates($event);
+				if ($tmp) {
+					return $tmp;
 				}
-			} else {
-				$this->_getAllBirthDates=array();
 			}
 		}
-		return $this->_getAllBirthDates;
+		return array();
 	}
 	function getAllBirthPlaces() {
-		if (is_null($this->_getAllBirthPlaces)) {
-			if ($this->canShow()) {
-				foreach (explode('|', WT_EVENTS_BIRT) as $event) {
-					if ($this->_getAllBirthPlaces=$this->getAllEventPlaces($event)) {
-						break;
-					}
+		if ($this->canShow()) {
+			foreach (explode('|', WT_EVENTS_BIRT) as $event) {
+				$tmp = $this->getAllEventPlaces($event);
+				if ($tmp) {
+					return $tmp;
 				}
-			} else {
-				$this->_getAllBirthPlaces=array();
 			}
 		}
-		return $this->_getAllBirthPlaces;
+		return array();
 	}
 	function getAllDeathDates() {
-		if (is_null($this->_getAllDeathDates)) {
-			if ($this->canShow()) {
-				foreach (explode('|', WT_EVENTS_DEAT) as $event) {
-					if ($this->_getAllDeathDates=$this->getAllEventDates($event)) {
-						break;
-					}
+		if ($this->canShow()) {
+			foreach (explode('|', WT_EVENTS_DEAT) as $event) {
+				$tmp = $this->getAllEventDates($event);
+				if ($tmp) {
+					return $tmp;
 				}
-			} else {
-				$this->_getAllDeathDates=array();
 			}
 		}
-		return $this->_getAllDeathDates;
+		return array();
 	}
 	function getAllDeathPlaces() {
-		if (is_null($this->_getAllDeathPlaces)) {
-			if ($this->canShow()) {
-				foreach (explode('|', WT_EVENTS_DEAT) as $event) {
-					if ($this->_getAllDeathPlaces=$this->getAllEventPlaces($event)) {
-						break;
-					}
+		if ($this->canShow()) {
+			foreach (explode('|', WT_EVENTS_DEAT) as $event) {
+				$tmp = $this->getAllEventPlaces($event);
+				if ($tmp) {
+					return $tmp;
 				}
-			} else {
-				$this->_getAllDeathPlaces=array();
 			}
 		}
-		return $this->_getAllDeathPlaces;
+		return array();
 	}
 
 	// Generate an estimate for birth/death dates, based on dates of parents/children/spouses
