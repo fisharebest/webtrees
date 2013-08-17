@@ -91,6 +91,12 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 					break;
 				}
 			}
+			$spouse = $family->getSpouse($controller->record);
+			if ($spouse) {
+				foreach (self::spouse_facts($controller->record, $spouse) as $fact) {
+					$indifacts[] = $fact;
+				}
+			}
 			foreach (self::child_facts($controller->record, $family, '_CHIL', '') as $fact) {
 				$indifacts[] = $fact;
 			}
