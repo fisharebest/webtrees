@@ -326,11 +326,11 @@ function print_family_children(WT_Family $family, $childid = "", $sosa = 0, $lab
 
 					$marr = $famids[$f]->getFirstFact('MARR');
 					$div  = $famids[$f]->getFirstFact('DIV');
-					if ($marr && $marr->canShow()) {
+					if ($marr) {
 						// marriage date
 						echo $marr->getDate()->minDate()->Format('%Y');
 						// divorce date
-						if ($div && $div->canShow()) {
+						if ($div) {
 							echo '–', $div->getDate()->minDate()->Format('%Y');
 						}
 					}

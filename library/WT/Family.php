@@ -80,19 +80,21 @@ class WT_Family extends WT_GedcomRecord {
 		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 	}
 
-	/**
-	 * get the husband's person object
-	 * @return Person
-	 */
+	// Get the male partner of the family
 	function getHusband() {
-		return $this->husb;
+		if ($this->husb && $this->husb->canShowName()) {
+			return $this->husb;
+		} else {
+			return null;
+		}
 	}
-	/**
-	 * get the wife's person object
-	 * @return Person
-	 */
+	// Get the female partner of the family
 	function getWife() {
-		return $this->wife;
+		if ($this->wife && $this->wife->canShowName()) {
+			return $this->wife;
+		} else {
+			return null;
+		}
 	}
 
 	// Implement family-specific privacy logic
@@ -127,10 +129,10 @@ class WT_Family extends WT_GedcomRecord {
 
 	function getSpouses($access_level=WT_USER_ACCESS_LEVEL) {
 		$spouses=array();
-		if ($this->husb) {
+		if ($this->husb && $this->husb->canShowName($access_level)) {
 			$spouses[] = $this->husb;
 		}
-		if ($this->wife) {
+		if ($this->wife && $this->wife->canShowName($access_level)) {
 			$spouses[] = $this->wife;
 		}
 		return $spouses;
@@ -147,7 +149,7 @@ class WT_Family extends WT_GedcomRecord {
 		preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $this->gedcom, $match);
 		foreach ($match[1] as $pid) {
 			$child=WT_Individual::getInstance($pid);
-			if ($child && ($SHOW_PRIVATE_RELATIONSHIPS || $child->canShow($access_level))) {
+			if ($child && ($SHOW_PRIVATE_RELATIONSHIPS || $child->canShowName($access_level))) {
 				$children[]=$child;
 			}
 		}
@@ -183,7 +185,7 @@ class WT_Family extends WT_GedcomRecord {
 	 */
 	function getMarriageDate() {
 		$marriage = $this->getMarriage();
-		if ($marriage && $marriage->canShow()) {
+		if ($marriage) {
 			return $marriage->getDate();
 		} else {
 			return new WT_Date('');
@@ -201,7 +203,7 @@ class WT_Family extends WT_GedcomRecord {
 	 */
 	function getMarriageType() {
 		$marriage = $this->getMarriage();
-		if ($marriage && $marriage->canShow()) {
+		if ($marriage) {
 			return $marriage->getAttribute('TYPE');
 		} else {
 			return null;
@@ -219,21 +221,17 @@ class WT_Family extends WT_GedcomRecord {
 
 	// Get all the dates/places for marriages - for the FAM lists
 	function getAllMarriageDates() {
-		if ($this->canShow()) {
-			foreach (explode('|', WT_EVENTS_MARR) as $event) {
-				if ($array=$this->getAllEventDates($event)) {
-					return $array;
-				}
+		foreach (explode('|', WT_EVENTS_MARR) as $event) {
+			if ($array=$this->getAllEventDates($event)) {
+				return $array;
 			}
 		}
 		return array();
 	}
 	function getAllMarriagePlaces() {
-		if ($this->canShow()) {
-			foreach (explode('|', WT_EVENTS_MARR) as $event) {
-				if ($array=$this->getAllEventPlaces($event)) {
-					return $array;
-				}
+		foreach (explode('|', WT_EVENTS_MARR) as $event) {
+			if ($array=$this->getAllEventPlaces($event)) {
+				return $array;
 			}
 		}
 		return array();

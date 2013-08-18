@@ -784,11 +784,13 @@ class WT_GedcomRecord {
 	}
 
 	// The facts and events for this record
-	public function getFacts($filter=null) {
+	public function getFacts($filter=null, $access_level=WT_USER_ACCESS_LEVEL) {
 		$facts=array();
-		foreach ($this->facts as $fact) {
-			if (($filter==null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow()) {
-				$facts[] = $fact;
+		if ($this->canShow($access_level)) {
+			foreach ($this->facts as $fact) {
+				if (($filter==null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
+					$facts[] = $fact;
+				}
 			}
 		}
 		return $facts;

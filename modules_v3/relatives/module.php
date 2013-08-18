@@ -50,6 +50,13 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	function printFamily(WT_Family $family, $type, $label) {
 		global $controller;
 		global $personcount; // TODO: use a unique id instead?
+		global $SHOW_PRIVATE_RELATIONSHIPS;
+
+		if ($SHOW_PRIVATE_RELATIONSHIPS) {
+			$access_level = WT_PRIV_HIDE;
+		} else {
+			$access_level = WT_USER_ACCESS_LEVEL;
+		}
 
 		?>
 		<table>
@@ -68,7 +75,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		///// HUSB /////
 		$found = false;
-		foreach ($family->getFacts('HUSB') as $fact) {
+		foreach ($family->getFacts('HUSB', $access_level) as $fact) {
 			$found |= !$fact->isOld();
 			if ($fact->isNew()) {
 				$class = 'facts_label new';
@@ -100,7 +107,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		///// MARR /////
 		$found = false;
-		foreach ($family->getFacts('MARR|_NMR') as $fact) {
+		foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 			$found |= !$fact->isOld();
 			if ($fact->isNew()) {
 				$class = 'facts_label new';
@@ -120,7 +127,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			</tr>
 			<?php
 		}
-		if (!$found && $family->canEdit()) {
+		if (!$found && $family->canShow() && $family->canEdit()) {
 			// Add a new marriage
 			?>
 			<tr>
@@ -138,7 +145,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		///// WIFE /////
 		$found = false;
-		foreach ($family->getFacts('WIFE') as $fact) {
+		foreach ($family->getFacts('WIFE', $access_level) as $fact) {
 			$found |= !$fact->isOld();
 			if ($fact->isNew()) {
 				$class = 'facts_label new';
@@ -169,7 +176,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		///// CHIL /////
-		foreach ($family->getFacts('CHIL') as $fact) {
+		foreach ($family->getFacts('CHIL', $access_level) as $fact) {
 			if ($fact->isNew()) {
 				$class = 'facts_label new';
 			} elseif ($fact->isOld()) {

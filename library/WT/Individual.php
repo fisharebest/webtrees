@@ -94,7 +94,7 @@ class WT_Individual extends WT_GedcomRecord {
 					0 => array($user_individual),
 					1 => array(),
 				);
-				foreach ($user_individual->getFacts('FAM[CS]') as $fact) {
+				foreach ($user_individual->getFacts('FAM[CS]', WT_PRIV_HIDE) as $fact) {
 					$family = $fact->getTarget();
 					if ($family) {
 						$cache[1][] = $family;
@@ -122,7 +122,7 @@ class WT_Individual extends WT_GedcomRecord {
 				if ($n % 2 == 0) {
 					// Add FAM->INDI links
 					foreach ($cache[$n-1] as $family) {
-						foreach ($family->getFacts('HUSB|WIFE|CHIL') as $fact) {
+						foreach ($family->getFacts('HUSB|WIFE|CHIL', WT_PRIV_HIDE) as $fact) {
 							$individual = $fact->getTarget();
 							// Don't backtrack
 							if ($individual && !in_array($individual, $cache[$n-2], true)) {
@@ -136,7 +136,7 @@ class WT_Individual extends WT_GedcomRecord {
 				} else {
 					// Add INDI->FAM links
 					foreach ($cache[$n-1] as $individual) {
-						foreach ($individual->getFacts('FAM[CS]') as $fact) {
+						foreach ($individual->getFacts('FAM[CS]', WT_PRIV_HIDE) as $fact) {
 							$family = $fact->getTarget();
 							// Don't backtrack
 							if ($family && !in_array($family, $cache[$n-2], true)) {
@@ -362,30 +362,22 @@ class WT_Individual extends WT_GedcomRecord {
 
 	// Get the date of birth
 	function getBirthDate() {
-		if ($this->canShow()) {
-			foreach ($this->getAllBirthDates() as $date) {
-				if ($date->isOK()) {
-					return $date;
-				}
+		foreach ($this->getAllBirthDates() as $date) {
+			if ($date->isOK()) {
+				return $date;
 			}
-			return new WT_Date('');
-		} else {
-			return new WT_Date('(' . WT_I18N::translate('Private') . ')');
 		}
+		return new WT_Date('');
 	}
 
 	// Get the place of birth
 	function getBirthPlace() {
-		if ($this->canShow()) {
-			foreach ($this->getAllBirthPlaces() as $place) {
-				if ($place) {
-					return $place;
-				}
+		foreach ($this->getAllBirthPlaces() as $place) {
+			if ($place) {
+				return $place;
 			}
-			return '';
-		} else {
-			return WT_I18N::translate('Private');
 		}
+		return '';
 	}
 
 	/**
@@ -398,30 +390,22 @@ class WT_Individual extends WT_GedcomRecord {
 
 	// Get the date of death
 	function getDeathDate() {
-		if ($this->canShow()) {
-			foreach ($this->getAllDeathDates() as $date) {
-				if ($date->isOK()) {
-					return $date;
-				}
+		foreach ($this->getAllDeathDates() as $date) {
+			if ($date->isOK()) {
+				return $date;
 			}
-			return new WT_Date('');
-		} else {
-			return new WT_Date('(' . WT_I18N::translate('Private') . ')');
 		}
+		return new WT_Date('');
 	}
 
 	// Get the place of death
 	function getDeathPlace() {
-		if ($this->canShow()) {
-			foreach ($this->getAllDeathPlaces() as $place) {
-				if ($place) {
-					return $place;
-				}
+		foreach ($this->getAllDeathPlaces() as $place) {
+			if ($place) {
+				return $place;
 			}
-			return '';
-		} else {
-			return WT_I18N::translate('Private');
 		}
+		return '';
 	}
 
 	/**
@@ -447,45 +431,37 @@ class WT_Individual extends WT_GedcomRecord {
 
 	// Get all the dates/places for births/deaths - for the INDI lists
 	function getAllBirthDates() {
-		if ($this->canShow()) {
-			foreach (explode('|', WT_EVENTS_BIRT) as $event) {
-				$tmp = $this->getAllEventDates($event);
-				if ($tmp) {
-					return $tmp;
-				}
+		foreach (explode('|', WT_EVENTS_BIRT) as $event) {
+			$tmp = $this->getAllEventDates($event);
+			if ($tmp) {
+				return $tmp;
 			}
 		}
 		return array();
 	}
 	function getAllBirthPlaces() {
-		if ($this->canShow()) {
-			foreach (explode('|', WT_EVENTS_BIRT) as $event) {
-				$tmp = $this->getAllEventPlaces($event);
-				if ($tmp) {
-					return $tmp;
-				}
+		foreach (explode('|', WT_EVENTS_BIRT) as $event) {
+			$tmp = $this->getAllEventPlaces($event);
+			if ($tmp) {
+				return $tmp;
 			}
 		}
 		return array();
 	}
 	function getAllDeathDates() {
-		if ($this->canShow()) {
-			foreach (explode('|', WT_EVENTS_DEAT) as $event) {
-				$tmp = $this->getAllEventDates($event);
-				if ($tmp) {
-					return $tmp;
-				}
+		foreach (explode('|', WT_EVENTS_DEAT) as $event) {
+			$tmp = $this->getAllEventDates($event);
+			if ($tmp) {
+				return $tmp;
 			}
 		}
 		return array();
 	}
 	function getAllDeathPlaces() {
-		if ($this->canShow()) {
-			foreach (explode('|', WT_EVENTS_DEAT) as $event) {
-				$tmp = $this->getAllEventPlaces($event);
-				if ($tmp) {
-					return $tmp;
-				}
+		foreach (explode('|', WT_EVENTS_DEAT) as $event) {
+			$tmp = $this->getAllEventPlaces($event);
+			if ($tmp) {
+				return $tmp;
 			}
 		}
 		return array();
