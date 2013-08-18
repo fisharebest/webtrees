@@ -1900,8 +1900,18 @@ case 'changefamily_update':
 	$xref      = safe_POST('xref', WT_REGEX_XREF);
 	$HUSB      = safe_POST('HUSB', WT_REGEX_XREF);
 	$WIFE      = safe_POST('WIFE', WT_REGEX_XREF);
-	$CHIL      = safe_POST('CHIL', WT_REGEX_XREF);
 	$keep_chan = safe_POST_bool('keep_chan');
+
+	//TODO use CHIL[] instead of CHIL<n>
+	//$CHIL      = safe_POST('CHIL', WT_REGEX_XREF);
+	$CHIL = array();
+	for ($i=0; ;++$i) {
+		if (isset($_POST['CHIL'.$i])) {
+			$CHIL[] = safe_POST('CHIL'.$i, WT_REGEX_XREF);
+		} else {
+			break;
+		}
+	}
 
 	$family    = WT_Family::getInstance($xref);
 	check_record_access($family);
@@ -1921,7 +1931,7 @@ case 'changefamily_update':
 	$new_children = array();
 	if (is_array($CHIL)) {
 		foreach ($CHIL as $child) {
-			$new_children[] = WT_Individaul::getInstance($child);
+			$new_children[] = WT_Individual::getInstance($child);
 		}
 	}
 
@@ -1972,7 +1982,7 @@ case 'changefamily_update':
 	}
 
 	foreach ($old_children as $old_child) {
-		if (!in_array($old_child, $new_children)) {
+		if ($old_child && !in_array($old_child, $new_children)) {
 			// Remove old FAMC link
 			foreach ($old_child->getFacts('FAMC') as $fact) {
 				if ($fact->getTarget() === $family) {
@@ -1989,7 +1999,7 @@ case 'changefamily_update':
 	}
 
 	foreach ($new_children as $new_child) {
-		if (!in_array($new_child, $old_children)) {
+		if ($new_child && !in_array($new_child, $old_children)) {
 			// Add new FAMC link
 			$new_child->createFact('1 FAMS @' . $family->getXref() . '@', !$keep_chan);
 			// Add new CHIL link
