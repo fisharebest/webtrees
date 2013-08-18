@@ -135,6 +135,7 @@ function print_fams(WT_Individual $person, WT_Family $family=null) {
 		'<a target="_blank" class="'.$class.'" href="'.$person->getHtmlUrl().'">'.$person_name.'</a> '.
 		$person->getLifeSpan().' '.$sosa;
 	if ($family) {
+		$pedi = '';
 		foreach ($person->getFacts('FAMC') as $fact) {
 			if ($fact->getTarget() === $family) {
 				$pedi = $fact->getAttribute('PEDI');
