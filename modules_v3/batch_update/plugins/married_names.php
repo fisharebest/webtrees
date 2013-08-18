@@ -34,7 +34,7 @@ class married_names_bu_plugin extends base_plugin {
 	}
 
 	static function getDescription() {
-		return WT_I18N::translate('You can make it easier to search for married women by recording their married name.<br />However not all women take their husband\'s surname, so beware of introducing incorrect information into your database.');
+		return WT_I18N::translate('You can make it easier to search for married women by recording their married name.<br>However not all women take their husband\'s surname, so beware of introducing incorrect information into your database.');
 	}
 
 	function doesRecordNeedUpdate($xref, $gedrec) {

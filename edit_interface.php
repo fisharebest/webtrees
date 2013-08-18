@@ -1764,7 +1764,7 @@ case 'changefamily':
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<div id="changefam">
 			<p>
-				<?php echo WT_I18N::translate('Use this page to change or remove family members.<br /><br />For each member in the family, you can use the Change link to choose a different person to fill that role in the family.  You can also use the Remove link to remove that person from the family.<br /><br />When you have finished changing the family members, click the Save button to save the changes.'); ?>
+				<?php echo WT_I18N::translate('Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different person to fill that role in the family.  You can also use the Remove link to remove that person from the family.<br><br>When you have finished changing the family members, click the Save button to save the changes.'); ?>
 			</p>
 			<form name="changefamform" method="post" action="edit_interface.php">
 				<input type="hidden" name="action" value="changefamily_update">

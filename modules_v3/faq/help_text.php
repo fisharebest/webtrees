@@ -31,13 +31,13 @@ case 'add_faq_item':
 	$title=WT_I18N::translate('Frequently asked questions');
 	$text=
 		WT_I18N::translate('FAQs are lists of questions and answers, which allow you to explain the site\'s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc.').
-		'<br/><br/>'.
+		'<br><br>'.
 		WT_I18N::translate('You may use HTML to format the answer and to add links to other websites.');
 	break;
 
 case 'add_faq_order':
 	$title=WT_I18N::translate('FAQ position');
-	$text=WT_I18N::translate('This field controls the order in which the FAQ items are displayed.<br /><br />You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br /><br />When more than one FAQ item has the same position number, only one of these items will be visible.');
+	$text=WT_I18N::translate('This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible.');
 	break;
 
 case 'add_faq_visibility':
@@ -57,12 +57,12 @@ case 'edit_faq_item':
 
 case 'movedown_faq_item':
 	$title=WT_I18N::translate('Move FAQ item down');
-	$text=WT_I18N::translate('This option will let you move an item downwards on the FAQ page.<br /><br />Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible.');
+	$text=WT_I18N::translate('This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible.');
 	break;
 
 case 'moveup_faq_item':
 	$title=WT_I18N::translate('Move FAQ item up');
-	$text=WT_I18N::translate('This option will let you move an item upwards on the FAQ page.<br /><br />Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible.');
+	$text=WT_I18N::translate('This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible.');
 	break;
 
 }
