@@ -724,7 +724,7 @@ case 'add_spouse_to_family':
 	$xref   = safe_GET('xref',   WT_REGEX_XREF);
 	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
 
-	$family = WT_Individual::getInstance($xref);
+	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
 
 	if ($famtag=='WIFE') {
@@ -740,7 +740,7 @@ case 'add_spouse_to_family':
 	break;
 
 case 'add_spouse_to_family_action':
-	$xref   = safe_POST('xref',   WT_REGEX_XREF);
+	$xref = safe_POST('xref', WT_REGEX_XREF);
 
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
