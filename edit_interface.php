@@ -527,7 +527,6 @@ case 'add_child_to_individual_action':
 	// Link the family to the child
 	$family->createFact('1 CHIL @' . $child->getXref() . '@', true);
 
-	exit;
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
 
