@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-08-18 10:18+0100\n"
+"POT-Creation-Date: 2013-08-18 10:55+0100\n"
 "PO-Revision-Date: 2013-04-02 19:56+0000\n"
 "Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: \n"
@@ -206,6 +206,16 @@ msgctxt "MALE/FEMALE"
 msgid "%d x cousin"
 msgstr "隔 %d 代的堂（表）兄(妹)"
 
+#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#: library/WT/I18N.php:152
+msgid "%g:%i:%s %a"
+msgstr "%H:%i:%s"
+
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
+#: library/WT/I18N.php:150
+msgid "%j %F %Y"
+msgstr "%Y年 %m月 %d日"
+
 #: includes/functions/functions.php:1904
 #, php-format
 msgid "%s"
@@ -229,11 +239,30 @@ msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] "%s 孩子"
 
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:351
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s 天"
+
+#: library/WT/I18N.php:394
+#, php-format
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] "%s 天前"
+
 #: library/WT/Stats.php:3065 library/WT/Stats.php:3069
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s 孙子"
+
+#: library/WT/I18N.php:397
+#, php-format
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] "%s 小时前"
 
 #: modules_v3/googlemap/module.php:834
 #, php-format
@@ -253,6 +282,25 @@ msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s 信息"
 
+#: library/WT/I18N.php:400
+#, php-format
+msgid "%s minute ago"
+msgid_plural "%s minutes ago"
+msgstr[0] "%s 分钟前"
+
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:343
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s 月"
+
+#: library/WT/I18N.php:391
+#, php-format
+msgid "%s month ago"
+msgid_plural "%s months ago"
+msgstr[0] "%s 个月前"
+
 #: statisticsplot.php:742
 #, php-format
 msgid "%s not implemented"
@@ -269,6 +317,12 @@ msgstr "低一辈 %s"
 #, php-format
 msgid "%s once removed descending"
 msgstr "高一辈 %s"
+
+#: library/WT/I18N.php:402
+#, php-format
+msgid "%s second ago"
+msgid_plural "%s seconds ago"
+msgstr[0] "%s 秒前"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:1848
@@ -294,11 +348,36 @@ msgstr "低两辈 %s"
 msgid "%s twice removed descending"
 msgstr "高两辈 %s"
 
+#. I18N: Part of an age string. e.g 7 weeks and 3 days
+#: library/WT/I18N.php:347
+#, php-format
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] "%s 周"
+
+#: library/WT/I18N.php:337
+#, php-format
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s 年"
+
+#: library/WT/I18N.php:388
+#, php-format
+msgid "%s year ago"
+msgid_plural "%s years ago"
+msgstr[0] "%s 年前"
+
 #: calendar.php:565 includes/functions/functions_print_lists.php:1865
 #: modules_v3/yahrzeit/module.php:114
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s 周年纪念"
+
+#. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
+#: library/WT/I18N.php:258
+#, php-format
+msgid "%s%%"
+msgstr "%s%%"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:95
@@ -324,6 +403,50 @@ msgstr "&lt; 选择 &gt;"
 msgid "&plusmn;%d year"
 msgid_plural "&plusmn;%d years"
 msgstr[0] "&plusmn;%d 年"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+#: library/WT/I18N.php:366 library/WT/I18N.php:370
+#, php-format
+msgid "(aged %s)"
+msgstr "(年龄 %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+#: library/WT/I18N.php:360
+#, php-format
+msgid "(aged less than %s)"
+msgstr "(年龄小于 %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+#: library/WT/I18N.php:363
+#, php-format
+msgid "(aged more than %s)"
+msgstr "( %s 岁以上)"
+
+#. I18N: %s is a placeholder for a number
+#: library/WT/I18N.php:472
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr "(从 %s 总条目过滤)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
+#: library/WT/I18N.php:331
+msgid "(in childhood)"
+msgstr "(在童年)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
+#: library/WT/I18N.php:328
+msgid "(in infancy)"
+msgstr "(在婴儿期)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
+#: library/WT/I18N.php:325
+msgid "(stillborn)"
+msgstr "(夭折的)"
+
+#. I18N: This punctuation is used to separate lists of items.
+#: library/WT/I18N.php:171
+msgid ", "
+msgstr ", "
 
 #: library/WT/Stats.php:4032
 msgctxt "CENTURY"
@@ -820,6 +943,14 @@ msgstr "A3"
 msgctxt "paper size"
 msgid "A4"
 msgstr "A4"
+
+#: library/WT/I18N.php:157
+msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+
+#: library/WT/I18N.php:154
+msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 #: library/WT/Gedcom/Code/Temp.php:63
 msgid "Aba, Nigeria"
@@ -1590,10 +1721,11 @@ msgstr "昵称"
 msgid "Alive"
 msgstr "活着的"
 
+#. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:230 famlist.php:68 famlist.php:74 famlist.php:80
 #: famlist.php:163 famlist.php:165 famlist.php:249 famlist.php:251
 #: indilist.php:68 indilist.php:74 indilist.php:80 indilist.php:163
-#: indilist.php:165 indilist.php:249 indilist.php:251
+#: indilist.php:165 indilist.php:249 indilist.php:251 library/WT/I18N.php:416
 #: library/WT/Stats.php:3297 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6 modules_v3/faq/module.php:184
 #: modules_v3/faq/module.php:371 modules_v3/googlemap/admin_places.php:675
@@ -4705,6 +4837,12 @@ msgstr "直系祖先"
 msgid "Direct line ancestors and their families"
 msgstr "直接的祖先和他们的家庭"
 
+#. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
+#: library/WT/I18N.php:420
+#, php-format
+msgid "Display %s"
+msgstr "展示 %s"
+
 #: modules_v3/googlemap/help_text.php:51 modules_v3/googlemap/module.php:428
 msgid "Display Map Coordinates"
 msgstr "显示地图坐标"
@@ -5868,7 +6006,7 @@ msgstr "标有 %s 文件正常操作需要和不能被删除。"
 
 #: admin_site_change.php:271 admin_site_logs.php:238 find.php:186 find.php:201
 #: find.php:219 find.php:236 find.php:253 find.php:271 find.php:288
-#: find.php:479 modules_v3/random_media/module.php:298
+#: find.php:479 library/WT/I18N.php:478 modules_v3/random_media/module.php:298
 msgid "Filter"
 msgstr "过滤器"
 
@@ -7847,6 +7985,7 @@ msgstr "对每个家谱分别使用“导入”功能从磁盘导入到家谱。
 msgid "Loading data from GEDCOM: %.1f%%"
 msgstr "从GEDCOM: %.1f%% 加载数据"
 
+#: library/WT/I18N.php:476 library/WT/I18N.php:477
 #: themes/clouds/templates/compactbox_template.php:52
 #: themes/clouds/templates/personbox_template.php:46
 #: themes/colors/templates/compactbox_template.php:52
@@ -9367,6 +9506,10 @@ msgstr "没有找到地方"
 #: admin_site_config.php:44
 msgid "No predefined text"
 msgstr "没有预定义的文本"
+
+#: library/WT/I18N.php:469 library/WT/I18N.php:480
+msgid "No records to display"
+msgstr "没有要显示的记录"
 
 #: find.php:507 find.php:532 find.php:588 find.php:616 find.php:639
 #: find.php:662 find.php:685 library/WT/Controller/AdvancedSearch.php:532
@@ -12224,6 +12367,12 @@ msgstr "显示«未录入孩子»夫妻或个人。这些是人活着但没有�
 msgid "Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database."
 msgstr "显示«未录入父母的»夫妇或个人。这些人可能也被称为«族长»或是嫁入招入的人。他们是那些没有父母记录在数据库中。"
 
+#. I18N: %s are placeholders for numbers
+#: library/WT/I18N.php:470 library/WT/I18N.php:471
+#, php-format
+msgid "Showing %1$s to %2$s of %3$s"
+msgstr "显示 %3$s 的 %1$s 到 %2$s"
+
 #: library/WT/Controller/Fanchart.php:335
 #: library/WT/Controller/Hourglass.php:390 pedigree.php:221
 msgid "Sibling"
@@ -14276,11 +14425,6 @@ msgstr "再次输入您的密码,以确保你输入的是否正确。"
 msgid "Types of error"
 msgstr "错误类型"
 
-#. I18N: This message is deleted in webtrees-1.5.0
-#: includes/old_messages.php:39
-msgid "UK census images have been obtained from The National Archives, the custodian of the original records, and appear here with their approval on the condition that no commercial use is made of them without permission.  Requests for commercial publication of these or other UK census images appearing on this website should be directed to: Image Library, The National Archives, Kew, Surrey, TW9 4DU, United Kingdom."
-msgstr ""
-
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
 #: library/WT/Gedcom/Tag.php:336 library/WT/Gedcom/Tag.php:340
@@ -14751,7 +14895,7 @@ msgid "View Family"
 msgstr "显示家庭"
 
 #. I18N: This message is deleted in webtrees-1.5.0
-#: includes/old_messages.php:40
+#: includes/old_messages.php:39
 msgid "View GEDCOM Record"
 msgstr "看家谱纪录"
 
@@ -14820,6 +14964,11 @@ msgstr "访客"
 #: modules_v3/bdm_report/report.xml:31
 msgid "Vital records"
 msgstr "关键记录"
+
+#. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
+#: library/WT/I18N.php:160
+msgid "WEEK_START=0"
+msgstr "WEEK_START=1"
 
 #: library/WT/Stats.php:4004
 msgid "Wales"
@@ -16071,6 +16220,11 @@ msgstr "第五代堂（表）兄(妹)"
 #: setup.php:141
 msgid "file upload capability"
 msgstr "文件上传功能"
+
+#. I18N: button label, first page
+#: library/WT/I18N.php:464
+msgid "first"
+msgstr "第一"
 
 #: admin_trees_config.php:898
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -17982,6 +18136,11 @@ msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
 msgstr "额外天数"
 
+#. I18N: button label, last page
+#: library/WT/I18N.php:465
+msgid "last"
+msgstr "最后"
+
 #: admin_trees_config.php:899
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
@@ -18163,7 +18322,8 @@ msgctxt "sister's child"
 msgid "nephew/niece"
 msgstr "甥子/甥女"
 
-#: admin_pgv_to_wt.php:155 admin_site_merge.php:275
+#. I18N: button label, next page
+#: admin_pgv_to_wt.php:155 admin_site_merge.php:275 library/WT/I18N.php:466
 #: modules_v3/batch_update/admin_batch_update.php:95
 msgid "next"
 msgstr "后页"
@@ -18344,7 +18504,8 @@ msgstr "待定"
 msgid "percentage"
 msgstr "百分比"
 
-#: modules_v3/batch_update/admin_batch_update.php:94
+#. I18N: button label, previous page
+#: library/WT/I18N.php:467 modules_v3/batch_update/admin_batch_update.php:94
 msgid "previous"
 msgstr "前页"
 
@@ -19204,6 +19365,11 @@ msgstr "家庭未知"
 msgid "unreliable evidence"
 msgstr "不可靠的证据"
 
+#. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
+#: library/WT/I18N.php:174
+msgid "utf8_unicode_ci"
+msgstr "utf8_unicode_ci"
+
 #: modules_v3/ahnentafel_report/report.xml:138
 #: modules_v3/descendancy_report/report.xml:104
 msgctxt "FEMALE"
@@ -19330,85 +19496,6 @@ msgstr "缺少姓氏"
 #~ msgid_plural "%d years"
 #~ msgstr[0] "%d 年"
 
-#~ msgid "%g:%i:%s %a"
-#~ msgstr "%H:%i:%s"
-
-#~ msgid "%j %F %Y"
-#~ msgstr "%Y年 %m月 %d日"
-
-#~ msgid "%s day"
-#~ msgid_plural "%s days"
-#~ msgstr[0] "%s 天"
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "%s 天前"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "%s 小时前"
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "%s 分钟前"
-
-#~ msgid "%s month"
-#~ msgid_plural "%s months"
-#~ msgstr[0] "%s 月"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "%s 个月前"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "%s 秒前"
-
-#~ msgid "%s week"
-#~ msgid_plural "%s weeks"
-#~ msgstr[0] "%s 周"
-
-#~ msgid "%s year"
-#~ msgid_plural "%s years"
-#~ msgstr[0] "%s 年"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "%s 年前"
-
-#~ msgid "%s%%"
-#~ msgstr "%s%%"
-
-#~ msgid "(aged %s)"
-#~ msgstr "(年龄 %s)"
-
-#~ msgid "(aged less than %s)"
-#~ msgstr "(年龄小于 %s)"
-
-#~ msgid "(aged more than %s)"
-#~ msgstr "( %s 岁以上)"
-
-#~ msgid "(filtered from %s total entries)"
-#~ msgstr "(从 %s 总条目过滤)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(在童年)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(在婴儿期)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(夭折的)"
-
-#~ msgid ", "
-#~ msgstr ", "
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
 #~ msgid "Access"
 #~ msgstr "允许"
 
@@ -19432,9 +19519,6 @@ msgstr "缺少姓氏"
 
 #~ msgid "Birth and death details on charts"
 #~ msgstr "图表上的出生和死亡的详情"
-
-#~ msgid "Display %s"
-#~ msgstr "展示 %s"
 
 #~ msgid "Do not send messages"
 #~ msgstr "不发送消息"
@@ -19490,9 +19574,6 @@ msgstr "缺少姓氏"
 #~ msgid "Most Viewed Items"
 #~ msgstr "显示最多的项目"
 
-#~ msgid "No records to display"
-#~ msgstr "没有要显示的记录"
-
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "家谱文件中没有此ID"
 
@@ -19522,9 +19603,6 @@ msgstr "缺少姓氏"
 
 #~ msgid "Server"
 #~ msgstr "服务器"
-
-#~ msgid "Showing %1$s to %2$s of %3$s"
-#~ msgstr "显示 %3$s 的 %1$s 到 %2$s"
 
 #~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
 #~ msgstr "指定是否通过<b> webtrees </b>可以存储在数据库中发送的消息。如果设置为<b>是</b>用户能够检索信息时，他们登录到<b> webtrees </b>。如果设置为<b>不</b>信息只会发送电子邮件。"
@@ -19580,23 +19658,11 @@ msgstr "缺少姓氏"
 #~ msgid "Visitors"
 #~ msgstr "访客"
 
-#~ msgid "WEEK_START=0"
-#~ msgstr "WEEK_START=1"
-
 #~ msgid "Who can view non-watermarked images?"
 #~ msgstr "谁能看到非水印图像？"
 
 #~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
 #~ msgstr "您可以决定是否常见问题将是可见的，无论GEDCOM，或者它是否将是明显的只对当前的GEDCOM。的<br><ul><li><b>所有</b>的常见问题将出现在所有的常见问题列表，无论GEDCOM。</li><li> <b> %s </b>的常见问题解答将只出现在当前活跃的GEDCOM的常见问题列表。</li></ul>"
 
-#~ msgid "first"
-#~ msgstr "第一"
-
-#~ msgid "last"
-#~ msgstr "最后"
-
 #~ msgid "unknown person"
 #~ msgstr "不明身份的人"
-
-#~ msgid "utf8_unicode_ci"
-#~ msgstr "utf8_unicode_ci"

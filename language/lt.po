@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-08-18 10:18+0100\n"
+"POT-Creation-Date: 2013-08-18 10:55+0100\n"
 "PO-Revision-Date: 2013-08-04 16:29+0000\n"
 "Last-Translator: Vytautas Krivickas <Unknown>\n"
 "Language-Team: \n"
@@ -218,6 +218,16 @@ msgctxt "MALE/FEMALE"
 msgid "%d x cousin"
 msgstr "%d x pusbrolis/pusseserė"
 
+#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#: library/WT/I18N.php:152
+msgid "%g:%i:%s %a"
+msgstr "%g:%i:%s %a"
+
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
+#: library/WT/I18N.php:150
+msgid "%j %F %Y"
+msgstr "%Y %F %j"
+
 #: includes/functions/functions.php:1904
 #, php-format
 msgid "%s"
@@ -242,12 +252,37 @@ msgid_plural "%s children"
 msgstr[0] ""
 msgstr[1] ""
 
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:351
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s diena"
+msgstr[1] "%s dienos"
+msgstr[2] "%s dienų"
+
+#: library/WT/I18N.php:394
+#, php-format
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] "prieš %s dieną"
+msgstr[1] "prieš %s dienas"
+msgstr[2] "prieš %s dienas"
+
 #: library/WT/Stats.php:3065 library/WT/Stats.php:3069
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] ""
 msgstr[1] ""
+
+#: library/WT/I18N.php:397
+#, php-format
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] "prieš %s valandą"
+msgstr[1] "prieš %s valandas"
+msgstr[2] "prieš %s valandų"
 
 #: modules_v3/googlemap/module.php:834
 #, php-format
@@ -271,6 +306,31 @@ msgstr[0] "%s žinutė"
 msgstr[1] "%s žinutės"
 msgstr[2] "%s žinučių"
 
+#: library/WT/I18N.php:400
+#, php-format
+msgid "%s minute ago"
+msgid_plural "%s minutes ago"
+msgstr[0] "prieš %s minutę"
+msgstr[1] "prieš %s minutes"
+msgstr[2] "prieš %s minutčių"
+
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:343
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s mėnuo"
+msgstr[1] "%s mėnesiai"
+msgstr[2] "%s mėnesių"
+
+#: library/WT/I18N.php:391
+#, php-format
+msgid "%s month ago"
+msgid_plural "%s months ago"
+msgstr[0] "prieš %s mėnesį"
+msgstr[1] "prieš %s mėnesius"
+msgstr[2] "prieš %s mėnesius"
+
 #: statisticsplot.php:742
 #, php-format
 msgid "%s not implemented"
@@ -287,6 +347,14 @@ msgstr "%s kartą pašalintas didėjimo tvarka"
 #, php-format
 msgid "%s once removed descending"
 msgstr "%s kartą pašalintas mažėjančia tvarka"
+
+#: library/WT/I18N.php:402
+#, php-format
+msgid "%s second ago"
+msgid_plural "%s seconds ago"
+msgstr[0] "prieš %s sekundę"
+msgstr[1] "prieš %s sekundes"
+msgstr[2] "prieš %s sekundžių"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:1848
@@ -312,11 +380,42 @@ msgstr "%s du kartus pašalintas didėjimo tvarka"
 msgid "%s twice removed descending"
 msgstr "%s du kartus pašalintas mažėjančia tvarka"
 
+#. I18N: Part of an age string. e.g 7 weeks and 3 days
+#: library/WT/I18N.php:347
+#, php-format
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] "%s savaitė"
+msgstr[1] "%s savaičių"
+msgstr[2] "%s savaitės"
+
+#: library/WT/I18N.php:337
+#, php-format
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s metai"
+msgstr[1] "%s metų"
+msgstr[2] "%s metų"
+
+#: library/WT/I18N.php:388
+#, php-format
+msgid "%s year ago"
+msgid_plural "%s years ago"
+msgstr[0] "prieš %s metus"
+msgstr[1] "prieš %s metų"
+msgstr[2] "prieš %s metus"
+
 #: calendar.php:565 includes/functions/functions_print_lists.php:1865
 #: modules_v3/yahrzeit/module.php:114
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s metų sukaktis"
+
+#. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
+#: library/WT/I18N.php:258
+#, php-format
+msgid "%s%%"
+msgstr "%s%%"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:95
@@ -344,6 +443,50 @@ msgid_plural "&plusmn;%d years"
 msgstr[0] "&plusmn;%d metai"
 msgstr[1] "&plusmn;%d metai"
 msgstr[2] "&plusmn;%d metai"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+#: library/WT/I18N.php:366 library/WT/I18N.php:370
+#, php-format
+msgid "(aged %s)"
+msgstr "(amžius %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+#: library/WT/I18N.php:360
+#, php-format
+msgid "(aged less than %s)"
+msgstr "(amžius mažiau negu %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+#: library/WT/I18N.php:363
+#, php-format
+msgid "(aged more than %s)"
+msgstr "(amžius daugiau negu %s)"
+
+#. I18N: %s is a placeholder for a number
+#: library/WT/I18N.php:472
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr "atrinkta iš %s įrašų"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
+#: library/WT/I18N.php:331
+msgid "(in childhood)"
+msgstr "vaikystėje"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
+#: library/WT/I18N.php:328
+msgid "(in infancy)"
+msgstr "kūdikystėje"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
+#: library/WT/I18N.php:325
+msgid "(stillborn)"
+msgstr "gimė negyvas"
+
+#. I18N: This punctuation is used to separate lists of items.
+#: library/WT/I18N.php:171
+msgid ", "
+msgstr ", "
 
 #: library/WT/Stats.php:4032
 msgctxt "CENTURY"
@@ -840,6 +983,14 @@ msgstr "A3"
 msgctxt "paper size"
 msgid "A4"
 msgstr "A4"
+
+#: library/WT/I18N.php:157
+msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+msgstr "ALPHABET_lower=aąbcčdeęėfghiyįjklmnoprsštuųūvzž"
+
+#: library/WT/I18N.php:154
+msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+msgstr "ALPHABET_upper=AĄBCČDEĘĖFGHIYĮJKLMNOPRSŠTUŲŪVZŽ"
 
 #: library/WT/Gedcom/Code/Temp.php:63
 msgid "Aba, Nigeria"
@@ -1610,10 +1761,11 @@ msgstr "Alternatyvusis vardas"
 msgid "Alive"
 msgstr "Gyvi"
 
+#. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:230 famlist.php:68 famlist.php:74 famlist.php:80
 #: famlist.php:163 famlist.php:165 famlist.php:249 famlist.php:251
 #: indilist.php:68 indilist.php:74 indilist.php:80 indilist.php:163
-#: indilist.php:165 indilist.php:249 indilist.php:251
+#: indilist.php:165 indilist.php:249 indilist.php:251 library/WT/I18N.php:416
 #: library/WT/Stats.php:3297 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6 modules_v3/faq/module.php:184
 #: modules_v3/faq/module.php:371 modules_v3/googlemap/admin_places.php:675
@@ -4728,6 +4880,12 @@ msgstr "Tiesioginė protėvių linija"
 msgid "Direct line ancestors and their families"
 msgstr "Tiesioginė protėvių ir jų šeimų linija"
 
+#. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
+#: library/WT/I18N.php:420
+#, php-format
+msgid "Display %s"
+msgstr "Rodyti %s"
+
 #: modules_v3/googlemap/help_text.php:51 modules_v3/googlemap/module.php:428
 msgid "Display Map Coordinates"
 msgstr "Rodyti žemėlapio koordinates"
@@ -5891,7 +6049,7 @@ msgstr "Failai pažymėti su %s privalomi tinkamam veikimui ir negali būti paš
 
 #: admin_site_change.php:271 admin_site_logs.php:238 find.php:186 find.php:201
 #: find.php:219 find.php:236 find.php:253 find.php:271 find.php:288
-#: find.php:479 modules_v3/random_media/module.php:298
+#: find.php:479 library/WT/I18N.php:478 modules_v3/random_media/module.php:298
 msgid "Filter"
 msgstr "Filtruoti"
 
@@ -7870,6 +8028,7 @@ msgstr "Įkelkite visą savo šeimos medį iš disko, pasinaudodami viena iš \"
 msgid "Loading data from GEDCOM: %.1f%%"
 msgstr "Įkeliami duomenys iš GEDCOM: %.1f%%"
 
+#: library/WT/I18N.php:476 library/WT/I18N.php:477
 #: themes/clouds/templates/compactbox_template.php:52
 #: themes/clouds/templates/personbox_template.php:46
 #: themes/colors/templates/compactbox_template.php:52
@@ -9393,6 +9552,10 @@ msgstr "Vietovė nerasta"
 #: admin_site_config.php:44
 msgid "No predefined text"
 msgstr "Be numatyto teksto"
+
+#: library/WT/I18N.php:469 library/WT/I18N.php:480
+msgid "No records to display"
+msgstr "Rodymui įrašų nerasta"
 
 #: find.php:507 find.php:532 find.php:588 find.php:616 find.php:639
 #: find.php:662 find.php:685 library/WT/Controller/AdvancedSearch.php:532
@@ -12251,6 +12414,12 @@ msgstr "Rodyti «lapus» porų arba individų. Tai yra asmenis, kurie yra gyvi, 
 msgid "Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database."
 msgstr "Rodyti «šaknis» porų arba individų. Šie žmonės taip pat gali būti vadinami \"patriarchais\". Jie yra asmenys, kurie neturi tėvų registruotų duomenų bazėje."
 
+#. I18N: %s are placeholders for numbers
+#: library/WT/I18N.php:470 library/WT/I18N.php:471
+#, php-format
+msgid "Showing %1$s to %2$s of %3$s"
+msgstr "Rodoma nuo %1$s iki %2$s iš %3$s"
+
 #: library/WT/Controller/Fanchart.php:335
 #: library/WT/Controller/Hourglass.php:390 pedigree.php:221
 msgid "Sibling"
@@ -14307,11 +14476,6 @@ msgstr "Įveskite slaptažodį dar kartą, kad įsitikinti ar įvedėte teisinga
 msgid "Types of error"
 msgstr "Klaidos tipas"
 
-#. I18N: This message is deleted in webtrees-1.5.0
-#: includes/old_messages.php:39
-msgid "UK census images have been obtained from The National Archives, the custodian of the original records, and appear here with their approval on the condition that no commercial use is made of them without permission.  Requests for commercial publication of these or other UK census images appearing on this website should be directed to: Image Library, The National Archives, Kew, Surrey, TW9 4DU, United Kingdom."
-msgstr ""
-
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
 #: library/WT/Gedcom/Tag.php:336 library/WT/Gedcom/Tag.php:340
@@ -14783,7 +14947,7 @@ msgid "View Family"
 msgstr "Informacija apie šeimą"
 
 #. I18N: This message is deleted in webtrees-1.5.0
-#: includes/old_messages.php:40
+#: includes/old_messages.php:39
 msgid "View GEDCOM Record"
 msgstr "Žiūrėti GEDCOM įrašą"
 
@@ -14852,6 +15016,11 @@ msgstr "Lankytojas"
 #: modules_v3/bdm_report/report.xml:31
 msgid "Vital records"
 msgstr "Esminiai įrašai"
+
+#. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
+#: library/WT/I18N.php:160
+msgid "WEEK_START=0"
+msgstr "WEEK_START=1"
 
 #: library/WT/Stats.php:4004
 msgid "Wales"
@@ -16103,6 +16272,11 @@ msgstr "penktos eilės pusbrolis/pusseserė"
 #: setup.php:141
 msgid "file upload capability"
 msgstr "failo siuntimo geba"
+
+#. I18N: button label, first page
+#: library/WT/I18N.php:464
+msgid "first"
+msgstr "pirmas"
 
 #: admin_trees_config.php:898
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -18016,6 +18190,11 @@ msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
 msgstr ""
 
+#. I18N: button label, last page
+#: library/WT/I18N.php:465
+msgid "last"
+msgstr "paskutinis"
+
 #: admin_trees_config.php:899
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
@@ -18199,7 +18378,8 @@ msgctxt "sister's child"
 msgid "nephew/niece"
 msgstr "sūnėnas/dukterėčia"
 
-#: admin_pgv_to_wt.php:155 admin_site_merge.php:275
+#. I18N: button label, next page
+#: admin_pgv_to_wt.php:155 admin_site_merge.php:275 library/WT/I18N.php:466
 #: modules_v3/batch_update/admin_batch_update.php:95
 msgid "next"
 msgstr "sekantis"
@@ -18380,7 +18560,8 @@ msgstr ""
 msgid "percentage"
 msgstr "procentais"
 
-#: modules_v3/batch_update/admin_batch_update.php:94
+#. I18N: button label, previous page
+#: library/WT/I18N.php:467 modules_v3/batch_update/admin_batch_update.php:94
 msgid "previous"
 msgstr "ankstesnis"
 
@@ -19240,6 +19421,11 @@ msgstr "nežinoma"
 msgid "unreliable evidence"
 msgstr ""
 
+#. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
+#: library/WT/I18N.php:174
+msgid "utf8_unicode_ci"
+msgstr "utf8_lithuanian_ci"
+
 #: modules_v3/ahnentafel_report/report.xml:138
 #: modules_v3/descendancy_report/report.xml:104
 msgctxt "FEMALE"
@@ -19370,105 +19556,6 @@ msgstr "…"
 #~ msgstr[1] "%d metai"
 #~ msgstr[2] "%d metų"
 
-#~ msgid "%g:%i:%s %a"
-#~ msgstr "%g:%i:%s %a"
-
-#~ msgid "%j %F %Y"
-#~ msgstr "%Y %F %j"
-
-#~ msgid "%s day"
-#~ msgid_plural "%s days"
-#~ msgstr[0] "%s diena"
-#~ msgstr[1] "%s dienos"
-#~ msgstr[2] "%s dienų"
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "prieš %s dieną"
-#~ msgstr[1] "prieš %s dienas"
-#~ msgstr[2] "prieš %s dienas"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "prieš %s valandą"
-#~ msgstr[1] "prieš %s valandas"
-#~ msgstr[2] "prieš %s valandų"
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "prieš %s minutę"
-#~ msgstr[1] "prieš %s minutes"
-#~ msgstr[2] "prieš %s minutčių"
-
-#~ msgid "%s month"
-#~ msgid_plural "%s months"
-#~ msgstr[0] "%s mėnuo"
-#~ msgstr[1] "%s mėnesiai"
-#~ msgstr[2] "%s mėnesių"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "prieš %s mėnesį"
-#~ msgstr[1] "prieš %s mėnesius"
-#~ msgstr[2] "prieš %s mėnesius"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "prieš %s sekundę"
-#~ msgstr[1] "prieš %s sekundes"
-#~ msgstr[2] "prieš %s sekundžių"
-
-#~ msgid "%s week"
-#~ msgid_plural "%s weeks"
-#~ msgstr[0] "%s savaitė"
-#~ msgstr[1] "%s savaičių"
-#~ msgstr[2] "%s savaitės"
-
-#~ msgid "%s year"
-#~ msgid_plural "%s years"
-#~ msgstr[0] "%s metai"
-#~ msgstr[1] "%s metų"
-#~ msgstr[2] "%s metų"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "prieš %s metus"
-#~ msgstr[1] "prieš %s metų"
-#~ msgstr[2] "prieš %s metus"
-
-#~ msgid "%s%%"
-#~ msgstr "%s%%"
-
-#~ msgid "(aged %s)"
-#~ msgstr "(amžius %s)"
-
-#~ msgid "(aged less than %s)"
-#~ msgstr "(amžius mažiau negu %s)"
-
-#~ msgid "(aged more than %s)"
-#~ msgstr "(amžius daugiau negu %s)"
-
-#~ msgid "(filtered from %s total entries)"
-#~ msgstr "atrinkta iš %s įrašų"
-
-#~ msgid "(in childhood)"
-#~ msgstr "vaikystėje"
-
-#~ msgid "(in infancy)"
-#~ msgstr "kūdikystėje"
-
-#~ msgid "(stillborn)"
-#~ msgstr "gimė negyvas"
-
-#~ msgid ", "
-#~ msgstr ", "
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=aąbcčdeęėfghiyįjklmnoprsštuųūvzž"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=AĄBCČDEĘĖFGHIYĮJKLMNOPRSŠTUŲŪVZŽ"
-
 #~ msgid "Access"
 #~ msgstr "Prieiga"
 
@@ -19492,9 +19579,6 @@ msgstr "…"
 
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Gimimo ir mirties detalės diagramose"
-
-#~ msgid "Display %s"
-#~ msgstr "Rodyti %s"
 
 #~ msgid "Do not send messages"
 #~ msgstr "Nesiūskite žinučių"
@@ -19532,9 +19616,6 @@ msgstr "…"
 #~ msgid "Most Viewed Items"
 #~ msgstr "Dažniausiai lankomi įrašai"
 
-#~ msgid "No records to display"
-#~ msgstr "Rodymui įrašų nerasta"
-
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "Toks ID šitame GEDCOM faile neegzistuoja."
 
@@ -19564,9 +19645,6 @@ msgstr "…"
 
 #~ msgid "Server"
 #~ msgstr "Serveris"
-
-#~ msgid "Showing %1$s to %2$s of %3$s"
-#~ msgstr "Rodoma nuo %1$s iki %2$s iš %3$s"
 
 #~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
 #~ msgstr "Aprašomasis laukas naudojamas įvesti papildomą informaciją apie objektą. Daugeliu atvejų, laukas yra visiškai laisvos formos, ir galite įrašyti ką norite."
@@ -19598,23 +19676,11 @@ msgstr "…"
 #~ msgid "Visitors"
 #~ msgstr "Lankytojai"
 
-#~ msgid "WEEK_START=0"
-#~ msgstr "WEEK_START=1"
-
 #~ msgid "Who can view non-watermarked images?"
 #~ msgstr "Kas gali matyti nuotraukas nepažymėtas vandens ženklu?"
 
 #~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
 #~ msgstr "Galite nustatyti, ar šis DUK bus matomas nepriklausomai nuo GEDCOM, ar jis bus matoma tik dabartiniam GEDCOM.<br><ul><li><b>VISI</ b>&nbsp;&nbsp;&nbsp;DUK bus rodomas visų DUK sąraše, neatsižvelgiant į GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;DUK pasirodys tik tuo metu aktyviame GEDCOM DUK sąraše.</li ></ul>"
 
-#~ msgid "first"
-#~ msgstr "pirmas"
-
-#~ msgid "last"
-#~ msgstr "paskutinis"
-
 #~ msgid "unknown person"
 #~ msgstr "nežinomas asmuo"
-
-#~ msgid "utf8_unicode_ci"
-#~ msgstr "utf8_lithuanian_ci"

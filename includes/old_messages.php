@@ -1,6 +1,6 @@
 <?php
-// This file contains old messages which were included in earlier
-// stable releases, but are not present in the current code.
+// This file contains old messages which were included in the previous
+// stable release, but are not present in the current code.
 //
 // Moving them here (instead of simply deleting them) allows translators
 // to target both the latest development code as well as the latest
@@ -36,5 +36,4 @@ exit;
 /* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('Please reload the previous page to make sure you are working with the most recent record.');
 /* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('The record with id %s was changed by another user since you last accessed it.');
 /* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('This record was last changed by <i>%s</i> at %s');
-/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('UK census images have been obtained from The National Archives, the custodian of the original records, and appear here with their approval on the condition that no commercial use is made of them without permission.  Requests for commercial publication of these or other UK census images appearing on this website should be directed to: Image Library, The National Archives, Kew, Surrey, TW9 4DU, United Kingdom.');
 /* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('View GEDCOM Record');
