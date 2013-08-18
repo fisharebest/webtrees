@@ -881,7 +881,7 @@ class WT_GedcomRecord {
 		$new_gedcom = '0 @' . $this->getXref() . '@ ' . static::RECORD_TYPE;
 		$old_chan = $this->getFirstFact('CHAN');
 		// Replacing (or deleting) an existing fact
-		foreach ($this->getFacts() as $fact) {
+		foreach ($this->getFacts(null, WT_PRIV_HIDE) as $fact) {
 			if ($fact->getFactId() == $fact_id) {
 				if ($gedcom) {
 					$new_gedcom .= "\n" . $gedcom;
