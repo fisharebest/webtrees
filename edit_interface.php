@@ -520,7 +520,6 @@ case 'add_child_to_individual_action':
 	} else {
 		$gedcom=updateRest($gedcom);
 	}
-	$gedcom .= "\n1 FAMC @" . $family->getXref() . "@";
 
 	$child = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
 
