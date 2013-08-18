@@ -509,7 +509,7 @@ case 'add_child_to_individual_action':
 	$gedcom = '0 @NEW@ INDI';
 	$gedcom .= addNewName();
 	$gedcom .= addNewSex ();
-	$gedcom .= "\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $newfamxref);
+	$gedcom .= "\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $family->getXref());
 	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
 		foreach ($matches[1] as $match) {
 			$gedcom.=addNewFact($match);
@@ -527,6 +527,7 @@ case 'add_child_to_individual_action':
 	// Link the family to the child
 	$family->createFact('1 CHIL @' . $child->getXref() . '@', true);
 
+	exit;
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
 
