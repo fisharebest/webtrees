@@ -114,11 +114,11 @@ echo '</script>';
 						if (WT_USER_CAN_EDIT) {
 							$husb=$controller->record->getHusband();
 							if (!$husb) {
-								echo '<a href="#" onclick="return add_spouse_to_family(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new father'), '</a><br>';
+								echo '<a href="#" onclick="return add_spouse_to_family(\'', $controller->record->getXref(), '\', \'HUSB\');">', WT_I18N::translate('Add a new father'), '</a><br>';
 							}
 							$wife=$controller->record->getWife();
 							if (!$wife)  {
-								echo '<a href="#" onclick="return add_spouse_to_family(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new mother'), '</a><br>';
+								echo '<a href="#" onclick="return add_spouse_to_family(\'', $controller->record->getXref(), '\', \'WIFE\');">', WT_I18N::translate('Add a new mother'), '</a><br>';
 							}
 						}
 						?>
