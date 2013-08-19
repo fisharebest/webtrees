@@ -540,13 +540,13 @@ class WT_GedcomRecord {
 
 	// Allow the choice of primary name to be overidden, e.g. in a search result
 	public function setPrimaryName($n) {
-		$this->_getPrimaryName=$n;
-		$this->_getSecondaryName=null;
+		$this->_getPrimaryName   = $n;
+		$this->_getSecondaryName = null;
 	}
 
-	// Allow native PHP functions such as array_intersect() to work with objects
+	// Allow native PHP functions such as array_unique() to work with objects
 	public function __toString() {
-		return $this->xref.'@'.$this->gedcom_id;
+		return $this->xref . '@' . $this->gedcom_id;
 	}
 
 	// Static helper function to sort an array of objects by name

@@ -900,17 +900,8 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 				$anniv_date = new WT_Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
 				foreach ($record->getFacts(str_replace(' ', '|', $facts)) as $fact) {
 					if ($fact->getDate() == $anniv_date) {
-						$found_facts[] = array(
-							'record'  => $record,
-							'id'      => $row->xref,
-							'objtype' => $row->type,
-							'fact'    => $row->d_fact,
-							'factrec' => $fact->getGedcom(),
-							'jd'      => $jd,
-							'anniv'   => ($row->d_year == 0 ? 0 : $anniv->y - $row->d_year),
-							'date'    => $fact->getDate(),
-							'plac'    => $fact->getAttribute('PLAC'),
-						);
+						$fact->anniv = $row->d_year == 0 ? 0 : $anniv->y - $row->d_year;
+						$found_facts[] = $fact;
 					}
 				}
 			}
@@ -967,17 +958,8 @@ function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 			$anniv_date = new WT_Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
 			foreach ($record->getFacts(str_replace(' ', '|', $facts)) as $fact) {
 				if ($fact->getDate() == $anniv_date) {
-					$found_facts[] = array(
-						'record'  => $record,
-						'id'      => $row->xref,
-						'objtype' => $row->type,
-						'fact'    => $row->d_fact,
-						'factrec' => $fact->getGedcom(),
-						'jd'      => $jd1,
-						'anniv'   => 0,
-						'date'    => $fact->getDate(),
-						'plac'    => $fact->getAttribute('PLAC'),
-					);
+					$fact->anniv = 0;
+					$found_facts[] = $fact;
 				}
 			}
 		}
@@ -985,22 +967,9 @@ function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 	return $found_facts;
 }
 
-
-/**
-* Get the list of current and upcoming events, sorted by anniversary date
-*
-* This function is used by the Todays and Upcoming blocks on the Index and Portal
-* pages.
-*
-* Special note on unknown day-of-month:
-* When the anniversary date is imprecise, the sort will pretend that the day-of-month
-* is either tomorrow or the first day of next month.  These imprecise anniversaries
-* will sort to the head of the chosen day.
-*
-* Special note on Privacy:
-* This routine does not check the Privacy of the events in the list.  That check has
-* to be done by the routine that makes use of the event list.
-*/
+////////////////////////////////////////////////////////////////////////////////
+// Get the list of current and upcoming events, sorted by anniversary date
+////////////////////////////////////////////////////////////////////////////////
 function get_events_list($jd1, $jd2, $events='') {
 	$found_facts=array();
 	for ($jd=$jd1; $jd<=$jd2; ++$jd) {

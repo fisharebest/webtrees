@@ -1671,8 +1671,8 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	$filter = 0;
 	$filtered_events = array();
 
-	foreach (get_events_list($startjd, $endjd, $events) as $value) {
-		$record=$value['record'];
+	foreach (get_events_list($startjd, $endjd, $events) as $fact) {
+		$record=$fact->getParent();
 		//-- only living people ?
 		if ($only_living) {
 			if ($record instanceof WT_Individual && $record->isDead()) {
@@ -1693,10 +1693,6 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			}
 		}
 
-		// Privacy
-		if (!$record->canShow() || !canDisplayFact($record->getXref(), $record->getGedcomId(), $value['factrec'])) {
-			continue;
-		}
 		//-- Counter
 		$output ++;
 
@@ -1714,47 +1710,40 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$html .= '</tr></thead><tbody>'."\n";
 		}
 
-		$value['name'] = $record->getFullName();
-		$value['url'] = $record->getHtmlUrl();
-		if ($record instanceof WT_Individual) {
-			$value['sex'] = $record->getSexImage();
-		} else {
-			$value['sex'] = '';
-		}
-		$filtered_events[] = $value;
+		$filtered_events[] = $fact;
 	}
 
-	foreach ($filtered_events as $n=>$value) {
+	foreach ($filtered_events as $n=>$fact) {
+		$record = $fact->getParent();
 		$html .= "<tr>";
 		//-- Record name(s)
-		$name = $value['name'];
 		$html .= '<td class="wrap">';
-		$html .= '<a href="'.$value['url'].'">'.$name.'</a>';
-		if ($value['record'] instanceof WT_Individual) {
-			$html .= $value['sex'];
+		$html .= '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
+		if ($record instanceof WT_Individual) {
+			$html .= $record->getSexImage();
 		}
 		$html .= '</td>';
 		//-- NAME
 		$html .= '<td>'; //hidden by datatables code
-		$html .= $value['record']->getSortName();
+		$html .= $record->getSortName();
 		$html .= '</td>';
 		//-- Event date
 		$html .= '<td class="wrap">';
-		$html .= $value['date']->Display(empty($SEARCH_SPIDER));
+		$html .= $fact->getDate()->Display(empty($SEARCH_SPIDER));
 		$html .= '</td>';
 		//-- Event date (sortable)
 		$html .= '<td>'; //hidden by datatables code
 		$html .= $n;
 		$html .= '</td>';
 		//-- Anniversary
-		$anniv = $value['anniv'];
+		$anniv = $fact->anniv;
 		$html .= '<td>'.($anniv ? WT_I18N::number($anniv) : '&nbsp;').'</td><td>'.$anniv.'</td>';
 		//-- Event name
 		$html .= '<td class="wrap">';
-		$html .= '<a href="'.$value['url'].'">'.WT_Gedcom_Tag::getLabel($value['fact']).'</a>';
+		$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_Gedcom_Tag::getLabel($fact->getTag()) . '</a>';
 		$html .= '&nbsp;</td>';
 
-		$html .= '</tr>'."\n";
+		$html .= '</tr>';
 	}
 
 	if ($output!=0) {
@@ -1810,8 +1799,8 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	$filter = 0;
 	$filtered_events = array();
 	$html = '';
-	foreach (get_events_list($startjd, $endjd, $events) as $value) {
-		$record = WT_GedcomRecord::getInstance($value['id']);
+	foreach (get_events_list($startjd, $endjd, $events) as $fact) {
+		$record = $fact->getParent();
 		//-- only living people ?
 		if ($only_living) {
 			if ($record instanceof WT_Individual && $record->isDead()) {
@@ -1832,40 +1821,39 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 			}
 		}
 
-		// Privacy
-		if (!$record->canShow() || !canDisplayFact($record->getXref(), $record->getGedcomId(), $value['factrec'])) {
-			continue;
-		}
 		$output ++;
 
-		$value['name'] = $record->getFullName();
-		$value['url'] = $record->getHtmlUrl();
-		if ($record instanceof WT_Individual) {
-			$value['sex'] = $record->getSexImage();
-		} else {
-			$value['sex'] = '';
-		}
-		$filtered_events[] = $value;
+		$filtered_events[] = $fact;
 	}
 
 	// Now we've filtered the list, we can sort by event, if required
 	switch ($sort_by) {
 	case 'anniv':
-		uasort($filtered_events, 'event_sort');
+		uasort($filtered_events, function($x, $y) {
+			return WT_Date::compare($x->getDate(), $y->getDate());
+		});
 		break;
 	case 'alpha':
-		uasort($filtered_events, 'event_sort_name');
+		uasort($filtered_events, function($x, $y) {
+			return WT_GedcomRecord::compare($x->getParent(), $y->getParent());
+		});
 		break;
 	}
 
-	foreach ($filtered_events as $value) {
-		$html .= "<a href=\"".$value['url']."\" class=\"list_item name2\">".$value['name']."</a>".$value['sex'];
+	foreach ($filtered_events as $fact) {
+		$record = $fact->getParent();
+		$html .= "<a href=\"".$record->getHtmlUrl()."\" class=\"list_item name2\">".$record->getFullName()."</a>";
+		if ($record instanceof WT_Individual) {
+			$html .= $record->getSexImage();
+		}
 		$html .= "<br><div class=\"indent\">";
-		$html .= WT_Gedcom_Tag::getLabel($value['fact']).' - '.$value['date']->Display(true);
-		if ($value['anniv']!=0) $html .= " (" . WT_I18N::translate('%s year anniversary', $value['anniv']).")";
-		if (!empty($value['plac'])) {
-			$tmp=new WT_Place($value['plac'], WT_GED_ID);
-			$html .= " - <a href=\"".$tmp->getURL()."\">".$tmp->getFullName()."</a>";
+		$html .= WT_Gedcom_Tag::getLabel($fact->getTag()).' — '.$fact->getDate()->Display(true);
+		if ($fact->anniv) {
+			$html .= " (" . WT_I18N::translate('%s year anniversary', $fact->anniv).")";
+		}
+		if ($fact->getPlace()) {
+			$tmp = new WT_Place($fact->getPlace(), $fact->getParent()->getGedcomId());
+			$html .= " — <a href=\"".$tmp->getURL()."\">".$tmp->getFullName()."</a>";
 		}
 		$html .= "</div>";
 	}

@@ -101,26 +101,24 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$found=false;
 		$end_jd=$show_future ? 99999999 : WT_CLIENT_JD;
-		foreach (get_calendar_events(0, $end_jd, '_TODO', WT_GED_ID) as $todo) {
-			$record=WT_GedcomRecord::getInstance($todo['id']);
-			if ($record && $record->canShow()) {
-				$user_name = preg_match('/\n2 _WT_USER (.+)/', $todo['factrec'], $match) ? $match[1] : '';
-				if ($user_name==WT_USER_NAME || !$user_name && $show_unassigned || $user_name && $show_other) {
-					$content.='<tr>';
-					//-- Event date (sortable)
-					$content .= '<td>'; //hidden by datables code
-					$content .= $todo['date']->JD();
-					$content .= '</td>';
-					$content.='<td class="wrap">'. $todo['date']->Display(empty($SEARCH_SPIDER)).'</td>';
-					$content.='<td class="wrap"><a href="'.$record->getHtmlUrl().'">'.$record->getFullName().'</a></td>';
-					if ($show_unassigned || $show_other) {
-						$content.='<td class="wrap">'.$user_name.'</td>';
-					}
-					$text = preg_match('/^1 _TODO (.+)/', $todo['factrec'], $match) ? $match[1] : '';
-					$content.='<td class="wrap">'.$text.'</td>';
-					$content.='</tr>';
-					$found=true;
+		foreach (get_calendar_events(0, $end_jd, '_TODO', WT_GED_ID) as $fact) {
+			$record = $fact->getParent();
+			$user_name = $fact->getAttribute('_WT_USER');
+			if ($user_name==WT_USER_NAME || !$user_name && $show_unassigned || $user_name && $show_other) {
+				$content.='<tr>';
+				//-- Event date (sortable)
+				$content .= '<td>'; //hidden by datables code
+				$content .= $fact->getDate()->JD();
+				$content .= '</td>';
+				$content.='<td class="wrap">'. $fact->getDate()->Display(empty($SEARCH_SPIDER)).'</td>';
+				$content.='<td class="wrap"><a href="'.$record->getHtmlUrl().'">'.$record->getFullName().'</a></td>';
+				if ($show_unassigned || $show_other) {
+					$content.='<td class="wrap">'.$user_name.'</td>';
 				}
+				$text = $fact->getValue();
+				$content.='<td class="wrap">'.$text.'</td>';
+				$content.='</tr>';
+				$found=true;
 			}
 		}
 

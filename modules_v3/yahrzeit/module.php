@@ -69,20 +69,22 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		// need to handle a few special cases.
 		// Fetch normal anniversaries...
 		$yahrzeits=array();
-		for ($jd=$startjd-1; $jd<=$endjd+30;++$jd) {
+		for ($jd=$startjd-1; $jd<=$endjd+$days; ++$jd) {
 			foreach (get_anniversary_events($jd, 'DEAT _YART') as $fact) {
-				// Extract hebrew dates only
-				if ($fact['date']->date1 instanceof WT_Date_Jewish && $fact['date']->MinJD()==$fact['date']->MaxJD()) {
+				// Exact hebrew dates only
+				$date = $fact->getDate();
+				if ($date->MinDate() instanceof WT_Date_Jewish && $date->MinJD()==$date->MaxJD()) {
+					$fact->jd = $jd;
 					$yahrzeits[]=$fact;
 				}
 			}
 		}
 
 		// ...then adjust dates
-		foreach ($yahrzeits as $key=>$yahrzeit) {
-			if (strpos('1 DEAT', $yahrzeit['factrec'])!==false) { // Just DEAT, not _YART
-				$today=new WT_Date_Jewish($yahrzeit['jd']);
-				$hd=$yahrzeit['date']->MinDate();
+		foreach ($yahrzeits as $yahrzeit) {
+			if ($yahrzeit->getTag() == 'DEAT') { // Just DEAT, not _YART
+				$today=new WT_Date_Jewish($yahrzeit->jd);
+				$hd=$yahrzeit->getDate()->MinDate();
 				$hd1=new WT_Date_Jewish($hd);
 				$hd1->y+=1;
 				$hd1->SetJDFromYMD();
@@ -90,15 +92,13 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 				// Everything else is taken care of by our standard anniversary rules.
 				if ($hd->d==30 && $hd->m==2 && $hd->y!=0 && $hd1->DaysInMonth()<30) { // 30 CSH
 					// Last day in CSH
-					$yahrzeit[$key]['jd']=WT_Date_Jewish::YMDtoJD($today->y, 3, 1)-1;
-				}
-				if ($hd->d==30 && $hd->m==3 && $hd->y!=0 && $hd1->DaysInMonth()<30) { // 30 KSL
+					$yahrzeit->jd = WT_Date_Jewish::YMDtoJD($today->y, 3, 1)-1;
+				} elseif ($hd->d==30 && $hd->m==3 && $hd->y!=0 && $hd1->DaysInMonth()<30) { // 30 KSL
 					// Last day in KSL
-					$yahrzeit[$key]['jd']=WT_Date_Jewish::YMDtoJD($today->y, 4, 1)-1;
-				}
-				if ($hd->d==30 && $hd->m==6 && $hd->y!=0 && $today->DaysInMonth()<30 && !$today->IsLeapYear()) { // 30 ADR
+					$yahrzeit->jd = WT_Date_Jewish::YMDtoJD($today->y, 4, 1)-1;
+				} elseif ($hd->d==30 && $hd->m==6 && $hd->y!=0 && $today->DaysInMonth()<30 && !$today->IsLeapYear()) { // 30 ADR
 					// Last day in SHV
-					$yahrzeit[$key]['jd']=WT_Date_Jewish::YMDtoJD($today->y, 6, 1)-1;
+					$yahrzeit->jd = WT_Date_Jewish::YMDtoJD($today->y, 6, 1)-1;
 				}
 			}
 		}
@@ -106,12 +106,12 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		switch ($infoStyle) {
 		case 'list':
 			foreach ($yahrzeits as $yahrzeit)
-				if ($yahrzeit['jd']>=$startjd && $yahrzeit['jd']<$startjd+$days) {
-					$ind=person::GetInstance($yahrzeit['id']);
+				if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd+$days) {
+					$ind=$yahrzeit->getParent();
 					$content .= "<a href=\"".$ind->getHtmlUrl()."\" class=\"list_item name2\">".$ind->getFullName()."</a>".$ind->getSexImage();
 					$content .= "<div class=\"indent\">";
-					$content .= $yahrzeit['date']->Display(true);
-					$content .= ', '.WT_I18N::translate('%s year anniversary', $yahrzeit['anniv']);
+					$content .= $yahrzeit->getDate()->Display(true);
+					$content .= ', '.WT_I18N::translate('%s year anniversary', $yahrzeit->anniv);
 					$content .= "</div>";
 				}
 			break;
@@ -158,9 +158,9 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '</tr></thead><tbody>';
 
 			foreach ($yahrzeits as $yahrzeit) {
-				if ($yahrzeit['jd']>=$startjd && $yahrzeit['jd']<$startjd+$days) {
+				if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd+$days) {
 					$content .= '<tr>';
-					$ind=WT_Individual::GetInstance($yahrzeit['id']);
+					$ind=$yahrzeit->getParent();
 					// Individual name(s)
 					$name=$ind->getFullName();
 					$url=$ind->getHtmlUrl();
@@ -175,14 +175,14 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= '<td>'.$ind->getSortName().'</td>';
 
 					// death/yahrzeit event date
-					$content .= '<td>'.$yahrzeit['date']->Display().'</td>';
-					$content .= '<td>'.$yahrzeit['date']->minJD().'</td>';// sortable date
+					$content .= '<td>'.$yahrzeit->getDate()->Display().'</td>';
+					$content .= '<td>'.$yahrzeit->getDate()->minJD().'</td>';// sortable date
 
 					// Anniversary
-					$content .= '<td>'.$yahrzeit['anniv'].'</td>';
+					$content .= '<td>'.$yahrzeit->anniv.'</td>';
 
 					// upcomming yahrzeit dates
-					$today=new WT_Date_Jewish($yahrzeit['jd']);
+					$today=new WT_Date_Jewish($yahrzeit->jd);
 					$td=new WT_Date($today->Format('%@ %A %O %E'));
 					$content .= '<td>'.$td->Display().'</td>';
 					$content .= '<td>'.$td->minJD().'</td>';// sortable date

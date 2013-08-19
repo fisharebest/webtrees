@@ -343,25 +343,22 @@ case 'calendar':
 		$found_facts[$d]=array();
 	// Fetch events for each day
 	for ($jd=$cal_date->minJD; $jd<=$cal_date->maxJD; ++$jd)
-		foreach (apply_filter(get_anniversary_events($jd, $events), $filterof, $filtersx) as $event) {
-			$tmp=$event['date']->MinDate();
-			if ($tmp->d>=1 && $tmp->d<=$tmp->DaysInMonth())
+		foreach (apply_filter(get_anniversary_events($jd, $events), $filterof, $filtersx) as $fact) {
+			$tmp=$fact->getDate()->MinDate();
+			if ($tmp->d>=1 && $tmp->d<=$tmp->DaysInMonth()) {
 				$d=$jd-$cal_date->minJD+1;
-			else
+			} else {
 				$d=0;
-			$found_facts[$d][]=$event;
+			}
+			$found_facts[$d][]=$fact;
 		}
 	break;
 case 'year':
 	$cal_date->m=0;
 	$cal_date->SetJDfromYMD();
 	$found_facts=apply_filter(get_calendar_events($ged_date->MinJD(), $ged_date->MaxJD(), $events), $filterof, $filtersx);
-	// Eliminate duplictes (e.g. BET JUL 1900 AND SEP 1900 will appear twice in 1900)
-	foreach ($found_facts as $key=>$value)
-		$found_facts[$key]=serialize($found_facts[$key]);
-	$found_facts=array_unique($found_facts);
-	foreach ($found_facts as $key=>$value)
-		$found_facts[$key]=unserialize($found_facts[$key]);
+	// Eliminate duplicates (e.g. BET JUL 1900 AND SEP 1900 will appear twice in 1900)
+	$found_facts = array_unique($found_facts);
 	break;
 }
 
@@ -372,20 +369,20 @@ case 'today':
 	$indis=array();
 	$fams=array();
 	foreach ($found_facts as $fact) {
-		$fact_text=calendar_fact_text($fact, true);
-		switch ($fact['objtype']) {
-		case 'INDI':
-			if (empty($indis[$fact['id']]))
-				$indis[$fact['id']]=$fact_text;
-			else
-				$indis[$fact['id']].='<br>'.$fact_text;
-			break;
-		case 'FAM':
-			if (empty($fams[$fact['id']]))
-				$fams[$fact['id']]=$fact_text;
-			else
-				$fams[$fact['id']].='<br>'.$fact_text;
-			break;
+		$record = $fact->getParent();
+		$xref   = $record->getXref();
+		if ($record instanceof WT_Individual) {
+			if (empty($indis[$xref])) {
+				$indis[$xref] = calendar_fact_text($fact, true);
+			} else {
+				$indis[$xref] .= '<br>' . calendar_fact_text($fact, true);
+			}
+		} elseif ($record instanceof WT_Family) {
+			if (empty($indis[$xref])) {
+				$fams[$xref] = calendar_fact_text($fact, true);
+			} else {
+				$fams[$xref] .= '<br>' . calendar_fact_text($fact, true);
+			}
 		}
 	}
 	break;
@@ -394,11 +391,11 @@ case 'calendar':
 	foreach ($found_facts as $d=>$facts) {
 		$cal_facts[$d]=array();
 		foreach ($facts as $fact) {
-			$id=$fact['id'];
-			if (empty($cal_facts[$d][$id]))
-				$cal_facts[$d][$id]=calendar_fact_text($fact, false);
+			$xref=$fact->getParent()->getXref();
+			if (empty($cal_facts[$d][$xref]))
+				$cal_facts[$d][$xref]=calendar_fact_text($fact, false);
 			else
-				$cal_facts[$d][$id].='<br>'.calendar_fact_text($fact, false);
+				$cal_facts[$d][$xref].='<br>'.calendar_fact_text($fact, false);
 		}
 	}
 	break;
@@ -519,52 +516,56 @@ case 'calendar':
 echo '</div>'; //close "calendar-page"
 
 /////////////////////////////////////////////////////////////////////////////////
-// Filter a list of facts
+// Filter a list of anniversaries
 /////////////////////////////////////////////////////////////////////////////////
 function apply_filter($facts, $filterof, $filtersx) {
 	$filtered=array();
 	$hundred_years=WT_SERVER_JD-36525;
 	foreach ($facts as $fact) {
-		$tmp=WT_GedcomRecord::GetInstance($fact['id']);
-		// Filter on sex
-		if ($fact['objtype']=='INDI' && $filtersx!='' && $filtersx!=$tmp->getSex())
-			continue;
-		// Can't display families if the sex filter is on.
-		// TODO: but we could show same-sex partnerships....
-		if ($fact['objtype']=='FAM' && $filtersx!='')
-			continue;
-		// Filter on age of event
-		if ($filterof=='living') {
-			if ($fact['objtype']=='INDI' && $tmp->isDead())
-			continue;
-			if ($fact['objtype']=='FAM') {
-				$husb=$tmp->getHusband();
-				$wife=$tmp->getWife();
-				if (!empty($husb) && $husb->isDead())
-					continue;
-				if (!empty($wife) && $wife->isDead())
-					continue;
+		$record = $fact->getParent();
+		if ($filtersx) {
+			// Filter on sex
+			if ($record instanceof WT_Individual && $filtersx != $record->getSex()) {
+				continue;
+			}
+			// Can't display families if the sex filter is on.
+			if ($record instanceof WT_Family) {
+				continue;
 			}
 		}
-		if ($filterof=='recent' && $fact['date']->MaxJD()<$hundred_years)
+		// Filter living individuals
+		if ($filterof == 'living') {
+			if ($record instanceof WT_Individual && $record->isDead()) {
+				continue;
+			}
+			if ($record instanceof WT_Family) {
+				$husb = $record->getHusband();
+				$wife = $record->getWife();
+				if ($husb && $husb->isDead() || $wife && $wife->isDead()) {
+					continue;
+				}
+			}
+		}
+		// Filter on recent events
+		if ($filterof == 'recent' && $fact->getDate()->MaxJD()<$hundred_years) {
 			continue;
-		// Finally, check for privacy rules before adding fact.
-		if ($tmp->canShow())
-			$filtered[]=$fact;
+		}
+		$filtered[] = $fact;
 	}
 	return $filtered;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Format a fact for display.  Include the date, the event type, and optionally
-// the place.
+// Format an anniversary display.
 ////////////////////////////////////////////////////////////////////////////////
-function calendar_fact_text($fact, $show_places) {
-	$text=WT_Gedcom_Tag::getLabel($fact['fact']).' - '.$fact['date']->Display(true, "", array());
-	if ($fact['anniv']>0)
-		$text.=' ('.WT_I18N::translate('%s year anniversary', $fact['anniv']).')';
-	if ($show_places && !empty($fact['plac']))
-		$text.=' - '.$fact['plac'];
+function calendar_fact_text(WT_Fact $fact, $show_places) {
+	$text = WT_Gedcom_Tag::getLabel($fact->getTag()).' — '.$fact->getDate()->Display(true, "", array());
+	if ($fact->anniv) {
+		$text .= ' (' . WT_I18N::translate('%s year anniversary', $fact->anniv) . ')';
+	}
+	if ($show_places && $fact->getAttribute('PLAC')) {
+		$text .= ' — ' . $fact->getAttribute('PLAC');
+	}
 	return $text;
 }
 

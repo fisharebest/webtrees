@@ -377,4 +377,10 @@ class WT_Fact {
 		}
 		return $ret;
 	}
+
+	// Allow native PHP functions such as array_unique() to work with objects
+	public function __toString() {
+		return $this->fact_id . '@' . $this->parent->getXref();
+	}
+
 }
