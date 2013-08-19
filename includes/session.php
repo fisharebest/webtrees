@@ -434,9 +434,6 @@ define('WT_CLIENT_JD', 2440588 + (int)(WT_CLIENT_TIMESTAMP/86400));
 // Application configuration data - things that aren’t (yet?) user-editable
 require WT_ROOT.'includes/config_data.php';
 
-//-- load the privacy functions
-require WT_ROOT.'includes/functions/functions_privacy.php';
-
 // If we are logged in, and logout=1 has been added to the URL, log out
 // If we were logged in, but our account has been deleted, log out.
 if (WT_USER_ID && (safe_GET_bool('logout') || !WT_USER_NAME)) {

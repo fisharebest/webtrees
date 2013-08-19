@@ -383,12 +383,9 @@ class WT_GedcomRecord {
 			// Include the entire first line (for NOTE records)
 			list($gedrec)=explode("\n", $this->gedcom, 2);
 
-			// Check each of the sub facts for access
-			preg_match_all('/\n1 .*(?:\n[2-9].*)*/', $this->gedcom, $matches);
-			foreach ($matches[0] as $match) {
-				if (canDisplayFact($this->xref, $this->gedcom_id, $match, $access_level)) {
-					$gedrec.=$match;
-				}
+			// Check each of the facts for access
+			foreach ($this->getFacts(null, $access_level) as $fact) {
+				$gedrec .= "\n" . $fact->getGedcom();
 			}
 			return $gedrec;
 		} else {

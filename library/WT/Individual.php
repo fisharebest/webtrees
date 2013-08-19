@@ -31,7 +31,7 @@ class WT_Individual extends WT_GedcomRecord {
 	const SQL_FETCH   = "SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?";
 	const URL_PREFIX  = 'individual.php?pid=';
 
-	var $generation; // used in some lists to keep track of this Person's generation in that list
+	var $generation; // used in some lists to keep track of this individual’s generation in that list
 
 	// Cached results from various functions.
 	private $_getEstimatedBirthDate=null;
@@ -44,7 +44,7 @@ class WT_Individual extends WT_GedcomRecord {
 		return $SHOW_LIVING_NAMES>=$access_level || $this->canShow($access_level);
 	}
 
-	// Implement person-specific privacy logic
+	// Implement individual-specific privacy logic
 	protected function _canShowByType($access_level) {
 		global $SHOW_DEAD_PEOPLE, $KEEP_ALIVE_YEARS_BIRTH, $KEEP_ALIVE_YEARS_DEATH;
 
@@ -124,7 +124,7 @@ class WT_Individual extends WT_GedcomRecord {
 					foreach ($cache[$n-1] as $family) {
 						foreach ($family->getFacts('HUSB|WIFE|CHIL', WT_PRIV_HIDE) as $fact) {
 							$individual = $fact->getTarget();
-							// Don't backtrack
+							// Don’t backtrack
 							if ($individual && !in_array($individual, $cache[$n-2], true)) {
 								$cache[$n][] = $individual;
 							}
@@ -138,7 +138,7 @@ class WT_Individual extends WT_GedcomRecord {
 					foreach ($cache[$n-1] as $individual) {
 						foreach ($individual->getFacts('FAM[CS]', WT_PRIV_HIDE) as $fact) {
 							$family = $fact->getTarget();
-							// Don't backtrack
+							// Don’t backtrack
 							if ($family && !in_array($family, $cache[$n-2], true)) {
 								$cache[$n][] = $family;
 							}
@@ -154,29 +154,24 @@ class WT_Individual extends WT_GedcomRecord {
 	protected function createPrivateGedcomRecord($access_level) {
 		global $SHOW_PRIVATE_RELATIONSHIPS, $SHOW_LIVING_NAMES;
 
-		$rec='0 @'.$this->xref.'@ INDI';
+		$rec = '0 @' . $this->xref . '@ INDI';
 		if ($SHOW_LIVING_NAMES>=$access_level) {
 			// Show all the NAME tags, including subtags
-			preg_match_all('/\n1 NAME.*(?:\n[2-9].*)*/', $this->gedcom, $matches);
-			foreach ($matches[0] as $match) {
-				if (canDisplayFact($this->xref, $this->gedcom_id, $match, $access_level)) {
-					$rec.=$match;
-				}
+			foreach ($this->getFacts('NAME') as $fact) {
+				$rec .= "\n" . $fact->getGedcom();
 			}
-		} else {
-			$rec.="\n1 NAME ".WT_I18N::translate('Private');
 		}
 		// Just show the 1 FAMC/FAMS tag, not any subtags, which may contain private data
 		preg_match_all('/\n1 (?:FAMC|FAMS) @('.WT_REGEX_XREF.')@/', $this->gedcom, $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
-			$rela=WT_Family::getInstance($match[1]);
+			$rela = WT_Family::getInstance($match[1]);
 			if ($rela && ($SHOW_PRIVATE_RELATIONSHIPS || $rela->canShow($access_level))) {
-				$rec.=$match[0];
+				$rec .= $match[0];
 			}
 		}
-		// Don't privatize sex.
+		// Don’t privatize sex.
 		if (preg_match('/\n1 SEX [MFU]/', $this->gedcom, $match)) {
-			$rec.=$match[0];
+			$rec .= $match[0];
 		}
 		return $rec;
 	}
@@ -202,7 +197,7 @@ class WT_Individual extends WT_GedcomRecord {
 		return WT_Date::Compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
 	}
 
-	// Calculate whether this person is living or dead.
+	// Calculate whether this individual is living or dead.
 	// If not known to be dead, then assume living.
 	public function isDead() {
 		global $MAX_ALIVE_AGE;
@@ -212,7 +207,7 @@ class WT_Individual extends WT_GedcomRecord {
 			return true;
 		}
 
-		// If any event occured more than $MAX_ALIVE_AGE years ago, then assume the person is dead
+		// If any event occured more than $MAX_ALIVE_AGE years ago, then assume the individual is dead
 		if (preg_match_all('/\n2 DATE (.+)/', $this->gedcom, $date_matches)) {
 			foreach ($date_matches[1] as $date_match) {
 				$date=new WT_Date($date_match);
@@ -221,7 +216,7 @@ class WT_Individual extends WT_GedcomRecord {
 				}
 			}
 			// The individual has one or more dated events.  All are less than $MAX_ALIVE_AGE years ago.
-			// If one of these is a birth, the person must be alive.
+			// If one of these is a birth, the individual must be alive.
 			if (preg_match('/\n1 BIRT(?:\n[2-9].+)*\n2 DATE /', $this->gedcom)) {
 				return false;
 			}
@@ -305,7 +300,7 @@ class WT_Individual extends WT_GedcomRecord {
 		$objectB = null;
 		$objectC = null;
 
-		// Iterate over all of the media items for the person
+		// Iterate over all of the media items for the individual
 		preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
 			$media = WT_Media::getInstance($match[2]);
@@ -416,7 +411,7 @@ class WT_Individual extends WT_GedcomRecord {
 		return $this->getDeathDate()->MinDate()->Format('%Y');
 	}
 
-	// Get the range of years in which a person lived.  e.g. “1870–”, “1870–1920”, “–1920”.
+	// Get the range of years in which a individual lived.  e.g. “1870–”, “1870–1920”, “–1920”.
 	// Provide the full date using a tooltip.
 	// For consistent layout in charts, etc., show just a “–” when no dates are known.
 	// Note that this is a (non-breaking) en-dash, and not a hyphen.
@@ -582,10 +577,7 @@ class WT_Individual extends WT_GedcomRecord {
 		}
 	}
 
-	/**
-	* get the person's sex image
-	* @return string  <img ...>
-	*/
+	// Get the individual’s sex image
 	function getSexImage($size='small', $style='', $title='') {
 		return self::sexImage($this->getSex(), $size, $style, $title);
 	}
@@ -599,7 +591,7 @@ class WT_Individual extends WT_GedcomRecord {
 		return 'person_box'.$tmp[$this->getSex()];
 	}
 
-	// Get a list of this person's spouse families
+	// Get a list of this individual’s spouse families
 	function getSpouseFamilies($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
@@ -613,12 +605,9 @@ class WT_Individual extends WT_GedcomRecord {
 		return $families;
 	}
 
-	/**
-	* get the current spouse of this person
-	* The current spouse is defined as the spouse from the latest family.
-	* The latest family is defined as the last family in the GEDCOM record
-	* @return Person  this person's spouse
-	*/
+	// get the current spouse of this individual
+	// The current spouse is defined as the spouse from the latest family.
+	// The latest family is defined as the last family in the GEDCOM record
 	function getCurrentSpouse() {
 		$tmp=$this->getSpouseFamilies();
 		$family = end($tmp);
@@ -644,7 +633,7 @@ class WT_Individual extends WT_GedcomRecord {
 		}
 	}
 
-	// Get a list of this person's child families (i.e. their parents)
+	// Get a list of this individual’s child families (i.e. their parents)
 	function getChildFamilies($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
@@ -658,10 +647,7 @@ class WT_Individual extends WT_GedcomRecord {
 		return $families;
 	}
 
-	/**
-	* get primary family with parents
-	* @return Family object
-	*/
+	// Get primary family with parents
 	function getPrimaryChildFamily() {
 		$families=$this->getChildFamilies();
 		switch (count($families)) {
@@ -789,7 +775,7 @@ class WT_Individual extends WT_GedcomRecord {
 		throw new Exception('Invalid family in WT_Individual::getStepFamilyLabel(' . $family . ')');
 	}
 
-	// TODO - this function doesn't belong in this class
+	// TODO - this function doesn’t belong in this class
 	function getSpouseFamilyLabel(WT_Family $family) {
 		$spouse = $family->getSpouse($this);
 		if ($spouse) {
@@ -800,7 +786,7 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	/**
-	* get primary parents names for this person
+	* get primary parents names for this individual
 	* @param string $classname optional css class
 	* @param string $display optional css style display
 	* @return string a div block with father & mother names
@@ -841,7 +827,7 @@ class WT_Individual extends WT_GedcomRecord {
 
 	// Convert a name record into 'full' and 'sort' versions.
 	// Use the NAME field to generate the 'full' version, as the
-	// gedcom spec says that this is the person's name, as they would write it.
+	// gedcom spec says that this is the individual's name, as they would write it.
 	// Use the SURN field to generate the sortable names.  Note that this field
 	// may also be used for the 'true' surname, perhaps spelt differently to that
 	// recorded in the NAME field. e.g.
@@ -906,7 +892,7 @@ class WT_Individual extends WT_GedcomRecord {
 			$surname='';
 		}
 
-		// If we don't have a SURN record, extract it from the NAME
+		// If we don’t have a SURN record, extract it from the NAME
 		if (!$SURNS) {
 			if (preg_match_all('/\/([^\/]*)\//', $full, $matches)) {
 				// There can be many surnames, each wrapped with '/'
@@ -921,7 +907,7 @@ class WT_Individual extends WT_GedcomRecord {
 			}
 		}
 
-		// If we don't have a GIVN record, extract it from the NAME
+		// If we don’t have a GIVN record, extract it from the NAME
 		if (!$GIVN) {
 			$GIVN=preg_replace(
 				array(
@@ -988,7 +974,7 @@ class WT_Individual extends WT_GedcomRecord {
 			}
 		}
 
-		// Remove slashes - they don't get displayed
+		// Remove slashes - they don’t get displayed
 		// $fullNN keeps the @N.N. placeholders, for the database
 		// $full is for display on-screen
 		$fullNN=str_replace('/', '', $full);
@@ -1005,7 +991,7 @@ class WT_Individual extends WT_GedcomRecord {
 		// The standards say you should use a suffix of '*' for preferred name
 		$full=preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);
 
-		// Remove prefered-name indicater - they don't go in the database
+		// Remove prefered-name indicater - they don’t go in the database
 		$GIVN  =str_replace('*', '', $GIVN);
 		$fullNN=str_replace('*', '', $fullNN);
 
