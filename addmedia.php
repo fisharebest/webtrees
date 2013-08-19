@@ -438,7 +438,13 @@ if ($linktoid == 'new' || ($linktoid == '' && $action != 'update')) {
 	echo ' ', print_findsource_link('gid');
 	echo '<p class="sub">', WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'), '</p></td></tr>';
 }
-$gedrec=find_gedcom_record($pid, WT_GED_ID, true);
+
+$tmp = WT_Media::getInstance($pid);
+if ($tmp) {
+	$gedrec = $tmp->getGedcom();
+} else {
+	$gedrec = '';
+}
 
 // 0 OBJE
 // 1 FILE
@@ -737,7 +743,7 @@ echo '</table>';
 <?php
 
 
-// Legacy/depracted function.  TODO: refactor this away....
+// Legacy/deprecated functions.  TODO: refactor these away....
 function get_first_tag($level, $tag, $gedrec, $num=1) {
 	$temp = get_sub_record($level, $level." ".$tag, $gedrec, $num)."\n";
 	$length = strpos($temp, "\n");
