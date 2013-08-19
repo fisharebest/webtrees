@@ -116,7 +116,7 @@ function get_lati_long_placelocation ($place) {
 		$parent[$i] = trim($parent[$i]);
 		if (empty($parent[$i])) $parent[$i]='unknown';// GoogleMap module uses "unknown" while GEDCOM uses , ,
 		$placelist = create_possible_place_names($parent[$i], $i+1);
-		foreach ($placelist as $key => $placename) {
+		foreach ($placelist as $placename) {
 			$pl_id=
 				WT_DB::prepare("SELECT pl_id FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
 				->execute(array($i, $place_id, $placename))
@@ -161,7 +161,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 	//-- sort the facts into date order
 	sort_facts($indifacts);
 	$i = 0;
-	foreach ($indifacts as $key => $value) {
+	foreach ($indifacts as $value) {
 		$fact = $value->getTag();
 		$fact_data=$value->getValue();
 		$factrec = $value->getGedcom();
@@ -259,98 +259,84 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 	}
 
 	// Add children to the markers list array
-	if (count($famids)>0) {
-		$hparents=false;
-		for ($f=0; $f<count($famids); $f++) {
-			if (!empty($famids[$f])) {
-				$famrec = find_gedcom_record($famids[$f], WT_GED_ID, true);
-				if ($famrec) {
-					$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch, PREG_SET_ORDER);
-					for ($j=0; $j<$num; $j++) {
-						$person=WT_Individual::getInstance($smatch[$j][1]);
-						if ($person->canShow()) {
-							$srec = find_person_record($smatch[$j][1], WT_GED_ID);
-							$birthrec = '';
-							foreach ($person->getFacts('BIRT') as $sEvent) {
-								$birthrec = $sEvent->getGedcom();
-								$placerec = $sEvent->getAttribute('PLAC');
-								if ($placerec) {
-									$ctd = preg_match('/\n2 DATE (.*)/',  $birthrec, $matchd);
-									$ctla = preg_match('/\n4 LATI (.*)/', $birthrec, $match1);
-									$ctlo = preg_match('/\n4 LONG (.*)/', $birthrec, $match2);
-									if (($ctla>0) && ($ctlo>0)) {
-										$i++;
-										$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
-										if (strpos($srec, "\n1 SEX F")!==false) {
-											$markers[$i]['fact']       = 'BIRT';
-											$markers[$i]['fact_label'] = WT_I18N::translate('daughter');
-											$markers[$i]['class']      = 'person_boxF';
-										} else {
-											if (strpos($srec, "\n1 SEX M")!==false) {
-												$markers[$i]['fact']       = 'BIRT';
-												$markers[$i]['fact_label'] = WT_I18N::translate('son');
-												$markers[$i]['class']      = 'person_box';
-											} else {
-												$markers[$i]['fact']       = 'BIRT';
-												$markers[$i]['fact_label'] = WT_I18N::translate('child');
-												$markers[$i]['class']      = 'person_boxNN';
-											}
-										}
-										$markers[$i]['placerec'] = $placerec;
-										$match1[1] = trim($match1[1]);
-										$match2[1] = trim($match2[1]);
-										$markers[$i]['lati'] = str_replace(array('N', 'S', ','), array('', '-', '.'), $match1[1]);
-										$markers[$i]['lng'] = str_replace(array('E', 'W', ','), array('', '-', '.'), $match2[1]);
-										if ($ctd > 0) {
-											$markers[$i]['date'] = $matchd[1];
-										}
-										$markers[$i]['name'] = $smatch[$j][1];
-									} else {
-										$latlongval = get_lati_long_placelocation($placerec);
-										if ((count($latlongval) == 0) && (!empty($GM_DEFAULT_TOP_VALUE))) {
-											$latlongval = get_lati_long_placelocation($placerec.', '.$GM_DEFAULT_TOP_VALUE);
-											if ((count($latlongval) != 0) && ($latlongval['level'] == 0)) {
-												$latlongval['lati'] = NULL;
-												$latlongval['long'] = NULL;
-											}
-										}
-										if ((count($latlongval) != 0) && ($latlongval['lati'] != NULL) && ($latlongval['long'] != NULL)) {
-											$i++;
-											$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
-											$markers[$i]['fact']	     = 'BIRT';
-											$markers[$i]['fact_label'] = WT_I18N::translate('child');
-											$markers[$i]['class']	     = 'option_boxNN';
-											if (strpos($srec, "\n1 SEX F")!==false) {
-												$markers[$i]['fact']       = 'BIRT';
-												$markers[$i]['fact_label'] = WT_I18N::translate('daughter');
-												$markers[$i]['class']      = 'person_boxF';
-											}
-											if (strpos($srec, "\n1 SEX M")!==false) {
-												$markers[$i]['fact']       = 'BIRT';
-												$markers[$i]['fact_label'] = WT_I18N::translate('son');
-												$markers[$i]['class']      = 'person_box';
-											}
-											$markers[$i]['icon'] = $latlongval['icon'];
-											$markers[$i]['placerec'] = $placerec;
-											if ($GOOGLEMAP_MAX_ZOOM > $latlongval['zoom']) {
-												$GOOGLEMAP_MAX_ZOOM = $latlongval['zoom'];
-											}
-											$markers[$i]['lati'] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval['lati']);
-											$markers[$i]['lng']  = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval['long']);
-											if ($ctd > 0) {
-												$markers[$i]['date'] = $matchd[1];
-											}
-											$markers[$i]['name'] = $smatch[$j][1];
-											$markers[$i]['media'] = $latlongval['media'];
-											$markers[$i]['sv_lati'] = $latlongval['sv_lati'];
-											$markers[$i]['sv_long'] = $latlongval['sv_long'];
-											$markers[$i]['sv_bearing'] = $latlongval['sv_bearing'];
-											$markers[$i]['sv_elevation'] = $latlongval['sv_elevation'];
-											$markers[$i]['sv_zoom'] = $latlongval['sv_zoom'];
-										}
-									}
-								}
+	foreach ($famids as $xref) {
+		$family = WT_Family::getInstance($xref);
+		foreach ($family->getChildren() as $child) {
+			$birth = $child->getFirstFact('BIRT');
+			if ($birth) {
+				$birthrec = $birth->getGedcom();
+				$placerec = $birth->getAttribute('PLAC');
+				if ($placerec) {
+					$ctd = preg_match('/\n2 DATE (.*)/',  $birthrec, $matchd);
+					$ctla = preg_match('/\n4 LATI (.*)/', $birthrec, $match1);
+					$ctlo = preg_match('/\n4 LONG (.*)/', $birthrec, $match2);
+					if (($ctla>0) && ($ctlo>0)) {
+						$i++;
+						$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
+						if ($child->getSex() == 'F') {
+							$markers[$i]['fact']       = 'BIRT';
+							$markers[$i]['fact_label'] = WT_I18N::translate('daughter');
+							$markers[$i]['class']      = 'person_boxF';
+						} elseif ($child->getSex() == 'M') {
+							$markers[$i]['fact']       = 'BIRT';
+							$markers[$i]['fact_label'] = WT_I18N::translate('son');
+							$markers[$i]['class']      = 'person_box';
+						} else {
+							$markers[$i]['fact']       = 'BIRT';
+							$markers[$i]['fact_label'] = WT_I18N::translate('child');
+							$markers[$i]['class']      = 'person_boxNN';
+						}
+						$markers[$i]['placerec'] = $placerec;
+						$match1[1] = trim($match1[1]);
+						$match2[1] = trim($match2[1]);
+						$markers[$i]['lati'] = str_replace(array('N', 'S', ','), array('', '-', '.'), $match1[1]);
+						$markers[$i]['lng'] = str_replace(array('E', 'W', ','), array('', '-', '.'), $match2[1]);
+						if ($ctd > 0) {
+							$markers[$i]['date'] = $matchd[1];
+						}
+						$markers[$i]['name'] = $smatch[$j][1];
+					} else {
+						$latlongval = get_lati_long_placelocation($placerec);
+						if ((count($latlongval) == 0) && (!empty($GM_DEFAULT_TOP_VALUE))) {
+							$latlongval = get_lati_long_placelocation($placerec.', '.$GM_DEFAULT_TOP_VALUE);
+							if ((count($latlongval) != 0) && ($latlongval['level'] == 0)) {
+								$latlongval['lati'] = NULL;
+								$latlongval['long'] = NULL;
 							}
+						}
+						if ((count($latlongval) != 0) && ($latlongval['lati'] != NULL) && ($latlongval['long'] != NULL)) {
+							$i++;
+							$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
+							$markers[$i]['fact']       = 'BIRT';
+							$markers[$i]['fact_label'] = WT_I18N::translate('child');
+							$markers[$i]['class']      = 'option_boxNN';
+							if ($child->getSex() == 'F') {
+								$markers[$i]['fact']       = 'BIRT';
+								$markers[$i]['fact_label'] = WT_I18N::translate('daughter');
+								$markers[$i]['class']      = 'person_boxF';
+							}
+							if ($child->getSex() == 'M') {
+								$markers[$i]['fact']       = 'BIRT';
+								$markers[$i]['fact_label'] = WT_I18N::translate('son');
+								$markers[$i]['class']      = 'person_box';
+							}
+							$markers[$i]['icon'] = $latlongval['icon'];
+							$markers[$i]['placerec'] = $placerec;
+							if ($GOOGLEMAP_MAX_ZOOM > $latlongval['zoom']) {
+								$GOOGLEMAP_MAX_ZOOM = $latlongval['zoom'];
+							}
+							$markers[$i]['lati'] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval['lati']);
+							$markers[$i]['lng']  = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval['long']);
+							if ($ctd > 0) {
+								$markers[$i]['date'] = $matchd[1];
+							}
+							$markers[$i]['name'] = $child->getXref();
+							$markers[$i]['media'] = $latlongval['media'];
+							$markers[$i]['sv_lati'] = $latlongval['sv_lati'];
+							$markers[$i]['sv_long'] = $latlongval['sv_long'];
+							$markers[$i]['sv_bearing'] = $latlongval['sv_bearing'];
+							$markers[$i]['sv_elevation'] = $latlongval['sv_elevation'];
+							$markers[$i]['sv_zoom'] = $latlongval['sv_zoom'];
 						}
 					}
 				}
@@ -441,41 +427,6 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 		echo '</table></div><br>';
 	} // end prepare markers array
 
-	// More V3 api stuff (not displayed now) but will be sorted later
-	?>
-	<table id="s_bar" style="display:none;">
-		<tr>
-			<td valign="top" style="padding-left:5px; width:360px; text-decoration:none; color:#4444ff; background:#aabbd8;">
-				<div id="side_bar"></div>
-			</td>
-			</tr>
-	</table>
-	<table style="display:none;">
-		<tr>
-			<td style="width: 360px; text-align:center;">
-				<form style="width: 360px;" id="form1" action="#">
-					<!-- Event Map:<input 	name= "radio1" type="checkbox" id="theatrebox" onclick="boxclick(this,'theatre')" checked> &nbsp; -->
-					Street View Only:<input name= "radio2" type="checkbox" id="golfbox" onclick="boxclick(this,'golf')"> &nbsp;
-					<!-- Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')"> -->
-
-					<?php
-					// Maybe for later use
-					/*
-					 Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')">
-					<b>Pedigree Map:</b><input id="sel2" name="select" type=radio>
-					&nbsp;&nbsp;
-					Parents: <input type="checkbox" id="parentsbox" onclick="boxclick(this,'gen1')"> &nbsp;&nbsp;
-					Grandparents: <input type="checkbox" id="gparentsbox" onclick="boxclick(this,'gen2')"> &nbsp;&nbsp;
-					Great Grandparents: <input type="checkbox" id="ggparentsbox" onclick="boxclick(this,'gen3')"><br>
-					*/
-					?>
-				</form>
-			</td>
-			<td style="width: 200px;">
-			</td>
-		</tr>
-	</table>
-	<?php
 	echo '<br>';
 	return $i;
-} // end build_indiv_map function
+}
