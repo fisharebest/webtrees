@@ -77,24 +77,26 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		$found = false;
 		foreach ($family->getFacts('HUSB', $access_level) as $fact) {
 			$found |= !$fact->isOld();
-			if ($fact->isNew()) {
-				$class = 'facts_label new';
-			} elseif ($fact->isOld()) {
-				$class = 'facts_label old';
-			} else {
-				$class = 'facts_label';
-			}
 			$person = $fact->getTarget();
-			?>
-			<tr>
-				<td class="<?php echo $class; ?>">
-					<?php echo get_close_relationship_name($controller->record, $person); ?>
-				</td>
-				<td class="<?php echo $controller->getPersonStyle($person); ?>">
-					<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
-				</td>
-			</tr>
-			<?php
+			if ($person instanceof WT_Individual) {
+				if ($fact->isNew()) {
+					$class = 'facts_label new';
+				} elseif ($fact->isOld()) {
+					$class = 'facts_label old';
+				} else {
+					$class = 'facts_label';
+				}
+				?>
+					<tr>
+					<td class="<?php echo $class; ?>">
+						<?php echo get_close_relationship_name($controller->record, $person); ?>
+					</td>
+					<td class="<?php echo $controller->getPersonStyle($person); ?>">
+						<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
+					</td>
+					</tr>
+				<?php
+			}
 		}
 		if (!$found && $family->canEdit()) {
 			?>
@@ -146,25 +148,27 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		///// WIFE /////
 		$found = false;
 		foreach ($family->getFacts('WIFE', $access_level) as $fact) {
-			$found |= !$fact->isOld();
-			if ($fact->isNew()) {
-				$class = 'facts_label new';
-			} elseif ($fact->isOld()) {
-				$class = 'facts_label old';
-			} else {
-				$class = 'facts_label';
-			}
 			$person = $fact->getTarget();
-			?>
-			<tr>
-				<td class="<?php echo $class; ?>">
-					<?php echo get_close_relationship_name($controller->record, $person); ?>
-				</td>
-				<td class="<?php echo $controller->getPersonStyle($person); ?>">
-					<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
-				</td>
-			</tr>
-			<?php
+			if ($person instanceof WT_Individual) {
+				$found |= !$fact->isOld();
+				if ($fact->isNew()) {
+					$class = 'facts_label new';
+				} elseif ($fact->isOld()) {
+					$class = 'facts_label old';
+				} else {
+					$class = 'facts_label';
+				}
+				?>
+				<tr>
+					<td class="<?php echo $class; ?>">
+						<?php echo get_close_relationship_name($controller->record, $person); ?>
+					</td>
+					<td class="<?php echo $controller->getPersonStyle($person); ?>">
+						<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
+					</td>
+				</tr>
+				<?php
+			}
 		}
 		if (!$found && $family->canEdit()) {
 			?>
@@ -177,24 +181,26 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		///// CHIL /////
 		foreach ($family->getFacts('CHIL', $access_level) as $fact) {
-			if ($fact->isNew()) {
-				$class = 'facts_label new';
-			} elseif ($fact->isOld()) {
-				$class = 'facts_label old';
-			} else {
-				$class = 'facts_label';
-			}
 			$person = $fact->getTarget();
-			?>
-			<tr>
-				<td class="<?php echo $class; ?>">
-					<?php echo get_close_relationship_name($controller->record, $person); ?>
-				</td>
-				<td class="<?php echo $controller->getPersonStyle($person); ?>">
-					<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
-				</td>
-			</tr>
-			<?php
+			if ($person instanceof WT_Individual) {
+				if ($fact->isNew()) {
+					$class = 'facts_label new';
+				} elseif ($fact->isOld()) {
+					$class = 'facts_label old';
+				} else {
+					$class = 'facts_label';
+				}
+				?>
+				<tr>
+					<td class="<?php echo $class; ?>">
+						<?php echo get_close_relationship_name($controller->record, $person); ?>
+					</td>
+					<td class="<?php echo $controller->getPersonStyle($person); ?>">
+						<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
+					</td>
+				</tr>
+				<?php
+			}
 		}
 		// Re-order children / add a new child
 		if ($family->canEdit()) {
