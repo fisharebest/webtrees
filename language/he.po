@@ -3,21 +3,20 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-08-18 10:55+0100\n"
-"PO-Revision-Date: 2013-08-04 17:39+0000\n"
-"Last-Translator: meliza <Unknown>\n"
+"PO-Revision-Date: 2013-08-20 18:06+0200\n"
+"Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language-Team: \n"
-"Language: \n"
+"Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:04+0000\n"
-"X-Generator: Launchpad (build 16718)\n"
-"X-Poedit-Language: Hebrew\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -231,7 +230,7 @@ msgstr "%s"
 #: library/WT/Stats.php:4018
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s לפנה״ס"
 
 #. I18N: size of file in KB
 #: admin_media.php:402 library/WT/Media.php:201
@@ -522,7 +521,7 @@ msgstr "ה־19"
 #: library/WT/Stats.php:4041
 msgctxt "CENTURY"
 msgid "1st"
-msgstr "ה1-"
+msgstr "ה־1"
 
 #: library/WT/Stats.php:4022
 msgctxt "CENTURY"
@@ -922,7 +921,7 @@ msgstr "משתמש לא יוכל להתחבר עד שאופציות ”דוא״�
 
 #: help_text.php:1021
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "סימן מים הוא טקסט שמתווסף לתמונה, כדי להרתיע אחרים מהעתקתו ללא רשות."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:113
@@ -1877,7 +1876,7 @@ msgstr "עץ אינטראקטיבי, המציג את האב אבות והצאצ�
 
 #: setup.php:921
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "אירעה שגיאה לא צפויה במסד נתונים."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:95
@@ -2068,7 +2067,7 @@ msgstr "?האם באמת למחוק אדם זה מרשימת המועדפים ש
 
 #: edit_changes.php:217
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "האם אתה בטוח שאתה רוצה לבטל את כל השינויים לאילן יוחסין זה?"
 
 #: library/WT/Stats.php:3756
 msgid "Argentina"
@@ -5484,7 +5483,7 @@ msgstr "הצג סטטיסטיקות של העיבוד"
 #: includes/functions/functions_print.php:256
 #, php-format
 msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB."
-msgstr ""
+msgstr "זמן עיבוד: %1$s שניות. שאילתות מאגר נתונים: %2$s. שימוש בזיכרון: %3$s KB."
 
 #. I18N: This message is deleted in webtrees-1.5.0
 #: includes/old_messages.php:33
@@ -6188,7 +6187,7 @@ msgstr "לתצוגה אופטימאלית באינטרנט <b>webtrees</b> מש�
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:422
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "לאתרים עם יותר מעץ משפחה אחד, תציג אפשרות זו רשימה של עצי משפחה בתפריט הראשי, בדפי החיפוש, וכו'"
 
 #: includes/functions/functions_print.php:373
 msgid "For technical support and information contact"
@@ -7150,7 +7149,7 @@ msgstr "מימדי התמונה"
 
 #: admin_trees_config.php:709
 msgid "Images without watermarks"
-msgstr ""
+msgstr "תמונות ללא סימני מים"
 
 #: modules_v3/family_nav/module.php:85
 msgid "Immediate Family"
@@ -7761,7 +7760,7 @@ msgstr "לאוס"
 
 #: setup.php:168
 msgid "Large systems (50000 individuals): 64-128MB, 40-80 seconds"
-msgstr "מערכות גדולות (50000 אנשים): 128-64 מגה-בית ,  80-40 שניות"
+msgstr "מערכות גדולות (50000 אנשים): 128-64 מגה-בית, 80-40 שניות"
 
 #: library/WT/Stats.php:2818 statistics.php:301
 msgid "Largest families"
@@ -8001,7 +8000,7 @@ msgstr "אנשים חיים"
 
 #: admin.php:80
 msgid "Load all your family trees from disk, by using the \"import\" function for each one."
-msgstr "טען את כל עצי המשפחה שלך מדיסק, באמצעות פונקצית \\\"ייבא\\\" לכל אחד."
+msgstr "טען את כל עצי המשפחה שלך מדיסק, באמצעות פונקצית \"ייבא\" לכל אחד."
 
 #: import.php:77
 #, php-format
@@ -8472,11 +8471,11 @@ msgstr "מרטיניק"
 #. I18N: verb - pretend to be someone else
 #: admin_masquerade.php:29 themes/_administration/header.php:128
 msgid "Masquerade"
-msgstr ""
+msgstr "התחזות"
 
 #: admin_masquerade.php:46
 msgid "Masquerade as another user"
-msgstr ""
+msgstr "תתחזה למשתמש אחר"
 
 #: modules_v3/batch_update/plugins/search_replace.php:90
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -11536,7 +11535,7 @@ msgstr "חפש והחלף"
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:39
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr ""
+msgstr "חפש והחלף טקסט, באמצעות חיפושים פשוטים או התאמת תבנית מתקדמת."
 
 #: includes/session.php:547
 msgid "Search engine"
@@ -12079,7 +12078,7 @@ msgstr "הצג סמן גיל?"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:943 help_text.php:699
 msgid "Show chart details by default"
-msgstr ""
+msgstr "הצג פרטי תרשים כברירת מחדל"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -12181,7 +12180,7 @@ msgstr "הראה קישור לתרשימים סטטיסטיים?"
 
 #: admin_site_config.php:91 help_text.php:421
 msgid "Show list of family trees"
-msgstr ""
+msgstr "הצג רשימה של עצי משפחה"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -13611,7 +13610,7 @@ msgstr "זה מקרה רגיש. אם מאגר מידע בעל שם זה לא ק�
 #. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:700
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr ""
+msgstr "זוהי ההגדרה הראשונית לאפשרות \"הצג פרטים\" בתרשימים."
 
 #: help_text.php:511
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Family Facts</i> list."
@@ -15032,11 +15031,11 @@ msgstr "סימני מים"
 
 #: help_text.php:1023
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "סימני מים הם אופציונליים ובדרך כלל מוצגים רק למבקרים."
 
 #: help_text.php:1025
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "יצירת סימני מים יכולה להיות איטית לתמונות גדולות. אתרים עסוקים יכולים להעדיף לייצר אותם פעם אחת ולאחסן את התמונה עם סימני המיים בשרת."
 
 #: login.php:356
 #, php-format
@@ -15151,7 +15150,7 @@ msgstr "כאשר האופציה הזו נבחרת, תראה את כל רשומו
 
 #: help_text.php:1410
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr ""
+msgstr "כאשר אפשרות זו נבחרת, webtrees יחשב את הבדלי הגיל בין אחים, ילדים, בני זוג וכו'"
 
 #: help_text.php:927
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
