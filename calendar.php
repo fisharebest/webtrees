@@ -559,7 +559,7 @@ function apply_filter($facts, $filterof, $filtersx) {
 // Format an anniversary display.
 ////////////////////////////////////////////////////////////////////////////////
 function calendar_fact_text(WT_Fact $fact, $show_places) {
-	$text = WT_Gedcom_Tag::getLabel($fact->getTag()).' — '.$fact->getDate()->Display(true, "", array());
+	$text = $fact->getLabel().' — '.$fact->getDate()->Display(true, "", array());
 	if ($fact->anniv) {
 		$text .= ' (' . WT_I18N::translate('%s year anniversary', $fact->anniv) . ')';
 	}

@@ -1740,7 +1740,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$html .= '<td>'.($anniv ? WT_I18N::number($anniv) : '&nbsp;').'</td><td>'.$anniv.'</td>';
 		//-- Event name
 		$html .= '<td class="wrap">';
-		$html .= '<a href="' . $record->getHtmlUrl() . '">' . WT_Gedcom_Tag::getLabel($fact->getTag()) . '</a>';
+		$html .= '<a href="' . $record->getHtmlUrl() . '">' . $fact->getLabel() . '</a>';
 		$html .= '&nbsp;</td>';
 
 		$html .= '</tr>';
@@ -1847,7 +1847,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 			$html .= $record->getSexImage();
 		}
 		$html .= "<br><div class=\"indent\">";
-		$html .= WT_Gedcom_Tag::getLabel($fact->getTag()).' — '.$fact->getDate()->Display(true);
+		$html .= $fact->getLabel().' — '.$fact->getDate()->Display(true);
 		if ($fact->anniv) {
 			$html .= " (" . WT_I18N::translate('%s year anniversary', $fact->anniv).")";
 		}

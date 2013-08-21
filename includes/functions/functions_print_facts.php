@@ -115,30 +115,30 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	case 'FACT':
 		if (WT_Gedcom_Tag::isTag($type)) {
 			// Some users (just Meliza?) use "1 EVEN/2 TYPE BIRT".  Translate the TYPE.
-			$label=WT_Gedcom_Tag::getLabel($type, $label_person);
-			$type=''; // Do not print this again
+			$label = WT_Gedcom_Tag::getLabel($type, $label_person);
+			$type  = ''; // Do not print this again
 		} elseif ($type) {
 			// We don't have a translation for $type - but a custom translation might exist.
-			$label=WT_I18N::translate(htmlspecialchars($type));
-			$type=''; // Do not print this again
+			$label = WT_I18N::translate(htmlspecialchars($type));
+			$type  = ''; // Do not print this again
 		} else {
 			// An unspecified fact/event
-			$label=WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
+			$label = $fact->getLabel();
 		}
 		break;
 	case 'MARR':
 		// This is a hack for a proprietory extension.  Is it still used/needed?
 		$utype = strtoupper($type);
-		if ($utype=='CIVIL' || $utype=='PARTNERS' || $utype=='RELIGIOUS') {
-			$label=WT_Gedcom_Tag::getLabel('MARR_'.$utype, $label_person);
-			$type=''; // Do not print this again
+		if ($utype == 'CIVIL' || $utype == 'PARTNERS' || $utype == 'RELIGIOUS') {
+			$label = WT_Gedcom_Tag::getLabel('MARR_'.$utype, $label_person);
+			$type  = ''; // Do not print this again
 		} else {
-			$label=WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
+			$label = $fact->getLabel();
 		}
 		break;
 	default:
 		// Normal fact/event
-		$label=WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
+		$label = $fact->getLabel();
 		break;
 	}
 
