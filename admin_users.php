@@ -357,7 +357,7 @@ case 'createform':
 			var idNum = fieldIDx.replace("RELATIONSHIP_PATH_LENGTH","");
 			var newIDx = "gedcomid"+idNum;
 			if (jQuery("#"+newIDx).val()=="") {
-				alert("'.addslashes(WT_I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.')).'");
+				alert("'.WT_I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.').'");
 				jQuery(this).val("");
 			}
 		});

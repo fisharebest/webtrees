@@ -548,9 +548,9 @@ if ($action=="filter") {
 				echo '<div class="find-media-thumb">', $media->displayImage(), '</div>';
 				echo '<div class="find-media-details">', $media->getFullName(), '</div>';
 				if (!$embed) {
-					echo '<p><a href="#" dir="auto" onclick="pasteid(\'', addslashes($media->getXref()), '\');">', $media->getFilename(), '</a></p>';
+					echo '<p><a href="#" dir="auto" onclick="pasteid(\'', $media->getXref(), '\');">', $media->getFilename(), '</a></p>';
 				} else {
-					echo '<p><a href="#" dir="auto" onclick="pasteid(\'', $media->getXref(), '\', \'', '\', \'', addslashes($media->getFilename()), '\');">', $media->getFilename(), '</a></p> ';
+					echo '<p><a href="#" dir="auto" onclick="pasteid(\'', $media->getXref(), '\', \'', '\', \'', WT_Filter::escapeJs($media->getFilename()), '\');">', WT_Filter::escapeHtml($media->getFilename()), '</a></p> ';
 				}
 				if ($media->fileExists()) {
 					$imgsize = $media->getImageAttributes();

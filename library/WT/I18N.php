@@ -472,7 +472,7 @@ class WT_I18N {
 			' "sInfoFiltered":   "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",'.
 			' "sInfoPostfix":    "",'.
 			' "sInfoThousands":  "'.$symbols['group'].'",'.
-			' "sLengthMenu":     "'.addslashes($length_menu).'",'.
+			' "sLengthMenu":     "'.WT_Filter::escapeJs($length_menu).'",'.
 			' "sLoadingRecords": "'.WT_I18N::translate('Loading...').'",'.
 			' "sProcessing":     "'.WT_I18N::translate('Loading...').'",'.
 			' "sSearch":         "'.WT_I18N::translate('Filter').'",'.

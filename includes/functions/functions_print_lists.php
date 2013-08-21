@@ -82,7 +82,7 @@ function format_indi_table($datalist, $option='') {
 				"sPaginationType": "full_numbers"
 			});
 	
-			jQuery("div.filtersH_'.$table_id.'").html("'.addslashes(
+			jQuery("div.filtersH_'.$table_id.'").html("'.WT_Filter::escapeJs(
 				'<button type="button" id="SEX_M_'.    $table_id.'" class="ui-state-default SEX_M" title="'.    WT_I18N::translate('Show only males.').'">&nbsp;'.WT_Individual::sexImage('M', 'small').'&nbsp;</button>'.
 				'<button type="button" id="SEX_F_'.    $table_id.'" class="ui-state-default SEX_F" title="'.    WT_I18N::translate('Show only females.').'">&nbsp;'.WT_Individual::sexImage('F', 'small').'&nbsp;</button>'.
 				'<button type="button" id="SEX_U_'.    $table_id.'" class="ui-state-default SEX_U" title="'.    WT_I18N::translate('Show only persons of whom the gender is not known.').'">&nbsp;'.WT_Individual::sexImage('U', 'small').'&nbsp;</button>'.
@@ -97,7 +97,7 @@ function format_indi_table($datalist, $option='') {
 				'<button type="button" id="RESET_'.    $table_id.'" class="ui-state-default RESET" title="'.    WT_I18N::translate('Reset to the list defaults.').'">'.WT_I18N::translate('Reset').'</button>'
 			).'");
 	
-			jQuery("div.filtersF_'.$table_id.'").html("'.addslashes(
+			jQuery("div.filtersF_'.$table_id.'").html("'.WT_Filter::escapeJs(
 				'<button type="button" class="ui-state-default" id="cb_parents_indi_list_table" onclick="jQuery(\'div.parents_indi_list_table_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
 				'<button type="button" class="ui-state-default" id="charts_indi_list_table" onclick="jQuery(\'div.indi_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
@@ -489,7 +489,7 @@ function format_fam_table($datalist, $option='') {
 				"sPaginationType": "full_numbers"
 		   });
 
-			jQuery("div.filtersH_'.$table_id.'").html("'.addslashes(
+			jQuery("div.filtersH_'.$table_id.'").html("'.WT_Filter::escapeJs(
 				'<button type="button" id="DEAT_N_'.    $table_id.'" class="ui-state-default DEAT_N" title="'.    WT_I18N::translate('Show people who are alive or couples where both partners are alive.').'">'.WT_I18N::translate('Both alive').'</button>'.
 				'<button type="button" id="DEAT_W_'.    $table_id.'" class="ui-state-default DEAT_W" title="'.    WT_I18N::translate('Show couples where only the female partner is deceased.').'">'.WT_I18N::translate('Widower').'</button>'.
 				'<button type="button" id="DEAT_H_'.    $table_id.'" class="ui-state-default DEAT_H" title="'.    WT_I18N::translate('Show couples where only the male partner is deceased.').'">'.WT_I18N::translate('Widow').'</button>'.
@@ -504,7 +504,7 @@ function format_fam_table($datalist, $option='') {
 				'<button type="button" id="RESET_'.$table_id.'" class="ui-state-default RESET" title="'.WT_I18N::translate('Reset to the list defaults.').'">'.WT_I18N::translate('Reset').'</button>'
 			).'");
 
-			jQuery("div.filtersF_'.$table_id.'").html("'.addslashes(
+			jQuery("div.filtersF_'.$table_id.'").html("'.WT_Filter::escapeJs(
 				'<button type="button" class="ui-state-default" id="cb_parents_'.$table_id.'" onclick="jQuery(\'div.parents_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
 				'<button type="button" class="ui-state-default" id="charts_fam_list_table" onclick="jQuery(\'div.fam_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'. WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
@@ -978,7 +978,7 @@ function format_sour_table($datalist) {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-source\',xref:\''. $source->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-source\',xref:\''. $source->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
@@ -1079,7 +1079,7 @@ function format_note_table($datalist) {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-note\',xref:\''. $note->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-note\',xref:\''. $note->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
 			$html .= '<td></td>';
 		}
@@ -1171,7 +1171,7 @@ function format_repo_table($repos) {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-repository\',xref:\''. $repo->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-repository\',xref:\''. $repo->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}

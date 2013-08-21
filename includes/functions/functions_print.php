@@ -317,7 +317,7 @@ function whoisonline() {
 		foreach ($loggedusers as $user_id=>$user_name) {
 			$content .= '<div class="logged_in_name">';
 			$content .= WT_Filter::escapeHtml(getUserFullName($user_id) . ' - ' . $user_name);
-			if (WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
+			if (true || WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
 				$content .= ' <a class="icon-email" href="#" onclick="return message(\''.$user_name . '\', \'\', \''.addslashes(urlencode(get_query_url())).'\', \'\');" title="' . WT_I18N::translate('Send Message').'"></a>';
 			}
 			$i++;

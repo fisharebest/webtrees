@@ -240,7 +240,7 @@ $controller
 	// Load Block Description array for use by javascript
 	foreach ($all_blocks as $block_name=>$block) {
 		$controller->addInlineJavascript(
-			'block_descr["'.$block_name.'"] = "'.addslashes($block->getDescription()).'";'
+			'block_descr["'.$block_name.'"] = "'.WT_Filter::escapeJs($block->getDescription()).'";'
 		);
 	}
 	$controller->addInlineJavascript(

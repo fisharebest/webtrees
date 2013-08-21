@@ -285,9 +285,9 @@ case 'load_json':
 				}
 			}
 
-			$conf        = WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($unused_file));
+			$conf        = WT_I18N::translate('Are you sure you want to delete “%s”?', $unused_file);
 			$delete_link =
-				'<p><a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'admin_media.php\',{delete:\'' .addslashes($media_path . $unused_file) . '\',media_folder:\'' . addslashes($media_folder) . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a></p>';
+				'<p><a onclick="if (confirm(\'' . WT_Filter::escapeJs($conf) . '\')) jQuery.post(\'admin_media.php\',{delete:\'' .WT_Filter::escapeJs($media_path . $unused_file) . '\',media_folder:\'' . WT_Filter::escapeJs($media_folder) . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a></p>';
 
 			$aaData[] = array(
 				media_file_info($media_folder, $media_path, $unused_file) . $delete_link,
@@ -432,7 +432,7 @@ function media_object_info(WT_Media $media) {
 			' - ' .
 			'<a onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . $gedcom . '\', \'_blank\', edit_window_specs)" href="#">' . WT_I18N::Translate('Edit') . '</a>' .
 			' - ' .
-			'<a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'action.php\',{action:\'delete-media\',xref:\'' . $xref . '\',ged:\'' . $gedcom . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a>' .
+			'<a onclick="if (confirm(\'' . WT_Filter::escapeJs($conf) . '\')) jQuery.post(\'action.php\',{action:\'delete-media\',xref:\'' . $xref . '\',ged:\'' . $gedcom . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a>' .
 			' - ';
 
 	if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {

@@ -62,7 +62,7 @@ echo '<script>';
 		<?php foreach ($controller->getOtherFields() as $field=>$label) { ?>
 		opt = document.createElement('option');
 		opt.value='<?php echo $field; ?>';
-		opt.text='<?php echo addslashes($label); ?>';
+		opt.text='<?php echo WT_Filter::escapeJs($label); ?>';
 		sel.options.add(opt);
 		<?php } ?>
 		label.appendChild(sel);

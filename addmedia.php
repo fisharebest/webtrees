@@ -546,7 +546,7 @@ if (!$isExternal) {
 			echo '<p class="sub">', WT_I18N::translate('This entry is ignored if you have entered a URL into the file name field.'), '</p>';
 		}
 	} else {
-		echo '<input name="folder" type="hidden" value="', addslashes($folder), '">';
+		echo '<input name="folder" type="hidden" value="', WT_Filter::escapeHtml($folder), '">';
 	}
 	echo '</td></tr>';
 } else {

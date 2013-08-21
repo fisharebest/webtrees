@@ -141,8 +141,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			$needle   = '1 NOTE';
 			$before   = substr($haystack, 0, strpos($haystack, $needle));
 			$after    = substr(strstr($haystack, $needle), strlen($needle));
-			$final    = $before.$needle.$after;
-			$notes    = htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)), ENT_QUOTES);
+			$notes    = print_fact_notes($before . $needle . $after, 1, true, true);
 
 			// Prepare Below Thumbnail  menu ----------------------------------------------------
 			$mtitle = '<div style="max-width:120px;overflow:hidden;text-overflow:ellipsis;">' . $media_list_item['media']->getFullName() . '</div>';
@@ -159,7 +158,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 				if (strpos($media_list_item['media']->getGedcom(), "\n1 NOTE")) {
 					$submenu = new WT_Menu(WT_I18N::translate('View Notes'), '#');
 					// Notes Tooltip ----------------------------------------------------
-					$submenu->addOnclick("modalNotes('". $notes ."','". WT_I18N::translate('View Notes') ."'); return false;");
+					$submenu->addOnclick("modalNotes('". WT_Filter::escapeJs($notes) ."','". WT_I18N::translate('View Notes') ."'); return false;");
 					$submenu->addClass("submenuitem");
 					$menu->addSubMenu($submenu);
 				}
