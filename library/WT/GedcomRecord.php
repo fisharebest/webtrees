@@ -149,8 +149,11 @@ class WT_GedcomRecord {
 		} elseif (preg_match('/^0 (HEAD|TRLR)/', $gedcom.$pending, $match)) {
 			$xref = $match[1];
 			$type = $match[1];
-		} else {
+		} elseif ($gedcom.$pending) {
 			throw new Exception('Unrecognised GEDCOM record: ' . $gedcom);
+		} else {
+			// A record with both pending creation and pending deletion
+			$type = static::RECORD_TYPE;
 		}
 
 		switch($type) {
@@ -176,6 +179,7 @@ class WT_GedcomRecord {
 		case 'TRLR':
 		case 'SUBM':
 		case 'SUBN':
+		case 'UNKNOWN':
 			$record = new WT_GedcomRecord($xref, $gedcom, $pending, $gedcom_id);
 			break;
 		default:
