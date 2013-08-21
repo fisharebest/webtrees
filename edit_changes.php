@@ -129,7 +129,7 @@ $changed_gedcoms=WT_DB::prepare(
 
 if ($changed_gedcoms) {
 	$changes=WT_DB::prepare(
-		"SELECT c.*, u.user_name, u.real_name, g.gedcom_name, IF(new_gedcom='', old_gedcom, new_gedcom) AS gedcom".
+		"SELECT c.*, u.user_name, u.real_name, g.gedcom_name, new_gedcom, old_gedcom".
 		" FROM `##change` c".
 		" JOIN `##user`   u USING (user_id)".
 		" JOIN `##gedcom` g USING (gedcom_id)".
@@ -141,52 +141,66 @@ if ($changed_gedcoms) {
 	$prev_xref=null;
 	$prev_gedcom_id=null;
 	foreach ($changes as $change) {
-		if ($change->xref!=$prev_xref || $change->gedcom_id!=$prev_gedcom_id) {
+		preg_match('/^0 @' . WT_REGEX_XREF . '@ (' . WT_REGEX_TAG . ')/', $change->old_gedcom . $change->new_gedcom, $match);
+		switch ($match[1]) {
+		case 'INDI':
+			$record = new WT_Individual($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			break;
+		case 'FAM':
+			$record = new WT_Family($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			break;
+		case 'SOUR':
+			$record = new WT_Source($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			break;
+		case 'REPO':
+			$record = new WT_Repository($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			break;
+		case 'OBJE':
+			$record = new WT_Media($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			break;
+		case 'NOTE':
+			$record = new WT_Note($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			break;
+		default:
+			$record = new WT_GedcomRecord($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			break;
+		}
+		if ($change->xref != $prev_xref || $change->gedcom_id != $prev_gedcom_id) {
 			if ($prev_xref) {
 				$output.='</table></td></tr>';
 			}
-			$prev_xref     =$change->xref;
-			$prev_gedcom_id=$change->gedcom_id;
-			$output.='<tr><td class="list_value">';
-			$GEDCOM=$change->gedcom_name;
-			$record=WT_GedcomRecord::getInstance($change->xref);
-			if (!$record) {
-				// When a record has been both added and deleted, then
-				// neither the original nor latest version will exist.
-				// This prevents us from displaying it...
-				// This generates a record of some sorts from the last-but-one
-				// version of the record.
-				$record=new WT_GedcomRecord($change->xref, $change->gedcom, null, $change->gedcom_id);
+			$prev_xref      = $change->xref;
+			$prev_gedcom_id = $change->gedcom_id;
+			$output .= '<tr><td class="list_value">';
+			$output .= '<b><a href="#" onclick="return show_diff(\''.$record->getHtmlUrl().'\');"> '.$record->getFullName().'</a></b>';
+			$output .= '<div class="indent">';
+			$output .= '<table class="list_table"><tr>';
+			$output .= '<td class="list_label">' . WT_I18N::translate('Accept')      . '</td>';
+			$output .= '<td class="list_label">' . WT_I18N::translate('Changes')     . '</td>';
+			$output .= '<td class="list_label">' . WT_I18N::translate('User')        . '</td>';
+			$output .= '<td class="list_label">' . WT_I18N::translate('Date')        . '</td>';
+			$output .= '<td class="list_label">' . WT_I18N::translate('Family tree') . '</td>';
+			$output .= '<td class="list_label">' . WT_I18N::translate('Undo')        . '</td>';
+			$output .= '</tr>';
+		}
+		$output .= '<td class="list_value"><a href="edit_changes.php?action=accept&amp;change_id='.$change->change_id.'">'.WT_I18N::translate('Accept').'</a></td>';
+		$output .= '<td class="list_value">';
+		foreach ($record->getFacts() as $fact) {
+			if ($fact->getTag() != 'CHAN') {
+				if ($fact->isNew()) {
+					$output .= '<div class="new">' .$fact->getLabel() . '</div>';
+				} elseif ($fact->isOld()) {
+					$output .= '<div class="old">' .$fact->getLabel() . '</div>';
+				}
 			}
-			$output.='<b>'.$record->getFullName().'</b><br>';
-			$output.='<a href="#" onclick="return show_diff(\''.$record->getHtmlUrl().'\');">'.WT_I18N::translate('View the changes').'</a> | ';
-			$output.='<div class="indent">';
-			$output.=WT_I18N::translate('The following changes were made to this record:').'<br>';
-			$output.='<table class="list_table"><tr>';
-			$output.='<td class="list_label">'.WT_I18N::translate('Accept').'</td>';
-			$output.='<td class="list_label">'.WT_I18N::translate('Type').'</td>';
-			$output.='<td class="list_label">'.WT_I18N::translate('User').'</td>';
-			$output.='<td class="list_label">'.WT_I18N::translate('Date').'</td>';
-			$output.='<td class="list_label">'.WT_I18N::translate('Family tree').'</td>';
-			$output.='<td class="list_label">'.WT_I18N::translate('Undo').'</td>';
-			$output.='</tr>';
 		}
-		$output .= '<td class="list_value"><a href="edit_changes.php?action=accept&amp;ged='.rawurlencode($change->gedcom_name).'&amp;change_id='.$change->change_id.'">'.WT_I18N::translate('Accept').'</a></td>';
-		$output .= '<td class="list_value"><b>';
-		if ($change->old_gedcom=='') {
-			$output.=WT_I18N::translate('Append record');
-		} elseif ($change->new_gedcom=='') {
-			$output.=WT_I18N::translate('Delete record');
-		} else {
-			$output.=WT_I18N::translate('Replace record');
-		}
-		echo '</b></td>';
+		echo '</td>';
 		$output .= "<td class=\"list_value\"><a href=\"#\" onclick=\"return reply('".$change->user_name."', '".WT_I18N::translate('Moderate pending changes')."')\" alt=\"".WT_I18N::translate('Send Message')."\">";
 		$output .= htmlspecialchars($change->real_name);
 		$output .= ' - '.htmlspecialchars($change->user_name).'</a></td>';
 		$output .= '<td class="list_value">'.$change->change_time.'</td>';
 		$output .= '<td class="list_value">'.$change->gedcom_name.'</td>';
-		$output .= '<td class="list_value"><a href="edit_changes.php?action=undo&amp;ged='.rawurlencode($change->gedcom_name).'&amp;change_id='.$change->change_id.'">'.WT_I18N::translate('Undo').'</a></td>';
+		$output .= '<td class="list_value"><a href="edit_changes.php?action=undo&amp;change_id='.$change->change_id.'">'.WT_I18N::translate('Undo').'</a></td>';
 		$output.='</tr>';
 	}
 	$output .= '</table></td></tr></td></tr></table>';
