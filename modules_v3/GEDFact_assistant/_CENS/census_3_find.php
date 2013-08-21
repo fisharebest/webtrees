@@ -167,7 +167,7 @@ if ($action=="filter") {
 			echo "'".(1901-$indi->getbirthyear())."' ,"; // ~age~     - Census Date minus YOB (Preliminary)
 			echo "'".(($indi->getDeathDate()->minJD() + $indi->getDeathDate()->maxJD())/2)."' ,"; // dod       - Date of Death
 			echo "'', "; // occu      - Occupation
-			echo "'".htmlspecialchars($indi->getbirthplace(), ENT_QUOTES)."', "; // birthpl   - Birthplace
+			echo "'".WT_Filter::escapeHtml($indi->getbirthplace())."', "; // birthpl   - Birthplace
 			echo "'".$FBP."', "; // fbirthpl  - Father's Birthplace
 			echo "'".$MBP."', "; // mbirthpl  - Mother's Birthplace
 			echo "'".$chBLDarray."'"; // chilBLD   - Array of Children (name, birthdate, deathdate)

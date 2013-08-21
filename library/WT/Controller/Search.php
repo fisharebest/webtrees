@@ -100,7 +100,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$this->myquery="";
 			} else {
 				$this->query = $_REQUEST["query"];
-				$this->myquery = htmlspecialchars($this->query);
+				$this->myquery = WT_Filter::escapeHtml($this->query);
 			}
 		}
 		if (isset ($_REQUEST["replace"])) {
@@ -159,7 +159,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		}
 		// Set the search result titles for soundex searches
 		if ($this->firstname || $this->lastname || $this->place) {
-			$this->myquery=htmlspecialchars(implode(' ', array($this->firstname, $this->lastname, $this->place)));
+			$this->myquery=WT_Filter::escapeHtml(implode(' ', array($this->firstname, $this->lastname, $this->place)));
 		};
 
 		if (!empty ($_REQUEST["name"])) {

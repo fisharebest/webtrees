@@ -71,7 +71,7 @@ if ($show_all=='yes') {
 	} else	if ($falpha) {
 		$alpha='';
 		$surname='';
-		$legend=WT_I18N::translate('All').', '.htmlspecialchars($falpha).'…';
+		$legend=WT_I18N::translate('All').', '.WT_Filter::escapeHtml($falpha).'…';
 		$url=WT_SCRIPT_NAME.'?show_all=yes&amp;ged='.WT_GEDURL;
 		$show='indi';
 	} else {
@@ -87,7 +87,7 @@ if ($show_all=='yes') {
 	if ($surname=='@N.N.') {
 		$legend=$UNKNOWN_NN;
 	} else {
-		$legend=htmlspecialchars($surname);
+		$legend=WT_Filter::escapeHtml($surname);
 	}
 	$url=WT_SCRIPT_NAME.'?surname='.rawurlencode($surname).'&amp;ged='.WT_GEDURL;
 	switch($falpha) {
@@ -98,7 +98,7 @@ if ($show_all=='yes') {
 		$url.='&amp;falpha='.rawurlencode($falpha).'&amp;ged='.WT_GEDURL;
 		break;
 	default:
-		$legend.=', '.htmlspecialchars($falpha).'…';
+		$legend.=', '.WT_Filter::escapeHtml($falpha).'…';
 		$url.='&amp;falpha='.rawurlencode($falpha).'&amp;ged='.WT_GEDURL;
 		break;
 	}
@@ -115,7 +115,7 @@ if ($show_all=='yes') {
 	$show='indi'; // SURN list makes no sense here
 } elseif ($alpha) {
 	$show_all='no';
-	$legend=htmlspecialchars($alpha).'…';
+	$legend=WT_Filter::escapeHtml($alpha).'…';
 	$url=WT_SCRIPT_NAME.'?alpha='.rawurlencode($alpha).'&amp;ged='.WT_GEDURL;
 	$show=safe_GET('show', array('surn', 'indi'), 'surn');
 } else {
@@ -143,7 +143,7 @@ foreach (WT_Query_Name::surnameAlpha($show_marnm, false, WT_GED_ID) as $letter=>
 		$html=WT_I18N::translate('None');
 		break;
 	default:
-		$html=htmlspecialchars($letter);
+		$html=WT_Filter::escapeHtml($letter);
 		break;
 	}
 	if ($count) {
@@ -230,7 +230,7 @@ if ($show=='indi' || $show=='surn') {
 						$html=$UNKNOWN_PN;
 						break;
 					default:
-						$html=htmlspecialchars($givn_initial);
+						$html=WT_Filter::escapeHtml($givn_initial);
 						break;
 					}
 					if ($count) {

@@ -40,7 +40,7 @@ if (WT_USER_GEDCOM_ID) {
 
 $controller=new WT_Controller_Page();
 if ($surn) {
-	$controller->setPageTitle(/* I18N: %s is a surname */ WT_I18N::translate('Branches of the %s family', htmlspecialchars($surn)));
+	$controller->setPageTitle(/* I18N: %s is a surname */ WT_I18N::translate('Branches of the %s family', WT_Filter::escapeHtml($surn)));
 } else {
 	$controller->setPageTitle(WT_I18N::translate('Branches'));
 }
@@ -56,7 +56,7 @@ $controller
 			<td class="descriptionbox">
 				<?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></td>
 			<td class="optionbox">
-				<input type="text" name="surname" id="SURN" value="<?php echo htmlspecialchars($surn); ?>" dir="auto">
+				<input type="text" name="surname" id="SURN" value="<?php echo WT_Filter::escapeHtml($surn); ?>" dir="auto">
 				<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>">
 				<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
 				<p><?php echo WT_I18N::translate('Phonetic search'); ?></p>

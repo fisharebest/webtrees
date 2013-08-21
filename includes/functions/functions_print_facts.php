@@ -119,7 +119,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			$type  = ''; // Do not print this again
 		} elseif ($type) {
 			// We don't have a translation for $type - but a custom translation might exist.
-			$label = WT_I18N::translate(htmlspecialchars($type));
+			$label = WT_I18N::translate(WT_Filter::escapeHtml($type));
 			$type  = ''; // Do not print this again
 		} else {
 			// An unspecified fact/event
@@ -217,7 +217,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 		echo $fact->getValue();
 		break;
 	case 'AFN':
-		echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getValue()), '" target="new">', htmlspecialchars($fact->getValue()), '</a></div>';
+		echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getValue()), '" target="new">', WT_Filter::escapeHtml($fact->getValue()), '</a></div>';
 		break;
 	case 'ASSO':
 		// we handle this later, in print_asso_rela_record()
@@ -225,11 +225,11 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	case 'EMAIL':
 	case 'EMAI':
 	case '_EMAIL':
-		echo '<div class="field"><a href="mailto:', htmlspecialchars($fact->getValue()), '">', htmlspecialchars($fact->getValue()), '</a></div>';
+		echo '<div class="field"><a href="mailto:', WT_Filter::escapeHtml($fact->getValue()), '">', WT_Filter::escapeHtml($fact->getValue()), '</a></div>';
 		break;
 	case 'FILE':
 		if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-			echo '<div class="field">', htmlspecialchars($fact->getValue()), '</div>';
+			echo '<div class="field">', WT_Filter::escapeHtml($fact->getValue()), '</div>';
 		}
 		break;
 	case 'RESN':
@@ -250,27 +250,27 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			echo '<i class="icon-locked-none"></i> ', WT_I18N::translate('Only managers can edit');
 			break;
 		default:
-			echo htmlspecialchars($fact->getValue());
+			echo WT_Filter::escapeHtml($fact->getValue());
 			break;
 		}
 		echo '</div>';
 		break;
 	case 'PUBL': // Publication details might contain URLs.
-		echo '<div class="field">', expand_urls(htmlspecialchars($fact->getValue())), '</div>';
+		echo '<div class="field">', expand_urls(WT_Filter::escapeHtml($fact->getValue())), '</div>';
 		break;
 	case 'REPO':
 		if (preg_match('/^@('.WT_REGEX_XREF.')@$/', $fact->getValue(), $match)) {
 			print_repository_record($match[1]);
 		} else {
-			echo '<div class="error">', htmlspecialchars($fact->getValue()), '</div>';
+			echo '<div class="error">', WT_Filter::escapeHtml($fact->getValue()), '</div>';
 		}
 		break;
 	case 'URL':
 	case 'WWW':
-		echo '<div class="field"><a href="', htmlspecialchars($fact->getValue()), '">', htmlspecialchars($fact->getValue()), '</a></div>';
+		echo '<div class="field"><a href="', WT_Filter::escapeHtml($fact->getValue()), '">', WT_Filter::escapeHtml($fact->getValue()), '</a></div>';
 		break;
 	case 'TEXT': // 0 SOUR / 1 TEXT
-		echo '<div class="field">', nl2br(htmlspecialchars($fact->getValue()), false), '</div>';
+		echo '<div class="field">', nl2br(WT_Filter::escapeHtml($fact->getValue()), false), '</div>';
 		break;
 	default:
 		// Display the value for all other facts/events
@@ -291,10 +291,10 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 				if ($target) {
 					echo '<div><a href="', $target->getHtmlUrl(), '">', $target->getFullName(), '</a></div>';
 				} else {
-					echo '<div class="error">', htmlspecialchars($fact->getValue()), '</div>';
+					echo '<div class="error">', WT_Filter::escapeHtml($fact->getValue()), '</div>';
 				}
 			} else {
-				echo '<div class="field"><span dir="auto">', htmlspecialchars($fact->getValue()), '</span></div>';
+				echo '<div class="field"><span dir="auto">', WT_Filter::escapeHtml($fact->getValue()), '</span></div>';
 			}
 			break;
 		}
@@ -304,7 +304,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	// Print the type of this fact/event
 	if ($type) {
 		// We don't have a translation for $type - but a custom translation might exist.
-		echo WT_Gedcom_Tag::getLabelValue('TYPE', WT_I18N::translate(htmlspecialchars($type)));
+		echo WT_Gedcom_Tag::getLabelValue('TYPE', WT_I18N::translate(WT_Filter::escapeHtml($type)));
 	}
 
 	// Print the date of this fact/event
@@ -380,7 +380,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			if ($fullname) {
 				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $fullname);
 			} else {
-				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', htmlspecialchars($match[2]));
+				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', WT_Filter::escapeHtml($match[2]));
 			}
 			break;
 		case 'RESN':
@@ -400,7 +400,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 				echo WT_Gedcom_Tag::getLabelValue('RESN', '<i class="icon-resn-locked"></i> '.WT_I18N::translate('Only managers can edit'));
 				break;
 			default:
-				echo WT_Gedcom_Tag::getLabelValue('RESN', htmlspecialchars($match[2]));
+				echo WT_Gedcom_Tag::getLabelValue('RESN', WT_Filter::escapeHtml($match[2]));
 				break;
 			}
 			break;
@@ -422,11 +422,11 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 						$link = '<a href="' .$linked_record->getHtmlUrl()  . '">' . $linked_record->getFullName() . '</a>';
 						echo WT_Gedcom_Tag::getLabelValue($fact->getTag().':'.$match[1], $link);
 					} else {
-						echo WT_Gedcom_Tag::getLabelValue($fact->getTag().':'.$match[1], htmlspecialchars($match[2]));
+						echo WT_Gedcom_Tag::getLabelValue($fact->getTag().':'.$match[1], WT_Filter::escapeHtml($match[2]));
 					}
 				} else {
 					// Non links
-					echo WT_Gedcom_Tag::getLabelValue($fact->getTag().':'.$match[1], htmlspecialchars($match[2]));
+					echo WT_Gedcom_Tag::getLabelValue($fact->getTag().':'.$match[1], WT_Filter::escapeHtml($match[2]));
 				}
 			}
 			break;
@@ -476,7 +476,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 	$ct = preg_match_all("/$level SOUR (.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
 		if (strpos($match[$j][1], '@')===false) {
-			$data .= '<div="fact_SOUR"><span class="label">'.WT_I18N::translate('Source').':</span> <span class="field" dir="auto">'.htmlspecialchars($match[$j][1]).'</span></div>';
+			$data .= '<div="fact_SOUR"><span class="label">'.WT_I18N::translate('Source').':</span> <span class="field" dir="auto">'.WT_Filter::escapeHtml($match[$j][1]).'</span></div>';
 		}
 	}
 	// -- find source for each fact
@@ -918,7 +918,7 @@ function print_main_notes(WT_Fact $fact, $level) {
 					$text = expand_urls($text);
 				}
 			} else {
-				$text = '<span class="error">' . htmlspecialchars($nid) . '</span>';
+				$text = '<span class="error">' . WT_Filter::escapeHtml($nid) . '</span>';
 			}
 		} else {
 			//-- print embedded note records

@@ -344,7 +344,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					$html.= '</div>';
 					$imagemap .= " onclick=\"show_family_box('".$pid.".".$count."', 'relatives'); return false;\"";
 					$imagemap .= " onmouseout=\"family_box_timeout('".$pid.".".$count."'); return false;\"";
-					$imagemap .= " alt=\"".htmlspecialchars(strip_tags($name))."\" title=\"".htmlspecialchars(strip_tags($name))."\">";
+					$imagemap .= " alt=\"".WT_Filter::escapeHtml(strip_tags($name))."\" title=\"".WT_Filter::escapeHtml(strip_tags($name))."\">";
 				}
 				$deg1-=$angle;
 				$deg2-=$angle;

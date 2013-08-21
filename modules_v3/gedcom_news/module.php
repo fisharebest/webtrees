@@ -106,7 +106,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 			}
 			$content .= "<div class=\"news_box\" id=\"article{$news['id']}\">";
-			$content .= "<div class=\"news_title\">".htmlspecialchars($news['title']).'</div>';
+			$content .= "<div class=\"news_title\">".WT_Filter::escapeHtml($news['title']).'</div>';
 			$content .= "<div class=\"news_date\">".format_timestamp($news['date']).'</div>';
 			if ($news["text"]==strip_tags($news["text"])) {
 				// No HTML?

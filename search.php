@@ -174,13 +174,13 @@ echo '<div id="search-page">
 		//========== Phonetic search Form //==========		
 		if ($controller->action == "soundex") {
 			echo '<div class="label">' , WT_I18N::translate('Given name'), '</div>
-				<div class="value"><input tabindex="3" type="text" name="firstname" value="' , htmlspecialchars($controller->firstname), '" autofocus></div>
+				<div class="value"><input tabindex="3" type="text" name="firstname" value="' , WT_Filter::escapeHtml($controller->firstname), '" autofocus></div>
 				<div class="label">' , WT_I18N::translate('Last name'), '</div>
-				<div class="value"><input tabindex="4" type="text" name="lastname" value="' , htmlspecialchars($controller->lastname), '"></div>
+				<div class="value"><input tabindex="4" type="text" name="lastname" value="' , WT_Filter::escapeHtml($controller->lastname), '"></div>
 				<div class="label">' , WT_I18N::translate('Place'), '</div>
-				<div class="value"><input tabindex="5" type="text" name="place2" value="' , htmlspecialchars($controller->place), '"></div>
+				<div class="value"><input tabindex="5" type="text" name="place2" value="' , WT_Filter::escapeHtml($controller->place), '"></div>
 				<div class="label">' , WT_I18N::translate('Year'), '</div>
-				<div class="value"><input tabindex="6" type="text" name="year" value="' , htmlspecialchars($controller->year), '"></div>';
+				<div class="value"><input tabindex="6" type="text" name="year" value="' , WT_Filter::escapeHtml($controller->year), '"></div>';
 			
 			// ---- Soundex type options (Russell, DaitchM) --- 
 			echo '<div class="label">' , WT_I18N::translate('Phonetic algorithm'),  '</div>

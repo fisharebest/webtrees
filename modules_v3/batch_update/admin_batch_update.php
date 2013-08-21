@@ -296,9 +296,9 @@ class batch_update {
 	static function createSubmitButton($text, $xref, $action='', $data='') {
 		return
 			'<input type="submit" value="'.$text.'" onclick="'.
-			'this.form.xref.value=\''.htmlspecialchars($xref).'\';'.
-			'this.form.action.value=\''.htmlspecialchars($action).'\';'.
-			'this.form.data.value=\''.htmlspecialchars($data).'\';'.
+			'this.form.xref.value=\''.WT_Filter::escapeHtml($xref).'\';'.
+			'this.form.action.value=\''.WT_Filter::escapeHtml($action).'\';'.
+			'this.form.data.value=\''.WT_Filter::escapeHtml($data).'\';'.
 			'return true;"'.
 			($xref ? '' : ' disabled').'>';
 	}

@@ -180,8 +180,8 @@ case 'load_json':
 	foreach ($aaData as &$row) {
 		$row[1]=WT_I18N::translate($row[1]);
 		$row[2]='<a href="gedrecord.php?pid='.$row[2].'&ged='.$row[6].'" target="_blank">'.$row[2].'</a>';
-		$row[3]='<pre>'.htmlspecialchars($row[3]).'</pre>';
-		$row[4]='<pre>'.htmlspecialchars($row[4]).'</pre>';
+		$row[3]='<pre>'.WT_Filter::escapeHtml($row[3]).'</pre>';
+		$row[4]='<pre>'.WT_Filter::escapeHtml($row[4]).'</pre>';
 	}
 	
 	// Total filtered/unfiltered rows
@@ -245,20 +245,20 @@ echo
 			'<tr>',
 				'<td colspan="6">',
 					// I18N: %s are both user-input date fields
-					WT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.htmlspecialchars($from).'">', '<input class="log-date" name="to" value="'.htmlspecialchars($to).'">'),
+					WT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.WT_Filter::escapeHtml($from).'">', '<input class="log-date" name="to" value="'.WT_Filter::escapeHtml($to).'">'),
 				'</td>',
 			'</tr><tr>',
 				'<td>',
 					WT_I18N::translate('Status'), '<br>', select_edit_control('type', $statuses, null, $type, ''),
 				'</td>',
 				'<td>',
-					WT_I18N::translate('Record'), '<br><input class="log-filter" name="xref" value="', htmlspecialchars($xref), '"> ',
+					WT_I18N::translate('Record'), '<br><input class="log-filter" name="xref" value="', WT_Filter::escapeHtml($xref), '"> ',
 				'</td>',
 				'<td>',
-					WT_I18N::translate('Old data'), '<br><input class="log-filter" name="oldged" value="', htmlspecialchars($oldged), '"> ',
+					WT_I18N::translate('Old data'), '<br><input class="log-filter" name="oldged" value="', WT_Filter::escapeHtml($oldged), '"> ',
 				'</td>',
 				'<td>',
-					WT_I18N::translate('New data'), '<br><input class="log-filter" name="newged" value="', htmlspecialchars($newged), '"> ',
+					WT_I18N::translate('New data'), '<br><input class="log-filter" name="newged" value="', WT_Filter::escapeHtml($newged), '"> ',
 				'</td>',
 				'<td>',
 					WT_I18N::translate('User'), '<br>', select_edit_control('user', $users_array, '', $user, ''),
@@ -270,7 +270,7 @@ echo
 				'<td colspan="6">',
 					'<input type="submit" value="', WT_I18N::translate('Filter'), '">',
 					'<input type="submit" value="', WT_I18N::translate('Export'), '" onclick="document.changes.action.value=\'export\';return true;" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
-					'<input type="submit" value="', WT_I18N::translate('Delete'), '" onclick="if (confirm(\'', htmlspecialchars(WT_I18N::translate('Permanently delete these records?')) , '\')) {document.changes.action.value=\'delete\';return true;} else {return false;}" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
+					'<input type="submit" value="', WT_I18N::translate('Delete'), '" onclick="if (confirm(\'', WT_Filter::escapeHtml(WT_I18N::translate('Permanently delete these records?')) , '\')) {document.changes.action.value=\'delete\';return true;} else {return false;}" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
 				'</td>',
 			'</tr>',
 		'</table>',

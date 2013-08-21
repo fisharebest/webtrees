@@ -96,12 +96,12 @@ class search_replace_bu_plugin extends base_plugin {
 		return
 			'<tr><th>'.WT_I18N::translate('Search text/pattern').'</th>'.
 			'<td>'.
-			'<input name="search" size="40" value="'.htmlspecialchars($this->search).
+			'<input name="search" size="40" value="'.WT_Filter::escapeHtml($this->search).
 			'" onchange="this.form.submit();"></td></tr>'.
 
 			'<tr><th>'.WT_I18N::translate('Replacement text').'</th>'.
 			'<td>'.
-			'<input name="replace" size="40" value="'.htmlspecialchars($this->replace).
+			'<input name="replace" size="40" value="'.WT_Filter::escapeHtml($this->replace).
 			'" onchange="this.form.submit();"></td></tr>'.
 
 			'<tr><th>'.WT_I18N::translate('Search method').'</th>'.

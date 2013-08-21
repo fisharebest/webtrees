@@ -72,7 +72,7 @@ case 'compose':
 		$oCKeditor->config['DefaultLanguage'] = 'en';
 		$oCKeditor->editor('text', $news['text']);
 	} else { //use standard textarea
-		echo '<textarea name="text" cols="80" rows="10" dir="auto">'.htmlspecialchars($news['text']).'</textarea>';
+		echo '<textarea name="text" cols="80" rows="10" dir="auto">'.WT_Filter::escapeHtml($news['text']).'</textarea>';
 	}
 	echo '</td></tr>';
 	echo '<tr><td><input type="submit" value="'.WT_I18N::translate('save').'"></td></tr>';

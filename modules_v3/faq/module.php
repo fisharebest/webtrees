@@ -163,11 +163,11 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			echo '<table id="faq_module">';
 			echo '<tr><th>';
 			echo WT_I18N::translate('Question');
-			echo '</th></tr><tr><td><input type="text" name="header" size="90" tabindex="1" value="'.htmlspecialchars($header).'"></td></tr>';
+			echo '</th></tr><tr><td><input type="text" name="header" size="90" tabindex="1" value="'.WT_Filter::escapeHtml($header).'"></td></tr>';
 			echo '<tr><th>';
 			echo WT_I18N::translate('Answer');
 			echo '</th></tr><tr><td>';
-			echo '<textarea name="faqbody" class="html-edit" rows="10" cols="90" tabindex="2">', htmlspecialchars($faqbody), '</textarea>';
+			echo '<textarea name="faqbody" class="html-edit" rows="10" cols="90" tabindex="2">', WT_Filter::escapeHtml($faqbody), '</textarea>';
 			echo '</td></tr>';
 			echo '</table><table id="faq_module2">';
 			echo '<tr>';

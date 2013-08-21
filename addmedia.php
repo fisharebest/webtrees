@@ -503,14 +503,14 @@ if ($gedfile == 'FILE') {
 	echo '</td>';
 	echo '<td class="optionbox wrap wrap">';
 	if (WT_USER_GEDCOM_ADMIN) {
-		echo '<input name="filename" type="text" value="' . htmlspecialchars($fileName) . '" size="40"';
+		echo '<input name="filename" type="text" value="' . WT_Filter::escapeHtml($fileName) . '" size="40"';
 		if ($isExternal)
 			echo '>';
 		else
 			echo '><p class="sub">' . WT_I18N::translate('Do not change to keep original file name.') . '</p>';
 	} else {
 		echo $fileName;
-		echo '<input name="filename" type="hidden" value="' . htmlspecialchars($fileName) . '" size="40">';
+		echo '<input name="filename" type="hidden" value="' . WT_Filter::escapeHtml($fileName) . '" size="40">';
 	}
 	echo '</td>';
 	echo '</tr>';

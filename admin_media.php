@@ -281,7 +281,7 @@ case 'load_json':
 			if (!$exists_pending) {
 				foreach ($media_trees as $media_tree) {
 					$create_form .=
-						'<p><a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode(basename($unused_file)) . '&amp;folder=' . rawurlencode(dirname($unused_file)) . '\', \'_blank\', edit_window_specs); return false;">' .  WT_I18N::translate('Create') . '</a> — ' . htmlspecialchars($media_tree) . '<p>';
+						'<p><a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode(basename($unused_file)) . '&amp;folder=' . rawurlencode(dirname($unused_file)) . '\', \'_blank\', edit_window_specs); return false;">' .  WT_I18N::translate('Create') . '</a> — ' . WT_Filter::escapeHtml($media_tree) . '<p>';
 				}
 			}
 
@@ -392,7 +392,7 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 }
 
 function media_file_info($media_folder, $media_path, $file) {
-	$html = '<b>' . htmlspecialchars($file). '</b>';
+	$html = '<b>' . WT_Filter::escapeHtml($file). '</b>';
 
 	$full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
 	if ($file && file_exists($full_path)) {
@@ -424,7 +424,7 @@ function media_object_info(WT_Media $media) {
 
 	$html   =
 		'<b>' . $name . '</b>' .
-		'<div><i>' . htmlspecialchars($media->getNote()) . '</i></div>' .
+		'<div><i>' . WT_Filter::escapeHtml($media->getNote()) . '</i></div>' .
 		'<br>' .
 		'<a href="' . $media->getHtmlUrl() . '">' . WT_I18N::translate('View') . '</a>';
 
@@ -558,13 +558,13 @@ $controller
 						if (count($media_folders)>1) {
 							echo '&nbsp;', select_edit_control('media_folder', $media_folders, null, $media_folder, $extra);
 						} else {
-							echo $media_folder, '<input type="hidden" name="media_folder" value="', htmlspecialchars($media_folder), '">';
+							echo $media_folder, '<input type="hidden" name="media_folder" value="', WT_Filter::escapeHtml($media_folder), '">';
 						}
 						// Don’t show a list of subfolders if it just contains one subfolder
 						if (count($media_paths)>1) {
 							echo '&nbsp;', select_edit_control('media_path', $media_paths, null, $media_path, $extra);
 						} else {
-							echo $media_path, '<input type="hidden" name="media_path" value="', htmlspecialchars($media_path), '">';
+							echo $media_path, '<input type="hidden" name="media_path" value="', WT_Filter::escapeHtml($media_path), '">';
 						}
 						echo
 							'</span>',
@@ -578,8 +578,8 @@ $controller
 						break;
 					case 'external':
 						echo WT_I18N::translate('External media files have a URL instead of a filename.');
-						echo '<input type="hidden" name="media_folder" value="', htmlspecialchars($media_folder), '">';
-						echo '<input type="hidden" name="media_path" value="',   htmlspecialchars($media_path),   '">';
+						echo '<input type="hidden" name="media_folder" value="', WT_Filter::escapeHtml($media_folder), '">';
+						echo '<input type="hidden" name="media_path" value="',   WT_Filter::escapeHtml($media_path),   '">';
 						break;
 					}
 				?>

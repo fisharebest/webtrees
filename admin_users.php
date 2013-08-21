@@ -167,7 +167,7 @@ case 'loadrows':
 		$aData[12]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified_by_admin-', $aData[12]);
 		// Add extra column for "delete" action
 		if ($user_id != WT_USER_ID) {
-			$aData[13]='<div class="icon-delete" onclick="if (confirm(\''.htmlspecialchars(WT_I18N::translate('Are you sure you want to delete “%s”?', $user_name)).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=deleteuser&username='.htmlspecialchars($user_name).'\'; }"></div>';
+			$aData[13]='<div class="icon-delete" onclick="if (confirm(\''.WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs($user_name)).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=deleteuser&username='.WT_Filter::escapeUrl($user_name).'\'; }"></div>';
 		} else {
 			// Do not delete ourself!
 			$aData[13]='';
@@ -368,30 +368,30 @@ case 'createform':
 		<table id="adduser">
 			<tr>
 				<td>', WT_I18N::translate('Real name'), help_link('real_name'), '</td>
-				<td><input type="text" name="realname" style="width:95%;" required maxlength="64" value="', htmlspecialchars($realname), '" autofocus></td>
+				<td><input type="text" name="realname" style="width:95%;" required maxlength="64" value="', WT_Filter::escapeHtml($realname), '" autofocus></td>
 				<td>', WT_I18N::translate('Administrator'), help_link('role'), '</td>
 				<td><input type="checkbox" name="canadmin" value="1"></td>
 			</tr>
 			<tr>
 				<td>', WT_I18N::translate('Username'), help_link('username'), '</td>
-				<td><input type="text" name="username" style="width:95%;" required maxlength="32" value="', htmlspecialchars($username), '"></td>
+				<td><input type="text" name="username" style="width:95%;" required maxlength="32" value="', WT_Filter::escapeHtml($username), '"></td>
 				<td>', WT_I18N::translate('Approved by administrator'), help_link('useradmin_verification'), '</td>
 				<td><input type="checkbox" name="verified_by_admin" value="1" checked="checked"></td>
 			</tr>
 			<tr>
 				<td>', WT_I18N::translate('Email address'), help_link('email'), '</td>
-				<td><input type="email" name="emailaddress" style="width:95%;" required maxlength="64" value="', htmlspecialchars($emailaddress), '"></td>
+				<td><input type="email" name="emailaddress" style="width:95%;" required maxlength="64" value="', WT_Filter::escapeHtml($emailaddress), '"></td>
 				<td>', WT_I18N::translate('Email verified'), help_link('useradmin_verification'), '</td>
 				<td><input type="checkbox" name="verified" value="1" checked="checked"></td>
 			</tr>
 			<tr>
 				<td>', WT_I18N::translate('Password'), help_link('password'), '</td>
-				<td><input type="password" name="pass1" style="width:95%;" value="', htmlspecialchars($pass1), '" required placeholder="',  WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)), '" pattern="', WT_REGEX_PASSWORD, '" onchange="form.user_password02.pattern = regex_quote(this.value);"></td>
+				<td><input type="password" name="pass1" style="width:95%;" value="', WT_Filter::escapeHtml($pass1), '" required placeholder="',  WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)), '" pattern="', WT_REGEX_PASSWORD, '" onchange="form.user_password02.pattern = regex_quote(this.value);"></td>
 				<td>', WT_I18N::translate('Automatically approve changes made by this user'), help_link('useradmin_auto_accept'), '</td>
 				<td><input type="checkbox" name="new_auto_accept" value="1"></td>
 			</tr>
 				<td>', WT_I18N::translate('Confirm password'), help_link('password_confirm'), '</td>
-				<td><input type="password" name="pass2" style="width:95%;" value="', htmlspecialchars($pass2), '" required placeholder="', WT_I18N::translate('Type the password again.'), '" pattern="', WT_REGEX_PASSWORD, '"></td>
+				<td><input type="password" name="pass2" style="width:95%;" value="', WT_Filter::escapeHtml($pass2), '" required placeholder="', WT_I18N::translate('Type the password again.'), '" pattern="', WT_REGEX_PASSWORD, '"></td>
 				<td>', WT_I18N::translate('Allow this user to edit his account information'), help_link('useradmin_editaccount'), '</td>
 				<td><input type="checkbox" name="editaccount" value="1" checked="checked"></td>
 			<tr>
@@ -411,7 +411,7 @@ case 'createform':
 					echo '<td>', WT_I18N::translate('Theme'), help_link('THEME'), '</td>
 					<td>
 						<select name="new_user_theme">
-						<option value="" selected="selected">', htmlspecialchars(WT_I18N::translate('<default theme>')), '</option>';
+						<option value="" selected="selected">', WT_Filter::escapeHtml(WT_I18N::translate('<default theme>')), '</option>';
 							foreach (get_theme_names() as $themename=>$themedir) {
 								echo '<option value="', $themedir, '">', $themename, '</option>';
 							}
@@ -422,7 +422,7 @@ case 'createform':
 			if (WT_USER_IS_ADMIN) {
 			echo '<tr>
 				<td>', WT_I18N::translate('Admin comments on user'), '</td>
-				<td colspan="3"><textarea style="width:95%;" rows="5" name="new_comment" value="', htmlspecialchars($new_comment), '"></textarea></td>
+				<td colspan="3"><textarea style="width:95%;" rows="5" name="new_comment" value="', WT_Filter::escapeHtml($new_comment), '"></textarea></td>
 			</tr>';
 			}
 			echo '<tr>
@@ -444,12 +444,12 @@ case 'createform':
 									//Pedigree root person
 									'<td>';
 										$varname='rootid'.$tree->tree_id;
-										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="', htmlspecialchars(safe_POST_xref('gedcomid'.$tree->tree_id)), '"> ', print_findindi_link($varname),
+										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="', WT_Filter::escapeHtml(safe_POST_xref('gedcomid'.$tree->tree_id)), '"> ', print_findindi_link($varname),
 									'</td>',						
 									// GEDCOM INDI Record ID
 									'<td>';
 										$varname='gedcomid'.$tree->tree_id;
-										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="', htmlspecialchars(safe_POST_xref('rootid'.$tree->tree_id)), '"> ', print_findindi_link($varname),
+										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="', WT_Filter::escapeHtml(safe_POST_xref('rootid'.$tree->tree_id)), '"> ', print_findindi_link($varname),
 									'</td>',
 									'<td>';
 										$varname='canedit'.$tree->tree_id;

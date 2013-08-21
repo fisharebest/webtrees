@@ -841,7 +841,7 @@ class WT_Gedcom_Tag {
 				return self::getLabel($tag, $record);
 			}
 			// Still no translation? Highlight this as an error
-			return '<span class="error" title="'.WT_I18N::translate('Unrecognized GEDCOM Code').'">'.htmlspecialchars($tag).'</span>';
+			return '<span class="error" title="'.WT_I18N::translate('Unrecognized GEDCOM Code').'">'.WT_Filter::escapeHtml($tag).'</span>';
 		}
 	}
 

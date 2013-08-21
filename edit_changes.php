@@ -196,8 +196,8 @@ if ($changed_gedcoms) {
 		}
 		echo '</td>';
 		$output .= "<td class=\"list_value\"><a href=\"#\" onclick=\"return reply('".$change->user_name."', '".WT_I18N::translate('Moderate pending changes')."')\" alt=\"".WT_I18N::translate('Send Message')."\">";
-		$output .= htmlspecialchars($change->real_name);
-		$output .= ' - '.htmlspecialchars($change->user_name).'</a></td>';
+		$output .= WT_Filter::escapeHtml($change->real_name);
+		$output .= ' - '.WT_Filter::escapeHtml($change->user_name).'</a></td>';
 		$output .= '<td class="list_value">'.$change->change_time.'</td>';
 		$output .= '<td class="list_value">'.$change->gedcom_name.'</td>';
 		$output .= '<td class="list_value"><a href="edit_changes.php?action=undo&amp;change_id='.$change->change_id.'">'.WT_I18N::translate('Undo').'</a></td>';

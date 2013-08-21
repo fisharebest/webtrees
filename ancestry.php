@@ -53,7 +53,7 @@ $controller
 					<?php echo WT_I18N::translate('Box width'); ?>
 				</td>
 				<td class="optionbox">
-					<input type="text" size="3" name="box_width" value="<?php echo htmlspecialchars($box_width); ?>"> <b>%</b>
+					<input type="text" size="3" name="box_width" value="<?php echo WT_Filter::escapeHtml($box_width); ?>"> <b>%</b>
 				</td>
 				<td rowspan="2" class="descriptionbox">
 					<?php echo WT_I18N::translate('Layout'); ?>

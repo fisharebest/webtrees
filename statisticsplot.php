@@ -656,7 +656,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	// in PHP 5.3.0 we can use
 	//$title = strstr($mytitle, '|', true);
 	$title = substr($mytitle, 0, strpos($mytitle, '|'));
-	echo '<img src="', $imgurl, '" width="950" height="300" alt="', htmlspecialchars($title), '" title="', htmlspecialchars($title), '">';
+	echo '<img src="', $imgurl, '" width="950" height="300" alt="', WT_Filter::escapeHtml($title), '" title="', WT_Filter::escapeHtml($title), '">';
 }
 
 function calc_axis($xas_grenzen) {

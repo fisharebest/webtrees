@@ -41,7 +41,7 @@ define('WT_PRIV_USER',   1);
 define('WT_PRIV_NONE',   0);
 define('WT_PRIV_HIDE',  -1);
 
-if (file_exists(WT_DATA_DIR.WT_CONFIG_FILE)) {
+if (file_exists(WT_DATA_DIR . WT_CONFIG_FILE)) {
 	header('Location: index.php');
 	exit;
 }
@@ -253,19 +253,19 @@ if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 		'<fieldset><legend>', WT_I18N::translate('Database connection'), '</legend>',
 		'<table border="0"><tr><td>',
 		WT_I18N::translate('Server name'), '</td><td>',
-		'<input type="text" name="dbhost" value="', htmlspecialchars($_POST['dbhost']), '" dir="ltr"></td><td>',
+		'<input type="text" name="dbhost" value="', WT_Filter::escapeHtml($_POST['dbhost']), '" dir="ltr"></td><td>',
 		WT_I18N::translate('Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Port number'), '</td><td>',
-		'<input type="text" name="dbport" value="', htmlspecialchars($_POST['dbport']), '"></td><td>',
+		'<input type="text" name="dbport" value="', WT_Filter::escapeHtml($_POST['dbport']), '"></td><td>',
 		WT_I18N::translate('Most sites are configured to use the default value of 3306.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Database user account'), '</td><td>',
-		'<input type="text" name="dbuser" value="', htmlspecialchars($_POST['dbuser']), '" autofocus></td><td>',
+		'<input type="text" name="dbuser" value="', WT_Filter::escapeHtml($_POST['dbuser']), '" autofocus></td><td>',
 		WT_I18N::translate('This is case sensitive.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Database password'), '</td><td>',
-		'<input type="password" name="dbpass" value="', htmlspecialchars($_POST['dbpass']), '"></td><td>',
+		'<input type="password" name="dbpass" value="', WT_Filter::escapeHtml($_POST['dbpass']), '"></td><td>',
 		WT_I18N::translate('This is case sensitive.'),
 		'</td></tr><tr><td>',
 		'</td></tr></table>',
@@ -276,10 +276,10 @@ if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 		exit;
 } else {
 	// Copy these values through to the next step
-	echo '<input type="hidden" name="dbhost" value="', htmlspecialchars($_POST['dbhost']), '">';
-	echo '<input type="hidden" name="dbport" value="', htmlspecialchars($_POST['dbport']), '">';
-	echo '<input type="hidden" name="dbuser" value="', htmlspecialchars($_POST['dbuser']), '">';
-	echo '<input type="hidden" name="dbpass" value="', htmlspecialchars($_POST['dbpass']), '">';
+	echo '<input type="hidden" name="dbhost" value="', WT_Filter::escapeHtml($_POST['dbhost']), '">';
+	echo '<input type="hidden" name="dbport" value="', WT_Filter::escapeHtml($_POST['dbport']), '">';
+	echo '<input type="hidden" name="dbuser" value="', WT_Filter::escapeHtml($_POST['dbuser']), '">';
+	echo '<input type="hidden" name="dbpass" value="', WT_Filter::escapeHtml($_POST['dbpass']), '">';
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -347,11 +347,11 @@ if (!$dbname_ok) {
 		'<fieldset><legend>', WT_I18N::translate('Database name'), '</legend>',
 		'<table border="0"><tr><td>',
 		WT_I18N::translate('Database name'), '</td><td>',
-		'<input type="text" name="dbname" value="', htmlspecialchars($_POST['dbname']), '" autofocus></td><td>',
+		'<input type="text" name="dbname" value="', WT_Filter::escapeHtml($_POST['dbname']), '" autofocus></td><td>',
 		WT_I18N::translate('This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Table prefix'), '</td><td>',
-		'<input type="text" name="tblpfx" value="', htmlspecialchars($_POST['tblpfx']), '"></td><td>',
+		'<input type="text" name="tblpfx" value="', WT_Filter::escapeHtml($_POST['tblpfx']), '"></td><td>',
 		WT_I18N::translate('The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. "wt_" is suggested, but can be anything you want.'),
 		'</td></tr></table>',
 		'</fieldset>',
@@ -361,8 +361,8 @@ if (!$dbname_ok) {
 		exit;
 } else {
 	// Copy these values through to the next step
-	echo '<input type="hidden" name="dbname" value="', htmlspecialchars($_POST['dbname']), '">';
-	echo '<input type="hidden" name="tblpfx" value="', htmlspecialchars($_POST['tblpfx']), '">';
+	echo '<input type="hidden" name="dbname" value="', WT_Filter::escapeHtml($_POST['dbname']), '">';
+	echo '<input type="hidden" name="tblpfx" value="', WT_Filter::escapeHtml($_POST['tblpfx']), '">';
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -390,23 +390,23 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'<fieldset><legend>', WT_I18N::translate('Administrator account'), '</legend>',
 		'<table border="0"><tr><td>',
 		WT_I18N::translate('Your name'), '</td><td>',
-		'<input type="text" name="wtname" value="', htmlspecialchars($_POST['wtname']), '" autofocus></td><td>',
+		'<input type="text" name="wtname" value="', WT_Filter::escapeHtml($_POST['wtname']), '" autofocus></td><td>',
 		WT_I18N::translate('This is your real name, as you would like it displayed on screen.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Login ID'), '</td><td>',
-		'<input type="text" name="wtuser" value="', htmlspecialchars($_POST['wtuser']), '"></td><td>',
+		'<input type="text" name="wtuser" value="', WT_Filter::escapeHtml($_POST['wtuser']), '"></td><td>',
 		WT_I18N::translate('You will use this to login to webtrees.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Password'), '</td><td>',
-		'<input type="password" name="wtpass" value="', htmlspecialchars($_POST['wtpass']), '"></td><td>',
+		'<input type="password" name="wtpass" value="', WT_Filter::escapeHtml($_POST['wtpass']), '"></td><td>',
 		WT_I18N::translate('This must to be at least six characters.  It is case-sensitive.'),
 		'</td></tr><tr><td>',
 		'&nbsp;', '</td><td>',
-		'<input type="password" name="wtpass2" value="', htmlspecialchars($_POST['wtpass2']), '"></td><td>',
+		'<input type="password" name="wtpass2" value="', WT_Filter::escapeHtml($_POST['wtpass2']), '"></td><td>',
 		WT_I18N::translate('Type your password again, to make sure you have typed it correctly.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Email address'), '</td><td>',
-		'<input type="email" name="wtemail" value="', htmlspecialchars($_POST['wtemail']), '"></td><td>',
+		'<input type="email" name="wtemail" value="', WT_Filter::escapeHtml($_POST['wtemail']), '"></td><td>',
 		WT_I18N::translate('This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site.'),
 		'</td></tr><tr><td>',
 		'</td></tr></table>',
@@ -417,11 +417,11 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		exit;
 } else {
 	// Copy these values through to the next step
-	echo '<input type="hidden" name="wtname"     value="'.htmlspecialchars($_POST['wtname']).'">';
-	echo '<input type="hidden" name="wtuser"     value="'.htmlspecialchars($_POST['wtuser']).'">';
-	echo '<input type="hidden" name="wtpass"     value="'.htmlspecialchars($_POST['wtpass']).'">';
-	echo '<input type="hidden" name="wtpass2"    value="'.htmlspecialchars($_POST['wtpass2']).'">';
-	echo '<input type="hidden" name="wtemail"    value="'.htmlspecialchars($_POST['wtemail']).'">';
+	echo '<input type="hidden" name="wtname"     value="', WT_Filter::escapeHtml($_POST['wtname']), '">';
+	echo '<input type="hidden" name="wtuser"     value="', WT_Filter::escapeHtml($_POST['wtuser']), '">';
+	echo '<input type="hidden" name="wtpass"     value="', WT_Filter::escapeHtml($_POST['wtpass']), '">';
+	echo '<input type="hidden" name="wtpass2"    value="', WT_Filter::escapeHtml($_POST['wtpass2']), '">';
+	echo '<input type="hidden" name="wtemail"    value="', WT_Filter::escapeHtml($_POST['wtemail']), '">';
 }
 
 ////////////////////////////////////////////////////////////////////////////////

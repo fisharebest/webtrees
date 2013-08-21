@@ -162,7 +162,7 @@ echo '<div id="edituser-page">
 		<div class="label">', WT_I18N::translate('Theme'), help_link('THEME'), '</div>
 		<div class="value">
 			<select name="form_theme">
-			<option value="">', htmlspecialchars(/* I18N: default option in list of themes */ WT_I18N::translate('<default theme>')), '</option>';
+			<option value="">', WT_Filter::escapeHtml(/* I18N: default option in list of themes */ WT_I18N::translate('<default theme>')), '</option>';
 			foreach (get_theme_names() as $themename=>$themedir) {
 				echo '<option value="', $themedir, '"';
 				if ($themedir==get_user_setting(WT_USER_ID, 'theme')) {

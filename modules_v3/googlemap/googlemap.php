@@ -41,7 +41,7 @@ function print_fact_place_map($factrec) {
 			$ppart = preg_replace("/amp\%3B/", "", trim($ppart));
 			$retStr .= "&amp;parent[$pindex]=".$ppart;
 		}
-		$retStr .= '"> '.htmlspecialchars($place).'</a>';
+		$retStr .= '"> '.WT_Filter::escapeHtml($place).'</a>';
 		return $retStr;
 	}
 	return '';

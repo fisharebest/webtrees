@@ -109,7 +109,7 @@ case 'load_rules':
 			'robot'=>/* I18N: http://en.wikipedia.org/wiki/Web_crawler */  WT_I18N::translate('robot'),
 		), null, $row[5]);
 		$row[6]=edit_field_inline('site_access_rule-comment-'.$site_access_rule_id, $row[6]);
-		$row[7]='<i class="icon-delete" onclick="if (confirm(\''.htmlspecialchars(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($user_agent))).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=delete&amp;site_access_rule_id='.$site_access_rule_id.'\'; }"></i>';
+		$row[7]='<i class="icon-delete" onclick="if (confirm(\''.WT_Filter::escapeHtml(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($user_agent))).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=delete&amp;site_access_rule_id='.$site_access_rule_id.'\'; }"></i>';
 	}
 
 	// Total filtered rows

@@ -415,7 +415,7 @@ class WT_Media extends WT_GedcomRecord {
 			' href="'           . $this->getHtmlUrlDirect('main')    . '"' .
 			' type="'           . $this->mimeType()                  . '"' .
 			' data-obje-url="'  . $this->getHtmlUrl()                . '"' .
-			' data-obje-note="' . htmlspecialchars($this->getNote()) . '"' .
+			' data-obje-note="' . WT_Filter::escapeHtml($this->getNote()) . '"' .
 			' data-title="'     . strip_tags($this->getFullName())   . '"' .
 			'>' . $image . '</a>';
 	}

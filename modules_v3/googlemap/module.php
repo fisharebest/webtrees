@@ -1493,12 +1493,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							$rows=WT_DB::prepare("SELECT pl_id, pl_place FROM `##placelocation` WHERE pl_level=0 ORDER BY pl_place")
 								->fetchAssoc();
 							foreach ($rows as $id=>$place) {
-								echo '<option value="', htmlspecialchars($place), '"';
+								echo '<option value="', WT_Filter::escapeHtml($place), '"';
 								if ($place==$country) {
 									echo ' selected="selected"';
 									$par_id=$id;
 								}
-								echo '>', htmlspecialchars($place), '</option>';
+								echo '>', WT_Filter::escapeHtml($place), '</option>';
 							}
 					echo '</select>';
 					if ($country!='XYZ') {
@@ -1510,7 +1510,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 									->execute(array($par_id))
 									->fetchOneColumn();
 								foreach ($places as $place) {
-									echo '<option value="', htmlspecialchars($place), '"', $place==$state?' selected="selected"':'', '>', htmlspecialchars($place), '</option>';
+									echo '<option value="', WT_Filter::escapeHtml($place), '"', $place==$state?' selected="selected"':'', '>', WT_Filter::escapeHtml($place), '</option>';
 								}
 								echo '</select>';
 							}

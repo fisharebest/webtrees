@@ -116,7 +116,7 @@ class WT_DB {
 					unset($trace[$n]);
 				}
 			}
-			$stack='<abbr title="'.htmlspecialchars(implode(" / ", $trace)).'">'.(count(self::$log)+1).'</abbr>';
+			$stack='<abbr title="'.WT_Filter::escapeHtml(implode(" / ", $trace)).'">'.(count(self::$log)+1).'</abbr>';
 			// Bind variables
 			$query2='';
 			foreach ($bind_variables as $key=>$value) {
@@ -124,9 +124,9 @@ class WT_DB {
 					$bind_variables[$key]='[NULL]';
 				}
 			}
-			foreach (str_split(htmlspecialchars($query)) as $char) {
+			foreach (str_split(WT_Filter::escapeHtml($query)) as $char) {
 				if ($char=='?') {
-					$query2.='<abbr title="'.htmlspecialchars(array_shift($bind_variables)).'">'.$char.'</abbr>';
+					$query2.='<abbr title="'.WT_Filter::escapeHtml(array_shift($bind_variables)).'">'.$char.'</abbr>';
 				} else {
 					$query2.=$char;
 				}

@@ -91,7 +91,7 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 				->execute(array($mediaid, WT_GED_ID))
 				->fetchOne();
 			if ($title) {
-				echo '<b>', htmlspecialchars($title), '</b>';
+				echo '<b>', WT_Filter::escapeHtml($title), '</b>';
 			} else {
 				echo '<b>', $mediaid, '</b>';
 			}

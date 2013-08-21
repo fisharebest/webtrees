@@ -30,7 +30,7 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 
 // Create an edit control for inline editing using jeditable
 function edit_field_inline($name, $value, $controller=null) {
-	$html='<span class="editable" id="' . $name . '">' . htmlspecialchars($value) . '</span>';
+	$html='<span class="editable" id="' . $name . '">' . WT_Filter::escapeHtml($value) . '</span>';
 	$js='jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submit:"&nbsp;&nbsp;' . /* I18N: button label */ WT_I18N::translate('save') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'"});';
 
 	if ($controller) {
@@ -44,7 +44,7 @@ function edit_field_inline($name, $value, $controller=null) {
 
 // Create a text area for inline editing using jeditable
 function edit_text_inline($name, $value, $controller=null) {
-	$html='<span class="editable" style="white-space:pre-wrap;" id="' . $name . '">' . htmlspecialchars($value) . '</span>';
+	$html='<span class="editable" style="white-space:pre-wrap;" id="' . $name . '">' . WT_Filter::escapeHtml($value) . '</span>';
 	$js='jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submit:"&nbsp;&nbsp;' . WT_I18N::translate('save') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'", type: "textarea", rows:4, cols:60 });';
 
 	if ($controller) {
@@ -67,9 +67,9 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 		$html='';
 	} else {
 		if (empty($selected)) {
-			$html='<option value="" selected="selected">'.htmlspecialchars($empty).'</option>';
+			$html='<option value="" selected="selected">'.WT_Filter::escapeHtml($empty).'</option>';
 		} else {
-			$html='<option value="">'.htmlspecialchars($empty).'</option>';
+			$html='<option value="">'.WT_Filter::escapeHtml($empty).'</option>';
 		}
 	}
 	// A completely empty list would be invalid, and break various things
@@ -78,9 +78,9 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 	}
 	foreach ($values as $key=>$value) {
 		if ((string)$key===(string)$selected) { // Because "0" != ""
-			$html.='<option value="'.htmlspecialchars($key).'" selected="selected" dir="auto">'.htmlspecialchars($value).'</option>';
+			$html.='<option value="'.WT_Filter::escapeHtml($key).'" selected="selected" dir="auto">'.WT_Filter::escapeHtml($value).'</option>';
 		} else {
-			$html.='<option value="'.htmlspecialchars($key).'" dir="auto">'.htmlspecialchars($value).'</option>';
+			$html.='<option value="'.WT_Filter::escapeHtml($key).'" dir="auto">'.WT_Filter::escapeHtml($value).'</option>';
 		}
 	}
 	return '<select id="'.$name.'" name="'.$name.'" '.$extra.'>'.$html.'</select>';
@@ -90,13 +90,13 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 function select_edit_control_inline($name, $values, $empty, $selected, $controller=null) {
 	if (!is_null($empty)) {
 		// Push ''=>$empty onto the front of the array, maintaining keys
-		$tmp=array(''=>htmlspecialchars($empty));
+		$tmp=array(''=>WT_Filter::escapeHtml($empty));
 		foreach ($values as $key=>$value) {
-			$tmp[$key]=htmlspecialchars($value);
+			$tmp[$key]=WT_Filter::escapeHtml($value);
 		}
 		$values=$tmp;
 	}
-	$values['selected']=htmlspecialchars($selected);
+	$values['selected']=WT_Filter::escapeHtml($selected);
 
 	$html='<span class="editable" id="' . $name . '">' .  (array_key_exists($selected, $values) ? $values[$selected] : '') . '</span>';
 	$js='jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {type:"select", data:' . json_encode($values) . ', submit:"&nbsp;&nbsp;' . WT_I18N::translate('save') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'", callback:function(value, settings) {jQuery(this).html(settings.data[value]);} });';
@@ -119,11 +119,11 @@ function radio_buttons($name, $values, $selected, $extra='') {
 	$html='';
 	foreach ($values as $key=>$value) {
 		$uniqueID = $name.(int)(microtime() * 1000000);
-		$html.='<input type="radio" name="'.$name.'" id="'.$uniqueID.'" value="'.htmlspecialchars($key).'"';
+		$html.='<input type="radio" name="'.$name.'" id="'.$uniqueID.'" value="'.WT_Filter::escapeHtml($key).'"';
 		if ((string)$key===(string)$selected) { // Beware PHP array keys are cast to integers!  Cast them back
 			$html.=' checked';
 		}
-		$html.='><label for="'.$uniqueID.'">'.htmlspecialchars($value).'</label>';
+		$html.='><label for="'.$uniqueID.'">'.WT_Filter::escapeHtml($value).'</label>';
 	}
 	return $html;
 }
@@ -588,7 +588,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		echo '<select name="text[]"><option selected="selected" value="" ></option>';
 		$selectedValue = strtolower($value);
 		if (!array_key_exists($selectedValue, WT_Gedcom_Tag::getFileFormTypes())) {
-			echo '<option selected="selected" value="', htmlspecialchars($value), '" >', htmlspecialchars($value), '</option>';
+			echo '<option selected="selected" value="', WT_Filter::escapeHtml($value), '" >', WT_Filter::escapeHtml($value), '</option>';
 		}
 		foreach (WT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
 			echo '<option value="', $typeName, '"';
@@ -600,20 +600,20 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		echo '</select>';
 	} else if (($fact=='NAME' && $upperlevel!='REPO') || $fact=='_MARNM') {
 		// Populated in javascript from sub-tags
-		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" onchange=\"updateTextName('", $element_id, "');\" value=\"", htmlspecialchars($value), "\" class=\"", $fact, "\">";
-		echo '<span id="', $element_id, '_display" dir="auto">', htmlspecialchars($value), '</span>';
+		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" onchange=\"updateTextName('", $element_id, "');\" value=\"", WT_Filter::escapeHtml($value), "\" class=\"", $fact, "\">";
+		echo '<span id="', $element_id, '_display" dir="auto">', WT_Filter::escapeHtml($value), '</span>';
 		echo ' <a href="#edit_name" onclick="convertHidden(\'', $element_id, '\'); return false;" class="icon-edit_indi" title="'.WT_I18N::translate('Edit name').'"></a>';
 	} else {
 		// textarea
 		if ($fact=='TEXT' || $fact=='ADDR' || ($fact=='NOTE' && !$islink)) {
-			echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" dir=\"auto\">", htmlspecialchars($value), "</textarea><br>";
+			echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" dir=\"auto\">", WT_Filter::escapeHtml($value), "</textarea><br>";
 		} else {
 			// text
 			// If using GEDFact-assistant window
 			if ($action=="addnewnote_assisted") {
-				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", htmlspecialchars($value), "\" style=\"width:4.1em;\" dir=\"ltr\"";
+				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", WT_Filter::escapeHtml($value), "\" style=\"width:4.1em;\" dir=\"ltr\"";
 			} else {
-				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", htmlspecialchars($value), "\" dir=\"ltr\"";
+				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", WT_Filter::escapeHtml($value), "\" dir=\"ltr\"";
 			}
 			echo " class=\"{$fact}\"";
 			if (in_array($fact, $subnamefacts)) {

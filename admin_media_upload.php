@@ -216,7 +216,7 @@ for ($i=1; $i<6; $i++) {
 		echo ' value="/"> ', WT_I18N::translate('Choose: '), ' </option>';
 		if (WT_USER_IS_ADMIN) echo '<option value="other" disabled>', WT_I18N::translate('Other folder... please type in'), "</option>";
 		foreach ($mediaFolders as $f) {
-			echo '<option value="', htmlspecialchars($f), '">', htmlspecialchars($f), "</option>";
+			echo '<option value="', WT_Filter::escapeHtml($f), '">', WT_Filter::escapeHtml($f), "</option>";
 		}
 		echo "</select></span>";
 		if (WT_USER_IS_ADMIN) {

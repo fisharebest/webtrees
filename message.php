@@ -125,17 +125,17 @@ case 'compose':
 	echo /* I18N: %s is the name of a language */ WT_I18N::translate('This user prefers to receive messages in %s', Zend_Locale::getTranslation(get_user_setting($to_user_id, 'language'), 'language', WT_LOCALE)), '</td></tr>';
 	if (!WT_USER_ID) {
 		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your Name:'), '</td>';
-		echo '<td><input type="text" name="from_name" size="40" value="', htmlspecialchars($from_name), '"></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email Address:'), '</td><td><input type="email" name="from_email" size="40" value="', htmlspecialchars($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
+		echo '<td><input type="text" name="from_name" size="40" value="', WT_Filter::escapeHtml($from_name), '"></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email Address:'), '</td><td><input type="email" name="from_email" size="40" value="', WT_Filter::escapeHtml($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
 	}
 	echo '<tr><td align="right">', WT_I18N::translate('Subject:'), '</td>';
 	echo '<td>';
 	echo '<input type="hidden" name="action" value="send">';
-	echo '<input type="hidden" name="to" value="', htmlspecialchars($to), '">';
+	echo '<input type="hidden" name="to" value="', WT_Filter::escapeHtml($to), '">';
 	echo '<input type="hidden" name="time" value="">';
 	echo '<input type="hidden" name="method" value="', $method, '">';
-	echo '<input type="hidden" name="url" value="', htmlspecialchars($url), '">';
-	echo '<input type="text" name="subject" size="50" value="', htmlspecialchars($subject), '"><br></td></tr>';
-	echo '<tr><td valign="top" align="right">', WT_I18N::translate('Body:'), '<br></td><td><textarea name="body" cols="50" rows="7">', htmlspecialchars($body), '</textarea><br></td></tr>';
+	echo '<input type="hidden" name="url" value="', WT_Filter::escapeHtml($url), '">';
+	echo '<input type="text" name="subject" size="50" value="', WT_Filter::escapeHtml($subject), '"><br></td></tr>';
+	echo '<tr><td valign="top" align="right">', WT_I18N::translate('Body:'), '<br></td><td><textarea name="body" cols="50" rows="7">', WT_Filter::escapeHtml($body), '</textarea><br></td></tr>';
 	echo '<tr><td></td><td><input type="submit" value="', WT_I18N::translate('Send'), '"></td></tr>';
 	echo '</table>';
 	echo '</form>';
@@ -197,7 +197,7 @@ case 'send':
 		$message['url'] = $url;
 		if ($i>0) $message['no_from'] = true;
 		if (addMessage($message)) {
-			WT_FlashMessages::addMessage(WT_I18N::translate('Message successfully sent to %s', htmlspecialchars($to)));
+			WT_FlashMessages::addMessage(WT_I18N::translate('Message successfully sent to %s', WT_Filter::escapeHtml($to)));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
 			AddToLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (failed to send)', 'error');

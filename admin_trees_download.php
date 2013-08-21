@@ -95,7 +95,7 @@ if ($action == "download") {
 $controller->pageHeader();
 
 ?>
-<h2><?php echo $controller->getPageTitle(); ?> - <?php echo htmlspecialchars(WT_GEDCOM); ?></h2>
+<h2><?php echo $controller->getPageTitle(); ?> - <?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?></h2>
 <form name="convertform" method="get">
 	<input type="hidden" name="action" value="download">
 	<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
@@ -129,8 +129,8 @@ $controller->pageHeader();
 				<?php echo WT_I18N::translate('GEDCOM media path'), help_link('GEDCOM_MEDIA_PATH'); ?>
 			</dt>
 			<dd>
-				<input type="checkbox" name="conv_path" value="<?php echo htmlspecialchars($GEDCOM_MEDIA_PATH); ?>">
-				<span dir="auto"><?php echo htmlspecialchars($GEDCOM_MEDIA_PATH); ?></span>
+				<input type="checkbox" name="conv_path" value="<?php echo WT_Filter::escapeHtml($GEDCOM_MEDIA_PATH); ?>">
+				<span dir="auto"><?php echo WT_Filter::escapeHtml($GEDCOM_MEDIA_PATH); ?></span>
 			</dd>
 		</dl>
 	</div>

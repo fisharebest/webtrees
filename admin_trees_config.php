@@ -200,7 +200,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 ?>
 <form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
 	<input type="hidden" name="action" value="update">
-	<input type="hidden" name="ged" value="<?php echo htmlspecialchars(WT_GEDCOM); ?>">
+	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 
 	<div id="tabs">
 		<ul>
@@ -219,7 +219,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						<?php echo WT_I18N::translate('Family tree title'); ?>
 					</td>
 					<td>
-						<input type="text" name="gedcom_title" dir="ltr" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="40" maxlength="255">
+						<input type="text" name="gedcom_title" dir="ltr" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="40" maxlength="255">
 					</td>
 				</tr>
 				<tr>
@@ -414,7 +414,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						<?php echo WT_I18N::translate('Add to TITLE header tag'), help_link('META_TITLE'); ?>
 					</td>
 					<td>
-						<input type="text" dir="ltr" name="NEW_META_TITLE" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'META_TITLE')); ?>" size="40" maxlength="255">
+						<input type="text" dir="ltr" name="NEW_META_TITLE" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'META_TITLE')); ?>" size="40" maxlength="255">
 					</td>
 				</tr>
 				<tr>
@@ -447,7 +447,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					<td>
 						<select name="NEW_THEME_DIR">
 							<?php
-								echo '<option value="">', htmlspecialchars(WT_I18N::translate('<default theme>')), '</option>';
+								echo '<option value="">', WT_Filter::escapeHtml(WT_I18N::translate('<default theme>')), '</option>';
 								$current_themedir=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
 								foreach (get_theme_names() as $themename=>$themedir) {
 									echo '<option value="', $themedir, '"';

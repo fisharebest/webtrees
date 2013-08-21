@@ -231,7 +231,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				echo '<span class="age"> ', WT_I18N::translate('Age'), ' ', $ageh, '</span>';
 			}
 		}
-		echo " ".htmlspecialchars($desc);
+		echo " ".WT_Filter::escapeHtml($desc);
 		if ($SHOW_PEDIGREE_PLACES>0) {
 			$place = $event->getPlace();
 			if ($place!=null) {
@@ -240,7 +240,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				for ($plevel=0; $plevel<$SHOW_PEDIGREE_PLACES; $plevel++) {
 					if (!empty($plevels[$plevel])) {
 						if ($plevel>0) echo ", ";
-						echo htmlspecialchars($plevels[$plevel]);
+						echo WT_Filter::escapeHtml($plevels[$plevel]);
 					}
 				}
 			}

@@ -138,7 +138,7 @@ if ($error || !$PGV_PATH) {
 		echo '<dd><input type="text" name="PGV_PATH" size="40" value="" autofocus></dd>';
 		break;
 	case '1':
-		echo '<dd><input type="text" name="PGV_PATH" size="40" value="'.htmlspecialchars($pgv_dirs[0]).'" autofocus></dd>';
+		echo '<dd><input type="text" name="PGV_PATH" size="40" value="'.WT_Filter::escapeHtml($pgv_dirs[0]).'" autofocus></dd>';
 		break;
 	default:
 		echo '<dd><input type="text" name="PGV_PATH" size="40" value="" autofocus></dd>';

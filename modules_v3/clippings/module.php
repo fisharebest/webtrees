@@ -137,8 +137,6 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			}
 
 			if (!$WT_SESSION->cart[WT_GED_ID]) {
-
-				// -- new lines, added by Jans, to display helptext when cart is empty
 				if ($clip_ctrl->action!='add') {
 
 					echo WT_I18N::translate('The Clippings Cart allows you to take extracts ("clippings") from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to Clippings Cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>');
@@ -218,8 +216,8 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('GEDCOM media path'), help_link('GEDCOM_MEDIA_PATH'); ?></td>
 					<td class="list_value">
-						<input type="checkbox" name="conv_path" value="<?php echo htmlspecialchars($GEDCOM_MEDIA_PATH); ?>">
-						<span dir="auto"><?php echo htmlspecialchars($GEDCOM_MEDIA_PATH); ?></span>
+						<input type="checkbox" name="conv_path" value="<?php echo WT_Filter::escapeHtml($GEDCOM_MEDIA_PATH); ?>">
+						<span dir="auto"><?php echo WT_Filter::escapeHtml($GEDCOM_MEDIA_PATH); ?></span>
 					</td></tr>
 
 					<tr><td class="topbottombar" colspan="2">
@@ -598,8 +596,8 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<tr>
 		<td class="descriptionbox width50 wrap">'.WT_I18N::translate('GEDCOM media path').help_link('GEDCOM_MEDIA_PATH').'</td>
 		<td class="optionbox">
-		<input type="checkbox" name="conv_path" value="' . htmlspecialchars($GEDCOM_MEDIA_PATH) . '">
-		<span dir="auto">' . htmlspecialchars($GEDCOM_MEDIA_PATH) . '</span></td>
+		<input type="checkbox" name="conv_path" value="' . WT_Filter::escapeHtml($GEDCOM_MEDIA_PATH) . '">
+		<span dir="auto">' . WT_Filter::escapeHtml($GEDCOM_MEDIA_PATH) . '</span></td>
 		</tr>
 
 		<input type="hidden" name="conv_path" value="'.$clip_ctrl->conv_path.'">

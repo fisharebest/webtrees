@@ -45,7 +45,7 @@ if (
 		'<pre style="white-space:pre-wrap; word-wrap:break-word;">',
 		preg_replace(
 			'/@('.WT_REGEX_XREF.')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
-			htmlspecialchars($obj->getGedcom())
+			WT_Filter::escapeHtml($obj->getGedcom())
 		),
 		'</pre>';
 }

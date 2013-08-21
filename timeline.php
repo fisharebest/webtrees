@@ -265,7 +265,7 @@ $controller->checkPrivacy();
 			<a href="<?php echo $indi->getHtmlUrl(); ?>">&nbsp;<?php echo $indi->getFullName(); ?><br>
 			<?php echo $indi->getAddName(); ?><br>
 			</a>
-			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>">
+			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo WT_Filter::escapeHtml($pid); ?>">
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
 				<span class="details1"><?php echo WT_I18N::translate('Remove person'); ?></span></a>
 			<?php if (!empty($controller->birthyears[$pid])) { ?>
@@ -280,7 +280,7 @@ $controller->checkPrivacy();
 		} else {
 			print_privacy_error();
 			?>
-			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>">
+			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo WT_Filter::escapeHtml($pid); ?>">
 				<br>
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
 				<span class="details1"><?php echo WT_I18N::translate('Remove person'); ?></span></a>

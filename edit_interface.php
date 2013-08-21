@@ -105,7 +105,7 @@ case 'editraw':
 			<input type="hidden" name="action" value="updateraw">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<input type="hidden" name="fact_id" value="<?php echo $fact_id; ?>">
-			<textarea name="gedcom" id="gedcom" dir="ltr"><?php echo htmlspecialchars($edit_fact->getGedcom()); ?></textarea>
+			<textarea name="gedcom" id="gedcom" dir="ltr"><?php echo WT_Filter::escapeHtml($edit_fact->getGedcom()); ?></textarea>
 			<table class="facts_table">
 				<?php echo keep_chan($record); ?>
 			</table>
@@ -1304,7 +1304,7 @@ case 'editnote':
 				<tr>
 					<td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Shared note'), help_link('SHARED_NOTE'); ?></td>
 					<td class="optionbox wrap">
-						<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?php echo htmlspecialchars($note->getNote()); ?></textarea>
+						<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?php echo WT_Filter::escapeHtml($note->getNote()); ?></textarea>
 						<br>
 						<?php echo print_specialchar_link('NOTE'); ?>
 					</td>

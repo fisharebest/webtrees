@@ -37,7 +37,7 @@ $level=count($parent);
 
 if ($display=='hierarchy') {
 	if ($level) {
-		$controller->setPageTitle(WT_I18N::translate('Place hierarchy') . ' - <span dir="auto">' . htmlspecialchars(end($parent)) . '</span>');
+		$controller->setPageTitle(WT_I18N::translate('Place hierarchy') . ' - <span dir="auto">' . WT_Filter::escapeHtml(end($parent)) . '</span>');
 	} else {
 		$controller->setPageTitle(WT_I18N::translate('Place hierarchy'));
 	}

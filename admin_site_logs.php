@@ -161,7 +161,7 @@ case 'load_json':
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
 	$aaData=WT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($aaData as &$row) {
-		$row[2]=htmlspecialchars($row[2]);
+		$row[2]=WT_Filter::escapeHtml($row[2]);
 	}
 	
 	// Total filtered/unfiltered rows
@@ -215,17 +215,17 @@ echo
 			'<tr>',
 				'<td colspan="6">',
 					// I18N: %s are both user-input date fields
-					WT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.htmlspecialchars($from).'">', '<input class="log-date" name="to" value="'.htmlspecialchars($to).'">'),
+					WT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.WT_Filter::escapeHtml($from).'">', '<input class="log-date" name="to" value="'.WT_Filter::escapeHtml($to).'">'),
 				'</td>',
 			'</tr><tr>',
 				'<td>',
 					WT_I18N::translate('Type'), '<br>', select_edit_control('type', array(''=>'', 'auth'=>'auth','config'=>'config','debug'=>'debug','edit'=>'edit','error'=>'error','media'=>'media','search'=>'search'), null, $type, ''),
 				'</td>',
 				'<td>',
-					WT_I18N::translate('Message'), '<br><input class="log-filter" name="text" value="', htmlspecialchars($text), '"> ',
+					WT_I18N::translate('Message'), '<br><input class="log-filter" name="text" value="', WT_Filter::escapeHtml($text), '"> ',
 				'</td>',
 				'<td>',
-					WT_I18N::translate('IP address'), '<br><input class="log-filter" name="ip" value="', htmlspecialchars($ip), '"> ',
+					WT_I18N::translate('IP address'), '<br><input class="log-filter" name="ip" value="', WT_Filter::escapeHtml($ip), '"> ',
 				'</td>',
 				'<td>',
 					WT_I18N::translate('User'), '<br>', select_edit_control('user', $users_array, '', $user, ''),
@@ -237,7 +237,7 @@ echo
 				'<td colspan="6">',
 					'<input type="submit" value="', WT_I18N::translate('Filter'), '">',
 					'<input type="submit" value="', WT_I18N::translate('Export'), '" onclick="document.logs.action.value=\'export\';return true;" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
-					'<input type="submit" value="', WT_I18N::translate('Delete'), '" onclick="if (confirm(\'', htmlspecialchars(WT_I18N::translate('Permanently delete these records?')) , '\')) {document.logs.action.value=\'delete\';return true;} else {return false;}" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
+					'<input type="submit" value="', WT_I18N::translate('Delete'), '" onclick="if (confirm(\'', WT_Filter::escapeHtml(WT_I18N::translate('Permanently delete these records?')) , '\')) {document.logs.action.value=\'delete\';return true;} else {return false;}" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
 				'</td>',
 			'</tr>',
 		'</table>',

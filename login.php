@@ -144,12 +144,12 @@ default:
 	echo '<div id="login-box">
 		<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="t = new Date(); this.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds();return true;">
 		<input type="hidden" name="action" value="login">
-		<input type="hidden" name="url" value="', htmlspecialchars($url), '">
+		<input type="hidden" name="url" value="', WT_Filter::escapeHtml($url), '">
 		<input type="hidden" name="usertime" value="">';
 		if (!empty($message)) echo '<span class="error"><br><b>', $message, '</b><br><br></span>';
 		echo '<div>
 			<label for="username">', WT_I18N::translate('Username'),
-			'<input type="text" id="username" name="username" value="', htmlspecialchars($username), '" class="formField" autofocus>
+			'<input type="text" id="username" name="username" value="', WT_Filter::escapeHtml($username), '" class="formField" autofocus>
 			</label>
 		</div>
 		<div>
@@ -382,33 +382,33 @@ case 'register':
 			<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>
 			<div>
 				<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'),
-					'<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="', htmlspecialchars($user_realname), '" autofocus>
+					'<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="', WT_Filter::escapeHtml($user_realname), '" autofocus>
 				</label>		
 			</div>
 			<div>
 				<label for="user_email">', WT_I18N::translate('Email address'), help_link('email'),
-					'<input type="email" id="user_email" name="user_email" required maxlength="64" value="', htmlspecialchars($user_email), '">
+					'<input type="email" id="user_email" name="user_email" required maxlength="64" value="', WT_Filter::escapeHtml($user_email), '">
 				</label>
 			</div>
 			<div>
 				<label for="username">', WT_I18N::translate('Desired user name'), help_link('username'),
-					'<input type="text" id="username" name="user_name" required maxlength="32" value="', htmlspecialchars($user_name), '">
+					'<input type="text" id="username" name="user_name" required maxlength="32" value="', WT_Filter::escapeHtml($user_name), '">
 				</label>
 			</div>
 			<div>
 				<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'),
-					'<input type="password" id="user_password01" name="user_password01" value="', htmlspecialchars($user_password01), '" required placeholder="', /* I18N: placeholder text for new-password field */ WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)), '" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = regex_quote(this.value);">
+					'<input type="password" id="user_password01" name="user_password01" value="', WT_Filter::escapeHtml($user_password01), '" required placeholder="', /* I18N: placeholder text for new-password field */ WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)), '" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = regex_quote(this.value);">
 				</label>
 			</div>
 			<div>
 				<label for="user_password02">', WT_I18N::translate('Confirm password'), help_link('password_confirm'),
-					'<input type="password" id="user_password02" name="user_password02" value="', htmlspecialchars($user_password02), '" required placeholder="', /* I18N: placeholder text for repeat-password field */ WT_I18N::translate('Type the password again.'), '" pattern="'. WT_REGEX_PASSWORD .'">
+					'<input type="password" id="user_password02" name="user_password02" value="', WT_Filter::escapeHtml($user_password02), '" required placeholder="', /* I18N: placeholder text for repeat-password field */ WT_I18N::translate('Type the password again.'), '" pattern="'. WT_REGEX_PASSWORD .'">
 				</label>
 			</div>
 			<div>
 				<label for="user_comments">', WT_I18N::translate('Comments'), help_link('register_comments'),
 					'<textarea cols="50" rows="5" id="user_comments" name="user_comments" required placeholder="', /* I18N: placeholder text for registration-comments field */ WT_I18N::translate('Explain why you are requesting an account.'), '">',
-						htmlspecialchars($user_comments),
+						WT_Filter::escapeHtml($user_comments),
 					'</textarea>
 				</label>
 			</div>

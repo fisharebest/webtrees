@@ -205,16 +205,16 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo htmlspecialchars($gparent->getBirthPlace(), ENT_QUOTES); //  birthpl = Husband Place of Birth
+											echo WT_Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Husband Place of Birth
 										?>", "<?php
 											if (isset($HusbFBP)) {
-												echo htmlspecialchars($HusbFBP, ENT_QUOTES); // fbirthpl = Husband Father's Place of Birth
+												echo WT_Filter::escapeHtml($HusbFBP); // fbirthpl = Husband Father's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Husband Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($HusbMBP)) {
-												echo htmlspecialchars($HusbMBP, ENT_QUOTES); // mbirthpl = Husband Mother's Place of Birth
+												echo WT_Filter::escapeHtml($HusbMBP); // mbirthpl = Husband Mother's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Husband Mother's Place of Birth Not known
 											}
@@ -331,16 +331,16 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo htmlspecialchars($gparent->getBirthPlace(), ENT_QUOTES); //  birthpl = Wife Place of Birth
+											echo WT_Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Wife Place of Birth
 										?>", "<?php
 											if (isset($WifeFBP)) {
-												echo htmlspecialchars($WifeFBP, ENT_QUOTES); // fbirthpl = Wife Father's Place of Birth
+												echo WT_Filter::escapeHtml($WifeFBP); // fbirthpl = Wife Father's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Wife Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($WifeMBP)) {
-												echo htmlspecialchars($WifeMBP, ENT_QUOTES); // mbirthpl = Wife Mother's Place of Birth
+												echo WT_Filter::escapeHtml($WifeMBP); // mbirthpl = Wife Mother's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Wife Mother's Place of Birth Not known
 											}
@@ -467,16 +467,16 @@ if (!defined('WT_WEBTREES')) {
 											?>", "<?php
 												echo ""; // occu = Occupation
 											?>", "<?php
-												echo htmlspecialchars($child->getBirthPlace(), ENT_QUOTES); //  birthpl = Child Place of Birt
+												echo WT_Filter::escapeHtml($child->getBirthPlace()); //  birthpl = Child Place of Birt
 											?>", "<?php
 												if ($family->getHusband()) {
-													echo htmlspecialchars($family->getHusband()->getBirthPlace(), ENT_QUOTES); // fbirthpl = Child Father's Place of Birth
+													echo WT_Filter::escapeHtml($family->getHusband()->getBirthPlace()); // fbirthpl = Child Father's Place of Birth
 												} else {
 													echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Child Father's Place of Birth Not known
 												}
 											?>", "<?php
 												if ($family->getWife()) {
-													echo htmlspecialchars($family->getWife()->getBirthPlace(), ENT_QUOTES); // mbirthpl = Child Mother's Place of Birth
+													echo WT_Filter::escapeHtml($family->getWife()->getBirthPlace()); // mbirthpl = Child Mother's Place of Birth
 												} else {
 													echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Child Mother's Place of Birth Not known
 												}
@@ -610,16 +610,16 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo htmlspecialchars($gparent->getBirthPlace(), ENT_QUOTES); //  birthpl = Step Husband Place of Birth
+											echo WT_Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Step Husband Place of Birth
 										?>", "<?php
 											if (isset($HusbFBP)) {
-												echo htmlspecialchars($HusbFBP, ENT_QUOTES); // fbirthpl = Step Husband Father's Place of Birth
+												echo WT_Filter::escapeHtml($HusbFBP); // fbirthpl = Step Husband Father's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Step Husband Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($HusbMBP)) {
-												echo htmlspecialchars($HusbMBP, ENT_QUOTES); // mbirthpl = Step Husband Mother's Place of Birth
+												echo WT_Filter::escapeHtml($HusbMBP); // mbirthpl = Step Husband Mother's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Step Husband Mother's Place of Birth Not known
 											}
@@ -738,16 +738,16 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo htmlspecialchars($gparent->getBirthPlace(), ENT_QUOTES); //  birthpl = Step Wife Place of Birth
+											echo WT_Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Step Wife Place of Birth
 										?>", "<?php
 											if (isset($WifeFBP)) {
-												echo htmlspecialchars($WifeFBP, ENT_QUOTES); // fbirthpl = Step Wife Father's Place of Birth
+												echo WT_Filter::escapeHtml($WifeFBP); // fbirthpl = Step Wife Father's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Step Wife Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($WifeMBP)) {
-												echo htmlspecialchars($WifeMBP, ENT_QUOTES); // mbirthpl = Step Wife Mother's Place of Birth
+												echo WT_Filter::escapeHtml($WifeMBP); // mbirthpl = Step Wife Mother's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Step Wife Mother's Place of Birth Not known
 											}
@@ -862,16 +862,16 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo htmlspecialchars($child->getBirthPlace(), ENT_QUOTES); //  birthpl = Child Place of Birth
+											echo WT_Filter::escapeHtml($child->getBirthPlace()); //  birthpl = Child Place of Birth
 										?>", "<?php
 											if ($family->getHusband()) {
-												echo htmlspecialchars($family->getHusband()->getBirthPlace(), ENT_QUOTES); // fbirthpl = Child Father's Place of Birth
+												echo WT_Filter::escapeHtml($family->getHusband()->getBirthPlace()); // fbirthpl = Child Father's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Child Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if ($family->getWife()) {
-												echo htmlspecialchars($family->getWife()->getBirthPlace(), ENT_QUOTES); // mbirthpl = Child Mother's Place of Birth
+												echo WT_Filter::escapeHtml($family->getWife()->getBirthPlace()); // mbirthpl = Child Mother's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Child Mother's Place of Birth Not known
 											}
@@ -1005,16 +1005,16 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo htmlspecialchars($gparent->getBirthPlace(), ENT_QUOTES); //  birthpl = Husband Place of Birth
+											echo WT_Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Husband Place of Birth
 										?>", "<?php
 											if (isset($HusbFBP)) {
-												echo htmlspecialchars($HusbFBP, ENT_QUOTES); // fbirthpl = Husband Father's Place of Birth
+												echo WT_Filter::escapeHtml($HusbFBP); // fbirthpl = Husband Father's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Husband Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($HusbMBP)) {
-												echo htmlspecialchars($HusbMBP, ENT_QUOTES); // mbirthpl = Husband Mother's Place of Birth
+												echo WT_Filter::escapeHtml($HusbMBP); // mbirthpl = Husband Mother's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Husband Mother's Place of Birth Not known
 											}
@@ -1134,16 +1134,16 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo htmlspecialchars($gparent->getBirthPlace(), ENT_QUOTES); //  birthpl = Wife Place of Birth
+											echo WT_Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Wife Place of Birth
 										?>", "<?php
 											if (isset($WifeFBP)) {
-												echo htmlspecialchars($WifeFBP, ENT_QUOTES); // fbirthpl = Wife Father's Place of Birth
+												echo WT_Filter::escapeHtml($WifeFBP); // fbirthpl = Wife Father's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Wife Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($WifeMBP)) {
-												echo htmlspecialchars($WifeMBP, ENT_QUOTES); // mbirthpl = Wife Mother's Place of Birth
+												echo WT_Filter::escapeHtml($WifeMBP); // mbirthpl = Wife Mother's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Wife Mother's Place of Birth Not known
 											}
@@ -1270,16 +1270,16 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo htmlspecialchars($child->getBirthPlace(), ENT_QUOTES); //  birthpl = Child Place of Birth
+											echo WT_Filter::escapeHtml($child->getBirthPlace()); //  birthpl = Child Place of Birth
 										?>", "<?php
 											if ($family->getHusband()) {
-												echo htmlspecialchars($family->getHusband()->getBirthPlace(), ENT_QUOTES); // fbirthpl = Child Father's Place of Birth
+												echo WT_Filter::escapeHtml($family->getHusband()->getBirthPlace()); // fbirthpl = Child Father's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Child Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if ($family->getWife()) {
-												echo htmlspecialchars($family->getWife()->getBirthPlace(), ENT_QUOTES); // mbirthpl = Child Mother's Place of Birth
+												echo WT_Filter::escapeHtml($family->getWife()->getBirthPlace()); // mbirthpl = Child Mother's Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Child Mother's Place of Birth Not known
 											}
@@ -1458,14 +1458,14 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						}
 						$parentlinks .= "'".(($husb->getDeathDate()->minJD()+$husb->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
 						$parentlinks .= "''".","; // occu  = Occupation
-						$parentlinks .= "'".htmlspecialchars($husb->getBirthPlace(), ENT_QUOTES)."'".","; // birthpl = Individuals Birthplace
+						$parentlinks .= "'".WT_Filter::escapeHtml($husb->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
 						if (isset($pHusbFBP)) {
-							$parentlinks .= "'".htmlspecialchars($pHusbFBP, ENT_QUOTES)."'".","; // fbirthpl = Fathers Birthplace
+							$parentlinks .= "'".WT_Filter::escapeHtml($pHusbFBP)."'".","; // fbirthpl = Fathers Birthplace
 						} else {
 							$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // fbirthpl = Fathers Birthplace
 						}
 						if (isset($pHusbMBP)) {
-							$parentlinks .= "'".htmlspecialchars($pHusbMBP, ENT_QUOTES)."'".","; // mbirthpl = Mothers Birthplace
+							$parentlinks .= "'".WT_Filter::escapeHtml($pHusbMBP)."'".","; // mbirthpl = Mothers Birthplace
 						} else {
 							$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // mbirthpl = Mothers Birthplace
 						}
@@ -1551,14 +1551,14 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						}
 						$parentlinks .= "'".(($wife->getDeathDate()->minJD()+$wife->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
 						$parentlinks .= "''".","; // occu  = Occupation
-						$parentlinks .= "'".htmlspecialchars($wife->getBirthPlace(), ENT_QUOTES)."'".","; // birthpl = Individuals Birthplace
+						$parentlinks .= "'".WT_Filter::escapeHtml($wife->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
 						if (isset($pWifeFBP)) {
-							$parentlinks .= "'".htmlspecialchars($pWifeFBP, ENT_QUOTES)."'".","; // fbirthpl = Fathers Birthplace
+							$parentlinks .= "'".WT_Filter::escapeHtml($pWifeFBP)."'".","; // fbirthpl = Fathers Birthplace
 						} else {
 							$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // fbirthpl = Fathers Birthplace Not Known
 						}
 						if (isset($pWifeMBP)) {
-							$parentlinks .= "'".htmlspecialchars($pWifeMBP, ENT_QUOTES)."'".","; // mbirthpl = Mothers Birthplace
+							$parentlinks .= "'".WT_Filter::escapeHtml($pWifeMBP)."'".","; // mbirthpl = Mothers Birthplace
 						} else {
 							$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // mbirthpl = Mothers Birthplace Not Known
 						}
@@ -1661,14 +1661,14 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							}
 							$parentlinks .= "'".(($husb->getDeathDate()->minJD()+$husb->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
 							$parentlinks .= "''".","; // occu  = Occupation
-							$parentlinks .= "'".htmlspecialchars($husb->getBirthPlace(), ENT_QUOTES)."'".","; // birthpl = Individuals Birthplace
+							$parentlinks .= "'".WT_Filter::escapeHtml($husb->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
 							if (isset($pHusbFBP)) {
-								$parentlinks .= "'".htmlspecialchars($pHusbFBP, ENT_QUOTES)."'".","; // fbirthpl = Fathers Birthplace
+								$parentlinks .= "'".WT_Filter::escapeHtml($pHusbFBP)."'".","; // fbirthpl = Fathers Birthplace
 							} else {
 								$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // fbirthpl = Fathers Birthplace
 							}
 							if (isset($pHusbMBP)) {
-								$parentlinks .= "'".htmlspecialchars($pHusbMBP, ENT_QUOTES)."'".","; // mbirthpl = Mothers Birthplace
+								$parentlinks .= "'".WT_Filter::escapeHtml($pHusbMBP)."'".","; // mbirthpl = Mothers Birthplace
 							} else {
 								$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // mbirthpl = Mothers Birthplace
 							}
@@ -1757,14 +1757,14 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							}
 							$parentlinks .= "'".(($wife->getDeathDate()->minJD()+$wife->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
 							$parentlinks .= "''".","; // occu  = Occupation
-							$parentlinks .= "'".htmlspecialchars($wife->getBirthPlace(), ENT_QUOTES)."'".","; // birthpl = Individuals Birthplace
+							$parentlinks .= "'".WT_Filter::escapeHtml($wife->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
 							if (isset($pWifeFBP)) {
-								$parentlinks .= "'".htmlspecialchars($pWifeFBP, ENT_QUOTES)."'".","; // fbirthpl = Fathers Birthplace
+								$parentlinks .= "'".WT_Filter::escapeHtml($pWifeFBP)."'".","; // fbirthpl = Fathers Birthplace
 							} else {
 								$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // fbirthpl = Fathers Birthplace Not Known
 							}
 							if (isset($pWifeMBP)) {
-								$parentlinks .= "'".htmlspecialchars($pWifeMBP, ENT_QUOTES)."'".","; // mbirthpl = Mothers Birthplace
+								$parentlinks .= "'".WT_Filter::escapeHtml($pWifeMBP)."'".","; // mbirthpl = Mothers Birthplace
 							} else {
 								$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // mbirthpl = Mothers Birthplace Not Known
 							}
@@ -1878,14 +1878,14 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						}
 						$spouselinks .= "'".(($spouse->getDeathDate()->minJD()+$spouse->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
 						$spouselinks .= "''".","; // occu  = Occupation
-						$spouselinks .= "'".htmlspecialchars($spouse->getBirthPlace(), ENT_QUOTES)."'".","; // birthpl = Individuals Birthplace
+						$spouselinks .= "'".WT_Filter::escapeHtml($spouse->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
 						if (isset($pSpouseFBP)) {
-							$spouselinks .= "'".htmlspecialchars($pSpouseFBP, ENT_QUOTES)."'".","; // fbirthpl = Fathers Birthplace
+							$spouselinks .= "'".WT_Filter::escapeHtml($pSpouseFBP)."'".","; // fbirthpl = Fathers Birthplace
 						} else {
 							$spouselinks .= "'UNK, UNK, UNK, UNK'".","; // fbirthpl = Fathers Birthplace Not Known
 						}
 						if (isset($pSpouseMBP)) {
-							$spouselinks .= "'".htmlspecialchars($pSpouseMBP, ENT_QUOTES)."'".","; // mbirthpl = Mothers Birthplace
+							$spouselinks .= "'".WT_Filter::escapeHtml($pSpouseMBP)."'".","; // mbirthpl = Mothers Birthplace
 						} else {
 							$spouselinks .= "'UNK, UNK, UNK, UNK'".","; // mbirthpl = Mothers Birthplace Not Known
 						}
@@ -2014,14 +2014,14 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						}
 						$spouselinks .= "'".(($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
 						$spouselinks .= "''".","; // occu  = Occupation
-						$spouselinks .= "'".htmlspecialchars($child->getBirthPlace(), ENT_QUOTES)."'".","; // birthpl = Individuals Birthplace
+						$spouselinks .= "'".WT_Filter::escapeHtml($child->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
 						if (isset($ChildFBP)) {
-							$spouselinks .= "'".htmlspecialchars($ChildFBP, ENT_QUOTES)."'".","; // fbirthpl = Fathers Birthplace
+							$spouselinks .= "'".WT_Filter::escapeHtml($ChildFBP)."'".","; // fbirthpl = Fathers Birthplace
 						} else {
 							$spouselinks .= "'UNK, UNK, UNK, UNK'".","; // fbirthpl = Fathers Birthplace Not Known
 						}
 						if (isset($ChildMBP)) {
-							$spouselinks .= "'".htmlspecialchars($ChildMBP, ENT_QUOTES)."'".","; // mbirthpl = Mothers Birthplace
+							$spouselinks .= "'".WT_Filter::escapeHtml($ChildMBP)."'".","; // mbirthpl = Mothers Birthplace
 						} else {
 							$spouselinks .= "'UNK, UNK, UNK, UNK'".","; // mbirthpl = Mothers Birthplace Not Known
 						}

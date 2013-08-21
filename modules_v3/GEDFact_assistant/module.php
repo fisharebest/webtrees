@@ -143,7 +143,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			echo "<td class=\"list_value_wrap\"><ul>";
 			usort($myindilist, array('WT_GedcomRecord', 'Compare'));
 			foreach ($myindilist as $indi) {
-				$nam = htmlspecialchars($indi->getFullName());
+				$nam = WT_Filter::escapeHtml($indi->getFullName());
 				echo "<li><a href=\"#\" onclick=\"pasterow(
 					'".$indi->getXref()."' ,
 					'".$nam."' ,

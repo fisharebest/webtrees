@@ -265,7 +265,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		// title
 		echo '<tr><td class="descriptionbox wrap">',
 			WT_Gedcom_Tag::getLabel('TITL'),
-			'</td><td class="optionbox"><input type="text" name="title" size="30" value="', htmlspecialchars($title), '"></td></tr>';
+			'</td><td class="optionbox"><input type="text" name="title" size="30" value="', WT_Filter::escapeHtml($title), '"></td></tr>';
 
 		// templates
 		echo '<tr><td class="descriptionbox wrap">',
@@ -279,9 +279,9 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			$ckeditor_onchange='';
 		}
 		echo '<select name="template" onchange="document.block.html.value=document.block.template.options[document.block.template.selectedIndex].value;', $ckeditor_onchange, '">';
-		echo '<option value="', htmlspecialchars($html), '">', WT_I18N::translate('Custom'), '</option>';
+		echo '<option value="', WT_Filter::escapeHtml($html), '">', WT_I18N::translate('Custom'), '</option>';
 		foreach ($templates as $title=>$template) {
-			echo '<option value="', htmlspecialchars($template), '">', $title, '</option>';
+			echo '<option value="', WT_Filter::escapeHtml($template), '">', $title, '</option>';
 		}
 		echo '</select></td></tr>';
 
@@ -309,7 +309,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			help_link('block_html_content', $this->getName()),
 			'</td></tr><tr>',
 			'<td colspan="2" class="optionbox">';
-		echo '<textarea name="html" class="html-edit" rows="10" style="width:98%;">', htmlspecialchars($html), '</textarea>';
+		echo '<textarea name="html" class="html-edit" rows="10" style="width:98%;">', WT_Filter::escapeHtml($html), '</textarea>';
 		echo '</td></tr>';
 
 		$show_timestamp=get_block_setting($block_id, 'show_timestamp', false);

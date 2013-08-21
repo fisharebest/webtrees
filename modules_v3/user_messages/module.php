@@ -75,7 +75,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			foreach (get_all_users() as $user_id=>$user_name) {
 				if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'contactmethod')!='none') {
 					$content.='<option value="'.$user_name.'">';
-					$content.='<span dir="auto">'.htmlspecialchars(getUserFullName($user_id)).'</span> - <span dir="auto">'.$user_name.'</span>';
+					$content.='<span dir="auto">'.WT_Filter::escapeHtml(getUserFullName($user_id)).'</span> - <span dir="auto">'.$user_name.'</span>';
 					$content.='</option>';
 				}
 			}
@@ -94,7 +94,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			foreach ($messages as $message) {
 				$content.='<tr>';
 				$content.='<td class="list_value_wrap"><input type="checkbox" id="cb_message'.$message->message_id.'" name="message_id[]" value="'.$message->message_id.'"></td>';
-				$content.='<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message'.$message->message_id.'\');"><i id="message'.$message->message_id.'_img" class="icon-plus"></i> <b>'.htmlspecialchars($message->subject).'</b></a></td>';
+				$content.='<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message'.$message->message_id.'\');"><i id="message'.$message->message_id.'_img" class="icon-plus"></i> <b>'.WT_Filter::escapeHtml($message->subject).'</b></a></td>';
 				$content.='<td class="list_value_wrap">'.format_timestamp($message->created).'</td>';
 				$content.='<td class="list_value_wrap">';
 				$user_id=get_user_id($message->sender);
@@ -102,17 +102,17 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 					$content.='<span dir="auto">'.getUserFullName($user_id).'</span>';
 					$content.='  - <span dir="auto">'.getUserEmail($user_id).'</span>';
 				} else {
-					$content.='<a href="mailto:'.htmlspecialchars($message->sender).'">'.htmlspecialchars($message->sender).'</a>';
+					$content.='<a href="mailto:'.WT_Filter::escapeHtml($message->sender).'">'.WT_Filter::escapeHtml($message->sender).'</a>';
 				}
 				$content.='</td>';
 				$content.='</tr>';
 				$content.='<tr><td class="list_value_wrap" colspan="5"><div id="message'.$message->message_id.'" style="display:none;">';
-				$content.=expand_urls(nl2br(htmlspecialchars($message->body), false)).'<br><br>';
+				$content.=expand_urls(nl2br(WT_Filter::escapeHtml($message->body), false)).'<br><br>';
 				if (strpos($message->subject, /* I18N: When replying to an email, the subject becomes “RE: <subject>” */ WT_I18N::translate('RE: '))!==0) {
 					$message->subject= WT_I18N::translate('RE: ').$message->subject;
 				}
 				if ($user_id) {
-					$content.='<a href="#" onclick="reply(\''.htmlspecialchars($message->sender, ENT_QUOTES).'\', \''.htmlspecialchars($message->subject, ENT_QUOTES).'\'); return false;">'.WT_I18N::translate('Reply').'</a> | ';
+					$content.='<a href="#" onclick="reply(\''.WT_Filter::escapeHtml($message->sender).'\', \''.WT_Filter::escapeHtml($message->subject).'\'); return false;">'.WT_I18N::translate('Reply').'</a> | ';
 				}
 				$content.='<a href="index.php?action=deletemessage&amp;message_id='.$message->message_id.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">'.WT_I18N::translate('Delete').'</a></div></td></tr>';
 			}

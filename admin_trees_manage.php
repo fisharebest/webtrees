@@ -127,7 +127,7 @@ case 'importform':
 	echo '<p>', WT_I18N::translate('This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM.', $gedcom_name), '</p>';
 	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).  
 	$previous_gedcom_filename=get_gedcom_setting($gedcom_id, 'gedcom_filename');
-	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', htmlspecialchars($previous_gedcom_filename), '\' && \'\' != \'', htmlspecialchars($previous_gedcom_filename), '\') return confirm(\'', htmlspecialchars(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">';
+	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', WT_Filter::escapeHtml($previous_gedcom_filename), '\' && \'\' != \'', WT_Filter::escapeHtml($previous_gedcom_filename), '\') return confirm(\'', WT_Filter::escapeHtml(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">';
 	echo '<input type="hidden" name="gedcom_id" value="', $gedcom_id, '">';
 	if (safe_GET('action')=='uploadform') {
 		echo '<input type="hidden" name="action" value="replace_upload">';
@@ -149,11 +149,11 @@ case 'importform':
 		if ($files) {
 			echo WT_DATA_DIR, '<select name="ged_name">';
 			foreach ($files as $file) {
-				echo '<option value="', htmlspecialchars($file), '"';
+				echo '<option value="', WT_Filter::escapeHtml($file), '"';
 				if ($file==$previous_gedcom_filename) {
 					echo ' selected="selected"';
 				}
-				echo'>', htmlspecialchars($file), '</option>';
+				echo'>', WT_Filter::escapeHtml($file), '</option>';
 			}
 			echo '</select>';
 		} else {
@@ -224,7 +224,7 @@ foreach (WT_Tree::GetAll() as $tree) {
 			help_link('upload_gedcom'),
 			'</td>',
 			// delete
-			'<td><a href="', WT_SCRIPT_NAME, '?action=delete&amp;ged=', $tree->tree_name_url, '" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name_html),'\');">', WT_I18N::translate('Delete'), '</a>',
+			'<td><a href="', WT_SCRIPT_NAME, '?action=delete&amp;ged=', $tree->tree_name_url, '" onclick="return confirm(\''.WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)),'\');">', WT_I18N::translate('Delete'), '</a>',
 			'</td></tr></table></td></tr></table><br>';
 	}
 }

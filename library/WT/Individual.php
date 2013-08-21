@@ -986,7 +986,7 @@ class WT_Individual extends WT_GedcomRecord {
 		if (strpos($full, '@P.N.')!==false) {
 			$full=str_replace('@P.N.', $UNKNOWN_PN, $full);
 		}
-		$full='<span class="NAME" dir="auto" translate="no">'.preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', htmlspecialchars($full)).'</span>';
+		$full='<span class="NAME" dir="auto" translate="no">'.preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', WT_Filter::escapeHtml($full)).'</span>';
 
 		// The standards say you should use a suffix of '*' for preferred name
 		$full=preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);

@@ -234,11 +234,11 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<table id="story_module">';
 				echo '<tr><th>';
 				echo WT_I18N::translate('Story title'), help_link('story_title', $this->getName());
-				echo '</th></tr><tr><td><textarea name="title" rows="1" cols="90" tabindex="2">', htmlspecialchars($title), '</textarea></td></tr>';
+				echo '</th></tr><tr><td><textarea name="title" rows="1" cols="90" tabindex="2">', WT_Filter::escapeHtml($title), '</textarea></td></tr>';
 				echo '<tr><th>';
 				echo WT_I18N::translate('Story'), help_link('add_story', $this->getName());
 				echo '</th></tr><tr><td>';
-				echo '<textarea name="story_body" class="html-edit" rows="10" cols="90" tabindex="2">', htmlspecialchars($story_body), '</textarea>';
+				echo '<textarea name="story_body" class="html-edit" rows="10" cols="90" tabindex="2">', WT_Filter::escapeHtml($story_body), '</textarea>';
 				echo '</td></tr>';
 				echo '</table><table id="story_module2">';
 				echo '<tr>';

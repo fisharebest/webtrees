@@ -173,7 +173,7 @@ if ($action=="update") {
 
 	$success = false;
 
-	echo '<b>', htmlspecialchars(str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
+	echo '<b>', WT_Filter::escapeHtml(str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
 }
 
 if ($action=='add') {
@@ -222,7 +222,7 @@ if ($action=='add') {
 	if (!isset($place_name) || $place_name=="") echo '<b>', WT_I18N::translate('unknown');
 	else echo '<b>', $place_name;
 	if (count($where_am_i)>0)
-		echo ', ', htmlspecialchars(str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
+		echo ', ', WT_Filter::escapeHtml(str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
 	echo '</b><br>';
 }
 
@@ -250,7 +250,7 @@ $api='v3';
 	</tr>
 	<tr>
 		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></td>
-		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo htmlspecialchars($place_name); ?>" size="25" class="address_input">
+		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo WT_Filter::escapeHtml($place_name); ?>" size="25" class="address_input">
 			<div id="INDI_PLAC_pop" style="display: inline;">
 			<?php echo print_specialchar_link('NEW_PLACE_NAME'); ?></div></td><td class="optionbox">
 			<label for="new_pl_name"><a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo WT_I18N::translate('Search globally'); ?></a></label>

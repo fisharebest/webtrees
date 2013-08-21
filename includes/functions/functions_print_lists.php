@@ -276,8 +276,8 @@ function format_indi_table($datalist, $option='') {
 		// Use "AAAA" as a separator (instead of ",") as Javascript.localeCompare() ignores
 		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 		// Similarly, @N.N. would sort as NN.
-		$html .= '<td>'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). 'AAAA'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). '</td>';
-		$html .= '<td>'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). 'AAAA'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). '</td>';
+		$html .= '<td>'. WT_Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)). 'AAAA'. WT_Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)). '</td>';
+		$html .= '<td>'. WT_Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)). 'AAAA'. WT_Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)). '</td>';
 		//-- SOSA
 		if ($option=='sosa') {
 			$html .= '<td><a href="relationship.php?pid1='. $datalist[1]. '&amp;pid2='. $person->getXref(). '" title="'. WT_I18N::translate('Relationships'). '">'. WT_I18N::number($key). '</a></td><td>'. $key. '</td>';
@@ -685,8 +685,8 @@ function format_fam_table($datalist, $option='') {
 		// Use "AAAA" as a separator (instead of ",") as Javascript.localeCompare() ignores
 		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 		// Similarly, @N.N. would sort as NN.
-		$html .= '<td>'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). 'AAAA'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). '</td>';
-		$html .= '<td>'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). 'AAAA'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). '</td>';
+		$html .= '<td>'. WT_Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)). 'AAAA'. WT_Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)). '</td>';
+		$html .= '<td>'. WT_Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)). 'AAAA'. WT_Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)). '</td>';
 		$mdate=$family->getMarriageDate();
 		//-- Husband age
 		$hdate=$husb->getBirthDate();
@@ -731,8 +731,8 @@ function format_fam_table($datalist, $option='') {
 		// Use "AAAA" as a separator (instead of ",") as Javascript.localeCompare() ignores
 		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 		// Similarly, @N.N. would sort as NN.
-		$html .= '<td>'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). 'AAAA'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). '</td>';
-		$html .= '<td>'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). 'AAAA'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). '</td>';
+		$html .= '<td>'. WT_Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)). 'AAAA'. WT_Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)). '</td>';
+		$html .= '<td>'. WT_Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)). 'AAAA'. WT_Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)). '</td>';
 		$mdate=$family->getMarriageDate();
 		//-- Wife age
 		$wdate=$wife->getBirthDate();
@@ -1334,10 +1334,10 @@ function format_surname_table($surnames, $script) {
 		// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 		foreach ($surns as $spfxsurn=>$indis) {
 			if ($spfxsurn) {
-				$html.='<a href="'.$url.'" dir="auto">'.htmlspecialchars($spfxsurn).'</a><br>';
+				$html.='<a href="'.$url.'" dir="auto">'.WT_Filter::escapeHtml($spfxsurn).'</a><br>';
 			} else {
 				// No surname, but a value from "2 SURN"?  A common workaround for toponyms, etc.
-				$html.='<a href="'.$url.'" dir="auto">'.htmlspecialchars($surn).'</a><br>';
+				$html.='<a href="'.$url.'" dir="auto">'.WT_Filter::escapeHtml($surn).'</a><br>';
 			}
 		}
 		$html.='</td>';
@@ -1436,7 +1436,7 @@ function format_surname_list($surnames, $style, $totals, $script) {
 				$first_spfxsurn=$spfxsurn;
 			}
 		}
-		$subhtml='<a href="'.$url.'" dir="auto">'.htmlspecialchars(implode(WT_I18N::$list_separator, array_keys($surns))).'</a>';
+		$subhtml='<a href="'.$url.'" dir="auto">'.WT_Filter::escapeHtml(implode(WT_I18N::$list_separator, array_keys($surns))).'</a>';
 
 		if ($totals) {
 			$subtotal=0;

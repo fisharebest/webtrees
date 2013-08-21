@@ -233,7 +233,7 @@ function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CA
 		$header_links.= '<link rel="canonical" href="'. $LINK_CANONICAL. '">';
 	}
 	if (!empty($META_DESCRIPTION)) {
-		$header_links.= '<meta name="description" content="'. htmlspecialchars($META_DESCRIPTION). '">';
+		$header_links.= '<meta name="description" content="'. WT_Filter::escapeHtml($META_DESCRIPTION). '">';
 	}
 	$header_links.= '<meta name="robots" content="'. $META_ROBOTS. '">';
 	if (!empty($META_GENERATOR)) {
@@ -316,7 +316,7 @@ function whoisonline() {
 		$i=0;
 		foreach ($loggedusers as $user_id=>$user_name) {
 			$content .= '<div class="logged_in_name">';
-			$content .= htmlspecialchars(getUserFullName($user_id))." - ".htmlspecialchars($user_name);
+			$content .= WT_Filter::escapeHtml(getUserFullName($user_id) . ' - ' . $user_name);
 			if (WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
 				$content .= ' <a class="icon-email" href="#" onclick="return message(\''.$user_name . '\', \'\', \''.addslashes(urlencode(get_query_url())).'\', \'\');" title="' . WT_I18N::translate('Send Message').'"></a>';
 			}
@@ -341,7 +341,7 @@ function user_contact_link($user_id) {
 		return '';
 	case 'mailto':
 		$email=getUserEmail($user_id);
-		return '<a href="mailto:'.htmlspecialchars($email).'">'.htmlspecialchars($fullname).'</a>';
+		return '<a href="mailto:'.WT_Filter::escapeHtml($email).'">'.WT_Filter::escapeHtml($fullname).'</a>';
 	default:
 		return "<a href='#' onclick='message(\"".get_user_name($user_id)."\", \"".$method."\", \"".addslashes(urlencode(get_query_url()))."\", \"\");return false;'>".$fullname."</a>";
 	}
@@ -554,7 +554,7 @@ function print_privacy_error() {
 		break;
 	case 'mailto':
 		$email=getUserEmail($user_id);
-		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', '<a href="mailto:'.htmlspecialchars($email).'">'.htmlspecialchars($fullname).'</a>', '</div>';
+		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', '<a href="mailto:'.WT_Filter::escapeHtml($email).'">'.WT_Filter::escapeHtml($fullname).'</a>', '</div>';
 		break;
 	default:
 		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', "<a href='#' onclick='message(\"", get_user_name($user_id), "\", \"", $method, "\", \"", addslashes(urlencode(get_query_url())), "\", \"\");return false;'>", $fullname, '</a>', '</div>';

@@ -88,13 +88,13 @@ class WT_Place {
 
 	public function getPlaceName() {
 		$place=reset($this->gedcom_place);
-		return $place ? '<span dir="auto">'.htmlspecialchars($place).'</span>' : WT_I18N::translate('unknown');
+		return $place ? '<span dir="auto">'.WT_Filter::escapeHtml($place).'</span>' : WT_I18N::translate('unknown');
 	}
 
 	public function getFullName() {
 		$tmp=array();
 		foreach ($this->gedcom_place as $place) {
-			$tmp[]='<span dir="auto">' . htmlspecialchars($place) . '</span>';
+			$tmp[]='<span dir="auto">' . WT_Filter::escapeHtml($place) . '</span>';
 		}
 		return implode(WT_I18N::$list_separator, $tmp);
 	}
@@ -116,7 +116,7 @@ class WT_Place {
 				$short_name=implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 0, $SHOW_PEDIGREE_PLACES));
 			}
 			// Add a tool-tip showing the full name
-			return '<span title="'.htmlspecialchars($this->getGedcomName()).'" dir="auto">'.htmlspecialchars($short_name).'</span>';
+			return '<span title="'.WT_Filter::escapeHtml($this->getGedcomName()).'" dir="auto">'.WT_Filter::escapeHtml($short_name).'</span>';
 		}
 	}
 
@@ -124,7 +124,7 @@ class WT_Place {
 	public function getReverseName() {
 		$tmp=array();
 		foreach (array_reverse($this->gedcom_place) as $place) {
-			$tmp[]='<span dir="auto">' . htmlspecialchars($place) . '</span>';
+			$tmp[]='<span dir="auto">' . WT_Filter::escapeHtml($place) . '</span>';
 		}
 		return implode(WT_I18N::$list_separator, $tmp);
 	}

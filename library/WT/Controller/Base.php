@@ -100,7 +100,7 @@ class WT_Controller_Base {
 		$load_js=array();
 		foreach (array_keys($this->external_javascript) as $script_name) {
 			$load_js[]='"'.$script_name.'"';
-			$TMP_HTML.='<script src="'.htmlspecialchars($script_name).'"></script>';
+			$TMP_HTML.='<script src="' . $script_name . '"></script>';
 		}
 		$load_js='[' . implode(',', $load_js) . ']';
 		

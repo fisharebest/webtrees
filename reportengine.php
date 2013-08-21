@@ -228,7 +228,7 @@ elseif ($action=='setup') {
 				if (substr($display, 0, 18)=='WT_I18N::translate' || substr($display, 0, 15) == 'WT_I18N::number' || substr($display, 0, 23)=='WT_Gedcom_Tag::getLabel') {
 					eval("\$display=$display;");
 				}
-				echo '<option value="', htmlspecialchars($value), '"';
+				echo '<option value="', WT_Filter::escapeHtml($value), '"';
 				if ($opt[0]==$input['default']) {
 					echo ' selected="selected"';
 				}

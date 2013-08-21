@@ -169,7 +169,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					echo '<dl><dt class="label">', WT_Gedcom_Tag::getLabel($fact, $this->record), '</dt>';
 					echo '<dd class="field">'; // Before using dir="auto" on this field, note that Gecko treats this as an inline element but WebKit treats it as a block element
 					if (isset($nmatch[$i][2])) {
-							$name = htmlspecialchars($nmatch[$i][2]);
+							$name = WT_Filter::escapeHtml($nmatch[$i][2]);
 							$name = str_replace('/', '', $name);
 							$name=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
 							switch ($fact) {

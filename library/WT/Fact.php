@@ -192,7 +192,7 @@ class WT_Fact {
 			case 'FACT':
 				if ($this->getAttribute('TYPE')) {
 					// Custom FACT/EVEN - with a TYPE
-					return WT_I18N::translate(htmlspecialchars($this->getAttribute('TYPE')));
+					return WT_I18N::translate(WT_Filter::escapeHtml($this->getAttribute('TYPE')));
 				}
 				// no break - drop into next case
 			default:
@@ -226,7 +226,7 @@ class WT_Fact {
 		$data = '<span class="details_label">'.$this->getLabel($ABBREVIATE_CHART_LABELS).'</span>';
 		// Don't display "yes", because format_fact_date() does this for us.  (Should it?)
 		if ($value && $value != 'Y') {
-			$data .= ' <span dir="auto">' . htmlspecialchars($value) . '</span>';
+			$data .= ' <span dir="auto">' . WT_Filter::escapeHtml($value) . '</span>';
 		}
 		$data .= ' '.format_fact_date($this, $this->getParent(), $anchor, false);
 		$data .= ' '.format_fact_place($this, $anchor, false, false);
