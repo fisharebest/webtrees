@@ -1244,11 +1244,6 @@ case 'gedcom_news_limit':
 	$text=WT_I18N::translate('You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles.');
 	break;
 
-case 'gen_missing_thumbs':
-	$title=WT_I18N::translate('Create missing thumbnails');
-	$text=WT_I18N::translate('This option will generate thumbnails for all files in the current directory which don\'t already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br><br>If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links.');
-	break;
-
 case 'google_chart_surname':
 	$title=WT_I18N::translate('Surname');
 	$text=WT_I18N::translate('The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used.');
