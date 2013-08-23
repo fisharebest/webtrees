@@ -41,7 +41,7 @@ echo '
 				<th class="descriptionbox wrap">'. WT_I18N::translate('Individual'). '</th>
 				<th class="descriptionbox wrap">'. WT_I18N::translate('Generations'). '</th>
 				<th class="descriptionbox wrap">'. WT_I18N::translate('Layout'). '</th>
-				<th class="descriptionbox wrap">'. WT_I18N::translate('Show Details'). '</th>
+				<th class="descriptionbox wrap">'. WT_I18N::translate('Show details'). '</th>
 				<th rowspan="2" class="facts_label03"><input type="submit" value="'. WT_I18N::translate('View'). '"></th>
 			</tr>
 			<tr>

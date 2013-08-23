@@ -149,7 +149,7 @@ class WT_I18N {
 		global $DATE_FORMAT; // I18N: This is the format string for full dates.  See http://php.net/date for codes
 		$DATE_FORMAT=self::noop('%j %F %Y');
 		global $TIME_FORMAT; // I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
-		$TIME_FORMAT=self::noop('%g:%i:%s %a');
+		$TIME_FORMAT=self::noop('%H:%i:%s');
 		global $ALPHABET_upper; // Alphabetic sorting sequence (upper-case letters), used by webtrees to sort strings
 		$ALPHABET_upper=self::noop('ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 		list(, $ALPHABET_upper)=explode('=', $ALPHABET_upper);
@@ -473,8 +473,8 @@ class WT_I18N {
 			' "sInfoPostfix":    "",'.
 			' "sInfoThousands":  "'.$symbols['group'].'",'.
 			' "sLengthMenu":     "'.WT_Filter::escapeJs($length_menu).'",'.
-			' "sLoadingRecords": "'.WT_I18N::translate('Loading...').'",'.
-			' "sProcessing":     "'.WT_I18N::translate('Loading...').'",'.
+			' "sLoadingRecords": "'.WT_I18N::translate('Loading…').'",'.
+			' "sProcessing":     "'.WT_I18N::translate('Loading…').'",'.
 			' "sSearch":         "'.WT_I18N::translate('Filter').'",'.
 			' "sUrl":            "",'.
 			' "sZeroRecords":    "'.WT_I18N::translate('No records to display').'"'.

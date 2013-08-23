@@ -45,7 +45,7 @@ $controller
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Show Details'); ?>
+					<?php echo WT_I18N::translate('Show details'); ?>
 				</td>
 				<td class="optionbox">
 					<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">

@@ -66,7 +66,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 				<td>
 					<span class="subheaders"> <?php echo $label; ?> </span> - 
-					<a href="<?php echo $family->getHtmlUrl() ; ?>"><?php echo WT_I18N::translate('View Family'); ?></a>
+					<a href="<?php echo $family->getHtmlUrl() ; ?>"><?php echo WT_I18N::translate('View family'); ?></a>
 				</td>
 			</tr>
 		</table>
@@ -306,7 +306,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		<?php } ?>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return add_famc('<?php echo $controller->record->getXref(); ?>');"><?php echo WT_I18N::translate('Link this person to an existing family as a child'); ?></a>
+				<a href="#" onclick="return add_famc('<?php echo $controller->record->getXref(); ?>');"><?php echo WT_I18N::translate('Link this individual to an existing family as a child'); ?></a>
 				</td>
 			</tr>
 			<?php if ($controller->record->getSex()!="F") { ?>
@@ -317,7 +317,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			</tr>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Add a wife using an existing person'); ?></a>
+				<a href="#" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Add a wife using an existing individual'); ?></a>
 				</td>
 			</tr>
 			<?php }
@@ -329,7 +329,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			</tr>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Add a husband using an existing person'); ?></a>
+				<a href="#" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Add a husband using an existing individual'); ?></a>
 				</td>
 			</tr>
 			<?php } ?>

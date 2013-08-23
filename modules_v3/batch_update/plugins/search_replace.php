@@ -79,7 +79,7 @@ class search_replace_bu_plugin extends base_plugin {
 			$ct=-1;
 			$ct=@preg_match('/'.$this->search.'/', '');
 			if ($ct==-1) {
-				$this->error='<br><span class="error">'.WT_I18N::translate('The regex appears to contain an error.  It can\'t be used.').'</span>';
+				$this->error='<br><span class="error">'.WT_I18N::translate('The regex appears to contain an error.  It can’t be used.').'</span>';
 			}
 			break;
 		}

@@ -224,7 +224,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				$agew=null;
 			}
 			if ($ageh && $agew) {
-				echo '<span class="age"> ', WT_I18N::translate('Husband\'s age'), ' ', $ageh, ' ', WT_I18N::translate('Wife\'s age'), ' ', $agew, '</span>';
+				echo '<span class="age"> ', WT_I18N::translate('Husband’s age'), ' ', $ageh, ' ', WT_I18N::translate('Wife’s age'), ' ', $agew, '</span>';
 			} elseif ($ageh) {
 				echo '<span class="age"> ', WT_I18N::translate('Age'), ' ', $ageh, '</span>';
 			} elseif ($agew) {

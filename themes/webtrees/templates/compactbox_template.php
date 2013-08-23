@@ -49,7 +49,7 @@ echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '>
 			$BirthDeath,
 		'</div>
 		<div id="inout-',$boxID,'" style="display:none;">
-			<div id="LOADING-inout-',$boxID,'">',WT_I18N::translate('Loading...'),'</div>
+			<div id="LOADING-inout-',$boxID,'">',WT_I18N::translate('Loading…'),'</div>
 		</div>';
 	// end of zoom view
 echo '</div>';

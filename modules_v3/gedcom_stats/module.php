@@ -152,7 +152,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .='</tr>';
 		}
 		if ($stat_long_life) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Person who lived the longest').'</td><td class="facts_value stats_value">'.$stats->LongestLifeAge().'</td>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Individual who lived the longest').'</td><td class="facts_value stats_value">'.$stats->LongestLifeAge().'</td>';
 			if (!$block) {
 				$content .= '<td class="facts_value">'.$stats->LongestLife().'</td>';
 			}
@@ -330,7 +330,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			<?php echo WT_I18N::translate('Media objects'); ?></td>
 			<td><input type="checkbox" value="yes" name="stat_long_life"
 			<?php if ($stat_long_life) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Person who lived the longest'); ?></td>
+			<?php echo WT_I18N::translate('Individual who lived the longest'); ?></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox" value="yes" name="stat_repo"

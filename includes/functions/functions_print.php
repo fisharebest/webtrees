@@ -692,7 +692,7 @@ function format_parents_age($pid, $birth_date=null) {
 						if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()+90) {
 							$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
 						} else {
-							$html.=' <span title="'.WT_I18N::translate('Mother\'s age').'">'.$sex.$age.'</span>';
+							$html.=' <span title="'.WT_I18N::translate('Mother’s age').'">'.$sex.$age.'</span>';
 						}
 						break;
 					case 'M':
@@ -700,11 +700,11 @@ function format_parents_age($pid, $birth_date=null) {
 						if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()) {
 							$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
 						} else {
-							$html.=' <span title="'.WT_I18N::translate('Father\'s age').'">'.$sex.$age.'</span>';
+							$html.=' <span title="'.WT_I18N::translate('Father’s age').'">'.$sex.$age.'</span>';
 						}
 						break;
 					default:
-						$html.=' <span title="'.WT_I18N::translate('Parent\'s age').'">'.$sex.$age.'</span>';
+						$html.=' <span title="'.WT_I18N::translate('Parent’s age').'">'.$sex.$age.'</span>';
 						break;
 					}
 				}

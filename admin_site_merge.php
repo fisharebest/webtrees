@@ -230,7 +230,7 @@ if ($action=='choose') {
 		<p>', WT_I18N::translate('Select two GEDCOM records to merge.  The records must be of the same type.'), '</p>
 		<table><tr>
 		<td>',
-		WT_I18N::translate('Merge To ID:'),
+		WT_I18N::translate('Merge to ID:'),
 		'</td><td>
 		<input type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1" autofocus="autofocus">
 		<select name="ged" tabindex="4"';
@@ -251,7 +251,7 @@ if ($action=='choose') {
 		<a href="#" onclick="fopen_find(document.merge.gid1, document.merge.ged);" tabindex="8" class="icon-button_family" title="'.WT_I18N::translate('Find a family').'"></a>
 		<a href="#" onclick="sopen_find(document.merge.gid1, document.merge.ged);" tabindex="10" class="icon-button_source" title="'.WT_I18N::translate('Find a source').'"></a>
 		</td></tr><tr><td>',
-		WT_I18N::translate('Merge From ID:'),
+		WT_I18N::translate('Merge from ID:'),
 		'</td><td>
 		<input type="text" name="gid2" id="gid2" value="', $gid2, '" size="10" tabindex="2">&nbsp;',
 		'<select name="ged2" tabindex="5"';

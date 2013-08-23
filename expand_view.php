@@ -89,7 +89,7 @@ foreach ($facts as $event) {
 			$spouse = $event->getParent()->getSpouse($person);
 			if ($spouse) {
 				echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
-				echo '<a href="', $event->getParent()->getHtmlUrl(), '">', WT_I18N::translate('View Family'), ' - </a>';
+				echo '<a href="', $event->getParent()->getHtmlUrl(), '">', WT_I18N::translate('View family'), ' - </a>';
 			}
 		}
 		echo ' ',format_fact_place($event, true, true);

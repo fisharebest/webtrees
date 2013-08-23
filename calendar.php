@@ -122,13 +122,13 @@ $cal=rawurlencode($cal);
 
 switch ($action) {
 case 'today':
-	echo WT_I18N::translate('On This Day ...').'<br>'.$ged_date->Display(false);
+	echo WT_I18N::translate('On this day…').'<br>'.$ged_date->Display(false);
 	break;
 case 'calendar':
-	echo WT_I18N::translate('In This Month ...').'<br>'.$ged_date->Display(false, '%F %Y');
+	echo WT_I18N::translate('In this month…').'<br>'.$ged_date->Display(false, '%F %Y');
 	break;
 case 'year':
-	echo WT_I18N::translate('In This Year ...').'<br>'.$ged_date->Display(false, '%Y');
+	echo WT_I18N::translate('In this year…').'<br>'.$ged_date->Display(false, '%Y');
 	break;
 }
 echo '</h2></td></tr>';
@@ -186,26 +186,26 @@ echo '<td class="optionbox vmiddle">';
 echo '<select class="list_value" name="filterof" onchange="document.dateform.submit();">';
 echo '<option value="all"';
 if ($filterof == "all") echo ' selected="selected"';
-echo '>', WT_I18N::translate('All People'), '</option>';
+echo '>', WT_I18N::translate('All individuals'), '</option>';
 if (!$HIDE_LIVE_PEOPLE || WT_USER_ID) {
 	echo '<option value="living"';
 if ($filterof == "living") echo ' selected="selected"';
-	echo '>', WT_I18N::translate('Living People'), '</option>';
+	echo '>', WT_I18N::translate('Living individuals'), '</option>';
 }
 echo '<option value="recent"';
 if ($filterof == "recent") echo ' selected="selected"';
-echo '>', WT_I18N::translate('Recent Years (&lt; 100 yrs)'), '</option>';
+echo '>', WT_I18N::translate('Recent years (&lt; 100 yrs)'), '</option>';
 echo '</select>';
 	
 echo '&nbsp;&nbsp;&nbsp;';
 	
 if ($filtersx=="") {
-	echo '<i class="icon-sex_m_15x15" title="', WT_I18N::translate('All People'), '"></i>';
-	echo '<i class="icon-sex_f_15x15" title="', WT_I18N::translate('All People'), '"></i> | ';
+	echo '<i class="icon-sex_m_15x15" title="', WT_I18N::translate('All individuals'), '"></i>';
+	echo '<i class="icon-sex_f_15x15" title="', WT_I18N::translate('All individuals'), '"></i> | ';
 } else {
 	echo '<a href="calendar.php?cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;action=', $action, '">';
-	echo '<i class="icon-sex_m_9x9" title="', WT_I18N::translate('All People'), '"></i>';
-	echo '<i class="icon-sex_f_9x9" title="', WT_I18N::translate('All People'), '"></i></a> | ';
+	echo '<i class="icon-sex_m_9x9" title="', WT_I18N::translate('All individuals'), '"></i>';
+	echo '<i class="icon-sex_f_9x9" title="', WT_I18N::translate('All individuals'), '"></i></a> | ';
 }
 if ($filtersx=="M") {
 	echo '<i class="icon-sex_m_15x15" title="', WT_I18N::translate('Males'), '"></i> | ';
@@ -277,19 +277,19 @@ echo "<table class=\"width100\">";
 // Day/Month/Year and calendar selector
 echo '<tr><td class="topbottombar width50">';
 if ($action=='today') {
-	echo '<span class="error">', WT_I18N::translate('View Day'), '</span>';
+	echo '<span class="error">', WT_I18N::translate('View day'), '</span>';
 } else {
-	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=today\">", WT_I18N::translate('View Day'), "</a>";
+	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=today\">", WT_I18N::translate('View day'), "</a>";
 }
 if ($action=='calendar') {
-	echo ' | <span class="error">', WT_I18N::translate('View Month'), '</span>';
+	echo ' | <span class="error">', WT_I18N::translate('View month'), '</span>';
 } else {
-	echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=calendar\">", WT_I18N::translate('View Month'), "</a>";
+	echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=calendar\">", WT_I18N::translate('View month'), "</a>";
 }
 if ($action=='year') {
-	echo ' | <span class="error">', WT_I18N::translate('View Year'), '</span>';
+	echo ' | <span class="error">', WT_I18N::translate('View year'), '</span>';
 } else {
-	echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=year\">", WT_I18N::translate('View Year'), "</a>";
+	echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=year\">", WT_I18N::translate('View year'), "</a>";
 }
 echo '</td><td class="topbottombar width50">';
 $n=0;
@@ -442,7 +442,7 @@ case 'today':
 	echo '<i class="icon-sex_m_15x15" title="', WT_I18N::translate('Males'), '"></i> ', $males, '&nbsp;&nbsp;&nbsp;&nbsp;';
 	echo '<i class="icon-sex_f_15x15" title="', WT_I18N::translate('Males'), '"></i> ', $females, '&nbsp;&nbsp;&nbsp;&nbsp;';
 	if (count($indis)!=$males+$females) {
-		echo '<i class="icon-sex_u_15x15" title="', WT_I18N::translate('All People'), '"></i> ', count($indis)-$males-$females;
+		echo '<i class="icon-sex_u_15x15" title="', WT_I18N::translate('All individuals'), '"></i> ', count($indis)-$males-$females;
 	}
 	echo '</td>';
 	echo '<td class="descriptionbox">', WT_I18N::translate('Total families: %s', count($fams)), '</td>';

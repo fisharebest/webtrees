@@ -156,14 +156,14 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 
 				// View Notes
 				if (strpos($media_list_item['media']->getGedcom(), "\n1 NOTE")) {
-					$submenu = new WT_Menu(WT_I18N::translate('View Notes'), '#');
+					$submenu = new WT_Menu(WT_I18N::translate('View notes'), '#');
 					// Notes Tooltip ----------------------------------------------------
-					$submenu->addOnclick("modalNotes('". WT_Filter::escapeJs($notes) ."','". WT_I18N::translate('View Notes') ."'); return false;");
+					$submenu->addOnclick("modalNotes('". WT_Filter::escapeJs($notes) ."','". WT_I18N::translate('View notes') ."'); return false;");
 					$submenu->addClass("submenuitem");
 					$menu->addSubMenu($submenu);
 				}
 				//View Details
-				$submenu = new WT_Menu(WT_I18N::translate('View Details'), WT_SERVER_NAME.WT_SCRIPT_PATH . "mediaviewer.php?mid=".$media_list_item['media']->getXref().'&amp;ged='.WT_GEDURL, 'right');
+				$submenu = new WT_Menu(WT_I18N::translate('View details'), WT_SERVER_NAME.WT_SCRIPT_PATH . "mediaviewer.php?mid=".$media_list_item['media']->getXref().'&amp;ged='.WT_GEDURL, 'right');
 				$submenu->addClass("submenuitem");
 				$menu->addSubMenu($submenu);
 
@@ -204,17 +204,17 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 							$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', null, 'right', 'right');
 							$submenu->addClass('submenuitem', 'submenu');
 
-							$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'));
+							$ssubmenu = new WT_Menu(WT_I18N::translate('To individual'));
 							$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid=".$media_list_item['media']->getXref()."&amp;linkto=person', '_blank', find_window_specs);");
 							$ssubmenu->addClass('submenuitem', 'submenu');
 							$submenu->addSubMenu($ssubmenu);
 
-							$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'));
+							$ssubmenu = new WT_Menu(WT_I18N::translate('To family'));
 							$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid=".$media_list_item['media']->getXref()."&amp;linkto=family', '_blank', find_window_specs);");
 							$ssubmenu->addClass('submenuitem', 'submenu');
 							$submenu->addSubMenu($ssubmenu);
 
-							$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'));
+							$ssubmenu = new WT_Menu(WT_I18N::translate('To source'));
 							$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid=".$media_list_item['media']->getXref()."&amp;linkto=source', '_blank', find_window_specs);");
 							$ssubmenu->addClass('submenuitem', 'submenu');
 							$submenu->addSubMenu($ssubmenu);

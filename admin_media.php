@@ -444,17 +444,17 @@ function media_object_info(WT_Media $media) {
 		$menu = new WT_Menu();
 		$menu->addLabel(WT_I18N::translate('Set link'));
 		$menu->addClass('', 'submenu');
-		$submenu = new WT_Menu(WT_I18N::translate('To Person'));
+		$submenu = new WT_Menu(WT_I18N::translate('To individual'));
 		$submenu->addClass("submenuitem".$classSuffix);
 		$submenu->addOnClick("return ilinkitem('$xref', 'person', '$gedcom')");
 		$menu->addSubMenu($submenu);
 
-		$submenu = new WT_Menu(WT_I18N::translate('To Family'));
+		$submenu = new WT_Menu(WT_I18N::translate('To family'));
 		$submenu->addClass("submenuitem".$classSuffix);
 		$submenu->addOnClick("return ilinkitem('$xref', 'family', '$gedcom')");
 		$menu->addSubMenu($submenu);
 
-		$submenu = new WT_Menu(WT_I18N::translate('To Source'));
+		$submenu = new WT_Menu(WT_I18N::translate('To source'));
 		$submenu->addClass("submenuitem".$classSuffix);
 		$submenu->addOnClick("return ilinkitem('$xref', 'source', '$gedcom')");
 		$menu->addSubMenu($submenu);

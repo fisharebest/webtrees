@@ -1081,26 +1081,26 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 	case 'chichison': return WT_I18N::translate_c('child\'s child\'s son',            'great-grandson');
 	case 'chidauchi': return WT_I18N::translate_c('child\'s daughter\'s child',       'great-grandchild');
 	case 'chidaudau': return WT_I18N::translate_c('child\'s daughter\'s daughter',    'great-granddaughter');
-	case 'chidauhus': return WT_I18N::translate_c('child\'s daughter\'s husband',     'granddaughter\'s husband');
+	case 'chidauhus': return WT_I18N::translate_c('child\'s daughter\'s husband',     'granddaughter’s husband');
 	case 'chidauson': return WT_I18N::translate_c('child\'s daughter\'s son',         'great-grandson');
 	case 'chisonchi': return WT_I18N::translate_c('child\'s son\'s child',            'great-grandchild');
 	case 'chisondau': return WT_I18N::translate_c('child\'s son\'s daughter',         'great-granddaughter');
 	case 'chisonson': return WT_I18N::translate_c('child\'s son\'s son',              'great-grandson');
-	case 'chisonwif': return WT_I18N::translate_c('child\'s son\'s wife',             'grandson\'s wife');
+	case 'chisonwif': return WT_I18N::translate_c('child\'s son\'s wife',             'grandson’s wife');
 	case 'dauchichi': return WT_I18N::translate_c('daughter\'s child\'s child',       'great-grandchild');
 	case 'dauchidau': return WT_I18N::translate_c('daughter\'s child\'s daughter',    'great-granddaughter');
 	case 'dauchison': return WT_I18N::translate_c('daughter\'s child\'s son',         'great-grandson');
 	case 'daudauchi': return WT_I18N::translate_c('daughter\'s daughter\'s child',    'great-grandchild');
 	case 'daudaudau': return WT_I18N::translate_c('daughter\'s daughter\'s daughter', 'great-granddaughter');
-	case 'daudauhus': return WT_I18N::translate_c('daughter\'s daughter\'s husband',  'granddaughter\'s husband');
+	case 'daudauhus': return WT_I18N::translate_c('daughter\'s daughter\'s husband',  'granddaughter’s husband');
 	case 'daudauson': return WT_I18N::translate_c('daughter\'s daughter\'s son',      'great-grandson');
-	case 'dauhusfat': return WT_I18N::translate_c('daughter\'s husband\'s father',    'son-in-law\'s father');
-	case 'dauhusmot': return WT_I18N::translate_c('daughter\'s husband\'s mother',    'son-in-law\'s mother');
-	case 'dauhuspar': return WT_I18N::translate_c('daughter\'s husband\'s parent',    'son-in-law\'s parent');
+	case 'dauhusfat': return WT_I18N::translate_c('daughter\'s husband\'s father',    'son-in-law’s father');
+	case 'dauhusmot': return WT_I18N::translate_c('daughter\'s husband\'s mother',    'son-in-law’s mother');
+	case 'dauhuspar': return WT_I18N::translate_c('daughter\'s husband\'s parent',    'son-in-law’s parent');
 	case 'dausonchi': return WT_I18N::translate_c('daughter\'s son\'s child',         'great-grandchild');
 	case 'dausondau': return WT_I18N::translate_c('daughter\'s son\'s daughter',      'great-granddaughter');
 	case 'dausonson': return WT_I18N::translate_c('daughter\'s son\'s son',           'great-grandson');
-	case 'dausonwif': return WT_I18N::translate_c('daughter\'s son\'s wife',          'grandson\'s wife');
+	case 'dausonwif': return WT_I18N::translate_c('daughter\'s son\'s wife',          'grandson’s wife');
 	case 'fatbrochi': return WT_I18N::translate_c('father\'s brother\'s child',       'first cousin');
 	case 'fatbrodau': return WT_I18N::translate_c('father\'s brother\'s daughter',    'first cousin');
 	case 'fatbroson': return WT_I18N::translate_c('father\'s brother\'s son',         'first cousin');
@@ -1223,15 +1223,15 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 	case 'sonchison': return WT_I18N::translate_c('son\'s child\'s son',              'great-grandson');
 	case 'sondauchi': return WT_I18N::translate_c('son\'s daughter\'s child',         'great-grandchild');
 	case 'sondaudau': return WT_I18N::translate_c('son\'s daughter\'s daughter',      'great-granddaughter');
-	case 'sondauhus': return WT_I18N::translate_c('son\'s daughter\'s husband',       'granddaughter\'s husband');
+	case 'sondauhus': return WT_I18N::translate_c('son\'s daughter\'s husband',       'granddaughter’s husband');
 	case 'sondauson': return WT_I18N::translate_c('son\'s daughter\'s son',           'great-grandson');
 	case 'sonsonchi': return WT_I18N::translate_c('son\'s son\'s child',              'great-grandchild');
 	case 'sonsondau': return WT_I18N::translate_c('son\'s son\'s daughter',           'great-granddaughter');
 	case 'sonsonson': return WT_I18N::translate_c('son\'s son\'s son',                'great-grandson');
-	case 'sonsonwif': return WT_I18N::translate_c('son\'s son\'s wife',               'grandson\'s wife');
-	case 'sonwiffat': return WT_I18N::translate_c('son\'s wife\'s father',            'daughter-in-law\'s father');
-	case 'sonwifmot': return WT_I18N::translate_c('son\'s wife\'s mother',            'daughter-in-law\'s mother');
-	case 'sonwifpar': return WT_I18N::translate_c('son\'s wife\'s parent',            'daughter-in-law\'s parent');
+	case 'sonsonwif': return WT_I18N::translate_c('son\'s son\'s wife',               'grandson’s wife');
+	case 'sonwiffat': return WT_I18N::translate_c('son\'s wife\'s father',            'daughter-in-law’s father');
+	case 'sonwifmot': return WT_I18N::translate_c('son\'s wife\'s mother',            'daughter-in-law’s mother');
+	case 'sonwifpar': return WT_I18N::translate_c('son\'s wife\'s parent',            'daughter-in-law’s parent');
 	case 'wifbrowif': return WT_I18N::translate_c('wife\'s brother\'s wife',          'sister-in-law');
 	case 'wifsishus': return WT_I18N::translate_c('wife\'s sister\'s husband',        'brother-in-law');
 
@@ -1845,10 +1845,10 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			case 3:
 				if ($up>$down) {
 					/* I18N: %s=“fifth cousin”, etc. */
-					return WT_I18N::translate('%s thrice removed ascending', cousin_name($cousin, $sex2));
+					return WT_I18N::translate('%s three times removed ascending', cousin_name($cousin, $sex2));
 				} else {
 					/* I18N: %s=“fifth cousin”, etc. */
-					return WT_I18N::translate('%s thrice removed descending', cousin_name($cousin, $sex2));
+					return WT_I18N::translate('%s three times removed descending', cousin_name($cousin, $sex2));
 				}
 			default:
 				if ($up>$down) {

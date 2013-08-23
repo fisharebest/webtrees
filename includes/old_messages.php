@@ -31,9 +31,9 @@ exit;
 
 /* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('An error occurred while creating the Edit form.  Another user may have changed this record since you previously viewed it.');
 /* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('Execution time: %1$s seconds. Database queries: %2$s. Privacy checks: %3$s. Memory usage: %4$s KB.');
-/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('Link this person to an existing family as a husband');
-/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('Link this person to an existing family as a wife');
+/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('Link this individual to an existing family as a husband');
+/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('Link this individual to an existing family as a wife');
 /* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('Please reload the previous page to make sure you are working with the most recent record.');
 /* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('The record with id %s was changed by another user since you last accessed it.');
 /* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('This record was last changed by <i>%s</i> at %s');
-/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('View GEDCOM Record');
+/* I18N: This message is deleted in webtrees-1.5.0  */ WT_I18N::translate('View GEDCOM record');

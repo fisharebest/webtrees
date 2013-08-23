@@ -289,13 +289,13 @@ if ($search) {
 		print_fact_notes($mediaobject->getGedcom(), 1);
 		echo '</div>';
 		foreach ($mediaobject->linkedIndividuals('OBJE') as $individual) {
-			echo '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View Person') . ' — ' . $individual->getFullname().'</a><br>';
+			echo '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View person') . ' — ' . $individual->getFullname().'</a><br>';
 		}
 		foreach ($mediaobject->linkedFamilies('OBJE') as $family) {
-			echo '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View Family') . ' — ' . $family->getFullname().'</a><br>';
+			echo '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View family') . ' — ' . $family->getFullname().'</a><br>';
 		}
 		foreach ($mediaobject->linkedSources('OBJE') as $source) {
-			echo '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View Source') . ' — ' . $source->getFullname().'</a><br>';
+			echo '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View source') . ' — ' . $source->getFullname().'</a><br>';
 		}
 		echo '</td></tr></table>';
 		echo '</td>';

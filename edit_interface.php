@@ -803,7 +803,7 @@ case 'addfamlink':
 	check_record_access($person);
 	
 	$controller
-		->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a child'))
+		->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this individual to an existing family as a child'))
 		->pageHeader();
 
 	?>
@@ -853,7 +853,7 @@ case 'linkfamaction':
 	check_record_access($family);
 	
 	$controller
-		->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a child'))
+		->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this individual to an existing family as a child'))
 		->pageHeader();
 
 	// Replace any existing child->family link (we may be changing the PEDI);
@@ -894,10 +894,10 @@ case 'linkspouse':
 	check_record_access($person);
 	
 	if ($person->getSex()=='F') {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing person'));
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing individual'));
 		$label = WT_I18N::translate('Husband');
 	} else {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a wife using an existing person'));
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a wife using an existing individual'));
 		$label = WT_I18N::translate('Wife');
 	}
 
@@ -953,9 +953,9 @@ case 'linkspouseaction':
 	check_record_access($spouse);
 
 	if ($person->getSex()=='F') {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing person'));
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing individual'));
 	} else {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a wife using an existing person'));
+		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a wife using an existing individual'));
 	}
 	$controller->pageHeader();
 
@@ -1123,7 +1123,7 @@ case 'addsourceaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewnote':
 	$controller
-		->setPageTitle(WT_I18N::translate('Create a new Shared Note'))
+		->setPageTitle(WT_I18N::translate('Create a new shared note'))
 		->pageHeader();
 
 	?>
@@ -1157,7 +1157,7 @@ case 'addnewnote':
 
 case 'addnoteaction':
 	$controller
-		->setPageTitle(WT_I18N::translate('Create a new Shared Note'))
+		->setPageTitle(WT_I18N::translate('Create a new shared note'))
 		->pageHeader();
 
 	$newgedrec  = "0 @XREF@ NOTE";
@@ -1186,7 +1186,7 @@ break;
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnoteaction_assisted':
 	$controller
-		->setPageTitle(WT_I18N::translate('Create a new Shared Note using Assistant'))
+		->setPageTitle(WT_I18N::translate('Create a new shared note using assistant'))
 		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
@@ -1291,7 +1291,7 @@ case 'editnote':
 	check_record_access($note);
 
 	$controller
-		->setPageTitle(WT_I18N::translate('Edit Shared Note'))
+		->setPageTitle(WT_I18N::translate('Edit shared note'))
 		->pageHeader();
 
 	?>
@@ -1329,7 +1329,7 @@ case 'editnoteaction':
 	check_record_access($record);
 
 	$controller
-		->setPageTitle(WT_I18N::translate('Edit Shared Note'))
+		->setPageTitle(WT_I18N::translate('Edit shared note'))
 		->pageHeader();
 
 	$gedrec = preg_replace(
@@ -1348,7 +1348,7 @@ case 'editnoteaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewrepository':
 	$controller
-		->setPageTitle(WT_I18N::translate('Create Repository'))
+		->setPageTitle(WT_I18N::translate('Create repository'))
 		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
@@ -1404,7 +1404,7 @@ case 'addnewrepository':
 
 case 'addrepoaction':
 	$controller
-		->setPageTitle(WT_I18N::translate('Create Repository'))
+		->setPageTitle(WT_I18N::translate('Create repository'))
 		->pageHeader();
 
 	$newgedrec = "0 @XREF@ REPO";
@@ -1743,7 +1743,7 @@ case 'changefamily':
 	check_record_access($family);
 	
 	$controller
-		->setPageTitle(WT_I18N::translate('Change Family Members'))
+		->setPageTitle(WT_I18N::translate('Change family members'))
 		->pageHeader()
 		->addInlineJavascript('
 				function pastename(name) {
@@ -1764,7 +1764,7 @@ case 'changefamily':
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<div id="changefam">
 			<p>
-				<?php echo WT_I18N::translate('Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different person to fill that role in the family.  You can also use the Remove link to remove that person from the family.<br><br>When you have finished changing the family members, click the Save button to save the changes.'); ?>
+				<?php echo WT_I18N::translate('Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the Save button to save the changes.'); ?>
 			</p>
 			<form name="changefamform" method="post" action="edit_interface.php">
 				<input type="hidden" name="action" value="changefamily_update">
@@ -1917,7 +1917,7 @@ case 'changefamily_update':
 	check_record_access($family);
 
 	$controller
-		->setPageTitle(WT_I18N::translate('Change Family Members'))
+		->setPageTitle(WT_I18N::translate('Change family members'))
 		->pageHeader();
 
 	// Current family members

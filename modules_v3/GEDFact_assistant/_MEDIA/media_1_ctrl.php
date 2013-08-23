@@ -54,7 +54,7 @@ if ($pid=="") {
 		//-- Search Function ------------------------------------------------------------
 		?>
 		<tr>
-			<td class="descriptionbox center"><?php echo WT_I18N::translate('Search for People to add to Add Links list.'); ?></td>
+			<td class="descriptionbox center"><?php echo WT_I18N::translate('Search for individuals to add to Add Links list.'); ?></td>
 		</tr>
 		<tr>
 			<td id="srch" class="optionbox center">
@@ -98,11 +98,11 @@ if ($pid=="") {
 					<?php
 					// Header text with "Head" button =================================================
 					$headImg  = '<i class="headimg vmiddle icon-button_head"></i>';
-					$headImg2 = '<i class="headimg2 vmiddle icon-button_head" title="'.WT_I18N::translate('Click to choose person as Head of family.').'"></i>';
-					echo WT_I18N::translate('Click %s to choose person as Head of family.', $headImg);
+					$headImg2 = '<i class="headimg2 vmiddle icon-button_head" title="'.WT_I18N::translate('Click to choose individual as head of family.').'"></i>';
+					echo WT_I18N::translate('Click %s to choose individual as head of family.', $headImg);
 					?>
 					<br><br>
-					<?php echo WT_I18N::translate('Click Name to add person to Add Links List.'); ?>
+					<?php echo WT_I18N::translate('Click name to add individual to add links list.'); ?>
 				</td>
 			</tr>
 	

@@ -124,13 +124,13 @@ default:
 
 	switch (WT_Site::preference('WELCOME_TEXT_AUTH_MODE')) {
 	case 1:
-		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
+		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
 		break;
 	case 2:
-		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.');
+		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.');
 		break;
 	case 3:
-		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
+		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
 		break;
 	case 4:
 		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.');
@@ -210,14 +210,14 @@ case 'requestpw':
 		$user_name = get_user_name($user_id);
 
 		$mail_body = '';
-		$mail_body .= WT_I18N::translate('Hello %s ...', getUserFullName($user_id)) . "\r\n\r\n";
+		$mail_body .= WT_I18N::translate('Hello %s…', getUserFullName($user_id)) . "\r\n\r\n";
 		$mail_body .= WT_I18N::translate('A new password was requested for your user name.') . "\r\n\r\n";
 		$mail_body .= WT_I18N::translate('Username') . ": " . $user_name . "\r\n";
 
 		$mail_body .= WT_I18N::translate('Password') . ": " . $user_new_pw . "\r\n\r\n";
 		$mail_body .= WT_I18N::translate('Recommendation:') . "\r\n";
 		$mail_body .= WT_I18N::translate('Please click on the link below or paste it into your browser, login with the new password, and change it immediately to keep the integrity of your data secure.') . "\r\n\r\n";
-		$mail_body .= WT_I18N::translate('After you have logged in, select the «My Account» link under the «My Page» menu and fill in the password fields to change your password.') . "\r\n\r\n";
+		$mail_body .= WT_I18N::translate('After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password.') . "\r\n\r\n";
 
 		if ($TEXT_DIRECTION=='rtl') {
 			$mail_body .= "<a href=\"".WT_SERVER_NAME.WT_SCRIPT_PATH."\">".WT_SERVER_NAME.WT_SCRIPT_PATH."</a>";
@@ -286,7 +286,7 @@ case 'register':
 			WT_I18N::init(get_user_setting($webmaster_user_id, 'language'));
 
 			$mail1_body=
-				WT_I18N::translate('Hello Administrator ...')."\r\n\r\n".
+				WT_I18N::translate('Hello administrator…')."\r\n\r\n".
 				/* I18N: %s is a server name/URL */
 				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE)) . "\r\n\r\n".
 				WT_I18N::translate('Username')      .' '.$user_name    ."\r\n".
@@ -317,7 +317,7 @@ case 'register':
 
 			// Generate an email in the user’s language
 			$mail2_body=
-				WT_I18N::translate('Hello %s ...', $user_realname) . "\r\n\r\n".
+				WT_I18N::translate('Hello %s…', $user_realname) . "\r\n\r\n".
 				/* I18N: %1$s is the site URL and %2$s is an email address */
 				WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE), $user_email) . '  '.
 				WT_I18N::translate('Information about the request is shown under the link below.') . "\r\n\r\n".
@@ -335,8 +335,8 @@ case 'register':
 				WT_I18N::translate('Username') . " " . $user_name . "\r\n".
 				WT_I18N::translate('Verification code:') . " " . get_user_setting($user_id, 'reg_hashcode') . "\r\n\r\n".
 				WT_I18N::translate('Comments').": " . $user_comments . "\r\n\r\n".
-				WT_I18N::translate('If you didn\'t request an account, you can just delete this message.') . "  ".
-				WT_I18N::translate('You won\'t get any more email from this site, because the account request will be deleted automatically after seven days.') . "\r\n";
+				WT_I18N::translate('If you didn’t request an account, you can just delete this message.') . "  ".
+				WT_I18N::translate('You won’t get any more email from this site, because the account request will be deleted automatically after seven days.') . "\r\n";
 			$mail2_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 			$mail2_to     =$user_email;
 			$mail2_from   =$WEBTREES_EMAIL;
@@ -351,7 +351,7 @@ case 'register':
 					->execute(array($user_email, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));
 			}
 
-			echo '<div class="confirm"><p>', WT_I18N::translate('Hello %s ...<br>Thank you for your registration.', $user_realname), '</p><p>';
+			echo '<div class="confirm"><p>', WT_I18N::translate('Hello %s…<br>Thank you for your registration.', $user_realname), '</p><p>';
 				if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
 					echo WT_I18N::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password.', $user_email);
 				} else {
@@ -373,7 +373,7 @@ case 'register':
 		<h2>', $controller->getPageTitle(), '</h2>';
 		if (WT_Site::preference('SHOW_REGISTER_CAUTION')) {
 			echo '<div id="register-text">';
-			echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>');
+			echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>');
 			echo '</div>';
 		}
 		echo '<div id="register-box">
@@ -470,7 +470,7 @@ case 'verify_hash':
 
 	$user_id=get_user_id($user_name);
 	$mail1_body=
-		WT_I18N::translate('Hello Administrator ...') . "\r\n\r\n".
+		WT_I18N::translate('Hello administrator…') . "\r\n\r\n".
 		/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */
 		WT_I18N::translate('A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s).', getUserFullName($user_id), $user_name,  getUserEmail($user_id))."\r\n\r\n";
 	if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !get_user_setting($user_id, 'verified_by_admin')) {

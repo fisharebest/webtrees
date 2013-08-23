@@ -481,7 +481,7 @@ case 'createform':
 				</td>
 			</tr>
 				<td colspan="4">
-					<input type="submit" value="', WT_I18N::translate('Create User'), '">
+					<input type="submit" value="', WT_I18N::translate('Create user'), '">
 				</td>
 			</tr>	
 		</table>
@@ -495,7 +495,7 @@ case 'cleanup':
 	// Check for idle users
 	//if (!isset($month)) $month = 1;
 	$month = safe_GET_integer('month', 1, 12, 6);
-	echo "<tr><th>", WT_I18N::translate('Number of months since the last login for a user\'s account to be considered inactive: '), "</th>";
+	echo "<tr><th>", WT_I18N::translate('Number of months since the last login for a user’s account to be considered inactive: '), "</th>";
 	echo "<td><select onchange=\"document.location=options[selectedIndex].value;\">";
 	for ($i=1; $i<=12; $i++) {
 		echo "<option value=\"admin_users.php?action=cleanup&amp;month=$i\"";
@@ -515,7 +515,7 @@ case 'cleanup':
 		else
 			$datelogin = (int)get_user_setting($user_id, 'sessiontime');
 		if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && get_user_setting($user_id, 'verified') && get_user_setting($user_id, 'verified_by_admin')) {
-			?><tr><td><?php echo $user_name, " - <p>", $userName, "</p>", WT_I18N::translate('User\'s account has been inactive too long: ');
+			?><tr><td><?php echo $user_name, " - <p>", $userName, "</p>", WT_I18N::translate('User’s account has been inactive too long: ');
 			echo timestamp_to_gedcom_date($datelogin)->Display(false);
 			$ucnt++;
 			?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="1"></td></tr><?php
@@ -526,7 +526,7 @@ case 'cleanup':
 	foreach (get_all_users() as $user_id=>$user_name) {
 		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) {
 			$userName = getUserFullName($user_id);
-			?><tr><td><?php echo $user_name, " - ", $userName, ":&nbsp;&nbsp;", WT_I18N::translate('User didn\'t verify within 7 days.');
+			?><tr><td><?php echo $user_name, " - ", $userName, ":&nbsp;&nbsp;", WT_I18N::translate('User didn’t verify within 7 days.');
 			$ucnt++;
 			?></td><td><input type="checkbox" checked="checked" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_",  "_", "_"), $user_name); ?>" value="1"></td></tr><?php
 		}

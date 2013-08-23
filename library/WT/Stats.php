@@ -2598,7 +2598,7 @@ class WT_Stats {
 					$return = '<a href="'.$child2->getHtmlUrl().'">'.$child2->getFullName().'</a> ';
 					$return .= WT_I18N::translate('and').' ';
 					$return .= '<a href="'.$child1->getHtmlUrl().'">'.$child1->getFullName().'</a>';
-					$return .= ' <a href="'.$family->getHtmlUrl().'">['.WT_I18N::translate('View Family').']</a>';
+					$return .= ' <a href="'.$family->getHtmlUrl().'">['.WT_I18N::translate('View family').']</a>';
 				} else {
 					$return = WT_I18N::translate('This information is private and cannot be shown.');
 				}
@@ -2624,7 +2624,7 @@ class WT_Stats {
 						$return .= WT_I18N::translate('and')." ";
 						$return .= "<a href=\"".$child1->getHtmlUrl()."\">".$child1->getFullName()."</a>";
 						$return .= " (".$age.")";
-						$return .= " <a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>";
+						$return .= " <a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View family')."]</a>";
 						$return .= '</li>';
 						$top10[] = $return;
 						$dist[] = $fam['family'];
@@ -2635,7 +2635,7 @@ class WT_Stats {
 					$return .= WT_I18N::translate('and')." ";
 					$return .= "<a href=\"".$child1->getHtmlUrl()."\">".$child1->getFullName()."</a>";
 					$return .= " (".$age.")";
-					$return .= " <a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>";
+					$return .= " <a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View family')."]</a>";
 					$return .= '</li>';
 					$top10[] = $return;
 				}
@@ -2644,7 +2644,7 @@ class WT_Stats {
 					$return = $child2->format_list('span', false, $child2->getFullName());
 					$return .= "<br>".WT_I18N::translate('and')."<br>";
 					$return .= $child1->format_list('span', false, $child1->getFullName());
-					$return .= "<br><a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>";
+					$return .= "<br><a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View family')."]</a>";
 					return $return;
 				} else {
 					return WT_I18N::translate('This information is private and cannot be shown.');
@@ -3792,7 +3792,7 @@ class WT_Stats {
 			'CHI'=>WT_I18N::translate('Channel Islands'),
 			'CHL'=>WT_I18N::translate('Chile'),
 			'CHN'=>WT_I18N::translate('China'),
-			'CIV'=>WT_I18N::translate('Cote d\'Ivoire'),
+			'CIV'=>WT_I18N::translate('Cote d’Ivoire'),
 			'CMR'=>WT_I18N::translate('Cameroon'),
 			'COD'=>WT_I18N::translate('Congo (Kinshasa)'),
 			'COG'=>WT_I18N::translate('Congo (Brazzaville)'),

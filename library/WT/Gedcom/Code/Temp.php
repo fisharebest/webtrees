@@ -138,7 +138,7 @@ class WT_Gedcom_Code_Temp {
 		case 'NAUV2': return WT_I18N::translate('Nauvoo, Illinois (new)');
 		case 'NAUVO': return WT_I18N::translate('Nauvoo, Illinois (original)');
 		case 'NBEAC': return WT_I18N::translate('Newport Beach, California');
-		case 'NUKUA': return WT_I18N::translate('Nuku\'Alofa, Tonga');
+		case 'NUKUA': return WT_I18N::translate('Nuku’Alofa, Tonga');
 		case 'NYORK': return WT_I18N::translate('New York, New York');
 		case 'NZEAL': return WT_I18N::translate('Hamilton, New Zealand');
 		case 'OAKLA': return WT_I18N::translate('Oakland, California');
@@ -150,7 +150,7 @@ class WT_Gedcom_Code_Temp {
 		case 'PALMY': return WT_I18N::translate('Palmyra, New York');
 		case 'PAPEE': return WT_I18N::translate('Papeete, Tahiti');
 		case 'PERTH': return WT_I18N::translate('Perth, Australia');
-		case 'POFFI': return  /* I18N: http://en.wikipedia.org/wiki/President_of_the_Church */ WT_I18N::translate('President\'s Office');
+		case 'POFFI': return  /* I18N: http://en.wikipedia.org/wiki/President_of_the_Church */ WT_I18N::translate('President’s Office');
 		case 'PORTL': return WT_I18N::translate('Portland, Oregon');
 		case 'PREST': return WT_I18N::translate('Preston, England');
 		case 'PROVO': return WT_I18N::translate('Provo, Utah');

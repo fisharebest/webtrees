@@ -208,7 +208,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			}
 		}
 		// Family events on an individual page
-		echo '<a href="', $parent->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a><br>';
+		echo '<a href="', $parent->getHtmlUrl(), '">', WT_I18N::translate('View family'), '</a><br>';
 	}
 
 	// Print the value of this fact/event
@@ -598,7 +598,7 @@ function print_media_links($factrec, $level, $pid='') {
 							$family = WT_Family::getInstance($famid);
 							if ($family) {
 								if ($spouse) echo " - ";
-								echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
+								echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View family'), '</a>';
 							}
 						}
 					}

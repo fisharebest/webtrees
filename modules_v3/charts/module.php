@@ -207,7 +207,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			</select>
 		</td></tr>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Show Details'); ?></td>
+			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Show details'); ?></td>
 		<td class="optionbox">
 			<select name="details">
 					<option value="no" <?php if (!$details) echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('no'); ?></option>

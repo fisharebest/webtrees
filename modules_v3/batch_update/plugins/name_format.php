@@ -32,7 +32,7 @@ class name_format_bu_plugin extends base_plugin {
 	}
 
 	static function getDescription() {
-		return WT_I18N::translate('Correct NAME records of the form \'John/DOE/\' or \'John /DOE\', as produced by older genealogy programs.');
+		return WT_I18N::translate('Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs.');
 	}
 
 	static function doesRecordNeedUpdate($xref, $gedrec) {

@@ -79,7 +79,7 @@ case 'list':
 		echo '</ul></td></tr>';
 		echo '</table>';
 	}
-	echo '<h4><a href="placelist.php?display=hierarchy">', WT_I18N::translate('Show Places in Hierarchy'), '</a></h4>';
+	echo '<h4><a href="placelist.php?display=hierarchy">', WT_I18N::translate('Show places in hierarchy'), '</a></h4>';
 	break;
 case 'hierarchy':
 	$use_googlemap = array_key_exists('googlemap', WT_Module::getActiveModules()) && get_module_setting('googlemap', 'GM_PLACE_HIERARCHY');
@@ -239,7 +239,7 @@ case 'hierarchy':
 		}
 		echo '</div>'; // <div id="places-tabs">
 	}
-	echo '<h4><a href="placelist.php?display=list">', WT_I18N::translate('Show All Places in a List'), '</a></h4>';
+	echo '<h4><a href="placelist.php?display=list">', WT_I18N::translate('Show all places in a list'), '</a></h4>';
 
 	if ($use_googlemap) {
 		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';

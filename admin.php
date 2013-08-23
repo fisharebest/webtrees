@@ -71,13 +71,13 @@ if (WT_USER_IS_ADMIN && $latest_version && version_compare(WT_VERSION, $latest_v
 		'<li>', /* I18N: %s is a URL/link to a .ZIP file */ WT_I18N::translate('Download %s and extract the files.', '<a class="current" href="'.$download_url.'">'.basename($download_url).'</a>'), '</li>';
 	if (version_compare(WT_VERSION, $earliest_version)<0) {
 		echo '<li>', WT_I18N::translate('Accept or reject any pending changes.'), '</li>';
-		echo '<li>', WT_I18N::translate('Save all your family trees to disk, by using the "export" function for each one.'), '</li>';
+		echo '<li>', WT_I18N::translate('Save all your family trees to disk, by using the “export” function for each one.'), '</li>';
 	}
 
 	echo '<li>', WT_I18N::translate('Copy the new files to the web server, replacing any that have the same name.'), '</li>';
 
 	if (version_compare(WT_VERSION, $earliest_version)<0) {
-		echo '<li>', WT_I18N::translate('Load all your family trees from disk, by using the "import" function for each one.'), '</li>';
+		echo '<li>', WT_I18N::translate('Load all your family trees from disk, by using the “import” function for each one.'), '</li>';
 	}
 
 	echo
@@ -184,13 +184,13 @@ echo
 		echo '<a href="admin_users.php?action=listusers&amp;filter=admunver">', WT_I18N::translate('Unverified by Administrator'), '</a>';
 	}
 	echo '</td><td>', $nverusers, '</td></tr>';
-	echo '<tr><td colspan="2">', WT_I18N::translate('Users\' languages'), '</td></tr>';
+	echo '<tr><td colspan="2">', WT_I18N::translate('Users’ languages'), '</td></tr>';
 	foreach ($userlang as $key=>$ulang) {
 		echo '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=language&amp;usrlang=', $key, '">', $ulang['langname'], '</a></td><td>', $ulang['number'], '</td></tr>';
 	}
 	echo
 		'</tr>',
-		'<tr><td colspan="2">', WT_I18N::translate('Users Logged In'), '</td></tr>',
+		'<tr><td colspan="2">', WT_I18N::translate('Users logged in'), '</td></tr>',
 		'<tr><td colspan="2"><div>', $stats->_usersLoggedIn('list'), '</div></td></tr>',
 		'</table>';
 echo '</div>'; // id = users

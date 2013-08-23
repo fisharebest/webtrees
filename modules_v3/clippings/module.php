@@ -70,7 +70,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			echo '</script>';
 
 			if (!$WT_SESSION->cart[WT_GED_ID]) {
-				echo '<h2>', WT_I18N::translate('Family Tree Clippings Cart'), '</h2>';
+				echo '<h2>', WT_I18N::translate('Family tree clippings cart'), '</h2>';
 			}
 
 			if ($clip_ctrl->action=='add') {
@@ -86,9 +86,9 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
 						<input type="hidden" name="action" value="add1"></td></tr>
 						<tr><td class="optionbox"><input type="radio" name="others" checked value="none"><?php echo WT_I18N::translate('Add just this family record.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="parents"><?php echo WT_I18N::translate('Add parents\' records together with this family record.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="members"><?php echo WT_I18N::translate('Add parents\' and children\'s records together with this family record.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="descendants"><?php echo WT_I18N::translate('Add parents\' and all descendants\' records together with this family record.'); ?></td></tr>
+						<tr><td class="optionbox"><input type="radio" name="others" value="parents"><?php echo WT_I18N::translate('Add parents’ records together with this family record.'); ?></td></tr>
+						<tr><td class="optionbox"><input type="radio" name="others" value="members"><?php echo WT_I18N::translate('Add parents’ and children’s records together with this family record.'); ?></td></tr>
+						<tr><td class="optionbox"><input type="radio" name="others" value="descendants"><?php echo WT_I18N::translate('Add parents’ and all descendants’ records together with this family record.'); ?></td></tr>
 						<tr><td class="topbottombar"><input type="submit" value="<?php echo WT_I18N::translate('Continue Adding'); ?>"></td></tr>
 
 					</table>
@@ -99,18 +99,18 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<input type="hidden" name="mod" value="clippings">
 					<input type="hidden" name="mod_action" value="index">
 					<table>
-						<tr><td class="topbottombar"><?php echo WT_I18N::translate('Which links from this person would you also like to add?'); ?>
+						<tr><td class="topbottombar"><?php echo WT_I18N::translate('Which links from this individual would you also like to add?'); ?>
 						<input type="hidden" name="id" value="<?php echo $clip_ctrl->id; ?>">
 						<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
 						<input type="hidden" name="action" value="add1"></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" checked value="none"><?php echo WT_I18N::translate('Add just this person.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="parents"><?php echo WT_I18N::translate('Add this person, his parents, and siblings.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="ancestors" id="ancestors"><?php echo WT_I18N::translate('Add this person and his direct line ancestors.'); ?><br>
+						<tr><td class="optionbox"><input type="radio" name="others" checked value="none"><?php echo WT_I18N::translate('Add just this individual.'); ?></td></tr>
+						<tr><td class="optionbox"><input type="radio" name="others" value="parents"><?php echo WT_I18N::translate('Add this individual, his parents, and siblings.'); ?></td></tr>
+						<tr><td class="optionbox"><input type="radio" name="others" value="ancestors" id="ancestors"><?php echo WT_I18N::translate('Add this individual and his direct line ancestors.'); ?><br>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo WT_I18N::translate('Number of generations:'); ?> <input type="text" size="5" name="level1" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestors');"></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies"><?php echo WT_I18N::translate('Add this person, his direct line ancestors, and their families.'); ?><br >
+						<tr><td class="optionbox"><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies"><?php echo WT_I18N::translate('Add this individual, his direct line ancestors, and their families.'); ?><br >
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo WT_I18N::translate('Number of generations:'); ?> <input type="text" size="5" name="level2" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestorsfamilies');"></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="members"><?php echo WT_I18N::translate('Add this person, his spouse, and children.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="descendants" id="descendants"><?php echo WT_I18N::translate('Add this person, his spouse, and all descendants.'); ?><br >
+						<tr><td class="optionbox"><input type="radio" name="others" value="members"><?php echo WT_I18N::translate('Add this individual, his spouse, and children.'); ?></td></tr>
+						<tr><td class="optionbox"><input type="radio" name="others" value="descendants" id="descendants"><?php echo WT_I18N::translate('Add this individual, his spouse, and all descendants.'); ?><br >
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo WT_I18N::translate('Number of generations:'); ?> <input type="text" size="5" name="level3" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('descendants');"></td></tr>
 						<tr><td class="topbottombar"><input type="submit" value="<?php echo WT_I18N::translate('Continue Adding'); ?>">
 					</table>
@@ -125,7 +125,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
 						<input type="hidden" name="action" value="add1"></td></tr>
 						<tr><td class="optionbox"><input type="radio" name="others" checked value="none"><?php echo WT_I18N::translate('Add just this source.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="linked"><?php echo WT_I18N::translate('Add this source and families/people linked to it.'); ?></td></tr>
+						<tr><td class="optionbox"><input type="radio" name="others" value="linked"><?php echo WT_I18N::translate('Add this source and families/individuals linked to it.'); ?></td></tr>
 						<tr><td class="topbottombar"><input type="submit" value="<?php echo WT_I18N::translate('Continue Adding'); ?>">
 					</table>
 					</form>
@@ -139,7 +139,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			if (!$WT_SESSION->cart[WT_GED_ID]) {
 				if ($clip_ctrl->action!='add') {
 
-					echo WT_I18N::translate('The Clippings Cart allows you to take extracts ("clippings") from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to Clippings Cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>');
+					echo WT_I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>');
 
 					echo '<script>';
 					echo 'var pastefield;';
@@ -174,7 +174,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				}
 
 				// -- end new lines
-				echo WT_I18N::translate('Your Clippings Cart is empty.');
+				echo WT_I18N::translate('Your clippings cart is empty.');
 			} else {
 				// Keep track of the INDI from the parent page, otherwise it will
 				// get lost after ajax updates
@@ -189,7 +189,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 					<table>
 					<tr><td colspan="2" class="topbottombar"><h2><?php echo WT_I18N::translate('File Information'); ?></h2></td></tr>
-					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Zip File(s)'), help_link('zip'); ?></td>
+					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Zip file(s)'), help_link('zip'); ?></td>
 					<td class="optionbox"><input type="checkbox" name="Zip" value="yes"></td></tr>
 
 					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Include media (automatically zips files)'), help_link('include_media'); ?></td>
@@ -266,7 +266,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				<br><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=empty"><?php echo WT_I18N::translate('Empty Cart'); ?></a><?php echo help_link('empty_cart', $this->getName()); ?>
 				</td></tr>
 
-				<tr><td class="topbottombar"><h2><?php echo WT_I18N::translate('Family Tree Clippings Cart'); ?></h2></td></tr>
+				<tr><td class="topbottombar"><h2><?php echo WT_I18N::translate('Family tree clippings cart'); ?></h2></td></tr>
 
 				<tr><td valign="top">
 				<table id="mycart" class="sortable list_table width100">
@@ -433,7 +433,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		$pid=safe_GET_xref('pid');
 
 		if (!$WT_SESSION->cart[WT_GED_ID]) {
-			$out=WT_I18N::translate('Your Clippings Cart is empty.');
+			$out=WT_I18N::translate('Your clippings cart is empty.');
 		} else {
 			$out='<ul>';
 			foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
@@ -501,9 +501,9 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			<input type="hidden" name="type" value="'.$person::RECORD_TYPE.'">
 			<input type="hidden" name="action" value="add1"></td></tr>
 			<tr><td class="optionbox"><input type="radio" name="others" checked value="none">'.WT_I18N::translate('Add just this family record.').'</td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="parents">'.WT_I18N::translate('Add parents\' records together with this family record.').'</td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="members">'.WT_I18N::translate('Add parents\' and children\'s records together with this family record.').'</td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="descendants">'.WT_I18N::translate('Add parents\' and all descendants\' records together with this family record.').'</td></tr>
+			<tr><td class="optionbox"><input type="radio" name="others" value="parents">'.WT_I18N::translate('Add parents’ records together with this family record.').'</td></tr>
+			<tr><td class="optionbox"><input type="radio" name="others" value="members">'.WT_I18N::translate('Add parents’ and children’s records together with this family record.').'</td></tr>
+			<tr><td class="optionbox"><input type="radio" name="others" value="descendants">'.WT_I18N::translate('Add parents’ and all descendants’ records together with this family record.').'</td></tr>
 			<tr><td class="topbottombar"><input type="submit" value="'.WT_I18N::translate('Continue Adding').'"></td></tr>
 			</table>
 			</form>';
@@ -512,19 +512,19 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
 			<input type="hidden" name="mod" value="clippings">
 			<input type="hidden" name="mod_action" value="index">
-		'.WT_I18N::translate('Which links from this person would you also like to add?').'
+		'.WT_I18N::translate('Which links from this individual would you also like to add?').'
 		<input type="hidden" name="pid" value="'.$person->getXref().'">
 		<input type="hidden" name="type" value="'.$person::RECORD_TYPE.'">
 		<input type="hidden" name="action" value="add1">
 		<ul>
-		<li><input type="radio" name="others" checked value="none">'.WT_I18N::translate('Add just this person.').'</li>
-		<li><input type="radio" name="others" value="parents">'.WT_I18N::translate('Add this person, his parents, and siblings.').'</li>
-		<li><input type="radio" name="others" value="ancestors" id="ancestors">'.WT_I18N::translate('Add this person and his direct line ancestors.').'<br>
+		<li><input type="radio" name="others" checked value="none">'.WT_I18N::translate('Add just this individual.').'</li>
+		<li><input type="radio" name="others" value="parents">'.WT_I18N::translate('Add this individual, his parents, and siblings.').'</li>
+		<li><input type="radio" name="others" value="ancestors" id="ancestors">'.WT_I18N::translate('Add this individual and his direct line ancestors.').'<br>
 				'.WT_I18N::translate('Number of generations:').'<input type="text" size="4" name="level1" value="'.$MAX_PEDIGREE_GENERATIONS.'" onfocus="radAncestors(\'ancestors\');"></li>
-		<li><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies">'.WT_I18N::translate('Add this person, his direct line ancestors, and their families.').'<br>
+		<li><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies">'.WT_I18N::translate('Add this individual, his direct line ancestors, and their families.').'<br>
 				'.WT_I18N::translate('Number of generations:').' <input type="text" size="4" name="level2" value="'. $MAX_PEDIGREE_GENERATIONS.'" onfocus="radAncestors(\'ancestorsfamilies\');"></li>
-		<li><input type="radio" name="others" value="members">'.WT_I18N::translate('Add this person, his spouse, and children.').'</li>
-		<li><input type="radio" name="others" value="descendants" id="descendants">'.WT_I18N::translate('Add this person, his spouse, and all descendants.').'<br >
+		<li><input type="radio" name="others" value="members">'.WT_I18N::translate('Add this individual, his spouse, and children.').'</li>
+		<li><input type="radio" name="others" value="descendants" id="descendants">'.WT_I18N::translate('Add this individual, his spouse, and all descendants.').'<br >
 				'.WT_I18N::translate('Number of generations:').' <input type="text" size="4" name="level3" value="'.$MAX_PEDIGREE_GENERATIONS.'" onfocus="radAncestors(\'descendants\');"></li>
 		</ul>
 		<input type="submit" value="'.WT_I18N::translate('Continue Adding').'">
@@ -539,7 +539,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<input type="hidden" name="type" value="'.$person::RECORD_TYPE.'">
 		<input type="hidden" name="action" value="add1"></td></tr>
 		<tr><td class="optionbox"><input type="radio" name="others" checked value="none">'.WT_I18N::translate('Add just this source.').'</td></tr>
-		<tr><td class="optionbox"><input type="radio" name="others" value="linked">'.WT_I18N::translate('Add this source and families/people linked to it.').'</td></tr>
+		<tr><td class="optionbox"><input type="radio" name="others" value="linked">'.WT_I18N::translate('Add this source and families/individuals linked to it.').'</td></tr>
 		<tr><td class="topbottombar"><input type="submit" value="'.WT_I18N::translate('Continue Adding').'">
 		</table>
 		</form>';
@@ -565,7 +565,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<input type="hidden" name="action" value="download">
 		<table>
 		<tr><td colspan="2" class="topbottombar"><h2>'.WT_I18N::translate('File Information').'</h2></td></tr>
-		<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Zip File(s)').help_link('zip').'</td>
+		<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Zip file(s)').help_link('zip').'</td>
 		<td class="optionbox"><input type="checkbox" name="Zip" value="yes" checked="checked"></td></tr>
 
 		<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Include media (automatically zips files)').help_link('include_media').'</td>

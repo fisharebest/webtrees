@@ -232,7 +232,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 									<td class="facts_value">#lastDeath#</td>
 								</tr>
 								<tr>
-									<td class="facts_label">'.WT_I18N::translate('Person who lived the longest').'</td>
+									<td class="facts_label">'.WT_I18N::translate('Individual who lived the longest').'</td>
 									<td class="facts_value" align="right">#longestLifeAge#</td>
 									<td class="facts_value">#longestLife#</td>
 								</tr>

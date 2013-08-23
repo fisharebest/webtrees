@@ -190,7 +190,7 @@ if ($action == 'choose' && $paramok) {
 		echo ' ', print_findfamily_link('gid');
 		echo ' ', print_findsource_link('gid');
 	echo '</td></tr></table>';
-	echo "<sub>" . WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.') . "</sub>";
+	echo "<sub>" . WT_I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.') . "</sub>";
 	echo '<br><br>';
 	echo '<input type="hidden" name="idName" id="idName" size="36" value="Name of ID">';
 ?>

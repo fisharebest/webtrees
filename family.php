@@ -126,7 +126,7 @@ echo '</script>';
 				</tr>
 				<tr>
 					<td colspan="2">
-					<span class="subheaders"><?php echo WT_I18N::translate('Family Group Information'); ?></span>
+					<span class="subheaders"><?php echo WT_I18N::translate('Family group information'); ?></span>
 						<?php
 							if ($controller->record->canShow()) {
 								echo '<table class="facts_table">';

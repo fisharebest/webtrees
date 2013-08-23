@@ -85,7 +85,7 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 							<dt><?php echo WT_I18N::translate('Allow users to select their own theme'), help_link('ALLOW_USER_THEMES'); ?></dt>
 							<dd><?php echo edit_field_yes_no_inline('site_setting-ALLOW_USER_THEMES', WT_Site::preference('ALLOW_USER_THEMES'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Default Theme'), help_link('THEME'); ?></dt>
+							<dt><?php echo WT_I18N::translate('Default theme'), help_link('THEME'); ?></dt>
 							<dd><?php echo select_edit_control_inline('site_setting-THEME_DIR', array_flip(get_theme_names()), null, WT_Site::preference('THEME_DIR'), $controller); ?></dd>
 
 							<dt><?php echo WT_I18N::translate('Show list of family trees'), help_link('ALLOW_CHANGE_GEDCOM'); ?></dt>
@@ -166,7 +166,7 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 							<dt><?php echo WT_I18N::translate('Custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?></dt>
 							<dd><?php echo edit_text_inline('site_setting-WELCOME_TEXT_AUTH_MODE_4', WT_Site::preference('WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Show acceptable use agreement on «Request new user account» page'), help_link('SHOW_REGISTER_CAUTION'); ?></dt>
+							<dt><?php echo WT_I18N::translate('Show acceptable use agreement on “Request new user account” page'), help_link('SHOW_REGISTER_CAUTION'); ?></dt>
 							<dd><?php echo edit_field_yes_no_inline('site_setting-SHOW_REGISTER_CAUTION', WT_Site::preference('SHOW_REGISTER_CAUTION'), $controller); ?></dd>
 						</dl>
 					</td>

@@ -91,14 +91,14 @@ if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) 
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Person 1'); ?>
+					<?php echo WT_I18N::translate('Individual 1'); ?>
 				</td>
 				<td class="optionbox vmiddle">
 					<input tabindex="1" class="pedigree_form" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1; ?>">
 					<?php echo print_findindi_link('pid1'); ?>
 				</td>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Show Details'); ?>
+					<?php echo WT_I18N::translate('Show details'); ?>
 				</td>
 				<td class="optionbox vmiddle">
 					<?php echo two_state_checkbox('show_full', $show_full); ?>
@@ -106,7 +106,7 @@ if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) 
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Person 2'); ?>
+					<?php echo WT_I18N::translate('Individual 2'); ?>
 				</td>
 				<td class="optionbox vmiddle">
 					<input tabindex="2" class="pedigree_form" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2; ?>">

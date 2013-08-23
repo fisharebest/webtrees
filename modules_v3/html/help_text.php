@@ -34,6 +34,6 @@ case 'block_html_content':
 
 case 'block_html_template':
 	$title=WT_I18N::translate('Templates');
-	$text=WT_I18N::translate('To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site\'s requirements.');
+	$text=WT_I18N::translate('To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements.');
 	break;
 }

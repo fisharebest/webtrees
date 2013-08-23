@@ -30,7 +30,7 @@ switch ($help) {
 case 'add_faq_item':
 	$title=WT_I18N::translate('Frequently asked questions');
 	$text=
-		WT_I18N::translate('FAQs are lists of questions and answers, which allow you to explain the site\'s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc.').
+		WT_I18N::translate('FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc.').
 		'<br><br>'.
 		WT_I18N::translate('You may use HTML to format the answer and to add links to other websites.');
 	break;

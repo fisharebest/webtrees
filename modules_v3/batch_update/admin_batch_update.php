@@ -75,7 +75,7 @@ class batch_update {
 		$html.='</td></tr>';
 
 		if (!get_user_setting(WT_USER_ID, 'auto_accept'))
-			$html.='<tr><td colspan="2" class="warning">'.WT_I18N::translate('Your user account does not have "automatically approve changes" enabled.  You will only be able to change one record at a time.').'</td></tr>';
+			$html.='<tr><td colspan="2" class="warning">'.WT_I18N::translate('Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time.').'</td></tr>';
 
 		// If a plugin is selected, display the details
 		if ($this->PLUGIN) {

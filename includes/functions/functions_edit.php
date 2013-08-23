@@ -312,20 +312,20 @@ function print_addnewmedia_link($element_id) {
 }
 
 function print_addnewrepository_link($element_id) {
-	return '<a href="#" onclick="addnewrepository(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addrepository" title="'.WT_I18N::translate('Create Repository').'"></a>';
+	return '<a href="#" onclick="addnewrepository(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addrepository" title="'.WT_I18N::translate('Create repository').'"></a>';
 }
 
 function print_addnewnote_link($element_id) {
-	return '<a href="#" onclick="addnewnote(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addnote" title="'.WT_I18N::translate('Create a new Shared Note').'"></a>';
+	return '<a href="#" onclick="addnewnote(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addnote" title="'.WT_I18N::translate('Create a new shared note').'"></a>';
 }
 
 /// Used in GEDFact CENS assistant
 function print_addnewnote_assisted_link($element_id, $xref) {
-	return '<input type="hidden" name="pid_array" id="pid_array" value="fish"><script>function set_pid_array(pa){alert(111);jQuery("#pid_array").val(pa);alert(222);}</script><a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$xref.'\'); return false;">'.WT_I18N::translate('Create a new Shared Note using Assistant').'</a>';
+	return '<input type="hidden" name="pid_array" id="pid_array" value="fish"><script>function set_pid_array(pa){alert(111);jQuery("#pid_array").val(pa);alert(222);}</script><a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$xref.'\'); return false;">'.WT_I18N::translate('Create a new shared note using assistant').'</a>';
 }
 
 function print_editnote_link($note_id) {
-	return '<a href="#" onclick="var win02=window.open(\'edit_interface.php?action=editnote&amp;xref='.$note_id.'\', \'win02\', edit_window_specs);" class="icon-button_note" title="'.WT_I18N::translate('Edit Shared Note').'"></a>';
+	return '<a href="#" onclick="var win02=window.open(\'edit_interface.php?action=editnote&amp;xref='.$note_id.'\', \'win02\', edit_window_specs);" class="icon-button_note" title="'.WT_I18N::translate('Edit shared note').'"></a>';
 }
 
 function print_addnewsource_link($element_id) {

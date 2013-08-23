@@ -83,7 +83,7 @@ for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
 	echo '>', WT_I18N::number($i), '</option>';
 }
 echo '</select></td><td class="descriptionbox">';
-echo WT_I18N::translate('Show Details');
+echo WT_I18N::translate('Show details');
 echo '</td><td class="optionbox"><input type="checkbox" value="';
 if ($controller->show_full) {
 	echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';"';

@@ -134,7 +134,7 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$filter=get_block_setting($block_id, 'filter',     true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show only events of living people?');
+		echo WT_I18N::translate('Show only events of living individuals?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('filter', $filter);
 		echo '</td></tr>';

@@ -47,8 +47,8 @@
 		$text = str_replace(".b.".'Occupation', "<span class=\"note1\" title=\"".'Occupation'."\"> <b>".'Occupation'."</b></span>", $text);
 		$text = str_replace(".b.".'Birthplace', "<span class=\"note1\" title=\"".'Birthplace (Full format)'."\"><b>".'Birthplace'."</b></span>", $text);
 		$text = str_replace(".b.".'BP', "<span class=\"note1\" title=\"".'Birthplace - (Chapman format)'."\"> <b>".'BP'."</b></span>", $text);
-		$text = str_replace(".b.".'FBP', "<span class=\"note1\" title=\"".WT_I18N::translate('Father\'s Birthplace - (Chapman format)')."\"> <b>".'FBP'."</b></span>", $text);
-		$text = str_replace(".b.".'MBP', "<span class=\"note1\" title=\"".WT_I18N::translate('Mother\'s Birthplace - (Chapman format)')."\"> <b>".'MBP'."</b></span>", $text);
+		$text = str_replace(".b.".'FBP', "<span class=\"note1\" title=\"".WT_I18N::translate('Father’s Birthplace - (Chapman format)')."\"> <b>".'FBP'."</b></span>", $text);
+		$text = str_replace(".b.".'MBP', "<span class=\"note1\" title=\"".WT_I18N::translate('Mother’s Birthplace - (Chapman format)')."\"> <b>".'MBP'."</b></span>", $text);
 		$text = str_replace(".b.".'NL', "<span class=\"note1\" title=\"".'If Foreign Born - Native Language'."\"> <b>".'NL'."</b></span>", $text);
 		$text = str_replace(".b.".'YUS', "<span class=\"note1\" title=\"".'If Foreign Born - Years in the USA'."\"> <b>".'YUS'."</b></span>", $text);
 		$text = str_replace(".b.".'YOI', "<span class=\"note1\" title=\"".'If Foreign Born - Year of Immigration'."\"> <b>".'YOI'."</b></span>", $text);

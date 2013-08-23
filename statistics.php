@@ -156,7 +156,7 @@ if (!$ajax) {
 		</table>
 		<br>';
 		if (WT_USER_ID) {
-			echo '<b>', WT_I18N::translate('Oldest living people'), '</b>
+			echo '<b>', WT_I18N::translate('Oldest living individuals'), '</b>
 			<table class="facts_table">
 				<tr>
 					<td class="facts_label">', WT_I18N::translate('Males'), '</td>

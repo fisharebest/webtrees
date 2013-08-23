@@ -120,7 +120,7 @@ if (!isset($_POST['lang'])) {
 	// Mandatory extensions
 	foreach (array('pcre', 'pdo', 'pdo_mysql', 'session', 'iconv') as $extension) {
 		if (!extension_loaded($extension)) {
-			echo '<p class="bad">', WT_I18N::translate('PHP extension "%s" is disabled.  You cannot install webtrees until this is enabled.  Please ask your server\'s administrator to enable it.', $extension), '</p>';
+			echo '<p class="bad">', WT_I18N::translate('PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it.', $extension), '</p>';
 			$errors=true;
 		}
 	}
@@ -132,7 +132,7 @@ if (!isset($_POST['lang'])) {
 		'simplexml' => /* I18N: a program feature */ WT_I18N::translate('reporting'),
 	) as $extension=>$features) {
 		if (!extension_loaded($extension)) {
-			echo '<p class="bad">', WT_I18N::translate('PHP extension "%1$s" is disabled.  Without it, the following features will not work: %2$s.  Please ask your server\'s administrator to enable it.', $extension, $features), '</p>';
+			echo '<p class="bad">', WT_I18N::translate('PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it.', $extension, $features), '</p>';
 			$warnings=true;
 		}
 	}
@@ -141,7 +141,7 @@ if (!isset($_POST['lang'])) {
 		'file_uploads'=>/* I18N: a program feature */ WT_I18N::translate('file upload capability'),
 	) as $setting=>$features) {
 		if (!ini_get($setting)) {
-			echo '<p class="bad">', WT_I18N::translate('PHP setting "%1$s" is disabled. Without it, the following features will not work: %2$s.  Please ask your server\'s administrator to enable it.', $setting, $features), '</p>';
+			echo '<p class="bad">', WT_I18N::translate('PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it.', $setting, $features), '</p>';
 			$warnings=true;
 		}
 	}
@@ -172,7 +172,7 @@ if (!isset($_POST['lang'])) {
 		'</p><p>',
 		WT_I18N::translate('If you try to exceed these limits, you may experience server time-outs and blank pages.'),
 		'</p><p>',
-		WT_I18N::translate('If your server\'s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server\'s administrator.'),
+		WT_I18N::translate('If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator.'),
 		'</p>';
 	if (!$errors) {
 		echo '<input type="hidden" name="maxcpu" value="', $maxcpu, '">';
@@ -249,7 +249,7 @@ if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 	echo
 		'<h2>', WT_I18N::translate('Connection to database server'), '</h2>',
 		'<p>', WT_I18N::translate('<b>webtrees</b> needs a MySQL database, version %s or later.', WT_REQUIRED_MYSQL_VERSION), '</p>',
-		'<p>', WT_I18N::translate('Your server\'s administrator will provide you with the connection details.'), '</p>',
+		'<p>', WT_I18N::translate('Your server’s administrator will provide you with the connection details.'), '</p>',
 		'<fieldset><legend>', WT_I18N::translate('Database connection'), '</legend>',
 		'<table border="0"><tr><td>',
 		WT_I18N::translate('Server name'), '</td><td>',
@@ -343,7 +343,7 @@ if ($dbname_ok) {
 if (!$dbname_ok) {
 	echo
 		'<h2>', WT_I18N::translate('Database and table names'), '</h2>',
-		'<p>', WT_I18N::translate('A database server can store many separate databases.  You need to select an existing database (created by your server\'s administrator) or create a new one (if your database user account has sufficient privileges).'), '</p>',
+		'<p>', WT_I18N::translate('A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges).'), '</p>',
 		'<fieldset><legend>', WT_I18N::translate('Database name'), '</legend>',
 		'<table border="0"><tr><td>',
 		WT_I18N::translate('Database name'), '</td><td>',
@@ -352,7 +352,7 @@ if (!$dbname_ok) {
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Table prefix'), '</td><td>',
 		'<input type="text" name="tblpfx" value="', WT_Filter::escapeHtml($_POST['tblpfx']), '"></td><td>',
-		WT_I18N::translate('The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. "wt_" is suggested, but can be anything you want.'),
+		WT_I18N::translate('The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want.'),
 		'</td></tr></table>',
 		'</fieldset>',
 		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',

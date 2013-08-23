@@ -102,7 +102,7 @@ $controller->pageHeader();
 	<div id="tree-download" class="ui-helper-clearfix">
 		<dl>
 			<dt>
-				<?php echo WT_I18N::translate('Zip File(s)'), help_link('download_zipped'); ?>
+				<?php echo WT_I18N::translate('Zip file(s)'), help_link('download_zipped'); ?>
 			</dt>
 			<dd>
 				<input type="checkbox" name="zip" value="yes">

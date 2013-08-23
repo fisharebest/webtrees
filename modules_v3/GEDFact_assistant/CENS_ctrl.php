@@ -29,7 +29,7 @@ $person = WT_Individual::getInstance($xref);
 check_record_access($person);
 
 $controller
-	->setPageTitle(WT_I18N::translate('Create a new Shared Note using Assistant'))
+	->setPageTitle(WT_I18N::translate('Create a new shared note using assistant'))
 	->pageHeader();
 
 echo '<div id="edit_interface-page">';

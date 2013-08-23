@@ -214,7 +214,7 @@ for ($i=1; $i<6; $i++) {
 		echo '<span dir="ltr"><select name="folder_list', $i, '" onchange="document.uploadmedia.folder', $i, '.value=this.options[this.selectedIndex].value;">';
 		echo '<option';
 		echo ' value="/"> ', WT_I18N::translate('Choose: '), ' </option>';
-		if (WT_USER_IS_ADMIN) echo '<option value="other" disabled>', WT_I18N::translate('Other folder... please type in'), "</option>";
+		if (WT_USER_IS_ADMIN) echo '<option value="other" disabled>', WT_I18N::translate('Other folder… please type in'), "</option>";
 		foreach ($mediaFolders as $f) {
 			echo '<option value="', WT_Filter::escapeHtml($f), '">', WT_Filter::escapeHtml($f), "</option>";
 		}

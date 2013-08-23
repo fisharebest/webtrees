@@ -36,7 +36,7 @@ if (!defined('WT_WEBTREES')) {
 		//-- Search Function ------------------------------------------------------------
 		?>
 		<tr>
-			<td align="center" class="descriptionbox"><font size=1><?php echo WT_I18N::translate('Add people'); ?></font></td>
+			<td align="center" class="descriptionbox"><font size=1><?php echo WT_I18N::translate('Add individuals'); ?></font></td>
 		</tr>
 		<tr>
 			<td class="optionbox" >
@@ -81,8 +81,8 @@ if (!defined('WT_WEBTREES')) {
 								<?php
 								// Header text with "Head" button =================================================
 								$headImg  = '<i class="headimg vmiddle icon-button_head"></i>';
-								$headImg2 = '<i class="headimg2 vmiddle icon-button_head" title="'.WT_I18N::translate('Click to choose person as Head of family.').'"></i>';
-								echo WT_I18N::translate('Click %s to choose person as Head of family.', $headImg);
+								$headImg2 = '<i class="headimg2 vmiddle icon-button_head" title="'.WT_I18N::translate('Click to choose individual as head of family.').'"></i>';
+								echo WT_I18N::translate('Click %s to choose individual as head of family.', $headImg);
 								?>
 								</font>
 								</td>

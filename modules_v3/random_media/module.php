@@ -176,13 +176,13 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			$content .= '<a href="'.$random_media->getHtmlUrl().'"><b>'. $random_media->getFullName() .'</b></a><br>';
 			foreach ($random_media->linkedIndividuals('OBJE') as $individual) {
-				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View Person') . ' — ' . $individual->getFullname().'</a><br>';
+				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View person') . ' — ' . $individual->getFullname().'</a><br>';
 			}
 			foreach ($random_media->linkedFamilies('OBJE') as $family) {
-				$content .= '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View Family') . ' — ' . $family->getFullname().'</a><br>';
+				$content .= '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View family') . ' — ' . $family->getFullname().'</a><br>';
 			}
 			foreach ($random_media->linkedSources('OBJE') as $source) {
-				$content .= '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View Source') . ' — ' . $source->getFullname().'</a><br>';
+				$content .= '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View source') . ' — ' . $source->getFullname().'</a><br>';
 			}
 			$content .= '<br><div class="indent">';
 			$content .= print_fact_notes($random_media->getGedcom(), "1", false, true);
@@ -257,7 +257,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$filter=get_block_setting($block_id, 'filter', 'all');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show only persons, events, or all?');
+		echo WT_I18N::translate('Show only individuals, events, or all?');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('filter', array('indi'=>WT_I18N::translate('Individuals'), 'event'=>WT_I18N::translate('Facts and events'), 'all'=>WT_I18N::translate('All')), null, $filter, '');
 		echo '</td></tr>';

@@ -1271,7 +1271,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 				$dataleft  = $image . $event . addslashes($name);
 				$datamid   = " <span><a href='".$person->getHtmlUrl()."' id='alturl' title='" . WT_I18N::translate('Individual information') . "'>";
-				$datamid .= '('.WT_I18N::translate('View Person').')';
+				$datamid .= '('.WT_I18N::translate('View person').')';
 				$datamid  .= '</a></span>';
 				$dataright = '<br><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .
 						addslashes($person->getBirthDate()->Display(false)).'<br>'.$person->getBirthPlace();

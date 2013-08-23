@@ -264,7 +264,7 @@ if ($type == "note") {
 	<input type="hidden" name="type" value="note">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<input type="hidden" name="subclick">
-	<span>', WT_I18N::translate('Shared Note contains:'), '</span>
+	<span>', WT_I18N::translate('Shared note contains:'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
 	echo '" autofocus>
@@ -656,7 +656,7 @@ if ($action=="filter") {
 				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getFullName(),'</span></a></li>';
 			}
 			echo '</ul>
-			<p>', WT_I18N::translate('Shared Notes found'), ' ', count($mynotelist), '</p>';
+			<p>', WT_I18N::translate('Shared notes found'), ' ', count($mynotelist), '</p>';
 		}
 		else {
 			echo '<p>', WT_I18N::translate('No results found.'), '</p>';

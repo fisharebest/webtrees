@@ -129,7 +129,7 @@ echo '<div id="search-page">
 			<div class="label">' , WT_I18N::translate('Associates'), '</div>
 			<div class="value"><input type="checkbox" id="showasso" name="showasso" value="on"';
 				if ($controller->showasso == 'on') echo ' checked="checked"'; 
-			echo '><label for="showasso">' , WT_I18N::translate('Show related persons/families'), '</label></div>';
+			echo '><label for="showasso">' , WT_I18N::translate('Show related individuals/families'), '</label></div>';
 		}	
 		//========== Search and replace Search Form ==========
 		if ($controller->action == "replace") {
@@ -197,7 +197,7 @@ echo '<div id="search-page">
 			echo '<div class="label">' , WT_I18N::translate('Associates'), '</div>
 				<div class="value"><input type="checkbox" name="showasso" value="on"';
 					if ($controller->showasso == "on") echo ' checked="checked" ';
-					echo '>' , WT_I18N::translate('Show related persons/families'),
+					echo '>' , WT_I18N::translate('Show related individuals/families'),
 				'</div>';
 		}			
 		// If the search is a general or soundex search then possibly display checkboxes for the gedcoms

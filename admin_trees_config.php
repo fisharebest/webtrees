@@ -355,7 +355,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</table>
 			<table>
 				<tr>
-					<th colspan="2"><?php echo WT_I18N::translate('Contact Information'); ?></th>
+					<th colspan="2"><?php echo WT_I18N::translate('Contact information'); ?></th>
 				</tr>
 				<tr>
 					<?php
@@ -407,7 +407,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</table>
 			<table>
 				<tr>
-					<th colspan="2"><?php echo WT_I18N::translate('Web Site and META Tag Settings'); ?></th>
+					<th colspan="2"><?php echo WT_I18N::translate('Web site and META tag settings'); ?></th>
 				</tr>
 				<tr>
 					<td>
@@ -442,7 +442,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Default Theme'), help_link('THEME'); ?>
+						<?php echo WT_I18N::translate('Default theme'), help_link('THEME'); ?>
 					</td>
 					<td>
 						<select name="NEW_THEME_DIR">
@@ -483,7 +483,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Show dead people'), help_link('SHOW_DEAD_PEOPLE'); ?>
+						<?php echo WT_I18N::translate('Show dead individuals'), help_link('SHOW_DEAD_PEOPLE'); ?>
 					</td>
 					<td>
 						<?php echo edit_field_access_level("SHOW_DEAD_PEOPLE", get_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE')); ?>
@@ -491,7 +491,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 				</tr>
 				<tr>
 					<td>
-						<?php /* I18N: ... [who were] born in the last XX years or died in the last YY years */ echo WT_I18N::translate('Extend privacy to dead people'), help_link('KEEP_ALIVE'); ?>
+						<?php /* I18N: ... [who were] born in the last XX years or died in the last YY years */ echo WT_I18N::translate('Extend privacy to dead individuals'), help_link('KEEP_ALIVE'); ?>
 					</td>
 					<td>
 						<?php
@@ -521,7 +521,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Age at which to assume a person is dead'), help_link('MAX_ALIVE_AGE'); ?>
+						<?php echo WT_I18N::translate('Age at which to assume an individual is dead'), help_link('MAX_ALIVE_AGE'); ?>
 					</td>
 					<td>
 						<input type="text" name="MAX_ALIVE_AGE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'); ?>" size="5" maxlength="3">
@@ -669,7 +669,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Show highlight images in people boxes'); ?>
+						<?php echo WT_I18N::translate('Show highlight images in individual boxes'); ?>
 					</td>
 					<td>
 						<?php echo edit_field_yes_no('NEW_SHOW_HIGHLIGHT_IMAGES', get_gedcom_setting(WT_GED_ID, 'SHOW_HIGHLIGHT_IMAGES')); ?>
@@ -724,7 +724,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Min. no. of occurrences to be a "common surname"'), help_link('COMMON_NAMES_THRESHOLD'); ?>
+						<?php echo WT_I18N::translate('Min. no. of occurrences to be a “common surname”'), help_link('COMMON_NAMES_THRESHOLD'); ?>
 					</td>
 					<td>
 						<input type="text" name="NEW_COMMON_NAMES_THRESHOLD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD'); ?>" size="5" maxlength="5">
@@ -956,7 +956,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Age of parents next to child\'s birthdate'), help_link('SHOW_PARENTS_AGE'); ?>
+						<?php echo WT_I18N::translate('Age of parents next to child’s birthdate'), help_link('SHOW_PARENTS_AGE'); ?>
 					</td>
 					<td>
 						<?php echo radio_buttons('NEW_SHOW_PARENTS_AGE', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_PARENTS_AGE); ?>

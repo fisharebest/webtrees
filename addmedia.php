@@ -431,12 +431,12 @@ echo $controller->getPageTitle(), help_link('OBJE');
 echo '</td></tr>';
 if ($linktoid == 'new' || ($linktoid == '' && $action != 'update')) {
 	echo '<tr><td class="descriptionbox wrap width25">';
-	echo WT_I18N::translate('Enter a Person, Family, or Source ID');
+	echo WT_I18N::translate('Enter an individual, family, or source ID');
 	echo '</td><td class="optionbox wrap"><input type="text" name="gid" id="gid" size="6" value="">';
 	echo ' ', print_findindi_link('gid');
 	echo ' ', print_findfamily_link('gid');
 	echo ' ', print_findsource_link('gid');
-	echo '<p class="sub">', WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'), '</p></td></tr>';
+	echo '<p class="sub">', WT_I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.'), '</p></td></tr>';
 }
 
 $tmp = WT_Media::getInstance($pid);
@@ -528,7 +528,7 @@ if (!$isExternal) {
 		if ($folder == '') echo ' selected="selected"';
 		echo ' value=""> ', WT_I18N::translate('Choose: '), ' </option>';
 		if (WT_USER_IS_ADMIN) {
-			echo '<option value="other" disabled>', WT_I18N::translate('Other folder... please type in'), "</option>";
+			echo '<option value="other" disabled>', WT_I18N::translate('Other folder… please type in'), "</option>";
 		}
 		foreach ($mediaFolders as $f) {
 			echo '<option value="', $f, '"';
