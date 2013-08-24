@@ -669,8 +669,8 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	}
 	// NAME TYPE : hide text field and show a selection list
 	else if ($fact=='TYPE' && $level==0) {
-		$extra = 'onchange="document.getElementById(\''.$element_id.'\').value=this.value;"';
-		echo edit_field_name_type($element_name, $value, $extra);
+		$onchange = 'onchange="document.getElementById(\''.$element_id.'\').value=this.value;"';
+		echo edit_field_name_type($element_name, $value, $onchange);
 		echo '<script>';
 		echo "document.getElementById('", $element_id, "').style.display='none';";
 		echo '</script>';
