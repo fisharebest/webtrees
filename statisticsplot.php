@@ -713,18 +713,21 @@ function calc_legend($grenzen_zas) {
 	$hulpar = explode(',', $grenzen_zas);
 	$i=1;
 	// I18N: %d is a year
-	$legend[0] = WT_I18N::translate('before %d', $hulpar[0]);
+	$date = new WT_Date('BEF ' . $hulpar[0]);
+	$legend[0] = strip_tags($date->display());
 	$zgrenzen[0] = $hulpar[0]-1;
 	while (isset($hulpar[$i])) {
 		$i1 = $i-1;
-		$legend[$i] = WT_I18N::number($hulpar[$i1]).'-'.($hulpar[$i]-1);
+		$date = new WT_Date('BET ' . $hulpar[$i1] .' AND ' . ($hulpar[$i]-1));
+		$legend[$i] = strip_tags($date->display());
 		$zgrenzen[$i] = $hulpar[$i]-1;
 		$i++;
 	}
 	$zmax = $i;
 	$zmax1 = $zmax-1;
 	// I18N: %d is a year
-	$legend[$zmax] = WT_I18N::translate('from %d', $hulpar[$zmax1]);
+	$date = new WT_Date('AFT ' . $hulpar[$zmax1]);
+	$legend[$zmax] = strip_tags($date->display());
 	$zgrenzen[$zmax] = 10000;
 	$zmax = $zmax+1;
 	if ($zmax > 8) {
