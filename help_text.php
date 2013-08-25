@@ -1425,14 +1425,6 @@ case 'upload_gedcom':
 	$text=WT_I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on your computer.');
 	break;
 
-case 'upload_media_file':
-	$title=WT_I18N::translate('Media file to upload');
-	$text=
-		WT_I18N::translate('Select the media file that you want to upload.  If a file already exists with the same name, it will be overwritten.').
-		'<br><br>'.
-		WT_I18N::translate('It is easier to manage your media files if you choose a consistent format for the filenames.  To organise media files into folders, you must first set the number of levels in the GEDCOM administration page.');
-	break;
-
 case 'upload_media':
 	$title=WT_I18N::translate('Upload media files');
 	$text=WT_I18N::translate('Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats.');

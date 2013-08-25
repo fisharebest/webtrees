@@ -181,7 +181,7 @@ for ($i=1; $i<6; $i++) {
 	echo '<table class="upload_media">';
 	echo '<tr><th>', WT_I18N::translate('Media file'), ':&nbsp;&nbsp;', $i, '</th></tr>';
 	echo '<tr><td>';
-	echo WT_I18N::translate('Media file to upload'), help_link('upload_media_file');
+	echo WT_I18N::translate('Media file to upload');
 	echo '</td>';
 	echo '<td>';
 	echo '<input name="mediafile', $i, '" type="file" size="40">';
