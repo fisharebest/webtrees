@@ -216,110 +216,106 @@ function AddToSearchLog($log_message, $geds) {
 	}
 }
 
-//----------------------------------- addMessage
-//-- stores a new message in the database
+// Store a new message in the database
 function addMessage($message) {
-	global $TEXT_DIRECTION, $WEBTREES_EMAIL, $WT_REQUEST;
+	global $WEBTREES_EMAIL, $WT_REQUEST;
 
 	$user_id_from=get_user_id($message['from']);
 	$user_id_to  =get_user_id($message['to']);
 
-	require_once WT_ROOT.'includes/functions/functions_mail.php';
-
 	// Switch to the "from" user's language
 	WT_I18N::init(get_user_setting($user_id_from, 'language'));
 
-	//-- setup the message body for the "from" user
+	// Setup the message body for the "from" user
 	$copy_email = $message['body'];
-	if (isset($message['from_name']))
-		$copy_email = WT_I18N::translate('Your Name:')." ".$message['from_name']."\r\n".WT_I18N::translate('Email Address:')." ".$message['from_email']."\r\n\r\n".$copy_email;
 	if (!empty($message['url'])) {
-		if (strpos($message['url'],WT_SERVER_NAME.WT_SCRIPT_PATH)!==0) {
-			$message['url']=WT_SERVER_NAME.WT_SCRIPT_PATH.$message['url'];
-		}
-		$copy_email .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".$message['url']."\r\n";
+		$copy_email .=
+			WT_Mail::EOL . WT_Mail::EOL . '--------------------------------------' . WT_Mail::EOL .
+			WT_I18N::translate('This message was sent while viewing the following URL: ') . WT_SERVER_NAME . WT_SCRIPT_PATH . $message['url'] . WT_Mail::EOL;
 	}
-	$copy_email .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n";
-	$copy_email .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n";
-	$copy_email .= "LANGUAGE: ".WT_LOCALE."\r\n";
-	$copy_subject = "[".WT_I18N::translate('webtrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
-	$from ='';
+	$copy_email .= WT_Mail::auditFooter();
 	if (!$user_id_from) {
+		// Message from a visitor
 		$from = $message['from'];
-		$copy_email = WT_I18N::translate('You sent the following message to a webtrees administrator:')."\r\n\r\n".$copy_email;
-		$fromFullName = $message['from'];
+		$fromFullName = $message['from_name'];
+		$copy_email = WT_I18N::translate('You sent the following message to a webtrees administrator:') . WT_Mail::EOL . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
 	} else {
+		// Message from a logged-in user
+		$from = getUserEmail($user_id_from);
 		$fromFullName = getUserFullName($user_id_from);
-		$from = hex4email($fromFullName, 'UTF-8')." <".getUserEmail($user_id_from).">";
-		$toFullName=getUserFullName($user_id_to);
-		$copy_email = WT_I18N::translate('You sent the following message to a webtrees user:').' '.$toFullName."\r\n\r\n".$copy_email;
-
+		$copy_email = WT_I18N::translate('You sent the following message to a webtrees user:') . ' ' . getUserFullName($user_id_to) . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
 	}
 	if ($message['method']!='messaging') {
-		$oryginal_subject = "[".WT_I18N::translate('webtrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
 		if (!$user_id_from) {
-			$oryginal_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
+			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
 			if (!empty($message['from_name'])) {
-				$oryginal_email .= $message['from_name']."\r\n\r\n".$message['body'];
+				$original_email .= $message['from_name'] . WT_Mail::EOL . WT_Mail::EOL . $message['body'];
 			} else {
-				$oryginal_email .= $from."\r\n\r\n".$message['body'];
+				$original_email .= $from . WT_Mail::EOL . WT_Mail::EOL . $message['body'];
 			}
 		} else {
-			$oryginal_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
-			$oryginal_email .= $fromFullName."\r\n\r\n".$message['body'];
+			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
+			$original_email .= $fromFullName . WT_Mail::EOL . WT_Mail::EOL . $message['body'];
 		}
 		if (!isset($message['no_from'])) {
-			if (stristr($from, $WEBTREES_EMAIL)) {
-				$from = getUserEmail(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
-			}
-			// copy messages should be from:  $WEBTREES_EMAIL
-			$copy_from = $WEBTREES_EMAIL;
-			if (!empty($copy_from)) {
-				// send the copy message to sender
-				if (!webtreesMail($from, $copy_from, $copy_subject, $copy_email)) {
-					return false;
-				}
-			}
+			// send a copy of the copy message back to the sender
+			WT_Mail::send(
+				$from,
+				$fromFullName,
+				$WEBTREES_EMAIL, 
+				$WEBTREES_EMAIL,
+				WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
+				$copy_email
+			);
 		}
 	}
 
 	//-- Load the "to" users language
 	WT_I18N::init(get_user_setting($user_id_to, 'language'));
-	if (isset($message['from_name']))
-		$message['body'] = WT_I18N::translate('Your Name:')." ".$message['from_name']."\r\n".WT_I18N::translate('Email Address:')." ".$message['from_email']."\r\n\r\n".$message['body'];
-	if (!userIsAdmin($user_id_from)) {
-		if (!empty($message['url']))
-			$message['body'] .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".$message['url']."\r\n";
-		$message['body'] .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n";
-		$message['body'] .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n";
-		$message['body'] .= "LANGUAGE: ".WT_LOCALE."\r\n";
+	if (isset($message['from_name'])) {
+		$message['body'] =
+			WT_I18N::translate('Your Name:') . ' ' . $message['from_name'] . WT_Mail::EOL .
+			WT_I18N::translate('Email Address:')." ".$message['from_email'] . WT_Mail::EOL . WT_Mail::EOL .
+			$message['body'];
 	}
-	if (empty($message['created']))
+	if (!userIsAdmin($user_id_from)) {
+		if (!empty($message['url'])) {
+			$message['body'] .=
+				WT_Mail::EOL . WT_Mail::EOL .
+				'--------------------------------------' . WT_Mail::EOL .
+				WT_I18N::translate('This message was sent while viewing the following URL: ') . WT_Mail::EOL .
+				$message['url'];
+		}
+		$message['body'] .= WT_Mail::auditFooter();
+	}
+	if (empty($message['created'])) {
 		$message['created'] = gmdate ("D, d M Y H:i:s T");
+	}
 	if ($message['method']!='messaging3' && $message['method']!='mailto' && $message['method']!='none') {
 		WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 			->execute(array($message['from'], $WT_REQUEST->getClientIp(), get_user_id($message['to']), $message['subject'], $message['body']));
 	}
 	if ($message['method']!='messaging') {
-		$oryginal_subject = "[".WT_I18N::translate('webtrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
 		if (!$user_id_from) {
-			$oryginal_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
+			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
 			if (!empty($message['from_name'])) {
-				$oryginal_email .= $message['from_name']."\r\n\r\n".$message['body'];
+				$original_email .= $message['from_name'] . WT_Mail::EOL . WT_Mail::EOL . $message['body'];
 			} else {
-				$oryginal_email .= $from."\r\n\r\n".$message['body'];
+				$original_email .= $from . WT_Mail::EOL . WT_Mail::EOL . $message['body'];
 			}
 		} else {
-			$oryginal_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
-			$oryginal_email .= $fromFullName."\r\n\r\n".$message['body'];
+			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
+			$original_email .= $fromFullName . WT_Mail::EOL . WT_Mail::EOL . $message['body'];
 		}
-		$toFullName=getUserFullName($user_id_to);
-		$to = hex4email($toFullName, 'UTF-8'). " <".getUserEmail($user_id_to).">";
 		if (getUserEmail($user_id_to)) {
-			// send the original message
-			if (!webtreesMail($to, $from, $oryginal_subject, $oryginal_email)) {
-				return false;
-			}
+			WT_Mail::send(
+				getUserEmail($user_id_to),
+				getUserFullName($user_id_to),
+				$WEBTREES_EMAIL,
+				$WEBTREES_EMAIL,
+				WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
+				$original_email
+			);
 		}
 	}
 

@@ -28,11 +28,9 @@ library/Zend/Json/          export-ignore
 library/Zend/Layout/        export-ignore
 library/Zend/Ldap/          export-ignore
 library/Zend/Log/           export-ignore
-library/Zend/Mail/          export-ignore
 library/Zend/Markup/        export-ignore
 library/Zend/Measure/       export-ignore
 library/Zend/Memory/        export-ignore
-library/Zend/Mime/          export-ignore
 library/Zend/Navigation/    export-ignore
 library/Zend/Oauth/         export-ignore
 library/Zend/OpenId/        export-ignore

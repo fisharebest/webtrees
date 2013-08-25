@@ -253,11 +253,12 @@ case 'user_setting':
 	case 'verified_by_admin':
 		// Approving for the first time?  Send a confirmation email
 		if ($value && get_user_setting($id1, $id2)!=$value && get_user_setting($id1, 'sessiontime')==0) {
-			require_once WT_ROOT.'includes/functions/functions_mail.php';
 			WT_I18N::init(get_user_setting($id1, 'language'));
-			webtreesMail(
+			WT_Mail::send(
 				getUserEmail($id1),
+				getUserName($id1),
 				$WEBTREES_EMAIL,
+				WT_WEBTREES,
 				WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME.WT_SCRIPT_PATH),
 				WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME.WT_SCRIPT_PATH, WT_SERVER_NAME.WT_SCRIPT_PATH)
 			);
