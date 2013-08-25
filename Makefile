@@ -23,16 +23,17 @@ JS_FILES=$(shell find $(BUILD_DIR) -name "*.js")
 # Use maximum compression
 GZIP=gzip -9
 
-.PHONY: clean update build/webtrees
+.PHONY: clean update check build/webtrees
 
 ################################################################################
 # Update 
 ################################################################################
 update: $(MO_FILES) $(CSS_RTL_FILES)
-	# Set file permissions for a typical server
-	chmod -R go-w .
-	chmod go+w data
-	# Check for PHP syntax errors
+
+################################################################################
+# Check for PHP syntax errors
+################################################################################
+check:
 	if find . -name '*.php' -not -path './library/Zend/*' -exec php -l {} \; | grep -v "No syntax errors"; then false; else true; fi
 
 ################################################################################
@@ -76,10 +77,11 @@ clean:
 ################################################################################
 language/webtrees.pot: $(LANGUAGE_SRC)
 	# Modify the .XML report files so that xgettext can scan them
+	find modules*/ -name "*.xml" -exec cp -p {} {}.bak \;
 	sed -i -e 's~\(WT_I18N::[^)]*[)]\)~<?php echo \1; ?>~g' modules*/*/*.xml
 	echo $^ | xargs xgettext --package-name=webtrees --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=$@ --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translate_c:1c,2 --keyword=plural:1,2 --keyword=noop:1
 	# Restore the .XML files
-	git checkout --quiet -- modules*/*/*.xml
+	find modules*/ -name "*.xml" -exec mv {}.bak {} \;
 
 ################################################################################
 # Gettext catalog (.PO) files
