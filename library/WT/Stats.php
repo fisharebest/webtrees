@@ -1657,6 +1657,8 @@ class WT_Stats {
 				" birth.d_fact='BIRT' AND".
 				" death.d_fact='DEAT' AND".
 				" birth.d_julianday1<>0 AND".
+				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND".
+				" death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND".
 				" death.d_julianday1>birth.d_julianday2".
 				$years.
 				$sex_search.
