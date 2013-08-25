@@ -24,7 +24,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Filter {
-	const ENCODING = 'utf-8';
+	const ENCODING = 'UTF-8';
 
 	//////////////////////////////////////////////////////////////////////////////
 	// Escape a string for use in HTML
@@ -63,15 +63,9 @@ class WT_Filter {
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
-	// Convert a string from utf8 to utf16be
+	// Unescape an HTML string, giving just the literal text
 	//////////////////////////////////////////////////////////////////////////////
-	private static function utf16be($string) {
-		if (function_exists('iconv')) {
-			return iconv(self::ENCODING, 'utf16be', $string);
-		} elseif (function_exists('mb_convert_encoding')) {
-			return mb_convert_encoding($string, 'utf16be', self::ENCODING);
-		} else {
-			throw new Exception('Need either iconv or mbstring libraries');
-		}
+	public static function unescapeHtml($string) {
+		return html_entity_decode(strip_tags($string), ENT_QUOTES, self::ENCODING);
 	}
 }
