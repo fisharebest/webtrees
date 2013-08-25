@@ -2923,7 +2923,7 @@ class WT_Stats {
 			" FROM  `##families`".
 			" WHERE f_numchil = 0 AND f_file = {$this->_ged_id}");
 		$row=$rows[0];
-		return WT_I18N::number($row['tot']);
+		return $row['tot'];
 	}
 
 	function noChildrenFamilies() {
