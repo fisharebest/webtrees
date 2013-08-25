@@ -777,11 +777,11 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 		if ($y_as == 201) {
 			$percentage = false;
 			if ($current == 13 || $current == 15 || $current == 16 || $current == 21) {
-				$ytitle = WT_I18N::translate('Total families');
+				$ytitle = WT_I18N::translate('Families');
 			} else if ($current == 14) {
-				$ytitle = WT_I18N::translate('Number of children');
+				$ytitle = WT_I18N::translate('Children');
 			} else {
-				$ytitle = WT_I18N::translate('Total individuals');
+				$ytitle = WT_I18N::translate('Individuals');
 			}
 		} else if ($y_as == 202) {
 			$percentage = true;
@@ -811,11 +811,11 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 		}
 		$myfunc();
 		if ($indfam == 'IND') {
-			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.$stats->_totalIndividuals();
+			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.$stats->totalIndividuals();
 		} else if ($x_as==21) {
 			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.$stats->totalChildren();
 		} else {
-			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.$stats->_totalFamilies();
+			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.$stats->totalFamilies();
 		}
 		myplot($hstr, $zmax, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	}
