@@ -899,7 +899,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 				}
 				$anniv_date = new WT_Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
 				foreach ($record->getFacts(str_replace(' ', '|', $facts)) as $fact) {
-					if ($fact->getDate() == $anniv_date) {
+					if ($fact->getDate() == $anniv_date && $fact->getTag()==$row->d_fact) {
 						$fact->anniv = $row->d_year == 0 ? 0 : $anniv->y - $row->d_year;
 						$found_facts[] = $fact;
 					}
@@ -907,6 +907,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 			}
 		}
 	}
+
 	return $found_facts;
 }
 
