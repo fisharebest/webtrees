@@ -2844,6 +2844,7 @@ class WT_Stats {
 				" WHERE".
 				" married.d_gid = fam.f_id AND".
 				" fam.f_file = {$this->_ged_id} AND".
+				" d_julianday1<>0 AND".
 				" married.d_fact = 'MARR' AND".
 				" married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')".
 				" GROUP BY century".
