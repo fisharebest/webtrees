@@ -2840,7 +2840,7 @@ class WT_Stats {
 			$rows=self::_runSQL(
 				" SELECT SQL_CACHE ROUND(AVG(f_numchil),2) AS num, FLOOR(d_year/100+1) AS century".
 				" FROM  `##families`".
-				" JOIN  `##dates` ON (d_file = f_file AND d_gid=f_gid)".
+				" JOIN  `##dates` ON (d_file = f_file AND d_gid=f_id)".
 				" WHERE f_file = {$this->_ged_id}".
 				" AND   d_julianday1<>0".
 				" AND   d_fact = 'MARR'".
@@ -2917,19 +2917,18 @@ class WT_Stats {
 	function topAgeBetweenSiblingsFullName($params=null) { return $this->_ageBetweenSiblingsQuery($type='nolist', $params=null); }
 	function topAgeBetweenSiblingsList    ($params=null) { return $this->_ageBetweenSiblingsQuery($type='list',   $params=null); }
 
-	function noChildrenFamilies() {
+	function _noChildrenFamilies() {
 		$rows=self::_runSQL(
-			" SELECT SQL_CACHE".
-			" COUNT(*) AS tot".
-			" FROM".
-			" `##families` AS fam".
-			" WHERE".
-			" f_numchil = 0 AND".
-			" fam.f_file = {$this->_ged_id}");
+			" SELECT SQL_CACHE COUNT(*) AS tot".
+			" FROM  `##families`".
+			" WHERE f_numchil = 0 AND f_file = {$this->_ged_id}");
 		$row=$rows[0];
 		return WT_I18N::number($row['tot']);
 	}
 
+	function noChildrenFamilies() {
+		return WT_I18N::number($this->_noChildrenFamilies());
+	}
 
 	function noChildrenFamiliesList($params = null) {
 		global $TEXT_DIRECTION;
@@ -2997,7 +2996,7 @@ class WT_Stats {
 			if ($max<$values['count']) $max = $values['count'];
 			$tot += $values['count'];
 		}
-		$unknown = $this->noChildrenFamilies()-$tot;
+		$unknown = $this->_noChildrenFamilies()-$tot;
 		if ($unknown>$max) $max=$unknown;
 		$chm = "";
 		$chxl = "0:|";
