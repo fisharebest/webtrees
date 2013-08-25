@@ -2838,15 +2838,13 @@ class WT_Stats {
 			$sizes = explode('x', $size);
 			$max = 0;
 			$rows=self::_runSQL(
-				" SELECT SQL_CACHE ROUND(AVG(f_numchil),2) AS num, FLOOR(married.d_year/100+1) AS century".
-				" FROM `##families` AS fam".
-				" LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}".
-				" WHERE".
-				" married.d_gid = fam.f_id AND".
-				" fam.f_file = {$this->_ged_id} AND".
-				" d_julianday1<>0 AND".
-				" married.d_fact = 'MARR' AND".
-				" married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')".
+				" SELECT SQL_CACHE ROUND(AVG(f_numchil),2) AS num, FLOOR(d_year/100+1) AS century".
+				" FROM  `##families`".
+				" JOIN  `##dates` ON (d_file = f_file AND d_gid=f_gid)".
+				" WHERE f_file = {$this->_ged_id}".
+				" AND   d_julianday1<>0".
+				" AND   d_fact = 'MARR'".
+				" AND   d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')".
 				" GROUP BY century".
 				" ORDER BY century");
 			if (empty($rows)) return '';
