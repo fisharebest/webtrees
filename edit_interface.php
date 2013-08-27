@@ -594,7 +594,11 @@ case 'add_parent_to_individual_action':
 		$family->createFact('1 HUSB @' . $parent->getXref() . '@', true);
 	}
 
-	$controller->addInlineJavascript('closePopupAndReloadParent();');
+	if (safe_POST('goto')=='new') {
+		$controller->addInlineJavascript('closePopupAndReloadParent("' . $parent->getRawUrl() . '");');
+	} else {
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
+	}
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -711,7 +715,7 @@ case 'add_spouse_to_individual_action':
 	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
 
 	if (safe_POST('goto')=='new') {
-		$controller->addInlineJavascript('closePopupAndReloadParent("' . $new_spouse->getRawUrl() . '");');
+		$controller->addInlineJavascript('closePopupAndReloadParent("' . $spouse->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
