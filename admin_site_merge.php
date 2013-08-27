@@ -89,7 +89,7 @@ if ($action!='choose') {
 				foreach ($facts1 as $fact_id1 => $fact1) {
 					foreach ($facts2 as $fact_id2 => $fact2) {
 						if ($fact_id1 == $fact_id2) {
-							echo '<tr><td><input type="checkbox" name="keep1[]" value="', $fact_id1, '" checked="checked" disabled></td><td>', nl2br($fact1->getGedcom(), false), '</td></tr>';
+							echo '<tr><td><input type="checkbox" name="keep1[]" value="', $fact_id1, '" checked="checked"></td><td>', nl2br($fact1->getGedcom(), false), '</td></tr>';
 							$skip[] = $fact_id1;
 							unset($facts1[$fact_id1]);
 							unset($facts2[$fact_id2]);
