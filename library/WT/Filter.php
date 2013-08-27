@@ -53,9 +53,9 @@ class WT_Filter {
 			if (strlen($x[0]) == 1) {
 				return sprintf('\\x%02X', ord($x[0]));
 			} elseif (function_exists('iconv')) {
-				return sprintf('\\u%04s', strtoupper(bin2hex(iconv(self::ENCODING, 'utf16be', $x[0]))));
+				return sprintf('\\u%04s', strtoupper(bin2hex(iconv(self::ENCODING, 'UTF-16BE', $x[0]))));
 			} elseif (function_exists('mb_convert_encoding')) {
-				return sprintf('\\u%04s', strtoupper(bin2hex(mb_convert_encoding($x[0], 'utf16be', self::ENCODING))));
+				return sprintf('\\u%04s', strtoupper(bin2hex(mb_convert_encoding($x[0], 'UTF-16BE', self::ENCODING))));
 			} else {
 				return $x[0];
 			}
