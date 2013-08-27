@@ -2155,7 +2155,11 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 		$namerec = $name_fact->getGedcom();
 		// Populate the standard NAME field and subfields
 		foreach ($STANDARD_NAME_FACTS as $tag) {
-			$name_fields[$tag] = $name_fact->getAttribute($tag);
+			if ($tag=='NAME') {
+				$name_fields[$tag] = $name_fact->getValue();
+			} else {
+				$name_fields[$tag] = $name_fact->getAttribute($tag);
+			}
 		}
 	} else {
 		$name_fact_id = null;
@@ -2420,12 +2424,6 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 			break;
 		}
 	}
-
-	// Make sure there are two slashes in the name
-	if (!preg_match('/\//', $name_fields['NAME']))
-		$name_fields['NAME'].=' /';
-	if (!preg_match('/\/.*\//', $name_fields['NAME']))
-		$name_fields['NAME'].='/';
 
 	// Populate any missing 2 XXXX fields from the 1 NAME field
 	$npfx_accept=implode('|', $NPFX_accept);
