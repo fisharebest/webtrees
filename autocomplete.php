@@ -491,7 +491,7 @@ function get_FAM_rows($term) {
 function get_INDI_rows($term) {
 	return
 		WT_DB::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full".
 			" FROM `##individuals`".
 			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
 			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND i_file=? ORDER BY n_full COLLATE '".WT_I18N::$collation."'"
