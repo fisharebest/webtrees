@@ -168,6 +168,8 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 	} elseif ($action == "update" && $paramok) {
 		$record = WT_GedcomRecord::getInstance($linktoid);
 		$record->createFact('1 OBJE @' . $mediaid . '@', true);
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
+
 	}
 	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 }
