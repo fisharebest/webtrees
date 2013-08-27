@@ -2425,6 +2425,11 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 		}
 	}
 
+	// Initialise an empty name field
+	if (empty($name_fields['NAME'])) {
+		$name_fields['NAME'] = '//';
+	}
+
 	// Populate any missing 2 XXXX fields from the 1 NAME field
 	$npfx_accept=implode('|', $NPFX_accept);
 	if (preg_match ("/((($npfx_accept)\.? +)*)([^\n\/\"]*)(\"(.*)\")? *\/(([a-z]{2,3} +)*)(.*)\/ *(.*)/i", $name_fields['NAME'], $name_bits)) {
