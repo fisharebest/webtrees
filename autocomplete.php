@@ -35,13 +35,13 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 	// Fetch all data, regardless of privacy
 	$rows=
 		WT_DB::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, n_full".
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full".
 			" FROM `##individuals`".
 			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
 			" WHERE (n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND i_file=? ORDER BY n_full COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, $term, WT_GED_ID))
-		->fetchAll(PDO::FETCH_ASSOC);
+		->fetchAll();
 	// Filter for privacy - and whether they could be alive at the right time
 	$pid=safe_GET_xref('pid');
 	$event_date=safe_GET('event_date');
@@ -68,7 +68,7 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 		}
 	}
 	foreach ($rows as $row) {
-		$person=WT_Individual::getInstance($row);
+		$person=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($person->canShowName()) {
 			// filter ASSOciate
 			if ($event_jd) {
@@ -110,13 +110,13 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 				}
 			}
 			// display
-			$label=str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row['n_full']);
+			$label=str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row->n_full);
 			if ($event_jd && $person->getBirthDate()->isOK()) {
 				$label.=", <span class=\"age\">(".WT_I18N::translate('Age')." ".$person->getBirthDate()->MinDate()->getAge(false, $event_jd).")</span>";
 			} else {
 				$label.=', <i>'.$person->getLifeSpan().'</i>';
 			}
-			$data[]=array('value'=>$row['xref'], 'label'=>$label);
+			$data[]=array('value'=>$row->xref, 'label'=>$label);
 		}
 	}
 	echo json_encode($data);
@@ -152,7 +152,7 @@ case 'FAM': // Families, whose name contains the search terms
 	$rows=get_FAM_rows($term);
 	// Filter for privacy
 	foreach ($rows as $row) {
-		$family=WT_Family::getInstance($row);
+		$family=WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($family->canShowName()) {
 			$marriage_year=$family->getMarriageYear();
 			if ($marriage_year) {
@@ -413,9 +413,9 @@ case 'IFSRO':
 	$rows=get_INDI_rows($term);
 	// Filter for privacy
 	foreach ($rows as $row) {
-		$person=WT_Individual::getInstance($row);
+		$person=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($person->canShowName()) {
-			$data[]=array('value'=>$person->getXref(), 'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row['n_full']).', <i>'.$person->getLifeSpan().'</i>');
+			$data[]=array('value'=>$person->getXref(), 'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row->n_full).', <i>'.$person->getLifeSpan().'</i>');
 		}
 	}	
 	// Fetch all data, regardless of privacy
@@ -449,7 +449,7 @@ case 'IFSRO':
 	$rows=get_FAM_rows($term);
 	// Filter for privacy
 	foreach ($rows as $row) {
-		$family=WT_Family::getInstance($row);
+		$family=WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($family->canShowName()) {
 			$marriage_year=$family->getMarriageYear();
 			if ($marriage_year) {
@@ -476,7 +476,7 @@ function get_FAM_rows($term) {
 	return
 	$rows=
 		WT_DB::prepare(
-			"SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec".
+			"SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom".
 			" FROM `##families`".
 			" JOIN `##name` AS husb_name ON (f_husb=husb_name.n_id AND f_file=husb_name.n_file)".
 			" JOIN `##name` AS wife_name ON (f_wife=wife_name.n_id AND f_file=wife_name.n_file)".
@@ -485,19 +485,19 @@ function get_FAM_rows($term) {
 			" ORDER BY husb_name.n_sort, wife_name.n_sort COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, WT_GED_ID))
-		->fetchAll(PDO::FETCH_ASSOC);
+		->fetchAll();
 }
 
 function get_INDI_rows($term) {
 	return
 		WT_DB::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
 			" FROM `##individuals`".
 			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
 			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND i_file=? ORDER BY n_full COLLATE '".WT_I18N::$collation."'"
 		)
 		->execute(array($term, WT_GED_ID))
-		->fetchAll(PDO::FETCH_ASSOC);
+		->fetchAll();
 }
 
 function get_NOTE_rows($term) {
@@ -516,12 +516,12 @@ function get_NOTE_rows($term) {
 function get_OBJE_rows($term) {
 	return
 		WT_DB::prepare(
-			"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec".
+			"SELECT 'OBJE' AS type, m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom".
 			" FROM `##media`".
 			" WHERE (m_titl LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR m_id LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND m_file=?"
 		)
 		->execute(array($term, $term, WT_GED_ID))
-		->fetchAll(PDO::FETCH_ASSOC);
+		->fetchAll();
 }
 
 function get_REPO_rows($term) {
