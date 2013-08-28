@@ -48,7 +48,6 @@ library/Zend/Test/          export-ignore
 library/Zend/Text/          export-ignore
 library/Zend/TimeSync/      export-ignore
 library/Zend/Tool/          export-ignore
-library/Zend/Validate/      export-ignore
 library/Zend/View/          export-ignore
 library/Zend/Wildfire/      export-ignore
 library/Zend/XmlRpc/        export-ignore
