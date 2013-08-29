@@ -32,7 +32,6 @@ $controller
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 // Valid values for form variables
-$ALL_ACTIONS=array('cleanup', 'cleanup2', 'createform', 'createuser', 'deleteuser', 'listusers', 'loadrows', 'load1row');
 $ALL_THEMES_DIRS=array();
 foreach (get_theme_names() as $themename=>$themedir) {
 	$ALL_THEME_DIRS[]=$themedir;
@@ -46,33 +45,33 @@ $ALL_EDIT_OPTIONS=array(
 );
 
 // Form actions
-$action            =safe_GET('action',   $ALL_ACTIONS, 'listusers');
-$usrlang           =safe_POST('usrlang',  array_keys(WT_I18N::installed_languages()));
-$username          =safe_POST('username', WT_REGEX_USERNAME);
-$filter            =safe_POST('filter',   WT_REGEX_NOSCRIPT);
-$ged               =safe_POST('ged',      WT_REGEX_NOSCRIPT);
+$action             = WT_Filter::get('action',    null, 'listusers');
+$usrlang            = WT_Filter::post('usrlang',  implode('|', array_keys(WT_I18N::installed_languages())), WT_LOCALE);
+$username           = WT_Filter::post('username', WT_REGEX_USERNAME);
+$filter             = WT_Filter::post('filter');
+$ged                = WT_Filter::post('ged');
 
 // Extract form variables
-$realname          =safe_POST('realname'   );
-$pass1             =safe_POST('pass1',        WT_REGEX_PASSWORD);
-$pass2             =safe_POST('pass2',        WT_REGEX_PASSWORD);
-$emailaddress      =safe_POST('emailaddress', WT_REGEX_EMAIL);
-$user_theme        =safe_POST('user_theme',               $ALL_THEME_DIRS);
-$user_language     =safe_POST('user_language',            array_keys(WT_I18N::installed_languages()), WT_LOCALE);
-$new_contact_method=safe_POST('new_contact_method');
-$new_comment       =safe_POST('new_comment',              WT_REGEX_UNSAFE);
-$new_auto_accept   =safe_POST_bool('new_auto_accept');
-$canadmin          =safe_POST_bool('canadmin');
-$visibleonline     =safe_POST_bool('visibleonline');
-$editaccount       =safe_POST_bool('editaccount');
-$verified          =safe_POST_bool('verified');
-$verified_by_admin =safe_POST_bool('verified_by_admin');
+$realname           = WT_Filter::post('realname'   );
+$pass1              = WT_Filter::post('pass1',        WT_REGEX_PASSWORD);
+$pass2              = WT_Filter::post('pass2',        WT_REGEX_PASSWORD);
+$emailaddress       = WT_Filter::postEmail('emailaddress');
+$user_theme         = WT_Filter::post('user_theme',               $ALL_THEME_DIRS);
+$user_language      = WT_Filter::post('user_language',            implode('|', array_keys(WT_I18N::installed_languages())), WT_LOCALE);
+$new_contact_method = WT_Filter::post('new_contact_method');
+$new_comment        = WT_Filter::post('new_comment');
+$new_auto_accept    = WT_Filter::postBool('new_auto_accept');
+$canadmin           = WT_Filter::postBool('canadmin');
+$visibleonline      = WT_Filter::postBool('visibleonline');
+$editaccount        = WT_Filter::postBool('editaccount');
+$verified           = WT_Filter::postBool('verified');
+$verified_by_admin  = WT_Filter::postBool('verified_by_admin');
 
 switch ($action) {
 case 'deleteuser':
 	// Delete a user - but don't delete ourselves!
-	$username=safe_GET('username');
-	$user_id=get_user_id($username);
+	$username = WT_Filter::get('username');
+	$user_id  = get_user_id($username);
 	if ($user_id && $user_id!=WT_USER_ID) {
 		delete_user($user_id);
 		AddToLog("deleted user ->{$username}<-", 'auth');
@@ -81,7 +80,7 @@ case 'deleteuser':
 	break;
 case 'loadrows':
 	// Generate an AJAX/JSON response for datatables to load a block of rows
-	$sSearch=safe_GET('sSearch');
+	$sSearch=WT_Filter::get('sSearch');
 	$WHERE=" WHERE u.user_id>0";
 	$ARGS=array();
 	if ($sSearch) {
@@ -93,26 +92,26 @@ case 'loadrows':
 		$ARGS=array($sSearch, $sSearch, $sSearch);
 	} else {
 	}
-	$iDisplayStart =(int)safe_GET('iDisplayStart');
-	$iDisplayLength=(int)safe_GET('iDisplayLength');
+	$iDisplayStart  = WT_Filter::getInteger('iDisplayStart');
+	$iDisplayLength = WT_Filter::getInteger('iDisplayLength');
 	set_user_setting(WT_USER_ID, 'admin_users_page_size', $iDisplayLength);
 	if ($iDisplayLength>0) {
 		$LIMIT=" LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
 	} else {
 		$LIMIT="";
 	}
-	$iSortingCols=(int)safe_GET('iSortingCols');
+	$iSortingCols = WT_Filter::getInteger('iSortingCols');
 	if ($iSortingCols) {
 		$ORDER_BY=' ORDER BY ';
 		for ($i=0; $i<$iSortingCols; ++$i) {
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch (safe_GET('sSortDir_'.$i)) {
+			switch (WT_Filter::get('sSortDir_'.$i)) {
 			case 'asc':
-				$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' ASC ';
+				$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' ASC ';
 				break;
 			case 'desc':
-				$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' DESC ';
+				$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' DESC ';
 				break;
 			}
 			if ($i<$iSortingCols-1) {
@@ -149,7 +148,7 @@ case 'loadrows':
 		$aData[4]=edit_field_inline('user-email-'.    $user_id, $aData[4]);
 		// $aData[5] is a link to an email icon
 		if ($user_id != WT_USER_ID) {
-			$aData[5]='<i class="icon-email" onclick="return message(\''.$user_name.'\', \'\', \'\', \'\');"></i>';
+			$aData[5]='<i class="icon-email" onclick="return message(\''.$user_name.'\', \'\', \'\');"></i>';
 		}
 		$aData[6]=edit_field_language_inline('user_setting-'.$user_id.'-language', $aData[6]);
 		// $aData[7] is the sortable registration timestamp
@@ -181,15 +180,15 @@ case 'loadrows':
 	Zend_Session::writeClose();
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
-		'sEcho'               =>(int)safe_GET('sEcho'),
-		'iTotalRecords'       =>$iTotalRecords,
-		'iTotalDisplayRecords'=>$iTotalDisplayRecords,
-		'aaData'              =>$aaData
+		'sEcho'                => WT_Filter::getInteger('sEcho'), // Always an integer
+		'iTotalRecords'        => $iTotalRecords,
+		'iTotalDisplayRecords' => $iTotalDisplayRecords,
+		'aaData'               => $aaData
 	));
 	exit;
 case 'load1row':
 	// Generate an AJAX response for datatables to load expanded row
-	$user_id=(int)safe_GET('user_id');
+	$user_id = WT_Filter::getInteger('user_id');
 	Zend_Session::writeClose();
 	header('Content-type: text/html; charset=UTF-8');
 	echo '<h2>', WT_I18N::translate('Details'), '</h2>';
@@ -289,11 +288,11 @@ case 'createuser':
 		set_user_setting($user_id, 'verified',             $verified);
 		set_user_setting($user_id, 'verified_by_admin',    $verified_by_admin);
 		foreach (WT_Tree::getAll() as $tree) {
-			$tree->userPreference($user_id, 'gedcomid', safe_POST_xref('gedcomid'.$tree->tree_id));
-			$tree->userPreference($user_id, 'rootid',   safe_POST_xref('rootid'.$tree->tree_id));
-			$tree->userPreference($user_id, 'canedit',  safe_POST('canedit'.$tree->tree_id, array_keys($ALL_EDIT_OPTIONS)));
-			if (safe_POST_xref('gedcomid'.$tree->tree_id)) {
-				$tree->userPreference($user_id, 'RELATIONSHIP_PATH_LENGTH', safe_POST_integer('RELATIONSHIP_PATH_LENGTH'.$tree->tree_id, 0, 10, 0));
+			$tree->userPreference($user_id, 'gedcomid', WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF));
+			$tree->userPreference($user_id, 'rootid',   WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF));
+			$tree->userPreference($user_id, 'canedit',  WT_Filter::post('canedit'.$tree->tree_id, implode('|', array_keys($ALL_EDIT_OPTIONS))));
+			if (WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF)) {
+				$tree->userPreference($user_id, 'RELATIONSHIP_PATH_LENGTH', WT_Filter::postInteger('RELATIONSHIP_PATH_LENGTH'.$tree->tree_id, 0, 10, 0));
 			} else {
 				// Do not allow a path length to be set if the individual ID is not
 				$tree->userPreference($user_id, 'RELATIONSHIP_PATH_LENGTH', null);
@@ -444,12 +443,12 @@ case 'createform':
 									//Pedigree root person
 									'<td>';
 										$varname='rootid'.$tree->tree_id;
-										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="', WT_Filter::escapeHtml(safe_POST_xref('gedcomid'.$tree->tree_id)), '"> ', print_findindi_link($varname),
+										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="', WT_Filter::escapeHtml(WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF)), '"> ', print_findindi_link($varname),
 									'</td>',						
 									// GEDCOM INDI Record ID
 									'<td>';
 										$varname='gedcomid'.$tree->tree_id;
-										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="', WT_Filter::escapeHtml(safe_POST_xref('rootid'.$tree->tree_id)), '"> ', print_findindi_link($varname),
+										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="', WT_Filter::escapeHtml(WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF)), '"> ', print_findindi_link($varname),
 									'</td>',
 									'<td>';
 										$varname='canedit'.$tree->tree_id;
@@ -494,7 +493,7 @@ case 'cleanup':
 	<?php
 	// Check for idle users
 	//if (!isset($month)) $month = 1;
-	$month = safe_GET_integer('month', 1, 12, 6);
+	$month = WT_Filter::getInteger('month', 1, 12, 6);
 	echo "<tr><th>", WT_I18N::translate('Number of months since the last login for a user’s account to be considered inactive: '), "</th>";
 	echo "<td><select onchange=\"document.location=options[selectedIndex].value;\">";
 	for ($i=1; $i<=12; $i++) {
@@ -557,7 +556,7 @@ case 'cleanup':
 case 'cleanup2':
 	foreach (get_all_users() as $user_id=>$user_name) {
 		$var = "del_".str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name);
-		if (safe_POST($var)=='1') {
+		if (WT_Filter::post($var)=='1') {
 			delete_user($user_id);
 			AddToLog("deleted user ->{$user_name}<-", 'auth');
 			echo WT_I18N::translate('Deleted user: '); echo $user_name, "<br>";
@@ -645,7 +644,7 @@ default:
 				});
 				jQuery(this).addClass("icon-close");
 			});
-			oTable.fnFilter("'.safe_GET('filter', WT_REGEX_USERNAME).'");
+			oTable.fnFilter("'.WT_Filter::get('filter').'");
 		');
 	break;
 }

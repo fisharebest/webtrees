@@ -24,11 +24,13 @@
 define('WT_SCRIPT_NAME', 'module.php');
 require './includes/session.php';
 
-$all_modules=WT_Module::getActiveModules();
-$mod=safe_REQUEST($_REQUEST, 'mod', array_keys($all_modules));
-if ($mod) {
-	$module=$all_modules[$mod];
-	$module->modAction(safe_REQUEST($_REQUEST, 'mod_action'));
+$all_modules = WT_Module::getActiveModules();
+$mod         = WT_Filter::get('mod');
+$mod_action  = WT_Filter::get('mod_action');
+
+if ($mod && array_key_exists($mod, $all_modules)) {
+	$module = $all_modules[$mod];
+	$module->modAction($mod_action);
 } else {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
 }

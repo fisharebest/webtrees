@@ -23,7 +23,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-$xref = safe_GET('xref',  WT_REGEX_XREF);
+$xref = WT_Filter::get('xref', WT_REGEX_XREF);
 
 $person = WT_Individual::getInstance($xref);
 check_record_access($person);

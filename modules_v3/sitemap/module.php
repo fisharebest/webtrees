@@ -45,7 +45,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			break;
 		case 'generate':
 			Zend_Session::writeClose();
-			$this->generate(safe_GET('file'));
+			$this->generate(WT_Filter::get('file'));
 			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
@@ -216,9 +216,9 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			->pageHeader();
 
 		// Save the updated preferences
-		if (safe_POST('action', 'save')=='save') {
+		if (WT_Filter::post('action')=='save') {
 			foreach (WT_Tree::getAll() as $tree) {
-				set_gedcom_setting($tree->tree_id, 'include_in_sitemap', safe_POST_bool('include'.$tree->tree_id));
+				set_gedcom_setting($tree->tree_id, 'include_in_sitemap', WT_Filter::postBool('include'.$tree->tree_id));
 			}
 			// Clear cache and force files to be regenerated
 			WT_DB::prepare(

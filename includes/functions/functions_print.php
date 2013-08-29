@@ -318,7 +318,7 @@ function whoisonline() {
 			$content .= '<div class="logged_in_name">';
 			$content .= WT_Filter::escapeHtml(getUserFullName($user_id) . ' - ' . $user_name);
 			if (true || WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
-				$content .= ' <a class="icon-email" href="#" onclick="return message(\''.$user_name . '\', \'\', \''.addslashes(urlencode(get_query_url())).'\', \'\');" title="' . WT_I18N::translate('Send Message').'"></a>';
+				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user_name) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send Message').'"></a>';
 			}
 			$i++;
 			$content .= '</div>';
@@ -332,18 +332,18 @@ function whoisonline() {
 // Print a link to allow email/messaging contact with a user
 // Optionally specify a method (used for webmaster/genealogy contacts)
 function user_contact_link($user_id) {
-	$method=get_user_setting($user_id, 'contactmethod');
+	$method = get_user_setting($user_id, 'contactmethod');
 
-	$fullname=getUserFullName($user_id);
+	$fullname = getUserFullName($user_id);
 
 	switch ($method) {
 	case 'none':
 		return '';
 	case 'mailto':
 		$email=getUserEmail($user_id);
-		return '<a href="mailto:'.WT_Filter::escapeHtml($email).'">'.WT_Filter::escapeHtml($fullname).'</a>';
+		return '<a href="mailto:' . WT_Filter::escapeHtml($email).'">'.WT_Filter::escapeHtml($fullname).'</a>';
 	default:
-		return "<a href='#' onclick='message(\"".get_user_name($user_id)."\", \"".$method."\", \"".addslashes(urlencode(get_query_url()))."\", \"\");return false;'>".$fullname."</a>";
+		return "<a href='#' onclick='message(\"" . WT_Filter::escapeJs(get_user_name($user_id)) . "\", \"" . $method . "\", \"" . WT_Filter::escapeJs(get_query_url()) . "\", \"\");return false;'>" . WT_Filter::escapeHtml($fullname) . '</a>';
 	}
 }
 
@@ -557,7 +557,7 @@ function print_privacy_error() {
 		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', '<a href="mailto:'.WT_Filter::escapeHtml($email).'">'.WT_Filter::escapeHtml($fullname).'</a>', '</div>';
 		break;
 	default:
-		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', "<a href='#' onclick='message(\"", get_user_name($user_id), "\", \"", $method, "\", \"", addslashes(urlencode(get_query_url())), "\", \"\");return false;'>", $fullname, '</a>', '</div>';
+		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', "<a href='#' onclick='message(\"", WT_Filter::escapeHtml(get_user_name($user_id)), "\", \"", $method, "\", \"", WT_Filter::escapeJs(get_query_url()), "\", \"\"); return false;'>", WT_Filter::escapeHtml($fullname), '</a>', '</div>';
 		break;
 	}
 }

@@ -28,8 +28,8 @@ define('WT_SCRIPT_NAME', 'statistics.php');
 require './includes/session.php';
 
 // check for on demand content loading
-$tab = safe_GET('tab', WT_REGEX_NOSCRIPT, 0);
-$ajax = safe_GET('ajax', WT_REGEX_NOSCRIPT, 0);
+$tab  = WT_Filter::getInteger('tab', 0, 3);
+$ajax = WT_Filter::getBool('ajax');
 
 if (!$ajax) {
 	$controller=new WT_Controller_Page();

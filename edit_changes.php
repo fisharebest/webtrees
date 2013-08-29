@@ -31,10 +31,10 @@ $controller
 	->setPageTitle(WT_I18N::translate('Pending changes'))
 	->pageHeader();
 
-$action   =safe_GET('action');
-$change_id=safe_GET('change_id');
-$index    =safe_GET('index');
-$ged      =safe_GET('ged');
+$action   =WT_Filter::get('action');
+$change_id=WT_Filter::getInteger('change_id');
+$index    =WT_Filter::get('index');
+$ged      =WT_Filter::getInteger('ged');
 
 echo '<script>';
 ?>

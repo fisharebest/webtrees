@@ -21,8 +21,8 @@
 define('WT_SCRIPT_NAME', 'block_edit.php');
 require './includes/session.php';
 
-$block_id=safe_GET('block_id');
-$block=WT_DB::prepare(
+$block_id = WT_Filter::getInteger('block_id');
+$block = WT_DB::prepare(
 	"SELECT SQL_CACHE * FROM `##block` WHERE block_id=?"
 )->execute(array($block_id))->fetchOneRow();
 

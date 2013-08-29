@@ -60,10 +60,10 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		$this->shadowoffsetX = $shadowoffsetX;
 		$this->shadowoffsetY = $shadowoffsetY;
 		
-		$this->show_full =safe_GET('show_full', array('0', '1'), $PEDIGREE_FULL_DETAILS);
-		$this->talloffset=safe_GET('talloffset', array('0', '1', '2', '3'), $PEDIGREE_LAYOUT);
-		$this->box_width  =safe_GET_integer('box_width',   50, 300, 100);
-		$this->PEDIGREE_GENERATIONS=safe_GET_integer('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
+		$this->show_full            = WT_Filter::getInteger('show_full', 0, 1, $PEDIGREE_FULL_DETAILS);
+		$this->talloffset           = WT_Filter::getInteger('talloffset', 0, 3, $PEDIGREE_LAYOUT);
+		$this->box_width            = WT_Filter::getInteger('box_width', 50, 300, 100);
+		$this->PEDIGREE_GENERATIONS = WT_Filter::getInteger('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
 
 		if ($this->talloffset==1) $this->talloffset=1; // Make SURE this is an integer
 		if ($this->talloffset>1 && $this->PEDIGREE_GENERATIONS>8) $this->PEDIGREE_GENERATIONS=8;

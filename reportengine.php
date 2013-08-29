@@ -28,14 +28,14 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Page();
 
-$famid   =safe_GET('famid');
-$pid     =safe_GET('pid');
-$action  =safe_GET('action', array('choose', 'setup', 'run'), 'choose');
-$report  =safe_GET('report');
-$output  =safe_GET('output', array('HTML', 'PDF'), 'PDF');
-$vars    =safe_GET('vars');
-$varnames=safe_GET('varnames');
-$type    =safe_GET('type');
+$famid   =WT_Filter::get('famid');
+$pid     =WT_Filter::get('pid');
+$action  =WT_Filter::get('action', 'choose|setup|run', 'choose');
+$report  =WT_Filter::get('report');
+$output  =WT_Filter::get('output', 'HTML|PDF', 'PDF');
+$vars    =WT_Filter::get('vars');
+$varnames=WT_Filter::get('varnames');
+$type    =WT_Filter::get('type');
 if (!is_array($vars)) {
 	$vars=array();
 }

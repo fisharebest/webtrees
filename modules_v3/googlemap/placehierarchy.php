@@ -128,7 +128,7 @@ function create_map($placelevels) {
 	// *** ENABLE STREETVIEW *** (boolean) =========================================================
 	$STREETVIEW = get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	// =============================================================================================
-	$parent = safe_GET('parent', WT_REGEX_UNSAFE);
+	$parent = WT_Filter::get('parent');
 	
 	// create the map
 	echo '<table style="margin:20px auto 0 auto;"><tr valign="top"><td>';
@@ -197,7 +197,7 @@ function create_map($placelevels) {
 			}
 		');
 	
-		$parent = safe_GET('parent');
+		$parent = WT_Filter::get('parent');
 		global $TBLPREFIX, $pl_lati, $pl_long;
 		if ($level>=1) {
 			$pl_lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlng['pl_lati']);	// WT_placelocation lati

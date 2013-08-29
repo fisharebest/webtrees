@@ -26,8 +26,8 @@ header('Content-Type: text/plain; charset=UTF-8');
 // We have finished writing session data, so release the lock
 Zend_Session::writeClose();
 
-$term=safe_GET('term', WT_REGEX_UNSAFE); // we can search on '"><& etc.
-$type=safe_GET('field');
+$term = WT_Filter::get('term'); // we can search on '"><& etc.
+$type = WT_Filter::get('field');
 
 switch ($type) {
 case 'ASSO': // Associates of an individuals, whose name contains the search terms
@@ -43,12 +43,11 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 		->execute(array($term, $term, WT_GED_ID))
 		->fetchAll();
 	// Filter for privacy - and whether they could be alive at the right time
-	$pid=safe_GET_xref('pid');
-	$event_date=safe_GET('event_date');
-	$record=WT_GedcomRecord::getInstance($pid); // INDI or FAM
-	$record=WT_GedcomRecord::getInstance($pid); // INDI or FAM
-	$tmp=new WT_Date($event_date);
-	$event_jd=$tmp->JD();
+	$pid        = WT_Filter::get('pid', WT_REGEX_XREF);
+	$event_date = WT_Filter::get('event_date');
+	$record     = WT_GedcomRecord::getInstance($pid); // INDI or FAM
+	$tmp        = new WT_Date($event_date);
+	$event_jd   = $tmp->JD();
 	// INDI
 	$indi_birth_jd = 0;
 	if ($record instanceof WT_Individual) {
@@ -325,8 +324,8 @@ case 'SOUR': // Sources, that include the search terms
 	exit;
 
 case 'SOUR_PAGE': // Citation details, for a given source, that contain the search term
-	$data=array();
-	$sid=safe_GET_xref('sid');
+	$data = array();
+	$sid  = WT_Filter::get('sid', WT_REGEX_XREF);
 	// Fetch all data, regardless of privacy
 	$rows=
 		WT_DB::prepare(

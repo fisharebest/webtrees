@@ -21,11 +21,11 @@ require './includes/session.php';
 require WT_ROOT . 'includes/functions/functions_edit.php';
 
 // type of file/object to include
-$files = safe_GET('files', array('local', 'external', 'unused'), 'local');
+$files = WT_Filter::get('files', 'local|external|unused', 'local');
 
 // family tree setting MEDIA_DIRECTORY
 $media_folders = all_media_folders();
-$media_folder  = safe_GET('media_folder', WT_REGEX_UNSAFE);
+$media_folder  = WT_Filter::get('media_folder');
 // User folders may contain special characters.  Restrict to actual folders.
 if (!array_key_exists($media_folder, $media_folders)) {
 	$media_folder = reset($media_folders);
@@ -33,24 +33,24 @@ if (!array_key_exists($media_folder, $media_folders)) {
 
 // prefix to filename
 $media_paths = media_paths($media_folder);
-$media_path  = safe_GET('media_path', WT_REGEX_UNSAFE);
+$media_path  = WT_Filter::get('media_path');
 // User paths may contain special characters.  Restrict to actual paths.
 if (!array_key_exists($media_path, $media_paths)) {
 	$media_path = reset($media_paths);
 }
 
 // subfolders within $media_path
-$subfolders = safe_GET('subfolders', array('include', 'exclude'), 'include');
-$action     = safe_GET('action');
+$subfolders = WT_Filter::get('subfolders', 'include|exclude', 'include');
+$action     = WT_Filter::get('action');
 
 ////////////////////////////////////////////////////////////////////////////////
 // POST callback for file deletion
 ////////////////////////////////////////////////////////////////////////////////
-$delete_file = safe_POST('delete', WT_REGEX_UNSAFE);
+$delete_file = WT_Filter::post('delete');
 if ($delete_file) {
 	$controller = new WT_Controller_Ajax;
 	// Only delete valid (i.e. unused) media files
-	$media_folder = safe_POST('media_folder', WT_REGEX_UNSAFE);
+	$media_folder = WT_Filter::post('media_folder');
 	$disk_files = all_disk_files ($media_folder, '', 'include', '');
 	if (in_array($delete_file, $disk_files)) {
 		$tmp = WT_DATA_DIR . $media_folder . $delete_file;
@@ -81,9 +81,9 @@ if ($delete_file) {
 switch($action) {
 case 'load_json':
 	Zend_Session::writeClose();
-	$sSearch        = safe_GET('sSearch');
-	$iDisplayStart  = (int)safe_GET('iDisplayStart');
-	$iDisplayLength = (int)safe_GET('iDisplayLength');
+	$sSearch        = WT_Filter::get('sSearch');
+	$iDisplayStart  = WT_Filter::getInteger('iDisplayStart');
+	$iDisplayLength = WT_Filter::getInteger('iDisplayLength');
 
 	switch ($files) {
 	case 'local':
@@ -123,18 +123,18 @@ case 'load_json':
 		} else {
 			$LIMIT = "";
 		}
-		$iSortingCols=safe_GET('iSortingCols');
+		$iSortingCols=WT_Filter::getInteger('iSortingCols');
 		if ($iSortingCols) {
 			$ORDER_BY = " ORDER BY ";
 			for ($i=0; $i<$iSortingCols; ++$i) {
 				// Datatables numbers columns 0, 1, 2, ...
 				// MySQL numbers columns 1, 2, 3, ...
-				switch (safe_GET('sSortDir_'.$i)) {
+				switch (WT_Filter::get('sSortDir_'.$i)) {
 				case 'asc':
-					$ORDER_BY .= (1+(int)safe_GET('iSortCol_'.$i)).' ASC ';
+					$ORDER_BY .= (1 + WT_Filter::getInteger('iSortCol_'.$i)).' ASC ';
 					break;
 				case 'desc':
-					$ORDER_BY .= (1+(int)safe_GET('iSortCol_'.$i)).' DESC ';
+					$ORDER_BY .= (1 + WT_Filter::getInteger('iSortCol_'.$i)).' DESC ';
 					break;
 				}
 				if ($i<$iSortingCols-1) {
@@ -181,18 +181,18 @@ case 'load_json':
 		} else {
 			$LIMIT = "";
 		}
-		$iSortingCols = safe_GET('iSortingCols');
+		$iSortingCols = WT_Filter::getInteger('iSortingCols');
 		if ($iSortingCols) {
 			$ORDER_BY = " ORDER BY ";
 			for ($i=0; $i<$iSortingCols; ++$i) {
 				// Datatables numbers columns 0, 1, 2, ...
 				// MySQL numbers columns 1, 2, 3, ...
-				switch (safe_GET('sSortDir_'.$i)) {
+				switch (WT_Filter::get('sSortDir_'.$i)) {
 				case 'asc':
-					$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' ASC ';
+					$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' ASC ';
 					break;
 				case 'desc':
-					$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' DESC ';
+					$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' DESC ';
 					break;
 				}
 				if ($i<$iSortingCols-1) {
@@ -247,7 +247,7 @@ case 'load_json':
 
 		// Sort files - only option is column 0
 		sort($unused_files);
-		if (safe_GET('sSortDir_0')=='desc') {
+		if (WT_Filter::get('sSortDir_0')=='desc') {
 			$unused_files = array_reverse($unused_files);
 		}
 
@@ -300,7 +300,7 @@ case 'load_json':
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
-		'sEcho'                => (int)safe_GET('sEcho'),
+		'sEcho'                => WT_Filter::getInteger('sEcho'), // String, but always an integer
 		'iTotalRecords'        => $iTotalRecords,
 		'iTotalDisplayRecords' => $iTotalDisplayRecords,
 		'aaData'               => $aaData

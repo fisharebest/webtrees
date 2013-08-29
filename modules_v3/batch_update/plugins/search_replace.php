@@ -56,10 +56,10 @@ class search_replace_bu_plugin extends base_plugin {
 
 	function getOptions() {
 		parent::getOptions();
-		$this->search =safe_GET('search', WT_REGEX_UNSAFE);
-		$this->replace=safe_GET('replace', WT_REGEX_UNSAFE);
-		$this->method =safe_GET('method', array('exact', 'words', 'wildcards', 'regex'), 'exact');
-		$this->case   =safe_GET('case', 'i');
+		$this->search  = WT_Filter::get('search');
+		$this->replace = WT_Filter::get('replace');
+		$this->method  = WT_Filter::get('method', 'exact|words|wildcards|regex', 'exact');
+		$this->case    = WT_Filter::get('case', 'i');
 
 		$this->error='';
 		switch ($this->method) {

@@ -31,7 +31,7 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class WT_Controller_Source extends WT_Controller_GedcomRecord {
 	public function __construct() {
-		$xref         = safe_GET_xref('sid');
+		$xref         = WT_Filter::get('sid', WT_REGEX_XREF);
 		$this->record = WT_Source::getInstance($xref);
 
 		parent::__construct();

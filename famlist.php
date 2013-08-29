@@ -32,19 +32,19 @@ $controller=new WT_Controller_Page();
 
 // We show three different lists: initials, surnames and individuals
 // Note that the data may contain special chars, such as surname="<unknown>",
-$alpha   =safe_GET('alpha', WT_REGEX_UNSAFE); // All surnames beginning with this letter where "@"=unknown and ","=none
-$surname =safe_GET('surname', WT_REGEX_UNSAFE); // All indis with this surname.  NB - allow ' and "
-$show_all=safe_GET('show_all', array('no','yes'), 'no'); // All indis
+$alpha    = WT_Filter::get('alpha');  // All surnames beginning with this letter where "@"=unknown and ","=none
+$surname  = WT_Filter::get('surname'); // All indis with this surname
+$show_all = WT_Filter::get('show_all', 'no|yes', 'no'); // All indis
 // Long lists can be broken down by given name
-$show_all_firstnames=safe_GET('show_all_firstnames', array('no','yes'), 'no');
+$show_all_firstnames = WT_Filter::get('show_all_firstnames', 'no|yes', 'no');
 if ($show_all_firstnames=='yes') {
 	$falpha='';
 } else {
-	$falpha=safe_GET('falpha'); // All first names beginning with this letter
+	$falpha = WT_Filter::get('falpha'); // All first names beginning with this letter
 }
 
 $show_marnm=get_user_setting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm');
-switch (safe_GET('show_marnm', array('no','yes'))) {
+switch (WT_Filter::get('show_marnm', 'no|yes')) {
 case 'no':
 	$show_marnm=false;
 	if (WT_USER_ID) {
@@ -63,23 +63,23 @@ case 'yes':
 // i.e. can't specify show_all and surname at the same time.
 if ($show_all=='yes') {
 	if ($show_all_firstnames=='yes') {
-		$alpha='';
-		$surname='';
-		$legend=WT_I18N::translate('All');
-		$url=WT_SCRIPT_NAME.'?show_all=yes&amp;ged='.WT_GEDURL;
-		$show='indi';
+		$alpha   = '';
+		$surname = '';
+		$legend  = WT_I18N::translate('All');
+		$url     = WT_SCRIPT_NAME.'?show_all=yes&amp;ged='.WT_GEDURL;
+		$show    = 'indi';
 	} else	if ($falpha) {
-		$alpha='';
-		$surname='';
-		$legend=WT_I18N::translate('All').', '.WT_Filter::escapeHtml($falpha).'…';
-		$url=WT_SCRIPT_NAME.'?show_all=yes&amp;ged='.WT_GEDURL;
-		$show='indi';
+		$alpha   = '';
+		$surname = '';
+		$legend  = WT_I18N::translate('All').', '.WT_Filter::escapeHtml($falpha).'…';
+		$url     = WT_SCRIPT_NAME.'?show_all=yes&amp;ged='.WT_GEDURL;
+		$show    = 'indi';
 	} else {
-		$alpha='';
-		$surname='';
-		$legend=WT_I18N::translate('All');
-		$url=WT_SCRIPT_NAME.'?show_all=yes'.'&amp;ged='.WT_GEDURL;
-		$show=safe_GET('show', array('surn', 'indi'), 'surn');
+		$alpha   = '';
+		$surname = '';
+		$legend  = WT_I18N::translate('All');
+		$url     = WT_SCRIPT_NAME.'?show_all=yes'.'&amp;ged='.WT_GEDURL;
+		$show    = WT_Filter::get('show', 'surn|indi', 'surn');
 	}
 } elseif ($surname) {
 	$alpha=WT_Query_Name::initialLetter($surname); // so we can highlight the initial letter
@@ -104,25 +104,25 @@ if ($show_all=='yes') {
 	}
 	$show='indi'; // SURN list makes no sense here
 } elseif ($alpha=='@') {
-	$show_all='no';
-	$legend=$UNKNOWN_NN;
-	$url=WT_SCRIPT_NAME.'?alpha='.rawurlencode($alpha).'&amp;ged='.WT_GEDURL;
-	$show='indi'; // SURN list makes no sense here
+	$show_all = 'no';
+	$legend   = $UNKNOWN_NN;
+	$url      = WT_SCRIPT_NAME.'?alpha='.rawurlencode($alpha).'&amp;ged='.WT_GEDURL;
+	$show     = 'indi'; // SURN list makes no sense here
 } elseif ($alpha==',') {
-	$show_all='no';
-	$legend=WT_I18N::translate('None');
-	$url=WT_SCRIPT_NAME.'?alpha='.rawurlencode($alpha).'&amp;ged='.WT_GEDURL;
-	$show='indi'; // SURN list makes no sense here
+	$show_all = 'no';
+	$legend   = WT_I18N::translate('None');
+	$url      = WT_SCRIPT_NAME.'?alpha='.rawurlencode($alpha).'&amp;ged='.WT_GEDURL;
+	$show     = 'indi'; // SURN list makes no sense here
 } elseif ($alpha) {
-	$show_all='no';
-	$legend=WT_Filter::escapeHtml($alpha).'…';
-	$url=WT_SCRIPT_NAME.'?alpha='.rawurlencode($alpha).'&amp;ged='.WT_GEDURL;
-	$show=safe_GET('show', array('surn', 'indi'), 'surn');
+	$show_all = 'no';
+	$legend   = WT_Filter::escapeHtml($alpha).'…';
+	$url      = WT_SCRIPT_NAME.'?alpha='.rawurlencode($alpha).'&amp;ged='.WT_GEDURL;
+	$show     = WT_Filter::get('show', 'surn|indi', 'surn');
 } else {
-	$show_all='no';
-	$legend='…';
-	$url=WT_SCRIPT_NAME.'?ged='.WT_GEDURL;
-	$show='none'; // Don't show lists until something is chosen
+	$show_all = 'no';
+	$legend   = '…';
+	$url      = WT_SCRIPT_NAME.'?ged='.WT_GEDURL;
+	$show     = 'none'; // Don't show lists until something is chosen
 }
 $legend='<span dir="auto">'.$legend.'</span>';
 

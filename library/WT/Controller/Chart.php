@@ -31,7 +31,7 @@ class WT_Controller_Chart extends WT_Controller_Page {
 	public function __construct() {
 		parent::__construct();
 
-		$this->rootid = safe_GET_xref('rootid');
+		$this->rootid = WT_Filter::get('rootid', WT_REGEX_XREF);
 		if ($this->rootid) {
 			$this->root = WT_Individual::getInstance($this->rootid);
 		} else {

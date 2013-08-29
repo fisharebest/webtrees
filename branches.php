@@ -24,11 +24,10 @@
 define('WT_SCRIPT_NAME', 'branches.php');
 require './includes/session.php';
 
-//-- args
-$surn = safe_GET('surname', '[^<>&%{};]*');
-$soundex_std = safe_GET_bool('soundex_std');
-$soundex_dm = safe_GET_bool('soundex_dm');
-$ged = safe_GET('ged');
+$surn        = WT_Filter::get('surname');
+$soundex_std = WT_Filter::getBool('soundex_std');
+$soundex_dm  = WT_Filter::getBool('soundex_dm');
+$ged         = WT_Filter::get('ged');
 if (empty($ged)) {
 	$ged = $GEDCOM;
 }

@@ -62,17 +62,17 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$controller=new WT_Controller_Simple();
 		
 		$type           ='indi';
-		$filter         =safe_GET('filter');
-		$action         =safe_GET('action');
+		$filter         =WT_Filter::get('filter');
+		$action         =WT_Filter::get('action');
 		$callback       ='paste_id';
-		$media          =safe_GET('media');
-		$external_links =safe_GET('external_links');
-		$directory      =safe_GET('directory', WT_REGEX_NOSCRIPT, $MEDIA_DIRECTORY);
-		$multiple       =safe_GET_bool('multiple');
-		$showthumb      =safe_GET_bool('showthumb');
-		$all            =safe_GET_bool('all');
-		$subclick       =safe_GET('subclick');
-		$choose         =safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
+		$media          =WT_Filter::get('media');
+		$external_links =WT_Filter::get('external_links');
+		$directory      =WT_Filter::get('directory');
+		$multiple       =WT_Filter::getBool('multiple');
+		$showthumb      =WT_Filter::getBool('showthumb');
+		$all            =WT_Filter::getBool('all');
+		$subclick       =WT_Filter::get('subclick');
+		$choose         =WT_Filter::get('choose');
 		
 		$controller
 			->setPageTitle(WT_I18N::translate('Find an individual'))
@@ -168,7 +168,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	}
 
 	private static function media_query_3a() {
-		$iid2 = safe_GET('iid');
+		$iid2 = WT_Filter::get('iid', WT_REGEX_XREF);
 
 		$controller=new WT_Controller_Simple();
 		$controller

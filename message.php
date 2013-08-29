@@ -24,17 +24,17 @@
 define('WT_SCRIPT_NAME', 'message.php');
 require './includes/session.php';
 
-// Variables are initialised from $_GET (so we can set initial values in URLs),
+// Some variables are initialised from $_GET (so we can set initial values in URLs),
 // but are submitted in $_POST so we can have long body text.
 
-$subject   =safe_REQUEST($_REQUEST, 'subject',    WT_REGEX_UNSAFE); // Messages may legitimately contain "<", etc.
-$body      =safe_REQUEST($_REQUEST, 'body',       WT_REGEX_UNSAFE);
-$from_name =safe_REQUEST($_REQUEST, 'from_name',  WT_REGEX_UNSAFE);
-$from_email=safe_REQUEST($_REQUEST, 'from_email', WT_REGEX_EMAIL);
-$url       =safe_REQUEST($_REQUEST, 'url',        WT_REGEX_URL);
-$method    =safe_REQUEST($_REQUEST, 'method', array('messaging', 'messaging2', 'messaging3', 'mailto', 'none'), 'messaging2');
-$to        =safe_REQUEST($_REQUEST, 'to');
-$action    =safe_REQUEST($_REQUEST, 'action', array('compose', 'send'), 'compose');
+$subject    = WT_Filter::post('subject');
+$body       = WT_Filter::post('body');
+$from_name  = WT_Filter::post('from_name');
+$from_email = WT_Filter::post('from_email');
+$action     = WT_Filter::post('action', 'compose|send', 'compose');
+$to         = WT_Filter::post('to', null, WT_Filter::get('to'));
+$method     = WT_Filter::post('method', 'messaging|messaging2|messaging3|mailto|none', WT_Filter::get('method', 'messaging|messaging2|messaging3|mailto|none', 'messaging2'));
+$url        = WT_Filter::postUrl('url', WT_Filter::getUrl('url'));
 
 $controller=new WT_Controller_Simple();
 $controller->setPageTitle(WT_I18N::translate('webtrees Message'));

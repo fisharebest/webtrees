@@ -41,7 +41,7 @@ $controller
 
 // Don't use ged=XX as we want to be able to run without changing the current gedcom.
 // This will let us load several gedcoms together, or to edit one while loading another.
-$gedcom_id=safe_GET('gedcom_id');
+$gedcom_id = WT_Filter::getInteger('gedcom_id');
 
 // Don't allow the user to cancel the request.  We do not want to be left
 // with an incomplete transaction.
@@ -93,7 +93,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 	)->execute(array($gedcom_id))->fetchOneRow();
 	// If we are at the start position, do some tidying up
 	if ($first_time) {
-		$keep_media=safe_GET_bool('keep_media'.$gedcom_id);
+		$keep_media=WT_Filter::getBool('keep_media'.$gedcom_id);
 		// Delete any existing genealogical data
 		empty_database($gedcom_id, $keep_media);
 		set_gedcom_setting($gedcom_id, 'imported', false);

@@ -31,7 +31,7 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class WT_Controller_Repository extends WT_Controller_GedcomRecord {
 	public function __construct() {
-		$xref         = safe_GET_xref('rid');
+		$xref         = WT_Filter::get('rid', WT_REGEX_XREF);
 		$this->record = WT_Repository::getInstance($xref);
 
 		parent::__construct();

@@ -50,20 +50,17 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 	
 		$this->baseyear = date("Y");
 		//-- new pid
-		$newpid=safe_GET_xref('newpid');
+		$newpid = WT_Filter::get('newpid', WT_REGEX_XREF);
 
 		//-- pids array
-		$this->pids=safe_GET_xref('pids');
-		if (!is_array($this->pids)) {
-			$this->pids = array();
-		}
+		$this->pids = WT_Filter::getArray('pids', WT_REGEX_XREF);
 		//-- make sure that arrays are indexed by numbers
 		$this->pids = array_values($this->pids);
 		if (!empty($newpid) && !in_array($newpid, $this->pids)) {
 			$this->pids[] = $newpid;
 		}
 		if (count($this->pids)==0) $this->pids[] = $this->getSignificantIndividual()->getXref();
-		$remove = safe_GET_xref('remove');
+		$remove = WT_Filter::get('remove', WT_REGEX_XREF);
 		//-- cleanup user input
 		$newpids = array();
 		foreach ($this->pids as $value) {
@@ -123,7 +120,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				}
 			}
 		}
-		$scale=safe_GET_integer('scale', 0, 200, 0);
+		$scale = WT_Filter::getInteger('scale', 0, 200);
 		if ($scale==0) {
 			$this->scale = round(($this->topyear-$this->baseyear)/20 * count($this->indifacts)/4);
 			if ($this->scale<6) $this->scale = 6;

@@ -38,7 +38,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	function __construct() {
 		global $USE_RIN;
 
-		$xref         = safe_GET_xref('pid');
+		$xref         = WT_Filter::get('pid', WT_REGEX_XREF);
 		$this->record = WT_Individual::getInstance($xref);
 
 		if (!$this->record && $USE_RIN) {
@@ -87,7 +87,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		}
 
 		// Initialise tabs
-		$tab=safe_GET('module');
+		$tab=WT_Filter::get('module');
 
 		// A request for a non-existant tab?
 		if (array_key_exists($tab, $this->tabs)) {

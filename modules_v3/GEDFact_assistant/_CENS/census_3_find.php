@@ -23,10 +23,10 @@
 
 $controller=new WT_Controller_Simple();
 
-$filter         =safe_GET('filter');
-$action         =safe_GET('action');
-$callback       =safe_GET('callback', WT_REGEX_NOSCRIPT, 'paste_id');
-$multiple       =safe_GET_bool('multiple');
+$filter   = WT_Filter::get('filter');
+$action   = WT_Filter::get('action');
+$callback = WT_Filter::get('callback');
+$multiple = WT_Filter::getBool('multiple');
 
 $controller
 	->setPageTitle(WT_I18N::translate('Find an individual'))

@@ -83,19 +83,19 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		$this->endDate = $this->currentYear;
 
 		// Request parameters
-		$newpid=safe_GET_xref('newpid');
-		$remove=safe_GET_xref('remove');
-		$pids  =safe_GET_xref('pids');
-		$clear =safe_GET_bool('clear');
-		$addfam=safe_GET_bool('addFamily');
-		$place =safe_GET('place');
-		$beginYear=safe_GET_integer('beginYear', 0, date('Y')+100, 0);
-		$endYear  =safe_GET_integer('endYear',   0, date('Y')+100, 0);
+		$newpid    = WT_Filter::get('newpid', WT_REGEX_XREF);
+		$remove    = WT_Filter::get('remove', WT_REGEX_XREF);
+		$pids      = WT_Filter::getArray('pids', WT_REGEX_XREF);
+		$clear     = WT_Filter::getBool('clear');
+		$addfam    = WT_Filter::getBool('addFamily');
+		$place     = WT_Filter::get('place');
+		$beginYear = WT_Filter::getInteger('beginYear', 0, date('Y')+100, 0);
+		$endYear   = WT_Filter::getInteger('endYear',   0, date('Y')+100, 0);
 
 		if ($clear) {
 			// Empty list
 			$this->pids=array();
-		} elseif (is_array($pids)) {
+		} elseif ($pids) {
 			// List of specified records
 			$this->pids=$pids;
 		} elseif ($place) {

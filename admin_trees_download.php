@@ -31,11 +31,11 @@ $controller
 	->requireManagerLogin();
 
 // Validate user parameters
-$action           = safe_GET('action',           'download');
-$convert          = safe_GET('convert',          'yes', 'no');
-$zip              = safe_GET('zip',              'yes', 'no');
-$conv_path        = safe_GET('conv_path',        WT_REGEX_NOSCRIPT);
-$privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'));
+$action           = WT_Filter::get('action',           'download');
+$convert          = WT_Filter::get('convert',          'yes|no', 'no');
+$zip              = WT_Filter::get('zip',              'yes|no', 'no');
+$conv_path        = WT_Filter::get('conv_path');
+$privatize_export = WT_Filter::get('privatize_export', 'none|visitor|user|gedadmin');
 
 if ($action == 'download') {
 	$exportOptions = array();

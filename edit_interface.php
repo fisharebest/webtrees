@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'edit_interface.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$action = safe_REQUEST($_REQUEST, 'action');
+$action = WT_Filter::post('action', null, WT_Filter::get('action'));
 
 $controller=new WT_Controller_Simple();
 $controller
@@ -69,8 +69,8 @@ $controller
 switch ($action) {
 ////////////////////////////////////////////////////////////////////////////////
 case 'editraw':
-	$xref    = safe_GET('xref', WT_REGEX_XREF);
-	$fact_id = safe_GET('fact_id');
+	$xref    = WT_Filter::get('xref',    WT_REGEX_XREF);
+	$fact_id = WT_Filter::get('fact_id', WT_REGEX_TAG);
 
 	$record = WT_GedcomRecord::getInstance($xref);
 	check_record_access($record);
@@ -120,10 +120,10 @@ case 'editraw':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'updateraw':
-	$xref      = safe_POST('xref', WT_REGEX_XREF);
-	$fact_id   = safe_POST('fact_id');
-	$gedcom    = safe_POST('gedcom', WT_REGEX_UNSAFE);
-	$keep_chan = safe_POST_bool('keep_chan');
+	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
+	$fact_id   = WT_Filter::post('fact_id');
+	$gedcom    = WT_Filter::post('gedcom');
+	$keep_chan = WT_Filter::postBool('keep_chan');
 
 	$record = WT_GedcomRecord::getInstance($xref);
 	check_record_access($record);
@@ -158,8 +158,8 @@ case 'updateraw':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'edit':
-	$xref    = safe_GET('xref', WT_REGEX_XREF);
-	$fact_id = safe_GET('fact_id');
+	$xref    = WT_Filter::get('xref', WT_REGEX_XREF);
+	$fact_id = WT_Filter::get('fact_id');
 
 	$record = WT_GedcomRecord::getInstance($xref);
 	check_record_access($record);
@@ -255,8 +255,8 @@ case 'edit':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'add':
-	$xref = safe_GET('xref', WT_REGEX_XREF);
-	$fact = safe_GET('fact', WT_REGEX_TAG);
+	$xref = WT_Filter::get('xref', WT_REGEX_XREF);
+	$fact = WT_Filter::get('fact', WT_REGEX_TAG);
 	
 	$record = WT_GedcomRecord::getInstance($xref);
 	check_record_access($record);
@@ -313,18 +313,18 @@ case 'add':
 ////////////////////////////////////////////////////////////////////////////////
 case 'update':
 	// Update a fact
-	$xref      = safe_POST('xref',    WT_REGEX_XREF);
-	$fact_id   = safe_POST('fact_id');
-	$keep_chan = safe_POST_bool('keep_chan');
+	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
+	$fact_id   = WT_Filter::post('fact_id');
+	$keep_chan = WT_Filter::postBool('keep_chan');
 
 	$record = WT_GedcomRecord::getInstance($xref);
 	check_record_access($record);
 
 	// Arrays for each GEDCOM line
-	$glevels = safe_POST('glevels');
-	$tag     = safe_POST('tag',     WT_REGEX_TAG);
-	$text    = safe_POST('text',    WT_REGEX_UNSAFE);
-	$islink  = safe_POST('islink');
+	$glevels = WT_Filter::postArray('glevels', '[0-9]');
+	$tag     = WT_Filter::postArray('tag', WT_REGEX_TAG);
+	$text    = WT_Filter::postArray('text');
+	$islink  = WT_Filter::postArray('islink', '[01]');
 
 	$controller
 		->setPageTitle(WT_I18N::translate('Edit'))
@@ -342,7 +342,7 @@ case 'update':
 
 	//-- check for photo update
 	if (count($_FILES)>0) {
-		if (isset($_REQUEST['folder'])) $folder = $_REQUEST['folder'];
+		$folder = WT_Filter::post('folder');
 		$uploaded_files = array();
 		if (substr($folder, 0, 1) == "/") $folder = substr($folder, 1);
 		if (substr($folder, -1, 1) != "/") $folder .= "/";
@@ -402,8 +402,8 @@ case 'update':
 // Add a new child to an existing family
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_child_to_family':
-	$xref   = safe_GET('xref',   WT_REGEX_XREF);
-	$gender = safe_GET('gender', '[MF]', 'U');
+	$xref   = WT_Filter::getXREF('xref');
+	$gender = WT_Filter::get('gender', '[MF]', 'U');
 
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
@@ -416,9 +416,9 @@ case 'add_child_to_family':
 	break;
 
 case 'add_child_to_family_action':
-	$xref      = safe_POST('xref', WT_REGEX_XREF);
-	$PEDI      = safe_POST('PEDI');
-	$keep_chan = safe_POST_bool('keep_chan');
+	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
+	$PEDI      = WT_Filter::post('PEDI');
+	$keep_chan = WT_Filter::postBool('keep_chan');
 
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
@@ -435,7 +435,7 @@ case 'add_child_to_family_action':
 		}
 	}
 	$gedrec .= "\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $xref);
-	if (safe_POST_bool('SOUR_INDI')) {
+	if (WT_Filter::postBool('SOUR_INDI')) {
 		$gedrec = handle_updates($gedrec);
 	} else {
 		$gedrec = updateRest($gedrec);
@@ -460,7 +460,7 @@ case 'add_child_to_family_action':
 		$family->createFact('1 CHIL @' . $new_child->getXref() . '@', !$keep_chan);
 	}
 
-	if (safe_POST('goto')=='new') {
+	if (WT_Filter::post('goto')=='new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $new_child->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -471,7 +471,7 @@ case 'add_child_to_family_action':
 // Add a new child to an existing individual (creating a one-parent family)
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_child_to_individual':
-	$xref = safe_GET('xref', WT_REGEX_XREF);
+	$xref = WT_Filter::get('xref', WT_REGEX_XREF);
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -484,8 +484,8 @@ case 'add_child_to_individual':
 	break;
 
 case 'add_child_to_individual_action':
-	$xref = safe_POST('xref',  WT_REGEX_XREF);
-	$PEDI = safe_POST('PEDI');
+	$xref = WT_Filter::post('xref', WT_REGEX_XREF);
+	$PEDI = WT_Filter::post('PEDI');
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -515,7 +515,7 @@ case 'add_child_to_individual_action':
 			$gedcom.=addNewFact($match);
 		}
 	}
-	if (safe_POST_bool('SOUR_INDI')) {
+	if (WT_Filter::postBool('SOUR_INDI')) {
 		$gedcom=handle_updates($gedcom);
 	} else {
 		$gedcom=updateRest($gedcom);
@@ -537,8 +537,8 @@ case 'add_child_to_individual_action':
 // Add a new parent to an existing individual (creating a one-parent family)
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_parent_to_individual':
-	$xref   = safe_GET('xref',   WT_REGEX_XREF);
-	$gender = safe_GET('gender', '[MF]', 'U');
+	$xref   = WT_Filter::get('xref', WT_REGEX_XREF);
+	$gender = WT_Filter::get('gender', '[MF]', 'U');
 
 	$individual = WT_Individual::getInstance($xref);
 	check_record_access($individual);
@@ -556,8 +556,8 @@ case 'add_parent_to_individual':
 	break;
 
 case 'add_parent_to_individual_action':
-	$xref = safe_POST('xref',  WT_REGEX_XREF);
-	$PEDI = safe_POST('PEDI');
+	$xref = WT_Filter::post('xref', WT_REGEX_XREF);
+	$PEDI = WT_Filter::post('PEDI');
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -582,7 +582,7 @@ case 'add_parent_to_individual_action':
 			$gedcom.=addNewFact($match);
 		}
 	}
-	if (safe_POST_bool('SOUR_INDI')) {
+	if (WT_Filter::postBool('SOUR_INDI')) {
 		$gedcom=handle_updates($gedcom);
 	} else {
 		$gedcom=updateRest($gedcom);
@@ -631,7 +631,7 @@ case 'add_unlinked_indi_action':
 			$gedrec.=addNewFact($match);
 		}
 	}
-	if (safe_POST_bool('SOUR_INDI')) {
+	if (WT_Filter::postBool('SOUR_INDI')) {
 		$gedrec = handle_updates($gedrec);
 	} else {
 		$gedrec = updateRest($gedrec);
@@ -639,7 +639,7 @@ case 'add_unlinked_indi_action':
 
 	$new_indi = WT_GedcomRecord::createRecord($gedrec, WT_GED_ID);
 
-	if (safe_POST('goto')=='new') {
+	if (WT_Filter::post('goto')=='new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $new_indi->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -650,8 +650,8 @@ case 'add_unlinked_indi_action':
 // Add a new spouse to an existing individual (creating a new family)
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_spouse_to_individual':
-	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
-	$xref   = safe_GET('xref', WT_REGEX_XREF);
+	$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
+	$xref   = WT_Filter::get('xref', WT_REGEX_XREF);
 
 	$individual = WT_Individual::getInstance($xref);
 	check_record_access($individual);
@@ -669,8 +669,8 @@ case 'add_spouse_to_individual':
 	break;
 
 case 'add_spouse_to_individual_action':
-	$xref  = safe_POST('xref',  WT_REGEX_XREF); // Add a spouse to this individual
-	$sex   = safe_POST('SEX', '[MFU]');
+	$xref  = WT_Filter::post('xref'); // Add a spouse to this individual
+	$sex   = WT_Filter::post('SEX', '[MFU]', 'U');
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -688,7 +688,7 @@ case 'add_spouse_to_individual_action':
 			$indi_gedcom.=addNewFact($match);
 		}
 	}
-	if (safe_POST_bool('SOUR_INDI')) {
+	if (WT_Filter::postBool('SOUR_INDI')) {
 		$indi_gedcom = handle_updates($indi_gedcom);
 	} else {
 		$indi_gedcom = updateRest($indi_gedcom);
@@ -700,7 +700,7 @@ case 'add_spouse_to_individual_action':
 			$fam_gedcom.=addNewFact($match);
 		}
 	}
-	if (safe_POST_bool('SOUR_FAM')) {
+	if (WT_Filter::postBool('SOUR_FAM')) {
 		$fam_gedcom = handle_updates($fam_gedcom);
 	} else {
 		$fam_gedcom = updateRest($fam_gedcom);
@@ -718,7 +718,7 @@ case 'add_spouse_to_individual_action':
 	$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
 	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
 
-	if (safe_POST('goto')=='new') {
+	if (WT_Filter::post('goto')=='new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $spouse->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -729,8 +729,8 @@ case 'add_spouse_to_individual_action':
 // Add a new spouse to an existing family
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_spouse_to_family':
-	$xref   = safe_GET('xref',   WT_REGEX_XREF);
-	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
+	$xref   = WT_Filter::get('xref', WT_REGEX_XREF);
+	$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
 
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
@@ -748,7 +748,7 @@ case 'add_spouse_to_family':
 	break;
 
 case 'add_spouse_to_family_action':
-	$xref = safe_POST('xref', WT_REGEX_XREF);
+	$xref = WT_Filter::post('xref', WT_REGEX_XREF);
 
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
@@ -767,7 +767,7 @@ case 'add_spouse_to_family_action':
 		}
 	}
 
-	if (safe_POST_bool('SOUR_INDI')) {
+	if (WT_Filter::postBool('SOUR_INDI')) {
 		$gedrec = handle_updates($gedrec);
 	} else {
 		$gedrec = updateRest($gedrec);
@@ -787,14 +787,14 @@ case 'add_spouse_to_family_action':
 			$famrec.=addNewFact($match);
 		}
 	}
-	if (safe_POST_bool('SOUR_FAM')) {
+	if (WT_Filter::postBool('SOUR_FAM')) {
 		$famrec = handle_updates($famrec);
 	} else {
 		$famrec = updateRest($famrec);
 	}
 	$family->createFact(trim($famrec), true); // trim leading \n
 
-	if (safe_POST('goto')=='new') {
+	if (WT_Filter::post('goto')=='new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $spouse->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -805,7 +805,7 @@ case 'add_spouse_to_family_action':
 // Link an individual to an existing family, as a child
 ////////////////////////////////////////////////////////////////////////////////
 case 'addfamlink':
-	$xref = safe_GET('xref', WT_REGEX_XREF);
+	$xref = WT_Filter::get('xref', WT_REGEX_XREF);
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -851,9 +851,9 @@ case 'addfamlink':
 	break;
 
 case 'linkfamaction':
-	$xref   = safe_POST('xref',  WT_REGEX_XREF);
-	$famid  = safe_POST('famid', WT_REGEX_XREF);
-	$PEDI   = safe_POST('PEDI');
+	$xref   = WT_Filter::post('xref',  WT_REGEX_XREF);
+	$famid  = WT_Filter::post('famid', WT_REGEX_XREF);
+	$PEDI   = WT_Filter::post('PEDI');
 
 	$person = WT_Individual::getInstance($xref);
 	$family = WT_Family::getInstance($famid);
@@ -895,8 +895,8 @@ case 'linkfamaction':
 // Link and individual to an existing individual as a spouse
 ////////////////////////////////////////////////////////////////////////////////
 case 'linkspouse':
-	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
-	$xref    = safe_GET('xref',   WT_REGEX_XREF);
+	$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
+	$xref   = WT_Filter::get('xref', WT_REGEX_XREF);
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -951,9 +951,9 @@ case 'linkspouse':
 	break;
 
 case 'linkspouseaction':
-	$xref   = safe_POST('xref',   WT_REGEX_XREF);
-	$spid   = safe_POST('spid',   WT_REGEX_XREF);
-	$famtag = safe_POST('famtag', '(HUSB|WIFE)');
+	$xref   = WT_Filter::post('xref',   WT_REGEX_XREF);
+	$spid   = WT_Filter::post('spid',   WT_REGEX_XREF);
+	$famtag = WT_Filter::post('famtag', 'HUSB|WIFE');
 
 	$person = WT_Individual::getInstance($xref);
 	$spouse = WT_Individual::getInstance($spid);
@@ -975,7 +975,7 @@ case 'linkspouseaction':
 	splitSOUR();
 	$gedcom .= addNewFact('MARR');
 
-	if (safe_POST_bool('SOUR_FAM') || count($tagSOUR)>0) {
+	if (WT_Filter::postBool('SOUR_FAM') || count($tagSOUR)>0) {
 		// before adding 2 SOUR it needs to add 1 MARR Y first
 		if (addNewFact('MARR') == '') {
 			$gedcom .= "\n1 MARR Y";
@@ -1086,42 +1086,60 @@ case 'addsourceaction':
 		->pageHeader();
 
 	$newgedrec = "0 @XREF@ SOUR";
-	if (isset($_REQUEST['EVEN'])) $EVEN = $_REQUEST['EVEN'];
-	if (!empty($EVEN) && count($EVEN)>0) {
-		$newgedrec .= "\n1 DATA";
-		$newgedrec .= "\n2 EVEN ".implode(",", $EVEN);
-		if (!empty($EVEN_DATE)) $newgedrec .= "\n3 DATE ".$EVEN_DATE;
-		if (!empty($EVEN_PLAC)) $newgedrec .= "\n3 PLAC ".$EVEN_PLAC;
-		if (!empty($AGNC))      $newgedrec .= "\n2 AGNC ".$AGNC;
+	$ABBR = WT_Filter::post('ABBR');
+	if ($ABBR) {
+		$newgedrec .= "\n1 ABBR " . $ABBR;
 	}
-	if (isset($_REQUEST['ABBR'])) $ABBR = $_REQUEST['ABBR'];
-	if (isset($_REQUEST['TITL'])) $TITL = $_REQUEST['TITL'];
-	if (isset($_REQUEST['_HEB'])) $_HEB = $_REQUEST['_HEB'];
-	if (isset($_REQUEST['ROMN'])) $ROMN = $_REQUEST['ROMN'];
-	if (isset($_REQUEST['AUTH'])) $AUTH = $_REQUEST['AUTH'];
-	if (isset($_REQUEST['PUBL'])) $PUBL = $_REQUEST['PUBL'];
-	if (isset($_REQUEST['REPO'])) $REPO = $_REQUEST['REPO'];
-	if (isset($_REQUEST['CALN'])) $CALN = $_REQUEST['CALN'];
-	if (!empty($ABBR)) $newgedrec .= "\n1 ABBR $ABBR";
-	if (!empty($TITL)) {
-		$newgedrec .= "\n1 TITL $TITL";
-		if (!empty($_HEB)) $newgedrec .= "\n2 _HEB $_HEB";
-		if (!empty($ROMN)) $newgedrec .= "\n2 ROMN $ROMN";
-	}
-	if (!empty($AUTH)) $newgedrec .= "\n1 AUTH $AUTH";
-	if (!empty($PUBL)) {
-		foreach (preg_split("/\r?\n/", $PUBL) as $k=>$line) {
-			if ($k==0) {
-				$newgedrec .= "\n1 PUBL $line";
-			} else {
-				$newgedrec .= "\n2 CONT $line";
-			}
+	$TITL = WT_Filter::post('TITL');
+	if ($TITL) {
+		$newgedrec .= "\n1 TITL " . $TITL;
+		$_HEB = WT_Filter::post('_HEB');
+		if ($_HEB) {
+			$newgedrec .= "\n2 _HEB " . $_HEB;
+		}
+		$ROMN = WT_Filter::post('ROMN');
+		if ($ROMN) {
+			$newgedrec .= "\n2 ROMN " . $ROMN;
 		}
 	}
-	if (!empty($REPO)) {
-		$newgedrec .= "\n1 REPO @$REPO@";
-		if (!empty($CALN)) $newgedrec .= "\n2 CALN $CALN";
+	$AUTH = WT_Filter::post('AUTH');
+	if ($AUTH) {
+		$newgedrec .= "\n1 AUTH " . $AUTH;
 	}
+	$PUBL = WT_Filter::post('PUBL');
+	if ($PUBL) {
+		$newgedrec .= "\n1 PUBL " . preg_replace('/\r?\n/', "\n2 CONT ", $PUBL);
+	}
+	$REPO = WT_Filter::post('REPO', WT_REGEX_XREF);
+	if ($AUTH) {
+		$newgedrec .= "\n1 REPO @" . $REPO . "@";
+		$CALN = WT_Filter::post('CALN');
+		if ($CALN) {
+			$newgedrec .= "\n1 CALN " . $CALN;
+		}
+	}
+	$AUTH = WT_Filter::post('AUTH');
+	if ($AUTH) {
+		$newgedrec .= "\n1 AUTH " . $AUTH;
+	}
+	$EVEN = WT_Filter::postArray('EVEN', WT_REGEX_TAG);
+	if ($EVEN) {
+		$newgedrec .= "\n1 DATA";
+		$newgedrec .= "\n2 EVEN " . implode(',', $EVEN);
+		$EVEN_DATE = WT_Filter::post('EVEN_DATE');
+		if ($EVEN_DATE) {
+			$newgedrec .= "\n3 EVEN_DATE " . $EVEN_DATE;
+		}
+		$EVEN_PLAC = WT_Filter::post('EVEN_PLAC');
+		if ($EVEN_PLAC) {
+			$newgedrec .= "\n3 EVEN_PLAC " . $EVEN_PLAC;
+		}
+		$AGNC = WT_Filter::post('AGNC');
+		if ($AGNC) {
+			$newgedrec .= "\n2 AGNC " . $AGNC;
+		}
+	}
+
 	$record = WT_GedcomRecord::createRecord($newgedrec, WT_GED_ID);
 	$controller->addInlineJavascript('openerpasteid("' . $record->getXref() . '");');
 	break;
@@ -1168,21 +1186,9 @@ case 'addnoteaction':
 		->setPageTitle(WT_I18N::translate('Create a new shared note'))
 		->pageHeader();
 
-	$newgedrec  = "0 @XREF@ NOTE";
+	$gedrec  = '0 @XREF@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", WT_Filter::post('NOTE'));
 
-	if (isset($_REQUEST['NOTE'])) $NOTE = $_REQUEST['NOTE'];
-
-	if (!empty($NOTE)) {
-		foreach (preg_split("/\r?\n/", $NOTE) as $k=>$line) {
-			if ($k==0) {
-				$newgedrec .= " {$line}";
-			} else {
-				$newgedrec .= "\n1 CONT {$line}";
-			}
-		}
-	}
-
-	$record = WT_GedcomRecord::createRecord($newgedrec, WT_GED_ID);
+	$record = WT_GedcomRecord::createRecord($gedrec, WT_GED_ID);
 	$controller->addInlineJavascript('openerpasteid("' . $record->getXref() . '");');
 	break;
 
@@ -1207,7 +1213,7 @@ case 'addnoteaction_assisted':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addmedia_links':
-	$pid = safe_GET('pid', WT_REGEX_XREF);
+	$pid = WT_Filter::get('pid', WT_REGEX_XREF);
 
 	$person = WT_Individual::getInstance($pid);
 	check_record_access($person);
@@ -1230,7 +1236,7 @@ case 'addmedia_links':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'editsource':
-	$xref = safe_GET('xref', WT_REGEX_XREF);
+	$xref = WT_Filter::get('xref', WT_REGEX_XREF);
 
 	$source = WT_Source::getInstance($xref);
 	check_record_access($source);
@@ -1293,7 +1299,7 @@ case 'editsource':
 // Edit a note record
 ////////////////////////////////////////////////////////////////////////////////
 case 'editnote':
-	$xref = safe_GET('xref', WT_REGEX_XREF);
+	$xref = WT_Filter::get('xref', WT_REGEX_XREF);
 
 	$note = WT_Note::getInstance($xref);
 	check_record_access($note);
@@ -1329,9 +1335,9 @@ case 'editnote':
 	break;
 
 case 'editnoteaction':
-	$xref      = safe_POST('xref', WT_REGEX_XREF);
-	$keep_chan = safe_POST_bool('keep_chan');
-	$note      = safe_POST('NOTE', WT_REGEX_UNSAFE);
+	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
+	$keep_chan = WT_Filter::postBool('keep_chan');
+	$note      = WT_Filter::post('NOTE');
 
 	$record = WT_Note::getInstance($xref);
 	check_record_access($record);
@@ -1415,43 +1421,48 @@ case 'addrepoaction':
 		->setPageTitle(WT_I18N::translate('Create repository'))
 		->pageHeader();
 
-	$newgedrec = "0 @XREF@ REPO";
-	if (isset($_REQUEST['REPO_NAME'])) $NAME = $_REQUEST['REPO_NAME'];
-	if (isset($_REQUEST['_HEB'])) $_HEB = $_REQUEST['_HEB'];
-	if (isset($_REQUEST['ROMN'])) $ROMN = $_REQUEST['ROMN'];
-	if (isset($_REQUEST['ADDR'])) $ADDR = $_REQUEST['ADDR'];
-	if (isset($_REQUEST['PHON'])) $PHON = $_REQUEST['PHON'];
-	if (isset($_REQUEST['FAX'])) $FAX = $_REQUEST['FAX'];
-	if (isset($_REQUEST['EMAIL'])) $EMAIL = $_REQUEST['EMAIL'];
-	if (isset($_REQUEST['WWW'])) $WWW = $_REQUEST['WWW'];
-
-	if (!empty($NAME)) {
-		$newgedrec .= "\n1 NAME $NAME";
-		if (!empty($_HEB)) $newgedrec .= "\n2 _HEB $_HEB";
-		if (!empty($ROMN)) $newgedrec .= "\n2 ROMN $ROMN";
-	}
-	if (!empty($ADDR)) {
-		foreach (preg_split("/\r?\n/", $ADDR) as $k=>$line) {
-			if ($k==0) {
-				$newgedrec .= "\n1 ADDR {$line}";
-			} else {
-				$newgedrec .= "\n2 CONT {$line}";
-			}
+	$gedrec = "0 @XREF@ REPO";
+	$REPO_NAME = WT_Filter::post('REPO_NAME');
+	if ($REPO_NAME) {
+		$gedrec .= "\n1 NAME " . $REPO_NAME;
+		$_HEB = WT_Filter::post('_HEB');
+		if ($_HEB) {
+			$gedrec .= "\n2 _HEB " . $_HEB;
+		}
+		$ROMN = WT_Filter::post('ROMN');
+		if ($ROMN) {
+			$gedrec .= "\n2 ROMN " . $ROMN;
 		}
 	}
-	if (!empty($PHON)) $newgedrec .= "\n1 PHON $PHON";
-	if (!empty($FAX)) $newgedrec .= "\n1 FAX $FAX";
-	if (!empty($EMAIL)) $newgedrec .= "\n1 EMAIL $EMAIL";
-	if (!empty($WWW)) $newgedrec .= "\n1 WWW $WWW";
+	$ADDR = WT_Filter::post('ADDR');
+	if ($ADDR) {
+		$gedrec .= "\n1 ADDR " . preg_replace('/\r?\n/', "\n2 CONT ", $ADDR);
+	}
+	$PHON = WT_Filter::post('PHON');
+	if ($PHON) {
+		$newgedrec .= "\n1 PHON " . $PHON;
+	}
+	$FAX = WT_Filter::post('FAX');
+	if ($FAX) {
+		$newgedrec .= "\n1 FAX " . $FAX;
+	}
+	$EMAIL = WT_Filter::post('EMAIL');
+	if ($EMAIL) {
+		$newgedrec .= "\n1 EMAIL " . $EMAIL;
+	}
+	$WWW = WT_Filter::post('WWW');
+	if ($WWW) {
+		$newgedrec .= "\n1 WWW " . $WWW;
+	}
 
-	$record = WT_GedcomRecord::createRecord($newgedrec, WT_GED_ID);
+	$record = WT_GedcomRecord::createRecord($gedrec, WT_GED_ID);
 	$controller->addInlineJavascript('openerpasteid("' . $record->getXref() . '");');
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'editname':
-	$xref    = safe_GET('xref', WT_REGEX_XREF);
-	$fact_id = safe_GET('fact_id');
+	$xref    = WT_Filter::get('xref', WT_REGEX_XREF);
+	$fact_id = WT_Filter::get('fact_id');
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -1487,7 +1498,7 @@ case 'editname':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addname':
-	$xref = safe_GET('xref', WT_REGEX_XREF);
+	$xref = WT_Filter::get('xref', WT_REGEX_XREF);
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -1501,8 +1512,8 @@ case 'addname':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'paste':
-	$xref = safe_REQUEST($_REQUEST, 'xref', WT_REGEX_XREF);
-	$fact = safe_REQUEST($_REQUEST, 'fact', WT_REGEX_UNSAFE);
+	$xref = WT_Filter::get('xref', WT_REGEX_XREF);
+	$fact = WT_Filter::get('fact');
 
 	$record = WT_GedcomRecord::getInstance($xref);
 	check_record_access($record);
@@ -1519,7 +1530,7 @@ case 'paste':
 // Change the order of media objects
 ////////////////////////////////////////////////////////////////////////////////
 case 'reorder_media':
-	$xref = safe_REQUEST($_REQUEST, 'xref',  WT_REGEX_XREF);
+	$xref = WT_Filter::get('xref', WT_REGEX_XREF);
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -1606,9 +1617,9 @@ case 'reorder_media':
 	break;
 
 case 'reorder_media_update':
-	$xref      = safe_POST('xref',  WT_REGEX_XREF);
-	$order1    = safe_POST('order1');
-	$keep_chan = safe_POST_bool('keep_chan');
+	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
+	$order1    = WT_Filter::post('order1');
+	$keep_chan = WT_Filter::postBool('keep_chan');
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -1640,8 +1651,8 @@ case 'reorder_media_update':
 // Change the order of children within a family record
 ////////////////////////////////////////////////////////////////////////////////
 case 'reorder_children':
-	$xref   = safe_GET('xref',  WT_REGEX_XREF);
-	$option = safe_GET('option');
+	$xref   = WT_Filter::get('xref', WT_REGEX_XREF);
+	$option = WT_Filter::get('option');
 
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
@@ -1706,9 +1717,9 @@ case 'reorder_children':
 	break;
 
 case 'reorder_update':
-	$xref      = safe_POST('xref', WT_REGEX_XREF);
-	$order     = safe_POST('order');
-	$keep_chan = safe_POST_bool('keep_chan');
+	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
+	$order     = WT_Filter::post('order');
+	$keep_chan = WT_Filter::postBool('keep_chan');
 
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
@@ -1745,7 +1756,7 @@ case 'reorder_update':
 // Change the members of a family record
 ////////////////////////////////////////////////////////////////////////////////
 case 'changefamily':
-	$xref = safe_GET('xref', WT_REGEX_XREF);
+	$xref = WT_Filter::get('xref', WT_REGEX_XREF);
 
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
@@ -1905,17 +1916,17 @@ case 'changefamily':
 	break;
 
 case 'changefamily_update':
-	$xref      = safe_POST('xref', WT_REGEX_XREF);
-	$HUSB      = safe_POST('HUSB', WT_REGEX_XREF);
-	$WIFE      = safe_POST('WIFE', WT_REGEX_XREF);
-	$keep_chan = safe_POST_bool('keep_chan');
+	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
+	$HUSB      = WT_Filter::post('HUSB', WT_REGEX_XREF);
+	$WIFE      = WT_Filter::post('WIFE', WT_REGEX_XREF);
+	$keep_chan = WT_Filter::postBool('keep_chan');
 
 	//TODO use CHIL[] instead of CHIL<n>
-	//$CHIL      = safe_POST('CHIL', WT_REGEX_XREF);
+	//$CHIL      = WT_Filter::postArray('CHIL', WT_REGEX_XREF);
 	$CHIL = array();
 	for ($i=0; ;++$i) {
 		if (isset($_POST['CHIL'.$i])) {
-			$CHIL[] = safe_POST('CHIL'.$i, WT_REGEX_XREF);
+			$CHIL[] = WT_Filter::post('CHIL'.$i, WT_REGEX_XREF);
 		} else {
 			break;
 		}
@@ -2022,8 +2033,8 @@ case 'changefamily_update':
 // Change the order of FAMS records within an INDI record
 ////////////////////////////////////////////////////////////////////////////////
 case 'reorder_fams':
-	$xref   = safe_GET('xref', WT_REGEX_XREF);
-	$option = safe_GET('option');
+	$xref   = WT_Filter::get('xref', WT_REGEX_XREF);
+	$option = WT_Filter::get('option');
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -2067,9 +2078,9 @@ case 'reorder_fams':
 	break;
 
 case 'reorder_fams_update':
-	$xref      = safe_POST('xref', WT_REGEX_XREF);
-	$order     = safe_POST('order');
-	$keep_chan = safe_POST_bool('keep_chan');
+	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
+	$order     = WT_Filter::post('order');
+	$keep_chan = WT_Filter::postBool('keep_chan');
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);

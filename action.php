@@ -41,11 +41,11 @@ require './includes/session.php';
 
 header('Content-type: text/html; charset=UTF-8');
 
-switch (safe_POST('action')) {
+switch (WT_Filter::post('action')) {
 case 'accept-changes':
 	// Accept all the pending changes for a record
 	require WT_ROOT.'includes/functions/functions_edit.php';
-	$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
+	$record = WT_GedcomRecord::getInstance(WT_Filter::post('xref', WT_REGEX_XREF));
 	if ($record && WT_USER_CAN_ACCEPT && $record->canShow() && $record->canEdit()) {
 		WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
 		accept_all_changes($record->getXref(), $record->getGedcomId());
@@ -57,8 +57,8 @@ case 'accept-changes':
 case 'copy-fact':
 	// Copy a fact to the clipboard
 	require WT_ROOT.'includes/functions/functions_edit.php';
-	$xref    = safe_POST_xref('xref');
-	$fact_id = safe_POST('fact_id');
+	$xref    = WT_Filter::post('xref', WT_REGEX_XREF);
+	$fact_id = WT_Filter::post('fact_id');
 	
 	$record = WT_GedcomRecord::getInstance($xref);
 
@@ -96,8 +96,8 @@ case 'copy-fact':
 
 case 'delete-fact':
 	require WT_ROOT.'includes/functions/functions_edit.php';
-	$xref    = safe_POST_xref('xref');
-	$fact_id = safe_POST('fact_id');
+	$xref    = WT_Filter::post('xref', WT_REGEX_XREF);
+	$fact_id = WT_Filter::post('fact_id');
 	
 	$record = WT_GedcomRecord::getInstance($xref);
 	if ($record && $record->canShow() && $record->canEdit()) {
@@ -120,7 +120,7 @@ case 'delete-note':
 case 'delete-repository':
 case 'delete-source':
 	require WT_ROOT.'includes/functions/functions_edit.php';
-	$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
+	$record=WT_GedcomRecord::getInstance(WT_Filter::post('xref', WT_REGEX_XREF));
 	if ($record && WT_USER_CAN_EDIT && $record->canShow() && $record->canEdit()) {
 		// Delete links to this record
 		foreach (fetch_all_links($record->getXref(), $record->getGedcomId()) as $xref) {
@@ -157,7 +157,7 @@ case 'delete-source':
 case 'reject-changes':
 	// Reject all the pending changes for a record
 	require WT_ROOT.'includes/functions/functions_edit.php';
-	$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
+	$record=WT_GedcomRecord::getInstance(WT_Filter::post('xref', WT_REGEX_XREF));
 	if ($record && WT_USER_CAN_ACCEPT && $record->canShow() && $record->canEdit()) {
 		WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
 		reject_all_changes($record->getXref(), $record->getGedcomId());
@@ -168,7 +168,7 @@ case 'reject-changes':
 
 case 'theme':
 	// Change the current theme
-	$theme_dir=safe_POST('theme');
+	$theme_dir=WT_Filter::post('theme');
 	if (WT_Site::preference('ALLOW_USER_THEMES') && in_array($theme_dir, get_theme_names())) {
 		$WT_SESSION->theme_dir=$theme_dir;
 		if (WT_USER_ID) {

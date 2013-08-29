@@ -36,14 +36,12 @@ require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
 $ged=$GEDCOM;
-$gid1=safe_POST_xref('gid1');
-$gid2=safe_POST_xref('gid2');
-$action=safe_POST('action', WT_REGEX_ALPHA, 'choose');
-$ged2=safe_POST('ged2', WT_REGEX_NOSCRIPT, $GEDCOM);
-$keep1=safe_POST('keep1', WT_REGEX_UNSAFE);
-$keep2=safe_POST('keep2', WT_REGEX_UNSAFE);
-if (empty($keep1)) $keep1=array();
-if (empty($keep2)) $keep2=array();
+$gid1   = WT_Filter::post('gid1', WT_REGEX_XREF);
+$gid2   = WT_Filter::post('gid2', WT_REGEX_XREF);
+$action = WT_Filter::post('action', 'choose|select|merge', 'choose');
+$ged2   = WT_Filter::post('ged2', '.+', $ged);
+$keep1  = WT_Filter::postArray('keep1');
+$keep2  = WT_Filter::postArray('keep2');
 
 if (count(WT_Tree::getAll())==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
 	$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');

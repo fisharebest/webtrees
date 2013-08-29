@@ -30,12 +30,12 @@ $controller
 
 $modules=WT_Module::getActiveBlocks(WT_GED_ID, WT_PRIV_HIDE);
 
-$action = safe_POST('action');
+$action = WT_Filter::post('action');
 
 if ($action=='update_mods') {
 	foreach ($modules as $module_name=>$module) {
 		foreach (WT_Tree::getAll() as $tree) {
-			$value = safe_POST("blockaccess-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
+			$value = WT_Filter::post("blockaccess-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			WT_DB::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'block', ?)"
 			)->execute(array($module_name, $tree->tree_id, $value));

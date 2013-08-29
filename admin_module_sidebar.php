@@ -42,17 +42,17 @@ $controller
 
 $modules=WT_Module::getActiveSidebars(WT_GED_ID, WT_PRIV_HIDE);
 
-$action = safe_POST('action');
+$action = WT_Filter::post('action');
 
 if ($action=='update_mods') {
 	foreach ($modules as $module_name=>$module) {
 		foreach (WT_Tree::getAll() as $tree) {
-			$access_level = safe_POST("sidebaraccess-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
+			$access_level = WT_Filter::post("sidebaraccess-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			WT_DB::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
 			)->execute(array($module_name, $tree->tree_id, $access_level));
 		}
-		$order = safe_POST('sidebarorder-'.$module_name);
+		$order = WT_Filter::post('sidebarorder-'.$module_name);
 		WT_DB::prepare(
 			"UPDATE `##module` SET sidebar_order=? WHERE module_name=?"
 		)->execute(array($order, $module_name));

@@ -192,7 +192,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 		require WT_ROOT.'includes/functions/functions_edit.php';
 
-		$action=safe_REQUEST($_REQUEST, 'action');
+		$action = WT_Filter::post('action');
 
 		$controller=new WT_Controller_Page();
 		$controller
@@ -203,25 +203,25 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 
 		if ($action=='update') {
-			set_module_setting('googlemap', 'GM_MAP_TYPE',          $_POST['NEW_GM_MAP_TYPE']);
-			set_module_setting('googlemap', 'GM_USE_STREETVIEW',    $_POST['NEW_GM_USE_STREETVIEW']);
-			set_module_setting('googlemap', 'GM_MIN_ZOOM',          $_POST['NEW_GM_MIN_ZOOM']);
-			set_module_setting('googlemap', 'GM_MAX_ZOOM',          $_POST['NEW_GM_MAX_ZOOM']);
-			set_module_setting('googlemap', 'GM_XSIZE',             $_POST['NEW_GM_XSIZE']);
-			set_module_setting('googlemap', 'GM_YSIZE',             $_POST['NEW_GM_YSIZE']);
-			set_module_setting('googlemap', 'GM_PRECISION_0',       $_POST['NEW_GM_PRECISION_0']);
-			set_module_setting('googlemap', 'GM_PRECISION_1',       $_POST['NEW_GM_PRECISION_1']);
-			set_module_setting('googlemap', 'GM_PRECISION_2',       $_POST['NEW_GM_PRECISION_2']);
-			set_module_setting('googlemap', 'GM_PRECISION_3',       $_POST['NEW_GM_PRECISION_3']);
-			set_module_setting('googlemap', 'GM_PRECISION_4',       $_POST['NEW_GM_PRECISION_4']);
-			set_module_setting('googlemap', 'GM_PRECISION_5',       $_POST['NEW_GM_PRECISION_5']);
-			set_module_setting('googlemap', 'GM_DEFAULT_TOP_VALUE', $_POST['NEW_GM_DEFAULT_TOP_LEVEL']);
-			set_module_setting('googlemap', 'GM_COORD',             $_POST['NEW_GM_COORD']);
-			set_module_setting('googlemap', 'GM_PLACE_HIERARCHY',   $_POST['NEW_GM_PLACE_HIERARCHY']);
-			set_module_setting('googlemap', 'GM_PH_XSIZE',          $_POST['NEW_GM_PH_XSIZE']);
-			set_module_setting('googlemap', 'GM_PH_YSIZE',          $_POST['NEW_GM_PH_YSIZE']);
-			set_module_setting('googlemap', 'GM_PH_MARKER',         $_POST['NEW_GM_PH_MARKER']);
-			set_module_setting('googlemap', 'GM_DISP_SHORT_PLACE',  $_POST['NEW_GM_DISP_SHORT_PLACE']);
+			set_module_setting('googlemap', 'GM_MAP_TYPE',          WT_Filter::post('NEW_GM_MAP_TYPE'));
+			set_module_setting('googlemap', 'GM_USE_STREETVIEW',    WT_Filter::post('NEW_GM_USE_STREETVIEW'));
+			set_module_setting('googlemap', 'GM_MIN_ZOOM',          WT_Filter::post('NEW_GM_MIN_ZOOM'));
+			set_module_setting('googlemap', 'GM_MAX_ZOOM',          WT_Filter::post('NEW_GM_MAX_ZOOM'));
+			set_module_setting('googlemap', 'GM_XSIZE',             WT_Filter::post('NEW_GM_XSIZE'));
+			set_module_setting('googlemap', 'GM_YSIZE',             WT_Filter::post('NEW_GM_YSIZE'));
+			set_module_setting('googlemap', 'GM_PRECISION_0',       WT_Filter::post('NEW_GM_PRECISION_0'));
+			set_module_setting('googlemap', 'GM_PRECISION_1',       WT_Filter::post('NEW_GM_PRECISION_1'));
+			set_module_setting('googlemap', 'GM_PRECISION_2',       WT_Filter::post('NEW_GM_PRECISION_2'));
+			set_module_setting('googlemap', 'GM_PRECISION_3',       WT_Filter::post('NEW_GM_PRECISION_3'));
+			set_module_setting('googlemap', 'GM_PRECISION_4',       WT_Filter::post('NEW_GM_PRECISION_4'));
+			set_module_setting('googlemap', 'GM_PRECISION_5',       WT_Filter::post('NEW_GM_PRECISION_5'));
+			set_module_setting('googlemap', 'GM_DEFAULT_TOP_VALUE', WT_Filter::post('NEW_GM_DEFAULT_TOP_LEVEL'));
+			set_module_setting('googlemap', 'GM_COORD',             WT_Filter::post('NEW_GM_COORD'));
+			set_module_setting('googlemap', 'GM_PLACE_HIERARCHY',   WT_Filter::post('NEW_GM_PLACE_HIERARCHY'));
+			set_module_setting('googlemap', 'GM_PH_XSIZE',          WT_Filter::post('NEW_GM_PH_XSIZE'));
+			set_module_setting('googlemap', 'GM_PH_YSIZE',          WT_Filter::post('NEW_GM_PH_YSIZE'));
+			set_module_setting('googlemap', 'GM_PH_MARKER',         WT_Filter::post('NEW_GM_PH_MARKER'));
+			set_module_setting('googlemap', 'GM_DISP_SHORT_PLACE',  WT_Filter::post('NEW_GM_DISP_SHORT_PLACE'));
 
 			for ($i=1; $i<=9; $i++) {
 				set_module_setting('googlemap', 'GM_PREFIX_'.$i,  $_POST['NEW_GM_PREFIX_'.$i]);
@@ -447,13 +447,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			->setPageTitle(WT_I18N::translate('Select flag'))
 			->pageHeader();
 
-		$countries=WT_Stats::get_all_countries();
-		$action=safe_REQUEST($_REQUEST, 'action');
+		$countries = WT_Stats::get_all_countries();
+		$action    = WT_Filter::post('action');
 
-		if (isset($_REQUEST['countrySelected'])) $countrySelected = $_REQUEST['countrySelected'];
-		if (!isset($countrySelected)) $countrySelected='Countries';
-		if (isset($_REQUEST['stateSelected'])) $stateSelected = $_REQUEST['stateSelected'];
-		if (!isset($stateSelected)) $stateSelected='States';
+		$countrySelected = WT_Filter::post('countrySelected', null, 'Countries');
+		$stateSelected   = WT_Filter::post('stateSelected',   null, 'States');
 
 		$country = array();
 		$rep = opendir(WT_ROOT.WT_MODULES_DIR.'googlemap/places/flags/');
@@ -649,8 +647,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
 
 		// Default is show for both of these.
-		$hideflags = safe_GET('hideflags');
-		$hidelines = safe_GET('hidelines');
+		$hideflags = WT_Filter::get('hideflags');
+		$hidelines = WT_Filter::get('hidelines');
 
 		$controller=new WT_Controller_Pedigree();
 
@@ -1431,11 +1429,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$action    = safe_GET('action', '','go');
-		$gedcom_id = safe_GET('gedcom_id', array_keys(WT_Tree::getAll()), WT_GED_ID);
-		$country   = safe_GET('country', WT_REGEX_UNSAFE, 'XYZ');
-		$state     = safe_GET('state', WT_REGEX_UNSAFE, 'XYZ');
-		$matching  = safe_GET_bool('matching');
+		$action    = WT_Filter::get('action', '','go');
+		$gedcom_id = WT_Filter::getInteger('gedcom_id');
+		$country   = WT_Filter::get('country', '.+', 'XYZ');
+		$state     = WT_Filter::get('state', '.+', 'XYZ');
+		$matching  = WT_Filter::getBool('matching');
 
 		if (!empty($WT_SESSION['placecheck_gedcom_id'])) {
 			$gedcom_id = $WT_SESSION['placecheck_gedcom_id'];

@@ -37,7 +37,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 		parent::__construct();
 
 		// Extract the request parameters
-		$this->show_thumbs=safe_GET_bool('show_thumbs');
+		$this->show_thumbs = WT_Filter::getBool('show_thumbs');
 
 		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(

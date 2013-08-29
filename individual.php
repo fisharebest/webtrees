@@ -33,7 +33,7 @@ $controller
 	->addInlineJavascript('var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}'); // For the "find" links
 	
 if ($controller->record && $controller->record->canShow()) {
-	if (safe_GET('action')=='ajax') {
+	if (WT_Filter::get('action')=='ajax') {
 		$controller->ajaxRequest();
 		exit;
 	}

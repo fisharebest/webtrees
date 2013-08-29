@@ -822,7 +822,7 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 }
 
 //-- ========= start of main program =========
-$action = safe_REQUEST($_REQUEST, 'action', WT_REGEX_XREF);
+$action = WT_Filter::post('action');
 
 if ($action=='update') {
 	$x_as = $_POST['x-as'];

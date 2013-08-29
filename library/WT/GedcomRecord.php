@@ -864,13 +864,13 @@ class WT_GedcomRecord {
 	public function updateFact($fact_id, $gedcom, $update_chan) {
 		if (strpos("\r", $gedcom)!==false) {
 			// MSDOS line endings will break things in horrible ways
-			throw new Exception('Evil line endings found in WT_GedcomRecord::updateRecord(' . $gedcom . ')');
+			throw new Exception('Evil line endings found in WT_GedcomRecord::updateFact(' . $gedcom . ')');
 		}
 		if ($this->pending==='') {
 			throw new Exception('Cannot edit a deleted record');
 		}
 		if ($gedcom && !preg_match('/^1 ' . WT_REGEX_TAG . '/', $gedcom)) {
-			throw new Exception('Invalid GEDCOM data passed to WT_GedcomRecord::updateFact()');
+			throw new Exception('Invalid GEDCOM data passed to WT_GedcomRecord::updateFact(' . $gedcom . ')');
 		}
 
 		if ($this->pending) {

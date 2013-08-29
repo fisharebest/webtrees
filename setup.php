@@ -64,7 +64,7 @@ require 'includes/functions/functions_utf-8.php';
 require 'includes/functions/functions_edit.php';
 $WT_REQUEST=new Zend_Controller_Request_Http();
 $WT_SESSION=new stdClass; $WT_SESSION->locale=null; // Can't use Zend_Session until we've checked ini_set
-define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
+define('WT_LOCALE', WT_I18N::init(WT_Filter::post('lang', '[@a-zA-Z_]+')));
 
 header('Content-Type: text/html; charset=UTF-8');
 

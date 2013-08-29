@@ -111,14 +111,14 @@ class batch_update {
 
 	// Constructor - initialise variables and validate user-input
 	function __construct() {
-		$this->plugins=self::getPluginList();              // List of available plugins
-		$this->plugin =safe_GET('plugin', array_keys($this->plugins)); // User parameters
-		$this->xref   =safe_GET('xref',   WT_REGEX_XREF);
-		$this->action =safe_GET('action');
-		$this->data   =safe_GET('data');
+		$this->plugins=self::getPluginList();    // List of available plugins
+		$this->plugin =WT_Filter::get('plugin'); // User parameters
+		$this->xref   =WT_Filter::get('xref', WT_REGEX_XREF);
+		$this->action =WT_Filter::get('action');
+		$this->data   =WT_Filter::get('data');
 
 		// Don't do any processing until a plugin is chosen.
-		if ($this->plugin) {
+		if ($this->plugin && array_key_exists($this->plugin, $this->plugins)) {
 			$this->PLUGIN=new $this->plugin;
 			$this->PLUGIN->getOptions();
 			$this->getAllXrefs();
@@ -333,7 +333,7 @@ class base_plugin {
 
 	// Default option is just the "don't update CHAN record"
 	function getOptions() {
-		$this->chan=safe_GET_bool('chan');
+		$this->chan=WT_Filter::getBool('chan');
 	}
 
 	// Default option is just the "don't update CHAN record"

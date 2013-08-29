@@ -155,11 +155,11 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'show_other',      safe_POST_bool('show_other'));
-			set_block_setting($block_id, 'show_unassigned', safe_POST_bool('show_unassigned'));
-			set_block_setting($block_id, 'show_future',     safe_POST_bool('show_future'));
-			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
+		if (WT_Filter::postBool('save')) {
+			set_block_setting($block_id, 'show_other',      WT_Filter::postBool('show_other'));
+			set_block_setting($block_id, 'show_unassigned', WT_Filter::postBool('show_unassigned'));
+			set_block_setting($block_id, 'show_future',     WT_Filter::postBool('show_future'));
+			set_block_setting($block_id, 'block',           WT_Filter::postBool('block'));
 			exit;
 		}
 

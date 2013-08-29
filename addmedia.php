@@ -27,17 +27,17 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$pid         = safe_REQUEST($_REQUEST, 'pid',         WT_REGEX_XREF); // edit this media object
-$linktoid    = safe_REQUEST($_REQUEST, 'linktoid',    WT_REGEX_XREF); // create a new media object, linked to this record
-$action      = safe_REQUEST($_REQUEST, 'action');
-$filename    = safe_REQUEST($_REQUEST, 'filename',    WT_REGEX_UNSAFE);
-$text        = safe_REQUEST($_REQUEST, 'text',        WT_REGEX_UNSAFE);
-$tag         = safe_REQUEST($_REQUEST, 'tag',         WT_REGEX_UNSAFE);
-$islink      = safe_REQUEST($_REQUEST, 'islink',      WT_REGEX_UNSAFE);
-$glevels     = safe_REQUEST($_REQUEST, 'glevels',     WT_REGEX_UNSAFE);
+$pid         = WT_Filter::get('pid',      WT_REGEX_XREF, WT_Filter::post('pid', WT_REGEX_XREF));      // edit this media object
+$linktoid    = WT_Filter::get('linktoid', WT_REGEX_XREF, WT_Filter::post('linktoid', WT_REGEX_XREF)); // create a new media object, linked to this record
+$action      = WT_Filter::get('action',   null, WT_Filter::post('action'));
+$filename    = WT_Filter::get('filename', null, WT_Filter::post('filename'));
+$text        = WT_Filter::postArray('text');
+$tag         = WT_Filter::postArray('tag', WT_REGEX_TAG);
+$islink      = WT_Filter::postArray('islink');
+$glevels     = WT_Filter::postArray('glevels', '[0-9]');
 
-$folder      = safe_POST('folder',      WT_REGEX_UNSAFE);
-$update_CHAN = !safe_POST_bool('preserve_last_changed');
+$folder      = WT_Filter::post('folder');
+$update_CHAN = !WT_Filter::postBool('preserve_last_changed');
 
 $controller = new WT_Controller_Simple();
 $controller
@@ -224,7 +224,7 @@ case 'create': // Save the information from the “showcreateform” action
 
 	$controller->pageHeader();
 	// Build the gedcom record
-	$newged = "0 @new@ OBJE\n";
+	$newged = "0 @new@ OBJE";
 	if ($tag[0]=='FILE') {
 		// The admin has an edit field to change the file name
 		$text[0] = $folderName . $fileName;
@@ -752,5 +752,3 @@ function get_first_tag($level, $tag, $gedrec, $num=1) {
 	}
 	return substr($temp, 2, $length-2);
 }
-
-

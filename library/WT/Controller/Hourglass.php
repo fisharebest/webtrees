@@ -52,12 +52,11 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		parent::__construct();
 
 		// Extract parameters from from
-		$this->pid        =safe_GET_xref('rootid');
-		$this->show_full  =safe_GET('show_full',   array('0', '1'), $PEDIGREE_FULL_DETAILS);
-		$this->show_spouse=safe_GET('show_spouse', array('0', '1'), '0');
-		$this->generations=safe_GET_integer('generations', 2, $MAX_DESCENDANCY_GENERATIONS, 3);
-		$this->box_width  =safe_GET_integer('box_width',   50, 300, 100);
-		$box_width           =safe_GET_integer('box_width',            50, 300, 100);
+		$this->pid         = WT_Filter::get('rootid', WT_REGEX_XREF);
+		$this->show_full   = WT_Filter::getInteger('show_full',   0, 1, $PEDIGREE_FULL_DETAILS);
+		$this->show_spouse = WT_Filter::getInteger('show_spouse', 0, 1, 0);
+		$this->generations = WT_Filter::getInteger('generations', 2, $MAX_DESCENDANCY_GENERATIONS, 3);
+		$this->box_width   = WT_Filter::getInteger('box_width',   50, 300, 100);
 
 		// This is passed as a global.  A parameter would be better...
 		$show_full=$this->show_full;
@@ -74,8 +73,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		}
 		
 		// -- size of the detailed boxes based upon optional width parameter
-		$Dbwidth=($box_width*$bwidth)/100;
-		$Dbheight=($box_width*$bheight)/100;
+		$Dbwidth=($this->box_width*$bwidth)/100;
+		$Dbheight=($this->box_width*$bheight)/100;
 		$bwidth=$Dbwidth;
 		$bheight=$Dbheight;
 		

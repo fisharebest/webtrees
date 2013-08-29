@@ -46,11 +46,11 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		parent::__construct();
 
 		// Extract form parameters
-		$this->show_full     =safe_GET('show_full',    array('0', '1'), $PEDIGREE_FULL_DETAILS);
-		$this->show_cousins  =safe_GET('show_cousins', array('0', '1'), '0');
-		$this->chart_style   =safe_GET_integer('chart_style',          0, 3, 0);
-		$box_width           =safe_GET_integer('box_width',            50, 300, 100);
-		$PEDIGREE_GENERATIONS=safe_GET_integer('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
+		$this->show_full      = WT_Filter::getInteger('show_full',            0, 1, $PEDIGREE_FULL_DETAILS);
+		$this->show_cousins   = WT_Filter::getInteger('show_cousins',         0, 1);
+		$this->chart_style    = WT_Filter::getInteger('chart_style',          0, 3);
+		$box_width            = WT_Filter::getInteger('box_width',            50, 300, 100);
+		$PEDIGREE_GENERATIONS = WT_Filter::getInteger('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
 
 		// This is passed as a global.  A parameter would be better...
 		$show_full=$this->show_full;

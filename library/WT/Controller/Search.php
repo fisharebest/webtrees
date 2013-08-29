@@ -79,10 +79,13 @@ class WT_Controller_Search extends WT_Controller_Page {
 	function __construct() {
 		parent::__construct();
 
-		// action comes from $_GET (menus) or $_POST (form submission)
-		$this->action=safe_REQUEST($_REQUEST, 'action', array('advanced', 'general', 'soundex', 'replace'), 'general');
+		// $action comes from $_GET (menus) or $_POST (form submission)
+		$this->action = WT_Filter::get('action', 'advanced|general|soundex|replace');
+		if (!$this->action) {
+			$this->action = WT_Filter::post('action', 'advanced|general|soundex|replace');
+		}
 
-		$topsearch=safe_POST_bool('topsearch');
+		$topsearch = WT_Filter::postBool('topsearch');
 
 		if ($topsearch) {
 			$this->isPostBack = true;
@@ -92,25 +95,15 @@ class WT_Controller_Search extends WT_Controller_Page {
 			$this->srnote = 'yes';
 		}
 
-		// Get the query and remove slashes
-		if (isset ($_REQUEST["query"])) {
-			// Reset the "Search" text from the page header
-			if (strlen($_REQUEST["query"])<2) {
-				$this->query="";
-				$this->myquery="";
-			} else {
-				$this->query = $_REQUEST["query"];
-				$this->myquery = WT_Filter::escapeHtml($this->query);
-			}
-		}
-		if (isset ($_REQUEST["replace"])) {
-			$this->replace = $_REQUEST["replace"];
+		// Get the query
+		$this->query   = WT_Filter::post('query', '.{2,}');
+		$this->myquery = WT_Filter::escapeHtml($this->query);
 
-			if (isset($_REQUEST["replaceNames"])) $this->replaceNames = true;
-			if (isset($_REQUEST["replacePlaces"])) $this->replacePlaces = true;
-			if (isset($_REQUEST["replacePlacesWord"])) $this->replacePlacesWord = true;
-			if (isset($_REQUEST["replaceAll"])) $this->replaceAll = true;
-		}
+		$this->replace           = WT_Filter::post('replace');
+		$this->replaceNames      = WT_Filter::postBool('replaceNames');
+		$this->replacePlaces     = WT_Filter::postBool('replacePlaces');
+		$this->replacePlacesWord = WT_Filter::postBool('replacePlacesWord');
+		$this->replaceAll        = WT_Filter::postBool('replaceAll');
 
 		// TODO: fetch each variable independently, using appropriate validation
 		// Aquire all the variables values from the $_REQUEST
@@ -137,29 +130,14 @@ class WT_Controller_Search extends WT_Controller_Page {
 		}
 
 		// vars use for soundex search
-		if (!empty ($_REQUEST["firstname"])) {
-			$this->firstname = $_REQUEST["firstname"];
-		} else {
-			$this->firstname="";
-		}
-		if (!empty ($_REQUEST["lastname"])) {
-			$this->lastname = $_REQUEST["lastname"];
-		} else {
-			$this->lastname="";
-		}
-		if (!empty ($_REQUEST["place2"])) {
-			$this->place = $_REQUEST["place2"];
-		} else {
-			$this->place="";
-		}
-		if (!empty ($_REQUEST["year"])) {
-			$this->year = $_REQUEST["year"];
-		} else {
-			$this->year="";
-		}
+		$this->firstname = WT_Filter::post('firstname');
+		$this->lastname  = WT_Filter::post('lastname');
+		$this->place2    = WT_Filter::post('place2');
+		$this->year      = WT_Filter::post('year');
+
 		// Set the search result titles for soundex searches
 		if ($this->firstname || $this->lastname || $this->place) {
-			$this->myquery=WT_Filter::escapeHtml(implode(' ', array($this->firstname, $this->lastname, $this->place)));
+			$this->myquery = WT_Filter::escapeHtml(implode(' ', array($this->firstname, $this->lastname, $this->place)));
 		};
 
 		if (!empty ($_REQUEST["name"])) {

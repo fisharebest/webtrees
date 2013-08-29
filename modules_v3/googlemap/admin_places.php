@@ -29,11 +29,11 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$action=safe_REQUEST($_REQUEST, 'action');
-if (isset($_REQUEST['parent'])) $parent=safe_REQUEST($_REQUEST, 'parent');
-if (isset($_REQUEST['inactive'])) $inactive=safe_GET_bool('inactive');
-if (isset($_REQUEST['mode'])) $mode=safe_REQUEST($_REQUEST, 'mode');
-if (isset($_REQUEST['deleteRecord'])) $deleteRecord=safe_REQUEST($_REQUEST, 'deleteRecord');
+$action       = WT_Filter::get('action');
+$parent       = WT_Filter::get('parent');
+$inactive     = WT_Filter::getBool('inactive');
+$mode         = WT_Filter::get('mode');
+$deleteRecord = WT_Filter::get('deleteRecord');
 
 if (!isset($parent)) $parent=0;
 if (!isset($inactive)) $inactive=false;

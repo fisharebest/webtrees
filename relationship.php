@@ -25,14 +25,14 @@ define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 
-$pid1        =safe_GET_xref('pid1');
-$pid2        =safe_GET_xref('pid2');
-$show_full   =safe_GET('show_full', array('0', '1'), $PEDIGREE_FULL_DETAILS);
-$path_to_find=safe_GET('path_to_find', '[0-9]+', 0);
-$followspouse=safe_GET_bool('followspouse');
-$asc         =safe_GET_bool('asc');
+$pid1         = WT_Filter::get('pid1', WT_REGEX_XREF);
+$pid2         = WT_Filter::get('pid2', WT_REGEX_XREF);
+$show_full    = WT_Filter::getInteger('show_full', 0, 1, $PEDIGREE_FULL_DETAILS);
+$path_to_find = WT_Filter::getInteger('path_to_find');
+$followspouse = WT_Filter::getBool('followspouse');
+$asc          = WT_Filter::getBool('asc');
 
 $asc = $asc ? -1 : 1;
 

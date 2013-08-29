@@ -130,8 +130,8 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			//$controller->pageHeader();
 			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
-			$pid = safe_GET('pid');
-			$i   = safe_GET('instance');
+			$pid = WT_Filter::get('pid', WT_REGEX_XREF);
+			$i   = WT_Filter::get('instance');
 			$tv  = new TreeView($i);
 			echo $tv->getDetails($pid);
 			break;
@@ -141,8 +141,8 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			//$controller->pageHeader();
 			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
-			$q  = $_REQUEST['q'];
-			$i  = safe_GET('instance');
+			$q  = WT_Filter::get('q');
+			$i  = WT_Filter::get('instance');
 			$tv = new TreeView($i);
 			echo $tv->getPersons($q);
 			break;

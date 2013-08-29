@@ -24,7 +24,7 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Page();
 
-$obj=WT_GedcomRecord::getInstance(safe_GET_xref('pid'));
+$obj = WT_GedcomRecord::getInstance(WT_Filter::get('pid', WT_REGEX_XREF));
 
 if (
 	$obj instanceof WT_Individual ||

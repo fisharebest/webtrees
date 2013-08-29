@@ -26,10 +26,10 @@
 // GEDFact Media assistant replacement code for inverselink.php: ===========================
 
 //-- extra page parameters and checking
-$more_links = safe_REQUEST($_REQUEST, 'more_links', WT_REGEX_UNSAFE);
-$exist_links = safe_REQUEST($_REQUEST, 'exist_links', WT_REGEX_UNSAFE);
-$gid = safe_GET_xref('gid');
-$update_CHAN = safe_REQUEST($_REQUEST, 'preserve_last_changed', WT_REGEX_UNSAFE);
+$more_links  = WT_Filter::get('more_links');
+$exist_links = WT_Filter::get('exist_links');
+$gid         = WT_Filter::get('gid', WT_REGEX_XREF);
+$update_CHAN = WT_Filter::get('preserve_last_changed');
 
 $controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 

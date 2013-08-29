@@ -36,7 +36,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		$pbwidth  = $bwidth + 12;
 		$pbheight = $bheight + 14;
 
-		$xref         = safe_GET_xref('famid');
+		$xref         = WT_Filter::get('famid', WT_REGEX_XREF);
 		$this->record = WT_Family::getInstance($xref);
 
 		parent::__construct();

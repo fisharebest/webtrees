@@ -31,12 +31,12 @@ $controller
 	->requireEditorLogin() /* Editing may be disabled, even for admins */
 	->setPageTitle(WT_I18N::translate('Upload media files'));
 	
-$action = safe_POST('action');
+$action = WT_Filter::post('action');
 
 if ($action == "upload") {
 	for ($i=1; $i<6; $i++) {
 		if (!empty($_FILES['mediafile'.$i]["name"]) || !empty($_FILES['thumbnail'.$i]["name"])) {
-			$folder = safe_POST('folder' . $i, WT_REGEX_UNSAFE);
+			$folder = WT_Filter::post('folder' . $i);
 
 			// Validate the media folder
 			$folderName = str_replace('\\', '/', $folder);
@@ -100,7 +100,7 @@ if ($action == "upload") {
 			}
 
 			// User-specified filename?
-			$filename = safe_POST('filename' . $i, WT_REGEX_UNSAFE);
+			$filename = WT_Filter::post('filename' . $i);
 			// Use the name of the uploaded file?
 			if (!$filename && !empty($_FILES['mediafile' . $i]['name'])) {
 				$filename = $_FILES['mediafile' . $i]['name'];

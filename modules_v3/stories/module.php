@@ -169,35 +169,35 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_CAN_EDIT) {
 
-			if (safe_POST_bool('save')) {
-				$block_id=safe_POST('block_id');
+			if (WT_Filter::postBool('save')) {
+				$block_id=WT_Filter::postInteger('block_id');
 				if ($block_id) {
 					WT_DB::prepare(
 						"UPDATE `##block` SET gedcom_id=?, xref=? WHERE block_id=?"
-					)->execute(array(safe_POST('gedcom_id'), safe_POST('xref'), $block_id));
+					)->execute(array(WT_Filter::postInteger('gedcom_id'), WT_Filter::post('xref', WT_REGEX_XREF), $block_id));
 				} else {
 					WT_DB::prepare(
 						"INSERT INTO `##block` (gedcom_id, xref, module_name, block_order) VALUES (?, ?, ?, ?)"
 					)->execute(array(
-						safe_POST('gedcom_id'),
-						safe_POST('xref'),
+						WT_Filter::postInteger('gedcom_id'),
+						WT_Filter::post('xref', WT_REGEX_XREF),
 						$this->getName(),
 						0
 					));
 					$block_id=WT_DB::getInstance()->lastInsertId();
 				}
-				set_block_setting($block_id, 'title', safe_POST('title', WT_REGEX_UNSAFE)); // allow html
-				set_block_setting($block_id, 'story_body',  safe_POST('story_body', WT_REGEX_UNSAFE)); // allow html
+				set_block_setting($block_id, 'title', WT_Filter::post('title'));
+				set_block_setting($block_id, 'story_body',  WT_Filter::post('story_body'));
 				$languages=array();
 				foreach (WT_I18N::installed_languages() as $code=>$name) {
-					if (safe_POST_bool('lang_'.$code)) {
+					if (WT_Filter::postBool('lang_'.$code)) {
 						$languages[]=$code;
 					}
 				}
 				set_block_setting($block_id, 'languages', implode(',', $languages));
 				$this->config();
 			} else {
-				$block_id=safe_GET('block_id');
+				$block_id=WT_Filter::getInteger('block_id');
 
 				$controller=new WT_Controller_Page();
 				if ($block_id) {
@@ -215,7 +215,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					$title='';
 					$story_body='';
 					$gedcom_id=WT_GED_ID;
-					$xref=safe_GET('xref', WT_REGEX_XREF);
+					$xref=WT_Filter::get('xref', WT_REGEX_XREF);
 				}
 				$controller
 					->pageHeader()
@@ -274,7 +274,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	private function delete() {
 		if (WT_USER_CAN_EDIT) {
-			$block_id=safe_GET('block_id');
+			$block_id=WT_Filter::getInteger('block_id');
 
 			$block_order=WT_DB::prepare(
 				"SELECT block_order FROM `##block` WHERE block_id=?"

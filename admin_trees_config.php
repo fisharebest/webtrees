@@ -39,134 +39,134 @@ $PRIVACY_CONSTANTS = array(
 	'hidden'       => WT_I18N::translate('Hide from everyone')
 );
 
-switch (safe_POST('action')) {
+switch (WT_Filter::post('action')) {
 case 'delete':
 	WT_DB::prepare(
 		"DELETE FROM `##default_resn` WHERE default_resn_id=?"
-	)->execute(array(safe_POST('default_resn_id')));
+	)->execute(array(WT_Filter::post('default_resn_id')));
 	// Reload the page, so that the new privacy restrictions are reflected in the header
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
 	exit;
 case 'add':
-	if ((safe_POST('xref') || safe_POST('tag_type')) && safe_POST('resn')) {
-		if (safe_POST('xref')=='') {
+	if ((WT_Filter::post('xref') || WT_Filter::post('tag_type')) && WT_Filter::post('resn')) {
+		if (WT_Filter::post('xref')=='') {
 			WT_DB::prepare(
 				"DELETE FROM `##default_resn` WHERE gedcom_id=? AND tag_type=? AND xref IS NULL"
-			)->execute(array(WT_GED_ID, safe_POST('tag_type')));
+			)->execute(array(WT_GED_ID, WT_Filter::post('tag_type')));
 		}
-		if (safe_POST('tag_type')=='') {
+		if (WT_Filter::post('tag_type')=='') {
 			WT_DB::prepare(
 				"DELETE FROM `##default_resn` WHERE gedcom_id=? AND xref=? AND tag_type IS NULL"
-			)->execute(array(WT_GED_ID, safe_POST('xref')));
+			)->execute(array(WT_GED_ID, WT_Filter::post('xref')));
 		}
 		WT_DB::prepare(
 			"REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, NULLIF(?, ''), NULLIF(?, ''), ?)"
-		)->execute(array(WT_GED_ID, safe_POST_xref('xref'), safe_POST('tag_type'), safe_POST('resn')));
+		)->execute(array(WT_GED_ID, WT_Filter::post('xref', WT_REGEX_XREF), WT_Filter::post('tag_type'), WT_Filter::post('resn')));
 	}
 	// Reload the page, so that the new privacy restrictions are reflected in the header
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
 	exit;
 case 'update':
-	set_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS',      safe_POST_bool('NEW_ABBREVIATE_CHART_LABELS'));
-	set_gedcom_setting(WT_GED_ID, 'ADVANCED_NAME_FACTS',          safe_POST('NEW_ADVANCED_NAME_FACTS'));
-	set_gedcom_setting(WT_GED_ID, 'ADVANCED_PLAC_FACTS',          safe_POST('NEW_ADVANCED_PLAC_FACTS'));
-	set_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN',         safe_POST_bool('NEW_ALLOW_THEME_DROPDOWN'));
+	set_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS',      WT_Filter::postBool('NEW_ABBREVIATE_CHART_LABELS'));
+	set_gedcom_setting(WT_GED_ID, 'ADVANCED_NAME_FACTS',          WT_Filter::post('NEW_ADVANCED_NAME_FACTS'));
+	set_gedcom_setting(WT_GED_ID, 'ADVANCED_PLAC_FACTS',          WT_Filter::post('NEW_ADVANCED_PLAC_FACTS'));
+	set_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN',         WT_Filter::postBool('NEW_ALLOW_THEME_DROPDOWN'));
 	// For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
 	// e.g. "gregorian_and_jewish"
 	set_gedcom_setting(WT_GED_ID, 'CALENDAR_FORMAT',              implode('_and_', array_unique(array(
-		safe_POST('NEW_CALENDAR_FORMAT0', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
-		safe_POST('NEW_CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none')
+		WT_Filter::post('NEW_CALENDAR_FORMAT0', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
+		WT_Filter::post('NEW_CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none')
 	))));
-	set_gedcom_setting(WT_GED_ID, 'CHART_BOX_TAGS',               safe_POST('NEW_CHART_BOX_TAGS'));
-	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD',             str_replace(' ', '', safe_POST('NEW_COMMON_NAMES_ADD')));
-	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE',          str_replace(' ', '', safe_POST('NEW_COMMON_NAMES_REMOVE')));
-	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD',       safe_POST('NEW_COMMON_NAMES_THRESHOLD', WT_REGEX_INTEGER, 40));
-	set_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID',              safe_POST('NEW_CONTACT_USER_ID'));
-	set_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS', safe_POST('NEW_DEFAULT_PEDIGREE_GENERATIONS'));
-	set_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES',                 safe_POST_bool('NEW_EXPAND_NOTES'));
-	set_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS',      safe_POST_bool('NEW_EXPAND_RELATIVES_EVENTS'));
-	set_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES',               safe_POST_bool('NEW_EXPAND_SOURCES'));
-	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD',                str_replace(' ', '', safe_POST('NEW_FAM_FACTS_ADD')));
-	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK',              str_replace(' ', '', safe_POST('NEW_FAM_FACTS_QUICK')));
-	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE',             str_replace(' ', '', safe_POST('NEW_FAM_FACTS_UNIQUE')));
-	set_gedcom_setting(WT_GED_ID, 'FAM_ID_PREFIX',                safe_POST('NEW_FAM_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'FULL_SOURCES',                 safe_POST_bool('NEW_FULL_SOURCES'));
-	set_gedcom_setting(WT_GED_ID, 'GEDCOM_ID_PREFIX',             safe_POST('NEW_GEDCOM_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            safe_POST('NEW_GEDCOM_MEDIA_PATH'));
-	set_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS',                safe_POST_bool('NEW_GENERATE_UIDS'));
-	set_gedcom_setting(WT_GED_ID, 'HIDE_GEDCOM_ERRORS',           safe_POST_bool('NEW_HIDE_GEDCOM_ERRORS'));
-	set_gedcom_setting(WT_GED_ID, 'HIDE_LIVE_PEOPLE',             safe_POST_bool('NEW_HIDE_LIVE_PEOPLE'));
-	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            safe_POST('GEDCOM_MEDIA_PATH'));
-	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD',               str_replace(' ', '', safe_POST('NEW_INDI_FACTS_ADD')));
-	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK',             str_replace(' ', '', safe_POST('NEW_INDI_FACTS_QUICK')));
-	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE',            str_replace(' ', '', safe_POST('NEW_INDI_FACTS_UNIQUE')));
-	set_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_BIRTH',       safe_POST('KEEP_ALIVE_YEARS_BIRTH', WT_REGEX_INTEGER, 0));
-	set_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_DEATH',       safe_POST('KEEP_ALIVE_YEARS_DEATH', WT_REGEX_INTEGER, 0));
-	set_gedcom_setting(WT_GED_ID, 'LANGUAGE',                     safe_POST('GEDCOMLANG'));
-	set_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE',                safe_POST('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
-	set_gedcom_setting(WT_GED_ID, 'MAX_DESCENDANCY_GENERATIONS',  safe_POST('NEW_MAX_DESCENDANCY_GENERATIONS'));
-	set_gedcom_setting(WT_GED_ID, 'MAX_PEDIGREE_GENERATIONS',     safe_POST('NEW_MAX_PEDIGREE_GENERATIONS'));
-	set_gedcom_setting(WT_GED_ID, 'MEDIA_ID_PREFIX',              safe_POST('NEW_MEDIA_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD',                 safe_POST('NEW_MEDIA_UPLOAD'));
-	set_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION',             safe_POST('NEW_META_DESCRIPTION'));
-	set_gedcom_setting(WT_GED_ID, 'META_TITLE',                   safe_POST('NEW_META_TITLE'));
-	set_gedcom_setting(WT_GED_ID, 'NOTE_ID_PREFIX',               safe_POST('NEW_NOTE_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'NO_UPDATE_CHAN',               safe_POST_bool('NEW_NO_UPDATE_CHAN'));
-	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_FULL_DETAILS',        safe_POST_bool('NEW_PEDIGREE_FULL_DETAILS'));
-	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_LAYOUT',              safe_POST_bool('NEW_PEDIGREE_LAYOUT'));
-	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID',             safe_POST_xref('NEW_PEDIGREE_ROOT_ID'));
-	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_SHOW_GENDER',         safe_POST_bool('NEW_PEDIGREE_SHOW_GENDER'));
-	set_gedcom_setting(WT_GED_ID, 'PREFER_LEVEL2_SOURCES',        safe_POST('NEW_PREFER_LEVEL2_SOURCES'));
-	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FACTS',         safe_POST('NEW_QUICK_REQUIRED_FACTS'));
-	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FAMFACTS',      safe_POST('NEW_QUICK_REQUIRED_FAMFACTS'));
-	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD',               str_replace(' ', '', safe_POST('NEW_REPO_FACTS_ADD')));
-	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_QUICK',             str_replace(' ', '', safe_POST('NEW_REPO_FACTS_QUICK')));
-	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE',            str_replace(' ', '', safe_POST('NEW_REPO_FACTS_UNIQUE')));
-	set_gedcom_setting(WT_GED_ID, 'REPO_ID_PREFIX',               safe_POST('NEW_REPO_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION',       safe_POST_bool('NEW_REQUIRE_AUTHENTICATION'));
-	set_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_IMAGE',         safe_POST_bool('NEW_SAVE_WATERMARK_IMAGE'));
-	set_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_THUMB',         safe_POST_bool('NEW_SAVE_WATERMARK_THUMB'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_AGE_DIFF',                safe_POST_bool('NEW_SHOW_AGE_DIFF'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_COUNTER',                 safe_POST_bool('NEW_SHOW_COUNTER'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE',             safe_POST('SHOW_DEAD_PEOPLE'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES',          safe_POST_bool('NEW_SHOW_EST_LIST_DATES'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_FACT_ICONS',              safe_POST_bool('NEW_SHOW_FACT_ICONS'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD',           safe_POST_bool('NEW_SHOW_GEDCOM_RECORD'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_HIGHLIGHT_IMAGES',        safe_POST_bool('NEW_SHOW_HIGHLIGHT_IMAGES'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_LAST_CHANGE',             safe_POST_bool('NEW_SHOW_LAST_CHANGE'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_LDS_AT_GLANCE',           safe_POST_bool('NEW_SHOW_LDS_AT_GLANCE'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_LEVEL2_NOTES',            safe_POST_bool('NEW_SHOW_LEVEL2_NOTES'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES',            safe_POST('SHOW_LIVING_NAMES'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_DOWNLOAD',          safe_POST_bool('NEW_SHOW_MEDIA_DOWNLOAD'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_NO_WATERMARK',            safe_POST('NEW_SHOW_NO_WATERMARK'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_PARENTS_AGE',             safe_POST_bool('NEW_SHOW_PARENTS_AGE'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES',         safe_POST('NEW_SHOW_PEDIGREE_PLACES'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX',  safe_POST_bool('NEW_SHOW_PEDIGREE_PLACES_SUFFIX'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS',   safe_POST('SHOW_PRIVATE_RELATIONSHIPS'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_RELATIVES_EVENTS',        safe_POST('NEW_SHOW_RELATIVES_EVENTS'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_STATS',                   safe_POST_bool('NEW_SHOW_STATS'));
-	set_gedcom_setting(WT_GED_ID, 'SOURCE_ID_PREFIX',             safe_POST('NEW_SOURCE_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD',               str_replace(' ', '', safe_POST('NEW_SOUR_FACTS_ADD')));
-	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_QUICK',             str_replace(' ', '', safe_POST('NEW_SOUR_FACTS_QUICK')));
-	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE',            str_replace(' ', '', safe_POST('NEW_SOUR_FACTS_UNIQUE')));
-	set_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I',            safe_POST('NEW_SUBLIST_TRIGGER_I', WT_REGEX_INTEGER, 200));
-	set_gedcom_setting(WT_GED_ID, 'SURNAME_LIST_STYLE',           safe_POST('NEW_SURNAME_LIST_STYLE'));
-	set_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION',            safe_POST('NEW_SURNAME_TRADITION'));
-	set_gedcom_setting(WT_GED_ID, 'THEME_DIR',                    safe_POST('NEW_THEME_DIR'));
-	set_gedcom_setting(WT_GED_ID, 'THUMBNAIL_WIDTH',              safe_POST('NEW_THUMBNAIL_WIDTH'));
-	set_gedcom_setting(WT_GED_ID, 'USE_GEONAMES',                 safe_POST_bool('NEW_USE_GEONAMES'));
-	set_gedcom_setting(WT_GED_ID, 'USE_RIN',                      safe_POST_bool('NEW_USE_RIN'));
-	set_gedcom_setting(WT_GED_ID, 'USE_SILHOUETTE',               safe_POST_bool('NEW_USE_SILHOUETTE'));
-	set_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB',              safe_POST_bool('NEW_WATERMARK_THUMB'));
-	set_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID',            safe_POST('NEW_WEBMASTER_USER_ID'));
-	set_gedcom_setting(WT_GED_ID, 'WEBTREES_EMAIL',               safe_POST('NEW_WEBTREES_EMAIL'));
-	set_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES',           safe_POST_bool('NEW_WORD_WRAPPED_NOTES'));
-	if (safe_POST('gedcom_title', WT_REGEX_UNSAFE)) {
-		set_gedcom_setting(WT_GED_ID, 'title',                        safe_POST('gedcom_title', WT_REGEX_UNSAFE));
+	set_gedcom_setting(WT_GED_ID, 'CHART_BOX_TAGS',               WT_Filter::post('NEW_CHART_BOX_TAGS'));
+	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD',             str_replace(' ', '', WT_Filter::post('NEW_COMMON_NAMES_ADD')));
+	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE',          str_replace(' ', '', WT_Filter::post('NEW_COMMON_NAMES_REMOVE')));
+	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD',       WT_Filter::post('NEW_COMMON_NAMES_THRESHOLD', WT_REGEX_INTEGER, 40));
+	set_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID',              WT_Filter::post('NEW_CONTACT_USER_ID'));
+	set_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS', WT_Filter::post('NEW_DEFAULT_PEDIGREE_GENERATIONS'));
+	set_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES',                 WT_Filter::postBool('NEW_EXPAND_NOTES'));
+	set_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS',      WT_Filter::postBool('NEW_EXPAND_RELATIVES_EVENTS'));
+	set_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES',               WT_Filter::postBool('NEW_EXPAND_SOURCES'));
+	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD',                str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_ADD')));
+	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK',              str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_QUICK')));
+	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE',             str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_UNIQUE')));
+	set_gedcom_setting(WT_GED_ID, 'FAM_ID_PREFIX',                WT_Filter::post('NEW_FAM_ID_PREFIX'));
+	set_gedcom_setting(WT_GED_ID, 'FULL_SOURCES',                 WT_Filter::postBool('NEW_FULL_SOURCES'));
+	set_gedcom_setting(WT_GED_ID, 'GEDCOM_ID_PREFIX',             WT_Filter::post('NEW_GEDCOM_ID_PREFIX'));
+	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            WT_Filter::post('NEW_GEDCOM_MEDIA_PATH'));
+	set_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS',                WT_Filter::postBool('NEW_GENERATE_UIDS'));
+	set_gedcom_setting(WT_GED_ID, 'HIDE_GEDCOM_ERRORS',           WT_Filter::postBool('NEW_HIDE_GEDCOM_ERRORS'));
+	set_gedcom_setting(WT_GED_ID, 'HIDE_LIVE_PEOPLE',             WT_Filter::postBool('NEW_HIDE_LIVE_PEOPLE'));
+	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            WT_Filter::post('GEDCOM_MEDIA_PATH'));
+	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_ADD')));
+	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_QUICK')));
+	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_UNIQUE')));
+	set_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_BIRTH',       WT_Filter::post('KEEP_ALIVE_YEARS_BIRTH', WT_REGEX_INTEGER, 0));
+	set_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_DEATH',       WT_Filter::post('KEEP_ALIVE_YEARS_DEATH', WT_REGEX_INTEGER, 0));
+	set_gedcom_setting(WT_GED_ID, 'LANGUAGE',                     WT_Filter::post('GEDCOMLANG'));
+	set_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE',                WT_Filter::post('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
+	set_gedcom_setting(WT_GED_ID, 'MAX_DESCENDANCY_GENERATIONS',  WT_Filter::post('NEW_MAX_DESCENDANCY_GENERATIONS'));
+	set_gedcom_setting(WT_GED_ID, 'MAX_PEDIGREE_GENERATIONS',     WT_Filter::post('NEW_MAX_PEDIGREE_GENERATIONS'));
+	set_gedcom_setting(WT_GED_ID, 'MEDIA_ID_PREFIX',              WT_Filter::post('NEW_MEDIA_ID_PREFIX'));
+	set_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD',                 WT_Filter::post('NEW_MEDIA_UPLOAD'));
+	set_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION',             WT_Filter::post('NEW_META_DESCRIPTION'));
+	set_gedcom_setting(WT_GED_ID, 'META_TITLE',                   WT_Filter::post('NEW_META_TITLE'));
+	set_gedcom_setting(WT_GED_ID, 'NOTE_ID_PREFIX',               WT_Filter::post('NEW_NOTE_ID_PREFIX'));
+	set_gedcom_setting(WT_GED_ID, 'NO_UPDATE_CHAN',               WT_Filter::postBool('NEW_NO_UPDATE_CHAN'));
+	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_FULL_DETAILS',        WT_Filter::postBool('NEW_PEDIGREE_FULL_DETAILS'));
+	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_LAYOUT',              WT_Filter::postBool('NEW_PEDIGREE_LAYOUT'));
+	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID',             WT_Filter::post('NEW_PEDIGREE_ROOT_ID', WT_REGEX_XREF));
+	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_SHOW_GENDER',         WT_Filter::postBool('NEW_PEDIGREE_SHOW_GENDER'));
+	set_gedcom_setting(WT_GED_ID, 'PREFER_LEVEL2_SOURCES',        WT_Filter::post('NEW_PREFER_LEVEL2_SOURCES'));
+	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FACTS',         WT_Filter::post('NEW_QUICK_REQUIRED_FACTS'));
+	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FAMFACTS',      WT_Filter::post('NEW_QUICK_REQUIRED_FAMFACTS'));
+	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('NEW_REPO_FACTS_ADD')));
+	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('NEW_REPO_FACTS_QUICK')));
+	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('NEW_REPO_FACTS_UNIQUE')));
+	set_gedcom_setting(WT_GED_ID, 'REPO_ID_PREFIX',               WT_Filter::post('NEW_REPO_ID_PREFIX'));
+	set_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION',       WT_Filter::postBool('NEW_REQUIRE_AUTHENTICATION'));
+	set_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_IMAGE',         WT_Filter::postBool('NEW_SAVE_WATERMARK_IMAGE'));
+	set_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_THUMB',         WT_Filter::postBool('NEW_SAVE_WATERMARK_THUMB'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_AGE_DIFF',                WT_Filter::postBool('NEW_SHOW_AGE_DIFF'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_COUNTER',                 WT_Filter::postBool('NEW_SHOW_COUNTER'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE',             WT_Filter::post('SHOW_DEAD_PEOPLE'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES',          WT_Filter::postBool('NEW_SHOW_EST_LIST_DATES'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_FACT_ICONS',              WT_Filter::postBool('NEW_SHOW_FACT_ICONS'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD',           WT_Filter::postBool('NEW_SHOW_GEDCOM_RECORD'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_HIGHLIGHT_IMAGES',        WT_Filter::postBool('NEW_SHOW_HIGHLIGHT_IMAGES'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_LAST_CHANGE',             WT_Filter::postBool('NEW_SHOW_LAST_CHANGE'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_LDS_AT_GLANCE',           WT_Filter::postBool('NEW_SHOW_LDS_AT_GLANCE'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_LEVEL2_NOTES',            WT_Filter::postBool('NEW_SHOW_LEVEL2_NOTES'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES',            WT_Filter::post('SHOW_LIVING_NAMES'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_DOWNLOAD',          WT_Filter::postBool('NEW_SHOW_MEDIA_DOWNLOAD'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_NO_WATERMARK',            WT_Filter::post('NEW_SHOW_NO_WATERMARK'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_PARENTS_AGE',             WT_Filter::postBool('NEW_SHOW_PARENTS_AGE'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES',         WT_Filter::post('NEW_SHOW_PEDIGREE_PLACES'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX',  WT_Filter::postBool('NEW_SHOW_PEDIGREE_PLACES_SUFFIX'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS',   WT_Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_RELATIVES_EVENTS',        WT_Filter::post('NEW_SHOW_RELATIVES_EVENTS'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_STATS',                   WT_Filter::postBool('NEW_SHOW_STATS'));
+	set_gedcom_setting(WT_GED_ID, 'SOURCE_ID_PREFIX',             WT_Filter::post('NEW_SOURCE_ID_PREFIX'));
+	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('NEW_SOUR_FACTS_ADD')));
+	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('NEW_SOUR_FACTS_QUICK')));
+	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('NEW_SOUR_FACTS_UNIQUE')));
+	set_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I',            WT_Filter::post('NEW_SUBLIST_TRIGGER_I', WT_REGEX_INTEGER, 200));
+	set_gedcom_setting(WT_GED_ID, 'SURNAME_LIST_STYLE',           WT_Filter::post('NEW_SURNAME_LIST_STYLE'));
+	set_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION',            WT_Filter::post('NEW_SURNAME_TRADITION'));
+	set_gedcom_setting(WT_GED_ID, 'THEME_DIR',                    WT_Filter::post('NEW_THEME_DIR'));
+	set_gedcom_setting(WT_GED_ID, 'THUMBNAIL_WIDTH',              WT_Filter::post('NEW_THUMBNAIL_WIDTH'));
+	set_gedcom_setting(WT_GED_ID, 'USE_GEONAMES',                 WT_Filter::postBool('NEW_USE_GEONAMES'));
+	set_gedcom_setting(WT_GED_ID, 'USE_RIN',                      WT_Filter::postBool('NEW_USE_RIN'));
+	set_gedcom_setting(WT_GED_ID, 'USE_SILHOUETTE',               WT_Filter::postBool('NEW_USE_SILHOUETTE'));
+	set_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB',              WT_Filter::postBool('NEW_WATERMARK_THUMB'));
+	set_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID',            WT_Filter::post('NEW_WEBMASTER_USER_ID'));
+	set_gedcom_setting(WT_GED_ID, 'WEBTREES_EMAIL',               WT_Filter::post('NEW_WEBTREES_EMAIL'));
+	set_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES',           WT_Filter::postBool('NEW_WORD_WRAPPED_NOTES'));
+	if (WT_Filter::post('gedcom_title')) {
+		set_gedcom_setting(WT_GED_ID, 'title',                        WT_Filter::post('gedcom_title'));
 	}
 
 	// Only accept valid folders for NEW_MEDIA_DIRECTORY
-	$NEW_MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', safe_POST('NEW_MEDIA_DIRECTORY') . '/');
+	$NEW_MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', WT_Filter::post('NEW_MEDIA_DIRECTORY') . '/');
 	if (substr($NEW_MEDIA_DIRECTORY, 0, 1) == '/') {
 		$NEW_MEDIA_DIRECTORY = substr($NEW_MEDIA_DIRECTORY, 1);
 	}

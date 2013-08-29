@@ -25,14 +25,12 @@ define('WT_SCRIPT_NAME', 'placelist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 
-$action =safe_GET('action',  array('find', 'show'), 'find');
-$display=safe_GET('display', array('hierarchy', 'list'), 'hierarchy');
-$parent =safe_GET('parent', WT_REGEX_UNSAFE); // Place names may include HTML chars.  "Sunny View Cemetery", Smallville, <unknown>, Texas, USA"
-if (!is_array($parent)) {
-	$parent = array();
-}
+$action  = WT_Filter::get('action',  'find|show', 'find');
+$display = WT_Filter::get('display', 'hierarchy|list', 'hierarchy');
+$parent  = WT_Filter::getArray('parent');
+
 $level=count($parent);
 
 if ($display=='hierarchy') {

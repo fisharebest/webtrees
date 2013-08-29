@@ -29,9 +29,9 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$action=safe_REQUEST($_REQUEST, 'action');
-if (isset($_REQUEST['placeid'])) $placeid = $_REQUEST['placeid'];
-if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
+$action     = WT_Filter::get('action');
+$placeid    = WT_Filter::get('placeid');
+$place_name = WT_Filter::get('place_name');
 
 $controller=new WT_Controller_Simple();
 $controller

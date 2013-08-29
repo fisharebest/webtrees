@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Controller_Familybook extends WT_Controller_Chart {
 	// Data for the view
-	public $pid	       =" ";
+	public $pid	       =null;
 	public $show_full  =null;
 	public $show_spouse=null;
 	public $descent    =null;
@@ -45,12 +45,12 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$MAX_DESCENDANCY_GENERATIONS=get_gedcom_setting(WT_GED_ID, 'MAX_DESCENDANCY_GENERATIONS');
 
 		// Extract the request parameters
-		$this->pid        =safe_GET_xref('rootid');
-		$this->show_full  =safe_GET('show_full',     array('0', '1'), $PEDIGREE_FULL_DETAILS);
-		$this->show_spouse=safe_GET('show_spouse',   '1', '0');
-		$this->descent    =safe_GET_integer('descent',       0, 9, 5);
-		$this->generations=safe_GET_integer('generations',   2, $MAX_DESCENDANCY_GENERATIONS, 2);
-		$this->box_width  =safe_GET_integer('box_width',     50, 300, 100);
+		$this->pid         = WT_Filter::get('rootid', WT_REGEX_XREF);
+		$this->show_full   = WT_Filter::getInteger('show_full',   0, 1, $PEDIGREE_FULL_DETAILS);
+		$this->show_spouse = WT_Filter::getInteger('show_spouse', 0, 1);
+		$this->descent     = WT_Filter::getInteger('descent',     0, 9, 5);
+		$this->generations = WT_Filter::getInteger('generations', 2, $MAX_DESCENDANCY_GENERATIONS, 2);
+		$this->box_width   = WT_Filter::getInteger('box_width',   50, 300, 100);
 
 		// Box sizes are set globally in the theme.  Modify them here.
 		global $bwidth, $bheight, $cbwidth, $cbheight, $Dbwidth, $bhalfheight, $Dbheight; 

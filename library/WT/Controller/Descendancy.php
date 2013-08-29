@@ -57,11 +57,10 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		parent::__construct();
 
 		// Extract parameters from form
-		$this->show_full  =safe_GET('show_full', array('0', '1'), $PEDIGREE_FULL_DETAILS);
-		$this->chart_style=safe_GET_integer('chart_style', 0, 3, 0);
-		$this->generations=safe_GET_integer('generations', 2, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
-		$this->box_width  =safe_GET_integer('box_width',   50, 300, 100);
-		$box_width           =safe_GET_integer('box_width',            50, 300, 100);
+		$this->show_full   = WT_Filter::getInteger('show_full',   0, 1, $PEDIGREE_FULL_DETAILS);
+		$this->chart_style = WT_Filter::getInteger('chart_style', 0, 3, 0);
+		$this->generations = WT_Filter::getInteger('generations', 2, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
+		$this->box_width   = WT_Filter::getInteger('box_width',   50, 300, 100);
 
 		// This is passed as a global.  A parameter would be better...
 		$show_full=$this->show_full;
@@ -69,18 +68,18 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		if (!isset($this->personcount)) $this->personcount = 1;
 
 		// -- size of the detailed boxes based upon optional width parameter
-		$Dbwidth=($box_width*$bwidth)/100;
-		$Dbheight=($box_width*$bheight)/100;
-		$bwidth=$Dbwidth;
-		$bheight=$Dbheight;
+		$Dbwidth  = ($this->box_width*$bwidth)/100;
+		$Dbheight = ($this->box_width*$bheight)/100;
+		$bwidth   = $Dbwidth;
+		$bheight  = $Dbheight;
 		
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
-			$bwidth = $cbwidth;
+			$bwidth  = $cbwidth;
 			$bheight = $cbheight;
 		}
 		
-		$pbwidth = $bwidth+12;
+		$pbwidth  = $bwidth+12;
 		$pbheight = $bheight+14;
 
 		// Validate form variables

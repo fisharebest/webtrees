@@ -35,7 +35,7 @@ class TreeView {
 		$this->name = $name;
 
 		// Read if all partners must be shown or not
-		$allPartners = safe_GET('allPartners');
+		$allPartners = WT_Filter::get('allPartners');
 		// if allPartners not specified in url, we try to read the cookie
 		if ($allPartners == '') {
 			if (isset($_COOKIE['allPartners']))
@@ -121,7 +121,7 @@ class TreeView {
 		foreach ($person->getSpouseFamilies() as $family) {
 			$spouse = $family->getSpouse($person);
 			if ($spouse) {
-				$r .= $this->getPersonDetails($person, $family->getSpouse($person), $family);
+				$r .= $this->getPersonDetails($person, $spouse, $family);
 			}
 		}
 		return $r;

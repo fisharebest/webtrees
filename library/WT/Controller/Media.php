@@ -32,7 +32,7 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 class WT_Controller_Media extends WT_Controller_GedcomRecord {
 
 	public function __construct() {
-		$xref         = safe_GET_xref('mid');
+		$xref         = WT_Filter::get('mid', WT_REGEX_XREF);
 		$this->record = WT_Media::getInstance($xref);
 
 		parent::__construct();

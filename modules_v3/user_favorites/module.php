@@ -64,16 +64,16 @@ class user_favorites_WT_Module extends gedcom_favorites_WT_Module {
 		switch($modAction) {
 		case 'menu-add-favorite':
 			// Process the "add to user favorites" menu item on indi/fam/etc. pages
-			$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
+			$record = WT_GedcomRecord::getInstance(WT_Filter::post('xref', WT_REGEX_XREF));
 			if (WT_USER_ID && $record->canShowName()) {
 				self::addFavorite(array(
-					'user_id'  =>WT_USER_ID,
-					'gedcom_id'=>$record->getGedcomId(),
-					'gid'      =>$record->getXref(),
-					'type'     =>$record::RECORD_TYPE,
-					'url'      =>null,
-					'note'     =>null,
-					'title'    =>null,
+					'user_id'   => WT_USER_ID,
+					'gedcom_id' => $record->getGedcomId(),
+					'gid'       => $record->getXref(),
+					'type'      => $record::RECORD_TYPE,
+					'url'       => null,
+					'note'      => null,
+					'title'     => null,
 				));
 				WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
 			}

@@ -44,8 +44,8 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
 		// Block actions
-		$action=safe_GET('action');
-		$message_id=safe_GET('message_id');
+		$action     = WT_Filter::get('action');
+		$message_id = WT_Filter::getInteger('message_id');
 		if ($action=='deletemessage') {
 			if (is_array($message_id)) {
 				foreach ($message_id as $msg_id) {
@@ -79,7 +79,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 					$content.='</option>';
 				}
 			}
-			$content.='</select> <input type="button" value="'.WT_I18N::translate('Send').'" onclick="message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, \'messaging2\', \'\', \'\'); return false;"><br><br>';
+			$content.='</select> <input type="button" value="'.WT_I18N::translate('Send').'" onclick="message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, \'messaging2\', \'\'); return false;"><br><br>';
 		}
 		if (count($messages)==0) {
 			$content.=WT_I18N::translate('You have no pending messages.')."<br>";
@@ -149,8 +149,8 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
+		if (WT_Filter::postBool('save')) {
+			set_block_setting($block_id, 'block',  WT_Filter::postBool('block'));
 			exit;
 		}
 

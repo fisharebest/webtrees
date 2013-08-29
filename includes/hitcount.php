@@ -29,32 +29,35 @@ if (!defined('WT_WEBTREES')) {
 // Only record hits for certain pages
 switch (WT_SCRIPT_NAME) {
 case 'index.php':
-	switch (safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom')) {
+	switch (WT_Filter::get('ctype', 'gedcom|user', WT_USER_ID ? 'user' : 'gedcom')) {
 	case 'user':
 		$page_parameter='user:'.WT_USER_ID;
 		break;
-	default:
+	case 'gedcom':
 		$page_parameter='gedcom:'.WT_GED_ID;
+		break;
+	default:
+		$page_parameter='';
 		break;
 	}
 	break;
 case 'individual.php':
-	$page_parameter=safe_GET('pid', WT_REGEX_XREF);
+	$page_parameter=WT_Filter::get('pid', WT_REGEX_XREF);
 	break;
 case 'family.php':
-	$page_parameter=safe_GET('famid', WT_REGEX_XREF);
+	$page_parameter=WT_Filter::get('famid', WT_REGEX_XREF);
 	break;
 case 'source.php':
-	$page_parameter=safe_GET('sid', WT_REGEX_XREF);
+	$page_parameter=WT_Filter::get('sid', WT_REGEX_XREF);
 	break;
 case 'repo.php':
-	$page_parameter=safe_GET('rid', WT_REGEX_XREF);
+	$page_parameter=WT_Filter::get('rid', WT_REGEX_XREF);
 	break;
 case 'note.php':
-	$page_parameter=safe_GET('nid', WT_REGEX_XREF);
+	$page_parameter=WT_Filter::get('nid', WT_REGEX_XREF);
 	break;
 case 'mediaviewer.php':
-	$page_parameter=safe_GET('mid', WT_REGEX_XREF);
+	$page_parameter=WT_Filter::get('mid', WT_REGEX_XREF);
 	break;
 default:
 	$page_parameter='';

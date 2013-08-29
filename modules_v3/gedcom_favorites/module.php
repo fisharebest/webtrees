@@ -45,43 +45,43 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 		self::updateSchema(); // make sure the favorites table has been created
 
-		$action=safe_GET('action');
+		$action = WT_Filter::get('action');
 		switch ($action) {
 		case 'deletefav':
-			$favorite_id=safe_GET('favorite_id');
+			$favorite_id = WT_Filter::getInteger('favorite_id');
 			if ($favorite_id) {
 				self::deleteFavorite($favorite_id);
 			}
 			unset($_GET['action']);
 			break;
 		case 'addfav':
-			$gid     =safe_GET('gid');
-			$favnote =safe_GET('favnote');
-			$url     =safe_GET('url', WT_REGEX_URL);
-			$favtitle=safe_GET('favtitle');
+			$gid      = WT_Filter::get('gid', WT_REGEX_XREF);
+			$favnote  = WT_Filter::get('favnote');
+			$url      = WT_Filter::getUrl('url');
+			$favtitle = WT_Filter::get('favtitle');
 
 			if ($gid) {
-				$record=WT_GedcomRecord::getInstance($gid);
+				$record = WT_GedcomRecord::getInstance($gid);
 				if ($record && $record->canShow()) {
 					self::addFavorite(array(
-						'user_id'  =>$ctype=='user' ? WT_USER_ID : null,
-						'gedcom_id'=>WT_GED_ID,
-						'gid'      =>$record->getXref(),
-						'type'     =>$record::RECORD_TYPE,
-						'url'      =>null,
-						'note'     =>$favnote,
-						'title'    =>$favtitle,
+						'user_id'   => $ctype=='user' ? WT_USER_ID : null,
+						'gedcom_id' => WT_GED_ID,
+						'gid'       => $record->getXref(),
+						'type'      => $record::RECORD_TYPE,
+						'url'       => null,
+						'note'      => $favnote,
+						'title'     => $favtitle,
 					));
 				}
 			} elseif ($url) {
 				self::addFavorite(array(
-					'user_id'  =>$ctype=='user' ? WT_USER_ID : null,
-					'gedcom_id'=>WT_GED_ID,
-					'gid'      =>null,
-					'type'     =>'URL',
-					'url'      =>$url,
-					'note'     =>$favnote,
-					'title'    =>$favtitle ? $favtitle : $url,
+					'user_id'   => $ctype=='user' ? WT_USER_ID : null,
+					'gedcom_id' => WT_GED_ID,
+					'gid'       => null,
+					'type'      => 'URL',
+					'url'       => $url,
+					'note'      => $favnote,
+					'title'     => $favtitle ? $favtitle : $url,
 				));
 			}
 			unset($_GET['action']);
@@ -227,8 +227,8 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
+		if (WT_Filter::postBool('save')) {
+			set_block_setting($block_id, 'block',  WT_Filter::postBool('block'));
 			exit;
 		}
 

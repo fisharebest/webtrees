@@ -94,7 +94,7 @@ class married_names_bu_plugin extends base_plugin {
 	// Add an option for different surname styles
 	function getOptions() {
 		parent::getOptions();
-		$this->surname=safe_GET('surname', array('add', 'replace'), 'replace');
+		$this->surname = WT_Filter::get('surname', 'add|replace', 'replace');
 	}
 
 	function getOptionsForm() {

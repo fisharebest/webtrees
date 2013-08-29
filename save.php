@@ -40,11 +40,11 @@ function fail() {
 // The id must be a valid CSS identifier, so it can be used in HTML.
 // We use "[A-Za-z0-9_]+" separated by "-".
 
-$id=safe_POST('id', '[a-zA-Z0-9_-]+');
+$id=WT_Filter::post('id', '[a-zA-Z0-9_-]+');
 list($table, $id1, $id2, $id3)=explode('-', $id.'---');
 
 // The replacement value.
-$value=safe_POST('value', WT_REGEX_UNSAFE);
+$value=WT_Filter::post('value');
 
 // Every switch must have a default case, and every case must end in ok() or fail()
 

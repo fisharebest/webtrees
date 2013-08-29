@@ -178,7 +178,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			} else {
 				// Keep track of the INDI from the parent page, otherwise it will
 				// get lost after ajax updates
-				$pid=safe_GET_xref('pid');
+				$pid=WT_Filter::get('pid', WT_REGEX_XREF);
 
 				if ($clip_ctrl->action != 'download' && $clip_ctrl->action != 'add') { ?>
 					<table><tr><td class="width33" valign="top" rowspan="3">
@@ -373,13 +373,13 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 		$clip_ctrl = new WT_Controller_Clippings();
 
-		$add = safe_GET_xref('add','');
-		$add1 = safe_GET_xref('add1','');
-		$remove = safe_GET('remove', WT_REGEX_XREF);
-		$others = safe_GET('others', WT_REGEX_ALPHANUM, '');
-		$clip_ctrl->level1 = safe_GET('level1');
-		$clip_ctrl->level2 = safe_GET('level2');
-		$clip_ctrl->level3 = safe_GET('level3');
+		$add               = WT_Filter::get('add', WT_REGEX_XREF);
+		$add1              = WT_Filter::get('add1', WT_REGEX_XREF);
+		$remove            = WT_Filter::get('remove', WT_REGEX_XREF);
+		$others            = WT_Filter::get('others');
+		$clip_ctrl->level1 = WT_Filter::get('level1');
+		$clip_ctrl->level2 = WT_Filter::get('level2');
+		$clip_ctrl->level3 = WT_Filter::get('level3');
 		if (!empty($add)) {
 			$record = WT_GedcomRecord::getInstance($add);
 			if ($record) {
@@ -430,7 +430,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 		// Keep track of the INDI from the parent page, otherwise it will
 		// get lost after ajax updates
-		$pid=safe_GET_xref('pid');
+		$pid=WT_Filter::get('pid', WT_REGEX_XREF);
 
 		if (!$WT_SESSION->cart[WT_GED_ID]) {
 			$out=WT_I18N::translate('Your clippings cart is empty.');
@@ -550,7 +550,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 	public function downloadForm($clip_ctrl) {
 		global $GEDCOM_MEDIA_PATH;
-		$pid=safe_GET_xref('pid');
+		$pid=WT_Filter::get('pid', WT_REGEX_XREF);
 
 		$out = '<script>';
 		$out .= 'function cancelDownload() {

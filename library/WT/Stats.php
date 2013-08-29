@@ -3415,9 +3415,9 @@ class WT_Stats {
 				}
 				if (WT_USER_ID != $user_id && get_user_setting($user_id, 'contactmethod') != 'none') {
 					if ($type == 'list') {
-						$content .= '<br><a class="icon-email" href="#" onclick="return message(\''.$user_id.'\', \'\', \''.addslashes(urlencode(get_query_url())).'\', \'\');" title="'.WT_I18N::translate('Send Message').'"></a>';
+						$content .= '<br><a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user_id) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send Message') . '"></a>';
 					} else {
-						$content .= ' <a class="icon-email" href="#" onclick="return message(\''.$user_id.'\', \'\', \''.addslashes(urlencode(get_query_url())).'\', \'\');" title="'.WT_I18N::translate('Send Message').'"></a>';
+						$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user_id) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send Message') . '"></a>';
 					}
 				}
 				if ($type == 'list') {
@@ -3675,9 +3675,9 @@ class WT_Stats {
 			$v = array_shift($bits);
 			$cfg[$v] = join('=', $bits);
 		}
-		$block = new $class_name;
-		$block_id=safe_GET('block_id');
-		$content = $block->getBlock($block_id, false, $cfg);
+		$block    = new $class_name;
+		$block_id = WT_Filter::getInteger('block_id');
+		$content  = $block->getBlock($block_id, false, $cfg);
 		return $content;
 	}
 

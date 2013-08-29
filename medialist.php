@@ -26,25 +26,25 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller->setPageTitle(WT_I18N::translate('Media objects'));
 
-$search = safe_GET('search');
-$sortby = safe_GET('sortby', 'file', 'title');
+$search = WT_Filter::get('search');
+$sortby = WT_Filter::get('sortby', 'file|title', 'title');
 if (!WT_USER_CAN_EDIT && !WT_USER_CAN_ACCEPT) {
 	$sortby='title';
 }
-$max   = safe_GET('max', array('10', '20', '30', '40', '50', '75', '100', '125', '150', '200'), '20');
-$start = safe_GET('start', WT_REGEX_INTEGER);
-$folder = safe_GET('folder');
-$build = 'no';
-$reset = safe_GET('reset');
-$apply_filter = safe_GET('apply_filter');
-$filter1 = safe_GET('filter1');
-$or = WT_I18N::translate('or');
-$and = WT_I18N::translate('and');
-$columns = safe_GET('columns', array('1', '2'), '2');
-$subdirs = safe_GET('subdirs');
+$max            = WT_Filter::get('max', '10|20|30|40|50|75|100|125|150|200', '20');
+$start          = WT_Filter::getInteger('start');
+$folder         = WT_Filter::get('folder');
+$build          = 'no';
+$reset          = WT_Filter::get('reset');
+$apply_filter   = WT_Filter::get('apply_filter');
+$filter1        = WT_Filter::get('filter1');
+$or             = WT_I18N::translate('or');
+$and            = WT_I18N::translate('and');
+$columns        = WT_Filter::getInteger('columns', 1, 2, 2);
+$subdirs        = WT_Filter::get('subdirs');
 $currentdironly = ($subdirs=='on') ? false : true;
 
 // reset all variables
@@ -366,5 +366,5 @@ if ($search) {
 	echo '</table><br>';
   }
   echo '</div>
-  </div>';// close medialist-page
+  </div>';
 }

@@ -31,32 +31,32 @@ if (WT_USER_ID && WT_GED_ID) {
 	exit;
 }
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 
 $REQUIRE_ADMIN_AUTH_REGISTRATION = WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION');
 
-$action         =safe_POST('action');
-$user_realname  =safe_POST('user_realname');
-$user_name      =safe_POST('user_name',       WT_REGEX_USERNAME);
-$user_email     =safe_POST('user_email',      WT_REGEX_EMAIL);
-$user_password01=safe_POST('user_password01', WT_REGEX_PASSWORD);
-$user_password02=safe_POST('user_password02', WT_REGEX_PASSWORD);
-$user_comments  =safe_POST('user_comments');
-$user_password  =safe_POST('user_password',   WT_REGEX_UNSAFE); // Can use any password that was previously stored
-$user_hashcode  =safe_POST('user_hashcode');
-$url            =safe_POST('url',      WT_REGEX_URL);
-$username       =safe_POST('username', WT_REGEX_USERNAME);
-$password       =safe_POST('password', WT_REGEX_UNSAFE); // Can use any password that was previously stored
-$usertime       =safe_POST('usertime');
+$action          = WT_Filter::post('action');
+$user_realname   = WT_Filter::post('user_realname');
+$user_name       = WT_Filter::post('user_name',       WT_REGEX_USERNAME);
+$user_email      = WT_Filter::postEmail('user_email');
+$user_password01 = WT_Filter::post('user_password01', WT_REGEX_PASSWORD);
+$user_password02 = WT_Filter::post('user_password02', WT_REGEX_PASSWORD);
+$user_comments   = WT_Filter::post('user_comments');
+$user_password   = WT_Filter::post('user_password');
+$user_hashcode   = WT_Filter::post('user_hashcode');
+$url             = WT_Filter::postUrl('url');
+$username        = WT_Filter::post('username');
+$password        = WT_Filter::post('password'); // Can use any password that was previously stored
+$usertime        = WT_Filter::post('usertime');
 
 // These parameters may come from the URL which is emailed to users.
-if (empty($action)) $action = safe_GET('action');
-if (empty($user_name)) $user_name = safe_GET('user_name', WT_REGEX_USERNAME);
-if (empty($user_hashcode)) $user_hashcode = safe_GET('user_hashcode');
+if (empty($action))        $action        = WT_Filter::get('action');
+if (empty($user_name))     $user_name     = WT_Filter::get('user_name', WT_REGEX_USERNAME);
+if (empty($user_hashcode)) $user_hashcode = WT_Filter::get('user_hashcode');
 
 // This parameter may come from generated login links
 if (!$url) {
-	$url=safe_GET('url',  WT_REGEX_URL);
+	$url=WT_Filter::getUrl('url');
 }
 
 $message='';
@@ -191,9 +191,9 @@ case 'requestpw':
 		->setPageTitle(WT_I18N::translate('Lost password request'))
 		->pageHeader();
 	echo '<div id="login-page">';
-	$user_name=safe_POST('new_passwd_username', WT_REGEX_USERNAME);
+	$user_name = WT_Filter::post('new_passwd_username', WT_REGEX_USERNAME);
 
-	$user_id=WT_DB::prepare(
+	$user_id = WT_DB::prepare(
 		"SELECT user_id FROM `##user` WHERE ? IN (user_name, email)"
 	)->execute(array($user_name))->fetchOne();
 	if ($user_id) {

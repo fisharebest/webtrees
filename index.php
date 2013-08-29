@@ -33,41 +33,41 @@ define('WT_SCRIPT_NAME', 'index.php');
 require './includes/session.php';
 
 // The only option for action is "ajax"
-$action=safe_REQUEST($_REQUEST, 'action', 'ajax');
+$action = WT_Filter::get('action');
 
 // The default view depends on whether we are logged in
-$ctype=safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom');
+$ctype = WT_Filter::get('ctype', 'gedcom|user', WT_USER_ID ? 'user' : 'gedcom');
 
-//-- get the blocks list
+// Get the blocks list
 if (WT_USER_ID && $ctype=='user') {
-	$blocks=get_user_blocks(WT_USER_ID);
+	$blocks = get_user_blocks(WT_USER_ID);
 } else {
-	$blocks=get_gedcom_blocks(WT_GED_ID);
+	$blocks = get_gedcom_blocks(WT_GED_ID);
 }
 
-$all_blocks=WT_Module::getActiveBlocks();
+$all_blocks = WT_Module::getActiveBlocks();
 
-// The latest version is shown on the administration page.  This updates it every 3 days.
+// The latest version is shown on the administration page.  This updates it every day.
 // TODO: send an email notification to the admin when new versions are available.
 fetch_latest_version();
 
 // We generate individual blocks using AJAX
-if ($action=='ajax') {
-	$controller=new WT_Controller_Ajax();
+if ($action == 'ajax') {
+	$controller = new WT_Controller_Ajax();
 	$controller->pageHeader();
 
 	// Check we’re displaying an allowable block.
-	$block_id=safe_GET('block_id');
+	$block_id = WT_Filter::getInteger('block_id');
 	if (array_key_exists($block_id, $blocks['main'])) {
-		$module_name=$blocks['main'][$block_id];
+		$module_name = $blocks['main'][$block_id];
 	} elseif (array_key_exists($block_id, $blocks['side'])) {
-		$module_name=$blocks['side'][$block_id];
+		$module_name = $blocks['side'][$block_id];
 	} else {
 		exit;
 	}
 	if (array_key_exists($module_name, $all_blocks)) {
-		$class_name=$module_name.'_WT_Module';
-		$module=new $class_name;
+		$class_name = $module_name.'_WT_Module';
+		$module = new $class_name;
 		$module->getBlock($block_id);
 	}
 	if (WT_DEBUG) {

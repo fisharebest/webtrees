@@ -31,14 +31,14 @@ $controller=new WT_Controller_Page();
 $controller->setPageTitle(WT_I18N::translate('Anniversary calendar'));
 $controller->pageHeader();
 
-$cal     =safe_GET('cal',      '@#D[A-Z ]+@');
-$day     =safe_GET('day',      '\d\d?');
-$month   =safe_GET('month',    '[A-Z]{3,5}');
-$year    =safe_GET('year',     '\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d|\d+(-\d+|[?]+)?');
-$action  =safe_GET('action',   array('year', 'today', 'calendar'), 'today');
-$filterev=safe_GET('filterev', array('all', 'bdm', WT_REGEX_TAG), 'bdm');
-$filterof=safe_GET('filterof', array('all', 'living', 'recent'), 'all');
-$filtersx=safe_GET('filtersx', array('M', 'F'), '');
+$cal      = WT_Filter::get('cal',      '@#D[A-Z ]+@');
+$day      = WT_Filter::get('day',      '\d\d?');
+$month    = WT_Filter::get('month',    '[A-Z]{3,5}');
+$year     = WT_Filter::get('year',     '\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d|\d+(-\d+|[?]+)?');
+$action   = WT_Filter::get('action',   'year|today|calendar', 'today');
+$filterev = WT_Filter::get('filterev', 'all|bdm|' . WT_REGEX_TAG, 'bdm');
+$filterof = WT_Filter::get('filterof', 'all|living|recent', 'all');
+$filtersx = WT_Filter::get('filtersx', '[MF]');
 
 if ($cal.$day.$month.$year=='') {
 	// No date specified?  Use the most likely calendar

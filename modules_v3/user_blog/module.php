@@ -49,9 +49,9 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype;
 
-		switch (safe_GET('action')) {
+		switch (WT_Filter::get('action')) {
 		case 'deletenews':
-			$news_id=safe_GET('news_id');
+			$news_id=WT_Filter::getInteger('news_id');
 			if ($news_id) {
 				deleteNews($news_id);
 			}

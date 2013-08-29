@@ -40,9 +40,9 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		$default_generations=get_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS');
 
 		// Extract the request parameters
-		$this->fan_style  =safe_GET_integer('fan_style',   2,  4,  3);
-		$this->fan_width  =safe_GET_integer('fan_width',   50, 300, 100);
-		$this->generations=safe_GET_integer('generations', 2, 9, $default_generations);
+		$this->fan_style   = WT_Filter::getInteger('fan_style',   2,  4,  3);
+		$this->fan_width   = WT_Filter::getInteger('fan_width',   50, 300, 100);
+		$this->generations = WT_Filter::getInteger('generations', 2, 9, $default_generations);
 
 		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(
@@ -210,8 +210,15 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 				$pid = $treeid[$sosa];
 				$person = WT_Individual::getInstance($pid);
 				if ($person) {
-					$name    = $person->getFullName();
-					$addname = $person->getAddName();
+					$name    = WT_Filter::unescapeHtml($person->getFullName());
+					$addname = WT_Filter::unescapeHtml($person->getAddName());
+
+					$text = reverseText($name);
+					if ($addname) {
+						$text .= "\n" . reverseText($addname);
+					}
+
+					$text .= "\n" . WT_Filter::unescapeHtml($person->getLifeSpan());
 
 					switch($person->getSex()) {
 					case 'M':
@@ -227,14 +234,6 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 					ImageFilledArc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bg, IMG_ARC_PIE);
 
-					$text = reverseText($name) . "\n";
-					if (!empty($addname)) $text .= reverseText($addname). "\n";
-
-					$text .= $person->getLifeSpan();
-
-					$text = strip_tags($text);
-					$text = htmlspecialchars_decode($text);
-	
 					// split and center text by lines
 					$wmax = (int)($angle*7/$fanChart['size']*$scale);
 					$wmax = min($wmax, 35*$scale);

@@ -61,18 +61,18 @@ class WT_Controller_Clippings {
 			$WT_SESSION->cart[WT_GED_ID]=array();
 		}
 
-		$this->action = safe_GET("action");
-		$this->id = safe_GET('id');
-		$convert = safe_GET('convert',"yes","no");
-		$this->Zip = safe_GET('Zip');
-		$this->IncludeMedia = safe_GET('IncludeMedia');
-		$this->conv_path = safe_GET('conv_path', WT_REGEX_NOSCRIPT);
-		$this->privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'), 'visitor');
-		$this->level1 = safe_GET('level1', WT_REGEX_INTEGER, PHP_INT_MAX);
-		$this->level2 = safe_GET('level2', WT_REGEX_INTEGER, PHP_INT_MAX);
-		$this->level3 = safe_GET('level3', WT_REGEX_INTEGER, PHP_INT_MAX);
-		$others = safe_GET('others');
-		$this->type = safe_GET('type');
+		$this->action           = WT_Filter::get('action');
+		$this->id               = WT_Filter::get('id');
+		$convert                = WT_Filter::get('convert', 'yes|no', 'no');
+		$this->Zip              = WT_Filter::get('Zip');
+		$this->IncludeMedia     = WT_Filter::get('IncludeMedia');
+		$this->conv_path        = WT_Filter::get('conv_path');
+		$this->privatize_export = WT_Filter::get('privatize_export', 'none|visitor|user|gedadmin', 'visitor');
+		$this->level1           = WT_Filter::getInteger('level1');
+		$this->level2           = WT_Filter::getInteger('level2');
+		$this->level3           = WT_Filter::getInteger('level3');
+		$others                 = WT_Filter::get('others');
+		$this->type             = WT_Filter::get('type');
 
 		if (($this->privatize_export=='none' || $this->privatize_export=='none') && !WT_USER_GEDCOM_ADMIN) {
 			$this->privatize_export='visitor';

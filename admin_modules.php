@@ -65,10 +65,10 @@ $modules=WT_Module::getInstalledModules('disabled');
 
 $module_status=WT_DB::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
 
-switch (safe_POST('action')) {
+switch (WT_Filter::post('action')) {
 case 'update_mods':
 	foreach ($modules as $module_name=>$status) {
-		$new_status=safe_POST("status-{$module_name}");
+		$new_status=WT_Filter::post("status-{$module_name}");
 		if ($new_status!==null) {
 			$new_status=$new_status ? 'enabled' : 'disabled';
 			if ($new_status!=$status) {
@@ -80,9 +80,9 @@ case 'update_mods':
 	break;
 }
 
-switch (safe_GET('action')) {
+switch (WT_Filter::get('action')) {
 case 'delete_module':
-	$module_name=safe_GET('module_name');
+	$module_name=WT_Filter::get('module_name');
 	WT_DB::prepare(
 		"DELETE `##block_setting`".
 		" FROM `##block_setting`".

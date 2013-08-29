@@ -85,10 +85,6 @@ define('WT_REGEX_ALPHANUM', '[a-zA-Z0-9]+');
 define('WT_REGEX_BYTES',    '[0-9]+[bBkKmMgG]?');
 define('WT_REGEX_USERNAME', '[^<>"%{};]+');
 define('WT_REGEX_PASSWORD', '.{'.WT_MINIMUM_PASSWORD_LENGTH.',}');
-define('WT_REGEX_NOSCRIPT', '[^<>"&%{};]*');
-define('WT_REGEX_URL',      '[\/0-9A-Za-z_!~*\'().;?:@&=+$,%#-]+'); // Simple list of valid chars
-define('WT_REGEX_EMAIL',    '[^\s<>"&%{};@]+@[^\s<>"&%{};@]+');
-define('WT_REGEX_UNSAFE',   '[\x00-\xFF]*'); // Use with care and apply additional validation!
 
 // UTF8 representation of various characters
 define('WT_UTF8_BOM',    "\xEF\xBB\xBF"); // U+FEFF
@@ -436,7 +432,7 @@ require WT_ROOT.'includes/config_data.php';
 
 // If we are logged in, and logout=1 has been added to the URL, log out
 // If we were logged in, but our account has been deleted, log out.
-if (WT_USER_ID && (safe_GET_bool('logout') || !WT_USER_NAME)) {
+if (WT_USER_ID && (WT_Filter::getBool('logout') || !WT_USER_NAME)) {
 	userLogout(WT_USER_ID);
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 	exit;
@@ -470,13 +466,13 @@ if (WT_USER_ID) {
 }
 
 // Set the theme
-if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && substr(safe_GET('mod_action'), 0, 5)=='admin') {
+if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && substr(WT_Filter::get('mod_action'), 0, 5)=='admin') {
 	// Administration scripts begin with “admin” and use a special administration theme
 	define('WT_THEME_DIR', WT_THEMES_DIR.'_administration/');
 } else {
 	if (WT_Site::preference('ALLOW_USER_THEMES')) {
 		// Requested change of theme?
-		$THEME_DIR=safe_GET('theme', get_theme_names());
+		$THEME_DIR = WT_Filter::get('theme');
 		unset($_GET['theme']);
 		// Last theme used?
 		if (!$THEME_DIR && in_array($WT_SESSION->theme_dir, get_theme_names())) {

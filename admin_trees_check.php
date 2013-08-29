@@ -40,7 +40,7 @@ echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM);
 echo '<input type="submit" value="', $controller->getPageTitle(), '">';
 echo '</form>';
 
-if (!safe_GET('go')) {
+if (!WT_Filter::get('go')) {
 	exit;
 }
 

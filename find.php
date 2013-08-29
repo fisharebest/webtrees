@@ -27,15 +27,15 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 $controller=new WT_Controller_Simple();
 
-$type           =safe_GET('type', WT_REGEX_ALPHA, 'indi');
-$filter         =safe_GET('filter');
-$action         =safe_GET('action');
-$callback       =safe_GET('callback', WT_REGEX_NOSCRIPT, 'paste_id');
-$media          =safe_GET('media');
-$all            =safe_GET_bool('all');
-$subclick       =safe_GET('subclick');
-$choose         =safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
-$qs             =safe_GET('tags');
+$type      = WT_Filter::get('type');
+$filter    = WT_Filter::get('filter');
+$action    = WT_Filter::get('action');
+$callback  = WT_Filter::get('callback', '[a-zA-Z0-9_]+', 'paste_id');
+$media     = WT_Filter::get('media');
+$all       = WT_Filter::getBool('all');
+$subclick  = WT_Filter::get('subclick');
+$choose    = WT_Filter::get('choose', '[a-zA-Z0-9_]+', '0all');
+$qs        = WT_Filter::get('tags');
 
 // Retrives the currently selected tags in the opener window (reading curTags value of the query string)
 // $preselDefault will be set to the array of DEFAULT preselected tags
@@ -90,7 +90,7 @@ case "source":
 	break;
 case "specialchar":
 	$controller->setPageTitle(WT_I18N::translate('Find a special character'));
-	$language_filter=safe_GET('language_filter');
+	$language_filter = WT_Filter::get('language_filter');
 	if (WT_USER_ID) {
 		// Users will probably always want the same language, so remember their setting
 		if (!$language_filter) {
@@ -708,4 +708,4 @@ if ($action=="filter") {
 	}
 }
 echo '<button onclick="window.close();">', WT_I18N::translate('close'), '</button>';
-echo "</div>"; // Close div="find-page"
+echo "</div>";

@@ -64,9 +64,9 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
-		$alpha   =safe_GET('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
-		$surname =safe_GET('surname', '[^<>&%{};]*'); // All indis with this surname.  NB - allow ' and "
-		$search   =safe_GET('search');
+		$alpha   = WT_Filter::get('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
+		$surname = WT_Filter::get('surname'); // All indis with this surname.
+		$search  = WT_Filter::get('search');
 		
 		if ($search) {
 			return $this->search($search);

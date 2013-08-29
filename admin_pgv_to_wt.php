@@ -33,9 +33,9 @@ $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('PhpGedView to webtrees transfer wizard'));
 
-$error='';
-$warning='';
-$PGV_PATH=safe_POST('PGV_PATH');
+$error    = '';
+$warning  = '';
+$PGV_PATH = WT_Filter::post('PGV_PATH');
 
 if ($PGV_PATH) {
 	if (!is_dir($PGV_PATH) || !is_readable($PGV_PATH.'/config.php')) {

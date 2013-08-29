@@ -27,11 +27,11 @@ require './includes/session.php';
 $controller=new WT_Controller_Ajax();
 
 // Only one of $user_id and $gedcom_id should be set
-$user_id=safe_REQUEST($_REQUEST, 'user_id');
+$user_id = WT_Filter::get('user_id', WT_REGEX_INTEGER, WT_Filter::post('user_id', WT_REGEX_INTEGER));
 if ($user_id) {
-	$gedcom_id=null;
+	$gedcom_id = null;
 } else {
-	$gedcom_id=safe_REQUEST($_REQUEST, 'gedcom_id');
+	$gedcom_id = WT_Filter::get('gedcom_id', WT_REGEX_INTEGER, WT_Filter::post('gedcom_id', WT_REGEX_INTEGER));
 }
 
 // Only an admin can edit the "default" page
@@ -47,7 +47,7 @@ if (
 	exit;
 }
 
-$action=safe_GET('action');
+$action = WT_Filter::get('action');
 
 if (isset($_REQUEST['main'])) {
 	$main=$_REQUEST['main'];

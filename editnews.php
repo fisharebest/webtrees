@@ -32,13 +32,13 @@ $controller
 	->requireMemberLogin()
 	->pageHeader();
 
-$action   =safe_GET('action', array('compose', 'save', 'delete'), 'compose');
-$news_id  =safe_GET('news_id');
-$user_id  =safe_REQUEST($_REQUEST, 'user_id');
-$gedcom_id=safe_REQUEST($_REQUEST, 'gedcom_id');
-$date     =safe_POST('date', WT_REGEX_INTEGER, WT_TIMESTAMP);
-$title    =safe_POST('title', WT_REGEX_UNSAFE);
-$text     =safe_POST('text', WT_REGEX_UNSAFE);
+$action    = WT_Filter::get('action', 'compose|save|delete', 'compose');
+$news_id   = WT_Filter::getInteger('news_id');
+$user_id   = WT_Filter::get('user_id', WT_REGEX_INTEGER, WT_Filter::post('user_id', WT_REGEX_INTEGER));
+$gedcom_id = WT_Filter::get('gedcom_id', WT_REGEX_INTEGER, WT_Filter::post('gedcom_id', WT_REGEX_INTEGER));
+$date      = WT_Filter::postInteger('date', 0, PHP_INT_MAX, WT_TIMESTAMP);
+$title     = WT_Filter::post('title');
+$text      = WT_Filter::post('text');
 
 switch ($action) {
 case 'compose':

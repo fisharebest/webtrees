@@ -42,17 +42,17 @@ foreach (get_theme_names() as $themename=>$themedir) {
 }
 
 // Extract form variables
-$form_action        =safe_POST('form_action'   );
-$form_username      =safe_POST('form_username',       WT_REGEX_USERNAME);
-$form_realname      =safe_POST('form_realname' );
-$form_pass1         =safe_POST('form_pass1',          WT_REGEX_PASSWORD);
-$form_pass2         =safe_POST('form_pass2',          WT_REGEX_PASSWORD);
-$form_email         =safe_POST('form_email',          WT_REGEX_EMAIL,                         'email@example.com');
-$form_rootid        =safe_POST('form_rootid',         WT_REGEX_XREF,                           WT_USER_ROOT_ID   );
-$form_theme         =safe_POST('form_theme',          $ALL_THEME_DIRS);
-$form_language      =safe_POST('form_language',       array_keys(WT_I18N::installed_languages()), WT_LOCALE          );
-$form_contact_method=safe_POST('form_contact_method');
-$form_visible_online=safe_POST_bool('form_visible_online');
+$form_action         = WT_Filter::post('form_action');
+$form_username       = WT_Filter::post('form_username');
+$form_realname       = WT_Filter::post('form_realname' );
+$form_pass1          = WT_Filter::post('form_pass1', WT_REGEX_PASSWORD);
+$form_pass2          = WT_Filter::post('form_pass2', WT_REGEX_PASSWORD);
+$form_email          = WT_Filter::postEmail('form_email');
+$form_rootid         = WT_Filter::post('form_rootid', WT_REGEX_XREF);
+$form_theme          = WT_Filter::post('form_theme', implode('|', $ALL_THEME_DIRS));
+$form_language       = WT_Filter::post('form_language', implode('|', array_keys(WT_I18N::installed_languages()), WT_LOCALE));
+$form_contact_method = WT_Filter::post('form_contact_method');
+$form_visible_online = WT_Filter::postBool('form_visible_online');
 
 // Respond to form action
 if ($form_action=='update') {

@@ -1221,8 +1221,8 @@ function ilinkitem(mediaid, type, ged) {
 	return false;
 }
 
-function message(username, method, url, subject) {
-	window.open('message.php?to='+username+'&method='+method+'&url='+url+'&subject='+subject, '_blank', mesg_window_specs);
+function message(username, method, url) {
+	window.open('message.php?to='+username+'&method='+method+'&url='+url, '_blank', mesg_window_specs);
 	return false;
 }
 

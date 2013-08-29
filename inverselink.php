@@ -35,10 +35,10 @@ $controller
 	->pageHeader();
 
 //-- page parameters and checking
-$linktoid = safe_GET_xref('linktoid');
-$mediaid  = safe_GET_xref('mediaid');
-$linkto   = safe_GET     ('linkto', array('person', 'source', 'family', 'manage', 'repository', 'note'));
-$action   = safe_GET     ('action', WT_REGEX_ALPHA, 'choose');
+$linktoid = WT_Filter::get('linktoid', WT_REGEX_XREF);
+$mediaid  = WT_Filter::get('mediaid', WT_REGEX_XREF);
+$linkto   = WT_Filter::get('linkto', 'person|source|family|manage|repository|note');
+$action   = WT_Filter::get('action', 'choose|update', 'choose');
 
 // If GedFAct_assistant/_MEDIA/ installed ======================
 if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {

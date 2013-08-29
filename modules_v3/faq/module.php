@@ -98,39 +98,39 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 	private function edit() {
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		if (safe_POST_bool('save')) {
-			$block_id=safe_POST('block_id');
+		if (WT_Filter::postBool('save')) {
+			$block_id = WT_Filter::postInteger('block_id');
 			if ($block_id) {
 				WT_DB::prepare(
 					"UPDATE `##block` SET gedcom_id=NULLIF(?, ''), block_order=? WHERE block_id=?"
 				)->execute(array(
-					safe_POST('gedcom_id'),
-					(int)safe_POST('block_order'),
+					WT_Filter::postInteger('gedcom_id'),
+					WT_Filter::postInteger('block_order'),
 					$block_id
 				));
 			} else {
 				WT_DB::prepare(
 					"INSERT INTO `##block` (gedcom_id, module_name, block_order) VALUES (NULLIF(?, ''), ?, ?)"
 				)->execute(array(
-					safe_POST('gedcom_id'),
+					WT_Filter::postInteger('gedcom_id'),
 					$this->getName(),
-					(int)safe_POST('block_order')
+					WT_Filter::postInteger('block_order')
 				));
 				$block_id=WT_DB::getInstance()->lastInsertId();
 			}
-			set_block_setting($block_id, 'header',  safe_POST('header',  WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'faqbody', safe_POST('faqbody', WT_REGEX_UNSAFE)); // allow html
-			$languages=array();
+			set_block_setting($block_id, 'header',  WT_Filter::post('header'));
+			set_block_setting($block_id, 'faqbody', WT_Filter::post('faqbody'));
+			$languages = array();
 			foreach (WT_I18N::installed_languages() as $code=>$name) {
-				if (safe_POST_bool('lang_'.$code)) {
-					$languages[]=$code;
+				if (WT_Filter::postBool('lang_'.$code)) {
+					$languages[] = $code;
 				}
 			}
 			set_block_setting($block_id, 'languages', implode(',', $languages));
 			$this->config();
 		} else {
-			$block_id=safe_GET('block_id');
-			$controller=new WT_Controller_Page();
+			$block_id = WT_Filter::getInteger('block_id');
+			$controller = new WT_Controller_Page();
 			if ($block_id) {
 				$controller->setPageTitle(WT_I18N::translate('Edit FAQ item'));
 				$header=get_block_setting($block_id, 'header');
@@ -192,7 +192,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 	}
 
 	private function delete() {
-		$block_id=safe_GET('block_id');
+		$block_id = WT_Filter::getInteger('block_id');
 
 		WT_DB::prepare(
 			"DELETE FROM `##block_setting` WHERE block_id=?"
@@ -204,7 +204,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 	}
 
 	private function moveup() {
-		$block_id=safe_GET('block_id');
+		$block_id = WT_Filter::getInteger('block_id');
 
 		$block_order=WT_DB::prepare(
 			"SELECT block_order FROM `##block` WHERE block_id=?"
@@ -229,7 +229,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 	}
 
 	private function movedown() {
-		$block_id=safe_GET('block_id');
+		$block_id=WT_Filter::get('block_id');
 
 		$block_order=WT_DB::prepare(
 			"SELECT block_order FROM `##block` WHERE block_id=?"

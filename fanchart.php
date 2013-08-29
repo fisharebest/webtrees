@@ -27,7 +27,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Fanchart();
 
-if (safe_GET_bool('img')) {
+if (WT_Filter::getBool('img')) {
 	Zend_Session::writeClose();
 	$controller->generate_fan_chart('png');
 	exit;
@@ -87,4 +87,4 @@ if ($controller->error_message) {
 if ($controller->root) {
 	echo '<div id="fan_chart">', $controller->generate_fan_chart('html'), '</div>';
 }
-echo '</div>'; // close #page-chart
+echo '</div>';

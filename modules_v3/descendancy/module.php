@@ -64,9 +64,9 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
-		$search=safe_GET('search');
-		$pid   =safe_GET('pid', WT_REGEX_XREF);
-		$famid =safe_GET('famid', WT_REGEX_XREF);
+		$search = WT_Filter::get('search');
+		$pid    = WT_Filter::get('pid', WT_REGEX_XREF);
+		$famid  = WT_Filter::get('famid', WT_REGEX_XREF);
 
 		$individual = WT_Individual::getInstance($pid);
 		$family     = WT_Family::getInstance($famid);

@@ -27,7 +27,7 @@ require './includes/session.php';
 Zend_Session::writeClose();
 
 header('Content-Type: text/html; charset=UTF-8');
-$person = WT_Individual::getInstance(safe_GET_xref('pid'));
+$person = WT_Individual::getInstance(WT_Filter::get('pid', WT_REGEX_XREF));
 if (!$person || !$person->canShow()) {
 	return WT_I18N::translate('Private');
 }
