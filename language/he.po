@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-08-24 15:47+0100\n"
-"PO-Revision-Date: 2013-08-20 18:06+0200\n"
+"PO-Revision-Date: 2013-08-28 01:05+0200\n"
 "Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language-Team: \n"
 "Language: he\n"
@@ -156,7 +156,7 @@ msgstr "%1$s × %2$s פיקסלים"
 #: includes/functions/functions.php:1874
 #, php-format
 msgid "%1$s's %2$s"
-msgstr ""
+msgstr "%2$s של %1$s"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:421
@@ -9484,8 +9484,8 @@ msgstr "אין אירוע של אנשים חיים למחר."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "אין אירועים של אנשים חיים למחרת."
+msgstr[1] "אין אירועים של אנשים חיים ב %s הימים הבאים."
 
 #: library/WT/Controller/Family.php:157
 msgid "No facts for this family."
@@ -13938,7 +13938,7 @@ msgstr "הקטע הזה מאפשר להוסיף ציטוט של מקור חדש 
 #: setup.php:171
 #, php-format
 msgid "This server's memory limit is %dMB and its CPU time limit is %d seconds."
-msgstr ""
+msgstr "מגבלת הזכרון של שרת זה היא %dMB ומגבלת זמן המעבד שלו היא %d שניות."
 
 #: help_text.php:549
 msgid "This setting is only used when you read or write GEDCOM files."
@@ -14366,7 +14366,7 @@ msgstr "טרנסילבניה"
 
 #: library/WT/Date/French.php:123
 msgid "Tridi"
-msgstr "ארידי"
+msgstr "טרידי"
 
 #: library/WT/Stats.php:3983
 msgid "Trinidad and Tobago"
@@ -19598,8 +19598,8 @@ msgstr "…"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
-#~ msgstr[0] "אין אירוע של אנשים חיים ביום הבא."
-#~ msgstr[1] "אין אירוע של אנשים חיים ב %s הימים הבאים."
+#~ msgstr[0] "אין אירועים של אנשים חיים למחרת."
+#~ msgstr[1] "אין אירועים של אנשים חיים ב %s הימים הבאים."
 
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "קוד זיהוי כזה לא קיים בקובץ GEDCOM הזה."
