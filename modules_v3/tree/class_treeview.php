@@ -126,21 +126,22 @@ class TreeView {
 
 	/**
 	* Return the details for a person
-	* @param Person $person the person to return the details for
 	*/
-	private function getPersonDetails($personGroup, $person, $family) {
-		$r = '<div class="tv'.$person->getSex().' tv_person_expanded">';
-		$r .= $this->getThumbnail($personGroup, $person);
-		$r .= '<a class="tv_link" href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a> <a href="module.php?mod=tree&amp;mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&amp;rootid='.$person->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', strip_tags($person->getFullName())).'" class="icon-button_indi tv_link tv_treelink"></a>';
-		$r .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('BIRT').'</b> '.$person->getBirthDate()->Display().' '.$person->getBirthPlace();
+	private function getPersonDetails($personGroup, $individual, $family) {
+		$r = $this->getThumbnail($personGroup, $individual);
+		$r .= '<a class="tv_link" href="'.$individual->getHtmlUrl().'">'.$individual->getFullName().'</a> <a href="module.php?mod=tree&amp;mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&amp;rootid='.$individual->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())).'" class="icon-button_indi tv_link tv_treelink"></a>';
+		foreach ($individual->getFacts(WT_EVENTS_BIRT) as $fact) {
+			$r .= '<div><b>'.$fact->getLabel(true).'</b> '.$fact->getDate()->Display().' '.$fact->getPlace() . '</div>';
+		}
 		if ($family) {
-			$r .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('MARR').'</b> '.$family->getMarriageDate()->Display().' <a href="'.$family->getHtmlUrl().'" class="icon-button_family tv_link tv_treelink" title="'.strip_tags($family->getFullName()).'"></a>'.$family->getMarriagePlace();
+			foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
+				$r .= '<div><b>'.$fact->getLabel(true).'</b> '.$fact->getDate()->Display().' '.$fact->getPlace() . ' <a href="'.$family->getHtmlUrl().'" class="icon-button_family tv_link tv_treelink" title="'.strip_tags($family->getFullName()).'"></a></div>';;
+			}
 		}
-		if ($person->isDead()) {
-			$r .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('DEAT').'</b> '.$person->getDeathDate()->Display().' '.$person->getDeathPlace();
+		foreach ($individual->getFacts(WT_EVENTS_DEAT) as $fact) {
+			$r .= '<div><b>'.$fact->getLabel(true).'</b> '.$fact->getDate()->Display().' '.$fact->getPlace() . '</div>';
 		}
-		$r.= '</div>';
-		return $r;
+		return '<div class="tv'.$individual->getSex().' tv_person_expanded">' . $r . '</div>';
 	}
 
 	/**
