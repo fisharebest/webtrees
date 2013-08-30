@@ -25,7 +25,7 @@ $files = WT_Filter::get('files', 'local|external|unused', 'local');
 
 // family tree setting MEDIA_DIRECTORY
 $media_folders = all_media_folders();
-$media_folder  = WT_Filter::get('media_folder');
+$media_folder  = WT_Filter::get('media_folder', null, ''); // MySQL needs an empty string, not NULL
 // User folders may contain special characters.  Restrict to actual folders.
 if (!array_key_exists($media_folder, $media_folders)) {
 	$media_folder = reset($media_folders);
@@ -33,7 +33,7 @@ if (!array_key_exists($media_folder, $media_folders)) {
 
 // prefix to filename
 $media_paths = media_paths($media_folder);
-$media_path  = WT_Filter::get('media_path');
+$media_path  = WT_Filter::get('media_path', null, ''); // MySQL needs an empty string, not NULL
 // User paths may contain special characters.  Restrict to actual paths.
 if (!array_key_exists($media_path, $media_paths)) {
 	$media_path = reset($media_paths);
@@ -50,7 +50,7 @@ $delete_file = WT_Filter::post('delete');
 if ($delete_file) {
 	$controller = new WT_Controller_Ajax;
 	// Only delete valid (i.e. unused) media files
-	$media_folder = WT_Filter::post('media_folder');
+	$media_folder = WT_Filter::post('media_folder', null, ''); // MySQL needs an empty string, not NULL
 	$disk_files = all_disk_files ($media_folder, '', 'include', '');
 	if (in_array($delete_file, $disk_files)) {
 		$tmp = WT_DATA_DIR . $media_folder . $delete_file;
@@ -81,7 +81,7 @@ if ($delete_file) {
 switch($action) {
 case 'load_json':
 	Zend_Session::writeClose();
-	$sSearch        = WT_Filter::get('sSearch');
+	$sSearch        = WT_Filter::get('sSearch', null, ''); // MySQL needs an empty string, not NULL
 	$iDisplayStart  = WT_Filter::getInteger('iDisplayStart');
 	$iDisplayLength = WT_Filter::getInteger('iDisplayLength');
 
