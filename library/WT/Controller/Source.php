@@ -63,6 +63,13 @@ class WT_Controller_Source extends WT_Controller_GedcomRecord {
 			$menu->addSubmenu($submenu);
 		}
 
+		// edit raw
+		if (WT_USER_IS_ADMIN || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
+			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM'), '#', 'menu-sour-editraw');
+			$submenu->addOnclick("return edit_raw('" . $this->record->getXref() . "');");
+			$menu->addSubmenu($submenu);
+		}
+
 		// add to favorites
 		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$submenu = new WT_Menu(

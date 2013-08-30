@@ -69,6 +69,92 @@ $controller
 switch ($action) {
 ////////////////////////////////////////////////////////////////////////////////
 case 'editraw':
+	$xref = WT_Filter::get('xref', WT_REGEX_XREF);
+
+	$record = WT_GedcomRecord::getInstance($xref);
+	check_record_access($record);
+
+	$controller
+		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit raw GEDCOM record'))
+		->pageHeader()
+		->addInlineJavascript('jQuery("#raw-gedcom-list").sortable({opacity: 0.7, cursor: "move", axis: "y"});');
+
+	?>
+	<div id="edit_interface-page">
+		<h4>
+			<?php echo $controller->getPageTitle(); ?>
+			<?php echo help_link('edit_edit_raw'); ?>
+			<?php print_specialchar_link('gedcom'); ?>
+		</h4>
+		<form method="post" action="edit_interface.php">
+			<input type="hidden" name="action" value="updateraw">
+			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
+			<ul id="raw-gedcom-list">
+				<?php foreach ($record->getFacts() as $fact) { ?>
+					<?php if (!$fact->isOld()) { ?>
+					<li>
+						<div style="cursor:move;">
+							<?php echo $fact->summary(); ?>
+						</div>
+						<input type="hidden" name="fact_id[]" value="<?php echo $fact->getFactId(); ?>">
+						<textarea name="fact[]" dir="ltr" rows="<?php echo preg_match('/\n/', $fact->getGedcom()); ?>"><?php echo WT_Filter::escapeHtml($fact->getGedcom()); ?></textarea>
+					</li>
+					<?php } ?>
+				<?php } ?>
+				<li>
+					<div style="cursor:move;">
+						<b><i><?php echo WT_I18N::translate('Add a fact'); ?><i></b>
+					</div>
+					<input type="hidden" name="fact_id[]" value="">
+					<textarea name="fact[]" dir="ltr" rows="2"></textarea>
+				</li>
+			</ul>
+			<p id="save-cancel">
+				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
+				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+			</p>
+		</form>
+	</div>
+	<?php
+	break;
+
+////////////////////////////////////////////////////////////////////////////////
+case 'updateraw':
+	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
+	$facts     = WT_Filter::postArray('fact');
+	$fact_ids  = WT_Filter::postArray('fact_id');
+
+	$record = WT_GedcomRecord::getInstance($xref);
+	check_record_access($record);
+
+	$controller
+		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit raw GEDCOM record'))
+		->pageHeader();
+
+	$gedcom = '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE;
+
+	// Retain any private facts
+	foreach ($record->getFacts(null, false, WT_PRIV_HIDE) as $fact) {
+		if (!in_array($fact->getFactId(), $fact_ids)) {
+			$gedcom .= "\n" . $fact->getGedcom();
+		}
+	}
+	// Append the new facts
+	foreach ($facts as $fact) {
+		$gedcom .= "\n" . $fact;
+	}
+
+	// Cleanup the client’s bad editing?
+	$gedcom = preg_replace('/\n\n+/', "\n", $gedcom); // Empty lines
+	$gedcom = trim($gedcom);                          // Leading/trailing spaces
+
+	$record->updateRecord($gedcom, false);
+
+	$controller->addInlineJavascript('closePopupAndReloadParent();');
+	break;
+
+////////////////////////////////////////////////////////////////////////////////
+case 'editrawfact':
 	$xref    = WT_Filter::get('xref',    WT_REGEX_XREF);
 	$fact_id = WT_Filter::get('fact_id');
 
@@ -102,7 +188,7 @@ case 'editraw':
 			<?php print_specialchar_link('gedcom'); ?>
 		</h4>
 		<form method="post" action="edit_interface.php">
-			<input type="hidden" name="action" value="updateraw">
+			<input type="hidden" name="action" value="updaterawfact">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<input type="hidden" name="fact_id" value="<?php echo $fact_id; ?>">
 			<textarea name="gedcom" id="gedcom" dir="ltr"><?php echo WT_Filter::escapeHtml($edit_fact->getGedcom()); ?></textarea>
@@ -119,7 +205,7 @@ case 'editraw':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-case 'updateraw':
+case 'updaterawfact':
 	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
 	$fact_id   = WT_Filter::post('fact_id');
 	$gedcom    = WT_Filter::post('gedcom');
@@ -239,7 +325,7 @@ case 'edit':
 	}
 	if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 		echo
-			'<br><br><a href="edit_interface.php?action=editraw&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', WT_GEDURL, '">',
+			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', WT_GEDURL, '">',
 			WT_I18N::translate('Edit raw GEDCOM record'),
 			'</a>';
 	}
@@ -1489,7 +1575,7 @@ case 'editname':
 
 	if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 		echo
-			'<br><br><a href="edit_interface.php?action=editraw&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', WT_GEDURL, '">',
+			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', WT_GEDURL, '">',
 			WT_I18N::translate('Edit raw GEDCOM record'),
 			'</a>';
 	}

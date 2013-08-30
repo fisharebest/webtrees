@@ -290,6 +290,7 @@ height: auto;
 #menu-fam-addfav    {background-position:left -736px;} html[dir=rtl] #menu-fam-addfav    {background-position:right -736px;}
 #menu-fam-change    {background-position:left -759px;} html[dir=rtl] #menu-fam-change    {background-position:right -759px;}
 #menu-fam-del	      {background-position:left -713px;} html[dir=rtl] #menu-fam-del	     {background-position:right -713px;}
+#menu-fam-editraw   {background-position:left -667px;} html[dir=rtl] #menu-fam-editraw   {background-position:right -667px;}
 #menu-fam-orderchil {background-position:left -759px;} html[dir=rtl] #menu-fam-orderchil {background-position:right -759px;}
 
 /* Clipping Icons */
@@ -298,6 +299,7 @@ height: auto;
 
 /* Edit Icons */
 #menu-indi-addname {background-position:left -690px;} html[dir=rtl] #menu-indi-addname {background-position:right -690px;}
+#menu-indi-editraw {background-position:left -667px;} html[dir=rtl] #menu-indi-editraw {background-position:right -667px;}
 #menu-indi-editsex {background-position:left -690px;} html[dir=rtl] #menu-indi-editsex {background-position:right -690px;}
 #menu-indi-del	   {background-position:left -713px;} html[dir=rtl] #menu-indi-del  	 {background-position:right -713px;}
 #menu-indi-addfav  {background-position:left -736px;} html[dir=rtl] #menu-indi-addfav  {background-position:right -736px;}
@@ -306,11 +308,13 @@ height: auto;
 #menu-note-addfav  {background-position:left -736px;} html[dir=rtl] #menu-note-fav  	 {background-position:right -736px;}
 #menu-note-del	   {background-position:left -713px;} html[dir=rtl] #menu-note-del 	   {background-position:right -713px;}
 #menu-note-edit	   {background-position:left -805px;} html[dir=rtl] #menu-note-edit    {background-position:right -805px;}
+#menu-note-editraw {background-position:left -667px;} html[dir=rtl] #menu-note-editraw {background-position:right -667px;}
 
 /* Objects  */
 #menu-obje-addfav    {background-position:left -736px;} html[dir=rtl] #menu-obje-addfav    {background-position:right -736px;}
 #menu-obje-del	     {background-position:left -713px;} html[dir=rtl] #menu-obje-del	     {background-position:right -713px;}
 #menu-obje-edit	     {background-position:left -852px;} html[dir=rtl] #menu-obje-edit      {background-position:right -852px;}
+#menu-obje-editraw   {background-position:left -667px;} html[dir=rtl] #menu-obje-editraw   {background-position:right -667px;}
 #menu-obje-link	     {background-position:left -875px;} html[dir=rtl] #menu-obje-link      {background-position:right -875px;}
 #menu-obje-link-fam  {background-position:left -437px;} html[dir=rtl] #menu-obje-link-fam  {background-position:right -437px;}
 #menu-obje-link-indi {background-position:left -460px;} html[dir=rtl] #menu-obje-link-indi {background-position:right -460px;}
@@ -320,11 +324,13 @@ height: auto;
 #menu-repo-addfav  {background-position:left -736px;} html[dir=rtl] #menu-repo-addfav  {background-position:right -736px;}
 #menu-repo-del  	 {background-position:left -713px;} html[dir=rtl] #menu-repo-de	     {background-position:right -713px;}
 #menu-repo-edit  	 {background-position:left -897px;} html[dir=rtl] #menu-repo-edit    {background-position:right -897px;}
+#menu-repo-editraw {background-position:left -667px;} html[dir=rtl] #menu-repo-editraw {background-position:right -667px;}
 
 /*  Source  */
 #menu-sour-addfav  {background-position:left -736px;} html[dir=rtl] #menu-sour-addfav  {background-position:right -736px;}
 #menu-sour-del  	 {background-position:left -713px;} html[dir=rtl] #menu-sour-del 	   {background-position:right -713px;}
 #menu-sour-edit	   {background-position:left -782px;} html[dir=rtl] #menu-sour-edit    {background-position:right -782px;}
+#menu-sour-editraw {background-position:left -667px;} html[dir=rtl] #menu-sour-editraw {background-position:right -667px;}
 
 /*  Stories  */
 #menu-story-sub {background-position:left -920px;} html[dir=rtl] #menu-story-sub {background-position:right -920px;}

@@ -56,6 +56,15 @@ class WT_Controller_Note extends WT_Controller_GedcomRecord {
 			$menu->addSubmenu($submenu);
 		}
 
+		// edit raw
+		/* Does not currently work - NOTE records do not contain nice level 1 facts
+		if (WT_USER_IS_ADMIN || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
+			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM'), '#', 'menu-note-editraw');
+			$submenu->addOnclick("return edit_raw('" . $this->record->getXref() . "');");
+			$menu->addSubmenu($submenu);
+		}
+		 */
+
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-note-del');

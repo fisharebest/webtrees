@@ -192,6 +192,7 @@ html[dir=rtl] #main-menu > li > ul > li:first-child {text-align:center;}
 #menu-fam-addfav            {background-position:left -832px;} html[dir=rtl] #menu-fam-addfav            {background-position:right -832px;}
 #menu-fam-change            {background-position:left -858px;} html[dir=rtl] #menu-fam-change            {background-position:right -858px;}
 #menu-fam-del               {background-position:left -936px;} html[dir=rtl] #menu-fam-del               {background-position:right -936px;}
+#menu-fam-editraw           {background-position:left -754px;} html[dir=rtl] #menu-fam-editraw           {background-position:right -574px;}
 #menu-fam-orderchil         {background-position:left -858px;} html[dir=rtl] #menu-fam-orderchil         {background-position:right -858px;}
 
 /* Clipping Icons */
@@ -200,6 +201,7 @@ html[dir=rtl] #main-menu > li > ul > li:first-child {text-align:center;}
 
 /* Edit Icons */
 #menu-indi-addname          {background-position:left -780px;} html[dir=rtl] #menu-indi-addname          {background-position:right -780px;}
+#menu-indi-editraw          {background-position:left -754px;} html[dir=rtl] #menu-indi-editraw          {background-position:right -574px;}
 #menu-indi-editsex          {background-position:left -780px;} html[dir=rtl] #menu-indi-editsex          {background-position:right -780px;}
 #menu-indi-del              {background-position:left -806px;} html[dir=rtl] #menu-indi-del              {background-position:right -806px;}
 #menu-indi-addfav           {background-position:left -832px;} html[dir=rtl] #menu-indi-addfav           {background-position:right -832px;}
@@ -208,11 +210,13 @@ html[dir=rtl] #main-menu > li > ul > li:first-child {text-align:center;}
 #menu-note-addfav           {background-position:left -832px;} html[dir=rtl] #menu-note-fav              {background-position:right -832px;}
 #menu-note-del              {background-position:left -806px;} html[dir=rtl] #menu-note-del              {background-position:right -806px;}
 #menu-note-edit             {background-position:left -910px;} html[dir=rtl] #menu-note-edit             {background-position:right -910px;}
+#menu-note-editraw          {background-position:left -754px;} html[dir=rtl] #menu-note-editraw          {background-position:right -574px;}
 
 /* Objects */
 #menu-obje-addfav           {background-position:left -832px;} html[dir=rtl] #menu-obje-addfav           {background-position:right -832px;}
 #menu-obje-del              {background-position:left -1040px;} html[dir=rtl] #menu-obje-del             {background-position:right -1040px;}
 #menu-obje-edit             {background-position:left -962px;} html[dir=rtl] #menu-obje-edit             {background-position:right -962px;}
+#menu-obje-editraw          {background-position:left -754px;} html[dir=rtl] #menu-obje-editraw          {background-position:right -574px;}
 #menu-obje-link             {background-position:left -988px;} html[dir=rtl] #menu-obje-link             {background-position:right -988px;}
 #menu-obje-link-fam         {background-position:left -494px;} html[dir=rtl] #menu-obje-link-fam         {background-position:right -494px;}
 #menu-obje-link-indi        {background-position:left -520px;} html[dir=rtl] #menu-obje-link-indi        {background-position:right -520px;}
@@ -222,11 +226,13 @@ html[dir=rtl] #main-menu > li > ul > li:first-child {text-align:center;}
 #menu-repo-addfav           {background-position:left -832px;} html[dir=rtl] #menu-repo-addfav           {background-position:right -832px;}
 #menu-repo-del              {background-position:left -806px;} html[dir=rtl] #menu-repo-del              {background-position:right -806px;}
 #menu-repo-edit             {background-position:left -1014px;} html[dir=rtl] #menu-repo-edit            {background-position:right -1014px;}
+#menu-repo-editraw          {background-position:left -754px;} html[dir=rtl] #menu-repo-editraw          {background-position:right -574px;}
 
 /* Source */
 #menu-sour-addfav           {background-position:left -832px;} html[dir=rtl] #menu-sour-addfav           {background-position:right -832px;}
 #menu-sour-del              {background-position:left -1066px;} html[dir=rtl] #menu-sour-del             {background-position:right -1066px;}
 #menu-sour-edit             {background-position:left -884px;} html[dir=rtl] #menu-sour-edit             {background-position:right -884px;}
+#menu-sour-editraw          {background-position:left -754px;} html[dir=rtl] #menu-sour-editraw          {background-position:right -574px;}
 
 /* Stories */
 #menu-story-sub             {background-position:left -1092px;} html[dir=rtl] #menu-story-sub            {background-position:right -1040px;}
