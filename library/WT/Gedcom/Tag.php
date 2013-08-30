@@ -86,18 +86,6 @@ class WT_Gedcom_Tag {
 		return in_array($tag, self::$ALL_TAGS);
 	}
 
-	public static function getAbbreviation($tag) {
-		switch ($tag) {
-		case 'BIRT':  return WT_I18N::translate_c('Abbreviation for birth',            'b.');
-		case 'MARR':  return WT_I18N::translate_c('Abbreviation for marriage',         'm.');
-		case 'DEAT':  return WT_I18N::translate_c('Abbreviation for death',            'd.');
-		case 'PHON':  return WT_I18N::translate_c('Abbreviation for telephone number', 't.');
-		case 'FAX':   return WT_I18N::translate_c('Abbreviation for fax number',       'f.');
-		case 'EMAIL': return WT_I18N::translate_c('Abbreviation for email address',    'e.');
-		default:      return utf8_substr(self::getLabel($tag), 0, 1).'.'; // Just use the first letter of the full fact
-		}
-	}
-
 	// Translate a tag, for an (optional) record
 	public static function getLabel($tag, $record=null) {
 		if ($record instanceof WT_Individual) {
@@ -848,7 +836,7 @@ class WT_Gedcom_Tag {
 	// Translate a label/value pair, such as “Occupation: Farmer”
 	public static function getLabelValue($tag, $value, $record=null, $element='div') {
 			return
-			'<'.$element.' class="fact_'.preg_replace('/[^_A-Za-z0-9]/', '', $tag).'">'.
+			'<'.$element.' class="fact_' . $tag . '">'.
 			/* I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation. */
 			WT_I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', self::getLabel($tag, $record), $value).
 			'</'.$element.'>';

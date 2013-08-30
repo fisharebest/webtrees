@@ -29,7 +29,7 @@ echo '<link href="'.WT_STATIC_URL.WT_MODULES_DIR.'GEDFact_assistant/css/gf_style
 
 global $tabno, $linkToID, $SEARCH_SPIDER;
 global $SHOW_AGE_DIFF;
-global $GEDCOM, $ABBREVIATE_CHART_LABELS;
+global $GEDCOM;
 global $show_full;
 global $famid, $censyear, $censdate;
 

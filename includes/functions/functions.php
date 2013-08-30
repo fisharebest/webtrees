@@ -105,7 +105,6 @@ function file_upload_error_text($error_code) {
 function load_gedcom_settings($ged_id=WT_GED_ID) {
 	// Load the configuration settings into global scope
 	// TODO: some of these are used infrequently - just load them when we need them
-	global $ABBREVIATE_CHART_LABELS;      $ABBREVIATE_CHART_LABELS      =get_gedcom_setting($ged_id, 'ABBREVIATE_CHART_LABELS');
 	global $ADVANCED_NAME_FACTS;          $ADVANCED_NAME_FACTS          =get_gedcom_setting($ged_id, 'ADVANCED_NAME_FACTS');
 	global $ADVANCED_PLAC_FACTS;          $ADVANCED_PLAC_FACTS          =get_gedcom_setting($ged_id, 'ADVANCED_PLAC_FACTS');
 	global $CALENDAR_FORMAT;              $CALENDAR_FORMAT              =get_gedcom_setting($ged_id, 'CALENDAR_FORMAT');

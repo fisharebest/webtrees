@@ -75,7 +75,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		///// HUSB /////
 		$found = false;
-		foreach ($family->getFacts('HUSB', $access_level) as $fact) {
+		foreach ($family->getFacts('HUSB', false, $access_level) as $fact) {
 			$found |= !$fact->isOld();
 			$person = $fact->getTarget();
 			if ($person instanceof WT_Individual) {
@@ -238,13 +238,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $SHOW_AGE_DIFF, $GEDCOM, $ABBREVIATE_CHART_LABELS, $show_full, $personcount, $controller;
+		global $SHOW_AGE_DIFF, $GEDCOM, $show_full, $personcount, $controller;
 
 		if (isset($show_full)) $saved_show_full = $show_full; // We always want to see full details here
 		$show_full = 1;
-
-		$saved_ABBREVIATE_CHART_LABELS = $ABBREVIATE_CHART_LABELS;
-		$ABBREVIATE_CHART_LABELS = false; // Override GEDCOM configuration
 
 		ob_start();
 		?>
@@ -343,7 +340,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		<br>
 		<?php
 
-		$ABBREVIATE_CHART_LABELS = $saved_ABBREVIATE_CHART_LABELS; // Restore GEDCOM configuration
 		unset($show_full);
 		if (isset($saved_show_full)) $show_full = $saved_show_full;
 

@@ -306,7 +306,7 @@
 					<if condition="$blanks==1 or @CREM:DATE!='' or @CREM:PLAC!=''">
 						<!-- print Cremation -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<Text color="$tcolor" style="fact"><var var="WT_Gedcom_Tag::getLabel('CREM')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Cremation')" />  </Text>
 							<Text color="$tcolor" style="text"><GedcomValue tag="CREM:DATE" /> </Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="CREM:SOUR">
@@ -333,7 +333,7 @@
 						<!-- Look for Level 2 CREM subordinate to BURI (should have been at Level 1) -->
 						<if condition="@BURI:CREM!='' and $level1CREM!=1">
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="WT_Gedcom_Tag::getLabel('CREM')" />  </Text>
+								<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Cremation')" />  </Text>
 								<Text color="$tcolor" style="text"> </Text>
 							</TextBox>
 							<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
@@ -461,14 +461,14 @@
 							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Father')" />  </Text>
 							<Text color="$tcolor" style="name"><GetPersonName id="@HUSB" /></Text>
 							<Gedcom id="@HUSB">
-								<Text color="$tcolor" style="text"> (<varLetter var="BIRT" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <varLetter var="DEAT" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
+								<Text color="$tcolor" style="text"> (<var var="WT_I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <var var="WT_I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
 							</Gedcom>
 						</TextBox>
 						<TextBox bgcolor="$femalebox_bgcolor" border="1" left="15" width="$width1" newline="1">
 							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Mother')" />  </Text>
 							<Text color="$tcolor" style="name"><GetPersonName id="@WIFE" /></Text>
 							<Gedcom id="@WIFE">
-								<Text color="$tcolor" style="text"> (<varLetter var="BIRT" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <varLetter var="DEAT" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
+								<Text color="$tcolor" style="text"> (<var var="WT_I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <var var="WT_I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
 							</Gedcom>
 						</TextBox>
 					</Gedcom>
@@ -657,7 +657,7 @@
 					<if condition="$blanks==1 or @CREM:DATE!='' or @CREM:PLAC!=''">
 						<!-- print Cremation -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<Text color="$tcolor" style="fact"><var var="WT_Gedcom_Tag::getLabel('CREM')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Cremation')" />  </Text>
 							<Text color="$tcolor" style="text"><GedcomValue tag="CREM:DATE" /> </Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="CREM:SOUR">
@@ -684,7 +684,7 @@
 						<!-- Look for Level 2 CREM subordinate to BURI (should have been at Level 1) -->
 						<if condition="@BURI:CREM!='' and $level1CREM!=1">
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="WT_Gedcom_Tag::getLabel('CREM')" />  </Text>
+								<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Cremation')" />  </Text>
 								<Text color="$tcolor" style="text"> </Text>
 							</TextBox>
 							<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
@@ -721,14 +721,14 @@
 							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Father')" />  </Text>
 							<Text color="$tcolor" style="name"><GetPersonName id="@HUSB" /></Text>
 							<Gedcom id="@HUSB">
-								<Text color="$tcolor" style="text"> (<varLetter var="BIRT" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <varLetter var="DEAT" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
+								<Text color="$tcolor" style="text"> (<var var="WT_I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <var var="WT_I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
 							</Gedcom>
 						</TextBox>
 						<TextBox bgcolor="$femalebox_bgcolor" border="1" left="15" width="$width1" newline="1">
 							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Mother')" />  </Text>
 							<Text color="$tcolor" style="name"><GetPersonName id="@WIFE" /></Text>
 							<Gedcom id="@WIFE">
-								<Text color="$tcolor" style="text"> (<varLetter var="BIRT" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <varLetter var="DEAT" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
+								<Text color="$tcolor" style="text"> (<var var="WT_I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <var var="WT_I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
 							</Gedcom>
 						</TextBox>
 					</Gedcom>
@@ -998,7 +998,7 @@
 						<if condition="$blanks==1 or @CREM:DATE!='' or @CREM:PLAC!=''">
 							<!-- print Cremation -->
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="WT_Gedcom_Tag::getLabel('CREM')" />  </Text>
+								<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Cremation')" />  </Text>
 								<Text color="$tcolor" style="text"><GedcomValue tag="CREM:DATE" /> </Text>
 								<if condition="$sources==1">
 									<RepeatTag tag="CREM:SOUR">
@@ -1025,7 +1025,7 @@
 							<!-- Look for Level 2 CREM subordinate to BURI (should have been at Level 1) -->
 							<if condition="@BURI:CREM!='' and $level1CREM!=1">
 								<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-									<Text color="$tcolor" style="fact"><var var="WT_Gedcom_Tag::getLabel('CREM')" />  </Text>
+									<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Cremation')" />  </Text>
 									<Text color="$tcolor" style="text"> </Text>
 								</TextBox>
 								<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
@@ -1066,7 +1066,7 @@
 										<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Wife')" />  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id="@WIFE" /></Text>
 										<Gedcom id="@WIFE">
-											<Text color="$tcolor" style="text"> (<varLetter var="BIRT" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <varLetter var="DEAT" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
+											<Text color="$tcolor" style="text"> (<var var="WT_I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <var var="WT_I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
 										</Gedcom>
 									</TextBox>
 								</if>
@@ -1075,7 +1075,7 @@
 										<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Husband')" />  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id="@HUSB" /></Text>
 										<Gedcom id="@HUSB">
-											<Text color="$tcolor" style="text"> (<varLetter var="BIRT" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <varLetter var="DEAT" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
+											<Text color="$tcolor" style="text"> (<var var="WT_I18N::translate('Birth')" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <var var="WT_I18N::translate('Death')" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
 										</Gedcom>
 									</TextBox>
 								</if>

@@ -77,23 +77,7 @@ foreach ($facts as $event) {
 		break;
 	default:
 		// Simple version of print_fact()
-		echo '<div>';
-		echo '<span class="details_label">', $event->getLabel(), '</span> ';
-		$details=$event->getValue();
-		if ($details!='Y' && $details!='N') {
-			echo '<span dir="auto">', $details, '</span>';
-		}
-		echo format_fact_date($event, $person, false, false);
-		// Show spouse/family for family events
-		if ($event->getParent() instanceof WT_Family) {
-			$spouse = $event->getParent()->getSpouse($person);
-			if ($spouse) {
-				echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
-				echo '<a href="', $event->getParent()->getHtmlUrl(), '">', WT_I18N::translate('View family'), ' - </a>';
-			}
-		}
-		echo ' ',format_fact_place($event, true, true);
-		echo '</div>';
+		echo $event->summary();
 		break;
 	}
 }

@@ -646,7 +646,6 @@ foreach ($GEDCOMS as $GEDCOM=>$GED_DATA) {
 
 	$stmt_gedcom_setting=WT_DB::prepare("INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?,?,?)");
 
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'ABBREVIATE_CHART_LABELS',      $ABBREVIATE_CHART_LABELS));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'ADVANCED_NAME_FACTS',          $ADVANCED_NAME_FACTS));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'ADVANCED_PLAC_FACTS',          $ADVANCED_PLAC_FACTS));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'ALLOW_THEME_DROPDOWN',         $ALLOW_THEME_DROPDOWN));

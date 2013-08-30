@@ -2247,7 +2247,7 @@ function varSHandler($attrs) {
 			$tfact = $type;
 		}
 		$var = str_replace(array("@fact", "@desc"), array(WT_Gedcom_Tag::getLabel($tfact), $desc), $var);
-		if (substr($var, 0, 18) == 'WT_I18N::translate' || substr($var, 0, 15) == 'WT_I18N::number' || substr($var, 0, 23)=='WT_Gedcom_Tag::getLabel') {
+		if (substr($var, 0, 18) == 'WT_I18N::translate' || substr($var, 0, 15) == 'WT_I18N::number') {
 			eval("\$var=$var;");
 		}
 	}
@@ -2259,27 +2259,6 @@ function varSHandler($attrs) {
 		}
 	}
 	$currentElement->addText($var);
-}
-
-/**
-* Variable lookup, retrieve the first letter only
-*
-* @param array $attrs an array of key value pairs for the attributes
-*/
-function varLetterSHandler($attrs) {
-	global $currentElement, $fact, $desc;
-
-	if (empty($attrs['var'])) {
-		die("<strong>REPORT ERROR varLetter: </strong> The attribute \"var=\" is missing or not set in the XML file.");
-	}
-
-	$var=$attrs['var'];
-	if ($var) {
-		if ($var=='@fact') {
-			$var=$fact;
-		}
-		$currentElement->addText(WT_Gedcom_Tag::getAbbreviation($var));
-	}
 }
 
 /**
@@ -2465,7 +2444,7 @@ function SetVarSHandler($attrs) {
 		$value = preg_replace("/\\$".$match[$i][1]."/", $t, $value, 1);
 		$i++;
 	}
-	if (substr($value, 0, 18) == 'WT_I18N::translate' || substr($value, 0, 15) == 'WT_I18N::number' || substr($value, 0, 23)=='WT_Gedcom_Tag::getLabel') {
+	if (substr($value, 0, 18) == 'WT_I18N::translate' || substr($value, 0, 15) == 'WT_I18N::number') {
 		eval("\$value = $value;");
 	}
 	// Arithmetic functions

@@ -57,7 +57,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	}
 
 	private static function media_3_find() {
-		global $MEDIA_DIRECTORY, $ABBREVIATE_CHART_LABELS;
+		global $MEDIA_DIRECTORY;
 
 		$controller=new WT_Controller_Simple();
 		

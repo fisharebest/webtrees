@@ -67,7 +67,6 @@ case 'add':
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
 	exit;
 case 'update':
-	set_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS',      WT_Filter::postBool('NEW_ABBREVIATE_CHART_LABELS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_NAME_FACTS',          WT_Filter::post('NEW_ADVANCED_NAME_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_PLAC_FACTS',          WT_Filter::post('NEW_ADVANCED_PLAC_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN',         WT_Filter::postBool('NEW_ALLOW_THEME_DROPDOWN'));
@@ -929,14 +928,6 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					<th colspan="2">
 						<?php echo WT_I18N::translate('Charts'); ?>
 					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Abbreviate chart labels'), help_link('ABBREVIATE_CHART_LABELS'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('NEW_ABBREVIATE_CHART_LABELS', get_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS')); ?>
-					</td>
 				</tr>
 				<tr>
 					<td>

@@ -444,13 +444,13 @@
 												<Text style="label1" > <br /></Text>
 												<!-- Start BIRT -->
 												<Gedcom id="BIRT">
-													<Text style="label1" > <varLetter var="BIRT" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/> <br /></Text>
+													<Text style="label1" > <var var="WT_I18N::translate('Birth')" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/> <br /></Text>
 												</Gedcom>
 												<if condition="@SEX=='M'"><SetVar name="gender" value="male" /></if>
 												<if condition="@SEX=='F'"><SetVar name="gender" value="female" /></if>
 												<RepeatTag tag="FAMS">
 													<Gedcom id="@FAMS">
-														<Text style="label1"> <varLetter var="MARR" /> </Text>
+														<Text style="label1"> <var var="WT_I18N::translate('Marriage')" /> </Text>
 														<if condition="$gender=='male'"><Text style="namech"><GetPersonName id="@WIFE" /></Text></if>
 														<if condition="$gender=='female'"><Text style="namech"><GetPersonName id="@HUSB" /></Text></if>
 														<Text style="label1"><Gedcom id="MARR"><if condition="@DATE!=''"> <GedcomValue tag="DATE" level="2" /></if><if condition="@PLAC!=''"> <GedcomValue tag="PLAC" level="2" /></if></Gedcom> <br /></Text>
@@ -458,7 +458,7 @@
 												</RepeatTag>
 												<!-- End BIRT start DEAT --> 
 												<Gedcom id="DEAT">
-													<Text style="label1"> <varLetter var="DEAT" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/> <br /></Text>
+													<Text style="label1"> <var var="WT_I18N::translate('Death')" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/> <br /></Text>
 												</Gedcom>
 											</TextBox>
 										</Gedcom>

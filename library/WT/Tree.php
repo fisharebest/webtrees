@@ -213,7 +213,6 @@ class WT_Tree {
 		WT_Module::setDefaultAccess($tree_id);
 
 		// Gedcom and privacy settings
-		set_gedcom_setting($tree_id, 'ABBREVIATE_CHART_LABELS',      false);
 		set_gedcom_setting($tree_id, 'ADVANCED_NAME_FACTS',          'NICK,_AKA');
 		set_gedcom_setting($tree_id, 'ADVANCED_PLAC_FACTS',          '');
 		set_gedcom_setting($tree_id, 'ALLOW_THEME_DROPDOWN',         true);

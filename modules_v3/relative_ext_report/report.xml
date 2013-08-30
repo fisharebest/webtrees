@@ -106,12 +106,12 @@
 					<Gedcom id="@FAMS">
 						<TextBox height="$height2" left="$width1" width="$widthB2">
 							<if condition="$sex=='M'">
-								<Text style="minibold"><var var="WT_Gedcom_Tag::getLabel('WIFE')" />: </Text>
+								<Text style="minibold"><var var="WT_I18N::translate('Wife')" />: </Text>
 								<Text style="mini"><GetPersonName id="@WIFE" /> <GedcomValue tag="MARR:DATE" />
 								</Text>
 							</if>
 							<if condition="$sex=='F'">
-								<Text style="minibold"><var var="WT_Gedcom_Tag::getLabel('HUSB')" />: </Text>
+								<Text style="minibold"><var var="WT_I18N::translate('Husband')" />: </Text>
 								<Text style="mini"><GetPersonName id="@HUSB" /> <GedcomValue tag="MARR:DATE" />
 								</Text>
 							</if>

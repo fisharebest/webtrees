@@ -183,21 +183,17 @@ class WT_Fact {
 		return $this->parent;
 	}
 
-	function getLabel($abbreviate=false) {
-		if ($abbreviate) {
-			return WT_Gedcom_Tag::getAbbreviation($this->tag);
-		} else {
-			switch($this->tag) {
-			case 'EVEN':
-			case 'FACT':
-				if ($this->getAttribute('TYPE')) {
-					// Custom FACT/EVEN - with a TYPE
-					return WT_I18N::translate(WT_Filter::escapeHtml($this->getAttribute('TYPE')));
-				}
-				// no break - drop into next case
-			default:
-				return WT_Gedcom_Tag::getLabel($this->tag, $this->parent);
+	function getLabel() {
+		switch($this->tag) {
+		case 'EVEN':
+		case 'FACT':
+			if ($this->getAttribute('TYPE')) {
+				// Custom FACT/EVEN - with a TYPE
+				return WT_I18N::translate(WT_Filter::escapeHtml($this->getAttribute('TYPE')));
 			}
+			// no break - drop into next case
+		default:
+			return WT_Gedcom_Tag::getLabel($this->tag, $this->parent);
 		}
 	}
 
@@ -217,24 +213,33 @@ class WT_Fact {
 		return $this->is_new;
 	}
 
-	// Print a simple fact version of this event
-	function print_simple_fact($return=false, $anchor=false) {
-		global $ABBREVIATE_CHART_LABELS;
-
-		$value = $this->getValue();
-
-		$data = '<span class="details_label">'.$this->getLabel($ABBREVIATE_CHART_LABELS).'</span>';
-		// Don't display "yes", because format_fact_date() does this for us.  (Should it?)
-		if ($value && $value != 'Y') {
-			$data .= ' <span dir="auto">' . WT_Filter::escapeHtml($value) . '</span>';
-		}
-		$data .= ' '.format_fact_date($this, $this->getParent(), $anchor, false);
-		$data .= ' '.format_fact_place($this, $anchor, false, false);
-		$data .= '<br>';
-		if ($return) {
-			return $data;
+	// A one-line summary of the fact - for charts, etc.
+	function summary() {
+		$attributes = array();
+		$target = $this->getTarget();
+		if ($target) {
+			$attributes[] = $target->getFullName();
 		} else {
-			echo $data;
+			$value = $this->getValue();
+			if ($value && $value!='Y') {
+				$attributes[] = '<span dir="auto">' . WT_Filter::escapeHtml($value) . '</span>';
+			}
+			$date = $this->getDate();
+			if ($date->isOK()) {
+				$attributes[] = $date->display();
+			}
+			$place = (string)$this->getPlace();
+			if ($place) {
+				$attributes[] = $place;
+			}
+		}
+		$html = WT_Gedcom_Tag::getLabelValue($this->getTag(), implode(' — ', $attributes), $this->getParent());
+		if ($this->isNew()) {
+			return '<div class="new">' . $html . '</div>';
+		} elseif ($this->isOld()) {
+			return '<div class="old">' . $html . '</div>';
+		} else {
+			return $html;
 		}
 	}
 

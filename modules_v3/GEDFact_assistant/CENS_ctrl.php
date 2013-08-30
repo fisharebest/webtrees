@@ -58,7 +58,7 @@ echo '</h3>';
 		<?php
 
 global $tabno, $linkToID, $SEARCH_SPIDER;
-global $SHOW_AGE_DIFF, $GEDCOM, $ABBREVIATE_CHART_LABELS;
+global $SHOW_AGE_DIFF, $GEDCOM;
 global $show_full, $famid;
 echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/css/cens_style.css" rel="stylesheet">';
 

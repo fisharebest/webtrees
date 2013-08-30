@@ -133,16 +133,19 @@ class TreeView {
 	private function getPersonDetails($personGroup, $individual, $family) {
 		$r = $this->getThumbnail($personGroup, $individual);
 		$r .= '<a class="tv_link" href="'.$individual->getHtmlUrl().'">'.$individual->getFullName().'</a> <a href="module.php?mod=tree&amp;mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&amp;rootid='.$individual->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())).'" class="icon-button_indi tv_link tv_treelink"></a>';
-		foreach ($individual->getFacts(WT_EVENTS_BIRT) as $fact) {
-			$r .= '<div><b>'.$fact->getLabel(true).'</b> '.$fact->getDate()->Display().' '.$fact->getPlace() . '</div>';
+		foreach ($individual->getFacts(WT_EVENTS_BIRT, true) as $fact) {
+			//$r .= '<div><b>'.$fact->getLabel(true).'</b> '.$fact->getDate()->Display().' '.$fact->getPlace() . '</div>';
+			$r .= $fact->summary();
 		}
 		if ($family) {
-			foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
-				$r .= '<div><b>'.$fact->getLabel(true).'</b> '.$fact->getDate()->Display().' '.$fact->getPlace() . ' <a href="'.$family->getHtmlUrl().'" class="icon-button_family tv_link tv_treelink" title="'.strip_tags($family->getFullName()).'"></a></div>';;
+			foreach ($family->getFacts(WT_EVENTS_MARR, true) as $fact) {
+				//$r .= '<div><b>'.$fact->getLabel(true).'</b> '.$fact->getDate()->Display().' '.$fact->getPlace() . ' <a href="'.$family->getHtmlUrl().'" class="icon-button_family tv_link tv_treelink" title="'.strip_tags($family->getFullName()).'"></a></div>';;
+				$r .= $fact->summary();
 			}
 		}
-		foreach ($individual->getFacts(WT_EVENTS_DEAT) as $fact) {
-			$r .= '<div><b>'.$fact->getLabel(true).'</b> '.$fact->getDate()->Display().' '.$fact->getPlace() . '</div>';
+		foreach ($individual->getFacts(WT_EVENTS_DEAT, true) as $fact) {
+			//$r .= '<div><b>'.$fact->getLabel(true).'</b> '.$fact->getDate()->Display().' '.$fact->getPlace() . '</div>';
+			$r .= $fact->summary();
 		}
 		return '<div class="tv'.$individual->getSex().' tv_person_expanded">' . $r . '</div>';
 	}

@@ -94,7 +94,7 @@ class WT_Individual extends WT_GedcomRecord {
 					0 => array($user_individual),
 					1 => array(),
 				);
-				foreach ($user_individual->getFacts('FAM[CS]', WT_PRIV_HIDE) as $fact) {
+				foreach ($user_individual->getFacts('FAM[CS]', false, WT_PRIV_HIDE) as $fact) {
 					$family = $fact->getTarget();
 					if ($family) {
 						$cache[1][] = $family;
@@ -122,7 +122,7 @@ class WT_Individual extends WT_GedcomRecord {
 				if ($n % 2 == 0) {
 					// Add FAM->INDI links
 					foreach ($cache[$n-1] as $family) {
-						foreach ($family->getFacts('HUSB|WIFE|CHIL', WT_PRIV_HIDE) as $fact) {
+						foreach ($family->getFacts('HUSB|WIFE|CHIL', false, WT_PRIV_HIDE) as $fact) {
 							$individual = $fact->getTarget();
 							// Don’t backtrack
 							if ($individual && !in_array($individual, $cache[$n-2], true)) {
@@ -136,7 +136,7 @@ class WT_Individual extends WT_GedcomRecord {
 				} else {
 					// Add INDI->FAM links
 					foreach ($cache[$n-1] as $individual) {
-						foreach ($individual->getFacts('FAM[CS]', WT_PRIV_HIDE) as $fact) {
+						foreach ($individual->getFacts('FAM[CS]', false, WT_PRIV_HIDE) as $fact) {
 							$family = $fact->getTarget();
 							// Don’t backtrack
 							if ($family && !in_array($family, $cache[$n-2], true)) {
@@ -596,7 +596,7 @@ class WT_Individual extends WT_GedcomRecord {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
 		$families = array();
-		foreach ($this->getFacts('FAMS', $access_level) as $fact) {
+		foreach ($this->getFacts('FAMS', false, $access_level) as $fact) {
 			$family = $fact->getTarget();
 			if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
 				$families[] = $family;
@@ -638,7 +638,7 @@ class WT_Individual extends WT_GedcomRecord {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
 		$families = array();
-		foreach ($this->getFacts('FAMC', $access_level) as $fact) {
+		foreach ($this->getFacts('FAMC', false, $access_level) as $fact) {
 			$family = $fact->getTarget();
 			if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
 				$families[] = $family;

@@ -388,7 +388,7 @@ class WT_GedcomRecord {
 			list($gedrec)=explode("\n", $this->gedcom, 2);
 
 			// Check each of the facts for access
-			foreach ($this->getFacts(null, $access_level) as $fact) {
+			foreach ($this->getFacts(null, false, $access_level) as $fact) {
 				$gedrec .= "\n" . $fact->getGedcom();
 			}
 			return $gedrec;
@@ -785,7 +785,7 @@ class WT_GedcomRecord {
 	}
 
 	// The facts and events for this record
-	public function getFacts($filter=null, $access_level=WT_USER_ACCESS_LEVEL) {
+	public function getFacts($filter=null, $sort=false, $access_level=WT_USER_ACCESS_LEVEL) {
 		$facts=array();
 		if ($this->canShow($access_level)) {
 			foreach ($this->facts as $fact) {
@@ -793,6 +793,9 @@ class WT_GedcomRecord {
 					$facts[] = $fact;
 				}
 			}
+		}
+		if ($sort) {
+			sort_facts($facts);
 		}
 		return $facts;
 	}
@@ -882,7 +885,7 @@ class WT_GedcomRecord {
 		$new_gedcom = '0 @' . $this->getXref() . '@ ' . static::RECORD_TYPE;
 		$old_chan = $this->getFirstFact('CHAN');
 		// Replacing (or deleting) an existing fact
-		foreach ($this->getFacts(null, WT_PRIV_HIDE) as $fact) {
+		foreach ($this->getFacts(null, false, WT_PRIV_HIDE) as $fact) {
 			if ($fact->getFactId() == $fact_id) {
 				if ($gedcom) {
 					$new_gedcom .= "\n" . $gedcom;

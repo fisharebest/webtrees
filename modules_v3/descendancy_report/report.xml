@@ -555,7 +555,7 @@
 												<Text style="label1"> </Text> <!-- @@ -->
 											</if>
 											<Gedcom id="BIRT">
-												<Text style="label1"> <varLetter var="BIRT" />: <GedcomValue tag="DATE" level="2"/>  <GedcomValue tag="PLAC" level="2"/></Text>
+												<Text style="label1"> <var var="WT_I18N::translate('Birth')" />: <GedcomValue tag="DATE" level="2"/>  <GedcomValue tag="PLAC" level="2"/></Text>
 											</Gedcom>
 											<SetVar name="showMarraige" value="T" />
 											<RepeatTag tag="FAMS">
@@ -572,7 +572,7 @@
 												</if>
 												<RepeatTag tag="FAMS">
 													<Gedcom id="@FAMS">
-														<Text style="label1"> <varLetter var="MARR" />: </Text>
+														<Text style="label1"> <var var="WT_I18N::translate('Marriage')" />: </Text>
 														<if condition="$gender=='male'">
 															<Text style="name"><GetPersonName id="@WIFE" /></Text>
 														</if>
@@ -591,7 +591,7 @@
 												</RepeatTag>
 											</if>
 											<Gedcom id="DEAT">
-												<Text style="label1"> <varLetter var="DEAT" />: <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/></Text>
+												<Text style="label1"> <var var="WT_I18N::translate('Death')" />: <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/></Text>
 											</Gedcom>
 										</TextBox>
 									</Gedcom>

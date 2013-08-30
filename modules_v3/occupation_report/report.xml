@@ -2,7 +2,7 @@
 <Report>
 	<Title><var var="WT_I18N::translate('Occupations')" /></Title>
 	<Description><var var="WT_I18N::translate('A report of individuals who had a given occupation.')" /></Description>
-	<Input name="occupation" lookup="OCCU" type="text"><var var="WT_Gedcom_Tag::getLabel('OCCU')" /> </Input>
+	<Input name="occupation" lookup="OCCU" type="text"><var var="WT_I18N::translate('Occupation')" /> </Input>
 	<Input name="sortby" type="select" default="NAME" options="NAME=>WT_I18N::translate('sort by name')|BIRT:DATE=>WT_I18N::translate('sort by date of birth')"><var var="WT_I18N::translate('Sort order')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>
@@ -43,22 +43,22 @@
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='BIRT:DATE'"><SetVar name="fill" value="#AAAAAA" /></if>
 			<TextBox bgcolor="$fill" border="1" width="$datewidth">
-				<Text style="label"><var var="WT_Gedcom_Tag::getLabel('BIRT:DATE')" /></Text>
+				<Text style="label"><var var="WT_I18N::translate('Date of birth')" /></Text>
 			</TextBox>
 			<!-- should print and sort by birth date -->
 
 			<TextBox border="1" width="$occuwidth">
-				<Text style="label"><var var="WT_Gedcom_Tag::getLabel('OCCU')" /></Text>
+				<Text style="label"><var var="WT_I18N::translate('Occupation')" /></Text>
 			</TextBox>
 			<TextBox border="1" width="$occudatewidth">
-				<Text style="label"><var var="WT_Gedcom_Tag::getLabel('DATE')" /></Text>
+				<Text style="label"><var var="WT_I18N::translate('Date')" /></Text>
 			</TextBox>
 			<TextBox border="1" width="$placewidth">
-				<Text style="label"><var var="WT_Gedcom_Tag::getLabel('PLAC')" /></Text>
+				<Text style="label"><var var="WT_I18N::translate('Place')" /></Text>
 			</TextBox>
 
 			<TextBox border="1" newline="1">
-				<Text style="label"><var var="WT_Gedcom_Tag::getLabel('NOTE')" /></Text>
+				<Text style="label"><var var="WT_I18N::translate('Note')" /></Text>
 			</TextBox>
 		</Header>
 		<Body>

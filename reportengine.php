@@ -365,7 +365,6 @@ elseif ($action=='run') {
 	$elementHandler['Title']['start']            = 'TitleSHandler';
 	$elementHandler['TotalPages']['start']       = 'TotalPagesSHandler';
 	$elementHandler['var']['start']              = 'varSHandler';
-	$elementHandler['varLetter']['start']        = 'varLetterSHandler';
 	$elementHandler['sp']['start']               = 'spSHandler';
 
 	/**

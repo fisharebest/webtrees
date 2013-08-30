@@ -447,18 +447,18 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 						$text = explode("-fact, ", $val);
 						$fact = $text[0];
 						$val = $text[1];
-						echo '</b><span>', WT_Gedcom_Tag::getAbbreviation($fact), '</span></a></div>';
+						echo '</b><span>', self::getAbbreviation($fact), '</span></a></div>';
 					}
 					$indiName = $value->getFullName();
 					echo '<table><tr><td width="15"><a class="showit" href="#"><b>';
-					echo WT_Gedcom_Tag::getAbbreviation('BIRT');
+					echo self::getAbbreviation('BIRT');
 					echo '</b><span>', $value->getSexImage(), $indiName, '<br>', WT_Gedcom_Tag::getLabel('BIRT'), ' ', strip_tags($bdate->Display(false)), ' ', $value->getBirthPlace(), '</span></a>',
 						'<td align="left" width="100%"><a href="', $value->getHtmlUrl(), '">', $value->getSexImage(), $indiName, '  ', $lifespan, ' </a></td>' ,
 						'<td width="15">';
 					if ($value->isDead()) {
 						if ($deathReal || $value->isDead()) {
 							echo '<a class="showit" href="#"><b>';
-							echo WT_Gedcom_Tag::getAbbreviation('DEAT');
+							echo self::getAbbreviation('DEAT');
 							if (!$deathReal) echo '*';
 							echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('DEAT').' '.strip_tags($ddate->Display(false)).' '.$value->getDeathPlace().'</span></a>';
 						}
@@ -474,11 +474,11 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 							$text = explode("-fact,", $val);
 							$fact = $text[0];
 							$val = $text[1];
-							echo '</b><span>'.WT_Gedcom_Tag::getAbbreviation($fact).'</span></a></div>';
+							echo '</b><span>'.self::getAbbreviation($fact).'</span></a></div>';
 						}
 						$indiName = $value->getFullName();
 						echo '<table dir="ltr"><tr><td width="15"><a class="showit" href="#"><b>';
-						echo WT_Gedcom_Tag::getAbbreviation('BIRT');
+						echo self::getAbbreviation('BIRT');
 						if (!$birthReal) echo '*';
 						echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'</span></a></td>'.
 						'<td align="left" width="100%"><a href="'.$value->getHtmlUrl().'">'.$value->getSexImage().$indiName.'</a></td>'.
@@ -486,7 +486,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 						if ($value->isDead()) {
 							if ($deathReal || $value->isDead()) {
 								echo '<a class="showit" href="#"><b>';
-								echo WT_Gedcom_Tag::getAbbreviation('DEAT');
+								echo self::getAbbreviation('DEAT');
 								if (!$deathReal) echo "*";
 								echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('DEAT').' '.strip_tags($ddate->Display(false)).' '.$value->getDeathPlace().'</span></a>';
 							}
@@ -497,7 +497,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 						echo '<div style="text-align: left; position: absolute;top:', $Y, 'px; left:', $startPos, 'px;width:', $width, 'px; height:', $height, 'px; background-color:', $this->color, '; border: solid blue 1px; z-index:', $Z, '">';
 						$indiName = $value->getFullName();
 						echo '<a class="showit" href="'.$value->getHtmlUrl().'"><b>';
-						echo WT_Gedcom_Tag::getAbbreviation('BIRT');
+						echo self::getAbbreviation('BIRT');
 						echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'<br>';
 						foreach ($eventinformation as $evtwidth=>$val) {
 							$text = explode('-fact,', $val);
@@ -548,5 +548,14 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			$list[]=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		}
 		return $list;
+	}
+
+	private static function getAbbreviation($tag) {
+		switch ($tag) {
+		case 'BIRT':  return WT_I18N::translate_c('Abbreviation for birth',            'b.');
+		case 'MARR':  return WT_I18N::translate_c('Abbreviation for marriage',         'm.');
+		case 'DEAT':  return WT_I18N::translate_c('Abbreviation for death',            'd.');
+		default:      return utf8_substr(WT_Gedcom_Tag::getLabel($tag), 0, 1); // Just use the first letter of the full fact
+		}
 	}
 }

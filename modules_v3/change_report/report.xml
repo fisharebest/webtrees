@@ -112,7 +112,7 @@
 				</TextBox>
 
 				<TextBox height="12" width="$datewidth">
-					<Text style="text"><varLetter var="BIRT" />: <GedcomValue tag="BIRT:DATE" /><br /><varLetter var="DEAT" />: <GedcomValue tag="DEAT:DATE" /></Text>
+					<Text style="text"><var var="WT_I18N::translate('Birth')" />: <GedcomValue tag="BIRT:DATE" /><br /><var var="WT_I18N::translate('Death')" />: <GedcomValue tag="DEAT:DATE" /></Text>
 				</TextBox>
 
 				<TextBox height="12" newline="1">

@@ -40,7 +40,6 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $GEDCOM;
 	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;
-	global $ABBREVIATE_CHART_LABELS;
 	global $chart_style, $box_width, $generations, $show_spouse, $show_full;
 	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
 	global $SEARCH_SPIDER;
@@ -179,7 +178,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			if (!in_array($birttag, $opt_tags)) {
 				$event = $person->getFirstFact($birttag);
 				if ($event && ($event->getDate()->isOK() || $event->getPlace())) {
-					$BirthDeath .= $event->print_simple_fact(true);
+					$BirthDeath .= $event->summary();
 					break;
 				}
 			}
@@ -189,7 +188,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			if (!preg_match('/^('.WT_EVENTS_DEAT.')$/', $tag)) {
 				$event = $person->getFirstFact($tag);
 				if (!is_null($event)) {
-					$BirthDeath .= $event->print_simple_fact(true);
+					$BirthDeath .= $event->summary();
 					unset ($opt_tags[$key]);
 				}
 			}
@@ -198,7 +197,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		foreach (explode('|', WT_EVENTS_DEAT) as $deattag) {
 			$event = $person->getFirstFact($deattag);
 			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace() || $event->getValue()=='Y')) {
-				$BirthDeath .= $event->print_simple_fact(true);
+				$BirthDeath .= $event->summary();
 				if (in_array($deattag, $opt_tags)) {
 					unset ($opt_tags[array_search($deattag, $opt_tags)]);
 				}
@@ -209,7 +208,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		foreach ($opt_tags as $tag) {
 			$event = $person->getFirstFact($tag);
 			if ($event) {
-				$BirthDeath .= $event->print_simple_fact(true);
+				$BirthDeath .= $event->summary();
 			}
 		}
 	}

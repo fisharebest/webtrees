@@ -723,8 +723,6 @@ if (WT_USER_IS_ADMIN) {
 		echo "<input type=\"checkbox\" name=\"preserve_last_changed\">";
 	}
 	echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br>';
-	//$event = new WT_Fact(get_sub_record(1, '1 CHAN', $gedrec), null, 0);
-	//echo format_fact_date($event, new WT_Individual(''), false, true);
 	echo '</td></tr>';
 }
 echo '</table>';

@@ -402,11 +402,6 @@ case '_PRIM':
 	// This section contains an entry for every configuration item
 	//////////////////////////////////////////////////////////////////////////////
 
-case 'ABBREVIATE_CHART_LABELS':
-	$title=WT_I18N::translate('Abbreviate chart labels');
-	$text=WT_I18N::translate('This option controls whether or not to abbreviate labels like <b>Birth</b> on charts with just the first letter like <b>B</b>.');
-	break;
-
 case 'ADVANCED_NAME_FACTS':
 	$title=WT_I18N::translate('Advanced name facts');
 	$text=WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets.');
