@@ -70,7 +70,7 @@ switch ($action) {
 ////////////////////////////////////////////////////////////////////////////////
 case 'editraw':
 	$xref    = WT_Filter::get('xref',    WT_REGEX_XREF);
-	$fact_id = WT_Filter::get('fact_id', WT_REGEX_TAG);
+	$fact_id = WT_Filter::get('fact_id');
 
 	$record = WT_GedcomRecord::getInstance($xref);
 	check_record_access($record);
