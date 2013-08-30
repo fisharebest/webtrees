@@ -98,7 +98,7 @@ case 'editraw':
 							<?php echo $fact->summary(); ?>
 						</div>
 						<input type="hidden" name="fact_id[]" value="<?php echo $fact->getFactId(); ?>">
-						<textarea name="fact[]" dir="ltr" rows="<?php echo preg_match('/\n/', $fact->getGedcom()); ?>"><?php echo WT_Filter::escapeHtml($fact->getGedcom()); ?></textarea>
+						<textarea name="fact[]" dir="ltr" rows="<?php echo preg_match_all('/\n/', $fact->getGedcom()); ?>"><?php echo WT_Filter::escapeHtml($fact->getGedcom()); ?></textarea>
 					</li>
 					<?php } ?>
 				<?php } ?>
