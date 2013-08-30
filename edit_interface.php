@@ -87,6 +87,7 @@ case 'editraw':
 			<?php print_specialchar_link('gedcom'); ?>
 		</h4>
 		<form method="post" action="edit_interface.php">
+			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="updateraw">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<ul id="raw-gedcom-list">
@@ -188,6 +189,7 @@ case 'editrawfact':
 			<?php print_specialchar_link('gedcom'); ?>
 		</h4>
 		<form method="post" action="edit_interface.php">
+			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="updaterawfact">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<input type="hidden" name="fact_id" value="<?php echo $fact_id; ?>">
@@ -273,6 +275,7 @@ case 'edit':
 	echo '<h4>', $controller->getPageTitle(), '</h4>';
 	init_calendar_popup();
 	echo '<form name="editform" method="post" action="edit_interface.php" enctype="multipart/form-data">';
+	echo '<input type="hidden" name="ged" value="', WT_Filter::escapeHtml(WT_GEDCOM), '">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="fact_id" value="', $fact_id, '">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
@@ -358,6 +361,7 @@ case 'add':
 
 	init_calendar_popup();
 	echo '<form name="addform" method="post" action="edit_interface.php" enctype="multipart/form-data">';
+	echo '<input type="hidden" name="ged" value="', WT_Filter::escapeHtml(WT_GEDCOM), '">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
 	echo '<table class="facts_table">';
@@ -904,6 +908,7 @@ case 'addfamlink':
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<form method="post" name="addchildform" action="edit_interface.php">
+			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="linkfamaction">
 			<input type="hidden" name="xref" value="<?php echo $person->getXref(); ?>">
 			<table class="facts_table">
@@ -1002,6 +1007,7 @@ case 'linkspouse':
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<form method="post" name="addchildform" action="edit_interface.php">
+			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="linkspouseaction">
 			<input type="hidden" name="xref" value="<?php echo $person->getXref(); ?>">
 			<input type="hidden" name="famtag" value="<?php echo $famtag; ?>">
@@ -1104,6 +1110,7 @@ case 'addnewsource':
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
+			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="addsourceaction">
 			<input type="hidden" name="xref" value="newsour">
 			<table class="facts_table">
@@ -1243,6 +1250,7 @@ case 'addnewnote':
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 
 		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
+			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="addnoteaction">
 			<input type="hidden" name="noteid" value="newnote">
 			<?php
@@ -1251,7 +1259,7 @@ case 'addnewnote':
 			echo '<td class="descriptionbox nowrap">';
 			echo WT_I18N::translate('Shared note'), help_link('SHARED_NOTE');
 			echo '</td>';
-			echo '<td class="optionbox wrap" ><textarea name="NOTE" id="NOTE" rows="15" cols="87"></textarea>';
+			echo '<td class="optionbox wrap"><textarea name="NOTE" id="NOTE" rows="15" cols="87"></textarea>';
 			echo print_specialchar_link('NOTE');
 			echo '</td>';
 			echo '</tr>';
@@ -1312,6 +1320,7 @@ case 'addmedia_links':
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<form method="post" action="edit_interface.php?xref=<?php echo $person->getXref(); ?>" onsubmit="findindi()">
+			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="addmedia_links">
 			<input type="hidden" name="noteid" value="newnote">
 			<?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/MEDIA_ctrl.php'; ?>
@@ -1335,6 +1344,7 @@ case 'editsource':
 	echo '<h4>', $controller->getPageTitle(), '</h4>';
 	init_calendar_popup();
 	echo '<form method="post" action="edit_interface.php" enctype="multipart/form-data">';
+	echo '<input type="hidden" name="ged" value="', WT_Filter::escapeHtml(WT_GEDCOM), '">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
 	echo '<table class="facts_table">';
@@ -1397,7 +1407,8 @@ case 'editnote':
 	?>
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
-		<form method="post" action="edit_interface.php" >
+		<form method="post" action="edit_interface.php">
+			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="editnoteaction">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<table class="facts_table">
@@ -1468,6 +1479,7 @@ case 'addnewrepository':
 	echo '</script>';
 	?>
 	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
+		<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 		<input type="hidden" name="action" value="addrepoaction">
 		<input type="hidden" name="xref" value="newrepo">
 		<table class="facts_table">
@@ -1671,6 +1683,7 @@ case 'reorder_media':
 	<div id="edit_interface-page">
 		<h4><?php echo WT_I18N::translate('Click a row, then drag-and-drop to re-order media '); ?></h4>
 		<form name="reorder_form" method="post" action="edit_interface.php">
+			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="reorder_media_update">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<ul id="reorder_media_list">
@@ -1753,6 +1766,7 @@ case 'reorder_children':
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<form name="reorder_form" method="post" action="edit_interface.php">
+			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="reorder_update">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<input type="hidden" name="option" value="bybirth">
@@ -1781,7 +1795,7 @@ case 'reorder_children':
 				foreach ($children as $id=>$child) {
 					echo '<li style="cursor:move; margin-bottom:2px; position:relative;"';
 					if (!in_array($id, $ids)) echo ' class="facts_value new"';
-					echo ' id="li_',$id,'" >';
+					echo ' id="li_',$id,'">';
 					print_pedigree_person(WT_Individual::getInstance($id), 2);
 					echo '<input type="hidden" name="order[',$id,']" value="',$i,'">';
 					echo '</li>';
@@ -1872,6 +1886,7 @@ case 'changefamily':
 				<?php echo WT_I18N::translate('Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the Save button to save the changes.'); ?>
 			</p>
 			<form name="changefamform" method="post" action="edit_interface.php">
+				<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 				<input type="hidden" name="action" value="changefamily_update">
 				<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 				<table>
@@ -2141,12 +2156,13 @@ case 'reorder_fams':
 	<div id="edit_interface-page">
 	<h4><?php echo $controller->getPageTitle(); ?></h4>
 	<form name="reorder_form" method="post" action="edit_interface.php">
+		<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 		<input type="hidden" name="action" value="reorder_fams_update">
 		<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 		<input type="hidden" name="option" value="bymarriage">
 		<ul id="reorder_list">
 		<?php foreach ($fams as $n=>$family) { ?>
-			<li class="facts_value" style="cursor:move;margin-bottom:2px;" id="li_<?php echo $family->getXref(); ?>" >
+			<li class="facts_value" style="cursor:move;margin-bottom:2px;" id="li_<?php echo $family->getXref(); ?>">
 				<div class="name2"><?php echo $family->getFullName(); ?></div>
 				<?php echo $family->format_first_major_fact(WT_EVENTS_MARR, 2); ?>
 				<input type="hidden" name="order[<?php echo $family->getXref(); ?>]" value="<?php echo $n; ?>">
@@ -2274,13 +2290,14 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	echo '<div id="edit_interface-page">';
 	echo '<h4>', $controller->getPageTitle(), '</h4>';
 	init_calendar_popup();
-	echo "<form method=\"post\" name=\"addchildform\" onsubmit=\"return checkform();\">";
-	echo "<input type=\"hidden\" name=\"action\" value=\"$nextaction\">";
-	echo "<input type=\"hidden\" name=\"fact_id\" value=\"$name_fact_id\">";
-	echo "<input type=\"hidden\" name=\"xref\" value=\"$xref\">";
-	echo "<input type=\"hidden\" name=\"famtag\" value=\"$famtag\">";
-	echo "<input type=\"hidden\" name=\"goto\" value=\"\">"; // set by javascript
-	echo "<table class=\"facts_table\">";
+	echo '<form method="post" name="addchildform" onsubmit="return checkform();">';
+	echo '<input type="hidden" name="ged" value="', WT_Filter::escapeHtml(WT_GEDCOM), '">';
+	echo '<input type="hidden" name="action" value="', $nextaction, '">';
+	echo '<input type="hidden" name="fact_id" value="', $name_fact_id, '">';
+	echo '<input type="hidden" name="xref" value="', $xref, '">';
+	echo '<input type="hidden" name="famtag" value="', $famtag, '">';
+	echo '<input type="hidden" name="goto" value="">'; // set by javascript
+	echo '<table class="facts_table">';
 
 	switch ($nextaction) {
 	case 'add_child_to_family_action':
