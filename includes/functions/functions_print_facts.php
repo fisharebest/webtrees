@@ -476,7 +476,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 	$ct = preg_match_all("/$level SOUR (.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
 		if (strpos($match[$j][1], '@')===false) {
-			$data .= '<div="fact_SOUR"><span class="label">'.WT_I18N::translate('Source').':</span> <span class="field" dir="auto">'.WT_Filter::escapeHtml($match[$j][1]).'</span></div>';
+			$data .= '<div class="fact_SOUR"><span class="label">'.WT_I18N::translate('Source').':</span> <span class="field" dir="auto">'.WT_Filter::escapeHtml($match[$j][1]).'</span></div>';
 		}
 	}
 	// -- find source for each fact
