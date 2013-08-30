@@ -168,7 +168,7 @@ msgstr ""
 #. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
 #: library/WT/I18N.php:152
 msgid "%H:%i:%s"
-msgstr "g:%i:%s %a"
+msgstr "%g:%i:%s %a"
 
 #. I18N: This is a title, so needs suitable capitalisation
 #: includes/functions/functions_charts.php:248
