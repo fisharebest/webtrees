@@ -45,14 +45,10 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 
 		// Block actions
 		$action     = WT_Filter::get('action');
-		$message_id = WT_Filter::getInteger('message_id');
+		$message_id = WT_Filter::getArray('message_id');
 		if ($action=='deletemessage') {
-			if (is_array($message_id)) {
-				foreach ($message_id as $msg_id) {
-					deleteMessage($msg_id);
-				}
-			} else {
-				deleteMessage($message_id);
+			foreach ($message_id as $msg_id) {
+				deleteMessage($msg_id);
 			}
 		}
 		$block=get_block_setting($block_id, 'block', true);
@@ -114,7 +110,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				if ($user_id) {
 					$content.='<a href="#" onclick="reply(\''.WT_Filter::escapeHtml($message->sender).'\', \''.WT_Filter::escapeHtml($message->subject).'\'); return false;">'.WT_I18N::translate('Reply').'</a> | ';
 				}
-				$content.='<a href="index.php?action=deletemessage&amp;message_id='.$message->message_id.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">'.WT_I18N::translate('Delete').'</a></div></td></tr>';
+				$content.='<a href="index.php?action=deletemessage&amp;message_id[]='.$message->message_id.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">'.WT_I18N::translate('Delete').'</a></div></td></tr>';
 			}
 			$content.='</table>';
 			$content.='<input type="submit" value="'.WT_I18N::translate('Delete Selected Messages').'"><br>';
