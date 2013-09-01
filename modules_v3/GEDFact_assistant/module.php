@@ -211,4 +211,93 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		<script>window.onLoad = insertId();</script>
 		<?php
 	}
+
+	// Convert custom markup into HTML
+	public static function formatCensusNote(WT_Note $note) {
+		$headers = array(
+			'.b.AgM'        => 'Age at first marriage',
+			'.b.Age'        => 'Age at last birthday',
+			'.b.Assets'     => 'Assets = Owned,Rented - Value,Rent - Radio - Farm',
+			'.b.BIC'        => 'Born in County',
+			'.b.BOE'        => 'Born outside England',
+			'.b.BP'         => 'Birthplace - (Chapman format)',
+			'.b.Birthplace' => 'Birthplace (Full format)',
+			'.b.Bmth'       => 'Month of birth - If born within Census year',
+			'.b.ChB'        => 'Children born alive',
+			'.b.ChD'        => 'Children who have died',
+			'.b.ChL'        => 'Children still living',
+			'.b.DOB'        => 'Date of birth',
+			'.b.Edu'        => 'Education - At School, Can Read, Can Write', // or "Cannot Read, Cannot Write" ?? 
+			'.b.EmD'        => 'Employed?',
+			'.b.EmN'        => 'Unemployed?',
+			'.b.EmR'        => 'Employer?',
+			'.b.Employ'     => 'Employment',
+			'.b.Eng?'       => 'English spoken?',
+			'.b.EngL'       => 'English spoken?, if not, Native Language',
+			'.b.FBP'        => 'Father’s Birthplace - (Chapman format)',
+			'.b.Health'     => 'Health - 1.Blind, 2.Deaf & Dumb, 3.Idiotic, 4.Insane, 5.Disabled etc',
+			'.b.Home'       => 'Home Ownership - Owned/Rented-Free/Mortgaged-Farm/House-Farm Schedule number',
+			'.b.Industry'   => 'Industry',
+			'.b.Infirm'     => 'Infirmities - 1. Deaf & Dumb, 2. Blind, 3. Lunatic, 4. Imbecile/feeble-minded',
+			'.b.Lang'       => 'If Foreign Born - Native Language',
+			'.b.MBP'        => 'Mother’s Birthplace - (Chapman format)',
+			'.b.MC'         => 'Marital Condition - Married, Single, Unmarried, Widowed or Divorced',
+			'.b.Mmth'       => 'Month of marriage - If married during Census Year',
+			'.b.MnsE'       => 'Months employed during Census Year',
+			'.b.MnsU'       => 'Months unemployed during Census Year',
+			'.b.N/A'        => 'If Foreign Born - Naturalized, Alien',
+			'.b.NL'         => 'If Foreign Born - Native Language',
+			'.b.Name'       => 'Full Name or Married name if married',
+			'.b.Occupation' => 'Occupation',
+			'.b.Par'        => 'Parentage - Father if foreign born, Mother if foreign born',
+			'.b.Race'       => 'Race or Color - Black, White, Mulatto, Asian, Indian, Chinese etc',
+			'.b.Relation'   => 'Relationship to Head of Household',
+			'.b.Sex'        => 'Male or Female',
+			'.b.Situ'       => 'Situation - Disease, Infirmity, Convict, Pauper etc',
+			'.b.Ten'        => 'Tenure - Owned/Rented, (if owned)Free/Morgaged',
+			'.b.Vet'        => 'War Veteran?',
+			'.b.WH'         => 'Working at Home?',
+			'.b.War'        => 'War or Expedition',
+			'.b.WksU'       => 'Weeks unemployed during Census Year',
+			'.b.YOI'        => 'If Foreign Born - Year of Immigration',
+			'.b.YON'        => 'If Foreign Born - Year of Naturalization',
+			'.b.YUS'        => 'If Foreign Born - Years in the USA',
+			'.b.YrsM'       => 'Years Married, or Y if married in Census Year',
+		);
+
+		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.*)((?:\n.*)*)\n.end_formatted_area\.\n(.*(?:\n.*)*)/', $note->getNote(), $match)) {
+			// This looks like a census-assistant shared note
+			$title     = WT_Filter::escapeHtml($match[1]);
+			$preamble  = WT_Filter::escapeHtml($match[2]);
+			$header    = WT_Filter::escapeHtml($match[3]);
+			$data      = WT_Filter::escapeHtml($match[4]);
+			$postamble = WT_Filter::escapeHtml($match[5]);
+
+			// Substitue header labels and format as HTML
+			$thead = '<tr><th>' . strtr(str_replace('|', '</th><th>', $header), $headers) . '</th></tr>';
+
+			// Format data as HTML
+			$tbody = '';
+			foreach (explode("\n", $data) as $row) {
+				$tbody .= '<tr>';
+				foreach (explode('|', $row) as $column) {
+					$tbody .= '<td>' . $column . '</td>';
+				}
+				$tbody .= '</tr>';
+			}
+
+			return
+				'<span class="note1">' . $title . '</span>' .
+				'<br>' . // Needed to allow the first line to be converted to a link
+				'<span class="note1">' . $preamble . '</span>' .
+				'<table class="note2">' .
+				'<thead>' .  $thead .  '</thead>' .
+				'<tbody>' .  $tbody .  '</tbody>' .
+				'</table>' .
+				'<span class="note1">' . $postamble . '</span>';
+		} else {
+			// Not a census-assistant shared note - apply default formatting
+			return expand_urls($note->getNote());
+		}
+	}
 }

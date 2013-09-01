@@ -1939,7 +1939,7 @@ function expand_urls($text) {
 			'$m',
 			'return "<a href=\"".$m[0]."\" target=\"blank\">".preg_replace("/\b/", "&shy;", $m[0])."</a>";'
 		),
-		preg_replace("/<(?!br)/i", "&lt;", $text) // no html except br
+		nl2br(WT_Filter::escapeHtml($text), true)
 	);
 }
 

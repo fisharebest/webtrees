@@ -45,7 +45,7 @@ class WT_Fact {
 	// Create an event objects from a gedcom fragment.
 	// We need the parent object (to check privacy) and a (pseudo) fact ID to
 	// identify the fact within the record.
-	function __construct($gedcom, WT_GedcomRecord $parent, $fact_id) {
+	public function __construct($gedcom, WT_GedcomRecord $parent, $fact_id) {
 		if (preg_match('/^1 ('.WT_REGEX_TAG.')/', $gedcom, $match)) {
 			$this->gedcom  = $gedcom;
 			$this->parent  = $parent;
@@ -59,7 +59,7 @@ class WT_Fact {
 
 	// Get the value of level 1 data in the fact
 	// Allow for multi-line values
-	function getValue() {
+	public function getValue() {
 		if (preg_match('/^1 (?:' . $this->tag . ') ?(.*(?:(?:\n2 CONT .*)*))/', $this->gedcom, $match)) {
 			return str_replace("\n2 CONT ", "\n", $match[1]);
 		} else {
@@ -68,7 +68,7 @@ class WT_Fact {
 	}
 
 	// Get the record to which this fact links
-	function getTarget() {
+	public function getTarget() {
 		$xref = trim($this->getValue(), '@');
 		switch ($this->tag) {
 		case 'FAMC':
@@ -92,7 +92,7 @@ class WT_Fact {
 	}
 
 	// Get the value of level 2 data in the fact
-	function getAttribute($tag) {
+	public function getAttribute($tag) {
 		if (preg_match('/\n2 (?:' . $tag . ') ?(.*(?:(?:\n3 CONT .*)*)*)/', $this->gedcom, $match)) {
 			return str_replace("\n3 CONT ", "\n", $match[1]);
 		} else {
@@ -101,7 +101,7 @@ class WT_Fact {
 	}
 
 	// Do the privacy rules allow us to display this fact to the current user
-	function canShow($access_level=WT_USER_ACCESS_LEVEL) {
+	public function canShow($access_level=WT_USER_ACCESS_LEVEL) {
 		// TODO - use the privacy settings for $this->gedcom_id, not the default gedcom.
 		global $person_facts, $global_facts;
 
@@ -117,7 +117,6 @@ class WT_Fact {
 		}
 
 		// Does this record have a default RESN?
-		if (!$this->parent) die($eek);
 		$xref = $this->parent->getXref();
 		if (isset($person_facts[$xref][$this->tag])) {
 			return $person_facts[$xref][$this->tag] >= $access_level;
@@ -142,7 +141,7 @@ class WT_Fact {
 	}
 
 	// The place where the event occured.
-	function getPlace() {
+	public function getPlace() {
 		if ($this->place === null) {
 			$this->place = $this->getAttribute('PLAC');
 		}
@@ -151,7 +150,7 @@ class WT_Fact {
 
 	// We can call this function many times, especially when sorting,
 	// so keep a copy of the date.
-	function getDate() {
+	public function getDate() {
 		if ($this->date === null) {
 			$this->date = new WT_Date($this->getAttribute('DATE'));
 		}
@@ -159,31 +158,31 @@ class WT_Fact {
 	}
 
 	// The raw GEDCOM data for this fact
-	function getGedcom() {
+	public function getGedcom() {
 		return $this->gedcom;
 	}
 
 	// Unique identifier for the fact
-	function getFactId() {
+	public function getFactId() {
 		return $this->fact_id;
 	}
 
 	// What sort of fact is this?
-	function getTag() {
+	public function getTag() {
 		return $this->tag;
 	}
 
 	// Used to convert a real fact (e.g. BIRT) into a close-relative’s fact (e.g. _BIRT_CHIL)
-	function setTag($tag) {
+	public function setTag($tag) {
 		$this->tag = $tag;
 	}
 
 	// The Person/Family record where this WT_Fact came from
-	function getParent() {
+	public function getParent() {
 		return $this->parent;
 	}
 
-	function getLabel() {
+	public function getLabel() {
 		switch($this->tag) {
 		case 'EVEN':
 		case 'FACT':
@@ -213,8 +212,54 @@ class WT_Fact {
 		return $this->is_new;
 	}
 
+	// Source citations linked to this fact
+	public function getCitations() {
+		preg_match_all('/\n(2 SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->getGedcom(), $matches, PREG_SET_ORDER);
+		$citations = array();
+		foreach ($matches as $match) {
+			$source = WT_Source::getInstance($match[2]);
+			if ($source->canShow()) {
+				$citations[] = $match[1];
+			}
+		}
+		return $citations;
+	}
+
+	// Notes (inline and objects) linked to this fact
+	public function getNotes() {
+		$notes = array();
+		preg_match_all('/\n2 NOTE ?(.*(\n3.*)*)/', $this->getGedcom(), $matches);
+		foreach ($matches[1] as $match) {
+			$note = preg_replace("/\n3 CONT ?/", "\n", $match);
+			if (preg_match('/@(' . WT_REGEX_XREF . ')@/', $note, $nmatch)) {
+				$note = WT_Note::getInstance($nmatch[1]);
+				if ($note && $note->canShow()) {
+					// A note object
+					$notes[] = $note;
+				}
+			} else {
+				// An inline note
+				$notes[] = $note;
+			}
+		}
+		return $notes;
+	}
+
+	// Media objects linked to this fact
+	public function getMedia() {
+		$media = array();
+		preg_match_all('/\n(2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches);
+		foreach ($matches[1] as $match) {
+			$obje = WT_Media::getInstance($match);
+			if ($obje->canShow()) {
+				$media[] = $obje;
+			}
+		}
+		return $media;
+	}
+
 	// A one-line summary of the fact - for charts, etc.
-	function summary() {
+	public function summary() {
 		$attributes = array();
 		$target = $this->getTarget();
 		if ($target) {
@@ -245,7 +290,7 @@ class WT_Fact {
 
 	// Display an icon for this fact.
 	// Icons are held in a theme subfolder.  Not all themes provide icons.
-	function Icon() {
+	public function Icon() {
 		$dir=WT_THEME_DIR.'images/facts/';
 		$tag=$this->getTag();
 		$file=$tag.'.png';

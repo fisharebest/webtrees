@@ -896,16 +896,15 @@ function print_main_notes(WT_Fact $fact, $level) {
 			}
 		}
 		echo '</td>';
-		$nrec = get_sub_record($level, "$level NOTE", $factrec, $j+1);
 		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
-			//-- print linked/shared note records
+			// Note objects
 			$nid = $nmatch[1];
 			$note=WT_Note::getInstance($nid);
 			if ($note) {
 				$text = $note->getNote();
-				// If Census assistant installed,
+				// If Census assistant installed, allow it to format the note
 				if ($fact->getTag()=='CENS' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-					require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php';
+					$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
 				} else {
 					$text = expand_urls($text);
 				}
@@ -913,7 +912,8 @@ function print_main_notes(WT_Fact $fact, $level) {
 				$text = '<span class="error">' . WT_Filter::escapeHtml($nid) . '</span>';
 			}
 		} else {
-			//-- print embedded note records
+			// Inline notes
+			$nrec = get_sub_record($level, "$level NOTE", $factrec, $j+1);
 			$text = $match[$j][1] . get_cont($level+1, $nrec);
 			$text = expand_urls($text);
 		}
@@ -951,8 +951,6 @@ function print_main_notes(WT_Fact $fact, $level) {
 				echo '</span>';
 			}
 		}
-		echo '<br>';
-		echo print_fact_sources($nrec, $level+1);
 		echo '</td></tr>';
 	}
 }

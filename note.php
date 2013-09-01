@@ -92,6 +92,13 @@ foreach ($controller->record->getFacts() as $fact) {
 	}
 }
 
+// Check if using census assistant
+if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+	$text = GEDFact_assistant_WT_Module::formatCensusNote($controller->record);
+} else {
+	$text = $controller->record->getNote();
+}
+
 ?>
 <div id="note-details">
 	<h2><?php echo $controller->record->getFullName(); ?></h2>
@@ -130,7 +137,7 @@ foreach ($controller->record->getFacts() as $fact) {
 						<?php echo WT_I18N::translate('Shared note'); ?>
 					<?php } ?>
 				</td>
-				<td class="optionbox wrap width80" style="white-space: pre-wrap;"><?php echo $controller->record->getNote(); ?></td>
+				<td class="optionbox wrap width80" style="white-space: pre-wrap;"><?php echo $text; ?></td>
 			</tr>
 			<?php
 				foreach ($facts as $fact) {
