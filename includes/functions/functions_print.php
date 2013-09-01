@@ -485,9 +485,8 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 * @param string $factrec the factrecord to print the notes from
 * @param int $level The level of the factrecord
 * @param bool $textOnly Don't print the "Note: " introduction
-* @param boolean $return whether to return text or print the data
 */
-function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
+function print_fact_notes($factrec, $level, $textOnly=false) {
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
@@ -521,7 +520,7 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 					if (!$textOnly) {
 						if (strpos($noterec, "1 SOUR")!==false) {
 							require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-							$data .= print_fact_sources($noterec, 1, true);
+							$data .= print_fact_sources($noterec, 1);
 						}
 					}
 				}
@@ -532,13 +531,12 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 		if (!$textOnly) {
 			if (strpos($factrec, "$nlevel SOUR")!==false) {
 				$data .= "<div class=\"indent\">";
-				$data .= print_fact_sources($nrec, $nlevel, true);
+				$data .= print_fact_sources($nrec, $nlevel);
 				$data .= "</div>";
 			}
 		}
 	}
-	if (!$return) echo $data;
-	else return $data;
+	return $data;
 }
 
 //-- function to print a privacy error with contact method
@@ -920,10 +918,7 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub=false, $lds=false
 				$html.=' <a target="_BLANK" href="'."//www.terraserver.com/imagery/image_gx.asp?cpx={$map_long}&amp;cpy={$map_lati}&amp;res=30&amp;provider_id=340".'" class="icon-terraserver" title="TerraServer™"></a>';
 			}
 			if (preg_match('/\d NOTE (.*)/', $placerec, $match)) {
-				ob_start();
-				print_fact_notes($placerec, 3);
-				$html.='<br>'.ob_get_contents();
-				ob_end_clean();
+				$html .= '<br>' . print_fact_notes($placerec, 3);
 			}
 		}
 	}

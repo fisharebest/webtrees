@@ -432,11 +432,8 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			break;
 		}
 	}
-	// -- find source for each fact
-	print_fact_sources($fact->getGedcom(), 2);
-	// -- find notes for each fact
-	print_fact_notes($fact->getGedcom(), 2);
-	//-- find media objects
+	echo print_fact_sources($fact->getGedcom(), 2);
+	echo print_fact_notes($fact->getGedcom(), 2);
 	print_media_links($fact->getGedcom(), 2, $parent->getXref());
 	echo '</td></tr>';
 }
@@ -453,7 +450,7 @@ function print_repository_record($xref) {
 	if ($repository && $repository->canShow()) {
 		echo '<a class="field" href="', $repository->getHtmlUrl(), '">', $repository->getFullName(), '</a><br>';
 		echo '<br>';
-		print_fact_notes($repository->getGedcom(), 1);
+		echo print_fact_notes($repository->getGedcom(), 1);
 	}
 }
 
@@ -464,9 +461,8 @@ function print_repository_record($xref) {
  * print any source information attached to the fact
  * @param string $factrec The fact record to look for sources in
  * @param int $level The level to look for sources at
- * @param boolean $return whether to return the data or print the data
  */
-function print_fact_sources($factrec, $level, $return=false) {
+function print_fact_sources($factrec, $level) {
 	global $EXPAND_SOURCES;
 
 	$data = '';
@@ -524,7 +520,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 				ob_start();
 				print_media_links($srec, $nlevel);
 				$data .= ob_get_clean();
-				$data .= print_fact_notes($srec, $nlevel, false, true);
+				$data .= print_fact_notes($srec, $nlevel, false);
 				$data .= '</div>';
 				$data .= '</div>';
 			} else {
@@ -538,11 +534,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 		}
 	}
 
-	if ($return) {
-		return $data;
-	} else {
-		echo $data;
-	}	
+	return $data;
 }
 
 //-- Print the links to media objects
@@ -603,8 +595,8 @@ function print_media_links($factrec, $level, $pid='') {
 						}
 					}
 				}
-				print_fact_notes($media->getGedcom(), $nlevel);
-				print_fact_sources($media->getGedcom(), $nlevel);
+				echo print_fact_notes($media->getGedcom(), $nlevel);
+				echo print_fact_sources($media->getGedcom(), $nlevel);
 				echo '</div>';//close div "media-display-title"
 				echo '</div>';//close div "media-display"
 			}
@@ -728,9 +720,9 @@ function print_main_sources(WT_Fact $fact, $level) {
 				if ($nlevel==2) {
 					print_media_links($source->getGedcom(), 1);
 				}
-				print_fact_notes($srec, $nlevel);
+				echo print_fact_notes($srec, $nlevel);
 				if ($nlevel==2) {
-					print_fact_notes($source->getGedcom(), 1);
+					echo print_fact_notes($source->getGedcom(), 1);
 				}
 				echo '</div>';
 			} else {
@@ -929,7 +921,9 @@ function print_main_notes(WT_Fact $fact, $level) {
 		echo '<td class="optionbox', $styleadd, ' wrap" align="', $TEXT_DIRECTION== "rtl"?"right": "left" , '">';
 		echo '<div style="white-space:pre-wrap;">', $text, '</div>';
 
-		if (!empty($noterec)) print_fact_sources($noterec, 1);
+		if (!empty($noterec)) {
+			echo print_fact_sources($noterec, 1);
+		}
 
 		// 2 RESN tags.  Note, there can be more than one, such as "privacy" and "locked"
 		if (preg_match_all("/\n2 RESN (.+)/", $factrec, $matches)) {
@@ -958,7 +952,7 @@ function print_main_notes(WT_Fact $fact, $level) {
 			}
 		}
 		echo '<br>';
-		print_fact_sources($nrec, $level+1);
+		echo print_fact_sources($nrec, $level+1);
 		echo '</td></tr>';
 	}
 }
@@ -1061,8 +1055,8 @@ function print_main_media(WT_Fact $fact, $level) {
 					echo WT_Gedcom_Tag::getLabelValue('_PRIM', WT_I18N::translate('no'));
 					break;
 				}
-				print_fact_notes($media->getGedcom(), 1);
-				print_fact_sources($media->getGedcom(), 1);
+				echo print_fact_notes($media->getGedcom(), 1);
+				echo print_fact_sources($media->getGedcom(), 1);
 			} else {
 				echo $xref;
 			}

@@ -282,8 +282,8 @@ if ($search) {
 		}
 		echo '<br>';
 		echo '<div style="white-space: normal; width: 95%;">';
-		print_fact_sources($mediaobject->getGedcom(), 1);
-		print_fact_notes($mediaobject->getGedcom(), 1);
+		echo print_fact_sources($mediaobject->getGedcom(), 1);
+		echo print_fact_notes($mediaobject->getGedcom(), 1);
 		echo '</div>';
 		foreach ($mediaobject->linkedIndividuals('OBJE') as $individual) {
 			echo '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View person') . ' — ' . $individual->getFullname().'</a><br>';
