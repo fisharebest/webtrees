@@ -68,7 +68,7 @@ $module_status=WT_DB::prepare("SELECT module_name, status FROM `##module`")->fet
 switch (WT_Filter::post('action')) {
 case 'update_mods':
 	foreach ($modules as $module_name=>$status) {
-		$new_status=WT_Filter::post("status-{$module_name}");
+		$new_status=WT_Filter::post("status-{$module_name}", '[01]');
 		if ($new_status!==null) {
 			$new_status=$new_status ? 'enabled' : 'disabled';
 			if ($new_status!=$status) {
