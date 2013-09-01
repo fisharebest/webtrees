@@ -492,8 +492,8 @@ case 'update':
 // Add a new child to an existing family
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_child_to_family':
-	$xref   = WT_Filter::getXREF('xref');
-	$gender = WT_Filter::get('gender', '[MF]', 'U');
+	$xref   = WT_Filter::get('xref', WT_REGEX_XREF);
+	$gender = WT_Filter::get('gender', '[MFU]', 'U');
 
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
