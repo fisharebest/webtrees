@@ -807,7 +807,7 @@ function getSourceStructure($srec) {
 					$i--;
 					break;
 				}
-				if ($nextTag=='CONT') $text .= '<br>';
+				if ($nextTag=='CONT') $text .= "\n";
 				$text .= rtrim(substr($subrecords[$i], 7));
 			}
 			if ($tag=='TEXT') {
