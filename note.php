@@ -129,7 +129,7 @@ if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						<div class="editfacts">
 							<div class="editlink">
 							<a class="editicon" href="#" onclick="edit_note()" title="<?php echo WT_I18N::translate('Edit'); ?>">
-								<span class="link_text">', WT_I18N::translate('Edit'), '</span>
+								<span class="link_text"><?php echo WT_I18N::translate('Edit'); ?></span>
 							</a>
 						</div>
 					<?php } else { ?>

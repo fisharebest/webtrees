@@ -171,7 +171,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 					title="<?php echo WT_I18N::translate('Copy'); ?>"
 					class="copyicon"
 					onclick="return copy_fact('<?php echo $parent->getXref(); ?>', '<?php echo $fact->getFactId(); ?>');"
-				><span class="link_text">', WT_I18N::translate('Copy'), '</span></a>
+				><span class="link_text"><?php echo WT_I18N::translate('Copy'); ?></span></a>
 			</div>
 			<div class="deletelink">
 				<a
@@ -179,7 +179,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 					title="<?php echo WT_I18N::translate('Delete'); ?>"
 					class="deleteicon"
 					onclick="return delete_fact('<?php echo WT_I18N::translate('Are you sure you want to delete this fact?'); ?>', '<?php echo $parent->getXref(); ?>', '<?php echo $fact->getFactId(); ?>');"
-				><span class="link_text">', WT_I18N::translate('Delete'), '</span></a>
+				><span class="link_text"><?php echo WT_I18N::translate('Delete'); ?></span></a>
 			</div>
 		</div>
 		<?php
