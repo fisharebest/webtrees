@@ -423,8 +423,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-'.$plusminus.'"></i></a> ';
 	}
 
-	// Check if Shared Note -----------------------------
-	if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
+	if ($note) {
 		$data .= WT_I18N::translate('Shared note').': </span> ';
 	} else {
 		$data .= WT_I18N::translate('Note').': </span>';
@@ -436,7 +435,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 			$line1 = '<a href="' . $note->getHtmlUrl() . '">' . $line1 . '</a>';
 		}
 		$data .= '<span class="field" dir="auto">' . $line1 . '</span>';
-		$data .= '<div id="'.$elementID.'"';
+		$data .= '<div id="' . $elementID . '"';
 		if ($EXPAND_NOTES) {
 			$data .= ' style="display:block"';
 		}

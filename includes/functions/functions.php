@@ -309,14 +309,9 @@ function get_sub_record($level, $tag, $gedrec, $num=1) {
  * @param string $nrec the gedcom subrecord to search in
  * @return string a string with all CONT or CONC lines merged
  */
-function get_cont($nlevel, $nrec, $tobr=true) {
+function get_cont($nlevel, $nrec) {
 	global $WORD_WRAPPED_NOTES;
 	$text = "";
-	if ($tobr) {
-		$newline = "<br>";
-	} else {
-		$newline = "\n";
-	}
 
 	$subrecords = explode("\n", $nrec);
 	foreach ($subrecords as $thisSubrecord) {
@@ -325,7 +320,7 @@ function get_cont($nlevel, $nrec, $tobr=true) {
 		}
 		$subrecordType = substr($thisSubrecord, 2, 4);
 		if ($subrecordType=="CONT") {
-			$text .= $newline;
+			$text .= "\n";
 		}
 		if ($subrecordType=="CONC" && $WORD_WRAPPED_NOTES) {
 			$text .= " ";

@@ -655,7 +655,7 @@ if (!empty($gedrec)) {
 			$fact = trim($match[2]);
 			$event = trim($match[3]);
 			if ($fact=='NOTE' || $fact=='TEXT') {
-				$event .= get_cont(($subLevel +1), $subrec, false);
+				$event .= get_cont(($subLevel +1), $subrec);
 			}
 			if ($sourceSOUR!='' && $subLevel<=$sourceLevel) {
 				// Get rid of all saved Source data
