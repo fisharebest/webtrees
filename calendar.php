@@ -519,8 +519,8 @@ echo '</div>'; //close "calendar-page"
 // Filter a list of anniversaries
 /////////////////////////////////////////////////////////////////////////////////
 function apply_filter($facts, $filterof, $filtersx) {
-	$filtered=array();
-	$hundred_years=WT_SERVER_JD-36525;
+	$filtered = array();
+	$hundred_years = WT_CLIENT_JD - 36525;
 	foreach ($facts as $fact) {
 		$record = $fact->getParent();
 		if ($filtersx) {

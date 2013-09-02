@@ -118,7 +118,7 @@ function format_timestamp($time) {
 			}
 				break;
 		default:
-			$time_fmt=str_replace($match, WT_I18N::digits(date(substr($match, -1), $time)), $time_fmt);
+			$time_fmt=str_replace($match, WT_I18N::digits(gmdate(substr($match, -1), $time)), $time_fmt);
 		}
 	}
 
@@ -129,5 +129,5 @@ function format_timestamp($time) {
 // Convert a unix-style timestamp into a WT_Date object
 ////////////////////////////////////////////////////////////////////////////////
 function timestamp_to_gedcom_date($time) {
-	return new WT_Date(strtoupper(date('j M Y', $time)));
+	return new WT_Date(strtoupper(gmdate('j M Y', $time)));
 }

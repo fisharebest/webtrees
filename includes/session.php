@@ -418,13 +418,17 @@ if (empty($WEBTREES_EMAIL)) {
 	$WEBTREES_EMAIL='webtrees-noreply@'.preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);
 }
 
-// Use the server date to calculate privacy, etc.
-// Use the client date to show ages, etc.
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
-define('WT_TIMESTAMP', WT_DB::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
-define('WT_CLIENT_TIMESTAMP', WT_TIMESTAMP - $WT_SESSION->timediff);
+define('WT_TIMESTAMP', (int)WT_DB::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
 
-define('WT_SERVER_JD', 2440588 + (int)(WT_TIMESTAMP       /86400));
+// Server timezone is defined in php.ini
+define('WT_SERVER_TIMESTAMP', WT_TIMESTAMP + (int)date('Z'));
+
+if (WT_USER_ID) {
+	define('WT_CLIENT_TIMESTAMP', WT_TIMESTAMP - $WT_SESSION->timediff);
+} else {
+	define('WT_CLIENT_TIMESTAMP', WT_SERVER_TIMESTAMP);
+}
 define('WT_CLIENT_JD', 2440588 + (int)(WT_CLIENT_TIMESTAMP/86400));
 
 // Application configuration data - things that aren’t (yet?) user-editable

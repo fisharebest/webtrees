@@ -47,7 +47,7 @@ $user_hashcode   = WT_Filter::post('user_hashcode');
 $url             = WT_Filter::postUrl('url');
 $username        = WT_Filter::post('username');
 $password        = WT_Filter::post('password'); // Can use any password that was previously stored
-$usertime        = WT_Filter::post('usertime');
+$timediff        = WT_Filter::postInteger('timediff', -43200, 50400, 0); // Same range as date('Z')
 
 // These parameters may come from the URL which is emailed to users.
 if (empty($action))        $action        = WT_Filter::get('action');
@@ -64,42 +64,38 @@ $message='';
 switch ($action) {
 case 'login':
 default:
-	if ($action=='login') {
-		$user_id=authenticateUser($username, $password);
+	if ($action == 'login') {
+		$user_id = authenticateUser($username, $password);
 		switch ($user_id) {
 		case -1: // not validated
-			$message=WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.');
+			$message = WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.');
 			break;
 			
 		case -2: // not approved
-			$message=WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.');
+			$message = WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.');
 			break;
 
 		case -3: // bad password
 		case -4: // bad username
-			$message=WT_I18N::translate('The username or password is incorrect.');
+			$message = WT_I18N::translate('The username or password is incorrect.');
 			break;
 
 		case -5: // no cookies
-			$message=WT_I18N::translate('You cannot login because your browser does not accept cookies.');
+			$message = WT_I18N::translate('You cannot login because your browser does not accept cookies.');
 			break;
 
 		default: // Success
-			if ($usertime) {
-				$WT_SESSION->timediff=WT_TIMESTAMP - strtotime($usertime);
-			} else {
-				$WT_SESSION->timediff=0;
-			}
-			$WT_SESSION->locale   =get_user_setting($user_id, 'language');
-			$WT_SESSION->theme_dir=get_user_setting($user_id, 'theme');
+			$WT_SESSION->timediff  = $timediff;
+			$WT_SESSION->locale    = get_user_setting($user_id, 'language');
+			$WT_SESSION->theme_dir = get_user_setting($user_id, 'theme');
 
 			// If we’ve clicked login from the login page, we don’t want to go back there.
-			if (strpos($url, WT_SCRIPT_NAME)===0) {
+			if (strpos($url, WT_SCRIPT_NAME) === 0) {
 				$url='index.php';
 			}
 
 			// Redirect to the target URL
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$url);
+			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $url);
 			// Explicitly write the session data before we exit,
 			// as it doesn’t always happen when using APC.
 			Zend_Session::writeClose();
@@ -142,10 +138,10 @@ default:
 
 	echo '</div>';
 	echo '<div id="login-box">
-		<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="t = new Date(); this.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds();return true;">
+		<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="d=new Date(); this.timediff.value=d.getTimezoneOffset()*60;">
 		<input type="hidden" name="action" value="login">
 		<input type="hidden" name="url" value="', WT_Filter::escapeHtml($url), '">
-		<input type="hidden" name="usertime" value="">';
+		<input type="hidden" name="timediff" value="0">';
 		if (!empty($message)) echo '<span class="error"><br><b>', $message, '</b><br><br></span>';
 		echo '<div>
 			<label for="username">', WT_I18N::translate('Username'),

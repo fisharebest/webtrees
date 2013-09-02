@@ -211,7 +211,7 @@ class WT_Individual extends WT_GedcomRecord {
 		if (preg_match_all('/\n2 DATE (.+)/', $this->gedcom, $date_matches)) {
 			foreach ($date_matches[1] as $date_match) {
 				$date=new WT_Date($date_match);
-				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*$MAX_ALIVE_AGE) {
+				if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365*$MAX_ALIVE_AGE) {
 					return true;
 				}
 			}
@@ -231,7 +231,7 @@ class WT_Individual extends WT_GedcomRecord {
 				preg_match_all('/\n2 DATE (.+)/', $parent->gedcom, $date_matches);
 				foreach ($date_matches[1] as $date_match) {
 					$date=new WT_Date($date_match);
-					if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+45)) {
+					if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365*($MAX_ALIVE_AGE+45)) {
 						return true;
 					}
 				}
@@ -244,7 +244,7 @@ class WT_Individual extends WT_GedcomRecord {
 			foreach ($date_matches[1] as $date_match) {
 				$date=new WT_Date($date_match);
 				// Assume marriage occurs after age of 10
-				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE-10)) {
+				if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365*($MAX_ALIVE_AGE-10)) {
 					return true;
 				}
 			}
@@ -255,7 +255,7 @@ class WT_Individual extends WT_GedcomRecord {
 				foreach ($date_matches[1] as $date_match) {
 					$date = new WT_Date($date_match);
 					// Assume max age difference between spouses of 40 years
-					if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+40)) {
+					if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365*($MAX_ALIVE_AGE+40)) {
 						return true;
 					}
 				}
@@ -266,7 +266,7 @@ class WT_Individual extends WT_GedcomRecord {
 				// Assume children born after age of 15
 				foreach ($date_matches[1] as $date_match) {
 					$date=new WT_Date($date_match);
-					if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE-15)) {
+					if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365*($MAX_ALIVE_AGE-15)) {
 						return true;
 					}
 				}
@@ -277,7 +277,7 @@ class WT_Individual extends WT_GedcomRecord {
 						// Assume grandchildren born after age of 30
 						foreach ($date_matches[1] as $date_match) {
 							$date=new WT_Date($date_match);
-							if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE-30)) {
+							if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365*($MAX_ALIVE_AGE-30)) {
 								return true;
 							}
 						}
@@ -553,7 +553,7 @@ class WT_Individual extends WT_GedcomRecord {
 				if ($tmp->MinJD()) {
 					global $MAX_ALIVE_AGE;
 					$tmp2=$tmp->AddYears($MAX_ALIVE_AGE, 'BEF');
-					if ($tmp2->MaxJD()<WT_SERVER_JD) {
+					if ($tmp2->MaxJD() < WT_CLIENT_JD) {
 						$this->_getEstimatedDeathDate=$tmp2;
 					} else {
 						$this->_getEstimatedDeathDate=new WT_Date(''); // always return a date object

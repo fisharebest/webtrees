@@ -63,9 +63,9 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$title = WT_I18N::translate('Login');
 			$content='';
 			$content='<div id="login-box">
-				<form id="login-form" name="login-form" method="post" action="'. WT_LOGIN_URL. '" onsubmit="t = new Date(); this.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds();return true;">
+				<form id="login-form" name="login-form" method="post" action="'. WT_LOGIN_URL. '" onsubmit="d=new Date(); this.timediff.value=d.getTimezoneOffset()*60;">
 				<input type="hidden" name="action" value="login">
-				<input type="hidden" name="usertime" value="">';
+				<input type="hidden" name="timediff" value="">';
 			$content.= '<div>
 				<label for="username">'. WT_I18N::translate('Username').
 					'<input type="text" id="username" name="username" class="formField">
