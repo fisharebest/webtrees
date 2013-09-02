@@ -121,7 +121,7 @@ if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 	<div id="note-edit">
 		<table class="facts_table">
 			<tr>
-				<td align="left" class="descriptionbox">
+				<td class="descriptionbox">
 					<?php if (WT_USER_CAN_EDIT) { ?>
 						<a href="#" onclick="edit_note()" title="<?php echo WT_I18N::translate('Edit'); ?>">
 						<i class="icon-note"></i> <?php echo WT_I18N::translate('Shared note'); ?>
