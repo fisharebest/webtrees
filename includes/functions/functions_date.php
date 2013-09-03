@@ -26,38 +26,42 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// translate gedcom age string
-//
-// Examples:
-// 4y 8m 10d.
-// Chi
-// INFANT
-function get_age_at_event($agestring, $show_years) {
-	switch (WT_LOCALE) {
-		case 'pl':
-			$show_years = true;
+function get_age_at_event($age_string, $show_years) {
+	switch (strtoupper($age_string)) {
+	case 'CHILD':
+		return WT_I18N::translate('Child');
+	case 'INFANT':
+		return WT_I18N::translate('Infant');
+	case 'STILLBORN':
+		return WT_I18N::translate('Stillborn');
+	default:
+		return preg_replace_callback(
+			array(
+				'/(\d+)([ymwd])/',
+			),
+			function ($match) use ($age_string, $show_years) {
+				switch (WT_LOCALE) {
+				case 'pl':
+					$show_years = true;
+				}
+				switch ($match[2]) {
+				case 'y':
+					if ($show_years || preg_match('/[dm]/', $age_string)) {
+						return WT_I18N::plural('%s year', '%s years', $match[1], WT_I18N::digits($match[1]));
+					} else {
+						return WT_I18N::digits($match[1]);
+					}
+				case 'm':
+					return WT_I18N::plural('%s month', '%s months', $match[1], WT_I18N::digits($match[1]));
+				case 'w':
+					return WT_I18N::plural('%s week', '%s weeks', $match[1], WT_I18N::digits($match[1]));
+				case 'd':
+					return WT_I18N::plural('%s day', '%s days', $match[1], WT_I18N::digits($match[1]));
+				}
+			},
+			$age_string
+		);
 	}
-	return preg_replace(
-		array(
-			'/\bchi(ld)?\b/i',
-			'/\binf(ant)?\b/i',
-			'/\bsti(llborn)?\b/i',
-			'/(\d+)y/ie',
-			'/(\d+)m/ie',
-			'/(\d+)d/ie',
-			'/(\d+)w/ie'
-		),
-		array(
-			WT_I18N::translate('Child'),
-			WT_I18N::translate('Infant'),
-			WT_I18N::translate('Stillborn'),
-			($show_years || preg_match('/[dm]/', $agestring)) ? "WT_I18N::plural('%s year', '%s years', $1 , WT_I18N::digits($1))" : "WT_I18N::digits($1)",
-			"WT_I18N::plural('%s month', '%s months', $1 , WT_I18N::digits($1))",
-			"WT_I18N::plural('%s day', '%s days', $1 , WT_I18N::digits($1))",
-			"WT_I18N::plural('%s week', '%s weeks', $1 , WT_I18N::digits($1))"
-		),
-		$agestring
-	);
 }
 
 /**
