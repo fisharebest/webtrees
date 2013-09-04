@@ -1430,7 +1430,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 		$action    = WT_Filter::get('action', '','go');
-		$gedcom_id = WT_Filter::getInteger('gedcom_id');
+		$gedcom_id = WT_Filter::get('gedcom_id', null, WT_GED_ID);
 		$country   = WT_Filter::get('country', '.+', 'XYZ');
 		$state     = WT_Filter::get('state', '.+', 'XYZ');
 		$matching  = WT_Filter::getBool('matching');
