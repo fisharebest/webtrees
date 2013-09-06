@@ -839,7 +839,7 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $l
 		}
 	} else {
 		// Abbreviate the place name, for chart boxes
-		return ' - ' . $wt_place->getShortName();
+		return ' - ' . $event->getPlace()->getShortName();
 	}
 
 	if ($sub_records) {
