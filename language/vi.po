@@ -13782,8 +13782,8 @@ msgid "This option indicates whether the Pedigree chart should be generated in l
 msgstr "Tùy chọn này cho thấy biểu đồ phả hệ có tạo ra ở hình ngang hay đứng."
 
 #: help_text.php:1189
-msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.<br><br>This is the default contact method."
-msgstr "Tùy chọn này cũng giống như hệ thống tin nội bộ <b> webtrees </ b>, với một bổ sung. Là một tính năng thêm, sẽ có một bản sao của tin nhắn được gửi đến địa chỉ email bạn cấu hình trên trang Tài khoản của bạn. <br> <br> Đây là phương pháp liên hệ mặc định."
+msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+msgstr "Tùy chọn này cũng giống như hệ thống tin nội bộ <b>webtrees</b>, với một bổ sung. Là một tính năng thêm, sẽ có một bản sao của tin nhắn được gửi đến địa chỉ email bạn cấu hình trên trang Tài khoản của bạn.  Đây là phương pháp liên hệ mặc định."
 
 #: help_text.php:1115
 msgid "This option selects the family tree that is shown to visitors when they first arrive at the site."
@@ -15223,8 +15223,8 @@ msgid "With sources"
 msgstr "Với các nguồn"
 
 #: help_text.php:1185
-msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.<br><br>You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
-msgstr "Với tùy chọn này, hệ thống email nội bộ của <b> webtrees </ b> sẽ được sử dụng và không có email sẽ được gửi đi. <br> <br> Bạn sẽ nhận được thư <u> nội bộ </ u> từ người dùng khác. Khi một người sử dụng trang web gửi cho bạn một tin nhắn, thông điệp sẽ xuất hiện trong khối thông điệp trên của Trang cá nhân của tôi. Nếu bạn đã loại bỏ khối này ra khỏi Trang Của Tôi, bạn sẽ không thấy bất kỳ tin nhắn. Tuy nhiên, chúng sẽ hiện ngay sau khi bạn cấu hình Trang của tôi để lại có khối tin nhắn."
+msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+msgstr "Với tùy chọn này, hệ thống email nội bộ của <b> webtrees </b> sẽ được sử dụng và không có email sẽ được gửi đi.  Bạn sẽ nhận được thư <u> nội bộ </u> từ người dùng khác. Khi một người sử dụng trang web gửi cho bạn một tin nhắn, thông điệp sẽ xuất hiện trong khối thông điệp trên của Trang cá nhân của tôi. Nếu bạn đã loại bỏ khối này ra khỏi Trang Của Tôi, bạn sẽ không thấy bất kỳ tin nhắn. Tuy nhiên, chúng sẽ hiện ngay sau khi bạn cấu hình Trang của tôi để lại có khối tin nhắn."
 
 #: help_text.php:1197
 msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."
@@ -15232,7 +15232,7 @@ msgstr "Với tùy chọn này, bạn sẽ không nhận được email. Ngay c�
 
 #: help_text.php:1193
 msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page."
-msgstr "Với tùy chọn này, bạn sẽ chỉ nhận các tin nhắn email theo địa chỉ bạn cấu hình trên trang Tài khoản của bạn. Hệ thống nhắn tin nội bộ <b> webtrees </ b> sẽ không được sử dụng, và sẽ không bao giờ có được bất kỳ tin nhắn trong khối thông điệp trên Trang Cá nhân của của tôi."
+msgstr "Với tùy chọn này, bạn sẽ chỉ nhận các tin nhắn email theo địa chỉ bạn cấu hình trên trang Tài khoản của bạn. Hệ thống nhắn tin nội bộ <b> webtrees </b> sẽ không được sử dụng, và sẽ không bao giờ có được bất kỳ tin nhắn trong khối thông điệp trên Trang Cá nhân của của tôi."
 
 #: library/WT/Stats.php:307 library/WT/Stats.php:351
 msgid "Without sources"

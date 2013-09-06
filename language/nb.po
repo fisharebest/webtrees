@@ -13802,8 +13802,8 @@ msgid "This option indicates whether the Pedigree chart should be generated in l
 msgstr "Dette valget bestemmer om diagrammet(slektstreet) skal skrives ut som liggende eller stående."
 
 #: help_text.php:1189
-msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.<br><br>This is the default contact method."
-msgstr "Dette valget er som <b>webtrees</b>' interne meldinger, med ett tillegg. Ut over at meldingen vises i det interne systemet, vil også en kopi av meldingen bli sendt til den epostadressen du har angitt under Min konto.<br><br>Dette er standardkontaktmetoden."
+msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+msgstr "Dette valget er som <b>webtrees</b>' interne meldinger, med ett tillegg. Ut over at meldingen vises i det interne systemet, vil også en kopi av meldingen bli sendt til den epostadressen du har angitt under Min konto.  Dette er standardkontaktmetoden."
 
 #: help_text.php:1115
 msgid "This option selects the family tree that is shown to visitors when they first arrive at the site."
@@ -15246,8 +15246,8 @@ msgid "With sources"
 msgstr "Med kilder"
 
 #: help_text.php:1185
-msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.<br><br>You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
-msgstr "Med dette valget brukes det interne meldingssystemet i <b>webtrees</b>, og ingen epost blir sendt.<br><br>Du vil bare få <u>interne</u> meldinger fra de andre brukerne. Når en annen bruker sender deg en melding, vil den vises under Mine meldinger på Min Side. Hvis du har fjernet denne blokken fra Min Side, vil du ikke se noen meldinger. De finnes fortsatt i systemet, og vises så snart du aktiverer Mine meldinger på Min Side igjen."
+msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+msgstr "Med dette valget brukes det interne meldingssystemet i <b>webtrees</b>, og ingen epost blir sendt.  Du vil bare få <u>interne</u> meldinger fra de andre brukerne. Når en annen bruker sender deg en melding, vil den vises under Mine meldinger på Min Side. Hvis du har fjernet denne blokken fra Min Side, vil du ikke se noen meldinger. De finnes fortsatt i systemet, og vises så snart du aktiverer Mine meldinger på Min Side igjen."
 
 #: help_text.php:1197
 msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."

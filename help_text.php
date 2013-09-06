@@ -1177,11 +1177,11 @@ case 'edituser_contact_meth':
 	$text.='<br><br><dl><dt>';
 	$text.=WT_I18N::translate('Internal messaging');
 	$text.='</dt><dd>';
-	$text.=WT_I18N::translate('With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.<br><br>You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block.');
+	$text.=WT_I18N::translate('With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block.');
 	$text.='</dd><dt>';
 	$text.=WT_I18N::translate('Internal messaging with emails');
 	$text.='</dt><dd>';
-	$text.=WT_I18N::translate('This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.<br><br>This is the default contact method.');
+	$text.=WT_I18N::translate('This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method.');
 	$text.='</dd><dt>';
 	$text.=WT_I18N::translate('Mailto link');
 	$text.='</dt><dd>';

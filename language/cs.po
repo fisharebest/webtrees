@@ -13833,8 +13833,8 @@ msgid "This option indicates whether the Pedigree chart should be generated in l
 msgstr "Toto nastavení určuje, jestli budou Vývody orientovány na šířku nebo na výšku."
 
 #: help_text.php:1189
-msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.<br><br>This is the default contact method."
-msgstr "Tato volba je podobná vnitřním zprávám s jedním přídavkem. Navíc se kopie zprávy pošle na vámi nastavenou emailovou adresu.<br><br>Toto je výchozí kontaktní metoda."
+msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+msgstr "Tato volba je podobná vnitřním zprávám s jedním přídavkem. Navíc se kopie zprávy pošle na vámi nastavenou emailovou adresu.  Toto je výchozí kontaktní metoda."
 
 #: help_text.php:1115
 msgid "This option selects the family tree that is shown to visitors when they first arrive at the site."
@@ -15280,8 +15280,8 @@ msgid "With sources"
 msgstr "Se zdroji"
 
 #: help_text.php:1185
-msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.<br><br>You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
-msgstr "S touto volbou se použije interní zprávový systém <b>webtrees</b> a nebudou se posílat žádné emaily.<br><br>Pouze obdržíte <u>interní</u> zprávy od ostatních uživatelů. Pokud vám pošle zprávu uživatel z jiného webu, zpráva se zobrazí v bloku zpráv na osobní Mojí stránce. Pokud jste odstranili tento blok z vaší stránky, neuvidíte žádné zprávy. Nicméně se zobrazí hned, jak nastavíte znova Moji stránku, aby obsahovala blok zpráv."
+msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+msgstr "S touto volbou se použije interní zprávový systém <b>webtrees</b> a nebudou se posílat žádné emaily.  Pouze obdržíte <u>interní</u> zprávy od ostatních uživatelů. Pokud vám pošle zprávu uživatel z jiného webu, zpráva se zobrazí v bloku zpráv na osobní Mojí stránce. Pokud jste odstranili tento blok z vaší stránky, neuvidíte žádné zprávy. Nicméně se zobrazí hned, jak nastavíte znova Moji stránku, aby obsahovala blok zpráv."
 
 #: help_text.php:1197
 msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."

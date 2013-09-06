@@ -13807,8 +13807,8 @@ msgid "This option indicates whether the Pedigree chart should be generated in l
 msgstr "Indique le sens d’orientation des arbres sur la page&nbsp;:<br><ul><li>portrait =  vertical&nbsp ;<li>paysage =  horizontal.</ul>"
 
 #: help_text.php:1189
-msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.<br><br>This is the default contact method."
-msgstr "Cette option est semblable au système de messagerie interne de <b>webtrees</b>, mais avec un ajout. Cet ajout enverra également une copie du message à l’adresse courriel que vous avez configurée dans votre page Profil.<br><br>C’est la méthode de contact par défaut."
+msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+msgstr "Cette option est semblable au système de messagerie interne de <b>webtrees</b>, mais avec un ajout. Cet ajout enverra également une copie du message à l’adresse courriel que vous avez configurée dans votre page Profil.  C’est la méthode de contact par défaut."
 
 #: help_text.php:1115
 msgid "This option selects the family tree that is shown to visitors when they first arrive at the site."
@@ -15251,8 +15251,8 @@ msgid "With sources"
 msgstr "Avec les sources"
 
 #: help_text.php:1185
-msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.<br><br>You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
-msgstr "En activant cette option, le système de messagerie interne de <b>webtrees</b> sera utilisé et aucun courriel ne vous sera envoyé.<br><br>Vous recevrez uniquement des messages <u>internes</u> en provenance des autres utilisateurs. Lorsqu’un autre utilisateur vous enverra un message, ce message apparaîtra dans le bloc Mes Messages de votre page personnelle Ma Page. Si vous supprimer ce bloc de votre page personnelle Ma Page, vous ne verrez aucun message. Cependant, ils seront visibles dès que vous configurerez à nouveau votre page personnelle Ma Page en ajoutant le bloc Mes Messages."
+msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+msgstr "En activant cette option, le système de messagerie interne de <b>webtrees</b> sera utilisé et aucun courriel ne vous sera envoyé.  Vous recevrez uniquement des messages <u>internes</u> en provenance des autres utilisateurs. Lorsqu’un autre utilisateur vous enverra un message, ce message apparaîtra dans le bloc Mes Messages de votre page personnelle Ma Page. Si vous supprimer ce bloc de votre page personnelle Ma Page, vous ne verrez aucun message. Cependant, ils seront visibles dès que vous configurerez à nouveau votre page personnelle Ma Page en ajoutant le bloc Mes Messages."
 
 #: help_text.php:1197
 msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."

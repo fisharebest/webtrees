@@ -13781,8 +13781,8 @@ msgid "This option indicates whether the Pedigree chart should be generated in l
 msgstr "此选项定义谱系图应该产生横向还是纵向模式。"
 
 #: help_text.php:1189
-msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.<br><br>This is the default contact method."
-msgstr "这个选项是<b> webtrees </b>内部消息，包含一个加操作。一个额外的复制的信息也将被发送到您设定您的帐户页的电子邮件地址。<br> <br>这是预设的联系方法。"
+msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+msgstr "这个选项是 <b>webtrees</b> 内部消息，包含一个加操作。一个额外的复制的信息也将被发送到您设定您的帐户页的电子邮件地址<br><br>这是预设的联系方法。"
 
 #: help_text.php:1115
 msgid "This option selects the family tree that is shown to visitors when they first arrive at the site."
@@ -15222,8 +15222,8 @@ msgid "With sources"
 msgstr "随着资源"
 
 #: help_text.php:1185
-msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.<br><br>You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
-msgstr "使用此选项，<b> webtrees</b>内部消息系统将被使用，没有电子邮件将被发送。<br> <br>您将只收到其他用户的<u>内部的消息</u>。当另一个用户向您发送一条消息，该消息将出现在您的个人我的主页上的消息块。如果您已删除了该块从我的页面中，你将不会看到任何消息。 ，但是他们会出现，只要你在我的网页配置再现消息块。"
+msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+msgstr "使用此选项，<b> webtrees</b>内部消息系统将被使用，没有电子邮件将被发送  您将只收到其他用户的<u>内部的消息</u>。当另一个用户向您发送一条消息，该消息将出现在您的个人我的主页上的消息块。如果您已删除了该块从我的页面中，你将不会看到任何消息。 ，但是他们会出现，只要你在我的网页配置再现消息块。"
 
 #: help_text.php:1197
 msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."

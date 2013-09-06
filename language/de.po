@@ -13802,8 +13802,8 @@ msgid "This option indicates whether the Pedigree chart should be generated in l
 msgstr "Hier bestimmen Sie, ob der Stammbaum im Hochformat oder Querformat dargestellt werden soll."
 
 #: help_text.php:1189
-msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.<br><br>This is the default contact method."
-msgstr "Diese Option ist der <i><b>webtress</b> Interne Nachrichten</i> Funktion ähnlich. Zusätzlich wird eine Kopie der Nachricht an Ihre eigene E-Mail-Adresse gesendet.<br><br>Dies ist die Standard Kontakt Methode."
+msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+msgstr "Diese Option ist der <i><b>webtress</b> Interne Nachrichten</i> Funktion ähnlich. Zusätzlich wird eine Kopie der Nachricht an Ihre eigene E-Mail-Adresse gesendet.  Dies ist die Standard Kontakt Methode."
 
 #: help_text.php:1115
 msgid "This option selects the family tree that is shown to visitors when they first arrive at the site."
@@ -15246,8 +15246,8 @@ msgid "With sources"
 msgstr "mit Quellen"
 
 #: help_text.php:1185
-msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.<br><br>You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
-msgstr "Wenn Sie diese Option nutzen, wird das interne <b>webtrees</b> Nachrichtensystem benutzt und es werden keine Mails versendet.<br><br>So werden Sie nur <b>interne Nachrichten</b> von den anderen Nutzern erhalten. Wenn ein anderer Nutzer Ihnen eine Nachricht von dieser Seite aus schickt, wird diese im Nachrichten-Block auf Ihrer <b>Mein webtrees</b> Seite erscheinen, sofern Sie den Block nicht deaktiviert haben."
+msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+msgstr "Wenn Sie diese Option nutzen, wird das interne <b>webtrees</b> Nachrichtensystem benutzt und es werden keine Mails versendet.  So werden Sie nur <b>interne Nachrichten</b> von den anderen Nutzern erhalten. Wenn ein anderer Nutzer Ihnen eine Nachricht von dieser Seite aus schickt, wird diese im Nachrichten-Block auf Ihrer <b>Mein webtrees</b> Seite erscheinen, sofern Sie den Block nicht deaktiviert haben."
 
 #: help_text.php:1197
 msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."
