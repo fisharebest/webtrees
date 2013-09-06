@@ -37,11 +37,6 @@ case 'GOOGLEMAP_PRECISION':
 	$text=WT_I18N::translate('This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits.');
 	break;
 
-case 'GM_DEFAULT_LEVEL_0':
-	$title=WT_I18N::translate('Default value for top-level');
-	$text=WT_I18N::translate('Here the default level for the highest level in the place-hierarchy can be defined. If a place cannot be found this name is added as the highest level (country) and the database is searched again.');
-	break;
-
 case 'GM_NAME_PREFIX_SUFFIX':
 	$title=WT_I18N::translate('Optional prefixes and suffixes');
 	$text=WT_I18N::translate('Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”.');

@@ -428,12 +428,11 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 						if ($fact=="EVEN") {
 							$fact = $val->getAttribute('TYPE');
 						}
-						$place = $val->getPlace();
 						$trans = WT_Gedcom_Tag::getLabel($fact);
 						if (isset($eventinformation[$evntwdth])) {
-							$eventinformation[$evntwdth] .= "<br>".$trans."<br>".strip_tags($date->Display(false, '', NULL, false))." ".$place;
+							$eventinformation[$evntwdth] .= '<br>' . $trans . '<br>' . strip_tags($date->Display(false, '', NULL, false)) . ' ' . $val->getPlace()->getFullName();
 						} else {
-							$eventinformation[$evntwdth]= $fact."-fact, ".$trans."<br>".strip_tags($date->Display(false, '', NULL, false))." ".$place;
+							$eventinformation[$evntwdth] = $fact . '-fact, ' . $trans . '<br>' . strip_tags($date->Display(false, '', NULL, false)) . ' ' . $val->getPlace()->getFullName();
 						}
 					}
 				}

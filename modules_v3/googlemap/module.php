@@ -215,7 +215,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			set_module_setting('googlemap', 'GM_PRECISION_3',       WT_Filter::post('NEW_GM_PRECISION_3'));
 			set_module_setting('googlemap', 'GM_PRECISION_4',       WT_Filter::post('NEW_GM_PRECISION_4'));
 			set_module_setting('googlemap', 'GM_PRECISION_5',       WT_Filter::post('NEW_GM_PRECISION_5'));
-			set_module_setting('googlemap', 'GM_DEFAULT_TOP_VALUE', WT_Filter::post('NEW_GM_DEFAULT_TOP_LEVEL'));
 			set_module_setting('googlemap', 'GM_COORD',             WT_Filter::post('NEW_GM_COORD'));
 			set_module_setting('googlemap', 'GM_PLACE_HIERARCHY',   WT_Filter::post('NEW_GM_PLACE_HIERARCHY'));
 			set_module_setting('googlemap', 'GM_PH_XSIZE',          WT_Filter::post('NEW_GM_PH_XSIZE'));
@@ -366,12 +365,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							</td>
 							<td>&nbsp;</td>
 						</tr>
-						<tr>
-							<th colspan="2"><?php echo WT_I18N::translate('Default value for top-level'), help_link('GM_DEFAULT_LEVEL_0','googlemap'); ?></th>
-							<td><input type="text" name="NEW_GM_DEFAULT_TOP_LEVEL" value="<?php echo $GM_DEFAULT_TOP_VALUE; ?>" size="20"></td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
 							<th class="gm_prefix" colspan="3"><?php echo WT_I18N::translate('Optional prefixes and suffixes'), help_link('GM_NAME_PREFIX_SUFFIX','googlemap');?></th>
 						</tr>
 						<tr id="gm_level_titles">

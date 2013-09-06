@@ -91,7 +91,14 @@ class WT_Place {
 		return $place ? '<span dir="auto">'.WT_Filter::escapeHtml($place).'</span>' : WT_I18N::translate('unknown');
 	}
 
+	public function isEmpty() {
+		return empty($this->gedcom_place);
+	}
+
 	public function getFullName() {
+		// If a place hierarchy is a single entity
+		return '<span dir="auto">' . WT_Filter::escapeHtml(implode(WT_I18N::$list_separator, $this->gedcom_place)) . '</span>';
+		// If a place hierarchy is a list of distinct items
 		$tmp=array();
 		foreach ($this->gedcom_place as $place) {
 			$tmp[]='<span dir="auto">' . WT_Filter::escapeHtml($place) . '</span>';

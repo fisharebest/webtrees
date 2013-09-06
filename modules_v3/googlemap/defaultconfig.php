@@ -62,8 +62,6 @@ $GOOGLEMAP_PRECISION_5 = get_module_setting('googlemap', 'GM_PRECISION_5', '9');
 
 global $GM_MAX_NOF_LEVELS;
 $GM_MAX_NOF_LEVELS     = get_module_setting('googlemap', 'GM_MAX_NOF_LEVELS',    '4'); // Max nr of levels to use in Googlemap
-global $GM_DEFAULT_TOP_VALUE;
-$GM_DEFAULT_TOP_VALUE  = get_module_setting('googlemap', 'GM_DEFAULT_TOP_VALUE', '' ); // Default value, inserted when no location can be found
 
 global $GOOGLEMAP_COORD;
 $GOOGLEMAP_COORD       = get_module_setting('googlemap', 'GM_COORD',             '0'); // Enable or disable Display Map Co-ordinates

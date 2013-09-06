@@ -131,14 +131,14 @@ function setup_map() {
 }
 
 function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
-	global $controller, $GOOGLEMAP_MAX_ZOOM, $GOOGLEMAP_YSIZE, $GM_DEFAULT_TOP_VALUE;
+	global $controller, $GOOGLEMAP_MAX_ZOOM, $GOOGLEMAP_YSIZE;
 
 	// Create the markers list array
 	$markers = array();
 	sort_facts($indifacts);
 	$i = 0;
 	foreach ($indifacts as $fact) {
-		if ($fact->getPlace()) {
+		if (!$fact->getPlace()->isEmpty()) {
 			$ctla = preg_match("/\d LATI (.*)/", $fact->getGedcom(), $match1);
 			$ctlo = preg_match("/\d LONG (.*)/", $fact->getGedcom(), $match2);
 			if ($fact->getParent() instanceof WT_Family) {
@@ -161,7 +161,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 					'fact'       => $fact->getTag(),
 					'fact_label' => $fact->getLabel(),
 					'info'       => $fact->getValue(),
-					'placerec'   => $fact->getPlace(),
+					'placerec'   => $fact->getPlace()->getFullName(),
 					'lati'       => str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]),
 					'lng'        => str_replace(array('E', 'W', ','), array('', '-', '.') , $match2[1]),
 				);
@@ -174,14 +174,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				}
 			} else {
 				if ($useThisItem) {
-					$latlongval = get_lati_long_placelocation($fact->getPlace());
-					if ((count($latlongval) == 0) && (!empty($GM_DEFAULT_TOP_VALUE))) {
-						$latlongval = get_lati_long_placelocation($match1[1].', '.$GM_DEFAULT_TOP_VALUE);
-						if ((count($latlongval) != 0) && ($latlongval['level'] == 0)) {
-							$latlongval['lati'] = null;
-							$latlongval['long'] = null;
-						}
-					}
+					$latlongval = get_lati_long_placelocation($fact->getPlace()->getGedcomName());
 					if ((count($latlongval) != 0) && ($latlongval['lati'] != null) && ($latlongval['long'] != null)) {
 						$i++;
 						$markers[$i] = array(
@@ -192,7 +185,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 							'fact'       => $fact->getTag(),
 							'fact_label' => $fact->getLabel(),
 							'info'       => $fact->getValue(),
-							'placerec'   => $fact->getPlace(),
+							'placerec'   => $fact->getPlace()->getFullName(),
 						);
 						$markers[$i]['icon'] = $latlongval['icon'];
 						if ($GOOGLEMAP_MAX_ZOOM > $latlongval['zoom']) {
@@ -226,7 +219,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 			$birth = $child->getFirstFact('BIRT');
 			if ($birth) {
 				$birthrec = $birth->getGedcom();
-				if ($birth->getPlace()) {
+				if (!$birth->getPlace()->isEmpty()) {
 					$ctd = preg_match('/\n2 DATE (.*)/',  $birthrec, $matchd);
 					$ctla = preg_match('/\n4 LATI (.*)/', $birthrec, $match1);
 					$ctlo = preg_match('/\n4 LONG (.*)/', $birthrec, $match2);
@@ -237,7 +230,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 							'tabindex' => '',
 							'placed'   => 'no',
 							'fact'     => 'BIRT',
-							'placerec' => $birth->getPlace(),
+							'placerec' => $birth->getPlace()->getFullName(),
 						);
 						switch ($child->getSex()) {
 						case'F':
@@ -262,14 +255,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 						}
 						$markers[$i]['name'] = $smatch[$j][1];
 					} else {
-						$latlongval = get_lati_long_placelocation($birth->getPlace());
-						if ((count($latlongval) == 0) && (!empty($GM_DEFAULT_TOP_VALUE))) {
-							$latlongval = get_lati_long_placelocation($birth->getPlace().', '.$GM_DEFAULT_TOP_VALUE);
-							if ((count($latlongval) != 0) && ($latlongval['level'] == 0)) {
-								$latlongval['lati'] = null;
-								$latlongval['long'] = null;
-							}
-						}
+						$latlongval = get_lati_long_placelocation($birth->getPlace()->getGedcomName());
 						if ((count($latlongval) != 0) && ($latlongval['lati'] != null) && ($latlongval['long'] != null)) {
 							$i++;
 							$markers[$i] = array(
@@ -277,7 +263,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 								'tabindex' => '',
 								'placed'   => 'no',
 								'fact'     => 'BIRT',
-								'placerec' => $birth->getPlace(),
+								'placerec' => $birth->getPlace()->getFullName(),
 							);
 							switch ($child->getSex()) {
 							case 'M':
@@ -706,16 +692,16 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 					?>
 						[
 							// Elements 0-9. Basic parameters
-							"<?php echo $gmark['fact_label']; ?>",
-							"<?php echo $gmark['lati']; ?>",
-							"<?php echo $gmark['lng']; ?>",
+							"<?php echo WT_Filter::escapeJs($gmark['fact_label']); ?>",
+							"<?php echo WT_Filter::escapeJs($gmark['lati']); ?>",
+							"<?php echo WT_Filter::escapeJs($gmark['lng']); ?>",
 							"<?php if (!empty($gmark['date'])) { $date=new WT_Date($gmark['date']); echo addslashes($date->Display(true)); } else { echo WT_I18N::translate('Date not known'); } ?>",
-							"<?php if (!empty($gmark['info'])) { echo addslashes($gmark['info']); } ?>",
+							"<?php echo WT_Filter::escapeJs($gmark['info']); ?>",
 							"<?php if (!empty($gmark['name'])) { $person=WT_Individual::getInstance($gmark['name']); if ($person) { echo '<a href=\"', $person->getHtmlUrl(), '\">', addslashes($person->getFullName()), '</a>'; } } ?>",
-							"<?php echo addslashes($gmark['placerec']); ?>",
-							"<?php echo $gmark['index']; ?>",
-							"<?php echo $gmark['tabindex']; ?>",
-							"<?php echo $gmark['placed']; ?>",
+							"<?php echo WT_Filter::escapeJs($gmark['placerec']); ?>",
+							"<?php echo WT_Filter::escapeJs($gmark['index']); ?>",
+							"<?php echo WT_Filter::escapeJs($gmark['tabindex']); ?>",
+							"<?php echo WT_Filter::escapeJs($gmark['placed']); ?>",
 		
 							// Element 10. location marker tooltip - extra printable item for marker title.
 							"<?php echo WT_Filter::escapeJs($gmark['placerec']); ?>",
@@ -909,7 +895,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				}
 				echo '<br>';
 			}
-			echo WT_Filter::escapeHtml($marker['placerec']), '<br>';
+			echo $marker['placerec'], '<br>';
 			if (!empty($marker['date'])) {
 				$date=new WT_Date($marker['date']);
 				echo $date->Display(true), '<br>';

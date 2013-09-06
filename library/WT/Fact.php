@@ -143,7 +143,7 @@ class WT_Fact {
 	// The place where the event occured.
 	public function getPlace() {
 		if ($this->place === null) {
-			$this->place = $this->getAttribute('PLAC');
+			$this->place = new WT_Place($this->getAttribute('PLAC'), $this->getParent()->getGedcomId());
 		}
 		return $this->place;
 	}
@@ -273,7 +273,7 @@ class WT_Fact {
 			if ($date->isOK()) {
 				$attributes[] = $date->display();
 			}
-			$place = (string)$this->getPlace();
+			$place = $this->getPlace()->getFullName();
 			if ($place) {
 				$attributes[] = $place;
 			}

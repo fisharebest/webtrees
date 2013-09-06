@@ -177,7 +177,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
 			if (!in_array($birttag, $opt_tags)) {
 				$event = $person->getFirstFact($birttag);
-				if ($event && ($event->getDate()->isOK() || $event->getPlace())) {
+				if ($event) {
 					$BirthDeath .= $event->summary();
 					break;
 				}
@@ -196,7 +196,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		// Show DEAT or equivalent event
 		foreach (explode('|', WT_EVENTS_DEAT) as $deattag) {
 			$event = $person->getFirstFact($deattag);
-			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace() || $event->getValue()=='Y')) {
+			if ($event) {
 				$BirthDeath .= $event->summary();
 				if (in_array($deattag, $opt_tags)) {
 					unset ($opt_tags[array_search($deattag, $opt_tags)]);
@@ -827,31 +827,23 @@ function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false
 * @param boolean $sub option to print place subrecords
 * @param boolean $lds option to print LDS TEMPle and STATus
 */
-function format_fact_place(WT_Fact $event, $anchor=false, $sub=false, $lds=false) {
+function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $lds=false) {
 	global $SHOW_PEDIGREE_PLACES, $SHOW_PEDIGREE_PLACES_SUFFIX, $SEARCH_SPIDER;
-
-	$factrec = $event->getGedcom();
-
-	$wt_place=new WT_Place($event->getPlace(), WT_GED_ID);
-
-	$name_parts=explode(', ', $event->getPlace());
-	$ct=count($name_parts);
 
 	if ($anchor) {
 		// Show the full place name, for facts/events tab
 		if ($SEARCH_SPIDER) {
-			$html=$wt_place->getFullName();
+			$html = $event->getPlace()->getFullName();
 		} else {
-			$html='<a href="' . $wt_place->getURL() . '">' . $wt_place->getFullName() . '</a>';
+			$html = '<a href="' . $event->getPlace()->getURL() . '">' . $event->getPlace()->getFullName() . '</a>';
 		}
 	} else {
 		// Abbreviate the place name, for chart boxes
 		return ' - ' . $wt_place->getShortName();
 	}
 
-	$ctn=0;
-	if ($sub) {
-		$placerec = get_sub_record(2, '2 PLAC', $factrec);
+	if ($sub_records) {
+		$placerec = get_sub_record(2, '2 PLAC', $event->getGedcom());
 		if (!empty($placerec)) {
 			if (preg_match_all('/\n3 (?:_HEB|ROMN) (.+)/', $placerec, $matches)) {
 				foreach ($matches[1] as $match) {
@@ -874,13 +866,8 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub=false, $lds=false
 			if ($map_lati && $map_long && empty($SEARCH_SPIDER)) {
 				$map_lati=trim(strtr($map_lati, "NSEW,�", " - -. ")); // S5,6789 ==> -5.6789
 				$map_long=trim(strtr($map_long, "NSEW,�", " - -. ")); // E3.456� ==> 3.456
-				if ($name_parts) {
-					$place=$name_parts[0];
-				} else {
-					$place='';
-				}
 				$html.=' <a target="_BLANK" href="'."//www.mapquest.com/maps/map.adp?searchtype=address&amp;formtype=latlong&amp;latlongtype=decimal&amp;latitude={$map_lati}&amp;longitude={$map_long}".'" class="icon-mapquest" title="MapQuest™"></a>';
-				$html.=' <a target="_BLANK" href="'."//maps.google.com/maps?q={$map_lati},{$map_long}(".rawurlencode($place).")".'" class="icon-googlemaps" title="'.WT_I18N::translate('Google Maps™').'"></a>';
+				$html.=' <a target="_BLANK" href="'."//maps.google.com/maps?q={$map_lati},{$map_long}(".rawurlencode($event->getPlace()->getGedcomName()).")".'" class="icon-googlemaps" title="'.WT_I18N::translate('Google Maps™').'"></a>';
 				$html.=' <a target="_BLANK" href="'."//www.multimap.com/map/browse.cgi?lat={$map_lati}&amp;lon={$map_long}&amp;scale=&amp;icon=x".'" class="icon-bing" title="Bing Maps™"></a>';
 				$html.=' <a target="_BLANK" href="'."//www.terraserver.com/imagery/image_gx.asp?cpx={$map_long}&amp;cpy={$map_lati}&amp;res=30&amp;provider_id=340".'" class="icon-terraserver" title="TerraServer™"></a>';
 			}
@@ -890,13 +877,13 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub=false, $lds=false
 		}
 	}
 	if ($lds) {
-		if (preg_match('/2 TEMP (.*)/', $factrec, $match)) {
+		if (preg_match('/2 TEMP (.*)/', $event->getGedcom(), $match)) {
 			$tcode=trim($match[1]);
 			$html.='<br>'.WT_I18N::translate('LDS Temple').': '.WT_Gedcom_Code_Temp::templeName($match[1]);
 		}
-		if (preg_match('/2 STAT (.*)/', $factrec, $match)) {
+		if (preg_match('/2 STAT (.*)/', $event->getGedcom(), $match)) {
 			$html.='<br>'.WT_I18N::translate('Status').': '.WT_Gedcom_Code_Stat::statusName($match[1]);
-			if (preg_match('/3 DATE (.*)/', $factrec, $match)) {
+			if (preg_match('/3 DATE (.*)/', $event->getGedcom(), $match)) {
 				$date=new WT_Date($match[1]);
 				$html.=', '.WT_Gedcom_Tag::getLabel('STAT:DATE').': '.$date->Display(false);
 			}

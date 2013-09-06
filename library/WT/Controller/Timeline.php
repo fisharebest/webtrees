@@ -228,19 +228,9 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				echo '<span class="age"> ', WT_I18N::translate('Age'), ' ', $ageh, '</span>';
 			}
 		}
-		echo " ".WT_Filter::escapeHtml($desc);
-		if ($SHOW_PEDIGREE_PLACES>0) {
-			$place = $event->getPlace();
-			if ($place!=null) {
-				if ($desc!=null) echo " - ";
-				$plevels = explode(',', $place);
-				for ($plevel=0; $plevel<$SHOW_PEDIGREE_PLACES; $plevel++) {
-					if (!empty($plevels[$plevel])) {
-						if ($plevel>0) echo ", ";
-						echo WT_Filter::escapeHtml($plevels[$plevel]);
-					}
-				}
-			}
+		echo ' ' . WT_Filter::escapeHtml($desc);
+		if (!$event->getPlace()->isEmpty()) {
+			echo ' — ' . $event->getPlace()->getShortName();
 		}
 		//-- print spouse name for marriage events
 		if (isset($event->spouse)) {

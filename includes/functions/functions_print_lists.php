@@ -1842,24 +1842,23 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 
 	foreach ($filtered_events as $fact) {
 		$record = $fact->getParent();
-		$html .= "<a href=\"".$record->getHtmlUrl()."\" class=\"list_item name2\">".$record->getFullName()."</a>";
+		$html .= '<a href="' . $record->getHtmlUrl() .'" class="list_item name2">' . $record->getFullName() . '</a>';
 		if ($record instanceof WT_Individual) {
 			$html .= $record->getSexImage();
 		}
-		$html .= "<br><div class=\"indent\">";
+		$html .= '<br><div class="indent">';
 		$html .= $fact->getLabel().' — '.$fact->getDate()->Display(true);
 		if ($fact->anniv) {
-			$html .= " (" . WT_I18N::translate('%s year anniversary', $fact->anniv).")";
+			$html .= ' (' . WT_I18N::translate('%s year anniversary', $fact->anniv) . ')';
 		}
-		if ($fact->getPlace()) {
-			$tmp = new WT_Place($fact->getPlace(), $fact->getParent()->getGedcomId());
-			$html .= " — <a href=\"".$tmp->getURL()."\">".$tmp->getFullName()."</a>";
+		if (!$fact->getPlace()->isEmpty()) {
+			$html .= ' — <a href="' . $fact->getPlace()->getURL() . '">' . $fact->getPlace()->getFullName() . '</a>';
 		}
-		$html .= "</div>";
+		$html .= '</div>';
 	}
 
 	// Print a final summary message about restricted/filtered facts
-	$summary = "";
+	$summary = '';
 	if ($endjd==WT_CLIENT_JD) {
 		// We're dealing with the Today's Events block
 		if ($output==0) {
