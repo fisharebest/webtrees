@@ -50,7 +50,7 @@ $form_pass2          = WT_Filter::post('form_pass2', WT_REGEX_PASSWORD);
 $form_email          = WT_Filter::postEmail('form_email');
 $form_rootid         = WT_Filter::post('form_rootid', WT_REGEX_XREF);
 $form_theme          = WT_Filter::post('form_theme', implode('|', $ALL_THEME_DIRS));
-$form_language       = WT_Filter::post('form_language', implode('|', array_keys(WT_I18N::installed_languages()), WT_LOCALE));
+$form_language       = WT_Filter::post('form_language', implode('|', array_keys(WT_I18N::installed_languages())), WT_LOCALE);
 $form_contact_method = WT_Filter::post('form_contact_method');
 $form_visible_online = WT_Filter::postBool('form_visible_online');
 
