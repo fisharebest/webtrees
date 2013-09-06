@@ -366,19 +366,19 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 		
 			var infowindow = new google.maps.InfoWindow({});
 		
-			gicons["red"] = new google.maps.MarkerImage("//maps.google.com/mapfiles/marker.png",
+			gicons["red"] = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
 				new google.maps.Size(20, 34),
 				new google.maps.Point(0,0),
 				new google.maps.Point(9, 34)
 			);
 		
-			var iconImage = new google.maps.MarkerImage("//maps.google.com/mapfiles/marker.png",
+			var iconImage = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
 				new google.maps.Size(20, 34),
 				new google.maps.Point(0,0),
 				new google.maps.Point(9, 34)
 			);
 		
-			var iconShadow = new google.maps.MarkerImage("//www.google.com/mapfiles/shadow50.png",
+			var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
 				new google.maps.Size(37, 34),
 				new google.maps.Point(0,0),
 				new google.maps.Point(9, 34)
