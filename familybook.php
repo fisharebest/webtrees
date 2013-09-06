@@ -94,6 +94,10 @@ $controller
 		</table>
 	</form>
 <div id="familybook_chart" style="z-index:1;">
-<?php $controller->print_family_book($controller->root, $controller->descent); ?>
+<?php
+if ($controller->root) {
+	$controller->print_family_book($controller->root, $controller->descent);
+}
+?>
 </div>
 </div> <!-- close #familybook-page -->

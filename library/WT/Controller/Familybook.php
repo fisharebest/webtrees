@@ -45,7 +45,6 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$MAX_DESCENDANCY_GENERATIONS=get_gedcom_setting(WT_GED_ID, 'MAX_DESCENDANCY_GENERATIONS');
 
 		// Extract the request parameters
-		$this->pid         = WT_Filter::get('rootid', WT_REGEX_XREF);
 		$this->show_full   = WT_Filter::getInteger('show_full',   0, 1, $PEDIGREE_FULL_DETAILS);
 		$this->show_spouse = WT_Filter::getInteger('show_spouse', 0, 1);
 		$this->descent     = WT_Filter::getInteger('descent',     0, 9, 5);
@@ -59,14 +58,6 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$bwidth  =$Dbwidth;
 		$bheight =$Dbheight;
 		
-		// Validate parameters
-		if (!empty($rootid)) $this->pid = $rootid;
-		$rootid=$this->rootid;
-		$this->hourPerson = WT_Individual::getInstance($this->pid);
-		if (!$this->hourPerson) {
-			$this->hourPerson=$this->getSignificantIndividual();
-			$this->pid=$this->hourPerson->getXref();
-		}
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
 			$bwidth = $this->box_width * $cbwidth  / 100;
