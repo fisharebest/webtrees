@@ -230,6 +230,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 							'tabindex' => '',
 							'placed'   => 'no',
 							'fact'     => 'BIRT',
+							'info'     => '',
 							'placerec' => $birth->getPlace()->getFullName(),
 						);
 						switch ($child->getSex()) {
@@ -263,6 +264,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 								'tabindex' => '',
 								'placed'   => 'no',
 								'fact'     => 'BIRT',
+								'info'     => '',
 								'placerec' => $birth->getPlace()->getFullName(),
 							);
 							switch ($child->getSex()) {
