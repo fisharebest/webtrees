@@ -739,7 +739,7 @@ msgstr "Liste des utilisateurs et des visiteurs qui sont actuellement en ligne."
 
 #: help_text.php:309
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Un objet multimédia est un enregistrement dans l'arbre généalogique qui contient des informations sur un fichier multimédia. Ces informations peuvent inclure un titre, un copyright, une transcription, des restrictions de confidentialité, etc. Le fichier multimédia, comme la photo ou la vidéo, peuvent être stockées localement (sur ce serveur) ou à distance (sur un autre serveur Web)."
+msgstr "Un objet multimédia est un enregistrement dans l’arbre généalogique qui contient des informations sur un fichier multimédia. Ces informations peuvent inclure un titre, un copyright, une transcription, des restrictions de confidentialité, etc. Le fichier multimédia, comme la photo ou la vidéo, peuvent être stockées localement (sur ce serveur) ou à distance (sur un autre serveur Web)."
 
 #. I18N: %s is a username
 #: login.php:237
@@ -6007,7 +6007,7 @@ msgstr "Les noms de fichier ne doivent pas contenir le caractère «&nbsp;%s&nbs
 #: addmedia.php:176 addmedia.php:315 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "Les noms de fichier ne doivent pas avoir l'extension «&nbsp;%s&nbsp;»."
+msgstr "Les noms de fichier ne doivent pas avoir l’extension «&nbsp;%s&nbsp;»."
 
 #: admin.php:109
 msgid "Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them."
@@ -7034,7 +7034,7 @@ msgstr "Si un individu a deux noms de famille séparés, chacun d’eux doit êt
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Si un individu a été connu sous un diminutif ou un sobriquet ne faisant pas partie de son nom officiel, il doit être enchâssé dans des guillemets. Par exemple, <%s>John \"Nobby\" /Clark/<%s>."
+msgstr "Si un individu a été connu sous un diminutif ou un sobriquet ne faisant pas partie de son nom officiel, il doit être enchâssé dans des guillemets. Par exemple, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 
 #: help_text.php:287
 #, php-format
@@ -9886,7 +9886,7 @@ msgstr "Ce jour-là…"
 
 #: modules_v3/review_changes/module.php:85
 msgid "Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that webtrees site and login to review the changes."
-msgstr "Des modifications ont été apportées à un arbre généalogique. Elles doivent être examinées et approuvées avant d’apparaître à tous les utilisateurs. Veuillez utiliser l'URL ci-dessous pour entrer dans le site webtrees et vous connecter afin de les réviser."
+msgstr "Des modifications ont été apportées à un arbre généalogique. Elles doivent être examinées et approuvées avant d’apparaître à tous les utilisateurs. Veuillez utiliser l’URL ci-dessous pour entrer dans le site webtrees et vous connecter afin de les réviser."
 
 #: includes/functions/functions_edit.php:206
 #: includes/functions/functions_print_facts.php:250
@@ -12077,7 +12077,7 @@ msgstr "Voir l’échelle de temps"
 
 #: includes/functions/functions_print_lists.php:503
 msgid "Show couples where either partner married more than once."
-msgstr "Afficher les couples où les deux conjoints se sont mariés plus d'une fois."
+msgstr "Afficher les couples où les deux conjoints se sont mariés plus d’une fois."
 
 #: includes/functions/functions_print_lists.php:494
 msgid "Show couples where only the female partner is deceased."
@@ -12313,7 +12313,7 @@ msgstr "Afficher les tableaux de statistiques"
 #: admin_trees_config.php:895
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "Afficher les %1$s %2$s parties du nom d'un lieu."
+msgstr "Afficher les %1$s %2$s parties du nom d’un lieu."
 
 #: modules_v3/html/module.php:317
 msgid "Show the date and time of update"
@@ -13104,7 +13104,7 @@ msgstr "La base de données rapporte le message d’erreur suivant:"
 
 #: admin_trees_config.php:784
 msgid "The date and time of the last update"
-msgstr "La date et l'heure de la dernière mise à jour"
+msgstr "La date et l’heure de la dernière mise à jour"
 
 #: family.php:136
 msgid "The details of this family are private."
@@ -13189,11 +13189,11 @@ msgstr "Le message suivant vous a été envoyé par "
 
 #: admin_site_access.php:270
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-msgstr "Les règles suivantes sont utilisées pour décider si un visiteur est un être humain (permettre l'accès complet), un moteur de recherche (permettre un accès restreint) ou un robot indésirable (refuser tout accès)."
+msgstr "Les règles suivantes sont utilisées pour décider si un visiteur est un être humain (permettre l’accès complet), un moteur de recherche (permettre un accès restreint) ou un robot indésirable (refuser tout accès)."
 
 #: admin_site_access.php:287
 msgid "The following visitors were not recognised, and were assumed to be search engines."
-msgstr "Les visiteurs suivants n'ont pas été reconnus et ont été assumés comme étant des moteurs de recherche."
+msgstr "Les visiteurs suivants n’ont pas été reconnus et ont été assumés comme étant des moteurs de recherche."
 
 #: help_text.php:1513
 msgid "The help text has not been written for this item."
@@ -13854,7 +13854,7 @@ msgstr "Cette option sauvegarde l’arbre généalogique de la base de données,
 
 #: help_text.php:865
 msgid "This option will show the names (but no other details) of private individuals.  Individuals are private if they are still alive or if a privacy restriction has been added to their individual record.  To hide a specific name, add a privacy restriction to that name record."
-msgstr "Cette option affichera les noms (mais sans détails) des individus privés. Les individus sont privés s'ils sont encore vivants ou si une restriction de confidentialité a été ajoutée à leur fiche individuelle. Ajouter une restriction de confidentialité à un nom spécifique pour le masquer."
+msgstr "Cette option affichera les noms (mais sans détails) des individus privés. Les individus sont privés s’ils sont encore vivants ou si une restriction de confidentialité a été ajoutée à leur fiche individuelle. Ajouter une restriction de confidentialité à un nom spécifique pour le masquer."
 
 #: modules_v3/googlemap/help_text.php:52
 msgid "This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers."
@@ -16547,7 +16547,7 @@ msgstr "sexe"
 #. I18N: button label
 #: edit_interface.php:2574
 msgid "go to new individual"
-msgstr "Voir la fiche de l'individu ajouté"
+msgstr "Voir la fiche de l’individu ajouté"
 
 #: includes/functions/functions.php:975
 msgctxt "child's child"

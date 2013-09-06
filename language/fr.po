@@ -7032,7 +7032,7 @@ msgstr "Si un individu a deux noms de famille séparés, chacun d’eux doit êt
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Si un individu a été connu sous un diminutif ou un sobriquet ne faisant pas partie de son nom officiel, il doit être délimité par des guillemets. Par exemple, <%s>John \"Nobby\" /Clark/<%s>."
+msgstr "Si un individu a été connu sous un diminutif ou un sobriquet ne faisant pas partie de son nom officiel, il doit être délimité par des guillemets. Par exemple, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 
 #: help_text.php:287
 #, php-format
@@ -14764,7 +14764,7 @@ msgstr "Les identifiants ne sont pas sensibles à la casse et ignorent les lettr
 #: help_text.php:1497
 #, php-format
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "Les identifiants ne doivent pas contenir les caractères suivants&nbsp;:&nbsp;&lt; &gt; \" %% { } ;"
+msgstr "Les identifiants ne doivent pas contenir les caractères suivants&nbsp;:&nbsp;&lt; &gt; &quot; %% { } ;"
 
 #: admin.php:122 themes/_administration/header.php:123
 msgid "Users"

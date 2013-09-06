@@ -918,7 +918,7 @@ msgstr "En fane der viser de kilder der er knyttet til en person."
 
 #: help_text.php:1483
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
-msgstr "En bruger kan ikke logge ind før felterne \"E-mail verificeret\" og \"Godkendt af administrator\" er afkrydset."
+msgstr "En bruger kan ikke logge ind før felterne “E-mail verificeret” og “Godkendt af administrator” er afkrydset."
 
 #: help_text.php:1021
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
@@ -1640,7 +1640,7 @@ msgstr "Afrika"
 
 #: help_text.php:1072
 msgid "After creating the family tree, you will be able to upload or import data from a GEDCOM file."
-msgstr "Efter oprettelsen af familietræet kan du anvende \"upload\" for at bruge en GEDCOM-fil fra din PC eller \"Hent fra server\" for at importere fra din webserver."
+msgstr "Efter oprettelsen af familietræet kan du anvende “upload” for at bruge en GEDCOM-fil fra din PC eller “Hent fra server” for at importere fra din webserver."
 
 #: login.php:220
 msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
@@ -1788,7 +1788,7 @@ msgstr "Alle personer"
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:37
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Tillad andre moduler til at redigere tekst ved hjælp af en \"WYSIWYG\" editor, i stedet for at bruge HTML-koder."
+msgstr "Tillad andre moduler til at redigere tekst ved hjælp af en “WYSIWYG” editor, i stedet for at bruge HTML-koder."
 
 #: admin_users.php:206 admin_users.php:395
 msgid "Allow this user to edit his account information"
@@ -1830,7 +1830,7 @@ msgstr "Amerikansk Samoa"
 #. I18N: Description of the “Album” module
 #: modules_v3/lightbox/module.php:39
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Et alternativ til \"medie\" fanen og en forbedret billedfremviser."
+msgstr "Et alternativ til “medie” fanen og en forbedret billedfremviser."
 
 #. I18N: Description of the “Charts” module
 #: modules_v3/charts/module.php:37
@@ -3390,7 +3390,7 @@ msgstr "Vælg slægtninge"
 
 #: help_text.php:353
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
-msgstr "Vælg ret køn fra \"drop-down\"-listen.  Valgmuligheden <b>Ukendt</b> indikerer, at du ikke kender personens køn."
+msgstr "Vælg ret køn fra “drop-down”-listen.  Valgmuligheden <b>Ukendt</b> indikerer, at du ikke kender personens køn."
 
 #: help_text.php:1456
 msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
@@ -3594,7 +3594,7 @@ msgstr "Ved at klikke på dette link, vil du se en liste med alle personer og fa
 
 #: help_text.php:1140
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
-msgstr "Ved at klikke på \"+\" ikonet, GEDFact delt note hjælper vil åbne i et nyt vindue.<br>Uddybende hjælp findes her.<br>/>Ved at klikke på \"Gem\" knappen, ID nummeret på delt note vil så blive indsat."
+msgstr "Ved at klikke på “+” ikonet, GEDFact delt note hjælper vil åbne i et nyt vindue.<br>Uddybende hjælp findes her.<br><br>Ved at klikke på “Gem” knappen, ID nummeret på delt note vil så blive indsat."
 
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
@@ -4076,7 +4076,7 @@ msgstr "DNA markører"
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: branches.php:67 library/WT/Soundex.php:30 search.php:194
 msgid "Daitch-Mokotoff"
-msgstr "<A HREF=\"http://en.wikipedia.org/wiki/Daitch-Mokotoff_Soundex\">Daitch-Mokotoff</A> (1985 - bedre)"
+msgstr "<a href=\"http://en.wikipedia.org/wiki/Daitch-Mokotoff_Soundex\">Daitch-Mokotoff</a> (1985 - bedre)"
 
 #: library/WT/Gedcom/Code/Temp.php:92
 msgid "Dallas, Texas"
@@ -4917,7 +4917,7 @@ msgstr "Opret ikke nye placeringer, importér kun koordinater for eksisterende s
 #: help_text.php:1284
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 msgid "Do not update the “last change” record"
-msgstr "Opdatér ikke \"sidst ændret\" posten"
+msgstr "Opdatér ikke “sidst ændret” posten"
 
 #: library/WT/Gedcom/Tag.php:898
 msgid "Document"
@@ -4988,7 +4988,7 @@ msgstr "E- mail adresse der skal bruges i &laquo;Fra:&raquo;-feltet for de e-mai
 
 #: help_text.php:1176
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Hver kilde registrerer særlige begivenheder, normalt indenfor en dato og et sted/område. For eksempel optegnelser i en folketælling eller kirkebøgernes oplysninger om begivenheder som fødsel, vielse og død.<br><br>Vælg den ønskede begivenhed fra den liste over begivenheder som webtrees indeholder. Datoen skal angives med det korrekte format fx <i>FROM 1900 TO 1910</i>. Stedet benævnes med den mest præcise placering for kilden. For eksempel vil \"Oneida, Idaho, USA\" angive at begivenheden skete indenfor det begræsede område Oneida County. \"Idaho, USA\" vil angive at begivenheden fandt sted indenfor hele staten Idaho."
+msgstr "Hver kilde registrerer særlige begivenheder, normalt indenfor en dato og et sted/område. For eksempel optegnelser i en folketælling eller kirkebøgernes oplysninger om begivenheder som fødsel, vielse og død.<br><br>Vælg den ønskede begivenhed fra den liste over begivenheder som webtrees indeholder. Datoen skal angives med det korrekte format fx <i>FROM 1900 TO 1910</i>. Stedet benævnes med den mest præcise placering for kilden. For eksempel vil “Oneida, Idaho, USA” angive at begivenheden skete indenfor det begræsede område Oneida County. “Idaho, USA” vil angive at begivenheden fandt sted indenfor hele staten Idaho."
 
 #: help_text.php:1341
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
@@ -6000,12 +6000,12 @@ msgstr "Filnavn"
 #: addmedia.php:171 addmedia.php:310 admin_media_upload.php:112
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "Filnavne må ikke indeholde tegnet \"%s\"."
+msgstr "Filnavne må ikke indeholde tegnet “%s”."
 
 #: addmedia.php:176 addmedia.php:315 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "Filnavne må ikke have efternavnet \"%s\"."
+msgstr "Filnavne må ikke have efternavnet “%s”."
 
 #: admin.php:109
 msgid "Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them."
@@ -6494,7 +6494,7 @@ msgstr "Fornavne"
 
 #: help_text.php:427
 msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
-msgstr "Giver brugere mulighed for at vælge deres eget layout (tema) fra en \"drop down\" liste (hvis den er tilgængelig som tema)<br>Det er også nødvendigt at feltet: \"Tillad brugere at vælge deres eget tema\" er sat til <b>Ja</b>."
+msgstr "Giver brugere mulighed for at vælge deres eget layout (tema) fra en “drop down” liste (hvis den er tilgængelig som tema)<br>Det er også nødvendigt at feltet: “Tillad brugere at vælge deres eget tema” er sat til <b>Ja</b>."
 
 #: help_text.php:432
 msgid "Gives users the option of selecting their own theme."
@@ -6799,7 +6799,7 @@ msgstr "Her kan zoom niveauet indtastes. Denne værdig vil blive brugt som den m
 
 #: help_text.php:1060
 msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
-msgstr "Her kan du tilføje fakta for en eller flere personer.<br><br>Vælg først en faktaoplysning fra \"drop-down listen\", og klik så på knappen <b>\"Tilføj\"</b>. <br>I \"drop-down listen\" finder du alle tilgængelige faktaoplysninger for slægtsdatabasen."
+msgstr "Her kan du tilføje fakta for en eller flere personer.<br><br>Vælg først en faktaoplysning fra “drop-down listen”, og klik så på knappen <b>“Tilføj”</b>. <br>I “drop-down listen” finder du alle tilgængelige faktaoplysninger for slægtsdatabasen."
 
 #: help_text.php:1090
 msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
@@ -7032,7 +7032,7 @@ msgstr "Hvis et individ har to separate efternavne, bør begge blive omkranset a
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Hvis et individ var kendt ved et øgenavn som ikke var en del af deres formelle navn, bør det omkranses af citationstegn.  For eksempel, <%s>John \"Nobby\" /Clark/<%s>."
+msgstr "Hvis et individ var kendt ved et øgenavn som ikke var en del af deres formelle navn, bør det omkranses af citationstegn.  For eksempel, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 
 #: help_text.php:287
 #, php-format
@@ -7041,7 +7041,7 @@ msgstr "Hvis et individ ikke var kendt ved sit fornavn, skal det foretrukne navn
 
 #: help_text.php:471
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
-msgstr "Hvis et bestemt efternavn ikke findes tilstrækkelig mange gange til at kunne blive vist i listen over \"Oftest forekommende efternavne\", kan den her tilføjes manuelt. Hvis der tilføjes flere navne skal de adskilles med et komma. <b>Efternavne er versalfølsomme.</b>"
+msgstr "Hvis et bestemt efternavn ikke findes tilstrækkelig mange gange til at kunne blive vist i listen over “Oftest forekommende efternavne”, kan den her tilføjes manuelt. Hvis der tilføjes flere navne skal de adskilles med et komma. <b>Efternavne er versalfølsomme.</b>"
 
 #: help_text.php:815
 msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."

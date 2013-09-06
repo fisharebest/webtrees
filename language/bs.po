@@ -1843,7 +1843,7 @@ msgstr "Američka Samoa"
 #. I18N: Description of the “Album” module
 #: modules_v3/lightbox/module.php:39
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Alternativa za jezičak \"Medij\", i napredni preglednik slika."
+msgstr "Alternativa za jezičak “Medij”, i napredni preglednik slika."
 
 #. I18N: Description of the “Charts” module
 #: modules_v3/charts/module.php:37
@@ -12391,7 +12391,7 @@ msgstr "Prikaži osobe koje nemaju zabilježenu djecu u bazi podataka."
 #: includes/functions/functions_print_lists.php:95
 #: includes/functions/functions_print_lists.php:497
 msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
-msgstr "Prikaži \"korjenske\" parove ili osobe. Te osobe se još zovu i \"patrijarsi\". Oni su jedinke koje nemaju zabilježene roditelje u bazi podataka."
+msgstr "Prikaži “korjenske” parove ili osobe. Te osobe se još zovu i “patrijarsi”. Oni su jedinke koje nemaju zabilježene roditelje u bazi podataka."
 
 #. I18N: %s are placeholders for numbers
 #: library/WT/I18N.php:470 library/WT/I18N.php:471
@@ -14160,7 +14160,7 @@ msgstr ""
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Za kreiranje novog zadatka istaživanja, prvo morate dodati \"zadatak istraživanja\" na listu činjenica i događaja u postavkama za porodično stablo."
+msgstr "Za kreiranje novog zadatka istaživanja, prvo morate dodati “zadatak istraživanja” na listu činjenica i događaja u postavkama za porodično stablo."
 
 #: admin_media.php:452 library/WT/Controller/Media.php:69
 #: library/WT/Controller/Media.php:142 modules_v3/lightbox/module.php:212
@@ -15562,7 +15562,7 @@ msgstr ""
 
 #: modules_v3/batch_update/admin_batch_update.php:78
 msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
-msgstr "Vaš račun nema \"automatsko odobravanje izmjena\". Bićete u mogućnosti da promjenite samo jeda zapis u tom vremenu."
+msgstr "Vaš račun nema “automatsko odobravanje izmjena”. Bićete u mogućnosti da promjenite samo jeda zapis u tom vremenu."
 
 #: library/WT/Stats.php:4007
 msgid "Yugoslavia"
