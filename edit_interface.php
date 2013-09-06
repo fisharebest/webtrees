@@ -146,8 +146,8 @@ case 'updateraw':
 	}
 
 	// Cleanup the client’s bad editing?
-	$gedcom = preg_replace('/\n\n+/', "\n", $gedcom); // Empty lines
-	$gedcom = trim($gedcom);                          // Leading/trailing spaces
+	$gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom); // Empty lines
+	$gedcom = trim($gedcom);                            // Leading/trailing spaces
 
 	$record->updateRecord($gedcom, false);
 
@@ -236,8 +236,8 @@ case 'updaterawfact':
 		->pageHeader();
 
 	// Cleanup the client’s bad editing?
-	$gedcom = preg_replace('/\n\n+/', "\n", $gedcom); // Empty lines
-	$gedcom = trim($gedcom);                          // Leading/trailing spaces
+	$gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom); // Empty lines
+	$gedcom = trim($gedcom);                            // Leading/trailing spaces
 
 	$record->updateFact($fact_id, $gedcom, !$keep_chan);
 

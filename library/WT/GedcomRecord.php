@@ -865,10 +865,10 @@ class WT_GedcomRecord {
 
 	// Replace a fact with a new gedcom data.
 	public function updateFact($fact_id, $gedcom, $update_chan) {
-		if (strpos("\r", $gedcom)!==false) {
-			// MSDOS line endings will break things in horrible ways
-			throw new Exception('Evil line endings found in WT_GedcomRecord::updateFact(' . $gedcom . ')');
-		}
+		// MSDOS line endings will break things in horrible ways
+		$gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
+		$gedcom = trim($gedcom);
+
 		if ($this->pending==='') {
 			throw new Exception('Cannot edit a deleted record');
 		}
@@ -978,10 +978,9 @@ class WT_GedcomRecord {
 	}
 
 	public function updateRecord($gedcom, $update_chan) {
-		if (strpos("\r", $gedcom)!==false) {
-			// MSDOS line endings will break things in horrible ways
-			throw new Exception('Evil line endings found in WT_GedcomRecord::updateRecord(' . $gedcom . ')');
-		}
+		// MSDOS line endings will break things in horrible ways
+		$gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
+		$gedcom = trim($gedcom);
 
 		// Update the CHAN record
 		if ($update_chan) {
