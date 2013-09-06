@@ -154,14 +154,12 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 			if (($ctla>0) && ($ctlo>0) && ($useThisItem==true)) {
 				$i++;
 				$markers[$i]=array(
+					'fact'       => $fact,
 					'class'      => 'optionbox',
 					'index'      => '',
 					'tabindex'   => '',
 					'placed'     => 'no',
-					'fact'       => $fact->getTag(),
 					'fact_label' => $fact->getLabel(),
-					'info'       => $fact->getValue(),
-					'placerec'   => $fact->getPlace()->getFullName(),
 					'lati'       => str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]),
 					'lng'        => str_replace(array('E', 'W', ','), array('', '-', '.') , $match2[1]),
 				);
@@ -178,14 +176,12 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 					if ((count($latlongval) != 0) && ($latlongval['lati'] != null) && ($latlongval['long'] != null)) {
 						$i++;
 						$markers[$i] = array(
+							'fact'       => $fact,
 							'class'      => 'optionbox',
 							'index'      => '',
 							'tabindex'   => '',
 							'placed'     => 'no',
-							'fact'       => $fact->getTag(),
 							'fact_label' => $fact->getLabel(),
-							'info'       => $fact->getValue(),
-							'placerec'   => $fact->getPlace()->getFullName(),
 						);
 						$markers[$i]['icon'] = $latlongval['icon'];
 						if ($GOOGLEMAP_MAX_ZOOM > $latlongval['zoom']) {
@@ -226,12 +222,10 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 					if (($ctla>0) && ($ctlo>0)) {
 						$i++;
 						$markers[$i]=array(
+							'fact'       => $birth,
 							'index'    => '',
 							'tabindex' => '',
 							'placed'   => 'no',
-							'fact'     => 'BIRT',
-							'info'     => '',
-							'placerec' => $birth->getPlace()->getFullName(),
 						);
 						switch ($child->getSex()) {
 						case'F':
@@ -260,12 +254,10 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 						if ((count($latlongval) != 0) && ($latlongval['lati'] != null) && ($latlongval['long'] != null)) {
 							$i++;
 							$markers[$i] = array(
+								'fact'       => $birth,
 								'index'    => '',
 								'tabindex' => '',
 								'placed'   => 'no',
-								'fact'     => 'BIRT',
-								'info'     => '',
-								'placerec' => $birth->getPlace()->getFullName(),
 							);
 							switch ($child->getSex()) {
 							case 'M':
@@ -664,8 +656,8 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 						// The current indi
 						if (!empty($this_person)) {
 							$class = 'pedigree_image';
-							if (in_array($gmark['fact'], array('CENS', 'BIRT', 'BAPM', 'CHR', '_MILI', 'OCCU', 'RESI', 'DEAT', 'CREM', 'BURI', 'RETI'))) {
-								$image = addslashes('<i class="icon_'.$gmark['fact'].'"></i>');
+							if (in_array($gmark['fact']->getTag(), array('CENS', 'BIRT', 'BAPM', 'CHR', '_MILI', 'OCCU', 'RESI', 'DEAT', 'CREM', 'BURI', 'RETI'))) {
+								$image = addslashes('<i class="icon_' . $gmark['fact']->getTag() . '"></i>');
 							} else {
 								if ($SHOW_HIGHLIGHT_IMAGES) {
 									$image = addslashes($this_person->displayImage());
@@ -698,15 +690,15 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 							"<?php echo WT_Filter::escapeJs($gmark['lati']); ?>",
 							"<?php echo WT_Filter::escapeJs($gmark['lng']); ?>",
 							"<?php if (!empty($gmark['date'])) { $date=new WT_Date($gmark['date']); echo addslashes($date->Display(true)); } else { echo WT_I18N::translate('Date not known'); } ?>",
-							"<?php echo WT_Filter::escapeJs($gmark['info']); ?>",
+							"<?php echo WT_Filter::escapeJs(WT_Filter::escapeHtml($gmark['fact']->getValue())); ?>",
 							"<?php if (!empty($gmark['name'])) { $person=WT_Individual::getInstance($gmark['name']); if ($person) { echo '<a href=\"', $person->getHtmlUrl(), '\">', addslashes($person->getFullName()), '</a>'; } } ?>",
-							"<?php echo WT_Filter::escapeJs($gmark['placerec']); ?>",
+							"<?php echo WT_Filter::escapeJs($gmark['fact']->getPlace()->getFullName()); ?>",
 							"<?php echo WT_Filter::escapeJs($gmark['index']); ?>",
 							"<?php echo WT_Filter::escapeJs($gmark['tabindex']); ?>",
 							"<?php echo WT_Filter::escapeJs($gmark['placed']); ?>",
 		
 							// Element 10. location marker tooltip - extra printable item for marker title.
-							"<?php echo WT_Filter::escapeJs($gmark['placerec']); ?>",
+							"<?php echo WT_Filter::escapeJs($gmark['fact']->getPlace()->getGedcomName()); /* For tool-tip - no HTML */ ?>",
 		
 							// Element 11. persons Name
 							"<?php if (!empty($gmark['name'])) { $person=WT_Individual::getInstance($gmark['name']); if ($person) { echo addslashes($person->getFullName()); } } ?>",
@@ -763,7 +755,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 					var date         = locations[i][3];                         // Date of event or fact
 					var info         = ''//locations[i][4];                     // info on occupation, or
 					var name         = locations[i][5];                         // Persons name
-					var address      = locations[i][6];                         // Address of event or fact
+					var address      = "!"+locations[i][6];                         // Address of event or fact
 					var index        = locations[i][7];                         // index
 					var tab          = locations[i][8];                         // tab index
 					var placed       = locations[i][9];                         // Yes indicates multitab item
@@ -887,8 +879,8 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 			echo '<a href="#" onclick="myclick(', $z, ', ', $marker['index'], ', ', $marker['tabindex'], ')">', $marker['fact_label'], '</a></td>';
 			$z++;
 			echo '<td class="', $marker['class'], '" style="white-space: normal">';
-			if (!empty($marker['info'])) {
-				echo '<span class="field">', $marker['info'], '</span><br>';
+			if ($marker['fact']->getValue()) {
+				echo '<span class="field">', WT_Filter::escapeHtml($marker['fact']->getValue()), '</span><br>';
 			}
 			if (!empty($marker['name'])) {
 				$person=WT_Individual::getInstance($marker['name']);
@@ -897,7 +889,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				}
 				echo '<br>';
 			}
-			echo $marker['placerec'], '<br>';
+			echo $marker['fact']->getPlace()->getFullName(), '<br>';
 			if (!empty($marker['date'])) {
 				$date=new WT_Date($marker['date']);
 				echo $date->Display(true), '<br>';
