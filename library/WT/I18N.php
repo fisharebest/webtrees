@@ -95,10 +95,10 @@ class WT_I18N {
 				$prefs2=array();
 				foreach ($prefs as $pref) {
 					list($l, $q)=explode(';q=', $pref.';q=1.0');
-					$l=preg_replace(
-						array('/-/', '/_[a-z][a-z]$/e'),
-						array ('_', 'strtoupper("$0")'),
-						$l
+					$l=preg_replace_callback(
+						'/_[a-z][a-z]$/',
+						function($x) { return strtoupper($x[0]); },
+						str_replace('-', '_', $l)
 					); // en-gb => en_GB
 					if (array_key_exists($l, $prefs2)) {
 						$prefs2[$l]=max((float)$q, $prefs2[$l]);
