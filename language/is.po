@@ -602,7 +602,7 @@ msgstr "<b>webtrees</b> getur ekki tengst PhpGedView gagnagrunni: %s."
 
 #: help_text.php:1181
 msgid "<b>webtrees</b> has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you."
-msgstr "<b>webtrees</b> er með nokkra mismunandi tengiliða aðferðir. Kerfisstjórinn ákveður hvaða aðferð verður notuð til að hafa samband við hann. Þú stjórnar því hvaða aðferð verður notuð til að hafa samband við <u<þig</u>. Miðað við vefsíðu uppsetningu, þá gætu sumar tilgreindar aðferðir ekki verið þér aðgengilegar."
+msgstr "<b>webtrees</b> er með nokkra mismunandi tengiliða aðferðir. Kerfisstjórinn ákveður hvaða aðferð verður notuð til að hafa samband við hann. Þú stjórnar því hvaða aðferð verður notuð til að hafa samband við <u>þig</u>. Miðað við vefsíðu uppsetningu, þá gætu sumar tilgreindar aðferðir ekki verið þér aðgengilegar."
 
 #: setup.php:251
 #, php-format
@@ -11578,7 +11578,7 @@ msgstr "Veljið skrá úr lista yfir skrár sem nú þegar eru á netþjóni sem
 
 #: help_text.php:335
 msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the Godfather of the current individual</i>."
-msgstr "Veljið skyldleikaheitið úr listanum. Velja <b>Guðfaðir</b> þýðir:<i>Þessi fulltrúi er guðfaðir núverandi einstaklings.</i>"
+msgstr "Veljið skyldleikaheitið úr listanum. Velja <b>Guðfaðir</b> þýðir: <i>Þessi fulltrúi er guðfaðir núverandi einstaklings.</i>"
 
 #: modules_v3/googlemap/help_text.php:68
 msgid "Select an icon"
@@ -13624,7 +13624,7 @@ msgstr "Þetta er listi yfir GEDCOM staðreyndir sem notendur þínir geta eing�
 
 #: help_text.php:916
 msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list."
-msgstr "Þetta er listi yfir GEDCOOM staðreyndir sem notendur þínir geta aðeins bætt við <u>einu sinni</u> við heimildir. Sem dæmi, ef TITL er í þessum lista, þá geta notendur ekki bætt við meira en einu TITL færslu við heimild. Staðreyndaheiti sem birtast í þessum lista mega ekki einnig birtast í listanum <i><Heimild Bæta við Staðreyndum</i>."
+msgstr "Þetta er listi yfir GEDCOOM staðreyndir sem notendur þínir geta aðeins bætt við <u>einu sinni</u> við heimildir. Sem dæmi, ef TITL er í þessum lista, þá geta notendur ekki bætt við meira en einu TITL færslu við heimild. Staðreyndaheiti sem birtast í þessum lista mega ekki einnig birtast í listanum <i>Heimild Bæta við Staðreyndum</i>."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:760
