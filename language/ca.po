@@ -602,7 +602,7 @@ msgstr "<b>webtrees</b> no pot connectar amb la base de dades PhpGedView: %s."
 
 #: help_text.php:1181
 msgid "<b>webtrees</b> has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you."
-msgstr "<b>webtrees</b> té diverses formes de contacte. L'administrador determina quina cal fer servir per comunicar-s’hi. Vós controleu la forma que s'utilitzarà per contactar-vos. Depenent de la configuració del lloc, alguns dels mètodes enumerats poden no estar disponibles."
+msgstr "<b>webtrees</b> té diverses formes de contacte. L'administrador determina quina cal fer servir per comunicar-s’hi. Vós controleu la forma que s'utilitzarà per <u>contactar-vos</u>. Depenent de la configuració del lloc, alguns dels mètodes enumerats poden no estar disponibles."
 
 #: setup.php:251
 #, php-format
@@ -7131,7 +7131,7 @@ msgstr "Si la política de seguretat del servidor ho permet, podeu demanar un au
 #. I18N: Help text for the "Website URL" site configuration setting
 #: help_text.php:825
 msgid "If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
-msgstr "Si al lloc es pot utilitzar més d'un URL, com <b>http://www.exemple.com/webtrees/ </b> i <b> http://webtrees.exemple.com/ </b >, podeu especificar l'adreça preferida. Les sol·licituds a els altres URL seràn redirigides a la preferida."
+msgstr "Si al lloc es pot utilitzar més d'un URL, com <b>http://www.exemple.com/webtrees/ </b> i <b> http://webtrees.exemple.com/ </b>, podeu especificar l'adreça preferida. Les sol·licituds a els altres URL seràn redirigides a la preferida."
 
 #: library/WT/Gedcom/Tag.php:836
 msgid "Image dimensions"
@@ -13094,7 +13094,7 @@ msgstr "L'actual nom d'usuari administrador <b>webtrees</b> ha d'ésser el matei
 #: login.php:510
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
-msgstr "S'han comprovat les dades de l'usuari %s."
+msgstr "S'han comprovat les dades de l'usuari <b>%s</b>."
 
 #: site-unavailable.php:72
 msgid "The database reported the following error message:"
@@ -13783,7 +13783,7 @@ msgstr "Aquesta opció controla si es mostra als gràfics o no, l'edat dels pare
 
 #: help_text.php:840
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "<br> Aquesta opció controla si es mostraran o no a cadascuna de les llistes i gràfics individuals, les dates estimades de naixement i defunció, en lloc de deixar-hi espais en blanc, de les persones que en desconeixem aquestes dades. <Br / >"
+msgstr "Aquesta opció controla si es mostraran o no a cadascuna de les llistes i gràfics individuals, les dates estimades de naixement i defunció, en lloc de deixar-hi espais en blanc, de les persones que en desconeixem aquestes dades."
 
 #: help_text.php:710
 msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
@@ -13868,7 +13868,7 @@ msgstr "Aquesta pàgina ofereix àmplia informació sobre el servidor on es trob
 
 #: help_text.php:1171
 msgid "This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent."
-msgstr "Aquesta pàgina us permetrà combinar dos registres GEDCOM dins del mateix arxiu GEDCOM. <br> <br> Això és útil per a qui hagi fusionat GEDCOMs i ara tingui moltes persones, famílies i fonts duplicats. <br> <br> La pàgina consta de tres passos. <br> <ol> <li> introduir dos identificadors de GEDCOM. L' ID <u>cal</u> que sigui del mateix tipus. No es pot combinar una persona amb una família o una família i una font, per exemple /> Al camp <b>Barreja a l'ID</b> introduïu l'ID del registre que esdevindrà el nou registre un cop la fusió es completi. Al camp <b>Barreja des de l'ID </b> introduïu l'ID del registre quina informació es fusionarà amb la del registre de Barreja a l'ID:. Aquest registre serà eliminat després de la fusió. </li> <li> Us cal seleccionar quines dades voleu mantenir dels dos registresregistres quan es combinin. Simplement polseu les caselles de verificació al costat de les que voleu conservar. </ li> <li> Reviseu els resultats de la fusió, tal com ho farieu amb tots els altres canvis realitzats en línia. </ li> </ ol> Algú amb drets per acceptar canvis ha d'autoritzat-los perquè quedin com a permanents."
+msgstr "Aquesta pàgina us permetrà combinar dos registres GEDCOM dins del mateix arxiu GEDCOM.<br><br>Això és útil per a qui hagi fusionat GEDCOMs i ara tingui moltes persones, famílies i fonts duplicats.<br><br>La pàgina consta de tres passos.<br><ol><li>introduir dos identificadors de GEDCOM. L' ID <u>cal</u> que sigui del mateix tipus. No es pot combinar una persona amb una família o una família i una font, per exemple.<br>Al camp <b>Barreja a l'ID</b> introduïu l'ID del registre que esdevindrà el nou registre un cop la fusió es completi.<br>Al camp <b>Barreja des de l'ID</b> introduïu l'ID del registre quina informació es fusionarà amb la del registre de Barreja a l'ID:. Aquest registre serà eliminat després de la fusió.</li><li>Us cal seleccionar quines dades voleu mantenir dels dos registresregistres quan es combinin. Simplement polseu les caselles de verificació al costat de les que voleu conservar.</li><li>Reviseu els resultats de la fusió, tal com ho farieu amb tots els altres canvis realitzats en línia.</li></ol>Algú amb drets per acceptar canvis ha d'autoritzat-los perquè quedin com a permanents."
 
 #: modules_v3/googlemap/placehierarchy.php:364
 msgid "This place has no coordinates"
@@ -15018,12 +15018,12 @@ msgstr ""
 #: login.php:356
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
-msgstr "Ara rebreu un correu electrònic de confirmació a l'adreça ( %s ). Us caldrà confirmar la vostra petició seguint les instruccions del correu electrònic. Si no ho feu, passada una setmana la petició serà automàticament rebutjada i us caldria tornar a demanar-la.<br><br>Desprès de seguir les instruccions del correu electrònic de confirmació, caldrà que l'administrador autoritzi la comanda abans de poder accedir planament.<br><br>Per accedir a aquest lloc cal conèixer el nom d'usuari i la contrasenya."
+msgstr "Ara rebreu un correu electrònic de confirmació a l'adreça <b>%s</b>. Us caldrà confirmar la vostra petició seguint les instruccions del correu electrònic. Si no ho feu, passada una setmana la petició serà automàticament rebutjada i us caldria tornar a demanar-la.<br><br>Desprès de seguir les instruccions del correu electrònic de confirmació, caldrà que l'administrador autoritzi la comanda abans de poder accedir planament.<br><br>Per accedir a aquest lloc cal conèixer el nom d'usuari i la contrasenya."
 
 #: login.php:358
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
-msgstr "Ara rebreu un correu electrònic de confirmació a l'adreça ( %s ). Us caldrà confirmar la vostra petició seguint les instruccions del correu electrònic. Si no ho feu, passada una setmana la petició ser automàticament rebutjada i us caldria tornar a demanar-la.<br><br>Desprès de seguir les instruccions del correu electrònic, tindreu lliure accés.  Per a fer-ho cal conèixer el nom d'usuari i la contrasenya"
+msgstr "Ara rebreu un correu electrònic de confirmació a l'adreça <b>%s</b>. Us caldrà confirmar la vostra petició seguint les instruccions del correu electrònic. Si no ho feu, passada una setmana la petició ser automàticament rebutjada i us caldria tornar a demanar-la.<br><br>Desprès de seguir les instruccions del correu electrònic, tindreu lliure accés.  Per a fer-ho cal conèixer el nom d'usuari i la contrasenya"
 
 #. I18N: gedcom tag _URL
 #: library/WT/Gedcom/Tag.php:823
