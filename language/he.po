@@ -615,7 +615,7 @@ msgstr "<b>webtrees</b> שולחת דואר אלקטרוני, כגון תזכו�
 
 #: help_text.php:774
 msgid "<b>webtrees</b> reply address"
-msgstr "כתובת מענה עבור webtrees"
+msgstr "כתובת מענה עבור <b>webtrees</b>"
 
 #: login.php:136
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
@@ -627,7 +627,7 @@ msgstr "<center><b>ברוכים הבאים לאתר הזה של חקר שושל�
 
 #: login.php:133
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
-msgstr "<center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת <u>רק לבני משפחה</u>.<br>אם יש לך חשבון משתמש תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור המתאים מלמטה.<br><br>מנהל האתר יבדוק את נתוניך ויאשר או ידחה את בקשתך. תקבל דואר אלקטרוני לאחר שבקשתך תאושר."
+msgstr "<center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת <u>רק לבני משפחה</u>.<br><br>אם יש לך חשבון משתמש תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור המתאים מלמטה.<br><br>מנהל האתר יבדוק את נתוניך ויאשר או ידחה את בקשתך. תקבל דואר אלקטרוני לאחר שבקשתך תאושר."
 
 #: login.php:127
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
@@ -15251,7 +15251,7 @@ msgstr "עם מקורות"
 
 #: help_text.php:1185
 msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
-msgstr "בבחירה זו משתמשים במערכת הדיווח הפנימית של <b>webtrees</b> ושום דואר אלקטרוני לא נשלח.  בדרך זו תקבל רק <u>הודעות פנימיות</u> ממשתמשים אחרים.<br>כאשר משתמש אחר שולח לך הודעה מאתר זה, ההודעה תופיע בבלוק ההודעות שעל הדף שלך האישי. אם הורדת את הבלוק מהדף שלך, לא תראה הודעות. הן תופענה מיד לאחר שתגדיר את בלוק ההודעות על הדף שלך."
+msgstr "בבחירה זו משתמשים במערכת הדיווח הפנימית של <b>webtrees</b> ושום דואר אלקטרוני לא נשלח.  בדרך זו תקבל רק <u>הודעות פנימיות</u> ממשתמשים אחרים.  כאשר משתמש אחר שולח לך הודעה מאתר זה, ההודעה תופיע בבלוק ההודעות שעל הדף שלך האישי. אם הורדת את הבלוק מהדף שלך, לא תראה הודעות. הן תופענה מיד לאחר שתגדיר את בלוק ההודעות על הדף שלך."
 
 #: help_text.php:1197
 msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."
@@ -19151,7 +19151,7 @@ msgstr "דודן/דודנית מדרגה 10"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
 msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "הגדרות הקישוריות של מאגר הנתונים בקובץ <b>/data/config.ini.php</b עדיין נכונות"
+msgstr "הגדרות הקישוריות של מאגר הנתונים בקובץ <b>/data/config.ini.php</b> עדיין נכונות"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:80
