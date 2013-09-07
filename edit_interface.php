@@ -1585,13 +1585,6 @@ case 'editname':
 
 	print_indi_form('update', $person, null, $name_fact, '', $person->getSex());
 
-	if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
-		echo
-			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', WT_GEDURL, '">',
-			WT_I18N::translate('Edit raw GEDCOM record'),
-			'</a>';
-	}
-	
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2693,6 +2686,15 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 		print_add_layer('NOTE', 1);
 		print_add_layer('SHARED_NOTE', 1);
 	}
+
+	// If we are editing an existing name, allow raw GEDCOM editing
+	if ($name_fact && (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD)) {
+		echo
+			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $name_fact->getFactId(), '&amp;ged=', WT_GEDURL, '">',
+			WT_I18N::translate('Edit raw GEDCOM record'),
+			'</a>';
+	}
+	
 	echo '<p id="save-cancel">';
 	echo '<input type="submit" class="save" value="', /* I18N: button label */ WT_I18N::translate('save'), '">';
 	if (preg_match('/^add_(child|spouse|parent|unlinked_indi)/', $nextaction)) {
