@@ -25,7 +25,7 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Gedcom_Code_Name {
 
-	private static $TYPES=array('adopted', 'aka', 'birth', 'change', 'immigrant', 'maiden', 'married', 'religious');
+	private static $TYPES=array('adopted', 'aka', 'birth', 'change', 'estate', 'immigrant', 'maiden', 'married', 'religious');
 
 	// Translate a code, for an (optional) record
 	public static function getValue($type, $record=null) {
@@ -83,6 +83,18 @@ class WT_Gedcom_Code_Name {
 			default:
 				/* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
 				return WT_I18N::translate('change of name');
+			}
+		case 'estate':
+			switch ($sex) {
+			case 'M':
+				/* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
+				return WT_I18N::translate_c('MALE', 'estate name');
+			case 'F':
+				/* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
+				return WT_I18N::translate_c('FEMALE', 'estate name');
+			default:
+				/* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
+				return WT_I18N::translate('estate name');
 			}
 		case 'immigrant':
 			switch ($sex) {
