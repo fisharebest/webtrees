@@ -7055,7 +7055,7 @@ msgstr "Ak má osoba dve priezviská, obe musia byť uzatvorené lomkami: <%s>Jo
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Ak bola osoba známa pod prezývkou, ktoré nie je súčasťou jej formálneho mena, malo by byť uvedené v uvodzovkách. Napríklad, <%s>John \"Nobby\" /Clark/<%s>."
+msgstr "Ak bola osoba známa pod prezývkou, ktoré nie je súčasťou jej formálneho mena, malo by byť uvedené v uvodzovkách. Napríklad, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 
 #: help_text.php:287
 #, php-format

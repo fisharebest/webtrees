@@ -7009,7 +7009,7 @@ msgstr "如果一个人有两个独立的姓氏，都应该用斜线分隔： <%
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "如果一个人被称为的昵称不属于他们的正式名称，应该用引号引起来。例如，, <%s>John \"Nobby\" /Clark/<%s>。"
+msgstr "如果一个人被称为的昵称不属于他们的正式名称，应该用引号引起来。例如，, <%s>John &quot;Nobby&quot; /Clark/<%s>。"
 
 #: help_text.php:287
 #, php-format

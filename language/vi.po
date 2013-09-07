@@ -7010,7 +7010,7 @@ msgstr "Nếu một người có hai tên họ riêng, cả hai phải để tro
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Nếu một người được gọi bằng tên tục không phải là 1 phần của tên chính thức, thì phải để trong dấu ngoặc. Thí dụ, <%s>John \"Nobby\" /Clark/<%s>."
+msgstr "Nếu một người được gọi bằng tên tục không phải là 1 phần của tên chính thức, thì phải để trong dấu ngoặc. Thí dụ, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 
 #: help_text.php:287
 #, php-format

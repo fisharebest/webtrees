@@ -7032,7 +7032,7 @@ msgstr "Als een persoon twee afzonderlijke achternamen heeft, moeten beiden inge
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Als een persoon bekend was onder zijn bijnaam welke geen deel is van zijn formele naam, moet het ingesloten worden door twee aanhalingstekens. B.v. <%s>John \"Nobby\" /Clark/<%s>."
+msgstr "Als een persoon bekend was onder zijn bijnaam welke geen deel is van zijn formele naam, moet het ingesloten worden door twee aanhalingstekens. B.v. <%s>John &quot;Nobby&quot; /Clark/<%s>."
 
 #: help_text.php:287
 #, php-format
