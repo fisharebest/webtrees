@@ -2799,65 +2799,21 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 		}
 	}
 
-	/**
-	* convert a hidden field to a text box
-	*/
+	// Toggle the name editor fields between
+	// <input type="hidden"> <span style="display:inline">
+	// <input type="text">   <span style="display:hidden">
 	var oldName = "";
 	var manualChange = false;
 	function convertHidden(eid) {
-		var element = document.getElementById(eid);
-		if (element) {
-			if (element.type=="hidden") {
-				// IE doesn’t allow changing the "type" of an input field so we’ll cludge it ( silly :P)
-				if (IE) {
-					var newInput = document.createElement("input");
-					newInput.setAttribute("type", "text");
-					newInput.setAttribute("name", element.Name);
-					newInput.setAttribute("id", element.id);
-					newInput.setAttribute("value", element.value);
-					newInput.setAttribute("onchange", element.onchange);
-					var parent = element.parentNode;
-					parent.replaceChild(newInput, element);
-					element = newInput;
-				}
-				else {
-					element.type="text";
-				}
-				element.size="40";
-				oldName = element.value;
-				manualChange = true;
-				var delement = document.getElementById(eid+"_display");
-				if (delement) {
-					delement.style.display="none";
-					// force FF ui to update the display
-					if (delement.innerHTML != oldName) {
-						oldName = delement.innerHTML;
-						element.value = oldName;
-					}
-				}
-			}
-			else {
-				manualChange = false;
-				// IE doesn’t allow changing the "type" of an input field so we’ll cludge it ( silly :P)
-				if (IE) {
-					var newInput = document.createElement("input");
-					newInput.setAttribute("type", "hidden");
-					newInput.setAttribute("name", element.Name);
-					newInput.setAttribute("id", element.id);
-					newInput.setAttribute("value", element.value);
-					newInput.setAttribute("onchange", element.onchange);
-					var parent = element.parentNode;
-					parent.replaceChild(newInput, element);
-					element = newInput;
-				}
-				else {
-					element.type="hidden";
-				}
-				var delement = document.getElementById(eid+"_display");
-				if (delement) {
-					delement.style.display="inline";
-				}
-			}
+		var input1 = jQuery("#" + eid);
+		var input2 = jQuery("#" + eid + "_display");
+		// Note that IE does not allow us to change the type of an input, so we must create a new one.
+		if (input1.attr("type")=="hidden") {
+			input1.replaceWith(input1.clone().attr("type", "text"));
+			input2.hide();
+		} else {
+			input1.replaceWith(input1.clone().attr("type", "hidden"));
+			input2.show();
 		}
 	}
 
