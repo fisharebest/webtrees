@@ -6525,7 +6525,7 @@ msgstr "Umožnit uživatelům vybrat si vlastní motiv."
 
 #: help_text.php:998
 msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
-msgstr "Umožní uživatelům vytvořit si na vašich stránkách svůj účet.<br><br>Návštěvník obdrží e-mailem zprávu s kódem pro potvrzení operace.<br>Po ověření bude muset administrátor registraci potvrdit, aby byl účet aktivován."
+msgstr "Umožní uživatelům vytvořit si na vašich stránkách svůj účet.<br><br>Návštěvník obdrží e-mailem zprávu s kódem pro potvrzení operace.  Po ověření bude muset administrátor registraci potvrdit, aby byl účet aktivován."
 
 #. I18N: gedcom tag _UID
 #: library/WT/Gedcom/Tag.php:822
@@ -6822,7 +6822,7 @@ msgstr "Zde můžete vložit úroveň přiblížení. Tato hodnota bude použita
 
 #: help_text.php:1060
 msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
-msgstr "Tady můžete k osobě (nebo osobám) přidat nové údaje.<br><br>Nejprve z “rolovacího seznamu” vyberte typ údaje, pak klikněte na tlačítko “Přidat”.<br>V “rolovacím seznamu” jsou již všechny údaje, které je možné přidat do souboru GEDCOM."
+msgstr "Tady můžete k osobě (nebo osobám) přidat nové údaje.<br><br>Nejprve z “rolovacího seznamu” vyberte typ údaje, pak klikněte na tlačítko <b>Přidat</b>.  V “rolovacím seznamu” jsou již všechny údaje, které je možné přidat do souboru GEDCOM."
 
 #: help_text.php:1090
 msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
@@ -7064,7 +7064,7 @@ msgstr "Pokud osoba nebyla známa pod prvním rodným jménem, mělo by se prefe
 
 #: help_text.php:471
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
-msgstr "Je-li četnost výskytu příjmení nižší než nastavený limit, neobjeví se mezi příjmeními s nejčastějším výskytem. Pak tady můžete takové příjmení přidat ručně. Zadáte-li více než jedno, musí být oddělena čárkou. V příjmeních se rozlišují malá a velká písmena."
+msgstr "Je-li četnost výskytu příjmení nižší než nastavený limit, neobjeví se mezi příjmeními s nejčastějším výskytem. Pak tady můžete takové příjmení přidat ručně. Zadáte-li více než jedno, musí být oddělena čárkou. <b>V příjmeních se rozlišují malá a velká písmena.</b>"
 
 #: help_text.php:815
 msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
@@ -7145,7 +7145,7 @@ msgstr "Pokud se pokusíte přesáhnout tyto limity, můžou se vám zobrazit pr
 
 #: help_text.php:476
 msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>  Surnames entered here will also be removed from the Top-10 list on the Home Page."
-msgstr "Chcete-li nějaké příjmení odstranit ze seznamu nejčastějších příjmení, aniž byste měnili limit, můžete tak učinit tady. Zadáte-li více než jedno, musí být oddělena čárkou. V příjmeních se rozlišují malá a velká písmena. Příjmení budou také odstraněna ze seznamu 10 nejčastějších na domovské stránce."
+msgstr "Chcete-li nějaké příjmení odstranit ze seznamu nejčastějších příjmení, aniž byste měnili limit, můžete tak učinit tady. Zadáte-li více než jedno, musí být oddělena čárkou. <b>V příjmeních se rozlišují malá a velká písmena.</b>  Příjmení budou také odstraněna ze seznamu 10 nejčastějších na domovské stránce."
 
 #: setup.php:175
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
@@ -11831,7 +11831,7 @@ msgstr "Nastavte <b>Ano</b>, pokud chcete zobrazit ikony blízko Názvů údajů
 
 #: help_text.php:1008
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for Individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr "Zvolte ANO, pokud chcete při dotazu na ID osob v konfiguračních souborech, uživatelských nastavení a schématech použít číslo RIN místo GEDCOM ID.  To je užitečné v případě, že váš genealogický program neexportuje GEDCOM soubory s konkurenčními ID a místo toho používá stejný RIN."
+msgstr "Zvolte <b>ano</b>, pokud chcete při dotazu na ID osob v konfiguračních souborech, uživatelských nastavení a schématech použít číslo RIN místo GEDCOM ID.  To je užitečné v případě, že váš genealogický program neexportuje GEDCOM soubory s konkurenčními ID a místo toho používá stejný RIN."
 
 #: help_text.php:855
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
@@ -11839,7 +11839,7 @@ msgstr "Nastavením volby na <b>Ano</b> zobrazíte kódy obřadů LDS v rámečc
 
 #: help_text.php:850
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Nastavíte-li “ano”, budou přidány odkazy na jednotlivce, prameny a rodiny, což uživatelům umožní otevírat další okna s neupravenými záznamy získaných přímo ze souborů GEDCOM."
+msgstr "Nastavíte-li <b>ano</b>, budou přidány odkazy na jednotlivce, prameny a rodiny, což uživatelům umožní otevírat další okna s neupravenými záznamy získaných přímo ze souborů GEDCOM."
 
 #: setup.php:92
 msgid "Setup wizard for <b>webtrees</b>"
@@ -13120,7 +13120,7 @@ msgstr "Současný správcovský účet <b>webtrees</b> musí být stejný jako 
 #: login.php:510
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
-msgstr "Data pro uživatele %s byla zkontrolována."
+msgstr "Data pro uživatele <b>%s</b> byla zkontrolována."
 
 #: site-unavailable.php:72
 msgid "The database reported the following error message:"
@@ -13456,7 +13456,7 @@ msgstr "Tento blok zobrazí editorům seznam záznamů s dosud neschválenými z
 
 #: help_text.php:1488
 msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
-msgstr "Pokud je toto políčko zaškrtnuté, ostatní přihlášení uživatelé uvidí, jestli jste v daný okamžik online a vy uvidíte, jestli jsou online ostatní. Nechcete-li, aby vás ostatní viděli online, vyškrtněte toto políčko. Ale ani vy nebudete moci zjistit, jestli jsou ostatní uživatelé online."
+msgstr "Pokud je toto políčko zaškrtnuté, ostatní přihlášení uživatelé uvidí, jestli jste v daný okamžik online a vy uvidíte, jestli jsou online ostatní.<br><br>Nechcete-li, aby vás ostatní viděli online, vyškrtněte toto políčko. Ale ani vy nebudete moci zjistit, jestli jsou ostatní uživatelé online."
 
 #: setup.php:325 setup.php:336
 msgid "This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later."
