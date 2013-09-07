@@ -563,15 +563,15 @@ msgstr "<b>重要提示：</b>迁移向导不能帮助移动媒体项目。你�
 
 #: help_text.php:1003
 msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The Administrator can override this option for individual users by editing the user’s account details."
-msgstr "<b>没有</b>意味着经过身份验证的用户可以看到所有人的生活细节。<b>是</b>意味着用户只能看到活的人，和他们相关的私人信息。<br> <br>这个选项设置为所有访问这个家谱数据库用户的默认值。管理员可以通过编辑用户的账户信息覆盖个人用户的这个选项。"
+msgstr "<b>没有</b>意味着经过身份验证的用户可以看到所有人的生活细节。<b>是</b>意味着用户只能看到活的人，和他们相关的私人信息。<br><br>这个选项设置为所有访问这个家谱数据库用户的默认值。管理员可以通过编辑用户的账户信息覆盖个人用户的这个选项。"
 
 #: message.php:120
 msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
-msgstr "<b>请注意：</b>在世的个体的私人信息只会显示给家人和亲密的朋友。您将收到数据验证你的私人关系。有时死亡人的信息也可能是私人的。如果是这样的话，那是因为没有人确定他们是否是死的还是活的，我们可能不会知道关于这个人足够多的信息。<br> <br>在问问题之前，请确认您通过检查日期，地方，和亲人查询的人是正确。如果你对家谱资料提交更改，请包括你在哪里得到数据资源信息。"
+msgstr "<b>请注意：</b>在世的个体的私人信息只会显示给家人和亲密的朋友。您将收到数据验证你的私人关系。有时死亡人的信息也可能是私人的。如果是这样的话，那是因为没有人确定他们是否是死的还是活的，我们可能不会知道关于这个人足够多的信息。<br><br>在问问题之前，请确认您通过检查日期，地方，和亲人查询的人是正确。如果你对家谱资料提交更改，请包括你在哪里得到数据资源信息。"
 
 #: help_text.php:1064
 msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
-msgstr "<b> webtrees </b>允许你复制了10个事实和他们所有的细节到剪贴板。这与收集箱不同，你可以用于导出您的数据库。<br> <br>你可以选择任何的事实从剪贴板复制选定的事实，对个人，家庭，媒体，源，库记录或当前正在编辑。但是，您不能复制不同的记录类型的事实。例如，你不能复制一个婚姻的事实资源或个人记录以来的婚姻其实是与家庭相关的记录。<br> <br>这是非常有用的当输入类似的事实，如人口普查的事实，许多个人或家庭。"
+msgstr "<b> webtrees </b>允许你复制了10个事实和他们所有的细节到剪贴板。这与收集箱不同，你可以用于导出您的数据库。<br><br>你可以选择任何的事实从剪贴板复制选定的事实，对个人，家庭，媒体，源，库记录或当前正在编辑。但是，您不能复制不同的记录类型的事实。例如，你不能复制一个婚姻的事实资源或个人记录以来的婚姻其实是与家庭相关的记录。<br><br>这是非常有用的当输入类似的事实，如人口普查的事实，许多个人或家庭。"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:79
@@ -581,7 +581,7 @@ msgstr "<b>webtrees</b>无法连接到phpgedview数据库: %s."
 
 #: help_text.php:1181
 msgid "<b>webtrees</b> has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you."
-msgstr "<b> webtrees </b>有几个不同的联系方式。管理员决定哪些方法可以用来联系他。你能控制的方法来接触<u>你</u >。根据站点配置，上面的一些方法可能无法供你使用。"
+msgstr "<b> webtrees </b>有几个不同的联系方式。管理员决定哪些方法可以用来联系他。你能控制的方法来接触<u>你</u>。根据站点配置，上面的一些方法可能无法供你使用。"
 
 #: setup.php:251
 #, php-format
@@ -3375,7 +3375,7 @@ msgstr "选择你想上传的缩略图。虽然可以自动生成缩略图的图
 
 #: help_text.php:1036
 msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
-msgstr "为您定制的欢迎文本选择显示一个标准的标题。当用户改变语言,这个标题将出现在新的语言。<br> <br>如果设置为<b>是</b>,标题将如下:<div class =\"list_value_wrap\"> <center> <b>欢迎光临这个宗谱网站</b> </center> <br>这个网站访问要用户帐户和密码。<br> </div>"
+msgstr "为您定制的欢迎文本选择显示一个标准的标题。当用户改变语言,这个标题将出现在新的语言。<br><br>如果设置为<b>是</b>,标题将如下:<div class =\"list_value_wrap\"><center><b>欢迎光临这个宗谱网站</b></center><br>这个网站访问要用户帐户和密码。<br></div>"
 
 #: admin_site_config.php:48
 msgid "Choose user defined welcome text typed below"
@@ -3571,7 +3571,7 @@ msgstr "单击该链接将显示你一个列表在这个地方发生事件的所
 
 #: help_text.php:1140
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
-msgstr "点击\"+ \" 图标将打开GEDFact的共享记事辅助窗口。<br>那里会有具体的帮助。<br> <br>当你点击\"保存\"按钮，那个ID共享的记事将被粘贴在这里。"
+msgstr "点击\"+ \" 图标将打开GEDFact的共享记事辅助窗口。<br>那里会有具体的帮助。<br><br>当你点击\"保存\"按钮，那个ID共享的记事将被粘贴在这里。"
 
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
@@ -4961,11 +4961,11 @@ msgstr "重复的用户名。该用户名已经被一个用户使用。请选择
 
 #: help_text.php:775
 msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "E-mail地址用于<b> webtrees</b>自动创建电子邮件时候的邮件来自于项。<br><br> webtrees</b>可以自动创建电子邮件通知系统管理员的需要进行审批变化。<b> webtrees</b>发送通知电子邮件给注册一个帐户的用户。<br><br>通常情况下，这些自动创建的电子邮件发件人是<i>webtrees-noreply@ yoursite</i>，并且暗示不用回复。为了防止垃圾邮件或其他电子邮件滥用的一些电子邮件系统需要每封邮件的有个邮件来自于项，以此确认一个有效的e-mail帐号，否则将不接受邮件，这将显然从帐户<i> webtrees noreply</i>来了邮件。"
+msgstr "E-mail地址用于<b> webtrees</b>自动创建电子邮件时候的邮件来自于项。<br><br><b>webtrees</b>可以自动创建电子邮件通知系统管理员的需要进行审批变化。<b> webtrees</b>发送通知电子邮件给注册一个帐户的用户。<br><br>通常情况下，这些自动创建的电子邮件发件人是<i>webtrees-noreply@ yoursite</i>，并且暗示不用回复。为了防止垃圾邮件或其他电子邮件滥用的一些电子邮件系统需要每封邮件的有个邮件来自于项，以此确认一个有效的e-mail帐号，否则将不接受邮件，这将显然从帐户 <i>webtrees noreply</i>来了邮件。"
 
 #: help_text.php:1176
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "每个资源记录特定的事件,一般对于一个给定的日期范围和管辖的地方。例如一个人口普查记录事件和教堂记录记录出生、结婚和死亡事件。<br> <br>选择事件,记录采用这种资源的事件列表中提供的。指定的日期应该在一系列格式如<i>从1900年到1910年</i>。这个地方管辖的名称是最低的管辖权,包含所有较低级别的地方命名在这个源。例如,“奥奈达市,爱达荷州,美国“将被用作资源地税收管辖权的地方发生在各个城镇的事件在奥奈达市县。“爱达荷州,美国“将源管辖权的地方如果所记录的事件不仅发生在奥奈达市县也在其他县在爱达荷州。"
+msgstr "每个资源记录特定的事件,一般对于一个给定的日期范围和管辖的地方。例如一个人口普查记录事件和教堂记录记录出生、结婚和死亡事件。<br><br>选择事件,记录采用这种资源的事件列表中提供的。指定的日期应该在一系列格式如<i>从1900年到1910年</i>。这个地方管辖的名称是最低的管辖权,包含所有较低级别的地方命名在这个源。例如,“奥奈达市,爱达荷州,美国“将被用作资源地税收管辖权的地方发生在各个城镇的事件在奥奈达市县。“爱达荷州,美国“将源管辖权的地方如果所记录的事件不仅发生在奥奈达市县也在其他县在爱达荷州。"
 
 #: help_text.php:1341
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
@@ -6149,7 +6149,7 @@ msgstr "如果需要更多的信息请联系"
 
 #: help_text.php:1503
 msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-msgstr "为获得在互联网上最佳显示,<b> webtrees</b> 使用utf - 8字符集。一些程序,例如,家谱制造商不支持导入GEDCOM文件编码在utf - 8。检查这个箱子将会把文件从<b> utf - 8 </b>到<b> ANSI(iso - 8859 - 1)</b>。<br> <br>格式需要取决于你使用的程序处理你的下载文件GEDCOM。如果你不确定,请参考相关文档的程序。<br> <br>注意特殊字符保持不变,你需要把文件用utf - 8编码,转换程序的方法来处理这些特殊字符被一些其他手段。咨询你的程序的制造商或作者。<br> <br> <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"> <b> </b>维基百科的文章</>包含全面的信息和链接关于utf - 8。"
+msgstr "为获得在互联网上最佳显示,<b> webtrees</b> 使用utf - 8字符集。一些程序,例如,家谱制造商不支持导入GEDCOM文件编码在utf - 8。检查这个箱子将会把文件从<b> utf - 8 </b>到<b> ANSI(iso - 8859 - 1)</b>。<br><br>格式需要取决于你使用的程序处理你的下载文件GEDCOM。如果你不确定,请参考相关文档的程序。<br><br>注意特殊字符保持不变,你需要把文件用utf - 8编码,转换程序的方法来处理这些特殊字符被一些其他手段。咨询你的程序的制造商或作者。<br><br><a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b></b>维基百科的文章</>包含全面的信息和链接关于utf - 8。"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:422
@@ -6471,7 +6471,7 @@ msgstr "名："
 
 #: help_text.php:427
 msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
-msgstr "提供给用户选择,选择自己的主题从菜单。<br> <br>即使设置这个选项,主题目前实际上可能是无效的,这个选项需要<b>允许用户选择他们自己的主题</b>选项也设置。"
+msgstr "提供给用户选择,选择自己的主题从菜单。<br><br>即使设置这个选项,主题目前实际上可能是无效的,这个选项需要<b>允许用户选择他们自己的主题</b>选项也设置。"
 
 #: help_text.php:432
 msgid "Gives users the option of selecting their own theme."
@@ -6479,7 +6479,7 @@ msgstr "允许用户选择自己想要的主题。"
 
 #: help_text.php:998
 msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
-msgstr "允许游客选择在网站上注册自己的账户。<br> <br>游客将收到一个电子邮件消息,该消息带有一个代码来验证他申请的帐户。必须管理员核实后批准使他的账户它变得活跃。"
+msgstr "允许游客选择在网站上注册自己的账户。<br><br>游客将收到一个电子邮件消息,该消息带有一个代码来验证他申请的帐户。必须管理员核实后批准使他的账户它变得活跃。"
 
 #. I18N: gedcom tag _UID
 #: library/WT/Gedcom/Tag.php:822
@@ -6776,11 +6776,11 @@ msgstr "缩放级别可以在这里输入。这个值将被用作最小值时显
 
 #: help_text.php:1060
 msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
-msgstr "在这里你可以添加一个事实正在编辑的记录。<br> <br>首先选择一个事实从下拉列表,然后单击<b>添加</b>按钮。所有你可以添加到数据库可能的事实在那个下拉列表。"
+msgstr "在这里你可以添加一个事实正在编辑的记录。<br><br>首先选择一个事实从下拉列表,然后单击<b>添加</b>按钮。所有你可以添加到数据库可能的事实在那个下拉列表。"
 
 #: help_text.php:1090
 msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
-msgstr "在这里你可以添加一个资源<b>引用</b>这个记录。<br> <br>点击这个链接时,将打开一个新窗口,你可以从列表中选择资源(找到ID)或创建一个新的资源,然后添加引用。<br> <br>添加资源的一个重要组成部分,因为它让其他研究者家谱确认你在哪里得到你的信息。"
+msgstr "在这里你可以添加一个资源<b>引用</b>这个记录。<br><br>点击这个链接时,将打开一个新窗口,你可以从列表中选择资源(找到ID)或创建一个新的资源,然后添加引用。<br><br>添加资源的一个重要组成部分,因为它让其他研究者家谱确认你在哪里得到你的信息。"
 
 #: help_text.php:1229
 msgid "Here you can change the diagram width from 50 percent to 300 percent.  At 100 percent the output image is about 640 pixels wide."
@@ -6788,11 +6788,11 @@ msgstr "在这里你可以改变图的宽度从50%到300%。100%的输出图像�
 
 #: modules_v3/googlemap/help_text.php:96
 msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
-msgstr "在这里你可以选择显示地方列表的两种类型。如果设置是的这个地方有短的名称或实际水平的名字,如果没有-姓名。<br> <b> <br>示例:全名:</b>芝加哥,伊利诺斯州,美国<br> <b>短名称:</b>芝加哥<br> <b>全名:</b>美国伊利诺州<br> <b>短名称:</b>伊利诺斯州"
+msgstr "在这里你可以选择显示地方列表的两种类型。如果设置是的这个地方有短的名称或实际水平的名字,如果没有-姓名。<br><b><br>示例:全名:</b>芝加哥,伊利诺斯州,美国<br><b>短名称:</b>芝加哥<br><b>全名:</b>美国伊利诺州<br><b>短名称:</b>伊利诺斯州"
 
 #: help_text.php:1046
 msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
-msgstr "在这里，你可以选择出现在登录屏幕上的文本。您必须确定预先定义的文字是最合适的。<br> <br>您也可以选择进入自己的自定义欢迎文字。请参考相关的帮助文本的<b>自定义欢迎文字</b>栏的详细信息。<br> <br>预定义的文本有：<ul> <li> <b>预先定义的文本：所有用户申请用户账户的预定义的文本：</b> <div class=\"list_value_wrap\"> <center> <b>欢迎访问这个家谱网站</b> </center> <br>访问这个网站是允许每一位游客有一个用户帐户。<br> <br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br> <br>确认您的申请后，网站管理员将激活您的帐户。您将收到一封电子邮件时，您的申请已被批准。</div> <br> </li> <li> <b>预定义的文本：管理员审核请求用户帐户的预定义的文本：</b> <div class= \"list_value_wrap\" > <center> <b>欢迎访问这个家谱网站</b> </center> <br> 只允许 <u>授权</u>用户访问此网站。 <br> <br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br> <br>验证您的信息后，管理员将可以批准或拒绝您的开户申请。您将收到一封电子邮件时，您的申请已被批准。</div> <br> </li> <li> <b>预先定义的文本：家庭成员可以申请用户帐户：</b> <div class = \"list_value_wrap\"> <center> <b>欢迎访问这个家谱网站</b> </CENTER> <br>这个网站只允许的<u>家庭成员</u>访问。 <br> <br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br> <br>验证您提供的信息后，管理员将可以批准或拒绝您的请求的帐户。当您的申请被批准时，您将收到一封电子邮件。</div> </li> </ul>"
+msgstr "在这里，你可以选择出现在登录屏幕上的文本。您必须确定预先定义的文字是最合适的。<br><br>您也可以选择进入自己的自定义欢迎文字。请参考相关的帮助文本的<b>自定义欢迎文字</b>栏的详细信息。<br><br>预定义的文本有：<ul><li><b>预先定义的文本：所有用户申请用户账户的预定义的文本：</b><div class=\"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>访问这个网站是允许每一位游客有一个用户帐户。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>确认您的申请后，网站管理员将激活您的帐户。您将收到一封电子邮件时，您的申请已被批准。</div><br></li><li><b>预定义的文本：管理员审核请求用户帐户的预定义的文本：</b><div class= \"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br> 只允许 <u>授权</u>用户访问此网站。 <br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>验证您的信息后，管理员将可以批准或拒绝您的开户申请。您将收到一封电子邮件时，您的申请已被批准。</div><br></li><li><b>预先定义的文本：家庭成员可以申请用户帐户：</b><div class = \"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>这个网站只允许的<u>家庭成员</u>访问。 <br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>验证您提供的信息后，管理员将可以批准或拒绝您的请求的帐户。当您的申请被批准时，您将收到一封电子邮件。</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:59
 msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
@@ -7022,7 +7022,7 @@ msgstr "一个姓出现次数低于阈值,它不会出现在列表中。它可�
 
 #: help_text.php:815
 msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
-msgstr "<b>允许访问者注册帐户</b>此设置控制是否管理必须批准注册。<br> <br>设置这个为<b>是</b>将要求所有新用户先验证,然后由管理员批准才能登录。这个设置为<b>不</b>,<b>用户通过管理</b> 选框将选中，并自动用户验证他们的帐户,因此允许注册后立即登录，不用管理员干预。"
+msgstr "<b>允许访问者注册帐户</b>此设置控制是否管理必须批准注册。<br><br>设置这个为<b>是</b>将要求所有新用户先验证,然后由管理员批准才能登录。这个设置为<b>不</b>,<b>用户通过管理</b> 选框将选中，并自动用户验证他们的帐户,因此允许注册后立即登录，不用管理员干预。"
 
 #: help_text.php:281
 #, php-format
@@ -7067,7 +7067,7 @@ msgstr "如果你有大量的媒体文件，你可以将它们放置到文件夹
 
 #: help_text.php:1078
 msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
-msgstr "这里记事添加到这个记录。<br> <br>点击这个链接时,将打开一个新窗口,你可以输入你的记事。当你打完字,就点击下面的按钮,关闭该窗口。"
+msgstr "这里记事添加到这个记录。<br><br>点击这个链接时,将打开一个新窗口,你可以输入你的记事。当你打完字,就点击下面的按钮,关闭该窗口。"
 
 #: admin_trees_manage.php:166
 msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM."
@@ -7141,11 +7141,11 @@ msgstr "导入家谱"
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "在许多文化中,人们习惯于有一个传统的名字拼写在传统的角色,也是罗马版本的名称,因为它会拼写或明显语言基于拉丁字母,例如英语。<br> <br>如果您更喜欢使用非拉丁字母如希伯来语,希腊语,俄语、汉语或阿拉伯语输入姓名的标准名称字段,那么可以使用这个字段输入相同的名称使用的是拉丁字母。两个版本的名字将出现在列表和图表。<br> <br>虽然这个字段的标签是“因”,它并不限于只包含字符基于拉丁字母。这可能是用日本名字,三个不同的字母可能发生。"
+msgstr "在许多文化中,人们习惯于有一个传统的名字拼写在传统的角色,也是罗马版本的名称,因为它会拼写或明显语言基于拉丁字母,例如英语。<br><br>如果您更喜欢使用非拉丁字母如希伯来语,希腊语,俄语、汉语或阿拉伯语输入姓名的标准名称字段,那么可以使用这个字段输入相同的名称使用的是拉丁字母。两个版本的名字将出现在列表和图表。<br><br>虽然这个字段的标签是“因”,它并不限于只包含字符基于拉丁字母。这可能是用日本名字,三个不同的字母可能发生。"
 
 #: help_text.php:393
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "在许多文化中通常有一个传统的名字在传统汉字拼写也是罗马化的版本的名称将拼写或基于拉丁字母的语言发音的，如英国。<br> <br>如果你更喜欢用拉丁字母输入名称标准名称的域，然后你可以使用此字段中的非拉丁字母，如希腊语，希伯来语，阿拉伯语，俄语，输入相同的名称，或中国。名字的两个版本将出现在列表和图表。<br> <br>虽然这场为“希伯来”，它不局限于只包含希伯来文字母。"
+msgstr "在许多文化中通常有一个传统的名字在传统汉字拼写也是罗马化的版本的名称将拼写或基于拉丁字母的语言发音的，如英国。<br><br>如果你更喜欢用拉丁字母输入名称标准名称的域，然后你可以使用此字段中的非拉丁字母，如希腊语，希伯来语，阿拉伯语，俄语，输入相同的名称，或中国。名字的两个版本将出现在列表和图表。<br><br>虽然这场为“希伯来”，它不局限于只包含希伯来文字母。"
 
 #: help_text.php:455
 msgid "In some calendars, days start at midnight.  In other calendars, days start at sunset.  The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
@@ -8065,7 +8065,7 @@ msgstr "伦敦,英国"
 
 #: help_text.php:921
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero."
-msgstr "长列表拥有相同的姓氏的人可以根据个人的第一个字母的名字分解为更小的子列表。<br> <br>这个选项决定姓氏当子列表什么时候生成。设置这个选项为零完全禁用子列表。"
+msgstr "长列表拥有相同的姓氏的人可以根据个人的第一个字母的名字分解为更小的子列表。<br><br>这个选项决定姓氏当子列表什么时候生成。设置这个选项为零完全禁用子列表。"
 
 #: statistics.php:234
 msgid "Longest marriage"
@@ -9845,7 +9845,7 @@ msgstr "阿曼"
 
 #: help_text.php:1275
 msgid "On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear Chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality."
-msgstr "在这个图表可以沿着一条水平线显示一个或更多的人。这个图可以让你看到不同的人的生活重叠。<br> <br>你可以将单独或家庭组的ID添加到图表。前面的列表将被记住。你可以点<b>清除图</b>按钮清除所有时间图表。<br> <br>你也可以搜索他们的日期范围或地点来增加人。"
+msgstr "在这个图表可以沿着一条水平线显示一个或更多的人。这个图可以让你看到不同的人的生活重叠。<br><br>你可以将单独或家庭组的ID添加到图表。前面的列表将被记住。你可以点<b>清除图</b>按钮清除所有时间图表。<br><br>你也可以搜索他们的日期范围或地点来增加人。"
 
 #. I18N: Name of a module
 #: modules_v3/todays_events/module.php:32
@@ -11783,7 +11783,7 @@ msgstr "设置<b>是</b>用RIN数代替GEDCOM ID当要求配置文件，用户�
 
 #: help_text.php:855
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
-msgstr "设置此选项<b>显示</b>显示LDS条例图状态码。<ul> <li> <b> B </b>洗礼</li> <li> <b> E </b>赋予</li> <li> <b>S</b>未知配偶</li> <li> <b> P </b>未知父母</li> </ul >一个人所有的例图显示在他们的名字后会有<b>BESP</b>。丢失的例图在相应的字母代码处显示<b> _ </b>。例如，<b> BE__ </b>显示丢失<b>S</b>及<b> P </b>例图。"
+msgstr "设置此选项<b>显示</b>显示LDS条例图状态码。<ul><li><b> B </b>洗礼</li><li><b> E </b>赋予</li><li><b>S</b>未知配偶</li><li><b> P </b>未知父母</li></ul>一个人所有的例图显示在他们的名字后会有<b>BESP</b>。丢失的例图在相应的字母代码处显示<b> _ </b>。例如，<b> BE__ </b>显示丢失<b>S</b>及<b> P </b>例图。"
 
 #: help_text.php:850
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
@@ -11847,7 +11847,7 @@ msgstr "共享记事"
 
 #: help_text.php:358
 msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
-msgstr "共享记事是自由格式的文本，并会出现的事实详细信息的页面部分。<br> <br>每个共享记录可以链接到多个个人，家庭，资源，或事件。"
+msgstr "共享记事是自由格式的文本，并会出现的事实详细信息的页面部分。<br><br>每个共享记录可以链接到多个个人，家庭，资源，或事件。"
 
 #: find.php:659
 msgid "Shared notes found"
@@ -11855,7 +11855,7 @@ msgstr "共享记事发现"
 
 #: help_text.php:1150
 msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
-msgstr "共享记事，和常规的记事一样，是自由格式的文本。不同于一般的记事，每一个共享的笔记可以链接到一个以上的个人，家庭，资源或事实。<br> <br>通过点击相应的图标，你可以建立一个连接到一个现有的共享记事或创建一个新的共享记事和同时链接到它。如果已经建立了一个链接到现有的共享的记事，你也可以编辑该记事的内容。<br> <ul> <li> <b>连接到现有的共享的记事</b><div style=\"padding-left:20px;\">如果你已经知道所需共享的记事记录的ID号，你可以直接在字段中输入该号码。<br> <br>当你点击<b>查找共享记事</b>的图标，您将能够搜索到所有现有的共享记事的文本，然后选择其中之一。它ID号将自动在字段中输入所选择的框。<br> <br>您必须单击<b>添加</b>按钮来更新原有的记录。</div> <br> </li> <li> <b>创建一个新的共享的记事</b> <div style=\"padding-left:20px;\">当您单击<b>创建一个新的共享记事</b>图标，一个新的窗口将打开。您可以输入文本的新的记事，像你想的一样。与普通记事一样，您可以输入网址。<br> <br>当你点击<b>保存</b>按钮，你会看到一条消息，新创建的共享的记事记录的ID号。你应该点击此消息，关闭编辑窗口，也将直接输入新的ID号ID号字段。如果你只是关闭窗口，新创建的ID号将不会被自动复制。<br> <br>您必须单击<b>添加</b>按钮来更新原有的记录。</div> <br> </li> <li> <b>修改现有的共享的记事</b> <div style=\"padding-left:20px;\">​​当您单击<b>修改共享记事记</b>图标，会打开一个新的窗口。您可以更改现有的共享的笔记为你想的文本。与普通记事一样，您可以输入网址。<br> <br>当你点击<b>保存</b>按钮，文本共享记事将被更新。您可以关闭该窗口，然后点击<b>保存</b>按钮，<br> <br>当您更改文本的共记事意，您的更改将反，共享记事目前正在联系在一起的映在所有地方。新的链接，在你建立了你的变化后，也将使用更新的文本。</div> </li> </ul>"
+msgstr "共享记事，和常规的记事一样，是自由格式的文本。不同于一般的记事，每一个共享的笔记可以链接到一个以上的个人，家庭，资源或事实。<br><br>通过点击相应的图标，你可以建立一个连接到一个现有的共享记事或创建一个新的共享记事和同时链接到它。如果已经建立了一个链接到现有的共享的记事，你也可以编辑该记事的内容。<br><ul><li><b>连接到现有的共享的记事</b><div style=\"padding-left:20px;\">如果你已经知道所需共享的记事记录的ID号，你可以直接在字段中输入该号码。<br><br>当你点击<b>查找共享记事</b>的图标，您将能够搜索到所有现有的共享记事的文本，然后选择其中之一。它ID号将自动在字段中输入所选择的框。<br><br>您必须单击<b>添加</b>按钮来更新原有的记录。</div><br></li><li><b>创建一个新的共享的记事</b><div style=\"padding-left:20px;\">当您单击<b>创建一个新的共享记事</b>图标，一个新的窗口将打开。您可以输入文本的新的记事，像你想的一样。与普通记事一样，您可以输入网址。<br><br>当你点击<b>保存</b>按钮，你会看到一条消息，新创建的共享的记事记录的ID号。你应该点击此消息，关闭编辑窗口，也将直接输入新的ID号ID号字段。如果你只是关闭窗口，新创建的ID号将不会被自动复制。<br><br>您必须单击<b>添加</b>按钮来更新原有的记录。</div><br></li><li><b>修改现有的共享的记事</b><div style=\"padding-left:20px;\">当您单击<b>修改共享记事记</b>图标，会打开一个新的窗口。您可以更改现有的共享的笔记为你想的文本。与普通记事一样，您可以输入网址。<br><br>当你点击<b>保存</b>按钮，文本共享记事将被更新。您可以关闭该窗口，然后点击<b>保存</b>按钮，<br><br>当您更改文本的共记事意，您的更改将反，共享记事目前正在联系在一起的映在所有地方。新的链接，在你建立了你的变化后，也将使用更新的文本。</div></li></ul>"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: library/WT/Date/Hijri.php:72
@@ -11979,7 +11979,7 @@ msgstr "最短婚姻"
 
 #: help_text.php:993
 msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
-msgstr "要用GeoNames数据库用于提供地名更多的建议吗？<br> <br>当此选项设置为<b>是</b>时，GeoNames数据库将在输入地名时提供建议。当设置为<b>不</b>，只有当前家谱数据库被搜索。如果你录入更多的地名，建议将变得更加精确。这个选项可以减少数据输入，特别是如果你的网络连接速度很慢时。<br> <br>GeoNames地理数据库是免费的。目前包含超过8000000个地名。"
+msgstr "要用GeoNames数据库用于提供地名更多的建议吗？<br><br>当此选项设置为<b>是</b>时，GeoNames数据库将在输入地名时提供建议。当设置为<b>不</b>，只有当前家谱数据库被搜索。如果你录入更多的地名，建议将变得更加精确。这个选项可以减少数据输入，特别是如果你的网络连接速度很慢时。<br><br>GeoNames地理数据库是免费的。目前包含超过8000000个地名。"
 
 #: modules_v3/recent_changes/module.php:167
 msgid "Should this block be hidden when it is empty?"
@@ -13026,7 +13026,7 @@ msgstr "常见问题列表是空的。"
 
 #: help_text.php:1254
 msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
-msgstr "收藏下拉列表显示你已经在你的个性化网页选择收藏。它也表明，网站管理员已选定为当前活动的GEDCOM的热门。点击其中一个热门条目会直接将您带到那人的个人信息页面。<br> <br>更多帮助关于收藏夹在您的个性化主页。"
+msgstr "收藏下拉列表显示你已经在你的个性化网页选择收藏。它也表明，网站管理员已选定为当前活动的GEDCOM的热门。点击其中一个热门条目会直接将您带到那人的个人信息页面。<br><br>更多帮助关于收藏夹在您的个性化主页。"
 
 #: library/WT/Gedcom/Code/Temp.php:104
 msgid "The Hague, Netherlands"
@@ -13034,11 +13034,11 @@ msgstr "海牙，荷兰"
 
 #: help_text.php:871
 msgid "The Media Viewer can show a link which, when clicked, will download the Media file to the local PC.<br><br>You may want to hide the download link for security reasons."
-msgstr "媒体查看器可以显示一个链接，点击后，将下载的媒体文件到本地电脑。<br> <br>因为安全原因你可能想要隐藏下载链接。"
+msgstr "媒体查看器可以显示一个链接，点击后，将下载的媒体文件到本地电脑。<br><br>因为安全原因你可能想要隐藏下载链接。"
 
 #: help_text.php:1305
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
-msgstr "PGV到<b> webtrees </b>向导是一个协助管理员从PGV安装到一个新的<B> webtrees </b>自动化的过程。它将所有的PGV GEDCOM和其他数据库信息直接输入到你的新<b> webtrees </b>数据库。下列要求："
+msgstr "PGV到<b> webtrees </b>向导是一个协助管理员从PGV安装到一个新的<b> webtrees </b>自动化的过程。它将所有的PGV GEDCOM和其他数据库信息直接输入到你的新<b> webtrees </b>数据库。下列要求："
 
 #: save.php:262
 #, php-format
@@ -13199,7 +13199,7 @@ msgstr "这个家谱中没有媒体文件"
 
 #: help_text.php:1443
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr "你上传的媒体文件可以，也许应该，在服务器上和在您的本地计算机不同的命字。这是因为通常的本地文件名对你有意义但对访问这个网站的人却少有意义。考虑到你和别人都试图将不同的文件称为\"granny.jpg\"。<br> <br>在这个框中你指定你上传文件的新名称。你输入的名字也被用来命名的缩略图，可以上传分开或自动生成。你不需要输入的文件扩展名（JPG，GIF，PDF，DOC，等）<br> <br>留空白保持原来从您的本地计算机您所上传的文件的名字。"
+msgstr "你上传的媒体文件可以，也许应该，在服务器上和在您的本地计算机不同的命字。这是因为通常的本地文件名对你有意义但对访问这个网站的人却少有意义。考虑到你和别人都试图将不同的文件称为\"granny.jpg\"。<br><br>在这个框中你指定你上传文件的新名称。你输入的名字也被用来命名的缩略图，可以上传分开或自动生成。你不需要输入的文件扩展名（JPG，GIF，PDF，DOC，等）<br><br>留空白保持原来从您的本地计算机您所上传的文件的名字。"
 
 #: setup.php:160
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13211,7 +13211,7 @@ msgstr "对指定的名称出现的次数会显示在地图上。如果你保留
 
 #: help_text.php:55
 msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
-msgstr "该组织，机构，公司，个人，或其他实体有权威者。<br> <br>例如，一个雇主，或一个教会给予的实行者，或一个组织负责创建和/或记录存档的人员。"
+msgstr "该组织，机构，公司，个人，或其他实体有权威者。<br><br>例如，一个雇主，或一个教会给予的实行者，或一个组织负责创建和/或记录存档的人员。"
 
 #: setup.php:380
 msgid "The password needs to be at least six characters long."
@@ -13378,7 +13378,7 @@ msgstr "这些网页提供本<b> webtrees </b>网站的所有配置设置和管�
 #. I18N: do not translate the #keywords#
 #: modules_v3/html/module.php:159
 msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "这GEDCOM（家谱）上#gedcomupdated#更新。有#totalsurnames#姓氏在这个家谱。最早记载的事件是在#firsteventyear#的#firsteventname#的#firsteventtype#。最近的事件是在#lasteventyear#的#lasteventname#的#lasteventtype#。<br> <br>如果你有任何意见或反馈，请联系#contactwebmaster#。"
+msgstr "这GEDCOM（家谱）上#gedcomupdated#更新。有#totalsurnames#姓氏在这个家谱。最早记载的事件是在#firsteventyear#的#firsteventname#的#firsteventtype#。最近的事件是在#lasteventyear#的#lasteventname#的#lasteventtype#。<br><br>如果你有任何意见或反馈，请联系#contactwebmaster#。"
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:148
@@ -13396,7 +13396,7 @@ msgstr "这个账户没有得到确认。请检查您的电子邮件以一个确
 
 #: modules_v3/charts/help_text.php:32
 msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
-msgstr "此块允许家谱系，后代表，或沙漏图出现在我的页面或者主页。由于空间的限制，该图应放置在页面的左边。<br> <br>当这块出现在首页，超始人和要显示的图表类型是由管理员确定。当这一块出现在用户的个性化网页，这些选项是由用户确定。<br> <br>这些图表的行为是他们的行为相同的时候，他们被称为从菜单。对一个人看到更多的细节点击个人。"
+msgstr "此块允许家谱系，后代表，或沙漏图出现在我的页面或者主页。由于空间的限制，该图应放置在页面的左边。<br><br>当这块出现在首页，超始人和要显示的图表类型是由管理员确定。当这一块出现在用户的个性化网页，这些选项是由用户确定。<br><br>这些图表的行为是他们的行为相同的时候，他们被称为从菜单。对一个人看到更多的细节点击个人。"
 
 #: modules_v3/review_changes/help_text.php:32
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
@@ -13404,7 +13404,7 @@ msgstr "这一块会显示需要通过管理员审核的编辑或更改记录表
 
 #: help_text.php:1488
 msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
-msgstr "这选框控制你在线是其它用户的可见与否。它也控制你可看到其他在线并配置为可见的用户。<br> <br>当这个选框没有选中，你会完全看不见别人，你也无法看到其他在线用户。当这个盒子打勾，你会被其他人看到，你还可以看到其他配置是可见的人。"
+msgstr "这选框控制你在线是其它用户的可见与否。它也控制你可看到其他在线并配置为可见的用户。<br><br>当这个选框没有选中，你会完全看不见别人，你也无法看到其他在线用户。当这个盒子打勾，你会被其他人看到，你还可以看到其他配置是可见的人。"
 
 #: setup.php:325 setup.php:336
 msgid "This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later."
@@ -13464,11 +13464,11 @@ msgstr "这个家谱 %s 被最近更新 。"
 
 #: help_text.php:363
 msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
-msgstr "此字段允许您改变这个事实的引文链接到资源记录。这框以资源ID。旁边的框将列标题的当前资源ID。使用<b>找到ID </b>链接查找源ID。留空白删除整个引文。"
+msgstr "此字段允许您改变这个事实的引文链接到资源记录。这框以资源ID。旁边的框将列标题的当前资源ID。使用<b>找到ID</b> 链接查找源ID。留空白删除整个引文。"
 
 #: modules_v3/faq/help_text.php:40
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
-msgstr "这个选项会让你在常见问题页面向下移动一个项目。<br> <br>你每次使用此选项，常见问题位置的数量成1的倍数增加了。您可以通过编辑问题中项目的或改变的FAQ位置字段实现相同的效果。当一个以上的有相同的位置数常见问题项，只有这一个项目将是可见的。"
+msgstr "这个选项会让你在常见问题页面向下移动一个项目。<br><br>你每次使用此选项，常见问题位置的数量成1的倍数增加了。您可以通过编辑问题中项目的或改变的FAQ位置字段实现相同的效果。<br><br>当一个以上的有相同的位置数常见问题项，只有这一个项目将是可见的。"
 
 #: addmedia.php:332
 msgid "This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
@@ -13521,11 +13521,11 @@ msgstr "这是私人信息,不能显示。"
 
 #: help_text.php:1095
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "该输入框让你改变日历的年份。在框里输入年份，按下<b>输入</b>更改日历年份。<br> <br> <b>高级功能</b>按年显示<b></b><d1> <dt> <b>一年以上</b></dt><dd>你可以查询日期范围为一年内。<br> <br>年范围<u>包含</u>。表示日期范围包含去年年一月至去年十二月三十一号。下面是一年范围的几个例子：<br> <br> <b> 1992-5 </b>所有事件从1992到1995。<br> <b> 1972-89 </b>所有事件从1972到1989。<br> <b> 1610-759 </b>所有事件从1610到1759。<br> <b> 1880-1905 </b>所有事件从1880到1905。<br> <b> 880-1105 </b>所有事件从880到1105。<br> <br>看到所有的事件在十年或一个世纪了，你可以使用<b>？</b>在最后一位的地方。例如，<b> 197？</b>所有事件从1970到1979或<b> 16？？</b>所有事件从1600到1699。<br> <br>选择范围的年会改变日历年份。</dd></dl>"
+msgstr "该输入框让你改变日历的年份。在框里输入年份，按下<b>输入</b>更改日历年份。<br><br><b>高级功能</b>按年显示<b></b><dl><dt><b>一年以上</b></dt><dd>你可以查询日期范围为一年内。<br><br>年范围<u>包含</u>。表示日期范围包含去年年一月至去年十二月三十一号。下面是一年范围的几个例子：<br><br><b> 1992-5 </b>所有事件从1992到1995。<br><b> 1972-89 </b>所有事件从1972到1989。<br><b> 1610-759 </b>所有事件从1610到1759。<br><b> 1880-1905 </b>所有事件从1880到1905。<br><b> 880-1105 </b>所有事件从880到1105。<br><br>看到所有的事件在十年或一个世纪了，你可以使用<b>？</b>在最后一位的地方。例如，<b> 197？</b>所有事件从1970到1979或<b> 16？？</b>所有事件从1600到1699。<br><br>选择范围的年会改变日历年份。</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
 msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
-msgstr "此输入框可以让你输入个人ID，并添加到收集箱。一旦添加，将建立一个关链到您的收集箱。<br> <br>如果你不知道一个人的ID，您可以按个人图标旁边的添加按钮用名字搜索。"
+msgstr "此输入框可以让你输入个人ID，并添加到收集箱。一旦添加，将建立一个关链到您的收集箱。<br><br>如果你不知道一个人的ID，您可以按个人图标旁边的添加按钮用名字搜索。"
 
 #: help_text.php:412
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
@@ -13733,7 +13733,7 @@ msgstr "这记事被编辑。你应该评估变更,然后 %1$s 或 %2$s 他们�
 
 #: help_text.php:860
 msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-msgstr "此选项控制是否将附源引用的事实在记事和源标签在个人页面显示。<br> <br>通常，记事和源标签仅显示直接连接到个人的数据库记录的源引用的记事。这些是<i> 1级</i>记事和资源引用。<br> <br> <b>是</b>选项导致这些标签也显示个人数据库记录的各种事实包含的记事和资源引用。这些是<i> 2级</i>记事和源引用，因为各种事实是在1级。"
+msgstr "此选项控制是否将附源引用的事实在记事和源标签在个人页面显示。<br><br>通常，记事和源标签仅显示直接连接到个人的数据库记录的源引用的记事。这些是<i> 1级</i>记事和资源引用。<br><br><b>是</b>选项导致这些标签也显示个人数据库记录的各种事实包含的记事和资源引用。这些是<i> 2级</i>记事和源引用，因为各种事实是在1级。"
 
 #: help_text.php:407
 msgid "This option controls whether or not to abbreviate labels like <b>Birth</b> on charts with just the first letter like <b>B</b>."
@@ -13761,7 +13761,7 @@ msgstr "这个选项控制在个人列表和个人图表中日期都不知道的
 
 #: help_text.php:710
 msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
-msgstr "这个选项控制是否在图表显示个人的性别图标。<br> <br>因为性别也由框的颜色显示,这个选项并不隐瞒性别。而是从盒子里选择简单的删除一些重复的信息。"
+msgstr "这个选项控制是否在图表显示个人的性别图标。<br><br>因为性别也由框的颜色显示,这个选项并不隐瞒性别。而是从盒子里选择简单的删除一些重复的信息。"
 
 #: help_text.php:1070
 msgid "This option creates a new family tree.  The name you give it will be used to generate URLs and filenames, so you should choose something short, simple, and avoid punctuation."
@@ -13782,7 +13782,7 @@ msgstr "此选项定义谱系图应该产生横向还是纵向模式。"
 
 #: help_text.php:1189
 msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
-msgstr "这个选项是 <b>webtrees</b> 内部消息，包含一个加操作。一个额外的复制的信息也将被发送到您设定您的帐户页的电子邮件地址<br><br>这是预设的联系方法。"
+msgstr "这个选项是 <b>webtrees</b> 内部消息，包含一个加操作。一个额外的复制的信息也将被发送到您设定您的帐户页的电子邮件地址。这是预设的联系方法。"
 
 #: help_text.php:1115
 msgid "This option selects the family tree that is shown to visitors when they first arrive at the site."
@@ -13806,11 +13806,11 @@ msgstr "这个选项会让你在常见问题页面编辑条目"
 
 #: modules_v3/faq/help_text.php:60
 msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
-msgstr "这个选项会让你在常见问题页面向下移动一个项目。<br> <br>你每次使用此选项，常见问题位置的数量这一项目增加了一。您可以通过编辑项目中的问题与改变的FAQ位置字段实现相同的效果。当一个以上的常见问题项具有相同的位置数，只有这一个项目将是可见的。"
+msgstr "这个选项会让你在常见问题页面向下移动一个项目。<br><br>你每次使用此选项，常见问题位置的数量这一项目增加了一。您可以通过编辑项目中的问题与改变的FAQ位置字段实现相同的效果。当一个以上的常见问题项具有相同的位置数，只有这一个项目将是可见的。"
 
 #: modules_v3/faq/help_text.php:65
 msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
-msgstr "这个选项会让你在常见问题页面向上移动一个项目。<br> <br>你每次使用此选项，常见问题位置的数量这一项目减少了一个。您可以通过编辑项目中的问题与改变的常见问题位置字段实现相同的效果。当一个以上的常见问题项具有相同的位置数，只有这一个项目将是可见的。"
+msgstr "这个选项会让你在常见问题页面向上移动一个项目。<br><br>你每次使用此选项，常见问题位置的数量这一项目减少了一个。您可以通过编辑项目中的问题与改变的常见问题位置字段实现相同的效果。当一个以上的常见问题项具有相同的位置数，只有这一个项目将是可见的。"
 
 #: help_text.php:1100
 msgid "This option will remove private data from the downloaded GEDCOM file.  The file will be filtered according to the privacy settings that apply to each access level.  Privacy settings are specified on the GEDCOM configuration page."
@@ -13842,7 +13842,7 @@ msgstr "本页提供了大量有关服务器上<b> webtrees </b>支持。关于�
 
 #: help_text.php:1171
 msgid "This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent."
-msgstr "本页将允许您从相同的GEDCOM文件合并两个GEDCOM记录。<br> <br>这非常有用当合并gedcoms，或是现在有许多人，家庭，和资源是相同的。<br> <br>页包括三个步骤。< <br> <ol> <li>您输入>两GEDCOM ID。IDS <u>必须</u>是同一类型的。你不能把个人与家庭或家庭和源，例如。<br>在<b>合并ID：</b>字段中输入你想要完成合并后新记录的ID。<br>在<b>合并ID：</b>字段中输入的记录的信息将被合并到合并到ID的ID：记录。此记录将合并后删除。</li> <li>您选择什么样的事实要从两个记录时，他们被合并。单击复选框的你想要的保持。</li> <li>您检查合并的在线变化结果。</li> </ol>最终确认将全得他们不可恢复。"
+msgstr "本页将允许您从相同的GEDCOM文件合并两个GEDCOM记录。<br><br>这非常有用当合并gedcoms，或是现在有许多人，家庭，和资源是相同的。<br><br>页包括三个步骤。<br><ol><li>您输入>两GEDCOM ID。IDS <u>必须</u>是同一类型的。你不能把个人与家庭或家庭和源，例如。<br>在<b>合并ID：</b>字段中输入你想要完成合并后新记录的ID。<br>在<b>合并ID：</b>字段中输入的记录的信息将被合并到合并到ID的ID：记录。此记录将合并后删除。</li><li>您选择什么样的事实要从两个记录时，他们被合并。单击复选框的你想要的保持。</li><li>您检查合并的在线变化结果。</li></ol>最终确认将全得他们不可恢复。"
 
 #: modules_v3/googlemap/placehierarchy.php:364
 msgid "This place has no coordinates"
@@ -13908,7 +13908,7 @@ msgstr "这部分允许您添加一个新的说明到你当前正在编辑的事
 
 #: help_text.php:1158
 msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
-msgstr "这部分允许您添加一个新的资源引用到你当前正在编辑的事实。<br> <br>在资源框字段输入资源ID。如果你需要输入一个新的资资源单击<b>创建一个新的资源</b>链接。在引用字段,输入细节页码或其他信息,可能帮助别人找到的信息资源。在文本字段中,输入文本转录从源。"
+msgstr "这部分允许您添加一个新的资源引用到你当前正在编辑的事实。<br><br>在资源框字段输入资源ID。如果你需要输入一个新的资资源单击<b>创建一个新的资源</b>链接。在引用字段,输入细节页码或其他信息,可能帮助别人找到的信息资源。在文本字段中,输入文本转录从源。"
 
 #: setup.php:171
 #, php-format
@@ -14665,11 +14665,11 @@ msgstr "使用轮廓"
 
 #: help_text.php:1105
 msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available Blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move Right and Move Left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
-msgstr "使用这些按钮从一个列表移动目条到另一个。<br> <br>选中要移动的条目，然后点击一个按箭头方向按钮来移动或复制条目。使用<b> &raquo </b>及<b> &laquo </b>按钮移动将高亮显示的条目从左边到右边的列表或反之亦然。使用<b> &gt </b>及<b> &lt </b>按钮移动选中的可用块列表移动到右侧或左侧列表。<br> <br>无论你所做的与移动右向左移动按钮，可用块列表中的条目不改变。这是因为同一块可以在同一页上多次出现。HTML块是你可希望这样做的一个好例子。"
+msgstr "使用这些按钮从一个列表移动目条到另一个。<br><br>选中要移动的条目，然后点击一个按箭头方向按钮来移动或复制条目。使用<b> &raquo </b>及<b> &laquo </b>按钮移动将高亮显示的条目从左边到右边的列表或反之亦然。使用<b> &gt </b>及<b> &lt </b>按钮移动选中的可用块列表移动到右侧或左侧列表。<br><br>无论你所做的与移动右向左移动按钮，可用块列表中的条目不改变。这是因为同一块可以在同一页上多次出现。HTML块是你可希望这样做的一个好例子。"
 
 #: help_text.php:1110
 msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
-msgstr "使用这些按钮来重新排列列表中的条目顺序。模块将按所列出顺序显示。<br> <br>选中要移动的条目，然后单击上面按钮，向上或向下移动条目。"
+msgstr "使用这些按钮来重新排列列表中的条目顺序。模块将按所列出顺序显示。<br><br>选中要移动的条目，然后单击上面按钮，向上或向下移动条目。"
 
 #: help_text.php:398
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
@@ -14681,7 +14681,7 @@ msgstr "使用此字段告诉网站管理员为什么您申请帐户，你与本
 
 #: edit_interface.php:1767
 msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the Save button to save the changes."
-msgstr "使用此网页更改或删除家庭成员。<br> <br>你可以改变链接来为每个家庭成员选择不同的人来补全家庭角色。你也可以把那个人从家庭删除链接。<br> <br>当您完成家庭成员改变，点击保存按钮保存更改。"
+msgstr "使用此网页更改或删除家庭成员。<br><br>你可以改变链接来为每个家庭成员选择不同的人来补全家庭角色。你也可以把那个人从家庭删除链接。<br><br>当您完成家庭成员改变，点击保存按钮保存更改。"
 
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:396
 msgid "Use this value"
@@ -14989,12 +14989,12 @@ msgstr ""
 #: login.php:356
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
-msgstr "现在我们将发送一封确认邮件到地址<b> %s </b>。你必须遵循的确认电子邮件中说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br> <br>在你按照指示的确认电子邮件中，还必须管理员批准您的帐户请求才可以使用。<br> <br>登录到这个网站，你需要知道你的用户名密码。"
+msgstr "现在我们将发送一封确认邮件到地址<b> %s </b>。你必须遵循的确认电子邮件中说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br><br>在你按照指示的确认电子邮件中，还必须管理员批准您的帐户请求才可以使用。<br><br>登录到这个网站，你需要知道你的用户名密码。"
 
 #: login.php:358
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
-msgstr "现在我们将发送一封确认邮件到地址<b> %s </b>。你必须在确认电子邮件说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br> <br>在你按照电子邮件指示的确认后，您可以登录。登录到该网站，你需要知道你的用户名和密码。"
+msgstr "现在我们将发送一封确认邮件到地址<b> %s </b>。你必须在确认电子邮件说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br><br>在你按照电子邮件指示的确认后，您可以登录。登录到该网站，你需要知道你的用户名和密码。"
 
 #. I18N: gedcom tag _URL
 #: library/WT/Gedcom/Tag.php:823
@@ -15111,7 +15111,7 @@ msgstr "当你添加，编辑或删除信息，更改无法立即保存。他们
 
 #: help_text.php:1130
 msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
-msgstr "当您勾选这个选项，一个GEDCOM文件的副本将在下载开始之前被压缩成zip格式。这将减少它的大小，但您将需要使用一个兼容的程序（例如Winzip解压缩，解压缩GEDCOM文件传输）才能使用它。<br> <br>下载大的GEDCOM文件时这是一个有用的选项。如果不用是有风险的，未压缩的文件的下载时间可能会超过允许的最大执行时间，导致不完全下载的文件。ZIP选项应该能减少百分之75的下载时间。"
+msgstr "当您勾选这个选项，一个GEDCOM文件的副本将在下载开始之前被压缩成zip格式。这将减少它的大小，但您将需要使用一个兼容的程序（例如Winzip解压缩，解压缩GEDCOM文件传输）才能使用它。<br><br>下载大的GEDCOM文件时这是一个有用的选项。如果不用是有风险的，未压缩的文件的下载时间可能会超过允许的最大执行时间，导致不完全下载的文件。ZIP选项应该能减少百分之75的下载时间。"
 
 #: help_text.php:1084
 msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
@@ -15119,7 +15119,7 @@ msgstr "当你点击<b>添加新的共享记事</b>链接，将打开一个新�
 
 #: modules_v3/clippings/help_text.php:37
 msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
-msgstr "当你点击这个链接，您的收集箱将完全清空。<br> <br>如果你不想删除所有人，家庭，等车的剪报，您可以逐个点击在收集箱里的要删除项目的<b>删除</b>链接。当你点击这些链接<u>没有</u >确认的请求，会立即生效"
+msgstr "当你点击这个链接，您的收集箱将完全清空。<br><br>如果你不想删除所有人，家庭，等车的剪报，您可以逐个点击在收集箱里的要删除项目的<b>删除</b>链接。当你点击这些链接<u>没有</u>确认的请求，会立即生效"
 
 #: message.php:143
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
@@ -15306,7 +15306,7 @@ msgstr "您可以下载从 %s 的GEDCOM规格的副本。"
 
 #: help_text.php:1244
 msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
-msgstr "你可以限制显示的新闻文章的数量,从而减少GEDCOM的新闻块高度。<br> <br>这个选项决定是否任何限制应适用或是否应该根据文章的时间或根据文章的数量限制。"
+msgstr "你可以限制显示的新闻文章的数量,从而减少GEDCOM的新闻块高度。<br><br>这个选项决定是否任何限制应适用或是否应该根据文章的时间或根据文章的数量限制。"
 
 #: modules_v3/batch_update/plugins/married_names.php:37
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
@@ -19513,7 +19513,7 @@ msgstr "缺少姓氏"
 #~ msgstr "不发送消息"
 
 #~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
-#~ msgstr "每个媒体项目应该关连一个或多个相关人,家庭,或源数据库中记录。<br> <br>建立这样一个链接,你可以输入或寻找人的身份证,家庭,或源的同时,创建媒体项目。你也可以在个人,家庭,或源细节页面建立链接后通过编辑选项管理多媒体页面,或通过添加媒体项目通过添加媒体链接可。"
+#~ msgstr "每个媒体项目应该关连一个或多个相关人,家庭,或源数据库中记录。<br><br>建立这样一个链接,你可以输入或寻找人的身份证,家庭,或源的同时,创建媒体项目。你也可以在个人,家庭,或源细节页面建立链接后通过编辑选项管理多媒体页面,或通过添加媒体项目通过添加媒体链接可。"
 
 #~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
 #~ msgstr "输入一个你正在编辑的条目的标题。如果这是一个标题,一个多媒体项目,输入一个描述性的标题,将显示该项目给用户。"
@@ -19537,10 +19537,10 @@ msgstr "缺少姓氏"
 #~ msgstr "家谱数据"
 
 #~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
-#~ msgstr "如果启用了媒体防火墙,是否存储有水印的全尺寸图像的无水印副本存储在服务器?<br> <br> 当设置为<b>是</b>,全尺寸有水印的图片会更多更快的生产但占用更多的服务器磁盘空间。"
+#~ msgstr "如果启用了媒体防火墙,是否存储有水印的全尺寸图像的无水印副本存储在服务器?<br><br> 当设置为<b>是</b>,全尺寸有水印的图片会更多更快的生产但占用更多的服务器磁盘空间。"
 
 #~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
-#~ msgstr "如果启用了媒体防火墙,是否存储有水印的缩略图的无水印副本存储在服务器?<br> <br> 当设置为<b>是</b>,全尺寸有水印的图片会更多更快的生产但占用更多的服务器磁盘空间。"
+#~ msgstr "如果启用了媒体防火墙,是否存储有水印的缩略图的无水印副本存储在服务器?<br><br> 当设置为<b>是</b>,全尺寸有水印的图片会更多更快的生产但占用更多的服务器磁盘空间。"
 
 #~ msgid "If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don't watermark the thumbnails."
 #~ msgstr "如果启用了媒体防火墙,缩略图要水印吗?如果你不要缩略图水印，你的媒体列表加载更快。"
@@ -19619,7 +19619,7 @@ msgstr "缺少姓氏"
 #~ msgstr "这里显示访问最多的10条记录。要求在GEDCOM配置设置中启用计数器。"
 
 #~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
-#~ msgstr "这是SMTP邮件服务器的名称。例如：<b> smtp.foo.bar.com </b>。<br> <br>一些电子邮件提供商的配置值：<br> <br> <b> Gmail <br> </b> <br> <b>发送服务器（SMTP）名称：</b>  smtp.gmail.com<br> <b> SMTP端口：</b> 465或587 <br> <b>安全连接：</b> SSL <br> <br> <b> Hotmail <br> </b> <br> <b>发送服务器（SMTP）名称：</b> smtp.live.com<br> <b> SMTP端口：</b> 25或587 <br> <b>安全连接：</b> TLS <br> <br><B>雅虎Mail Plus（目前付费服务） </b> <br> <b>发送服务器（SMTP）名称：</b> smtp.mail.yahoo.com<br> <b> SMTP端口：</b> 25"
+#~ msgstr "这是SMTP邮件服务器的名称。例如：<b> smtp.foo.bar.com </b>。<br><br>一些电子邮件提供商的配置值：<br><br><b> Gmail <br></b><br><b>发送服务器（SMTP）名称：</b>  smtp.gmail.com<br><b> SMTP端口：</b> 465或587 <br><b>安全连接：</b> SSL <br><br><b> Hotmail <br></b><br><b>发送服务器（SMTP）名称：</b> smtp.live.com<br><b> SMTP端口：</b> 25或587 <br><b>安全连接：</b> TLS <br><br><b>雅虎Mail Plus（目前付费服务） </b><br><b>发送服务器（SMTP）名称：</b> smtp.mail.yahoo.com<br><b> SMTP端口：</b> 25"
 
 #~ msgid "This is used in the \"From:\" header when sending mails."
 #~ msgstr "发送邮件用”From:“开头。"
@@ -19628,7 +19628,7 @@ msgstr "缺少姓氏"
 #~ msgstr "这是用在发送邮件头部的“发件人:”。它通常也可能是“From:”。"
 
 #~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br><br>Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br><br>When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
-#~ msgstr "此选项会导致<b> webtrees </b>显示所有的个人记录有关联关系的人或家庭，作为搜索的一个直接结果。相反的，在所有的人或家庭都显示在一个人发现作为搜索的结果有直接关系的其他人或家庭，是不可能的。<br> <br>例子：假设人<b>A</b>是<b> B </b>的教父。这种关系是由一个或标签的方式记录在个人<b> B </b>的GEDCOM文件记录。没有相应的标签中存在的GEDCOM记录人<b>A</b>。<br> <br>当此选项设置为<b>是</b>和搜索结果列表中包括<b> B </b>，<b>A</b>将自动包含由于<b> B </b>的GEDCOM文件记录或标签。然而，如果搜索结果列表包括<b>A</b>，<b> B </b>将不包括自没有匹配的关联标记的人<b>A </b>的GEDCOM文件记录。"
+#~ msgstr "此选项会导致<b> webtrees </b>显示所有的个人记录有关联关系的人或家庭，作为搜索的一个直接结果。相反的，在所有的人或家庭都显示在一个人发现作为搜索的结果有直接关系的其他人或家庭，是不可能的。<br><br>例子：假设人<b>A</b>是<b> B </b>的教父。这种关系是由一个或标签的方式记录在个人<b> B </b>的GEDCOM文件记录。没有相应的标签中存在的GEDCOM记录人<b>A</b>。<br><br>当此选项设置为<b>是</b>和搜索结果列表中包括<b> B </b>，<b>A</b>将自动包含由于<b> B </b>的GEDCOM文件记录或标签。然而，如果搜索结果列表包括<b>A</b>，<b> B </b>将不包括自没有匹配的关联标记的人<b>A </b>的GEDCOM文件记录。"
 
 #~ msgid "This option controls whether or not to show the Birth and Death details of an individual on charts."
 #~ msgstr "这个选项控制在个人图表是否显示出生和死亡的细节。"
@@ -19637,25 +19637,25 @@ msgstr "缺少姓氏"
 #~ msgstr "该选项允许有在线编辑这个数据库的功能，用户有编辑权限在线更新数据。"
 
 #~ msgid "This option will generate thumbnails for all files in the current directory which don't already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br><br>If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links."
-#~ msgstr "此选项将生成在当前目录为不存在缩略图的所有文件生成缩略图。这比为每个文件按下<B>创建缩略图</b>链接更方便。<br> <br>如果你希望保持控制哪些文件应该有相应的缩略图，您不应使用此选项。相反，点击相应的<b>创建缩略图</b>链接。"
+#~ msgstr "此选项将生成在当前目录为不存在缩略图的所有文件生成缩略图。这比为每个文件按下<b>创建缩略图</b>链接更方便。<br><br>如果你希望保持控制哪些文件应该有相应的缩略图，您不应使用此选项。相反，点击相应的<b>创建缩略图</b>链接。"
 
 #~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
 #~ msgstr "这个服务器的内存限制是 %d MB和它的CPU时间限制是 %d 秒。"
 
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
-#~ msgstr "传输层安全（TLS）和安全套接字层（SSL）是网络数据加密协议。<br> <br> TLS 1，1.1和1.2是标准化发展，SSL 3，TLS 1和SSL 3.1是同样的。SSL现在的新名字为TLS。<br> <br>如果你的SMTP服务器需要SSL协议登录时，您应该选择<B> SSL </b>选项。如果你的SMTP服务器登录时需要TLS协议，你应该选择<B> TLS </b>选项。"
+#~ msgstr "传输层安全（TLS）和安全套接字层（SSL）是网络数据加密协议。<br><br> TLS 1，1.1和1.2是标准化发展，SSL 3，TLS 1和SSL 3.1是同样的。SSL现在的新名字为TLS。<br><br>如果你的SMTP服务器需要SSL协议登录时，您应该选择<b> SSL </b>选项。如果你的SMTP服务器登录时需要TLS协议，你应该选择<b> TLS </b>选项。"
 
-#~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
-#~ msgstr "使用SMTP从<b> webtrees </b>发送电子邮件。<br> <br>这个选项需要访问一个SMTP邮件服务器。当设置为<b>不发送消息</b> <b> webtrees </b>将使用服务器上内置的PHP电子邮件系统。"
+#~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b><b>webtrees</b> will use the e-mail system built into PHP on this server."
+#~ msgstr "使用SMTP从<b> webtrees </b>发送电子邮件。<br>br>这个选项需要访问一个SMTP邮件服务器。当设置为<b>不发送消息</b><b> webtrees </b>将使用服务器上内置的PHP电子邮件系统。"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "使用SMTP发送外部邮件"
 
 #~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
-#~ msgstr "使用用户名和密码身份验证连接到SMTP服务器。<br> <br>某些SMTP服务器在接受外部邮件之前，要求所有连接被认证。"
+#~ msgstr "使用用户名和密码身份验证连接到SMTP服务器。<br><br>某些SMTP服务器在接受外部邮件之前，要求所有连接被认证。"
 
 #~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
-#~ msgstr "使用此字段存储缩写标题。此字段是用于对消息标题字段关联。默认情况下，<b> webtrees </b>将首先使用标题然后缩写名称。<br> <br>按GEDCOM 5.5规范，“这个项目是提供一种用于排序，简称归档，检索源记录（页62）。”<br> <br>在<b> webtrees </b>缩写名称是可选的，但在其他的程序是必需的。"
+#~ msgstr "使用此字段存储缩写标题。此字段是用于对消息标题字段关联。默认情况下，<b> webtrees </b>将首先使用标题然后缩写名称。<br><br>按GEDCOM 5.5规范，“这个项目是提供一种用于排序，简称归档，检索源记录（页62）。”<br><br>在<b> webtrees </b>缩写名称是可选的，但在其他的程序是必需的。"
 
 #~ msgid "Visitor options"
 #~ msgstr "访客选项"
@@ -19667,7 +19667,7 @@ msgstr "缺少姓氏"
 #~ msgstr "谁能看到非水印图像？"
 
 #~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
-#~ msgstr "您可以决定是否常见问题将是可见的，无论GEDCOM，或者它是否将是明显的只对当前的GEDCOM。的<br><ul><li><b>所有</b>的常见问题将出现在所有的常见问题列表，无论GEDCOM。</li><li> <b> %s </b>的常见问题解答将只出现在当前活跃的GEDCOM的常见问题列表。</li></ul>"
+#~ msgstr "您可以决定是否常见问题将是可见的，无论GEDCOM，或者它是否将是明显的只对当前的GEDCOM。的<br><ul><li><b>所有</b>的常见问题将出现在所有的常见问题列表，无论GEDCOM。</li><li><b> %s </b>的常见问题解答将只出现在当前活跃的GEDCOM的常见问题列表。</li></ul>"
 
 #~ msgid "unknown person"
 #~ msgstr "不明身份的人"
