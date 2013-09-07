@@ -621,7 +621,7 @@ class WT_GedcomRecord {
 	public function format_first_major_fact($facts, $style) {
 		foreach ($this->getFacts($facts, true) as $event) {
 			// Only display if it has a date or place (or both)
-			if ($event->getDate()->isOK() || !$event->getPlace()->isEmpty) {
+			if ($event->getDate()->isOK() || !$event->getPlace()->isEmpty()) {
 				switch ($style) {
 				case 1:
 					return '<br><em>'.$event->getLabel().' '.format_fact_date($event, $this, false, false).' '.format_fact_place($event).'</em>';
