@@ -523,7 +523,11 @@ function addmedia_links(field, iid, iname) {
 }
 
 function valid_date(datefield) {
-	var months = new Array("JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC");
+	var months        = new Array("JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC");
+	var hijri_months  = new Array("MUHAR","SAFAR","RABIA","RABIT","JUMAA","JUMAT","RAJAB","SHAAB","RAMAD","SHAWW","DHUAQ","DHUAH");
+	var jewish_months = new Array("TSH","CSH","KSL","TVT","SHV","ADR","ADS","NSN","IYR","SVN","TMZ","AAV","ELL");
+	var french_months = new Array("VEND","BRUM","FRIM","NIVO","PLUV","VENT","GERM","FLOR","PRAI","MESS","THER","FRUC","COMP");
+	var jalali_months = new Array("FARVA","ORDIB","KHORD","TIR","MORDA","SHAHR","MEHR","ABAN","AZAR","DEY","BAHMA","ESFAN");
 
 	var datestr=datefield.value;
 	// if a date has a date phrase marked by () this has to be excluded from altering
@@ -548,13 +552,24 @@ function valid_date(datefield) {
 		datestr = "BET "+months[RegExp.$1*3-3]+" "+RegExp.$2+" AND "+months[RegExp.$1*3-1]+" "+RegExp.$2;
 	}
 
+	// Shortcut for @#Dxxxxx@ 01 01 1400, etc.
+	if (datestr.match(/^(@#DHIJRI@|HIJRI)( \d\d )(\d\d)( \d\d\d\d)$/)) {
+		datestr = "@#DHIJRI@" + RegExp.$2 + hijri_months[parseInt(RegExp.$3)-1] + RegExp.$4;
+	}
+	if (datestr.match(/^(@#DJALALI@|JALALI)( \d\d )(\d\d)( \d\d\d\d)$/)) {
+		datestr = "@#DJALALI@" + RegExp.$2 + jalali_months[parseInt(RegExp.$3)-1] + RegExp.$4;
+	}
+	if (datestr.match(/^(@#DJHEBREW@|HEBREW)( \d\d )(\d\d)( \d\d\d\d)$/)) {
+		datestr = "@#DJHEBREW@" + RegExp.$2 + jewish_months[parseInt(RegExp.$3)-1] + RegExp.$4;
+	}
+
 	// e.g. 17.11.1860, 03/04/2005 or 1999-12-31.  Use locale settings where DMY order is ambiguous.
 	var qsearch = /^([^\d]*)(\d+)[^\d](\d+)[^\d](\d+)$/i;
 	if (qsearch.exec(datestr)) {
 		var f0=RegExp.$1;
-		var f1=parseInt(RegExp.$2, 10);
-		var f2=parseInt(RegExp.$3, 10);
-		var f3=parseInt(RegExp.$4, 10);
+		var f1=parseInt(RegExp.$2);
+		var f2=parseInt(RegExp.$3);
+		var f3=parseInt(RegExp.$4);
 		var f4=RegExp.$5;
 		var dmy='DMY';
 		if (typeof(locale_date_format)!='undefined')
