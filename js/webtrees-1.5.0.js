@@ -525,7 +525,7 @@ function addmedia_links(field, iid, iname) {
 function valid_date(datefield) {
 	var months        = new Array("JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC");
 	var hijri_months  = new Array("MUHAR","SAFAR","RABIA","RABIT","JUMAA","JUMAT","RAJAB","SHAAB","RAMAD","SHAWW","DHUAQ","DHUAH");
-	var jewish_months = new Array("TSH","CSH","KSL","TVT","SHV","ADR","ADS","NSN","IYR","SVN","TMZ","AAV","ELL");
+	var hebrew_months = new Array("TSH","CSH","KSL","TVT","SHV","ADR","ADS","NSN","IYR","SVN","TMZ","AAV","ELL");
 	var french_months = new Array("VEND","BRUM","FRIM","NIVO","PLUV","VENT","GERM","FLOR","PRAI","MESS","THER","FRUC","COMP");
 	var jalali_months = new Array("FARVA","ORDIB","KHORD","TIR","MORDA","SHAHR","MEHR","ABAN","AZAR","DEY","BAHMA","ESFAN");
 
@@ -553,14 +553,17 @@ function valid_date(datefield) {
 	}
 
 	// Shortcut for @#Dxxxxx@ 01 01 1400, etc.
-	if (datestr.match(/^(@#DHIJRI@|HIJRI)( \d\d )(\d\d)( \d\d\d\d)$/)) {
+	if (datestr.match(/^(@#DHIJRI@|HIJRI)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
 		datestr = "@#DHIJRI@" + RegExp.$2 + hijri_months[parseInt(RegExp.$3)-1] + RegExp.$4;
 	}
-	if (datestr.match(/^(@#DJALALI@|JALALI)( \d\d )(\d\d)( \d\d\d\d)$/)) {
+	if (datestr.match(/^(@#DJALALI@|JALALI)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
 		datestr = "@#DJALALI@" + RegExp.$2 + jalali_months[parseInt(RegExp.$3)-1] + RegExp.$4;
 	}
-	if (datestr.match(/^(@#DJHEBREW@|HEBREW)( \d\d )(\d\d)( \d\d\d\d)$/)) {
-		datestr = "@#DJHEBREW@" + RegExp.$2 + jewish_months[parseInt(RegExp.$3)-1] + RegExp.$4;
+	if (datestr.match(/^(@#DHEBREW@|HEBREW)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
+		datestr = "@#DHEBREW@" + RegExp.$2 + hebrew_months[parseInt(RegExp.$3)-1] + RegExp.$4;
+	}
+	if (datestr.match(/^(@#DFRENCH R@|FRENCH)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
+		datestr = "@#DFRENCH R@" + RegExp.$2 + french_months[parseInt(RegExp.$3)-1] + RegExp.$4;
 	}
 
 	// e.g. 17.11.1860, 03/04/2005 or 1999-12-31.  Use locale settings where DMY order is ambiguous.
