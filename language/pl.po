@@ -613,7 +613,7 @@ msgstr "<b>Uwaga:</b> Informacje na temat osób żyjących są udostępniane jed
 
 #: help_text.php:1064
 msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
-msgstr "<b>webtrees</b> umożliwia kopiowanie maksymalnie 10 faktów ze szczegółami do schowka. Ten schowek jest różny od kosza wycinków, którego można używać do eksportu części bazy danych.<br><br>Można wybrać jedno z wydarzeń ze schowka i skopiować do osoby, rodziny, multimediów, źródła lub repozytorium aktualnie edytowanego. Jednakże nie można skopiować wydarzeń różnych typów rekordów. Na przykład, nie można skopiować małżeństwa do źródła lub osoby, ponieważ to wydarzenie jest powiązane tylko z rodziną.<br><br> Ta opcja przydaje się przy wprowadzaniu podobnych faktów, takich jak fakty o spisie ludności, do wpisów wielu osób lub rodzin."
+msgstr "<b>webtrees</b> umożliwia kopiowanie maksymalnie 10 faktów ze szczegółami do schowka. Ten schowek jest różny od kosza wycinków, którego można używać do eksportu części bazy danych.<br><br>Można wybrać jedno z wydarzeń ze schowka i skopiować do osoby, rodziny, multimediów, źródła lub repozytorium aktualnie edytowanego. Jednakże nie można skopiować wydarzeń różnych typów rekordów. Na przykład, nie można skopiować małżeństwa do źródła lub osoby, ponieważ to wydarzenie jest powiązane tylko z rodziną.<br><br>Ta opcja przydaje się przy wprowadzaniu podobnych faktów, takich jak fakty o spisie ludności, do wpisów wielu osób lub rodzin."
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:79
@@ -6834,7 +6834,7 @@ msgstr "Tutaj można zmieniać szerokość diagramu od 50%% do 300%%. Ustawienie
 
 #: modules_v3/googlemap/help_text.php:96
 msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
-msgstr "Tutaj można określić czy miejsca wyświetlane w hierarchii będą miały wyświetlone pełne nazwy czy tylko będzie wyświetlona nazwa aktualnego poziomu/miejsca.<br><b>Przykłady:<br>Pełna nazwa: </b>Warszawa, Mazowieckie, Polska<br><b>Skrócona nazwa: </b>Warszawa<br><b>Pełna nazwa: </b>Mazowieckie, Polska<br><b>Skrócona nazwa: </b>Mazowieckie"
+msgstr "Tutaj można określić czy miejsca wyświetlane w hierarchii będą miały wyświetlone pełne nazwy czy tylko będzie wyświetlona nazwa aktualnego poziomu/miejsca.<br><b>Przykłady:<br>Pełna nazwa:</b> Warszawa, Mazowieckie, Polska<br><b>Skrócona nazwa:</b> Warszawa<br><b>Pełna nazwa:</b> Mazowieckie, Polska<br><b>Skrócona nazwa:</b> Mazowieckie"
 
 #: help_text.php:1046
 msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
@@ -13090,7 +13090,7 @@ msgstr "Przeglądarka multimediów może wyświetlać odnośnik, którego klikni
 
 #: help_text.php:1305
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
-msgstr "Kreator transferu PGV do <b>webtrees</b> jest zautomatyzowanym procesem, który pomoże administratorom zrobić przejście z instalacji PGV do nowego <b><webtrees</b>. Będzie to przeniesienie wszystkich plików GEDCOM i innych informacji zawartych w bazie danych PGV bezpośrednio do nowej bazy danych <b>webtrees</ b>. Niezbędne są następujące opcje:"
+msgstr "Kreator transferu PGV do <b>webtrees</b> jest zautomatyzowanym procesem, który pomoże administratorom zrobić przejście z instalacji PGV do nowego <b><webtrees</b>. Będzie to przeniesienie wszystkich plików GEDCOM i innych informacji zawartych w bazie danych PGV bezpośrednio do nowej bazy danych <b>webtrees</b>. Niezbędne są następujące opcje:"
 
 #: save.php:262
 #, php-format
@@ -13115,7 +13115,7 @@ msgstr "Koszyk wycinków umożliwia zbieranie wybranych informacji („wycinków
 
 #: help_text.php:1315
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
-msgstr "Obecna nazwa użytkownika administrującego <b>webtrees</ b> musi być taka sama jak istniejąca nazwa użytkownika administrującego PGV"
+msgstr "Obecna nazwa użytkownika administrującego <b>webtrees</b> musi być taka sama jak istniejąca nazwa użytkownika administrującego PGV"
 
 #: login.php:510
 #, php-format
@@ -13297,7 +13297,7 @@ msgstr "Konfiguracja serwera jest dobra."
 
 #: site-offline.php:77
 msgid "The site is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
-msgstr "Strona jest w trakcie prac konserwacyjnych. Należy <a href=\"index.php\">spróbować ponownie</ a> w ciągu kilka minut."
+msgstr "Strona jest w trakcie prac konserwacyjnych. Należy <a href=\"index.php\">spróbować ponownie</a> w ciągu kilka minut."
 
 #. I18N: Description of “Statistics” module
 #: modules_v3/gedcom_stats/module.php:37
@@ -14739,7 +14739,7 @@ msgstr "Należy użyć tego pola aby poinformować administratora, dlaczego chce
 
 #: edit_interface.php:1767
 msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the Save button to save the changes."
-msgstr "Na tej stronie można zmieniać lub usuwać członków rodziny. <br><br>Można skorzystać z odnośnika zmień dla każdego członka, aby wybrać inną osobę na to miejsce w rodzinie. Można także użyć odnośnika usuń aby usunąć tę osobę z rodziny.<br><br>Po zakończeniu wprowadzania zmian należy kliknąć przycisk Zapisz, aby je zapamiętać."
+msgstr "Na tej stronie można zmieniać lub usuwać członków rodziny.<br><br>Można skorzystać z odnośnika zmień dla każdego członka, aby wybrać inną osobę na to miejsce w rodzinie. Można także użyć odnośnika usuń aby usunąć tę osobę z rodziny.<br><br>Po zakończeniu wprowadzania zmian należy kliknąć przycisk Zapisz, aby je zapamiętać."
 
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:396
 msgid "Use this value"

@@ -3577,7 +3577,7 @@ msgstr "Paspauskite eilutę, tuomet nutempkite į perrikiuotą mediją "
 
 #: admin_trees_manage.php:261
 msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
-msgstr "Spauskite čia kad patekti PhpGedView vertimo į <b>kilmės medį</ b> vedlį"
+msgstr "Spauskite čia kad patekti PhpGedView vertimo į <b>kilmės medį</b> vedlį"
 
 #: modules_v3/faq/module.php:281
 msgid "Click here to Add, Edit, or Delete"
@@ -6768,7 +6768,7 @@ msgstr "Sveiki %s …"
 #: login.php:354
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Sveiki %s …<br> Ačiū už registravimąsi"
+msgstr "Sveiki %s …<br>Ačiū už registravimąsi"
 
 #: login.php:289 login.php:473
 msgid "Hello administrator…"
@@ -6831,7 +6831,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:96
 msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
-msgstr "Čia galite pasirinkti tarp dviejų būdų rodyti vietovių pavadinimus hierarchijoje. Jei nustatyta Taip, vieta turi trumpą pavadinimą arba faktinio lygmens pavadinimą, jei Ne - pilną pavadinimą.<br><b>Pavyzdžiai:<br>Pilnas pavadinimas: </b>Čikaga, Ilinojus, JAV<br><b>Trumpas pavadinimas: </b>Čikaga<br><b>Pilnas pavadinimas: </b>Ilinojus, JAV<br><b>Trumpas pavadinimas: </b>Ilinojus"
+msgstr "Čia galite pasirinkti tarp dviejų būdų rodyti vietovių pavadinimus hierarchijoje. Jei nustatyta Taip, vieta turi trumpą pavadinimą arba faktinio lygmens pavadinimą, jei Ne - pilną pavadinimą.<br><b>Pavyzdžiai:<br>Pilnas pavadinimas:</b> Čikaga, Ilinojus, JAV<br><b>Trumpas pavadinimas:</b> Čikaga<br><b>Pilnas pavadinimas:</b> Ilinojus, JAV<br><b>Trumpas pavadinimas:</b> Ilinojus"
 
 #: help_text.php:1046
 msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
@@ -14733,7 +14733,7 @@ msgstr ""
 
 #: edit_interface.php:1767
 msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the Save button to save the changes."
-msgstr "Naudokite šį puslapį, keisti ar ištrinti šeimos narius.<br><br> Kiekvienam šeimos nariui, galite naudoti Pakeisti nuorodą, norėdami pasirinkti kitą asmenį užpildyti šeimos vaidmeniui. Taip pat galite naudoti nuorodą Pašalinti nuorodą siekiant pašalinti tą asmenį iš šeimos.<br><br>Baigę keisti šeimos narius, spustelėkite mygtuką Išsaugoti, kad išsaugotumėte pakeitimus."
+msgstr "Naudokite šį puslapį, keisti ar ištrinti šeimos narius.<br><br>Kiekvienam šeimos nariui, galite naudoti Pakeisti nuorodą, norėdami pasirinkti kitą asmenį užpildyti šeimos vaidmeniui. Taip pat galite naudoti nuorodą Pašalinti nuorodą siekiant pašalinti tą asmenį iš šeimos.<br><br>Baigę keisti šeimos narius, spustelėkite mygtuką Išsaugoti, kad išsaugotumėte pakeitimus."
 
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:396
 msgid "Use this value"
@@ -15041,12 +15041,12 @@ msgstr ""
 #: login.php:356
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
-msgstr "Mes išsiųsime patvirtinimo laišką adresu <b>%s</b>. Jums reikės patvirtinti naudotojo užklausimą pagal instrukcijas, esančias tame laiške. Jei per 7 dienas nepatvirtinsite naudotojo, jūsų prašymas bus automatiškai atmestas. Jums reikės pildyti viską iš naujo.<br><br> Po to, kai naudojantis instrukcijomis patvirtinsite save, administratorius dar turės patvirtinti Jūsų norą tapti naudotoju, ir tik tuomet galėsite prisijungti.<br><br> Prisijungiant prie tinklapio reikės žinoti savo naudotojo vardą bei slaptažodį."
+msgstr "Mes išsiųsime patvirtinimo laišką adresu <b>%s</b>. Jums reikės patvirtinti naudotojo užklausimą pagal instrukcijas, esančias tame laiške. Jei per 7 dienas nepatvirtinsite naudotojo, jūsų prašymas bus automatiškai atmestas. Jums reikės pildyti viską iš naujo.<br><br>Po to, kai naudojantis instrukcijomis patvirtinsite save, administratorius dar turės patvirtinti Jūsų norą tapti naudotoju, ir tik tuomet galėsite prisijungti.<br><br>Prisijungiant prie tinklapio reikės žinoti savo naudotojo vardą bei slaptažodį."
 
 #: login.php:358
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
-msgstr "Mes išsiųsime patvirtinimo laišką adresu <b>%s</b>. Jums reikės patvirtinti naudotojo užklausimą pagal instrukcijas, esančias tame laiške. Jei per 7 dienas nepatvirtinsite naudotojo, jūsų prašymas bus automatiškai atmestas. Jums reikės pildyti viską iš naujo.<br><br> Po to, kai naudojantis instrukcijomis patvirtinsite save, Jūs galėsite prisijungti. Prisijungiant prie puslapio reikės žinoti savo naudotojo vardą ir slaptažodį."
+msgstr "Mes išsiųsime patvirtinimo laišką adresu <b>%s</b>. Jums reikės patvirtinti naudotojo užklausimą pagal instrukcijas, esančias tame laiške. Jei per 7 dienas nepatvirtinsite naudotojo, jūsų prašymas bus automatiškai atmestas. Jums reikės pildyti viską iš naujo.<br><br>Po to, kai naudojantis instrukcijomis patvirtinsite save, Jūs galėsite prisijungti. Prisijungiant prie puslapio reikės žinoti savo naudotojo vardą ir slaptažodį."
 
 #. I18N: gedcom tag _URL
 #: library/WT/Gedcom/Tag.php:823
@@ -19684,7 +19684,7 @@ msgstr "…"
 #~ msgstr "Kas gali matyti nuotraukas nepažymėtas vandens ženklu?"
 
 #~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
-#~ msgstr "Galite nustatyti, ar šis DUK bus matomas nepriklausomai nuo GEDCOM, ar jis bus matoma tik dabartiniam GEDCOM.<br><ul><li><b>VISI</ b>&nbsp;&nbsp;&nbsp;DUK bus rodomas visų DUK sąraše, neatsižvelgiant į GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;DUK pasirodys tik tuo metu aktyviame GEDCOM DUK sąraše.</li ></ul>"
+#~ msgstr "Galite nustatyti, ar šis DUK bus matomas nepriklausomai nuo GEDCOM, ar jis bus matoma tik dabartiniam GEDCOM.<br><ul><li><b>VISI</b>&nbsp;&nbsp;&nbsp;DUK bus rodomas visų DUK sąraše, neatsižvelgiant į GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;DUK pasirodys tik tuo metu aktyviame GEDCOM DUK sąraše.</li ></ul>"
 
 #~ msgid "unknown person"
 #~ msgstr "nežinomas asmuo"

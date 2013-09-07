@@ -15339,7 +15339,7 @@ msgstr "Þú getur takmarkað fjölda Fréttagreina sem birtast og þar með min
 
 #: modules_v3/batch_update/plugins/married_names.php:37
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr "Þú getur auðveldað leitina að giftum konum með því að skrá giftingarnöfn þeirra.<br> Allar konur taka þó ekki eftirnöfn eiginmanna sinna, svo þú skalt varast að setja inn rangar upplýsingar inn í gagnagrunninn þinn."
+msgstr "Þú getur auðveldað leitina að giftum konum með því að skrá giftingarnöfn þeirra.<br>Allar konur taka þó ekki eftirnöfn eiginmanna sinna, svo þú skalt varast að setja inn rangar upplýsingar inn í gagnagrunninn þinn."
 
 #: login.php:535
 msgid "You can now login with your user name and password."

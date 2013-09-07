@@ -668,7 +668,7 @@ msgstr "يعتمد النص الإنجليزي:<br><br><b>Important Note:</b> Th
 
 #: help_text.php:1003
 msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The Administrator can override this option for individual users by editing the user’s account details."
-msgstr "<b>كلا </b>يعني ن المستخدمين لهم صلاحية الإطلاع على جميع معلومات الأفراد. <b>نعم</b> يعني أن الصلاحية فقط للأقرباء. هذا هو الخيار القياسي لجميع المستخدمين ويمكن للمدير تغييره من صفحة تعديل سجل الفرد."
+msgstr "<b>كلا</b> يعني ن المستخدمين لهم صلاحية الإطلاع على جميع معلومات الأفراد. <b>نعم</b> يعني أن الصلاحية فقط للأقرباء. هذا هو الخيار القياسي لجميع المستخدمين ويمكن للمدير تغييره من صفحة تعديل سجل الفرد."
 
 #: message.php:120
 msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
@@ -5431,7 +5431,7 @@ msgstr "إدخال رقم فاكس، بالإمكان تركه فارغاً في
 
 #: help_text.php:388
 msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
-msgstr "إدخال رابط إنترنت، بالإمكان تركه فارغاً في حال عدم الرغبة في ذلك. مثال:<br><br> <b>http://www.webtrees.net/</b>"
+msgstr "إدخال رابط إنترنت، بالإمكان تركه فارغاً في حال عدم الرغبة في ذلك. مثال:<br><br><b>http://www.webtrees.net/</b>"
 
 #: help_text.php:50
 msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
@@ -6618,7 +6618,7 @@ msgstr "يتيح للمستخدم إختيار مظهر خاص للموقع."
 
 #: help_text.php:998
 msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
-msgstr "يتيح للزائر إمكانية طلب تسجيل مستخدم في هذا الموقع.<br><br> سيتم إرسال رسالة إلكترونية لطالب التسجيل للمصادقة على الطلب. وبعد المصادقة يجب على المدير الموافقة على التسجيل قبل أن يصبح مفعلاً."
+msgstr "يتيح للزائر إمكانية طلب تسجيل مستخدم في هذا الموقع.<br><br>سيتم إرسال رسالة إلكترونية لطالب التسجيل للمصادقة على الطلب. وبعد المصادقة يجب على المدير الموافقة على التسجيل قبل أن يصبح مفعلاً."
 
 #. I18N: gedcom tag _UID
 #: library/WT/Gedcom/Tag.php:822
@@ -6864,7 +6864,7 @@ msgstr "مرحباً %s …"
 #: login.php:354
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "مرحباً يا %s …<br> شكراً على التسجل."
+msgstr "مرحباً يا %s …<br>شكراً على التسجل."
 
 #: login.php:289 login.php:473
 msgid "Hello administrator…"
@@ -6915,11 +6915,11 @@ msgstr "هنا يتم إدخال درجة التكبير. وما يتم إدخا
 
 #: help_text.php:1060
 msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
-msgstr "يمكن إضافة معلومات متعددة للسجل القائم. <br><br>يمكن ذلك بإختيار نوع المعلومة من القائمة المنسدلة ومن ثم النقر على  <b>إضافة</b>."
+msgstr "يمكن إضافة معلومات متعددة للسجل القائم.<br><br>يمكن ذلك بإختيار نوع المعلومة من القائمة المنسدلة ومن ثم النقر على  <b>إضافة</b>."
 
 #: help_text.php:1090
 msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
-msgstr "يمكن إضافة إقتباس من مصدر للسجل القائم. <br><br>يمكن ذلك بإختيار نوع المعلومة من القائمة المنسدلة ومن ثم النقر على  <b>إضافة</b>."
+msgstr "يمكن إضافة إقتباس من مصدر للسجل القائم.<br><br>يمكن ذلك بإختيار نوع المعلومة من القائمة المنسدلة ومن ثم النقر على  <b>إضافة</b>."
 
 #: help_text.php:1229
 msgid "Here you can change the diagram width from 50 percent to 300 percent.  At 100 percent the output image is about 640 pixels wide."
@@ -7280,11 +7280,11 @@ msgstr "توريد مشجر عائلة"
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "في الكثير من المجتمعات يكتب الإسم باللغة الأم وكذلك بالأحرف اللاتينية كالإنجليزية مثلاً. <br><br>فإذا تم إدخال الإسم باللغة الأم كالعربية مثلاً فيمكن إستخدام هذا الحقل لكتابته بلغة أخرى وستظهر كلا الكتابتان في القوائم والمخططات. <br><br>ويمكن إستخدام أي لغة مرغوبة لإدخال إسم ولو بأحرف غير لاتينية."
+msgstr "في الكثير من المجتمعات يكتب الإسم باللغة الأم وكذلك بالأحرف اللاتينية كالإنجليزية مثلاً.<br><br>فإذا تم إدخال الإسم باللغة الأم كالعربية مثلاً فيمكن إستخدام هذا الحقل لكتابته بلغة أخرى وستظهر كلا الكتابتان في القوائم والمخططات.<br><br>ويمكن إستخدام أي لغة مرغوبة لإدخال إسم ولو بأحرف غير لاتينية."
 
 #: help_text.php:393
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "في الكثير من المجتمعات يكتب الإسم باللغة الأم وكذلك بالأحرف اللاتينية كالإنجليزية مثلاً. <br><br>فإذا تم إدخال الإسم بلغة غير الأم  فيمكن إستخدام هذا الحقل لكتابته باللغة الأم وستظهر كلا الكتابتان في القوائم والمخططات. <br><br>ويمكن إستخدام أي لغة مرغوبة لإدخال إسم ولو بأحرف غير لاتينية."
+msgstr "في الكثير من المجتمعات يكتب الإسم باللغة الأم وكذلك بالأحرف اللاتينية كالإنجليزية مثلاً.<br><br>فإذا تم إدخال الإسم بلغة غير الأم  فيمكن إستخدام هذا الحقل لكتابته باللغة الأم وستظهر كلا الكتابتان في القوائم والمخططات.<br><br>ويمكن إستخدام أي لغة مرغوبة لإدخال إسم ولو بأحرف غير لاتينية."
 
 #: help_text.php:455
 msgid "In some calendars, days start at midnight.  In other calendars, days start at sunset.  The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
@@ -10297,7 +10297,7 @@ msgstr "كلمة المرور غير متطابقة."
 
 #: help_text.php:1295
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
-msgstr "كلمة المرور يجب أن لا تقل عن 6 أحرف وحالة الأحرف معتبرة فيها. <br> وهذا يعني أن كلمة “secret” <u>ليست</u> كما “SECRET”."
+msgstr "كلمة المرور يجب أن لا تقل عن 6 أحرف وحالة الأحرف معتبرة فيها.<br>وهذا يعني أن كلمة “secret” <u>ليست</u> كما “SECRET”."
 
 #: admin_users.php:343 edituser.php:118
 msgid "Passwords must contain at least 6 characters."
@@ -10605,7 +10605,7 @@ msgid "Places in %s"
 msgstr "أماكن في %s"
 
 #: help_text.php:330
-msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.<br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
 msgstr "يجب إدخال أسماء الأماكن بالتفصيل إبتداءاً بالموقع ثم القرية أو المدينة ثم المقاطعة أو الولاية ثم البلد وتكون مفرقة بفاصلة. ولكل بلد تقسيمات خاصة للعنونة ولكن المهم الإبتداء بالأصغر فالأكبر عند إدخال العنوان ."
 
 #: modules_v3/random_media/module.php:130 themes/_administration/header.php:31
@@ -11937,7 +11937,7 @@ msgstr "يعتمد النص الإنجليزي:<br><br>Set to <b>Yes</b> to use 
 
 #: help_text.php:855
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
-msgstr "يعتمد النص الإنجليزي:<br><br> Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>A person who has all of the ordinances done will have <b>BESP</b> printed after their name. Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code. For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
+msgstr "يعتمد النص الإنجليزي:<br><br>Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>A person who has all of the ordinances done will have <b>BESP</b> printed after their name. Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code. For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
 
 #: help_text.php:850
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
@@ -13213,7 +13213,7 @@ msgstr "لقد تم رفض التعديلات على ”%s“."
 
 #: modules_v3/clippings/module.php:142
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
-msgstr "سلة المقتطفات تتيح أخذ مقتطفات (\"قصاصات\") من المشجر ووضعها في ملف واحد للتنزيل والتوريد لاحقاً في برنامج أنساب آخر. يتم تسجيل ملف التنزيل بصيغة  GEDCOM. <br><ul><li> كيفية الإقتطاف؟ <br> كلما يظهر اسم ممكن النقر عليه (فرد، أسرة  أو مصدر) يمكن الإنتقال إلى صفحة تفاصيل هذا الاسم. هناك سيظهر الخيار <b>إضافة إلى سلة المقتطفات.</b> وعند النقر فوق الرابط سيتم إظهار عدة خيارات للتنزيل. </li><li> كيفية التنزيل؟ <br> عندما تحتوي سلة المقتطفات على عناصر، يمكن تتنزيلها من خلال النقر على رابط <b>تحميل الآن.</b> ومن ثم إتباع الإرشادات والروابط. </li></ul>"
+msgstr "سلة المقتطفات تتيح أخذ مقتطفات (\"قصاصات\") من المشجر ووضعها في ملف واحد للتنزيل والتوريد لاحقاً في برنامج أنساب آخر. يتم تسجيل ملف التنزيل بصيغة  GEDCOM.<br><ul><li>كيفية الإقتطاف؟<br>كلما يظهر اسم ممكن النقر عليه (فرد، أسرة  أو مصدر) يمكن الإنتقال إلى صفحة تفاصيل هذا الاسم. هناك سيظهر الخيار <b>إضافة إلى سلة المقتطفات.</b> وعند النقر فوق الرابط سيتم إظهار عدة خيارات للتنزيل.</li><li>كيفية التنزيل؟<br>عندما تحتوي سلة المقتطفات على عناصر، يمكن تتنزيلها من خلال النقر على رابط <b>تحميل الآن.</b> ومن ثم إتباع الإرشادات والروابط.</li></ul>"
 
 #: help_text.php:1315
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
@@ -13399,7 +13399,7 @@ msgstr "تهيئة الخادم جيدة."
 
 #: site-offline.php:77
 msgid "The site is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
-msgstr "هذا الموقع تجرى عليه صيانة حالياً. عليك <a href=\"index.php\"> المحاولة </a> بعد قليل."
+msgstr "هذا الموقع تجرى عليه صيانة حالياً. عليك <a href=\"index.php\">المحاولة</a> بعد قليل."
 
 #. I18N: Description of “Statistics” module
 #: modules_v3/gedcom_stats/module.php:37
@@ -13622,7 +13622,7 @@ msgstr "هذا الحقل يستخدم لتغيير سجل المصدر الذي
 
 #: modules_v3/faq/help_text.php:40
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
-msgstr "هذا الحقل يتحكم في ترتيب الأسئلة الشائعة.<br><br> ليس ضرورياً إدخال الأرقام بالتسلسل. إذا تركت فراغات بين الأرقام يمكن إدخال عناصر أخرى لاحقاً. ويمكن إستخدام أرقام سالبة لإتاحة إدخال عنصر جديد قبل عنصر قائم.<br><br>إذا وجد رقم مماثل لأكثر من سؤال شائع فسيتم إظهار واحداً منها فقط."
+msgstr "هذا الحقل يتحكم في ترتيب الأسئلة الشائعة.<br><br>ليس ضرورياً إدخال الأرقام بالتسلسل. إذا تركت فراغات بين الأرقام يمكن إدخال عناصر أخرى لاحقاً. ويمكن إستخدام أرقام سالبة لإتاحة إدخال عنصر جديد قبل عنصر قائم.<br><br>إذا وجد رقم مماثل لأكثر من سؤال شائع فسيتم إظهار واحداً منها فقط."
 
 #: addmedia.php:332
 msgid "This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
@@ -13887,7 +13887,7 @@ msgstr "هذه الملاحظة قد تم تعديلها، يجب الإطلاع
 
 #: help_text.php:860
 msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-msgstr "يعتمد النص الإنجليزي:<br><br> This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual's database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual's database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
+msgstr "يعتمد النص الإنجليزي:<br><br>This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual's database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual's database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
 
 #: help_text.php:407
 msgid "This option controls whether or not to abbreviate labels like <b>Birth</b> on charts with just the first letter like <b>B</b>."
@@ -14062,7 +14062,7 @@ msgstr "هذا الخيار يتيح إضافة ملاحظة للمعلومة ا
 
 #: help_text.php:1158
 msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
-msgstr "هذا القسم يتيح إضافة إقتباس من مصدر جديد للمعلومة التي تحرر حالياً. <br><br>ويمكن فيه أيضاً إنشاء إقتباس جديد وربطه بالمعلومة."
+msgstr "هذا القسم يتيح إضافة إقتباس من مصدر جديد للمعلومة التي تحرر حالياً.<br><br>ويمكن فيه أيضاً إنشاء إقتباس جديد وربطه بالمعلومة."
 
 #: setup.php:171
 #, php-format
@@ -14834,11 +14834,11 @@ msgstr "إستخدام صور ظلية عند عدم وجود صور مفضلة"
 
 #: help_text.php:1105
 msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available Blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move Right and Move Left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
-msgstr "تسخدم هذه الأزرار لنقل المدخلات من قائمة إلى أخرى. سيتم إظهار الكتل حسب الترتيب المرغوب.<br><br> يتم ذلك بالتأشير على المدخلة المراد نقلها إلى اليمبن أو اليسار ومن ثم النقر على الزر الملائم. الأسهم المزدوجة تستخدم للنقل من أقصى اليمين إلى أقصى اليسار والعكس بينما الأسهم المفردة تستخدم للنقل من اليمين أو اليسار إلى قائمة الكتل المتاحة والعكس.<br><br>المدخلات الموجودة في قائمة الكتل المتاحة لا تنتقل بذاتها وذلك لإمكان إستخدامها أكثر من مرة. وكتلة نص HTML خير مثال على إحتمال تكرارها."
+msgstr "تسخدم هذه الأزرار لنقل المدخلات من قائمة إلى أخرى. سيتم إظهار الكتل حسب الترتيب المرغوب.<br><br>يتم ذلك بالتأشير على المدخلة المراد نقلها إلى اليمبن أو اليسار ومن ثم النقر على الزر الملائم. الأسهم المزدوجة تستخدم للنقل من أقصى اليمين إلى أقصى اليسار والعكس بينما الأسهم المفردة تستخدم للنقل من اليمين أو اليسار إلى قائمة الكتل المتاحة والعكس.<br><br>المدخلات الموجودة في قائمة الكتل المتاحة لا تنتقل بذاتها وذلك لإمكان إستخدامها أكثر من مرة. وكتلة نص HTML خير مثال على إحتمال تكرارها."
 
 #: help_text.php:1110
 msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
-msgstr "تسخدم هذه الأزرار لإعادة ترتيب المدخلات في القائمة. سيتم إظهار الكتل حسب الترتيب المرغوب.<br><br> يتم ذلك بالتأشير على المدخلة المراد نقلها إلى الأعلى أو الأسفل ومن ثم النقر على الزر الملائم."
+msgstr "تسخدم هذه الأزرار لإعادة ترتيب المدخلات في القائمة. سيتم إظهار الكتل حسب الترتيب المرغوب.<br><br>يتم ذلك بالتأشير على المدخلة المراد نقلها إلى الأعلى أو الأسفل ومن ثم النقر على الزر الملائم."
 
 #: help_text.php:398
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
@@ -14850,7 +14850,7 @@ msgstr "تستخدم هذه الخانة لإعلام مدير الموقع بس
 
 #: edit_interface.php:1767
 msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the Save button to save the changes."
-msgstr "هذه الصفحة تستخدم لإزالة أو تغيير أفراد الأسرة.<br><br> يمكن تبديل أي فرد في الأسرة  بغيره أو إزالته منها بإستخدام روابط إزالة/تغيير. <br>وعند الإنتهاء من التعديل يلزم النقر على زر الحفظ لحفظ التعديلات."
+msgstr "هذه الصفحة تستخدم لإزالة أو تغيير أفراد الأسرة.<br><br>يمكن تبديل أي فرد في الأسرة  بغيره أو إزالته منها بإستخدام روابط إزالة/تغيير.<br>وعند الإنتهاء من التعديل يلزم النقر على زر الحفظ لحفظ التعديلات."
 
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:396
 msgid "Use this value"
@@ -15260,7 +15260,7 @@ msgstr "عند إحتساب القرابات يحدد هذا الخيار ما �
 
 #: help_text.php:891
 msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
-msgstr "يعتمد النص الإنجليزي:<br><br> When set to <b>Yes</b>, the following message will appear above the input fields on the «Request new user account» page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
+msgstr "يعتمد النص الإنجليزي:<br><br>When set to <b>Yes</b>, the following message will appear above the input fields on the «Request new user account» page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
 
 #: help_text.php:1290
 msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
@@ -15483,7 +15483,7 @@ msgstr "يمكن الحد من عدد المواد الإخبارية وبذلك
 
 #: modules_v3/batch_update/plugins/married_names.php:37
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr "يمكن جعل البحث عن النساء المتزوجات أكثر سهولة من خلال تسجيل أسمائهن التي إكتسبنها ما بعد الزواج. <br> ولكن ليس كل النساء تأخذ لقب زوجها ، فيجب توخي الحذر من تقديم معلومات غير صحيحة في قاعدة البيانات الخاصة بك."
+msgstr "يمكن جعل البحث عن النساء المتزوجات أكثر سهولة من خلال تسجيل أسمائهن التي إكتسبنها ما بعد الزواج.<br>ولكن ليس كل النساء تأخذ لقب زوجها ، فيجب توخي الحذر من تقديم معلومات غير صحيحة في قاعدة البيانات الخاصة بك."
 
 #: login.php:535
 msgid "You can now login with your user name and password."
@@ -19711,7 +19711,7 @@ msgstr "…"
 #~ msgstr "لا ترسل رسائل"
 
 #~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
-#~ msgstr "يمكن ربط الوسائط لأكثر من فرد أو أسرة أو مصدر، <br><br>ويتم ذلك حين تحميل الوسائط أو من صفحة إدارة الوسائط أو من صفحات الأفراد والأسر والمصادر."
+#~ msgstr "يمكن ربط الوسائط لأكثر من فرد أو أسرة أو مصدر،<br><br>ويتم ذلك حين تحميل الوسائط أو من صفحة إدارة الوسائط أو من صفحات الأفراد والأسر والمصادر."
 
 #~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
 #~ msgstr "إدخال عنوان لما تدخله."
@@ -19846,7 +19846,7 @@ msgstr "…"
 #~ msgstr "حد ذاكرة الخادم هو %dم.ب. وحد زمن إستخدام المعالج المركزي هو %d ثانية."
 
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
-#~ msgstr "طبقة النقل الآمن (TLS) وطبقة مآخذ التوصيل الآمنة (SSL) هي بروتوكولات  تشفير بيانات الإنترنت. <br> <br> TLS 1.0 و 1.1 و 1.2 هي تطورات موحدة لـ SSL 3.0 . TLS 1.0 و 3.1 SSL هي ما يعادلها. ويتم الآن العمل على  SSL تحت الإسم الجديد  TLS. <br> <br> إذا كان خادم SMTP يتطلب بروتوكول SSL خلال تسجيل الدخول، يجب عليك تحديد <B>SSL</ B> كخيار. وإذا كان خادم SMTP يتطلب بروتوكول TLS أثناء تسجيل الدخول  فيجب عليك تحديد <B>TLS</ B> كخيار."
+#~ msgstr "طبقة النقل الآمن (TLS) وطبقة مآخذ التوصيل الآمنة (SSL) هي بروتوكولات  تشفير بيانات الإنترنت.<br><br> TLS 1.0 و 1.1 و 1.2 هي تطورات موحدة لـ SSL 3.0 . TLS 1.0 و 3.1 SSL هي ما يعادلها. ويتم الآن العمل على  SSL تحت الإسم الجديد  TLS.<br><br> إذا كان خادم SMTP يتطلب بروتوكول SSL خلال تسجيل الدخول، يجب عليك تحديد <B>SSL</ B> كخيار. وإذا كان خادم SMTP يتطلب بروتوكول TLS أثناء تسجيل الدخول  فيجب عليك تحديد <B>TLS</ B> كخيار."
 
 #~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
 #~ msgstr "إستخدام ملقم بريد SMTP لإرسال رسائل إلكترونية من <b>webtrees</b>.<br><br>هذا الخيار يتطلب نفاذ إلى خادم SMTP. وإذا أعد بـ <b>كلا</b> سيتم إستخدام خاصية PHP المدمجة لإرسال البريد."

@@ -555,7 +555,7 @@ msgstr "九世纪"
 
 #: help_text.php:555
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS Church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
-msgstr "<b> GUID </b>«在全球范围内唯一的ID»的缩写。<br><br> GUID用于定义每个可能是重复的个体，使中央机构，如家族历史中心，或是自己的服务器上运行的兼容的GEDCOM处理程序，确定它们是否是同一人无论身在何处的。家庭历史中心的目标是有家谱数据的中央存储库，并通过Web服务公开。这将使任何程序访问数据，并更新他们的数据在它<br><br>如果你不打算与其他人分享这个GEDCOM，你不需要让<b> webtrees</b>创建这些GUID，但是，这样做不用担心GEDCOM的规模越来越大。"
+msgstr "<b>GUID</b>«在全球范围内唯一的ID»的缩写。<br><br>GUID用于定义每个可能是重复的个体，使中央机构，如家族历史中心，或是自己的服务器上运行的兼容的GEDCOM处理程序，确定它们是否是同一人无论身在何处的。家庭历史中心的目标是有家谱数据的中央存储库，并通过Web服务公开。这将使任何程序访问数据，并更新他们的数据在它<br><br>如果你不打算与其他人分享这个GEDCOM，你不需要让<b> webtrees</b>创建这些GUID，但是，这样做不用担心GEDCOM的规模越来越大。"
 
 #: help_text.php:1319
 msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -571,7 +571,7 @@ msgstr "<b>请注意：</b>在世的个体的私人信息只会显示给家人�
 
 #: help_text.php:1064
 msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
-msgstr "<b> webtrees </b>允许你复制了10个事实和他们所有的细节到剪贴板。这与收集箱不同，你可以用于导出您的数据库。<br><br>你可以选择任何的事实从剪贴板复制选定的事实，对个人，家庭，媒体，源，库记录或当前正在编辑。但是，您不能复制不同的记录类型的事实。例如，你不能复制一个婚姻的事实资源或个人记录以来的婚姻其实是与家庭相关的记录。<br><br>这是非常有用的当输入类似的事实，如人口普查的事实，许多个人或家庭。"
+msgstr "<b>webtrees</b>允许你复制了10个事实和他们所有的细节到剪贴板。这与收集箱不同，你可以用于导出您的数据库。<br><br>你可以选择任何的事实从剪贴板复制选定的事实，对个人，家庭，媒体，源，库记录或当前正在编辑。但是，您不能复制不同的记录类型的事实。例如，你不能复制一个婚姻的事实资源或个人记录以来的婚姻其实是与家庭相关的记录。<br><br>这是非常有用的当输入类似的事实，如人口普查的事实，许多个人或家庭。"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:79
@@ -581,21 +581,21 @@ msgstr "<b>webtrees</b>无法连接到phpgedview数据库: %s."
 
 #: help_text.php:1181
 msgid "<b>webtrees</b> has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you."
-msgstr "<b> webtrees </b>有几个不同的联系方式。管理员决定哪些方法可以用来联系他。你能控制的方法来接触<u>你</u>。根据站点配置，上面的一些方法可能无法供你使用。"
+msgstr "<b>webtrees</b>有几个不同的联系方式。管理员决定哪些方法可以用来联系他。你能控制的方法来接触<u>你</u>。根据站点配置，上面的一些方法可能无法供你使用。"
 
 #: setup.php:251
 #, php-format
 msgid "<b>webtrees</b> needs a MySQL database, version %s or later."
-msgstr "<b> webtrees </b>需要一个MySQL数据库，版本%s或更高版本"
+msgstr "<b>webtrees</b>需要一个MySQL数据库，版本%s或更高版本"
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: help_text.php:730
 msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-msgstr "<b> webtrees </b>需要发送电子邮件，如密码提醒和网站通知。要做到这一点，它可以使用此服务器的内置的PHP邮件功能（这并不总是可用的）或外部SMTP（邮件）服务，您将需要为其提供连接的详细信息。"
+msgstr "<b>webtrees</b>需要发送电子邮件，如密码提醒和网站通知。要做到这一点，它可以使用此服务器的内置的PHP邮件功能（这并不总是可用的）或外部SMTP（邮件）服务，您将需要为其提供连接的详细信息。"
 
 #: help_text.php:774
 msgid "<b>webtrees</b> reply address"
-msgstr "<b> webtrees </b>回复地址"
+msgstr "<b>webtrees</b>回复地址"
 
 #: login.php:136
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
@@ -6149,7 +6149,7 @@ msgstr "如果需要更多的信息请联系"
 
 #: help_text.php:1503
 msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-msgstr "为获得在互联网上最佳显示,<b> webtrees</b> 使用utf - 8字符集。一些程序,例如,家谱制造商不支持导入GEDCOM文件编码在utf - 8。检查这个箱子将会把文件从<b> utf - 8 </b>到<b> ANSI(iso - 8859 - 1)</b>。<br><br>格式需要取决于你使用的程序处理你的下载文件GEDCOM。如果你不确定,请参考相关文档的程序。<br><br>注意特殊字符保持不变,你需要把文件用utf - 8编码,转换程序的方法来处理这些特殊字符被一些其他手段。咨询你的程序的制造商或作者。<br><br><a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b></b>维基百科的文章</>包含全面的信息和链接关于utf - 8。"
+msgstr "为获得在互联网上最佳显示,<b>webtrees</b> 使用utf - 8字符集。一些程序,例如,家谱制造商不支持导入GEDCOM文件编码在UTF-8。检查这个箱子将会把文件从<b>UTF-8</b>到<b> ANSI(iso - 8859 - 1)</b>。<br><br>格式需要取决于你使用的程序处理你的下载文件GEDCOM。如果你不确定,请参考相关文档的程序。<br><br>注意特殊字符保持不变,你需要把文件用UTF-8编码,转换程序的方法来处理这些特殊字符被一些其他手段。咨询你的程序的制造商或作者。<br><br><a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b></b>维基百科的文章</>包含全面的信息和链接关于utf - 8。"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:422
@@ -6792,7 +6792,7 @@ msgstr "在这里你可以选择显示地方列表的两种类型。如果设置
 
 #: help_text.php:1046
 msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
-msgstr "在这里，你可以选择出现在登录屏幕上的文本。您必须确定预先定义的文字是最合适的。<br><br>您也可以选择进入自己的自定义欢迎文字。请参考相关的帮助文本的<b>自定义欢迎文字</b>栏的详细信息。<br><br>预定义的文本有：<ul><li><b>预先定义的文本：所有用户申请用户账户的预定义的文本：</b><div class=\"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>访问这个网站是允许每一位游客有一个用户帐户。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>确认您的申请后，网站管理员将激活您的帐户。您将收到一封电子邮件时，您的申请已被批准。</div><br></li><li><b>预定义的文本：管理员审核请求用户帐户的预定义的文本：</b><div class= \"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br> 只允许 <u>授权</u>用户访问此网站。 <br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>验证您的信息后，管理员将可以批准或拒绝您的开户申请。您将收到一封电子邮件时，您的申请已被批准。</div><br></li><li><b>预先定义的文本：家庭成员可以申请用户帐户：</b><div class = \"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>这个网站只允许的<u>家庭成员</u>访问。 <br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>验证您提供的信息后，管理员将可以批准或拒绝您的请求的帐户。当您的申请被批准时，您将收到一封电子邮件。</div></li></ul>"
+msgstr "在这里，你可以选择出现在登录屏幕上的文本。您必须确定预先定义的文字是最合适的。<br><br>您也可以选择进入自己的自定义欢迎文字。请参考相关的帮助文本的<b>自定义欢迎文字</b>栏的详细信息。<br><br>预定义的文本有：<ul><li><b>预先定义的文本：所有用户申请用户账户的预定义的文本：</b><div class=\"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>访问这个网站是允许每一位游客有一个用户帐户。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>确认您的申请后，网站管理员将激活您的帐户。您将收到一封电子邮件时，您的申请已被批准。</div><br></li><li><b>预定义的文本：管理员审核请求用户帐户的预定义的文本：</b><div class= \"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>只允许 <u>授权</u>用户访问此网站。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>验证您的信息后，管理员将可以批准或拒绝您的开户申请。您将收到一封电子邮件时，您的申请已被批准。</div><br></li><li><b>预先定义的文本：家庭成员可以申请用户帐户：</b><div class = \"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>这个网站只允许的<u>家庭成员</u>访问。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>验证您提供的信息后，管理员将可以批准或拒绝您的请求的帐户。当您的申请被批准时，您将收到一封电子邮件。</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:59
 msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
@@ -7051,7 +7051,7 @@ msgstr "如果你是网站管理员,你应该检查:"
 
 #: site-php-version.php:82 site-unavailable.php:83
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
-msgstr "如果你不能自己解决问题,你可以在<a href =\"http://webtrees.net\"> webtrees.net </a>论坛寻求帮助"
+msgstr "如果你不能自己解决问题,你可以在<a href=\"http://webtrees.net\">webtrees.net</a>论坛寻求帮助"
 
 #: login.php:338
 msgid "If you didn’t request an account, you can just delete this message."
@@ -7108,7 +7108,7 @@ msgstr "如果您的服务器安全政策允许,您可以使用<b>webtrees</b>�
 #. I18N: Help text for the "Website URL" site configuration setting
 #: help_text.php:825
 msgid "If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
-msgstr "如果你的网站使用不止一个URL,如 <b>http://www.example.com/webtrees/ </b>和<b> http://webtrees.example.com/ </b>,您可以指定URL的首选。其他url的请求将被重定向到首选之一。"
+msgstr "如果你的网站使用不止一个URL,如 <b>http://www.example.com/webtrees/</b>和<b> http://webtrees.example.com/</b>,您可以指定URL的首选。其他url的请求将被重定向到首选之一。"
 
 #: library/WT/Gedcom/Tag.php:836
 msgid "Image dimensions"
@@ -8217,7 +8217,7 @@ msgstr "原文"
 
 #: help_text.php:560
 msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "许多家谱程序创建自定义标签的GEDCOM文件，<b> webtrees </b>最了解他们。当未确认的标签被发现，这个选项可以让您选择是否忽略或显示一个警告信息。"
+msgstr "许多家谱程序创建自定义标签的GEDCOM文件，<b>webtrees</b>最了解他们。当未确认的标签被发现，这个选项可以让您选择是否忽略或显示一个警告信息。"
 
 #. I18N: Help text for the “Sending server name” site configuration setting
 #: help_text.php:755
@@ -9390,7 +9390,7 @@ msgstr "不"
 #: admin_trees_manage.php:160
 #, php-format
 msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server."
-msgstr "没有发现GEDCOM文件。你需要复制文件到<b> %s </b>您的服务器上的目录。"
+msgstr "没有发现GEDCOM文件。你需要复制文件到<b>%s</b>您的服务器上的目录。"
 
 #: modules_v3/gedcom_news/module.php:93
 msgid "No News articles have been submitted."
@@ -10263,11 +10263,11 @@ msgstr "照片"
 
 #: admin_pgv_to_wt.php:63
 msgid "PhpGedView must use the same database as <b>webtrees</b>"
-msgstr "phpgedview必须使用与<b> webtrees </b>相同的数据库"
+msgstr "phpgedview必须使用与<b>webtrees</b>相同的数据库"
 
 #: admin_pgv_to_wt.php:114 help_text.php:1304
 msgid "PhpGedView to <b>webtrees</b> transfer wizard"
-msgstr "phpgedview到<b> webtrees </b>转移向导"
+msgstr "phpgedview到<b>webtrees</b>转移向导"
 
 #: admin_pgv_to_wt.php:34
 msgid "PhpGedView to webtrees transfer wizard"
@@ -10452,7 +10452,7 @@ msgstr "在 %s 里"
 
 #: help_text.php:330
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "应根据家谱的标准输入的地方。地方记录地方最具体的信息，然后再工作到最后最不明确的地方，使用逗号分隔不同的地方。你的位置信息记录在哪一级政府或教会代表水平的重要记录，该位置将被保留。<br><br>例如，将进入“盐湖城盐湖城这样的地方市，盐湖城，犹他，美国。<br><br>让我们来看看这个地方的每个部分。第一部分，“盐湖城”，是在事件发生的城市或乡镇。在一些国家，也有可能是城市或地区内的城市，重要的是要注意。在这种情况下，他们应该来城前。接下来的部分，“盐湖城”，是该县。 “犹他”是国家的，'USA'的国家。重要的是要注意每一个地方，因为家谱保存每个级别的政府。<br><br>如果未知的地方是，你应该留出空间之间的逗号。假设，在上面的例子中，你根本不知道县盐湖城。然后，您应该记录是这样的：“盐湖城，犹他，美国的。假设你只知道一个人出生在美国犹他州。您输入的信息是这样的：'，犹他，美国。 <br><br>您可以使用<b>，找到的地方</b>链接，以帮助您找到的地方，已经存在于数据库中。"
+msgstr "应根据家谱的标准输入的地方。地方记录地方最具体的信息，然后再工作到最后最不明确的地方，使用逗号分隔不同的地方。你的位置信息记录在哪一级政府或教会代表水平的重要记录，该位置将被保留。<br><br>例如，将进入“盐湖城盐湖城这样的地方市，盐湖城，犹他，美国。<br><br>让我们来看看这个地方的每个部分。第一部分，“盐湖城”，是在事件发生的城市或乡镇。在一些国家，也有可能是城市或地区内的城市，重要的是要注意。在这种情况下，他们应该来城前。接下来的部分，“盐湖城”，是该县。 “犹他”是国家的，'USA'的国家。重要的是要注意每一个地方，因为家谱保存每个级别的政府。<br><br>如果未知的地方是，你应该留出空间之间的逗号。假设，在上面的例子中，你根本不知道县盐湖城。然后，您应该记录是这样的：“盐湖城，犹他，美国的。假设你只知道一个人出生在美国犹他州。您输入的信息是这样的：'，犹他，美国。<br><br>您可以使用<b>，找到的地方</b>链接，以帮助您找到的地方，已经存在于数据库中。"
 
 #: modules_v3/random_media/module.php:130 themes/_administration/header.php:31
 #: themes/clouds/header.php:34 themes/colors/header.php:37
@@ -11783,7 +11783,7 @@ msgstr "设置<b>是</b>用RIN数代替GEDCOM ID当要求配置文件，用户�
 
 #: help_text.php:855
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
-msgstr "设置此选项<b>显示</b>显示LDS条例图状态码。<ul><li><b> B </b>洗礼</li><li><b> E </b>赋予</li><li><b>S</b>未知配偶</li><li><b> P </b>未知父母</li></ul>一个人所有的例图显示在他们的名字后会有<b>BESP</b>。丢失的例图在相应的字母代码处显示<b> _ </b>。例如，<b> BE__ </b>显示丢失<b>S</b>及<b> P </b>例图。"
+msgstr "设置此选项<b>显示</b>显示LDS条例图状态码。<ul><li><b>B</b>洗礼</li><li><b>E</b>赋予</li><li><b>S</b>未知配偶</li><li><b>P</b>未知父母</li></ul>一个人所有的例图显示在他们的名字后会有<b>BESP</b>。丢失的例图在相应的字母代码处显示<b>_</b>。例如，<b>BE__</b>显示丢失<b>S</b>及<b>P</b>例图。"
 
 #: help_text.php:850
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
@@ -11791,7 +11791,7 @@ msgstr "此设置<b>是</b>将显示个人和家庭的资源链接，点击让�
 
 #: setup.php:92
 msgid "Setup wizard for <b>webtrees</b>"
-msgstr "<b> webtrees </b>  安装向导"
+msgstr "<b>webtrees</b> 安装向导"
 
 #: library/WT/Date/French.php:126
 msgid "Sextidi"
@@ -13038,7 +13038,7 @@ msgstr "媒体查看器可以显示一个链接，点击后，将下载的媒体
 
 #: help_text.php:1305
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
-msgstr "PGV到<b> webtrees </b>向导是一个协助管理员从PGV安装到一个新的<b> webtrees </b>自动化的过程。它将所有的PGV GEDCOM和其他数据库信息直接输入到你的新<b> webtrees </b>数据库。下列要求："
+msgstr "PGV到<b>webtrees</b>向导是一个协助管理员从PGV安装到一个新的<b>webtrees</b>自动化的过程。它将所有的PGV GEDCOM和其他数据库信息直接输入到你的新<b>webtrees</b>数据库。下列要求："
 
 #: save.php:262
 #, php-format
@@ -13063,12 +13063,12 @@ msgstr "收集箱，您可以从这个家谱的提取物（“收集箱”），
 
 #: help_text.php:1315
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
-msgstr "当前<b> webtrees </b>管理员用户名必须与现有的PGV管理员用户名相同"
+msgstr "当前<b>webtrees</b>管理员用户名必须与现有的PGV管理员用户名相同"
 
 #: login.php:510
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
-msgstr "用户 <b> %s </b>数据检查。"
+msgstr "用户<b>%s</b>数据检查。"
 
 #: site-unavailable.php:72
 msgid "The database reported the following error message:"
@@ -13264,7 +13264,7 @@ msgstr "姓是用斜线分隔：<%s>John Paul /Smith/<%s>"
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: help_text.php:725
 msgid "The time in seconds that a <b>webtrees</b> session remains active before requiring a login.  The default is 7200, which is 2 hours."
-msgstr "一个<b> webtrees </b>会话仍然活动不需要登录的时间。默认值是7200秒，就是2小时。"
+msgstr "一个<b>webtrees</b>会话仍然活动不需要登录的时间。默认值是7200秒，就是2小时。"
 
 #: login.php:296
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13373,7 +13373,7 @@ msgstr "第十一月"
 
 #: admin.php:58
 msgid "These pages provide access to all the configuration settings and management tools for this <b>webtrees</b> site."
-msgstr "这些网页提供本<b> webtrees </b>网站的所有配置设置和管理工具的访问。"
+msgstr "这些网页提供本<b>webtrees</b>网站的所有配置设置和管理工具的访问。"
 
 #. I18N: do not translate the #keywords#
 #: modules_v3/html/module.php:159
@@ -13521,7 +13521,7 @@ msgstr "这是私人信息,不能显示。"
 
 #: help_text.php:1095
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "该输入框让你改变日历的年份。在框里输入年份，按下<b>输入</b>更改日历年份。<br><br><b>高级功能</b>按年显示<b></b><dl><dt><b>一年以上</b></dt><dd>你可以查询日期范围为一年内。<br><br>年范围<u>包含</u>。表示日期范围包含去年年一月至去年十二月三十一号。下面是一年范围的几个例子：<br><br><b> 1992-5 </b>所有事件从1992到1995。<br><b> 1972-89 </b>所有事件从1972到1989。<br><b> 1610-759 </b>所有事件从1610到1759。<br><b> 1880-1905 </b>所有事件从1880到1905。<br><b> 880-1105 </b>所有事件从880到1105。<br><br>看到所有的事件在十年或一个世纪了，你可以使用<b>？</b>在最后一位的地方。例如，<b> 197？</b>所有事件从1970到1979或<b> 16？？</b>所有事件从1600到1699。<br><br>选择范围的年会改变日历年份。</dd></dl>"
+msgstr "该输入框让你改变日历的年份。在框里输入年份，按下<b>输入</b>更改日历年份。<br><br><b>高级功能</b>按年显示<b></b><dl><dt><b>一年以上</b></dt><dd>你可以查询日期范围为一年内。<br><br>年范围<u>包含</u>。表示日期范围包含去年年一月至去年十二月三十一号。下面是一年范围的几个例子：<br><br><b>1992-5</b>所有事件从1992到1995。<br><b>1972-89</b>所有事件从1972到1989。<br><b>1610-759</b>所有事件从1610到1759。<br><b>1880-1905</b>所有事件从1880到1905。<br><b>880-1105</b>所有事件从880到1105。<br><br>看到所有的事件在十年或一个世纪了，你可以使用<b>？</b>在最后一位的地方。例如，<b> 197？</b>所有事件从1970到1979或<b> 16？？</b>所有事件从1600到1699。<br><br>选择范围的年会改变日历年份。</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
 msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
@@ -13737,7 +13737,7 @@ msgstr "此选项控制是否将附源引用的事实在记事和源标签在个
 
 #: help_text.php:407
 msgid "This option controls whether or not to abbreviate labels like <b>Birth</b> on charts with just the first letter like <b>B</b>."
-msgstr "此选项控制是否缩写标签如<b>出生</b>在图表只是第一字母像<b> B </b>。"
+msgstr "此选项控制是否缩写标签如<b>出生</b>在图表只是第一字母像<b>B</b>。"
 
 #: help_text.php:496
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
@@ -13838,7 +13838,7 @@ msgstr "这个页面允许你绕过通常的形式，直接编辑基础数据。
 
 #: help_text.php:1325
 msgid "This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server’s software, as it relates to PHP and <b>webtrees</b>, can be viewed."
-msgstr "本页提供了大量有关服务器上<b> webtrees </b>支持。关于服务器的软件很多配置细节，因为这涉及到PHP和<b> webtrees </b>可以被查看。"
+msgstr "本页提供了大量有关服务器上<b>webtrees</b>支持。关于服务器的软件很多配置细节，因为这涉及到PHP和<b>webtrees</b>可以被查看。"
 
 #: help_text.php:1171
 msgid "This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent."
@@ -14665,7 +14665,7 @@ msgstr "使用轮廓"
 
 #: help_text.php:1105
 msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available Blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move Right and Move Left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
-msgstr "使用这些按钮从一个列表移动目条到另一个。<br><br>选中要移动的条目，然后点击一个按箭头方向按钮来移动或复制条目。使用<b> &raquo </b>及<b> &laquo </b>按钮移动将高亮显示的条目从左边到右边的列表或反之亦然。使用<b> &gt </b>及<b> &lt </b>按钮移动选中的可用块列表移动到右侧或左侧列表。<br><br>无论你所做的与移动右向左移动按钮，可用块列表中的条目不改变。这是因为同一块可以在同一页上多次出现。HTML块是你可希望这样做的一个好例子。"
+msgstr "使用这些按钮从一个列表移动目条到另一个。<br><br>选中要移动的条目，然后点击一个按箭头方向按钮来移动或复制条目。使用<b>&raquo;</b>及<b>&laquo;</b>按钮移动将高亮显示的条目从左边到右边的列表或反之亦然。使用<b>&gt;</b>及<b>&lt;</b>按钮移动选中的可用块列表移动到右侧或左侧列表。<br><br>无论你所做的与移动右向左移动按钮，可用块列表中的条目不改变。这是因为同一块可以在同一页上多次出现。HTML块是你可希望这样做的一个好例子。"
 
 #: help_text.php:1110
 msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
@@ -14989,12 +14989,12 @@ msgstr ""
 #: login.php:356
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
-msgstr "现在我们将发送一封确认邮件到地址<b> %s </b>。你必须遵循的确认电子邮件中说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br><br>在你按照指示的确认电子邮件中，还必须管理员批准您的帐户请求才可以使用。<br><br>登录到这个网站，你需要知道你的用户名密码。"
+msgstr "现在我们将发送一封确认邮件到地址<b>%s</b>。你必须遵循的确认电子邮件中说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br><br>在你按照指示的确认电子邮件中，还必须管理员批准您的帐户请求才可以使用。<br><br>登录到这个网站，你需要知道你的用户名密码。"
 
 #: login.php:358
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
-msgstr "现在我们将发送一封确认邮件到地址<b> %s </b>。你必须在确认电子邮件说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br><br>在你按照电子邮件指示的确认后，您可以登录。登录到该网站，你需要知道你的用户名和密码。"
+msgstr "现在我们将发送一封确认邮件到地址<b>%s</b>。你必须在确认电子邮件说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br><br>在你按照电子邮件指示的确认后，您可以登录。登录到该网站，你需要知道你的用户名和密码。"
 
 #. I18N: gedcom tag _URL
 #: library/WT/Gedcom/Tag.php:823
@@ -15047,27 +15047,27 @@ msgstr "西撒哈拉"
 
 #: help_text.php:526
 msgid "When a new family record is added online in <b>webtrees</b>, a new ID for that family will be generated automatically. The family ID will have this prefix."
-msgstr "当一个新的家庭的记录是<b> webtrees </b>在线添加，那个家庭会自动生成ID。家庭ID将有此前缀。"
+msgstr "当一个新的家庭的记录是<b>webtrees</b>在线添加，那个家庭会自动生成ID。家庭ID将有此前缀。"
 
 #: help_text.php:536
 msgid "When a new individual record is added online in <b>webtrees</b>, a new ID for that individual will be generated automatically. The individual ID will have this prefix."
-msgstr "新的个人记录是<b> webtrees </b>在线添加，个人的ID将自动生成。个人ID将有此前缀。"
+msgstr "新的个人记录是<b>webtrees</b>在线添加，个人的ID将自动生成。个人ID将有此前缀。"
 
 #: help_text.php:663
 msgid "When a new media record is added online in <b>webtrees</b>, a new ID for that media will be generated automatically. The media ID will have this prefix."
-msgstr "如果一个新的媒体记录是<b> webtrees </b>在线添加，媒体ID会自动生成。媒体ID将有此前缀。"
+msgstr "如果一个新的媒体记录是<b>webtrees</b>在线添加，媒体ID会自动生成。媒体ID将有此前缀。"
 
 #: help_text.php:695
 msgid "When a new note record is added online in <b>webtrees</b>, a new ID for that note will be generated automatically. The note ID will have this prefix."
-msgstr "如果一个新的事件记录是<b> webtrees </b>在线添加，一个新的事件ID将自动生成。事件ID将此前缀。"
+msgstr "如果一个新的事件记录是<b>webtrees</b>在线添加，一个新的事件ID将自动生成。事件ID将此前缀。"
 
 #: help_text.php:810
 msgid "When a new repository record is added online in <b>webtrees</b>, a new ID for that repository will be generated automatically. The repository ID will have this prefix."
-msgstr "如果一个新的库记录是<b> webtrees </b>在线添加，该库将自动生成ID。库ID将有此前缀。"
+msgstr "如果一个新的库记录是<b>webtrees</b>在线添加，该库将自动生成ID。库ID将有此前缀。"
 
 #: help_text.php:901
 msgid "When a new source record is added online in <b>webtrees</b>, a new ID for that source will be generated automatically.  The source ID will have this prefix."
-msgstr "当一个新的资源的记录是<b> webtrees </b>在线添加，那么资源ID将自动生成。资源ID将有此前缀。"
+msgstr "当一个新的资源的记录是<b>webtrees</b>在线添加，那么资源ID将自动生成。资源ID将有此前缀。"
 
 #: help_text.php:1477
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
