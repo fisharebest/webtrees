@@ -67,7 +67,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			</td>
 		</tr>
 		<?php
-		foreach ($this->get_facts(null, true) as $fact) {
+		foreach ($this->get_facts() as $fact) {
 			if ($fact->getTag() == 'SOUR') {
 				print_main_sources($fact, 1);
 				} else {
@@ -123,6 +123,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 					$this->facts[] = $fact;
 				}
 			}
+			sort_facts($this->facts);
 		}
 		return $this->facts;
 	}
