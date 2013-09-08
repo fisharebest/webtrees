@@ -22,6 +22,8 @@ JS_FILES=$(shell find $(BUILD_DIR) -name "*.js")
 # Files to mirror
 CSS_LTR_FILES=$(shell find . -name "*-ltr.css")
 CSS_RTL_FILES=$(patsubst %-ltr.css,%-rtl.css,$(CSS_LTR_FILES))
+PNG_LTR_FILES=$(shell find . -name "*-ltr.png")
+PNG_RTL_FILES=$(patsubst %-ltr.css,%-rtl.png,$(PNG_LTR_FILES))
 
 # Use maximum compression
 GZIP=gzip -9
@@ -31,7 +33,7 @@ GZIP=gzip -9
 ################################################################################
 # Update 
 ################################################################################
-update: $(MO_FILES) $(CSS_RTL_FILES)
+update: $(MO_FILES) $(CSS_RTL_FILES) $(PNG_RTL_FILES)
 
 ################################################################################
 # Check for PHP syntax errors
@@ -103,3 +105,9 @@ $(PO_FILES): language/webtrees.pot
 ################################################################################
 %-rtl.css: %-ltr.css
 	java -jar $(CLOSURE_CSS) --output-orientation RTL --pretty-print -o $@ $<
+
+################################################################################
+# Automatically generate RTL images from LTR images
+################################################################################
+%-rtl.png: %-ltr.png
+	convert $< -flop $@
