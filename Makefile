@@ -19,6 +19,9 @@ HTML_COMPRESSION=$(BUILD_DIR)/htmlcompressor-1.5.3.jar
 # Files to minify
 CSS_FILES=$(shell find $(BUILD_DIR) -name "*.css")
 JS_FILES=$(shell find $(BUILD_DIR) -name "*.js")
+# Files to mirror
+CSS_LTR_FILES=$(shell find . -name "*-ltr.css")
+CSS_RTL_FILES=$(patsubst %-ltr.css,%-rtl.css,$(CSS_LTR_FILES))
 
 # Use maximum compression
 GZIP=gzip -9
@@ -98,8 +101,5 @@ $(PO_FILES): language/webtrees.pot
 ################################################################################
 # Automatically generate RTL stylesheets from LTR stylesheets
 ################################################################################
-CSS_LTR_FILES=$(shell find . -name "*-ltr.css")
-CSS_RTL_FILES=$(patsubst %-ltr.css,%-rtl.css,$(CSS_LTR_FILES))
-
 %-rtl.css: %-ltr.css
 	java -jar $(CLOSURE_CSS) --output-orientation RTL --pretty-print -o $@ $<
