@@ -616,7 +616,7 @@ case 'add_child_to_individual_action':
 	// Link the family to the child
 	$family->createFact('1 CHIL @' . $child->getXref() . '@', true);
 
-	if (safe_POST('goto')=='new') {
+	if (WT_Filter::post('goto')=='new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $child->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -688,7 +688,7 @@ case 'add_parent_to_individual_action':
 		$family->createFact('1 HUSB @' . $parent->getXref() . '@', true);
 	}
 
-	if (safe_POST('goto')=='new') {
+	if (WT_Filter::post('goto')=='new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $parent->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
