@@ -978,7 +978,7 @@ function addNewName() {
 	}
 
 	foreach (array_unique($tags) as $tag) {
-		$TAG=WT_Filter::post($tag, WT_REGEX_TAG);
+		$TAG=WT_Filter::post($tag);
 		if ($TAG) {
 			$gedrec.="\n2 {$tag} {$TAG}";
 		}
