@@ -755,7 +755,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 					var date         = locations[i][3];                         // Date of event or fact
 					var info         = ''//locations[i][4];                     // info on occupation, or
 					var name         = locations[i][5];                         // Persons name
-					var address      = "!"+locations[i][6];                         // Address of event or fact
+					var address      = locations[i][6];                         // Address of event or fact
 					var index        = locations[i][7];                         // index
 					var tab          = locations[i][8];                         // tab index
 					var placed       = locations[i][9];                         // Yes indicates multitab item
