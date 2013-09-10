@@ -188,9 +188,9 @@ if ($changed_gedcoms) {
 		foreach ($record->getFacts() as $fact) {
 			if ($fact->getTag() != 'CHAN') {
 				if ($fact->isNew()) {
-					$output .= '<div class="new">' .$fact->getLabel() . '</div>';
+					$output .= '<div class="new" title="' . strip_tags($fact->summary()) . '">' .$fact->getLabel() . '</div>';
 				} elseif ($fact->isOld()) {
-					$output .= '<div class="old">' .$fact->getLabel() . '</div>';
+					$output .= '<div class="old" title="' . strip_tags($fact->summary()) . '">' .$fact->getLabel() . '</div>';
 				}
 			}
 		}
