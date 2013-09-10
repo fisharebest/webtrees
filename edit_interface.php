@@ -2114,7 +2114,7 @@ case 'changefamily_update':
 	foreach ($new_children as $new_child) {
 		if ($new_child && !in_array($new_child, $old_children)) {
 			// Add new FAMC link
-			$new_child->createFact('1 FAMS @' . $family->getXref() . '@', !$keep_chan);
+			$new_child->createFact('1 FAMC @' . $family->getXref() . '@', !$keep_chan);
 			// Add new CHIL link
 			$family->createFact('1 CHIL @' . $new_child->getXref() . '@', !$keep_chan);
 		}
