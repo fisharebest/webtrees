@@ -19,89 +19,87 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#googlemap_left{margin-top:-14px;}
-div.infowindow {max-height:260px; overflow-x:hidden;}
+#googlemap_left{ margin-top:-14px; }
+div.infowindow { max-height:260px; overflow-x:hidden; }
 
-#iwhead {text-align:center; font-size:10px; white-space:normal; margin-right:0px; margin-left:-2px; margin-top:-1px; background:#ffffff; border-top:1px solid #bbbbbb; border-bottom:1px solid #bbbbbb; border-left:0px solid #bbbbbb; border-right:0px solid #bbbbbb; padding-left:.2em; padding-right:.2em; padding-top:.3em; padding-bottom:.3em; width:300px;}
-#iwhead a:hover {color:red;}
-#iwcontent {background-color:#eeeeee; border:1px solid #bbbbbb; margin-right:0em;}
-#iwcontent a {color:black;}
-#iwhead a {color:#0000cc;}
-#iwcontent a:hover {color:red;}
+#iwhead { text-align:center; font-size:10px; white-space:normal; margin-right:0; margin-left:-2px; margin-top:-1px; background:#ffffff; border-top:1px solid #bbbbbb; border-bottom:1px solid #bbbbbb; border-left:0 solid #bbbbbb; border-right:0 solid #bbbbbb; padding-left:.2em; padding-right:.2em; padding-top:.3em; padding-bottom:.3em; width:300px; }
+#iwhead a:hover { color:red; }
+#iwcontent { border:1px solid #bbbbbb; margin-right:0; }
+#iwcontent a { color:black; }
+#iwhead a { color:#0000cc; }
+#iwcontent a:hover { color:red; }
 
-#gmtabs {background-color:#eeeeee; border:0px solid red; margin-top:0em; margin-left:-2px; font-size:11px; margin-right:4.5em; width:247px;}
-#gmtabs ul {margin-left:-2px; border:0px solid red; border-bottom:1px solid #aaaaaa;}
+#gmtabs { background-color:#eeeeee; }
+#gmtabs ul { border:0; }
 
-h4 {margin-bottom:-0.1em;}
+h4 { margin-bottom:-0.1em; }
 
-#txt {width:300px; margin-top:-8px; margin-left:-8px; background:#ffffcc; text-align:center;}
-#pano {width:297px; height:216px; margin-left:0px; margin-top:0em; border-top:1px solid #aaaaaa;}
+#txt { width:300px; margin-top:-8px; margin-left:-8px; background:#ffffcc; text-align:center; }
+#pano { width:297px; height:216px; margin-left:0; margin-top:0; border-top:1px solid #aaaaaa; }
 
-.highlt_img {background-color:#eeeeee; text-align:center;}
-.highlt_img img{float:none; border:none;}
+.highlt_img { background-color:#eeeeee; text-align:center; }
+.highlt_img img{ float:none; border:none; }
 
 /* root element for tabs */
-ul.tabs {margin:0 !important; padding:0; padding-left:2px; padding-top:2px; height:20px; border:1px solid #666; background:#ddeeff; width:296px;}
+ul.tabs { margin:0 !important; padding:0; padding-left:2px; padding-top:2px; height:20px; border:1px solid #666; background:#ddeeff; width:296px; }
 /* single tab */
-ul.tabs li {float:left; padding:0; margin:0; margin-left:2px; list-style-type:none;}
+ul.tabs li { float:left; padding:0; margin:0; margin-left:2px; list-style-type:none; }
 /* link inside the tab. uses a background image */
-ul.tabs a {float:left; font-size:13px; display:block; /* padding:5px 30px; */ padding:0px 10px; text-decoration:none; border:1px solid #666; border-bottom:0px; height:18px; background-color:#efefef; color:#777; margin-right:2px; position:relative; top:1px; outline:0; border-radius:4px 4px 0 0;}
-ul.tabs a:hover { background-color:#ffffff; color:#333;} 
+ul.tabs a { float:left; font-size:13px; display:block; /* padding:5px 30px; */ padding:0 10px; text-decoration:none; border:1px solid #666; border-bottom:0; height:18px; background-color:#efefef; color:#777; margin-right:2px; position:relative; top:1px; outline:0; border-radius:4px 4px 0 0; }
+ul.tabs a:hover { background-color:#ffffff; color:#333; } 
 /* selected tab */
-ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#000; cursor:default;}
+ul.tabs a.current { background-color:#fff; border-bottom:1px solid #ddd; color:#000; cursor:default; }
 /* tabs */
-#EV {background:#ffffff; padding-bottom:1px;}
-#SV {background:#cccccc; padding-bottom:0px;}
-#PH {background:#cccccc; padding-bottom:0px;}
-#SP {background:#cccccc; padding-bottom:0px;}
+#EV { background:#ffffff; padding-bottom:1px; }
+#SV { background:#cccccc; padding-bottom:0; }
 /* tab panes */
-#pane1 {display:block;}
-#pane2 {display:none;}
-#pane3 {display:none;}
-#pane3_text, #pane4_text {margin-left:10px;}
+#pane1 { display:block; }
+#pane2 { display:none; }
+#pane3 { display:none; }
+#pane3_text, #pane4_text { margin-left:10px; }
 
 /* view_type */
-#view_type {display:block; margin-top:-12px;}
-#view_type td {width:360px;}
-#view_type form{width:360px; text-align:center;}
+#view_type { display:block; margin-top:-12px; }
+#view_type td { width:360px; }
+#view_type form{ width:360px; text-align:center; }
 
 /* Elements To be defined later (leave as dislay:none; for now) */ 
 /* sidebar */
-#s_bar {display:none; width:370px; border:1px solid black; margin-bottom:1em;}
-#s_bar td{padding-left:5px; width:370px; text-decoration:none; color:#4444ff; background:#aabbd8;}
+#s_bar { display:none; width:370px; border:1px solid black; margin-bottom:1em; }
+#s_bar td{ padding-left:5px; width:370px; text-decoration:none; color:#4444ff; background:#aabbd8; }
 
 /* TODO: use the same markup as the icons on the facts/events tab? */
-.icon_BAPM, .icon_CHR, .icon_RETI, .icon_CENS, .icon_BURI, .icon_CREM, .icon__MILI, .icon_RESI, .icon_DEAT, .icon_OCCU, .icon_BIRT {display:block; background:url('../images/css_sprite_facts.png') no-repeat;}
+.icon_BAPM, .icon_CHR, .icon_RETI, .icon_CENS, .icon_BURI, .icon_CREM, .icon__MILI, .icon_RESI, .icon_DEAT, .icon_OCCU, .icon_BIRT { display:block; background:url('../images/css_sprite_facts.png') no-repeat; }
 .icon_BAPM,
-.icon_CHR   {background-position:-0px -0px; width:60px; height:60px;}
-.icon_RETI  {background-position:-60px -0px; width:60px; height:60px;}
-.icon_CENS  {background-position:-120px -0px; width:60px; height:60px;}
+.icon_CHR   { background-position:-0px -0px; width:60px; height:60px; }
+.icon_RETI  { background-position:-60px -0px; width:60px; height:60px; }
+.icon_CENS  { background-position:-120px -0px; width:60px; height:60px; }
 .icon_CREM,
-.icon_BURI  {background-position:-0px -60px; width:60px; height:60px;}
-.icon__MILI {background-position:-60px -60px; width:60px; height:60px;}
-.icon_RESI  {background-position:-120px -60px; width:60px; height:60px;}
-.icon_DEAT  {background-position:-0px -120px; width:60px; height:60px;}
-.icon_OCCU  {background-position:-60px -120px; width:60px; height:60px;}
-.icon_BIRT  {background-position:-120px -120px; width:60px; height:60px;}
+.icon_BURI  { background-position:-0px -60px; width:60px; height:60px; }
+.icon__MILI { background-position:-60px -60px; width:60px; height:60px; }
+.icon_RESI  { background-position:-120px -60px; width:60px; height:60px; }
+.icon_DEAT  { background-position:-0px -120px; width:60px; height:60px; }
+.icon_OCCU  { background-position:-60px -120px; width:60px; height:60px; }
+.icon_BIRT  { background-position:-120px -120px; width:60px; height:60px; }
 
 /* places_edit */
-#gname {vertical-align:middle; margin-top:0px; white-space:pre-wrap; width:200px; height:60px;}
-#namelink {padding-bottom:5px;}
-#iwcontent_edit {background-color:#eeeeee; border:1px solid #bbbbbb; height:60px; margin-right:0em;}
-#iwcontent_edit a {color:black;}
-#iwcontent_edit a:hover {color:red;}
-.optionbox #gname{white-space:normal;}
+#gname { vertical-align:middle; margin-top:0; white-space:pre-wrap; width:200px; height:60px; }
+#namelink { padding-bottom:5px; }
+#iwcontent_edit { background-color:#eeeeee; border:1px solid #bbbbbb; height:60px; margin-right:0; }
+#iwcontent_edit a { color:black; }
+#iwcontent_edit a:hover { color:red; }
+.optionbox #gname{ white-space:normal; }
 
 /* googlemap_style */
-#map_type {margin:0; padding:0; font-family:Arial; font-size:10px; list-style:none;}
-#map_type li {display:block; width:70px; text-align:center; padding:2px; border:1px solid black; cursor:pointer; float:left; margin-left:2px;}
-#map_type li.non_active {background:white; color:black; font-weight:normal;}
-#map_type li.active {background:gray; color:white; font-weight:bold;}
-#map_type li:hover {background:#ddd;}
-#googlemap_left {margin-top:-14px !important;}
+#map_type { margin:0; padding:0; font-family:Arial; font-size:10px; list-style:none; }
+#map_type li { display:block; width:70px; text-align:center; padding:2px; border:1px solid black; cursor:pointer; float:left; margin-left:2px; }
+#map_type li.non_active { background:white; color:black; font-weight:normal; }
+#map_type li.active { background:gray; color:white; font-weight:bold; }
+#map_type li:hover { background:#ddd; }
+#googlemap_left { margin-top:-14px !important; }
 
-#side_bar .gallery img, .iwstyle .gallery img, .highlt_img .gallery img {float:left;margin:0 4px 0 0;height:50px;width:auto;max-width:50px;}
-html[dir="rtl"] #side_bar .gallery img, html[dir="rtl"] .iwstyle .gallery img, html[dir="rtl"] .highlt_img .gallery img {float:right;margin:0 0 0 4px;}
-#side_bar .icon-silhouette-M, #side_bar .icon-silhouette-F, #side_bar .icon-silhouette-U, .iwstyle .icon-silhouette-M, .iwstyle .icon-silhouette-F, .iwstyle .icon-silhouette-U {float:left;}
-html[dir="rtl"] #side_bar .icon-silhouette-M, html[dir="rtl"] #side_bar .icon-silhouette-F, html[dir="rtl"] #side_bar .icon-silhouette-U, html[dir="rtl"] .iwstyle .icon-silhouette-M, html[dir="rtl"] .iwstyle .icon-silhouette-F, html[dir="rtl"] .iwstyle .icon-silhouette-U  {float:right;}
-#pedigreemap_chart {margin:20px;}
+#side_bar .gallery img, .iwstyle .gallery img, .highlt_img .gallery img { float:left;margin:0 4px 0 0;height:50px;width:auto;max-width:50px; }
+html[dir="rtl"] #side_bar .gallery img, html[dir="rtl"] .iwstyle .gallery img, html[dir="rtl"] .highlt_img .gallery img { float:right;margin:0 0 0 4px; }
+#side_bar .icon-silhouette-M, #side_bar .icon-silhouette-F, #side_bar .icon-silhouette-U, .iwstyle .icon-silhouette-M, .iwstyle .icon-silhouette-F, .iwstyle .icon-silhouette-U { float:left; }
+html[dir="rtl"] #side_bar .icon-silhouette-M, html[dir="rtl"] #side_bar .icon-silhouette-F, html[dir="rtl"] #side_bar .icon-silhouette-U, html[dir="rtl"] .iwstyle .icon-silhouette-M, html[dir="rtl"] .iwstyle .icon-silhouette-F, html[dir="rtl"] .iwstyle .icon-silhouette-U  { float:right; }
+#pedigreemap_chart { margin:20px; }
