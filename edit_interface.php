@@ -84,8 +84,8 @@ case 'editraw':
 		<h4>
 			<?php echo $controller->getPageTitle(); ?>
 			<?php echo help_link('edit_edit_raw'); ?>
-			<?php print_specialchar_link('gedcom'); ?>
 		</h4>
+		<pre>     <?php echo '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE; ?></pre>
 		<form method="post" action="edit_interface.php">
 			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="updateraw">
