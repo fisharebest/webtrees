@@ -98,7 +98,7 @@ case 'editraw':
 							<?php echo $fact->summary(); ?>
 						</div>
 						<input type="hidden" name="fact_id[]" value="<?php echo $fact->getFactId(); ?>">
-						<textarea name="fact[]" dir="ltr" rows="<?php echo preg_match_all('/\n/', $fact->getGedcom(), $dummy_parameter_for_php53); ?>"><?php echo WT_Filter::escapeHtml($fact->getGedcom()); ?></textarea>
+						<textarea name="fact[]" dir="ltr" rows="<?php echo preg_match_all('/\n/', $fact->getGedcom(), $dummy_parameter_for_php53); ?>" style="width:100%;"><?php echo WT_Filter::escapeHtml($fact->getGedcom()); ?></textarea>
 					</li>
 					<?php } ?>
 				<?php } ?>
@@ -107,7 +107,7 @@ case 'editraw':
 						<b><i><?php echo WT_I18N::translate('Add a fact'); ?><i></b>
 					</div>
 					<input type="hidden" name="fact_id[]" value="">
-					<textarea name="fact[]" dir="ltr" rows="2"></textarea>
+					<textarea name="fact[]" dir="ltr" rows="2" style="width:100%;"></textarea>
 				</li>
 			</ul>
 			<p id="save-cancel">
