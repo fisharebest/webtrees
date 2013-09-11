@@ -60,20 +60,6 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		ob_start();
 		echo '<table class="facts_table">';
-		if (WT_USER_GEDCOM_ADMIN && $this->get_facts()) {
-			?>
-			<tr>
-				<td colspan="2" class="descriptionbox rela">
-					<span>
-					<a href="#" onclick="reorder_media('<?php echo $controller->record->getXref(); ?>'); return false;">
-						<i class="icon-media-shuffle"></i>
-						<?php echo WT_I18N::translate('Re-order media'); ?>
-						</a>
-					</span>
-				</td>
-			</tr>
-			<?php
-		}
 		foreach ($this->get_facts() as $fact) {
 			if ($fact->getTag() == 'OBJE') {
 				print_main_media($fact, 1);
