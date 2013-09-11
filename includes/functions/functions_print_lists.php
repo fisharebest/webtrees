@@ -1830,7 +1830,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	switch ($sort_by) {
 	case 'anniv':
 		uasort($filtered_events, function($x, $y) {
-			return WT_Date::compare($x->getDate(), $y->getDate());
+			return WT_Date::compare($y->getDate(), $x->getDate()); // most recent first
 		});
 		break;
 	case 'alpha':
