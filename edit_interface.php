@@ -509,8 +509,12 @@ case 'add_child_to_family_action':
 	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
 	$PEDI      = WT_Filter::post('PEDI');
 	$keep_chan = WT_Filter::postBool('keep_chan');
+	$glevels   = WT_Filter::postArray('glevels', '[0-9]');
+	$tag       = WT_Filter::postArray('tag', WT_REGEX_TAG);
+	$text      = WT_Filter::postArray('text');
+	$islink    = WT_Filter::postArray('islink', '[01]');
 
-	$family = WT_Family::getInstance($xref);
+	$family    = WT_Family::getInstance($xref);
 	check_record_access($family);
 
 	$controller->pageHeader();
@@ -574,10 +578,14 @@ case 'add_child_to_individual':
 	break;
 
 case 'add_child_to_individual_action':
-	$xref = WT_Filter::post('xref', WT_REGEX_XREF);
-	$PEDI = WT_Filter::post('PEDI');
+	$xref    = WT_Filter::post('xref', WT_REGEX_XREF);
+	$PEDI    = WT_Filter::post('PEDI');
+	$glevels = WT_Filter::postArray('glevels', '[0-9]');
+	$tag     = WT_Filter::postArray('tag', WT_REGEX_TAG);
+	$text    = WT_Filter::postArray('text');
+	$islink  = WT_Filter::postArray('islink', '[01]');
 
-	$person = WT_Individual::getInstance($xref);
+	$person  = WT_Individual::getInstance($xref);
 	check_record_access($person);
 
 	$controller->pageHeader();
@@ -646,8 +654,12 @@ case 'add_parent_to_individual':
 	break;
 
 case 'add_parent_to_individual_action':
-	$xref = WT_Filter::post('xref', WT_REGEX_XREF);
-	$PEDI = WT_Filter::post('PEDI');
+	$xref    = WT_Filter::post('xref', WT_REGEX_XREF);
+	$PEDI    = WT_Filter::post('PEDI');
+	$glevels = WT_Filter::postArray('glevels', '[0-9]');
+	$tag     = WT_Filter::postArray('tag', WT_REGEX_TAG);
+	$text    = WT_Filter::postArray('text');
+	$islink  = WT_Filter::postArray('islink', '[01]');
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -708,6 +720,11 @@ case 'add_unlinked_indi':
 	break;
 
 case 'add_unlinked_indi_action':
+	$glevels = WT_Filter::postArray('glevels', '[0-9]');
+	$tag     = WT_Filter::postArray('tag', WT_REGEX_TAG);
+	$text    = WT_Filter::postArray('text');
+	$islink  = WT_Filter::postArray('islink', '[01]');
+
 	$controller
 		->requireManagerLogin()
 		->pageHeader();
@@ -759,10 +776,14 @@ case 'add_spouse_to_individual':
 	break;
 
 case 'add_spouse_to_individual_action':
-	$xref  = WT_Filter::post('xref'); // Add a spouse to this individual
-	$sex   = WT_Filter::post('SEX', '[MFU]', 'U');
+	$xref    = WT_Filter::post('xref'); // Add a spouse to this individual
+	$sex     = WT_Filter::post('SEX', '[MFU]', 'U');
+	$glevels = WT_Filter::postArray('glevels', '[0-9]');
+	$tag     = WT_Filter::postArray('tag', WT_REGEX_TAG);
+	$text    = WT_Filter::postArray('text');
+	$islink  = WT_Filter::postArray('islink', '[01]');
 
-	$person = WT_Individual::getInstance($xref);
+	$person  = WT_Individual::getInstance($xref);
 	check_record_access($person);
 	
 	$controller
@@ -838,9 +859,13 @@ case 'add_spouse_to_family':
 	break;
 
 case 'add_spouse_to_family_action':
-	$xref = WT_Filter::post('xref', WT_REGEX_XREF);
+	$xref    = WT_Filter::post('xref', WT_REGEX_XREF);
+	$glevels = WT_Filter::postArray('glevels', '[0-9]');
+	$tag     = WT_Filter::postArray('tag', WT_REGEX_TAG);
+	$text    = WT_Filter::postArray('text');
+	$islink  = WT_Filter::postArray('islink', '[01]');
 
-	$family = WT_Family::getInstance($xref);
+	$family  = WT_Family::getInstance($xref);
 	check_record_access($family);
 
 	$controller->pageHeader();
@@ -1043,12 +1068,16 @@ case 'linkspouse':
 	break;
 
 case 'linkspouseaction':
-	$xref   = WT_Filter::post('xref',   WT_REGEX_XREF);
-	$spid   = WT_Filter::post('spid',   WT_REGEX_XREF);
-	$famtag = WT_Filter::post('famtag', 'HUSB|WIFE');
+	$xref    = WT_Filter::post('xref',   WT_REGEX_XREF);
+	$spid    = WT_Filter::post('spid',   WT_REGEX_XREF);
+	$famtag  = WT_Filter::post('famtag', 'HUSB|WIFE');
+	$glevels = WT_Filter::postArray('glevels', '[0-9]');
+	$tag     = WT_Filter::postArray('tag', WT_REGEX_TAG);
+	$text    = WT_Filter::postArray('text');
+	$islink  = WT_Filter::postArray('islink', '[01]');
 
-	$person = WT_Individual::getInstance($xref);
-	$spouse = WT_Individual::getInstance($spid);
+	$person  = WT_Individual::getInstance($xref);
+	$spouse  = WT_Individual::getInstance($spid);
 	check_record_access($person);
 	check_record_access($spouse);
 
@@ -2228,7 +2257,7 @@ function keep_chan(WT_GedcomRecord $record=null) {
 			'<tr><td class="descriptionbox wrap width25">' .
 			WT_Gedcom_Tag::getLabel('CHAN') .
 			'</td><td class="optionbox wrap">' .
-			'<input type="checkbox" name="keep_chan"' . $checked . '>' .
+			'<input type="checkbox" name="keep_chan" value="1"' . $checked . '>' .
 			WT_I18N::translate('Do not update the “last change” record') .
 			help_link('no_update_CHAN') .
 			$details;

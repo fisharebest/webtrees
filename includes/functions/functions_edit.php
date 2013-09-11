@@ -714,12 +714,12 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 				$level2_checked='';
 			}
 			if (strpos($bdm, 'B')!==false) {
-				echo '&nbsp;<input type="checkbox" name="SOUR_INDI" ', $level1_checked, ' value="Y">';
+				echo '&nbsp;<input type="checkbox" name="SOUR_INDI" ', $level1_checked, ' value="1">';
 				echo WT_I18N::translate('Individual');
 				if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
 					foreach ($matches[1] as $match) {
 						if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
-							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
+							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">';
 							echo WT_Gedcom_Tag::getLabel($match);
 						}
 					}
@@ -729,18 +729,18 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 				if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
 					foreach ($matches[1] as $match) {
 						if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
-							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
+							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">';
 							echo WT_Gedcom_Tag::getLabel($match);
 						}
 					}
 				}
 			}
 			if (strpos($bdm, 'M')!==false) {
-				echo '&nbsp;<input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="Y">';
+				echo '&nbsp;<input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="1">';
 				echo WT_I18N::translate('Family');
 				if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
 					foreach ($matches[1] as $match) {
-						echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
+						echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">';
 						echo WT_Gedcom_Tag::getLabel($match);
 					}
 				}
