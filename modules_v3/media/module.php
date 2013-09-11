@@ -131,6 +131,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 					$this->facts[] = $fact;
 				}
 			}
+			sort_facts($this->facts);
 		}
 		return $this->facts;
 	}
