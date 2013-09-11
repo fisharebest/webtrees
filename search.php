@@ -47,7 +47,7 @@ $controller
 			year = frm.year.value;
 			fname = frm.firstname.value;
 			lname = frm.lastname.value;
-			place = frm.place2.value;
+			place2 = frm.place2.value;
 
 			// display an error message if there is insufficient data to perform a search on
 			if (year == "") {

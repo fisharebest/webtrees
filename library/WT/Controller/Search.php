@@ -80,9 +80,9 @@ class WT_Controller_Search extends WT_Controller_Page {
 		parent::__construct();
 
 		// $action comes from $_GET (menus) or $_POST (form submission)
-		$this->action = WT_Filter::get('action', 'advanced|general|soundex|replace');
+		$this->action = WT_Filter::post('action', 'advanced|general|soundex|replace');
 		if (!$this->action) {
-			$this->action = WT_Filter::post('action', 'advanced|general|soundex|replace');
+			$this->action = WT_Filter::get('action', 'advanced|general|soundex|replace', 'general');
 		}
 
 		$topsearch = WT_Filter::postBool('topsearch');
