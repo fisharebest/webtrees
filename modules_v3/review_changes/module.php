@@ -81,7 +81,8 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 						$message = array();
 						$message["to"]=$user_name;
 						$message["from"] = $WEBTREES_EMAIL;
-						//$message["from_name"] = $WEBTREES_EMAIL;
+						$message["from_name"] = $WEBTREES_EMAIL;
+						$message["from_email"] = $WEBTREES_EMAIL;
 						$message["subject"] = WT_I18N::translate('webtrees - Review changes');
 						$message["body"] = WT_I18N::translate('Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that webtrees site and login to review the changes.');
 						$message["method"] = get_user_setting($user_id, 'contactmethod');
