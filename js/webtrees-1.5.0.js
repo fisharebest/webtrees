@@ -289,13 +289,6 @@ function edit_note(xref) {
 	});
 }
 
-function edit_source(xref) {
-	return edit_interface({
-		"action": "editsource",
-		"xref":   xref,
-	});
-}
-
 function add_record(xref, fact_field) {
 	var fact = jQuery('#' + fact_field).val();
 	if (fact) {

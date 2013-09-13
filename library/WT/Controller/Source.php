@@ -51,8 +51,9 @@ class WT_Controller_Source extends WT_Controller_GedcomRecord {
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-sour');
 
 		if (WT_USER_CAN_EDIT) {
+			$fact = $this->record->getFirstFact('TITL');
 			$submenu = new WT_Menu(WT_I18N::translate('Edit source'), '#', 'menu-sour-edit');
-			$submenu->addOnclick('return edit_source(\''.$this->record->getXref().'\');');
+			$submenu->addOnclick('return edit_record(\''.$this->record->getXref().'\', \'' . $fact->getFactId() . '\');');
 			$menu->addSubmenu($submenu);
 		}
 

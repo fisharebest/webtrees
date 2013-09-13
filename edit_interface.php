@@ -1359,68 +1359,6 @@ case 'addmedia_links':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-case 'editsource':
-	$xref = WT_Filter::get('xref', WT_REGEX_XREF);
-
-	$source = WT_Source::getInstance($xref);
-	check_record_access($source);
-
-	$controller
-		->setPageTitle($source->getFullName())
-		->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-	init_calendar_popup();
-	echo '<form method="post" action="edit_interface.php" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="ged" value="', WT_Filter::escapeHtml(WT_GEDCOM), '">';
-	echo '<input type="hidden" name="action" value="update">';
-	echo '<input type="hidden" name="xref" value="', $xref, '">';
-	echo '<table class="facts_table">';
-	$gedlines = explode("\n", $gedrec); // -- find the number of lines in the record
-	$uniquefacts = preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-	$usedfacts = array();
-	$lines = count($gedlines);
-	if ($lines==1) {
-		foreach ($uniquefacts as $fact) {
-			$gedrec.="\n1 ".$fact;
-		}
-		$gedlines = explode("\n", $gedrec);
-	}
-	for ($i=$linenum; $i<$lines; $i++) {
-		$fields = explode(' ', $gedlines[$i]);
-		if ((substr($gedlines[$i], 0, 1)<2) && $fields[1]!="CHAN") {
-			$level1type = create_edit_form($gedrec, $i, 'SOUR');
-			echo '<input type="hidden" name="linenum[]" value="', $i, '">';
-			$usedfacts[]=$fields[1];
-			foreach ($uniquefacts as $key=>$fact) {
-				if ($fact==$fields[1]) unset($uniquefacts[$key]);
-			}
-		}
-	}
-	foreach ($uniquefacts as $key=>$fact) {
-		$gedrec.="\n1 ".$fact;
-		$level1type = create_edit_form($gedrec, $lines++, 'SOUR');
-		echo '<input type="hidden" name="linenum[]" value="', $i, '">';
-	}
-
-	echo keep_chan($source);
-	echo '</table>';
-	print_add_layer("OBJE");
-	print_add_layer("NOTE");
-	print_add_layer("SHARED_NOTE");
-	print_add_layer("RESN");
-	?>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
-	</div>
-	<?php
-	break;
-
-////////////////////////////////////////////////////////////////////////////////
 // Edit a note record
 ////////////////////////////////////////////////////////////////////////////////
 case 'editnote':
