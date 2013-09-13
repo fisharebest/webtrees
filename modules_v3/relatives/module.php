@@ -30,10 +30,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Families');
-
-		// Keep these deleted translations for a while - we may want them again... 
-		WT_I18N::translate('Add a new spouse');
-		WT_I18N::translate('Add a new parent');
 	}
 
 	// Extend WT_Module
