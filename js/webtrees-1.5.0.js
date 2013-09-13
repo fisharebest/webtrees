@@ -63,7 +63,7 @@ function modalDialog(url, title) {
 			width: 700,
 			closeText: "",
 			close: function(event, ui) {
-				$(this).remove();
+				jQuery(this).remove();
 				jQuery('.ui-widget-overlay').remove();
 			}
 		});
@@ -83,7 +83,7 @@ function modalNotes(content, title) {
 			modal: true,
 			width: 500,
 			closeText: "",
-			close: function(event, ui) { $(this).remove(); }
+			close: function(event, ui) { jQuery(this).remove(); }
 		});
 	// Close the window when we click outside it.
 	jQuery(".ui-widget-overlay").on("click", function () {
