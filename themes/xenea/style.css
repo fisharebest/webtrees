@@ -1507,10 +1507,25 @@ overflow:visible !important;
 .person_box_template .noprint { width:25px;height:50px; position:relative;}
 .person_box_template .chart_textbox {height:auto;overflow: hidden;}
 .person_box_template .details div {display:block;}
-.person_box_template img {height:50px;width:auto;max-width:80px;border:solid #000000 1px;margin:0 3px 0 0;float:left;}
-html[dir=rtl] .person_box_template img {float:right;margin:0 0 0 3px;}
-.person_box_template i[class^="icon-silhouette"] {float:left;}
-html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {float:right;}
+.person_box_template img,
+.person_box_template a.gallery {
+	float:     left;
+	height:    50px;
+	margin:    0 3px 0 0;
+	max-width: 80px;
+	width:     auto;
+}
+html[dir=rtl] .person_box_template img,
+html[dir=rtl] .person_box_template a.gallery {
+	float:right;
+	margin:0 0 0 3px;
+}
+.person_box_template i[class^="icon-silhouette"] {
+	float:left;
+}
+html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
+	float:right;
+}
 
 #branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls {margin:0 auto;}
 #medialist-page .list_table_controls {width:100%;}

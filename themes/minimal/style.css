@@ -1181,10 +1181,25 @@ overflow:visible !important;
 .person_box_template .noprint { width:25px;height:50px; position:relative;}
 .person_box_template .chart_textbox {height:auto;overflow: hidden;}
 .person_box_template  .details div {display:block;}
-.person_box_template img {float:left;height:50px;width:auto;max-width:80px;border:solid #555555 1px; margin:0 3px 0 0;}
-html[dir=rtl] .person_box_template img {float:right; margin:0 0 0 3px;}
-.person_box_template i[class^="icon-silhouette"] {float:left;}
-html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {float:right;}
+.person_box_template img,
+.person_box_template a.gallery {
+	float:left;
+	height:      50px;
+	width:       auto;
+	max-width:   80px;
+	margin:      0 3px 0 0;
+}
+html[dir=rtl] .person_box_template img,
+html[dir=rtl] .person_box_template a.gallery {
+	float:  right;
+	margin: 0 0 0 3px;
+}
+.person_box_template i[class^="icon-silhouette"] {
+	float:left;
+}
+html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
+	float:right;
+}
 
 #branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls {margin:0 auto;}
 #medialist-page .list_table_controls {width:100%;}
@@ -1785,6 +1800,7 @@ a.icon-udarrow             {width:20px;height:20px;background-image:url(images/u
 .icon-source {width:24px;height:24px;background-image:url(images/source.png);}
 .icon-tree {width:24px;height:24px;background-image:url(images/gedcom.png);}
 .icon-user_add {width:24px;height:24px;background-image:url(images/user_add.png);}
+*/
 
 [class^="icon-mime-"], [class*=" icon-mime-"] {display:inline-block;background-image:url(images/icon-mime-sprite.png);background-color:transparent;background-repeat:no-repeat;width:48px;height:48px;}
 /* Generic MIME types */
