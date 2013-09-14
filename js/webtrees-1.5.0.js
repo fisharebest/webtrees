@@ -247,18 +247,6 @@ var show = false;
 		return false;
 	}
 
-// Main function to retrieve mouse x-y pos.s
-function getMouseXY(e) {
-	if (IE) { // grab the x-y pos.s if browser is IE
-		msX = event.clientX + document.documentElement.scrollLeft;
-		msY = event.clientY + document.documentElement.scrollTop;
-	} else {  // grab the x-y pos.s if browser is NS
-		msX = e.pageX;
-		msY = e.pageY;
-	}
-  return true;
-}
-
 // Open the "edit interface" popup window
 function edit_interface(params, windowspecs, pastefield) {
 	var features = windowspecs || edit_window_specs;
@@ -927,15 +915,6 @@ function loadHandler() {
 			}
 		}
 }
-var IE = document.all?true:false;
-if (!IE) document.captureEvents(Event.MOUSEMOVE|Event.KEYDOWN|Event.KEYUP);
-document.onmousemove = getMouseXY;
-
-function toggleStatus(sel) {
-	var cbox = document.getElementById(sel);
-	cbox.disabled=!(cbox.disabled);
-}
-
 
 function statusDisable(sel) {
 	var cbox = document.getElementById(sel);

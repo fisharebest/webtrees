@@ -56,8 +56,7 @@ function ageMD(divbox, num) {
 	if (N) {
 		X=ob.offsetLeft;
 		Y=ob.offsetTop;
-	}
-	else {
+	} else {
 		X=ob.offsetLeft;
 		Y=ob.offsetTop;
 		oldx = event.clientX + document.documentElement.scrollLeft;
@@ -135,8 +134,7 @@ function MM(e) {
 			line.style.width=(line.width+temp)+"px";
 			oldx=newx;
 			return false;
-		}
-		else {
+		} else {
 			newy = 0;
 			newx = 0;
 			if (N) {
@@ -144,8 +142,7 @@ function MM(e) {
 				newx = e.pageX - tldiv.offsetLeft;
 				if (oldx==0) oldx=newx;
 				linewidth = e.pageX;
-			}
-			else {
+			} else {
 				newy = event.clientY + document.documentElement.scrollTop - tldiv.offsetTop;
 				newx = event.clientX + document.documentElement.scrollLeft - tldiv.offsetLeft;
 				linewidth = event.clientX + document.documentElement.scrollLeft;
@@ -168,21 +165,18 @@ function MM(e) {
 				if (textDirection=='ltr') {
 					dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline"]; ?>')";
 					dbox.style.backgroundPosition = "0% 100%";
-				}
-				else {
+				} else {
 					dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline2"]; ?>')";
 					dbox.style.backgroundPosition = "0% 0%";
 				}
 				dy = (-1)*dy;
 				state=1;
 				dbox.style.top = (newy+bheight/3)+"px";
-			}
-			else {
+			} else {
 				if (textDirection=='ltr') {
 					dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline2"]; ?>')";
 					dbox.style.backgroundPosition = "0% 0%";
-				}
-				else {
+				} else {
 					dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline"]; ?>')";
 					dbox.style.backgroundPosition = "0% 100%";
 				}
@@ -214,7 +208,6 @@ function MM(e) {
 		}
 	}
 }
-</script><script>
 
 function MU() {
 	ob = null;
