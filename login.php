@@ -46,7 +46,7 @@ $user_password   = WT_Filter::post('user_password');
 $user_hashcode   = WT_Filter::post('user_hashcode');
 $url             = WT_Filter::postUrl('url');
 $username        = WT_Filter::post('username');
-$password        = WT_Filter::post('password'); // Can use any password that was previously stored
+$password        = WT_Filter::post('password');
 $timediff        = WT_Filter::postInteger('timediff', -43200, 50400, 0); // Same range as date('Z')
 
 // These parameters may come from the URL which is emailed to users.
@@ -203,31 +203,19 @@ case 'requestpw':
 
 		set_user_password($user_id, $user_new_pw);
 		set_user_setting($user_id, 'pwrequested', 1);
-		$user_name = get_user_name($user_id);
 
-		$mail_body = '';
-		$mail_body .= WT_I18N::translate('Hello %s…', getUserFullName($user_id)) . "\r\n\r\n";
-		$mail_body .= WT_I18N::translate('A new password was requested for your user name.') . "\r\n\r\n";
-		$mail_body .= WT_I18N::translate('Username') . ": " . $user_name . "\r\n";
+		AddToLog('Password request was sent to user: '.$user_name, 'auth');
 
-		$mail_body .= WT_I18N::translate('Password') . ": " . $user_new_pw . "\r\n\r\n";
-		$mail_body .= WT_I18N::translate('Recommendation:') . "\r\n";
-		$mail_body .= WT_I18N::translate('Please click on the link below or paste it into your browser, login with the new password, and change it immediately to keep the integrity of your data secure.') . "\r\n\r\n";
-		$mail_body .= WT_I18N::translate('After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password.') . "\r\n\r\n";
-
-		if ($TEXT_DIRECTION=='rtl') {
-			$mail_body .= "<a href=\"".WT_SERVER_NAME.WT_SCRIPT_PATH."\">".WT_SERVER_NAME.WT_SCRIPT_PATH."</a>";
-		} else {
-			$mail_body .= WT_SERVER_NAME.WT_SCRIPT_PATH;
-		}
-
-		WT_Mail::send(
-			getUserEmail($user_id),
-			getUserName($user_id),
-			$WEBTREES_EMAIL,
-			WT_WEBTREES,
+		WT_Mail::system_message(
+			$WT_TREE,
+			$user_id,
 			WT_I18N::translate('Lost password request'),
-			$mail_body
+			WT_I18N::translate('Hello %s…', getUserFullName($user_id)) . WT_Mail::EOL . WT_Mail::EOL .
+			WT_I18N::translate('A new password was requested for your user name.') . WT_Mail::EOL . WT_Mail::EOL .
+			WT_I18N::translate('Username') . ": " . $user_name . WT_Mail::EOL .
+			WT_I18N::translate('Password') . ": " . $user_new_pw  . WT_Mail::EOL . WT_Mail::EOL .
+			WT_I18N::translate('After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password.') . WT_Mail::EOL . WT_Mail::EOL .
+			'<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php?ged=' . WT_GEDURL . '">' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php?ged=' . WT_GEDURL . '</a>'
 		);
 	}
 	// Show a success message, even if the user account does not exist.
@@ -238,7 +226,6 @@ case 'requestpw':
 		/* I18N: %s is a username */
 		WT_I18N::translate('A new password has been created and emailed to %s.  You can change this password after you login.', $user_name),
 		'</p></div>';
-	AddToLog('Password request was sent to user: '.$user_name, 'auth');
 	echo '</div>';
 	break;
 
@@ -288,14 +275,14 @@ case 'register':
 			WT_I18N::init(get_user_setting($webmaster_user_id, 'language'));
 
 			$mail1_body =
-				WT_I18N::translate('Hello administrator…') ."<br>\r\n<br>\r\n" .
+				WT_I18N::translate('Hello administrator…') . WT_Mail::EOL . WT_Mail::EOL .
 				/* I18N: %s is a server name/URL */
-				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE)) . "<br>\r\n<br>\r\n" .
-				WT_I18N::translate('Username')      .' '.$user_name     . "<br>\r\n" .
-				WT_I18N::translate('Real name')     .' '.$user_realname . "<br>\r\n" .
-				WT_I18N::translate('Email Address:').' '.$user_email    . "<br>\r\n" .
-				WT_I18N::translate('Comments')      .' '.$user_comments . "<br>\r\n<br>\r\n" .
-				WT_I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . "<br>\r\n<br>\r\n";
+				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE)) . WT_Mail::EOL . WT_Mail::EOL .
+				WT_I18N::translate('Username')      .' '.$user_name     . WT_Mail::EOL .
+				WT_I18N::translate('Real name')     .' '.$user_realname . WT_Mail::EOL .
+				WT_I18N::translate('Email Address:').' '.$user_email    . WT_Mail::EOL .
+				WT_I18N::translate('Comments')      .' '.$user_comments . WT_Mail::EOL . WT_Mail::EOL .
+				WT_I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . WT_Mail::EOL . WT_Mail::EOL;
 			if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
 				$mail1_body .= WT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.');
 			} else {
@@ -304,8 +291,8 @@ case 'register':
 			$mail1_body .= WT_Mail::auditFooter();
 
 			$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
-			$mail1_to      = $WEBTREES_EMAIL;
-			$mail1_from    = $user_email;
+			$mail1_to      = getUserEmail($webmaster_user_id);
+			$mail1_from    = getUserFullName($webmaster_user_id);
 			$mail1_method  = get_user_setting($webmaster_user_id, 'contact_method');
 			WT_I18N::init(WT_LOCALE);
 
@@ -313,20 +300,20 @@ case 'register':
 
 			// Generate an email in the user’s language
 			$mail2_body=
-				WT_I18N::translate('Hello %s…', $user_realname) . "<br>\r\n<br>\r\n" .
+				WT_I18N::translate('Hello %s…', $user_realname) . WT_Mail::EOL . WT_Mail::EOL .
 				/* I18N: %1$s is the site URL and %2$s is an email address */
 				WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE), $user_email) . '  '.
-				WT_I18N::translate('Information about the request is shown under the link below.') . "<br>\r\n" .
-				WT_I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . "<br>\r\n<br>\r\n" .
+				WT_I18N::translate('Information about the request is shown under the link below.') . WT_Mail::EOL .
+				WT_I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . WT_Mail::EOL . WT_Mail::EOL .
 				'<a href="' . WT_LOGIN_URL . "?user_name=".urlencode($user_name)."&amp;user_hashcode=".urlencode(get_user_setting($user_id, 'reg_hashcode')) . '&amp;action=userverify">' .
 				WT_LOGIN_URL . "?user_name=".urlencode($user_name)."&user_hashcode=".urlencode(get_user_setting($user_id, 'reg_hashcode'))."&action=userverify" .
-				'</a>' . "<br>\r\n<br>\r\n" .
-				WT_I18N::translate('Username') . " " . $user_name . "<br>\r\n" .
-				WT_I18N::translate('Verification code:') . " " . get_user_setting($user_id, 'reg_hashcode') . "<br>\r\n" .
-				WT_I18N::translate('Comments').": " . $user_comments . "<br>\r\n" .
+				'</a>' . WT_Mail::EOL . WT_Mail::EOL .
+				WT_I18N::translate('Username') . " " . $user_name . WT_Mail::EOL .
+				WT_I18N::translate('Verification code:') . " " . get_user_setting($user_id, 'reg_hashcode') . WT_Mail::EOL .
+				WT_I18N::translate('Comments').": " . $user_comments . WT_Mail::EOL .
 				WT_I18N::translate('If you didn’t request an account, you can just delete this message.') .
 				'  '.
-				WT_I18N::translate('You won’t get any more email from this site, because the account request will be deleted automatically after seven days.') . "<br>\r\n";
+				WT_I18N::translate('You won’t get any more email from this site, because the account request will be deleted automatically after seven days.') . WT_Mail::EOL;
 			$mail2_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 			$mail2_to     =$user_email;
 			$mail2_from   =$WEBTREES_EMAIL;
@@ -334,9 +321,9 @@ case 'register':
 			// Send user message by email only
 			WT_Mail::send(
 				$mail2_to,
-				'to',
+				$mail2_to,
 				$mail2_from,
-				'from',
+				$mail2_from,
 				$mail2_subject,
 				$mail2_body
 			);
@@ -344,9 +331,9 @@ case 'register':
 			// Send admin message by email and/or internal messaging
 			WT_Mail::send(
 				$mail1_to,
-				'to',
+				$mail1_to,
 				$mail1_from,
-				'from',
+				$mail1_from,
 				$mail1_subject,
 				$mail1_body
 			);
@@ -494,10 +481,10 @@ case 'verify_hash':
 		'</a>' .
 		WT_Mail::auditFooter();
 
-	$mail1_to = $WEBTREES_EMAIL;
-	$mail1_from = getUserEmail($user_id);
 	$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
-	$mail1_method = get_user_setting($webmaster_user_id, 'CONTACT_METHOD');
+	$mail1_to      = getUserEmail($webmaster_user_id);
+	$mail1_from    = getUserFullName($webmaster_user_id);
+	$mail1_method  = get_user_setting($webmaster_user_id, 'CONTACT_METHOD');
 
 	// Change to the new user’s language
 	WT_I18N::init(get_user_setting($user_id, 'language'));
@@ -515,9 +502,9 @@ case 'verify_hash':
 		if ($pw_ok && $hc_ok) {
 			WT_Mail::send(
 				$mail1_to,
-				'to',
+				$mail1_to,
 				$mail1_from,
-				'from',
+				$mail1_from,
 				$mail1_subject,
 				$mail1_body
 			);

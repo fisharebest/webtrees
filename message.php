@@ -161,7 +161,6 @@ case 'send':
 	if ($to == 'never_logged') {
 		$toarray = array();
 		foreach (get_all_users() as $user_id=>$user_name) {
-			// SEE Bug [ 1827547 ] Message to inactive users sent to newcomers
 			if (get_user_setting($user_id,'verified_by_admin') && get_user_setting($user_id, 'reg_timestamp') > get_user_setting($user_id, 'sessiontime')) {
 				$toarray[$user_id] = $user_name;
 			}
@@ -171,7 +170,6 @@ case 'send':
 		$toarray = array();
 		$sixmos = 60*60*24*30*6; //-- timestamp for six months
 		foreach (get_all_users() as $user_id=>$user_name) {
-			// SEE Bug [ 1827547 ] Message to inactive users sent to newcomers
 			if (get_user_setting($user_id,'sessiontime')>0 && (WT_TIMESTAMP - get_user_setting($user_id, 'sessiontime') > $sixmos)) {
 				$toarray[$user_id] = $user_name;
 			}

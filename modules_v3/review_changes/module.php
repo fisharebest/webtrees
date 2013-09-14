@@ -59,38 +59,27 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 
-		if ($changes) {
-			//-- if the time difference from the last email is greater than 24 hours then send out another email
-			$LAST_CHANGE_EMAIL=WT_Site::preference('LAST_CHANGE_EMAIL');
-			if (WT_TIMESTAMP - $LAST_CHANGE_EMAIL > (60*60*24*$days)) {
-				$LAST_CHANGE_EMAIL = WT_TIMESTAMP;
-				WT_Site::preference('LAST_CHANGE_EMAIL', $LAST_CHANGE_EMAIL);
-				if ($sendmail=="yes") {
-					// Which users have pending changes?
-					$users_with_changes=array();
-					foreach (get_all_users() as $user_id=>$user_name) {
+		if ($changes && $sendmail=='yes') {
+			// There are pending changes - tell moderators/managers/administrators about them.
+			if (WT_TIMESTAMP - WT_Site::preference('LAST_CHANGE_EMAIL') > (60*60*24*$days)) {
+				// Which users have pending changes?
+				foreach (get_all_users() as $user_id=>$user_name) {
+					if (get_user_setting($user_id, 'contactmethod') != 'none') {
 						foreach (WT_Tree::getAll() as $tree) {
 							if (exists_pending_change($user_id, $tree->tree_id)) {
-								$users_with_changes[$user_id]=$user_name;
-								break;
+								WT_Mail::system_message(
+									$tree,
+									$user_id,
+									WT_I18N::translate('Pending changes'),
+									WT_I18N::translate('There are pending changes for you to moderate.') .
+									WT_Mail::EOL . WT_MAIL::EOL .
+									'<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'index.php?ged=' . WT_GEDURL . '">' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'index.php?ged=' . WT_GEDURL . '</a>'
+								);
 							}
 						}
 					}
-					foreach ($users_with_changes as $user_id=>$user_name) {
-						//-- send message
-						$message = array();
-						$message["to"]=$user_name;
-						$message["from"] = $WEBTREES_EMAIL;
-						$message["from_name"] = $WEBTREES_EMAIL;
-						$message["from_email"] = $WEBTREES_EMAIL;
-						$message["subject"] = WT_I18N::translate('webtrees - Review changes');
-						$message["body"] = WT_I18N::translate('Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that webtrees site and login to review the changes.');
-						$message["method"] = get_user_setting($user_id, 'contactmethod');
-						$message["url"] = WT_SERVER_NAME.WT_SCRIPT_PATH;
-						$message["no_from"] = true;
-						addMessage($message);
-					}
 				}
+				WT_Site::preference('LAST_CHANGE_EMAIL', WT_TIMESTAMP);
 			}
 			if (WT_USER_CAN_EDIT) {
 				$id=$this->getName().$block_id;
