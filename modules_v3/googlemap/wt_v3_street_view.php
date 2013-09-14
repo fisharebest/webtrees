@@ -227,11 +227,6 @@ function initialize() {
   				}
  			}
  			return true;
-			if (parseInt(navigator.appVersion)>3) {
- 				document.onmousedown = mouseDown;
- 			if (navigator.appName=='Netscape') 
-  				document.captureEvents(Event.MOUSEDOWN);
-			}
 		};
 		panorama.controls[google.maps.ControlPosition.TOP_RIGHT].push(aLink);
 		// -----------------------------------------------------------------------------------------

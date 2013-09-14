@@ -270,7 +270,7 @@ function insertRowToTable(pid, nam, head)
 		var numrows = links.rows.length;
 		var strRow = '';
 		for (var i=1; i<numrows; i++) {
-			if (IE) {
+			if (document.all) { // If Internet Explorer
 				strRow += (strRow==''?'':', ') + links.rows[i].cells[1].innerText;
 			} else {
 				strRow += (strRow==''?'':', ') + links.rows[i].cells[1].textContent;
@@ -532,7 +532,7 @@ function parseAddLinks() {
 	var tbl = document.getElementById('addlinkQueue');
 	for (var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
 		var tr = tbl.rows[i];
-		if (IE) {
+		if (document.all) { // If internet explorer
 			str += (str==''?'':',') + tr.cells[1].childNodes[0].innerHTML;
 		} else {
 			str += (str==''?'':',') + tr.cells[1].childNodes[0].textContent;
