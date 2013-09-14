@@ -845,7 +845,7 @@ function print_main_notes(WT_Fact $fact, $level) {
 	for ($j=0; $j<$ct; $j++) {
 		if ($level>=2) echo '<tr class="row_note2">';
 		else echo '<tr>';
-		echo '<td valign="top" class="descriptionbox';
+		echo '<td class="descriptionbox';
 		if ($level>=2) echo ' rela';
 		echo ' ', $styleadd, ' width20">';
 		if ($can_edit) {
@@ -918,7 +918,7 @@ function print_main_notes(WT_Fact $fact, $level) {
 			$text = expand_urls($text);
 		}
 
-		echo '<td class="optionbox', $styleadd, ' wrap" align="', $TEXT_DIRECTION== "rtl"?"right": "left" , '">';
+		echo '<td class="optionbox', $styleadd, ' wrap">';
 		echo '<div style="white-space:pre-wrap;">', $text, '</div>';
 
 		if (!empty($noterec)) {
