@@ -39,7 +39,8 @@ $ged=$GEDCOM;
 $gid1   = WT_Filter::post('gid1', WT_REGEX_XREF);
 $gid2   = WT_Filter::post('gid2', WT_REGEX_XREF);
 $action = WT_Filter::post('action', 'choose|select|merge', 'choose');
-$ged2   = WT_Filter::post('ged2', '.+', $ged);
+$ged1   = WT_Filter::post('ged1', null, $ged);
+$ged2   = WT_Filter::post('ged2', null, $ged);
 $keep1  = WT_Filter::postArray('keep1');
 $keep2  = WT_Filter::postArray('keep2');
 
@@ -48,12 +49,12 @@ if (count(WT_Tree::getAll())==1) { //Removed becasue it doesn't work here for mu
 }
 
 if ($action!='choose') {
-	if ($gid1==$gid2 && $GEDCOM==$ged2) {
+	if ($gid1==$gid2 && $ged1==$ged2) {
 		$action='choose';
 		echo '<span class="error">', WT_I18N::translate('You entered the same IDs.  You cannot merge the same records.'), '</span>';
 	} else {
-		$rec1 = WT_GedcomRecord::getInstance($gid1);
-		$rec2 = WT_GedcomRecord::getInstance($gid2);
+		$rec1 = WT_GedcomRecord::getInstance($gid1, WT_Tree::getIdFromName($ged1));
+		$rec2 = WT_GedcomRecord::getInstance($gid2, WT_Tree::getIdFromName($ged2));
 
 		if (!$rec1) {
 			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $rec1->getXref(), ', ', $ged;
@@ -79,7 +80,7 @@ if ($action!='choose') {
 				echo WT_I18N::translate('The following facts were exactly the same in both records and will be merged automatically.'), '<br>';
 				echo '<input type="hidden" name="gid1" value="', $rec1->getXref(), '">';
 				echo '<input type="hidden" name="gid2" value="', $rec2->getXref(), '">';
-				echo '<input type="hidden" name="ged" value="', $GEDCOM, '">';
+				echo '<input type="hidden" name="ged1" value="', $ged1, '">';
 				echo '<input type="hidden" name="ged2" value="', $ged2, '">';
 				echo '<input type="hidden" name="action" value="merge">';
 				$skip = array();
@@ -87,7 +88,12 @@ if ($action!='choose') {
 				foreach ($facts1 as $fact_id1 => $fact1) {
 					foreach ($facts2 as $fact_id2 => $fact2) {
 						if ($fact_id1 == $fact_id2) {
-							echo '<tr><td><input type="checkbox" name="keep1[]" value="', $fact_id1, '" checked="checked"></td><td>', nl2br($fact1->getGedcom(), false), '</td></tr>';
+							echo '<tr><td><input type="checkbox" name="keep1[]" value="', $fact_id1, '" checked="checked"';
+							if ($ged1!=$ged2 && $fact1->getTarget()) {
+								// Don't change links when merging remote facts.
+								echo ' readonly="readonly"';
+							}
+							echo '></td><td>', nl2br($fact1->getGedcom(), false), '</td></tr>';
 							$skip[] = $fact_id1;
 							unset($facts1[$fact_id1]);
 							unset($facts2[$fact_id2]);
@@ -103,19 +109,31 @@ if ($action!='choose') {
 				echo '<tr><th>', WT_I18N::translate('Record'), ' ', $rec1->getXref(), '</th><th>', WT_I18N::translate('Record'), ' ', $rec2->getXref(), '</th></tr>';
 				echo '<tr><td>';
 				echo '<table>';
-				foreach ($facts1 as $i=>$fact1) {
+				foreach ($facts1 as $n=>$fact1) {
 					if ($fact1->getTag() != 'CHAN') {
-						echo '<tr><td><input type="checkbox" name="keep1[]" value="', $i, '" checked="checked"></td>';
-						echo '<td>', nl2br($fact1->getGedcom(), false), '</td></tr>';
+						echo '<tr><td><input type="checkbox" name="keep1[]" value="', $n, '" checked="checked"';
+						if ($ged1!=$ged2 && $fact1->getTarget()) {
+							// Don't change links when merging remote facts.
+							echo ' readonly="readonly"';
+						}
+						echo '></td>';
+						echo '<td>', nl2br(WT_Filter::escapeHtml($fact1->getGedcom()), false), '</td></tr>';
 					}
 				}
 				echo '</table>';
 				echo '</td><td>';
 				echo '<table>';
-				foreach ($facts2 as $j=>$fact2) {
+				foreach ($facts2 as $n=>$fact2) {
 					if ($fact2->getTag() != 'CHAN') {
-						echo '<tr><td><input type="checkbox" name="keep2[]" value="', $j, '" checked="checked"></td>';
-						echo '<td>', nl2br($fact2->getGedcom(), false), '</td></tr>';
+						echo '<tr><td><input type="checkbox" name="keep2[]" value="', $n, '"';
+						if ($ged1==$ged2 || !$fact2->getTarget()) {
+							// Don't merge links from different trees.  What would they point to!
+							echo ' checked="checked"';
+						} else {
+							echo ' readonly="readonly"';
+						}
+						echo '></td>';
+						echo '<td>', nl2br(WT_Filter::escapeHtml($fact2->getGedcom()), false), '</td></tr>';
 					}
 				}
 				echo '</table>';

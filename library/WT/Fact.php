@@ -73,21 +73,21 @@ class WT_Fact {
 		switch ($this->tag) {
 		case 'FAMC':
 		case 'FAMS':
-			return WT_Family::getInstance($xref);
+			return WT_Family::getInstance($xref, $this->getParent()->getGedcomId());
 		case 'HUSB':
 		case 'WIFE':
 		case 'CHIL':
-			return WT_Individual::getInstance($xref);
+			return WT_Individual::getInstance($xref, $this->getParent()->getGedcomId());
 		case 'SOUR':
-			return WT_Source::getInstance($xref);
+			return WT_Source::getInstance($xref, $this->getParent()->getGedcomId());
 		case 'OBJE':
-			return WT_Media::getInstance($xref);
+			return WT_Media::getInstance($xref, $this->getParent()->getGedcomId());
 		case 'REPO':
-			return WT_Repository::getInstance($xref);
+			return WT_Repository::getInstance($xref, $this->getParent()->getGedcomId());
 		case 'NOTE':
-			return WT_Note::getInstance($xref);
+			return WT_Note::getInstance($xref, $this->getParent()->getGedcomId());
 		default:
-			return WT_GedcomRecord::getInstance($xref);
+			return WT_GedcomRecord::getInstance($xref, $this->getParent()->getGedcomId());
 		}
 	}
 
