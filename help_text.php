@@ -1508,5 +1508,5 @@ default:
 
 $controller->pageHeader();
 
-echo '<div class="helpheader">', $title, '</div>';
+echo '<span class="helpheader">', $title, '</span>';
 echo '<div class="helpcontent">', $text,'</div>';
