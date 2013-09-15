@@ -217,7 +217,7 @@ class WT_Fact {
 		preg_match_all('/\n(2 SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->getGedcom(), $matches, PREG_SET_ORDER);
 		$citations = array();
 		foreach ($matches as $match) {
-			$source = WT_Source::getInstance($match[2]);
+			$source = WT_Source::getInstance($match[2], $this->getParent()->getGedcomId());
 			if ($source->canShow()) {
 				$citations[] = $match[1];
 			}
@@ -232,7 +232,7 @@ class WT_Fact {
 		foreach ($matches[1] as $match) {
 			$note = preg_replace("/\n3 CONT ?/", "\n", $match);
 			if (preg_match('/@(' . WT_REGEX_XREF . ')@/', $note, $nmatch)) {
-				$note = WT_Note::getInstance($nmatch[1]);
+				$note = WT_Note::getInstance($nmatch[1], $this->getParent()->getGedcomId());
 				if ($note && $note->canShow()) {
 					// A note object
 					$notes[] = $note;
@@ -250,7 +250,7 @@ class WT_Fact {
 		$media = array();
 		preg_match_all('/\n(2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches);
 		foreach ($matches[1] as $match) {
-			$obje = WT_Media::getInstance($match);
+			$obje = WT_Media::getInstance($match, $this->getParent()->getGedcomId());
 			if ($obje->canShow()) {
 				$media[] = $obje;
 			}
