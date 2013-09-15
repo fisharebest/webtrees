@@ -334,9 +334,9 @@ html[dir=rtl] #familybook_chart {margin-right:10px;}
 /*-- pedigree chart specific stylesheets --*/
 #pedigree-page table.list_table {margin:0 auto;width:500px;}
 .pedigree_chart_table {border:0;border-collapse:collapse;padding:0;width:100%;}
-#pedigree_chart {position:relative;top:-200px;left:0;z-index:1;}
+#pedigree_chart {position:relative;top:-200px;left:0;}
 html[dir=rtl] #pedigree_chart {left:auto;right:0;}
-#pedigree_canvas {color:#999999;position:absolute;top:200px;z-index:-1000;}
+#pedigree_canvas {color:#999999;position:absolute;top:200px;z-index:-1;}
 #pedigree_chart #childarrow, #pedigree_chart #uparrow, #pedigree_chart .shadow {position:absolute;}
 #pedigree_chart #childbox {border:1px solid;background-color:#ffffff;padding:5px;position:absolute;visibility:hidden;}
 
@@ -496,16 +496,16 @@ html[dir=rtl] .optionbox input {margin-left:5px;}
 .new { outline: solid blue 1px; }
 .old { outline: solid red  1px; }
 
-a.showit {color:#000000;position:relative;text-decoration:none;z-index:24;}
-a.showit:hover {background:#ffff99;cursor:crosshair;z-index:25;}
-a.showit:hover > span {background:#444444;border-bottom:2px solid #000000;border-left:15px outset #000000;border-right:2px solid #000000;border-style:outset;border-top:2px solid #000000;color:#ffffff;display:block;font-size:15px;left:0;opacity:.85;padding:3px;position:absolute;text-align:left;top:22px;white-space:normal;width:225px;z-index:5;}
+a.showit {color:#000000;position:relative;text-decoration:none;}
+a.showit:hover {background:#ffff99;cursor:crosshair;}
+a.showit:hover > span {background:#444444;border-bottom:2px solid #000000;border-left:15px outset #000000;border-right:2px solid #000000;border-style:outset;border-top:2px solid #000000;color:#ffffff;display:block;font-size:15px;left:0;opacity:.85;padding:3px;position:absolute;text-align:left;top:22px;white-space:normal;width:225px;}
 
 .lifespan_outer {border:solid #00f 1px;border-radius:3px;height:600px;overflow:hidden;position:relative;width:99.5%;}
 .lifespan_outer a {color:#000000;}
 .lifespan_outer a:hover {color:#ff0000;text-decoration:none;}
 .lifespan_people span:first-letter {font-size:16px;font-variant:small-caps;font-weight:700;padding:1px;}
-.lifespan_people {left:-10px;position:absolute;top:-60px;width:500px;z-index:1;}
-.lifespan_timeline {background:#ffffff;left:-10px;position:absolute;top:-65px;width:100%;z-index:2;}
+.lifespan_people {left:-10px;position:absolute;top:-60px;width:500px;}
+.lifespan_timeline {background:#ffffff;left:-10px;position:absolute;top:-65px;width:100%;}
 
 #map_nav {left:101%;position:relative;top:-484px;}
 #map_type {font-size:10px;list-style:none;margin:0;padding:0;}
@@ -678,7 +678,7 @@ html[dir=rtl] #login-form label,html[dir=rtl] #new_passwd_form label,html[dir=rt
 .popup  li {padding:1px 5px;}
 .popup  li span {padding:0 5px;}
 .popup  li ul, .popup  li ul li, .popup  li span span {padding:0;}
-.itr:hover .popup {display:block;position:absolute;width:12em;right:0;z-index:9999;}
+.itr:hover .popup {display:block;position:absolute;width:12em;right:0;}
 html[dir=rtl] .itr:hover .popup {left:0;right:auto;}
 
 /* FindFacts pop-up */
@@ -1176,7 +1176,7 @@ html[dir=rtl] #save-cancel .cancel {float:left;}
 #addmedia-page textarea[id*="NOTE"] {height:240px;}
 
 /* Styling for the jquery.colorbox gallery */
-#colorbox, #cboxOverlay, #cboxWrapper {position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#colorbox, #cboxOverlay, #cboxWrapper {position:absolute; top:0; left:0; overflow:hidden;}
 #colorbox {border: 2px solid #cccccc;}
 #cboxOverlay {position:fixed; width:100%; height:100%;background:#cccccc;}
 #cboxContent {background:#ffffff;border:5px solid #888888;}
