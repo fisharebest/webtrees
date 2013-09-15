@@ -28,31 +28,36 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-$theme_name = "webtrees"; // need double quotes, as file is scanned/parsed by script
+// Theme name - this needs double quotes, as file is scanned/parsed by script
+$theme_name = "webtrees";
+
+// A version number in the path prevents browser-cache problems during upgrade
+define('WT_CSS_URL', WT_THEME_URL . 'css-1.5.0/');
+
 $headerfile = WT_THEME_DIR.'header.php';
 $footerfile = WT_THEME_DIR.'footer.php';
 
-//- main icons
+// Legacy icons.
 $WT_IMAGES=array(
 	// used to draw charts
-	'dline'          =>WT_THEME_URL.'images/dline.png',
-	'dline2'         =>WT_THEME_URL.'images/dline2.png',
-	'hline'          =>WT_THEME_URL.'images/hline.png',
-	'spacer'         =>WT_THEME_URL.'images/spacer.png',
-	'vline'          =>WT_THEME_URL.'images/vline.png',
+	'dline'           => WT_CSS_URL . 'images/dline.png',
+	'dline2'          => WT_CSS_URL . 'images/dline2.png',
+	'hline'           => WT_CSS_URL . 'images/hline.png',
+	'spacer'          => WT_CSS_URL . 'images/spacer.png',
+	'vline'           => WT_CSS_URL . 'images/vline.png',
 
 	// used in button images and javascript
-	'add'            =>WT_THEME_URL.'images/add.png',
-	'button_family'  =>WT_THEME_URL.'images/buttons/family.png',
-	'minus'          =>WT_THEME_URL.'images/minus.png',
-	'plus'           =>WT_THEME_URL.'images/plus.png',
-	'remove'         =>WT_THEME_URL.'images/remove.png',
-	'search'         =>WT_THEME_URL.'images/search.png',
+	'add'             => WT_CSS_URL . 'images/add.png',
+	'button_family'   => WT_CSS_URL . 'images/buttons/family.png',
+	'minus'           => WT_CSS_URL . 'images/minus.png',
+	'plus'            => WT_CSS_URL . 'images/plus.png',
+	'remove'          => WT_CSS_URL . 'images/remove.png',
+	'search'          => WT_CSS_URL . 'images/search.png',
 
 	// need different sizes before moving to CSS
-	'default_image_M'=>WT_THEME_URL.'images/silhouette_male.png',
-	'default_image_F'=>WT_THEME_URL.'images/silhouette_female.png',
-	'default_image_U'=>WT_THEME_URL.'images/silhouette_unknown.png',
+	'default_image_M' => WT_CSS_URL . 'images/silhouette_male.png',
+	'default_image_F' => WT_CSS_URL . 'images/silhouette_female.png',
+	'default_image_U' => WT_CSS_URL . 'images/silhouette_unknown.png',
 );
 
 //-- variables for the fan chart
@@ -65,41 +70,42 @@ $fanChart = array(
 	'bgFColor'=>'#e9daf1'
 );
 
-//-- pedigree chart variables
-$bwidth=250;			// width of boxes on pedigree chart
-$bheight=80;			// height of boxes on pedigree chart
-$baseyoffset=10;		// position the entire pedigree tree relative to the top of the page
-$basexoffset=10;		// position the entire pedigree tree relative to the left of the page
-$bxspacing=10;			// horizontal spacing between boxes on the pedigree chart
-$byspacing=10;			// vertical spacing between boxes on the pedigree chart
-$linewidth=1.5;			// width of joining lines
-$shadowcolor="";		// shadow color for joining lines
-$shadowblur=0;			// shadow blur for joining lines
-$shadowoffsetX=0;		// shadowOffsetX for joining lines
-$shadowoffsetY=0;		// shadowOffsetY for joining lines
+// Pedigree chart variables
+$bwidth        = 250; // width of boxes on pedigree chart
+$bheight       = 80;  // height of boxes on pedigree chart
+$baseyoffset   = 10;  // position the entire pedigree tree relative to the top of the page
+$basexoffset   = 10;  // position the entire pedigree tree relative to the left of the page
+$bxspacing     = 10;  // horizontal spacing between boxes on the pedigree chart
+$byspacing     = 10;  // vertical spacing between boxes on the pedigree chart
+$linewidth     = 1.5; // width of joining lines
+$shadowcolor   = '';  // shadow color for joining lines
+$shadowblur    = 0;   // shadow blur for joining lines
+$shadowoffsetX = 0;   // shadowOffsetX for joining lines
+$shadowoffsetY = 0;   // shadowOffsetY for joining lines
 
-// descendancy - relationship chart variables
-$Dbaseyoffset=20;		// position the entire descendancy tree relative to the top of the page
-$Dbasexoffset=20;		// position the entire descendancy tree relative to the left of the page
-$Dbxspacing=5;			// horizontal spacing between boxes
-$Dbyspacing=10;			// vertical spacing between boxes
-$Dbwidth=260;			// width of DIV layer boxes
-$Dbheight=80;			// height of DIV layer boxes
-$Dindent=15;			// width to indent descendancy boxes
-$Darrowwidth=30;		// additional width to include for the up arrows
+// Descendancy and relationship chart variables
+$Dbaseyoffset = 20;  // position the entire descendancy tree relative to the top of the page
+$Dbasexoffset = 20;  // position the entire descendancy tree relative to the left of the page
+$Dbxspacing   = 5;   // horizontal spacing between boxes
+$Dbyspacing   = 10;  // vertical spacing between boxes
+$Dbwidth      = 260; // width of DIV layer boxes
+$Dbheight     = 80;  // height of DIV layer boxes
+$Dindent      = 15;  // width to indent descendancy boxes
+$Darrowwidth  = 30;  // additional width to include for the up arrows
 
-// -- Dimensions for compact version of chart displays
-$cbwidth=240;
-$cbheight=50;
+// Compact version of chart displays
+$cbwidth  = 240;
+$cbheight = 50;
 
-// --  The largest possible area for charts is 300,000 pixels. As the maximum height or width is 1000 pixels
-$WT_STATS_S_CHART_X=440;
-$WT_STATS_S_CHART_Y=125;
-$WT_STATS_L_CHART_X=900;
-// --  For map charts, the maximum size is 440 pixels wide by 220 pixels high
-$WT_STATS_MAP_X=440;
-$WT_STATS_MAP_Y=220;
+// The largest possible area for charts is 300,000 pixels. As the maximum height or width is 1000 pixels
+$WT_STATS_S_CHART_X = 440;
+$WT_STATS_S_CHART_Y = 125;
+$WT_STATS_L_CHART_X = 900;
 
-$WT_STATS_CHART_COLOR1="ffffff";
-$WT_STATS_CHART_COLOR2="9ca3d4";
-$WT_STATS_CHART_COLOR3="e5e6ef";
+// For map charts, the maximum size is 440 pixels wide by 220 pixels high
+$WT_STATS_MAP_X = 440;
+$WT_STATS_MAP_Y = 220;
+
+$WT_STATS_CHART_COLOR1 = "ffffff";
+$WT_STATS_CHART_COLOR2 = "9ca3d4";
+$WT_STATS_CHART_COLOR3 = "e5e6ef";

@@ -47,15 +47,13 @@ echo
 	'<meta charset="UTF-8">',
 	'<title>', WT_Filter::escapeHtml($title), '</title>',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">';
-	
-echo
+	'<link rel="icon" href="', WT_CSS_URL, 'favicon.png" type="image/png">',
 	'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">',
-	'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'style.css', '">';
+	'<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, 'style.css', '">';
 
 switch ($BROWSERTYPE) {
 case 'msie':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css">';
+	echo '<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, $BROWSERTYPE, '.css">';
 	break;
 }
 

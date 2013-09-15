@@ -43,14 +43,14 @@ echo
 	'<head>',
 	'<meta charset="UTF-8">',
 	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">',
+	'<link rel="icon" href="', WT_CSS_URL, 'favicon.png" type="image/png">',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css" type="text/css">',
-	'<link rel="stylesheet" href="', WT_THEME_URL, 'style.css', '" type="text/css" media="all">',
+	'<link rel="stylesheet" href="', WT_CSS_URL, 'style.css', '" type="text/css" media="all">',
 	'<meta name="robots" content="noindex,nofollow">';
 	
 switch ($BROWSERTYPE) {
 case 'msie':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css">';
+	echo '<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, $BROWSERTYPE, '.css">';
 	break;
 }
 

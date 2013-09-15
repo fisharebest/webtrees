@@ -31,7 +31,7 @@ $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addInlineJavascript('activate_colorbox();')
-	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"70%", height:"70%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"})') 
+	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"70%", height:"70%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"});') 
 	->addInlineJavascript('
 		jQuery.extend(jQuery.colorbox.settings, {
 			title:	function(){
@@ -47,14 +47,13 @@ echo
 	'<meta charset="UTF-8">',
 	'<title>', WT_Filter::escapeHtml($title), '</title>',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">',
+	'<link rel="icon" href="', WT_CSS_URL, 'favicon.png" type="image/png">',
 	'<link rel="stylesheet" type="text/css" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">',
-	'<link rel="stylesheet" type="text/css" href="', WT_THEME_URL, 'style.css', '">';
+	'<link rel="stylesheet" type="text/css" href="', WT_CSS_URL, 'style.css', '">';
 
 switch ($BROWSERTYPE) {
-//case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
 case 'msie':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css">';
+	echo '<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, $BROWSERTYPE, '.css">';
 	break;
 }
 

@@ -26,17 +26,22 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-$theme_name = "_administration"; // need double quotes, as file is scanned/parsed by script
-$headerfile = WT_THEME_DIR.'header.php';
-$footerfile = WT_THEME_DIR.'footer.php';
+// Theme name - this needs double quotes, as file is scanned/parsed by script
+$theme_name = "_administration";
 
-//- main icons
+// A version number in the path prevents browser-cache problems during upgrade
+define('WT_CSS_URL', WT_THEME_URL . 'css-1.5.0/');
+
+$headerfile = WT_THEME_DIR . 'header.php';
+$footerfile = WT_THEME_DIR . 'footer.php';
+
+// Main icons
 $WT_IMAGES=array(
-	// lightbox module uses this in manage media links, and also admin_media.php for delete folder.
-	'remove'         =>WT_THEME_URL.'images/delete.png',
+	// Lightbox module uses this in manage media links, and also admin_media.php for delete folder.
+	'remove'          => WT_CSS_URL . 'images/delete.png',
 
-	// need different sizes before moving to CSS
-	'default_image_F'=>WT_THEME_URL.'images/silhouette_female.png',
-	'default_image_M'=>WT_THEME_URL.'images/silhouette_male.png',
-	'default_image_U'=>WT_THEME_URL.'images/silhouette_unknown.png',
+	// Need different sizes before moving to CSS
+	'default_image_F' => WT_CSS_URL . 'images/silhouette_female.png',
+	'default_image_M' => WT_CSS_URL . 'images/silhouette_male.png',
+	'default_image_U' => WT_CSS_URL . 'images/silhouette_unknown.png',
 );

@@ -51,10 +51,10 @@ echo
 	'<meta charset="UTF-8">',
 	'<title>', WT_Filter::escapeHtml($title), '</title>',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">',
+	'<link rel="icon" href="', WT_CSS_URL, 'favicon.png" type="image/png">',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css" type="text/css">',
-	'<link rel="stylesheet" href="', WT_THEME_URL, 'css/colors.css" type="text/css">',
-	'<link rel="stylesheet" href="', WT_THEME_URL,  'css/',  $subColor,  '.css" type="text/css" media="all">';
+	'<link rel="stylesheet" href="', WT_CSS_URL, 'css/colors.css" type="text/css">',
+	'<link rel="stylesheet" href="', WT_CSS_URL,  'css/',  $subColor,  '.css" type="text/css" media="all">';
 
 if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPad')) {
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.8, maximum-scale=2.0" />';
@@ -63,10 +63,10 @@ if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPad')) {
 
 switch ($BROWSERTYPE) {
 case 'msie':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css">';
+	echo '<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, $BROWSERTYPE, '.css">';
 	break;
 case 'ipad':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css">';
+	echo '<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, $BROWSERTYPE, '.css">';
 	break;
 }
 
