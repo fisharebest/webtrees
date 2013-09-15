@@ -175,6 +175,11 @@ width:100%;
 .new { outline: solid blue 1px; }
 .old { outline: solid red  1px; }
 
+/* Set stack level for top two header menu rows */
+.makeMenu ul, #main-menu ul {
+	z-index:210;
+	}
+
 /* Use CSS menus based on nested <ul> */
 .makeMenu li {
 	background:none !important;
@@ -200,7 +205,6 @@ width:100%;
 	top:1.1em;
 	background-color:#eeeeee;
 	border:thin solid #aaaaaa;
-	z-index:999;
 }
 
 html[dir=rtl] .makeMenu li ul {

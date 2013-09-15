@@ -41,16 +41,20 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[dir=rtl] input:required:invalid, html[dir=rtl] textarea:required:invalid {background-position:left top;}
 
 /* ======= Layout for top header ======= */
+
+/* Set stack level for top two header menu rows */
+.makeMenu ul, #main-menu ul {z-index:210;}
+
 .makeMenu {font-size:14px;}
 ul.makeMenu div {float:right;}
 .makeMenu li {background:none !important;border:1px solid #999999;display:inline;float:left;line-height:26px;position:relative;white-space:nowrap;}
 li.title {border:0;font-size:26px;font-weight:900;}
 .makeMenu li a {padding:5px 8px;}
-.makeMenu li ul {display:none;font-weight:normal;font-size:12px;position:absolute;left:0;right:auto;top:26px;background-color:#ffffff;border:1px solid #999999;z-index:999;}
+.makeMenu li ul {display:none;font-weight:normal;font-size:12px;position:absolute;left:0;right:auto;top:26px;background-color:#ffffff;border:1px solid #999999;}
 /* position sub-menus */
 .makeMenu ul ul {background:#eeeeee;top:0;left:100px;}
 .makeMenu li ul li {border:0;clear:both;display:block;line-height:2;text-align:left;}
-.makeMenu, .makeMenu li ul {list-style:none;margin:0;padding:1px;z-index:3000;}
+.makeMenu, .makeMenu li ul {list-style:none;margin:0;padding:1px;}
 .makeMenu li:hover > ul {display:block;}
 .makeMenu ul li a {padding:0 5px 0 2px;display:block;}
 .lang-active, .theme-active {font-weight:900;}
@@ -69,10 +73,10 @@ html[dir=rtl] .makeMenu li ul li {text-align:right;}
 #topMenu ul li a {display:block;font-size:14px;text-align:center;padding:5px;background-color:#ffffff;}
 
 /* Subnavigation section */	
-#topMenu ul li ul {position:absolute;top:27px;left:0;right:auto;display:none;background:#ffffff;white-space:nowrap;border:1px solid #999999;z-index:600;}
+#topMenu ul li ul {position:absolute;top:27px;left:0;right:auto;display:none;background:#ffffff;white-space:nowrap;border:1px solid #999999;}
 
 /* sub-sub-menus */
-#topMenu ul ul ul {top:0;left:96px;border:1px solid #999999;z-index:2100;} 
+#topMenu ul ul ul {top:0;left:96px;border:1px solid #999999;} 
 #topMenu ul ul li {float:left;width:100%;border:0;left:auto;margin:0;padding:0;clear:left;}
 #topMenu ul ul li a {padding:5px;text-align:left;font-size:12px;}
 

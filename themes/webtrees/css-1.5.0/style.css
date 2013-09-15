@@ -545,17 +545,20 @@ html[dir=rtl] .faq_top {float:left;}
 html[dir=rtl] .faq_edit {float:left;}
 
 /* ======= Header menu styles ========== */
+
+/* Set stack level for top two header menu rows */
+.makeMenu ul, #main-menu ul {z-index:210;}
+
 #topMenu {border-top:2px solid #81A9CB;border-bottom:2px solid #81A9CB;float:left;margin:5px auto;padding:5px 0;position:relative;width:100%;}
-#main-menu {clear:both;position:relative;z-index:50;float:right;right:50%;}
+#main-menu {clear:both;position:relative;float:right;right:50%;}
 #main-menu,
-#main-menu ul {padding:0;margin:0;list-style-type:none;z-index:210;}
-#main-menu ul ul {z-index:60;}
+#main-menu ul {padding:0;margin:0;list-style-type:none;}
 #main-menu li {float:left;position:relative;left:50%;}
 #main-menu li li {clear:both;}
 #main-menu li:hover > ul {display:block;position:absolute;top:0;left:100%;right:auto;}
 #main-menu > li:hover > ul {left:0;right:auto;top:66px;}
 #main-menu a {display:block;white-space:nowrap;overflow:hidden;}
-#main-menu ul {position:absolute;display:none;background:#ffffff;border:thin solid #aaaaaa;padding:5px 0;z-index:99;}
+#main-menu ul {position:absolute;display:none;background:#ffffff;border:thin solid #aaaaaa;padding:5px 0;}
 #main-menu li a {margin:auto;padding-top:52px;width:100%;}
 #main-menu li li a {display:block;position:relative;float:left;font-size:11px;line-height:1.5;padding:1px 10px 1px 5px;}
 
@@ -679,7 +682,7 @@ html[dir=rtl] #main-menu li li a {float:right;padding:1px 5px 1px 10px;}
 .makeMenu {font-weight:bold;}
 .makeMenu li {display:inline;position:relative;white-space:nowrap;border-left:2px solid;padding:0 5px;}
 .makeMenu li:first-child, .makeMenu li ul li {border:none;}
-.makeMenu li ul {display:none;font-weight:normal;position:absolute;top:1.1em;background-color:#ffffff;border:thin solid #aaaaaa;z-index:999;}
+.makeMenu li ul {display:none;font-weight:normal;position:absolute;top:1.1em;background-color:#ffffff;border:thin solid #aaaaaa;}
 .makeMenu li ul li {padding:2px;display:block;text-align:left;}
 .makeMenu, .makeMenu li ul {list-style:none;margin:0;padding:1px;}
 .makeMenu li:hover > ul {display:block;}

@@ -66,6 +66,9 @@ html[dir=rtl] .hsearch {float:left;padding-left:10px;}
 
 #flash-messages {clear:both;}
 
+/* Set stack level for top two header menu rows */
+.makeMenu ul, #main-menu ul {z-index:210;}
+
 /* Options Menu Layout */
 #optionsmenu {
 	background:#84beff;
@@ -75,7 +78,6 @@ html[dir=rtl] .hsearch {float:left;padding-left:10px;}
 	font-weight:bold;
 	font-size:11px;
 	height:40px;
-	z-index:100;
 	position:relative;
 }
 
@@ -93,7 +95,6 @@ html[dir=rtl] #login-menu {left:auto;right:50%}
 html[dir=rtl] #lang-menu {float:left;margin-left:10px;text-align:left;}
 html[dir=rtl] #lang-menu .makeMenu li ul {right:auto;left:0;}
 
-#optionsmenu{z-index:211;}
 .makeMenu li {display:inline;position:relative;white-space:nowrap;}
 .makeMenu a {color:#ffffff;font-weight:bold;}
 .makeMenu a:hover {color:#ff0000;}
@@ -112,7 +113,7 @@ html[dir=rtl] #extra-menu {text-align:left;}
 html[dir=rtl] #extra-menu.makeMenu li ul {left:0;right:auto;}
 
 /* ======= Main menu items ========== */
-#topMenu                   {border-bottom:2px solid #0073cf;float:left;height:45px;margin-bottom:10px;padding:5px 0 10px 0;position:relative;width:100%;z-index:210;}
+#topMenu                   {border-bottom:2px solid #0073cf;float:left;height:45px;margin-bottom:10px;padding:5px 0 10px 0;position:relative;width:100%;}
 #main-menu                 {clear:both;position:relative;float:right;right:50%;margin-top:5px;}
 #main-menu,
 #main-menu ul              {padding:0;list-style-type:none;}
@@ -696,7 +697,6 @@ html[dir=rtl] .icon {
 .submenu {
 	visibility:hidden;
 	position:absolute;
-	z-index:100;
 	color:#000000;
 	text-decoration:none;
 	font-size:11px;

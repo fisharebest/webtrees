@@ -54,6 +54,9 @@ background-image:url(images/clouds.png);
 height:30px;
 }
 
+/* Set stack level for top menu row */
+.makeMenu ul, #main-menu ul {z-index:210;}
+
 .title {
 color:#003399;
 float:left;
@@ -119,7 +122,6 @@ position:absolute;
 top:22px;
 left:0;
 right:auto;
-z-index:210;
 background:#ffffff;
 border:1px solid #cccccc;
 display:none;
@@ -344,7 +346,6 @@ height: auto;
 display:inline;
 position:relative;
 white-space:nowrap;
-z-index:100;
 }
 
 .makeMenu li:before {
@@ -358,7 +359,6 @@ display:none;
 left:10px;
 position:absolute;
 top:1.1em !important;
-z-index:999;
 }
 .makeMenu li ul li {
 display:block;
