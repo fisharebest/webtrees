@@ -4161,7 +4161,7 @@ msgid "Custom"
 msgstr "مخصص"
 
 #: calendar.php:269 includes/functions/functions_print.php:1063
-msgid "Custom Event"
+msgid "Custom event"
 msgstr "حدث مخصص"
 
 #: find.php:480

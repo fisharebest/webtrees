@@ -4040,7 +4040,7 @@ msgid "Custom"
 msgstr "Egendefinert"
 
 #: calendar.php:269 includes/functions/functions_print.php:1063
-msgid "Custom Event"
+msgid "Custom event"
 msgstr "Egendefinert hendelse"
 
 #: find.php:480

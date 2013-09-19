@@ -4045,7 +4045,7 @@ msgid "Custom"
 msgstr "Omat asetukset"
 
 #: calendar.php:269 includes/functions/functions_print.php:1063
-msgid "Custom Event"
+msgid "Custom event"
 msgstr "Erikoistapahtuma"
 
 #: find.php:480

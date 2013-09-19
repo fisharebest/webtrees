@@ -4023,7 +4023,7 @@ msgid "Custom"
 msgstr "Tùy thích"
 
 #: calendar.php:269 includes/functions/functions_print.php:1063
-msgid "Custom Event"
+msgid "Custom event"
 msgstr "Sự việc riêng rẽ"
 
 #: find.php:480

@@ -4070,7 +4070,7 @@ msgid "Custom"
 msgstr "Произвольный"
 
 #: calendar.php:269 includes/functions/functions_print.php:1063
-msgid "Custom Event"
+msgid "Custom event"
 msgstr "Нестандартное событие"
 
 #: find.php:480

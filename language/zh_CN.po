@@ -4022,7 +4022,7 @@ msgid "Custom"
 msgstr "定制"
 
 #: calendar.php:269 includes/functions/functions_print.php:1063
-msgid "Custom Event"
+msgid "Custom event"
 msgstr "自定义事件"
 
 #: find.php:480

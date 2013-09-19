@@ -4068,7 +4068,7 @@ msgid "Custom"
 msgstr "Uživateľský"
 
 #: calendar.php:269 includes/functions/functions_print.php:1063
-msgid "Custom Event"
+msgid "Custom event"
 msgstr "Vlastná udalosť"
 
 #: find.php:480

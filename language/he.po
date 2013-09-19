@@ -4044,7 +4044,7 @@ msgid "Custom"
 msgstr "מותאם"
 
 #: calendar.php:269 includes/functions/functions_print.php:1063
-msgid "Custom Event"
+msgid "Custom event"
 msgstr "מאורע מותאם"
 
 #: find.php:480

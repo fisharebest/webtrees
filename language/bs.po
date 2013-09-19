@@ -4059,7 +4059,7 @@ msgid "Custom"
 msgstr "Prilagođen"
 
 #: calendar.php:269 includes/functions/functions_print.php:1063
-msgid "Custom Event"
+msgid "Custom event"
 msgstr "Kastomizirani događaj"
 
 #: find.php:480

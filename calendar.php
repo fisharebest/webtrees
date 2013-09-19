@@ -266,7 +266,7 @@ if ($filterev == "EMIG") echo ' selected="selected"';
 echo '>', WT_Gedcom_Tag::getLabel('EMIG'), '</option>';
 echo '<option value="EVEN"';
 if ($filterev == "EVEN") echo ' selected="selected"';
-echo '>', WT_I18N::translate('Custom Event'), '</option>';
+echo '>', WT_I18N::translate('Custom event'), '</option>';
 echo '</select>';
 
 
