@@ -117,8 +117,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '<table border="0" width="100%"><tr><td>';
 			echo '<table width="100%" border="0" class="facts_table">';
 			echo '<tr><td valign="top">';
-			echo '<div id="googlemap_left">';
-			echo '<img src="', $WT_IMAGES['hline'], '" width="', $GOOGLEMAP_XSIZE, '" height="3" alt="">';
 			echo '<div id="map_pane" style="border: 1px solid gray; color: black; width: 100%; height: ', $GOOGLEMAP_YSIZE, 'px"></div>';
 			if (WT_USER_IS_ADMIN) {
 				echo '<table width="100%"><tr>';
@@ -133,7 +131,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				echo '</td>';
 				echo '</tr></table>';
 			}
-			echo '</div>';
 			echo '</td>';
 			echo '<td valign="top" width="30%">';
 			echo '<div id="map_content">';
@@ -744,17 +741,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				if ($name == WT_I18N::translate('Private')) $priv++;
 				$place = $person->getBirthPlace();
 				if (empty($place)) {
-					$latlongval[$i] = NULL;
+					$latlongval[$i] = null;
 				} else {
 					$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
-					if ($latlongval[$i] != NULL && $latlongval[$i]['lati']=='0' && $latlongval[$i]['long']=='0') {
-						$latlongval[$i] = NULL;
-					}
 				}
-				if ($latlongval[$i] != NULL) {
-					$lat[$i] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]['lati']);
-					$lon[$i] = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]['long']);
-					if (($lat[$i] != NULL) && ($lon[$i] != NULL)) {
+				if ($latlongval[$i]) {
+					$lat[$i] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]->pl_lati);
+					$lon[$i] = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]->pl_long);
+					if (($lat[$i] != null) && ($lon[$i] != null)) {
 						$count++;
 					} else { // The place is in the table but has empty values
 						if ($name) {
@@ -1268,13 +1262,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						addslashes($person->getBirthDate()->Display(false)).'<br>'.$person->getBirthPlace();
 
 				$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
-				if ($latlongval[$i] != NULL) {
-					$lat[$i] = (double)str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]['lati']);
-					$lon[$i] = (double)str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]['long']);
+				if ($latlongval[$i]) {
+					$lat[$i] = (double)str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]->pl_lati);
+					$lon[$i] = (double)str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]->pl_long);
 					if ($lat[$i] || $lon[$i]) {
-						if ((!$hideflags) && ($latlongval[$i]['icon'] != NULL)) {
-							$flags[$i] = $latlongval[$i]['icon'];
-							$ffile = strrchr($latlongval[$i]['icon'], '/');
+						if (!$hideflags && $latlongval[$i]->pl_icon) {
+							$flags[$i] = $latlongval[$i]->pl_icon;
+							$ffile = strrchr($latlongval[$i]->pl_icon, '/');
 							$ffile = substr($ffile,1, strpos($ffile, '.')-1);
 							if (empty($flags[$ffile])) {
 								$flags[$ffile] = $i; // Only generate the flag once
@@ -1341,7 +1335,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					}
 				}
 			} else {
-				$latlongval[$i] = NULL;
+				$latlongval[$i] = null;
 			}
 		}
 		$js.='pm_map.setCenter(bounds.getCenter());'.

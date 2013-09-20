@@ -1,7 +1,7 @@
 /*
  * webtrees googlemap V3 css
  *
- * webtrees:Web based Family History software
+ * webtrees: Web based Family History software
  * Copyright (C) 2013 webtrees development team.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -19,87 +19,283 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#googlemap_left{ margin-top:-14px; }
-div.infowindow { max-height:260px; overflow-x:hidden; }
+div.infowindow {
+	max-height: 240px;
+	overflow-x: hidden;
+}
 
-#iwhead { text-align:center; font-size:10px; white-space:normal; margin-right:0; margin-left:-2px; margin-top:-1px; background:#ffffff; border-top:1px solid #bbbbbb; border-bottom:1px solid #bbbbbb; border-left:0 solid #bbbbbb; border-right:0 solid #bbbbbb; padding-left:.2em; padding-right:.2em; padding-top:.3em; padding-bottom:.3em; width:300px; }
-#iwhead a:hover { color:red; }
-#iwcontent { border:1px solid #bbbbbb; margin-right:0; }
-#iwcontent a { color:black; }
-#iwhead a { color:#0000cc; }
-#iwcontent a:hover { color:red; }
+#iwhead {
+	background: #ffffff;
+	border-bottom: 1px solid #bbbbbb;
+	border-left: 0 solid #bbbbbb;
+	border-right: 0 solid #bbbbbb;
+	border-top: 1px solid #bbbbbb;
+	font-size: 10px;
+	margin-left: -2px;
+	margin-right: 0;
+	margin-top: -1px;
+	padding-bottom: .3em;
+	padding-left: .2em;
+	padding-right: .2em;
+	padding-top: .3em;
+	text-align: center;
+	white-space: normal;
+	width: 300px;
+}
 
-#gmtabs { background-color:#eeeeee; }
-#gmtabs ul { border:0; }
+#iwhead a:hover {
+	color: #f00;
+}
 
-h4 { margin-bottom:-0.1em; }
+#iwcontent {
+	border: 1px solid #bbbbbb;
+	margin-right: 0;
+}
 
-#txt { width:300px; margin-top:-8px; margin-left:-8px; background:#ffffcc; text-align:center; }
-#pano { width:297px; height:216px; margin-left:0; margin-top:0; border-top:1px solid #aaaaaa; }
+#iwcontent a {
+	color: #000;
+}
 
-.highlt_img { background-color:#eeeeee; text-align:center; }
-.highlt_img img{ float:none; border:none; }
+#iwhead a {
+	color: #0000cc;
+}
+
+#iwcontent a:hover {
+	color: #f00;
+}
+
+#gmtabs {
+	background-color: #eeeeee;
+}
+
+#gmtabs ul {
+	border: 0;
+}
+
+h4 {
+	margin-bottom: -0.1em;
+}
+
+#txt {
+	width: 300px;
+ 	background: #ffffcc;
+ 	margin-left: -8px;
+ 	margin-top: -8px;
+ 	text-align: center;
+}
+
+#pano {
+	width: 297px;
+ 	border-top: 1px solid #aaaaaa;
+ 	height: 216px;
+ 	margin-left: 0;
+ 	margin-top: 0;
+}
+
+.highlt_img {
+	background-color: #eeeeee;
+ 	text-align: center;
+}
+
+.highlt_img img {
+ 	border: none;
+	float: none;
+}
 
 /* root element for tabs */
-ul.tabs { margin:0 !important; padding:0; padding-left:2px; padding-top:2px; height:20px; border:1px solid #666; background:#ddeeff; width:296px; }
+ul.tabs {
+	margin: 0 !important;
+ 	background: #ddeeff;
+ 	border: 1px solid #666;
+ 	height: 20px;
+ 	padding-left: 2px;
+ 	padding-top: 2px;
+ 	padding: 0;
+}
+
 /* single tab */
-ul.tabs li { float:left; padding:0; margin:0; margin-left:2px; list-style-type:none; }
+ul.tabs li {
+	float: left;
+ 	list-style-type: none;
+ 	margin-left: 2px;
+ 	margin: 0;
+ 	padding: 0;
+}
+
 /* link inside the tab. uses a background image */
-ul.tabs a { float:left; font-size:13px; display:block; /* padding:5px 30px; */ padding:0 10px; text-decoration:none; border:1px solid #666; border-bottom:0; height:18px; background-color:#efefef; color:#777; margin-right:2px; position:relative; top:1px; outline:0; border-radius:4px 4px 0 0; }
-ul.tabs a:hover { background-color:#ffffff; color:#333; } 
+ul.tabs a {
+	background-color: #efefef;
+	border-bottom: 0;
+	border-radius: 4px 4px 0 0;
+	border: 1px solid #666;
+	color: #777;
+	float: left;
+	height: 18px;
+	margin-right: 2px;
+	outline: 0;
+	position: relative;
+	text-decoration: none;
+	top: 1px;
+ 	display: block;
+ 	font-size: 13px;
+ 	padding: 0 10px;
+}
+
+ul.tabs a:hover {
+	background-color: #ffffff;
+ 	color: #333;
+} 
+
 /* selected tab */
-ul.tabs a.current { background-color:#fff; border-bottom:1px solid #ddd; color:#000; cursor:default; }
+ul.tabs a.current {
+	background-color: #fff;
+ 	border-bottom: 1px solid #ddd;
+ 	color: #000;
+ 	cursor: default;
+}
+
 /* tabs */
-#EV { background:#ffffff; padding-bottom:1px; }
-#SV { background:#cccccc; padding-bottom:0; }
+#EV {
+	background: #ffffff;
+ 	padding-bottom: 1px;
+}
+
+#SV {
+	background: #cccccc;
+ 	padding-bottom: 0;
+}
+
 /* tab panes */
-#pane1 { display:block; }
-#pane2 { display:none; }
-#pane3 { display:none; }
-#pane3_text, #pane4_text { margin-left:10px; }
+#pane1 {
+	display: block;
+}
+
+#pane2 {
+	display: none;
+}
 
 /* view_type */
-#view_type { display:block; margin-top:-12px; }
-#view_type td { width:360px; }
-#view_type form{ width:360px; text-align:center; }
+#view_type {
+	display: block;
+ 	margin-top: -12px;
+}
 
-/* Elements To be defined later (leave as dislay:none; for now) */ 
-/* sidebar */
-#s_bar { display:none; width:370px; border:1px solid black; margin-bottom:1em; }
-#s_bar td{ padding-left:5px; width:370px; text-decoration:none; color:#4444ff; background:#aabbd8; }
+#view_type td {
+	width: 360px;
+}
 
-/* TODO: use the same markup as the icons on the facts/events tab? */
-.icon_BAPM, .icon_CHR, .icon_RETI, .icon_CENS, .icon_BURI, .icon_CREM, .icon__MILI, .icon_RESI, .icon_DEAT, .icon_OCCU, .icon_BIRT { display:block; background:url('../images/css_sprite_facts.png') no-repeat; }
-.icon_BAPM,
-.icon_CHR   { background-position:-0px -0px; width:60px; height:60px; }
-.icon_RETI  { background-position:-60px -0px; width:60px; height:60px; }
-.icon_CENS  { background-position:-120px -0px; width:60px; height:60px; }
-.icon_CREM,
-.icon_BURI  { background-position:-0px -60px; width:60px; height:60px; }
-.icon__MILI { background-position:-60px -60px; width:60px; height:60px; }
-.icon_RESI  { background-position:-120px -60px; width:60px; height:60px; }
-.icon_DEAT  { background-position:-0px -120px; width:60px; height:60px; }
-.icon_OCCU  { background-position:-60px -120px; width:60px; height:60px; }
-.icon_BIRT  { background-position:-120px -120px; width:60px; height:60px; }
+#view_type form {
+ 	text-align: center;
+	width: 360px;
+}
 
 /* places_edit */
-#gname { vertical-align:middle; margin-top:0; white-space:pre-wrap; width:200px; height:60px; }
-#namelink { padding-bottom:5px; }
-#iwcontent_edit { background-color:#eeeeee; border:1px solid #bbbbbb; height:60px; margin-right:0; }
-#iwcontent_edit a { color:black; }
-#iwcontent_edit a:hover { color:red; }
-.optionbox #gname{ white-space:normal; }
+#gname {
+	vertical-align: middle;
+ 	height: 60px;
+ 	margin-top: 0;
+ 	white-space: pre-wrap;
+ 	width: 200px;
+}
+
+#namelink {
+	padding-bottom: 5px;
+}
+
+#iwcontent_edit {
+	background-color: #eeeeee;
+ 	border: 1px solid #bbbbbb;
+ 	height: 60px;
+ 	margin-right: 0;
+}
+
+#iwcontent_edit a {
+	color: #000;
+}
+
+#iwcontent_edit a:hover {
+	color: #f00;
+}
+
+.optionbox #gname {
+	white-space: normal;
+}
 
 /* googlemap_style */
-#map_type { margin:0; padding:0; font-family:Arial; font-size:10px; list-style:none; }
-#map_type li { display:block; width:70px; text-align:center; padding:2px; border:1px solid black; cursor:pointer; float:left; margin-left:2px; }
-#map_type li.non_active { background:white; color:black; font-weight:normal; }
-#map_type li.active { background:gray; color:white; font-weight:bold; }
-#map_type li:hover { background:#ddd; }
-#googlemap_left { margin-top:-14px !important; }
+#map_type {
+	margin: 0;
+ 	font-family: Arial;
+ 	font-size: 10px;
+ 	list-style: none;
+ 	padding: 0;
+}
 
-#side_bar .gallery img, .iwstyle .gallery img, .highlt_img .gallery img { float:left;margin:0 4px 0 0;height:50px;width:auto;max-width:50px; }
-html[dir="rtl"] #side_bar .gallery img, html[dir="rtl"] .iwstyle .gallery img, html[dir="rtl"] .highlt_img .gallery img { float:right;margin:0 0 0 4px; }
-#side_bar .icon-silhouette-M, #side_bar .icon-silhouette-F, #side_bar .icon-silhouette-U, .iwstyle .icon-silhouette-M, .iwstyle .icon-silhouette-F, .iwstyle .icon-silhouette-U { float:left; }
-html[dir="rtl"] #side_bar .icon-silhouette-M, html[dir="rtl"] #side_bar .icon-silhouette-F, html[dir="rtl"] #side_bar .icon-silhouette-U, html[dir="rtl"] .iwstyle .icon-silhouette-M, html[dir="rtl"] .iwstyle .icon-silhouette-F, html[dir="rtl"] .iwstyle .icon-silhouette-U  { float:right; }
-#pedigreemap_chart { margin:20px; }
+#map_type li {
+	display: block;
+ 	border: 1px solid #000;
+ 	cursor: pointer;
+ 	float: left;
+ 	margin-left: 2px;
+ 	padding: 2px;
+ 	text-align: center;
+ 	width: 70px;
+}
+
+#map_type li.non_active {
+	background: #fff;
+ 	color: #000;
+ 	font-weight: normal;
+}
+
+#map_type li.active {
+	background: #888;
+ 	color: #fff;
+ 	font-weight: bold;
+}
+
+#map_type li:hover {
+	background: #ddd;
+}
+
+#googlemap_left {
+	margin-top: -14px !important;
+}
+
+#side_bar .gallery img,
+.iwstyle .gallery img,
+.highlt_img .gallery img {
+	float: left;
+	height: 50px;
+	margin: 0 4px 0 0;
+	max-width: 50px;
+	width: auto;
+}
+
+html[dir="rtl"] #side_bar .gallery img,
+html[dir="rtl"] .iwstyle .gallery img,
+html[dir="rtl"] .highlt_img .gallery img {
+	float: right;
+	margin: 0 0 0 4px;
+}
+
+#side_bar .icon-silhouette-M,
+#side_bar .icon-silhouette-F,
+#side_bar .icon-silhouette-U,
+.iwstyle .icon-silhouette-M,
+.iwstyle .icon-silhouette-F,
+.iwstyle .icon-silhouette-U {
+	float: left;
+}
+
+html[dir="rtl"] #side_bar .icon-silhouette-M,
+html[dir="rtl"] #side_bar .icon-silhouette-F,
+html[dir="rtl"] #side_bar .icon-silhouette-U,
+html[dir="rtl"] .iwstyle .icon-silhouette-M,
+html[dir="rtl"] .iwstyle .icon-silhouette-F,
+html[dir="rtl"] .iwstyle .icon-silhouette-U {
+	float: right;
+}
+
+#pedigreemap_chart {
+	margin: 20px;
+}
