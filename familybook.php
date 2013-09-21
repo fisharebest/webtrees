@@ -35,6 +35,7 @@ $controller
 <div id="familybook-page">
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form method="get" name="people" action="?">
+		<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 		<table class="list_table">
 			<tr>
 				<td class="descriptionbox">

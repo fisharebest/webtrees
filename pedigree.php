@@ -31,41 +31,48 @@ $controller
 	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
-echo '
+?>
 <div id="pedigree-page">
-	<h2>'. $controller->getPageTitle(). '</h2>
+	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form name="people" id="people" method="get" action="?">
-		<input type="hidden" name="show_full" value="'. $controller->show_full. '">
+		<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
+		<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
 		<table class="list_table">
 			<tr>
-				<th class="descriptionbox wrap">'. WT_I18N::translate('Individual'). '</th>
-				<th class="descriptionbox wrap">'. WT_I18N::translate('Generations'). '</th>
-				<th class="descriptionbox wrap">'. WT_I18N::translate('Layout'). '</th>
-				<th class="descriptionbox wrap">'. WT_I18N::translate('Show details'). '</th>
-				<th rowspan="2" class="facts_label03"><input type="submit" value="'. WT_I18N::translate('View'). '"></th>
+				<th class="descriptionbox wrap">
+					<?php echo WT_I18N::translate('Individual'); ?>
+				</th>
+				<th class="descriptionbox wrap">
+					<?php echo WT_I18N::translate('Generations'); ?>
+				</th>
+				<th class="descriptionbox wrap">
+					<?php echo WT_I18N::translate('Layout'); ?>
+				</th>
+				<th class="descriptionbox wrap">
+					<?php echo WT_I18N::translate('Show details'); ?>
+				</th>
+				<th rowspan="2" class="facts_label03">
+					<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
+				</th>
 			</tr>
 			<tr>
 				<td class="optionbox">
-					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="'. $controller->rootid. '">'. print_findindi_link('rootid'). '</td>
-				<td class="optionbox center">
-					<select name="PEDIGREE_GENERATIONS">';
-						for ($i=3; $i<=$MAX_PEDIGREE_GENERATIONS; $i++) {
-							echo '<option value="', $i, '"';
-							if ($i == $controller->PEDIGREE_GENERATIONS) echo ' selected="selected"';
-							echo '>', $i, '</option>';
-						}
-					echo '</select>
+					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>">
+					<?php echo print_findindi_link('rootid'); ?>
 				</td>
-				<td class="optionbox center">'. select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset). '</td>
 				<td class="optionbox center">
-					<input type="checkbox" value="';
-					if ($controller->show_full) echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';';
-					else echo '0" onclick="document.people.show_full.value=\'1\';';
-					echo '">
+					<?php echo edit_field_integers('PEDIGREE_GENERATIONS', $controller->PEDIGREE_GENERATIONS, 3, $MAX_PEDIGREE_GENERATIONS); ?>
+				</td>
+				<td class="optionbox center">
+					<?php echo select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset); ?>
+				</td>
+				<td class="optionbox center">
+					<input type="checkbox" value="<?php if ($controller->show_full) echo '1" checked="checked" onclick="document.people.show_full.value=\'0\'";'; else echo '0" onclick="document.people.show_full.value=\'1\';"'; ?>>
 				</td>
 			</tr>
 		</table>
-	</form>';
+	</form>
+<?php
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
 	exit;

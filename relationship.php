@@ -77,8 +77,8 @@ if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) 
 ?>
 <div id="relationship-page">
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
-	<form name="people" method="get" action="relationship.php">
-		<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
+	<form name="people" method="get" action="?">
+		<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 		<input type="hidden" name="path_to_find" value="0">
 		<table class="list_table">
 			<tr>

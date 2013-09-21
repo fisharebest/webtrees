@@ -252,4 +252,34 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '</ul>';
 		echo '</li>';
 	}
+
+	public function indi_desc($person, $n, $array) {
+		if ($n < 1) {
+			return $array;
+		}
+		$array[$person->getXref()]=$person;
+		foreach ($person->getSpouseFamilies() as $family) {
+			$spouse = $family->getSpouse($person);
+			if ($spouse) {
+				$array[$spouse->getXref()] = $spouse;
+			}
+			foreach ($family->getChildren() as $child) {
+				$array = $this->indi_desc($child, $n-1, $array);
+			}
+		}
+		return $array;
+	}
+
+	public function fam_desc($person, $n, $array) {
+		if ($n < 1) {
+			return $array;
+		}
+		foreach ($person->getSpouseFamilies() as $family) {
+			$array[$family->getXref()]=$family;
+			foreach ($family->getChildren() as $child) {
+				$array = $this->fam_desc($child, $n-1, $array);
+			}
+		}
+		return $array;
+	}
 }

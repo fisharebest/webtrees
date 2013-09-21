@@ -139,7 +139,8 @@ $people = count($controller->people);
 	<table>
 		<tr>
 			<td>
-				<form name="people" action="lifespan.php">
+				<form name="people" action="?">
+					<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 					<table>
 						<tr>
 							<td class="person0" style="padding: 5px" valign="top">
@@ -162,6 +163,7 @@ $people = count($controller->people);
 			</td>
 			<td>
 				<form name="buttons" action="lifespan.php" method="get">
+					<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 					<table>
 						<tr>
 							<td align="center"><?php echo WT_I18N::translate('Speed'); ?></td>

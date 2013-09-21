@@ -23,6 +23,7 @@
 
 define('WT_SCRIPT_NAME', 'descendancy.php');
 require './includes/session.php';
+require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 $controller=new WT_Controller_Descendancy();
@@ -31,125 +32,93 @@ $controller
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the "find indi" link
 
-echo '<div id="descendancy-page"><h2>', $controller->getPageTitle(), '</h2>';
-echo '<form method="get" name="people" action="?">';
-echo '<input type="hidden" name="ged" value="', WT_GEDCOM, '">';
-echo '<input type="hidden" name="show_full" value="', $controller->show_full, '">';
-echo '<table class="list_table">';
-echo '<tr><td class="descriptionbox">';
-echo WT_I18N::translate('Individual'), '</td>';
-echo '<td class="optionbox">';
-echo '<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="', $controller->rootid, '"> ';
-echo print_findindi_link('rootid');
-echo '</td>';
-echo '<td class="descriptionbox">';
-echo WT_I18N::translate('Box width'), '</td>';
-echo '<td class="optionbox"><input type="text" size="3" name="box_width" value="', $controller->box_width, '">';
-echo '<b>%</b></td>';
-echo '<td rowspan="2" class="descriptionbox">';
-echo WT_I18N::translate('Layout');
-echo '</td><td rowspan="2" class="optionbox">';
-echo '<input type="radio" name="chart_style" value="0"';
-if ($controller->chart_style==0) {
-	echo ' checked="checked"';
-}
-echo '>', WT_I18N::translate('List');
-echo '<br><input type="radio" name="chart_style" value="1"';
-if ($controller->chart_style==1) {
-	echo ' checked="checked"';
-}
-echo '>', WT_I18N::translate('Booklet');
-echo '<br><input type="radio" name="chart_style" value="2"';
-if ($controller->chart_style==2) {
-	echo ' checked="checked"';
-}
-echo '>', WT_I18N::translate('Individuals');
-echo '<br><input type="radio" name="chart_style" value="3"';
-if ($controller->chart_style==3) {
-	echo ' checked="checked"';
-}
-echo '>', WT_I18N::translate('Families');
-echo '</td><td rowspan="2" class="topbottombar">';
-echo '<input type="submit" value="', WT_I18N::translate('View'), '">';
-echo '</td></tr>';
-echo '<tr><td class="descriptionbox">';
-echo WT_I18N::translate('Generations'), '</td>';
-echo '<td class="optionbox"><select name="generations">';
-for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
-	echo '<option value="', $i, '"';
-	if ($i==$controller->generations) {
-		echo ' selected="selected"';
-	}
-	echo '>', WT_I18N::number($i), '</option>';
-}
-echo '</select></td><td class="descriptionbox">';
-echo WT_I18N::translate('Show details');
-echo '</td><td class="optionbox"><input type="checkbox" value="';
-if ($controller->show_full) {
-	echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';"';
-} else {
-	echo '0" onclick="document.people.show_full.value=\'1\';"';
-}
-echo '></td></tr></table></form>';
+?>
+<div id="descendancy-page"><h2><?php echo $controller->getPageTitle(); ?></h2>
+	<form method="get" name="people" action="?">
+		<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
+		<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
+		<table class="list_table">
+			<tr>
+				<td class="descriptionbox">
+					<?php	echo WT_I18N::translate('Individual'); ?>
+				</td>
+				<td class="optionbox">
+					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>">
+					<?php echo print_findindi_link('rootid'); ?>
+				</td>
+				<td class="descriptionbox">
+					<?php echo WT_I18N::translate('Box width'); ?>
+				</td>
+				<td class="optionbox">
+				<input type="text" size="3" name="box_width" value="<?php echo $controller->box_width; ?>">
+					<b>%</b>
+				</td>
+				<td rowspan="2" class="descriptionbox">
+					<?php echo WT_I18N::translate('Layout'); ?>
+				</td>
+				<td rowspan="2" class="optionbox">
+					<input type="radio" name="chart_style" value="0"<?php echo $controller->chart_style==0 ? ' checked="checked"' : ''; ?>>
+					<?php echo  WT_I18N::translate('List'); ?>
+					<br>
+					<input type="radio" name="chart_style" value="1"<?php echo $controller->chart_style==1 ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_I18N::translate('Booklet'); ?>
+					<br>
+					<input type="radio" name="chart_style" value="2"<?php echo $controller->chart_style==2 ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_I18N::translate('Individuals'); ?>
+					<br>
+					<input type="radio" name="chart_style" value="3"<?php echo $controller->chart_style==3 ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_I18N::translate('Families'); ?>
+				</td>
+				<td rowspan="2" class="topbottombar">
+					<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
+				</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox">
+					<?php echo WT_I18N::translate('Generations'); ?>
+				</td>
+				<td class="optionbox">
+					<?php echo edit_field_integers('generations', $controller->generations, 2, $MAX_DESCENDANCY_GENERATIONS); ?>
+				</td>
+				<td class="descriptionbox">
+					<?php echo WT_I18N::translate('Show details'); ?>
+				</td>
+					<td class="optionbox">
+						<input type="checkbox" value="<?php if ($controller->show_full) { echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';"'; } else { echo '0" onclick="document.people.show_full.value=\'1\';"'; } ?>>
+				</td>
+			</tr>
+		</table>
+	</form>
 
+<?php
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
-	exit;
-}
-
-switch ($controller->chart_style) {
-case 0: //-- list
-	echo '<ul style="list-style: none; display: block;" id="descendancy_chart">';
-	$controller->print_child_descendancy($controller->root, $controller->generations);
-	echo '</ul>';
-	break;
-case 1: //-- booklet
-	echo '<div id="descendancy_chart">';
-	$show_cousins = true;
-	$controller->print_child_family($controller->root, $controller->generations);
-	echo '</div>';
-	break;
-case 2: //-- Individual list
-	$descendants=indi_desc($controller->root, $controller->generations, array());
-	echo '<div id="descendancy-list">';
-	echo format_indi_table($descendants, WT_I18N::translate('Descendants of %s', $controller->name));
-	echo '</div>';
-	break;
-case 3: //-- Family list
-	$descendants=fam_desc($controller->root, $controller->generations, array());
-	echo '<div id="descendancy-list">';
-	echo format_fam_table($descendants, WT_I18N::translate('Descendants of %s', $controller->name));
-	echo '</div>';
-	break;
-}
-echo '</div>';// close #descendancy-page
-
-function indi_desc($person, $n, $array) {
-	if ($n<1) {
-		return $array;
+} else {
+	switch ($controller->chart_style) {
+	case 0: // List
+		echo '<ul style="list-style: none; display: block;" id="descendancy_chart">';
+		$controller->print_child_descendancy($controller->root, $controller->generations);
+		echo '</ul>';
+		break;
+	case 1: // Booklet
+		echo '<div id="descendancy_chart">';
+		$show_cousins = true;
+		$controller->print_child_family($controller->root, $controller->generations);
+		echo '</div>';
+		break;
+	case 2: // Individual list
+		$descendants = $controller->indi_desc($controller->root, $controller->generations, array());
+		echo '<div id="descendancy-list">';
+		echo format_indi_table($descendants, WT_I18N::translate('Descendants of %s', $controller->name));
+		echo '</div>';
+		break;
+	case 3: // Family list
+		$descendants = $controller->fam_desc($controller->root, $controller->generations, array());
+		echo '<div id="descendancy-list">';
+		echo format_fam_table($descendants, WT_I18N::translate('Descendants of %s', $controller->name));
+		echo '</div>';
+		break;
 	}
-	$array[$person->getXref()]=$person;
-	foreach ($person->getSpouseFamilies() as $family) {
-		$spouse = $family->getSpouse($person);
-		if ($spouse) {
-			$array[$spouse->getXref()] = $spouse;
-		}
-		foreach ($family->getChildren() as $child) {
-			$array=indi_desc($child, $n-1, $array);
-		}
-	}
-	return $array;
 }
-
-function fam_desc($person, $n, $array) {
-	if ($n<1) {
-		return $array;
-	}
-	foreach ($person->getSpouseFamilies() as $family) {
-		$array[$family->getXref()]=$family;
-		foreach ($family->getChildren() as $child) {
-			$array=fam_desc($child, $n-1, $array);
-		}
-	}
-	return $array;
-}
+?>
+</div>
