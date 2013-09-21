@@ -146,16 +146,24 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 			if ($ctla && $ctlo) {
 				$i++;
 				$gmarks[$i]=array(
-					'class'      => 'optionbox',
-					'fact_label' => $fact->getLabel(),
-					'info'       => WT_Filter::escapeHtml($fact->getValue()),
-					'lati'       => str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]),
-					'lng'        => str_replace(array('E', 'W', ','), array('', '-', '.') , $match2[1]),
-					'date'       => $fact->getDate()->Display(true),
-					'place'      => $fact->getPlace()->getFullName(),
-					'tooltip'    => $fact->getPlace()->getGedcomName(),
-					'name'       => $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '',
-					'image'      => $spouse ? $spouse->displayImage() : $fact->Icon(),
+					'class'        => 'optionbox',
+					'fact_label'   => $fact->getLabel(),
+					'info'         => WT_Filter::escapeHtml($fact->getValue()),
+					'lati'         => str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]),
+					'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.') , $match2[1]),
+					'date'         => $fact->getDate()->Display(true),
+					'place'        => $fact->getPlace()->getFullName(),
+					'tooltip'      => $fact->getPlace()->getGedcomName(),
+					'name'         => $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '',
+					'image'        => $spouse ? $spouse->displayImage() : $fact->Icon(),
+					'pl_icon'      => '',
+					'lati'         => '',
+					'lng'          => '',
+					'sv_lati'      => '',
+					'sv_long'      => '',
+					'sv_bearing'   => '',
+					'sv_elevation' => '',
+					'sv_zoom'      => '',
 				);
 			} else {
 				$latlongval = get_lati_long_placelocation($fact->getPlace()->getGedcomName());
@@ -171,10 +179,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 						'name'       => $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '',
 						'image'      => $spouse ? $spouse->displayImage() : $fact->Icon(),
 					);
-					$gmarks[$i]['pl_icon'] = $latlongval->pl_icon;
-					if ($GOOGLEMAP_MAX_ZOOM > $latlongval->pl_zoom) {
-						$GOOGLEMAP_MAX_ZOOM = $latlongval->pl_zoom;
-					}
+					$gmarks[$i]['pl_icon']      = $latlongval->pl_icon;
 					$gmarks[$i]['lati']         = str_replace(array('N', 'S', ','), array('', '-', '.') , $latlongval->pl_lati);
 					$gmarks[$i]['lng']          = str_replace(array('E', 'W', ','), array('', '-', '.') , $latlongval->pl_long);
 					$gmarks[$i]['sv_lati']      = $latlongval->sv_lati;
@@ -182,6 +187,9 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 					$gmarks[$i]['sv_bearing']   = $latlongval->sv_bearing;
 					$gmarks[$i]['sv_elevation'] = $latlongval->sv_elevation;
 					$gmarks[$i]['sv_zoom']      = $latlongval->sv_zoom;
+					if ($GOOGLEMAP_MAX_ZOOM > $latlongval->pl_zoom) {
+						$GOOGLEMAP_MAX_ZOOM = $latlongval->pl_zoom;
+					}
 				}
 			}
 		}
@@ -200,12 +208,20 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 					if ($ctla && $ctlo) {
 						$i++;
 						$gmarks[$i]=array(
-							'date'    => $birth->getDate()->Display(true),
-							'place'   => $birth->getPlace()->getFullName(),
-							'tooltip' => $birth->getPlace()->getGedcomName(),
-							'info'    => '',
-							'name'    => '<a href="' . $child->getHtmlUrl() . '"' . $child->getFullName() . '</a>',
-							'image'   => $child->displayImage(),
+							'date'         => $birth->getDate()->Display(true),
+							'place'        => $birth->getPlace()->getFullName(),
+							'tooltip'      => $birth->getPlace()->getGedcomName(),
+							'info'         => '',
+							'name'         => '<a href="' . $child->getHtmlUrl() . '"' . $child->getFullName() . '</a>',
+							'image'        => $child->displayImage(),
+							'pl_icon'      => '',
+							'lati'         => '',
+							'lng'          => '',
+							'sv_lati'      => '',
+							'sv_long'      => '',
+							'sv_bearing'   => '',
+							'sv_elevation' => '',
+							'sv_zoom'      => '',
 						);
 						switch ($child->getSex()) {
 						case'F':
