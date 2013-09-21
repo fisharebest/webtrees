@@ -173,13 +173,13 @@ function initialize() {
 
 	// --- Create the panorama ---
     var panoramaOptions = {
-      	navigationControl: false,
+      	navigationControl: true,
       	navigationControlOptions: {
       		position: google.maps.ControlPosition.TOP_RIGHT,	// BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
       		style: google.maps.NavigationControlStyle.SMALL  	// ANDROID, DEFAULT, SMALL, ZOOM_PAN
       	},
-      	linksControl: false,
-      	addressControl: false,
+      	linksControl: true,
+      	addressControl: true,
       	addressControlOptions: {
       		style: {
       			// display: 'none',									// USE CSS notation here
@@ -321,25 +321,8 @@ function toggleStreetView() {
     }
 }
 
-function toggleStreetViewControls() { 
-	if (panorama.get('addressControl') == false) {
-		panorama.set('navigationControl', true);
-		panorama.set('addressControl', true);
-		panorama.set('linksControl', true);
-		document.myForm.butt0.value='SV controls OFF';
-	} else {
-		panorama.set('navigationControl', false);
-		panorama.set('addressControl', false);
-		panorama.set('linksControl', false);
-		document.myForm.butt0.value='SV controls ON ';
-	}
-}
-
-
-
 function resetview() {
 	initialize();
-	document.myForm.butt0.value='SV controls ON ';
 }
 
 // Onload handler to fire off the app.
@@ -389,14 +372,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
   	
   	<div id="toggle">
   		<form name="myForm" title="myForm">
-<!--
-			<input type="button" value="street" name="sv_btn" onclick="addStreetViewOverlay()"></input>
--->
-
   			<?php
   			$map = $_GET['map'];
   			$reset = $_GET['reset'];
-  			echo '<input id="butt0" name ="butt0" type="button" value="SV controls ON " onclick="toggleStreetViewControls();"></input>';
   			echo '<input id="butt1" name ="butt1" type="button" value="', $map, '" onclick="toggleStreetView();"></input>';
   			echo '<input id="butt2" name ="butt2" type="button" value="', $reset, '" onclick="resetview();"></input>';
   			?>
