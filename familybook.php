@@ -80,7 +80,7 @@ $controller
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Descent Steps'), help_link('fambook_descent'); ?>
+					<?php echo WT_I18N::translate('Descent steps'), help_link('fambook_descent'); ?>
 				</td>
 				<td class="optionbox">
 					<input type="text" size="3" name="descent" value="<?php echo $controller->descent; ?>">

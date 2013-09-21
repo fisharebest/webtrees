@@ -60,7 +60,7 @@ case 'compose':
 	echo '<table>';
 	echo '<tr><th style="text-align:left;font-weight:900;" dir="auto;">'.WT_I18N::translate('Title:').'</th><tr>';
 	echo '<tr><td><input type="text" name="title" size="50" dir="auto" autofocus value="'.$news['title'].'"></td></tr>';
-	echo '<tr><th valign="top" style="text-align:left;font-weight:900;" dir="auto;">'.WT_I18N::translate('Entry Text:').'</th></tr>';
+	echo '<tr><th valign="top" style="text-align:left;font-weight:900;" dir="auto;">'.WT_I18N::translate('Entry text:').'</th></tr>';
 	echo '<tr><td>';
 	if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 		require_once WT_ROOT.WT_MODULES_DIR.'ckeditor/ckeditor.php';

@@ -317,7 +317,7 @@ function whoisonline() {
 			$content .= '<div class="logged_in_name">';
 			$content .= WT_Filter::escapeHtml(getUserFullName($user_id) . ' - ' . $user_name);
 			if (true || WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
-				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user_name) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send Message').'"></a>';
+				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user_name) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message').'"></a>';
 			}
 			$i++;
 			$content .= '</div>';
@@ -879,7 +879,7 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $l
 	if ($lds) {
 		if (preg_match('/2 TEMP (.*)/', $event->getGedcom(), $match)) {
 			$tcode=trim($match[1]);
-			$html.='<br>'.WT_I18N::translate('LDS Temple').': '.WT_Gedcom_Code_Temp::templeName($match[1]);
+			$html.='<br>'.WT_I18N::translate('LDS temple').': '.WT_Gedcom_Code_Temp::templeName($match[1]);
 		}
 		if (preg_match('/2 STAT (.*)/', $event->getGedcom(), $match)) {
 			$html.='<br>'.WT_I18N::translate('Status').': '.WT_Gedcom_Code_Stat::statusName($match[1]);

@@ -275,7 +275,7 @@ function addMessage($message) {
 	if (isset($message['from_name'])) {
 		$message['body'] =
 			WT_I18N::translate('Your Name:') . ' ' . $message['from_name'] . WT_Mail::EOL .
-			WT_I18N::translate('Email Address:')." ".$message['from_email'] . WT_Mail::EOL . WT_Mail::EOL .
+			WT_I18N::translate('Email address:')." ".$message['from_email'] . WT_Mail::EOL . WT_Mail::EOL .
 			$message['body'];
 	}
 	if (!userIsAdmin($user_id_from)) {

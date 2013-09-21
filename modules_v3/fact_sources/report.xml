@@ -155,7 +155,7 @@
 			<!-- Date of the fact -->
 			<Cell bgcolor="#AAAAAA" border="1" style="list_label" width="$dateevent"><var var="WT_I18N::translate('Date')" /></Cell>
 			<!-- Detailed source text -->
-			<Cell border="1" newline="1" style="list_label"><var var="WT_I18N::translate('Citation_details')" /></Cell>
+			<Cell border="1" newline="1" style="list_label"><var var="WT_I18N::translate('Citation details')" /></Cell>
 
 			<!-- Family List -->
 			<TextBox height="$vspace" newline="1" padding="0"/>

@@ -224,7 +224,7 @@ echo "<input type=\"hidden\" name=\"filterev\" value=\"$filterev\">";
 echo '<select class="list_value" name="filterev" onchange="document.dateform.submit();">';
 echo '<option value="bdm"';
 if ($filterev == "bdm") echo ' selected="selected"';
-echo '>', WT_I18N::translate('Births, Deaths, Marriages'), '</option>';
+echo '>', WT_I18N::translate('Vital records'), '</option>';
 echo '<option value="all"';
 if ($filterev == "all") echo ' selected="selected"';
 echo '>', WT_I18N::translate('All'), '</option>';

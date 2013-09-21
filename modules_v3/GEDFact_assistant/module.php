@@ -259,8 +259,8 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			'WH'         => 'Working at Home?',
 			'War'        => 'War or Expedition',
 			'WksU'       => 'Weeks unemployed during Census Year',
-			'YOI'        => 'If Foreign Born - Year of Immigration',
-			'YON'        => 'If Foreign Born - Year of Naturalization',
+			'YOI'        => 'If Foreign Born - Year of immigration',
+			'YON'        => 'If Foreign Born - Year of naturalization',
 			'YUS'        => 'If Foreign Born - Years in the USA',
 			'YrsM'       => 'Years Married, or Y if married in Census Year',
 		);

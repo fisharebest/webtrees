@@ -276,7 +276,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					break;
 			}
 			
-			$submenu = new WT_Menu(WT_I18N::translate('Add new Name'), '#', 'menu-indi-addname');
+			$submenu = new WT_Menu(WT_I18N::translate('Add a new name'), '#', 'menu-indi-addname');
 			$submenu->addOnclick("return add_name('".$this->record->getXref()."');");
 			$menu->addSubmenu($submenu);
 

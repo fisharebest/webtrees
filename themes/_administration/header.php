@@ -78,12 +78,14 @@ echo
 	'<div id="info">',
 	WT_WEBTREES, ' ', WT_VERSION_TEXT,
 	'<br>',
-	WT_I18N::translate('Server time'), ' -  ', format_timestamp(WT_SERVER_TIMESTAMP),
+	/* I18N: The local time on the server */
+	WT_I18N::translate('Server time'), ' —  ', format_timestamp(WT_SERVER_TIMESTAMP),
 	'<br>',
-	WT_I18N::translate('Client time'), ' - ', format_timestamp(WT_CLIENT_TIMESTAMP),
+	/* I18N: The local time on the client/browser */
+	WT_I18N::translate('Client time'), ' — ', format_timestamp(WT_CLIENT_TIMESTAMP),
 	'<br>',
-	/* WT_I18N: Timezone - http://en.wikipedia.org/wiki/UTC */
-	WT_I18N::translate('UTC'), ' - ', format_timestamp(WT_TIMESTAMP),
+	/* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */
+	WT_I18N::translate('UTC'), ' — ', format_timestamp(WT_TIMESTAMP),
 	'</div>',
 	'</div>',
 // Side menu

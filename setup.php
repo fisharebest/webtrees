@@ -168,7 +168,7 @@ if (!isset($_POST['lang'])) {
 		WT_I18N::translate('Large systems (50000 individuals): 64-128MB, 40-80 seconds'),
 		'</p>',
 		($maxmem<32 || $maxcpu<20) ? '<p class="bad">' : '<p class="good">',
-		WT_I18N::translate('This server\'s memory limit is %dMB and its CPU time limit is %d seconds.', $maxmem, $maxcpu),
+		WT_I18N::translate('This server’s memory limit is %dMB and its CPU time limit is %d seconds.', $maxmem, $maxcpu),
 		'</p><p>',
 		WT_I18N::translate('If you try to exceed these limits, you may experience server time-outs and blank pages.'),
 		'</p><p>',

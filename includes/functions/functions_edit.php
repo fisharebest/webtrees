@@ -550,7 +550,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		}
 
 	} else if ($fact=="TEMP") {
-		echo select_edit_control($element_name, WT_Gedcom_Code_Temp::templeNames(), WT_I18N::translate('No Temple - Living Ordinance'), $value);
+		echo select_edit_control($element_name, WT_Gedcom_Code_Temp::templeNames(), WT_I18N::translate('No temple - living ordinance'), $value);
 	} else if ($fact=="ADOP") {
 		echo edit_field_adop($element_name, $value);
 	} else if ($fact=="PEDI") {

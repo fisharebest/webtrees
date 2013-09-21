@@ -66,7 +66,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		$title=WT_I18N::plural('%s message', '%s messages',count($messages), WT_I18N::number(count($messages)));
 		$content='<form name="messageform" action="index.php?ctype='.$ctype.'" method="get" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
 		if (get_user_count()>1) {
-			$content.='<br>'.WT_I18N::translate('Send Message')." <select name=\"touser\">";
+			$content.='<br>'.WT_I18N::translate('Send message')." <select name=\"touser\">";
 			$content.='<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
 			foreach (get_all_users() as $user_id=>$user_name) {
 				if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'contactmethod')!='none') {
@@ -85,7 +85,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			$content.='<td class="list_label">'.WT_I18N::translate('Delete').'<br><a href="#" onclick="jQuery(\'.'.$this->getName().'_block :checkbox\').attr(\'checked\',\'checked\'); return false;">'.WT_I18N::translate('All').'</a></td>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Subject:').'</td>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Date Sent:').'</td>';
-			$content.='<td class="list_label">'.WT_I18N::translate('Email Address:').'</td>';
+			$content.='<td class="list_label">'.WT_I18N::translate('Email address:').'</td>';
 			$content.='</tr>';
 			foreach ($messages as $message) {
 				$content.='<tr>';

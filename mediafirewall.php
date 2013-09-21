@@ -231,7 +231,7 @@ $useTTF = function_exists('imagettftext');
 if (!$media || !$media->canShow()) {
 	send404AndExit();
 }
-// Media file somewhere else?
+// media file somewhere else?
 if ($media->isExternal()) {
 	header('Location: ' . $media->getFilename());
 	exit;

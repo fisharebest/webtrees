@@ -207,7 +207,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			<li><a href="#privacy"><span><?php echo WT_I18N::translate('Privacy'); ?></span></a></li>
 			<li><a href="#config-media"><span><?php echo WT_I18N::translate('Media'); ?></span></a></li>
 			<li><a href="#layout-options"><span><?php echo WT_I18N::translate('Layout'); ?></span></a></li>
-			<li><a href="#hide-show"><span><?php echo WT_I18N::translate('Hide &amp; Show'); ?></span></a></li>
+			<li><a href="#hide-show"><span><?php echo WT_I18N::translate('Hide &amp; show'); ?></span></a></li>
 			<li><a href="#edit-options"><span><?php echo WT_I18N::translate('Edit options'); ?></span></a></li>
 		</ul>
 		<!-- GENERAL -->
@@ -1058,7 +1058,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			<table>
 			<tr>
 				<th colspan="2">
-					<?php echo WT_I18N::translate('Facts for Individual records'); ?>
+					<?php echo WT_I18N::translate('Facts for individual records'); ?>
 				</th>
 			</tr>
 			<tr>
@@ -1095,7 +1095,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<th colspan="2">
-					<?php echo WT_I18N::translate('Facts for Family records'); ?>
+					<?php echo WT_I18N::translate('Facts for family records'); ?>
 				</th>
 			</tr>
 			<tr>
@@ -1132,7 +1132,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<th colspan="2">
-					<?php echo WT_I18N::translate('Facts for Source records'); ?>
+					<?php echo WT_I18N::translate('Facts for source records'); ?>
 				</th>
 			</tr>
 			<tr>
@@ -1161,7 +1161,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<th colspan="2">
-					<?php echo WT_I18N::translate('Facts for Repository records'); ?>
+					<?php echo WT_I18N::translate('Facts for repository records'); ?>
 				</th>
 			</tr>
 			<tr>

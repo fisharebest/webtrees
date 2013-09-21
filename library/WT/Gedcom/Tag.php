@@ -100,9 +100,9 @@ class WT_Gedcom_Tag {
 		case 'ADR1': return WT_I18N::translate('Address line 1');
 		case 'ADR2': return WT_I18N::translate('Address line 2');
 		case 'ADOP': return /* I18N: gedcom tag ADOP */ WT_I18N::translate('Adoption');
-		case 'ADOP:DATE': return WT_I18N::translate('Date of Adoption');
-		case 'ADOP:PLAC': return WT_I18N::translate('Place of Adoption');
-		case 'AFN': return /* I18N: gedcom tag AFN */ WT_I18N::translate('Ancestral File Number');
+		case 'ADOP:DATE': return WT_I18N::translate('Date of adoption');
+		case 'ADOP:PLAC': return WT_I18N::translate('Place of adoption');
+		case 'AFN': return /* I18N: gedcom tag AFN */ WT_I18N::translate('Ancestral file number');
 		case 'AGE': return /* I18N: gedcom tag AGE */ WT_I18N::translate('Age');
 		case 'AGNC': return /* I18N: gedcom tag AGNC */ WT_I18N::translate('Agency');
 		case 'ALIA': return /* I18N: gedcom tag ALIA */ WT_I18N::translate('Alias');
@@ -112,8 +112,8 @@ class WT_Gedcom_Tag {
 		case 'ASSO': return /* I18N: gedcom tag ASSO */ WT_I18N::translate('Associate'); /* see also _ASSO */
 		case 'AUTH': return /* I18N: gedcom tag AUTH */ WT_I18N::translate('Author');
 		case 'BAPL': return /* I18N: gedcom tag BAPL */ WT_I18N::translate('LDS baptism');
-		case 'BAPL:DATE': return WT_I18N::translate('Date of LDS Baptism');
-		case 'BAPL:PLAC': return WT_I18N::translate('Place of LDS Baptism');
+		case 'BAPL:DATE': return WT_I18N::translate('Date of LDS baptism');
+		case 'BAPL:PLAC': return WT_I18N::translate('Place of LDS baptism');
 		case 'BAPM': return /* I18N: gedcom tag BAPM */ WT_I18N::translate('Baptism');
 		case 'BAPM:DATE': return WT_I18N::translate('Date of baptism');
 		case 'BAPM:PLAC': return WT_I18N::translate('Place of baptism');
@@ -127,9 +127,9 @@ class WT_Gedcom_Tag {
 		case 'BIRT:DATE': return WT_I18N::translate('Date of birth');
 		case 'BIRT:PLAC': return WT_I18N::translate('Place of birth');
 		case 'BLES': return /* I18N: gedcom tag BLES */ WT_I18N::translate('Blessing');
-		case 'BLES:DATE': return WT_I18N::translate('Date of Blessing');
-		case 'BLES:PLAC': return WT_I18N::translate('Place of Blessing');
-		case 'BLOB': return /* I18N: gedcom tag BLOB */ WT_I18N::translate('Binary Data Object');
+		case 'BLES:DATE': return WT_I18N::translate('Date of blessing');
+		case 'BLES:PLAC': return WT_I18N::translate('Place of blessing');
+		case 'BLOB': return /* I18N: gedcom tag BLOB */ WT_I18N::translate('Binary data object');
 		case 'BURI': return /* I18N: gedcom tag BURI */ WT_I18N::translate('Burial');
 		case 'BURI:DATE': return WT_I18N::translate('Date of burial');
 		case 'BURI:PLAC': return WT_I18N::translate('Place of burial');
@@ -161,8 +161,8 @@ class WT_Gedcom_Tag {
 		case 'COPR': return /* I18N: gedcom tag COPR */ WT_I18N::translate('Copyright');
 		case 'CORP': return /* I18N: gedcom tag CORP */ WT_I18N::translate('Corporation');
 		case 'CREM': return /* I18N: gedcom tag CREM */ WT_I18N::translate('Cremation');
-		case 'CREM:DATE': return WT_I18N::translate('Date of Cremation');
-		case 'CREM:PLAC': return WT_I18N::translate('Place of Cremation');
+		case 'CREM:DATE': return WT_I18N::translate('Date of cremation');
+		case 'CREM:PLAC': return WT_I18N::translate('Place of cremation');
 		case 'CTRY': return /* I18N: gedcom tag CTRY */ WT_I18N::translate('Country');
 		case 'DATA': return /* I18N: gedcom tag DATA */ WT_I18N::translate('Data');
 		case 'DATA:DATE': return WT_I18N::translate('Date of entry in original source');
@@ -183,17 +183,17 @@ class WT_Gedcom_Tag {
 		case 'EMAIL': return /* I18N: gedcom tag EMAIL */ WT_I18N::translate('Email address');
 		case 'EMAL': return /* I18N: gedcom tag EMAL */ WT_I18N::translate('Email address');
 		case 'EMIG': return /* I18N: gedcom tag EMIG */ WT_I18N::translate('Emigration');
-		case 'EMIG:DATE': return WT_I18N::translate('Date of Emigration');
-		case 'EMIG:PLAC': return WT_I18N::translate('Place of Emigration');
+		case 'EMIG:DATE': return WT_I18N::translate('Date of emigration');
+		case 'EMIG:PLAC': return WT_I18N::translate('Place of emigration');
 		case 'ENDL': return /* I18N: gedcom tag ENDL */ WT_I18N::translate('LDS endowment');
-		case 'ENDL:DATE': return WT_I18N::translate('Date of LDS Endowment');
-		case 'ENDL:PLAC': return WT_I18N::translate('Place of LDS Endowment');
+		case 'ENDL:DATE': return WT_I18N::translate('Date of LDS endowment');
+		case 'ENDL:PLAC': return WT_I18N::translate('Place of LDS endowment');
 		case 'ENGA': return /* I18N: gedcom tag ENGA */ WT_I18N::translate('Engagement');
 		case 'ENGA:DATE': return WT_I18N::translate('Date of engagement');
 		case 'ENGA:PLAC': return WT_I18N::translate('Place of engagement');
 		case 'EVEN': return /* I18N: gedcom tag EVEN */ WT_I18N::translate('Event');
-		case 'EVEN:DATE': return WT_I18N::translate('Date of Event');
-		case 'EVEN:PLAC': return WT_I18N::translate('Place of Event');
+		case 'EVEN:DATE': return WT_I18N::translate('Date of event');
+		case 'EVEN:PLAC': return WT_I18N::translate('Place of event');
 		case 'FACT': return /* I18N: gedcom tag FACT */ WT_I18N::translate('Fact');
 		case 'FAM': return /* I18N: gedcom tag FAM */ WT_I18N::translate('Family');
 		case 'FAMC': return /* I18N: gedcom tag FAMC */ WT_I18N::translate('Family as a child');
@@ -205,8 +205,8 @@ class WT_Gedcom_Tag {
 		case 'FAMS:MARR:DATE': return WT_I18N::translate('Date of marriage');
 		case 'FAMS:MARR:PLAC': return WT_I18N::translate('Place of marriage');
 		case 'FAMS:NOTE': return WT_I18N::translate('Spouse note');
-		case 'FAMS:SLGS:DATE': return WT_I18N::translate('Date of LDS Spouse Sealing');
-		case 'FAMS:SLGS:PLAC': return WT_I18N::translate('Place of LDS Spouse Sealing');
+		case 'FAMS:SLGS:DATE': return WT_I18N::translate('Date of LDS spouse sealing');
+		case 'FAMS:SLGS:PLAC': return WT_I18N::translate('Place of LDS spouse sealing');
 		case 'FAX': return /* I18N: gedcom tag FAX */ WT_I18N::translate('Fax');
 		case 'FCOM': return /* I18N: gedcom tag FCOM */ WT_I18N::translate('First communion');
 		case 'FCOM:DATE': return WT_I18N::translate('Date of first communion');
@@ -221,8 +221,8 @@ class WT_Gedcom_Tag {
 		case 'HUSB': return /* I18N: gedcom tag HUSB */ WT_I18N::translate('Husband');
 		case 'IDNO': return /* I18N: gedcom tag IDNO */ WT_I18N::translate('Identification number');
 		case 'IMMI': return /* I18N: gedcom tag IMMI */ WT_I18N::translate('Immigration');
-		case 'IMMI:DATE': return WT_I18N::translate('Date of Immigration');
-		case 'IMMI:PLAC': return WT_I18N::translate('Place of Immigration');
+		case 'IMMI:DATE': return WT_I18N::translate('Date of immigration');
+		case 'IMMI:PLAC': return WT_I18N::translate('Place of immigration');
 		case 'INDI': return /* I18N: gedcom tag INDI */ WT_I18N::translate('Individual');
 		case 'INFL': return /* I18N: gedcom tag INFL */ WT_I18N::translate('Infant');
 		case 'LANG': return /* I18N: gedcom tag LANG */ WT_I18N::translate('Language');
@@ -254,8 +254,8 @@ class WT_Gedcom_Tag {
 		case 'NAME:_HEB': return WT_I18N::translate('Name in Hebrew');
 		case 'NATI': return /* I18N: gedcom tag NATI */ WT_I18N::translate('Nationality');
 		case 'NATU': return /* I18N: gedcom tag NATU */ WT_I18N::translate('Naturalization');
-		case 'NATU:DATE': return WT_I18N::translate('Date of Naturalization');
-		case 'NATU:PLAC': return WT_I18N::translate('Place of Naturalization');
+		case 'NATU:DATE': return WT_I18N::translate('Date of naturalization');
+		case 'NATU:PLAC': return WT_I18N::translate('Place of naturalization');
 		case 'NCHI': return /* I18N: gedcom tag NCHI */ WT_I18N::translate('Number of children');
 		case 'NICK': return /* I18N: gedcom tag NICK */ WT_I18N::translate('Nickname');
 		case 'NMR': return /* I18N: gedcom tag NMR */ WT_I18N::translate('Number of marriages');
@@ -267,9 +267,9 @@ class WT_Gedcom_Tag {
 		case 'OCCU:AGNC': return WT_I18N::translate('Employer');
 		case 'ORDI': return /* I18N: gedcom tag ORDI */ WT_I18N::translate('Ordinance');
 		case 'ORDN': return /* I18N: gedcom tag ORDN */ WT_I18N::translate('Ordination');
-		case 'ORDN:AGNC': return WT_I18N::translate('Religious Institution');
-		case 'ORDN:DATE': return WT_I18N::translate('Date of Ordination');
-		case 'ORDN:PLAC': return WT_I18N::translate('Place of Ordination');
+		case 'ORDN:AGNC': return WT_I18N::translate('Religious institution');
+		case 'ORDN:DATE': return WT_I18N::translate('Date of ordination');
+		case 'ORDN:PLAC': return WT_I18N::translate('Place of ordination');
 		case 'PAGE': return /* I18N: gedcom tag PAGE */ WT_I18N::translate('Citation details');
 		case 'PEDI': return /* I18N: gedcom tag PEDI */ WT_I18N::translate('Relationship to parents');
 		case 'PHON': return /* I18N: gedcom tag PHON */ WT_I18N::translate('Phone');
@@ -287,8 +287,8 @@ class WT_Gedcom_Tag {
 		case 'RELI': return /* I18N: gedcom tag RELI */ WT_I18N::translate('Religion');
 		case 'REPO': return /* I18N: gedcom tag REPO */ WT_I18N::translate('Repository');
 		case 'RESI': return /* I18N: gedcom tag RESI */ WT_I18N::translate('Residence');
-		case 'RESI:DATE': return WT_I18N::translate('Date of Residence');
-		case 'RESI:PLAC': return WT_I18N::translate('Place of Residence');
+		case 'RESI:DATE': return WT_I18N::translate('Date of residence');
+		case 'RESI:PLAC': return WT_I18N::translate('Place of residence');
 		case 'RESN': return /* I18N: gedcom tag RESN */ WT_I18N::translate('Restriction');
 		case 'RETI': return /* I18N: gedcom tag RETI */ WT_I18N::translate('Retirement');
 		case 'RETI:AGNC': return WT_I18N::translate('Employer');
@@ -300,12 +300,12 @@ class WT_Gedcom_Tag {
 		case 'SEX': return /* I18N: gedcom tag SEX */ WT_I18N::translate('Gender');
 		case 'SHARED_NOTE': return WT_I18N::translate('Shared note');
 		case 'SLGC': return /* I18N: gedcom tag SLGC */ WT_I18N::translate('LDS child sealing');
-		case 'SLGC:DATE': return WT_I18N::translate('Date of LDS Child Sealing');
-		case 'SLGC:PLAC': return WT_I18N::translate('Place of LDS Child Sealing');
+		case 'SLGC:DATE': return WT_I18N::translate('Date of LDS child sealing');
+		case 'SLGC:PLAC': return WT_I18N::translate('Place of LDS child sealing');
 		case 'SLGS': return /* I18N: gedcom tag SLGS */ WT_I18N::translate('LDS spouse sealing');
 		case 'SOUR': return /* I18N: gedcom tag SOUR */ WT_I18N::translate('Source');
 		case 'SPFX': return /* I18N: gedcom tag SPFX */ WT_I18N::translate('Surname prefix');
-		case 'SSN': return /* I18N: gedcom tag SSN */ WT_I18N::translate('Social Security Number');
+		case 'SSN': return /* I18N: gedcom tag SSN */ WT_I18N::translate('Social security number');
 		case 'STAE': return /* I18N: gedcom tag STAE */ WT_I18N::translate('State');
 		case 'STAT': return /* I18N: gedcom tag STAT */ WT_I18N::translate('Status');
 		case 'STAT:DATE': return WT_I18N::translate('Status change date');
@@ -433,14 +433,14 @@ class WT_Gedcom_Tag {
 			}
 		case '_BIRT_GCH1':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('daughter\'s son', 'Birth of a grandson');
-			case 'F': return WT_I18N::translate_c('daughter\'s daughter','Birth of a granddaughter');
+			case 'M': return WT_I18N::translate_c('daughter\'s son',      'Birth of a grandson');
+			case 'F': return WT_I18N::translate_c('daughter\'s daughter', 'Birth of a granddaughter');
 			default:  return WT_I18N::translate('Birth of a grandchild');
 			}
 		case '_BIRT_GCH2':
 			switch ($sex) {
 			case 'M': return WT_I18N::translate_c('son\'s son',      'Birth of a grandson');
-			case 'F': return WT_I18N::translate_c('son\'s daughter',     'Birth of a granddaughter');
+			case 'F': return WT_I18N::translate_c('son\'s daughter', 'Birth of a granddaughter');
 			default:  return WT_I18N::translate('Birth of a grandchild');
 			}
 		case '_BIRT_HSIB':
@@ -560,7 +560,7 @@ class WT_Gedcom_Tag {
 			case 'F': return WT_I18N::translate('Christening of a sister');
 			default:  return WT_I18N::translate('Christening of a sibling');
 			}
-		case '_COML': return /* I18N: gedcom tag _COML */ WT_I18N::translate('Common Law Marriage');
+		case '_COML': return /* I18N: gedcom tag _COML */ WT_I18N::translate('Common law marriage');
 		case '_CREM_CHIL':
 			switch ($sex) {
 			case 'M': return WT_I18N::translate('Cremation of a son');
@@ -727,10 +727,10 @@ class WT_Gedcom_Tag {
 			case 'F': return /* I18N: gedcom tag _INTE */ WT_I18N::translate_c('FEMALE', 'Interred');
 			default:  return /* I18N: gedcom tag _INTE */ WT_I18N::translate('Interred');
 			}
-		case '_MARI': return /* I18N: gedcom tag _MARI */ WT_I18N::translate('Marriage Intention');
-		case '_MARNM': return /* I18N: gedcom tag _MARNM */ WT_I18N::translate('Married Name');
+		case '_MARI': return /* I18N: gedcom tag _MARI */ WT_I18N::translate('Marriage intention');
+		case '_MARNM': return /* I18N: gedcom tag _MARNM */ WT_I18N::translate('Married name');
 		case '_PRIM': return /* I18N: gedcom tag _PRIM */ WT_I18N::translate('Highlighted image');
-		case '_MARNM_SURN': return WT_I18N::translate('Married Surname');
+		case '_MARNM_SURN': return WT_I18N::translate('Married surname');
 		case '_MARR_CHIL':
 			switch ($sex) {
 			case 'M': return WT_I18N::translate('Marriage of a son');
@@ -829,7 +829,7 @@ class WT_Gedcom_Tag {
 				return self::getLabel($tag, $record);
 			}
 			// Still no translation? Highlight this as an error
-			return '<span class="error" title="'.WT_I18N::translate('Unrecognized GEDCOM Code').'">'.WT_Filter::escapeHtml($tag).'</span>';
+			return '<span class="error" title="'.WT_I18N::translate('Unrecognized GEDCOM code').'">'.WT_Filter::escapeHtml($tag).'</span>';
 		}
 	}
 
@@ -882,7 +882,7 @@ class WT_Gedcom_Tag {
 		case 'book':        return WT_I18N::translate('Book');
 		case 'card':        return WT_I18N::translate('Card');
 		case 'certificate': return WT_I18N::translate('Certificate');
-		case 'coat':        return WT_I18N::translate('Coat of Arms');
+		case 'coat':        return WT_I18N::translate('Coat of arms');
 		case 'document':    return WT_I18N::translate('Document');
 		case 'electronic':  return WT_I18N::translate('Electronic');
 		case 'fiche':       return WT_I18N::translate('Microfiche');

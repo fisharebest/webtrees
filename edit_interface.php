@@ -75,7 +75,7 @@ case 'editraw':
 	check_record_access($record);
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit raw GEDCOM record'))
+		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit raw GEDCOM'))
 		->pageHeader()
 		->addInlineJavascript('jQuery("#raw-gedcom-list").sortable({opacity: 0.7, cursor: "move", axis: "y"});');
 
@@ -129,7 +129,7 @@ case 'updateraw':
 	check_record_access($record);
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit raw GEDCOM record'))
+		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit raw GEDCOM'))
 		->pageHeader();
 
 	$gedcom = '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE;
@@ -178,7 +178,7 @@ case 'editrawfact':
 	}
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit raw GEDCOM record'))
+		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit raw GEDCOM'))
 		->pageHeader();
 
 	?>
@@ -232,7 +232,7 @@ case 'updaterawfact':
 	}
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit raw GEDCOM record'))
+		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit raw GEDCOM'))
 		->pageHeader();
 
 	// Cleanup the client’s bad editing?
@@ -329,7 +329,7 @@ case 'edit':
 	if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 		echo
 			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', WT_GEDURL, '">',
-			WT_I18N::translate('Edit raw GEDCOM record'),
+			WT_I18N::translate('Edit raw GEDCOM'),
 			'</a>';
 	}
 	?>
@@ -1170,7 +1170,7 @@ case 'addnewsource':
 				<div id="events" style="display: none;">
 				<table class="facts_table">
 				<tr>
-					<td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Select Events'), help_link('edit_SOUR_EVEN'); ?></td>
+					<td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Select events'), help_link('edit_SOUR_EVEN'); ?></td>
 					<td class="optionbox wrap"><select name="EVEN[]" multiple="multiple" size="5">
 						<?php
 						$parts = explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'));
@@ -1562,7 +1562,7 @@ case 'addname':
 	check_record_access($person);
 
 	$controller
-		->setPageTitle(WT_I18N::translate('Add new Name'))
+		->setPageTitle(WT_I18N::translate('Add a new name'))
 		->pageHeader();
 
 	print_indi_form('update', $person, null, null, '', $person->getSex());
@@ -1843,7 +1843,7 @@ case 'changefamily':
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<div id="changefam">
 			<p>
-				<?php echo WT_I18N::translate('Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the Save button to save the changes.'); ?>
+				<?php echo WT_I18N::translate('Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes.'); ?>
 			</p>
 			<form name="changefamform" method="post" action="edit_interface.php">
 				<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
@@ -2658,7 +2658,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	if ($name_fact && (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD)) {
 		echo
 			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $name_fact->getFactId(), '&amp;ged=', WT_GEDURL, '">',
-			WT_I18N::translate('Edit raw GEDCOM record'),
+			WT_I18N::translate('Edit raw GEDCOM'),
 			'</a>';
 	}
 	

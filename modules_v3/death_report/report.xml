@@ -4,10 +4,10 @@
 	<Description><var var="WT_I18N::translate('A report of individuals who died in a given time or place.')" /></Description>
 	<Input name="name" lookup="NAME" type="text"><var var="WT_I18N::translate('Name')" /></Input>
 	<Input name="deathplace" lookup="PLAC" type="text"><var var="WT_I18N::translate('Death Place contains')" /></Input>
-	<Input name="deathdate1" lookup="DATE" type="text"><var var="WT_I18N::translate('Death Date range start')" /></Input>
-	<Input name="deathdate2" lookup="DATE" type="text"><var var="WT_I18N::translate('Death Date range end')" /></Input>
+	<Input name="deathdate1" lookup="DATE" type="text"><var var="WT_I18N::translate('Death date range start')" /></Input>
+	<Input name="deathdate2" lookup="DATE" type="text"><var var="WT_I18N::translate('Death date range end')" /></Input>
 	<Input name="sortby" type="select" default="NAME" options="NAME=>WT_I18N::translate('sort by name')|DEAT:DATE=>WT_I18N::translate('sort by date of death')"><var var="WT_I18N::translate('Sort order')" /></Input>
-	<Input name="adlist" type="select" default="none" options="none=>WT_I18N::translate('None')|_MARNM=>WT_I18N::translate('Married Name')|HUSB=>WT_I18N::translate('Husband')"><var var="WT_I18N::translate('Name List')" /></Input>
+	<Input name="adlist" type="select" default="none" options="none=>WT_I18N::translate('None')|_MARNM=>WT_I18N::translate('Married name')|HUSB=>WT_I18N::translate('Husband')"><var var="WT_I18N::translate('Names')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>
 

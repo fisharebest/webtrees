@@ -3415,9 +3415,9 @@ class WT_Stats {
 				}
 				if (WT_USER_ID != $user_id && get_user_setting($user_id, 'contactmethod') != 'none') {
 					if ($type == 'list') {
-						$content .= '<br><a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user_id) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send Message') . '"></a>';
+						$content .= '<br><a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user_id) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message') . '"></a>';
 					} else {
-						$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user_id) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send Message') . '"></a>';
+						$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user_id) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message') . '"></a>';
 					}
 				}
 				if ($type == 'list') {

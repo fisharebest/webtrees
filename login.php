@@ -280,7 +280,7 @@ case 'register':
 				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE)) . WT_Mail::EOL . WT_Mail::EOL .
 				WT_I18N::translate('Username')      .' '.$user_name     . WT_Mail::EOL .
 				WT_I18N::translate('Real name')     .' '.$user_realname . WT_Mail::EOL .
-				WT_I18N::translate('Email Address:').' '.$user_email    . WT_Mail::EOL .
+				WT_I18N::translate('Email address:').' '.$user_email    . WT_Mail::EOL .
 				WT_I18N::translate('Comments')      .' '.$user_comments . WT_Mail::EOL . WT_Mail::EOL .
 				WT_I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . WT_Mail::EOL . WT_Mail::EOL;
 			if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
@@ -524,7 +524,7 @@ case 'verify_hash':
 
 			echo '<br><br>'.WT_I18N::translate('You have confirmed your request to become a registered user.').'<br><br>';
 			if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !get_user_setting($user_id, 'verified_by_admin')) {
-				echo WT_I18N::translate('The Administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password.');
+				echo WT_I18N::translate('The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password.');
 			} else {
 				echo WT_I18N::translate('You can now login with your user name and password.');
 			}

@@ -79,11 +79,11 @@ var TTEditHealth      = 'Health - 12345 = 1.Blind, 2.Deaf&amp;Dumb, 3.Idiotic, 4
 var HeaderYrsUS       = 'YUS';
 var TTEditYrsUS       = 'If Foreign Born - yy -Years in the USA';
 var HeaderYOI         = 'YOI';
-var TTEditYOI         = 'If Foreign Born - yyyy - Year of Immigration';
+var TTEditYOI         = 'If Foreign Born - yyyy - Year of immigration';
 var HeaderNA          = 'N/A';
 var TTEditNA          = 'If Foreign Born - N,A - Naturalized, Alien';
 var HeaderYON         = 'YON';
-var TTEditYON         = 'If Foreign Born - yyyy - Year of Naturalization';
+var TTEditYON         = 'If Foreign Born - yyyy - Year of naturalization';
 var HeaderEngL        = 'EngL';
 var TTEditEngL        = 'English spoken?, if not, Native Language';
 var HeaderEng         = 'Eng?';
@@ -715,7 +715,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 			birthpl = birthpl[1]+", "+birthpl[2];
 		}
 
-		// Calculate/Format Birth, Marriage and Death Dates ==========================
+		// Calculate/Format Birth, Marriage and Death dates ==========================
 		var one_day   = 1000*60*60*24;
 		var one_month = (365.26*one_day)/12;
 		var one_year  = 365.26*one_day;
@@ -1134,7 +1134,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_yrsUS.style.border='0px';
 				txtInp_yrsUS.innerHTML = '<a href="#" alt="'+TTEditYrsUS+'" title="'+TTEditYrsUS+'">'+HeaderYrsUS+'</a>';
 				txtInp_yrsUS.setAttribute('id', '.b.'+HeaderYrsUS);
-		// 31. Year of Immigration YOI_1 ----------------------------------------
+		// 31. Year of immigration YOI_1 ----------------------------------------
 			var txtInp_yoi1 = document.createElement('div');
 				txtInp_yoi1.setAttribute('type', 'text');
 				txtInp_yoi1.setAttribute('class', 'descriptionbox');
@@ -1152,7 +1152,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_na1.style.border='0px';
 				txtInp_na1.innerHTML = '<a href="#" alt="'+TTEditNA+'" title="'+TTEditNA+'">'+HeaderNA+'</a>';
 				txtInp_na1.setAttribute('id', '.b.'+HeaderNA);
-		// 33. Year of Naturalization YON_1 ----------------------------------------
+		// 33. Year of naturalization YON_1 ----------------------------------------
 			var txtInp_yon = document.createElement('div');
 				txtInp_yon.setAttribute('type', 'text');
 				txtInp_yon.setAttribute('class', 'descriptionbox');
@@ -1368,7 +1368,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_lang.style.border='0px';
 				txtInp_lang.innerHTML = '<a href="#" alt="'+TTEditNL+'" title="'+TTEditNL+'">'+HeaderNL+'</a>';
 				txtInp_lang.setAttribute('id', '.b.'+HeaderNL);
-		// 57. Year of Immigration YOI_2 ----------------------------------------
+		// 57. Year of immigration YOI_2 ----------------------------------------
 			var txtInp_yoi2 = document.createElement('div');
 				txtInp_yoi2.setAttribute('type', 'text');
 				txtInp_yoi2.setAttribute('class', 'descriptionbox');
@@ -1849,7 +1849,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_yrsUS.style.color=txtcolor;
 				txtInp_yrsUS.style.fontSize="10px";
 				txtInp_yrsUS.style.width="1.4em";
-		// 31. Year of Immigration YOI_1 ----------------------------------------
+		// 31. Year of immigration YOI_1 ----------------------------------------
 			var txtInp_yoi1 = document.createElement('input');
 				txtInp_yoi1.setAttribute('type', 'text');
 				txtInp_yoi1.setAttribute('id', INPUT_NAME_PREFIX + iteration + '_31');
@@ -2098,7 +2098,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_lang.setAttribute('value', '');
 				txtInp_lang.style.color=txtcolor;
 				txtInp_lang.style.fontSize="10px";
-		// 57. Year of Immigration YOI_2 ---------------------------------------
+		// 57. Year of immigration YOI_2 ---------------------------------------
 			var txtInp_yoi2 = document.createElement('input');
 				txtInp_yoi2.setAttribute('type', 'text');
 				txtInp_yoi2.setAttribute('id', INPUT_NAME_PREFIX + iteration + '_57');
@@ -2344,9 +2344,9 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 		cell_[29].appendChild(txtInp_mbirthpl); // Mother MPOB_1
 
 		cell_[30].appendChild(txtInp_yrsUS); // Years in USA
-		cell_[31].appendChild(txtInp_yoi1); // Year of Immigration YOI_1
+		cell_[31].appendChild(txtInp_yoi1); // Year of immigration YOI_1
 		cell_[32].appendChild(txtInp_na1); // Naturalized or Alien N-A_1
-		cell_[33].appendChild(txtInp_yon); // Year of Naturalization YON
+		cell_[33].appendChild(txtInp_yon); // Year of naturalization YON
 		cell_[34].appendChild(txtInp_englang); // English spoken, if not, Other Language spoken Eng/Lang
 		cell_[35].appendChild(txtInp_occu2); // Occupation_2
 		cell_[36].appendChild(txtInp_health); // Health - 5 parameters x--xx etc
@@ -2372,7 +2372,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 		cell_[54].appendChild(txtInp_fbirthpl2); // Fathers FPOB_2
 		cell_[55].appendChild(txtInp_mbirthpl2); // Mothers MPOB_2
 		cell_[56].appendChild(txtInp_lang); // Mother Tongue lang
-		cell_[57].appendChild(txtInp_yoi2); // Year of Immigration YOI_2
+		cell_[57].appendChild(txtInp_yoi2); // Year of immigration YOI_2
 		cell_[58].appendChild(txtInp_na2); // Naturalized or Alien N-A_2
 		cell_[59].appendChild(txtInp_eng2); // English spoken Y/N  eng_2
 

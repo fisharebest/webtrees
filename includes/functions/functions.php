@@ -1775,7 +1775,7 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 	while ($path2) {
 		$tmp=WT_I18N::translate(
 			// I18N: A complex relationship, such as “third-cousin’s great-uncle”
-			'%1$s\'s %2$s',
+			'%1$s’s %2$s',
 			get_relationship_name_from_path($path1, null, null), // TODO: need the actual people
 			get_relationship_name_from_path($path2, null, null)
 		);

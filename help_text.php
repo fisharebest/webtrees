@@ -332,7 +332,7 @@ case 'PLAC':
 
 case 'RELA':
 	$title=WT_Gedcom_Tag::getLabel('RELA');
-	$text=WT_I18N::translate('Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the Godfather of the current individual</i>.');
+	$text=WT_I18N::translate('Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>.');
 	break;
 
 case 'RESN':
@@ -370,7 +370,7 @@ case 'STAT':
 
 case 'TEMP':
 	$title=WT_Gedcom_Tag::getLabel('TEMP');
-	$text=WT_I18N::translate('For LDS ordinances, this field records the Temple where it was performed.');
+	$text=WT_I18N::translate('For LDS ordinances, this field records the temple where it was performed.');
 	break;
 
 case 'TEXT':
@@ -453,7 +453,7 @@ case 'CALENDAR_FORMAT':
 
 case 'CHART_BOX_TAGS':
 	$title=WT_I18N::translate('Other facts to show in charts');
-	$text=WT_I18N::translate('This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the Pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 Standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field.');
+	$text=WT_I18N::translate('This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field.');
 	break;
 
 case 'CHECK_MARRIAGE_RELATIONS':
@@ -483,7 +483,7 @@ case 'CONTACT_USER_ID':
 
 case 'DEFAULT_PEDIGREE_GENERATIONS':
 	$title=WT_I18N::translate('Default pedigree generations');
-	$text=WT_I18N::translate('Set the default number of generations to display on Descendancy and Pedigree charts.');
+	$text=WT_I18N::translate('Set the default number of generations to display on descendancy and pedigree charts.');
 	break;
 
 case 'EXPAND_NOTES':
@@ -503,7 +503,7 @@ case 'EXPAND_SOURCES':
 
 case 'FAM_FACTS_ADD':
 	$title=WT_I18N::translate('Family add facts');
-	$text=WT_I18N::translate('This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Family Facts</i> list.');
+	$text=WT_I18N::translate('This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list.');
 	break;
 
 case 'FAM_FACTS_QUICK':
@@ -547,7 +547,7 @@ case 'GEDCOM_MEDIA_PATH':
 
 case 'GENERATE_GUID':
 	$title=WT_I18N::translate('Automatically create globally unique IDs');
-	$text=WT_I18N::translate('<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS Church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM.');
+	$text=WT_I18N::translate('<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM.');
 	break;
 
 case 'HIDE_GEDCOM_ERRORS':
@@ -611,12 +611,12 @@ case 'LOGIN_URL':
 
 case 'MAX_ALIVE_AGE':
 	$title=WT_I18N::translate('Age at which to assume an individual is dead');
-	$text=WT_I18N::translate('If this individual has any events other than Death, Burial, or Cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose.');
+	$text=WT_I18N::translate('If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose.');
 	break;
 
 case 'MAX_DESCENDANCY_GENERATIONS':
 	$title=WT_I18N::translate('Maximum descendancy generations');
-	$text=WT_I18N::translate('Set the maximum number of generations to display on Descendancy charts.');
+	$text=WT_I18N::translate('Set the maximum number of generations to display on descendancy charts.');
 	break;
 
 case 'MAX_EXECUTION_TIME':
@@ -638,7 +638,7 @@ case 'MAX_EXECUTION_TIME':
 
 case 'MAX_PEDIGREE_GENERATIONS':
 	$title=WT_I18N::translate('Maximum pedigree generations');
-	$text=WT_I18N::translate('Set the maximum number of generations to display on Pedigree charts.');
+	$text=WT_I18N::translate('Set the maximum number of generations to display on pedigree charts.');
 	break;
 
 case 'MEDIA_DIRECTORY':
@@ -697,7 +697,7 @@ case 'PEDIGREE_FULL_DETAILS':
 
 case 'PEDIGREE_LAYOUT':
 	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Default pedigree chart layout');
-	$text=/* I18N: Help text for the “Default pedigree chart layout” tree configuration setting */ WT_I18N::translate('This option indicates whether the Pedigree chart should be generated in landscape or portrait mode.');
+	$text=/* I18N: Help text for the “Default pedigree chart layout” tree configuration setting */ WT_I18N::translate('This option indicates whether the pedigree chart should be generated in landscape or portrait mode.');
 	break;
 
 case 'PEDIGREE_SHOW_GENDER':
@@ -863,7 +863,7 @@ case 'SHOW_LIVING_NAMES':
 
 case 'SHOW_MEDIA_DOWNLOAD':
 	$title=WT_I18N::translate('Show download link in media viewer');
-	$text=WT_I18N::translate('The Media Viewer can show a link which, when clicked, will download the Media file to the local PC.<br><br>You may want to hide the download link for security reasons.');
+	$text=WT_I18N::translate('The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons.');
 	break;
 
 case 'SHOW_PARENTS_AGE':
@@ -995,7 +995,7 @@ case 'USE_REGISTRATION_MODULE':
 
 case 'USE_RELATIONSHIP_PRIVACY':
 	$title=WT_I18N::translate('Use relationship privacy');
-	$text=WT_I18N::translate('<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The Administrator can override this option for individual users by editing the user’s account details.');
+	$text=WT_I18N::translate('<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details.');
 	break;
 
 case 'USE_RIN':
@@ -1097,7 +1097,7 @@ case 'apply_privacy':
 
 case 'block_move_right':
 	$title=WT_I18N::translate('Move list entries');
-	$text=WT_I18N::translate('Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available Blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move Right and Move Left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this.');
+	$text=WT_I18N::translate('Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move right and Move left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this.');
 	break;
 
 case 'block_move_up':
@@ -1154,7 +1154,7 @@ case 'edit_add_SOUR':
 	break;
 
 case 'edit_edit_raw':
-	$title=WT_I18N::translate('Edit raw GEDCOM record');
+	$title=WT_I18N::translate('Edit raw GEDCOM');
 	$text=
 		WT_I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly.  It is an advanced option, and you should not use it unless you understand the GEDCOM format.  If you make a mistake here, it can be difficult to fix.').
 		'<br><br>'.
@@ -1267,7 +1267,7 @@ case 'include_media':
 
 case 'lifespan_chart':
 	$title=WT_I18N::translate('Lifespans');
-	$text=WT_I18N::translate('On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear Chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality.');
+	$text=WT_I18N::translate('On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality.');
 	break;
 
 case 'next_path':

@@ -167,8 +167,8 @@ $people = count($controller->people);
 					<table>
 						<tr>
 							<td align="center"><?php echo WT_I18N::translate('Speed'); ?></td>
-							<td align="center"><?php echo WT_I18N::translate('Begin Year'); ?></td>
-							<td align="center"><?php echo WT_I18N::translate('End Year'); ?></td>
+							<td align="center"><?php echo WT_I18N::translate('Begin year'); ?></td>
+							<td align="center"><?php echo WT_I18N::translate('End year'); ?></td>
 							<td align="center"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></td>
 						</tr>
 						<tr>
@@ -193,7 +193,7 @@ $people = count($controller->people);
 								<input type="submit" name="search" value="<?php echo WT_I18N::translate('Search'); ?>">
 							</td>
 							<td>
-								<input type="button" value="<?php echo WT_I18N::translate('Clear Chart'); ?>" onclick="window.location='lifespan.php?clear=1';">
+								<input type="button" value="<?php echo WT_I18N::translate('Clear chart'); ?>" onclick="window.location='lifespan.php?clear=1';">
 							</td>
 						</tr>
 					</table>

@@ -256,13 +256,13 @@ $controller
 // NOTE: Row 1: Column legends
 echo '<tr>';
 	echo '<td class="descriptionbox center vmiddle" colspan="2">';
-		echo '<b>', WT_I18N::translate('Main Section Blocks'), '</b>';
+		echo '<b>', WT_I18N::translate('Main section blocks'), '</b>';
 	echo '</td>';
 	echo '<td class="descriptionbox center vmiddle" colspan="3">';
-		echo '<b>', WT_I18N::translate('Available Blocks'), '</b>';
+		echo '<b>', WT_I18N::translate('Available blocks'), '</b>';
 	echo '</td>';
 	echo '<td class="descriptionbox center vmiddle" colspan="2">';
-		echo '<b>', WT_I18N::translate('Right Section Blocks'), '</b>';
+		echo '<b>', WT_I18N::translate('Right section blocks'), '</b>';
 	echo '</td>';
 echo '</tr>';
 echo '<tr>';
@@ -284,7 +284,7 @@ echo '<td class="optionbox center">';
 echo '</td>';
 // NOTE: Row 2 column 3: Left/Right buttons for left (main) block list
 echo '<td class="optionbox center vmiddle">';
-	echo '<a onclick="move_left_right_block(\'main_select\', \'right_select\');" title="', WT_I18N::translate('Move Right'), '"class="', $IconRDarrow, '"></a>';
+	echo '<a onclick="move_left_right_block(\'main_select\', \'right_select\');" title="', WT_I18N::translate('Move right'), '"class="', $IconRDarrow, '"></a>';
 	echo '<br>';
 	echo '<a onclick="move_left_right_block(\'main_select\', \'available_select\');" title="', WT_I18N::translate('Remove'), '"class="', $IconRarrow, '"></a>';
 	echo '<br>';
@@ -302,7 +302,7 @@ echo '<td class="optionbox center">';
 echo '</td>';
 // NOTE: Row 2 column 5: Left/Right buttons for right block list
 echo '<td class="optionbox center vmiddle">';
-	echo '<a onclick="move_left_right_block(\'right_select\', \'main_select\');" title="', WT_I18N::translate('Move Left'), '"class="', $IconLDarrow, '"></a>';
+	echo '<a onclick="move_left_right_block(\'right_select\', \'main_select\');" title="', WT_I18N::translate('Move left'), '"class="', $IconLDarrow, '"></a>';
 	echo '<br>';
 	echo '<a onclick="move_left_right_block(\'right_select\', \'available_select\');" title="', WT_I18N::translate('Remove'), '"class="', $IconLarrow, '"></a>';
 	echo '<br>';

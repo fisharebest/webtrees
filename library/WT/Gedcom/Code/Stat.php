@@ -67,10 +67,10 @@ class WT_Gedcom_Code_Stat {
 				WT_I18N::translate('Completed; date unknown');
 		case 'DNS':
 			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
-				WT_I18N::translate('Do Not Seal: unauthorized');
+				WT_I18N::translate('Do not seal: unauthorized');
 		case 'DNS/CAN':
 			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
-				WT_I18N::translate('Do Not Seal, previous sealing cancelled');
+				WT_I18N::translate('Do not seal, previous sealing cancelled');
 		case 'EXCLUDED':
 			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
 				WT_I18N::translate('Excluded from this submission');

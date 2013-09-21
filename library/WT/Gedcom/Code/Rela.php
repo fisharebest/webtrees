@@ -58,7 +58,7 @@ class WT_Gedcom_Code_Rela {
 			}
 		case 'best_man':
 			// always male
-			return WT_I18N::translate('Best Man');
+			return WT_I18N::translate('Best man');
 		case 'bridesmaid':
 			// always female
 			return WT_I18N::translate('Bridesmaid');
@@ -73,9 +73,9 @@ class WT_Gedcom_Code_Rela {
 			return WT_I18N::translate('Circumciser');
 		case 'civil_registrar':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Civil Registrar');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Civil Registrar');
-			default:  return WT_I18N::translate  (          'Civil Registrar');
+			case 'M': return WT_I18N::translate_c('MALE',   'Civil registrar');
+			case 'F': return WT_I18N::translate_c('FEMALE', 'Civil registrar');
+			default:  return WT_I18N::translate  (          'Civil registrar');
 			}
 		case 'employee':
 			switch ($sex) {
@@ -91,13 +91,13 @@ class WT_Gedcom_Code_Rela {
 			}
 		case 'foster_child':
 			// no sex implied
-			return WT_I18N::translate('Foster Child');
+			return WT_I18N::translate('Foster child');
 		case 'foster_father':
 			// always male
-			return WT_I18N::translate('Foster Father');
+			return WT_I18N::translate('Foster father');
 		case 'foster_mother':
 			// always female
-			return WT_I18N::translate('Foster Mother');
+			return WT_I18N::translate('Foster mother');
 		case 'friend':
 			switch ($sex) {
 			case 'M': return WT_I18N::translate_c('MALE',   'Friend');
@@ -163,9 +163,9 @@ class WT_Gedcom_Code_Rela {
 			return WT_I18N::translate('Rabbi');
 		case 'registry_officer':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Registry Officer');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Registry Officer');
-			default:  return WT_I18N::translate  (          'Registry Officer');
+			case 'M': return WT_I18N::translate_c('MALE',   'Registry officer');
+			case 'F': return WT_I18N::translate_c('FEMALE', 'Registry officer');
+			default:  return WT_I18N::translate  (          'Registry officer');
 			}
 		case 'seller':
 			switch ($sex) {

@@ -113,7 +113,7 @@ case 'compose':
 			return true;
 		}
 	');
-	echo '<span class="subheaders">', WT_I18N::translate('Send Message'), '</span>';
+	echo '<span class="subheaders">', WT_I18N::translate('Send message'), '</span>';
 	echo $errors;
 
 	if (!WT_USER_ID) {
@@ -125,7 +125,7 @@ case 'compose':
 	echo /* I18N: %s is the name of a language */ WT_I18N::translate('This user prefers to receive messages in %s', Zend_Locale::getTranslation(get_user_setting($to_user_id, 'language'), 'language', WT_LOCALE)), '</td></tr>';
 	if (!WT_USER_ID) {
 		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your Name:'), '</td>';
-		echo '<td><input type="text" name="from_name" size="40" value="', WT_Filter::escapeHtml($from_name), '"></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email Address:'), '</td><td><input type="email" name="from_email" size="40" value="', WT_Filter::escapeHtml($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
+		echo '<td><input type="text" name="from_name" size="40" value="', WT_Filter::escapeHtml($from_name), '"></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email address:'), '</td><td><input type="email" name="from_email" size="40" value="', WT_Filter::escapeHtml($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
 	}
 	echo '<tr><td align="right">', WT_I18N::translate('Subject:'), '</td>';
 	echo '<td>';
