@@ -147,46 +147,44 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				$i++;
 				$gmarks[$i]=array(
 					'class'        => 'optionbox',
-					'fact_label'   => $fact->getLabel(),
-					'info'         => WT_Filter::escapeHtml($fact->getValue()),
-					'lati'         => str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]),
-					'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.') , $match2[1]),
 					'date'         => $fact->getDate()->Display(true),
-					'place'        => $fact->getPlace()->getFullName(),
-					'tooltip'      => $fact->getPlace()->getGedcomName(),
-					'name'         => $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '',
+					'fact_label'   => $fact->getLabel(),
 					'image'        => $spouse ? $spouse->displayImage() : $fact->Icon(),
+					'info'         => WT_Filter::escapeHtml($fact->getValue()),
+					'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]),
+					'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.') , $match2[1]),
+					'name'         => $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '',
 					'pl_icon'      => '',
-					'lati'         => '',
-					'lng'          => '',
-					'sv_lati'      => '',
-					'sv_long'      => '',
-					'sv_bearing'   => '',
-					'sv_elevation' => '',
-					'sv_zoom'      => '',
+					'place'        => $fact->getPlace()->getFullName(),
+					'sv_bearing'   => '0',
+					'sv_elevation' => '0',
+					'sv_lati'      => '0',
+					'sv_long'      => '0',
+					'sv_zoom'      => '0',
+					'tooltip'      => $fact->getPlace()->getGedcomName(),
 				);
 			} else {
 				$latlongval = get_lati_long_placelocation($fact->getPlace()->getGedcomName());
 				if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
 					$i++;
 					$gmarks[$i] = array(
-						'class'      => 'optionbox',
-						'fact_label' => $fact->getLabel(),
-						'info'       => WT_Filter::escapeHtml($fact->getValue()),
-						'date'       => $fact->getDate()->Display(true),
-						'place'      => $fact->getPlace()->getFullName(),
-						'tooltip'    => $fact->getPlace()->getGedcomName(),
-						'name'       => $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '',
-						'image'      => $spouse ? $spouse->displayImage() : $fact->Icon(),
+						'class'        => 'optionbox',
+						'date'         => $fact->getDate()->Display(true),
+						'fact_label'   => $fact->getLabel(),
+						'image'        => $spouse ? $spouse->displayImage() : $fact->Icon(),
+						'info'         => WT_Filter::escapeHtml($fact->getValue()),
+						'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval->pl_lati),
+						'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval->pl_long),
+						'name'         => $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '',
+						'pl_icon'      => $latlongval->pl_icon,
+						'place'        => $fact->getPlace()->getFullName(),
+						'sv_bearing'   => $latlongval->sv_bearing,
+						'sv_elevation' => $latlongval->sv_elevation,
+						'sv_lati'      => $latlongval->sv_lati,
+						'sv_long'      => $latlongval->sv_long,
+						'sv_zoom'      => $latlongval->sv_zoom,
+						'tooltip'      => $fact->getPlace()->getGedcomName(),
 					);
-					$gmarks[$i]['pl_icon']      = $latlongval->pl_icon;
-					$gmarks[$i]['lati']         = str_replace(array('N', 'S', ','), array('', '-', '.') , $latlongval->pl_lati);
-					$gmarks[$i]['lng']          = str_replace(array('E', 'W', ','), array('', '-', '.') , $latlongval->pl_long);
-					$gmarks[$i]['sv_lati']      = $latlongval->sv_lati;
-					$gmarks[$i]['sv_long']      = $latlongval->sv_long;
-					$gmarks[$i]['sv_bearing']   = $latlongval->sv_bearing;
-					$gmarks[$i]['sv_elevation'] = $latlongval->sv_elevation;
-					$gmarks[$i]['sv_zoom']      = $latlongval->sv_zoom;
 					if ($GOOGLEMAP_MAX_ZOOM > $latlongval->pl_zoom) {
 						$GOOGLEMAP_MAX_ZOOM = $latlongval->pl_zoom;
 					}
@@ -209,19 +207,19 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 						$i++;
 						$gmarks[$i]=array(
 							'date'         => $birth->getDate()->Display(true),
-							'place'        => $birth->getPlace()->getFullName(),
-							'tooltip'      => $birth->getPlace()->getGedcomName(),
-							'info'         => '',
-							'name'         => '<a href="' . $child->getHtmlUrl() . '"' . $child->getFullName() . '</a>',
 							'image'        => $child->displayImage(),
+							'info'         => '',
+							'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.'), $match1[1]),
+							'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.'), $match2[1]),
+							'name'         => '<a href="' . $child->getHtmlUrl() . '"' . $child->getFullName() . '</a>',
 							'pl_icon'      => '',
-							'lati'         => '',
-							'lng'          => '',
-							'sv_lati'      => '',
-							'sv_long'      => '',
-							'sv_bearing'   => '',
-							'sv_elevation' => '',
-							'sv_zoom'      => '',
+							'place'        => $birth->getPlace()->getFullName(),
+							'sv_bearing'   => '0',
+							'sv_elevation' => '0',
+							'sv_lati'      => '0',
+							'sv_long'      => '0',
+							'sv_zoom'      => '0',
+							'tooltip'      => $birth->getPlace()->getGedcomName(),
 						);
 						switch ($child->getSex()) {
 						case'F':
@@ -237,20 +235,25 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 							$gmarks[$i]['class']      = 'person_boxNN';
 							break;
 						}
-						$gmarks[$i]['lati'] = str_replace(array('N', 'S', ','), array('', '-', '.'), $match1[1]);
-						$gmarks[$i]['lng']  = str_replace(array('E', 'W', ','), array('', '-', '.'), $match2[1]);
-						$gmarks[$i]['name'] = $child;
 					} else {
 						$latlongval = get_lati_long_placelocation($birth->getPlace()->getGedcomName());
 						if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
 							$i++;
 							$gmarks[$i] = array(
-								'date'    => $birth->getDate()->Display(true),
-								'place'   => $birth->getPlace()->getFullName(),
-								'tooltip' => $birth->getPlace()->getGedcomName(),
-								'info'    => '',
-								'name'    => '<a href="' . $child->getHtmlUrl() . '"' . $child->getFullName() . '</a>',
-								'image'   => $child->displayImage(),
+								'date'         => $birth->getDate()->Display(true),
+								'image'        => $child->displayImage(),
+								'info'         => '',
+								'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval->pl_lati),
+								'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval->pl_long),
+								'name'         => '<a href="' . $child->getHtmlUrl() . '"' . $child->getFullName() . '</a>',
+								'pl_icon'      => $latlongval->pl_icon,
+								'place'        => $birth->getPlace()->getFullName(),
+								'sv_bearing'   => $latlongval->sv_bearing,
+								'sv_elevation' => $latlongval->sv_elevation,
+								'sv_lati'      => $latlongval->sv_lati,
+								'sv_long'      => $latlongval->sv_long,
+								'sv_zoom'      => $latlongval->sv_zoom,
+								'tooltip'      => $birth->getPlace()->getGedcomName(),
 							);
 							switch ($child->getSex()) {
 							case 'M':
@@ -266,14 +269,6 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 								$gmarks[$i]['class']      = 'option_boxNN';
 								break;
 							}
-							$gmarks[$i]['lati']         = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval->pl_lati);
-							$gmarks[$i]['lng']          = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval->pl_long);
-							$gmarks[$i]['pl_icon']      = $latlongval->pl_icon;
-							$gmarks[$i]['sv_lati']      = $latlongval->sv_lati;
-							$gmarks[$i]['sv_long']      = $latlongval->sv_long;
-							$gmarks[$i]['sv_bearing']   = $latlongval->sv_bearing;
-							$gmarks[$i]['sv_elevation'] = $latlongval->sv_elevation;
-							$gmarks[$i]['sv_zoom']      = $latlongval->sv_zoom;
 							if ($GOOGLEMAP_MAX_ZOOM > $latlongval->pl_zoom) {
 								$GOOGLEMAP_MAX_ZOOM = $latlongval->pl_zoom;
 							}
@@ -287,10 +282,11 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 	// Group markers by location
 	$location_groups = array();
 	foreach ($gmarks as $gmark) {
-		if (isset($location_groups[$gmark['place']])) {
-			$location_groups[$gmark['place']][] = $gmark;
+		$key = $gmark['lat'] . $gmark['lng'];
+		if (isset($location_groups[$key])) {
+			$location_groups[$key][] = $gmark;
 		} else {
-			$location_groups[$gmark['place']] = array($gmark);
+			$location_groups[$key] = array($gmark);
 		}
 	}
 	$location_groups = array_values($location_groups);
@@ -555,7 +551,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				<?php echo $n ? ',' : ''; ?>
 				{
 					"event":        "<?php echo WT_Filter::escapeJs($gmark['fact_label']  ); ?>",
-					"lat":          "<?php echo WT_Filter::escapeJs($gmark['lati']        ); ?>",
+					"lat":          "<?php echo WT_Filter::escapeJs($gmark['lat']         ); ?>",
 					"lng":          "<?php echo WT_Filter::escapeJs($gmark['lng']         ); ?>",
 					"date":         "<?php echo WT_Filter::escapeJs($gmark['date']        ); ?>",
 					"info":         "<?php echo WT_Filter::escapeJs($gmark['info']        ); ?>",
@@ -564,7 +560,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 					"tooltip":      "<?php echo WT_Filter::escapeJs($gmark['tooltip']     ); ?>",
 					"image":        "<?php echo WT_Filter::escapeJs($gmark['image']       ); ?>",
 					"icon":         "<?php echo WT_Filter::escapeJs($gmark['pl_icon']     ); ?>",
-					"sv_lat":       "<?php echo WT_Filter::escapeJs($gmark['sv_lati']     ); ?>",
+					"sv_lati":      "<?php echo WT_Filter::escapeJs($gmark['sv_lati']     ); ?>",
 					"sv_long":      "<?php echo WT_Filter::escapeJs($gmark['sv_long']     ); ?>",
 					"sv_bearing":   "<?php echo WT_Filter::escapeJs($gmark['sv_bearing']  ); ?>",
 					"sv_elevation": "<?php echo WT_Filter::escapeJs($gmark['sv_elevation']); ?>",
@@ -583,7 +579,6 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 			}
 			// TODO: why doesn't this next line work?
 			//var location_groups = <?php echo json_encode($location_groups); ?>;
-			console.log(location_groups);
 
 			// Set the Marker bounds
 			var bounds = new google.maps.LatLngBounds ();
@@ -633,8 +628,8 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				'</div>';
 	
 				// create the marker
-				var point        = new google.maps.LatLng(location.lat,    location.lng);     // Place Latitude, Longitude
-				var sv_point     = new google.maps.LatLng(location.sv_lat, location.sv_long); // StreetView Latitude and Longitide
+				var point        = new google.maps.LatLng(location.lat,     location.lng);     // Place Latitude, Longitude
+				var sv_point     = new google.maps.LatLng(location.sv_lati, location.sv_long); // StreetView Latitude and Longitide
 	
 				var zoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM; ?>;
 				var marker    = createMarker(point, html, location.tooltip, location.sv_lati, location.sv_long, location.sv_bearing, location.sv_elevation, location.sv_zoom, sv_point, location.pl_icon);
@@ -648,7 +643,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				}
 	
 				// Correct zoom level when only one marker is present
-				if (location_groups.length < 1) {
+				if (location_groups.length == 1) {
 					bounds.extend(myLatLng);
 					map.setZoom(zoomLevel);
 					map.setCenter(myLatLng);
