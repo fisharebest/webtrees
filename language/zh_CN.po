@@ -18227,7 +18227,7 @@ msgid "hide"
 msgstr "隐藏"
 
 #: index.php:148 modules_v3/extra_info/module.php:71
-msgid "hit count:"
+msgid "Hit count:"
 msgstr "访问次数:"
 
 #: edit_interface.php:1859 edit_interface.php:1894

@@ -68,7 +68,7 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
 			//print indi counter only if displaying a non-private person
 			require WT_ROOT.'includes/hitcount.php';
-			echo WT_I18N::translate('hit count:'). ' '. $hitCount;
+			echo WT_I18N::translate('Hit count:'). ' '. $hitCount;
 		}
 		echo '</div>';// close #hitcounter
 		return strip_tags(ob_get_clean(), '<a><div><span>');

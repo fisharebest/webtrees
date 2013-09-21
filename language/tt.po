@@ -18232,7 +18232,7 @@ msgid "hide"
 msgstr ""
 
 #: index.php:148 modules_v3/extra_info/module.php:71
-msgid "hit count:"
+msgid "Hit count:"
 msgstr "Сайтка керүләр саны"
 
 #: edit_interface.php:1859 edit_interface.php:1894
