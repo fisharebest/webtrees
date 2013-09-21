@@ -283,12 +283,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 	$STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	?>
 	
-	<script>var ie = 0;</script>
-	<!--[if IE]>
-	<script>ie = 1;</script>
-	<![endif]-->
 	<script>
-	
 		// this variable will collect the html which will eventually be placed in the side_bar
 		var side_bar_html = '';
 		var map_center = new google.maps.LatLng(0,0);
