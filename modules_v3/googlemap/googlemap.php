@@ -143,7 +143,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 			} else {
 				$spouse = null;
 			}
-			if (($ctla>0) && ($ctlo>0) && ($useThisItem==true)) {
+			if ($ctla && $ctlo) {
 				$i++;
 				$gmarks[$i]=array(
 					'class'      => 'optionbox',
@@ -197,7 +197,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				if (!$birth->getPlace()->isEmpty()) {
 					$ctla = preg_match('/\n4 LATI (.+)/', $birthrec, $match1);
 					$ctlo = preg_match('/\n4 LONG (.+)/', $birthrec, $match2);
-					if (($ctla>0) && ($ctlo>0)) {
+					if ($ctla && $ctlo) {
 						$i++;
 						$gmarks[$i]=array(
 							'date'    => $birth->getDate()->Display(true),
