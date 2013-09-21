@@ -673,9 +673,8 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				echo $gmark['name'], '<br>';
 			}
 			echo $gmark['place'], '<br>';
-			if (!empty($gmark['date'])) {
-				$date=new WT_Date($gmark['date']);
-				echo $date->Display(true), '<br>';
+			if ($gmark['date']) {
+				echo $gmark['date'], '<br>';
 			}
 			echo '</td>';
 			echo '</tr>';
