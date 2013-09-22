@@ -44,7 +44,9 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function hasSidebarContent() {
-		return true;
+		global $SEARCH_SPIDER;
+
+		return !$SEARCH_SPIDER;
 	}
 
 	// Implement WT_Module_Sidebar

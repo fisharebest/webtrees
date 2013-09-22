@@ -343,12 +343,18 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 	// Impelement WT_Module_Sidebar
 	public function hasSidebarContent() {
-		require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
+		global $SEARCH_SPIDER;
 
-		// Creating a controller has the side effect of initialising the cart
-		$clip_ctrl=new WT_Controller_Clippings();
+		if ($SEARCH_SPIDER) {
+			return false;
+		} else {
+			require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 
-		return true;
+			// Creating a controller has the side effect of initialising the cart
+			$clip_ctrl=new WT_Controller_Clippings();
+
+			return true;
+		}
 	}
 
 	// Impelement WT_Module_Sidebar
