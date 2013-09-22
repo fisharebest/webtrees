@@ -95,7 +95,6 @@ case 'site_setting':
 	case 'ALLOW_USER_THEMES':
 	case 'ALLOW_CHANGE_GEDCOM':
 	case 'SMTP_AUTH':
-	case 'WELCOME_TEXT_CUST_HEAD':
 	case 'SHOW_REGISTER_CAUTION':
 		$value=(int)$value;
 		break;

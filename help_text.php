@@ -1026,11 +1026,6 @@ case 'WEBMASTER_USER_ID':
 	$text=WT_I18N::translate('The individual to be contacted about technical questions or errors encountered on your site.');
 	break;
 
-case 'WELCOME_TEXT_CUST_HEAD':
-	$title=WT_I18N::translate('Standard header for custom welcome text');
-	$text=WT_I18N::translate('Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class="list_value_wrap"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>');
-	break;
-
 case 'WELCOME_TEXT_AUTH_MODE_CUST':
 	$title=WT_I18N::translate('Custom welcome text');
 	$text=WT_I18N::translate('If you have opted for custom welcome text, you can type that text here.  To set this text for other languages, you must switch to that language, and visit this page again.');

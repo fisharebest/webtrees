@@ -157,13 +157,10 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 							<dt><?php echo WT_I18N::translate('Login URL'), help_link('LOGIN_URL'); ?></dt>
 							<dd><?php echo edit_field_inline('site_setting-LOGIN_URL', WT_Site::preference('LOGIN_URL'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Standard header for custom welcome text'), help_link('WELCOME_TEXT_CUST_HEAD'); ?></dt>
-							<dd><?php echo edit_field_yes_no_inline('site_setting-WELCOME_TEXT_CUST_HEAD', WT_Site::preference('WELCOME_TEXT_CUST_HEAD'), $controller); ?></dd>
-
 							<dt><?php echo WT_I18N::translate('Welcome text on login page'), help_link('WELCOME_TEXT_AUTH_MODE'); ?></dt>
 							<dd><?php echo select_edit_control_inline('site_setting-WELCOME_TEXT_AUTH_MODE', $WELCOME_TEXT_AUTH_MODE_OPTIONS, null, WT_Site::preference('WELCOME_TEXT_AUTH_MODE'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?></dt>
+							<dt><?php echo WT_I18N::translate('Custom welcome text'), ' — ', WT_LOCALE, help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?></dt>
 							<dd><?php echo edit_text_inline('site_setting-WELCOME_TEXT_AUTH_MODE_4', WT_Site::preference('WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), $controller); ?></dd>
 
 							<dt><?php echo WT_I18N::translate('Show acceptable use agreement on “Request new user account” page'), help_link('SHOW_REGISTER_CAUTION'); ?></dt>
