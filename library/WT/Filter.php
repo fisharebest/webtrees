@@ -84,14 +84,15 @@ class WT_Filter {
 				)
 			);
 		} else {
-			return filter_input(
+			$tmp = filter_input(
 				$source,
 				$variable,
 				FILTER_CALLBACK,
 				array(
 					'options' => function($x) {return mb_check_encoding($x, 'UTF-8') ? $x : false;},
 				)
-			) ?: $default;
+			);
+			return ($tmp===null || $tmp===false) ? $default : $tmp;
 		}
 	}
 
