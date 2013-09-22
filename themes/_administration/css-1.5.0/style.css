@@ -27,7 +27,7 @@ body {font-family:"Trebuchet MS",Tahoma,Verdana,Arial,sans-serif; font-size:12px
 input.ui-button {padding:1px 3px;}
 input, textarea, select {border: 1px solid grey;color:#000000; font:inherit; padding:0 3px;}
 button, input[type="submit"], input[type="reset"], input[type="button"], input[type="file"] {background:url(../jquery-ui-1.10.3/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #f8f7f6; border:1px solid #cbc7bd; color:#654b24; font-weight:700; border-radius:3px; margin:0.3em;}
-button:hover, input:hover[type="submit"], input:hover[type="reset"], input:hover[type="button"], input:hover[type="file"] {background:url(jquery-ui-1.10.3/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654b24; border:1px solid #654b24; color:#ffffff; font-weight:700; border-radius:3px;}
+button:hover, input:hover[type="submit"], input:hover[type="reset"], input:hover[type="button"], input:hover[type="file"] {background:url(../jquery-ui-1.10.3/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654b24; border:1px solid #654b24; color:#ffffff; font-weight:700; border-radius:3px;}
 fieldset {margin:8px 8px 4px 8px;}
 legend {font-style:italic; font-weight:bold; padding:0 5px 5px; vertical-align:top;}
 img {border:none; vertical-align:middle;}
@@ -102,7 +102,7 @@ html[dir=rtl] #info {right:auto; left:10px; text-align:left;}
 #links {position:absolute; left:10px; bottom:0; display:inline; margin-bottom:5px; white-space:nowrap;}
 html[dir=rtl] #links {left:auto; right:10px;}
 #links li {display:inline; position:relative;}
-#links li ul {display:none; position:absolute; left:0; top:1.2em; background:url("jquery-ui-1.10.3/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #eceadf; border:1px solid #d9d6c4;z-index:999;}
+#links li ul {display:none; position:absolute; left:0; top:1.2em; background:url("../jquery-ui-1.10.3/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #eceadf; border:1px solid #d9d6c4;z-index:999;}
 html[dir=rtl] #links li ul {left:auto; right:0;}
 #links li ul li {display:block; padding:0 5px; text-align:left;}
  html[dir=rtl] #links li ul li {text-align:right;}
