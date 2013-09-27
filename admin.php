@@ -189,7 +189,6 @@ echo
 		echo '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=language&amp;usrlang=', $key, '">', $ulang['langname'], '</a></td><td>', $ulang['number'], '</td></tr>';
 	}
 	echo
-		'</tr>',
 		'<tr><td colspan="2">', WT_I18N::translate('Users logged in'), '</td></tr>',
 		'<tr><td colspan="2"><div>', $stats->_usersLoggedIn('list'), '</div></td></tr>',
 		'</table>';

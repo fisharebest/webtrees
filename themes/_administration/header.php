@@ -65,12 +65,13 @@ echo
 	'<div id="links">',
 	'<a href="index.php">', WT_I18N::translate('My page'), '</a> | ',
 	logout_link(),
-	'<span><ul class="langmenu">';
+	'<span> | </span>',
+	'<ul class="langmenu">';
 	$language_menu=WT_MenuBar::getLanguageMenu();
 		if ($language_menu) {
-			echo ' | ', $language_menu->getMenuAsList();
+			echo $language_menu->getMenuAsList();
 		}
-	echo '</ul></span>';
+	echo '</ul>';
 	if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 	echo ' | <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 	}
