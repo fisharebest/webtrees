@@ -109,6 +109,7 @@ html[dir=rtl] #links li ul {left:auto; right:0;}
 #links, #links li ul {list-style:none; margin:0; padding:1px;}
 #links li:hover > ul {display:block;}
 .ui-widget-content a.lang-active {color:#008000;}
+#links .langmenu {display:inline; padding:0;}
 
 /* SIDE and CONTENT panels */
 #admin_menu, #admin_content {min-height:580px;}
