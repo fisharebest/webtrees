@@ -2219,11 +2219,11 @@ margin:5px 3px 5px 0;
 clear:both;
 }
 
-#media-display-image {
+.media-display-image {
 float:left;
 }
 
-#media-display-title {
+.media-display-title {
 float:left;
 font-style:italic;
 margin:10px;

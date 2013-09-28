@@ -1469,8 +1469,8 @@ html[dir=rtl] dd .editlink, html[dir=rtl] dd .deletelink {float:left;}
 /* =========== Indi tabs ================== */
 /* Facts & Events tab */
 #personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR, #family-table .fact_NOTE, #family-table .fact_SOUR {margin:5px 3px 5px 0;clear:both;}
-#media-display-image {float:left;}
-#media-display-title {float:left;font-style:italic;margin:10px;}
+.media-display-image {float:left;}
+.media-display-title {float:left;font-style:italic;margin:10px;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-widget-content {color:#555555;}
