@@ -786,12 +786,13 @@ html[dir=rtl] .indi_table {clear:right;}
 /*  Indi tabs  */
 /* Facts & Events */
 #personal_facts_content .fact_NOTE,#personal_facts_content .fact_SOUR,#family-table .fact_NOTE,#family-table .fact_SOUR {clear:both;margin:5px 3px 5px 0;}
-.facts_table .field em {margin-top:0;}
-.media-display-image {float:left;}
-.media-display-title {float:left;font-style:italic;margin:10px;}
+.facts_table .field em {margin-top:0;font-weight:600;padding-left:3px;}
+.facts_table .field img {vertical-align:middle;}
+.media-display-image {float:left;margin-top:5px;}
+.media-display-title {float:left;font-style:italic;font-weight:600;padding-left:3px;margin-top:5px;}
 html[dir=rtl] .media-display-image {float:right;}
-html[dir=rtl] .media-display-title {float:right;}
-
+html[dir=rtl] .media-display-title {float:right;padding-right:3px;}
+html[dir=rtl] .facts_table .field em {padding-right:3px;}
 
 /* jquery-ui.custom.css changes  */
 span.link_text {display:none;}
