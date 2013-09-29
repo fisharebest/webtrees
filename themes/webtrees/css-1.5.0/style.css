@@ -767,6 +767,8 @@ html[dir=rtl] dd .editlink, html[dir=rtl] dd .deletelink {float:left;}
 #personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR, #family-table .fact_NOTE, #family-table .fact_SOUR {margin:5px 3px 5px 0;clear:both;}
 .media-display-image {float:left;}
 .media-display-title {float:left;font-style:italic;margin:10px;}
+html[dir=rtl] .media-display-image {float:right;}
+html[dir=rtl] .media-display-title {float:right;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-tabs, .ui-tabs .ui-tabs-nav li a {padding:0;}

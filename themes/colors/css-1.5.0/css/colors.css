@@ -380,6 +380,7 @@ html[dir=rtl] #relationship_chart {margin-right:10px;}
 .list_label_wrap {border:1px solid #999999;border-radius:3px;font-weight:700;text-align:center;white-space:normal;}
 .list_value {border:1px solid #999999;border-radius:3px;padding:1px;text-align:left;vertical-align:top;white-space:nowrap;}
 .list_value_wrap {border:1px solid #999999;border-radius:3px;padding:1px;text-align:left;vertical-align:top;white-space:normal;}
+.list_value_wrap p {margin: 10px 0;}
 
 html[dir=rtl] .list_value, html[dir=rtl] .list_value_wrap {text-align:right;}
 
@@ -785,9 +786,12 @@ html[dir=rtl] .indi_table {clear:right;}
 /*  Indi tabs  */
 /* Facts & Events */
 #personal_facts_content .fact_NOTE,#personal_facts_content .fact_SOUR,#family-table .fact_NOTE,#family-table .fact_SOUR {clear:both;margin:5px 3px 5px 0;}
-
+.facts_table .field em {margin-top:0;}
 .media-display-image {float:left;}
 .media-display-title {float:left;font-style:italic;margin:10px;}
+html[dir=rtl] .media-display-image {float:right;}
+html[dir=rtl] .media-display-title {float:right;}
+
 
 /* jquery-ui.custom.css changes  */
 span.link_text {display:none;}

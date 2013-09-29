@@ -847,6 +847,10 @@ margin:0 auto;
 border:1px solid #999999;
 }
 
+.list_value_wrap p {
+margin: 10px 0;
+}
+
 .list_label,.list_label_wrap {
 color:#ffffff !important;
 font-weight:700;
@@ -2228,6 +2232,8 @@ float:left;
 font-style:italic;
 margin:10px;
 }
+html[dir=rtl] .media-display-image {float:right;}
+html[dir=rtl] .media-display-title {float:right;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-accordion .ui-accordion-content {
