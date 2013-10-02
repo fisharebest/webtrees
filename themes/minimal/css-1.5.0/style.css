@@ -45,12 +45,18 @@ html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[
 /* Set stack level for top two header menu rows */
 .makeMenu ul, #main-menu ul {z-index:210;}
 
+/* Row one */
+#header-title {font-size:175%;float:left;clear:left;font-size: 26px;font-weight: 900;}
+#header-user-links {float:right;}
+html[dir=rtl] #header-title {float:right;clear:right;}
+html[dir=rtl] #header-user-links {float:left;clear:left;}
+
+/* Row two */
 .makeMenu {font-size:14px;}
-ul.makeMenu div {float:right;}
 .makeMenu li {background:none !important;border:1px solid #999999;display:inline;float:left;line-height:26px;position:relative;white-space:nowrap;}
-li.title {border:0;font-size:26px;font-weight:900;}
 .makeMenu li a {padding:5px 8px;}
 .makeMenu li ul {display:none;font-weight:normal;font-size:12px;position:absolute;left:0;right:auto;top:26px;background-color:#ffffff;border:1px solid #999999;}
+
 /* position sub-menus */
 .makeMenu ul ul {background:#eeeeee;top:0;left:100px;}
 .makeMenu li ul li {border:0;clear:both;display:block;line-height:2;text-align:left;}
@@ -60,7 +66,6 @@ li.title {border:0;font-size:26px;font-weight:900;}
 .lang-active, .theme-active {font-weight:900;}
 
 /* --- RTL --- */
-html[dir=rtl] ul.makeMenu div {float:left;}
 html[dir=rtl] .makeMenu li {float:right;}
 html[dir=rtl] .makeMenu li ul {left:auto;right:0;}
 html[dir=rtl] .makeMenu ul ul {top:0;left:auto;right:100px;}

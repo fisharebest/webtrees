@@ -70,9 +70,9 @@ echo
 // begin header section
 if ($view!='simple') {
 	echo '<div id="header">';
+	echo '<div id="header-title" dir="auto">', WT_TREE_TITLE, '</div>';
+	echo '<div id="header-user-links">';
 	echo '<ul class="makeMenu">';
-	echo '<li class="title" dir="auto">', WT_TREE_TITLE ,'</li>';
-	echo '<div>';
 	if (WT_USER_ID) {
 		echo '<li><a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
 		if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
@@ -99,8 +99,8 @@ if ($view!='simple') {
 		'<input type="hidden" name="ged" value="', WT_GEDCOM, '">',
 		'<input type="hidden" name="topsearch" value="yes">',
 		'<input type="search" name="query" size="20" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
-		'</form></li></div>',
-		'</ul>';
+		'</form></li></ul></div>';
+
 	$menu_items=array(
 		WT_MenuBar::getGedcomMenu(),
 		WT_MenuBar::getMyPageMenu(),
