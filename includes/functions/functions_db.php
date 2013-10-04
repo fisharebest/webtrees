@@ -30,10 +30,15 @@ if (!defined('WT_WEBTREES')) {
 // Fetch all records linked to a record - when deleting an object, we must
 // also delete all links to it.
 ////////////////////////////////////////////////////////////////////////////////
-function fetch_all_links($xref, $ged_id) {
+function fetch_all_links($xref, $gedcom_id) {
 	return
-		WT_DB::prepare("SELECT l_from FROM `##link` WHERE l_file=? AND l_to=?")
-		->execute(array($ged_id, $xref))
+		WT_DB::prepare(
+			"SELECT l_from FROM `##link` WHERE l_file=? AND l_to=?" .
+			" UNION " .
+			"SELECT xref FROM `##change` WHERE status='pending' AND gedcom_id=? AND new_gedcom LIKE" .
+			" CONCAT('%@', ?, '@%')"
+		)
+		->execute(array($gedcom_id, $xref, $gedcom_id, $xref))
 		->fetchOneColumn();
 }
 
