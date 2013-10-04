@@ -606,7 +606,7 @@ function shiftlinks() {
 	if ($exist_links) {
 		foreach (explode(',', $exist_links) as $remLinkId) {
 			$indi = WT_Individual::getInstance($remLinkId);
-			$indi->removeLinks($media_id, $update_CHAN!='no_change');
+			$indi->removeLinks($mediaid, $update_CHAN!='no_change');
 		}
 	}
 	// Add new Links ====================================

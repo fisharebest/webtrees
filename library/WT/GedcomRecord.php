@@ -1043,8 +1043,8 @@ class WT_GedcomRecord {
 
 		foreach ($this->getFacts() as $fact) {
 			if ($fact->getValue() == $value) {
-				$this->deleteFact($fact->factId());
-			} elseif (preg_match('/\n(\d) ' . WT_REGEX_TAG . ' ' . $value . '/', $fact->getGedcom(), $matches, PREG_SET_ORDER)) {
+				$this->deleteFact($fact->getFactId(), $update_chan);
+			} elseif (preg_match_all('/\n(\d) ' . WT_REGEX_TAG . ' ' . $value . '/', $fact->getGedcom(), $matches, PREG_SET_ORDER)) {
 				$gedcom = $fact->getGedcom();
 				foreach ($matches as $match) {
 					$next_levels = '[' . $match[1]+1 . '-9]';
