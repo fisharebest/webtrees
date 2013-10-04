@@ -228,7 +228,7 @@ class WT_Fact {
 	// Notes (inline and objects) linked to this fact
 	public function getNotes() {
 		$notes = array();
-		preg_match_all('/\n2 NOTE ?(.*(\n3.*)*)/', $this->getGedcom(), $matches);
+		preg_match_all('/\n2 NOTE ?(.*(?:\n3.*)*)/', $this->getGedcom(), $matches);
 		foreach ($matches[1] as $match) {
 			$note = preg_replace("/\n3 CONT ?/", "\n", $match);
 			if (preg_match('/@(' . WT_REGEX_XREF . ')@/', $note, $nmatch)) {
@@ -248,7 +248,7 @@ class WT_Fact {
 	// Media objects linked to this fact
 	public function getMedia() {
 		$media = array();
-		preg_match_all('/\n(2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches);
+		preg_match_all('/\n2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches);
 		foreach ($matches[1] as $match) {
 			$obje = WT_Media::getInstance($match, $this->getParent()->getGedcomId());
 			if ($obje->canShow()) {
