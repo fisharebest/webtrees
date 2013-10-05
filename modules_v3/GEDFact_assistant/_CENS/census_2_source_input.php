@@ -1100,7 +1100,7 @@ if (!defined('WT_WEBTREES')) {
 			// Input renamed as type=hidden to hide the date field ----- //
 			// Note Input field is still required ---------------------- //
 			?>
-				<input type="hidden" style="width:6em; background:#bbddff;" id="censDate" name="censDate" type="text" value="<?php echo ""; ?>" readonly="readonly">
+				<input type="hidden" style="width:6em; background:#bbddff;" id="censDate" name="censDate" type="text" value="<?php echo ""; ?>">
 			</font>
 			</td></tr></table>
 		</div>
