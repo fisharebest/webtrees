@@ -1034,9 +1034,9 @@ if (!defined('WT_WEBTREES')) {
 	<div class="cens_sour_country">
 		<span><?php echo WT_I18N::translate('Country'); ?><br></span>
 		<select id="censCtry" name="censCtry" >
-			<option id="UKOPT" name="UKOPT" value="UK">UK</option>
-			<option id="USOPT" name="USOPT" value="USA">USA</option>
-			<option id="FROPT" name="FROPT" value="FR">FR</option>
+			<option id="UKOPT" value="UK">UK</option>
+			<option id="USOPT" value="USA">USA</option>
+			<option id="FROPT" value="FR">FR</option>
 		</select>
 
 		<script>
@@ -1110,7 +1110,7 @@ if (!defined('WT_WEBTREES')) {
 
 	<div class="cens_sour_year">
 		<span><?php echo WT_I18N::translate('Year'); ?><br></span>
-		<select style = "background:#ffaaaa;";
+		<select style = "background:#ffaaaa;"
 				onchange = "if (this.options[this.selectedIndex].value!='') {
 								changeYear(this.options[this.selectedIndex].value);
 							}"
