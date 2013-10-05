@@ -825,6 +825,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 		for (var i=0; i<=73; i++) {
 				cell_[i] = row.insertCell(i);
 				cell_[i].setAttribute('id', 'col_'+i);
+				cell_[i].setAttribute('name', 'col_'+i);
 		}
 
 		if (iteration == 0) {
@@ -838,6 +839,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 
 		var cell_index2 = row.insertCell(76); // Item Number (#2)
 			cell_index2.setAttribute('id', 'index2');
+			cell_index2.setAttribute('name', 'index2');
 			cell_index2.setAttribute('align', 'center');
 
 
