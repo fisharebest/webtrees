@@ -36,7 +36,7 @@ if (!defined('WT_WEBTREES')) {
 		//-- Search Function ------------------------------------------------------------
 		?>
 		<tr>
-			<td align="center" class="descriptionbox"><font size=1><?php echo WT_I18N::translate('Add individuals'); ?></font></td>
+			<td align="center" class="descriptionbox"><?php echo WT_I18N::translate('Add individuals'); ?></td>
 		</tr>
 		<tr>
 			<td class="optionbox" >
@@ -48,15 +48,15 @@ if (!defined('WT_WEBTREES')) {
 							alert("<?php echo WT_I18N::translate('You must enter a name'); ?>");
 						} else {
 							var win02 = window.open(
-								"module.php?mod=GEDFact_assistant&mod_action=_CENS/census_3_find&callback=paste_id&action=filter&filter="+txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, HEIGHT=400, WIDTH=450 ");
+								"module.php?mod=GEDFact_assistant&mod_action=_CENS/census_3_find&callback=paste_id&action=filter&filter="+txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, height=400, width=450 ");
 							if (window.focus) {win02.focus();}
 						}
 					}
 				</script>
 				<?php
-				echo "<input id=personid type=\"text\" size=\"20\" STYLE=\"color: #000000;\" value=\"\">";
+				echo "<input id=personid type=\"text\" size=\"20\" style=\"color: #000000;\" value=\"\">";
 				echo "<a href=\"#\" onclick=\"findindi()\">" ;
-				echo "&nbsp;<font size=\"2\">&nbsp;".WT_I18N::translate('Search')."</font>";
+				echo "&nbsp;&nbsp;".WT_I18N::translate('Search');
 				echo '</a>';
 				?>
 			</td>
@@ -77,20 +77,18 @@ if (!defined('WT_WEBTREES')) {
 						<table width="100%" class="fact_table" cellspacing="0" border="0">
 							<tr>
 								<td align="center" colspan=3 class="descriptionbox">
-								<font size=1>
 								<?php
 								// Header text with "Head" button =================================================
 								$headImg  = '<i class="headimg vmiddle icon-button_head"></i>';
 								$headImg2 = '<i class="headimg2 vmiddle icon-button_head" title="'.WT_I18N::translate('Click to choose individual as head of family.').'"></i>';
 								echo WT_I18N::translate('Click %s to choose individual as head of family.', $headImg);
 								?>
-								</font>
 								</td>
 							</tr>
 
 							<tr>
 								<td>
-									<font size=1><br></font>
+									<br>
 								</td>
 							</tr>
 
@@ -153,21 +151,16 @@ if (!defined('WT_WEBTREES')) {
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox" width="25%">
-									<font size=1>
-										<?php echo $menu->getMenu(); ?>
-									</font>
+									<?php echo $menu->getMenu(); ?>
 								</td>
 								<td align="left" class="facts_value" style="text-decoration:none;" >
-									<font size=1>
-										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
-										echo $headImg2;
-										echo "</a>";
-										?>
-									</font>
+									<?php
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+									echo $headImg2;
+									echo "</a>";
+									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<font size=1>
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $gparent->getXref() ; // pid = PID
 										?>", "<?php
@@ -228,7 +221,6 @@ if (!defined('WT_WEBTREES')) {
 											echo $gparent->getFullName();  // Full Name (Link)
 										?>
 									</a>
-									</font>
 								</td>
 							</tr>
 							<?php
@@ -279,21 +271,16 @@ if (!defined('WT_WEBTREES')) {
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox">
-									<font size=1>
-										<?php echo $menu->getMenu(); ?>
-									</font>
+									<?php echo $menu->getMenu(); ?>
 								</td>
 								<td align="left" class="facts_value">
-									<font size=1>
-										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
-										echo $headImg2;
-										echo "</a>";
-										?>
-									</font>
+									<?php
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+									echo $headImg2;
+									echo "</a>";
+									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<font size=1>
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $gparent->getXref();
 										?>", "<?php
@@ -354,7 +341,6 @@ if (!defined('WT_WEBTREES')) {
 											echo $gparent->getFullName();  // Full Name (Link)
 										?>
 									</a>
-									</font>
 								</td>
 							</tr>
 							<?php
@@ -412,21 +398,16 @@ if (!defined('WT_WEBTREES')) {
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox">
-									<font size=1>
-										<?php echo $menu->getMenu(); ?>
-									</font>
+									<?php echo $menu->getMenu(); ?>
 								</td>
 								<td align="left" class="facts_value">
-									<font size=1>
-										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$child->getXref()."&amp;gedcom=".WT_GEDURL."\">";
-										echo $headImg2;
-										echo "</a>";
-										?>
-									</font>
+									<?php
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$child->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+									echo $headImg2;
+									echo "</a>";
+									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<font size=1>
 									<?php
 									if (($child->canShow())) {
 										?>
@@ -495,7 +476,6 @@ if (!defined('WT_WEBTREES')) {
 											echo WT_I18N::translate('Private');
 									}
 									?>
-									</font>
 								</td>
 							</tr>
 							<?php
@@ -558,21 +538,16 @@ if (!defined('WT_WEBTREES')) {
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox">
-									<font size=1>
-										<?php echo $menu->getMenu(); ?>
-									</font>
+									<?php echo $menu->getMenu(); ?>
 								</td>
 								<td align="left" class="facts_value">
-									<font size=1>
-										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
-										echo $headImg2;
-										echo "</a>";
-										?>
-									</font>
+									<?php
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+									echo $headImg2;
+									echo "</a>";
+									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<font size=1>
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $gparent->getXref(); // pid = PID
 										?>", "<?php
@@ -633,7 +608,6 @@ if (!defined('WT_WEBTREES')) {
 											echo $gparent->getFullName();  // Full Name (Link)
 										?>
 									</a>
-									</font>
 								</td>
 							</tr>
 							<?php
@@ -686,21 +660,16 @@ if (!defined('WT_WEBTREES')) {
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox">
-									<font size=1>
-										<?php echo $menu->getMenu(); ?>
-									</font>
+									<?php echo $menu->getMenu(); ?>
 								</td>
 								<td align="left" class="facts_value">
-									<font size=1>
-										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
-										echo $headImg2;
-										echo "</a>";
-										?>
-									</font>
+									<?php
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+									echo $headImg2;
+									echo "</a>";
+									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<font size=1>
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $gparent->getXref() ; // pid = PID
 										?>", "<?php
@@ -761,7 +730,6 @@ if (!defined('WT_WEBTREES')) {
 											echo $gparent->getFullName();  // Full Name (Link)
 										?>
 									</a>
-									</font>
 								</td>
 							</tr>
 							<?php
@@ -811,21 +779,16 @@ if (!defined('WT_WEBTREES')) {
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox">
-									<font size=1>
-										<?php echo $menu->getMenu(); ?>
-									</font>
+									<?php echo $menu->getMenu(); ?>
 								</td>
 								<td align="left" class="facts_value">
-									<font size=1>
-										<?php
+									<?php
 									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$child->getXref()."&amp;gedcom=".WT_GEDURL."\">";
-										echo $headImg2;
-										echo "</a>";
-										?>
-									</font>
+									echo $headImg2;
+									echo "</a>";
+									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<font size=1>
 									<?php
 									if (($child->canShow())) {
 									?>
@@ -890,14 +853,13 @@ if (!defined('WT_WEBTREES')) {
 										echo WT_I18N::translate('Private');
 									}
 									?>
-									</font>
 								</td>
 							</tr>
 							<?php
 						}
 					}
 
-					echo "<tr><td><font size=1><br></font></td></tr>";
+					echo "<tr><td><br></td></tr>";
 
 					//-- Build Spouse Family ---------------------------------------------------
 					foreach ($person->getSpouseFamilies() as $family) {
@@ -953,21 +915,16 @@ if (!defined('WT_WEBTREES')) {
 							?>
 							<tr class="fact_value">
 								<td align="left" class="linkcell optionbox nowrap">
-									<font size=1>
-										<?php echo $menu->getMenu(); ?>
-									</font>
+									<?php echo $menu->getMenu(); ?>
 								</td>
 								<td align="left" class="facts_value">
-									<font size=1>
-										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
-										echo $headImg2;
-										echo "</a>";
-										?>
-									</font>
+									<?php
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+									echo $headImg2;
+									echo "</a>";
+									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<font size=1>
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $gparent->getXref() ; // pid = PID
 										?>", "<?php
@@ -1028,7 +985,6 @@ if (!defined('WT_WEBTREES')) {
 											echo $gparent->getFullName();  // Full Name (Link)
 										?>
 									</a>
-									</font>
 								</td>
 							<tr>
 							<?php
@@ -1082,82 +1038,76 @@ if (!defined('WT_WEBTREES')) {
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox nowrap">
-									<font size=1>
-										<?php echo $menu->getMenu(); ?>
-									</font>
+									<?php echo $menu->getMenu(); ?>
 								</td>
 								<td align="left" class="facts_value">
-									<font size=1>
-										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
-										echo $headImg2;
-										echo "</a>";
-										?>
-									</font>
+									<?php
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$gparent->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+									echo $headImg2;
+									echo "</a>";
+									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<font size=1>
-										<a href='#' onclick='insertRowToTable("<?php
-												echo $gparent->getXref() ; // pid = PID
-										?>", "<?php
-											echo addslashes($fulln); // nam = Full Name
-										?>", "<?php
-											if (isset($fulmn)) {
-												echo addslashes($fulmn); // mnam = Full Married Name
-											} else {
-												echo addslashes($fulln); // mnam = Full Name
-											}
-										?>", "<?php
-											if ($person === $gparent) {
-												echo 'head';
-											} else {
-												echo addslashes($label);
-											}
-										?>", "<?php
-											echo $gparent->getSex(); // gend = Gender
-										?>", "<?php
-											if ($married>=0 && isset($nam[1])) {
-												echo "M"; // cond = Condition (Married)
-											} else {
-												echo "S"; // cond = Condition (Single)
-											}
-										?>", "<?php
-											if ($marrdate) {
-												echo ($marrdate->minJD()+$marrdate->maxJD())/2; // dom = Date of Marriage (Julian)
-											}
-										?>", "<?php
-											echo ($gparent->getBirthDate()->minJD()+$gparent->getBirthDate()->maxJD())/2; // dob = Date of Birth (Julian)
-										?>", "<?php
-											echo $censyear-$gparent->getbirthyear(); // age = Census Date minus YOB
-										?>", "<?php
-											echo ($gparent->getDeathDate()->minJD()+$gparent->getDeathDate()->maxJD())/2; // dod = Date of Death (Julian)
-										?>", "<?php
-											echo ""; // occu = Occupation
-										?>", "<?php
-											echo WT_Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Wife Place of Birth
-										?>", "<?php
-											if (isset($WifeFBP)) {
-												echo WT_Filter::escapeHtml($WifeFBP); // fbirthpl = Wife Father's Place of Birth
-											} else {
-												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Wife Father's Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($WifeMBP)) {
-												echo WT_Filter::escapeHtml($WifeMBP); // mbirthpl = Wife Mother's Place of Birth
-											} else {
-												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Wife Mother's Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($chBLDarray) && $gparent->getSex()=="F") {
-												$chBLDarray = implode("::", $chBLDarray);
-												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
-											}
-										?>");'>
-										<?php
-											echo $gparent->getFullName();  // Full Name (Link)
-										?>
-										</a>
-									</font>
+									<a href='#' onclick='insertRowToTable("<?php
+											echo $gparent->getXref() ; // pid = PID
+									?>", "<?php
+										echo addslashes($fulln); // nam = Full Name
+									?>", "<?php
+										if (isset($fulmn)) {
+											echo addslashes($fulmn); // mnam = Full Married Name
+										} else {
+											echo addslashes($fulln); // mnam = Full Name
+										}
+									?>", "<?php
+										if ($person === $gparent) {
+											echo 'head';
+										} else {
+											echo addslashes($label);
+										}
+									?>", "<?php
+										echo $gparent->getSex(); // gend = Gender
+									?>", "<?php
+										if ($married>=0 && isset($nam[1])) {
+											echo "M"; // cond = Condition (Married)
+										} else {
+											echo "S"; // cond = Condition (Single)
+										}
+									?>", "<?php
+										if ($marrdate) {
+											echo ($marrdate->minJD()+$marrdate->maxJD())/2; // dom = Date of Marriage (Julian)
+										}
+									?>", "<?php
+										echo ($gparent->getBirthDate()->minJD()+$gparent->getBirthDate()->maxJD())/2; // dob = Date of Birth (Julian)
+									?>", "<?php
+										echo $censyear-$gparent->getbirthyear(); // age = Census Date minus YOB
+									?>", "<?php
+										echo ($gparent->getDeathDate()->minJD()+$gparent->getDeathDate()->maxJD())/2; // dod = Date of Death (Julian)
+									?>", "<?php
+										echo ""; // occu = Occupation
+									?>", "<?php
+										echo WT_Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Wife Place of Birth
+									?>", "<?php
+										if (isset($WifeFBP)) {
+											echo WT_Filter::escapeHtml($WifeFBP); // fbirthpl = Wife Father's Place of Birth
+										} else {
+											echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Wife Father’s Place of Birth Not known
+										}
+									?>", "<?php
+										if (isset($WifeMBP)) {
+											echo WT_Filter::escapeHtml($WifeMBP); // mbirthpl = Wife Mother's Place of Birth
+										} else {
+											echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Wife Mother's Place of Birth Not known
+										}
+									?>", "<?php
+										if (isset($chBLDarray) && $gparent->getSex()=="F") {
+											$chBLDarray = implode("::", $chBLDarray);
+											echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
+										}
+									?>");'>
+									<?php
+										echo $gparent->getFullName();  // Full Name (Link)
+									?>
+									</a>
 								</td>
 							<tr> <?php
 						}
@@ -1213,21 +1163,16 @@ if (!defined('WT_WEBTREES')) {
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox">
-									<font size=1>
-										<?php echo $menu->getMenu(); ?>
-									</font>
+									<?php echo $menu->getMenu(); ?>
 								</td>
 								<td align="left" class="facts_value">
-									<font size=1>
-										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$child->getXref()."&amp;gedcom=".WT_GEDURL."\">";
-										echo $headImg2;
-										echo "</a>";
-										?>
-									</font>
+									<?php
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=".$child->getXref()."&amp;gedcom=".WT_GEDURL."\">";
+									echo $headImg2;
+									echo "</a>";
+									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<font size=1>
 									<?php
 									if (($child->canShow())) {
 									?>
@@ -1296,13 +1241,12 @@ if (!defined('WT_WEBTREES')) {
 									<?php
 								}
 								?>
-									</font>
 								</td>
 							</tr>
 							<?php
 						}
 
-					echo "<tr><td><font size=1><br></font></td></tr>";
+					echo "<tr><td><br></td></tr>";
 					}
 					?>
 
