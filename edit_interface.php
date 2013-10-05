@@ -490,7 +490,10 @@ case 'update':
 	if ($pid_array) {
 		foreach (explode(', ', $pid_array) as $pid) {
 			if ($pid != $xref) {
-				WT_Individual::getInstance($pid)->updateFact($fact_id, $newged, !$keep_chan);
+				$indi = WT_Individual::getInstance($pid);
+				if ($indi && $indi->canEdit()) {
+					$indi->updateFact($fact_id, $newged, !$keep_chan);
+				}
 			}
 		}
 	}
