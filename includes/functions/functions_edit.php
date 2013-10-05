@@ -511,7 +511,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 			if ($value) {
 				echo ' checked="checked"';
 			}
-			echo " onclick=\"if (this.checked) ", $element_id, ".value='Y'; else ", $element_id, ".value=''; \">";
+			echo " onclick=\"if (this.checked) ", $element_id, ".value='Y'; else ", $element_id, ".value='';\">";
 			echo WT_I18N::translate('yes');
 		}
 
