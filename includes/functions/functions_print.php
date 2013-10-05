@@ -534,7 +534,7 @@ function help_link($help_topic, $module='') {
 
 // Print an external help link to the wiki site, in a new window
 function wiki_help_link($topic) {
-	return '<a class="help icon-wiki" href="'.WT_WEBTREES_WIKI.$topic.'" alt="'.WT_I18N::translate('webtrees wiki').'" target="_blank">&nbsp;</a>';
+	return '<a class="help icon-wiki" href="'.WT_WEBTREES_WIKI.$topic.'" title="'.WT_I18N::translate('webtrees wiki').'" target="_blank">&nbsp;</a>';
 }
 
 // When a user has searched for text, highlight any matches in
