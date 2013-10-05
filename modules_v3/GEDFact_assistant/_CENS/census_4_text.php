@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 ?>
-<!--   ---- The proposed Census Text -------- -->
+<!-- The proposed Census Text -->
 <div class="optionbox cens_text wrap">
 <!--[if IE]><style>.cens_text{margin-top:-1.3em;}</style><![EndIf]-->
 	<div class="cens_text_header">

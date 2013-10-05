@@ -1034,9 +1034,9 @@ if (!defined('WT_WEBTREES')) {
 	<div class="cens_sour_country">
 		<span><?php echo WT_I18N::translate('Country'); ?><br></span>
 		<select id="censCtry" name="censCtry" >
-			<option id="UKOPT" name="UKOPT" value="UK">UK</option>
-			<option id="USOPT" name="USOPT" value="USA">USA</option>
-			<option id="FROPT" name="FROPT" value="FR">FR</option>
+			<option id="UKOPT" value="UK">UK</option>
+			<option id="USOPT" value="USA">USA</option>
+			<option id="FROPT" value="FR">FR</option>
 		</select>
 
 		<script>
@@ -1091,26 +1091,13 @@ if (!defined('WT_WEBTREES')) {
 		}
 		</script>
 
-		<div>
-			<table><tr><td class="nowrap">
-			<br>
-			<?php
-				// echo "&nbsp;".WT_I18N::translate('Date').":&nbsp;&nbsp;";
-				echo "<font size=2>";
-			// Input renamed as type=hidden to hide the date field ----- //
-			// Note Input field is still required ---------------------- //
-			?>
-				<input type="hidden" style="width:6em; background:#bbddff;" id="censDate" name="censDate" type="text" value="<?php echo ""; ?>" readonly="readonly">
-			</font>
-			</td></tr></table>
-		</div>
-
+		<input type="hidden" id="censDate" name="censDate" value="">
 
 	</div>
 
 	<div class="cens_sour_year">
 		<span><?php echo WT_I18N::translate('Year'); ?><br></span>
-		<select style = "background:#ffaaaa;";
+		<select style = "background:#ffaaaa;"
 				onchange = "if (this.options[this.selectedIndex].value!='') {
 								changeYear(this.options[this.selectedIndex].value);
 							}"

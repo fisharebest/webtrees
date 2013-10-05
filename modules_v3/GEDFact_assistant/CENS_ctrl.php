@@ -30,6 +30,9 @@ check_record_access($person);
 
 $controller
 	->setPageTitle(WT_I18N::translate('Create a new shared note using assistant'))
+	->addInlineJavascript(
+		'jQuery("head").append(\'<link rel="stylesheet" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/css/cens_style.css" type="text/css">\');'
+	)
 	->pageHeader();
 
 echo '<div id="edit_interface-page">';
@@ -60,7 +63,6 @@ echo '</h3>';
 global $tabno, $linkToID, $SEARCH_SPIDER;
 global $SHOW_AGE_DIFF, $GEDCOM;
 global $show_full, $famid;
-echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/css/cens_style.css" rel="stylesheet">';
 
 $summary=$person->format_first_major_fact(WT_EVENTS_BIRT, 2);
 if (!($person->isDead())) {

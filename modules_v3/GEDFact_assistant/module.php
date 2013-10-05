@@ -214,6 +214,8 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 
 	// Convert custom markup into HTML
 	public static function formatCensusNote(WT_Note $note) {
+		global $controller;
+
 		$headers = array(
 			'AgM'        => 'Age at first marriage',
 			'Age'        => 'Age at last birthday',
@@ -291,7 +293,13 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				$tbody .= '</tr>';
 			}
 
+			// TODO: why doesn't this work?  Why do we need to add the javascript inline?
+			//$controller->addInlineJavascript(
+			//	'jQuery("head").append(\'<link rel="stylesheet" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/css/cens_style.css" type="text/css">\');'
+			//);
+
 			return
+				'<script>jQuery("head").append(\'<link rel="stylesheet" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/css/cens_style.css" type="text/css">\');</script>' .
 				'<span class="note1">' . $title . '</span>' .
 				'<br>' . // Needed to allow the first line to be converted to a link
 				'<span class="note1">' . $preamble . '</span>' .
@@ -303,6 +311,120 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		} else {
 			// Not a census-assistant shared note - apply default formatting
 			return expand_urls($note->getNote());
+		}
+	}
+
+	// Modify the “add shared note” field, to create a note using the assistant
+	static function print_addnewnote_assisted_link($element_id, $xref, $action) {
+		global $controller;
+
+		// We do not yet support family records
+		if (!WT_GedcomRecord::getInstance($xref) instanceof WT_Individual) {
+			return '';
+		}
+
+		// Only modify “add shared note” links on the add/edit actions.
+		// TODO: does the “edit” action work?
+		if ($action != 'add' && $action != 'edit') {
+			return '';
+		}
+
+		// There are lots of “add shared note” links.  We only need to modify the 2nd one
+		static $n = 0;
+		if (++$n != 2) {
+			return '';
+		}
+		
+		$controller->addInlineJavascript('
+			var pid_array=jQuery("#pid_array");
+			function set_pid_array(pa) {
+				pid_array.val(pa);
+			}
+		');
+
+		return
+			'<br>' .
+			'<input type="hidden" name="pid_array" id="pid_array" value="">' .
+			'<a href="#" onclick="return addnewnote_assisted(document.getElementById(\'' . $element_id . '\'), \'' . $xref . '\');">' .
+			WT_I18N::translate('Create a new shared note using assistant') .
+			'</a>';
+	}
+
+	// Add a selector containing UK/US/FR census dates
+	public static function censusDateSelector($action, $tag, $element_id) {
+		global $controller;
+
+		if ($action == 'add' && $tag == 'CENS') {
+			$controller->addInlineJavascript('
+				function addDate(theCensDate) {
+					var ddate = theCensDate.split(", ");
+					document.getElementById("setctry").value = ddate[3];
+					document.getElementById("setyear").value = ddate[0];
+					cal_setDateField("' . $element_id . '", parseInt(ddate[0]), parseInt(ddate[1]), parseInt(ddate[2]));
+					return false;
+				}
+				function pasteAsstDate(setcy, setyr) {
+					document.getElementById(setcy+setyr).selected = true;
+					addDate(document.getElementById("selcensdate").options[document.getElementById(\'selcensdate\').selectedIndex].value);
+					return false;
+				}
+			');
+			return '
+				<select id="selcensdate" name="selcensdate" onchange = "if (this.options[this.selectedIndex].value!=\'\') {
+										addDate(this.options[this.selectedIndex].value);
+									}">
+					<option id="defdate" value="" selected>' . WT_I18N::translate('Census date') . '</option>
+					<option value=""></option>
+					<option id="UK1911" class="UK"  value="1911, 3, 02, UK">UK 1911</option>
+					<option id="UK1901" class="UK"  value="1901, 2, 31, UK">UK 1901</option>
+					<option id="UK1891" class="UK"  value="1891, 3, 05, UK">UK 1891</option>
+					<option id="UK1881" class="UK"  value="1881, 3, 03, UK">UK 1881</option>
+					<option id="UK1871" class="UK"  value="1871, 3, 02, UK">UK 1871</option>
+					<option id="UK1861" class="UK"  value="1861, 3, 07, UK">UK 1861</option>
+					<option id="UK1851" class="UK"  value="1851, 2, 30, UK">UK 1851</option>
+					<option id="UK1841" class="UK"  value="1841, 5, 06, UK">UK 1841</option>
+					<option value=""></option>
+					<option id="USA1940" class="USA" value="1940, 3, 01, USA">US 1940</option>
+					<option id="USA1930" class="USA" value="1930, 3, 01, USA">US 1930</option>
+					<option id="USA1920" class="USA" value="1920, 0, 01, USA">US 1920</option>
+					<option id="USA1910" class="USA" value="1910, 3, 15, USA">US 1910</option>
+					<option id="USA1900" class="USA" value="1900, 5, 01, USA">US 1900</option>
+					<option id="USA1890" class="USA" value="1890, 5, 01, USA">US 1890</option>
+					<option id="USA1880" class="USA" value="1880, 5, 01, USA">US 1880</option>
+					<option id="USA1870" class="USA" value="1870, 5, 01, USA">US 1870</option>
+					<option id="USA1860" class="USA" value="1860, 5, 01, USA">US 1860</option>
+					<option id="USA1850" class="USA" value="1850, 5, 01, USA">US 1850</option>
+					<option id="USA1840" class="USA" value="1840, 5, 01, USA">US 1840</option>
+					<option id="USA1830" class="USA" value="1830, 5, 01, USA">US 1830</option>
+					<option id="USA1820" class="USA" value="1820, 7, 07, USA">US 1820</option>
+					<option id="USA1810" class="USA" value="1810, 7, 06, USA">US 1810</option>
+					<option id="USA1800" class="USA" value="1800, 7, 04, USA">US 1800</option>
+					<option id="USA1790" class="USA" value="1790, 7, 02, USA">US 1790</option>
+					<option value=""></option>
+					<option id="FR1951" class="FR" value="1951, 0, 01, FR">FR 1951</option>
+					<option id="FR1946" class="FR" value="1946, 0, 01, FR">FR 1946</option>
+					<option id="FR1941" class="FR" value="1941, 0, 01, FR">FR 1941</option>
+					<option id="FR1936" class="FR" value="1936, 0, 01, FR">FR 1936</option>
+					<option id="FR1931" class="FR" value="1931, 0, 01, FR">FR 1931</option>
+					<option id="FR1926" class="FR" value="1926, 0, 01, FR">FR 1926</option>
+					<option id="FR1921" class="FR" value="1921, 0, 01, FR">FR 1921</option>
+					<option id="FR1916" class="FR" value="1916, 0, 01, FR">FR 1916</option>
+					<option id="FR1911" class="FR" value="1911, 0, 01, FR">FR 1911</option>
+					<option id="FR1906" class="FR" value="1906, 0, 01, FR">FR 1906</option>
+					<option id="FR1901" class="FR" value="1901, 0, 01, FR">FR 1901</option>
+					<option id="FR1896" class="FR" value="1896, 0, 01, FR">FR 1896</option>
+					<option id="FR1891" class="FR" value="1891, 0, 01, FR">FR 1891</option>
+					<option id="FR1886" class="FR" value="1886, 0, 01, FR">FR 1886</option>
+					<option id="FR1881" class="FR" value="1881, 0, 01, FR">FR 1881</option>
+					<option id="FR1876" class="FR" value="1876, 0, 01, FR">FR 1876</option>
+					<option value=""></option>
+				</select>
+
+				<input type="hidden" id="setctry" name="setctry" value="">
+				<input type="hidden" id="setyear" name="setyear" value="">
+			';
+		} else {
+			return '';
 		}
 	}
 }

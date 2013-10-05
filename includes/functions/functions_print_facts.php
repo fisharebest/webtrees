@@ -1030,6 +1030,7 @@ function print_main_media(WT_Fact $fact, $level) {
 				if (empty($SEARCH_SPIDER)) {
 					echo '</a>';
 				}
+				echo '</span>';
 			
 				echo WT_Gedcom_Tag::getLabelValue('FORM', $media->mimeType());
 				$imgsize = $media->getImageAttributes('main');
@@ -1043,7 +1044,6 @@ function print_main_media(WT_Fact $fact, $level) {
 				if ($mediatype) {
 					echo WT_Gedcom_Tag::getLabelValue('TYPE', WT_Gedcom_Tag::getFileFormTypeValue($mediatype));
 				}
-				echo '</span>';
 				
 				switch ($media->isPrimary()) {
 				case 'Y':

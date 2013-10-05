@@ -42,6 +42,32 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		return 20;
 	}
 
+	static function ageDifference(WT_Date $prev, WT_Date $next, $child_number=0) {
+		if ($prev->isOK() && $next->isOK()) {
+			$days = $next->MaxJD() - $prev->MinJD();
+			if ($days<0) {
+				// Show warning triangle if dates in reverse order
+				$diff = '<i class="icon-warning"></i> ';
+			} elseif ($child_number>1 && $days>1 && $days<240) {
+				// Show warning triangle if children born too close together
+				$diff = '<i class="icon-warning"></i> ';
+			} else {
+				$diff = '';
+			}
+
+			$months = round($days * 12 / 365.25); // Approximate - we do not know the calendar
+			if (abs($months)==12 || abs($months)>=24) {
+				$diff .= WT_I18N::plural('%d year', '%d years', round($months / 12), round($months / 12));
+			} elseif ($months!=0) {
+				$diff .= WT_I18N::plural('%d month', '%d months', $months, $months);
+			}
+
+			return '<div class="elderdate age">' . $diff . '</div>';
+		} else {
+			return '';
+		}
+	}
+
 	// print parents informations
 	function printFamily(WT_Family $family, $type, $label) {
 		global $controller;
@@ -105,6 +131,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		///// MARR /////
 		$found = false;
+		$prev = new WT_Date('');
 		foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 			$found |= !$fact->isOld();
 			if ($fact->isNew()) {
@@ -124,6 +151,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 			</tr>
 			<?php
+			if (!$prev->isOK() && $fact->getDate()->isOK()) {
+				$prev = $fact->getDate();
+			}
 		}
 		if (!$found && $family->canShow() && $family->canEdit()) {
 			// Add a new marriage
@@ -176,19 +206,30 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		///// CHIL /////
+		$child_number = 0;
 		foreach ($family->getFacts('CHIL', $access_level) as $fact) {
 			$person = $fact->getTarget();
 			if ($person instanceof WT_Individual) {
 				if ($fact->isNew()) {
+					$child_number++;
 					$class = 'facts_label new';
 				} elseif ($fact->isOld()) {
 					$class = 'facts_label old';
 				} else {
+					$child_number++;
 					$class = 'facts_label';
+				}
+				$next = new WT_Date('');
+				foreach ($person->getFacts(WT_EVENTS_BIRT) as $fact) {
+					if ($fact->getDate()->isOK()) {
+						$next=$fact->getDate();
+						break;
+					}
 				}
 				?>
 				<tr>
 					<td class="<?php echo $class; ?>">
+						<?php echo self::ageDifference($prev, $next, $child_number); ?>
 						<?php echo get_close_relationship_name($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
@@ -196,6 +237,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					</td>
 				</tr>
 				<?php
+				$prev = $next;
 			}
 		}
 		// Re-order children / add a new child

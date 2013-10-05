@@ -96,14 +96,7 @@ if ($pid_array != '') {
 
 if ($record) {
 	$controller->addInlineJavascript('
-	if (parent.opener.document.getElementById("pids_array_edit") == null || parent.opener.document.getElementById("pids_array_edit") == "undefined") {
-	} else {
-		parent.opener.document.editform.pids_array_edit.value="' . $pid_array .'";
-	}
-	if (parent.opener.document.getElementById("pids_array_add") == null || parent.opener.document.getElementById("pids_array_add") == "undefined") {
-	} else {
-		parent.opener.document.addform.pids_array_add.value="' . $pid_array . '";
-	}
-	openerpasteid("' . $record->getXref() . '")
+	window.opener.set_pid_array("' . $pid_array . '");
+	openerpasteid("' . $record->getXref() . '");
 	');
 }

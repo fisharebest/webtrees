@@ -523,6 +523,7 @@ function old_paths() {
 		WT_ROOT.'library/WT/Person.php',
 		WT_ROOT.'library/phpmailer',
 		WT_ROOT.'modules_v3/GEDFact_assistant/_CENS/census_note_decode.php',
+		WT_ROOT.'modules_v3/GEDFact_assistant/_CENS/census_asst_date.php',
 		WT_ROOT.'modules_v3/googlemap/wt_v3_googlemap.js.php',
 		WT_ROOT.'modules_v3/lightbox/functions/lightbox_print_media.php',
 		WT_ROOT.'modules_v3/upcoming_events/help_text.php',
