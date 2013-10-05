@@ -611,9 +611,11 @@ function shiftlinks() {
 	}
 	// Add new Links ====================================
 	if ($more_links) {
-		foreach (explode(',', $more_links) as $addLinkId) {
+		// array_unique() because parseAddLinks() may includes the gid field, even
+		// when it is also in the list.
+		foreach (array_unique(explode(',', $more_links)) as $addLinkId) {
 			$indi = WT_Individual::getInstance($addLinkId);
-			$indi->createFact('1 OBJE @' . $addLinkId . '@', $update_CHAN!='no_change');
+			$indi->createFact('1 OBJE @' . $mediaid . '@', $update_CHAN!='no_change');
 		}
 	}
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
