@@ -33,7 +33,7 @@ class WT_Note extends WT_GedcomRecord {
 
 	// Get the text contents of the note
 	public function getNote() {
-		if (preg_match('/^0 @' . WT_REGEX_TAG . '@ NOTE ?(.*(?:\n1 CONT ?.*)*)/', $this->gedcom, $match)) {
+		if (preg_match('/^0 @' . WT_REGEX_TAG . '@ NOTE ?(.*(?:\n1 CONT ?.*)*)/', $this->gedcom.$this->pending, $match)) {
 			return preg_replace("/\n1 CONT ?/", "\n", $match[1]);
 		} else {
 			return null;
