@@ -336,7 +336,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 
 		return
 			'<br>' .
-			'<input type="hidden" name="pid_array" id="pid_array" value="fish">' .
+			'<input type="hidden" name="pid_array" id="pid_array" value="">' .
 			'<a href="#" onclick="return addnewnote_assisted(document.getElementById(\'' . $element_id . '\'), \'' . $xref . '\');">' .
 			WT_I18N::translate('Create a new shared note using assistant') .
 			'</a>';
