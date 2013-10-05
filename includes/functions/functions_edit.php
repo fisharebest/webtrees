@@ -319,11 +319,6 @@ function print_addnewnote_link($element_id) {
 	return '<a href="#" onclick="addnewnote(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addnote" title="'.WT_I18N::translate('Create a new shared note').'"></a>';
 }
 
-/// Used in GEDFact CENS assistant
-function print_addnewnote_assisted_link($element_id, $xref) {
-	return '<input type="hidden" name="pid_array" id="pid_array" value="fish"><script>function set_pid_array(pa){alert(111);jQuery("#pid_array").val(pa);alert(222);}</script><a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$xref.'\'); return false;">'.WT_I18N::translate('Create a new shared note using assistant').'</a>';
-}
-
 function print_editnote_link($note_id) {
 	return '<a href="#" onclick="var win02=window.open(\'edit_interface.php?action=editnote&amp;xref='.$note_id.'\', \'win02\', edit_window_specs);" class="icon-button_note" title="'.WT_I18N::translate('Edit shared note').'"></a>';
 }
@@ -351,12 +346,8 @@ function print_addnewsource_link($element_id) {
 function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	global $MEDIA_DIRECTORY, $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
-	global $xref, $bdm, $action, $event_add, $CensDate;
+	global $xref, $bdm, $action, $CensDate;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
-
-	if (substr($tag, 0, strpos($tag, "CENS"))) {
-		$event_add="census_add";
-	}
 
 	if (substr($tag, 0, strpos($tag, "PLAC"))) {
 		?>
@@ -758,16 +749,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 			if ($value) {
 				echo ' ', print_editnote_link($value);
 			}
-			// If GEDFact_assistant/_CENS/ module exists && we are on the INDI page and the action is a GEDFact CENS assistant addition.
-			// Then show the add Shared note assisted icon, if not  ... show regular Shared note icons.
-			if (($action=='add' || $action=='edit') && $xref && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-				// Check if a CENS event ---------------------------
-				if ($event_add=='census_add') {
-					$type_pid=WT_GedcomRecord::getInstance($xref);
-					if ($type_pid instanceof WT_Individual) {
-						echo '<br>', print_addnewnote_assisted_link($element_id, $xref);
-					}
-				}
+			// Allow the GEDFact_assistant module to create a formatted shared note.
+			if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+				echo GEDFact_assistant_WT_Module::print_addnewnote_assisted_link($element_id, $xref, $tag, $action);
 			}
 		}
 		break;

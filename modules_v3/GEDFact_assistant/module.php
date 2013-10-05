@@ -305,4 +305,45 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			return expand_urls($note->getNote());
 		}
 	}
+
+	// Modify the “add shared note” field, to create a note using the assistant
+	function print_addnewnote_assisted_link($element_id, $xref, $tag, $action) {
+		global $controller;
+
+		// We do not yet support family records
+		if (WT_GedcomRecord::getInstance($xref) instanceof WT_Individual) {
+			return '';
+		}
+
+		// Only modify “add shared note” links on the add/edit actions.
+		// TODO: does the “edit” action work?
+		if ($action != 'add' && $action != 'edit') {
+			return '';
+		}
+
+		// Only modify “add shared note” links for CENS records.
+		if ($tag != 'CENS') {
+			return '';
+		}
+
+		// There are lots of “add shared note” links.  We only need to modify the 2nd one
+		static $n = 0;
+		if (++$n != 2) {
+			return '';
+		}
+		
+		$controller->addInlineJavascript('
+			var pid_array=jQuery("#pid_array");
+			function set_pid_array(pa) {
+				pid_array.val(pa);
+			}
+		');
+
+		return
+			'<br>' .
+			'<input type="hidden" name="pid_array" id="pid_array" value="fish">' .
+			'<a href="#" onclick="return addnewnote_assisted(document.getElementById(\'' . $element_id . '\'), \'' . $xref . '\');">' .
+			WT_I18N::translate('Create a new shared note using assistant') .
+			'</a>';
+	}
 }
