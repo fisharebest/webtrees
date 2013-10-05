@@ -439,7 +439,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		if ($EXPAND_NOTES) {
 			$data .= ' style="display:block"';
 		}
-		$data .= ' class="note_details " dir="auto">';
+		$data .= ' class="note_details" dir="auto">';
 		$data .= substr($text, $brpos + 4);
 		$data .= '</div>';
 	} else {
