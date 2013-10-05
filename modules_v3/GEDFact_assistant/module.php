@@ -357,12 +357,12 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				}
 				function pasteAsstDate(setcy, setyr) {
 					document.getElementById(setcy+setyr).selected = true;
-					addDate(document.getElementById("selcensdate").options[document.getElementById("selcensdate").selectedIndex].value);
+					addDate(document.getElementById("selcensdate").options[document.getElementById(\'selcensdate\').selectedIndex].value);
 					return false;
 				}
 			');
 			return '
-				<select id="selcensdate" name="selcensdate" onchange = "if (this.options[this.selectedIndex].value!="") {
+				<select id="selcensdate" name="selcensdate" onchange = "if (this.options[this.selectedIndex].value!=\'\') {
 										addDate(this.options[this.selectedIndex].value);
 									}">
 					<option id="defdate" value="" selected>' . WT_I18N::translate('Census date') . '</option>

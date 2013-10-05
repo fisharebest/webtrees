@@ -485,6 +485,16 @@ case 'update':
 	$newged = substr($newged, 1); // Remove leading newline
 	$record->updateFact($fact_id, $newged, !$keep_chan);
 
+	// For the GEDFact_assistant module
+	$pid_array = WT_Filter::post('pid_array');
+	if ($pid_array) {
+		foreach (explode(', ', $pid_array) as $pid) {
+			if ($pid != $xref) {
+				WT_Individual::getInstance($pid)->updateFact($fact_id, $newged, !$keep_chan);
+			}
+		}
+	}
+
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
 
