@@ -671,11 +671,10 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	switch ($fact) {
 	case 'DATE':
 		echo print_calendar_popup($element_id);
-		// If GEDFact_assistant/_CENS/ module is installed -------------------------------------------------
-		if ($action=='add' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-			if (isset($CensDate) && $CensDate=='yes') {
-				require_once WT_ROOT.WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_asst_date.php';
-			}
+
+		// Allow the GEDFact_assistant module to show a census-date selector
+		if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+			echo GEDFact_assistant_WT_Module::censusDateSelector($action, $upperlevel, $element_id);
 		}
 		break;
 	case 'FAMC':
@@ -749,9 +748,10 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 			if ($value) {
 				echo ' ', print_editnote_link($value);
 			}
+
 			// Allow the GEDFact_assistant module to create a formatted shared note.
 			if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-				echo GEDFact_assistant_WT_Module::print_addnewnote_assisted_link($element_id, $xref, $tag, $action);
+				echo GEDFact_assistant_WT_Module::print_addnewnote_assisted_link($element_id, $xref, $action);
 			}
 		}
 		break;
@@ -1271,13 +1271,6 @@ function create_add_form($fact) {
 
 	$tags = array();
 
-	// GEDFact_assistant ================================================
-	if ($fact=="CENS") {
-		global $TEXT_DIRECTION, $CensDate;
-		$CensDate="yes";
-	}
-	// ==================================================================
-
 	// handle  MARRiage TYPE
 	if (substr($fact, 0, 5)=="MARR_") {
 		$tags[0] = "MARR";
@@ -1329,13 +1322,6 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 	$parent = $fact->getParent();
 	$level0type = $parent::RECORD_TYPE;
 	$level1type = $type;
-
-	// GEDFact_assistant ================================================
-	if ($type=="CENS") {
-		global $TEXT_DIRECTION, $CensDate;
-		$CensDate="yes";
-	}
-	// ==================================================================
 
 	if (count($fields)>2) {
 		$ct = preg_match("/@.*@/", $fields[2]);
