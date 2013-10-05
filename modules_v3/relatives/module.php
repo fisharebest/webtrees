@@ -147,7 +147,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					&nbsp;
 				</td>
 				<td class="facts_value">
-					<?php echo WT_Gedcom_Tag::getLabelValue($fact->getTag(), $fact->getPlace()->getFullName() . ' — ' . $fact->getDate()->Display(false)); ?>
+					<?php echo WT_Gedcom_Tag::getLabelValue($fact->getTag(), $fact->getDate()->Display(false) . ' — ' . $fact->getPlace()->getFullName()); ?>
 				</td>
 			</tr>
 			<?php
