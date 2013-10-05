@@ -872,7 +872,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_pid.className= 'descriptionbox'; //Required for IE
 				txtInp_pid.style.fontSize="10px";
 				txtInp_pid.style.border='0px';
-				txtInp_pid.innerHTML = '<a href="#" alt="ID" title="ID"> ID </a>';
+				txtInp_pid.innerHTML = '<a href="#" title="ID"> ID </a>';
 		// 2. Name ------------------------------------------------------------
 			var txtInp_nam = document.createElement('div');
 				txtInp_nam.setAttribute('class', 'descriptionbox');
@@ -880,7 +880,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_nam.setAttribute('type', 'text');
 				txtInp_nam.style.fontSize="10px";
 				txtInp_nam.style.border='0px';
-				txtInp_nam.innerHTML = '<a href="#" alt="'+TTEditName+'" title="'+TTEditName+'">'+HeaderName+'</a>';
+				txtInp_nam.innerHTML = '<a href="#" title="'+TTEditName+'">'+HeaderName+'</a>';
 				txtInp_nam.setAttribute('id', '.b.'+HeaderName);
 		// 3. Relationship_1 --------------------------------------------------
 			var txtInp_label = document.createElement('div');
@@ -889,7 +889,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_label.className= 'descriptionbox'; //Required for IE
 				txtInp_label.style.fontSize="10px";
 				txtInp_label.style.border='0px';
-				txtInp_label.innerHTML = '<a href="#" alt="'+TTEditRela+'" title="'+TTEditRela+'">'+HeaderRela+'</a>';
+				txtInp_label.innerHTML = '<a href="#" title="'+TTEditRela+'">'+HeaderRela+'</a>';
 				txtInp_label.setAttribute('id', '.b.'+HeaderRela);
 		// 4. Conditition_1 ---------------------------------------------------
 			var txtInp_cond = document.createElement('div');
@@ -898,7 +898,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_cond.className= 'descriptionbox'; //Required for IE
 				txtInp_cond.style.fontSize="10px";
 				txtInp_cond.style.border='0px';
-				txtInp_cond.innerHTML = '<a href="#" alt="'+TTEditMCond+'" title="'+TTEditMCond+'">'+HeaderMCond+'</a>';
+				txtInp_cond.innerHTML = '<a href="#" title="'+TTEditMCond+'">'+HeaderMCond+'</a>';
 				txtInp_cond.setAttribute('id', '.b.'+HeaderMCond);
 		// 5. Tenure ----------------------------------------------------------
 			var txtInp_tenure = document.createElement('div');
@@ -907,7 +907,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_tenure.className= 'descriptionbox'; //Required for IE
 				txtInp_tenure.style.fontSize="10px";
 				txtInp_tenure.style.border='0px';
-				txtInp_tenure.innerHTML = '<a href="#" alt="'+TTEditTenure+'" title="'+TTEditTenure+'">'+HeaderTenure+'</a>';
+				txtInp_tenure.innerHTML = '<a href="#" title="'+TTEditTenure+'">'+HeaderTenure+'</a>';
 				txtInp_tenure.setAttribute('id', '.b.'+HeaderTenure);
 		// 6. Assets ----------------------------------------------------------
 			var txtInp_assets = document.createElement('div');
@@ -916,7 +916,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_assets.className= 'descriptionbox'; //Required for IE
 				txtInp_assets.style.fontSize="10px";
 				txtInp_assets.style.border='0px';
-				txtInp_assets.innerHTML = '<a href="#" alt="'+TTEditAsset+'" title="'+TTEditAsset+'">'+HeaderAsset+'</a>';
+				txtInp_assets.innerHTML = '<a href="#" title="'+TTEditAsset+'">'+HeaderAsset+'</a>';
 				txtInp_assets.setAttribute('id', '.b.'+HeaderAsset);
 		// 7. Age_1 -----------------------------------------------------------
 			var txtInp_age = document.createElement('div');
@@ -925,7 +925,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_age.className= 'descriptionbox'; //Required for IE
 				txtInp_age.style.fontSize="10px";
 				txtInp_age.style.border='0px';
-				txtInp_age.innerHTML = '<a href="#" alt="'+TTEditAge+'" title="'+TTEditAge+'">'+HeaderAge+'</a>';
+				txtInp_age.innerHTML = '<a href="#" title="'+TTEditAge+'">'+HeaderAge+'</a>';
 				txtInp_age.setAttribute('id', '.b.'+HeaderAge);
 		// 8. Race_1 ----------------------------------------------------------
 			var txtInp_race = document.createElement('div');
@@ -934,7 +934,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_race.className= 'descriptionbox'; //Required for IE
 				txtInp_race.style.fontSize="10px";
 				txtInp_race.style.border='0px';
-				txtInp_race.innerHTML = '<a href="#" alt="'+TTEditRace+'" title="'+TTEditRace+'">'+HeaderRace+'</a>';
+				txtInp_race.innerHTML = '<a href="#" title="'+TTEditRace+'">'+HeaderRace+'</a>';
 				txtInp_race.setAttribute('id', '.b.'+HeaderRace);
 		// 9. Sex -------------------------------------------------------------
 			var txtInp_gend = document.createElement('div');
@@ -943,7 +943,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_gend.className= 'descriptionbox'; //Required for IE
 				txtInp_gend.style.fontSize="10px";
 				txtInp_gend.style.border='0px';
-				txtInp_gend.innerHTML = '<a href="#" alt="'+TTEditSex+'" title="'+TTEditSex+'">'+HeaderSex+'</a>';
+				txtInp_gend.innerHTML = '<a href="#" title="'+TTEditSex+'">'+HeaderSex+'</a>';
 				txtInp_gend.setAttribute('id', '.b.'+HeaderSex);
 		// 10. Race_2 ----------------------------------------------------------
 			var txtInp_race2 = document.createElement('div');
@@ -952,7 +952,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_race2.className= 'descriptionbox'; //Required for IE
 				txtInp_race2.style.fontSize="10px";
 				txtInp_race2.style.border='0px';
-				txtInp_race2.innerHTML = '<a href="#" alt="'+TTEditRace+'" title="'+TTEditRace+'">'+HeaderRace+'</a>';
+				txtInp_race2.innerHTML = '<a href="#" title="'+TTEditRace+'">'+HeaderRace+'</a>';
 				txtInp_race2.setAttribute('id', '.b.'+HeaderRace);
 		// 11. DOB/YOB ---------------------------------------------------------
 			var txtInp_yob = document.createElement('div');
@@ -961,7 +961,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_yob.className= 'descriptionbox'; //Required for IE
 				txtInp_yob.style.fontSize="10px";
 				txtInp_yob.style.border='0px';
-				txtInp_yob.innerHTML = '<a href="#" alt="'+TTEditYOB+'" title="'+TTEditYOB+'">'+HeaderYOB+'</a>';
+				txtInp_yob.innerHTML = '<a href="#" title="'+TTEditYOB+'">'+HeaderYOB+'</a>';
 				txtInp_yob.setAttribute('id', '.b.'+HeaderYOB);
 		// 12. Age_2 -----------------------------------------------------------
 			var txtInp_age2 = document.createElement('div');
@@ -970,7 +970,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_age2.className= 'descriptionbox'; //Required for IE
 				txtInp_age2.style.fontSize="10px";
 				txtInp_age2.style.border='0px';
-				txtInp_age2.innerHTML = '<a href="#" alt="'+TTEditAge+'" title="'+TTEditAge+'">'+HeaderAge+'</a>';
+				txtInp_age2.innerHTML = '<a href="#" title="'+TTEditAge+'">'+HeaderAge+'</a>';
 				txtInp_age2.setAttribute('id', '.b.'+HeaderAge);
 		// 13. MthB (if born within census year) -------------------------------
 			var txtInp_bmth = document.createElement('div');
@@ -979,7 +979,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_bmth.className= 'descriptionbox'; //Required for IE
 				txtInp_bmth.style.fontSize="10px";
 				txtInp_bmth.style.border='0px';
-				txtInp_bmth.innerHTML = '<a href="#" alt="'+TTEditBmth+'" title="'+TTEditBmth+'">'+HeaderBmth+'</a>';
+				txtInp_bmth.innerHTML = '<a href="#" title="'+TTEditBmth+'">'+HeaderBmth+'</a>';
 				txtInp_bmth.setAttribute('id', '.b.'+HeaderBmth);
 		// 14. Relationship_2 --------------------------------------------------
 			var txtInp_label2 = document.createElement('div');
@@ -988,7 +988,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_label2.className= 'descriptionbox'; //Required for IE
 				txtInp_label2.style.fontSize="10px";
 				txtInp_label2.style.border='0px';
-				txtInp_label2.innerHTML = '<a href="#" alt="'+TTEditRela+'" title="'+TTEditRela+'">'+HeaderRela+'</a>';
+				txtInp_label2.innerHTML = '<a href="#" title="'+TTEditRela+'">'+HeaderRela+'</a>';
 				txtInp_label2.setAttribute('id', '.b.'+HeaderRela);
 		// 15. Conditition_2 ---------------------------------------------------
 			var txtInp_cond2 = document.createElement('div');
@@ -997,7 +997,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_cond2.className= 'descriptionbox'; //Required for IE
 				txtInp_cond2.style.fontSize="10px";
 				txtInp_cond2.style.border='0px';
-				txtInp_cond2.innerHTML = '<a href="#" alt="'+TTEditMCond+'" title="'+TTEditMCond+'">'+HeaderMCond+'</a>';
+				txtInp_cond2.innerHTML = '<a href="#" title="'+TTEditMCond+'">'+HeaderMCond+'</a>';
 				txtInp_cond2.setAttribute('id', '.b.'+HeaderMCond);
 		// 16. Years Married ---------------------------------------------------
 			var txtInp_yrsm = document.createElement('div');
@@ -1006,7 +1006,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_yrsm.className= 'descriptionbox'; //Required for IE
 				txtInp_yrsm.style.fontSize="10px";
 				txtInp_yrsm.style.border='0px';
-				txtInp_yrsm.innerHTML = '<a href="#" alt="'+TTEditYrsM+'" title="'+TTEditYrsM+'">'+HeaderYrsM+'</a>';
+				txtInp_yrsm.innerHTML = '<a href="#" title="'+TTEditYrsM+'">'+HeaderYrsM+'</a>';
 				txtInp_yrsm.setAttribute('id', '.b.'+HeaderYrsM);
 		// 17. Children Born Alive ---------------------------------------------
 			var txtInp_chilB = document.createElement('div');
@@ -1015,7 +1015,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_chilB.className= 'descriptionbox'; //Required for IE
 				txtInp_chilB.style.fontSize="10px";
 				txtInp_chilB.style.border='0px';
-				txtInp_chilB.innerHTML = '<a href="#" alt="'+TTEditChilB+'" title="'+TTEditChilB+'">'+HeaderChilB+'</a>';
+				txtInp_chilB.innerHTML = '<a href="#" title="'+TTEditChilB+'">'+HeaderChilB+'</a>';
 				txtInp_chilB.setAttribute('id', '.b.'+HeaderChilB);
 		// 18. Children Still Living -------------------------------------------
 			var txtInp_chilL = document.createElement('div');
@@ -1024,7 +1024,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_chilL.className= 'descriptionbox'; //Required for IE
 				txtInp_chilL.style.fontSize="10px";
 				txtInp_chilL.style.border='0px';
-				txtInp_chilL.innerHTML = '<a href="#" alt="'+TTEditChilL+'" title="'+TTEditChilL+'">'+HeaderChilL+'</a>';
+				txtInp_chilL.innerHTML = '<a href="#" title="'+TTEditChilL+'">'+HeaderChilL+'</a>';
 				txtInp_chilL.setAttribute('id', '.b.'+HeaderChilL);
 		// 19. Children who have Died ------------------------------------------
 			var txtInp_chilD = document.createElement('div');
@@ -1033,7 +1033,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_chilD.className= 'descriptionbox'; //Required for IE
 				txtInp_chilD.style.fontSize="10px";
 				txtInp_chilD.style.border='0px';
-				txtInp_chilD.innerHTML = '<a href="#" alt="'+TTEditChilD+'" title="'+TTEditChilD+'">'+HeaderChilD+'</a>';
+				txtInp_chilD.innerHTML = '<a href="#" title="'+TTEditChilD+'">'+HeaderChilD+'</a>';
 				txtInp_chilD.setAttribute('id', '.b.'+HeaderChilD);
 		// 20. Age at first Marriage -------------------------------------------
 			var txtInp_ageM = document.createElement('div');
@@ -1042,7 +1042,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_ageM.className= 'descriptionbox'; //Required for IE
 				txtInp_ageM.style.fontSize="10px";
 				txtInp_ageM.style.border='0px';
-				txtInp_ageM.innerHTML = '<a href="#" alt="'+TTEditAgeM+'" title="'+TTEditAgeM+'">'+HeaderAgeM+'</a>';
+				txtInp_ageM.innerHTML = '<a href="#" title="'+TTEditAgeM+'">'+HeaderAgeM+'</a>';
 				txtInp_ageM.setAttribute('id', '.b.'+HeaderAgeM);
 		// 21. Occupation_1 ----------------------------------------------------
 			var txtInp_occu = document.createElement('div');
@@ -1051,7 +1051,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_occu.className= 'descriptionbox'; //Required for IE
 				txtInp_occu.style.fontSize="10px";
 				txtInp_occu.style.border='0px';
-				txtInp_occu.innerHTML = '<a href="#" alt="'+TTEditOccu+'" title="'+TTEditOccu+'">'+HeaderOccu+'</a>';
+				txtInp_occu.innerHTML = '<a href="#" title="'+TTEditOccu+'">'+HeaderOccu+'</a>';
 				txtInp_occu.setAttribute('id', '.b.'+HeaderOccu);
 		// 22. Assets_2 --------------------------------------------------------
 			var txtInp_assets2 = document.createElement('div');
@@ -1060,7 +1060,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_assets2.className= 'descriptionbox'; //Required for IE
 				txtInp_assets2.style.fontSize="10px";
 				txtInp_assets2.style.border='0px';
-				txtInp_assets2.innerHTML = '<a href="#" alt="'+TTEditAsset+'" title="'+TTEditAsset+'">'+HeaderAsset+'</a>';
+				txtInp_assets2.innerHTML = '<a href="#" title="'+TTEditAsset+'">'+HeaderAsset+'</a>';
 				txtInp_assets2.setAttribute('id', '.b.'+HeaderAsset);
 		// 23. Birth Place_1 -----------------------------------------------
 			var txtInp_birthpl = document.createElement('div');
@@ -1069,7 +1069,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_birthpl.className= 'descriptionbox'; //Required for IE
 				txtInp_birthpl.style.fontSize="10px";
 				txtInp_birthpl.style.border='0px';
-				txtInp_birthpl.innerHTML = '<a href="#" alt="'+TTEditBplace+'" title="'+TTEditBplace+'">'+HeaderBplace+'</a>';
+				txtInp_birthpl.innerHTML = '<a href="#" title="'+TTEditBplace+'">'+HeaderBplace+'</a>';
 				txtInp_birthpl.setAttribute('id', '.b.'+HeaderBplace);
 		// 24. Parentage -----------------------------------------------
 			var txtInp_parent = document.createElement('div');
@@ -1078,7 +1078,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_parent.className= 'descriptionbox'; //Required for IE
 				txtInp_parent.style.fontSize="10px";
 				txtInp_parent.style.border='0px';
-				txtInp_parent.innerHTML = '<a href="#" alt="'+TTEditParent+'" title="'+TTEditParent+'">'+HeaderParent+'</a>';
+				txtInp_parent.innerHTML = '<a href="#" title="'+TTEditParent+'">'+HeaderParent+'</a>';
 				txtInp_parent.setAttribute('id', '.b.'+HeaderParent);
 		// 25. MthB_2 (if born within census year) -------------------------------
 			var txtInp_bmth2 = document.createElement('div');
@@ -1087,7 +1087,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_bmth2.className= 'descriptionbox'; //Required for IE
 				txtInp_bmth2.style.fontSize="10px";
 				txtInp_bmth2.style.border='0px';
-				txtInp_bmth2.innerHTML = '<a href="#" alt="'+TTEditBmth+'" title="'+TTEditBmth+'">'+HeaderBmth+'</a>';
+				txtInp_bmth2.innerHTML = '<a href="#" title="'+TTEditBmth+'">'+HeaderBmth+'</a>';
 				txtInp_bmth2.setAttribute('id', '.b.'+HeaderBmth);
 		// 26. MthM (if married within census year) -------------------------------
 			var txtInp_mmth = document.createElement('div');
@@ -1096,7 +1096,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_mmth.className= 'descriptionbox'; //Required for IE
 				txtInp_mmth.style.fontSize="10px";
 				txtInp_mmth.style.border='0px';
-				txtInp_mmth.innerHTML = '<a href="#" alt="'+TTEditMmth+'" title="'+TTEditMmth+'">'+HeaderMmth+'</a>';
+				txtInp_mmth.innerHTML = '<a href="#" title="'+TTEditMmth+'">'+HeaderMmth+'</a>';
 				txtInp_mmth.setAttribute('id', '.b.'+HeaderMmth);
 		// 27. Indi Birth Place_1 -----------------------------------------------
 			var txtInp_ibirthpl = document.createElement('div');
@@ -1105,7 +1105,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_ibirthpl.className= 'descriptionbox'; //Required for IE
 				txtInp_ibirthpl.style.fontSize="10px";
 				txtInp_ibirthpl.style.border='0px';
-				txtInp_ibirthpl.innerHTML = '<a href="#" alt="'+TTEditBP+'" title="'+TTEditBP+'">'+HeaderBP+'</a>';
+				txtInp_ibirthpl.innerHTML = '<a href="#" title="'+TTEditBP+'">'+HeaderBP+'</a>';
 				txtInp_ibirthpl.setAttribute('id', '.b.'+HeaderBP);
 		// 28. Fathers Birth Place_1 ---------------------------------------------
 			var txtInp_fbirthpl = document.createElement('div');
@@ -1114,7 +1114,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_fbirthpl.className= 'descriptionbox'; //Required for IE
 				txtInp_fbirthpl.style.fontSize="10px";
 				txtInp_fbirthpl.style.border='0px';
-				txtInp_fbirthpl.innerHTML = '<a href="#" alt="'+TTEditFBP+'" title="'+TTEditFBP+'">'+HeaderFBP+'</a>';
+				txtInp_fbirthpl.innerHTML = '<a href="#" title="'+TTEditFBP+'">'+HeaderFBP+'</a>';
 				txtInp_fbirthpl.setAttribute('id', '.b.'+HeaderFBP);
 		// 29. Mothers Birth Place_1 ---------------------------------------------
 			var txtInp_mbirthpl = document.createElement('div');
@@ -1123,7 +1123,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_mbirthpl.className= 'descriptionbox'; //Required for IE
 				txtInp_mbirthpl.style.fontSize="10px";
 				txtInp_mbirthpl.style.border='0px';
-				txtInp_mbirthpl.innerHTML = '<a href="#" alt="'+TTEditMBP+'" title="'+TTEditMBP+'">'+HeaderMBP+'</a>';
+				txtInp_mbirthpl.innerHTML = '<a href="#" title="'+TTEditMBP+'">'+HeaderMBP+'</a>';
 				txtInp_mbirthpl.setAttribute('id', '.b.'+HeaderMBP);
 		// 30. Years in USA ----------------------------------------------------
 			var txtInp_yrsUS = document.createElement('div');
@@ -1132,7 +1132,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_yrsUS.className= 'descriptionbox'; //Required for IE
 				txtInp_yrsUS.style.fontSize="10px";
 				txtInp_yrsUS.style.border='0px';
-				txtInp_yrsUS.innerHTML = '<a href="#" alt="'+TTEditYrsUS+'" title="'+TTEditYrsUS+'">'+HeaderYrsUS+'</a>';
+				txtInp_yrsUS.innerHTML = '<a href="#" title="'+TTEditYrsUS+'">'+HeaderYrsUS+'</a>';
 				txtInp_yrsUS.setAttribute('id', '.b.'+HeaderYrsUS);
 		// 31. Year of immigration YOI_1 ----------------------------------------
 			var txtInp_yoi1 = document.createElement('div');
@@ -1141,7 +1141,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_yoi1.className= 'descriptionbox'; //Required for IE
 				txtInp_yoi1.style.fontSize="10px";
 				txtInp_yoi1.style.border='0px';
-				txtInp_yoi1.innerHTML = '<a href="#" alt="'+TTEditYOI+'" title="'+TTEditYOI+'">'+HeaderYOI+'</a>';
+				txtInp_yoi1.innerHTML = '<a href="#" title="'+TTEditYOI+'">'+HeaderYOI+'</a>';
 				txtInp_yoi1.setAttribute('id', '.b.'+HeaderYOI);
 		// 32. Natualized or Alien_1 ----------------------------------------
 			var txtInp_na1 = document.createElement('div');
@@ -1150,7 +1150,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_na1.className= 'descriptionbox'; //Required for IE
 				txtInp_na1.style.fontSize="10px";
 				txtInp_na1.style.border='0px';
-				txtInp_na1.innerHTML = '<a href="#" alt="'+TTEditNA+'" title="'+TTEditNA+'">'+HeaderNA+'</a>';
+				txtInp_na1.innerHTML = '<a href="#" title="'+TTEditNA+'">'+HeaderNA+'</a>';
 				txtInp_na1.setAttribute('id', '.b.'+HeaderNA);
 		// 33. Year of naturalization YON_1 ----------------------------------------
 			var txtInp_yon = document.createElement('div');
@@ -1159,7 +1159,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_yon.className= 'descriptionbox'; //Required for IE
 				txtInp_yon.style.fontSize="10px";
 				txtInp_yon.style.border='0px';
-				txtInp_yon.innerHTML = '<a href="#" alt="'+TTEditYON+'" title="'+TTEditYON+'">'+HeaderYON+'</a>';
+				txtInp_yon.innerHTML = '<a href="#" title="'+TTEditYON+'">'+HeaderYON+'</a>';
 				txtInp_yon.setAttribute('id', '.b.'+HeaderYON);
 		// 34. English if spoken, or if not, Language spoken Eng/Lang ---------------
 			var txtInp_englang = document.createElement('div');
@@ -1168,7 +1168,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_englang.className= 'descriptionbox'; //Required for IE
 				txtInp_englang.style.fontSize="10px";
 				txtInp_englang.style.border='0px';
-				txtInp_englang.innerHTML = '<a href="#" alt="'+TTEditEngL+'" title="'+TTEditEngL+'">'+HeaderEngL+'</a>';
+				txtInp_englang.innerHTML = '<a href="#" title="'+TTEditEngL+'">'+HeaderEngL+'</a>';
 				txtInp_englang.setAttribute('id', '.b.'+HeaderEngL);
 		// 35. Occupation_2 ---------------------------------------------------------
 			var txtInp_occu2 = document.createElement('div');
@@ -1177,7 +1177,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_occu2.className= 'descriptionbox'; //Required for IE
 				txtInp_occu2.style.fontSize="10px";
 				txtInp_occu2.style.border='0px';
-				txtInp_occu2.innerHTML = '<a href="#" alt="'+TTEditOccu+'" title="'+TTEditOccu+'">'+HeaderOccu+'</a>';
+				txtInp_occu2.innerHTML = '<a href="#" title="'+TTEditOccu+'">'+HeaderOccu+'</a>';
 				txtInp_occu2.setAttribute('id', '.b.'+HeaderOccu);
 		// 36. Health --------------------------------------------------------------
 			var txtInp_health = document.createElement('div');
@@ -1186,7 +1186,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_health.className= 'descriptionbox'; //Required for IE
 				txtInp_health.style.fontSize="10px";
 				txtInp_health.style.border='0px';
-				txtInp_health.innerHTML = '<a href="#" alt="'+TTEditHealth+'" title="'+TTEditHealth+'">'+HeaderHealth+'</a>';
+				txtInp_health.innerHTML = '<a href="#" title="'+TTEditHealth+'">'+HeaderHealth+'</a>';
 				txtInp_health.setAttribute('id', '.b.'+HeaderHealth);
 		// 37. Industry ind_1 ------------------------------------------------------
 			var txtInp_ind1 = document.createElement('div');
@@ -1195,7 +1195,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_ind1.className= 'descriptionbox'; //Required for IE
 				txtInp_ind1.style.fontSize="10px";
 				txtInp_ind1.style.border='0px';
-				txtInp_ind1.innerHTML = '<a href="#" alt="'+TTEditInd+'" title="'+TTEditInd+'">'+HeaderInd+'</a>';
+				txtInp_ind1.innerHTML = '<a href="#" title="'+TTEditInd+'">'+HeaderInd+'</a>';
 				txtInp_ind1.setAttribute('id', '.b.'+HeaderInd);
 		// 38. Employ_1 ------------------------------------------------------------
 			var txtInp_emp1 = document.createElement('div');
@@ -1204,7 +1204,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_emp1.className= 'descriptionbox'; //Required for IE
 				txtInp_emp1.style.fontSize="10px";
 				txtInp_emp1.style.border='0px';
-				txtInp_emp1.innerHTML = '<a href="#" alt="'+TTEditEmp+'" title="'+TTEditEmp+'">'+HeaderEmp+'</a>';
+				txtInp_emp1.innerHTML = '<a href="#" title="'+TTEditEmp+'">'+HeaderEmp+'</a>';
 				txtInp_emp1.setAttribute('id', '.b.'+HeaderEmp);
 		// 39. Employer - EmR-----------------------------------------------------------
 			var txtInp_emR = document.createElement('div');
@@ -1213,7 +1213,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_emR.className= 'descriptionbox'; //Required for IE
 				txtInp_emR.style.fontSize="10px";
 				txtInp_emR.style.border='0px';
-				txtInp_emR.innerHTML = '<a href="#" alt="'+TTEditEmR+'" title="'+TTEditEmR+'">'+HeaderEmR+'</a>';
+				txtInp_emR.innerHTML = '<a href="#" title="'+TTEditEmR+'">'+HeaderEmR+'</a>';
 				txtInp_emR.setAttribute('id', '.b.'+HeaderEmR);
 		// 40. Employed EmD ------------------------------------------------------------
 			var txtInp_emD = document.createElement('div');
@@ -1222,7 +1222,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_emD.className= 'descriptionbox'; //Required for IE
 				txtInp_emD.style.fontSize="10px";
 				txtInp_emD.style.border='0px';
-				txtInp_emD.innerHTML = '<a href="#" alt="'+TTEditEmD+'" title="'+TTEditEmD+'">'+HeaderEmD+'</a>';
+				txtInp_emD.innerHTML = '<a href="#" title="'+TTEditEmD+'">'+HeaderEmD+'</a>';
 				txtInp_emD.setAttribute('id', '.b.'+HeaderEmD);
 		// 41. Months employed during Census Year ---------------------------------------
 			var txtInp_mnsE = document.createElement('div');
@@ -1231,7 +1231,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_mnsE.className= 'descriptionbox'; //Required for IE
 				txtInp_mnsE.style.fontSize="10px";
 				txtInp_mnsE.style.border='0px';
-				txtInp_mnsE.innerHTML = '<a href="#" alt="'+TTEditMnse+'" title="'+TTEditMnse+'">'+HeaderMnse+'</a>';
+				txtInp_mnsE.innerHTML = '<a href="#" title="'+TTEditMnse+'">'+HeaderMnse+'</a>';
 				txtInp_mnsE.setAttribute('id', '.b.'+HeaderMnse);
 		// 42. Working at Home WH ----------------------------------------------------
 			var txtInp_emH = document.createElement('div');
@@ -1240,7 +1240,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_emH.className= 'descriptionbox'; //Required for IE
 				txtInp_emH.style.fontSize="10px";
 				txtInp_emH.style.border='0px';
-				txtInp_emH.innerHTML = '<a href="#" alt="'+TTEditEmH+'" title="'+TTEditEmH+'">'+HeaderEmH+'</a>';
+				txtInp_emH.innerHTML = '<a href="#" title="'+TTEditEmH+'">'+HeaderEmH+'</a>';
 				txtInp_emH.setAttribute('id', '.b.'+HeaderEmH);
 		// 43. Not Employed EmN --------------------------------------------------------
 			var txtInp_emN = document.createElement('div');
@@ -1249,7 +1249,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_emN.className= 'descriptionbox'; //Required for IE
 				txtInp_emN.style.fontSize="10px";
 				txtInp_emN.style.border='0px';
-				txtInp_emN.innerHTML = '<a href="#" alt="'+TTEditEmN+'" title="'+TTEditEmN+'">'+HeaderEmN+'</a>';
+				txtInp_emN.innerHTML = '<a href="#" title="'+TTEditEmN+'">'+HeaderEmN+'</a>';
 				txtInp_emN.setAttribute('id', '.b.'+HeaderEmN);
 		// 44. Weeks unemployed during Census Year ---------------------------------------
 			var txtInp_wksU = document.createElement('div');
@@ -1258,7 +1258,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_wksU.className= 'descriptionbox'; //Required for IE
 				txtInp_wksU.style.fontSize="10px";
 				txtInp_wksU.style.border='0px';
-				txtInp_wksU.innerHTML = '<a href="#" alt="'+TTEditWksu+'" title="'+TTEditWksu+'">'+HeaderWksu+'</a>';
+				txtInp_wksU.innerHTML = '<a href="#" title="'+TTEditWksu+'">'+HeaderWksu+'</a>';
 				txtInp_wksU.setAttribute('id', '.b.'+HeaderWksu);
 		// 45. Months unemployed during Census Year ---------------------------------------
 			var txtInp_mnsU = document.createElement('div');
@@ -1267,7 +1267,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_mnsU.className= 'descriptionbox'; //Required for IE
 				txtInp_mnsU.style.fontSize="10px";
 				txtInp_mnsU.style.border='0px';
-				txtInp_mnsU.innerHTML = '<a href="#" alt="'+TTEditMnsu+'" title="'+TTEditMnsu+'">'+HeaderMnsu+'</a>';
+				txtInp_mnsU.innerHTML = '<a href="#" title="'+TTEditMnsu+'">'+HeaderMnsu+'</a>';
 				txtInp_mnsU.setAttribute('id', '.b.'+HeaderMnsu);
 		// 46. Education -----------------------------------------------------------
 			var txtInp_educ = document.createElement('div');
@@ -1276,7 +1276,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_educ.className= 'descriptionbox'; //Required for IE
 				txtInp_educ.style.fontSize="10px";
 				txtInp_educ.style.border='0px';
-				txtInp_educ.innerHTML = '<a href="#" alt="'+TTEditEduc+'" title="'+TTEditEduc+'">'+HeaderEduc+'</a>';
+				txtInp_educ.innerHTML = '<a href="#" title="'+TTEditEduc+'">'+HeaderEduc+'</a>';
 				txtInp_educ.setAttribute('id', '.b.'+HeaderEduc);
 		// 47. Education pre 1890 Census ---------------------------------------------
 			var txtInp_educpre1890 = document.createElement('div');
@@ -1285,7 +1285,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_educpre1890.className= 'descriptionbox'; //Required for IE
 				txtInp_educpre1890.style.fontSize="10px";
 				txtInp_educpre1890.style.border='0px';
-				txtInp_educpre1890.innerHTML = '<a href="#" alt="'+TTEditEducpre1890+'" title="'+TTEditEducpre1890+'">'+HeaderEducpre1890+'</a>';
+				txtInp_educpre1890.innerHTML = '<a href="#" title="'+TTEditEducpre1890+'">'+HeaderEducpre1890+'</a>';
 				txtInp_educpre1890.setAttribute('id', '.b.'+HeaderEducpre1890);
 		// 48. English Spoken y/n eng_1 ----------------------------------------
 			var txtInp_eng1 = document.createElement('div');
@@ -1294,7 +1294,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_eng1.className= 'descriptionbox'; //Required for IE
 				txtInp_eng1.style.fontSize="10px";
 				txtInp_eng1.style.border='0px';
-				txtInp_eng1.innerHTML = '<a href="#" alt="'+TTEditEng+'" title="'+TTEditEng+'">'+HeaderEng+'</a>';
+				txtInp_eng1.innerHTML = '<a href="#" title="'+TTEditEng+'">'+HeaderEng+'</a>';
 				txtInp_eng1.setAttribute('id', '.b.'+HeaderEng);
 		// 49. Home Ownership  -------------------------------------------------
 			var txtInp_home = document.createElement('div');
@@ -1303,7 +1303,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_home.className= 'descriptionbox'; //Required for IE
 				txtInp_home.style.fontSize="10px";
 				txtInp_home.style.border='0px';
-				txtInp_home.innerHTML = '<a href="#" alt="'+TTEditHome+'" title="'+TTEditHome+'">'+HeaderHome+'</a>';
+				txtInp_home.innerHTML = '<a href="#" title="'+TTEditHome+'">'+HeaderHome+'</a>';
 				txtInp_home.setAttribute('id', '.b.'+HeaderHome);
 		// 50. Birth Place_2 -----------------------------------------------
 			var txtInp_birthpl2 = document.createElement('div');
@@ -1312,7 +1312,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_birthpl2.className= 'descriptionbox'; //Required for IE
 				txtInp_birthpl2.style.fontSize="10px";
 				txtInp_birthpl2.style.border='0px';
-				txtInp_birthpl2.innerHTML = '<a href="#" alt="'+TTEditBplace+'" title="'+TTEditBplace+'">'+HeaderBplace+'</a>';
+				txtInp_birthpl2.innerHTML = '<a href="#" title="'+TTEditBplace+'">'+HeaderBplace+'</a>';
 				txtInp_birthpl2.setAttribute('id', '.b.'+HeaderBplace);
 		// 51. Indi Birth Place_2 ---------------------------------------------
 			var txtInp_ibirthpl2 = document.createElement('div');
@@ -1321,7 +1321,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_ibirthpl2.className= 'descriptionbox'; //Required for IE
 				txtInp_ibirthpl2.style.fontSize="10px";
 				txtInp_ibirthpl2.style.border='0px';
-				txtInp_ibirthpl2.innerHTML = '<a href="#" alt="'+TTEditBP+'" title="'+TTEditBP+'">'+HeaderBP+'</a>';
+				txtInp_ibirthpl2.innerHTML = '<a href="#" title="'+TTEditBP+'">'+HeaderBP+'</a>';
 				txtInp_ibirthpl2.setAttribute('id', '.b.'+HeaderBP);
 		// 52. Born in Same Country (ENG) -----------------------------------------------
 			var txtInp_bic = document.createElement('div');
@@ -1330,7 +1330,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_bic.className= 'descriptionbox'; //Required for IE
 				txtInp_bic.style.fontSize="10px";
 				txtInp_bic.style.border='0px';
-				txtInp_bic.innerHTML = '<a href="#" alt="'+TTEditBIC+'" title="'+TTEditBIC+'">'+HeaderBIC+'</a>';
+				txtInp_bic.innerHTML = '<a href="#" title="'+TTEditBIC+'">'+HeaderBIC+'</a>';
 				txtInp_bic.setAttribute('id', '.b.'+HeaderBIC)
 		// 53. Born outside England (SCO, IRE, WAL, FOReign ----------------------------
 			var txtInp_boe = document.createElement('div');
@@ -1339,7 +1339,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_boe.className= 'descriptionbox'; //Required for IE
 				txtInp_boe.style.fontSize="10px";
 				txtInp_boe.style.border='0px';
-				txtInp_boe.innerHTML = '<a href="#" alt="'+TTEditBOE+'" title="'+TTEditBOE+'">'+HeaderBOE+'</a>';
+				txtInp_boe.innerHTML = '<a href="#" title="'+TTEditBOE+'">'+HeaderBOE+'</a>';
 				txtInp_boe.setAttribute('id', '.b.'+HeaderBOE)
 		// 54. Fathers Birth Place_2 ---------------------------------------------
 			var txtInp_fbirthpl2 = document.createElement('div');
@@ -1348,7 +1348,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_fbirthpl2.className= 'descriptionbox'; //Required for IE
 				txtInp_fbirthpl2.style.fontSize="10px";
 				txtInp_fbirthpl2.style.border='0px';
-				txtInp_fbirthpl2.innerHTML = '<a href="#" alt="'+TTEditFBP+'" title="'+TTEditFBP+'">'+HeaderFBP+'</a>';
+				txtInp_fbirthpl2.innerHTML = '<a href="#" title="'+TTEditFBP+'">'+HeaderFBP+'</a>';
 				txtInp_fbirthpl2.setAttribute('id', '.b.'+HeaderFBP);
 		// 55. Mothers Birth Place_2 ---------------------------------------------
 			var txtInp_mbirthpl2 = document.createElement('div');
@@ -1357,7 +1357,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_mbirthpl2.className= 'descriptionbox'; //Required for IE
 				txtInp_mbirthpl2.style.fontSize="10px";
 				txtInp_mbirthpl2.style.border='0px';
-				txtInp_mbirthpl2.innerHTML = '<a href="#" alt="'+TTEditMBP+'" title="'+TTEditMBP+'">'+HeaderMBP+'</a>';
+				txtInp_mbirthpl2.innerHTML = '<a href="#" title="'+TTEditMBP+'">'+HeaderMBP+'</a>';
 				txtInp_mbirthpl2.setAttribute('id', '.b.'+HeaderMBP);
 		// 56. Native Language ----------------------------------------------------
 			var txtInp_lang = document.createElement('div');
@@ -1366,7 +1366,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_lang.className= 'descriptionbox'; //Required for IE
 				txtInp_lang.style.fontSize="10px";
 				txtInp_lang.style.border='0px';
-				txtInp_lang.innerHTML = '<a href="#" alt="'+TTEditNL+'" title="'+TTEditNL+'">'+HeaderNL+'</a>';
+				txtInp_lang.innerHTML = '<a href="#" title="'+TTEditNL+'">'+HeaderNL+'</a>';
 				txtInp_lang.setAttribute('id', '.b.'+HeaderNL);
 		// 57. Year of immigration YOI_2 ----------------------------------------
 			var txtInp_yoi2 = document.createElement('div');
@@ -1375,7 +1375,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_yoi2.className= 'descriptionbox'; //Required for IE
 				txtInp_yoi2.style.fontSize="10px";
 				txtInp_yoi2.style.border='0px';
-				txtInp_yoi2.innerHTML = '<a href="#" alt="'+TTEditYOI+'" title="'+TTEditYOI+'">'+HeaderYOI+'</a>';
+				txtInp_yoi2.innerHTML = '<a href="#" title="'+TTEditYOI+'">'+HeaderYOI+'</a>';
 				txtInp_yoi2.setAttribute('id', '.b.'+HeaderYOI);
 		// 58. Natualized or Alien_2 ----------------------------------------
 			var txtInp_na2 = document.createElement('div');
@@ -1384,7 +1384,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_na2.className= 'descriptionbox'; //Required for IE
 				txtInp_na2.style.fontSize="10px";
 				txtInp_na2.style.border='0px';
-				txtInp_na2.innerHTML = '<a href="#" alt="'+TTEditNA+'" title="'+TTEditNA+'">'+HeaderNA+'</a>';
+				txtInp_na2.innerHTML = '<a href="#" title="'+TTEditNA+'">'+HeaderNA+'</a>';
 				txtInp_na2.setAttribute('id', '.b.'+HeaderNA);
 		// 59. English Spoken y/n eng_2 ----------------------------------------
 			var txtInp_eng2 = document.createElement('div');
@@ -1393,7 +1393,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_eng2.className= 'descriptionbox'; //Required for IE
 				txtInp_eng2.style.fontSize="10px";
 				txtInp_eng2.style.border='0px';
-				txtInp_eng2.innerHTML = '<a href="#" alt="'+TTEditEng+'" title="'+TTEditEng+'">'+HeaderEng+'</a>';
+				txtInp_eng2.innerHTML = '<a href="#" title="'+TTEditEng+'">'+HeaderEng+'</a>';
 				txtInp_eng2.setAttribute('id', '.b.'+HeaderEng);
 		// 60. Occupation_3 -----------------------------------------------------
 			var txtInp_occu3 = document.createElement('div');
@@ -1402,7 +1402,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_occu3.className= 'descriptionbox'; //Required for IE
 				txtInp_occu3.style.fontSize="10px";
 				txtInp_occu3.style.border='0px';
-				txtInp_occu3.innerHTML = '<a href="#" alt="'+TTEditOccu+'" title="'+TTEditOccu+'">'+HeaderOccu+'</a>';
+				txtInp_occu3.innerHTML = '<a href="#" title="'+TTEditOccu+'">'+HeaderOccu+'</a>';
 				txtInp_occu3.setAttribute('id', '.b.'+HeaderOccu);
 		// 61. Industry ind_2 ------------------------------------------------------
 			var txtInp_ind2 = document.createElement('div');
@@ -1411,7 +1411,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_ind2.className= 'descriptionbox'; //Required for IE
 				txtInp_ind2.style.fontSize="10px";
 				txtInp_ind2.style.border='0px';
-				txtInp_ind2.innerHTML = '<a href="#" alt="'+TTEditInd+'" title="'+TTEditInd+'">'+HeaderInd+'</a>';
+				txtInp_ind2.innerHTML = '<a href="#" title="'+TTEditInd+'">'+HeaderInd+'</a>';
 				txtInp_ind2.setAttribute('id', '.b.'+HeaderInd);
 		// 62. Employ_2 ------------------------------------------------------------
 			var txtInp_emp2 = document.createElement('div');
@@ -1420,7 +1420,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_emp2.className= 'descriptionbox'; //Required for IE
 				txtInp_emp2.style.fontSize="10px";
 				txtInp_emp2.style.border='0px';
-				txtInp_emp2.innerHTML = '<a href="#" alt="'+TTEditEmp+'" title="'+TTEditEmp+'">'+HeaderEmp+'</a>';
+				txtInp_emp2.innerHTML = '<a href="#" title="'+TTEditEmp+'">'+HeaderEmp+'</a>';
 				txtInp_emp2.setAttribute('id', '.b.'+HeaderEmp);
 		/*
 		// 63. Nationality (UK 1911) ----------------------------------------------------
@@ -1430,7 +1430,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_infirm.className= 'descriptionbox'; //Required for IE
 				txtInp_infirm.style.fontSize="10px";
 				txtInp_infirm.style.border='0px';
-				txtInp_infirm.innerHTML = '<a href="#" alt="'+TTEditN-ality+'" title="'+TTEditNality+'">'+HeaderN-ality+'</a>';
+				txtInp_infirm.innerHTML = '<a href="#" title="'+TTEditNality+'">'+HeaderN-ality+'</a>';
 				txtInp_infirm.setAttribute('id', '.b.'+HeaderN-ality);
 		*/
 		// 63. Infirmaties Infirm -------------------------------------------------------
@@ -1440,7 +1440,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_infirm.className= 'descriptionbox'; //Required for IE
 				txtInp_infirm.style.fontSize="10px";
 				txtInp_infirm.style.border='0px';
-				txtInp_infirm.innerHTML = '<a href="#" alt="'+TTEditInfirm+'" title="'+TTEditInfirm+'">'+HeaderInfirm+'</a>';
+				txtInp_infirm.innerHTML = '<a href="#" title="'+TTEditInfirm+'">'+HeaderInfirm+'</a>';
 				txtInp_infirm.setAttribute('id', '.b.'+HeaderInfirm);
 		// 64. Situation (1890)  ------------------------------------------------------
 			var txtInp_situ = document.createElement('div');
@@ -1449,7 +1449,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_situ.className= 'descriptionbox'; //Required for IE
 				txtInp_situ.style.fontSize="10px";
 				txtInp_situ.style.border='0px';
-				txtInp_situ.innerHTML = '<a href="#" alt="'+TTEditSitu+'" title="'+TTEditSitu+'">'+HeaderSitu+'</a>';
+				txtInp_situ.innerHTML = '<a href="#" title="'+TTEditSitu+'">'+HeaderSitu+'</a>';
 				txtInp_situ.setAttribute('id', '.b.'+HeaderSitu);
 		// 65. Veteran  ------------------------------------------------------
 			var txtInp_vet = document.createElement('div');
@@ -1458,7 +1458,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_vet.className= 'descriptionbox'; //Required for IE
 				txtInp_vet.style.fontSize="10px";
 				txtInp_vet.style.border='0px';
-				txtInp_vet.innerHTML = '<a href="#" alt="'+TTEditVet+'" title="'+TTEditVet+'">'+HeaderVet+'</a>';
+				txtInp_vet.innerHTML = '<a href="#" title="'+TTEditVet+'">'+HeaderVet+'</a>';
 				txtInp_vet.setAttribute('id', '.b.'+HeaderVet);
 		// 66. War or Expedition ---------------------------------------------
 			var txtInp_war = document.createElement('div');
@@ -1467,7 +1467,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_war.className= 'descriptionbox'; //Required for IE
 				txtInp_war.style.fontSize="10px";
 				txtInp_war.style.border='0px';
-				txtInp_war.innerHTML = '<a href="#" alt="'+TTEditWar+'" title="'+TTEditWar+'">'+HeaderWar+'</a>';
+				txtInp_war.innerHTML = '<a href="#" title="'+TTEditWar+'">'+HeaderWar+'</a>';
 				txtInp_war.setAttribute('id', '.b.'+HeaderWar);
 		// 67. Infirm1910 (1910) -----------------------------------------------
 			var txtInp_infirm1910 = document.createElement('div');
@@ -1476,7 +1476,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_infirm1910.className= 'descriptionbox'; //Required for IE
 				txtInp_infirm1910.style.fontSize="10px";
 				txtInp_infirm1910.style.border='0px';
-				txtInp_infirm1910.innerHTML = '<a href="#" alt="'+TTEditInfirm1910+'" title="'+TTEditInfirm1910+'">'+HeaderInfirm1910+'</a>';
+				txtInp_infirm1910.innerHTML = '<a href="#" title="'+TTEditInfirm1910+'">'+HeaderInfirm1910+'</a>';
 				txtInp_infirm1910.setAttribute('id', '.b.'+HeaderInfirm1910);
 
 		// Hidden Items ------------------------------------------------------
