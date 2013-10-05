@@ -1091,20 +1091,7 @@ if (!defined('WT_WEBTREES')) {
 		}
 		</script>
 
-		<div>
-			<table><tr><td class="nowrap">
-			<br>
-			<?php
-				// echo "&nbsp;".WT_I18N::translate('Date').":&nbsp;&nbsp;";
-				echo "<font size=2>";
-			// Input renamed as type=hidden to hide the date field ----- //
-			// Note Input field is still required ---------------------- //
-			?>
-				<input type="hidden" style="width:6em; background:#bbddff;" id="censDate" name="censDate" type="text" value="<?php echo ""; ?>">
-			</font>
-			</td></tr></table>
-		</div>
-
+		<input type="hidden" id="censDate" name="censDate" value="">
 
 	</div>
 
