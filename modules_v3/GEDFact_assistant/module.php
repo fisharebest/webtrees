@@ -214,6 +214,8 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 
 	// Convert custom markup into HTML
 	public static function formatCensusNote(WT_Note $note) {
+		global $controller;
+
 		$headers = array(
 			'AgM'        => 'Age at first marriage',
 			'Age'        => 'Age at last birthday',
@@ -291,7 +293,13 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				$tbody .= '</tr>';
 			}
 
+			// TODO: why doesn't this work?  Why do we need to add the javascript inline?
+			//$controller->addInlineJavascript(
+			//	'jQuery("head").append(\'<link rel="stylesheet" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/css/cens_style.css" type="text/css">\');'
+			//);
+
 			return
+				'<script>jQuery("head").append(\'<link rel="stylesheet" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/css/cens_style.css" type="text/css">\');</script>' .
 				'<span class="note1">' . $title . '</span>' .
 				'<br>' . // Needed to allow the first line to be converted to a link
 				'<span class="note1">' . $preamble . '</span>' .
