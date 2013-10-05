@@ -58,7 +58,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			$months = round($days * 12 / 365.25); // Approximate - we do not know the calendar
 			if (abs($months)==12 || abs($months)>=24) {
 				$diff .= WT_I18N::plural('%d year', '%d years', round($months / 12), round($months / 12));
-			} elseif ($gap!=0) {
+			} elseif ($months!=0) {
 				$diff .= WT_I18N::plural('%d month', '%d months', $months, $months);
 			}
 
