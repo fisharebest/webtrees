@@ -641,7 +641,8 @@ right:10px;
 	padding-bottom:0;
 }
 li .person_box, li .person_boxF {margin:3px 0 3px 0;}
-.fact_MARR .label:hover, .fact_MARR .field:hover {color:White;background-color:DarkSlateGray;}
+
+.fact_MARR {color:White;background-color:DarkSlateGray;}
 
 /*-- descendancy chart rtl specific stylesheets --*/
 html[dir=rtl] #descendancy_chart ul {
