@@ -39,10 +39,8 @@ update: $(MO_FILES) $(CSS_RTL_FILES)
 # Create a release from this GIT branch
 ################################################################################
 build/webtrees: clean update
-	# Check there are no local modifications - only build from a clean working copy
-	#git diff-index --quiet HEAD
-	# Extract from the repository (not the working copy)
-	git archive --prefix=$@/ $(GIT_BRANCH) | tar -x
+	# Extract from the repository either a tag or the current revision
+	if [ -z "$(WT_RELEASE)" ]; then git archive --prefix=$@/ $(WT_VERSION); else git archive --prefix=$@/ $(GIT_BRANCH); fi | tar -x
 	# Embed the build number in the code (for DEV builds only)
 	sed -i "s/define('WT_RELEASE', 'dev')/define('WT_RELEASE', 'dev-$(BUILD_NUMBER)')/" $@/includes/session.php
 	# Add language files
