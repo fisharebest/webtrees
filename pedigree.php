@@ -67,7 +67,7 @@ $controller
 					<?php echo select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset); ?>
 				</td>
 				<td class="optionbox center">
-					<input type="checkbox" value="<?php if ($controller->show_full) echo '1" checked="checked" onclick="document.people.show_full.value=\'0\'";'; else echo '0" onclick="document.people.show_full.value=\'1\';"'; ?>>
+				    <input type="checkbox" value="<?php	if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';"; else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
 				</td>
 			</tr>
 		</table>
