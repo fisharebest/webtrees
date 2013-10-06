@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-09-21 15:07+0100\n"
-"PO-Revision-Date: 2013-08-28 01:05+0200\n"
+"PO-Revision-Date: 2013-09-27 12:39+0200\n"
 "Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language-Team: \n"
 "Language: he\n"
@@ -2103,7 +2103,7 @@ msgstr "שותפים"
 
 #: edit_interface.php:1169 help_text.php:1170
 msgid "Associate events with this source"
-msgstr "קשר מאורעות למקור זה"
+msgstr "קשר אירועים למקור זה"
 
 #: search.php:129 search.php:197
 msgid "Associates"
@@ -2207,7 +2207,7 @@ msgstr "צור בצורה אוטומטית קודי זיהוי גלובליים 
 
 #: admin_trees_config.php:836 help_text.php:495
 msgid "Automatically expand list of events of close relatives"
-msgstr "הרחב אוטומטית את רשימת המאורעות של קרובים"
+msgstr "הרחב אוטומטית את רשימת האירועים של קרובים"
 
 #: admin_trees_config.php:987 help_text.php:490
 msgid "Automatically expand notes"
@@ -3669,7 +3669,7 @@ msgstr "הקש כדי לבחור אדם כראש משפחה."
 
 #: help_text.php:1344
 msgid "Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically."
-msgstr "לחיצה על קישור זה יראה רשימה של כל האנשים והמשפחות שיש להם מאורעות שהתרחשו במקום זה. כאשר מגיעים לסוף היררכית המקומות, בדרך כלל לעיר או עיירה, תראה מיידית את רשימת השמות."
+msgstr "לחיצה על קישור זה יראה רשימה של כל האנשים והמשפחות שיש להם אירועים שהתרחשו במקום זה. כאשר מגיעים לסוף היררכית המקומות, בדרך כלל לעיר או עיירה, תראה מיידית את רשימת השמות."
 
 #: help_text.php:1135
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
@@ -3678,7 +3678,7 @@ msgstr "לחיצה על צלמית \"+\" תפתח חלון של עוזר GEDFact
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:85
 msgid "Client time"
-msgstr ""
+msgstr "זמן לקוח"
 
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
@@ -4132,11 +4132,11 @@ msgstr "מותאם"
 
 #: calendar.php:269 includes/functions/functions_print.php:1012
 msgid "Custom event"
-msgstr "מאורע מותאם"
+msgstr "אירוע מותאם"
 
 #: includes/functions/functions_print.php:1011
 msgid "Custom fact"
-msgstr ""
+msgstr "עובדה מותאמת"
 
 #: find.php:480
 msgid "Custom tags"
@@ -5183,7 +5183,7 @@ msgstr "כתובת דואר אלקטרוני לשימוש בשדה &laquo;מאת
 
 #: help_text.php:1171
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "כל מקור רושם מאורעות מסוימים, בדרך כלל עבור תחום תאריכים נתון ועבור מקום מסוים. לדוגמא: מפקד אוכלוסין רושם מאורעות של מפקד אוכלוסין וכנסייה או בית כנסת רושמים מאורעות של לידות, נישואין ופטירה.<br><br>בחר את המאורעות שרשומים ע״י המקור הזה מהרשימה של מאורעות המסופקת. את הנתונים יש להגדיר במבנה תחום <i>FROM 1900 TO 1910</i>. מקום הוא המקום הנמוך שכולל את כל המיקומים התחתונים המוזכרים במקור הזה. לדוגמא, \"Oneida, Idaho, USA\" ישמש כמקום המקור למאורעות שהתרחשו בערים שונות במחוז Oneida. \"Idaho, USA\" יהיה המקום של המקור של מאורעות שהתרחשו לא רק במחוז Oneida אלא גם במחוזות אחרים של Idaho."
+msgstr "כל מקור רושם אירועים מסוימים, בדרך כלל עבור תחום תאריכים נתון ועבור מקום מסוים. לדוגמא: מפקד אוכלוסין רושם אירועים של מפקד אוכלוסין וכנסייה או בית כנסת רושמים אירועים של לידות, נישואין ופטירה.<br><br>בחר את האירועים שרשומים ע״י המקור הזה מהרשימה של אירועים המסופקת. את הנתונים יש להגדיר במבנה תחום <i>FROM 1900 TO 1910</i>. מקום הוא המקום הנמוך שכולל את כל המיקומים התחתונים המוזכרים במקור הזה. לדוגמא, \"Oneida, Idaho, USA\" ישמש כמקום המקור לאירועים שהתרחשו בערים שונות במחוז Oneida. \"Idaho, USA\" יהיה המקום של המקור של אירועים שהתרחשו לא רק במחוז Oneida אלא גם במחוזות אחרים של Idaho."
 
 #: help_text.php:1336
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
@@ -7079,6 +7079,10 @@ msgstr "העיסוק שלו היה"
 #: modules_v3/personal_facts/module.php:135
 msgid "Historical facts"
 msgstr "עובדות היסטוריות"
+
+#: index.php:148 modules_v3/extra_info/module.php:71
+msgid "Hit count:"
+msgstr "ספירת פגיעות:"
 
 #: admin_trees_config.php:1040 help_text.php:824
 msgid "Hit counters"
@@ -10968,19 +10972,19 @@ msgstr "עובדות מהירות"
 
 #: help_text.php:510
 msgid "Quick family facts"
-msgstr "עובדות משפחתיות עיקריות"
+msgstr "עובדות משפחתיות מהירות"
 
 #: help_text.php:588
 msgid "Quick individual facts"
-msgstr "עובדות אישיות עיקריות"
+msgstr "עובדות אישיות מהירות"
 
 #: help_text.php:794
 msgid "Quick repository facts"
-msgstr "עובדות עיקריות של מאגר"
+msgstr "עובדות מהירות של מאגר"
 
 #: help_text.php:905
 msgid "Quick source facts"
-msgstr "עובדות עיקריות של מקורות"
+msgstr "עובדות מהירות של מקורות"
 
 #: library/WT/Date/French.php:125
 msgid "Quintidi"
@@ -11781,7 +11785,7 @@ msgstr "בחר סוג תרשים:"
 
 #: edit_interface.php:1173
 msgid "Select events"
-msgstr "בחר מאורעות"
+msgstr "בחר אירועים"
 
 #: modules_v3/googlemap/help_text.php:68 modules_v3/googlemap/module.php:437
 msgid "Select flag"
@@ -11955,7 +11959,7 @@ msgstr "שם השרת"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:82
 msgid "Server time"
-msgstr ""
+msgstr "זמן שרת"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:94 help_text.php:719
@@ -12325,7 +12329,7 @@ msgstr "הראה קישור הורדה במציג המדיה"
 
 #: admin_trees_config.php:844
 msgid "Show events of close relatives on individual page"
-msgstr "הראה מאורעות של קרובים על הדף האישי"
+msgstr "הראה אירועים של קרובים על הדף האישי"
 
 #: help_text.php:839
 msgid "Show fact icons"
@@ -12421,7 +12425,7 @@ msgstr "הראה רק אנשים שמינם בלתי ידוע."
 
 #: modules_v3/random_media/module.php:260
 msgid "Show only individuals, events, or all?"
-msgstr "הראה רק אנשים, מאורעות, או הכול?"
+msgstr "הראה רק אנשים, אירועים, או הכול?"
 
 #: includes/functions/functions_print_lists.php:86
 msgid "Show only males."
@@ -13441,7 +13445,7 @@ msgstr "על המפה מציגים מספר מופעים של השם המצוי�
 
 #: help_text.php:55
 msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
-msgstr "הארגון, מוסד, חברה, אדם או ישות אחרת בעלת הסמכות.<br><br>דוגמה, המעביד של אדם או בית הכנסת שעורך טקסים או מאורעות או ארגון אחראי על יצירת ו-/או גניזת רשומות."
+msgstr "הארגון, מוסד, חברה, אדם או ישות אחרת בעלת הסמכות.<br><br>דוגמה, המעביד של אדם או בית הכנסת שעורך טקסים או אירועים או ארגון אחראי על יצירת ו-/או גניזת רשומות."
 
 #: setup.php:380
 msgid "The password needs to be at least six characters long."
@@ -13474,7 +13478,7 @@ msgstr "האתר מושבת לצורך תחזוקה. עליך <a href=\"index.ph
 #. I18N: Description of “Statistics” module
 #: modules_v3/gedcom_stats/module.php:37
 msgid "The size of the family tree, earliest and latest events, common names, etc."
-msgstr "גודל עץ המשפחה, מאורעות מוקדמים ומאוחרים, שמות שכיחים, וכו'"
+msgstr "גודל עץ המשפחה, אירועים מוקדמים ומאוחרים, שמות שכיחים, וכו'"
 
 #: admin_pgv_to_wt.php:42
 msgid "The specified directory does not contain an installation of PhpGedView"
@@ -13746,7 +13750,7 @@ msgstr "הנתונים הם פרטיים ולא ניתן להראות אותם."
 
 #: help_text.php:1090
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "תיבת הכניסה הזו מאפשרת לשנות את השנה של לוח השנה. הקלד שנה בתיבה ולחץ <b>הכנס</b> כדי לשנות את לוח השנה לשנה הזו.<br><br><b>מאפיינים מתקדמים</b> עבור <b>הצג שנה</b><dl><dt><b>יותר משנה אחת</b></dt><dd>תוכל לחפש תאריכים בתחום של שנים.<br><br>תחומי השנה הם <u>כוללים</u>. משמעות הדבר שתחום התאריך הוא מ-1 בינואר של השנה הראשונה עד ל-31 בדצמבר בשנה האחרונה המוזכרת. מובאות כאן מספר דוגמאות לתחום השנים:<br><br><b>1992-5</b> עבור כל האירועים מ-1992 עד 1995.<br><b>1972-89</b> עבור כל האירועים מ-1972 עד 1989.<br><b>1610-759</b> עבור כל האירועים מ-1610 עד 1759.<br><b>1880-1905</b> עבור כל האירועים מ-1880 עד 1905.<br><b>880-1105</b> עבור כל האירועים מ-880 עד 1105.<br><br>כדי לראות את כל המאורעות של העשור או מאה, ניתן להשתמש ב-<b>?</b> במקום הספרות האחרונות. לדוגמא,<b><span dir=\"ltr\">197?</span></b> לכל המאורעות מ-1970 עד 1979 או <b><span dir=\"ltr\">16??</span></b> לכל המאורעות מ-1600 עד 1699.<br><br>בחירת תחום שנים ישנה את לוח השנה למצגת של שנה.</dd></dl>"
+msgstr "תיבת הכניסה הזו מאפשרת לשנות את השנה של לוח השנה. הקלד שנה בתיבה ולחץ <b>הכנס</b> כדי לשנות את לוח השנה לשנה הזו.<br><br><b>מאפיינים מתקדמים</b> עבור <b>הצג שנה</b><dl><dt><b>יותר משנה אחת</b></dt><dd>תוכל לחפש תאריכים בתחום של שנים.<br><br>תחומי השנה הם <u>כוללים</u>. משמעות הדבר שתחום התאריך הוא מ-1 בינואר של השנה הראשונה עד ל-31 בדצמבר בשנה האחרונה המוזכרת. מובאות כאן מספר דוגמאות לתחום השנים:<br><br><b>1992-5</b> עבור כל האירועים מ-1992 עד 1995.<br><b>1972-89</b> עבור כל האירועים מ-1972 עד 1989.<br><b>1610-759</b> עבור כל האירועים מ-1610 עד 1759.<br><b>1880-1905</b> עבור כל האירועים מ-1880 עד 1905.<br><b>880-1105</b> עבור כל האירועים מ-880 עד 1105.<br><br>כדי לראות את כל האירועים של העשור או מאה, ניתן להשתמש ב-<b>?</b> במקום הספרות האחרונות. לדוגמא,<b><span dir=\"ltr\">197?</span></b> לכל האירועים מ-1970 עד 1979 או <b><span dir=\"ltr\">16??</span></b> לכל האירועים מ-1600 עד 1699.<br><br>בחירת תחום שנים ישנה את לוח השנה למצגת של שנה.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
 msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
@@ -14461,7 +14465,7 @@ msgstr "סה״כ גירושים"
 #: modules_v3/gedcom_stats/module.php:354 modules_v3/html/module.php:202
 #: modules_v3/missing_facts_report/report.xml:598 statistics.php:349
 msgid "Total events"
-msgstr "סה״כ מאורעות"
+msgstr "סה״כ אירועים"
 
 #: library/WT/Stats.php:3031 modules_v3/fact_sources/report.xml:245
 #: modules_v3/fact_sources/report.xml:249
@@ -14644,7 +14648,7 @@ msgstr "ברית המועצות"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: themes/_administration/header.php:88
 msgid "UTC"
-msgstr ""
+msgstr "זמן יקום מתואם"
 
 #: library/WT/Stats.php:3989
 msgid "Uganda"
@@ -16305,19 +16309,19 @@ msgstr "אפשר"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:97
 msgid "estate name"
-msgstr ""
+msgstr "שם חווה"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:94
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "שם חווה"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:91
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "שם חווה"
 
 #. I18N: Gedcom EST dates
 #: library/WT/Date.php:237
@@ -18254,10 +18258,6 @@ msgstr "חצי שנה אחרי הנישואין"
 #: admin_trees_config.php:1051 modules_v3/googlemap/module.php:275
 msgid "hide"
 msgstr "הסתר"
-
-#: index.php:148 modules_v3/extra_info/module.php:71
-msgid "Hit count:"
-msgstr "ספירת פגיעות:"
 
 #: edit_interface.php:1859 edit_interface.php:1894
 #: includes/functions/functions.php:798
