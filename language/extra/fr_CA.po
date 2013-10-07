@@ -233,7 +233,7 @@ msgstr "%s"
 #: library/WT/Stats.php:4018
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s BCE"
 
 #. I18N: size of file in KB
 #: admin_media.php:402 library/WT/Media.php:201
@@ -923,7 +923,7 @@ msgstr "Un utilisateur ne sera pas capable de se connecter jusqu’à ce que les
 
 #: help_text.php:1016
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Un filigrane est un texte ajouté à une image afin de décourager sa copie sans permission."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:117
@@ -2052,7 +2052,7 @@ msgstr "Confirmez-vous la suppression de ce signet ?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Êtes-vous certain de vouloir défaire tous les changements de cet arbre généalogique ?"
 
 #: library/WT/Stats.php:3756
 msgid "Argentina"
@@ -3681,7 +3681,7 @@ msgstr "La fenêtre de l’Assistant de notes partagées GEDFact (faits Gedcom) 
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:85
 msgid "Client time"
-msgstr ""
+msgstr "Heure client"
 
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
@@ -4135,11 +4135,11 @@ msgstr "Personnalisé"
 
 #: calendar.php:269 includes/functions/functions_print.php:1012
 msgid "Custom event"
-msgstr ""
+msgstr "Événement personnalisé"
 
 #: includes/functions/functions_print.php:1011
 msgid "Custom fact"
-msgstr ""
+msgstr "Fait personnalisé"
 
 #: find.php:480
 msgid "Custom tags"
@@ -5673,7 +5673,7 @@ msgstr "Statistiques d’exécution"
 #: includes/functions/functions_print.php:255
 #, php-format
 msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB."
-msgstr ""
+msgstr "Temps d’exécution: %1$s secondes. Requêtes sur la base de données: %2$s. Mémoire utilisée: %3$s Ko."
 
 #: branches.php:100
 msgid "Expand all"
@@ -6367,7 +6367,7 @@ msgstr "Pour un affichage optimal sur Internet, <b>webtrees </b> utilise le jeu 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:417
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "Pour les sites avec plus d’un arbre généalogique, cette option affiche une liste des arbres dans le menu principal, les pages de recherches, etc."
 
 #: includes/functions/functions_print.php:372
 msgid "For technical support and information contact"
@@ -7083,6 +7083,10 @@ msgstr "Son métier était"
 msgid "Historical facts"
 msgstr "Faits historiques"
 
+#: index.php:148 modules_v3/extra_info/module.php:71
+msgid "Hit count:"
+msgstr "Compteur"
+
 #: admin_trees_config.php:1040 help_text.php:824
 msgid "Hit counters"
 msgstr "Compteurs de visites"
@@ -7320,7 +7324,7 @@ msgstr "Dimensions de l’image"
 
 #: admin_trees_config.php:708
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Images sans filigrane"
 
 #: modules_v3/family_nav/module.php:85
 msgid "Immediate Family"
@@ -8683,11 +8687,11 @@ msgstr "Martinique"
 #. I18N: verb - pretend to be someone else
 #: admin_masquerade.php:29 themes/_administration/header.php:135
 msgid "Masquerade"
-msgstr ""
+msgstr "Prétendre être"
 
 #: admin_masquerade.php:46
 msgid "Masquerade as another user"
-msgstr ""
+msgstr "Prétendre être un autre utilisateur"
 
 #: modules_v3/batch_update/plugins/search_replace.php:90
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -9681,8 +9685,8 @@ msgstr "Aucun évènement pour une personne vivante pour demain."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Aucun événement de personnes vivantes existe pour le prochain %s jour."
+msgstr[1] "Aucun événement de personnes vivantes existe pour les prochains %s jours."
 
 #: library/WT/Controller/Family.php:164
 msgid "No facts for this family."
@@ -11719,7 +11723,7 @@ msgstr "Rechercher et remplacer"
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:39
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr ""
+msgstr "Rechercher et remplacer du texte, à l’aide de recherches simples ou d’un motif avancé correspondant."
 
 #: includes/session.php:544
 msgid "Search engine"
@@ -11958,7 +11962,7 @@ msgstr "Nom du serveur"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:82
 msgid "Server time"
-msgstr ""
+msgstr "Heure du serveur"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:94 help_text.php:719
@@ -12254,7 +12258,7 @@ msgstr "Afficher un curseur indiquant l’âge"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:934 help_text.php:694
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Afficher les détails du graphique par défaut"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -12387,7 +12391,7 @@ msgstr "Afficher le lien vers les statistiques sous forme de graphiques ?"
 
 #: admin_site_config.php:91 help_text.php:416
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Afficher la liste des arbres"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -13794,7 +13798,7 @@ msgstr "Le nom est sensible à la casse. Si une base de données portant ce nom 
 #. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:695
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr ""
+msgstr "Ceci est le réglage initial pour l’option « Afficher les détails » sur les graphiques."
 
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
@@ -14647,7 +14651,7 @@ msgstr "URRS"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: themes/_administration/header.php:88
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #: library/WT/Stats.php:3989
 msgid "Uganda"
@@ -15201,11 +15205,11 @@ msgstr "Filigranes"
 
 #: help_text.php:1018
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Les filigranes sont optionnels et habituellement affichés seulement aux visiteurs."
 
 #: help_text.php:1020
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "Les filigranes des images de grande taille peuvent être lents à générer. Les sites achalandés pourraient préférer produire une seule fois l’image filigranée et la stocker sur le serveur."
 
 #: login.php:347
 #, php-format
@@ -15320,7 +15324,7 @@ msgstr "Quand cette option est sélectionnée, vous pouvez voir tous les enregis
 
 #: help_text.php:1400
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr ""
+msgstr "Lorsque cette option est sélectionnée, webtrees calcule les différences d’âge entre frères et soeurs, enfants, conjoints, etc."
 
 #: help_text.php:922
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
@@ -16308,19 +16312,19 @@ msgstr "activer"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:97
 msgid "estate name"
-msgstr ""
+msgstr "Nom de la ferme"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:94
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "nom de la ferme"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:91
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "nom de la ferme"
 
 #. I18N: Gedcom EST dates
 #: library/WT/Date.php:237
@@ -18257,10 +18261,6 @@ msgstr "semestres après le mariage"
 #: admin_trees_config.php:1051 modules_v3/googlemap/module.php:275
 msgid "hide"
 msgstr "Masquer"
-
-#: index.php:148 modules_v3/extra_info/module.php:71
-msgid "Hit count:"
-msgstr "Compteur"
 
 #: edit_interface.php:1859 edit_interface.php:1894
 #: includes/functions/functions.php:798
