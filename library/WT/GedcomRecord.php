@@ -1048,9 +1048,9 @@ class WT_GedcomRecord {
 				$gedcom = $fact->getGedcom();
 				foreach ($matches as $match) {
 					$next_levels = '[' . $match[1]+1 . '-9]';
-					$gedcom = preg_replace('/' . $match[1] . '(\n' . $next_levels .'.*)*/', '', $gedcom);
+					$gedcom = preg_replace('/' . $match[0] . '(\n' . $next_levels .'.*)*/', '', $gedcom);
 				}
-				$this->updateFact($fact->factId(), $gedcom, $update_chan);
+				$this->updateFact($fact->getFactId(), $gedcom, $update_chan);
 			}
 		}
 	}
