@@ -450,7 +450,6 @@ case 'verify_hash':
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
 		exit;
 	}
-	AddToLog('User attempted to verify hashcode: ' . $user_name, 'auth');
 
 	// switch language to webmaster settings
 	$webmaster_user_id = get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
