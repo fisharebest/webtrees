@@ -516,7 +516,7 @@ case 'verify_hash':
 			if (!$REQUIRE_ADMIN_AUTH_REGISTRATION) {
 				set_user_setting($user_id, 'verified_by_admin', 1);
 			}
-			AddToLog('User verified: '.$user_name, 'auth');
+			AddToLog('User ' . $user_name . ' verified their email address', 'auth');
 
 			echo '<br><br>'.WT_I18N::translate('You have confirmed your request to become a registered user.').'<br><br>';
 			if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !get_user_setting($user_id, 'verified_by_admin')) {
@@ -526,6 +526,7 @@ case 'verify_hash':
 			}
 			echo '<br><br>';
 		} else {
+			AddToLog('User ' . $user_name . ' failed to verify their email address', 'auth');
 			echo '<br><br>';
 			echo '<span class="warning">';
 			echo WT_I18N::translate('Data was not correct, please try again');
