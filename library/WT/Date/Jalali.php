@@ -131,7 +131,10 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 	}
 
 	function IsLeapYear() {
-		return (((((($this->y - (($this->y > 0) ? 474 : 473)) % 2820) + 474) + 38) * 682) % 2816) < 682;
+		return in_array(
+			(($this->y + 2346) % 2820) % 128,
+			array(0, 5, 9, 13, 17, 21, 25, 29, 34, 38, 42, 46, 50, 54, 58, 62, 67, 71, 75, 79, 83, 87, 91, 95, 100, 104, 108, 112, 116, 120, 124)
+		);
 	}
 
 	static function YMDtoJD($year, $month, $day) {
