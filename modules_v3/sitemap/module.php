@@ -259,8 +259,8 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				'<p>', WT_I18N::translate('To tell search engines that sitemaps are available, you can use the following links.'), '</p>',
 				'<ul>',
 				// This list comes from http://en.wikipedia.org/wiki/Sitemaps
-				'<li><a target="_new" href="http://www.bing.com/webmaster/ping.aspx?siteMap='.$site_map_url2.'">Bing</a></li>',
-				'<li><a target="_new" href="http://www.google.com/webmasters/tools/ping?sitemap='.$site_map_url2.'">Google</a></li>',
+				'<li><a target="_blank" href="http://www.bing.com/webmaster/ping.aspx?siteMap='.$site_map_url2.'">Bing</a></li>',
+				'<li><a target="_blank" href="http://www.google.com/webmasters/tools/ping?sitemap='.$site_map_url2.'">Google</a></li>',
 				'</ul>';
 
 		}
