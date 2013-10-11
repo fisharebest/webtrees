@@ -37,7 +37,7 @@ $controller
 		<?php echo WT_I18N::translate('Add unlinked records'); ?>
 	</p>
 	<p>
-		<form method="post" action="#" name="tree">
+		<form method="post" action="?" name="tree">
 			<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM, ' onchange="tree.submit();"'); ?>
 		</form>
 	</p>

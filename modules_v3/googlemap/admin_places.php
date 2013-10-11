@@ -629,7 +629,7 @@ foreach ($placelist as $place) {
 			<?php echo WT_I18N::translate('Add  a new geographic location'); ?>
 		</td>
 		<td>
-			<form action="#" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
+			<form action="?" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
 				<?php echo select_edit_control('parent_id', $where_am_i, WT_I18N::translate('Top Level'), $parent); ?>
 				<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>">
 			</form>

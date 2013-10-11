@@ -96,7 +96,7 @@ if (isset($_REQUEST['to_delete'])) {
 	}
 }
 
-echo '<form name="delete_form" method="post" action="">';
+echo '<form name="delete_form" method="post" action="?">';
 echo '<div id="cleanup"><ul>';
 
 $dir=dir(WT_DATA_DIR);

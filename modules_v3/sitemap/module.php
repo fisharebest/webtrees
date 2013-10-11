@@ -234,7 +234,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			WT_I18N::translate('Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href="http://www.sitemaps.org/">www.sitemaps.org</a>.').
 			'</p>',
 			'<p>', WT_I18N::translate('Which family trees should be included in the sitemaps?'), '</p>',
-			'<form method="post" action="">',
+			'<form method="post" action="?">',
 			'<input type="hidden" name="action" value="save">';
 		foreach (WT_Tree::getAll() as $tree) {
 			echo '<p><input type="checkbox" name="include', $tree->tree_id, '"';

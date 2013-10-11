@@ -131,7 +131,7 @@ function paste_id(value) {
 // show the form to edit a user account details
 echo '<div id="edituser-page">
 	<h2>', WT_I18N::translate('My account'), '</h2>
-	<form name="editform" method="post" action="" onsubmit="return checkform(this);">
+	<form name="editform" method="post" action="?" onsubmit="return checkform(this);">
 	<input type="hidden" name="form_action" value="update">
 	<div id="edituser-table">
 		<div class="label">', WT_I18N::translate('Username'), help_link('username'), '</div>

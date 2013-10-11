@@ -157,7 +157,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 
 			// "Help for this page" link
 			echo '<div id="page_help">', help_link('add_faq_item', $this->getName()), '</div>';
-			echo '<form name="faq" method="post" action="#">';
+			echo '<form name="faq" method="post" action="?">';
 			echo '<input type="hidden" name="save" value="1">';
 			echo '<input type="hidden" name="block_id" value="', $block_id, '">';
 			echo '<table id="faq_module">';

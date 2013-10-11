@@ -227,7 +227,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				}
 				// "Help for this page" link
 				echo '<div id="page_help">', help_link('add_story', $this->getName()), '</div>';
-				echo '<form name="story" method="post" action="#">';
+				echo '<form name="story" method="post" action="?">';
 				echo '<input type="hidden" name="save" value="1">';
 				echo '<input type="hidden" name="block_id" value="', $block_id, '">';
 				echo '<input type="hidden" name="gedcom_id" value="', WT_GED_ID, '">';
