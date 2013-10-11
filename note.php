@@ -103,21 +103,41 @@ if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 <div id="note-details">
 	<h2><?php echo $controller->record->getFullName(); ?></h2>
 	<div id="note-tabs">
-	<ul>
-	<li><a href="#note-edit"><span><?php echo WT_I18N::translate('Details'); ?></span></a></li>
-	<?php if ($linked_indi) { ?>
-	<li><a href="#indi-note"><span id="indisource"><?php echo WT_I18N::translate('Individuals'); ?></span></a></li>
-	<?php } ?>
-	<?php if ($linked_fam) { ?>
-	<li><a href="#fam-note"><span id="famsource"><?php echo WT_I18N::translate('Families'); ?></span></a></li>
-	<?php } ?>
-	<?php if ($linked_obje) { ?>
-			echo '<li><a href="#media-note"><span id="mediasource"><?php echo WT_I18N::translate('Media objects'); ?></span></a></li>
-	<?php } ?>
-	<?php if ($linked_sour) { ?>
-			echo '<li><a href="#source-note"><span id="notesource"><?php echo WT_I18N::translate('Sources'); ?></span></a></li>
-	<?php } ?>
-	</ul>
+		<ul>
+			<li>
+				<a href="#note-edit">
+					<span><?php echo WT_I18N::translate('Details'); ?></span>
+				</a>
+			</li>
+			<?php if ($linked_indi) { ?>
+			<li>
+				<a href="#indi-note">
+					<span id="indisource"><?php echo WT_I18N::translate('Individuals'); ?></span>
+				</a>
+			</li>
+			<?php } ?>
+			<?php if ($linked_fam) { ?>
+			<li>
+				<a href="#fam-note">
+					<span id="famsource"><?php echo WT_I18N::translate('Families'); ?></span>
+				</a>
+			</li>
+			<?php } ?>
+			<?php if ($linked_obje) { ?>
+			<li>
+				<a href="#media-note">
+					<span id="mediasource"><?php echo WT_I18N::translate('Media objects'); ?></span>
+				</a>
+			</li>
+			<?php } ?>
+			<?php if ($linked_sour) { ?>
+			<li>
+				<a href="#source-note">
+					<span id="notesource"><?php echo WT_I18N::translate('Sources'); ?></span>
+				</a>
+			</li>
+			<?php } ?>
+		</ul>
 	<div id="note-edit">
 		<table class="facts_table">
 			<tr>
