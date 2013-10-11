@@ -114,7 +114,6 @@ case 'hierarchy':
 	if ($use_googlemap) {
 		$linklevels='';
 		$placelevels='';
-		$place_names=array();
 		for ($j=0; $j<$level; $j++) {
 			$linklevels .= '&amp;parent['.$j.']='.rawurlencode($parent[$j]);
 			if ($parent[$j]=='') {
@@ -149,7 +148,6 @@ case 'hierarchy':
 
 		echo '<li><a href="', $child_place->getURL(), '" class="list_item">', $child_place->getPlaceName(), '</a></li>';
 		if ($use_googlemap) {
-			$place_names[$n]=$child_place->getPlaceName();
 		}
 		$n++;
 		if ($numfound > 20) {
@@ -241,7 +239,7 @@ case 'hierarchy':
 
 	if ($use_googlemap) {
 		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
-		map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names);
+		map_scripts($numfound, $level, $parent, $linklevels, $placelevels, explode(', ', $child_place->getGedcomName()));
 	}
 	break;
 }
