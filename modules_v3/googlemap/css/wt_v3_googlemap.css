@@ -300,3 +300,6 @@ html[dir="rtl"] .iwstyle .icon-silhouette-U {
 	margin: 20px;
 }
 #side_bar .NAME {padding-left:5px;}
+#side_bar img {padding-right:5px;}
+html[dir="rtl"] #side_bar .NAME {padding-right:5px;}
+html[dir="rtl"] #side_bar img {padding-left:5px;}
