@@ -230,7 +230,7 @@ case 'create': // Save the information from the “showcreateform” action
 		$text[0] = $folderName . $fileName;
 	} else {
 		// Users keep the original filename
-		$newged .= '1 FILE ' . $folderName . $fileName;
+		$newged .= "\n1 FILE " . $folderName . $fileName;
 	}
 
 	$newged  = handle_updates($newged);
