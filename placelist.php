@@ -239,7 +239,11 @@ case 'hierarchy':
 
 	if ($use_googlemap) {
 		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
-		map_scripts($numfound, $level, $parent, $linklevels, $placelevels, explode(', ', $child_place->getGedcomName()));
+		if ($child_places) {
+			map_scripts($numfound, $level, $parent, $linklevels, $placelevels, explode(', ', $child_place->getGedcomName()));
+		} else {
+			map_scripts($numfound, $level, $parent, $linklevels, $placelevels, explode(', ', $parent_place->getGedcomName()));
+		}
 	}
 	break;
 }
