@@ -1248,19 +1248,17 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					'<strong>'.$relationship.'</strong>';
 				// add thumbnail image
 				if ($SHOW_HIGHLIGHT_IMAGES) {
-					$image = addslashes($person->displayImage());
+					$image = WT_Filter::escapeJs($person->displayImage());
 					$image = str_replace("\n", "\\\n", $image); // May contain multi-line notes
 				} else {
 					$image = '';
 				}
 				// end of add image
 
-				$dataleft  = $image . $event . addslashes($name);
-				$datamid   = " <span><a href='".$person->getHtmlUrl()."' id='alturl' title='" . WT_I18N::translate('Individual information') . "'>";
-				$datamid .= '('.WT_I18N::translate('View person').')';
-				$datamid  .= '</a></span>';
+				$dataleft  = $image . $event . WT_Filter::escapeJs($name);
+				$datamid   = " <span><a href='".$person->getHtmlUrl()."'></a></span>";
 				$dataright = '<br><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .
-						addslashes($person->getBirthDate()->Display(false)).'<br>'.$person->getBirthPlace();
+						WT_Filter::escapeJs($person->getBirthDate()->Display(false)).' — '.WT_Filter::escapeJs($person->getBirthPlace());
 
 				$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
 				if ($latlongval[$i]) {
@@ -1302,7 +1300,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							}
 						}
 						$js.= 'var point = new google.maps.LatLng('.$lat[$i].','.$lon[$i].');';
-						$js.= "var marker = createMarker(point, \"".addslashes($name)."\",\n\t\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
+						$js.= "var marker = createMarker(point, \"".WT_Filter::escapeJs($name)."\",\n\t\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
 						$js.= "<div class='iwstyle'>";
 						$js.= "<a href='module.php?ged=".WT_GEDURL."&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
 						if ($hideflags) $js.= '&amp;hideflags=1';
@@ -1677,8 +1675,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						$long[$z]="<td class='error center'><strong>X</strong></td>";$matched[$x]++;
 					}
 					$level++;
-					$mapstr3=$mapstr3."&amp;parent[".$z."]=".addslashes($row['pl_placerequested']);
-					$mapstr4=$mapstr4."&amp;parent[".$z."]=".addslashes(rtrim(ltrim($levels[$z])));
+					$mapstr3=$mapstr3."&amp;parent[".$z."]=".WT_Filter::escapeJs($row['pl_placerequested']);
+					$mapstr4=$mapstr4."&amp;parent[".$z."]=".WT_Filter::escapeJs($levels[$z]);
 					$z++;
 				}
 				if ($matching) {
