@@ -3107,7 +3107,10 @@ html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[
 #save-cancel .cancel {float:right;margin:5px;}
 html[dir=rtl] #save-cancel .save {float:right;}
 html[dir=rtl] #save-cancel .cancel {float:left;}
-#edit_interface-page {margin-bottom:50px;}
+#edit_interface-page,
+#addmedia-page {
+	margin-bottom: 50px;
+}
 
 /* Addmedia pop-ups*/
 #addmedia-page input[type="text"] {line-height:18px;margin:0 5px;width:250px;}
