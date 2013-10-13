@@ -668,7 +668,7 @@ function print_main_sources(WT_Fact $fact, $level) {
 					echo '<div class="editfacts">';
 					echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return edit_record('$pid', '$fact_id');\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
 					echo '<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\''.rawurlencode($factrec).'\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
-					echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_fact('$pid', '$fact_id', '', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
+					echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_fact('".WT_I18N::translate('Are you sure you want to delete this fact?')."', '$pid', '$fact_id');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
 				echo '</div>';
 			} else {
 				echo WT_Gedcom_Tag::getLabel($factname, $parent);
