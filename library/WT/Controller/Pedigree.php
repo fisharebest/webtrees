@@ -206,8 +206,8 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 				$this->yoffset-=(($boxspacing/2)*pow(2,($this->PEDIGREE_GENERATIONS-2))-($boxspacing/2));
 			}
 			else if ($this->talloffset==1) {
-				$this->xoffset = 10 + $basexoffset + (($this->PEDIGREE_GENERATIONS - $this->curgen) * ($this->pbwidth+$bxspacing));
-				if ($this->curgen == $this->PEDIGREE_GENERATIONS) $this->xoffset += 10;
+				$this->xoffset = 22 + $basexoffset + (($this->PEDIGREE_GENERATIONS - $this->curgen) * ($this->pbwidth+$bxspacing));
+				if ($this->curgen == $this->PEDIGREE_GENERATIONS) $this->xoffset;
 				if ($this->PEDIGREE_GENERATIONS<4) $this->xoffset += 60;
 			}
 			else if ($this->talloffset==2) {
