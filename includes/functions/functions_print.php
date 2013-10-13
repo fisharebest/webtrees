@@ -1105,7 +1105,7 @@ function print_findfact_link($element_id) {
 function get_lds_glance(WT_Individual $indi) {
 	$BAPL = $indi->getFacts('BAPL') ? 'B' : '_';
 	$ENDL = $indi->getFacts('ENDL') ? 'E' : '_';
-	$ENDL = $indi->getFacts('SLGC') ? 'C' : '_';
+	$SLGC = $indi->getFacts('SLGC') ? 'C' : '_';
 	$SLGS = '_';
 
 	foreach ($indi->getSpouseFamilies() as $family) {
