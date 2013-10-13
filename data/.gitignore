@@ -1,2 +1,6 @@
 cache
 config.ini.php
+/language/
+/media/
+/*.ged
+/SyncToy*
