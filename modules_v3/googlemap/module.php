@@ -1241,24 +1241,21 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					$curgen++;
 				}
 
-				// TODO: Work out which escaping is needed, as "self" relationships are generated with HTML
-				$relationship = strip_tags(get_close_relationship_name($controller->root, $person));
+				$relationship = get_close_relationship_name($controller->root, $person);
 
-				$event = '<img src=\"'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/sq'.$curgen.'.png\" width=\"10\" height=\"10\">'.
+				$event = '<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/sq'.$curgen.'.png" width="10" height="10"> '.
 					'<strong>'.$relationship.'</strong>';
 				// add thumbnail image
 				if ($SHOW_HIGHLIGHT_IMAGES) {
-					$image = WT_Filter::escapeJs($person->displayImage());
-					$image = str_replace("\n", "\\\n", $image); // May contain multi-line notes
+					$image = $person->displayImage();
 				} else {
 					$image = '';
 				}
 				// end of add image
 
-				$dataleft  = $image . $event . WT_Filter::escapeJs($name);
-				$datamid   = " <span><a href='".$person->getHtmlUrl()."'></a></span>";
-				$dataright = '<br><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .
-						WT_Filter::escapeJs($person->getBirthDate()->Display(false)).' — '.WT_Filter::escapeJs($person->getBirthPlace());
+				$dataleft  = WT_Filter::escapeJs($image . $event . ' — ' . $name);
+				$datamid   = WT_Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '"></a></span>');
+				$dataright = WT_Filter::escapeJs('<br><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .  $person->getBirthDate()->Display(false) . ' — ' . $person->getBirthPlace());
 
 				$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
 				if ($latlongval[$i]) {
@@ -1300,7 +1297,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							}
 						}
 						$js.= 'var point = new google.maps.LatLng('.$lat[$i].','.$lon[$i].');';
-						$js.= "var marker = createMarker(point, \"".WT_Filter::escapeJs($name)."\",\n\t\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
+						$js.= "var marker = createMarker(point, \"".WT_Filter::escapeJs($name)."\",\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
 						$js.= "<div class='iwstyle'>";
 						$js.= "<a href='module.php?ged=".WT_GEDURL."&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
 						if ($hideflags) $js.= '&amp;hideflags=1';
