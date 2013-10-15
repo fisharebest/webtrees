@@ -90,7 +90,7 @@ function jb_modalDialog(url, title) {
 				})			
 			},
 			close: function(event, ui) {					
-				if (CKEDITOR.instances['html']) { CKEDITOR.instances.html.destroy(true);}
+				if (typeof CKEDITOR != 'undefined' && CKEDITOR.instances['html']) { CKEDITOR.instances.html.destroy(true);}
 				$dialog.remove();
 				jQuery('.ui-widget-overlay').remove();
 			},
