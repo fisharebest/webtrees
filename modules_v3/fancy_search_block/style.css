@@ -1,0 +1,10 @@
+/* CSS Document */
+
+#fancy_search_block #search-page-table{background:none;border:none;box-shadow:none;width:auto}
+#fancy_search_block #search-page-table .label{border:none;display:inherit;float:left;font-weight:normal;padding:0;width:120px}
+#fancy_search_block #search-page-table .value{background:none;border:none;display:inherit;margin-left:120px;padding:0;width:auto}
+#fancy_search_block #search-page-table .value.showasso{padding-top:10px;margin:0}
+#fancy_search_block #search-page-table #search_trees {margin:10px 0 0;text-align:left}
+#fancy_search_block #search-page-table .value.action{font-size:11px;padding-top:10px;margin:0;text-align:center}
+#fancy_search_block #search-page-table input{height:20px;margin:0 5px 0;vertical-align:middle;max-width:250px}
+#fancy_search_block #search_submit{padding-top:5px;margin:0}

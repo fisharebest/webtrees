@@ -1,0 +1,13 @@
+#branches-page h2{text-align:center;}
+#branches-page ul.aboville{counter-reset:section;} /* instigate the "d'Aboville" numbering system */
+#branches-page ul li.aboville{counter-increment:section;} /* instigate the "d'Aboville" numbering system */
+#branches-page ul li.aboville:before {content:counters(section, ".") ". ";} /* instigate the "d'Aboville" numbering system */
+#branch-list{visibility:hidden;}
+p.branches {display:inline;}
+.treeview{margin:40px; list-style:none;}
+.treeview ul{padding:0;	margin:0; list-style:none;}
+.treeview li{padding:8px 30px;}
+.treeview .expandable-hitarea{background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAB3RJTUUH2wsdFSga21zOVAAAAAlwSFlzAAAewQAAHsEBw2lUUwAAAARnQU1BAACxjwv8YQUAAABnSURBVHjaY2AYAoARwez79vHmp6C++yiCDEwIJhenrAHn1Tw5VBOQFTCIM8hzct7IksOhgJOBjUGCQY6T4ywOBRxABd8Zvv7g1MWhgJ3hN8Ovr1yKrS+QFbAgmED93zhVYlGkBwcAADh8FcUvumIfAAAAAElFTkSuQmCC); height:16px; width:16px; margin-left:-16px; float:left; cursor:pointer;}
+.treeview .collapsable-hitarea{background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABbSURBVCjPY/jPgB8yDCkFB/7v+r/5/+r/i/7P+N/3DYuC7V93/d//fydQ0Zz/9eexKFgtsejLiv8b/8/8X/WtUBGrGyZLdH6f8r/sW64cTkdWSRS+zpQbgiEJAI4UCqdRg1A6AAAAAElFTkSuQmCC); height:16px; width:16px; margin-left:-16px; float:left; cursor:pointer;}
+#treecontrol{margin:auto;text-align:center;}
+

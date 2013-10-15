@@ -1,0 +1,97 @@
+<?php
+/**
+  *  webtrees
+
+  *  Version 1.0.2
+  *  Copyright (C) 2011 webtrees Development Team. All rights reserved.
+  *
+  *  This and other information can be found on line at
+  *  http://webtrees.net
+  *
+  *  The installation instructions can also be found in the wiki at:
+  *  http://wiki.webtrees.net/Main_Page
+  *
+  *  # $Id: readme.html 2013-06-23 JustCarmen $
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webtrees ReadMe file</title>
+<style type="text/css">
+	body{color:black;background-color:white;font:14px tahoma arial helvetica sans-serif;padding:10px;width:950px;margin:0 auto}
+	a{color:#81A9CB;font-weight:normal;text-decoration:none}
+	a:hover{color:#81A9CB}
+	h1{color:#81A9CB;font-weight:normal}
+	li{line-height:150%}
+	dt{font-weight:bold}
+	dd{margin-bottom: 20px}
+	.back {color:#81A9CB;float:right}
+</style>
+</head><body>
+<a name="top">
+<h1>ReadMe File - &quot;JustBlack Theme Options&quot;</h1>
+<h2>Version 1.0.2</h2>
+</a>
+<ul>
+	<li><a href="#description">Description</a></li>
+	<li><a href="#requirements">Requirements</a></li>
+	<li><a href="#install">Installing the module</a></li>
+	<li><a href="#options">Module options</a></li>
+	<li><a href="#translations">Translations</a></li>
+    <li><a href="#bugs">Bugs and feature requests</a></li>
+</ul>
+<hr/>
+<!-- DESCRIPTION -->
+<div style="float:left;"><a name="description">
+<h3>Description</h3></a></div><div class="back"><a href="#top">back to top</a></div>
+<div style="clear:both;">
+  <p>A theme options module to use in conjunction with the JustBlack theme.</p>
+  <p><em>Note: this module is optional. The JustBlack Theme is fully functioning without this module or without any options set.</em></p>
+</div>
+<hr/>
+<!-- REQUIREMENTS -->
+<div style="float:left;"><a name="requirements">
+<h3>Requirements</h3></a></div><div class="back"><a href="#top">back to top</a></div>
+<div style="clear:both;">This module requires webtrees version 1.4.2 or later.</div>
+<hr/>
+<!-- INSTALLING -->
+<div style="float:left;"><a name="install"><h3>Installing the module</h3></a></div><div class="back"><a href="#top">back to top</a></div>
+<div style="clear:both;">
+  <div style="clear:both;">Installation is very simple. Upload the folder 'justblack_theme_options' to your server's <b>webtrees</b> /modules_v3 folder. Then login to <b>webtrees</b> as administrator and go to Module Administration (Admin -&gt; Module Administration). Look down the list of installed modules for JustBlack Theme Options&quot; and ensure it is ticked as &quot;enabled&quot;. </div>
+</div>
+<p><font color="red"><b>IMPORTANT:</b> In order to retrieve the configuration options you must click again  on the module link in the menu. This will refresh the menu and add the Fancy Tree View configuration page to the admin menu.</font></p>
+<p>After the module is installed go to the  module configuration page to  set some  options. </p>
+<hr/>
+<!-- OPTIONS -->
+<div style="float:left;"><a name="options">
+<h3>Module options</h3></a></div><div class="back"><a href="#top">back to top</a></div>
+<div style="clear:both;">On the JustBlack Theme Options configuration page  you can set   the following options:</div>
+<ul>
+  <li>Set position and size of the Tree title;</li>
+  <li>Use the default header image, upload a custom one or opt for no header image.</li>
+  <li>It is possible to resize the newly uploaded header image to the default values of the JustBlack Theme (800x150px).</li>
+  <li>In case you choose a custom header or choose not to use a header image you can set the height of the header area (You can not use this option in conjunction with the resize option)..</li>
+  <li>Opt for flags as language menu or use the default dropdown menu. Advice is not to use this option if you have more then 10 languages installed; Remove the languages you won't need from the language folder of your webtrees installation.</li>
+  <li>Use a compact 'View' menu. In the compact version of the topmenu the menu-items Charts, Lists, Calendar and Reports (optional) will be put together in one mainmenu-item.</li>
+  <li>Order the main menu items. Ordering menu items here is more flexible then the sort option webtrees offers by default. Here you can shuffle ALL main menu items (except the homepage and my page menu). </li>
+</ul>
+<hr/>
+<!-- TRANSLATIONS -->
+<div style="float:left;"><a name="translations">
+<h3>Custom translations</h3></a></div><div class="back"><a href="#top">back to top</a></div>
+<div style="clear:both;">
+  <p>The JustBlack Theme Options Modules only uses language strings in the administration area. Where possible this module uses existing webtrees language items. These will therefore translate automatically wherever they are used. We have included new language items in the same &quot;WT_I18N::translate()&quot; format. This means you can translate these into any other language using webtrees &quot;custom translation&quot; feature, described here: <a href="http://wiki.webtrees.net/Custom_Translation">Wiki: Custom translation</a>. </p>
+  <p>If you are working with po files you can use the English po file added in the module  language folder, to start translate the module in other language(s). The Dutch translation file is already added to the module language folder. In stead of adding your custom translation file(s) to the folder data/language, you may opt to keep them seperate from other translated files by adding them to the folder modules_v3/fancy_treeview/language. Csv  of php files as decribed on the Wiki could be used as well.</p>
+</div>
+<hr/>
+<!-- BUGS AND FEATURE REQUESTS -->
+<div style="float:left;"><a name="bugs">
+<h3>Bugs and feature requests</h3></a></div><div class="back"><a href="#top">back to top</a></div>
+<div style="clear:both;">
+  <p>If you experiences any bugs or have a feature request for this module you can use the webtrees subforum 'customising'  to contact me.</p>
+</div>
+<hr/>
+<div style="text-align:right;font-size:11px">©2013 JustCarmen</div>
+</body>
+</html>

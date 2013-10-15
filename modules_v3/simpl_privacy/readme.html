@@ -1,0 +1,93 @@
+<?php
+//	webtrees - simpl_privacy module
+//
+//	Copyright (C) 2012 Nigel Osborne and kiwtrees.net. All rights reserved.
+//
+//	With grateful thanks to Trent Foley, whose "gallerific" jQuery code this is totally based on.
+//	Copyright (c) 2008 Trent Foley (http://trentacular.com)
+//	Licensed under the MIT License: http://www.opensource.org/licenses/mit-license.php
+// 
+//	For the latest changes in this version I am grateful for the help of:
+//		Łukasz Wilenski
+//		Denzel Holmes
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Simpl_privacy ReadMe file</title>
+<style type="text/css">
+	body { color: black; background-color: white; font: 14px tahoma arial helvetica sans-serif;	padding:20px; }
+	.container {width:200px; margin:20px auto; text-align:center;float:right}
+	.content {background-color:ivory; border:1px solid #ccc; bottom:4px; right:4px; box-shadow:5px 5px 5px #ccc; border-radius:10px; padding:0.5em; position:relative;}
+	span.pointer {color:green; font-style:italic;}
+	a {color: #4682B4; font-weight: normal; text-decoration: none;}
+	a:hover {color: #4682B4;}
+	a img {border:none;}
+	h1 {color: #4682B4; font-weight:normal;}
+	h3 {font-size:16px; font-weight:bold; margin:14px 0;}
+	h4 {color:blue;}
+	.note {font-style:italic;}
+	ul {-webkit-padding-start:0; font-weight:bold;}
+	li {line-height:150%; font-weight:normal; margin-left:40px;}
+	.back {color: #4682B4; float:right;}
+	dl dt {font-weight: bold;}
+	.highlight {color:red;font-weight:900;}
+	textarea {background-color:#eee; width:95%; padding:10px; min-height:120px; outline:none; resize:none; overflow:auto;}
+	table {border-collapse:collapse;}
+	th, td {border:1px solid #555; padding:5px;}
+	tr td:first-child{white-space:nowrap;}
+	td img {margin:10px; width:450px;}
+</style>
+</head><body>
+<div class="container"><div class="shadow"><div class="content">Get other "Simpl" add-ons for <b>webtrees</b> at <a href="http://kiwitrees.net/simpl-add-ons/" title="kiwitrees.net">kiwitrees.net<br /><img src="images/simpl_2.png"></a></div></div></div>
+<a name="top"><h1><img src="images/simpl_1.png" align="middle">ReadMe file - "Simpl_privacy" for <b>webtrees</b></h1></a>
+<h2>CONTENTS</h2>
+<ol>
+	<li><a href="#descript">DESCRIPTION</a></li>
+	<li><a href="#require">REQUIREMENTS</a></li>
+	<li><a href="#install">INSTALLATION</a></li>
+	<li><a href="#setup">SETUP</a></li>
+	<li><a href="#upgrading">UPGRADING</a></li>
+	<li><a href="#translation">TRANSLATION</a></li>
+	<li><a href="#themes">THEMES</a></li>
+</ol>
+<hr width="100%">
+<!-- DESCRIPTION -->
+<div style="float:left;"><a name="descript"><h3>DESCRIPTION</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+A basic new sidebar element for each Individual’s page showing the current privacy status of that individual (living, dead, or "presumed dead"), with an explanation of why that is the status.
+<p>It is designed to assist in identifying the cause of an individual being marked as dead (and therefore displayed pubicly on many sites), when they are actually expected to be living and therefore hidden.</p>
+<p> For further information about this, please read this forum discussion: <a href="http://www.webtrees.net/index.php/en/forum/2-open-discussion/27740-privacy-issues" target="_blank">http://www.webtrees.net/index.php/en/forum/2-open-discussion/27740-privacy-issues</a> and this WIKI article: <a href="http://wiki.webtrees.net/Access_and_Privacy" target="blank">http://wiki.webtrees.net/Access_and_Privacy</a>.
+<hr width="100%">
+<!-- REQUIREMENTS -->
+<div style="float:left;"><a name="require"><h3>REQUIREMENTS</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+This module requires <b>webtrees</b> version 1.4.1 or later.
+<hr width="100%">
+<!-- INSTALLATION -->
+<div style="float:left;"><a name="install"><h3>INSTALLATION</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+<ol>
+	<li>Unzip the files and upload them to the <b>webtrees</b> /modules_v<font color="red">X</font>/ folder on your web server. (Note: "<font color="red">X</font>" = "3" at the time of writing this, but may change in future releases)</li>
+	<li>Login to <b>webtrees</b> as administrator, go to <span class="pointer">Administration<img src="images/arrow_right.png"/>Modules</span>, and find the module. It will be called "Privacy status". Check it has a tick for "Enabled"</li>
+	<li>Click SAVE, to complete the installation. </li>
+	<li>OPTIONAL. You can also go to <span class="pointer">Administration<img src="images/arrow_right.png"/>Modules/Sidebar</span> and change the position of this tab relative to all others. Simply drag and drop the Privacy status sidebar up or down the list as required, then click SAVE.</li>
+	<li>OPTIONAL. In the same place you can set the access level to determine who can see this information. I would recommend a setting of "show to managers" or "show to editors". Then click SAVE.</li>
+	</ol>
+<hr width="100%">
+<!-- SETUP -->
+<div style="float:left;"><a name="setup"><h3>SETUP</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+No additional set up is required.
+<hr width="100%">
+<!-- UPGRADING -->
+<div style="float:left;"><a name="upgrading"><h3>UPGRADING</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+To upgrade, simply replace any previous version (totally) with this one.
+<hr width="100%">
+<!-- TRANSLATION -->
+<div style="float:left;"><a name="translation"><h3>TRANSLATION</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+To translate the unique texts in this module requires the use a "custom translation" file. Full details of how to create and use one is on the <b>webtrees</b> WIKI at <a href="http://wiki.webtrees.net/Custom_Translation" target="_blank">http://wiki.webtrees.net/Custom_Translation</a>
+<p>If anyone does translate the texts please forward a copy of the translation to me, then it can be included in future versions of the module.</p>
+<hr width="100%">
+<!-- THEMES -->
+<div style="float:left;"><a name="themes"><h3>THEMES</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+The few styling elements used in this module should work in any theme.
+<hr width="100%">
+</body>
+</html>

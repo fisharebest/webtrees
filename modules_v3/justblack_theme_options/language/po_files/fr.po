@@ -1,0 +1,142 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: webtrees\n"
+"POT-Creation-Date: 2013-06-25 20:53+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: phicome <phicome@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"X-Poedit-Basepath: c:\\xampp\\htdocs\\webtrees_build\\\n"
+"X-Poedit-SearchPath-0: modules_v3/justblack_theme_options\n"
+
+#: modules_v3/justblack_theme_options/help_text.php:35
+msgid ""
+"<p>Uncheck this box if you already use the Family tree title in the header "
+"image. Otherwise leave the checkbox checked.</p>"
+msgstr ""
+"<p>Décochez cette case si vous utilisez déjà le titre de l'arbre dans "
+"l'image d'en-tête. Sinon, laissez la case cochée.</p>"
+
+#: modules_v3/justblack_theme_options/help_text.php:39
+#: modules_v3/justblack_theme_options/module.php:534
+msgid "Position of the Family tree title"
+msgstr "Position du titre de l'arbre"
+
+#: modules_v3/justblack_theme_options/help_text.php:40
+msgid ""
+"<p>Here you can choose the location for the Family tree title in the header. "
+"Enter the values clockwise (Top, Right, Bottom, Left), separated by a comma."
+"</p>"
+msgstr ""
+"<p>Ici, vous pouvez choisir l'emplacement pour le titre de l'arbre dans l'en-"
+"tête. Entrez les valeurs dans le sens horaire (Haut, Droite, Bas, Gauche), "
+"séparées par une virgule.</p>"
+
+#: modules_v3/justblack_theme_options/help_text.php:44
+msgid "Flags"
+msgstr "Drapeaux"
+
+#: modules_v3/justblack_theme_options/help_text.php:45
+msgid ""
+"<p>You can use flags in the bar above the topmenu bar in the header. These "
+"flags replaces the default dropdown menu. We advice you not to use this "
+"option if you have more then ten languages installed.</p><p>You can remove "
+"unused languages from the folder languages in your webtrees installation.</p>"
+msgstr ""
+"<p>Vous pouvez utiliser les drapeaux dans la barre située au-dessus du menu. "
+"Ces drapeaux remplacent le menu déroulant par défaut. Nous vous conseillons "
+"de ne pas utiliser cette option si vous avez plus d'une dizaine de langues "
+"installées.</p><p>Vous pouvez supprimer les langues non utilisées dans le "
+"dossier 'language' de votre installation webtrees.</p>"
+
+#: modules_v3/justblack_theme_options/help_text.php:50
+msgid "Sorting the topmenu"
+msgstr "Tri du menu"
+
+#: modules_v3/justblack_theme_options/help_text.php:51
+msgid ""
+"<p>Click a row, then drag-and-drop to re-order the topmenu items. Then click "
+"the 'save' button.</p>"
+msgstr ""
+"<p>Cliquez sur une ligne, puis faites un glisser-déposer pour réorganiser "
+"les éléments du menu. Cliquez ensuite sur le bouton Enregistrer.</p>"
+
+#: modules_v3/justblack_theme_options/module.php:56
+msgid "JustBlack Theme Options"
+msgstr "Options du thème JustBlack"
+
+#: modules_v3/justblack_theme_options/module.php:61
+msgid "Set options for the JustBlack theme within the admin interface"
+msgstr ""
+"Définir les options du thème JustBlack dans l'interface d'administration"
+
+#: modules_v3/justblack_theme_options/module.php:83
+msgid "no custom header image set"
+msgstr "Aucune image personnalisée disponible"
+
+#: modules_v3/justblack_theme_options/module.php:372
+msgid "Options for the JustBlack theme"
+msgstr "Options pour le thème JustBlack"
+
+#: modules_v3/justblack_theme_options/module.php:466
+msgid ""
+"Error: You have not uploaded an image or the image you have uploaded is not "
+"a valid image! Your settings are not saved."
+msgstr ""
+"Erreur : Vous n'avez pas téléchargé d'image ou l'image que vous avez "
+"téléchargée n'est pas une image valide ! Vos réglages ne sont pas "
+"sauvegardés."
+
+#: modules_v3/justblack_theme_options/module.php:476
+msgid "Your custom header image is succesfully saved."
+msgstr "Votre image d'en-tête a été sauvegardée"
+
+#: modules_v3/justblack_theme_options/module.php:530
+msgid "Use the Family tree title in the header?"
+msgstr "Utiliser le nom de l'arbre dans l'en-tête ?"
+
+#: modules_v3/justblack_theme_options/module.php:538
+msgid "Size of the Family tree title"
+msgstr "Taille du titre de l'arbre"
+
+#: modules_v3/justblack_theme_options/module.php:542
+msgid "Use header image?"
+msgstr "Utiliser une image d'en-tête ?"
+
+#: modules_v3/justblack_theme_options/module.php:550
+msgid "Current custom header-image"
+msgstr "Image d'en-tête personnalisée"
+
+#: modules_v3/justblack_theme_options/module.php:563
+msgid "Upload a (new) custom header image"
+msgstr "Téléverser une (nouvelle) image d'en-tête"
+
+#: modules_v3/justblack_theme_options/module.php:565
+msgid "Resize (800x150px)"
+msgstr "Redimensionner (800x150px)"
+
+#: modules_v3/justblack_theme_options/module.php:568
+msgid "Height of the header area"
+msgstr "Hauteur de la zone d'en-tête"
+
+#: modules_v3/justblack_theme_options/module.php:572
+msgid "Use flags in header bar as language menu?"
+msgstr "Utiliser les drapeaux de langage dans la barre d'en-tête ?"
+
+#: modules_v3/justblack_theme_options/module.php:576
+msgid "Use a compact menu?"
+msgstr "Utiliser le menu compact ?"
+
+#: modules_v3/justblack_theme_options/module.php:580
+msgid "Include the reports topmenu in the compact 'View' topmenu?"
+msgstr "Inclure le menu rapports dans le menu compact ?"
+
+#: modules_v3/justblack_theme_options/module.php:590
+msgid "Sort Topmenu items"
+msgstr "Tri des items du menu"

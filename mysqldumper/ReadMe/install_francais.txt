@@ -1,0 +1,6 @@
+Installation: 
+
+- Envoyer le r�pertoire "mysqldumper" sur votre serveur 
+- Chmoder le fichier "config.php" en 777 
+- D�buter le script en saisissant l'adresse suivante dans votre navigateur (http://www.votre_domaine.fr/mysqldumper/) 
+- Suivez les instructions d'installation du script 

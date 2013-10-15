@@ -1,0 +1,7 @@
+Changes for webtrees 1.5.0.
+
+* Function WT_Person::CanDisplayDetails is changed to WT_Individual::CanShow (webtrees svn 15186)
+* Changed database query (example in class WT_QUERY_MEDIA).
+* changed $media->ged_id to $media->getGedcomId();
+* Functions safe_GET() and safe_POST() are deprecated. Now use WT_Filter::functions.
+  See library/Filter.php from line 132 for an overview of the new functions.

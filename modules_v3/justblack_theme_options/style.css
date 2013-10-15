@@ -1,0 +1,29 @@
+/* JustBlack Theme Options ©JustCarmen 2013 */
+
+#jb_options form {width:100%}
+#jb_options .block_left {float:left}
+#jb_options .block_right{float:left;margin-left:50px}
+#jb_options .field {margin-bottom:5px}
+#jb_options label, input {display:inline-block;vertical-align:baseline}
+#jb_options select {width:150px}
+#jb_options label {width: 350px}
+#jb_options .upload input[type=checkbox] {margin-left:358px; vertical-align:middle}
+#jb_options label[for=resize] {width:150px}
+#jb_options #buttons {margin-top:25px}
+#jb_options #buttons input {margin-left:0}
+#jb_options h3 {margin:0 5px 10px}
+#jb_options #trashMenu {display:none}
+#jb_options ul {list-style-type:none;margin:0;padding:0;min-height:100px;min-width:180px;border:1px solid #CBC7BD;padding:5px;clear:both}
+#jb_options li {margin:0 3px 3px 3px;padding: 0.4em;padding-left:1.5em;height: 18px;cursor:move;min-width:150px}
+#jb_options li span {position:absolute;margin-left:-1.3em}
+#jb_options #gedcom_blocks {clear:both;display:inline-block}
+#jb_options #gedcom_blocks .block_left {margin:25px 20px 0 0}
+#jb_options #gedcom_blocks h3.block_left {margin:0 5px 10px}
+#jb_options #gedcom_blocks .field {display:inline-block;float:right;text-align:right}
+#jb_options #gedcom_blocks label {width:auto}
+#jb_options #gedcom_blocks .clear {clear:both;padding-top:20px}
+#jb_options a {padding-left:6px}
+#jb_options .clearfloat{clear:both}
+
+
+
