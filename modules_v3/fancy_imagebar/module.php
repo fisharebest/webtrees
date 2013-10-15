@@ -32,7 +32,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps */ WT_I18N::translate('Fancy Image Bar');
+		return /* Name of a module (not translatable) */ 'Fancy Image Bar';
 	}
 
 	// Extend WT_Module

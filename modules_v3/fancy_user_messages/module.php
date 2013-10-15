@@ -29,7 +29,7 @@ if (!defined('WT_WEBTREES')) {
 class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Fancy User Messages');
+		return /* Name of a module (not translatable) */ 'Fancy User Messages';
 	}
 
 	// Extend class WT_Module
