@@ -21,85 +21,89 @@
 // $Id: module.php 8218 2010-05-09 07:39:07Z greg $
 
 if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
+    header('HTTP/1.0 403 Forbidden');
+    exit;
 }
 
 class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu {
-	// Extend WT_Module
-	public function getTitle() {
-		return WT_I18N::translate('Custom JavaScript');
-	}
 
-	// Extend WT_Module
-	public function getDescription() {
-		return WT_I18N::translate('Allows you to easily add Custom JavaScript to your webtrees site.');
-	}
+    // Extend WT_Module
+    public function getTitle() {
+        return WT_I18N::translate('Custom JavaScript');
+    }
 
-	// Extend WT_Module
-	public function modAction($mod_action) {
-		switch($mod_action) {
-		case 'admin_config':
-			$controller=new WT_Controller_Page;
-			$controller
-				->requireAdminLogin()
-				->setPageTitle($this->getTitle())
-				->pageHeader();
-	
-			$action = WT_Filter::post("action");
+    // Extend WT_Module
+    public function getDescription() {
+        return WT_I18N::translate('Allows you to easily add Custom JavaScript to your webtrees site.');
+    }
 
-			if ($action=='update' && !isset($security_user)) {
-				set_module_setting('custom_js', 'CJS_FOOTER',  $_POST['NEW_CJS_FOOTER']);
-				AddToLog($this->getTitle().' config updated', 'config');
-			}
+    // Extend WT_Module
+    public function modAction($mod_action) {
+        switch ($mod_action) {
+            case 'admin_config':
+                $controller = new WT_Controller_Page;
+                $controller
+                    ->requireAdminLogin()
+                    ->setPageTitle($this->getTitle())
+            ->addInlineJavascript("
+                jQuery('head')
+                .append(\"<style type='text/css'> \
+                    form {width:600px} \
+                    form fieldset{border:none} \
+                </style>\");")
+                    ->pageHeader();
 
-			$CJS_FOOTER=get_module_setting('custom_js', 'CJS_FOOTER');
-		
-			?>
-			<form method="post" name="configform" action="<?php echo $this->getConfigLink(); ?>">
-			<input type="hidden" name="action" value="update" />
-				<table id="cjs_config">
-					<tr>
-						<td><?php echo WT_I18N::translate('Custom Javascript for Footer'); ?><?php echo help_link('cjs_mod_footer', $this->getName()); ?></td>
-						<td>
-							<textarea rows="10" cols="60" name="NEW_CJS_FOOTER"><?php echo $CJS_FOOTER; ?></textarea>
-						</td>
-					</tr>
-				</table>
-				<input type="submit" value="<?php echo WT_I18N::translate('Save configuration'); ?>" onclick="closeHelp();" />
-				&nbsp;&nbsp;
-				<input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>" />
-			</form>
-			<?php
-			break;
-		}
-	}
+                $action = WT_filter::post("action");
 
-	// Implement WT_Module_Config
-	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
-	}
+                if ($action == 'update') {
+                    set_module_setting('custom_js', 'CJS_FOOTER', WT_filter::post('NEW_CJS_FOOTER'));
+                    AddToLog($this->getTitle() . ' config updated', 'config');
+                }
 
-	// Implement WT_Module_Menu
-	public function defaultMenuOrder() {
-		return 999;
-	}
+                $CJS_FOOTER = get_module_setting('custom_js', 'CJS_FOOTER');
+                ?>
+                <h3><?php echo WT_I18N::translate('Custom Javascript for Footer'); ?></h3>
+                <form method="post" name="configform" action="<?php echo $this->getConfigLink(); ?>">
+                    <input type="hidden" name="action" value="update">
+                    <fieldset>
+                        <textarea rows="10" cols="60" name="NEW_CJS_FOOTER"><?php echo $CJS_FOOTER; ?></textarea>
+                    </fieldset>
+                    <input type="submit" value="<?php echo WT_I18N::translate('Save configuration'); ?>">
+                    <input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>">
+                </form>
+                <?php
+                break;
+            default:
+                header('HTTP/1.0 404 Not Found');
+        }
+    }
 
-	// Implement WT_Module_Menu
-	public function getMenu() {
-		// We don't actually have a menu - this is just a convenient "hook" to execute
-		// code at the right time during page execution
-		global $controller;
+    // Implement WT_Module_Config
+    public function getConfigLink() {
+        return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
+    }
 
-		$cjs_footer=get_module_setting('custom_js', 'CJS_FOOTER', '');
-		if (strpos($cjs_footer, '#')!==false) {
-			# parse for embedded keywords
-			$stats = new WT_Stats(WT_GEDCOM);
-			$cjs_footer = $stats->embedTags($cjs_footer);
-		}
-		$controller->addInlineJavaScript($cjs_footer, WT_Controller_Base::JS_PRIORITY_LOW);
+    // Implement WT_Module_Menu
+    public function defaultMenuOrder() {
+        return 999;
+    }
 
-		return null;
-	}
+    // Implement WT_Module_Menu
+    public function getMenu() {
+        // We don't actually have a menu - this is just a convenient "hook" to execute
+        // code at the right time during page execution
+        global $controller;
+
+        $cjs_footer = get_module_setting('custom_js', 'CJS_FOOTER', '');
+        if (strpos($cjs_footer, '#') !== false) {
+            # parse for embedded keywords
+            $stats = new WT_Stats(WT_GEDCOM);
+            $cjs_footer = $stats->embedTags($cjs_footer);
+        }
+        $controller->addInlineJavaScript($cjs_footer, WT_Controller_Base::JS_PRIORITY_LOW);
+
+        return null;
+    }
+
 }
 
