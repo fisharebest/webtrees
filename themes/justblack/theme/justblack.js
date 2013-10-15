@@ -34,6 +34,7 @@ function jb_helpDialog(which, mod) {
 		.dialog({						
 			width: 500,
 			height: 'auto',
+			maxHeight: 500,
 			modal: true,
 			position: ['center', 'center'],
 			autoOpen: true,			
