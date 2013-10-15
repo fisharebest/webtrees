@@ -30,18 +30,38 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class dsrotterdam_plugin extends research_base_plugin {
+class digitalestamboom_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Digitale Stamboom Rotterdam';
+		return 'Digitale Stamboom';
 	}
-
+	
 	/**
-	* Based on a small part of function print_name_record() in /library/WT/Controller/Individual.php
+	* Based on function print_name_record() in /library/WT/Controller/Individual.php
 	*/
 	static function create_link(WT_Fact $event) {
 		if (!$event->canShow()) {
 			return false;
-		}		
-		return $link = 'http://rotterdam.digitalestamboom.nl/search.aspx?lang=nl';
+		}
+		$factrec = $event->getGedCom();
+		// Create a dummy record, so we can extract the formatted NAME value from the event.
+		$dummy=new WT_Individual(
+			'xref',
+			"0 @xref@ INDI\n1 DEAT Y\n".$factrec,
+			null,
+			WT_GED_ID
+		);
+		$all_names=$dummy->getAllNames();
+		$primary_name=$all_names[0];
+		
+		$givn   = $primary_name['givn'];
+		$surn   = $primary_name['surn'];
+		if($surn != $primary_name['surname']) {
+			$prefix = substr($primary_name['surname'], 0, strpos($primary_name['surname'], $surn) - 1);
+		}
+		else {
+			$prefix = "";
+		}
+				
+		return $link = 'http://www.digitalestamboom.nl/search.aspx?lang=&verder='.$givn.'||'.$prefix.'|'.$surn;;
 	}
 }
