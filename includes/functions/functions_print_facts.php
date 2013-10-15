@@ -200,15 +200,18 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 
 	echo '</td><td class="optionbox ', $styleadd, ' wrap">';
 
-	// Print the spouse and family of this fact/event
-	if ($parent instanceof WT_Family && $record instanceof WT_Individual) {
-		foreach ($parent->getSpouses() as $spouse) {
-			if ($record !== $spouse) {
-				echo '<a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> — ';
+	// Event from another record?
+	if ($parent !== $record) {
+		if ($parent instanceof WT_Family) {
+			foreach ($parent->getSpouses() as $spouse) {
+				if ($record !== $spouse) {
+					echo '<a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> — ';
+				}
 			}
+			echo '<a href="', $parent->getHtmlUrl(), '">', WT_I18N::translate('View family'), '</a><br>';
+		} elseif ($parent instanceof WT_Individual) {
+			echo '<a href="', $parent->getHtmlUrl(), '">', $parent->getFullName(), '</a><br>';
 		}
-		// Family events on an individual page
-		echo '<a href="', $parent->getHtmlUrl(), '">', WT_I18N::translate('View family'), '</a><br>';
 	}
 
 	// Print the value of this fact/event
