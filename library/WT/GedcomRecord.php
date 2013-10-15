@@ -882,7 +882,8 @@ class WT_GedcomRecord {
 			$old_gedcom = $this->gedcom;
 		}
 
-		$new_gedcom = '0 @' . $this->getXref() . '@ ' . static::RECORD_TYPE;
+		// First line of record may contain data - e.g. NOTE records.
+		list($new_gedcom) = explode("\n", $old_gedcom, 2);
 		$old_chan = $this->getFirstFact('CHAN');
 		// Replacing (or deleting) an existing fact
 		foreach ($this->getFacts(null, false, WT_PRIV_HIDE) as $fact) {
