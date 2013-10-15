@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-09-21 15:07+0100\n"
-"PO-Revision-Date: 2013-10-15 23:35+0100\n"
+"PO-Revision-Date: 2013-10-15 23:38+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -2329,7 +2329,7 @@ msgstr "Moet dit nieuwsartikel echt verwijderd worden?"
 #: includes/functions/functions_print_facts.php:1011
 #: library/WT/Controller/Individual.php:158 modules_v3/lightbox/module.php:203
 msgid "Are you sure you want to delete this fact?"
-msgstr "Moet dit feit echt verwijderend worden?"
+msgstr "Moet dit feit echt verwijderd worden?"
 
 #: modules_v3/user_messages/module.php:67
 #: modules_v3/user_messages/module.php:113
@@ -7636,10 +7636,10 @@ msgid ""
 "fact from the drop-down list, then click the <b>Add</b> button.  All "
 "possible facts that you can add to the database are in that drop-down list."
 msgstr ""
-"Hier kan u een feit/gebeurtenis toevoegen aan het record wat gwijzigd word."
-"<br><br>Kies eerst een feit uit de drop-down lijst, klik dan op de knop "
-"<b>Toevoegen</>. Alle mogelijke feiten/gebeurtenissen die u kan toevoegen "
-"staan in die drop-down lijst."
+"Hier kunt u een feit/gebeurtenis toevoegen aan het record dat gewijzigd "
+"wordt.<br><br>Kies eerst een feit uit de drop-down lijst, klik dan op de "
+"knop <b>Toevoegen</b>. Alle mogelijke feiten/gebeurtenissen die u kunt "
+"toevoegen staan in de drop-down lijst."
 
 #: help_text.php:1085
 msgid ""
@@ -17996,10 +17996,9 @@ msgid ""
 msgstr ""
 "Door op deze knop te klikken, wordt de knipselwagen geheel leeg gemaakt."
 "<br><br>Moeten niet alle personen, gezinnen, enz. uit uw knipselwagen "
-"verwijderend worden, dan kan dat ook selectief door op de knop \"Verwijderen"
-"\" in de Naam vakken te klikken. Er wordt niet om een bevestiging gevraagd "
-"als u op een van deze links klikt;  De verzochte verwijdering vindt direct "
-"plaats"
+"verwijderd worden, dan kan dat ook selectief door op de knop \"Verwijderen\" "
+"in de Naam vakken te klikken. Er wordt niet om een bevestiging gevraagd als "
+"u op een van deze links klikt;  De verzochte verwijdering vindt direct plaats"
 
 #: message.php:143
 msgid ""
