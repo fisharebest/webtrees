@@ -1195,6 +1195,7 @@ input[type=search]{background-color:#FFFFDE}
 .block .gedcom_favorites_block .person_box_template,.block .gedcom_favorites_block .person_box_template,.block .user_favorites_block .person_box_template,.block .user_favorites_block .person_box_template{min-height:50px}
 .block .gedcom_favorites_block .add_fav_head,.block .user_favorites_block .add_fav_head{margin-top:15px}
 .block .gedocm_favorites_block .remove_fav, .block .user_favorites_block .remove_fav{margin-top:-25px;margin-left:5px}
+table#change_blocks {width:900px}
 
 /* charts block personbox */
 div.charts_block .person_box_template, #descendancy_chart .person_box_template, #familybook_chart .person_box_template,
