@@ -1,0 +1,43 @@
+/*
+* JustBlack Theme Styles for the Interactive Tree Module (modules_v3/tree)
+* 
+* webtrees: Web based Family History software
+* Copyright (C) 2013 webtrees development team.
+* Copyright (C) 2013 JustCarmen.
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+*
+* $ Id: treeview.css 2013-09-15 JustCarmen $
+*/
+
+#tv_tree{background:url(images/tree_bg.jpg);}
+.tv_out{border:none;background-color:#272727;}
+#tabs .tv_out {background-color:#FECF5B} /* for the individual page tab */
+.tv_in{border:#dd6900 1px solid;}
+#tree-title{color:#272727;}
+#tv_tree div.tv_box img.tv_treelink{height:25px;width:25px;}
+
+/* Person or couple(s) box style */
+#tv_tree div.tv_box{border:thin outset #6f2f00;border-radius:0;box-shadow:1px 1px 2px #cfcf8f;filter:progid:DXImageTransform.Microsoft.dropShadow(color=#cfcf8f,offX=1,offY=1,positive=true);}
+#tv_tree div.tv_box div.tvM{font-family:Times new Roman, Times, serif;font-size:120%;border-radius:0;background:url(../jquery-ui-1.10.3/images/ui-bg_inset-soft_30_dd6900_1x100.png) repeat;color:#272727;}
+#tv_tree div.tv_box div.tvF{font-family:Times new Roman, Times, serif;font-size:120%;border-radius:0;background:url(../jquery-ui-1.10.3/images/ui-bg_glass_40_ffc73d_1x400.png) repeat;color:#272727;}
+#tv_tree div.tv_box div.tv_person_expanded a{color:#272727;text-decoration:underline;}
+
+/* horizontal and vertical lines color */
+#tv_tree div.tv_vline,#tv_tree div.tv_hline{background-color:#002f6f;}
+#tv_tree table.tv_tree td.tv_vline_h{background-image:url(images/tree_vline.jpg);}
+#tv_tree table.tv_tree td.tv_vline_t{background-image:url(images/tree_vline_t.gif);}
+#tv_tree table.tv_tree td.tv_vline_b{background-image:url(images/tree_vline_b.gif);}
+#tv_tools,#tvStylesSubmenu,#tv_tools li.tv_button{}

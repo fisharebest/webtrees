@@ -1,0 +1,47 @@
+/*
+* JustBlack Theme Styles for the Lightbox Module (modules_v3/tree/css/treeview.css)
+* 
+* webtrees: Web based Family History software
+* Copyright (C) 2013 webtrees development team.
+* Copyright (C) 2013 JustCarmen.
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+*
+* $ Id: lightbox.css 2013-09-15 JustCarmen $
+*/
+
+#lightbox_content .facts_table {width:100%}
+#lightbox_content .descriptionbox span{margin:0 20px;}
+#lightbox_content .pic{width:140px;height:150px;overflow:hidden}
+#lightbox_content .thumbcontainer{display:block; width:100%;}
+#lightbox_content .thumblist {display:block; float:left; list-style-type:none;}
+#lightbox_content .thumblist li {background-color:#272727;float:left;padding:8px; margin:6px;box-shadow: 2px 3px 10px #171717;border-radius: 5px 5px 0 0;position: relative;}
+#lightbox_content li.li_norm{border:1px solid #545454;}
+#lightbox_content li.li_new{border:2px solid #FECF5B;}
+#lightbox_content li.li_old{border:2px solid #DD6900;}
+#lightbox_content .thumblist a img {max-height:122px;max-width:122px; width:auto;display: block;margin: 0 auto}
+#lightbox_content .thumblist a:hover img  {}
+#lightbox_content .clearlist:after{clear:both; content:"."; display:block; height:0; visibility:hidden;}
+#lightbox_content span {padding:10px;}
+#lightbox_content span img {vertical-align:middle;}
+#lightbox_content .submenu {background-color:#FFEEB0; border: 1px solid #FECF5B; box-shadow: 3px 4px #171717; height:auto;padding:5px}
+#lightbox_content .submenuitem {background-color:#FFEEB0;height:1.4em}
+#lightbox_content .submenuitem a{color:#272727;font-size:10px}
+#lightbox_content .submenuitem a:hover{ color: #8E8E8E;}
+#lightbox_content .album_media_title{width: 122px;font-size:11px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 2px;margin-top: 5px;
+color: #e2e2e2;text-align: center;}
+#lightbox_content #clearlist {display:block;}
+html[dir='rtl'] #lightbox_content #thumblist  {float:right;}
+html[dir='rtl'] #lightbox_content #thumblist li  {float:right; margin-left:5px;}

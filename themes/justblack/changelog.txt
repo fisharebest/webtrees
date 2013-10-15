@@ -1,0 +1,292 @@
+READ THE README FILE FOR INSTALLATION AND UPGRADE INSTRUCTIONS
+
+JustBlack for webtrees 1.5.0 - NOT PUBLISHED YET
+* The same changes made to the core theme files have been made to this theme if neccessary. Followed dev upgrades on this.
+* Bugfix from error log:
+  [Mon Jul 08 19:17:35 2013] [error] [client 66.249.78.188] PHP Notice:  Undefined variable: output in /var/www/qb103200/data/www/stamboomknegt.nl/themes/justblack/functions.php on line 178
+  [Mon Jul 08 19:27:54 2013] [error] [client 66.249.78.188] PHP Notice:  Trying to get property of non-object in /var/www/qb103200/data/www/stamboomknegt.nl/themes/justblack/functions.php on line 158, referer: http://www.stamboomknegt.nl/individual.php?pid=I461&ged=stamboom_knegt.ged
+  Added extra security in function getFlags in functions.php
+!!!* Changed colorbox function for images. Set max-width and max-height to auto and fixed to false to be able to scroll larger images (like documents).
+* Bugfix in the topmenu styling in justblack.js due to issues in IE8. 
+  See forum topic http://www.webtrees.net/index.php/en/forum/4-customising/28160-error-in-justblack-theme/
+* TODO: Bugfix in functions.php colorbox function. See forum topic: http://www.webtrees.net/index.php/en/forum/4-customising/28173-just-black-and-media#40504
+* Removed the code in the header which stated to use IE8 for medialist page if browser is IE 9 or 10.
+* Bugfix. The divider on the individual page only needs to be placed beyond the menu. In some cases, when entering a story for instance the divider was placed multiple times.
+* Better layout for stories tab on individual page.
+* Removed lightgrey color of text in indilist and famlist for better readability.
+* Changed the source citations style and the indent style.
+* Changed font-size in dataTables from 12 to 11px.
+* Changed the size of the small thumbs in the media list view (use a cropped image of 60px/45px. Done with some js.
+* Bugfix: styles for the lightbox module were accidentally removed in the previous version. Back in this version with an improved style.
+* Changed the folder structure and some folder names to keep in sync with the default themes.
+
+TODO:: ADD ICONS FOR edit_raw (see theme Xenea in svn 7131). Update submenu styles.
+========================================================================================================
+ 
+01-07-2013 - JustBlack for webtrees 1.4.3 v3.
+* Added JustBlack Theme Options module version 1.0.2.
+========================================================================================================
+ 
+28-06-2013 - JustBlack for webtrees 1.4.3 v2.
+* Bugfix: Active flags in language bar not lightening up. Fixed.
+* Bugfix: Border around header bar in advanced search results - error in css file. Fixed.
+* JustBlack Theme Options Module version 1.0.1
+
+========================================================================================================
+25-06-2013 - JustBlack for webtrees 1.4.2/1.4.3
+* NEW: THEME-OPTIONS. FROM THIS VERSION THIS THEME COMES WITH A SEPARATE MODULE WHERE YOU CAN SET SEVERAL THEME OPTIONS.
+* Added notes to the colorbox popup. Notes will be displayed in a tooltip when opening the colorbox for 5 seconds and on hovering over the image with the mouse.
+  Note this function only works for images not pdf's.
+* Changed the layout of the favorite and the theme dropdown menus to a pure css based layout for better user experience. The function getMenuAsDropdown was removed in webtrees SVN 14960.
+* Changed the layout of the login block on homepage.
+* Removed some inner block margins and paddings.
+* Removed unused functions from justblack.js or moved functionality to style.css.
+* Changed the display of the spouses boxes on the Hourglass Chart when 'show spouses'is activated.
+* Bug Solved: The flyout box that is activated when you hover over a relation (eg 'father') on the family navigator (on sidebar) appears on the 
+  wrong side of the screen. Thanks Dave for reporting this bug.
+
+========================================================================================================
+29-03-2013 - JustBlack for webtrees 1.4.1
+
+* Changed the size of the colorbox from 80% to 95%.
+* Bug solved. Extra br tags after media_link_list removed.
+* Cleaned up the old lightbox css for the album tab on indi page.
+* Restyled the page find.php (find media items)
+* Bug solved. Wrong media icons on album tab when refreshing the page with album tab active.
+* Moved the fontdefinitions for the title font to css using @fontface. The javascript Cufon is no longer needed.
+  This means quicker loading and better support for special characters.
+* Changed the height of the ck editor dialog box (modal dialog).
+* Slideshow controls and titles in colorbox.
+* Solved bug submenus disappearing to fast on hover.
+* Restyled the popups in the pedigree map.
+* Restyled the statistics page.
+========================================================================================================
+17-03-2013 - Patch provided for JustBlack for webtrees 1.4.0(2)
+* Added turkish characters to the font exception list. Only one file changed: justblack.js.
+
+17-03-2013 - Patch provided for JustBlack for webtrees 1.4.0(2)
+* Wrong quotes not recognized by Salina font. It happens on French websites. Changes made in justblack.js and functions.php
+  Also see webtrees forum http://www.webtrees.net/index.php/en/forum/4-customising/27524-justblack-1-4-0-fr-mo-errors-resolu#34823
+
+12-03-2013 - Patch provided for JustBlack for webtrees 1.4.0(2)
+* Bug in relationship chart. The horizontal relationship names where cut of. Changes made in style.css and theme.php.
+
+10-03-2013 - JustBlack for webtrees 1.4.0(2)
+* Critical bug solved in thumbnail handling in personboxes. 
+  See webtrees forum http://www.webtrees.net/index.php/en/forum/4-customising/27436-justblack-theme-for-webtrees-1-4-0-released#34397
+
+07-03-2013 - JustBlack for webtrees 1.4.0
+
+* flexible topmenu. When text in main-menu items is too long the text will be divided into more lines in stead of cutting of text.
+* bug solved. Main menu icons clickable now.
+* bug solved. No gap between submenu's.
+* quicker loading of the searchpages by improving the css.
+* bug solved. Opacity on language flags to show difference between active and inactive languages is now working as it should.
+* smooth scrolling on faq page;
+* bug solved on pedigree page and hourglass page. Due to a mistake in the javascript code zooming was not working as expected.
+* Moved some javascript to style popups to css (css3).
+* Updated jQuery-ui.custom.css to version 1.10.0 (svn 14766).
+* JQuery ui tooltips on all title attributes. This replaces the tiptip script which was used on the language flags and in the edit section
+  of the medialist.
+* Restyled the blocks on homepage and mypage (add silver border and shadow).
+* Removed the special colors on empty items in the sidebar individual list and family list. To style these items all items needed
+  to be load first to determine which items were empty. This causes extra ajax calls and slow load of the lists.
+* Added colorbox support with wheelzoom function;
+* Added pdf support for colorbox.
+* Solved bug in configure dialogs with texteditors. Now reopening won't cause problems with the texteditor anymore.
+* Moved all inline Javascript from header.php to functions.php
+* Removed some javascript for styling the sidebar. Sidebar styling is now done by css.
+* Changed the personbox_template to get rid of the distorted thumnails webtrees provided. In stead there are nice cropped thumnails now.
+  There are cropped on the server side for quicker loading.
+* Quicker loading of cufon headers.
+* Recover the styling for the media-links on the medialist page wich was removed in webtrees 1.4.0.
+* Removed the separate folder for lightbox support. Lightbox styling is still needed on the album tab and in the medialist page,
+  so the neccessary styles and javascript are moved to style.css and justblack.js.
+* Removed the extra javascript plugins (jquery.livequery.min.js, jquery.tiptip.js and jquery.url.js) from the theme/js folder. The plugins
+  are not needed anymore because custom justblack functions had taken over the functionallity of the plugins. This reduced the dependence on other developpers.
+========================================================================================================
+
+24-10-2012 - JustBlack for webtrees 1.3.2 
+
+* Followed all webtrees default changes regarding stylesheets
+* Restyled error messages.
+* Do not show submenu for one gedcom.
+* Added icon arrow for sub-submenu items (relationship) to the submenu-sprite.
+* Restyled the verify form.
+* Changed the color of the placeholders to light grey.
+* Changed font size for titlerow in album tab (on individual page).
+* Restyled the popupscreen 'add existing media'.
+* New languages added to the list of core languages: Ukrainian (uk) and Bulgarian (bg). Flags added for language menu.
+* Flags deleted for languages which does not belong to the core languages anymore (af, dv, el, en-AU, fo, id, ja, ro, sr, ta, zh).
+  To bring them back add the extra flags to the flags_sprite image and set the position in the css file.
+* Added style for language flags menu (fade-out inactive language) and active language and active theme in dropdown menu.
+* Do not show favorites text when there are no gedcom and user favorites.
+* Restyled the map pane (googlemaps popup) so it fits better with the theme.
+* Further restyling of the individual pages and the individual and family lists in the sidebar.
+* Restyled placelist table to match the same style as other list pages with tabs.
+
+Bugfixes:
+* Changed variable name 'char' in 'sChar' in justblack.js. Because char is a default javascript variable, it can cause conflicts.
+* Font color in managelink popup screen was not readable. Changed color.
+* Using an ajax request for individual list and family list causes slow load of individual page.
+  Now the request is done only once after one has clicked the appropiate link in the sidebar the first time. The request is neccessary to style and grey out the non clickable letters in the lists.
+* Silhouette images were to light for map pane (googlemaps popup). Added a background-color and border.
+* Bug in webtrees: add to favorites not working from dropdown menu. This theme is the only theme using the dropdown menu for favorites. Issue solved for this theme.
+
+========================================================================================================
+
+01-09-2012 - JustBlack for webtrees 1.3.1
+
+* Changes made in the core which effect the justblack theme are implemented.
+* Added submit button style for normal buttons;
+* Bugfix. Changed color in autocomplete style. Text was not readable.
+* Moved all Javascript to the footer following new webtrees standards.
+* Restyled the advanced search page, the branches searchform and the search result pages
+* Hide searchform when displaying results. Button to go back to searchform provided.
+* Bugfix. Set full path to functions.php in themefolder. Could give problems with scripts on a deeper level within webtrees root when trying to load the theme.
+* Added shadow to pedigree chart personboxes.
+* Restyled the sidebar descendancy tab, individual list and family list tab, the clipping cart tab and the individual page family tab;
+* Restyled the gedcom and user favorites table;
+* Restyled the application form for new users
+* Restyled the person_links popup boxes
+* New feature: Open all external links in a new browser window/tab.
+* moved the icons in the image blocks on the medialist-page to the right and added tooltips in stead of plain text.
+* restyled the childboxes on the pedigree_chart page and the hourglass_chart page.
+* restyled the familyboxes on the fanchart page.
+* restyled the edituser page.
+* restyled the mediaviewer page.
+* redesigned the webtrees logo with permission of the webtrees team.
+
+========================================================================================================
+
+13-08-2012 - JustBlack for webtrees 1.3.0 (v.1.4)
+* Bug solved from the release of 09-08-2012. Character exceptions as mentioned below are now working as expected.
+
+09-08-2012 - JustBlack for webtrees 1.3.0 (v1.3)
+* It turns out not all special characters are supported by the Salina font.
+  When a known character is not supported by the font the default font will be used for the specific string.
+  These characters are known not to be supported: ą ć ę ń ś ź ż
+
+12-06-2012 - JustBlack for webtrees 1.3.0 (v1.2)
+* Fixed a bug. The special font for titles also works for special characters now. Thanks to Ardhtu for pointing that out to me.
+  One file is changed: fonts/Salina_500.font.js.
+
+09-06-2012 - JustBlack for webtrees 1.3.0 (v1.1)
+* Just a minor update. Fixed wrong version number in the readme file.
+
+07-06-2012 - JustBlack for webtrees 1.3.0
+
+Under the hood webtrees has made a lot of changes. This theme is fully adjusted to work with webtrees 1.3.0.
+
+* The button and icon system of webtrees has changed. Therefore the stylesheet and other JustBlack theme files are adjusted.
+* From this version webtrees introduces a modal dialog box system. This theme had modified the dialog system a bit so the boxes
+  are actually showing up in the middle of the page.
+* Changes are made in the JustBlack theme script file (justblack.js) to work with this version of webtrees.
+* The cufon code (special block and page title font) is moved to the footer script to speed up page loading.
+* Modified some other styles to work with this version of webtrees.
+* The clickable table cells as mentioned in the changelog of 02-06 are removed. This is not working in this version of webtrees.
+* The separate file for simple view functions is removed. This is no longer neccessary in this version.
+* Solved a bug in favorites menu dropdown. This causes page validation to fail.
+* Moved the file lightbox/css/jb_lightbox.css to lightbox/jb_lightbox.css
+* Added update instructions in the readme file.
+
+========================================================================================================
+
+02-06-2012 - JustBlack for webtrees 1.2.7.(v2)
+
+* delete the file css/jquery_ui.jb.css. It is not used.
+* added font-size 11px for fact_NOTE, fact_SOUR and source_citations in style.css
+* added styling on families tab. The 'reorder children' tablecell and the 'add a brother or sister' tablecell are colored
+  in a different style now so it is clear these are menu items. These table cells are also clickable now. Changes are made in js/justblack.js.
+  For this purpose two new images added: sex_m_9x9_dark.png and sex_f_9x9_dark.png.
+* Added list-style-type:none to ul#reoder_list in style.css
+* Added separate file for functions which are neccessary in simple view (modal help popup box).
+* Changed help popup function in justblack.js. Content is loading quicker now.
+
+28-05-2012 - JustBlack for webtrees 1.2.7
+
+* Template conversion to webtrees. Template will no longer be updated for PGV except for bugfixes.
+* Smooth Top Navigation Menu.
+* Flags for language menu in the header with a nice tooltip system. This was the standard behaviour of the JustBlack template in PGV
+  but webtrees no longer support this feature by default. 
+  In this template all the flags belonging to the by webtrees supported languages are implemented.  
+  If there are more than 10 languages selected by default, the language menu will change in a language dropdown menu in the bottom left corner of the header.
+  To reduce the number of supported languages simply delete the languages you will not use from the language folder.   
+* NEW: Nice font for titles.    
+* Restyled the login and register pages.
+* Restyled the faq page.
+* Restyled the individual pages.
+* NEW: To reduce the number of browser windows popups webtrees uses by default, the Justblack theme implemented a number of nice features, 
+  like the help dialog boxes and the 'change blocks on this page' dialog box on homepage and mypage.
+  For admins the single blocks on the homepage and mypage can be configured in place. No other theme has these features!  
+* NEW: When you put your email link in a custom textarea, just write the link like this (be sure the button 'code' is clicked when you use the texteditor):
+  <a class="contact_link_admin" href="#">send me a message</a> 
+  Now this custom link will use the same messagebox as the default link in the footer. No need to navigate your visitors away from your site.  
+* New favicon to replace the old one.
+  
+* Note: Punbb and research assistant are no longer supported by the JustBlack theme because they are not a part of webtrees.
+
+==================================================================================================
+
+18-12-2011 - JustBlack for PGV 4.2.4. version 3
+
+* Validation failed because of wrong placement of menu scripts. Added separate file menu.js.
+  The template is now W3C Valid.
+
+===================================================================================================
+
+05-06-2011 - JustBlack for PGV 4.2.4. version 2
+
+* Bugfix in header.php file. Deleted acceskey in searchform.
+* script editlang.js added. This script will change the hline in the divider and
+  the colors of some unreadable text on the edit page.
+* changed style.css - class search_hit background-color.
+
+====================================================================================================
+
+14-05-2011 - JustBlack for PGV 4.2.4.
+
+* Theme is ready for PHPGedview 4.2.4.
+* All changes are made from within the theme package. No changes to the core files are needed anymore.
+  Therefore several new scripts are integrated in the header.
+* Support for Lightbox, Googlemap, Research Assistant and Punbb forum from within the themefolder.
+* The punbb forum will automatically be styled in the JustBlack theme style. No other steps are neccessarry anymore.
+* Bugfix: Themeselector integrated in header.
+* The lightbox popup is completely restyled with a much nicer look.
+* Lightbox icons in JustBlack style.
+* Custom media icons.
+* Styled the default buttons in JustBlack style.
+* Pedigree map popups in JustBlack theme style.
+* Charts in JustBlack theme style.
+* Several other icons are restyled.
+* Divider between the sections on the 'all' tab on individual page.
+* Changed default phpgedview behaviour when themeselector is turned off. There is no option to change the theme on the
+  'my account' page either.
+* Changed default phpgedview behaviour for lightbox users when display mediatab is turned off. The tab 'show all'
+  on individual page will not show mediatab either.
+* Provided a header.psd and a plain header.jpg file in the extra folder. See the readme file for more instructions.
+* Provided an empty punbb button in the extra folder. See the readme file for more instructions.
+* Provided an alternative contact icon in the extra folder. See the readme file for more instructions.
+* rewritten the readme.txt file.
+
+=================================================================================================
+
+21-05-2009 - JustBlack for PGV 4.2.1.
+
+* Theme Updated to PhpGedview 4.2.1.
+* Support for Lightbox, Googlemap, Research Assistant and Punbb forum
+* A nice looking login block
+* Extra icons for the help submenus where the original theme won't show icons.
+* Icons for the quick edit menu on the individual page.
+* Changed width of the text on the login page
+* Style for the faq page for better readability.
+* Deleted the inline styles in the file editlang_edit.php because the blue color is not readable on a dark background.
+* Lightbox in JustBlack theme style.
+* Extra Icons in the JustBlack theme style for the research assistent module.
+* Punbb Forum in the JustBlack theme style.
+
+=================================================================================================
+
+05-11-2007 - JustBlack for PGV 4.1
+
+First release.
