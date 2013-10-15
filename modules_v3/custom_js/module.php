@@ -53,10 +53,10 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
                 </style>\");")
                     ->pageHeader();
 
-                $action = WT_filter::post("action");
+                $action = WT_Filter::post("action");
 
                 if ($action == 'update') {
-                    set_module_setting('custom_js', 'CJS_FOOTER', WT_filter::post('NEW_CJS_FOOTER'));
+                    set_module_setting('custom_js', 'CJS_FOOTER', WT_Filter::post('NEW_CJS_FOOTER'));
                     AddToLog($this->getTitle() . ' config updated', 'config');
                 }
 
