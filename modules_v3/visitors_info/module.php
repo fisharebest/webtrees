@@ -33,7 +33,7 @@ class visitors_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Extra information” module */ WT_I18N::translate('A sidebar showing extra information for visitors (non members).');
+		return /* I18N: Description of the â€œExtra informationâ€� module */ WT_I18N::translate('A sidebar showing extra information for visitors (non members).');
 	}
 
 	// Implement WT_Module_Sidebar
@@ -88,11 +88,11 @@ class visitors_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	private function get_source_count() {
 		global $controller;
-
+		// source: WT_Fact::getCitations()
 		if ($this->sourceCount===null) {
-			$ct = preg_match_all("/\d SOUR @(.*)@/", $controller->record->getXref(), $match, PREG_SET_ORDER);
+			$ct = preg_match_all('/\n([1-2] SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $controller->record->getGedcom());
 			foreach ($controller->record->getSpouseFamilies() as $sfam)
-				$ct += preg_match("/\d SOUR /", $sfam->getXref());
+				$ct += preg_match_all('/\n([1-2] SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $sfam->getGedcom());;
 			$this->sourceCount = $ct;
 		}
 		return $this->sourceCount;
@@ -100,12 +100,9 @@ class visitors_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	
 	private function get_media_count() {
 		global $controller;
-
+		// source: WT_Fact::getMedia().
 		if ($this->mediaCount===null) {
-			$ct = preg_match_all("/\d OBJE/", $controller->record->getXref(), $match);
-			foreach ($controller->record->getSpouseFamilies() as $sfam)
-				$ct += preg_match_all("/\d OBJE/", $sfam->getXref(), $match);
-			$this->mediaCount = $ct;
+			$this->mediaCount = preg_match_all('/\n[1-2] OBJE @(' . WT_REGEX_XREF . ')@/', $controller->record->getGedcom());			
 		}
 		return $this->mediaCount;
 	}
