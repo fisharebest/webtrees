@@ -29,9 +29,21 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class fancy_search_block_WT_Module extends WT_Module implements WT_Module_Block {
+	
+	public function __construct() {
+		// Load any local user translations
+		if (is_dir(WT_MODULES_DIR.$this->getName().'/language')) {			
+			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php')) {
+				Zend_Registry::get('Zend_Translate')->addTranslation(
+					new Zend_Translate('array', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php', WT_LOCALE)
+				);
+			}
+		}
+	}
+	
 	// Extend class WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Fancy Search Block');
+		return /* Name of a module (not translatable) */ 'Fancy Search Block';
 	}
 
 	// Extend class WT_Module
@@ -68,11 +80,7 @@ class fancy_search_block_WT_Module extends WT_Module implements WT_Module_Block 
 						case 1:
 							var text = jQuery(this).text();	
 							jQuery(this).text(text + ":");
-							break;
-						case 2:
-							jQuery(this).find("span.icon-help").appendTo(jQuery(this).next(".value"));
-							jQuery(this).remove();
-							break;							
+							break;											
 						default:
 							jQuery(this).remove();
 							break;						
@@ -80,10 +88,7 @@ class fancy_search_block_WT_Module extends WT_Module implements WT_Module_Block 
 				});
 				var count = jQuery(this).find(".value").length;
 				jQuery(this).find(".value").each(function(index) {
-					switch(index) {
-						case 2:
-							jQuery(this).addClass("showasso");	
-							break;
+					switch(index) {						
 						case count - 1:
 							jQuery(this).addClass("action").find("a[href*=action]").each(function(){
 								var href = jQuery(this).attr("href");
