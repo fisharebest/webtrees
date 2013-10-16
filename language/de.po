@@ -226,7 +226,7 @@ msgstr "%s"
 #: library/WT/Stats.php:4018
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s v. Chr."
 
 #. I18N: size of file in KB
 #: admin_media.php:402 library/WT/Media.php:201
@@ -916,7 +916,7 @@ msgstr "Ein Benutzer kann sich nicht anmelden, solange nicht beide Optionen \"E-
 
 #: help_text.php:1016
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Ein Wasserzeichen ist ein auf dem Bild angebrachter Text, um andere vom unerlaubten Kopieren des Bildes abzubringen."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:117
@@ -2045,7 +2045,7 @@ msgstr "Möchten Sie dieses Lesezeichen wirklich löschen?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Möchten Sie wirklich alle Änderungen an diesem Stammbaum rückgängig machen?"
 
 #: library/WT/Stats.php:3756
 msgid "Argentina"
@@ -3669,7 +3669,7 @@ msgstr "Wenn Sie dieses Link klicken, erhalten Sie eine Liste mit allen Personen
 
 #: help_text.php:1135
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
-msgstr "Dieses Thema muss noch ausführlich beschrieben werden.<br><br>Vorübergehend … Die neue ID-Nummer wird automatisch eingetragen wenn Sie das Link klicken."
+msgstr "Dieses Thema muss noch ausführlich beschrieben werden.<br><br>Vorübergehend … Die neue ID-Nummer wird automatisch eingetragen wenn Sie auf den Link klicken."
 
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:85
@@ -6360,7 +6360,7 @@ msgstr "<b>webtrees</b> benutzt intern den UTF-8 Zeichensatz, der das Bearbeiten
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:417
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "Diese Einstellung zeigt bei Seiten mit mehr als einem Stammbaum eine Auflistung der Stammbäume an, z.B. auf der Hauptseite, bei der Suche, usw."
 
 #: includes/functions/functions_print.php:372
 msgid "For technical support and information contact"
@@ -7313,7 +7313,7 @@ msgstr "Bildmaße"
 
 #: admin_trees_config.php:708
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Bilder ohne Wasserzeichen"
 
 #: modules_v3/family_nav/module.php:85
 msgid "Immediate Family"
@@ -9674,8 +9674,8 @@ msgstr "Für morgen stehen keine Ereignisse für lebende Personen bevor."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Es gibt keine Ereignisse für lebende Personen für den nächsten Tag."
+msgstr[1] "Es gibt keine Ereignisse für lebende Personen in den nächsten $s Tagen."
 
 #: library/WT/Controller/Family.php:164
 msgid "No facts for this family."
@@ -11951,7 +11951,7 @@ msgstr "Server Name"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:82
 msgid "Server time"
-msgstr ""
+msgstr "Server Zeit"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:94 help_text.php:719
@@ -12380,7 +12380,7 @@ msgstr "Link zu Statistiken-Diagrammen zeigen?"
 
 #: admin_site_config.php:91 help_text.php:416
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Liste der Stammbäume anzeigen"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -15194,7 +15194,7 @@ msgstr "Wasserzeichen"
 
 #: help_text.php:1018
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Wasserzeichen sind optional und sind normalerweise nur für Besucher sichtbar."
 
 #: help_text.php:1020
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
