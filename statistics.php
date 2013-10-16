@@ -38,9 +38,20 @@ if (!$ajax) {
 		->addInlineJavascript('
 			jQuery("#statistics_chart").css("visibility", "visible");
 			jQuery("#statistics_chart").tabs({
-				beforeLoad: function() {jQuery("#loading-indicator").addClass("loading-image");},
-				load: function() {jQuery("#loading-indicator").removeClass("loading-image");},
-				cache: true
+				load: function() {
+					jQuery("#loading-indicator").removeClass("loading-image");
+				},
+				beforeLoad: function(event, ui) {
+					jQuery("#loading-indicator").addClass("loading-image");
+					// Only load each tab once
+					if (ui.tab.data("loaded")) {
+						event.preventDefault();
+						return;
+					}
+					ui.jqXHR.success(function() {
+						ui.tab.data("loaded", true);
+					});
+				}
 			});
 		')		
 		->pageHeader();
