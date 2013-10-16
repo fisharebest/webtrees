@@ -27,7 +27,7 @@ require './includes/session.php';
 // Some variables are initialised from $_GET (so we can set initial values in URLs),
 // but are submitted in $_POST so we can have long body text.
 
-$subject    = WT_Filter::post('subject');
+$subject    = WT_Filter::post('subject', null, WT_Filter::get('subject'));
 $body       = WT_Filter::post('body');
 $from_name  = WT_Filter::post('from_name');
 $from_email = WT_Filter::post('from_email');
