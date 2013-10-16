@@ -25,9 +25,9 @@ if (strpos($message->subject, /* I18N: When replying to an email, the subject be
 }
 
 if ($user_id) {
-	$html .= '<a href="#" onclick="reply(\''.WT_Filter::escapeHtml($message->sender).'\', \''.WT_Filter::escapeHtml($message->subject).'\'); return false;">'.WT_I18N::translate('Reply').'</a> | ';
+	$html .= '<div><a href="#" onclick="reply(\''.WT_Filter::escapeHtml($message->sender).'\', \''.WT_Filter::escapeHtml($message->subject).'\'); return false;">'.WT_I18N::translate('Reply').'</a> | ';
 }
-$html .= '<a href="index.php?action=deletemessage&amp;message_id[]='.$message->message_id.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">'.WT_I18N::translate('Delete').'</a>';
+$html .= '<a href="index.php?action=deletemessage&amp;message_id[]='.$message->message_id.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">'.WT_I18N::translate('Delete').'</a></div>';
 
 $html .= '</div></td>';
 

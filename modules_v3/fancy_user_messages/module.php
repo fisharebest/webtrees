@@ -41,7 +41,17 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $controller, $ctype;
 		
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		
 		$controller->addInlineJavascript('
+			jQuery("input[name=select_all]").click(function(){
+				if (jQuery(this).is(":checked") == true) {
+					jQuery("input[id^=cb_message]").prop("checked", true);
+				} else {
+					jQuery("input[id^=cb_message]").prop("checked", false);
+				}
+			});
+			
 			jQuery("i[id^=message]").click(function(){					
 				var message_id = jQuery(this).data("message_id");
 				var user_id = jQuery(this).data("user_id");
@@ -92,7 +102,7 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		
 		// header
 		if (get_user_count()>1) {
-			$content.= 	'<div style="float:left">'.WT_I18N::translate('Send Message');
+			$content.= 	'<div style="float:left;padding:10px 0">'.WT_I18N::translate('Send message');
 			$content .= '<select name="touser" style="margin:0 10px">';
 			$content.=		'<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
 							foreach (get_all_users() as $user_id=>$user_name) {
@@ -109,15 +119,13 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		if (count($messages)==0) {
 			$content.= '<div>'.WT_I18N::translate('You have no pending messages.').'</div>';
 		} else {
-			// link to select all messages at once
+			// submit button to delete messages
 			$content.= '<input type="hidden" name="action" value="deletemessage">';			
-			$content .= '<div style="text-align:right;padding:10px"><a href="#" onclick="jQuery(\'.'.$this->getName().'_block :checkbox\').attr(\'checked\',\'checked\'); return false;">'.WT_I18N::translate('Select all').'</a></div>';
+			$content .= '<div style="text-align:right;padding:10px 0">';			
+			$content .= '<input type="submit" value="'.WT_I18N::translate('Delete Selected Messages').'"></div>';		
 		
 			//content			
-			$content .= '<div class="clearfloat">'.$this->print_user_table($messages).'</div>';
-			
-			// submit button to delete messages
-			$content .= '<input type="submit" value="'.WT_I18N::translate('Delete Selected Messages').'">';			
+			$content .= '<div class="clearfloat">'.$this->print_user_table($messages).'</div>';				
 		}
 		// end form
 		$content .= '</form>';
@@ -149,6 +157,7 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 			->addInlineJavascript('				
 				jQuery("#'.$table_id.'").dataTable({
 					"sDom": \'t\',
+					"sScrollY": "300px",
 					"bPaginate": false,
 					"bAutoWidth":false,
 					"bLengthChange": false,
@@ -167,10 +176,10 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		//-- table header
 		$html .= '<table id="' . $table_id . '" class="width100">';
 		$html .= '<thead><tr>';
-		$html .= '<th>'	. WT_I18N::translate('Delete') . '</th>';
-		$html .= '<th>' . WT_I18N::translate('Subject:') . '</th>';
-		$html .= '<th>' . WT_I18N::translate('Date Sent:') . '</th>';
-		$html .= '<th>' . WT_I18N::translate('Email Address:') . '</th>';
+		$html .= '<th class="nowrap">'	. WT_I18N::translate('Delete') .checkbox('select_all').'</th>';
+		$html .= '<th>' . str_replace(":", "", WT_I18N::translate('Subject:')) . '</th>';
+		$html .= '<th>' . str_replace(":", "", WT_I18N::translate('Date Sent:')) . '</th>';
+		$html .= '<th>' . WT_I18N::translate('Email address') . '</th>';
 		$html .= '</tr></thead><tbody>';
 
 		//-- table body

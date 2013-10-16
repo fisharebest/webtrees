@@ -1170,7 +1170,8 @@ ul#reorder_list{list-style-type:none}
 input[type="submit"], input[type="button"]{-moz-border-radius:2px;background:url(images/button_sprite.png) repeat-x;border:#545454 1px solid;border-radius:2px;color:#e7e7e7;font-size:8pt;padding:3px}
 input[type="submit"]:hover, input[type="button"]:hover{background-position:50% -25px;cursor:pointer}
 input[type="submit"]:active, input[type="button"]:active{background-position:50% -50px}
-input[type=search]{background-color:#FFFFDE}
+input[type="search"]{background-color:#FFFFDE}
+input[type="checkbox"]{vertical-align:top}
 
 /* Dropdown menu */
 .dropdown{list-style-type:none;padding:0;background-color:#FFFFDE;height:18px;border:#545454 1px inset;position:relative;z-index:999}
