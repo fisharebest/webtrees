@@ -9675,7 +9675,7 @@ msgstr "Für morgen stehen keine Ereignisse für lebende Personen bevor."
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] "Es gibt keine Ereignisse für lebende Personen für den nächsten Tag."
-msgstr[1] "Es gibt keine Ereignisse für lebende Personen in den nächsten $s Tagen."
+msgstr[1] "Es gibt keine Ereignisse für lebende Personen in den nächsten %s Tagen."
 
 #: library/WT/Controller/Family.php:164
 msgid "No facts for this family."
