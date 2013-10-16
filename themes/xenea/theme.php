@@ -36,26 +36,26 @@ $headerfile = WT_THEME_DIR.'header.php';
 $footerfile = WT_THEME_DIR.'footer.php';
 
 //-- variables for image names
-$WT_IMAGES=array(
+$WT_IMAGES = array(
 	// used to draw charts
-	'dline'          =>WT_THEME_URL.'images/dline.png',
-	'dline2'         =>WT_THEME_URL.'images/dline2.png',
-	'hline'          =>WT_THEME_URL.'images/hline.png',
-	'spacer'         =>WT_THEME_URL.'images/spacer.png',
-	'vline'          =>WT_THEME_URL.'images/vline.png',
+	'dline'           => WT_CSS_URL . 'images/dline.png',
+	'dline2'          => WT_CSS_URL . 'images/dline2.png',
+	'hline'           => WT_CSS_URL . 'images/hline.png',
+	'spacer'          => WT_CSS_URL . 'images/spacer.png',
+	'vline'           => WT_CSS_URL . 'images/vline.png',
 
 	// used in button images and javascript
-	'add'=>WT_THEME_URL.'images/add.png',
-	'button_family'  =>WT_THEME_URL.'images/buttons/family.png',
-	'minus'          =>WT_THEME_URL.'images/minus.png',
-	'plus'           =>WT_THEME_URL.'images/plus.png',
-	'remove'         =>WT_THEME_URL.'images/delete.png',
-	'search'         =>WT_THEME_URL.'images/search.png',
-
+	'add'             => WT_CSS_URL . 'images/add.png',
+	'button_family'   => WT_CSS_URL . 'images/buttons/family.png',
+	'minus'           => WT_CSS_URL . 'images/minus.png',
+	'plus'            => WT_CSS_URL . 'images/plus.png',
+	'remove'          => WT_CSS_URL . 'images/remove.png',
+	'search'          => WT_CSS_URL . 'images/search.png',
+	
 	// need different sizes before moving to CSS
-	'default_image_F'=>WT_THEME_URL.'images/silhouette_female.png',
-	'default_image_M'=>WT_THEME_URL.'images/silhouette_male.png',
-	'default_image_U'=>WT_THEME_URL.'images/silhouette_unknown.png',
+	'default_image_F' => WT_CSS_URL . 'images/silhouette_female.png',
+	'default_image_M' => WT_CSS_URL . 'images/silhouette_male.png',
+	'default_image_U' => WT_CSS_URL . 'images/silhouette_unknown.png',
 );
 
 // Variables for the Fan chart
