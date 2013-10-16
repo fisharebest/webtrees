@@ -281,7 +281,7 @@ function add_record(xref, fact_field) {
 	var fact = jQuery('#' + fact_field).val();
 	if (fact) {
 		if (fact == "OBJE") {
-			window.open('addmedia.php?action=showmediaform&linkid=' + xref + '&ged=' + WT_GEDCOM, '_blank', edit_window_specs);
+			window.open('addmedia.php?action=showmediaform&linkid=' + encodeURIComponent(xref) + '&ged=' + encodeURIComponent(WT_GEDCOM), '_blank', edit_window_specs);
 		} else {
 			return edit_interface({
 				"action": "add",
@@ -448,12 +448,12 @@ function reorder_families(xref) {
 }
 
 function reply(username, subject) {
-	window.open('message.php?to='+username+'&subject='+subject+'&ged='+WT_GEDCOM, '_blank', mesg_window_specs);
+	window.open('message.php?to=' + encodeURIComponent(username) + '&subject=' + encodeURIComponent(subject) + '&ged=' + encodeURIComponent(WT_GEDCOM), '_blank', mesg_window_specs);
 	return false;
 }
 
 function delete_message(id) {
-	window.open('message.php?action=delete&id='+id, '_blank'+'&ged='+WT_GEDCOM, mesg_window_specs);
+	window.open('message.php?action=delete&id=' + encodeURIComponent(id) + '&ged=' + encodeURIComponent(WT_GEDCOM), '_blank', mesg_window_specs);
 	return false;
 }
 
@@ -1157,21 +1157,21 @@ function findIndi(field, indiname, ged) {
 	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
 	nameElement = indiname;
-	window.open('find.php?type=indi&ged='+ged, '_blank', find_window_specs);
+	window.open('find.php?type=indi&ged=' + encodeURIComponent(ged), '_blank', find_window_specs);
 	return false;
 }
 
 function findPlace(field, ged) {
 	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
-	window.open('find.php?type=place&ged='+ged, '_blank', find_window_specs);
+	window.open('find.php?type=place&ged=' + encodeURIComponent(ged), '_blank', find_window_specs);
 	return false;
 }
 
 function findFamily(field, ged) {
 	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
-	window.open('find.php?type=fam&ged='+ged, '_blank', find_window_specs);
+	window.open('find.php?type=fam&ged=' + encodeURIComponent(ged), '_blank', find_window_specs);
 	return false;
 }
 
@@ -1179,7 +1179,7 @@ function findMedia(field, choose, ged) {
 	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
 	if (!choose) choose="0all";
-	window.open('find.php?type=media&choose='+choose+'&ged='+ged, '_blank', find_window_specs);
+	window.open('find.php?type=media&choose=' + encodeURIComponent(choose) + '&ged=' + encodeURIComponent(ged), '_blank', find_window_specs);
 	return false;
 }
 
@@ -1187,7 +1187,7 @@ function findSource(field, sourcename, ged) {
 	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
 	nameElement = sourcename;
-	window.open('find.php?type=source&ged='+ged, '_blank', find_window_specs);
+	window.open('find.php?type=source&ged=' + encodeURIComponent(ged), '_blank', find_window_specs);
 	return false;
 }
 
@@ -1195,14 +1195,14 @@ function findnote(field, notename, ged) {
 	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
 	nameElement = notename;
-	window.open('find.php?type=note&ged='+ged, '_blank', find_window_specs);
+	window.open('find.php?type=note&ged=' + encodeURIComponent(ged), '_blank', find_window_specs);
 	return false;
 }
 
 function findRepository(field, ged) {
 	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
-	window.open('find.php?type=repo&ged='+ged, '_blank', find_window_specs);
+	window.open('find.php?type=repo&ged=' + encodeURIComponent(ged), '_blank', find_window_specs);
 	return false;
 }
 
@@ -1216,18 +1216,18 @@ function findFact(field, ged) {
 	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
 	pastefield = field;
 	tags = field.value;
-	window.open('find.php?type=facts&tags='+tags+'&ged='+ged, '_blank', find_window_specs);
+	window.open('find.php?type=facts&tags=' + encodeURIComponent(tags) + '&ged=' + encodeURIComponent(ged), '_blank', find_window_specs);
 	return false;
 }
 
 function ilinkitem(mediaid, type, ged) {
 	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
-	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type+'&ged='+ged, '_blank', find_window_specs);
+	window.open('inverselink.php?mediaid=' + encodeURIComponent(mediaid) + '&linkto=' + encodeURIComponent(type) + '&ged=' + encodeURIComponent(ged), '_blank', find_window_specs);
 	return false;
 }
 
 function message(username, method, url) {
-	window.open('message.php?to='+username+'&method='+method+'&url='+url, '_blank', mesg_window_specs);
+	window.open('message.php?to=' + encodeURIComponent(username) + '&method=' + encodeURIComponent(method) + '&url=' + encodeURIComponent(url), '_blank', mesg_window_specs);
 	return false;
 }
 
