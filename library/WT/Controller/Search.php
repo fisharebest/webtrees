@@ -402,7 +402,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		$name_tags[] = "_MARNM";
 		foreach ($this->myindilist as $id=>$record) {
 			$oldRecord = $record->getGedcom();
-			$newRecord = $record;
+			$newRecord = $oldRecord;
 			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
 			} else {
@@ -426,7 +426,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 		foreach ($this->myfamlist as $id=>$record) {
 			$oldRecord = $record->getGedcom();
-			$newRecord = $record;
+			$newRecord = $oldRecord;
 
 			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
@@ -447,7 +447,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 		foreach ($this->mysourcelist as $id=>$record) {
 			$oldRecord = $record->getGedcom();
-			$newRecord = $record;
+			$newRecord = $oldRecord;
 
 			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
@@ -471,7 +471,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 		foreach ($this->mynotelist as $id=>$record) {
 			$oldRecord = $record->getGedcom();
-			$newRecord = $record;
+			$newRecord = $oldRecord;
 
 			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
