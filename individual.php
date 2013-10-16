@@ -97,9 +97,20 @@ $linkToID=$controller->record->getXref(); // -- Tell addmedia.php what to link t
 $controller->addInlineJavascript('
 	jQuery("#tabs").tabs({
 		spinner: \'<i class="icon-loading-small"></i>\',
-		cache:    true,
 		active:   jQuery.cookie("indi-tab"),
-		activate: function(event, ui) { jQuery.cookie("indi-tab", jQuery("#tabs").tabs("option", "active")); }
+		activate: function(event, ui) {
+			jQuery.cookie("indi-tab", jQuery("#tabs").tabs("option", "active"));
+		},
+		// Only load each tab once
+		beforeLoad: function(event, ui) {
+			if (ui.tab.data("loaded")) {
+				event.preventDefault();
+				return;
+			}
+			ui.jqXHR.success(function() {
+				ui.tab.data("loaded", true);
+			});
+		}
 	});
 
 	// sidebar settings 
