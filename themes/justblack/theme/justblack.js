@@ -383,7 +383,7 @@ jQuery(document).ready(function($){
 			});		
 		});		
 	 })
-	 
+	
 	/********************************************* CUSTOM CONTACT LINK ***********************************************/	
 	// custom contact link (in custom html block or news block for example). Give the link the class 'contact_link_admin');
 	$('a.contact_link_admin').each(function() {
@@ -516,6 +516,13 @@ jQuery(document).ready(function($){
 				$('#tabs a[title=lightbox]').trigger('click');		
 			}, 10);			
 		}	
+	}
+	
+	/********************************************* MESSAGES.PHP*******************************************************/	 
+	// correction. Popup is smaller than the input and textarea field.
+	if (curPage() == 'message.php') {
+		$('input[name=subject]').attr('size', '45');
+		$('textarea[name=body]').attr('cols', '43');	
 	}
 	
 	/************************************************ HOURGLASS CHART *****************************************************/

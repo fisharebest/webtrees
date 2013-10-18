@@ -23,6 +23,7 @@ JustBlack for webtrees 1.5.0 - NOT PUBLISHED YET
 * Set a fixed width on the change blocks dialog.
 * Bug fix: Added maxHeight to help dialog box. Boxes could be too long when opened within a popup (like the help dialog boxes for dates).
 * Applied some styles to datatables.
+* Make fields within message popups smaller so they fit in the popup.
 
 TODO:: ADD ICONS FOR edit_raw (see theme Xenea in svn 7131). Update submenu styles.
 ========================================================================================================
