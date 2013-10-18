@@ -82,7 +82,7 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 					jQuery("#message-body-" + message_id).hide();
 					jQuery(this).removeClass("icon-minus").addClass("icon-plus");					
 				}				
-			});				
+			});
 		');
 
 		// Block actions
@@ -165,8 +165,6 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('	
-				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
-				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};			
 				jQuery("#'.$table_id.'").dataTable({
 					"sDom": \'t\',
 					"sScrollY": "300px",
@@ -189,8 +187,14 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 							jQuery(".icon-minus").removeClass("icon-minus").addClass("icon-plus");
 						}
 						var thHeight = jQuery("th").outerHeight() - 1;
-						jQuery(".dataTables_scrollHead").removeClass("ui-state-default");	
-						jQuery(".dataTables_scrollHeadInner").prepend("<div class=\"ui-state-default\" style=\"position:absolute;top:2px;right:0;width:15px;height:" + thHeight + "px\">");				
+						var tbHeight = jQuery("tbody").height();
+						jQuery(".dataTables_scrollHead").removeClass("ui-state-default");					
+						if (tbHeight < 300) {
+							jQuery(".dataTables_scrollBody").css("height", "auto");
+						}
+						else {
+							jQuery(".dataTables_scrollHeadInner").prepend("<div class=\"ui-state-default\" style=\"position:absolute;top:2px;right:0;width:15px;height:" + thHeight + "px\">");
+						}
 					}
 				});				
 			');
