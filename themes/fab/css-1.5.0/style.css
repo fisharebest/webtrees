@@ -642,8 +642,6 @@ right:10px;
 }
 li .person_box, li .person_boxF {margin:3px 0 3px 0;}
 
-.fact_MARR {color:White;background-color:DarkSlateGray;}
-
 /*-- descendancy chart rtl specific stylesheets --*/
 html[dir=rtl] #descendancy_chart ul {
 background-position:right top;
