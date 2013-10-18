@@ -44,36 +44,45 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		
 		$controller->addInlineJavascript('
+			// apply css rule to all themes
+			jQuery(".fancy_user_messages_block, .fancy_user_messages_block .small_inner_block").css("max-height", "400px");
+						
+			// select all			
 			jQuery("input[name=select_all]").click(function(){
 				if (jQuery(this).is(":checked") == true) {
-					jQuery("input[id^=cb_message]").prop("checked", true);
+					jQuery("input[id^=cb-message]").prop("checked", true);
 				} else {
-					jQuery("input[id^=cb_message]").prop("checked", false);
+					jQuery("input[id^=cb-message]").prop("checked", false);
 				}
 			});
 			
-			jQuery("i[id^=message]").click(function(){					
+			// open message body
+			jQuery("i[id^=icon-message]").click(function(){					
 				var message_id = jQuery(this).data("message_id");
 				var user_id = jQuery(this).data("user_id");
 				if(jQuery(this).hasClass("icon-plus")) {
+					if(jQuery("tr[id^=message-body]").length > 0) {
+						jQuery("tr[id^=message-body]").hide();
+						jQuery("i[id^=icon-message]").removeClass("icon-minus").addClass("icon-plus");	
+					}
 					jQuery(this).removeClass("icon-plus").addClass("icon-minus");
-					jQuery(this).parents("tr").each(function(){
-						var curRow = jQuery(this);
-						if(curRow.hasClass("even")) var $class = "odd";
+					if(jQuery("#message-body-" + message_id).length > 0) {
+						jQuery("#message-body-" + message_id).show();
+					}
+					else {						
+						if (jQuery("#message-" + message_id).hasClass("even")) var $class = "odd";
 						else var $class = "even";
-						curRow.parent().find("tr").not(curRow).hide();	
 						var url = WT_MODULES_DIR + "'.$this->getName().'/user_message.php?user_id=" + user_id + "&message_id=" + message_id;									
 						jQuery.get(url, function(data){	
-							curRow.after("<tr id=\"message-body-" + message_id + "\" class=\"" + $class + "\">" + data + "</tr>");
-						});							
-					});
+							jQuery("#message-" + message_id).after("<tr id=\"message-body-" + message_id + "\" class=\"" + $class + "\">" + data + "</tr>");
+						});
+					}
 				}
 				else {
-					jQuery("#message-body-" + message_id).remove();
-					jQuery(this).parents("tbody").find("tr").show();
+					jQuery("#message-body-" + message_id).hide();
 					jQuery(this).removeClass("icon-minus").addClass("icon-plus");					
-				}
-			});		
+				}				
+			});				
 		');
 
 		// Block actions
@@ -98,7 +107,7 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		$title=WT_I18N::plural('%s message', '%s messages',count($messages), WT_I18N::number(count($messages)));
 		
 		// start form
-		$content='<form name="messageform" action="index.php?ctype='.$ctype.'" method="get" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
+		$content='<form style="line-height:normal" name="messageform" action="index.php?ctype='.$ctype.'" method="get" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
 		
 		// header
 		if (get_user_count()>1) {
@@ -150,11 +159,14 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		global $controller;
 		
 		$table_id = "ID" . (int)(microtime() * 1000000); // create a unique ID
+		$aaSorting = "[4,'desc']";
 		
 		$html = '';
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-			->addInlineJavascript('				
+			->addInlineJavascript('	
+				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
+				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};			
 				jQuery("#'.$table_id.'").dataTable({
 					"sDom": \'t\',
 					"sScrollY": "300px",
@@ -164,48 +176,61 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 					"bFilter": false,
 					'.WT_I18N::datatablesI18N().',
 					"bJQueryUI": true,
+					"aaSorting": ['.$aaSorting.'],
 					"aoColumns": [
 						/* 0-Delete */    		{"bSortable": false, "sClass": "center"},
 						/* 1-Subject */  		{"bSortable": false},
-						/* 2-Date_send */  		{"bSortable": false},
-						/* 3-User - email */    {"bSortable": false}
-					]
+						/* 2-Date_send */  		{"iDataSort": 4},
+						/* 3-User - email */    {"bSortable": false},
+						/* 4-DATE */    		{"bVisible": false}
+					],
+					"fnDrawCallback": function() {
+						if(jQuery(".icon-minus").length > 0) {
+							jQuery(".icon-minus").removeClass("icon-minus").addClass("icon-plus");
+						}
+						var thHeight = jQuery("th").outerHeight() - 1;
+						jQuery(".dataTables_scrollHead").removeClass("ui-state-default");	
+						jQuery(".dataTables_scrollHeadInner").prepend("<div class=\"ui-state-default\" style=\"position:absolute;top:2px;right:0;width:15px;height:" + thHeight + "px\">");				
+					}
 				});				
 			');
 	
 		//-- table header
-		$html .= '<table id="' . $table_id . '" class="width100">';
+		$html .= '<table id="' . $table_id . '" class="message-table">';
 		$html .= '<thead><tr>';
-		$html .= '<th class="nowrap">'	. WT_I18N::translate('Delete') .checkbox('select_all').'</th>';
+		$html .= '<th class="nowrap">'	. WT_I18N::translate('Delete') . '<input type="checkbox" name="select_all" style="vertical-align:middle;margin:0 3px"></th>';
 		$html .= '<th>' . str_replace(":", "", WT_I18N::translate('Subject:')) . '</th>';
 		$html .= '<th>' . str_replace(":", "", WT_I18N::translate('Date Sent:')) . '</th>';
 		$html .= '<th>' . WT_I18N::translate('Email address') . '</th>';
+		$html .= '<th>DATE</th>';     //hidden by datatables code
 		$html .= '</tr></thead><tbody>';
 
 		//-- table body
 		foreach ($messages as $message) {
 			$user_id = get_user_id($message->sender);	
 				
-			$html .= '<tr><td>';
-			$html .= '<input type="checkbox" id="cb_message'.$message->message_id.'" name="message_id[]" value="'.$message->message_id.'">';	
+			$html .= '<tr id="message-'.$message->message_id.'"><td>';
+			$html .= '<input type="checkbox" id="cb-message-'.$message->message_id.'" name="message_id[]" value="'.$message->message_id.'">';	
 			$html .= '</td>';
 			
 			//-- Message subject
 			$html .= '<td class="wrap">';
-			$html .= '<i id="message'.$message->message_id.'_img" data-user_id = "'.$user_id.'" data-message_id = "'.$message->message_id.'" class="icon-plus"></i>'.WT_Filter::escapeHtml($message->subject);				
+			$html .= '<i id="icon-message-'.$message->message_id.'" data-user_id = "'.$user_id.'" data-message_id = "'.$message->message_id.'" class="icon-plus"></i>'.WT_Filter::escapeHtml($message->subject);				
 			$html .= "</td>";
 			
 			//-- Message date/time
-			$html .= "<td class='nowrap'>" . format_timestamp($message->created) . "</td>";
+			$html .= '<td class="nowrap">' . strip_tags(format_timestamp($message->created)) . "</td>";
 			
 			//-- User name and email address
-			$html .= "<td class='wrap'>";			
+			$html .= '<td class="wrap">';			
 			if ($user_id) {
 				$html .= '<span dir="auto">'.getUserFullName($user_id).'</span> - <span dir="auto">'.getUserEmail($user_id).'</span>';
 			} else {
 				$html .= '<a href="mailto:'.WT_Filter::escapeHtml($message->sender).'">'.WT_Filter::escapeHtml($message->sender).'</a>';
 			}			
-			$html .= "</td></tr>";						
+			$html .= "</td>";
+			//-- change date (sortable) hidden by datatables code
+			$html .= "<td>" . $message->created . "</td></tr>";						
 		}	
 		
 		$html .= '</tbody></table>';
@@ -229,18 +254,6 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (WT_Filter::postBool('save')) {
-			set_block_setting($block_id, 'block',  WT_Filter::postBool('block'));
-			exit;
-		}
-
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
-
-		$block=get_block_setting($block_id, 'block', true);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
-		echo '</td></tr>';
+		return false;
 	}
 }
