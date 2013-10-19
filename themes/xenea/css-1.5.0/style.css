@@ -1043,18 +1043,6 @@ h4 {
 	text-align:center;
 }
 
-/* Style for the subbar in */
-
-.subbar {
-	background-color:#ecf5ff;
-	border:solid #c3dfff 1px;
-	color:#000066;
-	font-size:11px;
-	padding:3px;
-	white-space:nowrap;
-	vertical-align:top;
-}
-
 /* Style for the descriptionbox */
 .descriptionbox {
 	color:#000066;

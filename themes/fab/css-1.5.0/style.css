@@ -59,7 +59,6 @@ fieldset,
 .person3,
 .person4,
 .person5
-.subbar,
 #indi_main_blocks,
 #tabs,
 #save-cancel,
@@ -893,16 +892,6 @@ html[dir=rtl] #ancestry_chart li {
 
 .title {
 	font-size: 150%;
-}
-
-/* Style for the subbar in */
-/* facts_value */
-.subbar {
-	background-color: #d1d9ef;
-	color: #000;
-	vertical-align: top;
-	white-space: nowrap;
-	padding: 3px;
 }
 
 .vmiddle {

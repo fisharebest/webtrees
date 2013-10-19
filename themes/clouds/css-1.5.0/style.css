@@ -513,7 +513,7 @@ color:#000000;
 
 /* Rounded corners */
 .block,.descriptionbox,.facts_label,.facts_label02,.facts_label03,.facts_value,
-.lifespan_outer,.subbar,.list_label,.list_label_wrap,.list_value,.list_value_wrap,
+.lifespan_outer,.list_label,.list_label_wrap,.list_value,.list_value_wrap,
 .messagebox,.optionbox,.person_box,.person_boxF,.person_boxNN,
 .person0,.person1,.person2,.person3,.person4,.person5,#sidebar,.topbottombar,#save-cancel {
 border-radius:3px;
@@ -1240,16 +1240,6 @@ color:#000000;
 font-weight:bold;
 padding:4px;
 text-align:center;
-}
-
-.subbar {
-background:#ffffff;
-border:1pt solid #dddddd;
-font-size:11px;
-padding:3px;
-white-space:nowrap;
-vertical-align:top;
-
 }
 
 .descriptionbox {

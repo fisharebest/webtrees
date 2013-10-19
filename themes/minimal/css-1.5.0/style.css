@@ -750,17 +750,6 @@ margin:20px;
 	text-align:center;
 }
 
-/* Style for the subbar in */
-.subbar {
-	background-color:#ffffff;
-	color:#555555;
-	border:solid #555555 1px;
-	font-size:11px;
-	padding:3px;
-	white-space:nowrap;
-	vertical-align:top;
-}
-
 /* Style for the descriptionbox */
 .descriptionbox {
 	background-color:#ffffff;

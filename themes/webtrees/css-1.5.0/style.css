@@ -229,8 +229,6 @@ html[dir=rtl] .header_search {float:left;}
 /* Styles for the option boxes */
 /* Style for the top and bottom bar */
 .topbottombar {color:#ffffff;background-color:#81a9cb;font-weight:bold;font-size:12px;padding:4px;text-align:center;}
-/* Style for the subbar in facts_value */
-.subbar {background-color:#d1d9ef;border:solid #81a9cb 1px;font-size:11px;vertical-align:top;white-space:nowrap;padding:3px;}
 /* Style for the descriptionbox */
 .descriptionbox {color:#ffffff;background-color:#81a9cb;font-size:12px;vertical-align:top;padding:3px;}
 /* Style for the optionbox */
