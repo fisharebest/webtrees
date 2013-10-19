@@ -425,7 +425,7 @@ color:#003399;
 }
 
 /* Base Color */
-.descriptionbox .submenu a,.blockcontent,.list_value,.list_value_wrap,.tab_cell_active,.news_box,optionbox,.submenuitem_hover {
+.descriptionbox .submenu a,.blockcontent,.list_value,.list_value_wrap,.news_box,optionbox,.submenuitem_hover {
 background:#ffffff;
 }
 
@@ -513,7 +513,7 @@ color:#000000;
 
 /* Rounded corners */
 .block,.descriptionbox,.facts_label,.facts_label02,.facts_label03,.facts_value,
-.lifespan_outer,.subbar,.list_label,.list_label_wrap,.list_value,.list_value_wrap,
+.lifespan_outer,.list_label,.list_label_wrap,.list_value,.list_value_wrap,
 .messagebox,.optionbox,.person_box,.person_boxF,.person_boxNN,
 .person0,.person1,.person2,.person3,.person4,.person5,#sidebar,.topbottombar,#save-cancel {
 border-radius:3px;
@@ -923,61 +923,6 @@ padding:5px;
 
 .quickfacts a {font-size:9px;padding:0 3px;}
 
-.tab_cell_active {
-font-size:10px;
-border-right:1pt solid #999999;
-text-align:center;
-width:20%;
-padding:2pt;
-}
-
-.tab_cell_inactive {
-background:#ffffff;
-font-size:10px;
-border-top:none;
-border-right:1pt solid #cccccc;
-text-align:center;
-width:20%;
-padding:2px;
-}
-
-.tab_active_bottom {
-border-top:none;
-border-bottom:none;
-border-left:none;
-border-right:none;
-height:5px;
-}
-
-.tab_inactive_bottom {
-border-left:none;
-border-right:none;
-border-top:1pt solid #cccccc;
-height:5px;
-}
-
-.tab_inactive_bottom_right {
-border-left:none;
-border-right:none;
-border-top:1pt solid #cccccc;
-width:35%;
-height:5px;
-}
-
-.tab_cell_inactive_empty {
-background:#eeeeee;
-border-top:none;
-border-right:1pt solid #cccccc;
-text-align:center;
-width:20%;
-padding:2px;
-font-size:20px;
-}
-
-.tab_cell_inactive_empty a {
-color:#77aaff;
-}
-
 .name1, .name2, .nameZoom {
 font-weight:bold;
 }
@@ -1295,16 +1240,6 @@ color:#000000;
 font-weight:bold;
 padding:4px;
 text-align:center;
-}
-
-.subbar {
-background:#ffffff;
-border:1pt solid #dddddd;
-font-size:11px;
-padding:3px;
-white-space:nowrap;
-vertical-align:top;
-
 }
 
 .descriptionbox {
@@ -2902,38 +2837,15 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 .logged_in_list {margin:5px 0 0 0;padding:0;line-height:20px;}
 
 @media print {
-	#clouds-container {
-	border:0;
-	}
-
-	#content {
-	padding:0;
-	}
-
-	#header,#footer,.noprint {
-	display:none !important;
-	}
-
-	#topMenu,#header select,#header input,#footer select,#backprint,#sidebar,form,button,input,#CB_All {
-	display:none;
-	}
-
+	#clouds-container {border:0;}
+	#content {padding:0;}
+	#header,#footer,.noprint {display:none !important;}
+	#pedigree_chart {left:right;left:-80px;}
+	html[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
+	#topMenu,#header select,#header input,#footer select,#backprint,#sidebar,form,button,input,#CB_All {display:none;}
 	/* buttons and input are used out of forms in sortable tables*/
-	.lifespan_outer {
-	border:none;
-	height:auto;
-	overflow:visible;
-	position:relative;
-	width:auto;
-	}
-
-	.lifespan_people {
-	left:-10px;
-	position:absolute;
-	top:-60px;
-	width:auto;
-	z-index:1;
-	}
+	.lifespan_outer {border:none;height:auto;overflow:visible;position:relative;width:auto;}
+	.lifespan_people {left:-10px;position:absolute;top:-60px;width:auto;z-index:1;}
 }
 
 /* Icons */

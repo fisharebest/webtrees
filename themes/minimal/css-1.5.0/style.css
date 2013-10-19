@@ -259,57 +259,6 @@ table.center {
 	width:100%;
 }
 
-.tab_cell_active {
-	background-color:#ffffff;
-	border-left:outset #eeeeee 2px;
-	border-top:outset #eeeeee 2px;
-	border-right:outset #eeeeee 2px;
-	text-align:center;
-}
-
-.tab_cell_inactive {
-	background-color:#eeeeee;
-	border-left:solid #555555 2px;
-	border-top:solid #555555 2px;
-	border-right:outset #555555 2px;
-	text-align:center;
-}
-
-.tab_active_bottom {
-	border-top:none;
-	border-bottom:none;
-	border-left:none;
-	border-right:none;
-	height:5px;
-}
-
-.tab_inactive_bottom {
-	border-left:none;
-	border-right:none;
-	border-top:outset #555555 2px;
-	height:5px;
-}
-
-.tab_inactive_bottom_right {
-	border-left:none;
-	border-right:none;
-	border-top:outset #555555 2px;
-	width:33%;
-	height:5px;
-}
-
-.tab_cell_inactive_empty {
-	background-color:#bababa;
-	border-left:solid #555555 2px;
-	border-top:solid #555555 2px;
-	border-right:outset #555555 2px;
-	text-align:center;
-}
-
-.tab_cell_inactive_empty a {
-	color:#888888;
-}
-
 .name1 {
 	color:#555555;
 	font-weight:bold;
@@ -641,7 +590,7 @@ html[dir=rtl] #familybook_chart {margin-right:10px;}
 .pedigree_chart_table {border:0;border-collapse:collapse;padding:0;width:100%;}
 #pedigree_chart {
 	position:relative;
-	top:-240px;
+	top:-200px;
 	left:10px;
 }
 #pedigree_canvas {position:absolute;top:200px;z-index:-1000;}
@@ -651,7 +600,7 @@ html[dir=rtl] #familybook_chart {margin-right:10px;}
 /*-- pedigree chart rtl specific stylesheets --*/
 html[dir=rtl] #pedigree_chart {
 left:auto;
-right:10px;
+right:-20px;
 }
 
 /*-- descendancy chart specific stylesheets --*/
@@ -799,17 +748,6 @@ margin:20px;
 	font-weight:bold;font-size:12px;
 	padding:4px;
 	text-align:center;
-}
-
-/* Style for the subbar in */
-.subbar {
-	background-color:#ffffff;
-	color:#555555;
-	border:solid #555555 1px;
-	font-size:11px;
-	padding:3px;
-	white-space:nowrap;
-	vertical-align:top;
 }
 
 /* Style for the descriptionbox */
@@ -1682,39 +1620,13 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 .logged_in_list {margin:5px 0 0 0;padding:0;line-height:20px;}
 
 @media print {
-	#backprint, #header, #topMenu {
-		display:none;
-	}
-	/*-- pedigree chart specific stylesheets --*/
-	#pedigree_chart {
-		position:absolute;
-		top:0;
-		left:0;
-	}
-	/*-- pedigree chart rtl specific stylesheets --*/
-	html[dir=rtl] #pedigree_chart {
-	left:auto;
-	right:0;
-	}
-
+	#backprint, #header, #topMenu {display:none;}
+	#pedigree_chart {left:right;left:-80px;}
+	html[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
 	#header, #footer, .noprint {display:none !important;}
 	form, button, input {display:none;} /* buttons and input are used out of forms in sortable tables*/
-
-	.lifespan_outer {
-		position:relative;
-		width:auto;
-		height:auto;
-		overflow:visible;
-		border:none;
-	}
-
-	.lifespan_people {
-		position:absolute;
-		width:auto;
-		left:-10px;
-		top:-60px;
-		z-index:1;
-	}
+	.lifespan_outer {position:relative;width:auto;height:auto;overflow:visible;border:none;}
+	.lifespan_people {position:absolute;width:auto;left:-10px;top:-60px;z-index:1}
 	#CB_All {display:none;}
 }
 
