@@ -90,13 +90,6 @@ table.center {margin-left:auto;margin-right:auto;}
 .facts_value02 {background-color:#edf7fd;border:solid #81a9cb 1px;font-size:12px;padding:5px;}
 .quickfacts a {font-size:9px;padding:0 3px;}
 .tabs_table {width:99%;}
-.tab_cell_active {background-color:#ffffff;border-left:outset #81a9cb 2px;border-top:outset #81a9cb 2px;border-right:outset #81a9cb 2px;text-align:center;font-weight:bold;font-size:10pt;}
-.tab_cell_inactive {background-color:#edf7fd;border-left:solid #81a9cb 2px;border-top:solid #81a9cb 2px;border-right:outset #81a9cb 2px;text-align:center;font-weight:bold;font-size:10pt;}
-.tab_cell_inactive_empty {background-color:#c6d0da;border-left:solid #81a9cb 2px;border-top:solid #81a9cb 2px;border-right:outset #81a9cb 2px;text-align:center;font-weight:bold;font-size:10pt;}
-.tab_cell_inactive_empty a {color:#999999;}
-.tab_active_bottom {border:none;height:5px;}
-.tab_inactive_bottom {border-left:none;border-right:none;border-top:outset #81a9cb 2px;height:5px;}
-.tab_inactive_bottom_right {border-left:none;border-right:none;border-top:outset #81a9cb 2px;width:33%;height:5px;}
 
 .name1 {color:#555555;font-weight:bold;font-size:12px;}
 a:hover .name1 {color:#ff0000;font-weight:bold;font-size:12px;}

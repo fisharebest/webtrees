@@ -675,60 +675,6 @@ html[dir=rtl] #pedigree_chart {
 	width: 99%;
 }
 
-.tab_cell_active {
-	background-color: #fff;
-	border-left: outset #9ca3d4 2px;
-	border-top: outset #9ca3d4 2px;
-	border-right: outset #9ca3d4 2px;
-	text-align: center;
-	font-weight: bold;
-}
-
-.tab_cell_inactive {
-	background-color: #d6e0ea;
-	border-left: solid #9ca3d4 2px;
-	border-top: solid #9ca3d4 2px;
-	border-right: outset #9ca3d4 2px;
-	text-align: center;
-	font-weight: bold;
-}
-
-.tab_cell_inactive_empty {
-	background-color: #c6d0da;
-	border-left: solid #9ca3d4 2px;
-	border-top: solid #9ca3d4 2px;
-	border-right: outset #9ca3d4 2px;
-	text-align: center;
-	font-weight: bold;
-}
-
-.tab_cell_inactive_empty a {
-	color: #999;
-}
-
-.tab_active_bottom {
-	border-top: none;
-	border-bottom: none;
-	border-left: none;
-	border-right: none;
-	height: 5px;
-}
-
-.tab_inactive_bottom {
-	border-left: none;
-	border-right: none;
-	border-top: outset #9ca3d4 2px;
-	height: 5px;
-}
-
-.tab_inactive_bottom_right {
-	border-left: none;
-	border-right: none;
-	border-top: outset #9ca3d4 2px;
-	width: 33%;
-	height: 5px;
-}
-
 .indent {
 	padding-left: 7px;
 }
