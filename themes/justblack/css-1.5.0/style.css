@@ -465,9 +465,6 @@ h4{color:#e7e7e7;font-size:13px;font-weight:bold}
 /* Style for the top and bottom bar  */
 .topbottombar{background-color:#8e8e8e;color:#e7e7e7;font-size:13px;font-weight:bold;padding:4px;text-align:center}
 
-/* Style for the subbar in   */
-.subbar{background-color:#272727;border:solid #545454 1px;color:#e7e7e7;font-size:11px;padding:3px;vertical-align:top;white-space:nowrap}
-
 /* Style for the descriptionbox  */
 .descriptionbox{background-color:#545454;color:#e7e7e7;font-size:13px;padding:6px;vertical-align:top;white-space:nowrap}
 
