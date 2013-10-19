@@ -436,66 +436,6 @@ th {
 	width:99%;
 }
 
-.tab_cell_active {
-	color:#000066;
-	background-color:#ffffff;
-	border-color:#ff6633;
-	border-width:1px;
-	border-bottom-style:none;
-	border-top-style:solid;
-	border-right-style:solid;
-	text-align:center;
-	font-weight:bold;
-}
-
-.tab_cell_inactive {
-	color:#000066;
-	background-color:#ecf5ff;
-	border-color:#ff6633;
-	border-width:1px;
-	border-right-style:solid;
-	text-align:center;
-	font-weight:bold;
-}
-
-.tab_cell_inactive_empty {
-	color:#000066;
-	background-color:#dce5ef;
-	border-color:#ff6633;
-	border-width:1px;
-	border-right-style:solid;
-	text-align:center;
-	font-weight:bold;
-}
-
-.tab_cell_inactive_empty a {
-	color:#5555ff;
-}
-.tab_active_bottom {
-	border-top:none;
-	border-bottom:none;
-	border-left:none;
-	border-right:none;
-	height:5px;
-}
-
-.tab_inactive_bottom {
-	background-color:#ffffff;
-	border-left:none;
-	border-right:none;
-	border-top:solid #ff6633 1px;
-	height:5px;
-}
-
-.tab_inactive_bottom_right {
-	background-color:#ffffff;
-	border-left:none;
-	border-right:none;
-	border-top:solid #ff6633 1px;
-	width:35%;
-	height:5px;
-}
-
 .name1 {
 	color:#000066;
 	font-weight:bold;font-size:11px;
@@ -1101,18 +1041,6 @@ h4 {
 	font-weight:bold;font-size:12px;
 	padding:4px;
 	text-align:center;
-}
-
-/* Style for the subbar in */
-
-.subbar {
-	background-color:#ecf5ff;
-	border:solid #c3dfff 1px;
-	color:#000066;
-	font-size:11px;
-	padding:3px;
-	white-space:nowrap;
-	vertical-align:top;
 }
 
 /* Style for the descriptionbox */
