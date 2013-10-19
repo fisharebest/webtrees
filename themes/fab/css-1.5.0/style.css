@@ -446,11 +446,6 @@ html[dir=rtl] #index_small_blocks {
 	width: 100%;
 }
 #pedigree_chart {
-<<<<<<< HEAD
-	position:relative;
-	top:-200px;
-	left:0;
-=======
 	position: relative;
 	top: -230px;
 	left: 0;
