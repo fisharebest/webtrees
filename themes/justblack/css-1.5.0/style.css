@@ -27,15 +27,15 @@
 * @example: http://www.stamboomknegt.nl
 */
 
-@media print  {
-	#topMenu,#header,#optionsmenu,#header select,#header input,#footer select,#backprint,#sidebar {display:none}
-	#header,#footer,.noprint {display:none !important}
-	form,button,input {display:none}
-	
-	/* buttons and input are used out of forms in sortable tables */
-	.lifespan_outer {border:none;height:auto;overflow:visible;position:relative;width:auto}
-	.lifespan_people {left:-10px;position:absolute;top:-60px;width:auto;z-index:1}
-	#CB_All {display:none}
+@media print {
+	#topMenu, #header, #optionsmenu, #header select, #header input, #footer select, #backprint, #sidebar {display:none;}
+	#header, #footer, .noprint {display:none !important;}
+	form, button, input {display:none;} 
+	#pedigree_chart {left:right;left:-80px;}
+	html[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
+	.lifespan_outer {position:relative;width:auto;height:auto;overflow:visible;border:none;}
+	.lifespan_people {position:absolute;width:auto;left:-10px;top:-60px;z-index:1;}
+	#CB_All {display:none;}
 }
 
 @font-face {
@@ -411,7 +411,7 @@ html[dir='rtl'] #familybook_chart{margin-right:10px;}
 /*-- pedigree chart specific stylesheets -- */
 #pedigree-page table.list_table {margin:0 auto;width:500px;}
 .pedigree_chart_table {border:0;border-collapse:collapse;padding:0;width:100%;}
-#pedigree_chart{left:0;position:relative;top:-240px;width:99%}
+#pedigree_chart{left:0;position:relative;top:-200px;width:99%}
 #pedigree_chart div.shadow {box-shadow: 6px 8px #171717;}
 #pedigree_canvas {color:#FFFFDE;position:absolute;top:200px;z-index:-1000;}
 #pedigree_chart #childarrow, #pedigree_chart #uparrow, #pedigree_chart .shadow {position:absolute;}
