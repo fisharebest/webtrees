@@ -304,13 +304,7 @@ th{font-weight:100}
 .facts_value02{background-color:#f2f5f9;color:#e7e7e7;font-size:11px;padding:4px}
 .quickfacts a{font-size:9px;padding:0 3px}
 .tabs_table{width:99%}
-.tab_cell_active{background-color:#EEE8AA;border-bottom-style:none;border-color:#ff6633;border-right-style:solid;border-top-style:solid;border-width:1px;color:#e7e7e7;font-weight:bold;text-align:center}
-.tab_cell_inactive{background-color:#272727;border-color:#ff6633;border-right-style:solid;border-width:1px;color:#e7e7e7;font-weight:bold;text-align:center}
-.tab_cell_inactive_empty{background-color:#dce5ef;border-color:#ff6633;border-right-style:solid;border-width:1px;color:#e7e7e7;font-weight:bold;text-align:center}
-.tab_cell_inactive_empty a{color:#5555ff}
-.tab_active_bottom{height:10px}
-.tab_inactive_bottom{background-color:#808080;border-left:none;border-right:none;border-top:solid #ff6633 1px;height:5px}
-.tab_inactive_bottom_right{background-color:#808080;border-left:none;border-right:none;border-top:solid #ff6633 1px;height:5px;width:35%}
+
 .name1{color:#e7e7e7;font-size:11px;font-weight:bold}
 a:hover .name1{color:#E7E7E7;font-size:11px;font-weight:bold;text-decoration:underline}
 a:hover .name2{color:#767676;font-size:11px;font-weight:bold}
