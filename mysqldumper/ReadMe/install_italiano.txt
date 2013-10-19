@@ -1,6 +1,0 @@
-Installazione:
-
-- carica la cartella mysqldumper sul tuo spazio web
-- metti i diritti del file config.php a 777
-- fai partire lo script nel tuo Browser (http://www.il tuo dominio.it/mysqldumper/)
-- segui la installazione

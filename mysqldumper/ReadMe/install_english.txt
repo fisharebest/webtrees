@@ -1,5 +1,0 @@
-Installation:
-
-- upload the folder mysqldumper to any folder on your webspace
-- start the script in your browser (http://www.yourDomain.de/yourFolder/mysqldumper/)
-- Follow the Installatio assistent
