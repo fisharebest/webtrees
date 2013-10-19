@@ -923,15 +923,14 @@ html[dir=rtl] #search-page-table .value {margin:0 170px 0 0;}
 html[dir=rtl] #edituser-table .label {float:right;}
 html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 
-
-
-
 @media print {
-	#backprint {	display:none;}
+	#backprint {display:none;}
 	#header, #footer, .noprint {display:none !important;}
-	form, button, input {display:none;} /* buttons and input are used out of forms in sortable tables*/
+	#pedigree_chart {left:right;left:-80px;}
+	html[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
+	form, button, input {display:none;}
 	.lifespan_outer {position:relative;width:auto;height:auto;overflow:visible;border:none;}
-	.lifespan_people {position:absolute;	width:auto;	left:-10px;	top:-60px;z-index:1;}
+	.lifespan_people {position:absolute;width:auto;	left:-10px;	top:-60px;z-index:1;}
 	#CB_All {display:none;}
 }
 

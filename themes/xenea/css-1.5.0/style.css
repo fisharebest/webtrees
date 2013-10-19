@@ -911,7 +911,7 @@ html[dir=rtl] #familybook_chart {margin-right:10px;}
 .pedigree_chart_table {border:0;border-collapse:collapse;padding:0;width:100%;}
 #pedigree_chart {
 	position:relative;
-	top:-240px;
+	top:-200px;
 	left:0;
 }
 #pedigree_canvas {color:#81a9cb;position:absolute;top:200px;z-index:-1000;}
@@ -2000,26 +2000,12 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 
 @media print {
 	#topMenu, #header, #optionsmenu, #header select, #header input, #footer select, #backprint, #sidebar {display:none;}
-
 	#header, #footer, .noprint {display:none !important;}
-
-	form, button, input {display:none;} /* buttons and input are used out of forms in sortable tables*/
-
-	.lifespan_outer {
-		position:relative;
-		width:auto;
-		height:auto;
-		overflow:visible;
-		border:none;
-	}
-
-	.lifespan_people {
-		position:absolute;
-		width:auto;
-		left:-10px;
-		top:-60px;
-		z-index:1;
-	}
+	form, button, input {display:none;} 
+	#pedigree_chart {left:right;left:-80px;}
+	html[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
+	.lifespan_outer {position:relative;width:auto;height:auto;overflow:visible;border:none;}
+	.lifespan_people {position:absolute;width:auto;left:-10px;top:-60px;z-index:1;}
 	#CB_All {display:none;}
 }
 
