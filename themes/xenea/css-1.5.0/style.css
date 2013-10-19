@@ -1927,6 +1927,7 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 .logged_in_list {margin:5px 0 0 0;padding:0;line-height:20px;}
 
 @media print {
+	* {margin:0;padding:0;}
 	#topMenu, #header, #optionsmenu, #header select, #header input, #footer select, #backprint, #sidebar {display:none;}
 	#header, #footer, .noprint {display:none !important;}
 	form, button, input {display:none;} 

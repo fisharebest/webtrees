@@ -447,7 +447,7 @@ html[dir=rtl] #index_small_blocks {
 }
 #pedigree_chart {
 	position: relative;
-	top: -230px;
+	top: -200px;
 	left: 0;
 }
 #pedigree_canvas {
@@ -542,6 +542,7 @@ html[dir=rtl] #pedigree_chart {
 
 /* Printer friendliness */
 @media print {
+	* {margin:0;padding:0;}
 	#header, #footer, #pedigree-page #people {display:none;}
 	#CB_All {display:none;}
 	#pedigree_chart {right:auto;left:-80px;}
