@@ -1,3 +1,4 @@
 *.swp
 *dwsync.xml
 /SyncToy*
+/mysqldumper
