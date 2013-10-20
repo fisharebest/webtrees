@@ -253,7 +253,8 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		$indi_xref=$controller->getSignificantIndividual()->getXref();		
 		$menu = new WT_Menu(WT_I18N::translate('View'), 'pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-view');
 		
-		if ($this->getSettings('compact_menu_reports') == 1) {
+		$active_reports=WT_Module::getActiveReports();
+		if ($this->getSettings('compact_menu_reports') == 1 && $active_reports) {
 			$submenu_items = array(
 				WT_MenuBar::getChartsMenu(),
 				WT_MenuBar::getListsMenu(),
