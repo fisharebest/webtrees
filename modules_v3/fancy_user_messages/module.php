@@ -1,5 +1,5 @@
 <?php
-// Classes and libraries for module system
+// Fancy User Messages Module - Version 1.0 - JustCarmen 2013
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2013 webtrees development team.
@@ -34,7 +34,7 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Messages” module */ WT_I18N::translate('Communicate directly with other users, using private messages.');
+		return /* I18N: Description of the “Messages�? module */ WT_I18N::translate('Communicate directly with other users, using private messages.');
 	}
 
 	// Implement class WT_Module_Block
@@ -43,10 +43,10 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		
-		$controller->addInlineJavascript('
-			// apply css rule to all themes
-			jQuery(".fancy_user_messages_block, .fancy_user_messages_block .small_inner_block").css("max-height", "400px");
-						
+		// Quick loading of css
+		echo '<script>'.$this->getScript(WT_MODULES_DIR.$this->getName().'/style.css').'</script>';
+		
+		$controller->addInlineJavascript('						
 			// select all			
 			jQuery("input[name=select_all]").click(function(){
 				if (jQuery(this).is(":checked") == true) {
@@ -102,12 +102,13 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 				}
 			}
 		}
+		
 		$messages = getUserMessages(WT_USER_ID);
 		
 		$title=WT_I18N::plural('%s message', '%s messages',count($messages), WT_I18N::number(count($messages)));
 		
 		// start form
-		$content='<form style="line-height:normal" name="messageform" action="index.php?ctype='.$ctype.'" method="get" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
+		$content='<form name="messageform" action="index.php?ctype='.$ctype.'" method="get" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
 		
 		// header
 		if (get_user_count()>1) {
@@ -165,13 +166,14 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('	
-				jQuery("#'.$table_id.'").dataTable({
+				var oTable = jQuery("#'.$table_id.'").dataTable({
 					"sDom": \'t\',
-					"sScrollY": "300px",
+					"sScrollY": "250px",
+					"bScrollCollapse": true,
 					"bPaginate": false,
 					"bAutoWidth":false,
 					"bLengthChange": false,
-					"bFilter": false,
+					"bFilter": true,
 					'.WT_I18N::datatablesI18N().',
 					"bJQueryUI": true,
 					"aaSorting": ['.$aaSorting.'],
@@ -186,30 +188,67 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 						if(jQuery(".icon-minus").length > 0) {
 							jQuery(".icon-minus").removeClass("icon-minus").addClass("icon-plus");
 						}
-						var thHeight = jQuery("th").outerHeight() - 1;
-						var tbHeight = jQuery("tbody").height();
-						jQuery(".dataTables_scrollHead").removeClass("ui-state-default");					
-						if (tbHeight < 300) {
-							jQuery(".dataTables_scrollBody").css("height", "auto");
+						var h = jQuery(".dataTables_scrollHead th").outerHeight() - 1;
+						var f = jQuery(".dataTables_scrollFoot th").outerHeight() - 1;						
+						var b =jQuery(".dataTables_scrollBody .message-table").height();
+						jQuery(".dataTables_scrollHead, .dataTables_scrollFoot").removeClass("ui-state-default");					
+						if (b > 250) {
+							jQuery(".dataTables_scrollHeadInner").prepend("<div class=\"ui-state-default scrollbarBlock\" style=\"top:2px; height:" + h + "px\">");
+							jQuery(".dataTables_scrollFootInner").prepend("<div class=\"ui-state-default scrollbarBlock\" style=\"bottom:2px; height:" + f + "px\">");							
 						}
 						else {
-							jQuery(".dataTables_scrollHeadInner").prepend("<div class=\"ui-state-default\" style=\"position:absolute;top:2px;right:0;width:15px;height:" + thHeight + "px\">");
-						}
+							jQuery(".scrollbarBlock").remove();
+						}						
 					}
-				});				
-			');
+				});					
 	
-		//-- table header
-		$html .= '<table id="' . $table_id . '" class="message-table">';
+				jQuery("tfoot input").keyup( function () {
+					oTable.fnFilter( this.value, jQuery("tfoot input").index(this) );
+				} );	
+				
+				var asInitVals = new Array();
+				jQuery("tfoot input").each( function (i) {
+					asInitVals[i] = this.value;
+				} );
+	
+				jQuery("tfoot input").focus( function () {
+					if ( this.className == "search_init" )
+					{
+						this.className = "";
+						this.value = "";
+					}
+				} );
+				
+				jQuery("tfoot input").blur( function (i) {
+					if ( this.value == "" )
+					{
+						this.className = "search_init";
+						this.value = asInitVals[jQuery("tfoot input").index(this)];
+					}
+				} );			
+			');
+		
+		//-- table header		
+		$html .= '<table id="' . $table_id . '" class="message-table">';			
 		$html .= '<thead><tr>';
 		$html .= '<th class="nowrap">'	. WT_I18N::translate('Delete') . '<input type="checkbox" name="select_all" style="vertical-align:middle;margin:0 3px"></th>';
 		$html .= '<th>' . str_replace(":", "", WT_I18N::translate('Subject:')) . '</th>';
 		$html .= '<th>' . str_replace(":", "", WT_I18N::translate('Date Sent:')) . '</th>';
 		$html .= '<th>' . WT_I18N::translate('Email address') . '</th>';
 		$html .= '<th>DATE</th>';     //hidden by datatables code
-		$html .= '</tr></thead><tbody>';
+		$html .= '</tr></thead>';
+		
+		// table footer
+		$html .= '<tfoot><tr>';
+		$html .= '<th><input type="text" class="search_init" style="display:none"></th>';
+		$html .= '<th><input type="text" class="search_init" value="'.WT_I18N::translate('Search').' '.str_replace(":", "", WT_I18N::translate('Subject:')).'" name="search_subject"></th>';
+		$html .= '<th><input type="text" class="search_init" value="'.WT_I18N::translate('Search').' '.str_replace(":", "", WT_I18N::translate('Date Sent:')).'" name="search_date_sent"></th>';
+		$html .= '<th><input type="text" class="search_init" value="'.WT_I18N::translate('Search').' '. WT_I18N::translate('Email address').'" name="search_email_address"></th>';
+		$html .= '<th>&nbsp;</th>';
+		$html .= '</tr></tfoot>';
 
 		//-- table body
+		$html .= '<tbody>';
 		foreach ($messages as $message) {
 			$user_id = get_user_id($message->sender);	
 				
@@ -260,4 +299,20 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 	public function configureBlock($block_id) {
 		return false;
 	}
+	
+	// Implement the css stylesheet for this module	
+	private function getScript($css) {
+		// To prevent page flickering we must load the css asap. So we cannot use jQuery("head").append(<link rel="stylesheet" ... 
+		// as jQuery is not loaded at this time
+		return
+			'if (document.createStyleSheet) {
+				document.createStyleSheet("'.$css.'"); // For Internet Explorer
+			} else {
+				var newSheet=document.createElement("link");
+				newSheet.setAttribute("rel","stylesheet");
+				newSheet.setAttribute("type","text/css");
+				newSheet.setAttribute("href","'.$css.'");
+				document.getElementsByTagName("head")[0].appendChild(newSheet);
+			}';
+	}		
 }
