@@ -8663,7 +8663,7 @@ msgstr "Ehename"
 
 #: library/WT/Gedcom/Tag.php:733
 msgid "Married surname"
-msgstr "Nachname nach der Ehe"
+msgstr "Nachname in der Ehe"
 
 #: library/WT/Stats.php:3895
 msgid "Marshall Islands"
