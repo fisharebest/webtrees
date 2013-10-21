@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
  
-.fancy_user_messages_block, .fancy_user_messages_block .small_inner_block{max-height:400px};
+.fancy_user_messages_block, .fancy_user_messages_block .small_inner_block{max-height:400px}
 .fancy_user_messages_block .dataTables_scrollHeadInner, .fancy_user_messages_block .dataTables_scrollFootInner {position:relative}
 .fancy_user_messages_block .scrollbarBlock {position:absolute; right:0; width:15px}
 .fancy_user_messages_block tfoot input{color:#808080; font-size:11px; margin-top:3px; margin-bottom:5px}
