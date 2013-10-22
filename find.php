@@ -601,7 +601,7 @@ if ($action=="filter") {
 		if ($places) {
 			echo '<ul>';
 			foreach ($places as $place) {
-				echo '<li><a href="#" onclick="pasteid(\'', WT_Filter::escapeHtml($place->getGedcomName()), '\');">';
+				echo '<li><a href="#" onclick="pasteid(\'', WT_Filter::escapeJs($place->getGedcomName()), '\');">';
 				if (!$filter || $all) {
 					echo $place->getReverseName(); // When displaying all names, sort/display by the country, then region, etc.
 				} else {
