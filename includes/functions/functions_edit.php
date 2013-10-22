@@ -171,10 +171,10 @@ function edit_language_checkboxes($field_prefix, $languages) {
 	foreach (WT_I18N::installed_languages() as $code=>$name) {
 		$content = '<input type="checkbox" name="'.$field_prefix.$code.'" id="'.$field_prefix.$code.'"';
 		if (strpos(",{$languages},", ",{$code},")!==false) {
-			$content .= 'checked="checked"';
+			$content .= ' checked="checked"';
 		}
 		$content .= '><label for="'.$field_prefix.$code.'"> '.$name.'</label>';
-		// print in two columns
+		// print in three columns
 		switch ($i % 3) {
 		case 0: echo '<tr><td>', $content, '</td>'; break;
 		case 1: echo '<td>', $content, '</td>'; break;
@@ -182,10 +182,8 @@ function edit_language_checkboxes($field_prefix, $languages) {
 		}
 		$i++;
 	}
-	switch ($i % 3) {
-	case 0: echo '</tr>'; break;
-	case 1: echo '</td></td></tr>'; break;
-	case 2: echo '</td></tr>'; break;
+	if((--$i % 3) !== 2) {
+		echo '</tr>';
 	}
 	echo '</table>';
 }
@@ -307,7 +305,7 @@ function remove_links($gedrec, $xref) {
 
 // generates javascript code for calendar popup in user's language
 function print_calendar_popup($id) {
-	return 
+	return
 		' <a href="#" onclick="cal_toggleDate(\'caldiv'.$id.'\', \''.$id.'\'); return false;" class="icon-button_calendar" title="'.WT_I18N::translate('Select a date').'"></a>'.
 		'<div id="caldiv'.$id.'" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white; z-index: 1000;"></div>';
 }
@@ -374,7 +372,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	$islink = (substr($value, 0, 1)=="@" and substr($value, 0, 2)!="@#");
 	if ($islink) {
 		$value=trim(trim(substr($tag, strlen($fact)+3)), " @\r");
-	} else { 
+	} else {
 		$value=trim(substr($tag, strlen($fact)+3));
 	}
 	if ($fact=='REPO' || $fact=='SOUR' || $fact=='OBJE' || $fact=='FAMC')
@@ -495,13 +493,13 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	}
 
 	// retrieve linked NOTE
-	if ($fact=="NOTE" && $islink) {		
+	if ($fact=="NOTE" && $islink) {
 		$note1=WT_Note::getInstance($value);
 		if ($note1) {
 			$noterec=$note1->getGedcom();
 			preg_match("/$value/i", $noterec, $notematch);
 			$value=$notematch[0];
-		}		
+		}
 	}
 
 	if (in_array($fact, $emptyfacts) && ($value=='' || $value=='Y' || $value=='y')) {
@@ -599,9 +597,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 			}
 			echo '>';
 		}
-		
+
 		$tmp_array = array('TYPE','TIME','NOTE','SOUR','REPO','OBJE','ASSO','_ASSO','AGE');
-		
+
 		// split PLAC
 		if ($fact=='PLAC') {
 			echo "<div id=\"", $element_id, "_pop\" style=\"display: inline;\">";
@@ -611,7 +609,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 			if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
 				places_assistant_WT_Module::setup_place_subfields($element_id);
 				places_assistant_WT_Module::print_place_subfields($element_id);
-			}	
+			}
 		} elseif (!in_array($fact, $tmp_array)) {
 			echo print_specialchar_link($element_id);
 		}
@@ -846,7 +844,7 @@ function print_add_layer($tag, $level=2) {
 		add_simple_tag(($level+1) . ' SHARED_NOTE');
 		echo '</table></div>';
 		break;
-	
+
 	case 'NOTE':
 		//-- Retrieve existing note or add new note to fact
 		echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><i id=\"newnote_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new note'), '</a>';
