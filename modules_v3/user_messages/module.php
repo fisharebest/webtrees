@@ -82,7 +82,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		} else {
 			$content.='<input type="hidden" name="action" value="deletemessage">';
 			$content.='<table class="list_table"><tr>';
-			$content.='<td class="list_label">'.WT_I18N::translate('Delete').'<br><a href="#" onclick="jQuery(\'.'.$this->getName().'_block :checkbox\').attr(\'checked\',\'checked\'); return false;">'.WT_I18N::translate('All').'</a></td>';
+			$content.='<td class="list_label">'.WT_I18N::translate('Delete').'<br><a href="#" onclick="jQuery(\'#' . $this->getName() . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">'.WT_I18N::translate('All').'</a></td>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Subject:').'</td>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Date Sent:').'</td>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Email address:').'</td>';
