@@ -18,7 +18,7 @@ $html = '';
 
 // get message block
 $html .= '<td colspan="4"><div id="message'.$message->message_id.'" style="padding:10px">';
-$html .= expand_urls(WT_Filter::escapeHtml($message->body));
+$html .= WT_Filter::expandUrls($message->body);
 
 if (strpos($message->subject, /* I18N: When replying to an email, the subject becomes “RE: <subject>” */ WT_I18N::translate('RE: '))!==0) {
 	$message->subject= WT_I18N::translate('RE: ').$message->subject;
