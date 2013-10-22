@@ -157,7 +157,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 
 			// "Help for this page" link
 			echo '<div id="page_help">', help_link('add_faq_item', $this->getName()), '</div>';
-			echo '<form name="faq" method="post" action="?">';
+			echo '<form name="faq" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">';
 			echo '<input type="hidden" name="save" value="1">';
 			echo '<input type="hidden" name="block_id" value="', $block_id, '">';
 			echo '<table id="faq_module">';
@@ -278,7 +278,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		echo '<div class="faq_italic">', WT_I18N::translate('Click on a title to go straight to it, or scroll down to read them all');
 			if (WT_USER_GEDCOM_ADMIN) {
 				echo '<div class="faq_edit">',
-						'<a href="module.php?mod=faq&amp;mod_action=admin_config">', WT_I18N::translate('Click here to Add, Edit, or Delete'), '</a>',
+						'<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', WT_I18N::translate('Click here to Add, Edit, or Delete'), '</a>',
 				'</div>';
 			}
 		echo '</div>';
