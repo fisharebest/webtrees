@@ -24,6 +24,14 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Filter {
+	// REGEX to match a URL
+	// Some versions of RFC3987 have an appendix B which gives the following regex
+	// (([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?
+	// This matches far too much while a “precise” regex is several pages long.
+	// This is a compromise.
+	const URL_REGEX='((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
+
+
 	//////////////////////////////////////////////////////////////////////////////
 	// Escape a string for use in HTML
 	//////////////////////////////////////////////////////////////////////////////
@@ -65,6 +73,22 @@ class WT_Filter {
 	//////////////////////////////////////////////////////////////////////////////
 	public static function unescapeHtml($string) {
 		return html_entity_decode(strip_tags($string), ENT_QUOTES, 'UTF-8');
+	}
+
+	//////////////////////////////////////////////////////////////////////////////
+	// Escape a string for use in HTML, and additionally:
+	// Convert URLs to links, inserting soft-hyphens at word boundaries so that
+	// the browser can word-wrap.
+	//////////////////////////////////////////////////////////////////////////////
+	public static function expandUrls($text) {
+		return preg_replace_callback(
+			'/' . addcslashes('(?!>)' . self::URL_REGEX . '(?!</a>)', '/') . '/i',
+			create_function( // Insert soft hyphens into the replaced string
+				'$m',
+				'return "<a href=\"" . $m[0] . "\" target=\"blank\">" . preg_replace("/\b/", "&shy;", $m[0]) . "</a>";'
+			),
+			nl2br(WT_Filter::escapeHtml($text), false)
+		);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
