@@ -404,11 +404,11 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 			$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
 		} else {
 			$text = $note->getNote();
-			$text = expand_urls($text);
+			$text = WT_Filter::expandUrls($text);
 		}
 	} else {
 		$note = null;
-		$text = expand_urls($text);
+		$text = WT_Filter::expandUrls($text);
 	}
 
 	if ($textOnly) {

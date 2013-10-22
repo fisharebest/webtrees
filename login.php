@@ -274,7 +274,7 @@ case 'register':
 			$mail1_body =
 				WT_I18N::translate('Hello administrator…') . WT_Mail::EOL . WT_Mail::EOL .
 				/* I18N: %s is a server name/URL */
-				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE)) . WT_Mail::EOL . WT_Mail::EOL .
+				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title_html) . WT_Mail::EOL . WT_Mail::EOL .
 				WT_I18N::translate('Username')      .' '.$user_name     . WT_Mail::EOL .
 				WT_I18N::translate('Real name')     .' '.$user_realname . WT_Mail::EOL .
 				WT_I18N::translate('Email address:').' '.$user_email    . WT_Mail::EOL .
@@ -287,7 +287,7 @@ case 'register':
 			}
 			$mail1_body .= WT_Mail::auditFooter();
 
-			$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
+			$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title);
 			$mail1_to      = getUserEmail($webmaster_user_id);
 			$mail1_from    = getUserFullName($webmaster_user_id);
 			$mail1_method  = get_user_setting($webmaster_user_id, 'contact_method');
@@ -299,7 +299,7 @@ case 'register':
 			$mail2_body=
 				WT_I18N::translate('Hello %s…', $user_realname) . WT_Mail::EOL . WT_Mail::EOL .
 				/* I18N: %1$s is the site URL and %2$s is an email address */
-				WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE), $user_email) . '  '.
+				WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title_html, $user_email) . '  '.
 				WT_I18N::translate('Information about the request is shown under the link below.') . WT_Mail::EOL .
 				WT_I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . WT_Mail::EOL . WT_Mail::EOL .
 				'<a href="' . WT_LOGIN_URL . "?user_name=".urlencode($user_name)."&amp;user_hashcode=".urlencode(get_user_setting($user_id, 'reg_hashcode')) . '&amp;action=userverify">' .
@@ -336,7 +336,7 @@ case 'register':
 			);
 			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute(array($user_email, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));
+					->execute(array($user_email, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, WT_Filter::unescapeHtml($mail1_body)));
 			}
 
 			echo '<div class="confirm"><p>', WT_I18N::translate('Hello %s…<br>Thank you for your registration.', $user_realname), '</p><p>';
@@ -477,7 +477,7 @@ case 'verify_hash':
 		'</a>' .
 		WT_Mail::auditFooter();
 
-	$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
+	$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title);
 	$mail1_to      = getUserEmail($webmaster_user_id);
 	$mail1_from    = getUserFullName($webmaster_user_id);
 	$mail1_method  = get_user_setting($webmaster_user_id, 'CONTACT_METHOD');
@@ -506,7 +506,7 @@ case 'verify_hash':
 			);
 			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));
+					->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, WT_Filter::unescapeHtml($mail1_body)));
 			}
 
 			set_user_setting($user_id, 'verified', 1);

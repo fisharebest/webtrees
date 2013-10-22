@@ -259,7 +259,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 		echo '</div>';
 		break;
 	case 'PUBL': // Publication details might contain URLs.
-		echo '<div class="field">', expand_urls(WT_Filter::escapeHtml($fact->getValue())), '</div>';
+		echo '<div class="field">', WT_Filter::expandUrls($fact->getValue()), '</div>';
 		break;
 	case 'REPO':
 		if (preg_match('/^@('.WT_REGEX_XREF.')@$/', $fact->getValue(), $match)) {
@@ -408,7 +408,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			}
 			break;
 		case 'CALN':
-			echo WT_Gedcom_Tag::getLabelValue('CALN', expand_urls($match[2]));
+			echo WT_Gedcom_Tag::getLabelValue('CALN', WT_Filter::expandUrls($match[2]));
 			break;
 		case 'FORM': // 0 OBJE / 1 FILE / 2 FORM / 3 TYPE
 			echo WT_Gedcom_Tag::getLabelValue('FORM', $match[2]);
@@ -746,7 +746,7 @@ function printSourceStructure($textSOUR) {
 	$html='';
 
 	if ($textSOUR['PAGE']) {
-		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('PAGE').':</span> <span class="field" dir="auto">'.expand_urls($textSOUR['PAGE']).'</span></div>';
+		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('PAGE').':</span> <span class="field" dir="auto">'.WT_Filter::expandUrls($textSOUR['PAGE']).'</span></div>';
 	}
 
 	if ($textSOUR['EVEN']) {
@@ -762,7 +762,7 @@ function printSourceStructure($textSOUR) {
 			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('DATA:DATE').':</span> <span class="field">'.$date->Display(false).'</span></div>';
 		}
 		foreach ($textSOUR['TEXT'] as $text) {
-			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('TEXT').':</span> <span class="field" dir="auto">'.expand_urls($text).'</span></div>';
+			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('TEXT').':</span> <span class="field" dir="auto">'.WT_Filter::expandUrls($text).'</span></div>';
 		}
 	}
 
@@ -909,7 +909,7 @@ function print_main_notes(WT_Fact $fact, $level) {
 				if ($fact->getTag()=='CENS' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 					$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
 				} else {
-					$text = expand_urls($text);
+					$text = WT_Filter::expandUrls($text);
 				}
 			} else {
 				$text = '<span class="error">' . WT_Filter::escapeHtml($nid) . '</span>';
@@ -918,7 +918,7 @@ function print_main_notes(WT_Fact $fact, $level) {
 			// Inline notes
 			$nrec = get_sub_record($level, "$level NOTE", $factrec, $j+1);
 			$text = $match[$j][1] . get_cont($level+1, $nrec);
-			$text = expand_urls($text);
+			$text = WT_Filter::expandUrls($text);
 		}
 
 		echo '<td class="optionbox', $styleadd, ' wrap">';

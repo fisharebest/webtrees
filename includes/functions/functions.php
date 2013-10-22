@@ -1919,25 +1919,6 @@ function isFileExternal($file) {
 	return strpos($file, '://') !== false;
 }
 
-// Turn URLs in text into HTML links.  Insert breaks into long URLs
-// so that the browser can word-wrap.
-function expand_urls($text) {
-	// Some versions of RFC3987 have an appendix B which gives the following regex
-	// (([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?
-	// This matches far too much while a “precise” regex is several pages long.
-	// This is a compromise.
-	$URL_REGEX='((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
-
-	return preg_replace_callback(
-		'/'.addcslashes("(?!>)$URL_REGEX(?!</a>)", '/').'/i',
-		create_function( // Insert soft hyphens into the replaced string
-			'$m',
-			'return "<a href=\"".$m[0]."\" target=\"blank\">".preg_replace("/\b/", "&shy;", $m[0])."</a>";'
-		),
-		nl2br(WT_Filter::escapeHtml($text), false)
-	);
-}
-
 // Returns the part of the haystack before the first occurrence of the needle.
 // Use it to emulate the before_needle php 5.3.0 strstr function
 function strstrb($haystack, $needle){
