@@ -182,8 +182,10 @@ function edit_language_checkboxes($field_prefix, $languages) {
 		}
 		$i++;
 	}
-	if((--$i % 3) !== 2) {
-		echo '</tr>';
+	switch ($i % 3) {
+	case 0: break;
+	case 1: echo '<td></td><td></td></tr>'; break;
+	case 2: echo '<td></td></tr>'; break;
 	}
 	echo '</table>';
 }
