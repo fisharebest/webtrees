@@ -327,13 +327,13 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 
 			echo
-				'<form method="get" action="', WT_SCRIPT_NAME ,'"><p>',
+				'<form method="get" action="', WT_SCRIPT_NAME ,'">',
 				WT_I18N::translate('Family tree'), ' ',
 				'<input type="hidden" name="mod" value="', $this->getName(), '">',
 				'<input type="hidden" name="mod_action" value="admin_config">',
 				select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM),
 				'<input type="submit" value="', WT_I18N::translate('show'), '">',
-				'</p></form>';
+				'</form>';
 
 			echo '<h3><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add story'), '</a></h3>';
 			if (count($stories)>0) {
