@@ -176,7 +176,7 @@ table#log_list {width:100%}
 #log_list pre {margin:0 0 20px 0;max-width:250px;white-space:pre-wrap;word-wrap: break-word;-ms-word-break: break-all;word-break: break-all;-webkit-hyphens: auto;-moz-hyphens: auto; hyphens: auto;}
  #log_list a {color:#0000ff;}
  #log_list a:hover, #log_list a:visited {color:#ff0000;}
- 
+
 /* README */
 #readme {font-size:12px; padding:10px 20px;}
 #readme  h1 {font-size:16px; font-weight:bold; margin-top:0;}
@@ -309,7 +309,7 @@ html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[
 
 /* BROADCAST MESSAGES */
  /* no styles used */
-	
+
 /* USER CLEAN */
 table#clean {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; padding:5px;}
 #clean th {border-bottom:2px solid #d3d3d3; text-align:left; padding:5px; font-size:105%;}
@@ -443,6 +443,7 @@ html[dir=rtl] #story_module th {text-align:right;}
 html[dir=rtl] #story_module2 th, html[dir=rtl] #story_module2 td {text-align:right;}
 table#story_table {width:100%}
 #story_table_wrapper  {margin-top: 20px;}
+#admin_content form {padding:10px 0;}
 
 /* Autocomplete styles */
 .ui-autocomplete-input {background-color:#eee8aa;}
