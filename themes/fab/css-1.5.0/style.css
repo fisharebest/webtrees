@@ -39,7 +39,7 @@ body {
 	border: thin solid #aaa;
 }
 
-/* Thin grey borders around block-level elements */
+/* Round corners to block-level elements */
 input,
 textarea,
 fieldset,
@@ -67,7 +67,6 @@ fieldset,
 .person4,
 .person5,
 #indi_main_blocks,
-a.gallery img,
 #tabs,
 #save-cancel,
 .topbottombar {
@@ -121,6 +120,8 @@ a:active {
 
 img {
 	border: 0;
+	border-radius: 4px;
+	margin: 4px;
 }
 
 input:required:valid,
@@ -1656,11 +1657,6 @@ html[dir=rtl].field .deletelink {
 	position: relative;
 	font-size: larger;
 }
-#indi_header h3.person_box,
-#indi_header h3.person_boxF ,
-#indi_header h3.person_boxNN {
-	border: 1px solid #aaa;
-}
 #indi_header h3 .header_age {
 	padding: 5px 0 5px 5px;
 	float: right;
@@ -1847,9 +1843,6 @@ html[dir=rtl] .media-display-title {
 }
 .ui-accordion .ui-accordion-header a {
 	padding: 6px;
-}
-.ui-helper-reset {
-	line-height: 1.6;
 }
 
 html[dir=rtl] .ui-tabs {
@@ -2156,9 +2149,7 @@ html[dir=rtl] .repo-list th:last-child {
 }
 #sidebarAccordion h3,
 #sidebarAccordion2 h3 {
-	height: 30px;
 	text-align: center;
-	border-color: #aaa;
 }
 .use-sidebar #indi_left {
 	width: 77%;
@@ -2337,11 +2328,9 @@ html[dir=rtl] .desc_tree_div ul {
 
 /* Extra info */
 #sb_content_extra_info {
-	font-size: smaller;
 	font-weight: bold;
-	margin-top: 1px;
 	overflow: hidden;
-	padding: 5px;
+	padding: 4px;
 }
 #sb_content_extra_info .editfacts {
 	float: right;
@@ -2355,11 +2344,6 @@ html[dir=rtl] .desc_tree_div ul {
 }
 #sb_content_extra_info span a {
 	display: inline;
-}
-#sb_content_extra_info #hitcounter {
-	border-top: 1px solid #b2c7d7;
-	font-weight: bold;
-	padding-top: 5px;
 }
 
 html[dir=rtl] #sb_content_extra_info .editfacts {
