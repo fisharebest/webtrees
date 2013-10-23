@@ -1694,7 +1694,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		}
 
 		//-- Counter
-		$output ++;
+		$output++;
 
 		if ($output==1) {
 			//-- table body
@@ -1707,7 +1707,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$html .= '<th><i class="icon-reminder" title="'.WT_I18N::translate('Anniversary').'"></i></th>';
 			$html .= '<th>ANNIV</th>';
 			$html .= '<th>'.WT_Gedcom_Tag::getLabel('EVEN').'</th>';
-			$html .= '</tr></thead><tbody>'."\n";
+			$html .= '</tr></thead><tbody>';
 		}
 
 		$filtered_events[] = $fact;
@@ -1715,34 +1715,19 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 
 	foreach ($filtered_events as $n=>$fact) {
 		$record = $fact->getParent();
-		$html .= "<tr>";
-		//-- Record name(s)
-		$html .= '<td class="wrap">';
+		$html .= '<tr>';
+		$html .= '<td>';
 		$html .= '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
 		if ($record instanceof WT_Individual) {
 			$html .= $record->getSexImage();
 		}
 		$html .= '</td>';
-		//-- NAME
-		$html .= '<td>'; //hidden by datatables code
-		$html .= $record->getSortName();
-		$html .= '</td>';
-		//-- Event date
-		$html .= '<td class="wrap">';
-		$html .= $fact->getDate()->Display(empty($SEARCH_SPIDER));
-		$html .= '</td>';
-		//-- Event date (sortable)
-		$html .= '<td>'; //hidden by datatables code
-		$html .= $n;
-		$html .= '</td>';
-		//-- Anniversary
-		$anniv = $fact->anniv;
-		$html .= '<td>'.($anniv ? WT_I18N::number($anniv) : '&nbsp;').'</td><td>'.$anniv.'</td>';
-		//-- Event name
-		$html .= '<td class="wrap">';
-		$html .= '<a href="' . $record->getHtmlUrl() . '">' . $fact->getLabel() . '</a>';
-		$html .= '&nbsp;</td>';
-
+		$html .= '<td>' . $record->getSortName() . '</td>';
+		$html .= '<td>' . $fact->getDate()->Display(empty($SEARCH_SPIDER)) . '</td>';
+		$html .= '<td>' . $n . '</td>';
+		$html .= '<td>' . WT_I18N::number($fact->anniv) . '</td>';
+		$html .= '<td>' . $fact->anniv . '</td>';
+		$html .= '<td>' . $fact->getLabel() . '</td>';
 		$html .= '</tr>';
 	}
 
@@ -1751,7 +1736,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	}
 
 	// Print a final summary message about restricted/filtered facts
-	$summary = "";
+	$summary = '';
 	if ($endjd==WT_CLIENT_JD) {
 		// We're dealing with the Today's Events block
 		if ($output==0) {
