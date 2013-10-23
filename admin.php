@@ -527,6 +527,7 @@ function old_paths() {
 		WT_ROOT.'modules_v3/googlemap/wt_v3_googlemap.js.php',
 		WT_ROOT.'modules_v3/lightbox/functions/lightbox_print_media.php',
 		WT_ROOT.'modules_v3/upcoming_events/help_text.php',
+		WT_ROOT.'modules_v3/stories/help_text.php',
 		WT_ROOT.'modules_v3/user_messages/help_text.php',
 		WT_ROOT.'themes/_administration/favicon.png',
 		WT_ROOT.'themes/_administration/images',
