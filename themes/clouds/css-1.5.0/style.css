@@ -2839,10 +2839,9 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 @media print {
 	#clouds-container {border:0;}
 	#content {padding:0;}
-	#header,#footer,.noprint, .descriptionbox {display:none !important;}
+	#header,#footer,.noprint{display:none !important;}
 	#pedigree_chart {left:right;left:-80px;}
 	#header_accordion1 {width: 510px!important}
-	ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all{display:none!important;}
 	html[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
 	#topMenu,#header select,#header input,#footer select,#backprint,#sidebar,form,button,input,#CB_All, #separator {display:none;}
 	#familybook_chart h3 {margin-bottom: 10px;}
