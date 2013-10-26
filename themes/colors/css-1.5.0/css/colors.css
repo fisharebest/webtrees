@@ -578,7 +578,7 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 	float: right;
 }
 
-.gedcom_favorites_block .person_box .details2,.gedcom_favorites_block .person_boxF.details2,.gedcom_favorites_block 
+.gedcom_favorites_block .person_box .details2,.gedcom_favorites_block .person_boxF.details2,.gedcom_favorites_block
 .person_boxNN.details2,.user_favorites_block .person_box .details2,.user_favorites_block .person_boxF.details2,.user_favorites_block .person_boxNN.details2 {min-height:40px;}
 
 /* ============= Statistics block ============ */
@@ -1144,7 +1144,7 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(../image
 #edit_interface-page input[type="text"][id^="TIME"] {width:100px;}
 #edit_interface-page input[type="text"][id*="OBJE_FILE"] {width:200px;}
 #edit_interface-page input[type="text"][id*="SOUR_TITL"] {width:250px;}
-#edit_interface-page input[id*="TEXT"] {height:140px;width:440px;} 
+#edit_interface-page input[id*="TEXT"] {height:140px;width:440px;}
 #edit_interface-page textarea {margin:0 5px;width:440px;}
 #edit_interface-page textarea[id*="NOTE"] {height:240px;}
 #edit_interface-page textarea[id*="TEXT"], #edit_interface-page textarea[id*="PUBL"] {height:140px;}
@@ -1173,7 +1173,7 @@ html[dir=rtl] #save-cancel .cancel {float:left;}
 #addmedia-page .optionbox p.sub {font-size:11px;margin:0 5px;}
 #addmedia-page input[type="text"][id*="PAGE"], #addmedia-page input[type="text"][id*="_UID"] {width:350px;}
 #addmedia-page input[type="text"][id*="SOUR"], #addmedia-page input[type="text"][id*="REPO"],#addmedia-page input[type="text"][id*="OBJE"],#addmedia-page input[type="text"][id*="FAMC"],#addmedia-page input[type="text"][id*="ASSO"],#addmedia-page input[type="text"][id^="AGE"],#addmedia-page input[type="text"][id*="SHARED_NOTE"] {width:70px;}
-#addmedia-page input[id*="TEXT"] {height:140px;width:440px;} 
+#addmedia-page input[id*="TEXT"] {height:140px;width:440px;}
 #addmedia-page textarea {margin:0 5px;width:440px;}
 #addmedia-page textarea[id*="NOTE"] {height:240px;}
 
@@ -1203,3 +1203,10 @@ html[dir=rtl] #cboxNext {right:0;left:auto}
 html[dir=rtl] #cboxCurrent {right:auto;left:0}
 html[dir=rtl] #cboxClose {right:auto;left:0}
 html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
+
+/* Stories tab */
+#stories h2,#stories h3,#stories h4,#stories h5{padding-top:20px}
+#stories p{padding-top:8px}
+.story_title{padding-top:12px;height:32px;font-size:13px;font-weight:700;}
+.story_body{padding:20px;white-space:normal}
+.story_edit{padding:12px}

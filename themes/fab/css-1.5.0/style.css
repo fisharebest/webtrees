@@ -245,7 +245,7 @@ html[dir=rtl] #header-title {
 .makeMenu ul,
 #main-menu ul {
 	z-index: 210;
-	
+
 }
 
 /* Use CSS menus based on nested <ul> */
@@ -2380,7 +2380,7 @@ html[dir=rtl] fieldset {
 	text-align: center;
 }
 #find-header span {
-	
+
 }
 #find-output,
 #find-output-special {
@@ -3464,4 +3464,25 @@ html[dir=rtl] #cboxClose {
 html[dir=rtl] #cboxSlideshow {
 	right: 57px;
 	left: 0;
+}
+
+/* Stories tab */
+#stories h2,#stories h3,#stories h4,#stories h5{
+	padding-top:20px
+}
+#stories p{
+	padding-top:8px
+}
+.story_title{
+	padding-top:12px;
+	height:32px;
+	font-size:13px;
+	font-weight:700;
+}
+.story_body{
+	padding:20px;
+	white-space:normal
+}
+.story_edit{
+	padding:12px
 }
