@@ -102,7 +102,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			$block_id = WT_Filter::postInteger('block_id');
 			if ($block_id) {
 				WT_DB::prepare(
-					"UPDATE `##block` SET gedcom_id=NULLIF(?, ''), block_order=? WHERE block_id=?"
+					"UPDATE `##block` SET gedcom_id=NULLIF(?, '0'), block_order=? WHERE block_id=?"
 				)->execute(array(
 					WT_Filter::postInteger('gedcom_id'),
 					WT_Filter::postInteger('block_order'),
@@ -110,7 +110,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 				));
 			} else {
 				WT_DB::prepare(
-					"INSERT INTO `##block` (gedcom_id, module_name, block_order) VALUES (NULLIF(?, ''), ?, ?)"
+					"INSERT INTO `##block` (gedcom_id, module_name, block_order) VALUES (NULLIF(?, '0'), ?, ?)"
 				)->execute(array(
 					WT_Filter::postInteger('gedcom_id'),
 					$this->getName(),
