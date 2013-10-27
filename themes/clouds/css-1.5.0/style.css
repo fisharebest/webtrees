@@ -2187,6 +2187,10 @@ padding:2px;
 text-align:center;
 }
 
+.ui-accordion .ui-accordion-header {
+margin-top:0;text-align:center;
+}
+
 .ui-helper-reset {
 line-height:1.5;
 }
