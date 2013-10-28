@@ -310,7 +310,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				'<span class="note1">' . $postamble . '</span>';
 		} else {
 			// Not a census-assistant shared note - apply default formatting
-			return expand_urls($note->getNote());
+			return WT_Filter::expandUrls($note->getNote());
 		}
 	}
 

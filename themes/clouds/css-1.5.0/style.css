@@ -2187,6 +2187,10 @@ padding:2px;
 text-align:center;
 }
 
+.ui-accordion .ui-accordion-header {
+margin-top:0;text-align:center;
+}
+
 .ui-helper-reset {
 line-height:1.5;
 }
@@ -2839,10 +2843,12 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 @media print {
 	#clouds-container {border:0;}
 	#content {padding:0;}
-	#header,#footer,.noprint {display:none !important;}
+	#header,#footer,.noprint{display:none !important;}
 	#pedigree_chart {left:right;left:-80px;}
+	#header_accordion1 {width: 510px!important}
 	html[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
-	#topMenu,#header select,#header input,#footer select,#backprint,#sidebar,form,button,input,#CB_All {display:none;}
+	#topMenu,#header select,#header input,#footer select,#backprint,#sidebar,form,button,input,#CB_All, #separator {display:none;}
+	#familybook_chart h3 {margin-bottom: 10px;}
 	/* buttons and input are used out of forms in sortable tables*/
 	.lifespan_outer {border:none;height:auto;overflow:visible;position:relative;width:auto;}
 	.lifespan_people {left:-10px;position:absolute;top:-60px;width:auto;z-index:1;}

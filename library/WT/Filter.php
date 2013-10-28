@@ -87,7 +87,7 @@ class WT_Filter {
 				'$m',
 				'return "<a href=\"" . $m[0] . "\" target=\"blank\">" . preg_replace("/\b/", "&shy;", $m[0]) . "</a>";'
 			),
-			nl2br(WT_Filter::escapeHtml($text), false)
+			WT_Filter::escapeHtml($text)
 		);
 	}
 
