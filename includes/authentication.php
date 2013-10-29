@@ -218,7 +218,7 @@ function AddToSearchLog($log_message, $geds) {
 
 // Store a new message in the database
 function addMessage($message) {
-	global $WEBTREES_EMAIL, $WT_REQUEST;
+	global $WT_REQUEST;
 
 	$user_id_from=get_user_id($message['from']);
 	$user_id_to  =get_user_id($message['to']);
@@ -260,12 +260,15 @@ function addMessage($message) {
 		if (!isset($message['no_from'])) {
 			// send a copy of the copy message back to the sender
 			WT_Mail::send(
+				// From:
+				$WT_TREE,
+				// To:
 				$from,
 				$fromFullName,
-				$WEBTREES_EMAIL, 
-				$WEBTREES_EMAIL,
-				$WEBTREES_EMAIL, 
-				$WEBTREES_EMAIL,
+				// Reply-To:
+				WT_Site::preference('SMTP_FROM_NAME'), 
+				$WT_TREE->preference('title'),
+				// Message
 				WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
 				$copy_email
 			);
@@ -311,12 +314,15 @@ function addMessage($message) {
 		}
 		if (getUserEmail($user_id_to)) {
 			WT_Mail::send(
+				// From:
+				$WT_TREE,
+				// To:
 				getUserEmail($user_id_to),
 				getUserFullName($user_id_to),
-				$WEBTREES_EMAIL,
-				$WEBTREES_EMAIL,
-				$WEBTREES_EMAIL,
-				$WEBTREES_EMAIL,
+				// Reply-To:
+				$from,
+				$fromFullName,
+				// Message
 				WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
 				$original_email
 			);

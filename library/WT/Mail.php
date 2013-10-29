@@ -39,16 +39,17 @@ class WT_Mail {
 	}
 
 	// Send an external email message
-	public static function send($to_email, $to_name, $from_email, $from_name, $replyto_email, $replyto_name, $subject, $message) {
+	// Caution! gmail may rewrite the "From" header unless you have added the address to your account.
+	public static function send(WT_Tree $tree, $to_email, $to_name, $replyto_email, $replyto_name, $subject, $message) {
 		try {
 			$mail = new Zend_Mail('UTF-8');
 			$mail
 				->setSubject ($subject)
 				->setBodyHtml($message)
 				->setBodyText(WT_Filter::unescapeHtml($message))
-				->setFrom    ($from_email,    $from_name)
-				->setReplyTo ($replyto_email, $replyto_name)
-				->addTo      ($to_email,      $to_name)
+				->setFrom    (WT_Site::preference('SMTP_FROM_NAME'), $tree->preference('title'))
+				->addTo      ($to_email,                             $to_name)
+				->setReplyTo ($replyto_email,                        $replyto_name)
 				->send       (WT_Mail::transport());
 		} catch (Exception $ex) {
 			AddToLog('Mail: ' . $ex->getMessage(), 'error');
@@ -58,11 +59,10 @@ class WT_Mail {
 	}
 
 	// Send an automated system message (such as a password reminder) from a tree to a user.
-	// Caution! gmail may rewrite the "From" header unless you have added the address to your account.
 	public static function system_message(WT_Tree $tree, $user_id, $subject, $message) {
 		return self::send(
+			$tree,
 			getUserEmail($user_id),                getUserFullName($user_id),
-			WT_Site::preference('SMTP_FROM_NAME'), $tree->preference('title'),
 			WT_Site::preference('SMTP_FROM_NAME'), $tree->preference('title'),
 			$subject,
 			$message
