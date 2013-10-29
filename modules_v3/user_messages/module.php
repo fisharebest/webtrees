@@ -103,7 +103,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$content.='</td>';
 				$content.='</tr>';
 				$content.='<tr><td class="list_value_wrap" colspan="5"><div id="message'.$message->message_id.'" style="display:none;">';
-				$content.='<div dir="auto">' . WT_Filter::expandUrls($message->body) . '</div><br>';
+				$content.='<div dir="auto" style="white-space: pre-wrap;">' . WT_Filter::expandUrls($message->body) . '</div><br>';
 				if (strpos($message->subject, /* I18N: When replying to an email, the subject becomes “RE: <subject>” */ WT_I18N::translate('RE: '))!==0) {
 					$message->subject= WT_I18N::translate('RE: ').$message->subject;
 				}
