@@ -218,7 +218,7 @@ function AddToSearchLog($log_message, $geds) {
 
 // Store a new message in the database
 function addMessage($message) {
-	global $WT_REQUEST;
+	global $WT_TREE, $WT_REQUEST;
 
 	$user_id_from=get_user_id($message['from']);
 	$user_id_to  =get_user_id($message['to']);
