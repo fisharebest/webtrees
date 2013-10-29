@@ -1142,8 +1142,16 @@ html[dir=rtl] #cboxClose {right:auto;left:0;}
 html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
 
 /* Stories */
-/*#stories h2,#stories h3,#stories h4,#stories h5{padding-top:10px}
-#stories p{padding-top:8px}*/
-.story_title{padding-top:12px;height:32px;font-size:13px;font-weight:700;}
-.story_body{padding:20px;white-space:normal}
-.story_edit{padding:12px}
+.story_title {
+	padding-top: 12px;
+	height:      32px;
+	font-size:   13px;
+	font-weight: 700;
+}
+.story_body {
+	padding:     20px;
+	white-space: normal;
+}
+.story_edit {
+	padding: 12px;
+}
