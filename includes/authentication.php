@@ -298,7 +298,13 @@ function addMessage($message) {
 	}
 	if ($message['method']!='messaging3' && $message['method']!='mailto' && $message['method']!='none') {
 		WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-			->execute(array($message['from'], $WT_REQUEST->getClientIp(), get_user_id($message['to']), $message['subject'], $message['body']));
+			->execute(array(
+				$message['from'],
+				$WT_REQUEST->getClientIp(),
+				get_user_id($message['to']),
+				$message['subject'],
+				str_replace('<br>', '', $message['body']) // Remove the <br> that we added for the external email.  TODO: create different messages
+			));
 	}
 	if ($message['method']!='messaging') {
 		if (!$user_id_from) {
