@@ -90,7 +90,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			foreach ($messages as $message) {
 				$content.='<tr>';
 				$content.='<td class="list_value_wrap"><input type="checkbox" id="cb_message'.$message->message_id.'" name="message_id[]" value="'.$message->message_id.'"></td>';
-				$content.='<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message'.$message->message_id.'\');"><i id="message'.$message->message_id.'_img" class="icon-plus"></i> <b>'.WT_Filter::escapeHtml($message->subject).'</b></a></td>';
+				$content.='<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message'.$message->message_id.'\');"><i id="message'.$message->message_id.'_img" class="icon-plus"></i> <b dir="auto">'.WT_Filter::escapeHtml($message->subject).'</b></a></td>';
 				$content.='<td class="list_value_wrap">'.format_timestamp($message->created).'</td>';
 				$content.='<td class="list_value_wrap">';
 				$user_id=get_user_id($message->sender);
@@ -103,7 +103,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$content.='</td>';
 				$content.='</tr>';
 				$content.='<tr><td class="list_value_wrap" colspan="5"><div id="message'.$message->message_id.'" style="display:none;">';
-				$content.=WT_Filter::expandUrls($message->body).'<br><br>';
+				$content.='<div dir="auto">' . WT_Filter::expandUrls($message->body) . '</div><br>';
 				if (strpos($message->subject, /* I18N: When replying to an email, the subject becomes “RE: <subject>” */ WT_I18N::translate('RE: '))!==0) {
 					$message->subject= WT_I18N::translate('RE: ').$message->subject;
 				}
