@@ -535,6 +535,7 @@ html[dir=rtl] #pedigree_chart {
 		background: #fff;
 	}
 	#header_accordion1 {width: 510px!important}
+	.noprint {display:none!important;}
 	#header,
 	#footer,
 	#pedigree-page #people,
