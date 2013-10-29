@@ -1200,10 +1200,10 @@ input, textarea {
 padding:0 3px;
 }
 
-button, input[type="submit"], input[type="reset"], input[type="button"], input[type="file"] 
-{border:1px solid #cbc7bd; 
-color:#654b24; 
-font-weight:700; 
+button, input[type="submit"], input[type="reset"], input[type="button"], input[type="file"]
+{border:1px solid #cbc7bd;
+color:#654b24;
+font-weight:700;
 border-radius:3px;
 font-size: 10px;
 padding: 0 3px;
@@ -2230,7 +2230,7 @@ span.link_text {
 display:none;
 }
 
-.ui-menu .ui-menu-item a 
+.ui-menu .ui-menu-item a
 {
 font-size: 12px;}
 
@@ -3007,7 +3007,7 @@ html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[
 #edit_interface-page input[type="text"][id^="TIME"] {width:100px;}
 #edit_interface-page input[type="text"][id*="OBJE_FILE"] {width:200px;}
 #edit_interface-page input[type="text"][id*="SOUR_TITL"] {width:250px;}
-#edit_interface-page input[id*="TEXT"] {height:140px;width:440px;} 
+#edit_interface-page input[id*="TEXT"] {height:140px;width:440px;}
 #edit_interface-page textarea {margin:0 5px;width:440px;}
 #edit_interface-page textarea[id*="NOTE"] {height:240px;}
 #edit_interface-page textarea[id*="TEXT"], #edit_interface-page textarea[id*="PUBL"] {height:140px;}
@@ -3036,7 +3036,7 @@ html[dir=rtl] #save-cancel .cancel {float:left;}
 #addmedia-page .optionbox p.sub {font-size:11px;margin:0 5px;}
 #addmedia-page input[type="text"][id*="PAGE"], #addmedia-page input[type="text"][id*="_UID"] {width:350px;}
 #addmedia-page input[type="text"][id*="SOUR"], #addmedia-page input[type="text"][id*="REPO"],#addmedia-page input[type="text"][id*="OBJE"],#addmedia-page input[type="text"][id*="FAMC"],#addmedia-page input[type="text"][id*="ASSO"],#addmedia-page input[type="text"][id^="AGE"],#addmedia-page input[type="text"][id*="SHARED_NOTE"] {width:70px;}
-#addmedia-page input[id*="TEXT"] {height:140px;width:440px;} 
+#addmedia-page input[id*="TEXT"] {height:140px;width:440px;}
 #addmedia-page textarea {margin:0 5px;width:440px;}
 #addmedia-page textarea[id*="NOTE"] {height:240px;}
 
@@ -3066,3 +3066,10 @@ html[dir=rtl] #cboxNext {right:0;left:auto}
 html[dir=rtl] #cboxCurrent {right:auto;left:0}
 html[dir=rtl] #cboxClose {right:auto;left:0}
 html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
+
+/* Stories tab */
+#stories h2,#stories h3,#stories h4,#stories h5{padding-top:20px}
+#stories p{padding-top:8px}
+.story_title{padding-top:12px;height:32px;font-size:13px;font-weight:700;}
+.story_body{padding:20px;white-space:normal}
+.story_edit{padding:12px}
