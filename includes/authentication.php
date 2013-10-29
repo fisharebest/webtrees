@@ -264,6 +264,8 @@ function addMessage($message) {
 				$fromFullName,
 				$WEBTREES_EMAIL, 
 				$WEBTREES_EMAIL,
+				$WEBTREES_EMAIL, 
+				$WEBTREES_EMAIL,
 				WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
 				$copy_email
 			);
@@ -311,6 +313,8 @@ function addMessage($message) {
 			WT_Mail::send(
 				getUserEmail($user_id_to),
 				getUserFullName($user_id_to),
+				$WEBTREES_EMAIL,
+				$WEBTREES_EMAIL,
 				$WEBTREES_EMAIL,
 				$WEBTREES_EMAIL,
 				WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],

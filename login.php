@@ -321,6 +321,8 @@ case 'register':
 				$mail2_to,
 				$mail2_from,
 				$mail2_from,
+				$mail2_from,
+				$mail2_from,
 				$mail2_subject,
 				$mail2_body
 			);
@@ -329,6 +331,8 @@ case 'register':
 			WT_Mail::send(
 				$mail1_to,
 				$mail1_to,
+				$mail1_from,
+				$mail1_from,
 				$mail1_from,
 				$mail1_from,
 				$mail1_subject,
@@ -499,6 +503,8 @@ case 'verify_hash':
 			WT_Mail::send(
 				$mail1_to,
 				$mail1_to,
+				$mail1_from,
+				$mail1_from,
 				$mail1_from,
 				$mail1_from,
 				$mail1_subject,
