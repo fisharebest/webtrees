@@ -31,7 +31,7 @@ $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addInlineJavascript('activate_colorbox();')
-	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"70%", height:"70%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"})') 
+	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"70%", height:"70%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"})')
 	->addInlineJavascript('
 		jQuery.extend(jQuery.colorbox.settings, {
 			title:	function(){
@@ -61,14 +61,16 @@ case 'msie':
 if (WT_USE_LIGHTBOX) {
 		echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen">';
 }
-
+if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+	echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/css/cens_style.css">';
+}
 echo
 	'</head>',
 	'<body id="body">';
 
 if  ($view!='simple') { // Use "simple" headers for popup windows
 	global $WT_IMAGES;
-	echo 
+	echo
 	'<div id="clouds-container">',
 		'<div id="header">',
 			'<div class="header" >',
@@ -100,19 +102,19 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	foreach (WT_MenuBar::getModuleMenus() as $menu) {
 		$menu_items[]=$menu;
 	}
- 
+
 	// Print the menu bar
 	echo
 	'<div id="topMenu">',
-		'<ul id="main-menu">'; 
+		'<ul id="main-menu">';
 		foreach ($menu_items as $menu) {
 			if ($menu) {
 				echo getMenuAsCustomList($menu);
 			}
 		}
-	echo 
+	echo
 	'</ul>';
-	echo 
+	echo
 	'<div id="menu-right">',
 	'<ul class="makeMenu">';
 	if (WT_USER_ID) {
