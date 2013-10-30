@@ -86,20 +86,20 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			$personlinks .= '<li><a href="pedigree.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;talloffset='.$talloffset.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Pedigree').'</b></a></li>';
 			if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
 				$personlinks .= '<li><a href="module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid='.$pid.'&amp;ged='.WT_GEDURL.'"><b>'.WT_I18N::translate('Pedigree map').'</b></a></li>';
-			}			
+			}
 			if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
 				$personlinks .= '<li><a href="relationship.php?show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pid1='.WT_USER_GEDCOM_ID.'&amp;pid2='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL.'"><b>'.WT_I18N::translate('Relationship to me').'</b></a></li>';
-			}			
-			$personlinks .= '<li><a href="descendancy.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;generations='.$generations.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Descendants').'</b></a></li>';			
-			$personlinks .= '<li><a href="ancestry.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;chart_style='.$chart_style.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Ancestors').'</b></a></li>';			
-			$personlinks .= '<li><a href="compact.php?rootid='.$pid.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Compact tree').'</b></a></li>';			
+			}
+			$personlinks .= '<li><a href="descendancy.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;generations='.$generations.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Descendants').'</b></a></li>';
+			$personlinks .= '<li><a href="ancestry.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;chart_style='.$chart_style.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Ancestors').'</b></a></li>';
+			$personlinks .= '<li><a href="compact.php?rootid='.$pid.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Compact tree').'</b></a></li>';
 			if (function_exists("imagettftext")) {
 				$personlinks .= '<li><a href="fanchart.php?rootid='.$pid.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Fan chart').'</b></a></li>';
-			}			
-			$personlinks .= '<li><a href="hourglass.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;chart_style='.$chart_style.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'&amp;show_spouse='.$show_spouse.'"><b>'.WT_I18N::translate('Hourglass chart').'</b></a></li>';			
+			}
+			$personlinks .= '<li><a href="hourglass.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;chart_style='.$chart_style.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'&amp;show_spouse='.$show_spouse.'"><b>'.WT_I18N::translate('Hourglass chart').'</b></a></li>';
 			if (array_key_exists('tree', WT_Module::getActiveModules())) {
 				$personlinks .= '<li><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid.'"><b>'.WT_I18N::translate('Interactive tree').'</b></a></li>';
-			}			
+			}
 			foreach ($person->getSpouseFamilies() as $family) {
 				$spouse = $family->getSpouse($person);
 				if ($spouse) {
@@ -148,29 +148,29 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	//-- find the name
 	$name = $person->getFullName();
 	$shortname = $person->getShortName();
-	
+
 	if ($SHOW_HIGHLIGHT_IMAGES) {
 		$thumbnail = $person->displayImage();
 	} else {
 		$thumbnail = '';
 	}
-	
+
 	//-- find additional name, e.g. Hebrew
 	$addname=$person->getAddName();
-	
+
 	if ($PEDIGREE_SHOW_GENDER && $show_full) {
 		$genderImage = " ".$person->getSexImage('small', "box-$boxID-gender");
 	}
-	
+
 	// Here for alternate name2
 	if ($addname) {
 		$addname = "<br><span id=\"addnamedef-$boxID\" class=\"name1\"> ".$addname."</span>";
 	}
-	
+
 	if ($SHOW_LDS_AT_GLANCE && $show_full) {
 		$addname = ' <span class="details$style">'.get_lds_glance($person).'</span>' . $addname;
 	}
-	
+
 	if ($show_full && $person->canShow()) {
 		$opt_tags=preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
 		// Show BIRT or equivalent event
@@ -222,7 +222,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	}
 }
 
-// print HTML header meta links 
+// print HTML header meta links
 // previously identical code in each theme's header.php file
 // now added as a function here.
 
@@ -415,41 +415,30 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		return strip_tags($text);
 	}
 
-
-	$brpos = strpos($text, '<br>');
 	$data = '<div class="fact_NOTE"><span class="label">';
-	if ($brpos !== false) {
-		if ($EXPAND_NOTES) $plusminus='minus'; else $plusminus='plus';
-		$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-'.$plusminus.'"></i></a> ';
-	}
-
-	if ($note) {
-		$data .= WT_I18N::translate('Shared note').': </span> ';
-	} else {
+	if ($note == null) { // not shared note
 		$data .= WT_I18N::translate('Note').': </span>';
-	}
-
-	if ($brpos !== false) {
-		$line1 = substr($text, 0, $brpos);
-		if ($note) {
-			$line1 = '<a href="' . $note->getHtmlUrl() . '">' . $line1 . '</a>';
-		}
-		$data .= '<span class="field" dir="auto">' . $line1 . '</span>';
-		$data .= '<div id="' . $elementID . '"';
-		if ($EXPAND_NOTES) {
-			$data .= ' style="display:block"';
-		}
-		$data .= ' class="note_details" dir="auto">';
-		$data .= substr($text, $brpos + 4);
-		$data .= '</div>';
+		$data .= '<span class="field" dir="auto">'. $text . '</span>';
 	} else {
-		if ($note) {
-			$text = '<a href="' . $note->getHtmlUrl() . '">' . $text . '</a>';
+		if (preg_match('/(<span class=[\'"]note_title[\'"]>.*?<\/span>)(.*)/si', $text, $match)) {
+		} else { // not census assistant style formatting
+			preg_match('/(.*)\n*(.*)/',$text, $match);
 		}
-		$data .= '<span class="field" dir="auto">'.$text. '</span>';
+		// $match[1] - the header line, will become a link
+		// $match[2] - the remainder of the note text
+		if ($match[1] && $match[2]) {
+			$plusminus = $EXPAND_NOTES ? 'minus' : 'plus';
+			$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-'.$plusminus.'"></i></a> ';
+		}
+		$data .= WT_I18N::translate('Shared note').': </span> ';
+		if ($match[1]) {
+			$data.='<span class="field" dir="auto"><a href="' . $note->getHtmlUrl() . '">' . $match[1] . '</a></span>';
+		}
+		if($match[2]) {
+			$data .= '<div id="' . $elementID . '" class="note_details" dir="auto">'. $match[2] . '</div>';
+		}
 	}
 	$data .= "</div>";
-
 	return $data;
 }
 
@@ -604,7 +593,7 @@ function print_asso_rela_record(WT_Fact $event, WT_GedcomRecord $record) {
 					if ($record instanceof WT_Family) {
 						$label_2=$associate->getSexImage().$label_2;
 					}
-	
+
 					if ($SEARCH_SPIDER) {
 						$html[]=$label_2; // Search engines cannot use the relationship chart.
 					} else {
