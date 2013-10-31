@@ -48,6 +48,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 					jQuery("#new_passwd").slideToggle(100, function() {
 						jQuery("#new_passwd_username").focus();
 					});
+					return false;
 				});
 			');
 		if (WT_USER_ID) {
