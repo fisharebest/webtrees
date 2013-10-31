@@ -317,20 +317,30 @@ case 'register':
 
 			// Send user message by email only
 			WT_Mail::send(
+				// From:
+				$WT_TREE,
+				// To:
 				$mail2_to,
 				$mail2_to,
+				// Reply-To:
 				$mail2_from,
 				$mail2_from,
+				// Message
 				$mail2_subject,
 				$mail2_body
 			);
 
 			// Send admin message by email and/or internal messaging
 			WT_Mail::send(
+				// From:
+				$WT_TREE,
+				// To:
 				$mail1_to,
 				$mail1_to,
+				// Reply-To:
 				$mail1_from,
 				$mail1_from,
+				// Message
 				$mail1_subject,
 				$mail1_body
 			);
@@ -497,10 +507,15 @@ case 'verify_hash':
 		$hc_ok = get_user_setting($user_id, 'reg_hashcode') == $user_hashcode;
 		if ($pw_ok && $hc_ok) {
 			WT_Mail::send(
+				// From:
+				$WT_TREE,
+				// To:
 				$mail1_to,
 				$mail1_to,
+				// Reply-To:
 				$mail1_from,
 				$mail1_from,
+				// Message
 				$mail1_subject,
 				$mail1_body
 			);

@@ -77,18 +77,18 @@ html[dir=rtl] .makeMenu li ul li {text-align:right;}
 #topMenu ul li {position:relative;float:left;left:50%;clear:right;width:auto;padding: 0 5px 0 5px; border:1px solid #999999;}
 #topMenu ul li a {display:block;font-size:14px;text-align:center;padding:5px;background-color:#ffffff;}
 
-/* Subnavigation section */	
+/* Subnavigation section */
 #topMenu ul li ul {position:absolute;top:27px;left:0;right:auto;display:none;background:#ffffff;white-space:nowrap;border:1px solid #999999;}
 
 /* sub-sub-menus */
-#topMenu ul ul ul {top:0;left:96px;border:1px solid #999999;} 
+#topMenu ul ul ul {top:0;left:96px;border:1px solid #999999;}
 #topMenu ul ul li {float:left;width:100%;border:0;left:auto;margin:0;padding:0;clear:left;}
 #topMenu ul ul li a {padding:5px;text-align:left;font-size:12px;}
 
 /* header hover */
 #topMenu ul li:hover > ul {position:absolute;margin:0;display:block;text-align:left;padding:0;}
 #topMenu ul #menu-chart li:hover ul, #topMenu ul #menu-obje li:hover ul {position:absolute;display:block;margin-left:100%;left:0px;}
-	
+
 /* --- RTL --- */
 html[dir=rtl] #topMenu {float:right;}
 html[dir=rtl] #topMenu ul {right:auto;float:left;left:50%;}
@@ -169,7 +169,7 @@ input, textarea {
 .person_box_lifespan {display:inline;}
 
 /* families tab person box */
-#relatives_content .person_box > .person_box, #relatives_content .person_boxF > .person_boxF, #relatives_content .person_boxNN > .person_boxNN {border:none;min-height:50px;} 
+#relatives_content .person_box > .person_box, #relatives_content .person_boxF > .person_boxF, #relatives_content .person_boxNN > .person_boxNN {border:none;min-height:50px;}
 
 .list_table {
 	margin-left:auto;
@@ -527,7 +527,7 @@ img.block {
 	vertical-align:middle;
 }
 
-.line1, .line2, .line3 {vertical-align:bottom;} 
+.line1, .line2, .line3 {vertical-align:bottom;}
 .line4 {vertical-align:middle;}
 .line5 {vertical-align:top;}
 
@@ -1112,7 +1112,7 @@ html[dir=rtl] .theme_form li ul li  {float:right;}
 .add_fav_ref input {margin:0 5px;}
 
 .charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN,
-.gedcom_favorites_block,.user_favorites_block, 
+.gedcom_favorites_block,.user_favorites_block,
 #ancestry_chart .person_box, #ancestry_chart .person_boxF, #ancestry_chart .person_boxNN,
 #descendancy_chart .person_box, #descendancy_chart .person_boxF, #descendancy_chart .person_boxNN,
 #family-table .person_box, #family-table .person_boxF, #family-table .person_boxNN,
@@ -1600,7 +1600,7 @@ html[dir=rtl] #sb_content_extra_info .editfacts {float:left;}
 #search-page-table {border:1px solid #000000;margin:20px auto 0;width:580px;}
 #search-page-table .label {float:left;font-weight:bold;padding:5px;width:150px;}
 #search-page-table .value {border-top:1px solid #000000;margin:0 0 0 170px;padding:5px;white-space:nowrap;}
-#search-page-table div:nth-of-type(2) {border:0;} 
+#search-page-table div:nth-of-type(2) {border:0;}
 #search-page-table p {margin:0;}
 html[dir=rtl] #search-page-table .label {float:right;}
 html[dir=rtl] #search-page-table .value {margin:0 170px 0 0;}
@@ -1611,7 +1611,7 @@ html[dir=rtl] #search-page-table .value {margin:0 170px 0 0;}
 #edituser-table .label {float:left;font-weight:bold;padding:5px;width:240px;white-space:nowrap;}
 #edituser-table .value {border-top:1px solid #000000;margin:0 0 0 260px;padding:5px;}
 #edituser-table .label span {margin:0 10px;}
-#edituser-table div:nth-of-type(2) {border:0;} 
+#edituser-table div:nth-of-type(2) {border:0;}
 #edituser-table select {margin:0;}
 html[dir=rtl] #edituser-table .label {float:right;}
 html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
@@ -1781,7 +1781,7 @@ a.icon-udarrow             {width:20px;height:20px;background-image:url(images/u
 #edit_interface-page input[type="text"][id^="TIME"] {width:100px;}
 #edit_interface-page input[type="text"][id*="OBJE_FILE"] {width:200px;}
 #edit_interface-page input[type="text"][id*="SOUR_TITL"] {width:250px;}
-#edit_interface-page input[id*="TEXT"] {height:140px;width:440px;} 
+#edit_interface-page input[id*="TEXT"] {height:140px;width:440px;}
 #edit_interface-page textarea {margin:0 5px;width:440px;}
 #edit_interface-page textarea[id*="NOTE"] {height:240px;}
 #edit_interface-page textarea[id*="TEXT"], #edit_interface-page textarea[id*="PUBL"] {height:140px;}
@@ -1810,7 +1810,7 @@ html[dir=rtl] #save-cancel .cancel {float:left;}
 #addmedia-page .optionbox p.sub {font-size:11px;margin:0 5px;}
 #addmedia-page input[type="text"][id*="PAGE"], #addmedia-page input[type="text"][id*="_UID"] {width:350px;}
 #addmedia-page input[type="text"][id*="SOUR"], #addmedia-page input[type="text"][id*="REPO"],#addmedia-page input[type="text"][id*="OBJE"],#addmedia-page input[type="text"][id*="FAMC"],#addmedia-page input[type="text"][id*="ASSO"],#addmedia-page input[type="text"][id^="AGE"],#addmedia-page input[type="text"][id*="SHARED_NOTE"] {width:70px;}
-#addmedia-page input[id*="TEXT"] {height:140px;width:440px;} 
+#addmedia-page input[id*="TEXT"] {height:140px;width:440px;}
 #addmedia-page textarea {margin:0 5px;width:440px;}
 #addmedia-page textarea[id*="NOTE"] {height:240px;}
 
@@ -1840,3 +1840,28 @@ html[dir=rtl] #cboxNext {right:0;left:auto}
 html[dir=rtl] #cboxCurrent {right:auto;left:0}
 html[dir=rtl] #cboxClose {right:auto;left:0}
 html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
+
+/* Stories tab */
+.story_title {
+	padding-top: 12px;
+	height:      32px;
+	font-size:   13px;
+	font-weight: 700;
+}
+.story_body {
+	padding:     20px;
+	white-space: normal;
+}
+.story_edit {
+	padding:12px;
+}
+/* User content in stories tab */
+#stories h2,
+#stories h3,
+#stories h4,
+#stories h5 {
+	padding-top: 20px;
+}
+#stories p {
+	padding-top: 8px;
+}

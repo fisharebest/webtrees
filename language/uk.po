@@ -237,7 +237,7 @@ msgstr "%s"
 #: library/WT/Stats.php:4018
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s до н. е."
 
 #. I18N: size of file in KB
 #: admin_media.php:402 library/WT/Media.php:201
@@ -942,7 +942,7 @@ msgstr "Ви не зможете увійти в систему, поки опц
 
 #: help_text.php:1016
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Водяний знак являє собою текст, який додається до зображення, щоб іншим не кортіло копіювати без дозволу."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:117
@@ -2071,7 +2071,7 @@ msgstr "Ви впевнені що хочете видалити цю особу
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Ви впевнені, що хочете скасувати всі зміни в цій родоводу?"
 
 #: library/WT/Stats.php:3756
 msgid "Argentina"
@@ -3702,7 +3702,7 @@ msgstr "При натисканні на значок “+” відкриєть
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:85
 msgid "Client time"
-msgstr ""
+msgstr "Час клієнта"
 
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
@@ -4160,7 +4160,7 @@ msgstr "Нестандартне подія"
 
 #: includes/functions/functions_print.php:1011
 msgid "Custom fact"
-msgstr ""
+msgstr "Користувальницький факт"
 
 #: find.php:480
 msgid "Custom tags"
@@ -5694,7 +5694,7 @@ msgstr "Статистики виконання скрипта"
 #: includes/functions/functions_print.php:255
 #, php-format
 msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB."
-msgstr ""
+msgstr "Час виконання: %1$s секунд. Запити до бази даних: %2$s. Використання пам'яті: %3$s КБ."
 
 #: branches.php:100
 msgid "Expand all"
@@ -6388,7 +6388,7 @@ msgstr "Для оптимального відображення в Інтерн
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:417
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "Для сайтів з більш ніж одним генеалогічним деревом, ця опція покаже список родоводів в головному меню, пошук сторінок і т.д."
 
 #: includes/functions/functions_print.php:372
 msgid "For technical support and information contact"
@@ -7104,6 +7104,10 @@ msgstr "Його рід занять було"
 msgid "Historical facts"
 msgstr "Iсторичні події"
 
+#: index.php:148 modules_v3/extra_info/module.php:71
+msgid "Hit count:"
+msgstr "Відвідувачів:"
+
 #: admin_trees_config.php:1040 help_text.php:824
 msgid "Hit counters"
 msgstr "Лічильники відвідувань"
@@ -7341,7 +7345,7 @@ msgstr "Розміри картинки"
 
 #: admin_trees_config.php:708
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Без водяних знаків"
 
 #: modules_v3/family_nav/module.php:85
 msgid "Immediate Family"
@@ -8704,11 +8708,11 @@ msgstr "Мартініка"
 #. I18N: verb - pretend to be someone else
 #: admin_masquerade.php:29 themes/_administration/header.php:135
 msgid "Masquerade"
-msgstr ""
+msgstr "Маскування"
 
 #: admin_masquerade.php:46
 msgid "Masquerade as another user"
-msgstr ""
+msgstr "Маскування під іншого користувача"
 
 #: modules_v3/batch_update/plugins/search_replace.php:90
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -9703,9 +9707,9 @@ msgstr "Завтра немає подій для нині живучих."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Немає подій для живучих людей для наступних %s днів."
+msgstr[1] "Немає подій для живучих людей для наступних %s дня."
+msgstr[2] "Немає подій для живучих людей для наступного %s дня."
 
 #: library/WT/Controller/Family.php:164
 msgid "No facts for this family."
@@ -11743,7 +11747,7 @@ msgstr "Знайти і замінити"
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:39
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr ""
+msgstr "Пошук і заміна тексту з використанням простого пошуку і розширений пошук за шаблоном."
 
 #: includes/session.php:544
 msgid "Search engine"
@@ -11982,7 +11986,7 @@ msgstr "Iм'я сервера"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:82
 msgid "Server time"
-msgstr ""
+msgstr "Час на сервері"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:94 help_text.php:719
@@ -12278,7 +12282,7 @@ msgstr "Показати курсор віку?"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:934 help_text.php:694
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Показати детальний графік за замовчуванням"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -12411,7 +12415,7 @@ msgstr "Показати посилання на діаграми статист
 
 #: admin_site_config.php:91 help_text.php:416
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Показати список родоводів"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -13818,7 +13822,7 @@ msgstr "З урахуванням регістру. Якщо база даних
 #. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:695
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr ""
+msgstr "Це початкове налаштування для опції “показати подробиці” на діаграмах."
 
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
@@ -14673,7 +14677,7 @@ msgstr "СРСР"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: themes/_administration/header.php:88
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #: library/WT/Stats.php:3989
 msgid "Uganda"
@@ -15228,11 +15232,11 @@ msgstr "Водяні знаки"
 
 #: help_text.php:1018
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Водяні знаки є необов'язковими, і вони зазвичай відображаються тільки для відвідувачів."
 
 #: help_text.php:1020
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "Водяні знаки для великих зображень, можуть генеруватися повільно. На повільних сайтах, доцільно один раз генерувати водяні знаки і зберігати їх на сервері."
 
 #: login.php:347
 #, php-format
@@ -15347,7 +15351,7 @@ msgstr "Коли ця опція включена, ви можете побач�
 
 #: help_text.php:1400
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr ""
+msgstr "Коли вибрана ця опція, webtrees розрахує різницю у віці між братами і сестрами, дітей, подружжя і т.д."
 
 #: help_text.php:922
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
@@ -16335,19 +16339,19 @@ msgstr "включити"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:97
 msgid "estate name"
-msgstr ""
+msgstr "назва нерухомості"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:94
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "назва нерухомості"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:91
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "назва нерухомості"
 
 #. I18N: Gedcom EST dates
 #: library/WT/Date.php:237
@@ -18285,10 +18289,6 @@ msgstr "півріч після вступу в шлюб"
 #: admin_trees_config.php:1051 modules_v3/googlemap/module.php:275
 msgid "hide"
 msgstr "приховати"
-
-#: index.php:148 modules_v3/extra_info/module.php:71
-msgid "Hit count:"
-msgstr "Відвідувачів:"
 
 #: edit_interface.php:1859 edit_interface.php:1894
 #: includes/functions/functions.php:798

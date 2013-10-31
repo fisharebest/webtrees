@@ -291,6 +291,8 @@ class WT_Controller_Clippings {
 	// Brings up the download dialog box and allows the user to download the file
 	// based on the options he or she selected
 	function download_clipping() {
+		Zend_Session::writeClose();
+
 		if ($this->IncludeMedia == "yes" || $this->Zip == "yes") {
 			header('Content-Type: application/zip');
 			header('Content-Disposition: attachment; filename="clipping.zip"');

@@ -239,7 +239,7 @@ msgstr "%s"
 #: library/WT/Stats.php:4018
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s до н. э."
 
 #. I18N: size of file in KB
 #: admin_media.php:402 library/WT/Media.php:201
@@ -944,7 +944,7 @@ msgstr "Пользователь не сможет войти в систему,
 
 #: help_text.php:1016
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Водяной знак представляет собой текст, который добавляется к изображению, чтобы другим неповадно было копировать без Вашего разрешения."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:117
@@ -2073,7 +2073,7 @@ msgstr "Вы уверены что хотите удалить это лицо �
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Вы уверены, что хотите отменить все изменения в этой родословной?"
 
 #: library/WT/Stats.php:3756
 msgid "Argentina"
@@ -3704,7 +3704,7 @@ msgstr "Нажатие на значок \"+\" откроет окно Маст�
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:85
 msgid "Client time"
-msgstr ""
+msgstr "Время клиента"
 
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
@@ -4162,7 +4162,7 @@ msgstr "Нестандартное событие"
 
 #: includes/functions/functions_print.php:1011
 msgid "Custom fact"
-msgstr ""
+msgstr "Пользовательский факт"
 
 #: find.php:480
 msgid "Custom tags"
@@ -5696,7 +5696,7 @@ msgstr "Статистики исполнения скрипта"
 #: includes/functions/functions_print.php:255
 #, php-format
 msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB."
-msgstr ""
+msgstr "Время выполнения: %1$s секунд. Запросы к базе данных: %2$s. Использование памяти: %3$s КБ."
 
 #: branches.php:100
 msgid "Expand all"
@@ -6390,7 +6390,7 @@ msgstr "Для оптимального отображения в Интерне
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:417
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "Для сайтов с более чем одним генеалогическим деревом, эта опция покажет список родословных в главном меню, поиск страниц и т.д."
 
 #: includes/functions/functions_print.php:372
 msgid "For technical support and information contact"
@@ -7106,6 +7106,10 @@ msgstr "Его род занятий было"
 msgid "Historical facts"
 msgstr "Исторические события"
 
+#: index.php:148 modules_v3/extra_info/module.php:71
+msgid "Hit count:"
+msgstr "Посетителей:"
+
 #: admin_trees_config.php:1040 help_text.php:824
 msgid "Hit counters"
 msgstr "Счетчики посещений"
@@ -7343,7 +7347,7 @@ msgstr "Размеры картинки"
 
 #: admin_trees_config.php:708
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Без водяных знаков"
 
 #: modules_v3/family_nav/module.php:85
 msgid "Immediate Family"
@@ -8429,7 +8433,7 @@ msgstr "Многие генеалогические программы созд�
 #. I18N: Help text for the “Sending server name” site configuration setting
 #: help_text.php:750
 msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "Многие почтовые серверы требуют, чтобы отправляющий сервер идентифицировал себя правильно, используя правильное имя домена."
 
 #. I18N: gedcom tag MAP
 #: library/WT/Gedcom/Tag.php:232 library/WT/Gedcom/Tag.php:892
@@ -8706,11 +8710,11 @@ msgstr "Мартиника"
 #. I18N: verb - pretend to be someone else
 #: admin_masquerade.php:29 themes/_administration/header.php:135
 msgid "Masquerade"
-msgstr ""
+msgstr "Маскировка"
 
 #: admin_masquerade.php:46
 msgid "Masquerade as another user"
-msgstr ""
+msgstr "Маскировка под другого пользователя"
 
 #: modules_v3/batch_update/plugins/search_replace.php:90
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -9705,9 +9709,9 @@ msgstr "Завтра нет событий для ныне живущих."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Нет событий для живущих людей  для следующих %s дней."
+msgstr[1] "Нет событий для живущих людей  для следующих %s дня."
+msgstr[2] "Нет событий для живущих людей  для следующего %s дня."
 
 #: library/WT/Controller/Family.php:164
 msgid "No facts for this family."
@@ -11745,7 +11749,7 @@ msgstr "Найти и заменить"
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:39
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr ""
+msgstr "Поиск и замена текста с использованием простого поиска и расширенный поиск по шаблону."
 
 #: includes/session.php:544
 msgid "Search engine"
@@ -11900,7 +11904,7 @@ msgstr "Посылать напоминания электронной почт�
 #. I18N: A site configuration setting
 #: admin_site_config.php:111 help_text.php:744
 msgid "Sender name"
-msgstr ""
+msgstr "Имя отправителя"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:142 help_text.php:749
@@ -11984,7 +11988,7 @@ msgstr "имя сервера"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:82
 msgid "Server time"
-msgstr ""
+msgstr "Время на сервере"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:94 help_text.php:719
@@ -12280,7 +12284,7 @@ msgstr "Показать курсор возраста?"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:934 help_text.php:694
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Показать подробный график по умолчанию"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -12413,7 +12417,7 @@ msgstr "Показать ссылку на диаграммы статистик
 
 #: admin_site_config.php:91 help_text.php:416
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Показать список родословных"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -13820,7 +13824,7 @@ msgstr "С учетом регистра. Если база данных не с
 #. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:695
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr ""
+msgstr "Это начальная настройка для опции “показать подробности” на диаграммах."
 
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
@@ -13959,7 +13963,7 @@ msgstr "Минимум 6 символов, с учетом регистра."
 #. I18N: Help text for the “Sender name” site configuration setting
 #: help_text.php:745
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr ""
+msgstr "Это имя используется в поле “От кого”, при отправки автоматических сообщений от этого сервера."
 
 #: note.php:73
 msgid "This note does not exist or you do not have permission to view it."
@@ -14675,7 +14679,7 @@ msgstr "URSS"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: themes/_administration/header.php:88
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #: library/WT/Stats.php:3989
 msgid "Uganda"
@@ -15230,11 +15234,11 @@ msgstr "Водяные знаки"
 
 #: help_text.php:1018
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Водяные знаки являются необязательными, и они обычно отображаются только для посетителей."
 
 #: help_text.php:1020
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "Водяные знаки для больших изображений, могут генерироваться медленно. На медленных сайтах, целесообразно один раз генерировать водяные знаки и хранить их на сервере. "
 
 #: login.php:347
 #, php-format
@@ -15349,7 +15353,7 @@ msgstr "Когда эта опция включена, Вы можете уви�
 
 #: help_text.php:1400
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr ""
+msgstr "Когда выбрана эта опция, webtrees рассчитает разницу в возрасте между братьями и сестрами, детей, супругов и т.д."
 
 #: help_text.php:922
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
@@ -16337,19 +16341,19 @@ msgstr "включить"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:97
 msgid "estate name"
-msgstr ""
+msgstr "название недвижимости"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:94
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "название недвижимости"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:91
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "название недвижимости"
 
 #. I18N: Gedcom EST dates
 #: library/WT/Date.php:237
@@ -18287,10 +18291,6 @@ msgstr "полугодий после вступления в брак"
 #: admin_trees_config.php:1051 modules_v3/googlemap/module.php:275
 msgid "hide"
 msgstr "скрыть"
-
-#: index.php:148 modules_v3/extra_info/module.php:71
-msgid "Hit count:"
-msgstr "Посетителей:"
 
 #: edit_interface.php:1859 edit_interface.php:1894
 #: includes/functions/functions.php:798
