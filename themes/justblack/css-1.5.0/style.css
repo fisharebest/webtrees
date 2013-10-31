@@ -28,11 +28,13 @@
 */
 
 @media print {
-	#topMenu, #header, #optionsmenu, #header select, #header input, #footer select, #backprint, #sidebar {display:none;}
+	#topMenu, #header, #optionsmenu, #header select, #header input, #footer select, #backprint, #sidebar, #separator {display:none;}
 	#header, #footer, .noprint {display:none !important;}
 	form, button, input {display:none;} 
 	#pedigree_chart {left:right;left:-80px;}
+	#header_accordion1 {width: 500px!important}
 	html[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
+	#familybook_chart h3 {margin-bottom: 10px;}
 	.lifespan_outer {position:relative;width:auto;height:auto;overflow:visible;border:none;}
 	.lifespan_people {position:absolute;width:auto;left:-10px;top:-60px;z-index:1;}
 	#CB_All {display:none;}
