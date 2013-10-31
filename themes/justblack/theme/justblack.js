@@ -393,9 +393,7 @@ jQuery(document).ready(function($){
 	
 	/********************************************* LOGIN FORM ***********************************************/	
 	if ($('#login-page').length > 0) {
-		// login block styling
-		$('div[id^="login_block"] .blockheader').addClass('ui-state-default').css({'color': '#e7e7e7', 'padding':'4px 8px'});
-				
+						
 		// login page styling
 		$('#login-page #login-text b:first').wrap('<div id="login-page-title" class="subheaders ui-state-default">');	
 		$('#login-page #login-page-title').prependTo('#login-page');
