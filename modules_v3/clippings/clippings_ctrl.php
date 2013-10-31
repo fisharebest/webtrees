@@ -231,8 +231,8 @@ class WT_Controller_Clippings {
 							// Skip external files and non-existant files
 							if (file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1])) {
 								$media[$mediacount] = array (
-									PCLZIP_ATT_FILE_NAME          =>                                  $match[$k][1],
-									PCLZIP_ATT_FILE_NEW_FULL_NAME => WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1],
+									PCLZIP_ATT_FILE_NAME          => WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1],
+									PCLZIP_ATT_FILE_NEW_FULL_NAME =>                                  $match[$k][1],
 								);
 								$mediacount++;
 							}

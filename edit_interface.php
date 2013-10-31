@@ -1253,10 +1253,6 @@ case 'addsourceaction':
 			$newgedrec .= "\n1 CALN " . $CALN;
 		}
 	}
-	$AUTH = WT_Filter::post('AUTH');
-	if ($AUTH) {
-		$newgedrec .= "\n1 AUTH " . $AUTH;
-	}
 	$EVEN = WT_Filter::postArray('EVEN', WT_REGEX_TAG);
 	if ($EVEN) {
 		$newgedrec .= "\n1 DATA";
