@@ -1437,10 +1437,14 @@ ul[id^="thumblist"] .submenuitem:hover{background-color:#FECF5B}
 #map_pane .infowindow .highlt_img img[src*=silhouette]{background-color:#8E8E8E;border:1px solid #272727;padding:2px}
 
 /* Stories Tab */
-#stories {border:#545454 1px solid;margin:10px 20px 0 20px}
-#stories p {line-height:1.5em}
-#stories .news_title.center {text-align:left}
-#stories a {text-decoration:underline}
+#stories {border:#545454 1px solid;margin:10px 20px 0 20px;line-height:1.5em}
+#stories h2,#stories h3,#stories h4,#stories h5{padding-top:20px;}
+.story_title{background:none;color:#e7e7e7;padding-top:12px;font-size:12px;font-weight:700;opacity:1;text-align:left}
+.story_body{background:none;border:none;white-space:normal}
+.story_body p:first-child{margin-top:0;padding-top:0}
+.story_body a{text-decoration:underline;}
+.story_edit{border-top:#545454 1px solid;margin-top:10px;padding-top:10px;text-align:center}
+.story_edit a {background: url("images/button_sprite.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #545454;border-radius: 2px 2px 2px 2px;color: #E7E7E7;	 			   font-size: 8pt;padding: 3px;}
 
 /* Multiple Tabs (General) */
 #tabs tr:first-child td.rela {border: 1px solid #545454; background: #2e2e2e url(../jquery-ui-1.10.3/images/ui-bg_highlight-soft_50_2e2e2e_1x100.png) 50% 50% repeat-x;
