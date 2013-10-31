@@ -40,7 +40,10 @@ class WT_Controller_Branches extends WT_Controller_Page {
 		if ($this->surname) {
 			$this->setPageTitle(/* I18N: %s is a surname */ WT_I18N::translate('Branches of the %s family', WT_Filter::escapeHtml($this->surname)));
 			$this->loadIndividuals();
-			$this->loadAncestors(WT_Individual::getInstance(WT_USER_GEDCOM_ID), 1);
+			$self = WT_Individual::getInstance(WT_USER_GEDCOM_ID);
+			if ($self) {
+				$this->loadAncestors(WT_Individual::getInstance(WT_USER_GEDCOM_ID), 1);
+			}
 		} else {
 			$this->setPageTitle(/* I18N: Branches of a family tree */ WT_I18N::translate('Branches'));
 		}
@@ -70,13 +73,13 @@ class WT_Controller_Branches extends WT_Controller_Page {
 			" AND (n_surn=? OR n_surname=?";
 		$args=array(WT_GED_ID, '_MARNM', $this->surname, $this->surname);
 		if ($this->soundex_std) {
-			foreach (explode(':', WT_Soundex::soundex_std($surn)) as $value) {
+			foreach (explode(':', WT_Soundex::soundex_std($this->surname)) as $value) {
 				$sql .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
 				$args[]=$value;
 			}
 		}
 		if ($this->soundex_dm) {
-			foreach (explode(':', WT_Soundex::soundex_dm($surn)) as $value) {
+			foreach (explode(':', WT_Soundex::soundex_dm($this->surname)) as $value) {
 				$sql .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
 				$args[]=$value;
 			}
