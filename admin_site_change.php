@@ -80,7 +80,7 @@ if ($newged) {
 	$args []=$newged;
 }
 if ($xref) {
-	$query[]="xref LIKE CONCAT('%', ?, '%')";
+	$query[]="xref = ?";
 	$args []=$xref;
 }
 if ($user) {
