@@ -118,6 +118,7 @@ default:
 				jQuery("#new_passwd_form").slideToggle(100, function() {
 					jQuery("#new_passwd_username").focus()
 				});
+				return false;
 			});
 		');
 
