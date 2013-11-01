@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fancy Privacy Check 1.5\n"
+"POT-Creation-Date: 2013-11-01 07:58+0100\n"
+"PO-Revision-Date: 2013-11-01 08:45+0100\n"
+"Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: translate;noop;plural:1,2;translate_c:2,1c\n"
+"X-Poedit-Basepath: c:\\xampp\\htdocs\\webtrees_1.5.0_build\\\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: modules_v3\\fancy_privacy_check\n"
+
+#: modules_v3\fancy_privacy_check/help_text.php:37
+msgid "<dt>Dead</dt><dd>Used when a person is clearly marked as dead by the inclusion of a death record with a date or date range.</dd>"
+msgstr "<dt>Overleden</dt><d>Wanneer er een overlijdensdatum of -datumbereik bekend is, wordt een persoon als overleden aangemerkt.</dd>"
+
+#: modules_v3\fancy_privacy_check/help_text.php:39
+msgid "<dt>Living</dt><dd>If there is no record of a death and no other related facts that imply death, then the person is assumed to be living.</dd>"
+msgstr "<dt>Levend</dt><dd>Wanneer er geen overlijdensrecord is aangemaakt en er geen andere factoren bekend zijn die impliceren dat de persoon is overleden, veronderstellen we dat de persoon nog leeft.</dd>"
+
+#: modules_v3\fancy_privacy_check/help_text.php:38
+msgid "<dt>Presumed dead</dt><dd>This is set when a person either has a death recorded but with no date, or has no death record but <b>webtrees</b> has calculated that the person can reasonably be expected to be dead.</dd>"
+msgstr "<dt>Waarschijnlijk overleden</dt><dd>Deze omschrijving wordt gebruikt wanneer een persoon geen overlijdensrecord heeft of een overlijdensrecord zonder datum, maar <b>webtrees</b> heeft berekend dat redelijkerwijs kan worden verwacht dat deze persoon is overleden.</dd>"
+
+#: modules_v3\fancy_privacy_check/module.php:177
+#, php-format
+msgid "A child with a birth date of %s suggests this person was born at least 15 years earlier than that."
+msgstr "Een kind met een geboortedatum van %s geeft aan dat deze persoon tenminste 15 jaar eerder geboren is."
+
+#: modules_v3\fancy_privacy_check/module.php:188
+#, php-format
+msgid "A grandchild with a birth date of %s suggests this person was born at least 30 years earlier than that."
+msgstr "Een kleinkind met een geboortedatum van %s geeft aan dat deze persoon tenminste 30 jaar eerder geboren is."
+
+#: modules_v3\fancy_privacy_check/module.php:155
+#, php-format
+msgid "A marriage with a date of %s suggests they were born at least 10 years earlier than that."
+msgstr "Een huwelijk met een datum van %s geeft aan dat deze persoon tenminste 10 jaar eerder geboren is."
+
+#: modules_v3\fancy_privacy_check/module.php:142
+#, php-format
+msgid "A parent with a birth date of %s is more than 45 years older than this person."
+msgstr "Een ouder met een geboortedatum van %s is meer dan 45 jaar ouder dan deze persoon."
+
+#: modules_v3\fancy_privacy_check/module.php:48
+msgid "A sidebar tool to show the privacy status of an individual."
+msgstr "Een zijpanneel dat de privacy status van een persoon toont."
+
+#: modules_v3\fancy_privacy_check/module.php:166
+#, php-format
+msgid "A spouse with a date of %s is more than 40 years older than this person."
+msgstr "Een partner met een geboortedatum van %s is meer dan 40 jaar ouder dan deze persoon."
+
+#: modules_v3\fancy_privacy_check/module.php:88
+#, php-format
+msgid "An estimated death date has been calculated as %s"
+msgstr "Een verwachte overlijdensdatum is berekend als %s"
+
+#: modules_v3\fancy_privacy_check/module.php:122
+#, php-format
+msgid "An event occurred in this person's life more than %s years ago<br> %s"
+msgstr "In het leven van deze persoon vond een gebeurtenis meer dan %s jaar geleden plaats<br> %s"
+
+#: modules_v3\fancy_privacy_check/module.php:114
+msgid "Death is recorded with an unknown date."
+msgstr "Het overlijden is geregistreerd met een onbekende datum."
+
+#: modules_v3\fancy_privacy_check/module.php:82
+#, php-format
+msgid "Death recorded as %s"
+msgstr "Het overlijden is geregisteerd als %s"
+
+#: modules_v3\fancy_privacy_check/module.php:87
+#: modules_v3\fancy_privacy_check/module.php:90
+msgid "Presumed dead"
+msgstr "Overlijden verondersteld"
+
+#: modules_v3\fancy_privacy_check/help_text.php:32
+msgid "Privacy status"
+msgstr "Privacy status"
+
+#: modules_v3\fancy_privacy_check/help_text.php:35
+#, php-format
+msgid "The age at which a person is assumed to be dead is set at %s years."
+msgstr "De leeftijd waarop een persoon verondersteld wordt te zijn overleden is gezet op %s jaar."
+
+#: modules_v3\fancy_privacy_check/help_text.php:34
+msgid "There are three possible indicators of privacy status: Dead, Presumed dead, and Living.<br>If <u>either of the first two</u> are set, then the person will be displayed  in accordance with the family tree and site privacy settings.<br>"
+msgstr "Er zijn drie situaties mogelijk om de privacy status aan te geven: Overleden, Verondersteld overleden of Levend.<br>Als <u>één van de eerste twee situaties</u> van toepassing is, wordt de persoon getoond in overeenstemming met geldende privacy instellingen voor deze stamboom.<br>"

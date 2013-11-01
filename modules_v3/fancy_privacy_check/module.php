@@ -26,6 +26,18 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class fancy_privacy_check_WT_Module extends WT_Module implements WT_Module_Sidebar {
+	
+	public function __construct() {
+		// Load any local user translations
+		if (is_dir(WT_MODULES_DIR.$this->getName().'/language')) {			
+			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php')) {
+				Zend_Registry::get('Zend_Translate')->addTranslation(
+					new Zend_Translate('array', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php', WT_LOCALE)
+				);
+			}
+		}
+	}
+	
 	// Extend WT_Module
 	public function getTitle() {
 		return /* Name of a module (not translatable) */ 'Fancy Privacy Check';
@@ -127,7 +139,7 @@ class fancy_privacy_check_WT_Module extends WT_Module implements WT_Module_Sideb
 				foreach ($date_matches[1] as $date_match) {
 					$date=new WT_Date($date_match);
 					if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365*($MAX_ALIVE_AGE+45)) {
-						return WT_I18N::translate('A parent with a birth date of %s is more than 45 years older than this person', $date->Display(!$SEARCH_SPIDER));
+						return WT_I18N::translate('A parent with a birth date of %s is more than 45 years older than this person.', $date->Display(!$SEARCH_SPIDER));
 					}
 				}
 			}
@@ -151,7 +163,7 @@ class fancy_privacy_check_WT_Module extends WT_Module implements WT_Module_Sideb
 					$date = new WT_Date($date_match);
 					// Assume max age difference between spouses of 40 years
 					if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365*($MAX_ALIVE_AGE+40)) {
-						return WT_I18N::translate('A spouse with a date of %s is more than 40 years older than this person', $date->Display(!$SEARCH_SPIDER));
+						return WT_I18N::translate('A spouse with a date of %s is more than 40 years older than this person.', $date->Display(!$SEARCH_SPIDER));
 					}
 				}
 			}
