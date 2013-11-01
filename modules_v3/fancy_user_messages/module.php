@@ -42,9 +42,7 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		global $controller, $ctype;
 		
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
-		
-		// Quick loading of css
-		echo '<script>'.$this->getScript(WT_MODULES_DIR.$this->getName().'/style.css').'</script>';
+		$content = $this->includeCss();		
 		
 		$controller->addInlineJavascript('						
 			// select all			
@@ -108,7 +106,7 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		$title=WT_I18N::plural('%s message', '%s messages',count($messages), WT_I18N::number(count($messages)));
 		
 		// start form
-		$content='<form name="messageform" action="index.php?ctype='.$ctype.'" method="get" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
+		$content.='<form name="messageform" action="index.php?ctype='.$ctype.'" method="get" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
 		
 		// header
 		if (get_user_count()>1) {
@@ -300,18 +298,22 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 	}
 	
 	// Implement the css stylesheet for this module	
+	private function includeCss() {
+		echo $this->getScript(WT_MODULES_DIR.$this->getName().'/style.css');	
+	}	
+	
 	private function getScript($css) {
-		// To prevent page flickering we must load the css asap. So we cannot use jQuery("head").append(<link rel="stylesheet" ... 
-		// as jQuery is not loaded at this time
 		return
-			'if (document.createStyleSheet) {
-				document.createStyleSheet("'.$css.'"); // For Internet Explorer
-			} else {
-				var newSheet=document.createElement("link");
-				newSheet.setAttribute("rel","stylesheet");
-				newSheet.setAttribute("type","text/css");
-				newSheet.setAttribute("href","'.$css.'");
-				document.getElementsByTagName("head")[0].appendChild(newSheet);
-			}';
+			'<script>
+				if (document.createStyleSheet) {
+					document.createStyleSheet("'.$css.'"); // For Internet Explorer
+				} else {
+					var newSheet=document.createElement("link");
+					newSheet.setAttribute("rel","stylesheet");
+					newSheet.setAttribute("type","text/css");
+					newSheet.setAttribute("href","'.$css.'");
+					document.getElementsByTagName("head")[0].appendChild(newSheet);
+				}
+			</script>';
 	}		
 }

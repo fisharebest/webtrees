@@ -74,22 +74,15 @@ class fancy_privacy_check_WT_Module extends WT_Module implements WT_Module_Sideb
 		global $controller, $MAX_ALIVE_AGE, $SHOW_EST_LIST_DATES, $SEARCH_SPIDER;	
 		$SHOW_EST_LIST_DATES = get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 		
-		$controller->addInlineJavascript('
-			function include_css(css_file) {
-				var html_doc = document.getElementsByTagName("head")[0];
-				var css = document.createElement("link");
-				css.setAttribute("rel", "stylesheet");
-				css.setAttribute("type", "text/css");
-				css.setAttribute("href", css_file);
-				html_doc.appendChild(css);
-			}
-			include_css("'.WT_MODULES_DIR.$this->getName().'/style.css");
+		$html = $this->includeCss();
+		
+		$controller->addInlineJavascript('			
 			jQuery(document).ajaxSend(function(){
 				jQuery("#'.$this->getName().' a").text("'.$this->getSidebarTitle().'");
 			});
 		');	 
 		
-		$html = '<dl id="privacy_status">';
+		$html .= '<dl id="privacy_status">';
 		if ($death_dates=$controller->record->getAllDeathDates()) {
 			$html .= '<dt>' .WT_I18N::translate('Dead').help_link('privacy_status',$this->getName()). '</dt>';
 			foreach ($death_dates as $num=>$death_date) {
@@ -212,4 +205,23 @@ class fancy_privacy_check_WT_Module extends WT_Module implements WT_Module_Sideb
 		return '';
 	}
 	
+	// Implement the css stylesheet for this module	
+	private function includeCss() {
+		return $this->getScript(WT_MODULES_DIR.$this->getName().'/style.css');	
+	}	
+	
+	private function getScript($css) {
+		return
+			'<script>
+				if (document.createStyleSheet) {
+					document.createStyleSheet("'.$css.'"); // For Internet Explorer
+				} else {
+					var newSheet=document.createElement("link");
+					newSheet.setAttribute("rel","stylesheet");
+					newSheet.setAttribute("type","text/css");
+					newSheet.setAttribute("href","'.$css.'");
+					document.getElementsByTagName("head")[0].appendChild(newSheet);
+				}
+			</script>';
+	}	
 }

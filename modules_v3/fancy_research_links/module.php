@@ -73,22 +73,15 @@ class fancy_research_links_WT_Module extends WT_Module implements WT_Module_Side
 		// code based on similar in function_print_list.php
 		global $controller;
 		
+		$html = $this->includeCss();
+		
 		$controller->addInlineJavascript('
-			function include_css(css_file) {
-				var html_doc = document.getElementsByTagName("head")[0];
-				var css = document.createElement("link");
-				css.setAttribute("rel", "stylesheet");
-				css.setAttribute("type", "text/css");
-				css.setAttribute("href", css_file);
-				html_doc.appendChild(css);
-			}
-			include_css("'.WT_MODULES_DIR.$this->getName().'/style.css");
 			jQuery(document).ajaxSend(function(){
 				jQuery("#'.$this->getName().' a").text("'.$this->getSidebarTitle().'");
 			});
 		');	 
 		
-		$html = '<ul id="research_status">';
+		$html .= '<ul id="research_status">';
 		foreach ($this->getPluginList() as $plugin) {
 			foreach ($controller->record->getFacts() as $key=>$value) {
 				$fact = $value->getTag();
@@ -115,6 +108,26 @@ class fancy_research_links_WT_Module extends WT_Module implements WT_Module_Side
 		closedir($dir_handle);
 		ksort($array);
 		return $array;
+	}
+	
+	// Implement the css stylesheet for this module	
+	private function includeCss() {
+		return $this->getScript(WT_MODULES_DIR.$this->getName().'/style.css');	
+	}	
+	
+	private function getScript($css) {
+		return
+			'<script>
+				if (document.createStyleSheet) {
+					document.createStyleSheet("'.$css.'"); // For Internet Explorer
+				} else {
+					var newSheet=document.createElement("link");
+					newSheet.setAttribute("rel","stylesheet");
+					newSheet.setAttribute("type","text/css");
+					newSheet.setAttribute("href","'.$css.'");
+					document.getElementsByTagName("head")[0].appendChild(newSheet);
+				}
+			</script>';
 	}
 
 }
