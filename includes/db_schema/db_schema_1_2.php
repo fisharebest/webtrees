@@ -2,7 +2,7 @@
 // Update the database schema from version 1 to version 2
 // - create the wt_session table to store session data in the database,
 // rather than in the filesystem.
-// 
+//
 // The script should assume that it can be interrupted at
 // any point, and be able to continue by re-running the script.
 // Fatal errors, however, should be allowed to throw exceptions,

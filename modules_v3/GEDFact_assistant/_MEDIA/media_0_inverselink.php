@@ -138,7 +138,7 @@ if ($action == 'choose' && $paramok) {
 			echo "</td>";
 			echo "<td align='center'><input alt='", WT_I18N::translate('Keep Link in list'), "', title='", WT_I18N::translate('Keep Link in list'), "' type='radio' id='", $record->getXref(), "_off' name='", $record->getXref(), "' checked></td>";
 			echo "<td align='center'><input alt='", WT_I18N::translate('Remove Link from list'), "', title='", WT_I18N::translate('Remove Link from list'), "' type='radio' id='", $record->getXref(), "_on'  name='", $record->getXref(), "'></td>";
-	
+
 			if ($record instanceof WT_Individual) {
 				?>
 				<td align="center"><a href="#" class="icon-button_family" title="<?php echo WT_I18N::translate('Family navigator'); ?>" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $record->getXref(); ?>'); return false;"></a></td>
@@ -159,7 +159,7 @@ if ($action == 'choose' && $paramok) {
 			}
 			echo '</tr>';
 		}
-	
+
 		echo "</table>";
 		echo "</td></tr></table>";
 		echo '</td></tr>';
@@ -223,7 +223,7 @@ if ($action == 'choose' && $paramok) {
 	/* ===icons === */
 	var removeLinkIcon = "<?php echo $WT_IMAGES['remove']; ?>";
 	var familyNavIcon = "<?php echo $WT_IMAGES['button_family']; ?>";
-	
+
 
 var INPUT_NAME_PREFIX = 'InputCell_'; // this is being set via script
 var RADIO_NAME = "totallyrad"; // this is being set via script
@@ -261,10 +261,10 @@ function myRowObject(zero, one, two, cb, ra)
 function insertRowToTable(pid, nam, head)
 {
 	if (hasLoaded) {
-	
+
 		var tbl = document.getElementById(TABLE_NAME);
 		var rowToInsertAt = "";
-		
+
 		// Get links list ====================================
 		var links 	= document.getElementById('existLinkTbl');
 		var numrows = links.rows.length;
@@ -277,7 +277,7 @@ function insertRowToTable(pid, nam, head)
 			}
 		}
 		strRow += (strRow==''?'':', ');
-		
+
 		//Check if id exists in Links list =================================
 		if (strRow.match(pid+',')!= pid+',') {
 			// alert('NO MATCH');
@@ -295,14 +295,14 @@ function insertRowToTable(pid, nam, head)
 				break;
 			}
 		}
-		
+
 		// If Link does not exist then add it, or show alert ===============
 		if (rowToInsertAt!='EXIST') {
 			rowToInsertAt = i;
 			addRowToTable(rowToInsertAt, pid, nam, head);
 			reorderRows(tbl, rowToInsertAt);
 		}
-		
+
 	}
 }
 
@@ -314,13 +314,13 @@ function removeHTMLTags(htmlString)
 		if (document.all) // IE Stuff
 		{
 			return mydiv.innerText;
-		}    
+		}
 		else // Mozilla does not work with innerText
 		{
 			return mydiv.textContent;
-		}                            
+		}
 	}
-} 
+}
 
 /*
  * addRowToTable
@@ -333,27 +333,27 @@ function addRowToTable(num, pid, nam, head)
 			var tbl = document.getElementById(TABLE_NAME);
 			var nextRow = tbl.tBodies[0].rows.length;
 			var iteration = nextRow + ROW_BASE;
-			
-			if (num == null) { 
+
+			if (num == null) {
 				num = nextRow;
 			} else {
 				iteration = num + ROW_BASE;
 			}
-			
+
 			// add the row
 			var row = tbl.tBodies[0].insertRow(num);
-			
+
 			// CONFIG: requires class
 			row.className = 'descriptionbox';
-			
+
 			// CONFIG: This whole section can be configured
-			
+
 			// cell 0 - Count
 			var cell0 = row.insertCell(0);
 			cell0.style.fontSize="11px";
 			var textNode = document.createTextNode(iteration);
 			cell0.appendChild(textNode);
-			
+
 			// cell 1 - ID:
 			var cell1 = row.insertCell(1);
 			if (pid=='') {
@@ -375,7 +375,7 @@ function addRowToTable(num, pid, nam, head)
 				txtInp1.style.border='0px';
 				txtInp1.style.fontSize="11px";
 			cell1.appendChild(txtInp1);
-			
+
 			// cell 2 - Name
 			var cell2 = row.insertCell(2);
 			var txtInp2 = document.createElement('div');
@@ -398,7 +398,7 @@ function addRowToTable(num, pid, nam, head)
 				btnEl.setAttribute('height', '14px');
 				btnEl.onclick = function () {deleteCurrentRow(this)};
 			cellbtn.appendChild(btnEl);
-			
+
 			// cell btn - family img button
 			var cellbtn2 = row.insertCell(4);
 				cellbtn2.setAttribute('align', 'center');
@@ -421,16 +421,16 @@ function addRowToTable(num, pid, nam, head)
 			} else {
 				// Show No Icon
 			}
-			
+
 			// cell cb - input checkbox
 			var cbEl = document.createElement('input');
 			cbEl.type = "hidden";
-			
+
 			// cell ra - input radio
 			//var cellra = row.insertCell(5);
 			var cellra = document.createElement('input');
 			cellra.type = "hidden";
-			
+
 			// Pass in the elements you want to reference later
 			// Store the myRow object in each row
 			row.myRow = new myRowObject(textNode, txtInp1, txtInp2, cbEl, cellra);
@@ -444,7 +444,7 @@ function deleteChecked()
 	if (hasLoaded) {
 		var checkedObjArray = new Array();
 		var cCount = 0;
-	
+
 		var tbl = document.getElementById(TABLE_NAME);
 		for (var i=0; i<tbl.tBodies[0].rows.length; i++) {
 			if (tbl.tBodies[0].rows[i].myRow && tbl.tBodies[0].rows[i].myRow.cb.getAttribute('type') == 'checkbox' && tbl.tBodies[0].rows[i].myRow.cb.checked) {
@@ -479,22 +479,22 @@ function reorderRows(tbl, startingIndex)
 		if (tbl.tBodies[0].rows[startingIndex]) {
 			var count = startingIndex + ROW_BASE;
 			for (var i=startingIndex; i<tbl.tBodies[0].rows.length; i++) {
-			
+
 				// CONFIG: next line is affected by myRowObject settings
 				tbl.tBodies[0].rows[i].myRow.zero.data	 = count; // text
-				
+
 				tbl.tBodies[0].rows[i].myRow.one.id		 = INPUT_NAME_PREFIX + count + '_1'; // input text
 				tbl.tBodies[0].rows[i].myRow.two.id 	 = INPUT_NAME_PREFIX + count + '_2'; // input text
-				
+
 				tbl.tBodies[0].rows[i].myRow.one.name	 = INPUT_NAME_PREFIX + count + '_1'; // input text
 				tbl.tBodies[0].rows[i].myRow.two.name 	 = INPUT_NAME_PREFIX + count + '_2'; // input text
-				
+
 				// tbl.tBodies[0].rows[i].myRow.cb.value = count; // input checkbox
 				tbl.tBodies[0].rows[i].myRow.ra.value = count; // input radio
-				
+
 				// CONFIG: requires class named classy0 and classy1
 				tbl.tBodies[0].rows[i].className = 'classy' + (count % 2);
-				
+
 				count++;
 			}
 		}
@@ -517,16 +517,16 @@ function openInNewWindow(frm)
 	var aWindow = window.open('', 'TableAddRow2NewWindow',
 	'scrollbars=yes,menubar=yes,resizable=yes,location=no,toolbar=no,width=550,height=700');
 	aWindow.focus();
-	
+
 	// set the target to the blank window
 	frm.target = 'TableAddRow2NewWindow';
-	
+
 	// submit
 	frm.submit();
 }
 
 function parseAddLinks() {
-	// start with the "newly added" ID.		
+	// start with the "newly added" ID.
 	var str = document.getElementById('gid').value;
 	// Add in the "keep" IDs.
 	var tbl = document.getElementById('addlinkQueue');

@@ -1972,7 +1972,7 @@ echo "<br>".$addname."<br>";
 for ($ii=0; $ii<=strlen($addname); $ii++)
 echo substr($addname, $ii, 1)." ";
 */
-				$addname = preg_replace(array('/<span class="starredname">/','/<\/span><\/span>/','/<\/span>/'), array('«','','»'), $addname);						
+				$addname = preg_replace(array('/<span class="starredname">/','/<\/span><\/span>/','/<\/span>/'), array('«','','»'), $addname);
 				if (!WT_RNEW) {
 					$addname = strip_tags($addname); //@@ unknown printed in other alignment with ... on wrong side
 				}

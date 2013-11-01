@@ -71,7 +71,7 @@ if ($delete_file) {
 		// File no longer exists?  Maybe it was already deleted or renamed.
 	}
 	$controller->pageHeader();
-	exit;	
+	exit;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -316,7 +316,7 @@ case 'load_json':
 function all_media_folders() {
 	return WT_DB::prepare(
 		"SELECT SQL_CACHE setting_value, setting_value" .
-		" FROM `##gedcom_setting`" . 
+		" FROM `##gedcom_setting`" .
 		" WHERE setting_name='MEDIA_DIRECTORY'" .
 		" GROUP BY 1" .
 		" ORDER BY 1"

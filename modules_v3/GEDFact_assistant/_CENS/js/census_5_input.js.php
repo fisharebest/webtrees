@@ -413,7 +413,7 @@ function preview() {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
 						} else {
-						
+
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}

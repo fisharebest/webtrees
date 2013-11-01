@@ -60,7 +60,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		global $MEDIA_DIRECTORY;
 
 		$controller=new WT_Controller_Simple();
-		
+
 		$type           ='indi';
 		$filter         =WT_Filter::get('filter');
 		$action         =WT_Filter::get('action');
@@ -73,18 +73,18 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$all            =WT_Filter::getBool('all');
 		$subclick       =WT_Filter::get('subclick');
 		$choose         =WT_Filter::get('choose');
-		
+
 		$controller
 			->setPageTitle(WT_I18N::translate('Find an individual'))
 			->pageHeader();
-		
+
 		echo '<script>';
 		?>
-		
+
 			function pasterow(id, name, gend, yob, age, bpl) {
 				window.opener.opener.insertRowToTable(id, name, '', gend, '', yob, age, 'Y', '', bpl);
 			}
-		
+
 			function pasteid(id, name, thumb) {
 				if (thumb) {
 					window.opener.<?php echo $callback; ?>(id, name, thumb);
@@ -123,7 +123,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			}
 		<?php
 		echo '</script>';
-		
+
 		echo "<div align=\"center\">";
 		echo "<table class=\"list_table width90\" border=\"0\">";
 		echo "<tr><td style=\"padding: 10px;\" valign=\"top\" class=\"facts_label03 width90\">"; // start column for find text header
@@ -134,7 +134,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		echo "<br>";
 		echo '<button onclick="window.close();">', WT_I18N::translate('close'), '</button>';
 		echo "<br>";
-		
+
 		$filter = trim($filter);
 		$filter_array=explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 		echo "<table class=\"tabs_table width90\"><tr>";
@@ -152,7 +152,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 					'".(1901-$indi->getbirthyear())."' ,
 					'".$indi->getbirthplace()."'); return false;\">
 					<b>".$indi->getFullName()."</b>&nbsp;&nbsp;&nbsp;";
-	
+
 				$born=WT_Gedcom_Tag::getLabel('BIRT');
 				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span></a></li>";
 			echo "<hr>";
@@ -174,7 +174,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$controller
 			->setPageTitle(WT_I18N::translate('Link to an existing media object'))
 			->pageHeader();
-		
+
 		$record=WT_GedcomRecord::getInstance($iid2);
 		if ($record) {
 			$headjs='';
@@ -196,7 +196,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			}
 			</script>
 			<?php
-		
+
 		} else {
 			?>
 			<script>
@@ -207,7 +207,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			</script>
 			<?php
 		}
-		?>		
+		?>
 		<script>window.onLoad = insertId();</script>
 		<?php
 	}
@@ -229,7 +229,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			'ChD'        => 'Children who have died',
 			'ChL'        => 'Children still living',
 			'DOB'        => 'Date of birth',
-			'Edu'        => 'Education - At School, Can Read, Can Write', // or "Cannot Read, Cannot Write" ?? 
+			'Edu'        => 'Education - At School, Can Read, Can Write', // or "Cannot Read, Cannot Write" ??
 			'EmD'        => 'Employed?',
 			'EmN'        => 'Unemployed?',
 			'EmR'        => 'Employer?',
@@ -334,7 +334,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		if (++$n != 2) {
 			return '';
 		}
-		
+
 		$controller->addInlineJavascript('
 			var pid_array=jQuery("#pid_array");
 			function set_pid_array(pa) {

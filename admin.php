@@ -46,7 +46,7 @@ $stats=new WT_Stats(WT_GEDCOM);
 	$adminusers=0;       // Administrators
 	$userlang  =array(); // Array for user languages
 	$gedadmin  =array(); // Array for managers
-	
+
 // Display a series of "blocks" of general information, vary according to admin or manager.
 
 echo '<div id="content_container" style="visibility:hidden">';
@@ -155,7 +155,7 @@ echo
 					$userlang[$user_lang]["number"] = 1;
 				}
 			}
-		}	
+		}
 
 	echo
 		'<table>',
@@ -248,7 +248,7 @@ foreach (WT_Tree::GetAll() as $tree) {
 		$accordion_element=$n;
 	}
 	++$n;
-	echo 
+	echo
 		'<h3><span dir="auto">', $tree->tree_title_html, '</span></h3>',
 		'<div>',
 		'<table>',

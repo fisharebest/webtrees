@@ -46,7 +46,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function isGrayedOut() {
 		return false;
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $EXPAND_RELATIVES_EVENTS, $controller;
@@ -111,9 +111,9 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		foreach (self::associate_facts($controller->record) as $fact) {
 			$indifacts[] = $fact;
 		}
-	
+
 		sort_facts($indifacts);
-	
+
 		ob_start();
 
 		echo '<table class="facts_table">';
@@ -162,7 +162,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function hasTabContent() {
 		return true;
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
 		global $SEARCH_SPIDER;
@@ -320,7 +320,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				}
 			}
 		}
-		
+
 		return $facts;
 	}
 
@@ -424,7 +424,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			// Only include events between birth and death
 			$birt_date = $person->getEstimatedBirthDate();
 			$deat_date = $person->getEstimatedDeathDate();
-	
+
 			if (file_exists(WT_Site::preference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
 				require WT_Site::preference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
 				foreach ($histo as $hist) {
@@ -436,7 +436,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				}
 			}
 		}
-		
+
 		return $facts;
 	}
 

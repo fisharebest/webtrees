@@ -44,10 +44,10 @@ class WT_Controller_GedcomRecord extends WT_Controller_Page {
 		}
 
 		parent::__construct();
-		
+
 		// We want robots to index this page
 		$this->setMetaRobots('index,follow');
-	
+
 		// Set a page title
 		if ($this->record) {
 			$this->setCanonicalUrl($this->record->getHtmlUrl());

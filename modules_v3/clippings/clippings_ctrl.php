@@ -52,7 +52,7 @@ class WT_Controller_Clippings {
 
 	public function __construct() {
 		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $WT_SESSION;
-		
+
 		// Our cart is an array of items in the session
 		if (!is_array($WT_SESSION->cart)) {
 			$WT_SESSION->cart=array();

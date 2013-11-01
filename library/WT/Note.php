@@ -52,7 +52,7 @@ class WT_Note extends WT_GedcomRecord {
 				return false;
 			}
 		}
-			
+
 		// Apply default behaviour
 		return parent::_canShowByType($access_level);
 	}
@@ -72,7 +72,7 @@ class WT_Note extends WT_GedcomRecord {
 
 		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 	}
-	
+
 	// The 'name' of a note record is the first line.  This can be
 	// somewhat unwieldy if lots of CONC records are used.  Limit to 100 chars
 	protected function _addName($type, $value, $gedrec) {

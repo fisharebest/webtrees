@@ -71,13 +71,13 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			$this->left_arrow='icon-larrow';
 			$this->right_arrow='icon-larrow';
 		}
-		
+
 		// -- size of the detailed boxes based upon optional width parameter
 		$Dbwidth=($this->box_width*$bwidth)/100;
 		$Dbheight=($this->box_width*$bheight)/100;
 		$bwidth=$Dbwidth;
 		$bheight=$Dbheight;
-		
+
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
 			$bwidth = $this->box_width * $cbwidth  / 100;
@@ -85,14 +85,14 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		}
 
 		$bhalfheight = (int)($bheight / 2);
-		
+
 		// Validate parameters
 		$this->hourPerson = WT_Individual::getInstance($this->pid);
 		if (!$this->hourPerson) {
 			$this->hourPerson=$this->getSignificantIndividual();
 			$this->pid=$this->hourPerson->getXref();
 		}
-		
+
 		$this->name=$this->hourPerson->getFullName();
 
 		//Checks how many generations of descendency is for the person for formatting purposes
@@ -122,14 +122,14 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		//Prints empty table columns for children w/o parents up to the max generation
 		//This allows vertical line spacing to be consistent
 		//
-		if (count($person->getChildFamilies())==0) { 
+		if (count($person->getChildFamilies())==0) {
 			echo '<table>',
 				 '<tr>',
 				 '<td>',
 				 '<div style="width:',$bwidth,'px; height:',$bheight,'px;"></div>';
 			echo '</td>';
 			echo '<td>';
-				
+
 				//-- recursively get the father's family
 				$this->print_person_pedigree($person, $count+1);
 				echo '</td>';
@@ -182,7 +182,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				if ($count==$this->generations-1 && $family->getWife()->getChildFamilies()) {
 					echo "<a href=\"#\" onclick=\"ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."'); return false;\" class=\"".$this->right_arrow."\"></a> ";
 				}
-	
+
 				//-- recursively print the mother's family
 				$this->print_person_pedigree($family->getWife(), $count+1);
 				echo "</td>";

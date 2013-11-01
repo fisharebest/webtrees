@@ -209,7 +209,7 @@ elseif ($action=='setup') {
 			}
 		}
 		if ($input['type']=='text') {
-			echo '<input type="text" name="vars[', $input['name'], ']" id="', $input['name'], '" 
+			echo '<input type="text" name="vars[', $input['name'], ']" id="', $input['name'], '"
 					value="', $input['default'], '" style="direction: ltr;">';
 		}
 		if ($input['type']=='checkbox') {

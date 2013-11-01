@@ -1105,7 +1105,7 @@ function uuid() {
 	// Official Format with dashes ('%04x%04x-%04x-%04x-%04x-%04x%04x%04x')
 	// Most users want this format (for compatibility with PAF)
 	$fmt='%04X%04X%04X%04X%04X%04X%04X%04X';
-	
+
 	$uid = sprintf(
 		$fmt,
     // 32 bits for "time_low"
@@ -1132,16 +1132,16 @@ function uuid() {
 /**
 * Produces checksums compliant with a Family Search guideline from 2007
 * these checksums are compatible with PAF, Legacy, RootsMagic and other applications
-* following these guidelines. This prevents dropping and recreation of UID's 
+* following these guidelines. This prevents dropping and recreation of UID's
 *
 * @author Veit Olschinski
-* @param string $uid the 32 hexadecimal character long uid  
+* @param string $uid the 32 hexadecimal character long uid
 * @return string containing the checksum string for the uid
 */
 function getCheckSums($uid) {
 	$checkA=0; // a sum of the bytes
 	$checkB=0; // a sum of the incremental values of checkA
-	
+
 	// Compute both checksums
 	for ($i = 0; $i < 32; $i+=2) {
 		$checkA += hexdec(substr($uid, $i, 2));

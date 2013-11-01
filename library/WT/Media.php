@@ -400,7 +400,7 @@ class WT_Media extends WT_GedcomRecord {
 			$imgsize = getimagesize($this->getServerFilename('thumb'));
 			// Use a thumbnail image
 			$image =
-				'<img' . 
+				'<img' .
 				' dir="'   . 'auto'                           . '"' . // For the tool-tip
 				' src="'   . $this->getHtmlUrlDirect('thumb') . '"' .
 				' alt="'   . strip_tags($this->getFullName()) . '"' .

@@ -72,13 +72,13 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		$Dbheight = ($this->box_width*$bheight)/100;
 		$bwidth   = $Dbwidth;
 		$bheight  = $Dbheight;
-		
+
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
 			$bwidth  = $cbwidth;
 			$bheight = $cbheight;
 		}
-		
+
 		$pbwidth  = $bwidth+12;
 		$pbheight = $bheight+14;
 
@@ -128,7 +128,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 */
 	function print_child_descendancy($person, $depth) {
 		global $WT_IMAGES, $Dindent, $personcount;
-	
+
 		if (is_null($person)) return;
 		//print_r($person);
 		echo "<li>";
@@ -140,7 +140,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		}
 		print_pedigree_person($person, 1, 0, $personcount);
 		echo '</td>';
-	
+
 		// check if child has parents and add an arrow
 		echo '<td>&nbsp;</td>';
 		echo '<td>';
@@ -152,7 +152,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 				break;
 			}
 		}
-	
+
 		// d'Aboville child number
 		$level =$this->generations-$depth;
 		if ($this->show_full) echo '<br><br>&nbsp;';
@@ -172,14 +172,14 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo "</td></tr>";
 		echo "</table>";
 		echo "</li>";
-	
+
 		// loop for each spouse
 		foreach ($person->getSpouseFamilies() as $family) {
 			$personcount++;
 			$this->print_family_descendancy($person, $family, $depth);
 		}
 	}
-	
+
 	/**
 	 * print a family descendancy
 	 *
@@ -189,10 +189,10 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 */
 	function print_family_descendancy($person, $family, $depth) {
 		global $GEDCOM, $WT_IMAGES, $Dindent, $personcount;
-	
+
 		if (is_null($family)) return;
 		if (is_null($person)) return;
-	
+
 		// print marriage info
 		echo '<li>';
 		echo '<img src="', $WT_IMAGES['spacer'], '" height="2" width="', ($Dindent+4), '" alt="">';
@@ -204,7 +204,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 			}
 		}
 		echo '</span>';
-	
+
 		// print spouse
 		$spouse=$family->getSpouse($person);
 		echo '<ul style="list-style:none; display:block;" id="'.$family->getXref().$personcount.'">';
@@ -212,7 +212,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '<table border="0" cellpadding="0" cellspacing="0"><tr><td>';
 		print_pedigree_person($spouse, 1, 0, $personcount);
 		echo '</td>';
-	
+
 		// check if spouse has parents and add an arrow
 		echo '<td>&nbsp;</td>';
 		echo '<td>';
@@ -228,7 +228,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		}
 		if ($this->show_full) echo '<br><br>&nbsp;';
 		echo '</td></tr>';
-	
+
 		// children
 		$children = $family->getChildren();
 		echo '<tr><td colspan="3" class="details1" >&nbsp;&nbsp;';

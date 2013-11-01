@@ -293,4 +293,4 @@ echo '</script>';
 		<input tabindex="<?php echo $i+1; ?>" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>">
 		</div>
 </form>
-</div> 
+</div>

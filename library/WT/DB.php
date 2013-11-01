@@ -230,7 +230,7 @@ class WT_DB {
 		$need_to_delete_old_files=false;
 		$need_to_update_config_data=false;
 		$need_to_update_stored_procedures=false;
-		
+
 		// During installation, the current version is set to a special value of
 		// -1 (v1.2.5 to v1.2.7) or -2 (v1.3.0 onwards).  This indicates that the tables have
 		// been created, but that we still need to install/update configuration data

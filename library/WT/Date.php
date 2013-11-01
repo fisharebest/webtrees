@@ -118,7 +118,7 @@ class WT_Date {
 					$cal='@#DHIJRI@'; // This is a WT extension
 				} else {
 					if (preg_match('/^(FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN)$/', $m)) {
-						$cal='@#DJALALI@'; // This is a WT extension 
+						$cal='@#DJALALI@'; // This is a WT extension
 					} elseif (preg_match('/^\d{1,4}( B\.C\.)|\d\d\d\d\/\d\d$/', $y)) {
 						$cal='@#DJULIAN@';
 					}

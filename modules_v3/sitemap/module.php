@@ -26,7 +26,7 @@ if (!defined('WT_WEBTREES')) {
 class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	const RECORDS_PER_VOLUME=500;    // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
 	const CACHE_LIFE        =1209600; // Two weeks
-	
+
 	// Extend WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps */ WT_I18N::translate('Sitemaps');

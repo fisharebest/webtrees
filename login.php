@@ -70,7 +70,7 @@ default:
 		case -1: // not validated
 			$message = WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.');
 			break;
-			
+
 		case -2: // not approved
 			$message = WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.');
 			break;
@@ -161,7 +161,7 @@ default:
 			echo '<div><a href="'.WT_LOGIN_URL.'?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
 		}
 	echo '</form>';
-	
+
 	// hidden New Password block
 	echo '<div id="new_passwd">
 		<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post">
@@ -176,7 +176,7 @@ default:
 		</form>
 	</div>';
 	echo '</div>';
-		
+
 	echo '</div>';
 	break;
 
@@ -382,7 +382,7 @@ case 'register':
 			<div>
 				<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'),
 					'<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="', WT_Filter::escapeHtml($user_realname), '" autofocus>
-				</label>		
+				</label>
 			</div>
 			<div>
 				<label for="user_email">', WT_I18N::translate('Email address'), help_link('email'),

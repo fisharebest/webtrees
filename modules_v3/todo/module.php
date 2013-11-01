@@ -82,7 +82,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 					/* 2-Username */	{},
 					/* 3-Text */		{}
 				]
-				});		
+				});
 			jQuery("#'.$table_id.'").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
 			');

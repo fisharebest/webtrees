@@ -1,7 +1,7 @@
 <?php
 // TreeView module class
 //
-// Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load 
+// Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
 //
 // Copyright (C) 2013 webtrees development team
 //
@@ -24,10 +24,10 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class tree_WT_Module extends WT_Module implements WT_Module_Tab {	
+class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	var $headers; // CSS and script to include in the top of <head> section, before theme's CSS
 	var $js; // the TreeViewHandler javascript
-	
+
 	// Extend WT_Module. This title should be normalized when this module will be added officially
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Interactive tree');
@@ -37,7 +37,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getDescription() {
 		return /* I18N: Description of the “Interactive tree” module */ WT_I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function defaultTabOrder() {
 		return 68;
@@ -59,7 +59,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
 		global $SEARCH_SPIDER;
-			
+
 		return !$SEARCH_SPIDER;
 	}
 	// Implement WT_Module_Tab
@@ -156,7 +156,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function css() {
 		return WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/css/treeview.css';
 	}
-	
+
 	public function js() {
 		return WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/treeview.js';
 	}

@@ -422,7 +422,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		$faqs=WT_DB::prepare(
 			"SELECT block_id FROM `##block` b WHERE module_name=? AND IFNULL(gedcom_id, ?)=?"
 		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
-		
+
 		if (!$faqs) {
 			return null;
 		}

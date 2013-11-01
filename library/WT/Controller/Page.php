@@ -162,7 +162,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 			var WT_SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
 			var WT_LOCALE      = "'.WT_LOCALE.'";
 		', self::JS_PRIORITY_HIGH);
-	
+
 		// Temporary fix for access to main menu hover elements on android/blackberry touch devices
 		$this->addInlineJavascript('
 			if(navigator.userAgent.match(/Android|PlayBook/i)) {
@@ -170,12 +170,12 @@ class WT_Controller_Page extends WT_Controller_Base {
 				jQuery("a.icon_arrow").attr("href", "#");
 			}
 		');
-		
+
 		// Tell IE to use standards mode instead of compatability mode.
 		if ($BROWSERTYPE=='msie') {
 			header("X-UA-Compatible: IE=Edge");
 		}
-		
+
 		header('Content-Type: text/html; charset=UTF-8');
 		require WT_ROOT.$headerfile;
 

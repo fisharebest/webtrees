@@ -110,7 +110,7 @@ function get_lati_long_placelocation ($place) {
 		WT_DB::prepare("SELECT sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, pl_lati, pl_long, pl_zoom, pl_icon, pl_level FROM `##placelocation` WHERE pl_id=? ORDER BY pl_place")
 		->execute(array($place_id))
 		->fetchOneRow();
-	
+
 }
 
 function setup_map() {
@@ -137,7 +137,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 		if (!$fact->getPlace()->isEmpty()) {
 			$ctla = preg_match("/\d LATI (.*)/", $fact->getGedcom(), $match1);
 			$ctlo = preg_match("/\d LONG (.*)/", $fact->getGedcom(), $match2);
-			
+
 			if ($fact->getParent() instanceof WT_Family) {
 				$spouse = $fact->getParent()->getSpouse($indi);
 			} else {
@@ -294,7 +294,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 	// *** ENABLE STREETVIEW ***
 	$STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	?>
-	
+
 	<script>
 		// this variable will collect the html which will eventually be placed in the side_bar
 		var side_bar_html = '';
@@ -305,32 +305,32 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 		var head = '';
 		var dir = '';
 		var svzoom = '';
-	
+
 		var infowindow = new google.maps.InfoWindow({});
-	
+
 		gicons["red"] = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
 			new google.maps.Size(20, 34),
 			new google.maps.Point(0,0),
 			new google.maps.Point(9, 34)
 		);
-	
+
 		var iconImage = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
 			new google.maps.Size(20, 34),
 			new google.maps.Point(0,0),
 			new google.maps.Point(9, 34)
 		);
-	
+
 		var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
 			new google.maps.Size(37, 34),
 			new google.maps.Point(0,0),
 			new google.maps.Point(9, 34)
 		);
-	
+
 		var iconShape = {
 			coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],
 			type: "poly"
 		};
-	
+
 		function getMarkerImage(iconColor) {
 			if ((typeof(iconColor)=='undefined') || (iconColor==null)) {
 				iconColor = 'red';
@@ -343,16 +343,16 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 			}
 			return gicons[iconColor];
 		}
-	
+
 		var sv2_bear = null;
 		var sv2_elev = null;
 		var sv2_zoom = null;
 		var placer   = null;
-	
+
 		// A function to create the marker and set up the event window
 		function createMarker(latlng, html, tooltip, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
 			var contentString = '<div id="iwcontent">'+html+'</div>';
-	
+
 			// Use flag icon (if defined) instead of regular marker icon
 			if (marker_icon) {
 				var icon_image = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/'+marker_icon,
@@ -368,14 +368,14 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				var icon_image = getMarkerImage('red');
 				var icon_shadow = iconShadow;
 			}
-	
+
 			// Decide if marker point is Regular (latlng) or StreetView (sv_point) derived
 			if (sv_point == '(0, 0)' || sv_point == '(null, null)') {
 				placer = latlng;
 			} else {
 				placer = sv_point;
 			}
-	
+
 			// Define the marker
 			var marker = new google.maps.Marker({
 				position: placer,
@@ -385,12 +385,12 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				title:    tooltip,
 				zIndex:   Math.round(latlng.lat()*-100000)<<5
 			});
-	
+
 			// Store the tab and event info as marker properties
 			marker.sv_lati  = sv_lati;
 			marker.sv_long  = sv_long;
 			marker.sv_point = sv_point;
-	
+
 			if (sv_bearing == '') {
 				marker.sv_bearing = 0;
 			} else {
@@ -406,10 +406,10 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 			} else {
 				marker.sv_zoom = sv_zoom;
 			}
-	
+
 			marker.sv_latlng = new google.maps.LatLng(sv_lati, sv_long);
 			gmarkers.push(marker);
-	
+
 			// Open infowindow when marker is clicked
 			google.maps.event.addListener(marker, 'click', function() {
 				infowindow.close();
@@ -427,7 +427,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 						zoom:    sv_zoom
 					}
 				};
-	
+
 				// Use jquery for info window tabs
 				google.maps.event.addListener(infowindow, 'domready', function() {
 	  	    //jQuery code here
@@ -447,7 +447,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 						document.panelLayer2.style.display = 'none';
 						<?php } ?>
 					});
-	
+
 					jQuery('#SV').click(function() {
 						document.tabLayerEV = eval('document.getElementById("EV")');
 						document.tabLayerEV.style.background = '#cccccc';
@@ -470,13 +470,13 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				});
 			});
 		}
-	
+
 		// Opens Marker infowindow when corresponding Sidebar item is clicked
 		function myclick(i) {
 			infowindow.close();
 			google.maps.event.trigger(gmarkers[i], 'click');
 		}
-	
+
 		// Home control
 		// returns the user to the original map position ... loadMap() function
 		// This constructor takes the control DIV as an argument.
@@ -485,7 +485,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 			// Setting padding to 5 px will offset the control from the edge of the map
 			controlDiv.style.paddingTop = '5px';
 			controlDiv.style.paddingRight = '0px';
-	
+
 			// Set CSS for the control border
 			var controlUI = document.createElement('DIV');
 			controlUI.style.backgroundColor = 'white';
@@ -495,7 +495,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 			controlUI.style.textAlign = 'center';
 			controlUI.title = '';
 			controlDiv.appendChild(controlUI);
-	
+
 			// Set CSS for the control interior
 			var controlText = document.createElement('DIV');
 			controlText.style.fontFamily = 'Arial,sans-serif';
@@ -504,18 +504,18 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 			controlText.style.paddingRight = '15px';
 			controlText.innerHTML = '<b><?php echo WT_I18N::translate('Redraw map')?></b>';
 			controlUI.appendChild(controlText);
-	
+
 			// Setup the click event listeners: simply set the map to original LatLng
 			google.maps.event.addDomListener(controlUI, 'click', function() {
 				loadMap();
 			});
 		}
-	
+
 		function loadMap() {
 			<?php
 				global $GOOGLEMAP_MAP_TYPE, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $SHOW_HIGHLIGHT_IMAGES;
 			?>
-	
+
 			// Create the map and mapOptions
 			var mapOptions = {
 				zoom: 7,
@@ -533,18 +533,18 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				scrollwheel: false
 			};
 			map = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
-	
+
 			// Close any infowindow when map is clicked
 			google.maps.event.addListener(map, 'click', function() {
 				infowindow.close();
 			});
-	
+
 			// Create the Home DIV and call the HomeControl() constructor in this DIV.
 			var homeControlDiv = document.createElement('DIV');
 			var homeControl = new HomeControl(homeControlDiv, map);
 			homeControlDiv.index = 1;
 			map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
-	
+
 			// Add the markers to the map from the $gmarks array
 			var locations = [
 				<?php foreach($gmarks as $n=>$gmark) { ?>
@@ -582,7 +582,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 
 			// Set the Marker bounds
 			var bounds = new google.maps.LatLngBounds ();
-	
+
 			var key;
 			// Iterate over each location
 			for (key in location_groups) {
@@ -601,7 +601,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 						event_details += '<table><tr><td class="highlt_img">' + location.image + '</td><td><p><span id="sp1">' + location.event + '</span><br>' + location.date + '<br></p></td></tr></table>';
 					}
 				}
-				// All locations are the same in each group, so create a marker with the first	
+				// All locations are the same in each group, so create a marker with the first
 				var location = location_groups[key][0];
 				var html =
 				'<div class="infowindow">' +
@@ -610,8 +610,8 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 							'<li><a href="#event" id="EV"><?php echo WT_I18N::translate('Events'); ?></a></li>' +
 							<?php if ($STREETVIEW) { ?>
 							'<li><a href="#sview" id="SV"><?php echo WT_I18N::translate('Google Street View™'); ?></a></li>' +
-							<?php } ?>		
-						'</ul>' +		
+							<?php } ?>
+						'</ul>' +
 						'<div class="panes">' +
 							'<div id="pane1">' +
 								'<h4 id="iwhead">' + location.place + '</h4>' +
@@ -626,14 +626,14 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 						'</div>' +
 					'</div>' +
 				'</div>';
-	
+
 				// create the marker
 				var point        = new google.maps.LatLng(location.lat,     location.lng);     // Place Latitude, Longitude
 				var sv_point     = new google.maps.LatLng(location.sv_lati, location.sv_long); // StreetView Latitude and Longitide
-	
+
 				var zoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM; ?>;
 				var marker    = createMarker(point, html, location.tooltip, location.sv_lati, location.sv_long, location.sv_bearing, location.sv_elevation, location.sv_zoom, sv_point, location.pl_icon);
-	
+
 				// if streetview coordinates are available, use them for marker,
 				// else use the place coordinates
 				if (sv_point && sv_point != "(0, 0)") {
@@ -641,7 +641,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				} else {
 					var myLatLng = point;
 				}
-	
+
 				// Correct zoom level when only one marker is present
 				if (location_groups.length == 1) {
 					bounds.extend(myLatLng);
@@ -660,7 +660,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 				}
 			} // end loop through location markers
 		} // end loadMap()
-	
+
 	</script>
 	<?php
 	// Create the normal googlemap sidebar of events and children

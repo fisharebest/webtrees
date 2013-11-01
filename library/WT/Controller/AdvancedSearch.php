@@ -36,7 +36,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		parent::__construct();
 
 		$this->setPageTitle(WT_I18N::translate('Advanced search'));
-		
+
 		if (empty($_REQUEST['action'])) {
 			$this->action="advanced";
 		}

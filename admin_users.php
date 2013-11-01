@@ -121,7 +121,7 @@ case 'loadrows':
 	} else {
 		$ORDER_BY='';
 	}
-	
+
 	$sql=
 		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS '', u.user_id, user_name, real_name, email, '', us1.setting_value, us2.setting_value, us2.setting_value, us3.setting_value, us3.setting_value, us4.setting_value, us5.setting_value".
 		" FROM `##user` u".
@@ -133,10 +133,10 @@ case 'loadrows':
 		$WHERE.
 		$ORDER_BY.
 		$LIMIT;
-	
+
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
 	$aaData=WT_DB::prepare($sql)->execute($ARGS)->fetchAll(PDO::FETCH_NUM);
-	
+
 	// Reformat various columns for display
 	foreach ($aaData as &$aData) {
 		$aData[0]='<a href="#" title="'.WT_I18N::translate('Details').'">&nbsp;</a>';
@@ -172,7 +172,7 @@ case 'loadrows':
 			$aData[13]='';
 		}
 	}
-	
+
 	// Total filtered/unfiltered rows
 	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
 	$iTotalRecords=WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
@@ -444,7 +444,7 @@ case 'createform':
 									'<td>';
 										$varname='rootid'.$tree->tree_id;
 										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="', WT_Filter::escapeHtml(WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF)), '"> ', print_findindi_link($varname),
-									'</td>',						
+									'</td>',
 									// GEDCOM INDI Record ID
 									'<td>';
 										$varname='gedcomid'.$tree->tree_id;
@@ -482,7 +482,7 @@ case 'createform':
 				<td colspan="4">
 					<input type="submit" value="', WT_I18N::translate('Create user'), '">
 				</td>
-			</tr>	
+			</tr>
 		</table>
 	</form>';
 	break;
@@ -588,7 +588,7 @@ default:
 			'<tbody>',
 			'</tbody>',
 		'</table>';
-	
+
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
@@ -625,9 +625,9 @@ default:
 					jQuery("#list script").each(function() {
 						eval(this.text);
 					});
-				}				
+				}
 			});
-			
+
 			/* When clicking on the +/- icon, we expand/collapse the details block */
 			jQuery("#list tbody").on("click", "td.icon-close", function () {
 				var nTr=this.parentNode;

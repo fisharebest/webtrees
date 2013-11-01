@@ -82,7 +82,7 @@ class WT_MenuBar {
 			//-- admin submenu
 			$submenu = new WT_Menu(WT_I18N::translate('Administration'), 'admin.php', 'menu-admin');
 			$menu->addSubmenu($submenu);
-		}		
+		}
 		return $menu;
 	}
 
@@ -282,7 +282,7 @@ class WT_MenuBar {
 
 		// The top level menu shows the individual list
 		$menu=new WT_Menu(WT_I18N::translate('Lists'), 'indilist.php?ged='.WT_GEDURL, 'menu-list');
- 
+
 		// Do not show empty lists
 		$row=WT_DB::prepare(
 			"SELECT SQL_CACHE".
@@ -528,7 +528,7 @@ class WT_MenuBar {
 				$submenu=new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
 				$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->record->getXref()."'},function(){location.reload();})");
 				$menu->addSubMenu($submenu);
-			} 
+			}
 		}
 		return $menu;
 	}

@@ -215,7 +215,7 @@ function utf8_strcasecmp($string1, $string2) {
 		$offset2=strpos($ALPHABET_lower, $chr2);
 		if ($offset2===false) {
 			$offset2=strpos($ALPHABET_upper, $chr2);
-		}	
+		}
 		if ($offset1!==false && $offset2!==false) {
 			if ($offset1==$offset2) {
 				continue;
@@ -231,7 +231,7 @@ function utf8_strcasecmp($string1, $string2) {
 		$offset2=strpos(WT_UTF8_ALPHABET_LOWER, $chr2);
 		if ($offset2===false) {
 			$offset2=strpos(WT_UTF8_ALPHABET_UPPER, $chr2);
-		}	
+		}
 		if ($offset1!==false && $offset2!==false) {
 			if ($offset1==$offset2) {
 				continue;
@@ -254,7 +254,7 @@ function utf8_wordwrap($string, $width=75, $sep="\n", $cut=false) {
 			$string='';
 		} else {
 			$sub1=utf8_substr($string, 0, $width+1);
-			if (utf8_substr($string,utf8_strlen($sub1)-1,1)==' ') //include words that end by a space immediately after the area. 
+			if (utf8_substr($string,utf8_strlen($sub1)-1,1)==' ') //include words that end by a space immediately after the area.
 				$sub=$sub1;
 			else
 				$sub=utf8_substr($string, 0, $width);

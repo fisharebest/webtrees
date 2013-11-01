@@ -239,7 +239,7 @@ if ($action=='choose') {
 	}
 	');
 
-	echo 
+	echo
 		'<div id="merge"><h3>', WT_I18N::translate('Merge records'), '</h3>
 		<form method="post" name="merge" action="admin_site_merge.php">
 		<input type="hidden" name="action" value="select">

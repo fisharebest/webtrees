@@ -24,7 +24,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Gedcom_Code_Rela {
-	
+
 	private static $TYPES=array(
 		'attendant', 'attending', 'best_man', 'bridesmaid', 'buyer',
 		'circumciser', 'civil_registrar', 'employee', 'employer', 'foster_child',

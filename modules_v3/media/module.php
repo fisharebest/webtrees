@@ -48,7 +48,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function hasTabContent() {
 		return WT_USER_CAN_EDIT || $this->get_facts();
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
 		return !$this->get_facts();

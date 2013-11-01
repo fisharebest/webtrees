@@ -28,7 +28,7 @@ $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addInlineJavascript('activate_colorbox();')
-	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"50%", height:"50%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"})') 
+	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"50%", height:"50%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"})')
 	->addInlineJavascript('
 		jQuery.extend(jQuery.colorbox.settings, {
 			title:	function(){
@@ -47,7 +47,7 @@ echo
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css" type="text/css">',
 	'<link rel="stylesheet" href="', WT_CSS_URL, 'style.css', '" type="text/css" media="all">',
 	'<meta name="robots" content="noindex,nofollow">';
-	
+
 switch ($BROWSERTYPE) {
 case 'msie':
 	echo '<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, $BROWSERTYPE, '.css">';
@@ -136,8 +136,6 @@ if (WT_USER_IS_ADMIN) {
 		'<li><a ', (WT_SCRIPT_NAME=='admin_masquerade.php' ? 'class="current" ' : ''), 'href="admin_masquerade.php">', WT_I18N::translate('Masquerade'), '</a>',
 		'<li><a ', (WT_SCRIPT_NAME=='admin_users.php' && WT_Filter::get('action')=='cleanup' ? 'class="current" ' : ''), 'href="admin_users.php?action=cleanup">', WT_I18N::translate('Delete inactive users'), '</a></li>',
 		'<li><a href="index_edit.php?user_id=-1" onclick="return modalDialog(\'index_edit.php?user_id=-1'.'\', \'', WT_I18N::translate('Set the default blocks for new users'), '\');">', WT_I18N::translate('Set the default blocks'), '</a></li>',
-		
-		
 		'</ul></li>',
 		'<li><a ', (WT_SCRIPT_NAME=='admin_media.php' ? 'class="current" ' : ''), 'href="admin_media.php">', WT_I18N::translate('Media'), '</a></li>',
 		'<li><ul>',
