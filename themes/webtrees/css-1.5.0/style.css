@@ -1155,3 +1155,19 @@ html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
 .story_edit {
 	padding: 12px;
 }
+/* Shared Note */
+.note_body{
+	margin:10px 0;
+	font-size:11px;
+}
+.note_body th{
+	text-align:left;
+	font-weight: bold;
+}
+.note_body td{
+	padding:0 2px;
+}
+.note_text{
+	white-space:normal;
+	display:block;
+}

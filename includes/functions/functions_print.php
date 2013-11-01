@@ -391,65 +391,47 @@ function contact_links($ged_id=WT_GED_ID) {
 * @return boolean
 */
 function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
-	global $EXPAND_SOURCES, $EXPAND_NOTES;
-	$elementID = 'N-'.(int)(microtime()*1000000);
+	global $EXPAND_NOTES;
 
-	$text .= get_cont($nlevel, $nrec);
-
+	$note = null;
 	// Check if shared note
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ NOTE/', $nrec, $match)) {
 		$note = WT_Note::getInstance($match[1]);
+	}
+	if ($note === null) {
+		$type = WT_I18N::translate('Note');
+		$text = WT_Filter::expandUrls($text . get_cont($nlevel, $nrec));
+	} else {
+		$type = WT_I18N::translate('Shared note');
 		// Check if using census assistant
-		if ($note && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+		if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 			$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
 		} else {
-			$text = $note->getNote();
-			$text = WT_Filter::expandUrls($text);
+			$text = WT_Filter::expandUrls($note->getNote());
 		}
-	} else {
-		$note = null;
-		$text = WT_Filter::expandUrls($text);
 	}
 
 	if ($textOnly) {
 		return strip_tags($text);
 	}
 
-
-	$brpos = strpos($text, '<br>');
 	$data = '<div class="fact_NOTE"><span class="label">';
-	if ($brpos !== false) {
-		if ($EXPAND_NOTES) $plusminus='minus'; else $plusminus='plus';
-		$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-'.$plusminus.'"></i></a> ';
-	}
-
-	if ($note) {
-		$data .= WT_I18N::translate('Shared note').': </span> ';
+	if ($note !== null && preg_match('/(<span class="note_title">.*?<\/span>|.*?\n)(.*)/si', $text, $match)) {
+		// $match[1] - the header line, will become a link
+		// $match[2] - the remainder of the note text
+		$eID = 'N-' . (int) (microtime() * 1000000);
+		$sign = $EXPAND_NOTES ? 'minus' : 'plus';
+		$data .= '<a href="#" onclick="expand_layer(\'' . $eID . '\'); return false;"><i id="' . $eID . '_img" class="icon-' . $sign . '"></i></a> ';
+		$data .= $type . ': </span> ';
+		$data .= '<span class="field" dir="auto"><a href="' . $note->getHtmlUrl() . '">' . $match[1] . '</a></span>';
+		// Shared notes may be created outside of census assistant so need
+		// to replace "\n" with "<br>"
+		$data .= '<div id="' . $eID . '" class="note_details" dir="auto">' . str_replace("\n", "<br>", $match[2]) . '</div>';
 	} else {
-		$data .= WT_I18N::translate('Note').': </span>';
-	}
-
-	if ($brpos !== false) {
-		$line1 = substr($text, 0, $brpos);
-		if ($note) {
-			$line1 = '<a href="' . $note->getHtmlUrl() . '">' . $line1 . '</a>';
-		}
-		$data .= '<span class="field" dir="auto">' . $line1 . '</span>';
-		$data .= '<div id="' . $elementID . '"';
-		if ($EXPAND_NOTES) {
-			$data .= ' style="display:block"';
-		}
-		$data .= ' class="note_details" dir="auto">';
-		$data .= substr($text, $brpos + 4);
-		$data .= '</div>';
-	} else {
-		if ($note) {
-			$text = '<a href="' . $note->getHtmlUrl() . '">' . $text . '</a>';
-		}
-		$data .= '<span class="field" dir="auto">'.$text. '</span>';
+		$data .= $type . ': </span>';
+		$data .= '<span class="field" dir="auto">' . $text . '</span>';
 	}
 	$data .= "</div>";
-
 	return $data;
 }
 
