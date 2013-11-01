@@ -258,7 +258,7 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 			
 			//-- Message subject
 			$html .= '<td class="wrap">';
-			$html .= '<i id="icon-message-'.$message->message_id.'" data-user_id = "'.$user_id.'" data-message_id = "'.$message->message_id.'" class="icon-plus"></i> <b dir="auto">'.WT_Filter::escapeHtml($message->subject).'</b>';				
+			$html .= '<i id="icon-message-'.$message->message_id.'" data-user_id = "'.$user_id.'" data-message_id = "'.$message->message_id.'" class="icon-plus"></i><span dir="auto">'.WT_Filter::escapeHtml($message->subject).'</span>';				
 			$html .= "</td>";
 			
 			//-- Message date/time
