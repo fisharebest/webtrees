@@ -1,6 +1,4 @@
 <?php
-// A sidebar to show extra/non-genealogical information about an individual
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2012 webtrees development team.
 //
@@ -17,8 +15,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-// $Id: module.php 11459 2011-05-04 23:37:08Z nigel $
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -29,10 +25,20 @@ class fancy_privacy_check_WT_Module extends WT_Module implements WT_Module_Sideb
 	
 	public function __construct() {
 		// Load any local user translations
-		if (is_dir(WT_MODULES_DIR.$this->getName().'/language')) {			
+		if (is_dir(WT_MODULES_DIR.$this->getName().'/language')) {
+			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.mo')) {
+				Zend_Registry::get('Zend_Translate')->addTranslation(
+					new Zend_Translate('gettext', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.mo', WT_LOCALE)
+				);
+			}
 			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php')) {
 				Zend_Registry::get('Zend_Translate')->addTranslation(
 					new Zend_Translate('array', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php', WT_LOCALE)
+				);
+			}
+			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.csv')) {
+				Zend_Registry::get('Zend_Translate')->addTranslation(
+					new Zend_Translate('csv', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.csv', WT_LOCALE)
 				);
 			}
 		}
@@ -41,6 +47,10 @@ class fancy_privacy_check_WT_Module extends WT_Module implements WT_Module_Sideb
 	// Extend WT_Module
 	public function getTitle() {
 		return /* Name of a module (not translatable) */ 'Fancy Privacy Check';
+	}
+	
+	public function getSidebarTitle() {
+		return /* Title used in the sidebar */ 'Privacy Check';
 	}
 
 	// Extend WT_Module
@@ -61,18 +71,25 @@ class fancy_privacy_check_WT_Module extends WT_Module implements WT_Module_Sideb
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
 		// code based on similar in function_print_list.php
-		global $MAX_ALIVE_AGE, $SHOW_EST_LIST_DATES, $SEARCH_SPIDER;	
-		$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
-		$controller=new WT_Controller_Individual();
-		$html = '<style>
-					dl#privacy_status{overflow:hidden;}
-					dl#privacy_status dt{float:none;width:100%;}
-					dl#privacy_status dd{font-size:80%;float:left;margin:0 0 0 20px;}
-					dl#privacy_status dt span{float:right;}
-					html[dir=\'rtl\'] dl#privacy_status dd{float:right;margin:0 20px 0 0;}
-					html[dir=\'rtl\'] dl#privacy_status dt span{float: left;}
-				</style>';
-		$html .= '<dl id="privacy_status">';
+		global $controller, $MAX_ALIVE_AGE, $SHOW_EST_LIST_DATES, $SEARCH_SPIDER;	
+		$SHOW_EST_LIST_DATES = get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
+		
+		$controller->addInlineJavascript('
+			function include_css(css_file) {
+				var html_doc = document.getElementsByTagName("head")[0];
+				var css = document.createElement("link");
+				css.setAttribute("rel", "stylesheet");
+				css.setAttribute("type", "text/css");
+				css.setAttribute("href", css_file);
+				html_doc.appendChild(css);
+			}
+			include_css("'.WT_MODULES_DIR.$this->getName().'/style.css");
+			jQuery(document).ajaxSend(function(){
+				jQuery("#'.$this->getName().' a").text("'.$this->getSidebarTitle().'");
+			});
+		');	 
+		
+		$html = '<dl id="privacy_status">';
 		if ($death_dates=$controller->record->getAllDeathDates()) {
 			$html .= '<dt>' .WT_I18N::translate('Dead').help_link('privacy_status',$this->getName()). '</dt>';
 			foreach ($death_dates as $num=>$death_date) {
@@ -88,7 +105,7 @@ class fancy_privacy_check_WT_Module extends WT_Module implements WT_Module_Sideb
 				$html .= '<dd>' .WT_I18N::translate('An estimated death date has been calculated as %s', $death_date->Display(!$SEARCH_SPIDER)). '</dd>';
 			} else if ($controller->record->isDead()) {
 				$html .= '<dt>' .WT_I18N::translate('Presumed dead').help_link('privacy_status',$this->getName()). '</dt>';
-				$html .= '<dd>' .$this->simpl_isDead(). '</dd>';
+				$html .= '<dd>' .$this->fpc_isDead(). '</dd>';
 			} else {
 				$html .= '<dt>' .WT_I18N::translate('Living').help_link('privacy_status',$this->getName()). '</dt>';
 			}
@@ -100,12 +117,12 @@ class fancy_privacy_check_WT_Module extends WT_Module implements WT_Module_Sideb
 	
 	// Implement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
-		return '';
+		return false;
 	}
 	
 	// This is a copy, with modifications, of the function isDead() in /library/WT/Individual.php
 	// It is VERY important that the parameters used in both are identical.
-	private function simpl_isDead() {
+	private function fpc_isDead() {
 		global $MAX_ALIVE_AGE, $SEARCH_SPIDER;
 		$controller=new WT_Controller_Individual();
 		
