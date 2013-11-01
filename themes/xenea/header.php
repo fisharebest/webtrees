@@ -31,7 +31,7 @@ $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addInlineJavascript('activate_colorbox();')
-	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"70%", height:"70%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"});') 
+	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"70%", height:"70%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"});')
 	->addInlineJavascript('
 		jQuery.extend(jQuery.colorbox.settings, {
 			title:	function(){
@@ -61,17 +61,19 @@ case 'msie':
 if (WT_USE_LIGHTBOX) {
 		echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen">';
 }
-
+if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+	echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/css/cens_style.css">';
+}
 echo
 	'</head>',
 	'<body id="body">';
 
 if ($view!='simple') { // Use "simple" headers for popup windows
-	echo 
+	echo
 	'<div id="header">',
 		'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>',
 		'<div class="hsearch">';
-	echo 
+	echo
 			'<form action="search.php" method="post">',
 			'<input type="hidden" name="action" value="general">',
 			'<input type="hidden" name="ged" value="', WT_GEDCOM, '">',
@@ -111,7 +113,7 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 				} else {
 					echo '<li>', login_link(), '</li> ';
 				}
-	echo	
+	echo
 			'</ul>',
 		'</div>';
 	echo
@@ -121,11 +123,11 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 				if ($menu) {
 					echo $menu->getMenuAsList();
 				}
-	echo 
+	echo
 			'</ul>',
 		'</div>',
 	'</div>';
-// Menu 
+// Menu
 		$menu_items=array(
 			WT_MenuBar::getGedcomMenu(),
 			WT_MenuBar::getMyPageMenu(),

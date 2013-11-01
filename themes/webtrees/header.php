@@ -35,19 +35,22 @@ $this
 	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, { width:"70%", height:"70%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'", title: function() { var img_title = jQuery(this).data("title"); return img_title; } } );');
 ?>
 <!DOCTYPE html>
-<html <?php echo WT_I18N::html_markup(); ?>> 
-<head> 
-	<meta charset="UTF-8"> 
-	<title><?php echo WT_Filter::escapeHtml($title); ?></title> 
-	<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?> 
-	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png"> 
-	<link rel="stylesheet" type="text/css" href="<?php echo WT_THEME_URL; ?>jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css"> 
-	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>style.css"> 
-	<!--[if IE]> 
-	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>msie.css"> 
-	<![endif]--> 
+<html <?php echo WT_I18N::html_markup(); ?>>
+<head>
+	<meta charset="UTF-8">
+	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
+	<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
+	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png">
+	<link rel="stylesheet" type="text/css" href="<?php echo WT_THEME_URL; ?>jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>style.css">
+	<!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>msie.css">
+	<![endif]-->
 	<?php if (WT_USE_LIGHTBOX) { ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/css/album_page.css">
+	<?php } ?>
+	<?php if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) { ?>
+	<link rel="stylesheet" type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>GEDFact_assistant/css/cens_style.css">
 	<?php } ?>
 </head>
 <body id="body">

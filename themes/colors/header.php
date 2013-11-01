@@ -34,7 +34,7 @@ $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addInlineJavascript('activate_colorbox();')
-	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"70%", height:"70%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"})') 
+	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"70%", height:"70%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"})')
 
 	->addInlineJavascript('
 		jQuery.extend(jQuery.colorbox.settings, {
@@ -74,7 +74,9 @@ case 'ipad':
 if (WT_USE_LIGHTBOX) {
 		echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen">';
 }
-
+if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+	echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/css/cens_style.css">';
+}
 echo
 	'</head>',
 	'<body id="body">';
@@ -85,8 +87,8 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	'<div id="header">',
 	'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>';
 
-	// Top row right 
-	echo 
+	// Top row right
+	echo
 	'<ul class="makeMenu">';
 
 	if (WT_USER_ID) {
@@ -132,7 +134,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	// Second Row menu and palette selection
 	// Menu
 	$menu_items=array(
-		WT_MenuBar::getGedcomMenu(), 
+		WT_MenuBar::getGedcomMenu(),
 		WT_MenuBar::getMyPageMenu(),
 		WT_MenuBar::getChartsMenu(),
 		WT_MenuBar::getListsMenu(),
@@ -147,7 +149,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	// Print the menu bar
 	echo
 
-		'<ul id="main-menu">'; 
+		'<ul id="main-menu">';
 		foreach ($menu_items as $menu) {
 			if ($menu) {
 			echo getMenuAsCustomList($menu);
@@ -155,9 +157,9 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 		}
 	unset($menu_items, $menu);
 	echo
-		'</ul>'; 
+		'</ul>';
 }
-// Remove list from home when only 1 gedcom 
+// Remove list from home when only 1 gedcom
 $this->addInlineJavaScript(
 	'if (jQuery("#menu-tree ul li").length == 2) jQuery("#menu-tree ul li:last-child").remove();'
 );

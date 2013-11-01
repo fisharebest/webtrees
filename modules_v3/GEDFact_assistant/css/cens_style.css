@@ -21,7 +21,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
- 
+
 .cens_header {text-align:left; margin:5px; height:40px;}
 .cens_container {float:left; width:575px; margin:5px 0; padding:0;}
 .cens_container span {margin:0 3px;}
@@ -54,9 +54,10 @@ textarea#NOTE {font-size: 12px;height:250px; width:98.5%; overflow:auto;}
 .rtlnav {position:absolute; top:-15px; right:40px;}
 .headimg {margin-top:-4px; border:0;}
 .headimg2 {height:17px;	border-style:none;margin:-3px;margin-left:0px;}
-.note1 {font-weight: bold;}
-.note2 {font-weight: bold;}
-.notecell {white-space: nowrap;}
+.note_body{margin:10px 0;font-size:11px;}
+.note_body th{text-align:left;font-weight: bold;}
+.note_body td{padding:0 2px;}
+.note_text{white-space:normal;display:block;}
 #edit_interface-page input#personid {width:160px;}
 
 html[dir='rtl'] .cens_header {text-align:right;}
