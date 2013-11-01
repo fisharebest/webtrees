@@ -392,25 +392,13 @@ jQuery(document).ready(function($){
 	});	
 	
 	/********************************************* LOGIN FORM ***********************************************/	
-	if ($('#login-page').length > 0) {
-						
+	if ($('#login-page').length > 0) {						
 		// login page styling
 		$('#login-page #login-text b:first').wrap('<div id="login-page-title" class="subheaders ui-state-default">');	
 		$('#login-page #login-page-title').prependTo('#login-page');
 		$('#login-page #login-text br:first').remove();
 		$('#login-page #login-text br:first').remove();
-		$('#login-page #login-text, #login-page #login-box').wrapAll('<div id="login-page-block">');
-		
-		// New password slide.
-		// The default function forgot to set return false. Return false is needed to prevent the page to move up to top when clicking on the link.
-		$("#passwd_click").attr('id', 'jb_passwd_click');
-		$("#new_passwd").hide();
-		$("#jb_passwd_click").click(function() {		
-			$("#new_passwd").slideToggle(100, function() {
-				$("#new_passwd_username").focus()
-			});
-			return false;
-		});		
+		$('#login-page #login-text, #login-page #login-box').wrapAll('<div id="login-page-block">');		
 	}
 	
 	/********************************************* REGISTER FORM ***********************************************/	
@@ -450,18 +438,6 @@ jQuery(document).ready(function($){
 	}
 	
 	/************************************** HOMEPAGE AND MY PAGE ***********************************************/	
-	// New password slide.
-	// The default function forgot to set return false. Return false is needed to prevent the page to move up to top when clicking on the link.
-	if ($('.block #login-box').length > 0) {
-		$("#passwd_click").attr('id', 'jb_passwd_click');
-		$("#new_passwd_form").hide();
-		$("#jb_passwd_click").click(function() {		
-			$("#new_passwd_form").slideToggle(100, function() {
-				$("#new_passwd_username").focus()
-			});
-			return false;
-		});	
-	}
 	
 	// Icons for gedcom block on homepage and user welcome block on my page (these are bigger then the standard icons)
 	var block = $('.gedcom_block_block, .user_welcome_block');
