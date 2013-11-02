@@ -1388,6 +1388,25 @@ table.tabs_table #side_bar a#alturl {font-size:9px}
 .clippings-page span.ui-icon {clear:both;display:block;margin-left:-25px;vertical-align:middle}
 .clippings-page form{margin-top:30px}
 
+/* Calendar Page */
+#calendar-page {width:80%;margin-left:auto;margin-right:auto}
+#calendar-page .facts_label {background:none}
+#calendar-page h2 {margin-bottom:0}
+#calendar-page h2 span.date {font-family:Verdana,Arial,Helvetica,sans-serif}
+#calendar-page .topbottombar {background: url(../jquery-ui-1.10.3/ui-bg_highlight-soft_40_474747_1x100.png);padding-top:40px}
+#calendar-page td.topbottombar a:link, #calendar-page td.topbottombar a:active, #calendar-page td.topbottombar a:visited {font-weight:normal}
+#calendar-page td.topbottombar a:hover {color:#999}
+#calendar-page > table:last-child tr:last-child .descriptionbox{background: none;font-size:11px;line-height:1.5em}
+#calendar-page table:last-child tr:last-child td:last-child{text-align:right}
+#calendar-page ul {list-style-type:none}
+#calendar-page li {font-size:12px;margin-bottom:15px;font-size:11px}
+#calendar-page li a {font-weight:bold}
+#calendar-page li .indent {padding-top:0;padding-left:16px}
+#calendar-page a, #calendar-page .indent .date a {color: #E2E2E2}
+#calendar-page a:hover, #calendar-page .indent .date a:hover {color: #767676}
+#calendar-page .error {color: #dd6900}
+#calendar-page .list_value {vertical-align:middle}
+
 /* Contactform  */
 #contactform{margin:20px auto;padding:10px;width:800px}
 #contactform #content{background-color:#303030;border:#545454 1px solid;padding:10px}

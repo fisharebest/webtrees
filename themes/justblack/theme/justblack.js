@@ -754,6 +754,14 @@ jQuery(document).ready(function($){
 		obj.parents('td').css('text-align', 'center');		
 	});
 	
+	/************************************** CALENDAR PAGE ********************************************/	
+	if (curPage() == 'calendar.php') {
+		$('.icon-indis, .icon-cfamily').parent().addClass('ui-state-default');
+		$('.icon-sex_m_15x15').removeClass().addClass('icon-sex_m_9x9');
+		$('.icon-sex_f_15x15').removeClass().addClass('icon-sex_f_9x9');
+		$('#calendar-page li').prepend('<span class="ui-icon ui-icon-triangle-1-e left">');
+	}
+	
 	/************************************** CLIPPINGS PAGE ********************************************/	
 	if(qstring('mod') == 'clippings') {
 		$('#content').addClass('clippings-page');
