@@ -248,7 +248,8 @@ table.header {margin:8px 0 0;padding:0 10px;width:100%;}
 
 div.error {color:#dd0000;font-weight:600;}
 
-.label,.error {font-weight:700;}
+.label,.error {font-weight:bold;}
+.field {font-weight:normal;}
 
 #pid {background:#ffffcc;color:#333333;}
 
