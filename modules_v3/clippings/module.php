@@ -607,7 +607,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		</tr>
 
 		<input type="hidden" name="conv_path" value="'.$clip_ctrl->conv_path.'">
-		
+
 		</td></tr>
 
 		<tr><td class="topbottombar" colspan="2">

@@ -81,7 +81,7 @@ function format_indi_table($datalist, $option='') {
 				"iDisplayLength": 20,
 				"sPaginationType": "full_numbers"
 			});
-	
+
 			jQuery("div.filtersH_'.$table_id.'").html("'.WT_Filter::escapeJs(
 				'<button type="button" id="SEX_M_'.    $table_id.'" class="ui-state-default SEX_M" title="'.    WT_I18N::translate('Show only males.').'">&nbsp;'.WT_Individual::sexImage('M', 'small').'&nbsp;</button>'.
 				'<button type="button" id="SEX_F_'.    $table_id.'" class="ui-state-default SEX_F" title="'.    WT_I18N::translate('Show only females.').'">&nbsp;'.WT_Individual::sexImage('F', 'small').'&nbsp;</button>'.
@@ -96,12 +96,12 @@ function format_indi_table($datalist, $option='') {
 				'<button type="button" id="TREE_L_'.   $table_id.'" class="ui-state-default TREE_L" title="'.   WT_I18N::translate('Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database.').'">'.WT_I18N::translate('Leaves').'</button>'.
 				'<button type="button" id="RESET_'.    $table_id.'" class="ui-state-default RESET" title="'.    WT_I18N::translate('Reset to the list defaults.').'">'.WT_I18N::translate('Reset').'</button>'
 			).'");
-	
+
 			jQuery("div.filtersF_'.$table_id.'").html("'.WT_Filter::escapeJs(
 				'<button type="button" class="ui-state-default" id="cb_parents_indi_list_table" onclick="jQuery(\'div.parents_indi_list_table_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
 				'<button type="button" class="ui-state-default" id="charts_indi_list_table" onclick="jQuery(\'div.indi_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
-	
+
 			/* Add event listeners for filtering inputs */
 			jQuery("#SEX_M_'.    $table_id.'").click( function() {
 				oTable'.$table_id.'.fnFilter("M", 20 );
@@ -168,7 +168,7 @@ function format_indi_table($datalist, $option='') {
 				oTable'.$table_id.'.fnFilter("L", 23 );
 				jQuery("#TREE_R_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#TREE_L_'.$table_id.'").addClass("ui-state-active");
-			});	
+			});
 			jQuery("#RESET_'.    $table_id.'").click( function() {
 				for (i=20; i<=23; i++){
 					oTable'.$table_id.'.fnFilter("", i );
@@ -181,7 +181,7 @@ function format_indi_table($datalist, $option='') {
 			jQuery("th div:eq(3)").css("margin", "auto").css("text-align", "center");
 			jQuery("th span:eq(8)").css("display", "none");
 			jQuery("th div:eq(8)").css("margin", "auto").css("text-align", "center");
-			
+
 			jQuery(".indi-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
 		');
@@ -436,7 +436,7 @@ function format_indi_table($datalist, $option='') {
 		'</td></tr></table>
 		</div>
 		</div>'; // Close "indi-list"
-		
+
 	return $html;
 }
 
@@ -508,7 +508,7 @@ function format_fam_table($datalist, $option='') {
 				'<button type="button" class="ui-state-default" id="cb_parents_'.$table_id.'" onclick="jQuery(\'div.parents_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
 				'<button type="button" class="ui-state-default" id="charts_fam_list_table" onclick="jQuery(\'div.fam_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'. WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
-			
+
 			/* Add event listeners for filtering inputs */
 			jQuery("#MARR_U_'.    $table_id.'").click( function() {
 				oTable'.$table_id.'.fnFilter("U", 20);
@@ -587,7 +587,7 @@ function format_fam_table($datalist, $option='') {
 				oTable'.$table_id.'.fnFilter("L", 22);
 				jQuery("#TREE_R_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#TREE_L_'.$table_id.'").addClass("ui-state-active");
-			});	
+			});
 			jQuery("#RESET_'.     $table_id.'").click( function() {
 				for (i=20; i<=22; i++) {
 					oTable'.$table_id.'.fnFilter("", i );
@@ -598,7 +598,7 @@ function format_fam_table($datalist, $option='') {
 			/* This code is a temporary fix for Datatables bug http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1*/
 			jQuery("th span:eq(9)").css("display", "none");
 			jQuery("th div:eq(9)").css("margin", "auto").css("text-align", "center");
-			
+
 			jQuery(".fam-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
 	');
@@ -858,7 +858,7 @@ function format_fam_table($datalist, $option='') {
 		'</td></tr></table>
 		</div>
 		</div>'; // Close "fam-list"
-	
+
 	return $html;
 }
 
@@ -940,7 +940,7 @@ function format_sour_table($datalist) {
 			} else {
 				$html .= '<a href="'. $source->getHtmlUrl(). '">'. highlight_search_hits($name['full']). '</a>';
 			}
-		}	
+		}
 		$html .= '</td>';
 		// Sortable name
 		$html .= '<td>'. strip_tags($source->getFullName()). '</td>';
@@ -976,7 +976,7 @@ function format_sour_table($datalist) {
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
-		//-- Delete 
+		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
 			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-source\',xref:\''. $source->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
@@ -985,7 +985,7 @@ function format_sour_table($datalist) {
 		$html .= '</tr>';
 	}
 	$html .= '</tbody></table></div>';
-		
+
 	return $html;
 }
 
@@ -1025,7 +1025,7 @@ function format_note_table($datalist) {
 			jQuery(".note-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
 		');
-		
+
 	//--table wrapper
 	$html .= '<div class="loading-image">&nbsp;</div>';
 	$html .= '<div class="note-list">';
@@ -1077,7 +1077,7 @@ function format_note_table($datalist) {
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
-		//-- Delete 
+		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
 			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-note\',xref:\''. $note->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
@@ -1086,7 +1086,7 @@ function format_note_table($datalist) {
 		$html .= '</tr>';
 	}
 	$html .= '</tbody></table></div>';
-		
+
 	return $html;
 }
 
@@ -1120,7 +1120,7 @@ function format_repo_table($repos) {
 		jQuery(".repo-list").css("visibility", "visible");
 		jQuery(".loading-image").css("display", "none");
 		');
-		
+
 	//--table wrapper
 	$html .= '<div class="loading-image">&nbsp;</div>';
 	$html .= '<div class="repo-list">';
@@ -1152,7 +1152,7 @@ function format_repo_table($repos) {
 			} else {
 				$html .= '<a href="'. $repo->getHtmlUrl(). '">'. highlight_search_hits($name['full']). '</a>';
 			}
-		}	
+		}
 		$html .= '</td>';
 		//-- Linked SOURces
 		$num = count($repo->linkedSources('REPO'));
@@ -1169,7 +1169,7 @@ function format_repo_table($repos) {
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
-		//-- Delete 
+		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
 			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-repository\',xref:\''. $repo->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
@@ -1178,7 +1178,7 @@ function format_repo_table($repos) {
 		$html .= '</tr>';
 	}
 	$html .= '</tbody></table></div>';
-	
+
 	return $html;
 }
 
@@ -1216,7 +1216,7 @@ function format_media_table($datalist) {
 		jQuery(".media-list").css("visibility", "visible");
 		jQuery(".loading-image").css("display", "none");
 		');
-		
+
 	//--table wrapper
 	$html .= '<div class="loading-image">&nbsp;</div>';
 	$html .= '<div class="media-list">';
@@ -1275,7 +1275,7 @@ function format_media_table($datalist) {
 		}
 	}
 	$html .= '</tbody></table></div>';
-	
+
 	return $html;
 }
 
@@ -1359,7 +1359,7 @@ function format_surname_table($surnames, $script) {
 		$html.='<td>'. $subtotal. '</td></tr>';
 	}
 	$html .= '</tbody></table>';
-	
+
 	return $html;
 }
 
@@ -1663,7 +1663,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 					/* 5-ANNIV  */ { "sType": "numeric", "bVisible": false},
 					/* 6-Event */  { "sClass": "center" }
 				]
-			});		
+			});
 		');
 
 	// Did we have any output?  Did we skip anything?

@@ -55,7 +55,7 @@ $controller
 	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
-if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) {	
+if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) {
 	$controller
 		->setPageTitle(WT_I18N::translate(/* I18N: %s are individual’s names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
 		->PageHeader();
@@ -157,7 +157,7 @@ if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) 
 	</form>
 
 <?php
-			
+
 $maxyoffset = $Dbaseyoffset;
 if ($person1 && $person2) {
 	if (!$disp) {

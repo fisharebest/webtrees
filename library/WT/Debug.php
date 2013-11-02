@@ -38,7 +38,7 @@ class WT_Debug {
 		'['=>'⟨', ']'=>'⟩', '('=>'⟨', ')'=>'⟩', '{'=>'⟨', '}'=>'⟩',
 		'.'=>'·', ':'=>'˸'
 	);
-	
+
 	// Pseudo-tranlsate a string.  Give it the attributes of a foreign language,
 	// while leaving it understandable by an English speaking developer.
 	public static function pseudoTranslate($text) {

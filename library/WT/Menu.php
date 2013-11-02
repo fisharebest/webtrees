@@ -95,7 +95,7 @@ class WT_Menu {
 		$this->submenus[] = $obj;
 	}
 
-	// 
+	//
 	public function __toString() {
 		return $this->getMenuAsList();
 	}

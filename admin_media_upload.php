@@ -30,7 +30,7 @@ $controller
 	->requireManagerLogin()
 	->requireEditorLogin() /* Editing may be disabled, even for admins */
 	->setPageTitle(WT_I18N::translate('Upload media files'));
-	
+
 $action = WT_Filter::post('action');
 
 if ($action == "upload") {

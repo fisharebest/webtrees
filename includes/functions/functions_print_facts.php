@@ -312,7 +312,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 
 	// Print the date of this fact/event
 	echo format_fact_date($fact, $record, true, true);
-	
+
 	// Print the place of this fact/event
 	echo '<div class="place">', format_fact_place($fact, true, true, true), '</div>';
 	// A blank line between the primary attributes (value, date, place) and the secondary ones
@@ -379,7 +379,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			}
 			break;
 		case '_WT_USER':
-			$fullname=getUserFullname(get_user_id($match[2])); // may not exist	
+			$fullname=getUserFullname(get_user_id($match[2])); // may not exist
 			if ($fullname) {
 				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $fullname);
 			} else {
@@ -507,7 +507,7 @@ function print_fact_sources($factrec, $level) {
 				$data .= WT_I18N::translate('Source').':</span> <span class="field">';
 				$data .= '<a href="'.$source->getHtmlUrl().'">'.$source->getFullName().'</a>';
 				$data .= '</span></div>';
-	
+
 				$data .= "<div id=\"$elementID\"";
 				if ($EXPAND_SOURCES) {
 					$data .= ' style="display:block"';
@@ -618,7 +618,7 @@ function print_main_sources(WT_Fact $fact, $level) {
 	$fact_id = $fact->getFactId();
 	$parent  = $fact->getParent();
 	$pid     = $parent->getXref();
-	
+
 	$nlevel = $level+1;
 	if ($fact->isNew()) {
 		$styleadd = 'new';
@@ -963,7 +963,7 @@ function print_main_media(WT_Fact $fact, $level) {
 	$factrec = $fact->getGedcom();
 	$fact_id = $fact->getFactId();
 	$parent  = $fact->getParent();
-	
+
 	if ($fact->isNew()) {
 		$styleadd = 'new';
 		$can_edit = $level==1 && $fact->canEdit();
@@ -1026,7 +1026,7 @@ function print_main_media(WT_Fact $fact, $level) {
 				}
 				echo '<em>';
 				foreach ($media->getAllNames() as $name) {
-					if ($name['type']!='TITL') echo '<br>'; 
+					if ($name['type']!='TITL') echo '<br>';
 					echo $name['full'];
 				}
 				echo '</em>';
@@ -1034,7 +1034,7 @@ function print_main_media(WT_Fact $fact, $level) {
 					echo '</a>';
 				}
 				echo '</span>';
-			
+
 				echo WT_Gedcom_Tag::getLabelValue('FORM', $media->mimeType());
 				$imgsize = $media->getImageAttributes('main');
 				if (!empty($imgsize['WxH'])) {
@@ -1047,7 +1047,7 @@ function print_main_media(WT_Fact $fact, $level) {
 				if ($mediatype) {
 					echo WT_Gedcom_Tag::getLabelValue('TYPE', WT_Gedcom_Tag::getFileFormTypeValue($mediatype));
 				}
-				
+
 				switch ($media->isPrimary()) {
 				case 'Y':
 					echo WT_Gedcom_Tag::getLabelValue('_PRIM', WT_I18N::translate('yes'));
@@ -1063,5 +1063,5 @@ function print_main_media(WT_Fact $fact, $level) {
 			}
 			echo '</td></tr>';
 		}
-	}	
+	}
 }

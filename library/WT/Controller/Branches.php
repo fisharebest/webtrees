@@ -155,7 +155,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 			$sosa_class = '';
 			$sosa_html  = '';
 		}
-		
+
 		// Generate HTML for this individual, and all their descendants
 		$indi_html = $individual->getSexImage() . '<a class="' . $sosa_class . '" href="' . $individual->getHtmlUrl() . '">' . $person_name . '</a> ' .  $individual->getLifeSpan() . $sosa_html;
 
@@ -172,7 +172,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 				$indi_html = '<span class="red">'.WT_Gedcom_Code_Pedi::getValue($pedi, $individual).'</span> ' . $indi_html;
 			}
 		}
-		
+
 		// spouses and children
 		$spouse_families = $individual->getSpouseFamilies();
 		if ($spouse_families) {

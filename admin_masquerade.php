@@ -37,7 +37,7 @@ if (array_key_exists($user_id, $all_users)) {
 	Zend_Session::regenerateId();
 	Zend_Session::writeClose();
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'index.php');
-	exit;	
+	exit;
 }
 
 $controller->pageHeader();

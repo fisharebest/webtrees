@@ -1667,7 +1667,7 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
 			case 'nn': // Source: Hogne Røed Nilsen
-			case 'nb':				
+			case 'nb':
 			case 'da': // Source: Patrick Sorensen
 				switch ($sex2) {
 				case 'M': return WT_I18N::translate('great x%d grandson',      $up-3);

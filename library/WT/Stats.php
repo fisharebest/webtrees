@@ -2266,7 +2266,7 @@ class WT_Stats {
 	function lastDivorceYear()  { return $this->_mortalityQuery('year',  'DESC', 'DIV'); }
 	function lastDivorceName()  { return $this->_mortalityQuery('name',  'DESC', 'DIV'); }
 	function lastDivorcePlace() { return $this->_mortalityQuery('place', 'DESC', 'DIV'); }
-	
+
 	function statsDiv($params=null) {return $this->_statsDiv(true, false, -1, -1, $params);}
 
 	function _statsMarrAge($simple=true, $sex='M', $year1=-1, $year2=-1, $params=null) {
@@ -2423,7 +2423,7 @@ class WT_Stats {
 	function oldestMarriageMale()                     { return $this->_marriageQuery('full', 'DESC', 'M'); }
 	function oldestMarriageMaleName()                 { return $this->_marriageQuery('name', 'DESC', 'M'); }
 	function oldestMarriageMaleAge($show_years=false) { return $this->_marriageQuery('age',  'DESC', 'M', $show_years); }
-	
+
 	function statsMarrAge($params=null) { return $this->_statsMarrAge(true, 'BOTH', -1, -1, $params); }
 
 	function ageBetweenSpousesMF    ($params=null) { return $this->_ageBetweenSpousesQuery($type='nolist', $age_dir='DESC', $params=null); }
@@ -2664,7 +2664,7 @@ class WT_Stats {
 		}
 		return $top10;
 	}
-	
+
 	function _monthFirstChildQuery($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
 		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2;
 		if ($params === null) {$params = array();}
@@ -3456,8 +3456,8 @@ class WT_Stats {
 			return getUserName();
 		} else {
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
-				# if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in 
-				return $params[0]; 
+				# if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
+				return $params[0];
 			}
 			else return null;
 		}
@@ -3552,7 +3552,7 @@ class WT_Stats {
 		} else {
 			// indi/fam/sour/etc.
 		}
-		
+
 		$count=WT_DB::prepare(
 			"SELECT SQL_NO_CACHE page_count FROM `##hit_counter`".
 			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"

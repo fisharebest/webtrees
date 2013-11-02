@@ -232,7 +232,7 @@ class WT_GedcomRecord {
 	public function getXref() {
 		return $this->xref;
 	}
-	
+
 	// GEDCOM ID
 	public function getGedcomId() {
 		return $this->gedcom_id;
@@ -335,7 +335,7 @@ class WT_GedcomRecord {
 
 	// Can the details of this record be shown?
 	public function canShow($access_level=WT_USER_ACCESS_LEVEL) {
-		// CACHING: this function can take three different parameters, 
+		// CACHING: this function can take three different parameters,
 		// and therefore needs three different caches for the result.
 		switch ($access_level) {
 		case WT_PRIV_PUBLIC: // visitor
@@ -718,7 +718,7 @@ class WT_GedcomRecord {
 			" WHERE o_file=? AND o_type='NOTE' AND l_type=? AND l_to=?".
 			" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'"
 		)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
-	
+
 		$list = array();
 		foreach ($rows as $row) {
 			$record = WT_Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
@@ -848,7 +848,7 @@ class WT_GedcomRecord {
 		}
 		return $chan_user;
 	}
-	
+
 	//////////////////////////////////////////////////////////////////////////////
 	// CRUD operations
 	//////////////////////////////////////////////////////////////////////////////
@@ -898,7 +898,7 @@ class WT_GedcomRecord {
 		if ($update_chan) {
 			$new_gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . WT_USER_NAME;
 		}
-		
+
 		// Adding a new fact
 		if (!$fact_id) {
 			$new_gedcom .= "\n" . $gedcom;
@@ -926,7 +926,7 @@ class WT_GedcomRecord {
 		}
 		$this->parseFacts();
 	}
-	
+
 	static public function createRecord($gedcom, $gedcom_id) {
 		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
 			$xref = $match[1];

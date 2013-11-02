@@ -160,7 +160,7 @@ case 'FAM': // Families, whose name contains the search terms
 				$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName());
 			}
 		}
-	}	
+	}
 	echo json_encode($data);
 	exit;
 
@@ -196,7 +196,7 @@ case 'INDI': // Individuals, whose name contains the search terms
 		if ($person->canShowName()) {
 			$data[]=array('value'=>$row->xref, 'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row->n_full).', <i>'.$person->getLifeSpan().'</i>');
 		}
-	}	
+	}
 	echo json_encode($data);
 	exit;
 
@@ -210,7 +210,7 @@ case 'NOTE': // Notes which contain the search terms
 		if ($note->canShowName()) {
 			$data[]=array('value'=>$note->getXref(), 'label'=>$note->getFullName());
 		}
-	}	
+	}
 	echo json_encode($data);
 	exit;
 
@@ -224,7 +224,7 @@ case 'OBJE':
 		if ($media->canShowName()) {
 			$data[]=array('value'=>$row->xref, 'label'=>'<img src="'.$media->getHtmlUrlDirect().'" width="25"> '.$media->getFullName());
 		}
-	}	
+	}
 	echo json_encode($data);
 	exit;
 
@@ -266,7 +266,7 @@ case 'PLAC': // Place names (with hierarchy), that include the search term
 	}
 	echo json_encode($data);
 	exit;
-	
+
 case 'PLAC2': // Place names (without hierarchy), that include the search term
 	// Do not filter by privacy.  Place names on their own do not identify individuals.
 	echo json_encode(
@@ -291,7 +291,7 @@ case 'REPO': // Repositories, that include the search terms
 		if ($record->canShowName()) {
 			$data[] = array('value'=>$record->getXref(), 'label'=>strip_tags($record->getFullName()));
 		}
-	}	
+	}
 	echo json_encode($data);
 	exit;
 
@@ -305,7 +305,7 @@ case 'REPO_NAME': // Repository names, that include the search terms
 		if ($record->canShowName()) {
 			$data[] = strip_tags($record->getFullName());
 		}
-	}	
+	}
 	echo json_encode($data);
 	exit;
 
@@ -319,7 +319,7 @@ case 'SOUR': // Sources, that include the search terms
 		if ($record->canShowName()) {
 			$data[] = array('value'=>$record->getXref(), 'label'=>strip_tags($record->getFullName()));
 		}
-	}	
+	}
 	echo json_encode($data);
 	exit;
 
@@ -388,7 +388,7 @@ case 'SOUR_TITL': // Source titles, that include the search terms
 		if ($source->canShowName()) {
 			$data[]=$row->s_name;
 		}
-	}	
+	}
 	echo json_encode($data);
 	exit;
 
@@ -416,7 +416,7 @@ case 'IFSRO':
 		if ($person->canShowName()) {
 			$data[]=array('value'=>$person->getXref(), 'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row->n_full).', <i>'.$person->getLifeSpan().'</i>');
 		}
-	}	
+	}
 	// Fetch all data, regardless of privacy
 	$rows=get_SOUR_rows($term);
 	// Filter for privacy
@@ -425,7 +425,7 @@ case 'IFSRO':
 		if ($source->canShowName()) {
 			$data[]=array('value'=>$source->getXref(), 'label'=>$source->getFullName());
 		}
-	}	
+	}
 	// Fetch all data, regardless of privacy
 	$rows=get_REPO_rows($term);
 	// Filter for privacy
@@ -434,7 +434,7 @@ case 'IFSRO':
 		if ($repository->canShowName()) {
 			$data[]=array('value'=>$repository->getXref(), 'label'=>$repository->getFullName());
 		}
-	}	
+	}
 	// Fetch all data, regardless of privacy
 	$rows=get_OBJE_rows($term);
 	// Filter for privacy
@@ -443,7 +443,7 @@ case 'IFSRO':
 		if ($media->canShowName()) {
 			$data[]=array('value'=>$media->getXref(), 'label'=>'<img src="'.$media->getHtmlUrlDirect().'" width="25"> '.$media->getFullName());
 		}
-	}	
+	}
 	// Fetch all data, regardless of privacy
 	$rows=get_FAM_rows($term);
 	// Filter for privacy
@@ -457,7 +457,7 @@ case 'IFSRO':
 				$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName());
 			}
 		}
-	}	
+	}
 	// Fetch all data, regardless of privacy
 	$rows=get_NOTE_rows($term);
 	// Filter for privacy
@@ -466,7 +466,7 @@ case 'IFSRO':
 		if ($note->canShowName()) {
 			$data[]=array('value'=>$note->getXref(), 'label'=>$note->getFullName());
 		}
-	}	
+	}
 	echo json_encode($data);
 	exit;
 }

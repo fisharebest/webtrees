@@ -25,7 +25,7 @@ define('WT_GM_SCRIPT', 'https://maps.google.com/maps/api/js?v=3.2&amp;sensor=fal
 header('Content-type: text/html; charset=UTF-8');
 
 ?>
- 
+
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -33,7 +33,7 @@ header('Content-type: text/html; charset=UTF-8');
 
 <script>
 
-	// Following function creates an array of the google map parameters passed ---------------------    
+	// Following function creates an array of the google map parameters passed ---------------------
 	var qsParm = new Array();
 	function qs() {
 		var query = window.location.search.substring(1);
@@ -46,13 +46,13 @@ header('Content-type: text/html; charset=UTF-8');
 				qsParm[key] = val;
 			}
 		}
-	} 	
+	}
 	qsParm['x'] = null;
 	qsParm['y'] = null;
 	qs();
 	// ---------------------------------------------------------------------------------------------
 
-	
+
 	// ---------------------------------------------------------------------------------------------
 
 var geocoder = new google.maps.Geocoder();
@@ -106,9 +106,9 @@ function initialize() {
     var b = parseFloat(qsParm['b']);
     var p = parseFloat(qsParm['p']);
     var m = parseFloat(qsParm['m']);
-    	
+
   	var latLng = new google.maps.LatLng(y, x);
-  	  
+
   	// Create the map and mapOptions
 	var mapOptions = {
 		zoom: 16,
@@ -123,9 +123,9 @@ function initialize() {
    			style: google.maps.NavigationControlStyle.SMALL			// ANDROID, DEFAULT, SMALL, ZOOM_PAN
       	},
       	streetViewControl: false,									// Show Pegman or not
-      	scrollwheel: true     		
+      	scrollwheel: true
 	};
-	
+
     var map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
 
     var bearing = b;
@@ -134,9 +134,9 @@ function initialize() {
     }
     var pitch = p;
     var svzoom = m;
-    
-	var imageNum = Math.round(bearing/22.5) % 16;  
-      
+
+	var imageNum = Math.round(bearing/22.5) % 16;
+
   	var image = new google.maps.MarkerImage('images/panda-icons/panda-' + imageNum + '.png',
       	// This marker is 50 pixels wide by 50 pixels tall.
       	new google.maps.Size(50, 50),
@@ -150,19 +150,19 @@ function initialize() {
       	coord: [1, 1, 1, 20, 18, 20, 18 , 1],
      	type: 'poly'
   	};
- 	
+
   	var marker = new google.maps.Marker({
         icon: image,
-        // shape: shape, 
+        // shape: shape,
     	position: latLng,
     	title: 'Drag me to a Blue Street',
     	map: map,
     	draggable: true
   	});
-  	
-	
+
+
     // ===Next, get the map's default panorama and set up some defaults. ===========================
-    
+
     // --- First check if Browser supports html5 ---
     var browserName=navigator.appName;
     if (browserName=='Microsoft Internet Explorer') {
@@ -187,7 +187,7 @@ function initialize() {
       		}
       	},
         position: latLng,
-        mode: render_type, 
+        mode: render_type,
        	pov: {
           	heading: bearing,
           	pitch: pitch,
@@ -235,38 +235,38 @@ function initialize() {
   	// Update current position info.
   	updateMarkerPosition(latLng);
   	geocodePosition(latLng);
-  
+
   	// Add dragging event listeners.
   	google.maps.event.addListener(marker, 'dragstart', function() {
     	updateMarkerAddress('Dragging...');
   	});
-  
+
   	google.maps.event.addListener(marker, 'drag', function() {
     	updateMarkerStatus('Dragging...');
     	updateMarkerPosition(marker.getPosition());
     	panorama.setPosition(marker.getPosition());
   	});
-  
+
   	google.maps.event.addListener(marker, 'dragend', function() {
     	updateMarkerStatus('Drag ended');
     	geocodePosition(marker.getPosition());
   	});
-  	
+
 	google.maps.event.addListener(panorama, 'pov_changed', function() {
 		povLevel = panorama.getPov();
         parent.document.getElementById('sv_bearText').value = roundNumber(povLevel.heading, 2)+"\u00B0";
         parent.document.getElementById('sv_elevText').value = roundNumber(povLevel.pitch, 2)+"\u00B0";
         parent.document.getElementById('sv_zoomText').value = roundNumber(povLevel.zoom, 2);
-	});	
-  	
-	google.maps.event.addListener(panorama, 'position_changed', function() {		
+	});
+
+	google.maps.event.addListener(panorama, 'position_changed', function() {
 		pos = panorama.getPosition();
 		marker.setPosition(pos);
         parent.document.getElementById('sv_latiText').value = pos.lat()+"\u00B0";
         parent.document.getElementById('sv_longText').value = pos.lng()+"\u00B0";
 	});
-	
-	
+
+
 	//==============================================================================================
 	//  CREATE THE MAP PANE STREETVIEW BLUE STREETS
 	//======================================================================================
@@ -304,17 +304,17 @@ function initialize() {
 	//--------------------------------------------------------------------------------------
 	map.overlayMapTypes.setAt(1, street);
 	//==============================================================================================
-	
+
 
 }  // end init
 
 var mapbutt = "<?php echo $_GET['map']; ?>";
-var svbutt = "<?php echo $_GET['streetview']; ?>";  	
-function toggleStreetView() { 
+var svbutt = "<?php echo $_GET['streetview']; ?>";
+function toggleStreetView() {
     var toggle = panorama.getVisible();
     if (toggle == false) {
       	panorama.setVisible(true);
-	  	document.myForm.butt1.value=mapbutt;	  	
+	  	document.myForm.butt1.value=mapbutt;
     } else {
       	panorama.setVisible(false);
       	document.myForm.butt1.value=svbutt;
@@ -340,7 +340,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   	}
   	#butt1{
   		width:120px;
-  	}  	  	
+  	}
 		#butt2 {
   		width:90px;
   	}
@@ -369,7 +369,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   		text-align: center;
   	}
   	</style>
-  	
+
   	<div id="toggle">
   		<form name="myForm" title="myForm">
   			<?php
@@ -378,22 +378,22 @@ google.maps.event.addDomListener(window, 'load', initialize);
   			echo '<input id="butt1" name ="butt1" type="button" value="', $map, '" onclick="toggleStreetView();"></input>';
   			echo '<input id="butt2" name ="butt2" type="button" value="', $reset, '" onclick="resetview();"></input>';
   			?>
-  			
+
   		</form>
   	</div>
-  		
+
   	<div id="mapCanvas">
-  	
+
   	</div>
 
   	<div id="infoPanel">
     	<!-- <b>Marker status:</b> -->
     	<div id="markerStatus"><em>Click and drag the marker.</em></div>
 <!--    	<b>Current position:</b> -->
-    	<div id="info" ></div> 
+    	<div id="info" ></div>
 <!--    	<b>Closest matching address:</b> -->
     	<div id="address"></div>
-  	</div> 
+  	</div>
 
 </body>
 </html>

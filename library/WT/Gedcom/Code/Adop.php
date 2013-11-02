@@ -24,7 +24,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Gedcom_Code_Adop {
-	
+
 	private static $TYPES=array('BOTH', 'HUSB', 'WIFE');
 
 	// Translate a code, for an (optional) record

@@ -81,7 +81,7 @@ $controller->pageHeader();
 			<td class="optionbox wrap width25">
 				<?php echo select_edit_control('folder', $folders, null, $folder); ?>
 			</td>
-			<?php	
+			<?php
 			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
 				echo '<td class="descriptionbox wrap width25">';
 				echo WT_I18N::translate('Sort order');

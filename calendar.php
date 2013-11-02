@@ -196,9 +196,9 @@ echo '<option value="recent"';
 if ($filterof == "recent") echo ' selected="selected"';
 echo '>', WT_I18N::translate('Recent years (&lt; 100 yrs)'), '</option>';
 echo '</select>';
-	
+
 echo '&nbsp;&nbsp;&nbsp;';
-	
+
 if ($filtersx=="") {
 	echo '<i class="icon-sex_m_15x15" title="', WT_I18N::translate('All individuals'), '"></i>';
 	echo '<i class="icon-sex_f_15x15" title="', WT_I18N::translate('All individuals'), '"></i> | ';

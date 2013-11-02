@@ -236,7 +236,7 @@ $controller
 	var block_descr = new Array();
 	');
 
-	
+
 	// Load Block Description array for use by javascript
 	foreach ($all_blocks as $block_name=>$block) {
 		$controller->addInlineJavascript(

@@ -31,7 +31,7 @@ $controller=new WT_Controller_Individual();
 $controller
 	->addExternalJavascript(WT_JQUERY_COOKIE_URL) // We use this to record the sidebar state
 	->addInlineJavascript('var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}'); // For the "find" links
-	
+
 if ($controller->record && $controller->record->canShow()) {
 	if (WT_Filter::get('action')=='ajax') {
 		$controller->ajaxRequest();
@@ -113,7 +113,7 @@ $controller->addInlineJavascript('
 		}
 	});
 
-	// sidebar settings 
+	// sidebar settings
 	// Variables
 	var objMain			= jQuery("#main");
 	var objTabs			= jQuery("#indi_left");
@@ -164,10 +164,10 @@ $controller->addInlineJavascript('
 	}
 	adjHeader();
 	jQuery("#main").css("visibility", "visible");
-	
+
 	function show_gedcom_record() {
 		var recwin=window.open("gedrecord.php?pid='. $controller->record->getXref(). '", "_blank", edit_window_specs);
-	}	
+	}
 
 	jQuery("#header_accordion1").accordion({
 		active: 0,
@@ -208,7 +208,7 @@ if ($controller->record->canShow()) {
 			$controller->print_sex_record($fact);
 		}
 	}
-	echo '</h3>'; // close first name accordion header	
+	echo '</h3>'; // close first name accordion header
 
 	// Display name details
 	foreach ($controller->record->getFacts() as $fact) {

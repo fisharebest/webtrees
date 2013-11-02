@@ -49,7 +49,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 		}
 		$this->treeid=ancestry_array($this->rootid, 5);
 	}
-	
+
 	function sosa_person($n) {
 		global $SHOW_HIGHLIGHT_IMAGES;
 

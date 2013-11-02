@@ -132,7 +132,7 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 		sort_facts($facts);
 		return $facts;
 	}
-	
+
 	/**
 	* edit menu items used in album tab and media list
 	*/

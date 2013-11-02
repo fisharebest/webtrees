@@ -193,7 +193,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			exit;
 		}
 		$first_time=false;
-		
+
 		// Re-fetch the data, now that we have performed character set conversion.
 		$data=WT_DB::prepare(
 			"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data".

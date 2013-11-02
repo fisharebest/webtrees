@@ -38,7 +38,7 @@ class WT_Controller_Simple extends WT_Controller_Page {
 		parent::pageHeader();
 		return $this;
 	}
-	
+
 	// Restrict access
 	public function requireAdminLogin() {
 		if (!WT_USER_IS_ADMIN) {
@@ -47,7 +47,7 @@ class WT_Controller_Simple extends WT_Controller_Page {
 		}
 		return $this;
 	}
-	
+
 	// Restrict access
 	public function requireManagerLogin($ged_id=WT_GED_ID) {
 		if (
@@ -59,7 +59,7 @@ class WT_Controller_Simple extends WT_Controller_Page {
 		}
 		return $this;
 	}
-	
+
 	// Restrict access
 	public function requireMemberLogin() {
 		if (!WT_USER_ID) {

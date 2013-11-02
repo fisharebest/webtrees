@@ -62,7 +62,7 @@ $controller
 		pastefield.value += value;
 	}
 	');
-	
+
 $disp = true;
 $media = WT_Media::getInstance($pid);
 if ($media) {
@@ -247,10 +247,10 @@ case 'create': // Save the information from the “showcreateform” action
 	}
 	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 	exit;
-	
+
 case 'update': // Save the information from the “editmedia” action
 	$controller->setPageTitle(WT_I18N::translate('Edit media object'));
-	
+
 	// Validate the media folder
 	$folderName = str_replace('\\', '/', $folder);
 	$folderName = trim($folderName, '/');

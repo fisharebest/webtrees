@@ -68,7 +68,7 @@ class WT_Mail {
 			$message
 		);
 	}
-	
+
 
 	// Create a transport mechanism for sending mail
 	public static function transport() {

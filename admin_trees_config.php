@@ -181,7 +181,7 @@ case 'update':
 		}
 	}
 
-	// Reload the page, so that the settings take effect immediately.	
+	// Reload the page, so that the settings take effect immediately.
 	Zend_Session::writeClose();
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
 	exit;
@@ -251,7 +251,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						<?php
 						$CALENDAR_FORMATS=explode('_and_', $CALENDAR_FORMAT);
 						if (count($CALENDAR_FORMATS)==1) {
-							$CALENDAR_FORMATS[]='none';	
+							$CALENDAR_FORMATS[]='none';
 						}
 						foreach (array(
 							'none'     =>WT_I18N::translate('No calendar conversion'),
@@ -270,7 +270,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						}
 						?>
 					</select>
-	
+
 					<select id="NEW_CALENDAR_FORMAT1" name="NEW_CALENDAR_FORMAT1">
 						<?php
 						foreach (array(
@@ -535,7 +535,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</th>
 				</tr>
 		<?php
-	
+
 		$all_tags=array();
 		$tags=array_unique(array_merge(
 			explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE')),
@@ -545,15 +545,15 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			explode(',', get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE')),
 			array('SOUR', 'REPO', 'OBJE', '_PRIM', 'NOTE', 'SUBM', 'SUBN', '_UID', 'CHAN')
 		));
-	
+
 		foreach ($tags as $tag) {
 			if ($tag) {
 				$all_tags[$tag]=WT_Gedcom_Tag::getLabel($tag);
 			}
 		}
-	
+
 		uasort($all_tags, 'utf8_strcasecmp');
-	
+
 		echo '<tr><td>';
 		echo '<input type="text" class="pedigree_form" name="xref" id="xref" size="6" maxlength="20">';
 		echo ' ', print_findindi_link('xref');

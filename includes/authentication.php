@@ -39,7 +39,7 @@ if (!defined('WT_WEBTREES')) {
 // On failure, return an error code
 function authenticateUser($user_name, $password) {
 	global $WT_SESSION;
-	
+
 	// If no cookies are available, then we cannot log in.
 	if (!isset($_COOKIE[WT_SESSION_NAME])) {
 		return -5;
@@ -266,7 +266,7 @@ function addMessage($message) {
 				$from,
 				$fromFullName,
 				// Reply-To:
-				WT_Site::preference('SMTP_FROM_NAME'), 
+				WT_Site::preference('SMTP_FROM_NAME'),
 				$WT_TREE->preference('title'),
 				// Message
 				WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],

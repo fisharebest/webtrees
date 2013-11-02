@@ -45,7 +45,7 @@ function get_tag($txt,$tag){
 	}while($pos);
 	return $arr;
 }
-	
+
 echo '<div id="readme" dir="ltr" lang="en">'; // This information is always LTR/English
 
 $url = 'readme.html';
@@ -55,5 +55,5 @@ $arr = get_tag($txt, "body");
 foreach ($arr as $value) {
 	echo $value;
 }
-	
+
 echo '</div>';

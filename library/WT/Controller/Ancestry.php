@@ -62,7 +62,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		$Dbheight=($box_width*$bheight)/100;
 		$bwidth=$Dbwidth;
 		$bheight=$Dbheight;
-		
+
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
 			$bwidth = $cbwidth;

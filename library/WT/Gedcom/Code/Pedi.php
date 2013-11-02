@@ -24,7 +24,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Gedcom_Code_Pedi {
-	
+
 	private static $TYPES=array('adopted', 'birth', 'foster', 'rada', 'sealing');
 
 	// Translate a code, for an optional record

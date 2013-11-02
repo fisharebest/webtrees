@@ -897,7 +897,7 @@ try {
 		" FROM `##block`" .
 		" WHERE user_id=-1"
 	)->execute();
-	
+
 
 	// Write the config file.  We already checked that this would work.
 	$config_ini_php=

@@ -95,7 +95,7 @@ if ($ctype=='user') {
 	echo '<h1 class="center">', WT_I18N::translate('My page'), '</h1>';
 } else {
 	echo '<div id="home-page">';
-}	
+}
 if ($blocks['main']) {
 	if ($blocks['side']) {
 		echo '<div id="index_main_blocks">';

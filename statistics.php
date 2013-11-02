@@ -53,7 +53,7 @@ if (!$ajax) {
 					});
 				}
 			});
-		')		
+		')
 		->pageHeader();
 
 	echo '<div id="statistics-page"><h2>', WT_I18N::translate('Statistics'), '</h2>',
@@ -573,7 +573,7 @@ if (!$ajax) {
 			echo '<br><select id="xas-grenzen-leeftijden" name="xas-grenzen-leeftijden">
 				<option value="1,5,10,20,30,40,50,60,70,80,90,100" selected="selected">',
 				WT_I18N::plural('interval %s year', 'interval %s years', 10, WT_I18N::number(10)), '</option>
-				<option value="5,20,40,60,75,80,85,90">', 
+				<option value="5,20,40,60,75,80,85,90">',
 				WT_I18N::plural('interval %s year', 'interval %s years', 20, WT_I18N::number(20)), '</option>
 				<option value="10,25,50,75,100">',
 				WT_I18N::plural('interval %s year', 'interval %s years', 25, WT_I18N::number(25)), '</option>

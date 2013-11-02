@@ -55,7 +55,7 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$indifacts[] = $fact;
 			}
 		}
-		
+
 		ob_start();
 		if (!$indifacts) {
 			echo WT_I18N::translate('There are no Facts for this individual.');
@@ -73,7 +73,7 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		echo '</div>';// close #hitcounter
 		return strip_tags(ob_get_clean(), '<a><div><span>');
 	}
-	
+
 	// Implement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		return '';

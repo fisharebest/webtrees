@@ -50,7 +50,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 
 		$this->tabs = WT_Module::getActiveTabs();
 
-		// If we can display the details, add them to the page header		
+		// If we can display the details, add them to the page header
 		if ($this->record && $this->record->canShow()) {
 			$this->setPageTitle($this->record->getFullName() . ' ' . $this->record->getLifespan());
 		}
@@ -103,7 +103,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		Zend_Session::writeClose();
 
 		echo $mod->getTabContent();
-		
+
 		if (WT_DEBUG_SQL) {
 			echo WT_DB::getQueryLog();
 		}
@@ -129,7 +129,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		);
 		$all_names=$dummy->getAllNames();
 		$primary_name=$all_names[0];
-		
+
 		$this->name_count++;
 		if ($this->name_count >1) { echo '<h3 class="name_two">',$dummy->getFullName(), '</h3>'; } //Other names accordion element
 		echo '<div class="indi_name_details';
@@ -275,7 +275,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					$menu->addOnclick("return edit_name('".$this->record->getXref() . "', '" . $fact->getFactId() . "');");
 					break;
 			}
-			
+
 			$submenu = new WT_Menu(WT_I18N::translate('Add a new name'), '#', 'menu-indi-addname');
 			$submenu->addOnclick("return add_name('".$this->record->getXref()."');");
 			$menu->addSubmenu($submenu);

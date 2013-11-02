@@ -51,7 +51,7 @@ $WT_IMAGES = array(
 	'plus'            => WT_CSS_URL . 'images/plus.png',
 	'remove'          => WT_CSS_URL . 'images/remove.png',
 	'search'          => WT_CSS_URL . 'images/search.png',
-	
+
 	// need different sizes before moving to CSS
 	'default_image_F' => WT_CSS_URL . 'images/silhouette_female.png',
 	'default_image_M' => WT_CSS_URL . 'images/silhouette_male.png',
