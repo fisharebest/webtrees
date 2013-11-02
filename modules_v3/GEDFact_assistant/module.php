@@ -269,11 +269,11 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 
 		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.*)((?:\n.*)*)\n.end_formatted_area\.\n(.*(?:\n.*)*)/', $note->getNote(), $match)) {
 			// This looks like a census-assistant shared note
-			$title     = WT_Filter::escapeHtml($match[1]);
-			$preamble  = WT_Filter::escapeHtml($match[2]);
-			$header    = WT_Filter::escapeHtml($match[3]);
-			$data      = WT_Filter::escapeHtml($match[4]);
-			$postamble = WT_Filter::escapeHtml($match[5]);
+			$title     = trim(WT_Filter::escapeHtml($match[1]));
+			$preamble  = trim(WT_Filter::escapeHtml($match[2]));
+			$header    = trim(WT_Filter::escapeHtml($match[3]));
+			$data      = trim(WT_Filter::escapeHtml($match[4]));
+			$postamble = trim(WT_Filter::escapeHtml($match[5]));
 
 			$fmt_headers = array();
 			foreach ($headers as $key=>$value) {
@@ -293,21 +293,14 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				$tbody .= '</tr>';
 			}
 
-			// TODO: why doesn't this work?  Why do we need to add the javascript inline?
-			//$controller->addInlineJavascript(
-			//	'jQuery("head").append(\'<link rel="stylesheet" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/css/cens_style.css" type="text/css">\');'
-			//);
-
 			return
-				'<script>jQuery("head").append(\'<link rel="stylesheet" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/css/cens_style.css" type="text/css">\');</script>' .
-				'<span class="note1">' . $title . '</span>' .
-				'<br>' . // Needed to allow the first line to be converted to a link
-				'<span class="note1">' . $preamble . '</span>' .
-				'<table class="note2">' .
+				'<span class="note_title">' . $title . '</span>' .
+				'<span class="note_text">' . $preamble . '</span>' .
+				'<table class="note_body">' .
 				'<thead>' .  $thead .  '</thead>' .
 				'<tbody>' .  $tbody .  '</tbody>' .
 				'</table>' .
-				'<span class="note1">' . $postamble . '</span>';
+				'<span class="note_text">' . $postamble . '</span>';
 		} else {
 			// Not a census-assistant shared note - apply default formatting
 			return WT_Filter::expandUrls($note->getNote());
