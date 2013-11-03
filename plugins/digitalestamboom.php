@@ -37,6 +37,6 @@ class digitalestamboom_plugin extends research_base_plugin {
 			$prefix = "";
 		}
 				
-		return $link = 'http://www.digitalestamboom.nl/search.aspx?lang=&verder='.$givn.'||'.$prefix.'|'.$surn;;
+		return $link = 'http://www.digitalestamboom.nl/search.aspx?lang=nl&verder='.$givn.'||'.$prefix.'|'.$surn;;
 	}
 }
