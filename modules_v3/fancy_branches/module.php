@@ -98,11 +98,10 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$controller
 				->addExternalJavaScript(WT_MODULES_DIR.$this->getName().'/js/jquery.treeview.js')
 				->addInlineJavaScript('			
-				jQuery("#branch-list")
-					.before("<div id=\"treecontrol\"><a href=\"#\">'.WT_I18N::translate('Collapse all').'</a> | <a href=\"#\">'.WT_I18N::translate('Expand all').'</a></div>")
-					.before("<div class=\"loading-image\">&nbsp;</div>");
+				jQuery("#branches-page form")
+					.after("<div id=\"treecontrol\"><a href=\"#\">'.WT_I18N::translate('Collapse all').'</a> | <a href=\"#\">'.WT_I18N::translate('Expand all').'</a></div>")
+					.after("<div class=\"loading-image\">&nbsp;</div>");
 				
-				jQuery("legend").remove();
 				jQuery(jQuery("#branches-page ol").get().reverse()).each(function(){
 					var html = jQuery(this).html();
 					if (html == "") {
@@ -121,15 +120,11 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$SB = get_module_setting($this->getName(), 'SB');
 			if (!isset($SB) || $SB == 1) {
 				$controller->addInlineJavaScript('
-					jQuery("#branches-page ul, #branches-page ul li").addClass("aboville");
+					jQuery("#branch-list, #branch-list li").addClass("aboville");
 				');
 			}
 			
 			$controller->addInlineJavaScript('									
-				var content = jQuery("fieldset").html();
-				jQuery("fieldset").remove();
-				jQuery(".loading-image").after(content);
-				
 				jQuery("#branch-list").treeview({
 					collapsed: true,
 					animated: "slow",
