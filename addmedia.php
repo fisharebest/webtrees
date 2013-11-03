@@ -173,7 +173,7 @@ case 'create': // Save the information from the “showcreateform” action
 		WT_FlashMessages::addMessage(WT_I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
 		$filename = '';
 		break;
-	} elseif (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com))$/', $filename)) {
+	} elseif (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com|htm|html|shtml))$/i', $filename, $match)) {
 		// Do not allow obvious script files.
 		WT_FlashMessages::addMessage(WT_I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
 		$filename = '';
