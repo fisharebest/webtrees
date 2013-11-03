@@ -449,7 +449,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		$data .= ' class="note_details" dir="auto" style="white-space:pre-wrap">' . $cont_lines. '</div>';
 	} else {
 		if ($note) {
-			$text = '<a href="' . $note->getHtmlUrl() . '">' . $first_line . '</a>';
+			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $first_line . '</a>';
 		}
 		$data .= '<span class="field" dir="auto">' . $first_line . '</span>';
 	}
