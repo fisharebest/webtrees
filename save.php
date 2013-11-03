@@ -38,6 +38,11 @@ function fail() {
 	exit;
 }
 
+// Do we have a valid CSRF token?
+if (!WT_Filter::checkCsrf()) {
+	fail();
+}
+
 // The data item to updated must identified with a single "id" element.
 // The id must be a valid CSS identifier, so it can be used in HTML.
 // We use "[A-Za-z0-9_]+" separated by "-".
