@@ -120,7 +120,7 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$SB = get_module_setting($this->getName(), 'SB');
 			if (!isset($SB) || $SB == 1) {
 				$controller->addInlineJavaScript('
-					jQuery("#branch-list, #branch-list li").addClass("aboville");
+					jQuery("#branch-list, #branch-list ul, #branch-list li").addClass("aboville");
 				');
 			}
 			

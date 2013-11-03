@@ -1,4 +1,7 @@
-#branches-page h2{text-align:center;}
+/* Basic style for the Fancy Branches - this css file is suitable for all themes.
+/* No specific theme stylesheets required
+*/
+
 #branches-page ul.aboville{counter-reset:section;} /* instigate the "d'Aboville" numbering system */
 #branches-page ul li.aboville{counter-increment:section;} /* instigate the "d'Aboville" numbering system */
 #branches-page ul li.aboville:before {content:counters(section, ".") ". ";} /* instigate the "d'Aboville" numbering system */
