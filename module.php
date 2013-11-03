@@ -45,7 +45,7 @@ class fancy_research_links_WT_Module extends WT_Module implements WT_Module_Side
 	}
 	
 	public function getSidebarTitle() {
-		return /* Title used in the sidebar */ 'Research links';
+		return /* Title used in the sidebar */ WT_I18N::translate('Research links');
 	}
 
 	// Extend WT_Module
