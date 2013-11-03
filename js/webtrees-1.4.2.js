@@ -516,6 +516,21 @@ function delete_fact(pid, linenum, mediaid, message) {
   return false;
 }
 
+// Delete a user - and reload the page
+function delete_user(message, user_id) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-user',
+			user_id:   user_id,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
 function reorder_children(famid) {
   edit_interface({
     "action": "reorder_children",

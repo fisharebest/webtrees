@@ -71,16 +71,6 @@ $verified          =safe_POST_bool('verified');
 $verified_by_admin =safe_POST_bool('verified_by_admin');
 
 switch ($action) {
-case 'deleteuser':
-	// Delete a user - but don't delete ourselves!
-	$username=safe_GET('username');
-	$user_id=get_user_id($username);
-	if ($user_id && $user_id!=WT_USER_ID) {
-		delete_user($user_id);
-		AddToLog("deleted user ->{$username}<-", 'auth');
-	}
-	$action='listusers';
-	break;
 case 'loadrows':
 	// Generate an AJAX/JSON response for datatables to load a block of rows
 	$sSearch=safe_GET('sSearch');
@@ -169,7 +159,7 @@ case 'loadrows':
 		$aData[12]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified_by_admin-', $aData[12]);
 		// Add extra column for "delete" action
 		if ($user_id != WT_USER_ID) {
-			$aData[13]='<div class="icon-delete" onclick="if (confirm(\''.htmlspecialchars(WT_I18N::translate('Are you sure you want to delete “%s”?', $user_name)).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=deleteuser&username='.htmlspecialchars($user_name).'\'; }"></div>';
+			$aData[13]='<div class="icon-delete" onclick="delete_user(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs($user_name)) . '\', \'' . WT_Filter::escapeJs($user_id) . '\');"></div>';
 		} else {
 			// Do not delete ourself!
 			$aData[13]='';
@@ -257,21 +247,18 @@ case 'load1row':
 	}
 	echo '</table>';
 	exit;
-}
 
-$controller->pageHeader();
-
-// Pass 1 - perform action updates
-switch ($action) {
 case 'createuser':
-	if (get_user_id($username)) {
-		echo '<div class="ui-state-error">', WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'), '</div>';
+	if (!WT_Filter::checkCsrf()) {
+		$action='createform';
+	} elseif (get_user_id($username)) {
+		WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
 		$action='createform';
 	} elseif (get_user_by_email($emailaddress)) {
-		echo '<div class="ui-state-error">', WT_I18N::translate('Duplicate email address.  A user with that email already exists.'), '</div>';
+		WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
 		$action='createform';
 	} elseif ($pass1!=$pass2) {
-		echo '<div class="ui-state-error">', WT_I18N::translate('Passwords do not match.'), '</div>';
+		WT_FlashMessages::addMessage(WT_I18N::translate('Passwords do not match.'));
 		$action='createform';
 	} else {
 		// Create new uers
@@ -306,7 +293,8 @@ case 'createuser':
 	}
 }
 
-// Pass 2 - display page
+$controller->pageHeader();
+
 switch ($action) {
 case 'createform':
 	if (count(WT_Tree::getAll())==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
@@ -367,6 +355,7 @@ case 'createform':
 
 	echo '
 	<form name="newform" method="post" action="admin_users.php?action=createuser" onsubmit="return checkform(this);" autocomplete="off">
+		', WT_Filter::getCsrf(), '
 		<table id="adduser">
 			<tr>
 				<td>', WT_I18N::translate('Real name'), help_link('real_name'), '</td>
