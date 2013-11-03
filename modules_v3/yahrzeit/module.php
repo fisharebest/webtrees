@@ -43,9 +43,11 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $controller;
 
-		$days=get_block_setting($block_id, 'days', 7);
-		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
-		$block=get_block_setting($block_id, 'block', true);
+		$days      = get_block_setting($block_id, 'days',       7);
+		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
+		$calendar  = get_block_setting($block_id, 'calendar',  'jewish');
+		$block     = get_block_setting($block_id, 'block',      true);
+
 		if ($cfg) {
 			foreach (array('days', 'infoStyle', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -184,7 +186,15 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= '<td>'.$yahrzeit['anniv'].'</td>';
 
 					// upcomming yahrzeit dates
-					$today=new WT_Date_Jewish($yahrzeit['jd']);
+					switch ($calendar) {
+					case 'gregorian':
+						$today=new WT_Date_Gregorian($yahrzeit['jd']);
+						break;
+					case 'jewish':
+					default:
+						$today=new WT_Date_Jewish($yahrzeit['jd']);
+						break;
+					}
 					$td=new WT_Date($today->Format('%@ %A %O %E'));
 					$content .= '<td>'.$td->Display().'</td>';
 					$content .= '<td>'.$td->minJD().'</td>';// sortable date
@@ -225,10 +235,11 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'days', safe_POST_integer('days', 1, 30, 7));
-			set_block_setting($block_id, 'infoStyle', safe_POST('infoStyle', array('list', 'table'), 'table'));
-			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
+		if (WT_Filter::postBool('save')) {
+			set_block_setting($block_id, 'days',      WT_Filter::postInteger('days', 1, 30, 7));
+			set_block_setting($block_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
+			set_block_setting($block_id, 'calendar',  WT_Filter::post('calendar', 'jewish|gregorian', 'jewish'));
+			set_block_setting($block_id, 'block',     WT_Filter::postBool('block'));
 			exit;
 		}
 
@@ -247,6 +258,16 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		echo WT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('list'), 'table'=>WT_I18N::translate('table')), null, $infoStyle, '');
+		echo '</td></tr>';
+
+		$calendar=get_block_setting($block_id, 'calendar');
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo WT_I18N::translate('Calendar');
+		echo '</td><td class="optionbox">';
+		echo select_edit_control('calendar', array(
+			'jewish'   =>WT_Date_Jewish::calendarName(),
+			'gregorian'=>WT_Date_Gregorian::calendarName(),
+		), null, $calendar, '');
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);
