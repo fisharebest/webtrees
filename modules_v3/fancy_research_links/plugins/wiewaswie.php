@@ -30,4 +30,8 @@ class wiewaswie_plugin extends research_base_plugin {
 		
 		return $link = 'https://www.wiewaswie.nl/personen-zoeken/zoeken/q/'.str_replace(" ", "+", $primary_name['fullNN']).'/type/documenten';
 	}
+	
+	static function create_sublink(WT_Fact $event) {
+		return false;
+	}
 }

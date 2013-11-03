@@ -39,4 +39,8 @@ class digitalestamboom_plugin extends research_base_plugin {
 				
 		return $link = 'http://www.digitalestamboom.nl/search.aspx?lang=nl&verder='.$givn.'||'.$prefix.'|'.$surn;;
 	}
+	
+	static function create_sublink(WT_Fact $event) {
+		return false;
+	}
 }

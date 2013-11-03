@@ -86,6 +86,21 @@ class fancy_research_links_WT_Module extends WT_Module implements WT_Module_Side
 						fixed:		true,
 						iframe:		true,
 						title:		"<a href=\"" + url + "\" target=\"_blank\">" + url + "</a>"
+					});					
+				});
+				jQuery("#research_status > li").click(function(e){
+					var obj = jQuery(this);
+					jQuery(this).find("ul").each(function(){
+						if(jQuery(this).length > 0) {
+							e.preventDefault();
+							obj.find("a:first").removeClass("cboxElement");
+							if(jQuery(this).is(":visible")) {
+								jQuery(this).hide();
+							}
+							else {
+								jQuery(this).show();
+							}
+						}
 					});
 				});
 			});
@@ -95,9 +110,22 @@ class fancy_research_links_WT_Module extends WT_Module implements WT_Module_Side
 		foreach ($this->getPluginList() as $plugin) {
 			foreach ($controller->record->getFacts() as $key=>$value) {
 				$fact = $value->getTag();
-				if ($fact=="NAME") $name = $plugin->create_link($value);
+				if ($fact=="NAME") {
+					$link = $plugin->create_link($value);
+					$sublinks = $plugin->create_sublink($value);
+				}
 			}			
-			$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="research_link" href="'.$name.'">'.$plugin->getName().'</a></li>';
+			$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="research_link" href="'.$link.'">'.$plugin->getName().'</a>';
+						
+			if($sublinks) {
+				$html .= '<ul style="display:none">';
+				foreach ($sublinks as $sublink) {
+					$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="research_link" href="'.$sublink['link'].'">'.$sublink['title'].'</a></li>';				
+				}				
+				$html .= '</ul>';			
+			}
+			
+			$html .= '</li>';
 		}
 		$html.= '</ul>';
 		return $html;

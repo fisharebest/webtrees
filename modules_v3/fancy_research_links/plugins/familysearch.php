@@ -34,4 +34,8 @@ class familysearch_plugin extends research_base_plugin {
 						.rawurlencode($primary_name['surname'])
 						.'%22~';
 	}
+	
+	static function create_sublink(WT_Fact $event) {
+		return false;
+	}
 }
