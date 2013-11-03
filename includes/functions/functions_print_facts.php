@@ -902,14 +902,13 @@ function print_main_notes(WT_Fact $fact, $level) {
 		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
 			// Note objects
 			$nid = $nmatch[1];
-			$note=WT_Note::getInstance($nid);
+			$note = WT_Note::getInstance($nid);
 			if ($note) {
-				$text = $note->getNote();
 				// If Census assistant installed, allow it to format the note
-				if ($fact->getTag()=='CENS' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+				if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 					$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
 				} else {
-					$text = WT_Filter::expandUrls($text);
+					$text = WT_Filter::expandUrls($note->getNote());
 				}
 			} else {
 				$text = '<span class="error">' . WT_Filter::escapeHtml($nid) . '</span>';

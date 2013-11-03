@@ -96,7 +96,7 @@ foreach ($controller->record->getFacts() as $fact) {
 if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 	$text = GEDFact_assistant_WT_Module::formatCensusNote($controller->record);
 } else {
-	$text = $controller->record->getNote();
+	$text = WT_Filter::expandUrls($controller->record->getNote());
 }
 
 ?>

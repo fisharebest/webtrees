@@ -54,9 +54,6 @@ textarea#NOTE {font-size: 12px;height:250px; width:98.5%; overflow:auto;}
 .rtlnav {position:absolute; top:-15px; right:40px;}
 .headimg {margin-top:-4px; border:0;}
 .headimg2 {height:17px;	border-style:none;margin:-3px;margin-left:0px;}
-.note1 {font-weight: bold;}
-.note2 {font-weight: bold;}
-.notecell {white-space: nowrap;}
 #edit_interface-page input#personid {width:160px;}
 
 html[dir='rtl'] .cens_header {text-align:right;}

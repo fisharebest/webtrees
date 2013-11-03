@@ -399,12 +399,15 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 	// Check if shared note
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ NOTE/', $nrec, $match)) {
 		$note = WT_Note::getInstance($match[1]);
-		// Check if using census assistant
-		if ($note && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-			$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
+		if ($note) {
+			// If Census assistant installed, allow it to format the note
+			if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+				$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
+			} else {
+				$text = WT_Filter::expandUrls($note->getNote());
+			}
 		} else {
-			$text = $note->getNote();
-			$text = WT_Filter::expandUrls($text);
+			$text = '<span class="error">' . WT_Filter::escapeHtml($nid) . '</span>';
 		}
 	} else {
 		$note = null;
@@ -415,12 +418,21 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		return strip_tags($text);
 	}
 
+	if (strpos($text, "\n") !== false) {
+		list($first_line, $cont_lines) = explode("\n", $text, 2);
+	} else {
+		$first_line = $text;
+		$cont_lines = '';
+	}
 
-	$brpos = strpos($text, '<br>');
 	$data = '<div class="fact_NOTE"><span class="label">';
-	if ($brpos !== false) {
-		if ($EXPAND_NOTES) $plusminus='minus'; else $plusminus='plus';
-		$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-'.$plusminus.'"></i></a> ';
+	if ($cont_lines) {
+		if ($EXPAND_NOTES) {
+			$plusminus='minus';
+		} else {
+			$plusminus='plus';
+		}
+		$data .= '<a href="#" onclick="expand_layer(\'' . $elementID . '\'); return false;"><i id="' . $elementID . '_img" class="icon-' . $plusminus . '"></i></a> ';
 	}
 
 	if ($note) {
@@ -429,26 +441,23 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		$data .= WT_I18N::translate('Note').': </span>';
 	}
 
-	if ($brpos !== false) {
-		$line1 = substr($text, 0, $brpos);
+	if ($cont_lines) {
 		if ($note) {
-			$line1 = '<a href="' . $note->getHtmlUrl() . '">' . $line1 . '</a>';
+			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $first_line . '</a>';
 		}
-		$data .= '<span class="field" dir="auto">' . $line1 . '</span>';
+		$data .= '<span class="field" dir="auto">' . $first_line . '</span>';
 		$data .= '<div id="' . $elementID . '"';
 		if ($EXPAND_NOTES) {
 			$data .= ' style="display:block"';
 		}
-		$data .= ' class="note_details" dir="auto">';
-		$data .= substr($text, $brpos + 4);
-		$data .= '</div>';
+		$data .= ' class="note_details" dir="auto" style="white-space:pre-wrap">' . $cont_lines. '</div>';
 	} else {
 		if ($note) {
-			$text = '<a href="' . $note->getHtmlUrl() . '">' . $text . '</a>';
+			$text = '<a href="' . $note->getHtmlUrl() . '">' . $first_line . '</a>';
 		}
-		$data .= '<span class="field" dir="auto">'.$text. '</span>';
+		$data .= '<span class="field" dir="auto">' . $first_line . '</span>';
 	}
-	$data .= "</div>";
+	$data .= '</div>';
 
 	return $data;
 }

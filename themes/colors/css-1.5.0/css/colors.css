@@ -1205,7 +1205,18 @@ html[dir=rtl] #cboxCurrent {right:auto;left:0}
 html[dir=rtl] #cboxClose {right:auto;left:0}
 html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
 
-/* Stories tab */
+/* Census assistant module */
+table.table-census-assistant {
+	background: #fff;
+	border:     thin solid #000;
+	color:      #000;
+	font:       smaller serif;
+}
+table.table-census-assistant th {
+	font-weight: bold;
+}
+
+/* Stories module */
 .story_title {
 	padding-top: 12px;
 	height:      32px;
