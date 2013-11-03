@@ -2,5 +2,6 @@
 /* No specific theme stylesheets required
 */
 ul#research_status li {list-style-type:none; line-height:16px; padding:2px 0; margin-bottom:5px}
+ul#research_status li ul, ul#research_status li li:last-child {margin-bottom:0}
 ul#research_status span.ui-icon {vertical-align:middle}
 
