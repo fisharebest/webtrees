@@ -173,7 +173,7 @@ class WT_Filter {
 	}
 
 	public static function getEmail($variable, $default=null) {
-		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_EMAIL ?: $default);
+		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_EMAIL) ?: $default;
 	}
 
 	public static function getUrl($variable, $default=null) {
