@@ -1314,6 +1314,10 @@ table.facts_table td.ui-widget-header input{margin:0;vertical-align:middle}
 			background-image:none;background-color: #FFEEB0;color:#272727;font-size:9px;border: 1px solid #FECF5B}
 body .ui-tooltip {border-width: 2px}
 
+/* Colorbox custom changes */
+#cboxTitle a {color:#000}
+#cboxTitle a:hover {color:#767676}
+
 /* Search result tab */
 #search-result-tabs{background:none;border:none}
 #search-result-tabs .ui-tabs-nav {background-color:#2E2E2E;border:none}
