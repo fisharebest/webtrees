@@ -77,7 +77,7 @@ if ($action=='update_mods') {
 			<tbody>
 				<?php
 				$order = 1;
-				foreach ($modules as $module_name=>$module) { 
+				foreach ($modules as $module_name=>$module) {
 					?>
 					<tr class="sortme">
 						<td ><?php echo $module->getTitle(); ?></td>

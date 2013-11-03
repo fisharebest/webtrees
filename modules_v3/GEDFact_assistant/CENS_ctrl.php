@@ -48,7 +48,7 @@ echo '<h3>', $controller->getPageTitle(), '&nbsp;&nbsp;';
 		break;
 	}
 echo '</h3>';
-	
+
 ?>
 <div class="center" style="width:100%;">
 	<?php

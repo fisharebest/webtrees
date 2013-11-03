@@ -54,7 +54,7 @@ class WT_Report_PDF extends WT_Report_Base {
 	const unicode = true;
 	/**
 	* FALSE means that the full font is embedded, TRUE means only the used chars
-	* in TCPDF v5.9 font subsetting is a very slow process, this leads to larger files  
+	* in TCPDF v5.9 font subsetting is a very slow process, this leads to larger files
 	* @var boolean const
 	*/
 	const subsetting = false;
@@ -489,7 +489,7 @@ class PDF extends TCPDF {
 		$this->currentStyle = $s;
 		$style = $this->wt_report->getStyle($s);
 		$this->SetFont($style['font'], $style['style'], $style['size']);
-		} 
+		}
 
 	/**
 	* Get the style -PDF
@@ -1068,7 +1068,7 @@ class TextBoxPDF extends TextBox {
 		// Draw the border
 		if (!empty($cS)) {
 			if (!$pdf->getRTL()) {
-				$cXM = $cX;	
+				$cXM = $cX;
 			} else {
 				$cXM=($pdf->getPageWidth())-$cX-$cW;
 			}
@@ -1082,7 +1082,7 @@ class TextBoxPDF extends TextBox {
 					$pdf->SetY($cY + $cM['padding_top']);
 				}
 				else {
-					$pdf->SetY($cY + $cM['cell']);					
+					$pdf->SetY($cY + $cM['cell']);
 				}
 			}
 		}
@@ -1093,7 +1093,7 @@ class TextBoxPDF extends TextBox {
 					$pdf->SetLeftMargin($cX + $cM['padding_left']);
 				}
 				else {
-					$pdf->SetLeftMargin($cX + $cM['cell']);					
+					$pdf->SetLeftMargin($cX + $cM['cell']);
 				}
 				$pdf->SetRightMargin($pdf->getRemainingWidthPDF() - $cW + $cM['right']);
 			}
@@ -1184,7 +1184,7 @@ class TextPDF extends Text {
 		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
-		
+
 		// Paint the text color or they might use inherited colors by the previous function
 		$match = array();
 		if (preg_match("/#?(..)(..)(..)/", $this->color, $match)) {

@@ -64,7 +64,7 @@ class WT_Query_Media {
 	// Generate a filtered, sourced, privacy-checked list of media objects - for the media list.
 	public static function mediaList($folder, $subfolders, $sort, $filter) {
 		// All files in the folder, plus external files
-		$sql = 
+		$sql =
 			"SELECT m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
 			" FROM `##media`" .
 			" WHERE m_file=?";

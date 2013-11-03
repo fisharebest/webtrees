@@ -643,7 +643,7 @@ class WT_Soundex {
 		'ى'=>array('1',   '1','',''),
 	);
 
-	private static function DMSoundex($name) {	
+	private static function DMSoundex($name) {
 		// Apply special transformation rules to the input string
 		$name = utf8_strtoupper($name);
 		foreach (self::$transformNameTable as $transformRule) {

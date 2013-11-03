@@ -52,7 +52,7 @@ class WT_Controller_Clippings {
 
 	public function __construct() {
 		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $WT_SESSION;
-		
+
 		// Our cart is an array of items in the session
 		if (!is_array($WT_SESSION->cart)) {
 			$WT_SESSION->cart=array();
@@ -231,8 +231,8 @@ class WT_Controller_Clippings {
 							// Skip external files and non-existant files
 							if (file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1])) {
 								$media[$mediacount] = array (
-									PCLZIP_ATT_FILE_NAME          =>                                  $match[$k][1],
-									PCLZIP_ATT_FILE_NEW_FULL_NAME => WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1],
+									PCLZIP_ATT_FILE_NAME          => WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1],
+									PCLZIP_ATT_FILE_NEW_FULL_NAME =>                                  $match[$k][1],
 								);
 								$mediacount++;
 							}
@@ -291,6 +291,8 @@ class WT_Controller_Clippings {
 	// Brings up the download dialog box and allows the user to download the file
 	// based on the options he or she selected
 	function download_clipping() {
+		Zend_Session::writeClose();
+
 		if ($this->IncludeMedia == "yes" || $this->Zip == "yes") {
 			header('Content-Type: application/zip');
 			header('Content-Disposition: attachment; filename="clipping.zip"');

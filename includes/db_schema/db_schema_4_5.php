@@ -3,7 +3,7 @@
 // - add support for sorting gedcoms non-alphabetically
 //
 // Also clean out some old/unused values and files.
-// 
+//
 // The script should assume that it can be interrupted at
 // any point, and be able to continue by re-running the script.
 // Fatal errors, however, should be allowed to throw exceptions,

@@ -440,8 +440,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$countries = WT_Stats::get_all_countries();
 		$action    = WT_Filter::post('action');
 
-		$countrySelected = WT_Filter::post('countrySelected', null, 'Countries');
-		$stateSelected   = WT_Filter::post('stateSelected',   null, 'States');
+		$countrySelected = WT_Filter::get('countrySelected', null, 'Countries');
+		$stateSelected   = WT_Filter::get('stateSelected',   null, 'States');
 
 		$country = array();
 		$rep = opendir(WT_ROOT.WT_MODULES_DIR.'googlemap/places/flags/');

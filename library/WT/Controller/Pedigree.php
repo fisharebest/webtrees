@@ -53,13 +53,13 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		global $BROWSER_TYPE, $show_full, $talloffset;
 
 		parent::__construct();
-		
+
 		$this->linewidth = $linewidth;
 		$this->shadowcolor = $shadowcolor;
 		$this->shadowblur = $shadowblur;
 		$this->shadowoffsetX = $shadowoffsetX;
 		$this->shadowoffsetY = $shadowoffsetY;
-		
+
 		$this->show_full            = WT_Filter::getInteger('show_full', 0, 1, $PEDIGREE_FULL_DETAILS);
 		$this->talloffset           = WT_Filter::getInteger('talloffset', 0, 3, $PEDIGREE_LAYOUT);
 		$this->box_width            = WT_Filter::getInteger('box_width', 50, 300, 100);
@@ -72,7 +72,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		// Passing a function parameter would be much better.
 		global $PEDIGREE_GENERATIONS;
 		$PEDIGREE_GENERATIONS=$this->PEDIGREE_GENERATIONS;
-		
+
 		// This is passed as a global.  A parameter would be better...
 		$this->show_full = ($this->show_full) ? 1 : 0; // Make SURE this is an integer
 		if ($this->talloffset>3) {

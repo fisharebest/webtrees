@@ -70,7 +70,7 @@ default:
 		case -1: // not validated
 			$message = WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.');
 			break;
-			
+
 		case -2: // not approved
 			$message = WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.');
 			break;
@@ -112,6 +112,7 @@ default:
 				jQuery("#new_passwd_form").slideToggle(100, function() {
 					jQuery("#new_passwd_username").focus()
 				});
+				return false;
 			});
 		');
 
@@ -160,7 +161,7 @@ default:
 			echo '<div><a href="'.WT_LOGIN_URL.'?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
 		}
 	echo '</form>';
-	
+
 	// hidden New Password block
 	echo '<div id="new_passwd">
 		<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post">
@@ -175,7 +176,7 @@ default:
 		</form>
 	</div>';
 	echo '</div>';
-		
+
 	echo '</div>';
 	break;
 
@@ -317,20 +318,30 @@ case 'register':
 
 			// Send user message by email only
 			WT_Mail::send(
+				// From:
+				$WT_TREE,
+				// To:
 				$mail2_to,
 				$mail2_to,
+				// Reply-To:
 				$mail2_from,
 				$mail2_from,
+				// Message
 				$mail2_subject,
 				$mail2_body
 			);
 
 			// Send admin message by email and/or internal messaging
 			WT_Mail::send(
+				// From:
+				$WT_TREE,
+				// To:
 				$mail1_to,
 				$mail1_to,
+				// Reply-To:
 				$mail1_from,
 				$mail1_from,
+				// Message
 				$mail1_subject,
 				$mail1_body
 			);
@@ -371,7 +382,7 @@ case 'register':
 			<div>
 				<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'),
 					'<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="', WT_Filter::escapeHtml($user_realname), '" autofocus>
-				</label>		
+				</label>
 			</div>
 			<div>
 				<label for="user_email">', WT_I18N::translate('Email address'), help_link('email'),
@@ -497,10 +508,15 @@ case 'verify_hash':
 		$hc_ok = get_user_setting($user_id, 'reg_hashcode') == $user_hashcode;
 		if ($pw_ok && $hc_ok) {
 			WT_Mail::send(
+				// From:
+				$WT_TREE,
+				// To:
 				$mail1_to,
 				$mail1_to,
+				// Reply-To:
 				$mail1_from,
 				$mail1_from,
+				// Message
 				$mail1_subject,
 				$mail1_body
 			);

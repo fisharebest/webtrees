@@ -27,6 +27,8 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class ckeditor_WT_Module extends WT_Module {
+	const VERSION = 'ckeditor-4.2.2-custom';
+
 	// Extend WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com */ WT_I18N::translate('CKEditor™');
@@ -40,29 +42,16 @@ class ckeditor_WT_Module extends WT_Module {
 	// Convert <textarea class="html-edit"> fields to CKEditor fields
 	public static function enableEditor($controller) {
 		$controller
-			->addExternalJavascript(WT_MODULES_DIR.'ckeditor/ckeditor.js')
-			->addExternalJavascript(WT_MODULES_DIR.'ckeditor/adapters/jquery.js')
+			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/' . self::VERSION . '/ckeditor.js')
+			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/' . self::VERSION . '/adapters/jquery.js')
 			// Need to specify the path before we load the libary
-			->addInlineJavascript('var CKEDITOR_BASEPATH="'.WT_MODULES_DIR.'ckeditor/";', WT_Controller_Base::JS_PRIORITY_HIGH)
+			->addInlineJavascript(
+				'var CKEDITOR_BASEPATH="' . WT_MODULES_DIR . 'ckeditor/' . self::VERSION . '/";',
+				WT_Controller_Base::JS_PRIORITY_HIGH
+			)
 			// Activate the editor
 			->addInlineJavascript('jQuery(".html-edit").ckeditor(function(){}, {
-				toolbar:[
-					["Source"],
-					["Cut","Copy","Paste","PasteText","PasteFromWord"],
-					["Undo","Redo","-","Find","Replace","-","SelectAll"],
-					["Styles"],
-					["Link","Unlink","Anchor"],
-					"/",
-					["Bold","Italic","Underline","-","Subscript","Superscript","RemoveFormat"],
-					["NumberedList","BulletedList","-","Outdent","Indent","Blockquote","CreateDiv"],
-					["JustifyLeft","JustifyCenter","JustifyRight","JustifyBlock"],				
-					["Image","Table","HorizontalRule","SpecialChar"],
-					"/",
-					["Format","Font","FontSize"],
-					["TextColor","BGColor"],
-					["Maximize", "ShowBlocks"]
-				],
-				skin : "v2"
+				language: "' . str_replace('_','-',strtolower(WT_LOCALE)) . '"
 			});');
 	}
 }

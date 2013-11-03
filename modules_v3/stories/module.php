@@ -113,11 +113,11 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			// Only show this block for certain languages
 			$languages=get_block_setting($block_id, 'languages');
 			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-				$html.='<div class="news_title center">'.get_block_setting($block_id, 'title').'</div>';
-				$html.='<div>'.get_block_setting($block_id, 'story_body').'</div><br>';
+				$html.='<div class="story_title descriptionbox center rela">'.get_block_setting($block_id, 'title').'</div>';
+				$html.='<div class="story_body optionbox">'.get_block_setting($block_id, 'story_body').'</div>';
 				if (WT_USER_CAN_EDIT) {
-					$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'">';
-					$html.=WT_I18N::translate('Edit story').'</a></div><br>';
+					$html.='<div class="story_edit"><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'">';
+					$html.=WT_I18N::translate('Edit story').'</a></div>';
 				}
 			}
 		}

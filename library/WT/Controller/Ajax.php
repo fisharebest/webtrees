@@ -33,13 +33,13 @@ class WT_Controller_Ajax extends WT_Controller_Base {
 		$this->page_header=true;
 		return $this;
 	}
-	
+
 	public function pageFooter() {
 		// Ajax responses may have Javascript
 		echo $this->getJavascript();
 		return $this;
 	}
-	
+
 	// Restrict access
 	public function requireManagerLogin($ged_id=WT_GED_ID) {
 		if (

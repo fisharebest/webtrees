@@ -87,7 +87,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					<i class="icon-cfamily"></i>
 				</td>
 				<td>
-					<span class="subheaders"> <?php echo $label; ?> </span> - 
+					<span class="subheaders"> <?php echo $label; ?> </span> -
 					<a href="<?php echo $family->getHtmlUrl() ; ?>"><?php echo WT_I18N::translate('View family'); ?></a>
 				</td>
 			</tr>

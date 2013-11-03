@@ -283,7 +283,7 @@ case 'edit':
 	create_edit_form($record, $edit_fact);
 	echo keep_chan($record);
 	echo '</table>';
-	
+
 	$level1type = $edit_fact->getTag();
 	switch ($record::RECORD_TYPE) {
 	case 'OBJE':
@@ -346,7 +346,7 @@ case 'edit':
 case 'add':
 	$xref = WT_Filter::get('xref', WT_REGEX_XREF);
 	$fact = WT_Filter::get('fact', WT_REGEX_TAG);
-	
+
 	$record = WT_GedcomRecord::getInstance($xref);
 	check_record_access($record);
 
@@ -471,9 +471,9 @@ case 'update':
 	if (!empty($_POST['_HEB']))   $newged .= "\n2 _HEB "   . $_POST['_HEB'];
 	if (!empty($_POST['_AKA']))   $newged .= "\n2 _AKA "   . $_POST['_AKA'];
 	if (!empty($_POST['_MARNM'])) $newged .= "\n2 _MARNM " . $_POST['_MARNM'];
-	
+
 	if (isset($_POST['NOTE'])) $NOTE = $_POST['NOTE'];
-	if (!empty($NOTE)) {			
+	if (!empty($NOTE)) {
 		$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
 		$title[] = "0 @$xref@ NOTE " . array_shift($tempnote);
 		foreach($tempnote as &$line) {
@@ -798,7 +798,7 @@ case 'add_spouse_to_individual_action':
 
 	$person  = WT_Individual::getInstance($xref);
 	check_record_access($person);
-	
+
 	$controller
 		->setPageTitle(WT_I18N::translate('Add a new spouse'))
 		->pageHeader();
@@ -937,7 +937,7 @@ case 'addfamlink':
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
-	
+
 	$controller
 		->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this individual to an existing family as a child'))
 		->pageHeader();
@@ -988,7 +988,7 @@ case 'linkfamaction':
 	$family = WT_Family::getInstance($famid);
 	check_record_access($person);
 	check_record_access($family);
-	
+
 	$controller
 		->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this individual to an existing family as a child'))
 		->pageHeader();
@@ -1029,7 +1029,7 @@ case 'linkspouse':
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
-	
+
 	if ($person->getSex()=='F') {
 		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing individual'));
 		$label = WT_I18N::translate('Husband');
@@ -1124,8 +1124,8 @@ case 'linkspouseaction':
 	}
 
 	$family = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
-	$person->createFact('1 FAMS @' . $family->getXref() .'@', true);	
-	$spouse->createFact('1 FAMS @' . $family->getXref() .'@', true);	
+	$person->createFact('1 FAMS @' . $family->getXref() .'@', true);
+	$spouse->createFact('1 FAMS @' . $family->getXref() .'@', true);
 
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
@@ -1252,10 +1252,6 @@ case 'addsourceaction':
 		if ($CALN) {
 			$newgedrec .= "\n1 CALN " . $CALN;
 		}
-	}
-	$AUTH = WT_Filter::post('AUTH');
-	if ($AUTH) {
-		$newgedrec .= "\n1 AUTH " . $AUTH;
 	}
 	$EVEN = WT_Filter::postArray('EVEN', WT_REGEX_TAG);
 	if ($EVEN) {
@@ -1715,7 +1711,7 @@ case 'reorder_media_update':
 	}
 
 	$person->updateRecord(implode("\n", $facts), !$keep_chan);
-	
+
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
 
@@ -1818,7 +1814,7 @@ case 'reorder_update':
 		foreach ($facts as $fact) {
 			$gedcom[] = $fact->getGedcom();
 		}
-		
+
 		$family->updateRecord(implode("\n", $gedcom), !$keep_chan);
 	}
 
@@ -1833,7 +1829,7 @@ case 'changefamily':
 
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
-	
+
 	$controller
 		->setPageTitle(WT_I18N::translate('Change family members'))
 		->pageHeader()
@@ -2181,7 +2177,7 @@ case 'reorder_fams_update':
 		foreach ($facts as $fact) {
 			$gedcom[] = $fact->getGedcom();
 		}
-		
+
 		$person->updateRecord(implode("\n", $gedcom), !$keep_chan);
 	}
 
@@ -2197,13 +2193,13 @@ function keep_chan(WT_GedcomRecord $record=null) {
 		$checked = $NO_UPDATE_CHAN ? ' checked="checked"' : '';
 
 		if ($record) {
-			$details = 
+			$details =
 				WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp()) .
 				WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser());
 		} else {
 			$details = '';
 		}
-	
+
 		return
 			'<tr><td class="descriptionbox wrap width25">' .
 			WT_Gedcom_Tag::getLabel('CHAN') .
@@ -2674,7 +2670,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 			WT_I18N::translate('Edit raw GEDCOM'),
 			'</a>';
 	}
-	
+
 	echo '<p id="save-cancel">';
 	echo '<input type="submit" class="save" value="', /* I18N: button label */ WT_I18N::translate('save'), '">';
 	if (preg_match('/^add_(child|spouse|parent|unlinked_indi)/', $nextaction)) {
@@ -2844,7 +2840,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 // Can we edit a WT_GedcomRecord object
 function check_record_access(WT_GedcomRecord $object=null) {
 	global $controller;
-	
+
 	if (!$object || !$object->canShow() || !$object->canEdit()) {
 		$controller
 			->pageHeader()

@@ -52,12 +52,12 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$this->box_width   = WT_Filter::getInteger('box_width',   50, 300, 100);
 
 		// Box sizes are set globally in the theme.  Modify them here.
-		global $bwidth, $bheight, $cbwidth, $cbheight, $Dbwidth, $bhalfheight, $Dbheight; 
+		global $bwidth, $bheight, $cbwidth, $cbheight, $Dbwidth, $bhalfheight, $Dbheight;
 		$Dbwidth =$this->box_width * $bwidth  / 100;
 		$Dbheight=$this->box_width * $bheight / 100;
 		$bwidth  =$Dbwidth;
 		$bheight =$Dbheight;
-		
+
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
 			$bwidth = $this->box_width * $cbwidth  / 100;
@@ -76,7 +76,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$this->dgenerations = $this->max_descendency_generations($this->pid, 0);
 		if ($this->dgenerations<1) $this->dgenerations=1;
 	}
-	
+
 	/**
 	* Prints descendency of passed in person
 	*/
@@ -96,7 +96,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$famNum = 0;
 		$lh = 0;
 		// if real person load child array
-		if ($person) { 
+		if ($person) {
 			$sfamilies=$person->getSpouseFamilies();
 			$children = array();
 			//count is position from center to left, dgenerations is number of generations
@@ -135,7 +135,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 							$h= round(((($bheight)*$kids)/2)+10);
 							//-- adjust for other vertical columns
 							if ($kids>1) $h = ((($kids-1)*4)+$h);
-							
+
 							//echo '<td class="tdtop">',
 							//	 '<img class="bvertline"  src="',$WT_IMAGES["vline"],'" width="3" height="',$h,'" alt=""></td>';
 					} else {
@@ -173,7 +173,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 							$h= round(((($bheight)*$kids)/2)+10);
 							//-- adjust for other vertical columns
 							if ($kids>1) $h = ((($kids-1)*4)+$h);
-							
+
 							echo '<td class="tdtop">',
 								 '<img class="bvertline" id="vline_',$chil,'" src="',$WT_IMAGES["vline"],'" height="',$h,'" alt=""></td>';
 						} else {
@@ -188,12 +188,12 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '</td>';
 			echo '<td width="',$bwidth,'">';
 		}
-		
+
 		if ($numkids==0) {
 			$numkids = 1;
 		}
 		echo '<table><tr><td>';
-		if ($person) { 
+		if ($person) {
 			print_pedigree_person($person);
 					echo '</td><td>',
 			 '<img class="line2" src="',$WT_IMAGES["hline"],'" width="7" height="3" alt="">';
@@ -202,7 +202,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				 '</td><td width="7">';
 		}
 		//----- Print the spouse
-		if ($count==1 ) { 
+		if ($count==1 ) {
 			if ($this->show_spouse) {
 				foreach ($sfamilies as $family) {
 					$spouse = $family->getSpouse($person);
@@ -225,7 +225,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		echo '</table>';
 		return $numkids;
 	}
-	
+
 	/**
 	* Prints pedigree of the person passed in
 	*/
@@ -240,7 +240,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		//Prints empty table columns for children w/o parents up to the max generation
 		//This allows vertical line spacing to be consistent
 		//
-		if (count($person->getChildFamilies())==0) { 
+		if (count($person->getChildFamilies())==0) {
 			echo '<table>';
 			$this->printEmptyBox($bwidth, $bheight);
 
@@ -257,7 +257,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				 '<td>',
 				 '</tr></table>';
 		}
-		
+
 		//Empty box section done, now for regular pedigree
 		foreach ($person->getChildFamilies() as $family) {
 			echo '<table>',
@@ -277,7 +277,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				echo '</td>';
 			} else {
 				echo '<td>';
-				for ($i=$count; $i<$genoffset-1; $i++) { 
+				for ($i=$count; $i<$genoffset-1; $i++) {
 					echo '<table>';
 					$this->printEmptyBox($bwidth, $bheight);
 					echo '</tr>';
@@ -299,7 +299,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				echo '</td>';
 			} else {
 				echo '<td>';
-				for ($i=$count; $i<$genoffset-1; $i++) { 
+				for ($i=$count; $i<$genoffset-1; $i++) {
 					echo '<table>';
 						 '<tr>';
 					$this->printEmptyBox($bwidth, $bheight);
@@ -313,7 +313,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			break;
 		}
 	}
-	
+
 	/**
 	 * Calculates number of generations a person has
 	 */

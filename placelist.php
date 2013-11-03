@@ -91,7 +91,7 @@ case 'hierarchy':
 	$place_id=$place->getPlaceId();
 
 	$child_places=$place->getChildPlaces();
-	
+
 	$numfound=count($child_places);
 
 	//-- if the number of places found is 0 then automatically redirect to search page
@@ -193,12 +193,12 @@ case 'hierarchy':
 		// -- array of names
 		$myindilist = array();
 		$myfamlist = array();
-	
+
 		$positions=
 			WT_DB::prepare("SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
 			->execute(array($place_id, WT_GED_ID))
 			->fetchOneColumn();
-	
+
 		foreach ($positions as $position) {
 			$record=WT_GedcomRecord::getInstance($position);
 			if ($record && $record->canShow()) {
@@ -211,13 +211,13 @@ case 'hierarchy':
 			}
 		}
 		echo '<br>';
-	
+
 		//-- display results
 		$controller
 			->addInlineJavascript('jQuery("#places-tabs").tabs();')
 			->addInlineJavascript('jQuery("#places-tabs").css("visibility", "visible");')
 			->addInlineJavascript('jQuery(".loading-image").css("display", "none");');
-	
+
 		echo '<div class="loading-image">&nbsp;</div>';
 		echo '<div id="places-tabs"><ul>';
 		if ($myindilist) {

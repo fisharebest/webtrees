@@ -345,7 +345,7 @@ class WT_Query_Name {
 			" JOIN (SELECT n_surn, n_file FROM `##name`".
 			" WHERE n_file={$ged_id}".
 			($marnm ? "" : " AND n_type!='_MARNM'");
-			
+
 		if ($surn) {
 			$sql.=" AND n_surn COLLATE '".WT_I18N::$collation."' =".WT_DB::quote($surn);
 		} elseif ($salpha==',') {
@@ -362,7 +362,7 @@ class WT_Query_Name {
 		if (!$marnm) {
 			$sql.=" AND n_type!='_MARNM'";
 		}
-	
+
 		$list=array();
 		foreach (WT_DB::prepare($sql)->fetchAll() as $row) {
 			$list[utf8_strtoupper($row->n_surn)][$row->n_surname][$row->n_id]=true;
@@ -391,7 +391,7 @@ class WT_Query_Name {
 			($fams ? "JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
 			"WHERE n_file={$ged_id} ".
 			($marnm ? "" : "AND n_type!='_MARNM'");
-	
+
 		if ($surn) {
 			$sql.=" AND n_surn COLLATE '".WT_I18N::$collation."'=".WT_DB::quote($surn);
 		} elseif ($salpha==',') {
@@ -407,9 +407,9 @@ class WT_Query_Name {
 		if ($galpha) {
 			$sql.=" AND ".self::_getInitialSql('n_givn', $galpha);
 		}
-	
+
 		$sql.=" ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE '".WT_I18N::$collation."', CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE '".WT_I18N::$collation."'";
-	
+
 		$list=array();
 		$rows=WT_DB::prepare($sql)->fetchAll();
 		foreach ($rows as $row) {

@@ -50,7 +50,7 @@ input:required:valid, textarea:required:valid {background-image:url(data:image/p
 input:required:invalid, textarea:required:invalid {background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);background-position:right top; background-repeat:no-repeat;}
 html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[dir=rtl] input:required:invalid, html[dir=rtl] textarea:required:invalid {background-position:left top;}
 
-.line1, .line2, .line3 {vertical-align:bottom;} 
+.line1, .line2, .line3 {vertical-align:bottom;}
 .line4 {vertical-align:middle;}
 .line5 {vertical-align:top;}
 
@@ -68,8 +68,7 @@ html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[
 .person_box:target, .news_box:target, #gedcom_stats:target {background-color:#ffffcc;}
 .person_box_lifespan {display:inline;}
 /* families tab person box */
-#relatives_content .person_box > .person_box, #relatives_content .person_boxF > .person_boxF, #relatives_content .person_boxNN > .person_boxNN {border:none;min-height:50px;} 
-
+#relatives_content .person_box > .person_box, #relatives_content .person_boxF > .person_boxF, #relatives_content .person_boxNN > .person_boxNN {border:none;min-height:50px;}
 
 .center {text-align:center;}
 table.center {margin-left:auto;margin-right:auto;}
@@ -336,7 +335,7 @@ td.descriptionbox a {color:#ffffff;}/* this keeps the tag color the same when it
 
 /* ============== person box details ============== */
 .charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN,
-.gedcom_favorites_block, .user_favorites_block, 
+.gedcom_favorites_block, .user_favorites_block,
 #ancestry_chart .person_box, #ancestry_chart .person_boxF, #ancestry_chart .person_boxNN,
 #descendancy_chart .person_box, #descendancy_chart .person_boxF, #descendancy_chart .person_boxNN,
 #family-table .person_box, #family-table .person_boxF, #family-table .person_boxNN,
@@ -1081,7 +1080,7 @@ a.icon-udarrow:hover {width:20px;height:20px;background-image:url(images/udarrow
 #edit_interface-page input[type="text"][id^="TIME"] {width:100px;}
 #edit_interface-page input[type="text"][id*="OBJE_FILE"] {width:200px;}
 #edit_interface-page input[type="text"][id*="SOUR_TITL"] {width:250px;}
-#edit_interface-page input[id*="TEXT"] {height:140px;width:440px;} 
+#edit_interface-page input[id*="TEXT"] {height:140px;width:440px;}
 #edit_interface-page textarea {margin:0 5px;width:440px;}
 #edit_interface-page textarea[id*="NOTE"] {height:240px;}
 #edit_interface-page textarea[id*="TEXT"], #edit_interface-page textarea[id*="PUBL"] {height:140px;}
@@ -1110,7 +1109,7 @@ html[dir=rtl] #save-cancel .cancel {float:left;}
 #addmedia-page .optionbox p.sub {font-size:11px;margin:0 5px;}
 #addmedia-page input[type="text"][id*="PAGE"], #addmedia-page input[type="text"][id*="_UID"] {width:350px;}
 #addmedia-page input[type="text"][id*="SOUR"], #addmedia-page input[type="text"][id*="REPO"], #addmedia-page input[type="text"][id*="OBJE"], #addmedia-page input[type="text"][id*="FAMC"], #addmedia-page input[type="text"][id*="ASSO"], #addmedia-page input[type="text"][id^="AGE"], #addmedia-page input[type="text"][id*="SHARED_NOTE"] {width:70px;}
-#addmedia-page input[id*="TEXT"] {height:140px;width:440px;} 
+#addmedia-page input[id*="TEXT"] {height:140px;width:440px;}
 #addmedia-page textarea {margin:0 5px;width:440px;}
 #addmedia-page textarea[id*="NOTE"] {height:240px;}
 #addmedia-page textarea[id*="TEXT"], #addmedia-page textarea[id*="PUBL"] {height:140px;}
@@ -1141,3 +1140,18 @@ html[dir=rtl] #cboxNext {right:0;left:auto;}
 html[dir=rtl] #cboxCurrent {right:auto;left:0;}
 html[dir=rtl] #cboxClose {right:auto;left:0;}
 html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
+
+/* Stories */
+.story_title {
+	padding-top: 12px;
+	height:      32px;
+	font-size:   13px;
+	font-weight: 700;
+}
+.story_body {
+	padding:     20px;
+	white-space: normal;
+}
+.story_edit {
+	padding: 12px;
+}

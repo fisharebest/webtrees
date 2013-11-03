@@ -41,7 +41,7 @@ class WT_Repository extends WT_GedcomRecord {
 
 		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 	}
-	
+
 	// Generate a private version of this record
 	protected function createPrivateGedcomRecord($access_level) {
 		return '0 @' . $this->xref . "@ REPO\n1 NAME " . WT_I18N::translate('Private');

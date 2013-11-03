@@ -149,7 +149,7 @@ echo '<div id="edituser-page">
 				echo print_findindi_link('rootid'), '<br>';
 				if ($person) {
 					echo $person->format_list('span');
-				}		
+				}
 			echo '</div>
 		<div class="label">', WT_I18N::translate('Password'), help_link('password'), '</div>
 		<div class="value"><input type="password" name="form_pass1"> ', WT_I18N::translate('Leave password blank if you want to keep the current password.'), '</div>

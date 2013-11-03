@@ -2,7 +2,7 @@
 // Update the database schema from version 2 to version 3
 // - create the wt_gedcom_chunk table to import gedcoms in
 // blocks of data smaller than the max_allowed_packet restriction.
-// 
+//
 // The script should assume that it can be interrupted at
 // any point, and be able to continue by re-running the script.
 // Fatal errors, however, should be allowed to throw exceptions,

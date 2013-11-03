@@ -57,6 +57,6 @@ class pedigree_report_WT_Module extends WT_Module implements WT_Module_Report {
 		$menus[]=$menu;
 
 		return $menus;
-		
+
 	}
 }

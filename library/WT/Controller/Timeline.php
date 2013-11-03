@@ -47,7 +47,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		parent::__construct();
 
 		$this->setPageTitle(WT_I18N::translate('Timeline'));
-	
+
 		$this->baseyear = date("Y");
 		//-- new pid
 		$newpid = WT_Filter::get('newpid', WT_REGEX_XREF);

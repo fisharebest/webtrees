@@ -103,7 +103,7 @@ class WT_Controller_Base {
 			$TMP_HTML.='<script src="' . $script_name . '"></script>';
 		}
 		$load_js='[' . implode(',', $load_js) . ']';
-		
+
 		// Process the scripts, in priority order, after the libraries have loaded
 		$complete_js='';
 		if ($this->inline_javascript) {

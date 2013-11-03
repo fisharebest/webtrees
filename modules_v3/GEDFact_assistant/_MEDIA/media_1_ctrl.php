@@ -50,7 +50,7 @@ if ($pid=="") {
 	?>
 	<table class="outer_nav center">
 		<?php
-	
+
 		//-- Search Function ------------------------------------------------------------
 		?>
 		<tr>
@@ -85,7 +85,7 @@ if ($pid=="") {
 				<br>
 			</td>
 		</tr>
-	
+
 		<?php
 		//-- Add Family Members to Census  -------------------------------------------
 		global $spouselinks, $parentlinks;
@@ -105,13 +105,13 @@ if ($pid=="") {
 					<?php echo WT_I18N::translate('Click name to add individual to add links list.'); ?>
 				</td>
 			</tr>
-	
+
 			<tr>
 				<td>
 					<br>
 				</td>
 			</tr>
-	
+
 			<?php
 			//-- Build Parent Family ---------------------------------------------------
 			$families = $person->getChildFamilies();
@@ -125,7 +125,7 @@ if ($pid=="") {
 				);
 
 				$marrdate = $family->getMarriageDate();
-	
+
 				// Husband -------------------
 				if ($people["husb"]) {
 					$fulln = strip_tags($people['husb']->getFullName());
@@ -134,8 +134,8 @@ if ($pid=="") {
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
-	
-	
+
+
 					echo '<tr>';
 						// Define width of Left (Label) column -------
 						?>
@@ -163,7 +163,7 @@ if ($pid=="") {
 					</tr>
 					<?php
 				}
-	
+
 				if ($people["wife"]) {
 					$fulln =strip_tags($people['wife']->getFullName());
 					$menu = new WT_Menu($headImg, "edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom=".WT_GEDURL);
@@ -198,7 +198,7 @@ if ($pid=="") {
 					</tr>
 					<?php
 				}
-	
+
 				if ($people["children"]) {
 					$elderdate = $family->getMarriageDate();
 					foreach ($people["children"] as $key=>$child) {
@@ -208,7 +208,7 @@ if ($pid=="") {
 						$slabel .= $spouselinks;
 						$submenu = new WT_Menu($slabel);
 						$menu->addSubMenu($submenu);
-	
+
 						if ($child->getXref()==$pid) {
 							//Only print Head of Family in Immediate Family Block
 						} else {
@@ -242,7 +242,7 @@ if ($pid=="") {
 					$elderdate = $child->getBirthDate(false);
 				}
 			}
-	
+
 			//-- Build step families ----------------------------------------------------------------
 			foreach ($person->getChildStepFamilies() as $family) {
 				$label = $person->getStepFamilyLabel($family);
@@ -257,7 +257,7 @@ if ($pid=="") {
 					echo "<tr><td><br></td><td></td></tr>";
 				}
 				$marrdate = $family->getMarriageDate();
-	
+
 				// Husband -----------------------------
 				$elderdate = "";
 				if ($people["husb"]) {
@@ -296,7 +296,7 @@ if ($pid=="") {
 					<?php
 					$elderdate = $people["husb"]->getBirthDate(false);
 				}
-	
+
 				// Wife -------------------
 				if ($people["wife"]) {
 					$fulln =strip_tags($people['wife']->getFullName());
@@ -334,7 +334,7 @@ if ($pid=="") {
 					</tr>
 					<?php
 				}
-	
+
 				// Children ---------------------
 				if ($people["children"]) {
 					$elderdate = $family->getMarriageDate();
@@ -389,9 +389,9 @@ if ($pid=="") {
 					}
 				}
 			}
-	
+
 			echo "<tr><td><br></td></tr>";
-	
+
 			//-- Build Spouse Family ---------------------------------------------------
 			$families = $person->getSpouseFamilies();
 			foreach ($families as $family) {
@@ -403,7 +403,7 @@ if ($pid=="") {
 				);
 
 				$marrdate = $family->getMarriageDate();
-	
+
 				// Husband -------------------
 				if ($people["husb"]) {
 					$fulln =strip_tags($people['husb']->getFullName());
@@ -441,8 +441,8 @@ if ($pid=="") {
 					<tr>
 					<?php
 				}
-	
-	
+
+
 				// Wife -------------------
 				if ($people["wife"]) {
 					$fulln =strip_tags($people['wife']->getFullName());
@@ -479,7 +479,7 @@ if ($pid=="") {
 						</td>
 					<tr> <?php
 				}
-	
+
 				// Children
 				foreach ($people["children"] as $key=>$child) {
 						$fulln =strip_tags($child->getFullName());
@@ -517,7 +517,7 @@ if ($pid=="") {
 				}
 			}
 			?>
-	
+
 			</table>
 		</td>
 	  </tr>

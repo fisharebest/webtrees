@@ -82,7 +82,7 @@ abstract class WT_Module {
 		}
 		return $this->_title;
 	}
-	
+
 	// Each module must provide the following functions
 	abstract public function getTitle();       // To label tabs, etc.
 	abstract public function getDescription(); // A sentence describing what this module does
@@ -107,7 +107,7 @@ abstract class WT_Module {
 		// Sorting is slow, so only do it when requested.
 		static $modules=null;
 		static $sorted =false;
-		
+
 		if ($modules===null) {
 			$module_names=WT_DB::prepare(
 				"SELECT SQL_CACHE module_name FROM `##module` WHERE status='enabled'"

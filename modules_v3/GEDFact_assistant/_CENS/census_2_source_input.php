@@ -78,7 +78,7 @@ if (!defined('WT_WEBTREES')) {
 		} else if (cenyear == 1941) { var cendate = new Date(1941,  31, 12);   // 01 JAN 1920
 		} else if (cenyear == 1946) { var cendate = new Date(1946,  31, 12);   // 01 APR 1930
 		} else if (cenyear == 1951) { var cendate = new Date(1951,  31, 12);   // 01 APR 1940
-		
+
 		// Default Date
 		} else {
 			var cendate = new Date(1901, 2, 31);
@@ -132,7 +132,7 @@ if (!defined('WT_WEBTREES')) {
 		} else if (prevcenyear == 1941) { var prevcendate = new Date(1941,  31, 12);   // 01 JAN 1920
 		} else if (prevcenyear == 1946) { var prevcendate = new Date(1946,  31, 12);   // 01 APR 1930
 		} else if (prevcenyear == 1951) { var prevcendate = new Date(1951,  31, 12);   // 01 APR 1940
-		
+
 		// Default Date
 		} else {
 			var prevcendate = new Date(1901, 2, 31);
@@ -946,7 +946,7 @@ if (!defined('WT_WEBTREES')) {
 				flip_11 = "";
 				flip_16 = ""; //YoM
 				flip_21 = ""; //BithPlace
-				flip_23 = "";		
+				flip_23 = "";
 				//flip_27 = "";
 				//flip_28 = "";
 				//flip_29 = "";
@@ -954,7 +954,7 @@ if (!defined('WT_WEBTREES')) {
 				//flip_43 = "";
 				flip_46 = "";
 				flip_49 = "";
-			} 
+			}
 		}
 
 		// Hide or show ===============

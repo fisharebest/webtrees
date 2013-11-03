@@ -117,7 +117,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$title='';
 		}
 		$title.=$this->getTitle();
-		
+
 		if ($random_media) {
 			$content = "<div id=\"random_picture_container$block_id\">";
 			if ($controls) {

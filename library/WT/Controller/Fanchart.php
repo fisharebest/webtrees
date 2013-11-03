@@ -36,7 +36,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 	public function __construct() {
 		parent::__construct();
-		
+
 		$default_generations=get_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS');
 
 		// Extract the request parameters

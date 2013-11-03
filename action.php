@@ -51,7 +51,7 @@ case 'accept-changes':
 		accept_all_changes($record->getXref(), $record->getGedcomId());
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');
-	}	
+	}
 	break;
 
 case 'copy-fact':
@@ -59,7 +59,7 @@ case 'copy-fact':
 	require WT_ROOT.'includes/functions/functions_edit.php';
 	$xref    = WT_Filter::post('xref', WT_REGEX_XREF);
 	$fact_id = WT_Filter::post('fact_id');
-	
+
 	$record = WT_GedcomRecord::getInstance($xref);
 
 	if ($record && $record->canEdit()) {
@@ -98,7 +98,7 @@ case 'delete-fact':
 	require WT_ROOT.'includes/functions/functions_edit.php';
 	$xref    = WT_Filter::post('xref', WT_REGEX_XREF);
 	$fact_id = WT_Filter::post('fact_id');
-	
+
 	$record = WT_GedcomRecord::getInstance($xref);
 	if ($record && $record->canShow() && $record->canEdit()) {
 		foreach ($record->getFacts() as $fact) {
@@ -151,7 +151,7 @@ case 'delete-source':
 		$record->deleteRecord();
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');
-	}	
+	}
 	break;
 
 case 'reject-changes':
@@ -163,7 +163,7 @@ case 'reject-changes':
 		reject_all_changes($record->getXref(), $record->getGedcomId());
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');
-	}	
+	}
 	break;
 
 case 'theme':

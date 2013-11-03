@@ -220,7 +220,7 @@ class WT_I18N {
 		return $installed_languages;
 	}
 
-	// Generate i18n markup for the <html> tag, e.g lang="ar" dir="RTL"
+	// Generate i18n markup for the <html> tag, e.g. lang="ar" dir="rtl"
 	static public function html_markup() {
 		$localeData=Zend_Locale_Data::getList(self::$locale, 'layout');
 		$dir=$localeData['characters']=='right-to-left' ? 'rtl' : 'ltr';
@@ -321,33 +321,33 @@ class WT_I18N {
 	static public function gedcom_age($string) {
 		switch ($string) {
 		case 'STILLBORN':
-			// I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
+			// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (stillborn)
 			return WT_I18N::translate('(stillborn)');
 		case 'INFANT':
-			// I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
+			// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (in infancy)
 			return WT_I18N::translate('(in infancy)');
 		case 'CHILD':
-			// I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
+			// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (in childhood)
 			return WT_I18N::translate('(in childhood)');
 		}
 		$age=array();
 		if (preg_match('/(\d+)y/', $string, $match)) {
-			// I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+			// I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 			$years=$match[1];
 			$age[]=self::plural('%s year', '%s years', $years, self::number($years));
 		} else {
 			$years=-1;
 		}
 		if (preg_match('/(\d+)m/', $string, $match)) {
-			// I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+			// I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 			$age[]=self::plural('%s month', '%s months', $match[1], self::number($match[1]));
 		}
 		if (preg_match('/(\d+)w/', $string, $match)) {
-			// I18N: Part of an age string. e.g 7 weeks and 3 days
+			// I18N: Part of an age string. e.g. 7 weeks and 3 days
 			$age[]=self::plural('%s week', '%s weeks', $match[1], self::number($match[1]));
 		}
 		if (preg_match('/(\d+)d/', $string, $match)) {
-			// I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+			// I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 			$age[]=self::plural('%s day', '%s days', $match[1], self::number($match[1]));
 		}
 		// If an age is just a number of years, only show the number
@@ -356,13 +356,13 @@ class WT_I18N {
 		}
 		if ($age) {
 			if (!substr_compare($string, '<', 0, 1)) {
-				// I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+				// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged less than 21 years)
 				return WT_I18N::translate('(aged less than %s)', $age);
 			} elseif (!substr_compare($string, '>', 0, 1)) {
-				// I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+				// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged more than 21 years)
 				return WT_I18N::translate('(aged more than %s)', $age);
 			} else {
-				// I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+				// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
 				return WT_I18N::translate('(aged %s)', $age);
 			}
 		} else {

@@ -140,7 +140,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 	static function YMDtoJD($year, $month, $day) {
 		$epbase = $year - (($year >= 0) ? 474 : 473);
 		$epyear = 474 + $epbase % 2820;
-	
+
 		return $day +
 				(($month <= 7) ?
 					(($month - 1) * 31) :
@@ -154,7 +154,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 
 	static function JDtoYMD($jd) {
 		$jd = (int)($jd) + 0.5;
-	
+
 		$depoch = $jd - self::YMDtoJD(475, 1, 1);
 		$cycle = (int)($depoch / 1029983);
 		$cyear = $depoch % 1029983;

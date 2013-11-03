@@ -1033,7 +1033,7 @@ class WT_Individual extends WT_GedcomRecord {
 		global $bwidth, $SHOW_HIGHLIGHT_IMAGES, $UNKNOWN_NN, $UNKNOWN_PN;
 		// Estimate number of characters that can fit in box. Calulates to 28 characters in webtrees theme, or 34 if no thumbnail used.
 		if ($SHOW_HIGHLIGHT_IMAGES) {
-			$char = intval(($bwidth-40)/6.5); 
+			$char = intval(($bwidth-40)/6.5);
 		} else {
 			$char = ($bwidth/6.5);
 		}

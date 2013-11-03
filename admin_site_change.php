@@ -78,7 +78,7 @@ if ($newged) {
 	$args []=$newged;
 }
 if ($xref) {
-	$query[]="xref LIKE CONCAT('%', ?, '%')";
+	$query[]="xref = ?";
 	$args []=$xref;
 }
 if ($user) {
@@ -183,7 +183,7 @@ case 'load_json':
 		$row[3]='<pre>'.WT_Filter::escapeHtml($row[3]).'</pre>';
 		$row[4]='<pre>'.WT_Filter::escapeHtml($row[4]).'</pre>';
 	}
-	
+
 	// Total filtered/unfiltered rows
 	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
 	$iTotalRecords=WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchColumn();

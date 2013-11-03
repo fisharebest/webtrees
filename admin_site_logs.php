@@ -163,7 +163,7 @@ case 'load_json':
 	foreach ($aaData as &$row) {
 		$row[2]=WT_Filter::escapeHtml($row[2]);
 	}
-	
+
 	// Total filtered/unfiltered rows
 	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
 	$iTotalRecords=WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchColumn();

@@ -49,7 +49,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 		return WT_USER_CAN_EDIT || $this->get_media();
 	}
 
-	
+
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
 		return !$this->get_media();

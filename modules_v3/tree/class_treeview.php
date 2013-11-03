@@ -171,7 +171,7 @@ class TreeView {
 				}
 			}
 		}
-		$tc = count($children2draw);		
+		$tc = count($children2draw);
 		if ($tc) {
 			$f2load = implode(',', $f2load);
 			$nbc = 0;
