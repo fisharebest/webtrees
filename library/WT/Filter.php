@@ -55,17 +55,19 @@ class WT_Filter {
 	// Escape a string for use in Javascript
 	//////////////////////////////////////////////////////////////////////////////
 	public static function escapeJs($string) {
-		return preg_replace_callback('/[^A-Za-z0-9,. _]/Su', function($x) {
-			if (strlen($x[0]) == 1) {
-				return sprintf('\\x%02X', ord($x[0]));
-			} elseif (function_exists('iconv')) {
-				return sprintf('\\u%04s', strtoupper(bin2hex(iconv('UTF-8', 'UTF-16BE', $x[0]))));
-			} elseif (function_exists('mb_convert_encoding')) {
-				return sprintf('\\u%04s', strtoupper(bin2hex(mb_convert_encoding($x[0], 'UTF-16BE', 'UTF-8'))));
-			} else {
-				return $x[0];
-			}
-		}, $string);
+		return preg_replace_callback('/[^A-Za-z0-9,. _]/Su', array('WT_Filter', 'escapeJsCallback'), $string);
+	}
+
+	private static function escapeJsCallback($x) {
+		if (strlen($x[0]) == 1) {
+			return sprintf('\\x%02X', ord($x[0]));
+		} elseif (function_exists('iconv')) {
+			return sprintf('\\u%04s', strtoupper(bin2hex(iconv('UTF-8', 'UTF-16BE', $x[0]))));
+		} elseif (function_exists('mb_convert_encoding')) {
+			return sprintf('\\u%04s', strtoupper(bin2hex(mb_convert_encoding($x[0], 'UTF-16BE', 'UTF-8'))));
+		} else {
+			return $x[0];
+		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -113,11 +115,15 @@ class WT_Filter {
 				$variable,
 				FILTER_CALLBACK,
 				array(
-					'options' => function($x) {return mb_check_encoding($x, 'UTF-8') ? $x : false;},
+					'options' => array('WT_Filter', '_inputCallback'),
 				)
 			);
 			return ($tmp===null || $tmp===false) ? $default : $tmp;
 		}
+	}
+
+	private static function _inputCallback($x) {
+		return mb_check_encoding($x, 'UTF-8') ? $x : false;
 	}
 
 	private static function _inputArray($source, $variable, $regexp=null, $default=null) {
@@ -145,12 +151,16 @@ class WT_Filter {
 					$variable => array(
 						'flags'   => FILTER_REQUIRE_ARRAY,
 						'filter'  => FILTER_CALLBACK,
-						'options' => function($x) {return mb_check_encoding($x, 'UTF-8') ? $x : false;}
+						'options' => array('WT_Filter', '_inputArrayCallback')
 					),
 				)
 			);
 			return $tmp[$variable] ? $tmp[$variable] : array();
 		}
+	}
+
+	private static function _inputArrayCallback($x) {
+		return mb_check_encoding($x, 'UTF-8') ? $x : false;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -173,11 +183,11 @@ class WT_Filter {
 	}
 
 	public static function getEmail($variable, $default=null) {
-		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_EMAIL ?: $default);
+		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_EMAIL) ? filter_input(INPUT_GET, $variable, FILTER_VALIDATE_EMAIL) : $default;
 	}
 
 	public static function getUrl($variable, $default=null) {
-		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_URL) ?: $default;
+		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_URL) ? filter_input(INPUT_GET, $variable, FILTER_VALIDATE_URL) : $default;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -200,11 +210,11 @@ class WT_Filter {
 	}
 
 	public static function postEmail($variable, $default=null) {
-		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_EMAIL) ?: $default;
+		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_EMAIL) ? filter_input(INPUT_POST, $variable, FILTER_VALIDATE_EMAIL) : $default;
 	}
 
 	public static function postUrl($variable, $default=null) {
-		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_URL) ?: $default;
+		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_URL) ? filter_input(INPUT_POST, $variable, FILTER_VALIDATE_URL) : $default;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
