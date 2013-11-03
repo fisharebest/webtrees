@@ -28,12 +28,13 @@ $obj = WT_GedcomRecord::getInstance(WT_Filter::get('pid', WT_REGEX_XREF));
 
 if (
 	$obj instanceof WT_Individual ||
-	$obj instanceof WT_Family ||
-	$obj instanceof WT_Source ||
+	$obj instanceof WT_Family     ||
+	$obj instanceof WT_Source     ||
 	$obj instanceof WT_Repository ||
-	$obj instanceof WT_Note ||
+	$obj instanceof WT_Note       ||
 	$obj instanceof WT_Media
 ) {
+	Zend_Session::writeClose();
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$obj->getRawUrl());
 	exit;
 } elseif (!$obj || !$obj->canShow()) {
