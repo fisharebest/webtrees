@@ -78,6 +78,16 @@ class fancy_research_links_WT_Module extends WT_Module implements WT_Module_Side
 		$controller->addInlineJavascript('
 			jQuery(document).ajaxSend(function(){
 				jQuery("#'.$this->getName().' a").text("'.$this->getSidebarTitle().'");
+				jQuery("a.research_link").each(function(){
+					var url = jQuery(this).attr("href");
+					jQuery(this).colorbox({
+						width:		"75%",
+						height:		"90%",
+						fixed:		true,
+						iframe:		true,
+						title:		"<a href=\"" + url + "\" target=\"_blank\">" + url + "</a>"
+					});
+				});
 			});
 		');	 
 		
@@ -87,7 +97,7 @@ class fancy_research_links_WT_Module extends WT_Module implements WT_Module_Side
 				$fact = $value->getTag();
 				if ($fact=="NAME") $name = $plugin->create_link($value);
 			}			
-			$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a href="'.$name.'" target="_blank">'.$plugin->getName().'</a></li>';
+			$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="research_link" href="'.$name.'">'.$plugin->getName().'</a></li>';
 		}
 		$html.= '</ul>';
 		return $html;
