@@ -60,8 +60,8 @@ class WT_Fact {
 	// Get the value of level 1 data in the fact
 	// Allow for multi-line values
 	public function getValue() {
-		if (preg_match('/^1 (?:' . $this->tag . ') ?(.*(?:(?:\n2 CONT .*)*))/', $this->gedcom, $match)) {
-			return str_replace("\n2 CONT ", "\n", $match[1]);
+		if (preg_match('/^1 (?:' . $this->tag . ') ?(.*(?:(?:\n2 CONT ?.*)*))/', $this->gedcom, $match)) {
+			return preg_replace("/\n2 CONT ?/", "\n", $match[1]);
 		} else {
 			return null;
 		}
@@ -93,8 +93,8 @@ class WT_Fact {
 
 	// Get the value of level 2 data in the fact
 	public function getAttribute($tag) {
-		if (preg_match('/\n2 (?:' . $tag . ') ?(.*(?:(?:\n3 CONT .*)*)*)/', $this->gedcom, $match)) {
-			return str_replace("\n3 CONT ", "\n", $match[1]);
+		if (preg_match('/\n2 (?:' . $tag . ') ?(.*(?:(?:\n3 CONT ?.*)*)*)/', $this->gedcom, $match)) {
+			return preg_replace("/\n3 CONT ?/", "\n", $match[1]);
 		} else {
 			return null;
 		}
