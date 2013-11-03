@@ -399,11 +399,15 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 	// Check if shared note
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ NOTE/', $nrec, $match)) {
 		$note = WT_Note::getInstance($match[1]);
-		// Check if using census assistant
-		if ($note && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-			$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
+		if ($note) {
+			// If Census assistant installed, allow it to format the note
+			if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+				$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
+			} else {
+				$text = WT_Filter::expandUrls($note->getNote());
+			}
 		} else {
-			$text = WT_Filter::expandUrls($note->getNote());
+			$text = '<span class="error">' . WT_Filter::escapeHtml($nid) . '</span>';
 		}
 	} else {
 		$note = null;
