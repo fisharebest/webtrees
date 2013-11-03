@@ -50,9 +50,10 @@ $password        = WT_Filter::post('password');
 $timediff        = WT_Filter::postInteger('timediff', -43200, 50400, 0); // Same range as date('Z')
 
 // These parameters may come from the URL which is emailed to users.
-if (empty($action))        $action        = WT_Filter::get('action');
-if (empty($user_name))     $user_name     = WT_Filter::get('user_name', WT_REGEX_USERNAME);
-if (empty($user_hashcode)) $user_hashcode = WT_Filter::get('user_hashcode');
+if (!$action)        $action        = WT_Filter::get('action');
+if (!$user_name)     $user_name     = WT_Filter::get('user_name', WT_REGEX_USERNAME);
+if (!$user_hashcode) $user_hashcode = WT_Filter::get('user_hashcode');
+if (!$url)           $url           = WT_Filter::getUrl('url');
 
 // This parameter may come from generated login links
 if (!$url) {
