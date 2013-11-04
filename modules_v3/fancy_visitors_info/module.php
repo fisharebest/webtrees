@@ -25,10 +25,14 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class visitors_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
+class fancy_visitors_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Visitors information');
+		return  /* Name of a module (not translatable) */ 'Fancy Visitors Info';
+	}
+	
+	public function getSidebarTitle() {
+		return /* Title used in the sidebar */ WT_I18N::translate('Visitors information');
 	}
 
 	// Extend WT_Module
@@ -51,8 +55,8 @@ class visitors_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $controller;		
-
+		global $controller;	
+		
 		ob_start();
 		
 		if ($this->get_source_count()==0) {
@@ -73,14 +77,18 @@ class visitors_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		
 		$controller
 			->addInlineJavascript('
-				jQuery.ajax({ complete: function() { 
+				jQuery(document)
+					.ajaxSend(function(){
+						jQuery("#'.$this->getName().' a").text("'.$this->getSidebarTitle().'");
+					})
+					.ajaxComplete(function() { 
 					jQuery("#sidebarAccordion").accordion({
 						active:0,
 						heightStyle: "content",
 						collapsible: true,
 						icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }
 					});
-				}});
+				});
 			');
 		
 		return '<div id="sb_'.$this->getName().'_content">'.ob_get_clean().'</div>';			
