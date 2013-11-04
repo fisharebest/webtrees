@@ -60,24 +60,27 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 				var user_id = jQuery(this).data("user_id");
 				if(jQuery(this).hasClass("icon-plus")) {
 					if(jQuery("tr[id^=message-body]").length > 0) {
-						jQuery("tr[id^=message-body]").hide();
+						jQuery("tr[id^=message-body]").hide("slow");
 						jQuery("i[id^=icon-message]").removeClass("icon-minus").addClass("icon-plus");	
 					}
 					jQuery(this).removeClass("icon-plus").addClass("icon-minus");
 					if(jQuery("#message-body-" + message_id).length > 0) {
-						jQuery("#message-body-" + message_id).show();
+						jQuery("#message-body-" + message_id).show("slow");
 					}
 					else {						
 						if (jQuery("#message-" + message_id).hasClass("even")) var $class = "odd";
 						else var $class = "even";
 						var url = WT_MODULES_DIR + "'.$this->getName().'/user_message.php?user_id=" + user_id + "&message_id=" + message_id;									
 						jQuery.get(url, function(data){	
-							jQuery("#message-" + message_id).after("<tr id=\"message-body-" + message_id + "\" class=\"" + $class + "\">" + data + "</tr>");
+							jQuery("#message-" + message_id).after("<tr id=\"message-body-" + message_id + "\" class=\"" + $class + "\" style=\"display:none\">" + data + "</tr>");
+						}).done(function(){
+							jQuery("#message-body-" + message_id).show("slow");
+						
 						});
 					}
 				}
 				else {
-					jQuery("#message-body-" + message_id).hide();
+					jQuery("#message-body-" + message_id).hide("slow");
 					jQuery(this).removeClass("icon-minus").addClass("icon-plus");					
 				}				
 			});
