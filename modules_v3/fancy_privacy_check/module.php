@@ -50,7 +50,7 @@ class fancy_privacy_check_WT_Module extends WT_Module implements WT_Module_Sideb
 	}
 	
 	public function getSidebarTitle() {
-		return /* Title used in the sidebar */ 'Privacy Check';
+		return /* Title used in the sidebar */ WT_I18N::translate('Privacy Check');
 	}
 
 	// Extend WT_Module
