@@ -1459,6 +1459,11 @@ ul[id^="thumblist"] .submenuitem:hover{background-color:#FECF5B}
 #map_pane .infowindow #gmtabs li a{background-color:#545454;border:1px solid #272727;color:#e2e2e2;font-size:9px;font-weight:bold;line-height:1.5em}
 #map_pane .infowindow .highlt_img img[src*=silhouette]{background-color:#8E8E8E;border:1px solid #272727;padding:2px}
 
+/* Census assistant module */
+table.table-census-assistant th {
+	font-weight: bold;
+}
+
 /* Stories Tab */
 #stories {border:#545454 1px solid;margin:10px 20px 0 20px;line-height:1.5em}
 #stories h2,#stories h3,#stories h4,#stories h5{padding-top:20px;}
