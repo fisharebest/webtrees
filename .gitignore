@@ -1,5 +1,5 @@
 *.swp
 *dwsync.xml
-/SyncToy*
-/mysqldumper
-/_gitnotes.txt
+SyncToy*
+mysqldumper/
+_gitnotes.txt
