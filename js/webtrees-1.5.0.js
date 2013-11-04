@@ -433,6 +433,21 @@ function copy_fact(xref, fact_id) {
 	return false;
 }
 
+// Delete a user - and reload the page
+function delete_user(message, user_id) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-user',
+			user_id:   user_id,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
 function reorder_children(xref) {
 	return edit_interface({
 		"action": "reorder_children",

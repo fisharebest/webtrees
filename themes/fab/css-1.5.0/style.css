@@ -114,9 +114,6 @@ a:hover,
 a:active {
 	text-decoration: underline;
 }
-:focus {
-	outline-style: none;
-}
 
 img {
 	border: 0;
@@ -3265,12 +3262,13 @@ a.icon-uarrow:hover {
 	text-align: center;
 }
 #save-cancel {
-	position: fixed;
-	bottom: 0;
-	border-radius: 4px;
-	width: 96.5%;
-	border: solid #999 1px;
-	margin: 0;
+	background-color: #eee;
+	border-radius:    4px;
+	border:           solid #999 1px;
+	bottom:           0;
+	margin:           0;
+	position:         fixed;
+	width:            96.5%;
 }
 #save-cancel input {
 	padding: 2px 8px;
@@ -3468,12 +3466,6 @@ html[dir=rtl] #cboxSlideshow {
 }
 
 /* Census assistant module */
-table.table-census-assistant {
-	background: #fff;
-	border:     thin solid #000;
-	color:      #000;
-	font:       smaller serif;
-}
 table.table-census-assistant th {
 	font-weight: bold;
 }

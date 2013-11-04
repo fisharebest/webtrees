@@ -396,18 +396,14 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 
 	$text .= get_cont($nlevel, $nrec);
 
-	// Check if shared note
+	// Check if shared note (we have already checked that it exists)
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ NOTE/', $nrec, $match)) {
 		$note = WT_Note::getInstance($match[1]);
-		if ($note) {
-			// If Census assistant installed, allow it to format the note
-			if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-				$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
-			} else {
-				$text = WT_Filter::expandUrls($note->getNote());
-			}
+		// If Census assistant installed, allow it to format the note
+		if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+			$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
 		} else {
-			$text = '<span class="error">' . WT_Filter::escapeHtml($nid) . '</span>';
+			$text = WT_Filter::expandUrls($note->getNote());
 		}
 	} else {
 		$note = null;
@@ -453,7 +449,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		$data .= ' class="note_details" dir="auto" style="white-space:pre-wrap">' . $cont_lines. '</div>';
 	} else {
 		if ($note) {
-			$text = '<a href="' . $note->getHtmlUrl() . '">' . $first_line . '</a>';
+			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $first_line . '</a>';
 		}
 		$data .= '<span class="field" dir="auto">' . $first_line . '</span>';
 	}
@@ -469,9 +465,6 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 * @param bool $textOnly Don't print the "Note: " introduction
 */
 function print_fact_notes($factrec, $level, $textOnly=false) {
-	global $GEDCOM;
-	$ged_id=get_id_from_gedcom($GEDCOM);
-
 	$data = "";
 	$previous_spos = 0;
 	$nlevel = $level+1;
@@ -485,14 +478,14 @@ function print_fact_notes($factrec, $level, $textOnly=false) {
 		$nrec = substr($factrec, $spos1, $spos2-$spos1);
 		if (!isset($match[$j][1])) $match[$j][1]="";
 		if (!preg_match("/@(.*)@/", $match[$j][1], $nmatch)) {
-			$data .= print_note_record($match[$j][1], $nlevel, $nrec, $textOnly, true);
+			$data .= print_note_record($match[$j][1], $nlevel, $nrec, $textOnly);
 		} else {
 			$note = WT_Note::getInstance($nmatch[1]);
 			if ($note) {
 				if ($note->canShow()) {
 					$noterec = $note->getGedcom();
 					$nt = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
-					$data .= print_note_record(($nt>0)?$n1match[1]:"", 1, $noterec, $textOnly, true);
+					$data .= print_note_record(($nt>0)?$n1match[1]:"", 1, $noterec, $textOnly);
 					if (!$textOnly) {
 						if (strpos($noterec, "1 SOUR")!==false) {
 							require_once WT_ROOT.'includes/functions/functions_print_facts.php';

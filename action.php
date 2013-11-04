@@ -154,6 +154,15 @@ case 'delete-source':
 	}
 	break;
 
+case 'delete-user':
+	$user_id = WT_Filter::post('user_id');
+
+	if (WT_USER_IS_ADMIN && WT_USER_ID != $user_id && WT_Filter::checkCsrf()) {
+		AddToLog('deleted user ->' . get_user_name($user_id) . '<-', 'auth');
+		delete_user($user_id);
+	}
+	break;
+
 case 'reject-changes':
 	// Reject all the pending changes for a record
 	require WT_ROOT.'includes/functions/functions_edit.php';
