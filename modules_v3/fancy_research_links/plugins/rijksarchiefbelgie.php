@@ -40,27 +40,15 @@ class rijksarchiefbelgie_plugin extends research_base_plugin {
 		else {
 			$prefix = "";
 		}
-		
-		$sex = $event->getValue();
-		switch ($sex) {
-			case 'M':
-				$gender = 'M=1&amp;V=0&amp;O=0';
-				break;
-			case 'V':
-				$gender = 'M=0&amp;V=1&amp;O=0';
-				break;
-			default:
-				$gender = 'M=0&amp;V=0&amp;O=1';
-		}	
-		
+				
 		return $link = array(
 			array(
 				'title' => 'geboorte',
-				'link' => 'http://search.arch.be/nl/zoeken-naar-personen/zoekresultaat/q/persoon_achternaam_t_0/'.$primary_name['surname'].'/q/persoon_voornaam_t_0/'.$givn.'/q/zoekwijze/s?'.$gender.'&amp;persoon_0_periode_soort=geboorte&persoon_0_periode_geen=0'
+				'link' => 'http://search.arch.be/nl/zoeken-naar-personen/zoekresultaat/q/persoon_achternaam_t_0/'.$primary_name['surname'].'/q/persoon_voornaam_t_0/'.$givn.'/q/zoekwijze/s?M=0&amp;V=0&amp;O=1&amp;persoon_0_periode_soort=geboorte&persoon_0_periode_geen=0'
 			),
 			array(
 				'title' => 'overlijden',
-				'link' => 'http://search.arch.be/nl/zoeken-naar-personen/zoekresultaat/q/persoon_achternaam_t_0/'.$primary_name['surname'].'/q/persoon_voornaam_t_0/'.$givn.'/q/zoekwijze/s?'.$gender.'&amp;persoon_0_periode_soort=overlijden&persoon_0_periode_geen=0'
+				'link' => 'http://search.arch.be/nl/zoeken-naar-personen/zoekresultaat/q/persoon_achternaam_t_0/'.$primary_name['surname'].'/q/persoon_voornaam_t_0/'.$givn.'/q/zoekwijze/s?M=0&amp;V=0&amp;O=1&amp;persoon_0_periode_soort=overlijden&persoon_0_periode_geen=0'
 			)			
 		);	
 	}
