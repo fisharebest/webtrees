@@ -5154,8 +5154,7 @@ msgstr "FAQ zichtbaarheid"
 #: modules_v3/faq/help_text.php:35
 msgid "FAQs are lists of questions and answers, which allow you to explain the site's rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
 msgstr ""
-"FAQ = Frequently asked question = Vaak gestelde vraag\r\n"
-"FAQ's zijn lijsten van vragen en antwoorden, die u toestaan de regels, de gedragslijn, en procedures van de site aan uw bezoekers uit te leggen. Vragen houden zich meestal bezig met privacy, copyright, gebruikersaccounts, niet toegestane inhoud, benodigdheden voor bron vermeldingen, enz.."
+"FAQ = Frequently asked question = Vaak gestelde vraag.  FAQ's zijn lijsten van vragen en antwoorden, die u toestaan de regels, de gedragslijn, en procedures van de site aan uw bezoekers uit te leggen. Vragen houden zich meestal bezig met privacy, copyright, gebruikersaccounts, niet toegestane inhoud, benodigdheden voor bron vermeldingen, enz.."
 
 #. I18N: gedcom tag FACT
 #: library/WT/Gedcom/Tag.php:211
@@ -6566,8 +6565,7 @@ msgstr "Bent u de websitebeheerder, kijk dan na of:"
 #: site-php-version.php:84 site-unavailable.php:85
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr ""
-"Als u het probleem zelf niet kunt oplossen, kan u hulp vragen op de forums bij \r\n"
-"<a href=\"http://webtrees.net\">webtrees.net</a>"
+"Als u het probleem zelf niet kunt oplossen, kan u hulp vragen op de forums bij <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: login.php:340
 msgid "If you didn't request an account, you can just delete this message."
@@ -9817,8 +9815,7 @@ msgstr "Plaatsen in %s"
 #: help_text.php:332
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br /><br />For example, a place like Salt Lake City would be entered as \"Salt Lake City, Salt Lake, Utah, USA\".<br /><br />Let's examine each part of this place.  The first part, \"Salt Lake City,\" is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, \"Salt Lake,\" is the county.  \"Utah\" is the state, and \"USA\" is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br /><br />If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn't know the county for Salt Lake City.  You should then record it like this: \"Salt Lake City, , Utah, USA\".  Suppose you only know that a person was born in Utah.  You would enter the information like this: \", , Utah, USA\".  <br /><br />You can use the <b>Find Place</b> link to help you find places that already exist in the database."
 msgstr ""
-"Plaatsnamen moeten ingevoerd worden volgens de standaard voor genealogie. In genealogie worden de plaatsen opgeslagen met de belangrijkste informatie van de plaats eerst, daarna volgen minder belangrijke informatie, gescheiden door komma's.\r\n"
-"Het niveau waarop u de plaats informatie opslaat, moet het niveau van de staat of kerk aangeven waar de vitale informatie wordt opgeslagen.<br/><br/>B.v. een plaats als Amsterdam moet opgeslagen worden als Amsterdam, gemeente Amsterdam, Noord Holland, Nederland. Het zou kunnen dat u nog een district of straatnaam wilt aangeven. Die zouden dan vóór de plaatsnaam zelf komen, weer gescheiden door komma's.<br/><br/>Als een niveau niet bekend is, moet u een spatie invullen tussen de komma's. Stel dat u niet wist dat Amsterdam in de gemeente Amsterdam ligt, dan wordt het als volgt: Amsterdam, , Noord Holland, Nederland.<br /><br />U kunt gebruik maken van de <b>Vind Plaats</b>link om plaatsen te vinden die al opgeslagen zijn in de database."
+"Plaatsnamen moeten ingevoerd worden volgens de standaard voor genealogie. In genealogie worden de plaatsen opgeslagen met de belangrijkste informatie van de plaats eerst, daarna volgen minder belangrijke informatie, gescheiden door komma's.  Het niveau waarop u de plaats informatie opslaat, moet het niveau van de staat of kerk aangeven waar de vitale informatie wordt opgeslagen.<br/><br/>B.v. een plaats als Amsterdam moet opgeslagen worden als Amsterdam, gemeente Amsterdam, Noord Holland, Nederland. Het zou kunnen dat u nog een district of straatnaam wilt aangeven. Die zouden dan vóór de plaatsnaam zelf komen, weer gescheiden door komma's.<br/><br/>Als een niveau niet bekend is, moet u een spatie invullen tussen de komma's. Stel dat u niet wist dat Amsterdam in de gemeente Amsterdam ligt, dan wordt het als volgt: Amsterdam, , Noord Holland, Nederland.<br /><br />U kunt gebruik maken van de <b>Vind Plaats</b>link om plaatsen te vinden die al opgeslagen zijn in de database."
 
 #: modules_v3/random_media/module.php:132 themes/_administration/header.php:33
 #: themes/clouds/header.php:36 themes/colors/header.php:39
@@ -11315,8 +11312,7 @@ msgstr "Kortste huwelijk"
 #: help_text.php:995
 msgid "Should the GeoNames database be used to provide more suggestions for place names?<br /><br />When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br /><br />The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
 msgstr ""
-"Moet de GeoNames database gebruikt worden om meer suggesties voor plaatsnamen te tonen? <br /><br />Als deze optie op <b>Ja</b> is gezet dan wordt de GeoNames database doorzocht om plaatsnamen op te zoeken als suggestie voor de plaatsnaam welke wordt ingevoerd. Wordt dit op <b>Nee</b> gezet, dan wordt alleen de huidige genealogiedatabase doorzocht. Naarmate meer van de plaatsnaam wordt ingevuld wordt de suggestie steeds preciezer\r\n"
-"Deze optie kan het invoeren vertragen, speciaal als de Internetverbinding langzaam is.<br /><br />De GeoNames geografische database is vrij toegankelijk zonder kosten. Het bevat op dit moment meer dan 8,000,000 geografische namen."
+"Moet de GeoNames database gebruikt worden om meer suggesties voor plaatsnamen te tonen? <br /><br />Als deze optie op <b>Ja</b> is gezet dan wordt de GeoNames database doorzocht om plaatsnamen op te zoeken als suggestie voor de plaatsnaam welke wordt ingevoerd. Wordt dit op <b>Nee</b> gezet, dan wordt alleen de huidige genealogiedatabase doorzocht. Naarmate meer van de plaatsnaam wordt ingevuld wordt de suggestie steeds preciezer.  Deze optie kan het invoeren vertragen, speciaal als de Internetverbinding langzaam is.<br /><br />De GeoNames geografische database is vrij toegankelijk zonder kosten. Het bevat op dit moment meer dan 8,000,000 geografische namen."
 
 #: modules_v3/recent_changes/module.php:169
 msgid "Should this block be hidden when it is empty?"
@@ -12378,8 +12374,7 @@ msgstr "De map %s werd aangemaakt."
 #: help_text.php:585
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
-"De map kan volledig worden gespecifieerd (b.v. /home/user_name/webtrees_data/) of relatief aan de installatiemap \r\n"
-"(b.v. ../../webtrees_data/)."
+"De map kan volledig worden gespecifieerd (b.v. /home/user_name/webtrees_data/) of relatief aan de installatiemap (b.v. ../../webtrees_data/)."
 
 #: help_text.php:446
 msgid "The following calendars are supported:"
@@ -12767,8 +12762,7 @@ msgstr "Deze informatie is privé en kan niet getoond worden."
 #: help_text.php:1097
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br /><br /><b>Advanced features</b> for <b>View Year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br /><br />Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br /><br /><b>1992-5</b> for all events from 1992 to 1995.<br /><b>1972-89</b> for all events from 1972 to 1989.<br /><b>1610-759</b> for all events from 1610 to 1759.<br /><b>1880-1905</b> for all events from 1880 to 1905.<br /><b>880-1105</b> for all events from 880 to 1105.<br /><br />To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br /><br/>Selecting a range of years will change the calendar to the year view.</dd></dl>"
 msgstr ""
-"Met dit invulvak kunt u het jaar van de kalender wijzigen. Type een jaar in het vak, en druk op <b>Enter</b> om de kalender te wijzigen naar dat jaar.<br /><br /><b>Geavanceerde mogelijkheden</b>voor <b>Toon Jaar</b><dl><dt><b>Meer dan een jaar </b></dt><dd>U kan data zoeken in een reeks van jaren.<br /><br />Jaarreeksen zijn  <u>inclusief</u>. Dit betekent dat de datum reeks zich uitstrekt van 1 Januarie van het eerste jaar van de reeks tot 31 December van het laatst vermelde jaar.\r\n"
-"Hier zijn een paar voorbeelden van jaar reeksen:<br /><br /><b>1992-5</b> voor alle gebeurtenissen van 1992 tot 1995.<br /><b>1972-89</b>voor alle gebeurtenissen van 1972 tot 1989.<br /><b>1610-759</b> voor alle gebeurtenissen van 1610 to t1759.<br /><b>1880-1905</b> voor alle gebeurtenissen van tot 1905.<br /><b>880-1105</b> voor alle gebeurtenissen van 880 tot 1105.<br /><br />Om alle gebeurtenissen te zien in een bepaald decade of eeuw, kan u het volgende gebruiken <b>?</b> in plaats van de laatste cijfers. Bij voorbeeld, <b>197?</b>voor alle gebeurtenissen van 1970 tot 1979 of <b>16??</b> voor alle gebeurtenissen van 1600 tot 1699.<br /><br/>Het selecteren van een reeks jaren wordt de kalender gewijzigd naar het jaaroverzicht.</dd></dl>"
+"Met dit invulvak kunt u het jaar van de kalender wijzigen. Type een jaar in het vak, en druk op <b>Enter</b> om de kalender te wijzigen naar dat jaar.<br /><br /><b>Geavanceerde mogelijkheden</b>voor <b>Toon Jaar</b><dl><dt><b>Meer dan een jaar </b></dt><dd>U kan data zoeken in een reeks van jaren.<br /><br />Jaarreeksen zijn  <u>inclusief</u>. Dit betekent dat de datum reeks zich uitstrekt van 1 Januarie van het eerste jaar van de reeks tot 31 December van het laatst vermelde jaar.  Hier zijn een paar voorbeelden van jaar reeksen:<br /><br /><b>1992-5</b> voor alle gebeurtenissen van 1992 tot 1995.<br /><b>1972-89</b>voor alle gebeurtenissen van 1972 tot 1989.<br /><b>1610-759</b> voor alle gebeurtenissen van 1610 to t1759.<br /><b>1880-1905</b> voor alle gebeurtenissen van tot 1905.<br /><b>880-1105</b> voor alle gebeurtenissen van 880 tot 1105.<br /><br />Om alle gebeurtenissen te zien in een bepaald decade of eeuw, kan u het volgende gebruiken <b>?</b> in plaats van de laatste cijfers. Bij voorbeeld, <b>197?</b>voor alle gebeurtenissen van 1970 tot 1979 of <b>16??</b> voor alle gebeurtenissen van 1600 tot 1699.<br /><br/>Het selecteren van een reeks jaren wordt de kalender gewijzigd naar het jaaroverzicht.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:34
 msgid "This input box lets you enter an individual's ID number so he can be added to the Clippings Cart.  Once added you'll be offered options to link that individual's relations to your Clippings Cart.<br /><br />If you do not know an individual's ID number, you can perform a search by name by pressing the Person icon next to the Add button."
@@ -13962,8 +13956,7 @@ msgstr "Gebruikersnaam of e-mailadres"
 #: help_text.php:1502
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr ""
-"Gebruikersnamen zijn hoofdletterongevoelig en geaccentueerde letters worden genegeerd, zodat \"chloe\", \"chloë\", en \"Chloe\" \r\n"
-"als hetzelfde worden beschouwd."
+"Gebruikersnamen zijn hoofdletterongevoelig en geaccentueerde letters worden genegeerd, zodat \"chloe\", \"chloë\", en \"Chloe\" als hetzelfde worden beschouwd."
 
 #: help_text.php:1504
 #, php-format

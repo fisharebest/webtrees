@@ -3116,8 +3116,7 @@ msgstr "בחירת המגדר מתבצעת מרשימה נגללת. האפשרו
 #: help_text.php:1463
 msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the person who made an audio recording."
 msgstr ""
-"בחר את התמונה הממוזערת שברצונך להעלות. למרות שניתן באופן אוטומטי ליצור תמונות ממוזערות עבור תמונות, יתכן שתרצה ליצור תמונה ממוזערת משלך, במיוחד עבור סוגי מדיה אחרים. לדוגמה, אתה יכול לספק תמונת סטילס מוידאו או תמונה של האדם שביצע הקלטת שמע.\r\n"
-"OK"
+"בחר את התמונה הממוזערת שברצונך להעלות. למרות שניתן באופן אוטומטי ליצור תמונות ממוזערות עבור תמונות, יתכן שתרצה ליצור תמונה ממוזערת משלך, במיוחד עבור סוגי מדיה אחרים. לדוגמה, אתה יכול לספק תמונת סטילס מוידאו או תמונה של האדם שביצע הקלטת שמע."
 
 #: help_text.php:1038
 msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br /><br />If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br />Access is permitted to users who have an account and a password for this website.<br /></div>"

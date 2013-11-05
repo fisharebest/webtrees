@@ -5149,8 +5149,7 @@ msgstr "FAQ Sichbarkeit"
 #: modules_v3/faq/help_text.php:35
 msgid "FAQs are lists of questions and answers, which allow you to explain the site's rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
 msgstr ""
-"FAQ sind Listen von Antworten auf oft gestellte Fragen, welche dazu dienen, den Benutzern der Webseite Regeln, Methoden und Vorgehensweisen zu erklären.\r\n"
-"Die Fragen bewegen sich im allgemeinen um die Bereiche Datenschutz, Copyright, Benutzerkonten, nicht geeignete Inhalte, Anforderungen an Quellenzitate, usw."
+"FAQ sind Listen von Antworten auf oft gestellte Fragen, welche dazu dienen, den Benutzern der Webseite Regeln, Methoden und Vorgehensweisen zu erklären.  Die Fragen bewegen sich im allgemeinen um die Bereiche Datenschutz, Copyright, Benutzerkonten, nicht geeignete Inhalte, Anforderungen an Quellenzitate, usw."
 
 #. I18N: gedcom tag FACT
 #: library/WT/Gedcom/Tag.php:211
@@ -12278,9 +12277,7 @@ msgstr "Der PGV- <b> webtrees </ b> -Migrationsassistent unterstützt Administra
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr ""
-"Der Verwalter von webtrees bei %s hat Ihren Zugang erlaubt.\r\n"
-"\r\n"
-"Sie können sich jetzt unter dem folgenden Link anmelden: %s"
+"Der Verwalter von webtrees bei %s hat Ihren Zugang erlaubt.  Sie können sich jetzt unter dem folgenden Link anmelden: %s"
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:52
@@ -12632,11 +12629,7 @@ msgstr "Das Benutzerkonto wurde noch nicht verifiziert. Bitte den Emaileingang a
 #: modules_v3/charts/help_text.php:34
 msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br /><br />When this block appears on the Home Page, the root person and the type of chart to be displayed are determined by the administrator.  When this block appears on the user's personalized My Page, these options are determined by the user.<br /><br />The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of a person to see more details about them."
 msgstr ""
-"Der Diagramm-Block ermöglicht Ihnen, Diagramme auf der Begrüßungsseite oder auf der «Mein GedView Portal» Seite zu zeigen. Dieser Block ist für den linken Teil der Seite gedacht, da der rechte Teil sehr schmal ist.\r\n"
-"\r\n"
-"Verwalter bestimmen die ID-Nummer der Startperson und das Diagramm das auf der Begrüßungsseite dargestellt wird. Für die «Mein webtrees» Seite bestimmt der Benutzer diese Optionen.\r\n"
-"\r\n"
-"Die Diagramme verhalten sich hier genau wie sie sich auf anderen Seiten verhalten. Wenn Sie den Kasten einer Person klicken, erhalten Sie Details."
+"Der Diagramm-Block ermöglicht Ihnen, Diagramme auf der Begrüßungsseite oder auf der «Mein GedView Portal» Seite zu zeigen. Dieser Block ist für den linken Teil der Seite gedacht, da der rechte Teil sehr schmal ist.  Verwalter bestimmen die ID-Nummer der Startperson und das Diagramm das auf der Begrüßungsseite dargestellt wird. Für die «Mein webtrees» Seite bestimmt der Benutzer diese Optionen.  Die Diagramme verhalten sich hier genau wie sie sich auf anderen Seiten verhalten. Wenn Sie den Kasten einer Person klicken, erhalten Sie Details."
 
 #: modules_v3/review_changes/help_text.php:34
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
