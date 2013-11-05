@@ -1440,14 +1440,29 @@ table.tabs_table #side_bar a#alturl {font-size:9px}
 #media_content td.optionbox, #media_content td.facts_value {padding:10px}
 
 /* Album Tab */
-ul[id^="thumblist"] {display:block; float:left; list-style-type:none}
-ul[id^="thumblist"] li {display:block; float:left; list-style-type:none; margin-right:5px; padding-bottom:0; padding-left:4px; padding-right:4px;}
-ul[id^="thumblist"] a img{border:1px; border-style:none; padding:1px;}
-ul[id^="thumblist"] a:hover img{background-color:#BDB071; border:0; border-style:none; padding:1px;}
-ul[id^="thumblist"] .submenu {border:#FECF5B 1px solid;padding:0;box-shadow: 3px 4px #171717;}
-ul[id^="thumblist"] .submenuitem {background-color:#FFEEB0;padding:2px 8px}
-ul[id^="thumblist"] .submenuitem a{;color:#272727;font-size:10px}
-ul[id^="thumblist"] .submenuitem:hover{background-color:#FECF5B}
+#lightbox_content .facts_table {width:100%}
+#lightbox_content .descriptionbox span{margin:0 20px;}
+#lightbox_content .pic{width:140px;height:150px;overflow:hidden}
+#lightbox_content .thumbcontainer{display:block; width:100%;}
+#lightbox_content .thumblist {display:block; float:left; list-style-type:none;}
+#lightbox_content .thumblist li {background-color:#272727;float:left;padding:8px; margin:6px;box-shadow: 2px 3px 10px #171717;border-radius: 5px 5px 0 0;position: relative;}
+#lightbox_content li.li_norm{border:1px solid #545454;}
+#lightbox_content li.li_new{border:2px solid #FECF5B;}
+#lightbox_content li.li_old{border:2px solid #DD6900;}
+#lightbox_content .thumblist a img {max-height:122px;max-width:122px; width:auto;display: block;margin: 0 auto}
+#lightbox_content .thumblist a:hover img  {}
+#lightbox_content .clearlist:after{clear:both; content:"."; display:block; height:0; visibility:hidden;}
+#lightbox_content span {padding:10px;}
+#lightbox_content span img {vertical-align:middle;}
+#lightbox_content .submenu {background-color:#FFEEB0; border: 1px solid #FECF5B; box-shadow: 3px 4px #171717; height:auto;padding:5px}
+#lightbox_content .submenuitem {background-color:#FFEEB0;height:1.4em}
+#lightbox_content .submenuitem a{color:#272727;font-size:10px}
+#lightbox_content .submenuitem a:hover{ color: #8E8E8E;}
+#lightbox_content .album_media_title{width: 122px;font-size:11px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 2px;margin-top: 5px;
+color: #e2e2e2;text-align: center;}
+#lightbox_content #clearlist {display:block;}
+html[dir='rtl'] #lightbox_content #thumblist  {float:right;}
+html[dir='rtl'] #lightbox_content #thumblist li  {float:right; margin-left:5px;}
 
 /* Google maps tab  */
 #googlemap_left > img {display:none}

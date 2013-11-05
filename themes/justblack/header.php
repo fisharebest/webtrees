@@ -57,11 +57,6 @@ case 'msie':
 	break;
 }	
 
-// Function to replace lightbox images with justblack theme images. No additional css required (module css integrated in theme css)
-if (WT_USE_LIGHTBOX && WT_SCRIPT_NAME == 'individual.php') {
-	echo '<link rel="stylesheet" type="text/css" href="'.WT_CSS_URL.'lightbox.css">';
-}
-
 if ($view=='simple') {
 	// Popup windows need space for the save/close buttons
 	echo '<style>body{margin-bottom:50px;}</style>';

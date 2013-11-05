@@ -470,19 +470,21 @@ jQuery(document).ready(function($){
 		
 		$('#tabs a[title=lightbox]').on('click', function(){
 			var tabindex = $(this).parent().attr('aria-controls');
-			$('#' + tabindex).before('<div class="loading-image"></div>').hide();			
-			$.ajax({
-				complete:function(){
-					$('#lightbox_content img.icon').each(function(){
-						$(this).attr('src',function(index,attr){
-							return attr.replace('modules_v3/lightbox/images', WT_CSS_URL + 'images/buttons');		  
-						});
-						$(this).css('padding-left', '5px');
-					});	
-					$('.loading-image').remove();
-					$('#' + tabindex).show();				
-				}				
-			});			
+			if($('#jb-loading-image').length === 0) {
+				$('#' + tabindex).before('<div id="jb-loading-image" class="loading-image"></div>').hide();			
+				$.ajax({
+					complete:function(){
+						$('#lightbox_content img.icon').each(function(){
+							$(this).attr('src',function(index,attr){
+								return attr.replace('modules_v3/lightbox/images', WT_CSS_URL + 'images/buttons');		  
+							});
+							$(this).css('padding-left', '5px');
+						});	
+						$('#jb-loading-image').hide();
+						$('#' + tabindex).show();				
+					}				
+				});
+			}
 		});
 			
 		if ($('#tabs a[title=lightbox]').parent('li').hasClass('ui-state-active')) {
