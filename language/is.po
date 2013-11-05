@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-10-06 08:16+0100\n"
+"POT-Creation-Date: 2013-11-05 13:02+0000\n"
 "PO-Revision-Date: 2013-01-18 11:22+0000\n"
 "Last-Translator: Gudjon Sigurdsson <Unknown>\n"
 "Language-Team: Icelandic <is@li.org>\n"
@@ -501,8 +501,8 @@ msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to 
 msgstr "<center><b>Velkomin/-n á þessa ættfræði vefsíðu</b></center><br />Aðgangur að þessari vefsíðu er leyfilegur fyrir alla gesti sem eru með notandareikning.<br /><br />Ef þú ert með notandareikning, þá getur þú skráð þig inn á þessa síðu.  Ef þú ert ekki með notandareikning, þá getur þú sótt um með því að smella á viðeigandi krækju hér að neðan.<br /><br />Eftir að umsókn þín hefur verið staðfest, þá mun kerfisstjóri vefsíðunnar virkja reikninginn þinn.  Þú færð tölvupóst þegar umsókn þín hefur verið samþykkt."
 
 #. I18N: default option in list of themes
-#: admin_trees_config.php:452 admin_users.php:215 admin_users.php:416
-#: edituser.php:167
+#: admin_trees_config.php:452 admin_users.php:205 admin_users.php:405
+#: edituser.php:163
 msgid "<default theme>"
 msgstr "<sjálfgefið þema>"
 
@@ -1260,7 +1260,7 @@ msgstr "Heimilisfang lína 2"
 msgid "Adelaide, Australia"
 msgstr "Adelaide, Ástralía"
 
-#: admin_users.php:426
+#: admin_users.php:415
 msgid "Admin comments on user"
 msgstr "Kerfisstjóri gefur umsögn á notanda"
 
@@ -1269,7 +1269,7 @@ msgstr "Kerfisstjóri gefur umsögn á notanda"
 msgid "Administration"
 msgstr "Kerfisstjórnun"
 
-#: admin_users.php:199 admin_users.php:374 help_text.php:1405
+#: admin_users.php:189 admin_users.php:363 help_text.php:1405
 msgid "Administrator"
 msgstr "Kerfisstjóri"
 
@@ -1600,7 +1600,7 @@ msgstr "Alla reiti þarf að fylla út."
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
 msgstr "Heimila öðrum einingum að ritstýra texta með því að nota \"WYSIWYG\" ritil, í stað þess að nota HTML kóða."
 
-#: admin_users.php:208 admin_users.php:397
+#: admin_users.php:198 admin_users.php:386
 msgid "Allow this user to edit his account information"
 msgstr "Heimila þessum notanda að breyta sínum reikningsupplýsingum."
 
@@ -1778,7 +1778,7 @@ msgstr "Setja í gang sjálfvirkar leiðréttingar á ættfræðigögnum þínum
 msgid "Apply privacy settings?"
 msgstr "Setja á friðhelgis stillingu?"
 
-#: save.php:263
+#: save.php:268
 #, php-format
 msgid "Approval of account at %s"
 msgstr "Samþykki reiknings á %s"
@@ -1787,11 +1787,11 @@ msgstr "Samþykki reiknings á %s"
 msgid "Approve all changes"
 msgstr "Samþykkja allar breytingar"
 
-#: admin_users.php:587
+#: admin_users.php:576
 msgid "Approved"
 msgstr "Samþykkt"
 
-#: admin_users.php:380
+#: admin_users.php:369
 msgid "Approved by administrator"
 msgstr "Samþykkt af kerfisstjóra"
 
@@ -1857,7 +1857,7 @@ msgid "Are you sure you want to delete this story?"
 msgstr "Ertu viss um að þú viljir eyða þessari sögu?"
 
 #: admin_media.php:290 admin_media.php:425 admin_site_access.php:114
-#: admin_trees_manage.php:229 admin_users.php:172
+#: admin_trees_manage.php:229 admin_users.php:162
 #: includes/functions/functions_print_lists.php:1028
 #: includes/functions/functions_print_lists.php:1129
 #: includes/functions/functions_print_lists.php:1221
@@ -2004,7 +2004,7 @@ msgstr "Höfundur"
 msgid "Author of last change"
 msgstr "Höfundur síðustu breytingar"
 
-#: admin_users.php:211 admin_users.php:392 help_text.php:1467
+#: admin_users.php:201 admin_users.php:381 help_text.php:1467
 msgid "Automatically approve changes made by this user"
 msgstr "Sjálfvirkt samþykkja breytingar sem gerðar eru af þessum notanda"
 
@@ -2973,7 +2973,7 @@ msgstr "Breyta fána"
 msgid "Change language"
 msgstr "Breyta tungumáli"
 
-#: admin_users.php:224 index.php:141 index.php:142
+#: admin_users.php:214 index.php:141 index.php:142
 msgid "Change the blocks on this page"
 msgstr "Breyta kössunum á þessari síðu"
 
@@ -3375,7 +3375,7 @@ msgstr "Dálkar á síðu"
 msgid "Comment"
 msgstr "Athugasemd"
 
-#: admin_users.php:220 help_text.php:1365 login.php:297 login.php:339
+#: admin_users.php:210 help_text.php:1365 login.php:297 login.php:339
 #: login.php:411
 msgid "Comments"
 msgstr "Athugasemdir"
@@ -3434,7 +3434,7 @@ msgstr "Samtenging"
 msgid "Configure"
 msgstr "Stilla"
 
-#: admin_users.php:395 edituser.php:158 help_text.php:1306 login.php:406
+#: admin_users.php:384 edituser.php:154 help_text.php:1306 login.php:406
 msgid "Confirm password"
 msgstr "Staðfesta lykilorð"
 
@@ -3569,7 +3569,7 @@ msgstr ""
 msgid "Create Repository"
 msgstr "Stofna Geymslu"
 
-#: admin_users.php:486
+#: admin_users.php:475
 msgid "Create User"
 msgstr "Stofna Notanda"
 
@@ -3989,7 +3989,7 @@ msgstr "Dagsetningasvið"
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range."
 msgstr "Dagsetningarsvið eru notuð til að gefa til kynna atburð, t.d. fæðingu, sem eiga sér stað á óþekktri dagsetningu innan hugsanlegs sviðs."
 
-#: admin_users.php:583
+#: admin_users.php:572
 msgid "Date registered"
 msgstr "Dagsetning skráningar"
 
@@ -4234,8 +4234,8 @@ msgstr "Sjálfgefið kort"
 msgid "Default family tree"
 msgstr "Sjálfgefið fjölskyldutré"
 
-#: admin_trees_config.php:233 admin_users.php:235 admin_users.php:438
-#: edituser.php:149 help_text.php:1121 modules_v3/gedcom_block/module.php:52
+#: admin_trees_config.php:233 admin_users.php:225 admin_users.php:427
+#: edituser.php:145 help_text.php:1121 modules_v3/gedcom_block/module.php:52
 msgid "Default individual"
 msgstr "Sjálfgefin einstaklingur"
 
@@ -4312,7 +4312,7 @@ msgstr "Eyða færslu"
 msgid "Deleted files:"
 msgstr "Eyddar skrár:"
 
-#: admin_users.php:565
+#: admin_users.php:554
 msgid "Deleted user: "
 msgstr "Eyddur notandi: "
 
@@ -4389,7 +4389,7 @@ msgstr "Óska notandaheiti"
 msgid "Destination"
 msgstr "Áfangastaður"
 
-#: admin_users.php:145 admin_users.php:197 note.php:96 repo.php:92
+#: admin_users.php:135 admin_users.php:187 note.php:96 repo.php:92
 #: source.php:95
 msgid "Details"
 msgstr "Upplýsingar"
@@ -4613,11 +4613,11 @@ msgstr "Hlaða niður skýrslu"
 msgid "Duodi"
 msgstr "Duodi"
 
-#: admin_users.php:271 edituser.php:66 login.php:260
+#: admin_users.php:258 edituser.php:61 login.php:260
 msgid "Duplicate email address.  A user with that email already exists."
 msgstr "Tvöfalt netfang. Notandi með þetta netfang er þegar til staðar."
 
-#: admin_users.php:268 edituser.php:63 login.php:258
+#: admin_users.php:255 edituser.php:59 login.php:258
 msgid "Duplicate user name.  A user with that user name already exists.  Please choose another user name."
 msgstr "Tvöfalt notandaheiti. Notandi með þetta notandaheiti er þegar til staðar. Vinsamlega veljið annað notandaheiti."
 
@@ -4809,7 +4809,7 @@ msgctxt "NOMINATIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#: admin_users.php:579
+#: admin_users.php:568
 msgid "Email"
 msgstr "Tölvupóstur"
 
@@ -4822,14 +4822,14 @@ msgstr "Netfang:"
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag EMAL
 #. I18N: gedcom tag _EMAIL
-#: admin_users.php:384 edituser.php:162 help_text.php:1209
+#: admin_users.php:373 edituser.php:158 help_text.php:1209
 #: library/WT/Gedcom/Tag.php:196 library/WT/Gedcom/Tag.php:197
 #: library/WT/Gedcom/Tag.php:198 library/WT/Gedcom/Tag.php:714 login.php:391
 #: setup.php:431
 msgid "Email address"
 msgstr "Netfang"
 
-#: admin_users.php:386
+#: admin_users.php:375
 msgid "Email verified"
 msgstr "Netfang staðfest"
 
@@ -5358,15 +5358,15 @@ msgid "Family of %s"
 msgstr "Fjölskylda %s"
 
 #: admin_site_change.php:269 admin_site_change.php:293 admin_site_logs.php:236
-#: admin_site_logs.php:259 admin_trees_manage.php:181 admin_users.php:234
-#: admin_users.php:437 edit_changes.php:174
+#: admin_site_logs.php:259 admin_trees_manage.php:181 admin_users.php:224
+#: admin_users.php:426 edit_changes.php:174
 #: modules_v3/batch_update/admin_batch_update.php:63
 #: modules_v3/faq/module.php:354 modules_v3/googlemap/module.php:1476
 #: modules_v3/html/module.php:296 modules_v3/stories/module.php:338
 msgid "Family tree"
 msgstr "Fjölskyldutré"
 
-#: admin_users.php:232 admin_users.php:431
+#: admin_users.php:222 admin_users.php:420
 msgid "Family tree access and settings"
 msgstr "Fjölskyldutré aðgangur og stillingar"
 
@@ -6751,7 +6751,7 @@ msgstr "Einstaklingslisti"
 msgid "Individual pages"
 msgstr "Einstaklingssíður"
 
-#: admin_users.php:236 admin_users.php:439 edituser.php:145 help_text.php:1204
+#: admin_users.php:226 admin_users.php:428 edituser.php:141 help_text.php:1204
 #: help_text.php:1370 help_text.php:1478
 msgid "Individual record"
 msgstr "Einstaklings færsla"
@@ -7222,8 +7222,8 @@ msgid "Landscape"
 msgstr "Lárétt"
 
 #. I18N: gedcom tag LANG
-#: admin_trees_config.php:228 admin_users.php:410 admin_users.php:581
-#: edituser.php:160 help_text.php:610 library/WT/Gedcom/Tag.php:242
+#: admin_trees_config.php:228 admin_users.php:399 admin_users.php:570
+#: edituser.php:156 help_text.php:610 library/WT/Gedcom/Tag.php:242
 #: library/WT/MenuBar.php:467
 msgid "Language"
 msgstr "Tungumál"
@@ -7261,7 +7261,7 @@ msgstr "Síðasta tölvupóst áminningin var send út "
 msgid "Last event"
 msgstr "Síðasti atburður"
 
-#: admin_users.php:585
+#: admin_users.php:574
 msgid "Last logged in"
 msgstr "Síðast skráður inn"
 
@@ -7310,7 +7310,7 @@ msgstr "Lettland"
 msgid "Layout"
 msgstr "Útlit"
 
-#: edituser.php:157
+#: edituser.php:153
 msgid "Leave password blank if you want to keep the current password."
 msgstr "Skildu lykilorð eftir autt ef þú vilt halda núverandi lykilorði."
 
@@ -8500,7 +8500,7 @@ msgstr "Muharram"
 msgid "Multiple marriages"
 msgstr "Margar giftingar"
 
-#: edituser.php:135 library/WT/MenuBar.php:68
+#: edituser.php:130 library/WT/MenuBar.php:68
 #: modules_v3/user_welcome/module.php:49
 msgid "My account"
 msgstr "Minn reikningur"
@@ -8515,7 +8515,7 @@ msgid "My individual record"
 msgstr "Mínar einstaklingsfærslur"
 
 #. I18N: Name of a module
-#: admin_modules.php:140 admin_users.php:223 index.php:82 index.php:90
+#: admin_modules.php:140 admin_users.php:213 index.php:82 index.php:90
 #: library/WT/MenuBar.php:61 library/WT/MenuBar.php:64
 #: modules_v3/user_welcome/module.php:34 themes/_administration/header.php:68
 msgid "My page"
@@ -8656,7 +8656,7 @@ msgstr "Hollensku Antillaeyjar"
 msgid "Neutral Zone"
 msgstr "Hlutlaust svæði"
 
-#: admin_users.php:166
+#: admin_users.php:156
 msgid "Never"
 msgstr "Aldrei"
 
@@ -8791,7 +8791,7 @@ msgctxt "NOMINATIVE"
 msgid "Nivôse"
 msgstr "Nivôse"
 
-#: admin_users.php:475 includes/functions/functions_print_facts.php:269
+#: admin_users.php:464 includes/functions/functions_print_facts.php:269
 msgid "No"
 msgstr "Nei"
 
@@ -8940,7 +8940,7 @@ msgstr "Alls enginn"
 msgid "Nocturnal"
 msgstr "Nocturnal"
 
-#: admin_trees_download.php:116 admin_users.php:461 famlist.php:115
+#: admin_trees_download.php:116 admin_users.php:450 famlist.php:115
 #: famlist.php:145 indilist.php:115 indilist.php:145 library/WT/Stats.php:758
 #: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:586
 #: modules_v3/families/module.php:149 modules_v3/individuals/module.php:148
@@ -9047,7 +9047,7 @@ msgstr "Glósur"
 msgid "Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr "Glósur er texti á frjálsu sniði munu birtast í staðreynda upplýsinga hluta síðunnar."
 
-#: admin_users.php:548
+#: admin_users.php:537
 msgid "Nothing found to cleanup"
 msgstr "Ekkert fannst til að hreinsa upp"
 
@@ -9123,7 +9123,7 @@ msgstr "Fjöldi atriða til að sýna"
 msgid "Number of marriages"
 msgstr "Fjöldi giftinga"
 
-#: admin_users.php:500
+#: admin_users.php:489
 msgid "Number of months since the last login for a user's account to be considered inactive: "
 msgstr "Fjöldi mánaða frá síðustu innskráningu þar til að notandareikningur geti talist óvirkur: "
 
@@ -9283,7 +9283,7 @@ msgstr "Því miður webtrees gat ekki stofnað skrár í þessari möppu."
 msgid "Optional prefixes and suffixes"
 msgstr "Valkvæð forskeyti og viðskeyti"
 
-#: admin_users.php:509 relationship.php:91
+#: admin_users.php:498 relationship.php:91
 msgid "Options:"
 msgstr "Valkostir"
 
@@ -9489,14 +9489,14 @@ msgstr "Aldur foreldra"
 msgid "Parents"
 msgstr "Foreldrar"
 
-#: admin_site_config.php:138 admin_users.php:202 admin_users.php:390
-#: edituser.php:156 help_text.php:736 help_text.php:1301 login.php:158
+#: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
+#: edituser.php:152 help_text.php:736 help_text.php:1301 login.php:158
 #: login.php:219 login.php:448 modules_v3/login_block/module.php:80
 #: setup.php:423
 msgid "Password"
 msgstr "Lykilorð"
 
-#: admin_users.php:274 edituser.php:115
+#: admin_users.php:261 edituser.php:110
 msgid "Passwords do not match."
 msgstr "Lykilorðin stemma ekki."
 
@@ -9504,7 +9504,7 @@ msgstr "Lykilorðin stemma ekki."
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr "Lykilorð verða að vera að lágmarki 6 stafir að lengd og þau eru stafstaða viðkvæm, þannig að \"secret\" er frábrugðið við \"SECRET\"."
 
-#: admin_users.php:345 edituser.php:120
+#: admin_users.php:333 edituser.php:115
 msgid "Passwords must contain at least 6 characters."
 msgstr "Lykilorðin verða að innihalda að lágmarki 6 stafi."
 
@@ -9964,7 +9964,7 @@ msgstr "Fyrirfram skilgreindur texti sem staðhæfir að allir notendur geti ós
 msgid "Predefined text that states only family members can request a user account"
 msgstr "Fyrirfram skilgreindur texti sem staðhæfir að eingöngu fjölskyldumeðlimir geti óskað eftir notendareikningi"
 
-#: admin_users.php:205 admin_users.php:400 edituser.php:177 help_text.php:1182
+#: admin_users.php:195 admin_users.php:389 edituser.php:173 help_text.php:1182
 msgid "Preferred contact method"
 msgstr "Forgangs samskiptaháttur"
 
@@ -10268,7 +10268,7 @@ msgstr "Endurraða fjölskyldum"
 msgid "Re-order media"
 msgstr "Endurraða miðlum."
 
-#: admin_users.php:372 admin_users.php:578 edituser.php:141 help_text.php:1360
+#: admin_users.php:361 admin_users.php:567 edituser.php:137 help_text.php:1360
 #: login.php:295 login.php:386
 msgid "Real name"
 msgstr "Raunverulegt nafn"
@@ -10596,7 +10596,7 @@ msgstr "Bústaður"
 msgid "Restrict access to the site, using IP addresses and user-agent strings"
 msgstr "Takmarka aðgang að vefsíðunni, með notkun IP tölu og notanda-forritastrengs"
 
-#: admin_users.php:238 admin_users.php:441 help_text.php:716
+#: admin_users.php:228 admin_users.php:430 help_text.php:716
 msgid "Restrict to immediate family"
 msgstr "Takmarka við nánustu fjölskyldu"
 
@@ -10627,7 +10627,7 @@ msgid "Right Section Blocks"
 msgstr "Hægri Hluta Kassar"
 
 #. I18N: gedcom tag ROLE
-#: admin_users.php:237 admin_users.php:440 help_text.php:1380
+#: admin_users.php:227 admin_users.php:429 help_text.php:1380
 #: library/WT/Gedcom/Tag.php:311
 msgid "Role"
 msgstr "Hlutverk"
@@ -12277,7 +12277,7 @@ msgstr "Miðilsskoðarinn getur sýnt krækju sem, ef smellt er á hana, mun hla
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
 msgstr "PGV til <b>webtrees</b> álfurinn er sjálfvirkt ferli til að aðstoða kerfisstjóra við flutning á PGV uppsetningu í nýja <b>webtrees</b> uppsetningu. Það mun flytja öll PGV GEDCOM og aðrar gagnagrunns upplýsingar beint í þinn nýja <b>webtrees</b> gagnagrunn. Eftirfarandi skilyrði eru nauðsynleg:"
 
-#: save.php:264
+#: save.php:269
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "Kerfisstjórinn á webtrees vefsíðunni %s hefur samþykkt þína umsókn um reikning. Þú getur núna skráð þig inn með því að fylgja eftirfarandi krækju: %s"
@@ -12289,7 +12289,7 @@ msgid "The changes to “%s” have been accepted."
 msgstr "Breytingar við “%s” hafa verið samþykktar."
 
 #. I18N: %s is the name of an individual, source or other record
-#: action.php:133
+#: action.php:142
 #, php-format
 msgid "The changes to “%s” have been rejected."
 msgstr "Breytingarnar við “%s” hefur verið hafnað."
@@ -12532,8 +12532,8 @@ msgstr "Útgáfan af %s er of gömul"
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
 msgstr "Þróunaraðilar webtrees eru mjög áhugasamir um að fá upplýsingar um þessa villu. Ef þú hefur samband við þá, þá munu þeir hjálpa þér við að leysa þetta vandamál."
 
-#: admin_modules.php:125 admin_modules.php:143 admin_users.php:214
-#: admin_users.php:413 edituser.php:164 help_text.php:981
+#: admin_modules.php:125 admin_modules.php:143 admin_users.php:204
+#: admin_users.php:402 edituser.php:160 help_text.php:981
 #: library/WT/MenuBar.php:449
 msgid "Theme"
 msgstr "Þema"
@@ -12716,6 +12716,10 @@ msgstr ""
 
 #: help_text.php:655
 msgid "This folder will be used to store the media files for this family tree."
+msgstr ""
+
+#: library/WT/Filter.php:247
+msgid "This form has expired.  Try again."
 msgstr ""
 
 #: individual.php:93 library/WT/Controller/Chart.php:47
@@ -13613,7 +13617,7 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "Gerð staðarmerkja í staðar stigveldi"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:396 login.php:407
+#: admin_users.php:385 login.php:407
 msgid "Type the password again."
 msgstr "Skráið aftur lykilorðið."
 
@@ -13847,7 +13851,7 @@ msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to
 msgstr "Notið &laquo;?&raquo; til að finna samsvörun við einn bókstaf, notið use &laquo;*&raquo; til að finna samsvörun við engan eða fleiri bókstafi."
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:391 login.php:402
+#: admin_users.php:380 login.php:402
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -13907,15 +13911,15 @@ msgstr "Nota þetta gildi"
 msgid "User"
 msgstr "Notandi"
 
-#: admin_users.php:32 edituser.php:38
+#: admin_users.php:32 edituser.php:91
 msgid "User administration"
 msgstr "Notanda kerfisstjórn"
 
-#: admin_users.php:531
+#: admin_users.php:520
 msgid "User didn't verify within 7 days."
 msgstr "Notandi staðfesti ekki innan 7 daga."
 
-#: admin_users.php:541
+#: admin_users.php:530
 msgid "User not verified by administrator."
 msgstr "Notandi ekki staðfestur af kerfisstjóra."
 
@@ -13927,7 +13931,7 @@ msgstr "Valkostir notanda"
 msgid "User verification"
 msgstr "Notanda staðfesting"
 
-#: admin_users.php:520
+#: admin_users.php:509
 msgid "User's account has been inactive too long: "
 msgstr "Reikningur notanda hefur verið óvirkur of lengi: "
 
@@ -13936,8 +13940,8 @@ msgstr "Reikningur notanda hefur verið óvirkur of lengi: "
 msgid "User-agent string"
 msgstr "Notanda-forritastrengur"
 
-#: admin_site_config.php:135 admin_users.php:378 admin_users.php:577
-#: edituser.php:139 help_text.php:741 help_text.php:1499 login.php:153
+#: admin_site_config.php:135 admin_users.php:367 admin_users.php:566
+#: edituser.php:135 help_text.php:741 help_text.php:1499 login.php:153
 #: login.php:217 login.php:294 login.php:337 login.php:444
 #: modules_v3/login_block/module.php:75 modules_v3/todo/module.php:99
 msgid "Username"
@@ -14040,7 +14044,7 @@ msgstr "Veracruz, Mexikó"
 msgid "Verification code:"
 msgstr "Staðfestingarkóði:"
 
-#: admin_users.php:586
+#: admin_users.php:575
 msgid "Verified"
 msgstr "Staðfest"
 
@@ -14145,7 +14149,7 @@ msgstr "Villa Hermosa, Mexikó"
 msgid "Visible online"
 msgstr "Sýnilegir á vefnum."
 
-#: admin_users.php:217 admin_users.php:404 edituser.php:179
+#: admin_users.php:207 admin_users.php:393 edituser.php:175
 msgid "Visible to other users when online"
 msgstr "Sýnilegt öðrum notendum sem er beinlínutengdir"
 
@@ -14586,7 +14590,7 @@ msgstr "Þú getur notað HTML til að forsníða svarið og til að bæta við 
 msgid "You must change this before you can continue."
 msgstr "Þú verður að breyta þessu áður en þú heldur áfram."
 
-#: admin_users.php:340
+#: admin_users.php:328
 msgid "You must confirm the password."
 msgstr "Þú verður að staðfesta lykilorðið."
 
@@ -14595,15 +14599,15 @@ msgstr "Þú verður að staðfesta lykilorðið."
 msgid "You must enter a name"
 msgstr "Þú verður að slá inn nafn"
 
-#: admin_users.php:330
+#: admin_users.php:318
 msgid "You must enter a password."
 msgstr "Þú verður að slá inn lykilorð."
 
-#: admin_users.php:325 edituser.php:110
+#: admin_users.php:313 edituser.php:105
 msgid "You must enter a real name."
 msgstr "Þú verður að slá inn raunverulegt heiti."
 
-#: admin_users.php:320 edituser.php:105
+#: admin_users.php:308 edituser.php:100
 msgid "You must enter a user name."
 msgstr "Þú verður að slá inn notandaheiti."
 
@@ -14611,7 +14615,7 @@ msgstr "Þú verður að slá inn notandaheiti."
 msgid "You must enter all the administrator account fields."
 msgstr "Þú verður að slá inn í alla reiti kerfisstjóra reikningsins."
 
-#: admin_users.php:335
+#: admin_users.php:323
 msgid "You must enter an email address."
 msgstr "Þú verðu að slá inn netfang."
 
@@ -14631,7 +14635,7 @@ msgstr "Þú verður að útvega heiti á heimild"
 msgid "You must select an individual and chart type in the block configuration settings."
 msgstr "Þú verður að velja einstakling og gerð grafs í boxi fyrir uppsetningarstillingum."
 
-#: admin_users.php:362
+#: admin_users.php:350
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr "Þú verður að tilgreina einstaklingsfærslu áður en þú getur takmarkað notandann við nánustu fjölskyldu hans."
 
@@ -15157,7 +15161,7 @@ msgstr "samanþjappaður listi"
 
 #. I18N: button label
 #: admin_pgv_to_wt.php:1050 admin_trees_download.php:140
-#: admin_trees_manage.php:169 admin_users.php:554 login.php:183 login.php:419
+#: admin_trees_manage.php:169 admin_users.php:543 login.php:183 login.php:419
 #: modules_v3/login_block/module.php:106 setup.php:203 setup.php:227
 #: setup.php:296 setup.php:381 setup.php:437
 msgid "continue"
@@ -17534,7 +17538,7 @@ msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "níundu frændsystkini"
 
-#: admin_users.php:255 includes/functions/functions_edit.php:136
+#: admin_users.php:245 includes/functions/functions_edit.php:136
 #: includes/functions/functions_edit.php:143
 #: includes/functions/functions_edit.php:1452
 #: includes/functions/functions_print_facts.php:1228
@@ -17739,7 +17743,7 @@ msgstr "vélmenni"
 #: edit_interface.php:509 edit_interface.php:576 edit_interface.php:754
 #: edit_interface.php:849 edit_interface.php:1023 edit_interface.php:1091
 #: edit_interface.php:1160 edit_interface.php:2043 edit_interface.php:2184
-#: edit_interface.php:2419 editnews.php:80 edituser.php:182 find.php:486
+#: edit_interface.php:2419 editnews.php:80 edituser.php:178 find.php:486
 #: includes/functions/functions_edit.php:36
 #: includes/functions/functions_edit.php:50
 #: includes/functions/functions_edit.php:104

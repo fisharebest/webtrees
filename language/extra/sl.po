@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-10-06 08:16+0100\n"
+"POT-Creation-Date: 2013-11-05 13:02+0000\n"
 "PO-Revision-Date: 2011-11-23 14:35+0000\n"
 "Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: \n"
@@ -505,8 +505,8 @@ msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to 
 msgstr "<center><b>Lepo pozdravljeni na naši rodoslovni spletni strani</b></center><br />Dostop je dovoljen obiskovalcem z uporabniškim računom.<br /><br />Če imate uporabniški račun, lahko že vstopite. Če ga še nimate, lahko zanj zaprosite tako, da kliknete na ustrezno povezavo spodaj.<br /><br />Po potrditvi prijavnice bo upravitelj strani aktiviral vaš račun. O odobritvi vaše prijave boste obveščeni po elektronski pošti."
 
 #. I18N: default option in list of themes
-#: admin_trees_config.php:452 admin_users.php:215 admin_users.php:416
-#: edituser.php:167
+#: admin_trees_config.php:452 admin_users.php:205 admin_users.php:405
+#: edituser.php:163
 msgid "<default theme>"
 msgstr ""
 
@@ -1264,7 +1264,7 @@ msgstr ""
 msgid "Adelaide, Australia"
 msgstr ""
 
-#: admin_users.php:426
+#: admin_users.php:415
 msgid "Admin comments on user"
 msgstr "Upraviteljevi komentarji o uporabniku"
 
@@ -1273,7 +1273,7 @@ msgstr "Upraviteljevi komentarji o uporabniku"
 msgid "Administration"
 msgstr "Upravljanje"
 
-#: admin_users.php:199 admin_users.php:374 help_text.php:1405
+#: admin_users.php:189 admin_users.php:363 help_text.php:1405
 msgid "Administrator"
 msgstr ""
 
@@ -1604,7 +1604,7 @@ msgstr ""
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
 msgstr ""
 
-#: admin_users.php:208 admin_users.php:397
+#: admin_users.php:198 admin_users.php:386
 msgid "Allow this user to edit his account information"
 msgstr "Dovoli uporabniku, da uredi informacije svojega računa"
 
@@ -1782,7 +1782,7 @@ msgstr ""
 msgid "Apply privacy settings?"
 msgstr "Uporabi nastavitve zasebnosti?"
 
-#: save.php:263
+#: save.php:268
 #, php-format
 msgid "Approval of account at %s"
 msgstr "Odobritev uporabniškega računa na %s"
@@ -1791,11 +1791,11 @@ msgstr "Odobritev uporabniškega računa na %s"
 msgid "Approve all changes"
 msgstr ""
 
-#: admin_users.php:587
+#: admin_users.php:576
 msgid "Approved"
 msgstr ""
 
-#: admin_users.php:380
+#: admin_users.php:369
 msgid "Approved by administrator"
 msgstr ""
 
@@ -1861,7 +1861,7 @@ msgid "Are you sure you want to delete this story?"
 msgstr ""
 
 #: admin_media.php:290 admin_media.php:425 admin_site_access.php:114
-#: admin_trees_manage.php:229 admin_users.php:172
+#: admin_trees_manage.php:229 admin_users.php:162
 #: includes/functions/functions_print_lists.php:1028
 #: includes/functions/functions_print_lists.php:1129
 #: includes/functions/functions_print_lists.php:1221
@@ -2008,7 +2008,7 @@ msgstr "Avtor"
 msgid "Author of last change"
 msgstr ""
 
-#: admin_users.php:211 admin_users.php:392 help_text.php:1467
+#: admin_users.php:201 admin_users.php:381 help_text.php:1467
 msgid "Automatically approve changes made by this user"
 msgstr ""
 
@@ -2977,7 +2977,7 @@ msgstr "Spremeni zastavo"
 msgid "Change language"
 msgstr ""
 
-#: admin_users.php:224 index.php:141 index.php:142
+#: admin_users.php:214 index.php:141 index.php:142
 msgid "Change the blocks on this page"
 msgstr ""
 
@@ -3379,7 +3379,7 @@ msgstr ""
 msgid "Comment"
 msgstr "Komentar"
 
-#: admin_users.php:220 help_text.php:1365 login.php:297 login.php:339
+#: admin_users.php:210 help_text.php:1365 login.php:297 login.php:339
 #: login.php:411
 msgid "Comments"
 msgstr "Komentarji"
@@ -3438,7 +3438,7 @@ msgstr ""
 msgid "Configure"
 msgstr "Konfiguriraj"
 
-#: admin_users.php:395 edituser.php:158 help_text.php:1306 login.php:406
+#: admin_users.php:384 edituser.php:154 help_text.php:1306 login.php:406
 msgid "Confirm password"
 msgstr ""
 
@@ -3573,7 +3573,7 @@ msgstr ""
 msgid "Create Repository"
 msgstr "Ustvari skladišče"
 
-#: admin_users.php:486
+#: admin_users.php:475
 msgid "Create User"
 msgstr "Ustvari uporabnika"
 
@@ -3993,7 +3993,7 @@ msgstr ""
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range."
 msgstr ""
 
-#: admin_users.php:583
+#: admin_users.php:572
 msgid "Date registered"
 msgstr "Datum registracije"
 
@@ -4238,8 +4238,8 @@ msgstr ""
 msgid "Default family tree"
 msgstr ""
 
-#: admin_trees_config.php:233 admin_users.php:235 admin_users.php:438
-#: edituser.php:149 help_text.php:1121 modules_v3/gedcom_block/module.php:52
+#: admin_trees_config.php:233 admin_users.php:225 admin_users.php:427
+#: edituser.php:145 help_text.php:1121 modules_v3/gedcom_block/module.php:52
 msgid "Default individual"
 msgstr ""
 
@@ -4316,7 +4316,7 @@ msgstr ""
 msgid "Deleted files:"
 msgstr "Izbrisane datoteke:"
 
-#: admin_users.php:565
+#: admin_users.php:554
 msgid "Deleted user: "
 msgstr "Izbrisan uporabnik: "
 
@@ -4393,7 +4393,7 @@ msgstr "Želeno uporabniško ime"
 msgid "Destination"
 msgstr "Destinacija"
 
-#: admin_users.php:145 admin_users.php:197 note.php:96 repo.php:92
+#: admin_users.php:135 admin_users.php:187 note.php:96 repo.php:92
 #: source.php:95
 msgid "Details"
 msgstr "Podrobnosti"
@@ -4617,11 +4617,11 @@ msgstr "Prenesi poročilo"
 msgid "Duodi"
 msgstr ""
 
-#: admin_users.php:271 edituser.php:66 login.php:260
+#: admin_users.php:258 edituser.php:61 login.php:260
 msgid "Duplicate email address.  A user with that email already exists."
 msgstr ""
 
-#: admin_users.php:268 edituser.php:63 login.php:258
+#: admin_users.php:255 edituser.php:59 login.php:258
 msgid "Duplicate user name.  A user with that user name already exists.  Please choose another user name."
 msgstr "Podvoji uporabniško ime.  Uporabnik s takim imenom že obstaja.Izberi drugo uporabniško ime."
 
@@ -4813,7 +4813,7 @@ msgctxt "NOMINATIVE"
 msgid "Elul"
 msgstr ""
 
-#: admin_users.php:579
+#: admin_users.php:568
 msgid "Email"
 msgstr ""
 
@@ -4826,14 +4826,14 @@ msgstr "E-naslov:"
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag EMAL
 #. I18N: gedcom tag _EMAIL
-#: admin_users.php:384 edituser.php:162 help_text.php:1209
+#: admin_users.php:373 edituser.php:158 help_text.php:1209
 #: library/WT/Gedcom/Tag.php:196 library/WT/Gedcom/Tag.php:197
 #: library/WT/Gedcom/Tag.php:198 library/WT/Gedcom/Tag.php:714 login.php:391
 #: setup.php:431
 msgid "Email address"
 msgstr ""
 
-#: admin_users.php:386
+#: admin_users.php:375
 msgid "Email verified"
 msgstr ""
 
@@ -5362,15 +5362,15 @@ msgid "Family of %s"
 msgstr ""
 
 #: admin_site_change.php:269 admin_site_change.php:293 admin_site_logs.php:236
-#: admin_site_logs.php:259 admin_trees_manage.php:181 admin_users.php:234
-#: admin_users.php:437 edit_changes.php:174
+#: admin_site_logs.php:259 admin_trees_manage.php:181 admin_users.php:224
+#: admin_users.php:426 edit_changes.php:174
 #: modules_v3/batch_update/admin_batch_update.php:63
 #: modules_v3/faq/module.php:354 modules_v3/googlemap/module.php:1476
 #: modules_v3/html/module.php:296 modules_v3/stories/module.php:338
 msgid "Family tree"
 msgstr "Družinsko drevo"
 
-#: admin_users.php:232 admin_users.php:431
+#: admin_users.php:222 admin_users.php:420
 msgid "Family tree access and settings"
 msgstr ""
 
@@ -6755,7 +6755,7 @@ msgstr ""
 msgid "Individual pages"
 msgstr ""
 
-#: admin_users.php:236 admin_users.php:439 edituser.php:145 help_text.php:1204
+#: admin_users.php:226 admin_users.php:428 edituser.php:141 help_text.php:1204
 #: help_text.php:1370 help_text.php:1478
 msgid "Individual record"
 msgstr ""
@@ -7226,8 +7226,8 @@ msgid "Landscape"
 msgstr "Vodoravno"
 
 #. I18N: gedcom tag LANG
-#: admin_trees_config.php:228 admin_users.php:410 admin_users.php:581
-#: edituser.php:160 help_text.php:610 library/WT/Gedcom/Tag.php:242
+#: admin_trees_config.php:228 admin_users.php:399 admin_users.php:570
+#: edituser.php:156 help_text.php:610 library/WT/Gedcom/Tag.php:242
 #: library/WT/MenuBar.php:467
 msgid "Language"
 msgstr "Jezik"
@@ -7265,7 +7265,7 @@ msgstr "Zadnje elektronsko opozorilo je bilo poslano "
 msgid "Last event"
 msgstr "Zadnji dogodek"
 
-#: admin_users.php:585
+#: admin_users.php:574
 msgid "Last logged in"
 msgstr "Zadnjič prijavljen"
 
@@ -7314,7 +7314,7 @@ msgstr "Latvija"
 msgid "Layout"
 msgstr "Postavitev"
 
-#: edituser.php:157
+#: edituser.php:153
 msgid "Leave password blank if you want to keep the current password."
 msgstr "Pustite polja za geslo prazno, če želite ohtaniti trenutno geslo."
 
@@ -8504,7 +8504,7 @@ msgstr ""
 msgid "Multiple marriages"
 msgstr ""
 
-#: edituser.php:135 library/WT/MenuBar.php:68
+#: edituser.php:130 library/WT/MenuBar.php:68
 #: modules_v3/user_welcome/module.php:49
 msgid "My account"
 msgstr ""
@@ -8519,7 +8519,7 @@ msgid "My individual record"
 msgstr ""
 
 #. I18N: Name of a module
-#: admin_modules.php:140 admin_users.php:223 index.php:82 index.php:90
+#: admin_modules.php:140 admin_users.php:213 index.php:82 index.php:90
 #: library/WT/MenuBar.php:61 library/WT/MenuBar.php:64
 #: modules_v3/user_welcome/module.php:34 themes/_administration/header.php:68
 msgid "My page"
@@ -8660,7 +8660,7 @@ msgstr "Holandské Antily"
 msgid "Neutral Zone"
 msgstr "Neutrálna zóna"
 
-#: admin_users.php:166
+#: admin_users.php:156
 msgid "Never"
 msgstr "Nikoli"
 
@@ -8795,7 +8795,7 @@ msgctxt "NOMINATIVE"
 msgid "Nivôse"
 msgstr ""
 
-#: admin_users.php:475 includes/functions/functions_print_facts.php:269
+#: admin_users.php:464 includes/functions/functions_print_facts.php:269
 msgid "No"
 msgstr "Ne"
 
@@ -8944,7 +8944,7 @@ msgstr "Prazno"
 msgid "Nocturnal"
 msgstr ""
 
-#: admin_trees_download.php:116 admin_users.php:461 famlist.php:115
+#: admin_trees_download.php:116 admin_users.php:450 famlist.php:115
 #: famlist.php:145 indilist.php:115 indilist.php:145 library/WT/Stats.php:758
 #: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:586
 #: modules_v3/families/module.php:149 modules_v3/individuals/module.php:148
@@ -9053,7 +9053,7 @@ msgstr "Zapiski"
 msgid "Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr ""
 
-#: admin_users.php:548
+#: admin_users.php:537
 msgid "Nothing found to cleanup"
 msgstr "Nič ni najdeno za počistiti"
 
@@ -9129,7 +9129,7 @@ msgstr "Število podatkov za prikaz"
 msgid "Number of marriages"
 msgstr ""
 
-#: admin_users.php:500
+#: admin_users.php:489
 msgid "Number of months since the last login for a user's account to be considered inactive: "
 msgstr "Število mesecev do zadnje prijave v uporabnički račun, da je voden kot neaktiven: "
 
@@ -9289,7 +9289,7 @@ msgstr ""
 msgid "Optional prefixes and suffixes"
 msgstr ""
 
-#: admin_users.php:509 relationship.php:91
+#: admin_users.php:498 relationship.php:91
 msgid "Options:"
 msgstr "Možnosti:"
 
@@ -9495,14 +9495,14 @@ msgstr "Starost roditelja"
 msgid "Parents"
 msgstr "Starši"
 
-#: admin_site_config.php:138 admin_users.php:202 admin_users.php:390
-#: edituser.php:156 help_text.php:736 help_text.php:1301 login.php:158
+#: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
+#: edituser.php:152 help_text.php:736 help_text.php:1301 login.php:158
 #: login.php:219 login.php:448 modules_v3/login_block/module.php:80
 #: setup.php:423
 msgid "Password"
 msgstr "Geslo"
 
-#: admin_users.php:274 edituser.php:115
+#: admin_users.php:261 edituser.php:110
 msgid "Passwords do not match."
 msgstr "Gesli se ne ujemata."
 
@@ -9510,7 +9510,7 @@ msgstr "Gesli se ne ujemata."
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr ""
 
-#: admin_users.php:345 edituser.php:120
+#: admin_users.php:333 edituser.php:115
 msgid "Passwords must contain at least 6 characters."
 msgstr "Geslo mora vsebovati vsaj šest znakov."
 
@@ -9970,7 +9970,7 @@ msgstr "Prednastavljeno besedilo, ki trdi, da morajo vsi uporabniki zahtevati up
 msgid "Predefined text that states only family members can request a user account"
 msgstr "Prednastavljeno besedilo, ki trdi, da lahko le družinski člani zaprosijo za uporabnški račun."
 
-#: admin_users.php:205 admin_users.php:400 edituser.php:177 help_text.php:1182
+#: admin_users.php:195 admin_users.php:389 edituser.php:173 help_text.php:1182
 msgid "Preferred contact method"
 msgstr ""
 
@@ -10274,7 +10274,7 @@ msgstr ""
 msgid "Re-order media"
 msgstr "Razvrsti fotografije"
 
-#: admin_users.php:372 admin_users.php:578 edituser.php:141 help_text.php:1360
+#: admin_users.php:361 admin_users.php:567 edituser.php:137 help_text.php:1360
 #: login.php:295 login.php:386
 msgid "Real name"
 msgstr ""
@@ -10602,7 +10602,7 @@ msgstr "Bivališče"
 msgid "Restrict access to the site, using IP addresses and user-agent strings"
 msgstr ""
 
-#: admin_users.php:238 admin_users.php:441 help_text.php:716
+#: admin_users.php:228 admin_users.php:430 help_text.php:716
 msgid "Restrict to immediate family"
 msgstr ""
 
@@ -10633,7 +10633,7 @@ msgid "Right Section Blocks"
 msgstr "Sklopi desnega razdelka"
 
 #. I18N: gedcom tag ROLE
-#: admin_users.php:237 admin_users.php:440 help_text.php:1380
+#: admin_users.php:227 admin_users.php:429 help_text.php:1380
 #: library/WT/Gedcom/Tag.php:311
 msgid "Role"
 msgstr "Vloga"
@@ -12283,7 +12283,7 @@ msgstr ""
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
 msgstr ""
 
-#: save.php:264
+#: save.php:269
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr ""
@@ -12295,7 +12295,7 @@ msgid "The changes to “%s” have been accepted."
 msgstr ""
 
 #. I18N: %s is the name of an individual, source or other record
-#: action.php:133
+#: action.php:142
 #, php-format
 msgid "The changes to “%s” have been rejected."
 msgstr ""
@@ -12538,8 +12538,8 @@ msgstr ""
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
 msgstr ""
 
-#: admin_modules.php:125 admin_modules.php:143 admin_users.php:214
-#: admin_users.php:413 edituser.php:164 help_text.php:981
+#: admin_modules.php:125 admin_modules.php:143 admin_users.php:204
+#: admin_users.php:402 edituser.php:160 help_text.php:981
 #: library/WT/MenuBar.php:449
 msgid "Theme"
 msgstr ""
@@ -12722,6 +12722,10 @@ msgstr ""
 
 #: help_text.php:655
 msgid "This folder will be used to store the media files for this family tree."
+msgstr ""
+
+#: library/WT/Filter.php:247
+msgid "This form has expired.  Try again."
 msgstr ""
 
 #: individual.php:93 library/WT/Controller/Chart.php:47
@@ -13619,7 +13623,7 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "Tip markerjev v hieriarhiji lokacij"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:396 login.php:407
+#: admin_users.php:385 login.php:407
 msgid "Type the password again."
 msgstr ""
 
@@ -13853,7 +13857,7 @@ msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to
 msgstr ""
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:391 login.php:402
+#: admin_users.php:380 login.php:402
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -13913,15 +13917,15 @@ msgstr "Uporabi to vrednost"
 msgid "User"
 msgstr ""
 
-#: admin_users.php:32 edituser.php:38
+#: admin_users.php:32 edituser.php:91
 msgid "User administration"
 msgstr "Upravljanje uporabnikov"
 
-#: admin_users.php:531
+#: admin_users.php:520
 msgid "User didn't verify within 7 days."
 msgstr "Uporabnik se ni potrdil v tednu dni."
 
-#: admin_users.php:541
+#: admin_users.php:530
 msgid "User not verified by administrator."
 msgstr "Uporabnika ni potrdil upravitelj."
 
@@ -13933,7 +13937,7 @@ msgstr ""
 msgid "User verification"
 msgstr "Preverjanje uporabnika"
 
-#: admin_users.php:520
+#: admin_users.php:509
 msgid "User's account has been inactive too long: "
 msgstr "Uporabniški računi, ki so bili predolg neaktivni: "
 
@@ -13942,8 +13946,8 @@ msgstr "Uporabniški računi, ki so bili predolg neaktivni: "
 msgid "User-agent string"
 msgstr ""
 
-#: admin_site_config.php:135 admin_users.php:378 admin_users.php:577
-#: edituser.php:139 help_text.php:741 help_text.php:1499 login.php:153
+#: admin_site_config.php:135 admin_users.php:367 admin_users.php:566
+#: edituser.php:135 help_text.php:741 help_text.php:1499 login.php:153
 #: login.php:217 login.php:294 login.php:337 login.php:444
 #: modules_v3/login_block/module.php:75 modules_v3/todo/module.php:99
 msgid "Username"
@@ -14046,7 +14050,7 @@ msgstr ""
 msgid "Verification code:"
 msgstr "Koda za preverjanje:"
 
-#: admin_users.php:586
+#: admin_users.php:575
 msgid "Verified"
 msgstr ""
 
@@ -14151,7 +14155,7 @@ msgstr ""
 msgid "Visible online"
 msgstr ""
 
-#: admin_users.php:217 admin_users.php:404 edituser.php:179
+#: admin_users.php:207 admin_users.php:393 edituser.php:175
 msgid "Visible to other users when online"
 msgstr "Viden drugim uporabnikom, ko je aktiven na spletni strani"
 
@@ -14592,7 +14596,7 @@ msgstr ""
 msgid "You must change this before you can continue."
 msgstr ""
 
-#: admin_users.php:340
+#: admin_users.php:328
 msgid "You must confirm the password."
 msgstr "Potrdi geslo."
 
@@ -14601,15 +14605,15 @@ msgstr "Potrdi geslo."
 msgid "You must enter a name"
 msgstr "Vnesi ime"
 
-#: admin_users.php:330
+#: admin_users.php:318
 msgid "You must enter a password."
 msgstr "Vnesite geslo."
 
-#: admin_users.php:325 edituser.php:110
+#: admin_users.php:313 edituser.php:105
 msgid "You must enter a real name."
 msgstr ""
 
-#: admin_users.php:320 edituser.php:105
+#: admin_users.php:308 edituser.php:100
 msgid "You must enter a user name."
 msgstr "Vnesite uporabniško ime."
 
@@ -14617,7 +14621,7 @@ msgstr "Vnesite uporabniško ime."
 msgid "You must enter all the administrator account fields."
 msgstr ""
 
-#: admin_users.php:335
+#: admin_users.php:323
 msgid "You must enter an email address."
 msgstr "Vpiši e-naslov."
 
@@ -14637,7 +14641,7 @@ msgstr ""
 msgid "You must select an individual and chart type in the block configuration settings."
 msgstr ""
 
-#: admin_users.php:362
+#: admin_users.php:350
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr ""
 
@@ -15163,7 +15167,7 @@ msgstr ""
 
 #. I18N: button label
 #: admin_pgv_to_wt.php:1050 admin_trees_download.php:140
-#: admin_trees_manage.php:169 admin_users.php:554 login.php:183 login.php:419
+#: admin_trees_manage.php:169 admin_users.php:543 login.php:183 login.php:419
 #: modules_v3/login_block/module.php:106 setup.php:203 setup.php:227
 #: setup.php:296 setup.php:381 setup.php:437
 msgid "continue"
@@ -17540,7 +17544,7 @@ msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr ""
 
-#: admin_users.php:255 includes/functions/functions_edit.php:136
+#: admin_users.php:245 includes/functions/functions_edit.php:136
 #: includes/functions/functions_edit.php:143
 #: includes/functions/functions_edit.php:1452
 #: includes/functions/functions_print_facts.php:1228
@@ -17745,7 +17749,7 @@ msgstr ""
 #: edit_interface.php:509 edit_interface.php:576 edit_interface.php:754
 #: edit_interface.php:849 edit_interface.php:1023 edit_interface.php:1091
 #: edit_interface.php:1160 edit_interface.php:2043 edit_interface.php:2184
-#: edit_interface.php:2419 editnews.php:80 edituser.php:182 find.php:486
+#: edit_interface.php:2419 editnews.php:80 edituser.php:178 find.php:486
 #: includes/functions/functions_edit.php:36
 #: includes/functions/functions_edit.php:50
 #: includes/functions/functions_edit.php:104

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-10-06 08:16+0100\n"
+"POT-Creation-Date: 2013-11-05 13:02+0000\n"
 "PO-Revision-Date: 2013-07-24 18:12+0000\n"
 "Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: \n"
@@ -501,8 +501,8 @@ msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to 
 msgstr ""
 
 #. I18N: default option in list of themes
-#: admin_trees_config.php:452 admin_users.php:215 admin_users.php:416
-#: edituser.php:167
+#: admin_trees_config.php:452 admin_users.php:205 admin_users.php:405
+#: edituser.php:163
 msgid "<default theme>"
 msgstr "<standaard thema>"
 
@@ -1260,7 +1260,7 @@ msgstr "Adresregel 2"
 msgid "Adelaide, Australia"
 msgstr "Adelaide, Australië"
 
-#: admin_users.php:426
+#: admin_users.php:415
 msgid "Admin comments on user"
 msgstr "Commentaar beheerder over gebruiker"
 
@@ -1269,7 +1269,7 @@ msgstr "Commentaar beheerder over gebruiker"
 msgid "Administration"
 msgstr "Beheer"
 
-#: admin_users.php:199 admin_users.php:374 help_text.php:1405
+#: admin_users.php:189 admin_users.php:363 help_text.php:1405
 msgid "Administrator"
 msgstr "Beheerder"
 
@@ -1600,7 +1600,7 @@ msgstr "Alle velden moeten ingevuld worden."
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
 msgstr "Sta andere modules toe tekst te wijzigen met een \"WYSIWIG\"-tekstverwerker, i.p.v. het invoeren van HTML-codes."
 
-#: admin_users.php:208 admin_users.php:397
+#: admin_users.php:198 admin_users.php:386
 msgid "Allow this user to edit his account information"
 msgstr "Sta deze gebruiker toe zijn accountgegevens te wijzigen"
 
@@ -1778,7 +1778,7 @@ msgstr "Pas automatische correcties toe op uw genealogische data."
 msgid "Apply privacy settings?"
 msgstr "Privacy-instellingen toepassen?"
 
-#: save.php:263
+#: save.php:268
 #, php-format
 msgid "Approval of account at %s"
 msgstr "Goedkeuring van account op %s"
@@ -1787,11 +1787,11 @@ msgstr "Goedkeuring van account op %s"
 msgid "Approve all changes"
 msgstr "Keur alle veranderingen goed"
 
-#: admin_users.php:587
+#: admin_users.php:576
 msgid "Approved"
 msgstr "Goedgekeurd"
 
-#: admin_users.php:380
+#: admin_users.php:369
 msgid "Approved by administrator"
 msgstr "Goedgekeurd door beheerder"
 
@@ -1857,7 +1857,7 @@ msgid "Are you sure you want to delete this story?"
 msgstr "Weet u zeker dat u dit verhaal wilt verwijderen?"
 
 #: admin_media.php:290 admin_media.php:425 admin_site_access.php:114
-#: admin_trees_manage.php:229 admin_users.php:172
+#: admin_trees_manage.php:229 admin_users.php:162
 #: includes/functions/functions_print_lists.php:1028
 #: includes/functions/functions_print_lists.php:1129
 #: includes/functions/functions_print_lists.php:1221
@@ -2004,7 +2004,7 @@ msgstr "Auteur"
 msgid "Author of last change"
 msgstr "Auteur van laatste wijziging"
 
-#: admin_users.php:211 admin_users.php:392 help_text.php:1467
+#: admin_users.php:201 admin_users.php:381 help_text.php:1467
 msgid "Automatically approve changes made by this user"
 msgstr "Accepteer wijzigingen van deze gebruiker automatisch"
 
@@ -2973,7 +2973,7 @@ msgstr "Wijzig vlag"
 msgid "Change language"
 msgstr "Wijzig taal"
 
-#: admin_users.php:224 index.php:141 index.php:142
+#: admin_users.php:214 index.php:141 index.php:142
 msgid "Change the blocks on this page"
 msgstr "Verander de blokken op deze pagina"
 
@@ -3375,7 +3375,7 @@ msgstr "Kolommen per pagina"
 msgid "Comment"
 msgstr "Commentaar"
 
-#: admin_users.php:220 help_text.php:1365 login.php:297 login.php:339
+#: admin_users.php:210 help_text.php:1365 login.php:297 login.php:339
 #: login.php:411
 msgid "Comments"
 msgstr "Commentaar"
@@ -3434,7 +3434,7 @@ msgstr "Samenvoeging"
 msgid "Configure"
 msgstr "Configureer"
 
-#: admin_users.php:395 edituser.php:158 help_text.php:1306 login.php:406
+#: admin_users.php:384 edituser.php:154 help_text.php:1306 login.php:406
 msgid "Confirm password"
 msgstr "Bevestig wachtwoord"
 
@@ -3569,7 +3569,7 @@ msgstr ""
 msgid "Create Repository"
 msgstr "Maak een Opslagplaats"
 
-#: admin_users.php:486
+#: admin_users.php:475
 msgid "Create User"
 msgstr "Gebruiker aanmaken"
 
@@ -3989,7 +3989,7 @@ msgstr "Datum bereik"
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range."
 msgstr "Datumbereiken worden gebruikt om aan te geven dat een gebeurtenis, zoals een geboorte, plaats vond op een onbekende datum binnen een mogelijk bereik."
 
-#: admin_users.php:583
+#: admin_users.php:572
 msgid "Date registered"
 msgstr "Datum geregistreerd"
 
@@ -4234,8 +4234,8 @@ msgstr "Standaard diagram"
 msgid "Default family tree"
 msgstr "Standaard stamboom"
 
-#: admin_trees_config.php:233 admin_users.php:235 admin_users.php:438
-#: edituser.php:149 help_text.php:1121 modules_v3/gedcom_block/module.php:52
+#: admin_trees_config.php:233 admin_users.php:225 admin_users.php:427
+#: edituser.php:145 help_text.php:1121 modules_v3/gedcom_block/module.php:52
 msgid "Default individual"
 msgstr "Standaard persoon"
 
@@ -4312,7 +4312,7 @@ msgstr "Verwijder record"
 msgid "Deleted files:"
 msgstr "Verwijderde bestanden:"
 
-#: admin_users.php:565
+#: admin_users.php:554
 msgid "Deleted user: "
 msgstr "Gebruiker verwijderd: "
 
@@ -4389,7 +4389,7 @@ msgstr "Gewenste gebruikersnaam"
 msgid "Destination"
 msgstr "Bestemming"
 
-#: admin_users.php:145 admin_users.php:197 note.php:96 repo.php:92
+#: admin_users.php:135 admin_users.php:187 note.php:96 repo.php:92
 #: source.php:95
 msgid "Details"
 msgstr "Details"
@@ -4613,11 +4613,11 @@ msgstr "Rapport downloaden"
 msgid "Duodi"
 msgstr "Duodi"
 
-#: admin_users.php:271 edituser.php:66 login.php:260
+#: admin_users.php:258 edituser.php:61 login.php:260
 msgid "Duplicate email address.  A user with that email already exists."
 msgstr "Een gebruiker met dat e-mailadres bestaat al."
 
-#: admin_users.php:268 edituser.php:63 login.php:258
+#: admin_users.php:255 edituser.php:59 login.php:258
 msgid "Duplicate user name.  A user with that user name already exists.  Please choose another user name."
 msgstr "Een gebruiker met die naam is reeds aanwezig. Kies a.u.b. een andere naam."
 
@@ -4809,7 +4809,7 @@ msgctxt "NOMINATIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#: admin_users.php:579
+#: admin_users.php:568
 msgid "Email"
 msgstr "E-mail"
 
@@ -4822,14 +4822,14 @@ msgstr "E-mailadres:"
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag EMAL
 #. I18N: gedcom tag _EMAIL
-#: admin_users.php:384 edituser.php:162 help_text.php:1209
+#: admin_users.php:373 edituser.php:158 help_text.php:1209
 #: library/WT/Gedcom/Tag.php:196 library/WT/Gedcom/Tag.php:197
 #: library/WT/Gedcom/Tag.php:198 library/WT/Gedcom/Tag.php:714 login.php:391
 #: setup.php:431
 msgid "Email address"
 msgstr "E-mailadres"
 
-#: admin_users.php:386
+#: admin_users.php:375
 msgid "Email verified"
 msgstr "E-mail gecontrolleerd"
 
@@ -5153,8 +5153,7 @@ msgstr "FAQ zichtbaarheid"
 
 #: modules_v3/faq/help_text.php:35
 msgid "FAQs are lists of questions and answers, which allow you to explain the site's rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr ""
-"FAQ = Frequently asked question = Vaak gestelde vraag.  FAQ's zijn lijsten van vragen en antwoorden, die u toestaan de regels, de gedragslijn, en procedures van de site aan uw bezoekers uit te leggen. Vragen houden zich meestal bezig met privacy, copyright, gebruikersaccounts, niet toegestane inhoud, benodigdheden voor bron vermeldingen, enz.."
+msgstr "FAQ = Frequently asked question = Vaak gestelde vraag.  FAQ's zijn lijsten van vragen en antwoorden, die u toestaan de regels, de gedragslijn, en procedures van de site aan uw bezoekers uit te leggen. Vragen houden zich meestal bezig met privacy, copyright, gebruikersaccounts, niet toegestane inhoud, benodigdheden voor bron vermeldingen, enz.."
 
 #. I18N: gedcom tag FACT
 #: library/WT/Gedcom/Tag.php:211
@@ -5359,15 +5358,15 @@ msgid "Family of %s"
 msgstr "Gezin van %s"
 
 #: admin_site_change.php:269 admin_site_change.php:293 admin_site_logs.php:236
-#: admin_site_logs.php:259 admin_trees_manage.php:181 admin_users.php:234
-#: admin_users.php:437 edit_changes.php:174
+#: admin_site_logs.php:259 admin_trees_manage.php:181 admin_users.php:224
+#: admin_users.php:426 edit_changes.php:174
 #: modules_v3/batch_update/admin_batch_update.php:63
 #: modules_v3/faq/module.php:354 modules_v3/googlemap/module.php:1476
 #: modules_v3/html/module.php:296 modules_v3/stories/module.php:338
 msgid "Family tree"
 msgstr "Stamboom"
 
-#: admin_users.php:232 admin_users.php:431
+#: admin_users.php:222 admin_users.php:420
 msgid "Family tree access and settings"
 msgstr "Stamboomtoegang en -instellingen"
 
@@ -6564,8 +6563,7 @@ msgstr "Bent u de websitebeheerder, kijk dan na of:"
 
 #: site-php-version.php:84 site-unavailable.php:85
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
-msgstr ""
-"Als u het probleem zelf niet kunt oplossen, kan u hulp vragen op de forums bij <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgstr "Als u het probleem zelf niet kunt oplossen, kan u hulp vragen op de forums bij <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: login.php:340
 msgid "If you didn't request an account, you can just delete this message."
@@ -6753,7 +6751,7 @@ msgstr "Persoonslijst"
 msgid "Individual pages"
 msgstr "Persoonspagina's"
 
-#: admin_users.php:236 admin_users.php:439 edituser.php:145 help_text.php:1204
+#: admin_users.php:226 admin_users.php:428 edituser.php:141 help_text.php:1204
 #: help_text.php:1370 help_text.php:1478
 msgid "Individual record"
 msgstr "Persoonsrecord"
@@ -7224,8 +7222,8 @@ msgid "Landscape"
 msgstr "Liggend"
 
 #. I18N: gedcom tag LANG
-#: admin_trees_config.php:228 admin_users.php:410 admin_users.php:581
-#: edituser.php:160 help_text.php:610 library/WT/Gedcom/Tag.php:242
+#: admin_trees_config.php:228 admin_users.php:399 admin_users.php:570
+#: edituser.php:156 help_text.php:610 library/WT/Gedcom/Tag.php:242
 #: library/WT/MenuBar.php:467
 msgid "Language"
 msgstr "Taal"
@@ -7263,7 +7261,7 @@ msgstr "De laatste e-mailherinnering is verstuurd op "
 msgid "Last event"
 msgstr "Laatste gebeurtenis"
 
-#: admin_users.php:585
+#: admin_users.php:574
 msgid "Last logged in"
 msgstr "Laatst aangemeld"
 
@@ -7312,7 +7310,7 @@ msgstr "Letland"
 msgid "Layout"
 msgstr "Opmaak"
 
-#: edituser.php:157
+#: edituser.php:153
 msgid "Leave password blank if you want to keep the current password."
 msgstr "Laat het wachtwoord leeg als u het huidige wachtwoord wilt behouden."
 
@@ -8502,7 +8500,7 @@ msgstr "Muharram"
 msgid "Multiple marriages"
 msgstr "Meervoudige huwelijken"
 
-#: edituser.php:135 library/WT/MenuBar.php:68
+#: edituser.php:130 library/WT/MenuBar.php:68
 #: modules_v3/user_welcome/module.php:49
 msgid "My account"
 msgstr "Mijn account"
@@ -8517,7 +8515,7 @@ msgid "My individual record"
 msgstr "Mijn persoonsrecord"
 
 #. I18N: Name of a module
-#: admin_modules.php:140 admin_users.php:223 index.php:82 index.php:90
+#: admin_modules.php:140 admin_users.php:213 index.php:82 index.php:90
 #: library/WT/MenuBar.php:61 library/WT/MenuBar.php:64
 #: modules_v3/user_welcome/module.php:34 themes/_administration/header.php:68
 msgid "My page"
@@ -8658,7 +8656,7 @@ msgstr "Nederlandse Antillen"
 msgid "Neutral Zone"
 msgstr "Neutrale Zone"
 
-#: admin_users.php:166
+#: admin_users.php:156
 msgid "Never"
 msgstr "Nooit"
 
@@ -8793,7 +8791,7 @@ msgctxt "NOMINATIVE"
 msgid "Nivôse"
 msgstr "Nivôse"
 
-#: admin_users.php:475 includes/functions/functions_print_facts.php:269
+#: admin_users.php:464 includes/functions/functions_print_facts.php:269
 msgid "No"
 msgstr "Nee"
 
@@ -8942,7 +8940,7 @@ msgstr "Niemand"
 msgid "Nocturnal"
 msgstr "Nachtelijk"
 
-#: admin_trees_download.php:116 admin_users.php:461 famlist.php:115
+#: admin_trees_download.php:116 admin_users.php:450 famlist.php:115
 #: famlist.php:145 indilist.php:115 indilist.php:145 library/WT/Stats.php:758
 #: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:586
 #: modules_v3/families/module.php:149 modules_v3/individuals/module.php:148
@@ -9049,7 +9047,7 @@ msgstr "Notities"
 msgid "Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr "in notities kunt u vrije stukken tekst opslaan. Deze verschijnen bij de details van de feiten en gebeurtenissen op de pagina."
 
-#: admin_users.php:548
+#: admin_users.php:537
 msgid "Nothing found to cleanup"
 msgstr "Niets gevonden om op te schonen"
 
@@ -9125,7 +9123,7 @@ msgstr "Aantal te tonen onderdelen"
 msgid "Number of marriages"
 msgstr "Aantal huwelijken"
 
-#: admin_users.php:500
+#: admin_users.php:489
 msgid "Number of months since the last login for a user's account to be considered inactive: "
 msgstr "Aantal maanden voordat de gebruiker beschouwd wordt als inactief: "
 
@@ -9285,7 +9283,7 @@ msgstr "Sorry! Webtrees kon geen bestanden aanmaken in deze map"
 msgid "Optional prefixes and suffixes"
 msgstr "Optionele voor- en achtervoegsels"
 
-#: admin_users.php:509 relationship.php:91
+#: admin_users.php:498 relationship.php:91
 msgid "Options:"
 msgstr "Opties:"
 
@@ -9491,14 +9489,14 @@ msgstr "Ouders leeftijd"
 msgid "Parents"
 msgstr "Ouders"
 
-#: admin_site_config.php:138 admin_users.php:202 admin_users.php:390
-#: edituser.php:156 help_text.php:736 help_text.php:1301 login.php:158
+#: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
+#: edituser.php:152 help_text.php:736 help_text.php:1301 login.php:158
 #: login.php:219 login.php:448 modules_v3/login_block/module.php:80
 #: setup.php:423
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: admin_users.php:274 edituser.php:115
+#: admin_users.php:261 edituser.php:110
 msgid "Passwords do not match."
 msgstr "Wachtwoorden komen niet overeen."
 
@@ -9506,7 +9504,7 @@ msgstr "Wachtwoorden komen niet overeen."
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr "Wachtwoorden moeten minstens 6 characters lang zijn en zijn hoofdletter gevoelig, zodat \"geheim\" verschilt van \"GEHEIM\"."
 
-#: admin_users.php:345 edituser.php:120
+#: admin_users.php:333 edituser.php:115
 msgid "Passwords must contain at least 6 characters."
 msgstr "Wachtwoorden moeten uit minimaal 6 karakters bestaan."
 
@@ -9814,8 +9812,7 @@ msgstr "Plaatsen in %s"
 
 #: help_text.php:332
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br /><br />For example, a place like Salt Lake City would be entered as \"Salt Lake City, Salt Lake, Utah, USA\".<br /><br />Let's examine each part of this place.  The first part, \"Salt Lake City,\" is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, \"Salt Lake,\" is the county.  \"Utah\" is the state, and \"USA\" is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br /><br />If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn't know the county for Salt Lake City.  You should then record it like this: \"Salt Lake City, , Utah, USA\".  Suppose you only know that a person was born in Utah.  You would enter the information like this: \", , Utah, USA\".  <br /><br />You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr ""
-"Plaatsnamen moeten ingevoerd worden volgens de standaard voor genealogie. In genealogie worden de plaatsen opgeslagen met de belangrijkste informatie van de plaats eerst, daarna volgen minder belangrijke informatie, gescheiden door komma's.  Het niveau waarop u de plaats informatie opslaat, moet het niveau van de staat of kerk aangeven waar de vitale informatie wordt opgeslagen.<br/><br/>B.v. een plaats als Amsterdam moet opgeslagen worden als Amsterdam, gemeente Amsterdam, Noord Holland, Nederland. Het zou kunnen dat u nog een district of straatnaam wilt aangeven. Die zouden dan vóór de plaatsnaam zelf komen, weer gescheiden door komma's.<br/><br/>Als een niveau niet bekend is, moet u een spatie invullen tussen de komma's. Stel dat u niet wist dat Amsterdam in de gemeente Amsterdam ligt, dan wordt het als volgt: Amsterdam, , Noord Holland, Nederland.<br /><br />U kunt gebruik maken van de <b>Vind Plaats</b>link om plaatsen te vinden die al opgeslagen zijn in de database."
+msgstr "Plaatsnamen moeten ingevoerd worden volgens de standaard voor genealogie. In genealogie worden de plaatsen opgeslagen met de belangrijkste informatie van de plaats eerst, daarna volgen minder belangrijke informatie, gescheiden door komma's.  Het niveau waarop u de plaats informatie opslaat, moet het niveau van de staat of kerk aangeven waar de vitale informatie wordt opgeslagen.<br/><br/>B.v. een plaats als Amsterdam moet opgeslagen worden als Amsterdam, gemeente Amsterdam, Noord Holland, Nederland. Het zou kunnen dat u nog een district of straatnaam wilt aangeven. Die zouden dan vóór de plaatsnaam zelf komen, weer gescheiden door komma's.<br/><br/>Als een niveau niet bekend is, moet u een spatie invullen tussen de komma's. Stel dat u niet wist dat Amsterdam in de gemeente Amsterdam ligt, dan wordt het als volgt: Amsterdam, , Noord Holland, Nederland.<br /><br />U kunt gebruik maken van de <b>Vind Plaats</b>link om plaatsen te vinden die al opgeslagen zijn in de database."
 
 #: modules_v3/random_media/module.php:132 themes/_administration/header.php:33
 #: themes/clouds/header.php:36 themes/colors/header.php:39
@@ -9967,7 +9964,7 @@ msgstr "Vooraf gedefinieerde tekst waarin staat dat alle bezoekers een gebruiker
 msgid "Predefined text that states only family members can request a user account"
 msgstr "Vooraf gedefinieerde tekst, waarin staat dat alleen familieleden een gebruikersnaam kunnen aanvragen"
 
-#: admin_users.php:205 admin_users.php:400 edituser.php:177 help_text.php:1182
+#: admin_users.php:195 admin_users.php:389 edituser.php:173 help_text.php:1182
 msgid "Preferred contact method"
 msgstr "Voorkeur voor contactmethode"
 
@@ -10271,7 +10268,7 @@ msgstr "Herschik de gezinnen"
 msgid "Re-order media"
 msgstr "Wijzig volgorde media"
 
-#: admin_users.php:372 admin_users.php:578 edituser.php:141 help_text.php:1360
+#: admin_users.php:361 admin_users.php:567 edituser.php:137 help_text.php:1360
 #: login.php:295 login.php:386
 msgid "Real name"
 msgstr "Echte naam"
@@ -10599,7 +10596,7 @@ msgstr "Woonplaats"
 msgid "Restrict access to the site, using IP addresses and user-agent strings"
 msgstr "Toegangsbeperking middels het gebruik van IP-adressen en gebruikers-tekenreeksen"
 
-#: admin_users.php:238 admin_users.php:441 help_text.php:716
+#: admin_users.php:228 admin_users.php:430 help_text.php:716
 msgid "Restrict to immediate family"
 msgstr "Beperk tot naaste familie"
 
@@ -10630,7 +10627,7 @@ msgid "Right Section Blocks"
 msgstr "Blokken rechter sectie"
 
 #. I18N: gedcom tag ROLE
-#: admin_users.php:237 admin_users.php:440 help_text.php:1380
+#: admin_users.php:227 admin_users.php:429 help_text.php:1380
 #: library/WT/Gedcom/Tag.php:311
 msgid "Role"
 msgstr "Rol"
@@ -11311,8 +11308,7 @@ msgstr "Kortste huwelijk"
 
 #: help_text.php:995
 msgid "Should the GeoNames database be used to provide more suggestions for place names?<br /><br />When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br /><br />The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
-msgstr ""
-"Moet de GeoNames database gebruikt worden om meer suggesties voor plaatsnamen te tonen? <br /><br />Als deze optie op <b>Ja</b> is gezet dan wordt de GeoNames database doorzocht om plaatsnamen op te zoeken als suggestie voor de plaatsnaam welke wordt ingevoerd. Wordt dit op <b>Nee</b> gezet, dan wordt alleen de huidige genealogiedatabase doorzocht. Naarmate meer van de plaatsnaam wordt ingevuld wordt de suggestie steeds preciezer.  Deze optie kan het invoeren vertragen, speciaal als de Internetverbinding langzaam is.<br /><br />De GeoNames geografische database is vrij toegankelijk zonder kosten. Het bevat op dit moment meer dan 8,000,000 geografische namen."
+msgstr "Moet de GeoNames database gebruikt worden om meer suggesties voor plaatsnamen te tonen? <br /><br />Als deze optie op <b>Ja</b> is gezet dan wordt de GeoNames database doorzocht om plaatsnamen op te zoeken als suggestie voor de plaatsnaam welke wordt ingevoerd. Wordt dit op <b>Nee</b> gezet, dan wordt alleen de huidige genealogiedatabase doorzocht. Naarmate meer van de plaatsnaam wordt ingevuld wordt de suggestie steeds preciezer.  Deze optie kan het invoeren vertragen, speciaal als de Internetverbinding langzaam is.<br /><br />De GeoNames geografische database is vrij toegankelijk zonder kosten. Het bevat op dit moment meer dan 8,000,000 geografische namen."
 
 #: modules_v3/recent_changes/module.php:169
 msgid "Should this block be hidden when it is empty?"
@@ -12281,7 +12277,7 @@ msgstr "De Media Viewer kan een knop tonen die, als die aangeklikt wordt, het Me
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
 msgstr "De PGV naar <b>webtrees</b>-wizard is een geautomatiseerd proces om beheerders te helpen de overstap van een PGV-installatie naar een nieuwe <b>webtrees</b>-installatie te maken. Het zal alle PGV-GEDCOM- en andere database-gegevens overzetten naar de nieuwe  <b>webtrees</b> database. De volgende vereisten zijn noodzakelijk:"
 
-#: save.php:264
+#: save.php:269
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "De beheerder van de webtrees-site %s heeft uw aanvraag voor een account goedgekeurd. U kunt zich nu aanmelden door op de volgende link te klikken: %s"
@@ -12293,7 +12289,7 @@ msgid "The changes to “%s” have been accepted."
 msgstr "De veranderingen aan \"%s\" zijn geaccepteerd."
 
 #. I18N: %s is the name of an individual, source or other record
-#: action.php:133
+#: action.php:142
 #, php-format
 msgid "The changes to “%s” have been rejected."
 msgstr "De wijzigingen aan \"%s\" zijn niet geaccepteerd."
@@ -12373,8 +12369,7 @@ msgstr "De map %s werd aangemaakt."
 
 #: help_text.php:585
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
-msgstr ""
-"De map kan volledig worden gespecifieerd (b.v. /home/user_name/webtrees_data/) of relatief aan de installatiemap (b.v. ../../webtrees_data/)."
+msgstr "De map kan volledig worden gespecifieerd (b.v. /home/user_name/webtrees_data/) of relatief aan de installatiemap (b.v. ../../webtrees_data/)."
 
 #: help_text.php:446
 msgid "The following calendars are supported:"
@@ -12537,8 +12532,8 @@ msgstr "De versie van %s is te oud"
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
 msgstr "De webtrees ontwikkelaars zijn zeer geinteresseerd om kennis van deze fout te nemen. Als u contact met ze opneemt, zullen ze u helpen de fout op te sporen."
 
-#: admin_modules.php:125 admin_modules.php:143 admin_users.php:214
-#: admin_users.php:413 edituser.php:164 help_text.php:981
+#: admin_modules.php:125 admin_modules.php:143 admin_users.php:204
+#: admin_users.php:402 edituser.php:160 help_text.php:981
 #: library/WT/MenuBar.php:449
 msgid "Theme"
 msgstr "Thema"
@@ -12723,6 +12718,10 @@ msgstr "Deze map wordt door webtrees gebruikt om media, GEDCOM, tijdelijke besta
 msgid "This folder will be used to store the media files for this family tree."
 msgstr "Deze map wordt gebruikt om mediabestanden van deze stamboom in op te slaan."
 
+#: library/WT/Filter.php:247
+msgid "This form has expired.  Try again."
+msgstr ""
+
 #: individual.php:93 library/WT/Controller/Chart.php:47
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Deze persoon bestaat niet, of u heeft geen permissie om dit te zien."
@@ -12761,8 +12760,7 @@ msgstr "Deze informatie is privé en kan niet getoond worden."
 
 #: help_text.php:1097
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br /><br /><b>Advanced features</b> for <b>View Year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br /><br />Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br /><br /><b>1992-5</b> for all events from 1992 to 1995.<br /><b>1972-89</b> for all events from 1972 to 1989.<br /><b>1610-759</b> for all events from 1610 to 1759.<br /><b>1880-1905</b> for all events from 1880 to 1905.<br /><b>880-1105</b> for all events from 880 to 1105.<br /><br />To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br /><br/>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr ""
-"Met dit invulvak kunt u het jaar van de kalender wijzigen. Type een jaar in het vak, en druk op <b>Enter</b> om de kalender te wijzigen naar dat jaar.<br /><br /><b>Geavanceerde mogelijkheden</b>voor <b>Toon Jaar</b><dl><dt><b>Meer dan een jaar </b></dt><dd>U kan data zoeken in een reeks van jaren.<br /><br />Jaarreeksen zijn  <u>inclusief</u>. Dit betekent dat de datum reeks zich uitstrekt van 1 Januarie van het eerste jaar van de reeks tot 31 December van het laatst vermelde jaar.  Hier zijn een paar voorbeelden van jaar reeksen:<br /><br /><b>1992-5</b> voor alle gebeurtenissen van 1992 tot 1995.<br /><b>1972-89</b>voor alle gebeurtenissen van 1972 tot 1989.<br /><b>1610-759</b> voor alle gebeurtenissen van 1610 to t1759.<br /><b>1880-1905</b> voor alle gebeurtenissen van tot 1905.<br /><b>880-1105</b> voor alle gebeurtenissen van 880 tot 1105.<br /><br />Om alle gebeurtenissen te zien in een bepaald decade of eeuw, kan u het volgende gebruiken <b>?</b> in plaats van de laatste cijfers. Bij voorbeeld, <b>197?</b>voor alle gebeurtenissen van 1970 tot 1979 of <b>16??</b> voor alle gebeurtenissen van 1600 tot 1699.<br /><br/>Het selecteren van een reeks jaren wordt de kalender gewijzigd naar het jaaroverzicht.</dd></dl>"
+msgstr "Met dit invulvak kunt u het jaar van de kalender wijzigen. Type een jaar in het vak, en druk op <b>Enter</b> om de kalender te wijzigen naar dat jaar.<br /><br /><b>Geavanceerde mogelijkheden</b>voor <b>Toon Jaar</b><dl><dt><b>Meer dan een jaar </b></dt><dd>U kan data zoeken in een reeks van jaren.<br /><br />Jaarreeksen zijn  <u>inclusief</u>. Dit betekent dat de datum reeks zich uitstrekt van 1 Januarie van het eerste jaar van de reeks tot 31 December van het laatst vermelde jaar.  Hier zijn een paar voorbeelden van jaar reeksen:<br /><br /><b>1992-5</b> voor alle gebeurtenissen van 1992 tot 1995.<br /><b>1972-89</b>voor alle gebeurtenissen van 1972 tot 1989.<br /><b>1610-759</b> voor alle gebeurtenissen van 1610 to t1759.<br /><b>1880-1905</b> voor alle gebeurtenissen van tot 1905.<br /><b>880-1105</b> voor alle gebeurtenissen van 880 tot 1105.<br /><br />Om alle gebeurtenissen te zien in een bepaald decade of eeuw, kan u het volgende gebruiken <b>?</b> in plaats van de laatste cijfers. Bij voorbeeld, <b>197?</b>voor alle gebeurtenissen van 1970 tot 1979 of <b>16??</b> voor alle gebeurtenissen van 1600 tot 1699.<br /><br/>Het selecteren van een reeks jaren wordt de kalender gewijzigd naar het jaaroverzicht.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:34
 msgid "This input box lets you enter an individual's ID number so he can be added to the Clippings Cart.  Once added you'll be offered options to link that individual's relations to your Clippings Cart.<br /><br />If you do not know an individual's ID number, you can perform a search by name by pressing the Person icon next to the Add button."
@@ -13619,7 +13617,7 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "Type plaatsmarkering in de Plaatshiërarchie"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:396 login.php:407
+#: admin_users.php:385 login.php:407
 msgid "Type the password again."
 msgstr "Typ het wachtwoord nogmaals"
 
@@ -13853,7 +13851,7 @@ msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to
 msgstr "Gebruik een  &laquo;?&raquo; om overeenkomst te vinden met één enkel letterteken, gebruik  &laquo;*&raquo; om overeenkomst  te vinden met nul of meer lettertekens."
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:391 login.php:402
+#: admin_users.php:380 login.php:402
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -13913,15 +13911,15 @@ msgstr "Gebruik deze waarde"
 msgid "User"
 msgstr "Gebruiker"
 
-#: admin_users.php:32 edituser.php:38
+#: admin_users.php:32 edituser.php:91
 msgid "User administration"
 msgstr "Gebruikersbeheer"
 
-#: admin_users.php:531
+#: admin_users.php:520
 msgid "User didn't verify within 7 days."
 msgstr "Gebruiker heeft zijn gegevens niet binnen 7 dagen geverifieerd."
 
-#: admin_users.php:541
+#: admin_users.php:530
 msgid "User not verified by administrator."
 msgstr "Gebruiker niet geverifieerd door de beheerder."
 
@@ -13933,7 +13931,7 @@ msgstr "Gebruikersopties"
 msgid "User verification"
 msgstr "Verificatie gebruiker"
 
-#: admin_users.php:520
+#: admin_users.php:509
 msgid "User's account has been inactive too long: "
 msgstr "Gebuikersaccount is te lang inactief geweest: "
 
@@ -13942,8 +13940,8 @@ msgstr "Gebuikersaccount is te lang inactief geweest: "
 msgid "User-agent string"
 msgstr "gebruikers-tekenreeks  (user-agent string)"
 
-#: admin_site_config.php:135 admin_users.php:378 admin_users.php:577
-#: edituser.php:139 help_text.php:741 help_text.php:1499 login.php:153
+#: admin_site_config.php:135 admin_users.php:367 admin_users.php:566
+#: edituser.php:135 help_text.php:741 help_text.php:1499 login.php:153
 #: login.php:217 login.php:294 login.php:337 login.php:444
 #: modules_v3/login_block/module.php:75 modules_v3/todo/module.php:99
 msgid "Username"
@@ -13955,8 +13953,7 @@ msgstr "Gebruikersnaam of e-mailadres"
 
 #: help_text.php:1502
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr ""
-"Gebruikersnamen zijn hoofdletterongevoelig en geaccentueerde letters worden genegeerd, zodat \"chloe\", \"chloë\", en \"Chloe\" als hetzelfde worden beschouwd."
+msgstr "Gebruikersnamen zijn hoofdletterongevoelig en geaccentueerde letters worden genegeerd, zodat \"chloe\", \"chloë\", en \"Chloe\" als hetzelfde worden beschouwd."
 
 #: help_text.php:1504
 #, php-format
@@ -14047,7 +14044,7 @@ msgstr "Veracruz, Mexico"
 msgid "Verification code:"
 msgstr "Verificatiecode:"
 
-#: admin_users.php:586
+#: admin_users.php:575
 msgid "Verified"
 msgstr "Geverifieerd"
 
@@ -14152,7 +14149,7 @@ msgstr "Villa Hermosa, Mexico"
 msgid "Visible online"
 msgstr "Zichtbaar online"
 
-#: admin_users.php:217 admin_users.php:404 edituser.php:179
+#: admin_users.php:207 admin_users.php:393 edituser.php:175
 msgid "Visible to other users when online"
 msgstr "Zichtbaar voor andere gebruikers wanneer online"
 
@@ -14593,7 +14590,7 @@ msgstr "U kunt HTML gebruiken om de vragen te formatteren en weblinks naar ander
 msgid "You must change this before you can continue."
 msgstr "U moet dit veranderen voordat u verder kan gaan."
 
-#: admin_users.php:340
+#: admin_users.php:328
 msgid "You must confirm the password."
 msgstr "U moet het wachtwoord nog een keer invullen om het te bevestigen"
 
@@ -14602,15 +14599,15 @@ msgstr "U moet het wachtwoord nog een keer invullen om het te bevestigen"
 msgid "You must enter a name"
 msgstr "U moet een naam invoeren"
 
-#: admin_users.php:330
+#: admin_users.php:318
 msgid "You must enter a password."
 msgstr "U moet een wachtwoord invullen"
 
-#: admin_users.php:325 edituser.php:110
+#: admin_users.php:313 edituser.php:105
 msgid "You must enter a real name."
 msgstr "U moet een echte naam invullen."
 
-#: admin_users.php:320 edituser.php:105
+#: admin_users.php:308 edituser.php:100
 msgid "You must enter a user name."
 msgstr "U moet een gebruikersnaam invullen."
 
@@ -14618,7 +14615,7 @@ msgstr "U moet een gebruikersnaam invullen."
 msgid "You must enter all the administrator account fields."
 msgstr "U moet alle velden van het beheerdersaccount invullen."
 
-#: admin_users.php:335
+#: admin_users.php:323
 msgid "You must enter an email address."
 msgstr "U moet een e-mailadres opgeven."
 
@@ -14638,7 +14635,7 @@ msgstr "U moet een brontitel invoeren"
 msgid "You must select an individual and chart type in the block configuration settings."
 msgstr "Kies een persoon en een diagramtype in de blokconfiguratie."
 
-#: admin_users.php:362
+#: admin_users.php:350
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr "U moet een persoonsrecord aangeven voordat u de gebruiker kan beperken tot zijn naaste familie."
 
@@ -15164,7 +15161,7 @@ msgstr "compacte lijst"
 
 #. I18N: button label
 #: admin_pgv_to_wt.php:1050 admin_trees_download.php:140
-#: admin_trees_manage.php:169 admin_users.php:554 login.php:183 login.php:419
+#: admin_trees_manage.php:169 admin_users.php:543 login.php:183 login.php:419
 #: modules_v3/login_block/module.php:106 setup.php:203 setup.php:227
 #: setup.php:296 setup.php:381 setup.php:437
 msgid "continue"
@@ -17541,7 +17538,7 @@ msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "achterneef/achternicht 20e graad"
 
-#: admin_users.php:255 includes/functions/functions_edit.php:136
+#: admin_users.php:245 includes/functions/functions_edit.php:136
 #: includes/functions/functions_edit.php:143
 #: includes/functions/functions_edit.php:1452
 #: includes/functions/functions_print_facts.php:1228
@@ -17746,7 +17743,7 @@ msgstr "robot"
 #: edit_interface.php:509 edit_interface.php:576 edit_interface.php:754
 #: edit_interface.php:849 edit_interface.php:1023 edit_interface.php:1091
 #: edit_interface.php:1160 edit_interface.php:2043 edit_interface.php:2184
-#: edit_interface.php:2419 editnews.php:80 edituser.php:182 find.php:486
+#: edit_interface.php:2419 editnews.php:80 edituser.php:178 find.php:486
 #: includes/functions/functions_edit.php:36
 #: includes/functions/functions_edit.php:50
 #: includes/functions/functions_edit.php:104

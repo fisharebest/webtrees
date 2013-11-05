@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-10-06 08:16+0100\n"
+"POT-Creation-Date: 2013-11-05 13:02+0000\n"
 "PO-Revision-Date: 2013-04-02 19:56+0000\n"
 "Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: \n"
@@ -488,8 +488,8 @@ msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to 
 msgstr "<center><b>欢迎访问这个家谱网站</b></center><br/>允许每个有帐户的游客访问此网站。<br/><br/>如果你有帐户，你可以登录该页面。如果你没有一个用户帐户，你可以点击下面的链接申请。<br/><br/>管理员验证您提供的信息决定批准或拒绝你的请求的帐户。当你的请求被批准你将收到一封电子邮件。"
 
 #. I18N: default option in list of themes
-#: admin_trees_config.php:452 admin_users.php:215 admin_users.php:416
-#: edituser.php:167
+#: admin_trees_config.php:452 admin_users.php:205 admin_users.php:405
+#: edituser.php:163
 msgid "<default theme>"
 msgstr "<默认主题>"
 
@@ -1247,7 +1247,7 @@ msgstr "地址二"
 msgid "Adelaide, Australia"
 msgstr "阿德莱德，澳大利亚"
 
-#: admin_users.php:426
+#: admin_users.php:415
 msgid "Admin comments on user"
 msgstr "管理用户评论"
 
@@ -1256,7 +1256,7 @@ msgstr "管理用户评论"
 msgid "Administration"
 msgstr "管理"
 
-#: admin_users.php:199 admin_users.php:374 help_text.php:1405
+#: admin_users.php:189 admin_users.php:363 help_text.php:1405
 msgid "Administrator"
 msgstr "网站管理员"
 
@@ -1587,7 +1587,7 @@ msgstr "所有项必须完成"
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
 msgstr "允许其他模块使用“所见即所得”的编辑器编辑文本，而不是使用HTML代码。"
 
-#: admin_users.php:208 admin_users.php:397
+#: admin_users.php:198 admin_users.php:386
 msgid "Allow this user to edit his account information"
 msgstr "允许用户编辑自己的帐户信息"
 
@@ -1765,7 +1765,7 @@ msgstr "应用自动更正你的家谱数据。"
 msgid "Apply privacy settings?"
 msgstr "设置隐私？"
 
-#: save.php:263
+#: save.php:268
 #, php-format
 msgid "Approval of account at %s"
 msgstr "允许账户在 %s"
@@ -1774,11 +1774,11 @@ msgstr "允许账户在 %s"
 msgid "Approve all changes"
 msgstr "批准所有的变化"
 
-#: admin_users.php:587
+#: admin_users.php:576
 msgid "Approved"
 msgstr "批准"
 
-#: admin_users.php:380
+#: admin_users.php:369
 msgid "Approved by administrator"
 msgstr "经管理员批准"
 
@@ -1844,7 +1844,7 @@ msgid "Are you sure you want to delete this story?"
 msgstr "您确定要删除这个故事吗？"
 
 #: admin_media.php:290 admin_media.php:425 admin_site_access.php:114
-#: admin_trees_manage.php:229 admin_users.php:172
+#: admin_trees_manage.php:229 admin_users.php:162
 #: includes/functions/functions_print_lists.php:1028
 #: includes/functions/functions_print_lists.php:1129
 #: includes/functions/functions_print_lists.php:1221
@@ -1991,7 +1991,7 @@ msgstr "作者"
 msgid "Author of last change"
 msgstr "最后一次更改的作者"
 
-#: admin_users.php:211 admin_users.php:392 help_text.php:1467
+#: admin_users.php:201 admin_users.php:381 help_text.php:1467
 msgid "Automatically approve changes made by this user"
 msgstr "自动批准该用户所做的更改"
 
@@ -2959,7 +2959,7 @@ msgstr "改变标志"
 msgid "Change language"
 msgstr "更改语言"
 
-#: admin_users.php:224 index.php:141 index.php:142
+#: admin_users.php:214 index.php:141 index.php:142
 msgid "Change the blocks on this page"
 msgstr "改变此网页上的块"
 
@@ -3360,7 +3360,7 @@ msgstr "每页列数"
 msgid "Comment"
 msgstr "评论"
 
-#: admin_users.php:220 help_text.php:1365 login.php:297 login.php:339
+#: admin_users.php:210 help_text.php:1365 login.php:297 login.php:339
 #: login.php:411
 msgid "Comments"
 msgstr "备注"
@@ -3419,7 +3419,7 @@ msgstr "串联"
 msgid "Configure"
 msgstr "配置"
 
-#: admin_users.php:395 edituser.php:158 help_text.php:1306 login.php:406
+#: admin_users.php:384 edituser.php:154 help_text.php:1306 login.php:406
 msgid "Confirm password"
 msgstr "确认密码"
 
@@ -3554,7 +3554,7 @@ msgstr "创建"
 msgid "Create Repository"
 msgstr "创建存储库"
 
-#: admin_users.php:486
+#: admin_users.php:475
 msgid "Create User"
 msgstr "创建用户"
 
@@ -3974,7 +3974,7 @@ msgstr "日期范围"
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range."
 msgstr "日期范围是用来表明一个事件,例如一个出生,发生在一个在一个可能的范围里的未知日期。"
 
-#: admin_users.php:583
+#: admin_users.php:572
 msgid "Date registered"
 msgstr "注册日期"
 
@@ -4219,8 +4219,8 @@ msgstr "默认图表"
 msgid "Default family tree"
 msgstr "默认家谱"
 
-#: admin_trees_config.php:233 admin_users.php:235 admin_users.php:438
-#: edituser.php:149 help_text.php:1121 modules_v3/gedcom_block/module.php:52
+#: admin_trees_config.php:233 admin_users.php:225 admin_users.php:427
+#: edituser.php:145 help_text.php:1121 modules_v3/gedcom_block/module.php:52
 msgid "Default individual"
 msgstr "默认的个体"
 
@@ -4297,7 +4297,7 @@ msgstr "删除记录"
 msgid "Deleted files:"
 msgstr "被删除的文件："
 
-#: admin_users.php:565
+#: admin_users.php:554
 msgid "Deleted user: "
 msgstr "删除用户: "
 
@@ -4374,7 +4374,7 @@ msgstr "所需的用户名"
 msgid "Destination"
 msgstr "目的地"
 
-#: admin_users.php:145 admin_users.php:197 note.php:96 repo.php:92
+#: admin_users.php:135 admin_users.php:187 note.php:96 repo.php:92
 #: source.php:95
 msgid "Details"
 msgstr "详细资料"
@@ -4598,11 +4598,11 @@ msgstr "下载报告"
 msgid "Duodi"
 msgstr "Duodi"
 
-#: admin_users.php:271 edituser.php:66 login.php:260
+#: admin_users.php:258 edituser.php:61 login.php:260
 msgid "Duplicate email address.  A user with that email already exists."
 msgstr "重复的电子邮件地址。该电子邮件已经被一个用户使用"
 
-#: admin_users.php:268 edituser.php:63 login.php:258
+#: admin_users.php:255 edituser.php:59 login.php:258
 msgid "Duplicate user name.  A user with that user name already exists.  Please choose another user name."
 msgstr "重复的用户名。该用户名已经被一个用户使用。请选择另一个用户名。"
 
@@ -4794,7 +4794,7 @@ msgctxt "NOMINATIVE"
 msgid "Elul"
 msgstr "第十二月"
 
-#: admin_users.php:579
+#: admin_users.php:568
 msgid "Email"
 msgstr "电子邮件"
 
@@ -4807,14 +4807,14 @@ msgstr "电子邮件地址:"
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag EMAL
 #. I18N: gedcom tag _EMAIL
-#: admin_users.php:384 edituser.php:162 help_text.php:1209
+#: admin_users.php:373 edituser.php:158 help_text.php:1209
 #: library/WT/Gedcom/Tag.php:196 library/WT/Gedcom/Tag.php:197
 #: library/WT/Gedcom/Tag.php:198 library/WT/Gedcom/Tag.php:714 login.php:391
 #: setup.php:431
 msgid "Email address"
 msgstr "电子邮件地址"
 
-#: admin_users.php:386
+#: admin_users.php:375
 msgid "Email verified"
 msgstr "电子邮件验证"
 
@@ -5343,15 +5343,15 @@ msgid "Family of %s"
 msgstr "%s 的家庭"
 
 #: admin_site_change.php:269 admin_site_change.php:293 admin_site_logs.php:236
-#: admin_site_logs.php:259 admin_trees_manage.php:181 admin_users.php:234
-#: admin_users.php:437 edit_changes.php:174
+#: admin_site_logs.php:259 admin_trees_manage.php:181 admin_users.php:224
+#: admin_users.php:426 edit_changes.php:174
 #: modules_v3/batch_update/admin_batch_update.php:63
 #: modules_v3/faq/module.php:354 modules_v3/googlemap/module.php:1476
 #: modules_v3/html/module.php:296 modules_v3/stories/module.php:338
 msgid "Family tree"
 msgstr "家谱"
 
-#: admin_users.php:232 admin_users.php:431
+#: admin_users.php:222 admin_users.php:420
 msgid "Family tree access and settings"
 msgstr "家谱访问和设置"
 
@@ -6736,7 +6736,7 @@ msgstr "个人名单"
 msgid "Individual pages"
 msgstr "个人页面"
 
-#: admin_users.php:236 admin_users.php:439 edituser.php:145 help_text.php:1204
+#: admin_users.php:226 admin_users.php:428 edituser.php:141 help_text.php:1204
 #: help_text.php:1370 help_text.php:1478
 msgid "Individual record"
 msgstr "个人记录"
@@ -7207,8 +7207,8 @@ msgid "Landscape"
 msgstr "横图表"
 
 #. I18N: gedcom tag LANG
-#: admin_trees_config.php:228 admin_users.php:410 admin_users.php:581
-#: edituser.php:160 help_text.php:610 library/WT/Gedcom/Tag.php:242
+#: admin_trees_config.php:228 admin_users.php:399 admin_users.php:570
+#: edituser.php:156 help_text.php:610 library/WT/Gedcom/Tag.php:242
 #: library/WT/MenuBar.php:467
 msgid "Language"
 msgstr "语言"
@@ -7246,7 +7246,7 @@ msgstr "最新邮件提醒被送 "
 msgid "Last event"
 msgstr "最新事件"
 
-#: admin_users.php:585
+#: admin_users.php:574
 msgid "Last logged in"
 msgstr "最后登录"
 
@@ -7295,7 +7295,7 @@ msgstr "拉脱维亚"
 msgid "Layout"
 msgstr "布局"
 
-#: edituser.php:157
+#: edituser.php:153
 msgid "Leave password blank if you want to keep the current password."
 msgstr "如果你想要保持当前的密码保留空白。"
 
@@ -8485,7 +8485,7 @@ msgstr "第一月"
 msgid "Multiple marriages"
 msgstr "多次婚姻"
 
-#: edituser.php:135 library/WT/MenuBar.php:68
+#: edituser.php:130 library/WT/MenuBar.php:68
 #: modules_v3/user_welcome/module.php:49
 msgid "My account"
 msgstr "我的账户"
@@ -8500,7 +8500,7 @@ msgid "My individual record"
 msgstr "个人档案"
 
 #. I18N: Name of a module
-#: admin_modules.php:140 admin_users.php:223 index.php:82 index.php:90
+#: admin_modules.php:140 admin_users.php:213 index.php:82 index.php:90
 #: library/WT/MenuBar.php:61 library/WT/MenuBar.php:64
 #: modules_v3/user_welcome/module.php:34 themes/_administration/header.php:68
 msgid "My page"
@@ -8641,7 +8641,7 @@ msgstr "列斯群岛"
 msgid "Neutral Zone"
 msgstr "中性区"
 
-#: admin_users.php:166
+#: admin_users.php:156
 msgid "Never"
 msgstr "从未"
 
@@ -8776,7 +8776,7 @@ msgctxt "NOMINATIVE"
 msgid "Nivôse"
 msgstr "第四月"
 
-#: admin_users.php:475 includes/functions/functions_print_facts.php:269
+#: admin_users.php:464 includes/functions/functions_print_facts.php:269
 msgid "No"
 msgstr "不"
 
@@ -8923,7 +8923,7 @@ msgstr "没有人"
 msgid "Nocturnal"
 msgstr "夜间"
 
-#: admin_trees_download.php:116 admin_users.php:461 famlist.php:115
+#: admin_trees_download.php:116 admin_users.php:450 famlist.php:115
 #: famlist.php:145 indilist.php:115 indilist.php:145 library/WT/Stats.php:758
 #: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:586
 #: modules_v3/families/module.php:149 modules_v3/individuals/module.php:148
@@ -9029,7 +9029,7 @@ msgstr "记事"
 msgid "Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr "记事是自由格式的文本,也会出现在事实细节部分的页面。"
 
-#: admin_users.php:548
+#: admin_users.php:537
 msgid "Nothing found to cleanup"
 msgstr "没有清理任何"
 
@@ -9105,7 +9105,7 @@ msgstr "显示条目的数量"
 msgid "Number of marriages"
 msgstr "婚姻次数"
 
-#: admin_users.php:500
+#: admin_users.php:489
 msgid "Number of months since the last login for a user's account to be considered inactive: "
 msgstr "用户的账户被认为是无效的条件：距最后一次登录的月数 "
 
@@ -9265,7 +9265,7 @@ msgstr "注意！webtrees 不能在这个目录创建文件。"
 msgid "Optional prefixes and suffixes"
 msgstr "可选的前缀和后缀"
 
-#: admin_users.php:509 relationship.php:91
+#: admin_users.php:498 relationship.php:91
 msgid "Options:"
 msgstr "选项："
 
@@ -9471,14 +9471,14 @@ msgstr "父母的年龄"
 msgid "Parents"
 msgstr "父母"
 
-#: admin_site_config.php:138 admin_users.php:202 admin_users.php:390
-#: edituser.php:156 help_text.php:736 help_text.php:1301 login.php:158
+#: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
+#: edituser.php:152 help_text.php:736 help_text.php:1301 login.php:158
 #: login.php:219 login.php:448 modules_v3/login_block/module.php:80
 #: setup.php:423
 msgid "Password"
 msgstr "密码"
 
-#: admin_users.php:274 edituser.php:115
+#: admin_users.php:261 edituser.php:110
 msgid "Passwords do not match."
 msgstr "密码不匹配。"
 
@@ -9486,7 +9486,7 @@ msgstr "密码不匹配。"
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr "密码必须至少6个字符长,是区分大小写的,因此,“secret”是不同的“SECRET”。"
 
-#: admin_users.php:345 edituser.php:120
+#: admin_users.php:333 edituser.php:115
 msgid "Passwords must contain at least 6 characters."
 msgstr "密码必须包含至少6个字符。"
 
@@ -9946,7 +9946,7 @@ msgstr "所有用户申请用户账户的预定义的文本"
 msgid "Predefined text that states only family members can request a user account"
 msgstr "家庭成员可以申请用户帐户的预定义的文本"
 
-#: admin_users.php:205 admin_users.php:400 edituser.php:177 help_text.php:1182
+#: admin_users.php:195 admin_users.php:389 edituser.php:173 help_text.php:1182
 msgid "Preferred contact method"
 msgstr "首选联系方式"
 
@@ -10250,7 +10250,7 @@ msgstr "重新排列家庭"
 msgid "Re-order media"
 msgstr "重新排列媒体"
 
-#: admin_users.php:372 admin_users.php:578 edituser.php:141 help_text.php:1360
+#: admin_users.php:361 admin_users.php:567 edituser.php:137 help_text.php:1360
 #: login.php:295 login.php:386
 msgid "Real name"
 msgstr "真实姓名"
@@ -10578,7 +10578,7 @@ msgstr "住宅"
 msgid "Restrict access to the site, using IP addresses and user-agent strings"
 msgstr "使用IP地址和用户代理字符串限制访问网站"
 
-#: admin_users.php:238 admin_users.php:441 help_text.php:716
+#: admin_users.php:228 admin_users.php:430 help_text.php:716
 msgid "Restrict to immediate family"
 msgstr "直系亲属限制"
 
@@ -10609,7 +10609,7 @@ msgid "Right Section Blocks"
 msgstr "右区块"
 
 #. I18N: gedcom tag ROLE
-#: admin_users.php:237 admin_users.php:440 help_text.php:1380
+#: admin_users.php:227 admin_users.php:429 help_text.php:1380
 #: library/WT/Gedcom/Tag.php:311
 msgid "Role"
 msgstr "角色"
@@ -12259,7 +12259,7 @@ msgstr "媒体查看器可以显示一个链接，点击后，将下载的媒体
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
 msgstr "PGV到<b> webtrees </b>向导是一个协助管理员从PGV安装到一个新的<B> webtrees </b>自动化的过程。它将所有的PGV GEDCOM和其他数据库信息直接输入到你的新<b> webtrees </b>数据库。下列要求："
 
-#: save.php:264
+#: save.php:269
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "在webtrees站点%s已批准你的申请一个帐号管理员。你现在可以登录访问以下链接：%s"
@@ -12271,7 +12271,7 @@ msgid "The changes to “%s” have been accepted."
 msgstr "更改 “%s”已被接受。"
 
 #. I18N: %s is the name of an individual, source or other record
-#: action.php:133
+#: action.php:142
 #, php-format
 msgid "The changes to “%s” have been rejected."
 msgstr "更改“%s”被拒绝。"
@@ -12514,8 +12514,8 @@ msgstr "%s 的版本太旧了"
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
 msgstr "webtrees开发者对这个错误很感兴趣。如果你和他们联系，他们会帮助你解决问题。"
 
-#: admin_modules.php:125 admin_modules.php:143 admin_users.php:214
-#: admin_users.php:413 edituser.php:164 help_text.php:981
+#: admin_modules.php:125 admin_modules.php:143 admin_users.php:204
+#: admin_users.php:402 edituser.php:160 help_text.php:981
 #: library/WT/MenuBar.php:449
 msgid "Theme"
 msgstr "主题"
@@ -12699,6 +12699,10 @@ msgstr "将使用此文件夹webtrees存储媒体文件，GEDCOM文件，临时�
 #: help_text.php:655
 msgid "This folder will be used to store the media files for this family tree."
 msgstr "此文件夹将用于这个家谱存储媒体文件。"
+
+#: library/WT/Filter.php:247
+msgid "This form has expired.  Try again."
+msgstr ""
 
 #: individual.php:93 library/WT/Controller/Chart.php:47
 msgid "This individual does not exist or you do not have permission to view it."
@@ -13593,7 +13597,7 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "地方标列表类型"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:396 login.php:407
+#: admin_users.php:385 login.php:407
 msgid "Type the password again."
 msgstr "再次输入密码"
 
@@ -13827,7 +13831,7 @@ msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to
 msgstr "使用'？'匹配一个字符，使用“*”匹配零个或多个字符。"
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:391 login.php:402
+#: admin_users.php:380 login.php:402
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -13886,15 +13890,15 @@ msgstr "使用此值"
 msgid "User"
 msgstr "用户"
 
-#: admin_users.php:32 edituser.php:38
+#: admin_users.php:32 edituser.php:91
 msgid "User administration"
 msgstr "用户管理"
 
-#: admin_users.php:531
+#: admin_users.php:520
 msgid "User didn't verify within 7 days."
 msgstr "在七天内没有确认的用户"
 
-#: admin_users.php:541
+#: admin_users.php:530
 msgid "User not verified by administrator."
 msgstr "没有被管理员确认的用户"
 
@@ -13906,7 +13910,7 @@ msgstr "用户选项"
 msgid "User verification"
 msgstr "用户验证"
 
-#: admin_users.php:520
+#: admin_users.php:509
 msgid "User's account has been inactive too long: "
 msgstr "用户帐户已停用的时间太长： "
 
@@ -13915,8 +13919,8 @@ msgstr "用户帐户已停用的时间太长： "
 msgid "User-agent string"
 msgstr "用户代理字符串"
 
-#: admin_site_config.php:135 admin_users.php:378 admin_users.php:577
-#: edituser.php:139 help_text.php:741 help_text.php:1499 login.php:153
+#: admin_site_config.php:135 admin_users.php:367 admin_users.php:566
+#: edituser.php:135 help_text.php:741 help_text.php:1499 login.php:153
 #: login.php:217 login.php:294 login.php:337 login.php:444
 #: modules_v3/login_block/module.php:75 modules_v3/todo/module.php:99
 msgid "Username"
@@ -14019,7 +14023,7 @@ msgstr "韦拉克鲁斯州，墨西哥"
 msgid "Verification code:"
 msgstr "验证码："
 
-#: admin_users.php:586
+#: admin_users.php:575
 msgid "Verified"
 msgstr "验证"
 
@@ -14124,7 +14128,7 @@ msgstr "赫尔摩萨别墅，墨西哥"
 msgid "Visible online"
 msgstr "在线可见"
 
-#: admin_users.php:217 admin_users.php:404 edituser.php:179
+#: admin_users.php:207 admin_users.php:393 edituser.php:175
 msgid "Visible to other users when online"
 msgstr "在线时其他用户可见"
 
@@ -14565,7 +14569,7 @@ msgstr "您可以使用HTML格式回复，并添加其他网站的链接。"
 msgid "You must change this before you can continue."
 msgstr "你一定要修正它才能继续。"
 
-#: admin_users.php:340
+#: admin_users.php:328
 msgid "You must confirm the password."
 msgstr "您必须确认密码。"
 
@@ -14574,15 +14578,15 @@ msgstr "您必须确认密码。"
 msgid "You must enter a name"
 msgstr "您必须输入一个名称"
 
-#: admin_users.php:330
+#: admin_users.php:318
 msgid "You must enter a password."
 msgstr "您必须输入密码。"
 
-#: admin_users.php:325 edituser.php:110
+#: admin_users.php:313 edituser.php:105
 msgid "You must enter a real name."
 msgstr "您必须输入真实姓名。"
 
-#: admin_users.php:320 edituser.php:105
+#: admin_users.php:308 edituser.php:100
 msgid "You must enter a user name."
 msgstr "您必须输入一个用户名。"
 
@@ -14590,7 +14594,7 @@ msgstr "您必须输入一个用户名。"
 msgid "You must enter all the administrator account fields."
 msgstr "您必须输入管理员帐户字段。"
 
-#: admin_users.php:335
+#: admin_users.php:323
 msgid "You must enter an email address."
 msgstr "您必须输入一个电子邮件地址。"
 
@@ -14610,7 +14614,7 @@ msgstr "您必须提供资源标题"
 msgid "You must select an individual and chart type in the block configuration settings."
 msgstr "块中的配置设置时您必须选择一个个体和图表类型"
 
-#: admin_users.php:362
+#: admin_users.php:350
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr "您必须指定一个人的记录，然后才可以确定他们的直系亲属。"
 
@@ -15136,7 +15140,7 @@ msgstr "紧凑列表"
 
 #. I18N: button label
 #: admin_pgv_to_wt.php:1050 admin_trees_download.php:140
-#: admin_trees_manage.php:169 admin_users.php:554 login.php:183 login.php:419
+#: admin_trees_manage.php:169 admin_users.php:543 login.php:183 login.php:419
 #: modules_v3/login_block/module.php:106 setup.php:203 setup.php:227
 #: setup.php:296 setup.php:381 setup.php:437
 msgid "continue"
@@ -17510,7 +17514,7 @@ msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "第九代堂（表）兄(妹)"
 
-#: admin_users.php:255 includes/functions/functions_edit.php:136
+#: admin_users.php:245 includes/functions/functions_edit.php:136
 #: includes/functions/functions_edit.php:143
 #: includes/functions/functions_edit.php:1452
 #: includes/functions/functions_print_facts.php:1228
@@ -17715,7 +17719,7 @@ msgstr "机器人"
 #: edit_interface.php:509 edit_interface.php:576 edit_interface.php:754
 #: edit_interface.php:849 edit_interface.php:1023 edit_interface.php:1091
 #: edit_interface.php:1160 edit_interface.php:2043 edit_interface.php:2184
-#: edit_interface.php:2419 editnews.php:80 edituser.php:182 find.php:486
+#: edit_interface.php:2419 editnews.php:80 edituser.php:178 find.php:486
 #: includes/functions/functions_edit.php:36
 #: includes/functions/functions_edit.php:50
 #: includes/functions/functions_edit.php:104
