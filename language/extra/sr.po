@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2010-12-13 09:06+0000\n"
-"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 16:58+0000\n"
+"Last-Translator: Caslav Nedeljkovic <caslav.nedeljkovic@gmail.com>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:34+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: Serbian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -657,7 +657,7 @@ msgstr ""
 #. I18N: Description of the “Family” module
 #: modules_v3/family_group_report/module.php:41
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "Извештај о члановима породице са детаљима"
 
 #. I18N: Description of the “Deaths” module
 #: modules_v3/death_report/module.php:41
@@ -1657,7 +1657,7 @@ msgstr ""
 #. I18N: Description of the “Login” module
 #: modules_v3/login_block/module.php:39
 msgid "An alternative way to login and logout."
-msgstr ""
+msgstr "Другачији начин за пријаву и одјаву"
 
 #. I18N: Description of the “Theme change” module
 #: modules_v3/theme_select/module.php:39
@@ -1869,7 +1869,7 @@ msgstr ""
 #: library/WT/Controller/Source.php:106
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "Желите ли заиста да обришете „%s“?"
 
 #: modules_v3/gedcom_favorites/module.php:125
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -2534,13 +2534,13 @@ msgstr ""
 
 #: branches.php:47 library/WT/MenuBar.php:301
 msgid "Branches"
-msgstr ""
+msgstr "Огранци"
 
 #. I18N: %s is a surname
 #: branches.php:45
 #, php-format
 msgid "Branches of the %s family"
-msgstr ""
+msgstr "Огранци породице %s"
 
 #: library/WT/Stats.php:3806
 msgid "Brazil"
@@ -3346,7 +3346,7 @@ msgstr ""
 
 #: branches.php:102
 msgid "Collapse all"
-msgstr ""
+msgstr "Сажми све"
 
 #: library/WT/Stats.php:3827
 msgid "Colombia"
@@ -3375,7 +3375,7 @@ msgstr ""
 #. I18N: gedcom tag COMM
 #: admin_site_access.php:283 library/WT/Gedcom/Tag.php:168
 msgid "Comment"
-msgstr "Primedba"
+msgstr "Напомена"
 
 #: admin_users.php:210 help_text.php:1365 login.php:297 login.php:339
 #: login.php:411
@@ -3606,7 +3606,7 @@ msgstr ""
 
 #: admin_site_access.php:297
 msgid "Create a new rule"
-msgstr ""
+msgstr "Направи ново правило"
 
 #. I18N: A source that is not linked to any other record
 #: admin_site_other.php:64 edit_interface.php:668 edit_interface.php:765
@@ -4284,7 +4284,7 @@ msgstr ""
 #: modules_v3/user_blog/module.php:94 modules_v3/user_messages/module.php:91
 #: modules_v3/user_messages/module.php:120
 msgid "Delete"
-msgstr ""
+msgstr "Избриши"
 
 #: modules_v3/faq/help_text.php:51
 msgid "Delete FAQ item"
@@ -4889,7 +4889,7 @@ msgstr ""
 #. I18N [...] of a range of addresses
 #: admin_site_access.php:279
 msgid "End IP address"
-msgstr ""
+msgstr "Завршна ИП адреса"
 
 #: lifespan.php:288
 msgid "End Year"
@@ -5100,7 +5100,7 @@ msgstr ""
 
 #: branches.php:103
 msgid "Expand all"
-msgstr ""
+msgstr "Рашири све"
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:412
@@ -5226,7 +5226,7 @@ msgstr ""
 #: modules_v3/personal_facts/module.php:34
 #: modules_v3/random_media/module.php:264
 msgid "Facts and events"
-msgstr ""
+msgstr "Чињенице и догађаји"
 
 #: admin_trees_config.php:1109
 msgid "Facts for Family records"
@@ -5982,7 +5982,7 @@ msgstr ""
 
 #: branches.php:232
 msgid "Generation"
-msgstr ""
+msgstr "Генерација"
 
 #: ancestry.php:112 descendancy.php:78 familybook.php:62 fanchart.php:68
 #: hourglass.php:75 modules_v3/googlemap/module.php:676 pedigree.php:44
@@ -6476,7 +6476,7 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/IP_address
 #: admin_site_access.php:294 admin_site_logs.php:230 admin_site_logs.php:257
 msgid "IP address"
-msgstr ""
+msgstr "ИП адреса"
 
 #: library/WT/Stats.php:3890
 msgid "Iceland"
@@ -6771,7 +6771,7 @@ msgstr ""
 #: modules_v3/random_media/module.php:264 note.php:98 placelist.php:229
 #: search.php:114 search.php:166 source.php:97 statistics.php:54
 msgid "Individuals"
-msgstr "Pojedinaca"
+msgstr "Појединци"
 
 #: library/WT/Stats.php:334 statistics.php:378
 msgid "Individuals with sources"
@@ -7491,7 +7491,7 @@ msgstr ""
 
 #: modules_v3/login_block/module.php:59 themes/webtrees/header.php:79
 msgid "Logged in as "
-msgstr "Prijavljen kao "
+msgstr "Пријављен(а) као "
 
 #. I18N: Name of a module
 #: admin_site_config.php:64 includes/functions/functions_print.php:304
@@ -7543,7 +7543,7 @@ msgstr ""
 #: login.php:177 login.php:193 login.php:231
 #: modules_v3/login_block/module.php:100
 msgid "Lost password request"
-msgstr "Zahtev za novu lozinku"
+msgstr "Захтев због изгубљене лозинке"
 
 #: library/WT/Gedcom/Code/Temp.php:123
 msgid "Louisville, Kentucky"
@@ -8730,7 +8730,7 @@ msgstr ""
 
 #: modules_v3/random_media/module.php:133
 msgid "Next image"
-msgstr "Sledeća slika"
+msgstr "Следећа слика"
 
 #: library/WT/Stats.php:3943
 msgid "Nicaragua"
@@ -8864,6 +8864,7 @@ msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -9619,7 +9620,7 @@ msgstr ""
 #: branches.php:64 library/WT/Controller/Search.php:244
 #: library/WT/MenuBar.php:421 search.php:241 search.php:247
 msgid "Phonetic search"
-msgstr ""
+msgstr "Фонетска претрага"
 
 #: library/WT/Gedcom/Tag.php:333
 msgid "Phonetic title"
@@ -9822,7 +9823,7 @@ msgstr ""
 #: themes/fab/header.php:36 themes/minimal/header.php:36
 #: themes/webtrees/header.php:36 themes/xenea/header.php:36
 msgid "Play"
-msgstr ""
+msgstr "Пусти"
 
 #: login.php:326
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
@@ -10251,7 +10252,7 @@ msgstr ""
 #. I18N: Description of the “Slide show” module
 #: modules_v3/random_media/module.php:39
 msgid "Random images from the current family tree."
-msgstr ""
+msgstr "Насумичне слике из тренутно одабраног породичног стабла"
 
 #: edit_interface.php:1983 edit_interface.php:2362
 #: library/WT/Controller/Family.php:135 modules_v3/relatives/module.php:289
@@ -10545,12 +10546,12 @@ msgstr ""
 
 #: login.php:166 modules_v3/login_block/module.php:88
 msgid "Request new password"
-msgstr "Zahtevajte novu lozinku"
+msgstr "Затражи нову лозинку"
 
 #: login.php:169 login.php:251 modules_v3/gedcom_block/module.php:54
 #: modules_v3/login_block/module.php:91
 msgid "Request new user account"
-msgstr "Zahtevajte novi nalog"
+msgstr "Затражи нови кориснички налог"
 
 #: admin_site_config.php:84 help_text.php:816
 msgid "Require an administrator to approve new user registrations"
@@ -10597,7 +10598,7 @@ msgstr "Prebivalište"
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:270
 msgid "Restrict access to the site, using IP addresses and user-agent strings"
-msgstr ""
+msgstr "Ограничите приступ сајту помоћу ИП адреса и низова корисник-агент"
 
 #: admin_users.php:228 admin_users.php:430 help_text.php:716
 msgid "Restrict to immediate family"
@@ -10664,12 +10665,12 @@ msgstr ""
 #. I18N: noun
 #: admin_site_access.php:282
 msgid "Rule"
-msgstr ""
+msgstr "Правило"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: branches.php:67 library/WT/Soundex.php:31 search.php:192
 msgid "Russell"
-msgstr ""
+msgstr "Расел"
 
 #: library/WT/Stats.php:3970
 msgid "Russia"
@@ -11560,7 +11561,7 @@ msgstr ""
 
 #: modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
-msgstr ""
+msgstr "Прикажи контроле аутоматског приказа слика?"
 
 #: familybook.php:76 help_text.php:1421 hourglass.php:91
 msgid "Show spouses"
@@ -11683,7 +11684,7 @@ msgstr "Singapur"
 
 #: admin_site_access.php:32 themes/_administration/header.php:97
 msgid "Site access rules"
-msgstr ""
+msgstr "Правила приступања сајту"
 
 #: admin_site_config.php:32 admin_site_config.php:58
 #: themes/_administration/header.php:93
@@ -11742,7 +11743,7 @@ msgstr ""
 #. I18N: Name of a module
 #: library/WT/Gedcom/Tag.php:819 modules_v3/random_media/module.php:34
 msgid "Slide show"
-msgstr ""
+msgstr "Аутоматско приказивање слика"
 
 #: library/WT/Stats.php:3994
 msgid "Slovakia"
@@ -11932,7 +11933,7 @@ msgstr ""
 #. I18N [...] of a range of addresses
 #: admin_site_access.php:277
 msgid "Start IP address"
-msgstr ""
+msgstr "Почетна ИП адреса"
 
 #: library/WT/Controller/Descendancy.php:152
 #: library/WT/Controller/Descendancy.php:230
@@ -11941,7 +11942,7 @@ msgstr ""
 
 #: modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
-msgstr ""
+msgstr "Започни аутоматски приказ слике кад се учита страница?"
 
 #. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:323 modules_v3/googlemap/admin_places.php:176
@@ -12427,7 +12428,7 @@ msgstr ""
 
 #: mediafirewall.php:37
 msgid "The media file was not found in this family tree"
-msgstr ""
+msgstr "Мултимедијална датотека није пронађена у овом породичном стаблу"
 
 #: help_text.php:1450
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called \"granny.jpg\".<br /><br />In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br /><br />Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -12897,7 +12898,7 @@ msgstr ""
 
 #: mediafirewall.php:367
 msgid "This media file is broken and cannot be watermarked"
-msgstr ""
+msgstr "Мултимедијална датотека је оштећена и не може јој бити додат водени жиг."
 
 #: mediaviewer.php:76
 msgid "This media object does not exist or you do not have permission to view it."
@@ -13952,7 +13953,7 @@ msgstr ""
 
 #: login.php:179 modules_v3/login_block/module.php:102
 msgid "Username or email address"
-msgstr ""
+msgstr "Корисничко име или адреса е-поште"
 
 #: help_text.php:1502
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
@@ -14073,7 +14074,7 @@ msgstr "Vietnam"
 #: descendancy.php:75 familybook.php:57 fanchart.php:63 hourglass.php:70
 #: modules_v3/googlemap/module.php:724 pedigree.php:47 relationship.php:155
 msgid "View"
-msgstr ""
+msgstr "Приказ"
 
 #: calendar.php:275 calendar.php:277
 msgid "View Day"
@@ -14875,7 +14876,7 @@ msgstr ""
 #. I18N: An access rule - allow access to the site
 #: admin_site_access.php:109 admin_site_access.php:300
 msgid "allow"
-msgstr ""
+msgstr "дозволи"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:63
@@ -15156,7 +15157,7 @@ msgstr ""
 #: modules_v3/googlemap/places_edit.php:124
 #: modules_v3/googlemap/places_edit.php:342
 msgid "close"
-msgstr ""
+msgstr "затвори"
 
 #: modules_v3/top10_surnames/module.php:164
 msgid "compact list"
@@ -15229,7 +15230,7 @@ msgstr ""
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:110 admin_site_access.php:301
 msgid "deny"
-msgstr ""
+msgstr "одбаци"
 
 #: modules_v3/googlemap/module.php:312 modules_v3/googlemap/module.php:321
 #: modules_v3/googlemap/module.php:330 modules_v3/googlemap/module.php:338
@@ -17735,7 +17736,7 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: admin_site_access.php:111 admin_site_access.php:302
 msgid "robot"
-msgstr ""
+msgstr "робот"
 
 #. I18N: button label
 #: addmedia.php:745 admin_module_blocks.php:92 admin_module_menus.php:113
@@ -17759,7 +17760,7 @@ msgstr ""
 #: modules_v3/googlemap/places_edit.php:341 modules_v3/sitemap/module.php:253
 #: modules_v3/stories/module.php:265
 msgid "save"
-msgstr ""
+msgstr "сачувај"
 
 #: includes/functions/functions.php:1091
 #, php-format
@@ -18572,7 +18573,7 @@ msgstr "god"
 #: modules_v3/batch_update/admin_batch_update.php:340
 #: modules_v3/charts/module.php:216 modules_v3/relatives/module.php:206
 msgid "yes"
-msgstr ""
+msgstr "да"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:83
@@ -18616,3 +18617,111 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Dobrodošli na Rodoslov bratstva Damjanci</b></center><br>Pristup podacima živih osoba u rodoslovu imaju samo prijavljeni korisnici sa lozinkom."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Dobrodošli na Rodoslov bratstva Damjanci</b></center><br>Rodoslovu mogu pristupiti samo <u>ovlašćeni</u> korisnici.<br><br>Ako ste već registrovani ovde se možete prijaviti. Ako još niste registrovani, podnesite zahtev tako što ćete kliknuti na odgovarajući link na ovoj stranici.<br><br>Pošto razmotri Vaš zahtev administrator će ga ili odobriti ili odbaciti i o tome ćete biti obavešteni emailom."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Dobrodošli na Rodoslov bratstva Damjanci</b></center><br>Pristup podacima živih osoba u rodoslovu imaju samo <u>registrovani članovi njihovih porodica</u>.<br><br>Ako ste već registrovani ovde se možete prijaviti. Ako još niste registrovani, podnesite zahtev tako što ćete kliknuti na odgovarajući link na ovoj stranici.<br><br>Pošto razmotri Vaš zahtev administrator će ga ili odobriti ili odbaciti i o tome ćete biti obavešteni emailom."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Dobrodošli na Rodoslov bratstva Damjanci</b></center><br>Rodoslovu mogu pristupiti svi posetioci koji su registrovani.<br><br>Ako ste već registrovani ovde se možete prijaviti. Ako još niste registrovani, podnesite zahtev tako što ćete kliknuti na odgovarajući link na ovoj stranici.<br><br>Pošto razmotri Vaš zahtev administrator rodoslova će aktivirati Vaš nalog i bićete obavešteni emailom."
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=abcčćdđefghijklmnoprsštuvzž"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=ABCČĆDĐEFGHIJKLMNOPRSŠTUVZŽ"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Dodaj supruga od već unesenih osoba"
+
+#~ msgid "Add a new name"
+#~ msgstr "Dodaj novo ime"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Dodaj suprugu od već unesenih osoba"
+
+#~ msgid "Brother"
+#~ msgstr "Brat"
+
+#~ msgid "Change family members"
+#~ msgstr "Promeni članove porodice"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Napravi novu zajedničku belešku"
+
+#~ msgid "Daughter"
+#~ msgstr "Ćerka"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Уреди сирови GEDCOM запис"
+
+#~ msgid "Family group information"
+#~ msgstr "Grupirani podaci za porodicu"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Kresanje porodičnog stabla"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Osoba koja je živela najduže"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Dodaj ovu osobu kao dete već upisanoj porodici"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Dodaj ovu osobu kao supruga već upisanoj porodici"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Dadaj ovu osobu kao suprugu u već upisanu porodicu"
+
+#~ msgid "Loading…"
+#~ msgstr "transfer u toku…"
+
+#~ msgid "Married name"
+#~ msgstr "Ime i prezime posle udaje"
+
+#~ msgid "Married surname"
+#~ msgstr "Prezime posle udaje"
+
+#~ msgid "Name List"
+#~ msgstr "Lista imena"
+
+#~ msgid "On this day…"
+#~ msgstr "Na današnji dan…"
+
+#~ msgid "Send message"
+#~ msgstr "Pošalji poruku"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Pokaži samo osobe za koje se ne zna pol."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Прикажи само особе, догађаје или све?"
+
+#~ msgid "Sister"
+#~ msgstr "Sestra"
+
+#~ msgid "Social security number"
+#~ msgstr "Identifikacioni broj"
+
+#~ msgid "Son"
+#~ msgstr "Sin"
+
+#~ msgid "Users logged in"
+#~ msgstr "Prijavljeni korisnici"
+
+#~ msgid "View family"
+#~ msgstr "Pogledaj upis porodice"
+
+#~ msgid "View person"
+#~ msgstr "Pogledaj upis osobe"
+
+#~ msgid "View source"
+#~ msgstr "Pogledaj izvor"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_slovenian_ci"

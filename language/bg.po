@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:25+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -1640,7 +1640,7 @@ msgstr ""
 #. I18N: Description of the “Album” module
 #: modules_v3/lightbox/module.php:39
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Алтернативен етикет (tab) на етикет \"Мултимедия\", с подобрени възможности да показване на изображения."
+msgstr "Алтернативен етикет (tab) на етикет “Мултимедия”, с подобрени възможности да показване на изображения."
 
 #. I18N: Description of the “Charts” module
 #: modules_v3/charts/module.php:39
@@ -1867,7 +1867,7 @@ msgstr "Потвърдете изтриване на тази история"
 #: library/WT/Controller/Source.php:106
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "Сигурни ли сте че искате да изтриете \"%s\"?"
+msgstr "Сигурни ли сте че искате да изтриете “%s”?"
 
 #: modules_v3/gedcom_favorites/module.php:125
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -4555,7 +4555,7 @@ msgstr ""
 #: includes/functions/functions_edit.php:932 includes/media_reorder.php:169
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 msgid "Do not update the “last change” record"
-msgstr "Без актуализиране на запис \"последна промяна\""
+msgstr "Без актуализиране на запис “последна промяна”"
 
 #: library/WT/Gedcom/Tag.php:906
 #: modules_v3/lightbox/functions/lightbox_print_media.php:121
@@ -8860,8 +8860,8 @@ msgstr "Няма събития на утрешния ден."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Няма събития с живи хора на следващия %s ден. Тази информация е достъпна само за регистрирани потребители."
-msgstr[1] "Няма събития с живи хора през следващите %s дни. Тази информация е достъпна само за регистрирани потребители."
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -10012,7 +10012,7 @@ msgstr "Опции за конфиденциалност"
 
 #: admin_trees_config.php:537
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Ограничения \"Конфиденциално\" - отнасят се за записи и факти, които не съдържат GEDCOM RESN етикет (tag)"
+msgstr "Ограничения “Конфиденциално” - отнасят се за записи и факти, които не съдържат GEDCOM RESN етикет (tag)"
 
 #: expand_view.php:34 library/WT/Controller/GedcomRecord.php:49
 #: library/WT/GedcomRecord.php:452 library/WT/GedcomRecord.php:500
@@ -13380,7 +13380,7 @@ msgstr "За да ви улесним в работата с този блок, 
 
 #: modules_v3/todo/help_text.php:36
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "За създаване на Изследователски задачи, трябва да добавите \"Изследователски задачи\" към списъка от факти и събития в настройките на фамилното дърво."
+msgstr "За създаване на Изследователски задачи, трябва да добавите “Изследователски задачи” към списъка от факти и събития в настройките на фамилното дърво."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:581
@@ -18613,3 +18613,755 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid " but the details are unknown"
+#~ msgstr " но подробностите са неизведстни"
+
+#~ msgid " in "
+#~ msgstr " в "
+
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "преди %s ден"
+#~ msgstr[1] "преди %s дни"
+
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "%s година"
+#~ msgstr[1] "%s години"
+
+#~ msgid "%s year ago"
+#~ msgid_plural "%s years ago"
+#~ msgstr[0] "преди %s година"
+#~ msgstr[1] "преди %s години"
+
+#~ msgid "(in childhood)"
+#~ msgstr "(детство)"
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b>Важно:</b> Информацията с конфиденциален характер, съдържаща се в базата данни, е достъпна само за роднини и близки приятели.  От Вас ще се изиска да представите доказателство за роднинска връзка или близко приятелство, преди да получите достъп до информацията с конфиденциален характер.  В определени случаи информацията за починали хора може също да бъде с конфиденциален характер.  Ако случаят е такъв, вероятно няма достоверна информация за това, дали индивидът е починал или изобщо отсъства допълнителна информация за индивида.<br><br>Преди да зададете Вашия въпрос, моля да проверите данните за този индивид (имена, дати, локации), и да се убедите, че Вашето запитване касае именно него.  Ако желаете да промените информацията в базата данни, моля да включите източниците, откъдето е почерпана Вашата информация.<br>"
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><h2>Вход/Регистрация</h2></center><br>Единствено регистрираните потребители имат достъп до всички данни от определено родословно дърво.<br><br>В случай че нямате регистрация, можете да получите потребителско име и парола, като кликнете на съответната препратка по-долу. След одобряване на Вашата заявка, администраторът на сайта ще активира Вашия акаунт.  Ще получите съобщение на електронната си поща за одобряване на заявката.<br><br>Ако вече имате регистрация, можете да влезете в системата от тази страница."
+
+#~ msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
+#~ msgstr "<div class=\"largeError\">Важно:</div><div>С попълването и изпращането на тази форма Вие се съгласявате:<ul><li>да не разгласявате информацията за живите хора от базата данни, която е с конфинденциален характер;</li><li>да отбележите в полето «Коментари», с кого от хората сте в родствена връзка или за кого желаете да добавите данни във фамилните дървета;</li><li>да представите копие или референция към източниците, от които е почерпана Вашата информация.</li></ul><div>Ако желаете да станете мениджър на ново родословно дърво, отбележете това в полето «Коментари».</div>"
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Справка за факти, потвърдени от определен източник."
+
+#~ msgid "Access"
+#~ msgstr "Достъп"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Добави съпруг от въведените индивиди"
+
+#~ msgid "Add a new associate allows you to link a fact with an associated individual in the site.  This is one way in which you might record that someone was the godfather of another individual."
+#~ msgstr "Тази опция дава възможност до свързвате лица, които нямат родствена връзка.  Това е начин да направите запис, от който да се вижда, че едно лице е Кръстник на друго, например."
+
+#~ msgid "Add a new name"
+#~ msgstr "Добави ново име"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Добави съпруга от въведените индивиди"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Добави друг индивид към графиката."
+
+#~ msgid "Add individuals"
+#~ msgstr "Добави лица"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Добави само запис на този индивид."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Добави записи на родителите и всички потомци заедно със записа на това семейство."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Добави записи на родителите и децата заедно със записа на това семейство."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Добави записи на родителите заедно със записа на това семейство."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Добави този индивид и неговите предци по пряка линия."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Добави този индивид, неговите предци по пряка линия и техните семейства."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Добави този индивид, неговите родители и неговите братя и сестри."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Добави този индивид, неговия/ата съпруг/а и всички потомци."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Добави този индивид, неговия/ата съпруг/а и деца."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Добави този източник и семействата/индивидите свързани с него."
+
+#~ msgid "All individuals"
+#~ msgstr "Всички хора"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "Интерактивно дърво, показващо всички предци и потомци на индивид."
+
+#~ msgid "Ancestors of "
+#~ msgstr "Предци на "
+
+#~ msgid "Ancestral file number"
+#~ msgstr "Номер на фамилно досие"
+
+#~ msgid "Available blocks"
+#~ msgstr "Налични модули"
+
+#~ msgid "Begin year"
+#~ msgstr "Начална година"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "Родното място съдържа"
+
+#~ msgid "Birth date range end"
+#~ msgstr "Крайна дата на раждания"
+
+#~ msgid "Birth date range start"
+#~ msgstr "Начална дата на раждания"
+
+#~ msgid "Burial place contains"
+#~ msgstr "Мястото на погребване съдържа"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "По подразбиране този списък показва локациите, които могат да се намерят във вашето фамилно дърво. Възможно е да имате още други локации, с координати или без, които сабили импортирани от външен файл, но не са активни локации във фамилното ви дърво. Тази опция ще покаже всички налични локации, включително неактивните."
+
+#~ msgid "Child of "
+#~ msgstr "Дете на "
+
+#~ msgid "Children of "
+#~ msgstr "Деца на "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Роднинска група"
+
+#~ msgid "Clear chart"
+#~ msgstr "Изчисти"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "Кликнете върху %s за избор на индивид за Глава на семейство."
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Кликнете на Име, за да добавите Лицето към Списъка с Препратки."
+
+#~ msgid "Click this link to remove the individual from the timeline."
+#~ msgstr "Кликнете тук, за да премахнете индивида от линията на живота."
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Кликнете за избор на индивид за Глава на семейство."
+
+#~ msgid "Coat of arms"
+#~ msgstr "Герб"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Брак по общо право"
+
+#~ msgid "Contact information"
+#~ msgstr "Информаця за контакт"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Коригиране на NAME записите от рода на 'John/DOE/' или 'John /DOE', генерирани от стари версии на програми за генеалогия."
+
+#~ msgid "Custom event"
+#~ msgstr "Друго събитие"
+
+#~ msgid "Date of LDS baptism"
+#~ msgstr "Дата на LDS кръщение"
+
+#~ msgid "Date of LDS endowment"
+#~ msgstr "Дата на LDS дарение"
+
+#~ msgid "Date of adoption"
+#~ msgstr "Дата на осиновяване"
+
+#~ msgid "Date of blessing"
+#~ msgstr "Дата на благословия"
+
+#~ msgid "Date of cremation"
+#~ msgstr "Дата на кремация"
+
+#~ msgid "Date of emigration"
+#~ msgstr "Дата на емиграция"
+
+#~ msgid "Date of event"
+#~ msgstr "Дата на събитие"
+
+#~ msgid "Date of immigration"
+#~ msgstr "Дата на имиграция"
+
+#~ msgid "Date of naturalization"
+#~ msgstr "Дата на натурализация"
+
+#~ msgid "Date of ordination"
+#~ msgstr "Дата на ръкополагане"
+
+#~ msgid "Date of residence"
+#~ msgstr "Дата на местожителство"
+
+#~ msgid "Death date range end"
+#~ msgstr "Крайна дата на смърт"
+
+#~ msgid "Death date range start"
+#~ msgstr "Начална дата на смърт"
+
+#~ msgid "Default theme"
+#~ msgstr "Шаблон по подразбиране"
+
+#~ msgid "Descendants of "
+#~ msgstr "Потомци на "
+
+#~ msgid "Descent steps"
+#~ msgstr "Поколения"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Предци по пряка линия"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Предци по пряка линия с техните семейства"
+
+#~ msgid "Display %s"
+#~ msgstr "Покажи %s"
+
+#~ msgid "Edit details"
+#~ msgstr "Редактирай детайли"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Редакт. първичния GEDCOM запис"
+
+#~ msgid "Email address:"
+#~ msgstr "Е-поща:"
+
+#~ msgid "End year"
+#~ msgstr "Крайна година"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "ID на индивид"
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Въведете ID на Лице, Семейство или Източник"
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Въведете или търсете ID на индивида, семейството или източника, към което ще бъде свързан този мултимедиен обект."
+
+#~ msgid "Entry text:"
+#~ msgstr "Текст:"
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "Разшири “Конфиденциално” върху починали хора"
+
+#~ msgid "External objects"
+#~ msgstr "Външни обекти"
+
+#~ msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+#~ msgstr "Често Задавани Въпроси е списък от въпроси и отговори, който позволява да бъдат разяснени правилата, политиките и процедурите на посетителите на сайта.  Въпросите обикновено са насочени към конфиденциалността на информацията, копирайт информацията, потребителските акаунти, непозволеното съдържание, изискванията към източниците и цитатите, и т.н."
+
+#~ msgid "Family group information"
+#~ msgstr "Допълнителна информация за фамилната група"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Количка с избрани записи от фамилното дърво"
+
+#~ msgid "Family with husband"
+#~ msgstr "Семейство със съпруг"
+
+#~ msgid "Family with wife"
+#~ msgstr "Семейство със съпруга"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Рождено място на Бащата - (Chapman format)"
+
+#~ msgid "Font"
+#~ msgstr "Шрифт"
+
+#~ msgid "Foster child"
+#~ msgstr "Осиновен"
+
+#~ msgid "Foster father"
+#~ msgstr "Осиновител"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "Статистика за GEDCOM-а"
+
+#~ msgid "Generation "
+#~ msgstr "Поколение "
+
+#~ msgid "He "
+#~ msgstr "Той "
+
+#~ msgid "He died"
+#~ msgstr "Умира"
+
+#~ msgid "He married"
+#~ msgstr "Жени се"
+
+#~ msgid "He resided at"
+#~ msgstr "Местоживеене"
+
+#~ msgid "He was born"
+#~ msgstr "Роден"
+
+#~ msgid "He was buried"
+#~ msgstr "Погребан"
+
+#~ msgid "He was christened"
+#~ msgstr "Покръстен"
+
+#~ msgid "He was cremated"
+#~ msgstr "Кремиран"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Здравейте, %s,"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Здравейте, %s,"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Професия/занятие"
+
+#~ msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
+#~ msgstr "Тук можете да изберете между две възможности за показване на локациите в йерархията. Ако изберете ДА, името ще се покаже като късо име или името на съответното ниво от йерархията, ако изберете НЕ, името ще се покаже като пълно.<br><b>Примери:<br>Пълно име:</b> Chicago, Illinois, USA<br><b>Кратко име:</b> Chicago<br><b>Пълно име:</b> Illinois, USA<br><b>Кратко име:</b> Illinois"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "Покажи / скрий"
+
+#~ msgid "His occupation was"
+#~ msgstr "Професия/занятие"
+
+#~ msgid "Hit count:"
+#~ msgstr "Посещения:"
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Ако не сте заявявали откриването на акаунт, можете просто да изтриете това съобщение."
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "Ако имате дълъг списък с неактивни локации, този списък може да се генерира по-бавно."
+
+#~ msgid "In this month…"
+#~ msgstr "През този месец …"
+
+#~ msgid "In this year…"
+#~ msgstr "През тази година …"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Добави и неговото семейство."
+
+#~ msgid "Individual 1"
+#~ msgstr "Индивид 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Индивид 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Най-голяма продължителност на живота"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Свържи този индивид със съществуващо семейство като дете"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Свържи този индивид със съществуващо семейство като съпруг"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Свържи този индивид със съществуващо семейство като съпруга"
+
+#~ msgid "Living individuals"
+#~ msgstr "Живи хора"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Локацията не е изтрита: тази локация има подрайони"
+
+#~ msgid "Main section blocks"
+#~ msgstr "Модули в основната секция"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Крайна дата на периода"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Начална дата на периода"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Място на брак"
+
+#~ msgid "Married name"
+#~ msgstr "Име след брак"
+
+#~ msgid "Married surname"
+#~ msgstr "Фамилно име след брак"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Най-често разглеждани обекти"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Рождено място на Майката - (Chapman format)"
+
+#~ msgid "No events for living individuals exist for the next %s day."
+#~ msgid_plural "No events for living people exist for the next %s days."
+#~ msgstr[0] "Няма събития с живи хора на следващия %s ден. Тази информация е достъпна само за регистрирани потребители."
+#~ msgstr[1] "Няма събития с живи хора през следващите %s дни. Тази информация е достъпна само за регистрирани потребители."
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Няма събития с живи хора на днешния ден. Тази информация е достъпна само за регистрирани потребители."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Няма събития с живи хора на утрешния ден. Тази информация е достъпна само за регистрирани потребители."
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Не съществува такова ID в този GEDCOM файл."
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Най-голяма възраст на живи хора"
+
+#~ msgid "On this day…"
+#~ msgstr "На този ден …"
+
+#~ msgid "Orientation"
+#~ msgstr "Ориентация"
+
+#~ msgid "Page size"
+#~ msgstr "Размер на страницата"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Родители, братя и сестри"
+
+#~ msgid "Place of LDS baptism"
+#~ msgstr "Място на LDS кръщение"
+
+#~ msgid "Place of LDS endowment"
+#~ msgstr "Място на LDS дарение"
+
+#~ msgid "Place of adoption"
+#~ msgstr "Място на осиновяване"
+
+#~ msgid "Place of blessing"
+#~ msgstr "Място на благословия"
+
+#~ msgid "Place of cremation"
+#~ msgstr "Място на кремация"
+
+#~ msgid "Place of emigration"
+#~ msgstr "Място на емиграция"
+
+#~ msgid "Place of event"
+#~ msgstr "Място на събитие"
+
+#~ msgid "Place of immigration"
+#~ msgstr "Място на на имиграция"
+
+#~ msgid "Place of naturalization"
+#~ msgstr "Място на натурализация"
+
+#~ msgid "Place of ordination"
+#~ msgstr "Място на ръкополагане"
+
+#~ msgid "Place of residence"
+#~ msgstr "Местожителство"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Последните 100 години"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Изтрий локация?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Модули в дясната секция"
+
+#~ msgid "SMTP port"
+#~ msgstr "SMTP порт"
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Търсене и/или замяна на данни в GEDCOM члез опростено или детайлизирано търсене."
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Тълсене на Лица за добавяне в Списъка с Препратки."
+
+#~ msgid "Send message"
+#~ msgstr "Изпрати съобщение"
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Споделена бележка:"
+
+#~ msgid "Shared notes found"
+#~ msgstr "Намерени Споделени Бележки"
+
+#~ msgid "She "
+#~ msgstr "Тя "
+
+#~ msgid "She died"
+#~ msgstr "Умира"
+
+#~ msgid "She married"
+#~ msgstr "Омъжва се"
+
+#~ msgid "She resided at"
+#~ msgstr "Местоживеене"
+
+#~ msgid "She was born"
+#~ msgstr "Родена"
+
+#~ msgid "She was buried"
+#~ msgstr "Погребана"
+
+#~ msgid "She was christened"
+#~ msgstr "Покръстена"
+
+#~ msgid "She was cremated"
+#~ msgstr "Кремирана"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Покажи всички локации в списък"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Покажи деца на предци?"
+
+#~ msgid "Show details"
+#~ msgstr "Подробности"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Изображения"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Покажи неактивните локации"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Покажи хора, родени преди повече от 100 години."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Покажи хора, родени през последните 100 години."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Покажи живи хора или двойки, в които и двамата партьори са живи."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Покажи починали хора или двойки, в които и двамата партьори са починали."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Покажи хора, починали преди повече от 100 години."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Покажи хора, починали през последните 100 години."
+
+#~ msgid "Show notes?"
+#~ msgstr "Покажи бележки?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Покажи професии."
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Покажи само събития за живи хора?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Покажи само индивиди, чийто пол е неизвестен."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Покажи само лица, само събития или всички."
+
+#~ msgid "Show photos?"
+#~ msgstr "Покажи фотографии?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Покажи локациите в йерархия"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Покажи индивиди/семейства, свързани чрез неродословна връзка"
+
+#~ msgid "Show residences?"
+#~ msgstr "Покажи местожителство."
+
+#~ msgid "Show sources?"
+#~ msgstr "Покажи източници?"
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Показани %1$s до %2$s от общо %3$s записа"
+
+#~ msgid "Social security number"
+#~ msgstr "Социална осигуровка"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Съпрузи и деца"
+
+#~ msgid "Surname option"
+#~ msgstr "Опция за фамилно име"
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "След като прегледа съобщението за Вашата регистрация, администраторът ще позволи достъп в системата с Вашите потребителско име и парола."
+
+#~ msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+#~ msgstr "Количката с избрани записи позволава да изрязвате части (“clippings”) от фамилното дърво и да ги събирате в общ файл за даунлоуд и последващо импортиране във Ваша програма за генеалогия.  Файлът за даунлоуд е в GEDCOM формат.<br><ul><li>Как да направя изрезка?<br>Това е лесно.  Когато виждате име, върху което може да се кликва (индивид, семейство или източник), кликнете на това име, за да отидете на страница с подробности за това име. В дясното поле ще видите етикет Количка и опция <b>Добави в количката</b>.  Когато кликнете на тази препратка, ще видите няколко опции за даунлоуд.</li><li>Как да даунлоудна?<br>След като имате обект в количката, можете да даунлоуднете, просто като кликнете на препратката <b>Даунлоуд</b>.  Следвайте инструкциите и препратките.</li></ul>"
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "Regex съдържа грешка. Не може да бъде използван."
+
+#~ msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
+#~ msgstr "Този GEDCOM (фамилно дърво) е последно актуализиран на #gedcomUpdated#. Във фамилното дърво има #totalSurnames# фамилни имена. Най-старото събитие е #firstEventName# с вид #firstEventType# от #firstEventYear#. Най-новото събитие е #lastEventName# с вид #lastEventType# от #lastEventYear#.<br><br>За коментари или препоръки, свържете се с  #contactWebmaster#."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "Този GEDCOM е създаден с <b>%1$s</b> на <b>%2$s</b>."
+
+#~ msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+#~ msgstr "Този блок позволява да се покаже родословно дърво, диаграма потомци или диаграма пясъчен часовник на Началната страница или на Персоналната страница.  Заради ограниченото пространство диаграмите следва да се показват само от лавата страна на страниците.<br><br>Когато този блок се показва на Началната страница, индивидът в основата на диаграмата и видът на диаграмата се определят от Администратора.  Когато този блок се показва на Персоналната страница, тези опции се определят от Потребителя.<br><br>Тези диаграми са същите, като диаграмите, които се извикват от менютата.  За допълнителна информация за отделен индивид, кликнете върху съответната препратка."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Този модул показва 10-те най-често показвани записа. Модулът изисква да бъде включен броячът на посещения в GEDCOM настройките."
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Това поле контролира последователността, в коята се показват Често Задаваните Въпроси.<br><br>Не е необходимо да въвеждате номерата последователно.  Ако оставяте празни места в номерацията, можете да добавяте нови номера впоследствие.  Например, ако използвате номера 1, 6, 11, 16, можете по-късно да въведете нове номера между съществуващите.  Позволени са нула и номера с отрицанелен знак, които могат да се използват за добавяне на въпроси в списъка преди първия въпрос.<br><br>Когато повече от един въпрос в Често Задавани Въпроси има един и същи пореден номер, само един от тези въпроси ще се показва."
+
+#~ msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+#~ msgstr "Това поле за въвеждане позволява индивид да бъде добавен в Количката чрез  използване на неговото ID.  След като индивидът бъде добавен, разполагате с опции за добавяне на негори родственици в количката.<br><br>Ако не разполагате с ID на индивида, можете да го намерите но името на индивида, като кликнете на човечето до бутона Добави."
+
+#~ msgid "This option enables online editing features for this database so that users with Edit privileges may update data online."
+#~ msgstr "Тазе опция разрешава он-лайн редактирането за тази база данни, за да могат потребители с право на редактиране да извършват промени в базата данни."
+
+#~ msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
+#~ msgstr "За да ви улесним в работата с този блок, сме създали няколко стандартни шаблони. След като изберете определен шаблон, текстовата зона ще съдържа примерен текст, който можете да промените впоследствие."
+
+#~ msgid "To family"
+#~ msgstr "Към Семейство"
+
+#~ msgid "To individual"
+#~ msgstr "Към Индивид"
+
+#~ msgid "To source"
+#~ msgstr "Към Източник"
+
+#~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
+#~ msgstr "Използвайте “силуетно” изображение, когато не е избрано основно изображение за съответното лице.  “Силуетното” изображение е различно за различните полове.<br><br><table><tr><td wrap valign=\"middle\">Това изображение ще се използва, когато полът на лицето е неизвестен:"
+
+#~ msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+#~ msgstr "Използвайте това поле, за да укажете, че мултимедийният обект е основен за лицето, към което е прикачен.  Основният мултимедиен обект е този, който ще се използва на страниците с диаграми и на индивидуалната страница на лицето."
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "Потребителят не извърши верификация в рамките на 7 дни."
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "Потребителското име не може да съдържа следните символи: &lt; &gt; &quot; %% { } ;"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Език на потребителя"
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Виж GEDCOM записа"
+
+#~ msgid "View day"
+#~ msgstr "Покажи ден"
+
+#~ msgid "View details"
+#~ msgstr "Покажи детайли"
+
+#~ msgid "View family"
+#~ msgstr "Покажи семейство"
+
+#~ msgid "View month"
+#~ msgstr "Покажи месец"
+
+#~ msgid "View notes"
+#~ msgstr "Покажи Бележките"
+
+#~ msgid "View person"
+#~ msgstr "Разгледай"
+
+#~ msgid "View source"
+#~ msgstr "Покажи Източник"
+
+#~ msgid "View year"
+#~ msgstr "Покажи година"
+
+#~ msgid "Visitor options"
+#~ msgstr "Опции за посетител"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Благодарим Ви за регистрацията!<br><br>Ще получите съобщение на адрес <b>%s</b>. Моля, прочетете това съобщение и потвърдете Вашата регистрация, като следвате инструкциите в полученото съобщение. Ако Вашият акаунт не бъде потвърден до седем дни, направетана регистрация ще бъде отхвърлена автоматично.  В този случай е възможно да направите нова регистрация.<br><br>След като изпълните инструкциите в изпратеното съобщение, администраторът на www.GTrees.net ще одобри регистрацията, преди да можете да влезете във Вашия потребителски акаунт.<br><br>Пазете Вашите потребителско име и парола. Те ще са Ви необходими, за да влезете във Вашия акаунт."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Благодарим Ви за регистрацията!<br><br>Ще получите съобщение на адрес <b>%s</b>. Моля, прочетете това съобщение и потвърдете Вашата регистрация, като следвате инструкциите в полученото съобщение. Ако Вашият акаунт не бъде потвърден до седем дни, направетана регистрация ще бъде отхвърлена автоматично.  В този случай е възможно да направите нова регистрация.<br><br>След като изпълните инструкциите в изпратеното съобщение, ще можете да влезете във Вашия потребителски акаунт.<br><br>Пазете Вашите потребителско име и парола. Те ще са Ви необходими, за да влезете във Вашия акаунт."
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "Настройки Web Site и META Tag"
+
+#~ msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
+#~ msgstr "При настройка <b>Да</b>, следното съобщение ще се появи над полетата в регистрационната форма «Ново потребителско име»:<div class=\"list_value_wrap\"><div class=\"largeError\">Важно:</div><div class=\"error\">С попълването и изпращането на тази форма Вие се съгласявате:<ul><li>да не разгласявате информацията за живите хора в базата данни, която е от конфинденциален характер;</li><li>да отбележите в полето «Коментари» по-долу с кого от хората сте в родствена връзка или за кого желаете да добавите данни във фамилните дървета.</li></ul></div>"
+
+#~ msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
+#~ msgstr "Когато кликнете на тази препратка, количката се изпразва напълно.<br><br>Ако не желаете да отстраните всички обекти в количката, можете да премахвате отделните обекти с кликване върху <b>Премахни</b> в полето за Име.  <u>Не</u> се генерира диалог за потвърждение при кликването върху тези препратки;  поисканото изтриване се извършва веднага."
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Препратки от този индивид, които също желаете да добавите."
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Девича фамилия на съпругата се превръща в собствено име"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Фамилия на съпругата се заменя с фамилията на съпруга."
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "Можете да определите, дали Често Задавани Въпроси ще се показват независимо от GEDCOM-а, или ще се показват само за текущия GEDCOM.<br><ul><li><b>Всички</b>&nbsp;&nbsp;&nbsp;Често Задавани Въпроси ще се показват независимо от GEDCOM-а.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;Често Задавани Въпроси ще се показват само за активните в списъка GEDCOM-и.</li></ul>"
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Можете да търсите в данните омъжени жени, като отбелязвате техните имена по мъж.<br>Не всички омъжени жени вземат фамилиите на съпрузите си, за това следва да се внимава да не въвеждате неверна информация във вашата база данни."
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "Няма да получавате други съобщения от този сайт, тъй като непотвърдена заявка за откриване на акаунт ще бъде изтрита автоматично след седем дни."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Вашата количка с избрани записи е празна."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Вашият потребителски акаунт не е настроен за “автоматично одобраване на измененията”. Можете да променяте записите само един по един."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Zip файл(ове)"
+
+#~ msgid "daughter of"
+#~ msgstr "дъщеря на"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "починала"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "починал"
+
+#~ msgid "first"
+#~ msgstr "начало"
+
+#~ msgid "last"
+#~ msgstr "край"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "омъжена"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "женен"
+
+#~ msgid "son of"
+#~ msgstr "син на"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "баща на зетя"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "майка на зетя"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "родител на зетя"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "родена"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "роден"

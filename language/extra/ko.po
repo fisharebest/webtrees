@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:31+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -8859,7 +8859,6 @@ msgstr ""
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
-msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -18610,3 +18609,15 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "Email address:"
+#~ msgstr "전자메일 주소:"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "많이 본 아이템"
+
+#~ msgid "Send message"
+#~ msgstr "메시지 보내기"
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "이 블록은 가장을 본 한 10 기록을 보여줍니다. 이 블록은 히트 카운터가 GEDCOM 구성 설정에서 사용할 수 있어야합니다."

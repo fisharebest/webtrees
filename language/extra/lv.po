@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:31+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -8864,6 +8864,7 @@ msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -18616,3 +18617,45 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "Edit details"
+#~ msgstr "Labot papildus informāciju"
+
+#~ msgid "Email address:"
+#~ msgstr "E-pasta adrese:"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "GEDCOM statistika"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Visvairāk skatītās vienības"
+
+#~ msgid "Send message"
+#~ msgstr "Sūtīt ziņu"
+
+#~ msgid "Show details"
+#~ msgstr "Rādīt sīkāku informāciju"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Parādīt neaktīvās vietas"
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Rādīt tikai personas, notikumus vai visu?"
+
+#~ msgid "Surname option"
+#~ msgstr "Uzvārda uzstādījumi"
+
+#~ msgid "View person"
+#~ msgstr "Skatīties personu"
+
+#~ msgid "View source"
+#~ msgstr "Skatīt avotu"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Sievas pirmslaulību uzvārds ir jaunais uzvārds"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Sievas uzvārds tiks aizstāts ar vīra uzvārdu"
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Jūsu lietotāja nav ispējota \"automātiskā labojumu apstiprināšana\". Jums būs iespējams vienlaicīgi izmainīt tikai vienu ierakstu."

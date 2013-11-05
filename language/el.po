@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-06-04 05:37+0000\n"
-"X-Generator: Launchpad (build 16660)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
@@ -4317,7 +4317,7 @@ msgstr "Διαγεγραμμένος χρήστης: "
 
 #: admin_trees_manage.php:196
 msgid "Deleting old genealogy data…"
-msgstr "Τα παλαιά γενεαλογικά δεδομένα διαγράφονται..."
+msgstr "Τα παλαιά γενεαλογικά δεδομένα διαγράφονται…"
 
 #: library/WT/Controller/Family.php:159
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -8859,8 +8859,8 @@ msgstr "Δεν υπάρχουν συμβάντα για αύριο."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Χωρίς γεγονότα για εν ζωή άτομα η επόμενη %s ημέρα."
-msgstr[1] "Χωρίς γεγονότα για εν ζωή άτομα οι επόμενες %s ημέρες."
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -11378,7 +11378,7 @@ msgstr "Εμφάνιση συνηθισμένων επωνύμων;"
 
 #: library/WT/MenuBar.php:172 library/WT/MenuBar.php:183
 msgid "Show couple on timeline chart"
-msgstr "Εμφάνιση ζευγαριού στο <br />χρονοδιάγραμμα"
+msgstr "Εμφάνιση ζευγαριού στο χρονοδιάγραμμα"
 
 #: includes/functions/functions_print_lists.php:506
 msgid "Show couples where either partner married more than once."
@@ -18612,3 +18612,723 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "Πρίν %s ημέρα"
+#~ msgstr[1] "Πρίν %s ημέρες"
+
+#~ msgid "%s hour ago"
+#~ msgid_plural "%s hours ago"
+#~ msgstr[0] "Πρίν %s ώρα"
+#~ msgstr[1] "Πρίν %s ώρες"
+
+#~ msgid "%s month"
+#~ msgid_plural "%s months"
+#~ msgstr[0] "%s μήνας"
+#~ msgstr[1] "%s μήνες"
+
+#~ msgid "%s month ago"
+#~ msgid_plural "%s months ago"
+#~ msgstr[0] "Πρίν %s μήνα"
+#~ msgstr[1] "Πριν %s μήνες"
+
+#~ msgid "%s second ago"
+#~ msgid_plural "%s seconds ago"
+#~ msgstr[0] "Πρίν %s δευτερόλεπτο"
+#~ msgstr[1] "Πρίν %s δευτερόλεπτα"
+
+#~ msgid "%s week"
+#~ msgid_plural "%s weeks"
+#~ msgstr[0] "%s εβδομάδα"
+#~ msgstr[1] "%s εβδομάδες"
+
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "%s χρόνο"
+#~ msgstr[1] "%s χρόνια"
+
+#~ msgid "%s year ago"
+#~ msgid_plural "%s years ago"
+#~ msgstr[0] "Πρίν %s χρόνο"
+#~ msgstr[1] "Πρίν %s χρόνια"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(φιλτραρισμένο από %s συνολικές καταχωρήσεις)"
+
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+#~ msgstr "Use relationship privacy<br><br>A 'No' value means authenticated users can see the details of all living people.<br>A 'Yes' value means users can only see the private information of living people they are related to."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Καλώς ήλθατε σε αυτό τον γενεαλογικό ιστοτόπο</b></center><br>Η πρόσβαση επιτρέπεται σε χρήστες που έχουν λογαριασμό και κωδικό για αυτή την τοποθεσία."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Καλώς ήλθατε σε αυτό τον γενεαλογικό ιστοτόπο</b></center><br>Η πρόσβαση σε αυτή την τοποθεσία επιτρέπεται μόνο σε <u>εγκεκριμένους</u> χρήστες.<br><br>Εάν έχετε ένα λογαριασμό χρήστη, μπορείτε να συνδεθείτε σε αυτή τη σελίδα. Εάν δεν έχετε λογαριασμό χρήστη, μπορείτε να υποβάλετε αίτημα για έναν, επιλέγοντας το κατάλληλο σύνδεσμο παρακάτω.<br><br>Μετά την επιβεβαίωση του αιτήματος σας, ο διαχειριστής της τοποθεσίας είτε θα εγκρίνει τον λογαριασμό σας είτε θα απορρίψει το αίτημα σας. Θα λάβετε ένα email μόλις το αίτημα σας εγκριθεί."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Καλώς ήλθατε σε αυτό τον γενεαλογικό ιστοτόπο</b></center><br>Η πρόσβαση σε αυτή την τοποθεσία επιτρέπεται <u>μόνο σε μέλη της οικογένειας</u>.<br><br>Εάν έχετε ένα λογαριασμό χρήστη, μπορείτε να συνδεθείτε σε αυτή τη σελίδα. Εάν δεν έχετε λογαριασμό χρήστη, μπορείτε να υποβάλετε αίτημα για έναν, επιλέγοντας το κατάλληλο σύνδεσμο παρακάτω.<br><br>Μετά την επιβεβαίωση του αιτήματος σας, ο διαχειριστής της τοποθεσίας είτε θα εγκρίνει τον λογαριασμό σας είτε θα απορρίψει το αίτημα σας. Θα λάβετε ένα email μόλις το αίτημα σας εγκριθεί."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Καλώς ήλθατε σε αυτό τον γενεαλογικό ιστοτόπο</b></center><br>Η πρόσβαση σε αυτή την τοποθεσία επιτρέπεται σε κάθε επισκέπτη που διαθέτει ένα λογαριασμό χρήστη.<br><br>Εάν έχετε ένα λογαριασμό χρήστη, μπορείτε να συνδεθείτε σε αυτή τη σελίδα. Εάν δεν έχετε λογαριασμό χρήστη, μπορείτε να υποβάλετε αίτημα για έναν, επιλέγοντας το κατάλληλο σύνδεσμο παρακάτω.<br><br>Μετά την επιβεβαίωση του αιτήματος σας, ο διαχειριστής της τοποθεσίας θα ενεργοποιήσει τον λογαριασμό σας. Θα λάβετε ένα email μόλις το αίτημα σας εγκριθεί."
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=άαβγδέεζήηθίϊΐικλμνξόοπρσςτύϋΰυφχψώω"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=ΆΑΒΓΔΈΕΖΉΗΘΊΪΪΙΚΛΜΝΞΌΟΠΡΣΣΤΎΫΫΥΦΧΨΏΩ"
+
+#~ msgid "Access"
+#~ msgstr "Απλή Πρόσβαση"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Προσθήκη συζύγου (άντρα) χρησιμοποιόντας υπάρχον άτομο"
+
+#~ msgid "Add a new name"
+#~ msgstr "Προσθήκη Νέου Ονόματος"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Προσθήκη συζύγου (γυναίκας) χρησιμοποιόντας υπάρχον άτομο"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Προσθήκη ενός ακόμα ατόμου στο γράφημα"
+
+#~ msgid "Add individuals"
+#~ msgstr "Προσθήκη ατόμων"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Προσθήκη μόνο αυτού του ατόμου."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Προσθήκη εγγραφών γονέων και απογόνων, μαζί με αυτή την οικογενειακή εγγραφή."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Προσθήκη εγγραφών γονέων και παιδιών, μαζί με αυτή την οικογενειακή εγγραφή."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Προσθήκη εγγραφών γονέων μαζί με αυτή την οικογενειακή εγγραφή."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Προσθήκη του ατόμου αυτού και των απευθείας προγόνων του."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Προσθήκη του ατόμου αυτού, των απευθείας προγόνων του, και των οικογενειών τους."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Προσθήκη του ατόμου αυτού, των γονιών του, και των αδερφιών του."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Προσθήκη του ατόμου αυτού, του συζύγου του, και όλων των απογόνων."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Προσθήκη του ατόμου αυτού, του συζύγου του, και των παιδιών."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Προσθήκη αυτής της πηγής και οικογένειες/άτομα που συνδέονται σε αυτή."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "Αφού συνδεθείτε, επιλέξτε το σύνδεσμο «Το προφίλ μου» κάτω από το μενού «Ατομική πύλη» και συμπληρώστε τα πεδία κωδικών για να αλλάξετε τον κωδικό σας."
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "Ηλικία στην οποία υποθέτουμε οτι καποιος εχει απεβιώσει"
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "Ηλικία γονέων δίπλα στην ημ/νία γεννήσεως παιδιού"
+
+#~ msgid "All individuals"
+#~ msgstr "Όλα τα άτομα"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "Να επιτρέπονται οι εναλλαγές GEDCOM"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "Αποθήκευση μηνυμάτων στην Βάση Δεδομένων"
+
+#~ msgid "Ancestors of "
+#~ msgstr "Πρόγονοι του(ης) "
+
+#~ msgid "Available blocks"
+#~ msgstr "Διαθέσιμα πλαίσια"
+
+#~ msgid "Begin year"
+#~ msgstr "Έτος αρχής"
+
+#~ msgid "Best man"
+#~ msgstr "Κουμπάρος"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "Λεπτομέρειες γεννήσεως και θανάτου στα διαγράμματα"
+
+#~ msgid "Birth date range end"
+#~ msgstr "Ημ/νία γεννήσεως εώς"
+
+#~ msgid "Birth date range start"
+#~ msgstr "Ημ/νία γεννήσεως από"
+
+#~ msgid "Brother"
+#~ msgstr "Αδελφός"
+
+#~ msgid "Burial place contains"
+#~ msgstr "Σημείο ενταφιασμού που περιέχει"
+
+#~ msgid "Change family members"
+#~ msgstr "Αλλαγή των Μελών της Οικογένειας"
+
+#~ msgid "Civil registrar"
+#~ msgstr "Πολιτικός ληξίαρχος"
+
+#~ msgid "Clear chart"
+#~ msgstr "Καθαρισμός διαγράμματος"
+
+#~ msgid "Click this link to remove the individual from the timeline."
+#~ msgstr "Click this link to remove the person from the time line."
+
+#~ msgid "Coat of arms"
+#~ msgstr "Θυρεός"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Γάμος κοινού δικαίου"
+
+#~ msgid "Contact information"
+#~ msgstr "Πληροφορίες επικοινωνίας"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Δημιουργήστε μια νέα κοινόχρηστη σημείωση"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Δημιουργήστε μια νέα κοινόχρηστη σημείωση χρησιμοποιώντας το βοηθό"
+
+#~ msgid "Create repository"
+#~ msgstr "Δημιουργία Αποθετηρίου"
+
+#~ msgid "Create user"
+#~ msgstr "Δημιουργία Χρήστη"
+
+#~ msgid "Custom event"
+#~ msgstr "Προσαρμοσμένο συμβάν"
+
+#~ msgid "Daughter"
+#~ msgstr "Θυγατέρα"
+
+#~ msgid "Death date range end"
+#~ msgstr "Ημ/νία θανάτου εώς"
+
+#~ msgid "Death date range start"
+#~ msgstr "Ημ/νία θανάτου απο"
+
+#~ msgid "Default theme"
+#~ msgstr "Προεπιλεγμένο Θέμα"
+
+#~ msgid "Descent steps"
+#~ msgstr "Βήματα προγόνων"
+
+#~ msgid "Display %s"
+#~ msgstr "Εμφάνιση %s"
+
+#~ msgid "Do not send messages"
+#~ msgstr "Να μήν επιτρέπονται τα μυνήματα"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Επεξεργασία ακατέργαστου πεδίου GEDCOM"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Επεξεργασία κοινόχρηστης σημείωσης"
+
+#~ msgid "Email address:"
+#~ msgstr "Διεύθυνση email:"
+
+#~ msgid "End year"
+#~ msgstr "Έτος τέλους"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Εισαγωγή ID ατόμου"
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Εισαγωγή ατόμου, οικογένειας ή ID πηγής"
+
+#~ msgid "Entry text:"
+#~ msgstr "Κείμενο καταχώρησης:"
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "Επέκταση ιδιωτικότητας για θανόντες"
+
+#~ msgid "External objects"
+#~ msgstr "Εξωτερικά αντικείμενα"
+
+#~ msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+#~ msgstr "Οι Συχνές ερωτήσεις είναι κατάλογοι των απαντήσεων και ερωτήσεων, που σας επιτρέπουν να εξηγήσετε τους κανόνες, τις πολιτικές καθώς και διαδικασίες του ιστότοπου, για τους επισκέπτες σας. Οι ερωτήσεις συνήθως ασχολούνται με ζητηματα ιδιωτικότητας, πνευματικά δικαιώματα, τους λογαριασμούς χρηστών, ακατάλληλο περιεχόμενο, την απαίτηση για παραπομπές από τις πηγές, κ.λπ."
+
+#~ msgid "Facts for family records"
+#~ msgstr "Γεγονότα για οικ. εγγραφές"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "Γεγονότα για εγγραφές ατόμων"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "Γεγονότα για εγγραφές αποθετηρίων"
+
+#~ msgid "Facts for source records"
+#~ msgstr "Γεγονότα για εγγραφές πηγών"
+
+#~ msgid "Family group information"
+#~ msgstr "Πληροφορίες οικογενειακής ομάδας"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Καλάθι αποκομμάτων οικογενειακού δέντρου"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Τόπος γέννησης πατέρα - (Chapman format)"
+
+#~ msgid "Father’s age"
+#~ msgstr "Ηλικία πατέρα"
+
+#~ msgid "Font"
+#~ msgstr "Γραμματοσειρά"
+
+#~ msgid "From email address"
+#~ msgstr "Όνομα αποστολέα"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "Στατιστικά GEDCOM"
+
+#~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#~ msgstr "Gives users the option of selecting their own theme.<br>from a drop down menu (if implemented in the theme)<br>Requires ALLOW_USER_THEMES to be true as well."
+
+#~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+#~ msgstr "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with the code to verify the application.<br>After verification, the Administrator will have to approve the registration before it becomes active."
+
+#~ msgid "He was buried"
+#~ msgstr "Ενταφιάσθηκε"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Γεια σου %s …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Γειά σου %s …<br>Ευχαριστώ για την αίτηση εγγραφής"
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Γεια σου διαχειριστή …"
+
+#~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
+#~ msgstr "Here you can add a fact to the person (or persons).<br><br>First choose a fact from the \"drop down list\", then click the \"Add\" button.<br>In the \"drop down list\" are already all possible facts to add to the GEDCOM file."
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "Απόκρυψη &amp; εμφάνιση"
+
+#~ msgid "Hit count:"
+#~ msgstr "Μέτρηση επισκέψεων:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Ηλικία συζύγου (άντρα)"
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Εάν δεν ζητήσατε εσείς τον λογαριασμό, μπορείτε απλά να διαγράψετε αυτό το μήνυμα."
+
+#~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
+#~ msgstr "Setting this value to <b>Yes</b> allows your site visitors <b>and</b> users to have the option of changing GEDCOMs if you have a multiple GEDCOM environment setup.<br><br>Setting it to <b>No</b> disables GEDCOM switching for both visitors <b>and</b> logged in users."
+
+#~ msgid "In this month…"
+#~ msgstr "Στο μήνα αυτό, στην ιστορία μας…"
+
+#~ msgid "In this year…"
+#~ msgstr "Στο έτος αυτό, στην ιστορία μας…"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Να συμπεριληφθεί η άμεση οικογένειά του ατόμου;"
+
+#~ msgid "Individual 1"
+#~ msgstr "Άτομο 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Άτομο 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Μακροβιότερο άτομο"
+
+#~ msgid "LDS temple"
+#~ msgstr "Ναός LDS"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Σύνδεση αυτού του ατόμου σε μια υπάρχουσα οικ. ως παιδί"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Σύνδεση αυτού του ατόμου σε μια υπάρχουσα οικ. ως σύζυγο"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Σύνδεση αυτού του ατόμου σε μια υπάρχουσα οικογένεια, ως σύζυγο (γυναίκα)"
+
+#~ msgid "Living individuals"
+#~ msgstr "Ζωντανά άτομα"
+
+#~ msgid "Loading…"
+#~ msgstr "Φόρτωση…"
+
+#~ msgid "Main section blocks"
+#~ msgstr "Πλαίσια κύριου τμήματος"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Ημ/νια Γάμου εώς"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Ημ/νια Γάμου απο"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Τοποθεσία Γάμου που περιέχει"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Πρόθεση γάμου"
+
+#~ msgid "Married name"
+#~ msgstr "Όνομα γάμου"
+
+#~ msgid "Married surname"
+#~ msgstr "Επώνυμο γάμου"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Συγχώνευση από το ID:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Συγχώνευση στο ID:"
+
+#~ msgid "Min. no. of occurrences to be a “common surname”"
+#~ msgstr "Ελάχ. αρ. καταχωρήσεων για να θεωρείται \"κοινό επίθετο\""
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Περισσότερο προβεβλημένα αντικείμενα"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Τόπος γέννησης μητέρας - (Chapman format)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Ηλικία μητέρας"
+
+#~ msgid "Move left"
+#~ msgstr "Μετακίνηση αριστερά"
+
+#~ msgid "Move right"
+#~ msgstr "Μετακίνηση δεξιά"
+
+#~ msgid "Name List"
+#~ msgstr "Κατάλογος ονομάτων"
+
+#~ msgid "No events for living individuals exist for the next %s day."
+#~ msgid_plural "No events for living people exist for the next %s days."
+#~ msgstr[0] "Χωρίς γεγονότα για εν ζωή άτομα η επόμενη %s ημέρα."
+#~ msgstr[1] "Χωρίς γεγονότα για εν ζωή άτομα οι επόμενες %s ημέρες."
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Δεν υπάρχουν συμβάντα ζωντανών ατόμων για σήμερα."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Δεν υπάρχουν συμβάντα ζωντανών ατόμων για αύριο."
+
+#~ msgid "No records to display"
+#~ msgstr "Δεν υπάρχουν εγγραφές προς εμφάνιση"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Δεν υπάρχει τέτοιο ID σε αυτό το αρχείο GEDCOM."
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "Αριθμός μηνών μετά τους οποίους ενας χρήστης θεωρείται ανενεργός: "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Μεγαλύτερα άτομα εν ζωή"
+
+#~ msgid "On this day…"
+#~ msgstr "Σαν σήμερα, στην ιστορία μας…"
+
+#~ msgid "Orientation"
+#~ msgstr "Προσανατολισμός"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Άλλος κατάλογος.. παρακαλώ εισάγετε"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "Όνομα server (SMTP)"
+
+#~ msgid "Page"
+#~ msgstr "Σελίδα"
+
+#~ msgid "Page size"
+#~ msgstr "Μέγεθος σελίδας"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Ηλικία γονέα"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Γενεαλογικό διάγραμμα"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Πρόσφατα έτη (&lt; 100 έτη)"
+
+#~ msgid "Registry officer"
+#~ msgstr "Υπάλληλος αρχείου"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Αφαίρεσση αυτής της τοποθεσίας;"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Πλαίσια δεξιού τμήματος"
+
+#~ msgid "SMTP port"
+#~ msgstr "Θύρα SMTP"
+
+#~ msgid "Select events"
+#~ msgstr "Επιλέξτε Γεγονότα"
+
+#~ msgid "Send message"
+#~ msgstr "Αποστολή μηνύματος"
+
+#~ msgid "Sender email address"
+#~ msgstr "Διεύθυνση αποστολέα"
+
+#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
+#~ msgstr "Set the default number of generations to display on the pedigree charts."
+
+#~ msgid "Set the maximum number of generations to display on descendancy charts."
+#~ msgstr "Set the maximum number of generations to display on the descendancy charts."
+
+#~ msgid "Set the maximum number of generations to display on pedigree charts."
+#~ msgstr "Set the maximum number of generations to display on the pedigree charts."
+
+#~ msgid "Set the privacy access level for all dead individuals."
+#~ msgstr "Show dead people<br><br>Set the privacy access level for all dead people"
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Η κοινόχρηστη σημείωση περιέχει:"
+
+#~ msgid "Shared notes found"
+#~ msgstr "Κοινόχρηστες σημειώσεις βρέθηκαν"
+
+#~ msgid "She was buried"
+#~ msgstr "Ενταφιάστηκε"
+
+#~ msgid "Show acceptable use agreement on “Request new user account” page"
+#~ msgstr "Εμφάνιση \"Δικαιωμάτων Χρήσης\" σε αιτήματα νέων χρηστών"
+
+#~ msgid "Show age of parents next to child’s birthdate"
+#~ msgstr "Εμφ. ηλικίας γονέων δίπλα στην ημ/νία γεννήσεως παιδιού"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Εμφάνιση όλων των τόπων σε κατάλογο"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "Εμφάνιση θανόντων ατόμων"
+
+#~ msgid "Show details"
+#~ msgstr "Προβολή λεπτομερειών"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Εμφ. τονισμένων εικόνων στα κουτιά των ατόμων"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Εμφ. ανενεργών τοποθεσιών"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Εμφάνιση ατόμων γεννημένων περισσότερο από 100 χρόνια πριν."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Εμφάνιση ατόμων γεννημένων τα τελευταία 100 χρόνια."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Εμφάνιση ατόμων που είναι ζωντανά ή ζευγαριών όπου και οι δύο σύντροφοι ζουν."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Εμφάνιση ατόμων που έχουν πεθάνει ή ζευγαριών όπου και οι δύο σύντροφοι απεβίωσαν."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Εμφάνιση ατόμων που πέθαναν περισσότερο από 100 χρόνια πριν."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Εμφάνιση ατόμων που πέθαναν μέσα στα τελευταία 100 χρόνια."
+
+#~ msgid "Show occupations?"
+#~ msgstr "Εμφ. επαγγελμάτων;"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Εμφάνιση συμβάντων από ζωντανά άτομα μόνο;"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Εμφάνιση μόνο ατόμων αγνώστου φύλου."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Εμφάνιση μόνο ατόμων, συμβάντων, ή όλων;"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Εμφάνιση τοποθεσιών σε ιεραρχία"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Εμφάνιση συγγενικών ατόμων/οικογενειών"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Εμφάνιση «φύλλων», ζευγαριών ή ατόμων. Αυτά είναι άτομα που είναι ζωντανά αλλά δεν έχουν καταχωρημένα παιδιά στην βάση δεδομένων."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Εμφάνιση «ριζών», ζευγάρια ή άτομα. Αυτά τα άτομα μπορούν επίσης να αποκαλεστούν «πατριάρχες». Είναι άτομα που δεν έχουν γονείς καταχωρημένους στην βάση δεδομένων."
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Προβολή %1$s εώς %2$s από %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "Αδελφή"
+
+#~ msgid "Social security number"
+#~ msgstr "Αριθμός κοινωνικής ασφάλισης"
+
+#~ msgid "Son"
+#~ msgstr "Υιός"
+
+#~ msgid "Spouse"
+#~ msgstr "Σύζυγος"
+
+#~ msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+#~ msgstr "The Favorites drop-down list shows the Favorites that you have selected on your Personal Portal.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.<br>Clicking on one of the Favorites, will bring you directly to the Individual Details Page of that person.<br>More help about adding Favorites is available in your Personal Portal."
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "Ο διαχειριστής έχει ενημερωθεί. Μόλις σας δώσει άδεια να συνδεθείτε, θα μπορέσετε να συνδεθείτε με το όνομα χρήστη και τον κωδικό σας."
+
+#~ msgid "The individual to be contacted about technical questions or errors encountered on your site."
+#~ msgstr "The User visitors should contact about technical questions or errors they might encounter while on your site."
+
+#~ msgid "The individual to contact about the genealogical data on this site."
+#~ msgstr "The User visitors should contact about the genealogical data on this site."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Αυτό το πλαίσιο θα εμφανίσει τις 10 εγγραφές που προβλήθηκαν περισσότερο. Αυτό το πλαίσιο απαιτεί να είναι ενεργοποιημένοι οι Μετρητές επιτυχιών στις ρυθμίσεις διαμόρφωσης του GEDCOM."
+
+#~ msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
+#~ msgstr "If this box is checked, other logged in users will be able to see when you are online and you will be able to see when they are online.  If you don't want others to know when you are online, then you can uncheck this box but you will also be unable to tell if they are online."
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Το πεδίο αυτό ελέγχει τη σειρά με την οποία εμφανίζονται τα στοιχεία Συνήθων Ερωτήσεων.<br><br>Δεν χρειάζεται να εισάγετε τους αριθμούς διαδοχικά. Αν αφήσετε κενά στο σύστημα αριθμοδότησης, μπορείτε να εισάγετε άλλα στοιχεία αργότερα. Για παράδειγμα, αν χρησιμοποιείτε τους αριθμούς 1, 6, 11, 16, μπορείτε στη συνέχεια να εισάγετε τα στοιχεία με τα ελλείποντα αριθμούς ακολουθίας. Οι αρνητικοί αριθμοί και το μηδέν επιτρέπονται, και μπορούν να χρησιμοποιηθούν σε στοιχεία για να τα εισάγετε μπροστά από το πρώτο.<br><br>Όταν περισσότερα από ένα στοιχείο Συνήθων Ερωτήσεων έχει τον ίδιο αριθμό θέσης, μόνο ένα από αυτά τα αντικείμενα θα είναι ορατά."
+
+#~ msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
+#~ msgstr "This input box is for changing the year for the calendar in the \"Month mode\" or the list in the \"Year mode\".<br>In \"Day mode\" changing the year will make no difference, as all events of all years are displayed.<dl><dt><b>Advanced features</b> for <b>Προβολή έτους:<br>More than one year</b></dt><dd>You may search for more than one year by entering this in the year field:<br>- Ex. 1: <b>1992-5</b> for all events from 1992 until 1995.<br>- Ex. 2: <b>1972-89</b> for all events from 1972 until 1989.<br>- Ex. 3: <b>1610-759</b> for all events from 1610 until 1759.<br>- Ex. 4: <b>1880-1905</b> for all events from 1880 until 1905.<br>- Ex. 5: <b>880-1105</b> for all events from 880 until 1105.<br><br>You may also leave out the last number of the year to get all events with a date in a certain decade.<br>- Ex.: <b>197</b> for all events from 1970 until 1979.</dd><dt><br><b>Abbreviations</b></dt><dd>Sometimes it's not clear when an event exactly happened. In that case terms like \"after\", \"before\" and \"about\" can be added to a date. The dates are stored in the GEDCOM together with an abbreviation of the term. In the Year mode you can also execute searches on the terms, with or without the accompanying date. Some examples of these searches are:<br><b>abt</b> 1800 (abt = about)<br><b>bet</b> 1950-1959 (bet = between) enter: bet 1950 or just: 1950-59<br><b>bef</b> 1950 (bef = before)<br><b>aft</b> 1900 (aft = after)<br><br><b>Note:</b> PhpGedView will search for the exact string you entered. When you search for \"abt 1850\", a date stored in the GEDCOM like \"abt oct 1850\" will <b>not</b> be included in the search results. - You may enter just the abbreviation without the year, to get all events with dates which contain that abbreviation.</dd></dl>Typing in another year will not directly refresh the screen.<br>Since this input box is not a link, you will have to click the <b>Προβολή μήνα</b> or <b>Προβολή έτους</b> Button before you will see the new situation."
+
+#~ msgid "This option controls whether or not to show the Birth and Death details of an individual on charts."
+#~ msgstr "Tells whether or not to show the birth and death details of an individual by default."
+
+#~ msgid "This option enables online editing features for this database so that users with Edit privileges may update data online."
+#~ msgstr "Enables the online editing features for this GEDCOM so that users with the edit privileges may update this GEDCOM online."
+
+#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
+#~ msgstr "This tells whether the pedigree chart should be generated in landscape or portrait mode."
+
+#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Αυτή η επιλογή θα σας αφήσει να μετακινήσετε ένα στοιχείο προς τα κάτω στη σελίδα Λίστας Συνήθων ερωτήσεων.<br><br>Κάθε φορά που χρησιμοποιείτε αυτή την επιλογή, ο αριθμός αυτού του στοιχείου αυξάνεται κατά μία μονάδα. Μπορείτε να επιτύχετε το ίδιο αποτέλεσμα με επεξεργασία του εν λόγω στοιχείου και την αλλαγή της τιμής στο πεδίο Θέσης του στην Λίστα Συνήθων ερωτήσεων. Όταν περισσότερα από ένα στοιχεία Συνήθων Ερωτήσεων έχουν τον ίδιο αριθμό θέσης, μόνο ένα από αυτά θα είναι ορατό."
+
+#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Αυτή η επιλογή θα σας αφήσει να μετακινήσετε ένα στοιχείο προς τα πάνω στη σελίδα Λίστας Συνήθων ερωτήσεων.<br><br>Κάθε φορά που χρησιμοποιείτε αυτή την επιλογή, ο αριθμός αυτού του στοιχείου αυξάνεται κατά μία μονάδα. Μπορείτε να επιτύχετε το ίδιο αποτέλεσμα με επεξεργασία του εν λόγω στοιχείου και την αλλαγή της τιμής στο πεδίο Θέσης του στην Λίστα Συνήθων ερωτήσεων. Όταν περισσότερα από ένα στοιχεία Συνήθων Ερωτήσεων έχουν τον ίδιο αριθμό θέσης, μόνο ένα από αυτά θα είναι ορατό."
+
+#~ msgid "To family"
+#~ msgstr "Προς οικογένεια"
+
+#~ msgid "To individual"
+#~ msgstr "Προς άτομο"
+
+#~ msgid "To source"
+#~ msgstr "Προς πηγή"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "Σύνολο κατοχυρωμένων αλλαγών: "
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Μη αναγνωρίσιμος κώδικας GEDCOM"
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Χρησιμοποιήστε αυτή τη σελίδα για να αλλάξετε ή να αφαιρέσετε μέλη της οικογένειας.<br><br>Για κάθε μέλος της οικογένειας, μπορείτε να χρησιμοποιήσετε το σύνδεσμο Αλλαγή για να επιλέξετε ένα διαφορετικό πρόσωπο για να εκπληρώσει αυτό τον ρόλο στην οικογένεια. Μπορείτε επίσης να χρησιμοποιήσετε το σύνδεσμο Κατάργηση για να καταργήσετε αυτό το άτομο από την οικογένεια.<br><br>Όταν τελειώσετε την αλλαγή των μελών της οικογένειας, κάντε κλικ στο κουμπί Αποθήκευση για να αποθηκεύσετε τις αλλαγές."
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "Ο χρήστης δεν επιβεβαιώθηκε εντός 7 ημερών."
+
+#~ msgid "Users logged in"
+#~ msgstr "Συνδεδεμένοι χρήστες"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Γλώσσες χρηστών"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "Αυτός ο χρήστης είναι ανενεργός για πολύ καιρό: "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Εμφάνιση εγγραφής GEDCOM"
+
+#~ msgid "View day"
+#~ msgstr "Προβολή ημέρας"
+
+#~ msgid "View details"
+#~ msgstr "Προβόλή Λεπτομερειών"
+
+#~ msgid "View family"
+#~ msgstr "Προβολή οικογένειας"
+
+#~ msgid "View month"
+#~ msgstr "Προβολή μήνα"
+
+#~ msgid "View notes"
+#~ msgstr "Προβολή Σημειώσεων"
+
+#~ msgid "View person"
+#~ msgstr "Προβολή ατόμου"
+
+#~ msgid "View source"
+#~ msgstr "Εμφάνιση Πηγής"
+
+#~ msgid "View year"
+#~ msgstr "Προβολή έτους"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "Αρχή εβδομάδας=0"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Τώρα θα στείλουμε ένα email επιβεβαίωσης στην διεύθυνση <b>%s</b>. Πρέπει να επαληθεύσετε την αίτηση λογαριασμού σας, ακολουθώντας τις οδηγίες στο email επαλήθευσης. Εάν δεν επιβεβαιώσετε την αίτηση λογαριασμού μέσα σε επτά ημέρες, το αίτημα σας θα απορριφθεί αυτόματα. Θα πρέπει να υποβάλετε ξανά.<br><br>Εφόσον ακολουθήσετε τις οδηγίες στο email επιβεβαίωσης, ο διαχειριστής θα πρέπει να εγκρίνει την αίτηση σας, πριν μπορέσει να χρησιμοποιηθεί ο λογαριασμός σας.<br><br>Για να συνδεθείτε σε αυτή την τοποθεσία θα πρέπει να γνωρίζετε το όνομα χρήστη και τον κωδικό σας."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Τώρα θα στείλουμε ένα email επιβεβαίωσης στην διεύθυνση <b>%s</b>. Πρέπει να επαληθεύσετε την αίτηση λογαριασμού σας, ακολουθώντας τις οδηγίες στο email επαλήθευσης. Εάν δεν επιβεβαιώσετε την αίτηση λογαριασμού μέσα σε επτά ημέρες, το αίτημα σας θα απορριφθεί αυτόματα. Θα πρέπει να υποβάλετε ξανά.<br><br>Εφόσον ακολουθήσετε τις οδηγίες στο email επιβεβαίωσης, μπορείτε να συνδεθείτε. Για να συνδεθείτε σε αυτή την τοποθεσία θα πρέπει να γνωρίζετε το όνομα χρήστη και τον κωδικό σας."
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "Επιλογές Διαμόρφωσης META Tag"
+
+#~ msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
+#~ msgstr "By clicking this link, your Clipping Cart will be totally emptied.<br><br>If you don't want to remove all persons, families, etc. from the Clipping Cart, you can remove item by item by clicking the \"Remove\" link in the name boxes."
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Ποιές συνδέσεις από αυτό το άτομο θα θέλατε επίσης να προσθέσετε;"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "Ποιός μπορεί να δει μη υδατογραφημένες εικόνες;"
+
+#~ msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
+#~ msgstr "You can click this button to see whether there is another relationship path between the two persons.<br>The previous found path(s) can be displayed again by clicking the link with the path number."
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "Μπορείτε να προσδιορίσετε αν αυτό το στοιχείο Συνήθους ερώτησης, θα είναι ορατό ανεξάρτητα από GEDCOM, ή αν θα είναι ορατό μόνο για το τρέχον GEDCOM.<br> <ul> <li> <b> ΟΛΑ </ b> το στοιχείο Συνήθους ερωτήσης θα εμφανιστεί σε όλες τις λίστες , ανεξάρτητα από το GEDCOM. </ li> <li> <b>% s </ b> το στοιχείο Συνήθους ερωτήσης θα εμφανίζεται μόνο στην λίστα το στοιχείο Συνήθων Ερωτήσεων του ενεργού GEDCOM. </ li > </ ul>"
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "Δεν θα λάβετε περισσότερα email από αυτή την τοποθεσία, γιατί η αίτηση λογαριασμού θα διαγραφεί αυτόματα μετά από επτά ημέρες."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Το καλάθι αποκομμάτων είναι άδειο."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Ο χρήστης που χρησιμοποιείτε δεν έχει \"αυτόματη έγγριση αλλαγών\". Θα μπορείτε να αλλάξετε μόνο μια εγγραφή την φορά."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Αρχείο(α) zip"
+
+#~ msgid "first"
+#~ msgstr "πρώτη"
+
+#~ msgid "last"
+#~ msgstr "τελευταία"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "συμπέθερος"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "συμπεθέρα"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "συμπέθερος(α)"

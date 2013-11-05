@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2013-07-19 06:15+0000\n"
-"X-Generator: Launchpad (build 16696)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -1700,7 +1700,7 @@ msgstr "Interaktívny strom zobrazí všetkých predkov a potomkov osoby."
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "Objavila sa neočakávaná chyba databáze."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -8876,9 +8876,9 @@ msgstr "Neexistujú žiadne udalosti pre zajtrajšok."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Žiadne udalosti žijúcich osôb na nasledujúci deň."
-msgstr[1] "Žiadne udalosti žijúcich osôb na nasledujúce %s dni."
-msgstr[2] "Žiadne udalosti žijúcich osôb na nasledujúcich %s dní."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -12786,7 +12786,7 @@ msgstr "Toto políčko vám umožňuje zadať ID osoby, ktorým pridáte danú o
 
 #: help_text.php:414
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Toto je zoznam čiarkami oddelených GEDCOM-tagov pre fakty, ktoré sa zobrazia na formulári pre pridanie/úpravu mena. Ak používate inú než latinskú abecedu (hebrejčina, azbuka, ...), pridajte príslušný tag, napr. _HEB, ROMN, FONE atd., aby ste boli schopný tieto dáta uložiť v rôznych abecedách."
+msgstr "Toto je zoznam čiarkami oddelených GEDCOM-tagov pre fakty, ktoré sa zobrazia na formulári pre pridanie/úpravu mena. Ak používate inú než latinskú abecedu (hebrejčina, azbuka, …), pridajte príslušný tag, napr. _HEB, ROMN, FONE atd., aby ste boli schopný tieto dáta uložiť v rôznych abecedách."
 
 #: help_text.php:792
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family.  For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
@@ -12798,7 +12798,7 @@ msgstr "Toto je čiarkami oddelený zoznam GEDCOM-tagov, ktoré sa zobrazia pri 
 
 #: help_text.php:419
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Toto je zoznam čiarkami oddelených GEDCOM-tagov, ktoré sa zobrazia na formulári pre pridanie/úpravu názvu miesta. Ak používate inú než latinskú abecedu (hebrejčina, azbuka, ...), pridajte príslušný tag, napr. _HEB, ROMN, FONE atd., aby ste boli schopný tieto dáta uložiť v rôznych abecedách."
+msgstr "Toto je zoznam čiarkami oddelených GEDCOM-tagov, ktoré sa zobrazia na formulári pre pridanie/úpravu názvu miesta. Ak používate inú než latinskú abecedu (hebrejčina, azbuka, …), pridajte príslušný tag, napr. _HEB, ROMN, FONE atd., aby ste boli schopný tieto dáta uložiť v rôznych abecedách."
 
 #: help_text.php:1205
 msgid "This is a link to your own record in the family tree.  If this is the wrong person, contact an administrator."
@@ -18637,3 +18637,1662 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
+
+#~ msgid " but the details are unknown"
+#~ msgstr " ale podrobnosti nie sú známe"
+
+#~ msgid " in "
+#~ msgstr " v lokalite "
+
+#~ msgid "%1$s’s %2$s"
+#~ msgstr "%2$s od %1$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%G:%i:%s"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%j. %F %Y"
+
+#~ msgid "%s day"
+#~ msgid_plural "%s days"
+#~ msgstr[0] "%s deň"
+#~ msgstr[1] "%s dni"
+#~ msgstr[2] "%s dní"
+
+#, fuzzy
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "včera"
+#~ msgstr[1] "pred %s dňami"
+#~ msgstr[2] "pred %s dňami"
+
+#~ msgid "%s hour ago"
+#~ msgid_plural "%s hours ago"
+#~ msgstr[0] "pred %s hodinou"
+#~ msgstr[1] "pred %s hodinami"
+#~ msgstr[2] "pred %s hodinami"
+
+#~ msgid "%s minute ago"
+#~ msgid_plural "%s minutes ago"
+#~ msgstr[0] "pred %s minutou"
+#~ msgstr[1] "pred %s minutami"
+#~ msgstr[2] "pred %s minutami"
+
+#~ msgid "%s month"
+#~ msgid_plural "%s months"
+#~ msgstr[0] "%s mesiac"
+#~ msgstr[1] "%s mesiace"
+#~ msgstr[2] "%s mesiacov"
+
+#, fuzzy
+#~ msgid "%s month ago"
+#~ msgid_plural "%s months ago"
+#~ msgstr[0] "pred mesiacom"
+#~ msgstr[1] "pred %s mesiacmi"
+#~ msgstr[2] "pred %s mesiacmi"
+
+#~ msgid "%s second ago"
+#~ msgid_plural "%s seconds ago"
+#~ msgstr[0] "pred %s sekundou"
+#~ msgstr[1] "pred %s sekundami"
+#~ msgstr[2] "pred %s sekundami"
+
+#~ msgid "%s three times removed ascending"
+#~ msgstr "%s o tri generácie vyššie"
+
+#~ msgid "%s three times removed descending"
+#~ msgstr "%s o tri generácie nižšie"
+
+#~ msgid "%s week"
+#~ msgid_plural "%s weeks"
+#~ msgstr[0] "%s týždeň"
+#~ msgstr[1] "%s týždne"
+#~ msgstr[2] "%s týždňov"
+
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "%s rok"
+#~ msgstr[1] "%s rokov"
+#~ msgstr[2] "%s rokov"
+
+#, fuzzy
+#~ msgid "%s year ago"
+#~ msgid_plural "%s years ago"
+#~ msgstr[0] "pred rokom"
+#~ msgstr[1] "%s years ago"
+#~ msgstr[2] "pred %s rokmi"
+
+#~ msgid "%s%%"
+#~ msgstr "%s %%"
+
+#~ msgid "(aged %s)"
+#~ msgstr "(vo veku %s rokov)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(menej než %s rokov)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "(viac než %s rokov)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(filter z %s celkových položiek)"
+
+#~ msgid "(in childhood)"
+#~ msgstr "v detstve"
+
+#~ msgid "(in infancy)"
+#~ msgstr "v detstve"
+
+#~ msgid "(stillborn)"
+#~ msgstr "mrtvonarodený"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
+#~ msgstr "V tomto kontexte je <b>GUID</b> skratka pre  «Globally Unique ID» (globálny unikátny identifikátor).<br><br>GUID pomáhajú určiť každú osobu, takže centrálne organizácie ako Rodinné historické centrum cirkvi LDS v Salt Lake City alebo kompatibilné programy bežiace na vašom serveri môžu určiť, či manipulujú s rovnakou osobou nezávisle na tom, kde má konkrétny GEDCOM pôvod. Cieľ Rodinného historického centra je mať centrálne úložisko genealogických údajov a mať ich dostupné cez webové služby. Tie umožnia akémukoľvek programu pristupovať k údajom a ich aktualizáciu.<br><br>Ak nezamýšľate zdieľať váš GEDCOM  s kýmkoľvek iným, nie je nutné vytvárať tieto GUID, avšak pokiaľ tak budete robiť, nebude v tom žiadny problém okrem zvýšenia veľkosti vášho GEDCOMu."
+
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+#~ msgstr "Hodnota <b>Nie</b> znamená, že autorizovaný užívatelia uvidia údaje všetkých žijúcich osôb.<br>Hodnota <b>Áno</b> znamená, že užívatelia si budú môcť prezerať súkromné údaje len tých žijúcich osôb, ktoré sú ich príbuznými.<br><br>Toto nastavenie platí pre všetkých užívateľov, ktorí majú prístup k tejto genealogickej databáze. Administrátor môže toto nastavenie upraviť pri jednotlivých užívateľoch cez detaily užívateľského účtu."
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b>Prosím pozor:</b> Súkromné informácie žijúcich osôb budú poskytnuté iba rodinným príbuzným a blízkym priateľom. Predtím, než obdržíte akékoľvek súkromné dáta, budete požiadaný o overenie vášho vzťahu. Niekedy môžu byť súkromnej povahy i dáta zomrelých osôb. Ak je to tento prípad, potom je to z toho dôvodu, že nie je dosť známych informácií o tejto osobe, aby bolo možné rozhodnúť, či žije alebo nie, a potom teda ani žiadne ďalšie informácie o tejto osobe nemáme.<br><br>Pred vznesením dotazu na nejakú osobu, prosím skontrolujte u nej dáta, miesta a blízkych príbuzných, aby ste si boli istý, že sa pýtate na tu správnu osobu. Ak robíte zmeny v genealogických dátach, prosím uveďte zdroje, z ktorých ste čerpali.<br><br>"
+
+#~ msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
+#~ msgstr "<b>webtrees</b> vám umožňuje kopírovať do schránky až 10 faktov so všetkými ich podrobnosťami. Táto schránka je iná než Úschovňa výstrižkov, ktorá umožňuje exportovať časti vašej databázy.<br><br>Môžete vybrať ktorýkoľvek údaj z vašej schránky a skopírovať ho k práve upravovanému záznamu o osobe, rodine, zdroji alebo archíve. Nemôžu sa kopírovať fakty medzi rôznymi typmi záznamov. Napríklad nemôžete skopírovať fakt \"svadba\" ku zdroju alebo osobe, pretože svadba sa viaže iba k rodinám.<br><br>Je to užitočné, zvlášť keď vkladáte podobné údaje viacerým osobám alebo rodinám."
+
+#~ msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "<b>webtrees</b> potrebuje posielať emaily, ako obnovenie hesiel a rôzne oznámenia. Aby to bolo možné, použije sa zabudovaný PHP modul alebo externá SMTP služba, ktorú budete musieť nastaviť."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>VITAJTE NA TÝCHTO RODOPISNÝCH STRÁNKACH</b></center><br>Prístup na tieto stránky je umožnený iba užívateľom, ktorý tu majú zriadený svoj uživateľský účet z heslom."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>VITAJTE NA TÝCHTO RODOPISNÝCH STRÁNKÁCH</b></center><br>Prístup na tieto stránky je umožnený iba <b>prihláseným</b> užívateľom.<br>Ak tu už máte svoj účet, môžete sa na tejto stránke prihlásiť.<br><br>Ak ešte účet nemáte, môžete požiadať o založenie kliknutím na príslušný odkaz na tejto stránke.<br>Po overení zadaných údajov administrátor vašu žiadosť buď prijme, alebo zamietne.<br>Oznámenie o prijatí vašej žiadosti obdržíte e-mailom."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>VITAJTE NA TÝCHTO RODOPISNÝCH STRÁNKACH</b></center><br>Prístup na tieto stránky je povolený iba <b>členom rodiny</b>.<br>Ak tu už máte svoj účet, môžete sa na tejto stránke prihlásiť.<br><br>Ak ešte účet nemáte, môžete požiadať o založenie kliknutím na príslušný odkaz na tejto stránke.<br>Po overení zadaných údajov administrátor vašu žiadosť buď prijme, alebo odmietne.<br>Oznámenie o prijatí svojej žiadosti obdržíte e-mailom."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>VITAJTE NA TÝCHTO RODOPISNÝCH STRÁNKACH</b></center><br>Prístup na tieto stránky je povolený všetkým návštevníkom, ktorý tu majú zriadený účet. Ak tu už máte svoj účet, môžete sa na tejto stránke prihlásiť.<br><br>Ak ešte účet nemáte, môžete požiadať o založenie kliknutím na príslušný odkaz na tejto stránke.<br>Po overení zadaných údajov vám administrátor účet sprístupní. Oznámenie o sprístupnení obdržíte e-mailom."
+
+#~ msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
+#~ msgstr "<div class=\"largeError\">Upozornenie:</div><div class=\"error\">Vyplnením a odoslaním formulára súhlasíte, že:<ul><li>budete chrániť súkromie žijúcich ľudí zobrazených na tomto webe</li><li>v dole uvedenom rámčeku vysvetlíte, ku ktorej osobe z rodokmeňa ste v akom príbuzenskom vzťahu alebo nám poskytnete informácie o niekom, kto by mal byť uvedený na našom webe.</li></ul></div></div>"
+
+#~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
+#~ msgstr "Databázový server umožňuje uložiť viacero oddelených databází. Vyberte existujúcu databázu (vytvorenú správcom vášho serveru) alebo vytvorte novú (ak má váš databázový účet dostatočné oprávnenia)."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Výpis faktov, ktoré sú v danom zdroji."
+
+#~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
+#~ msgstr "Užívateľ nebude schopný sa prihlásiť do tej doby, dokedy nebude jeho \\\"email overený\\\" a \\\"schválený správcom\\\" (príslušné voľby označené)."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=aáäbcčdďeéfghiíjklľĺmnňoóôpqrŕsštťuúvwxyýzž"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=AÁÄBCČDĎEÉFGHIÍJKLĽĹMNŇOÓÔPQRŔSŠTŤUÚVWXYÝZŽ"
+
+#~ msgid "Access"
+#~ msgstr "Prístup"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Pridať existujúcu osobu ako manžela"
+
+#~ msgid "Add a new associate allows you to link a fact with an associated individual in the site.  This is one way in which you might record that someone was the godfather of another individual."
+#~ msgstr "Pridať novú pridruženú osobu vám umožňuje spojiť fakt s pridruženou osobou. To je jeden zo spôsobov ako môžete zaznamenať napríklad to, že niekto je napríklad krstným rodičom inej osoby."
+
+#~ msgid "Add a new name"
+#~ msgstr "Pridať nové meno"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Pridať existujúcu osobu ako manželku"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Pridať ďalšiu osobu do grafu"
+
+#~ msgid "Add individuals"
+#~ msgstr "Pridať osobu"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Pridať len túto osobu."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Pridať všetky záznamy rodičov a všetkých potomkov s týmto rodinným záznamom."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Pridať záznamy rodičov a detí s týmto rodinným záznamom."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Pridať rodičov s týmto rodinným záznamom."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Pridať túto osobu a jej predkov v priamej línii."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Pridať túto osobu, jej predkov v priamej línii a ich rodiny."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Pridať túto osobu, jej rodičov a súrodencov."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Pridať záznam o tejto osobe, jej partnerovi a všetkých potomkoch."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Pridať túto osobu, jej partnera a deti."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Pridať zdroj a prepojiť s rodinou/osobou."
+
+#~ msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+#~ msgstr "Správcovia niekedy potrebujú prečistiť a opraviť údaje, ktoré zadali užívatelia. Napríklad v mieste PLAC pridať štát. Ak správca robí takéto opravy, informácie o pôvodnej zmene sa normálne prepíšu. Toto môže byť nežiadúce.<br><br>Ak je vybraná táto voľba, <b>webtrees</b> ponechá pôvodnú informáciu o zmene a neprepíše ju. S touto voľbou má správca možnosť upravovať alebo mazať informácie spojene s pôvodným tagom CHAN."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "Po prihlásení vyberte link «Môj účet» v menu «Moja Stránka» a vyplňte pole heslo, pre zmenu vášho hesla."
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "Vek, od ktorého je možno osobu považovať za mŕtvu"
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "Zobraziť vek rodičov pri narodení detí"
+
+#~ msgid "All individuals"
+#~ msgstr "Všetci ľudia"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "Povoliť prepínanie medzi GEDCOM súbormi"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "Povoliť on-line ukladanie správ"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "Interaktívny strom zobrazí všetkých predkov a potomkov osoby."
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "Objavila sa neočakávaná chyba databáze."
+
+#~ msgid "Ancestors of "
+#~ msgstr "Predkovia "
+
+#~ msgid "Ancestral file number"
+#~ msgstr "Číslo súboru predkov (AFN)"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Ste si istý, že chcete zrušiť všetky zmeny pre tento GEDCOM?"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
+
+#~ msgid "Available blocks"
+#~ msgstr "Použiteľné bloky"
+
+#~ msgid "Begin year"
+#~ msgstr "Počiatočný rok"
+
+#~ msgid "Best man"
+#~ msgstr "Družba"
+
+#~ msgid "Binary data object"
+#~ msgstr "Binárny datový objekt"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "Miesto narodenia obsahuje"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "Zobraziť podrobnosti o narodení a úmrtí vo vývode a rozrode"
+
+#~ msgid "Birth date range end"
+#~ msgstr "Rozsah dátumu narodenia končí"
+
+#~ msgid "Birth date range start"
+#~ msgstr "Rozsah dátumu narodenia začína"
+
+#~ msgid "Brother"
+#~ msgstr "Brat"
+
+#~ msgid "Burial place contains"
+#~ msgstr "Miesto pohrebu obsahuje"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "Predvolené je, že v zozname sa zobrazia iba tie miesta, ktoré sa nachádzajú v rodokmeni. Možno máte podrobnosti k ďalším miestam, ktoré ste naraz importovali z externého súboru. Výberom tejto voľby zobrazíte všetky miesta vrátane tých, ktoré sa nepoužívajú."
+
+#~ msgid "Change family members"
+#~ msgstr "Zmeniť členov rodiny"
+
+#~ msgid "Child of "
+#~ msgstr "Dieťa "
+
+#~ msgid "Children of "
+#~ msgstr "Deti "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Zvoľte príbuzných"
+
+#~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
+#~ msgstr "Vyberte obrázok náhľadu, ktorý chcete nahrať. I keď sú náhľady pre obrázky generované automaticky, pre iné typy súborov si možno budete želať vygenerovať vlastný. Napríklad snímok z videa alebo fotku osoby, ktorá vytvorila audio záznam."
+
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgstr "Vyberte si štandardnú hlavičku na váš vlastný uvítací text. Ak si uživatelia zmenia jazyk, táto hlavička sa zobrazí v novom jazyku.<br><br>Ak je nastavené <b>Áno</b>, hlavička bude vyzerať takto: <div class=\\\"list_value_wrap\\\"><center><b>Vitajte na stránke tohoto rodokmeňa</b></center><br>Prístup je povolený tým užívateľom, ktorý majú na tejto stránke účet a heslo.<br></div>"
+
+#~ msgid "Civil registrar"
+#~ msgstr "Štátny matrikár"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Štátny matrikár"
+
+#~ msgctxt "MALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Štátny matrikár"
+
+#~ msgid "Clear chart"
+#~ msgstr "Zmazať graf"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "Klik %s vybrať osobu ako hlavu rodiny."
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Kliknutím na meno pridáte osobu do zoznamu Pridať odkazy."
+
+#~ msgid "Click this link to remove the individual from the timeline."
+#~ msgstr "Kliknite na tento odkaz, ak chcete odstrániť osobu z časovej osy."
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Kliknutím vyberte osobu ako hlavu rodiny."
+
+#~ msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
+#~ msgstr "Kliknutím na ikonu \\\"+\\\" otvoríte okno Sprievodcu pre zdieľané poznámky GEDFact.<br>Špecifickú nápovedu nájdete tam.<br><br>Keď kliknete na tlačidlo \\\"Uložiť\\\", tu sa vloží ID Zdieľanej poznámky."
+
+#~ msgid "Coat of arms"
+#~ msgstr "Erb"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Civilný sobáš"
+
+#~ msgid "Contact information"
+#~ msgstr "Kontaktné informácie"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Opraviť záznamy NAME v tvare 'Ján/FERKO/' alebo 'Ján /FERKO', ktoré boli vytvorené staršími genealogickými programami."
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "Pobrežie Slonoviny"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Založiť novú zdieľanú poznámku"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Vytvoriť novú zdieľanú poznámku pomocou asistenta"
+
+#~ msgid "Create repository"
+#~ msgstr "Vytvoriť archív"
+
+#~ msgid "Create user"
+#~ msgstr "Vytvoriť uživateľa"
+
+#~ msgid "Custom event"
+#~ msgstr "Vlastná udalosť"
+
+#~ msgid "Date of LDS baptism"
+#~ msgstr "Dátum LDS krstu"
+
+#~ msgid "Date of LDS child sealing"
+#~ msgstr "Date of LDS child sealing"
+
+#~ msgid "Date of LDS endowment"
+#~ msgstr "Date of LDS endowment"
+
+#~ msgid "Date of LDS spouse sealing"
+#~ msgstr "Date of LDS spouse sealing"
+
+#~ msgid "Date of adoption"
+#~ msgstr "Dátu adopcie"
+
+#~ msgid "Date of blessing"
+#~ msgstr "Dátum požehnania"
+
+#~ msgid "Date of cremation"
+#~ msgstr "Dátum kremácie"
+
+#~ msgid "Date of emigration"
+#~ msgstr "Dátum emigrácie"
+
+#~ msgid "Date of event"
+#~ msgstr "Dátum události"
+
+#~ msgid "Date of immigration"
+#~ msgstr "Dátum imigrácie"
+
+#~ msgid "Date of naturalization"
+#~ msgstr "Dátum naturalizácie"
+
+#~ msgid "Date of ordination"
+#~ msgstr "Datum vysvätenia"
+
+#~ msgid "Date of residence"
+#~ msgstr "Dátum bydliska"
+
+#~ msgid "Daughter"
+#~ msgstr "Dcéra"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Miesto úmrtia obsahuje"
+
+#~ msgid "Death date range end"
+#~ msgstr "Rozsah dátumu úmrtia končí"
+
+#~ msgid "Death date range start"
+#~ msgstr "Rozsah dátumu úmrtia začína"
+
+#~ msgid "Default theme"
+#~ msgstr "Úvodná téma"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Potomkovia "
+
+#~ msgid "Descent steps"
+#~ msgstr "Počet generácií potomkov"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgid "Differences"
+#~ msgstr "Rozdiely"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Predkovia po priamej líni"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Predkovia po priamej línii a ich rodiny"
+
+#~ msgid "Display %s"
+#~ msgstr "Zobraziť %s"
+
+#~ msgid "Do not seal, previous sealing cancelled"
+#~ msgstr "Do not seal, previous sealing cancelled (LDS)"
+
+#~ msgid "Do not seal: unauthorized"
+#~ msgstr "Do not seal: unauthorized (LDS)"
+
+#~ msgid "Do not send messages"
+#~ msgstr "Neodosielať správy"
+
+#~ msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+#~ msgstr "Emailová adresa, ktorá sa použije v poli &laquo;From:&raquo; (Od) pre e-maily, ktoré <b>webtrees</b> automaticky vytvára.<br><br><b>webtrees</b> automaticky vytvára e-maily, aby upozornil administrátora na zmeny, ktoré potrebujú zrevidovať. Ďalej posiela upozornenie uživateľom, ktorý zažiadali o účet.<br><br>Obvykle pole &laquo;From:&raquo; (Od) vyzerá podobne ako <i>From: webtrees-noreply@yoursite</i>, aby ste zdôraznili, že nie je vyžadovaná žiadna odpoveď. Aby ste sa uchránili proti spamu alebo inému zneužití e-mailu, niektoré e-mailové systémy vyžadujú, aby pole &laquo;From:&raquo; zodpovedalo platnému e-mailovému účtu a neprijmú správy, ktoré sú zjavne z účtu <i>webtrees-noreply</i>."
+
+#~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
+#~ msgstr "Každá položka médií v databáze by mala byť spojená s jednou alebo viacerími osobami, rodinami alebo zdrojmi.<br><br>K vytvoreniu takého odkazu môžete vložiť alebo vyhľadať ID osoby, rodiny alebo zdroja vtedy keď vytvárate položku médií. Tiež môžete tento odkaz vložiť neskoršie cez voľby na stránke Spravovať multimédia alebo pridaním položiek médií cez odkaz pre pridanie média na stránke osoby, rodiny, alebo zdroja."
+
+#~ msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+#~ msgstr "Každý zdroj zaznamenává určité udalosti, všeobecne pre daný časový interval a miesto (mestský obvod, farnosť). Napríklad Sčítanie zaznamenáva sčítacie udalosti a církevné záznamy uchovávajú dáta o narodeniach, svadbách a úmrtiach.<br><br>Vyberte udalosti, ktoré sú zaznamenané týmto zdrojom z poskytnutého zoznamu udalostí. Dátum by malo byť v špecifikovanom v rozsahu, napr. <i>FROM 1900 TO 1910</i>. Miesto je meno najnižšej jurisdikcie, ktorá zahrňuje všetky miesta vymenované v tomto zdroji. Napríklad \\\"Oneida, Idaho, USA\\\" by bola použitá ako zdrojové miesto pre udalosti, ktoré sa staly v rôzných mestách v kraji Oneida. \\\"Idaho, USA\\\" by bolo zdrojové miesto, ak by sa udalosti stali nie len v kraji Oneida, ale i v ostatných krajoch štátu Idaho."
+
+#~ msgid "Edit details"
+#~ msgstr "Upraviť detaily"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Upraviť priamo záznam GEDCOM"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Upraviť zdieľanú poznámku"
+
+#~ msgid "Email address:"
+#~ msgstr "E-mailová adresa"
+
+#~ msgid "End year"
+#~ msgstr "Konečný rok"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "Konečný dátum rozsahu zmien"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Vložte ID rodiny"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Zadať ID osoby"
+
+#~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
+#~ msgstr "Vložte titulok položky ktorú práve editujete. Ak je to titulok pre multimediálnu položku, vložte popisný titulok ktorý bude identifikovať ktorému uživateľovi (osobe) patrí."
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Zadajte ID osoby, rodiny alebo zdroja"
+
+#~ msgid "Enter associate GEDCOM ID."
+#~ msgstr "Vložte GEDCOM ID pridruženej osoby."
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Vložte alebo vyhľadajte ID osoby, rodiny alebo zdroja, ku ktorému má byť tento súbor médií pripojený."
+
+#~ msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Vložte číslo FAXu včetne kódu štátu a oblasti.<br><br>Ponechajte toto pole prázdné ak nechcete zadať číslo FAXu. Napríklad číslo pre Nemecko môže byť +49 25859 56 76 89 a číslo pre USA môže byť +1 888 555-1212."
+
+#~ msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+#~ msgstr "Vložte URL adresu včetne http://.<br><br>URL môže napríklad vypadať takto: <b>http://www.webtrees.net/</b> Ponechajte pole prázdne, ak URL nechcete uviesť."
+
+#~ msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
+#~ msgstr "Vložte do tohoto poľa poštovú adresu presne v tom tvare v akom ju chcete tlačiť na obálku.<br><br>Ponechajte toto pole prázdne ak nechcete zadať adresu."
+
+#~ msgid "Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address."
+#~ msgstr "Vložte e-mailovú adresu.<br><br>Ako je napríklad táto: <b>name@hotmail.com</b> Ponechajte toto pole prázdné ak nechcete zadať e-mailovú adresu."
+
+#~ msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+#~ msgstr "Vložte hodnotu limitu.<br><br>Ak ste sa rohodli obmedziť zobrazenie Noviniek vekom, všetky články staršie (v dňoch) než je zadaná hodnota budú skryté. Ak ste sa rohodli obmedziť zobrazenie Noviniek počtom článkov, bude zobrazený zadaný počet článkov zotriedených podľa veku. Ostatné články budú skryté.<br><br>Ak zadáte hodnotu nula (0) vypnete limit a budú zobrazené všetky články."
+
+#~ msgid "Enter the name of the cemetery or other resting place where individual is buried."
+#~ msgstr "Vložte meno cintorína, alebo miesta odpočinku, kde je osoba pochovaná."
+
+#~ msgid "Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Vložte telefónne číslo včetne kódu štátu a oblasti.<br><br>Ponechajte toto pole prázdné ak nechcete zadať číslo telefónu. Napríklad číslo pre Nemecko môže byť +49 25859 56 76 89 a číslo pre USA môže byť +1 888 555-1212."
+
+#~ msgid "Entry text:"
+#~ msgstr "Vložte text:"
+
+#~ msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+#~ msgstr "Každá osoba v databáze má unikátny ID kód. Ak poznáte svoje ID, prosím vložte ho sem. Ak ho nepoznáte, alebo ho nemôžete vyhľadať z dôvodu nastavenia utajenie, napíšte do poľa Komentáre dostatok informácií, ktoré pomôžu administrátorovi identifikovať kto ste a aké máte ID. Toto ID vám potom nastaví administrátor."
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "Rozšíriť utajenie na zomrelé osoby"
+
+#~ msgid "External objects"
+#~ msgstr "Externé objekty"
+
+#~ msgid "Facts for family records"
+#~ msgstr "Fakty pre záznamy rodín"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "Fakty pre záznamy osôb"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "Fakty pre záznamy archívov"
+
+#~ msgid "Facts for source records"
+#~ msgstr "Fakty pre záznamy zdrojov"
+
+#~ msgid "Family group information"
+#~ msgstr "Informácie o rodine (manželstvo)"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Schránka výstrižkov"
+
+#~ msgid "Family with husband"
+#~ msgstr "Rodina s manželom"
+
+#~ msgid "Family with wife"
+#~ msgstr "Rodina s manželkou"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Otcove miesto narodenia - (Chapman formát)"
+
+#~ msgid "Father’s age"
+#~ msgstr "Vek otca"
+
+#~ msgid "Font"
+#~ msgstr "Font"
+
+#~ msgid "For LDS ordinances, this field records the temple where it was performed."
+#~ msgstr "Pre LDS obrad, toto pole odsahuje údaj o chráme kde bol obrad vykonaný."
+
+#~ msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
+#~ msgstr "Napríklad ak zadáte cestu o veľkosti 2, osoba bude môcť vidieť svojho vnuka (dieťa), svoju tetu (rodič, súrodenec), svoju nevlastnú dcéru (partner, dieťa), ale už nie svojho bratranca (rodič, súrodenec, dieťa)."
+
+#~ msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "Pre optimálne zobrazenie na internete, <b>webtrees</b> používa znakovú sadu UTF-8. Niektoré programy, napríklad Family Tree Maker, nepodporujú importovanie súborov GEDCOM kódovaných v UTF-8. Zaškrtnutím tohoto políčka vykonáte konverziu z <b>UTF-8</b> na <b>ANSI (ISO-8859-1)</b>.<br><br>Formát, ktorý potrebujete, závisí od programu, ktorý používáte pri práci s vašimi súbormi GEDCOM. Ak si nieste istý, prečítajte si dokumentáciu daného programu.<br><br>Aby zostali nezmenené špeciálne znaky, udržujte súbor v UTF-8 a preveďte ho do vašeho programu inými prostriedkami. Spýtajte sa výrobcu programu alebo autora.<br><br>Tento <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>článok na Wikipédii</b></a> obsahuje vyčerpávajúce informácie a odkazy k UTF-8."
+
+#~ msgid "Foster child"
+#~ msgstr "Pestúnske dieťa"
+
+#~ msgid "Foster father"
+#~ msgstr "Pestúnsky otec"
+
+#~ msgid "Foster mother"
+#~ msgstr "Pestúnska matka"
+
+#~ msgid "From email address"
+#~ msgstr "Z e-mailovej adresy"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "Štatistiky GEDCOMu"
+
+#~ msgid "Gedcom"
+#~ msgstr "Gedcom"
+
+#~ msgid "Generation "
+#~ msgstr "Generácia "
+
+#~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#~ msgstr "Umožňuje uživateľovi zvoliť si vlastný motív z rolovacieho menu (ak je zabudované v aktuálnom motíve. Premenná <b>Umožniť uživateľom vybrať si vlastný motív</b> musí byť tiež nastavená na \"Ano\"."
+
+#~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+#~ msgstr "Umožní uživateľom vytvoriť si na vašich stránkach svoj účet.<br><br>Návštevník obdrží e-mailom správu s kódom pre potvrdenie operácie.<br>Po overení bude musieť administrátor registráciu potvrdiť, aby bol účet aktivovaný."
+
+#~ msgid "He "
+#~ msgstr "On "
+
+#~ msgid "He died"
+#~ msgstr "Zomrel"
+
+#~ msgid "He married"
+#~ msgstr "Jeho manželkou sa stala"
+
+#~ msgid "He resided at"
+#~ msgstr "Býval v lokalite"
+
+#~ msgid "He was born"
+#~ msgstr "Narodil sa"
+
+#~ msgid "He was buried"
+#~ msgstr "Bol pochovaný"
+
+#~ msgid "He was christened"
+#~ msgstr "Bol pokrstený"
+
+#~ msgid "He was cremated"
+#~ msgstr "Bol spopolnený"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Ahoj %s …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Ahoj %s …<br>Vďaka za registráciu."
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Ahoj administrátor …"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Jej povolanie bolo"
+
+#~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
+#~ msgstr "Tu môžete k upravovanému záznamu pridať nové fakty.<br><br>Najskôr z \"rolovacieho zoznamu\" vyberte požadovaný fakt, potom kliknite na tlačítko \"Pridať\".<br>V \"rolovacom zozname\" sú uvedené všetky fakty, ktoré je možné pridať do databázy."
+
+#~ msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+#~ msgstr "Tu môžete pridať k tomuto záznamu <b>Citáciu</b> zdroja.<br><br>Kliknite na odkaz, otvorí sa okno a vy zo zoznamu vyberiete zdroj (Nájsť ID) alebo pridáte nový zdroj, a potom pridáte citáciu.<br><br>Pridávanie zdrojov je dôležitou časťou rodokmeňa pretože umožňuje bádateľom overovať, kde ste si našli vaše informácie."
+
+#~ msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
+#~ msgstr "Tu si môžete vybrať medzi dvomi typmi zobrazenia mien miest v hierarchii. Ak je nastavené Ano, miesto má krátke meno, ak Nie, tak sa vypíše plné meno.<br><b>Napríklad:<br>Plné meno:</b> Chicago, Illinois, USA<br><b>Krátke meno:</b> Chicago<br><b>Plné meno:</b> Illinois, USA<br><b>Krátke meno:</b> Illinois"
+
+#~ msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+#~ msgstr "Tu môžete zvoliť text, ktorý sa zobrazí na prihlasovacej obrazovke. Musíte určiť, ktorý preddefinovaný text je najvhodnejší.<br><br>Tiež môžete vložiť váš vlastný uvítací text. Pre získanie viacej informácií sa pozrite do nápovedy pod heslom <b>Vlastný uvítací text</b>.<br><br>Preddefinované texty sú:<ul><li><b>Prednastavený text, který hovorí, že si všetci užívatelia môžu zažiadať o užívateľský účet:</b><div class=\\\"list_value_wrap\\\"><center><b>Vitajte na stránke tohoto rodokmeňa</b></center><br>Prístup je povolený tým užívateľom, ktorý majú na tejto stránke účet.<br><br>Ak máte užívateľský účet, môžete sa na tejto stránke prihlásiť. Ak účet nemáte, môžete oň požiadať kliknutím nižšie na príslušný odkaz.<br><br>Po overení vám administrátor účet aktivuje a vy obdržíte e-mail, že vaša žiadosť bola schválená.</div><br></li><li><b>Prednastavený text, ktorý hovorí, že administrátor rozhodne o každej žiadosti o zriadenie účtu:</b><div class=\\\"list_value_wrap\\\"><center><b>Vitajte na stránke tohoto rodokmeňa</b></center><br>Prístup je povolený iba <u>prihláseným</u> užívateľom.<br><br>Ak máte uživateľský účet, môžete sa na tejto stránke prihlásiť. Ak účet nemáte, môžete oň požiadať kliknutím nižšie na príslušný odkaz.<br><br>Po overení informácií vám administrátor účet zamietne alebo schváli. Bude vám odoslaný e-mail, že vaša žiadosť bola schválená.</div><br></li><li><b>Prednastavený text, ktorý hovorí, že žiadať o účet môžu iba rodinný príslušníci.</b><div class=\\\"list_value_wrap\\\"><center><b>Vitajte na stránke tohoto rodokmeňa</b></center><br>Prístup je povolený iba <u>rodinným príslušníkom</u>.<br><br>Ak máte užívateľský účet, môžete sa na tejto stránke prihlásiť. Ak účet nemáte, môžete oň požiadať kliknutím nižšie na príslušný odkaz.<br><br>Po overení informácií vám administrátor účet zamietne alebo schváli. Bude vám zaslaný e-mail, že vaša žiadosť bola schválená.</div></li></ul>"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "Ukryť &amp; zobraziť"
+
+#~ msgid "His occupation was"
+#~ msgstr "Jeho povolanie bolo"
+
+#~ msgid "Hit count:"
+#~ msgstr "Počet prístupov:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Vek manžela"
+
+#~ msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+#~ msgstr "Ak bola osoba známa pod prezývkou, ktoré nie je súčasťou jej formálneho mena, malo by byť uvedené v uvodzovkách. Napríklad, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Ak je zapnutý Media Firewall, majú byť na serveri uložené kópie obrázkov v plnej veľkosti s vodoznakom i bez vodoznaku?<br><br>Ak zvolíte <b>Áno</b>, budú uložené dve kópie obrázku v plnej veľkosti, čo môže mať vplyv na väčšie nároky na diskový priestor serveru."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Ak je zapnutý Media Firewall, majú byť na serveri uložené kópie náhľadov s vodoznakom i bez vodoznaku?<br><br>Ak  nastavíte <b>Áno</b>, budú uložené dve kópie náhľadu, čo môže mať vplyv na väčšie nároky na diskový priestor serveru."
+
+#~ msgid "If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don't watermark the thumbnails."
+#~ msgstr "Majú byť náhľady označené vodoznakom ak je aktívny Media Firewall? Váš zoznam médií bude načítaný rýchlejšie bez vodoznaku."
+
+#~ msgid "If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here."
+#~ msgstr "Ak je aktívny Media Firewall, užívatelia uvidia vodoznak ak nemajú oprávnenia na úrovni špecifikovanej tu."
+
+#~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+#~ msgstr "Ak je voľba <b>Umožniť uživateľom požadovať registráciu účtu</b> nastavená na Ano tak administrátor musí schváliť registráciu nového uživateľa.<br><br>Nastavte na <b>Yes</b> ak chcete aby nový uživatelia boli verifikovaný a schválený než sa budú môcť prihlásiť. Ak nastavíte <b>No</b>, <b>Uživateľ bol adminom povolený</b> checkbox bude označený automaticky v tom okamžiku keď uživateľ verifikuje svoj účet, a tak sa može ihneď prihlásiť bez schválenia administrátorom."
+
+#~ msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+#~ msgstr "Ak má táto osoba nejaké iné udalosti než úmrtie, pohreb alebo kremáciu v dobe, ktorá je dlhšia ako tento počet rokov, je považovaná za \"žijúcu\". V tomto prípade sa za takéto udalosti pvoažujú ja zadané dátumy narodenia dieťaťa."
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Ak by ste tieto údaje nevyžadovali, môžete túto správu kľudne zmazať."
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "Ak nepoznáte tieto nastavenia, nechajte tu pôvodné hodnoty. Neskoršie ich môžete zmeniť."
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "Ak nechcete posielať maily, napríklad používate webtrees sami alebo na vlastnom počítači, môžete túto funkciu deaktivovať."
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "Ak máte väčší počet neaktívnych miest, generovanie zoznamu môže byť pomalé."
+
+#~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
+#~ msgstr "Ak chcete pridať k tomuto záznamu poznámku, toto je to správne miesto.<br><br>Kliknite na odkaz, objaví sa okno, kam ju môžete zapísať. Až skončíte, kliknite na tlačidlo a zatvorte okno, a to je všetko."
+
+#~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
+#~ msgstr "Ak máte na vašej stránke viac rodokmeňov, tak nastavením tejto hodnoty na <b>Áno</b>, povolíte návštevníkom vašich stránok možnosť prepnúť medzi jednotlivými rodokmeňmi.<br><br>Ak je nastavené <b>Nie</b>, ani návštevníci, <u>ani</u> prihlásení užívatelia nebudú môcť prepínať medzi rodokmeňmi."
+
+#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
+#~ msgstr "Ak to bezpečnostná politika vášho serveru dovolí, budete schopný poslať požiadavok na zvýšenie pamete alebo procesorového času použitím správcovských stránok <b>webtrees</b>. Inak budete musieť kontaktovať správcu serveru."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
+#~ msgstr "V mnohých kultúrach je obvyklé zapisovať tradičné mená v tradičných znakoch a tiež v latinskej verzii mena, tak ako by sa vyslovilo v jazykoch založených na latinke, napríklad angličtina.<br><br>Ak dávate prednosť použitia nelatinskej abecedy, ako je hebrejská, grécka (alfabeta), ruská (azbuka), čínská alebo arabská, a zadávate tak mená do štandardných polí, potom môžete použiť toto pole pre vloženie rovnakých mien použitím latinky. Obe verzie mena sa objavia v zoznamoch a schémach.<br><br>I keď je toto pole označené ako \"latinské\", nie je obmedzené na použitie iba latinskej abecedy. Je to možné použiť u japonských mien, kde sa môžu objaviť až tri rôzne abecedy."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
+#~ msgstr "V mnohých kultúrach je bežné, že majú mená zapísané tradičnými znakmi a tiež latinkou.<br><br>Ak dáváte prednosť latinskej abecede v štandardných políčkach pre mená, tak môžete toto pole použiť pre nelatinskú abecedu ako alfabetu, hebrejčinu, azbuku, arabčinu alebo čínštinu. Obe verzie mien sa zobrazia v zoznamoch a schémach.<br><br>I keď je toto pole označené \"hebrejčina\", nie je obmedzené na použitie iba hebrejských znakov."
+
+#~ msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
+#~ msgstr "V niektorých krajinách sa zákony o ochrane osobných údajov nevzťahujú iba na žijúce osoby, ale tiež na nedávno zosnulé. Táto voľba vám umožní rozšíriť pravidlá utajenia na tých, ktorý sa narodili alebo zomreli v priebehu určitých rokov. Nechajte tieto hodnoty prázdne, ak nechcete používať túto funkcionalitu."
+
+#~ msgid "In this month…"
+#~ msgstr "V tomto mesiaci vo vašej histórii…"
+
+#~ msgid "In this year…"
+#~ msgstr "Tohoto roku vo vašej histórii…"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Zahrnúť i najbližšiu rodinu osoby?"
+
+#~ msgid "Individual 1"
+#~ msgstr "Osoba 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Osoba 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Najdlhšie žijúca osoba"
+
+#~ msgid "LDS temple"
+#~ msgstr "Chrám LDS (Temple)"
+
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "List"
+
+#~ msgid "Link ID"
+#~ msgstr "ID odkazu"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Pridať túto osobu k existujúcej rodine ako dieťa"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Pridať túto osobu k existujúcej rodine ako manžela"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Pridať túto osobu k existujúcej rodine ako manželku"
+
+#~ msgid "Living individuals"
+#~ msgstr "Žijúci ľudia"
+
+#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
+#~ msgstr "Načítajte všetky vaše rodokmene z disku za pomoci funkcie Import."
+
+#~ msgid "Loading…"
+#~ msgstr "Načítam…"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Umiestnenie nebolo odstránené: toto umiestnenie obsahuje vnorené umiestnenie"
+
+#~ msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero."
+#~ msgstr "Dlhé zoznamy osôb s rovnakým priezviskom môžu byť rozdelené na menšie podľa prvého písmena v krstnom mene.<br><br>Táto voľba určuje kedy sa zobrazí rozdelený zoznam. Nastavte hodnotu na nulu, ak chcete rozdelenie úplne vypnúť."
+
+#~ msgid "Main section blocks"
+#~ msgstr "Bloky hlavného oddielu"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Rozsah dátumu sobášov končí"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Rozsah dátumu sobášov začína"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Miesto sobáša obsahuje"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Oznámenie sobáša"
+
+#~ msgid "Married name"
+#~ msgstr "Meno po sobáši"
+
+#~ msgid "Married surname"
+#~ msgstr "Priezvisko po sobáši"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Zlúčiť z ID:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Zlúčiť do ID:"
+
+#~ msgid "Min. no. of occurrences to be a “common surname”"
+#~ msgstr "Minimálny počet výskytov pre \"najčastejšie priezviská\""
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Blok najčastejšie zobrazovaných záznamov"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Matkine miesto narodenia - (Chapman formát)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Vek matky"
+
+#~ msgid "Move left"
+#~ msgstr "Presunúť doľava"
+
+#~ msgid "Move right"
+#~ msgstr "Presunúť doprava"
+
+#~ msgid "Name List"
+#~ msgstr "Zoznam mien"
+
+#~ msgid "No events for living individuals exist for the next %s day."
+#~ msgid_plural "No events for living people exist for the next %s days."
+#~ msgstr[0] "Žiadne udalosti žijúcich osôb na nasledujúci deň."
+#~ msgstr[1] "Žiadne udalosti žijúcich osôb na nasledujúce %s dni."
+#~ msgstr[2] "Žiadne udalosti žijúcich osôb na nasledujúcich %s dní."
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Neexistujú žiadne udalosti žijúcich osôb pre dnešok."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Neexistujú žiadne udalosti žijúcich osôb pre zajtrajšok."
+
+#~ msgid "No records to display"
+#~ msgstr "Žiadne záznamy k zobrazeniu"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Žiadne také ID neexistuje v tomto GEDCOM súbore."
+
+#~ msgid "No temple - living ordinance"
+#~ msgstr "No LDS temple - Living Ordinance"
+
+#~ msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
+#~ msgstr "Normálne musia byť všetky zmeny v rodokmeni schválené moderátorom. Táto voľba umožní uživateľovi urobiť zmeny bez tohoto schválenia."
+
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
+#~ msgstr[0] "Poznámka: “žijúci” je definovaný (ak nie je známe úmrtie alebo pohreb) ako doba %d roku po narodení alebo odhadovaného roku narodenia."
+#~ msgstr[1] "Poznámka: “žijúci” je definovaný (ak nie je známe úmrtie alebo pohreb) ako doba %d rokov po narodení alebo odhadovaného roku narodenia."
+#~ msgstr[2] "Poznámka: “žijúci” je definovaný (ak nie je známe úmrtie alebo pohreb) ako doba %d rokov po narodení alebo odhadovaného roku narodenia."
+
+#~ msgid "Nuku’Alofa, Tonga"
+#~ msgstr "Nuku'Alofa, Tonga"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "Počet mesiacov od posledného prihlásenia aby bol účet považovaný za neaktívny: "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Najstaršia žijúca osoba"
+
+#~ msgid "On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality."
+#~ msgstr "V tejto schéme si môžete zobraziť jednu alebo viacej osôb vo vodorovnej časovej ose. Tiež vám umožní vidieť, ako sa prekrývali životy rôznych osôb.<br><br>Pridávať ľudíi môžete jednotlivo, alebo po skupinách rodín podľa ich ID. Zoznam sa bude ukladať s tým, ako budete pridávať ďalšie osoby do schémy. Môžete ho kedykoľvek vymazať tlačidlom <b>Vyčistit schému</b>.<br><br>Pridať osoby môžete tiež vyhľadaním podľa rozmedzia dátumov alebo lokality."
+
+#~ msgid "On this day…"
+#~ msgstr "Tohoto dňa vo vašej histórii…"
+
+#~ msgid "Online editing"
+#~ msgstr "Online editácia"
+
+#~ msgid "Orientation"
+#~ msgstr "Orientácia"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Iný priečinok… prosím napíšte"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "Odchodzie meno serveru (SMTP)"
+
+#~ msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "Rozšírenie PHP \"%1$s\" je deaktivované. Ak nebude aktívne, nebudú vám nasledujúce funkcie fungovať: %2$s. Prosím požiadajte svojho správcu serveru o aktiváciu tohoto rozšírenia."
+
+#~ msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
+#~ msgstr "Rozšírenie PHP \"%s\" je deaktivované. Pokial nebude aktívne, nebude vám dovolené inštalovať webtrees. Prosím požiadejte svojho správcu serveru o aktiváciu tohoto rozšírenia."
+
+#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "Nastavenie PHP \\\"%1$s\\\" nie je aktívne. Ak nebude povolené, nasledujúce funkcie vám nebudú fungovať: %2$s. Prosím požiadajte svojho správcu serveru o aktiváciu tohoto rozšírenia."
+
+#~ msgid "Page"
+#~ msgstr "Strana"
+
+#~ msgid "Page size"
+#~ msgstr "Veľkosť stránky"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Rodičia a súrodenci"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Vek rodičov"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Vývod"
+
+#~ msgid "Place of LDS baptism"
+#~ msgstr "Miesto LDS krstu"
+
+#~ msgid "Place of LDS child sealing"
+#~ msgstr "Place of LDS child sealing"
+
+#~ msgid "Place of LDS endowment"
+#~ msgstr "Place of LDS endowment"
+
+#~ msgid "Place of LDS spouse sealing"
+#~ msgstr "Place of LDS spouse sealing"
+
+#~ msgid "Place of adoption"
+#~ msgstr "Miesto adopcie"
+
+#~ msgid "Place of blessing"
+#~ msgstr "Miesto požehnania"
+
+#~ msgid "Place of cremation"
+#~ msgstr "Miesto kremácie"
+
+#~ msgid "Place of emigration"
+#~ msgstr "Miesto emigrácie"
+
+#~ msgid "Place of event"
+#~ msgstr "Miesto udalosti"
+
+#~ msgid "Place of immigration"
+#~ msgstr "Miesto imigrácie"
+
+#~ msgid "Place of naturalization"
+#~ msgstr "Miesto naturalizácie"
+
+#~ msgid "Place of ordination"
+#~ msgstr "Miesto vysvätenia"
+
+#~ msgid "Place of residence"
+#~ msgstr "Miesto bydliska"
+
+#~ msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+#~ msgstr "Miesta by mali byť zadávané podľa štandardov pre genealógiu. Najurčitejšie miesto je prvé, a ďalej nasledujú čiarkami oddelené ďalšie všeobecnejšie úrovne miest.<br><br>Napríklad Salt Lake City by sa zadalo ako \"Salt Lake City, Salt Lake, Utah, USA\".<br><br>Rozoberieme každú časť. Prvá časť \"Salt Lake City,\" je mesto, kde sa daná udalosť stala. V niektorých zemiach existujú mestské obvody alebo obce vo vnútri mesta. V tomto prípade by mali byť uvedené ešte pred mestom. Ďalšia časť \"Salt Lake,\" je kraj. \"Utah\" je štát a \"USA\" je krajina (federácia).<br><br>Ak nie je niektorá úroveň miesta známa, malo by sa nechať prázdne miesto medzi čiarkami. Ak by sme nepoznali kraj, v ktorom Salt Lake City leží, mali by sme napísať  \"Salt Lake City, , Utah, USA\". Ak by sme vedeli iba, že daná osoba žije v Utahu, tak to zapíšeme: \", , Utah, USA\".<br><br>Môžete použiť odkaz <b>Nájsť miesto</b>, ktorý vám pomôže nájsť v databáze už existujúce miesto."
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "President’s Office"
+#~ msgstr "President's Office"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Tlačiť základné údaje, i keď sú prázdne?"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Nedávne udalosti (< 100 rokov)"
+
+#~ msgid "Registry officer"
+#~ msgstr "Matričný úradník"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "Matričný úradník"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "Matričný úradník"
+
+#~ msgid "Religious institution"
+#~ msgstr "Cirkevná inštitúcia"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Odstrániť toto umiesto?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Bloky pravého oddielu"
+
+#~ msgid "SMTP port"
+#~ msgstr "SMTP port"
+
+#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
+#~ msgstr "Uložte všetky vaše rodokmene na disk za pomoci funkcie Export."
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Vyhľadať a/alebo nahradiť data vo vašom GEDCOMe použitím jednoduchého hľadania alebo pokročilými výrazmi."
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Hľadať osoby pre pridanie do zoznamu Pridať odkazy."
+
+#~ msgid "Security"
+#~ msgstr "Zabezpečenie"
+
+#~ msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
+#~ msgstr "Vyberte názov vzťahu zo zoznamu. Výber <b>Krstný otec</b> znamená: <i>Tento príbuzný je krstným otcom tejto osoby</i>."
+
+#~ msgid "Select events"
+#~ msgstr "Vyber udalosť"
+
+#~ msgid "Send message"
+#~ msgstr "Poslať správu"
+
+#~ msgid "Sender email address"
+#~ msgstr "Adresa odosieľateľa mailu"
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
+#~ msgstr "Nastavte implicitný počet generácií, ktoré sa majú zobraziť vo vývodoch."
+
+#~ msgid "Set the maximum number of generations to display on descendancy charts."
+#~ msgstr "Nastavte maximálny počet generácií, ktorý sa môže zobraziť v rozrodoch."
+
+#~ msgid "Set the maximum number of generations to display on pedigree charts."
+#~ msgstr "Nastavte maximálny počet generácií, ktorý sa môže zobraziť vo vývodoch."
+
+#~ msgid "Set the privacy access level for all dead individuals."
+#~ msgstr "Nastaviť úroveň utajenia všetkým mŕtvym osobám."
+
+#~ msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
+#~ msgstr "Nastavenie tejto voľby na <b>Yes</b> dovolí zobraziť kód statusu pre LDS obrad v schémach.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>Osoba, ktorá má absolvované všetky obrady, má pred menom zobrazený kód <b>BESP</b>. Chýbajúci obrad je indikovaný <b>_</b> miesto písmena označujúceho príslušný obrad. Napríklad, <b>BE__</b> indikuje chýbajúce <b>S</b> a <b>P</b> obrady."
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Zdieľané poznámky obsahujú:"
+
+#~ msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
+#~ msgstr "Zdieľané poznámky sú neformátované texty, ktoré sa zobrazia na stránke v sekcii Detail faktov.<br><br>Každá zdieľaná poznámka môže byť prepojené s viacero osobami, rodinami, zdrojmi či udalosťami."
+
+#~ msgid "Shared notes found"
+#~ msgstr "Zdieľané poznámky boli najdené"
+
+#~ msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
+#~ msgstr "Zdieľané poznámky, podobne ako bežné Poznámky sú neformátované texty. Oproti klasickým poznámkam tieto môžu byť pripojené k viacero osobám, rodinám atď.<br><br>Kliknutím na vhodnú ikonu vytvoríte odkaz na existujúcu zdieľanú poznámku alebo vytvoríte novú zdieľanú poznámku. Ak už bol vytvorený odkaz na existujúcu zdieľanú poznámku, môžete upraviť jej obsah.<br><ul><li><b>Odkaz na existujúcu zdieľanú poznámku</b><div style=\"padding-left:20px;\">Ak už poznáte ID požadovanej zdieľanej poznámky, stačí iba vložiť jej číslo do poľa.<br><br>Keď kliknete na ikonu <b>Nájsť zdieľanú poznámku</b>, budete môcť vyhľadať text a vybrať podľa neho. ID sa potom automaticky vloží do poľa.<br><br>Musíte kliknúť na tlačidlo <b>Pridať</b>, aby ste aktualizovali pôvodný záznam.</div><br \"/></li><li><b>Vytvoriť novú zdieľanú poznámku</b><div style=\"padding-left:20px;\">Keď kliknete na ikonu <b>Vytvoriť novú zdieľanú poznámku</b>, otvorí sa nové okno. Tu môžete vložiť text novej poznámky. Rovnako ako u klasických poznámok môžete zadávať URL adresy.<br><br>Ak kliknete na tlačidlo <b>Uložiť</b>, uvidíte správu s ID-číslom  novo vytvorenej poznámky. Kliknutím na túto správu zatvoríte okno a skopírujete nové ID priamo do poľa pre ID. Ak iba zatvoríte okno, ID novej poznámky sa neskopíruje automaticky.<br><br>Musíte kliknúť na tlačidlo <b>Pridať</b>, aby ste aktualizovali pôvodný záznam.</div><br></li><li><b>Upraviť existujúcu zdieľanú poznámku</b><div style=\"padding-left:20px;\">Keď kliknete na ikonu <b>Upraviť Zdieľanú poznámku</b>, otvorí sa nové okno. Tu môžete upraviť text existujúcej zdieľanej poznámky. Ako u klasických poznámok, i tu môžete vkladať URL adresy.<br><br>Ak kliknete na tlačidlo <b>Uložiť</b>, text zdieľanej poznámky sa aktualizuje. Môžete zatvoriť okno a pak kliknúť znovu na tlačidlo <b>Uložiť</b>.<br><br>Keď zmeníte text poznámky, zmena sa prejaví na všetkých miestach, kde sa poznámka nachádza. Nové odkazy, ktoré vytvoríte po tejto zmene, budú tiež aktualizované.</div></li></ul>"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgid "She "
+#~ msgstr "Ona "
+
+#~ msgid "She died"
+#~ msgstr "Zomrela"
+
+#~ msgid "She married"
+#~ msgstr "Jej manželom sa stal"
+
+#~ msgid "She resided at"
+#~ msgstr "Bývala v lokalite"
+
+#~ msgid "She was born"
+#~ msgstr "Narodila sa"
+
+#~ msgid "She was buried"
+#~ msgstr "Bola pochovaná"
+
+#~ msgid "She was christened"
+#~ msgstr "Bola pokrstená"
+
+#~ msgid "She was cremated"
+#~ msgstr "Bola spopolnená"
+
+#~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
+#~ msgstr "Má sa používať databáza GeoNames na návrhy názvov pre zadávané miesta?<br><br>Ak je nastavené <b>Áno</b>, budú sa čerpať z tejto databázy návrhy názvov zadávaných miest. Ak je nastavené <b>Nie</b>, prehľadá sa iba súčasný rodokmeň. Čím väčšiu časť mena zadáte, tým bude návrh presnejší. Táto voľba môže spomaliť zadávanie dát, zvlášť ak je pomalé pripojenie k internetu.<br><br>Geografická databáza GeoNames je prístupná bez poplatku. V súčasnosti obsahuje viac než 8 miliónov geografických názvov."
+
+#~ msgid "Show acceptable use agreement on “Request new user account” page"
+#~ msgstr "Zobraziť dohodu o používaní na stránke «Request new user account»"
+
+#~ msgid "Show age of parents next to child’s birthdate"
+#~ msgstr "Zobraziť vek rodičov pri narodení detí"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Zobraziť všetky miesta zo zoznamu."
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Zobraziť deti predkov?"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "Zobraziť mená zomrelých osôb"
+
+#~ msgid "Show details"
+#~ msgstr "Ukázať podrobnosti"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Zobraziť vybrané obrázky v boxoch osôb"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Zobraziť neaktívne miesta"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Zobraziť osoby narodené pred viac ako 100 rokmi."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Zobraziť osoby narodené v priebehu posledných 100 rokov."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Zobraziť osoby ktoré žijú, alebo páry kde obaja partneri žijú."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Zobraziť mŕtve osoby, alebo páry kde zomreli obaja partneri."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Zobraziť osoby, ktoré zomreli pred viac ako 100 rokmi."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Zobraziť osoby ktoré zomreli v priebehu posledných 100 rokov."
+
+#~ msgid "Show notes?"
+#~ msgstr "Zobrazit poznámky?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Zobraziť povolanie?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Zobraziť iba udalosti žijúcich osôb?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Zobraziť iba osoby, ktorých pohlavie nie je známe."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Zobraziť iba osoby a udalosti alebo všetko?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Zobraziť čakajúce zmeny"
+
+#~ msgid "Show photos?"
+#~ msgstr "Zobraziť fotky?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Zobraziť miesta hierarchicky"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Zobraziť príbuzné osoby / rodiny"
+
+#~ msgid "Show residences?"
+#~ msgstr "Zobraziť sídlo?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Zobraziť zdroje?"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Zobraziť «listové» páry alebo osoby. To sú také ktoré žijú, ale nemajú zaznamenané žiadne deti v databáze."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Zobraziť «koreňové» osoby alebo páry. Tieto osoby sa tiež nazývajú «patriarchami». Sú to osoby ktoré nemajú záznam o rodičoch v tejto databázi."
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Zobrazuje sa od %1$s do %2$s z %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "Sestra"
+
+#~ msgid "Social security number"
+#~ msgstr "Social security number (USA)"
+
+#~ msgid "Son"
+#~ msgstr "Syn"
+
+#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
+#~ msgstr "Citácie zdrojov môžou obsahovať pole, ktoré značí kvalitu získaných dát (primárne, sekundárne atd.) a dátum udalosti získanej zo zdroja. Ak nepoužívate tieto polia, môžete ich deaktivovať, keď vytvárate nové citácie zdrojov."
+
+#~ msgid "Sources to the events"
+#~ msgstr "Zdroje pre udalosti"
+
+#~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
+#~ msgstr "Určí, či správy poslané cez <b>webtrees</b> sa majú ukladať do databázy. Ak <b>Áno</b>, užívatelia budú schopný dohľadať svoje správy po prihlásení do <b>webtrees</b>. Ak <b>Nie</b>, správy budú iba odoslané mailom."
+
+#~ msgid "Spouse"
+#~ msgstr "Partner"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Partneri a deti"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Počiatočný dátum rozsahu zmien"
+
+#~ msgid "Surname option"
+#~ msgstr "Voľby priezvísk"
+
+#~ msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+#~ msgstr "V tomto rolovacom zozname nájdete svoje obľúbené, ktoré ste si vybrali na svojej osobnej vstupnej stránke.<br>Kliknutím na jednu z týchto položiek sa dostanete priamo na stránku s údajmi o tejto osobe.<br>Ďalšia nápoveda o pridávaní Obľúbených je k dispozícii na vstupnej stránke."
+
+#~ msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+#~ msgstr "Media Viewer môže zobraziť linky, kliknutím na ne môžete načítať súbory médií na lokálne PC.<br><br>Môžete ukryť linky z dôvodu ochrany."
+
+#~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
+#~ msgstr "Pole Typ umožňuje pridať dodatočné informácie o položke. Vo väčšine prípadov, pole nemá predpísaný formát a môžete zapísať ľubovolný text."
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "Administrátor bol informovaný. Akonáhle Vám dá povolenie k prihláseniu, budete sa môcť prihlásiť zadaním svojho užívateľského mena a hesla."
+
+#~ msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+#~ msgstr "<br>Schránka výstrižkov vám umožňuje robiť z tohoto rodokmeňa \"výstrižky\" a vložiť ich do jednoduchého GEDCOM súboru na stiahnutie.<br><ul><li>Ako urobiť výstrižky?<br>To je veľmi jednoduché. Kdekoľvek uvidíte meno, na ktoré sa dá kliknúť (osoba, rodina alebo zdroj), môžete na toto meno kliknúť a tak sa dostať na stránku s údajmi o tomto mene. Na tejto stránke uvidíte voľbu <b>Pridať do schránky výstrižkov</b>. Kliknutím na tento odkaz sa dostanete na stránku, kde  budete mať niekoľko možností stiahnutia.</li><li>Ako súbor stiahnuť?<br>Keď budete mať položky v schránke, môžete ich stiahnuť jednoducho kliknutím na odkaz <b>Stiahnuť</b>.<br>Potom postupujte podľa inštrukcií a odkazov.</li><ul>"
+
+#~ msgid "The individual to be contacted about technical questions or errors encountered on your site."
+#~ msgstr "Uživateľ, ktorého by návštevníci mali kontaktovať v prípade, že narazia na vašich stránkach na problémy technického rázu."
+
+#~ msgid "The individual to contact about the genealogical data on this site."
+#~ msgstr "Uživateľ, ktorého môžu návštevníci kontaktovať v súvislosti s rodokmeňom."
+
+#~ msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+#~ msgstr "Čas po narodení môže byť nastavený v konfigurácii Utajenia voľbou \"Vek, od ktorého je možno osobu považovať za mŕtvu\"."
+
+#~ msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
+#~ msgstr "Súbor médií, ktorý nahrávate, môže byť, alebo bude musieť byť pomenovaný inak na serveri než na lokálnom počítači. Lokálne meno súboru má pre vás často význam, ale nie je taký významný pre ďalších návštevníkov tohoto webu. Zvážte tiež možnosť, že vy i niekto iný sa snaží nahrať rôzne súbory nazvané \"babicka.jpg\".<br><br>V tomto poli napíšte nové meno nahrávaného súboru. Meno bude tiež použité pre náhľad, ktorý môžete nahrať oddelene alebo generovať automaticky. Nezadávajte prípony (jpg, gif, pdf, doc atd.)<br><br>Ponechajte toto pole prázdne, ak chcete ponechať pôvodný názov súboru."
+
+#~ msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
+#~ msgstr "Organizácia, inštitúcia, spoločnosť, osoba alebo iná entita, ktorá má autoritu.<br><br>Napríklad zamestnávateľ osoby, cirkev vykonávajúca obrady, alebo organizácia zodpovedná za tvorbu/archiváciu záznamov."
+
+#~ msgid "The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>."
+#~ msgstr "Číslo portu, ktorý bude použitý na spojenie s SMTP servrom. Obvykle je to port <b>25</b>."
+
+#~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
+#~ msgstr "Predpona je voliteľná, ale doporučená. Nastavením unikátnej predpony môžete nechať zdieľať rôzne aplikácie rovnakú databázu. Odporúčame \\\"wt_\\\", ale môže byť aj akákoľvek iná."
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "Regulárny výraz obsahuje chybu. Nemôže sa použiť."
+
+#~ msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
+#~ msgstr "Motívy môžeme vyberať na troch úrovniach: užívateľ, GEDCOM a celý web. Užívateľské nastavenie má prioritu oproti nastaveniu GEDCOMu, ktoré má prioritu oproti nastaveniu celého webu. Vybraním \\\"východzieho motívu\\\" na užívateľskej úrovni nastavíte motív z súčasného GEDCOMu. Vybraním \\\"východzieho motívu\\\" v GEDCOMe nastavíte motiv pre celý web."
+
+#~ msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
+#~ msgstr "Tento GEDCOM (rodokmeň) byl naposledy aktualizovaný dňa #gedcomUpdated#. V tomto rodokmeni je celkove #totalSurnames# priezvísk. Najstaršia zaznamenaná udalosť je #firstEventType# #firstEventName# v roku #firstEventYear#. Posledná udalosť je #lastEventType# #lastEventName# v roku #lastEventYear#.<br><br>Ak máte nejaký komentár, prosím kontaktujte #contactWebmaster#."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "Tento GEDCOM bol vytvorený v programe <b>%1$s</b> <b>%2$s</b>."
+
+#~ msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+#~ msgstr "Vďaka tomuto bloku zobrazíte schémy vývodu, potomkov alebo presýpacích hodín na Mojej alebo Domovskej stránke. Vzhľadom na obmedzené miesto by schéma mala byť umiestňené iba na ľavej strane stránky.<br><br>Ak sa schéma zobrazí na Domovskej stránke, východisková osoba a typ grafu je určený administrátorom. Ak sa zobrazí na Mojej stránke, nastavenie si určuje užívateľ.<br><br>Ich správanie je rovnaké, ako keď sú spustené z menu. Kliknite na rámček osoby pre ďalšie detaily."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Tento blok ukáže 10 záznamov, ktoré boli najčastejšie zobrazené. Tento blok vyžaduje aby bolo povolené počitadlo prístupov v konfigurácii GEDCOMU."
+
+#~ msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
+#~ msgstr "Ak je toto políčko zaškrtnuté, ostatný prihlásený uživatelia uvidia, či ste v daný okamžik online a vy uvidíte, či sú online ostatný. Ak nechcete, aby vás ostatný videli online, vyškrtnite toto políčko. Ale ani vy nebudete môcť zistiť, či sú ostatný uživatelia online."
+
+#~ msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+#~ msgstr "Toto pole vám umožní zmeniť  záznam o zdroji na ktorý sa odvoláva citácia. Pole obsahuje ID zdroja. Vedľa pola je zobrazený názov aktuálneho zdroja. Použite link <b>Nájsť ID</b> k vyhľadaniu ID zdroja. Ak chcete odstrániť citáciu, vymažte odsah poľa."
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Toto pole riadi poradie v ktorom sú polžky FAQ zobrazené.<br><br>Nemusíte zadávať čísla sekvenčne. Ak necháte prázdne miesta v číselnom poradí, môžete vložiť ďalšie položky neskoršie. Napríklad, ak použijete čísla 1, 6, 11, 16, môžete neskoršie vložiť položky s chýbajúcimi číslami. Záporné čísla a nula sú dovolené, a môžu byť použité na vloženie položiek pred prvú položku.<br><br>Ak má viac než jedna položka FAQ rovnaké číslo pozície tak bude zobrazená iba jedna."
+
+#~ msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
+#~ msgstr "Toto políčko slúži na zmenu roku v kalendári. Zadajte do políčka rok a stlačením klávesy <b>Enter</b> prejdete na kalendár požadovaného roku.<br><br><b>Rozšírené možnosti</b> pre <b>Zobraziť rok</b><dl><dt><b>Viac rokov naraz</b></dt><dd>Môžete hľadať dáta v intervale rokov.<br><br>Intervaly rokov sú <u>vrátane</u>. To znamená, že prehľadávaný interval sa začína 1. januárom prvého roku a končí 31. decembrom druhého roku. Nasleduje pár príkladov:<br><br><b>1992-5</b> pre všetky udalosti od 1.I.1992 do 31.XII.1995.<br><b>1972-89</b> pre všetky udalosti od 1.I.1972 do 31.XII.1989.<br><b>1610-759</b> pre všetky udalosti od 1.I.1610 do 31.XII.1759.<br><b>1880-1905</b> pre všetky udalosti od 1.I.1880 do 31.XII.1905.<br><b>880-1105</b> pre všetky udalosti od 1.I.880 do 31.XII.1105.<br><br>Na zobrazenie všetkých udalostí za určité desaťročie, alebo storočie použite <b>?</b> namiesto posledných číslic. Napríklad <b>197?</b> pre zobrazenie udalostí od 1.I.1970 po 31.XII.1979, alebo <b>16??</b>pre všetky udalsoti od 1.I.1600 po 31.XII.1699.<br><br>Zadaním intervalu rokov zmeníte zobrazenie kalendára na ročné.</dd></dl>"
+
+#~ msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+#~ msgstr "Toto políčko vám umožňuje zadať ID osoby, ktorým pridáte danú osobu do Schránky výstrižkov. Po pridaní dostanete možnosť, ako prepojiť danú osobu zo Schránkou výstrižkov.<br><br>Ak neznáte ID osoby, môžete ju vyhľadať podľa mena kliknutím na ikonu Panáčika vedľa tlačidla pre pridanie."
+
+#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
+#~ msgstr "Toto je čiarkami oddelený zoznam GEDCOM-tagov, ktoré sa zobrazia pri pridávaní novej osoby. Napríklad ak je v zozname BIRT, tak sa vo formulári zobrazí pole pre zadanie dátumu narodenia a miesta narodenia."
+
+#~ msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
+#~ msgstr "Toto je odkaz k vašemu vlastnému záznamu v rodokmeni. Ak je to odkaz na chybnú osoba, kontaktujte administrátora."
+
+#~ msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+#~ msgstr "Toto je zoznam GEDCOM faktov, ktoré vaši užívatelia môžu pridávať k rodinám. Môžete ho upraviť pridaním alebo odstránením názvov faktov, dokonca aj vytvorením vlastných. Názvy údajov, ktoré sa objavia v zozname, sa nesmú objaviť v zozname <i>Unikátnych rodinných faktov</i>."
+
+#~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
+#~ msgstr "Toto je meno SMTP serveru. Napríklad <b>smtp.foo.bar.com</b>.<br><br>Konfiguračné hodnoty pre niektorých e-mailových poskytovateľov:<br><br><b>Gmail<br></b><br><b>Odchodzie meno serveru (SMTP):</b> smtp.gmail.com<br><b>SMTP port:</b> 465 alebo 587<br><b>Zabezpečené pripojenie:</b> SSL<br><br><b>Hotmail<br></b><br><b>Odchodzie meno serveru (SMTP):</b> smtp.live.com<br><b>SMTP port:</b> 25 alebo 587<br><b>Zabezpečené pripojenie:</b> TLS<br><br><b>Yahoo Mail Plus (aktuálne platená služba)<br></b><br><b>Odchodzie meno serveru (SMTP):</b> smtp.mail.yahoo.com<br><b>SMTP port:</b> 25"
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "Toto je méno SMTP serveru. 'localhost' znamená, že mailová služba beží na rovnakom počítači ako webový server."
+
+#~ msgid "This is used in the \"From:\" header when sending mails."
+#~ msgstr "Toto sa používá pri odosielaní mailov v hlavičke \\\"From:\\\""
+
+#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
+#~ msgstr "Toto sa používa pri odosielaní mailov v hlavičke \\\"Sender:\\\". Je to často rovnaké ako hlavička \\\"From:\\\""
+
+#~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br><br>Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br><br>When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
+#~ msgstr "Táto voľba spôsobí, že <b>webtrees</b> zobrazí všetky osoby, ktoré majú zaznamenaný vzťah k osobe alebo rodine, ktorá bola nájdená ako priamy výsledok vyhľadávania. Opačný výsledok (inverzia), zobrazenie všetkých osôb a rodín, keď nájdená osoba ako priamy výsledok vyhľadávania má asociačné vzťahy ku týmto osobám a rodinám, nie je možný.<br><br>Príklad: Predpokladejme, že osoba <b>A</b> je krstným rodičom osoby <b>B</b>. Tento vzťah je zaznamenaný v GEDCOM zázname osoby <b>B</b> tagom ASSO. Žiadny zodpovedajúci tag v zázname osoby <b>A</b> neexistuje.<br><br>Keď bude voľba nastavená na <b>Ano</b> a zoznam výsledkov bude obsahovať <b>B</b>, automaticky sa zobrazí tiež <b>A</b> kvôli tagu ASSO v zázname osoby <b>B</b>. Avšak ak zoznam výsledkov bude obsahovať <b>A</b>, <b>B</b> nebude automaticky zahrnuté, pretože tam nie je žiadny záznam v tagu ASSO."
+
+#~ msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
+#~ msgstr "Táto voľba riadi, či  sa odkazy na Poznámky a Zdroje, ktoré sú pripojené k Faktom, budú zobrazovať na paneloch Poznámky a Zdroje.<br><br>Bežne panely Poznámky a Zdroje zobrazujú iba odkazy na Poznámky a Zdroje, ktoré sú pripojené priamo k osobnému záznamu v databáze. Toto sú odkazy na Poznámky a Zdroje <i>úrovne 1</i>.<br><br>Voľba <b>Ano</b> spôsobí, že tieto panely zobrazujú aj odkazy na Poznámky a Zdroje, ktoré sú časťou rôznych Faktov v osobných záznamoch v databáze. Toto sú odkazy na Poznámky a Zdroje <i>úrovne 2</i>, pretože príslušné Fakty sú na úrovni 1."
+
+#~ msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
+#~ msgstr "Toto nastavenie určuje či sa v schémach zobrazí vek rodičov pri narodení detí"
+
+#~ msgid "This option controls whether or not to show the Birth and Death details of an individual on charts."
+#~ msgstr "Určuje, či implicitne zobrazovať, alebo nezobrazovať informácie o narodení a úmrtí osôb."
+
+#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgstr "Táto voľba vám umožní nastaviť, či zobrazovať ikonu pohlaví osôb v schémach.<br><br>Táto voľba úplne neschová informáciu o pohlaví, pretože sú tiež rozlíšené farbou rámečekov. Voľba iba odstraňuje duplicitnú informáciu v rámčeku."
+
+#~ msgid "This option enables online editing features for this database so that users with Edit privileges may update data online."
+#~ msgstr "Táto voľba povoľuje editovanie tejto databázy online. Užívatelia s oprávnením k úpravám ju môžu aktualizovať prostredníctvom internetu."
+
+#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
+#~ msgstr "Toto nastavenie určuje, či budú vývody orientované na šírku, alebo na výšku."
+
+#~ msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+#~ msgstr "Táto voľba je podobná vnútorným správam s jedným prídavkom. Naviac sa kópia správy pošle na vami nastavenú e-mailovú adresu.  Toto je implicitná kontaktná metóda."
+
+#~ msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
+#~ msgstr "Táto voľba vám povolí nastaviť utajenie a ukryje podrobnosti o žijúcich osobách. Viac v paneloch Súkromie na každej konfiguračnej stránke GEDCOMu."
+
+#~ msgid "This option will generate thumbnails for all files in the current directory which don't already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br><br>If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links."
+#~ msgstr "Táto voľba vygeneruje pre všetky súbory v súčasnom adresári náhľady (ak ich ešte nemajú). Je to o dosť pohodlnejšie, než pre každý súbor zaklikávať <b>Vytvoriť náhľad</b>.<br><br>Ak si chcete zachovať kontrolu nad tým, ktorý obrázok bude mať zodpovedajúci náhľad, nemali by ste túto voľbu používať. Miesto toho kliknite na príslušný odkaz <b>Vytvoriť náhľad</b>."
+
+#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Táto voľba vám umožní presunúť položku nižšie na stránke FAQ.<br><br>Vždy keď použijete túto možnosť bude číslo pozície položky FAQ zväčšené o 1. Rovnaký efekt môžete dosiahnuť priamo zmenou čísla pozície položky FAQ. Pozor, ak rovnaké číslo má viac položiek FAQ tak bude zobrazená iba jedna."
+
+#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Táto voľba vám umožní presunúť položku vyššie na stránke FAQ.<br><br>Vždy keď použijete túto možnosť bude číslo pozície položky FAQ zmenšené o 1. Rovnaký efekt môžete dosiahnuť priamo zmenou čísla pozície položky FAQ. Pozor, ak rovnaké číslo má viac položiek FAQ tak bude zobrazená iba jedna."
+
+#~ msgid "This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
+#~ msgstr "Táto voľba nechá rodinné spojenia v utajených záznamoch. To znamená, že uvidíte prázdne \"utajené\" rámčeky vo vývode a ďalších schémach."
+
+#~ msgid "This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server’s software, as it relates to PHP and <b>webtrees</b>, can be viewed."
+#~ msgstr "Táto stránka poskytuje veľa informácií o serveri, na ktorom je prevádzkovaný <b>webtrees</b>. Môžete si zobraziť veľa konfiguračných detailov o serverovom software súvisiacom s PHP a <b>webtrees</b>."
+
+#~ msgid "This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent."
+#~ msgstr "Táto stránka vám umožní zlúčiť dva záznamy GEDCOM z rovnakého GEDCOM súboru.<br><br>Toto je užitočná vlastnosť pre ľudí, ktorý spojili GEDCOMy a teraz tam majú veľa duplicitných osôb, rodín a zdrojov.<br><br>Stránka sa skladá z troch krokov.<br><ol><li>Zadáte dve ID z GEDCOMu. ID <u>musí</u> byť rovnakého typu. Nemôžete zlúčiť napríklad osobu a rodinu alebo rodinu a zdroj.<br>V poli <b>Zlúčiť do ID:</b> zadáte výsledné ID - do ktorého sa má uložiť.<br>V poli <b>Zlúčiť z ID:</b> zadáte ID záznamu, z ktorého sa informácie spoja s výsledným záznamom. Tento záznam sa po zlúčení vymaže.</li><li>Vyberiete, ktoré údaje chcete zachovať. Zaškrtnite políčka vedľa tých, ktoré chcete uchovať.</li><li>Overíte výsledky zlúčenia, ako všetky zmeny, ktoré sa vykonávajú online.</li></ol>Niekto s právom pre schvaľovanie prijme zmeny ako permanentné."
+
+#~ msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#~ msgstr "Táto rola má všetky práva role \"člen\", ak aj právo pridávať/meniť/mazať údaje. Všetky zmeny musia byť schválené moderátorom, ak užívateľ nemá aktivované \"automaticky prijať zmeny\"."
+
+#~ msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+#~ msgstr "Táto sekcia vám umožňuje pridať novú citáciu zdroja k faktu, ktorý práve editujete.<br><br>Do poľa Zdroj vložte ID príslušného zdroja. Kliknite na link <b>Vytvoriť nový zdroj</b> ak potrebujete založiť nový zdroj. Do poľa Detail citácie môžete vložiť číslo stránky zdroja, alebo inú informáciu, ktorá môže pomôcť nájsť informáciu v zdroji. Do poľa Text môžete vložiť opis textu zo zdroja."
+
+#~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
+#~ msgstr "Limit pamäte pre tento server je %d MB a limit pre procesorový čas je %d sekúnd."
+
+#~ msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+#~ msgstr "Toto má byť zoznam faktov oddelených čiarkami alebo medzerami, naviac k narodeniu a, ktoré chcete, aby sa zobrazovali v schémach ako je napr. vývod. Tento zoznam vyžaduje použitie tagov definovaných v štandarde GEDCOM 5.5.1. Napríklad ak chcete, aby sa zobrazilo v rámčeku povolanie, pridajte \"OCCU\" do tohoto poľa."
+
+#~ msgid "This text will be appended to each page title.  It will be shown in the browser’s title bar, bookmarks, etc."
+#~ msgstr "Tento text sa pripojí ku každému názvu stránky. Zobrazí sa v záložkách, v lište mena prohliadača atd."
+
+#~ msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+#~ msgstr "Táto hodnota určuje počet generácií potomkov východiskovej osoby, ktoré budú samostatne zobrazené vo forme schémy presýpacích hodín."
+
+#~ msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
+#~ msgstr "Pre pomoc pri práci s týmto blokom sme vytvorili niekoľko štandardných šablon. Ak si zvolíte niektorú šablonu, textová oblasť bude obsahovať predlohu, ktorú môžete zmeniť a prispôsobiť tak požiadavkám vašich stránok."
+
+#~ msgid "To family"
+#~ msgstr "k rodine"
+
+#~ msgid "To individual"
+#~ msgstr "k osobe"
+
+#~ msgid "To source"
+#~ msgstr "k zdroju"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "Počet priajých zmien: "
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Počet čakajúcich zmien: "
+
+#~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
+#~ msgstr "Transport Layer Security (TLS) a Secure Sockets Layer (SSL) sú internetové šifrovacie protokoly.<br><br>TLS 1.0, 1.1 a 1.2 sú štandardizované v rámci SSL 3.0. TLS 1.0 a SSL 3.1 sú ekvivalentné. Ďalší vývoj v SSL sa teraz deje pod novým menom, TLS. <br><br>Ak váš SMTP server vyžaduje v priebehu prihlásenia SSL protokol, mali by ste označiť voľbu <b>SSL</b>. Ak SMTP server vyžaduje v priebehu prihlásenia TLS, mali by ste označiť voľbu <b>TLS</b>."
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Nebol rozoznaný GEDCOM kód"
+
+#~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
+#~ msgstr "Použiť SMTP na posielanie e-mailov z <b>webtrees</b>.<br><br>Táto možnosť vyžaduje prístup k SMTP serveru. Ak nastavíte <b>Nie</b>, <b>webtrees</b> použije zabudovaný PHP systém na posielanie mailov."
+
+#~ msgid "Use SMTP to send external mails"
+#~ msgstr "Použiť SMTP na posielanie externých e-mailov"
+
+#~ msgid "Use colors"
+#~ msgstr "Použiť farby"
+
+#~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
+#~ msgstr "Použiť meno a heslo na pripojenie k SMTP serveru.<br><br>Niektoré SMTP servery vyžadujú prihlásenie, aby mohli odosielať e-maily."
+
+#~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
+#~ msgstr "Použiť obrázok siluety, ak nie je určený žiadny zvýraznený obrázok pre danú osobu. Obrázky sú rôzne podľa pohlavia.<br><br><table><tr><td wrap valign=\\\"middle\\\">Ak je pohlavie neznáme, tak sa použije nasledovný obrázok:"
+
+#~ msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move right and Move left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
+#~ msgstr "Použite tieto tlačidlá pre presunutie položiek z jedného zoznamu do iného.<br><br>Označte položku, ktorú chcete presunúť, kliknite na tlačidlo a presuňte alebo skopírujte položku v smere šípky. Použite tlačidlá <b>&raquo;</b> a <b>&laquo;</b> na presunutie označenej položky z najľavejšieho do najpravejšieho zoznamu a opačne. Použite tlačidlá <b>&gt;</b> a <b>&lt;</b> na presunutie označenej položky medzi dostupnými blokmi.<br><br>Položky v zozname Dostupných blokov sa nemenia, pretože sa rovnaké bloky môžu objaviť na jednej stránke niekoľkokrát. HTML blok je dobrý príklad, ktorý na to môžete použiť."
+
+#~ msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
+#~ msgstr "Použite toto tlačítko ku zmene poradia položiek zoznamu. Bloky budú zobrazené v poradí v akom su zoradené na zozname.<br><br>Označte položku ktorú chcete presunúť a potom kliknite na tlačítko šípky hore alebo dole."
+
+#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
+#~ msgstr "Použite toto políčko pre uloženie skrátenej verzie názvu. Toto pole je použité v spojení s poľom názvu v zdrojoch. <b>webtrees</b> štandardne použije názov a potom skrátený názov.<br><br>Podľa špecifikácie GEDCOM 5.5 \"toto pole poskytuje krátký názov pre triedenie, vyplňovanie a hľadanie zdrojových záznamov (strana 62)\".<br><br>Vo <b>webtrees</b> je skrátený názov voliteľný, ale v iných rodokmeňových programoch je nutný."
+
+#~ msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+#~ msgstr "Použite toto pole k označeniu, že táto mediálna položka je primárna, alebo zdôraznená, pre osobu ku ktorej je priradená. Zvýraznený obrázok bude použitý v schémach a na individuálnej stránke osoby."
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Použite túto stránku ku zmene, alebo zmazaniu členov rodiny.<br><br>Pre každého člena rodiny môžete použiť link Zmena na výber inej osoby, ktorá plní túto rolu v rodine. Môžete tiež použiť link Odstrániť ku zmazaniu tejto osoby z rodiny.<br><br>Keď skončíte zmeny členov rodiny, kliknite na tlačítko Uložiť, pre uloženie vykonaných zmien."
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "Užívateľ sa neoveril v priebehu 7 dní."
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "Užívateľské mená nesmú obsahovať tieto znaky: &lt; &gt; \" %% { } ;"
+
+#~ msgid "Users logged in"
+#~ msgstr "Prihlásení uživatelia"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Uživateľské jazyky"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "Uživateľský účet bol neaktívny príliš dlho: "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Zobraziť GEDCOM záznam"
+
+#~ msgid "View day"
+#~ msgstr "Zobraziť deň"
+
+#~ msgid "View details"
+#~ msgstr "Zobraziť detaily"
+
+#~ msgid "View family"
+#~ msgstr "Zobraziť rodinu"
+
+#~ msgid "View month"
+#~ msgstr "Zobraziť mesiac"
+
+#~ msgid "View notes"
+#~ msgstr "Zobraziť poznámky"
+
+#~ msgid "View person"
+#~ msgstr "Zobraziť osobu"
+
+#~ msgid "View source"
+#~ msgstr "Zobraziť zdroj"
+
+#~ msgid "View year"
+#~ msgstr "Zobraziť rok"
+
+#~ msgid "Visitor options"
+#~ msgstr "Nastavenia pre návštevníkov"
+
+#~ msgid "Visitors"
+#~ msgstr "Návštevník"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=1"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Teraz vám zašleme na adresu <b>%s</b> e-mail na potvrdenie. Musíte potvrdiť Vašu žiadosť o účet postupom, uvedeným v potvrdzujúcom e-maile. Pokiaľ Vašu požiadavku nepotvrdíte v priebehu siedmych dní, bude Vaša žiadosť automaticky zamietnutá. V takomto prípade musíte opätovne požiadať o vytvorenie účtu.<br><br>Po vykonaní inštrukcí v potvrdzujúcom je ešte potrebné, aby Váš prístup schválil administrátor.<br><br>Pre prihlásenie na túto stránku potrebujete poznať svoje užívateľské meno a heslo."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Teraz vám zašleme na adresu <b>%s</b> e-mail na potvrdenie. Musíte potvrdiť Vašu žiadosť o účet postupom, uvedeným v potvrdzujúcom e-maile. Pokiaľ Vašu požiadavku nepotvrdíte v priebehu siedmych dní, bude Vaša žiadosť automaticky zamietnutá. V takomto prípade musíte opätovne požiadať o vytvorenie účtu.<br><br>Po vykonaní inštrukcí v potvrdzujúcom e-maile sa môžete prihlásiť. Pre prihlásenie na túto stránku potrebujete poznať svoje uživateľské meno a heslo."
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "Konfiguračné možnosti META tagov"
+
+#~ msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
+#~ msgstr "Keď sa uživateľ zaregistruje, je mu odoslaný e-mail s overovacím odkazom. Keď naň klikne vieme, že emailová adresa je správná a voľba \\\"email overený\\\" je zaškrtnutá automaticky."
+
+#~ msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
+#~ msgstr "Keď nastavíte <b>Ano</b>, objaví sa nasledujúca správa nad formulárom pre žiadosť o nový uživateľský účet:<div class=\\\"list_value_wrap\\\"><div class=\\\"largeError\\\">Upozornenie:</div><div class=\\\"error\\\">Vyplnením a odoslaním formulára súhlasíte, že:<ul><li>ochráníte súkromie žijúcich ľudí zobrazených na tomto webe</li><li>a v nižšie uvedenom rámčeku vysvetlíte, ku komu ste príbuzný alebo poskytnete nám informácie o niekom, kto by mal byť uvedený na našom webe.</li></ul></div></div>"
+
+#~ msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
+#~ msgstr "Ak je toto políčko zaškrtnuté, schéma sa zobrazí z najstaršími osobami hore. Ak nie je zaškrtnuté, hore sa zobrazia najmladšie osoby."
+
+#~ msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
+#~ msgstr "Ak je voľba označená, môžete vidieť všetky zdroje a poznámky pre túto osobu. Ak nie je označená, nezobrazia sa zdroje a poznámky spojené s faktami danej osoby."
+
+#~ msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
+#~ msgstr "Keď zaškrtnete túto možnosť, kópie súboru GEDCOM sa skomprimuje do archívu formátu ZIP pred každým stiahnutím. Toto výrazne zníží veľkosť súboru, ale budete musieť použíť kompatibilný program pre dekompresiu (7zip, WinZIP).<br><br>Je to veľmi užitočné pri sťahovaní veľkých GEDCOMov. Je tu riziko, že čas pre sťahovanie nezabalených súborov vyprší, čo vyústi v čiastočne stiahnuté súbory. Voľba ZIP archívov by mala znížiť čas sťahovania o 75 percent."
+
+#~ msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
+#~ msgstr "Ak kliknete na odkaz <b>Pridať novú Zdieľanú poznámku</b>, vyskočí nové okno. Môžete si vybrať, či ju pripojíte k už existujúcej zdieľanej poznámke, alebo vytvoríte novú a súčasne vytvoríte na ňu odkaz."
+
+#~ msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
+#~ msgstr "Kliknutím na tento odkaz bude vaša schránka výstrižkov úplne vyprázdnená.<br><br>Ak nechcete odstrániť všetky osoby, rodiny atd zo schránky výstrižkov, môžete odstraňovať položku za položkou klikaním na odkaz \"Odstrániť\" v rámčekoch s menami."
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Ktoré vzťahy tejto osoby by ste chceli tiež pridať?"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "Kto môže vidieť obrázky bez vodoznaku?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Vek manželky"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Manželkine rodné priezvisko sa stane súčasťou krstného mena a prevezme priezvisko manžela"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Priezvisko manželky prepísať priezviskom manžela"
+
+#~ msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+#~ msgstr "S touto voľbou sa použije interný systém správ <b>webtrees</b> a nebudú sa posielať žiadne e-maily.  Iba obdržíte <u>interné</u> správy od ostatných užívateľov. Ak vám pošle správu užívateľ z iného webu, správa sa zobrazí v bloku správ na osobnej Mojej stránke. Ak ste odstránili tento blok z vašej stránky, neuvidíte žiadne správy. Avšak zobrazia sa ihned, keď nastavíte znova Moju stránku, aby obsahovala blok správ."
+
+#~ msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
+#~ msgstr "Vzhľad <b>webtrees</b> je možné meniť pomocou \\\"motívov\\\". Každý motív má iný štýl, rozloženie, farebnú schému atd."
+
+#~ msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
+#~ msgstr "Na toto tlačítko môžete kliknúť pre nájdenie ďalšieho vzťahu medzi týmito dvoma osobami, ak taký existuje.<br>Predchádzajúci nájdený vzťah si môžete opätovne zobraziť kliknutím na odkaz s číslom vzťahu."
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "Môžete určiť či FAQ bude zobrazené nbez ohľadu na GEDCOMe, alebo či bude zobrazné iba z aktuálnym GEDCOMom.<br><ul><li><b>Všetky</b>&nbsp;&nbsp;&nbsp;FAQ bude zobrazené na zozname všetkých FAQ, bez ohľadu na GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;FAQ bude zobrazené iba na zozname FAQ aktuálneho aktívneho GEDCOMu.</li></ul>"
+
+#~ msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+#~ msgstr "Môžete obmedziť počet zobrazený Noviniek pre zredukovanie veľkosti bloku Novinky GEDCOMu. Táto voľba určuje či bude uplatnený nejaký limit a či bude závislý na veku článkov, alebo ich počte."
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Zaznačením priezvísk po sobáši môžete uľahčiť vyhľadávanie vydatých žien.<br>Nie všetky ženy však prijmú manželove priezvisko, takže dajte pozor na zadávanie nesprávnych informácií do databáze."
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "Žiadny ďalší e-mail z tohoto systému už nedostanete, pretože účet bude do siedmich dní bez overenia zmazaný."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Vaša Schránka výstrižkov je prázdna."
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "Váš správca serveru vám poskytne podrobnosti pripojenia."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Váš uživatelský účet nemá povolené \"automaticky schvaľovať zmeny\". Budete schopný meniť naraz iba jeden záznam."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "ZIP súbor(y)"
+
+#~ msgid "daughter of"
+#~ msgstr "dcéra"
+
+#~ msgctxt "son's wife's father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "svat"
+
+#~ msgctxt "son's wife's mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "svatka"
+
+#~ msgctxt "son's wife's parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "svat"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "zomrela"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "zomrel"
+
+#~ msgid "first"
+#~ msgstr "prvá"
+
+#~ msgctxt "child's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "manžel pravnučky"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "manžel pravnučky"
+
+#~ msgctxt "son's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "manžel pravnučky"
+
+#~ msgctxt "child's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "manželka vnuka"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "manželka vnuka"
+
+#~ msgctxt "son's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "manželka vnuka"
+
+#~ msgid "last"
+#~ msgstr "posledný"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "vydatá"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "ženatý"
+
+#~ msgid "son of"
+#~ msgstr "syn"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "svat"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "svatka"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "svat"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_slovak_ci"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "sa narodil"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "sa narodil"
+
+#~ msgid "webtrees’ database must be on the same server as PGV’s"
+#~ msgstr "webtrees databáza musí byť na rovnakom serveri ako PGV"

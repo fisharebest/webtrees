@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2013-03-30 11:24+0000\n"
-"Last-Translator: Manoj Modak <manoj434@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 17:01+0000\n"
+"Last-Translator: Hemant Modak <hemant.modak@gmail.com>\n"
 "Language-Team: Marathi <mr@li.org>\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:32+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:04+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -1372,12 +1372,12 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:352
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "नात दत्तक घेणे."
 
 #: library/WT/Gedcom/Tag.php:358
 msgctxt "daughter's daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "नात दत्तक घेणे"
 
 #: library/WT/Gedcom/Tag.php:364
 msgctxt "son's daughter"
@@ -1687,7 +1687,7 @@ msgstr ""
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "एक अनपेक्षित database त्रूटी आढळली आहे."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -2362,7 +2362,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:439
 msgid "Birth of a daughter"
-msgstr ""
+msgstr "मुलगी होणे."
 
 #: library/WT/Gedcom/Tag.php:446 library/WT/Gedcom/Tag.php:452
 #: library/WT/Gedcom/Tag.php:458
@@ -2371,12 +2371,12 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:445
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "नात होणे."
 
 #: library/WT/Gedcom/Tag.php:451
 msgctxt "daughter's daughter"
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "नात होणे."
 
 #: library/WT/Gedcom/Tag.php:457
 msgctxt "son's daughter"
@@ -3144,7 +3144,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:544
 msgid "Christening of a daughter"
-msgstr ""
+msgstr "मुलीचे नामकरण करणे."
 
 #: library/WT/Gedcom/Tag.php:551 library/WT/Gedcom/Tag.php:557
 #: library/WT/Gedcom/Tag.php:563
@@ -3153,17 +3153,17 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:550
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "नातीचे नामकरण करणे."
 
 #: library/WT/Gedcom/Tag.php:556
 msgctxt "daughter's daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "नातीचे नामकरण करणे."
 
 #: library/WT/Gedcom/Tag.php:562
 msgctxt "son's daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "नातीचे नामकरण करणे."
 
 #: library/WT/Gedcom/Tag.php:549
 msgid "Christening of a grandson"
@@ -4045,7 +4045,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:648
 msgid "Death of a daughter"
-msgstr ""
+msgstr "मुलीचा मृत्यू होणे."
 
 #: library/WT/Gedcom/Tag.php:695
 msgid "Death of a father"
@@ -4063,17 +4063,17 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:654
 msgid "Death of a granddaughter"
-msgstr ""
+msgstr "नातीचा मृत्यू होणे."
 
 #: library/WT/Gedcom/Tag.php:660
 msgctxt "daughter's daughter"
 msgid "Death of a granddaughter"
-msgstr ""
+msgstr "नातीचा मृत्यू होणे."
 
 #: library/WT/Gedcom/Tag.php:666
 msgctxt "son's daughter"
 msgid "Death of a granddaughter"
-msgstr ""
+msgstr "नातीचा मृत्यू होणे."
 
 #: library/WT/Gedcom/Tag.php:671
 msgid "Death of a grandfather"
@@ -5288,7 +5288,7 @@ msgstr ""
 #: modules_v3/family_group_report/module.php:35
 #: modules_v3/family_nav/module.php:300
 msgid "Family"
-msgstr "परिवार"
+msgstr "कुटूंब"
 
 #: family.php:141
 msgid "Family Group Information"
@@ -7541,7 +7541,7 @@ msgstr ""
 #: login.php:177 login.php:193 login.php:231
 #: modules_v3/login_block/module.php:100
 msgid "Lost password request"
-msgstr ""
+msgstr "संकेत शब्द हरवला आहे."
 
 #: library/WT/Gedcom/Code/Temp.php:123
 msgid "Louisville, Kentucky"
@@ -7968,7 +7968,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:89
 #: modules_v3/media/module.php:34 themes/_administration/header.php:135
 msgid "Media"
-msgstr ""
+msgstr "माध्यम"
 
 #: admin_trees_config.php:350 help_text.php:664
 msgid "Media ID prefix"
@@ -9844,7 +9844,7 @@ msgstr ""
 #: find.php:144 modules_v3/GEDFact_assistant/_CENS/census_3_find.php:62
 #: modules_v3/GEDFact_assistant/module.php:117 search.php:42 search.php:64
 msgid "Please enter more than one character"
-msgstr "कृपया एकापेक्ष्या आधिक कॅरक्टर लिहा"
+msgstr "कृपया एकापेक्षा अधिक अक्षरे लिहा"
 
 #: message.php:111
 msgid "Please enter some message text before sending."
@@ -10426,7 +10426,7 @@ msgstr "नाती"
 #: relationship.php:62
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr ""
+msgstr "%1$s आणि %2$s मधील नाते"
 
 #. I18N: gedcom tag RELI
 #: library/WT/Gedcom/Tag.php:301
@@ -18615,3 +18615,416 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid " but the details are unknown"
+#~ msgstr " परंतु अधिक तपशील उपलब्ध नाही."
+
+#~ msgid " in "
+#~ msgstr " मध्ये "
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "ज्ञात स्रोतानुसार  प्राप्त घटनांचे विवरण"
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "Add a new name"
+#~ msgstr "नवीन नाव लिहा"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "तक्त्यत नवीन व्यक्ती जोडा"
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "एक अनपेक्षित database त्रूटी आढळली आहे."
+
+#~ msgid "Ancestors of "
+#~ msgstr "चे पूर्वज "
+
+#~ msgid "Begin year"
+#~ msgstr "सुरवातीचे वर्ष"
+
+#~ msgid "Birth date range end"
+#~ msgstr "जन्म दिनांक (पर्यंत)"
+
+#~ msgid "Birth date range start"
+#~ msgstr "जन्म दिनांक (पासून)"
+
+#~ msgid "Brother"
+#~ msgstr "भाऊ"
+
+#~ msgid "Change family members"
+#~ msgstr "कुटुंबाचे  सदस्य बदला"
+
+#~ msgid "Child of "
+#~ msgstr "चे अपत्य "
+
+#~ msgid "Children of "
+#~ msgstr "ची अपत्ये "
+
+#~ msgid "Choose relatives"
+#~ msgstr "नातेवाईक निवडा"
+
+#~ msgid "Clear chart"
+#~ msgstr "तक्ता पूसा"
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "आईवोरी कोस्ता"
+
+#~ msgid "Date of adoption"
+#~ msgstr "दत्तकविधानाचा दिनांक"
+
+#~ msgid "Date of event"
+#~ msgstr "घटना दिनांक"
+
+#~ msgid "Date of residence"
+#~ msgstr "निवासाचा दिनांक"
+
+#~ msgid "Daughter"
+#~ msgstr "मुलगी"
+
+#~ msgid "Death date range end"
+#~ msgstr "मृत्यू दिनांक (पर्यंत)"
+
+#~ msgid "Death date range start"
+#~ msgstr "मृत्यू दिनांक (पासून)"
+
+#~ msgid "Descendants of "
+#~ msgstr "चे वंशज "
+
+#~ msgid "Differences"
+#~ msgstr "फरक"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "थेट पूर्वज"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "थेट पूर्वज कुटुंबसहित"
+
+#~ msgid "Display %s"
+#~ msgstr "%s दाखवा"
+
+#~ msgid "Do not send messages"
+#~ msgstr "संदेश पाठवू नका"
+
+#~ msgid "End year"
+#~ msgstr "शेवटचे वर्ष"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "व्यक्तिचा  ID लिहा"
+
+#~ msgid "Facts for family records"
+#~ msgstr "कुटुंबाच्या नोंदींविषयी वस्तुस्थिती."
+
+#~ msgid "Family with husband"
+#~ msgstr "पतीसह कुटुंब"
+
+#~ msgid "Family with wife"
+#~ msgstr "पत्नीसह कुटुंब"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "वडिलांचे जन्मस्थान  (Chapman  प्रारूप)"
+
+#~ msgid "Father’s age"
+#~ msgstr "वडिलांचे वय"
+
+#~ msgid "Generation "
+#~ msgstr "पिढी "
+
+#~ msgid "He "
+#~ msgstr "तो "
+
+#~ msgid "He died"
+#~ msgstr "ते निवर्तले."
+
+#~ msgid "He married"
+#~ msgstr "त्यांचा विवाह झाला."
+
+#~ msgid "He resided at"
+#~ msgstr "ते रहात होते."
+
+#~ msgid "He was born"
+#~ msgstr "त्याचा जन्म झाला."
+
+#~ msgid "He was buried"
+#~ msgstr "यांस दफन केले"
+
+#~ msgid "He was cremated"
+#~ msgstr "यांचे दहन झाले"
+
+#~ msgid "Her occupation was"
+#~ msgstr "त्यांचा व्यवसाय होता."
+
+#~ msgid "His occupation was"
+#~ msgstr "त्यांचा व्यवसाय होता."
+
+#~ msgid "Individual 1"
+#~ msgstr "व्यक्ति १"
+
+#~ msgid "Individual 2"
+#~ msgstr "व्यक्ति २"
+
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "विवाह दिनांक (पर्यंत)"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "विवाह दिनांक (पासून)"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "विवाह स्थान"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "सर्वात जास्त बघितल्या गेलेल्या गोष्टी"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "आईचे जन्मस्थान (Chapman  प्रारूप)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "आईचे वय"
+
+#~ msgid "Move left"
+#~ msgstr "डावीकडे हलवा"
+
+#~ msgid "Move right"
+#~ msgstr "उजवीकडे हलवा"
+
+#~ msgid "Name List"
+#~ msgstr "नावांची यादी"
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "आजच्या दिवसासाठी हयात व्यक्तींसाठी कुठलेही प्रसंग नोंदलेले नाहीत."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "उद्यासाठी हयात व्यक्तींसाठी कुठलेही प्रसंग नोंदलेले नाहीत."
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "सर्वात वृद्ध हयात व्यक्ती"
+
+#~ msgid "Orientation"
+#~ msgstr "कल"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "पालक आणि भावंडे"
+
+#~ msgid "Parent’s age"
+#~ msgstr "पालकांचे वय"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "अनुवंशक्रम तक्ता"
+
+#~ msgid "Place of adoption"
+#~ msgstr "दत्तकविधानाचे स्थळ"
+
+#~ msgid "Place of event"
+#~ msgstr "घटना स्थळ"
+
+#~ msgid "Place of residence"
+#~ msgstr "निवासस्थान"
+
+#~ msgid "Registry officer"
+#~ msgstr "नोंदणी अधिकारी"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "नोंदणी अधिकारी"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "नोंदणी अधिकारी"
+
+#~ msgid "Remove this location?"
+#~ msgstr "हे स्थान हटवू का ?"
+
+#~ msgid "Select events"
+#~ msgstr "कार्यक्रम निवडा"
+
+#~ msgid "Send message"
+#~ msgstr "संदेश पाठवा."
+
+#~ msgid "Shared note contains:"
+#~ msgstr "चा सामुदायिक टीपेत समवेश आहे"
+
+#~ msgid "She "
+#~ msgstr "ती "
+
+#~ msgid "She died"
+#~ msgstr "त्या निवर्तल्या."
+
+#~ msgid "She married"
+#~ msgstr "त्यांचा विवाह झाला."
+
+#~ msgid "She resided at"
+#~ msgstr "त्या  रहात होत्या."
+
+#~ msgid "She was born"
+#~ msgstr "तिचा जन्म झाला."
+
+#~ msgid "She was buried"
+#~ msgstr "यांस दफन केले"
+
+#~ msgid "She was cremated"
+#~ msgstr "यांचे दहन झाले"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "पूर्वजांची अपत्ये दाखवू का ?"
+
+#~ msgid "Show details"
+#~ msgstr "तपशील दाखवा"
+
+#~ msgid "Show inactive places"
+#~ msgstr "निष्क्रिय स्थाने दाखवा."
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "१०० वर्षे व त्यापूर्वी जन्मलेल्या व्यक्ती दाखवा."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "गेल्या १०० वर्षात जन्मलेल्या व्यक्ती दाखवा."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "जिवंत व्यक्ती अथवा दोन्ही जोडीदार जिवंत असलेली दाम्पत्ये दाखवा."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "स्वर्गवासी व्यक्ती अथवा दोन्ही जोडीदार स्वर्गवासी असलेली दाम्पत्ये दाखवा."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "१०० वर्षे व त्यापूर्वी स्वर्गवासी झालेल्या व्यक्ती दाखवा."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "गेल्या १०० वर्षात स्वर्गवासी झालेल्या व्यक्ती दाखवा."
+
+#~ msgid "Show notes?"
+#~ msgstr "टीपा दाखवू का ?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "व्यवसाय दाखवू का ?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "ज्यांचे लिंग नोंदलेले नाही अश्या व्यक्ती दाखवा."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "फक्त व्यक्ती, घटना अथवा सर्व दाखवा"
+
+#~ msgid "Show pending changes"
+#~ msgstr "प्रलंबित बदल दाखवा"
+
+#~ msgid "Show photos?"
+#~ msgstr "छायाचित्र दाखवा ?"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "संबंधित व्यक्ती/कुटुंबे दाखवा."
+
+#~ msgid "Show residences?"
+#~ msgstr "निवासस्थाने दाखवू का ?"
+
+#~ msgid "Show sources?"
+#~ msgstr "स्त्रोत दाखवू का ?"
+
+#~ msgid "Sister"
+#~ msgstr "बहीण"
+
+#~ msgid "Son"
+#~ msgstr "मुलगा"
+
+#~ msgid "Sources to the events"
+#~ msgstr "घटनांचे स्रोत"
+
+#~ msgid "Spouse"
+#~ msgstr "जोडीदार"
+
+#~ msgid "Spouses and children"
+#~ msgstr "जोडीदार आणि मुले"
+
+#~ msgid "Surname option"
+#~ msgstr "आडनावाचे पर्याय"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "एकूण स्वीकारलेले बदल: "
+
+#~ msgid "Total pending changes: "
+#~ msgstr "एकूण प्रलंबित बदल : "
+
+#~ msgid "Use colors"
+#~ msgstr "रंगांचा वापर करा."
+
+#~ msgid "View family"
+#~ msgstr "कुटुंब पहा."
+
+#~ msgid "View person"
+#~ msgstr "व्यक्ती पहा."
+
+#~ msgid "View source"
+#~ msgstr "स्त्रोत पहा"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "पत्नीच्या आडनावा ऐवजी पतीचे आडनाव वापरा."
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "तुमच्या serverचा प्रशासक तुम्हाला संपर्कासाठी अधिक माहिती देईल."
+
+#~ msgid "daughter of"
+#~ msgstr "ची मुलगी"
+
+#~ msgctxt "son's wife's father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "व्याही"
+
+#~ msgctxt "son's wife's mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "विहीणबाई"
+
+#~ msgctxt "son's wife's parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "व्याहीमंडळी"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "निवर्तल्या"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "निवर्तले"
+
+#~ msgid "first"
+#~ msgstr "पहिला"
+
+#~ msgctxt "child's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "नात जावई"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "नात जावई"
+
+#~ msgid "last"
+#~ msgstr "शेवटचा"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "विवाहबद्ध"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "विवाहबद्ध"
+
+#~ msgid "son of"
+#~ msgstr "चा मुलगा"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "त्यांचा जन्म झाला"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "त्यांचा जन्म झाला"

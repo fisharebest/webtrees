@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2013-02-27 18:27+0000\n"
-"Last-Translator: Audrius Demenius <Unknown>\n"
+"PO-Revision-Date: 2013-08-04 16:29+0000\n"
+"Last-Translator: Vytautas Krivickas <Unknown>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:31+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: Lithuanian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -1698,7 +1698,7 @@ msgstr "Interaktyvus medis, kuriame nurodyti visi protėviai ir asmens palikuony
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "Netikėta duomenų bazės klaida."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -3292,7 +3292,7 @@ msgstr "Paspauskite eilutę, tuomet nutempkite į perrikiuotą mediją "
 
 #: admin_trees_manage.php:263
 msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
-msgstr "Spauskite čia kad patekti PhpGedView vertimo į <b>kilmės medį</ b> vedlį"
+msgstr "Spauskite čia kad patekti PhpGedView vertimo į <b>kilmės medį</b> vedlį"
 
 #: modules_v3/faq/module.php:283
 msgid "Click here to Add, Edit, or Delete"
@@ -4330,7 +4330,7 @@ msgstr "Ištrintas narys: "
 
 #: admin_trees_manage.php:196
 msgid "Deleting old genealogy data…"
-msgstr "Ištrinami seni genealogijos duomenys..."
+msgstr "Ištrinami seni genealogijos duomenys…"
 
 #: library/WT/Controller/Family.php:159
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -8872,9 +8872,9 @@ msgstr "Rytojui įvykių nėra."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Nėra gyvenančių žmonių įvykių %s dienai."
-msgstr[1] "Nėra gyvenančių žmonių įvykių %s dienoms."
-msgstr[2] "Nėra gyvenančių žmonių įvykių %s dienų."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -10725,7 +10725,7 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:91
 msgid "Sage"
-msgstr ""
+msgstr "Šalavijas"
 
 #: library/WT/Stats.php:3981
 msgid "Saint Helena"
@@ -18630,3 +18630,1219 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
+
+#~ msgid " but the details are unknown"
+#~ msgstr " bet detalės yra nežinomos"
+
+#~ msgid " in "
+#~ msgstr " į "
+
+#~ msgid "%1$s’s %2$s"
+#~ msgstr "%1$s’s %2$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%g:%i:%s %a"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%Y %F %j"
+
+#~ msgid "%s day"
+#~ msgid_plural "%s days"
+#~ msgstr[0] "%s diena"
+#~ msgstr[1] "%s dienos"
+#~ msgstr[2] "%s dienų"
+
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "prieš %s dieną"
+#~ msgstr[1] "prieš %s dienas"
+#~ msgstr[2] "prieš %s dienas"
+
+#~ msgid "%s hour ago"
+#~ msgid_plural "%s hours ago"
+#~ msgstr[0] "prieš %s valandą"
+#~ msgstr[1] "prieš %s valandas"
+#~ msgstr[2] "prieš %s valandų"
+
+#~ msgid "%s minute ago"
+#~ msgid_plural "%s minutes ago"
+#~ msgstr[0] "prieš %s minutę"
+#~ msgstr[1] "prieš %s minutes"
+#~ msgstr[2] "prieš %s minutčių"
+
+#~ msgid "%s month"
+#~ msgid_plural "%s months"
+#~ msgstr[0] "%s mėnuo"
+#~ msgstr[1] "%s mėnesiai"
+#~ msgstr[2] "%s mėnesių"
+
+#~ msgid "%s month ago"
+#~ msgid_plural "%s months ago"
+#~ msgstr[0] "prieš %s mėnesį"
+#~ msgstr[1] "prieš %s mėnesius"
+#~ msgstr[2] "prieš %s mėnesius"
+
+#~ msgid "%s second ago"
+#~ msgid_plural "%s seconds ago"
+#~ msgstr[0] "prieš %s sekundę"
+#~ msgstr[1] "prieš %s sekundes"
+#~ msgstr[2] "prieš %s sekundžių"
+
+#~ msgid "%s three times removed ascending"
+#~ msgstr "%s tris kartus pašalintas didėjimo tvarka"
+
+#~ msgid "%s three times removed descending"
+#~ msgstr "%s tris kartus pašalintas mažėjimo tvarka"
+
+#~ msgid "%s week"
+#~ msgid_plural "%s weeks"
+#~ msgstr[0] "%s savaitė"
+#~ msgstr[1] "%s savaičių"
+#~ msgstr[2] "%s savaitės"
+
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "%s metai"
+#~ msgstr[1] "%s metų"
+#~ msgstr[2] "%s metų"
+
+#~ msgid "%s year ago"
+#~ msgid_plural "%s years ago"
+#~ msgstr[0] "prieš %s metus"
+#~ msgstr[1] "prieš %s metų"
+#~ msgstr[2] "prieš %s metus"
+
+#~ msgid "%s%%"
+#~ msgstr "%s%%"
+
+#~ msgid "(aged %s)"
+#~ msgstr "(amžius %s)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(amžius mažiau negu %s)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "(amžius daugiau negu %s)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "atrinkta iš %s įrašų"
+
+#~ msgid "(in childhood)"
+#~ msgstr "vaikystėje"
+
+#~ msgid "(in infancy)"
+#~ msgstr "kūdikystėje"
+
+#~ msgid "(stillborn)"
+#~ msgstr "gimė negyvas"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b>Please Note:</b> Informacija apie gyvus asmenis bus pateikiama tik giminės nariams. Jūsų bus paprašyta patvirtinti savo giminystės ar kitus ryšius su tuo asmeniu prieš gaunant privačius duomenis. Kartais informacija apie mirusius asmenis gali būti privati. Jei taip yra, arba nėra pakankamai informacijos, ar jie gyvi ar ne, gali būti kad ir mes neturime daugiau informacijos apie šį asmenį.<br><br>Prieš užduodant klausimą , įsitikinkite, kad jūs teiraujatės apie teisingą asmenį patikrinę datas, vietas ir artimus giminaičius. Jei pranešate apie genealoginių duomenų pakeitimus, prašome nurodyti šaltinius, iš kur gavote duomenis."
+
+#~ msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "<b>webtrees</b> reikia siųsti laiškus, pavyzdžiui, slaptažodžio priminimus ir svetainių pranešimus. Norėdami tai padaryti, jis gali naudotis šio serverio PHP galimybėmis (o tai ne visada įmanoma), arba išorės SMTP (pašto relės) paslaugomis, kuriai Jūs turėsite pateikti susijungimo duomenis, kuriuos galite rasti internetinio pašto tiekėjo WEB puslapyje."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Sveiki atvykę į šį Genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas visiems, kas turi naudotojo paskyrą ir slaptažodį."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Sveiki atvykę į šį Genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas tik <u>patvirtintiems</u> naudotojams.<br><br>Jei turite naudotojo paskyrą, tuomet galite jungtis prie šio tinklapio. Jei ne, galite užsakyti naudotojo paskyrą nuspaudę atitinkamą nuorodą žemiau.<br><br>Patikrinęs Jūsų duomenis puslapio administratorius patvirtins naują naudotoją arba atmes šį prašymą. Jūs sulauksite elektroninio laiško, kuomet Jūsų paraiška bus patvirtinta."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Sveiki atvykę į šį Genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas tik <u>šeimos nariams</u>.<br><br>Jei turite paskyrą, galite prisijungti prie šio tinklapio. Jei ne, tuomet galite užsakyti naudotojo paskyrą nuspaudę atitinkamą nuorodą žemiau.<br><br>Patikrinęs Jūsų duomenis puslapio administratorius patvirtins naują naudotoją arba atmes šį prašymą. Jūs sulauksite elektroninio laiško, kuomet Jūsų paraiška bus patvirtinta."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Sveiki atvykę į šį Genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas visiems, kas turi naudotojo paskyrą.<br><br>Jei turite naudotojo paskyrą, tuomet galite jungtis prie šio tinklapio. Jei neturite, galite užsakyti naudotojo paskyrą nuspaudę atitinkamą nuorodą žemiau.<br><br>Patikrinęs Jūsų pateiktus duomenis puslapio administratorius aktyvuos Jūsų paskyrą. Jūs sulauksite elektroninio laiško, kuomet Jūsų paraiška bus patvirtinta."
+
+#~ msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
+#~ msgstr "<div class=\"largeError\">Įspėjimas:</div><div class=\"error\">Užpildydami ir išsiųsdami šią formą, Jūs sutinkate:<ul><li>apsaugoti gyvų žmonių privatumą, kurie pateikti šiame tinklapyje;</li><li>ir teksto laukelyje, esančiame žemiau, paaiškinti kaip esate susiję su gimine, arba pateikti mums informacijos apie kurį nors asmenį, kuris turėtų būti šiame tinklapyje.</li></ul></div>"
+
+#~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
+#~ msgstr "Duomenų bazių serveryje galima laikyti daugelį atskirų duomenų bazių. Jūs turite pasirinkti esamą duomenų bazę (sukurtą serverio administratorius) arba sukurti naują (jei jūsų duomenų bazės vartotojo sąskaita turi tokias teises)."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Faktai, kurie yra paremiami nurodytu šaltiniu."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=aąbcčdeęėfghiyįjklmnoprsštuųūvzž"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=AĄBCČDEĘĖFGHIYĮJKLMNOPRSŠTUŲŪVZŽ"
+
+#~ msgid "Access"
+#~ msgstr "Prieiga"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Įtraukti vyrą naudojant jau sukurtą asmenį"
+
+#~ msgid "Add a new name"
+#~ msgstr "Įtraukti naują vardą"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Įtraukti žmoną naudojant jau sukurtą asmenį"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Į diagramą įtraukti kitą asmenį"
+
+#~ msgid "Add individuals"
+#~ msgstr "Pridėti asmenis"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Įtraukti tik šį asmenį."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Įtraukti tėvų ir visų giminių įrašus kartu su šeimos įrašu."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Įtraukti tėvų ir vaikų įrašus su šeimos įrašais."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Įtraukti įrašą apie tėvus kartu su šeimos įrašu."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Įtraukti šį asmenį ir jo tiesioginius protėvius."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Įtraukti šį asmenį, tiesioginius protėvius ir jų šeimas."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Įtraukti šį asmenį, jo tėvus bei brolius su seserimis."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Įtraukti šį asmenį, jo sutuoktinį/-ę ir visus palikuonis."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Įtraukti šį asmenį, jo sutuoktinį/-ę ir vaikus."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Įtraukti šį šaltinį ir šeimas/asmenis surištus su juo."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "Prisijungus, pasirinkite «Mano prisijungimo informacija» nuorodą iš «Mano MyGedView puslapis» meniu ir slaptažodžiui pakeisti užpildykite laukelius."
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "Amžius, kuriam esant priimama kad asmuo yra miręs"
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "Tėvų amžius gimus vaikui"
+
+#~ msgid "All individuals"
+#~ msgstr "Visi asmenys"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "Leisti GEDCOM perjungimą"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "Leisti pranešimus saugoti online"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "Interaktyvus medis, kuriame nurodyti visi protėviai ir asmens palikuonys."
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "Netikėta duomenų bazės klaida."
+
+#~ msgid "Ancestral file number"
+#~ msgstr "Protėvių failo numeris"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Ar jūs tikrai norite atšaukti visus paskutinius veiksmus padarytus šiam GEDCOM?"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
+
+#~ msgid "Available blocks"
+#~ msgstr "Galimi blokai"
+
+#~ msgid "Begin year"
+#~ msgstr "Pradžios metai"
+
+#~ msgid "Best man"
+#~ msgstr "Pabrolys"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "Gimimo vietos yra"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "Gimimo ir mirties detalės diagramose"
+
+#~ msgid "Birth date range end"
+#~ msgstr "Gimimų laikotarpis baigiasi"
+
+#~ msgid "Birth date range start"
+#~ msgstr "Gimimų laikotarpis prasideda"
+
+#~ msgid "Brother"
+#~ msgstr "Brolis"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "Įprastai rodomos vietovės susietos su jūsų šeimos medžiu. Pasirinkus šią opciją bus rodomos visos vietovės, net ir tos kurios yra nesusietos su kitais įrašais."
+
+#~ msgid "Change family members"
+#~ msgstr "Keisti šeimos narius"
+
+#~ msgid "Child of "
+#~ msgstr "vaikas "
+
+#~ msgid "Children of "
+#~ msgstr "vaikai "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Pasirinkite giminaičius"
+
+#~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
+#~ msgstr "Pasirinkite miniatiūrą, kurią norite įkelti. Nors miniatiūros gali būti sukurtos automatiškai iš paveikslėlio, Jūs tikriausiai norėsite pats sukurti miniatiūras, ypač iš kitų medijos rūšių. Pavyzdžiui, Jūs galite pateikti paveikslėlį iš vaizdo medžiagos, arba žmogaus fotografiją , kuris padarė garso įrašą."
+
+#~ msgid "Civil registrar"
+#~ msgstr "Civilinė metrikacija"
+
+#~ msgid "Clear chart"
+#~ msgstr "Išvalyti diagramą"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "Paspauskite %s, kad pasirinkti asmenį kaip šeimos galvą."
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Spauskite VARDAS kad pridėti asmenį į Įtraukiamų Nuorodų sąrašą."
+
+#~ msgid "Click this link to remove the individual from the timeline."
+#~ msgstr "Paspauskite šią nuorodą, kad pašalintumėte asmenybę iš laiko juostos."
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Paspauskite, kad pasirinkti asmenį kaip šeimos galvą."
+
+#~ msgid "Coat of arms"
+#~ msgstr "Herbas"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Bendrosios teisės vedybos"
+
+#~ msgid "Contact information"
+#~ msgstr "Kontaktinė informacija"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Taisyti VARDO įrašus formos 'Vardenis/PAVARDENIS/' arba 'Vardenis /Pavardenis', kaip buvo naudojama senesnėse genealoginėse programose."
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "Dramblio Kaulo Krantas"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Sukurti naują bendrą pastabą"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Sukurti naują pastabą naudojant asistentą"
+
+#~ msgid "Create repository"
+#~ msgstr "Sukurti saugyklą"
+
+#~ msgid "Create user"
+#~ msgstr "Sukurti vartotoją"
+
+#~ msgid "Custom event"
+#~ msgstr "Išskirtinis įvykis"
+
+#~ msgid "Date of LDS baptism"
+#~ msgstr "Mormonų krikšto data"
+
+#~ msgid "Date of adoption"
+#~ msgstr "Įvaikinimo data"
+
+#~ msgid "Date of blessing"
+#~ msgstr "Palaiminimo data"
+
+#~ msgid "Date of cremation"
+#~ msgstr "Kremacijos data"
+
+#~ msgid "Date of emigration"
+#~ msgstr "Emigracijos data"
+
+#~ msgid "Date of event"
+#~ msgstr "Įvykio data"
+
+#~ msgid "Date of immigration"
+#~ msgstr "Imigracijos data"
+
+#~ msgid "Date of naturalization"
+#~ msgstr "Natūralizacijos data"
+
+#~ msgid "Date of ordination"
+#~ msgstr "Įšventinimo data"
+
+#~ msgid "Date of residence"
+#~ msgstr "Būstinės įkūrimo data"
+
+#~ msgid "Daughter"
+#~ msgstr "Dukra"
+
+#~ msgid "Death date range end"
+#~ msgstr "mirčių laikotarpis baigiasi"
+
+#~ msgid "Death date range start"
+#~ msgstr "mirčių laikotarpis prasideda"
+
+#~ msgid "Default theme"
+#~ msgstr "Numatyta tema"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Palikuonys "
+
+#~ msgid "Descent steps"
+#~ msgstr "Sekantys žingsniai"
+
+#~ msgid "Differences"
+#~ msgstr "Skirtumai"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Tiesioginė protėvių linija"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Tiesioginė protėvių ir jų šeimų linija"
+
+#~ msgid "Display %s"
+#~ msgstr "Rodyti %s"
+
+#~ msgid "Do not send messages"
+#~ msgstr "Nesiūskite žinučių"
+
+#~ msgid "Edit details"
+#~ msgstr "Taisyti duomenis"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Taisyti patį GEDCOM įrašą"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Redaguoti bendrą pastabą"
+
+#~ msgid "Email address:"
+#~ msgstr "Elektroninio pašto adresas:"
+
+#~ msgid "End year"
+#~ msgstr "Pabaigos metai"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "Užbaigiama sritis nuo datų pakeitimo"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Įveskite šeimos ID"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Įveskite asmens ID"
+
+#~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
+#~ msgstr "Įveskite redaguojamo elemento pavadinimą. Jeigu tai yra media objektas tai jį apibūdinantį pavadinimą įveskite aprašomąjį pavadinimą, kuris identifikuotų šį elementą vartotojui."
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Įveskite asmens, šeimos, nuorodos ar šaltinio ID"
+
+#~ msgid "Enter associate GEDCOM ID."
+#~ msgstr "Įrašykite susijusio GEDCOM ID"
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Įvesti ar ieškoti asmens ID, šeimos ar šaltinio, su kuriais šis medijos elementas turėtų būti susietas."
+
+#~ msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Įveskite fakso numerį įskaitant šalies ir srities kodą.<br><br>Palikite šį lauką tuščią, jei nenorite įtraukti fakso numerio. Pavyzdžiui, Vokietijoje numeris gali būti +49 25859 56 76 89 o JAV ar Kanadoje gali būti +1 888 555-1212."
+
+#~ msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+#~ msgstr "Įveskite URL adresą, įskaitant http://.<br><br>Pavyzdžiui URL atrodo taip:. <b>http://www.webtrees.net/</b>, palikite šį lauką tuščią, jei jūs nenorite įtraukti URL."
+
+#~ msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
+#~ msgstr "Įveskite į lauką adresą taip kaip jis būtų parašytas ant laiško voko.<br><br>Palikite šį lauką tuščią, jei nenorite įtraukti adreso."
+
+#~ msgid "Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address."
+#~ msgstr "Įveskite elektroninio pašto adresą.<br><br>Pavyzdžiui elektroninio pašto adresas atrodo taip: <b>name@hotmail.com</b> Palikite šį lauką tuščią, jei nenorite įtraukti elektroninio pašto adreso."
+
+#~ msgid "Enter the name of the cemetery or other resting place where individual is buried."
+#~ msgstr "Įveskite kapinių ar kitos poilsio vietos, kurioje asmuo yra palaidotas, pavadinimą."
+
+#~ msgid "Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Įveskite telefono numerį įskaitant šalies ir srities kodą.<br><br>Palikite šį lauką tuščią, jei nenorite įtraukti telefono numerio. Pavyzdžiui, Vokietijoje skaičius gali būti +49 25859 56 76 89 o JAV ar Kanadoje skaičius gali būti 1 888 555-1212."
+
+#~ msgid "Entry text:"
+#~ msgstr "Įveskite tekstą:"
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "Į privatu įtraukti ir mirusius asmenis"
+
+#~ msgid "External objects"
+#~ msgstr "Išoriniai objektai"
+
+#~ msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+#~ msgstr "DUK yra išvardyti klausimai ir atsakymai, kurie leidžia jums paaiškinti svetainės taisykles, politiką ir procedūras jūsų lankytojams. Klausimai paprastai yra susiję su privatumo, autorių teisių, vartotojo sąskaitų naudojimu, netinkamu turiniu, poreikiu nurodyti šaltinių nuorodas ir t.t."
+
+#~ msgid "Facts for family records"
+#~ msgstr "Faktai šeimos įrašams"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "Faktai asmeniniams įrašams"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "Faktai saugyklos įrašams"
+
+#~ msgid "Facts for source records"
+#~ msgstr "Faktai šaltinių įrašams"
+
+#~ msgid "Family group information"
+#~ msgstr "Šeimos grupės informacija"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Šeimos medžio iškarpų krepšelis"
+
+#~ msgid "Family with husband"
+#~ msgstr "Šeima su vyru"
+
+#~ msgid "Family with wife"
+#~ msgstr "Šeima su žmona"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Tėvo gimtinė - (Chapman formatas)"
+
+#~ msgid "Father’s age"
+#~ msgstr "Tėvo amžius"
+
+#~ msgid "Font"
+#~ msgstr "Šriftas"
+
+#~ msgid "Foster child"
+#~ msgstr "Įvaikis"
+
+#~ msgid "Foster father"
+#~ msgstr "Įtėvis"
+
+#~ msgid "Foster mother"
+#~ msgstr "Įmotė"
+
+#~ msgid "From email address"
+#~ msgstr "Nuo elektroninio pašto adreso"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "GEDCOM statistika"
+
+#~ msgid "Gedcom"
+#~ msgstr "Genealoginių Duomenų Ryšys (GEDCOM)"
+
+#~ msgid "Generation "
+#~ msgstr "Karta "
+
+#~ msgid "He "
+#~ msgstr "Jis "
+
+#~ msgid "He died"
+#~ msgstr "Jis mirė"
+
+#~ msgid "He married"
+#~ msgstr "Jis vedė"
+
+#~ msgid "He was born"
+#~ msgstr "Jis gimė"
+
+#~ msgid "He was buried"
+#~ msgstr "Jis buvo palaidotas"
+
+#~ msgid "He was christened"
+#~ msgstr "Jis buvo pakrikštytas"
+
+#~ msgid "He was cremated"
+#~ msgstr "Jis buvo kremuotas"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Sveiki %s …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Sveiki %s …<br>Ačiū už registravimąsi"
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Sveikas Administratoriau…"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
+#~ msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
+#~ msgstr "Čia galite pasirinkti tarp dviejų būdų rodyti vietovių pavadinimus hierarchijoje. Jei nustatyta Taip, vieta turi trumpą pavadinimą arba faktinio lygmens pavadinimą, jei Ne - pilną pavadinimą.<br><b>Pavyzdžiai:<br>Pilnas pavadinimas:</b> Čikaga, Ilinojus, JAV<br><b>Trumpas pavadinimas:</b> Čikaga<br><b>Pilnas pavadinimas:</b> Ilinojus, JAV<br><b>Trumpas pavadinimas:</b> Ilinojus"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "Slėpti &amp; rodyti"
+
+#~ msgid "Hit count:"
+#~ msgstr "Lankymo skaitiklis:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Vyro amžius"
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Jei Jūs neprašėte prisijungimo vardo, tai galite tik ištrinti šį laišką."
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "Jei nežinote šių nustatymų, palikite kokie yra. Jie gali veikti. Juos galėsite pakeisti vėliau."
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "Jei nenorite siųsti laiškų, pavyzdžiui, naudojant kilmės medį su vienu Nariu ar naudojant atskirą kompiuterį, galite išjungti šią funkciją."
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "Jei jūs turite daug nesusietų vietovių įrašų, tai gali stabdyti sąrašo sugenerąvimą."
+
+#~ msgid "In this month…"
+#~ msgstr "Šį mėnesį Jūsų istorijoje…"
+
+#~ msgid "In this year…"
+#~ msgstr "Šiais metais Jūsų istorijoje…"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Įtraukti asmens artimiausius giminaičius?"
+
+#~ msgid "Individual 1"
+#~ msgstr "Asmuo 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Asmuo 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Ilgiausiai gyvenęs asmuo"
+
+#~ msgid "LDS temple"
+#~ msgstr "Mormonų šventovė"
+
+#~ msgid "Link ID"
+#~ msgstr "Nuorodos ID"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Įtraukti šį asmenį į jau sukurtą šeimą kaip vaiką"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Įtraukti šį asmenį į jau sukurtą šeimą kaip vyrą"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Įtraukti šį asmenį į jau sukurtą šeimą kaip žmoną"
+
+#~ msgid "Living individuals"
+#~ msgstr "Gyvi žmonės"
+
+#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
+#~ msgstr "Įkelkite visą savo šeimos medį iš disko, pasinaudodami viena iš \"importavimo\" funkcijų."
+
+#~ msgid "Loading…"
+#~ msgstr "Įkeliama…"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Vietovė nepanaikinta: jai priklauso žemesnio lygmens vietovės"
+
+#~ msgid "Main section blocks"
+#~ msgstr "Pagrindinis pasirinkimų blokas"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Santuokos datos srities pabaiga"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Santuokos datos srities pradžia"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Ketinimas vesti"
+
+#~ msgid "Married name"
+#~ msgstr "Pavardė po santuokos"
+
+#~ msgid "Married surname"
+#~ msgstr "Pavardė po vedybų"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Sujungti nuo ID:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Sujungti iki ID:"
+
+#~ msgid "Min. no. of occurrences to be a “common surname”"
+#~ msgstr "Min. kiekis atitikimų, esančių su \"bendromis pavardėmis\""
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Dažniausiai lankomi įrašai"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Mamos gimtinė - (Chapman formatas)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Mamos amžius"
+
+#~ msgid "Move left"
+#~ msgstr "Į kairę"
+
+#~ msgid "Move right"
+#~ msgstr "Į dešinę"
+
+#~ msgid "Name List"
+#~ msgstr "Vardų sąrašas"
+
+#~ msgid "No events for living individuals exist for the next %s day."
+#~ msgid_plural "No events for living people exist for the next %s days."
+#~ msgstr[0] "Nėra gyvenančių žmonių įvykių %s dienai."
+#~ msgstr[1] "Nėra gyvenančių žmonių įvykių %s dienoms."
+#~ msgstr[2] "Nėra gyvenančių žmonių įvykių %s dienų."
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Šiandien, įvykių susijusių su gyvais žmonėmis, nėra."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Nėra gyvų žmonių įvykių rytojui."
+
+#~ msgid "No records to display"
+#~ msgstr "Rodymui įrašų nerasta"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Toks ID šitame GEDCOM faile neegzistuoja."
+
+#~ msgid "Nuku’Alofa, Tonga"
+#~ msgstr "Nuku'Alofa, Tonga"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "Mėnesių skaičius po paskutinio apsilankymo, kai nario sąskaitą turi būti laikoma neveikiančia: "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Vyriausias asmuo"
+
+#~ msgid "On this day…"
+#~ msgstr "Šią dieną …"
+
+#~ msgid "Online editing"
+#~ msgstr "Tiesioginis redagavimas"
+
+#~ msgid "Orientation"
+#~ msgstr "Orientacija"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Kitas aplankas… Prašome suvesti"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "Išsiunčiamo serverio (SMTP) pavadinimas"
+
+#~ msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP išplėtimas \"%1$s\" yra išjungtas. Be to, neveiks šios funkcijos: %2$s . Prašome kreiptis į serverio administratorių, kad jis įjungtu PHP išplėtimą."
+
+#~ msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP išplėtimas \"%s\" yra išjungtas. Jūs negalite įdiegti kilmės medžio kol ši funkcija išjungta. Prašome kreiptis į serverio administratorių, kad jis įjungtų PHP išplėtimą."
+
+#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP nustatymas \"%1$s\" yra išjungtas. Be to, neveiks šios funkcijos: %2$s . Prašome kreiptis į serverio administratorių, kad jis pakeistų PHP nustatymus."
+
+#~ msgid "Page"
+#~ msgstr "Puslapis"
+
+#~ msgid "Page size"
+#~ msgstr "Puslapio dydis"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Tėvai, broliai ir seserys"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Tėvų amžius"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Kilmės diagrama"
+
+#~ msgid "Place of adoption"
+#~ msgstr "Įvaikinimo vieta"
+
+#~ msgid "Place of blessing"
+#~ msgstr "Palaiminimo vieta"
+
+#~ msgid "Place of cremation"
+#~ msgstr "Kremacijos vieta"
+
+#~ msgid "Place of emigration"
+#~ msgstr "Emigracijos vieta"
+
+#~ msgid "Place of event"
+#~ msgstr "Įvykio vieta"
+
+#~ msgid "Place of immigration"
+#~ msgstr "Imigracijos vieta"
+
+#~ msgid "Place of naturalization"
+#~ msgstr "Natūralizacijos vieta"
+
+#~ msgid "Place of ordination"
+#~ msgstr "Įšventinimo vieta"
+
+#~ msgid "Place of residence"
+#~ msgstr "Būstinės vieta"
+
+#~ msgid "Port"
+#~ msgstr "Prievadas"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Pastarieji metai (&lt; 100 m)"
+
+#~ msgid "Registry officer"
+#~ msgstr "Registratorius"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "Registratorė"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "Registratorius"
+
+#~ msgid "Religious institution"
+#~ msgstr "Religinė institucija"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Ar panaikinti šią vietovę?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Dešinysis pasirinkimų blokas"
+
+#~ msgid "SMTP port"
+#~ msgstr "SMTP jungtis"
+
+#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
+#~ msgstr "Įrašykite visą savo šeimos medį į diską, pasinaudodami viena iš \"eksportavimo\" funkcijų."
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Ieškoti ir/arba pakeisti duomenis Jūsų GEDCOM duomenyse naudojant paprastą paiešką arba išplėstinę atitikmens paiešką."
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Žmonių paiešką įtraukti į Įtraukiamų Nuorodų sąrašą."
+
+#~ msgid "Security"
+#~ msgstr "Saugumas"
+
+#~ msgid "Select events"
+#~ msgstr "Pasirinkite renginius"
+
+#~ msgid "Send message"
+#~ msgstr "Siųsti žinutę"
+
+#~ msgid "Sender email address"
+#~ msgstr "Siuntėjo elektroninio pašto adresas"
+
+#~ msgid "Server"
+#~ msgstr "Serveris"
+
+#~ msgid "Set the privacy access level for all dead individuals."
+#~ msgstr "Nustatyti privatumo prieigą visiems mirusiems žmonėms."
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Bendrai naudojamas pastabas sudaro:"
+
+#~ msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
+#~ msgstr "Bendros Pastabos yra laisvos formos tekstai ir jie pasirodys Detalėių faktų puslapio skiltyje.<br><br>Kiekviena bendra pastaba gali būti susijusi su daugiau nei vienu asmeniu, šeima, šaltiniu, arba įvykiu."
+
+#~ msgid "Shared notes found"
+#~ msgstr "Rastos bendrai naudojamos pastabos"
+
+#~ msgid "She "
+#~ msgstr "Ji "
+
+#~ msgid "She died"
+#~ msgstr "Ji mirė"
+
+#~ msgid "She married"
+#~ msgstr "Ji ištekėjo"
+
+#~ msgid "She was born"
+#~ msgstr "Ji gimė"
+
+#~ msgid "She was buried"
+#~ msgstr "Ji buvo palaidota"
+
+#~ msgid "She was christened"
+#~ msgstr "Ji buvo pakrikštyta"
+
+#~ msgid "She was cremated"
+#~ msgstr "Ji buvo kremuota"
+
+#~ msgid "Show acceptable use agreement on “Request new user account” page"
+#~ msgstr "Rodyti svetainės naudojimosi susitarimo tekstą puslapyje \"Naujo lankytojo registracija\""
+
+#~ msgid "Show age of parents next to child’s birthdate"
+#~ msgstr "Rodyti tėvų amžių šalia vaiko gimimo datos"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Rodyti visas vietoves saraše"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Rodyti vaikams protėvius?"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "Rodyti mirusius asmenis"
+
+#~ msgid "Show details"
+#~ msgstr "Rodyti išsamią informaciją"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Rodyti pažymėtus vaizdus žmonių asmeniniuose įrašuose"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Rodyti nepanaudotas vietoves"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Rodyti asmenis gimusius anksčiau kaip prieš šimtą metų."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Rodyti asmenis gimusius per paskutinius šimtą metų."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Rodyti asmenis, kurie yra gyvi, arba poras, kur abu partneriai yra gyvi."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Rodyti asmenis, kurie yra mire arba poras, kur abu partneriai yra mire."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Rodyti asmenis mirusius daugiau kaip prieš šimtą metų."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Rodyti asmenis mirusius per paskutinius šimtą metų."
+
+#~ msgid "Show notes?"
+#~ msgstr "Ar rodyti pastabas?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Ar rodyti profesijas?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Rodyti tik gyvų žmonių duomenis?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Rodyti tik nežinomos lyties atstovus."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Rodyti tik asmenis, įvykius ar viską?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Rodyti laukiančius pakeitimus"
+
+#~ msgid "Show photos?"
+#~ msgstr "Ar rodyti nuotraukas?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Rodyti vietoves herarchine tvarka"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Rodyti susijusius asmenis/šeimas"
+
+#~ msgid "Show residences?"
+#~ msgstr "Rodyti gyvenamąsias vietas?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Ar rodyti šaltinius?"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Rodyti «lapus» porų arba individų. Tai yra asmenis, kurie yra gyvi, bet neturi vaikų registruotų duomenų bazėje."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Rodyti «šaknis» porų arba individų. Šie žmonės taip pat gali būti vadinami \"patriarchais\". Jie yra asmenys, kurie neturi tėvų registruotų duomenų bazėje."
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Rodoma nuo %1$s iki %2$s iš %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "Sesuo"
+
+#~ msgid "Social security number"
+#~ msgstr "Socialinio draudimo pažymėjimo numeris"
+
+#~ msgid "Son"
+#~ msgstr "Sūnus"
+
+#~ msgid "Sources to the events"
+#~ msgstr "Šaltiniai į įvykius"
+
+#~ msgid "Spouse"
+#~ msgstr "Sutuoktinis"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Sutuoktiniai ir vaikai"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Pradedama sritis nuo datų pakeitimo"
+
+#~ msgid "Surname option"
+#~ msgstr "Nustatymai pavardėms"
+
+#~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
+#~ msgstr "Aprašomasis laukas naudojamas įvesti papildomą informaciją apie objektą. Daugeliu atvejų, laukas yra visiškai laisvos formos, ir galite įrašyti ką norite."
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "Administratorius buvo informuotas. Kai tik jis suteiks teises prisijungimui, Jūs galėsite prisijungti naudodamiesi savo naudotojo vardą ir slaptažodį."
+
+#~ msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+#~ msgstr "Iškarpų krepšelis Jums leidžia paimti ištraukas (\"iškarpas\") iš šio šeimos medžio ir sudėti jas į vieną failą atsisiuntimui bei vėliau importuoti į savo nuosavą genealogijos programą.  Atsisiunčiamasis failas yra įrašytas GEDCOM formatu.<br><ul><li>Kaip iškirpinėti?<br>Tai tikrai yra paprasta. Kuomet tik pamatote paspaudžiamą vardą (asmenį, šeimą, ar šaltinį), Jūs galite nueiti į šio vardo Duomenų puslapį. Ten Jūs pamatysite <b>Pridėti į iškarpų krepšelį</b> parinktį.  Kuomet tik Jūs spragtelėsite šią nuorodą, Jums bus pasiūlytos kelios parinktys atsisiuntimui.</li><li>Kaip atsisiųsti?<br>Kai turėsite elementus savo krepšelyje, Jūs galėsite atsisiųsti juos paprasčiausiai paspausdami <b>Atsisiųsti dabar</b> nuorodą.  Sekite instrukcijas ir nuorodas.</li></ul>"
+
+#~ msgid "The individual to contact about the genealogical data on this site."
+#~ msgstr "Kontaktinis asmuo apie genealoginius duomenis šioje svetainėje."
+
+#~ msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
+#~ msgstr "Organizacijos, institucijos, korporacijos, asmuo, arba kitas subjektas, kuris turi leidimus.<br><br>Pavyzdžiui, asmens darbdavys arba bažnyčią, kuri administruoja apeigas ar įvykius, ar organizacija, atsakinga už įrašų kūrimą ir / arba archyvavimą."
+
+#~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
+#~ msgstr "Prefix nėra privalomas, tačiau rekomenduojamas. Suteikdami lentelės pavadinimui unikalų priešdėlį, galite leisti kelias skirtingas programas naudoti tą pačią duomenų bazę. \"wt_\" siūloma, bet gali būti, kokia jums patinka."
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "Atrodo, kad reguliarusis reiškinys turi klaidą. Jis negali būti naudojamas."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "Šis GEDCOM buvo sukurtas naudojant <b>%1$s</b> <b>%2$s</b>."
+
+#~ msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+#~ msgstr "Šis laukas leidžia kilmės, palikuonių arba laikrodžio diagramas Tituliniame arba Mano puslapyje. Dėl erdvės apribojimų, grafikai turi būti pateikiami tik kairėje puslapio pusėje.<br><br>Kai šis laukas pasirodys Tituliniame puslapyje, šakninis asmuo ir diagramos tipas, kuris bus rodomas yra nustatomas administratoriaus. Kai šis laukas pasirodo vartotojo asmeniniams Mano puslapis šie duomenys yra nustatomi naudotojo.<br><br>Šių diagramų elgesys yra tapatus savo elgesiui, kai jie yra pašaukti iš meniu. Spauskite ant asmens norėdami matyti daugiau informacijos apie juos lauke."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Šis blokas parodo 10 labiausiai lankomų įrašų. Tai reikalauja įjungti apsilankymų skaitliuką GEDCOM konfigūracijos nustatymuose."
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Šis laukas kontroliuoja tvarką kuria yra rodomi DUK elementai.<br><br>Jūs neprivalote įvesti numerių paeiliui. Jei paliekate skyles numeravimo sistemoje, galite įterpti įrašus vėliau. Pavyzdžiui, jei jūs naudojate skaičius 1, 6, 11, 16, vėliau galėsite įterpti elementus su trūkstamais sekoje skaičiais. Neigiami skaičiai ir nulis yra leidžiami ir bus naudojami įterpti elementus prieš pirmąjį.<br><br>Pateikus daugiau kaip vieną DUK įrašą su tuo pačiu pozicijos numeriu, bus matomas tik vienas iš jų."
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "Tai yra SMTP serverio vardas. 'Localhost' reiškia, kad pašto paslaugos teikėjas veikia tame pačiame kompiuteryje kaip ir jūsų interneto serveris."
+
+#~ msgid "This is used in the \"From:\" header when sending mails."
+#~ msgstr "Tai yra naudojama \"Nuo:\" antraštėje siunčiant laiškus."
+
+#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
+#~ msgstr "Tai yra naudojama \"Siuntėjas:\" (Sender:) antraštėje siunčiant laiškus. Ji dažnai vadinama \"Nuo:\" (From:) antraštėje."
+
+#~ msgid "This option enables online editing features for this database so that users with Edit privileges may update data online."
+#~ msgstr "Ši parinktis leidžia šioje duomenų bazėje redagavimo funkcijas per internetą, taip, kad su redaguoti privilegijomis vartotojai gali atnaujinti duomenis internetu (online)."
+
+#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Šis nustatymas leidžia Jums DUK puslapyje perkelti įrašą žemyn.<br><br>Kiekvieną kartą, kai jūs naudojate šį nustatymą, DUK įrašo pozicijos numeris yra padidinamas vienetu. Galite pasiekti tą patį poveikį, redaguojant įrašą ir keičiant DUK pozicijos lauką. Pateikus daugiau kaip vieną DUK įrašą su tuo patčiu pozicijos numeriu, bus matomas tik vienas įrašas."
+
+#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Šis nustatymas leidžia Jums DUK puslapyje elementą perkelti į viršų.<br><br>Kiekvieną kartą, kai jūs naudojate šį nustatymą, DUK elemento pozicijos skaičius sumažinamas vienu skaičiumi. Galite pasiekti tą patį efektą redaguojant DUK elementą ir keičiant DUK pozicija lauke. Pateikus daugiau kaip vieną elementą su tuo pačiu numeriu, rodomas tik vienas."
+
+#~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
+#~ msgstr "Šio serverio atminties riba yra %dMB ir CPU laiko limitas yra %d sekundžių."
+
+#~ msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
+#~ msgstr "Norėdami padėti jums pradėti dirbti su šiuo langu, mes sukūrėme keletą standartinių šablonų. Kai pasirenkate vieną iš šių šablonų, teksto srityje bus pateikta įrašas, kurį galite pakeisti, kad atiktų jūsų svetainės reikalavimus."
+
+#~ msgid "To family"
+#~ msgstr "Į šeimą"
+
+#~ msgid "To individual"
+#~ msgstr "Į asmenį"
+
+#~ msgid "To source"
+#~ msgstr "Į šaltinį"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "Viso priimtų pakeitimų: "
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Viso laukiančių pakeitimų: "
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Neatpažintas GEDCOM kodas"
+
+#~ msgid "Use SMTP to send external mails"
+#~ msgstr "Naudoti SMTP siųsti paštą į išorę"
+
+#~ msgid "Use colors"
+#~ msgstr "Naudoti spalvas"
+
+#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
+#~ msgstr "Naudokite šį lauką saugoti pavadinimo trupinio versijai. Šis laukas yra naudojamas kartu su šaltinio pavadinimo lauku. Pagal nutylėjimą <b>webtrees</b> bus pirmasis pavadinimas ir tada sutrumpinimas.<br><br>Pagal GEDCOM 5,5 specifikaciją, \"šis įrašas yra teikti trumpą pavadinimą, naudojamą rūšiavimui, užpildymą ir išrinkti šaltinių įrašus (pg 62).\"<br><br> <b>webtrees</b>sutrumpintas straipsnio pavadinimas yra neprivalomas, bet kitose genealoginėse programose yra reikalaujamas."
+
+#~ msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+#~ msgstr "Naudokite šį lauką pažymėti, kad šis media elementas yra kaip pirminis elementas pridedamas prie asmens. Taip pažymėtas paveikslėlis bus naudojamas diagramose ir individualiame puslapyje atpažinti asmenį ar šeimą."
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Naudokite šį puslapį, keisti ar ištrinti šeimos narius.<br><br>Kiekvienam šeimos nariui, galite naudoti Pakeisti nuorodą, norėdami pasirinkti kitą asmenį užpildyti šeimos vaidmeniui. Taip pat galite naudoti nuorodą Pašalinti nuorodą siekiant pašalinti tą asmenį iš šeimos.<br><br>Baigę keisti šeimos narius, spustelėkite mygtuką Išsaugoti, kad išsaugotumėte pakeitimus."
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "Narys nepatvirtino 7 dienų laikotarpyje."
+
+#~ msgid "Users logged in"
+#~ msgstr "Prisijungę naudotojai"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Narių naudojamos kalbos"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "Nario sąskaita buvo per ilgai neaktyvi: "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Žiūrėti GEDCOM įrašą"
+
+#~ msgid "View day"
+#~ msgstr "Žiūrėti dieną"
+
+#~ msgid "View details"
+#~ msgstr "Rodyti daugiau detalių"
+
+#~ msgid "View family"
+#~ msgstr "Informacija apie šeimą"
+
+#~ msgid "View month"
+#~ msgstr "Žiūrėti mėnesį"
+
+#~ msgid "View notes"
+#~ msgstr "Rodyti pastabas"
+
+#~ msgid "View person"
+#~ msgstr "Informacija apie asmenį"
+
+#~ msgid "View source"
+#~ msgstr "Informacija apie šaltinį"
+
+#~ msgid "View year"
+#~ msgstr "Žiūrėti metus"
+
+#~ msgid "Visitor options"
+#~ msgstr "Lankytojų nuostatos"
+
+#~ msgid "Visitors"
+#~ msgstr "Lankytojai"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=1"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Mes išsiųsime patvirtinimo laišką adresu <b>%s</b>. Jums reikės patvirtinti naudotojo užklausimą pagal instrukcijas, esančias tame laiške. Jei per 7 dienas nepatvirtinsite naudotojo, jūsų prašymas bus automatiškai atmestas. Jums reikės pildyti viską iš naujo.<br><br>Po to, kai naudojantis instrukcijomis patvirtinsite save, administratorius dar turės patvirtinti Jūsų norą tapti naudotoju, ir tik tuomet galėsite prisijungti.<br><br>Prisijungiant prie tinklapio reikės žinoti savo naudotojo vardą bei slaptažodį."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Mes išsiųsime patvirtinimo laišką adresu <b>%s</b>. Jums reikės patvirtinti naudotojo užklausimą pagal instrukcijas, esančias tame laiške. Jei per 7 dienas nepatvirtinsite naudotojo, jūsų prašymas bus automatiškai atmestas. Jums reikės pildyti viską iš naujo.<br><br>Po to, kai naudojantis instrukcijomis patvirtinsite save, Jūs galėsite prisijungti. Prisijungiant prie puslapio reikės žinoti savo naudotojo vardą ir slaptažodį."
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "Svetainės ir meta žymės nustatymai"
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Kuriąs nuorodas apie šį asmenį norėtumėte įtraukti kartu?"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "Kas gali matyti nuotraukas nepažymėtas vandens ženklu?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Žmonos amžius"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Žmonos mergautinė pavardė keičiama nauja pavarde"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Žmonos pavardė keičiama vyro pavarde"
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "Galite nustatyti, ar šis DUK bus matomas nepriklausomai nuo GEDCOM, ar jis bus matoma tik dabartiniam GEDCOM.<br><ul><li><b>VISI</b>&nbsp;&nbsp;&nbsp;DUK bus rodomas visų DUK sąraše, neatsižvelgiant į GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;DUK pasirodys tik tuo metu aktyviame GEDCOM DUK sąraše.</li ></ul>"
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Jūs galite padaryti tai lengviau ieškoti ištekėjusios moters įrašant jos povedybinę pavardę.<br>Tačiau ne visos moterys ima savo vyro pavardę, todėl saugokitės įvesti neteisingą informaciją į savo duomenų bazę."
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "Jūs negausite daugiau jokių laiškų iš šio puslapio, nes prašymas sukurti naudotoją yra ištrinamas po septynių dienų."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Jūsų iškarpų krepšelis yra tuščias."
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "Jūsų serverio administratorius jums pateiks susijungimo detales."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Jums nėra įjungta \"automatiškai patvirtinti pakeitimus\" nuostata. Jums tik galima pakeisti vieną įrašą vienu metu."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "ZIP failai"
+
+#~ msgid "daughter of"
+#~ msgstr "duktė"
+
+#~ msgctxt "son's wife's father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "svotas - marčios tėvas"
+
+#~ msgctxt "son's wife's mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "svočia - marčios mama"
+
+#~ msgctxt "son's wife's parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "svotai - marčios tėvai"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "mirė"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "mirė"
+
+#~ msgid "first"
+#~ msgstr "pirmas"
+
+#~ msgctxt "child's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "anūkės vyras"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "anūkės vyras"
+
+#~ msgctxt "son's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "anūkės vyras"
+
+#~ msgctxt "child's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "anūko žmona"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "anūko žmona"
+
+#~ msgctxt "son's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "anūko žmona"
+
+#~ msgid "last"
+#~ msgstr "paskutinis"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "ištekėjusi"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "vedė"
+
+#~ msgid "son of"
+#~ msgstr "sūnus"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "svotas"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "svočia"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "svotai"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_lithuanian_ci"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "gimė"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "gimė"
+
+#~ msgid "webtrees’ database must be on the same server as PGV’s"
+#~ msgstr "kilmės medžio duomenų bazė turi būti tame pačiame serveryje, kaip ir PGV's"

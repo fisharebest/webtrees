@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:39+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: Serbian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -8864,6 +8864,7 @@ msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -18616,3 +18617,117 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Dobrodošli na Rodoslov bratstva Damjanci</b></center><br>Pristup podacima živih osoba u rodoslovu imaju samo prijavljeni korisnici sa lozinkom."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Dobrodošli na Rodoslov bratstva Damjanci</b></center><br>Rodoslovu mogu pristupiti samo <u>ovlašćeni</u> korisnici.<br><br>Ako ste već registrovani ovde se možete prijaviti. Ako još niste registrovani, podnesite zahtev tako što ćete kliknuti na odgovarajući link na ovoj stranici.<br><br>Pošto razmotri Vaš zahtev administrator će ga ili odobriti ili odbaciti i o tome ćete biti obavešteni emailom."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Dobrodošli na Rodoslov bratstva Damjanci</b></center><br>Pristup podacima živih osoba u rodoslovu imaju samo <u>registrovani članovi njihovih porodica</u>.<br><br>Ako ste već registrovani ovde se možete prijaviti. Ako još niste registrovani, podnesite zahtev tako što ćete kliknuti na odgovarajući link na ovoj stranici.<br><br>Pošto razmotri Vaš zahtev administrator će ga ili odobriti ili odbaciti i o tome ćete biti obavešteni emailom."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Dobrodošli na Rodoslov bratstva Damjanci</b></center><br>Rodoslovu mogu pristupiti svi posetioci koji su registrovani.<br><br>Ako ste već registrovani ovde se možete prijaviti. Ako još niste registrovani, podnesite zahtev tako što ćete kliknuti na odgovarajući link na ovoj stranici.<br><br>Pošto razmotri Vaš zahtev administrator rodoslova će aktivirati Vaš nalog i bićete obavešteni emailom."
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=abcčćdđefghijklmnoprsštuvzž"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=ABCČĆDĐEFGHIJKLMNOPRSŠTUVZŽ"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Dodaj supruga od već unesenih osoba"
+
+#~ msgid "Add a new name"
+#~ msgstr "Dodaj novo ime"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Dodaj suprugu od već unesenih osoba"
+
+#~ msgid "Brother"
+#~ msgstr "Brat"
+
+#~ msgid "Change family members"
+#~ msgstr "Promeni članove porodice"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Napravi novu zajedničku belešku"
+
+#~ msgid "Daughter"
+#~ msgstr "Ćerka"
+
+#~ msgid "Email address:"
+#~ msgstr "Adresa elektronske pošte"
+
+#~ msgid "Family group information"
+#~ msgstr "Grupirani podaci za porodicu"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Kresanje porodičnog stabla"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Osoba koja je živela najduže"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Dodaj ovu osobu kao dete već upisanoj porodici"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Dodaj ovu osobu kao supruga već upisanoj porodici"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Dadaj ovu osobu kao suprugu u već upisanu porodicu"
+
+#~ msgid "Loading…"
+#~ msgstr "transfer u toku…"
+
+#~ msgid "Married name"
+#~ msgstr "Ime i prezime posle udaje"
+
+#~ msgid "Married surname"
+#~ msgstr "Prezime posle udaje"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Najčešće pregledane stavke"
+
+#~ msgid "Name List"
+#~ msgstr "Lista imena"
+
+#~ msgid "On this day…"
+#~ msgstr "Na današnji dan …"
+
+#~ msgid "Send message"
+#~ msgstr "Pošalji poruku"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Pokaži samo osobe za koje se ne zna pol."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Prikaži samo osobe, događaje ili sve?"
+
+#~ msgid "Sister"
+#~ msgstr "Sestra"
+
+#~ msgid "Social security number"
+#~ msgstr "Identifikacioni broj"
+
+#~ msgid "Son"
+#~ msgstr "Sin"
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Ovaj blok će prikazati 10 zapisa koji su najčeće pregledani. Ovaj blok zahteva da je Brojač Pregleda omogućen u GEDCOM podešavanjima."
+
+#~ msgid "Users logged in"
+#~ msgstr "Prijavljeni korisnici"
+
+#~ msgid "View family"
+#~ msgstr "Pogledaj upis porodice"
+
+#~ msgid "View person"
+#~ msgstr "Pogledaj upis osobe"
+
+#~ msgid "View source"
+#~ msgstr "Pogledaj izvor"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_slovenian_ci"

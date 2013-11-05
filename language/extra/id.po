@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2010-12-13 11:06+0000\n"
-"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 17:09+0000\n"
+"Last-Translator: ma'arif <Unknown>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:29+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: Indonesian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -592,7 +592,7 @@ msgstr ""
 #. I18N: Description of the “Most visited pages” module
 #: modules_v3/top10_pageviews/module.php:39
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "Daftar halaman yang paling banyak di tampilkan."
 
 #. I18N: Description of the “Who is online” module
 #: modules_v3/logged_in/module.php:39
@@ -653,7 +653,7 @@ msgstr ""
 #. I18N: Description of the “Family” module
 #: modules_v3/family_group_report/module.php:41
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "Laporan anggota keluarga dan detilnya masing-masing"
 
 #. I18N: Description of the “Deaths” module
 #: modules_v3/death_report/module.php:41
@@ -752,7 +752,7 @@ msgstr ""
 #. I18N: Description of the “Media” module
 #: modules_v3/media/module.php:39
 msgid "A tab showing the media objects linked to an individual."
-msgstr ""
+msgstr "Sebuah tab menunjukkan objek media terkait dengan individu."
 
 #. I18N: Description of the “Notes” module
 #: modules_v3/notes/module.php:39
@@ -1013,7 +1013,7 @@ msgstr "Tambahkan suami baru"
 #: modules_v3/lightbox/module.php:71 modules_v3/media/module.php:83
 #: repo.php:117 source.php:129
 msgid "Add a new media object"
-msgstr ""
+msgstr "Menambah objek media baru"
 
 #: edit_interface.php:425 family.php:132 modules_v3/relatives/module.php:147
 #: modules_v3/relatives/module.php:148 modules_v3/relatives/module.php:331
@@ -1073,7 +1073,7 @@ msgstr "Tambahkan istri baru"
 #: modules_v3/upcoming_events/module.php:170
 #: modules_v3/user_messages/module.php:164 modules_v3/yahrzeit/module.php:254
 msgid "Add a scrollbar when block contents grow"
-msgstr ""
+msgstr "Tambahkan scrollbar ketika isi blok penuh"
 
 #: modules_v3/relatives/module.php:159
 msgid "Add a wife to this family"
@@ -1569,7 +1569,7 @@ msgstr ""
 #: modules_v3/random_media/module.php:264
 #: modules_v3/user_messages/module.php:91
 msgid "All"
-msgstr "SEMUA"
+msgstr "Semua"
 
 #: calendar.php:184 calendar.php:198 calendar.php:199 calendar.php:202
 #: calendar.php:203 calendar.php:443
@@ -1653,7 +1653,7 @@ msgstr ""
 #. I18N: Description of the “Login” module
 #: modules_v3/login_block/module.php:39
 msgid "An alternative way to login and logout."
-msgstr ""
+msgstr "Cara lain untuk masuk dan keluar."
 
 #. I18N: Description of the “Theme change” module
 #: modules_v3/theme_select/module.php:39
@@ -2430,7 +2430,7 @@ msgstr "Lahir:"
 #. I18N: Name of a module/report
 #: modules_v3/birth_report/module.php:35
 msgid "Births"
-msgstr ""
+msgstr "Kelahiran"
 
 #: library/WT/Stats.php:1243 statistics.php:106
 msgid "Births by century"
@@ -3078,12 +3078,12 @@ msgstr ""
 #. I18N: In the Spanish surname tradition, ...
 #: help_text.php:952
 msgid "Children take one surname from the father and one surname from the mother."
-msgstr ""
+msgstr "Anak-anak mengambil nama keluarga dari ayah dan nama keluarga dari ibu."
 
 #. I18N: In the Portuguese surname tradition, ...
 #: help_text.php:957
 msgid "Children take one surname from the mother and one surname from the father."
-msgstr ""
+msgstr "Anak-anak mengambil nama keluarga dari ibu dan nama keluarga dari ayah."
 
 #. I18N: In the patrilineal surname tradition, ...
 #: help_text.php:935 help_text.php:945 help_text.php:966 help_text.php:973
@@ -3430,7 +3430,7 @@ msgstr ""
 #: modules_v3/top10_surnames/module.php:83
 #: modules_v3/upcoming_events/module.php:69 modules_v3/yahrzeit/module.php:63
 msgid "Configure"
-msgstr "Pengaturan"
+msgstr "Konfigurasi"
 
 #: admin_users.php:384 edituser.php:154 help_text.php:1306 login.php:406
 msgid "Confirm password"
@@ -3665,7 +3665,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:604
 msgid "Cremation of a grandfather"
-msgstr ""
+msgstr "Kremasi kakek"
 
 #: library/WT/Gedcom/Tag.php:605
 msgid "Cremation of a grandmother"
@@ -5222,7 +5222,7 @@ msgstr ""
 #: modules_v3/personal_facts/module.php:34
 #: modules_v3/random_media/module.php:264
 msgid "Facts and events"
-msgstr ""
+msgstr "Fakta dan peristiwa"
 
 #: admin_trees_config.php:1109
 msgid "Facts for Family records"
@@ -5322,7 +5322,7 @@ msgstr ""
 #: library/WT/Controller/Familybook.php:81
 #, php-format
 msgid "Family book of %s"
-msgstr ""
+msgstr "Buku Keluarga %s"
 
 #. I18N: gedcom tag FAMF
 #: library/WT/Gedcom/Tag.php:214
@@ -5353,7 +5353,7 @@ msgstr ""
 #: library/WT/Controller/Familybook.php:371
 #, php-format
 msgid "Family of %s"
-msgstr ""
+msgstr "Keluarga Dari %s"
 
 #: admin_site_change.php:269 admin_site_change.php:293 admin_site_logs.php:236
 #: admin_site_logs.php:259 admin_trees_manage.php:181 admin_users.php:224
@@ -6752,7 +6752,7 @@ msgstr ""
 #: admin_users.php:226 admin_users.php:428 edituser.php:141 help_text.php:1204
 #: help_text.php:1370 help_text.php:1478
 msgid "Individual record"
-msgstr ""
+msgstr "Simpan individu"
 
 #: admin.php:217 admin.php:259 ancestry.php:97 calendar.php:407
 #: descendancy.php:68 includes/functions/functions_print_lists.php:946
@@ -7362,7 +7362,7 @@ msgstr ""
 #: help_text.php:1281 library/WT/Controller/Lifespan.php:76
 #: library/WT/MenuBar.php:111 lifespan.php:257
 msgid "Lifespans"
-msgstr ""
+msgstr "Rentang hidup"
 
 #: library/WT/Gedcom/Code/Temp.php:120
 msgid "Lima, Peru"
@@ -7397,7 +7397,7 @@ msgstr "Kaitkan orang ini kepada keluarga yang ada sebagai istri"
 #: modules_v3/lightbox/module.php:75 modules_v3/lightbox/module.php:76
 #: modules_v3/media/module.php:86 repo.php:120 source.php:132
 msgid "Link to an existing media object"
-msgstr ""
+msgstr "Mengaitkan ke objek media yang sudah ada"
 
 #. I18N: gedcom tag _DBID
 #: library/WT/Gedcom/Tag.php:644
@@ -7487,14 +7487,14 @@ msgstr ""
 
 #: modules_v3/login_block/module.php:59 themes/webtrees/header.php:79
 msgid "Logged in as "
-msgstr "Tercatatmasuk sebagai "
+msgstr "Masuk sebagai "
 
 #. I18N: Name of a module
 #: admin_site_config.php:64 includes/functions/functions_print.php:304
 #: login.php:113 login.php:163 modules_v3/login_block/module.php:34
 #: modules_v3/login_block/module.php:65 modules_v3/login_block/module.php:85
 msgid "Login"
-msgstr "Catatmasuk"
+msgstr "Masuk"
 
 #: setup.php:419
 msgid "Login ID"
@@ -7508,7 +7508,7 @@ msgstr ""
 #: includes/functions/functions_print.php:316
 #: modules_v3/login_block/module.php:56 modules_v3/login_block/module.php:61
 msgid "Logout"
-msgstr "Catatkeluar"
+msgstr "Keluar"
 
 #: admin_site_logs.php:29 themes/_administration/header.php:94
 msgid "Logs"
@@ -7966,7 +7966,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:89
 #: modules_v3/media/module.php:34 themes/_administration/header.php:135
 msgid "Media"
-msgstr ""
+msgstr "Media"
 
 #: admin_trees_config.php:350 help_text.php:664
 msgid "Media ID prefix"
@@ -8239,7 +8239,7 @@ msgstr "Kehilangan direktori sementara PHP"
 #. I18N: Name of a module/report
 #: modules_v3/missing_facts_report/module.php:35
 msgid "Missing data"
-msgstr ""
+msgstr "Data hilang"
 
 #: edit_changes.php:188
 msgid "Moderate pending changes"
@@ -8403,7 +8403,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/top10_pageviews/module.php:34
 msgid "Most viewed pages"
-msgstr ""
+msgstr "Halaman yang sering ditampilkan"
 
 #: search_advanced.php:247
 msgid "Mother"
@@ -8517,7 +8517,7 @@ msgstr "Rekaman Pribadi Saya"
 #: library/WT/MenuBar.php:61 library/WT/MenuBar.php:64
 #: modules_v3/user_welcome/module.php:34 themes/_administration/header.php:68
 msgid "My page"
-msgstr ""
+msgstr "Halaman pribadi"
 
 #: library/WT/MenuBar.php:74 modules_v3/user_welcome/module.php:52
 msgid "My pedigree"
@@ -8859,7 +8859,6 @@ msgstr "Tidak ada peristiwa untuk besok."
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
-msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -9113,7 +9112,7 @@ msgstr "Jumlah item"
 #: modules_v3/top10_pageviews/module.php:135
 #: modules_v3/top10_surnames/module.php:155
 msgid "Number of items to show"
-msgstr "Jumlah item yang dimunculkan"
+msgstr "Jumlah item yang tampil"
 
 #. I18N: gedcom tag NMR
 #: library/WT/Gedcom/Tag.php:275
@@ -9154,7 +9153,7 @@ msgstr ""
 #. I18N: Name of a report
 #: modules_v3/occupation_report/module.php:35
 msgid "Occupations"
-msgstr ""
+msgstr "Pekerjaan"
 
 #: library/WT/Stats.php:3965
 msgid "Occupied Palestinian Territory"
@@ -9216,7 +9215,7 @@ msgstr ""
 
 #: statistics.php:279
 msgid "Oldest father"
-msgstr ""
+msgstr "Ayah tertua"
 
 #: statistics.php:257
 msgid "Oldest female"
@@ -9491,7 +9490,7 @@ msgstr "Orangtua:"
 #: login.php:219 login.php:448 modules_v3/login_block/module.php:80
 #: setup.php:423
 msgid "Password"
-msgstr "Sandi"
+msgstr "Kata sandi"
 
 #: admin_users.php:261 edituser.php:110
 msgid "Passwords do not match."
@@ -9674,7 +9673,7 @@ msgstr "Tempat mengandung:"
 
 #: modules_v3/top10_pageviews/module.php:142
 msgid "Place counts before or after name?"
-msgstr "Letakkan hitungan sebelum atau sesudah nama?"
+msgstr "Tempatkan jumlah sebelum atau setelah nama?"
 
 #: library/WT/MenuBar.php:302 modules_v3/googlemap/module.php:254
 #: placelist.php:42 placelist.php:44 placelist.php:149
@@ -9816,7 +9815,7 @@ msgstr ""
 #: themes/fab/header.php:36 themes/minimal/header.php:36
 #: themes/webtrees/header.php:36 themes/xenea/header.php:36
 msgid "Play"
-msgstr "Maikan"
+msgstr "Mainkan"
 
 #: login.php:326
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
@@ -9963,7 +9962,7 @@ msgstr ""
 
 #: admin_users.php:195 admin_users.php:389 edituser.php:173 help_text.php:1182
 msgid "Preferred contact method"
-msgstr ""
+msgstr "Pilihan metode kontak"
 
 #: modules_v3/googlemap/module.php:371
 msgid "Prefixes"
@@ -10245,7 +10244,7 @@ msgstr ""
 #. I18N: Description of the “Slide show” module
 #: modules_v3/random_media/module.php:39
 msgid "Random images from the current family tree."
-msgstr ""
+msgstr "Gambar acak dari silsilah keluarga"
 
 #: edit_interface.php:1983 edit_interface.php:2362
 #: library/WT/Controller/Family.php:135 modules_v3/relatives/module.php:289
@@ -11230,7 +11229,7 @@ msgstr ""
 #: includes/functions/functions_print.php:482 inverselink.php:156
 #: library/WT/Gedcom/Tag.php:315 note.php:122 note.php:128
 msgid "Shared note"
-msgstr "Közös jegyzetek"
+msgstr "Catatan bersama"
 
 #: includes/functions/functions_print_lists.php:952 library/WT/MenuBar.php:314
 #: notelist.php:31 notelist.php:35 search.php:129
@@ -11554,7 +11553,7 @@ msgstr ""
 
 #: modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
-msgstr ""
+msgstr "Tampilkan kontrol slide show?"
 
 #: familybook.php:76 help_text.php:1421 hourglass.php:91
 msgid "Show spouses"
@@ -11736,7 +11735,7 @@ msgstr ""
 #. I18N: Name of a module
 #: library/WT/Gedcom/Tag.php:819 modules_v3/random_media/module.php:34
 msgid "Slide show"
-msgstr ""
+msgstr "Slide show"
 
 #: library/WT/Stats.php:3994
 msgid "Slovakia"
@@ -11935,7 +11934,7 @@ msgstr "Mulai dari orangtua"
 
 #: modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
-msgstr ""
+msgstr "Mulai slide show di halaman pembuka?"
 
 #. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:323 modules_v3/googlemap/admin_places.php:176
@@ -11982,7 +11981,7 @@ msgstr ""
 #: themes/fab/header.php:36 themes/minimal/header.php:36
 #: themes/webtrees/header.php:36 themes/xenea/header.php:36
 msgid "Stop"
-msgstr ""
+msgstr "Berhenti"
 
 #: admin_trees_config.php:695
 msgid "Store watermarked full size images on server?"
@@ -12421,7 +12420,7 @@ msgstr ""
 
 #: mediafirewall.php:37
 msgid "The media file was not found in this family tree"
-msgstr ""
+msgstr "Berkas media tidak di temukan di silsilah keluarga ini"
 
 #: help_text.php:1450
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called \"granny.jpg\".<br /><br />In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br /><br />Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -12562,7 +12561,7 @@ msgstr "Tidak ada Kutipan Sumber untuk orang ini."
 
 #: modules_v3/media/module.php:75
 msgid "There are no media objects for this individual."
-msgstr "Tidak ada objek media untuk orang ini."
+msgstr "Tidak ada objek media untuk individu ini."
 
 #: modules_v3/todo/module.php:131
 msgid "There are no research tasks in this family tree."
@@ -12895,11 +12894,11 @@ msgstr "Berkas media ini rusak dan tidak dapat di-watermark-kan"
 
 #: mediaviewer.php:76
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Gambar/Foto tidak ada atau membutuhkan persetujuan."
 
 #: mediaviewer.php:50
 msgid "This media object has been deleted.  The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Gambar ini telah dihapus. Penghapusan memerlukan peninajauan oleh moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: mediaviewer.php:41
@@ -12909,7 +12908,7 @@ msgstr ""
 
 #: mediaviewer.php:68
 msgid "This media object has been edited.  The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Gambar ini telah dirubah. Perubahan memerlukan peninajauan oleh moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: mediaviewer.php:59
@@ -13942,11 +13941,11 @@ msgstr ""
 #: login.php:217 login.php:294 login.php:337 login.php:444
 #: modules_v3/login_block/module.php:75 modules_v3/todo/module.php:99
 msgid "Username"
-msgstr ""
+msgstr "Nama pengguna"
 
 #: login.php:179 modules_v3/login_block/module.php:102
 msgid "Username or email address"
-msgstr ""
+msgstr "Nama pengguna atau alamat email"
 
 #: help_text.php:1502
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
@@ -14148,7 +14147,7 @@ msgstr ""
 
 #: admin_users.php:207 admin_users.php:393 edituser.php:175
 msgid "Visible to other users when online"
-msgstr ""
+msgstr "Dilihat oleh pengguna lain ketika online"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:122 admin_users.php:43 help_text.php:1385
@@ -14626,7 +14625,7 @@ msgstr ""
 
 #: edit_interface.php:678
 msgid "You must provide a source title"
-msgstr ""
+msgstr "Anda harus memberikan judul sumber"
 
 #: modules_v3/charts/module.php:149
 msgid "You must select an individual and chart type in the block configuration settings."
@@ -14693,7 +14692,7 @@ msgstr "Anda tidak akan mendapat email lagi dari situs ini, karena permintaan ak
 
 #: statistics.php:271
 msgid "Youngest father"
-msgstr ""
+msgstr "Ayah termuda"
 
 #: statistics.php:249
 msgid "Youngest female"
@@ -14849,7 +14848,7 @@ msgstr "adopsi"
 
 #: modules_v3/top10_pageviews/module.php:144
 msgid "after"
-msgstr "Setelah"
+msgstr "setelah"
 
 #. I18N: Gedcom AFT dates
 #: library/WT/Date.php:242
@@ -14950,7 +14949,7 @@ msgstr ""
 
 #: modules_v3/top10_pageviews/module.php:144 statisticsplot.php:673
 msgid "before"
-msgstr "Sebelum"
+msgstr "sebelum"
 
 #. I18N: %d is a year
 #: statisticsplot.php:718
@@ -15326,7 +15325,7 @@ msgstr ""
 #: edit_interface.php:2072 edit_interface.php:2077
 #: includes/functions/functions.php:1138
 msgid "father"
-msgstr ""
+msgstr "ayah"
 
 #: includes/functions/functions.php:1256
 msgctxt "husband's father"
@@ -15763,7 +15762,7 @@ msgstr ""
 #: includes/functions/functions.php:1274
 msgctxt "parent's father"
 msgid "grandfather"
-msgstr ""
+msgstr "kakek"
 
 #: includes/functions/functions.php:1275
 msgctxt "parent's mother"
@@ -16500,7 +16499,7 @@ msgstr ""
 #: includes/functions/functions.php:1367
 msgctxt "father's father's father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "kakek buyut"
 
 #: includes/functions/functions.php:1373
 msgctxt "father's mother's father"
@@ -18080,7 +18079,7 @@ msgstr ""
 #. I18N: An option in a list-box
 #: edit_interface.php:2044 reportengine.php:513
 msgid "sort by date of birth"
-msgstr ""
+msgstr "pilihan berdasar tanggal lahir"
 
 #. I18N: An option in a list-box
 #: reportengine.php:515
@@ -18187,7 +18186,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:430
 msgctxt "mother's husband"
 msgid "step-father"
-msgstr ""
+msgstr "ayah tiri"
 
 #: includes/functions/functions.php:1252
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:735
@@ -18610,3 +18609,469 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Selamat datang di Situsweb genealogi ini</b></center><br>Akses diizinkan bagi pengguna yang mempunyai akun dan sandi untuk situsweb ini."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Selamat datang di Situsweb genealogi ini</b></center><br>Akses ke situs ini hanya diizinkan bagi <u>pengguna terotorisasi</u> saja.<br><br>Jika Anda memiliki akun pengguna, Anda dapat mencatatmasuk pada halaman ini. Jika Anda tidak mempunyai akun pengguna, Anda dapat mengajukan satu dengan mengklik pranala yang bersesuaian di bawah.<br><br>Setelah memverifikasi informasi Anda, administrator akan menerima atau menolak pengajuan akun Anda. Anda akan menerima pesan email saat pengajuan Anda diterima."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Selamat datang di Situsweb genealogi ini</b></center><br>Akses ke situs ini hanya diizinkan bagi <u>anggota keluarga</u> saja.<br><br>Jika Anda memiliki akun pengguna, Anda dapat mencatatmasuk pada halaman ini. Jika Anda tidak mempunyai akun pengguna, Anda dapat mengajukan satu dengan mengklik pranala yang bersesuaian di bawah.<br><br>Setelah memverifikasi informasi yang Anda sediakan, administrator akan menerima atau menolak permintaan akun Anda. Anda akan menerima email saat permintaan Anda diterima."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Selamat datang di Situsweb genealogi ini</b></center><br>Akses ke situs ini diizinkan bagi setiap pengunjung yang mempunyai akun pengguna.<br><br>Jika Anda memiliki akun pengguna, Anda dapat mencatatmasuk pada halaman ini. Jika Anda tidak mempunyai akun pengguna, Anda dapat mengajukan satu dengan mengklik pranala yang bersesuaian di bawah.<br><br>Setelah memverifikasi pengajuan Anda, administrator situs akan mengaktifkan akun Anda. Anda akan menerima email saat pengajuan Anda diterima."
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Tambah suami menggunakan orang yang ada"
+
+#~ msgid "Add a new name"
+#~ msgstr "Tambahkan Nama baru"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Tambah istri menggunakan orang yang ada"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Hanya tambahkan orang ini."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Tambahkan rekaman orangtua dan seluruh keturunan bersama dengan rekaman keluarga ini."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Tambahkan rekaman orangtua dan anak bersama dengan rekaman keluarga ini."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Tambahkan rekaman orangtua bersama dengan rekaman keluarga ini."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Tambahkan orang ini dan leluhur langsungnya."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Tambahkan orang ini, leluhur langsungnya, dan keluarga mereka."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Tambahkan orang ini, orangtua dan saudaranya."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Tambahkan orang ini, pasangan dan semua keturunannya."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Tambahkan orang ini, pasangan dan anak-anaknya."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Tambahkan sumber ini dan keluarga/orang yang terkait sumber tersebut."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "Setelah Anda tercatatmasuk, pilih pranala «Akun Saya» di bawah menu «Portal GedViewSaya» dan isilah isian sandi untuk mengubah sandi Anda."
+
+#~ msgid "All individuals"
+#~ msgstr "Semua Orang"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Apakah Anda yakin ingin mengurungkan semua perubahan untuk GEDCOM ini?"
+
+#~ msgid "Available blocks"
+#~ msgstr "Blok yang Tersedia"
+
+#~ msgid "Begin year"
+#~ msgstr "Tahun Bermula"
+
+#~ msgid "Binary data object"
+#~ msgstr "Objek Data Binari"
+
+#~ msgid "Brother"
+#~ msgstr "Saudara"
+
+#~ msgid "Change family members"
+#~ msgstr "Ganti Anggota Keluarga"
+
+#~ msgid "Civil registrar"
+#~ msgstr "Pencatat Sipil"
+
+#~ msgid "Clear chart"
+#~ msgstr "Bersihkan Bagan"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Pernikahan Sipil"
+
+#~ msgid "Create repository"
+#~ msgstr "Ciptakan Repositori"
+
+#~ msgid "Daughter"
+#~ msgstr "Putri"
+
+#~ msgid "Descent steps"
+#~ msgstr "Langkah Turun"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dzulqa'dah"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dzulqa'dah"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dzulqa'dah"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dzulqa'dah"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Sunting bahan rekaman GEDCOM"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Ubah catatan bersama"
+
+#~ msgid "Email address:"
+#~ msgstr "Alamat Email:"
+
+#~ msgid "End year"
+#~ msgstr "Tahun Berakhir"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Masukkan ID Individu"
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Masukkan Orang, Keluarga, atau ID Sumber"
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Masukkan atau cari ID orang, keluarga, atau sumber yang akan dikaitkan dengan item media ini."
+
+#~ msgid "Entry text:"
+#~ msgstr "Teks Masukan:"
+
+#~ msgid "External objects"
+#~ msgstr "Objek luar"
+
+#~ msgid "Family group information"
+#~ msgstr "Informasi Kelompok Keluarga"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Bagan Kliping Silsilah Keluarga"
+
+#~ msgid "Father’s age"
+#~ msgstr "Umur ayah"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "Statistik GEDCOM"
+
+#~ msgid "He "
+#~ msgstr "Dia "
+
+#~ msgid "He was born"
+#~ msgstr "Dia lahir"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Halo %s …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Halo %s …<br>Terima kasih atas pendaftaran Anda."
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Halo Administrator …"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Pekerjaan sebelumnya"
+
+#~ msgid "His occupation was"
+#~ msgstr "Pekerjaan sebelumnya"
+
+#~ msgid "Hit count:"
+#~ msgstr "Hitungan Kunjungan:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Umur suami"
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Jika Anda tidak meminta akun, Anda dapat menghapus pesan ini."
+
+#~ msgid "In this month…"
+#~ msgstr "Pada Bulan Ini …"
+
+#~ msgid "In this year…"
+#~ msgstr "Pada Tahun Ini …"
+
+#~ msgid "Individual 1"
+#~ msgstr "Orang 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Orang 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Orang yang hidup terlama"
+
+#~ msgid "LDS temple"
+#~ msgstr "Kuil LDS"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Kaitkan orang ini kepada keluarga yang ada sebagai anak"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Kaitkan orang ini kepada keluarga yang ada sebagai suami"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Kaitkan orang ini kepada keluarga yang ada sebagai istri"
+
+#~ msgid "Living individuals"
+#~ msgstr "Orang yang Hidup"
+
+#~ msgid "Loading…"
+#~ msgstr "Memuat…"
+
+#~ msgid "Main section blocks"
+#~ msgstr "Blok Bagian Utama"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Tujuan Nikah"
+
+#~ msgid "Married name"
+#~ msgstr "Nama Pernikahan"
+
+#~ msgid "Married surname"
+#~ msgstr "Marga Pernikahan"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Gabungkan Dari ID:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Gabungkan Hingga ID:"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Item yang Paling Banyak Ditampilkan"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Umur ibu"
+
+#~ msgid "Move left"
+#~ msgstr "Pindah ke Kiri"
+
+#~ msgid "Move right"
+#~ msgstr "Pindah ke Kanan"
+
+#~ msgid "Name List"
+#~ msgstr "Daftar Nama"
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Tidak ada peristiwa orang-hidup untuk hari ini."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Tidak ada peristiwa orang-hidup untuk besok."
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Tidak ada ID yang demikian pada berkas GEDCOM ini."
+
+#~ msgid "No temple - living ordinance"
+#~ msgstr "Tidak ada Kuil - Ordinansi Hidup"
+
+#~ msgid "On this day…"
+#~ msgstr "Pada Hari Ini …"
+
+#~ msgid "Orientation"
+#~ msgstr "Orientasi"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Folder lain… silakan ketik"
+
+#~ msgid "Page"
+#~ msgstr "Halaman"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Umur orangtua"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Bagan Kerabat"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabiul Awal"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabiul Awal"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabiul Awal"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabiul Awal"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabiul Tsani"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabiul Tsani"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabiul Tsani"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabiul Tsani"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Tahun Belakangan (&lt; 100 tahun)"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Blok Bagian Kanan"
+
+#~ msgid "Select events"
+#~ msgstr "Pilih Peristiwa"
+
+#~ msgid "Send message"
+#~ msgstr "Kirim Pesan"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sya'ban"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "Sya'ban"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sya'ban"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sya'ban"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Perlihatkan Semua Tempat dalam Daftar"
+
+#~ msgid "Show details"
+#~ msgstr "Perlihatkan Rincian"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Perlihatkan gambar highlight di kotak orang"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Perlihatkan orang yang lahir lebih dari 100 tahun lalu."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Perlihatkan orang yang lahir selama 100 tahun terakhir."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Perlihatkan orang yang hidup atau pasangan yang keduanya hidup."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Perlihatkan orang yang meninggal atau pasangan yang keduanya meninggal."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Perlihatkan orang yang meninggal lebih dari 100 tahun lalu."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Perlihatkan orang yang meninggal selama 100 tahun terakhir."
+
+#~ msgid "Show occupations?"
+#~ msgstr "Tampilkan pekerjaan"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Hanya perlihatkan peristiwa orang-hidup?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Hanya perlihatkan orang yang jendernya tidak diketahui."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Hanya perlihatkan orang, peristiwa, atau semua?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Perlihatkan Tempat dalam Hirarki"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Perlihatkan keluarga/orang yang berkerabat"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Perlihatkan pasangan atau individu «ranting».  Mereka adalah individu yang hidup, namun tidak mempunyai anak yang terekam dalam basisdata."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Perlihatkan pasangan atau individu «akar».  Orang-orang ini juga disebut «patriarkh». Mereka adalah individu yang tidak mempunyai orangtua yang terekam dalam basisdata."
+
+#~ msgid "Sister"
+#~ msgstr "Saudari"
+
+#~ msgid "Social security number"
+#~ msgstr "Nomor Keamanan Sosial"
+
+#~ msgid "Son"
+#~ msgstr "Putra"
+
+#~ msgid "Spouse"
+#~ msgstr "Pasangan"
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "Administrator telah diberitahu. Setelah ia memberi Anda izin untuk tercatatmasuk, Anda dapat tercatatmasuk dengan nama pengguna dan sandi Anda."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Blok ini menampilkan 10 data yang banyak ditampilkan. Blok ini memerlukan Penghitung Kunjungan di aktifkan pada pengaturan konfigurasi GEDCOM."
+
+#~ msgid "To family"
+#~ msgstr "Ke Kekeluarga"
+
+#~ msgid "To individual"
+#~ msgstr "Ke Orang"
+
+#~ msgid "To source"
+#~ msgstr "Ke Sumber"
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Kode GEDCOM tidak dikenal"
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Gunakan halaman ini untuk mengubah atau atau membuang anggota keluarga.<br><br>Untuk tiap anggota dalam keluarga, Anda dapat menggunakan Ubah kaitan untuk memilih orang yang berbeda untuk mengisi peran tersebut dalam keluarga. Anda juga dapat menggunakan Buang kaitan untuk membuang orang itu dari keluarga.<br><br>Jika Anda selesai mengubah anggota keluarga, klik tombol Simpan untuk menyimpan perubahan."
+
+#~ msgid "Users logged in"
+#~ msgstr "Pengguna yang Tercatatmasuk"
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Tampilkan Rekaman GEDCOM"
+
+#~ msgid "View day"
+#~ msgstr "Tampilkan Hari"
+
+#~ msgid "View family"
+#~ msgstr "Tampilkan Keluarga"
+
+#~ msgid "View month"
+#~ msgstr "Tampilkan Bulan"
+
+#~ msgid "View person"
+#~ msgstr "Tampilkan Orang"
+
+#~ msgid "View source"
+#~ msgstr "Tampilkan Sumber"
+
+#~ msgid "View year"
+#~ msgstr "Tampilkan Tahun"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=1"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Sekarang Kami akan mengirim email konfirmasi ke alamat <b>%s</b>. Anda harus memverifikasi permintaan akun Anda dengan mengikuti petunjuk pada email konfirmasi. Jika Anda tidak mengonfirmasi permintaan akun Anda selama tujuh hari, pengajuan Anda otomatis akan ditolak. Anda harus mengajukan lagi.<br><br>Setelah Anda mengikuti petunjuk di email konfirmasi, administrator masih harus menyetujui permintaan Anda sebelum akun Anda dapat digunakan.<br><br>Untuk tercatatmasuk ke situs ini, Anda harus mengetahui nama pengguna dan sandi Anda."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Sekarang Kami akan mengirim email konfirmasi ke alamat <b>%s</b>. Anda harus memverifikasi permintaan akun Anda dengan mengikuti petunjuk pada email konfirmasi. Jika Anda tidak mengonfirmasi permintaan akun Anda selama tujuh hari, pengajuan Anda otomatis akan ditolak. Anda harus mengajukan lagi.<br><br>Setelah Anda mengikuti petunjuk di email konfirmasi, Anda dapat tercatatmasuk. Untuk tercatatmasuk ke situs ini, Anda harus mengetahui nama pengguna dan sandi Anda."
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Kaitan mana dari orang ini yang ingin Anda tambahkan?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Umur istri"
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "Anda tidak akan mendapat email lagi dari situs ini, karena permintaan akun akan dihapus secara otomatis setelah tujuh hari."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Bagan Kliping Anda kosong."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Berkas Zip"

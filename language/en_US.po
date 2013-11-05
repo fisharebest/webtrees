@@ -1,19 +1,23 @@
+# English (United States) translation for webtrees
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the webtrees package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Webtrees\n"
+"Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2010-08-23 18:07-0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2013-05-12 19:51+0000\n"
+"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
+"Language-Team: English (United States) <en_US@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-Language: en\n"
-"X-Poedit-Country: US\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -18609,3 +18613,9 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%g:%i:%s %a"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%F %j, %Y"

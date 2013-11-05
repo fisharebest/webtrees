@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:33+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: Persian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -1669,9 +1669,7 @@ msgstr ""
 #: includes/functions/functions_edit.php:2241
 #: includes/functions/functions_edit.php:2250
 msgid "An error occurred while creating the Edit form.  Another user may have changed this record since you previously viewed it."
-msgstr ""
-"درهنگام ایجاد فرم ویرایش خطایی اتفاق افتاد\r\n"
-"ممکن است کاربر دیگری ، از آخرین باری که شما این فرم را دیده اید در آن تغییری داده باشد"
+msgstr "درهنگام ایجاد فرم ویرایش خطایی اتفاق افتاد ممکن است کاربر دیگری ، از آخرین باری که شما این فرم را دیده اید در آن تغییری داده باشد"
 
 #. I18N: Description of the “Interactive tree” module
 #: modules_v3/tree/module.php:40
@@ -1680,7 +1678,7 @@ msgstr ""
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "یک پیام خطای ناشناخته رخ داده است"
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -8854,7 +8852,6 @@ msgstr "هیچ رخدادی برای فردا موجود نیست"
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
-msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -18594,7 +18591,7 @@ msgstr ""
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
@@ -18605,3 +18602,457 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%g:%i:%s %a"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%j %F %Y"
+
+#~ msgid "(aged %s)"
+#~ msgstr "(%s سالگی)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(کوچک تر از %s)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "(بزرگ تر از %s)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "فیلتر شده از %s مقدار"
+
+#~ msgid "(in childhood)"
+#~ msgstr "(در کودکی)"
+
+#~ msgid "(in infancy)"
+#~ msgstr "(در طفولیت)"
+
+#~ msgid "(stillborn)"
+#~ msgstr "(به هنگام تولد)"
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "به یاد داشته باشید: اطلاعات شخصی افرادی که در قید حیات هستند فقط برای اعضای خانواده و خویشاوندان نزدیک و البته دوستان ایشان به نمایش گذاشته خواهند شد. در هر صورت قبل از مشاهده هرگونه اطلاعات شخصی از شما در مورد رابطه‌ خویشاوندی با فرد مورد نظر پرسیده خواهد شد. بعضا ممکن است این موارد برای افراد متوفی نیز صدق کند که این موارد بیشتر به دلیل عدم وجود اطلاعات کافی در مورد فرد است، در صورتی که تغییراتی در اطلاعات خویشاوندان خود ایجاد می کنید، جهت بررسی بهتر توسط مدیریتابتدا منابع خود را ارائه کنید."
+
+#~ msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "این سیستم نیازمند ارسال ایمیل هایی نظیر رمزهای عبور، اطلاع رسانی های مرتبط با سیستم می باشد. به این جهت سیستم می تواند از تابع پیش فرض میل (که همیشه در دسترس نیست) و یا از یک سرور SMTP خارجی استفاده نماید. جهت اتصال با هر کدام یک از این دو شما بایستی اطلاعات مورد نیاز را وارد نمایید."
+
+#~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
+#~ msgstr "یک سرور دیتابیس می تواند ممکن است تعداد زیادی دیتابیس دیگر را نیز سرویس دهی کند، شما باید یک دیتابیس موجود را انتخاب کنید و یا از یک دیتابیس جدید که ایجاد می کنید استفاده نمایید"
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+#~ msgid "Access"
+#~ msgstr "دسترسی"
+
+#~ msgid "Add a new name"
+#~ msgstr "اضافه کردن نام جدید"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "فرد دیگری را به نمودار اضافه کن"
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "سنی که در آن فرد به عنوان متوفی شناخته می شود."
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "سن خانواده روبروی تاریخ تولد فرزند"
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "یک پیام خطای ناشناخته رخ داده است"
+
+#~ msgid "Begin year"
+#~ msgstr "سال شروع"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "جزییات تولد و فوت در نمودارها"
+
+#~ msgid "Brother"
+#~ msgstr "برادر"
+
+#~ msgid "Change family members"
+#~ msgstr "تغییر اعضای خانواده"
+
+#~ msgid "Child of "
+#~ msgstr "فرزند ِ "
+
+#~ msgid "Children of "
+#~ msgstr "فرزندان ِ "
+
+#~ msgid "Clear chart"
+#~ msgstr "پاک کردن نمودار"
+
+#~ msgid "Contact information"
+#~ msgstr "اطلاعات تماس"
+
+#~ msgid "Create user"
+#~ msgstr "ساخت کاربر"
+
+#~ msgid "Daughter"
+#~ msgstr "دختر"
+
+#~ msgid "Default theme"
+#~ msgstr "تم پیش‌فرض"
+
+#~ msgid "Descent steps"
+#~ msgstr "مراحل نسبی"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "ذوالقعده"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "ذوالقعده"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "ذوالقعده"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "ذوالقعده"
+
+#~ msgid "Differences"
+#~ msgstr "تفاوت ها"
+
+#~ msgid "Do not send messages"
+#~ msgstr "پیام را ارسال نکن"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "ویرایش رکورد شجره نامه خام"
+
+#~ msgid "Edit shared note"
+#~ msgstr "ویرایش متن به اشتراک گذاشته شده"
+
+#~ msgid "Email address:"
+#~ msgstr "نشانی پست الکترونیک:"
+
+#~ msgid "End year"
+#~ msgstr "سال پایان"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "پایان بازه تغییر"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "شناسه یک فرد را وارد کنید"
+
+#~ msgid "Entry text:"
+#~ msgstr "متن ورودی:"
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "مشمول افراد متوفی به تنظیمات حریم خصوصی"
+
+#~ msgid "External objects"
+#~ msgstr "موارد خارجی"
+
+#~ msgid "Facts for family records"
+#~ msgstr "مشخصات سوابق خانواده"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "مشخصات برای سوابق فردی"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "مشخصات سوابق مخازن"
+
+#~ msgid "Facts for source records"
+#~ msgstr "مشخصات سوابق منابع"
+
+#~ msgid "Font"
+#~ msgstr "فونت"
+
+#~ msgid "From email address"
+#~ msgstr "از آدرس ایمیل"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "مخفی کردن &amp; نمایش"
+
+#~ msgid "Hit count:"
+#~ msgstr "تعداد بازدید:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "سن شوهر"
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "اگر این تنظیمات را نمی دانید این قسمت را به صورت پیش فرض رها کنید، ممکن است کار کند، البته بعدا نیز می توانید تغییر دهید."
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "اگر نمی خواهید هیچ ایمیلی ارسال کنید (برای مواردی که قرار نیست هیچ کاربری ثبت نام نماید) شما می توانید این قابلیت را غیر فعال نمایید."
+
+#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
+#~ msgstr "در صورتی که نیاز به مقدار حافظه و قدرت پردازشگر بیشتری هستید با مدیر سرور خود تماس بگیرید"
+
+#~ msgid "Individual 1"
+#~ msgstr "فرد اول"
+
+#~ msgid "Individual 2"
+#~ msgstr "فرد دوم"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "افرادی که بیشتر از همه زیسته اند"
+
+#~ msgid "Loading…"
+#~ msgstr "در حال بارگذاری"
+
+#~ msgid "Min. no. of occurrences to be a “common surname”"
+#~ msgstr "کمترین تعداد برای محسوب شدن \"رایج ترین نام خانوادگی\""
+
+#~ msgid "Move left"
+#~ msgstr "حرکت به چپ"
+
+#~ msgid "Move right"
+#~ msgstr "حرکت به راست"
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "هیچ رخدادی برای افرادی که در قید حیات هستند در امروز موجود نیست"
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "هیچ رخدادی برای فردا برای افرادی که در قید حیات هستند موجود نیست"
+
+#~ msgid "No records to display"
+#~ msgstr "هیچ سوابقی برای نمایش موجود نمی باشد"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "چنین شماره ID در فایل شجرنامه وجود ندارد"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "تعداد ماه‌هایی که کاربر می‌بایست قبل از غیرفعال شدن حساب کاربری خود نسبت به ورود به سیستم اقدام کند: "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "بزرگترین فرد فامیل"
+
+#~ msgid "Online editing"
+#~ msgstr "ویرایش آنلاین"
+
+#~ msgid "Orientation"
+#~ msgstr "جهت"
+
+#~ msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "افزونه \"%1$s\" غیرفعال است، بدون این افزونه، افزونه \"%2$s\" نیز غیرفعال خواهد بود. از مدیر سرور خود برای فعالسازی این افزونه درخواست کنید."
+
+#~ msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
+#~ msgstr "افزونه  \"%s\" غیرفعال شده است. شما نمی توانید بدون فعال سازی آن سیستم را نصب کنید. از مدیر سرور خود برای فعالسازی این افزونه درخواست کنید."
+
+#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "افزونه \"%1$s\" غیرفعال است، بدون این افزونه، افزونه \"%2$s\" نیز غیرفعال خواهد بود. از مدیر سرور خود برای فعالسازی این افزونه درخواست کنید."
+
+#~ msgid "Page size"
+#~ msgstr "سایز صفحه"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "نمودار پیشینه ای"
+
+#~ msgid "Port"
+#~ msgstr "درگاه (پورت)"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "ربیع الاول"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "ربیع الاول"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "ربیع الاول"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "ربیع الاول"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "ربیع الثانی"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "ربیع الثانی"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "ربیع الثانی"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "ربیع الثانی"
+
+#~ msgid "Security"
+#~ msgstr "امنیت"
+
+#~ msgid "Select events"
+#~ msgstr "وقایعی را انتخاب کنید"
+
+#~ msgid "Send message"
+#~ msgstr "فرستادن پیغام"
+
+#~ msgid "Sender email address"
+#~ msgstr "آدرس ایمیل فرستنده"
+
+#~ msgid "Server"
+#~ msgstr "کارگزار‌:"
+
+#~ msgid "Shared note contains:"
+#~ msgstr "متن اشتراک گذاشته شده حاوی:"
+
+#~ msgid "Shared notes found"
+#~ msgstr "متون اشتراکی یافت شدند"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "شعبان"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "شعبان"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "شعبان"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "شعبان"
+
+#~ msgid "Show acceptable use agreement on “Request new user account” page"
+#~ msgstr "نمایش قوانین و مقررات در صفحه \"درخواست حساب کاربری\""
+
+#~ msgid "Show all places in a list"
+#~ msgstr "نمایش تمام اماکن در یک لیست"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "نمایش افراد متوفی"
+
+#~ msgid "Show details"
+#~ msgstr "نمایش جزئیات"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "نمایش عکس های افراد در باکس نام هایشان"
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "نمایش کسانی که زنده اند یا زوجهایی  که هردو زنده اند"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "فقط رخداد های افراد در قید حیات نمایش داده شود؟"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "فقط نمایش اشخاصی که جنسیتشان مشخص نشده است"
+
+#~ msgid "Show photos?"
+#~ msgstr "تصویر را نمایش دهد؟"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "نمایش اماکن در سلسله مراتب"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "نمایش افراد و خانواده های مرتبط"
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "نمایش %1$s تا %2$s از %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "خواهر"
+
+#~ msgid "Son"
+#~ msgstr "پسر"
+
+#~ msgid "Spouse"
+#~ msgstr "همسر"
+
+#~ msgid "Spouses and children"
+#~ msgstr "همسران و فرزندان"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "ابتدای بازه تغییر"
+
+#~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
+#~ msgstr "پیشوند اختیاری است، ولی با گذاشتن پسوند های جداگانه برای هر نوع دیتابیس تشخیص آنها ساده تر خواهد بود"
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "این نام، نام سرور SMTP موردنظر شماست، \"localhost\" بدین معناست که سرور میل نیز بر روی همین وب سرور است."
+
+#~ msgid "This is used in the \"From:\" header when sending mails."
+#~ msgstr "این الگو برای ایمیل های \"از طرف:\" استفاده می شود"
+
+#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
+#~ msgstr "این الگو برای ایمیل های \"فرستنده:\" استفاده می شود"
+
+#~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
+#~ msgstr "نهایت حافظه سرور %d مگابایت و نهایت محدودیت زمانی پردازشگر نیز %d ثانیه می باشد"
+
+#~ msgid "To family"
+#~ msgstr "به یک خانواده"
+
+#~ msgid "To individual"
+#~ msgstr "به یک فرد"
+
+#~ msgid "To source"
+#~ msgstr "به یک منبع"
+
+#~ msgid "Use colors"
+#~ msgstr "استفاده از رنگها"
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "کاربر در طی 7 روز گذشته بازبینی نشده است."
+
+#~ msgid "Users logged in"
+#~ msgstr "کاربران حاضر"
+
+#~ msgid "Users’ languages"
+#~ msgstr "زبان کاربران"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "حساب کاربری کاربر به مدت زیادی بلااستفاده مانده است: "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "مشاهده رکورد های شجره نامه"
+
+#~ msgid "View day"
+#~ msgstr "نمایش روز"
+
+#~ msgid "View family"
+#~ msgstr "نمایش خانواده"
+
+#~ msgid "View month"
+#~ msgstr "نمایش ماه"
+
+#~ msgid "View person"
+#~ msgstr "مشاهده فرد"
+
+#~ msgid "View source"
+#~ msgstr "مشاهده منبع"
+
+#~ msgid "View year"
+#~ msgstr "نمایش سال"
+
+#~ msgid "Visitor options"
+#~ msgstr "تنظیمات بازدیدکنندگان"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=0"
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "تنظیمات متا و تگ های سیستم"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "چه کسانی اجازه دیدن تصاویر بدون مهر را دارند ؟"
+
+#~ msgid "Wife’s age"
+#~ msgstr "سن زوجه"
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "مدیر سرور شما مشخصات اتصال را برایتان فراهم خواهد کرد"
+
+#~ msgid "Zip file(s)"
+#~ msgstr "فایل(های) فشرده"
+
+#~ msgid "first"
+#~ msgstr "اولین"
+
+#~ msgid "last"
+#~ msgstr "آخرین"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_unicode_ci"

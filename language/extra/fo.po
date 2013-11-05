@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2010-09-14 20:10+0000\n"
-"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 16:28+0000\n"
+"Last-Translator: Gunleif Joensen <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
 "Language: fo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:27+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -9843,7 +9843,7 @@ msgstr ""
 
 #: message.php:111
 msgid "Please enter some message text before sending."
-msgstr "Vinarliga skriva eini bo"
+msgstr "Vinarliga skriva eini boð, áðrenn tú sendur."
 
 #: message.php:130
 msgid "Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry."
@@ -13473,7 +13473,7 @@ msgstr "Tal á deyðum"
 
 #: statistics.php:99
 msgid "Total deaths"
-msgstr ""
+msgstr "Tal á deyðsfall"
 
 #: statistics.php:201
 msgid "Total divorces"
@@ -18608,3 +18608,18 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "Loading…"
+#~ msgstr "Løði…"
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Elsti núlivandi persónur"
+
+#~ msgid "Send message"
+#~ msgstr "Send boð"
+
+#~ msgid "Show details"
+#~ msgstr "Sýn smálutir"
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Stappa fílu(r)"

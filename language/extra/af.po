@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2013-06-11 09:37+0000\n"
-"Last-Translator: Jano <janobarnard@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 16:33+0000\n"
+"Last-Translator: Corney Keller <knight.owl@hetnet.nl>\n"
 "Language-Team: Afrikaans <af@li.org>\n"
 "Language: af\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-06-12 05:31+0000\n"
-"X-Generator: Launchpad (build 16667)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -254,8 +254,7 @@ msgstr ""
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s boodskap"
 
 #: statisticsplot.php:744
 #, php-format
@@ -307,7 +306,7 @@ msgstr ""
 #: modules_v3/yahrzeit/module.php:116
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s jarige herdenking"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:97
@@ -325,7 +324,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:1480 modules_v3/googlemap/module.php:1496
 #: modules_v3/user_messages/module.php:76
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;kies&gt;"
 
 #: search_advanced.php:114 search_advanced.php:118 search_advanced.php:122
 #: search_advanced.php:170 search_advanced.php:171 search_advanced.php:172
@@ -729,12 +728,12 @@ msgstr ""
 #. I18N: Description of the “Family navigator” module
 #: modules_v3/family_nav/module.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr ""
+msgstr "'n Sybalk wat 'n persoon se nabye families en verwante toon."
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:36
 msgid "A sidebar showing non-genealogical information about an indivdual."
-msgstr ""
+msgstr "'n Sybalk wat nie-genealogiese inligting oor 'n persoon toon."
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy/module.php:39
@@ -1850,7 +1849,7 @@ msgstr ""
 #: modules_v3/user_messages/module.php:73
 #: modules_v3/user_messages/module.php:120
 msgid "Are you sure you want to delete this message?  It cannot be retrieved later."
-msgstr ""
+msgstr "Is u seker u wil hierdie boodskap verwyder? Dit kan nie later herwin word nie."
 
 #: modules_v3/stories/module.php:366
 msgid "Are you sure you want to delete this story?"
@@ -3558,7 +3557,7 @@ msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:177
 msgid "County"
-msgstr ""
+msgstr "Distrik"
 
 #: admin_media.php:286
 msgid "Create"
@@ -3846,7 +3845,7 @@ msgstr ""
 
 #: modules_v3/user_messages/module.php:93
 msgid "Date Sent:"
-msgstr ""
+msgstr "Gestuur op:"
 
 #: admin_trees_config.php:1022 help_text.php:1411
 msgid "Date differences"
@@ -5288,7 +5287,7 @@ msgstr ""
 #: modules_v3/family_group_report/module.php:35
 #: modules_v3/family_nav/module.php:300
 msgid "Family"
-msgstr "Gesin"
+msgstr "Familie"
 
 #: family.php:141
 msgid "Family Group Information"
@@ -5678,7 +5677,7 @@ msgstr ""
 
 #: modules_v3/batch_update/plugins/name_format.php:33
 msgid "Fix name slashes and spaces"
-msgstr ""
+msgstr "Maak naamstrepe en -spasies reg"
 
 #. I18N: The emblem of a country or region
 #: modules_v3/googlemap/module.php:411
@@ -6628,7 +6627,7 @@ msgstr ""
 
 #: modules_v3/family_nav/module.php:169
 msgid "Immediate Family"
-msgstr ""
+msgstr "Direkte Familie"
 
 #. I18N: gedcom tag IMMI
 #: library/WT/Gedcom/Tag.php:237
@@ -6637,7 +6636,7 @@ msgstr ""
 
 #: admin_trees_manage.php:217 modules_v3/googlemap/admin_places.php:730
 msgid "Import"
-msgstr ""
+msgstr "Voer in"
 
 #: modules_v3/googlemap/admin_places.php:722
 msgid "Import all places from a family tree"
@@ -9819,7 +9818,7 @@ msgstr ""
 #: themes/fab/header.php:36 themes/minimal/header.php:36
 #: themes/webtrees/header.php:36 themes/xenea/header.php:36
 msgid "Play"
-msgstr ""
+msgstr "Speel af"
 
 #: login.php:326
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
@@ -10369,7 +10368,7 @@ msgstr ""
 
 #: modules_v3/batch_update/plugins/search_replace.php:114
 msgid "Regular expression"
-msgstr ""
+msgstr "Gewone uitdrukking"
 
 #: modules_v3/batch_update/plugins/search_replace.php:95
 msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php.net/manual/en/regexp.reference.php</a> for futher details."
@@ -10885,7 +10884,7 @@ msgstr "Soek lokaal"
 
 #: modules_v3/batch_update/plugins/search_replace.php:109
 msgid "Search method"
-msgstr ""
+msgstr "Soektogmetode"
 
 #: modules_v3/batch_update/plugins/search_replace.php:99
 msgid "Search text/pattern"
@@ -10985,7 +10984,7 @@ msgstr ""
 
 #: login.php:456 message.php:141 modules_v3/user_messages/module.php:84
 msgid "Send"
-msgstr ""
+msgstr "Verstuur"
 
 #: edit_changes.php:188 includes/functions/functions_print.php:351
 #: library/WT/Stats.php:3445 library/WT/Stats.php:3447 message.php:118
@@ -13765,15 +13764,15 @@ msgstr ""
 #: modules_v3/batch_update/admin_batch_update.php:348
 #: modules_v3/batch_update/admin_batch_update.php:353
 msgid "Update"
-msgstr ""
+msgstr "Werk by"
 
 #: modules_v3/batch_update/admin_batch_update.php:349
 msgid "Update all"
-msgstr ""
+msgstr "Werk alles by"
 
 #: modules_v3/batch_update/admin_batch_update.php:337
 msgid "Update the CHAN record"
-msgstr ""
+msgstr "Werk die CHAN rekord by"
 
 #: admin_site_merge.php:177
 msgid "Updating linked record"
@@ -14564,7 +14563,7 @@ msgstr ""
 
 #: modules_v3/user_messages/module.php:87
 msgid "You have no pending messages."
-msgstr ""
+msgstr "U het geen boodskappe in afwagting nie."
 
 #: modules_v3/user_blog/module.php:78
 msgid "You have not created any Journal items."
@@ -14852,7 +14851,7 @@ msgstr ""
 
 #: modules_v3/top10_pageviews/module.php:144
 msgid "after"
-msgstr ""
+msgstr "ná"
 
 #. I18N: Gedcom AFT dates
 #: library/WT/Date.php:242
@@ -18602,7 +18601,7 @@ msgstr ""
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
@@ -18613,3 +18612,126 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Voeg eggenoot met behulp van 'n bestaande persoon by"
+
+#~ msgid "Add a new name"
+#~ msgstr "Voeg nuwe Naam by"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Voeg eggenote met behulp van 'n bestaande persoon by"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Voeg nog 'n persoon toe aan die diagram"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "Laat GEDCOM-oorskakeling toe"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "By verstek, toon die lys slegs die plekke wat in jou familiestambome voorkom. U kan die besonderhede van ander plekke hê, soos dié wat in grootmaat vanaf 'n eksterne lêer ingevoer word. As u hierdie opsie kies, sal al die plekke getoon word, insluitend dié wat tans nie gebruik word."
+
+#~ msgid "Change family members"
+#~ msgstr "Verander Gesinslede"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Korrigeer NAME-rekords met die formaat \"John / DOE /\" of \"John / DOE ', soos geproduseer deur ouer genealogiese sagteware."
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Skep 'n nuwe Gedeelde Nota"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Skep 'n nuwe Gedeelde Nota met behulp van Assistent"
+
+#~ msgid "Create repository"
+#~ msgstr "Skep Bewaarplek"
+
+#~ msgid "Default theme"
+#~ msgstr "Verstek Tema"
+
+#~ msgid "Descent steps"
+#~ msgstr "Afstammings stappe"
+
+#~ msgid "Do not send messages"
+#~ msgstr "Moenie boodskappe stuur nie"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Redigeer Gedeelde Nota"
+
+#~ msgid "Email address:"
+#~ msgstr "E-pos adres:"
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "As u 'n groot aantal onaktiewe plekke het, kan dit stadig wees om die lys te genereer."
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Koppel hierdie persoon as kind aan 'n bestaande gesin"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Koppel hierdie persoon as eggenoot aan 'n bestaande gesin"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Koppel hierdie persoon as eggenote aan 'n bestaande gesin"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Kombineer vanuit ID:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Kombineer na ID:"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "Uitgaande bediener(SMTP)-naam"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Verwyder hierdie plek?"
+
+#~ msgid "SMTP port"
+#~ msgstr "SMTP-poort"
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Soek en/of vervang data in u GEDCOM met behulp van eenvoudige soektogte of gevorderde patroonpassing."
+
+#~ msgid "Select events"
+#~ msgstr "Kies Gebeurtenisse"
+
+#~ msgid "Send message"
+#~ msgstr "Stuur Boodskap"
+
+#~ msgid "Show details"
+#~ msgstr "Toon Besonderhede"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Toon onaktiewe plekke"
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Toon slegs persone, gebeure, of alles?"
+
+#~ msgid "Surname option"
+#~ msgstr "Van Opsie"
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "Die 'regex' blyk 'n fout te bevat. Dit kan nie gebruik word nie."
+
+#~ msgid "To family"
+#~ msgstr "Na Gesin"
+
+#~ msgid "To individual"
+#~ msgstr "Na Persoon"
+
+#~ msgid "To source"
+#~ msgstr "Na Bron"
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Gebruik hierdie bladsy om gesinslede te verander of te verwyder. <br> <br> Vir elke lid in die gesin, kan jy die Verander-skakel gebruik om 'n ander persoon te kies om daardie rol te vervul in die gesin. Jy kan ook die Verwyder-skakel gebruik om daardie persoon uit die gesin te verwyder. <br> <br> Wanneer jy klaar is met veranderinge van die gesinslede, kliek op die Stoor-knoppie om die veranderinge te stoor."
+
+#~ msgid "View person"
+#~ msgstr "Toon Persoon"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Vrou se nooiensvan word nuwe gegewe naam"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Vrou se van vervang deur die man se van"
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Jy kan dit makliker maak om te soek vir getroude vroue deur die opname van hul getroude naam. <br> Egter nie alle vroue neem hul man se van aan, so pasop dat u nie foutiewe inligting in u databasis invoer nie."

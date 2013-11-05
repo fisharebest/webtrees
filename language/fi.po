@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:27+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: English\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -1687,7 +1687,7 @@ msgstr "Interaktiivinen sukupuu, jossa näkyvät kaikki henkilön esi-isät ja j
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "Virhe tietokannassa."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -4318,7 +4318,7 @@ msgstr "Poistetut käyttäjät: "
 
 #: admin_trees_manage.php:196
 msgid "Deleting old genealogy data…"
-msgstr "Poistetaan vanhaa sukupuuaineistoa..."
+msgstr "Poistetaan vanhaa sukupuuaineistoa…"
 
 #: library/WT/Controller/Family.php:159
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -8860,8 +8860,8 @@ msgstr "Mitään tapahtumia ei ole huomenna."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Ei tapahtumia elossa-olevien henkilöiden osalta seuraavan %s päivän aikana."
-msgstr[1] "Ei tapahtumia elossa-olevien henkilöiden osalta seuraavien %s päivien aikana."
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -18602,14 +18602,1661 @@ msgstr "\"%s\" on lisätty sinun suosikkeihin"
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:37
 msgctxt "Unknown surname"
 msgid "…"
-msgstr "..."
+msgstr "…"
+
+#~ msgid " but the details are unknown"
+#~ msgstr " mutta yksityiskohdat ovat tuntemattomia"
+
+#~ msgid " in "
+#~ msgstr " paikassa "
+
+#~ msgid "%1$s’s %2$s"
+#~ msgstr "%1$s &rarr; %2$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%H:%i:%s"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%j. %F %Y"
+
+#~ msgid "%s day"
+#~ msgid_plural "%s days"
+#~ msgstr[0] "%s päivä"
+#~ msgstr[1] "%s päivää"
+
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "%s päivä sitten"
+#~ msgstr[1] "%s päivää sitten"
+
+#~ msgid "%s hour ago"
+#~ msgid_plural "%s hours ago"
+#~ msgstr[0] "%s tunti sitten"
+#~ msgstr[1] "%s tunteja sitten"
+
+#~ msgid "%s minute ago"
+#~ msgid_plural "%s minutes ago"
+#~ msgstr[0] "%s minuutti sitten"
+#~ msgstr[1] "%s minuutteja sitten"
+
+#~ msgid "%s month"
+#~ msgid_plural "%s months"
+#~ msgstr[0] "%s kuukausi"
+#~ msgstr[1] "%s kuukautta"
+
+#~ msgid "%s month ago"
+#~ msgid_plural "%s months ago"
+#~ msgstr[0] "%s kuukausi sitten"
+#~ msgstr[1] "%s kuukautta sitten"
+
+#~ msgid "%s second ago"
+#~ msgid_plural "%s seconds ago"
+#~ msgstr[0] "%s sekunti sitten"
+#~ msgstr[1] "%s sekunteja sitten"
+
+#~ msgid "%s three times removed ascending"
+#~ msgstr "%s"
+
+#~ msgid "%s three times removed descending"
+#~ msgstr "%s"
+
+#~ msgid "%s week"
+#~ msgid_plural "%s weeks"
+#~ msgstr[0] "%s viikko"
+#~ msgstr[1] "%s viikkoa"
+
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "%s vuosi"
+#~ msgstr[1] "%s vuotta"
+
+#~ msgid "%s year ago"
+#~ msgid_plural "%s years ago"
+#~ msgstr[0] "%s vuosi sitten"
+#~ msgstr[1] "%s vuotta sitten"
+
+#~ msgid "%s%%"
+#~ msgstr "%s%%"
+
+#~ msgid "(aged %s)"
+#~ msgstr "(ikä %s)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(ikä vähemmän kuin %s)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "(ikä enemmän kuin %s)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(valittu %s:sta)"
+
+#~ msgid "(in childhood)"
+#~ msgstr "(lapsena)"
+
+#~ msgid "(in infancy)"
+#~ msgstr "(pikkulapsena)"
+
+#~ msgid "(stillborn)"
+#~ msgstr "(kuolleena syntynyt)"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
+#~ msgstr "<b>GUID</b> on lyhenne termista «Globally Unique ID».<br><br>GUID pyrkii henkilön tunnistamiseen sellaisella tavalla, että keskeiset järjestöt, kuten Salt Lake Cityn MAP-kirkon sukututkimuskeskus (Family History Center of the LDS church in Salt Lake City), tai yhteensopivat sukututkimusohjelmistot palvelimellasi, voisivat todeta käsittelevänsä samaa henkilöä, riippumatta siitä mistä GEDCOM aineisto on peräisin. Sukututkimuskeksen päämääränänä on luoda yhteinen sukututkimuksen tietovaraston ja hyödyttää sitä web palveluiden kautta. Tällä tavalla mikä tahansa sukututkimusohjelma voisi hakea tietoja ja täydentää omaa aineistoa saaduilla tiedoilla.<br><br>Jos sinulla ei ole tarkoitus jakaa GEDCOM aineistoasi muiden kanssa, sinulla ei ole tarvetta luoda näitä GUID tunnisteita <b>webtrees</b> ohjelmalla. Niiden luominen ei aiheuta muuta haittaa, kuin sen että GEDCOMin tilantarve lisääntyy."
+
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+#~ msgstr "Valitsemalla <b>Ei</b>, rekisteröidyt käyttäjät saavat nähdä elossa olevien henkilöiden tiedot. <b>Kyllä</b>, käyttäjät saavat nähdä elossa olevista ainoastaan lähisukulaisten tiedot.<br><br>Tämä valinta sovelletaan kaikille käyttäjille, joilla on pääsyoikeus sukututkimusaineistoon. Ylläpitäjä voi käyttäjäkohtaisesti päättää toisin, muuttamalla tämä valinta käyttäjän hallintaosassa."
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b>Huomautus:</b> Elossa olevien yksityistiedot voidaan välittää ainoastaan sukulaisille ja läheisille ystäville. Tällainen suhde tarkistetaan sinulta ennen kuin voit vastaanottaa yksityistietoa. Toisinaan myös kuolleiden tiedot pidetään yksityisenä, joka voi johtua siitä, ettei ole tarpeeksi tietoja joilla voidaan päätellä onko henkilö vielä elossa vai kuollut.<br><br>Ennen kuin lähetät kyselyn henkilöstä, tarkista päivämäärien, sijaintien, paikkojen ja lähisukulaisten tietojen perusteella, että oikea henkilö on kysymyksessä. Jos olet lisäämässä uutta tietoa sukupuuhun, kerro myös mikä on tietolähteesi."
+
+#~ msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
+#~ msgstr "<b>webtrees</b>:ssä voit kopioida enintään 10 tietoa leiketauluun. Leiketaulu eroaa Leikekorista siinä, että vain Leikekorissa siirrä-toiminto (export) on käytettävissä tietoaineiston siirtämiseksi omalle koneelleesi.<br><br>Leiketaulusta voit valita jonkin tiedon ja liittää sen Henkilö-, Perhe-, Media-, Lähdetieto- tai Tietovarastotietueeseen, jota olet muokkaamassa. Et kuitenkaan voi liittää sitä erityyppiseen tietueseen tai tietoon. Esimerkiksi, et voi liittää avioliittoa lähdetietoon tai henkilötietoon, sillä avioliitto kuvataan ainoastaan perhetiedoissa.<br><br>Tästä on apua, kun tietoa annetaan usealle henkilälle tai perheelle (esim. väestölaskentatieto)."
+
+#~ msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "<b>webtrees</b> lähettää sähköpostia koskien salasanasi ja sivustosta ilmoituksia. Sen voidaan tehdä käyttäen palvelimen oma PHP mail ominaisuus (jos asennettu), tai käyttäen operaattorisi SMTP yhteys, johon tarvitaan myös tietyt yhteystiedot."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Pääsy on sallittu käyttäjille, joilla on käyttäjätunnus ja salasana tähän verkkopalveluun."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun.</b></center><br>Pääsy näille sivuille on sallittu vain niille käyttäjille, joille on annettu <b>käyttöoikeus</b>.<br><br>Mikäli sinulla jo on käyttäjätili, voit kirjautua järjestelmään tällä sivulla. Mikäli sinulla ei ole käyttäjätiliä, voit pyytää sellaista klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Todennettuaan antamasi tiedot, ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Tulet saamaan sähköpostiviestin kun pyyntösi on hyväksytty."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Pääsy tänne on sallittu ainoastaan <u>sukulaisille</u>.<br><br>Mikäli sinulla on käyttäjätili voit kirjautua sivustolle. Mikäli sinulla ei vielä ole käyttäjätiliä, voit pyytää sellaista klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Tarkistettuaan tietosi sivun ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Saat sähköpostiviestin kun pyyntösi on hyväksytty."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Jokaisella käyttäjällä, jolla on käyttäjätili, on pääsy tänne.<br><br>Mikäli sinulla on käyttäjätili, voit kirjautua tältä sivulta. Mikäli sinulla ei ole käyttäjätiliä, voit pyytää sellaisen klikkaamalla alla olevaa linkkiä.<br><br>Todennettuaan pyyntösi ylläpitäjä aktivoi käyttäjätilisi. Saat sähköpostiviestin kun pyyntösi on hyväksytty."
+
+#~ msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
+#~ msgstr "<div class=\"largeError\">Huomautus:</div><div class=\"error\">Lähettämällä tämän pyynnön hyväksyt samalla:<ul><li>kunnioitat sukututkimusaineistossa esiintyvien elossa olevien henkilöiden yksityisyyttä</li><li>kerrot alla olevassa tekstissä kuka olet ja kenelle olet sukua</li><li>ilmoitat ylläpitäjille virheistä sukututkimusaineistossa</li><li>autat mahdollisuuksiesi mukaan sukupuun täydentämistä.</li></ul></div>"
+
+#~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
+#~ msgstr "Tietokantajärjestelmässä voi olla useita erillisiä tietokantoja. Valitse olemassa oleva tietokanta (palvelinylläpitäjän luoma) tai luo itse uusi (jos sinulla on riittävät oikeudet siihen)."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Raportti tiedoista, jotka ovat lähtöisin tietystä lähteestä."
+
+#~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
+#~ msgstr "Käyttäjä ei voi kirjautua sisään, ennen kuin sekä \"sähköpostiosoite on varmistettu\" että \"ylläpitäjä on hyväksynyt\" asetukset on kuitattu."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyzåäö"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ"
+
+#~ msgid "Access"
+#~ msgstr "Pääsy"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Liitä mies puolisoksi käyttäen tiedostossa olevaa henkilöä."
+
+#~ msgid "Add a new associate allows you to link a fact with an associated individual in the site.  This is one way in which you might record that someone was the godfather of another individual."
+#~ msgstr "Lisää uusi läheinen yhdistää sivuston tiedon ja siihen liittyvän henkilön keskenään. Tämä on yksi tapa tallentaa tieto, että joku henkilö on esimerkiksi ollut toisen henkilön kummisetä."
+
+#~ msgid "Add a new name"
+#~ msgstr "Lisää nimi"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Liitä vaimo käyttäen tiedostossa olevaa henkilöä."
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Lisää uusi henkilö kaavioon"
+
+#~ msgid "Add individuals"
+#~ msgstr "Lisää henkilöitä"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Lisää vain tämä henkilö."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Lisää tähän tietueeseen vanhempien ja kaikkien jälkeläisten tietueet."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Lisää tähän tietueeseen vanhempien ja lasten tietueet."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Lisää vanhemmat tämän perheen tietueeseen."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Lisää tämä henkilö suorine esivanhempineen."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Lisää tämä henkilö suorine esivanhempineen sekä heidän perheensä."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Lisää tämä henkilö vanhempineen ja sisaruksineen."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Lisää tämä henkilö puolisoineen sekä kaikkien heidän jälkeläistensä tietueet."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Lisää tämä henkilö puolisoineen ja lapsineen."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Lisää tämä lähde ja siihen liitetyt perheet/henkilöt."
+
+#~ msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+#~ msgstr "Toisinaan pitää ylläpitäjän oikaista ja korjata käyttäjien syöttämää tietoa, esimerkiksi PLAC sijaintia, lisäämällä maa. Kun ylläpitäjä suorittaa sellaisia oikaisuja, alkuperäinen muutostieto tavallisesti korvataan. Tämä ei ehkä ole toivottavaa.<br><br>Kun tämä valitaan, <b>webtrees</b> säilyttää alkuperäiset muutoksen tekijän ja -ajan tiedot. Tällä valinnalla ylläpitäjät voivat muuttaa tai poistaa alkuperäiset CHAN-tiedot, jotka liittyvät muutoksenalaiseen tietueeseen."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "Kirjauduttuasi, valitse 'Käyttäjätilini' joka löytyy 'Oma sivuni'-valikosta ja täytä salasanakentät vaihtaaksesi salasanasi."
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "Oletetaan kuolleeksi, kun saavuttaa tämän iän"
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "Vanhempien ikä lasten syntymäajan viereen"
+
+#~ msgid "All individuals"
+#~ msgstr "Kaikki henkilöt"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "Salli GEDCOM:n vaihto"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "Salli viestien tallentaminen"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "Interaktiivinen sukupuu, jossa näkyvät kaikki henkilön esi-isät ja jälkeläiset."
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "Virhe tietokannassa."
+
+#~ msgid "Ancestors of "
+#~ msgstr "Esivanhemmat - "
+
+#~ msgid "Ancestral file number"
+#~ msgstr "Ancestral file number (AFN)"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Oletko varma, että haluat peruuttaa kaikki tähän GEDCOM-tiedostoon tekemäsi muutokset?"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
+
+#~ msgid "Available blocks"
+#~ msgstr "Käytettävissä olevat lohkot"
+
+#~ msgid "Begin year"
+#~ msgstr "Aloitusvuosi"
+
+#~ msgid "Best man"
+#~ msgstr "Best man"
+
+#~ msgid "Binary data object"
+#~ msgstr "Binääridataobjekti"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "Syntymäpaikassa on"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "Syntymä- ja kuolematiedot kaavioissa"
+
+#~ msgid "Birth date range end"
+#~ msgstr "Syntymän aikavälin loppu"
+
+#~ msgid "Birth date range start"
+#~ msgstr "Syntymän aikavälin alku"
+
+#~ msgid "Brother"
+#~ msgstr "Veli"
+
+#~ msgid "Burial place contains"
+#~ msgstr "Hautaamispaika  sisältää"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "Oletuksena näkyvät vain ne paikat jotka löytyvät sukupuussasi. Sinulla voi olla tietoja muista paikoista, kuten niistä jotka on tuotu massasiirtona ulkoisesta tiedostosta. Tämän vaihtoehdon valitseminen näyttää kaikki paikat, myös ne, joita ei tällä hetkellä käytetä."
+
+#~ msgid "Change family members"
+#~ msgstr "Muuta perheenjäseniä"
+
+#~ msgid "Child of "
+#~ msgstr "Tämän henkilön lapsi: "
+
+#~ msgid "Children of "
+#~ msgstr "Seuraavien lasten vanhemmat: "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Valitse sukulaiset"
+
+#~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
+#~ msgstr "Valitse minkä pienoiskuvan haluat siirtää palvelimelle. Pienoiskuva luodaan myös automaattisesti, mutta toisinaan saatat haluta eri kuvan pienoiskuvaksi. Esimerkiksi, videolle voit käyttää video-otoksesta tietyn still-kuvan tai kuvaajan valokuvan."
+
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgstr "Valitse vakioteksti mukautuneelle tervehdystekstille. Kun käyttäjä vaihtaa kieltä, tämä teksti esitetään uudella kielellä.<br><br>Valitsemalla <b>Kyllä</b>, otsikko näyttää seuraavalta englanninkielisenä:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+
+#~ msgid "Civil registrar"
+#~ msgstr "Siviilirekisteriviranomainen"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Siviilirekisteriviranomainen"
+
+#~ msgctxt "MALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Siviilirekisteriviranomainen"
+
+#~ msgid "Clear chart"
+#~ msgstr "Tyhjennä kaavio"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "Valitse %s perheen päähenkilöksi."
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Valitse henkilön lisättäväksi yhteyksien luontilistaan"
+
+#~ msgid "Click this link to remove the individual from the timeline."
+#~ msgstr "Klikkaa tätä linkkiä poistaaksesi henkilön aikajanalta."
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Klikkaa valitaksesi henkilön perheen pääksi."
+
+#~ msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
+#~ msgstr "Klikkaamalla \"+\" ikonin, avataan GEDFact jaettu lisätieto apulainen ikkunan.<br>Lisää ohjeita löydät siellä.<br><br>Valitsemalla \"Tallenna\", jaetun lisätiedon ID-tunnus lisätään tähän."
+
+#~ msgid "Coat of arms"
+#~ msgstr "Vaakuna"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Avoliitto"
+
+#~ msgid "Contact information"
+#~ msgstr "Yhteystiedot"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Korjaa NAME tietueiden esitystapa 'Matti/Meikäläinen/' tai 'Matti /Meikäläinen', jotka olivat esitystapana vanhemmissa ohjelmaversioissa."
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "Norsunluurannikko"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Luo uusi jaettu lisätieto"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Lisää uusi jaettu lisätieto käyttäen avustajaa"
+
+#~ msgid "Create repository"
+#~ msgstr "Luo tietovarasto"
+
+#~ msgid "Create user"
+#~ msgstr "Luo uusi käyttäjä"
+
+#~ msgid "Custom event"
+#~ msgstr "Erikoistapahtuma"
+
+#~ msgid "Date of LDS baptism"
+#~ msgstr "LDS kasteen päivämäärä"
+
+#~ msgid "Date of LDS child sealing"
+#~ msgstr "Mormoni, lapsen sinetöinnin päivämäärä"
+
+#~ msgid "Date of LDS endowment"
+#~ msgstr "päivämäärä"
+
+#~ msgid "Date of LDS spouse sealing"
+#~ msgstr "Mormoni, puolison sinetöinnin päivämäärä"
+
+#~ msgid "Date of adoption"
+#~ msgstr "Adoption päivämäärä"
+
+#~ msgid "Date of blessing"
+#~ msgstr "Siunauksen päivämäärä"
+
+#~ msgid "Date of cremation"
+#~ msgstr "Polttohautauksen päivämäärä"
+
+#~ msgid "Date of emigration"
+#~ msgstr "Maastamuuton päivämäärä"
+
+#~ msgid "Date of event"
+#~ msgstr "Tapahtuman päivämäärä"
+
+#~ msgid "Date of immigration"
+#~ msgstr "Maahanmuuton päivämäärä"
+
+#~ msgid "Date of naturalization"
+#~ msgstr "Kansalaistamispäivämäärä"
+
+#~ msgid "Date of ordination"
+#~ msgstr "Papiksivihkimisen päivämäärä"
+
+#~ msgid "Date of residence"
+#~ msgstr "Asuinpaikan päivämäärä"
+
+#~ msgid "Daughter"
+#~ msgstr "Tytär"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Kuolinpaikka sisältää"
+
+#~ msgid "Death date range end"
+#~ msgstr "Kuolinaikavälin loppu"
+
+#~ msgid "Death date range start"
+#~ msgstr "Kuolinaikaväli alku"
+
+#~ msgid "Default theme"
+#~ msgstr "Oletusteema"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Jälkeläiset - "
+
+#~ msgid "Descent steps"
+#~ msgstr "Jälkipolvien lukumäärä"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "dhul-qa`da"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "dhul-qa`da"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "dhul-qa`da"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "dhul-qa`da"
+
+#~ msgid "Differences"
+#~ msgstr "Eroavuudet"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Suorat esivanhemmat"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Suorat esivanhemmat ja heidän perheensä"
+
+#~ msgid "Display %s"
+#~ msgstr "Näytä %s"
+
+#~ msgid "Do not seal, previous sealing cancelled"
+#~ msgstr "(mormoni) Älä sinetöi: aiempi sinetöinti peruutettu"
+
+#~ msgid "Do not seal: unauthorized"
+#~ msgstr "(mormoni) Älä sinetöi: luvaton toiminto"
+
+#~ msgid "Do not send messages"
+#~ msgstr "Ei postin lähetystä"
+
+#~ msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+#~ msgstr "Sähköpostiosoite &laquo;From:&raquo; jota <b>webtrees</b> käyttää luodessaan automaattisia sähköposteja.<br><br><b>webtrees</b> voi lähettää ylläpitäjille automaattisesti postia, kun muutoksia on tehty ja niitä pitää tarkistaa.<b>webtrees</b> lähettää lisäksi postia käyttäjille, jotka ovat pyytäneet käyttäjätilin.<br><br>Tavallisesti &laquo;From:&raquo; kenttä, jota käytetään automaattisissa sähköposteissa, on muodossa <i>From: webtrees-noreply@sivustosi-osoite</i>, jolla halutaan korostaa (noreply) ettei postiin tarvitse vastata. Roskapostin estämiseksi, jotkut sähköpostipalvelut vaativat että &laquo;From:&raquo; kenttään täytetäään oikea ja olemassa oleva sähköpostiosoite."
+
+#~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
+#~ msgstr "Jokainen mediakohde (kuva jne) pitää yhdistää tietokannassa yhteen tai useampaan henkilöön, perheeseen tai lähdetietoon.<br><br>Voit yhdistää eli luoda linkin käyttämällä hakua tai syöttämällä henkilön, perheen tai lähdetiedon ID-tunnus silloin kun tuot mediaa tietokantaan. Yhdistämistä voi myös myöhemminkin hoitaa muokkaamalla mediakohdetta käyttäen \"Multimedian käsittely\", joka on tarjolla Henkilö-,Perhe- ja Lähdetietosivuilla."
+
+#~ msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+#~ msgstr "Lähdetiedoissa kuvataan tietoja ajan ja paikan suhteen. Esimerkiksi Englannissa käytetty Census (väestölaskenta) tiedot tai kirkonkirjoista saatavat syntymät, avioliitot, kuolemat.<br><br>Valitse millaiset tapahtumat saadaan tästä tiedonlähteestä. Päivämäärän tulisi kuvata mitä ajanjaksoa on kyseessä <i>FROM 1900 TO 1910</i> eli alkaen - asti. Paikkatiedolla ilmoitetaan mikä alue on kyseessä. Esimerkiksi Oulun maakunta-arkistosta saatuja tietoja koskien Oulua olisi paikkatetona \"Oulu, Oulu, FIN\" (pitäjä,lääni,maa) tai  esim. tieto amerikasta \"Oneida, Idaho, USA\" (city, state, country)."
+
+#~ msgid "Edit details"
+#~ msgstr "Muokkaa tiedot"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Muokkaa GEDCOM raakadataa"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Muokkaa jaettua lisätietoa"
+
+#~ msgid "Email address:"
+#~ msgstr "Sähköpostiosoite:"
+
+#~ msgid "End year"
+#~ msgstr "Lopetusvuosi"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "Muutosten aikavälin loppu"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Anna perheen ID"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Syötä henkilö ID"
+
+#~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
+#~ msgstr "Anna otsikko kohteelle jota muokkat. Jos kyseessä on multimediakohde, anna kuvaava otsikko, jolla käyttäjä voi sen tunnistaa."
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Lisää henkilö, perhe tai lähde-ID"
+
+#~ msgid "Enter associate GEDCOM ID."
+#~ msgstr "Lisää läheisen GEDCOM ID-tunnus."
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Lisää tai etsi sen henkilön, perheen tai lähteen ID-tunnus, johon tämä media liitetään."
+
+#~ msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Lisää telefaxnumero maa- ja suuntanumeroineen.<br><br>Jätä tämä kenttä tyhjäksi, mikäli et halua lisätä telefaxnumeroa. Esimerkiksi numero Saksassa voi olla +49 25859 56 76 89 ja Yhdysvalloissa tai Kanadassa +1 888 555-1212."
+
+#~ msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+#~ msgstr "Kirjoita URL osoite sisältäen alussa http://.<br><br>Esimerkiksi <b>http://www.webtrees.net/</b> Jätä tyhjäksi jos et halua URL osoitetta."
+
+#~ msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
+#~ msgstr "Lisää osoite kenttään samalla tavoin kuin kirjoittaisit sen kirjekuoreen.<br><br>Jätä kenttä tyhjäksi, mikäli et halua lisätä osoitetta."
+
+#~ msgid "Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address."
+#~ msgstr "Lisää sähköpostiosoite.<br><br>Esimerkki sähköpostiosoitteesta on <b>nimi@hotmail.com</b>. Jätä tämä kenttä tyhjäksi, mikäli et halua lisätä sähköpostiosoitetta."
+
+#~ msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+#~ msgstr "Lisää raja-arvo tähän.<br><br>Mikäli rajoittavana tekijänä on ikä, kaikki tätä päivien lukumäärää vanhemmat artikkelit jäävät piiloon. Mikäli rajoittavan tekijänä on artikkelien lukumäärä, vain lukumäärän mukaiset uusimmat artikkelit näkyvät.<br><br>Mikäli arvoiksi valitaan nollat, näytetään kaikki artikkelit."
+
+#~ msgid "Enter the name of the cemetery or other resting place where individual is buried."
+#~ msgstr "Lisää hautausmaan tai muun viimeisen leposijan nimi, jossa tämä henkilö lepää."
+
+#~ msgid "Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Lisää puhelinnumero maa- ja suuntanumeroineen.<br><br>Jätä tämä kenttä tyhjäksi, mikäli et halua lisätä puhelinnumeroa. Esimerkiksi numero Saksassa voi olla +49 25859 56 76 89 ja Yhdysvalloissa tai Kanadassa +1 888 555-1212."
+
+#~ msgid "Entry text:"
+#~ msgstr "Teksti:"
+
+#~ msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+#~ msgstr "Jokaisella henkilöllä tietokannassa on oma yksilöllinen ID-tunnuksensa. Mikäli tiedät oman ID-tunnuksesi lisää se tähän. Mikäli et tiedä sitä tai et voinut löytää sitä yksityisyysasetusten vuoksi, toimita kommenttikenttään riittävästi tietoa itsestäsi jotta ylläpitäjä tunnistaa sinut voidakseen asettaa ID-tunnuksen."
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "Yksityisyyssäännöt kattamaan myös kuolleet"
+
+#~ msgid "External objects"
+#~ msgstr "Ulkoiset kohteet"
+
+#~ msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+#~ msgstr "UKK (Usein kysytyt kysymykset) ovat lista kysymyksiä vastauksineen, jossa voit kuvata palvelimen säännöt, käytännöt ja menettelyt. Kysymys koskee yleensä aiheita yksityisyys, tekijänoikeus, käyttäjätilit, sopimaton sisältö, tarpeet lähdetietoihin jne."
+
+#~ msgid "Facts for family records"
+#~ msgstr "Perhetietueen tiedot"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "Henkilötietueen tiedot"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "Tietovaraston tiedot"
+
+#~ msgid "Facts for source records"
+#~ msgstr "Tietolähteen tiedot"
+
+#~ msgid "Family group information"
+#~ msgstr "Perheen ryhmätieto"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Sukupuun leikekori"
+
+#~ msgid "Family with husband"
+#~ msgstr "Perhe miehineen"
+
+#~ msgid "Family with wife"
+#~ msgstr "Perhe vaimoineen"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Isän syntymäpaikka (Chapman muodossa)"
+
+#~ msgid "Father’s age"
+#~ msgstr "Isän ikä"
+
+#~ msgid "Font"
+#~ msgstr "Kirjasinlaji"
+
+#~ msgid "For LDS ordinances, this field records the temple where it was performed."
+#~ msgstr "Myöhempien Aikojen Pyhien Jeesuksen Kristuksen Kirkon jäseniä koskeva uskonnollinen toimitus. Tässä kentässä on temppeli, jossa se suoritettiin."
+
+#~ msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
+#~ msgstr "Esimerkki: kun asetat hyppyjen määräksi 2, niin henkilö näkee lapsenlapsi (lapsi->lapsi), täti  (äiti->sisko), miniä (aviopuoliso->lapsi). Kaukaisemmat eivät näy esim: serkku (isä->veli->lapsi)"
+
+#~ msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "<b>webtrees</b> käyttää UTF-8 merkkikoodistoa  parhaan mahdollisen esittämiseen internetissa. Jotkut ohjelmat, esim. Family Tree Maker ei tue aineiston käsittelyä UTF-8 muodossa. Valitsemalla tämän, muunnetaan aineisto muodosta <b>UTF-8</b> muotoon <b>ANSI (ISO-8859-1)</b>.<br><br>Mitä merkkikoodistoa tarvitset riippuu sinun sukututkimusohjelmasta. Kun et ole varma, tutki ohjelmasi manuaali..<br><br>Kun sinun pitää säilyttää erikoismerkit, pidä tiedosto UTF-8 muotoisena ja sovella jokin sopiva muuntotapa ohjelmistossasi. <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+
+#~ msgid "Foster child"
+#~ msgstr "Ottolapsi"
+
+#~ msgid "Foster father"
+#~ msgstr "Ottoisä"
+
+#~ msgid "Foster mother"
+#~ msgstr "Ottoäiti"
+
+#~ msgid "From email address"
+#~ msgstr "Sähköpostin lähetysosoite (From)"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "GEDCOM tilastot"
+
+#~ msgid "Gedcom"
+#~ msgstr "Gedcom"
+
+#~ msgid "Generation "
+#~ msgstr "Sukupolvi "
+
+#~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#~ msgstr "Sallii käyttäjien valita teeman vaihtoehtolistasta.<br><br>Tämä valinta toimii vain silloin kun <b>Salli käyttäjien valita itselleen oma teema</b> on myös voimassa. Muutoin vaihtoehtolista ei näy käyttäjälle."
+
+#~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+#~ msgstr "Vierailija voi pyytää itselleen käyttäjätilin tälle sivustolle.<br><br>Vierailija saa sähköpostiviestin, jossa on tarvittava avain käyttäjätilipyytäjän tunnistamiseen. Vierailijan kuitattua lähetetty viesti, käyttäen avainta, ylläpitäjän on hyväksyttävä uusi käyttäjätili ennen kuin se astuu voimaan."
+
+#~ msgid "He "
+#~ msgstr "Hän "
+
+#~ msgid "He died"
+#~ msgstr "Hän kuoli"
+
+#~ msgid "He married"
+#~ msgstr "Hänen vaimonsa oli"
+
+#~ msgid "He resided at"
+#~ msgstr "Hän asui"
+
+#~ msgid "He was born"
+#~ msgstr "Hän syntyi"
+
+#~ msgid "He was buried"
+#~ msgstr "Hänet on haudattu"
+
+#~ msgid "He was christened"
+#~ msgstr "Hänet kastettiin"
+
+#~ msgid "He was cremated"
+#~ msgstr "Hänet polttohaudattiin"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Hei %s…"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Hei %s…<br>Kiitos rekisteröinnistäsi"
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Hei hallinnoitsija…"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Hänen ammattinsa oli"
+
+#~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
+#~ msgstr "Tässä voit lisätä tietoja henkilölle tai henkilöille.<br><br>Valitse ensin tietolaji pudotusvalikosta ja klikkaa sitten \"Lisää\" painiketta.<br>Pudotusvalikossa ovat kaikki GEDCOM-tiedostoon lisättävissä olevat tietolajit."
+
+#~ msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+#~ msgstr "Tässä voit lisätä tietueelle lähdeviitteen.<br><br>Klikkaamalla linkkiä, avautuu ikkuna, ja voit valita lähteen listasta (Etsi ID) tai luoda uusi lähde ja sitten lisätä lainaus.<br><br>Lähteiden lisääminen on tärkeä osa sukututkimusta, koska muut tutkijat voivat tarkistaa mistä olet hankkinut tietosi."
+
+#~ msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
+#~ msgstr "Tässä voit valita kahdesta tavasta näyttää paikannimet hierarkiassa. Mikäli valitset Kyllä, näytetään lyhyt nimi tai käytössä olevan tason nimi. Mikäli valitset Ei, näytetään koko nimi.<br><b>Esimerkkejä:</b> Chicago, Illinois, USA<br><b>Lyhyt nimi:</b> Chicago<br><b>Koko nimi:</b> Illinois, USA<br><b>Lyhyt nimi:</b> Illinois"
+
+#~ msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+#~ msgstr "Tässä valitset sisäänkirjautumissivun tekstin. Sinun pitää valita valmiista teksteistä sopivin.<br><br>Voit myös valita ja kirjoittaa oman tervehdystekstisi. <b>Mukautetun tervehdystekstin</b> avusteesta saat lisäohjeita.<br><br>Valmiit tekstit ovat:<ul><li><b>Teksti joka kertoo, että kaikki voivat pyytää itselleen tunnuksen:</b><div class=\"list_value_wrap\"><center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Jokaisella käyttäjällä, jolla on käyttäjätili, on pääsy tänne.<br><br>Mikäli sinulla on käyttäjätili, voit kirjautua tällä sivulla. Mikäli sinulla ei ole käyttäjätiliä, voit pyytää tilin klikkaamalla alla olevaa linkkiä.<br><br>Todennettuaan pyyntösi, ylläpitäjä aktivoi käyttäjätilisi. Saat sähköpostiviestin sen jälkeen kun pyyntösi on hyväksytty.</div><br></li><li><b>Valmis teksti, jossa kerrotaan, että ylläpitäjä päättää avataanko tunnus:</b><div class=\"list_value_wrap\"><center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun.</b></center><br>Pääsy näille sivuille on sallittu vain niille käyttäjille, joille on annettu <b>käyttöoikeus</b>.<br><br>Mikäli sinulla on käyttäjätili, voit kirjautua järjestelmään tällä sivulla. Mikäli sinulla ei ole käyttäjätiliä, voit pyytää tilin klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Todennettuaan antamasi tiedot, ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Tulet saamaan sähköpostiviestin kun pyyntösi on hyväksytty.</div><br></li><li><b>Valmis teksti, jossa kerrotaan, että ainoastaan sukujäsenille avataan tunnus:</b><div class=\"list_value_wrap\"><center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun.</b></center><br>Pääsy näille sivuille on sallittu vain niille käyttäjille, joille on annettu <b>käyttöoikeus</b>.<br><br>Mikäli sinulla on käyttäjätili, voit kirjautua järjestelmään tällä sivulla. Mikäli sinulla ei ole käyttäjätiliä, voit pyytää tilin klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Todennettuaan antamasi tiedot, ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Tulet saamaan sähköpostiviestin kun pyyntösi on hyväksytty.</div></li></ul>"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "Piilota &amp; näytä"
+
+#~ msgid "His occupation was"
+#~ msgstr "Hänen ammattinsa oli"
+
+#~ msgid "Hit count:"
+#~ msgstr "Luettu laskuri"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Miehen ikä"
+
+#~ msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+#~ msgstr "Jos henkilö tunnettiin lempinimellä, joka ei kuulu hänen viralliseen nimeen, se suljetaan lainausmerkkeihin. Esimerkiksi, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Mediapalomuurin ollessa käytössä, pitääkö lisäksi tallentaa täyskokoiset vesileimatut (watermark) kuvat palvelimelle, kun tallennetaan samat kuvat ilman vesileimaa?<br><br>Valitsemalla <b>Kyllä</b>, täyskokoiset vesileimatut esitetään nopeasti säästäen suorituskykyä, kuitenkin lisäten tallennustilavaatimuksia."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Mediapalomuurin ollessa käytössä, pitääkö lisäksi tallentaa vesileimatut (watermark) pienoiskuvat palvelimelle, kun tallennetaan samat pienoiskuvat ilman vesileimaa?<br><br>Valitsemalla <b>Kyllä</b>, medialuetteloiden vesileimatut pienoiskuvat esitetään nopeasti säästäen suorituskykyä, kuitenkin lisäten tallennustilavaatimuksia."
+
+#~ msgid "If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don't watermark the thumbnails."
+#~ msgstr "Jos Media Firewall on päällä, tuleeko pienoiskuviin lisätä vesileima? Medialistasi latautuvat nopeammin jos et vesileimaa pienoiskuvia."
+
+#~ msgid "If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here."
+#~ msgstr "Kun Mediapalomuuri on käytössä, käyttäjät näkevät vesileimoja kun käyttöoikeustaso ei ole määritelty tähän kohtaan."
+
+#~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+#~ msgstr "Kun valinta <b>Salli vieraiden tehdä käyttäjätilihakemus</b> on käytössä, tällä asetuksella päätetään pitääkö ylläpitäjän myös hyväksyä uusi hakemus.<br><br>Valitsemalla <b>Kyllä</b>, pitää uuden käyttäjän ensin vahvistaa asia (saa erillisen sähköpostin siihen tarkoitukseen) ja sitten ylläpitäjä hyväksyy. Vasta sen jälkeen voi käyttäjä kirjautua sisään. Valitsemalla <b>Ei</b>,  ja käyttäjä on vahvistanut tilihakemuksensä, <b>Ylläpitäjä on hyväksynyt käyttäjän</b> asetus kuitataan automaattisesti ylläpitäjän puolesta ja käyttäjä pystyy heti kirjautumaan sisään."
+
+#~ msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+#~ msgstr "Jos tällä henkilöllä on muita tapahtumia kuin kuolema, hautajaiset tai polttohautaus, ja ne ovat ajallisesti tapahtuneet näin monen vuoden sisällä, niin henkilön tulkitaan olevan \"elossa\". Lapsen syntymäaika tulkintaan merkiksi \"elossa\" olemisesta."
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Jos sinä et pyytänyt tätä tietoa, voit pyyhkiä tämän ilmoituksen."
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "Jos olet epävarma, kokeile annetut oletusarvot. Voit muuttaa ne myöhemmin."
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "Voit estää tämä omaisuus, kun et tarvitse postin lähettämistä, esimerkiksi silloin kun on vain yksi käyttäjä webtrees'issa, tai tietokone ei ole kytkettynä verkkoon."
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "Jos sinulla on iso määrä ei-aktiivisia paikkoja, voi olla hidasta luoda lista."
+
+#~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
+#~ msgstr "Jos sinulla on lisätietoa tähän tietueeseen, lisää se tässä.<br><br>Klikka linkkiä ja uusi ikkuna avautuu, ja voit kirjoittaa lisätietosi. Kun olet valmis, klikkaa painiketta ikkunnan alapuolella ja sulje ikkuna."
+
+#~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
+#~ msgstr "Jos käytät useita GEDCOM aineistoja samalla sivustolla, asetuksella <b>Kyllä</b> salli käyttäjien ja vierailijoiden siirtyä GEDCOMista toiseen. Asetuksella <b>Ei</b> estää siirtymisen sekä vierailijoilta kuin myös rekisteröityneiltä käyttäjiltä."
+
+#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
+#~ msgstr "Jos palvelimen käytäntö ja asetuksissa on tällainen sallittu, niin voit <b>webtrees</b> ylläpitosivulla kasvattaa CPU-suoritusaika tai muisti. Muutoin pitää ottaa yhteys palvelimen ylläpitäjään."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
+#~ msgstr "Monissa kulttuureissa on tapana esittää nimet perinteellisin kirjaimin ja myös länsimaisittain niin kuin ne lausutaan tai kirjoitetaan länsimaisilla (Latin) kirjaimilla esim. englanniksi.<br><br>Jos käytät muuta merkistötapaa esim. Hepreaa, Kreikkaa, Venäjää, Kiinaa tai Arabiaa nimien vakiokentissä, niin voit kirjoittaa tähän kenttään saman nimen käyttäen länsimaisia (Latin) kirjaimia. Molemmat nimen kirjoitusmuodot näytetään luetteloissa ja kaavioissa.<br><br>Vaikka tämän kentän otsikko on \"Länsimaisilla aakkosilla\", tähän kenttään voi vapaasti täyttää nimet millä tahansa aakkosilla, esim. vaikka japanilaisin kirjaimin."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
+#~ msgstr "Monissa kulttuureissa on tapana esittää nimet perinteellisin kirjaimin ja myös länsimaisittain niin kuin ne lausutaan tai kirjoitetaan länsimaisilla (Latin) kirjaimilla esim. englanniksi.<br><br>Jos käytät länsimaalaisia (Latin) kirjaimia nimien vakiokentissä, voit kirjoittaa tähän kenttään saman nimen käyttäen Heprealaisia tai Kreikkalaisia, Venäläisiä, Kiinalaisia tai Arabialaisia kirjaimia. Molemmat nimen kirjoitusmuodot näytetään luetteloissa ja kaavioissa.<br><br>Vaikka tämän kentän otsikko on \"Heprea\", tähän kenttään voi vapaasti käyttää mitä tahansa aakkosia."
+
+#~ msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
+#~ msgstr "Joissakin maissa yksityisyyssuojaa sovelletaan myös äskettäin kuolleiden henkilöiden tietoihin. Tällä valinnalla voit laajentaa yksityisyyssäännöt koskemaan niitä, joiden syntymästä tai kuolemasta on vasta kulunut tietty määrä vuosia. Tämä omaisuus ei ole käytössä kun jätät tämä kenttä tyhjäksi."
+
+#~ msgid "In this month…"
+#~ msgstr "Tässä kuussa, historiassa…"
+
+#~ msgid "In this year…"
+#~ msgstr "Historialliset tapahtumat vuonna…"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Lisää henkilön lähisukulaiset?"
+
+#~ msgid "Individual 1"
+#~ msgstr "Henkilö 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Henkilö 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Iäkkäin edesmennyt"
+
+#~ msgid "LDS temple"
+#~ msgstr "Mormonitemppeli"
+
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
+#~ msgid "Link ID"
+#~ msgstr "Linkin ID"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Liitä tämä henkilö lapseksi olemassa olevaan perheeseen."
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Liitä tämä henkilö mieheksi olemassa olevaan perheeseen."
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Liitä tämä henkilö vaimoksi olemassa olevaan perheeseen."
+
+#~ msgid "Living individuals"
+#~ msgstr "Elossa olevat"
+
+#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
+#~ msgstr "Lataa ja ota käyttöön tallennetut sukupuut, käyttäen \"tuonti\" kullekin sukupuulle erikseen."
+
+#~ msgid "Loading…"
+#~ msgstr "Ladataan…"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Sijaintia ei poistettu: tämä sijainti sisältää alikohteita"
+
+#~ msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero."
+#~ msgstr "Pitkissä luetteloissa, joissa henkilöilla on sama sukunimi voi esitystapa olla puurakenne eli alihakemistorakenne; sukunimi kerran ja seuraavalla tasolla nimet etunimen mukaisessa järjestyksessä.<br><br>Tällä valinnalla päätetään käytetäänkö omaisuutta vai ei. Kun haluat kokonaan poista tämän ominaisuuden, anna arvo nolla."
+
+#~ msgid "Main section blocks"
+#~ msgstr "Pääosan lohkot"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Avioitumisaikavälin loppu"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Avioitumisaikavälin alku"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Avioitumispaikka sisältää"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Avioliittoaikomus"
+
+#~ msgid "Married name"
+#~ msgstr "Avionimi"
+
+#~ msgid "Married surname"
+#~ msgstr "Aviosukunimi"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Yhdistä siirtämällä tästä ID:stä:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Yhdistä tähän ID:een:"
+
+#~ msgid "Min. no. of occurrences to be a “common surname”"
+#~ msgstr "Yleinen sukunimi, kun sukunimi esiintyy vähintään (lukumäärä)"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Suosikkikohteet"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Äidin syntymäpaikka (Chapman muoto)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Äidin ikä"
+
+#~ msgid "Move left"
+#~ msgstr "Siirrä vasemmalle"
+
+#~ msgid "Move right"
+#~ msgstr "Siirrä oikealle"
+
+#~ msgid "Name List"
+#~ msgstr "Nimiluettelo"
+
+#~ msgid "No events for living individuals exist for the next %s day."
+#~ msgid_plural "No events for living people exist for the next %s days."
+#~ msgstr[0] "Ei tapahtumia elossa-olevien henkilöiden osalta seuraavan %s päivän aikana."
+#~ msgstr[1] "Ei tapahtumia elossa-olevien henkilöiden osalta seuraavien %s päivien aikana."
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Tänään ei ole elävien henkilöiden tapahtumia."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Elossa olevien henkilöiden tapahtumia ei ole huomenna."
+
+#~ msgid "No records to display"
+#~ msgstr "Ei tietueita näytettävänä"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Tätä ID-tunnusta ei ole tässä GEDCOM-tiedostossa."
+
+#~ msgid "No temple - living ordinance"
+#~ msgstr "Ei temppeliä - Elävän uskonnollinen toimitus"
+
+#~ msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
+#~ msgstr "Yleensä valvojan on hyväksyttävä sukupuuhun tehdyt muutokset. Tällä valinnalla voit sallia käyttäjälle oikeuden muutosten tekoon ilman että valvojan tarvitsee hyväksyä niitä."
+
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
+#~ msgstr[0] "Huom.: “elossa” tarkoittaa (jos kuolema- tai hautausaika ei tiedossa) laskien %d vuotta syntymän tai arvioidun syntymän ajankohdasta."
+#~ msgstr[1] "Huom.: “elossa” tarkoittaa (jos kuolema- tai hautausaika ei tiedossa) laskien %d vuotta syntymän tai arvioidun syntymän ajankohdasta."
+
+#~ msgid "Nuku’Alofa, Tonga"
+#~ msgstr "Nuku'Alofa, Tonga"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "Kuukausien määrä edellisestä kirjautumisesta kun tunnus on ollut joutilaana: "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Vanhimmat elossa olevat"
+
+#~ msgid "On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality."
+#~ msgstr "Tässä kaaviossa voit esittää vaakatason aikajanalla yhden tai useeamman henkilön. Kaavio antaa sinun nähdä henkilöiden elämän tapahtumat verrattuna toisiin.<br><br>Voit lisätä kaavioon henkilöt yksitellen tai perheittäin syöttämällä ID-tunnukset. Edellinen käytetty lista jää muistiin, kun lisäät uusia kaavioon. Kaaviosta voit poistaa listan valitsemalla <b>Tyhjennä kaavio</b>.<br><br>Henkilöiden lisääminen onnistuu myös ajanjakso- tai paikallisuushaun avulla."
+
+#~ msgid "On this day…"
+#~ msgstr "Tänä päivänä tapahtui…"
+
+#~ msgid "Online editing"
+#~ msgstr "Online tietojen muokkaaminen"
+
+#~ msgid "Orientation"
+#~ msgstr "Sivun asento"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Toinen kansio… ole hyvä ja kirjoita"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "Lähtevän postin (SMTP) palvelimen nimi"
+
+#~ msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP ominaisuus \"%1$s\" ei ole käytössä. Ilman sitä, seuraavat ominaisuudet eivät onnistu: %2$s. Pyydä palvelimesi ylläpitäjää ottaamaan sen käyttöön."
+
+#~ msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP ominaisuus \"%s\" ei ole käytössä. webtreesiä ei voida asentaa ennen kuin ominaisuus on käytössä. Pyydä palvelimen ylläpitäjää ottamaan se käyttöön."
+
+#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP asetus \"%1$s\" ei ole käytössä. Ilman sitä, seuraavat ominaisuudet eivät onnistu: %2$s. Pyydä palvelimesi ylläpitäjää ottaamaan asetuksen käyttöön."
+
+#~ msgid "Page"
+#~ msgstr "Sivu"
+
+#~ msgid "Page size"
+#~ msgstr "Sivun koko"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Vanhemmat ja sisarukset"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Vanhempien ikä"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Esivanhemmat-kaavio"
+
+#~ msgid "Place of LDS baptism"
+#~ msgstr "LDS kasteen paikkakunta"
+
+#~ msgid "Place of LDS child sealing"
+#~ msgstr "Mormoni, lapsen sinetöinnin paikka"
+
+#~ msgid "Place of LDS endowment"
+#~ msgstr "LDS endaumentin paikkakunta"
+
+#~ msgid "Place of LDS spouse sealing"
+#~ msgstr "Mormoni, puolison sinetöinnin paikka"
+
+#~ msgid "Place of adoption"
+#~ msgstr "Adoptointipaikkakunta"
+
+#~ msgid "Place of blessing"
+#~ msgstr "Siunauksen paikkakunta"
+
+#~ msgid "Place of cremation"
+#~ msgstr "Polttohautauksen paikkakunta"
+
+#~ msgid "Place of emigration"
+#~ msgstr "Maastamuuton paikkakunta"
+
+#~ msgid "Place of event"
+#~ msgstr "Tapahtumapaikkakunta"
+
+#~ msgid "Place of immigration"
+#~ msgstr "Maahanmuuton paikka"
+
+#~ msgid "Place of naturalization"
+#~ msgstr "Kansalaistamispaikka"
+
+#~ msgid "Place of ordination"
+#~ msgstr "Papiksivihkimisen paikka"
+
+#~ msgid "Place of residence"
+#~ msgstr "Asuinpaikan paikkakunta"
+
+#~ msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+#~ msgstr "Paikat tulisi lisätä sukututkimuksen standardien mukaisesti. Paikkatietoja tallennetaan aloittaen tarkimmasta tiedosta (esim. talonnimi), edeten karkeammalle tasolle (kylä/pitäjä, lääni, maa) ja erottaen näitä paikkatietoja toisistaan pilkulla. Suomessa talonnimien ja sukunimien yhteys on kiinteä ja muihinkin paikannimiin sisältyy runsaasti henkilönnimiä. Kirkonkirjat ovat usein paikkatietojen lähteinä ja kannattaa kirjata paikkatiedot samalla tarkkuudella, vaikka ajansaatossa kunnat ja pitäjät ovat yhdistyneet ja rajat muuttuneet. Muissa maissa tilanne voi olla toisenlainen.<br><br>Esimerkiksi Salt Lake City lisätään muodossa \"Salt Lake City, Salt Lake, Utah, USA\". Tarkastellaanpa kutakin osaa erikseen. Ensimmäinen osa, \"Salt Lake City\", on kaupunki, jossa tapahtuma sattui. Joissakin maissa kaupunkien sisällä saattaa olla alueita, jotka on hyvä huomata. Nämä tulevat ennen kaupunkia. Seuraava osa, \"Salt Lake\" on piirikunta. \"Utah\" on osavaltio ja \"USA\" on valtio. On tärkeätä huomata kukin paikka, koska sukututkimustietoa pidetään kunkin tason/paikan virastoissa.<br><br>Mikäli paikan taso on tuntematon, pilkkujen väliin jätetään välilyönti. Esimerkiksi jos ei tiedetä Salt Lake Cityn piirikuntaa, tieto syötettäisiin muodossa \"Salt Lake City, , Utah, USA\".<br><br>Voit käyttää linkkiä \"Etsi paikka\" löytääksesi tällä sivustolla jo käytössä olevia paikkoja."
+
+#~ msgid "Port"
+#~ msgstr "Portti"
+
+#~ msgid "President’s Office"
+#~ msgstr "Presidentin toimisto (Mormoni)"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Tulosta perustapahtumat, jotka ovat tyhjiä?"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "rabi` al-awwal"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "rabi` al-awwal"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "rabi` al-awwal"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "rabi` al-awwal"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "rabi` al-sani"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "rabi` al-sani"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "rabi` al-sani"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "rabi` al-sani"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Viime vuosina (< 100 vuotta)"
+
+#~ msgid "Registry officer"
+#~ msgstr "Rekisteriviranomainen"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "Rekisteriviranomainen"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "Rekisteriviranomainen"
+
+#~ msgid "Religious institution"
+#~ msgstr "Uskonnollinen yhteisö"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Poista tämä sijainti?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Oikeanpuoleisen osan lohkot"
+
+#~ msgid "SMTP port"
+#~ msgstr "SMTP portti"
+
+#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
+#~ msgstr "Tallenna kaikki sukupuut, käyttäen \"siirrä\" kullekin sukupuulle erikseen."
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Etsi ja/tai korvaa tietoja GEDCOM-tiedostossasi käyttäen yksinkertaisia hakuja tai edistynyttä kuviotäsmäystä."
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Etsi henkilöitä yhteyksien luontilistaan."
+
+#~ msgid "Security"
+#~ msgstr "Salausmuoto"
+
+#~ msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
+#~ msgstr "Valitse suhteen nimi luettelosta. <b>Kummisetä</b> valinta merkitsee, että <i>läheinen on kyseisen henkilön kummisetä</i>."
+
+#~ msgid "Select events"
+#~ msgstr "Valitse tapahtumat"
+
+#~ msgid "Send message"
+#~ msgstr "Lähetä viesti"
+
+#~ msgid "Sender email address"
+#~ msgstr "Lähettäjän sähköpostiosoite (Sender)"
+
+#~ msgid "Server"
+#~ msgstr "Palvelin"
+
+#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
+#~ msgstr "Kuinka monta sukupolvia näytetään jälkeläiset- ja esivanhemmat-kaavioissa."
+
+#~ msgid "Set the maximum number of generations to display on descendancy charts."
+#~ msgstr "Esitettävien sukupolvien enimmäismäärä jälkeläiset-kaavioissa."
+
+#~ msgid "Set the maximum number of generations to display on pedigree charts."
+#~ msgstr "Esitettävien sukupolvien enimmäismäärä esivanhemmat-kaavioissa."
+
+#~ msgid "Set the privacy access level for all dead individuals."
+#~ msgstr "Määrittele ketkä saavat nähdä kuolleiden tiedot."
+
+#~ msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
+#~ msgstr "Valitsemalla <b>Kyllä</b> näytetään (mormoni) LDS uskonnollisen toimituksen statuskoodit kaavioissa.<ul><li><b>B</b> - Kaste</li><li><b>E</b> - Endautu</li><li><b>S</b> - Sinetöity puolisoon</li><li><b>P</b> - Sinetöity vanhempiin</li></ul>Henkilö, joka on läpikäynyt kaikki nämä uskonnolliset toimitukset, saa nimensä perään <b>BESP</b>. Puuttuvat toimitukset ilmoitetaan merkinnällä <b>_</b> vastaavan kirjaimen kohdalla. Esimerkiksi <b>BE__</b> tarkoittaa että <b>S</b> ja <b>P</b> toimitukset puuttuvat."
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Jaettu lisätieto sisältää:"
+
+#~ msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
+#~ msgstr "Jaetut lisätiedot ovat vapaamuotoista tekstiä ja tulevat näkyviin sivulla tiedon yksityiskohdissa.<br><br>Kunkin jaetun lisätiedon voi liittää useampaan kuin yhteen henkilöön, perheeseen, lähteeseen, tai tapahtumaan."
+
+#~ msgid "Shared notes found"
+#~ msgstr "Löytyi jaettuja lisätietoja"
+
+#~ msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
+#~ msgstr "Jaetut lisätiedot, samoin kuin tavalliset lisätiedot, ovat vapaamuotoisia tekstejä. Toisin kuin lisätiedot, jaettu lisätieto voidaan liittää useampaan henkilöön, perheeseen, lähdetietoon tai tapahtumaan.<br><br>Klikkaamalla sopivaa ikonia, luot linkin olemassa olevaan jaettuun lisätietoon tai voit luoda uuden jaetun lisätiedon ja samalla linkata sen. Jos linkki jaettuun lisätietoon on jo olemassa, voit samalla muokata sen sisällön.<br><ul><li><b>Linkkaa olemassa olevaan jaettuun lisätietoon</b><div style=\"padding-left:20px;\">Jos tiedät jaetun lisätiedon ID-tunnuksen, voit kirjoittaa sen suoraan kenttään.<br><br>Klikkaamalla <b>Etsi jaettu lisätieto</b>-ikonia, voit valita listasta halutun lisätiedon ja sen ID-tunnus lisääntyy automaattisesti kenttään.<br><br>Sinun on valittava sen jälkeen <b>Lisää</b>-nappi jotta alkuperäinen tietue päivittyisi.</div><br></li><li><b>Luo uusi jaettu lisätieto</b><div style=\"padding-left:20px;\">Kun valitset <b>Luo uusi jaettu lisätieto</b>, avautuu uusi ikkuna, johon voit kirjoittaa tekstisi ja tarvittaessa URL-osoitteita.<br><br>Kun klikkaat <b>Tallenna</b>-nappia, näet uuden viestin jossa on uuden jaetun lisätiedon ID-tunnus. Sinun tulee klikata tätä viestiä jotta muokkausikkuna sulkeutuisi ja uusi ID-tunnus kopioituisi ID-kenttään. Jos ainoastaan suljet ikkunan, uusi ID-tunnus ei kopioidu automaattisesti.<br><br>Sinun on klikattava <b>Lisää</b>-nappia, jotta alkuperäinen tietue päivittyisi.</div><br></li><li><b>Muokkaa olemassa olevaa jaettua lisätietoa</b><div style=\"padding-left:20px;\">Kun klikkaat <b>Muokkaa jaettua lisätietoa</b>-ikonia, avautuu uusi ikkuna, jossa lisätiedon tekstin voi muuttaa, ja voit vaikka lisätä URL-osoitteita.<br><br>Kun klikkaat <b>Tallenna</b>-nappia, jaetun lisätiedon teksti muokkautuu. Voit sulkea ikkunan ja klikata <b>Tallenna</b>-nappia uudelleen.<br><br>Jaetun lisätiedon muutokset näkyvät heti kaikissa paikoissa mihin jaettu lisätieto on liitetty. Uudet linkit jotka teet muokkauksen jälkeen tulevat myös käyttämään muokattua tekstiä.</div></li></ul>"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "sha`ban"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "sha`ban"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "sha`ban"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "sha`ban"
+
+#~ msgid "She "
+#~ msgstr "Hän "
+
+#~ msgid "She died"
+#~ msgstr "Hän kuoli"
+
+#~ msgid "She married"
+#~ msgstr "Hänen miehensä oli"
+
+#~ msgid "She resided at"
+#~ msgstr "Hän asui"
+
+#~ msgid "She was born"
+#~ msgstr "Hän syntyi"
+
+#~ msgid "She was buried"
+#~ msgstr "Hänet on haudattu"
+
+#~ msgid "She was christened"
+#~ msgstr "Hänet kastettiin"
+
+#~ msgid "She was cremated"
+#~ msgstr "Hänet polttohaudattiin"
+
+#~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
+#~ msgstr "Pitäisikö käyttää GeoNames tietokantaa, joka tarjoaa ehdotuksia paikan nimeksi?<br><br>Valtsemalla <b>Kyllä</b>, GeoNames tietokannasta etsitään ehdotuksia. Valtsemalla <b>Ei</b> käytetään vain käytössä olevaa tietokantaa. Sitä mukaa kun kirjoitetaan, tarkentuvat ehdotukset. Tämä omaisuus voi hidastaa toimintaasi, erityisesti kun toimit hitaalla intenet yhdeydellä..<br><br>GeoNames maantieteellinen tietokannan käyttäminen on ilmaista. Siellä on yli 8 miljoonaa maantieteellisia paikannimiä."
+
+#~ msgid "Show acceptable use agreement on “Request new user account” page"
+#~ msgstr "Näytä käyttöehdot kun pyydetään uutta käyttäjätiliä"
+
+#~ msgid "Show age of parents next to child’s birthdate"
+#~ msgstr "Näytä vanhempien iät lapsen syntymäpäivän vieressä"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Näytä kaikki paikat listassa"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Näytä esipolvien lapset?"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "Näytä kuolleet ihmiset"
+
+#~ msgid "Show details"
+#~ msgstr "Näytä yksityiskohdat"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Näytä ensisijaiset kuvat henkilöalueilla"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Näytä ei-aktiiviset paikat"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Näytä henkilöt jotka syntyivät yli sata vuotta sitten."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Näytä henkilöt jotka syntyivät viimeisen sadan vuoden aikana."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Näytä hengissä olevat henkilöt ja sellaiset parit, joissa kummatkin ovat elossa."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Näytä kuolleet henkilöt ja sellaiset parit, joissa kummatkin ovat kuolleet."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Näytä yli sata vuotta sitten kuolleet henkilöt."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Näytä viimeisten sadan vuoden aikana kuolleet henkilöt."
+
+#~ msgid "Show notes?"
+#~ msgstr "Näytä lisätiedot?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Näytä ammatit?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Näytä vain elossa olevien henkilöiden tapahtumat?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Näytä vain tuntematonta sukupuolta olevat henkilöt."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Näytetäänkö ainoastaan henkilöt, tapahtumat vai kaikki?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Näytä vireillä olevat muutokset"
+
+#~ msgid "Show photos?"
+#~ msgstr "Näytä valokuvat?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Näytä paikat hierarkiana"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Näytä sukulaishenkilöt ja -perheet."
+
+#~ msgid "Show residences?"
+#~ msgstr "Näytä asuinpaikat?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Näytä tietolähteet?"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Näytä &laquo;lehti&raquo;parit tai henkilöt. Nämä ovat elossa olevia henkilöitä, joilla ei ole lapsia tietokannassa."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Näytä &laquo;juuri&raquo;parit tai henkilöt. Heitä voi myös kutsua &laquo;patriarkoiksi&raquo;. He ovat henkilöitä, joilla ei ole vanhempia tietokannassa."
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Näytetään rivit %1$s - %2$s ( %3$s )"
+
+#~ msgid "Sister"
+#~ msgstr "Sisar"
+
+#~ msgid "Social security number"
+#~ msgstr "Henkilötunnus"
+
+#~ msgid "Son"
+#~ msgstr "Poika"
+
+#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
+#~ msgstr "Lähdetietoviitteet voivat myös sisältää tietoa lähdetiedon luotettavuudesta (ensikäden, välikäden jne) sekä päiväyksen milloin lähdetieto on saatu. Näitä lisäkenttiä voidaan poistaa käytöstä kirjoitettaessa uusia lähdetietoviitteitä."
+
+#~ msgid "Sources to the events"
+#~ msgstr "Tapahtumien lähdetiedot"
+
+#~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
+#~ msgstr "Ilmoittaa pitääkö <b>webtrees</b> viestit tallentaa tietokantaan. Kun valitaan <b>Kyllä</b>, niin käyttäjä voi hakea viestejään kun on kirjautunut<b>webtrees</b>iin. Kun valitaan <b>Ei</b>, niin viestit ainoastaan lähetetään sähköpostina, ilman niiden tallentamista."
+
+#~ msgid "Spouse"
+#~ msgstr "Puoliso"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Aviopuolisot ja lapset"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Muutosten aikavälin alku"
+
+#~ msgid "Surname option"
+#~ msgstr "Sukunimioptio"
+
+#~ msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+#~ msgstr "Suosikki-alasvetovalikko näyttää suosikit, jotka olet valinnut Omalla sivulla. Se näyttää myös ylläpitäjän valitsemat suosikit. Klikkaamalla suosikkia pääset suoraan kyseisen henkilön Henkilökohtaiselle tietosivulle.<br><br>Lisää ohjeita suosikin lisäämiseksi löytyy Omalla sivullani."
+
+#~ msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+#~ msgstr "Median katseluohjelma voi näyttää linkin ja klikkaamalla siirtää kopion mediatiedostosta paikalliselle PC:lle.<br><br>Tietoturvallisuuden lisäämiseksi, voit piilottaa tämän linkin."
+
+#~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
+#~ msgstr "Tyyppi-kenttään syötetään kohteen lisätietoja. Useimmissa tapauksissa kenttä on täysin vapaamuotoinen, ja siihen voi kirjoittaa mitä haluaa."
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "Ylläpitäjä on saanut ilmoituksen. Heti kun hän on antanut sinulle oikeuden kirjautua, voit kirjautua käyttäjätunnuksella ja salasanalla."
+
+#~ msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+#~ msgstr "Leikekori mahdollistaa tietojen \"leikkeiden\" tallentamisen tästä sukupuusta leikekoriin ja liittämään ne yhdeksi GEDCOM-tiedostoksi omalle työasemallesi siirtämistä varten, jonka jälkeen voit omalla sukututkimusohjelmalla jatkaa käsittelyä.<br><ul><li>Kuinka leike tehdään?<br>Tämä on helppoa. Aina kun näet klikattavissa olevan nimen (henkilön, perheen tai paikan) voit mennä kyseiselle sivulle. Siellä näet vaihtoehdon \"Lisää leikekoriin\". Klikkaamalla linkkiä avautuu sivu, jossa on monta vaihtoehtoa tiedoston siirtämiseen.</li><li>Miten siirtää tiedosto koneellesi?<br>Kun sinulla on haluamasi tiedot leikekorissa klikkaa <b>\"Siirrä nyt työasemalle</b>\"-linkkiä. Seuraa sen jälkeen ohjeita ja linkkejä.</li></ul>"
+
+#~ msgid "The individual to be contacted about technical questions or errors encountered on your site."
+#~ msgstr "Yhteyshenkilö teknisissä asioissa tai kun on ongelmia sivuston käsittelyssä."
+
+#~ msgid "The individual to contact about the genealogical data on this site."
+#~ msgstr "Yhteyshenkilö sukututkimusaineistoon liittyvissä kysymyksissä."
+
+#~ msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+#~ msgstr "Syntymästä laskettavia vuosia voi asettaa Yksityisyysasetuksissä \"Oletetaan kuolleeksi, kun saavuttaa tämän iän\""
+
+#~ msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
+#~ msgstr "Palvelimelle siirrettävälle mediatiedostolle voi ja kannattaisi antaa eri nimi kuin mikä se on omassa tietokoneessasi. Usein sillä nimellä on selvä merkitys sinulle, muttei välttämättä merkitse mitään muille sivuston käyttäjille. Muista myös, että monet saattaisivat yrittää siirtää palvelimelle kuvan nimellä \"äiti.jpg\".<br><br>Tässä kentässä annat siirrettävälle tiedostolle uuden nimen. Sama nimi käytetään kun luodaan pienoiskuvaa, jota voit itse siirtää tai annat automattisesti luotavaksi. Ei tarvitse antaa tiedoston muodoa ilmaisevaa päätettä (jpg, gif, pdf, doc, etc.)<br><br>Kun haluat käyttää tiedoston alkuperäinen nimi tietokoneessasi, jätä tämä kenttä tyjäksi."
+
+#~ msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
+#~ msgstr "Organisaatio, instituutio, yhteisö, henkilö tai toimielin, jolla on toimivalta.<br><br>Esimerkiksi henkilön työnantaja, kirkko, joka voi suorittaa rituaaleja tai sakramentteja, tai organisaatio, joka voi luoda ja/tai arkistoida tapahtumia."
+
+#~ msgid "The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>."
+#~ msgstr "Mitä porttinumeroa käytetään SMTP palvelimessa postin vastaanottamisessa. Yleensä porttinumero on 25."
+
+#~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
+#~ msgstr "Etuliite on valinnainen, mutta suositellaan. Käytettäessä etuliitettä tietokannan taulukoissa, monet eri sovellukset voivat hyödyntää samaa tietokantaa. Oletuksena ehdotetaan etuliitteeksi \"wt_\" jonka voit kuitenkin muuttaa muuksi."
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "Normaalimuodossa on virhe.  Sitä ei voi käyttää."
+
+#~ msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
+#~ msgstr "Teeman voi valita kolmella tasolla: käyttäjä-, GEDCOM- tai sivustotaso. Käyttäjätaso sovelletaan ensiksi, sitten GEDCOM- ja viimeisenä sivustotasoiset asetukset. Käytössä oleva GEDCOM asetus muuttuu kun valitsee \"oletusteeman\" käyttäjätasolla, ja sivustoasetus kun valitsee \"oletusteeman\" GEDCOM tasolla."
+
+#~ msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
+#~ msgstr "Tämä GEDCOM (sukupuu) on viimeksi päivitetty #gedcomUpdated#. Sukupuussa on #totalSurnames# sukunimeä. Vanhin tapahtuma on #firstEventType#, #firstEventName# ajalta #firstEventYear#. Uusin tapahtuma on #lastEventType#, #lastEventName# ajalta #lastEventYear#.<br><br>Voit antaa huomautuksia tai paulautetta #contactWebmaster# kautta."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+
+#~ msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+#~ msgstr "Tämä lohko mahdollistaa esivanhemmat-, jälkeläiset- tai tiimalasi-kaavion esittämisen Omalla sivullani tai Etusivulla. Tilarajoituksista johtuen, kaaviot tulisi sijoittaa vain sivun vasemmalle puolelle.<br><br>Ylläpitäjä päättää esitettävän aloitushenkilön ja kaaviomallin, kun tämä lohko esiiintyy Etusivulla. Käyttäjä päättää näistä, kun tämä lohko esiintyy Omalla sivullani.<br><br>Kaaviot toimivat samalla tavalla riippumatta siitä, onko ne käynnistetty valikkoriviltä vai tästä. Valitsemalla henkilölaatikon saat enemmän tietoa henkilöstä."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Tässä lohkossa näytetään 10 useimmin katsottua tietuetta. Tämä vaatii luettu-laskurin aktivoimisen GEDCOM asetukset osassa."
+
+#~ msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
+#~ msgstr "Tämä valintaruutu ohjaa näkyvyyttäsi muille käyttäjille ollessasi verkossa. Se valvoo myös kykyäsi nähdä muita online-käyttäjiä, jotka on määritelty näkyviksi.<br><br>Kun tämä ruutu ei ole valittu, olet täysin näkymätön muille, etkä myös pysty näkemään muita verkossa olevia käyttäjiä. Kun tämä ruutu on valittu, on tilanne aivan päinvastoin. Sinä näyt muille, ja voit myös nähdä muut, jotka on määritelty näkyviksi."
+
+#~ msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+#~ msgstr "Tässä kentässä voit vaihtaa lähdetietuetta, johon tämä lähdeviittaus on yhdistetty. Tähän tulee lähteen ID-tunnus. Kentän viereen tulee nykyisen lähteen ID-tunnuksen otsikko. Käytä linkkiä \"Etsi ID\" hakeaksesi lähteen ID-tunnuksen. Poista koko viittaus tyhjentämällä ID-tunnus."
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Tällä kentällä määrätään missä järjestyksessä esitetään Usein kysyttyjen kysymysten aiheet.<br><br>Järjestysnumeroiden ei tarvitse olla peräkkäisiä. Kun numerointitapa ei ole jatkuva, voit hyödyntää aukot myöhemmin. Esimerkiksi, kun käytät numerointitapa 1, 6, 11, 16, voit myöhemmin käyttää käyttämättä jääneet numerot. Voit myös käyttää negatiivisia lukuja tai nollaa, kun haluat laittaa aiheen ylemmäksi luettelossa.<br><br>Kun useammalla aiheella on sama numero, vain yksi aihe esitetään."
+
+#~ msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
+#~ msgstr "Tässä kentässä voit muuttaa kalenterivuoden.<br><br><b>Erityisominaisuuksia</b> <b>Näytä vuosi</b><dl><dt><b>Enemmän kuin yksi vuosi</b></dt><dd>Voit hakea päivämääriä vuosijakson sisällä.<br><br>Vuosijaksossa päivämääräalue ulottuu ensimmäisen vuoden 1. tammikuusta viimeisen vuoden 31. joulukuuta saakka. Tässä muutama esimerkki vuosijaksoista:<br><br><b>1992-5</b>Kaikki tapahtumat vuodesta 1992 vuoteen 1995.<br><b>1972-89</b> Kaikki tapahtumat vuodesta 1972 vuoteen 1989.<br><b>1610-759</b> Kaikki tapahtumat vuodesta 1610 vuoteen 1759.<br><b>1880-1905</b> Kaikki tapahtumat vuodesta 1880 vuoteen 1905.<br><b>880-1105</b> Kaikki tapahtumat vuodesta 880 vuoteen 1105.<br><br>Nähdäksesi kaikki tapahtumat tietyllä vuosikymmenellä tai vuosisadalla, voit kirjoittaa <b>?</b> viimeisten numeromerkkien asemesta. Esimerkiksi <b>197?</b> kaikki tapahtumat vuosina 1970-1979 tai <b>16??</b> kaikki tapahtumat vuosina 1600-1699.<br><br>Valitsemalla vuosijakso kalenterinäkymä muuttuu vuosinäkymäksi.</dd></dl>"
+
+#~ msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+#~ msgstr "Tähän kenttään voi kirjoittaa henkilön ID-tunnuksen lisätäksesi hänet leikekoriin. Kun hänet on lisätty, sinulle annetaan mahdollisuus linkittää kyseisen henkilön sukulaisuussuhteet leikekoriisi<br><br>Mikäli et tiedä henkilön ID-tunnusta, voit suorittaa haun klikkaamalla henkilön kuvaketta lisää-painikkeen vieressä."
+
+#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
+#~ msgstr "Tämä on pilkkumerkein \",\" erotettu lista GEDCOM tietotunnisteita (tag) joita esitetään kun uusi henkilö lisätään. Esimerkiksi, jos BIRT (syntymä) on listassa, myös syntymäpäivämäärä ja -paikka voidaan täyttää."
+
+#~ msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
+#~ msgstr "Tämä on linkki tietoihisi sukupuussa. Jos tämä on väärä henkilö, ota yhteys ylläpitäjään."
+
+#~ msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+#~ msgstr "Luettelo GEDCOM tietoaihetunnisteista, joita käyttäjäsi voi käyttää perhetietojen kirjaamiseen. Luetteloon voi lisätä tai poistaa tietoaiheita, jopa itsetehtyjä. Tietoaiheet tässä luettelossa ei saa toistua  <I>Yksilölliset perhetiedot</i> luettelossa."
+
+#~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
+#~ msgstr "Tämä on SMTP palvelimen nimi. Esimerkiksi: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "SMTP palvelimen nimi. 'localhost' käytetään kun sähköpostipalvelu ja web palvelin on samassa tietokoneessa."
+
+#~ msgid "This is used in the \"From:\" header when sending mails."
+#~ msgstr "Käytetään sähköpostisanoman otsikkossa lähetysosoite \"From:\""
+
+#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
+#~ msgstr "Tämä käytetään sähköpostin otsikkossa lähettäjänosoite (Sender). Yleensä sama kuin lähetysosoite (From)."
+
+#~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br><br>Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br><br>When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
+#~ msgstr "Tämä valinta aiheuttaa sen että <b>webtrees</b> esittää kaikki henkilöt, joilla on läheinen suhde haun perusteella löydettyyn henkilöön tai perheeseen. Käänteisesti tämä ei toimi. Esimerkiksi:<br><br><b>Maija</b> on <b>Matin</b> kummitäti ja tämä tieto on kirjattu <b>Matin</b> henkilötietoihin läheinen-tunnisteella (ASSO-RELA tunnisteella kummitäti). <b>Maijan</b> henkilötiedoissa ei löydy vastaavaa tunnusta.<br><br>Kun tämä asetus on <b>Kyllä</b> ja hakutulos sisältää <b>Matti</b>-nimen, liitetään listataan myös <b>Maija</b>, sillä Matin tiedoissa löytyi kummitäti läheinen-tiedoissa (ASSO-kummitäti).<br><br>Jos etsit toisinpäin, eli hakukentän kautta etsit <b>Maijaa</b>, niin Matti ei näy listassa, koska Maijalla ei ole vastaavaa tietoa (ASSO tunnistetta, joka viittaisi kummipoikaan)."
+
+#~ msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
+#~ msgstr "Tällä ohjataan milloin tietojen Lisätieto- ja Lähdetietoreferenssit näytetään henkilösivun Lisätieto- ja Lähdetietovälilehdellä.<br><br>Tavallisesti Lisätieto- ja Lähdetietovälilehdellä näytetään vain taso 1 referenssit henkilötietueesta.<br><br><b>Kyllä</b>, näytetään myös erilaisten tietojen taso 2 referenssit henkilön tietokannan tietueesta."
+
+#~ msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
+#~ msgstr "Tällä valinnalla päätät näytetäänkö kaavioissa lasten syntymäpäivämäärän vieressä isän ja äidin senhetkinen ikä."
+
+#~ msgid "This option controls whether or not to show the Birth and Death details of an individual on charts."
+#~ msgstr "Tällä valinnalla päätät näytetäänkö henkilön Syntymä- ja Kuolematiedot kaavioissa."
+
+#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgstr "Tällä valinnalla päätät, näytetäänkö henkilön sukupuolesta ilmaiseva ikoni kaavioissa.<br><br>Koska sukupuoli ilmaistaan myös kehyksen sisällä eri taustavärillä, tällä valinnalla et voi piilottaa sukupuolta. Tällä valinnalla voit vain välttää saman asian esittämisen kehyksessä."
+
+#~ msgid "This option enables online editing features for this database so that users with Edit privileges may update data online."
+#~ msgstr "Tällä valinnalla sallit tietokannan päivityksen niille käyttäjille, joilla on tiedon muokkaamiseen tarvittavat oikeudet."
+
+#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
+#~ msgstr "Tällä valinnalla vaikutat siihen, näytetäänkö Esivanhemmat-kaavio vaakasivuna vai pystysivuna."
+
+#~ msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+#~ msgstr "Tällä vallinnalla <b>webtrees</b> lähettää sisäisen viestin ja lisäksi sähköpostin osoitteeseen, joka on määritelty Käyttäjäntilisi-sivulla.  Tämä on oletustapa viestien välittämisessä."
+
+#~ msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
+#~ msgstr "Tämä vaihtoehto mahdollistaa tietosuoja-asetukset ja piilottaa elossa olevien yksityiskohdat, sen mukaan miten on määritelty tai muutettu Tietosuoja-välilehdellä jokaisen GEDCOM tiedoston asetuksessa."
+
+#~ msgid "This option will generate thumbnails for all files in the current directory which don't already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br><br>If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links."
+#~ msgstr "Tällä valinnalla luodaan pienoiskuvakkeet kaikille tässä hakemistossa oleville tiedostoille, joilla ei vielä sellaista ole. Tämä on paljon helpompaa kuin klikata erikseen kutakin semmoisen tiedoston  <b>Luo pienoiskuva</b>-linkkiä. <br><br>Mikäli haluat itse päättää mille tiedostolle haluat luoda sitä vastaavan kuvakkeen, älä käytä tätä valintaa. Klikkaa sitä vastoin asianomaisia <b>Luo pienoiskuva</b>-linkkejä."
+
+#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Tällä valinnalla siirretään aihe alemmaksi Usein kysyttyjen kysymysten sivulla.<br><br>Aina kun valitset tämän, aiheen järjestysnumero kasvaa yhdellä. Saman lopputuloksen saat muokkaamalla aihetta ja muuttamalla aiheen järjestysnumeron. Kun useammalla aiheella on sama järjestysnumero, vain yksi niistä esitetään."
+
+#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Tällä valinnalla siirretään aihe ylemmäksi Usein kysyttyjen kysymysten sivulla.<br><br>Aina kun valitset tämän, aiheen järjestysnumero pienenee yhdellä. Saman lopputuloksen saat muokkaamalla aihetta ja muuttamalla aiheen järjestysnumeron. Kun useammalla aiheella on sama järjestysnumero, vain yksi niistä esitetään."
+
+#~ msgid "This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
+#~ msgstr "Tällä vallinnalla säilytetään yksityisten henklöiden sukulaisyhteydet. Yksityiset näkyvät tyhjinä laatikkoina esivanhemmat- ja muissa kaavioissa."
+
+#~ msgid "This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server’s software, as it relates to PHP and <b>webtrees</b>, can be viewed."
+#~ msgstr "Tällä sivulla saat yksityiskohtaiset tiedot palvelimesta, serverista , jossa <b>webtrees</b> palvelu toimii. Monia serverin konfigurointietoja on tarkasteltavissa, liittyen PHP ja <b>webtrees</b> asetuksiin."
+
+#~ msgid "This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent."
+#~ msgstr "Tällä sivulla voit yhdistää kaksi GEDCOM tietuetta samasta GEDCOM aineistosta.<br><br>Tämä on hyödyllinen niille, jotka ovat yhdistäneet GEDCOM aineistoja ja sama henkilö, perhe tai lähdetieto esiintyy useasti.<br><br>Sivulla on kolme toimenpidetta.<br><ol><li>Syötä kaksi GEDCOM ID-tunnusta, henkilön-ID, perheen-ID jne. ID-tunnukset pitää olla samaa tyyppia. Et voi yhdistää henkilö ja perhe, etkä perhe ja lähdetieto. Esimerkiksi <b>Yhdistä tähän ID:een:</b> syötä se ID-tunnus, joka jää talteen uudeksi teitueeksi, kun tietoja on yhdistetty.<br><b>Yhdistä siirtämällä tästä ID:stä:</b> kenttään syötä se ID-tunnus josta tiedot siirretään yhdistettäväksi \"Yhdistä tähän ID\" tietoihin. Yhdistämisen jälkeen \"Yhdistä siirtämällä tästä ID:stä\" tietue poistetaan.</li><li>Valitset mitkä tiedot kustakin ID-tietueesta otetaan mukaan ja jää edelleen talteen, merkkaamalla tietojen ruudut.</li><li>Tarkista yhdistämistulokset.</li></ol>Muutoksesi tulevat voimaan vasta kun Ylläpitäjä tai henkilö, jolla on hyväksymisoikeudet, on hyväksynyt ne."
+
+#~ msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#~ msgstr "Tällä roolilla on samat käyttöoikeudet kuin jäsenellä, sekä lisäksi oikeus lisätä/muokata/poistaa tietoja. Kun tietoja on muutettu, eikä käyttäjälle ole sallittu \"automaattisesti hyväksy muutokset\", niin muutokset tulevat voimaan vasta kun valvoja on hyväksymisoikeuksia on hyväksynyt ne."
+
+#~ msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+#~ msgstr "Tähän osioon voit lisätä uuden muokattavaa tietoa koskevan lähdeviittauksen.<br><br>Lähdekenttään täytät kyseisen lähteen ID-tunnuksen. Klikkaa linkkiä <b>Luo uusi lähde</b> jos haluat lisätä uuden lähteen. Viittauskenttään lisäät sivunumeron tai muun tiedon, joka auttaa muita löytämään lähteessä olevan tiedon. Tekstikenttään kirjoitat lähteen tekstiosan."
+
+#~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
+#~ msgstr "Palvelimen muistirajoitus on %dMB ja CPU suoritusaikarajoitus on %d sekuntia."
+
+#~ msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+#~ msgstr "Tietoluettelo, erottaen jokainen haluttu tieto pilkulla tai välilyönnillä, mitä halutaan myös näkyviin kaaviolaatikoissa Syntymä ja Kuolema lisäksi. Luettelossa saa olla GEDCOM 5.5.1 standardin mukaiset tietotunnisteet esim. \"OCCU\"."
+
+#~ msgid "This text will be appended to each page title.  It will be shown in the browser’s title bar, bookmarks, etc."
+#~ msgstr "Tämä teksti lisätään jokaiseen sivuotsikkoon. Se näkyy selailmen otsikkossa, kirjanmerkeissa jne."
+
+#~ msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+#~ msgstr "Tämä lukuarvo määrittää tiimalasimuodossa tulostetun aloitushenkilön jälkipolvien lukumäärän."
+
+#~ msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
+#~ msgstr "Auttaaksemme sinua alkamaan tämän lohkon määrittelyn, olemme luoneet useita standardimalleja. Kun valitset jonkin näistä malleista, teksti alue sisältää kopion, jonka voit sitten muuttaa sivuston vaatimusten mukaiseksi."
+
+#~ msgid "To family"
+#~ msgstr "perheeseen"
+
+#~ msgid "To individual"
+#~ msgstr "henkilöön"
+
+#~ msgid "To source"
+#~ msgstr "lähteeseen"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "Hyväksyttyjä muutoksia yhteensä: "
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Vireillä olevia muutoksia yhteensä: "
+
+#~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
+#~ msgstr "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Tuntematon GEDCOM-koodi"
+
+#~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
+#~ msgstr "Käytä SMTP sähköpostin lähettämiseen <b>webtrees</b> ohjelmasta.<br><br>Silloin pitää olla myös SMTP sähköpostipalvelinyhteys kunnossa. Kun valinta on <b>Ei</b>, käytetään PHP:n omaa sähköpostiominaisuutta."
+
+#~ msgid "Use SMTP to send external mails"
+#~ msgstr "Käytä SMTP -protokollaan ulkoisten viestien lähettämiseen"
+
+#~ msgid "Use colors"
+#~ msgstr "Käytä värejä?"
+
+#~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
+#~ msgstr "Käytä käyttäjä ja salasana tunnistusta yhteydessä SMTP palvelimeen.<br><br>Jotkut SMTP-palvelimet vaativat kaikkien yhteyksien varmennukset ennen kuin ne hyväksyvät lähtevän sähköpostin."
+
+#~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
+#~ msgstr "Käytä varjokuvaa kun henkilöllä ei ole ensisijasta kuvaa. Varjokuva on erilainen sukupuolen mukaan.<br><br><table><tr><td wrap valign=\"middle\">Tätä kuvaa voidaan käyttää kun henkilön sukupuoli ei ole tiedossa:"
+
+#~ msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move right and Move left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
+#~ msgstr "Käytä näitä painikkeita siirtääksesi luettelon kohteen toiseen luetteloon.<br><br>Korosta siirrettävä kohde, ja klikkaa sitten painiketta siirtääksesi tai kopioidaksesi sen nuolen suuntaan. Käytä <b>&raquo;</b>- ja <b>&laquo;</b>-painikkeita siirtääksesi korostetun kohteen vasemmanpuoleisimmasta luettelosta oikeammanpuoleisimpaan tai päinvastoin. Käytä <b>></b>- ja <b><</b>-painikkeita siirtääksesi korostetun kohteen Käytettävissä olevien lohkojen-luettelon oikealla tai vasemmalla puolella olevaan luetteloon.<br><br>Kohteet Käytettävissä olevien lohkojen luettelossa eivät muutu  />Siirrä oikealle- ja Siirrä vasemmalle-painikkeiden klikkaamisesta huolimatta, koska sama lohko voi esiintyä samalla sivulla useamman kerran. HTML-lohko on hyvä esimerkki siitä, miksi näin haluat menetellä."
+
+#~ msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
+#~ msgstr "Käytä näitä painikkeita muuttaaksesi luettelon järjestystä. Lohkot tulostetaan luettelon osoittamassa järjestyksessä.<br><br>Korosta siirrettävää kohdetta ja klikkaa sitten painiketta siirtääksesi kohdetta ylös- tai alaspäin."
+
+#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
+#~ msgstr "Tähän kenttään kirjoitetaan otsikon lyhennetty versio, jota käytetään tietolähteiden varsinaisen otsikon korvikkeena. Oletuspohjaisesti ja ensisijaisesti <b>webtrees</b> käyttää pitempää otsikkoa ja vasta sitten lyhennettyä otsikkoa.<br><br>GEDCOM 5.5 määritelmän mukaan \"tätä tietoa, lyhennettyä otsikkoa, käytettään tietolähde tietueiden lajitteluun, arkistointiin ja noutamiseen (sivu 62).\"<br><br><b>webtrees</b>:ssä lyhennetty otsikko on valinnainen, mutta muissa sukututkimusohjelmissa se on pakollinen."
+
+#~ msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+#~ msgstr "Käytä tämä kohta, kun henkilölle kuuluva media(kuva) halutaan ensisijaiseksi. Ensisijainen kuva käytetään kaavioissa ja henkilösivulla."
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Tällä sivulla voi muuttaa tai poistaa perheenjäseniä.<br><br>Jokaiselle perheenjäsenelle voit käyttää Muuta-linkkiä valitsemaan eri henkilön kyseiseen asemaan perheessä. Henkilön voi myös poistaa perheestä käyttämällä Poista-linkkiä.<br><br>Muutosten jälkeen klikkaa Tallenna-painiketta muutosten tallentamiseksi."
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "Käyttäjä ei ole vahvistanut 7 päivässä."
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "Käyttäjätunnuksessa ei saa käyttää seuraavia erikoismerkkejä: &lt; &gt; \" %% { } ;"
+
+#~ msgid "Users logged in"
+#~ msgstr "Sisäänkirjautuneet käyttäjät"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Käyttäjien kielet"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "Käyttäjän tili on ollut liian pitkään käyttämätön: "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Näytä GEDCOM-tietue"
+
+#~ msgid "View day"
+#~ msgstr "Näytä päivä"
+
+#~ msgid "View details"
+#~ msgstr "Näytä tiedot"
+
+#~ msgid "View family"
+#~ msgstr "Katso perhettä"
+
+#~ msgid "View month"
+#~ msgstr "Näytä kuukausi"
+
+#~ msgid "View notes"
+#~ msgstr "Näytä lisätiedot"
+
+#~ msgid "View person"
+#~ msgstr "Katso henkilöä"
+
+#~ msgid "View source"
+#~ msgstr "Näytä lähteet"
+
+#~ msgid "View year"
+#~ msgstr "Näytä vuosi"
+
+#~ msgid "Visitor options"
+#~ msgstr "Vierailija-asetukset"
+
+#~ msgid "Visitors"
+#~ msgstr "Vierailija"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=1"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Tulet saamaan koodin sähköpostissa osoitteeseen (%s). Käytä viesti tilisi vahvistukseen. Tilisi pyyhitään seitsemän päivän kuluttua jos et vahvista sitä (voit sen jälkeen rekisteröidä tilin uudelleen). Kirjautuminen sivuille vaatii käyttäjätunnuksen ja salasanan."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Lähetämme nyt varmistusviestin osoitteeseen <b>%s</b>. Sinun on varmistettava käyttäjätilipyyntösi noudattamalla viestin ohjeita. Mikäli et varmista tiliäsi seitsemän vuorokauden kuluessa, pyyntösi hylätään automaattisesti. Sen jälkeen sinun on tehtävä uusi anomus.<br><br>Toimittuasi viestin edellyttämällä tavalla, voit kirjautua järjestelmään. Voidaksesi kirjautua tänne, sinun on tiedettävä käyttäjätunnuksesi ja salasanasi."
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "Web-sivusto ja META tunniste (tag) asetukset"
+
+#~ msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
+#~ msgstr "Kun vierailija pyytää itselleen käyttäjätunnuksen, -tilin, niin hänen ilmoittamaan sähköpostiosoitteeseen lähetetään postia, jossa on vahvistamista varten linkki. Kun hän klikkaa linkin, tiedämme että ilmoitettu sähköpostiosoite on oikea ja kuitataan automaattisesti \"sähköpostiosoitteen vahvistus\"."
+
+#~ msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
+#~ msgstr "Valitsemalla <b>Kyllä</b>, esitetään seuraavanlainen viesti, kun pyydät uuden käyttäjätilin:<div class=\"list_value_wrap\"><div class=\"largeError\">Huomautus:</div><div class=\"error\">Tällä hakemuksella hyväksyt myös:<ul><li>kunnioittaa sukututkimuksessa elossa olevien henkilöiden yksityisyyttä;</li><li>ja alla olevassa tekstiruudussa kertoa kenelle olet sukua tässä sukupuussa, tai toimittamaan tietoja henkilöstä jonka pitäisi löytyä sukupuusta.</li></ul></div></div>"
+
+#~ msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
+#~ msgstr "Kun tämä valitaan eli kuitataan, kaavio kirjoittaa aloittaen vanhimmista henkilöistä. Kun ei ole kuitattu, aloitetaan nuorimmista henkilöistä."
+
+#~ msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
+#~ msgstr "Kun tämä valinta on rastitettu, näkyvät kaikki tähän henkilöön liitetyt lähde- tai lisätiedot. Mikäli tätä valintaa ei ole rastitettu, lähde- tai lisätiedot, jotka liittyvät tämän henkilön muihin tietoihin, eivät näy."
+
+#~ msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
+#~ msgstr "Kun valitset tämän, luodaan GEDCOM tiedoston ZIP-muodossa, ennen kuin tiedot siirretään sinulle. Tämä pienentää tiedoston kokoa huomattavasti, mutta sen pitää sitten myöhemmin purkaa käyttäen sopivaa ohjelmaa esim. WinZIP.<br><br>Tämä ominaisuus on hyödyllinen kun aineiston määrä on kovin suuri. Palvelimessa saattaa kuitenkin olla rajoituksia miten kauan se suorittaa sellaisia pakkaamisajoja. Pakatun tiedon välittämiseen tarvittava aika voi pienentyä 75-prosentilla."
+
+#~ msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
+#~ msgstr "Kun klikkaat <b>Lisää uusi jaettu lisätieto</b> linkiä, avautuu uusi ikkuna. Voit valita linkin jo olemassa olevaan lisätietoon tai luoda uuden lisätiedon ja samalla linkin siihen."
+
+#~ msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
+#~ msgstr "Klikkaamalla tätä, leikekorisi tyhjenee kokonaan.<br><br>Mikäli et halua poistaa kaikkia henkilöitä, perheitä ja paikkoja leikekorista, voit poistaa ne yksitellen klikkaamalla \"Poista\" linkkiä nimiruuduissa."
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Mitä muita yhteyksiä tästä henkilöstä haluat lisätä?"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "Kenelle näytetään kuvia ilman vesileimaa?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Vaimon ikä"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Aviovaimon tyttönimestä tulee uusi etunimi"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Aviovaimon sukunimi korvattu aviomiehen sukunimellä"
+
+#~ msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+#~ msgstr "Tällä valinnalla <b>webtrees</b> ei käytä sähköpostia vaan järjestelmän omaa sisäistä viestintätapaa.  Saat viestejä ainoastaan muilta käyttäjiltä. Kun tämän sivuston muulta käyttäjältä tulee viesti, se näkyy Viestini-lohkossa, sinun \"Omalla sivullasi\". Jos olet poistanut tämän viestini-lohkon, niin et näe viestejä. Ne kuitenkin tulevat näkyviin heti kun otat Viestini-lohkon taas käyttöön \"Omalla sivullasi\""
+
+#~ msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
+#~ msgstr "Voit muuttaa <b>webtrees</b>:n esitystapaa käyttäen \"teemoja\". Jokaisella teemalla on oma miltä-näytää eli esitystapansa, värien käyttötapa jne."
+
+#~ msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
+#~ msgstr "Voit klikata tätä linkkiä nähdäksesi, onko kahden henkilön välillä muuta suukaukaisuussuhdetta<br>Edellinen/set reitit saa näkyviin klikkaamalla kyseisen numeroidun reitin linkkiä."
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "Voit määräta esitetäänkö tämä Usein kysyttyjen kysymysten aihe ainoastaan käytössä olevalle GEDCOMille vai kaikille GEDCOMeille.<br><ul><li><b>Kaikki</b>&nbsp;&nbsp;&nbsp; Usein kysyttyjen kysymysten aihe esitetään aina.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp; Esitetään vain käytössä olevan GEDCOMin luettelossa Usein kysytyistä kysymyksistä.</li></ul>"
+
+#~ msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+#~ msgstr "Voit rajoittaa näytettävien uutisartikkelien lukumäärän ja näin rajoittaa GEDCOM uutilohkon korkeuden.<br><br>Tämä valinta määrittää käytetäänkö mitään rajoituksia vai asetetaanko rajoitukset artikkelin iän tai artikkelien lukumäärän perusteella."
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "On helpompi etsiä avioituneita naisia merkitsemällä heidän avionimensä.<br>Kaikki naiset eivät kuitenkaan ota aviomiehensä sukunimeä, joten huolehdi oikeiden tietojen syöttämisestä GEDCOM-tiedostoosi."
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "Et tule saamaan lisäviestejä tältä järjestelmältä ja tili pyyhitään seitsemän päivän kuluttua jos tätä ei vahvisteta."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Leikekorisi on tyhjä."
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "Palvelimesi yllläpitäjältä saat tarvittavat yhteystiedot."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Sinun käyttäjätunnukselle ei ole sallittu \"hyväksy automaattisesti muutokset\". Voit muuttaa vain yksitellen tietueita eli tietoja."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Zip-tiedosto(t)"
+
+#~ msgid "daughter of"
+#~ msgstr "jonka vanhemmat olivat"
+
+#~ msgctxt "son's wife's father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "pojan vaimonisä / miniän isä"
+
+#~ msgctxt "son's wife's mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "pojan vaimonäiti / miniän äiti"
+
+#~ msgctxt "son's wife's parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "miniän isä/äiti"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "kuoli"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "kuoli"
+
+#~ msgid "first"
+#~ msgstr "ensimmäinen"
+
+#~ msgctxt "child's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "lapsentyttärenmies"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "tyttärentyttärenmies"
+
+#~ msgctxt "son's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "pojantyttärenmies"
+
+#~ msgctxt "child's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "lapsenpojan vaimo"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "tyttärenpojanvaimo"
+
+#~ msgctxt "son's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "pojanpojanvaimo"
+
+#~ msgid "last"
+#~ msgstr "viimeinen"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "avioitui"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "avioitui"
+
+#~ msgid "son of"
+#~ msgstr "jonka vanhemmat olivat"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "tyttären miehenisä / tyttären appi"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "tyttären miehenäiti / tyttären anoppi"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "tyttären appi/anoppi"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_swedish_ci"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "syntyi"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "syntyi"
+
+#~ msgid "webtrees’ database must be on the same server as PGV’s"
+#~ msgstr "webtrees tietokannan ja PGV pitää olla samassa serverissa"

@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:36+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -8846,7 +8846,6 @@ msgstr "Иртәгә вакыйгалар юк"
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
-msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -12740,7 +12739,7 @@ msgstr ""
 #: library/WT/Stats.php:2112 library/WT/Stats.php:2529
 #: library/WT/Stats.php:2630 library/WT/Stats.php:2677
 msgid "This information is private and cannot be shown."
-msgstr "Бу шәхес турындагы тәфсилле мәгълүмат шәхсән (теләсә кем өчен ачык түгел); <br />"
+msgstr "Бу шәхес турындагы тәфсилле мәгълүмат шәхсән (теләсә кем өчен ачык түгел); <br>"
 
 #: help_text.php:1097
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br /><br /><b>Advanced features</b> for <b>View Year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br /><br />Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br /><br /><b>1992-5</b> for all events from 1992 to 1995.<br /><b>1972-89</b> for all events from 1972 to 1989.<br /><b>1610-759</b> for all events from 1610 to 1759.<br /><b>1880-1905</b> for all events from 1880 to 1905.<br /><b>880-1105</b> for all events from 880 to 1105.<br /><br />To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br /><br/>Selecting a range of years will change the calendar to the year view.</dd></dl>"
@@ -18595,3 +18594,720 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid " but the details are unknown"
+#~ msgstr " тәфсилләп билгеле түгел"
+
+#~ msgid " in "
+#~ msgstr " бу урында: "
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(%s язма арасыннан сайлап алынды)"
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Шәҗәрәләр сайтына рәхим итегез!</b></center><br>Бу сайтка керү өчен, хисап язмасы ачып, кулланучы буларак теркәлү сорала һәм администратор тарафыннан хокуклар билгеләнгән булуы шарт.<br><br>Әгәр Сезнең хисап язмагыз булса, шушы биттән системага керә аласыз. Әгәр әлегә теркәлмәгән булсагыз, түбәндәге сылтама аша хисап язмасы ачу һәм теркәлүне сорый аласыз.<br><br>Сезнең гаризагыз сайт администраторы тарафыннан каралганнан соң,  аның нәтиҗәсе турында Сезгә электрон хат җибәрелер."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Шәҗәрәләр сайтына рәхим итегез!</b></center><br>Бу сайтка керү өчен, кулланучы буларак теркәлү сорала. <u>Гаилә әгъзалары гына теркәлә ала</u><br><br>Әгәр Сез теркәлгән булсагыз, шушы биттән системага керә аласыз. Әгәр әлегә теркәлмәгән булсагыз, түбәндәге сылтама хисап язмасы ачу һәм теркәлүне сорый аласыз.<br><br>Сезнең гаризагыз сайт администраторы тарафыннан каралганнан соң, аның нәтиҗәсе турында Сезгә электрон хат җибәрелер."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Шәҗәрәләр сайтына рәхим итегез!</b></center><br>Бу сайтка керү өчен, хисап язмасы ачып кулланучы буларак теркәлү җитә.<br><br>Әгәр Сезнең хисап язмагыз булса, шушы биттән системага керә аласыз. Әгәр әлегә хисап язмагыз булмаса, түбәндәге сылтаманы кулланып хисап язмасын ачу һәм теркәлүне сорый аласыз.<br><br>Сезнең гаризагыз сайт администраторы тарафыннан карап хисап язмагызны активлаштырганнан соң, Сезгә электрон хат җибәрелер."
+
+#~ msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
+#~ msgstr "<div class=\"largeError\">Искәрмә:</div><div class=\"error\">Бу форманы тутырып җибәрүегез белән Сез түбәндәгеләр белән ризалыгызны раслыйсыз:<ul><li>Бу сайтта китерелгән хәзерге вакытта исән-сау булган шәхесләр турындагы мәгълүматларны башкаларга бирмисез, сер итеп саклыйсыз (мисал өчен, аларны таратмыйсыз, шәхескә зыян китерерлек максатларда кулланмыйсыз);</li><li>Түбәндәге булектә теркәлү сәбәбен күрсәтәсез (кемнәр туганы икәнлегегезне, яки безнең системадагы кем дә булса турында мәгълүмат өстәргә теләвегезне.</li></ul></div>"
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Бирелгән чыганакка нигезләнгән фактлар отчеты"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Системада булган шәхесне Ире буларак күрсәтергә"
+
+#~ msgid "Add a new name"
+#~ msgstr "Яңа исем кертергә"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Системада булган шәхесне Хатыны буларак күрсәтергә"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Сызымга тагын бер шәхесне өстәргә"
+
+#~ msgid "Add individuals"
+#~ msgstr "Кешеләрне өстәргә"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Бу шәхескә генә кагылышлы язма өстәргә."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Бу гаилә һәи әти-әниләре һәм барлык токымнары турында язма өстәргә."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Бу гаилә, әти-әниләре һәм балалары турында язма өстәргә."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Бу гаилә һәм әти-әниләре турында язма өстәргә."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Бу шәхес һәм аның турыдан-туры ата-бабалары турында язмалар өстәргә."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Бу шәхес һәм аның турыдан-туры ата-бабалары һәм аларның гаиләләре турында язмалар өстәргә."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Бу шәхес, аның әти-әниләре, бертуганнары турында язмалар өстәргә."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Бу шәхес, аның хәләл җефете һәм токымы турында язмалар өстәргә."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Бу шәхес, аның хәләл җефете һәм балалары турында язмалар өстәргә."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Шушы чыганакны һәм аңа бәйләнешле гаиләләрне/шәхесләрне өстәргә"
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "Серсүзне үзгәртү өчен, системага кергәннән соң \"Минем бит\" менюсыннан \"Минем Хисап Язмасы\" пунктын сайлагыз"
+
+#~ msgid "All individuals"
+#~ msgstr "Барлык шәхесләр"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "Шәхеснең барлык ата-бабаларын һәм балаларын күрсәтүче интерактив агач"
+
+#~ msgid "Ancestors of "
+#~ msgstr "Моның ата бабалары: "
+
+#~ msgid "Available blocks"
+#~ msgstr "Булган блоклар"
+
+#~ msgid "Begin year"
+#~ msgstr "Башлангыч ел"
+
+#~ msgid "Best man"
+#~ msgstr "Иң яхшы Ир-Ат"
+
+#~ msgid "Binary data object"
+#~ msgstr "Бинарный объект данных"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "Туу урынына бу кергән"
+
+#~ msgid "Birth date range end"
+#~ msgstr "Туган көннәр вакыт арасының ахыры"
+
+#~ msgid "Birth date range start"
+#~ msgstr "Туган көннәр вакыт арасының башы"
+
+#~ msgid "Brother"
+#~ msgstr "Абый/эне"
+
+#~ msgid "Burial place contains"
+#~ msgstr "Күмелгән урынга бу кергән"
+
+#~ msgid "Change family members"
+#~ msgstr "Гаилә составына үзгәрешләр кертергә"
+
+#~ msgid "Child of "
+#~ msgstr "Бу шәхеснең баласы: "
+
+#~ msgid "Children of "
+#~ msgstr "Бу шәхеснең балалары: "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Якын туганнары"
+
+#~ msgid "Civil registrar"
+#~ msgstr "ЗАГСта теркәүче"
+
+#~ msgid "Clear chart"
+#~ msgstr "Ачык Сызым"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "Шәхесне Гаилә башлыгы буларак күрсәтү өчен, монда чиертегез: %s"
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Берәр шәхесне Бәйләнеш Өстәү Исемлегенә кертер өчен, Исем төймәсенә чиертегез"
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Гаилә башлыгы буларак сайланган шәхес язмасына чиертегез"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Законлы никах"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Элеккерәк генеалогик программар тарафыннан 'Гали /Вәлиев/' формасында яздырылган NAME (исем) дигән GEDCOM язмаларын төзәтергә."
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Яңа ачык искәрмә өстәргә"
+
+#~ msgid "Create user"
+#~ msgstr "Кулланучы өстәргә"
+
+#~ msgid "Custom event"
+#~ msgstr "Гадәттән тыш вакыйга"
+
+#~ msgid "Date of emigration"
+#~ msgstr "Эмиграция көне"
+
+#~ msgid "Date of event"
+#~ msgstr "Вакыйга көне"
+
+#~ msgid "Date of immigration"
+#~ msgstr "Иммиграция датасы"
+
+#~ msgid "Date of residence"
+#~ msgstr "Яшәү урынында беренче көн"
+
+#~ msgid "Daughter"
+#~ msgstr "Кыз"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Вафат булу урынына бу кергән"
+
+#~ msgid "Death date range end"
+#~ msgstr "Вафат булу вакыты арасының ахыры"
+
+#~ msgid "Death date range start"
+#~ msgstr "Вафат булу вакыты арасының башы"
+
+#~ msgid "Descent steps"
+#~ msgstr "Балалары буыннары саны"
+
+#~ msgid "Differences"
+#~ msgstr "Аермалар"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Турыдан туры ата-бабалар"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Турыдан туры ата-бабалар һәм аларның гаиләләре"
+
+#~ msgid "Display %s"
+#~ msgstr "%s язма күрсәтергә"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Ачык искәрмәне үзгәртергә"
+
+#~ msgid "Email address:"
+#~ msgstr "Электрон адрес (e-mail):"
+
+#~ msgid "End year"
+#~ msgstr "Ахыргы ел"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "Үзгәртелүче вакыт арасының ахыры"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Гаиләнең ID номерын кертегез"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Шәхеснең ID номерын ккертегез"
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Шәхес, Гаилә, яки Чыганакның ID номерын кертегез"
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Бу медианы кайсы шәхес, гаилә яки чыганакка бәйләнешле итәргә кирәк, шуның ID номерын кертергә яки эзләргә."
+
+#~ msgid "Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address."
+#~ msgstr "Электрон адресыгызны кертегез. <br><br>Мисал өчен: <b>name@hotmail.com</b>"
+
+#~ msgid "Entry text:"
+#~ msgstr "Мәкаләнең эчтәлеге:"
+
+#~ msgid "External objects"
+#~ msgstr "Тышкы объектлар"
+
+#~ msgid "Family group information"
+#~ msgstr "Гаилә группасы турында мәглүматлар"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Агачның бер өлешен кисеп алырга"
+
+#~ msgid "Family with husband"
+#~ msgstr "Ире белән гаиләсе"
+
+#~ msgid "Family with wife"
+#~ msgstr "Хатыны белән гаиләсе"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Әтисенең туган җире (Чапман форматында)"
+
+#~ msgid "Father’s age"
+#~ msgstr "Әтисенең яше"
+
+#~ msgid "Font"
+#~ msgstr "Шрифт"
+
+#~ msgid "Foster child"
+#~ msgstr "Асрамага Алынган Бала"
+
+#~ msgid "Foster father"
+#~ msgstr "Асрамага алган Әти"
+
+#~ msgid "Foster mother"
+#~ msgstr "Асраамага Алган Әни"
+
+#~ msgid "Generation "
+#~ msgstr "Буын "
+
+#~ msgid "He "
+#~ msgstr "Ул "
+
+#~ msgid "He died"
+#~ msgstr "Вафат булган"
+
+#~ msgid "He married"
+#~ msgstr "Өйләнгән"
+
+#~ msgid "He resided at"
+#~ msgstr "Яшәгән урыны"
+
+#~ msgid "He was born"
+#~ msgstr "Туган"
+
+#~ msgid "He was buried"
+#~ msgstr "Җирләнгән"
+
+#~ msgid "He was christened"
+#~ msgstr "чукындырылган"
+
+#~ msgid "He was cremated"
+#~ msgstr "Крематорийда яндырылган"
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Исәнмесез, администратор…"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Һөнәре"
+
+#~ msgid "His occupation was"
+#~ msgstr "Аның эш урыны булган"
+
+#~ msgid "Hit count:"
+#~ msgstr "Сайтка керүләр саны"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Иренең яше"
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Әгәр Сез чынлыкта хисап язмасы ачып кулланучы булып теркәлергә сорамаган булсагыз, бу хатны бетерсәгез шул җитә."
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "Әгәр ничек көйләргә икәнен белмәсәгез, ничек бар шулай калдырып торыгыз. Аларны соңыннан да үзгәртеп була."
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "Әгәр актив булмаган урыннар бик күп булса, бу исемлекне күрсәтүне акрынайтырга мөмкин."
+
+#~ msgid "In this month…"
+#~ msgstr "Элек бу айда …"
+
+#~ msgid "In this year…"
+#~ msgstr "Элек бу елны …"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Шәхеснең гаиләсендәге туганнарын да өстәргә"
+
+#~ msgid "Individual 1"
+#~ msgstr "Беренче шәхес"
+
+#~ msgid "Individual 2"
+#~ msgstr "Икенче шәхес"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Иң озак яшәүче"
+
+#~ msgid "LDS temple"
+#~ msgstr "Мормоннар храмы"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Бу шәхесне булган гаиләгә бала буларак өстәргә"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Бу шәхесне булган гаиләгә ир буларак өстәргә"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Бу шәхесне булган гаиләгә хатын буларак өстәргә"
+
+#~ msgid "Living individuals"
+#~ msgstr "Хәзерге заманда яшәүчеләр"
+
+#~ msgid "Loading…"
+#~ msgstr "Йөкләп ятам …"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Урын бетерелмәде - аның түбәнрәк дәрәҗәле урыннары бар."
+
+#~ msgid "Main section blocks"
+#~ msgstr "Төп Секция блоклары"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Өйләнешү вакыт арасының ахыры"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Өйләнешү вакыт арасының башы"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Өйләнешү урынына бу кергән"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Помолвка"
+
+#~ msgid "Married name"
+#~ msgstr "Фамилия в браке:"
+
+#~ msgid "Married surname"
+#~ msgstr "Никахтагы фамилиясе"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Бу ID номерыннан берләштерергә:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Бу ID номерына берләштерергә:"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Иң еш каралган язмалар"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Әнисенең туган җире (Чапман форматында)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Әнисенең яше"
+
+#~ msgid "Move left"
+#~ msgstr "Сулгарак күчерергә"
+
+#~ msgid "Move right"
+#~ msgstr "Уңгарак күчерергә"
+
+#~ msgid "Name List"
+#~ msgstr "Исемнәр"
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Бүген исән шәхесләргә кагылышлы вакыйгалар юк"
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Исән шәхесләр өчен иртәгә вакыйгалар юк"
+
+#~ msgid "No records to display"
+#~ msgstr "Күрсәтерлек язмалар юк"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Бу GEDCOM файлында андый ID табылмады"
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Иң озак яшәүче шәхесләр"
+
+#~ msgid "On this day…"
+#~ msgstr "Элек бу көнне …"
+
+#~ msgid "Orientation"
+#~ msgstr "Юнәлеш"
+
+#~ msgid "Page"
+#~ msgstr "Бит"
+
+#~ msgid "Page size"
+#~ msgstr "Битнең үлчәме"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Әти-әниләр һәм бертуганнар"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Әти-әнисенең яше"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Нәсел Агачы"
+
+#~ msgid "Place of emigration"
+#~ msgstr "Эмиграция урыны"
+
+#~ msgid "Place of event"
+#~ msgstr "Вакыйга урыны"
+
+#~ msgid "Place of immigration"
+#~ msgstr "Иммограция урыны"
+
+#~ msgid "Port"
+#~ msgstr "Порт номеры"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Төп вакыйгаларны буш булганда бастырыргамы?"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Соңгы вакыйгалар (< 100 ел)"
+
+#~ msgid "Registry officer"
+#~ msgstr "Теркәүче Түрә"
+
+#~ msgid "Religious institution"
+#~ msgstr "Дини оешма"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Бу урынны бетерергәме?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Уң Як Секция блоклары"
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "GEDCOM базасындагы язмаларны гади эзләү яки катлаулырак калып тәңгәл килүе буенча эзләргә һәм/яки үзгәртергә."
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Өстәләсе Бәйләнешләр Исемлегенә өстәр өчен, Кешеләрне Эзләргә"
+
+#~ msgid "Send message"
+#~ msgstr "Хәбәр җибәрергә"
+
+#~ msgid "Server"
+#~ msgstr "Сервер"
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Искәрмәгә түбәндәгеләр кергән:"
+
+#~ msgid "Shared notes found"
+#~ msgstr "Табылган ачык Искәрмәләр"
+
+#~ msgid "She "
+#~ msgstr "Ул "
+
+#~ msgid "She died"
+#~ msgstr "вафат булган"
+
+#~ msgid "She married"
+#~ msgstr "Кияүгә чыккан"
+
+#~ msgid "She resided at"
+#~ msgstr "Яшәгән урыны"
+
+#~ msgid "She was born"
+#~ msgstr "Туган"
+
+#~ msgid "She was buried"
+#~ msgstr "Ул күмелгән"
+
+#~ msgid "She was christened"
+#~ msgstr "чукындырылган"
+
+#~ msgid "She was cremated"
+#~ msgstr "Крематорийда яндырылган"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Географик урыннарны таблица рәвешендә күрсәтергә."
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Ата-баларның балаларын күрсәтергәме?"
+
+#~ msgid "Show details"
+#~ msgstr "Тәфсилләп күрсәтергә"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Фотоларны күрсәтергә"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Актив булмаган урыннарны да күрсәтергә"
+
+#~ msgid "Show notes?"
+#~ msgstr "Искәрмәләрне күрсәтергәме?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Эш урыннарын күрсәтергәме?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Исән шәхесләрнең генә вакыйгаларын күрсәтергәме?"
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Шәхесләрне һәм вакыйгаларны гына күрсәтергәме, әллә барысындамы?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Тәмамланмаган үзгәрешләрне күрсәтергә"
+
+#~ msgid "Show photos?"
+#~ msgstr "Фотоларны күрсәтергәме?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Географик урыннарны иерархия рәвешендә күрсәтергә"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Бәйләнешле шәхесләрне / гаиләләрне күрсәтергә"
+
+#~ msgid "Show residences?"
+#~ msgstr "Яшәү урыннарын күрсәтергәме?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Чыганакларны күрсәтергәме?"
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "%1$s-дән %2$s-гә кадәр, барысы %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "Апа/Сеңел"
+
+#~ msgid "Social security number"
+#~ msgstr "Номер социального страхования"
+
+#~ msgid "Son"
+#~ msgstr "Ул"
+
+#~ msgid "Sources to the events"
+#~ msgstr "Вакыйгалар Чыганаклары"
+
+#~ msgid "Spouse"
+#~ msgstr "Хәләл җефете"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Хәләл жефете һәм балалары"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Үзгәртелүче вакыт арасының башы"
+
+#~ msgid "Surname option"
+#~ msgstr "Фамилия"
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "Администратор хәбәрдар. Ул рөхсәт бирүгә, Сез системага керә алачаксыз (кулланучы исемен һәм серсүзне җыеп)."
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "Эзләү аңлатмасы (regex) дөрес булмаганга охшаган. Аны кулланып булмый."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Бу блок иң еш каралган 10 язманы күрсәтә. Бу блок күрсәтелсен өчен, GEDCOM көйләнешләрендә Хитлар Санагычы рөхсәт ителген булуы кирәк."
+
+#~ msgid "To family"
+#~ msgstr "Гаиләгә"
+
+#~ msgid "To individual"
+#~ msgstr "Шәхескә"
+
+#~ msgid "To source"
+#~ msgstr "Чыганакка"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "Барысы расланган үзгәрешләр: "
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Барысы раслыйсы үзгәрешләр: "
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Танылмаган GEDCOM коды"
+
+#~ msgid "Use colors"
+#~ msgstr "Төсләрне кулланырга"
+
+#~ msgid "Users logged in"
+#~ msgstr "Хәзерге вакытта системага кергән кулланучылар"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Кулланучының телләре"
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "GEDCOM форматындагы язманы күрсәтергә"
+
+#~ msgid "View day"
+#~ msgstr "Көнне күрсәтергә"
+
+#~ msgid "View family"
+#~ msgstr "Гаилә турындагы мәгълүматларны күрсәтергә"
+
+#~ msgid "View month"
+#~ msgstr "Айны күрсәтергә"
+
+#~ msgid "View notes"
+#~ msgstr "Искәрмәләрне күрсәтергә"
+
+#~ msgid "View person"
+#~ msgstr "Шәхес турындагы мәгълүматларны күрсәтергә"
+
+#~ msgid "View source"
+#~ msgstr "Мәгълүмат чыганагын күрсәтергә"
+
+#~ msgid "View year"
+#~ msgstr "Елны күрсәтергә"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Хәзер сезнең электрон адреска (<b>%s</b>) раслау хаты җибәрелер. Сездән ул хатта күрсәтелгәнчә хисап язмасы ачуны соравыгызны раславыгыз сорала. Әгәр 7 көн эчендә раслау килмәсә, гаризагыз автома рәвештә кире кагылачак. Шуннан соң теркәлергә уйласагыз, хисап ачу өчен яңадан мөрәңәгать итәргә туры киләчәк. <br><br>Электрон почтада күрсәтелгән адымнарны үтәгәннән соң, системага керә алачаксыз. Аның өчен сездән кулланучы исеме һәм серсүзне кертүегез соралачак."
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Бу шәхеснең нинди бәйләнешләрен өстәргә телисез?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Хатынының яше"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Хатынының кыз фамилиясе яңа исем була"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Хатынының фамилиясе иренекенә алмаштырыла"
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Кияүдәге хатын-кызларны эзләү ансатрак булсын өчен, кияүдәге фамилияләрен дә кертү отышлы. <br>Ләкин барлык очракларда да хатыны ире фамилиясен ала торган булмаганга, игътибарлы булыгыз."
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "Сез кулланучы буларак теркәлергә соравыгызны 7 көн эчендә расламасагыз, ул гамәлдән чыгарылачак һәм башка электрон хатлар җибәрелмәячәк."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Сезнең кәрзинегез буп-буш."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Сезнең хисап язмасында \"үзгәрешләрне автомат рәвештә расларга\" үзенчәлеге авктив түгел. Шуңа сез берьюлы бер генә язмага үзгәреш кертә аласыз."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Zip файлы"
+
+#~ msgid "daughter of"
+#~ msgstr "бу шәхеснең кызы:"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "вафат булган"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "вафат булган"
+
+#~ msgid "first"
+#~ msgstr "беренче"
+
+#~ msgctxt "child's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "баласының кызының ире"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "кызының кызының ире"
+
+#~ msgctxt "son's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "улының кызының ире"
+
+#~ msgctxt "child's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "баласының улының хатыны"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "кызының улының хатыны"
+
+#~ msgctxt "son's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "улының улының хатыны"
+
+#~ msgid "last"
+#~ msgstr "соңгы"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "кияүгә чыккан"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "өйләнгән"
+
+#~ msgid "son of"
+#~ msgstr "бу шәхеснең улы:"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "туган"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "туган"

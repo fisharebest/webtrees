@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2011-11-23 14:35+0000\n"
-"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 16:29+0000\n"
+"Last-Translator: Matic Gradišer <Unknown>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:35+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: Slovenian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -8866,6 +8866,8 @@ msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -13515,7 +13517,7 @@ msgstr "Vseh imen"
 
 #: statisticsplot.php:783
 msgid "Total individuals"
-msgstr "Skupno število imen"
+msgstr "Skupno število uporabnikov"
 
 #: calendar.php:438 find.php:507 modules_v3/GEDFact_assistant/module.php:162
 #: statistics.php:75
@@ -18619,3 +18621,510 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%G:%i:%s"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%j. %F %Y"
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Lepo pozdravljeni na naši rodoslovni spletni strani</b></center><br>Dostop je dovolje uporabnikom, ki imajo odprt uporabniški račun in geslo za to spletno stran."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Lepo pozdravljeni na naši rodoslovni spletni strani</b></center><br>Dostop je dovoljen samo <u>prijavljenim</u> uporabnikom.<br><br>Če imate uporabniški račun, lahko že vstopite. Če ga še nimate, lahko zanj zaprosite tako, da kliknete na ustrezno povezavo spodaj.<br><br>Po pregledu podatkov se bo upravitelj odločil, ali bo vašo prijavo odobril ali zavrnil. O odobritvi vaše prijave boste obveščeni po elektronski pošti."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Lepo pozdravljeni na naši rodoslovni spletni strani</b></center><br>Dostop je dovoljen <u>samo družinskim članom</u>.<br><br>Če imate uporabniški račun, lahko že vstopite. Če ga še nimate, lahko zanj zaprosite tako, da kliknete na ustrezno povezavo spodaj.<br><br>Po potrditvi posredovanih podatkov bo upravitelj vaš zahtevek za račun odobril ali pa zavrnil. O odobritvi zahtevka boste obveščeni po elektronski pošti."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Lepo pozdravljeni na naši rodoslovni spletni strani</b></center><br>Dostop je dovoljen obiskovalcem z uporabniškim računom.<br><br>Če imate uporabniški račun, lahko že vstopite. Če ga še nimate, lahko zanj zaprosite tako, da kliknete na ustrezno povezavo spodaj.<br><br>Po potrditvi prijavnice bo upravitelj strani aktiviral vaš račun. O odobritvi vaše prijave boste obveščeni po elektronski pošti."
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=abcčćdefghijklmnopqrsštuvwxyzž"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=ABCČĆDEFGHIJKLMNOPQRSŠTUVWXYZŽ"
+
+#~ msgid "Access"
+#~ msgstr "Dostop"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Dodaj moža izmed obstoječih oseb"
+
+#~ msgid "Add a new name"
+#~ msgstr "Dodaj novo ime"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Dodaj ženo izmed obstoječih oseb"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Dodaj samo to osebo."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Dodaj zapise staršev in potomcev skupaj z zapisom te družine."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Dodaj zapise staršev in otrok skupaj z zapisom te družine."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Dodaj zapise staršev skupaj s tem družinskim zapisom"
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Dodaj to osebo in njene neposredne prednike."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Dodaj to osebo, njene neposredne prednike in njihove družine."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Dodaj to osebo, njene starše ter brate in sestre."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Dodaj to osebo, njenega zakonca in vse potomce."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Dodaj to osebo, njenega zakonca in otroke."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Dodaj ta vir in družine/osebe, povezane z virom."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "Potem ko ste se prijavili izberite povezavo «Moj račun» v meniju «Uporabnikov portal» in izpolnite polji za geslo."
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "Starost pri kateri lahko predpostavimo, da je oseba mrtva"
+
+#~ msgid "All individuals"
+#~ msgstr "vsi ljudje"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "Dovoli izbiro GEDCOM"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "Dovoli, da se sporočila shranijo na spletno stran"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Ali resnično želite razveljaviti vse spremembe za ta GEDCOM?"
+
+#~ msgid "Available blocks"
+#~ msgstr "Razpoložljivi sklopi"
+
+#~ msgid "Begin year"
+#~ msgstr "Začetno leto"
+
+#~ msgid "Best man"
+#~ msgstr "priča"
+
+#~ msgid "Binary data object"
+#~ msgstr "Podatki binarne oblike"
+
+#~ msgid "Brother"
+#~ msgstr "Brat"
+
+#~ msgid "Change family members"
+#~ msgstr "Spremeni družinske člane"
+
+#~ msgid "Civil registrar"
+#~ msgstr "matičar"
+
+#~ msgid "Clear chart"
+#~ msgstr "Izbriši preglednico"
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Klikni na ime za vstavitev osebe v seznam povezav."
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Klikni za izbor osebe kot glave družine."
+
+#~ msgid "Coat of arms"
+#~ msgstr "Grb"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Civilna poroka"
+
+#~ msgid "Contact information"
+#~ msgstr "Kontaktni podatki"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Ustvari nov skupen zapisek"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "S pomočnikom ustvari nov skupen zapisek"
+
+#~ msgid "Create repository"
+#~ msgstr "Ustvari skladišče"
+
+#~ msgid "Create user"
+#~ msgstr "Ustvari uporabnika"
+
+#~ msgid "Daughter"
+#~ msgstr "Hči"
+
+#~ msgid "Descent steps"
+#~ msgstr "Število rodov"
+
+#~ msgid "Edit details"
+#~ msgstr "Uredi podrobnosti"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Uredi zapis GEDCOM"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Uredi skupen zapisek"
+
+#~ msgid "Email address:"
+#~ msgstr "E-naslov:"
+
+#~ msgid "End year"
+#~ msgstr "Končno leto"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Vpiši ID-številko osebe"
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Vpiši ID-številko osebe, družine ali vira"
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Vnesi ali išči ID osebe, družine ali vira za povezavo na to fotografijo."
+
+#~ msgid "Entry text:"
+#~ msgstr "Besedilo zapisa:"
+
+#~ msgid "External objects"
+#~ msgstr "Slikovno gradivo"
+
+#~ msgid "Family group information"
+#~ msgstr "Skupni podatki o družini"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Košarica za izreze družinskih vej"
+
+#~ msgid "Father’s age"
+#~ msgstr "Očetova starost"
+
+#~ msgid "Foster child"
+#~ msgstr "pastorek"
+
+#~ msgid "Foster father"
+#~ msgstr "krušni oče"
+
+#~ msgid "Foster mother"
+#~ msgstr "krušna mati"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "GEDCOM-ovi statistični podatki"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Zdravo, %s …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Zdravo, %s …<br>Zahvaljujemo se, da ste se registrirali."
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Zdravo, upravljalec …"
+
+#~ msgid "Hit count:"
+#~ msgstr "Štetje zadetkov:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Starost moža"
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Izbrišite sporočilo, če računa niste zahtevali."
+
+#~ msgid "In this month…"
+#~ msgstr "V tem mesecu …"
+
+#~ msgid "In this year…"
+#~ msgstr "V tem letu …"
+
+#~ msgid "Individual 1"
+#~ msgstr "Oseba 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Oseba 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Oseba z najdaljšo življenjsko dobo"
+
+#~ msgid "LDS temple"
+#~ msgstr "Mormonsko svetišče"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Poveži to osebo v obstoječo družino kot otroka"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Poveži to osebo v obstoječo družino kot moža"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "To osebo vključi v obstoječo družino kot ženo"
+
+#~ msgid "Living individuals"
+#~ msgstr "živeči"
+
+#~ msgid "Loading…"
+#~ msgstr "Nalagam…"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Lokacija ni bila odstranjena: ta lokacija vsebuje pod-lokacije"
+
+#~ msgid "Main section blocks"
+#~ msgstr "Sklopi glavnega razdelka"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Namen poroke"
+
+#~ msgid "Married name"
+#~ msgstr "Poročno ime"
+
+#~ msgid "Married surname"
+#~ msgstr "Poročni priimek"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Spoji z ID-številke:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Spoji z ID-številko:"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Najpogosteje gledani zapisi"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Materina starost"
+
+#~ msgid "Move left"
+#~ msgstr "Premakni levo"
+
+#~ msgid "Move right"
+#~ msgstr "Premakni desno"
+
+#~ msgid "Name List"
+#~ msgstr "Seznam imen"
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Danes ni posebnih dogodkov živečih oseb."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Jutri ni posebnih dogodkov živečih oseb.."
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Take ID-številke ni v tej GEDCOM-ovi datoteki."
+
+#~ msgid "No temple - living ordinance"
+#~ msgstr "Ni cerkve - verskih obredov"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "Število mesecev do zadnje prijave v uporabnički račun, da je voden kot neaktiven: "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Najstarejši živeči ljudje"
+
+#~ msgid "On this day…"
+#~ msgstr "Na današnji dan …"
+
+#~ msgid "Orientation"
+#~ msgstr "Smer prikaza"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Drug imenik… Prosim, natipkajte"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "Ime odhodnega (SMTP) strežnika"
+
+#~ msgid "Page"
+#~ msgstr "Stran"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Starost roditelja"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Družinsko drevo"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "polpretekla zgodovina (&lt; 100 let);lt; 100 let)"
+
+#~ msgid "Registry officer"
+#~ msgstr "uslužbenec na matičnem uradu"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Ostrani to lokacijo?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Sklopi desnega razdelka"
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Išči osebe za vstavitev v seznam povezav."
+
+#~ msgid "Select events"
+#~ msgstr "Izberi dogodke"
+
+#~ msgid "Send message"
+#~ msgstr "Pošlji sporočilo"
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Skupen zapisek vsebuje:"
+
+#~ msgid "Shared notes found"
+#~ msgstr "Najdenih skupnih zapiskov"
+
+#~ msgid "Show age of parents next to child’s birthdate"
+#~ msgstr "Pokaži starost staršev poleg rojstnega datuma otroka"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Pokaži seznam vseh krajev"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "Pokaži mrtve osebe"
+
+#~ msgid "Show details"
+#~ msgstr "Pokaži podrobnosti"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Pokaži želene slike v okvirčkih oseb"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Pokaži osebe, ki so se rodile pred več kot sto leti."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Pokaži osebe, ki so se rodile v zadnjih sto letih."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Pokaži še živeče pare oz. pare, pri katerih sta živa oba zakonca."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Pokaži že pokojne ljudi oz. pare, pri katerih sta umrla že oba zakonca."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Pokaži ljudi, ki so umrli pred več kot sto leti."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Pokaži ljudi, ki so umrli v zadnjih sto letih."
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Pokaži dogodke samo živečih oseb?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Pokaži samo osebe, katerih spol ni znan."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Pokaži samo osebe, dogodke ali oboje?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Seznam krajev"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Pokaži sorodne osebe/družine"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Pokaži pare ali osebe, ki so «listi».  Te osebe so žive, vendar v bazi nimajo zapisov otrok."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Pokaži «izhodiščne» pare ali posamezne osebe. Te ljudi bi lahko imenovali tudi «patriarhi».  Te osebe nimajo zapisov staršev v bazi."
+
+#~ msgid "Sister"
+#~ msgstr "Sestra"
+
+#~ msgid "Social security number"
+#~ msgstr "Številka zdravstvenega zavarovanja"
+
+#~ msgid "Son"
+#~ msgstr "Sin"
+
+#~ msgid "Spouse"
+#~ msgstr "Zakonec"
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "Upravitelj je prejel obvestilo. Ko vam bo dal dovoljenje za prijavo, se boste lahko prijavljali sami s svojim uporabniškim imenom in geslom."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "V tem sklopu je prizakanih deset najpogosteje gledanih zapisov. Ta sklop zahteva vključitev štetja zadetkov v GEDCOM-ovih konfiguracijskih nastavitvah."
+
+#~ msgid "To family"
+#~ msgstr "Na družino"
+
+#~ msgid "To individual"
+#~ msgstr "Na osebo"
+
+#~ msgid "To source"
+#~ msgstr "Na vir"
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Neprepoznana GEDCOM koda"
+
+#~ msgid "Use SMTP to send external mails"
+#~ msgstr "Uporabi SMTP za pošiljanje zunanje pošte"
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Uporabi to stran ua spreminjanje ali odstranjevanje družinskih članov.<br><br>Za vsakega člana družine lahko  uporabite Spremeni povezavo za izbor druge osebe, ki bo nadomestila vlogo v družini.  Izberete lahko tudi Odstrani povezavo za odstranitev osebe iu družine.<br><br>Ko končate s spremembami na družinskih članih, kliknite gumb Shrani za shranitev sprememb."
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "Uporabnik se ni potrdil v tednu dni."
+
+#~ msgid "Users logged in"
+#~ msgstr "Prijavljeni uporabniki"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Jeziki uporabnika"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "Uporabniški računi, ki so bili predolg neaktivni: "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Poglej GEDCOM-ov zapis"
+
+#~ msgid "View day"
+#~ msgstr "Pokaži dan"
+
+#~ msgid "View details"
+#~ msgstr "Poglej podrobnosti"
+
+#~ msgid "View family"
+#~ msgstr "Poglej družino"
+
+#~ msgid "View month"
+#~ msgstr "Pokaži mesec"
+
+#~ msgid "View notes"
+#~ msgstr "Poglej zapiske"
+
+#~ msgid "View person"
+#~ msgstr "Poglej osebo"
+
+#~ msgid "View source"
+#~ msgstr "Poglej izvorno kodo"
+
+#~ msgid "View year"
+#~ msgstr "Pokaži leto"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=1"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Na elektronski naslov <b>%s vam bomo poslali potrdilo</b>. Zahtevek po računu morate potrditi po navodilih, ki jih boste dobili po elektronski pošti. Če računa ne potrdite v tednu dni, bo vaša prijava samodejno zavrnjena. Morali se boste ponovno prijaviti.<br><br>Po izpolnitvi navodil v elektronskem sporočilu bo upravitelj moral vaš zahtevek najprej odobriti, šele potem boste lahko uporabljali račun.<br><br>Za prijavo na to stran sta potrebna uporabniško ime in geslo."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Zdaj vam bomo poslali sporočilo s potrdilom  na elektronski naslov <b>%s</b>. Zahtevek po računu morate potarditi po navodilih, ki jih boste prejeli po elektronski pošti. Če računa ne potrdite v tednu dni, bo vaša prijava samodejno zavrnjenja. Morali se boste ponovno prijaviti.<br><br>Po izpolnitvi navodil v elektronskem sporočilu bo upravitelj moral vaš zahtevek najprej odobriti, šele potem boste lahko uporabljali račun. Za prijavo na to stran sta potrebna uporabniško ime in geslo."
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "Spletna stran in META Tag nastavitve"
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Katere povezave s to osebo bi še želeli dodati?"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "Kdo lahko gleda slike brez vodnega tiska?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Starost žene"
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "S te strani ne boste več prejemali sporočil, ker bo zahtevek po računu samodejno izbrisan v sedmih dneh."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Vaša košarice za izreze je prazna."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Zazipaj dateteko/e"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_slovenian_ci"

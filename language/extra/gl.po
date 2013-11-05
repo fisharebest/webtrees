@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-08-01 05:33+0000\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
 "X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
@@ -18602,7 +18602,7 @@ msgstr ""
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
@@ -18613,3 +18613,413 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%g:%i:%s %a"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%j %F %Y"
+
+#~ msgid "%s%%"
+#~ msgstr "%s%%"
+
+#~ msgid "(aged %s)"
+#~ msgstr "(idade de %s)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(con menos de %s)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "(con máis de %s)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(filtrado de %s entradas en total)"
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=aábcdeéfghiíjklmnñoópqrstuúvwxyz"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=AÁBCDEÉFGHIÍJKLMNÑOPQRSTUÚVWXYZ"
+
+#~ msgid "Access"
+#~ msgstr "Acceso"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Engadir un marido usando unha persoa existente"
+
+#~ msgid "Add a new name"
+#~ msgstr "Engadir nome"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Engadir unha esposa usando unha persoa existente"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Engadir outra persoa á carta"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Engadir só esta persoa."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Engadir esta persoa e os seus antepasados directos."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Engadir esta persoa, os seus antepasados directos e as súas familias."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Engadir esta persoa, os seus pais e irmáns."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Engadir esta persoa, o seu cónxuxe e os descendentes."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Engadir esta persoa, o seu cónxuxe e fillos."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Engadir esta fonte e as familias/persoas ligadas a ela."
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "Idade a partires da cal a persoa considerase falecida"
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "Idade dos pais na data de nacemento dos fillos"
+
+#~ msgid "All individuals"
+#~ msgstr "Todas as persoas"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "Permitir que as mensaxes sexan gardadas no servidor"
+
+#~ msgid "Available blocks"
+#~ msgstr "Bloques disponibles"
+
+#~ msgid "Begin year"
+#~ msgstr "Ano inicial"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "Detalles do nacemento e falecemento nos gráficos"
+
+#~ msgid "Change family members"
+#~ msgstr "Modificar os membros da familia"
+
+#~ msgid "Clear chart"
+#~ msgstr "Limpar Carta"
+
+#~ msgid "Contact information"
+#~ msgstr "Información de contacto"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Corrige registros NAME na forma 'Xoan/BLANCO/' ou 'Xoan /BLANCO', como xeraban antigos programas de xenealoxía."
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Crear unha nova nota compartida"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Crear unha nova nota compartida usando o axudante"
+
+#~ msgid "Create repository"
+#~ msgstr "Crear biblioteca"
+
+#~ msgid "Daughter"
+#~ msgstr "Filla"
+
+#~ msgid "Descent steps"
+#~ msgstr "Pasos de descendencia"
+
+#~ msgid "Display %s"
+#~ msgstr "Amosar %s"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Editar o rexistro GEDCOM en bruto"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Modificar nota compartida"
+
+#~ msgid "Email address:"
+#~ msgstr "Enderezo de correo electrónico:"
+
+#~ msgid "End year"
+#~ msgstr "Ano final"
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Introduza unha persoa, familia, ou identificación de fonte"
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "Extender privacidade a persoas falecidas"
+
+#~ msgid "External objects"
+#~ msgstr "Obxectos externos"
+
+#~ msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+#~ msgstr "AS preguntas máis frecuentes (FAQs) son listas de preguntas e respostas, que permiten explicar as regras do sitio web, políticas e procedementos para os visitantes. As preguntas son xeralmente sobre privacidade, dereitos de autor, contas de usuario, contido inadecuado, requisito para a citar a fonte, etc."
+
+#~ msgid "Facts for family records"
+#~ msgstr "Feitos para rexistros de Família"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "Feitos para rexistros de individuo"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "Feitos para rexgistros de Repositorio"
+
+#~ msgid "Facts for source records"
+#~ msgstr "Feitos para rexistros de Fontes"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Carriño de recortes da Árbore Xenealóxica"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "Estatísticas do GEDCOM"
+
+#~ msgid "He "
+#~ msgstr "El "
+
+#~ msgid "He was born"
+#~ msgstr "Naceu"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "Ocultar &amp; amosar"
+
+#~ msgid "Hit count:"
+#~ msgstr "Nº de Visitas:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Idade do marido"
+
+#~ msgid "In this month…"
+#~ msgstr "Neste mes …"
+
+#~ msgid "In this year…"
+#~ msgstr "Neste Ano …"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Incluir a familia inmediata?"
+
+#~ msgid "Individual 1"
+#~ msgstr "Persoa 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Persoa 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Persona que máis viviu"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Enlazar esta persoa como fillo nunha familia existente"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Enlazar esta persoa como marido nunha familia existente"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Enlazar esta persoa como esposa nunha familia existente"
+
+#~ msgid "Living individuals"
+#~ msgstr "Persoas Vivas"
+
+#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
+#~ msgstr "Cargar todas as súas árbores xenealóxicas dende o disco, a través da función \"importar\" en cada un."
+
+#~ msgid "Loading…"
+#~ msgstr "Cargando…"
+
+#~ msgid "Main section blocks"
+#~ msgstr "Bloques da Sección Principal"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Os mais visitados"
+
+#~ msgid "Move left"
+#~ msgstr "Mover á esquerda"
+
+#~ msgid "Move right"
+#~ msgstr "Mover á dereita"
+
+#~ msgid "No records to display"
+#~ msgstr "No hai rexistros que amosar"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "O ID non existe neste arquivo GEDCOM."
+
+#~ msgid "On this day…"
+#~ msgstr "Neste día …"
+
+#~ msgid "Online editing"
+#~ msgstr "dición en liña"
+
+#~ msgid "Orientation"
+#~ msgstr "Orientación"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "Nome do servidor de saída (SMTP)"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Eventos Recentes (< 100 anos)"
+
+#~ msgid "Registry officer"
+#~ msgstr "Funcionaria do Rexistro"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "Funcionaria do Rexistro"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "Funcionario do Rexistro"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Bloques da Sección Dereita"
+
+#~ msgid "SMTP port"
+#~ msgstr "Porto SMTP"
+
+#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
+#~ msgstr "Garde todas as súas árbores xenealóxicas para o disco, mediante a función \"exportar\" en cada un."
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Buscar e/ou substituir datos no seu GEDCOM usando buscas simples ou correspondencia de patrón."
+
+#~ msgid "Select events"
+#~ msgstr "Seleccionar eventos"
+
+#~ msgid "Send message"
+#~ msgstr "Enviar mensaxe"
+
+#~ msgid "Set the privacy access level for all dead individuals."
+#~ msgstr "Establecer o nivel de acceso de protección de datos para todas as persoas mortas."
+
+#~ msgid "Shared note contains:"
+#~ msgstr "A nota compartida contén:"
+
+#~ msgid "Shared notes found"
+#~ msgstr "Notas compartidas atopadas"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Amosar lista de todos os lugares"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "Mostrar persoas falecidas"
+
+#~ msgid "Show details"
+#~ msgstr "Amosar detalles"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Mostrar imaxes destacadas en caixas de persoas"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Mostrar lugares inactivos"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Amosar só eventos de persoas que viven?"
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Amosar só persoas, eventos o todo?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Amosar xerarquía de lugares"
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Amosando %1$s a %2$s de %3$s"
+
+#~ msgid "Son"
+#~ msgstr "Fillo"
+
+#~ msgid "Spouse"
+#~ msgstr "Cónxuxe"
+
+#~ msgid "Surname option"
+#~ msgstr "Opción de apelido"
+
+#~ msgid "The individual to contact about the genealogical data on this site."
+#~ msgstr "A persoa coa que contactar sobre os datos xenealóxicos neste sitio web."
+
+#~ msgid "The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>."
+#~ msgstr "O número de porto a usar para as conexións co servidor SMTP. Xeralmente, esta é o porto <b>25</b>."
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "A expresión regular parece ter un erro. Non se pode usar."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "Este GEDCOM creouse usando <b>%1$s</b> no <b>%2$s</b>."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Este bloque amosará os 10 rexistros máis visualizados. Este bloque require que a opción Contadores de Aceso, localizada na configuración do GEDCOM, esté habilitada."
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Este campo controla a orde na cal se mostran os elementos das preguntas máis frecuentes (FAQ). <br> <br> Non ten que escribir os números en secuencia. Se deixa buratos no esquema de numeración, poderá introducir outros elementos máis tarde. Por exemplo, se usa os números 1, 6, 11, 16, máis tarde pode inserir elementos cos números que faltan na secuencia. Pode usar números negativos e cero, e os pode usar para introducir elementos na fronte do primeiro.<br> <br> Cando máis dun elemento das FAQ ten o número mesma posición, só un destes elementos será visible."
+
+#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Esta opción permitirá mover cara abaixo un elemento na páxina FAQ.<br><br>Cada vez que use esta opción, o número Posición FAQ deste elemento é aumentado nunha unidade. Pode conseguir o mesmo efecto editando o elemento en cuestión e cambiando o campo Posición FAQ. Cando máis dun elemento de FAQ ten o mesmo número de posición, só un destes elementos será visible."
+
+#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Esta opción permitirá mover cara arriba un elemento na páxina FAQ.<br><br>Cada vez que use esta opción, o número Posición FAQ deste elemento é reducido nunha unidade. Pode conseguir o mesmo efecto editando o elemento en cuestión e cambiando o campo Posición FAQ. Cando máis dun elemento de FAQ ten o mesmo número de posición, só un destes elementos será visible."
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Use esta páxina para cambiar ou eliminar membros da familia. <br> <br> Por cada membro da familia, pode utilizar a ligazón Cambiar para escoller unha persoa diferente para cubrir ese papel na familia. Tamén pode usar a ligazón Eliminar para eliminar esa persoa da familia. <br> <br> Cando termine de modificar os membros da familia, prema no botón Gardar para gardar os cambios."
+
+#~ msgid "Users logged in"
+#~ msgstr "Usuarios Conectados"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Idioma dos usuarios"
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Ver rexistro GEDCOM"
+
+#~ msgid "View day"
+#~ msgstr "Ver Día"
+
+#~ msgid "View details"
+#~ msgstr "Ver detalles"
+
+#~ msgid "View family"
+#~ msgstr "Ver familia"
+
+#~ msgid "View month"
+#~ msgstr "Ver Mes"
+
+#~ msgid "View person"
+#~ msgstr "Ver persoa"
+
+#~ msgid "View source"
+#~ msgstr "Ver fonte"
+
+#~ msgid "View year"
+#~ msgstr "Ver Ano"
+
+#~ msgid "Visitor options"
+#~ msgstr "Opcións de visitante"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=0"
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "Configuracións do sitio web e meta etiquetas"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "Quen pode ver as imaxes sen marca de auga?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Idade da esposa"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "O apelido de solteira da muller pasa a ser novo nome propio"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Apelido da muller substituído polo apelido do marido"
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "Pode determinar se esta FAQ estará visible, independentemente do GEDCOM, ou se será visible só para o GEDCOM actual.<br><li><b>ALL</ b>&nbsp;&nbsp;&nbsp;A FAQ aparecerá en todas as listas de FAQ, independentemente do GEDCOM.</ li><li><b>%s</b>&nbsp;&nbsp;&nbsp;A FAQ aparecerá só no activo da lista de FAQ do GEDCOM.</li></ul>"
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Pode facilitar a procura de mulleres casadas gravando o seu nome de casada.<br>Sen embargo, non todas as mulleres usan o apelido do seu marido, polo que coidado coa introdución de información incorrecta na súa base de datos."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "A súa conta de usuario non ten habilitada a opción \"automaticamente aprobar cambios\". Só será capaz de cambiar un rexistro de cada vez."
+
+#~ msgid "first"
+#~ msgstr "primeiro"
+
+#~ msgid "last"
+#~ msgstr "último"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_unicode_ci"

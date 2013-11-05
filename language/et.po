@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2013-01-05 12:21+0000\n"
-"Last-Translator: Tauri Mihklepp <Unknown>\n"
+"PO-Revision-Date: 2013-08-04 16:36+0000\n"
+"Last-Translator: Maidu Leever <maidu.leever@gmail.com>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:27+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: Estonian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -200,6 +200,9 @@ msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] "%d aasta"
 msgstr[1] "%d aastat"
+
+msgid "%g:%i:%s %a"
+msgstr "%G:%i:%s"
 
 #: includes/functions/functions.php:2162
 #, php-format
@@ -1687,7 +1690,7 @@ msgstr ""
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "Juhtus ootamatu andmebaasi viga."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -2348,6 +2351,12 @@ msgctxt "Pedigree"
 msgid "Birth"
 msgstr "Sünd"
 
+msgid "Birth Date range end"
+msgstr "Sünnid kuupäevani"
+
+msgid "Birth Date range start"
+msgstr "Sünnid alates kuupäevast"
+
 #: library/WT/Stats.php:1015 statistics.php:553
 msgid "Birth by country"
 msgstr "Sünnid riikide kaupa"
@@ -2993,8 +3002,8 @@ msgstr ""
 #, php-format
 msgid "Changes in the last day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Viimase päeva muudatused"
+msgstr[1] "Viimase %s päeva muudatused"
 
 #: themes/_administration/header.php:118
 msgid "Changes log"
@@ -4030,6 +4039,12 @@ msgstr "Kokku surnuid"
 #: library/WT/Gedcom/Tag.php:184
 msgid "Death"
 msgstr "Surnud"
+
+msgid "Death Date range end"
+msgstr "Surmad kuupäevani"
+
+msgid "Death Date range start"
+msgstr "Surmad alates kuupäevast"
 
 #: library/WT/Stats.php:1032 statistics.php:561
 msgid "Death by country"
@@ -8519,11 +8534,11 @@ msgstr "Minu isiklik kirje"
 #: library/WT/MenuBar.php:61 library/WT/MenuBar.php:64
 #: modules_v3/user_welcome/module.php:34 themes/_administration/header.php:68
 msgid "My page"
-msgstr ""
+msgstr "Minu leht"
 
 #: library/WT/MenuBar.php:74 modules_v3/user_welcome/module.php:52
 msgid "My pedigree"
-msgstr ""
+msgstr "Minu põlvnemine"
 
 #. I18N: %s is an error message
 #: admin_pgv_to_wt.php:84
@@ -9537,7 +9552,7 @@ msgstr ""
 #: library/WT/Controller/Pedigree.php:91
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr ""
+msgstr "%s põlvnemine"
 
 #: modules_v3/review_changes/help_text.php:33
 msgid "Pending Changes block"
@@ -10651,7 +10666,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:1234
 msgid "Root"
-msgstr ""
+msgstr "Juur"
 
 #: includes/functions/functions_print_lists.php:97
 #: includes/functions/functions_print_lists.php:500
@@ -12637,6 +12652,9 @@ msgstr ""
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
 
+msgid "This block will show the 10 records that have been viewed the most.  This block requires that Hit Counters be enabled in the GEDCOM configuration settings."
+msgstr "See blokk kuvab 10 tihedamini vaadatud kirjet. See blokk eeldab, et GEDCOM seadistustes on lubatud vaatamiste loendurid."
+
 #: help_text.php:1495
 msgid "This checkbox controls your visibility to other users while you're online.  It also controls your ability to see other online users who are configured to be visible.<br /><br />When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
 msgstr ""
@@ -12695,7 +12713,7 @@ msgstr ""
 #: modules_v3/gedcom_stats/module.php:88 modules_v3/html/module.php:166
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "Seda sugupuud on viimati uuendatud %s."
 
 #: help_text.php:365
 msgid "This field allows you to change the source record that this fact's source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source's ID number.  To remove the entire citation, make this field blank."
@@ -13428,16 +13446,16 @@ msgstr "Tonga"
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Top %s eesnimi"
+msgstr[1] "Top %s eesnime"
 
 #. I18N: Title for a list of the most common surnames, %s is a number.  Note that a separate translation exists when %s is 1
 #: modules_v3/top10_surnames/module.php:93
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Top %s perekonnanimi"
+msgstr[1] "Top %s perekonnanime"
 
 #: modules_v3/googlemap/admin_places.php:607
 #: modules_v3/googlemap/admin_places.php:715 placelist.php:114
@@ -13889,6 +13907,9 @@ msgstr ""
 #: help_text.php:1112
 msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br /><br />Highlight the entry to be moved, and then click a button to move that entry up or down."
 msgstr ""
+
+msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br /><br />According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br /><br />In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
+msgstr "Kasuta seda välja lühendatud pealkirja jaoks. Seda välja kasutatakse allikates koostöös pealkirjaga. Algseadetes kasutab <b>webtrees</b> esmalt pealkirja ja seejärel lühendatud pealkirja.<br /><br />GEDCOM 5.5 spetsifikatsiooni kohaselt \"see väli on lühikese pealkirja jaoks mida kasutada allikakirjete sorteerimisel, arhiveerimisel ja kasutamisel (lk 62).\"<br /><br /><b>Webtrees</b> kasutab seda välja valikulisena, kuid teistes genealoogiaprogrammides on see kohustuslik."
 
 #: help_text.php:400
 msgid "Use this field to signal that this media item is the highlighted or primary item for the person it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
@@ -14771,7 +14792,7 @@ msgstr "Suurendus"
 #: modules_v3/googlemap/admin_places.php:696
 #: modules_v3/googlemap/places_edit.php:320
 msgid "Zoom factor"
-msgstr ""
+msgstr "Suurendustegur"
 
 #: modules_v3/googlemap/help_text.php:33 modules_v3/googlemap/module.php:283
 msgid "Zoom factor of map"
@@ -14877,19 +14898,19 @@ msgstr "luba"
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:63
 msgid "also known as"
-msgstr ""
+msgstr "tuntud ka kui"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:60
 msgctxt "FEMALE"
 msgid "also known as"
-msgstr ""
+msgstr "tuntud ka kui"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:57
 msgctxt "MALE"
 msgid "also known as"
-msgstr ""
+msgstr "tuntud ka kui"
 
 #: library/WT/Controller/Ancestry.php:144 library/WT/Stats.php:2626
 #: library/WT/Stats.php:2651 library/WT/Stats.php:2662
@@ -18602,22 +18623,19 @@ msgstr ""
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: includes/config_data.php:37
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #~ msgid "%H:%i:%s"
-#~ msgstr "%G:%i:%s"
-
-#~ msgid "%g:%i:%s %a"
 #~ msgstr "%G:%i:%s"
 
 #~ msgid "%j %F %Y"
@@ -18737,12 +18755,6 @@ msgstr ""
 #~ msgid "Best man"
 #~ msgstr "Isamees"
 
-#~ msgid "Birth Date range end"
-#~ msgstr "Sünnid kuupäevani"
-
-#~ msgid "Birth Date range start"
-#~ msgstr "Sünnid alates kuupäevast"
-
 #~ msgid "Birth date range end"
 #~ msgstr "Sünnid kuupäevani"
 
@@ -18793,12 +18805,6 @@ msgstr ""
 
 #~ msgid "Daughter"
 #~ msgstr "Tütar"
-
-#~ msgid "Death Date range end"
-#~ msgstr "Surmad kuupäevani"
-
-#~ msgid "Death Date range start"
-#~ msgstr "Surmad alates kuupäevast"
 
 #~ msgid "Death date range end"
 #~ msgstr "Surmad kuupäevani"
@@ -19121,9 +19127,6 @@ msgstr ""
 #~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
 #~ msgstr "Prefiks on valikuline, kuid soovitatav. Andes tabeli nimedele unikaalse prefiksi saad lasta mitmel erineval rakendusel sama andmebaasi kasutada. \"wt\" on soovitatav, kuid see võib olla ükskõik milline."
 
-#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that Hit Counters be enabled in the GEDCOM configuration settings."
-#~ msgstr "See blokk kuvab 10 tihedamini vaadatud kirjet. See blokk eeldab, et GEDCOM seadistustes on lubatud vaatamiste loendurid."
-
 #~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
 #~ msgstr "See blokk kuvab 10 tihedamini vaadatud kirjet. See blokk eeldab, et GEDCOM seadistustes on lubatud vaatamiste loendurid."
 
@@ -19153,9 +19156,6 @@ msgstr ""
 
 #~ msgid "Unrecognized GEDCOM code"
 #~ msgstr "Tundmatu GEDCOM kood"
-
-#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br /><br />According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br /><br />In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
-#~ msgstr "Kasuta seda välja lühendatud pealkirja jaoks. Seda välja kasutatakse allikates koostöös pealkirjaga. Algseadetes kasutab <b>webtrees</b> esmalt pealkirja ja seejärel lühendatud pealkirja.<br /><br />GEDCOM 5.5 spetsifikatsiooni kohaselt \"see väli on lühikese pealkirja jaoks mida kasutada allikakirjete sorteerimisel, arhiveerimisel ja kasutamisel (lk 62).\"<br /><br /><b>Webtrees</b> kasutab seda välja valikulisena, kuid teistes genealoogiaprogrammides on see kohustuslik."
 
 #~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
 #~ msgstr "Kasuta seda välja lühendatud pealkirja jaoks. Seda välja kasutatakse allikates koostöös pealkirjaga. Algseadetes kasutab <b>webtrees</b> esmalt pealkirja ja seejärel lühendatud pealkirja.<br><br>GEDCOM 5.5 spetsifikatsiooni kohaselt \"see väli on lühikese pealkirja jaoks mida kasutada allikakirjete sorteerimisel, arhiveerimisel ja kasutamisel (lk 62).\"<br><br><b>Webtrees</b> kasutab seda välja valikulisena, kuid teistes genealoogiaprogrammides on see kohustuslik."

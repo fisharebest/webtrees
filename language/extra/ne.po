@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2012-09-05 08:16+0000\n"
+"PO-Revision-Date: 2013-08-04 17:48+0000\n"
 "Last-Translator: saurab limbu <saurablimbu@gmail.com>\n"
 "Language-Team: Nepali <ne@li.org>\n"
 "Language: ne\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:32+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:04+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -574,7 +574,7 @@ msgstr ""
 #. I18N: Description of the “On This Day” module
 #: modules_v3/todays_events/module.php:39
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "आजको दिनमा पर्ने वार्षिकीहरुको सूची"
 
 #. I18N: Description of the “Upcoming events” module
 #: modules_v3/upcoming_events/module.php:39
@@ -589,7 +589,7 @@ msgstr ""
 #. I18N: Description of the “Top surnames” module
 #: modules_v3/top10_surnames/module.php:39
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "धेरै प्रचलित थरहरुको सुची"
 
 #. I18N: Description of the “Most visited pages” module
 #: modules_v3/top10_pageviews/module.php:39
@@ -930,7 +930,7 @@ msgstr "थप्नुहोस्"
 
 #: modules_v3/googlemap/admin_places.php:711
 msgid "Add  a new geographic location"
-msgstr ""
+msgstr "नयाँ भौगोलिक स्थल थप"
 
 #: modules_v3/clippings/module.php:485
 #, php-format
@@ -968,7 +968,7 @@ msgstr ""
 
 #: modules_v3/relatives/module.php:113
 msgid "Add a husband to this family"
-msgstr ""
+msgstr "यो परिवारमा श्रीमान थप"
 
 #: edit_interface.php:522 modules_v3/relatives/module.php:424
 msgid "Add a husband using an existing person"
@@ -989,7 +989,7 @@ msgstr ""
 
 #: modules_v3/relatives/module.php:281
 msgid "Add a new brother or sister"
-msgstr ""
+msgstr "नयाँ भाई अथवा बहिनी थप"
 
 #: edit_interface.php:375
 msgid "Add a new child"
@@ -999,7 +999,7 @@ msgstr ""
 #: modules_v3/relatives/module.php:101 modules_v3/relatives/module.php:102
 #: modules_v3/relatives/module.php:328
 msgid "Add a new father"
-msgstr ""
+msgstr "नया बाबु थप"
 
 #: modules_v3/gedcom_favorites/module.php:171
 msgid "Add a new favorite"
@@ -1007,7 +1007,7 @@ msgstr ""
 
 #: edit_interface.php:397 modules_v3/relatives/module.php:419
 msgid "Add a new husband"
-msgstr ""
+msgstr "नयाँ श्रीमान थप"
 
 #: includes/functions/functions_edit.php:1167
 #: includes/functions/functions_edit.php:1784
@@ -1020,13 +1020,13 @@ msgstr ""
 #: edit_interface.php:425 family.php:132 modules_v3/relatives/module.php:147
 #: modules_v3/relatives/module.php:148 modules_v3/relatives/module.php:331
 msgid "Add a new mother"
-msgstr ""
+msgstr "नयाँ आमा थप"
 
 #: help_text.php:1079 help_text.php:1146
 #: includes/functions/functions_edit.php:1760
 #: library/WT/Controller/Family.php:216 modules_v3/notes/module.php:95
 msgid "Add a new note"
-msgstr ""
+msgstr "नयाँ टिप्पणी थप"
 
 #: modules_v3/relatives/module.php:38
 msgid "Add a new parent"
@@ -1044,7 +1044,7 @@ msgstr ""
 
 #: modules_v3/relatives/module.php:277
 msgid "Add a new son or daughter"
-msgstr ""
+msgstr "नयाँ छोरा अथवा छोरी थप"
 
 #: help_text.php:1091 help_text.php:1159
 #: includes/functions/functions_edit.php:1706
@@ -1062,7 +1062,7 @@ msgstr ""
 
 #: edit_interface.php:395 modules_v3/relatives/module.php:402
 msgid "Add a new wife"
-msgstr ""
+msgstr "नयाँ श्रमती थप"
 
 #. I18N: label for a yes/no option
 #: modules_v3/charts/module.php:239 modules_v3/gedcom_favorites/module.php:241
@@ -1079,7 +1079,7 @@ msgstr ""
 
 #: modules_v3/relatives/module.php:159
 msgid "Add a wife to this family"
-msgstr ""
+msgstr "यो परिवारमा श्रमती थप"
 
 #: edit_interface.php:524 modules_v3/relatives/module.php:407
 msgid "Add a wife using an existing person"
@@ -1108,7 +1108,7 @@ msgstr ""
 
 #: modules_v3/relatives/module.php:112
 msgid "Add husband"
-msgstr ""
+msgstr "श्रीमान थप"
 
 #: modules_v3/clippings/module.php:90 modules_v3/clippings/module.php:510
 msgid "Add just this family record."
@@ -1124,11 +1124,11 @@ msgstr ""
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:171
 msgid "Add links"
-msgstr ""
+msgstr "लिङ्कहरु थप"
 
 #: modules_v3/relatives/module.php:204
 msgid "Add marriage details"
-msgstr ""
+msgstr "विवाहको विस्तृत विवरण् थप"
 
 #: modules_v3/batch_update/plugins/death_y.php:33
 msgid "Add missing death records"
@@ -1170,7 +1170,7 @@ msgstr ""
 #: modules_v3/stories/module.php:129 modules_v3/stories/module.php:216
 #: modules_v3/stories/module.php:345
 msgid "Add story"
-msgstr ""
+msgstr "कथा थप"
 
 #: modules_v3/clippings/module.php:110 modules_v3/clippings/module.php:529
 msgid "Add this person and his direct line ancestors."
@@ -1224,7 +1224,7 @@ msgstr ""
 
 #: modules_v3/relatives/module.php:158
 msgid "Add wife"
-msgstr ""
+msgstr "श्रीमती थप"
 
 #. I18N: Description of the “HTML” module
 #: modules_v3/html/module.php:39
@@ -1660,7 +1660,7 @@ msgstr "लगीन र लगआउट गर्ने अर्को तर�
 #. I18N: Description of the “Theme change” module
 #: modules_v3/theme_select/module.php:39
 msgid "An alternative way to select a new theme."
-msgstr ""
+msgstr "नया थिम छान्न वैकल्पिक उपाय"
 
 #: help_text.php:67
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -1695,7 +1695,7 @@ msgstr ""
 #: library/WT/Controller/Fanchart.php:314 library/WT/MenuBar.php:106
 #: modules_v3/ahnentafel_report/module.php:35
 msgid "Ancestors"
-msgstr ""
+msgstr "पूर्वजहरु"
 
 #. I18N: gedcom tag ANCI
 #: library/WT/Gedcom/Tag.php:124
@@ -1854,7 +1854,7 @@ msgstr ""
 
 #: modules_v3/stories/module.php:366
 msgid "Are you sure you want to delete this story?"
-msgstr ""
+msgstr "के तपाई यो कथा मेट्न निश्चित हुनुहुन्छ ।"
 
 #: admin_media.php:290 admin_media.php:425 admin_site_access.php:114
 #: admin_trees_manage.php:229 admin_users.php:162
@@ -2427,12 +2427,12 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:1265
 msgid "Birth:"
-msgstr ""
+msgstr "जन्म"
 
 #. I18N: Name of a module/report
 #: modules_v3/birth_report/module.php:35
 msgid "Births"
-msgstr ""
+msgstr "जन्महरु"
 
 #: library/WT/Stats.php:1243 statistics.php:106
 msgid "Births by century"
@@ -2967,7 +2967,7 @@ msgstr ""
 #: modules_v3/googlemap/places_edit.php:334
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:387
 msgid "Change flag"
-msgstr ""
+msgstr "झण्डा बदल"
 
 #: find.php:303 setup.php:128
 msgid "Change language"
@@ -3022,7 +3022,7 @@ msgstr ""
 #: library/WT/MenuBar.php:100 modules_v3/charts/help_text.php:33
 #: modules_v3/charts/module.php:34
 msgid "Charts"
-msgstr ""
+msgstr "चार्टहरु"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
 msgid "Check access rights on this directory."
@@ -3061,7 +3061,7 @@ msgstr "शाखा"
 #: modules_v3/tree/class_treeview.php:331
 #, php-format
 msgid "Child of %s"
-msgstr ""
+msgstr "%s को सन्तान"
 
 #: includes/functions/functions_print_lists.php:215
 #: includes/functions/functions_print_lists.php:637
@@ -3473,7 +3473,7 @@ msgstr "सामग्री"
 #: modules_v3/clippings/module.php:537 modules_v3/clippings/module.php:550
 #: modules_v3/googlemap/admin_places.php:373
 msgid "Continue Adding"
-msgstr ""
+msgstr "थप जारी राख"
 
 #. I18N: gedcom tag CONT
 #: library/WT/Gedcom/Tag.php:170
@@ -3558,7 +3558,7 @@ msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:177
 msgid "County"
-msgstr ""
+msgstr "देश"
 
 #: admin_media.php:286
 msgid "Create"
@@ -3846,7 +3846,7 @@ msgstr "मिति"
 
 #: modules_v3/user_messages/module.php:93
 msgid "Date Sent:"
-msgstr ""
+msgstr "पठाईएको मितीः"
 
 #: admin_trees_config.php:1022 help_text.php:1411
 msgid "Date differences"
@@ -4007,7 +4007,7 @@ msgstr ""
 #: modules_v3/tree/class_treeview.php:328
 #, php-format
 msgid "Daughter of %s"
-msgstr ""
+msgstr "%s को छोरी"
 
 #: admin.php:258 calendar.php:133 library/WT/MenuBar.php:376
 msgid "Day"
@@ -4290,11 +4290,11 @@ msgstr ""
 
 #: modules_v3/user_messages/module.php:123
 msgid "Delete Selected Messages"
-msgstr ""
+msgstr "छनौट गरिएको खबरहरु मेट्नुहोस"
 
 #: modules_v3/googlemap/admin_places.php:361
 msgid "Delete all existing geographic data before importing the file."
-msgstr ""
+msgstr "फाईल भित्र्याउन पहिले रहेको सबै  भोगोलिक आँकडाहरु मेटाऊ"
 
 #: themes/_administration/header.php:130
 msgid "Delete inactive users"
@@ -4346,7 +4346,7 @@ msgstr ""
 #: modules_v3/descendancy/module.php:34
 #: modules_v3/descendancy_report/module.php:35
 msgid "Descendants"
-msgstr ""
+msgstr "संततिहरु"
 
 #. I18N: gedcom tag DESI
 #: library/WT/Gedcom/Tag.php:189
@@ -4495,7 +4495,7 @@ msgstr ""
 
 #: find.php:222 find.php:239 find.php:256 find.php:274 find.php:291
 msgid "Display all"
-msgstr ""
+msgstr "सबै देखाऊ"
 
 #. I18N: Description of the “Favorites” module
 #: modules_v3/gedcom_favorites/module.php:41
@@ -4509,7 +4509,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:92 modules_v3/googlemap/module.php:416
 msgid "Display short placenames"
-msgstr ""
+msgstr "छोटो नामको स्थानहरु देखाऊ"
 
 #. I18N: gedcom tag DIV
 #: library/WT/Gedcom/Tag.php:191
@@ -4748,7 +4748,7 @@ msgstr ""
 
 #: modules_v3/stories/module.php:122 modules_v3/stories/module.php:206
 msgid "Edit story"
-msgstr ""
+msgstr "कथा सम्पादन गर"
 
 #: library/WT/Tree.php:334
 msgid "Edit this individual and replace their details with your own"
@@ -4917,7 +4917,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:80
 msgid "Enter filename"
-msgstr ""
+msgstr "फाइलको नाम राख"
 
 #: addmedia.php:453
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
@@ -5131,7 +5131,7 @@ msgstr ""
 #. I18N: Name of a module/sidebar
 #: modules_v3/extra_info/module.php:31
 msgid "Extra information"
-msgstr ""
+msgstr "अतिरिक्त जानकारी"
 
 #. I18N: gedcom tag _EYEC
 #: library/WT/Gedcom/Tag.php:715
@@ -5271,7 +5271,7 @@ msgstr "फकल्यान्ड द्विप"
 #: modules_v3/relatives/module.php:34 note.php:101 placelist.php:232
 #: search.php:119 source.php:100 statistics.php:56
 msgid "Families"
-msgstr ""
+msgstr "परिवारहरु"
 
 #: library/WT/Stats.php:378 statistics.php:379
 msgid "Families with sources"
@@ -5334,7 +5334,7 @@ msgstr ""
 #. I18N: Name of a module/sidebar
 #: modules_v3/families/module.php:34
 msgid "Family list"
-msgstr ""
+msgstr "परिवार सूची"
 
 #. I18N: Name of a module/sidebar
 #: edit_interface.php:942
@@ -5364,7 +5364,7 @@ msgstr ""
 #: modules_v3/faq/module.php:354 modules_v3/googlemap/module.php:1476
 #: modules_v3/html/module.php:296 modules_v3/stories/module.php:338
 msgid "Family tree"
-msgstr ""
+msgstr "परिवार वृक्ष"
 
 #: admin_users.php:222 admin_users.php:420
 msgid "Family tree access and settings"
@@ -5425,7 +5425,7 @@ msgstr ""
 #: modules_v3/gedcom_stats/module.php:173
 #: modules_v3/gedcom_stats/module.php:351 modules_v3/html/module.php:247
 msgid "Family with the most children"
-msgstr ""
+msgstr "धेरै बाच्चाहरु भएको परिवार"
 
 #: includes/functions/functions_print.php:102
 #: library/WT/Controller/Fanchart.php:55
@@ -5551,7 +5551,7 @@ msgstr "महिला"
 #: modules_v3/top10_givnnames/module.php:84 statistics.php:136
 #: statistics.php:152 statistics.php:165
 msgid "Females"
-msgstr ""
+msgstr "महिलाहरु"
 
 #: library/WT/Stats.php:3853
 msgid "Fiji"
@@ -5615,7 +5615,7 @@ msgstr "छनौट गर्नुस"
 
 #: find.php:109 includes/functions/functions_print.php:1170
 msgid "Find a fact or event"
-msgstr ""
+msgstr "तथ्य अथवा कार्यक्रम खोज"
 
 #: admin_site_merge.php:294 admin_site_merge.php:315 find.php:76
 #: includes/functions/functions_print.php:1136
@@ -5628,11 +5628,11 @@ msgstr ""
 
 #: find.php:88 includes/functions/functions_print.php:1158
 msgid "Find a note"
-msgstr ""
+msgstr "टिपोट खोज"
 
 #: find.php:82 includes/functions/functions_print.php:1132
 msgid "Find a place"
-msgstr ""
+msgstr "स्थल खोज"
 
 #: find.php:85 includes/functions/functions_print.php:1162
 msgid "Find a repository"
@@ -5641,7 +5641,7 @@ msgstr ""
 #: admin_site_merge.php:295 admin_site_merge.php:316 find.php:91
 #: includes/functions/functions_print.php:1154
 msgid "Find a source"
-msgstr ""
+msgstr "श्रोत खोज"
 
 #: find.php:94 includes/functions/functions_print.php:1140
 msgid "Find a special character"
@@ -5653,7 +5653,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:77
 #: modules_v3/GEDFact_assistant/module.php:80
 msgid "Find an individual"
-msgstr ""
+msgstr "व्याक्तिलाई खोज"
 
 #: relationship.php:149
 msgid "Find next path"
@@ -6213,7 +6213,7 @@ msgstr "गुयाना"
 #. I18N: Name of a module
 #: modules_v3/html/module.php:34
 msgid "HTML"
-msgstr ""
+msgstr "एचटीएमएल"
 
 #. I18N: gedcom tag _HAIR
 #: library/WT/Gedcom/Tag.php:733
@@ -6444,7 +6444,7 @@ msgstr "घर"
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:567
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1128
 msgid "Household"
-msgstr ""
+msgstr "घरेलु"
 
 #: library/WT/Gedcom/Code/Temp.php:113
 msgid "Houston, Texas"
@@ -6641,7 +6641,7 @@ msgstr "आयात गर्नुहोस्"
 
 #: modules_v3/googlemap/admin_places.php:722
 msgid "Import all places from a family tree"
-msgstr ""
+msgstr "परिवार वृक्ष बाट सम्पूर्ण स्थानहरु आयात गर्नुहोस्"
 
 #: help_text.php:1265
 msgid "Import family tree"
@@ -6740,12 +6740,12 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:1262
 msgid "Individual information"
-msgstr ""
+msgstr "व्यक्तिगत जानकारी"
 
 #. I18N: Name of a module
 #: modules_v3/individuals/module.php:34
 msgid "Individual list"
-msgstr ""
+msgstr "व्याक्ति सुची"
 
 #: admin_trees_config.php:834 admin_trees_config.php:985
 msgid "Individual pages"
@@ -6822,13 +6822,13 @@ msgstr ""
 #: library/WT/Controller/Fanchart.php:319 library/WT/MenuBar.php:120
 #: modules_v3/charts/module.php:208 modules_v3/tree/module.php:35
 msgid "Interactive tree"
-msgstr ""
+msgstr "पारस्परिक वृक्ष"
 
 #: modules_v3/charts/module.php:107 modules_v3/tree/class_treeview.php:79
 #: modules_v3/tree/class_treeview.php:145 modules_v3/tree/module.php:111
 #, php-format
 msgid "Interactive tree of %s"
-msgstr ""
+msgstr "%s को पारस्परिक वृक्ष"
 
 #: help_text.php:1185
 msgid "Internal messaging"
@@ -7636,7 +7636,7 @@ msgstr "पुरुष"
 #: modules_v3/top10_givnnames/module.php:89 statistics.php:135
 #: statistics.php:151 statistics.php:164
 msgid "Males"
-msgstr ""
+msgstr "पुरुषहरु"
 
 #: library/WT/Stats.php:3924
 msgid "Mali"
@@ -8638,7 +8638,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:333
 #: modules_v3/googlemap/places_edit.php:292
 msgid "Neighborhood"
-msgstr ""
+msgstr "छिमेकी"
 
 #: library/WT/Stats.php:3948
 msgid "Nepal"
@@ -8820,7 +8820,7 @@ msgstr ""
 #: library/WT/Controller/Descendancy.php:250
 #: modules_v3/descendancy/module.php:239
 msgid "No children"
-msgstr ""
+msgstr "बच्चाहरु छैन"
 
 #: includes/functions/functions_edit.php:221
 #: includes/functions/functions_edit.php:232
@@ -8896,7 +8896,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:160
 msgid "No map data for this person"
-msgstr ""
+msgstr "यो व्याक्तिको नक्साकोआँकडा छैन"
 
 #: admin_site_merge.php:137
 msgid "No matching facts found"
@@ -8913,7 +8913,7 @@ msgstr ""
 #: modules_v3/googlemap/admin_places.php:649
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:393
 msgid "No places found"
-msgstr ""
+msgstr "स्थानहरु भेटिएन"
 
 #: modules_v3/googlemap/admin_places.php:567
 msgid "No places selected."
@@ -9053,7 +9053,7 @@ msgstr ""
 
 #: modules_v3/batch_update/admin_batch_update.php:107
 msgid "Nothing found."
-msgstr ""
+msgstr "केही भेटिएन"
 
 #: library/WT/Date/Calendar.php:211
 msgctxt "Abbreviation for November"
@@ -9096,7 +9096,7 @@ msgstr ""
 #: modules_v3/upcoming_events/module.php:131
 #: modules_v3/yahrzeit/module.php:239
 msgid "Number of days to show"
-msgstr ""
+msgstr "देखाइने दिनहरुको संख्या"
 
 #: library/WT/Stats.php:3059 statistics.php:292
 msgid "Number of families without children"
@@ -9116,7 +9116,7 @@ msgstr ""
 #: modules_v3/top10_pageviews/module.php:135
 #: modules_v3/top10_surnames/module.php:155
 msgid "Number of items to show"
-msgstr ""
+msgstr "देखाइन राखिने विषयहरुको संख्या"
 
 #. I18N: gedcom tag NMR
 #: library/WT/Gedcom/Tag.php:275
@@ -9257,7 +9257,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/todays_events/module.php:34
 msgid "On this day"
-msgstr ""
+msgstr "यो दिनमा"
 
 #: modules_v3/review_changes/module.php:87
 msgid "Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that webtrees site and login to review the changes."
@@ -9355,7 +9355,7 @@ msgstr ""
 
 #: modules_v3/gedcom_stats/module.php:348
 msgid "Other records"
-msgstr ""
+msgstr "अरु रेकर्डहरु"
 
 #: admin_trees_config.php:1225
 msgid "Other settings"
@@ -9514,13 +9514,13 @@ msgstr ""
 #: library/WT/Controller/Pedigree.php:94 library/WT/MenuBar.php:104
 #: modules_v3/charts/module.php:205 modules_v3/pedigree_report/module.php:35
 msgid "Pedigree"
-msgstr ""
+msgstr "वंशावली"
 
 #: includes/functions/functions_print.php:93
 #: library/WT/Controller/Fanchart.php:308 library/WT/MenuBar.php:123
 #: modules_v3/googlemap/module.php:1313
 msgid "Pedigree map"
-msgstr ""
+msgstr "वंशको नक्सा"
 
 #. I18N: %s is an individual’s name
 #: modules_v3/googlemap/module.php:656
@@ -9802,7 +9802,7 @@ msgstr "स्थानहरू"
 
 #: find.php:615
 msgid "Places found"
-msgstr ""
+msgstr "स्थानहरु भेटियो"
 
 #. I18N: %s is a country or region
 #: placelist.php:147
@@ -10253,7 +10253,7 @@ msgstr ""
 #: edit_interface.php:1983 edit_interface.php:2362
 #: library/WT/Controller/Family.php:135 modules_v3/relatives/module.php:289
 msgid "Re-order children"
-msgstr ""
+msgstr "बच्चाहरुको क्रम मिलाऊ"
 
 #: edit_interface.php:2389 edit_interface.php:2431
 #: library/WT/Controller/Individual.php:333
@@ -10280,7 +10280,7 @@ msgstr ""
 #. I18N: Name of a module
 #: admin.php:244 modules_v3/recent_changes/module.php:36
 msgid "Recent changes"
-msgstr ""
+msgstr "हालको परिवर्तनहरु"
 
 #: library/WT/Gedcom/Code/Temp.php:160
 msgid "Recife, Brazil"
@@ -10338,7 +10338,7 @@ msgstr ""
 #: modules_v3/googlemap/wt_v3_googlemap.js.php:389
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:175
 msgid "Redraw map"
-msgstr ""
+msgstr "नस्सा पुनः बनाऊ"
 
 #. I18N: gedcom tag REFN
 #: library/WT/Gedcom/Tag.php:299
@@ -10378,7 +10378,7 @@ msgstr ""
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:35
 msgid "Related families"
-msgstr ""
+msgstr "सम्बन्धीत परिवारहरु"
 
 #. I18N: Name of a report
 #: modules_v3/relative_ext_report/module.php:35
@@ -10464,7 +10464,7 @@ msgstr "हटाऊनुहोस्"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:140
 msgid "Remove Link from list"
-msgstr ""
+msgstr "सुचीबाट लिङ्क हटाऊ"
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:33
 msgid "Remove duplicate links"
@@ -10474,7 +10474,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:496
 #: modules_v3/googlemap/places_edit.php:335
 msgid "Remove flag"
-msgstr ""
+msgstr "झण्डा हटाऊ"
 
 #: help_text.php:1375 timeline.php:272 timeline.php:288
 msgid "Remove person"
@@ -10565,7 +10565,7 @@ msgstr ""
 #. I18N: Name of a module.  Tasks that need further research.
 #: modules_v3/todo/help_text.php:33 modules_v3/todo/module.php:34
 msgid "Research tasks"
-msgstr ""
+msgstr "अनुसन्धानात्मक कार्यहरु"
 
 #: modules_v3/todo/help_text.php:34
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research.  You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
@@ -10579,7 +10579,7 @@ msgstr ""
 #: includes/functions/functions_print_lists.php:507 medialist.php:158
 #: modules_v3/googlemap/placehierarchy.php:233
 msgid "Reset"
-msgstr "रिसेट गर्नुहोस्"
+msgstr "फेरि मिलाउनुहोला ।"
 
 #: includes/functions/functions_print_lists.php:99
 #: includes/functions/functions_print_lists.php:507
@@ -10852,7 +10852,7 @@ msgstr "खोज्नुहोस्"
 #: modules_v3/batch_update/plugins/search_replace.php:37 search.php:243
 #: search.php:253
 msgid "Search and replace"
-msgstr ""
+msgstr "खोज र बदल"
 
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:41
@@ -10877,7 +10877,7 @@ msgstr ""
 
 #: modules_v3/googlemap/places_edit.php:258
 msgid "Search globally"
-msgstr ""
+msgstr "व्यापक खोज"
 
 #: modules_v3/googlemap/places_edit.php:260
 msgid "Search locally"
@@ -10885,7 +10885,7 @@ msgstr ""
 
 #: modules_v3/batch_update/plugins/search_replace.php:109
 msgid "Search method"
-msgstr ""
+msgstr "खोज्ने प्रणाली"
 
 #: modules_v3/batch_update/plugins/search_replace.php:99
 msgid "Search text/pattern"
@@ -10918,7 +10918,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:70
 msgid "Select an icon"
-msgstr ""
+msgstr "आइकन छान"
 
 #: statistics.php:500
 msgid "Select chart type:"
@@ -10926,7 +10926,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:75 modules_v3/googlemap/module.php:439
 msgid "Select flag"
-msgstr ""
+msgstr "झण्डा छान"
 
 #. I18N: Description of the “Clippings cart” module
 #: modules_v3/clippings/module.php:39
@@ -11106,7 +11106,7 @@ msgstr ""
 #: library/WT/Controller/Media.php:181
 #: modules_v3/lightbox/functions/lightbox_print_media.php:401
 msgid "Set link"
-msgstr ""
+msgstr "लिकं बनाऊ"
 
 #: themes/_administration/header.php:119 themes/_administration/header.php:131
 msgid "Set the default blocks"
@@ -11341,7 +11341,7 @@ msgstr ""
 
 #: modules_v3/notes/module.php:59
 msgid "Show all notes"
-msgstr ""
+msgstr "सबै टिप्पणीहरु देखाऊ"
 
 #: admin_trees_config.php:1014 help_text.php:861
 msgid "Show all notes and source references on notes and sources tabs"
@@ -11353,7 +11353,7 @@ msgstr ""
 
 #: modules_v3/tree/class_treeview.php:75
 msgid "Show all spouses and ancestors"
-msgstr ""
+msgstr "सबै श्रीमतीहरु र पूर्वजहरु देखाऊ"
 
 #: find.php:477
 msgid "Show all tags"
@@ -11411,7 +11411,7 @@ msgstr ""
 
 #: modules_v3/relatives/module.php:318
 msgid "Show date differences"
-msgstr ""
+msgstr "मिती अन्तरहरु देखाऊ"
 
 #. I18N: label for yes/no option
 #: modules_v3/gedcom_stats/module.php:262
@@ -11469,7 +11469,7 @@ msgstr ""
 #: modules_v3/todays_events/module.php:134
 #: modules_v3/upcoming_events/module.php:146
 msgid "Show only Births, Deaths, and Marriages?"
-msgstr ""
+msgstr "जन्महरु,मृत्युहरु र विवाहहरु मात्र देखाऊ ?"
 
 #: modules_v3/todays_events/module.php:127
 #: modules_v3/upcoming_events/module.php:139
@@ -11557,7 +11557,7 @@ msgstr ""
 
 #: modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
-msgstr ""
+msgstr "स्लाईड दृश्यको नियन्त्रक देखाऊ"
 
 #: familybook.php:76 help_text.php:1421 hourglass.php:91
 msgid "Show spouses"
@@ -11576,7 +11576,7 @@ msgstr ""
 
 #: modules_v3/html/module.php:319
 msgid "Show the date and time of update"
-msgstr ""
+msgstr "नवीनीकरणको समय र मिती देखाऊ"
 
 #: famlist.php:185 indilist.php:185
 msgid "Show the list of individuals"
@@ -11719,7 +11719,7 @@ msgstr "सिभान"
 
 #: modules_v3/googlemap/module.php:274 modules_v3/googlemap/module.php:398
 msgid "Size of map (in pixels)"
-msgstr ""
+msgstr "नक्साको आकार(पिक्सेलमा)"
 
 #: library/WT/Gedcom/Code/Rela.php:188
 msgid "Slave"
@@ -11791,7 +11791,7 @@ msgstr ""
 #: modules_v3/tree/class_treeview.php:325
 #, php-format
 msgid "Son of %s"
-msgstr ""
+msgstr "%s को छोरा"
 
 #: medialist.php:92 modules_v3/recent_changes/module.php:151
 #: modules_v3/todays_events/module.php:148
@@ -11998,7 +11998,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/stories/module.php:34 modules_v3/stories/module.php:411
 msgid "Stories"
-msgstr ""
+msgstr "कथाहरु"
 
 #: modules_v3/stories/module.php:241
 msgid "Story"
@@ -12007,7 +12007,7 @@ msgstr "कथा"
 #: modules_v3/stories/module.php:238 modules_v3/stories/module.php:349
 #: modules_v3/stories/module.php:415
 msgid "Story title"
-msgstr ""
+msgstr "कथाको शिर्षक"
 
 #. I18N: Part of a country, state/region/county
 #: modules_v3/googlemap/module.php:604 modules_v3/googlemap/module.php:1494
@@ -12039,7 +12039,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:372
 msgid "Suffixes"
-msgstr ""
+msgstr "पत्य्यहरु"
 
 #: includes/functions/functions_print.php:1115
 #: library/WT/Date/Calendar.php:261
@@ -12541,7 +12541,7 @@ msgstr "विषयवस्तु"
 #. I18N: Name of a module
 #: modules_v3/theme_select/module.php:34
 msgid "Theme change"
-msgstr ""
+msgstr "थिम बदल"
 
 #: admin_trees_config.php:439 help_text.php:428
 msgid "Theme dropdown selector for theme changes"
@@ -12557,7 +12557,7 @@ msgstr "निज ब्यक्तिको कुनै तथ्यहरु
 
 #: modules_v3/notes/module.php:86
 msgid "There are no Notes for this individual."
-msgstr ""
+msgstr "यो व्याक्तिको लागि टिप्पणीहरु छैन"
 
 #: modules_v3/sources_tab/module.php:74
 msgid "There are no Source citations for this individual."
@@ -13457,12 +13457,12 @@ msgstr ""
 #. I18N: i.e. most popular surname.
 #: modules_v3/top10_surnames/module.php:90
 msgid "Top surname"
-msgstr ""
+msgstr "उच्च थर"
 
 #. I18N: Name of a module.  Top=Most common
 #: modules_v3/top10_surnames/module.php:34 statistics.php:185
 msgid "Top surnames"
-msgstr ""
+msgstr "उच्च थरहरु"
 
 #: library/WT/Gedcom/Code/Temp.php:188
 msgid "Toronto, Ontario, Canada"
@@ -13488,7 +13488,7 @@ msgstr ""
 #: modules_v3/gedcom_stats/module.php:356 modules_v3/html/module.php:204
 #: statistics.php:351
 msgid "Total events"
-msgstr ""
+msgstr "सम्पूर्ण घट्नाक्रमहरु"
 
 #: library/WT/Stats.php:3058 statisticsplot.php:779
 msgid "Total families"
@@ -13537,7 +13537,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:1709
 #, php-format
 msgid "Total places: %s"
-msgstr ""
+msgstr "सम्पूर्ण स्थानहरुः%s"
 
 #: find.php:684
 #, php-format
@@ -13548,12 +13548,12 @@ msgstr ""
 #: modules_v3/gedcom_stats/module.php:308 modules_v3/html/module.php:184
 #: statistics.php:177
 msgid "Total surnames"
-msgstr ""
+msgstr "सम्पूर्ण थरहरु"
 
 #: modules_v3/gedcom_stats/module.php:116
 #: modules_v3/gedcom_stats/module.php:364 modules_v3/html/module.php:208
 msgid "Total users"
-msgstr ""
+msgstr "सम्पूर्ण प्रयोगकर्ताहरु"
 
 #. I18N: gedcom tag TRLR
 #: library/WT/Gedcom/Tag.php:336
@@ -13760,7 +13760,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:34
 msgid "Upcoming events"
-msgstr ""
+msgstr "आउदो कार्यक्रमहरु"
 
 #: modules_v3/batch_update/admin_batch_update.php:348
 #: modules_v3/batch_update/admin_batch_update.php:353
@@ -13806,7 +13806,7 @@ msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:736
 msgid "Upload geographic data"
-msgstr ""
+msgstr "भौगोलिक आँकडा अप्लोड गर्नुहोस"
 
 #: admin_media_upload.php:34 admin_media_upload.php:179 help_text.php:1444
 #: themes/_administration/header.php:137
@@ -13860,7 +13860,7 @@ msgstr[1] ""
 
 #: modules_v3/tree/class_treeview.php:74
 msgid "Use compact layout"
-msgstr ""
+msgstr "कम्प्याक्ट लेआउट प्रयोग गर"
 
 #: admin_trees_config.php:1238 help_text.php:532
 msgid "Use full source citations"
@@ -13904,7 +13904,7 @@ msgstr ""
 
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:398
 msgid "Use this value"
-msgstr ""
+msgstr "यो मान प्रयोग गर"
 
 #: admin_site_change.php:266 admin_site_change.php:292 admin_site_logs.php:233
 #: admin_site_logs.php:258 edit_changes.php:172
@@ -14564,7 +14564,7 @@ msgstr ""
 
 #: modules_v3/user_messages/module.php:87
 msgid "You have no pending messages."
-msgstr ""
+msgstr "तपाँईको हेर्न बाँकी रहेको खबरहरु छैन"
 
 #: modules_v3/user_blog/module.php:78
 msgid "You have not created any Journal items."
@@ -14597,7 +14597,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:50
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:77
 msgid "You must enter a name"
-msgstr ""
+msgstr "तपाईले नाम अवश्य हाल्नु पर्छ"
 
 #: admin_users.php:318
 msgid "You must enter a password."
@@ -14783,7 +14783,7 @@ msgstr "जूम बढाउनुहोस्"
 
 #: modules_v3/googlemap/module.php:1357
 msgid "Zoom in here"
-msgstr ""
+msgstr "यहाँ जुम गर्नुहोस"
 
 #: includes/functions/functions_print.php:137
 msgid "Zoom in/out on this box."
@@ -14795,7 +14795,7 @@ msgstr "जूम घटाउनुहोस्"
 
 #: modules_v3/googlemap/module.php:1358
 msgid "Zoom out here"
-msgstr ""
+msgstr "यहाँ जुम घटाउनुहोस"
 
 #: modules_v3/googlemap/module.php:1657
 msgid "Zoom="
@@ -15002,7 +15002,7 @@ msgstr ""
 
 #: includes/functions/functions.php:1196 modules_v3/relatives/module.php:282
 msgid "brother"
-msgstr ""
+msgstr "भाई"
 
 #: includes/functions/functions.php:1334
 msgctxt "brother's wife's brother"
@@ -15076,7 +15076,7 @@ msgstr ""
 
 #: modules_v3/top10_surnames/module.php:164
 msgid "bullet list"
-msgstr ""
+msgstr "बुलेट सुची"
 
 #: library/WT/Stats.php:1750 library/WT/Stats.php:3608
 msgid "burial"
@@ -15232,7 +15232,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:330 modules_v3/googlemap/module.php:338
 #: modules_v3/googlemap/module.php:346 modules_v3/googlemap/module.php:354
 msgid "digits"
-msgstr ""
+msgstr "अंकहरु"
 
 #: admin_trees_config.php:483
 msgid "disable"
@@ -17403,7 +17403,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:285
 msgid "minimum"
-msgstr ""
+msgstr "न्यूनतम"
 
 #: statisticsplot.php:897 statisticsplot.php:900 statisticsplot.php:903
 #: statisticsplot.php:906 statisticsplot.php:909
@@ -17980,7 +17980,7 @@ msgstr ""
 
 #: includes/functions/functions.php:1211 modules_v3/relatives/module.php:283
 msgid "sister"
-msgstr ""
+msgstr "बहि"
 
 #: includes/functions/functions.php:1232
 msgctxt "brother's wife"
@@ -18613,3 +18613,194 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid " in "
+#~ msgstr " मा "
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "ए३"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "ए४"
+
+#~ msgid "Access"
+#~ msgstr "पहुँच"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "प्रस्तुत व्यात्तिको श्रीमान थप"
+
+#~ msgid "Add individuals"
+#~ msgstr "व्याक्तिहरु थप"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "एक व्याक्तिको सम्पूण पूर्वज र सन्नतीहरु देखाइएको पारस्परिक वृक्ष"
+
+#~ msgid "Contact information"
+#~ msgstr "सम्पर्क जानकारी"
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "कोट ड'लवोइर"
+
+#~ msgid "Email address:"
+#~ msgstr "इमेल ठेगाना:"
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "व्यात्ति,परिवार अथवा श्रोतको आइडी राख"
+
+#~ msgid "External objects"
+#~ msgstr "बाह्य वस्तुहरु"
+
+#~ msgid "Font"
+#~ msgstr "फन्ट"
+
+#~ msgid "He "
+#~ msgstr "उ "
+
+#~ msgid "He died"
+#~ msgstr "उसको मृत्यु"
+
+#~ msgid "He married"
+#~ msgstr "उनले विवाह"
+
+#~ msgid "He resided at"
+#~ msgstr "उसको ठेगाना"
+
+#~ msgid "He was born"
+#~ msgstr "उ जन्मेको"
+
+#~ msgid "Her occupation was"
+#~ msgstr "उनीको व्यबासय"
+
+#~ msgid "His occupation was"
+#~ msgstr "उसको व्यबासय"
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "यदि तपाई सँग ठूलो मात्रामा निष्क्रिय स्थानहरु छन भने सुची बनाउन ढिलाइ हुनसक्छ"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "धेरै समय बाँच्ने व्यात्ति"
+
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "कानुनी"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "चिठ्ठी"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "यो व्यात्तिलाई प्रस्तुत परिवारमा श्रीमानको रुपमा लिङ्क गराऊ"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "यो व्यात्तिलाई प्रस्तुत परिवारमा श्रीमतीको रुपमा लिङ्क गराऊ"
+
+#~ msgid "Loading…"
+#~ msgstr "लोड भईरहेको छ"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "स्थल मेटिएन यस स्थानको उप–स्थलहरु छ"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "सर्वाधिक हेरिएका विषयहरु"
+
+#~ msgid "Orientation"
+#~ msgstr "अभिमुखीकरण"
+
+#~ msgid "Page"
+#~ msgstr "पेज"
+
+#~ msgid "Port"
+#~ msgstr "पोर्ट"
+
+#~ msgid "Remove this location?"
+#~ msgstr "यो स्थललाई हटाऊ ?"
+
+#~ msgid "Security"
+#~ msgstr "सुरक्षा"
+
+#~ msgid "Send message"
+#~ msgstr "सन्देश पठाउनुहोस्"
+
+#~ msgid "Server"
+#~ msgstr "सर्भर"
+
+#~ msgid "She "
+#~ msgstr "उनी "
+
+#~ msgid "She died"
+#~ msgstr "उनीको मृत्यु"
+
+#~ msgid "She married"
+#~ msgstr "उनीले विवाह"
+
+#~ msgid "She was born"
+#~ msgstr "उनी जन्मेकी"
+
+#~ msgid "She was buried"
+#~ msgstr "उनलाई दफनाइएको थियो"
+
+#~ msgid "Show details"
+#~ msgstr "विस्तारमा देखाउनुहोस्"
+
+#~ msgid "Show inactive places"
+#~ msgstr "निष्क्रिय स्थानहरु देखाऊ"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "बाच्ने व्यात्तिहरुको मात्र घट्नक्रमहरु देखाऊ"
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "व्याक्तिहरु,घट्नाहरु अथवा सबै देखाऊ"
+
+#~ msgid "Show residences?"
+#~ msgstr "बसाइँ देखाउ ?"
+
+#~ msgid "Spouse"
+#~ msgstr "पति/पत्नि"
+
+#~ msgid "Surname option"
+#~ msgstr "थरको विकल्प"
+
+#~ msgid "To family"
+#~ msgstr "परिवारलाई"
+
+#~ msgid "To individual"
+#~ msgstr "व्याक्तिलाई"
+
+#~ msgid "To source"
+#~ msgstr "श्रोतलाई"
+
+#~ msgid "View family"
+#~ msgstr "परिवार हेर्नुहोस"
+
+#~ msgid "View person"
+#~ msgstr "व्याक्ति हेर्नुहोस"
+
+#~ msgid "View source"
+#~ msgstr "दृश्य स्रोत"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "श्रीमतीको थर श्रीमानको थरले स्थान लियो"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "मरेकी"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "मरेको"
+
+#~ msgid "first"
+#~ msgstr "पहिलो"
+
+#~ msgid "last"
+#~ msgstr "अन्तिम"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "बिवाहित"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "बिवाहित"

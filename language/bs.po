@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:24+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -1645,7 +1645,7 @@ msgstr "Američka Samoa"
 #. I18N: Description of the “Album” module
 #: modules_v3/lightbox/module.php:39
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Alternativa za jezičak \"Medij\", i napredni preglednik slika."
+msgstr "Alternativa za jezičak “Medij”, i napredni preglednik slika."
 
 #. I18N: Description of the “Charts” module
 #: modules_v3/charts/module.php:39
@@ -8868,6 +8868,7 @@ msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -13387,7 +13388,7 @@ msgstr ""
 
 #: modules_v3/todo/help_text.php:36
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Za kreiranje novog zadatka istaživanja, prvo morate dodati \"zadatak istraživanja\" na listu činjenica i događaja u postavkama za porodično stablo."
+msgstr "Za kreiranje novog zadatka istaživanja, prvo morate dodati “zadatak istraživanja” na listu činjenica i događaja u postavkama za porodično stablo."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:581
@@ -18611,14 +18612,894 @@ msgstr "“%s” dodan/a u  omiljene."
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:37
 msgctxt "Unknown surname"
 msgid "…"
-msgstr "..."
+msgstr "…"
+
+#~ msgid " but the details are unknown"
+#~ msgstr " ali su detalji nepoznati"
+
+#~ msgid " in "
+#~ msgstr " u "
+
+#~ msgid "(aged %s)"
+#~ msgstr "(star/stara %s)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(star/stara manje od %s)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "(star/stara više od %s)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(filtirirano od %s ukupno unosa)"
+
+#~ msgid "(in childhood)"
+#~ msgstr "(u djetinjstvu)"
+
+#~ msgid "(in infancy)"
+#~ msgstr "(kao dojenče)"
+
+#~ msgid "(stillborn)"
+#~ msgstr "(mrtvorođeno)"
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Dobrodošli na genološku web stranicu</b></center><br>Pristup je dopušten samo registriranim korisnicima."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Dobrodošli na genološku web stranicu</b></center><br>Pristup ovomj stranici je dozvoljen <u>autorizvoanim</u> korisnicima.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-mailom nakon pregleda prijave."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Dobrodošli na genološku web stranicu</b></center><br>Pristup stranici je dopušten  <u>samo članovima porodice</u>.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-mailom nakon pregleda prijave."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Dobrodošli na genološku web stranicu</b></center><br>Pristup stranici je dopušten svakome tko ima korisnički račun.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate korisnički račun, možete se prijaviti za dobivanje jednog na prikladnom linku ispod<br><br>Nakon pregledavanja vaše prijave, administrator će aktivirati vaš račun. Primiti će te e-mail sa potvrdom aktivacije računa nakon što račun bude aktiviran.."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=abcčćdđefghijklmnoprsštuvzž"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=ABCČĆDĐEFGHIJKLMNOPRSŠTUVZŽ"
+
+#~ msgid "Access"
+#~ msgstr "Pristup"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Dodaj supruga koristeći postojeću osobu"
+
+#~ msgid "Add a new name"
+#~ msgstr "Dodaj novo ime"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Dodaj suprugu koristeći postojeću osobu"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Dodaj osobu na grafikon"
+
+#~ msgid "Add individuals"
+#~ msgstr "Dodaj ljude"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Dodaj samo ovu osobu."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Dodaj zapise roditelja i svih potomaka zajedno sa ovim porodičnim zapisom."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Dodaj zapise roditelja i zapise djece zajedno sa ovim porodičnim zapisom."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Dodaj zapise roditelja zajedno sa ovim porodičnim zapisom."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Dodaj ovu osobu i njegovu direktnu liniju predaka."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Dodaj ovu osobu, njegovu direktnu liniju predaka i njihove porodice."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Dodaj ovu osobu, njegove roditelje, i braću i sestre."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Dodaj ovu osobu, njegovu suprugu i sve potomke."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Dodaj ovu osobu, njegovu suprugu i djecu."
+
+#~ msgid "All individuals"
+#~ msgstr "Sve osobe"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "Interaktivno stablo, prikazuje sve pretke i potomke osobe."
+
+#~ msgid "Ancestors of "
+#~ msgstr "Preci za "
+
+#~ msgid "Ancestral file number"
+#~ msgstr "Broj datoteke predaka"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Jeste li sigurni da želite opozvati sve promjene na GEDCOM-u"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
+
+#~ msgid "Available blocks"
+#~ msgstr "Dostupni blokovi"
+
+#~ msgid "Begin year"
+#~ msgstr "Početna godina"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "Detalji o rođenju i smrti na grafikonima"
+
+#~ msgid "Birth date range end"
+#~ msgstr "Do datuma rođenja"
+
+#~ msgid "Birth date range start"
+#~ msgstr "Od datuma rođenja"
+
+#~ msgid "Brother"
+#~ msgstr "Brat"
+
+#~ msgid "Burial place contains"
+#~ msgstr "Mjesto pokopa sadrži"
+
+#~ msgid "Change family members"
+#~ msgstr "Promijeni članove porodice"
+
+#~ msgid "Child of "
+#~ msgstr "Djete "
+
+#~ msgid "Children of "
+#~ msgstr "Djeaca osobe "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Odaberi rodbinu"
+
+#~ msgid "Clear chart"
+#~ msgstr "Očisti grafikon"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "Kliknite da odaberete osobu %s kao glavu prodice."
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Klikni na Ime da dodaš osobu na listu Dodaj linkove"
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Klkini  da odabereš osobu za glavu porodice."
+
+#~ msgid "Coat of arms"
+#~ msgstr "Grb"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Vanbračna zajednica"
+
+#~ msgid "Contact information"
+#~ msgstr "Kontakt informacije"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Ispravi zapise IMENA u obilku 'John/DOE/' ili 'John /DOE', kao što su to radili stari genealoški programi."
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "Obala Slonovače"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Napravi novu djeljenu zabilješku"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Kreiraj novu djeljenu zabilješku koristeći asistenta"
+
+#~ msgid "Create repository"
+#~ msgstr "Kreiraj skladište"
+
+#~ msgid "Custom event"
+#~ msgstr "Kastomizirani događaj"
+
+#~ msgid "Date of adoption"
+#~ msgstr "Datum posvojenja"
+
+#~ msgid "Date of cremation"
+#~ msgstr "Datum kremacije"
+
+#~ msgid "Date of emigration"
+#~ msgstr "Datum emigracije"
+
+#~ msgid "Date of event"
+#~ msgstr "Datum događaja"
+
+#~ msgid "Date of immigration"
+#~ msgstr "Datum imigracije"
+
+#~ msgid "Daughter"
+#~ msgstr "Kćer"
+
+#~ msgid "Death date range end"
+#~ msgstr "Do datuma smrti"
+
+#~ msgid "Death date range start"
+#~ msgstr "Od datuma smrti"
+
+#~ msgid "Default theme"
+#~ msgstr "Osnovna tema"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Potomci osobe "
+
+#~ msgid "Descent steps"
+#~ msgstr "Linija potomaka"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Zu-l-ka'dea"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Zu-l-ka'deom"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Zu-l-ka'deu"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Zu-l-ka'de"
+
+#~ msgid "Differences"
+#~ msgstr "Razlike"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Preci u direktnoj liniji"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Preci u direktnoj liniji i njihove porodice"
+
+#~ msgid "Display %s"
+#~ msgstr "Prikaži %s"
+
+#~ msgid "Do not seal, previous sealing cancelled"
+#~ msgstr "Ne pečati; prijašnje pečaćenje prekinuto"
+
+#~ msgid "Do not seal: unauthorized"
+#~ msgstr "Ne pečati: neautorizirano"
+
+#~ msgid "Edit details"
+#~ msgstr "Uredi detalje"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Uredi sirovi GEDCOM zapis"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Uredi djeljenu zabilješku"
+
+#~ msgid "Email address:"
+#~ msgstr "Adresa e-pošte:"
+
+#~ msgid "End year"
+#~ msgstr "Završna godina"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "Do datuma promjene"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Unesi ID osobe"
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Unesite Osobu, Porodicu, ili oznaku izvora"
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Unesite ili nađite oznaku osobe, porodice ili izvora sa kojim bi ovaj medij trebao biti povezan."
+
+#~ msgid "Entry text:"
+#~ msgstr "Tekst:"
+
+#~ msgid "External objects"
+#~ msgstr "Vanjski objekti"
+
+#~ msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+#~ msgstr "Najčešća pitanja i odgovori su lista pitanja i odgovora koja vam omogućava da objasnite pravila site-a, polise i procedure za vaše posjetioce. Pitanja se tipično bave privatnošću, zaštitom autorskih prava, korisničkim računima, neprikadnim sadržajima, zahtjevima za izvore citata, itd."
+
+#~ msgid "Family group information"
+#~ msgstr "Informacije o porodičnoj grupi"
+
+#~ msgid "Family with husband"
+#~ msgstr "Porodica sa mužem"
+
+#~ msgid "Family with wife"
+#~ msgstr "Porodica sa ženom"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Mjesto rođenja oca - (Chapmanov format)"
+
+#~ msgid "Father’s age"
+#~ msgstr "Dob oca"
+
+#~ msgid "Font"
+#~ msgstr "Font"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "GEDCOM statistika"
+
+#~ msgid "Gedcom"
+#~ msgstr "Gedcom"
+
+#~ msgid "He "
+#~ msgstr "On "
+
+#~ msgid "He died"
+#~ msgstr "Umro je"
+
+#~ msgid "He married"
+#~ msgstr "Oženio se"
+
+#~ msgid "He resided at"
+#~ msgstr "Stanovao je u"
+
+#~ msgid "He was born"
+#~ msgstr "Rođen je"
+
+#~ msgid "He was buried"
+#~ msgstr "Sahranjen je"
+
+#~ msgid "He was christened"
+#~ msgstr "Kršten"
+
+#~ msgid "He was cremated"
+#~ msgstr "Kremiran je"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Zdravo %s …"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Njeno zanimanje je bilo"
+
+#~ msgid "His occupation was"
+#~ msgstr "Negovo zanimanje je bilo"
+
+#~ msgid "Hit count:"
+#~ msgstr "Brojač posjeta"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Muževe godine"
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "Ako imate veliki broj inaktivnih mjesta, generisanje liste može biti sporo."
+
+#~ msgid "In this month…"
+#~ msgstr "U ovom mjesecu …"
+
+#~ msgid "In this year…"
+#~ msgstr "U ovoj godini …"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Uključi neposrednu porodicu osobe?"
+
+#~ msgid "Individual 1"
+#~ msgstr "Osoba 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Osoba 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Osoba koja je živjela najduže"
+
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
+#~ msgid "Link ID"
+#~ msgstr "ID veze"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Dodaj ovu osobu kao dijete već upisanoj porodici"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Dodaj ovu osobu kao supruga već upisanoj porodici"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Poveži ovu osobu na postojeću porodicu kao suprugu"
+
+#~ msgid "Living individuals"
+#~ msgstr "Žive osobe"
+
+#~ msgid "Loading…"
+#~ msgstr "Učitavam…"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Lokacija nije uklonjena: ova lokacije sadrži podlokacije"
+
+#~ msgid "Main section blocks"
+#~ msgstr "Blokovi glavne sekcije"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Do datuma vjenčanja"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Od datuma vjenčanja"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Mjesto vjenčanja sadrži"
+
+#~ msgid "Married name"
+#~ msgstr "Vjenčano ime"
+
+#~ msgid "Married surname"
+#~ msgstr "Vjenčano prezime"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Najviše pregledana stavka"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Mjesto rođenja majke - (Chapmanov format)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Dob majke"
+
+#~ msgid "Move left"
+#~ msgstr "Pomjeri lijevo"
+
+#~ msgid "Move right"
+#~ msgstr "Pomjeri desno"
+
+#~ msgid "Name List"
+#~ msgstr "Imenuj listu"
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Ne postoje događaji za žive ljude danas"
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Ne postoje događaji sa žive osobe za sutra."
+
+#~ msgid "No records to display"
+#~ msgstr "Ne postoje zapisi za prikaz"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Takav ID ne postoji u GEDCOM datoteci."
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Najstarije žive osobe"
+
+#~ msgid "On this day…"
+#~ msgstr "Na današnji dan …"
+
+#~ msgid "Orientation"
+#~ msgstr "Orijentacija"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Druga mapa… molimo unesite"
+
+#~ msgid "Page"
+#~ msgstr "Stranica"
+
+#~ msgid "Page size"
+#~ msgstr "Veličina stranice"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Roditelji, braća i sestre"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Dob roditelja"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Grafikon krvne linije"
+
+#~ msgid "Place of adoption"
+#~ msgstr "Mjesto posvojenja"
+
+#~ msgid "Place of emigration"
+#~ msgstr "Mjesto emigracije"
+
+#~ msgid "Place of event"
+#~ msgstr "Mjesto događaja"
+
+#~ msgid "Place of immigration"
+#~ msgstr "Mjesto imigracije"
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rebi-ul-evvela"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rebi-ul-evvelom"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rebi-ul-evvelu"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rebi-ul-evvel"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rebi-ul-ahira"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rebi-ul-ahirom"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rebi-ul-ahiru"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rebi-ul-ahir"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Zadnje godine (&lt; 100 god)"
+
+#~ msgid "Religious institution"
+#~ msgstr "Vjerska institucija"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Ukloniti ovu lokaciju?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Blokovi desne sekcije"
+
+#~ msgid "SMTP port"
+#~ msgstr "SMTP port"
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Pretraži i/ili zamjeni podatke u svom GEDCOMu koristeči jednostavne pretrage i napredno popudaranje šablona."
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Potraži ljude za dodavanje na listu Dodaj linkove"
+
+#~ msgid "Security"
+#~ msgstr "Sigurnost"
+
+#~ msgid "Select events"
+#~ msgstr "Odaberi događaje"
+
+#~ msgid "Send message"
+#~ msgstr "Pošalji Poruku"
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Djeljene zabilješke sadrže:"
+
+#~ msgid "Shared notes found"
+#~ msgstr "Pronađene djeljene zabilješke"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Ša'bana"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "Ša'banom"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Ša'banu"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Ša'ban"
+
+#~ msgid "She "
+#~ msgstr "Ona "
+
+#~ msgid "She died"
+#~ msgstr "Umrla je"
+
+#~ msgid "She married"
+#~ msgstr "Udala se"
+
+#~ msgid "She resided at"
+#~ msgstr "Stanovala je u"
+
+#~ msgid "She was born"
+#~ msgstr "Rođena je"
+
+#~ msgid "She was buried"
+#~ msgstr "Sahranjena je"
+
+#~ msgid "She was christened"
+#~ msgstr "Krštena"
+
+#~ msgid "She was cremated"
+#~ msgstr "Kremirana je"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Prikaži sva mjesta u listi"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Prikaži djecu predaka?"
+
+#~ msgid "Show details"
+#~ msgstr "Prikaži detalje"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Prikaži slike osoba u pravougaonicima"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Prikaži neaktivna mjesta"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Prikaži osobe rođene prije više od 100 godina"
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Prikaži osobe rođene unutar prošlih 100 godina"
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Prikaži osobe koje su žive ili parove gdje su oba partnera živa."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Prikaži osobe koje su umrle ili parove gdje su obe osobe mrtve."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Prikaži osobe koje su umrle prije više od 100 godina"
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Prikaži osobe koje su umrle unutar prošlih 100 godina"
+
+#~ msgid "Show notes?"
+#~ msgstr "Prikaži zabilješke?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Prikaži zanimanja?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Prikaži samo događaje za žive osobe?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Prikaži samo osobe kojima spol nije poznat."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Prikaži samo osobe, događaje ili sve?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Prikaži promjene koje čekaju odobrenje"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Prikaži mjesta po hijerarhiji"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "prikaži povezane osobe/porodice"
+
+#~ msgid "Show residences?"
+#~ msgstr "Prikaži mjesto stanovanja?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Prikaži izvore?"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Prikaži osobe koje nemaju zabilježenu djecu u bazi podataka."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Prikaži “korjenske” parove ili osobe. Te osobe se još zovu i “patrijarsi”. Oni su jedinke koje nemaju zabilježene roditelje u bazi podataka."
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Prikazujem %1$s za %2$s od %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "Sestra"
+
+#~ msgid "Social security number"
+#~ msgstr "JMBG"
+
+#~ msgid "Son"
+#~ msgstr "Sin"
+
+#~ msgid "Sources to the events"
+#~ msgstr "Izvori za događaje"
+
+#~ msgid "Spouse"
+#~ msgstr "Supružnik"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Supružnici i djeca"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Od datuma promjene"
+
+#~ msgid "Surname option"
+#~ msgstr "Opcija Prezimena"
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "Izgleda da regex sadrži grešku i ne može biti korišten."
+
+#~ msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
+#~ msgstr "Ovo GEDCOM (porodično stablo) je zadnji put ažurirano #gedcomUpdated#. Ukupno je #totalSurnames# prezimena u ovom porodičnom stablu. Najraniji zabilježni događaj je #firstEventType# #firstEventName# godine #firstEventYear#. Najnoviji događaj je #lastEventType# #lastEventName# godine #lastEventYear#.<br><br>Ako imate bilo kakav komentar molimo kontaktirajte #contactWebmaster#."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "Ovaj GEDCOM je kreiran koristeći <b>%1$s</b> na dan <b>%2$s</b>."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Ovaj blok će prikazati 10 zapisa koji su najviše posjećeni. Ovaj blok zahtjeva da Brojač posjeta bude uključen u GEDCOM konfiguracijskim postavkama."
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Ovo polje kontroliše redoslijed po kojem su najčešća pitanja i odgovori prikazani.<br><br>Ne morate unijeti brojeve sekvencijalno. Ako imate propuste u šemi numerisanja možete naknadno ubaciti stavke. Na primjer, ako koristite brojeve 1, 6, 11, 16, možete kasnije ubaciti stvake koje nedostaju u sekvenci. Negativni brojevi i nule su dozvoljene, i mogu biti korišteni da unesete stavke ispred prve stavke.<br><br>Kada više od jedne stavke najčešćih pitanja i odgovora imaju isti broj pozicije samo jedan stavka će biti vidljiva."
+
+#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Ova opcija će vam omogućiti da pomjerite stavke prema dnu stranice najčešćih pitanja i odgovora.<br><br>Svaki put kada korisite ovu opciju broj pozicije stavke najčešćih pitanja i odgovora će biti uvećan za jedan, Možete postići isti efekat uređujući stavku u pitanju i mjenjajući poziciju polja najčešćih pitanja i odgovora. Kada više od jedne stavke najčešćih pitanja i odgovora ima isti broj pozicije, samo će jedna stavka biti vidljiva."
+
+#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Ova opcija će vam omogućiti da pomjerite stavke prema vrhu stranice najčešćih pitanja i odgovora.<br><br>Svaki put kada korisite ovu opciju broj pozicije stavke najčešćih pitanja i odgovora će biti umanjen za jedan, Možete postići isti efekat uređujući stavku u pitanju i mjenjajući poziciju polja najčešćih pitanja i odgovora. Kada više od jedne stavke najčešćih pitanja i odgovora ima isti broj pozicije, samo će jedna stavka biti vidljiva."
+
+#~ msgid "To family"
+#~ msgstr "Za porodicu"
+
+#~ msgid "To individual"
+#~ msgstr "Za osobu"
+
+#~ msgid "To source"
+#~ msgstr "Za izvor"
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Neprepoznati GEDCOM kod"
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Koristite ovu stranicu da izmjenite ili uklonite članove porodice.<br><br>Za svakog člana u porodici možete koristiti Izmjeni link da odaberete drugu osobu da popunu ulogu u porodici. Također možete koristiti Ukloni link da uklonite osobu iz familije.<br><br>Kada zavšite sa izmjenama članova porodice, kliknite na dugme Snimi da snimite promjene."
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Pogledaj zapis (GEDCOM)"
+
+#~ msgid "View day"
+#~ msgstr "Prikaži dan"
+
+#~ msgid "View details"
+#~ msgstr "Pogledaj detalje"
+
+#~ msgid "View family"
+#~ msgstr "Prikaži porodicu"
+
+#~ msgid "View month"
+#~ msgstr "Prikaži mjesec"
+
+#~ msgid "View notes"
+#~ msgstr "Prikaži bilješke"
+
+#~ msgid "View person"
+#~ msgstr "Prikaži osobu"
+
+#~ msgid "View source"
+#~ msgstr "Prikaži izvor"
+
+#~ msgid "View year"
+#~ msgstr "Prikaži godinu"
+
+#~ msgid "Visitors"
+#~ msgstr "Posjetilac"
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Koje linkove ove osobe također želite dodati?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Ženine godine"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Suprugino djevojačko prezime postaje novo ime"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Suprugino prezime zamjenjeno suprugovim prezimenom"
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "Možete odrediti da li će ova najčešća pitanja i odgovori biti vidljivi bez obzira na GEDCOM ili da li će biti vidljivi samo za trenutni GEDCOM.<br><ul><li><b>SVE</b>&nbsp;&nbsp;&nbsp;Najčešća pitanja i odgovori će biti prikazana u svim listama Najčešćih pitanja i odgovora bez obzira na GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;Najčešća pitanja i odgovori će biti prikazana samo u trenutno aktivnom GEDCOM listi Najčešćih pitanja i odgovora.</li></ul>"
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Možete olakšati traženje udanih žena tako što ćete zabilježiti udano ime.<br>Međutim, ne uzimaju sve žene prezime svojih muževa, zato se pazite unosa netačnih informacija u bazu."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Vaš račun nema “automatsko odobravanje izmjena”. Bićete u mogućnosti da promjenite samo jeda zapis u tom vremenu."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Zip datoteka"
+
+#~ msgid "daughter of"
+#~ msgstr "kćer"
+
+#~ msgctxt "son's wife's father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "snahin otac"
+
+#~ msgctxt "son's wife's mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "snahina majka"
+
+#~ msgctxt "son's wife's parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "snahin otac/majka"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "umrla"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "umro"
+
+#~ msgid "first"
+#~ msgstr "prvi"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "unukin muž"
+
+#~ msgctxt "son's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "unukin muž"
+
+#~ msgctxt "child's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "unukova supruga"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "unukova supruga"
+
+#~ msgctxt "son's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "unukova supruga"
+
+#~ msgid "last"
+#~ msgstr "posljednji"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "udana"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "oženjen"
+
+#~ msgid "son of"
+#~ msgstr "sin"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "kćerkinog muža otac"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "kćerkinog muža majka"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "kćerkinog muža roditelj"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "rođena"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "rođen"

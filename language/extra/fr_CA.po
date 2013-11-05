@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2013-05-16 05:16+0000\n"
-"X-Generator: Launchpad (build 16626)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Country: CANADA\n"
 "X-Poedit-Language: French\n"
 
@@ -217,7 +217,7 @@ msgstr ""
 #: library/WT/Stats.php:4045
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s BCE"
 
 #. I18N: size of file in KB
 #: admin_media.php:404 library/WT/Media.php:201
@@ -605,7 +605,7 @@ msgstr "Liste des utilisateurs et des visiteurs qui sont actuellement en ligne."
 
 #: help_text.php:311
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Un objet multimédia est un enregistrement dans l'arbre généalogique qui contient des informations sur un fichier multimédia. Ces informations peuvent inclure un titre, un copyright, une transcription, des restrictions de confidentialité, etc. Le fichier multimédia, comme la photo ou la vidéo, peuvent être stockées localement (sur ce serveur) ou à distance (sur un autre serveur Web)."
+msgstr "Un objet multimédia est un enregistrement dans l’arbre généalogique qui contient des informations sur un fichier multimédia. Ces informations peuvent inclure un titre, un copyright, une transcription, des restrictions de confidentialité, etc. Le fichier multimédia, comme la photo ou la vidéo, peuvent être stockées localement (sur ce serveur) ou à distance (sur un autre serveur Web)."
 
 #. I18N: %s is a username
 #: login.php:239
@@ -774,7 +774,7 @@ msgstr "Un utilisateur ne sera pas capable de se connecter jusqu’à ce que les
 
 #: help_text.php:1023
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Un filigrane est un texte ajouté à une image afin de décourager sa copie sans permission."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:115
@@ -1689,7 +1689,7 @@ msgstr "Un arbre interactif montrant tous les ancêtres et les descendants d’u
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "Une erreur de base de données s’est produite de manière inattendue"
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -1869,7 +1869,7 @@ msgstr "Etes-vous sûr de vouloir supprimer cette histoire?"
 #: library/WT/Controller/Source.php:106
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "Voulez-vous vraiment supprimer “%s”&nbsp;?"
+msgstr "Voulez-vous vraiment supprimer «&nbsp;%s&nbsp;»&nbsp;?"
 
 #: modules_v3/gedcom_favorites/module.php:125
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -1877,7 +1877,7 @@ msgstr "Confirmez-vous la suppression de ce signet ?"
 
 #: edit_changes.php:221
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Êtes-vous certain de vouloir défaire tous les changements de cet arbre généalogique ?"
 
 #: library/WT/Stats.php:3783
 msgid "Argentina"
@@ -3818,7 +3818,7 @@ msgstr "Dossier Data"
 
 #: login.php:543
 msgid "Data was not correct, please try again"
-msgstr "Informations incorrectes!<br />Merci de réessayer!"
+msgstr "Informations incorrectes!<br>Merci de réessayer!"
 
 #: setup.php:368
 msgid "Database and table names"
@@ -5078,7 +5078,7 @@ msgstr "Texte exact"
 #: famlist.php:178 indilist.php:178
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Exclure les personnes avec des “%s” comme un nom de femme mariée"
+msgstr "Exclure les personnes avec des «&nbsp;%s&nbsp;» comme un nom de femme mariée"
 
 #: admin_media.php:581
 msgid "Exclude subfolders"
@@ -5593,12 +5593,12 @@ msgstr "Nom du fichier"
 #: addmedia.php:173 addmedia.php:315 admin_media_upload.php:114
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "Les noms de fichier ne doivent pas contenir le caractère “%s”."
+msgstr "Les noms de fichier ne doivent pas contenir le caractère «&nbsp;%s&nbsp;»."
 
 #: addmedia.php:178 addmedia.php:320 admin_media_upload.php:119
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "Les noms de fichier ne doivent pas avoir l'extension “%s”."
+msgstr "Les noms de fichier ne doivent pas avoir l’extension «&nbsp;%s&nbsp;»."
 
 #: admin.php:111
 msgid "Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them."
@@ -5751,7 +5751,7 @@ msgstr "Pour un affichage optimal sur Internet, <b>webtrees </b> utilise le jeu 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:424
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "Pour les sites avec plus d’un arbre généalogique, cette option affiche une liste des arbres dans le menu principal, les pages de recherches, etc."
 
 #: includes/functions/functions_print.php:403
 msgid "For technical support and information contact"
@@ -6545,7 +6545,7 @@ msgstr "Si le nom de famille est inconnu, utiliser deux barres obliques sans con
 
 #: help_text.php:1474
 msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
-msgstr "Option pour autoriser la modification de certains paramètres du compte par l’utilisateur.<br /><br />Si la case n’est <b>pas</b> cochée, les modifications seront interdites.<br /><br />Cette fonction permet de créer un compte générique, utilisable par plusieurs personnes, mais en interdisant à chacun de le modifier."
+msgstr "Option pour autoriser la modification de certains paramètres du compte par l’utilisateur.<br><br>Si la case n’est <b>pas</b> cochée, les modifications seront interdites.<br><br>Cette fonction permet de créer un compte générique, utilisable par plusieurs personnes, mais en interdisant à chacun de le modifier."
 
 #: help_text.php:621
 msgid "If this person has any events other than Death, Burial, or Cremation more recent than this number of years, he is considered to be \"alive\".  Children's birth dates are considered to be such events for this purpose."
@@ -6626,7 +6626,7 @@ msgstr "Dimensions de l’image"
 
 #: admin_trees_config.php:711
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Images sans filigrane"
 
 #: modules_v3/family_nav/module.php:169
 msgid "Immediate Family"
@@ -6675,7 +6675,7 @@ msgstr "Dans certains pays, les lois de confidentialité ne s’appliquent pas s
 
 #: help_text.php:317
 msgid "In the Citation Details field you would enter the page number or other information that might help someone find the information in the source."
-msgstr "Cote du document = toute information (<b>page</b>, <b>folio</b>) permettant de trouver l’information dans le document source.<br />À saisir sous la forme : <b>Champ1 : valeur1, Champ2 : valeur2, ...</b><br /><br />Exemple : <b>Film : 12, Page : 34, Acte : 56.</b>"
+msgstr "Cote du document = toute information (<b>page</b>, <b>folio</b>) permettant de trouver l’information dans le document source.<br>À saisir sous la forme : <b>Champ1 : valeur1, Champ2 : valeur2, …</b><br><br>Exemple : <b>Film : 12, Page : 34, Acte : 56.</b>"
 
 #: help_text.php:380
 msgid "In this field you would enter the citation text for this source.  Examples of data may be a transcription of the text from the source, or a description of what was in the citation."
@@ -6692,7 +6692,7 @@ msgstr "Inclure les lieux complètement identiques "
 #: famlist.php:180 indilist.php:180
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Inclure les personnes avec des “%s” comme un nom de femme mariée"
+msgstr "Inclure les personnes avec des «&nbsp;%s&nbsp;» comme un nom de femme mariée"
 
 #: help_text.php:1276 modules_v3/clippings/module.php:199
 #: modules_v3/clippings/module.php:578
@@ -8862,8 +8862,8 @@ msgstr "Aucun évènement pour demain."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Aucun événement pour des personnes vivantes dans le prochain jour."
-msgstr[1] "Aucun événement pour des personnes vivantes dans les %s prochains jours."
+msgstr[0] "Aucun événement de personnes vivantes existe pour le prochain %s jour."
+msgstr[1] "Aucun événement de personnes vivantes existe pour les prochains %s jours."
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -9259,11 +9259,11 @@ msgstr "Sur ce graphique, vous pouvez afficher une ou plusieurs personnes le lon
 #. I18N: Name of a module
 #: modules_v3/todays_events/module.php:34
 msgid "On this day"
-msgstr "Ce jour-là..."
+msgstr "Ce jour-là…"
 
 #: modules_v3/review_changes/module.php:87
 msgid "Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that webtrees site and login to review the changes."
-msgstr "Des modifications ont été apportées à un arbre généalogique. Elles doivent être examinées et approuvées avant d’apparaître à tous les utilisateurs. Veuillez utiliser l'URL ci-dessous pour entrer dans le site webtrees et vous connecter afin de les réviser."
+msgstr "Des modifications ont été apportées à un arbre généalogique. Elles doivent être examinées et approuvées avant d’apparaître à tous les utilisateurs. Veuillez utiliser l’URL ci-dessous pour entrer dans le site webtrees et vous connecter afin de les réviser."
 
 #: includes/functions/functions_edit.php:208
 #: includes/functions/functions_print_facts.php:235
@@ -9504,7 +9504,7 @@ msgstr "Les mots de passe ne sont pas identiques."
 
 #: help_text.php:1302
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
-msgstr "Les mots de passe doivent comporter au minimum 6 caractères et sont sensibles à la casse, alors le mot “secret” est différent de “SECRET”."
+msgstr "Les mots de passe doivent comporter au minimum 6 caractères et sont sensibles à la casse, alors le mot «&nbsp;secret&nbsp;» est différent de «&nbsp;SECRET&nbsp;»."
 
 #: admin_users.php:333 edituser.php:115
 msgid "Passwords must contain at least 6 characters."
@@ -10859,7 +10859,7 @@ msgstr "Rechercher et remplacer"
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:41
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr ""
+msgstr "Rechercher et remplacer du texte, à l’aide de recherches simples ou d’un motif avancé correspondant."
 
 #: includes/session.php:577
 msgid "Search engine"
@@ -11369,7 +11369,7 @@ msgstr "Afficher un curseur indiquant l’âge"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:945 help_text.php:701
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Afficher les détails du graphique par défaut"
 
 #: library/WT/MenuBar.php:173 library/WT/MenuBar.php:193
 msgid "Show children on timeline chart"
@@ -11385,7 +11385,7 @@ msgstr "Voir l’échelle de temps"
 
 #: includes/functions/functions_print_lists.php:506
 msgid "Show couples where either partner married more than once."
-msgstr "Afficher les couples où les deux conjoints se sont mariés plus d'une fois."
+msgstr "Afficher les couples où les deux conjoints se sont mariés plus d’une fois."
 
 #: includes/functions/functions_print_lists.php:497
 msgid "Show couples where only the female partner is deceased."
@@ -11462,7 +11462,7 @@ msgstr "Afficher le lien vers les statistiques sous forme de graphiques ?"
 
 #: admin_site_config.php:93 help_text.php:423
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Afficher la liste des arbres"
 
 #: help_text.php:1296 relationship.php:118
 msgid "Show oldest top"
@@ -11574,7 +11574,7 @@ msgstr "Afficher les tableaux de statistiques"
 #: admin_trees_config.php:897
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "Afficher les %1$s %2$s parties du nom d'un lieu."
+msgstr "Afficher les %1$s %2$s parties du nom d’un lieu."
 
 #: modules_v3/html/module.php:319
 msgid "Show the date and time of update"
@@ -12288,13 +12288,13 @@ msgstr "L’administrateur du site webtrees %s a approuvé votre demande de comp
 #: action.php:52
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "Les modifications à “%s” ont été approuvées."
+msgstr "Les modifications à «&nbsp;%s&nbsp;» ont été approuvées."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:142
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "Les modifications à “%s” ont été rejetées."
+msgstr "Les modifications à «&nbsp;%s&nbsp;» ont été rejetées."
 
 #: help_text.php:1322
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
@@ -12311,7 +12311,7 @@ msgstr "La base de données rapporte le message d’erreur suivant:"
 
 #: admin_trees_config.php:786
 msgid "The date and time of the last update"
-msgstr "La date et l'heure de la dernière mise à jour"
+msgstr "La date et l’heure de la dernière mise à jour"
 
 #: family.php:148
 msgid "The details of this family are private."
@@ -12325,7 +12325,7 @@ msgstr "Les détails de cette personne sont privés."
 #: action.php:105
 #, php-format
 msgid "The family “%s” has been deleted, as it only has one member."
-msgstr "La famille “%s” a été supprimée car elle n’avait qu’un seul membre."
+msgstr "La famille «&nbsp;%s&nbsp;» a été supprimée car elle n’avait qu’un seul membre."
 
 #: addmedia.php:192 admin_media_upload.php:133
 #, php-format
@@ -12400,11 +12400,11 @@ msgstr "Le message suivant vous a été envoyé par "
 
 #: admin_site_access.php:272
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-msgstr "Les règles suivantes sont utilisées pour décider si un visiteur est un être humain (permettre l'accès complet), un moteur de recherche (permettre un accès restreint) ou un robot indésirable (refuser tout accès)."
+msgstr "Les règles suivantes sont utilisées pour décider si un visiteur est un être humain (permettre l’accès complet), un moteur de recherche (permettre un accès restreint) ou un robot indésirable (refuser tout accès)."
 
 #: admin_site_access.php:289
 msgid "The following visitors were not recognised, and were assumed to be search engines."
-msgstr "Les visiteurs suivants n'ont pas été reconnus et ont été assumés comme étant des moteurs de recherche."
+msgstr "Les visiteurs suivants n’ont pas été reconnus et ont été assumés comme étant des moteurs de recherche."
 
 #: help_text.php:1520
 msgid "The help text has not been written for this item."
@@ -12422,7 +12422,7 @@ msgstr "Le délai après la naissance peut être réglé dans «&nbsp;Âge maxi 
 #: action.php:113 action.php:117
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "Le lien de “%1$s” à “%2$s” a été supprimé."
+msgstr "Le lien de «&nbsp;%1$s&nbsp;» à «&nbsp;%2$s&nbsp;» a été supprimé."
 
 #: mediafirewall.php:37
 msgid "The media file was not found in this family tree"
@@ -12807,7 +12807,7 @@ msgstr "Le nom est sensible à la casse. Si une base de données portant ce nom 
 #. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:702
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr ""
+msgstr "Ceci est le réglage initial pour l’option « Afficher les détails » sur les graphiques."
 
 #: help_text.php:513
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Family Facts</i> list."
@@ -12946,7 +12946,7 @@ msgstr "Le mot de passe doit comporter au moins six caractères. Il est sensible
 #. I18N: Help text for the “Sender name” site configuration setting
 #: help_text.php:752
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Ce nom est utilisé dans le champ “De”, lorsque des courriels sont envoyés automatiquement par ce serveur."
+msgstr "Ce nom est utilisé dans le champ «&nbsp;De&nbsp;», lorsque des courriels sont envoyés automatiquement par ce serveur."
 
 #: note.php:75
 msgid "This note does not exist or you do not have permission to view it."
@@ -13071,7 +13071,7 @@ msgstr "Cette option sauvegarde l’arbre généalogique de la base de données,
 
 #: help_text.php:867
 msgid "This option will show the names (but no other details) of private individuals.  Individuals are private if they are still alive or if a privacy restriction has been added to their individual record.  To hide a specific name, add a privacy restriction to that name record."
-msgstr "Cette option affichera les noms (mais sans détails) des individus privés. Les individus sont privés s'ils sont encore vivants ou si une restriction de confidentialité a été ajoutée à leur fiche individuelle. Ajouter une restriction de confidentialité à un nom spécifique pour le masquer."
+msgstr "Cette option affichera les noms (mais sans détails) des individus privés. Les individus sont privés s’ils sont encore vivants ou si une restriction de confidentialité a été ajoutée à leur fiche individuelle. Ajouter une restriction de confidentialité à un nom spécifique pour le masquer."
 
 #: modules_v3/googlemap/help_text.php:54
 msgid "This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers."
@@ -13955,7 +13955,7 @@ msgstr "Identifiant ou adresse courriel"
 
 #: help_text.php:1502
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Les identifiants ne sont pas sensibles à la casse et ignorent les lettres accentuées, alors “chloe”, “chloë”, et “Chloe” sont considérés comme étant semblables."
+msgstr "Les identifiants ne sont pas sensibles à la casse et ignorent les lettres accentuées, alors «&nbsp;chloe&nbsp;», «&nbsp;chloë&nbsp;», et «&nbsp;Chloe&nbsp;» sont considérés comme étant semblables."
 
 #: help_text.php:1504
 #, php-format
@@ -14200,11 +14200,11 @@ msgstr "Filigranes"
 
 #: help_text.php:1025
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Les filigranes sont optionnels et habituellement affichés seulement aux visiteurs."
 
 #: help_text.php:1027
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "Les filigranes des images de grande taille peuvent être lents à générer. Les sites achalandés pourraient préférer produire une seule fois l’image filigranée et la stocker sur le serveur."
 
 #: login.php:358
 #, php-format
@@ -14319,7 +14319,7 @@ msgstr "Quand cette option est sélectionnée, vous pouvez voir tous les enregis
 
 #: help_text.php:1412
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr ""
+msgstr "Lorsque cette option est sélectionnée, webtrees calcule les différences d’âge entre frères et soeurs, enfants, conjoints, etc."
 
 #: help_text.php:929
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
@@ -14674,7 +14674,7 @@ msgstr "Vous ne devez pas utiliser la barre verticale &ldquo;|&rdquo; dans vos n
 #: login.php:264 message.php:71
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "Vous devez supprimer le “%1$s” de “%2$s” et essayer à nouveau."
+msgstr "Vous devez supprimer le «&nbsp;%1$s&nbsp;» de «&nbsp;%2$s&nbsp;» et essayer à nouveau."
 
 #: help_text.php:1488
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -15718,7 +15718,7 @@ msgstr "sexe"
 #. I18N: button label
 #: includes/functions/functions_edit.php:953
 msgid "go to new individual"
-msgstr "Voir la fiche de l'individu ajouté"
+msgstr "Voir la fiche de l’individu ajouté"
 
 #: includes/functions/functions.php:1233
 msgctxt "child's child"
@@ -18600,18 +18600,1697 @@ msgstr "“%s”"
 #: modules_v3/user_favorites/module.php:80
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "“%s” a été ajouté à vos favoris."
+msgstr "«&nbsp;%s&nbsp;» a été ajouté à vos favoris."
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:37
 msgctxt "Unknown surname"
 msgid "…"
-msgstr "..."
+msgstr "…"
+
+#~ msgid " but the details are unknown"
+#~ msgstr " mais les détails sont inconnus"
+
+#~ msgid " in "
+#~ msgstr " à "
+
+#~ msgid "%1$s’s %2$s"
+#~ msgstr "%1$s &rarr; %2$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%H:%i:%s"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%j %F %Y"
+
+#~ msgid "%s day"
+#~ msgid_plural "%s days"
+#~ msgstr[0] "%s jour"
+#~ msgstr[1] "%s jours"
+
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "il y a %s jour"
+#~ msgstr[1] "il y a %s jours"
+
+#~ msgid "%s hour ago"
+#~ msgid_plural "%s hours ago"
+#~ msgstr[0] "il y a %s heure"
+#~ msgstr[1] "il y a %s heures"
+
+#~ msgid "%s minute ago"
+#~ msgid_plural "%s minutes ago"
+#~ msgstr[0] "il y a %s minute"
+#~ msgstr[1] "il y a %s minutes"
+
+#~ msgid "%s month"
+#~ msgid_plural "%s months"
+#~ msgstr[0] "%s mois"
+#~ msgstr[1] "%s mois"
+
+#~ msgid "%s month ago"
+#~ msgid_plural "%s months ago"
+#~ msgstr[0] "il y a %s mois"
+#~ msgstr[1] "il y a %s mois"
+
+#~ msgid "%s second ago"
+#~ msgid_plural "%s seconds ago"
+#~ msgstr[0] "il y a %s seconde"
+#~ msgstr[1] "il y a %s secondes"
+
+#~ msgid "%s three times removed ascending"
+#~ msgstr "%s éloigné(e) au 3ème degré"
+
+#~ msgid "%s three times removed descending"
+#~ msgstr "%s éloigné(e) au 3ème degré"
+
+#~ msgid "%s week"
+#~ msgid_plural "%s weeks"
+#~ msgstr[0] "%s semaine"
+#~ msgstr[1] "%s semaines"
+
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "%s an"
+#~ msgstr[1] "%s ans"
+
+#~ msgid "%s year ago"
+#~ msgid_plural "%s years ago"
+#~ msgstr[0] "il y a %s an"
+#~ msgstr[1] "il y a %s ans"
+
+#~ msgid "%s%%"
+#~ msgstr "%s%%"
+
+#~ msgid "(aged %s)"
+#~ msgstr "(âgés de %s ans)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(âgés de moins de %s ans)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "(âgés de plus de %s ans)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(filtrés parmi %s entrées au total)"
+
+#~ msgid "(in childhood)"
+#~ msgstr "(dans l’enfance)"
+
+#~ msgid "(in infancy)"
+#~ msgstr "(dans la petite enfance)"
+
+#~ msgid "(stillborn)"
+#~ msgstr "(mort-né)"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
+#~ msgstr "<b>GUID</b> dans ce contexte est un acronyme pour «&nbsp;Globally Unique ID&nbsp;».<br><br>GUID sont destinés à aider à identifier chaque individu d’une manière unique mondialement, de sorte que les organisations centrales telles que le Centre d’histoire de la famille de l’Église mormone à Salt Lake City, ou des programmes compatible s’exécutant sur votre propre serveur, puissent déterminer s’ils ont affaire avec la même personne, peu importe de l’origine de GEDCOM. L’objectif du Centre d’histoire de la famille de l’Église mormone est de disposer d’un référentiel central de données généalogiques et de l’exposer à travers les services web. Cela permettra à tout programme d’accéder aux données et de les mettre à jour.<br><br>Si vous n’avez pas l’intention de partager cette GEDCOM avec quelqu’un d’autre, vous n’avez pas besoin de laisser <b>webtrees</b> créer ces GUID, toutefois cela n’engendre pas de problèmes si ce n’est que d’augmenter la taille de votre fichier GEDCOM."
+
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+#~ msgstr "Autoriser l’accès aux détails privés des proches<br><br>Option désactivée&nbsp;: les utilisateurs authentifiés peuvent voir les détails de toutes les personnes vivantes.<br>Option activée&nbsp;: accès aux détails privés des proches uniquement."
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b>Veuillez noter&nbsp;:<b /> les informations privées des individus vivants ne seront diffusées qu’aux proches de la famille et aux amis proches. Votre relation sera vérifiée avant que vous ne receviez des données privées. Parfois des informations sur des personnes décédées sont également privées. Si c’est le cas, c’est parce qu’il n’y a pas assez d’informations connues sur la personne pour déterminer si elle est vivante ou non et nous n’avons probablement pas plus d’informations sur cette personne.<br><br>Avant de poser une question, veuillez vérifier que vous souhaitez des renseignements sur la bonne personne en contrôlant les dates, lieux et familles proches. Si vous soumettez des changements de données généalogiques, veuillez inclure les sources d’où vous tenez les données."
+
+#~ msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
+#~ msgstr "<b>webtrees</b> vous permet de copier jusqu’à 10 faits, incluant tous leurs détails, dans un presse-papier. Ce presse-papier est différent de Panier que vous utilisez pour exporter des extraits de votre base de données généalogiques.<br><br>Vous pouvez sélectionner n’importe lequel des faits du presse-papier et le copier dans un enregistrement en cours de modification d’un Individu, d’une Famille, d’un objet Multimedia, d’une Source ou un Dépôt d’archives. Cependant, vous ne pouvez copier des faits d’enregistrements de type discordant. Par exemple, vous ne pouvez copier un fait Mariage à un enregistrement de type Individu car un fait Mariage est associé uniquement aux enregistrements de type Famille.<br><br>Ceci est très utile lorsque des faits similaires, comme les faits des recensements, s’appliquent à plusieurs individus ou familles."
+
+#~ msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "<b>webtrees</b> a besoin d’envoyer des courriels, tels que les notifications ou les rappels de mot de passe. Pour cela, il peut utiliser soit la fonctionnalité interne en PHP (qui n’est pas toujours disponible), soit un service SMTP externe pour lequel vous devez fournir les paramètres de connexion."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Bienvenue sur ce site généalogique.</b></center><br>L’accès à ce site est autorisé aux utilisateurs ayant un compte et un mot de passe."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Bienvenue sur ce site généalogique.</b></center><br>L’accès à ce site est réservé aux utilisateurs <u>autorisés</u>.<br><br>Si vous avez déjà un compte, vous pouvez vous connecter. Sinon, remplissez le formulaire.<br><br>Après vérification, l’administrateur acceptera ou refusera votre demande. Vous recevrez un message d’information."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Bienvenue sur ce site généalogique.</b></center><br>L’accès à ce site est réservé aux utilisateurs <u>membres de la famille</u>.<br><br>Si vous avez déjà un compte, vous pouvez vous connecter. Sinon, remplissez le formulaire.<br><br>Après vérification, l’administrateur acceptera ou refusera votre demande. Vous recevrez un message d’information."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Bienvenue sur ce site généalogique.</b></center><br>L’accès à ce site est autorisé à tous les visiteurs ayant un compte.<br><br>Si vous avez déjà un compte, vous pouvez vous connecter. Sinon, remplissez le formulaire.<br><br>Après vérification, l’administrateur activera votre compte. Vous recevrez un message d’information."
+
+#~ msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
+#~ msgstr "<div class=\"largeError\">Attention:</div><div class=\"error\">En remplissant et en soumettant ce formulaire, vous acceptez:<ul><li>de protéger la vie privée des personnes vivantes répertoriées sur notre site;</li><li>et dans la zone de texte ci-dessous, expliquer avec qui vous êtes liés, ou de nous fournir des informations sur quelqu’un qui est sur notre site.</li></ul></div>"
+
+#~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
+#~ msgstr "Un serveur de base de données peut héberger plusieurs bases de données distinctes. Vous devez sélectionner une base de données existante (créée par l’administrateur du serveur), ou en créer une nouvelle (si votre compte possède les droits nécessaires)."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Rapport des faits reliés à une source."
+
+#~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
+#~ msgstr "Un utilisateur ne sera pas capable de se connecter jusqu’à ce que les options «&nbsp;courriel vérifié&nbsp;» et «&nbsp;approuvé par l’administrateur&nbsp;» soient effectuées."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=aàâæbcçdeéèëêfghiïîjklmnoôœpqrstuùûvwxyz"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=AÀÂÆBCÇDEÉÈËÊFGHIÏÎJKLMNOÔŒPQRSTUÙÛVWXYZ"
+
+#~ msgid "Access"
+#~ msgstr "Accès"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Ajouter un conjoint en utilisant une personne existante"
+
+#~ msgid "Add a new associate allows you to link a fact with an associated individual in the site.  This is one way in which you might record that someone was the godfather of another individual."
+#~ msgstr "Associer une personne vous permet d’associer à un évènement une personne du site. C’est une des façons d’enregistrer, par exemple, que quelqu’un est le parrain d’une autre personne."
+
+#~ msgid "Add a new name"
+#~ msgstr "Ajouter un nom"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Ajouter une conjointe en utilisant une personne existante"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Ajouter une autre personne au graphique"
+
+#~ msgid "Add individuals"
+#~ msgstr "Ajouter des personnes"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Ajouter seulement cette personne."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Ajouter les parents et tous les descendants avec la famille."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Ajouter les parents et les enfants avec la famille."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Ajouter les parents avec cette famille."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Ajouter cette personne et ses ascendants."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Ajouter cette personne, ses ascendants et leurs familles."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Ajouter cette personne, ses parents, ses frères et sœurs."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Ajouter cette personne, son conjoint et toute leur descendance."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Ajouter cette personne, son conjoint et les enfants."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Ajouter cette source et les individus/familles qui y sont liés."
+
+#~ msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+#~ msgstr "Les administrateurs ont parfois besoin de nettoyer et de corriger les données soumises par les utilisateurs. Par exemple, ils peuvent avoir besoin de corriger le lieu PLAC afin d’y ajouter le pays. Lorsque les administrateurs effectue ce genre de corrections, les informations de suivi de modifications sont, normalement, remplacées. Cela peut ne pas être ce que vous désirez.<br><br>Quand cette option est sélectionnée, <b>webtrees</b> conservera les informations de modifications d’origine plutôt que de les remplacer par celle de la session en cours."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "Pour changer votre mot de passe une fois connecté, cliquez le lien «&nbsp;Mon compte&nbsp;» dans le menu «&nbsp;Page personnelle&nbsp;» et remplissez les champs concernant le mot de passe."
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "Âge maxi d’une personne"
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "Affichage de l’âge des parents à côté de la date de naissance"
+
+#~ msgid "All individuals"
+#~ msgstr "Toutes les personnes"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "Autoriser le choix du fichier GEDCOM"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "Autoriser le stockage des messages sur le serveur"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "Un arbre interactif montrant tous les ancêtres et les descendants d’une personne."
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "Une erreur de base de données s’est produite de manière inattendue"
+
+#~ msgid "Ancestors of "
+#~ msgstr "Ancêtres de "
+
+#~ msgid "Ancestral file number"
+#~ msgstr "Numéro AFN (Ancestral file number)"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Confirmez-vous l’annulation de toutes les modifications de ce fichier GEDCOM ?"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
+
+#~ msgid "Available blocks"
+#~ msgstr "Blocs disponibles"
+
+#~ msgid "Begin year"
+#~ msgstr "Année début"
+
+#~ msgid "Best man"
+#~ msgstr "Garçon d’honneur"
+
+#~ msgid "Binary data object"
+#~ msgstr "Objet binaire"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "Lieu de naissance contient"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "Afficher les détails de la naissance et du décès sur les graphiques"
+
+#~ msgid "Birth date range end"
+#~ msgstr "Date de naissance maxi"
+
+#~ msgid "Birth date range start"
+#~ msgstr "Date de naissance mini"
+
+#~ msgid "Brother"
+#~ msgstr "Frère"
+
+#~ msgid "Burial place contains"
+#~ msgstr "Le lieu de sépulture contient"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "Par défaut, la liste ne montre que les lieux qui se trouvent dans votre arbre généalogique. Vous pouvez avoir les détails d’autres lieux, tels que ceux importés en vrac à partir d’un fichier externe. Sélectionnez cette option pour afficher tous les lieux, incluant ceux qui ne sont pas utilisés actuellement."
+
+#~ msgid "Change family members"
+#~ msgstr "Modifier les membres de la famille"
+
+#~ msgid "Child of "
+#~ msgstr "Enfant de "
+
+#~ msgid "Children of "
+#~ msgstr "Enfants de "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Choisissez les parents"
+
+#~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
+#~ msgstr "Choisir la miniature à téléverser. Bien que les miniatures des images puissent être générées automatiquement, vous pouvez vouloir utiliser votre propre miniature, en particulier pour les autres types de fichiers. Par exemple vous pouvez mettre une image figée d’une vidéo, ou la photo de la personne ayant réalisé un enregistrement audio."
+
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgstr "Choisissez d’afficher l’en-tête standard pour votre texte personnalisé de bienvenue. Quand les utilisateurs changent de langue, cet en-tête apparaît dans la nouvelle langue.<br><br>Si réglé sur <b>Oui</b>, l’en-tête ressemble à ceci&nbsp;:<div class=\"list_value_wrap\"><center><b>Bienvenue sur ce site de généalogie</b></center><br>L’accès est réservé aux utilisateurs qui ont un compte et un mot de passe pour ce site.<br></div>"
+
+#~ msgid "Civil registrar"
+#~ msgstr "Officier de l’Etat-Civil"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Officier de l’Etat-Civil"
+
+#~ msgctxt "MALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Officier de l’Etat-Civil"
+
+#~ msgid "Clear chart"
+#~ msgstr "Effacer tout"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "Cliquer %s pour choisir une personne comme chef de famille (de-cujus)."
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Cliquer sur le nom de la personne à ajouter à Ajouter liste de liens."
+
+#~ msgid "Click this link to remove the individual from the timeline."
+#~ msgstr "Pour retirer une personne du diagramme.<br>La fiche de cette personne n’est ni modifiée, ni supprimée."
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Cliquer pour choisir une personne comme chef de famille (de-cujus)."
+
+#~ msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
+#~ msgstr "La fenêtre de l’Assistant de notes partagées GEDFact (faits Gedcom) s’ouvrira en cliquant sur l’icône «&nbsp;+&nbsp;».<br>Vous y trouverez des informations spécifiques d’aide.<br><br>Lorsque vous cliquez sur le bouton «&nbsp;Enregistrer&nbsp;», l’ID de la Note Partagée sera copiée ici."
+
+#~ msgid "Client time"
+#~ msgstr "Heure client"
+
+#~ msgid "Coat of arms"
+#~ msgstr "Armoiries"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Mariage légal"
+
+#~ msgid "Contact information"
+#~ msgstr "Contact"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Corriger les enregistrements de nom de la forme «&nbsp;Jean/DUPONT/&nbsp;» ou «&nbsp;Jean /DUPONT&nbsp;», tels qu’ils sont produits par certains programmes de généalogie."
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "Côte d’Ivoire"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Créer une nouvelle note partagée"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Créer une nouvelle note partagée en utilisant l’assistant"
+
+#~ msgid "Create repository"
+#~ msgstr "Créer un dépôt d’archives"
+
+#~ msgid "Create user"
+#~ msgstr "Ajouter un utilisateur"
+
+#~ msgid "Custom event"
+#~ msgstr "Événement personnalisé"
+
+#~ msgid "Custom fact"
+#~ msgstr "Fait personnalisé"
+
+#~ msgid "Date of LDS baptism"
+#~ msgstr "SDJ: date du baptême"
+
+#~ msgid "Date of LDS child sealing"
+#~ msgstr "SDJ: date du scellement de l’enfant"
+
+#~ msgid "Date of LDS endowment"
+#~ msgstr "SDJ: date de la dotation"
+
+#~ msgid "Date of LDS spouse sealing"
+#~ msgstr "SDJ: date du scellement d’un conjoint"
+
+#~ msgid "Date of adoption"
+#~ msgstr "Date de l’adoption"
+
+#~ msgid "Date of blessing"
+#~ msgstr "Date de la bénédiction"
+
+#~ msgid "Date of cremation"
+#~ msgstr "Date de la crémation"
+
+#~ msgid "Date of emigration"
+#~ msgstr "Date de l’émigration"
+
+#~ msgid "Date of event"
+#~ msgstr "Date de l’évènement"
+
+#~ msgid "Date of immigration"
+#~ msgstr "Date de l’immigration"
+
+#~ msgid "Date of naturalization"
+#~ msgstr "Date de naturalisation"
+
+#~ msgid "Date of ordination"
+#~ msgstr "Date de l’Ordination"
+
+#~ msgid "Date of residence"
+#~ msgstr "Date de résidence"
+
+#~ msgid "Daughter"
+#~ msgstr "Fille"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Le lieu de décès contient"
+
+#~ msgid "Death date range end"
+#~ msgstr "Date de décès maxi"
+
+#~ msgid "Death date range start"
+#~ msgstr "Date de décès mini"
+
+#~ msgid "Default theme"
+#~ msgstr "Thème par défaut"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Descendants de "
+
+#~ msgid "Descent steps"
+#~ msgstr "Niveaux de descendance"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi’dah"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi’dah"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi’dah"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi’dah"
+
+#~ msgid "Differences"
+#~ msgstr "Différences"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Ancêtres en ligne directe"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Ancêtres en ligne directe et leurs familles"
+
+#~ msgid "Display %s"
+#~ msgstr "Affichage %s"
+
+#~ msgid "Do not seal, previous sealing cancelled"
+#~ msgstr "Ne pas sceller: précédent scellement annulé"
+
+#~ msgid "Do not seal: unauthorized"
+#~ msgstr "Ne pas sceller: interdit"
+
+#~ msgid "Do not send messages"
+#~ msgstr "Ne pas envoyer de messages."
+
+#~ msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+#~ msgstr "Adresse courriel utilisés dans le champ &laquo;De:&raquo;domaine pour un courriel que <b>webtrees</b> crée automatiquement.<br><br><b>webtrees</b> peut créer automatiquement des courriels pour informer les administrateurs des changements survenus. <b>webtrees</b> envoie également des notifications par courriel à des utilisateurs qui ont demandé un compte.<br><br>Habituellement, le champ &laquo;From:&raquo; des créations automatiquement des courriels est quelque chose comme<i>De: webtrees-noreply@yoursite</i> montre qu’il n’y a pas de réponse nécessaire à faire pour ce courriel. Pour se prémunir contre le spam ou autres abus de courriel, certains systèmes de courrier électronique exige que tous les champs d’adresse de message doit être celui d’un compte courriel valide et les messages venant de <i>webtrees-noreply</i> ne seront pas acceptés."
+
+#~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
+#~ msgstr "Chaque élément des médias doit être associé à une ou plusieurs personnes, une famille, ou une source enregistrés dans votre base de données.<br><br>Pour établir un tel lien, vous pouvez entrer ou rechercher le numéro ID de la personne, de la famille, ou de la source en même temps que vous créez l’élément multimédia. Vous pouvez également établir un lien plus tard, grâce aux options d’édition sur la page Gérer les multimédia, ou en ajoutant des éléments médias en utilisant le lien Ajouter des médias disponible sur la page d’un individu, celle d’une famille, ou celle des détails d’une source."
+
+#~ msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+#~ msgstr "Chaque source enregistre des évènements spécifiques, généralement pour un intervalle de dates données et pour un endroit de juridiction. Par exemple, un recensement enregistre des évènements de recensement et les registres religieux enregistrent des évènements de naissance, mariage, et décès.<br><br>Sélectionnez les événements enregistrés par cette source dans la liste des évènements fournis. La date doit être spécifiée selon un format d’intervalle tel que <i>FROM 1900 TO 1910</i>. L’endroit de juridiction est le nom de la plus petite juridiction qui renferme tous les endroits de plus bas niveau nommés dans cette source. Par exemple, «&nbsp;Oneida, Idaho, USA&nbsp;» sera utilisé en tant que lieu de juridiction source pour les évènements survenus dans les différentes villes du comté d’Oneida. «&nbsp;Idaho, USA&nbsp;» sera l’endroit de juridiction source si les évènements  enregistrés ont eu lieu non seulement dans le comté d’Oneida mais aussi dans les autres comtés de l’Idaho."
+
+#~ msgid "Edit details"
+#~ msgstr "Editer détails"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Modifier les balises GEDCOM"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Modifier note partagée"
+
+#~ msgid "Email address:"
+#~ msgstr "Adresse courriel"
+
+#~ msgid "End year"
+#~ msgstr "Année fin"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "Date maxi des modifications"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Code famille"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Code individu"
+
+#~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
+#~ msgstr "Entrez un titre pour l’objet que vous mettez à jour. Si c’est un titre pour un objet multimédia, donnez un titre descriptif pour son identification par l’utilisateur."
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Entrer un code Individu, Famille ou Source"
+
+#~ msgid "Enter associate GEDCOM ID."
+#~ msgstr "Entrer l’identifiant GEDCOM de la personne à associer."
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Entrez ou recherchez l’ID de la personne, de la famille, ou de la source auqiel ce media doit être lié."
+
+#~ msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Entrez le numero de FAX y compris le numéro du pays, et de la zone si il y a lieu.<br><br>Laissez ce champ à blanc si vous ne voulez pas inclure de numéro FAX. Par exemple, un numéro de FAX en France doit être du type (sans le zero du début) :  +33 491422679 et un numéro aux USA ou au Canada doit être du type : +1 888 555-1212."
+
+#~ msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+#~ msgstr "Entrez l’adresse URL incluant http://.<br><br>Un exemple d’URL ressemble à ceci: <b>http://www.webtrees.net/</b>Laissez ce champ vide si vous ne voulez pas inclure une URL."
+
+#~ msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
+#~ msgstr "Entrez l’adresse dans le champ exactement comme si vous l’écriviez sur une enveloppe.<br><br>Laissez ce champ à blanc si vous ne souhaitez pas inclure d’adresse."
+
+#~ msgid "Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address."
+#~ msgstr "Entrez l’adresse courriel.<br><br>Une adresse courriel a la forme suivante : <b>nom@hotmail.com</b> Laissez ce champ en blanc si vous ne voulez pas inclure d’adresse courriel."
+
+#~ msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+#~ msgstr "Saisissez la valeur limite ici.<br><br>Si vous avez opté pour la limite de l’affichage des articles à partir de leur date de publication, tout article plus vieux que le nombre de jours spécifiés sera masqué. Si vous avez opté pour limiter le nombre d’articles selon leur nombre, seulement le nombre spécifié d’articles parmi les plus récents sera affiché.  Les articles restants seront masqués.<br><br>Un Zéro saisi ici supprimera toutes limites, affichant tous les articles."
+
+#~ msgid "Enter the name of the cemetery or other resting place where individual is buried."
+#~ msgstr "Entrer le nom du cimetière où cette personne est enterrée. Exemple&nbsp;: Père-Lachaise.<br>La commune est à saisir dans le champ lieu."
+
+#~ msgid "Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Entrez le numéro de téléphone y compris le numéro du pays, et de la zone si il y a lieu.<br><br>Laissez ce champ en blanc si vous ne voulez pas inclure de numéro de téléphone. Par exemple, un numéro en France est du type (sans le zero du début) : +33 391322679 et un numéro aux USA ou au Canada du type : +1 888 555-1212."
+
+#~ msgid "Entry text:"
+#~ msgstr "Texte"
+
+#~ msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+#~ msgstr "Chaque personne figurant dans la base est identifiée par un numéro d’ID unique sur ce site. Si vous connaissez le numéro d’ID de votre enregistrement, entrez le ici. Si vous ne le connaissez pas ou ne pouvez pas le trouver à cause des règles de protections sur la vie privée, veuillez laisser assez de renseignements dans le champ Commentaires pour aider l’administrateur du site à vous identifier, afin de mettre à jour ce champ avec votre numéro d’ID."
+
+#~ msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB."
+#~ msgstr "Temps d’exécution: %1$s secondes. Requêtes sur la base de données: %2$s. Mémoire utilisée: %3$s Ko."
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "Élargir la confidentialité aux personnes décédées"
+
+#~ msgid "External objects"
+#~ msgstr "Objets externes"
+
+#~ msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+#~ msgstr "FAQs sont des listes de questions et réponses qui vous permettent d’expliquer les règles du site, les politiques et les procédures à vos visiteurs. Les questions concernent généralement la vie privée, les droits d’auteur, les comptes utilisateurs, les contenus inappropriés, les exigences à ajouter la source de l’information, etc."
+
+#~ msgid "Facts for family records"
+#~ msgstr "Faits pour les enregistrements de familles"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "Faits pour les enregistrements d’individus"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "Faits pour les enregistrements de dépôts d’archives"
+
+#~ msgid "Facts for source records"
+#~ msgstr "Faits pour les enregistrements de sources"
+
+#~ msgid "Family group information"
+#~ msgstr "Informations sur la famille"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Panier"
+
+#~ msgid "Family with husband"
+#~ msgstr "Famille avec l’époux"
+
+#~ msgid "Family with wife"
+#~ msgstr "Famille avec l’épouse"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Lieu de naissance du père - (format Chapman)"
+
+#~ msgid "Father’s age"
+#~ msgstr "Age du père"
+
+#~ msgid "Font"
+#~ msgstr "Police"
+
+#~ msgid "For LDS ordinances, this field records the temple where it was performed."
+#~ msgstr "Pour des ordinations SDJ (Eglise de Jésus-Christ des saints des derniers jours), ce champ enregistre le nom du temple où il s’est déroulé."
+
+#~ msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
+#~ msgstr "Par exemple, si vous spécifiez un degré de 2, la personne sera en mesure de voir son petit-fils (enfant puis, enfant), sa tante (parent puis, frère ou sœur), sa belle-fille (conjoint puis, enfant), mais pas son cousin germain (parent puis, frère ou sœur puis, enfant qui fait trois)."
+
+#~ msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "Pour un affichage optimal sur Internet, <b>webtrees </b> utilise le jeu de caractères UTF-8. Certains programmes, Family Tree Maker par exemple, ne prennent pas en charge l’importation de fichiers GEDCOM codés en UTF-8. Cocher cette case vous permet de convertir le fichier d’<b>UTF-8</b> en <b>ANSI (ISO-8859-1)</b>. <br><br>Le format dont vous avez besoin dépend du programme que vous utilisez. Si vous n’êtes pas sûr, consultez la documentation de votre programme.<br><br>Notez que pour les caractères spéciaux restent inchangés, vous aurez besoin de garder le fichier en UTF-8 puis de le convertir par d’autres moyens pour votre programme. Consultez la documentation, le fabricant ou l’auteur de votre programme.<br><br>Cet <a href=\"http://fr.wikipedia.org/wiki/UTF-8\" target=\"_blank\"><b>article Wikipedia</b></a> contient des informations détaillées et des liens sur UTF-8."
+
+#~ msgid "Foster child"
+#~ msgstr "Enfant en nourrice"
+
+#~ msgid "Foster father"
+#~ msgstr "Père nourricier"
+
+#~ msgid "Foster mother"
+#~ msgstr "Mère nourricière"
+
+#~ msgid "From email address"
+#~ msgstr "Nom de l’expéditeur du courriel"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "Statistiques GEDCOM"
+
+#~ msgid "Gedcom"
+#~ msgstr "Gedcom"
+
+#~ msgid "Generation "
+#~ msgstr "Génération "
+
+#~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#~ msgstr "Permet aux utilisateurs de choisir leur propre thème à partir d’une liste (si la configuration l’autorise)."
+
+#~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+#~ msgstr "Autoriser les visiteurs à demander l’ouverture d’un compte sur ce site.<br><br>Le visiteur recevra un courriel de confirmation. Après vérification, l’administrateur devra approuver l’inscription afin d’activer le compte."
+
+#~ msgid "He "
+#~ msgstr "Il "
+
+#~ msgid "He died"
+#~ msgstr "Il est décédé"
+
+#~ msgid "He married"
+#~ msgstr "Il a épousé"
+
+#~ msgid "He resided at"
+#~ msgstr "Il habitait à"
+
+#~ msgid "He was born"
+#~ msgstr "Il est né"
+
+#~ msgid "He was buried"
+#~ msgstr "Il a été enterré"
+
+#~ msgid "He was christened"
+#~ msgstr "Il a été baptisé"
+
+#~ msgid "He was cremated"
+#~ msgstr "Il a été incinéré"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Bonjour %s …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Bonjour %s …<br>Merci pour votre inscription"
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Bonjour à l’administrateur …"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Son métier était"
+
+#~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
+#~ msgstr "Ici vous pouvez ajouter un nouvel évènement à l’enregistrement en cours de modification.<br><br>Tout d’abord choisissez un évènement depuis la liste, puis cliquez sur le bouton <b>Ajouter</b>. Tous les évènements que vous pourriez ajouter à un individu sont dans cette liste déroulante."
+
+#~ msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+#~ msgstr "Ici vous pouvez ajouter une source à cet enregistrement.<br><br>Cliquez le lien, une fenêtre s’affichera; vous pouvez sélectionner une source dans la liste (Trouver ID) ou créer une nouvelle source et puis ajouter celle-ci.<br><br>Indiquer les sources d’une information est un partie importante en généalogie car cela permet aux autres chercheurs de vérifier l’origine de l’information."
+
+#~ msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
+#~ msgstr "Choisir entre deux types d’affichage des noms de lieux dans la hiérarchie. Si vous choisissez Oui, le lieu a un nom abrégé ou le nom de niveau actuel, si Non le nom sera complet.<br><b>Exemples&nbsp;:<br>Nom complet&nbsp;:</b>Montréal, Québec, Canada<br><b>Nom abrégé&nbsp;: </b>Montréal<br><b>Nom complet&nbsp;: </b>Québec, Canada<br><b>Nom abrégé&nbsp;:</b>Québec"
+
+#~ msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+#~ msgstr "Ici vous pouvez choisir texte qui apparaît sur l’écran de connexion. Vous devez déterminer le texte prédéfini le plus approprié.<br><br>Vous pouvez également choisir d’entrer votre propre texte de bienvenue. S’il vous plaît,  pour plus d’informations, référez vous au texte d’aide associé avec le champ <b>\"Texte personnalisé de bienvenue\"</b>.<br><br>Il existe trois textes prédéfinis<ul><li><b>1 - Texte indiquant que tous les utilisateurs peuvent demander un compte d’utilisateur</b><div class=\"list_value_wrap\"><center><b>Bienvenue sur ce site de généalogie</b></center><br>L’accès complet à ce site est autorisée à tout visiteur qui a un compte utilisateur.<br><br>Si vous avez un compte utilisateur, vous pouvez vous connecter sur cette page. Si vous ne possédez pas de compte utilisateur, vous pouvez en demander un en cliquant sur le lien approprié ci-dessous.<br><br>Après avoir vérifié votre demande, l’administrateur du site vous activera votre compte. Vous recevrez un courriel lorsque votre demande sera approuvée.</div><br></li><li><b>2- Texte indiquant que l’administrateur décidera si besoin d’un compte</b><div class=\"list_value_wrap\"><center><b>Bienvenue sur ce site de généalogie</b></center><br>L’accès à ce site est réservé aux seuls utilisateurs <u>autorisés</u>.<br><br>Si vous avez un compte utilisateur vous pouvez vous connecter sur cette page. Si vous ne possédez pas de compte utilisateur, vous pouvez en demander un en cliquant sur le lien approprié ci-dessous. <br><br>Après avoir vérifié vos informations, l’administrateur acceptera ou refusera votre demande de compte. Vous recevrez un message par courriel lorsque votre demande sera approuvée. </div><br></li><li><b>texte prédéfini qui énonce que seulement les membres de la famille peuvent demander un compte d’utilisateur: </b><div class=\"list_value_wrap\"><center><b>Bienvenue sur ce site de généalogie</b></center><br>3 - L’accès à ce site est réservé <u>seulement aux membres de la famille</u>.<br><br>Si vous avez un compte utilisateur vous pouvez vous connecter sur cette page. Si vous ne possédez pas de compte utilisateur, vous pouvez en demander un en cliquant sur le lien approprié ci-dessous. <br><br>Après avoir vérifié les renseignements que vous fournissez, l’administrateur acceptera ou refusera votre demande de compte. Vous recevrez un courriel lorsque votre demande sera approuvée. </div></li></ul>"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "Masquer &amp; afficher"
+
+#~ msgid "His occupation was"
+#~ msgstr "Son métier était"
+
+#~ msgid "Hit count:"
+#~ msgstr "Compteur"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Âge du mari"
+
+#~ msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+#~ msgstr "Si un individu a été connu sous un diminutif ou un sobriquet ne faisant pas partie de son nom officiel, il doit être enchâssé dans des guillemets. Par exemple, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Si le pare-feu multimédia est activé, voulez-vous stocker les copies des images filigranées en taille réelle sur le serveur en plus des mêmes images sans filigrane?<br><br>Lorsque la valeur est <b>Oui</b>, les images filigranées en taille réelle seront stockés, cela permettra un affichage plus rapide au détriment de plus d’espace disque nécessaire sur le serveur."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Si le Pare-feu des médias est activé, doit-on stocker sur le serveur les miniatures avec un filigrane, en plus des miniatures sans filigrane ?<br><br>Lorsque la valeur est <b>Oui</b>, la liste des médias contenant les miniatures avec un filigrane sera produite plus rapidement au détriment de l’espace disque du serveur."
+
+#~ msgid "If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don't watermark the thumbnails."
+#~ msgstr "Si le pare-feu multimédia est activé, les miniatures doivent-elles être filigranées ? Votre liste de médias se charge plus rapidement si vous n’avez pas d’image avec filigrane."
+
+#~ msgid "If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here."
+#~ msgstr "Si le pare-feu avec les médias est activé, les utilisateurs verront les filigranes, s’ils n’ont pas le niveau de privilège spécifié ici."
+
+#~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+#~ msgstr "Si l’option <b>Autoriser les visiteurs à demander un compte</b> est activée ce paramètre détermine si l’administrateur doit approuver l’inscription.<br><br>Mettre ce paramètre à <b>Oui</b>, il faudra que pour tous les nouveaux utilisateurs l’administrateur vérifie d’abord et ensuite approuve le compte avant de pouvoir vous connecter. Avec ce paramètre sur <b>Non</b>, la case <b>utilisateur approuvé par Administrateur</b> sera vérifiée automatiquement lorsque les utilisateurs auront vérifié leur compte, ce qui permet une connexion immédiate sans intervention de l’administrateur."
+
+#~ msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+#~ msgstr "Si cet individu a des évènements autres que décès, inhumation ou crémation plus récents que ce nombre d’années, il est considéré comme «&nbsp;vivant&nbsp;». Les dates de naissance des enfants sont considérées comme des évènements récents pour l’individu."
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Si vous n’avez pas demandé une inscription vous pouvez supprimer ce message."
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "Si vous ne connaissez pas les paramètres suivants, laissez les valeurs par défaut, qui peuvent parfois fonctionner. Vous pourrez les changer ultérieurement si nécessaire."
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "Si vous ne souhaitez pas envoyer de messages, si vous utilisez webtrees en local ou si vous êtes l’unique utilisateur, vous pouvez désactiver cette fonctionnalité."
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "Si vous avez un grand nombre de lieux non-utilisés, le temps de création de la liste peut être long."
+
+#~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
+#~ msgstr "Si vous avez une note à ajouter à ce disque, c’est l’endroit pour le faire.<br><br> Il suffit de cliquer sur le lien, une fenêtre s’ouvrira, et vous pouvez taper votre note. Lorsque vous avez fini de taper, cliquez simplement sur le bouton ci-dessous, fermez la fenêtre, et c’est tout."
+
+#~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
+#~ msgstr "Permet aux visiteurs et aux utilisateurs de changer de fichier GEDCOM quand il en existent plusieurs sur le serveur."
+
+#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
+#~ msgstr "Si la politique de sécurité du serveur web de votre hébergeur vous le permet, vous pourrez demander l’augmentation de la mémoire ou du temps d’exécution sur la page Administration de <b>webtrees</b>. Sinon, vous devrez contacter l’administrateur de votre serveur web ou votre hébergeur."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
+#~ msgstr "Dans beaucoup de cultures, il est usuel, d’avoir un nom traditionnel écrit en caractères traditionnels, et également une version romanisé du nom, comme il serait orthographié ou prononcé dans les langues basées sur l’alphabet latin, tel que l’anglais.<br><br>Si vous préférez employer un alphabet non-Latin tel l’hébreu, le grec, le russe, le chinois, ou l’arabe pour écrire le nom dans les zones d’identification standard, alors vous pouvez employer ce champ pour écrire le même nom en utilisant l’alphabet latin. Les deux versions du nom apparaîtront dans les listes et les diagrammes.<br><br>Bien que ce champ soit marqué «&nbsp;Romanisé&nbsp;», il n’est pas limité à ne contenir que des caractères basés sur l’alphabet latin. Ceci pourrait être utile avec des noms japonais, où trois alphabets différents peuvent coexistent."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
+#~ msgstr "Dans beaucoup de cultures, il est usuel, d’avoir un nom traditionnel écrit en caractères traditionnels, et également une version romanisée du nom, comme il serait orthographié ou prononcé dans les langues basées sur l’alphabet latin, tel que l’anglais.<br><br>Si vous préférez employer l’alphabet latin pour écrire le nom dans les zones d’identification standard, alors vous pouvez employer ce champ pour écrire le même nom dans l’alphabet non-Latin tel le grec, l’hébreu, le russe, l’arabe, ou le Chinois. Les deux versions du nom apparaîtront dans les listes et les diagrammes.<br><br>Bien que ce champ soit marqué «&nbsp;hébreu&nbsp;», il n’est pas limité à ne contenir que des caractères hébreux."
+
+#~ msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
+#~ msgstr "Dans certains pays, les lois de confidentialité ne s’appliquent pas seulement aux personnes vivantes, mais aussi à ceux qui sont morts récemment. Cette option vous permettra d’étendre les règles de confidentialité pour les personnes vivantes à ceux qui sont nés ou sont morts dans un certain nombre d’années. Laissez ces valeurs à vides pour désactiver cette fonctionnalité."
+
+#~ msgid "In this month…"
+#~ msgstr "Ce mois-là…"
+
+#~ msgid "In this year…"
+#~ msgstr "Cette année-là…"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Inclure la famille proche de cette personne"
+
+#~ msgid "Individual 1"
+#~ msgstr "Personne 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Personne 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Personne ayant vécu le plus longtemps"
+
+#~ msgid "LDS temple"
+#~ msgstr "Temple (SDJ)"
+
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Légal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Lettre"
+
+#~ msgid "Link ID"
+#~ msgstr "ID du lien"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Relier cette personne à une famille existante comme enfant"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Relier cette personne à une famille existante comme conjoint"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Relier cette personne à une famille existante comme conjointe"
+
+#~ msgid "Living individuals"
+#~ msgstr "Les personnes vivantes seulement"
+
+#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
+#~ msgstr "Chargez tous vos arbres généalogiques à partir du disque, en utilisant la fonction «&nbsp;importer&nbsp;» pour chacun d’eux."
+
+#~ msgid "Loading…"
+#~ msgstr "Chargement…"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Lieu non supprimé : ce lieu contient des sous-lieux"
+
+#~ msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero."
+#~ msgstr "De longues listes de personnes avec le même nom de famille peuvent être divisées en sous-listes, conformément à la première lettre du prénom de la personne.<br><br>Cette option détermine le moment où la sous-liste des noms de famille se produira. Pour désactiver les sous-listes, réglez cette option à zéro."
+
+#~ msgid "Main section blocks"
+#~ msgstr "Blocs de la section principale"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Date de mariage maxi"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Date de mariage mini"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Le lieu de mariage contient"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Promesse de mariage"
+
+#~ msgid "Married name"
+#~ msgstr "Nom après mariage"
+
+#~ msgid "Married surname"
+#~ msgstr "Nom de famille après mariage"
+
+#~ msgid "Masquerade"
+#~ msgstr "Prétendre être"
+
+#~ msgid "Masquerade as another user"
+#~ msgstr "Prétendre être un autre utilisateur"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Fusion de&nbsp;:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Fusion vers&nbsp;:"
+
+#~ msgid "Min. no. of occurrences to be a “common surname”"
+#~ msgstr "Min. d’occurrences d’un nom pour être dans la liste des «&nbsp;Principaux noms de familles&nbsp;»"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Bloc «&nbsp;Pages les plus visitées&nbsp;»"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Lieu de naissance de la mère - (format Chapman)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Age de la mère"
+
+#~ msgid "Move left"
+#~ msgstr "Déplacer à gauche"
+
+#~ msgid "Move right"
+#~ msgstr "Déplacer à droite"
+
+#~ msgid "Name List"
+#~ msgstr "Liste des noms"
+
+#~ msgid "No events for living individuals exist for the next %s day."
+#~ msgid_plural "No events for living people exist for the next %s days."
+#~ msgstr[0] "Aucun événement pour des personnes vivantes dans le prochain jour."
+#~ msgstr[1] "Aucun événement pour des personnes vivantes dans les %s prochains jours."
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Aucun évènement pour une personne vivante pour aujourd’hui."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Aucun évènement pour une personne vivante pour demain."
+
+#~ msgid "No records to display"
+#~ msgstr "Aucun enregistrement à afficher"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Objet non trouvé dans ce fichier GEDCOM."
+
+#~ msgid "No temple - living ordinance"
+#~ msgstr "Pas de temple"
+
+#~ msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
+#~ msgstr "Normalement, toute modification apportée à un arbre de la famille doivent être approuvés par un modérateur. Cette option permet à un utilisateur d’effectuer des modifications sans avoir besoin d’un modérateur d’approbation."
+
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
+#~ msgstr[0] "Note : la «&nbsp;période de vie&nbsp;» s’arrête (s’il n’y a pas de décès ou d’inhumation connu) %d année après la naissance ou la date estimée de naissance."
+#~ msgstr[1] "Note : la «&nbsp;période de vie&nbsp;» s’arrête (s’il n’y a pas de décès ou d’inhumation connu) %d années après la naissance ou la date estimée de naissance"
+
+#~ msgid "Nuku’Alofa, Tonga"
+#~ msgstr "Nuku’Alofa, Tonga"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "Nombre de mois écoulés depuis la dernière connexion pour qu’un compte utilisateur soit considéré comme inactif : "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Personnes les plus âgées encore en vie"
+
+#~ msgid "On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality."
+#~ msgstr "Sur ce graphique, vous pouvez afficher une ou plusieurs personnes le long d’une ligne horizontale du temps. Ce tableau vous permet de voir comment la vie de différents individus se chevauche.<br><br>Vous pouvez ajouter des personnes au graphique, individuellement ou par groupes de familles par leur identifiant. La liste précédente se souviendra que vous ajoutez des personnes au graphique. Vous pouvez effacer la liste à tout moment avec le bouton <b>Effacer le graphique</b>.<br><br>Vous pouvez également ajouter des personnes à la liste en les cherchant par plage de dates ou par la localité."
+
+#~ msgid "On this day…"
+#~ msgstr "Ce jour-là…"
+
+#~ msgid "Online editing"
+#~ msgstr "Édition en ligne"
+
+#~ msgid "Orientation"
+#~ msgstr "Orientation"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Autre répertoire… renseignez ici le nom de ce nouveau répertoire"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "Nom du serveur sortant (SMTP)"
+
+#~ msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "L’extension PHP «&nbsp;%1$s&nbsp;» est désactivée. Les fonctionnalités suivantes ne pourront fonctionner sans : %2$s. Contactez l’administrateur du serveur afin d’activer l’extension."
+
+#~ msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
+#~ msgstr "L’extension PHP «&nbsp;%s&nbsp;» est désactivée. Vous ne pouvez installer webtrees si elle n’est pas activée. Contactez l’administrateur du serveur afin d’activer l’extension."
+
+#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "Le paramètre  PHP «&nbsp;%1$s&nbsp;» est désactivé. La fonctionnalité suivante ne pourra fonctionner sans : %2$s. Contactez l’administrateur du serveur afin d’activer le paramètre."
+
+#~ msgid "Page"
+#~ msgstr "Page"
+
+#~ msgid "Page size"
+#~ msgstr "Dimensions de la page"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Parents, frères et sœurs"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Age des parents"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Arbre d’ascendance"
+
+#~ msgid "Place of LDS baptism"
+#~ msgstr "SDJ: lieu du baptême"
+
+#~ msgid "Place of LDS child sealing"
+#~ msgstr "SDJ: lieu du scellement de l’enfant"
+
+#~ msgid "Place of LDS endowment"
+#~ msgstr "SDJ: lieu de la dotation"
+
+#~ msgid "Place of LDS spouse sealing"
+#~ msgstr "SDJ: lieu du scellement d’un conjoint"
+
+#~ msgid "Place of adoption"
+#~ msgstr "Lieu de l’adoption"
+
+#~ msgid "Place of blessing"
+#~ msgstr "Lieu de la bénédiction"
+
+#~ msgid "Place of cremation"
+#~ msgstr "Lieu de la crémation"
+
+#~ msgid "Place of emigration"
+#~ msgstr "Lieu de l’émigration"
+
+#~ msgid "Place of event"
+#~ msgstr "Lieu de l’évènement"
+
+#~ msgid "Place of immigration"
+#~ msgstr "Lieu de l’Immigration"
+
+#~ msgid "Place of naturalization"
+#~ msgstr "Lieu de naturalisation"
+
+#~ msgid "Place of ordination"
+#~ msgstr "Lieu de l’Ordination"
+
+#~ msgid "Place of residence"
+#~ msgstr "Lieu de Résidence"
+
+#~ msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+#~ msgstr "Lieux doit être saisi conformément aux normes généalogiques. En généalogie, les lieux sont enregistrés avec les informations les plus spécifiques sur l’endroit d’abord, puis jusqu’à l’endroit le moins spécifiques en dernier, en utilisant des virgules pour séparer les niveaux des endroits différents. Le niveau auquel vous enregistrez les informations devrait représenter pour les documents les lieux aux niveaux de gouvernement ou d’une église où ils sont conservés.<br><br>Par exemple, un endroit comme Salt Lake City serait entré comme «&nbsp;Salt Lake City, Salt Lake City, Utah, Etats-Unis&nbsp;».<br><br>Examinons chaque partie de ce lieu. La première partie, «&nbsp;Salt Lake City&nbsp;», est la ville ou du canton où l’événement s’est produit. Dans certains pays, il peut y avoir des municipalités ou des districts à l’intérieur d’une ville qui sont importants à noter. Dans ce cas, ils devraient venir devant la ville. La partie suivante, «&nbsp;Salt Lake City&nbsp;», est le comté. «&nbsp;Utah&nbsp;» est l’état, et «&nbsp;USA&nbsp;» est le pays. Il est important de noter chaque lieu parce que les dossiers généalogiques sont conservés par les gouvernements de chaque niveau.<br><br>Si le niveau du lieu est inconnu, vous devez laisser un espace entre les virgules. Supposons que, dans l’exemple ci-dessus, vous ne saviez pas le comté de Salt Lake City. Vous devez ensuite l’enregistrer comme ceci: «&nbsp;Salt Lake City , , Utah, Etats-Unis&nbsp;». Supposons que vous ne connaissez qu’une personne est née dans l’Utah. Vous entrez les informations comme ceci: «&nbsp;,&nbsp;,&nbsp;Utah, Etats-Unis&nbsp;». <br><br>Vous pouvez utiliser le lien <b>Rechercher Lieux</b> pour vous aider à trouver des lieux qui existent déjà dans la base de données."
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "President’s Office"
+#~ msgstr "Cabinet du Président"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Imprimer les évènements de base même vides ?"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi’ al-awwal"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi’ al-awwal"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi’ al-awwal"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi’ al-awwal"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi’ al-thani"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi’ al-thani"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi’ al-thani"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi’ al-thani"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Évènements récents (- 100 ans)"
+
+#~ msgid "Registry officer"
+#~ msgstr "Greffier"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "Greffière"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "Greffier"
+
+#~ msgid "Religious institution"
+#~ msgstr "Institution religieuse"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Supprimer ce lieu ?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Blocs de la section de droite"
+
+#~ msgid "SMTP port"
+#~ msgstr "Port SMTP"
+
+#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
+#~ msgstr "Sauvegardez toutes vos arbres généalogiques sur le disque, en utilisant la fonction «&nbsp;exporter&nbsp;» pour chacun d’eux."
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Recherche et/ou remplace des données de votre fichier GEDCOM en utilisant des recherches par texte ou par motif"
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Recherche de personnes à ajouter à la liste Ajouter Liens."
+
+#~ msgid "Security"
+#~ msgstr "Sécurité"
+
+#~ msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
+#~ msgstr "Choisir dans la liste le lien entre les deux personnes.<br>Exemple&nbsp;: en choisissant «&nbsp;Parrain&nbsp;», cela signifie que la personne associée est le parrain de l’individu sélectionné."
+
+#~ msgid "Select events"
+#~ msgstr "Choisir un évènement"
+
+#~ msgid "Send message"
+#~ msgstr "Envoi de message"
+
+#~ msgid "Sender email address"
+#~ msgstr "Adresse courriel de l’expéditeur (nom de domaine)"
+
+#~ msgid "Server"
+#~ msgstr "Serveur"
+
+#~ msgid "Server time"
+#~ msgstr "Heure du serveur"
+
+#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
+#~ msgstr "Indique le nombre de générations à afficher par défaut sur les arbres d’<b>ascendance</b>."
+
+#~ msgid "Set the maximum number of generations to display on descendancy charts."
+#~ msgstr "Fixe le nombre maximun de générations à afficher pour les arbres de <b>descendance</b>."
+
+#~ msgid "Set the maximum number of generations to display on pedigree charts."
+#~ msgstr "Fixe le nombre maximum de générations à afficher pour les arbres d’<b>ascendance</b>."
+
+#~ msgid "Set the privacy access level for all dead individuals."
+#~ msgstr "Niveau de confidentialité pour toutes les personnes décédées"
+
+#~ msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
+#~ msgstr "Régler cette option à <b>Oui</b> affichera les codes de statuts des ordonnances LDS dans les diagrammes.<ul><li><b>B</b> - Baptême</li><li><b>E</b> - Doté(e)</li><li><b>S</b> - Relié à l’époux(se)</li><li><b>P</b> - Relié aux parents</li></ul>Une personne avec toutes les ordonnances aura <b>BESP</b> imprimé après son nom. Les ordonnances manquantes sont indiquées par <b>_</b> à la place du code de la lettre correspondante. Par exemple, <b>BE__</b> indique <b>S</b> et <b>P</b> ordonnances manquantes."
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Note partagée :"
+
+#~ msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
+#~ msgstr "Les notes partagées sont des textes de forme libre.<br><br>Chaque note partagée peut être liée à plus d’une personne, famille, source ou évènement."
+
+#~ msgid "Shared notes found"
+#~ msgstr "Notes partagées trouvées"
+
+#~ msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
+#~ msgstr "Les notes partagées, tout comme les notes régulières, sont du texte libre. Contrairement aux notes régulières, chaque note partagée peut être reliée à plus d’une seule personne, famille, source, ou fait.<br><br>En cliquant sur l’icône appropriée, vous pouvez établir un lien à une note partagée existante ou créer une nouvelle note partagée et en même temps la relier. Si un lien à une note partagée existante a déjà été établi, vous pouvez aussi modifier le contenu de cette note.<br><ul><li><b>Lien à une notre partagée existante</b><div style=\"padding-left:20px;\">Si vous connaissez déjà le numéro ID de la note partagée désirée, vous pouvez entrer ce numéro directement dans le champ.<br><br>Lorsque vous cliquez l’icône <b>Trouver une note partagée</b>, vous serez en mesure de rechercher le texte de toutes les notes partagées existantes et de choisir l’une d’entre elles. Le numéro ID de la note sélectionnée sera inséré automatiquement dans le champ.<br><br>Vous devez cliquer le bouton <b>Enregistrer</b> afin de mettre à jour l’enregistrement d’origine.</div><br></li><li><b>Créer une nouvelle note partagée</b><div style=\"padding-left:20px;\">Lorsque vous cliquez l’icône <b>Créer une nouvelle note partagée</b>, une nouvelle fenêtre s’ouvrira. Vous pouvez entrer le texte de la nouvelle note selon vos désirs. Comme pour les notes régulières, vous pouvez entrer des URL’s.<br><br>Lorsque vous cliquerez sur le bouton <b>Enregistrer</b>, vous verrez un message avec le numéro ID de la nouvelle note partagée créée. Vous devez cliquer sur ce message pour fermer la fenêtre d’édition et aussi insérer automatiquement le nouveau numéro ID dans le champ du numéro ID. Si vous ne fermez que la fenêtre, le nouveau numéro ID créé ne sera pas inséré automatiquement dans le champ.<br><br>Vous devez cliquer le bouton <b>Enregistrer</b> afin de mettre à jour l’enregistrement d’origine.</div><br></li><li><b>Modifier une note partagée existante</b><div style=\"padding-left:20px;\">Lorsque vous cliquez l’icône <b>Modifier note partagée</b>, une nouvelle fenêtre s’ouvrira. Vous pouvez modifier le texte de la note partagée existante selon vos désirs. Comme pour les notes régulières, vous pouvez entrer des URLs.<br><br>Lorsque vous cliquez sur le bouton <b>Enregistrer</b>, le texte de la note partagée sera mis à jour. Vous pouvez fermer la fenêtre et puis cliquer encore sur le bouton <b>Enregistrer</b>.<br><br>Lorsque vous modifiez le texte d’une note partagée, vos modifications apparaîtront à tous les endroits auxquels cette note partagée est déjà reliée. Les nouveaux liens que vous établirez après votre modification utiliseront le texte mis à jour.</div></li></ul>"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha’aban"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha’aban"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha’aban"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha’aban"
+
+#~ msgid "She "
+#~ msgstr "Elle "
+
+#~ msgid "She died"
+#~ msgstr "Elle est décédée"
+
+#~ msgid "She married"
+#~ msgstr "Elle a épousé"
+
+#~ msgid "She resided at"
+#~ msgstr "Elle habitait à"
+
+#~ msgid "She was born"
+#~ msgstr "Elle est née"
+
+#~ msgid "She was buried"
+#~ msgstr "Elle a été enterrée"
+
+#~ msgid "She was christened"
+#~ msgstr "Elle a été baptisée"
+
+#~ msgid "She was cremated"
+#~ msgstr "Elle a été incinérée"
+
+#~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
+#~ msgstr "La base de données <a href=\"http://www.geonames.org/\" target=\"_blank\">GeoNames</a> doit-elle être utilisée dans la suggestion des lieux&nbsp;?<br><br>Si l’option est à <b>Oui</b>, la base GeoNames sera interrogée pour fournir des suggestions sur le lieu en cours de saisie. Si l’option est à <b>Non</b>,  seule la base de données géographiques actuelle sera interrogée. Au fur et à mesure de votre saisie, les suggestions seront plus précises. Cette option peut ralentir la saisie de donnée, notamment si votre connexion internet est lente.<br><br>La base GeoName est accessible gratuitement. Elle contient plus de 8&nbsp;000&nbsp;000 de lieux."
+
+#~ msgid "Show acceptable use agreement on “Request new user account” page"
+#~ msgstr "Voir les conditions d’utilisation sur la page «&nbsp;Demander un compte utilisateur&nbsp;»"
+
+#~ msgid "Show age of parents next to child’s birthdate"
+#~ msgstr "Afficher l’âge des parents à la naissance de l’enfant"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Voir tous les lieux dans une liste"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Afficher les enfants des ancêtres ?"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "Montrer les personnes décédées"
+
+#~ msgid "Show details"
+#~ msgstr "Afficher les détails"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Afficher les miniatures des individus"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Afficher les lieux non utilisés"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Affichage des personnes nées depuis plus de 100 ans."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Affichage des personnes nées depuis moins de 100 ans"
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Affichage des personnes vivantes ou des couples dont les deux conjoints sont vivants en date d’aujourd’hui."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Affichage des personnes décédées ou des couples dont les deux conjoints sont décédés en date d’aujourd’hui."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Affichage des personnes décédées depuis plus de 100 ans."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Affichage des personnes décédées depuis moins de 100 ans."
+
+#~ msgid "Show notes?"
+#~ msgstr "Montrer les notes ?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Afficher les professions?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Voir seulement les personnes vivantes ?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Affichage des personnes de sexe indéterminé."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Montrer seulement les personnes, les événements ou tout ?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Afficher les changements en cours"
+
+#~ msgid "Show photos?"
+#~ msgstr "Montrer les photos ?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Voir les lieux classés par niveaux"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Afficher les individus/familles reliées (ou apparentées)"
+
+#~ msgid "Show residences?"
+#~ msgstr "Afficher les résidences?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Montrer les sources ?"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Affichage des couples ou individus &laquo;&nbsp;feuilles&nbsp;&raquo;, c’est-à-dire&nbsp;: vivants à la date d’aujourd’hui mais n’ayant pas d’enfant enregistré dans la base."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Affichage des couples ou individus &laquo;&nbsp;racines&nbsp;&raquo;, appelés également &laquo;&nbsp;patriarches&nbsp;&raquo;, c’est-à-dire&nbsp;: dont ni le père ni la mère ne sont enregistrés dans la base."
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Affichage de %1$s à %2$s parmi %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "Soeur"
+
+#~ msgid "Social security number"
+#~ msgstr "Numéro de sécurité sociale"
+
+#~ msgid "Son"
+#~ msgstr "Fils"
+
+#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
+#~ msgstr "Les sources peuvent inclure des champs pour enregistrer la qualité des données (primaire, secondaire, etc) et la date d’entrée dans le document original Si vous n’utilisez pas ces champs, vous pouvez les désactiver lors de la création de nouvelles sources."
+
+#~ msgid "Sources to the events"
+#~ msgstr "Sources des évènements"
+
+#~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
+#~ msgstr "Indique si les messages envoyés par <b>webtrees</b> peuvent être stockés dans la base de données. Si vous choisissez <b>Oui</b> les utilisateurs seront en mesure de récupérer leurs messages quand ils se connecteront dans <b>webtrees</b>. Si vous choisissez <b>Non</b> les messages seront uniquement envoyés par courriel."
+
+#~ msgid "Spouse"
+#~ msgstr "Conjoint"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Conjoints et enfants"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Date mini des modifications"
+
+#~ msgid "Surname option"
+#~ msgstr "Option Nom"
+
+#~ msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+#~ msgstr "Cette liste affiche les liens favoris que vous avez sélectionnés. S’y ajoutent les favoris enregistrés pour ce fichier GEDCOM par l’administrateur.<br>Ces liens vous offrent l’accès direct à la page détaillée de l’individu choisi.<br>Pour savoir comment ajouter un favori, consulter l’aide sur la page <B>Mes favoris</B>."
+
+#~ msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+#~ msgstr "Le diaporama peut montrer un lien qui, lorsque cliqué, télécharge le fichier numérique.<br><br>Vous pouvez masquer le lien de téléchargement pour des raisons de sécurité."
+
+#~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
+#~ msgstr "Le champ Type vous permet de spécifier un évenement particulier. C’est un champ libre dans lequel vous pouvez entrer toute information que vous voulez mémoriser."
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "L’administrateur a été informé.<br>Vous pourrez vous connecter avec votre identifiant de connexion et votre mot de passe dès qu’il vous en aura donné l’autorisation."
+
+#~ msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+#~ msgstr "Le panier vous permet de prendre des extraits de cet arbre familial et de les regrouper en un seul fichier pour le téléchargement et l’importation ultérieure dans votre programme de généalogie. Le fichier téléchargeable est enregistré au format GEDCOM.<br><ul><li>Comment prendre ces données&nbsp;?<br>C’est vraiment simple. Lorsque vous voyez un nom cliquable (individu, famille, ou source), vous pouvez aller à la page Détails de ce nom. Là, vous pourrez voir l’option <b>Ajouter au panier</b>, vous aurez alors la possibilité d’ajouter immédiatement d’autres extraits liés à votre sélection.</li><li>Comment faire pour télécharger ?<br>Une fois que vous avez des articles dans votre panier, vous pouvez les télécharger en cliquant simplement sur le lien <b>Télécharger maintenant</b>. Suivez les instructions et les liens.</li></ul>"
+
+#~ msgid "The individual to be contacted about technical questions or errors encountered on your site."
+#~ msgstr "L’adresse que les visiteurs doivent utiliser pour les questions techniques ou les erreurs qu’ils peuvent rencontrer sur votre site."
+
+#~ msgid "The individual to contact about the genealogical data on this site."
+#~ msgstr "L’adresse que les visiteurs doivent utiliser pour contacter la personne responsable des données généalogiques de ce site."
+
+#~ msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+#~ msgstr "Le délai après la naissance peut être réglé dans «&nbsp;Âge maxi d’une personne&nbsp;» sur l’onglet «&nbsp;Confidentialité&nbsp;» de chaque arbre généalogique."
+
+#~ msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
+#~ msgstr "Le fichier média que vous téléverser peut être, et devrait probablement être, nommé différemment sur le serveur que sur votre ordinateur local. Souvent le nom du fichier local a une signification pour vous, mais est beaucoup moins significatif pour les visiteurs. Considérez aussi la possibilité que vous ou quelqu’un d’autre essaie de transférer différents fichiers appelés «&nbsp;grands-parents.jpg&nbsp;».<br><br>Dans ce champ, vous spécifiez le nouveau nom du fichier que vous téléversez. Le nom que vous entrez ici sera également utilisé pour nommer la miniature, qui peut être téléversée séparément ou générée automatiquement. Vous n’avez pas besoin d’entrer l’extension dans le nom de fichier (jpg, gif, pdf, doc, etc)<br><br>Laissez ce champ vide pour garder le nom original du fichier que vous avez téléversé à partir de votre ordinateur local."
+
+#~ msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
+#~ msgstr "L’organisation, l’institution, la société, la personne, ou toute autre entité qui a l’autorité.<br><br>Par exemple, l’employeur d’une personne, ou une organisation/église qui a la responsabilité de la création et/ou de l’archivage des enregistrements."
+
+#~ msgid "The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>."
+#~ msgstr "Port à utiliser sur le serveur SMTP. Il s’agit généralement du port <b>25</b>."
+
+#~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
+#~ msgstr "Le préfixe est optionnel, mais recommandé. En donnant à vos tables un préfixe unique, vous pourrez installer plusieurs applications en parallèle utilisant la même base de données. «&nbsp;wt_&nbsp;» est recommandé, mais vous êtes libre de choisir un autre préfixe."
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "L’expression régulière «&nbsp;regex&nbsp;» semble contenir une erreur. Elle ne peut pas être utilisée."
+
+#~ msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
+#~ msgstr "Les thèmes peuvent être choisis à trois niveaux : utilisateur, GEDCOM et site. Les paramètres utilisateurs prévalent sur les paramètres GEDCOM, qui à leur tour prévalent sur les paramètres site. Choisir le «&nbsp;thème par défaut&nbsp;» au niveau utilisateur implique l’utilisation du paramétrage pour le GEDCOM en cours. Choisir le «&nbsp;thème par défaut&nbsp;» au niveau GEDCOM implique l’utilisation du paramétrage du site."
+
+#~ msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
+#~ msgstr "Ce GEDCOM (arbre généalogique) a été mis à jour le #gedcomUpdated#. Il y a #totalSurnames# noms de famille dans cet arbre généalogique. Le premier événement enregistré est le #firstEventType# de #firstEventName# en #firstEventYear#. L’événement le plus récent est le #lastEventType# de  #lastEventName# en #lastEventYear#.<br><br>Si vous avez des commentaires ou des suggestions s’il vous plaît contactez le #contactWebmaster#."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "Ce GEDCOM créé avec <b>%1$s</b> le <b>%2$s</b>."
+
+#~ msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+#~ msgstr "Ce bloc permet l’affichage d’un arbre d’ascendance, de descendance, ou du sablier sur la Page personnelle ou la page Accueil. Faute d’espace, ce bloc doit être placé uniquement sur le côté gauche de la page.<br><br>Lorsque ce bloc apparaît sur la page Accueil, la personne-racine et le type de graphique à afficher sont déterminés par l’administrateur. Lorsque ce bloc apparaît sur la Page personnelle, ces options sont déterminées par l’utilisateur.<br><br>Le fonctionnement de ces graphiques est identique à leur fonctionnement quand ils sont appelés à partir des menus. Cliquez sur la boîte d’une personne pour voir plus de détails à son sujet."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Ce bloc affiche les 10 pages les plus visitées. Le compteur de visites doit être activé dans les options de configuration GEDCOM de cet arbre généalogique."
+
+#~ msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
+#~ msgstr "Option pour afficher le statut de connexion (en ligne / hors ligne) aux autres utilisateurs. Si la case est cochée, l’utilisateur sera visible. Sinon il restera caché."
+
+#~ msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+#~ msgstr "Saisir dans ce champ le code de la source associée à l’évènement. Si la source que vous voulez associer existe déjà, la case de gauche listera l’ensemble des sources de la base, présentées par titre, vous permettant d’en sélectionner une. Si la source que vous voulez associer est à créer, sélectionnez la case de droite. Quand le champ est rempli, le titre de la source figure à droite du champ. Pour enlever une source, mettez le champ à blanc."
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Ce champ contrôle l’ordre dans lequel les éléments de la FAQ sont affichés.<br><br>Vous n’avez pas à entrer les numéros de façon séquentielle. Si vous laissez des trous dans le système de numérotation, vous pouvez insérer d’autres éléments plus tard. Par exemple, si vous utilisez les numéros 1, 6, 11, 16, vous pouvez insérer des éléments plus tard, avec les numéros de séquence manquants. Les nombres négatifs et zéro sont autorisés, et peut être utilisé pour insérer des éléments en face de la première.<br><br>Lorsqu’il y a plus qu’un élément de FAQ avec le même numéro, un seul de ces éléments sera visible."
+
+#~ msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
+#~ msgstr "Cette case vous permet de changer l’année du calendrier. Entrez une année, puis appuyez sur <b>Entrée</b> pour afficher le calendrier de cette année. <br><br><b>Fonctionnalités avancées</b> pour <b>Afficher année</b><dl><dt><b>Plus d’une année</b></dt><dd>Vous pouvez chercher une date sur un intervalle d’années<br><br>L’intervalle est considéré avec les bornes <u>incluses</u>. Ce qui signifie que la plage couverte s’étend du 1er janvier de la première date au 31 décembre de la deuxième. Par exemple&nbsp;:<br><br><b>1992-5</b> pour tous les évènements de 1992 à 1995.<br><b>1972-89</b> tous les évènements de 1972 à 1989.<br><b>1610-759</b> tous les évènements de 1610 à 1759.<br><b>1880-1905</b> tous les évènements de 1880 à 1905.<br><b>880-1105</b> tous les évènements de 880 à 1105.<br><br>Pour sélectionner une décade, vous pouvez utiliser le caractère générique <b>?</b> à la place des chiffres finaux. Par exemple&nbsp;: <b>197?</b> pour tous les évènements de 1970 à 1979 ou <b>16??</b> pour tous les événements de 1600 à 1699.</dd></dl>"
+
+#~ msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+#~ msgstr "Cette case de saisie vous permet de saisir le code d’un individu, d’une famille ou d’une source pour l’ajouter au panier.  Une fois ajouté, vous avez la possibilité d’ajouter les relations de cet individu/famille/source à votre panier.<br><br>Si vous ne connaissez pas le code, vous pouvez effectuer une recherche par nom en cliquant sur l’icône «&nbsp;choisir&nbsp;» appropriée."
+
+#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
+#~ msgstr "Il s’agit d’une liste séparée par des virgules des tags GEDCOM qui seront présentées lors de l’ajout d’une nouvelle personne. Par exemple, si BIRT est dans la liste, les champs de date de naissance et lieu de naissance sera indiquée sur le formulaire."
+
+#~ msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
+#~ msgstr "Il s’agit d’un lien vers vos propre information dans l’arbre généalogique. Si ce n’est pas la bonne personne, contactez un administrateur."
+
+#~ msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+#~ msgstr "Liste des codes GEDCOM des faits qu’il sera possible d’ajouter à une famille. Vous pouvez librement ajouter ou supprimer des codes à cette liste. Toutefois, les faits de cette liste ne doivent pas être présents dans la liste <i>Faits uniques pour une famille</i>."
+
+#~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
+#~ msgstr "Nom du serveur de mail SMTP.  Exemple: <b>smtp.foo.bar.com</b>."
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "Il s’agit du nom du serveur SMTP. «&nbsp;localhost&nbsp;» signifie que le service mail est hébergé sur le même ordinateur que le serveur de votre site Web."
+
+#~ msgid "This is used in the \"From:\" header when sending mails."
+#~ msgstr "Cette adresse est utilisée dans le champ «&nbsp;De&nbsp;:&nbsp;» lors de l’envoi de messages."
+
+#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
+#~ msgstr "Cette adresse est utilisée dans le champ «&nbsp;Expéditeur&nbsp;:&nbsp;» lors de l’envoi de messages."
+
+#~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br><br>Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br><br>When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
+#~ msgstr "Cette option fait en sorte que <b>webtrees</b> affichera tous les individus qui sont enregistrés comme ayant une relation de parenté avec la personne ou la famille trouvée en tant que résultat direct de la recherche. Le contraire, où toutes les personnes ou familles sont affichées lorsqu’une personne est trouvée en tant que résultat direct de la recherche a une relation de parenté avec ces autres personnes ou familles, n’est pas possible.<br><br>Exemple: Supposons qu’une personne <b>A</b> est le parrain de la personne <b>B</b>. Cette relation de parenté est enregistrée dans l’enregistrement GEDCOM de la personne <b>B</b> au moyen de la balise ASSO. Il n’y a aucune balise correspondante dans l’enregistrement GEDCOM de la personne <b>A</b>.<br><br>Lorsque cette option est réglée à <b>Oui</b> et que la liste des résultats de Recherche inclut <b>B</b>, <b>A</b> sera inclus automatiquement à cause de la balise ASSO dans l’enregistrement GEDCOM de <b>B</b>. Cependant, si la liste des résultats de Recherche inclut <b>A</b>, <b>B</b> ne sera pas inclus automatiquement car il n’y a pas de balise ASSO correspondante dans l’enregistrement GEDCOM de la personne <b>A</b>."
+
+#~ msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
+#~ msgstr "Cette option indique si les Notes et Sources liées aux Faits doivent être montrées dans les onglets Notes et Sources de la page de l’individu.<br><br>Par défaut, les onglets Notes et Sources ne montrent que les Notes et Sources liées à l’individu directement."
+
+#~ msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
+#~ msgstr "Option pour afficher l’âge du père et de la mère dans les tableaux à côté de la date de naissance de l’enfant."
+
+#~ msgid "This option controls whether or not to show the Birth and Death details of an individual on charts."
+#~ msgstr "Cette option vous permet d’afficher ou de masquer les détails de la naissance et du décès d’un individu sur les arbres d’ascendance et de descendance."
+
+#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgstr "Permet d’indiquer si l’icône du sexe doit être affichée sur les graphiques.<br><br>Étant donné que le sexe est également indiqué par la couleur de la boîte, cette option ne permet pas de cacher le sexe. Elle ne fait qu’enlever une information redondante."
+
+#~ msgid "This option enables online editing features for this database so that users with Edit privileges may update data online."
+#~ msgstr "Autorise les fonctions d’édition des donnéees GEDCOM pour que les utilisateurs autorisés puissent mettre à jour ce fichier directement."
+
+#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
+#~ msgstr "Indique le sens d’orientation des arbres sur la page&nbsp;:<br><ul><li>portrait =  vertical&nbsp ;<li>paysage =  horizontal.</ul>"
+
+#~ msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+#~ msgstr "Cette option est semblable au système de messagerie interne de <b>webtrees</b>, mais avec un ajout. Cet ajout enverra également une copie du message à l’adresse courriel que vous avez configurée dans votre page Profil.  C’est la méthode de contact par défaut."
+
+#~ msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
+#~ msgstr "Cette option permettra à tous les paramètres de confidentialité de masquer les détails des personnes vivantes, tels que définis ou modifiés sur l’onglet «&nbsp;Confidentialité&nbsp;» de la page «&nbsp;Arbres généalogiques&nbsp;» de chaque GEDCOM."
+
+#~ msgid "This option will generate thumbnails for all files in the current directory which don't already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br><br>If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links."
+#~ msgstr "Cette option génèrera les miniatures pour tous les fichiers présents dans la répertoire actif dont les miniatures sont manquantes. Cela est beaucoup plus pratique que de cliquer sur le lien <b>Créer la miniature</b> pour chacun des fichiers concernés.<br><br>Si vous désirez vérifier quels sont les fichiers qui doivent avoir des miniatures, vous ne devez pas utiliser cette option. Dans ce dernier cas, il vaut mieux cliquer sur les liens appropriés <b>Créer les miniatures</b>."
+
+#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Cette option vous permet de descendre un élément dans la liste FAQ.<br><br>A chaque utilisation, la position de la question/réponse dans la FAQ est augmentée de 1. Vous pouvez également changer cette position sur la page d’édition de la question/réponse. Si plusieurs questions/réponses ont le même numéro, une seule sera visible."
+
+#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Cette option vous permet de déplacer un élément vers le haut sur la page de FAQ.<br><br>Chaque fois que vous utilisez cette option, la position de la FAQ de cet article est réduite de un. Vous pouvez obtenir le même effet en modifiant l’article en question et modifier le champ Position de la FAQ. Lorsque plus d’un élément de FAQ a le même numéro, un seul de ces éléments sera visible."
+
+#~ msgid "This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
+#~ msgstr "Cette option conserve les liens familiaux dans les dossiers privés. Cela signifie que vous pourrez voir les boîtes vides «&nbsp;privé&nbsp;» sur le tableau généalogique et sur les autres tableaux avec les personnes privées."
+
+#~ msgid "This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server’s software, as it relates to PHP and <b>webtrees</b>, can be viewed."
+#~ msgstr "Cette page contient des informations détaillées sur le serveur hébergeant <b>webtrees</b>. Vous pouvez y voir plusieurs détails de configuration du logiciel serveur, comme ses rapports avec PHP et <b>webtrees</b>."
+
+#~ msgid "This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent."
+#~ msgstr "Cette page vous permet de fusionner deux enregistrements GEDCOM partir du même fichier GEDCOM.<br><br>Ceci est utile pour les personnes qui ont fusionné des GEDCOMS et ont maintenant beaucoup de personnes, des familles, et les sources qui sont les mêmes.<br><br>La page se compose de trois étapes.<br><ol><li> Vous entrez les GEDCOMS IDs. Les IDs <u>doivent</u> être de même type .Vous ne pouvez pas fusionner un individu et une famille ou une famille et une source, par exemple.<br>Dans <b>Fusionner vers ID:</b>entrer l’ID de l’enregistrement que vous voulez avoir après la fusion est terminée.<br>Dans <b>Fusionner à partir ID:</b>entrer l’ID de l’enregistrement dont les informations seront fusionnés dans l’enregistrement Fusionner vers ID:. Cet enregistrement sera supprimé après la fusion.</li><li>Vous choisissez quels sont les faits que vous voulez conserver les deux documents quand ils seront fusionnés. Il suffit de cliquer sur les cases à cocher ceux que vous souhaitez conserver.</li><li>Vous pouvez inspecter les résultats de la fusion, tout comme avec tous les autres changements en ligne.</li></ol>Quelqu’un qui à les droits Accepter devra autoriser les modifications pour les rendre permanentes."
+
+#~ msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#~ msgstr "Ce rôle a toutes les autorisations du rôle de membre, plus l’autorisation d’ajouter / modifier / supprimer des données. Tout changement devra être approuvé par un modérateur, sauf si pour l’utilisateur «&nbsp;accepter automatiquement les modifications&nbsp;» est activé."
+
+#~ msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+#~ msgstr "Cette section vous permet d’associer une source à l’évènement que vous mettez à jour.<br><br>Dans le champ «&nbsp;source&nbsp;», entrez le numéro de la source si celle-ci existe déjà. Cliquez sur le lien <b>Créer une nouvelle source</b> si vous désirez créer une nouvelle source. Dans le champ «&nbsp;Page&nbsp;», vous pouvez entrer les références (cote) ou toute autre information permettant de trouver la source. Dans le champ «&nbsp;Texte&nbsp;», vous pouvez entrer la transcription textuelle de la source."
+
+#~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
+#~ msgstr "La limite de mémoire RAM du serveur est %d Mo, et le temps maximal d’exécution est de %d secondes."
+
+#~ msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+#~ msgstr "Ceci est une liste de faits additionnels qui doivent être séparés par une virgule ou un espace que vous souhaitez voir apparaître dans les cases des graphiques comme le Tableau d’ascendance, en plus des naissances et des décès qui s’affichent par défaut. Dans ce champ, vous devez utiliser les balises de faits telles que définies par la norme GEDCOM 5.5.1. Par exemple, si vous voulez que la profession s’affiche dans les boîtes, vous devez ajouter «&nbsp;OCCU&nbsp;» dans ce champ. En cliquant sur l’icône située à droite du champ, une liste des balises s’affichera. Cliquez sur la balise désirée, elle s’ajoutera automatiquement dans le champ."
+
+#~ msgid "This text will be appended to each page title.  It will be shown in the browser’s title bar, bookmarks, etc."
+#~ msgstr "Ce texte sera ajouté à chaque titre de la page. Il sera affiché dans la barre de titre du navigateur, signets, etc."
+
+#~ msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+#~ msgstr "Cette valeur détermine le nombre de générations de descendants de l’individu racine qui sera affiché dans le format Sablier."
+
+#~ msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
+#~ msgstr "Pour vous aider à travailler avec ce bloc, nous avons créé plusieurs modèles standards. Quand vous sélectionnez l’un de ces modèles, l’espace de saisie du texte contient une copie que vous pouvez modifier et personnaliser selon les exigences de votre site."
+
+#~ msgid "To family"
+#~ msgstr "à une famille"
+
+#~ msgid "To individual"
+#~ msgstr "à une personne"
+
+#~ msgid "To source"
+#~ msgstr "à une source"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "Total des modifications approuvées&nbsp;: "
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Total des modifications en attente: "
+
+#~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
+#~ msgstr "Transport Layer Security (TLS) et Secure Sockets Layer (SSL) sont des protocoles d’encryption des données sur Internet.<br><br>TLS 1.0, 1.1 et 1.2 sont des développements standardisés de SSL 3.0. TLS 1.0 et SSL 3.1 sont équivalents. Des travaux plus approfondis sur SSL sont effectués sous le nouveau nom TLS.<br><br>Si votre serveur SMTP requiert les protocoles TLS ou SLL durant la connexion, sélectionnez l’option <b>Oui</b>."
+
+#~ msgid "UTC"
+#~ msgstr "UTC"
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Code GEDCOM inconnu"
+
+#~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
+#~ msgstr "Utiliser SMTP pour envoyer des e-mails à partir de <b>webtrees</b>.<br><br>Cette option nécessite l’accès à un serveur de messagerie SMTP. Lorsque la valeur est <b>Non</b> <b>webtrees</b> utilisera le système e-mail intégré dans PHP sur ce serveur."
+
+#~ msgid "Use SMTP to send external mails"
+#~ msgstr "Utiliser SMTP pour envoyer des mails externes"
+
+#~ msgid "Use colors"
+#~ msgstr "Utiliser les couleurs"
+
+#~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
+#~ msgstr "Certains serveurs SMTP demandent une authentification afin d’envoyer un mail. Entrez le nom d’utilisateur et le mot de passe ci-dessous."
+
+#~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
+#~ msgstr "Utiliser des images silhouette quand aucune image mise en évidence pour cette personne a été spécifiée. Les images utilisées sont spécifiques au sexe de la personne en question.<br><br><table><tr><td wrap valign=\"middle\">Cette image peut être utilisée lorsque le sexe de la personne n’est pas connu:"
+
+#~ msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move right and Move left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
+#~ msgstr "Utilisez ces boutons pour déplacer une entrée d’une liste vers une autre.<br><br>Mettez en surbrillance (sélectionnez) l’entrée à déplacer, puis cliquez sur le bouton pour déplacer ou copier cette entrée dans la direction de la flèche.  Utilisez les boutons <b>&raquo;</b> et <b>&laquo;</b> pour déplacer l’entrée en surbrillance de l’extrême gauche vers l’extrême droite de la liste ou vice-versa. Utilisez les boutons <b>&gt;</b> et <b>&lt;</b> pour déplacer l’entrée en surbrillance entre la liste Blocs disponibles et la liste à sa droite ou à sa gauche.<br><br>Les entrées dans la liste Blocs disponibles ne changent pas, indépendamment de ce que vous faites avec les boutons Déplacer à droite et Déplacer à gauche.  C’est pourquoi le même bloc peut apparaître plusieurs fois sur la même page. Le bloc HTML est un bon exemple du pourquoi d’une telle manipulation."
+
+#~ msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
+#~ msgstr "Utilisez ces boutons pour réorganiser l’ordre d’affichage des entrées dans la liste. Les listes seront imprimées dans l’ordre dans lequel elles sont affichées.<br><br>Mettez en surbrillance (sélectionnez) l’entrée de la liste que vous souhaitez déplacer, puis cliquez sur l’un des boutons pour l’abaisser ou la remonter."
+
+#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
+#~ msgstr "Utilisez ce champ pour stocker une version abrégée d’un titre. Ce champ est utilisé en conjonction avec le champ du titre sur les sources. Par défaut <b>webtrees</b> sera utilisé en premier comme titre et titre abrégé.<br><br>Selon la spécification GEDCOM 5.5, «&nbsp;cette entrée sert à donner un titre court utilisée pour le tri, le classement et l’extraction des documents source (pg 62).&nbsp;»<br><br>Dans <b>webtrees</b> le titre abrégé est facultatif, mais dans d’autres programmes de généalogie, il est nécessaire."
+
+#~ msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+#~ msgstr "Utilisez ce champ pour signaler que ce média est le média mis en avant de l’individu auquel il est attaché. L’image mise en avant est celle qui sera utilisée dans les diagrammes et sur la page de l’individu."
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Utilisez cette page pour modifier ou supprimer un membre de la famille.<br><br>Pour chaque membre de la famille, vous pouvez utiliser le lien «&nbsp;Changer&nbsp;» pour choisir un individu différent pour remplir ce rôle (père, mère …) dans la famille. Vous pouvez également utiliser le lien «&nbsp;Retirer&nbsp;» pour supprimer cet individu de cette famille.<br><br>Quand vous avez terminé les modifications des membres de la famille, cliquez sur le bouton «&nbsp;sauver (enregistrer)&nbsp;» pour sauvegarder vos modifications."
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "Compte non vérifié sous 7 jours."
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "Les identifiants ne doivent pas contenir les caractères suivants&nbsp;:&nbsp;&lt; &gt; \" %% { } ;"
+
+#~ msgid "Users logged in"
+#~ msgstr "Utilisateurs connectés"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Langues des utilisateurs"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "Le compte utilisateur a été inactif depuis trop longtemps : "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Voir les balises GEDCOM"
+
+#~ msgid "View day"
+#~ msgstr "Anniversaires du jour"
+
+#~ msgid "View details"
+#~ msgstr "Afficher détails"
+
+#~ msgid "View family"
+#~ msgstr "Afficher la famille"
+
+#~ msgid "View month"
+#~ msgstr "Anniversaires du mois"
+
+#~ msgid "View notes"
+#~ msgstr "Voir les notes"
+
+#~ msgid "View person"
+#~ msgstr "Afficher la personne"
+
+#~ msgid "View source"
+#~ msgstr "Afficher la source"
+
+#~ msgid "View year"
+#~ msgstr "Anniversaires de l’année"
+
+#~ msgid "Visitor options"
+#~ msgstr "Options visiteurs"
+
+#~ msgid "Visitors"
+#~ msgstr "Visiteurs"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=0"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Vous allez recevoir un message de confirmation à l’adresse ( %s ).<br><br>En suivant les instructions de ce message vous pourrez activer votre compte.<br><br>Si vous n’activez pas votre compte avant sept jours, il sera supprimé (vous pourrez vous enregistrer à nouveau dans ce cas).<br><br>Pour vous connecter au site, votre nom de connexion et votre mot de passe sont nécessaires."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Vous allez recevoir un message de confirmation à l’adresse ( %s ). En suivant les instructions de ce message vous pourrez activer votre compte. Si vous n’activez pas votre compte avant sept jours, il sera supprimé (vous pourrez vous enregistrer à nouveau dans ce cas). Après activation de votre compte, vous pourrez vous connecter au site."
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "Balises META"
+
+#~ msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
+#~ msgstr "Quand un utilisateur s’inscrit pour un compte, un courriel est envoyé à leur adresse courriel avec un lien de vérification. Quand ils cliquent sur ce lien, nous savons l’adresse courriel est correcte, et le «&nbsp;courriel vérifiée&nbsp;» option est sélectionnée automatiquement."
+
+#~ msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
+#~ msgstr "Lorsqu’il est réglé sur <b>Oui</b>, le message suivant apparaîtra au-dessus des champs de saisie de la page «&nbsp;Demander un compte utilisateur&nbsp;» page&nbsp;:<div class=\"list_value_wrap\"><div class=\"largeError\">Attention&nbsp;:</div><div class=\"error\">En remplissant et en soumettant ce formulaire, vous acceptez&nbsp;:<ul><li>de protéger la vie privée des personnes vivantes répertoriées sur notre site&nbsp;</li><li>et dans la zone de texte ci-dessous, expliquer avec qui vous êtes liés, ou de nous fournir des informations sur quelqu’un qui est sur notre site.</li></ul></div></div>"
+
+#~ msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
+#~ msgstr "Lorsque cette case est cochée, le diagramme est présenté avec la personne la plus ancienne en haut. Lorsque cette case est décochée, la personne la plus jeune apparait en haut."
+
+#~ msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
+#~ msgstr "Quand cette option est sélectionnée, vous pouvez voir tous les enregistrements des Sources ou des Notes de cette personne. Quand cette option n’est pas sélectionnée, les enregistrements des Sources ou des Notes qui sont associés à d’autres faits concernant cette personne ne seront pas affichés."
+
+#~ msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
+#~ msgstr "Lorsque vous cochez cette option, une copie du fichier GEDCOM sera compressé en format ZIP avant le début du téléchargement. Cela permettra de réduire considérablement sa taille, mais vous aurez besoin d’utiliser un programme de décompression compatible (WinZIP ou autres) pour décompresser le fichier GEDCOM transmis avant de l’utiliser.<br><br>Cette option est utile pour le téléchargement de gros fichiers GEDCOM. Il y a un risque que le temps de téléchargement pour le fichier non compressé dépasse le temps maximum autorisé d’exécution, cela peut engendrer un téléchargement partiel et incomplet. L’option ZIP devrait réduire le temps de téléchargement de 75 pour cent."
+
+#~ msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
+#~ msgstr "Lorsque vous cliquez sur le lien <b>Ajouter une nouvelle note partagée</b>, une nouvelle fenêtre s’ouvre. Vous pouvez choisir de lier vers une note partagée existante, ou vous pouvez créer une nouvelle note partagéee et en même temps créer le lien vers elle."
+
+#~ msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
+#~ msgstr "Cliquez sur ce lien pour vider entièrement votre panier.<br><br>Si vous ne voulez pas enlever toutes les données de votre panier, vous pouvez supprimer une par une celles dont vous ne voulez pas en cliquant sur le lien <b>Retirer</b>. Il n’y a <u>pas</u> de fenêtre de confirmation, la suppression est immédiate."
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Quels autres parents de cette personne souhaitez-vous ajouter ?"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "Qui peut voir les images sans filigrane ?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Âge de l’épouse"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Le nom de jeune fille de l’épouse devient son nouveau nom"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Nom de famille de l’épouse remplacé par celui du mari"
+
+#~ msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+#~ msgstr "En activant cette option, le système de messagerie interne de <b>webtrees</b> sera utilisé et aucun courriel ne vous sera envoyé.  Vous recevrez uniquement des messages <u>internes</u> en provenance des autres utilisateurs. Lorsqu’un autre utilisateur vous enverra un message, ce message apparaîtra dans le bloc Mes Messages de votre page personnelle Ma Page. Si vous supprimer ce bloc de votre page personnelle Ma Page, vous ne verrez aucun message. Cependant, ils seront visibles dès que vous configurerez à nouveau votre page personnelle Ma Page en ajoutant le bloc Mes Messages."
+
+#~ msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
+#~ msgstr "Vous pouvez changer l’apparence de <b>webtrees</b> à l’aide des «&nbsp;thèmes&nbsp;». Chaque thème a un style différent, l’aménagement, de couleurs, etc."
+
+#~ msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
+#~ msgstr "Bouton pour afficher le lien de parenté suivant, s’il existe.<br>Pour réafficher un lien de parenté précédent, cliquer sur son numéro dans la liste."
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "Vous pouvez déterminer si cette FAQ sera spécifique à ce GEDCOM ou non.<br><ul><li><b>TOUS</b>&nbsp;&nbsp;&nbsp;La FAQ apparaîtra dans toutes les listes de FAQ peu importe le GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;La FAQ apparaîtra uniquement dans la FAQ du GEDCOM en cours.</li></ul>"
+
+#~ msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+#~ msgstr "Vous pouvez limiter le nombre de nouveaux articles affichés, réduisant de ce fait la taille du bloc des nouvelles du GEDCOM.<br><br>Cette option détermine si des limites doivent être appliquées ou si la limite du nombre d’articles doit être contrôlée à partir de l’ancienneté de l’article ou le nombre total d’articles."
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Vous pouvez faciliter la recherche de femmes mariées en enregistrant leur nom utilisé après mariage.<br>Cependant toutes les femmes ne prennent pas le nom de leur mari, alors méfiez-vous de l’introduction d’informations incorrectes dans votre base de données."
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "Vous ne recevrez plus de messages de ce système parce que, manquant une réponse de votre part dans 7 jours, ce compte sera supprimé."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Votre panier est vide."
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "L’administrateur du serveur vous fournira les détails de connexion."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Votre compte utilisateur ne peut pas «&nbsp;approuver automatiquement les changements&nbsp;». Vous devez effectuer une seule modification à la fois."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Compresser les fichiers (zip)"
+
+#~ msgid "daughter of"
+#~ msgstr "fille de"
+
+#~ msgctxt "son's wife's father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "belle-fille"
+
+#~ msgctxt "son's wife's mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "belle-fille"
+
+#~ msgctxt "son's wife's parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "belle-fille"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "décédée"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "décédé"
+
+#~ msgid "estate name"
+#~ msgstr "Nom de la ferme"
+
+#~ msgctxt "FEMALE"
+#~ msgid "estate name"
+#~ msgstr "nom de la ferme"
+
+#~ msgctxt "MALE"
+#~ msgid "estate name"
+#~ msgstr "nom de la ferme"
+
+#~ msgid "first"
+#~ msgstr "début"
+
+#~ msgctxt "child's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "petite-fille"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "petite-fille"
+
+#~ msgctxt "son's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "petite-fille"
+
+#~ msgctxt "child's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "petit-fils"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "petit-fils"
+
+#~ msgctxt "son's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "petit-fils"
+
+#~ msgid "last"
+#~ msgstr "dernier"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "mariée"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "marié"
+
+#~ msgid "son of"
+#~ msgstr "fils de"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "beau-fils"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "beau-fils"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "beau-fils"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_unicode_ci"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "est née"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "est né"
+
+#~ msgid "webtrees’ database must be on the same server as PGV’s"
+#~ msgstr "La base de données <b>webtrees</b> doit être mise sur le même serveur que celle de PGV"

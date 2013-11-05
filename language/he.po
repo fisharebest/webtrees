@@ -3,21 +3,20 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2013-07-31 19:40+0000\n"
-"Last-Translator: meliza <Unknown>\n"
+"PO-Revision-Date: 2013-09-27 12:39+0200\n"
+"Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language-Team: \n"
-"Language: \n"
+"Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-08-01 05:33+0000\n"
-"X-Generator: Launchpad (build 16718)\n"
-"X-Poedit-Language: Hebrew\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:04+0000\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -215,7 +214,7 @@ msgstr ""
 #: library/WT/Stats.php:4045
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s לפנה״ס"
 
 #. I18N: size of file in KB
 #: admin_media.php:404 library/WT/Media.php:201
@@ -388,7 +387,7 @@ msgstr "ה־19"
 #: library/WT/Stats.php:4068
 msgctxt "CENTURY"
 msgid "1st"
-msgstr "ה1-"
+msgstr "ה־1"
 
 #: library/WT/Stats.php:4049
 msgctxt "CENTURY"
@@ -482,7 +481,7 @@ msgstr "<b>webtrees</b> שולחת דואר אלקטרוני, כגון תזכו�
 
 #: help_text.php:776
 msgid "<b>webtrees</b> reply address"
-msgstr "כתובת מענה עבור webtrees"
+msgstr "כתובת מענה עבור <b>webtrees</b>"
 
 #: login.php:138
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access is permitted to users who have an account and a password for this website."
@@ -772,7 +771,7 @@ msgstr "משתמש לא יוכל להתחבר עד שאופציות ”דוא״�
 
 #: help_text.php:1023
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "סימן מים הוא טקסט שמתווסף לתמונה, כדי להרתיע אחרים מהעתקתו ללא רשות."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:115
@@ -1687,7 +1686,7 @@ msgstr "עץ אינטראקטיבי, המציג את האב אבות והצאצ�
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "אירעה שגיאה לא צפויה במסד נתונים."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -1875,7 +1874,7 @@ msgstr "?האם באמת למחוק אדם זה מרשימת המועדפים ש
 
 #: edit_changes.php:221
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "האם אתה בטוח שאתה רוצה לבטל את כל השינויים לאילן יוחסין זה?"
 
 #: library/WT/Stats.php:3783
 msgid "Argentina"
@@ -1910,7 +1909,7 @@ msgstr "שותפים"
 
 #: edit_interface.php:726 help_text.php:1177
 msgid "Associate events with this source"
-msgstr "קשר מאורעות למקור זה"
+msgstr "קשר אירועים למקור זה"
 
 #: search.php:131 search.php:199
 msgid "Associates"
@@ -2014,7 +2013,7 @@ msgstr "צור בצורה אוטומטית קודי זיהוי גלובליים 
 
 #: admin_trees_config.php:839 help_text.php:502
 msgid "Automatically expand list of events of close relatives"
-msgstr "הרחב אוטומטית את רשימת המאורעות של קרובים"
+msgstr "הרחב אוטומטית את רשימת האירועים של קרובים"
 
 #: admin_trees_config.php:998 help_text.php:497
 msgid "Automatically expand notes"
@@ -3309,7 +3308,7 @@ msgstr "הקש כדי לבחור אדם כראש משפחה."
 
 #: help_text.php:1356
 msgid "Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically."
-msgstr "לחיצה על קישור זה יראה רשימה של כל האנשים והמשפחות שיש להם מאורעות שהתרחשו במקום זה. כאשר מגיעים לסוף היררכית המקומות, בדרך כלל לעיר או עיירה, תראה מיידית את רשימת השמות."
+msgstr "לחיצה על קישור זה יראה רשימה של כל האנשים והמשפחות שיש להם אירועים שהתרחשו במקום זה. כאשר מגיעים לסוף היררכית המקומות, בדרך כלל לעיר או עיירה, תראה מיידית את רשימת השמות."
 
 #: help_text.php:1142
 msgid "Clicking the \"+\" icon will open the GEDFact Shared Note Assistant window.<br />Specific help will be found there.<br /><br />When you click the \"Save\" button, the ID of the Shared Note will be pasted here."
@@ -4318,7 +4317,7 @@ msgstr "משתמש מחוק: "
 
 #: admin_trees_manage.php:196
 msgid "Deleting old genealogy data…"
-msgstr "מוחק נתוני חקר משפחה ישנים..."
+msgstr "מוחק נתוני חקר משפחה ישנים…"
 
 #: library/WT/Controller/Family.php:159
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -5749,7 +5748,7 @@ msgstr "לתצוגה אופטימאלית באינטרנט <b>webtrees</b> מש�
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:424
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "לאתרים עם יותר מעץ משפחה אחד, תציג אפשרות זו רשימה של עצי משפחה בתפריט הראשי, בדפי החיפוש, וכו'"
 
 #: includes/functions/functions_print.php:403
 msgid "For technical support and information contact"
@@ -6624,7 +6623,7 @@ msgstr "מימדי התמונה"
 
 #: admin_trees_config.php:711
 msgid "Images without watermarks"
-msgstr ""
+msgstr "תמונות ללא סימני מים"
 
 #: modules_v3/family_nav/module.php:169
 msgid "Immediate Family"
@@ -7234,7 +7233,7 @@ msgstr "לאוס"
 
 #: setup.php:191
 msgid "Large systems (50000 individuals): 64-128MB, 40-80 seconds"
-msgstr "מערכות גדולות (50000 אנשים): 128-64 מגה-בית ,  80-40 שניות"
+msgstr "מערכות גדולות (50000 אנשים): 128-64 מגה-בית, 80-40 שניות"
 
 #: library/WT/Stats.php:2845 statistics.php:303
 msgid "Largest families"
@@ -8860,8 +8859,8 @@ msgstr "אין אירועים למחר."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "אין אירוע של אנשים חיים ביום הבא."
-msgstr[1] "אין אירוע של אנשים חיים ב %s הימים הבאים."
+msgstr[0] "אין אירועים של אנשים חיים למחרת."
+msgstr[1] "אין אירועים של אנשים חיים ב %s הימים הבאים."
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -9273,7 +9272,7 @@ msgstr "רק מנהלים יכולים לערוך"
 
 #: site-unavailable.php:67
 msgid "Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr "אופס! האינטרנט לא יכול להתחבר לשרת מסד הנתונים. יתכן שהוא עסוק, עובר פעולות תחזוקה, או פשוט נפל. עליך <a href=\"index.php\"> לנסות שוב </ a> בעוד כמה דקות או פנה למנהל האתר."
+msgstr "אופס! האינטרנט לא יכול להתחבר לשרת מסד הנתונים. יתכן שהוא עסוק, עובר פעולות תחזוקה, או פשוט נפל. עליך <a href=\"index.php\">לנסות שוב</a> בעוד כמה דקות או פנה למנהל האתר."
 
 #: setup.php:224
 msgid "Oops!  webtrees was unable to create files in this folder."
@@ -10108,19 +10107,19 @@ msgstr "עובדות מהירות"
 
 #: help_text.php:517
 msgid "Quick family facts"
-msgstr "עובדות משפחתיות עיקריות"
+msgstr "עובדות משפחתיות מהירות"
 
 #: help_text.php:595
 msgid "Quick individual facts"
-msgstr "עובדות אישיות עיקריות"
+msgstr "עובדות אישיות מהירות"
 
 #: help_text.php:801
 msgid "Quick repository facts"
-msgstr "עובדות עיקריות של מאגר"
+msgstr "עובדות מהירות של מאגר"
 
 #: help_text.php:912
 msgid "Quick source facts"
-msgstr "עובדות עיקריות של מקורות"
+msgstr "עובדות מהירות של מקורות"
 
 #: library/WT/Date/French.php:149
 msgid "Quintidi"
@@ -10857,7 +10856,7 @@ msgstr "חפש והחלף"
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:41
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr ""
+msgstr "חפש והחלף טקסט, באמצעות חיפושים פשוטים או התאמת תבנית מתקדמת."
 
 #: includes/session.php:577
 msgid "Search engine"
@@ -11367,7 +11366,7 @@ msgstr "הצג סמן גיל?"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:945 help_text.php:701
 msgid "Show chart details by default"
-msgstr ""
+msgstr "הצג פרטי תרשים כברירת מחדל"
 
 #: library/WT/MenuBar.php:173 library/WT/MenuBar.php:193
 msgid "Show children on timeline chart"
@@ -11432,7 +11431,7 @@ msgstr "הראה קישור הורדה במציג המדיה"
 
 #: admin_trees_config.php:847
 msgid "Show events of close relatives on individual page"
-msgstr "הראה מאורעות של קרובים על הדף האישי"
+msgstr "הראה אירועים של קרובים על הדף האישי"
 
 #: help_text.php:846
 msgid "Show fact icons"
@@ -11460,7 +11459,7 @@ msgstr "הראה קישור לתרשימים סטטיסטיים?"
 
 #: admin_site_config.php:93 help_text.php:423
 msgid "Show list of family trees"
-msgstr ""
+msgstr "הצג רשימה של עצי משפחה"
 
 #: help_text.php:1296 relationship.php:118
 msgid "Show oldest top"
@@ -12486,7 +12485,7 @@ msgstr "האתר מושבת לצורך תחזוקה. עליך <a href=\"index.ph
 #. I18N: Description of “Statistics” module
 #: modules_v3/gedcom_stats/module.php:39
 msgid "The size of the family tree, earliest and latest events, common names, etc."
-msgstr "גודל עץ המשפחה, מאורעות מוקדמים ומאוחרים, שמות שכיחים, וכו'"
+msgstr "גודל עץ המשפחה, אירועים מוקדמים ומאוחרים, שמות שכיחים, וכו'"
 
 #: admin_pgv_to_wt.php:44
 msgid "The specified directory does not contain an installation of PhpGedView"
@@ -12805,7 +12804,7 @@ msgstr "זה מקרה רגיש. אם מאגר מידע בעל שם זה לא ק�
 #. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:702
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr ""
+msgstr "זוהי ההגדרה הראשונית לאפשרות \"הצג פרטים\" בתרשימים."
 
 #: help_text.php:513
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Family Facts</i> list."
@@ -13156,7 +13155,7 @@ msgstr "הקטע הזה מאפשר להוסיף ציטוט של מקור חדש 
 #: setup.php:194
 #, php-format
 msgid "This server's memory limit is %dMB and its CPU time limit is %d seconds."
-msgstr "מגבלת זיכרון של שרת זה היא %d מגה-בית, ומגבלת זמן  ה-CPU היא %d שניות."
+msgstr "מגבלת הזכרון של שרת זה היא %dMB ומגבלת זמן המעבד שלו היא %d שניות."
 
 #: help_text.php:551
 msgid "This setting is only used when you read or write GEDCOM files."
@@ -13488,7 +13487,7 @@ msgstr "סה״כ גירושים"
 #: modules_v3/gedcom_stats/module.php:356 modules_v3/html/module.php:204
 #: statistics.php:351
 msgid "Total events"
-msgstr "סה״כ מאורעות"
+msgstr "סה״כ אירועים"
 
 #: library/WT/Stats.php:3058 statisticsplot.php:779
 msgid "Total families"
@@ -13566,7 +13565,7 @@ msgstr "טרנסילבניה"
 
 #: library/WT/Date/French.php:147
 msgid "Tridi"
-msgstr "ארידי"
+msgstr "טרידי"
 
 #: library/WT/Stats.php:4010
 msgid "Trinidad and Tobago"
@@ -14198,11 +14197,11 @@ msgstr "סימני מים"
 
 #: help_text.php:1025
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "סימני מים הם אופציונליים ובדרך כלל מוצגים רק למבקרים."
 
 #: help_text.php:1027
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "יצירת סימני מים יכולה להיות איטית לתמונות גדולות. אתרים עסוקים יכולים להעדיף לייצר אותם פעם אחת ולאחסן את התמונה עם סימני המיים בשרת."
 
 #: login.php:358
 #, php-format
@@ -14317,7 +14316,7 @@ msgstr "כאשר האופציה הזו נבחרת, תראה את כל רשומו
 
 #: help_text.php:1412
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr ""
+msgstr "כאשר אפשרות זו נבחרת, webtrees יחשב את הבדלי הגיל בין אחים, ילדים, בני זוג וכו'"
 
 #: help_text.php:929
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
@@ -18288,7 +18287,7 @@ msgstr "דודן/דודנית מדרגה 10"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:81
 msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "הגדרות הקישוריות של מאגר הנתונים בקובץ <b>/data/config.ini.php</b עדיין נכונות"
+msgstr "הגדרות הקישוריות של מאגר הנתונים בקובץ <b>/data/config.ini.php</b> עדיין נכונות"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:82
@@ -18613,3 +18612,1682 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
+
+#~ msgid " but the details are unknown"
+#~ msgstr " אבל הפרטים אינם ידועים"
+
+#~ msgid " in "
+#~ msgstr " ב- "
+
+#~ msgid "%1$s’s %2$s"
+#~ msgstr "%2$s של %1$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%G:%i:%s"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%j %F %Y"
+
+#~ msgid "%s day"
+#~ msgid_plural "%s days"
+#~ msgstr[0] "יום אחד"
+#~ msgstr[1] "%s ימים"
+
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "לפני יום"
+#~ msgstr[1] "לפני %s ימים"
+
+#~ msgid "%s hour ago"
+#~ msgid_plural "%s hours ago"
+#~ msgstr[0] "לפני שעה"
+#~ msgstr[1] "לפני %s שעות"
+
+#~ msgid "%s minute ago"
+#~ msgid_plural "%s minutes ago"
+#~ msgstr[0] "לפני דקה"
+#~ msgstr[1] "לפני %s דקות"
+
+#~ msgid "%s month"
+#~ msgid_plural "%s months"
+#~ msgstr[0] "חודש אחד"
+#~ msgstr[1] "%s חודשים"
+
+#~ msgid "%s month ago"
+#~ msgid_plural "%s months ago"
+#~ msgstr[0] "לפני חודש"
+#~ msgstr[1] "לפני %s חודשים"
+
+#~ msgid "%s second ago"
+#~ msgid_plural "%s seconds ago"
+#~ msgstr[0] "לפני שניה"
+#~ msgstr[1] "לפני %s שניות"
+
+#~ msgid "%s three times removed ascending"
+#~ msgstr "%s מוזח/ת שלוש פעמים למעלה"
+
+#~ msgid "%s three times removed descending"
+#~ msgstr "%s מוזח/ת שלוש פעמים למטה"
+
+#~ msgid "%s week"
+#~ msgid_plural "%s weeks"
+#~ msgstr[0] "שבוע אחד"
+#~ msgstr[1] "%s שבועות"
+
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "שנה אחת"
+#~ msgstr[1] "%s שנים"
+
+#~ msgid "%s year ago"
+#~ msgid_plural "%s years ago"
+#~ msgstr[0] "לפני שנה"
+#~ msgstr[1] "לפני %s שנים"
+
+#~ msgid "%s%%"
+#~ msgstr "%s%%"
+
+#~ msgid "(aged %s)"
+#~ msgstr "(בגיל %s)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(בגיל פחות מ-%s)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "(בגיל מעל %s)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(סונן מסה״כ %s כניסות)"
+
+#~ msgid "(in childhood)"
+#~ msgstr "(בילדות)"
+
+#~ msgid "(in infancy)"
+#~ msgstr "(בינקות)"
+
+#~ msgid "(stillborn)"
+#~ msgstr "(נולד מת)"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
+#~ msgstr "<b>GUID</b> בהקשר זה הוא ראשי תיבות של «קודי זיהוי גלובלי ייחודי -  Globally Unique ID».<br><br>GUID-ים נועדים לעזור לזהות כל אדם באופן הדיר, כך שארגונים מרכזיים כמו מרכז ההיסטוריה המשפחתית של כנסיית המורמונים בסולט לייק סיטי, או אפילו תוכניות תואמות הפועלות על השרת שלך, יוכלו לקבוע האם הם מטפלים באותו האדם, לא משנה מהיכן מקור ה-GEDCOM. מטרת המרכז ההיסטוריה המשפחתית הוא להוות מאגר מרכזי של נתונים גנאלוגיים ולחשוף אותו באמצעות שירותי אינטרנט. זה יאפשר לכל תכנית  לגשת לנתונים ולעדכן את הנתונים שלהם בתוכו.<br><br>אם אינך מתכוון לשתף GEDCOM זה עם מישהו אחר, אתה לא צריך לתת, ל-<b>webtrees</b> ליצור GUID-ים אבל, אם תיצור אותם לא תגרום כל נזק פרט להגדלת גודל ה-GEDCOM שלך."
+
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+#~ msgstr "<b>לא</b> הפירוש שמשתמשים מורשים יוכלו לראות את הפרטים של כל האנשים החיים. <b>כן</b> הפירוש שמשתמשים יכולים לראות את המידע הפרטי רק של אנשים חיים אליהם הם קשורים.<br><br>אפשרות זו מגדירה ברירת המחדל עבור כל המשתמשים בעלי גישה למסד הנתונים הגנאלוגי הזה. המנהל יכול לעקוף אפשרות זו למשתמשים בודדים על ידי עריכת פרטי החשבון של המשתמש."
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b>שים לב:</b> מידע פרטי על אנשים חיים יינתן רק לקרובי משפחה וחברים קרובים. אתה תתבקש לאמת את היחסים שלך לפני שתקבל את כל הנתונים הפרטיים. לפעמים גם המידע של אנשים מתים עשוי להיות פרטי. במקרה הזה, הדבר קורה משום שאין מספיק מידע ידוע על האדם כדי לקבוע אם הוא בחיים או לא, ואין לנו כנראה מידע נוסף על אדם זה.<br><br>לפני שתשאל שאלה , ודא שאתה חוקר את האדם הנכון ע״י בדיקת תאריכים, מקומות, וקרובי משפחה. אם אתה שולח שינויים לנתוני אילן היוחסין, בבקשה כלול את המקורות שמהם הישגת את הנתונים."
+
+#~ msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
+#~ msgstr "<b>webtrees</b> מאפשרת להעתיק עד ל-10 עובדות עם כל הפירוט שלהן ללוח הגזירים. לוח הגזירים שונה מעגלת הגזירים שבה תוכל להשתמש כדי לייצא חלקים ממאגר הנתונים שלך.<br><br>תוכל לבחור כל נתון מלוח הגזירים ולהעתיק את העובדה הנבחרת לרשומת האדם, משפחה, מדיה, מקור או מאגר נתונים שאותו אתה עורך כעת. אבל, לא ניתן להעתיק נתונים מסוגים שונים. לדוגמא, אין להעתיק עובדה של נישואין למקור או אדם מכיוון שעובדת נישואין מקושרת רק עם רשומות משפחה.<br><br>זה מאוד מועיל כאשר רוצים להוסיף עובדות דומות, כגון נתוני מפקד אוכלוסין, למספר אנשים או משפחות."
+
+#~ msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "<b>webtrees</b> שולחת דואר אלקטרוני, כגון תזכורות לסיסמה והודעות אתר. כדי לעשות זאת, היא יכולה להשתמש בפונקצית דואר PHP אשר בנויה בשרת (אינה זמינה תמיד) או בשרות חיצוני SMTP (ממסר דואר), עבורו יש לספק פרטי קשר."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת למשתמשים בעלי חשבון וסיסמה."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת רק למשתמשים <u>מורשים.</u><br><br>אם יש לך חשבון משתמש תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור מלמטה.<br><br>מנהל האתר יבדוק את נתוניך ויאשר או ידחה את בקשתך. תקבל דואר אלקטרוני לאחר שבקשתך תאושר."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת <u>רק לבני משפחה</u>.<br><br>אם יש לך חשבון משתמש תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור המתאים מלמטה.<br><br>מנהל האתר יבדוק את נתוניך ויאשר או ידחה את בקשתך. תקבל דואר אלקטרוני לאחר שבקשתך תאושר."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת לכל המשתמשים בעלי חשבון משתמש באתר.<br><br>אם יש לך חשבון משתמש, תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור המתאים מלמטה.<br><br>מנהל האתר יבדוק את נתוניך ויפעיל את חשבון המשתמש שלך. תקבל דואר אלקטרוני לאחר שחשבון המשתמש שלך יאושר."
+
+#~ msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
+#~ msgstr "<div class=\"largeError\">שים לב:</div><div class=\"error\">על ידי השלמת ושליחת טופס זה, אתה מסכים:<ul><li>להגן על פרטיותם של אנשים חיים שמופיע באתר שלנו;</li><li>ובתיבת הטקסט שלהלן, להסביר למי אתה קשור, או לספק לנו מידע על מי צריך להיות רשום באתר שלנו.</li></ul></div>"
+
+#~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
+#~ msgstr "שרת מאגר מידע יכול לאחסן הרבה מאגרי מידע. אתה צריך לבחור מאגר מידע קיים (נוצר על ידי מנהל השרת שלך) או ליצור אחד חדש (אם משתמש שרת מאגר המידע שלך בעל הרשאות מספיקות)."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "דו״ח של עובדות הנתמכות על ידי מקור מסוים."
+
+#~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
+#~ msgstr "משתמש לא יוכל להתחבר עד שאופציות ”דוא״ל אומת“ ו”אושר על ידי מנהל מערכת“ יבחרו."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=אבגדהוזחטיכךלמםנןסעפףצץקרשת"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=אבגדהוזחטיכךלמםנןסעפףצץקרשת"
+
+#~ msgid "Access"
+#~ msgstr "גישה"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "הוסף בעל ע״י שימוש באדם קיים"
+
+#~ msgid "Add a new associate allows you to link a fact with an associated individual in the site.  This is one way in which you might record that someone was the godfather of another individual."
+#~ msgstr "הוסף שותף חדש מאפשר לקשור עובדה לאדם שותף באתר. כך למשל תוכל לציין שמישהו היה סנדק של מישהו אחר ."
+
+#~ msgid "Add a new name"
+#~ msgstr "הוסף שם"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "הוסף אישה ע״י שימוש באדם קיים"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "הוסף אדם לתרשים"
+
+#~ msgid "Add individuals"
+#~ msgstr "הוסף אנשים"
+
+#~ msgid "Add just this individual."
+#~ msgstr "הוסף רק אדם זה."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "הוסף רשומות הורים וכל הצאצאים למשפחה זו."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "הוסף רשומות הורים וילדים לרשומת המשפחה הזו."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "הוסף רשומות הורים לרשומת המשפחה הזו."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "הוסף אדם זה ואב-אבותיו הישירים."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "הוסף אדם זה ואב-אבותיו הישירים ומשפחותיהם."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "הוסף אדם זה ואחיו ואחיותיו."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "הוסף אדם זה, בן/בת זוגו ואת כל הצאצאים."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "הוסף אדם זה, בן/בת זוגו וילדיו."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "הוסף את המקור והמשפחות/האנשים הקשורים אליו."
+
+#~ msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+#~ msgstr "מנהלי האתר צריכים לפעמים לנקות ולתקן נתונים שנמסרו ע״י משתמשים. לדוגמא, יתכן שהם צריכים להוסיף ארץ למקום PLAC. כאשר מנהלי האתר מבצעים שינויים כאלה, המידע על השינוי המקורי מוחלף בדרך כלל. יתכן שדבר הזה אינו רצוי.<br><br>כאשר האופציה נבחרת, <b>webtrees</b> תשמור את נתוני השינוי המקוריים מבלי להחליף אותה עם הנתון של העיבוד הנוכחי. כאשר האופציה הזו נבחרת, מנהלי האתר יכולים לשנות או למחוק גם מידע הקשור לתג ה-CHAN המקורי."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "אחרי שהתחברת, בחר בקישור «המשתמש שלי» מתחת לתפריט «הדף שלי» ומלא את שדות הסיסמה כדי לשנות את הסיסמה שלך."
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "גיל שממנו מניחים שאדם ניפטר"
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "הראה את גיל ההורים ליד תאריך הלידה של הילד"
+
+#~ msgid "All individuals"
+#~ msgstr "כל האנשים"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "הרשה מעבר בין GEDCOM-ים"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "הרשה שמירת הודעות מקוונת"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "עץ אינטראקטיבי, המציג את האב אבות והצאצאים."
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "אירעה שגיאת מאגר מידע בלתי צפויה."
+
+#~ msgid "Ancestors of "
+#~ msgstr "האבות של "
+
+#~ msgid "Ancestral file number"
+#~ msgstr "מספר קובץ אב-אבות"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "האם אתה בטוח שתרצה לבטל את כל השינויים של ה-GEDCOM הזה?"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "אריאל"
+
+#~ msgid "Available blocks"
+#~ msgstr "הבלוקים הזמינים"
+
+#~ msgid "Begin year"
+#~ msgstr "שנת התחלה"
+
+#~ msgid "Best man"
+#~ msgstr "שושבין"
+
+#~ msgid "Binary data object"
+#~ msgstr "אובייקט נתונים בינארי"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "מקום הלידה כולל"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "הראה נתוני לידה ופטירה בתרשימים"
+
+#~ msgid "Birth date range end"
+#~ msgstr "סיום תחום תאריכי לידה"
+
+#~ msgid "Birth date range start"
+#~ msgstr "תחילת תחום תאריכי לידה"
+
+#~ msgid "Brother"
+#~ msgstr "אח"
+
+#~ msgid "Burial place contains"
+#~ msgstr "מקום קבורה כולל"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "כברירת מחדל, הרשימה מראה רק את המקומות שנימצאים באילנות היוחסין שלך. יתכן שלך יש פירוט של מקומות אחרים, כגון אלה שייובאו בצורה כוללת מקובץ חיצוני. בחירת אפשרות זו תציג את כל המקומות, ביניהם מקומות שכעת אינם בשימוש."
+
+#~ msgid "Change family members"
+#~ msgstr "שנה בני משפחה"
+
+#~ msgid "Child of "
+#~ msgstr "ילד/ה של "
+
+#~ msgid "Children of "
+#~ msgstr "ילדים של "
+
+#~ msgid "Choose relatives"
+#~ msgstr "בחר קרובים"
+
+#~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
+#~ msgstr "בחר את התמונה הממוזערת שברצונך להעלות. למרות שניתן באופן אוטומטי ליצור תמונות ממוזערות עבור תמונות, יתכן שתרצה ליצור תמונה ממוזערת משלך, במיוחד עבור סוגי מדיה אחרים. לדוגמה, אתה יכול לספק תמונת סטילס מוידאו או תמונה של האדם שביצע הקלטת שמע.OK"
+
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgstr "בחר להציג כותרת סטנדרטית לטקסט ברוכים הבאים המותאם אישית לך. כאשר משתמשים שלך משנים את השפה, הכותרת תופיע בשפה החדשה.<br><br>ערך <b>כן</b>, הכותרת תיראה כך:<div class=\"list_value_wrap\"><center><b>ברוכים הבאים לאתר גנאלוגי זה</b></center><br>הגישה מותרת למשתמשים בעלי חשבון וסיסמא לאתר זה<br></div>"
+
+#~ msgid "Civil registrar"
+#~ msgstr "רשם אזרחי"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Civil registrar"
+#~ msgstr "רשמת אזרחית"
+
+#~ msgctxt "MALE"
+#~ msgid "Civil registrar"
+#~ msgstr "רשם אזרחי"
+
+#~ msgid "Clear chart"
+#~ msgstr "נקה תרשים"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "הקש על %s כדי לבחור אדם כראש משפחה."
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "הקש על שם כדי להוסיף אדם לרשימת הוסף קישורים."
+
+#~ msgid "Click this link to remove the individual from the timeline."
+#~ msgstr "לחץ על הקישור הזה כדי להסיר אדם מתרשים ציר הזמן."
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "הקש כדי לבחור אדם כראש משפחה."
+
+#~ msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
+#~ msgstr "לחיצה על צלמית \"+\" תפתח חלון של עוזר GEDFact של הודעות משותפות.<br>שם אפשר לימצוא  עזרה ספציפית.<br><br>כאשר לוחצים על כפתור ה\"שמור\", קוד הזיהוי של ההערה המשותפת יודבקו כאן."
+
+#~ msgid "Client time"
+#~ msgstr "זמן לקוח"
+
+#~ msgid "Coat of arms"
+#~ msgstr "סמל"
+
+#~ msgid "Common law marriage"
+#~ msgstr "ידוע בציבור"
+
+#~ msgid "Contact information"
+#~ msgstr "נתוני קשר"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "תקן רשומות NAME שהם במבנה 'John/DOE/' או 'John /DOE', שנוצרות ע״י תוכניות חקר משפחה ישנות."
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "חוף השנהב"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "צור הערה משותפת חדשה"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "צור הערה משותפת חדשה בעזרת מסייע"
+
+#~ msgid "Create repository"
+#~ msgstr "צור מאגר"
+
+#~ msgid "Create user"
+#~ msgstr "בנה משתמש"
+
+#~ msgid "Custom event"
+#~ msgstr "אירוע מותאם"
+
+#~ msgid "Custom fact"
+#~ msgstr "עובדה מותאמת"
+
+#~ msgid "Date of LDS baptism"
+#~ msgstr "תאריך טבילת מורמונים"
+
+#~ msgid "Date of LDS child sealing"
+#~ msgstr "תאריך חותמת מורמונים של ילד"
+
+#~ msgid "Date of LDS endowment"
+#~ msgstr "תאריך סמיכה של מיקדש המורמונים"
+
+#~ msgid "Date of LDS spouse sealing"
+#~ msgstr "תאריך חותמת מורמונים של בן/בת זוג"
+
+#~ msgid "Date of adoption"
+#~ msgstr "תאריך אימוץ"
+
+#~ msgid "Date of blessing"
+#~ msgstr "תאריך הברכה"
+
+#~ msgid "Date of cremation"
+#~ msgstr "תאריך שריפה"
+
+#~ msgid "Date of emigration"
+#~ msgstr "תאריך הגירה"
+
+#~ msgid "Date of event"
+#~ msgstr "תאריך ארוע"
+
+#~ msgid "Date of immigration"
+#~ msgstr "תאריך עליה"
+
+#~ msgid "Date of naturalization"
+#~ msgstr "תאריך התאזרחות"
+
+#~ msgid "Date of ordination"
+#~ msgstr "הסמכה לכמורה"
+
+#~ msgid "Date of residence"
+#~ msgstr "תאריך מגורים"
+
+#~ msgid "Daughter"
+#~ msgstr "בת"
+
+#~ msgid "Death Place contains"
+#~ msgstr "מקום הפטירה כולל"
+
+#~ msgid "Death date range end"
+#~ msgstr "סיום תחום תאריכי פטירה"
+
+#~ msgid "Death date range start"
+#~ msgstr "תחילת תחום תאריכי פטירה"
+
+#~ msgid "Default theme"
+#~ msgstr "עיצוב ברירת מחדל"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "צאצאים של "
+
+#~ msgid "Descent steps"
+#~ msgstr "רמות צאצאים"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "ז'ו אל-קעדה"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "ז'ו אל-קעדה"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "ז'ו אל-קעדה"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "ז'ו אל-קעדה"
+
+#~ msgid "Differences"
+#~ msgstr "הבדלים"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "אב-אבות בקו ישיר"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "אב-אבות בקו ישיר ומשפחותיהם"
+
+#~ msgid "Display %s"
+#~ msgstr "הצג %s"
+
+#~ msgid "Do not seal, previous sealing cancelled"
+#~ msgstr "אין לחותום, לפני שהחותמת הקודמת בוטלה"
+
+#~ msgid "Do not seal: unauthorized"
+#~ msgstr "אין לחתום: בלתי מורשה"
+
+#~ msgid "Do not send messages"
+#~ msgstr "אל תשלח הודעות"
+
+#~ msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+#~ msgstr "כתובת דואר אלקטרוני לשימוש בשדה &laquo;מאת:&raquo; של דואר אלקטרוני ש-<b>webtrees</b>  יוצר באופן אוטומטי.<br><br><b>webtrees</b> יכול באופן אוטומטי ליצור הודעות דואר אלקטרוני כדי ליידע את המנהלים על שינויים שיש לבדוק. <b>webtrees</b> שולחת גם הודעה בדואר אלקטרוני למשתמשים שבקשו חשבון.<br><br>בדרך כלל, שדה &laquo;מאת:&raquo; של הדואר האלקטרוני שנוצר באופן אוטומטי הוא משהו כמו <i>From: webtrees-noreply@yoursite</i> כדי להראות שלא נדרשת תגובה לדואר האלקטרוני . כדי להתגונן מפני דואר זבל או פגיעות דואר אלקטרוני אחרות, חלק ממערכות הדואר האלקטרוני דורשות ששדה &laquo;מאת:&raquo; של כל הודעה,  תשקף חשבון דואר תקף ולא תקבלנה הודעות שהן כנראה מחשבון <i>webtrees-noreply</i>."
+
+#~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
+#~ msgstr "כל פריט מדיה צריך להיות קשור לאדם , משפחה, או מקור אחד או יותר במסד נתונים שלך..<br><br>כדי ליצור קישור כזה, ניתן להזין או לחפש את זהותו של האדם, המשפחה, או המקור כאשר אתה יוצר פריט מדיה. אתה יכול גם לקבוע את הקישור מאוחר יותר באמצעות אפשרויות העריכה בדף ניהול מולטימדיה, או על ידי הוספת פריטי מדיה דרך הקישור הוסף מדיה הזמין על דפי אדם, משפחה, או פרטי מקור."
+
+#~ msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+#~ msgstr "כל מקור רושם אירועים מסוימים, בדרך כלל עבור תחום תאריכים נתון ועבור מקום מסוים. לדוגמא: מפקד אוכלוסין רושם אירועים של מפקד אוכלוסין וכנסייה או בית כנסת רושמים אירועים של לידות, נישואין ופטירה.<br><br>בחר את האירועים שרשומים ע״י המקור הזה מהרשימה של אירועים המסופקת. את הנתונים יש להגדיר במבנה תחום <i>FROM 1900 TO 1910</i>. מקום הוא המקום הנמוך שכולל את כל המיקומים התחתונים המוזכרים במקור הזה. לדוגמא, \"Oneida, Idaho, USA\" ישמש כמקום המקור לאירועים שהתרחשו בערים שונות במחוז Oneida. \"Idaho, USA\" יהיה המקום של המקור של אירועים שהתרחשו לא רק במחוז Oneida אלא גם במחוזות אחרים של Idaho."
+
+#~ msgid "Edit details"
+#~ msgstr "ערוך פרטים"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "ערוך את רשומת ה-GEDCOM הלא מעובדת"
+
+#~ msgid "Edit shared note"
+#~ msgstr "ערוך הערה משותפת"
+
+#~ msgid "Email address:"
+#~ msgstr "כתובת דוא\"ל:"
+
+#~ msgid "End year"
+#~ msgstr "שנת סיום"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "סוף התחום של תאריכי שינוי"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "הכנס קוד זיהוי של המשפחה"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "הכנס קוד זיהוי אישי"
+
+#~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
+#~ msgstr "הכנס כותרת לפריט אותו אתה עורך.  אם זו כותרת לפריט מולטימדיה, יש להכניס כותרת המזהה את הפריט למשתמש."
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "הכנס קוד של אדם, משפחה או מקור"
+
+#~ msgid "Enter associate GEDCOM ID."
+#~ msgstr "הכנס קוד זיהוי של השותף ב-GEDCOM."
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "הכנס או חפש את קוד הזיהוי של האדם, המשפחה או המקור שאליו יש לקשר את המדיה הזו."
+
+#~ msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "הכנס את מספר הטלפון כולל קוד ארץ וקוד אזור.<br><br>השאר את השדה ריק אם אתה לא רוצה לכלול מספר טלפון.  לדוגמה, מספר בגרמניה יכול להיות <span dir=\"ltr\">+49 25859 56 76 89</span> ומספר בארה״ב או בקנדה יכול להיות <span dir=\"ltr\">+1 888 555-1212</span>."
+
+#~ msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+#~ msgstr "הכנס את הכתובת של ה-URL כולל ה-<span dir=\"ltr\">http://</span>.<br><br>דוגמת URL נראית כך: <b><span dir=\"ltr\">http://www.webtrees.net/</span></b> השאר את השדה ריק אם אתה לא רוצה לכלול URL."
+
+#~ msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
+#~ msgstr "הכנס את הכתובת לתוך השדה בדיוק כפי שהיית רושם אותה על מעטפה.<br><br>השאר את השדה ריק אם אתה לא רוצה לכלול כתובת."
+
+#~ msgid "Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address."
+#~ msgstr "הכנס את כתובת הדואר האלקטרוני.<br><br>דוגמה לכתובת דוא\"ל נראית כך: <b>name@hotmail.com</b> השאר את השדה ריק אם אתה לא רוצה לכלול כתובת דוא\"ל."
+
+#~ msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+#~ msgstr "הכנס כאן את ערך הגבול.<br><br>אם בחרת להגביל את תצוגת כתבות החדשות לפי גיל, כתבות ישנות יותר ממספר הימים שהוכנס כאן יוסתרו מהתצוגה. אם בחרת להגביל את תצוגת כתבות החדשות לפי מספר, רק המספר הנבחר של הכתבות האחרונות יוצג בסדר הגילים. יתר הכתבות יוסתרו מהתצוגה.<br><br>אפסים שימולאו כאן יפסיקו את ההגבלה ויגרמו לכל כתבות החדשות להיות מוצגות."
+
+#~ msgid "Enter the name of the cemetery or other resting place where individual is buried."
+#~ msgstr "הכנס את שם בית הקברות או מקום מנוחה אחר שבו האדם קבור."
+
+#~ msgid "Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "הכנס את מספר הטלפון כולל קוד ארץ וקוד אזור.<br><br>השאר את השדה ריק אם אתה לא רוצה לכלול מספר טלפון.  לדוגמה, מספר בגרמניה יכול להיות <span dir=\"ltr\">+49 25859 56 76 89</span> ומספר בארה״ב או בקנדה יכול להיות <span dir=\"ltr\">+1 888 555-1212</span>."
+
+#~ msgid "Entry text:"
+#~ msgstr "מלל הכניסה:"
+
+#~ msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+#~ msgstr "לכל אדם בבסיס הנתונים יש מספר מזהה יחיד באתר. אם אתה יודע את המספר המזהה של הרשומה האישית שלך, אנא הכנס אותה כאן. אם אינך יודע את המספר המזהה שלך, או אינך יכול למצוא אותו בגלל הגבלות פרטיות, אז עליך לספק נתונים במידה מספקת בשדה ההערה כדי שמנהל האתר יוכל לזהותך באתר ולהגדיר את הקוד הזיהוי עבורך."
+
+#~ msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB."
+#~ msgstr "זמן עיבוד: %1$s שניות. שאילתות מאגר נתונים: %2$s. שימוש בזיכרון: %3$s KB."
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "הרחב פרטיות לאנשים מתים"
+
+#~ msgid "External objects"
+#~ msgstr "ישויות חיצוניות"
+
+#~ msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+#~ msgstr "שאלות ותשובות הן רשימות של שאלות ותשובות, אשר מאפשרות לך להסביר את הכללים , מדיניות, ונהלים של האתר למבקרים שלך. השאלות נוגעות בדרך כלל לפרטיות, זכויות יוצרים, חשבונות המשתמשים, תוכן בלתי מתאים, דרישה למקורות, וכו '"
+
+#~ msgid "Facts for family records"
+#~ msgstr "עובדות על רשומות של משפחה"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "עובדות על רשומות של אדם"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "עובדות על רשומות המאגר"
+
+#~ msgid "Facts for source records"
+#~ msgstr "עובדות על רשומות המקור"
+
+#~ msgid "Family group information"
+#~ msgstr "נתוני קבוצת משפחה"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "עגלת גזירי עץ המשפחה"
+
+#~ msgid "Family with husband"
+#~ msgstr "משפחה עם בעל"
+
+#~ msgid "Family with wife"
+#~ msgstr "משפחה עם אשה"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "מקום לידה של אב (בפורמט צ 'פמן)"
+
+#~ msgid "Father’s age"
+#~ msgstr "גיל האב"
+
+#~ msgid "Font"
+#~ msgstr "גופן"
+
+#~ msgid "For LDS ordinances, this field records the temple where it was performed."
+#~ msgstr "עבור חוק המורמונים (LDS ordinances), השדה רושם את המקדש שבו הפעולה בוצעה."
+
+#~ msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
+#~ msgstr "לדוגמה, אם תציין אורך הנתיב של 2, האדם יוכל לראות את הנכד שלו (ילד, ילד), הדודה שלו (הורה, אח), הבת החורגת שלו (בן זוג, ילד), אך לא בן דודו הראשון (הורה, אח, ילד)."
+
+#~ msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "לתצוגה אופטימאלית באינטרנט <b>webtrees</b> משתמש במערך אותיות UTF-8. תוכניות כמו למשל Family Tree Maker, אינן תומכות בייבוא קבצי GEDCOM מוצפנים ב-UTF-8. בחירת התיבה תתרגם את הקובץ מ-<b>UTF-8</b> ל-<b><span dir=\"ltr\">ANSI (ISO-8859-1)</span></b>.<br><br>המבנה הדרוש תלוי בתוכנה שבה תרצה להשתמש בקובץ ה-GEDCOM שהורד. בדוק את התיעוד של התוכנה הזאת, אם אינך בטוח.<br><br>שים לב שכדי שסימנים מיוחדים ישמרו ללא שינוי, עליך להוריד את הקובץ ב-UTF-8 ולהסב לשיטת טיפול של התוכנית שלך בסימנים המיוחדים הללו בדרך אחרת. התייעץ עם יצרן או עורך התוכנה שלך.<br><br>הכתבה הבאה <a href=\"http://he.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"כתבה של ויקיפדיה\"><b>של ויקיפדיה</b></a> כוללת מידע וקישורים מקיפים על UTF-8."
+
+#~ msgid "Foster child"
+#~ msgstr "ילד מאומץ"
+
+#~ msgid "Foster father"
+#~ msgstr "אב מאמץ"
+
+#~ msgid "Foster mother"
+#~ msgstr "אם מאמצת"
+
+#~ msgid "From email address"
+#~ msgstr "כתובת דוא\"ל של השולח"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "סטטיסטיקות GEDCOM"
+
+#~ msgid "Gedcom"
+#~ msgstr "Gedcom"
+
+#~ msgid "Generation "
+#~ msgstr "דור "
+
+#~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#~ msgstr "מעניק למשתמשים את האפשרות לבחור עיצוב שלהם מתפריט.<br><br>גם אם האפשרות הזו נבחרה, יתכן שהעיצוב הפעיל לא יכול לספק לתפריט כזה. כדי להיות פעיל, מחייבת אפשרות זו שגם <b>אפשר למשתמשים לבחור עיצוב</b> יהיה מוגדר."
+
+#~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+#~ msgstr "נותן למבקרים אפשרות להרשם בעצמם לחשבון באתר.<br><br>המבקר יקבל הודעת דוא\"ל עם קוד לאימות בקשתו לחשבון. לאחר אימות, המנהל יצטרך לאשר את הרישום לפני שהוא הופך לפעיל."
+
+#~ msgid "He "
+#~ msgstr "הוא "
+
+#~ msgid "He died"
+#~ msgstr "הוא נפטר"
+
+#~ msgid "He married"
+#~ msgstr "הוא התחתן עם"
+
+#~ msgid "He resided at"
+#~ msgstr "הוא התגורר ב-"
+
+#~ msgid "He was born"
+#~ msgstr "הוא נולד"
+
+#~ msgid "He was buried"
+#~ msgstr "הוא נקבר"
+
+#~ msgid "He was christened"
+#~ msgstr "הוא הוטבל"
+
+#~ msgid "He was cremated"
+#~ msgstr "גופתו נשרפה"
+
+#~ msgid "Hello %s…"
+#~ msgstr "שלום <span dir=\"ltr\">%s</span> …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "שלום <span dir=\"ltr\">%s</span> …<br>תודה שנרשמת."
+
+#~ msgid "Hello administrator…"
+#~ msgstr "שלום מנהל המערכת …"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "הלווטיקה"
+
+#~ msgid "Her occupation was"
+#~ msgstr "העיסוק שלה היה"
+
+#~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
+#~ msgstr "כאן תוכל להוסיף עובדה לרשומה שאותה אתה עורך.<br><br>בחר קודם כל עובדה מהרשימה הנגללת, לחץ אח״כ על הכפתור <b>הוסף</b>. הרשימה הנגללת כוללת כבר את כל העובדות שניתן להוסיף למאגר הנתונים."
+
+#~ msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+#~ msgstr "כאן ניתן להוסיף <b>ציטוט</b> מקור לרשומה זו.<br><br>לחץ על הקישור, יפתח חלון ותוכל לבחור את המקור מתוך רשימה (מצא קוד זיהוי) או צור מקור חדש והוסף לאחר מכן את הציטוט.<br><br>הוספת מקורות היא חלק חשוב של חקר המשפחה משום שזה מאפשר לחוקרים אחרים לוודא מהיכן השגת את נתוניך."
+
+#~ msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
+#~ msgstr "כאן תוכל לבחור בין שני סוגים של הצגת שמות של מקומות בהיררכיה. אם נקבע כן, למקום יש שם קצר או שם הרמה בפועל, אם לא - שם מלא.<br><b>דוגמאות:<br>שם מלא:</b> Chicago, Illinois, USA<br><b>שם קצר:</b> Chicago<br><b>שם מלא:</b> Illinois, USA<br><b>שם קצר:</b> Illinois"
+
+#~ msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+#~ msgstr "כאן תוכל לבחור טקסט שיופיע על מסך הכניסה. עליך לקבוע איזה טקסט המוגדר מראש הוא המתאים ביותר.<br><br>אתה יכול גם לבחור להזין טקסט ברוכים הבאים המותאם אישית עבורך. אנא עיין בטקסט העזרה המשויך לשדה <b>טקסט ברוכים הבאים מותאם אישית</b> לקבלת מידע נוסף.<br><br>הטקסטים המוגדרים מראש הם:<ul><li><b>מלל המציין שכל המשתמשים יכולים לבקש חשבון משתמש:</b><div class=\"list_value_wrap\"><center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת לכל המשתמשים בעלי חשבון משתמש באתר.<br><br>אם יש לך חשבון משתמש, תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור המתאים למטה.<br><br>מנהל האתר יבדוק את נתוניך ויפעיל את חשבון המשתמש שלך. תקבל דואר אלקטרוני לאחר שחשבון המשתמש שלך יאושר.</div><br></li><li><b>מלל המציין שהמנהלן הוא שיחליט אם לאשר את הבקשה לחשבון משתמש:</b><div class=\"list_value_wrap\"><center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת רק למשתמשים <u>מורשים.</u><br><br>אם יש לך חשבון משתמש תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור למטה.<br><br>מנהל האתר יבדוק את נתוניך ויאשר או ידחה את בקשתך. תקבל דואר אלקטרוני לאחר שבקשתך תאושר.</div><br></li><li><b>מלל המציין שרק בני משפחה יכולים לבקש חשבון משתמש:</b><div class=\"list_value_wrap\"><center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת <u>רק לבני משפחה</u>.<br><br>אם יש לך חשבון משתמש תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור המתאים למטה.<br><br>מנהל האתר יבדוק את נתוניך ויאשר או ידחה את בקשתך. תקבל דואר אלקטרוני לאחר שבקשתך תאושר.</div></li></ul>"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "הסתר והראה"
+
+#~ msgid "His occupation was"
+#~ msgstr "העיסוק שלו היה"
+
+#~ msgid "Hit count:"
+#~ msgstr "ספירת פגיעות:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "גיל הבעל"
+
+#~ msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+#~ msgstr "אם אדם היה ידוע בכינוי שאינו חלק משמו הרשמי, הכינוי צריך להיות מוקף בגרשיים. לדוגמה, <%s>ג'ון \"נובי\" /קלארק/<%s>."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "כאשר חומת האש של המדיה מופעלת, האם עותקים של תמונות בגודל מלא מסומנים עם סימני מיים צריכים להיות מאוחסנים בשרת, בנוסף לאותן תמונות ללא סימני מים?<br><br>כאשר נבחר <b>כן</b>, תמונות בגודל מלא מסומנות בסימני מיים תופקנה במהירות רבה יותר על חשבון דרישות שטח דיסק גבוהות יותר של שרתים."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "כאשר חומת האש של המדיה מופעלת, האם עותקים של תמונות ממוזערות מסומנות בסימני מיים צריכים להיות מאוחסנים בשרת, בנוסף לאותן תמונות ממוזערות ללא סימני מים?<br><br>כאשר מוגדר <b>כן</b>, רשימות מדיה המכילות תמונות ממוזערות עם סימני מיים תופקנה במהירות רבה יותר על חשבון דרישות שטח דיסק גבוהות יותר של שרתים.."
+
+#~ msgid "If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don't watermark the thumbnails."
+#~ msgstr "כאשר חומת האש של המדיה מופעלת, האם התמונה הממוזערת צריכה להיות מסומנת ע\"י סימן מיים? טעינת רשימות המדיה שלך תהיינה מהירות יותר אם לא תכלול סימן מים בתמונות הממוזערות."
+
+#~ msgid "If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here."
+#~ msgstr "אם חומת האש של המדיה מופעלת, משתמשים שאין להם את רמת ההרשאה שצוינה כאן יראו סימני מים."
+
+#~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+#~ msgstr "אם <b>אפשר למשתמשים לבקש רישום באתר</b> מופעלת, הערך הזה קובע האם המנהל חייב לאשר את הרישום.<br><br>ההגדרה  <b>כן</b> תדרוש שכל המשתמשים החדשים חייבים לאמת תחילה את עצמם ולאחר מכן יאושרו על ידי מנהל לפני שהם יכולים להתחבר לאתר. הגדרה <b>לא</b>, תיבת הסימון <b>המשתמש אושר על ידי המינהלן</b> תסומן באופן אוטומטי כאשר המשתמש מאמת את החשבון שלו, ובכך מתאפשרת כניסה מיידית לאתר לאחר מכן ללא התערבות מנהל."
+
+#~ msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+#~ msgstr "אם לאדם זה יש אירועים כלשהם למעט מוות, קבורה, או שרפה בשנים האחרונות במספר זה של שנים, הוא נחשב ”חי“. תאריכי הלידה של ילדים נחשבים לאירועים כאלה למטרה זו."
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "מחק הודעה זו אם לא ביקשת חשבון."
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "אם אינך יודע את ההגדרות האלו, השאר את ערכי ברירת המחדל.  ייתכן שהן תפעלנה. תוכל לשנותם במועד מאוחר יותר."
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "אם אינך רוצה לשלוח דואר, למשל כאשר webtrees מוגדר למשתמש בודד או במחשב עצמאי, ניתן לבטל תכונה זו."
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "אם יש כמות גדולה של מקומות לא פעילים, זה יכול להאיט את יצירת הרשימה."
+
+#~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
+#~ msgstr "אם ברצונך להוסיף הערה לרשומה זו, כאן המקום.<br><br>לחץ על הקישור, יפתח חלון ותוכל להקליד את הערתך. כאשר סיימת להקליד את ההערה, לחץ על הכפתור מתחת לתיבה, סגור את החלון, וזה הכל."
+
+#~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
+#~ msgstr "אם יש לך סביבה עם קובצי GEDCOM מרובים,  הערך <b>כן</b> מאפשר למבקרים באתר שלך <u>וגם</u> למשתמשים  להחליף את קובץ ה-GEDCOMs. ערך <b>לא</b> לא מאפשר החלפת GEDCOM-ים גם למבקרים <u>וגם</u> למשתמשים מחוברים."
+
+#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
+#~ msgstr "אם מדיניות האבטחה של השרת שלך מאפשרת, תוכל לבקש זיכרון או זמן מעבד נוסף באמצעות דף הניהול <b>webtrees</b>. אחרת, יהיה עליך ליצור קשר עם מנהל השרת שלך."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
+#~ msgstr "בתרבויות רבות מקובל שיש שם מסורתי שכתוב באותיות מסורתיות וגם גרסה לטינית, כמו אנגלית, של השם.<br><br>אם תעדיף לרשום את השם המסורתי בשדות השם הרגילים, תוכל להשתמש בשדה זה עבור הכתב הלטיני של אותו השם. השם הלטיני יופיע גם ברשימות וגם בתרשימים.<br><br>עברית, יונית, רוסית, ערבית או סינית, הן דוגמאות לשפות בהן לאדם יש שם כתוב באלף בית שאינו לטיני (האלף בית ה”מסורתי“) ובנוסף באותיות לטיניות (השם ה”לטיני“).<br><br>למרות ששם השדה ”לטיני“, הוא יכול להכיל גם אותיות שאינן לטיניות. דבר זה יכול להיות שימושי עבור שמות יפניים, ששם יתכנו שלושה אלף-בית שונים."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
+#~ msgstr "בתרבויות רבות מקובל שיש שם מסורתי שכתוב באותיות מסורתיות וגם גרסה לטינית, כמו אנגלית, של השם.<br><br>אם תעדיף לרשום את השם הלטיני בשדות השם הרגילים, תוכל להשתמש בשדה זה עבור הכתב הלא-לטיני של אותו השם באלף בית העברי, היווני, הרוסי, הערבי או הסיני. השם העברי יופיע גם ברשימות וגם בתרשימים.<br><br>למרות ששם השדה ”עברי“ הוא יכול להכיל גם אותיות אחרות."
+
+#~ msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
+#~ msgstr "בחלק מהמדינות, חוקי הפרטיות חלים לא רק על אנשים חיים, אלא גם על אלה שמתו לאחרונה. אפשרות זו תאפשר להאריך את כללי הפרטיות של אנשים חיים לאלה שנולדו או מתו בתוך מספר מסוים של שנים. השאר ערכים אלה ריקים כדי לבטל תכונה זו."
+
+#~ msgid "In this month…"
+#~ msgstr "בחודש הזה …"
+
+#~ msgid "In this year…"
+#~ msgstr "בשנה הזו …"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "כלול את המשפחה הקרובה של האדם?"
+
+#~ msgid "Individual 1"
+#~ msgstr "אדם א'"
+
+#~ msgid "Individual 2"
+#~ msgstr "אדם ב'"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "האדם אשר חי הכי הרבה זמן"
+
+#~ msgid "LDS temple"
+#~ msgstr "מקדש מורמונים"
+
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
+#~ msgid "Link ID"
+#~ msgstr "קוד זיהוי של קישור"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "קשר אדם זה למשפחה קיימת בתור ילד"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "קשר אדם זה למשפחה קיימת בתור בעל"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "קשר אדם זה למשפחה קיימת בתור אישה"
+
+#~ msgid "Living individuals"
+#~ msgstr "אנשים חיים"
+
+#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
+#~ msgstr "טען את כל עצי המשפחה שלך מדיסק, באמצעות פונקצית \"ייבא\" לכל אחד."
+
+#~ msgid "Loading…"
+#~ msgstr "טוען…"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "המיקום לא הורד: המיקום כולל תתי מיקומים"
+
+#~ msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero."
+#~ msgstr "רשימות ארוכות של אנשים עם שם משפחה זהה ניתן לחלק לתת רשימות קטנות יותר לפי האות הראשונה של השם הפרטי של האדם המסוים.<br><br>אפשרות זו קובעת מתי תתי-רשימות של שמות משפחה יתרחשו. כדי להשבית את רישום המשנה לחלוטין, יש להגדיר אפשרות זו כאפס."
+
+#~ msgid "Main section blocks"
+#~ msgstr "הבלוקים הראשיים"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "סיום תחום תאריכי נישואין"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "התחלת תחום תאריכי נישואין"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "מקום הנישואין מכיל"
+
+#~ msgid "Marriage intention"
+#~ msgstr "כוונת נישואין"
+
+#~ msgid "Married name"
+#~ msgstr "שם נישואין"
+
+#~ msgid "Married surname"
+#~ msgstr "שם משפחה לאחר הנישואין"
+
+#~ msgid "Masquerade"
+#~ msgstr "התחזות"
+
+#~ msgid "Masquerade as another user"
+#~ msgstr "תתחזה למשתמש אחר"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "מזג מקוד זיהוי:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "מזג לקוד זיהוי:"
+
+#~ msgid "Min. no. of occurrences to be a “common surname”"
+#~ msgstr "הכמות המינימאלית של מקרים כדי להיכלל ב-”שמות המשפחה השכיחים“"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "הפריטים הנצפים ביותר"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "מקום לידה של אם (בפורמט צ 'פמן)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "גיל האם"
+
+#~ msgid "Move left"
+#~ msgstr "העבר ימינה"
+
+#~ msgid "Move right"
+#~ msgstr "העבר שמאלה"
+
+#~ msgid "Name List"
+#~ msgstr "רשימת שמות"
+
+#~ msgid "No events for living individuals exist for the next %s day."
+#~ msgid_plural "No events for living people exist for the next %s days."
+#~ msgstr[0] "אין אירועים של אנשים חיים למחרת."
+#~ msgstr[1] "אין אירועים של אנשים חיים ב %s הימים הבאים."
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "אין אירוע של אנשים חיים להיום."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "אין אירוע של אנשים חיים למחר."
+
+#~ msgid "No records to display"
+#~ msgstr "אין רשומות להצגה"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "קוד זיהוי כזה לא קיים בקובץ GEDCOM הזה."
+
+#~ msgid "No temple - living ordinance"
+#~ msgstr "אין הסמכה חיה של המקדש"
+
+#~ msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
+#~ msgstr "בדרך כלל, כל שינוי שנעשה לעץ המשפחה צריך להיות מאושר על ידי מפקח. אפשרות זו מאפשרת למשתמש לבצע שינויים ללא צורך באישור מפקח"
+
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
+#~ msgstr[0] "הערה: “חיים” מוגדר (אם מוות או קבורה אינם ידועים) שנה לאחר לידה או לידה משוערת."
+#~ msgstr[1] "הערה: “חיים” מוגדר (אם מוות או קבורה אינם ידועים) %d שנים לאחר לידה או לידה משוערת."
+
+#~ msgid "Nuku’Alofa, Tonga"
+#~ msgstr "נוקואלופה, טונגה"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "מספר החודשים מאז הכניסה האחרונה לחשבון המשתמש כדי שיחשב לא פעיל: "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "אנשים שחיים הכי הרבה זמן"
+
+#~ msgid "On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality."
+#~ msgstr "בתרשים זה ניתן להציג אדם אחד או יותר לאורך קו זמן אופקי. התרשים מאפשר לך לראות חפיפה בתקופת החיים של אנשים שונים.<br><br>ניתן להוסיף לתרשים אנשים בודדים או משפחות לפי קוד הזיהוי שלהם. הרשימה הקודמת נשמרת כאשר מוסיפים אנשים נוספים לתרשים. בכל עת ניתן לנקות את התרשים בעזרת כפתור <b>נקה תרשים</b>.<br><br>ניתן גם להוסיף אנשים לתרשים ע״י חיפוש לפי טווח תאריכים או לפי אזור."
+
+#~ msgid "On this day…"
+#~ msgstr "ביום הזה …"
+
+#~ msgid "Online editing"
+#~ msgstr "עריכה מקוונת"
+
+#~ msgid "Orientation"
+#~ msgstr "כוון"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "תיקייה אחרת… נא הקלד"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "השם של שרת הדואר היוצא - Outgoing mail server - SMTP"
+
+#~ msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP extension \"%1$s\" אינה פעילה. בלעדיה, התכונות הבאות לא תפעלנה: %2$s. אנא בקש ממנהל השרת לאפשר הפעילות."
+
+#~ msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
+#~ msgstr "סיומת  PHP \"%s\" אינה פעילה. אינך יכול להתקין את webtrees עד שהסיומת תהיה פעילה. אנא בקש ממנהל השרת שלך להפעיל אותה."
+
+#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "הגדרת \"%1$s\" אינה פעילה ב-PHP. בלעדיה, התכונות הבאות לא תפעלנה: %2$s. אנא בקש ממנהל השרת לאפשר הפעילות."
+
+#~ msgid "Page"
+#~ msgstr "דף"
+
+#~ msgid "Page size"
+#~ msgstr "גודל הדף"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "הורים ואחים"
+
+#~ msgid "Parent’s age"
+#~ msgstr "גיל ההורה"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "תרשים אילן יוחסין"
+
+#~ msgid "Place of LDS baptism"
+#~ msgstr "מקום טבילת מורמונים"
+
+#~ msgid "Place of LDS child sealing"
+#~ msgstr "מקום חותמת מורמונים של ילד"
+
+#~ msgid "Place of LDS endowment"
+#~ msgstr "מקום סמיכה של מיקדש המורמונים"
+
+#~ msgid "Place of LDS spouse sealing"
+#~ msgstr "מקום חותמת מורמונים של בן/בת זוג"
+
+#~ msgid "Place of adoption"
+#~ msgstr "מקום אימוץ"
+
+#~ msgid "Place of blessing"
+#~ msgstr "מקום הברכה"
+
+#~ msgid "Place of cremation"
+#~ msgstr "מקום שריפה"
+
+#~ msgid "Place of emigration"
+#~ msgstr "מקום הגירה"
+
+#~ msgid "Place of event"
+#~ msgstr "מקום ארוע"
+
+#~ msgid "Place of immigration"
+#~ msgstr "מקום עליה"
+
+#~ msgid "Place of naturalization"
+#~ msgstr "מקום התאזרחות"
+
+#~ msgid "Place of ordination"
+#~ msgstr "מקום הסמכה לכמורה"
+
+#~ msgid "Place of residence"
+#~ msgstr "מקום מגורים"
+
+#~ msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+#~ msgstr "שמות מקומות יש להכניס לפי התקנים של חקר המשפחה. בחקר המשפחה רושמים מהמפורט לכללי כאשר פסיקים משמשים לסמני הפרדה בין הרמות. הרמה בה אתה רושם את נתוני המקום צריכה לייצג את הרמה של הממשל או הכנסייה בה נתונים חיוניים נשמרים עבור המקום.<br><br>כך למשל מקום כמו סולט לייק סיטי ירשם כ”סולט לייק סיטי, סולט לייק, יוטה, ארה״ב“.<br><br>הבא נבחן כל חלק של מקום זה. חלק הראשון, ”סולט לייק סיטי,“ הוא העיר או העיירה שבו האירוע התרחש. בחלק מהמדינות, יתכן שקיימות רשויות מקומיות או רבעים בתוך העיר שחשוב לציין אותם. במקרה זה הם יופיעו לפני העיר. החלק הבא, ”סולט לייק,“ הוא המחוז. ”יוטה“ היא המדינה, ו”ארה״ב“ הארץ. חשוב לציין כל מקום משום שרשימות חקר משפחה נשמרות ע״י הממשלות עבור כל רמה.<br><br>אם רמה מסוימת של המקום לא ידועה, יש להשאירה ריקה בין שני פסיקים. כך אם אין יודעים את המחוז נרשום: ”סולט לייק סיטי, ,יוטה, ארה״ב“. נניח שיודעים רק שאדם נולד ביוטה. את העובדה יש להכניס בצורה הבאה: ”, , יוטה, ארה״ב“.<br><br>ניתן להשתמש בקשר <b>מצא מקום</b> כדי לעזור במציאת מקומות שכבר קיימים במאגר הנתונים."
+
+#~ msgid "Port"
+#~ msgstr "פורט"
+
+#~ msgid "President’s Office"
+#~ msgstr "משרד הנשיא"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "הדפס אירועים בסיסיים ריקים?"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "רביע אל-אוול"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "רביע אל-אוול"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "רביע אל-אוול"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "רביע אל-אוול"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "רביע א-ת'אני"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "רביע א-ת'אני"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "רביע א-ת'אני"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "רביע א-ת'אני"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "אירועים ב-100 השנים האחרונות"
+
+#~ msgid "Registry officer"
+#~ msgstr "ממונה על רישום"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "ממונה על רישום"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "ממונה על רישום"
+
+#~ msgid "Religious institution"
+#~ msgstr "מוסד דתי"
+
+#~ msgid "Remove this location?"
+#~ msgstr "הסר המיקום?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "הבלוקים השמאליים"
+
+#~ msgid "SMTP port"
+#~ msgstr "פורט SMTP"
+
+#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
+#~ msgstr "שמור את כל עצי המשפחה שלך לדיסק, על ידי שימוש בפונקצית \"ייצא\" לכל אחד מהם."
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "חפש ו-/או החלף נתונים בקובץ ה-GEDCOM שלך ע״י שימוש בחיפוש פשוט או התאמת תבנית מתקדמת ."
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "חפש אנשים כדי להוסיפם לרשימת הוסף קישורים."
+
+#~ msgid "Security"
+#~ msgstr "אבטחה"
+
+#~ msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
+#~ msgstr "בחר שם קשר מהרשימה. אם בוחרים <b>סנדק</b>, המשמעות: <i>השותף הזה הוא הסנדק של האדם הנוכחי</i>."
+
+#~ msgid "Select events"
+#~ msgstr "בחר אירועים"
+
+#~ msgid "Send message"
+#~ msgstr "שלח הודעה"
+
+#~ msgid "Sender email address"
+#~ msgstr "כתובת הדוא״ל של השולח"
+
+#~ msgid "Server"
+#~ msgstr "שרת"
+
+#~ msgid "Server time"
+#~ msgstr "זמן שרת"
+
+#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
+#~ msgstr "הגדר את ברירת המחדל של מספר הדורות שיוצגו בתרשימי צאצאים ואילן יוחסין."
+
+#~ msgid "Set the maximum number of generations to display on descendancy charts."
+#~ msgstr "הגדר את המספר המרבי של דורות שניתן להציג על תרשימי צאצאים."
+
+#~ msgid "Set the maximum number of generations to display on pedigree charts."
+#~ msgstr "קבע את המספר המרבי של דורות שיוצגו בתרשימי אילן יוחסין."
+
+#~ msgid "Set the privacy access level for all dead individuals."
+#~ msgstr "הגדר את רמת גישת הפרטיות עבור כל האנשים המתים."
+
+#~ msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
+#~ msgstr "ערך <b>כן</b> יציג את קודי המצב לתקנות המורמונים בתיבות תרשים.<ul><li><b>B</b> - Baptism טבילה</li><li><b>E</b> - Endowed סמיכה</li><li><b>S</b> - Sealed to spouse חותמת מורמונים להורים</li><li><b>P</b> - Sealed to parents חותמת מורמונים של בן/בת זוג</li></ul>לאדם שיש את כל התקנות מדפיסים אחרי שמם <b>BESP</b>. תקנות חסרות מסומנות על ידי <b>_</b> במקום האות המתאימה. למשל, <b><span dir=\"ltr\">BE__</span></b> מציין שתקנות <b>S</b> ו-<b>P</b> חסרות."
+
+#~ msgid "Shared note contains:"
+#~ msgstr "ההערה המשותפת מכילה:"
+
+#~ msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
+#~ msgstr "הערות משותפות הן מלל במבנה חופשי והן מופיעות בחלק העובדות בפרוט של הדף.<br><br>ניתן לקשר כל הערה משותפת ליותר מאדם, משפחה, מקור או אפילו עובדה אחת."
+
+#~ msgid "Shared notes found"
+#~ msgstr "נמצאו הערות משותפות"
+
+#~ msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
+#~ msgstr "הערות משותפות, כמו הערות רגילות, הן מלל בצורה חופשית. שלא כמו הערות רגילות, כל הערה משותפת יכולה להיות מקושרת ליותר מאדם אחד, משפחה, מקור, או עובדה.<br><br>על ידי לחיצה על צלמית מתאימה, אתה יכול להקים קישור להערה משותפת קיימת או ליצור הערה משותפת חדשה ובו זמנית לקשר אותה. אם קישור להערה משותפת קיימת כבר הוקם, תוכל לערוך את תוכנה של ההערה הזו.<br><ul><li><b>קשר להערה משותפת קיימת</b><div style=\"padding-left:20px;\">אם אתה כבר יודע את קוד הזיהוי של ההערה המשותפת הרצויה, תוכל להזין את המספר ישירות לתוך השדה.<br><br>כאשר אתה לוחץ על הצלמית <b>מצא הערה משותפת</b>, תוכל לחפש את המחרוזת של כל ההערות המשותפות הקיימות ולאחר מכן לבחור אחת מהן. מספר מזהה של ההערה הנבחרת יכנס באופן אוטומטי לתוך השדה.<br><br>עליך ללחוץ על כפתור <b>הוסף</b> כדי לעדכן את הרשומה המקורית.</div><br></li><li><b>צור הערה משותפת חדשה</b><div style=\"padding-left:20px;\">כאשר תלחץ על צלמית <b>צור הערה משותפת חדשה</b>, חלון חדש יפתח. באפשרותך להזין את הטקסט של ההערה החדשה כרצונך. בדומה להערה רגילה, אתה יכול להזין URL-ים.<br><br>כאשר תלחץ על כפתור <b>שמור</b>, תראה הודעה עם מספר מזהה של ההערה המשותפת החדשה שנוצרה. אתה צריך ללחוץ על הודעה זו כדי לסגור את חלון העריכה וגם להעתיק את המספר המזהה החדש ישירות לתוך שדה המספר המזהה. אם אתה רק סוגר את החלון, המספר המזהה החדש שנוצר לא יועתק באופן אוטומטי.<br><br>עלך ללחוץ על כפתור <b>הוסף</b> כדי לעדכן את הרשומה המקורית.</div><br></li><li><b>ערוך הערה משותפת קיימת</b><div style=\"padding-left:20px;\">כאשר תלחץ על צלמית <b>ערוך הערה משותפת</b>, חלון חדש יפתח. תוכל לשנות את המלל של הערה משותפת קיימת כרצונך. בדומה להערה רגילה, אתה יכול להזין URL-ים.<br><br>כאשר תלחץ על כפתור <b>שמור</b>, יעודכן המלל של ההערה המשותפת. תוכל לסגור את החלון ואז ללחוץ שוב על כפתור <b>שמור</b>.<br><br>כאשר אתה משנה את המלל של הערה משותפת, השינוי יבוא לידי ביטוי בכל המקומות אליהם ההערה המשותפת קשורה כרגע. גם קישורים חדשים שאתה מקים לאחר שעשית את השינוי ישתמשו במלל המעודכן.</div></li></ul>"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "שעבאן"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "שעבאן"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "שעבאן"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "שעבאן"
+
+#~ msgid "She "
+#~ msgstr "היא "
+
+#~ msgid "She died"
+#~ msgstr "היא נפטרה"
+
+#~ msgid "She married"
+#~ msgstr "היא התחתנה עם"
+
+#~ msgid "She resided at"
+#~ msgstr "היא התגוררה ב-"
+
+#~ msgid "She was born"
+#~ msgstr "היא נולדה"
+
+#~ msgid "She was buried"
+#~ msgstr "היא נקברה"
+
+#~ msgid "She was christened"
+#~ msgstr "היא הוטבלה"
+
+#~ msgid "She was cremated"
+#~ msgstr "גופתה נשרפה"
+
+#~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
+#~ msgstr "האם יש להשתמש במסד נתוני GeoNames כדי לספק הצעות נוספות לשמות מקומות?<br><br>כאשר אפשרות זו <b>כן</b>, תבוצע שאילתא למסד נתוני GeoNames כדי לספק הצעות לשם של המקום שאותו מכניסים. כאשר מוגדר <b>לא</b>, מחפשים רק במסד הנתונים של שושלת היוחסין הנוכחית. ככל שמוסיפים יותר שמות של מקומות, ההצעה תהיה יותר מדויקת. אפשרות זו יכולה להאט את הזנת נתונים, במיוחד אם חיבור האינטרנט איטי.<br><br>מסד הנתונים הגיאוגרפי GeoNames נגיש ללא תשלום. הוא מכיל כרגע מעל 8,000,000 שמות גיאוגרפיים."
+
+#~ msgid "Show acceptable use agreement on “Request new user account” page"
+#~ msgstr "הראה הסכם הגנה על פרטיות על הדף «בקש חשבון משתמש חדש»"
+
+#~ msgid "Show age of parents next to child’s birthdate"
+#~ msgstr "הראה את גיל ההורים ליד תאריך הלידה של הילד"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "הראה את כל המקומות ברשימה"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "הצג ילדים של אבות?"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "הראה אנשים שנפטרו"
+
+#~ msgid "Show details"
+#~ msgstr "הצג פרטים"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "הראה תמונות מודגשות בתיבות של אנשים"
+
+#~ msgid "Show inactive places"
+#~ msgstr "הראה מקומות לא פעילים"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "הראה אנשים שנולדו לפני יותר מ-100 שנה."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "הראה אנשים שנולדו ב-100 השנים האחרונות."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "הראה אנשים חיים או זוגות שבהם שני בני הזוג חיים."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "הראה אנשים שנפטרו או זוגות שבהם שני בני הזוג נפטרו."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "הראה אנשים שנפטרו לפני יותר מ-100 שנה."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "הראה אנשים שנפטרו ב-100 השנים האחרונות."
+
+#~ msgid "Show notes?"
+#~ msgstr "הצג הערות?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "הצג עיסוקים?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "הצג רק אירועים של אנשים חיים?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "הראה רק אנשים שמינם בלתי ידוע."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "הראה רק אנשים, אירועים, או הכול?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "הראה שינויים שממתינים לאישור"
+
+#~ msgid "Show photos?"
+#~ msgstr "הראה תמונות?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "הראה מקומות בצורה היררכית"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "הראה אנשים/משפחות קשורים"
+
+#~ msgid "Show residences?"
+#~ msgstr "הצג מגורים?"
+
+#~ msgid "Show sources?"
+#~ msgstr "הצג מקורות?"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "הראה זוגות או אנשי &laquo;עלים&raquo;. מדובר באנשים שחיים אבל אין להם ילדים רשומים במאגר הנתונים."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "הראה זוגות או אנשי &laquo;שורשים&raquo; ניתן גם לכנות את האנשים הללו &laquo;פטריארכים&raquo;.מדובר באנשים שהוריהם אינם במאגר הנתונים."
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "מציג %1$s עד %2$s מתוך %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "אחות"
+
+#~ msgid "Social security number"
+#~ msgstr "מספר מזהה"
+
+#~ msgid "Son"
+#~ msgstr "בן"
+
+#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
+#~ msgstr "ציטוטים של מקור יכולים לכלול שדות אשר מגדירים את איכות הנתונים (ראשוני, משני, וכו') ואת התאריך שבו האירוע נרשם במקור. אם אתה לא משתמש בשדות האלה, ניתן לבטל אותם בעת יצירת מקורות של ציטוטים חדשים."
+
+#~ msgid "Sources to the events"
+#~ msgstr "מקורות לעובדות"
+
+#~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
+#~ msgstr "מציין אם ניתן לאחסן הודעות שנשלחו דרך <b>webtrees</b> במסד הנתונים. ערך <b>כן</b> מאפשר למשתמשים לאחזר את ההודעות שלהם כאשר הם נכנסים ל-<b>webtrees</b>. ערך <b>לא</b> גורם לכך שהודעות תישלחנה רק בדואר אלקטרוני."
+
+#~ msgid "Spouse"
+#~ msgstr "בן/בת זוג"
+
+#~ msgid "Spouses and children"
+#~ msgstr "בן/בת זוג והילדים"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "תחילת התחום של תאריכי שינוי"
+
+#~ msgid "Surname option"
+#~ msgstr "אופצית שם משפחה"
+
+#~ msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+#~ msgstr "הרשימה הנגללת של המועדפים מראה את המועדפים שבחרת בדף שלך האישי. היא מראה גם את המועדפים שמנהל  האתר בחר עבור ה-GEDCOM הפעיל. לחיצה על אחד המועדפים מביאה אותך ישירות לדף מידע אישי של האדם הזה.<br><br>עזרה נוספת על הוספת מועדפים נמצאת בדף שלך האישי."
+
+#~ msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+#~ msgstr "מציג מדיה יכול להראות קישור, שלחיצה עליו תוריד את קובץ המדיה למחשב המקומי.<br><br>יתכן שתרצה להסתיר את הקישור להורדה מטעמי ביטחון."
+
+#~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
+#~ msgstr "שדה סוג מאפשר להכניס מידע נוסף על הישות. ברוב המקרים, השדה במבנה חופשי שבו ניתן להקיש טקסט חופשי."
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "הודעה נשלחה למנהל המערכת. תוכל להתחבר עם קוד המשתמש והסיסמה שלך אחרי שמנהל המערכת ייתן את אישורו."
+
+#~ msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+#~ msgstr "עגלת גזירי העץ מאפשרת לקיחת קטעים (\"גזירות\") מעץ משפחה זה וקשירתם ביחד בקובץ אחד להורדה ולאחר מכן לייבא לתוכנת עץ המשפחה שלך. הקובץ שיורד הוא במבנה GEDCOM.<br><ul><li>איך גוזרים?<br>הפעולה קלה. בכל מקום שתראה שם שניתן ללחוץ עליו (אדם, משפחה או מקור) תוכל לעבור לדף מפורט של השם הזה. משם תיראה אפשרות  <b>הוסף לעגלת גזירים</b>. לחיצה על קישור זה תעביר אותך לדף עם מספר אפשרויות הורדה.</li><li>איך מורידים?<br>אחרי שיש לך פריטים בעגלה, תוכל להוריד אותם ע״י לחיצה על הקישור <b>הורד עכשיו</b>. יש לעקוב אחר ההנחיות והקישורים.</li></ul>"
+
+#~ msgid "The individual to be contacted about technical questions or errors encountered on your site."
+#~ msgstr "האדם הטכני אליו יש להיתקשר בדבר שאלות או טעויות שנתקלו בהן באתר שלך."
+
+#~ msgid "The individual to contact about the genealogical data on this site."
+#~ msgstr "איש קשר של נתוני שושלת יוחסין באתר זה."
+
+#~ msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+#~ msgstr "אורך זמן לאחר הלידה שניתן להגדירו באופצית  התצורה ”גיל שממנו מניחים שאדם ניפטר“ של פרטיות."
+
+#~ msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
+#~ msgstr "ניתן, וכנראה רצוי, ששם הקובץ שאותו אתה מעלה יהיה בעל שם שונה על השרת מאשר על המחשב המקומי שלך. הסיבה היא שלשם המקומי יש משמעות לך אבל הוא הרבה פחות משמעותי לאחרים שמבקרים באתר. יש גם לקחת בחשבון את האפשרות שאתה ומישהו אחר מנסים להעלות קבצים שונים הנקראים \"granny.jpg\".<br><br>בשדה זה תציין את השם החדש של הקובץ שאתה מעלה. השם שאתה מכניס כאן ישמש גם כשם של הקובץ המזערי, שאותו ניתן להעלות בנפרד או ליצור בצורה אוטומטית. אין צורך למלא את סיומת שם הקובץ (jpg, gif, pdf, doc, וכו'.)<br><br>השאר שדה זה ריק כדי לשמור על השם המקורי של הקובץ שלך שאותו אתה מעלה מהמחשב המקומי שלך."
+
+#~ msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
+#~ msgstr "הארגון, מוסד, חברה, אדם או ישות אחרת בעלת הסמכות.<br><br>דוגמה, המעביד של אדם או בית הכנסת שעורך טקסים או אירועים או ארגון אחראי על יצירת ו-/או גניזת רשומות."
+
+#~ msgid "The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>."
+#~ msgstr "מספר היציאה  port שישמש לחיבורים לשרת SMTP. בדרך כלל, זו יציאה <b>25</b>."
+
+#~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
+#~ msgstr "הקידומת היא אופציונלית, אך מומלצת. על ידי מתן קידומת ייחודית לשמות הטבלאות תוכל לאפשר ליישומים שונים לחלוק את אותו מאגר המידע. מומלץ להשתמש ב-\"_wt\", אך ניתן לההשתמש בכל קידומת שהיא."
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "נראה שבביטוי הרגיל יש שגיאה. לא ניתן להשתמש בו."
+
+#~ msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
+#~ msgstr "ניתן לבחור עיצובים בשלוש רמות: משתמש, GEDCOM, והאתר. הגדרות משתמש מקבלות עדיפות על פני הגדרות GEDCOM, אשר מקבל עדיפות על פני הגדרות האתר. בחירת ”עיצוב ברירת המחדל“ ברמת המשתמש ייתן את ההגדרה עבור ה-GEDCOM הנוכחי. בחירת ”עיצוב ברירת המחדל“ ברמת GEDCOM ייתן את ההגדרה לאתר."
+
+#~ msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
+#~ msgstr "קובץ ה-GEDCOM (עץ משפחה) עודכן לאחרונה ב-#gedcomUpdated#. עץ משפחה זה כולל #totalSurnames# שמות משפחה.  #firstEventType# ofהאירוע המוקדם ביותר הוא #firstEventName# ב-#firstEventYear#. האירוע האחרון הוא #lastEventType# של  #lastEventName# i ב-#lastEventYear#.<br><br>אם יש לך הערות או תגובות, התקשר בבקשה עם #contactWebmaster#."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "ה-GEDCOM הזה נוצר ע״י תוכנת <b>%1$s</b> ב-<b>%2$s</b>."
+
+#~ msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+#~ msgstr "הבלוק כולל בתוכו תרשים אילן יוחסין או צאצאים או שעון חול שמופיע בדף שלי או בדף הבית. בשל מגבלות מקום, יש למקם את התרשים רק בצד שמאל של הדף.<br><br>כאשר הבלוק מופיע על דף הבית,  מנהל המערכת יכול לבחור את אדם המוצא ואת סוג התרשים שיוצג. כאשר הבלוק מופיע על הדף שלי המתואם אישית, המשתמש קובע את האופציות הללו.<br><br>התרשימים מתנהגים בדיוק כפי שהם היו מתנהגים  אם הם היו נקראים מהתפריטים. לחץ על תיבה של אדם כדי לראות עליו נתונים נוספים."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "בלוק זה מציג את עשרת הרשומות הכי נצפות. מונה הפגיעות בהגדרת התצורה של ה-GEDCOM חייב לפעול כדי שהבלוק יהיה פעיל."
+
+#~ msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
+#~ msgstr "תיבת הבחירה הזו מבקרת אם משתמשים אחרים רואים אותך כאשר אתה מחובר. היא גם מבקרת אם אתה יכול לראות משתמשים מחוברים שהוגדרו כנראים.<br><br>כאשר התיבה אינה מסומנת, אחרים לא יראו אותך, ואתה לא תוכל לראות משתמשים מחוברים אחרים. כאשר התיבה מסומנת, ההפך נכון. אחרים יראו אותך ואתה תראה את האחרים שהוגדרו כנראים."
+
+#~ msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+#~ msgstr "שדה זה מאפשר לך לשנות את רשומת המקור אליה מקושר מקור הציטוט. בשדה זה מכניסים קוד זיהוי של הציטוט של המקור. ליד השדה רשומה הכותרת של קוד הזיהוי הנוכחי של המקור. השתמש בקישור <b>מצא קוד זיהוי</b> כדי לחפש את קוד הזיהוי של המקור. כדי להסיר את הציטוט של המקור במלואו, הכנס ערך ריק לשדה."
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "שדה זה שולט בסדר שבו מוצגים פריטי השאלות והתשובות.<br><br>אין חובה להזין את המספרים ברצף. אם תשאירו חורים בשיטת המספור, ניתן להוסיף פריטים אחרים מאוחר יותר. לדוגמה, אם אתה משתמש במספרים 1, 6, 11, 16, תוכל לאחר מכן להוסיף פריטים עם המספרים הסידוריים החסרים. מספרים שליליים ואפס מותרים, וניתן להשתמש בהם להוספת פריטים לפני הראשון.<br><br>כאשר לכמה פריטי שאלות ותשובות יש את אותו המספר הסידורי, רק אחד מהפריטים האלה יוצג."
+
+#~ msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
+#~ msgstr "תיבת הכניסה הזו מאפשרת לשנות את השנה של לוח השנה. הקלד שנה בתיבה ולחץ <b>הכנס</b> כדי לשנות את לוח השנה לשנה הזו.<br><br><b>מאפיינים מתקדמים</b> עבור <b>הצג שנה</b><dl><dt><b>יותר משנה אחת</b></dt><dd>תוכל לחפש תאריכים בתחום של שנים.<br><br>תחומי השנה הם <u>כוללים</u>. משמעות הדבר שתחום התאריך הוא מ-1 בינואר של השנה הראשונה עד ל-31 בדצמבר בשנה האחרונה המוזכרת. מובאות כאן מספר דוגמאות לתחום השנים:<br><br><b>1992-5</b> עבור כל האירועים מ-1992 עד 1995.<br><b>1972-89</b> עבור כל האירועים מ-1972 עד 1989.<br><b>1610-759</b> עבור כל האירועים מ-1610 עד 1759.<br><b>1880-1905</b> עבור כל האירועים מ-1880 עד 1905.<br><b>880-1105</b> עבור כל האירועים מ-880 עד 1105.<br><br>כדי לראות את כל האירועים של העשור או מאה, ניתן להשתמש ב-<b>?</b> במקום הספרות האחרונות. לדוגמא,<b><span dir=\"ltr\">197?</span></b> לכל האירועים מ-1970 עד 1979 או <b><span dir=\"ltr\">16??</span></b> לכל האירועים מ-1600 עד 1699.<br><br>בחירת תחום שנים ישנה את לוח השנה למצגת של שנה.</dd></dl>"
+
+#~ msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+#~ msgstr "תיבת הקלט הזו מאפשרת הכנסת קודי זיהוי של אנשים כך שהם מתווספים לעגלת הגזירים. לאחר שהם התווספו תוצע אפשרות לקשר את קרובי האנשים הללו לעגלת הגזירים שלך.<br><br>אם אינך יודע את קוד הזיהוי של אדם, תוכל לבצע חיפוש לפי שם ע״י לחיצת הצלמית האישית שליד כפתור הוסף."
+
+#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
+#~ msgstr "זוהי רשימה מופרדת בפסיקים של תגי עובדה של קובץ GEDCOM שיוצגו בעת הוספת אדם חדש. לדוגמה, אם BIRT הוא ברשימה, שדות לתאריך לידה ומקום לידה יוצגו בטופס."
+
+#~ msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
+#~ msgstr "זהו קישור לרשומה שלך בעץ המשפחה. אם זה אדם לא נכון, צור קשר עם מנהל המערכת."
+
+#~ msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+#~ msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף למשפחות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת <i>עובדות משפחתיות ייחודיות</i>."
+
+#~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
+#~ msgstr "זהו השם של שרת דואר SMTP. דוגמה:<b>smtp.foo.bar.com</b>.<br><br>ערכי תצורה עבור חלק מספקי דואר אלקטרוני:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (כרגע שירות בתשלום)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "זהו השם של שרת ה- SMTP.   משמעות 'localhost' היא שהדואר פועל על אותו מחשב כמו שרת האינטרנט שלך."
+
+#~ msgid "This is used in the \"From:\" header when sending mails."
+#~ msgstr "משמשת את הכותרת ”מאת:“ בשליחת דואר אלקטרוני."
+
+#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
+#~ msgstr "משמשת את הכותרת ”שולח:“ בשליחת דואר אלקטרוני. בדרך כלל זהה לכותרת ”מאת“."
+
+#~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br><br>Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br><br>When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
+#~ msgstr "הבחירה גורמת ל-<b>webtrees</b> להראות את כל האנשים של אדם או של משפחה שנמצאו ישירות בחיפוש ולהם יש קשר שותפות. ההיפך, בלתי אפשרי להציג את כל האנשים או המשפחות כאשר לאדם שנמצא בחיפוש ישיר יש קשר שותפות לאנשים האחרים או למשפחות האחרות הללו.<br><br>לדוגמא, נניח שאדם <b>א</b> הוא סנדק של אדם <b>ב</b>. הקשר הזה נרשם ברשומת GEDCOM של אדם <b>ב</b> ע״י תג ASSO. לא קיים תג מתאים ברשומת ה-GEDCOM של אדם <b>א</b>.<br><br>כאשר האופציה מסומנת כ<b>כן</b> ורשימת תוצאות החיפוש כוללת את <b>ב</b>, <b>א</b> יכלל אוטומטית בגלל תג ASSO ברשומת ה-GEDCOM של <b>ב</b>. מצד שני, אם תוצאת החיפוש כוללת את <b>א</b>, <b>ב</b> לא יכלל אוטומטית משום ששום תג ASSO מתאים לא קיים ברשומת ה-GEDCOM של אדם <b>א</b>."
+
+#~ msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
+#~ msgstr "אפשרות זו קובעת אם הפניות להערות ולמקור המצורפות לעובדות צריכות להיות מוצגות על לשוניות ההערות והמקורות של הדף האישי.<br><br>בדרך כלל, הלשוניות של ההערות והמקורות מציגות רק הערות ומקורות המצורפים ישירות לרשומת מסד הנתונים של האדם. אלה הם <i>רמה 1</i> הפניות של הערות ומקורות.<br><br>אופצית ה<b>כן</b> גורמת ללשוניות האלו גם להראות הערות ומקורות שהם חלק ממגוון העובדות ברשומת מסד הנתונים של הפרט. אלו הם <i>רמה 2</i> של הפניות של הערות ומקורות, משום שהעובדות השונות הן ברמה 1."
+
+#~ msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
+#~ msgstr "אפשרות זו קובעת אם להראות את הגיל של אבא ואמא ליד תאריך הלידה של הילד בתרשימים."
+
+#~ msgid "This option controls whether or not to show the Birth and Death details of an individual on charts."
+#~ msgstr "אפשרות זו קובעת אם להציג את פרטי לידתו ומותו של אדם בתרשימים."
+
+#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgstr "אפשרות זו קובעת אם להציג את צלמית המגדר בתרשימים.<br><br>מכיוון שהמגדר מצויין גם לפי הצבע של התיבה, אפשרות זו אינה מסתירה את המגדר. האפשרות פשוט מסירה מידע משוכפל מהתיבה."
+
+#~ msgid "This option enables online editing features for this database so that users with Edit privileges may update data online."
+#~ msgstr "אפשרות זו מאפשרת תכונות עריכה מקוונות בבסיס נתונים זה, כך שמשתמש עם הרשאות עריכה יכול לעדכן נתונים באינטרנט."
+
+#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
+#~ msgstr "אפשרות זו מציינת אם יש ליצור את אילן היוחסין לאורך או לרוחב."
+
+#~ msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+#~ msgstr "הבחירה הזו דומה למערכת הדיווח הפנימית של <b>webtrees</b>, בתוספת אחת. נשלח עותק נוסף גם לכתובת דוא\"ל שהוגדרה על דף החשבון שלך.  שיטת קשר זו היא ברירת המחדל."
+
+#~ msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
+#~ msgstr "אפשרות זו תאפשר את כל הגדרות הפרטיות והסתרת הפרטים של אנשים חיים, כפי שמגדירים או משנים בהוצץ הפרטית של דף התצורה של כל קובץ GEDCOM."
+
+#~ msgid "This option will generate thumbnails for all files in the current directory which don't already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br><br>If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links."
+#~ msgstr "האופציה יוצרת תמונות מזעריות לכל הקבצים בתיקייה הנוכחית שאין להם עדיין תמונות מזעריות.  זה הרבה יותר נח מאשר לחיצה על קישור <b>צור תמונה מזערית</b> עבור כל קובץ כזה.<br><br>אם הנך רוצה לשמור על שליטה לאיזה קבצים צריך שתהיה תמונה מזערית מותאמת, אין עליך להשתמש באופציה זו.  במקום זה לחץ על קישורי  <b>צור תמונה מזערית</b> המתאימים."
+
+#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "אפשרות זו תעביר פריט בעמוד שאלות ותשובות כלפי מטה.<br><br>בכל פעם שתשתמש באפשרות זו, המספר הסידורי של פריט זה  של שאלות ותשובות גדל באחד. אתה יכול לקבל אותה תוצאה על ידי עריכת הפריט בשאלות ותשובות ושינוי המספר הסידורי של  השאלה והתשובה. כאשר ליותר מפריט אחד של שאלות ותשובות יש את אותו המספר הסידורי, יוצג רק אחד מהפריטים האלה."
+
+#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "אפשרות זו תעביר פריט בעמוד שאלות ותשובות כלפי מעלה.<br><br>בכל פעם שתשתמש באפשרות זו, המספר הסידורי של פריט זה  של שאלות ותשובות יקטן באחד. אתה יכול לקבל אותה תוצאה על ידי עריכת הפריט בשאלות ותשובות ושינוי המספר הסידורי של  השאלה והתשובה. כאשר ליותר מפריט אחד של שאלות ותשובות יש את אותו מספר הסידורי, יוצג רק אחד מהפריטים האלה."
+
+#~ msgid "This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
+#~ msgstr "אפשרות זו תשמור על קשרי משפחה ברשומות פרטיות. זה אומר תראה קופסות ריקות \"פרטיות\" באילן היוחסין ובתרשימים אחרים עם אנשים פרטיים."
+
+#~ msgid "This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server’s software, as it relates to PHP and <b>webtrees</b>, can be viewed."
+#~ msgstr "דף זה מספק מידע נרחב על השרת שעליו <b>webtrees</b> מותקנת. ניתן לצפות בפרטים רבים על תצורת התוכנה של השרת, כשהיא מתייחסת ל-PHP ו-<b>webtrees</b>."
+
+#~ msgid "This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent."
+#~ msgstr "דף זה מאפשר לך למזג שתי רשומות GEDCOM מאותו קובץ GEDCOM.<br><br>דבר זה שימושי למי שמיזג קבצי GEDCOM ולאחר המיזוג יש לו מספר אנשים, משפחות ומקורות שהם זהים.<br><br>הדף מורכב משלשה שלבים.<br><ol><li>הכנס שני קודי זיהוי של נתוני GEDCOM. שני קודי הזיהוי <u>חייבים</u>להיות מאותו סוג. למשל, לא ניתן למזג אדם עם משפחה או משפחה עם מקור.<br>בשדה <b>מזג לקוד זיהוי:</b> הכנס את קוד הזיהוי של הרשומה שתיווצר לאחר המיזוג.<br>בשדה <b>מזג מקוד זיהוי:</b> הכנס את קוד הזיהוי של הרשומה שתמוזג לרשומת מזג לקוד זיהוי. הרשומה הזו תמחק לאחר המזוג.</li><li>בחר את העובדות משתי הרשומות שברצונך לשמור לאחר מיזוגן לרשומה אחת. סמן בתיבת הסימון המתאימה את העובדות שברצונך לשמור.</li><li>בדוק את תוצאות המיזוג, בדומה לכל השינויים שנעשים בצורה מכוונת.</li></ol>על מישהו בעל הרשאת אישור לאשר את השינויים שלך כדי להפוך אותם לקבועים."
+
+#~ msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#~ msgstr "לתפקיד זה יש כל ההרשאות של תפקיד חבר, בתוספת הרשאה להוסיף/לשנות/למחוק נתונים. כל שינוי צריך להיות מאושר על ידי מפקח, אלא אם המשתמש מוגדר עם אפשרות \"לאשר באופן אוטומטי את השינויים\"."
+
+#~ msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+#~ msgstr "הקטע הזה מאפשר להוסיף ציטוט של מקור חדש לעובדה שכעת בעריכה.<br><br>בשדה המקור עליך להכניס את הזיהוי של המקור. לחץ על קישור <b>צור מקור חדש</b> אם אתה זקוק למקור חדש. בשדה הפירוט של הציטוט הכנס את מספר הדף או נתון אחר שיכול לעזור לאחרים למצוא את מקום הנתון במקור. בשדה המלל הכנס תעתיק מתוך המקור."
+
+#~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
+#~ msgstr "מגבלת זיכרון של שרת זה היא %d מגה-בית, ומגבלת זמן  ה-CPU היא %d שניות."
+
+#~ msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+#~ msgstr "זו צריכה להיות רשימה עובדות המופרדת ברווח או בפסיק, בנוסף ללידה ולמוות, שאתה רוצה שתופיע בתיבות תרשים כגון תרשים אילן היוחסין. רשימה זו מחייבת אותך להשתמש בתגי עובדה כהגדרתו בתקן GEDCOM 5.5.1. לדוגמה, אם אתה רוצה שהמקצוע יופיע בתיבה, עליך להוסיף \"OCCU\" בשדה זה."
+
+#~ msgid "This text will be appended to each page title.  It will be shown in the browser’s title bar, bookmarks, etc."
+#~ msgstr "טקסט זה יצורף  לכותרת של כל דף. הוא יוצג בשורת הכותרת של הדפדפן, סימניות, וכו'."
+
+#~ msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+#~ msgstr "ערך זה קובע את מספר הדורות של צאצאי אדם המוצא שעבורם מדפיסים תרשים במבנה שעון חול."
+
+#~ msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
+#~ msgstr "כדי לסייע לך להתחיל עם המסגרת הזו, יצרנו מספר תבניות סטנדרטיות. כאשר תבחר  תבנית מסוימת, הבלוק יכלול העתק שאותו תוכל לשנות כך שיתאים לדרישות האתר שלך."
+
+#~ msgid "To family"
+#~ msgstr "למשפחה"
+
+#~ msgid "To individual"
+#~ msgstr "לאדם"
+
+#~ msgid "To source"
+#~ msgstr "למקור"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "סה״כ שינויים שהתקבלו: "
+
+#~ msgid "Total pending changes: "
+#~ msgstr "סה״כ שינויים שממתינים לאישור: "
+
+#~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
+#~ msgstr "Transport Layer Security (TLS) ו-Secure Sockets Layer (SSL) הם פרוטוקולי הצפנת נתונים באינטרנט.<br><br>TLS 1.0, 1.1 ו-1.2 הם פיתוחים סטנדרטיים של SSL 3.0. TLS 1.0 ו-SSL 3.1 הם שווי ערך. עבודה נוספת על SSL נעשית כעת תחת השם החדש, TLS.<br><br>אם שרת SMTP שלך דורש פרוטוקול SSL במהלך כניסה, עלך לבחור את האופציה <b>SSL</b>. אם שרת SMTP שלך דורש את פרוטוקול TLS במהלך כניסה, עליך לבחור את האופציה <b>TLS</b>."
+
+#~ msgid "UTC"
+#~ msgstr "זמן יקום מתואם"
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "קוד GEDCOM לא מוכר"
+
+#~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
+#~ msgstr "השתמש ב-SMTP כדי לשלוח הודעות דואר אלקטרוני מ-<b>webtrees</b>.<br><br> אפשרות זו מחייבת גישה לשרת דואר SMTP. כאשר מוגדר <b>לא</b> <b>webtrees</b> משתמש במערכת הדואר האלקטרוני המובנית בתוך PHP על שרת זה."
+
+#~ msgid "Use SMTP to send external mails"
+#~ msgstr "השתמש ב-SMTP למשלוח מיילים חיצוניים"
+
+#~ msgid "Use colors"
+#~ msgstr "השתמש בצבעים"
+
+#~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
+#~ msgstr "השתמש באימות שם וסיסמא כדי להתחבר לשרת SMTP. <br><br>חלק משרתי SMTP דורשים שכל החיבורים יאומתו לפני שהם יקבלו הודעות דואר אלקטרוני יוצאות ."
+
+#~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
+#~ msgstr "השתמש בתמונות צללית כאשר תמונה מודגשת עבור אותו אדם לא צוינה. התמונות הן ספציפיות למגדרו של האדם המדובר.<br><br><table><tr><td wrap valign=\"middle\">תמונה זו עשויה לשמש כאשר מינו של האדם אינו ידוע:"
+
+#~ msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move right and Move left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
+#~ msgstr "השתמש בכפתורים הללו כדי להעביר כניסות מרשימה לאחרת.<br><br>הדגש את הכניסה שברצונך להעביר, ולחץ אחר כך על הכפתור כדי להעביר את הכניסה לכיוון החץ. השתמש בכפתורי <b>&raquo;</b> ו-<b>&laquo;</b> כדי להעביר את הכניסה המודגשת מהרשימה השמאלית לימנית או להפך. השתמש בכפתורי <b>&gt;</b> ו-<b>&lt;</b> כדי להעביר את הכניסה המודגשת בין רשימת הבלוקים הזמינים והרשימה משמאלו או מימינו.<br><br>הכניסות ברשימת הבלוקים הזמינים אינן משתנות בעקבות פעילות בכפתורי העבר שמאלה והעבר ימינה. הסיבה לכך היא שאותו בלוק יכול להופיע מספר פעמים על הדף. בלוק ה-HTML הוא דוגמה טובה לסיבה למה אולי תרצה לבצע זאת."
+
+#~ msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
+#~ msgstr "השתמש בכפתורים הללו כדי לשנות את הסדר של הכניסות ברשימה. הבלוקים יודפסו בסדר כפי שהם רשומים.<br><br>הדגש את הכניסה שברצונך להעביר, לחץ אחר כך בכפתור כדי להעביר את הכניסה למעלה או למטה."
+
+#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
+#~ msgstr "השתמש בשדה זה כדי לשמור גרסה מקוצרת של כותרת. השדה בשימוש ביחד עם שדה הכותרת של מקורות. כברירת מחדל <b>webtrees</b> תשתמש תחילה בכותרת ואח״כ בכותרת המקוצרת.<br><br>לפי הגדרות ה-GEDCOM 5.5, ”הכניסה קיימת כדי לספק כותרת מקוצרת עבור מיון, תיוק ושליפה של רשומות מקור (דף 62).“<br><br>ב-<b>webtrees</b> הכותרת המקוצרת היא שדה רשות, אבל בתוכניות חקר משפחה אחרות השדה חובה."
+
+#~ msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+#~ msgstr "השתמש בשדה זה כדי לסמן שפריט המדיה הזה הינו המודגש או העיקרי עבור האדם אליו הוא מחובר. התמונה העיקרית היא התמונה שמשתמשים בה בתרשימים ובדף האישי."
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "השתמש בדף זה כדי לשנות או להסיר בני משפחה.<br><br>עבור כל בן משפחה, ניתן להשתמש בקישור \"שנה\" כדי לשנות אדם אחר בתפקיד זה בתוך המשפחה. ניתן גם כן להשתמש בקישור \"הסר\" כדי להסיר את האדם מהמשפחה.<br><br>אחרי שתסיים לשנות בני משפחה, לחץ על כפתור שמור כדי לשמור את השינויים."
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "המשתמש לא אישר עצמו תוך 7 ימים."
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "שם משתמש לא יכול לכלול את הסימנים הבאים: &lt; &gt; \" %% { } ;"
+
+#~ msgid "Users logged in"
+#~ msgstr "משתמשים מחוברים"
+
+#~ msgid "Users’ languages"
+#~ msgstr "שפות המשתמשים"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "המשתמש לא פעיל זמן רב מידי: "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "הצג מידע מ-GEDCOM"
+
+#~ msgid "View day"
+#~ msgstr "הצג יום"
+
+#~ msgid "View details"
+#~ msgstr "ראה פרטים"
+
+#~ msgid "View family"
+#~ msgstr "הצג משפחה"
+
+#~ msgid "View month"
+#~ msgstr "הצג חודש"
+
+#~ msgid "View notes"
+#~ msgstr "ראה הערות"
+
+#~ msgid "View person"
+#~ msgstr "הצג אדם"
+
+#~ msgid "View source"
+#~ msgstr "ראה מקור"
+
+#~ msgid "View year"
+#~ msgstr "הצג שנה"
+
+#~ msgid "Visitor options"
+#~ msgstr "אפשרויות אורח"
+
+#~ msgid "Visitors"
+#~ msgstr "מבקרים"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=0"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "נשלח לך דואר של אישור לכתובת האלקטרונית <span dir=\"ltr\"><b>%s</b></span>. עליך לאשר את בקשת החשבון שלך לפי ההוראות המופיעות בדואר של האישור. אם לא תאשר את בקשת החשבון תוך שבעה ימים,  בקשתך תדחה באופן אוטומטי ואז יהיה עליך להירשם שנית.<br><br>אחרי שתנהג לפי ההוראות המופיעות בדואר של האישור, על מנהל המערכת עדיין לאשר את בקשתך לפני שיהיה ניתן להשתמש בחשבון שלך.<br><br>כדי להתחבר לאתר זה, עליך לדעת שם משתמש וסיסמה שלך."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "נשלח לך דואר של אישור לכתובת האלקטרונית <span dir=\"ltr\"><b>%s</b></span>. עליך לאשר את בקשת החשבון שלך לפי ההוראות המופיעות בדואר של האישור. אם לא תאשר את בקשת החשבון תוך שבעה ימים,  בקשתך תדחה באופן אוטומטי ואז יהיה עליך להירשם שנית.<br><br>אחרי שתנהג לפי ההוראות המופיעות בדואר של האישור תוכל להתחבר לאתר. כדי להתחבר לאתר זה, יש לדעת שם משתמש וסיסמה שלך."
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "מאפייני תצורה של האתר ותגי מטה"
+
+#~ msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
+#~ msgstr "כאשר משתמש נרשם לחשבון, הודעת דוא״ל תישלח אל כתובת הדוא״ל שלו עם קישור לאימות. כאשר הוא לוחץ על קישור זה, אנחנו יודעים שכתובת הדוא״ל נכונה, ואופציית \"דוא״ל אומת\" נבחרה באופן אוטומטי."
+
+#~ msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
+#~ msgstr "כאשר הערך הנבחר הוא <b>כן</b>, ההודעה הבאה תופיעה מעל שדות הקלט על דף  «בקש חשבון משתמש חדש»:<div class=\"list_value_wrap\"><div class=\"largeError\">שים לב:</div><div class=\"error\">על ידי השלמת ושליחת טופס זה, אתה מסכים:<ul><li>להגן על פרטיותם של אנשים חיים שמופיע באתר שלנו;</li><li>ובתיבת הטקסט שלהלן, להסביר למי אתה קשור, או לספק לנו מידע על מי צריך להיות רשום באתר שלנו.</li></ul></div></div>"
+
+#~ msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
+#~ msgstr "כאשר התיבה נבחרת, האנשים המבוגרים יוצגו למעלה. כאשר התיבה אינה נבחרת, האנשים הצעירים יוצגו למעלה."
+
+#~ msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
+#~ msgstr "כאשר האופציה הזו נבחרת, תראה את כל רשומות המקור או ההערות של אדם זה.  כאשר האופציה אינה נבחרת, רשומות המקור או ההערות המקושרות לעובדות אחרות של אדם זה לא תוצגנה."
+
+#~ msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
+#~ msgstr "כאשר תבחר אפשרות זו, עותק של קובץ GEDCOM יהיה ידחס לפורמט ZIP לפני שההורדה מתחילה. זה יקטין את גודלו במידה ניכרת, אבל תצטרך להשתמש בתכנית פריסה תואמת (WinZip, למשל) כדי לשחרר את דחיסת קובץ GEDCOM המשודר לפני שתוכל להשתמש בו.<br><br>זוהי אפשרות שימושית עבור הורדה קובץ GEDCOM גדול. קיים סיכון שזמן ההורדה של קובץ לא דחוס יעלה על זמן הביצוע המרבי המותר, וכתוצאה להורדה חלקית של קבצים. אפשרות ה-ZIP תפחית את זמן ההורדה ב-75 אחוזים.."
+
+#~ msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
+#~ msgstr "כאשר תלחץ על הקישור <b>הוסף הערה משותפת</b>, נפתח חלון חדש. תוכל לבחור לקשר להערה משותפת קיימת, או תוכל ליצור הערה משותפת חדשה ובאותו זמן ליצור קישור אליה."
+
+#~ msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
+#~ msgstr "ע״י לחיצה על קישור זה, עגלת גזירי העץ שלך תרוקן לחלוטין.<br><br>אם אינך רוצה להוריד את כל האנשים, משפחות וכו' מעגלת גזירי העץ, תוכל להוריד פריטים פריט אחר פריט ע״י לחיצה על הקישור <b>הסר</b> בתוך תיבות השם. <u>אין</u> תיבת אישור, כאשר תלחץ את הקישוריות הללו; המחיקה תתבצע מידית."
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "איזה קשרים ברצונך להוסיף לאדם זה?"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "מי יכול לראות תמונות ללא סימני מים?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "גיל האישה"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "שם הנעורים של האשה הופך לשם פרטי חדש"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "שם המשפחה של האשה מוחלף בשם המשפחה של הבעל"
+
+#~ msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+#~ msgstr "בבחירה זו משתמשים במערכת הדיווח הפנימית של <b>webtrees</b> ושום דואר אלקטרוני לא נשלח.  בדרך זו תקבל רק <u>הודעות פנימיות</u> ממשתמשים אחרים.  כאשר משתמש אחר שולח לך הודעה מאתר זה, ההודעה תופיע בבלוק ההודעות שעל הדף שלך האישי. אם הורדת את הבלוק מהדף שלך, לא תראה הודעות. הן תופענה מיד לאחר שתגדיר את בלוק ההודעות על הדף שלך."
+
+#~ msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
+#~ msgstr "באפשרותך לשנות את המראה של <b>webtrees</b> באמצעות ”עיצובים“. לכל עיצוב יש סגנון, מבנה, ערכת צבעים, וכו׳ שונה."
+
+#~ msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
+#~ msgstr "תוכל ללחוץ על כפתור זה כדי לבדוק אם קיים נתיב קירבה אחר בין שני האנשים. תוכל להציג את הנתיב הקודם ע״י לחיצה על הקישור עם מספר הנתיב."
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "אתה יכול לקבוע אם שאלה ותשובה זו תהייה גלויה בלי קשר לקובץ ה-GEDCOM, או אם היא גלויה רק לקובץ ה-GEDCOM הנוכחי.<br><ul><li><b>הכול</b>&nbsp;&nbsp;&nbsp;השאלה והתשובה תופיע בכל רשימות השאלות והתשובות, ללא קשר לקובץ GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;השאלה הנפוצה תופיע רק ברשימת השאלות והתשובות של קובץ ה-GEDCOM הפעיל.</li></ul>"
+
+#~ msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+#~ msgstr "ניתן להגביל את מספר כתבות החדשות אשר מוצגות ובכך להקטין את הגובה של בלוק החדשות של ה-GEDCOM.<br><br>האופציה קובעת אם יש להפעיל הגבלות או אם ההגבלה תהייה לפי גיל הכתבה או לפי מספר הכתבות."
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "תוכל להקל על חיפוש של נשים נשואות ע״י רישום שם הנישואין שלהן.<br>אך לא כל הנשים משתמשות בשם המשפחה של בעליהן, כך שיש להיזהר לא להוסיף נתונים שגויים לקובץ ה-GEDCOM שלך."
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "לא תקבל דואר נוסף מאתר זה, מכיוון שקוד המשתמש ימחק אוטומטית לאחר שבעה ימים."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "עגלת הגזירים שלך ריקה."
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "מנהל השרת שלך יספק לך את פרטי הקשר."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "למשתמש שלך לא מופעל ”אישור אוטומטי של שינויים“. אתה יכול רק לשנות רשומה אחת בכל פעם."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "קובץ/קבצי זיפ"
+
+#~ msgid "daughter of"
+#~ msgstr "בת של"
+
+#~ msgctxt "son's wife's father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "מחותן"
+
+#~ msgctxt "son's wife's mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "מחותנת"
+
+#~ msgctxt "son's wife's parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "מחותן/ת"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "נפטרה"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "נפטר"
+
+#~ msgid "estate name"
+#~ msgstr "שם חווה"
+
+#~ msgctxt "FEMALE"
+#~ msgid "estate name"
+#~ msgstr "שם חווה"
+
+#~ msgctxt "MALE"
+#~ msgid "estate name"
+#~ msgstr "שם חווה"
+
+#~ msgid "first"
+#~ msgstr "ראשון"
+
+#~ msgctxt "child's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "בעל של נכדה"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "בעל של נכדה"
+
+#~ msgctxt "son's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "בעל של נכדה"
+
+#~ msgctxt "child's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "אישה של נכד"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "אישה של נכד"
+
+#~ msgctxt "son's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "אישה של נכד"
+
+#~ msgid "last"
+#~ msgstr "אחרון"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "התחתנה"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "התחתן"
+
+#~ msgid "son of"
+#~ msgstr "בן של"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "מחותן"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "מחותנת"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "מחותן/ת"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_unicode_ci"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "נולדה"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "נולד"
+
+#~ msgid "webtrees’ database must be on the same server as PGV’s"
+#~ msgstr "webtrees חייב להיות על אותו השרת כמו PGV"

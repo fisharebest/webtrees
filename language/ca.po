@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:25+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: Catalan\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -446,7 +446,7 @@ msgstr "<b> GUID </b>, en aquest context és l'acrònim de «Globally Unique ID�
 
 #: help_text.php:1326
 msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr "<b>Nota important: </b> L'assistent de transferència no és capaç d'ajudar a moure els elements multimèdia. Haurà de crear i moure o copiar la configuració dels vostres multimèdia i els objectes per separat després que l'assistent de transferència hagi acabat."
+msgstr "<b>Nota important:</b> L'assistent de transferència no és capaç d'ajudar a moure els elements multimèdia. Haurà de crear i moure o copiar la configuració dels vostres multimèdia i els objectes per separat després que l'assistent de transferència hagi acabat."
 
 #: help_text.php:1005
 msgid "<b>No</b> means that authenticated users can see the details of all living people.  <b>Yes</b> means that users can only see the private information of living people they are related to.<br /><br />This option sets the default for all users who have access to this genealogical database.  The Administrator can override this option for individual users by editing the user's account details."
@@ -468,7 +468,7 @@ msgstr "<b>webtrees</b> no pot connectar amb la base de dades PhpGedView: %s."
 
 #: help_text.php:1183
 msgid "<b>webtrees</b> has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you."
-msgstr "<b>webtrees</b> té diverses formes de contacte. L'administrador determina quina cal fer servir per comunicar-s’hi. Vós controleu la forma que s'utilitzarà per contactar-vos. Depenent de la configuració del lloc, alguns dels mètodes enumerats poden no estar disponibles."
+msgstr "<b>webtrees</b> té diverses formes de contacte. L'administrador determina quina cal fer servir per comunicar-s’hi. Vós controleu la forma que s'utilitzarà per <u>contactar-vos</u>. Depenent de la configuració del lloc, alguns dels mètodes enumerats poden no estar disponibles."
 
 #: setup.php:274
 #, php-format
@@ -1640,7 +1640,7 @@ msgstr "Samoa"
 #. I18N: Description of the “Album” module
 #: modules_v3/lightbox/module.php:39
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Una alternativa de la pestanya \"multimèdia\" amb un visor d'imatges millorat."
+msgstr "Una alternativa de la pestanya “multimèdia” amb un visor d'imatges millorat."
 
 #. I18N: Description of the “Charts” module
 #: modules_v3/charts/module.php:39
@@ -1687,7 +1687,7 @@ msgstr "Un arbre interactiu que mostra els avantpassats i descendents d'una pers
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "Error inesperat de la base de dades."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -4318,7 +4318,7 @@ msgstr "Usuaris eliminats: "
 
 #: admin_trees_manage.php:196
 msgid "Deleting old genealogy data…"
-msgstr "Esborrat de dades genealògiques antigues ..."
+msgstr "Esborrat de dades genealògiques antigues …"
 
 #: library/WT/Controller/Family.php:159
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -4555,7 +4555,7 @@ msgstr "No creis noves ubicacions, solament importa les coordenades per a les ex
 #: includes/functions/functions_edit.php:932 includes/media_reorder.php:169
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 msgid "Do not update the “last change” record"
-msgstr "No actualitzis el registre \"últim canvi\""
+msgstr "No actualitzis el registre “últim canvi”"
 
 #: library/WT/Gedcom/Tag.php:906
 #: modules_v3/lightbox/functions/lightbox_print_media.php:121
@@ -4631,7 +4631,7 @@ msgstr "Cada font registra esdeveniments específics, en general, per a un inter
 
 #: help_text.php:1348
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
-msgstr "Cada compte d'usuari té l'opció de permetre \"acceptar els canvis de forma automàtica\". Quan aquesta opció està activada, els canvis realitzats per l'usuari que es guarden immediatament. Molts administradors ho tenen així pel seu propi compte d'usuari."
+msgstr "Cada compte d'usuari té l'opció de permetre “acceptar els canvis de forma automàtica”. Quan aquesta opció està activada, els canvis realitzats per l'usuari que es guarden immediatament. Molts administradors ho tenen així pel seu propi compte d'usuari."
 
 #: statistics.php:114
 msgid "Earliest birth"
@@ -6563,7 +6563,7 @@ msgstr "Si sou l'administrador del lloc web, heu de comprovar que:"
 
 #: site-php-version.php:84 site-unavailable.php:85
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
-msgstr "Si no podeu resoldre el problema vos mateix, podeu demanar ajuda als fòrums de <a href=\"http://webtrees.net\"> webtrees.net </a>"
+msgstr "Si no podeu resoldre el problema vos mateix, podeu demanar ajuda als fòrums de <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: login.php:340
 msgid "If you didn't request an account, you can just delete this message."
@@ -6616,7 +6616,7 @@ msgstr "Si la política de seguretat del servidor ho permet, podeu demanar un au
 #. I18N: Help text for the "Website URL" site configuration setting
 #: help_text.php:827
 msgid "If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
-msgstr "Si al lloc es pot utilitzar més d'un URL, com <b>http://www.exemple.com/webtrees/ </b> i <b> http://webtrees.exemple.com/ </b >, podeu especificar l'adreça preferida. Les sol·licituds a els altres URL seràn redirigides a la preferida."
+msgstr "Si al lloc es pot utilitzar més d'un URL, com <b>http://www.exemple.com/webtrees/</b> i <b>http://webtrees.exemple.com/</b>, podeu especificar l'adreça preferida. Les sol·licituds a els altres URL seràn redirigides a la preferida."
 
 #: library/WT/Gedcom/Tag.php:838
 msgid "Image dimensions"
@@ -8577,7 +8577,7 @@ msgstr "Noms"
 
 #: admin_trees_config.php:510 help_text.php:866
 msgid "Names of private individuals"
-msgstr "Noms de les persones privades ..."
+msgstr "Noms de les persones privades …"
 
 #: admin_trees_config.php:737 help_text.php:472
 msgid "Names to add to common surnames (comma separated)"
@@ -8860,8 +8860,8 @@ msgstr "No hi ha esdeveniments per demà."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Sense esdeveniments de persones vives per al proper %s dia."
-msgstr[1] "Sense esdeveniments de persones vives per als propers %s dies."
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -9502,7 +9502,7 @@ msgstr "Les contrasenyes no coincideixen."
 
 #: help_text.php:1302
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
-msgstr "Les contrasenyes han de tenir almenys 6 caràcters i distingeixen entre majúscules i minúscules, de manera que \"secret\" és diferent a \"SECRET\"."
+msgstr "Les contrasenyes han de tenir almenys 6 caràcters i distingeixen entre majúscules i minúscules, de manera que “secret” és diferent a “SECRET”."
 
 #: admin_users.php:333 edituser.php:115
 msgid "Passwords must contain at least 6 characters."
@@ -9690,7 +9690,7 @@ msgstr "Indret en hebreu"
 
 #: help_text.php:883
 msgid "Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr "Sovint els noms d'indrets solen ésser massa llargs per a cabre als gràfics, llistes, etc. Podeu abreujar-los mostrant només la primera part del nom, com <i> poble, comtat </i>, o l'última part com <i> regió, país </i>."
+msgstr "Sovint els noms d'indrets solen ésser massa llargs per a cabre als gràfics, llistes, etc. Podeu abreujar-los mostrant només la primera part del nom, com <i>poble, comtat</i>, o l'última part com <i>regió, país</i>."
 
 #: library/WT/Gedcom/Tag.php:118
 msgid "Place of Adoption"
@@ -10573,7 +10573,7 @@ msgstr "Les tasques de recerca són esdeveniments especials afegits a persones d
 
 #: modules_v3/todo/help_text.php:38
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognise this tag."
-msgstr "Les tasques de recerca s'emmagatzemen utilitzant l'etiqueta GEDCOM personalitzada \"_TODO\". Aplicacions genealogiques alienes poden no reconèixer aquesta etiqueta."
+msgstr "Les tasques de recerca s’emmagatzemen utilitzant l’etiqueta GEDCOM personalitzada “_TODO”. Aplicacions genealogiques alienes poden no reconèixer aquesta etiqueta."
 
 #: includes/functions/functions_print_lists.php:99
 #: includes/functions/functions_print_lists.php:507 medialist.php:158
@@ -11785,7 +11785,7 @@ msgstr "Algunes entrades potser no s'afegiran per restriccions de privadesa"
 
 #: modules_v3/googlemap/help_text.php:49
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Alguns noms d'indrets poden ser escrits amb prefixos i sufixos opcionals. Per exemple, \"Orange\" versus \"Comtat d'Orange\". Si l'arbre conté els noms dels indrets complets, però la base de dades geogràfica els conté curts, llavors heu d'especificar una llista dels prefixos i sufixos per ser tinguda en compte. Cal separar les opcions múltiples amb punt i coma. Per exemple, \"Comtat; Comtat de; Comptat d'\" o “Vila;Vila de;Vila d'.”."
+msgstr "Alguns noms d'indrets poden ser escrits amb prefixos i sufixos opcionals. Per exemple, “Orange” versus “Comtat d'Orange”. Si l'arbre conté els noms dels indrets complets, però la base de dades geogràfica els conté curts, llavors heu d'especificar una llista dels prefixos i sufixos per ser tinguda en compte. Cal separar les opcions múltiples amb punt i coma. Per exemple, “Comtat; Comtat de; Comptat d'” o “Vila;Vila de;Vila d'.”."
 
 #. I18N: e.g. “Son of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:325
@@ -12243,7 +12243,7 @@ msgstr "Thailàndia"
 
 #: help_text.php:278
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogical annotations to identify different parts of the name."
-msgstr "El <b>nom </b> conté el nom complet de la persona, com s'hauria d'escriure o com es va registrar. Això és el que es mostrarà a la pantalla. S'utilitza l'estàndard d'anotacions genealògiques per identificar diferents parts del nom."
+msgstr "El <b>nom</b> conté el nom complet de la persona, com s'hauria d'escriure o com es va registrar. Això és el que es mostrarà a la pantalla. S'utilitza l'estàndard d'anotacions genealògiques per identificar diferents parts del nom."
 
 #: help_text.php:298
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
@@ -12275,7 +12275,7 @@ msgstr "El Visor Multimèdia pot presentar un enllaç que, polsant-lo, descarreg
 
 #: help_text.php:1312
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
-msgstr "L’assitent <b>webtrees</b> a webtrees és un procés automatitzat per ajudar els administradors a realitzar el pas d'una instal lació amb PGV a una de nova amb <b>webtrees</b>. Es transferirà tots els GEDCOM PGV i la informació de base de dades directament a la nova base de dades  <b>webtrees </b>. Calen els requisits següents:"
+msgstr "L’assitent <b>webtrees</b> a webtrees és un procés automatitzat per ajudar els administradors a realitzar el pas d'una instal lació amb PGV a una de nova amb <b>webtrees</b>. Es transferirà tots els GEDCOM PGV i la informació de base de dades directament a la nova base de dades  <b>webtrees</b>. Calen els requisits següents:"
 
 #: save.php:269
 #, php-format
@@ -12301,7 +12301,7 @@ msgstr "L'actual nom d'usuari administrador <b>webtrees</b> ha d'ésser el matei
 #: login.php:512
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
-msgstr "S'han comprovat les dades de l'usuari %s."
+msgstr "S'han comprovat les dades de l'usuari <b>%s</b>."
 
 #: site-unavailable.php:74
 msgid "The database reported the following error message:"
@@ -12323,7 +12323,7 @@ msgstr "Els detalls d'aquesta persona són privats."
 #: action.php:105
 #, php-format
 msgid "The family “%s” has been deleted, as it only has one member."
-msgstr "La família \"%s\" ha estat eliminada, ja que només té un membre."
+msgstr "La família “%s” ha estat eliminada, ja que només té un membre."
 
 #: addmedia.php:192 admin_media_upload.php:133
 #, php-format
@@ -12996,7 +12996,7 @@ msgstr "Aquesta opció controla si es mostra als gràfics o no, l'edat dels pare
 
 #: help_text.php:842
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "<br/> Aquesta opció controla si es mostraran o no a cadascuna de les llistes i gràfics individuals, les dates estimades de naixement i defunció, en lloc de deixar-hi espais en blanc, de les persones que en desconeixem aquestes dades. <Br / >"
+msgstr "Aquesta opció controla si es mostraran o no a cadascuna de les llistes i gràfics individuals, les dates estimades de naixement i defunció, en lloc de deixar-hi espais en blanc, de les persones que en desconeixem aquestes dades."
 
 #: help_text.php:712
 msgid "This option controls whether or not to show the individual's gender icon on charts.<br /><br />Since the gender is also indicated by the color of the box, this option doesn't conceal the gender. The option simply removes some duplicate information from the box."
@@ -13380,7 +13380,7 @@ msgstr "Per ajudar a introduir-vos en aquest bloc, hem creat algunes plantilles.
 
 #: modules_v3/todo/help_text.php:36
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Per crear noves tasques de recerca, primer us cal afegir \"tasca de recerca\" a la llista de fets i esdeveniments en les preferències dels arbres genealògics."
+msgstr "Per crear noves tasques de recerca, primer us cal afegir “tasca de recerca” a la llista de fets i esdeveniments en les preferències dels arbres genealògics."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:581
@@ -13953,7 +13953,7 @@ msgstr "Nom d'usuari o adreça de correu electrònic"
 
 #: help_text.php:1502
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Els noms d'usuari NO distingeixen entre majúscules i minúscules i ignoren les lletres accentuades, de manera que \"Lluïsa\", \"lluïsa\", i \"lluisa\", es considera el mateix."
+msgstr "Els noms d'usuari NO distingeixen entre majúscules i minúscules i ignoren les lletres accentuades, de manera que “Lluïsa”, “lluïsa”, i “lluisa”, es considera el mateix."
 
 #: help_text.php:1504
 #, php-format
@@ -14297,11 +14297,11 @@ msgstr "En afegir un enllaç, el camp ID no pot estar buit."
 
 #: help_text.php:782
 msgid "When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default."
-msgstr "<br/> Quan afegiu nous parents propers, podeu afegir citacions de font als registres (per exemple, INDI, FAM) o als esdeveniments (BIRT, MARR, DEAT). Aquesta opció controla les caselles que estan marcades per defecte."
+msgstr "<br>Quan afegiu nous parents propers, podeu afegir citacions de font als registres (per exemple, INDI, FAM) o als esdeveniments (BIRT, MARR, DEAT). Aquesta opció controla les caselles que estan marcades per defecte."
 
 #: help_text.php:468
 msgid "When calculating relationships, this option controls whether <b>webtrees</b> will include spouses/partners as well as blood relatives."
-msgstr "Quan es calculen relacions de parentiu, aquesta opció controla si <b>webtrees </b> inclou cònjuges o parelles, així com parents de sang."
+msgstr "Quan es calculen relacions de parentiu, aquesta opció controla si <b>webtrees</b> inclou cònjuges o parelles, així com parents de sang."
 
 #: help_text.php:893
 msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the «Request new user account» page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
@@ -14325,7 +14325,7 @@ msgstr "Quan afegiu un nou membre a la família, es forneix un cognom per defect
 
 #: help_text.php:1339
 msgid "When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "En afegir, editar o esborrar informació, els canvis no es guarden immediatament. Per contra, es mantenen en una zona \"pendent\" zona. Per acceptar-los cal que siguin revisats per un moderador."
+msgstr "En afegir, editar o esborrar informació, els canvis no es guarden immediatament. Per contra, es mantenen en una zona “pendent” zona. Per acceptar-los cal que siguin revisats per un moderador."
 
 #: help_text.php:1132
 msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br /><br />This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
@@ -14649,12 +14649,12 @@ msgstr "Us cal crear un compte d'administrador. Aquest compte controlarà tots e
 
 #: login.php:479
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
-msgstr "Ara heu de revisar els detalls del compte i posar l'estat \"aprovat\" a \"sí\"."
+msgstr "Ara heu de revisar els detalls del compte i posar l’estat “aprovat” a “sí”."
 
 #. I18N: Help text for the “Login URL” site configuration setting
 #: help_text.php:616
 msgid "You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "Solament heu d'entrar un URL d'accés si voleu redireccionar a un lloc diferent o ubicació quan els usuaris accedeixin. Això és molt útil si cal canviar de http a https. Cal incloure l'adreça URL completa a <i>login.php </i>. Per exemple, https://www.elvostreservidor.com/webtrees/login.php."
+msgstr "Solament heu d'entrar un URL d'accés si voleu redireccionar a un lloc diferent o ubicació quan els usuaris accedeixin. Això és molt útil si cal canviar de http a https. Cal incloure l'adreça URL completa a <i>login.php</i>. Per exemple, https://www.elvostreservidor.com/webtrees/login.php."
 
 #: includes/authentication.php:251
 msgid "You sent the following message to a webtrees administrator:"
@@ -18288,7 +18288,7 @@ msgstr "cosí/na 10è/a"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:81
 msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "la configuració de connexió a la base de dades de l'arxiu <b>/data/config.ini.php </b> és correcta"
+msgstr "la configuració de connexió a la base de dades de l'arxiu <b>/data/config.ini.php</b> és correcta"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:82
@@ -18598,18 +18598,1665 @@ msgstr "“%s”"
 #: modules_v3/user_favorites/module.php:80
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "S'ha afegit \"%s\" a la vostra llista de favorits"
+msgstr "S'ha afegit “%s” a la vostra llista de favorits"
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:37
 msgctxt "Unknown surname"
 msgid "…"
-msgstr "..."
+msgstr "…"
+
+#~ msgid " but the details are unknown"
+#~ msgstr " però en desconeixem els detalls"
+
+#~ msgid " in "
+#~ msgstr " a "
+
+#~ msgid "%1$s’s %2$s"
+#~ msgstr "%2$s de %1$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%g:%i:%s %a"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%j %F %Y"
+
+#~ msgid "%s day"
+#~ msgid_plural "%s days"
+#~ msgstr[0] "%s dia"
+#~ msgstr[1] "%s dies"
+
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "fa %s dia"
+#~ msgstr[1] "fa %s dies"
+
+#~ msgid "%s hour ago"
+#~ msgid_plural "%s hours ago"
+#~ msgstr[0] "fa %s hora"
+#~ msgstr[1] "fa %s hores"
+
+#~ msgid "%s minute ago"
+#~ msgid_plural "%s minutes ago"
+#~ msgstr[0] "fa %s minut"
+#~ msgstr[1] "fa %s minuts"
+
+#~ msgid "%s month"
+#~ msgid_plural "%s months"
+#~ msgstr[0] "%s mes"
+#~ msgstr[1] "%s mesos"
+
+#~ msgid "%s month ago"
+#~ msgid_plural "%s months ago"
+#~ msgstr[0] "fa %s mes"
+#~ msgstr[1] "fa %s mesos"
+
+#~ msgid "%s second ago"
+#~ msgid_plural "%s seconds ago"
+#~ msgstr[0] "fa %s segon"
+#~ msgstr[1] "fa %s segons"
+
+#~ msgid "%s three times removed ascending"
+#~ msgstr "rebesoncle valencià %s-1è"
+
+#~ msgid "%s three times removed descending"
+#~ msgstr "rebesnebot valencià %s è"
+
+#~ msgid "%s week"
+#~ msgid_plural "%s weeks"
+#~ msgstr[0] "%s setmana"
+#~ msgstr[1] "%s setmanes"
+
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "%s any"
+#~ msgstr[1] "%s anys"
+
+#~ msgid "%s year ago"
+#~ msgid_plural "%s years ago"
+#~ msgstr[0] "fa %s any"
+#~ msgstr[1] "fa %s anys"
+
+#~ msgid "%s%%"
+#~ msgstr "%s%%"
+
+#~ msgid "(aged %s)"
+#~ msgstr "(%s anys)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(menys de %s anys)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "(més de %s anys)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(filtrat de %s entrades en total)"
+
+#~ msgid "(in childhood)"
+#~ msgstr "(albat)"
+
+#~ msgid "(in infancy)"
+#~ msgstr "(albat)"
+
+#~ msgid "(stillborn)"
+#~ msgstr "(nat mort)"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
+#~ msgstr "<b>GUID</b>, en aquest context és l'acrònim de «Globally Unique ID» (identificador únic global).<br><br>El GUID  té per objecte ajudar a identificar a cada individu d'una manera que és irrepetible, de manera que les organitzacions centrals, com ara el Centre d'Història Familiar de l'Església mormona a Salt Lake City i fins i tot programes compatibles que s'executen al vostre propi servidor, puguin determinar si es tracta de la mateixa persona independentment d'on s'origina el GEDCOM. L'objectiu del Centre d'Història Familiar és tenir un arxiu central de dades genealògiques i exposar-lo a través de serveis web. Això permetrà a qualsevol programa accedir a les dades i actualitzar les seves.<br><br>Si no teneiu intenció de compartir aquest GEDCOM amb ningú més, no us cal permetre que <b>webtrees</b> crei aquests GUID, perquè això no faran altra cosa que augmentar la grandària del vostre fitxer GEDCOM."
+
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+#~ msgstr "<b>No</b> fa que els usuaris autenticats (que hagin efectuat l'accés) puguin veure els detalls de les persones vives. <b>Sí</b> fa que solament puguin veure la de persones amb les que hi estiguin emparentats.<br><br>Aquesta opció fixa el paràmetre per defecte per a tots els usuaris que tinguin accés a la base de dades genealògica. L'administrador pot saltar-se'l per a usuaris individualment, editant els detalls del seu compte."
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b> Nota:</b> la informació privada de persones vives només pot lliurar-se a familiars i amics íntims. Abans de que podeu rebre dades privades us interrogarem per verificar quina relació hi teniu. De vegades la informació de difunts pot també ésser privada. Si aquest és el cas, és perquè no hi ha prou informació coneguda sobre la persona per determinar si és viu o no i probablement, no tenim més informació sobre aquesta persona.<br><br>Abans de fer una pregunta, si us plau, comproveu que demaneu informació sobre la persona correcta comprovant dates, indrets i familiars directes. Si proposeu canvis en les dades genealògiques, si us plau incloeu-hi les fonts de on les heu obtingut."
+
+#~ msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
+#~ msgstr "<b>webtrees</b> Us permet emmagatzemar fins a 10 esdeveniments amb tots els seus detalls al portapapers. Aquest portapapers és diferent del Cistell que podeu utilitzar per exportar part de la base de dades.<br><br>Podeu seleccionar qualsevol dels esdeveniments des d’aquest portapapers i copiar-lo a qualsevol registre de persona, família, multimèdia, font, o arxiu que esteu editant. No obstant això, no es poden copiar dades de tipus de registres diferents. Per exemple, no es pot copiar un esdeveniment de matrimoni a un registre personal o de font ja que l’esdeveniment matrimonial s'associa només amb els registres familiars.<br><br>Això és molt útil per moltes persones o famílies, per entrar esdeveniments semblants, com ara dades del cens."
+
+#~ msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "<b>webtrees</b> ha d'enviar correus electrònics amb contrasenyes, recordatoris i notificacions del lloc. Per fer-ho, podeu utilitzar la instal·lació per a correu de PHP (que no sempre és disponible) o un servidor extern SMTP (repartidor de correu), per a la qual haureu de proporcionar els detalls de connexió."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L'accés és limitat a usuaris que disposin de compte i contrasenya per a aquest lloc."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Us donem la benvinguda a aquest llooc web de genealogia</b></center><br>L'accés és permès solament a usuaris <u>autoritzats</u>.<br><br>Si ja disposeu d'autorització podeu accedir per aquesta pàgina. Si no, podeu demanar-la polsant a l'enllaç apropiat d'aquí sota.<br><br>Un cop verificada la vostra informació l'administrador pot autoritzar-vos o no.  Rebreu un correu electrònic quan la comanda hagi estat aprovada."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L'accés és permès solament a <u>membres de la família</u>.<br><br>Si ja disposeu d'autorització podeu accedir per aquesta pàgina. Si no, podeu demanar-la polsant a l'enllaç apropiat d'aquí sota.<br><br>Un cop verificada la vostra informació l'administrador pot autoritzar-ho o no.  Rebreu un correu electrònic quan la comanda hagi estat aprovada."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L'accés és permès a qualsevol usuari enregistrat.<br><br>Si ja disposeu d'autorització, accediu per aquesta pàgina. Si no, podeu demanar-la polsant a l'enllaç apropiat de sota.<br><br>Un cop verificada la vostra comanda, l'administrador del lloc us activarà el registre.  Rebreu un correu electrònic quan la hagi estat aprovada."
+
+#~ msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
+#~ msgstr "<div class=\"largeError\">Nota:</div><div class=\"error\">En completar i enviar aquest formulari, accepteu:<ul><li>Protegir la privadesa de les persones vives que figuren al nostre lloc;</li><li>En el quadre de text de sota explicar-nos la vostra relació de parentiu o proporcionar-nos informació sobre algú que també hauria de figurar-hi.</li></ul></div>"
+
+#~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
+#~ msgstr "Un servidor de base de dades pot emmagatzemar moltes bases de dades separades. Heu de seleccionar una base de dades existent (creada per l'administració del servidor) o crear-ne una de nova (si el vostre compte d'usuari de base de dades té atribucions per fer-ho)."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Un informe dels esdeveniments que sustenta una determinada font."
+
+#~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
+#~ msgstr "Un usuari no podrà iniciar cap sessió fins que tant el “correu electrònic verificat” com “aprovat per l'administrador” estiguin seleccionats."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=aàbcçdeèéfghiíïjklmnñoòópqrstuúüvwxyz"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=AÀBCÇDEÈÉFGHIÍÏJKLMNÑOÒÓPQRSTUÚÜVWXYZ"
+
+#~ msgid "Access"
+#~ msgstr "Accés"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Afegiu-li un espòs emprant algú existent"
+
+#~ msgid "Add a new associate allows you to link a fact with an associated individual in the site.  This is one way in which you might record that someone was the godfather of another individual."
+#~ msgstr "Afegir un nou associat permet relacionar un esdeveniment amb persona associada. És, per exemple, una forma d'enregistrar que algú és el padrí d'algú altre."
+
+#~ msgid "Add a new name"
+#~ msgstr "Afegiu un altre nom"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Afegiu-li una muller emprant algú existent"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Afegiu a una altra persona al gràfic"
+
+#~ msgid "Add individuals"
+#~ msgstr "Afegiu persones"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Posa-hi solament aquesta persona."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Posa-hi els pares i tots els registres dels descendents amb aquest registre familiar."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Posa-hi els pares i els fills amb aquest registre familiar."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Posa-hi els pares amb aquest registre familiar."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Posa-hi aquesta persona i llur línia d'avantpassats directes."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Posa-hi aquesta persona, llur línia d'avantpassats directes i llurs famílies."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Posa-hi aquesta persona, llurs pares i germans."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Posa-hi aquesta persona, llur cònjuge i tots els descendents."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Posa-hi aquesta persona, llur cònjuge i fills."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Posa-hi aquesta font i les famílies/persones amb ella relacionades."
+
+#~ msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+#~ msgstr "Els administradors de vegades necessiten polir o corregir dades enviades pels usuaris. Per exemple, pot ésser que calgui a corregir la ubicació PLAC per incloure el país. Quan fan aquestes correccions, normalment es substitueix la informació sobre l’usuari que ha modificat o actualitzat originalment un determinat registre. Això pot resultar indesitjable.<br><br>Quan es selecciona aquesta opció, <b>webtrees</b> conserva la informació de l'usuari original en lloc de reemplaçar-lo amb el de la sessió actual. Amb aquesta opció seleccionada, els administradors també tenen la capacitat de modificar o eliminar la informació associada a l'etiqueta original CHAN."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "Un cop dins, seleccioneu l'enllaç 'Dades de registre' sota el menú 'La Meva Pàgina' i escriviu al camp corresponent la vostra nova contrasenya."
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "Edat a partir de la que s'assumeix que una persona ha mort"
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "Edat dels pares a la data de naixement del fill"
+
+#~ msgid "All individuals"
+#~ msgstr "Tothom"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "Permet passar d'un GEDCOM a un altre"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "Permet desar els missatges en línea"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "Un arbre interactiu que mostra els avantpassats i descendents d'una persona"
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "Error inesperat de la base de dades."
+
+#~ msgid "Ancestors of "
+#~ msgstr "Avantpassats de "
+
+#~ msgid "Ancestral file number"
+#~ msgstr "Número d'Ancestral File"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Esteu segur que cal desfer tots els canvis d'aquest GEDCOM?"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
+
+#~ msgid "Available blocks"
+#~ msgstr "Blocs disponibles"
+
+#~ msgid "Begin year"
+#~ msgstr "Començant l'any"
+
+#~ msgid "Best man"
+#~ msgstr "Padrí de boda"
+
+#~ msgid "Binary data object"
+#~ msgstr "Objecte de dades binàries"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "L'indret de naixement conté"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "Detalls de naixement i defunció als gràfics"
+
+#~ msgid "Birth date range end"
+#~ msgstr "Final del lapse de dates de naixement"
+
+#~ msgid "Birth date range start"
+#~ msgstr "Inici del lapse de dates de naixement"
+
+#~ msgid "Brother"
+#~ msgstr "Germà"
+
+#~ msgid "Burial place contains"
+#~ msgstr "L'indret d'enterrament conté"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "Per defecte, la llista només mostra els indrets que es poden trobar en els arbres genealògics. Podeu pot tenir detalls d'altres indrets, com els que s'importen en grans quantitats d'un arxiu extern. En seleccionar aquesta opció es mostren tots els llocs, inclosos els que no s'utilitzen actualment."
+
+#~ msgid "Change family members"
+#~ msgstr "Canvia membres de la família"
+
+#~ msgid "Child of "
+#~ msgstr "Fill/a de "
+
+#~ msgid "Children of "
+#~ msgstr "Fills de "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Escolliu parents"
+
+#~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
+#~ msgstr "Seleccioneu la imatge en miniatura que voleu carregar. Malgrat que es poden generar automàticament miniatures de les imatges, és possible que vulgueu pujar la vostra pròpia miniatura, especialment per als altres tipus de mitjans. Per exemple: podeu proporcionar un fotograma d'un vídeo o una fotografia de la persona que va realitzar un enregistrament d'àudio."
+
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgstr "Seleccioneu-ho per mostrar una capçalera estàndard al vostre text de benvinguda. Quan els vostres usuaris canvien d'idioma, aquesta capçalera apareixerà en la nova llengua<br><br>Si s'estableix en <b>Sí</b>, la capçalera es veurà així: <div class=\"list_value_wrap\"><center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L'accés és permès a qualsevol usuari enregistrat.<br></div>"
+
+#~ msgid "Civil registrar"
+#~ msgstr "Registrador civil"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Registradora civil"
+
+#~ msgctxt "MALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Registrador Civil"
+
+#~ msgid "Clear chart"
+#~ msgstr "Buida el gràfic"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "Polseu %s per escollir aquesta persona com a Cap de Família"
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Polseu el nom per afegir la persona a la llista d'enllaços."
+
+#~ msgid "Click this link to remove the individual from the timeline."
+#~ msgstr "Polseu l'enllaç per treure la persona de l'escala cronològica."
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Polseu aquí per triar una persona com a cap de família."
+
+#~ msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
+#~ msgstr "Polsant la icona “+” s'obrirà una finestra amb l’assistent GEDFact per a Notes Comunes<br>Allí disposeu d’ajuda específica.<br><br>Cal que copieu i enganxeu aquí l’ID d’aquesta nota que apareix quan polseu el botó “Desa”."
+
+#~ msgid "Coat of arms"
+#~ msgstr "Escut d'Armes"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Matrimoni Civil"
+
+#~ msgid "Contact information"
+#~ msgstr "Informació de contacte"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Corregir els registres NAME del tipus 'John/DOE/' o 'John /DOE' produïts per antics programes de genealogia."
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "Costa d'Ivori"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Creeu una nova nota comuna"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Creeu una nota comuna nova emprant l'assitent"
+
+#~ msgid "Create repository"
+#~ msgstr "Creeu un arxiu"
+
+#~ msgid "Create user"
+#~ msgstr "Creeu un usuari"
+
+#~ msgid "Custom event"
+#~ msgstr "Personalitzat"
+
+#~ msgid "Date of LDS baptism"
+#~ msgstr "Data del bateig mormó"
+
+#~ msgid "Date of LDS child sealing"
+#~ msgstr "Data del segellament mormó del fill"
+
+#~ msgid "Date of LDS endowment"
+#~ msgstr "Data de la investidura mormona"
+
+#~ msgid "Date of LDS spouse sealing"
+#~ msgstr "Data del segellament mormó del cònjuge"
+
+#~ msgid "Date of adoption"
+#~ msgstr "Data d'adopció"
+
+#~ msgid "Date of blessing"
+#~ msgstr "Data de Benedicció"
+
+#~ msgid "Date of cremation"
+#~ msgstr "Data d'incineració"
+
+#~ msgid "Date of emigration"
+#~ msgstr "Data d'emigració"
+
+#~ msgid "Date of event"
+#~ msgstr "Data de l'esdeveniment"
+
+#~ msgid "Date of immigration"
+#~ msgstr "Data d'immigració"
+
+#~ msgid "Date of naturalization"
+#~ msgstr "dATA DE Nacionalització"
+
+#~ msgid "Date of ordination"
+#~ msgstr "Data d'ordenació"
+
+#~ msgid "Date of residence"
+#~ msgstr "Data de residència"
+
+#~ msgid "Daughter"
+#~ msgstr "Filla"
+
+#~ msgid "Death Place contains"
+#~ msgstr "L'indret de defunció conté"
+
+#~ msgid "Death date range end"
+#~ msgstr "Final del lapse de dades de defunció"
+
+#~ msgid "Death date range start"
+#~ msgstr "Inici del lapse de dades de defunció"
+
+#~ msgid "Default theme"
+#~ msgstr "Presentació per defecte"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Descendents de "
+
+#~ msgid "Descent steps"
+#~ msgstr "Generacions de descendents"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu-l-qada"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu-l-qada"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu-l-qada"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu-l-qada"
+
+#~ msgid "Differences"
+#~ msgstr "Diferències"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Avantpassats per línia directa"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Línia d'avantpassats directes i les seves famílies"
+
+#~ msgid "Display %s"
+#~ msgstr "Mostra %s"
+
+#~ msgid "Do not seal, previous sealing cancelled"
+#~ msgstr "No segellat, segellament previ cancel·lat"
+
+#~ msgid "Do not seal: unauthorized"
+#~ msgstr "No segellat: desautoritzat"
+
+#~ msgid "Do not send messages"
+#~ msgstr "No eviis missatges"
+
+#~ msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+#~ msgstr "Adreça de correu electrònic que s'utilitzarà al camp &laquo;De:&raquo;. dels correus electrònics que <b>webtrees</b> crea automàticament<br><br><b>webtrees</b> pot creta automàticament missatges de correu electrònic per notificar als administradors sobre canvis que necessiten ser revisats. <b>webtrees</b> també envia correus electrònics de notificació als usuaris que han demanat un compte.<br><br>En general, el camp &laquo;De:&raquo; d'aquests missatges automàtics és quelcom semblant a això <i>De: webtrees-noreply@elvostrelloc</i> per a palesar que no es demana resposta. Per protegir-se contra el correu brossa i altres abusos de correu electrònic, alguns sistemes requereixen que el camp &laquo;De:&raquo; de cada missatge reflecteixi un compte de correu electrònic vàlid i no accepten els missatges que aparentment provenen del compte <i>webtrees-noreply</i>."
+
+#~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
+#~ msgstr "Cada element multimèdia de la vostra base de dades ha d'estar associat amb una o més persones, famílies o fonts.<br><br> Per establir aquest vincle, podeu introduir o buscar la identificació de la persona, família o font al mateix temps que creeu l'element multimèdia. També podeu establir el vincle més endavant a través d'opcions d'edició a la pàgina Gestió Multimèdia o mitjançant l'addició d'elements multimèdia a través de l'enllaç <b>Afegiu/Enllaçeu un ítem multimèdia</b> disponible a les pàgines de Detalls Individuals, familiars o de font."
+
+#~ msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+#~ msgstr "Cada font registra esdeveniments específics, en general, per a un interval de temps determinat i per a una jurisdicció concreta. Per exemple, un oficina del cens enregistra censos i una església enregistra naixements, casaments i defuncions.<br><br>Seleccioneu, de la llista d’esdeveniments previstos, els que es registren per aquesta font. La data ha d'ésser especificada en un format de lapse com ara <i>de 1900 a 1910</i>. El lloc de jurisdicció és el nom de menor jurisdicció que abasta tots els llocs de menor nivell nomenats en aquesta font. Per exemple, “Oneida, Idaho, EUA” pot ésser utilitzat com a lloc de jurisdicció d'origen dels esdeveniments que ocorren en les diverses ciutats dins del Comtat d’Oneida. “Idaho, EUA” seria el lloc de la jurisdicció d'origen si els esdeveniments registrats es van dur a terme no només en el Comtat d’Oneida, sinó també als altres comtats d'Idaho."
+
+#~ msgid "Edit details"
+#~ msgstr "Editeu detalls"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Editeu el registre primari GEDCOM"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Editeu la nota comuna"
+
+#~ msgid "Email address:"
+#~ msgstr "Correu electrònic:"
+
+#~ msgid "End year"
+#~ msgstr "Acabant l'any"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "Final del lapse de dates de canvi"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Entreu l'ID de la família"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Entreu l'ID de la persona"
+
+#~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
+#~ msgstr "Poseu un títol per a l'entrada que esteu editant. Si ho és per a un fitxer multimèdia, cal que sigui descriptiu i que faciliti a l'usuari llur identificació."
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Entreu un ID de Persona, Família o Font"
+
+#~ msgid "Enter associate GEDCOM ID."
+#~ msgstr "Entreu ID al GEDCOM de l'associat."
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Entreu o cerqueu l'ID de la persona, família o font al que cal vincular aquest ítem multimèdia."
+
+#~ msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Entreu el número de FAX incloent-hi el codi de país i l'àrea.<br><br>Deixeu-ho en blanc si no el voleu incloure. Per exemple, un número espanyol pot ser el +34 93 8333333 i un número dels USA o Canada pot ser +1 888 555-1212."
+
+#~ msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+#~ msgstr "Entreu l'adreça URL incloent-hi l'http://.<br><br>Això és un exemple d'URL: <b>http://www.webtrees.net/</b> Deixeu aquest camp en blanc si no voleu incloure-hi URL."
+
+#~ msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
+#~ msgstr "Entreu l'adreça tal i com l'escriuríeu en un sobre.<br><br>Deixeu-ho en blanc si no la voleu incloure."
+
+#~ msgid "Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address."
+#~ msgstr "Entreu l'adreça de correu electrònic.<br><br>Un exemple d'adreça és aquest: <b>nom@hotmail.com</b> Deixeu-ho en blanc si no la voleu incloure."
+
+#~ msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+#~ msgstr "Entreu el límit aquí.<br><br>Si heu optat per limitar el nombre d'articles segons l'antiguitat no en mostrarà cap amb data anterior al nombre de dies fixats. Si heu optat per limitar el nombre, solament es veuran els més nous fins al nombre fixat, ordenats per antiguitat. La resta d'articles restaran ocults.<br><br>Si hi entreu zeros es desactiva el límit i es veuran tots."
+
+#~ msgid "Enter the name of the cemetery or other resting place where individual is buried."
+#~ msgstr "Entreu el nom del cementiri o la tomba a on la persona s'hagi enterrat."
+
+#~ msgid "Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Entreu el número de telèfon incloent-hi en codi de país i àrea.<br><br>Deixeu-ho en blanc si no el voleu incloure. Per exemple, un número espanyol pot ser el +34 93 8333333 i un número dels USA o Canada pot ser +1 888 555-1212."
+
+#~ msgid "Entry text:"
+#~ msgstr "Entreu el text:"
+
+#~ msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+#~ msgstr "Cada persona de la base de dades té un únic ID. Si sabeu quin és el vostre propi registre, entreu-lo aquí. Si el desconeixeu o no podeu trobar-lo degut a restriccions de privadesa, demaneu-ho a l'administrador al camp de Comentaris, a fi de que sigui ell qui li posi per compte vostre."
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "Esten la privadesa per a persones difuntes"
+
+#~ msgid "External objects"
+#~ msgstr "Objectes externs"
+
+#~ msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+#~ msgstr "PMF (Preguntes Més Freqüents) són llistes de preguntes i respostes, que us permeten explicar les normes del lloc, polítiques i procediments per als vostres visitants. Generalment estan relacionades amb la privadesa, drets d'autor, els comptes d'usuari, continguts inadequats, requisit per les ressenyes de fonts, etc."
+
+#~ msgid "Facts for family records"
+#~ msgstr "Registres d'esdeveniments per famílies"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "Esdeveniments per registres Individuals"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "Registres d'esdeveniments per Arxius"
+
+#~ msgid "Facts for source records"
+#~ msgstr "Registres d'esdeveniments per fonts"
+
+#~ msgid "Family group information"
+#~ msgstr "Informació del Grup Familiar"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Cistell genealògic"
+
+#~ msgid "Family with husband"
+#~ msgstr "Família amb el marit"
+
+#~ msgid "Family with wife"
+#~ msgstr "Família amb la dona"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Lloc de naixement del pare (format Chapman)"
+
+#~ msgid "Father’s age"
+#~ msgstr "Edat del pare"
+
+#~ msgid "Font"
+#~ msgstr "Font dels caràcters"
+
+#~ msgid "For LDS ordinances, this field records the temple where it was performed."
+#~ msgstr "Per als ritus mormons, aquest camp enregistra el temple on s'ha fet."
+
+#~ msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
+#~ msgstr "Per exemple, si s'especifica una longitud de recorregut de 2, l'usuari podrà veure el seu nét (fill, filla), la seva tia (pares, germans), la seva fillastra (cònjuge, fills), però no el seu cosí germà (pares, germans, fills)."
+
+#~ msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "Per a una visualització òptima en Internet, <b> webtrees</b> utilitza la codificació del jocs de caràcters UTF-8. Alguns programes, Family Tree Maker, per exemple, no admet la importació d'arxius GEDCOM codificats en UTF-8. En marcar aquesta casella es convertirà l'arxiu de <b>UTF-8</b> a <b>ANSI (ISO-8859-1)</b>.<br><br>El format que necessiteu depèn del programa que utilitzeu per treballar amb l'arxiu descarregat GEDCOM. Si no n'esteu segur, mireu-vos la documentació del programa.<br><br>Tingueu en compte que per a que als caràcters especials no es modifiquin, heureu de consevar l'arxiu en format UTF-8 i convertir-lo al mètode del vostre manipulant aquests caràcters especials per algun altre mitjà. Consulteu el manual del programa del venedor o autor.<br><br>. En aquest <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Artíclr Wikipedia\"><b>Artícle Wikipedia</b></a> trobareu informació completa i enllaços sobre UTF-8."
+
+#~ msgid "Foster child"
+#~ msgstr "Fill adoptiu"
+
+#~ msgid "Foster father"
+#~ msgstr "Pare adoptiu"
+
+#~ msgid "Foster mother"
+#~ msgstr "Mare adoptiva"
+
+#~ msgid "From email address"
+#~ msgstr "Nom del remitent"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "Estadístiques GEDCOM"
+
+#~ msgid "Gedcom"
+#~ msgstr "Gedcom"
+
+#~ msgid "Generation "
+#~ msgstr "Generació "
+
+#~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#~ msgstr "Dóna als usuaris l'opció de seleccionar des d'un menú la presentació preferida.<br><br>No n'hi ha prou amb activar aquest paràmetre. Per a que els usuaris puguin canviar-se efectivament la presentació cal activar també l'opció <b>Permet als usuaris escollir la presentació preferida</b>."
+
+#~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+#~ msgstr "Dóna als visitants l'opció d'autoverificar-se per disposar d'accés al lloc.<br><br>El visitant rebrà un correu electrònic amb un codi per confirmar i verificar la bondat de la seva comanda d'accés. Desprès de la verificació l'Administrador ho ha d'autoritzar abans que pugui disposar d'accés."
+
+#~ msgid "He "
+#~ msgstr "Ell "
+
+#~ msgid "He died"
+#~ msgstr "Morí el"
+
+#~ msgid "He married"
+#~ msgstr "Catsat amb"
+
+#~ msgid "He resided at"
+#~ msgstr "Va viure a"
+
+#~ msgid "He was born"
+#~ msgstr "Nat el"
+
+#~ msgid "He was buried"
+#~ msgstr "Enterrat el"
+
+#~ msgid "He was christened"
+#~ msgstr "Varen batejar-lo"
+
+#~ msgid "He was cremated"
+#~ msgstr "Fou incinerat a"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Hola %s …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Hola %s …<br>Gràcies per enregistrar-vos"
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Hola Administrador …"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvètica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Llur ofici era"
+
+#~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
+#~ msgstr "Aquí us permet afegir un esdeveniment al registre que esteu editant.<br><br>Primer cal que escolliu l'esdeveniment a la llista desplegable i desprès polseu el botó <b>Afegeix</b>. Tots els esdeveniments possibles que podeu introduir son a la llista."
+
+#~ msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+#~ msgstr "Aquí podeu afegir una <b>Ressenya</b> de font a aquest registre.<br><br>Polsant l'enllaç s'obrirà una finestra i haureu de triar la font entre una llista (Cerqueu l'ID) o crear-ne una de nova i després afegir la ressenya.<br><br>L’addició de fonts és una part important en genealogia, ja que permet a altres investigadors verificar de on heu obtingut la vostra informació."
+
+#~ msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
+#~ msgstr "Aquí podeu escollir entre dues formes de mostrar els noms d'indret jeràrquicament. Si es posa a SÍ l'indret farà servir un nom abreujat o el nom del nivell. Si és a NO, el nom complet.<br><b>Exemples:<br>Nom complet:</b> Chicago, Illinois, USA<br><b>Abreujat:</b> Chicago<br><b>Complet:</b> Illinois, USA<br><b>Abreujat:</b> Illinois"
+
+#~ msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+#~ msgstr "Aquí podeu escollir el text que apareix a la pantalla d'inici de sessió. Heu de determinar quin text predefinit és el més apropiat.<br><br>També podeu optar per introduir-ne un de personalitzat. Per a més informació consulteu l'ajuda associada al camp <b>Text de benvinguda</b><br><br>Els textos predefinits són:<ul><li><b>Text predefinit que estableix que tots els visitants poden demanar un compte d'usuari:</b><div class=\"list_value_wrap\"><center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L'accés és permès a qualsevol usuari enregistrat.<br><br>Si ja disposeu d'autorització, accediu per aquesta pàgina. Si no, podeu demanar-la polsant a l'enllaç apropiat de sota.<br><br>Un cop verificada la vostra comanda, l'administrador del lloc us activarà el registre. Rebreu un correu electrònic quan la hagi estat aprovada.</div><br></li><li><b> Text predefinit que estableix que l'administrador decidirà sobre cada petició de compte:</b><div class=\"list_value_wrap\"><center><b>Benvingut a aquest lloc web de genealogia</b></center><br>L'accés és permès solament a usuaris <u>autoritzats</u>.<br><br>Si ja disposeu d'autorització, accediu per aquesta pàgina. Si no, podeu demanar-la polsant a l'enllaç apropiat de sota.<br><br>Un cop verificada la vostra informació l'administrador pot autoritzar-vos o no.  Rebreu un correu electrònic quan la comanda hagi estat aprovada.</div><br></li><li><b>Text predefinit que estableix que solament poden demanar compte els membres de la família:</b><div class=\"list_value_wrap\"><center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L'accés és permès solament a <u>membres de la família</u>.<br><br>Si ja disposeu d'autorització podeu accedir per aquesta pàgina. Si no, podeu demanar-la polsant a l'enllaç apropiat d'aquí sota.<br><br>Un cop verificada la vostra informació l'administrador pot autoritzar-ho o no.  Rebreu un correu electrònic quan la comanda hagi estat aprovada."
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "Ocultar i mostrar"
+
+#~ msgid "His occupation was"
+#~ msgstr "Llur ofici era"
+
+#~ msgid "Hit count:"
+#~ msgstr "Compta-visites:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Edat del marit"
+
+#~ msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+#~ msgstr "Si un individu era conegut per un sobrenom que no és part del seu nom formal, ha de ser tancat entre cometes. Per exemple, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Si el s'ha activat el directori de seguretat multimèdia, cal emmagatzemar còpies d'imatges a mida natural amb marques d'aigua al servidor?<br><br>Si marqueu <b>Sí</b>, les imatges a mida natural apareixeran més de pressa a expenses de més requeriment d'espai de disc al servidor."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Si s'ha activat directori de seguretat multimèdia, cal emmagatzemar còpies de les miniatures amb marques d'aigua digitals al servidor a més de les mateixes miniatures sense aquestes marques?<br><br>Si ho poseu a <b>Sí</b>, les llistes multimèdia es generaran més de pressa a expenses d'una major ocupació d'espai de disc al servidor."
+
+#~ msgid "If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don't watermark the thumbnails."
+#~ msgstr "Si s'ha activat el directori de seguretat multimèdia, cal posar marques d'aigua digitals a les miniatures? La vostres llistes multimèdia es carregaran més ràpid si no cal fer-ho."
+
+#~ msgid "If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here."
+#~ msgstr "Si s'ha activat el directori de seguretat multimèdia, els usuaris que no tinguin el nivell d'atribucions especificat aquí, veuran les imatges amb marques d'aigua digitals."
+
+#~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+#~ msgstr "Si hi ha activada l'opció <b>Permet als visitants demanar enregistrar-se</b> aquest paràmetre controla  si l'administrador ha d'autoritzar el registre.<br><br>Posant-ho a <b>Sí</b> fa que qualsevol nou usuari, abans de disposar d'accés, primer s'hagi d'autoverificar i desprès ésser autoritzat per un administrador. Amb aquest paràmetre a <b>No</b>, la casella <b>Usuari autoritzat per l'administrador</b> queda marcada automàticament quan un usuari confirma o verifica el seu compte, permetent la connexió immediata sense la intervenció de l'administrador."
+
+#~ msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+#~ msgstr "Si aquesta persona té qualsevol altre esdeveniment que la defunció, l'enterrament o cremació més recent que aquest nombre d'anys, és considerada com “viva”. A aquest fi les dates de naixement dels fills són considerats com a tals esdeveniments."
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Si us interessa, simplement esborreu aquest missatge."
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "Si no coniexeu aquests paràmetres, deixeu els valors per defecte. Poden funcionar. Podeu canviar-los més endavant."
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "Si no desitgeu enviar correu, per exemple quan s'executa webtrees amb un sol usuari o en un equip independent, podeu deshabilitar aquesta característica."
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "Si teniu un gran nombre d'indrets inactius, generar la llista pot resultar molt lent."
+
+#~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
+#~ msgstr "Si teniu una nota per afegir a aquest registre, aquest és el lloc per fer-ho.<br><br>Polseu l'enllaç i s'obrirà una finestra on podeu entrar-hi la nota. En acabar polseu el botó sota el quadre , tanqueu la finestra i llestos."
+
+#~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
+#~ msgstr "Si teniu un entorn amb múltiples GEDCOM, posant aquest valor a  <b>Sí</b> permeteu als visitants del lloc <u>i</u> als usuaris de canviar-se de GEDCOM. Posant-lo a <b>No</b> desactiveu el canvi entre un GEDCOM a un altre tant per als visitants  <u>com pels</u> usuaris amb accés."
+
+#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
+#~ msgstr "Si la política de seguretat del servidor ho permet, podeu demanar un augment de memòria o temps de CPU amb la pàgina d'administració del <b>webtrees</b>. En cas contrari, haureu de posar-vos en contacte amb l'administrador del servidor."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
+#~ msgstr "En moltes cultures s'acostuma a tenir un nom tradicional escrit en els caràcters tradicionals i també una versió llatinizada del nom tal com s'escriu o es pronuncia en els idiomes basats en l'alfabet llatí, com l'anglès.<br><br>Si preferiu utilitzar un alfabet no llatí com l'hebreu, grec, rus, xinès o àrab per introduir el nom en els camps de nom estàndard, podeu emprar aquest camp per introduir el mateix nom utilitzant l'alfabet llatí. Ambdues versions del nom apareixeràn a llistes i taules.<br><br>Malgrat que aquest camp s'anomena “Llatinitzada”, no es limita a contenir només caràcters basats en l'alfabet llatí. Podria ser d'utilitat amb els noms japonesos, on poden coincidir tres alfabets diferents."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
+#~ msgstr "En moltes cultures s'acostuma a tenir un nom tradicional escrit en els caràcters tradicionals i també una versió llatinizada del nom tal com s'escriu o es pronuncia en els idiomes basats en l'alfabet llatí, com l'anglès.<br><br>Si preferiu utilitzar l'alfabet  per entrar el nom als camps de nom estàndard, podeu fer servir aquest camp per entrar el mateix nom en alfabets diferents del llatí com l'hebreu, grec, rus, xinès o àrab. Ambdues versions del nom apareixeràn a llistes i taules.<br><br>Malgrat que aquest camp s'anomena “Hebreu”, no es limita a contenir només caràcters basats en l'alfabet hebreu."
+
+#~ msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
+#~ msgstr "En alguns països, les lleis de privadesa són aplicables no només a les persones que viuen, sinó també a aquells que han mort recentment. Aquesta opció us permetrà ampliar les normes de privadesa de persones vives a les que han nascut o han mort dins d'un nombre determinat d'anys. Per desactivar aquesta funció, deixeu aquests valors buits."
+
+#~ msgid "In this month…"
+#~ msgstr "Aquest mes…"
+
+#~ msgid "In this year…"
+#~ msgstr "Enguany…"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Incloure els familiars directes de la persona?"
+
+#~ msgid "Individual 1"
+#~ msgstr "Persona 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Persona 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Persona que ha viscut més temps"
+
+#~ msgid "LDS temple"
+#~ msgstr "Temple mormó"
+
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
+#~ msgid "Link ID"
+#~ msgstr "ID a enllaçar"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Vinculeu aquesta persona a una família existent com a fill/a"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Vinculeu aquesta persona a una família existent com a espòs"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Vinculeu-la a una família existent com a esposa"
+
+#~ msgid "Living individuals"
+#~ msgstr "Gent viva"
+
+#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
+#~ msgstr "Carregueu tots els arbres genealògics des del disc, utilitzant la funció “importa” per a cada un."
+
+#~ msgid "Loading…"
+#~ msgstr "Carregant…"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Ubicació no esborrada perquè en té altres de subordinades"
+
+#~ msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero."
+#~ msgstr "Les llistes massa llargues de persones amb el mateix cognom poden dividir-se en petites subllistes ordenades per la inicial del nom de pila.<br><br>Aquesta opció determina a partir de quin nombre cal fer-ho. Per desactivar completament les subllistes, poseu aquesta opció a zero."
+
+#~ msgid "Main section blocks"
+#~ msgstr "Blocs de la Secció Principal"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Final del lapse de data de casament"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Inici del lapse de data de casament"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "L'indret de casament conté"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Petició de matrimoni"
+
+#~ msgid "Married name"
+#~ msgstr "Nom de casada"
+
+#~ msgid "Married surname"
+#~ msgstr "Cognom de casada"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Barreja des de l'ID:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Barreja cap a l'ID:"
+
+#~ msgid "Min. no. of occurrences to be a “common surname”"
+#~ msgstr "Mínim nombre de coincidències per considerar-lo un “cognom habitual”"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Entrades més visitades"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Lloc de naixement de la mare (format Chapman)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Edat de la mare"
+
+#~ msgid "Move left"
+#~ msgstr "Mou a l'esquerra"
+
+#~ msgid "Move right"
+#~ msgstr "Mou a la dreta"
+
+#~ msgid "Name List"
+#~ msgstr "Llistat de Noms"
+
+#~ msgid "No events for living individuals exist for the next %s day."
+#~ msgid_plural "No events for living people exist for the next %s days."
+#~ msgstr[0] "Sense esdeveniments de persones vives per al proper %s dia."
+#~ msgstr[1] "Sense esdeveniments de persones vives per als propers %s dies."
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "No hi ha esdeveniments de persones vives per avui."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "No hi ha esdeveniments per persones vives per demà."
+
+#~ msgid "No records to display"
+#~ msgstr "No hi ha registres per mostrar"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "En aquest fitxer GEDCOM no hi ha aquest ID."
+
+#~ msgid "No temple - living ordinance"
+#~ msgstr "Sense Temple -' Living Ordinance'"
+
+#~ msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
+#~ msgstr "Normalment, els canvis fets a l'arbre genealògic cal que siguin autoritzats per un moderador. Aquesta opció permet a l'usuari fe-los sense aquest requisit."
+
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
+#~ msgstr[0] "Nota: “viu” es defineix (si es desconeix la mort o l'enterrament) com a finit desprès de %d anys del naixement o naixement calculat."
+#~ msgstr[1] "Nota: “vius” es defineixen (si es desconeix la mort o l'enterrament) com a finits desprès de %d anys del naixement o naixement calculat."
+
+#~ msgid "Nuku’Alofa, Tonga"
+#~ msgstr "Nuku'Alofa, Tonga"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "Nombre de mesos d'ençà el darrer accés per a que un compte d'usuari es consideri inactiu: "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Persones vives de més edat"
+
+#~ msgid "On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality."
+#~ msgstr "En aquest gràfic podeu veure una o més persones al llarg d'una línia de temps horitzontal. Us permet veure com es superposen les vides de diferents persones.<br><br>Podeu afegir-hi persones de forma individual o per grups familiars pels seus ID. La llista anterior us pot recordar com afegir més persones. Podeu esborrar el gràfic en qualsevol moment amb el botó <b>Neteja el gràfic</b>.<br><br>També podeu afegir-hi persones mitjançant la seva recerca per lapse de dates o localitat."
+
+#~ msgid "On this day…"
+#~ msgstr "En tal dia com avui…"
+
+#~ msgid "Online editing"
+#~ msgstr "Edició en línea"
+
+#~ msgid "Orientation"
+#~ msgstr "Orientació"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Altres carpetes… entreu-les"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "Nom del servidor de correu electrònic sortint (SMTP)"
+
+#~ msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "L'extensió PHP “%1$s” és desactivada.  Sense ella les característiques següents no funcionaran: %2$s.  Demaneu a l'administració del servidor que l'activi."
+
+#~ msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
+#~ msgstr "L'extension PHP “%s” és desactivada.  No podeu instalar webtrees mentre no estigui activada.  Demaneu a l'administració del servidor que l'activi."
+
+#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "El paràmetre PHP “%1$s” és desactivat. Sense ell les característiques següents no funcionaran: %2$s.  Demaneu a l'administració del servidor que l'activi."
+
+#~ msgid "Page"
+#~ msgstr "Pàgina"
+
+#~ msgid "Page size"
+#~ msgstr "Mida de la pàgina"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Pares i germans"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Edat del/la pare/mare"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Arbre genealògic"
+
+#~ msgid "Place of LDS baptism"
+#~ msgstr "Indret del bateig mormó"
+
+#~ msgid "Place of LDS child sealing"
+#~ msgstr "Indret del segellament mormó del fill"
+
+#~ msgid "Place of LDS endowment"
+#~ msgstr "Indret de la investidura mormona"
+
+#~ msgid "Place of LDS spouse sealing"
+#~ msgstr "Indret del segellament mormó del cònjuge"
+
+#~ msgid "Place of adoption"
+#~ msgstr "Indret d'adopció"
+
+#~ msgid "Place of blessing"
+#~ msgstr "Indret de Benedicció"
+
+#~ msgid "Place of cremation"
+#~ msgstr "Indret de la incineració"
+
+#~ msgid "Place of emigration"
+#~ msgstr "Lloc d'emigració"
+
+#~ msgid "Place of event"
+#~ msgstr "Lloc de l'esdeveniment"
+
+#~ msgid "Place of immigration"
+#~ msgstr "Lloc d'immigració"
+
+#~ msgid "Place of naturalization"
+#~ msgstr "lLOC DE Nacionalització"
+
+#~ msgid "Place of ordination"
+#~ msgstr "Lloc de l'ordenació"
+
+#~ msgid "Place of residence"
+#~ msgstr "Lloc de residència"
+
+#~ msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.<br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+#~ msgstr "Els indrets han d'entrar-se d'acord amb les normes per a la genealogia. En genealogia, la informació dels indrets es registra de més a menys específica, utilitzant comes per separar els diferents nivells d'indrets. El nivell en què es grava la informació d'indret ha de representar els nivells governamentals o eclesiàstics on es mantenen els registres vitals d'aquest indret.<br><br>Per exemple, un indret com Salt Lake City ha d'escriure's “Sal Lake City, Salt Lake City, Utah, USA”.<br><br>Examinem cada part d'aquest indret: La primera part, “Salt Lake City” és la ciutat o municipi on va ocórrer l'esdeveniment. En alguns països, pot haver-hi municipis o districtes dins d'una ciutat que són prou importants i a tenir en compte. En aquest cas, han de venir abans de la ciutat. La següent part, “Salt Lake” és el comtat. “Utah” és l'Estat, i “USA” és el país. És important tenir en compte cada lloc, perquè els registres genealògics són mantinguts pels estaments governamentals de cada nivell.<br><br>Si desconeixeu el nivell de l'indret, heu de deixar un espai entre les comes. Suposem que, en l'exemple anterior, no sabieu el comtat de Salt Lake City. Heu d'enregistrat això: “Salt Lake City, Utah, USA”. Suposem que només se sap que una persona va néixer a Utah. Caldria introduir la informació d'aquesta manera: “, Utah, USA”.<br><br>Podeu utilitzar el <b>Cerqueu indret</b> per ajudar a trobar indrets que ja existeixen a la base de dades."
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "President’s Office"
+#~ msgstr "Oficina del President"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Imprimir esdeveniments bàsics malgrat que estiguin en blanc?"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabí al-àwwal"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabí al-àwwal"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabí al-àwwal"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabí al-àwwal"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabí al-àkhir"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabí al-àkhir"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabí al-àkhir"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabí al-àkhir"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Esdeveniments recents (&lt; 100 anys)"
+
+#~ msgid "Registry officer"
+#~ msgstr "Oficial del Registre"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "Oficial del Registre"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "Oficial del Registre"
+
+#~ msgid "Religious institution"
+#~ msgstr "Institució religiosa"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Esborra aquesta ubicació?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Blocs de la Secció Dreta"
+
+#~ msgid "SMTP port"
+#~ msgstr "Port SMTP"
+
+#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
+#~ msgstr "Guardeu tots els arbres genealògics al disc, utilitzant la funció “exporta” per a cada un."
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Cercar i/o canviar dades al GEDCOM emprant recerques senzilles o avançades mitjançant patrons."
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Cerqueu persones per posar a la llista d'enllaços."
+
+#~ msgid "Security"
+#~ msgstr "Seguretat"
+
+#~ msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
+#~ msgstr "Seleccioneu un tipus de relació des de la llista. Escollint <b>Padrí</b> vol dir: <i>L'associat és el padrí de la persona activa</i>."
+
+#~ msgid "Select events"
+#~ msgstr "Selecciona esdeveniments"
+
+#~ msgid "Send message"
+#~ msgstr "Envieu un missatge"
+
+#~ msgid "Sender email address"
+#~ msgstr "Adreça de correu electrònic del remitent"
+
+#~ msgid "Server"
+#~ msgstr "Servidor"
+
+#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
+#~ msgstr "Ajusta el nombre de generacions que, per defecte, es mostraran a l'arbre genealògic i al diagrama de descendents."
+
+#~ msgid "Set the maximum number of generations to display on descendancy charts."
+#~ msgstr "Fixa el nombre màxim de generacions a mostrar al diagrama de descendents."
+
+#~ msgid "Set the maximum number of generations to display on pedigree charts."
+#~ msgstr "Fixa el nombre màxim de generacions a mostrar a l'arbre genealògic."
+
+#~ msgid "Set the privacy access level for all dead individuals."
+#~ msgstr "Configura el nivell de privadesa d'accés a dades de persones difuntes."
+
+#~ msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
+#~ msgstr "Posant aquest paràmetre a <b>Sí</b> es mostrarà l'estatus dels codis rituals mormons, a les caixes dels gràfics.<ul><li><b>B</b> - Bateig</li><li><b>E</b> - Investidura</li><li><b>S</b> - Segellament al cònjuge</li><li><b>P</b> - Segellament als Pares</li></ul>Una persona que disposi de tots els rituals ha de tenir <b>BESP</b> imprès desprès del seu nom. Els rituals pendents s'indiquen amb <b>_</b> en lloc de la seva corresponent lletra de codi. Per exemple, <b>BE_</b> indica com a pendents els rituals <b>S</b> i <b>P</b>."
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Contingut de la nota comuna:"
+
+#~ msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
+#~ msgstr "Les notes comunes format de text lliure i apareixen als detalls d'esdeveniment de la pàgina.<br><br>Cada nota compartida pot vincular-se a més d'una persona, família, font o esdeveniment."
+
+#~ msgid "Shared notes found"
+#~ msgstr "Notes comunes localitzades"
+
+#~ msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
+#~ msgstr "Les notes comunes, com les regulars, són text de lliure format. A diferència de les regulars però, cada comuna pot estar vinculada a més d'una persona, família, font o esdeveniment.<br><br>En polsar la icona corresponent, podeu establir un enllaç a una nota comuna existent o crear-ne una de nova i enllaçar-la al mateix temps. Si ja s’ha establert un enllaç a una nota comuna, també podeu editar-ne el contingut.<br><ul><li><b>Enllaç a una nota comuna existent</b> <div style=\"padding-left:20px;\"> Si ja coneixeu l’ID de la nota desitjada, podeu entrar aquest número directament al camp<br><br>Quan polseu la icona <b>Cerqueu notes comunes</b>, podreu buscar pel text de totes les notes existents i, a continuació, escollir-ne una. El nombre d’ID de la nota triada serà introduït automàticament al camp.<br><br>Heu de polsar a <b>Afegir</b> per actualitzar el registre original</div><br></li><li><b>Crear una nova nota comuna</b> <div style=\"padding-left:20px;\">Quan polseu la icona <b> Crear una nova nota comuna</b>, s’obre una nova finestra on podeu introduir-hi el text de la nova nota. Igual que amb les notes regulars, podeu introduir-hi adreces URL.<br><br>En polsar a <b>Desa</b>, podreu veure un missatge amb el número d’ID de la nota comuna de nova creació. Heu de copiar el nou número d’identificació al camp corresponent i desprès polsar en aquest missatge per tancar la finestra d'edició. En tancar la finestra el número d'identificació de nova creació no es copia automàticament.<br><br>Heu de polsar a <b>Afegir</b> per actualitzar el registre original.</div><br></li><li><b>Editar una nota comuna existent</b> <div style=\"padding-left:20px;\">En polsar la icona <b>Edita una nota comuna</b>, s’obre una nova finestra on podeu modificar-hi el text de la nota. Igual que amb les regulars, podeu introduir adreces URL.<br><br>En polsar a <b>Desa</b>, s’actualitzarà el text de la nota. També podeu optar per tancar la finestra i després polsar a <b>Desa</b>.<br><br>Quan canvieu el text d'una nota comuna, el canvi es reflectirà a tot arreu on estigui vinculada. Els nous enllaços que s'estableix després d'haver fet el canvi també utilitzaran el text actualitzat.</div></li></ul>"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Xaban"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "Xaban"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Xaban"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Xaban"
+
+#~ msgid "She "
+#~ msgstr "Ella "
+
+#~ msgid "She died"
+#~ msgstr "Morí el"
+
+#~ msgid "She married"
+#~ msgstr "Casada amb"
+
+#~ msgid "She resided at"
+#~ msgstr "Va viure a"
+
+#~ msgid "She was born"
+#~ msgstr "Nada el"
+
+#~ msgid "She was buried"
+#~ msgstr "Enterrada el"
+
+#~ msgid "She was christened"
+#~ msgstr "Varen batejar-la"
+
+#~ msgid "She was cremated"
+#~ msgstr "Fou incinerada a"
+
+#~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
+#~ msgstr "Cal emprar la base de dades GeoNames per a suggerir noms d'indrets?.<br><br>Si la poseu a <b>Sí</b>, s'interrogarà la base de dades GeoNames per a proporcionar suggeriments per al nom de l'indret que esteu introduïnt. Si la poseu a <b>No</b>, la recerca solament es farà a la base de dades genealògica activa. A mesura que aneu introduïnt més lletres del nom de l'indret, el suggeriment serà més acurat. Aquesta opció pot fer més lenta l'entrada de dades, especialment si la vostra connexió a Internet és lenta.<br><br>La base de dades geogràfica GeoNames és accessible de forma gratuïta. Actualment conté més de 8.000.000 de topònims geogràfics."
+
+#~ msgid "Show acceptable use agreement on “Request new user account” page"
+#~ msgstr "Mostrar la conformitat amb les Normes d'Ús a la pàgina «Sol·licitud d'accés»"
+
+#~ msgid "Show age of parents next to child’s birthdate"
+#~ msgstr "Mostra l'edat dels pares al costat de la data de naixement dels fills"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Mostra tots els indrets en un únic llistat"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Mostrar els fills dels avantpassats?"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "Mostra les persones difuntes"
+
+#~ msgid "Show details"
+#~ msgstr "Mostra els detalls"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Mostra imatges a les caixes"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Mostra els indrets inactius"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Mostra persones nascudes fa més de 100 anys."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Mostra persones nascudes els darrers 100 anys."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Mostra gent que sigui viva o parelles que ambdós siguin vius."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Mostra gent que hagi mort o parelles que ambdós hagin mort."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Mostra gent morta fe més de 100 anys."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Mostra gent morta els darrers 100 anys."
+
+#~ msgid "Show notes?"
+#~ msgstr "Incloure notes?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Mostrar oficis?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Mostrar solament esdeveniments relatius a persones vives?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Mostra solament persones de les que es desconeix el sexe."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Mostrar solament persones, esdeveniments o tot?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Mostra els canvis pendents"
+
+#~ msgid "Show photos?"
+#~ msgstr "Inclore fotografies?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Mostra els indrets jeràrquicament"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Mostra persones/famílies relacionades"
+
+#~ msgid "Show residences?"
+#~ msgstr "Mostrar residències?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Incloure fonts?"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Mostra «fulles»; parelles o persones. Són persones vives però sense fills enregistrats a la base de dades."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Mostra «caps de llinatges»; parelles o persones. Aquestes persones poden anomenar-se també «patriarques». Són persones sense pares enregistrats a la base de dades."
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Mostrant %1$s a %2$s de %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "Germana"
+
+#~ msgid "Social security number"
+#~ msgstr "Número Seguretat Social"
+
+#~ msgid "Son"
+#~ msgstr "Fill"
+
+#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
+#~ msgstr "<br>Les citacions de font poden incloure camps per deixar constància de la qualitat de les dades (primària, secundària, etc) i la data en què l'esdeveniment es va enregistrar a la font. Si no empreu aquests camps, podeu inhabilitar-los quan creeu noves citacions de font."
+
+#~ msgid "Sources to the events"
+#~ msgstr "Fonts del esdeveniments"
+
+#~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
+#~ msgstr "Especifica si els missatges enviats a través de <b>webtrees</b> es poden emmagatzemar a la base de dades. Si s'estableix en <b>Sí</b> els usuaris podran recuperar els seus missatges quan accedeixin a <b>webtrees</b>. Si s'estableix en <b>No</b> els missatges solament seran enviats per correu electrònic."
+
+#~ msgid "Spouse"
+#~ msgstr "Cònjuge"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Cònjuges i fills"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Inici del  lapse de dates de canvi"
+
+#~ msgid "Surname option"
+#~ msgstr "Opció de cognoms"
+
+#~ msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+#~ msgstr "És una finestra desplegable que us mostra els favorits que heu seleccionat a la vostra pàgina. També hi veureu els favorits del GEDCOM actiu, que l'administrador del lloc ha escollit. Polsant un dels favorits us menarà directament a la pàgina d'Informació Individual de la persona corresponent.<br><br>Disposeu d'ajuda per afegir favorits a la vostra pàgina."
+
+#~ msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+#~ msgstr "El Visor Multimèdia pot presentar un enllaç que, polsant-lo, descarregarà el fitxer multimèdia al PC local.<br><br>Podeu fer ocultar aquest enllaç per qüestions de seguretat."
+
+#~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
+#~ msgstr "El camp Tipus es fa servir per entrar informació addicional sobre l'entrada. En molts cassos el camp és de lliure format i hom pot entrar-hi el que li sembli."
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "Se'n ha informat l'Administrador. Tan aviat com us doni permís per accedir, podreu fer-ho amb el nom d'usuari i contrasenya."
+
+#~ msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+#~ msgstr "El Cistell us permet prendre esqueixos (“retalls”) d'aquest arbre genealògic i unir-los en un sol arxiu per a baixar-lo i posteriorment importar-lo al vostre propi programa de genealogia. L'arxiu descarregable es confecciona en format GEDCOM.<br><ul><li>Com prendre retalls?<br>És molt fàcil. Sempre que vegeu un nom que es pugui polsar (persona, família o font) podeu anar a la pàgina de detalls del nom. Allà podreu veure una opció d'<b>Posa-ho al cistell</b>. En polsar-la, disposareu de diverses opcions per descarregar.</li><li>Com descarregar-ho?<br>Un cop tingueu retalls al cistell, podeu descarregar-los només polsant a l'enllaç <b>Descarrega Ara</b>. Seguiu les instruccions i enllaços.</li></ul>"
+
+#~ msgid "The individual to be contacted about technical questions or errors encountered on your site."
+#~ msgstr "La persona a contactar per a qüestions tècniques, errors o problemes amb que es trobin els usuaris."
+
+#~ msgid "The individual to contact about the genealogical data on this site."
+#~ msgstr "La persona a contactar per a qüestions genealògiques relacionades amb aquest lloc."
+
+#~ msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+#~ msgstr "La quantitat de temps després del naixement pot establir-se a la fitxa de Privadesa de la pàgina de configuració “Edat en que s'assumeix que una persona ha mort”."
+
+#~ msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
+#~ msgstr "L'arxiu multimèdia que esteu pujant te, i probablement hauria de tenir, un nom diferent al servidor del que està al vostre equip local. Això és així perquè sovint el nom del fitxer local te un significat per a vós, però és molt menys significatiu pels altres visitants d'aquest lloc. Considereu també la possibilitat que vós i una altra persona intenteu carregar diferents arxius anomenats “maria.jpg”.<br><br>En aquest camp, s'especifica el nou nom del fitxer que s'està carregant. El nom que introduïu aquí també s'utilitzarà per al nom de la miniatura, que podeu carregar per separat o generar-la de forma automàtica. No cal entrar l'extensió de nom d'arxiu (jpg, gif, pdf, doc, etc)<br><br>Deixeu aquest camp en blanc per mantenir el nom original de l'arxiu que pujeu des de l'equip local."
+
+#~ msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
+#~ msgstr "La organització, institució, corporació, persona o qualsevol altre entitat amb autoritat.<br><br>Per exemple, un empleat o una persona o església que administri ritus o esdeveniments o una organització responsable de crear i/o arxivar registres."
+
+#~ msgid "The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>."
+#~ msgstr "El número de port a fer servir per a les connexions al servidor SMTP. Generalment és el port número <b>25</b>."
+
+#~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
+#~ msgstr "El prefix és opcional, però recomanat. Donant als noms de taula un mateix prefix permeteu que diverses aplicacions comparteixin  la mateixa base de dades. Suggerim “wt_”, però pot ésser qualsevol altre."
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "L'expressió regular sembla contenir un error. No pot emprar-se."
+
+#~ msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
+#~ msgstr "Les presentacions es poden seleccionar en tres nivells: usuari, GEDCOM i lloc. La configuració de l'usuari té prioritat sobre la configuració de GEDCOM, que al seu torn té prioritat sobre la configuració del lloc. Seleccionant la “presentació per defecte” a nivell d'usuari regirà el paràmetre del GEDCOM actiu. Seleccionant la “presentació per defecte” a nivell de GEDCOM, regirà la configuració del lloc."
+
+#~ msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
+#~ msgstr "Aquest GEDCOM (arbre genealògic) es va actualitzar per última vegada el #gedcomUpdated#. Hi ha #totalSurnames# cognoms. El primer esdeveniment registrat és el/la #firstEventType# de #firstEventName# el #firstEventYear#. L'esdeveniment més recent és el/la #lastEventType# de #lastEventName# el #lastEventYear#.<br><br>Si teniu algun comentari o suggeriment poseu-vos en contacte amb #contactWebmaster#."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "Aquest GEDCOM fou creat amb <b>%1$s</b> el <b>%2$s</b>."
+
+#~ msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+#~ msgstr "Aquest bloc permet que l'arbre genealògic, el diagrama de descendents o el de rellotge de sorra apareguin a La Meva Pàgina o a la d'inici. Per limitacions d'espai els gràfics sortiran solament a la banda esquerra de la pàgina.<br><br>A la Pàgina d'inici, el tipus de gràfic i la persona arrel els determina l'administrador. A la Meva Pàgina aquestes opcions les determina l'usuari.<br><br>El comportament d'aquests gràfics és idèntic al que tenen quan són cridats pels menús. Polseu la caixa d'una persona per veure més detalls sobre ella."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Aquest bloc mostra els 10 registres més visitats. Cal que el comptador s'hagi activat a la configuració dels paràmetres GEDCOM."
+
+#~ msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
+#~ msgstr "Aquesta casella controla que l'usuari, quan ha accedit, pugui veure i ésser vist per la resta d'usuaris que també la tinguin activada.<br><br>Quan és desmarcada, l'usuari resta invisible pels altres (compta com anònim), però tampoc pot veure qui ha accedit. Quan és marcada, passa just el contrari."
+
+#~ msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+#~ msgstr "Aquest camp us permet introduïr o canviar la ressenya de la font vinculada a aquest esdeveniment. Cal un ID de font. Al costat del camp hi apareix el títol de l'actual ID de font. Feu servir l'enllaç <b>Cerqueu una font</b> per veure el número l'ID d'una ja existent o el <b>Creeu una nova font</b> per una de nova. Per treure qualsevol ressenya, deixeu el camp en blanc."
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Aquest camp controla l'ordre amb el que apareixeran les entrades de PMF.<br><br>No cal que entreu els números seqüencialment. Si deixeu forats a l'esquema de numeració, podeu inserir-hi ítems més endavant. Per exemple, si feu servir els números  1, 6, 11, 16, podeu posteriorment inserir entrades amb els números de seqüència perduts. Es permeten números negatius i el zero que podeu utilitzar-les per inserir entrades davant del primer.<br><br>Quan més d'un ítem té els mateix número de posició, solament se'n veurà un d'ells."
+
+#~ msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
+#~ msgstr "Aquest casella us permet canviar l'any del calendari. Entreu un any i polseu  <b>Entrar</b> per canviar el calendari a aquest any.<br><br><b>Característiques avançades</b> per a <b>D'un any</b><dl><dt><b>Més d'un any</b></dt><dd>Podeu cercar dates en un lapse d'anys.<br><br>Els lapses d'anys son <u>inclusius</u>. Fa que vagin de l' 1 de gener del primer any fins al  31 de desembre del darrer any esmentat. Heus ací alguns exemples de lapses d'anys:<br><br><b>1992-5</b> per a tots els esdeveniments entre 1992 i 1995.<br><b>1972-89</b> per a tots els esdeveniments entre 1972 i 1989.<br><b>1610-759</b> per a tots els esdeveniments entre 1610 i 1759.<br><b>1880-1905</b> per a tots els esdeveniments entre 1880 i 1905.<br><b>880-1105</b> per a tots els esdeveniments entre 880 i 1105.<br><br>Per a veure tots els esdeveniments d'una dècada o centúria determinada, podeu fer servir <b>?</b> en lloc dels darrers dígits. Per exemple, <b>197?</b> per a tots els esdeveniments entre 1970 i 1979 o <b>16??</b> per a tos els esdeveniments entre 1600 i 1699.<br><br>Seleccionant un lapse d'anys el calendari canviarà a la vista anual.</dd></dl>"
+
+#~ msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+#~ msgstr "Aquesta casella us permet entrar números ID de persones o famílies per posar-les al cistell. Un cop fet, sortiran opcions per posar-hi més parents alhora.<br><br>Si desconeixeu el número d'ID, podeu fer una recerca pel nom, polsant la icona representativa d'una persona o família, al costat del botó d'afegir."
+
+#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
+#~ msgstr "És una llista separada per comes de les etiquetes d'esdeveniments GEDCOM que es mostra quan s'afegeix una nova persona. Per exemple, si BIRT és a la llista,  es mostrarà al formulari els camps de data i indret de naixement."
+
+#~ msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
+#~ msgstr "Aquest és un enllaç al vostre propi registre en l'arbre genealògic. Si hi ha un error, poseu-vos en contacte amb un administrador."
+
+#~ msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+#~ msgstr "Aquesta és la llista dels esdeveniments GEDCOM que els vostres usuaris poden afegir a les famílies. Podeu modificar-la traient-ne o posant-ne i personalitzar-los si cal. Els noms que apareixen aquí no han de figurar a la llista  <i>Esdeveniments familiars únics</i>."
+
+#~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
+#~ msgstr "Aquest és el nom del servidor de correu SMTP. Exemple: <b>smtp.foo.bar.com</b>.<br><br>Valors de configuració per alguns servidors de correu electrònic:<br><br><b>Gmail<br></b><br><b>Nom del servidor de correu electrònic sortint (SMTP):</b> smtp.gmail.com<br><b>Port SMTP:</b> 465 o 587<br><b>Connexió de seguretat:</b> SSL<br><br><b>Hotmail<br></b><br><b>Nom del servidor de correu electrònic sortint (SMTP):</b> smtp.live.com<br><b>Port SMTP:</b> 25 o 587<br><b>Connexió de seguretat:</b> TLS<br><br><b>Yahoo Mail Plus (actualment de pagament)<br></b><br><b>Nom del servidor de correu electrònic sortint (SMTP):</b> smtp.mail.yahoo.com<br><b>Port SMTP:</b> 25"
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "Aquest és el nom del servidor SMTP. “localhost” significa que el servei de correu s'està executant al mateix equip que el servidor web."
+
+#~ msgid "This is used in the \"From:\" header when sending mails."
+#~ msgstr "Això s'utilitza en camp de capçalera \"De:\", en l'enviament de correus."
+
+#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
+#~ msgstr "Això s'utilitza al camp de capçalera \"Remitent:\" en l'enviament de correus. Sol ésser el mateix que el camp \"De:\" de la capçalera."
+
+#~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br><br>Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br><br>When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
+#~ msgstr "Aquesta opció fa que <b>webtrees</b> mostri totes les persones que hi ha enregistrades com a que tenen alguna relació amb la persona o família localitzada com a resultat directe de la recerca. El procés invers on totes les persones o famílies es mostrin quan una persona localitzada com a resultat directe de la recerca tingui una relació de parentiu amb aquestes persones o famílies, no és possible<br><br>. Exemple: Suposem que la persona <b>A</b> és padrí a la persona <b>B</b>. Aquesta relació es registra al registre GEDCOM de la persona <b>B</b> per mitjà d'una etiqueta ASSO. No hi ha etiquetes equivalents al registre GEDCOM de la persona <b>A</b>.<br><br> Quan s'estableix aquesta opció a <b>Sí</b> i la llista de resultats de cerca inclou <b>B</b>, <b>A</b> s'inclourà automàticament a causa de l'etiqueta ASSO al registre GEDCOM de <b>B</b>. No obstant això, si la llista de resultats de cerca inclou <b>A</b>, <b>B</b> no s'inclorà automàticament ja que no hi ha etiquetes ASSO trobades al registre GEDCOM de la persona <b>A</b >."
+
+#~ msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
+#~ msgstr "Aquesta opció controla si les notes i les referències de font vinculades a esdeveniments han de mostrar-se a les pestanyes de notes i fonts de la pàgina personal.<br><br>Generalment, les pestanyes de notes i fonts mostren solament les referències que hi ha vinculades directament al registre personal, a la base de dades. Aquest és el <i>nivell 1</i> de notes i referències de font.<br><br>La opció <b>Sí</b> fa que aquestes pestanyes també mostrin notes i referències de font que formen part de diversos esdeveniments al registre personal a la base de dades. Aquest és el <i>nivell 2</i> de notes i referències de font perquè els diversos esdeveniments conformen el nivell 1."
+
+#~ msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
+#~ msgstr "Aquesta opció controla si es mostra als gràfics o no, l'edat dels pares al costat de la data de naixement de llurs fills."
+
+#~ msgid "This option controls whether or not to show the Birth and Death details of an individual on charts."
+#~ msgstr "Aquesta opció controla si es mostren o no als gràfics els detalls de naixement i defunció de les persones."
+
+#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgstr "Aquesta opció controla si es mostra o no la icona del gènere (sexe) de les persones als gràfics.<br><br>Atès que el gènere també s'indica mitjançant el color de les caixes aqueta opció no fa que s'amagui aquesta dada, senzillament estalvia informació duplicada a la caixa."
+
+#~ msgid "This option enables online editing features for this database so that users with Edit privileges may update data online."
+#~ msgstr "Aquesta opció activa les característiques d'edició en línea per a que els usuaris amb prerrogatives d'edició puguin actualitzar dades."
+
+#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
+#~ msgstr "Aquesta opció fixa si l'arbre genealògic es presentarà (per defecte) plantat o apaïsat."
+
+#~ msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+#~ msgstr "Aquesta opció és com la de missatgeria interna <b>webtrees</b>, amb un afegitó. Com a extra, s’envia una còpia del missatge a l'adreça de correu electrònic que heu configurat a la pàgina del compte.  Aquest és el mètode de contacte per defecte."
+
+#~ msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
+#~ msgstr "Aquesta opció activarà tots els ajustaments de privadesa i ocultarà els detalls de les persones vives, tal com estigui definit o modificat a la fitxa de Privadesa de la pàgina de configuració de cada GEDCOM."
+
+#~ msgid "This option will generate thumbnails for all files in the current directory which don't already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br><br>If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links."
+#~ msgstr "Aquesta opció és per a generar miniatures de tots els arxius del directori actual que manquen. És millor fer-ho per aquí que haver d'anar prement l'enllaç  <b>Crea miniatura</b> de cada un d'ells.<br><br>Però si voleu mantenir el control sobre els arxius que han de tenir miniatures i quins no, no podeu utilitzar aquesta opció. No teniu més remei que anar polsant a l'enllaç <b>Crea miniatura</b>."
+
+#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Aquesta opció us permet fer córrer avall els ítems dins de la pàgina de PMF.<br><br>Cada cop que la feu servir, la posició de l'ítem augmentarà un lloc. Podeu obtenir el mateix efecte editant l'ítem en qüestió i canviant el camp de posició. Quan més d'un ítem té el mateix número de posició, solament se'n veurà un d'ells."
+
+#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Aquesta opció us permet fer córrer amunt els ítems dins de la pàgina de PMF.<br><br>Cada cop que la feu servir, la posició de l'ítem es reduirà un lloc. Podeu obtenir el mateix efecte editant l'ítem en qüestió i canviant el camp de posició. Quan més d'un ítem té el mateix número de posició, solament se'n veurà un d'ells."
+
+#~ msgid "This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
+#~ msgstr "Amb aquesta opció es mantenen en registres privats els vincles familiars. Això significa que podeu veure caixes amb el text “informació privada” a l'arbre genealògic i a altres gràfics amb persones privades."
+
+#~ msgid "This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server’s software, as it relates to PHP and <b>webtrees</b>, can be viewed."
+#~ msgstr "Aquesta pàgina ofereix àmplia informació sobre el servidor on es troba allotjat <b>webtrees</b>. S’hi poden veure molts detalls sobre el programari de configuració del servidor, pel que fa a PHP i <b>webtrees</b>."
+
+#~ msgid "This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent."
+#~ msgstr "Aquesta pàgina us permetrà combinar dos registres GEDCOM dins del mateix arxiu GEDCOM.<br><br>Això és útil per a qui hagi fusionat GEDCOMs i ara tingui moltes persones, famílies i fonts duplicats.<br><br>La pàgina consta de tres passos.<br><ol><li>introduir dos identificadors de GEDCOM. L' ID <u>cal</u> que sigui del mateix tipus. No es pot combinar una persona amb una família o una família i una font, per exemple.<br>Al camp <b>Barreja a l'ID</b> introduïu l'ID del registre que esdevindrà el nou registre un cop la fusió es completi.<br>Al camp <b>Barreja des de l'ID</b> introduïu l'ID del registre quina informació es fusionarà amb la del registre de Barreja a l'ID:. Aquest registre serà eliminat després de la fusió.</li><li>Us cal seleccionar quines dades voleu mantenir dels dos registresregistres quan es combinin. Simplement polseu les caselles de verificació al costat de les que voleu conservar.</li><li>Reviseu els resultats de la fusió, tal com ho farieu amb tots els altres canvis realitzats en línia.</li></ol>Algú amb drets per acceptar canvis ha d'autoritzat-los perquè quedin com a permanents."
+
+#~ msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#~ msgstr "Aquest rol té tots els permisos del rol de membre, a més de permís per afegir, canviar o eliminar dades. Qualsevol canvi haurà d'ésser autoritzat per un moderador, llevat que l'usuari tingui l’opció “autoritzar automàticament els canvis” activada."
+
+#~ msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+#~ msgstr "Aquesta secció us permet afegir una nova ressenya de font a l'esdeveniment que esteu editant.<br><br>Al camp font heu d'entrar-hi l'ID de la font. Polseu l'enllaç <b>Creeu una nova font</b> si cal entrar una nova font. Al camp detalls de la ressenya podeu entrar-hi el número de pàgina o altra ressenya que permeti localitzar la informació a la font. El camp text és per a que hi entreu la transcripció del text de la font."
+
+#~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
+#~ msgstr "La memòria límit d'aquest servidor és %dMB i els temps límit de llur CPU és de %d segons."
+
+#~ msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+#~ msgstr "Aquesta és una llista d'esdeveniments separats per espais o una coma, a més a més del Naixement i la Defunció, que voleu que apareguin a les caixes de gràfics tals com l'arbre genealògic. Aquesta llista us obliga a utilitzar les etiquetes d'esdeveniments tal i com es defineixen a l'estàndard GEDCOM 5.5.1. Per exemple, si voleu que es mostri la professió a la caixa, heu d'afegir “OCCU” en aquest camp."
+
+#~ msgid "This text will be appended to each page title.  It will be shown in the browser’s title bar, bookmarks, etc."
+#~ msgstr "Aquest text s'afegirà a cada títol de la pàgina. Es mostra a la barra de títol del navegador, favorits, etc"
+
+#~ msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+#~ msgstr "Aquest valor determina el nombre de generacions de descendents de la persona arrel que apareixeran en format de rellotge de sorra."
+
+#~ msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
+#~ msgstr "Per ajudar a introduir-vos en aquest bloc, hem creat algunes plantilles. Si en seleccioneu una, l'àrea de text contindrà una còpia de l'original que podreu modificar d'acord amb els requeriments del lloc."
+
+#~ msgid "To family"
+#~ msgstr "a una família."
+
+#~ msgid "To individual"
+#~ msgstr "a una persona."
+
+#~ msgid "To source"
+#~ msgstr "a una font."
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "Total de canvis acceptats: "
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Total mde canvis pendents: "
+
+#~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
+#~ msgstr "Transport Layer Security (TLS) i Secure Sockets Layer (SSL) son protocols per al xifratge de dades a Internet.<br><br>TLS 1.0, 1.1 y 1.2 son evolucions estandaritzades de SSL 3.0. TLS 1.0 i SSL 3.1 son equivalents. L'evolució de SSL es realitza amb el nou nom de TLS.<br><br>Si el vostre servidor SMTP requereixl protocol TLS durant l'autenticació, haureu d'escollir l'opció <b>TLS</b>."
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Codi GEDCOM desconegut"
+
+#~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
+#~ msgstr "Utilitza SMTP per enviar correus electrònics de <b>webtrees</b>.<br><br> Aquesta opció requereix l'accés a un servidor de correu SMTP. Quan s'estableix en <b>No</b> <b>webtrees</b> utilitza el sistema de correu electrònic incorporat al PHP d'aquest servidor."
+
+#~ msgid "Use SMTP to send external mails"
+#~ msgstr "Emprar SMTP par a l'enviament del correu extern"
+
+#~ msgid "Use colors"
+#~ msgstr "En color"
+
+#~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
+#~ msgstr "Nom d'usuari i contrasenya per a connectar al servidor SMTP.<br><br>Alguns servidors requereixen connexions autenticades abans d'acceptar correus electrònics de sortida."
+
+#~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
+#~ msgstr "Utilitza una silueta com a imatge quan no s'ha especificat cap imatge com a principal per aquesta persona. Les imatges utilitzades són específiques per al gènere de la persona en qüestió.<br><br><table><tr><td wrap valign=\"middle\"> Quan es desconeix el sexe de la persona, s'utilitzarà aquesta imatge:"
+
+#~ msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move right and Move left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
+#~ msgstr "Aquests botons son per a canviar una entrada d'una llista a una altra.<br><br>Ressalteu l'entrada a moure i polseu un botó per moure-la o copiar-la vers la direcció de la fletxa. Feu servir els botons <b>&raquo;</b> i <b>&laquo;</b> per moure la ressaltada de les llistes de l'esquerra a les de la dreta, o a l'inrevés. Empreu els botons <b>&gt;</b> i <b>&lt;</b> per moure la ressaltada entre la llista Blocs disponibles i la de la seva dreta o esquerra.<br><br>Les entrades de la llista Blocs disponibles no canvien, a no ser que es faci amb els botons Mou a la dreta i Mou a l'esquerra. Això és així perquè el mateix bloc por sortir diversos cops a la mateixa pàgina. El bloc HTML és un bon exemple del perquè pot caldre fer-ho."
+
+#~ msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
+#~ msgstr "Aquests botons son per a reordenar les entrades de la llista. Els blocs sortiran per l'ordre en que s'han llistat.<br><br>Ressalteu l'entrada a moure i polseu el botó per fer-la anar amunt o avall."
+
+#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
+#~ msgstr "Utilitzeu aquest camp per emmagatzemar una versió abreujada d'un títol. S'utilitza en conjunció amb el camp de títol en les fonts. Per defecte <b>webtrees</b>, utilitzarà primer el títol i a continuació el títol abreujat.<br><br> D'acord amb l'especificació GEDCOM 5.5, \"aquesta entrada és per a proporcionar un títol curt utilitzat per a la classificació, presentació i la recuperació de registres d'origen (p. 62). \"<br><br>A <b> webtrees </b> el títol abreujat és opcional, però es requereix en altres programes de genealogia."
+
+#~ msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+#~ msgstr "Feu servir aquest camp per a senyalar que aquesta imatge és la principal o destacada de la persona a la que l'esteu vinculat. És la que es farà servir als gràfics i a la pàgina Individual."
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Feu servir aquesta pàgina per canviar o eliminar membres de la família.<br><br>Per cada membre de la família podeu fer servir l'enllaç Canvia per escollir una altre persona que ocupi el mateix rol a la família. També podeu fer servir l'enllaç Elimina per treure-la.<br><br>Quan hagueu acabat amb els canvis, polseu el botó Desa per guardar-los."
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "Usuari no verificat passats 7 dies."
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "Els noms d'usuari no poden contenir els següents caràcters: &lt; &gt; &quot; %% { } ;"
+
+#~ msgid "Users logged in"
+#~ msgstr "Usuaris connectats"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Idioma de l'usuari"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "El compte de l'usuari ha restat inactiu molt de temps: "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Mostra el registre GEDCOM"
+
+#~ msgid "View day"
+#~ msgstr "D'un dia"
+
+#~ msgid "View details"
+#~ msgstr "Veure detalls"
+
+#~ msgid "View family"
+#~ msgstr "Mostra la família"
+
+#~ msgid "View month"
+#~ msgstr "D'un mes"
+
+#~ msgid "View notes"
+#~ msgstr "Mostra les Notes"
+
+#~ msgid "View person"
+#~ msgstr "Mostra la persona"
+
+#~ msgid "View source"
+#~ msgstr "Mostra la Font"
+
+#~ msgid "View year"
+#~ msgstr "D'un any"
+
+#~ msgid "Visitor options"
+#~ msgstr "Opcions dels visitants"
+
+#~ msgid "Visitors"
+#~ msgstr "Visitants"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=1"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Ara rebreu un correu electrònic de confirmació a l'adreça <b>%s</b>. Us caldrà confirmar la vostra petició seguint les instruccions del correu electrònic. Si no ho feu, passada una setmana la petició serà automàticament rebutjada i us caldria tornar a demanar-la.<br><br>Desprès de seguir les instruccions del correu electrònic de confirmació, caldrà que l'administrador autoritzi la comanda abans de poder accedir planament.<br><br>Per accedir a aquest lloc cal conèixer el nom d'usuari i la contrasenya."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Ara rebreu un correu electrònic de confirmació a l'adreça <b>%s</b>. Us caldrà confirmar la vostra petició seguint les instruccions del correu electrònic. Si no ho feu, passada una setmana la petició ser automàticament rebutjada i us caldria tornar a demanar-la.<br><br>Desprès de seguir les instruccions del correu electrònic, tindreu lliure accés.  Per a fer-ho cal conèixer el nom d'usuari i la contrasenya"
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "Paràmetres del lloc web i etiquetes META"
+
+#~ msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
+#~ msgstr "Quan un usuari es registra per a un compte, s'envia un correu electrònic a la seva adreça amb un enllaç de verificació. Quan polsa aquest enllaç, sabrem que l'adreça de correu electrònic és correcta, i el “correu electrònic verificat” queda seleccionat automàticament."
+
+#~ msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
+#~ msgstr "Quan s'estableix en <b>Sí</b>, apareixerà el següent missatge per sobre dels camps d'entrada a la pàgina «Sol·licitud d'accés»:<div class=\"list_value_wrap\"><div class=\"largeError\">Nota:</div><div class=\"error\">En completar i enviar aquest formulari, accepteu:<ul><li>Protegir la privadesa de les persones vives que figuren al nostre lloc;</li><li>Explicar al quadre de text que apareix a baix la vostra relació de parentiu o proporcionar-nos informació sobre algú que és al nostre al nostre lloc.</li></ul></div></div>"
+
+#~ msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
+#~ msgstr "Quan es marca aquesta casella, el gràfic s'imprimirà amb persones de més edat a la part superior. Quan no és marcada, són els més joves els que van a apareixent a la part superior."
+
+#~ msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
+#~ msgstr "Quan hi ha aquesta opció marcada, podeu veure tots els registres de fonts o notes d'aquesta persona. Si no ho és, les notes o fonts relacionades amb altres esdeveniments d'aquesta persona, no es mostraran."
+
+#~ msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
+#~ msgstr "Quan seleccioneu aquesta opció, es comprimeix en format ZIP una còpia de l'arxiu GEDCOM, abans que comenci la descàrrega. Això reduirà la seva grandària considerablement però, us caldrà descomprimir-lo abans d’utilitzar-lo amb un programa de descompressió compatible (WinZIP, per exemple).<br><br>És una opció útil per a descarregar grans arxius GEDCOM. Altrament hi ha el risc que el temps de descàrrega per a l'arxiu no comprimit excedeixi el màxim temps permès d'execució, amb el que resultaria que l’arxiu no s’hauria descarregat completament. L'opció ZIP pot reduir el temps de descàrrega fins a un 75 per cent."
+
+#~ msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
+#~ msgstr "Quan polseu a l'enllaç <b>Afegiu una nova nota comuna</b> s'obre una finestra. Podeu escollir enllaçar-ne una d'existent, o crear-ne una de nova i enllaçar-la al mateix temps."
+
+#~ msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
+#~ msgstr "Polsant aquí buidareu tot el Cistell Genealògic.<br><br>Si en voleu treure algunes persones, famílies, etc. des del contingut del Cistell Genealògic, podeu fer-ho individualment polsant la icona d'<b>Elimina</b>. <u>No</u> us demana confirmació per a fer-ho. L'acció és immediata."
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Quins altres vincles d'aquesta persona cal posar també al cistell?"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "Qui pot veure imatges sense marca d'aigua digital?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Edat de la muller"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "El cognom de soltera de l'esposa es converteix en un nou nom de pila"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "L'esposa adquireix el cognom del marit"
+
+#~ msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+#~ msgstr "Amb aquesta opció, s’utilitzarà el sistema <b>webtrees</b> de missatgeria interna i no s’enviaran missatges de correu electrònic.  Rebreu només missatges <u>interns</u> dels altres usuaris. Quan un altre usuari del lloc us envii un missatge, apareixerà al bloc de bústia de La Meva Pàgina. Si heu tret aquest bloc de La Meva Pàgina, no veureu cap missatge. Apareixen però tan aviat com configureu La Meva Pàgina per tenir-hi aquest bloc de nou."
+
+#~ msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
+#~ msgstr "Podeu canviar l’aparença de <b>webtrees</b> emprant “presentacions”.  Cada presentació té un estil,  format, color, esquema, etc. diferents."
+
+#~ msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
+#~ msgstr "Polseu aquest botó per a veure si hi ha altres vincles entre ambdues persones. Els anteriors poden veure's polsant l'enllaç del número de vincle."
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "Podeu determinar si aquesta pregunta més freqüent és visible independentment del GEDCOM o si solament ho és per al GEDCOM actiu.<br><ul><li><b>Tot</b>&nbsp;&nbsp;&nbsp;La pregunta més freqüent sortirà a totes les llistes de PMF, independentment del GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;La pregunta més freqüent es mostrarà solament en aqujest GEDCOM actualment actiu.</li></ul>"
+
+#~ msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+#~ msgstr "És possible limitar el nombre de notícies a veure per reduir l'alçada del bloc.<br><br>Aquesta opció determina si hi haurà límits i si es posen d'acord amb l'antiguitat o el nombre de notícies."
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Podeu fer més fàcil la recerca de dones casades enregistrant llur nom de casada.<br>Tanmateix, no totes les dones adopten el cognom de l'espòs, per tant cal que aneu en compte per no introduïr dades incirrectes al GEDCOM."
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "No rebreu cap altre missatge d'aquest lloc. Si no ho confirmeu en el termini de set dies, el compte serà anul·lat."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "El cistell és buit."
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "L'administració del servidor us proporcionarà els detalls de connexió."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "El vostre compte d'usuari no té activat “autoritzar canvis automàticament”. Només podreu canviar registres d’un en un."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Fitxer(s) Zip"
+
+#~ msgid "daughter of"
+#~ msgstr "filla de"
+
+#~ msgctxt "son's wife's father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "consogre"
+
+#~ msgctxt "son's wife's mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "consogra"
+
+#~ msgctxt "son's wife's parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "consogre/a"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "difunta el"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "difunt el"
+
+#~ msgid "first"
+#~ msgstr "primer"
+
+#~ msgctxt "child's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "néta del marit"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "néta del marit"
+
+#~ msgctxt "son's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "néta del marit"
+
+#~ msgctxt "child's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "nét de l'esposa"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "nét de l'esposa"
+
+#~ msgctxt "son's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "nét de l'esposa"
+
+#~ msgid "last"
+#~ msgstr "darrer"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "casada amb"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "casat amb"
+
+#~ msgid "son of"
+#~ msgstr "fill de"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "consogre"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "consogra"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "consogre/a"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_unicode_ci"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "nada el"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "nat el"
+
+#~ msgid "webtrees’ database must be on the same server as PGV’s"
+#~ msgstr "la base de dades webtrees ha d'estar en el mateix servidor que la PGV"

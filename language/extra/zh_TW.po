@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2013-03-09 16:46+0000\n"
-"Last-Translator: Alex <alex@smoc.com.tw>\n"
+"PO-Revision-Date: 2013-08-04 17:04+0000\n"
+"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:38+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:04+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -953,7 +953,7 @@ msgstr ""
 
 #: edit_interface.php:446 modules_v3/relatives/module.php:435
 msgid "Add a child to create a one-parent family"
-msgstr "加入一個子女成為單親家庭"
+msgstr "加入一個子女到單親家庭"
 
 #: includes/functions/functions_charts.php:272
 #: library/WT/Controller/Family.php:129
@@ -1085,7 +1085,7 @@ msgstr "為現有的人加入妻子資料"
 
 #: edit_interface.php:377
 msgid "Add an unlinked person"
-msgstr "加入一個未連結的個人資料"
+msgstr "加入一個未連結的個人"
 
 #: lifespan.php:266 timeline.php:296
 msgid "Add another person to the chart"
@@ -1685,7 +1685,7 @@ msgstr ""
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "資料庫發生不可預期的錯誤"
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -1865,7 +1865,7 @@ msgstr ""
 #: library/WT/Controller/Source.php:106
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "確定要刪除“%s”?"
 
 #: modules_v3/gedcom_favorites/module.php:125
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -1908,7 +1908,7 @@ msgstr ""
 
 #: edit_interface.php:726 help_text.php:1177
 msgid "Associate events with this source"
-msgstr "建立事件與此來源的關連"
+msgstr "事件與此來源的關聯"
 
 #: search.php:131 search.php:199
 msgid "Associates"
@@ -3602,13 +3602,13 @@ msgstr ""
 
 #: admin_site_access.php:297
 msgid "Create a new rule"
-msgstr "建立新的規則"
+msgstr "增加一個新規則"
 
 #. I18N: A source that is not linked to any other record
 #: admin_site_other.php:64 edit_interface.php:668 edit_interface.php:765
 #: includes/functions/functions_edit.php:1188
 msgid "Create a new source"
-msgstr "建立新來源"
+msgstr "新一個來源"
 
 #: help_text.php:1250
 msgid "Create missing thumbnails"
@@ -5286,7 +5286,7 @@ msgstr ""
 #: modules_v3/family_group_report/module.php:35
 #: modules_v3/family_nav/module.php:300
 msgid "Family"
-msgstr "家庭"
+msgstr "家族"
 
 #: family.php:141
 msgid "Family Group Information"
@@ -8859,7 +8859,6 @@ msgstr ""
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
-msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -9613,7 +9612,7 @@ msgstr ""
 #: branches.php:64 library/WT/Controller/Search.php:244
 #: library/WT/MenuBar.php:421 search.php:241 search.php:247
 msgid "Phonetic search"
-msgstr "語音搜索"
+msgstr "發音搜尋"
 
 #: library/WT/Gedcom/Tag.php:333
 msgid "Phonetic title"
@@ -11682,7 +11681,7 @@ msgstr "網站存取原則"
 #: admin_site_config.php:32 admin_site_config.php:58
 #: themes/_administration/header.php:93
 msgid "Site configuration"
-msgstr "網站設定"
+msgstr "網站配置"
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: modules_v3/sitemap/module.php:37
@@ -12399,7 +12398,7 @@ msgstr "使用以下規則，以決定是否訪問者是一個人（允許完全
 
 #: admin_site_access.php:289
 msgid "The following visitors were not recognised, and were assumed to be search engines."
-msgstr "以下訪客不被認可，被認為是搜索引擎。"
+msgstr "無法辨識下列訪客, 假設他們是搜尋引擎"
 
 #: help_text.php:1520
 msgid "The help text has not been written for this item."
@@ -13175,7 +13174,7 @@ msgstr "此來源已被刪除。刪除將需要審閱人進行審查。"
 #: source.php:40
 #, php-format
 msgid "This source has been deleted.  You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "此來源已被刪除。你應該審閱這刪除操作以及%1$s或%2$s"
 
 #: source.php:67
 msgid "This source has been edited.  The changes need to be reviewed by a moderator."
@@ -13185,7 +13184,7 @@ msgstr "此來源已被編輯。這些變化需要審閱人進行審查。"
 #: source.php:58
 #, php-format
 msgid "This source has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "此來源已被編輯。你應該審閱的更改，然後%1$s 或%2$s的他們。"
 
 #: modules_v3/googlemap/help_text.php:39
 msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
@@ -14067,7 +14066,7 @@ msgstr ""
 #: descendancy.php:75 familybook.php:57 fanchart.php:63 hourglass.php:70
 #: modules_v3/googlemap/module.php:724 pedigree.php:47 relationship.php:155
 msgid "View"
-msgstr "查看"
+msgstr "檢視"
 
 #: calendar.php:275 calendar.php:277
 msgid "View Day"
@@ -14626,7 +14625,7 @@ msgstr "您必須提供一個存儲庫名稱"
 
 #: edit_interface.php:678
 msgid "You must provide a source title"
-msgstr "必須提供來源標題"
+msgstr "你必須填寫來源標題"
 
 #: modules_v3/charts/module.php:149
 msgid "You must select an individual and chart type in the block configuration settings."
@@ -18610,3 +18609,139 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "<b> webtrees</b>需要發送的電子郵件，如密碼提醒和網站通知。要做到這一點，就可以使用此伺服器的內建PHP mail功能（這不是永遠可用）或外部SMTP（郵件中繼）服務，您需要提供連接的細節。"
+
+#~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
+#~ msgstr "資料庫伺服器可以存儲許多單獨的資料庫。你需要選擇一個現有的資料庫（由伺服器管理員建立），或建立一個新的（如果您的資料庫用戶帳戶有足夠的權限）。"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "加入一個已存在的人為丈夫"
+
+#~ msgid "Add a new name"
+#~ msgstr "加入新的名字"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "加入一個已存在的人為妻子"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "將其他人添加到圖表"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "允許交換GEDCOM"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "允許在線上儲存訊息"
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "資料庫發生不可預期的錯誤"
+
+#~ msgid "Change family members"
+#~ msgstr "改變家族成員"
+
+#~ msgid "Clear chart"
+#~ msgstr "清除圖表"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "創建一個新的共享的筆記"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "使用註記助理建立一個新的共享"
+
+#~ msgid "Create repository"
+#~ msgstr "建立存儲庫"
+
+#~ msgid "Default theme"
+#~ msgstr "預設佈景主題"
+
+#~ msgid "Do not send messages"
+#~ msgstr "不要寄信"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "編輯原始GEDCOM記錄"
+
+#~ msgid "Edit shared note"
+#~ msgstr "編輯共享的註記"
+
+#~ msgid "From email address"
+#~ msgstr "由誰寄信(E-MAIL)"
+
+#~ msgid "Hit count:"
+#~ msgstr "點擊數:"
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "如果你不知道這些設置，保留預設值。他們可能正常運作。您也可以更改它們。"
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "如果你不想來發送郵件，例如你在單個用戶或單一的電腦上運行webtrees，您可以禁用此功能。"
+
+#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
+#~ msgstr "如果您的伺服器的安全策略允許，您將可以使用<b>webtrees</ B>管理頁面,增加記憶體或CPU時間使用。否則，您將需要您的伺服器管理員聯繫。"
+
+#~ msgid "Individual 1"
+#~ msgstr "個人一"
+
+#~ msgid "Individual 2"
+#~ msgstr "個人二"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "連結這個人到一個已存在的家庭 為此一家庭的子女"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "連結這個人到一個已存在的家庭 為此一家庭的丈夫"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "連結這個人到一個已存在的家庭 為此一家庭的妻子"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "其它資料夾…請輸入"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "外寄SMTP伺服器"
+
+#~ msgid "Port"
+#~ msgstr "埠"
+
+#~ msgid "SMTP port"
+#~ msgstr "SMTP 通訊埠"
+
+#~ msgid "Security"
+#~ msgstr "安全性"
+
+#~ msgid "Select events"
+#~ msgstr "選擇事件"
+
+#~ msgid "Sender email address"
+#~ msgstr "寄件者的電子郵件信箱"
+
+#~ msgid "Server"
+#~ msgstr "伺服器"
+
+#~ msgid "Show details"
+#~ msgstr "顯示詳細資料"
+
+#~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
+#~ msgstr "字首是選擇之一, 但仍是建議使用, 獨特的前綴的表格名稱，你可以讓多個不同的應用程序共用相同資料庫。 建議使用“wt_”，但也可以是修改任何你想要的。"
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "這是SMTP伺服器的名稱。 'localhost'的意思，您的Web服務器在同一台計算機上運行的郵件服務。"
+
+#~ msgid "This is used in the \"From:\" header when sending mails."
+#~ msgstr "這是用來在\"從：\"表頭，在發送郵件時。"
+
+#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
+#~ msgstr "這是在\"發件人：\"表頭發送郵件時使用。它往往是和\"從：\"表頭一樣。"
+
+#~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
+#~ msgstr "此伺服器的記憶體限制是%dMB和它的CPU時間上限是%d秒。"
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "使用此頁可以更改或刪除家庭成員。<br><br>對於每一個家庭成員的，你可以使用“更改”連結，選擇不同的人來填補這個家庭中的角色。您也可以使用“刪除”鏈接刪除該人。<br><br>當你改變家庭成員完成後，單擊“保存”按鈕，保存所做的更改。"
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "你的伺服器管理員將提供你連線細節資訊"

@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2012-09-05 06:11+0000\n"
-"Last-Translator: shahrizan kamarulzaman <shahkamarul@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 16:37+0000\n"
+"Last-Translator: Kilik G <kgkingaran774@gmail.com>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "Language: ms\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:32+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -1867,7 +1867,7 @@ msgstr ""
 #: library/WT/Controller/Source.php:106
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "Adakah anda pasti mahu padam \"%s\"?"
 
 #: modules_v3/gedcom_favorites/module.php:125
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -4887,7 +4887,7 @@ msgstr ""
 #. I18N [...] of a range of addresses
 #: admin_site_access.php:279
 msgid "End IP address"
-msgstr ""
+msgstr "Alamat IP akhir"
 
 #: lifespan.php:288
 msgid "End Year"
@@ -10594,7 +10594,7 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:270
 msgid "Restrict access to the site, using IP addresses and user-agent strings"
-msgstr ""
+msgstr "Sekat akses ke laman web, menggunakan alamat IP dan rentetan ejen pengguna"
 
 #: admin_users.php:228 admin_users.php:430 help_text.php:716
 msgid "Restrict to immediate family"
@@ -11680,7 +11680,7 @@ msgstr ""
 
 #: admin_site_access.php:32 themes/_administration/header.php:97
 msgid "Site access rules"
-msgstr ""
+msgstr "Peraturan akses Laman"
 
 #: admin_site_config.php:32 admin_site_config.php:58
 #: themes/_administration/header.php:93
@@ -11929,7 +11929,7 @@ msgstr ""
 #. I18N [...] of a range of addresses
 #: admin_site_access.php:277
 msgid "Start IP address"
-msgstr ""
+msgstr "Permulaan alamat IP"
 
 #: library/WT/Controller/Descendancy.php:152
 #: library/WT/Controller/Descendancy.php:230
@@ -12398,7 +12398,7 @@ msgstr ""
 
 #: admin_site_access.php:272
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-msgstr ""
+msgstr "Kaedah-kaedah berikut digunakan untuk membuat keputusan sama ada pengunjung adalah seorang manusia (membenarkan akses penuh), sebuah robot enjin carian (membolehkan akses terhad) atau crawler yang tidak diingini (menafikan semua akses)."
 
 #: admin_site_access.php:289
 msgid "The following visitors were not recognised, and were assumed to be search engines."
@@ -13938,7 +13938,7 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: admin_site_access.php:281 admin_site_access.php:296
 msgid "User-agent string"
-msgstr ""
+msgstr "Rentetan ejen pengguna"
 
 #: admin_site_config.php:135 admin_users.php:367 admin_users.php:566
 #: edituser.php:135 help_text.php:741 help_text.php:1499 login.php:153
@@ -14872,7 +14872,7 @@ msgstr ""
 #. I18N: An access rule - allow access to the site
 #: admin_site_access.php:109 admin_site_access.php:300
 msgid "allow"
-msgstr ""
+msgstr "benarkan"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:63
@@ -15226,7 +15226,7 @@ msgstr ""
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:110 admin_site_access.php:301
 msgid "deny"
-msgstr ""
+msgstr "nafikan"
 
 #: modules_v3/googlemap/module.php:312 modules_v3/googlemap/module.php:321
 #: modules_v3/googlemap/module.php:330 modules_v3/googlemap/module.php:338
@@ -17732,7 +17732,7 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: admin_site_access.php:111 admin_site_access.php:302
 msgid "robot"
-msgstr ""
+msgstr "robot"
 
 #. I18N: button label
 #: addmedia.php:745 admin_module_blocks.php:92 admin_module_menus.php:113
@@ -18613,3 +18613,18 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Tambah orang lain ke dalam carta"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Item paling banyak dilihat"
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Paling tertua masih hidup"
+
+#~ msgid "Show details"
+#~ msgstr "Paparkan Perincian"
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Paparkan orang sahaja, peristiwa , atau semua?"

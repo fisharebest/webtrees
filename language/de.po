@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-06-25 05:18+0000\n"
-"X-Generator: Launchpad (build 16677)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -196,6 +196,9 @@ msgid_plural "%d years"
 msgstr[0] "%d Jahr"
 msgstr[1] "%d Jahre"
 
+msgid "%g:%i:%s %a"
+msgstr "%H:%i:%s"
+
 #: includes/functions/functions.php:2162
 #, php-format
 msgid "%s"
@@ -210,7 +213,7 @@ msgstr ""
 #: library/WT/Stats.php:4045
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s v. Chr."
 
 #. I18N: size of file in KB
 #: admin_media.php:404 library/WT/Media.php:201
@@ -441,7 +444,7 @@ msgstr "In diesem Zusammenhang ist <b>GUID</b> ein Akronym für «Globally Uniqu
 
 #: help_text.php:1326
 msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr "<b> Wichtiger Hinweis: </ b> Der Migrationsassistent ist nicht in der Lage, Mediendateien umzuziehen. Die Einrichtung, das Verschieben oder das Kopieren Ihrer Medien-Konfiguration und -Objekte ist im Anschluss an den beendeten Migratsionsassitenten manuell erfoderlich."
+msgstr "<b> Wichtiger Hinweis:</b> Der Migrationsassistent ist nicht in der Lage, Mediendateien umzuziehen. Die Einrichtung, das Verschieben oder das Kopieren Ihrer Medien-Konfiguration und -Objekte ist im Anschluss an den beendeten Migratsionsassitenten manuell erfoderlich."
 
 #: help_text.php:1005
 msgid "<b>No</b> means that authenticated users can see the details of all living people.  <b>Yes</b> means that users can only see the private information of living people they are related to.<br /><br />This option sets the default for all users who have access to this genealogical database.  The Administrator can override this option for individual users by editing the user's account details."
@@ -463,7 +466,7 @@ msgstr "<b>webtrees</b> kann keine Verbindung zur Datenbank herstellen: %s."
 
 #: help_text.php:1183
 msgid "<b>webtrees</b> has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you."
-msgstr "Das Nachrichten-System von <b>webtrees</b> bietet verschiedene Methoden an.<br /><br />Die Sende-Methode wird vom Verwalter ausgewählt. Die Methode zum <b>Nachrichten-Empfang</b> können Sie hier einstellen. Derzeit stehen 4 verschiedene Methoden zur Verfügung."
+msgstr "Das Nachrichten-System von <b>webtrees</b> bietet verschiedene Methoden an.<br><br>Die Sende-Methode wird vom Verwalter ausgewählt. Die Methode zum <b>Nachrichten-Empfang</b> können Sie hier einstellen. Derzeit stehen 4 verschiedene Methoden zur Verfügung."
 
 #: setup.php:274
 #, php-format
@@ -767,7 +770,7 @@ msgstr "Ein Benutzer kann sich nicht anmelden, solange nicht beide Optionen \"E-
 
 #: help_text.php:1023
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Ein Wasserzeichen ist ein auf dem Bild angebrachter Text, um andere vom unerlaubten Kopieren des Bildes abzubringen."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:115
@@ -1682,7 +1685,7 @@ msgstr "Interaktiver Baum, mit allen Vorfahren und Nachkommen einer Person."
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "Ein unerwarteter Datenbankfehler ist aufgetreten."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -1870,7 +1873,7 @@ msgstr "Möchten Sie dieses Lesezeichen wirklich löschen?"
 
 #: edit_changes.php:221
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Möchten Sie wirklich alle Änderungen an diesem Stammbaum rückgängig machen?"
 
 #: library/WT/Stats.php:3783
 msgid "Argentina"
@@ -2343,6 +2346,12 @@ msgctxt "Pedigree"
 msgid "Birth"
 msgstr "Geburt"
 
+msgid "Birth Date range end"
+msgstr "Ende Geburtsdatums-Bereich"
+
+msgid "Birth Date range start"
+msgstr "Beginn Geburtsdatums-Bereich"
+
 #: library/WT/Stats.php:1015 statistics.php:553
 msgid "Birth by country"
 msgstr "Geburten pro Land"
@@ -2626,6 +2635,9 @@ msgstr "Bulgarien"
 #: library/WT/Gedcom/Tag.php:147
 msgid "Burial"
 msgstr "Beerdigung"
+
+msgid "Burial Place contains"
+msgstr "Beerdigungsort enthält"
 
 #: library/WT/Gedcom/Tag.php:531
 msgid "Burial of a brother"
@@ -4026,6 +4038,12 @@ msgstr "Verstorben"
 msgid "Death"
 msgstr "Tod"
 
+msgid "Death Date range end"
+msgstr "Ende Sterbedatums-Bereich"
+
+msgid "Death Date range start"
+msgstr "Beginn Sterbedatums-Bereich"
+
 #: library/WT/Stats.php:1032 statistics.php:561
 msgid "Death by country"
 msgstr "Tode pro Land"
@@ -4619,6 +4637,9 @@ msgstr "Doppelter Benutzername. Ein Benutzer mit dem gewählten Namen existiert 
 #: help_text.php:777
 msgid "E-mail address to be used in the &laquo;From:&raquo; field of e-mails that <b>webtrees</b> creates automatically.<br /><br /><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br /><br />Usually, the &laquo;From:&raquo; field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message's &laquo;From:&raquo; field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 msgstr "Die Mail-Adresse, die für das «Absender:» Feld von automatisch erstellten Mails benutzt werden soll.<br /><br /><b>webtrees</b> erstellt automatische Mails, die den Verwalter darauf aufmerksam machen, dass Änderungen gemacht wurden, und dass diese noch kontrolliert werden müssen. Automatische Mails werden auch erstellt, wenn neue Benutzer einen Zugriffsantrag gemacht haben.<br /><br />Das «Absender:» Feld dieser automatischen Mails ähnelt gewöhnlich <i>Abs: webtrees-noreply@yoursite</i> und das bedeutet dass keine Antwort erwartet ist. Um gültige Mails zu erkennen, erfordern manche Mail-Systeme dass jede Mail-Nachricht eine gültige Absender-Adresse hat. Diese Mail-Systeme erkennen also keine Mails vom Absender <i>webtrees-noreply</i> als gültig."
+
+msgid "Each media item should be associated with one or more person, family, or source records in your database.<br /><br />To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
+msgstr "Jedes Medien-Objekt soll mit mindestens einer Person, Familie, oder Quelle Ihrer Datenbank verbunden sein.<br /><br />Um solche Verbindung herzustellen, können Sie die Datenbank nach der ID-Nummer der gewünschten Person, Familie, oder Quelle zur gleichen Zeit durchsuchen, als Sie das Medien-Objekt erstellen.<br /><br />Es ist aber nicht nötig die Verbindungen sofort herzustellen.  Sie können das jederzeit durch das Betätigen des <b>bearbeiten</b> oder <b>Link hinzufügen</b> Buttons der <b>Medien-Dateien verwalten</b> Seite oder des <b>Multimedia</b> Links der Personen-, Familien-, oder Quellen-Informationsseiten tun."
 
 #: help_text.php:1178
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br /><br />Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, \"Oneida, Idaho, USA\" would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. \"Idaho, USA\" would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -5744,7 +5765,7 @@ msgstr "<b>webtrees</b> benutzt intern den UTF-8 Zeichensatz, der das Bearbeiten
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:424
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "Diese Einstellung zeigt bei Seiten mit mehr als einem Stammbaum eine Auflistung der Stammbäume an, z.B. auf der Hauptseite, bei der Suche, usw."
 
 #: includes/functions/functions_print.php:403
 msgid "For technical support and information contact"
@@ -6290,7 +6311,7 @@ msgstr "Hier können Sie ein Icon bestimmen oder entfernen. Mit dem Link kann di
 
 #: modules_v3/googlemap/help_text.php:44
 msgid "Here the default level for the highest level in the place-hierarchy can be defined. If a place cannot be found this name is added as the highest level (country) and the database is searched again."
-msgstr "Standardwert für oberste Stufe<br /><br />Hier wird der Standardwert der Genauigkeit für die höchste Stufe in der Orte-Hierarchie bestimmt werden. Wenn ein Ort in der Datenbank nicht gefunden wird, wird sein Name als höchste Stufe (Staat) eingetragen und die Datenbank erneut durchsucht."
+msgstr "Standardwert für oberste Stufe<br><br>Hier wird der Standardwert der Genauigkeit für die höchste Stufe in der Orte-Hierarchie bestimmt werden. Wenn ein Ort in der Datenbank nicht gefunden wird, wird sein Name als höchste Stufe (Staat) eingetragen und die Datenbank erneut durchsucht."
 
 #: modules_v3/googlemap/help_text.php:66
 msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
@@ -6523,6 +6544,12 @@ msgstr "Falls eine Person durch einen Spitznamen bekannt ist, der nicht Teil des
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
 msgstr "Falls der erste Vorname nicht auch der Rufname ist, sollte der Vorzugsname mit einem Stern gekennzeichnet werden: <%s>John Paul* /Smith/<%s>"
 
+msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br /><br />When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
+msgstr "Wenn die Medien-Feurwand benutzt wird und hier <b>Ja</b> gewählt ist, sind alle mit Wasserzeichen versehene Bilder auf dem Server bewahrt.<br /><br />Der Vorteil dieser Option ist ein schnelleres Zeigen der Bilder;  der Nachteil ist ein erhöhter Festplatten-Speicherbedarf, da dann jedes Bild zweimal gespeichert werden muss."
+
+msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br /><br />When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
+msgstr "Wenn die Medien-Feurwand benutzt wird und hier <b>Ja</b> gewählt ist, werden alle mit Wasserzeichen versehene Miniaturbilder auf dem Server bewahrt.<br /><br />Der Vorteil dieser Option ist ein schnelleres Zeigen der Medienlisten;  der Nachteil ist ein erhöhter Festplatten-Speicherbedarf, da dann jedes Miniaturbild zweimal gespeichert werden muss."
+
 #: help_text.php:473
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
 msgstr "Wenn ein Name nicht genügend oft vorkommt, erscheint er nicht in der Liste der häufigsten Nachnamen. Hier können Sie solche Namen manuell zur Liste hinzufügen. Wenn Sie mehrere Namen angeben, trennen Sie diese jeweils durch ein Komma. Bitte beachten Sie die Groß- und Kleinschreibung."
@@ -6611,7 +6638,7 @@ msgstr "Falls Ihr Provider es zulässt, können Sie auf der <b> webtrees </ b> K
 #. I18N: Help text for the "Website URL" site configuration setting
 #: help_text.php:827
 msgid "If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
-msgstr "Wenn Ihre Website über mehr als eine URL, z. B. <b> http://www.example.com/webtrees/ </ b> und <b> http://webtrees.example.com/ </ b> erreichbar ist, können Sie die bevorzugte URL angeben. Anfragen für die alternativen URLs werden auf die bevorzugte umgeleitet werden."
+msgstr "Wenn Ihre Website über mehr als eine URL, z. B. <b>http://www.example.com/webtrees/</b> und <b>http://webtrees.example.com/</b> erreichbar ist, können Sie die bevorzugte URL angeben. Anfragen für die alternativen URLs werden auf die bevorzugte umgeleitet werden."
 
 #: library/WT/Gedcom/Tag.php:838
 msgid "Image dimensions"
@@ -6619,7 +6646,7 @@ msgstr "Bildmaße"
 
 #: admin_trees_config.php:711
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Bilder ohne Wasserzeichen"
 
 #: modules_v3/family_nav/module.php:169
 msgid "Immediate Family"
@@ -8226,7 +8253,7 @@ msgstr "Minimale Anzahl von Vorkommen um ein »Häufiger Nachname« zu sein"
 
 #: modules_v3/googlemap/help_text.php:34
 msgid "Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-msgstr "Zoomfaktor der Karte<br /><br />Kleinster und größter Zoomfaktor der Karte. 1 zeigt die gesamte Erde, 15 zeigt einzelne Häuser. Achtung: Stufe 15 wird von Google noch nicht an allen Orten angeboten!"
+msgstr "Zoomfaktor der Karte<br><br>Kleinster und größter Zoomfaktor der Karte. 1 zeigt die gesamte Erde, 15 zeigt einzelne Häuser. Achtung: Stufe 15 wird von Google noch nicht an allen Orten angeboten!"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:207
@@ -8855,8 +8882,8 @@ msgstr "Für morgen stehen keine Ereignisse bevor."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Für den nächsten Tag steht bezüglich lebenden Personen kein Ereignis an."
-msgstr[1] "Für die nächsten %s Tage steht bezüglich lebenden Personen kein Ereignis an."
+msgstr[0] "Es gibt keine Ereignisse für lebende Personen für den nächsten Tag."
+msgstr[1] "Es gibt keine Ereignisse für lebende Personen in den nächsten %s Tagen."
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -10485,7 +10512,7 @@ msgstr "Datensatz ersetzen"
 
 #: search.php:141
 msgid "Replace with"
-msgstr "Ersetzen mit ..."
+msgstr "Ersetzen mit …"
 
 #: modules_v3/batch_update/plugins/search_replace.php:104
 msgid "Replacement text"
@@ -10954,7 +10981,7 @@ msgstr "Wählen diese Option um ihre Ausschnitte in einer ZIP-Datei zu speichern
 
 #: help_text.php:1277
 msgid "Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download."
-msgstr "Diese Option bestimmt, ob Medien-Dateien, die mit den Personen im Sammelbehälter verknüpft sind, auch dem Sammelbehälter hinzugefügt werden sollen.<br /><br />Wenn diese Option angekreuzt ist, wird die Ausgangs-Datei automatisch im ZIP-Format erstellt."
+msgstr "Diese Option bestimmt, ob Medien-Dateien, die mit den Personen im Sammelbehälter verknüpft sind, auch dem Sammelbehälter hinzugefügt werden sollen.<br><br>Wenn diese Option angekreuzt ist, wird die Ausgangs-Datei automatisch im ZIP-Format erstellt."
 
 #: admin_site_merge.php:273
 msgid "Select two GEDCOM records to merge.  The records must be of the same type."
@@ -11455,7 +11482,7 @@ msgstr "Link zu Statistiken-Diagrammen zeigen?"
 
 #: admin_site_config.php:93 help_text.php:423
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Liste der Stammbäume anzeigen"
 
 #: help_text.php:1296 relationship.php:118
 msgid "Show oldest top"
@@ -11772,7 +11799,7 @@ msgstr "Einige genealogische Anwendungen erzeugen GEDCOM-Dateien, die Medien Dat
 
 #: help_text.php:1053
 msgid "Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause <b>webtrees</b> to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it."
-msgstr "Manche Genealogie-Programme brechen Bemerkungen nur an Wortgrenzen um, während andere diese Einträge an beliebiger Stelle umbrechen. Dies kann dazu führen, dass <b> webtrees </ b>, Wörter ineinander fließen läßt. Wird diese Option auf <b> Ja </ b> gesetzt, wird ein Leerzeichen an der Stelle zwischen den Wörtern eingefügt, wo sie während des Imports in der ursprünglichen GEDCOM umgbrochen wurden. Falls Sie die Datei bereits importiert hatten, müssen Sie nach dem Aktivieren dieser Option die betroffene GEDCOM-Datei erneut importieren."
+msgstr "Manche Genealogie-Programme brechen Bemerkungen nur an Wortgrenzen um, während andere diese Einträge an beliebiger Stelle umbrechen. Dies kann dazu führen, dass <b>webtrees</b>, Wörter ineinander fließen läßt. Wird diese Option auf <b>Ja</b> gesetzt, wird ein Leerzeichen an der Stelle zwischen den Wörtern eingefügt, wo sie während des Imports in der ursprünglichen GEDCOM umgbrochen wurden. Falls Sie die Datei bereits importiert hatten, müssen Sie nach dem Aktivieren dieser Option die betroffene GEDCOM-Datei erneut importieren."
 
 #: modules_v3/clippings/module.php:138
 msgid "Some items could not be added due to privacy restrictions"
@@ -12270,12 +12297,12 @@ msgstr "Der Medienbetrachter kann einen Link anzeigen, der eine Übertragung der
 
 #: help_text.php:1312
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
-msgstr "Der PGV- <b> webtrees </ b> -Migrationsassistent unterstützt Administratoren mit einem automatisierten Prozess zur Überführung einer bestehenden PGV-Installation in eine neue <b> webtrees </ b> -Installation. Alle PGV-, GEDCOM- und andere Datenbank-Informationen werden unmittelbar und ausschließlich in Ihrer neuen <b> webtrees </ b> Datenbank abgelegt. Folgende Voraussetzungen müssen erfüllt sein:"
+msgstr "Der PGV-<b>webtrees</b>-Migrationsassistent unterstützt Administratoren mit einem automatisierten Prozess zur Überführung einer bestehenden PGV-Installation in eine neue <b>webtrees</b>-Installation. Alle PGV-, GEDCOM- und andere Datenbank-Informationen werden unmittelbar und ausschließlich in Ihrer neuen <b>webtrees</b> Datenbank abgelegt. Folgende Voraussetzungen müssen erfüllt sein:"
 
 #: save.php:269
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
-msgstr "Der Verwalter von webtrees bei %s hat Ihren Zugang erlaubt.  Sie können sich jetzt unter dem folgenden Link anmelden: %s"
+msgstr "Der Verwalter von webtrees bei %s hat Ihren Zugang erlaubt. Sie können sich jetzt unter dem folgenden Link anmelden: %s"
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:52
@@ -12632,6 +12659,9 @@ msgstr "Der Diagramm-Block ermöglicht Ihnen, Diagramme auf der Begrüßungsseit
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Dieser Block zeigt dem Bearbeiter eine Liste von Datensätzen mit ausstehenden Änderungen, die von einem Moderator genehmigt werden müssen. Es erzeugt auch täglich die E-Mails an die Moderatoren, wenn ausstehende Änderungen vorhanden sind."
 
+msgid "This block will show the 10 records that have been viewed the most.  This block requires that Hit Counters be enabled in the GEDCOM configuration settings."
+msgstr "Dieser Block zeigt die 10 Datensätze an, die am häufigsten aufgerufen wurden. Sie müssen dazu in der GEDCOM Konfiguration die Zähler zunächst aktivieren."
+
 #: help_text.php:1495
 msgid "This checkbox controls your visibility to other users while you're online.  It also controls your ability to see other online users who are configured to be visible.<br /><br />When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
 msgstr "Wenn aktiviert, können andere angemeldete Benutzer sehen, wenn diese Person ebenfalls angemeldet ist und umgekehrt. Wenn Sie nicht möchten dass andere Personen sehen wenn Sie angemeldet sind, sollten Sie die Option deaktivieren, dann sehen Sie aber auch nicht mehr andere angemeldete Benutzer."
@@ -12834,6 +12864,9 @@ msgstr "Diese Liste enthält alle Ereignisse die im Archiv-Datensatz nur <u>einm
 msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list."
 msgstr "Diese Liste enthält alle Ereignisse die im Quellen-Datensatz nur <u>einmal</u> vorkommen dürfen.  Z.B., wenn DATE hier eingegeben ist, darf jeder Quellen-Datensatz nur eine DATE Zeile enthalten. Ereignis-Codes dieser Liste dürfen <u>nicht</u> in der <i>Quellendaten hinzufügen</i> Liste vorkommen.  D.h., jedes Ereignis-Code darf in nur einer Liste vorkommen."
 
+msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br /><br />Configuration values for some e-mail providers:<br /><br /><b>Gmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br /><b>SMTP Port:</b> 465 or 587<br /><b>Secure connection:</b> SSL<br /><br /><b>Hotmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.live.com<br /><b>SMTP Port:</b> 25 or 587<br /><b>Secure connection:</b> TLS<br /><br /><b>Yahoo Mail Plus (currently a paid service)<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br /><b>SMTP Port:</b> 25"
+msgstr "Hier geben Sie den Namen des SMTP Servers ein.  Beispiel: <b>smtp.foo.bar.com</b>.<br /><br />Einige Server benötigen folgende Einträge:<br /><br /><b>Gmail<br /></b><br /><b>Name des SMTP Servers:</b> smtp.gmail.com<br /><b>TCP Port (SMTP):</b> 465 or 587<br /><b>Gesicherte (SSL) Verbindung:</b> SSL<br /><br /><b>Hotmail<br /></b><br /><b>Name des SMTP Servers:</b> smtp.live.com<br /><b>TCP Port (SMTP):</b> 25 or 587<br /><b>Gesicherte (SSL) Verbindung:</b> TLS<br /><br /><b>Yahoo Mail Plus (Gebührenpflichtig)<br /></b><br /><b>Name des SMTP Servers:</b> smtp.mail.yahoo.com<br /><b>TCP Port (SMTP):</b> 25"
+
 #. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:762
 msgid "This is the name of the SMTP server. 'localhost' means that the mail service is running on the same computer as your web server."
@@ -12964,6 +12997,9 @@ msgstr "Diese Bemerkung wurde bearbeitet. Die Änderung bedarf der Zustimmung ei
 #, php-format
 msgid "This note has been edited.  You should review the changes and then %1$s or %2$s them."
 msgstr "Diese Bemerkung wurde bearbeitet. Sie sollten die Änderung prüfen und sie entweder %1$s oder %2$s."
+
+msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br /><br />Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br /><br />When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
+msgstr "Diese Option bewirkt, dass in den Such-Resultaten von <b>webtrees</b> auch Personen gezeigt werden, die mit der gefundenen Person oder Familie irgend eine Beziehung haben. Die umgekehrte Wirkung, wo alle Personen oder Familien die irgend eine Beziehung zu der gefundenen Person haben, ist leider nicht möglich.<br /><br />Zum Beispiel, falls Person <b>A</b> Pate von Person <b>B</b> ist, und dieses durch einen ASSO Tag im Datensatz der Person <b>B</b> angedeutet wurde, wird Person <b>A</b> immer in den Resultaten automatisch gezeigt, wenn Person <b>B</b> darin gezeigt wird.<br /><br />Das Umgekehrte, wo Person <b>B</b> in den Resultaten automatisch gezeigt werden sollte wenn Person <b>A</b> sich darin befindet, ist nicht möglich, da das ASSO Tag im Datensatz der Person <b>A</b> fehlt."
 
 #: help_text.php:862
 msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br /><br />Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual's database record.  These are <i>level 1</i> Notes and Source references.<br /><br />The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual's database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
@@ -13187,7 +13223,7 @@ msgstr "Diese Quelle wurde bearbeitet. Sie sollten die Änderungen prüfen und  
 
 #: modules_v3/googlemap/help_text.php:39
 msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
-msgstr "Genauigkeit der Breiten- und Längengrade<br /><br />Hier wird die Genauigkeit (Nachkommastellen) für die jeweilige Hierarchiestufe bestimmt, wenn ein neuer geografischer Ort eingetragen wird. Beispielweise könnte für ein Land (DEU) die Genauigkeit '1' ( = eine Nachkommastelle) eingestellt werden, wogegen eine Stadt 4 oder 5 Stellen benötigt."
+msgstr "Genauigkeit der Breiten- und Längengrade<br><br>Hier wird die Genauigkeit (Nachkommastellen) für die jeweilige Hierarchiestufe bestimmt, wenn ein neuer geografischer Ort eingetragen wird. Beispielweise könnte für ein Land (DEU) die Genauigkeit '1' ( = eine Nachkommastelle) eingestellt werden, wogegen eine Stadt 4 oder 5 Stellen benötigt."
 
 #: help_text.php:692
 msgid "This text will be appended to each page title.  It will be shown in the browser's title bar, bookmarks, etc."
@@ -13555,6 +13591,9 @@ msgstr "Anzahl Benutzer"
 msgid "Trailer"
 msgstr "Vorschau"
 
+msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br /><br />TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br /><br />If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
+msgstr "Transport Layer Security (TLS) und Secure Sockets Layer (SSL) sind Verschlüsselungsprotokolle zur Datenübertragung im Internet.<br /><br />TLS 1.0, 1.1 und 1.2 sind die standardisierten Weiterentwicklungen von SSL 3.0. TLS 1.0 und SSL 3.1 sind sich gleich. SSL wird also nun unter dem neuen Namen TLS weiterentwickelt.<br /><br />Falls Ihr SMTP-Server das SSL Protokoll während dem Anmelden erfordert, sollten Sie <b>SSL</b> wählen. Falls Ihr SMTP-Server das TLS Protokoll während dem Anmelden erfordert, sollten Sie <b>TLS</b> wählen."
+
 #: library/WT/Stats.php:4009
 msgid "Transylvania"
 msgstr "Transylvanien"
@@ -13837,6 +13876,9 @@ msgstr "PHP Mail zum senden von Nachrichten benutzen"
 msgid "Use RIN number instead of GEDCOM ID"
 msgstr "RIN# anstelle von GEDCOM ID verwenden"
 
+msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br /><br />This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
+msgstr "SMTP zum senden von E-Mails aus <b>webtrees</b> benutzen.<br /><br />Diese Option benötigt Zugang zu SMTP. Wenn Sie <b>Nein</b> einstellen, benutzt <b>webtrees</b> das im PHP eingebaute E-Mail-System des Servers."
+
 #: admin_site_config.php:43
 msgid "Use SMTP to send messages"
 msgstr "SMTP zum senden von Nachrichten benutzen"
@@ -13861,6 +13903,9 @@ msgstr "Benutze Kompaktansicht"
 msgid "Use full source citations"
 msgstr "Vollständige Quellen-Zitate benutzen"
 
+msgid "Use name and password authentication to connect to the SMTP server.<br /><br />Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
+msgstr "Erfordert der SMTP Server die Eingabe eines Nutzernamens und dessen Kennwort?<br /><br />Manche SMTP Server erfordern dass Verbindungen authentifiziert sind, bevor sie das Senden von Mails erlauben."
+
 #: admin_site_config.php:132 help_text.php:746
 msgid "Use password"
 msgstr "Kennwort verwenden"
@@ -13884,6 +13929,9 @@ msgstr "Mit diesen Buttons können Sie Einträge aus einer Liste kopieren oder e
 #: help_text.php:1112
 msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br /><br />Highlight the entry to be moved, and then click a button to move that entry up or down."
 msgstr "Mit diesen Buttons können Sie die Reihenfolge der Blöcke ändern.  Die Blöcke werden auf der Startseite in der selben Reihenfolge dargestellt, wie sie in dieser Liste vorkommen.<br /><br />Um die Reihenfolge zu ändern, wählen Sie zuerst mit <u>einem</u> Klick der <u>linken</u> Maustaste den Block den Sie verschieben möchten.  Danach klicken Sie Buttons so oft wie notwendig um den gewählten Block in der Reihenfolge zu verschieben."
+
+msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br /><br />According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br /><br />In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
+msgstr "Dieses Feld enthält die Abkürzung des Quellen-Titels. Es wird zusammen mit dem vollen Quellen-Titel benutzt. Gewöhnlich benutzt <b>webtrees</b> zuerst den vollen Titel und danach die hier eingegebene Abkürzung.<br /><br />Seite 62 des GEDCOM 5.5 Standards beschreibt dieses Feld so: «This entry is to provide a short title used for sorting, filing, and retrieving source records.» (Dieser Eintrag sorgt für einen kurzen Titel der dem Sortieren, Speichern, und Abfragen von Quellen dient.)<br /><br />Bei <b>webtrees</b> ist der Gebrauch von Titelabkürzungen nicht notwendig; bei anderen Programmen können diese Abkürzungen notwendig sein."
 
 #: help_text.php:400
 msgid "Use this field to signal that this media item is the highlighted or primary item for the person it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
@@ -14193,7 +14241,7 @@ msgstr "Wasserzeichen"
 
 #: help_text.php:1025
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Wasserzeichen sind optional und sind normalerweise nur für Besucher sichtbar."
 
 #: help_text.php:1027
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
@@ -14510,6 +14558,9 @@ msgstr "Sie können das Aussehen von <b> webtrees </ b> mit vorgefertigten Layou
 #: help_text.php:1287
 msgid "You can click this button to see whether there is another relationship path between the two people.  Previously found paths can be displayed again by clicking the link with the path number."
 msgstr "Klicken Sie diesen Button, um zu prüfen, ob es einen weiteren Verwandtschafts-Pfad gibt, der diese beiden Personen verbindet. Zuvor gefundene Pfade können wieder gezeigt werden, indem man die entsprechende Pfad-Nummer klickt."
+
+msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br /><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+msgstr "Sie können bestimmen, ob diese FAQ (oft gestellte Frage) immer sichtbar ist, oder ob sie nur der aktuellen GEDCOM-Datei sichtbar ist.<br /><br /><ul><li><b>ALLE</b>&nbsp;&nbsp;&nbsp;Die FAQ ist in allen FAQ-Listen sichtbar, ohne Rücksicht auf die aktuelle GEDCOM-Datei.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;Die FAQ ist nur in der FAQ-Liste der aktuellen GEDCOM-Datei sichtbar.</li></ul>"
 
 #. I18N: %s is a URL
 #: help_text.php:1168
@@ -18597,7 +18648,7 @@ msgstr "“%s” wurde zu den Favoriten hinzugefügt."
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
@@ -18619,9 +18670,6 @@ msgstr "…"
 #~ msgstr "%1$ss %2$s"
 
 #~ msgid "%H:%i:%s"
-#~ msgstr "%H:%i:%s"
-
-#~ msgid "%g:%i:%s %a"
 #~ msgstr "%H:%i:%s"
 
 #~ msgid "%j %F %Y"
@@ -18866,12 +18914,6 @@ msgstr "…"
 #~ msgid "Binary data object"
 #~ msgstr "Binäres Daten-Objekt"
 
-#~ msgid "Birth Date range end"
-#~ msgstr "Ende Geburtsdatums-Bereich"
-
-#~ msgid "Birth Date range start"
-#~ msgstr "Beginn Geburtsdatums-Bereich"
-
 #~ msgid "Birth Place contains"
 #~ msgstr "Geburtsort enthält"
 
@@ -18886,9 +18928,6 @@ msgstr "…"
 
 #~ msgid "Brother"
 #~ msgstr "Bruder"
-
-#~ msgid "Burial Place contains"
-#~ msgstr "Beerdigungsort enthält"
 
 #~ msgid "Burial place contains"
 #~ msgstr "Beerdigungsort enthält"
@@ -18941,7 +18980,7 @@ msgstr "…"
 #~ msgstr "Klicken um diese Person als Familienhaupt zu wählen."
 
 #~ msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
-#~ msgstr "Dieses Thema muss noch ausführlich beschrieben werden.<br><br>Vorübergehend … Die neue ID-Nummer wird automatisch eingetragen wenn Sie das Link klicken."
+#~ msgstr "Dieses Thema muss noch ausführlich beschrieben werden.<br><br>Vorübergehend … Die neue ID-Nummer wird automatisch eingetragen wenn Sie auf den Link klicken."
 
 #~ msgid "Coat of arms"
 #~ msgstr "Wappen"
@@ -19015,12 +19054,6 @@ msgstr "…"
 #~ msgid "Daughter"
 #~ msgstr "Tochter"
 
-#~ msgid "Death Date range end"
-#~ msgstr "Ende Sterbedatums-Bereich"
-
-#~ msgid "Death Date range start"
-#~ msgstr "Beginn Sterbedatums-Bereich"
-
 #~ msgid "Death Place contains"
 #~ msgstr "Sterbeort enthält"
 
@@ -19082,9 +19115,6 @@ msgstr "…"
 
 #~ msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 #~ msgstr "Die Mail-Adresse, die für das «Absender:» Feld von automatisch erstellten Mails benutzt werden soll.<br><br><b>webtrees</b> erstellt automatische Mails, die den Verwalter darauf aufmerksam machen, dass Änderungen gemacht wurden, und dass diese noch kontrolliert werden müssen. Automatische Mails werden auch erstellt, wenn neue Benutzer einen Zugriffsantrag gemacht haben.<br><br>Das «Absender:» Feld dieser automatischen Mails ähnelt gewöhnlich <i>Abs: webtrees-noreply@yoursite</i> und das bedeutet dass keine Antwort erwartet ist. Um gültige Mails zu erkennen, erfordern manche Mail-Systeme dass jede Mail-Nachricht eine gültige Absender-Adresse hat. Diese Mail-Systeme erkennen also keine Mails vom Absender <i>webtrees-noreply</i> als gültig."
-
-#~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br /><br />To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
-#~ msgstr "Jedes Medien-Objekt soll mit mindestens einer Person, Familie, oder Quelle Ihrer Datenbank verbunden sein.<br /><br />Um solche Verbindung herzustellen, können Sie die Datenbank nach der ID-Nummer der gewünschten Person, Familie, oder Quelle zur gleichen Zeit durchsuchen, als Sie das Medien-Objekt erstellen.<br /><br />Es ist aber nicht nötig die Verbindungen sofort herzustellen.  Sie können das jederzeit durch das Betätigen des <b>bearbeiten</b> oder <b>Link hinzufügen</b> Buttons der <b>Medien-Dateien verwalten</b> Seite oder des <b>Multimedia</b> Links der Personen-, Familien-, oder Quellen-Informationsseiten tun."
 
 #~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
 #~ msgstr "Jedes Medien-Objekt soll mit mindestens einer Person, Familie, oder Quelle Ihrer Datenbank verbunden sein.<br><br>Um solche Verbindung herzustellen, können Sie die Datenbank nach der ID-Nummer der gewünschten Person, Familie, oder Quelle zur gleichen Zeit durchsuchen, als Sie das Medien-Objekt erstellen.<br><br>Es ist aber nicht nötig die Verbindungen sofort herzustellen.  Sie können das jederzeit durch das Betätigen des <b>bearbeiten</b> oder <b>Link hinzufügen</b> Buttons der <b>Medien-Dateien verwalten</b> Seite oder des <b>Multimedia</b> Links der Personen-, Familien-, oder Quellen-Informationsseiten tun."
@@ -19300,14 +19330,8 @@ msgstr "…"
 #~ msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 #~ msgstr "Falls eine Person durch einen Spitznamen bekannt ist, der nicht Teil des formalen Namens ist, sollte dieser in Anführungszeichen gesetzt werden.  z.B.: <%s>John &quot;Nobby&quot; /Clark/<%s>."
 
-#~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br /><br />When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
-#~ msgstr "Wenn die Medien-Feurwand benutzt wird und hier <b>Ja</b> gewählt ist, sind alle mit Wasserzeichen versehene Bilder auf dem Server bewahrt.<br /><br />Der Vorteil dieser Option ist ein schnelleres Zeigen der Bilder;  der Nachteil ist ein erhöhter Festplatten-Speicherbedarf, da dann jedes Bild zweimal gespeichert werden muss."
-
 #~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
 #~ msgstr "Wenn die Medien-Feurwand benutzt wird und hier <b>Ja</b> gewählt ist, sind alle mit Wasserzeichen versehene Bilder auf dem Server bewahrt.<br><br>Der Vorteil dieser Option ist ein schnelleres Zeigen der Bilder;  der Nachteil ist ein erhöhter Festplatten-Speicherbedarf, da dann jedes Bild zweimal gespeichert werden muss."
-
-#~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br /><br />When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
-#~ msgstr "Wenn die Medien-Feurwand benutzt wird und hier <b>Ja</b> gewählt ist, werden alle mit Wasserzeichen versehene Miniaturbilder auf dem Server bewahrt.<br /><br />Der Vorteil dieser Option ist ein schnelleres Zeigen der Medienlisten;  der Nachteil ist ein erhöhter Festplatten-Speicherbedarf, da dann jedes Miniaturbild zweimal gespeichert werden muss."
 
 #~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
 #~ msgstr "Wenn die Medien-Feurwand benutzt wird und hier <b>Ja</b> gewählt ist, werden alle mit Wasserzeichen versehene Miniaturbilder auf dem Server bewahrt.<br><br>Der Vorteil dieser Option ist ein schnelleres Zeigen der Medienlisten;  der Nachteil ist ein erhöhter Festplatten-Speicherbedarf, da dann jedes Miniaturbild zweimal gespeichert werden muss."
@@ -19340,7 +19364,7 @@ msgstr "…"
 #~ msgstr "Wenn Sie diesem Datensatz um eine Notiz ergänzen möchten, ist dies der richtige Ort, es zu tun.<br><br>Klicken Sie einfach auf den Link, dann öffnet sich ein Fenster, und Sie können Ihre Notiz eingeben. Wenn Sie die Eingabe beendet haben, klicken Sie einfach auf den Button unter dem Feld um das Fenster zu schließen. Das ist alles."
 
 #~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
-#~ msgstr "Die Einstellung <b>Ja</b> erlaubt den Besuchern <b>und</b> angemeldeten Benutzern die verwendete GEDCOM-Datei selbst zu wählen, sofern Ihre Konfiguration mehrere GEDCOM-Dateien enthält. <br /><br />Bei Einstellung <b>Nein</b>, können <b>weder</b> Besucher, <b>noch</b> angemeldete Benutzer die GEDCOM-Datei wählen."
+#~ msgstr "Die Einstellung <b>Ja</b> erlaubt den Besuchern <b>und</b> angemeldeten Benutzern die verwendete GEDCOM-Datei selbst zu wählen, sofern Ihre Konfiguration mehrere GEDCOM-Dateien enthält.<br><br>Bei Einstellung <b>Nein</b>, können <b>weder</b> Besucher, <b>noch</b> angemeldete Benutzer die GEDCOM-Datei wählen."
 
 #~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
 #~ msgstr "Falls Ihr Provider es zulässt, können Sie auf der <b>webtrees</b> Konfigurationsseite mehr Speicher oder CPU-Zeit anfordern. Andernfalls müssen Sie sich an Ihren Server-Administrator bzw. Provider wenden."
@@ -19429,7 +19453,7 @@ msgstr "…"
 #~ msgstr "Ehename"
 
 #~ msgid "Married surname"
-#~ msgstr "Nachname nach der Ehe"
+#~ msgstr "Nachname in der Ehe"
 
 #~ msgid "Merge from ID:"
 #~ msgstr "Zusammenfügen mit ID:"
@@ -19673,6 +19697,9 @@ msgstr "…"
 #~ msgid "Server"
 #~ msgstr "Server"
 
+#~ msgid "Server time"
+#~ msgstr "Server Zeit"
+
 #~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
 #~ msgstr "Bestimmt die Anzahl standardmäßig dargestellter Generationen, die in Nachfahrenbaum- und Stammbaum-Darstellungen gleichzeitig gezeigt werden."
 
@@ -19908,9 +19935,6 @@ msgstr "…"
 #~ msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
 #~ msgstr "Der Diagramm-Block ermöglicht Ihnen, Diagramme auf der Begrüßungsseite oder auf der «Mein GedView Portal» Seite zu zeigen. Dieser Block ist für den linken Teil der Seite gedacht, da der rechte Teil sehr schmal ist.<br><br>Verwalter bestimmen die ID-Nummer der Startperson und das Diagramm das auf der Begrüßungsseite dargestellt wird. Für die «Mein webtrees» Seite bestimmt der Benutzer diese Optionen.<br><br>Die Diagramme verhalten sich hier genau wie sie sich auf anderen Seiten verhalten. Wenn Sie den Kasten einer Person klicken, erhalten Sie Details."
 
-#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that Hit Counters be enabled in the GEDCOM configuration settings."
-#~ msgstr "Dieser Block zeigt die 10 Datensätze an, die am häufigsten aufgerufen wurden. Sie müssen dazu in der GEDCOM Konfiguration die Zähler zunächst aktivieren."
-
 #~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
 #~ msgstr "Dieser Block zeigt die 10 Datensätze an, die am häufigsten aufgerufen wurden. Sie müssen dazu in der GEDCOM Konfiguration die Zähler zunächst aktivieren."
 
@@ -19938,9 +19962,6 @@ msgstr "…"
 #~ msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
 #~ msgstr "Diese Liste enthält alle Ereignisse die diesem Familien-Datensatz hinzugefügt werden können.  Sie können diese Liste durch Entfernen oder Hinzufügen von Ereignis-Codes nach Ihren Wünschen ändern.  Ereignis-Codes dieser Liste dürfen <u>nicht</u> in der <i>Einmal vorkommende Familienereignisse</i> Liste vorkommen.  D.h., jedes Ereignis-Code darf in nur einer Liste vorkommen."
 
-#~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br /><br />Configuration values for some e-mail providers:<br /><br /><b>Gmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br /><b>SMTP Port:</b> 465 or 587<br /><b>Secure connection:</b> SSL<br /><br /><b>Hotmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.live.com<br /><b>SMTP Port:</b> 25 or 587<br /><b>Secure connection:</b> TLS<br /><br /><b>Yahoo Mail Plus (currently a paid service)<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br /><b>SMTP Port:</b> 25"
-#~ msgstr "Hier geben Sie den Namen des SMTP Servers ein.  Beispiel: <b>smtp.foo.bar.com</b>.<br /><br />Einige Server benötigen folgende Einträge:<br /><br /><b>Gmail<br /></b><br /><b>Name des SMTP Servers:</b> smtp.gmail.com<br /><b>TCP Port (SMTP):</b> 465 or 587<br /><b>Gesicherte (SSL) Verbindung:</b> SSL<br /><br /><b>Hotmail<br /></b><br /><b>Name des SMTP Servers:</b> smtp.live.com<br /><b>TCP Port (SMTP):</b> 25 or 587<br /><b>Gesicherte (SSL) Verbindung:</b> TLS<br /><br /><b>Yahoo Mail Plus (Gebührenpflichtig)<br /></b><br /><b>Name des SMTP Servers:</b> smtp.mail.yahoo.com<br /><b>TCP Port (SMTP):</b> 25"
-
 #~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
 #~ msgstr "Hier geben Sie den Namen des SMTP Servers ein.  Beispiel: <b>smtp.foo.bar.com</b>.<br><br>Einige Server benötigen folgende Einträge:<br><br><b>Gmail<br></b><br><b>Name des SMTP Servers:</b> smtp.gmail.com<br><b>TCP Port (SMTP):</b> 465 or 587<br><b>Gesicherte (SSL) Verbindung:</b> SSL<br><br><b>Hotmail<br></b><br><b>Name des SMTP Servers:</b> smtp.live.com<br><b>TCP Port (SMTP):</b> 25 or 587<br><b>Gesicherte (SSL) Verbindung:</b> TLS<br><br><b>Yahoo Mail Plus (Gebührenpflichtig)<br></b><br><b>Name des SMTP Servers:</b> smtp.mail.yahoo.com<br><b>TCP Port (SMTP):</b> 25"
 
@@ -19952,9 +19973,6 @@ msgstr "…"
 
 #~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
 #~ msgstr "Dies wird als \"Absender:\" beim Senden von E-Mails benutzt. Es ist häufig das gleiche wie \"Von:\"."
-
-#~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br /><br />Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br /><br />When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
-#~ msgstr "Diese Option bewirkt, dass in den Such-Resultaten von <b>webtrees</b> auch Personen gezeigt werden, die mit der gefundenen Person oder Familie irgend eine Beziehung haben. Die umgekehrte Wirkung, wo alle Personen oder Familien die irgend eine Beziehung zu der gefundenen Person haben, ist leider nicht möglich.<br /><br />Zum Beispiel, falls Person <b>A</b> Pate von Person <b>B</b> ist, und dieses durch einen ASSO Tag im Datensatz der Person <b>B</b> angedeutet wurde, wird Person <b>A</b> immer in den Resultaten automatisch gezeigt, wenn Person <b>B</b> darin gezeigt wird.<br /><br />Das Umgekehrte, wo Person <b>B</b> in den Resultaten automatisch gezeigt werden sollte wenn Person <b>A</b> sich darin befindet, ist nicht möglich, da das ASSO Tag im Datensatz der Person <b>A</b> fehlt."
 
 #~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br><br>Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br><br>When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
 #~ msgstr "Diese Option bewirkt, dass in den Such-Resultaten von <b>webtrees</b> auch Personen gezeigt werden, die mit der gefundenen Person oder Familie irgend eine Beziehung haben. Die umgekehrte Wirkung, wo alle Personen oder Familien die irgend eine Beziehung zu der gefundenen Person haben, ist leider nicht möglich.<br><br>Zum Beispiel, falls Person <b>A</b> Pate von Person <b>B</b> ist, und dieses durch einen ASSO Tag im Datensatz der Person <b>B</b> angedeutet wurde, wird Person <b>A</b> immer in den Resultaten automatisch gezeigt, wenn Person <b>B</b> darin gezeigt wird.<br><br>Das Umgekehrte, wo Person <b>B</b> in den Resultaten automatisch gezeigt werden sollte wenn Person <b>A</b> sich darin befindet, ist nicht möglich, da das ASSO Tag im Datensatz der Person <b>A</b> fehlt."
@@ -20037,17 +20055,11 @@ msgstr "…"
 #~ msgid "Total pending changes: "
 #~ msgstr "Anzahl der anstehenden Änderungen: "
 
-#~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br /><br />TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br /><br />If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
-#~ msgstr "Transport Layer Security (TLS) und Secure Sockets Layer (SSL) sind Verschlüsselungsprotokolle zur Datenübertragung im Internet.<br /><br />TLS 1.0, 1.1 und 1.2 sind die standardisierten Weiterentwicklungen von SSL 3.0. TLS 1.0 und SSL 3.1 sind sich gleich. SSL wird also nun unter dem neuen Namen TLS weiterentwickelt.<br /><br />Falls Ihr SMTP-Server das SSL Protokoll während dem Anmelden erfordert, sollten Sie <b>SSL</b> wählen. Falls Ihr SMTP-Server das TLS Protokoll während dem Anmelden erfordert, sollten Sie <b>TLS</b> wählen."
-
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
 #~ msgstr "Transport Layer Security (TLS) und Secure Sockets Layer (SSL) sind Verschlüsselungsprotokolle zur Datenübertragung im Internet.<br><br>TLS 1.0, 1.1 und 1.2 sind die standardisierten Weiterentwicklungen von SSL 3.0. TLS 1.0 und SSL 3.1 sind sich gleich. SSL wird also nun unter dem neuen Namen TLS weiterentwickelt.<br><br>Falls Ihr SMTP-Server das SSL Protokoll während dem Anmelden erfordert, sollten Sie <b>SSL</b> wählen. Falls Ihr SMTP-Server das TLS Protokoll während dem Anmelden erfordert, sollten Sie <b>TLS</b> wählen."
 
 #~ msgid "Unrecognized GEDCOM code"
 #~ msgstr "Unbekanntes GEDCOM Code"
-
-#~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br /><br />This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
-#~ msgstr "SMTP zum senden von E-Mails aus <b>webtrees</b> benutzen.<br /><br />Diese Option benötigt Zugang zu SMTP. Wenn Sie <b>Nein</b> einstellen, benutzt <b>webtrees</b> das im PHP eingebaute E-Mail-System des Servers."
 
 #~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
 #~ msgstr "SMTP zum senden von E-Mails aus <b>webtrees</b> benutzen.<br><br>Diese Option benötigt Zugang zu SMTP. Wenn Sie <b>Nein</b> einstellen, benutzt <b>webtrees</b> das im PHP eingebaute E-Mail-System des Servers."
@@ -20057,9 +20069,6 @@ msgstr "…"
 
 #~ msgid "Use colors"
 #~ msgstr "Farben benutzen"
-
-#~ msgid "Use name and password authentication to connect to the SMTP server.<br /><br />Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
-#~ msgstr "Erfordert der SMTP Server die Eingabe eines Nutzernamens und dessen Kennwort?<br /><br />Manche SMTP Server erfordern dass Verbindungen authentifiziert sind, bevor sie das Senden von Mails erlauben."
 
 #~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
 #~ msgstr "Erfordert der SMTP Server die Eingabe eines Nutzernamens und dessen Kennwort?<br><br>Manche SMTP Server erfordern dass Verbindungen authentifiziert sind, bevor sie das Senden von Mails erlauben."
@@ -20072,9 +20081,6 @@ msgstr "…"
 
 #~ msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
 #~ msgstr "Mit diesen Buttons können Sie die Reihenfolge der Blöcke ändern.  Die Blöcke werden auf der Startseite in der selben Reihenfolge dargestellt, wie sie in dieser Liste vorkommen.<br><br>Um die Reihenfolge zu ändern, wählen Sie zuerst mit <u>einem</u> Klick der <u>linken</u> Maustaste den Block den Sie verschieben möchten.  Danach klicken Sie Buttons so oft wie notwendig um den gewählten Block in der Reihenfolge zu verschieben."
-
-#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br /><br />According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br /><br />In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
-#~ msgstr "Dieses Feld enthält die Abkürzung des Quellen-Titels. Es wird zusammen mit dem vollen Quellen-Titel benutzt. Gewöhnlich benutzt <b>webtrees</b> zuerst den vollen Titel und danach die hier eingegebene Abkürzung.<br /><br />Seite 62 des GEDCOM 5.5 Standards beschreibt dieses Feld so: «This entry is to provide a short title used for sorting, filing, and retrieving source records.» (Dieser Eintrag sorgt für einen kurzen Titel der dem Sortieren, Speichern, und Abfragen von Quellen dient.)<br /><br />Bei <b>webtrees</b> ist der Gebrauch von Titelabkürzungen nicht notwendig; bei anderen Programmen können diese Abkürzungen notwendig sein."
 
 #~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
 #~ msgstr "Dieses Feld enthält die Abkürzung des Quellen-Titels. Es wird zusammen mit dem vollen Quellen-Titel benutzt. Gewöhnlich benutzt <b>webtrees</b> zuerst den vollen Titel und danach die hier eingegebene Abkürzung.<br><br>Seite 62 des GEDCOM 5.5 Standards beschreibt dieses Feld so: «This entry is to provide a short title used for sorting, filing, and retrieving source records.» (Dieser Eintrag sorgt für einen kurzen Titel der dem Sortieren, Speichern, und Abfragen von Quellen dient.)<br><br>Bei <b>webtrees</b> ist der Gebrauch von Titelabkürzungen nicht notwendig; bei anderen Programmen können diese Abkürzungen notwendig sein."
@@ -20189,9 +20195,6 @@ msgstr "…"
 
 #~ msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
 #~ msgstr "Klicken Sie diesen Button, um zu prüfen, ob es einen weiteren Verwandtschafts-Pfad gibt, der diese beiden Personen verbindet. Zuvor gefundene Pfade können wieder gezeigt werden, indem man die entsprechende Pfad-Nummer klickt."
-
-#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br /><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
-#~ msgstr "Sie können bestimmen, ob diese FAQ (oft gestellte Frage) immer sichtbar ist, oder ob sie nur der aktuellen GEDCOM-Datei sichtbar ist.<br /><br /><ul><li><b>ALLE</b>&nbsp;&nbsp;&nbsp;Die FAQ ist in allen FAQ-Listen sichtbar, ohne Rücksicht auf die aktuelle GEDCOM-Datei.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;Die FAQ ist nur in der FAQ-Liste der aktuellen GEDCOM-Datei sichtbar.</li></ul>"
 
 #~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
 #~ msgstr "Sie können bestimmen, ob diese FAQ (oft gestellte Frage) immer sichtbar ist, oder ob sie nur der aktuellen GEDCOM-Datei sichtbar ist.<br><br><ul><li><b>ALLE</b>&nbsp;&nbsp;&nbsp;Die FAQ ist in allen FAQ-Listen sichtbar, ohne Rücksicht auf die aktuelle GEDCOM-Datei.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;Die FAQ ist nur in der FAQ-Liste der aktuellen GEDCOM-Datei sichtbar.</li></ul>"

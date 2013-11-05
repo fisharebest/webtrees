@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:29+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -468,7 +468,7 @@ msgstr "<b>webtrees</b> getur ekki tengst PhpGedView gagnagrunni: %s."
 
 #: help_text.php:1183
 msgid "<b>webtrees</b> has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you."
-msgstr "<b>webtrees</b> er með nokkra mismunandi tengiliða aðferðir. Kerfisstjórinn ákveður hvaða aðferð verður notuð til að hafa samband við hann. Þú stjórnar því hvaða aðferð verður notuð til að hafa samband við <u<þig</u>. Miðað við vefsíðu uppsetningu, þá gætu sumar tilgreindar aðferðir ekki verið þér aðgengilegar."
+msgstr "<b>webtrees</b> er með nokkra mismunandi tengiliða aðferðir. Kerfisstjórinn ákveður hvaða aðferð verður notuð til að hafa samband við hann. Þú stjórnar því hvaða aðferð verður notuð til að hafa samband við <u>þig</u>. Miðað við vefsíðu uppsetningu, þá gætu sumar tilgreindar aðferðir ekki verið þér aðgengilegar."
 
 #: setup.php:274
 #, php-format
@@ -1687,7 +1687,7 @@ msgstr "Gagnvirkt tré, sem sýnir alla forfeður og afkomendur persónu."
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "Óvænt gagnagrunnsvilla kom upp."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -4318,7 +4318,7 @@ msgstr "Eyddur notandi: "
 
 #: admin_trees_manage.php:196
 msgid "Deleting old genealogy data…"
-msgstr "Eyði eldri ættfræðigögnum..."
+msgstr "Eyði eldri ættfræðigögnum…"
 
 #: library/WT/Controller/Family.php:159
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -8860,8 +8860,8 @@ msgstr "Engir atburðir eru til staðar á morgun."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Engir atburðir fyrir lifandi fólk eru til staðar fyrir næsta %s dag."
-msgstr[1] "Engir atburðir fyrir lifandi fólk eru til staðar fyrir næstu %s daga."
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -12837,7 +12837,7 @@ msgstr "Þetta er listi yfir GEDCOM staðreyndir sem notendur þínir geta eing�
 
 #: help_text.php:918
 msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list."
-msgstr "Þetta er listi yfir GEDCOOM staðreyndir sem notendur þínir geta aðeins bætt við <u>einu sinni</u> við heimildir. Sem dæmi, ef TITL er í þessum lista, þá geta notendur ekki bætt við meira en einu TITL færslu við heimild. Staðreyndaheiti sem birtast í þessum lista mega ekki einnig birtast í listanum <i><Heimild Bæta við Staðreyndum</i>."
+msgstr "Þetta er listi yfir GEDCOOM staðreyndir sem notendur þínir geta aðeins bætt við <u>einu sinni</u> við heimildir. Sem dæmi, ef TITL er í þessum lista, þá geta notendur ekki bætt við meira en einu TITL færslu við heimild. Staðreyndaheiti sem birtast í þessum lista mega ekki einnig birtast í listanum <i>Heimild Bæta við Staðreyndum</i>."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:762
@@ -18602,14 +18602,1544 @@ msgstr "\"%s\" hefur verið bætt við þín eftirlæti."
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:37
 msgctxt "Unknown surname"
 msgid "…"
-msgstr "..."
+msgstr "…"
+
+#~ msgid " but the details are unknown"
+#~ msgstr " en upplýsingar eru óþekktar"
+
+#~ msgid " in "
+#~ msgstr " í "
+
+#~ msgid "%1$s’s %2$s"
+#~ msgstr "%1$s’s %2$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%g:%i:%s %a"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%j. %F %Y"
+
+#~ msgid "%s day"
+#~ msgid_plural "%s days"
+#~ msgstr[0] "%s dagur"
+#~ msgstr[1] "%s dagar"
+
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "%s dagur síðan"
+#~ msgstr[1] "%s dagar síðan"
+
+#~ msgid "%s hour ago"
+#~ msgid_plural "%s hours ago"
+#~ msgstr[0] "%s klukkustund síðan"
+#~ msgstr[1] "%s klukkustundir síðan"
+
+#~ msgid "%s minute ago"
+#~ msgid_plural "%s minutes ago"
+#~ msgstr[0] "%s mínúta síðan"
+#~ msgstr[1] "%s mínútur síðan"
+
+#~ msgid "%s month"
+#~ msgid_plural "%s months"
+#~ msgstr[0] "%s mánuður"
+#~ msgstr[1] "%s mánuðir"
+
+#~ msgid "%s month ago"
+#~ msgid_plural "%s months ago"
+#~ msgstr[0] "%s mánuður síðan"
+#~ msgstr[1] "%s mánuðir síðan"
+
+#~ msgid "%s second ago"
+#~ msgid_plural "%s seconds ago"
+#~ msgstr[0] "%s sekúnda síðan"
+#~ msgstr[1] "%s sekúndur síðan"
+
+#~ msgid "%s three times removed ascending"
+#~ msgstr "%s þrisvar sinnum fjarlægð hækkandi"
+
+#~ msgid "%s three times removed descending"
+#~ msgstr "%s þrisvar sinnum fjarlægð lækkandi"
+
+#~ msgid "%s week"
+#~ msgid_plural "%s weeks"
+#~ msgstr[0] "%s vika"
+#~ msgstr[1] "%s vikur"
+
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "%s ár"
+#~ msgstr[1] "%s ár"
+
+#~ msgid "%s year ago"
+#~ msgid_plural "%s years ago"
+#~ msgstr[0] "%s ár síðan"
+#~ msgstr[1] "%s ár síðan"
+
+#~ msgid "%s%%"
+#~ msgstr "%s%%"
+
+#~ msgid "(aged %s)"
+#~ msgstr "(aldur %s)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(minni aldur en %s)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "(aldur meiri en %s)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(síað frá %s samtals skráningum)"
+
+#~ msgid "(in childhood)"
+#~ msgstr "(í barnæsku)"
+
+#~ msgid "(in infancy)"
+#~ msgstr "(í bernsku)"
+
+#~ msgid "(stillborn)"
+#~ msgstr "(andvana fædd)"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+#~ msgstr "<b>Nei</b> þýðir að staðfestir notendur geti séð upplýsingarnar hjá öllu lifandi fólki. <b>Já</b> þýðir að notendur geta eingöngu séð friðhelgis upplýsingar hjá lifandi fólki sem þau eru skyld.<br><br>Þessi valkostur setur sjálfgefið gildi fyrir alla notendur sem hafa aðgang að þessum ættfræði gagnagrunni. Kerfisstjórinn getur haft að engu þennan valkost fyrir einstaka notendur með því að breyta reikningsupplýsingum notanda."
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b>Vinsamlega athugið:</b> Friðhelgis upplýsingar um fólk á lífi verða eingöngu aðgengilegar fyrir fjölskyldu og nána vini. Þú verður beðin/-n um að staðfesta skyldleika þinn áður en þú færð einhverjar friðhelgisgögn. Stundum kunna upplýsingar um látnar persónur að vera friðhelgar. Ef svo er, þá er það vegna þess að ekki eru nægar upplýsingar þekktar um persónuna til að ákvarða hvort þær eru á lífi eða ekki og við erum líklega ekki með frekari upplýsingar um þessa persónu.<br><br>Áður en þú spyrð spurninga, vinsamlega staðfestu að þú sért með fyrirspurn um rétta persónu með því að athuga dagsetningu, staðsetningu og náin skyldmenni. Ef þú ert að senda breytingar við ættfræðigögn, vinsamlega láttu þá heimildina fylgja með um hvaðan gögnin eru fengin."
+
+#~ msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "<b>webtrees</b> þarf að senda tölvupósta, eins og lykilorða upprifjun og vefsíðu tilkynningar. Til að gera það, þá getur hann notað innri PHP tölvupóst möguleika vefþjónsins (sem ekki er alltaf aðgengilegur) eða ytri SMTP (tölvupóst-flutnings) þjónustu, þar sem þú þarft að útvega viðeigandi tengi upplýsingar."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Velkomin/-n á þessa ættfræði vefsíðu</b></center><br>Aðgangur er leyfilegur fyrir notendur sem eru með reikning og lykilorð að þessari vefsíðu."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Velkomin/-n á þessa ættfræði vefsíðu</b></center><br>Aðgangur að þessari vefsíðu er leyfileg fyrir <u>heimilaða</u> notendur eingöngu.<br><br>Ef þú ert með notandareikning þá getur þú skráð þig inn á þessari síðu.  Ef þú ert ekki með notandareikning, þá getur þú sótt um slíkan með því að smella á viðeigandi krækju hér að neðan.<br><br>Eftir að hafa staðfest þínar upplýsingar, þá mun kerfisstjórinn annað hvort samþykkja eða hafna umsókn þinni um reikning.  Þú færð tölvupóst skilaboð þegar umsókn þín hefur verið samþykkt."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Velkomin/-n á þessa ættfræði vefsíðu</b></center><br>Aðgangur að þessari vefsíðu er leyfileg fyrir <u>fjölskyldumeðlimi eingöngu</u>.<br><br>Ef þú ert með notandareikning þá getur þú skráð þig inn á þessari síðu.  Ef þú ert ekki með notandareikning, þá getur þú sótt um slíkan með því að smella á viðeigandi krækju hér að neðan.<br><br>Eftir að hafa staðfest upplýsingar sem þú hefur látið í té, þá mun kerfisstjórinn annað hvort samþykkja eða hafna beiðni þinni um reikning.  Þú færð tölvupóst skilaboð þegar umsókn þín hefur verið samþykkt."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Velkomin/-n á þessa ættfræði vefsíðu</b></center><br>Aðgangur að þessari vefsíðu er leyfilegur fyrir alla gesti sem eru með notandareikning.<br><br>Ef þú ert með notandareikning, þá getur þú skráð þig inn á þessa síðu.  Ef þú ert ekki með notandareikning, þá getur þú sótt um með því að smella á viðeigandi krækju hér að neðan.<br><br>Eftir að umsókn þín hefur verið staðfest, þá mun kerfisstjóri vefsíðunnar virkja reikninginn þinn.  Þú færð tölvupóst þegar umsókn þín hefur verið samþykkt."
+
+#~ msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
+#~ msgstr "<div class=\"largeError\">Tilkynning:</div><div class=\"error\">Með því að fyllta út og senda þetta eyðublað, þá samþykkir þú:<ul><li>að verja friðhelgi þess fólks sem er á lífi og tilgreint á þessari vefsíðu;</li><li>og í textakassann hér að neðan, að útskýra hverjum þú ert skyldur, eða upplýsa okkur um einhvern sem ætti að vera skráður á vefsíðu okkar.</li></ul></div>"
+
+#~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
+#~ msgstr "Gagnagrunnsþjónn getur vistað marga aðgreinda gagnagrunni. Þú þarft að velja fyrirliggjandi gagnagrunn (stofnaður af kerfisstjóra fyrir vefþjóninn þinn) eða stofna nýjan (ef gagnagrunns notandareikningur þinn hefur nægjanleg réttindi)."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Skýrsla með staðreyndum sem eru með stuðningi frá tiltekinni heimild."
+
+#~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
+#~ msgstr "Notandi mun ekki geta skráð sig inn fyrr en bæði \"tölvupóstur staðfestur\" og \"samþykkt af kerfisstjóra\" valkostirnir hafa verið valdir."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+#~ msgid "Access"
+#~ msgstr "Aðgangur"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Bæta við eiginmanni með því að nota núverandi persónu"
+
+#~ msgid "Add a new associate allows you to link a fact with an associated individual in the site.  This is one way in which you might record that someone was the godfather of another individual."
+#~ msgstr "Aðgerðin að Bæta við nýjum samstarfsaðila gerir þér kleift að tengja staðreynd við tengda persónu á vefsíðunni. Þetta er ein leið sem þú getur notað til að skrá færslu um að einhver sé guðfaðir annarrar persónu."
+
+#~ msgid "Add a new name"
+#~ msgstr "Bæta við nýju nafni"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Bæta eiginkonu við núverandi persónu"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Bæta annarri persónu við grafið"
+
+#~ msgid "Add individuals"
+#~ msgstr "Bæta við fólki"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Bæta eingöngu við þessari persónu."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Bæta við foreldra- og öllum afkomendafærslum saman við þessa fjölskyldufærslu."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Bæta foreldra- og barnafærslum saman við þessa fjölskyldufærslu."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Bæta foreldrafærslum saman við þessa fjölskyldufærslu."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Bæta við þessari persónu og forfeðrum hans í beinan legg."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Bæta þessari persónu, forfeðrum hans í beinan legg og þeirra fjölskyldum."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Bæta við þessari persónu, foreldrum hennar og ættingjum."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Bæta við þessari persónu, maka hans og öllum afkomendum."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Bæta við þessari persónu, maka hans og börnum."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Bæta við þessari heimild og fjölskyldum/fólki henni tengdri."
+
+#~ msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+#~ msgstr "Kerfisstjórar þurfa stundum að hreinsa til og leiðrétta gögn sem send eru af notendum. Sem dæmi, þeir gætu þurft að leiðrétta PLAC staðsetninguna til að innifela landið. Þegar Kerfisstjórar gera slíkar leiðréttingar, þá eru upplýsingar um upprunalegu breytinguna venjulega skipt út. Þetta kann að vera óæskilegt.<br><br>Þegar þessi valkostur er valinn, þá mun <b>webtrees</b> varðveita upprunalegu breytinguna í stað þess að skipta henni út með núverandi setu. Með þennan valkost valinn, þá hafa Kerfisstjórar einnig möguleika á að breyta eða eyða upplýsingunum sem tengdar eru við upprunalega CHAN merkimiðann."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "Eftir að þú hefur skráð þig inn, veldu þá krækjuna «Minn Reikningur» undir valmyndinni «Mín Síða» og fyllið út lykilorðsreitina til að breyta lykilorðinu þínu."
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "Aldur sem hægt er að gera ráð fyrir að persóna sé látin"
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "Aldur foreldra við hliðina á fæðingardegi barns"
+
+#~ msgid "All individuals"
+#~ msgstr "Allt fólk"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "Heimila GEDCOM skiptingu"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "Heimila að skilaboð séu geymd á vefnum"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "Gagnvirkt tré, sem sýnir alla forfeður og afkomendur persónu."
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "Óvænt gagnagrunnsvilla kom upp."
+
+#~ msgid "Ancestors of "
+#~ msgstr "Forfeður af "
+
+#~ msgid "Ancestral file number"
+#~ msgstr "Forfeðra skráarnúmer"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Ertu viss um að þú viljir hætta við allar breytingarnar á þessari GEDCOM?"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
+
+#~ msgid "Available blocks"
+#~ msgstr "Tiltækir Kassar"
+
+#~ msgid "Begin year"
+#~ msgstr "Hefja ár"
+
+#~ msgid "Best man"
+#~ msgstr "Svaramaður"
+
+#~ msgid "Binary data object"
+#~ msgstr "Tvíunda Dagsetningar Hlutur"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "Fæðingarstaður inniheldur"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "Fæðingar- og andlátsupplýsingar á grafi"
+
+#~ msgid "Birth date range end"
+#~ msgstr "Fæðingar Dagsetningasvið endar"
+
+#~ msgid "Birth date range start"
+#~ msgstr "Fæðingar Dagsetningasvið byrjar"
+
+#~ msgid "Brother"
+#~ msgstr "Bróðir"
+
+#~ msgid "Burial place contains"
+#~ msgstr "Grafarstaður inniheldur"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "Sjálfgefið birtir listinn eingöngu þá staði sem hægt er að finna í fjölskyldutrénu þínu. Þú kannt að vera með upplýsingar um aðra staði, t.d. þá sem fluttir voru inn í magni frá ytri skrá. Með því að velja þennan valkost þá birtast allir staðir, einnig þeir sem ekki eru í notkun."
+
+#~ msgid "Change family members"
+#~ msgstr "Breyta fjölskyldumeðlimum"
+
+#~ msgid "Child of "
+#~ msgstr "Barn af "
+
+#~ msgid "Children of "
+#~ msgstr "Börn af "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Velja ættingja"
+
+#~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
+#~ msgstr "Veldu smámyndina sem þú vilt flytja inn. Þó hægt sé að útbúa sjálfkrafa smámyndir fyrir myndir, þá getur verið að þú viljir útbúa þínar eigin smámyndir, sérstaklega fyrir aðrar miðilsgerðir. Sem dæmi, þá getur þú útvegað kyrrmynd frá myndbandi eða ljósmynd af persónunni sem gerði hljóðritunina."
+
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgstr "Velja að birta venjulegan haus fyrir sérsmíðaðan móttöku texta. Þegar notendur þínir skipta um tungumál, þá mun þessi haus birtast í nýja tungumálinu.<br><br>Ef stillt á <b>Já</b>, þá mun hausinn líta svona út:<div class=\"list_value_wrap\"><center><b>Velkomin/-n á þessa ættfræði vefsíðu</b></center><br>Aðgangur er heimilaður fyrir notendur sem eru með reikning og lykilorð að þessari vefsíðu.<br></div>"
+
+#~ msgid "Civil registrar"
+#~ msgstr "Borgarritari"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Borgarritari"
+
+#~ msgctxt "MALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Borgarritari"
+
+#~ msgid "Clear chart"
+#~ msgstr "Hreinsa graf"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "Smellið %s til að velja persónu sem höfuð fjölskyldu."
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Smellið á nafn til að bæta persónu við krækjulista."
+
+#~ msgid "Click this link to remove the individual from the timeline."
+#~ msgstr "Smella á þessa krækju til að fjarlægja persónuna frá tímalínunni."
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Smellið á til að velja persónu sem höfuð fjölskyldu."
+
+#~ msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
+#~ msgstr "Með því að smella á \"+\" táknið þá opnast glugginn GEDFact sameiginleg glósu aðstoð.<br>Sérstaka hjálp er að finna þarna.<br><br>Þegar þú smellir á \"Vista\" hnappinn, þá verður auðkenni sameiginlegu glósunnar límt inn hér."
+
+#~ msgid "Coat of arms"
+#~ msgstr "Skjaldarmerki"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Fordæmisréttur hjúskapar"
+
+#~ msgid "Contact information"
+#~ msgstr "Tengiliða upplýsingar"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Leiðrétta NAFN færslur á sniðinu 'John/DOE/' eða 'John /DOE' sem koma til vegna eldri ættfræði forrita."
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "Fílabeinsströndin"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Stofna nýja sameiginlega glósu"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Stofna nýja sameiginlega glósu með því að nota aðstoðarmann"
+
+#~ msgid "Create repository"
+#~ msgstr "Stofna Geymslu"
+
+#~ msgid "Create user"
+#~ msgstr "Stofna Notanda"
+
+#~ msgid "Custom event"
+#~ msgstr "Sérsniðin atburður"
+
+#~ msgid "Date of LDS baptism"
+#~ msgstr "Dagsetning LDS skírnar"
+
+#~ msgid "Date of LDS child sealing"
+#~ msgstr "Dagsetning á LDS barnastaðfestingu"
+
+#~ msgid "Date of LDS endowment"
+#~ msgstr "Dagsetning á LDS heimanmundi"
+
+#~ msgid "Date of LDS spouse sealing"
+#~ msgstr "Dagsetning á LDS makastaðfestingu"
+
+#~ msgid "Date of adoption"
+#~ msgstr "Dagesetning ættleiðingar"
+
+#~ msgid "Date of blessing"
+#~ msgstr "Dagsetning blessunar"
+
+#~ msgid "Date of cremation"
+#~ msgstr "Dagsetning líkbrennslu"
+
+#~ msgid "Date of emigration"
+#~ msgstr "Dagsetning fólksflutnings"
+
+#~ msgid "Date of event"
+#~ msgstr "Dagsetning atburðar"
+
+#~ msgid "Date of immigration"
+#~ msgstr "Dagsetning fólksinnflutnings"
+
+#~ msgid "Date of naturalization"
+#~ msgstr "Dagsetning á veitingu þegnréttar"
+
+#~ msgid "Date of ordination"
+#~ msgstr "Dagsetning prestvígslu"
+
+#~ msgid "Date of residence"
+#~ msgstr "Dagsetning bústaðar"
+
+#~ msgid "Daughter"
+#~ msgstr "Dóttir"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Dánarstaður inniheldur"
+
+#~ msgid "Death date range end"
+#~ msgstr "Dánar Dagsetningasvið endar"
+
+#~ msgid "Death date range start"
+#~ msgstr "Dánar Dagsetningasvið byrjar"
+
+#~ msgid "Default theme"
+#~ msgstr "Sjálfgefið þema"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Afkomendur af "
+
+#~ msgid "Descent steps"
+#~ msgstr "Lækkunarskref"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgid "Differences"
+#~ msgstr "Mismunur"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Forfeður í beinan legg"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Forfeður og fjölskyldur þeirra í beinan legg"
+
+#~ msgid "Display %s"
+#~ msgstr "Sýna %s"
+
+#~ msgid "Do not seal, previous sealing cancelled"
+#~ msgstr "Innsiglið ekki, fyrra innsigli aflétt"
+
+#~ msgid "Do not seal: unauthorized"
+#~ msgstr "Innsiglið ekki: óheimilt"
+
+#~ msgid "Do not send messages"
+#~ msgstr "Ekki senda skilaboð"
+
+#~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
+#~ msgstr "Hvert miðilsatriði ætti að vera tengt við eina eða fleiri persónur, fjölskyldur eða heimildafærslur í gagnagrunni þínum.<br><br>Til að stofna slíka krækju, þá getur þú slegið inn eða leitað að auðkenni persónunnar, fjölskyldunnar eða heimildinni á sama tíma og þú stofnar miðilsatriðið. Þú getur einnig stofnað krækjuna síðar í gegnum ritstýringar möguleikana á Stjórna Margmiðlunarsíðunni eða með því að bæta við miðilsatriðum í gegnum Bæta við Miðils krækju sem er aðgengileg á Einstaklings, Fjölskyldu eða Heimilda upplýsingasíðum."
+
+#~ msgid "Edit details"
+#~ msgstr "Ritstýra Upplýsingum"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Breyta hrárri GEDCOM færslu"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Breyta sameiginlegri glósu"
+
+#~ msgid "Email address:"
+#~ msgstr "Netfang:"
+
+#~ msgid "End year"
+#~ msgstr "Enda ár"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "Endasvið á breytingar dagsetningum"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Sláið inn Fjölskyldu Auðkenni"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Sláið inn Einstaklings Auðkenni"
+
+#~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
+#~ msgstr "Sláið inn heiti á þessu atriði sem þú ert að breyta. Ef þetta er heiti á margmiðlunar atriði, sláið þá inn lýsandi heiti sem einkennir það fyrir notandann."
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Sláðu inn persónu, fjölskyldu eða heimilda auðkenni"
+
+#~ msgid "Enter associate GEDCOM ID."
+#~ msgstr "Sláið inn fulltrúa GEDCOM auðkenni."
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Sláið inn eða leitið að auðkenni persónunnar, fjölskyldunnar eða uppruna sem þetta miðilsatriði ætti að tengjast."
+
+#~ msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Sláið inn fax númer ásamt land- og svæðiskóða.<br><br>Skiljið þennan reit eftir auðan ef þú vilt ekki láta fax númer fylgja með. Sem dæmi númer í Þýskalandi gæti verið +49 25859 56 76 89 og númer í Bandaríkjunum eða Kanada gæti verið +1 888 555-1212."
+
+#~ msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+#~ msgstr "Sláðu inn veffangið ásamt http://.<br><br>Dæmi um veffang lítur svona út:<b>http://www.webtrees.net/</b> Skiljið þennan reit eftir auðan ef þú vilt ekki láta veffangið fylgja með."
+
+#~ msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
+#~ msgstr "Sláðu inn heimilisfangið í reitinn alveg eins og þú myndir skrifa það á umslag.<br><br>Skildu þennan reit eftir auðan ef þú vilt ekki skrá heimilisfang."
+
+#~ msgid "Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address."
+#~ msgstr "Sláið inn netfangið.<br><br>Dæmi um netfang lítur svona út:<b>name@hotmail.com</b> Skiljið þennan reit eftir auðan ef þú vilt ekki láta netfang fylgja með."
+
+#~ msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+#~ msgstr "Sláið inn takmarkandi gildi hér.<br><br>Ef þú hefur valið að takmarka birtingu fréttagreina miðað við aldur, hvaða grein sem er eldri en þeir fjöldi daga sem settir eru inn hér verður ekki birt. Ef þú hefur valið að takmarka birtingu fréttagreina með tölu, þá munu eingöngu tilgreindur fjöldi nýlegra greina, raðað eftir aldri, verða birta. Þær greinar sem eftir eru verða ekki birtar.<br><br>Með því að slá inn núll hérna mun gera takmörkun óvirka, sem veldur því að allar fréttagreinar verða birtar."
+
+#~ msgid "Enter the name of the cemetery or other resting place where individual is buried."
+#~ msgstr "Sláið inn heiti á kirkjugarði eða öðrum hvíldarstað þar sem einstaklingurinn er grafinn."
+
+#~ msgid "Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Sláið inn símanúmerið ásamt lands- og svæðiskóða.<br><br>Skiljið þennan reit eftir auðan ef þú vilt ekki að símanúmerið fylgi með. Sem dæmi, númer í Þýskalandi gæti verið +49 25859 56 76 89 og númer í Bandaríkjunum eða Kanada gæti verið +1 888 555-1212."
+
+#~ msgid "Entry text:"
+#~ msgstr "Textarfærsla:"
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "Framlengja friðhelgi fyrir látið fólk"
+
+#~ msgid "External objects"
+#~ msgstr "Ytri hlutir"
+
+#~ msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+#~ msgstr "SOS eru listar yfir spurningar og svör sem gera þér kleift að útskýra vefsíðureglur, stefnu og leiðbeiningar fyrir þína gesti. Spurningar eru venjulega tengdar leynd, höfundarétti, notendareikningum, óheppilegu innihaldi, kröfum heimilda tilvísana o.s.frv."
+
+#~ msgid "Facts for family records"
+#~ msgstr "Staðreyndir fyrir fjölskyldufærslur"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "Staðreyndir fyrir einstaklingsfærslur"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "Staðreyndir fyrir geymslufærslur"
+
+#~ msgid "Facts for source records"
+#~ msgstr "Staðreyndir fyrir heimildafærslur"
+
+#~ msgid "Family group information"
+#~ msgstr "Fjölskyldu Hópa Upplýsingar"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Fjölskyldutré úrklippukarfa"
+
+#~ msgid "Family with husband"
+#~ msgstr "Fjölskylda með eiginmanni"
+
+#~ msgid "Family with wife"
+#~ msgstr "Fjölskylda með eiginkonu"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Fæðingarstaður föðurs - (Chapman snið)"
+
+#~ msgid "Father’s age"
+#~ msgstr "Aldur föður"
+
+#~ msgid "Font"
+#~ msgstr "Leturgerð"
+
+#~ msgid "For LDS ordinances, this field records the temple where it was performed."
+#~ msgstr "Fyrir LDS reglugerð, þessi reitur skrásetur musterið þar sem það var framkvæmt."
+
+#~ msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
+#~ msgstr "Sem dæmi, ef þú tilgreinir slóðalengd upp á 2, þá mun persónan geta séð sonarson/dótturson sinn (barn, barn), frænda/frænku (foreldri, systkini) sína, stjúpdóttur sína (maki, barn) en ekki fyrsta frænda/frænku sína (foreldri, sysktkini, barn)."
+
+#~ msgid "Foster child"
+#~ msgstr "Fósturbarn"
+
+#~ msgid "Foster father"
+#~ msgstr "Fósturfaðir"
+
+#~ msgid "Foster mother"
+#~ msgstr "Fósturmóðir"
+
+#~ msgid "From email address"
+#~ msgstr "Frá netfangi"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "GEDCOM tölfræði"
+
+#~ msgid "Gedcom"
+#~ msgstr "Gedcom"
+
+#~ msgid "Generation "
+#~ msgstr "Kynslóð "
+
+#~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#~ msgstr "Gefur notendum kost á að velja þeirra eigin þema frá valmynd.<br><br>Jafnvel með þennan valkost valin þá er ekki víst að núverandi virkt þema bjóði upp á slíka valmynd. Til að vera virkur, þá þarf þessi valkostur að valmöguleikinn <b>Leyfa notendum að velja þeirra eigin þema</b> að vera einnig fastsettur."
+
+#~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+#~ msgstr "Gefa gestum kost á að skrá sig sjálfir fyrir reikning á vefsíðunni.<br><br>Gesturinn mun fá skilaboð í tölvupósti með kóða til að staðfesta umsókn hans fyrir reikningi. Eftir staðfestingu mun vefstjórin þurfa að samþykkja skráninguna áður en hún verður virk."
+
+#~ msgid "He "
+#~ msgstr "Hann "
+
+#~ msgid "He died"
+#~ msgstr "Hann dó"
+
+#~ msgid "He married"
+#~ msgstr "Hann giftist"
+
+#~ msgid "He resided at"
+#~ msgstr "Hann var með búsetu á"
+
+#~ msgid "He was born"
+#~ msgstr "Hann var fæddur"
+
+#~ msgid "He was buried"
+#~ msgstr "Hann var grafinn"
+
+#~ msgid "He was christened"
+#~ msgstr "Hann var skírður"
+
+#~ msgid "He was cremated"
+#~ msgstr "Hann var líkbrenndur"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Halló %s …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Halló %s …<br>Takk fyrir skráninguna þína."
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Halló Kerfissstjóri …"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Starfsheiti hennar var"
+
+#~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
+#~ msgstr "Hér getur þú bætt við staðreynd við færsluna sem er verið að ritstýra.<br><br>Veljið fyrst staðreynd úr flettilistanum, smelli síðan á <b>Bæta við</b> hnappinn. Allar mögulegar staðreyndir sem þú getur bætt við gagnagrunninn er í þeim flettilista."
+
+#~ msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+#~ msgstr "Hér getur þú bætt við heimildar <b>Tilvísun</b> við þessa færslu.<br><br>Smelltu á þessa krækju, þá opnast gluggi og þú getur valið heimildina frá listanum (Finna auðkenni) eða stofnað nýja heimild og síðan bætt við Tilvísun.<br><br>Að bæta við heimildum er mikilvægur þáttur í ættfræði vegna þess að það gerir öðrum rannsakendum kleift að staðfesta hvar þú fékkst þínar upplýsingar."
+
+#~ msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
+#~ msgstr "Hér getur þú valið á milli tveggja gerða á birtingu staðarheita í stigveldinu. Ef Já er valið þá hefur staðurinn stutt heiti eða raunverulegt stigheiti, ef Nei - Fullt heiti.<br><b>Dæmi:<br>Fullt heiti:</b>Chicago, Illinois, USA<br><b>Stutt heiti:</b>Chicago<br><b>Fullt heiti:</b>Illinois, USA<br><b>Stutt heiti:</b>Illinois"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "Fela &amp; sýna"
+
+#~ msgid "His occupation was"
+#~ msgstr "Starfsheiti hans var"
+
+#~ msgid "Hit count:"
+#~ msgstr "Fjöldi heimsókna:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Aldur eiginmanns"
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Ef miðils eldveggurinn er virkur, ættu þá afrit af vatnsmerktum myndum í fullri stærð að vistast á vefþjóninum til viðbótar við sömu myndir án vatnsmerkja?<br><br>Þegar stillt er á <b>Já</b>, þá munu vatnsmerktar myndir í fullri stærð birtast hraðar á kostnað hærri krafna um diskarými á vefþjóninum."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Ef miðils eldveggurinn er virkur, ættu þá afrit af vatnsmerktum smámyndum að vistast á vefþjóninum til viðbótar við sömu smámyndir án vatnsmerkja?<br><br>Þegar stillt er á <b>Já</b>, þá munu vatnsmerktar smámyndir birtast hraðar á kostnað hærri krafna um diskarými á vefþjóninum."
+
+#~ msgid "If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don't watermark the thumbnails."
+#~ msgstr "Ef Miðils Eldveggurinn er virku, ættu þá smámyndi að vera vatnsmerktar? Miðilslistinn þinn mun hlaðast inn hraðar ef þú vatnsmerkir ekki smámyndir."
+
+#~ msgid "If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here."
+#~ msgstr "Ef Miðils Eldveggurinn er virkur, þá munu notendur sjá vatnsmerki ef þeir eru ekki forréttindastigið sem tilgreint er hér."
+
+#~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+#~ msgstr "Ef þessi valkostur <b>Leyfa gestum að óska eftir skráningu reiknings</b> er virkur þá stjórnar þessi stilling því hvort að kerfisstjóri þurfi að samþykkja skráninguna.<br><br>Með því að stilla þetta á <b>Já</b> þá þurfa allir notendur fyrst að sannreyna sjálfa sig og síðan að fá samþykki kerfisstjóra áður þeir geta skráð sig inn. Með þessa stillingu á <b>Nei</b>, þá mun <b>Notandi samþykktur af kerfisstjóra</b> merkireiturinn sjálfvirkt merkjast þegar notendur staðfesta reikninga sína, sem heimilar innskráningu strax í kjölfarið án aðkomu kerfisstjóra."
+
+#~ msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+#~ msgstr "Ef þessi persóna hefur einhverja atburði aðra en Andlát, Jarðaför eða Líkbrennslu sem eru nýlegri en þessi fjöldi ára, þá er hann talinn vera á \"lifandi\". Fæðingardagar barna eru taldir vera slíkir atburðir í þessum tilgangi."
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Ef þú óskaðir ekki eftir reikning, þá getur þú einfaldlega eytt þessum skilaboðum."
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "Ef þú veist ekki um þessar stillingar, notaðu þá sjálfgefin gildi. Þau kunna að virka. Þú getur breytt þeim síðar."
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "Ef þú vilt ekki senda tölvupóst, sem dæmi þegar þú keyrir webtrees með aðeins einum notanda eða á sjálfstæðri tölvu, þá getur þú afvirkjað þenna möguleika."
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "Ef þú ert með mikinn fjölda af óvirkum stöðum, þá getur myndun listans verið hæg."
+
+#~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
+#~ msgstr "Ef þú ert með glósu til að bæta við þessa færslu, þá getur þú gert það hér.<br><br>Smelltu á þessa krækju, gluggi mun þá opnast og þú getur slegið inn þína glósu. Þegar þú hefur lokið við innsláttinn, smelltu þá bara á hnappinn hér fyrir neðan kassann, lokaðu glugganum og þá er þetta komið."
+
+#~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
+#~ msgstr "Ef þú ert með umhverfi með mörgum GEDCOM og með því að stilla þetta gildi á <b>Já</b> gerir þínum vefsíðu gestum <u>og</u> notendum að hafa þann valkost að breyta GEDCOM. Með því að stilla á <b>Nei</b> þá verður GEDCOM skipting óvirk fyrir bæði gesti <u>og</u> innskráða notendur."
+
+#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
+#~ msgstr "Ef öryggisstefna vefþjónsins leyfir það, þá getur þú óskað eftir auknu minni eða örgjörvatíma með því að nota <b>webtrees</b> kerfisstjórasíðuna. Annars þarftu að hafa samband við kerfisstjórann fyrir vefþjóninn þinn."
+
+#~ msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
+#~ msgstr "Í sumum löndum, eiga friðhelgislög ekki eingöngu við lifandi fólk heldur einnig þá sem hafa nýlega látist. Þessi valkostur mun leyfa þér að framlengja friðhelgisregluna fyrir lifandi fólk til þeirra sem voru fæddir eða létust innan tiltekinna fjölda ára. Skiljið þessi gildi eftir auð til að afvirkja þennan möguleika."
+
+#~ msgid "In this month…"
+#~ msgstr "Í þessum mánuði …"
+
+#~ msgid "In this year…"
+#~ msgstr "Á þessu ári …"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Láta nánustu fjölskyldu persónunnar fylgja með?"
+
+#~ msgid "Individual 1"
+#~ msgstr "Persóna 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Persóna 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Persóna sem lifði lengst"
+
+#~ msgid "LDS temple"
+#~ msgstr "LDS Musteri"
+
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
+#~ msgid "Link ID"
+#~ msgstr "Krækju auðkenni"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Tengja þessa persónu við núverandi fjölskyldu sem barni"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Tengja þessa persónu við núverandi fjölskyldu sem eiginmanni"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Tengja þessa persónu við núverandi fjölskyldu sem eiginkonu"
+
+#~ msgid "Living individuals"
+#~ msgstr "Fólk á lífi"
+
+#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
+#~ msgstr "Hlaða öllum þínum fjölskyldutréum frá diski með því að nota \"innflutnings\" aðgerðina fyrir hvert og eitt."
+
+#~ msgid "Loading…"
+#~ msgstr "Hleð inn…"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Staðsetning ekki fjarlægð: þessi staðsetning inniheldur undirstaðsetningu"
+
+#~ msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero."
+#~ msgstr "Langa lista af persónum með sama eftirnafni er hægt að brjóta niður í minni undirlista samkvæmt fyrsta bókstafnum í skírnarnafni einstaklingsins.<br><br>Þessi valkostur ákvarðar hvenær undirlistar af eftirnöfnum verða til. Til að afvirkja undirlista alveg, stillið þennan valkost þá á núll."
+
+#~ msgid "Main section blocks"
+#~ msgstr "Aðal Hluta Kassar"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Hjúskapar Dagsetningasvið endar"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Hjúskapar Dagsetningasvið byrjar"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Hjúskapar Staður inniheldur"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Hjúskapartilgangur"
+
+#~ msgid "Married name"
+#~ msgstr "Hjúskaparnafn"
+
+#~ msgid "Married surname"
+#~ msgstr "Giftingar eftirnafn"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Sameina frá auðkenni:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Sameina við auðkenni:"
+
+#~ msgid "Min. no. of occurrences to be a “common surname”"
+#~ msgstr "Lágmarksfjöldi tilfella til að teljast \"algengt eftirnafn\""
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Atriði oftast skoðuð"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Fæðingarstaður móður - (Chapman snið)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Aldur móður"
+
+#~ msgid "Move left"
+#~ msgstr "Færa til vinstri"
+
+#~ msgid "Move right"
+#~ msgstr "Færa til hægri"
+
+#~ msgid "Name List"
+#~ msgstr "Nafnalisti"
+
+#~ msgid "No events for living individuals exist for the next %s day."
+#~ msgid_plural "No events for living people exist for the next %s days."
+#~ msgstr[0] "Engir atburðir fyrir lifandi fólk eru til staðar fyrir næsta %s dag."
+#~ msgstr[1] "Engir atburðir fyrir lifandi fólk eru til staðar fyrir næstu %s daga."
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Engir atburðir eru til staðar fyrir fólk á lífi í dag."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Engir atburðir eru til staðar á morgun fyrir fólk á lífi."
+
+#~ msgid "No records to display"
+#~ msgstr "Engar færslur til að birta"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Ekkert slíkt auðkenni er til staðar í þessari GEDCOM skrá."
+
+#~ msgid "No temple - living ordinance"
+#~ msgstr "Ekkert musteri - Lifandi tilskipun"
+
+#~ msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
+#~ msgstr "Venjulega, þurfa hvaða breytingar sem gerðar eru á fjölskyldutré að vera samþykktar af stjórnanda. Þessi valkostur leyfir notanda að gera breytingar án þess að þurfa samþykki stjórnanda."
+
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
+#~ msgstr[0] "Athugið: “lifandi” er skilgreint (ef ekki er vitað af andláti eða jarðaför) sem endar %d ár eftir fæðingu eða áætlaðrar fæðingu."
+#~ msgstr[1] "Athugið: “lifandi” er skilgreint (ef ekki er vitað af andláti eða jarðför) sem endar %d árum eftir fæðingu eða áætlaðrar fæðingu."
+
+#~ msgid "Nuku’Alofa, Tonga"
+#~ msgstr "Nuku'Alofa, Tonga"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "Fjöldi mánaða frá síðustu innskráningu þar til að notandareikningur geti talist óvirkur: "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Elsta fólk á lífi"
+
+#~ msgid "On this day…"
+#~ msgstr "Á þessum degi …"
+
+#~ msgid "Online editing"
+#~ msgstr "Beinlínutengd ritstýring"
+
+#~ msgid "Orientation"
+#~ msgstr "Lega"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Aðrar möppur… vinsamlega sláið inn"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "Heiti útsendingarþjóns (SMTP)"
+
+#~ msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP viðauki \"%1$s\" er óvirkur. Án þess, þá munu eftirfarandi eiginleikar ekki virka: %2$s. Vinsamlega óskaðu eftir því við kerfisstjóra vefþjónsins að virkja þetta."
+
+#~ msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP viðauki \"%s\" er óvirkur. Þú getur ekki sett upp webtrees fyrr en þetta hefur verið virkjað. Vinsamlega óskaðu eftir því við kerfisstjóra vefþjónsins að virkja þetta."
+
+#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP stilling \"%1$s\" er óvirk. Án þess, þá munu eftirfarandi eiginleikar ekki virka: %2$s. Vinsamlega óskaðu eftir því við kerfisstjóra vefþjónsins að virkja þetta."
+
+#~ msgid "Page"
+#~ msgstr "Síða"
+
+#~ msgid "Page size"
+#~ msgstr "Síðustærð"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Foreldrar og systkini"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Aldur foreldra"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Manntalsgraf"
+
+#~ msgid "Place of LDS baptism"
+#~ msgstr "Staður LDS skírnar"
+
+#~ msgid "Place of LDS child sealing"
+#~ msgstr "Staðsetning á LDS barnastaðfestingu"
+
+#~ msgid "Place of LDS endowment"
+#~ msgstr "Staðsetning á LDS heimanmundi"
+
+#~ msgid "Place of LDS spouse sealing"
+#~ msgstr "Staðsetning á LDS makastaðfestingu"
+
+#~ msgid "Place of adoption"
+#~ msgstr "Staður ættleiðingar"
+
+#~ msgid "Place of blessing"
+#~ msgstr "Staðsetning blessunar"
+
+#~ msgid "Place of cremation"
+#~ msgstr "Staðsetning líkbrennslu"
+
+#~ msgid "Place of emigration"
+#~ msgstr "Staður fólksflutnings"
+
+#~ msgid "Place of event"
+#~ msgstr "Staðsetning atburðar"
+
+#~ msgid "Place of immigration"
+#~ msgstr "Staðsetning fólksinnflutnings"
+
+#~ msgid "Place of naturalization"
+#~ msgstr "Staðsetning á veitingu þegnréttar"
+
+#~ msgid "Place of ordination"
+#~ msgstr "Staðsetning reglugerðar"
+
+#~ msgid "Place of residence"
+#~ msgstr "Staðsetning bústaðar"
+
+#~ msgid "Port"
+#~ msgstr "Tengi"
+
+#~ msgid "President’s Office"
+#~ msgstr "Forsetaskrifstofa"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Prentið grunn atburði þegar autt?"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Nýleg ár (&lt; 100 ár)"
+
+#~ msgid "Registry officer"
+#~ msgstr "Skráningarfulltrúi"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "Skráningarfulltrúi"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "Skráningarfulltrúi"
+
+#~ msgid "Religious institution"
+#~ msgstr "Trúarstofnun"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Fjarlægja þessa staðsetningu?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Hægri Hluta Kassar"
+
+#~ msgid "SMTP port"
+#~ msgstr "SMTP tengi"
+
+#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
+#~ msgstr "Vista öll fjölskyldutré þín á disk með því að nota \"útflutnings\" aðgerðina fyrir hvert og eitt."
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Leita og/eða skipta út gögnum í þínu GEDCOM með því að nota einfalda leit eða flókna mynstur samstæðu."
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Leita að fólki til að bæta við á krækjulista."
+
+#~ msgid "Security"
+#~ msgstr "Öryggi"
+
+#~ msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
+#~ msgstr "Veljið skyldleikaheitið úr listanum. Velja <b>Guðfaðir</b> þýðir: <i>Þessi fulltrúi er guðfaðir núverandi einstaklings.</i>"
+
+#~ msgid "Select events"
+#~ msgstr "Velja atburði"
+
+#~ msgid "Send message"
+#~ msgstr "Senda skilaboð"
+
+#~ msgid "Sender email address"
+#~ msgstr "Netfang sendanda"
+
+#~ msgid "Server"
+#~ msgstr "Þjónn"
+
+#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
+#~ msgstr "Setja sjálfgefin fjölda kynslóða til að birta á afkomenda- og ættartölugröfum."
+
+#~ msgid "Set the maximum number of generations to display on descendancy charts."
+#~ msgstr "Stillið hámarks fjölda kynslóða sem birt eru á afkomenda gröfum."
+
+#~ msgid "Set the maximum number of generations to display on pedigree charts."
+#~ msgstr "Stillið hámarks fjölda kynslóða sem birtar eru á ættartölu gröfum."
+
+#~ msgid "Set the privacy access level for all dead individuals."
+#~ msgstr "Stilla friðhelgis aðgangsstig fyrir allt látið fólk."
+
+#~ msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
+#~ msgstr "Með því að stilla þennan valkost á <b>Já</b> þá mun stöðukóði birtast fyrir LDS tilskipun í grafarkassa. <ul><li><b>S</b> - Skírn</li><li><b>V</b> - Vöggugjöf</li><li><b>S</b> - Staðfest við maka</li><li><b>M</b> - Staðfest við foreldri</li></ul>Persóna sem er með allar tilskipanir til staðar mun vera með <b>SVSM</b> prentað á eftir nafni þeirra. Tilskipanir sem vantar eru gefin til kynna með <b>_</b> í staðinn fyrir viðeigandi stafakóða. Sem dæmi, <b>SV__</b> gefur til kynna að tilskipanir <b>S</b> og <b>M</b> vantar."
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Sameiginleg glósa inniheldur:"
+
+#~ msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
+#~ msgstr "Sameiginlegar glósur eru texti á frjálsu sniði og mun birtast í staðreyndaupplýsinga hluta síðunnar.<br><br>Hver sameiginleg glósa getur verið tengd við fleiri en eina persónu, fjölskyldu, heimild eða atburð."
+
+#~ msgid "Shared notes found"
+#~ msgstr "Sameiginlegar glósur fundnar"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgid "She "
+#~ msgstr "Hún "
+
+#~ msgid "She died"
+#~ msgstr "Hún dó"
+
+#~ msgid "She married"
+#~ msgstr "Hún giftist"
+
+#~ msgid "She resided at"
+#~ msgstr "Hún var með búsetu á"
+
+#~ msgid "She was born"
+#~ msgstr "Hún var fædd"
+
+#~ msgid "She was buried"
+#~ msgstr "Hún var grafin"
+
+#~ msgid "She was christened"
+#~ msgstr "Hún var skírð"
+
+#~ msgid "She was cremated"
+#~ msgstr "Hún var líkbrennd"
+
+#~ msgid "Show acceptable use agreement on “Request new user account” page"
+#~ msgstr "Sýna ásættanlegt notkunarsamkomulag á «Óska eftir nýjum notandareikning» síðu"
+
+#~ msgid "Show age of parents next to child’s birthdate"
+#~ msgstr "Sýna aldur foreldra við hliðina á fæðingardegi barns"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Sýna alla staði á lista"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Sýna börn forfeðra?"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "Sýna látið fólk"
+
+#~ msgid "Show details"
+#~ msgstr "Sýna upplýsingar"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Sýna áherslumerktar myndir í fólkskassa"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Sýna óvirka staði"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Sýna persónur sem fæddar voru fyrir meira en 100 árum síðan."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Sýna persónur sem fæddar voru innan síðustu 100 ára."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Sýna fólk sem eru á lífi eða par þar sem baðir sambýlisaðilar eru á lífi."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Sýna fólk sem er dáið eða par þar sem báðir sambýlisaðilar eru látnir."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Sýna fólk sem dó fyrir meira en 100 árum síðan."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Sýna fólk sem dó innan síðustu 100 ára."
+
+#~ msgid "Show notes?"
+#~ msgstr "Sýna glósur?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Sýna starfsheiti?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Sýna eingöngu atburði fólks sem er á lífi"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Sýna aðeins persónur þar sem kyn er óþekkt."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Sýna aðeins persónur, atburði eða allt?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Sýna fyrirhugaðar breytingar"
+
+#~ msgid "Show photos?"
+#~ msgstr "Sýna myndir?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Sýna staði í stigveldi"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Sýna tengdar persónur/fjölskyldur"
+
+#~ msgid "Show residences?"
+#~ msgstr "Sýna búsetu?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Sýna heimildir?"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Sýna «leaves» pör eða einstaklinga. Þetta eru einstaklingar sem eru á lífi en eru með engin börn skráð í gagnagrunninum."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Sýna «roots» par eða einstaklinga. Þetta fólk er einnig hægt að kalla «patriarchs». Þeir eru einstaklingar sem eiga enga foreldra skráða í gagnagrunninum."
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Sýni %1$s til %2$s af %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "Systir"
+
+#~ msgid "Social security number"
+#~ msgstr "Kennitala"
+
+#~ msgid "Son"
+#~ msgstr "Sonur"
+
+#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
+#~ msgstr "Heimilda tilvísanir geta innihaldið reiti til að skrá gæði gagnanna (uppruna, vara o.s.frv.) og dagsetning þegar atburðurinn var skráður í heimildina. Ef þú notar ekki þessa reiti, þá getur þú afvirkjað þá þegar ný heimilda tilvísun er stofnuð."
+
+#~ msgid "Sources to the events"
+#~ msgstr "Heimildir við atburði"
+
+#~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
+#~ msgstr "Tilgreinir hvort skilaboð sem send eru í gegnum <b>webtrees</b> geta verið vistuð í gagnagrunninum. Ef stillt á <b>Já</b> þá munu notendur geta kallað fram skilaboðin sín þegar þeir skrá sig inn á <b>webtrees</b>. Ef stillt á <b>Nei</b> þá verða skilaboðin eingöngu send."
+
+#~ msgid "Spouse"
+#~ msgstr "Maki"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Makar og börn"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Byrjunarsvið á breytingar dagsetningum"
+
+#~ msgid "Surname option"
+#~ msgstr "Valmöguleiki eftirnafns"
+
+#~ msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+#~ msgstr "Eftirlætis flettilistinn sýnir þau eftirlæti sem þú hefur valið á þinni persónulegu Mín Síða. Hún sýnir einnig eftirlæti sem kerfisstjóri vefsíðunnar hefur valið fyrir núverandi virkt GEDCOM. Með því að smella á eitt af eftirlætis atriðunum þá færist þú beint yfir í Einstaklings upplýsingasíðu viðkomandi persónu.<br><br>Frekari leiðbeiningar varðandi að bæta við eftirlæti er til staðar í þinni persónulegu Mín Síða."
+
+#~ msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+#~ msgstr "Miðilsskoðarinn getur sýnt krækju sem, ef smellt er á hana, mun hlaða niður miðilsskránni á staðbundna tölvu.<br><br>Það getur verið að þú viljir fela niðurhals krækjuna af öryggisástæðum."
+
+#~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
+#~ msgstr "Gerðar reiturinn er notaður til að slá inn viðbótar upplýsingar um atriðið. Í flestum tilvikum, er reiturinn algjörlega á frjálsu sniði og þú getur slegið inn hvað sem þú vilt."
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "Kerfisstjórinn hefur verið upplýstur. Um leið og hann gefur þér heimild til innskráningar, þá getur þú skráð þig inn með notandaheiti þínu og lykilorði."
+
+#~ msgid "The individual to be contacted about technical questions or errors encountered on your site."
+#~ msgstr "Persónan sem þarf að hafa samband við vegna tæknilegra spurninga eða villna sem upp koma á þessari vefsíðu."
+
+#~ msgid "The individual to contact about the genealogical data on this site."
+#~ msgstr "Persónan til að hafa samband við varðandi ættfræðigögnin á þessari vefsíðu."
+
+#~ msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+#~ msgstr "Lengd tíma eftir fæðingu er hægt að setja á friðhelgis uppsetningarflipa valmöguleikanum \"Aldur sem hægt er að áætla að persóna sé látin\"."
+
+#~ msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
+#~ msgstr "Samtökin, stofnunin, fyrirtækið, persónan eða annar aðili sem hefur heimild.<br><br>Sem dæmi, atvinnurekandi persónu, eða kirkja sem stýrði helgisið eða atburði, eða stofnun sem er ábyrg fyrir stofnun og/eða safnvistun færslna."
+
+#~ msgid "The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>."
+#~ msgstr "Tenginúmerið sem notað er fyrir tengingar við SMTP póstþjóninn. Venjulega er þetta tengi <b>25</b>."
+
+#~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
+#~ msgstr "Forskeytið er valkvætt, en mælt er með því. Með því að gefa töfluheiti einstakt forskeyti þá getur þú látið mörg mismunandi forrit deila sama gagnagrunn. \"wt_\" er ráðlagt, en getur hvað sem þú vilt."
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "\"Regexið\" virðist innihalda villu. Ekki er hægt að nota það."
+
+#~ msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
+#~ msgstr "Þema er hægt að velja á þremur stigum: notandi, GEDCOM og vefsíða. Notanda stillingar hafa forgang yfir GEDCOM stillingar, sem á móti hafa forgang yfir vefsíðu stillingar. Með því að velja \"sjálfgefið þema\" á notandastigi mun ákvarða stillinguna fyrir núverandi GEDCOM. Með því að velja \"sjálfgefið þema\" á GEDCOM stigi mun ákvarða stillinguna fyrir vefsíðuna."
+
+#~ msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
+#~ msgstr "Þetta GEDCOM (fjölskyldutré) var síðast uppfært þann #gedcomUpdated#. Það eru #totalSurnames# eftirnöfn í þessu fjölskyldurtré. Fyrsti skráði atburðurinn er #firstEventType# af #firstEventName# í #firstEventYear#. Allra nýjasti atburðurinn er #lastEventType# af #lastEventName# í #lastEventYear#.<br><br>Ef þú hefur einhverjar athugasemdir eða ábendingar vinsamlega hafðu þá samband við  #contactWebmaster#."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "Þetta GEDCOM var stofnað með því að nota <b>%1$s</b> þann <b>%2$s</b>."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Þessi reitur mun sýna 10 færslur sem hafa verið oftast skoðaðar. Þessi reitur krefst þess að síðuteljari sé virkjaður í GEDCOM uppsetningunni."
+
+#~ msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+#~ msgstr "Þessi reitur heimilar þér að breyta heimildarfærslunni sem þessi staðreynda heimildatilvísun er tengd við. Þessi reitur tekur heimilda auðkenni. Til hliðar við reitinn verður heiti núverandi heimildar auðkenni. Notið <b>Finna auðkenni</b> krækjuna til að fletta upp á heimildar auðkennisnúmeri. Til að fjarlægja alla tilvísunina, gerið þá þennan reit auðan."
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Þessi reitur stjórnar röðina sem S&S atriðin eru birt.<br><br>Þú þarft ekki að slá inn tölurnar í röð. Ef þú skilur eftir eyður í töluskemanu, þá getur þú bætt inn öðrum atriðum síðar. Sem dæmi, ef þú notar tölurnar 1, 6, 11, 16 þá getur þú seinna bætt við atriðum sem vantar í talnaröðina. Neikvæðar tölur og núll eru leyfileg og er hægt að nota til að bæta framan við fyrstu töluna.<br><br>Þegar fleiri en eitt S&S atriði er með sama stöðu töluna þá verður aðeins eitt af þeim atriðum sýnilegt."
+
+#~ msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+#~ msgstr "Þessi innsláttarkassi gerir þér kleift að slá inn auðkennisnúmer einstaklings svo hægt sé að bæta honum í klippikörfuna. Þegar honum hefur verið bætt við þá færð þú möguleika á að tengja skyldleika hans við klippikörfuna þína.<br><br>Ef þú þekkir ekki auðkennisnúmer einstaklings, á getur þú framkvæmt leit eftir nafni með því að smella á persónutáknið við hliðina á Bæta við hnappinum."
+
+#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
+#~ msgstr "Þetta er kommu aðgreindur listi yfir GEDCOM staðreynda merkimiða sem birtast þegar nýrri persónu er bætt við. Sem dæmi, ef BIRT er í listanum, þá munu reitir fyrir fæðingardag og fæðingarstað vera birtir á eyðublaðinu."
+
+#~ msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
+#~ msgstr "Þetta er krækja í þínar eigin færslur í fjölskyldutrénu. Ef þetta er ranga persónanan, hafðu þá samband við vefstjórann."
+
+#~ msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+#~ msgstr "Þetta er listi yfir GEDCOM staðreyndir sem notendur þínir geta bætt við fjölskyldur. Þú getur breytt þessum lista með því að fjarlægja eða bæta við staðreyndaheitum, jafnvel sérsniðum, einsog þörf er á. Staðreyndaheiti sem birtast í þessum lista þurfa ekki að birtast í listanum <i>Einstakar fjölskyldu staðreyndir</i>."
+
+#~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
+#~ msgstr "Þetta er heitið á SMTP póstþjóninum. Sem dæmi: <b>smtp.foo.bar.com</b>.<br><br>Uppsetningargildi fyrir suma póstþjónustuaðila:<br><br><b>Gmail<br></b><b>Heiti póstsendiþjónsins (SMTP):</b> smtp.gmail.com<br><b>SMTP tengi:</b> 465 eða 587<br><b>Örugg tenging:</b>SSL<br><br><b>Hotmail<br></b><br><b>Heiti póstsendþjónsins (SMTP):</b> smtp.live.com<br><b>SMTP tengi:</b> 25 eða 587<br><b>Örugg tenging:</b> TLS<br><br><b>Yahoo Mail Plus (núverandi kostuð þjónusta)<br></b><br><b>Heiti póstsendiþjónsins (SMTP):</b> smtp.mail.yahoo.com<br><b>SMTP tengi:</b> 25"
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "Þetta er heiti á SMTP þjóninum. 'localhost' þýðir að tölvupóstþjónustan er keryð á sömu tölvu og vefþjónninn þinn."
+
+#~ msgid "This is used in the \"From:\" header when sending mails."
+#~ msgstr "Þetta er notað í \"Frá:\" hausnum þegar tölvupóstur er sendur."
+
+#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
+#~ msgstr "Þetta er notað í \"Sendandi:\" hausnum þegar tölvupóstur er sendur. Það er oft það sama og í \"Frá:\" hausnum."
+
+#~ msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
+#~ msgstr "Þessi valkostur stjórnar því hvort að Glósu og Heimilda tilvísanir sem tengdar eru Staðreyndum eigi að birtast á flipunum Glósur og Heimildir á einstaklings síðunni.<br><br>Venjulega, þá sýna Glósu og Heimilda fliparnir eingöngu Glósu og Heimilda tilvísanir sem tengdar eru beint við einstaklings gagnagrunnsfærslu. Þetta eru <i>stig 1</i> Glósu og Heimilda tilvísanir.<br><br>Valkosturinn <b>Já</b> veldur því að þessir flipar sýna einnig Glósu og Heimilda tilvísanir sem eru hlut af mismunandi Staðreyndum í einstaklings gagnagrunnsfærslu. Þetta eru <i>stig 2</i> Glósu og Heimilda tilvísanir vegna þess að mismunandi Staðreyndir eru á stigi 1."
+
+#~ msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
+#~ msgstr "Þessi valkostur stjórnar því hvort sýna eigi eða ekki aldur föðurs og móður við hliðina á fæðingardeg barns á grafi."
+
+#~ msgid "This option controls whether or not to show the Birth and Death details of an individual on charts."
+#~ msgstr "Þessi valkostur stjórnar því hvort sýna eigi eða ekki fæðingar- og andlátsupplýsingarnar hjá einstaklingi á gröfum."
+
+#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgstr "Þessi valkostur stjórnar því hvort birta eigi eða ekki einstaklings kyntákn á grafi.<br><br>Þar sem kynið er einnig gefið til kynna með liti á kassanum þá felur þessi valkostur ekki kynið. Valkosturinn einfaldlega fjarlægir sumar tvöföldu upplýsingarnar í kassanum."
+
+#~ msgid "This option enables online editing features for this database so that users with Edit privileges may update data online."
+#~ msgstr "Þessi valkostur virkjar beinlínutengda ritstýringar möguleika fyrir þennan gagnagrunn þannig að notendur með ritstýringarrétt geti uppfært gögn á vefnum."
+
+#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
+#~ msgstr "Þessi valkostur gefur til kynna hvort ættartölugraf verði útbúið í láréttan eða lóðréttan máta."
+
+#~ msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+#~ msgstr "Þessi valkostur er eins og <b>webtrees</b> innri skilaboð, með einni viðbót. Sem auka, að þá er afrit af skilaboðinu einnig sent á netfangið sem þú skilgreindir á þinni Reikningssíðu.  Þetta er sjálfgefna tengiliða aðferðin."
+
+#~ msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
+#~ msgstr "Þessi valkostur mun virkja alla friðhelgis stillingar og fela upplýsingar um lifandi fólk einsog skilgreint eða breytt á friðhelgis flipanum fyrir hverja GEDCOM uppsetningarsiðu."
+
+#~ msgid "This option will generate thumbnails for all files in the current directory which don't already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br><br>If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links."
+#~ msgstr "Þessi valkostur mun útbúa smámyndir fyrir allar skrá í núverandi skráarsafni sem ekki eru þegar með smámynd. Þetta er mun hentugra en að smella á <b>Útbúa smámynd</b> krækjuna fyrir hverja slíka skrá.<br><br>Ef þú vilt hafa stjórn á því hvaða skrár ættu að hafa samsvarandi smámynd, þá ættir þú að nota þennan valkost. <b>Útbúa smámynd</b> krækjur."
+
+#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Þessi valkostur gerir þér kleift að færa atriði niður á S&S síðunni.<br><br>Í hvert sinn sem þú notar þennan valkost, þá er einum bætt við staðartöluna. Þú getur náð því sama fram með því að breyta umræddu atriði  og breytt S&S staðarreitinn. Þegar meira en eitt S&S atriði er með sömu staðartölu, þá verður aðeins eitt af þessum atriðum sýnilegt."
+
+#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Þessi valkostur gerir þér kleift að færa atriði upp á S&S síðunni.<br><br>Í hvert sinn sem þú notar þennan möguleika, þá er S&S staðsetningarnúmer þessa atriðis minnkað um einn. Þú getur náð sömu áhrifum með því breyta umræddu atriði og breyta S&S staðsetningarreitnum. Þegar meira en eitt S&S atriði er með sama staðsetningarnúmerið, þá verður aðeins annað atriðið sýnilegt."
+
+#~ msgid "This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
+#~ msgstr "Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með friðhelgi. Þetta þýðir að þú sérð auða \"friðhelgis\" kassa á ættartölugrafinu og á öðrum gröfum hjá fólki með friðhelgi."
+
+#~ msgid "This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server’s software, as it relates to PHP and <b>webtrees</b>, can be viewed."
+#~ msgstr "Þessi síða býður upp á ítarlegar upplýsingar um vefþjóninn þar sem <b>webtrees</b> er hýstur. Hægt er að skoða margar uppsetninga upplýsingar um hugbúnað vefþjónsins sem tengjast PHP og <b>webtrees</b>."
+
+#~ msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#~ msgstr "Þetta hlutverk hefur öll réttindi meðlimahlutverksins, ásamt réttindum til að bæta við/breyta/eyða gögnum. Allar breytingar þurfa samþykki stjórnanda, nema notandinn sé með valkostinn \"sjálfvirkt samþykkja breytingar\" virkann."
+
+#~ msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+#~ msgstr "Þessi hluti leyfir þér að bæta við nýrri tilvísunarheimild við staðreyndina sem þú ert núna að breyta.<br><br>Í heimildarreitinn slærðu inn auðkennið fyrir heimildina. Smellið á <b>Stofna nýja heimild</b> krækjua ef þú þarft að slá inn nýja heimild. Í upplýsingareit Tilvísunar þá slærðu inn síðu númerið eða aðrar upplýsingar sem gætu hjálpað einhverjum að finna upplýsingarnar í heimildinni. Í Textareitinn slærðu inn texta afritun frá heimildinni."
+
+#~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
+#~ msgstr "Minnistakmörk þessa vefþjóns eru %dMB og takmörk örgjörvatímans eru %d sekúndur."
+
+#~ msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+#~ msgstr "Þætta ætti að vera komma eða bil aðgreidur listi af staðreyndum, til viðbótar við Fæðingu og Andláat, sem þú vilt að birtist í grafarkassa einsog ættartölugrafið. Þessi listi þarfnast þes að þú notir staðreynda merkimiða sem skilgreindir eru í GEDCOM 5.5.1 standard. Sem dæmi, ef þú vilt að starfsheiti birtist í kassanum, þá þarftu að bæta \"OCCU\" við þennan reit."
+
+#~ msgid "This text will be appended to each page title.  It will be shown in the browser’s title bar, bookmarks, etc."
+#~ msgstr "Þessum texta verður bætt við heiti hverrar síðu. Hann mun birtast í titlstiku vafrans, bókamerki o.s.frv."
+
+#~ msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+#~ msgstr "Þetta gildi ákveður fjölda afkomenda kynslóða á rótar persónunni sem verður prentað í tímaglasa sniðinu."
+
+#~ msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
+#~ msgstr "Til að aðstoða þig við að byrja á þessum kassa, þá höfum við útbúið nokkur venjuleg sniðmát. Þegar þú velur eitt af þessum sniðmátum, þá mun textasvæðið innihalda afrit sem þú getur breytt til að mæta kröfum vefsíðu þinnar."
+
+#~ msgid "To family"
+#~ msgstr "Til fjölskyldu"
+
+#~ msgid "To individual"
+#~ msgstr "Til persónu"
+
+#~ msgid "To source"
+#~ msgstr "Til uppruna"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "Samtals samþykktar breytingar: "
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Samtals fyrirhugaðar breytingar: "
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Óþekktur GEDCOM kóði"
+
+#~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
+#~ msgstr "Nota SMTP til að seda tölvupósta frá <b>webtrees</b>.<br><br>Þessi valkostur þarfnast aðgangs að SMTP póstþjóni. Þegar stillt á <b>Nei</b> þá mun <b>webtrees</b> nota tölvupóstkerfið sem innbyggt er í PHP á þessum vefþjóni."
+
+#~ msgid "Use SMTP to send external mails"
+#~ msgstr "Nota SMTP til að senda ytri tölvupósta"
+
+#~ msgid "Use colors"
+#~ msgstr "Nota liti"
+
+#~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
+#~ msgstr "Nota nafn og lykilorða staðfestingu til að tengjast SMTP póstþjóni.<br><br>Sumir SMTP póstþjónar þarfnast þess að allar tengingar séu samþykktar áður en tekið er við tölvupósti á útleið."
+
+#~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
+#~ msgstr "Notið skuggamyndir þegar engin áherslumerkt mynd hefur verið tilgreind fyrir þessa persónu. Notaðar myndir eru sérstakar gagnvart kyni viðkomandi persónu.<br><br><table><tr><td wrap valign=\"middle\">Þessi mynd kann að vera notuð ef kyn persónunnar er óþekkt:"
+
+#~ msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
+#~ msgstr "Notið þessa hnappa til að endurraða færslum á listanum. Kassarnir verða prentaðir í þeirri röð sem þeir koma fyrir á listanum.<br><br>Áherslumerkið færsluna sem á að færa og smellið á hnapp til að færa þá færslu upp eða niður."
+
+#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
+#~ msgstr "Notið þennan reit til að vista skammstafaða útgáfu af fyrirsögn. Þessi reitur er notaður í tengslum við fyrirsagnarreitinn í heimildum. Sjálfgefið er að <b>webtrees</b> mun fyrst nota fyrirsögnina og síðan skammastafaða fyrirsögnina.<br><br>Samkvæmt GEDCOM 5.5 skilgreiningunni, \"þessum reiti er ætlað að útvega stutta fyrirsögn til notkunar við röðun, vistun og að kalla fram heimildafærslur (síða 62).\"<br><br>Í <b>webtrees</b> þá er skammstafaða fyrirsögnin valkostur en í öðrum ættfræði forritum þá er hún nauðsynleg."
+
+#~ msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+#~ msgstr "Notið þennan reit til að gefa til kynna að þetta miðilsatriði er áherslumerkt eða forgangsatriði fyrir persónuna sem það er tengt við. Áherslumerkta myndin er sú sem verður notuð í gröfum og á einstaklingssíðum."
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Notið þessa síðu til að breyta eða fjarlægja fjölskyldumeðlimi.<br><br>Fyrir hvern meðlim fjölskyldunnar, getur þú notað Breyta krækjuna til að velja aðra persónu til að taka þetta hlutverk í fjölskyldunni. Þú getur einnig notað Fjarlægja krækjuna til að fjarlægja þessa persónu frá fjölskyldunni.<br><br>Þegar þú hefur lokið við að breyta meðlimum fjölskyldunnar, smelltu þá á Vista hnappinn til að vista breytingarnar."
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "Notandi staðfesti ekki innan 7 daga."
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "Notandanöfn geta ekki innihaldið eftirfarandi stafi: &lt; &gt; \" %% { } ;"
+
+#~ msgid "Users logged in"
+#~ msgstr "Notendur skráðir inn"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Tungumál notenda"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "Reikningur notanda hefur verið óvirkur of lengi: "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Skoða GEDCOM færslu"
+
+#~ msgid "View day"
+#~ msgstr "Skoða dag"
+
+#~ msgid "View details"
+#~ msgstr "Skoða upplýsingar"
+
+#~ msgid "View family"
+#~ msgstr "Skoða fjölskyldu"
+
+#~ msgid "View month"
+#~ msgstr "Skoða mánuð"
+
+#~ msgid "View notes"
+#~ msgstr "Skoða glósur"
+
+#~ msgid "View person"
+#~ msgstr "Skoða persónu"
+
+#~ msgid "View source"
+#~ msgstr "Skoða uppruna"
+
+#~ msgid "View year"
+#~ msgstr "Skoða ár"
+
+#~ msgid "Visitor options"
+#~ msgstr "Valkostir gesta"
+
+#~ msgid "Visitors"
+#~ msgstr "Gestir"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=0"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Við munum núna senda staðfestingar tölvupóst á netfangið <b>%s</b>. Þú verður að staðfesta beiðni þína um reikning með því að fylgja leiðbeiningum í staðfestingar tölvupóstinum. Ef þú staðfestir ekki reikningsbeiðni þína innan sjö daga, þá verður þinni umsókn hafnað sjálfkrafa. Þú þarft síðan að sækja um aftur.<br><br>Eftir að þú hefur fylgt leiðbeiningunum í staðfestingar tölvupóstinum, þá þarf kerfisstjórinn sem sem áður að samþykkja beiðni þína áður en hægt er að nota reikningingin þinn.<br><br>Til að skrá þig inn á vefsíðuna, þá þarftu að vita notandaheitið þitt og lykilorð."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Við munum núna senda staðfestingar tölvupóst á netfangið <b>%s</b>. Þú verður að staðfesta beiðni þína um reikning með því að fylgja leiðbeiningum í staðfestingar tölvupóstinum. Ef þú staðfestir ekki reikningsbeiðni þína innan sjö daga, þá verður þinni umsókn hafnað sjálfkrafa. Þú þarft síðan að sækja um aftur.<br><br>Eftir að þú hefur fylgt leiðbeiningunum í staðfestingar tölvupóstinum, þá getur þú skráð þig inn. Til að skrá þig inn á vefsíðuna, þá þarftu að vita notandaheitið þitt og lykilorð."
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "Vefsíðu og lýsigagna stillingar"
+
+#~ msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
+#~ msgstr "Þegar notandi skráir sig fyrir reikningi, þá er tölvupóstur sendur á netfangið hans með staðfestingarkrækju. Þegar hann smellir á þessa krækju, þá vitum við að netfangið er rétt, og valkosturinn \"netfang staðfest\" er sjálfvirkt valinn."
+
+#~ msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
+#~ msgstr "Þegar þú stillir á <b>Já</b>, þá mun eftirfarandi skilaboð birtast fyrir ofan innsláttar reitina á «Óska eftir nýjum notanda reikningi» síðunni:<div class=\"list_value_wrap\"><div class=\"largeError\">Tilkynning:</div><div class=\"error\">Með því að ljúka og senda þetta eyðublað, þá samþykkir þú:<ul><li>að vernda friðhelgi fólks sem er á lífi á þessari vefsíðu;</li><li>og í textakassanum að neðan, að útskýra hverjum þú ert skyldur eða að útvega okkur upplýsingar um einhvern sem ætti að vera á lista á vefsíðu okkar.</li></ul></div></div>"
+
+#~ msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
+#~ msgstr "Þegar hakað er við þennan merkjakass, þá verður grafið prentað út með eldsta fólkið efst. Þegar það er ekki hakað við það, á mun yngsta fólkið birtast efst."
+
+#~ msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
+#~ msgstr "Þegar þessi valkostur er valinn, þá getur þú séð allar Heimilda- eða Glósufærslur fyrir þessa persónu. Þegar þessi valkostur er ekki valinn, þá eru Heimilda- eða Glósufærslur sem eru tengdar öðrum staðreyndum hjá þessari persónu ekki sýnilegar."
+
+#~ msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
+#~ msgstr "Þegar þú velur þennan valkost, þá verður afrit af GEDCOM skránni þjappað í ZIP snið áður en niðurhal hefst. Þetta mun minnka stærð þess töluvert en þú þart að nota samhæft afþjöppunar forrit (WinZIP, sem dæmi) til að afþjappa senda GEDCOM skrá áður en þú getur notað hana.<br><br>Þetta er gagnlegur valkostur til að hlaða niður stórum GEDCOM skrám. Það er hætta á að niðurhal tíminn fyrir óþjappaða skrá geti farið yfir leyfilegan hámarks framkvæmdastíma, sem getur leitt til niðurhals á ófullgerðum skrám."
+
+#~ msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
+#~ msgstr "Þegar þú smellir á krækjuna <b>Bæta við nýrri sameiginlegri glósu</b>, þá mun nýr gluggi opnast. Þú getur valið að tengja við fyrirliggjandi sameiginlega glósu eða þú getur stofnað nýja sameiginlega glósu og á sama tíma útbúið krækju í hana."
+
+#~ msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
+#~ msgstr "Þegar þú smellir á þessa krækju þá tæmist Klippikarfan þín alveg.<br><br>Ef þú vilt ekki fjarlægja allar persónur, fjölskyldur o.s.frv. frá Klippikörfunni, þá getur þú fjarlægt hvert og eitt atriði með því að smella á <b>Fjarlægja</b> krækjuna í Nafnakassanum. Það birtist <u>engin</u> staðfestingargluggi þegar þú smellir á aðra hvora krækjuna; umbeðin eyðing er framkvæmd strax."
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Hvaða krækjur frá þessari persónu myndir þú einnig vilja bæta við?"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "Hver getur skoðað myndir sem eru ekki vatnsmerktar?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Aldur eiginkonu"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Jómfrúareftirnafn eiginkonu verður að nýju skírnarnafni"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Eftirnafni eiginkonu skipt út með eftirnafni eiginmanns"
+
+#~ msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+#~ msgstr "Með þessum valkosti, þá verður <b>webtrees</b> innra skilaboðakerfi notað og engir tölvupóstar verða sendir.  Þú munt eingöngu fá send <u>innri</u> skilaboð frá öðrum notendum. Þegar annar vefsíðu notandi sendir þér skilaboð, þá birtist það skilaboð í Skilaboðakassanum á þinni persónulegu Mín Síða. Ef þú hefur fjarlægt þennan kassa frá þinni Mín Síða, þá sérðu engin skilaboð. Þau munu, samt sem áður, birtast um leið og þú breytir uppsetningu á Mín Síða til að sjá aftur Skilaboðakassann."
+
+#~ msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
+#~ msgstr "Þú getur breytt útlitinu á <b>webtrees</b> með því að nota \"þemu\". Hvert þema hefur mismunandi stíl, útlit, litaskema o.s.frv."
+
+#~ msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
+#~ msgstr "Þú getur smellt á þennan hnapp til að sjá hvort það eru aðrir skyldleika slóðar á milli þessa fólks. Fyrri fundna slóða er hægt að birta aftur með því að smella á krækjuna með slóðanúmerið."
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "Þú getur ákvarðað hvort þetta S&S sé sýnilegt óháð GEDCOM eða hvort það er eingöngu sýnilegt núverandi GEDCOM.<br><ul><li><b>Allt</b>&nbsp;&nbsp;&nbsp;S&S mun birtast í öllum S&S listum, óháð GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;S&S mun aðeins birtast í núverandi virku GEDCOM S&S lista.</li></ul>"
+
+#~ msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+#~ msgstr "Þú getur takmarkað fjölda Fréttagreina sem birtast og þar með minnkað hæðina á GEDCOM Fréttakassanum.<br><br>Þessi valkostur ákvarðar hvort setja eigi einhver takmörk eða hvort takmörkin eigi að vera samkvæmt aldrinum á greininni eða samkvæmt fjölda greina."
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Þú getur auðveldað leitina að giftum konum með því að skrá giftingarnöfn þeirra.<br>Allar konur taka þó ekki eftirnöfn eiginmanna sinna, svo þú skalt varast að setja inn rangar upplýsingar inn í gagnagrunninn þinn."
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "Þú færð ekki fleiri tölvupósta frá þessari vefsíðu, vegna þess að reikningsbeiðninni verður eytt sjálfkrafa eftir sjö daga."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Úrklippukarfa þín er tóm."
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "Kerfisstjórinn fyrir vefþjóninn þinn mun útvega þér upplýsingar um tenginguna."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Þinn notendareikningur er ekki með aðgerðina \"samþykkja sjálfvirkt breytingar\" virkjaða. Þú getur aðeins breytt einni færslu í einu."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Þjöppuð skrá(-r)"
+
+#~ msgid "daughter of"
+#~ msgstr "dóttir"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "dó"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "dó"
+
+#~ msgid "first"
+#~ msgstr "fyrsta"
+
+#~ msgid "last"
+#~ msgstr "síðasta"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "gift"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "giftur"
+
+#~ msgid "son of"
+#~ msgstr "sonur"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_unicode_ci"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "var fædd"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "var fæddur"
+
+#~ msgid "webtrees’ database must be on the same server as PGV’s"
+#~ msgstr "webrees gagnagrunnur verður að vera á sama vefþjóni og PGV"

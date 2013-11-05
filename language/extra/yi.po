@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2013-07-26 20:03+0000\n"
+"PO-Revision-Date: 2013-08-02 18:53+0000\n"
 "Last-Translator: KosherJava <Unknown>\n"
 "Language-Team: Yiddish <yi@li.org>\n"
 "Language: yi\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-07-27 05:07+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -935,7 +935,7 @@ msgstr ""
 #: modules_v3/clippings/module.php:485
 #, php-format
 msgid "Add %s to cart"
-msgstr ""
+msgstr "לייג %s צו וואָגן"
 
 #: modules_v3/faq/module.php:147 modules_v3/faq/module.php:361
 msgid "Add FAQ item"
@@ -1202,7 +1202,7 @@ msgstr ""
 
 #: modules_v3/clippings/module.php:337
 msgid "Add to clippings cart"
-msgstr ""
+msgstr "לייג צו ויסשניט וואָגן"
 
 #. I18N: Menu option.  Add [the current page] to the list of favorites
 #: library/WT/Controller/Family.php:166
@@ -1687,7 +1687,7 @@ msgstr ""
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "אַ אומגעריכט דייטאַבייס טעות פארגעקומען."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -3487,7 +3487,7 @@ msgstr "ויסבייַטן פון UTF-8 צו ANSI"
 #: admin_trees_download.php:125 modules_v3/clippings/module.php:218
 #: modules_v3/clippings/module.php:600
 msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr ""
+msgstr "בייַטן פון UTF-8 צו ANSI ISO-8859-1"
 
 #: library/WT/Stats.php:3826
 msgid "Cook Islands"
@@ -4874,7 +4874,7 @@ msgstr "באַלעבאָס"
 #: modules_v3/clippings/help_text.php:38 modules_v3/clippings/module.php:270
 #: modules_v3/clippings/module.php:476
 msgid "Empty Cart"
-msgstr ""
+msgstr "ליידיק וואָגן"
 
 #: admin_modules.php:116
 msgid "Enabled"
@@ -8100,7 +8100,7 @@ msgstr "מעלבארן, אויסטראליע"
 #: modules_v3/clippings/module.php:207 modules_v3/clippings/module.php:213
 #: modules_v3/clippings/module.php:588 modules_v3/clippings/module.php:594
 msgid "Member"
-msgstr ""
+msgstr "מיטגליד"
 
 #: admin_site_config.php:75 help_text.php:677
 msgid "Memory limit"
@@ -18613,3 +18613,739 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
+
+#~ msgid " but the details are unknown"
+#~ msgstr " אָבער די פרטים זענען אומבאַקאַנט"
+
+#~ msgid " in "
+#~ msgstr " אין "
+
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "%s טאָג צוריק"
+#~ msgstr[1] "%s טעג צוריק"
+
+#~ msgid "%s hour ago"
+#~ msgid_plural "%s hours ago"
+#~ msgstr[0] "%s שעה צוריק"
+#~ msgstr[1] "%s שעה צוריק"
+
+#~ msgid "%s minute ago"
+#~ msgid_plural "%s minutes ago"
+#~ msgstr[0] "%s מינוט צוריק"
+#~ msgstr[1] "%s מינוט צוריק"
+
+#~ msgid "%s second ago"
+#~ msgid_plural "%s seconds ago"
+#~ msgstr[0] "%s סעקונדע צוריק"
+#~ msgstr[1] "%s סעקונדעס צוריק"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(געפילטערט פון %s גאַנץ איינסן)"
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b>ביטע באַמערקונג:</b> פּריוואַט אינפֿאָרמאַציע פון לעבעדיק יחידים וועט נאָר זייַן געגעבן צו משפּחה קרובים און נאָענט פריינט. איר וועט ווערן געבעטן צו באַשטעטיקן דיין שייכות איידער איר וועט באַקומען קיין פּריוואַט דאַטן. מאל אינפֿאָרמאַציע פון טויט פנים קען אויך זייַן פּריוואַט. אויב דאָס איז די פאַל, עס איז ווייַל עס איז נישט גענוג אינפֿאָרמאַציע באַוווסט וועגן דעם מענטש צו באַשליסן צי זיי זענען לעבעדיק אָדער נישט און מיר מיסטאָמע טאָן נישט האָבן מער אינפֿאָרמאַציע אויף דעם מענטש. <br><br> איידער אַסקינג אַ קשיא , ביטע באַשטעטיקן אַז איר זענט ינקווייערינג וועגן די ריכטיק מענטש דורך קאָנטראָלירונג דאַטעס, ערטער, און נאָענט קרובים. אויב איר זענט סאַבמיטינג ענדערונגען צו די גענעאַלאָגיקאַל דאַטן, ביטע אַרייַננעמען די קוואלן ווו איר באקומען די דאַטן."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "א באַריכט פון פאקטן וואָס זענען געשטיצט דורך אַ געגעבן מקור."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "Access"
+#~ msgstr "צוטריט"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "לייג אַ מאַן ניצן אַן שאַפֿן פערזאן"
+
+#~ msgid "Add a new name"
+#~ msgstr "לייג נייַ נאָמען"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "לייג אַ פרוי ניצן אַן שאַפֿן פערזאן"
+
+#~ msgid "Add individuals"
+#~ msgstr "שטעלן מענטשן"
+
+#~ msgid "Add just this individual."
+#~ msgstr "לייג נאָר דעם מענטש"
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "יאָרן אין וועלכע צו יבערנעמען אַ מענטש איז טויטע"
+
+#~ msgid "All individuals"
+#~ msgstr "אַלע מענטשן"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "לאָזן GEDCOM טוישן"
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "אַ אומגעריכט דייטאַבייס טעות פארגעקומען."
+
+#~ msgid "Ancestors of "
+#~ msgstr "אָוועס פון "
+
+#~ msgid "Ancestral file number"
+#~ msgstr "אָוועס טעקע נומער"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "אריאל"
+
+#~ msgid "Available blocks"
+#~ msgstr "פאַראַנען בלאַקס"
+
+#~ msgid "Begin year"
+#~ msgstr "אָנהייב יאָר"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "געבורט פלאץ כּולל"
+
+#~ msgid "Birth date range end"
+#~ msgstr "געבורט טאָג קייט סוף"
+
+#~ msgid "Birth date range start"
+#~ msgstr "געבורט טאָג קייט אָנהייב"
+
+#~ msgid "Brother"
+#~ msgstr "ברודער"
+
+#~ msgid "Burial place contains"
+#~ msgstr "קבורה אָרט כּולל"
+
+#~ msgid "Change family members"
+#~ msgstr "ענדערונג פאמיליע מיטגלידער"
+
+#~ msgid "Child of "
+#~ msgstr "קינד פון "
+
+#~ msgid "Children of "
+#~ msgstr "קינדער פון "
+
+#~ msgid "Choose relatives"
+#~ msgstr "קלייַבן קרובים"
+
+#~ msgid "Coat of arms"
+#~ msgstr "הערב"
+
+#~ msgid "Contact information"
+#~ msgstr "קאָנטאַקט אינפארמאציע"
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "בארטן פון העלפאנדביין"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "שאַפֿן אַ נייַ געטיילט צעטל"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "שאַפֿן אַ נייַ געטיילט צעטל ניצן געהילף"
+
+#~ msgid "Create user"
+#~ msgstr "שאַפֿן באַניצער"
+
+#~ msgid "Date of blessing"
+#~ msgstr "דאַטע פון ברכה"
+
+#~ msgid "Date of emigration"
+#~ msgstr "דאַטע פון עמיגראַציע"
+
+#~ msgid "Date of event"
+#~ msgstr "דאַטע פון געשעעניש"
+
+#~ msgid "Date of immigration"
+#~ msgstr "דאַטע פון אימיגראַציע"
+
+#~ msgid "Date of residence"
+#~ msgstr "דאַטע פון וווינאָרט"
+
+#~ msgid "Daughter"
+#~ msgstr "טאָכטער"
+
+#~ msgid "Death Place contains"
+#~ msgstr "טויט פלאץ כּולל"
+
+#~ msgid "Death date range end"
+#~ msgstr "טויט טאָג קייט סוף"
+
+#~ msgid "Death date range start"
+#~ msgstr "טויט טאָג קייט אָנהייב"
+
+#~ msgid "Default theme"
+#~ msgstr "פעליקייַט טעמע"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "קינדסקינדער פון "
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "ז'ו אל-קעדאה"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "ז'ו אל-קעדאה"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "ז'ו אל-קעדאה"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "ז'ו אל-קעדה"
+
+#~ msgid "Differences"
+#~ msgstr "ונטערשיידען"
+
+#~ msgid "Display %s"
+#~ msgstr "אַרויסווייַזן %s"
+
+#~ msgid "Do not send messages"
+#~ msgstr "דו זאלסט נישט שיקן אָנזאָגן"
+
+#~ msgid "Edit details"
+#~ msgstr "רעדאַגירן פרטים"
+
+#~ msgid "Edit shared note"
+#~ msgstr "רעדאַגירן אַ געטיילט צעטל"
+
+#~ msgid "Email address:"
+#~ msgstr "בליצפּאָסט ווענדן:"
+
+#~ msgid "End year"
+#~ msgstr "ענדיקן יאָר"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "סאָף קייט פון טוישן דאַטעס"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "אַרייַן משפּחה שייַן"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "אַרייַן ינדיווידואַל שייַן"
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "פאַרברייטערן פּריוואַטקייט צו טויטע מענטשן"
+
+#~ msgid "Family group information"
+#~ msgstr "פאמיליע גרופע אינפארמאציע"
+
+#~ msgid "Family with husband"
+#~ msgstr "פאמיליע מיט מאַן"
+
+#~ msgid "Family with wife"
+#~ msgstr "פאמיליע מיט ווייַב"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "פאטערס בירטהפּלאַסע - (טשאַפּמאַן פֿאָרמאַט)"
+
+#~ msgid "Father’s age"
+#~ msgstr "פאָטער ס יאָרן"
+
+#~ msgid "Font"
+#~ msgstr "שריפֿט"
+
+#~ msgid "Gedcom"
+#~ msgstr "GEDCOM"
+
+#~ msgid "Generation "
+#~ msgstr "דאָר "
+
+#~ msgid "He "
+#~ msgstr "ער "
+
+#~ msgid "He died"
+#~ msgstr "ער איז געשטארבן"
+
+#~ msgid "He married"
+#~ msgstr "ער חתונה געהאט"
+
+#~ msgid "He resided at"
+#~ msgstr "ער האט געוווינט אין"
+
+#~ msgid "He was born"
+#~ msgstr "ער איז געבוירן"
+
+#~ msgid "He was buried"
+#~ msgstr "ער איז באַגראָבן"
+
+#~ msgid "He was cremated"
+#~ msgstr "ער איז געווען פאַרברענען"
+
+#~ msgid "Hello %s…"
+#~ msgstr "שאָלעם אַלייכעם %s"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "הלווטיקה"
+
+#~ msgid "Her occupation was"
+#~ msgstr "איר פּראָפעסיע איז געווען"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "באַהאַלטן און ווייַזן"
+
+#~ msgid "His occupation was"
+#~ msgstr "זיין פּראָפעסיע איז געווען"
+
+#~ msgid "Husband’s age"
+#~ msgstr "יאָרן פון מאַן"
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "אויב איר טאָן ניט וויסן די סעטטינגס, לאָזן די פעליקייַט וואַלועס. זיי זאלן אַרבעטן. איר קענען טוישן זיי שפּעטער."
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "אויב איר טאָן נישט וועלן צו שיקן פּאָסט, פֿאַר בייַשפּיל ווען פליסנדיק <b>webtrees</b> מיט אַ איין באַניצער אָדער אויף אַ סטאַנדאַלאָנע קאָמפּיוטער, איר קענען דיסייבאַל דעם שטריך."
+
+#~ msgid "In this month…"
+#~ msgstr "אין דעם חודש …"
+
+#~ msgid "In this year…"
+#~ msgstr "אין דעם יאָר …"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "אַרייַננעמען דעם מענטש ס באַלדיק משפּחה?"
+
+#~ msgid "Individual 1"
+#~ msgstr "מענטש 1:"
+
+#~ msgid "Individual 2"
+#~ msgstr "מענטש 2:"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "מענטש וואס געלעבט די לאָנגעסט"
+
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "פֿאַרבינדונג דעם פערזאן צו אַן שאַפֿן משפּחה ווי אַ קינד"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "פֿאַרבינדונג דעם פערזאן צו אַן שאַפֿן משפּחה ווי אַ מאַן"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "פֿאַרבינדונג דעם פערזאן צו אַן שאַפֿן משפּחה ווי אַ פרוי"
+
+#~ msgid "Living individuals"
+#~ msgstr "לעבעדיקע מענטשן"
+
+#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
+#~ msgstr "מאַסע אַלע דיין משפּחה ביימער פון דיסק, דורך ניצן די \"אַרייַנפיר\" פֿונקציע פֿאַר יעדער איינער."
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "חתונה טאָג קייט סוף"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "חתונה טאָג קייט אָנהייב"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "חתונה פלאץ כּולל"
+
+#~ msgid "Married name"
+#~ msgstr "באהעפט נאָמען"
+
+#~ msgid "Married surname"
+#~ msgstr "באהעפט משפּחה נאָמען"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "צונויפגיסן פון שייַן:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "צונויפגיסן צו שייַן:"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "מערסט וויעוועד זאכן"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "מוטערס בירטהפּלאַסע - (טשאַפּמאַן פֿאָרמאַט)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "מוטער ס יאָרן"
+
+#~ msgid "Move left"
+#~ msgstr "רירן לינקס"
+
+#~ msgid "Move right"
+#~ msgstr "רירן רעכט"
+
+#~ msgid "Name List"
+#~ msgstr "נאָמען ליסטע"
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "קיין געשעענישן פֿאַר לעבעדיק מענטשן עקסיסטירן פֿאַר הייַנט."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "קיין געשעענישן פֿאַר לעבעדיק מענטשן עקסיסטירן פֿאַר מאָרגן."
+
+#~ msgid "No records to display"
+#~ msgstr "קיין רעקאָרדס צו אַרויסווייַזן"
+
+#~ msgid "Nuku’Alofa, Tonga"
+#~ msgstr "נוקואלופא, טונגא"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "נומער פון חדשים זינט די לעצטע לאָגין פֿאַר אַ באַניצערס חשבון צו זייַן געהאלטן ינאַקטיוו: "
+
+#~ msgid "On this day…"
+#~ msgstr "אויף דעם טאָג …"
+
+#~ msgid "Orientation"
+#~ msgstr "אָריִענטירונג"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "אנדערע טעקע … ביטע אַרײַנקלאַפּן אין"
+
+#~ msgid "Page"
+#~ msgstr "בלאַט"
+
+#~ msgid "Page size"
+#~ msgstr "בלאַט גרייס"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "עלטערן, ברידער און שוועסטער"
+
+#~ msgid "Parent’s age"
+#~ msgstr "פאָטער ס / מוטער ס יאָרן"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "ייכעס טשאַרט"
+
+#~ msgid "Place of blessing"
+#~ msgstr "אָרט פון ברכה"
+
+#~ msgid "Place of emigration"
+#~ msgstr "אָרט פון עמיגראַציע"
+
+#~ msgid "Place of event"
+#~ msgstr "פּלאַץ פון געשעעניש"
+
+#~ msgid "Place of immigration"
+#~ msgstr "אָרט פון אימיגראַציע"
+
+#~ msgid "Place of residence"
+#~ msgstr "אָרט פון וווינאָרט"
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "דרוק גרונט געשעענישן ווען פּוסט?"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "ראביע אל-אוואל"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "ראביע אל-אוואל"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "ראביע אל-אוואל"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "ראביע אל-אוואל"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "רביע א-ת'אני"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "רביע א-ת'אני"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "רביע א-ת'אני"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "רביע א-ת'אני"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "לעצטע יאָרן (&lt; הונדערט יאר)"
+
+#~ msgid "Remove this location?"
+#~ msgstr "אַראָפּנעמען דעם אָרט?"
+
+#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
+#~ msgstr "היט אַלע דיין משפּחה ביימער צו דיסק, דורך ניצן די \"אַרויספירן\" פֿונקציע פֿאַר יעדער איינער."
+
+#~ msgid "Security"
+#~ msgstr "זיכערהייַט"
+
+#~ msgid "Select events"
+#~ msgstr "אויסקלייַבן געשעענישן"
+
+#~ msgid "Send message"
+#~ msgstr "שיקן אָנזאָג"
+
+#~ msgid "Server"
+#~ msgstr "דינער"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "שאבאן"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "שאבאן"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "שאבאן"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "שאבאן"
+
+#~ msgid "She "
+#~ msgstr "זי "
+
+#~ msgid "She died"
+#~ msgstr "זי איז געשטארבן"
+
+#~ msgid "She married"
+#~ msgstr "זי האט חתונה געהאט"
+
+#~ msgid "She resided at"
+#~ msgstr "זי האט געוווינט אין"
+
+#~ msgid "She was born"
+#~ msgstr "זי האט געבוירן"
+
+#~ msgid "She was buried"
+#~ msgstr "זי איז באַגראָבן"
+
+#~ msgid "She was cremated"
+#~ msgstr "זי איז געווען פאַרברענען"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "ווייַזן אַלע ערטער אין אַ רעשימע"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "ווייַזן קינדער פון אָוועס?"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "ווייַזן טויטע מענטשן"
+
+#~ msgid "Show details"
+#~ msgstr "ווייַז דעטאַילס"
+
+#~ msgid "Show inactive places"
+#~ msgstr "ווייַזן ינאַקטיוו ערטער"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "ווייַזן מענטשן געבוירן מער ווי 100 יאר צוריק."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "ווייַזן מענטשן געבוירן אין די לעצטע 100 יאר."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "ווייַזן מענטשן וואס זענען געשטארבן מער ווי 100 יאר צוריק."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "ווייַזן מענטשן וואס זענען געשטארבן אין די לעצטע 100 יאר."
+
+#~ msgid "Show notes?"
+#~ msgstr "ווייַזן הערות?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "ווייַז פּראָפעסיעס?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "ווייַזן בלויז געשעענישן פון לעבעדיק מענטשן?"
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "ווייַזן בלויז מענטשן, געשעענישן, אָדער אַלע?"
+
+#~ msgid "Show photos?"
+#~ msgstr "ווייַזן בילדער?"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "ווייַזן פֿאַרבונדענע פנים / משפחות"
+
+#~ msgid "Show sources?"
+#~ msgstr "ווייַזן מקורים?"
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "ווייַזונג %1$s צו %2$s פון %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "שוועסטער"
+
+#~ msgid "Son"
+#~ msgstr "זון"
+
+#~ msgid "Sources to the events"
+#~ msgstr "קוואלן צו די געשעענישן"
+
+#~ msgid "Spouse"
+#~ msgstr "ספּאַוס"
+
+#~ msgid "Spouses and children"
+#~ msgstr "מאנען, ווייבער און קינדער"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "סטאַרטינג קייט פון טוישן דאַטעס"
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "די regex אויס צו אַנטהאַלטן אַ טעות. עס קען ניט זייַן געניצט."
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "דאס איז די נאָמען פון די SMTP דינער. 'localhost' מיינט אַז די פּאָסט דינסט איז פליסנדיק אויף דער זעלביקער קאָמפּיוטער ווי דיין וועב סערווער."
+
+#~ msgid "To family"
+#~ msgstr "צו משפּחה"
+
+#~ msgid "To individual"
+#~ msgstr "צו מענטש"
+
+#~ msgid "To source"
+#~ msgstr "צו מקור"
+
+#~ msgid "Total pending changes: "
+#~ msgstr "ונטערשיידען "
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "אומבאַקאַנט GEDCOM קאָוד"
+
+#~ msgid "Use colors"
+#~ msgstr "ניץ פֿאַרבן"
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "באַניצער האט נישט באַשטעטיקן ין 7 טעג."
+
+#~ msgid "Users’ languages"
+#~ msgstr "ניצערס שפּראַכן"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "באַניצעס חשבון האט שוין ינאַקטיוו אויך לאַנג: "
+
+#~ msgid "View day"
+#~ msgstr "זען טאָג"
+
+#~ msgid "View details"
+#~ msgstr "זען פרטים"
+
+#~ msgid "View family"
+#~ msgstr "זע פאמיליע"
+
+#~ msgid "View month"
+#~ msgstr "זען חודש"
+
+#~ msgid "View notes"
+#~ msgstr "זען הערות"
+
+#~ msgid "View person"
+#~ msgstr "זע פּערזאָן"
+
+#~ msgid "View source"
+#~ msgstr "זע מאָקער"
+
+#~ msgid "View year"
+#~ msgstr "זען יאָר"
+
+#~ msgid "Visitor options"
+#~ msgstr "גאַסט אָפּציעס"
+
+#~ msgid "Wife’s age"
+#~ msgstr "יאָרן פון פרוי"
+
+#~ msgid "daughter of"
+#~ msgstr "טאָכטער פון"
+
+#~ msgctxt "son's wife's father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "מחותן"
+
+#~ msgctxt "son's wife's mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "מחותנסטע"
+
+#~ msgctxt "son's wife's parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "מחותן/מחותנסטע"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "געשטארבן"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "געשטארבן"
+
+#~ msgid "first"
+#~ msgstr "ערשטער"
+
+#~ msgctxt "child's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "ייניקלס מאַן"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "ייניקלס מאַן"
+
+#~ msgctxt "son's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "ייניקלס מאַן"
+
+#~ msgctxt "child's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "ייניקלס ווייַב"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "ייניקלס ווייַב"
+
+#~ msgctxt "son's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "ייניקלס ווייַב"
+
+#~ msgid "last"
+#~ msgstr "לעצט"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "חתונה געהאט"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "חתונה געהאט"
+
+#~ msgid "son of"
+#~ msgstr "זון פון"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "יידעם ס פאטער"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "יידעם ס מוטער"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "יידעם ס פאָטער/מוטער"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "איז געבוירן"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "איז געבוירן"

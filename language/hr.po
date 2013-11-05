@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2011-11-19 22:54+0000\n"
-"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2013-08-04 16:35+0000\n"
+"Last-Translator: mimo <mimo0511@gmail.com>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:34+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: Croatian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -1060,7 +1060,7 @@ msgstr "Dodaj novi citat sa izvora"
 
 #: edit_interface.php:1537 modules_v3/relatives/module.php:37
 msgid "Add a new spouse"
-msgstr ""
+msgstr "Dodaj novog supružnika"
 
 #: themes/_administration/header.php:128
 msgid "Add a new user"
@@ -2459,7 +2459,7 @@ msgstr ""
 
 #: admin_module_blocks.php:55 admin_modules.php:122
 msgid "Block"
-msgstr ""
+msgstr "Blok"
 
 #: themes/_administration/header.php:145
 msgid "Blocks"
@@ -2795,7 +2795,7 @@ msgstr ""
 
 #: help_text.php:1422
 msgid "By default this chart does not show spouses for the descendants because it makes the chart harder to read and understand.  Turning this option on will show spouses on the chart."
-msgstr "~#pgv_lang[show_spouses]#~<br /><br />By default this chart does not show spouses for the descendants because it makes the chart harder to read and understand.  Turning this option on will show spouses on the chart.<br /><br />"
+msgstr ""
 
 #. I18N: Help text for the "Port number" site configuration setting
 #: help_text.php:767
@@ -3117,7 +3117,7 @@ msgstr "Odaberite izvještaj za učitati"
 
 #: help_text.php:355
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
-msgstr "~#pgv_lang[sex]#~<br /><br />Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown.<br /><br />"
+msgstr ""
 
 #: help_text.php:1463
 msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the person who made an audio recording."
@@ -3315,7 +3315,7 @@ msgstr ""
 
 #: help_text.php:1356
 msgid "Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically."
-msgstr "~VIEW ALL RECORDS~<br /><br />Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically.<br /><br />"
+msgstr "~VIEW ALL RECORDS~<br><br>Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically.<br><br>"
 
 #: help_text.php:1142
 msgid "Clicking the \"+\" icon will open the GEDFact Shared Note Assistant window.<br />Specific help will be found there.<br /><br />When you click the \"Save\" button, the ID of the Shared Note will be pasted here."
@@ -4175,7 +4175,7 @@ msgstr "Mjesta smrti"
 #. I18N: Name of a module/report
 #: modules_v3/death_report/module.php:35
 msgid "Deaths"
-msgstr ""
+msgstr "Smrti"
 
 #: library/WT/Stats.php:1304 statistics.php:107
 msgid "Deaths by century"
@@ -4376,7 +4376,7 @@ msgstr ""
 #: admin_module_tabs.php:74 admin_modules.php:118 find.php:469
 #: library/WT/Gedcom/Tag.php:193
 msgid "Description"
-msgstr "תיאור"
+msgstr "Opis"
 
 #: admin_trees_config.php:424 help_text.php:686
 msgid "Description META tag"
@@ -4964,7 +4964,7 @@ msgstr ""
 
 #: help_text.php:385
 msgid "Enter the time for this event in 24-hour format with leading zeroes. Midnight is 00:00. Examples: 04:50 13:00 20:30."
-msgstr "~#factarray[TIME]#~<br /><br />Enter the time for this event in 24-hour format with leading zeroes. Midnight is 00:00. Examples: 04:50 13:00 20:30.<br /><br />"
+msgstr "~#factarray[TIME]#~<br><br>Enter the time for this event in 24-hour format with leading zeroes. Midnight is 00:00. Examples: 04:50 13:00 20:30.<br><br>"
 
 #: modules_v3/googlemap/help_text.php:65
 msgid "Enter zoom level"
@@ -5626,7 +5626,7 @@ msgstr ""
 #: admin_site_merge.php:294 admin_site_merge.php:315 find.php:76
 #: includes/functions/functions_print.php:1136
 msgid "Find a family"
-msgstr ""
+msgstr "Nađi Obitelj"
 
 #: find.php:79 includes/functions/functions_print.php:1166
 msgid "Find a media object"
@@ -5659,7 +5659,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:77
 #: modules_v3/GEDFact_assistant/module.php:80
 msgid "Find an individual"
-msgstr ""
+msgstr "Nađi pojedinca"
 
 #: relationship.php:149
 msgid "Find next path"
@@ -6463,7 +6463,7 @@ msgstr "הונגריה"
 #. I18N: gedcom tag HUSB
 #: edit_interface.php:543 library/WT/Gedcom/Tag.php:235
 msgid "Husband"
-msgstr "בעל"
+msgstr "Suprug"
 
 #: library/WT/Controller/Timeline.php:223
 msgid "Husband's age"
@@ -6549,7 +6549,7 @@ msgstr ""
 
 #: help_text.php:1474
 msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
-msgstr "~EDIT ACCOUNT INFO~<br /><br />If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account.<br /><br />"
+msgstr "~EDIT ACCOUNT INFO~<br><br>If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account.<br><br>"
 
 #: help_text.php:621
 msgid "If this person has any events other than Death, Burial, or Cremation more recent than this number of years, he is considered to be \"alive\".  Children's birth dates are considered to be such events for this purpose."
@@ -6679,11 +6679,11 @@ msgstr ""
 
 #: help_text.php:317
 msgid "In the Citation Details field you would enter the page number or other information that might help someone find the information in the source."
-msgstr "~#factarray[PAGE]#~<br /><br />In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.<br /><br />"
+msgstr "~#factarray[PAGE]#~<br><br>In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.<br><br>"
 
 #: help_text.php:380
 msgid "In this field you would enter the citation text for this source.  Examples of data may be a transcription of the text from the source, or a description of what was in the citation."
-msgstr "~#factarray[TEXT]#~<br /><br />In this field you would enter the citation text for this source.  Examples of data may be a transcription of the text from the source, or a description of what was in the citation.<br /><br />"
+msgstr "~#factarray[TEXT]#~<br><br>In this field you would enter the citation text for this source.  Examples of data may be a transcription of the text from the source, or a description of what was in the citation.<br><br>"
 
 #: modules_v3/googlemap/admin_places.php:623
 msgid "Inactive"
@@ -8868,6 +8868,7 @@ msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -9052,7 +9053,7 @@ msgstr "Bilješke"
 
 #: help_text.php:304
 msgid "Notes are free-form text and will appear in the Fact Details section of the page."
-msgstr "~#factarray[NOTE]#~<br /><br />Notes are free-form text and will appear in the Fact Details section of the page.<br /><br />"
+msgstr "~#factarray[NOTE]#~<br><br>Notes are free-form text and will appear in the Fact Details section of the page.<br><br>"
 
 #: admin_users.php:537
 msgid "Nothing found to cleanup"
@@ -9521,7 +9522,7 @@ msgstr "Lozinka mora imati minimalno 6 znakova"
 #: library/WT/Controller/Pedigree.php:94 library/WT/MenuBar.php:104
 #: modules_v3/charts/module.php:205 modules_v3/pedigree_report/module.php:35
 msgid "Pedigree"
-msgstr "יחוס"
+msgstr "Rodovnik"
 
 #: includes/functions/functions_print.php:93
 #: library/WT/Controller/Fanchart.php:308 library/WT/MenuBar.php:123
@@ -10966,7 +10967,7 @@ msgstr ""
 
 #: help_text.php:1277
 msgid "Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download."
-msgstr "~INCLUDE MEDIA~<br /><br />Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download.<br /><br />"
+msgstr "~INCLUDE MEDIA~<br><br>Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download.<br><br>"
 
 #: admin_site_merge.php:273
 msgid "Select two GEDCOM records to merge.  The records must be of the same type."
@@ -11459,7 +11460,7 @@ msgstr ""
 
 #: timeline.php:315
 msgid "Show lifespans"
-msgstr ""
+msgstr "Pokaži životni vijek"
 
 #: modules_v3/gedcom_stats/module.php:373
 msgid "Show link to Statistics charts?"
@@ -11679,7 +11680,7 @@ msgstr ""
 
 #: help_text.php:1427
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
-msgstr "~#pgv_lang[filter]#~<br /><br />Simple search filter based on the characters entered, no wildcards are accepted.<br /><br />"
+msgstr ""
 
 #: library/WT/Stats.php:3979
 msgid "Singapore"
@@ -12070,7 +12071,7 @@ msgstr "סורינאם"
 #. I18N: gedcom tag SURN
 #: help_text.php:1255 library/WT/Gedcom/Tag.php:328
 msgid "Surname"
-msgstr "שם משפחה"
+msgstr "Prezime"
 
 #: modules_v3/batch_update/plugins/married_names.php:105
 msgid "Surname Option"
@@ -12137,7 +12138,7 @@ msgstr ""
 
 #: admin_module_tabs.php:73 admin_modules.php:120 admin_modules.php:138
 msgid "Tab"
-msgstr ""
+msgstr "Kartica"
 
 #: setup.php:376
 msgid "Table prefix"
@@ -12443,7 +12444,7 @@ msgstr ""
 
 #: help_text.php:1256
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
-msgstr "~OPTIONS FOR STATISTICS PLOTS~<br /><br />The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used.<br /><br />"
+msgstr "~OPTIONS FOR STATISTICS PLOTS~<br><br>The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used.<br><br>"
 
 #: help_text.php:57
 msgid "The organization, institution, corporation, person, or other entity that has authority.<br /><br />For example, an employer of a person, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
@@ -12795,11 +12796,11 @@ msgstr ""
 
 #: help_text.php:270
 msgid "This is an optional field that can be used to enter the file format of the multimedia object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important."
-msgstr "~#factarray[FORM]#~<br /><br />This is an optional field that can be used to enter the file format of the multimedia object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important.<br /><br />"
+msgstr "~#factarray[FORM]#~<br><br>This is an optional field that can be used to enter the file format of the multimedia object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important.<br><br>"
 
 #: help_text.php:370
 msgid "This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program."
-msgstr "~#factarray[STAT]#~<br /><br />This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program.<br /><br />"
+msgstr "~#factarray[STAT]#~<br><br>This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program.<br><br>"
 
 #: setup.php:288 setup.php:292
 msgid "This is case sensitive."
@@ -13154,7 +13155,7 @@ msgstr ""
 
 #: help_text.php:1147
 msgid "This section allows you to add a new Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
-msgstr "~#pgv_lang[add_note]#~<br /><br />This section allows you to add a new Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page.<br /><br />"
+msgstr ""
 
 #: help_text.php:1160
 msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br /><br />In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
@@ -13353,7 +13354,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1126
 #: modules_v3/gedcom_favorites/module.php:192
 msgid "Title"
-msgstr "כותרת"
+msgstr "Naslov"
 
 #: library/WT/Gedcom/Tag.php:335
 msgid "Title in Hebrew"
@@ -13396,7 +13397,7 @@ msgstr ""
 
 #: help_text.php:1236
 msgid "To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link."
-msgstr "To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>#pgv_lang[gedcom_news_archive]#</b> link.<br /><br />"
+msgstr ""
 
 #: modules_v3/sitemap/module.php:264
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -13903,7 +13904,7 @@ msgstr "~#factarray[_PRIM]#~<br /><br />Use this field to signal that this media
 
 #: help_text.php:1366
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
-msgstr "~#pgv_lang[comments]#~<br /><br />Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator.<br /><br />"
+msgstr ""
 
 #: edit_interface.php:2126
 msgid "Use this page to change or remove family members.<br /><br />For each member in the family, you can use the Change link to choose a different person to fill that role in the family.  You can also use the Remove link to remove that person from the family.<br /><br />When you have finished changing the family members, click the Save button to save the changes."
@@ -14407,7 +14408,7 @@ msgstr ""
 #. I18N: gedcom tag WIFE
 #: edit_interface.php:541 library/WT/Gedcom/Tag.php:340
 msgid "Wife"
-msgstr "אישה"
+msgstr "Supruga"
 
 #: library/WT/Controller/Timeline.php:223
 msgid "Wife's age"
@@ -14444,7 +14445,7 @@ msgstr ""
 
 #: help_text.php:1199
 msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."
-msgstr "With this option, you will not receive any messages.  Even the administrator will not be able to reach you.<br /><br />"
+msgstr ""
 
 #: help_text.php:1195
 msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page."
@@ -18197,7 +18198,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:430
 msgctxt "mother's husband"
 msgid "step-father"
-msgstr ""
+msgstr "očuh"
 
 #: includes/functions/functions.php:1252
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:735
@@ -18609,14 +18610,481 @@ msgstr ""
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: includes/config_data.php:37
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
+
+#~ msgid "(aged %s)"
+#~ msgstr "Star %s"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "star manje od %s"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "star više od %s"
+
+#~ msgid "(in childhood)"
+#~ msgstr "(u djetinjstvu)"
+
+#~ msgid "(in infancy)"
+#~ msgstr "(kao dojenče)"
+
+#~ msgid "(stillborn)"
+#~ msgstr "(mrtvorođeno)"
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b>Molim pažnju:</b>Privatne informacije o osobama će biti komunicirane samo osobama povezanim sa tom osobom (bliski rod).  Biti ćete zamoljeni da dokažete svoju srodnost prije nego vam se prenesu ikakvi podatci.  U nekim slučajevima i informacije o umrlim osobama su privatne. Ako je to slučaj tada vjerovatno nemamo dovoljno podataka o tome jeli osoba živa ili je umrla.<br><br>Prije ikakvih upita molimo da dobro budete sigurni da je osoba o kojoj se raspitujete baš ta osoba koju tražite. Provjerite podatke! Ako radite promjene u bazi podataka molimo da priložite informacije o vašim izvorima podataka."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Dobrodošli na genološku web stranicu</b></center><br>Pristup je dopušten samo registriranim korisnicima."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Dobrodošli na genološku web stranicu</b></center><br>Pristup ovomj stranici je dozvoljen <u>registriranim</u> korisnicima.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-mailom nakon pregleda prijave."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Dobrodošli na gednolšku web stranicu</b></center><br>Pristup stranici je dopušten  <u>samo članovima obitelji</u>.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-mailom nakon pregleda prijave."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Dobrodošli na genološku web stranicu</b></center><br>Pristup stranici je dopušten svakome tko ima korisnički račun.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate korisnički račun, možete se prijaviti za dobivanje jednog na prikladnom linku ispod<br><br>Nakon pregledavanja vaše prijave, administrator će aktivirati vaš račun. Primiti će te e-mail sa potvrdom aktivacije računa na vaš e-mail."
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=abcčćdđefghijklmnoprsštuvzž"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=ABCČĆDĐEFGHIJKLMNOPRSŠTUVZŽ"
+
+#~ msgid "Access"
+#~ msgstr "Pristup"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Dodaj muza koristeci postojecu osobu"
+
+#~ msgid "Add a new name"
+#~ msgstr "Dodaj novo ime"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Dodaj suprugu koristeci postojecu osobu"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Dodaj novu osobu"
+
+#~ msgid "Ancestral file number"
+#~ msgstr "Broj datoteke predaka"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Jeste li sigurni da želite ukloniti sve promjene na GEDCOM-u"
+
+#~ msgid "Available blocks"
+#~ msgstr "Dostupni blokovi"
+
+#~ msgid "Begin year"
+#~ msgstr "Započmi sa godinom"
+
+#~ msgid "Best man"
+#~ msgstr "Kum"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "Detalji rođenja i smrti na prikazu"
+
+#~ msgid "Brother"
+#~ msgstr "Brat"
+
+#~ msgid "Change family members"
+#~ msgstr "Promijeni članove porodice"
+
+#~ msgid "Civil registrar"
+#~ msgstr "Matičar"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Matičar"
+
+#~ msgctxt "MALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Matičar"
+
+#~ msgid "Clear chart"
+#~ msgstr "Očisti prikaz"
+
+#~ msgid "Click this link to remove the individual from the timeline."
+#~ msgstr "~REMOVE PERSON FROM THE CHART~<br><br>Click this link to remove the person from the timeline.<br><br>"
+
+#~ msgid "Contact information"
+#~ msgstr "Kontakt podaci"
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "Obala Bjelokosti"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Napravi novu zajedničku bilješku"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Kreiraj novi zajednički zapis koristeći asistenta"
+
+#~ msgid "Create repository"
+#~ msgstr "Kreiraj mjesto čuvanja"
+
+#~ msgid "Custom event"
+#~ msgstr "Događaj (od korisnika)"
+
+#~ msgid "Date of adoption"
+#~ msgstr "Datum posvojenja"
+
+#~ msgid "Date of cremation"
+#~ msgstr "Datum kremacije"
+
+#~ msgid "Date of emigration"
+#~ msgstr "datum emigracije"
+
+#~ msgid "Date of event"
+#~ msgstr "Datum događaja"
+
+#~ msgid "Date of immigration"
+#~ msgstr "Datum imigracije"
+
+#~ msgid "Daughter"
+#~ msgstr "Kćer"
+
+#~ msgid "Default theme"
+#~ msgstr "Zadana tema"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Direktna linija predaka"
+
+#~ msgid "Display %s"
+#~ msgstr "Prikaži %s"
+
+#~ msgid "Do not seal, previous sealing cancelled"
+#~ msgstr "Ne pečati; prijašnje pečaćenje prekinuto"
+
+#~ msgid "Do not seal: unauthorized"
+#~ msgstr "Ne pečati: neautorizirano"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Uredi sirovi GEDCOM"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Uredi zajednički zapis"
+
+#~ msgid "Email address:"
+#~ msgstr "Adresa e-pošte:"
+
+#~ msgid "End year"
+#~ msgstr "Završi sa godinom"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Unesi broj osobe"
+
+#~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
+#~ msgstr "~#factarray[TITL]#~<br><br>Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user.<br><br>"
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Unesite Osobu, Obitelj, ili oznaku izvora"
+
+#~ msgid "Enter associate GEDCOM ID."
+#~ msgstr "~#factarray[ASSO]#~<br><br>Enter associate GEDCOM ID.<br><br>"
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Unesite ili nađite oznaku osobe, obitelji ili izvora sa kojim bi ova medija trebala biti povezana."
+
+#~ msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+#~ msgstr "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown.<br><br>"
+
+#~ msgid "Enter the name of the cemetery or other resting place where individual is buried."
+#~ msgstr "~#factarray[CEME]#~<br><br>Enter the name of the cemetery or other resting place where individual is buried.<br><br>"
+
+#~ msgid "Entry text:"
+#~ msgstr "tekst unosa"
+
+#~ msgid "External objects"
+#~ msgstr "Vanjski objekti"
+
+#~ msgid "Family group information"
+#~ msgstr "Informacije o obiteljskoj grupi"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Rodno mjesto Oca"
+
+#~ msgid "Father’s age"
+#~ msgstr "Dob oca"
+
+#~ msgid "For LDS ordinances, this field records the temple where it was performed."
+#~ msgstr "~#factarray[TEMP]#~<br><br>For LDS ordinances, this field records the temple where it was performed.<br><br>"
+
+#~ msgid "Foster child"
+#~ msgstr "Posvojeno dijete"
+
+#~ msgid "Foster father"
+#~ msgstr "Otac koji je usvojio"
+
+#~ msgid "Foster mother"
+#~ msgstr "Majka koja je usvojila"
+
+#~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
+#~ msgstr "~ADD NEW FACTS~<br><br>Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list.<br><br>"
+
+#~ msgid "Hit count:"
+#~ msgstr "Broj posjeta"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Muževe godine"
+
+#~ msgid "Individual 1"
+#~ msgstr "Osoba 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Osoba 2"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Dodaj ovu osobu kao dijete već upisanoj porodici"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Dodaj ovu osobu kao supruga već upisanoj porodici"
+
+#~ msgid "Loading…"
+#~ msgstr "Učitavanje…"
+
+#~ msgid "Main section blocks"
+#~ msgstr "Blokovi glavne sekcije"
+
+#~ msgid "Married name"
+#~ msgstr "Vjenčano ime"
+
+#~ msgid "Married surname"
+#~ msgstr "Vjenčano prezime"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Rodno mjesto Majke"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Dob majke"
+
+#~ msgid "Move left"
+#~ msgstr "Pomakni ulijevo"
+
+#~ msgid "Move right"
+#~ msgstr "Pomakni udesno"
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Ne postoje događaji za žive ljude danas"
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Ne postoje događaji sa žive osobe za sutra."
+
+#~ msgid "No records to display"
+#~ msgstr "Ne postoje zapisi za prikaz"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Nema takve identifikacijske oznake u ovom GEDCOM-u"
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Najstariji živuće osobe"
+
+#~ msgid "Orientation"
+#~ msgstr "Smjer"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Druga mapa… molimo unesite"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Dob roditelja"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Grafikon krvne linije"
+
+#~ msgid "Place of LDS child sealing"
+#~ msgstr "P"
+
+#~ msgid "Place of adoption"
+#~ msgstr "Mjesto posvojenja"
+
+#~ msgid "Place of emigration"
+#~ msgstr "Mjesto emigracije"
+
+#~ msgid "Place of event"
+#~ msgstr "Mjesto događaja"
+
+#~ msgid "Place of immigration"
+#~ msgstr "Mjesto imigracije"
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "Registry officer"
+#~ msgstr "Osoba u registru"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "Osoba u registru"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "Osoba u registru"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Blokovi desne sekcije"
+
+#~ msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
+#~ msgstr "~#factarray[RELA]#~<br><br>Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>.<br><br>"
+
+#~ msgid "Select events"
+#~ msgstr "Odaberi izvore"
+
+#~ msgid "Send message"
+#~ msgstr "Pošalji Poruku"
+
+#~ msgid "Sender email address"
+#~ msgstr "E-mail adresa pošiljatelja"
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Zajednički zapis sadrži"
+
+#~ msgid "Shared notes found"
+#~ msgstr "Pronađeni zajednički zapisi"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "prikaži sva mjesta u listi"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "Prikazi mrtve osobe"
+
+#~ msgid "Show details"
+#~ msgstr "Prikaži detalje"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Prikaži istaknute slike u odjeljcima osoba"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Prikaži osobe rođene prije više od 100 godina"
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Prikaži osobe rođene unutar prošlih 100 godina"
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Prikaži osobe koje su žive ili parove gdje su oba partnera živa."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Prikaži osobe koje su umrle ili parove gdje su obe osobe mrtve."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Prikaži osobe koje su umrle prije više od 100 godina"
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Prikaži osobe koje su umrle unutar prošlih 100 godina"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Prikaži samo osobe kojima spol nije znan."
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Prikaži mjesta po hijerarhiji"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "prikaži povezane osobe/obitelji"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Prikaži osobe koje nemaju zabilježenu djecu u bazi podataka."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Prikaži \"korjenske\" parove ili osobe. Te osobe se još zovu i \"patrijarsi\". Oni su jedinke koje nemaju zabilježene roditelje u bazi podataka."
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Prikazuje %1$s za %2$s od %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "Sestra"
+
+#~ msgid "Social security number"
+#~ msgstr "Matični broj"
+
+#~ msgid "Son"
+#~ msgstr "Sin"
+
+#~ msgid "Spouse"
+#~ msgstr "Supružnik"
+
+#~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
+#~ msgstr "~#factarray[TYPE]#~<br><br>The #factarray[TYPE]# field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want.<br><br>"
+
+#~ msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
+#~ msgstr "~#factarray[AGNC]#~<br><br>The organization, institution, corporation, person, or other entity that has authority.<br><br>For example, an employer of a person, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
+
+#~ msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
+#~ msgstr "~VISIBLE ONLINE~<br><br>This checkbox controls your visibility to other users while you're online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible.<br><br>"
+
+#~ msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+#~ msgstr "~CLIPPINGS CART ADD BY ID~<br><br>This input box lets you enter an individual's ID number so he can be added to the Clippings Cart.  Once added you'll be offered options to link that individual's relations to your Clippings Cart.<br><br>If you do not know an individual's ID number, you can perform a search by name by pressing the Person icon next to the Add button.<br><br>"
+
+#~ msgid "To family"
+#~ msgstr "Za obitelj"
+
+#~ msgid "To individual"
+#~ msgstr "Za osobu"
+
+#~ msgid "To source"
+#~ msgstr "Za izvor"
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Neprepoznati GEDCOM kod"
+
+#~ msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
+#~ msgstr "~Move list entries~<br><br>Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down.<br><br>"
+
+#~ msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+#~ msgstr "~#factarray[_PRIM]#~<br><br>Use this field to signal that this media item is the highlighted or primary item for the person it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page.<br><br>"
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Koristite ovu stranicu kako bi ste promijenili ili uklonili članove obitelji.<br><br>Za svakog člana u obitelji, možete koristiti link promijene za odabrati drugu osobu da popuni tu ulogu u obitelji. Također možete koristiti link Ukloni da uklonite osobu iz obitelji.<br><br>Kad ste završili s promjenom članova obitelji, pritisnite gumb Spremi da biste spremili promjene."
+
+#~ msgid "Users logged in"
+#~ msgstr "Prijavljenih korisnika"
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Pogledaj zapis (GEDCOM)"
+
+#~ msgid "View day"
+#~ msgstr "Prikaži dan"
+
+#~ msgid "View family"
+#~ msgstr "Prikaži obitelj"
+
+#~ msgid "View month"
+#~ msgstr "Prikaži mjesec"
+
+#~ msgid "View person"
+#~ msgstr "Prikaži osobu"
+
+#~ msgid "View source"
+#~ msgstr "Prikaži izvor"
+
+#~ msgid "View year"
+#~ msgstr "Prikaži godinu"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Ženine godine"
+
+#~ msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
+#~ msgstr "~FIND NEXT PATH~<br><br>You can click this button to see whether there is another relationship path between the two people.  Previously found paths can be displayed again by clicking the link with the path number.<br><br>"
+
+#~ msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+#~ msgstr "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles.<br><br>"
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Zip datoteka"
+
+#~ msgid "first"
+#~ msgstr "prvi"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "Unukova žena"
+
+#~ msgid "last"
+#~ msgstr "posljednji"

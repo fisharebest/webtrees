@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:36+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -1675,7 +1675,7 @@ msgstr "Bütün ataları ve bir kişinin soyundan gösteren etkileşimli bir ağ
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "Beklenmeyen bir veritabanı hatası oluştu."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -4306,7 +4306,7 @@ msgstr "Kullanıcı silindi: "
 
 #: admin_trees_manage.php:196
 msgid "Deleting old genealogy data…"
-msgstr "Eski soyağacı verisi siliniyor..."
+msgstr "Eski soyağacı verisi siliniyor…"
 
 #: library/WT/Controller/Family.php:159
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -8848,8 +8848,8 @@ msgstr "Yarın için hadise mevcut değil."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Sonraki %s gün için yaşayan kişinin mevcut hadise yok."
-msgstr[1] "Sonraki %s gün için yaşayan kişinin mevcut hadise yok."
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -12611,11 +12611,11 @@ msgstr "Bu GEDCOM %1$s kullanılarak kodlandı. %2$s anlamına gelmek için bunu
 
 #: login.php:77
 msgid "This account has not been approved.  Please wait for an administrator to approve it."
-msgstr "Bu hesap henüz Yönetici tarafından onaylanmadı.<br /><br />Eğer uzun zaman geçmesine rağmen onaylanmadı ise lütfen sayfa dibindeki bağlantıdan Yönetici ile irtibata geçiniz."
+msgstr "Bu hesap henüz Yönetici tarafından onaylanmadı.<br><br>Eğer uzun zaman geçmesine rağmen onaylanmadı ise lütfen sayfa dibindeki bağlantıdan Yönetici ile irtibata geçiniz."
 
 #: login.php:73
 msgid "This account has not been verified.  Please check your email for a verification message."
-msgstr "Bu hesabınızı doğrulamadınız.<br /><br />Hesabı doğrulamak için lütfen kayıt olurken verdiğiniz e-postaya gönderdiğimiz doğrulama mesajını kontrol ediniz."
+msgstr "Bu hesabınızı doğrulamadınız.<br><br>Hesabı doğrulamak için lütfen kayıt olurken verdiğiniz e-postaya gönderdiğimiz doğrulama mesajını kontrol ediniz."
 
 #: modules_v3/charts/help_text.php:34
 msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br /><br />When this block appears on the Home Page, the root person and the type of chart to be displayed are determined by the administrator.  When this block appears on the user's personalized My Page, these options are determined by the user.<br /><br />The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of a person to see more details about them."
@@ -18600,3 +18600,1246 @@ msgstr "İsimsiz"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "Soyisimsiz"
+
+#~ msgid " but the details are unknown"
+#~ msgstr " ancak detayları bilinmiyor"
+
+#~ msgid " in "
+#~ msgstr " içinde "
+
+#~ msgid "%1$s’s %2$s"
+#~ msgstr "%1$s’sının %2$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%H:%i"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%d-%M-%Y"
+
+#~ msgid "%s day"
+#~ msgid_plural "%s days"
+#~ msgstr[0] "%s gün"
+#~ msgstr[1] "%s gün"
+
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "%s gün önce"
+#~ msgstr[1] "%s gün önce"
+
+#~ msgid "%s hour ago"
+#~ msgid_plural "%s hours ago"
+#~ msgstr[0] "%s saat önce"
+#~ msgstr[1] "%s saat önce"
+
+#~ msgid "%s minute ago"
+#~ msgid_plural "%s minutes ago"
+#~ msgstr[0] "%s dakika önce"
+#~ msgstr[1] "%s dakika önce"
+
+#~ msgid "%s month"
+#~ msgid_plural "%s months"
+#~ msgstr[0] "%s ay"
+#~ msgstr[1] "%s ay"
+
+#~ msgid "%s month ago"
+#~ msgid_plural "%s months ago"
+#~ msgstr[0] "%s ay önce"
+#~ msgstr[1] "%s ay önce"
+
+#~ msgid "%s second ago"
+#~ msgid_plural "%s seconds ago"
+#~ msgstr[0] "%s saniye önce"
+#~ msgstr[1] "%s saniye önce"
+
+#~ msgid "%s week"
+#~ msgid_plural "%s weeks"
+#~ msgstr[0] "%s hafta"
+#~ msgstr[1] "%s hafta"
+
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "%s yıl"
+#~ msgstr[1] "%s yıl"
+
+#~ msgid "%s year ago"
+#~ msgid_plural "%s years ago"
+#~ msgstr[0] "%s yıl önce"
+#~ msgstr[1] "%s yıl önce"
+
+#~ msgid "%s%%"
+#~ msgstr "%s%%"
+
+#~ msgid "(aged %s)"
+#~ msgstr "(%s yaşındaydı)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(%s daha az yaşlı)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "(%s daha çok yaşlı)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(toplam %s girişten filtrelendi)"
+
+#~ msgid "(in childhood)"
+#~ msgstr "(çocuklukta)"
+
+#~ msgid "(in infancy)"
+#~ msgstr "(doğarken)"
+
+#~ msgid "(stillborn)"
+#~ msgstr "(ölü doğdu)"
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b>Lütfen Not:</b> Bu soyağacının kurallar çerçevesine göre değişebilen kurala göre genel olarak bireylerin yaşam özel bilgileri yalnızca aile, akraba ve yakın arkadaşına verilebilir. Herhangi bir özel veri almadan önce bu kişinin ilişki durumu doğrulanması istenir. Ölü kişilerinde verileri bazen gizli olabilir. Çünkü bu durumda yeterli bilgi belirlemek için kişi hakkında bilinen veya hayatta değildir ve bebeğin yanındaki bu kişi hakkında daha fazla bilgi olmayabilir.<br><br>Soru sormadan önce lütfen tarihleri, yerleri kontrol ederek doğru kişi hakkında sorunuzu sorun ve akraba kapat. Eğer nesiller verisinde yanlışları değiştirilmesi için bilgi gönderiyorsanız lütfen verinin kayak yerini belirtin."
+
+#~ msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "<b>webtrees</b> yeni şifre gönderme ve site bildirimleri gibi mesajları göndermesi gerekir. Bunu yapmak için PHP email sununu tesisatı kullanabilirsiniz (ancak bu her zaman mevcut olmayabilir ve mesajların spama düşmesine neden olabilir) veya harici SMTP (email-aktarma) servisi için bağlantı detayları vermeniz gerekecektir."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Soyağacı Websitesine Hoş Geldiniz</b></center><br>Bu websiteye erişmek için bir hesap ve bir şifreye sahip olan kullanıcılara izin verilmektedir."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Soyağacı Web Sitesine Hoş Geldiniz</b></center><br>Bu soyağacı web sitesine erişim sadece <u>kayıtlı</u> kullanıcılara izin veriliyor.<br><br>Eğer siz bir kullanıcı hesaba sahip iseniz giriş yapabilirsiniz.<br><br>Eğer sizin bir kullanıcı hesabınız yoksa aşağıdaki uygun linki tıklatarak kayıt olabilirsiniz.<br><br>Kayıt sonrası hesabınızı doğruladıktan sonra son olarak yönetici hesabınızı onaylayacak veya reddedecektir.<br><br>Yönetici hesabınıza uygulamadan sonra email ile size mesaj gönderilecektir."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Soyağacı Web Sitesine Hoş Geldiniz.</b></center><br>Bu siteye erişim için sadece <u>aile fertlerine</u> izin verilmektedir.<br><br>Eğer bir kullanıcı hesabınız varsa bu sayfada giriş yapabilirsiniz. Eğer bir kullanıcı hesabınız yoksa aşağıdaki uygun bağlantı <b>Şimdi kayıt ol</b> tıklatarak biri için kayıt başvurusu yapabilirsiniz.<br><br>Bu başvurunuzdan sonra email adresinize gelecek onay ile onayladığınızda site yöneticisi veya hesap onaylayıcı hesabınızı kontrol edecek ve aile ferdi değil iseniz reddedecektir. Eğer uygun görülürse hesabınız kabul edildiğine dair bir email mesajı alacaksınız."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Soyağacı Web Sitesine Hoş Geldiniz</b></center><br>Bu siteye erişim için kullanıcı hesabı olan her ziyaretçiye izin verilmektedir.<br><br>Eğer bir kullanıcı hesabınız varsa bu sayfada giriş yapabilirsiniz. Eğer bir kullanıcı hesabınız yoksa aşağıdaki uygun bağlantı <b>Şimdi kayıt ol</b> tıklatarak biri için kayıt başvurusu yapabilirsiniz.<br><br>Bu başvurunuzdan sonra email adresinize gelecek onay ile onayladığınızda site yöneticisi hesabınızı aktif hale getirir. Başvurunuz kabul edildiğine dair bir email mesajı alacaksınız."
+
+#~ msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
+#~ msgstr "<div class=\"largeError\">Uyarı:</div><div class=\"error\">Bu formu doldurup göndermek sitemizde listelenen yaşayan kişilerin mahremiyetini korumak için kabul etmiş sayılırsınız.<ul><li>Aşağıdaki metin kutusuna kendiniz hakkında detaylı açıklama yapın veya sitemizde kayıtlı biri sizin hakkınızda bilgi alabileceğimiz referans kişiyi giriniz.</li></ul></div>"
+
+#~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
+#~ msgstr "Bir veritabanı sunucusu birçok ayrı veritabanı depolayabilirsiniz. (Sunucunuzun yöneticisi tarafından oluşturulan) mevcut bir veritabanı seçin veya yeni bir tane oluşturun (eğer veritabanı kullanıcı hesabınız ayrıcalıklara sahip ise)"
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Belirli bir kaynak tarafından desteklenen olguların bir raporunu verir."
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=abcçdefgğhiıjklmnoöpqrsştuüvwxyz"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=ABCÇDEFGĞHIİJKLMNOÖPQRSŞTUÜVWXYZ"
+
+#~ msgid "Access"
+#~ msgstr "Erişim"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Mevcut bir kişiyi kullanarak bir koca ekle"
+
+#~ msgid "Add a new name"
+#~ msgstr "Yeni Adı ekle"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Mevcut bir kişiyi kullanarak bir hanım ekle"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Çizelgeye başka kişi ekle"
+
+#~ msgid "Add individuals"
+#~ msgstr "Kiş ekle"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Sadece bu kişiyi ekle."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Bu aile kaydı ile birlikte ebeveynler ve zürriyetliler kayıtları ekle."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Bu aile kaydı ile birlikte ebeveyn ve çocukların kayıtlarını ekle."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Bu aile kaydı ile birlikte ebeveyn kayıtları ekle."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Bu kişiyi ve doğrudan atalarını ekle."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Bu kişiyi, doğrudan ataları ve aileleriyle ekle."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Bu kişiyi, ailesini, ve kardeşlerini ekle."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Bu kişiyi, eşini, ve tüm zürriyetlerini ekle."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Bu kişiyi, eşini ve çocuklarını ekle."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Bu kaynağı ve bağlanan kişi veya ailelere ekle."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "Giriş yaptıktan sonra «Benim sayfam» menüsü altında «Benim profilim» bağlantısını tıklayın ve şifrenizi değiştirmek için her iki alana yeni şifrenizi girerek kaydedin."
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "Bir kişinin öldü sayılacağı yaşı"
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "Ebeveynlerin yaşını çocukların doğum tarihinin yanında"
+
+#~ msgid "All individuals"
+#~ msgstr "Tüm Kişiler"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "GEDCOM arası geçiş izni"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "Mesajları sunucuya kaydet"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "Bütün ataları ve bir kişinin soyundan gösteren etkileşimli bir ağaç."
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "Beklenmeyen bir veritabanı hatası oluştu."
+
+#~ msgid "Ancestors of "
+#~ msgstr "Atalarına Doğru "
+
+#~ msgid "Ancestral file number"
+#~ msgstr "Atalara İlişkin Dosya Numarası"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Bu GEDCOM için tüm değişiklikleri geri almak istediğinizden emin misiniz?"
+
+#~ msgid "Available blocks"
+#~ msgstr "Kullanılabilir Bloklar"
+
+#~ msgid "Begin year"
+#~ msgstr "Başlangıç Yılı"
+
+#~ msgid "Best man"
+#~ msgstr "Sağdıç"
+
+#~ msgid "Binary data object"
+#~ msgstr "İkili Veri Öğesi"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "Doğum Yeri içerenler"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "Çizelgede Doğum ve Ölüm detayları"
+
+#~ msgid "Birth date range end"
+#~ msgstr "Doğum Tarihinde bitir"
+
+#~ msgid "Birth date range start"
+#~ msgstr "Doğum Tarihinden başla"
+
+#~ msgid "Brother"
+#~ msgstr "Erkek kardeş"
+
+#~ msgid "Burial place contains"
+#~ msgstr "Mezar Yeri içeren"
+
+#~ msgid "Change family members"
+#~ msgstr "Aile Üyeleri Değiştir"
+
+#~ msgid "Child of "
+#~ msgstr "Çocuğu "
+
+#~ msgid "Children of "
+#~ msgstr "Çocukları "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Akrabaları seç"
+
+#~ msgid "Civil registrar"
+#~ msgstr "Nüfus Şefi"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Nüfus Şefi"
+
+#~ msgctxt "MALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Nüfus Şefi"
+
+#~ msgid "Clear chart"
+#~ msgstr "Grafiği Temizle"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "Ailenin Reisi olarak seçilecek %s kişiyi tıklayın."
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Link Listesine Eklemek için eklenecek kişi Adını tıkla."
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Ailenin Reisi olarak seçilecek kişiyi tıklayın."
+
+#~ msgid "Coat of arms"
+#~ msgstr "Arma"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Resmi Nikahsız Evlilik"
+
+#~ msgid "Contact information"
+#~ msgstr "İletişim Bilgileri"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Eski seçere programları formu tarafından 'Adem/GENÇ/' veya 'Adem /GENÇ' olarak üretilen NAME kayıtlarını düzeltmek."
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "Fildişi Sahili"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Yeni bir Paylaşılan Not oluştur"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Yardımcısı kullanarak yeni bir Paylaşılan Not oluşturun"
+
+#~ msgid "Create repository"
+#~ msgstr "Havuz Oluştur"
+
+#~ msgid "Create user"
+#~ msgstr "Kullanıcı Oluştur"
+
+#~ msgid "Custom event"
+#~ msgstr "Özel Hadise"
+
+#~ msgid "Date of LDS child sealing"
+#~ msgstr "LDS Kapatma Çocuğun Tarihi"
+
+#~ msgid "Date of LDS endowment"
+#~ msgstr "LDS Bağışın tarihi"
+
+#~ msgid "Date of LDS spouse sealing"
+#~ msgstr "LDS Kapatma Eşin Tarihi"
+
+#~ msgid "Date of adoption"
+#~ msgstr "Kabul Tarihi"
+
+#~ msgid "Date of cremation"
+#~ msgstr "Ölü Yakma Tarihi"
+
+#~ msgid "Date of emigration"
+#~ msgstr "Dışgöçün Tarihi"
+
+#~ msgid "Date of event"
+#~ msgstr "Hadisenin Tarihi"
+
+#~ msgid "Date of immigration"
+#~ msgstr "Göç Tarihi"
+
+#~ msgid "Date of naturalization"
+#~ msgstr "Vatandaşlık Tarihi"
+
+#~ msgid "Date of ordination"
+#~ msgstr "Kutsanma Tarihi"
+
+#~ msgid "Date of residence"
+#~ msgstr "İkamet Tarihi"
+
+#~ msgid "Daughter"
+#~ msgstr "Kız evlat"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Ölüm Yeri içerecekler"
+
+#~ msgid "Death date range end"
+#~ msgstr "Ölüm Tarihinde bitir"
+
+#~ msgid "Death date range start"
+#~ msgstr "Ölüm Tarihinden başla"
+
+#~ msgid "Default theme"
+#~ msgstr "Varsayılan Tema"
+
+#~ msgid "Descent steps"
+#~ msgstr "Derinlik Adımları"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Zilkade"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Zilkade"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Zilkade"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Zilkade"
+
+#~ msgid "Differences"
+#~ msgstr "Farklar"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Direk atalara doğru"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Direk atalara doğru ve onların aileleri"
+
+#~ msgid "Display %s"
+#~ msgstr "Göster %s"
+
+#~ msgid "Do not seal, previous sealing cancelled"
+#~ msgstr "Kapatma değil, önceki kapatma iptalı"
+
+#~ msgid "Do not seal: unauthorized"
+#~ msgstr "Kapatma değil: onaylanmamış"
+
+#~ msgid "Do not send messages"
+#~ msgstr "Mesaj gönderme yok"
+
+#~ msgid "Edit details"
+#~ msgstr "Detayları Düzenle"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Ham GEDCOM kaydı düzenle"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Paylaşılan Not Düzenle"
+
+#~ msgid "Email address:"
+#~ msgstr "Email Adresi:"
+
+#~ msgid "End year"
+#~ msgstr "Bitiş Yılı"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "Değişen tarihlerin bitiş aralığı"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Aile ID Gir"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Birey ID Girin"
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Bir Kişi, Aile, yada Kaynak ID girin"
+
+#~ msgid "Enter associate GEDCOM ID."
+#~ msgstr "İlişkilendirme GEDCOM ID Gir."
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Bu medya öğesi bağlamak istediğiniz kişi, aile veya kaynak için ID girin veya arayın."
+
+#~ msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
+#~ msgstr "Sadece bir zarfin üzerine yazacağınız gibi alana bir adres girin.<br><br>Bu alana adres eklemek istemiyorsanız boş bırakın."
+
+#~ msgid "Entry text:"
+#~ msgstr "Giriş Metni:"
+
+#~ msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+#~ msgstr "Bu soyağacında kayıtlı kişilerin her birinin ayrı ayrı ID numaraları vardır bu numaralar Gxx ile başlar veya başka harf ile başlar biliyorsanız girin bilmiyorsanız boş geçin aşağıdaki \"Kendinizi Tanıtın\" alanına kendinizi detaylı anlattığınızda ve yönetici onay verirken soyağacında sizin ID yanı Gedcom numaranız girecek ve siz soyağacına girdiğiniz soyununu ootomatik olarak görülecektir ben nerdeyim diye aramanıza gerek kalmayacaktır."
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "Ölmüş kişinin mahremiyetini genişlet"
+
+#~ msgid "External objects"
+#~ msgstr "Dış öğeler"
+
+#~ msgid "Facts for family records"
+#~ msgstr "Aile kayıtları için olgular"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "Birey kayıtları için olgular"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "Havuz kayıtları için olgular"
+
+#~ msgid "Facts for source records"
+#~ msgstr "Kaynak kayıtları için olgular"
+
+#~ msgid "Family group information"
+#~ msgstr "Aile Grup Bilgisi"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Aile Ağacı Kupürleri Çizelgesi"
+
+#~ msgid "Family with husband"
+#~ msgstr "Koca ile aile"
+
+#~ msgid "Family with wife"
+#~ msgstr "Hanım ile aile"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Babanın Doğumyeri - (seyyar biçim)"
+
+#~ msgid "Father’s age"
+#~ msgstr "Babanın yaşı"
+
+#~ msgid "Font"
+#~ msgstr "Yazı tipi"
+
+#~ msgid "Foster child"
+#~ msgstr "Evlatlık"
+
+#~ msgid "Foster father"
+#~ msgstr "Süt Baba"
+
+#~ msgid "Foster mother"
+#~ msgstr "Süt Anne"
+
+#~ msgid "From email address"
+#~ msgstr "Kimden email veya başlık"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "GEDCOM istatistikleri"
+
+#~ msgid "Gedcom"
+#~ msgstr "Gedcom"
+
+#~ msgid "Generation "
+#~ msgstr "Nesil "
+
+#~ msgid "He "
+#~ msgstr "O "
+
+#~ msgid "He died"
+#~ msgstr "o öldü"
+
+#~ msgid "He married"
+#~ msgstr "O evli"
+
+#~ msgid "He resided at"
+#~ msgstr "o ikamet"
+
+#~ msgid "He was born"
+#~ msgstr "O doğdu"
+
+#~ msgid "He was buried"
+#~ msgstr "Defnedildi"
+
+#~ msgid "He was christened"
+#~ msgstr "O vaftiz edildi"
+
+#~ msgid "He was cremated"
+#~ msgstr "o yakıldı"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Merhaba %s …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Merhaba %s …<br>Kaydolduğunuz için teşekkür ederiz."
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Merhaba Yönetici…"
+
+#~ msgid "Her occupation was"
+#~ msgstr "onun meşguliyeti"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "Göster &amp; gizle"
+
+#~ msgid "His occupation was"
+#~ msgstr "onun meşguliyeti"
+
+#~ msgid "Hit count:"
+#~ msgstr "Sayaç:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Kocanın yaşı"
+
+#~ msgid "If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here."
+#~ msgstr "Eğer Medya Firewall etkinleştirilirse kullanıcılar filigranları görecekler, eğer burada ayrıcalıklı bir seviyeye sahip olmazlar ise."
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Eğer bu üyelik siz oluşturmadınız ise bu mesajı silip unutabilirsiniz."
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "Bu ayarları bilmiyorsanız, varsayılan değerleri bırakın. Çalışabilir. Daha sonra bunları değiştirebilirsiniz."
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "Email mesajı göndermek istemiyorsanız örneğin webtrees ile tek bir kullanıcı veya tek başına bir bilgisayarda çalışırken bu özelliği devre dışı bırakabilirsiniz."
+
+#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
+#~ msgstr "Eğer sunucu güvenlik ilkesi izin veriyorsa <b>webtrees</b> yönetim sayfasını kullanarak sunucu belleği ve CPU zamanı artırmak mümkün olacaktır. Aksi taktirde sunucu yöneticisine başvurmanız gerekir."
+
+#~ msgid "In this month…"
+#~ msgstr "Bu Ay içinde…"
+
+#~ msgid "In this year…"
+#~ msgstr "Bu Yıl içinde…"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Kişinin en yakın ailesini içer?"
+
+#~ msgid "Individual 1"
+#~ msgstr "Kişi 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Kişi 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "En uzun yaşayan kişi"
+
+#~ msgid "LDS temple"
+#~ msgstr "LDS Tapınak"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
+#~ msgid "Link ID"
+#~ msgstr "Link ID"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Bu kişiyi mevcut bir aileye çocuğu olarak bağla"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Bu kişiyi mevcut bir aileye kocası olarak bağla"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Bu kişiyi mevcut bir aileye hanımı olarak bağla"
+
+#~ msgid "Living individuals"
+#~ msgstr "Yaşayan Kişiler"
+
+#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
+#~ msgstr "Her biri için \"içeri aktarama\" fonksiyonunu kullanarak diskteki tüm soyağaçları yükleyin."
+
+#~ msgid "Loading…"
+#~ msgstr "Yükleniyor…"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Konum kaldırılmadı: bu konum alt-konumlar içeriyor"
+
+#~ msgid "Main section blocks"
+#~ msgstr "Ana Bölüm Blokları"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Evlilik Tarihinde bitir"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Evlilik Tarihinden başla"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Evlilik Yeri içerenler"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Evlilik Niyeti"
+
+#~ msgid "Married name"
+#~ msgstr "Evlilik Adı"
+
+#~ msgid "Married surname"
+#~ msgstr "Evlilik Soyadı"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Kimden Birleşecek ID:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Kimle Birleşecek ID:"
+
+#~ msgid "Min. no. of occurrences to be a “common surname”"
+#~ msgstr "En çok kullanılan &quot;Ortak Soyadı&quot; için en az sayı"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Ençok Görüntülenenler"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Annenin Doğumyeri - (seyyar biçim)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Annenin yaşı"
+
+#~ msgid "Move left"
+#~ msgstr "Sola Taşı"
+
+#~ msgid "Move right"
+#~ msgstr "Sağa taşı"
+
+#~ msgid "Name List"
+#~ msgstr "Adı Listesi"
+
+#~ msgid "No events for living individuals exist for the next %s day."
+#~ msgid_plural "No events for living people exist for the next %s days."
+#~ msgstr[0] "Sonraki %s gün için yaşayan kişinin mevcut hadise yok."
+#~ msgstr[1] "Sonraki %s gün için yaşayan kişinin mevcut hadise yok."
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Yaşayan kişilerin bugün için hadiseleri yok."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Yarın yaşayan insan için hadiseler mevcut değil."
+
+#~ msgid "No records to display"
+#~ msgstr "Gösterilecek kayıt yok"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Bu GEDCOM dosyada böyle mevcut ID yok."
+
+#~ msgid "No temple - living ordinance"
+#~ msgstr "Tapınak Yok - Yaşam Buyruğu"
+
+#~ msgid "Nuku’Alofa, Tonga"
+#~ msgstr "Nuku'Alofa, Tonga"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "Kullanıcıları temizlemek için son x aydan beri giriş yapmayan kullanıcıları göster: "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "En yaşlı yaşayan kişi"
+
+#~ msgid "On this day…"
+#~ msgstr "Bugünkü hadiseler …"
+
+#~ msgid "Online editing"
+#~ msgstr "Çevrimiçi düzenleme"
+
+#~ msgid "Orientation"
+#~ msgstr "Yönlendirme"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Diğer dizin… lütfen yazın"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "Giden sunucu (SMTP) adı"
+
+#~ msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP uzantısı \"%1$s\" devredişidir. Bunsuz aşağıdaki özellikler çalışmaz: %2$s. Etkinleştirmek için sunucunuzun yöneticisine başvurun"
+
+#~ msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP uzantısı \"%s\" devredişidir. Bu etkinleştirilene kadar webtrees yükleyemezsiniz. Etkinleştirmek için sunucunuzun yöneticisine başvurun."
+
+#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP ayarı \"%1$s\" devredişidir. Bunsuz aşağıdaki özellikler çalışmaz: %2$s. Etkinleştirmek için sunucunuzun yöneticisine başvurun."
+
+#~ msgid "Page"
+#~ msgstr "Sayfa"
+
+#~ msgid "Page size"
+#~ msgstr "Sayfa boyutu"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Kardeşler ve ebeveynler"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Ebeveynin yaşı"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Soyağacı Çizelgesi"
+
+#~ msgid "Place of LDS child sealing"
+#~ msgstr "LDS Kapatma Çocuğun Yeri"
+
+#~ msgid "Place of LDS endowment"
+#~ msgstr "LDS Bağışın yeri"
+
+#~ msgid "Place of LDS spouse sealing"
+#~ msgstr "LDS Kapatma Eşin Yeri"
+
+#~ msgid "Place of adoption"
+#~ msgstr "Evlat Edinme Yeri"
+
+#~ msgid "Place of cremation"
+#~ msgstr "Ölü Yakma Yeri"
+
+#~ msgid "Place of emigration"
+#~ msgstr "Dışgöçün Yeri"
+
+#~ msgid "Place of event"
+#~ msgstr "Hadisenin Yeri"
+
+#~ msgid "Place of immigration"
+#~ msgstr "İçgöç Yeri"
+
+#~ msgid "Place of naturalization"
+#~ msgstr "Vatandaşlık Yeri"
+
+#~ msgid "Place of ordination"
+#~ msgstr "Kutsanma Yeri"
+
+#~ msgid "Place of residence"
+#~ msgstr "İkamet Yeri"
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "President’s Office"
+#~ msgstr "Başkanlık makamı"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Boşluk olduğunda temel hadiseleri yazdır?"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rebiülevvel"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rebiülevvel"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rebiülevvel"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rebiülevvel"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rebiülahir"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rebiülahir"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rebiülahir"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rebiülahir"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Son Yıllar (&lt; 100 yıl)"
+
+#~ msgid "Registry officer"
+#~ msgstr "Evlendirme Dairesi"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "Evlendirme Dairesi"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "Evlendirme Dairesi"
+
+#~ msgid "Religious institution"
+#~ msgstr "Dini Kurum"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Bu konumu kaldırmak istiyor musunuz?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Sağ Bölüm Blokları"
+
+#~ msgid "SMTP port"
+#~ msgstr "SMTP Portu"
+
+#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
+#~ msgstr "Her biri için \"dışarı aktarma\" fonksiyonunu kullanarak tüm aile ağaçları diske kaydedin."
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Basit arama veya gelişmiş motif eşleştirme kullanarak GEDCOM dosyanızın veriyi ara ve/veya değiştir."
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Linkler listesine Eklemek için eklenecek Kişi için ara."
+
+#~ msgid "Security"
+#~ msgstr "Güvenlik"
+
+#~ msgid "Select events"
+#~ msgstr "Hadiseleri Seç"
+
+#~ msgid "Send message"
+#~ msgstr "Mesaj Gönder"
+
+#~ msgid "Sender email address"
+#~ msgstr "Gönderen email adresi"
+
+#~ msgid "Server"
+#~ msgstr "Sunucu"
+
+#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
+#~ msgstr "Seçere Çizelgesinde göstermek için nesillerin varsayılan sayıyı girin."
+
+#~ msgid "Set the maximum number of generations to display on descendancy charts."
+#~ msgstr "Şahsı izleyen nesiller Çizelgesinde göstermek için nesillerin en fazla sayıyı girin."
+
+#~ msgid "Set the maximum number of generations to display on pedigree charts."
+#~ msgstr "Seçere Çizelgesinde göstermek için nesillerin en fazla sayıyı girin."
+
+#~ msgid "Set the privacy access level for all dead individuals."
+#~ msgstr "Tüm ölü kişiler için gizlilik erişim düzeyi kur."
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Paylaşılan Not içerikleri:"
+
+#~ msgid "Shared notes found"
+#~ msgstr "Bulunan Paylaşılan Notlar"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Şaban"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "Şaban"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Şaban"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Şaban"
+
+#~ msgid "She "
+#~ msgstr "Burada "
+
+#~ msgid "She died"
+#~ msgstr "o öldü"
+
+#~ msgid "She married"
+#~ msgstr "Burada evlendi"
+
+#~ msgid "She resided at"
+#~ msgstr "o ikamet"
+
+#~ msgid "She was born"
+#~ msgstr "Burada doğmuş"
+
+#~ msgid "She was buried"
+#~ msgstr "O gömüldü"
+
+#~ msgid "She was christened"
+#~ msgstr "Burada vaftiz edildi"
+
+#~ msgid "She was cremated"
+#~ msgstr "o törenle yakıldı"
+
+#~ msgid "Show acceptable use agreement on “Request new user account” page"
+#~ msgstr "Kaydolma sayfasında kural şartlarını göster"
+
+#~ msgid "Show age of parents next to child’s birthdate"
+#~ msgstr "Ebeveynlerin yaşını çocukların doğum tarihinin yanında göster"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Bir Listede Tüm Yerleri Göster"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Ataların çocuklarını göster?"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "Ölü kişiyi göster"
+
+#~ msgid "Show details"
+#~ msgstr "Detayları Göster"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Kişi kutularında vurgulanan resimleri göster"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Aktif olmayan yerleri göster"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Son 100 yıldan önce doğmuş kişileri göster"
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Son 100 yıl içinde doğmuş kişileri göster."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Yaşayan kişiyi veya yaşayan her iki eşleri göster."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Ölmüş kişiyi veya ölmüş her iki eşleri göster."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Son 100 yıldan önce ölmüş kişileri göster."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Son 100 yıl içinde ölmüş kişileri göster."
+
+#~ msgid "Show notes?"
+#~ msgstr "Notları göster?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Meslekleri göster?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Sadece yaşayan insanların hadiselerini göster?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Sadece cinsiyeti bilinmeyen kişileri göster."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Sadece kişileri, hadiseleri, yada tümü göster?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Bekleyen değişiklikleri göster"
+
+#~ msgid "Show photos?"
+#~ msgstr "Fotoğrafları göster?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Hiyerarşide Yerleri Göster"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "İlişkili kişileri/aileleri göster"
+
+#~ msgid "Show residences?"
+#~ msgstr "Konutları göster?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Kaynakları göster?"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "«yapraklar» çiftleri yada bireyleri göster. Bu bireyler yaşıyor ancak veritabanına hiçbir çocuğu kaydedilmemiş."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "«kökler» çiftleri yada bireyleri göster. Bu kişiye «büyük aile reisi» denebilir. Onlar veritabanında hiçbir ebeveynleri kayıtlı olmayan bireylerdir."
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Gösterilen %1$s den %2$s toplam %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "Kız kardeş"
+
+#~ msgid "Social security number"
+#~ msgstr "Sosyal Güvenlik Numara"
+
+#~ msgid "Son"
+#~ msgstr "Oğlu"
+
+#~ msgid "Sources to the events"
+#~ msgstr "Hadiseler için kaynaklar"
+
+#~ msgid "Spouse"
+#~ msgstr "Eş"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Eşler ve çocuklar"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Değişen tarihlerin başlama aralığı"
+
+#~ msgid "Surname option"
+#~ msgstr "Soyadı Seçeneği"
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "<b>Son adım olarak üyeliğinizi onayladığınızı söyleyen bir mesaj Yöneticiye gönderilmiştir.<br>Yönetici üyeliğinizi kontrol edip onayladığında siteye giriş yapabileceğinizi söyleyen ikinci email mesajı aldıktan sonra Kullanıcı adı ve şifrenizi kullanarak siteye giriş yapabilirsiniz.</b>"
+
+#~ msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+#~ msgstr "Küpürler Sepeti bu aile soyağacının içinde size ait soyunuzu veya istediğiniz bölümleri (\\\"kupürleri\\\") kendi soyağacı programınızda kullanmanız için tek dosya içine zip formatında indirmenize izin veriyor. İndirilecek dosya GEDCOM formatında kaydedilecektir.<br><ul><li>Kupürler nasıl alınır?<br>Bu gerçekten çok basittir. ID kimlik numaraları bilmiyorsanız (birey, aile veya kaynak) ikonları tıklatıp açılan sayfada isim girip aradığınızda detaylı bilgiler sayfada listelenecektir ve aradığınız ismi tıklayın. <b>Kupürleri Sepete Ekle</b> seçeneğinde göreceksiniz. Ekle butonu tıkladığınızda indirmeye eklemek için bir kaç seçenek sunacaktır.</li><li>Nasıl indirilir?<br>Kupürleri taşıma alanına eklediğinizde <b>Şimdi İndir</b> linki göreceksiniz ve tıklayıp indirebileceksiniz. Talimatları ve linkleri izleyin.</li></ul>"
+
+#~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
+#~ msgstr "Önek isteğe bağlıdır. ancak önerilir. Benzersiz tablolar vererek birkaç farklı uygulamalar aynı veritabanında paylaşmayı sağlayabilirsiniz. Önerilen \"wt_\" ancak istediğiniz herhangi bir sey olabilir."
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "Düzenli ifadede bir hata görünüyor. Kullanılamaz."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "Bu GEDCOM <b>%1$s</b> <b>%2$s</b> kullanılarak oluşturuldu."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Bu blok en çok gürüntülenen 10 kaydı gösterir. Bu blok GEDCOM yapılandırma ayarlarında Hit Sayaçları etkinleştirilmesi gerektirir."
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "Bu SMTP sunucusu adıdır. 'localhost' email servisi web sunucusu olarak aynı bilgisayar üzerinde çalıştığı anlamına gelir."
+
+#~ msgid "This is used in the \"From:\" header when sending mails."
+#~ msgstr "Gönderilecek emaillerin başlığı \"Form:\" \"Kimden:\" olarak kullanılacak."
+
+#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
+#~ msgstr "Gönderilecek emaillerin başlığı \"Sender:\" \"Gönderen:\" olarak kullanılacak. Genellikle \"From:\" \"Kimden:\" başlık olarak aynıdır."
+
+#~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
+#~ msgstr "Bu sunucunun bellek sınırı %dMB ve CPU zaman sınırı %d saniyedir."
+
+#~ msgid "To family"
+#~ msgstr "Aileye"
+
+#~ msgid "To individual"
+#~ msgstr "Kişiye"
+
+#~ msgid "To source"
+#~ msgstr "Kaynağa"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "Toplam kabul edilen değişiklikler: "
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Toplam bekleyen değişiklikler: "
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Tanınmayan GEDCOM kodu"
+
+#~ msgid "Use SMTP to send external mails"
+#~ msgstr "Harici emailleri göndermek için SMTP kullan"
+
+#~ msgid "Use colors"
+#~ msgstr "Renkleri kullan"
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Aile üyelerini değiştirmek veya kaldırmak için bu sayfayı kullanın.<br><br>Ailenin her bir üyesi için üyenin yerini alacak bir başka kişiyi seçmek için Değiştir linkini kullanabilirsiniz. Ayrıca ailenin üyelerinden kaldırmak istediğiniz kişiyi kaldırmak için Kaldır linkini kullanabilirsiniz.<br><br>Aile üyeleri değiştirme ve kaldırma işlemini tamamladığınızda değişiklikleri kaydetmek için Kaydet butona basınız."
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "Kullanıcı 7 gün içinde onaylamadı."
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "Kullanıcı adlarında bu karakterler içeremez: &lt; &gt; \" %% { } ;"
+
+#~ msgid "Users logged in"
+#~ msgstr "Çevrimiçi Kullanıcılar"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Kullanıcıların kullandıkları lisanlar"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "Kullanıcının son giriş yaptığı tarih: "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "GEDCOM Kaydı görüntüle"
+
+#~ msgid "View day"
+#~ msgstr "Günü Görüntüle"
+
+#~ msgid "View details"
+#~ msgstr "Detayları Görüntüle"
+
+#~ msgid "View family"
+#~ msgstr "Aileyi Görüntüle"
+
+#~ msgid "View month"
+#~ msgstr "Ayı Görüntüle"
+
+#~ msgid "View notes"
+#~ msgstr "Notları Görüntüle"
+
+#~ msgid "View person"
+#~ msgstr "Kişiyi Göster"
+
+#~ msgid "View source"
+#~ msgstr "Kaynağı Görüntüle"
+
+#~ msgid "View year"
+#~ msgstr "Yılı Görüntüle"
+
+#~ msgid "Visitor options"
+#~ msgstr "Ziyaretçi seçenekleri"
+
+#~ msgid "Visitors"
+#~ msgstr "Ziyaretçiler"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=1"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Üyelik sırasında verdiğiniz <b>%s</b> e-posta adresinize onay mesajı gönderdik. Lütfen e-posta hesabınızı kontrol ederek üyeliğinizi onaylayınız. Eğer hesabinizi yedi(7) gün içinde onaylamaz iseniz hesabiniz otomatikman silinecektir. Tekrar kaydolmak zorunda kalacaksınız.<br><br><br>Bu siteye giriş yapmak için kullanıcı adı ve şifre gerekir."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Üyelik sırasında verdiğiniz <b>%s</b> email adresinize onay mesajı gönderdik. Şimdi verdiğiniz email adresinizin mesaj kutusuna giderek hesabinizi onaylamak için gönderdiğimiz yönergeleri takip ederek hesabinizi onaylayın. Eğer hesabinizi yedi(7) gün içinde onaylamaz iseniz hesabiniz otomatikman silinecektir. Tekrar kaydolmak zorunda kalacaksınız.<br><br>Onay mesajdaki yönergeleri uyguladıktan sonra artik siteye giriş yapabilirsiniz.<br><br>Bu siteye giriş yapmak için kullanıcı adı ve şifreyi bilmeniz gerecektir."
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "Web Site ve META Etiket Ayarları"
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Bu kişiden hangi bağlantıları eklemek istiyorsunuz?"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "Filigransız resimleri kimler görebilir?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Hanımın yaşı"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Hanımın kızlık soyadı ile kocanın soyadı"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Hanımın soyadı kocanın soyadı ile değiştir"
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Tüm kadınların evlilik adlarını kaydederek evli kadınları aramada daha kolay bulunmasını sağlayabilirsiniz.<br>Ancak tüm kadınlar kocalarının soyadını almazlar, bundan dolayı veritabanınıza yanlış bilgileri kaydetmekten kaçının."
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "Çünkü onaylanmayan hesaplar otomatik olarak yedi gün sonra silinecek ve bu siteden bir daha email mesajı almayacaksınız."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Kupürler Sepetiniz boş."
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "Sunucunuzun yöneticisi bağlantı detayları size verecektir."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Kullanıcı hesabınızda \"otomatikman kabul et\" seçeneği etkinleştirilmedi. Bundan dolayı tek tek değiştirmek mümkün olacaktır."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Zip Dosya"
+
+#~ msgid "daughter of"
+#~ msgstr "kızı"
+
+#~ msgctxt "son's wife's father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "oğlunun kayınpederi"
+
+#~ msgctxt "son's wife's mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "oğlunun kayınvalidesi"
+
+#~ msgctxt "son's wife's parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "gelininin ebeveyni"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "öldü"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "öldü"
+
+#~ msgid "first"
+#~ msgstr "ilk"
+
+#~ msgctxt "child's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "enişte"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "kızının damadı"
+
+#~ msgctxt "son's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "oğlunun damadı"
+
+#~ msgctxt "child's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "erkek torunun hanımı"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "kızının gelini"
+
+#~ msgctxt "son's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "oğlunun gelini"
+
+#~ msgid "last"
+#~ msgstr "son"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "evli"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "evli"
+
+#~ msgid "son of"
+#~ msgstr "oğlu"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "kızının kayınpederi"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "kızının kayınvalidesi"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "kızının kayın ebeveyni"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_unicode_ci"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "doğdu"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "doğdu"

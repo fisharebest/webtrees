@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-17 05:37+0000\n"
-"X-Generator: Launchpad (build 16626)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -195,6 +195,9 @@ msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] "%d år"
 msgstr[1] "%d år"
+
+msgid "%g:%i:%s %a"
+msgstr "%G:%i:%s"
 
 #: includes/functions/functions.php:2162
 #, php-format
@@ -1682,7 +1685,7 @@ msgstr "Et interaktivt tre, som viser alle en persons aner og etterkommere."
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "En uventet databasefeil har oppstått."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -1886,7 +1889,7 @@ msgstr "Aruba"
 
 #: modules_v3/html/help_text.php:34
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr "I tillegg til den HTML-formatering som kan gjøres ved hjelp av verktøylinjene, kan du også sette inn database-felt som oppdateres automatisk. Disse spesialfeltene angis med <b>#</b>-tegn. For eksempel vil <b>#totalFamilies#</b> erstattes med det faktiske antall familier i databasen. <br />Avanserte brukere vil antakelig markere disse databasehenvisningene med de riktige CSS-klasser, så utseendet overensstemmer med det valgte temaet."
+msgstr "I tillegg til den HTML-formatering som kan gjøres ved hjelp av verktøylinjene, kan du også sette inn database-felt som oppdateres automatisk. Disse spesialfeltene angis med <b>#</b>-tegn. For eksempel vil <b>#totalFamilies#</b> erstattes med det faktiske antall familier i databasen.<br>Avanserte brukere vil antakelig markere disse databasehenvisningene med de riktige CSS-klasser, så utseendet overensstemmer med det valgte temaet."
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:79
@@ -2343,6 +2346,12 @@ msgctxt "Pedigree"
 msgid "Birth"
 msgstr "Fødsel"
 
+msgid "Birth Date range end"
+msgstr "Seneste fødselsdato"
+
+msgid "Birth Date range start"
+msgstr "Tidligste fødselssdato"
+
 #: library/WT/Stats.php:1015 statistics.php:553
 msgid "Birth by country"
 msgstr "Fødsler etter land"
@@ -2627,6 +2636,9 @@ msgstr "Bulgaria"
 msgid "Burial"
 msgstr "Gravlagt"
 
+msgid "Burial Place contains"
+msgstr "Sted for begravelse inneholder"
+
 #: library/WT/Gedcom/Tag.php:531
 msgid "Burial of a brother"
 msgstr "Begravelse av bror"
@@ -2784,7 +2796,7 @@ msgstr ""
 
 #: help_text.php:1422
 msgid "By default this chart does not show spouses for the descendants because it makes the chart harder to read and understand.  Turning this option on will show spouses on the chart."
-msgstr "Som standard vises ikke ektefeller til etterkommere, fordi det gjør diagrammet vanskeligere å lese og/eller forstå.<br /> Ved å merke av dette valget, vil diagrammet også vise ektefeller."
+msgstr "Som standard vises ikke ektefeller til etterkommere, fordi det gjør diagrammet vanskeligere å lese og/eller forstå.<br>Ved å merke av dette valget, vil diagrammet også vise ektefeller."
 
 #. I18N: Help text for the "Port number" site configuration setting
 #: help_text.php:767
@@ -4026,6 +4038,12 @@ msgstr "Døde"
 msgid "Death"
 msgstr "Død"
 
+msgid "Death Date range end"
+msgstr "Seneste dødsdato"
+
+msgid "Death Date range start"
+msgstr "Tidligste dødsdato"
+
 #: library/WT/Stats.php:1032 statistics.php:561
 msgid "Death by country"
 msgstr "Dødsfall etter land"
@@ -4313,7 +4331,7 @@ msgstr "Slettet bruker: "
 
 #: admin_trees_manage.php:196
 msgid "Deleting old genealogy data…"
-msgstr "Sletter gamle slektsdata..."
+msgstr "Sletter gamle slektsdata…"
 
 #: library/WT/Controller/Family.php:159
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -4619,6 +4637,9 @@ msgstr "Brukernavnet er allerede brukt. Velg et annet brukernavn"
 #: help_text.php:777
 msgid "E-mail address to be used in the &laquo;From:&raquo; field of e-mails that <b>webtrees</b> creates automatically.<br /><br /><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br /><br />Usually, the &laquo;From:&raquo; field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message's &laquo;From:&raquo; field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 msgstr "Epostadressen som skal brukes i &laquo;From:&raquo;-feltet i epost som <b>webtrees</b> oppretter automatisk.<br /><br /><b>webtrees</b> kan sende epost automatisk for å gjøre administratorer om forandringer som må ses gjennom. <b>webtrees</b> sender også beskjed til brukere som har bedt om en konto.<br /><br />Vanligvis består &laquo;From:&raquo;-feltet i disse automatisk opprettede beskjedene noe i retning av <i>From: webtrees-noreply@dittnettsted</i> for å vise at man ikke behøver å besvare eposten. For å beskytte mot spam og annet epost-misbruk krever enkelte epost-systemer at &laquo;From:&raquo;-feltet er en gyldig epost-adresse og vil ikke akseptere epost som synes å komme fra <i>webtrees-noreply</i>."
+
+msgid "Each media item should be associated with one or more person, family, or source records in your database.<br /><br />To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
+msgstr "Hvert medie-objekt bør knyttes til en eller flere personer, familier eller kildeangivelser i din database.<br /><br />For å etablere en slik forbindelse kan du enten skrive inn/søke etter personens, familiens eller kildens ID mens du oppretter medie-objektet; eller du kan gjøre forbindelsen senere v.h.a. redigeringsvalgmuligheter på siden med Multimedieobjekter; eller ved å legge til medieobjektene gjennom \"Legg til media\"-linken på Person-, Familie- eller Kilde-sidene."
 
 #: help_text.php:1178
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br /><br />Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, \"Oneida, Idaho, USA\" would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. \"Idaho, USA\" would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -6522,6 +6543,12 @@ msgstr "Hvis en person var kjent under et kallenavn som ikke er del av det forme
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
 msgstr "Hvis en person ikke var kjent under sitt første fornavn, angis det foretrukne fornavn med en asterisk: <%s>Emilie Marie* /Olsen/<%s>"
+
+msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br /><br />When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
+msgstr "Dersom mediabrannmuren er aktivert, skal kopier av vannmerkede bilder i full størrelse lagres på tjeneren i tillegg til de samme bildene uten vannmerke?<br /><br />Hvis alternativet er satt til <b>Ja</b>, vil vannmerkede bilder i fullskala størrelse bli vist raskere på bekostning av større krav til diskplass."
+
+msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br /><br />When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
+msgstr "Hvis mediabrannmuren er aktivert, skal kopier av vannmerkede miniatyrbilder lagres på tjeneren i tillegg til de samme miniatyrbildene uten vannmerke?<br /><br />Hvis alternativet er satt til <b>Ja</b>,  vil medialister som inneholder vannmerkede miniatyrbilder bli genererert raskere på bekostning av større krav til diskplass på tjeneren."
 
 #: help_text.php:473
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
@@ -8855,8 +8882,8 @@ msgstr "Ingen begivenheter finnes for i morgen."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Ingen begivenheter for personer i live neste %s dag."
-msgstr[1] "Ingen begivenheter for personer i live neste %s dager."
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -9268,7 +9295,7 @@ msgstr "Bare Forvaltere kan redigere"
 
 #: site-unavailable.php:67
 msgid "Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr "Oops! Webserveren kan ikke koble til databaseserveren. Den kan være travel, gjennomgå vedlikehold, eller rett og slett være ødelagt. Du bør <a href=\"index.php\"> prøve igjen </a> etter et par minutter eller kontakte administratoren for nettsiden."
+msgstr "Oops! Webserveren kan ikke koble til databaseserveren. Den kan være travel, gjennomgå vedlikehold, eller rett og slett være ødelagt. Du bør <a href=\"index.php\">prøve igjen</a> etter et par minutter eller kontakte administratoren for nettsiden."
 
 #: setup.php:224
 msgid "Oops!  webtrees was unable to create files in this folder."
@@ -12632,6 +12659,9 @@ msgstr "Denne blokken lar anetre, etterkommertre eller timeglass-diagram vises p
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Denne blokken vil vise redigerere (editorer) en liste over poster med endringer som venter på å bli godkjent av en moderator. Den genererer også daglige eposter til moderatorene når det finnes ventende endringer."
 
+msgid "This block will show the 10 records that have been viewed the most.  This block requires that Hit Counters be enabled in the GEDCOM configuration settings."
+msgstr "Denne blokken vil vise de 10 mest viste personene/familiene. Denne rammen krever at telleren er aktivert i innstillingene for konfigurasjonen for slektsfilen."
+
 #: help_text.php:1495
 msgid "This checkbox controls your visibility to other users while you're online.  It also controls your ability to see other online users who are configured to be visible.<br /><br />When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
 msgstr "Dersom dette valget er merket, vil brukere som er pålogget, se om du og/eller andre brukere også er pålogget. Ved å ikke merke dette valget, vil ikke andre kunne se om du er pålogget, og du vil heller ikke se om andre brukere er pålogget."
@@ -12834,6 +12864,9 @@ msgstr "Dette er rekken av GEDCOMfakta som brukerne dine kan legge til oppbevari
 msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list."
 msgstr "Dette er listen med GEDCOMfakta som brukerne dine kan legge til <u>en gang</u> for en kilde. For eksempel, hvis TITL er på denne listen, vil brukerne ikke kunne legge til mer enn en TITLfakta til en kilde. Faktanavn på denne listen kan ikke samtidig være på <i>Fakta å legge til for kilder</i> listen."
 
+msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br /><br />Configuration values for some e-mail providers:<br /><br /><b>Gmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br /><b>SMTP Port:</b> 465 or 587<br /><b>Secure connection:</b> SSL<br /><br /><b>Hotmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.live.com<br /><b>SMTP Port:</b> 25 or 587<br /><b>Secure connection:</b> TLS<br /><br /><b>Yahoo Mail Plus (currently a paid service)<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br /><b>SMTP Port:</b> 25"
+msgstr "Dette er navnet på SMTP-serveren for utgående mail. Eksempel: <b>smtp.foo.bar.com</b>.<br /><br />Verdier for noen vanlige leverandører:<br /><br /><b>Gmail<br /></b><br /><b>Navn på utgående server (SMTP):</b> smtp.gmail.com<br /><b>SMTP-Port:</b> 465 eller 587<br /><b>Sikker forbindelse:</b> SSL<br /><br /><b>Hotmail<br /></b><br /><b>Navn på utgående server (SMTP):</b> smtp.live.com<br /><b>SMTP-port:</b> 25 eller 587<br /><b>Sikker forbindelse:</b> TLS<br /><br /><b>Yahoo Mail Plus (for tiden en betalt tjeneste)<br /></b><br /><b>Navn på utgående server (SMTP):</b> smtp.mail.yahoo.com<br /><b>SMTP-port:</b> 25"
+
 #. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:762
 msgid "This is the name of the SMTP server. 'localhost' means that the mail service is running on the same computer as your web server."
@@ -12964,6 +12997,9 @@ msgstr "Notatet er endret. Endringen må først godkjennes av en moderator."
 #, php-format
 msgid "This note has been edited.  You should review the changes and then %1$s or %2$s them."
 msgstr "Notatet er blitt endret. Se over endringene og %1$s eller %2$s dem."
+
+msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br /><br />Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br /><br />When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
+msgstr "Med dette alternativet viser <b>webtrees</b> alle personer som er registrert som <i>assosiert</i> med personer eller familier i søkeresultatet. Det motsatte - å vise alle personer/familier som en person i søkeresultatet er assosiert med - er ikke mulig.<br /><br />For eksempel: Anta at person <b>A</b> er gudfar til person <b>B</b>. Dette forholdet er angitt med en ASSO-kode i person <b>B</b>s GEDCOM-post. Det finnes ingen tilsvarende kode i person <b>A</b>s GEDCOM-post.<br /><br />Når dette alternativet er satt til <b>Ja</b> og søkeresultatet omfatter <b>B</b>, vil <b>A</b> følge med automatisk på grunn av ASSO-koden i <b>B</b>s GEDCOM-post. Men hvis søkeresultatet omfatter <b>A</b>, vil <b>B</b> ikke komme med, siden det ikke finnes noen tilsvarende ASSO-kode hos <b>A</b>."
 
 #: help_text.php:862
 msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br /><br />Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual's database record.  These are <i>level 1</i> Notes and Source references.<br /><br />The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual's database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
@@ -13555,6 +13591,9 @@ msgstr "Antall brukere"
 msgid "Trailer"
 msgstr "Sluttkode GEDCOM"
 
+msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br /><br />TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br /><br />If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
+msgstr "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) er krypteringsprotokoller for dataoverførsel.<br /><br />TLS 1.0, 1.1 og 1.2 er standardiserte videreutviklinger av SSL 3.0. TLS 1.0 og SSL 3.1 er ekvivalente. Videreutvikling av SSL pågår nå under det nye navnet TLS.<br /><br />Hvis din SMTP-server krever SSL-protokollen ved innlogging, bør du velge <b>SSL</b>. Hvis din SMTP-server krever TLS-protokollen ved innlogging, bør du velge <b>TLS</b>."
+
 #: library/WT/Stats.php:4009
 msgid "Transylvania"
 msgstr "Transilvania"
@@ -13837,6 +13876,9 @@ msgstr "Bruk PHP mail til å sende meldinger"
 msgid "Use RIN number instead of GEDCOM ID"
 msgstr "Bruk RIN istedenfor for GEDCOM-ID"
 
+msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br /><br />This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
+msgstr "Bruk SMTP for å sende epost fra <b>webtrees</b>.<br /><br />Dette valget forutsetter at det er adgang til en STMP mail-server. Settes det til <b>Nei</b>, bruker <b>webtrees</b> det epost-systemet som er innebygget i serverens PHP-installasjon."
+
 #: admin_site_config.php:43
 msgid "Use SMTP to send messages"
 msgstr "Bruk SMTP til å sende meldinger"
@@ -13861,6 +13903,9 @@ msgstr "Bruk kompakt layout"
 msgid "Use full source citations"
 msgstr "Bruk full kildehenvisning"
 
+msgid "Use name and password authentication to connect to the SMTP server.<br /><br />Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
+msgstr "Bruk navn og passord for å autentisere oppkobling til SMTP-tjener.<br /><br />De fleste SMTP-tjenere  krever at alle oppkoblinger blir autentisert før de vil godta utgående eposter."
+
 #: admin_site_config.php:132 help_text.php:746
 msgid "Use password"
 msgstr "Bruk passord"
@@ -13884,6 +13929,9 @@ msgstr "Bruk disse knappene for å flytte rammer fra en liste til en annen.<br /
 #: help_text.php:1112
 msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br /><br />Highlight the entry to be moved, and then click a button to move that entry up or down."
 msgstr "Bruk disse knappene for å endre rekkefølgen på valgte rammer.  Rammene vil bli vist i den rekkefølgen de står i her.<br /><br />Marker den rammen du ønsker å flytte og klikk på en knapp for å flytte rammen opp eller ned."
+
+msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br /><br />According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br /><br />In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
+msgstr "Bruk dette feltet for å lagre en forkortet versjon av en tittel. Feltet brukes i forbindelse med en kildes tittelfelt. Som standard vil <b>webtrees</b> først bruke tittelen og deretter den forkortede tittel.<br /><br />Ifølge GEDCOM 5.5-s0pesifikasjonen \"brukes dette feltet for å lagre en korttittel for sortering, lagring og fremhenting av kildeposter\" (s. 62).<br /><br />I <b>webtrees</b> er kortformen ikke obligatorisk, som den er i andre slektsforskningsprogrammer."
 
 #: help_text.php:400
 msgid "Use this field to signal that this media item is the highlighted or primary item for the person it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
@@ -14510,6 +14558,9 @@ msgstr "Du kan endre <b>webtrees</b>' utseende ved å bruke \"temaer\". Hvert te
 #: help_text.php:1287
 msgid "You can click this button to see whether there is another relationship path between the two people.  Previously found paths can be displayed again by clicking the link with the path number."
 msgstr "Du kan trykke på denne knappen for å se om det er flere slektslinjer mellom de to personene.<br />De andre slektslinjene kan vises på nytt ved å klikke på nummeret til slektslinjen."
+
+msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br /><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+msgstr "Du kan bestemme om dette Spørsmål &amp; Svar skal være synlig uavhengig av hvilken GEDCOM som  vises, eller om den skal være synlig kun for gjeldende GEDCOM.<br /><ul><li><b>ALLE</b>&nbsp;&nbsp;&nbsp;FAQ-en vil være synlig i alle FAQ-listene, uansett hvilken GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;FAQ-en vil bare være synlig i den aktive GEDCOMens FAQ-liste.</li></ul>"
 
 #. I18N: %s is a URL
 #: help_text.php:1168
@@ -18597,17 +18648,17 @@ msgstr "\"%s\" er blitt lagt til blant dine Favoritter."
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:37
 msgctxt "Unknown surname"
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #~ msgid " but the details are unknown"
 #~ msgstr " men nærmere detaljer er ukjente"
@@ -18619,9 +18670,6 @@ msgstr "..."
 #~ msgstr "%1$ss %2$s"
 
 #~ msgid "%H:%i:%s"
-#~ msgstr "%G:%i:%s"
-
-#~ msgid "%g:%i:%s %a"
 #~ msgstr "%G:%i:%s"
 
 #~ msgid "%j %F %Y"
@@ -18866,12 +18914,6 @@ msgstr "..."
 #~ msgid "Binary data object"
 #~ msgstr "Binært dataobjekt"
 
-#~ msgid "Birth Date range end"
-#~ msgstr "Seneste fødselsdato"
-
-#~ msgid "Birth Date range start"
-#~ msgstr "Tidligste fødselssdato"
-
 #~ msgid "Birth Place contains"
 #~ msgstr "Sted for fødsel inneholder"
 
@@ -18886,9 +18928,6 @@ msgstr "..."
 
 #~ msgid "Brother"
 #~ msgstr "Bror"
-
-#~ msgid "Burial Place contains"
-#~ msgstr "Sted for begravelse inneholder"
 
 #~ msgid "Burial place contains"
 #~ msgstr "Sted for begravelse inneholder"
@@ -19015,12 +19054,6 @@ msgstr "..."
 #~ msgid "Daughter"
 #~ msgstr "Datter"
 
-#~ msgid "Death Date range end"
-#~ msgstr "Seneste dødsdato"
-
-#~ msgid "Death Date range start"
-#~ msgstr "Tidligste dødsdato"
-
 #~ msgid "Death Place contains"
 #~ msgstr "Sted for dødsfall inneholder"
 
@@ -19083,9 +19116,6 @@ msgstr "..."
 #~ msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 #~ msgstr "Epostadressen som skal brukes i &laquo;From:&raquo;-feltet i epost som <b>webtrees</b> oppretter automatisk.<br><br><b>webtrees</b> kan sende epost automatisk for å gjøre administratorer om forandringer som må ses gjennom. <b>webtrees</b> sender også beskjed til brukere som har bedt om en konto.<br><br>Vanligvis består &laquo;From:&raquo;-feltet i disse automatisk opprettede beskjedene noe i retning av <i>From: webtrees-noreply@dittnettsted</i> for å vise at man ikke behøver å besvare eposten. For å beskytte mot spam og annet epost-misbruk krever enkelte epost-systemer at &laquo;From:&raquo;-feltet er en gyldig epost-adresse og vil ikke akseptere epost som synes å komme fra <i>webtrees-noreply</i>."
 
-#~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br /><br />To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
-#~ msgstr "Hvert medie-objekt bør knyttes til en eller flere personer, familier eller kildeangivelser i din database.<br /><br />For å etablere en slik forbindelse kan du enten skrive inn/søke etter personens, familiens eller kildens ID mens du oppretter medie-objektet; eller du kan gjøre forbindelsen senere v.h.a. redigeringsvalgmuligheter på siden med Multimedieobjekter; eller ved å legge til medieobjektene gjennom \"Legg til media\"-linken på Person-, Familie- eller Kilde-sidene."
-
 #~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
 #~ msgstr "Hvert medie-objekt bør knyttes til en eller flere personer, familier eller kildeangivelser i din database.<br><br>For å etablere en slik forbindelse kan du enten skrive inn/søke etter personens, familiens eller kildens ID mens du oppretter medie-objektet; eller du kan gjøre forbindelsen senere v.h.a. redigeringsvalgmuligheter på siden med Multimedieobjekter; eller ved å legge til medieobjektene gjennom \"Legg til media\"-linken på Person-, Familie- eller Kilde-sidene."
 
@@ -19108,7 +19138,7 @@ msgstr "..."
 #~ msgstr "Slutt år"
 
 #~ msgid "Ending range of change dates"
-#~ msgstr "Vis endringer til og med..."
+#~ msgstr "Vis endringer til og med"
 
 #~ msgid "Enter Family ID"
 #~ msgstr "Tast inn ID på familie"
@@ -19300,14 +19330,8 @@ msgstr "..."
 #~ msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 #~ msgstr "Hvis en person var kjent under et kallenavn som ikke er del av det formelle navnet, settes det i anførselstegn: <%s>Nils \"Kroknese\" /Olsen/<%s>."
 
-#~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br /><br />When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
-#~ msgstr "Dersom mediabrannmuren er aktivert, skal kopier av vannmerkede bilder i full størrelse lagres på tjeneren i tillegg til de samme bildene uten vannmerke?<br /><br />Hvis alternativet er satt til <b>Ja</b>, vil vannmerkede bilder i fullskala størrelse bli vist raskere på bekostning av større krav til diskplass."
-
 #~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
 #~ msgstr "Dersom mediabrannmuren er aktivert, skal kopier av vannmerkede bilder i full størrelse lagres på tjeneren i tillegg til de samme bildene uten vannmerke?<br><br>Hvis alternativet er satt til <b>Ja</b>, vil vannmerkede bilder i fullskala størrelse bli vist raskere på bekostning av større krav til diskplass."
-
-#~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br /><br />When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
-#~ msgstr "Hvis mediabrannmuren er aktivert, skal kopier av vannmerkede miniatyrbilder lagres på tjeneren i tillegg til de samme miniatyrbildene uten vannmerke?<br /><br />Hvis alternativet er satt til <b>Ja</b>,  vil medialister som inneholder vannmerkede miniatyrbilder bli genererert raskere på bekostning av større krav til diskplass på tjeneren."
 
 #~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
 #~ msgstr "Hvis mediabrannmuren er aktivert, skal kopier av vannmerkede miniatyrbilder lagres på tjeneren i tillegg til de samme miniatyrbildene uten vannmerke?<br><br>Hvis alternativet er satt til <b>Ja</b>,  vil medialister som inneholder vannmerkede miniatyrbilder bli genererert raskere på bekostning av større krav til diskplass på tjeneren."
@@ -19340,7 +19364,7 @@ msgstr "..."
 #~ msgstr "Hvis du vil føyet et notat til denne posten, er dette stedet.<br><br>Klikk på linken, og et vindu vil komme opp der du kan skrive inn ditt notat. Når du er ferdig, klikk på \"Legg til\" øverst eller nederst og lukk vinduet."
 
 #~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
-#~ msgstr "Ved å sette denne valget til <b>Ja</b>, gir du brukere av nettstedet ditt muligheten til å bytte slektsbase hvis du har lagt inn flere slektsbaser.<br /><br />Dersom du har valgt <b>Nei</b>, vil ingen brukere eller besøkende ha mulighet til å bytte slektsbase."
+#~ msgstr "Ved å sette denne valget til <b>Ja</b>, gir du brukere av nettstedet ditt muligheten til å bytte slektsbase hvis du har lagt inn flere slektsbaser.<br><br>Dersom du har valgt <b>Nei</b>, vil ingen brukere eller besøkende ha mulighet til å bytte slektsbase."
 
 #~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
 #~ msgstr "Om serverens sikkerhetsinnstillinger tillater det, kan du be om økt minne og CPU tidsinnstillinger på <b>webtrees</b> administrasjonsside. Om dette ikke går, må administrator for server kontaktes."
@@ -19852,7 +19876,7 @@ msgstr "..."
 #~ msgstr "Ektefelle og barn"
 
 #~ msgid "Starting range of change dates"
-#~ msgstr "Vis endringer gjort fra og med..."
+#~ msgstr "Vis endringer gjort fra og med"
 
 #~ msgid "Surname option"
 #~ msgstr "Alternativ for etternavn"
@@ -19908,9 +19932,6 @@ msgstr "..."
 #~ msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
 #~ msgstr "Denne blokken lar anetre, etterkommertre eller timeglass-diagram vises på Startsiden og Min Side. Av plassgrunner bør diagrammene bare plasseres i venstre spalte.<br><br>Når denne blokken vises på Startsiden, er proband (personen diagrammet går ut fra) bestemt av administrator. Når den vises på brukerens egen, tilpassede Min Side, vil det være bestemt av brukeren selv.<br><br>Diagrammene fungerer på samme måte som når de kalles fra menyene. Klik på en persons rute for at se flere detaljer om vedkommende."
 
-#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that Hit Counters be enabled in the GEDCOM configuration settings."
-#~ msgstr "Denne blokken vil vise de 10 mest viste personene/familiene. Denne rammen krever at telleren er aktivert i innstillingene for konfigurasjonen for slektsfilen."
-
 #~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
 #~ msgstr "Denne blokken vil vise de 10 mest viste personene/familiene. Denne rammen krever at telleren er aktivert i innstillingene for konfigurasjonen for slektsfilen."
 
@@ -19938,9 +19959,6 @@ msgstr "..."
 #~ msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
 #~ msgstr "Dette er rekken av GEDCOMfakta som brukerne dine kan legge til familier. Du kan endre denne listen ved å fjerne eller legge til faktanavn, også egendefinerte om nødvendig. Faktanavn som er på denne listen kan ikke være på listen <i>Unike fakta for familier</i>."
 
-#~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br /><br />Configuration values for some e-mail providers:<br /><br /><b>Gmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br /><b>SMTP Port:</b> 465 or 587<br /><b>Secure connection:</b> SSL<br /><br /><b>Hotmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.live.com<br /><b>SMTP Port:</b> 25 or 587<br /><b>Secure connection:</b> TLS<br /><br /><b>Yahoo Mail Plus (currently a paid service)<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br /><b>SMTP Port:</b> 25"
-#~ msgstr "Dette er navnet på SMTP-serveren for utgående mail. Eksempel: <b>smtp.foo.bar.com</b>.<br /><br />Verdier for noen vanlige leverandører:<br /><br /><b>Gmail<br /></b><br /><b>Navn på utgående server (SMTP):</b> smtp.gmail.com<br /><b>SMTP-Port:</b> 465 eller 587<br /><b>Sikker forbindelse:</b> SSL<br /><br /><b>Hotmail<br /></b><br /><b>Navn på utgående server (SMTP):</b> smtp.live.com<br /><b>SMTP-port:</b> 25 eller 587<br /><b>Sikker forbindelse:</b> TLS<br /><br /><b>Yahoo Mail Plus (for tiden en betalt tjeneste)<br /></b><br /><b>Navn på utgående server (SMTP):</b> smtp.mail.yahoo.com<br /><b>SMTP-port:</b> 25"
-
 #~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
 #~ msgstr "Dette er navnet på SMTP-serveren for utgående mail. Eksempel: <b>smtp.foo.bar.com</b>.<br><br>Verdier for noen vanlige leverandører:<br><br><b>Gmail<br></b><br><b>Navn på utgående server (SMTP):</b> smtp.gmail.com<br><b>SMTP-Port:</b> 465 eller 587<br><b>Sikker forbindelse:</b> SSL<br><br><b>Hotmail<br></b><br><b>Navn på utgående server (SMTP):</b> smtp.live.com<br><b>SMTP-port:</b> 25 eller 587<br><b>Sikker forbindelse:</b> TLS<br><br><b>Yahoo Mail Plus (for tiden en betalt tjeneste)<br></b><br><b>Navn på utgående server (SMTP):</b> smtp.mail.yahoo.com<br><b>SMTP-port:</b> 25"
 
@@ -19952,9 +19970,6 @@ msgstr "..."
 
 #~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
 #~ msgstr "Brukes i \"Avsender\"-feltet ved forsendelse av epost. Er ofte det samme som \"Fra\"-feltet."
-
-#~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br /><br />Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br /><br />When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
-#~ msgstr "Med dette alternativet viser <b>webtrees</b> alle personer som er registrert som <i>assosiert</i> med personer eller familier i søkeresultatet. Det motsatte - å vise alle personer/familier som en person i søkeresultatet er assosiert med - er ikke mulig.<br /><br />For eksempel: Anta at person <b>A</b> er gudfar til person <b>B</b>. Dette forholdet er angitt med en ASSO-kode i person <b>B</b>s GEDCOM-post. Det finnes ingen tilsvarende kode i person <b>A</b>s GEDCOM-post.<br /><br />Når dette alternativet er satt til <b>Ja</b> og søkeresultatet omfatter <b>B</b>, vil <b>A</b> følge med automatisk på grunn av ASSO-koden i <b>B</b>s GEDCOM-post. Men hvis søkeresultatet omfatter <b>A</b>, vil <b>B</b> ikke komme med, siden det ikke finnes noen tilsvarende ASSO-kode hos <b>A</b>."
 
 #~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br><br>Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br><br>When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
 #~ msgstr "Med dette alternativet viser <b>webtrees</b> alle personer som er registrert som <i>assosiert</i> med personer eller familier i søkeresultatet. Det motsatte - å vise alle personer/familier som en person i søkeresultatet er assosiert med - er ikke mulig.<br><br>For eksempel: Anta at person <b>A</b> er gudfar til person <b>B</b>. Dette forholdet er angitt med en ASSO-kode i person <b>B</b>s GEDCOM-post. Det finnes ingen tilsvarende kode i person <b>A</b>s GEDCOM-post.<br><br>Når dette alternativet er satt til <b>Ja</b> og søkeresultatet omfatter <b>B</b>, vil <b>A</b> følge med automatisk på grunn av ASSO-koden i <b>B</b>s GEDCOM-post. Men hvis søkeresultatet omfatter <b>A</b>, vil <b>B</b> ikke komme med, siden det ikke finnes noen tilsvarende ASSO-kode hos <b>A</b>."
@@ -20037,17 +20052,11 @@ msgstr "..."
 #~ msgid "Total pending changes: "
 #~ msgstr "Antall ventende endringer: "
 
-#~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br /><br />TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br /><br />If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
-#~ msgstr "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) er krypteringsprotokoller for dataoverførsel.<br /><br />TLS 1.0, 1.1 og 1.2 er standardiserte videreutviklinger av SSL 3.0. TLS 1.0 og SSL 3.1 er ekvivalente. Videreutvikling av SSL pågår nå under det nye navnet TLS.<br /><br />Hvis din SMTP-server krever SSL-protokollen ved innlogging, bør du velge <b>SSL</b>. Hvis din SMTP-server krever TLS-protokollen ved innlogging, bør du velge <b>TLS</b>."
-
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
 #~ msgstr "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) er krypteringsprotokoller for dataoverførsel.<br><br>TLS 1.0, 1.1 og 1.2 er standardiserte videreutviklinger av SSL 3.0. TLS 1.0 og SSL 3.1 er ekvivalente. Videreutvikling av SSL pågår nå under det nye navnet TLS.<br><br>Hvis din SMTP-server krever SSL-protokollen ved innlogging, bør du velge <b>SSL</b>. Hvis din SMTP-server krever TLS-protokollen ved innlogging, bør du velge <b>TLS</b>."
 
 #~ msgid "Unrecognized GEDCOM code"
 #~ msgstr "Ukjent GEDCOM-kode"
-
-#~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br /><br />This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
-#~ msgstr "Bruk SMTP for å sende epost fra <b>webtrees</b>.<br /><br />Dette valget forutsetter at det er adgang til en STMP mail-server. Settes det til <b>Nei</b>, bruker <b>webtrees</b> det epost-systemet som er innebygget i serverens PHP-installasjon."
 
 #~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
 #~ msgstr "Bruk SMTP for å sende epost fra <b>webtrees</b>.<br><br>Dette valget forutsetter at det er adgang til en STMP mail-server. Settes det til <b>Nei</b>, bruker <b>webtrees</b> det epost-systemet som er innebygget i serverens PHP-installasjon."
@@ -20057,9 +20066,6 @@ msgstr "..."
 
 #~ msgid "Use colors"
 #~ msgstr "Bruk farger"
-
-#~ msgid "Use name and password authentication to connect to the SMTP server.<br /><br />Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
-#~ msgstr "Bruk navn og passord for å autentisere oppkobling til SMTP-tjener.<br /><br />De fleste SMTP-tjenere  krever at alle oppkoblinger blir autentisert før de vil godta utgående eposter."
 
 #~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
 #~ msgstr "Bruk navn og passord for å autentisere oppkobling til SMTP-tjener.<br><br>De fleste SMTP-tjenere  krever at alle oppkoblinger blir autentisert før de vil godta utgående eposter."
@@ -20072,9 +20078,6 @@ msgstr "..."
 
 #~ msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
 #~ msgstr "Bruk disse knappene for å endre rekkefølgen på valgte rammer.  Rammene vil bli vist i den rekkefølgen de står i her.<br><br>Marker den rammen du ønsker å flytte og klikk på en knapp for å flytte rammen opp eller ned."
-
-#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br /><br />According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br /><br />In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
-#~ msgstr "Bruk dette feltet for å lagre en forkortet versjon av en tittel. Feltet brukes i forbindelse med en kildes tittelfelt. Som standard vil <b>webtrees</b> først bruke tittelen og deretter den forkortede tittel.<br /><br />Ifølge GEDCOM 5.5-s0pesifikasjonen \"brukes dette feltet for å lagre en korttittel for sortering, lagring og fremhenting av kildeposter\" (s. 62).<br /><br />I <b>webtrees</b> er kortformen ikke obligatorisk, som den er i andre slektsforskningsprogrammer."
 
 #~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
 #~ msgstr "Bruk dette feltet for å lagre en forkortet versjon av en tittel. Feltet brukes i forbindelse med en kildes tittelfelt. Som standard vil <b>webtrees</b> først bruke tittelen og deretter den forkortede tittel.<br><br>Ifølge GEDCOM 5.5-s0pesifikasjonen \"brukes dette feltet for å lagre en korttittel for sortering, lagring og fremhenting av kildeposter\" (s. 62).<br><br>I <b>webtrees</b> er kortformen ikke obligatorisk, som den er i andre slektsforskningsprogrammer."
@@ -20189,9 +20192,6 @@ msgstr "..."
 
 #~ msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
 #~ msgstr "Du kan trykke på denne knappen for å se om det er flere slektslinjer mellom de to personene.<br>De andre slektslinjene kan vises på nytt ved å klikke på nummeret til slektslinjen."
-
-#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br /><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
-#~ msgstr "Du kan bestemme om dette Spørsmål &amp; Svar skal være synlig uavhengig av hvilken GEDCOM som  vises, eller om den skal være synlig kun for gjeldende GEDCOM.<br /><ul><li><b>ALLE</b>&nbsp;&nbsp;&nbsp;FAQ-en vil være synlig i alle FAQ-listene, uansett hvilken GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;FAQ-en vil bare være synlig i den aktive GEDCOMens FAQ-liste.</li></ul>"
 
 #~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
 #~ msgstr "Du kan bestemme om dette Spørsmål &amp; Svar skal være synlig uavhengig av hvilken GEDCOM som  vises, eller om den skal være synlig kun for gjeldende GEDCOM.<br><ul><li><b>ALLE</b>&nbsp;&nbsp;&nbsp;FAQ-en vil være synlig i alle FAQ-listene, uansett hvilken GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;FAQ-en vil bare være synlig i den aktive GEDCOMens FAQ-liste.</li></ul>"

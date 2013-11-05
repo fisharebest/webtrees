@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2013-07-13 18:33+0000\n"
-"Last-Translator: Mihai Badea <mtz_ro_2003@yahoo.com>\n"
+"PO-Revision-Date: 2013-08-04 18:19+0000\n"
+"Last-Translator: Nagy Ákos <Unknown>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 == 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2013-07-14 05:48+0000\n"
-"X-Generator: Launchpad (build 16696)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:04+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: Romanian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -38,16 +38,16 @@ msgstr ""
 #, php-format
 msgid "%1$d individual displayed, out of the normal total of %2$d, from %3$d generations."
 msgid_plural "%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d individ afişat dintr-un total normal de %2$d, din %3$d generaţii."
+msgstr[1] "%1$d indivizi afişaţi dintr-un total normal de %2$d, din %3$d generaţii."
 
 #. I18N: %1$d is a count of individuals, %2$s is a list of their names
 #: modules_v3/googlemap/module.php:833
 #, php-format
 msgid "%1$d individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d individ nu are coordonate geografice pentru locul naşterii: %2$s."
+msgstr[1] "%1$d indivizi nu au coordonate geografice pentru locul naşterii: %2$s."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:1096
@@ -243,8 +243,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s individ este privat."
+msgstr[1] "%s indivizi sunt privaţi."
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:139
@@ -256,8 +256,8 @@ msgstr ""
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s mesaj"
+msgstr[1] "%s mesaje"
 
 #: statisticsplot.php:744
 #, php-format
@@ -327,7 +327,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:1480 modules_v3/googlemap/module.php:1496
 #: modules_v3/user_messages/module.php:76
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;selectat&gt;"
 
 #: search_advanced.php:114 search_advanced.php:118 search_advanced.php:122
 #: search_advanced.php:170 search_advanced.php:171 search_advanced.php:172
@@ -528,7 +528,7 @@ msgstr ""
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:37
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr ""
+msgstr "O eroare comună este să ai legături multiple către aceeași înregistrare, spre exemplu, adăugând de mai multe ori același copil într-o familie."
 
 #: setup.php:369
 msgid "A database server can store many separate databases.  You need to select an existing database (created by your server's administrator) or create a new one (if your database user account has sufficient privileges)."
@@ -546,7 +546,7 @@ msgstr ""
 #. I18N: Description of the “Home page” module
 #: modules_v3/gedcom_block/module.php:39
 msgid "A greeting message for site visitors."
-msgstr ""
+msgstr "Un mesaj de întâmpinare pentru vizitatori"
 
 #. I18N: Description of the “Pending changes” module
 #: modules_v3/review_changes/module.php:39
@@ -561,27 +561,27 @@ msgstr ""
 #. I18N: Description of the “Recent changes” module
 #: modules_v3/recent_changes/module.php:41
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "O listă a înregistrărilor care au fost modificate recent."
 
 #. I18N: Description of “Research tasks” module
 #: modules_v3/todo/module.php:39
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "O listă a sarcinilor şi activităţilor legate de arborele de familie"
 
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: modules_v3/yahrzeit/module.php:39
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "O listă cu aniversările ce se apropie a datelor iudaice de deces."
 
 #. I18N: Description of the “On This Day” module
 #: modules_v3/todays_events/module.php:39
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "O listă de aniversări din această zi."
 
 #. I18N: Description of the “Upcoming events” module
 #: modules_v3/upcoming_events/module.php:39
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "O listă de aniversări ce urmează să survină în viitorul apropiat."
 
 #. I18N: Description of the “Top given names” module
 #: modules_v3/top10_givnnames/module.php:39
@@ -591,12 +591,12 @@ msgstr ""
 #. I18N: Description of the “Top surnames” module
 #: modules_v3/top10_surnames/module.php:39
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "O listă a celor mai comune nume de familie."
 
 #. I18N: Description of the “Most visited pages” module
 #: modules_v3/top10_pageviews/module.php:39
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "O listă de pagini care au fost vizualizate de cele mai multe ori."
 
 #. I18N: Description of the “Who is online” module
 #: modules_v3/logged_in/module.php:39
@@ -626,7 +626,7 @@ msgstr ""
 #. I18N: Description of the “Journal” module
 #: modules_v3/user_blog/module.php:47
 msgid "A private area to record notes or keep a journal."
-msgstr ""
+msgstr "O zonă privată pentru a adăuga note sau a ţine un jurnal."
 
 #. I18N: %s is a server name/URL
 #: login.php:293
@@ -637,27 +637,27 @@ msgstr ""
 #. I18N: Description of the “Pedigree” module
 #: modules_v3/pedigree_report/module.php:41
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Un raport al strămoşilor unui individ, formatat ca un arbore"
 
 #. I18N: Description of the “Ancestors” module
 #: modules_v3/ahnentafel_report/module.php:41
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr ""
+msgstr "Un raport ce enumeră strămoşii unui individ"
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy_report/module.php:41
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr ""
+msgstr "Un raport ce enumeră descendenţii unui individ"
 
 #. I18N: Description of the “Individual” module
 #: modules_v3/individual_report/module.php:41
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "Un raport ce afişează detalii despre un individ."
 
 #. I18N: Description of the “Family” module
 #: modules_v3/family_group_report/module.php:41
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "Un raport al membrilor familiei şi a detaliilor lor."
 
 #. I18N: Description of the “Deaths” module
 #: modules_v3/death_report/module.php:41
@@ -672,12 +672,12 @@ msgstr ""
 #. I18N: Description of the “Births” module
 #: modules_v3/birth_report/module.php:41
 msgid "A report of individuals who were born in a given time or place."
-msgstr ""
+msgstr "Un raport despre indivizii născuţi la o anumită dată sau într-un anumit loc."
 
 #. I18N: Description of the “Cemeteries” module
 #: modules_v3/cemetery_report/module.php:41
 msgid "A report of individuals who were buried in a given place."
-msgstr ""
+msgstr "Un raport despre indivizii care sunt înhumaţi într-un anumit loc."
 
 #. I18N: Description of the “Marriages” module
 #: modules_v3/marriage_report/module.php:41
@@ -687,12 +687,12 @@ msgstr ""
 #. I18N: Description of the “Changes” module
 #: modules_v3/change_report/module.php:41
 msgid "A report of recent and pending changes."
-msgstr ""
+msgstr "Un raport al schimbărilor recente şi/sau neaprobate."
 
 #. I18N: Description of the “Related families”
 #: modules_v3/individual_ext_report/module.php:41
 msgid "A report of the families that are closely related to an individual."
-msgstr ""
+msgstr "Un raport al familiilor înrudite apropiat cu un individ."
 
 #. I18N: Description of the “Related individuals” module
 #: modules_v3/relative_ext_report/module.php:41
@@ -702,12 +702,12 @@ msgstr ""
 #. I18N: Description of the “Source” module
 #: modules_v3/fact_sources/module.php:41
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "Un raport al informaţiilor provenite dintr-o anumită sursă."
 
 #. I18N: Description of the “Missing data”
 #: modules_v3/missing_facts_report/module.php:41
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr ""
+msgstr "Un raport al informaţiilor lipsă despre un individ şi rudele sale."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: modules_v3/bdm_report/module.php:41
@@ -721,12 +721,12 @@ msgstr ""
 #. I18N: Description of the “Families” module
 #: modules_v3/families/module.php:39
 msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-msgstr ""
+msgstr "O listă laterală ce afişează alfabetic toate familiile dintr-un arbore de familie."
 
 #. I18N: Description of “Individuals” module
 #: modules_v3/individuals/module.php:39
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-msgstr ""
+msgstr "O listă laterală ce afişează alfabetic toţi indivizii dintr-un arbore de familie."
 
 #. I18N: Description of the “Family navigator” module
 #: modules_v3/family_nav/module.php:39
@@ -736,32 +736,32 @@ msgstr ""
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:36
 msgid "A sidebar showing non-genealogical information about an indivdual."
-msgstr ""
+msgstr "O listă laterală ce afişează alte informaţii decât cele genealogice despre un individ."
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy/module.php:39
 msgid "A sidebar showing the descendants of an individual."
-msgstr ""
+msgstr "O listă laterală ce afişează descendenţii unui individ."
 
 #. I18N: Description of the “Families” module
 #: modules_v3/relatives/module.php:43
 msgid "A tab showing the close relatives of an individual."
-msgstr ""
+msgstr "un dosar ce afişează rudele apropiate ale unui individ."
 
 #. I18N: Description of the “Facts and events” module
 #: modules_v3/personal_facts/module.php:39
 msgid "A tab showing the facts and events of an individual."
-msgstr ""
+msgstr "Un dosar ce afişează fapte si evenimente ale unui individ."
 
 #. I18N: Description of the “Media” module
 #: modules_v3/media/module.php:39
 msgid "A tab showing the media objects linked to an individual."
-msgstr ""
+msgstr "Dosar ce afişează obiecte media legate de un individ."
 
 #. I18N: Description of the “Notes” module
 #: modules_v3/notes/module.php:39
 msgid "A tab showing the notes attached to an individual."
-msgstr ""
+msgstr "Un dosar conţinând notele ataşate unui individ."
 
 #. I18N: Description of the “Sources” module
 #: modules_v3/sources_tab/module.php:39
@@ -932,7 +932,7 @@ msgstr "Adaugă"
 
 #: modules_v3/googlemap/admin_places.php:711
 msgid "Add  a new geographic location"
-msgstr ""
+msgstr "Adaugă un nou loc"
 
 #: modules_v3/clippings/module.php:485
 #, php-format
@@ -1017,7 +1017,7 @@ msgstr "Adaugă un nou soţ"
 #: modules_v3/lightbox/module.php:71 modules_v3/media/module.php:83
 #: repo.php:117 source.php:129
 msgid "Add a new media object"
-msgstr ""
+msgstr "Adaugă un nou obiect media"
 
 #: edit_interface.php:425 family.php:132 modules_v3/relatives/module.php:147
 #: modules_v3/relatives/module.php:148 modules_v3/relatives/module.php:331
@@ -1028,7 +1028,7 @@ msgstr "Adaugă o nouă mamă"
 #: includes/functions/functions_edit.php:1760
 #: library/WT/Controller/Family.php:216 modules_v3/notes/module.php:95
 msgid "Add a new note"
-msgstr ""
+msgstr "Adaugă o notă nouă"
 
 #: modules_v3/relatives/module.php:38
 msgid "Add a new parent"
@@ -1042,7 +1042,7 @@ msgstr ""
 #: includes/functions/functions_edit.php:1772
 #: library/WT/Controller/Family.php:223 modules_v3/notes/module.php:104
 msgid "Add a new shared note"
-msgstr ""
+msgstr "Adaugă o noua Notă comună"
 
 #: modules_v3/relatives/module.php:277
 msgid "Add a new son or daughter"
@@ -1077,7 +1077,7 @@ msgstr "Adaugă o nouă soţie"
 #: modules_v3/upcoming_events/module.php:170
 #: modules_v3/user_messages/module.php:164 modules_v3/yahrzeit/module.php:254
 msgid "Add a scrollbar when block contents grow"
-msgstr ""
+msgstr "Adaugă bară de derulare atunci când conţinutul blocului creşte"
 
 #: modules_v3/relatives/module.php:159
 msgid "Add a wife to this family"
@@ -1126,7 +1126,7 @@ msgstr "Adaugă doar această sursă."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:171
 msgid "Add links"
-msgstr ""
+msgstr "Adaugă legături"
 
 #: modules_v3/relatives/module.php:204
 msgid "Add marriage details"
@@ -1134,16 +1134,16 @@ msgstr "Adaugă o nouă căsătorie"
 
 #: modules_v3/batch_update/plugins/death_y.php:33
 msgid "Add missing death records"
-msgstr ""
+msgstr "Adaugă câmpurile Dată deces lipsă"
 
 #: modules_v3/batch_update/plugins/married_names.php:35
 msgid "Add missing married names"
-msgstr ""
+msgstr "Adaugă nume după căsătorie lipsă"
 
 #. I18N: Description of the “Stories” module
 #: modules_v3/stories/module.php:39
 msgid "Add narrative stories to individuals in the family tree."
-msgstr ""
+msgstr "Adaugă articole indivizilor dintr-un arbore de familie."
 
 #: edit_interface.php:1864 library/WT/Controller/Individual.php:318
 msgid "Add new Name"
@@ -1172,7 +1172,7 @@ msgstr ""
 #: modules_v3/stories/module.php:129 modules_v3/stories/module.php:216
 #: modules_v3/stories/module.php:345
 msgid "Add story"
-msgstr ""
+msgstr "Adaugă articol"
 
 #: modules_v3/clippings/module.php:110 modules_v3/clippings/module.php:529
 msgid "Add this person and his direct line ancestors."
@@ -1235,7 +1235,7 @@ msgstr ""
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:98
 msgid "Add/Insert Blank Row"
-msgstr ""
+msgstr "Adaugă/Inserează un rând gol"
 
 #: editnews.php:33 editnews.php:47
 msgid "Add/edit journal/news entry"
@@ -1431,7 +1431,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:253
 msgid "Advanced"
-msgstr ""
+msgstr "Setări avansate"
 
 #: admin_trees_config.php:1204
 msgid "Advanced fact settings"
@@ -1475,7 +1475,7 @@ msgstr "După ce v-aţi autentificat, selectaţi linkul «Contul meu» de sub me
 #: library/WT/Stats.php:2379 library/WT/Stats.php:2380
 #: modules_v3/GEDFact_assistant/CENS_ctrl.php:41 timeline.php:375
 msgid "Age"
-msgstr ""
+msgstr "Vârstă"
 
 #: statistics.php:268
 msgid "Age at birth of child"
@@ -1543,7 +1543,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/lightbox/module.php:34
 msgid "Album"
-msgstr ""
+msgstr "Album"
 
 #: library/WT/Gedcom/Code/Temp.php:69
 msgid "Albuquerque, New Mexico"
@@ -1573,7 +1573,7 @@ msgstr ""
 #: modules_v3/random_media/module.php:264
 #: modules_v3/user_messages/module.php:91
 msgid "All"
-msgstr ""
+msgstr "Toate"
 
 #: calendar.php:184 calendar.php:198 calendar.php:199 calendar.php:202
 #: calendar.php:203 calendar.php:443
@@ -1600,7 +1600,7 @@ msgstr ""
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr ""
+msgstr "Permite altor module să editeze textul utilizând un editor \"WYSIWYG\" (What You See Is What You Get - ceea ce vezi este ceea ce obţii), în loc să folosească coduri HTML."
 
 #: admin_users.php:198 admin_users.php:386
 msgid "Allow this user to edit his account information"
@@ -1642,12 +1642,12 @@ msgstr "Samoa Americană"
 #. I18N: Description of the “Album” module
 #: modules_v3/lightbox/module.php:39
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr ""
+msgstr "O alternativă la dosarul \"media\" şi un instrument îmbunătăţit de vizualizare imagini."
 
 #. I18N: Description of the “Charts” module
 #: modules_v3/charts/module.php:39
 msgid "An alternative way to display charts."
-msgstr ""
+msgstr "Un mod alternativ de afişare a diagramelor."
 
 #. I18N: Description of the “Census assistant” module
 #: modules_v3/GEDFact_assistant/module.php:39
@@ -1657,12 +1657,12 @@ msgstr ""
 #. I18N: Description of the “Login” module
 #: modules_v3/login_block/module.php:39
 msgid "An alternative way to login and logout."
-msgstr ""
+msgstr "Un mod alternativ de autentificare şi deconectare"
 
 #. I18N: Description of the “Theme change” module
 #: modules_v3/theme_select/module.php:39
 msgid "An alternative way to select a new theme."
-msgstr ""
+msgstr "Un mod alternativ de a selecta o nouă temă"
 
 #: help_text.php:67
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -1675,7 +1675,7 @@ msgstr ""
 #. I18N: Description of the “Edit” module
 #: modules_v3/page_menu/module.php:39
 msgid "An edit menu for individuals, families, sources, etc."
-msgstr ""
+msgstr "Un meniu de modificare pentru indivizi, familii, surse, etc."
 
 #: includes/functions/functions_edit.php:2241
 #: includes/functions/functions_edit.php:2250
@@ -1697,7 +1697,7 @@ msgstr ""
 #: library/WT/Controller/Fanchart.php:314 library/WT/MenuBar.php:106
 #: modules_v3/ahnentafel_report/module.php:35
 msgid "Ancestors"
-msgstr ""
+msgstr "Strămoşi"
 
 #. I18N: gedcom tag ANCI
 #: library/WT/Gedcom/Tag.php:124
@@ -1772,7 +1772,7 @@ msgstr "Adaugă înregistrarea"
 #. I18N: Description of the “Batch update” module
 #: modules_v3/batch_update/module.php:36
 msgid "Apply automatic corrections to your genealogy data."
-msgstr ""
+msgstr "Aplică corecţii automate la datele tale genealogice."
 
 #: admin_trees_download.php:113 help_text.php:1101
 #: modules_v3/clippings/module.php:203 modules_v3/clippings/module.php:211
@@ -1856,7 +1856,7 @@ msgstr "Sunteţi sigur(ă) că doriţi să ştergeţi acest mesaj ?  Nu poate fi
 
 #: modules_v3/stories/module.php:366
 msgid "Are you sure you want to delete this story?"
-msgstr ""
+msgstr "Eşti sigur că doreşti să stergi acest articol?"
 
 #: admin_media.php:290 admin_media.php:425 admin_site_access.php:114
 #: admin_trees_manage.php:229 admin_users.php:162
@@ -1893,7 +1893,7 @@ msgstr ""
 
 #: modules_v3/html/help_text.php:34
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr ""
+msgstr "Aşa cum poţi folosi bara de unelte pentru a aplica formatare HTML, poţi insera câmpuri din baza de date care vor fi actualizate automat. Aceste câmpuri speciale sunt marcate cu caractere <b>#</b>. De exemplu, <b>#totalFamilies#</b> va fi înlocuit cu numărul de familii din baza de date. Utilizatorii avansaţi ar putea aplica clase CSS la text, astfel încât formatarea va coincide cu tema selectata."
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:79
@@ -2251,7 +2251,7 @@ msgstr ""
 #: modules_v3/batch_update/module.php:31 modules_v3/batch_update/module.php:45
 #: modules_v3/googlemap/placehierarchy.php:181
 msgid "Batch update"
-msgstr ""
+msgstr "Actualizare multiplă"
 
 #: library/WT/Gedcom/Code/Temp.php:83
 msgid "Baton Rouge, Louisiana"
@@ -2264,7 +2264,7 @@ msgstr "Asiguraţi-vă că aţi selectat o opţiune după care să căutaţi."
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: modules_v3/googlemap/placehierarchy.php:244
 msgid "Bearing"
-msgstr ""
+msgstr "Curs"
 
 #: lifespan.php:287
 msgid "Begin Year"
@@ -2434,7 +2434,7 @@ msgstr "Născut:"
 #. I18N: Name of a module/report
 #: modules_v3/birth_report/module.php:35
 msgid "Births"
-msgstr ""
+msgstr "Naşteri"
 
 #: library/WT/Stats.php:1243 statistics.php:106
 msgid "Births by century"
@@ -2814,7 +2814,7 @@ msgstr ""
 #. I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com
 #: modules_v3/ckeditor/module.php:34
 msgid "CKEditor™"
-msgstr ""
+msgstr "CKEditor™"
 
 #: library/WT/MenuBar.php:374
 msgid "Calendar"
@@ -2875,7 +2875,7 @@ msgstr ""
 
 #: modules_v3/batch_update/plugins/search_replace.php:117
 msgid "Case insensitive"
-msgstr ""
+msgstr "Insensibil la majuscule"
 
 #. I18N: gedcom tag CAST
 #: library/WT/Gedcom/Tag.php:151
@@ -2906,7 +2906,7 @@ msgstr "Insulele Cayman"
 #. I18N: Name of a module/report
 #: modules_v3/cemetery_report/module.php:35
 msgid "Cemeteries"
-msgstr ""
+msgstr "Cimitire"
 
 #. I18N: gedcom tag CEME
 #: library/WT/Gedcom/Tag.php:153
@@ -2922,12 +2922,12 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/GEDFact_assistant/module.php:34
 msgid "Census assistant"
-msgstr ""
+msgstr "Asistent Recensământ"
 
 #: library/WT/Gedcom/Tag.php:155
 #: modules_v3/GEDFact_assistant/_CENS/census_asst_date.php:46
 msgid "Census date"
-msgstr ""
+msgstr "Dată recensamânt"
 
 #: library/WT/Gedcom/Tag.php:156
 msgid "Census place"
@@ -2936,11 +2936,11 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:567
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1128
 msgid "Census transcript"
-msgstr ""
+msgstr "Transcriere recensământ"
 
 #: modules_v3/googlemap/module.php:1359
 msgid "Center map here"
-msgstr ""
+msgstr "Centrează harta aici"
 
 #: library/WT/Stats.php:3813
 msgid "Central African Republic"
@@ -2969,11 +2969,11 @@ msgstr "Modifică membri familiei"
 #: modules_v3/googlemap/places_edit.php:334
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:387
 msgid "Change flag"
-msgstr ""
+msgstr "Schimbă steag"
 
 #: find.php:303 setup.php:128
 msgid "Change language"
-msgstr ""
+msgstr "Schimba limba"
 
 #: admin_users.php:214 index.php:141 index.php:142
 msgid "Change the blocks on this page"
@@ -2988,15 +2988,15 @@ msgstr ""
 #. I18N: Name of a module/report
 #: admin_site_change.php:29 modules_v3/change_report/module.php:35
 msgid "Changes"
-msgstr ""
+msgstr "Modificări"
 
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:75
 #, php-format
 msgid "Changes in the last day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Modificări în ultima zi"
+msgstr[1] "Modificări în ultimele %s zile"
 
 #: themes/_administration/header.php:118
 msgid "Changes log"
@@ -3017,7 +3017,7 @@ msgstr ""
 
 #: modules_v3/charts/module.php:202 statistics.php:601
 msgid "Chart type"
-msgstr ""
+msgstr "Tip diagramă"
 
 #. I18N: Name of a module/block
 #: admin_trees_config.php:794 admin_trees_config.php:932
@@ -3063,7 +3063,7 @@ msgstr "Copil"
 #: modules_v3/tree/class_treeview.php:331
 #, php-format
 msgid "Child of %s"
-msgstr ""
+msgstr "Copilul lui %s"
 
 #: includes/functions/functions_print_lists.php:215
 #: includes/functions/functions_print_lists.php:637
@@ -3228,7 +3228,7 @@ msgstr "Cetăţenie"
 #: modules_v3/googlemap/module.php:325
 #: modules_v3/googlemap/places_edit.php:290
 msgid "City"
-msgstr ""
+msgstr "Oraș"
 
 #: library/WT/Gedcom/Code/Temp.php:87
 msgid "Ciudad Juarez, Mexico"
@@ -3390,7 +3390,7 @@ msgstr "Căsătorie civilă"
 #. I18N: Description of the “Messages” module
 #: modules_v3/user_messages/module.php:39
 msgid "Communicate directly with other users, using private messages."
-msgstr ""
+msgstr "Comunică direct cu alţi utilizatori folosind mesaje private."
 
 #: library/WT/Stats.php:3828
 msgid "Comoros"
@@ -3542,7 +3542,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:561
 msgid "Countries"
-msgstr ""
+msgstr "Țări"
 
 #. I18N: gedcom tag CTRY
 #: library/WT/Gedcom/Tag.php:180
@@ -3552,7 +3552,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:1478 modules_v3/googlemap/module.php:1596
 #: modules_v3/googlemap/places_edit.php:286
 msgid "Country"
-msgstr ""
+msgstr "Țară"
 
 #: statisticsplot.php:813 statisticsplot.php:815 statisticsplot.php:817
 msgid "Counts "
@@ -3560,7 +3560,7 @@ msgstr "Numără "
 
 #: modules_v3/googlemap/admin_places.php:177
 msgid "County"
-msgstr ""
+msgstr "Județ"
 
 #: admin_media.php:286
 msgid "Create"
@@ -3775,7 +3775,7 @@ msgstr "Eveniment personalizat"
 
 #: find.php:482
 msgid "Custom tags"
-msgstr ""
+msgstr "Etichete personalizate"
 
 #: admin_site_config.php:168 help_text.php:1042
 msgid "Custom welcome text"
@@ -3856,7 +3856,7 @@ msgstr ""
 
 #: modules_v3/googlemap/wt_v3_googlemap.js.php:483
 msgid "Date not known"
-msgstr ""
+msgstr "Dată necunoscută"
 
 #: library/WT/Gedcom/Tag.php:117
 msgid "Date of Adoption"
@@ -4009,7 +4009,7 @@ msgstr ""
 #: modules_v3/tree/class_treeview.php:328
 #, php-format
 msgid "Daughter of %s"
-msgstr ""
+msgstr "Fiica lui %s"
 
 #: admin.php:258 calendar.php:133 library/WT/MenuBar.php:376
 msgid "Day"
@@ -4021,7 +4021,7 @@ msgstr "Nu seta"
 
 #: timeline.php:130 timeline.php:132 timeline.php:133
 msgid "Day:"
-msgstr "Zi:"
+msgstr "Ziua:"
 
 #: includes/functions/functions_print_lists.php:92 library/WT/Stats.php:680
 #: library/WT/Stats.php:682
@@ -4230,7 +4230,7 @@ msgstr ""
 
 #: modules_v3/gedcom_block/module.php:51
 msgid "Default chart"
-msgstr ""
+msgstr "Diagrama implicită"
 
 #: admin_trees_manage.php:238 help_text.php:1116
 msgid "Default family tree"
@@ -4239,11 +4239,11 @@ msgstr ""
 #: admin_trees_config.php:233 admin_users.php:225 admin_users.php:427
 #: edituser.php:145 help_text.php:1121 modules_v3/gedcom_block/module.php:52
 msgid "Default individual"
-msgstr ""
+msgstr "Individ implicit"
 
 #: modules_v3/googlemap/module.php:259
 msgid "Default map type"
-msgstr ""
+msgstr "Tip implicit de hartă"
 
 #. I18N: A site configuration setting
 #: admin_trees_config.php:799 help_text.php:706
@@ -4256,7 +4256,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:43 modules_v3/googlemap/module.php:362
 msgid "Default value for top-level"
-msgstr ""
+msgstr "Valaore implicită pentru nivel-principal"
 
 #. I18N: gedcom tag _DEG
 #: library/WT/Gedcom/Tag.php:711
@@ -4296,7 +4296,7 @@ msgstr "Ştergeţi mesajele selectate"
 
 #: modules_v3/googlemap/admin_places.php:361
 msgid "Delete all existing geographic data before importing the file."
-msgstr ""
+msgstr "Şterge toate datele geografice înaintea importării fişierului."
 
 #: themes/_administration/header.php:130
 msgid "Delete inactive users"
@@ -4360,7 +4360,7 @@ msgstr ""
 #: library/WT/Controller/Descendancy.php:98 modules_v3/charts/module.php:101
 #, php-format
 msgid "Descendants of %s"
-msgstr ""
+msgstr "Descendenţi pentru %s"
 
 #: familybook.php:84
 msgid "Descent Steps"
@@ -4493,7 +4493,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
-msgstr ""
+msgstr "Afişează coordonatele hărţii"
 
 #: find.php:222 find.php:239 find.php:256 find.php:274 find.php:291
 msgid "Display all"
@@ -4502,16 +4502,16 @@ msgstr "Afişeaza toate"
 #. I18N: Description of the “Favorites” module
 #: modules_v3/gedcom_favorites/module.php:41
 msgid "Display and manage a family tree’s favorite pages."
-msgstr ""
+msgstr "Afişează şi administrează pagina de favorite a unui arbore de familie."
 
 #. I18N: Description of the “Favorites” module
 #: modules_v3/user_favorites/module.php:37
 msgid "Display and manage a user’s favorite pages."
-msgstr ""
+msgstr "Afişează şi administrează pagina de favorite a unui utilizator."
 
 #: modules_v3/googlemap/help_text.php:92 modules_v3/googlemap/module.php:416
 msgid "Display short placenames"
-msgstr ""
+msgstr "Afişează nume scurte de locuri"
 
 #. I18N: gedcom tag DIV
 #: library/WT/Gedcom/Tag.php:191
@@ -4547,7 +4547,7 @@ msgstr "Nu schimbaţi pentru a păstra numele fişierului original."
 
 #: modules_v3/googlemap/admin_places.php:365
 msgid "Do not create new locations, just import coordinates for existing locations."
-msgstr ""
+msgstr "Nu crea noi locuri, doar importă coordinatele pentru locurile existente."
 
 #: addmedia.php:733 admin_trees_config.php:1262 edit_interface.php:243
 #: edit_interface.php:331 edit_interface.php:501 edit_interface.php:560
@@ -4574,7 +4574,7 @@ msgstr "Republica Dominicană"
 
 #: admin_trees_manage.php:221 modules_v3/googlemap/admin_places.php:757
 msgid "Download"
-msgstr ""
+msgstr "Descarcă"
 
 #. I18N: %s is a URL/link to a .ZIP file
 #: admin.php:73
@@ -4605,7 +4605,7 @@ msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:749
 msgid "Download geographic data"
-msgstr ""
+msgstr "Descarcă date geografice"
 
 #: reportengine.php:274
 msgid "Download report"
@@ -4750,7 +4750,7 @@ msgstr ""
 
 #: modules_v3/stories/module.php:122 modules_v3/stories/module.php:206
 msgid "Edit story"
-msgstr ""
+msgstr "Modificare articol"
 
 #: library/WT/Tree.php:334
 msgid "Edit this individual and replace their details with your own"
@@ -4789,7 +4789,7 @@ msgstr ""
 #. I18N: Angle of elevation (in degrees), for street-view mapping
 #: modules_v3/googlemap/placehierarchy.php:245
 msgid "Elevation"
-msgstr ""
+msgstr "Elevație"
 
 #: library/WT/Date/Jewish.php:119
 msgctxt "GENITIVE"
@@ -4919,7 +4919,7 @@ msgstr "Introduceţi o notă opţională pentru acest favorit"
 
 #: modules_v3/googlemap/help_text.php:80
 msgid "Enter filename"
-msgstr ""
+msgstr "Introdu numele fişierului"
 
 #: addmedia.php:453
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
@@ -4928,7 +4928,7 @@ msgstr "Introduceţi sau căutaţi ID-ul persoanei, familiei, sau sursei cu care
 
 #: modules_v3/googlemap/help_text.php:60
 msgid "Enter precision"
-msgstr ""
+msgstr "Introdu precizia"
 
 #: reportengine.php:172
 msgid "Enter report values"
@@ -4964,7 +4964,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:65
 msgid "Enter zoom level"
-msgstr ""
+msgstr "Introdu factorul de mărire"
 
 #: search.php:162
 msgid "Entire record"
@@ -5044,7 +5044,7 @@ msgstr "Eveniment"
 #: modules_v3/googlemap/wt_v3_googlemap.js.php:610 statistics.php:95
 #: statistics.php:197
 msgid "Events"
-msgstr ""
+msgstr "Evenimente"
 
 #: statistics.php:404
 msgid "Events in countries"
@@ -5073,7 +5073,7 @@ msgstr ""
 
 #: modules_v3/batch_update/plugins/search_replace.php:111
 msgid "Exact text"
-msgstr ""
+msgstr "Text exact"
 
 #: famlist.php:178 indilist.php:178
 #, php-format
@@ -5133,7 +5133,7 @@ msgstr ""
 #. I18N: Name of a module/sidebar
 #: modules_v3/extra_info/module.php:31
 msgid "Extra information"
-msgstr ""
+msgstr "Informaţii suplimentare"
 
 #. I18N: gedcom tag _EYEC
 #: library/WT/Gedcom/Tag.php:715
@@ -5226,7 +5226,7 @@ msgstr ""
 #: modules_v3/personal_facts/module.php:34
 #: modules_v3/random_media/module.php:264
 msgid "Facts and events"
-msgstr ""
+msgstr "Fapte si evenimente"
 
 #: admin_trees_config.php:1109
 msgid "Facts for Family records"
@@ -5336,7 +5336,7 @@ msgstr ""
 #. I18N: Name of a module/sidebar
 #: modules_v3/families/module.php:34
 msgid "Family list"
-msgstr ""
+msgstr "Listă familii"
 
 #. I18N: Name of a module/sidebar
 #: edit_interface.php:942
@@ -5351,13 +5351,13 @@ msgstr "Navigare familie"
 #. I18N: Description of the “GEDCOM News” module
 #: modules_v3/gedcom_news/module.php:47
 msgid "Family news and site announcements."
-msgstr ""
+msgstr "Noutăţi de familie şi anunţuri."
 
 #. I18N: A title/heading. %s is an individual’s name
 #: library/WT/Controller/Familybook.php:371
 #, php-format
 msgid "Family of %s"
-msgstr ""
+msgstr "Familia lui %s"
 
 #: admin_site_change.php:269 admin_site_change.php:293 admin_site_logs.php:236
 #: admin_site_logs.php:259 admin_trees_manage.php:181 admin_users.php:224
@@ -5553,7 +5553,7 @@ msgstr "Femeie"
 #: modules_v3/top10_givnnames/module.php:84 statistics.php:136
 #: statistics.php:152 statistics.php:165
 msgid "Females"
-msgstr ""
+msgstr "Femei"
 
 #: library/WT/Stats.php:3853
 msgid "Fiji"
@@ -5565,7 +5565,7 @@ msgstr "Informaţia despre fişier"
 
 #: modules_v3/googlemap/admin_places.php:342
 msgid "File containing places (CSV)"
-msgstr ""
+msgstr "Fişier conţinând locuri (CSV)"
 
 #: addmedia.php:489 addmedia.php:510 admin_media_upload.php:200
 #: help_text.php:1449
@@ -5613,7 +5613,7 @@ msgstr ""
 #: find.php:221 find.php:238 find.php:255 find.php:273 find.php:290
 #: find.php:481 modules_v3/random_media/module.php:300
 msgid "Filter"
-msgstr ""
+msgstr "Filtru"
 
 #: find.php:109 includes/functions/functions_print.php:1170
 msgid "Find a fact or event"
@@ -5687,7 +5687,7 @@ msgstr ""
 #: modules_v3/googlemap/places_edit.php:325
 #: modules_v3/googlemap/places_edit.php:333
 msgid "Flag"
-msgstr ""
+msgstr "Steag"
 
 #: library/WT/Stats.php:3854
 msgid "Flanders"
@@ -5972,7 +5972,7 @@ msgstr ""
 #. I18N: Description of the “Sitemaps” module
 #: modules_v3/sitemap/module.php:42
 msgid "Generate sitemap files for search engines."
-msgstr ""
+msgstr "Generează hărţi site pentru motoarele de căutare."
 
 #. I18N: This is a report footer. %s is the name of the application.
 #: library/WT/Report/Base.php:218
@@ -5987,7 +5987,7 @@ msgstr ""
 #: ancestry.php:112 descendancy.php:78 familybook.php:62 fanchart.php:68
 #: hourglass.php:75 modules_v3/googlemap/module.php:676 pedigree.php:44
 msgid "Generations"
-msgstr ""
+msgstr "Generaţii"
 
 #. I18N: gedcom tag ANCE
 #: library/WT/Gedcom/Tag.php:123
@@ -6002,7 +6002,7 @@ msgstr ""
 #: modules_v3/googlemap/placehierarchy.php:368
 #: modules_v3/googlemap/places_edit.php:41
 msgid "Geographic data"
-msgstr ""
+msgstr "Date geografice"
 
 #: statistics.php:612
 msgid "Geographical area"
@@ -6102,7 +6102,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:1448
 #: modules_v3/googlemap/placehierarchy.php:232
 msgid "Google Maps™"
-msgstr ""
+msgstr "Google Maps™"
 
 #: modules_v3/googlemap/admin_places.php:199
 #: modules_v3/googlemap/module.php:128 modules_v3/googlemap/module.php:164
@@ -6110,14 +6110,14 @@ msgstr ""
 #: modules_v3/googlemap/module.php:1455
 #: modules_v3/googlemap/placehierarchy.php:170
 msgid "Google Maps™ preferences"
-msgstr ""
+msgstr "Preferințe Google Maps™"
 
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
 #: modules_v3/googlemap/module.php:270
 #: modules_v3/googlemap/placehierarchy.php:234
 #: modules_v3/googlemap/wt_v3_googlemap.js.php:612
 msgid "Google Street View™"
-msgstr ""
+msgstr "Google Street View™"
 
 #. I18N: gedcom tag GRAD
 #: library/WT/Gedcom/Tag.php:233
@@ -6215,7 +6215,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/html/module.php:34
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #. I18N: gedcom tag _HAIR
 #: library/WT/Gedcom/Tag.php:733
@@ -6242,7 +6242,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:645
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:728
 msgid "Head of Household:"
-msgstr ""
+msgstr "Capul familiei:"
 
 #. I18N: gedcom tag HEAD
 #: library/WT/Gedcom/Tag.php:234
@@ -6267,7 +6267,7 @@ msgstr ""
 #: library/WT/Gedcom/Tag.php:735 modules_v3/googlemap/module.php:278
 #: modules_v3/googlemap/module.php:402
 msgid "Height"
-msgstr ""
+msgstr "Înălțime"
 
 #: login.php:215 login.php:322
 #, php-format
@@ -6293,15 +6293,15 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:71
 msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
-msgstr ""
+msgstr "Aici se poate selecta sau înlătura iconiţa. Când va fi afişată harta, acest steag va fi afişat."
 
 #: modules_v3/googlemap/help_text.php:44
 msgid "Here the default level for the highest level in the place-hierarchy can be defined. If a place cannot be found this name is added as the highest level (country) and the database is searched again."
-msgstr ""
+msgstr "Aici poate fi definită valoarea implicită pentru cel mai înalt nivel într-o ierarhie. Dacă un loc nu poate fi găsit, atunci este adăugat la cel mai înalt nivel (țară) și se caută din nou în baza de date."
 
 #: modules_v3/googlemap/help_text.php:66
 msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
-msgstr ""
+msgstr "Aici poţi introduce factorul de mărire. Această valoare va fi utilizată când se va afişa harta."
 
 #: help_text.php:1062
 msgid "Here you can add a fact to the record being edited.<br /><br />First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
@@ -6325,7 +6325,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:61
 msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
-msgstr ""
+msgstr "Aici poţi introduce precizia. Reprezintă numărul de zecimale care va fi folosit la determinarea latitudinii şi longitudinii."
 
 #: library/WT/Gedcom/Code/Temp.php:111
 msgid "Hermosillo, Mexico"
@@ -6357,7 +6357,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:104 modules_v3/googlemap/module.php:679
 msgid "Hide flags"
-msgstr ""
+msgstr "Ascunde steagurile"
 
 #: admin_trees_config.php:41 admin_trees_config.php:642
 #: includes/functions/functions_edit.php:196
@@ -6366,15 +6366,15 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:99 modules_v3/googlemap/module.php:682
 msgid "Hide lines"
-msgstr ""
+msgstr "Ascunde liniile"
 
 #: modules_v3/googlemap/help_text.php:105
 msgid "Hide the flags that are configured in the googlemap module.  Usually these are for countries and states. This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot."
-msgstr ""
+msgstr "Ascunde steagurile care sunt configurate în modulul Google Map. De obicei acestea sunt pentru ţări şi state. Servesc ca indicaţie vizuală că indicatorii plasaţi în apropierea steagului sunt din zona generală şi nu din locul exact indicat."
 
 #: modules_v3/googlemap/help_text.php:100
 msgid "Hide the lines connecting the child to each parent if they exist on the map."
-msgstr ""
+msgstr "Ascunde liniile care conectează copilul de fiecare părinte dacă există pe hartă."
 
 #: library/WT/Stats.php:1094
 msgid "Highest population"
@@ -6415,7 +6415,7 @@ msgstr ""
 #: admin_modules.php:140 library/WT/MenuBar.php:35
 #: modules_v3/gedcom_block/module.php:34
 msgid "Home page"
-msgstr ""
+msgstr "Pagină inițială"
 
 #: library/WT/Stats.php:3879
 msgid "Honduras"
@@ -6429,24 +6429,24 @@ msgstr ""
 #: library/WT/Controller/Fanchart.php:317 library/WT/MenuBar.php:108
 #: modules_v3/charts/module.php:207
 msgid "Hourglass chart"
-msgstr ""
+msgstr "Diagramă \"clepsidră\""
 
 #. I18N: %s is an individual’s name
 #: hourglass.php:39 library/WT/Controller/Hourglass.php:105
 #: modules_v3/charts/module.php:104
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr ""
+msgstr "Diagramă \"clepsidră\" pentru %s"
 
 #: modules_v3/googlemap/module.php:341
 #: modules_v3/googlemap/places_edit.php:294
 msgid "House"
-msgstr ""
+msgstr "Casă"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:567
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1128
 msgid "Household"
-msgstr ""
+msgstr "Gospodărie"
 
 #: library/WT/Gedcom/Code/Temp.php:113
 msgid "Houston, Texas"
@@ -6467,7 +6467,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:264
 msgid "Hybrid"
-msgstr ""
+msgstr "Hibrid"
 
 #: admin_trees_config.php:324
 msgid "ID settings"
@@ -6491,7 +6491,7 @@ msgstr ""
 #: modules_v3/googlemap/admin_places.php:639
 #: modules_v3/googlemap/admin_places.php:697
 msgid "Icon"
-msgstr ""
+msgstr "Iconiță"
 
 #: library/WT/Gedcom/Code/Temp.php:114
 msgid "Idaho Falls, Idaho"
@@ -6630,7 +6630,7 @@ msgstr ""
 
 #: modules_v3/family_nav/module.php:169
 msgid "Immediate Family"
-msgstr ""
+msgstr "Familie Apropiată"
 
 #. I18N: gedcom tag IMMI
 #: library/WT/Gedcom/Tag.php:237
@@ -6639,11 +6639,11 @@ msgstr "Imigrare"
 
 #: admin_trees_manage.php:217 modules_v3/googlemap/admin_places.php:730
 msgid "Import"
-msgstr ""
+msgstr "Importă"
 
 #: modules_v3/googlemap/admin_places.php:722
 msgid "Import all places from a family tree"
-msgstr ""
+msgstr "Importă toate locurile dintr-un arbore de familie"
 
 #: help_text.php:1265
 msgid "Import family tree"
@@ -6687,7 +6687,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:1506
 msgid "Include fully matched places: "
-msgstr ""
+msgstr "Include locuri găsite complet: "
 
 #: famlist.php:180 indilist.php:180
 #, php-format
@@ -6742,12 +6742,12 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:1262
 msgid "Individual information"
-msgstr ""
+msgstr "Informaţii individ"
 
 #. I18N: Name of a module
 #: modules_v3/individuals/module.php:34
 msgid "Individual list"
-msgstr ""
+msgstr "Lista indivizi"
 
 #: admin_trees_config.php:834 admin_trees_config.php:985
 msgid "Individual pages"
@@ -6824,13 +6824,13 @@ msgstr ""
 #: library/WT/Controller/Fanchart.php:319 library/WT/MenuBar.php:120
 #: modules_v3/charts/module.php:208 modules_v3/tree/module.php:35
 msgid "Interactive tree"
-msgstr ""
+msgstr "Arbore interactiv"
 
 #: modules_v3/charts/module.php:107 modules_v3/tree/class_treeview.php:79
 #: modules_v3/tree/class_treeview.php:145 modules_v3/tree/module.php:111
 #, php-format
 msgid "Interactive tree of %s"
-msgstr ""
+msgstr "Arborele interactivpentru %s"
 
 #: help_text.php:1185
 msgid "Internal messaging"
@@ -6982,7 +6982,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/user_blog/module.php:42
 msgid "Journal"
-msgstr ""
+msgstr "Jurnal"
 
 #: library/WT/Date/Calendar.php:207
 msgctxt "Abbreviation for July"
@@ -7095,11 +7095,11 @@ msgstr "Kazahstan"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:120
 msgid "Keep"
-msgstr ""
+msgstr "Păstrează"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:139
 msgid "Keep Link in list"
-msgstr ""
+msgstr "Păstrează Legătura în listă"
 
 #: library/WT/Stats.php:3897
 msgid "Kenya"
@@ -7107,7 +7107,7 @@ msgstr ""
 
 #: modules_v3/html/module.php:157
 msgid "Keyword examples"
-msgstr ""
+msgstr "Exemple cuvinte-cheie"
 
 #: library/WT/Date/Jalali.php:128
 msgctxt "Abbreviation for Persian month: Khordad"
@@ -7301,7 +7301,7 @@ msgstr ""
 #: library/WT/Gedcom/Tag.php:243 modules_v3/googlemap/admin_places.php:184
 #: modules_v3/googlemap/module.php:1605
 msgid "Latitude"
-msgstr ""
+msgstr "Latitudine"
 
 #: library/WT/Stats.php:3914
 msgid "Latvia"
@@ -7345,7 +7345,7 @@ msgstr ""
 #: modules_v3/googlemap/admin_places.php:175
 #: modules_v3/googlemap/module.php:380 modules_v3/googlemap/module.php:1598
 msgid "Level"
-msgstr ""
+msgstr "Nivel"
 
 #: library/WT/Stats.php:3906
 msgid "Liberia"
@@ -7401,7 +7401,7 @@ msgstr "Legaţi această persoană de o familie existentă ca soţie"
 #: modules_v3/lightbox/module.php:75 modules_v3/lightbox/module.php:76
 #: modules_v3/media/module.php:86 repo.php:120 source.php:132
 msgid "Link to an existing media object"
-msgstr ""
+msgstr "Leagă de un obiect media existent"
 
 #. I18N: gedcom tag _DBID
 #: library/WT/Gedcom/Tag.php:644
@@ -7410,7 +7410,7 @@ msgstr "ID-ul bazei de date legată"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:112
 msgid "Links"
-msgstr ""
+msgstr "Legături"
 
 #: ancestry.php:70 descendancy.php:58
 msgid "List"
@@ -7512,7 +7512,7 @@ msgstr ""
 #: includes/functions/functions_print.php:316
 #: modules_v3/login_block/module.php:56 modules_v3/login_block/module.php:61
 msgid "Logout"
-msgstr "Ieşire"
+msgstr "Deconectare"
 
 #: admin_site_logs.php:29 themes/_administration/header.php:94
 msgid "Logs"
@@ -7534,7 +7534,7 @@ msgstr ""
 #: library/WT/Gedcom/Tag.php:245 modules_v3/googlemap/admin_places.php:184
 #: modules_v3/googlemap/module.php:1605
 msgid "Longitude"
-msgstr ""
+msgstr "Longitudine"
 
 #: library/WT/Gedcom/Code/Temp.php:119
 msgid "Los Angeles, California"
@@ -7638,7 +7638,7 @@ msgstr "Bărbat"
 #: modules_v3/top10_givnnames/module.php:89 statistics.php:135
 #: statistics.php:151 statistics.php:164
 msgid "Males"
-msgstr ""
+msgstr "Bărbaţi"
 
 #: library/WT/Stats.php:3924
 msgid "Mali"
@@ -7895,11 +7895,11 @@ msgstr "Martinica"
 
 #: modules_v3/batch_update/plugins/search_replace.php:92
 msgid "Match the exact text, even if it occurs in the middle of a word."
-msgstr ""
+msgstr "Găsește textul exact, chiar dacă apare în mijlocul unui cuvânt."
 
 #: modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Match the exact text, unless it occurs in the middle of a word."
-msgstr ""
+msgstr "Găsește textul exact, doar dacă nu apare în mijlocul unui cuvânt."
 
 #: library/WT/Stats.php:3931
 msgid "Mauritania"
@@ -7912,7 +7912,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:349
 #: modules_v3/googlemap/places_edit.php:296
 msgid "Max"
-msgstr ""
+msgstr "Maxim"
 
 #: admin_trees_config.php:826 help_text.php:625
 msgid "Maximum descendancy generations"
@@ -7970,7 +7970,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:89
 #: modules_v3/media/module.php:34 themes/_administration/header.php:135
 msgid "Media"
-msgstr ""
+msgstr "Fişiere media"
 
 #: admin_trees_config.php:350 help_text.php:664
 msgid "Media ID prefix"
@@ -8233,7 +8233,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:34
 msgid "Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-msgstr ""
+msgstr "Minimul și maximul factor de mărire pentru hărțile Google. 1 reprezintă întreaga hartă, 15 este o singură casă. 15 este utilizabil doar în anumite zone."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:207
@@ -8243,7 +8243,7 @@ msgstr ""
 #. I18N: Name of a module/report
 #: modules_v3/missing_facts_report/module.php:35
 msgid "Missing data"
-msgstr ""
+msgstr "Date lipsă"
 
 #: edit_changes.php:188
 msgid "Moderate pending changes"
@@ -8327,7 +8327,7 @@ msgstr "Luna căsătoriei"
 
 #: timeline.php:130 timeline.php:132 timeline.php:133
 msgid "Month:"
-msgstr "Lună:"
+msgstr "Luna:"
 
 #: statisticsplot.php:912
 msgid "Months between marriage and birth of first child"
@@ -8407,7 +8407,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/top10_pageviews/module.php:34
 msgid "Most viewed pages"
-msgstr ""
+msgstr "Paginile cele mai vizualizate"
 
 #: search_advanced.php:247
 msgid "Mother"
@@ -8635,12 +8635,12 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:122
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:573
 msgid "Navigator"
-msgstr ""
+msgstr "Navigator"
 
 #: modules_v3/googlemap/module.php:333
 #: modules_v3/googlemap/places_edit.php:292
 msgid "Neighborhood"
-msgstr ""
+msgstr "Vecinătate"
 
 #: library/WT/Stats.php:3948
 msgid "Nepal"
@@ -8812,7 +8812,7 @@ msgstr "Nici un templu - Ordonanţă de viaţă"
 
 #: modules_v3/googlemap/module.php:830
 msgid "No ancestors in the database."
-msgstr ""
+msgstr "Nici un strămoş în baza de date."
 
 #: admin_trees_config.php:260 admin_trees_config.php:280
 msgid "No calendar conversion"
@@ -8864,6 +8864,7 @@ msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -8898,7 +8899,7 @@ msgstr "Nu există utilizatori autentificaţi şi nici utilizatori anonimi"
 
 #: modules_v3/googlemap/module.php:160
 msgid "No map data for this person"
-msgstr ""
+msgstr "Nici o informaţie geografică pentru această persoană"
 
 #: admin_site_merge.php:137
 msgid "No matching facts found"
@@ -8915,7 +8916,7 @@ msgstr ""
 #: modules_v3/googlemap/admin_places.php:649
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:393
 msgid "No places found"
-msgstr ""
+msgstr "Nu fost găsit niciun loc"
 
 #: modules_v3/googlemap/admin_places.php:567
 msgid "No places selected."
@@ -8984,7 +8985,7 @@ msgstr "Norvegia"
 
 #: modules_v3/GEDFact_assistant/module.php:206
 msgid "Not a valid Individual, Family or Source ID"
-msgstr ""
+msgstr "Nu este un individ, familie sau Id sursă valid"
 
 #: modules_v3/lightbox/functions/lightbox_print_media.php:149
 msgid "Not in DB"
@@ -9044,7 +9045,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1140
 #: modules_v3/notes/module.php:34 source.php:106 statistics.php:339
 msgid "Notes"
-msgstr ""
+msgstr "Note"
 
 #: help_text.php:304
 msgid "Notes are free-form text and will appear in the Fact Details section of the page."
@@ -9056,7 +9057,7 @@ msgstr ""
 
 #: modules_v3/batch_update/admin_batch_update.php:107
 msgid "Nothing found."
-msgstr ""
+msgstr "Nu s-a găsit nimic."
 
 #: library/WT/Date/Calendar.php:211
 msgctxt "Abbreviation for November"
@@ -9119,7 +9120,7 @@ msgstr "Numărul de articole"
 #: modules_v3/top10_pageviews/module.php:135
 #: modules_v3/top10_surnames/module.php:155
 msgid "Number of items to show"
-msgstr "Numarul de elemente de arătat"
+msgstr "Numarul de elemente de afişat"
 
 #. I18N: gedcom tag NMR
 #: library/WT/Gedcom/Tag.php:275
@@ -9260,7 +9261,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/todays_events/module.php:34
 msgid "On this day"
-msgstr ""
+msgstr "În această zi"
 
 #: modules_v3/review_changes/module.php:87
 msgid "Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that webtrees site and login to review the changes."
@@ -9284,7 +9285,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:48 modules_v3/googlemap/module.php:367
 msgid "Optional prefixes and suffixes"
-msgstr ""
+msgstr "Prefixe și sufixe opționale"
 
 #: admin_users.php:498 relationship.php:91
 msgid "Options:"
@@ -9370,7 +9371,7 @@ msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:369
 msgid "Overwrite existing coordinates."
-msgstr ""
+msgstr "Suprascrie coordonatele existente"
 
 #: statistics.php:60
 msgid "Own charts"
@@ -9490,7 +9491,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:939
 #: modules_v3/family_nav/module.php:298 modules_v3/family_nav/module.php:299
 msgid "Parents"
-msgstr "Părinţi:"
+msgstr "Părinţi"
 
 #: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
 #: edituser.php:152 help_text.php:736 help_text.php:1301 login.php:158
@@ -9523,18 +9524,18 @@ msgstr "Arborele de familie"
 #: library/WT/Controller/Fanchart.php:308 library/WT/MenuBar.php:123
 #: modules_v3/googlemap/module.php:1313
 msgid "Pedigree map"
-msgstr ""
+msgstr "Hartă genealogie"
 
 #. I18N: %s is an individual’s name
 #: modules_v3/googlemap/module.php:656
 #, php-format
 msgid "Pedigree map of %s"
-msgstr ""
+msgstr "Harta genealogică pentru %s"
 
 #: modules_v3/charts/module.php:98
 #, php-format
 msgid "Pedigree of %s"
-msgstr ""
+msgstr "Generalogie pentru %s"
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Pedigree.php:91
@@ -9668,7 +9669,7 @@ msgstr "Loc"
 #: modules_v3/googlemap/module.php:797 modules_v3/googlemap/module.php:1464
 #: modules_v3/googlemap/placehierarchy.php:174
 msgid "Place Check"
-msgstr ""
+msgstr "Verificări locuri"
 
 #: placelist.php:47 placelist.php:66
 msgid "Place List"
@@ -9680,12 +9681,12 @@ msgstr "Locul conţine:"
 
 #: modules_v3/top10_pageviews/module.php:142
 msgid "Place counts before or after name?"
-msgstr "Plasează numerele inainte sau dupa nume ?"
+msgstr "Plasează contoarele înainte sau după nume ?"
 
 #: library/WT/MenuBar.php:302 modules_v3/googlemap/module.php:254
 #: placelist.php:42 placelist.php:44 placelist.php:149
 msgid "Place hierarchy"
-msgstr ""
+msgstr "Ierarhie locuri geografice"
 
 #: library/WT/Gedcom/Tag.php:293
 msgid "Place in Hebrew"
@@ -9949,11 +9950,11 @@ msgstr ""
 
 #: modules_v3/googlemap/places_edit.php:264
 msgid "Precision"
-msgstr ""
+msgstr "Precizie"
 
 #: modules_v3/googlemap/help_text.php:38 modules_v3/googlemap/module.php:303
 msgid "Precision of the latitude and longitude"
-msgstr ""
+msgstr "Precizia latitudinii și longitudinii"
 
 #: admin_site_config.php:48
 msgid "Predefined text that states admin will decide on each request for a user account"
@@ -9973,7 +9974,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:371
 msgid "Prefixes"
-msgstr ""
+msgstr "Prefixe"
 
 #: modules_v3/recent_changes/module.php:144
 #: modules_v3/todays_events/module.php:141
@@ -9982,7 +9983,7 @@ msgstr ""
 #: modules_v3/upcoming_events/module.php:153
 #: modules_v3/yahrzeit/module.php:247
 msgid "Presentation style"
-msgstr ""
+msgstr "Stil prezentare"
 
 #. I18N: http://en.wikipedia.org/wiki/President_of_the_Church
 #: library/WT/Gedcom/Code/Temp.php:155
@@ -10133,7 +10134,7 @@ msgstr ""
 #: modules_v3/user_messages/module.php:114
 #: modules_v3/user_messages/module.php:115
 msgid "RE: "
-msgstr ""
+msgstr "RE: "
 
 #: admin_site_readme.php:29 themes/_administration/header.php:95
 msgid "README documentation"
@@ -10251,7 +10252,7 @@ msgstr ""
 #. I18N: Description of the “Slide show” module
 #: modules_v3/random_media/module.php:39
 msgid "Random images from the current family tree."
-msgstr ""
+msgstr "Imagini aleatoare din arborele de familie curent."
 
 #: edit_interface.php:1983 edit_interface.php:2362
 #: library/WT/Controller/Family.php:135 modules_v3/relatives/module.php:289
@@ -10283,7 +10284,7 @@ msgstr "Anii recenţi (&lt; 100 ani)"
 #. I18N: Name of a module
 #: admin.php:244 modules_v3/recent_changes/module.php:36
 msgid "Recent changes"
-msgstr ""
+msgstr "Schimbări recente"
 
 #: library/WT/Gedcom/Code/Temp.php:160
 msgid "Recife, Brazil"
@@ -10341,7 +10342,7 @@ msgstr ""
 #: modules_v3/googlemap/wt_v3_googlemap.js.php:389
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:175
 msgid "Redraw map"
-msgstr ""
+msgstr "Re-desenează harta"
 
 #. I18N: gedcom tag REFN
 #: library/WT/Gedcom/Tag.php:299
@@ -10372,16 +10373,16 @@ msgstr ""
 
 #: modules_v3/batch_update/plugins/search_replace.php:114
 msgid "Regular expression"
-msgstr ""
+msgstr "Expresie regex"
 
 #: modules_v3/batch_update/plugins/search_replace.php:95
 msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php.net/manual/en/regexp.reference.php</a> for futher details."
-msgstr ""
+msgstr "Expresiile regex sunt o tehnică avansată de căutare. Vizitează <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php.net/manual/en/regexp.reference.php</a> pentru mai multe detalii."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:35
 msgid "Related families"
-msgstr ""
+msgstr "Familii înrudite"
 
 #. I18N: Name of a report
 #: modules_v3/relative_ext_report/module.php:35
@@ -10467,21 +10468,21 @@ msgstr "Şterge"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:140
 msgid "Remove Link from list"
-msgstr ""
+msgstr "Scoate Legătura din listă"
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:33
 msgid "Remove duplicate links"
-msgstr ""
+msgstr "Elimină legăturile duble"
 
 #: modules_v3/googlemap/module.php:490 modules_v3/googlemap/module.php:493
 #: modules_v3/googlemap/module.php:496
 #: modules_v3/googlemap/places_edit.php:335
 msgid "Remove flag"
-msgstr ""
+msgstr "Elimină steag"
 
 #: help_text.php:1375 timeline.php:272 timeline.php:288
 msgid "Remove person"
-msgstr ""
+msgstr "Sterge persoana"
 
 #: library/WT/Gedcom/Code/Temp.php:163
 msgid "Reno, Nevada"
@@ -10497,7 +10498,7 @@ msgstr "Înlocuieşte cu"
 
 #: modules_v3/batch_update/plugins/search_replace.php:104
 msgid "Replacement text"
-msgstr ""
+msgstr "Text înlocuitor"
 
 #: modules_v3/user_messages/module.php:118
 msgid "Reply"
@@ -10568,15 +10569,15 @@ msgstr ""
 #. I18N: Name of a module.  Tasks that need further research.
 #: modules_v3/todo/help_text.php:33 modules_v3/todo/module.php:34
 msgid "Research tasks"
-msgstr ""
+msgstr "Activităţi de cercetare"
 
 #: modules_v3/todo/help_text.php:34
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research.  You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr ""
+msgstr "Sarcinile de cercetare sunt evenimente special, ataşate indivizilor din arborele de familie, care identifica nevoia unei cercetări viitoare. Le poţi folosi ca o alertă pentru a verifica anume fapte prin surse mai credibile, pentru a obţine documente sau fotografii, pentru a rezolva informaţiile contradictorii, etc."
 
 #: modules_v3/todo/help_text.php:38
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognise this tag."
-msgstr ""
+msgstr "Sarcinile de cercetare sunt salvate cu eticheta personalizată \"_TODO\". Alte programe de genealogie s-ar putea să nu recunoască această etichetă."
 
 #: includes/functions/functions_print_lists.php:99
 #: includes/functions/functions_print_lists.php:507 medialist.php:158
@@ -10654,7 +10655,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:1234
 msgid "Root"
-msgstr ""
+msgstr "Rădăcină"
 
 #: includes/functions/functions_print_lists.php:97
 #: includes/functions/functions_print_lists.php:500
@@ -10783,7 +10784,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:263
 msgid "Satellite"
-msgstr ""
+msgstr "Satelit"
 
 #: library/WT/Date/Calendar.php:249
 msgid "Saturday"
@@ -10795,7 +10796,7 @@ msgstr "Arabia Saudita"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:39
 msgid "Save"
-msgstr ""
+msgstr "Salvare"
 
 #: admin.php:76
 msgid "Save all your family trees to disk, by using the \"export\" function for each one."
@@ -10855,7 +10856,7 @@ msgstr "Caută"
 #: modules_v3/batch_update/plugins/search_replace.php:37 search.php:243
 #: search.php:253
 msgid "Search and replace"
-msgstr ""
+msgstr "Caută și înlocuiește"
 
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:41
@@ -10880,19 +10881,19 @@ msgstr ""
 
 #: modules_v3/googlemap/places_edit.php:258
 msgid "Search globally"
-msgstr ""
+msgstr "Căutare globală"
 
 #: modules_v3/googlemap/places_edit.php:260
 msgid "Search locally"
-msgstr ""
+msgstr "Căutare locală"
 
 #: modules_v3/batch_update/plugins/search_replace.php:109
 msgid "Search method"
-msgstr ""
+msgstr "Metodă de căutare"
 
 #: modules_v3/batch_update/plugins/search_replace.php:99
 msgid "Search text/pattern"
-msgstr ""
+msgstr "Caută text/model"
 
 #: library/WT/Gedcom/Code/Temp.php:170
 msgid "Seattle, Washington"
@@ -10913,7 +10914,7 @@ msgstr "Selectaţi o dată"
 
 #: modules_v3/googlemap/help_text.php:81
 msgid "Select a file from the list of files already on the server which contains the place locations in CSV format."
-msgstr ""
+msgstr "Selectează un fişier dintre cele existente deja pe server şi care conţine coordonatele locurilor în format CSV."
 
 #: help_text.php:337
 msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the Godfather of the current individual</i>."
@@ -10921,7 +10922,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:70
 msgid "Select an icon"
-msgstr ""
+msgstr "Selectare iconiţă"
 
 #: statistics.php:500
 msgid "Select chart type:"
@@ -10929,7 +10930,7 @@ msgstr "de-a lungul axei X:"
 
 #: modules_v3/googlemap/help_text.php:75 modules_v3/googlemap/module.php:439
 msgid "Select flag"
-msgstr ""
+msgstr "Selecție steag"
 
 #. I18N: Description of the “Clippings cart” module
 #: modules_v3/clippings/module.php:39
@@ -11093,7 +11094,7 @@ msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:347
 msgid "Server file containing places (CSV)"
-msgstr ""
+msgstr "Fişier de pe server conţinând locuri (CSV)"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:126 help_text.php:761 setup.php:278
@@ -11356,11 +11357,11 @@ msgstr "Arată toate sursele"
 
 #: modules_v3/tree/class_treeview.php:75
 msgid "Show all spouses and ancestors"
-msgstr ""
+msgstr "Afişează toate soţiile şi toţi stramoşii"
 
 #: find.php:477
 msgid "Show all tags"
-msgstr ""
+msgstr "Arată toate etichetele"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:275
@@ -11414,12 +11415,12 @@ msgstr "Arată verişorii"
 
 #: modules_v3/relatives/module.php:318
 msgid "Show date differences"
-msgstr ""
+msgstr "Arată diferenţele între date"
 
 #. I18N: label for yes/no option
 #: modules_v3/gedcom_stats/module.php:262
 msgid "Show date of last update?"
-msgstr ""
+msgstr "Afişează data ultimei actualizări?"
 
 #: admin_trees_config.php:488 help_text.php:836
 msgid "Show dead people"
@@ -11459,7 +11460,7 @@ msgstr ""
 
 #: modules_v3/gedcom_stats/module.php:373
 msgid "Show link to Statistics charts?"
-msgstr ""
+msgstr "Afişează legătura către Diagrama de statistici?"
 
 #: admin_site_config.php:93 help_text.php:423
 msgid "Show list of family trees"
@@ -11497,7 +11498,7 @@ msgstr "Arată doar persoane, evenimente, sau toate"
 
 #: find.php:476
 msgid "Show only selected tags"
-msgstr ""
+msgstr "Arată doar etichetele selectate"
 
 #: includes/functions/functions_print_lists.php:103
 #: includes/functions/functions_print_lists.php:511
@@ -11544,15 +11545,15 @@ msgstr "Arată persoanele/familiile înrudite"
 
 #: modules_v3/todo/module.php:174
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "Afişează sarcinile de cercetare atribuite altor utilizatori"
 
 #: modules_v3/todo/module.php:181
 msgid "Show research tasks that are not assigned to any user"
-msgstr ""
+msgstr "Afişează sarcinile de cercetare neatribuite nici unui utilizator"
 
 #: modules_v3/todo/module.php:188
 msgid "Show research tasks that have a date in the future"
-msgstr ""
+msgstr "Afişează sarcinile de cercetare care au dată în viitor"
 
 #: help_text.php:898
 msgid "Show runtime statistics and database queries at the bottom of every page."
@@ -11560,7 +11561,7 @@ msgstr ""
 
 #: modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
-msgstr ""
+msgstr "Afişez controalele secvenţei de imagini?"
 
 #: familybook.php:76 help_text.php:1421 hourglass.php:91
 msgid "Show spouses"
@@ -11579,7 +11580,7 @@ msgstr ""
 
 #: modules_v3/html/module.php:319
 msgid "Show the date and time of update"
-msgstr ""
+msgstr "Afişează data şi ora ultimei actualizări"
 
 #: famlist.php:185 indilist.php:185
 msgid "Show the list of individuals"
@@ -11592,12 +11593,12 @@ msgstr ""
 #. I18N: Description of the “Google Maps™” module
 #: modules_v3/googlemap/module.php:55
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr ""
+msgstr "Afișează locurile și evenimentele utilizând serviciul cartografic Google Maps™."
 
 #: modules_v3/faq/module.php:176 modules_v3/html/module.php:327
 #: modules_v3/stories/module.php:248
 msgid "Show this block for which languages?"
-msgstr ""
+msgstr "Afişează acest bloc pentru ce limbi?"
 
 #: lifespan.php:277
 msgid "Show timeline"
@@ -11693,12 +11694,12 @@ msgstr ""
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: modules_v3/sitemap/module.php:37
 msgid "Sitemaps"
-msgstr ""
+msgstr "Hărţi site"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: modules_v3/sitemap/module.php:239
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr ""
+msgstr "Hărţile site sunt o modalitate prin care poţi informa motoarele de căutare despre paginile ce pot fi indexate. Toate marile motoare de căutare suportă hărţi site. Pentru mai multe informaţii, accesează <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 
 #: library/WT/Date/Jewish.php:116
 msgctxt "GENITIVE"
@@ -11722,7 +11723,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:274 modules_v3/googlemap/module.php:398
 msgid "Size of map (in pixels)"
-msgstr ""
+msgstr "Dimensiunea hărţii (în pixeli)"
 
 #: library/WT/Gedcom/Code/Rela.php:188
 msgid "Slave"
@@ -11742,7 +11743,7 @@ msgstr ""
 #. I18N: Name of a module
 #: library/WT/Gedcom/Tag.php:819 modules_v3/random_media/module.php:34
 msgid "Slide show"
-msgstr ""
+msgstr "Secvenţă imagini"
 
 #: library/WT/Stats.php:3994
 msgid "Slovakia"
@@ -11788,19 +11789,19 @@ msgstr "Unele articole nu au putut fi adăugate din cauza restricţiilor de conf
 
 #: modules_v3/googlemap/help_text.php:49
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
-msgstr ""
+msgstr "Numele unor locuri pot fi scrise cu prefixe sau sufixe opţionale. De exemplu, \"Orange\" sau \"Orange County\". Dacă arborele de familie conţine nume complete de locuri, dar baza de date geografice conţine doar numele scurte, atunci ar trebui specifică o listă de prefixe şi sufixe care vor fi ignorate. Variantele multiple vor fi separate cu \";\". De exemplu \"County; County of\" sau \"Township;Twp;Twp.\"."
 
 #. I18N: e.g. “Son of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:325
 #, php-format
 msgid "Son of %s"
-msgstr ""
+msgstr "Fiul lui %s"
 
 #: medialist.php:92 modules_v3/recent_changes/module.php:151
 #: modules_v3/todays_events/module.php:148
 #: modules_v3/upcoming_events/module.php:160
 msgid "Sort order"
-msgstr ""
+msgstr "Ordine sortare"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is a individual’s surname, so may need transliterating into non-latin alphabets.
 #: branches.php:134 branches.php:160
@@ -11923,7 +11924,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:410
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 #: admin_site_config.php:162 help_text.php:1037
 msgid "Standard header for custom welcome text"
@@ -11941,14 +11942,14 @@ msgstr "Începe la părinţi"
 
 #: modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
-msgstr ""
+msgstr "Pornire secvenţă imagini la încărcarea paginii?"
 
 #. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:323 modules_v3/googlemap/admin_places.php:176
 #: modules_v3/googlemap/module.php:316
 #: modules_v3/googlemap/places_edit.php:288
 msgid "State"
-msgstr ""
+msgstr "Stat"
 
 #. I18N: Name of a module
 #: library/WT/MenuBar.php:113 modules_v3/gedcom_stats/module.php:34
@@ -11988,7 +11989,7 @@ msgstr ""
 #: themes/fab/header.php:36 themes/minimal/header.php:36
 #: themes/webtrees/header.php:36 themes/xenea/header.php:36
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: admin_trees_config.php:695
 msgid "Store watermarked full size images on server?"
@@ -12001,21 +12002,21 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/stories/module.php:34 modules_v3/stories/module.php:411
 msgid "Stories"
-msgstr ""
+msgstr "Articole"
 
 #: modules_v3/stories/module.php:241
 msgid "Story"
-msgstr ""
+msgstr "Articol"
 
 #: modules_v3/stories/module.php:238 modules_v3/stories/module.php:349
 #: modules_v3/stories/module.php:415
 msgid "Story title"
-msgstr ""
+msgstr "Titlul articolului"
 
 #. I18N: Part of a country, state/region/county
 #: modules_v3/googlemap/module.php:604 modules_v3/googlemap/module.php:1494
 msgid "Subdivision"
-msgstr ""
+msgstr "Subdiviziune"
 
 #: message.php:132 modules_v3/user_messages/module.php:92
 msgid "Subject:"
@@ -12042,7 +12043,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:372
 msgid "Suffixes"
-msgstr ""
+msgstr "Sufixe"
 
 #: includes/functions/functions_print.php:1115
 #: library/WT/Date/Calendar.php:261
@@ -12145,7 +12146,7 @@ msgstr ""
 
 #: find.php:468
 msgid "Tag"
-msgstr ""
+msgstr "Etichetă"
 
 #: library/WT/Gedcom/Code/Temp.php:184
 msgid "Taipei, Taiwan"
@@ -12213,7 +12214,7 @@ msgstr "Templu"
 
 #: modules_v3/googlemap/module.php:265
 msgid "Terrain"
-msgstr ""
+msgstr "Teren"
 
 #: library/WT/Date/Jewish.php:110
 msgctxt "GENITIVE"
@@ -12427,7 +12428,7 @@ msgstr ""
 
 #: mediafirewall.php:37
 msgid "The media file was not found in this family tree"
-msgstr ""
+msgstr "Fişierul media nu a fost găsit în acest arbore de familie"
 
 #: help_text.php:1450
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called \"granny.jpg\".<br /><br />In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br /><br />Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -12489,7 +12490,7 @@ msgstr ""
 #. I18N: Description of “Statistics” module
 #: modules_v3/gedcom_stats/module.php:39
 msgid "The size of the family tree, earliest and latest events, common names, etc."
-msgstr ""
+msgstr "Dimensiunea arborelui de familie, cele mai vechi şi cele mai recente evenimente, nume comune, etc."
 
 #: admin_pgv_to_wt.php:44
 msgid "The specified directory does not contain an installation of PhpGedView"
@@ -12544,7 +12545,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/theme_select/module.php:34
 msgid "Theme change"
-msgstr ""
+msgstr "Schimbare temă"
 
 #: admin_trees_config.php:439 help_text.php:428
 msgid "Theme dropdown selector for theme changes"
@@ -12572,7 +12573,7 @@ msgstr "Nu există obiecte media pentru acest individ."
 
 #: modules_v3/todo/module.php:131
 msgid "There are no research tasks in this family tree."
-msgstr ""
+msgstr "Nu sunt sarcini de cercetare în acest arbore de familie."
 
 #: modules_v3/review_changes/module.php:107 themes/clouds/footer.php:45
 #: themes/colors/footer.php:45 themes/webtrees/footer.php:44
@@ -12583,7 +12584,7 @@ msgstr ""
 #: modules_v3/recent_changes/module.php:80
 #, php-format
 msgid "There have been no changes within the last %s days."
-msgstr ""
+msgstr "Nu au fost modificări în ultimele %s zile."
 
 #: addmedia.php:201 admin_media_upload.php:143 edit_interface.php:1293
 msgid "There was an error uploading your file."
@@ -12698,7 +12699,7 @@ msgstr ""
 #: modules_v3/gedcom_stats/module.php:88 modules_v3/html/module.php:166
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "Acest arbore de familie a fost actualizat pe %s."
 
 #: help_text.php:365
 msgid "This field allows you to change the source record that this fact's source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source's ID number.  To remove the entire citation, make this field blank."
@@ -12897,7 +12898,7 @@ msgstr ""
 
 #: mediafirewall.php:367
 msgid "This media file is broken and cannot be watermarked"
-msgstr "Acest fişier media este corupt şi nu poate fi marcat"
+msgstr "Acest fişier media este corupt şi nu poate fi aplicat watermark"
 
 #: mediaviewer.php:76
 msgid "This media object does not exist or you do not have permission to view it."
@@ -13076,7 +13077,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:54
 msgid "This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers."
-msgstr ""
+msgstr "Această opţiune specifică dacă latitudinea şi longitudinea vor fi afişate în fereastra de tip \"pop-up\" ataşată hărţii."
 
 #: help_text.php:1166
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly.  It is an advanced option, and you should not use it unless you understand the GEDCOM format.  If you make a mistake here, it can be difficult to fix."
@@ -13092,7 +13093,7 @@ msgstr ""
 
 #: modules_v3/googlemap/placehierarchy.php:366
 msgid "This place has no coordinates"
-msgstr ""
+msgstr "Această loc nu are coordonate"
 
 #: help_text.php:1341
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
@@ -13195,7 +13196,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:39
 msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
-msgstr ""
+msgstr "Specifică precizia diferitelor nivele atunci când introduci noi puncte geografice. De exemplu, o țară va fi specificată cu precizie 0 (=0 zecimale), pe când un oraș are nevoie de 3 sau 4 zecimale."
 
 #: help_text.php:692
 msgid "This text will be appended to each page title.  It will be shown in the browser's title bar, bookmarks, etc."
@@ -13234,7 +13235,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:1714
 msgid "This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
-msgstr ""
+msgstr "Această opţiune va afişa  toate locurile din GEDCOM-ul selectat. Implicit, aceasta NU VA INCLUDE locuri care sunt potrivite perfect intre fişierul GEDCOM si tabelele GoogleMap"
 
 #: includes/functions/functions_print.php:1119
 #: library/WT/Date/Calendar.php:258
@@ -13275,7 +13276,7 @@ msgstr "Joi"
 
 #: modules_v3/batch_update/plugins/search_replace.php:120
 msgid "Tick this box to match both upper and lower case letters."
-msgstr ""
+msgstr "Marchează această căsuță pentru a găsi și litere mari și litere mici."
 
 #. I18N: gedcom tag TIME
 #: library/WT/Gedcom/Tag.php:331
@@ -13383,7 +13384,7 @@ msgstr ""
 
 #: modules_v3/todo/help_text.php:36
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr ""
+msgstr "Pentru a crea o noua sarcină de cercetare, trebuie să adaugi întâi \"sarcină de cercetare\" la lista faptelor şi evenimentelor în preferinţele arborelui de familie."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:581
@@ -13396,11 +13397,11 @@ msgstr ""
 
 #: modules_v3/sitemap/module.php:264
 msgid "To tell search engines that sitemaps are available, you can use the following links."
-msgstr ""
+msgstr "Pentru a informa motoarele de căutare ce hărţi site sunt disponibile, poţi folosi următoarele legături."
 
 #: modules_v3/sitemap/module.php:260
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
-msgstr ""
+msgstr "Pentru a informa motoarele de căutare ce hărţi site sunt disponibile, adaugă următoarea linie în fişierul robots.txt."
 
 #: admin_site_config.php:151
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
@@ -13439,8 +13440,8 @@ msgstr[1] ""
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cel mai întâlnit nume de familie: %s"
+msgstr[1] "Cele mai întâlnite nume de familie: %s"
 
 #: modules_v3/googlemap/admin_places.php:607
 #: modules_v3/googlemap/admin_places.php:715 placelist.php:114
@@ -13460,12 +13461,12 @@ msgstr ""
 #. I18N: i.e. most popular surname.
 #: modules_v3/top10_surnames/module.php:90
 msgid "Top surname"
-msgstr ""
+msgstr "Cel mai întâlnit nume de familie"
 
 #. I18N: Name of a module.  Top=Most common
 #: modules_v3/top10_surnames/module.php:34 statistics.php:185
 msgid "Top surnames"
-msgstr ""
+msgstr "Topul nume de familie"
 
 #: library/WT/Gedcom/Code/Temp.php:188
 msgid "Toronto, Ontario, Canada"
@@ -13500,7 +13501,7 @@ msgstr "numărul de familii ="
 #: calendar.php:446 find.php:532 statistics.php:196
 #, php-format
 msgid "Total families: %s"
-msgstr ""
+msgstr "Total familii: %s"
 
 #: statistics.php:79
 msgid "Total females"
@@ -13518,7 +13519,7 @@ msgstr "numărul de nume    ="
 #: statistics.php:75
 #, php-format
 msgid "Total individuals: %s"
-msgstr ""
+msgstr "Total indivizi: %s"
 
 #: statistics.php:80
 msgid "Total living"
@@ -13540,18 +13541,18 @@ msgstr ""
 #: modules_v3/googlemap/module.php:1709
 #, php-format
 msgid "Total places: %s"
-msgstr ""
+msgstr "Număr total de locuri: %s"
 
 #: find.php:684
 #, php-format
 msgid "Total sources: %s"
-msgstr ""
+msgstr "Total surse: %s"
 
 #: modules_v3/gedcom_stats/module.php:98
 #: modules_v3/gedcom_stats/module.php:308 modules_v3/html/module.php:184
 #: statistics.php:177
 msgid "Total surnames"
-msgstr ""
+msgstr "Total nume de familie"
 
 #: modules_v3/gedcom_stats/module.php:116
 #: modules_v3/gedcom_stats/module.php:364 modules_v3/html/module.php:208
@@ -13617,7 +13618,7 @@ msgstr "Tip"
 
 #: modules_v3/googlemap/module.php:407
 msgid "Type of place markers in Place Hierarchy"
-msgstr ""
+msgstr "Tipuri de locuri in Ierarhia locurilor"
 
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:385 login.php:407
@@ -13733,7 +13734,7 @@ msgstr ""
 #: timeline.php:264
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr ""
+msgstr "Necunoscut(ă)"
 
 #: library/WT/Stats.php:606 library/WT/Stats.php:612
 msgctxt "unknown people"
@@ -13763,20 +13764,20 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:34
 msgid "Upcoming events"
-msgstr ""
+msgstr "Evenimente apropiate"
 
 #: modules_v3/batch_update/admin_batch_update.php:348
 #: modules_v3/batch_update/admin_batch_update.php:353
 msgid "Update"
-msgstr ""
+msgstr "Actualizare"
 
 #: modules_v3/batch_update/admin_batch_update.php:349
 msgid "Update all"
-msgstr ""
+msgstr "Actualizează tot"
 
 #: modules_v3/batch_update/admin_batch_update.php:337
 msgid "Update the CHAN record"
-msgstr ""
+msgstr "Actualizare câmp CHAN"
 
 #: admin_site_merge.php:177
 msgid "Updating linked record"
@@ -13801,7 +13802,7 @@ msgstr ""
 #: admin_media_upload.php:236 admin_trees_manage.php:225
 #: modules_v3/googlemap/admin_places.php:743
 msgid "Upload"
-msgstr ""
+msgstr "Încarcă"
 
 #: help_text.php:1431
 msgid "Upload family tree"
@@ -13809,7 +13810,7 @@ msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:736
 msgid "Upload geographic data"
-msgstr ""
+msgstr "Încarcă date geografice"
 
 #: admin_media_upload.php:34 admin_media_upload.php:179 help_text.php:1444
 #: themes/_administration/header.php:137
@@ -13835,7 +13836,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:394
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr ""
+msgstr "Foloseşte oogle Maps™ pentru ierarhia locurilor geografice"
 
 #: admin_site_config.php:42
 msgid "Use PHP mail to send messages"
@@ -13851,7 +13852,7 @@ msgstr ""
 
 #: modules_v3/batch_update/plugins/search_replace.php:94
 msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters."
-msgstr ""
+msgstr "Folosește &laquo;?&raquo; pentru a găsi un singur caracter, folosește &laquo;*&raquo; pentru a găsi zero sau mai multe caractere."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:380 login.php:402
@@ -13863,7 +13864,7 @@ msgstr[1] ""
 
 #: modules_v3/tree/class_treeview.php:74
 msgid "Use compact layout"
-msgstr ""
+msgstr "Folosește aranjament compact"
 
 #: admin_trees_config.php:1238 help_text.php:532
 msgid "Use full source citations"
@@ -13907,7 +13908,7 @@ msgstr "Folosiţi această pagină pentru a schimba sau a şterge membri familie
 
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:398
 msgid "Use this value"
-msgstr ""
+msgstr "Foloseşte această valoare"
 
 #: admin_site_change.php:266 admin_site_change.php:292 admin_site_logs.php:233
 #: admin_site_logs.php:258 edit_changes.php:172
@@ -13952,7 +13953,7 @@ msgstr "Nume utilizator"
 
 #: login.php:179 modules_v3/login_block/module.php:102
 msgid "Username or email address"
-msgstr ""
+msgstr "Nume utilizator sau adresă email"
 
 #: help_text.php:1502
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
@@ -13981,7 +13982,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:76
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
-msgstr ""
+msgstr "Folosind meniul \"pull down\", este posibilă selectarea unei ţări a cărei steag poate fi folosit. dacă nu este afişat nici un steag, atunci nu sunt definite steaguri pentru ţara respectivă."
 
 #: library/WT/Stats.php:4021
 msgid "Uzbekistan"
@@ -14138,7 +14139,7 @@ msgstr "Vizualizează arhiva"
 
 #: modules_v3/gedcom_stats/module.php:188
 msgid "View statistics as graphs"
-msgstr ""
+msgstr "Vezi statisticile ca grafice"
 
 #: edit_changes.php:164 modules_v3/review_changes/module.php:130
 msgid "View the changes"
@@ -14296,7 +14297,7 @@ msgstr ""
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a Link, the ID field cannot be empty."
-msgstr ""
+msgstr "Cănd adaugi o Legătură, câmpul ID nu poate fi vid."
 
 #: help_text.php:782
 msgid "When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default."
@@ -14356,7 +14357,7 @@ msgstr ""
 
 #: modules_v3/sitemap/module.php:241
 msgid "Which family trees should be included in the sitemaps?"
-msgstr ""
+msgstr "Ce arbori de familie să fie incluşi în hărţile site?"
 
 #: modules_v3/clippings/module.php:104 modules_v3/clippings/module.php:522
 msgid "Which links from this person would you also like to add?"
@@ -14419,7 +14420,7 @@ msgstr ""
 
 #: modules_v3/batch_update/plugins/search_replace.php:113
 msgid "Wildcards"
-msgstr ""
+msgstr "Caractere generice"
 
 #. I18N: gedcom tag WILL
 #: library/WT/Gedcom/Tag.php:341
@@ -14472,7 +14473,7 @@ msgstr ""
 #. I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: modules_v3/yahrzeit/module.php:34
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "Yahrzeiten"
 
 #: calendar.php:166 library/WT/MenuBar.php:382
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1114
@@ -14543,7 +14544,7 @@ msgstr ""
 
 #: modules_v3/batch_update/plugins/death_y.php:37
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr ""
+msgstr "Poţi mări viteza calculelor de confidenţialitate adăugând câmpul Dată deces indivizilor a căror dată de deces poate fi dedusă din alte date, dar care nu au un câmp de Dată deces, Înmormântare, Incinerare, etc."
 
 #: login.php:86
 msgid "You cannot login because your browser does not accept cookies."
@@ -14600,7 +14601,7 @@ msgstr "Trebuie să confirmaţi parola."
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:50
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:77
 msgid "You must enter a name"
-msgstr ""
+msgstr "Trebuie să introduci un nume"
 
 #: admin_users.php:318
 msgid "You must enter a password."
@@ -14636,7 +14637,7 @@ msgstr ""
 
 #: modules_v3/charts/module.php:149
 msgid "You must select an individual and chart type in the block configuration settings."
-msgstr ""
+msgstr "Trebuie să selectezi un individ şi un tip diagramă în setările de configurare ale blocului."
 
 #: admin_users.php:350
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
@@ -14767,26 +14768,26 @@ msgstr ""
 
 #: modules_v3/googlemap/placehierarchy.php:246
 msgid "Zoom"
-msgstr ""
+msgstr "Mărire"
 
 #: modules_v3/googlemap/admin_places.php:185
 #: modules_v3/googlemap/admin_places.php:638
 #: modules_v3/googlemap/admin_places.php:696
 #: modules_v3/googlemap/places_edit.php:320
 msgid "Zoom factor"
-msgstr ""
+msgstr "Factor de mărire"
 
 #: modules_v3/googlemap/help_text.php:33 modules_v3/googlemap/module.php:283
 msgid "Zoom factor of map"
-msgstr ""
+msgstr "Factor mărire hartă"
 
 #: modules_v3/googlemap/module.php:1355 timeline.php:308
 msgid "Zoom in"
-msgstr ""
+msgstr "Mărește"
 
 #: modules_v3/googlemap/module.php:1357
 msgid "Zoom in here"
-msgstr ""
+msgstr "Măreşte aici"
 
 #: includes/functions/functions_print.php:137
 msgid "Zoom in/out on this box."
@@ -14794,15 +14795,15 @@ msgstr "Măriţi sau micşoraţi cutia aceasta."
 
 #: modules_v3/googlemap/module.php:1356 timeline.php:309
 msgid "Zoom out"
-msgstr ""
+msgstr "Micșorează"
 
 #: modules_v3/googlemap/module.php:1358
 msgid "Zoom out here"
-msgstr ""
+msgstr "Micşorează aici"
 
 #: modules_v3/googlemap/module.php:1657
 msgid "Zoom="
-msgstr ""
+msgstr "Mărire="
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:103
@@ -15005,7 +15006,7 @@ msgstr ""
 
 #: includes/functions/functions.php:1196 modules_v3/relatives/module.php:282
 msgid "brother"
-msgstr ""
+msgstr "frate"
 
 #: includes/functions/functions.php:1334
 msgctxt "brother's wife's brother"
@@ -15160,7 +15161,7 @@ msgstr ""
 
 #: modules_v3/top10_surnames/module.php:164
 msgid "compact list"
-msgstr ""
+msgstr "listă compactă"
 
 #. I18N: button label
 #: admin_pgv_to_wt.php:1050 admin_trees_download.php:140
@@ -15224,7 +15225,7 @@ msgstr "decedat"
 #: modules_v3/googlemap/places_edit.php:302
 #: modules_v3/googlemap/places_edit.php:312
 msgid "degrees"
-msgstr ""
+msgstr "grade"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:110 admin_site_access.php:301
@@ -15235,7 +15236,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:330 modules_v3/googlemap/module.php:338
 #: modules_v3/googlemap/module.php:346 modules_v3/googlemap/module.php:354
 msgid "digits"
-msgstr ""
+msgstr "cifre"
 
 #: admin_trees_config.php:483
 msgid "disable"
@@ -15248,7 +15249,7 @@ msgstr ""
 
 #: modules_v3/googlemap/places_edit.php:314
 msgid "east"
-msgstr ""
+msgstr "est"
 
 #: includes/functions/functions.php:1040
 msgctxt "FEMALE"
@@ -17243,7 +17244,7 @@ msgstr ""
 #: admin_trees_config.php:1046 admin_trees_config.php:1054
 #: admin_trees_config.php:1062 modules_v3/googlemap/module.php:271
 msgid "hide"
-msgstr ""
+msgstr "ascunde"
 
 #: edit_interface.php:2098 edit_interface.php:2107
 #: includes/functions/functions.php:1152
@@ -17333,7 +17334,7 @@ msgstr ""
 #: modules_v3/upcoming_events/module.php:155
 #: modules_v3/yahrzeit/module.php:249
 msgid "list"
-msgstr ""
+msgstr "listă"
 
 #: library/WT/Gedcom/Tag.php:94
 msgctxt "Abbreviation for marriage"
@@ -17388,7 +17389,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:290
 msgid "maximum"
-msgstr ""
+msgstr "maxim"
 
 #: modules_v3/recent_changes/module.php:139
 #: modules_v3/upcoming_events/module.php:134
@@ -17396,8 +17397,8 @@ msgstr ""
 #, php-format
 msgid "maximum %d day"
 msgid_plural "maximum %d days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "maxim %d zi"
+msgstr[1] "maxim %d zile"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: includes/functions/functions_date.php:101
@@ -17406,7 +17407,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:285
 msgid "minimum"
-msgstr ""
+msgstr "minim"
 
 #: statisticsplot.php:897 statisticsplot.php:900 statisticsplot.php:903
 #: statisticsplot.php:906 statisticsplot.php:909
@@ -17494,7 +17495,7 @@ msgstr ""
 #: admin_pgv_to_wt.php:157 admin_site_merge.php:318
 #: modules_v3/batch_update/admin_batch_update.php:98
 msgid "next"
-msgstr ""
+msgstr "următor(-oare)"
 
 #: includes/functions/functions.php:1230
 msgctxt "brother's daughter"
@@ -17549,7 +17550,7 @@ msgstr ""
 #: modules_v3/batch_update/admin_batch_update.php:339
 #: modules_v3/charts/module.php:215
 msgid "no"
-msgstr ""
+msgstr "nu"
 
 #: admin_site_config.php:37 admin_trees_config.php:1249
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2170
@@ -17570,7 +17571,7 @@ msgstr ""
 
 #: modules_v3/googlemap/places_edit.php:304
 msgid "north"
-msgstr ""
+msgstr "nord"
 
 #: statistics.php:656 statisticsplot.php:763
 msgid "numbers"
@@ -17665,7 +17666,7 @@ msgstr "procentaj"
 
 #: modules_v3/batch_update/admin_batch_update.php:97
 msgid "previous"
-msgstr ""
+msgstr "precedent(ă)"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: library/WT/Gedcom/Code/Quay.php:35
@@ -17946,7 +17947,7 @@ msgstr ""
 
 #: includes/functions/functions.php:1134 modules_v3/googlemap/module.php:1250
 msgid "self"
-msgstr ""
+msgstr "propriu"
 
 #: includes/functions/functions.php:1039
 msgctxt "FEMALE"
@@ -17971,7 +17972,7 @@ msgstr ""
 #: admin_trees_config.php:1062 modules_v3/faq/module.php:358
 #: modules_v3/googlemap/module.php:271 modules_v3/stories/module.php:342
 msgid "show"
-msgstr ""
+msgstr "arată"
 
 #: statistics.php:666
 msgid "show the plot"
@@ -17983,7 +17984,7 @@ msgstr ""
 
 #: includes/functions/functions.php:1211 modules_v3/relatives/module.php:283
 msgid "sister"
-msgstr ""
+msgstr "soră"
 
 #: includes/functions/functions.php:1232
 msgctxt "brother's wife"
@@ -18081,7 +18082,7 @@ msgstr ""
 #: modules_v3/todays_events/module.php:152
 #: modules_v3/upcoming_events/module.php:164
 msgid "sort by date"
-msgstr ""
+msgstr "sortează după dată"
 
 #. I18N: An option in a list-box
 #: edit_interface.php:2044 reportengine.php:513
@@ -18101,12 +18102,12 @@ msgstr ""
 #. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:156
 msgid "sort by date, newest first"
-msgstr ""
+msgstr "sortează după dată, cel mai recent primul"
 
 #. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:155
 msgid "sort by date, oldest first"
-msgstr ""
+msgstr "sortează dupa dată, cel mai vechi primul"
 
 #. I18N: An option in a list-box
 #: medialist.php:99
@@ -18118,7 +18119,7 @@ msgstr ""
 #: modules_v3/todays_events/module.php:151
 #: modules_v3/upcoming_events/module.php:163
 msgid "sort by name"
-msgstr ""
+msgstr "sortează după nume"
 
 #. I18N: An option in a list-box
 #: medialist.php:96
@@ -18127,7 +18128,7 @@ msgstr ""
 
 #: modules_v3/googlemap/places_edit.php:305
 msgid "south"
-msgstr ""
+msgstr "sud"
 
 #: edit_interface.php:2100 edit_interface.php:2109 edit_interface.php:2137
 #: edit_interface.php:2152 includes/functions/functions.php:1178
@@ -18193,7 +18194,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:430
 msgctxt "mother's husband"
 msgid "step-father"
-msgstr ""
+msgstr "tată vitreg"
 
 #: includes/functions/functions.php:1252
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:735
@@ -18202,7 +18203,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:511
 msgctxt "father's wife"
 msgid "step-mother"
-msgstr ""
+msgstr "mamă vitregă"
 
 #: includes/functions/functions.php:1280
 msgctxt "parent's spouse"
@@ -18267,7 +18268,7 @@ msgstr ""
 #: modules_v3/upcoming_events/module.php:155
 #: modules_v3/yahrzeit/module.php:249
 msgid "table"
-msgstr ""
+msgstr "tabel"
 
 #: admin_trees_config.php:764 modules_v3/top10_surnames/module.php:164
 msgid "tag cloud"
@@ -18497,7 +18498,7 @@ msgstr ""
 #: modules_v3/googlemap/places_edit.php:224
 #: modules_v3/googlemap/places_edit.php:227 placelist.php:125
 msgid "unknown"
-msgstr ""
+msgstr "necunoscut(ă)"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2176
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2182
@@ -18506,7 +18507,7 @@ msgstr ""
 #: modules_v3/family_nav/module.php:411 modules_v3/family_nav/module.php:414
 msgctxt "unknown family"
 msgid "unknown"
-msgstr ""
+msgstr "necunoscut(ă)"
 
 #: library/WT/Person.php:1010 library/WT/Person.php:1019
 msgid "unknown person"
@@ -18550,7 +18551,7 @@ msgstr ""
 
 #: modules_v3/googlemap/places_edit.php:315
 msgid "west"
-msgstr ""
+msgstr "vest"
 
 #: edit_interface.php:2096 edit_interface.php:2105
 #: includes/functions/functions.php:1165
@@ -18601,7 +18602,7 @@ msgstr ""
 #: modules_v3/user_favorites/module.php:80
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr ""
+msgstr "Persoana \"%s\" a fost adaugată la favorite."
 
 #: library/WT/Note.php:82
 msgid "…"
@@ -18616,3 +18617,468 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Bine aţi venit pe acest site de genealogie</b></center><br>Access is permitted to users who have an account and a password for this website."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Bine aţi venit pe acest site de genealogie</b></center><br>Accesul la acest site este permis doar utilizatorilor <u>autorizaţi</u>.<br><br>Dacă aveţi un cont, puteţi să vă autentificaţi pe această pagină.  Dacă nu aveţi un cont, puteţi să cereţi unul dacă daţi click pe linkul potrivit de mai jos.<br><br>După ce este verificată cererea dumneavoastră, administratorul siteului fie va aproba fie va respinge cererea dumneavoastră.  Veţi primi un email când cererea a fost aprobată."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Bine aţi venit pe acest site de genealogie</b></center><br>Accesul la acest site este permis doar <u>membrilor familiei</u>.<br><br>Dacă aveţi un cont, puteţi să vă autentificaţi pe această pagină.  Dacă nu aveţi un cont, puteţi să cereţi unul dacă daţi click pe linkul potrivit de mai jos.<br><br>După ce sunt verificate informaţiile furnizate, administratorul siteului fie va aproba fie va respinge cererea dumneavoastră.  Veţi primi un email când cererea a fost aprobată."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Bine aţi venit pe acest site de genealogie</b></center><br>Accesul la acest site este permis oricărui vizitator care are un cont.<br><br>Dacă aveţi un cont, puteţi să vă autentificaţi pe această pagină.  Dacă nu aveţi un cont, puteţi să cereţi unul dacă daţi click pe linkul potrivit de mai jos.<br><br>După ce este verificată cererea dumneavoastră, administratorul siteului va activa contul dumneavoastră.  Veţi primi un email când cererea a fost aprobată."
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=aăâbcdefghiîjklmnopqrsştţuvwxyz"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=AĂÂBCDEFGHIÎJKLMNOPQRSŞTŢUVWXYZ"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Adaugă un soţ folosind o persoană existentă"
+
+#~ msgid "Add a new name"
+#~ msgstr "Adaugă un nou nume"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Adaugă o soţie folosind o persoană existentă"
+
+#~ msgid "Add individuals"
+#~ msgstr "Adaugă persoane"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Adăugaţi doar această persoană."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Adaugă înregistrările părinţilor şi ale tuturor descendenţilor împreună cu înregistrearea acestei familii."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Adaugă înregistrările copiilor împreună cu înregistrearea acestei familii."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Adaugă înregistrările părinţilor împreună cu înregistrearea acestei familii."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Adaugaţi această persoană si linia directă de strămoşi."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Adaugaţi această persoană, linia directă de strămoşi şi familiile lor."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Adăugaţi această persoană, părinţii şi fraţii persoanei."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Adaugaţi această persoană, soţul/soţia ei, şi toţi descendenţii."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Adaugaţi această persoană, soţul/soţia ei, şi copiii."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Adaugă această sursă şi familiile/persoanele legate de ea."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "După ce v-aţi autentificat, selectaţi linkul «Contul meu» de sub meniul «Portalul MyGedView» şi completaţi câmpurile de parole pentru a vă schimba parola."
+
+#~ msgid "All individuals"
+#~ msgstr "Toate persoanele"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "Un arbore interactiv ce afişează toţi strămoşii şi descendenţii unei persoane."
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Sunteţi sigur(ă) că doriţi să anulaţi toate schimbările pentru acest GEDCOM ?"
+
+#~ msgid "Available blocks"
+#~ msgstr "Blocurile disponibile"
+
+#~ msgid "Begin year"
+#~ msgstr "Anul de început"
+
+#~ msgid "Best man"
+#~ msgstr "Cavaler de onoare"
+
+#~ msgid "Binary data object"
+#~ msgstr "Obiect date binare"
+
+#~ msgid "Brother"
+#~ msgstr "Frate"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "Implicit, lista afişează doar acele locuri care pot fi găsite în arborele de familie. Poţi avea detalii despre alte locuri, cum ar fi cele importate bulk dintr-un fişier. Selectând această opţiune vor fi afişate toate locurile, inclusiv cele care nu sunt momentan folosite."
+
+#~ msgid "Change family members"
+#~ msgstr "Modifică membri familiei"
+
+#~ msgid "Civil registrar"
+#~ msgstr "Ofiţerul de la starea civilă"
+
+#~ msgid "Clear chart"
+#~ msgstr "Goleşte diagrama"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "Click pe %s ca să alegi persoana ca fiind Cap de familie"
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Click Nume ca să adaugi persoana la lista de Adăugare legături."
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Dă click ca să selectezi persoana care este Capul de familiei"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Căsătorie civilă"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Corectează câmpurile NUME de forma 'John/DOE/' sau 'John /DOE' produse de programe vechi de genealogie."
+
+#~ msgid "Create repository"
+#~ msgstr "Crează depozit"
+
+#~ msgid "Daughter"
+#~ msgstr "Fiică"
+
+#~ msgid "Descent steps"
+#~ msgstr "Paşi descendenţi"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Modifică înregistrarea GEDCOM în modul brut"
+
+#~ msgid "Email address:"
+#~ msgstr "Adresa de email:"
+
+#~ msgid "End year"
+#~ msgstr "Anul de sfârşit"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Introduceţi ID-ul individului"
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Introduceţi o persoană, familie sau ID sursă"
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Introduceţi sau căutaţi ID-ul persoanei, familiei, sau sursei cu care ar trebui să fie legat acest articol."
+
+#~ msgid "Entry text:"
+#~ msgstr "Textul intrării:"
+
+#~ msgid "External objects"
+#~ msgstr "Obiecte externe"
+
+#~ msgid "Family group information"
+#~ msgstr "Informaţii grup familie"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Căruciorul cu decupaje din arborele familiei"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Locul de naştere al tatălui (format Chapman)"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "Statistici GEDCOM"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Bună %s …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Salut %s …<br>Mulţumesc pentru înregistrare."
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Bună administratore …"
+
+#~ msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
+#~ msgstr "Aici poţi alege între cele două moduri de afişare a numelor locurilor în ierarhie. Dacă este selectat Da, locul are numele scurt sau numele actualului nivel, dacă Nu - numele complet.<br><b>Exemple:<br>Nume complet: </b>Chicago, Illinois, USA<br><b>Nume scurt: </b>Chicago<br><b>Nume complet: </b>Illinois, USA<br><b>Nume scurt: </b>Illinois"
+
+#~ msgid "Hit count:"
+#~ msgstr "Contorul de accesări:"
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Dacă nu aţi cerut un cont, puteţi să ştergeţi acest mesaj."
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "Dacă ai nu număr mare de locuri inactive, generarea listei poate dura destul de mult."
+
+#~ msgid "In this month…"
+#~ msgstr "În această lună …"
+
+#~ msgid "In this year…"
+#~ msgstr "În acest an …"
+
+#~ msgid "Individual 1"
+#~ msgstr "Persoana 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Persoana 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Persoana care a trăit cel mai mult"
+
+#~ msgid "LDS temple"
+#~ msgstr "Templu LDS"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Legaţi această persoană la o familie existentă ca şi copil"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Legaţi această persoană la o familie existentă ca şi soţ"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Legaţi această persoană de o familie existentă ca soţie"
+
+#~ msgid "Living individuals"
+#~ msgstr "Persoanele în viaţă"
+
+#~ msgid "Loading…"
+#~ msgstr "Încărcare…"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Locul nu a fost şters; conţine alte locuri"
+
+#~ msgid "Main section blocks"
+#~ msgstr "Blocurile din secţiunea principală"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Intenţie de căsătorie"
+
+#~ msgid "Married name"
+#~ msgstr "Prenume după căsătorie"
+
+#~ msgid "Married surname"
+#~ msgstr "Nume după căsătorie"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Contopiţi de la ID-ul:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Contopiţi în ID-ul:"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Articolele cele mai vizualizate"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Locul de naştere al mamei (format Chapman)"
+
+#~ msgid "Move left"
+#~ msgstr "Mută la stânga"
+
+#~ msgid "Move right"
+#~ msgstr "Mută la dreapta"
+
+#~ msgid "Name List"
+#~ msgstr "Lista numelor"
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Nu există evenimente pentru persoanele în viaţă pentru azi."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Nu există evenimente pentru persoanele în viaţă pentru mâine."
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Nu există acest ID în acest fisier GEDCOM."
+
+#~ msgid "No temple - living ordinance"
+#~ msgstr "Nici un templu - Ordonanţă de viaţă"
+
+#~ msgid "On this day…"
+#~ msgstr "În această zi …"
+
+#~ msgid "Orientation"
+#~ msgstr "Orientarea"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Alt director… vă rugăm tipăriţi"
+
+#~ msgid "Page"
+#~ msgstr "Pagina"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Diagrama arborelui de familie"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Anii recenţi (&lt; 100 ani)"
+
+#~ msgid "Registry officer"
+#~ msgstr "Ofiţerul de la înregistrare"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Şerg acest loc?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Blocurile din secţiunea din dreapta"
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Caută și/sau înlocuiește date în GEDCOM-ul tău folosind căutări simple sau reguli avansate."
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Caută persoane pe care să le adaugi la lista de Adăugare legături."
+
+#~ msgid "Select events"
+#~ msgstr "Aleceţi evenimentele"
+
+#~ msgid "Send message"
+#~ msgstr "Trimite mesaj"
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Nota comună conţine:"
+
+#~ msgid "Shared notes found"
+#~ msgstr "Note comune găsite"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Arată toate locurile într-o listă"
+
+#~ msgid "Show details"
+#~ msgstr "Arată detaliile"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Arată imaginile evidenţiate în căsuţele persoanelor"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Arată locurile inactive"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Arată persoanele născute cu mai mult de 100 de ani în urmă."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Arată persoanele născute în ultimi 100 de ani."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Arată persoanele care sunt în viaţă sau cuplurile unde ambii parteneri sunt în viaţă."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Arată persoanele decedate sau cuplurile unde ambii parteneri sunt decedaţi."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Arată oamenii care au murit cu peste 100 de ani în urmă."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Arată persoanele care au murit în ultimii 100 de ani."
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Arăta doar evenimentele legate de persoanele în viaţă ?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Arată doar persoanele al căror sex este necunoscut."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Arată doar persoane, evenimente sau toate?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Arata locurile în ierarhie"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Arată persoanele/familiile înrudite"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Arată cuplurile sau indivizii «frunză».  Aceştia sunt indivizi care sunt în viaţă dar nu au copii înregistraţi în baza de date."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Arată cuplurile sau indivizii «rădăcini».  Aceste persoane se pot numi şi «patriarhi».  Ei sunt indivizii care nu au părinţi înregistraţi în baza de date."
+
+#~ msgid "Sister"
+#~ msgstr "Soră"
+
+#~ msgid "Social security number"
+#~ msgstr "Număr asigurare socială"
+
+#~ msgid "Son"
+#~ msgstr "Fiu"
+
+#~ msgid "Spouse"
+#~ msgstr "Soţ/soţie"
+
+#~ msgid "Surname option"
+#~ msgstr "Opțiuni nume de familie"
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "Administratorul a fost notificat.  De îndată ce vă dă permisiunea să vă autentificaţi, puteţi să vă autentificaţi cu utilizatorul si parola dumneavoastră."
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "Formula regex pare să conțină o eroare. Nu poate fi folosită."
+
+#~ msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
+#~ msgstr "Acest GEDCOM (arbore de familie) a fost actualizat ultima dată pe #gedcomUpdated#. Sunt #totalSurnames# nume de familiei în acest arbore. Cel mai vechi eveniment înregistrat este #firstEventType# pentru #firstEventName# în #firstEventYear#. Cel mai recent eveniment este #lastEventType# pentru #lastEventName# în #lastEventYear#.<br><br>Dacă ai de făcut vreun comentariu sau o recomandare ia legătura cu #contactWebmaster#."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "Acest GEDCOM a fost creat utilizând <b>%1$s</b> pe <b>%2$s</b>."
+
+#~ msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+#~ msgstr "Acest bloc permite afişarea unei diagrame Genealogie, Descendenţi sau \"Clepsidră\" pe Pagina Mea sau pe Pagina de Start. Din cauza limitărilor de spaţiu, diagrama trebuie plasată numai în partea stângă a paginii.<br><br>Când blocul apare pe Pagina de Start, persoana rădăcină şi tipul diagramei vor fi stabilite de administrator. Când blocul apare pe pagina Pagina Mea a utilizatorului, aceste opţiuni sunt determinate de utilizator.<br><br>Comportamentul acestor diagrame este identic cu comportamentul lor atunci când sunt apelate din meniu. Dă click pe căsuţa unei persoane pentru a vedea mai multe detalii despre respectiva persoană."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Acest bloc va arăta 10 înregistrări care au fost vizualizate cel mai mult.  Acest bloc necesită activarea Contoarelor de accesare în setările configuraţiei GEDCOM-ului."
+
+#~ msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
+#~ msgstr "Pentru a te ajuta să începi cu acest bloc, am create câteva şabloane standard. Când selectezi unul dintre aceste şabloane, zona de text va conţine o copie a textului pe care o poţi edita pentru a se potrivi cu cerinţele tale."
+
+#~ msgid "To family"
+#~ msgstr "De familia"
+
+#~ msgid "To individual"
+#~ msgstr "De persoana"
+
+#~ msgid "To source"
+#~ msgstr "De sursa"
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Cod GEDCOM nerecunoscut"
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Folosiţi această pagină pentru a schimba sau a şterge membri familiei.<br><br>Pentru fiecare membru din familie, puteţi folosi linkul Modifică pentru a alege o persoană diferită care să umple acel rol în familie.  Puteţi de-asemenea să folosiţi linkul Şterge pentru a şterge acea persoană din familie.<br><br>Când aţi terminat de modificat membri familiei, daţi click pe butonul Salvează pentru a salva schimbările."
+
+#~ msgid "Users logged in"
+#~ msgstr "Utilizatorii autentificaţi"
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Vizualizează înregistrarea GEDCOM"
+
+#~ msgid "View day"
+#~ msgstr "Vezi ziua"
+
+#~ msgid "View family"
+#~ msgstr "Vizualizează familie"
+
+#~ msgid "View month"
+#~ msgstr "Vezi luna"
+
+#~ msgid "View person"
+#~ msgstr "Vizualizează persoană"
+
+#~ msgid "View source"
+#~ msgstr "Vizualizează sursă"
+
+#~ msgid "View year"
+#~ msgstr "Vezi anul"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Acum vă vom trimite un email de confirmare la adresa <b>%s</b>. Trebuie să verificaţi cererea pentru cont prin urmarea instrucţiunilor din emailul de confirmare. Dacă nu confirmaţi cererea pentru cont in cel mult 7 zile, cererea va fi respinsă automat.  Va trebui să faceţi o altă cerere din nou.<br><br>După ce aţi urmărit instrucţiunile din emailul de confirmare, administratorul trebuie să aprobe cererea dumneavoastră înainte să puteţi folosi contul.<br><br>Pentru a vă autentifica pe acest site, va trebui să ştiti userul si parola dumneavoastră."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Acum vă vom trimite un email de confirmare la adresa <b>%s</b>. Trebuie să verificaţi cererea pentru cont prin urmarea instrucţiunilor din emailul de confirmare. Dacă nu confirmaţi cererea pentru cont in cel mult 7 zile, cererea va fi respinsă automat.  Va trebui să faceţi o altă cerere din nou.<br><br>După ce aţi urmărit instrucţiunile din emailul de confirmare, vă puteţi autentifica.  Pentru a vă autentifica pe acest site, va trebui să ştiti userul si parola dumneavoastră."
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Care linkuri de la această persoană mai doriţi să le adăugaţi ?"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Numele de fată devine noul nume de familie"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Numele de fată al soției este înlocit de numele soțului"
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Poți face căutarea femeilor măritate mai ușoară înregistrând numele lor după căsătorie.<br> Totuși, nu toate femeile preiau numele soțului, așa că atenție la introducerea datelor incorecte în baza de date."
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "Nu veţi mai primi nici un email de la acest site, deoarece contul cerut va fi şters automat după 7 zile."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Coşul dumneavoastră de decupaje este gol."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Utilizatorul nu are setată \"aprobarea automată a modificărilor\". Vei putea edita doar o înregistrare odată."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Arhive Zip"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_romanian_ci"

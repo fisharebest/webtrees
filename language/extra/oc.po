@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:33+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -18613,3 +18613,24 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid "Display %s"
+#~ msgstr "Afichar %s"
+
+#~ msgid "Move left"
+#~ msgstr "Desplaçar cap a esquèrra"
+
+#~ msgid "Move right"
+#~ msgstr "Desplaçar cap a drecha"
+
+#~ msgid "Show details"
+#~ msgstr "Afichar los detalhs"
+
+#~ msgid "View person"
+#~ msgstr "Afichar la persona"
+
+#~ msgid "first"
+#~ msgstr "primièr"
+
+#~ msgid "last"
+#~ msgstr "darrièr"

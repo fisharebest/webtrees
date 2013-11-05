@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:39+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -455,12 +455,12 @@ msgstr "<b>webtrees</b>无法连接到phpgedview数据库: %s."
 
 #: help_text.php:1183
 msgid "<b>webtrees</b> has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you."
-msgstr "<b> webtrees </b>有几个不同的联系方式。管理员决定哪些方法可以用来联系他。你能控制的方法来接触<u>你</u >。根据站点配置，上面的一些方法可能无法供你使用。"
+msgstr "<b>webtrees</b>有几个不同的联系方式。管理员决定哪些方法可以用来联系他。你能控制的方法来接触<u>你</u>。根据站点配置，上面的一些方法可能无法供你使用。"
 
 #: setup.php:274
 #, php-format
 msgid "<b>webtrees</b> needs a MySQL database, version %s or later."
-msgstr "<b> webtrees </b>需要一个MySQL数据库，版本%s或更高版本"
+msgstr "<b>webtrees</b>需要一个MySQL数据库，版本%s或更高版本"
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: help_text.php:732
@@ -469,7 +469,7 @@ msgstr "<b> webtrees </b>需要发送电子邮件，如密码提醒和网站通�
 
 #: help_text.php:776
 msgid "<b>webtrees</b> reply address"
-msgstr "<b> webtrees </b>回复地址"
+msgstr "<b>webtrees</b>回复地址"
 
 #: login.php:138
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access is permitted to users who have an account and a password for this website."
@@ -1674,7 +1674,7 @@ msgstr "显示一个人所有的祖先和后代的交互树。"
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "数据库发生意外错误。"
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -6548,7 +6548,7 @@ msgstr "如果你是网站管理员,你应该检查:"
 
 #: site-php-version.php:84 site-unavailable.php:85
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
-msgstr "如果你不能自己解决问题,你可以在<a href =\"http://webtrees.net\"> webtrees.net </a>论坛寻求帮助"
+msgstr "如果你不能自己解决问题,你可以在<a href=\"http://webtrees.net\">webtrees.net</a>论坛寻求帮助"
 
 #: login.php:340
 msgid "If you didn't request an account, you can just delete this message."
@@ -6601,7 +6601,7 @@ msgstr "如果您的服务器安全政策允许,您可以使用<b>webtrees</b>�
 #. I18N: Help text for the "Website URL" site configuration setting
 #: help_text.php:827
 msgid "If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
-msgstr "如果你的网站使用不止一个URL,如 <b>http://www.example.com/webtrees/ </b>和<b> http://webtrees.example.com/ </b>,您可以指定URL的首选。其他url的请求将被重定向到首选之一。"
+msgstr "如果你的网站使用不止一个URL,如 <b>http://www.example.com/webtrees/</b>和<b> http://webtrees.example.com/</b>,您可以指定URL的首选。其他url的请求将被重定向到首选之一。"
 
 #: library/WT/Gedcom/Tag.php:838
 msgid "Image dimensions"
@@ -7660,7 +7660,7 @@ msgstr "原文"
 
 #: help_text.php:562
 msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "许多家谱程序创建自定义标签的GEDCOM文件，<b> webtrees </b>最了解他们。当未确认的标签被发现，这个选项可以让您选择是否忽略或显示一个警告信息。"
+msgstr "许多家谱程序创建自定义标签的GEDCOM文件，<b>webtrees</b>最了解他们。当未确认的标签被发现，这个选项可以让您选择是否忽略或显示一个警告信息。"
 
 #. I18N: Help text for the “Sending server name” site configuration setting
 #: help_text.php:757
@@ -8783,7 +8783,7 @@ msgstr "不"
 #: admin_trees_manage.php:162
 #, php-format
 msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server."
-msgstr "没有发现GEDCOM文件。你需要复制文件到<b> %s </b>您的服务器上的目录。"
+msgstr "没有发现GEDCOM文件。你需要复制文件到<b>%s</b>您的服务器上的目录。"
 
 #: modules_v3/gedcom_news/module.php:95
 msgid "No News articles have been submitted."
@@ -8844,7 +8844,7 @@ msgstr "明天没有事件"
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "在接下来的%s天活着的人没有事件。"
+msgstr[0] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -9611,11 +9611,11 @@ msgstr "照片"
 
 #: admin_pgv_to_wt.php:65
 msgid "PhpGedView must use the same database as <b>webtrees</b>"
-msgstr "phpgedview必须使用与<b> webtrees </b>相同的数据库"
+msgstr "phpgedview必须使用与<b>webtrees</b>相同的数据库"
 
 #: admin_pgv_to_wt.php:116 help_text.php:1311
 msgid "PhpGedView to <b>webtrees</b> transfer wizard"
-msgstr "phpgedview到<b> webtrees </b>转移向导"
+msgstr "phpgedview到<b>webtrees</b>转移向导"
 
 #: admin_pgv_to_wt.php:36
 msgid "PhpGedView to webtrees transfer wizard"
@@ -11136,7 +11136,7 @@ msgstr "此设置<b>是</b>将显示个人和家庭的资源链接，点击让�
 
 #: setup.php:117
 msgid "Setup wizard for <b>webtrees</b>"
-msgstr "<b> webtrees </b>  安装向导"
+msgstr "<b>webtrees</b> 安装向导"
 
 #: library/WT/Date/French.php:150
 msgid "Sextidi"
@@ -12257,7 +12257,7 @@ msgstr "媒体查看器可以显示一个链接，点击后，将下载的媒体
 
 #: help_text.php:1312
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
-msgstr "PGV到<b> webtrees </b>向导是一个协助管理员从PGV安装到一个新的<B> webtrees </b>自动化的过程。它将所有的PGV GEDCOM和其他数据库信息直接输入到你的新<b> webtrees </b>数据库。下列要求："
+msgstr "PGV到<b>webtrees</b>向导是一个协助管理员从PGV安装到一个新的<b>webtrees</b>自动化的过程。它将所有的PGV GEDCOM和其他数据库信息直接输入到你的新<b>webtrees</b>数据库。下列要求："
 
 #: save.php:269
 #, php-format
@@ -12278,12 +12278,12 @@ msgstr "更改“%s”被拒绝。"
 
 #: help_text.php:1322
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
-msgstr "当前<b> webtrees </b>管理员用户名必须与现有的PGV管理员用户名相同"
+msgstr "当前<b>webtrees</b>管理员用户名必须与现有的PGV管理员用户名相同"
 
 #: login.php:512
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
-msgstr "用户 <b> %s </b>数据检查。"
+msgstr "用户<b>%s</b>数据检查。"
 
 #: site-unavailable.php:74
 msgid "The database reported the following error message:"
@@ -12482,7 +12482,7 @@ msgstr "姓是用斜线分隔：<%s>John Paul /Smith/<%s>"
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: help_text.php:727
 msgid "The time in seconds that a <b>webtrees</b> session remains active before requiring a login.  The default is 7200, which is 2 hours."
-msgstr "一个<b> webtrees </b>会话仍然活动不需要登录的时间。默认值是7200秒，就是2小时。"
+msgstr "一个<b>webtrees</b>会话仍然活动不需要登录的时间。默认值是7200秒，就是2小时。"
 
 #: login.php:298
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -12590,7 +12590,7 @@ msgstr "第十一月"
 
 #: admin.php:60
 msgid "These pages provide access to all the configuration settings and management tools for this <b>webtrees</b> site."
-msgstr "这些网页提供本<b> webtrees </b>网站的所有配置设置和管理工具的访问。"
+msgstr "这些网页提供本<b>webtrees</b>网站的所有配置设置和管理工具的访问。"
 
 #. I18N: do not translate the #keywords#
 #: modules_v3/html/module.php:161
@@ -12958,7 +12958,7 @@ msgstr "此选项控制是否将附源引用的事实在记事和源标签在个
 
 #: help_text.php:409
 msgid "This option controls whether or not to abbreviate labels like <b>Birth</b> on charts with just the first letter like <b>B</b>."
-msgstr "此选项控制是否缩写标签如<b>出生</b>在图表只是第一字母像<b> B </b>。"
+msgstr "此选项控制是否缩写标签如<b>出生</b>在图表只是第一字母像<b>B</b>。"
 
 #: help_text.php:498
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
@@ -14244,27 +14244,27 @@ msgstr "西撒哈拉"
 
 #: help_text.php:528
 msgid "When a new family record is added online in <b>webtrees</b>, a new ID for that family will be generated automatically. The family ID will have this prefix."
-msgstr "当一个新的家庭的记录是<b> webtrees </b>在线添加，那个家庭会自动生成ID。家庭ID将有此前缀。"
+msgstr "当一个新的家庭的记录是<b>webtrees</b>在线添加，那个家庭会自动生成ID。家庭ID将有此前缀。"
 
 #: help_text.php:538
 msgid "When a new individual record is added online in <b>webtrees</b>, a new ID for that individual will be generated automatically. The individual ID will have this prefix."
-msgstr "新的个人记录是<b> webtrees </b>在线添加，个人的ID将自动生成。个人ID将有此前缀。"
+msgstr "新的个人记录是<b>webtrees</b>在线添加，个人的ID将自动生成。个人ID将有此前缀。"
 
 #: help_text.php:665
 msgid "When a new media record is added online in <b>webtrees</b>, a new ID for that media will be generated automatically. The media ID will have this prefix."
-msgstr "如果一个新的媒体记录是<b> webtrees </b>在线添加，媒体ID会自动生成。媒体ID将有此前缀。"
+msgstr "如果一个新的媒体记录是<b>webtrees</b>在线添加，媒体ID会自动生成。媒体ID将有此前缀。"
 
 #: help_text.php:697
 msgid "When a new note record is added online in <b>webtrees</b>, a new ID for that note will be generated automatically. The note ID will have this prefix."
-msgstr "如果一个新的事件记录是<b> webtrees </b>在线添加，一个新的事件ID将自动生成。事件ID将此前缀。"
+msgstr "如果一个新的事件记录是<b>webtrees</b>在线添加，一个新的事件ID将自动生成。事件ID将此前缀。"
 
 #: help_text.php:812
 msgid "When a new repository record is added online in <b>webtrees</b>, a new ID for that repository will be generated automatically. The repository ID will have this prefix."
-msgstr "如果一个新的库记录是<b> webtrees </b>在线添加，该库将自动生成ID。库ID将有此前缀。"
+msgstr "如果一个新的库记录是<b>webtrees</b>在线添加，该库将自动生成ID。库ID将有此前缀。"
 
 #: help_text.php:903
 msgid "When a new source record is added online in <b>webtrees</b>, a new ID for that source will be generated automatically.  The source ID will have this prefix."
-msgstr "当一个新的资源的记录是<b> webtrees </b>在线添加，那么资源ID将自动生成。资源ID将有此前缀。"
+msgstr "当一个新的资源的记录是<b>webtrees</b>在线添加，那么资源ID将自动生成。资源ID将有此前缀。"
 
 #: help_text.php:1484
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the \"email verified\" option is selected automatically."
@@ -18589,3 +18589,1638 @@ msgstr "缺少名字"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "缺少姓氏"
+
+#~ msgid " but the details are unknown"
+#~ msgstr " 但细节是未知的"
+
+#~ msgid " in "
+#~ msgstr " 在 "
+
+#~ msgid "%1$s’s %2$s"
+#~ msgstr "%1$s's %2$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%H:%i:%s"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%Y年 %m月 %d日"
+
+#~ msgid "%s day"
+#~ msgid_plural "%s days"
+#~ msgstr[0] "%s 天"
+
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "%s 天前"
+
+#~ msgid "%s hour ago"
+#~ msgid_plural "%s hours ago"
+#~ msgstr[0] "%s 小时前"
+
+#~ msgid "%s minute ago"
+#~ msgid_plural "%s minutes ago"
+#~ msgstr[0] "%s 分钟前"
+
+#~ msgid "%s month"
+#~ msgid_plural "%s months"
+#~ msgstr[0] "%s 月"
+
+#~ msgid "%s month ago"
+#~ msgid_plural "%s months ago"
+#~ msgstr[0] "%s 个月前"
+
+#~ msgid "%s second ago"
+#~ msgid_plural "%s seconds ago"
+#~ msgstr[0] "%s 秒前"
+
+#~ msgid "%s three times removed ascending"
+#~ msgstr "低三辈 %s"
+
+#~ msgid "%s three times removed descending"
+#~ msgstr "高三辈 %s"
+
+#~ msgid "%s week"
+#~ msgid_plural "%s weeks"
+#~ msgstr[0] "%s 周"
+
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "%s 年"
+
+#~ msgid "%s year ago"
+#~ msgid_plural "%s years ago"
+#~ msgstr[0] "%s 年前"
+
+#~ msgid "%s%%"
+#~ msgstr "%s%%"
+
+#~ msgid "(aged %s)"
+#~ msgstr "(年龄 %s)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(年龄小于 %s)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "( %s 岁以上)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(从 %s 总条目过滤)"
+
+#~ msgid "(in childhood)"
+#~ msgstr "(在童年)"
+
+#~ msgid "(in infancy)"
+#~ msgstr "(在婴儿期)"
+
+#~ msgid "(stillborn)"
+#~ msgstr "(夭折的)"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
+#~ msgstr "<b>GUID</b>«在全球范围内唯一的ID»的缩写。<br><br>GUID用于定义每个可能是重复的个体，使中央机构，如家族历史中心，或是自己的服务器上运行的兼容的GEDCOM处理程序，确定它们是否是同一人无论身在何处的。家庭历史中心的目标是有家谱数据的中央存储库，并通过Web服务公开。这将使任何程序访问数据，并更新他们的数据在它<br><br>如果你不打算与其他人分享这个GEDCOM，你不需要让<b> webtrees</b>创建这些GUID，但是，这样做不用担心GEDCOM的规模越来越大。"
+
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+#~ msgstr "<b>没有</b>意味着经过身份验证的用户可以看到所有人的生活细节。<b>是</b>意味着用户只能看到活的人，和他们相关的私人信息。<br><br>这个选项设置为所有访问这个家谱数据库用户的默认值。管理员可以通过编辑用户的账户信息覆盖个人用户的这个选项。"
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b>请注意：</b>在世的个体的私人信息只会显示给家人和亲密的朋友。您将收到数据验证你的私人关系。有时死亡人的信息也可能是私人的。如果是这样的话，那是因为没有人确定他们是否是死的还是活的，我们可能不会知道关于这个人足够多的信息。<br><br>在问问题之前，请确认您通过检查日期，地方，和亲人查询的人是正确。如果你对家谱资料提交更改，请包括你在哪里得到数据资源信息。"
+
+#~ msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
+#~ msgstr "<b>webtrees</b>允许你复制了10个事实和他们所有的细节到剪贴板。这与收集箱不同，你可以用于导出您的数据库。<br><br>你可以选择任何的事实从剪贴板复制选定的事实，对个人，家庭，媒体，源，库记录或当前正在编辑。但是，您不能复制不同的记录类型的事实。例如，你不能复制一个婚姻的事实资源或个人记录以来的婚姻其实是与家庭相关的记录。<br><br>这是非常有用的当输入类似的事实，如人口普查的事实，许多个人或家庭。"
+
+#~ msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "<b>webtrees</b>需要发送电子邮件，如密码提醒和网站通知。要做到这一点，它可以使用此服务器的内置的PHP邮件功能（这并不总是可用的）或外部SMTP（邮件）服务，您将需要为其提供连接的详细信息。"
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>欢迎来到这个家谱网站</b></center><br>只有注册过的可以观看网站。"
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>欢迎访问这个家谱网站</b></center><br>这个站点只被允许 <u>授权</u> 用户的访问。<br><br>如果你有帐户，你可以登录该页面。如果你没有一个用户帐户，你可以点击下面的链接申请。<br><br>管理员验证您提供的信息决定批准或拒绝你的请求的帐户。当你的请求被批准你将收到一封电子邮件。"
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>欢迎到这个家谱网站</b></center><br>只有<u>家庭成员</u>才可以看。<br><br>你可以登陆或申请一个账号<br><br>注册后要通过网站管理的批准才可以看。"
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>欢迎访问这个家谱网站</b></center><br>允许每个有帐户的游客访问此网站。<br><br>如果你有帐户，你可以登录该页面。如果你没有一个用户帐户，你可以点击下面的链接申请。<br><br>管理员验证您提供的信息决定批准或拒绝你的请求的帐户。当你的请求被批准你将收到一封电子邮件。"
+
+#~ msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
+#~ msgstr "<div class=\"largeError\">Notice:</div><div class=\"error\">完成和递交此表格，您同意：<ul><li>保护在我们的网站上列出的活人的隐私;</li><li>在下面的文本框，解释你是谁，或向我们提供谁会在我们的网站上列出的信息。</li></ul></div>"
+
+#~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
+#~ msgstr "数据库服务器可以存储许多不同的数据库。你需要选择一个现有的数据库（由服务器管理员创建）或创建一个新的（如果你的数据库用户帐户具有足够的特权）。"
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "由一个给定的资源的事实报告"
+
+#~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
+#~ msgstr "用户将无法登录除非“邮件验证”和“经管理员批准”的选项被选择。"
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+#~ msgid "Access"
+#~ msgstr "允许"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "用已有的个人添加丈夫"
+
+#~ msgid "Add a new associate allows you to link a fact with an associated individual in the site.  This is one way in which you might record that someone was the godfather of another individual."
+#~ msgstr "添加一个新的允许你用站点里的人添加一個事实连接。这是一种记录方式,当有人是另一个人的教父。"
+
+#~ msgid "Add a new name"
+#~ msgstr "添加名字"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "用已有的个人添加妻子"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "添加另一个人到图表"
+
+#~ msgid "Add individuals"
+#~ msgstr "添加人"
+
+#~ msgid "Add just this individual."
+#~ msgstr "添加这个人。"
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "添加这个家庭记录的父母和所有后代的记录。"
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "添加这个家庭记录的家长和孩子们的记录。"
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "加上这个家庭记录的父母的记录。"
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "添加这个人和他的直系祖先。"
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "添加这个人，他的直系祖先和他们的家庭。"
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "添加这个人，他的父母和兄弟姐妹。"
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "添加这个人，他的配偶和所有后代。"
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "添加这个人，他的妻子和孩子。"
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "添加这个资源和链接到它的家庭/人"
+
+#~ msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+#~ msgstr "管理员有时需要清理和纠正用户提交的数据。例如，他们可能需要纠正的地方的位置，包括国家。当管理员进行纠正，对原来的变化信息，通常是替换。这可能是不可取的。<br><br>选取这个选项时，<b>webtrees</b> 将保留原有的变化信息，而不是取代它的当前会话的值。如果选择此选项，管理员也需要修改或删除与原CHAN标签相关信息。"
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "登录后，选择«我的网页»菜单下的«我的帐户»链接，在密码框更改你的密码。"
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "假设一个人死的年龄"
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "在孩子的出生时父母年龄"
+
+#~ msgid "All individuals"
+#~ msgstr "所有人"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "可以换其它家谱"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "允许消息在线存储"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "显示一个人所有的祖先和后代的交互树。"
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "数据库发生意外错误。"
+
+#~ msgid "Ancestors of "
+#~ msgstr "祖先 "
+
+#~ msgid "Ancestral file number"
+#~ msgstr "祖先文件编号 (AFN)"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "确定你想撤消所有这GEDCOM变化？"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "宋体"
+
+#~ msgid "Available blocks"
+#~ msgstr "可用块"
+
+#~ msgid "Begin year"
+#~ msgstr "开始年"
+
+#~ msgid "Best man"
+#~ msgstr "伴郞"
+
+#~ msgid "Binary data object"
+#~ msgstr "数码资料"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "出生地包含"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "图表上的出生和死亡的详情"
+
+#~ msgid "Birth date range end"
+#~ msgstr "出生日期范围的结束"
+
+#~ msgid "Birth date range start"
+#~ msgstr "出生日期范围的开始"
+
+#~ msgid "Brother"
+#~ msgstr "兄弟"
+
+#~ msgid "Burial place contains"
+#~ msgstr "埋葬的地点包含"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "默认情况下，该列表中仅显示那些可以在你的家谱找到的地方。你可能对其他地方进行完善，如从外部文件导入。选择此选项将显示所有的地方，包括那些目前没有使用。"
+
+#~ msgid "Change family members"
+#~ msgstr "改变家庭成员"
+
+#~ msgid "Child of "
+#~ msgstr "孩子 "
+
+#~ msgid "Children of "
+#~ msgstr "孩子 "
+
+#~ msgid "Choose relatives"
+#~ msgstr "选择亲戚"
+
+#~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
+#~ msgstr "选择你想上传的缩略图。虽然可以自动生成缩略图的图片,您可能希望生成自己的缩略图,尤其是对其他媒体类型。例如,您可以提供一个静态图像从一个视频或音乐照片。"
+
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgstr "为您定制的欢迎文本选择显示一个标准的标题。当用户改变语言,这个标题将出现在新的语言。<br><br>如果设置为<b>是</b>,标题将如下:<div class =\"list_value_wrap\"><center><b>欢迎光临这个宗谱网站</b></center><br>这个网站访问要用户帐户和密码。<br></div>"
+
+#~ msgid "Civil registrar"
+#~ msgstr "公证人"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Civil registrar"
+#~ msgstr "女公证人"
+
+#~ msgctxt "MALE"
+#~ msgid "Civil registrar"
+#~ msgstr "男公证人"
+
+#~ msgid "Clear chart"
+#~ msgstr "清除图"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "单击 %s 择的人担任家主"
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "点击名称添加人添加链接列表。"
+
+#~ msgid "Click this link to remove the individual from the timeline."
+#~ msgstr "点击这个链接来从时间线删除一个人。"
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "单击以选择人担任家主。"
+
+#~ msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
+#~ msgstr "点击\"+ \" 图标将打开GEDFact的共享记事辅助窗口。<br>那里会有具体的帮助。<br><br>当你点击\"保存\"按钮，那个ID共享的记事将被粘贴在这里。"
+
+#~ msgid "Coat of arms"
+#~ msgstr "纹章"
+
+#~ msgid "Common law marriage"
+#~ msgstr "合法结婚"
+
+#~ msgid "Contact information"
+#~ msgstr "联系信息"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "修正由老家谱程序产生的名字记录表单 ‘Joe/BLOGGS/’ or ‘Joe /BLOGGS’。"
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "科特迪瓦"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "创建一个新的共享的记事"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "使用助理创建一个新的共享笔记"
+
+#~ msgid "Create repository"
+#~ msgstr "创建存储库"
+
+#~ msgid "Create user"
+#~ msgstr "创建用户"
+
+#~ msgid "Custom event"
+#~ msgstr "自定义事件"
+
+#~ msgid "Date of LDS baptism"
+#~ msgstr "LDS 洗礼的日期"
+
+#~ msgid "Date of LDS child sealing"
+#~ msgstr "LDS 儿童密封的日期"
+
+#~ msgid "Date of LDS endowment"
+#~ msgstr "LDS 捐贈的日期"
+
+#~ msgid "Date of LDS spouse sealing"
+#~ msgstr "LDS 配偶密封的日期"
+
+#~ msgid "Date of adoption"
+#~ msgstr "收养日期"
+
+#~ msgid "Date of blessing"
+#~ msgstr "祝福的日期"
+
+#~ msgid "Date of cremation"
+#~ msgstr "火葬的日期"
+
+#~ msgid "Date of emigration"
+#~ msgstr "移民的日期"
+
+#~ msgid "Date of event"
+#~ msgstr "事件的日期"
+
+#~ msgid "Date of immigration"
+#~ msgstr "移民的日期"
+
+#~ msgid "Date of naturalization"
+#~ msgstr "移入的日期"
+
+#~ msgid "Date of ordination"
+#~ msgstr "祝圣礼的日期"
+
+#~ msgid "Date of residence"
+#~ msgstr "居住日期"
+
+#~ msgid "Daughter"
+#~ msgstr "女儿"
+
+#~ msgid "Death Place contains"
+#~ msgstr "死亡地包含"
+
+#~ msgid "Death date range end"
+#~ msgstr "死亡日期范围的结束"
+
+#~ msgid "Death date range start"
+#~ msgstr "死亡日期范围的开始"
+
+#~ msgid "Default theme"
+#~ msgstr "默认主题"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "既视"
+
+#~ msgid "Descendants of "
+#~ msgstr "后代 "
+
+#~ msgid "Descent steps"
+#~ msgstr "显示几代人的家庭"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "第十一月"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "第十一月"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "第十一月"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "第十一月"
+
+#~ msgid "Differences"
+#~ msgstr "日期差异"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "直系祖先"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "直接的祖先和他们的家庭"
+
+#~ msgid "Display %s"
+#~ msgstr "展示 %s"
+
+#~ msgid "Do not seal, previous sealing cancelled"
+#~ msgstr "不密封,先前的密封取消"
+
+#~ msgid "Do not seal: unauthorized"
+#~ msgstr "不密封:未经授权"
+
+#~ msgid "Do not send messages"
+#~ msgstr "不发送消息"
+
+#~ msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+#~ msgstr "E-mail地址用于<b> webtrees</b>自动创建电子邮件时候的邮件来自于项。<br><br><b>webtrees</b>可以自动创建电子邮件通知系统管理员的需要进行审批变化。<b> webtrees</b>发送通知电子邮件给注册一个帐户的用户。<br><br>通常情况下，这些自动创建的电子邮件发件人是<i>webtrees-noreply@ yoursite</i>，并且暗示不用回复。为了防止垃圾邮件或其他电子邮件滥用的一些电子邮件系统需要每封邮件的有个邮件来自于项，以此确认一个有效的e-mail帐号，否则将不接受邮件，这将显然从帐户 <i>webtrees noreply</i>来了邮件。"
+
+#~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
+#~ msgstr "每个媒体项目应该关连一个或多个相关人,家庭,或源数据库中记录。<br><br>建立这样一个链接,你可以输入或寻找人的身份证,家庭,或源的同时,创建媒体项目。你也可以在个人,家庭,或源细节页面建立链接后通过编辑选项管理多媒体页面,或通过添加媒体项目通过添加媒体链接可。"
+
+#~ msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+#~ msgstr "每个资源记录特定的事件,一般对于一个给定的日期范围和管辖的地方。例如一个人口普查记录事件和教堂记录记录出生、结婚和死亡事件。<br><br>选择事件,记录采用这种资源的事件列表中提供的。指定的日期应该在一系列格式如<i>从1900年到1910年</i>。这个地方管辖的名称是最低的管辖权,包含所有较低级别的地方命名在这个源。例如,“奥奈达市,爱达荷州,美国“将被用作资源地税收管辖权的地方发生在各个城镇的事件在奥奈达市县。“爱达荷州,美国“将源管辖权的地方如果所记录的事件不仅发生在奥奈达市县也在其他县在爱达荷州。"
+
+#~ msgid "Edit details"
+#~ msgstr "编辑细节"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "编辑原始GEDCOM记录"
+
+#~ msgid "Edit shared note"
+#~ msgstr "编辑共享记事"
+
+#~ msgid "Email address:"
+#~ msgstr "电子邮件地址:"
+
+#~ msgid "End year"
+#~ msgstr "结束年"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "变更日期范围的结束"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "输入家庭ID"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "输入个人ID"
+
+#~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
+#~ msgstr "输入一个你正在编辑的条目的标题。如果这是一个标题,一个多媒体项目,输入一个描述性的标题,将显示该项目给用户。"
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "输入个人，家庭，或资源ID"
+
+#~ msgid "Enter associate GEDCOM ID."
+#~ msgstr "输入入副GEDCOM ID。"
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "输入或查找媒体项目链接的人,家庭,或资源的ID。"
+
+#~ msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "输入传真号码包括括国家和地区代码。<br><br>如果你不想有一个传真号码,留空白。例如,在德国可能+ 49 25859 56 76和一个在美国或加拿大的数量可能会+ 1 888 555 - 1212。"
+
+#~ msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+#~ msgstr "输入URL地址包括http://。<br><br>一个示例URL看起来像这样: <b>http://www.webtrees.net/</b> 如果你不想有一个URL，留空白。"
+
+#~ msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
+#~ msgstr "输入地址。<br><br>如果你不想有一个地址，留空白。"
+
+#~ msgid "Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address."
+#~ msgstr "输入电子邮件地址。<br><br>一个示例邮件地址如下:<b>name@hotmail.co.uk</b>  如果你不想有一个电子邮件地址,留空白。"
+
+#~ msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+#~ msgstr "在这里输入限制值。<br><br>如果你根据年龄有选择限制新闻文章显示,任何文章的日期比输入时期早的将被隐藏。如果你有选择限制新闻文章显示的数目,只有指定的数量的最近的文章,根据先后显示。其余的文章将被隐藏。<br><br>输入0这个将禁用限制,导致所有的新闻文章展示。"
+
+#~ msgid "Enter the name of the cemetery or other resting place where individual is buried."
+#~ msgstr "输入墓地的名称或个人被埋的地方。"
+
+#~ msgid "Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "输入电话号码包括国家和地区代码。<br><br>如果你不想有一个电话号码，留空白。例如,在德国可能+ 49 25859 56 76和一个在美国或加拿大的数量可能会+ 1 888 555 - 1212。"
+
+#~ msgid "Entry text:"
+#~ msgstr "输入文本:"
+
+#~ msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+#~ msgstr "在这个网站每个人在数据库中都有一个独特的ID号码。如果你知道你的ID,请在这里输入它。如果你不知道你的ID或找不到它,因为隐私设置,请在评论中提供足够的信息字段来帮助站点管理员确认在这个网站上你是谁,这样他可以设置为你的ID。"
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "扩展隐私到死人"
+
+#~ msgid "External objects"
+#~ msgstr "外部对象"
+
+#~ msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+#~ msgstr "常见问题解答的问题和答案列表，它允许您向访客解释网站的规则，政策和程序。问题通常涉及隐私权，著作权，用户帐户，不合适的内容，为引用源的要求等。"
+
+#~ msgid "Facts for family records"
+#~ msgstr "家庭事件"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "个人事件"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "库事件"
+
+#~ msgid "Facts for source records"
+#~ msgstr "资源事件"
+
+#~ msgid "Family group information"
+#~ msgstr "家庭组信息"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "家谱收集箱功能"
+
+#~ msgid "Family with husband"
+#~ msgstr "丈夫的家庭"
+
+#~ msgid "Family with wife"
+#~ msgstr "妻子的家庭"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "父亲的出生地—(查普曼格式)"
+
+#~ msgid "Father’s age"
+#~ msgstr "父亲的年龄"
+
+#~ msgid "Font"
+#~ msgstr "字体"
+
+#~ msgid "For LDS ordinances, this field records the temple where it was performed."
+#~ msgstr "对于LDS条例，这个选项是由寺庙控制的"
+
+#~ msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
+#~ msgstr "例如,如果您指定一个路径长度的2,人将能够看到自己的孙子(儿子、儿子),他们的姑姑(父母,兄弟姐妹),他们的女儿(配偶、孩子),但不能看到他们的堂兄弟姊妹(父母,兄弟姐妹,孩子)。"
+
+#~ msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "为获得在互联网上最佳显示,<b>webtrees</b> 使用utf - 8字符集。一些程序,例如,家谱制造商不支持导入GEDCOM文件编码在UTF-8。检查这个箱子将会把文件从<b>UTF-8</b>到<b> ANSI(iso - 8859 - 1)</b>。<br><br>格式需要取决于你使用的程序处理你的下载文件GEDCOM。如果你不确定,请参考相关文档的程序。<br><br>注意特殊字符保持不变,你需要把文件用UTF-8编码,转换程序的方法来处理这些特殊字符被一些其他手段。咨询你的程序的制造商或作者。<br><br><a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b></b>维基百科的文章</>包含全面的信息和链接关于utf - 8。"
+
+#~ msgid "Foster child"
+#~ msgstr "养子"
+
+#~ msgid "Foster father"
+#~ msgstr "养父"
+
+#~ msgid "Foster mother"
+#~ msgstr "养母"
+
+#~ msgid "From email address"
+#~ msgstr "从电子邮件地址"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "GEDCOM统计"
+
+#~ msgid "Gedcom"
+#~ msgstr "家谱数据"
+
+#~ msgid "Generation "
+#~ msgstr "代 "
+
+#~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#~ msgstr "提供给用户选择,选择自己的主题从菜单。<br><br>即使设置这个选项,主题目前实际上可能是无效的,这个选项需要<b>允许用户选择他们自己的主题</b>选项也设置。"
+
+#~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+#~ msgstr "允许游客选择在网站上注册自己的账户。<br><br>游客将收到一个电子邮件消息,该消息带有一个代码来验证他申请的帐户。必须管理员核实后批准使他的账户它变得活跃。"
+
+#~ msgid "He "
+#~ msgstr "他 "
+
+#~ msgid "He died"
+#~ msgstr "他去世了"
+
+#~ msgid "He married"
+#~ msgstr "他结婚了"
+
+#~ msgid "He resided at"
+#~ msgstr "他居住在"
+
+#~ msgid "He was born"
+#~ msgstr "他出生"
+
+#~ msgid "He was buried"
+#~ msgstr "他被葬"
+
+#~ msgid "He was christened"
+#~ msgstr "他被命名为"
+
+#~ msgid "He was cremated"
+#~ msgstr "他被火化"
+
+#~ msgid "Hello %s…"
+#~ msgstr "你好 %s …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "你好 %s …<br>谢谢你的注册。"
+
+#~ msgid "Hello administrator…"
+#~ msgstr "你好管理员……"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "黑体"
+
+#~ msgid "Her occupation was"
+#~ msgstr "她的职业是"
+
+#~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
+#~ msgstr "在这里你可以添加一个事实正在编辑的记录。<br><br>首先选择一个事实从下拉列表,然后单击<b>添加</b>按钮。所有你可以添加到数据库可能的事实在那个下拉列表。"
+
+#~ msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+#~ msgstr "在这里你可以添加一个资源<b>引用</b>这个记录。<br><br>点击这个链接时,将打开一个新窗口,你可以从列表中选择资源(找到ID)或创建一个新的资源,然后添加引用。<br><br>添加资源的一个重要组成部分,因为它让其他研究者家谱确认你在哪里得到你的信息。"
+
+#~ msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
+#~ msgstr "在这里你可以选择显示地方列表的两种类型。如果设置是的这个地方有短的名称或实际水平的名字,如果没有-姓名。<br><b><br>示例:全名:</b>芝加哥,伊利诺斯州,美国<br><b>短名称:</b>芝加哥<br><b>全名:</b>美国伊利诺州<br><b>短名称:</b>伊利诺斯州"
+
+#~ msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+#~ msgstr "在这里，你可以选择出现在登录屏幕上的文本。您必须确定预先定义的文字是最合适的。<br><br>您也可以选择进入自己的自定义欢迎文字。请参考相关的帮助文本的<b>自定义欢迎文字</b>栏的详细信息。<br><br>预定义的文本有：<ul><li><b>预先定义的文本：所有用户申请用户账户的预定义的文本：</b><div class=\"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>访问这个网站是允许每一位游客有一个用户帐户。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>确认您的申请后，网站管理员将激活您的帐户。您将收到一封电子邮件时，您的申请已被批准。</div><br></li><li><b>预定义的文本：管理员审核请求用户帐户的预定义的文本：</b><div class= \"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>只允许 <u>授权</u>用户访问此网站。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>验证您的信息后，管理员将可以批准或拒绝您的开户申请。您将收到一封电子邮件时，您的申请已被批准。</div><br></li><li><b>预先定义的文本：家庭成员可以申请用户帐户：</b><div class = \"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>这个网站只允许的<u>家庭成员</u>访问。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>验证您提供的信息后，管理员将可以批准或拒绝您的请求的帐户。当您的申请被批准时，您将收到一封电子邮件。</div></li></ul>"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "隐藏/显示"
+
+#~ msgid "His occupation was"
+#~ msgstr "他的职业是"
+
+#~ msgid "Hit count:"
+#~ msgstr "访问次数:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "丈夫的年龄"
+
+#~ msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+#~ msgstr "如果一个人被称为的昵称不属于他们的正式名称，应该用引号引起来。例如，, <%s>John &quot;Nobby&quot; /Clark/<%s>。"
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "如果启用了媒体防火墙,是否存储有水印的全尺寸图像的无水印副本存储在服务器?<br><br> 当设置为<b>是</b>,全尺寸有水印的图片会更多更快的生产但占用更多的服务器磁盘空间。"
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "如果启用了媒体防火墙,是否存储有水印的缩略图的无水印副本存储在服务器?<br><br> 当设置为<b>是</b>,全尺寸有水印的图片会更多更快的生产但占用更多的服务器磁盘空间。"
+
+#~ msgid "If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don't watermark the thumbnails."
+#~ msgstr "如果启用了媒体防火墙,缩略图要水印吗?如果你不要缩略图水印，你的媒体列表加载更快。"
+
+#~ msgid "If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here."
+#~ msgstr "如果媒体防火墙被启用,如果用户没有被指定这里的特权级别，将看到水印。"
+
+#~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+#~ msgstr "<b>允许访问者注册帐户</b>此设置控制是否管理必须批准注册。<br><br>设置这个为<b>是</b>将要求所有新用户先验证,然后由管理员批准才能登录。这个设置为<b>不</b>,<b>用户通过管理</b> 选框将选中，并自动用户验证他们的帐户,因此允许注册后立即登录，不用管理员干预。"
+
+#~ msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+#~ msgstr "如果这个人在最近这么多年内没有死亡、埋葬或火化事件,他被认为是“活着”。孩子的出生日期被认为是用于此目的的类似事件。"
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "如果你没有申请一个帐户,您可以删除此消息。"
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "如果你不知道这些设置,保留默认值。他们可以工作。你可以稍后进行更改。"
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "如果你不想发送邮件,例如当运行webtrees在个人或一个独立的计算机,您可以禁用这个功能。"
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "如果你有大量的无效地方,它可能减缓生成列表速度。"
+
+#~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
+#~ msgstr "这里记事添加到这个记录。<br><br>点击这个链接时,将打开一个新窗口,你可以输入你的记事。当你打完字,就点击下面的按钮,关闭该窗口。"
+
+#~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
+#~ msgstr "如果你有一个多个GEDCOMs环境,将值设置为<b>是</b>允许你的网站访客<u>并且</u>用户可以选择改变GEDCOMs。设置为<b>不</b>禁用GEDCOM访问<u>和</u>登录。"
+
+#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
+#~ msgstr "如果您的服务器安全政策允许,您可以使用<b>webtrees</b>管理页面增加内存或CPU时间。或者您联系服务器的管理员。"
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
+#~ msgstr "在许多文化中,人们习惯于有一个传统的名字拼写在传统的角色,也是罗马版本的名称,因为它会拼写或明显语言基于拉丁字母,例如英语。<br><br>如果您更喜欢使用非拉丁字母如希伯来语,希腊语,俄语、汉语或阿拉伯语输入姓名的标准名称字段,那么可以使用这个字段输入相同的名称使用的是拉丁字母。两个版本的名字将出现在列表和图表。<br><br>虽然这个字段的标签是“因”,它并不限于只包含字符基于拉丁字母。这可能是用日本名字,三个不同的字母可能发生。"
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
+#~ msgstr "在许多文化中通常有一个传统的名字在传统汉字拼写也是罗马化的版本的名称将拼写或基于拉丁字母的语言发音的，如英国。<br><br>如果你更喜欢用拉丁字母输入名称标准名称的域，然后你可以使用此字段中的非拉丁字母，如希腊语，希伯来语，阿拉伯语，俄语，输入相同的名称，或中国。名字的两个版本将出现在列表和图表。<br><br>虽然这场为“希伯来”，它不局限于只包含希伯来文字母。"
+
+#~ msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
+#~ msgstr "在一些国家,隐私法不仅适用于活着的人,而且用于那些最近死去的人。这个选项将允许你扩展活人隐私规则到那些在指定年数出生或死亡的人。这个值空表示禁用这个特性。"
+
+#~ msgid "In this month…"
+#~ msgstr "在这月…"
+
+#~ msgid "In this year…"
+#~ msgstr "在这年…"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "包括这个人的直系亲属吗?"
+
+#~ msgid "Individual 1"
+#~ msgstr "第一个人"
+
+#~ msgid "Individual 2"
+#~ msgstr "第二个人"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "寿命最长"
+
+#~ msgid "LDS temple"
+#~ msgstr "LDS 寺庙"
+
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "约定"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "纸张大小"
+
+#~ msgid "Link ID"
+#~ msgstr "链接ID"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "把这个人当作个孩子连接到一个现有的家庭里去"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "把这个人当作个丈夫连接到一个现有的家庭里去"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "把这个人当作个妻子连接到一个现有的家庭里去"
+
+#~ msgid "Living individuals"
+#~ msgstr "活着的人"
+
+#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
+#~ msgstr "对每个家谱分别使用“导入”功能从磁盘导入到家谱。"
+
+#~ msgid "Loading…"
+#~ msgstr "加载……"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "位置不能移除:这个位置包含子位置"
+
+#~ msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero."
+#~ msgstr "长列表拥有相同的姓氏的人可以根据个人的第一个字母的名字分解为更小的子列表。<br><br>这个选项决定姓氏当子列表什么时候生成。设置这个选项为零完全禁用子列表。"
+
+#~ msgid "Main section blocks"
+#~ msgstr "主要部分"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "婚姻结束日期范围"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "婚姻的日期范围开始"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "婚姻所含"
+
+#~ msgid "Marriage intention"
+#~ msgstr "婚姻的意图"
+
+#~ msgid "Married name"
+#~ msgstr "婚后名字"
+
+#~ msgid "Married surname"
+#~ msgstr "婚后姓"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "从ID合并:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "合并到ID:"
+
+#~ msgid "Min. no. of occurrences to be a “common surname”"
+#~ msgstr "常见的姓"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "显示最多的项目"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "母亲的出生地—(查普曼格式)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "母亲的年龄"
+
+#~ msgid "Move left"
+#~ msgstr "移到最左边"
+
+#~ msgid "Move right"
+#~ msgstr "移到最右边"
+
+#~ msgid "Name List"
+#~ msgstr "名单"
+
+#~ msgid "No events for living individuals exist for the next %s day."
+#~ msgid_plural "No events for living people exist for the next %s days."
+#~ msgstr[0] "在接下来的%s天活着的人没有事件。"
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "着的人今天没有事件。"
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "活着的人明天没有事件。"
+
+#~ msgid "No records to display"
+#~ msgstr "没有要显示的记录"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "家谱文件中没有此ID"
+
+#~ msgid "No temple - living ordinance"
+#~ msgstr "没有寺庙—生活条例"
+
+#~ msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
+#~ msgstr "通常，家谱的任何修改都需要由主持人批准。此选项允许用户将不需要主持人的批准的变更。"
+
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
+#~ msgstr[0] "注:“活着”的定义是如果没有死亡和埋葬做为出生或估计出生后%d年后的结果。"
+
+#~ msgid "Nuku’Alofa, Tonga"
+#~ msgstr "汤加努库阿洛法"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "用户的账户被认为是无效的条件：距最后一次登录的月数 "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "活着最年长者"
+
+#~ msgid "On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality."
+#~ msgstr "在这个图表可以沿着一条水平线显示一个或更多的人。这个图可以让你看到不同的人的生活重叠。<br><br>你可以将单独或家庭组的ID添加到图表。前面的列表将被记住。你可以点<b>清除图</b>按钮清除所有时间图表。<br><br>你也可以搜索他们的日期范围或地点来增加人。"
+
+#~ msgid "On this day…"
+#~ msgstr "在这天…"
+
+#~ msgid "Online editing"
+#~ msgstr "在线编辑"
+
+#~ msgid "Orientation"
+#~ msgstr "方向"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "其他文件夹…请输入"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "外发服务器（SMTP）名称"
+
+#~ msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP设置  \"%1$s \" 是禁用的。以下功能将不工作： %2$s. 请联系服务器的管理员启用它。"
+
+#~ msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP扩展 \"%s\"是禁用的。如果不启用不能安装webtrees。请联系服务器的管理员启用它。"
+
+#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP设置  \"%1$s \" 是禁用的。没有它,以下功能将不工作： %2$s. 请联系服务器的管理员启用它。"
+
+#~ msgid "Page"
+#~ msgstr "页"
+
+#~ msgid "Page size"
+#~ msgstr "页面大小"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "父母和兄弟姐妹"
+
+#~ msgid "Parent’s age"
+#~ msgstr "父母的年龄"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "家谱图"
+
+#~ msgid "Place of LDS baptism"
+#~ msgstr "LDS 洗礼的地点"
+
+#~ msgid "Place of LDS child sealing"
+#~ msgstr "LDS 儿童密封的地点"
+
+#~ msgid "Place of LDS endowment"
+#~ msgstr "LDS 捐贈的地点"
+
+#~ msgid "Place of LDS spouse sealing"
+#~ msgstr "LDS 配偶密封的地点"
+
+#~ msgid "Place of adoption"
+#~ msgstr "收养的地方"
+
+#~ msgid "Place of blessing"
+#~ msgstr "祝福的地点"
+
+#~ msgid "Place of cremation"
+#~ msgstr "火葬的地点"
+
+#~ msgid "Place of emigration"
+#~ msgstr "移民的地点"
+
+#~ msgid "Place of event"
+#~ msgstr "事件的地点"
+
+#~ msgid "Place of immigration"
+#~ msgstr "移民的地点"
+
+#~ msgid "Place of naturalization"
+#~ msgstr "移入的地点"
+
+#~ msgid "Place of ordination"
+#~ msgstr "祝圣礼的地点"
+
+#~ msgid "Place of residence"
+#~ msgstr "居住地点"
+
+#~ msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+#~ msgstr "应根据家谱的标准输入的地方。地方记录地方最具体的信息，然后再工作到最后最不明确的地方，使用逗号分隔不同的地方。你的位置信息记录在哪一级政府或教会代表水平的重要记录，该位置将被保留。<br><br>例如，将进入“盐湖城盐湖城这样的地方市，盐湖城，犹他，美国。<br><br>让我们来看看这个地方的每个部分。第一部分，“盐湖城”，是在事件发生的城市或乡镇。在一些国家，也有可能是城市或地区内的城市，重要的是要注意。在这种情况下，他们应该来城前。接下来的部分，“盐湖城”，是该县。 “犹他”是国家的，'USA'的国家。重要的是要注意每一个地方，因为家谱保存每个级别的政府。<br><br>如果未知的地方是，你应该留出空间之间的逗号。假设，在上面的例子中，你根本不知道县盐湖城。然后，您应该记录是这样的：“盐湖城，犹他，美国的。假设你只知道一个人出生在美国犹他州。您输入的信息是这样的：'，犹他，美国。<br><br>您可以使用<b>，找到的地方</b>链接，以帮助您找到的地方，已经存在于数据库中。"
+
+#~ msgid "Port"
+#~ msgstr "端口"
+
+#~ msgid "President’s Office"
+#~ msgstr "总统办公室"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "当空白时显示基本事件?"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "第三月"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "第三月"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "第三月"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "第三月"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "第四月"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "第四月"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "第四月"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "第四月"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "近期事件(< 100 年)"
+
+#~ msgid "Registry officer"
+#~ msgstr "登记官"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "女登记官"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "男登记官"
+
+#~ msgid "Religious institution"
+#~ msgstr "宗教机构"
+
+#~ msgid "Remove this location?"
+#~ msgstr "删除这个位置吗?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "右区块"
+
+#~ msgid "SMTP port"
+#~ msgstr "SMTP端口"
+
+#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
+#~ msgstr "对每个家谱分别使用“导出”功能保存你的所有家谱到磁盘。"
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "搜索和/或替换数据（当你使用你使用简单搜索GEDCOM或高级模式匹配）。"
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "搜索的人加入到列表中添加链接。"
+
+#~ msgid "Security"
+#~ msgstr "安全"
+
+#~ msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
+#~ msgstr "从名单上选择一个关系的名字。选择<b>教父</b> 的意思是: <i>这是当前个体的教父,</i>."
+
+#~ msgid "Select events"
+#~ msgstr "选择事件"
+
+#~ msgid "Send message"
+#~ msgstr "发送消息"
+
+#~ msgid "Sender email address"
+#~ msgstr "发件人的电子邮件地址"
+
+#~ msgid "Server"
+#~ msgstr "服务器"
+
+#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
+#~ msgstr "设置显示后代图和系谱图默认的代数"
+
+#~ msgid "Set the maximum number of generations to display on descendancy charts."
+#~ msgstr "在后代图中显示的最大数量的后代代数。"
+
+#~ msgid "Set the maximum number of generations to display on pedigree charts."
+#~ msgstr "设置谱系图显示的最大数量的后代。"
+
+#~ msgid "Set the privacy access level for all dead individuals."
+#~ msgstr "为所有死去的人设置隐私访问级别。"
+
+#~ msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
+#~ msgstr "设置此选项<b>显示</b>显示LDS条例图状态码。<ul><li><b>B</b>洗礼</li><li><b>E</b>赋予</li><li><b>S</b>未知配偶</li><li><b>P</b>未知父母</li></ul>一个人所有的例图显示在他们的名字后会有<b>BESP</b>。丢失的例图在相应的字母代码处显示<b>_</b>。例如，<b>BE__</b>显示丢失<b>S</b>及<b>P</b>例图。"
+
+#~ msgid "Shared note contains:"
+#~ msgstr "共享记事包含："
+
+#~ msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
+#~ msgstr "共享记事是自由格式的文本，并会出现的事实详细信息的页面部分。<br><br>每个共享记录可以链接到多个个人，家庭，资源，或事件。"
+
+#~ msgid "Shared notes found"
+#~ msgstr "共享记事发现"
+
+#~ msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
+#~ msgstr "共享记事，和常规的记事一样，是自由格式的文本。不同于一般的记事，每一个共享的笔记可以链接到一个以上的个人，家庭，资源或事实。<br><br>通过点击相应的图标，你可以建立一个连接到一个现有的共享记事或创建一个新的共享记事和同时链接到它。如果已经建立了一个链接到现有的共享的记事，你也可以编辑该记事的内容。<br><ul><li><b>连接到现有的共享的记事</b><div style=\"padding-left:20px;\">如果你已经知道所需共享的记事记录的ID号，你可以直接在字段中输入该号码。<br><br>当你点击<b>查找共享记事</b>的图标，您将能够搜索到所有现有的共享记事的文本，然后选择其中之一。它ID号将自动在字段中输入所选择的框。<br><br>您必须单击<b>添加</b>按钮来更新原有的记录。</div><br></li><li><b>创建一个新的共享的记事</b><div style=\"padding-left:20px;\">当您单击<b>创建一个新的共享记事</b>图标，一个新的窗口将打开。您可以输入文本的新的记事，像你想的一样。与普通记事一样，您可以输入网址。<br><br>当你点击<b>保存</b>按钮，你会看到一条消息，新创建的共享的记事记录的ID号。你应该点击此消息，关闭编辑窗口，也将直接输入新的ID号ID号字段。如果你只是关闭窗口，新创建的ID号将不会被自动复制。<br><br>您必须单击<b>添加</b>按钮来更新原有的记录。</div><br></li><li><b>修改现有的共享的记事</b><div style=\"padding-left:20px;\">当您单击<b>修改共享记事记</b>图标，会打开一个新的窗口。您可以更改现有的共享的笔记为你想的文本。与普通记事一样，您可以输入网址。<br><br>当你点击<b>保存</b>按钮，文本共享记事将被更新。您可以关闭该窗口，然后点击<b>保存</b>按钮，<br><br>当您更改文本的共记事意，您的更改将反，共享记事目前正在联系在一起的映在所有地方。新的链接，在你建立了你的变化后，也将使用更新的文本。</div></li></ul>"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "第八月"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "第八月"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "第八月"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "第八月"
+
+#~ msgid "She "
+#~ msgstr "她 "
+
+#~ msgid "She died"
+#~ msgstr "她去世了"
+
+#~ msgid "She married"
+#~ msgstr "她嫁给了"
+
+#~ msgid "She resided at"
+#~ msgstr "她居住在"
+
+#~ msgid "She was born"
+#~ msgstr "她出生"
+
+#~ msgid "She was buried"
+#~ msgstr "她被埋葬"
+
+#~ msgid "She was christened"
+#~ msgstr "她被命名为"
+
+#~ msgid "She was cremated"
+#~ msgstr "她被火化"
+
+#~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
+#~ msgstr "要用GeoNames数据库用于提供地名更多的建议吗？<br><br>当此选项设置为<b>是</b>时，GeoNames数据库将在输入地名时提供建议。当设置为<b>不</b>，只有当前家谱数据库被搜索。如果你录入更多的地名，建议将变得更加精确。这个选项可以减少数据输入，特别是如果你的网络连接速度很慢时。<br><br>GeoNames地理数据库是免费的。目前包含超过8000000个地名。"
+
+#~ msgid "Show acceptable use agreement on “Request new user account” page"
+#~ msgstr "在《请求新的用户帐户》页面显示使用协议"
+
+#~ msgid "Show age of parents next to child’s birthdate"
+#~ msgstr "在孩子的出生年月日旁边显示父母的年龄"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "在列表中显示所有的地方"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "显示祖先的孩子？"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "显示死者"
+
+#~ msgid "Show details"
+#~ msgstr "显示详细资料"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "在个人信息里显示图像"
+
+#~ msgid "Show inactive places"
+#~ msgstr "显示无效的地方"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "显示100年前出生的人。"
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "显示100年内出生的人。"
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "显示活着的人或夫妻双方还活着。"
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "显示死亡的人或夫妻双方是已故。"
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "显示100年前去世的人。"
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "显示100年内去世的人。"
+
+#~ msgid "Show notes?"
+#~ msgstr "显示记事吗?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "显示职业吗?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "只显示现在活着人的事件？"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "仅显示性别不知道的人。"
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "只显示个人,事件,还是所有?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "显示待定的更改"
+
+#~ msgid "Show photos?"
+#~ msgstr "显示照片吗?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "显示地方分布"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "显示相关人/家庭"
+
+#~ msgid "Show residences?"
+#~ msgstr "显示住宅？"
+
+#~ msgid "Show sources?"
+#~ msgstr "显示资源?"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "显示«未录入孩子»夫妻或个人。这些是人活着但没有孩子记录在数据库中。"
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "显示«未录入父母的»夫妇或个人。这些人可能也被称为«族长»或是嫁入招入的人。他们是那些没有父母记录在数据库中。"
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "显示 %3$s 的 %1$s 到 %2$s"
+
+#~ msgid "Sister"
+#~ msgstr "姐妹"
+
+#~ msgid "Social security number"
+#~ msgstr "社会安全号码"
+
+#~ msgid "Son"
+#~ msgstr "儿子"
+
+#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
+#~ msgstr "被引用资源可能包括记录数据的不同数据(主、次等)字段。如果你不使用这些字段,当创建新源引用时您可以禁用他们。"
+
+#~ msgid "Sources to the events"
+#~ msgstr "为事件添加资源"
+
+#~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
+#~ msgstr "指定是否通过<b> webtrees </b>可以存储在数据库中发送的消息。如果设置为<b>是</b>用户能够检索信息时，他们登录到<b> webtrees </b>。如果设置为<b>不</b>信息只会发送电子邮件。"
+
+#~ msgid "Spouse"
+#~ msgstr "配偶"
+
+#~ msgid "Spouses and children"
+#~ msgstr "配偶和子女"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "变更日期范围的开始"
+
+#~ msgid "Surname option"
+#~ msgstr "姓选项"
+
+#~ msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+#~ msgstr "收藏下拉列表显示你已经在你的个性化网页选择收藏。它也表明，网站管理员已选定为当前活动的GEDCOM的热门。点击其中一个热门条目会直接将您带到那人的个人信息页面。<br><br>更多帮助关于收藏夹在您的个性化主页。"
+
+#~ msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+#~ msgstr "媒体查看器可以显示一个链接，点击后，将下载的媒体文件到本地电脑。<br><br>因为安全原因你可能想要隐藏下载链接。"
+
+#~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
+#~ msgstr "类型字段用于输入关于该项目的附加信息。在大多数情况下，该字段是完全自由的，您可以输入任何你想要的。"
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "已经通知管理员。当他给你登录权限,您就可以用你的用户名和密码登陆。"
+
+#~ msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+#~ msgstr "收集箱，您可以从这个家谱的提取物（“收集箱”），并将其捆绑成一个文件，下载并随后导入到自己的家谱程序。可下载的文件记录在GEDCOM格式。的<br><ul><li>如何使用收集箱？<br>这是很简单的。每当你看到一个可点击的名称（个人，家庭，或源），你可以去该名称的详细信息“页面”。在那里，你会的看到<b>添加到收集箱</b>选项。当您单击该链接，你将有几个选项进行下载。</li><li>如何下载？<br>一旦您有您的购物车中的项目，你可以将它们下载只要通过点击<b>立即下载</b>链接。按照说明和链接操作就可以。</li></ul>"
+
+#~ msgid "The individual to be contacted about technical questions or errors encountered on your site."
+#~ msgstr "在您的网站上遇到的有问题或错误联系人有关技术。"
+
+#~ msgid "The individual to contact about the genealogical data on this site."
+#~ msgstr "这个网站家谱资料联系人"
+
+#~ msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+#~ msgstr "出生后的时间长度可以在隐私配置选项中的“年龄在假设一个人已经死了”设置。"
+
+#~ msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
+#~ msgstr "你上传的媒体文件可以，也许应该，在服务器上和在您的本地计算机不同的命字。这是因为通常的本地文件名对你有意义但对访问这个网站的人却少有意义。考虑到你和别人都试图将不同的文件称为\"granny.jpg\"。<br><br>在这个框中你指定你上传文件的新名称。你输入的名字也被用来命名的缩略图，可以上传分开或自动生成。你不需要输入的文件扩展名（JPG，GIF，PDF，DOC，等）<br><br>留空白保持原来从您的本地计算机您所上传的文件的名字。"
+
+#~ msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
+#~ msgstr "该组织，机构，公司，个人，或其他实体有权威者。<br><br>例如，一个雇主，或一个教会给予的实行者，或一个组织负责创建和/或记录存档的人员。"
+
+#~ msgid "The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>."
+#~ msgstr "是用于SMTP服务器连接的端口号。一般来说是端口<b> 25 </b>。"
+
+#~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
+#~ msgstr "前缀是可选的，建议表名称为唯一的前缀，这样可以让几个不同的应用程序共用相同的数据库。建议“wt_”，但可以是任何你想要的。"
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "正则表达式似乎包含错误。不能用"
+
+#~ msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
+#~ msgstr "主题可以在三个层次：用户选择，GEDCOM和网站。用户设置优先于GEDCOM设置，优先于网站设置。在用户级选择“默认主题“会影响目前的GEDCOM文件设置。GEDCOM级选择“默认主题“的会影响站点设置。"
+
+#~ msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
+#~ msgstr "这GEDCOM（家谱）上#gedcomupdated#更新。有#totalsurnames#姓氏在这个家谱。最早记载的事件是在#firsteventyear#的#firsteventname#的#firsteventtype#。最近的事件是在#lasteventyear#的#lasteventname#的#lasteventtype#。<br><br>如果你有任何意见或反馈，请联系#contactwebmaster#。"
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "这家谱创建使用 <b>%1$s</b> 在 <b>%2$s</b>。"
+
+#~ msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+#~ msgstr "此块允许家谱系，后代表，或沙漏图出现在我的页面或者主页。由于空间的限制，该图应放置在页面的左边。<br><br>当这块出现在首页，超始人和要显示的图表类型是由管理员确定。当这一块出现在用户的个性化网页，这些选项是由用户确定。<br><br>这些图表的行为是他们的行为相同的时候，他们被称为从菜单。对一个人看到更多的细节点击个人。"
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "这里显示访问最多的10条记录。要求在GEDCOM配置设置中启用计数器。"
+
+#~ msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
+#~ msgstr "这选框控制你在线是其它用户的可见与否。它也控制你可看到其他在线并配置为可见的用户。<br><br>当这个选框没有选中，你会完全看不见别人，你也无法看到其他在线用户。当这个盒子打勾，你会被其他人看到，你还可以看到其他配置是可见的人。"
+
+#~ msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+#~ msgstr "此字段允许您改变这个事实的引文链接到资源记录。这框以资源ID。旁边的框将列标题的当前资源ID。使用<b>找到ID</b> 链接查找源ID。留空白删除整个引文。"
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "这个选项会让你在常见问题页面向下移动一个项目。<br><br>你每次使用此选项，常见问题位置的数量成1的倍数增加了。您可以通过编辑问题中项目的或改变的FAQ位置字段实现相同的效果。<br><br>当一个以上的有相同的位置数常见问题项，只有这一个项目将是可见的。"
+
+#~ msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
+#~ msgstr "该输入框让你改变日历的年份。在框里输入年份，按下<b>输入</b>更改日历年份。<br><br><b>高级功能</b>按年显示<b></b><dl><dt><b>一年以上</b></dt><dd>你可以查询日期范围为一年内。<br><br>年范围<u>包含</u>。表示日期范围包含去年年一月至去年十二月三十一号。下面是一年范围的几个例子：<br><br><b>1992-5</b>所有事件从1992到1995。<br><b>1972-89</b>所有事件从1972到1989。<br><b>1610-759</b>所有事件从1610到1759。<br><b>1880-1905</b>所有事件从1880到1905。<br><b>880-1105</b>所有事件从880到1105。<br><br>看到所有的事件在十年或一个世纪了，你可以使用<b>？</b>在最后一位的地方。例如，<b> 197？</b>所有事件从1970到1979或<b> 16？？</b>所有事件从1600到1699。<br><br>选择范围的年会改变日历年份。</dd></dl>"
+
+#~ msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+#~ msgstr "此输入框可以让你输入个人ID，并添加到收集箱。一旦添加，将建立一个关链到您的收集箱。<br><br>如果你不知道一个人的ID，您可以按个人图标旁边的添加按钮用名字搜索。"
+
+#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
+#~ msgstr "这是一个逗号分隔的GEDCOM事件标签，将添加一个新的人时显示。例如，如果 BIRT是在列表中，出生日期和出生地将显示在窗体。"
+
+#~ msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
+#~ msgstr "这个链接到你自己在家谱的记录。如果这是连接到错的人上，请与管理员联系。"
+
+#~ msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+#~ msgstr "用户可以添加到家庭GEDCOM事件的名单。你可以通过删除或添加修改此列表上的名字，甚至是定制的。事件的名字在这个列表，就不能同时出现在家庭事件<i>独特事件</i> 列表。"
+
+#~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
+#~ msgstr "这是SMTP邮件服务器的名称。例如：<b> smtp.foo.bar.com </b>。<br><br>一些电子邮件提供商的配置值：<br><br><b> Gmail <br></b><br><b>发送服务器（SMTP）名称：</b>  smtp.gmail.com<br><b> SMTP端口：</b> 465或587 <br><b>安全连接：</b> SSL <br><br><b> Hotmail <br></b><br><b>发送服务器（SMTP）名称：</b> smtp.live.com<br><b> SMTP端口：</b> 25或587 <br><b>安全连接：</b> TLS <br><br><b>雅虎Mail Plus（目前付费服务） </b><br><b>发送服务器（SMTP）名称：</b> smtp.mail.yahoo.com<br><b> SMTP端口：</b> 25"
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "这是SMTP服务器的名称。\"localhost\"指邮件服务的同一台计算机上运行您的Web服务器。"
+
+#~ msgid "This is used in the \"From:\" header when sending mails."
+#~ msgstr "发送邮件用”From:“开头。"
+
+#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
+#~ msgstr "这是用在发送邮件头部的“发件人:”。它通常也可能是“From:”。"
+
+#~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br><br>Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br><br>When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
+#~ msgstr "此选项会导致<b> webtrees </b>显示所有的个人记录有关联关系的人或家庭，作为搜索的一个直接结果。相反的，在所有的人或家庭都显示在一个人发现作为搜索的结果有直接关系的其他人或家庭，是不可能的。<br><br>例子：假设人<b>A</b>是<b> B </b>的教父。这种关系是由一个或标签的方式记录在个人<b> B </b>的GEDCOM文件记录。没有相应的标签中存在的GEDCOM记录人<b>A</b>。<br><br>当此选项设置为<b>是</b>和搜索结果列表中包括<b> B </b>，<b>A</b>将自动包含由于<b> B </b>的GEDCOM文件记录或标签。然而，如果搜索结果列表包括<b>A</b>，<b> B </b>将不包括自没有匹配的关联标记的人<b>A </b>的GEDCOM文件记录。"
+
+#~ msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
+#~ msgstr "此选项控制是否将附源引用的事实在记事和源标签在个人页面显示。<br><br>通常，记事和源标签仅显示直接连接到个人的数据库记录的源引用的记事。这些是<i> 1级</i>记事和资源引用。<br><br><b>是</b>选项导致这些标签也显示个人数据库记录的各种事实包含的记事和资源引用。这些是<i> 2级</i>记事和源引用，因为各种事实是在1级。"
+
+#~ msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
+#~ msgstr "这个选项控制在图表是否显示父亲和母亲在孩子的出生日期时候的年龄。"
+
+#~ msgid "This option controls whether or not to show the Birth and Death details of an individual on charts."
+#~ msgstr "这个选项控制在个人图表是否显示出生和死亡的细节。"
+
+#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgstr "这个选项控制是否在图表显示个人的性别图标。<br><br>因为性别也由框的颜色显示,这个选项并不隐瞒性别。而是从盒子里选择简单的删除一些重复的信息。"
+
+#~ msgid "This option enables online editing features for this database so that users with Edit privileges may update data online."
+#~ msgstr "该选项允许有在线编辑这个数据库的功能，用户有编辑权限在线更新数据。"
+
+#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
+#~ msgstr "此选项定义谱系图应该产生横向还是纵向模式。"
+
+#~ msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+#~ msgstr "这个选项是 <b>webtrees</b> 内部消息，包含一个加操作。一个额外的复制的信息也将被发送到您设定您的帐户页的电子邮件地址。这是预设的联系方法。"
+
+#~ msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
+#~ msgstr "此选项将启用所有隐私设置，隐藏了活人的细节，定义或在每个GEDCOM文件的配置页选项卡修改隐私。"
+
+#~ msgid "This option will generate thumbnails for all files in the current directory which don't already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br><br>If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links."
+#~ msgstr "此选项将生成在当前目录为不存在缩略图的所有文件生成缩略图。这比为每个文件按下<b>创建缩略图</b>链接更方便。<br><br>如果你希望保持控制哪些文件应该有相应的缩略图，您不应使用此选项。相反，点击相应的<b>创建缩略图</b>链接。"
+
+#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "这个选项会让你在常见问题页面向下移动一个项目。<br><br>你每次使用此选项，常见问题位置的数量这一项目增加了一。您可以通过编辑项目中的问题与改变的FAQ位置字段实现相同的效果。当一个以上的常见问题项具有相同的位置数，只有这一个项目将是可见的。"
+
+#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "这个选项会让你在常见问题页面向上移动一个项目。<br><br>你每次使用此选项，常见问题位置的数量这一项目减少了一个。您可以通过编辑项目中的问题与改变的常见问题位置字段实现相同的效果。当一个以上的常见问题项具有相同的位置数，只有这一个项目将是可见的。"
+
+#~ msgid "This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
+#~ msgstr "此选项将保留在私人家庭的联系记录。这意味着你将看到空的\"private\"框的系谱图和其他图表。"
+
+#~ msgid "This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server’s software, as it relates to PHP and <b>webtrees</b>, can be viewed."
+#~ msgstr "本页提供了大量有关服务器上<b>webtrees</b>支持。关于服务器的软件很多配置细节，因为这涉及到PHP和<b>webtrees</b>可以被查看。"
+
+#~ msgid "This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent."
+#~ msgstr "本页将允许您从相同的GEDCOM文件合并两个GEDCOM记录。<br><br>这非常有用当合并gedcoms，或是现在有许多人，家庭，和资源是相同的。<br><br>页包括三个步骤。<br><ol><li>您输入>两GEDCOM ID。IDS <u>必须</u>是同一类型的。你不能把个人与家庭或家庭和源，例如。<br>在<b>合并ID：</b>字段中输入你想要完成合并后新记录的ID。<br>在<b>合并ID：</b>字段中输入的记录的信息将被合并到合并到ID的ID：记录。此记录将合并后删除。</li><li>您选择什么样的事实要从两个记录时，他们被合并。单击复选框的你想要的保持。</li><li>您检查合并的在线变化结果。</li></ol>最终确认将全得他们不可恢复。"
+
+#~ msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#~ msgstr "成员角色权限,添加/更改/删除数据。任何变化需要经过一个主持人,除非用户“自动接受更改”选项启用。"
+
+#~ msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+#~ msgstr "这部分允许您添加一个新的资源引用到你当前正在编辑的事实。<br><br>在资源框字段输入资源ID。如果你需要输入一个新的资资源单击<b>创建一个新的资源</b>链接。在引用字段,输入细节页码或其他信息,可能帮助别人找到的信息资源。在文本字段中,输入文本转录从源。"
+
+#~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
+#~ msgstr "这个服务器的内存限制是 %d MB和它的CPU时间限制是 %d 秒。"
+
+#~ msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+#~ msgstr "这应该是一个逗号或空格分隔的事实列表,你想要生和死出现在系谱图。这个列表需要你用事实标签中定义的GEDCOM 5.5.1标准。例如,如果你想要显示职业，需要添加“职业”这个字段。"
+
+#~ msgid "This text will be appended to each page title.  It will be shown in the browser’s title bar, bookmarks, etc."
+#~ msgstr "本文将追加到每个页面标题。它将显示在浏览器的标题栏、书签等。"
+
+#~ msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+#~ msgstr "这个值决定了在沙漏格式中开始人后面的显示的代数。"
+
+#~ msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
+#~ msgstr "为帮助你在开始使用这一块,我们已经创建了一些标准模板。当您选择其中的一个模板,文本区域将包含一个副本,然后你可以更改以适合您的站点的需求。"
+
+#~ msgid "To family"
+#~ msgstr "对家庭"
+
+#~ msgid "To individual"
+#~ msgstr "对人"
+
+#~ msgid "To source"
+#~ msgstr "对资源"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "总接受变化： "
+
+#~ msgid "Total pending changes: "
+#~ msgstr "总待定更改: "
+
+#~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
+#~ msgstr "传输层安全（TLS）和安全套接字层（SSL）是网络数据加密协议。<br><br> TLS 1，1.1和1.2是标准化发展，SSL 3，TLS 1和SSL 3.1是同样的。SSL现在的新名字为TLS。<br><br>如果你的SMTP服务器需要SSL协议登录时，您应该选择<b> SSL </b>选项。如果你的SMTP服务器登录时需要TLS协议，你应该选择<b> TLS </b>选项。"
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "未识别的GEDCOM文件代码"
+
+#~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b><b>webtrees</b> will use the e-mail system built into PHP on this server."
+#~ msgstr "使用SMTP从<b> webtrees </b>发送电子邮件。<br>br>这个选项需要访问一个SMTP邮件服务器。当设置为<b>不发送消息</b><b> webtrees </b>将使用服务器上内置的PHP电子邮件系统。"
+
+#~ msgid "Use SMTP to send external mails"
+#~ msgstr "使用SMTP发送外部邮件"
+
+#~ msgid "Use colors"
+#~ msgstr "使用颜色"
+
+#~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
+#~ msgstr "使用用户名和密码身份验证连接到SMTP服务器。<br><br>某些SMTP服务器在接受外部邮件之前，要求所有连接被认证。"
+
+#~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
+#~ msgstr "使用轮廓图像时没有突出那个已被指定人能代表人性别的图像。<br><br><table><tr><td wrap valign=\"middle\">当性别不详这个图像可能被用："
+
+#~ msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move right and Move left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
+#~ msgstr "使用这些按钮从一个列表移动目条到另一个。<br><br>选中要移动的条目，然后点击一个按箭头方向按钮来移动或复制条目。使用<b>&raquo;</b>及<b>&laquo;</b>按钮移动将高亮显示的条目从左边到右边的列表或反之亦然。使用<b>&gt;</b>及<b>&lt;</b>按钮移动选中的可用块列表移动到右侧或左侧列表。<br><br>无论你所做的与移动右向左移动按钮，可用块列表中的条目不改变。这是因为同一块可以在同一页上多次出现。HTML块是你可希望这样做的一个好例子。"
+
+#~ msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
+#~ msgstr "使用这些按钮来重新排列列表中的条目顺序。模块将按所列出顺序显示。<br><br>选中要移动的条目，然后单击上面按钮，向上或向下移动条目。"
+
+#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
+#~ msgstr "使用此字段存储缩写标题。此字段是用于对消息标题字段关联。默认情况下，<b> webtrees </b>将首先使用标题然后缩写名称。<br><br>按GEDCOM 5.5规范，“这个项目是提供一种用于排序，简称归档，检索源记录（页62）。”<br><br>在<b> webtrees </b>缩写名称是可选的，但在其他的程序是必需的。"
+
+#~ msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+#~ msgstr "使用此框的确定该媒体项目是突出为主要项目。突出显示的图像是一个将被用在图表上的个人网页。"
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "使用此网页更改或删除家庭成员。<br><br>你可以改变链接来为每个家庭成员选择不同的人来补全家庭角色。你也可以把那个人从家庭删除链接。<br><br>当您完成家庭成员改变，点击保存按钮保存更改。"
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "在七天内没有确认的用户"
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "用户名不能包含下列字符：&lt；p&gt； \" %% { } ;"
+
+#~ msgid "Users logged in"
+#~ msgstr "用户登录"
+
+#~ msgid "Users’ languages"
+#~ msgstr "用户的语言"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "用户帐户已停用的时间太长： "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "看家谱纪录"
+
+#~ msgid "View day"
+#~ msgstr "按天查看"
+
+#~ msgid "View details"
+#~ msgstr "查看详情"
+
+#~ msgid "View family"
+#~ msgstr "显示家庭"
+
+#~ msgid "View month"
+#~ msgstr "按月查看"
+
+#~ msgid "View notes"
+#~ msgstr "查看记事"
+
+#~ msgid "View person"
+#~ msgstr "查看"
+
+#~ msgid "View source"
+#~ msgstr "查看资源"
+
+#~ msgid "View year"
+#~ msgstr "按年查看"
+
+#~ msgid "Visitor options"
+#~ msgstr "访客选项"
+
+#~ msgid "Visitors"
+#~ msgstr "访客"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=1"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "现在我们将发送一封确认邮件到地址<b>%s</b>。你必须遵循的确认电子邮件中说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br><br>在你按照指示的确认电子邮件中，还必须管理员批准您的帐户请求才可以使用。<br><br>登录到这个网站，你需要知道你的用户名密码。"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "现在我们将发送一封确认邮件到地址<b>%s</b>。你必须在确认电子邮件说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br><br>在你按照电子邮件指示的确认后，您可以登录。登录到该网站，你需要知道你的用户名和密码。"
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "网站和元标签设置"
+
+#~ msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
+#~ msgstr "当一个用户注册一个帐号，发送他们的电子邮件包含地址验证连接。当他们点击这个链接，我们知道的电子邮件地址是正确的，“电子邮件验证”选项是自动选择。"
+
+#~ msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
+#~ msgstr "当设置为<b>是</b>，以下信息将出现在«要求新用户帐户»页面<div class=\"list_value_wrap\"><div class=\"largeError\">注意：</div><div class=\"error\">完成和提交此表格，您同意：<ul><li>保护列在我们的网站的活人隐私；</li><li>下面的文本框中，解释你是谁，或向我们提供的谁将在我们的网站上列出信息。</li></ul></div></div>"
+
+#~ msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
+#~ msgstr "当这个选框打勾，图表将最老的人在上面。当它不选，年轻的人会出现在顶部。"
+
+#~ msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
+#~ msgstr "当这个选项勾选，你可以看到这个人所有的资源或记录。当此选项不选中时，与此相关的其他人的事实，资源或记录将不会显示。"
+
+#~ msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
+#~ msgstr "当您勾选这个选项，一个GEDCOM文件的副本将在下载开始之前被压缩成zip格式。这将减少它的大小，但您将需要使用一个兼容的程序（例如Winzip解压缩，解压缩GEDCOM文件传输）才能使用它。<br><br>下载大的GEDCOM文件时这是一个有用的选项。如果不用是有风险的，未压缩的文件的下载时间可能会超过允许的最大执行时间，导致不完全下载的文件。ZIP选项应该能减少百分之75的下载时间。"
+
+#~ msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
+#~ msgstr "当你点击<b>添加新的共享记事</b>链接，将打开一个新窗口。你可以选择链接到现有的共享的记事，或者你可以创建一个新的共享记事，同时创建一个链接到它。"
+
+#~ msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
+#~ msgstr "当你点击这个链接，您的收集箱将完全清空。<br><br>如果你不想删除所有人，家庭，等车的剪报，您可以逐个点击在收集箱里的要删除项目的<b>删除</b>链接。当你点击这些链接<u>没有</u>确认的请求，会立即生效"
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "从这个人连接添加吗？"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "谁能看到非水印图像？"
+
+#~ msgid "Wife’s age"
+#~ msgstr "妻子的年龄"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "妻子的娘家姓成为新的姓"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "妻子的姓由丈夫的姓代替"
+
+#~ msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+#~ msgstr "使用此选项，<b> webtrees</b>内部消息系统将被使用，没有电子邮件将被发送  您将只收到其他用户的<u>内部的消息</u>。当另一个用户向您发送一条消息，该消息将出现在您的个人我的主页上的消息块。如果您已删除了该块从我的页面中，你将不会看到任何消息。 ，但是他们会出现，只要你在我的网页配置再现消息块。"
+
+#~ msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
+#~ msgstr "您可以使用“主题”更改<b> webtrees</b>的外观。每个主题都有不同的风格，布局，配色方案，等等。"
+
+#~ msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
+#~ msgstr "您可以点击此按钮，看是否两个人之间有其他的关系路径。之前找到的路径可以通过点击路径数量的链接再次显示。"
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "您可以决定是否常见问题将是可见的，无论GEDCOM，或者它是否将是明显的只对当前的GEDCOM。的<br><ul><li><b>所有</b>的常见问题将出现在所有的常见问题列表，无论GEDCOM。</li><li><b> %s </b>的常见问题解答将只出现在当前活跃的GEDCOM的常见问题列表。</li></ul>"
+
+#~ msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+#~ msgstr "你可以限制显示的新闻文章的数量,从而减少GEDCOM的新闻块高度。<br><br>这个选项决定是否任何限制应适用或是否应该根据文章的时间或根据文章的数量限制。"
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "您可以更容易地搜索已婚妇女如果记录他们的婚姻名。<br>但是不是所有的女人需要随丈夫的姓，所以要当心输入不正确的信息到你的数据库中。"
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "你不会从这个网站得到任何更多的电子邮件，因为该帐户的申请七天后将被自动删除。"
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "您的收集箱是空的。"
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "您的服务器的管理员将为您提供连接的详细信息。"
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "您的用户帐户没有启用“自动批准变化”。你只能改变一次一条记录。"
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Zip文件"
+
+#~ msgid "daughter of"
+#~ msgstr "女儿"
+
+#~ msgctxt "son's wife's father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "亲家公"
+
+#~ msgctxt "son's wife's mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "亲家母"
+
+#~ msgctxt "son's wife's parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "亲家"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "死亡"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "死亡"
+
+#~ msgid "first"
+#~ msgstr "第一"
+
+#~ msgctxt "child's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "孙女婿"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "外孙女婿"
+
+#~ msgctxt "son's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "孙女婿"
+
+#~ msgctxt "child's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "孙媳"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "外孙媳"
+
+#~ msgctxt "son's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "孙媳"
+
+#~ msgid "last"
+#~ msgstr "最后"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "嫁了"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "娶了"
+
+#~ msgid "son of"
+#~ msgstr "儿子的"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "亲家公"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "亲家母"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "亲"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_unicode_ci"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "诞生"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "诞生"
+
+#~ msgid "webtrees’ database must be on the same server as PGV’s"
+#~ msgstr "webtrees数据库和PGV的数据库必须在同一台服务器上"

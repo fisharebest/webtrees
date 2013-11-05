@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-05 13:02+0000\n"
-"PO-Revision-Date: 2011-11-03 04:14+0000\n"
+"PO-Revision-Date: 2013-08-04 17:00+0000\n"
 "Last-Translator: Hisakuni NOGAMI <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "Language: ja\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-05-13 05:30+0000\n"
-"X-Generator: Launchpad (build 16614)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:04+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: statisticsplot.php:801
 msgid " per gender"
@@ -566,7 +566,7 @@ msgstr ""
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: modules_v3/yahrzeit/module.php:39
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "近い将来予定の、ユダヤ式回忌のリスト。"
 
 #. I18N: Description of the “On This Day” module
 #: modules_v3/todays_events/module.php:39
@@ -2935,7 +2935,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:1359
 msgid "Center map here"
-msgstr ""
+msgstr "ここを地図の中心に"
 
 #: library/WT/Stats.php:3813
 msgid "Central African Republic"
@@ -3547,7 +3547,7 @@ msgstr "国"
 #: modules_v3/googlemap/module.php:1478 modules_v3/googlemap/module.php:1596
 #: modules_v3/googlemap/places_edit.php:286
 msgid "Country"
-msgstr ""
+msgstr "カントリー"
 
 #: statisticsplot.php:813 statisticsplot.php:815 statisticsplot.php:817
 msgid "Counts "
@@ -3555,7 +3555,7 @@ msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:177
 msgid "County"
-msgstr ""
+msgstr "カントリー"
 
 #: admin_media.php:286
 msgid "Create"
@@ -5560,7 +5560,7 @@ msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:342
 msgid "File containing places (CSV)"
-msgstr ""
+msgstr "位置情報を含むファイル（CSV）"
 
 #: addmedia.php:489 addmedia.php:510 admin_media_upload.php:200
 #: help_text.php:1449
@@ -6288,7 +6288,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:71
 msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
-msgstr ""
+msgstr "ここで、アイコンを設定するか、削除ができます。このリンクを用いてフラグを選択できます。この地理的位置が表示されるとき、このフラグが表示されます。"
 
 #: modules_v3/googlemap/help_text.php:44
 msgid "Here the default level for the highest level in the place-hierarchy can be defined. If a place cannot be found this name is added as the highest level (country) and the database is searched again."
@@ -6296,7 +6296,7 @@ msgstr "これは、階層が定義可能な場所での最高のレベルでの
 
 #: modules_v3/googlemap/help_text.php:66
 msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
-msgstr ""
+msgstr "ここで、拡大／縮小レベルを入力できます。この値は地図上の地理的位置を表示するときの最小値として使われます。"
 
 #: help_text.php:1062
 msgid "Here you can add a fact to the record being edited.<br /><br />First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
@@ -6352,7 +6352,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:104 modules_v3/googlemap/module.php:679
 msgid "Hide flags"
-msgstr ""
+msgstr "フラグを隠す"
 
 #: admin_trees_config.php:41 admin_trees_config.php:642
 #: includes/functions/functions_edit.php:196
@@ -6410,7 +6410,7 @@ msgstr ""
 #: admin_modules.php:140 library/WT/MenuBar.php:35
 #: modules_v3/gedcom_block/module.php:34
 msgid "Home page"
-msgstr ""
+msgstr "ホームページ"
 
 #: library/WT/Stats.php:3879
 msgid "Honduras"
@@ -6462,7 +6462,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:264
 msgid "Hybrid"
-msgstr ""
+msgstr "ハイブリッド"
 
 #: admin_trees_config.php:324
 msgid "ID settings"
@@ -8807,7 +8807,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:830
 msgid "No ancestors in the database."
-msgstr ""
+msgstr "データベースに祖先なし"
 
 #: admin_trees_config.php:260 admin_trees_config.php:280
 msgid "No calendar conversion"
@@ -8858,7 +8858,6 @@ msgstr ""
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
-msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -9516,7 +9515,7 @@ msgstr ""
 #: library/WT/Controller/Fanchart.php:308 library/WT/MenuBar.php:123
 #: modules_v3/googlemap/module.php:1313
 msgid "Pedigree map"
-msgstr ""
+msgstr "家系の地図"
 
 #. I18N: %s is an individual’s name
 #: modules_v3/googlemap/module.php:656
@@ -9798,7 +9797,7 @@ msgstr ""
 
 #: find.php:615
 msgid "Places found"
-msgstr ""
+msgstr "見つかった場所"
 
 #. I18N: %s is a country or region
 #: placelist.php:147
@@ -9942,7 +9941,7 @@ msgstr ""
 
 #: modules_v3/googlemap/places_edit.php:264
 msgid "Precision"
-msgstr ""
+msgstr "精度"
 
 #: modules_v3/googlemap/help_text.php:38 modules_v3/googlemap/module.php:303
 msgid "Precision of the latitude and longitude"
@@ -9975,7 +9974,7 @@ msgstr ""
 #: modules_v3/upcoming_events/module.php:153
 #: modules_v3/yahrzeit/module.php:247
 msgid "Presentation style"
-msgstr ""
+msgstr "表示スタイル"
 
 #. I18N: http://en.wikipedia.org/wiki/President_of_the_Church
 #: library/WT/Gedcom/Code/Temp.php:155
@@ -10513,7 +10512,7 @@ msgstr "リポジトリ"
 
 #: find.php:638
 msgid "Repositories found"
-msgstr ""
+msgstr "見つかった埋葬所"
 
 #. I18N: gedcom tag REPO
 #: inverselink.php:145 library/WT/Gedcom/Tag.php:302
@@ -10906,7 +10905,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:81
 msgid "Select a file from the list of files already on the server which contains the place locations in CSV format."
-msgstr ""
+msgstr "サーバーに既に入っているファイルのリストから、CSV形式で入っている場所の位置を含むファイルを選択します。"
 
 #: help_text.php:337
 msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the Godfather of the current individual</i>."
@@ -11086,7 +11085,7 @@ msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:347
 msgid "Server file containing places (CSV)"
-msgstr ""
+msgstr "位置情報を含むサーバーのファイル（CSV）"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:126 help_text.php:761 setup.php:278
@@ -11812,7 +11811,7 @@ msgstr ""
 #: includes/functions/functions_print_facts.php:496 inverselink.php:134
 #: library/WT/Gedcom/Tag.php:320 modules_v3/fact_sources/module.php:35
 msgid "Source"
-msgstr ""
+msgstr "ソース"
 
 #: admin_trees_config.php:340 help_text.php:902
 msgid "Source ID prefix"
@@ -11941,7 +11940,7 @@ msgstr "ページを取り込んだらスライドショーを開始？"
 #: modules_v3/googlemap/module.php:316
 #: modules_v3/googlemap/places_edit.php:288
 msgid "State"
-msgstr ""
+msgstr "ステート"
 
 #. I18N: Name of a module
 #: library/WT/MenuBar.php:113 modules_v3/gedcom_stats/module.php:34
@@ -12206,7 +12205,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:265
 msgid "Terrain"
-msgstr ""
+msgstr "地形"
 
 #: library/WT/Date/Jewish.php:110
 msgctxt "GENITIVE"
@@ -13974,7 +13973,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:76
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
-msgstr ""
+msgstr "プルダウンメニューを使って、選択可能のフラグになっているカントリーを選択できます。フラグが表示されていないなら、このカントリーで定義されているフラグがありません。"
 
 #: library/WT/Stats.php:4021
 msgid "Uzbekistan"
@@ -14066,7 +14065,7 @@ msgstr ""
 #: descendancy.php:75 familybook.php:57 fanchart.php:63 hourglass.php:70
 #: modules_v3/googlemap/module.php:724 pedigree.php:47 relationship.php:155
 msgid "View"
-msgstr ""
+msgstr "ビュー"
 
 #: calendar.php:275 calendar.php:277
 msgid "View Day"
@@ -14465,7 +14464,7 @@ msgstr ""
 #. I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: modules_v3/yahrzeit/module.php:34
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "ユダヤ式命日"
 
 #: calendar.php:166 library/WT/MenuBar.php:382
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1114
@@ -14536,7 +14535,7 @@ msgstr ""
 
 #: modules_v3/batch_update/plugins/death_y.php:37
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr ""
+msgstr "死亡、埋葬、葬送などのレコードを持たないけれども、その他の日付が影響する、個人の死亡レコードの追加によって、プライバシーの計算を高速化できます。"
 
 #: login.php:86
 msgid "You cannot login because your browser does not accept cookies."
@@ -14767,7 +14766,7 @@ msgstr "拡大/縮小"
 #: modules_v3/googlemap/admin_places.php:696
 #: modules_v3/googlemap/places_edit.php:320
 msgid "Zoom factor"
-msgstr ""
+msgstr "拡大縮小倍率"
 
 #: modules_v3/googlemap/help_text.php:33 modules_v3/googlemap/module.php:283
 msgid "Zoom factor of map"
@@ -18608,3 +18607,197 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#~ msgid " but the details are unknown"
+#~ msgstr " でも詳細は不明"
+
+#~ msgid " in "
+#~ msgstr " で "
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "与えられた資料で支持された事実のレポート"
+
+#~ msgid "Add individuals"
+#~ msgstr "人々の追加"
+
+#~ msgid "Ancestors of "
+#~ msgstr "先祖の "
+
+#~ msgid "Birth Place contains"
+#~ msgstr "生まれた場所にある"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "デフォルトでは、貴方の家系図に見つけられる場所のリストしか表示しません。外部のファイルからインポートするなどして、その他の場所の詳細をお持ちかもしれません。このオプションを選択すれば、場所の全てを表示します、現在使われていない場所も含まれます。"
+
+#~ msgid "Child of "
+#~ msgstr "子供の "
+
+#~ msgid "Children of "
+#~ msgstr "子供たちの "
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "家族の長として　%s をクリックして選択"
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "家族の長としての人をクリックして選択"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "旧式の家系図プログラムが作った、 'John/DOE/' とか'John /DOE'　の形を持つNAMEレコードの修正"
+
+#~ msgid "Descendants of "
+#~ msgstr "子孫の "
+
+#~ msgid "Email address:"
+#~ msgstr "Eメールアドレス："
+
+#~ msgid "Enter Family ID"
+#~ msgstr "家族IDの入力"
+
+#~ msgid "Generation "
+#~ msgstr "世代 "
+
+#~ msgid "He "
+#~ msgstr "彼 "
+
+#~ msgid "He died"
+#~ msgstr "彼は死んだ"
+
+#~ msgid "He married"
+#~ msgstr "彼は結婚した"
+
+#~ msgid "He resided at"
+#~ msgstr "彼の居住地は"
+
+#~ msgid "He was born"
+#~ msgstr "彼は生まれた"
+
+#~ msgid "He was buried"
+#~ msgstr "彼は埋葬されました"
+
+#~ msgid "He was christened"
+#~ msgstr "彼は洗礼名をつけられた"
+
+#~ msgid "He was cremated"
+#~ msgstr "彼は火葬されました"
+
+#~ msgid "Her occupation was"
+#~ msgstr "彼女の仕事は"
+
+#~ msgid "His occupation was"
+#~ msgstr "彼の仕事は"
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "非アクティブな場所を多数貴方が保有しているなら、リストを作成するのに時間がかかるかもしれません。"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "位置は削除されません：この位置にはサブ位置が入っています"
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "一番多く見られた項目"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "空白の際に基本的イベントを印刷？"
+
+#~ msgid "Remove this location?"
+#~ msgstr "この位置を削除？"
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "簡単な検索か高度なパターンマッチングを使って、貴方のGEDCOMのデータの検索　及び／または　置換"
+
+#~ msgid "Send message"
+#~ msgstr "メッセージ送信"
+
+#~ msgid "She "
+#~ msgstr "彼女 "
+
+#~ msgid "She died"
+#~ msgstr "彼女は死んだ"
+
+#~ msgid "She married"
+#~ msgstr "彼女は結婚した"
+
+#~ msgid "She resided at"
+#~ msgstr "彼女の居住地は"
+
+#~ msgid "She was born"
+#~ msgstr "彼女は生まれた"
+
+#~ msgid "She was buried"
+#~ msgstr "彼女は埋葬されました"
+
+#~ msgid "She was christened"
+#~ msgstr "彼女は洗礼名をつけられた"
+
+#~ msgid "She was cremated"
+#~ msgstr "彼女は火葬されました"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "先祖の子供を表示？"
+
+#~ msgid "Show details"
+#~ msgstr "詳細を表示"
+
+#~ msgid "Show inactive places"
+#~ msgstr "非アクティブの場所を表示"
+
+#~ msgid "Show occupations?"
+#~ msgstr "仕事を表示？"
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "人物だけ、イベントだけ、それとも全部を表示？"
+
+#~ msgid "Show residences?"
+#~ msgstr "住所を表示？"
+
+#~ msgid "Surname option"
+#~ msgstr "姓のオプション"
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "正規表現に誤りがあるようです。使用できません。"
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "このブロックで、一番多く見られた上位１０のレコードを表示します。このブロックではGEDCOM設定でヒットカウンタが有効にされている必要があります。"
+
+#~ msgid "Use colors"
+#~ msgstr "カラーを使う"
+
+#~ msgid "View person"
+#~ msgstr "人物を見る"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "妻の旧姓を新しい姓にします"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "夫の姓で置き換えられた妻の姓"
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "結婚している女性を検索するのを容易にするために結婚名をレコードに入れられます。<br>しかし、全ての女性が夫の姓を名乗るとは限らず、データベースの不正な情報を入れてしまう可能性にご注意。"
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "貴方のユーザーアカウントは「自動的変更確認」が有効になっていません。一回に一つのレコードしか変更できません。"
+
+#~ msgid "daughter of"
+#~ msgstr "娘の"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "死亡"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "死亡"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "既婚"
+
+#~ msgid "son of"
+#~ msgstr "息子の"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "生まれた"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "生まれた"

@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-06-06 05:31+0000\n"
-"X-Generator: Launchpad (build 16667)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Country: VIET NAM\n"
 "X-Poedit-Language: Vietnamese\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -456,7 +456,7 @@ msgstr "<b>webtrees</b> không thể kết nối CSDL của PhpGedView là %s đ
 
 #: help_text.php:1183
 msgid "<b>webtrees</b> has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you."
-msgstr "b> webtrees </ b> có vài cách liên hệ khác nhau. Quản trị viên quyết định sẽ dùng phương pháp nào để liên hệ. Bạn có kiểm soát phương pháp dùng để liên hệ với <u> bạn </ u>. Tùy thuộc vào cấu hình trang web, một số phương pháp liệt kê có thể không có sẵn cho bạn."
+msgstr "<b>webtrees</b> có vài cách liên hệ khác nhau. Quản trị viên quyết định sẽ dùng phương pháp nào để liên hệ. Bạn có kiểm soát phương pháp dùng để liên hệ với <u>bạn</u>. Tùy thuộc vào cấu hình trang web, một số phương pháp liệt kê có thể không có sẵn cho bạn."
 
 #: setup.php:274
 #, php-format
@@ -1675,7 +1675,7 @@ msgstr "Một cây gia phả tương tác hiển thị tất cả tổ tiên và
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "Có lỗi về CSDL bât ngờ xảy ra."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -1879,7 +1879,7 @@ msgstr "Aruba"
 
 #: modules_v3/html/help_text.php:34
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr "Cũng như viêc dùng thanh công cụ để áp dụng định dạng HTML, bạn có thể chèn các trường cơ sở dữ liệu cập nhật tự động. Những lĩnh vực đặc biệt được đánh dấu bằng ký tự <b> # </ b>. Vi dụ <b> #totalFamilies#</b> sẽ được thay thế bằng số lượng thực tế của gia đình trong cơ sở dữ liệu. Người dùng nâng cao có thể muốn áp dụng các lớp CSS cho văn bản của họ, để định dạng phù hợp với chủ đề đang được chọn."
+msgstr "Cũng như viêc dùng thanh công cụ để áp dụng định dạng HTML, bạn có thể chèn các trường cơ sở dữ liệu cập nhật tự động. Những lĩnh vực đặc biệt được đánh dấu bằng ký tự <b>#</b>. Vi dụ <b> #totalFamilies#</b> sẽ được thay thế bằng số lượng thực tế của gia đình trong cơ sở dữ liệu. Người dùng nâng cao có thể muốn áp dụng các lớp CSS cho văn bản của họ, để định dạng phù hợp với chủ đề đang được chọn."
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:79
@@ -3097,7 +3097,7 @@ msgstr "Chọn một loại báo cáo"
 
 #: help_text.php:355
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
-msgstr "Chọn giới tính thích hợp từ danh sách thả xuống. Tùy chọn <b>không rõ </ b> cho thấy người đó giới tính chưa được biết."
+msgstr "Chọn giới tính thích hợp từ danh sách thả xuống. Tùy chọn <b>không rõ</b> cho thấy người đó giới tính chưa được biết."
 
 #: help_text.php:1463
 msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the person who made an audio recording."
@@ -6516,7 +6516,7 @@ msgstr "Nếu một người không được gọi bằng tên, thì tên ưa th
 
 #: help_text.php:473
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
-msgstr "Nếu số lần mà một họ nào đó xảy ra thấp hơn ngưỡng này, nó sẽ không xuất hiện trong danh sách. Nó có thể được thêm thủ công vào đây. Nếu có nhiều hơn một họ nhập vào, chúng phải được phân cách bằng dấu phẩy. <b> họ là những trường hợp phân biệt hoa thường.</ b>"
+msgstr "Nếu số lần mà một họ nào đó xảy ra thấp hơn ngưỡng này, nó sẽ không xuất hiện trong danh sách. Nó có thể được thêm thủ công vào đây. Nếu có nhiều hơn một họ nhập vào, chúng phải được phân cách bằng dấu phẩy. <b> họ là những trường hợp phân biệt hoa thường.</b>"
 
 #: help_text.php:817
 msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br /><br />Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
@@ -6593,7 +6593,7 @@ msgstr "Nếu bạn cố làm quá giới hạn này, bạn có thể làm máy 
 
 #: help_text.php:478
 msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>  Surnames entered here will also be removed from the Top-10 list on the Home Page."
-msgstr "Nếu bạn muốn loại bỏ một họ khỏi danh sách Họ thường mà không cần tăng giá trị ngưỡng, bạn có thể làm điều đó bằng cách nhập vào tên họ ở đây. Nếu có nhiều hơn một họ được nhập vào, chúng phải được phân cách bằng dấu phẩy. <b> họ là những trường hợp phân biệt hoa thường. </ b> Họ nhập ở đây cũng sẽ được loại bỏ khỏi danh sách-Top 10 trên Trang chủ."
+msgstr "Nếu bạn muốn loại bỏ một họ khỏi danh sách Họ thường mà không cần tăng giá trị ngưỡng, bạn có thể làm điều đó bằng cách nhập vào tên họ ở đây. Nếu có nhiều hơn một họ được nhập vào, chúng phải được phân cách bằng dấu phẩy. <b> họ là những trường hợp phân biệt hoa thường.</b>Họ nhập ở đây cũng sẽ được loại bỏ khỏi danh sách-Top 10 trên Trang chủ."
 
 #: setup.php:198
 msgid "If your server's security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server's administrator."
@@ -8845,7 +8845,7 @@ msgstr "Không sự kiện nào hôm mai."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Không có sự kiện nào cho người còn sống trong %s ngày tới."
+msgstr[0] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -9256,7 +9256,7 @@ msgstr "Chỉ người quản lý có thể sửa"
 
 #: site-unavailable.php:67
 msgid "Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr "Chà, máy chủ không thể kết nối vời máy chủ CSDL được. Có thể do máy bận, đang bảo trì, hay do bị đứt kết nối. Bạn hãy <a href=\"index.php\">thử lại </a> trong vài phút hay liên hệ với quản trị site."
+msgstr "Chà, máy chủ không thể kết nối vời máy chủ CSDL được. Có thể do máy bận, đang bảo trì, hay do bị đứt kết nối. Bạn hãy <a href=\"index.php\">thử lại</a> trong vài phút hay liên hệ với quản trị site."
 
 #: setup.php:224
 msgid "Oops!  webtrees was unable to create files in this folder."
@@ -9673,7 +9673,7 @@ msgstr "Nơi tại Do Thái"
 
 #: help_text.php:883
 msgid "Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr "Tên địa điểm thường quá dài để đưa vào biểu đồ, danh sách v.v... Chúng có thể được viết tắt chỉ hiện vài phần đầu của tên như <i>làng, nước</i>, hay vài phần cuối, như <i>vùng, nước</i>."
+msgstr "Tên địa điểm thường quá dài để đưa vào biểu đồ, danh sách v.v… Chúng có thể được viết tắt chỉ hiện vài phần đầu của tên như <i>làng, nước</i>, hay vài phần cuối, như <i>vùng, nước</i>."
 
 #: library/WT/Gedcom/Tag.php:118
 msgid "Place of Adoption"
@@ -10356,7 +10356,7 @@ msgstr "Cụm từ thông thường"
 
 #: modules_v3/batch_update/plugins/search_replace.php:95
 msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php.net/manual/en/regexp.reference.php</a> for futher details."
-msgstr "Cụm từ thông thường là một kỹ thuật khớp mẫu nâng cao. Xem php.net <img target=\"_new\"> href=\"http://php.net/manual/en/regexp.reference.php\" / hướng dẫn / en / regexp.reference.php </ a > để biết thêm chi tiết."
+msgstr "Cụm từ thông thường là một kỹ thuật khớp mẫu nâng cao. Xem php.net <img target=\"_new\"> href=\"http://php.net/manual/en/regexp.reference.php\" / hướng dẫn / en / regexp.reference.php</a> để biết thêm chi tiết."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:35
@@ -11760,7 +11760,7 @@ msgstr "Vài ứng dụng gia phả tạo tập tin GEDCOM chứa tên đa phư�
 
 #: help_text.php:1053
 msgid "Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause <b>webtrees</b> to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it."
-msgstr "Một số chương trình gia phả gói ghi chú ở biên của từ trong khi các chương trình khác tại gói ghi chú ở bất kỳ ở đâu. Điều này có thể làm cho <b> webtrees </ b> chạy các từ ngữ với nhau. Đặt thiết lập này ở <b>Có </ b> sẽ thêm một khoảng cách giữa từ gói ở file GEDCOM gốc trong quá trình nhập. Nếu bạn đã nhập file rồi bạn cần phải nhập lại."
+msgstr "Một số chương trình gia phả gói ghi chú ở biên của từ trong khi các chương trình khác tại gói ghi chú ở bất kỳ ở đâu. Điều này có thể làm cho <b>webtrees</b> chạy các từ ngữ với nhau. Đặt thiết lập này ở <b>Có</b> sẽ thêm một khoảng cách giữa từ gói ở file GEDCOM gốc trong quá trình nhập. Nếu bạn đã nhập file rồi bạn cần phải nhập lại."
 
 #: modules_v3/clippings/module.php:138
 msgid "Some items could not be added due to privacy restrictions"
@@ -12695,7 +12695,7 @@ msgstr "Fine này liên kết đến một CSDL gia phả khác trên máy chủ
 #. I18N: Help text for the "Data folder" site configuration setting
 #: help_text.php:579
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet."
-msgstr "Thư mục này được dùng bởi webtrees để chứa tập tin đa phương tiện, tập tin GEDCOM, tập tin tạm v.v... Các tập tin này chứa dữ liệu riêng, và không nên để lộ trên internet."
+msgstr "Thư mục này được dùng bởi webtrees để chứa tập tin đa phương tiện, tập tin GEDCOM, tập tin tạm v.v… Các tập tin này chứa dữ liệu riêng, và không nên để lộ trên internet."
 
 #: help_text.php:655
 msgid "This folder will be used to store the media files for this family tree."
@@ -12763,7 +12763,7 @@ msgstr "Dấu phẩy phân cách danh sách thẻ sự kiện GEDCOM để hiệ
 
 #: help_text.php:419
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Đây là danh sách các thẻ sự kiện GEDCOM dùng dấu phẩy phân cách sẽ được hiển thị khi bạn thêm hoặc chỉnh sửa tên địa điểm. Nếu bạn sử dụng bảng chữ cái phi Latin như tiếng Do Thái, Hy Lạp, tiếng Nga hay tiếng Ả Rập, bạn có thể muốn thêm thẻ như _HEB, ROMN, FONE v.v...để cho phép bạn lưu trữ địa danh trong bảng chữ cái khác nhau."
+msgstr "Đây là danh sách các thẻ sự kiện GEDCOM dùng dấu phẩy phân cách sẽ được hiển thị khi bạn thêm hoặc chỉnh sửa tên địa điểm. Nếu bạn sử dụng bảng chữ cái phi Latin như tiếng Do Thái, Hy Lạp, tiếng Nga hay tiếng Ả Rập, bạn có thể muốn thêm thẻ như _HEB, ROMN, FONE v.v… để cho phép bạn lưu trữ địa danh trong bảng chữ cái khác nhau."
 
 #: help_text.php:1205
 msgid "This is a link to your own record in the family tree.  If this is the wrong person, contact an administrator."
@@ -12812,7 +12812,7 @@ msgstr "Đây là danh sách các sự kiện GEDCOM mà người dùng có th�
 
 #: help_text.php:601
 msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the <i>Individual Add Facts</i> list."
-msgstr "Đây là danh sách các sự kiện GEDCOM mà người dùng của bạn chỉ có thể thêm <u> một lần </ u> cho cá nhân. Ví dụ, nếu BIRT có trong danh sách này, người dùng sẽ không thể thêm nhiều hơn một bản ghi BIRT cho một cá nhân. Tên sự kiện có trong danh sách này không được dùng trong danh sách  <i> Thêm sự kiện cá nhân </ i>."
+msgstr "Đây là danh sách các sự kiện GEDCOM mà người dùng của bạn chỉ có thể thêm <u> một lần</u> cho cá nhân. Ví dụ, nếu BIRT có trong danh sách này, người dùng sẽ không thể thêm nhiều hơn một bản ghi BIRT cho một cá nhân. Tên sự kiện có trong danh sách này không được dùng trong danh sách <i>Thêm sự kiện cá nhân</i>."
 
 #: help_text.php:807
 msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the <i>Repository Add Facts</i> list."
@@ -14421,7 +14421,7 @@ msgstr "Với tùy chọn này, bạn sẽ không nhận được email. Ngay c�
 
 #: help_text.php:1195
 msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page."
-msgstr "Với tùy chọn này, bạn sẽ chỉ nhận các tin nhắn email theo địa chỉ bạn cấu hình trên trang Tài khoản của bạn. Hệ thống nhắn tin nội bộ <b> webtrees </ b> sẽ không được sử dụng, và sẽ không bao giờ có được bất kỳ tin nhắn trong khối thông điệp trên Trang Cá nhân của của tôi."
+msgstr "Với tùy chọn này, bạn sẽ chỉ nhận các tin nhắn email theo địa chỉ bạn cấu hình trên trang Tài khoản của bạn. Hệ thống nhắn tin nội bộ <b>webtrees</b> sẽ không được sử dụng, và sẽ không bao giờ có được bất kỳ tin nhắn trong khối thông điệp trên Trang Cá nhân của của tôi."
 
 #: library/WT/Stats.php:332 library/WT/Stats.php:376
 msgid "Without sources"
@@ -14520,7 +14520,7 @@ msgstr "Bạn có thể yêu cầu có giới hạn cao hay thấp hơn, mặc d
 
 #: modules_v3/batch_update/plugins/death_y.php:37
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Bạn có thể tính toán tính riêng tư nhanh bằng cách thêm bản ghi người chết cho cá nhân chết từ ngày khác, nhưng thiếu bản ghi về cái chết, an táng hay hỏa thiêu v.v..."
+msgstr "Bạn có thể tính toán tính riêng tư nhanh bằng cách thêm bản ghi người chết cho cá nhân chết từ ngày khác, nhưng thiếu bản ghi về cái chết, an táng hay hỏa thiêu v.v…"
 
 #: login.php:86
 msgid "You cannot login because your browser does not accept cookies."
@@ -14629,12 +14629,12 @@ msgstr "Bạn cần thiết đặt một tài khoản quản trị. Tài khoản
 
 #: login.php:479
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
-msgstr "Bạn hiện cần phải xem xét chi tiết tài khoản, và đặt tình trạng \"chấp thuận\" sang \"được\"."
+msgstr "Bạn hiện cần phải xem xét chi tiết tài khoản, và đặt tình trạng “chấp thuận” sang “được”."
 
 #. I18N: Help text for the “Login URL” site configuration setting
 #: help_text.php:616
 msgid "You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "Bạn chỉ cần nhập một URL Đăng nhập nếu bạn muốn chuyển hướng đến một trang web khác hoặc địa điểm khi đăng nhập người dùng của bạn. Điều này là rất hữu ích nếu bạn cần phải chuyển từ http sang https khi người dùng đăng nhập. Bao gồm URL đầy đủ đến trang <i> login.php </ i>. Ví dụ, https: / / www.yourserver.com / webtrees / login.php."
+msgstr "Bạn chỉ cần nhập một URL Đăng nhập nếu bạn muốn chuyển hướng đến một trang web khác hoặc địa điểm khi đăng nhập người dùng của bạn. Điều này là rất hữu ích nếu bạn cần phải chuyển từ http sang https khi người dùng đăng nhập. Bao gồm URL đầy đủ đến trang <i>login.php</i>. Ví dụ, https://www.yourserver.com/webtrees/login.php ."
 
 #: includes/authentication.php:251
 msgid "You sent the following message to a webtrees administrator:"
@@ -18579,7 +18579,7 @@ msgstr "“%s” đã được thêm vào mục ưa thích của bạn."
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
@@ -18590,3 +18590,1638 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
+
+#~ msgid " but the details are unknown"
+#~ msgstr " nhưng chi tiết không được biết"
+
+#~ msgid " in "
+#~ msgstr " tại "
+
+#~ msgid "%1$s’s %2$s"
+#~ msgstr "%1$s’s %2$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%g:%i:%s %a"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%j %F %Y"
+
+#~ msgid "%s day"
+#~ msgid_plural "%s days"
+#~ msgstr[0] "%s ngày"
+
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "%s ngày qua"
+
+#~ msgid "%s hour ago"
+#~ msgid_plural "%s hours ago"
+#~ msgstr[0] "%s giờ qua"
+
+#~ msgid "%s minute ago"
+#~ msgid_plural "%s minutes ago"
+#~ msgstr[0] "%s phút qua"
+
+#~ msgid "%s month"
+#~ msgid_plural "%s months"
+#~ msgstr[0] "%s tháng"
+
+#~ msgid "%s month ago"
+#~ msgid_plural "%s months ago"
+#~ msgstr[0] "%s tháng qua"
+
+#~ msgid "%s second ago"
+#~ msgid_plural "%s seconds ago"
+#~ msgstr[0] "%s giây qua"
+
+#~ msgid "%s three times removed ascending"
+#~ msgstr "%s cách ba đời trên"
+
+#~ msgid "%s three times removed descending"
+#~ msgstr "%s cách 3 đời xuống"
+
+#~ msgid "%s week"
+#~ msgid_plural "%s weeks"
+#~ msgstr[0] "%s tuần"
+
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "%s năm"
+
+#~ msgid "%s year ago"
+#~ msgid_plural "%s years ago"
+#~ msgstr[0] "%s năm qua"
+
+#~ msgid "%s%%"
+#~ msgstr "%s%%"
+
+#~ msgid "(aged %s)"
+#~ msgstr "(tuổi %s)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(tuổi nhỏ hơn %s)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "(tuổi nhiều hơn %s)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(lọc từ tổng %s mục nhập)"
+
+#~ msgid "(in childhood)"
+#~ msgstr "lúc thiếu niên"
+
+#~ msgid "(in infancy)"
+#~ msgstr "lúc ấu thời"
+
+#~ msgid "(stillborn)"
+#~ msgstr "(chết non)"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
+#~ msgstr "<b>GUID</b> trong bối cảnh này là một từ viết tắt cho \"ID duy nhất toàn cục\"<br><br>GUID dùng nhằm mục đích giúp nhận ra từng cá nhân bằng lập lại nhiều lần, để tổ chức trung tâm như Trung tâm Lịch sử Gia đình của Giáo Hội LDS ở Salt Lake City, hoặc ngay các chương trình tương thích chạy trên máy chủ của riêng bạn, có thể xác định liệu chúng có đang làm việc với cùng một người cho dù file GEDCOM đó từ đâu ra. Mục tiêu của Trung tâm Lịch sử gia đình là để có một kho trung tâm các dữ liệu phả hệ và trình bày nó qua các dịch vụ web. Điều này sẽ cho phép bất kỳ chương trình nào tiếp cận với số lliệu và cập nhật số liệu ngay trong nó.<br><br>Nếu bạn không có ý định chia sẻ GEDCOM với bất cứ ai khác, bạn không cần để cho <b>webtrees</b> tạo ra GUID này, tuy nhiên làm như thế không có hại gì ngoài chuyện làm tăng thêm kích cỡ của file GEDCOM."
+
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+#~ msgstr "<b>Không</b> có nghĩa là người dùng đã xác minh có thể thấy chi tiêt mọi người còn sống. <b>Yes</b> có nghĩa là người dùng có thể thấy thông tin riêng của người sống mà họ có quan hệ.<br><br>Đây là tùy chọn được đặt mặc định cho mọi người dùng có quyền truy cập CSDL này. Quản trị có thể bỏ qua tùy chọn này cho người dùng bằng cách chỉnh chi tiết tài khoản người dùng."
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b>Xin lưu ý</b>Thông tin riêng về các cá nhân đang còn sống chỉ cung cấp cho bà con trong gia đình và bạn bè thân thích. Bạn sẽ được hỏi nhằm xác minh quan hệ trước khi nhận được thông tin riêng. Đôi khi thông tin người đã mất cũng là thông tin riêng. Nếu thế là do không có đầy đủ thông tin được biết về người đó để xác định là họ còn sống hay không và có thể chúng tôi không có đủ thông tin về người này.<br><br>Trước khi hỏi một câu hỏi, vui lòng xác minh là bạn đang yêu cầu đúng cá nhân nào đó bằng cách kiểm tra ngày tháng, nơi chốn và bà con gần. Nếu bạn đề xuất lên các thay đổi là dữ liệu về gia phả, xin kèm cả nguồn tài liệu bạn có được về số liệu đó."
+
+#~ msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
+#~ msgstr "<b>webtrees</b> cho phép bạn sao chép lên đến 10 sự kiện, với tất cả các chi tiết của nó vào clipboard. Clipboard này khác với các giỏ chứa đoạn ghi nhớ bạn dùng để xuất các phần của cơ sở dữ liệu của bạn.<br><br>Bạn có thể chọn bất kỳ sự kiện nào từ clipboard và sao chép sự kiện đó đến các cá nhân, gia đình, file hình/phim, nguồn, hoặc bản ghi kho lưu trữ đang được chỉnh sửa. Tuy nhiên, bạn không thể sao chép các sự kiện của các loại bản ghi khác nhau. Ví dụ, bạn không thể sao chép một sự kiện hôn nhân đến một nguồn hoặc đến bản cá nhân vì sự kiện hôn nhân chỉ liên kết đến bản ghi gia đình.<br><br>Điều này rất hữu ích khi nhập các sự kiện tương tự, chẳng hạn như sự kiện điều tra dân số, cho nhiều cá nhân hoặc gia đình."
+
+#~ msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "<b>webtrees</b> cần gửi email, như lời nhắc về mật khẩu, thông báo của site. Để làm được, nó dùng phương tiệng có ở trình php của máy chủ (không phải luôn luôn có), hay một phần mềm dịch vụ SMTP (chuyển tiếp mail), và bạn cần cung cấp các chi tiết kết nối."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><b>Kính chào vào cái website Gia Phả này</b></center><br>Chỉ có những thành viên cầm tên truy nhập cùng với mật khẩu mới được vào."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><b>Kính chào vào cái website Gia Phả này</b></center><br>Chỉ có hội viên <u>đã thừa nhận</u> mới được vào đây.<br><br>Nếu bạn có tài khoản, xin truy nhập. Nếu bạn không có tài khoản, bạn có thể xin mở một cái bằng cái mối thu nhập thích hợp bên dưới.<br><br>Sau khi kiểm tra sự xin đăng ký của bạn, quản lý sẽ kích hoạt tài khoản của bạn. Bạn sẽ nhận một bức thư điện tử cho biết sự xin đăng ký của bạn đã được chấp thuận."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><b>Kính chào vào cái website Gia Phả này</b></center><br>Chỉ có <u>gia quyến</u> mới được vào đây.<br><br>Nếu bạn không có tài khoản, bạn có thể xin mở một cái bằng cái mối thu nhập thích hợp bên dưới.<br><br>Sau khi kiểm tra sự xin đăng ký của bạn, quản lý sẽ kích hoạt tài khoản của bạn. Bạn sẽ nhận một bức thư điện tử cho biết sự xin đăng ký của bạn đã được chấp thuận."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><b>Chào bạn đã viếng site gia phả này</b></center><br>Chỉ những thành viên có tài khoản mới được vào.<br><br>Nếu bạn không có tài khoản, bạn có thể xin mở bằng cách chọn liên kết thích hợp bên dưới.<br><br>Sau khi kiểm tra đăng ký của bạn, quản trị sẽ kích hoạt tài khoản của bạn. Bạn sẽ nhận một bức thư điện tử cho biết sự xin đăng ký của bạn đã được chấp thuận."
+
+#~ msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
+#~ msgstr "<div class=\"largeError\">Lưu ý:</div><div class=\"error\">Qua việc điền đủ và gửi mẫu này, bạn đồng ý: :<ul><li>to bảo vệ tính riêng tư của người sống nêu trong site;</li><li>và trong hộp văn bản bên dưới, giải thích bạn quan hệ với ai, hay cung cấp cho chúng tôi thông tin về người nào cần nêu ra ở site chúng tôi..</li></ul></div>"
+
+#~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
+#~ msgstr "Máy chủ CSDL có thể lưu trữ nhiề CSDL riêng biệt. Bạn cần chọn một CSDL đang có (tạo ra bởi người quản trị của máy chủ), hay tạo ra một CSDL mới (nếu tài khoản người dùng CSDL có đủ quyền này)."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Một báo cáo về sự kiện hỗ trợ bởi một nguồn."
+
+#~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
+#~ msgstr "Môt người dùng không thể nào đăng nhập cho tới khi tùy chọn xác minh bằng email và chấp thuận của quản trị được chọn."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "khổ A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "khổ A4"
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ"
+
+#~ msgid "Access"
+#~ msgstr "Truy cập"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Thêm chồng bằng cách sử dụng người đang có"
+
+#~ msgid "Add a new associate allows you to link a fact with an associated individual in the site.  This is one way in which you might record that someone was the godfather of another individual."
+#~ msgstr "Thêm một cộng sự hco phép bạn liên kết một sự kiện với một cộng sự ở site này. Đây là 1 cách mà bạn có thể ghi người nào đó là cha đỡ đầu của một người khác."
+
+#~ msgid "Add a new name"
+#~ msgstr "Thêm Tên mới"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Thêm vợ bằng người đã có"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Thêm một người nữa vào biểu đồ"
+
+#~ msgid "Add individuals"
+#~ msgstr "Thêm người"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Chỉ thêm người này."
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Thêm bản ghi của vợ chồng này cùng với bản ghi cha mẹ và tất cả những người nối dõi của hai bên."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Thêm bản ghi của vợ chồng này cùng với bản ghi cha mẹ và con cái của hai bên."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Thêm bản ghi của vợ chồng này cùng với bản ghi cha mẹ của hai bên."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Thêm người này và tổ tiên trực hệ của người này."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Thêm người này, tổ tiên trực hệ cùng với gia đình tổ tiên."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Thêm người này, cha mẹ, và anh/chị/em."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Thêm người này, chồng/vợ, và tất cả những người nối dõi."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Thêm người này, chồng/vợ, và các con."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Thêm nguồn và các gia đình/ người này liên kết với nó."
+
+#~ msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+#~ msgstr "Quản trị viên đôi khi cần để dọn dẹp và sửa các dữ liệu được gửi bởi người sử dụng. Ví dụ, họ có thể cần phải sửa lại vị trí PLAC để đưa vào quốc gia. Khi quản trị viên sửa chữa như vậy, thông tin về việc thay đổi ban đầu thường được thay thế. Điều này có thể không được mong muốn<br><br>Khi tùy chọn này được lựa chọn, <b>webtrees</b> sẽ giữ lại các thông tin thay đổi ban đầu thay vì thay thế nó với các phiên bản mới. Với tùy chọn này được lựa chọn, quản trị cũng có khả năng sửa đổi hoặc xóa các thông tin liên kết với các tag CHAN gốc."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "Sau khi bạn đăng nhập, chọn liên kết \"Tài khoản của tôi\" bên dưới menu \"Trang của tôi\" và điền vào trường mật khẩu để thay đổi mật khẩu."
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "Tuổi được cho là một người đã chết"
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "Tuổi cha mẹ kế bên ngày sinh con"
+
+#~ msgid "All individuals"
+#~ msgstr "Mọi Người"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "Cho phép chuyển file GEDCOM"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "Cho phép thư tín lưu trữ trực tuyến"
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "Một cây gia phả tương tác hiển thị tất cả tổ tiên và con cháu của một người."
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "Có lỗi về CSDL bât ngờ xảy ra."
+
+#~ msgid "Ancestors of "
+#~ msgstr "Tổ tiên của "
+
+#~ msgid "Ancestral file number"
+#~ msgstr "File tổ tiên số"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Bạn có chắc muốn khôi phục mọi thay đổi cho file GEDCOM này không?"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Phông chữ arial"
+
+#~ msgid "Available blocks"
+#~ msgstr "Khối Sẵn Có"
+
+#~ msgid "Begin year"
+#~ msgstr "Năm bắt đầu"
+
+#~ msgid "Best man"
+#~ msgstr "Rể phụ"
+
+#~ msgid "Binary data object"
+#~ msgstr "Đối tượng nhị phân"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "Nơi sinh chứa"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "Chi tiết sinh và mất trên biểu đồ"
+
+#~ msgid "Birth date range end"
+#~ msgstr "Sinh khoảng thời gian kết thúc"
+
+#~ msgid "Birth date range start"
+#~ msgstr "Sinh khoảng thời gian từ"
+
+#~ msgid "Brother"
+#~ msgstr "Anh (Em) Trai"
+
+#~ msgid "Burial place contains"
+#~ msgstr "Nơi chôn chứa"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "Mặc định, danh sách này chỉ hiển thị các nơi tìm thấy trong cây gia đình của bạn. Bạn co 1thể có chi tiết cho các nơi khác, nhưng các nơi nhập vào từ một file bên ngoài. Chọn tùy chọn này để hiện ra tất cả các nơi đó, gồm cả nơi hiện không được dùng đến."
+
+#~ msgid "Change family members"
+#~ msgstr "Thay đổi thành viên gia đình"
+
+#~ msgid "Child of "
+#~ msgstr "Con trai của "
+
+#~ msgid "Children of "
+#~ msgstr "Là các con của "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Chọn bà con"
+
+#~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
+#~ msgstr "Chọn hình nhỏ cần tải lên. Mặc dù hình nhỏ này có thể được tạo ra tự động, nhưng có khi bạn lại muốn tự mình tạo ra, đặc biệc cho loại file nghe nhìn khác. Thí dụ, bạn có thể tạo ra ảnh bất động cho phim, hay hình người đã làm ra phim đó."
+
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgstr "Chọn để hiển thị phần đầu tiêu chuẩn của trang chào mừng tùy biến của bạn. Khi người dùng của bạn đổi ngôn ngữ,  thì đầu này sẽ hiện ở ngôn ngữ mới.<br><br>Nếu đặt là <b>Có</b>, thì phần đầu sẽ như thế này: <div class=\"list_value_wrap\"><center><b>Chào Mừng bạn đến website gia phản này.</b></center><br>Truy cập vào đây chỉ cho người dùng có tài khoản và mật khẩu dùng cho site này.<br></div>"
+
+#~ msgid "Civil registrar"
+#~ msgstr "Người giữ sổ cưới dân sự"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Nhân viên đăng ký dân sự"
+
+#~ msgctxt "MALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Nhân viên đăng ký dân sự"
+
+#~ msgid "Clear chart"
+#~ msgstr "Xóa biểu đồ"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "Nhấp vào %s để chọn người Trưởng gia đình."
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Nhấp vào tên để thêm người đó và Danh sách thêm liên kết."
+
+#~ msgid "Click this link to remove the individual from the timeline."
+#~ msgstr "Nhấp vào liên kết này để loại bỏ người ra khỏi lằn thời gian."
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Bạn phải chọn người là trưởng gia đình."
+
+#~ msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
+#~ msgstr "Nhấp biểu tượng \"+\" sẽ mở cửa sổ Trợ giúp Ghi chú chia xẻ GEDFact.<br>Hỗ trợ đặc biệt sẽ có thể thấy tại đây.<br><br>Khi bạn nhấp vào nút  \"Lưu\", ID của ghi chú chia xẻ sẽ được dán vào đây."
+
+#~ msgid "Coat of arms"
+#~ msgstr "Quân phục"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Kết hôn theo luật chung"
+
+#~ msgid "Contact information"
+#~ msgstr "Thông tin liên hệ"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Sửa bản ghi TÊN theo mẫu 'John/DOE/' hoặc 'John /DOE'. như dùng bởi thứ tự của chương trình gia phả."
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "Cote d'Ivoire"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Tạo ghi chú chung"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Tạo ghi chú mới bằng cách dùng Hỗ trợ"
+
+#~ msgid "Create repository"
+#~ msgstr "Tạo kho dữ liệu"
+
+#~ msgid "Create user"
+#~ msgstr "Tạo Thành Viên"
+
+#~ msgid "Custom event"
+#~ msgstr "Sự việc riêng rẽ"
+
+#~ msgid "Date of LDS baptism"
+#~ msgstr "Ngày rửa tôi LDS"
+
+#~ msgid "Date of LDS child sealing"
+#~ msgstr "Ngày tháng ràng buộc LDS của con"
+
+#~ msgid "Date of LDS endowment"
+#~ msgstr "Ngày tháng LDS"
+
+#~ msgid "Date of LDS spouse sealing"
+#~ msgstr "Ngày tháng ràng buộc bạn đời LDS"
+
+#~ msgid "Date of adoption"
+#~ msgstr "Ngày nhận"
+
+#~ msgid "Date of blessing"
+#~ msgstr "Ngày chúc phúc"
+
+#~ msgid "Date of cremation"
+#~ msgstr "Ngày hỏa táng"
+
+#~ msgid "Date of emigration"
+#~ msgstr "Ngày nhập cư"
+
+#~ msgid "Date of event"
+#~ msgstr "Ngày tháng sự kiện"
+
+#~ msgid "Date of immigration"
+#~ msgstr "Ngày nhập cư"
+
+#~ msgid "Date of naturalization"
+#~ msgstr "Ngày nhập tịch"
+
+#~ msgid "Date of ordination"
+#~ msgstr "Ngày thụ chức"
+
+#~ msgid "Date of residence"
+#~ msgstr "Ngày cư trú"
+
+#~ msgid "Daughter"
+#~ msgstr "Con gái"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Nơi mất chứa"
+
+#~ msgid "Death date range end"
+#~ msgstr "Mất khoảng thời gian kết thúc"
+
+#~ msgid "Death date range start"
+#~ msgstr "Chết ở khoản thời gian băt đầu"
+
+#~ msgid "Default theme"
+#~ msgstr "Kiểu trình bày mặc định"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "Phông chữ DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Con cháu của "
+
+#~ msgid "Descent steps"
+#~ msgstr "Bước giảm dần"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgid "Differences"
+#~ msgstr "Các dị biệt"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Tổ tiên trực tiếp"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Tổ tiên trực tiếp và gia đình họ"
+
+#~ msgid "Display %s"
+#~ msgstr "Hiển thị %s"
+
+#~ msgid "Do not seal, previous sealing cancelled"
+#~ msgstr "Đừng niêm seal, lần niêm trước đã hủy bỏ"
+
+#~ msgid "Do not seal: unauthorized"
+#~ msgstr "Đừng niêm seal: không thẩm quyền"
+
+#~ msgid "Do not send messages"
+#~ msgstr "Không gửi mail"
+
+#~ msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+#~ msgstr "Địa chỉ E-mail dùng ở trường &laquo;Từ:&raquo; mà <b>webtrees</b> tạo ra tự động.<br><br><b>webtrees</b>có thể tự động tạo email để báo cho quản trị viên về các thay đổi cần xem xét. <b>webtrees</b>cũng gửi email thông báo cho người dùng đang yêu cầu mở tài khoản<br><br>Thông thường, trường &laquo;From:&raquo; của các thư này được tự động tạo ra email na ná như <i>Từ: webtrees-noreply@yoursite</i> để hiện là không cần trả lời cho email này. Để bảo vệ chống lại thư rác, vài chương trình mail yêu cầu từng trang trường &laquo;Từ:&raquo; phản ánh địa chỉ email thật và sẽ không chấp nhận thư từ tài khoản <i>webtrees-noreply</i>"
+
+#~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
+#~ msgstr "Mỗi file hình/phim phải được kết hợp với một hoặc nhiều người, gia đình, hoặc bản ghi nguồn trong cơ sở dữ liệu của bạn.<br><br> Để thiết lập liên kết, bạn có thể nhập hoặc tìm kiếm các ID của gia đình, cá nhân hoặc nguồn cùng một lúc khi bạn tạo các tập tin hình/ phim đó. Bạn cũng có thể thiết lập các liên kết sau đó thông qua các tùy chọn chỉnh sửa trên trang Quản lý đa phương tiện, hoặc bằng cách thêm các mục thông qua liên kết Thêm Hình có sẵn trên các trang chi tiết cá nhân, gia đình, hoặc nguồn."
+
+#~ msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+#~ msgstr "Mỗi nguồn ghi sự kiện cụ thể, nhìn chung cho một phạm vi ngày đã cho và cho thầm quyền địa điểm. Ví dụ một bản ghi sự kiện điều tra dân số và bản ghi năm sinh, kết hôn, chết của nhà thờ.<br><br>Chọn những sự kiện được ghi lại theo nguồn này từ danh sách các sự kiện được cung cấp. Các ngày cần được quy định trong một định dạng nhiều như <i>FROM 1900 TO 1910</i>. Thẩm quyền ra là tên của các thẩm quyền thấp nhất mà bao gồm tất cả những nơi cấp dưới có tên trong mã nguồn này. Ví dụ, \"Oneida, Idaho, Hoa Kỳ\" sẽ được sử dụng như là một nơi thẩm quyền mã nguồn cho các sự kiện xảy ra trong các thị trấn khác nhau trong Oneida County. \"Idaho, Hoa Kỳ \" sẽ là nguồn thẩm quyền ra nếu các sự kiện ghi lại diễn ra không chỉ ở Oneida County mà còn ở các quận khác ở Idaho."
+
+#~ msgid "Edit details"
+#~ msgstr "Chỉnh chi tiết"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Sửa bản ghi GEDCOM thô"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Sửa ghi chú chung"
+
+#~ msgid "Email address:"
+#~ msgstr "Địa chỉ email:"
+
+#~ msgid "End year"
+#~ msgstr "Năm kết thúc"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "Chấm dứt khoảni thời gian thay đổi"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Nhập ID gia đình"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Nhập số ID cá nhân"
+
+#~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
+#~ msgstr "Nhập tiêu đề của mục bạn đang sửa. Nếu đây là 1 tiêu đề của file đa phương tiện, nhập mô tả tiêu đề nhằm giúp người dùng nhận biết được nó."
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Nhập một người, gia đình hay nguồn ID"
+
+#~ msgid "Enter associate GEDCOM ID."
+#~ msgstr "Nhập ID GEDCOM liên quan."
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Nhập hoặc tìm ID một người, gia đình hay nguồn mà file nghe nhìn này liên kết đến."
+
+#~ msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Nhập số FAX gồm cả mã nước và mã vùng.<br><br>Để trường này trống nếu bạn không muốn đưa số FAX vào. Thí dụ, một số fax ở Đức có thể là +49 25859 56 76 89 và một số của Mỹ và Candada có thể là +1 888 555-1212."
+
+#~ msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+#~ msgstr "Nhập địa chỉ URL gồm cả http://.<br><br>Thí dụ về URL như sau: <b>http://www.webtrees.net/</b> Để trống trường này nếu bạn không muốn đưa URL vào."
+
+#~ msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
+#~ msgstr "Nhập địa chỉ vào trường như bạn viết vào phong bì.<br><br>Để trường này trống nếu bạn không muốn đưa địa chỉ vào."
+
+#~ msgid "Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address."
+#~ msgstr "Nhập địa chỉ email.<br><br>Một địa chỉ email ví dụ như sau: <b>tên@hotmail.com</b> Để trường này trống nếu bạn không muốn đưa địa chỉ vào."
+
+#~ msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+#~ msgstr "Nhập giá trị giới hạn ở đây /><br>Nếu bạn đã chọn để giới hạn bài Tin tức hiển thị theo thời gian, bất kỳ bài viết nào cũ hơn số ngày nhập ở đây sẽ được giấu. Nếu bạn đã chọn để hạn chế hiển thị Tin tức theo số lượng, chỉ số lượng cụ thể nhập ở đây cho tin gần đây, sắp xếp theo thời gian sẽ được hiển thị. Các bài còn lại sẽ không thấy được.<br><br>Nếu nhập là 0 ở đây sẽ vô hiệu hóa giới hạn, nghĩa là tất cả các Tin tức đều được hiển thị."
+
+#~ msgid "Enter the name of the cemetery or other resting place where individual is buried."
+#~ msgstr "Nhập tên nghĩa địa hay các nơi yên nghỉ khác nơi các cá nhân được chôn."
+
+#~ msgid "Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Nhập số điện thoại gồm cả mã nước và mã vùng.<br><br>Để trống trường này nếu bạn không muốn đưa số điện thoại vào. Thí dụ, một số điện thoại của Đức có thể là +49 25859 56 76 89 và một số của Mỹ hay Canada có thể là +1 888 555-1212."
+
+#~ msgid "Entry text:"
+#~ msgstr "Nội dung nhập khẩu:"
+
+#~ msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+#~ msgstr "Mỗi người trong cơ sở dữ liệu có một số ID duy nhất trên trang web này. Nếu bạn biết số ID cho các bản ghi của riêng bạn, hãy nhập nó ở đây. Nếu bạn không biết số ID của bạn hoặc không thể tìm thấy nó, vì các cài đặt bảo mật, vui lòng cung cấp đầy đủ thông tin trong trường ý kiến để giúp người quản trị trang web xác định bạn là ai trên trang web này để ông có thể thiết lập ID cho bạn."
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "Đặt chế độ riêng tư cho cả người chết"
+
+#~ msgid "External objects"
+#~ msgstr "Đối tượng ngoài"
+
+#~ msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+#~ msgstr "êFAQ là danh sách câu hỏi và trả lời, cho phép bạn giải thích qui luật của site, chính sách, qui trình cho khách thăm của bạn. Câu hỏi điển hình liên quan đến tính riêng tư, bản quyền, tài khoản người dùng, nội dung không phù hợp, yêu cầu nêu nguồn gốc v.v…"
+
+#~ msgid "Facts for family records"
+#~ msgstr "Sự kiện cho bản ghi gia đình"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "Sự kiện cho bản ghi cá nhân"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "Sự kiện cho bản ghi kho"
+
+#~ msgid "Facts for source records"
+#~ msgstr "Sự kiện cho bản ghi nguồn"
+
+#~ msgid "Family group information"
+#~ msgstr "Chi tiết về nhóm gia đình"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Giỏ Lấy Dữ Liệu Dòng Họ"
+
+#~ msgid "Family with husband"
+#~ msgstr "Gia đình và chồng"
+
+#~ msgid "Family with wife"
+#~ msgstr "Gia đình có vợ"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Nơi sinh của cha - (theo mẫu Chapman)"
+
+#~ msgid "Father’s age"
+#~ msgstr "Tuổi cha"
+
+#~ msgid "Font"
+#~ msgstr "Phông"
+
+#~ msgid "For LDS ordinances, this field records the temple where it was performed."
+#~ msgstr "Đối với lễ LDS, trường này ghi lại nhà thờ nơi làm lễ."
+
+#~ msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
+#~ msgstr "Thí dụ như nếu bạn nêu cụ thế một đường dẫn dài 2, thì người đó có thể thấy cháu nội, cô dì (cha mẹ, anh em), con gái nuôi (bạn đời, con họ) nhưng không hiện bà con họ (cha mẹ, anh em, con cái)."
+
+#~ msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "Để hiển thị tối ưu trên internet, <b>webtrees</b> sử dụng bộ ký tự UTF-8. Vài chương trình, như Family Tree Maker chẳng hạn, không hỗ trợ nhập file GEDCOM dùng bộ mã UTF-8.  Đánh dấu kiểm vào hộp này sẽ chuyển đổi file từ <b>UTF-8</b> sang <b>ANSI (ISO-8859-1)</b>.<br><br>Bộ mã bạn cần tùy vào chương trình bạn sử dụng chạy được với file GEDCOM bại tải về. Nếu bạn không biết chắc, tham khảo tài liệu của chương trình đó,<br><br>Lưu ý là để các ký tự đặc biệt vẫn không đổi, bạn cần giữ file ở bộ mã UTF-8 và chuyển chúng theo phương pháp của chương trình xử lý các ký tự đặc biệt này bằng các phương pháp khác. Tham khảo tác giả hay công ty soạn chương trình.<br><br>Bài <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia</b></a> đề cập các thông tin tổng quát và liên kết về UTF-8."
+
+#~ msgid "Foster child"
+#~ msgstr "Con nuôi"
+
+#~ msgid "Foster father"
+#~ msgstr "Cha nuôi"
+
+#~ msgid "Foster mother"
+#~ msgstr "Mẹ nuôi"
+
+#~ msgid "From email address"
+#~ msgstr "Gửi từ địa chỉ email"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "Khối thống kê GEDCOM"
+
+#~ msgid "Gedcom"
+#~ msgstr "GEDCOM"
+
+#~ msgid "Generation "
+#~ msgstr "Thế hệ "
+
+#~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#~ msgstr "Cho người dùng tùy chọn chọn kiểu trình bày trang riêng từ một menu.<br><br>Ngay cả khi việc này được thiết đặt, kiểu trình bày hiện sẽ không có một menu như thế. Để có hiệu lực, tùy chọn này cần phải đặt mục <b>Cho phép người dùng được quyền chọn kiểu riêng</b> được đặt nữa."
+
+#~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+#~ msgstr "Cho khách thăm tùy chọn đăng ký tài khoản tại site.<br><br>Khách sẽ nhận được một email cùng mã để xác minh việc xin cấp tài khoản. Sau khi thẩm tra, quản trị viên có thể chấp thuận đăng ký trước khi tài khoản được kích hoạt."
+
+#~ msgid "He "
+#~ msgstr "Ông "
+
+#~ msgid "He died"
+#~ msgstr "Ông mất"
+
+#~ msgid "He married"
+#~ msgstr "Ông kết hôn"
+
+#~ msgid "He resided at"
+#~ msgstr "Ông sống tại"
+
+#~ msgid "He was born"
+#~ msgstr "Ông sinh năm"
+
+#~ msgid "He was buried"
+#~ msgstr "Ông được chôn cất"
+
+#~ msgid "He was christened"
+#~ msgstr "Ông được rửa tội"
+
+#~ msgid "He was cremated"
+#~ msgstr "Ông được hỏa táng"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Chào %s …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Chào %s …<br>Cám ơn bạn đã đăng ký"
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Xin chào quản trị…"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Phông chữ Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Nghề nghiệp của bà là"
+
+#~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
+#~ msgstr "Tại đây bạn có thể thêm sự kiện vào bản ghi đang sửa.<br><br>Trước tiên chọn một sự kiện từ danh sách sổ xuống, rồi nhấp vào nút <b>Thêm</b>. Mọi sự kiện có thể thêm vào CSDL trong danh sách sổ xuống đó."
+
+#~ msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+#~ msgstr "Tại đây bạn có thể thêm một nguồn <b>trích dẫn</b> cho bản ghi này<br><br>Chỉ cần nhấp vào liên kết, một cửa sổ sẽ mở ra, và bạn có thể chọn nguồn từ danh sách (Tìm ID) hoặc tạo ra một nguồn mới và sau đó thêm trích dẫn.<br><br>Thêm nguồn là một phần quan trọng của phả hệ vì nó cho phép các nhà nghiên cứu khác xác minh nơi mà bạn thu được thông tin của bạn."
+
+#~ msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
+#~ msgstr "Tại đây bạn có thể chọn giữa hai loại trình bày tên địa điểm trong thứ cấp. Nếu thiết đặt là Có, tên địa điểm sẽ ngắn hay mức tên thật. Nếu ghi Không, thì tên đầy đù<br><b> Ví dụ:.<br>Tên đầy đủ:</b> Chicago, Illinois, USA<br><b>Tên viết tắt:</b> Chicago<br><b> Tên đầy đủ:</b> Illinois, USA<br><b> Tên vắn tắt:</b> Illinois"
+
+#~ msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+#~ msgstr "Ở đây bạn có thể chọn văn bản xuất hiện trên màn hình đăng nhập. Bạn phải quyết định văn bản định trước nào thích hợp nhất.<br><br>Bạn cũng có thể chọn văn bản chào mừng riêng. Xin vui lòng tham khảo văn bản trợ giúp liên quan đến  <b> Văn bản chào mừng riêng</b> để biết thêm thông tin<br><br>Các văn bản được xác định trước là:<ul><li><b>Văn bản xác định trước báo rằng mọi người dùng có quyền yêu cầu xin tài khoản người dùng:</b><div class=\"list_value_wrap\"><center><b>Chào mừng bạn đến với trang web gia phả này</b></center><br>Việc truy cập vào trang web này chỉ cho phép người dùng nào có tài khoản người dùng<br><br>Nếu bạn đã có một tài khoản người dùng, bạn có thể đăng nhập. Nếu bạn không có một tài khoản người dùng, bạn có thể xin một tài khoản bằng cách nhấp vào liên kết thích hợp dưới đây.<br><br>Sau khi xác minh việc xin mở tài khoản của bạn, quản trị viên trang web sẽ kích hoạt tài khoản của bạn. Bạn sẽ nhận được một email khi việc xin mở tài khoản của bạn đã được chấp thuận</div><br></li><li><b>Văn bản xác định trước báo rằng quản trị viên sẽ quyết định tùy từng trường hợp xin mở tài khoản người dùng.</b> < div class = \"list_value_wrap\"> <center> <b> Chào mừng bạn đến trang web gia phả này</b></center><br>Việc truy cập vào trang web này chỉ cho phép người dùng <u>được cho phép</u> mà thôi.<br><br>Nếu bạn đã có tài khoản tài khoản người dùng, bạn có thể bạn đăng nhập vào trang này. Nếu bạn không có một tài khoản người dùng, bạn có thể xin mở một tài khoản bằng cách nhấp vào liên kết thích hợp dưới đây<br><br>Sau khi xác minh thông tin của bạn,  người quản trị sẽ chấp thuận hoặc từ chối việc xin mở tài khoản người dùng của bạn. Bạn sẽ nhận được một tin nhắn email khi việc xin được chấp thuận</div><br></li><li></b>Văn bản xác định trước nói rằng chỉ thành viên gia đình có thể yêu cầu một tài khoản người dùng:</b> <div class = \"list_value_wrap\"> <center> <b> Chào mừng bạn đến trang web gia phả này</b></br><br><center>. Việc truy cập vào trang web này chỉ được phép <u> cho thành viên gia đình</u>.<br><br>Nếu bạn đã một tài khoản người dùng, bạn có thể đăng nhập vào site. Nếu bạn không có một tài khoản người dùng, bạn có thể xin một bằng cách nhấp vào liên kết thích hợp dưới đây.<br><br>Sau khi xác minh thông tin bạn cung cấp,  nhà quản trị site sẽ chấp thuận hoặc từ chối yêu cầu của bạn. Bạn sẽ nhận được một email khi yêu cầu được chấp thuận.</div></li></ul>"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "Che &amp; hiện"
+
+#~ msgid "His occupation was"
+#~ msgstr "Nghề của ông là"
+
+#~ msgid "Hit count:"
+#~ msgstr "Tổng số viếng thăm:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Tuổi chồng"
+
+#~ msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+#~ msgstr "Nếu một người được gọi bằng tên tục không phải là 1 phần của tên chính thức, thì phải để trong dấu ngoặc. Thí dụ, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Nếu tường lửu file hình được mở, thì hình cỡ lớn với sẽ lưu trữ ở máy chủ ngoài hình gốc cùng cỡ mà không có hình chìm không? <br><br> Khi đặt ở <b>Có</b> thì hình có nền chìm đủ kích cỡ sẽ được tạo ra nhanh hơn nhưng sẽ chiếm nhiều dung lượng đĩa ở máy chủ."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Nếu tường lửu file hình được mở, thì hình nhỏ có hình chìm có được lưu trữ trên máy chủ ngoài cùng bức hình nhỏ đó không có hình chìm không?<br><br> Khi đặt ở <b>Có</b> danh sách hình chứa hình chìm được tạo ra nhanh hơn nhưng chiếm dung lượng đĩa máy chủ nhiều hơn."
+
+#~ msgid "If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don't watermark the thumbnails."
+#~ msgstr "Nếu tường lửa file hình được kích hoạt, thì hình nhỏ có in dấu chìm không? Danh sách hình sẽ tải nhanh hơn nếu bạn không đóng dầu mờ vào hình nhỏ."
+
+#~ msgid "If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here."
+#~ msgstr "Nếu tường lửa fiel hình được bật, người dùng sẽ thấy một hình chìm nếu họ không có đủ quyền ở đây."
+
+#~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+#~ msgstr "Nếu tùy chọn <b>Cho phép khách truy cập yêu cầu đăng ký tài khoản</b> được kích hoạt thiết lập này điều khiển việc quản trị viên phải chấp thuận đăng ký.<br><br>Đặt nó ở <b>Có</b> sẽ yêu cầu tất cả người dùng mới trước tiên tiên xác minh bản thân họ bởi quản trị trước khi họ có thể đăng nhập. Với thiết đặt này đặt ở <b>Không</b> hộp  kiểm <b>Người dùng đã được châp thuận bởi quản trị</b> sẽ được tự động đánh dấu kiểm khi người dùng xác mình tài khoản của họ, và cho phép đăng nhập ngay sau đó không cần can thiệp của quản trị."
+
+#~ msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+#~ msgstr "Nếu người này có bất kỳ sự kiện khác với cái chết, mai táng, hoặc hỏa táng gần đây hơn số năm tại đây, người này được xem là  \"sống\". Ngày tháng năm sinh của trẻ em được coi là sự kiện như thế cho mục đích này."
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Nếu bạn không yêu cầu mở tài khoản, bạn chỉ cần xóa bỏ thư này."
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "Nếu bạn không biết cái thiết đặt này, để nguyên giá trị mặc định. Có thể nó hoạt động được. Dù sao sau này bạn còn có thể thay đổi nó."
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "Nếu bạn không muốn gửi mail, chẳng hạn khi vận hành trình webtrees chỉ cho một người dùng ở một máy độc lập, bạn có thể không kích hoạt tính năng này."
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "Nếu bạn có rất nhiều nơi không dùng đến, thì việc tạo danh sách có thể mất thời gian."
+
+#~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
+#~ msgstr "Nếu bạn có một chú thích bổ sung vào bản ghi này, đây là nơi để làm như vậy<br><br>Chỉ cần nhấp vào liên kết, một cửa sổ sẽ mở ra, và bạn có thể đánh vào ghi chú của bạn. Khi bạn đã kết thúc đánh máy, chỉ cần nhấp vào nút bên dưới hộp, đóng cửa sổ, và thế là xong."
+
+#~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
+#~ msgstr "Nếu bạn dùng nhiều file GEDCOM, đặt giá trị này thàng <b>Có</b> cho phép khách thăm website của bạn <u>và </u> người dùng có tùy chọn thay đổi GEDCOMS. Đặt nó ở <b>Không</b> sẽ vô hiệu việc chuyển đổi GEDCOM cho khách thăm <u>và </u>người dùng đăng nhập."
+
+#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
+#~ msgstr "Nếu chính sách an ninh máy phục vụ cho phép, bạn có thể yêu cầu tăng bộ nhớ hay đồng hồ CPU lên bằng cách dùng trang quản trị <b>webtrees</b>. Nếu không bạn phải liên hệ nhờ quản trị máy phục vụ."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
+#~ msgstr "Trong nhiều nền văn hóa thường có thói quen đặt tên theo cách viết truyền thống và đồng thời có dạng viết tên kiểu la tinh hóa theo cách đánh vần hoặc phát âm dựa vào mẫu tự La tinh, như tiếng Anh.<br><br>Nếu bạn thích sử dụng một bảng chữ cái phi Latin như tiếng Do Thái, Hy Lạp, Nga, Trung Quốc, hoặc tiếng Ả Rập để nhập tên trong các các trường tên tiêu chuẩn, thì bạn có thể sử dụng trường này để nhập vào cùng tên đó bằng cách sử dụng bảng chữ cái Latin. Cả hai phiên bản của tên sẽ xuất hiện trong danh sách và biểu đồ.<br><br>Mặc dù trường này này được gọi là \"La tinh hóa\", nó không phải chỉ giới hạn cho các ký tự chữ cái Latin. Điều này có thể được sử dụng cho tên tiếng Nhật, là tiếng có thể dùng đến ba hệ thống chữ cái."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
+#~ msgstr "Trong nhiều nền văn hóa thường có thói quen đặt tên theo cách viết truyền thống và đồng thời có dạng viết tên kiểu la tinh hóa theo cách đánh vần hoặc phát âm dựa vào mẫu tự La tinh, như tiếng Anh.<br><br>Nếu bạn thích sử dụng chữ cái Latin để nhập tên trong các các trường tên tiêu chuẩn, thì bạn có thể sử dụng trường này để nhập vào cùng tên đó bằng cách sử dụng bảng chữ cái phi Latin như Hi lạp, Do Thái, Nga, Ả Rật, Trung quốc. Cả hai phiên bản của tên sẽ xuất hiện trong danh sách và biểu đồ.<br><br>Mặc dù trường này này được gọi là \"Do Thái\", nó không phải chỉ giới hạn cho các ký tự chữ cái Do Thái."
+
+#~ msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
+#~ msgstr "Ở một số nước, luật riêng tư áp dụng không chỉ cho những người sống, mà còn cho những người đã qua đời gần đây. Tuỳ chọn này sẽ cho phép bạn mở rộng các quy tắc bảo mật người còn sống đối với những người được sinh hay chết trong một số năm. Bỏ trống giá trị trường này để vô hiệu hóa tính năng này."
+
+#~ msgid "In this month…"
+#~ msgstr "Vào tháng này…"
+
+#~ msgid "In this year…"
+#~ msgstr "Vào năm này…"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Bao gồm gia đình trực tiếp của người này?"
+
+#~ msgid "Individual 1"
+#~ msgstr "Người 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Người 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Người sống lâu nhất"
+
+#~ msgid "LDS temple"
+#~ msgstr "Đền LDS"
+
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Khổ giấy legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Khổ giấy thư tín (letter)"
+
+#~ msgid "Link ID"
+#~ msgstr "ID liên kết"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Kèm người này vào một gia đình hiện tại như là con"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Liên kết người này vào một gia đình đang có như là chồng"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Liên kết người này vào một gia đình hiện tại như là vợ"
+
+#~ msgid "Living individuals"
+#~ msgstr "Người Sống"
+
+#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
+#~ msgstr "Tải cây gia đình của bạn từ đĩa, bằng cách dùng chức năng \"nhập\" từng lần một."
+
+#~ msgid "Loading…"
+#~ msgstr "Đang tải…"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Địa điểm không xóa: địa điểm này chứa các địa điểm con"
+
+#~ msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero."
+#~ msgstr "Danh sách dài các cá nhân với cùng họ có thể tách ra thành danh sách phụ nhỏ hơn theo chữ cái đầu tiên của họ của từng người.<br><br>Tùy chọn này ấn định khi nào danh sách phụ họ sẽ dùng. Để vô hiệu hóa danh sách phụ hoàn toàn, đặt tùy chọn này là 0."
+
+#~ msgid "Main section blocks"
+#~ msgstr "Phần Khối Chính"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Ngày kết hôn kết thúc"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Ngày kết hôn bắt đầu từ"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Địa điểm kết hôn chứa"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Ý định kết hôn"
+
+#~ msgid "Married name"
+#~ msgstr "Tên sau khi lập gia-đình"
+
+#~ msgid "Married surname"
+#~ msgstr "Họ kết hôn"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Hoà từ số ID:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Hoà tới số ID:"
+
+#~ msgid "Min. no. of occurrences to be a “common surname”"
+#~ msgstr "Số lần tối thiểu để xem là \"họ phổ biến\""
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Đoạn 'Trang được nhìn nhiều nhất'"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Nơi sinh của mẹ- (theo mẫu Chapman)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Tuổi mẹ"
+
+#~ msgid "Move left"
+#~ msgstr "Chuyển trái"
+
+#~ msgid "Move right"
+#~ msgstr "Chuyển phải"
+
+#~ msgid "Name List"
+#~ msgstr "Danh sách tên"
+
+#~ msgid "No events for living individuals exist for the next %s day."
+#~ msgid_plural "No events for living people exist for the next %s days."
+#~ msgstr[0] "Không có sự kiện nào cho người còn sống trong %s ngày tới."
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Không có chuyện về người sống cho ngày hôm nay."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Không có sự kiện nào cho người sống ngày mai."
+
+#~ msgid "No records to display"
+#~ msgstr "Không có bản ghi nào để hiển thị"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Không có Nhận Diện nào như vậy trong cái file GEDCOM này"
+
+#~ msgid "No temple - living ordinance"
+#~ msgstr "Không có Đền - Sắc lệnh ở chung"
+
+#~ msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
+#~ msgstr "Thường thường các thay đổi thực hiện cho cây gia đình cần được biên tập viên chấp thuận. Lựa chọn này cho phép người dùng thay đổi không cần phải có chấp thuận của biên tập viên."
+
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
+#~ msgstr[0] "Ghi chú: “sống” được định nghĩa là (nếu không biết họ chết hay chôn ở đâu) đã hết %d năm sau khi sinh, hay ngày sinh phỏng đoán."
+
+#~ msgid "Nuku’Alofa, Tonga"
+#~ msgstr "Nuku'Alofa, Tonga"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "Số tháng từ lần truy cập cuối cho một tài khoản người dùng để bị xem là không còn hoạt động: "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Lớn tuổi nhất còn sống"
+
+#~ msgid "On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality."
+#~ msgstr "Trên biểu đồ này, bạn có thể hiển thị một hay nhiều người trên cùng một trục thời gian nằm ngang. Biểu đồ này cho phép bạn xem cuộc sống của những người khác nhau chồng nhau.<br><br>Bạn có thể thêm người vào biểu đồ cá nhân  hoặc theo nhóm gia đình bằng ID của họ. Danh sách trước đó sẽ được nhớ đến khi bạn thêm nhiều người biểu đồ. Bạn có thể xoá các bảng xếp hạng tại bất kỳ thời gian với  <b>Xóa biểu đồ</b>.<br><br>Bạn cũng có thể thêm người vào biểu đồ bằng cách tìm kiếm họ theo thời gian hay khu vực."
+
+#~ msgid "On this day…"
+#~ msgstr "Vào ngày này…"
+
+#~ msgid "Online editing"
+#~ msgstr "Sửa trực tuyến"
+
+#~ msgid "Orientation"
+#~ msgstr "Phương Hướng"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Thư mục khác… xin nhập vào"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "Tên máy chủ gửi mail đi (SMTP)"
+
+#~ msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "phần mở rộng PHP \"%1$s\" không được kích hoạt. Không có nó các tính năng sau đây không thể vận hành: %2$s. Vui lòng yêu cầu nhà điều hành máy phục vụ kích hoạt nó."
+
+#~ msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
+#~ msgstr "Phần mở rộng PHP \"%s\" đang đặt ở chế độ không kích hoạt. Bạn không thể cài đặt webtrees cho đến khi chúng được kích hoạt. vui lòng yêu cầu nhà quản trị máy dịch vụ kích hoạt nó."
+
+#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "Thiết đặt \"%1$s\" PHP không được kích hoạt. Và khi không kích hoạt các tính năng sau đây không hoạt động: %2$s. Vui lòng yêu cầu quản trị máy phục vụ kích hoạt nó."
+
+#~ msgid "Page"
+#~ msgstr "Trang"
+
+#~ msgid "Page size"
+#~ msgstr "Khổ trang"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Cha mẹ và anh em"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Tuổi cha mẹ"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Đồ Thị Dòng Giống"
+
+#~ msgid "Place of LDS baptism"
+#~ msgstr "Nơi rửa tội LDS"
+
+#~ msgid "Place of LDS child sealing"
+#~ msgstr "Nơi ràng buộc con LDS"
+
+#~ msgid "Place of LDS endowment"
+#~ msgstr "Nơi tặng LDS"
+
+#~ msgid "Place of LDS spouse sealing"
+#~ msgstr "Nơi ràng buộc bạn ời LDS"
+
+#~ msgid "Place of adoption"
+#~ msgstr "Nơi nhận"
+
+#~ msgid "Place of blessing"
+#~ msgstr "Nơi chúc phúc"
+
+#~ msgid "Place of cremation"
+#~ msgstr "Nơi hỏa táng"
+
+#~ msgid "Place of emigration"
+#~ msgstr "Nơi nhập cư"
+
+#~ msgid "Place of event"
+#~ msgstr "Nơi sự kiện"
+
+#~ msgid "Place of immigration"
+#~ msgstr "Nơi nhập cư"
+
+#~ msgid "Place of naturalization"
+#~ msgstr "Nơi nhập tịch"
+
+#~ msgid "Place of ordination"
+#~ msgstr "Nơi thụ chức"
+
+#~ msgid "Place of residence"
+#~ msgstr "Địa điểm cư trú"
+
+#~ msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+#~ msgstr "Địa điểm phải nhập theo tiêu chuẩn về phả hệ. Trong gia phả, địa điểm được ghi bằng những thông tin cụ thể nhất cho địa điểm đầu tiên và sau đó làm việc đến địa điểm ít cụ thể nhất sau cùng, sử dụng dấu phẩy để tách các cấp khác nhau. Mức độ mà bạn ghi lại các thông tin địa điểm phải đại diện cho các cấp chính quyền hoặc nhà thờ nơi các hồ sơ quan trọng cho nơi đó được lưu giữ.<br><br>Ví dụ, một nơi như Salt Lake City sẽ được nhập như \"Salt Lake City, Salt Lake, Utah, Hoa Kỳ\".<br><br>Chúng ta hãy xem các phần của nơi này. Phần đầu tiên, \"Salt Lake City, \" là thành phố, thị trấn nơi các sự kiện xảy ra. Ở một số nước, có thể có các khu phố hoặc các phường trong thành phố là điểm quan trọng cần ghi chú. Trong trường hợp đó, các địa điểm này được ghi trước thành phố. Các phần tiếp theo, \"Salt Lake,\" là quận. \"Utah \" là bang, và \"USA\" là nước. Điều quan trọng cần ghi ra các nơi này vì bản ghi phả hệ được lưu giữ bởi chính quyền ở mỗi cấp.<br><br>Nếu một cấp độ của nơi này là không rõ, bạn nên để lại một khoảng trống giữa các dấu phẩy. Giả sử, trong ví dụ trên, bạn không biết các quận cho Salt Lake City. Sau đó, bạn nên ghi lại nó như thế này: \"Salt Lake City, Utah, Hoa Kỳ\". Giả sử bạn chỉ biết rằng một người được sinh ra tại Utah. Bạn sẽ nhập các thông tin như thế này: \",, Utah, Hoa Kỳ \".<br><br>Bạn có thể sử dụng <b>Tìm Địa điểm</b> để tìm  các nơi đã có trong CSDL."
+
+#~ msgid "Port"
+#~ msgstr "Cổng"
+
+#~ msgid "President’s Office"
+#~ msgstr "President's Office"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "In các sự kiện chính khi khộng có gì?"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Những năm gần đây (< 100 năm)"
+
+#~ msgid "Registry officer"
+#~ msgstr "Người giữ sổ"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "Nhân viên đăng ký"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "Ủy viên hộ tịch"
+
+#~ msgid "Religious institution"
+#~ msgstr "Viện tôn giáo"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Bỏ địa điểm này?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Phần khối bên phải"
+
+#~ msgid "SMTP port"
+#~ msgstr "Cổng SMTP"
+
+#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
+#~ msgstr "Lưu tất cả các cây gia đình vào đĩa bằgn cách sử dụng chức năng \"xuất\" cho từng mục."
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Tìm và / hoặc thay thế số liệu trong file GEDCOM bằng các kết quả khớp sử truy tìm đơn giản hay nâng cao."
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Tìm người để đưa vào danh sách Thêm Liên kết."
+
+#~ msgid "Security"
+#~ msgstr "Bảo mật"
+
+#~ msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
+#~ msgstr "Chọn một tên quan hệ trong danh sách. Chọn <b>Cha đỡ đầu</b> nghĩa là: <i>Điều này liên kết với Cha đỡ đầu của cá nhân này</i>."
+
+#~ msgid "Select events"
+#~ msgstr "Chọn sự kiện"
+
+#~ msgid "Send message"
+#~ msgstr "Gửi Bức điện"
+
+#~ msgid "Sender email address"
+#~ msgstr "Địa chỉ email của người gửi"
+
+#~ msgid "Server"
+#~ msgstr "Máy phục vụ"
+
+#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
+#~ msgstr "Định số thế hệ mặc định để hiển thị ở biểu đồ con cháu và phả hệ."
+
+#~ msgid "Set the maximum number of generations to display on descendancy charts."
+#~ msgstr "Đặt số thế hệ tối đa để hiển thị ở Biểu đồ con cháu."
+
+#~ msgid "Set the maximum number of generations to display on pedigree charts."
+#~ msgstr "Đặt số thế hệ tối đa hiện ra ở biểu đồ Phả hệ."
+
+#~ msgid "Set the privacy access level for all dead individuals."
+#~ msgstr "Đặt mức truy cập riêng tư ở biểu đồ gia phả."
+
+#~ msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
+#~ msgstr "Đặt tùy chọn này ở <b> Có</b> sẽ cho thấy tình trạng mã cho lễ LDS ở hộp biểu đồ.<ul><li><b>B</b>- Báp tít</li><li><b>E</b> Tặng <li><li><b>S</b>- Kết nối với bạn đời</li><li><b>P</b>Kết nối với cha mẹ</li></ul>Một người có mọi lễ LDS thực hiện sẽ có <b>BESP</b> in ở truớc tên của họ. Thiếu lễ sẽ được chỉ bằng <b>_</b> ở từ mã liên quan. Thí dụ, <b>BE__</b> cho thấy thiếu lễ<b>S</b> và <b>P</b>."
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Ghi chú chung chứa:"
+
+#~ msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
+#~ msgstr "Ghi chú chia sẻ là văn bản mẫu tự do, sẽ xuất hiện trong phần chi tiết sự kiện của trang.<br><br>Mỗi ghi chú chia xẻ  có thể được liên kết với nhiều hơn một người, gia đình, nguồn gốc, hoặc sự kiện."
+
+#~ msgid "Shared notes found"
+#~ msgstr "Các ghi chú chia xẻ tìm được"
+
+#~ msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
+#~ msgstr "Các ghi chú chia xẻ, như ghi chú thông thường, là văn bản mẫu tự do. Không giống như các ghi chú thường xuyên, mỗi ghi chú chia sẻ có thể được liên kết với nhiều hơn một người, gia đình, nguồn gốc, hoặc sự kiện.<br><br>Bằng cách nhấn vào biểu tượng thích hợp, bạn có thể thiết lập một liên kết đến một ghi chú chung hiện có hoặc tạo ra một ghi chú chia sẻ mới đồng thời liên kết với nó. Nếu một liên kết đến một ghi chú chung hiện tại đã được thiết lập, bạn cũng có thể chỉnh sửa nội dung ghi chú đó.<br><ul><li><b>Liên kết với một ghi chú chung hiện</b><div style =\"padding-left: 20px; \"> Nếu bạn đã biết số ID của các ghi chú chia sẻ mong muốn, bạn có thể nhập số trực tiếp vào trường này<br><br>Khi bạn nhấp vào biểu tượng <b>Tìm ghi chú chia xẻ</b>, bạn có thể tìm kiếm các văn bản của tất cả các ghi chú chia sẻ hiện có, sau đó chọn một trong số này. Số ID của các ghi chú lựa chọn sẽ được đưa vào trường tự động.<br><br>Bạn phải nhấp vào <b>Thêm</b> để cập nhật nó vào bản ghi gốc.</div><br></li><li><b>Tạo một ghi chú chia sẻ mới</b><div style=\"padding-left:20px;\"> Khi bạn nhấp vào biểu tượng <b> Tạo một ghi chú sẻ mới</b>, một cửa sổ mới sẽ mở ra. Bạn có thể nhập văn bản của ghi chú mới như bạn muốn. Giống như với các ghi chú thường xuyên, bạn có thể nhập URL<br><br>Khi bạn nhấp vào <b>Lưu</b>, Bạn sẽ thấy một thông báo với số ID của các ghi chú chia sẻ mới được tạo ra. Bạn nên click vào thông báo này để đóng cửa sổ chỉnh sửa và sao chép số ID mới trực tiếp vào trường số ID. Nếu bạn chỉ đóng cửa sổ, số ID mới được tạo ra sẽ không được sao chép tự động<br><br>Bạn phải nhấp vào <b> Thêm</b> để cập nhật các bản ghi gốc.</div><br></li><li><b>Chỉnh sửa ghi chú chia sẻ hiện tại <div style=\"padding-left:20px;\">khi bạn nhấp vào biểu tượng <b>Sửa ghi chú chia sẻ</b>, một cửa sổ mới sẽ mở ra. Bạn có thể thay đổi các văn bản của các ghi chú chung hiện tại như bạn muốn. Như với các ghi chú thường xuyên, bạn có thể nhập URL.<br><br>Khi bạn nhấp vào <b>Lưu</b>, các văn bản của các ghi chú chia sẻ sẽ được cập nhật. Bạn có thể đóng cửa sổ và sau đó nhấp vào nút <b>Lưu</b><br><br>Khi bạn thay đổi các văn bản của một lưu ý chia sẻ, thay đổi sẽ được phản ánh ở tất cả các nơi chia sẻ ghi chú có liên kết đến. Liên kết mới mà bạn thiết lập sau khi đã thay đổi cũng sẽ sử dụng các văn bản cập nhật.</div></li></ul>"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgid "She "
+#~ msgstr "Bà "
+
+#~ msgid "She died"
+#~ msgstr "Bà mất"
+
+#~ msgid "She married"
+#~ msgstr "Bà kết hôn"
+
+#~ msgid "She resided at"
+#~ msgstr "Bà sống tại"
+
+#~ msgid "She was born"
+#~ msgstr "Bà sinh năm"
+
+#~ msgid "She was buried"
+#~ msgstr "Bà được chôn"
+
+#~ msgid "She was christened"
+#~ msgstr "Bà được rửa tội"
+
+#~ msgid "She was cremated"
+#~ msgstr "Bà được hỏa táng"
+
+#~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
+#~ msgstr "CSDL GeoNames có được dùng để cung cấp các khuyến nghị cho tên không?<br><br>Khi tùy chọn này đặt là <b>Có</b>, thì CSDL Geonames sẽ được truy vấn để cung cấp các đề nghị tên địa điểm nhập vào. Khi đặt ở <b>Không</b> chỉ CSDL gia phả hiện dùng được tìm. Khi bạn nhập vào nhiều tên địa điểm, thì đề nghị càng cụ thể hơn. Tùy chọn này có thể làm chậm nhập dữ liệu, đặc biệt khi kết nối internet của bạn chậm.<br><br>CSDL GeoNames có thể truy cập miễn phí. Hiện có khoảng 8,000,000 tên địa lý."
+
+#~ msgid "Show acceptable use agreement on “Request new user account” page"
+#~ msgstr "Hiện thỏa thuận sử dụng chấp nhận được tại trang \"Yêu cầu tài khoản người dùng mới\""
+
+#~ msgid "Show age of parents next to child’s birthdate"
+#~ msgstr "Hiện tuổi của cha mẹ cạnh với ngày sinh của đứa bé."
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Xem tấtcCả những Nơi trong một Danh Sách"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Hiện con cháu của tổ tiên?"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "Hiện người đã mất"
+
+#~ msgid "Show details"
+#~ msgstr "Hiển thị chi tiết"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Hiện hình chiếu nổi trong hộp người"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Hiển thị các nơi không nói đến"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Hiện những người sinh hơn 100 năm."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Hiện những người sinh trong 100 năm qua."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Hiện người sống hay cặp vợ chồng khi cả hai còn sống."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Hiện người chết hay cặp vợ chồng khi cả hai chết."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Hiện những người chết hơn 100 năm."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Hiện những người chết trong 100 năm."
+
+#~ msgid "Show notes?"
+#~ msgstr "Hiện các chú thích?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Hiẹn các nghề nghiệp?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Chỉ hiện sự kiện của người sống?"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Chỉ hiện người không rõ giới tính."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Chỉ hiển thị người, sự kiện hay tất cả?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Hiện các thay đổi chờ duyệt"
+
+#~ msgid "Show photos?"
+#~ msgstr "Hiển thị hình?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Hiển thị địa điểm theo thứ cấp"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Hiển thị các người/ gia đình liên quan"
+
+#~ msgid "Show residences?"
+#~ msgstr "Hiện nơi cư trú?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Hiện các nguồn tư liệu?"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Hiện các cặp vợ chồng hay cá nhân \"vô sinh\" . Họ là người còn sống nhưng không có con ghi trong CSDL."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Hiện vợ chồng \"gốc\" hay từng người. Những người này cũng được gọc là \"trưởng tộc\". Họ là người mà ba mẹ đều không được ghi trong CSDL."
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Hiển thị %1$s đến %2$s of %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "Anh (Em) Gái"
+
+#~ msgid "Social security number"
+#~ msgstr "Số ASXH"
+
+#~ msgid "Son"
+#~ msgstr "Con trai"
+
+#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
+#~ msgstr "Trích dẫn nguồn có thể gồm có trường cho bản ghi để ghi chất lượng dữ kiện (chủ yếu, thứ yếu v.v..) và ngày tháng sự kiện được ghi nhận ở nguồn. Nếu bạn không dùng trường này, bạn có thể không kích hoạt nó khi tạo ra trích dẫn nguồn mới."
+
+#~ msgid "Sources to the events"
+#~ msgstr "Nguồn tài liệu của sự kiện"
+
+#~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
+#~ msgstr "Nêu cụ thể là email sẽ gửi qua <b>webtrees</b> có chứa lại trong CSDL không. Nếu đặt là <b>Có</b> người dùng sẽ có thể nhận được email của họ khi họ đăng nhập <b>webtrees</b>. Nếu đặt là <b>Không</b> thì email sẽ không được gửi đi."
+
+#~ msgid "Spouse"
+#~ msgstr "Chồng/vợ"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Các bạn đời và con cái"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Bắt đầu khoản thời gian thay đổi"
+
+#~ msgid "Surname option"
+#~ msgstr "Tủy chọn về họ"
+
+#~ msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+#~ msgstr "Danh sách thả xuống Người yêu thích cho thấy những người yêu thích mà bạn đã chọn trên Trang Của Tôi của bạn. Nó cũng cho thấy người ưa thích mà người quản trị trang web đã lựa chọn cho các GEDCOM hiện đang hoạt động. Nhấp chuột vào một trong những mục yêu thích sẽ đưa bạn trực tiếp đến trang thông tin cá nhân của người đó.<br><br>Những hỗ trợ nhiều hơn thêm vào Người ưa thích có sẵn trong Trang Của Tôi của bạn."
+
+#~ msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+#~ msgstr "Xem hình có thể hiện một liên kết mà khi nhấp sẽ tải file hình/ phim về máy PC của bạn.<br><br>Bạn có thể muốn che liên kết tải về vì lý do bảo mật."
+
+#~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
+#~ msgstr "Trường Kiểu này dùng để nhập thêm thông tin về mục. Trong phần lớn các trường hợp, trường này là mẫu hoàn toàn tự do, bạn có thể nhập vào bất kỳ điều gì."
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "Đã thông báo cho quản trị. Ngay khi quản trị cho phép truy nhập, bạn có thể đăng nhập bằng tên người dùng và mật khẩu của bạn."
+
+#~ msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+#~ msgstr "Xe chứa đoạn chép cho phép bạn rút ra  (\"các đoạn chép\") từ cây gia đình này và kết hợp chúng lại thành một file để tải về cũng như nhập chúng vào chương trình gia phả của bạn. File tải về được ở dạng fiel GEDCOM.<br><ul><li>Làm cách nào chép đoạn cần?<br>Điều này thật đơn giản. Khi nào bạn thấy tên nhấp được (cá nhân, gia đình hay nguồn) bạn có thể chuyển đến mục xem trang chi tiết của tên đó. Tại đây có mục <b>Cho vào xe đoạn chép</b>. Khi bạn nhấp vào liên kết này bạn sẽ có được vài tùy chọn về tải về.</li><li>Làm thế nào tải về?<br>Khi bạn đã có mục chép trong xe, bạn có thể tải về bằng cách nhấp vào liên kết <b>Tải về</b>.  Theo hướng dẫn và liên kết.</li></ul>"
+
+#~ msgid "The individual to be contacted about technical questions or errors encountered on your site."
+#~ msgstr "Người liên hệ để hỏi các vấn đề kỹ thuật hay sai lỗi gặp tại website của bạn."
+
+#~ msgid "The individual to contact about the genealogical data on this site."
+#~ msgstr "Người liên hệ về các số liệu gia phả của site này."
+
+#~ msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+#~ msgstr "Chiều dài của thời gian sau khi sinh có thể đặt ở thẻ tùy chọn cấu hình Tính riêng tư \"Tuổi dùng xem như một người đã chết\"."
+
+#~ msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
+#~ msgstr "File nghe nhìn tải lên có thể là, và cần phải đặt tên khác với tên file trên máy tính cục bộ của bạn. Bạn cần làm thế vì thường thường tên ở máy tính của bạn có ý nghĩa với bạn, nhưng rất ít ý nghĩa với ai viếng site này. Cũng cần xét xem khả năng bạn hay ai đó cố găng tải một file khác gọi là \"batoi.jpg\".<br><br>Trong trường này, bạn gán cho tên mới cho file bạn tải lên. Tên bạn nhập vào tại đây cũng được dùng cho tên file ảnh nhỏ, có thể tải riêng biệt và tạo ra tự động. Bạn không phải nhập đuôi file (jpg, gif, pdf, doc, etc.)<br><br>Để trống trường này để giữ tên gốc của file tải lên từ máy tính của bạn."
+
+#~ msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
+#~ msgstr "Cơ quan, tổ chức, công ty, cá nhân hoặc thực thể khác có quyền \".<br><br>Ví dụ, chủ sử dụng người lao động, hoặc nhà thờ phụ trách lễ hay sự kiện, hay một tổ chức chịu trách nhiệm tạo và /lưu trữ hồ sơ."
+
+#~ msgid "The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>."
+#~ msgstr "Số cổng dùng để kết nối với máy chủ SMTP. Thường thì cổng này số <b>25</b>."
+
+#~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
+#~ msgstr "Tiếp đầu tố là lựa chọn tùy thích, nhưng chúng tôi khuyến cáo nên dùng. Qua việc gán cho mỗi bảng tiếp đầu tố duy nhất, bạn có thể giúp vài ứng dụng chia xẻ cùng một CSDL. \"wt_\" là một từ khuyến cáo bạn nên dùng, nhưng bạn cũng có thể dùng bất kỳ từ nào bạn muốn."
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "regex có vẻ chứa lỗi. Không dùng được."
+
+#~ msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
+#~ msgstr "Kiểu trình bày có thể chọn ở 3 mức: người dùng, GEDCOM và site. Thiết đặt người dùng sẽ ư tiên hơn thiết đặt GEDCOM, và đến nó, nó ưu tiên hơn thiết đặt của site. Chọn, \"kiểu trình bày mặc định\" ở cấp người dùng sẽ cho ta thiết đặt của GEDCOM hiện dùng. Chọn \"kiểu trình bày mặc định\" tại cấp GEDCOM sẽ thiết đặt cho site."
+
+#~ msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
+#~ msgstr "File GEDCOM này (cây gia phả) được cập nhật lần cuối ngày #gedcomUpdate#. Có #totalSurnames# họ trong cây gia phả này. Bản ghi sự kiện xưa nhất là #firstEventType# của#firstEventName# trong #firstEventYear#. Sự kiện gần nhất là #lastEventType# của #lastEventName# trong #lastEventYear#.<br><br>Nếu bạn có ý kiến gì hay phẩn hồi gì xin liên hệ #contactWebmaster#."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "File GEDCOM này tạo nên bằng cách dùng <b>%1$s</b> vào ngày <b>%2$s</b>."
+
+#~ msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+#~ msgstr "Khối này cho phép một biểu đồ gia phả, con cháu, biểu đồ thời gian hiện ở Trang Của Tôi hay Trang chủ. Vì giới hạn không gian, biểu đồ phải đặt phía trái của trang.<br><br>Khi khối này xuất hiện ở Trang chủ, người gốc và kiểu biểu đồ hiển thị được quyết định bởi nhà quản trị. Khi khối này hiện ở trang riêng của người dùng Trang Của Tôi, các tùy chọn quyết định bởi người dùng.<br><br>Đặc tính các biểu đồ này tương tự với đặc tính khi chúng được gọi từ menu. Nhấp vào hộp của một người sẽ thấy thêm nhiều chi tiết về họ."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Đoạn này sẽ trưng bày 10 cái bản ghi được viếng nhiều nhất. Đoạn này cần phải có bộ phận Tổng Số Viếng Thăm trong cấu hình GEDCOM chạy."
+
+#~ msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
+#~ msgstr "Hộp kiểm này kiểm soát việc hiển thị của bạn đối với những người dùng khác khi bạn trực tuyến. Nó cũng kiểm soát khả năng thấy người khác trực tuyến nào đặt cấu hình là họ có thể thấy được.<br><br>Khi hộp này không được đánh dấu kiểm, bạn hoàn toàn không thể thấy được bởi người khác, và bạn cũng không thấy được người khác đang trực tuyến. Nếu hộp được kiểm, thì trái ngược lại. Bạn sẽ hiện ra với mọi người, và bạn sẽ có thể thấy mọi người nào thiết đặt có thể thấy."
+
+#~ msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+#~ msgstr "Trường này cho phép bạn thay đổi bản ghi nguồn là sự kiện mà trích dẫn nguồn sự kiện này liên kết đến. Đây là trường cân ID nguồn. Ngoài ra trường còn được liệt kê  tiêu để của ID nguồn hiện tại. Dùng liên kết  <b>Tìm ID</b> để tìm số ID của nguồn. Để loại bỏ hoàn toàn trích dẫn này, để trường trắng."
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Trường này kiểm soát thứ tự mục FAQ hiện ra.<br><br>Bạn không cần phải nhập vào số thứ tự. Nếu bạn để các lổ trống trong chuỗi số, bạn có thể chèn thêm vào sau này. Thí dụ, nếu bạn dùng số 1, 6, 11, 16, bạn có thể sau này chèn các chuỗi số còn thiếu vào. Số âm và số zero cũng dùng được, và có thể dùng để thêm trước câu đầu.<br><br>Khi có nhiều hơn một mục FAQ cùng số vị trí, chỉ một mục sẽ thấy được."
+
+#~ msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
+#~ msgstr "Hộp nhập này cho phép ạn thay đổi năm của lịch. Đánh một năm vào hộp và ấn <b>Enter</b> để thay đổi lịch cho năm đó.<br><br><b> Tính năng nâng cao</b> cho<b> Xem Năm</b><dl><dt><b>Nhiều hơn một năm</b></dt><dd> Bạn có thể tìm kiếm ngày trong 1 chuỗi năm.<br><br>Chuỗi năm là <u> bao gồm</u> . Điều này có nghĩa là phạm vi ngày kéo dài từ 1 tháng Giêng của năm đầu tiên của dãy đến ngày 31 tháng 12 của năm cuối cùng đề cập. Dưới đây là một vài ví dụ về dãy năm:<br><br><b> 1992-5</b> cho tất cả các sự kiện 1992-1995<br><b> 1972-1989</b> cho tất cả các sự kiện từ 1972-1989<br><b> 1610-759</b> cho tất cả các sự kiện 1610-1759<br><b> 1880-1905</b> cho tất cả các sự kiện 1880-1905<br><b> 880-1105</b> cho tất cả các sự kiện 880-1105.<br><br>Để xem tất cả các sự kiện trong một thập kỷ cho hay thế kỷ, bạn có thể sử dụng <b>?</b> thay cho chữ số cuối cùng. Ví dụ, <b> 197?</b> cho tất cả các sự kiện 1970-1979 hoặc <b> 16??</b> cho tất cả các sự kiện 1600-1699<br><br>Chọn một dãy năm sẽ thay đổi lịch để xem các năm xem.</dd></dl>"
+
+#~ msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+#~ msgstr "Hộp nhập này cho phép bạn thêm số ID cá nhân vào để có thể đưa người đó vào giỏ chứa bản trích. Khi đã thêm vào bạn sẽ có các tùy chọn để liên kết mối quan hệ của người đó với giỏ chứa các đoạn trích.<br><br>Nếu bạn không biết số ID của người đó, bạn có thể tìm theo tên bằng cách nhấp vào nút Cá nhân kế bên nút Thêm."
+
+#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
+#~ msgstr "Dấu phẩy phân cách danh sách thẻ sự kiện GEDCOM để hiện khi thêm một người mới. Thí dụ, nếu BIRT có trong danh sách, trường ngày sinh và nơi sinh sẽ hiện ở mẫu."
+
+#~ msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
+#~ msgstr "Đây là liên kết với bản ghi của bạn ở cây gia đình. Nếu đây là người sai, liên hệ với nhà quản trị."
+
+#~ msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+#~ msgstr "Sự kiện gia đình mà người dùng của bạn có thể thêm vào gia đình. Bạn có thể sửa danh sách bằng cách xóa bớt hay thêm vào tên sự kiện, ngay cả theo ý riêng nếu cần. Tên sự kiện  hiện tại đây không được hiện ở danh sách <i> Sự kiện gia đình không trùng lắp</i>"
+
+#~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
+#~ msgstr "Đây là tên của máy chủ mail SMTP. Ví dụ: <b> smtp.foo.bar.com </b><br><br> Giá trị cấu hình cho một số nhà cung cấp e-mail:.<br><br><br> <b> Gmail </b><br> <b> Tên máy chủ gửi đi  (SMTP): </b><br> <b> smtp.gmail.com<br><b>Cổng SMTP: </b> 465 hoặc 587<br> <b> Kết nối bảo mật: </b> SSL<br><br> <b> Hotmail<br> </b><br> <b> Tên máy gửi đi (SMTP): </b> smtp.live.com<br></b><br><b>Tên máy gửi đi (SMTP): </b><br> <b> smtp.mail.yahoo.com <b>Cổng SMTP: </b> 25"
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "Đây là tên của máy chủ SMTP. 'localhost' có nghĩa là dịch vụ mail chạy trên cùng máy phục vụ web."
+
+#~ msgid "This is used in the \"From:\" header when sending mails."
+#~ msgstr "Phần này dùng cho đầu mail \"Từ: \" khi gửi email."
+
+#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
+#~ msgstr "Phần này dùng với đầu thư \"Người gửi: \" khi gửi mail. Nó thường giống với đầu thư \"Từ: \"."
+
+#~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br><br>Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br><br>When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
+#~ msgstr "Tùy chọn này sẽ làm <b>webtrees </b> hiển thị tất cả các cá nhân được ghi nhận là có mối quan hệ hiệp hội với người hoặc gia đình đã được tìm thấy như là một kết quả trực tiếp của tìm kiếm. Trái lại, nơi mà tất cả mọi người hoặc gia đình được thể hiện khi một người tìm thấy như là một kết quả trực tiếp của việc tìm kiếm có một mối quan hệ liên kết với những người khác hoặc gia đình là không thể<br><br> Thí dụ: Giả sử <b> A </b> là cha mẹ nuôi của <b>B </b>. Mối quan hệ này được ghi lại trong bản ghi GEDCOM của người <b> B </b> qua thẻ ASSO. Không có thẻ tương ứng tồn tại trong các bản ghi GEDCOM của người <b> A </b><br>.<br> Khi tùy chọn này được thiết lập là <b> Có </b> và danh sách kết quả tìm kiếm bao gồm <b> B </b>, <b> A </b> sẽ được tự động bao gồm chỉ bởi vì thẻ ASSO có trong bản ghi GEDCOM của <b> B </b>. Tuy nhiên, nếu kết quả tìm kiếm danh sách bao gồm <b> A </b>, <b> B </b> sẽ không được tự động đưa vào vì không có thẻ ASSO phù hợp trong bản ghi GEDCOM của người<b> A </b>."
+
+#~ msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
+#~ msgstr "Tùy chọn này kiểm soát việc tham chiếu ghi chú và nguồn liên quan đến sự kiện có hiện trên thẻ Ghi chú và Nguồn của trang cá nhân không.<br><br>Thông thường, thẻ ghi chú và nguồn cho thấy các tham chiếu Ghi chú và nguồn liên hệ trực tiếp đền bản ghi cơ sở dữ liệu cá nhân. Đó là <i> cấp 1</i> Tham chiếu ghi chú và nguồn.<br><br>Tưỳ chọn <b>Có</b> làm các thẻ này cũng hiện tham chiếu ghi chú và nguồn là 1 phần của bản ghi trong cơ sở DL cá nhân. Đó là <i> mức 2</i> tham chiếu ghi chú và nguồn vì các số liệu khác nao ở cấp 1."
+
+#~ msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
+#~ msgstr "Tùy chọn này kiểm soát có hay không hiện tuổi của cha mẹ cạnh với ngày sinh của con của họ trên biểu đồ."
+
+#~ msgid "This option controls whether or not to show the Birth and Death details of an individual on charts."
+#~ msgstr "Tùy chọn này kiểm soát xem có hay không hiện năm sinh, mất ở biểu đồ cá nhân."
+
+#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgstr "Tùy chọn này kiểm soát có hay không hiển thị biểu tượng giới tính cho cá nhân ở biểu đồ.<br><br>Vì giới tính cũng được biểu thị bằng màu hộp, nên tùy chọn này không che đi giới tính. Tùy chọn này chỉ đơn giản loại bỏ một số thông tin trùng lắp  trong hộp."
+
+#~ msgid "This option enables online editing features for this database so that users with Edit privileges may update data online."
+#~ msgstr "Tùy chọn này cho phép tính năng chỉnh sửa trực tuyến CSDL để người dùng có quyền Sửa có thể cập nhật dữ liệu trực tuyến."
+
+#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
+#~ msgstr "Tùy chọn này cho thấy biểu đồ phả hệ có tạo ra ở hình ngang hay đứng."
+
+#~ msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+#~ msgstr "Tùy chọn này cũng giống như hệ thống tin nội bộ <b>webtrees</b>, với một bổ sung. Là một tính năng thêm, sẽ có một bản sao của tin nhắn được gửi đến địa chỉ email bạn cấu hình trên trang Tài khoản của bạn.  Đây là phương pháp liên hệ mặc định."
+
+#~ msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
+#~ msgstr "Tùy chọn này sẽ kích hoạt thiết đặt tính riêng tư và che chi tiết người còn sống, cũng nhưng xác định và sửa các thẻ Riêng tư ở trang cấu hình GEDCOM."
+
+#~ msgid "This option will generate thumbnails for all files in the current directory which don't already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br><br>If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links."
+#~ msgstr "Tùy chọn này sẽ tạo ra hình thu nhỏ cho tất cả các tập tin chưa có file nhỏ trong thư mục hiện tại. Điều này là thuận tiện hơn việc nhấp vào liên kết <b> Tạo hình nhỏ </b> cho từng file như thế.<br><br> Nếu bạn muốn giữ việc kiểm soát file nào phải có hình nhỏ tương ứng, bạn không nên sử dụng tùy chọn này. Thay vào đó, nhấp vào liên kết  <b> Tạo hình nhỏ </b> tương ứng."
+
+#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Tùy chọn này cho phép bạn chuyển một mục xuống trong trang FAQ.<br><br>Mỗi khi bạn dùng tùy chọn này, số vị trí bảng FAQ của mục này tăng lên 1. Bạn có thể làm điều này bằng cách sửa mục liên qua và thay đổi trường vị trí FAQ. Khi có nhiều hơn 1 mục FAQ có cùng vị trí, chỉ 1 mục là thấy được."
+
+#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Tùy chọn này sẽ cho phép bạn chuyển một mục lên trong trang FAQ.<br><br>Mỗi lần bạn dùng tùy chọn này, số vị trí FAQ của mục được trừ bớt 1. Bạn cũng thực hiện được việc này tương tự như thế bằng cách chỉnh mục liên quan và thay đổi trường vị trí của FAQ. Khi có nhiều hơn 1 mục FAQ có cùng số vị trí chỉ có một mục là thấy được."
+
+#~ msgid "This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
+#~ msgstr "Tùy chọn này sẽ duy trì liên kết gia đình ở bản ghi riêng. Điều này có nghĩa là bạn muốn xem hộp \"riêng tư\" trống ở biểu đồ phả và trên các biểu đồ của các cá nhân riêng khác."
+
+#~ msgid "This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server’s software, as it relates to PHP and <b>webtrees</b>, can be viewed."
+#~ msgstr "Trang này cung cấp thông tin thêm cho bạn về máy chủ trên đó <b>webtrees</b> được đặt. Nhiều chi tiết cấu hình về phần mềm máy phục vụ, như liên quan của nó với PHP và <b>webtrees</b> có thể xem được."
+
+#~ msgid "This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent."
+#~ msgstr "Trang này sẽ cho phép bạn hợp nhất hai bản ghi GEDCOM từ file cùng một GEDCOM<br><br>. Sử dụng này rất hữu ích cho những người có GEDCOMs hòa chung và bây giờ có nhiều người, gia đình, và các nguồn đó là như nhau.<br><br>Các trang bao gồm ba bước.<br><ol><li>Bạn nhập vào hai GEDCOM ID. Các <u>ID phải</u> là cùng loại. Bạn không thể hợp nhất một cá nhân với gia đình hoặc gia đình và nguồn chẳng hạn.<br><br>Trong trường<b>Hòa vào ID:</b> bạn nhập ID của bản ghi mà bạn muốn được các kỷ lục mới sau khi hợp nhất hoàn tất /> <br Trong Merge <b>Từ ID:.</b> nhập ID của bản ghi có thông tin sẽ được sáp nhập vào bản ghi Hòa vào ID. Hồ sơ này sẽ bị xóa sau khi hợp nhất.</li><li>Bạn chọn những sự kiện mà bạn muốn giữ từ hai hồ sơ khi đang bị sáp nhập. Chỉ cần nhấp vào hộp kiểm bên cạnh những người mà bạn muốn giữ.</li><li>Bạn kiểm tra các kết quả của hợp nhất, giống như với tất cả các thay đổi khác được thực hiện trực tuyến</li></ol>Một người nào đó có quyền chấp nhận sẽ. có cho phép thay đổi của bạn để làm cho họ vĩnh viễn."
+
+#~ msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#~ msgstr "Vai trò này có đủ quyền của thành viên, cộng thêm quyền thêm/ thay đổi và xóa số liệu. Mọi thay đổi cần phải được chấp thuận bởi biên tập, trừ phi người dùng này đã để tùy chọn \"tự động chấp nhận thay đổi\" được kích hoạt."
+
+#~ msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+#~ msgstr "Phần này cho phép bạn thêm một trích dẫn nguồn mới vào sự kiện mà bạn đang chỉnh sửa.<br><br>Trong trường Nguồn bạn nhập ID cho nguồn. Nhấp vào <b>Tạo một nguồn mới</b> nếu bạn cần phải nhập một mã nguồn mới. Trong truờng trích dẫn chi tiết bạn sẽ nhập số trang hoặc các thông tin khác có thể giúp người khác tìm thấy những thông tin trong nguồn. Trong trường văn bản bạn sẽ nhập các mã văn bản từ nguồn."
+
+#~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
+#~ msgstr "Giới hạn bộ nhớ máy phục vụ là %dMB và đồng hồ CPU của nó giới hạn ở %d giây."
+
+#~ msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+#~ msgstr "Đây phải là một dấu phẩy hay dấu cách tách danh sách các sự kiện, ngoài ngày sinh và ngày mất, mà bạn muốn xuất hiện trong hộp biểu đồ như biểu đồ phả hệ. Danh sách này đòi hỏi bạn phải sử dụng các thẻ sự kiện theo định nghĩa trong chuẩn GEDCOM 5.5.1. Ví dụ, nếu bạn muốn nghề nghiệp hiện ở hộp, bạn có thể thêm \"OCCU\" vào trường này."
+
+#~ msgid "This text will be appended to each page title.  It will be shown in the browser’s title bar, bookmarks, etc."
+#~ msgstr "Văn bản này sẽ được thêm vào mỗi tiêu đề trang. Nó sẽ hiện ở thanh tiêu đề trình duyệt, đánh dấu v.v…"
+
+#~ msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+#~ msgstr "Giá trị này quyết định số con cháu người gốc được in ra ở dạng Hourglass."
+
+#~ msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
+#~ msgstr "Để hỗ trợ bạn trong việc bắt đầu với khối này, chúng tôi đã tạo ra một số kiểu trình bày mẫu. Khi bạn chọn một trong những mẫu này, khu vực văn bản sẽ chứa một bản sao mà bạn có thể thay đổi cho phù hợp với yêu cầu của trang web."
+
+#~ msgid "To family"
+#~ msgstr "Với Gia Đình"
+
+#~ msgid "To individual"
+#~ msgstr "Với Người"
+
+#~ msgid "To source"
+#~ msgstr "Với Nguồn"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "Tổng các thay đổi chấp thuận: "
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Tổng các thay đổi chờ xem xét: "
+
+#~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
+#~ msgstr "Transport Layer Security (TLS) và Secure Sockets Layer (SSL) là giao thức mã hóa dữ liệu Internet.<br><br> TLS 1.0, 1.1 và 1.2 là các phát triển tiêu chuẩn của SSL 3.0. TLS 1.0 và SSL 3.1 là tương đương của nó. Các công việc nghiên cứu thêm cho SSL hiện đang được thực hiện với tên mới, TLS.<br><br> Nếu máy chủ SMTP của bạn yêu cầu giao thức SSL khi đăng nhập, bạn nên chọn tùy chọn <b> SSL </b>. Nếu máy chủ SMTP của bạn yêu cầu giao thức TLS khi đăng nhập, bạn nên chọn tùy chọn <b> TLS </b>."
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Không nhận ra biên mã GEDCOM"
+
+#~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
+#~ msgstr "Dùng SMTP để gửi email, từ <b>webtrees</b>.<br><br> Tùy chọn này yêu cầu việc truy cập máy chủ mail SMTP. Khi đặt ở <b>Không</b><b>webtrees</b> sẽ dùng địa chỉ email hệ thống có trong PHP tại server này."
+
+#~ msgid "Use SMTP to send external mails"
+#~ msgstr "Dùng SMTP để gửi mail ra ngoài"
+
+#~ msgid "Use colors"
+#~ msgstr "Dùng màu"
+
+#~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
+#~ msgstr "Thẩm tra tên người dùng và mật khẩu để truy cập vào máy SMTP.<br><br> Vài máy chủ SMTP yêu cầu mọi kết nối phải qua thẩm tra trước khi chấp nhận gửi thư đi."
+
+#~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
+#~ msgstr "Dùng hình bóng khi không có hình được chiếu sáng cho người được nêu ra. Hình dùng phải cụ thể cho giới tính của người liên quan.<br><br><table> <tr> <td wrap valign=\"middle\"> Hình này được dùng khi giới tính của người không rõ:"
+
+#~ msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move right and Move left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
+#~ msgstr "Dùng các nút này để di chuyển một mục từ một danh sách sang danh sách khác.<br><br>Chiếu sáng mục cần di chuyển rồi nhấp nút chuyện để di chuyển hay sao chép mục đó theo hướng mũi tên. Dùng nút <b>&raquo;</b> và <b>&laquo;</b> để di chuyển mục chiếu sáng từ bên trái đến bên phải danh sách hay ngược lại. Dùng nút b>&gt;</b> và <b>&lt;</b> để di chuyển mục chiếu sáng giữa danh sách khối đang có và danh sách bên phải nó hay trái cua nó.<br><br>Mục Các khối đang có không thay đổi, cho dù bạn có thao tác gì với nút chuyên trái, chuyển phải. Đây là vì cùng block đó có thể hiện vài lần trên cùng tra. Khối html là một ví dụ tốt vì sao bạn muốn làm điều này."
+
+#~ msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
+#~ msgstr "Dùng các nút này để sắp xếp lại thứ tự các mục trong danh sách. Khối sẽ in theo thứ tự nó kê.<br><br>Chiếu sáng mục cần di chuyển, rồi nhấp nút chuột lôi mục này vào vị trí mới."
+
+#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
+#~ msgstr "Thay đổi báo cáo"
+
+#~ msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+#~ msgstr "Dùng trường này để cho biết có file hình đang chọn hay mục chính cho người nó liên kết. Hình gốc là hình được dùng trên biểu đồ và trên trang cá nhân."
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Dùng trang này để thay đổi hay xóa bỏ thành viên gia đình.<br><br>Mỗi thành viên gia đình, bạn có thể dùng liên kết Thay đổi để chọn một người khác làm vai trò người đó trong gia đình. Bạn có thể dùng liên kết Xóa bỏ người đó khỏi gia đình.<br><br>Khi bạn chấm dứt thay đổi thành viên gia đình, nhấp vào nút Lưu để lưu các thay đổi."
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "Người dùng không minh xác trong vòng 7 ngày."
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "Tên người dùng không thể chứa các ký tự sau đây: &lt; &gt; \" %% { } ;"
+
+#~ msgid "Users logged in"
+#~ msgstr "Thành viên trực tuyến"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Ngôn ngữ của người dùng"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "Tài khoản người dùng đã không hoạt động quá lâu: "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Coi bản ghi GEDCOM"
+
+#~ msgid "View day"
+#~ msgstr "Coi Ngày"
+
+#~ msgid "View details"
+#~ msgstr "Xem chi tiết"
+
+#~ msgid "View family"
+#~ msgstr "Xem gia đình này"
+
+#~ msgid "View month"
+#~ msgstr "Coi Tháng"
+
+#~ msgid "View notes"
+#~ msgstr "Xem ghi chú"
+
+#~ msgid "View person"
+#~ msgstr "Xem cá nhân này"
+
+#~ msgid "View source"
+#~ msgstr "Xem nguồn"
+
+#~ msgid "View year"
+#~ msgstr "Coi Năm"
+
+#~ msgid "Visitor options"
+#~ msgstr "Tùy chọn khách thăm site"
+
+#~ msgid "Visitors"
+#~ msgstr "Khách thăm"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=0"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Chúng tôi sẽ gửi cho bạn một email xác nhận đến địa chỉ <b>%s</b>. Bạn phải xác minh yêu cầu mở tài khoản của bạn bằng cách làm theo các hướng dẫn trong email xác nhận. Nếu bạn không xác nhận yêu cầu mở tài khoản của bạn trong vòng bảy ngày, việc xin mở tại khoản tự động hủy bỏ. Bạn phải cần xin mở lại.<br><br>Sau khi bạn theo các chỉ dẫn trong email xác nhận, quản trị cũng phải chấp thuận yêu cầu của bạn trước khi tài khoản của bạn có thể được dùng.<br><br>Để đăng nhập vào site này, bạn ần phải biết tên người dùng và mật khẩu của bạn."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Chúng tôi sẽ gửi cho bạn một email xác nhận đến địa chỉ <b>%s</b>. Bạn phải xác minh yêu cầu mở tài khoản của bạn bằng cách làm theo các hướng dẫn trong email xác nhận. Nếu bạn không xác nhận yêu cầu mở tài khoản của bạn trong vòng bảy ngày, việc xin mở tại khoản tự động hủy bỏ. Bạn phải cần xin mở lại.<br><br>Sau khi bạn theo các chỉ dẫn trong email xác nhận, quản trị cũng phải chấp thuận yêu cầu của bạn trước khi tài khoản của bạn có thể được dùng.<br><br>Để đăng nhập vào site này, bạn ần phải biết tên người dùng và mật khẩu của bạn."
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "Website và đặt thẻ META"
+
+#~ msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
+#~ msgstr "Khi người dùng đăng ký mở tài khoản, sẽ có một email gửi đến địa chỉ của họ với liên kết xác minh. Khi họ kích vào liên kết này, chúng tôi biết là địa chỉ email của họ là đúng, và tùy chọn \"xác minh băng email\" được chọn tự động."
+
+#~ msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
+#~ msgstr "Khi thiết đặt là <b>Có</b>, các thông tin sau đây sẽ hiện ở trên trường nhập ở trang \"Yêu cầu tài khoản người dùng mới\": <div class=\"list_value_wrap\"> <div class=\"largeError\"> Ghi chú:</div><div class=\"error\"> Bằng việc hoàn thành và gửi mẫu này, bạn đồng ý <ul><li>bảo vệ sự riêng tư của người sống liệt kê ở trang chúng tôi;</li><li>và trong hộp văn bản dưới đây, để giải thích bạn có liên hệ với ai, hoặc cung cấp cho chúng tôi thông tin về người nào đó phải liệt kê ở trang web chúng tôi.</li></ul></div></div>"
+
+#~ msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
+#~ msgstr "Khi hộp kiểm này được đánh dấu, thì biểu đồ sẽ in với người già nhất ở trên. Khi không đánh dấu kiểm, người trẻ nhất sẽ ở trên."
+
+#~ msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
+#~ msgstr "Khi tùy chọn này được đánh dấu kiểm, bạn có thề thấy tất cả các bản ghi Nguồn hay Ghi chú cho người này. Khi lựa chọn này không đánh dấu kiểm, bản ghi nguồn hay Ghi chú liên kết với sự kiện khác của người này sẽ không hiện."
+
+#~ msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
+#~ msgstr "Khi bạn chọn mục này, một bản sao của file GEDCOM sẽ được nén thành dạng ZIP trước khi bắt đầu tải về. Điều này sẽ làm giảm đáng kể kích thước của nó, nhưng bạn sẽ cần phải sử dụng một chương trình giải nén tương thích (WinZIP, ví dụ) để giải nén file GEDCOM tải về trước khi bạn có thể sử dụng nó.<br><br>Đây là một tùy chọn hữu ích để tải file GEDCOM lớn. Có một nguy cơ là thời gian tải về các tập tin không nén có thể vượt quá thời gian tối đa cho phép thực hiện, kết quả là file không đầy đủ đuợc tải về. Các tùy chọn ZIP giảm thời gian tải về còn 75 phần trăm."
+
+#~ msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
+#~ msgstr "Khi bạn nhấp vào liên kết <b> Thêm một ghi chú chung</b>, một cửa sổ mới sẽ mở ra. Bạn có thể chọn để liên kết đến một ghi chú chung hiện có, hoặc bạn có thể tạo ra một ghi chú chia sẻ mới và đồng thời tạo ra liên kết đến nó."
+
+#~ msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
+#~ msgstr "Khi bạn nhấp vào liên kết này xe chứa các clip nhớ sẽ bị xóa trống.<br><br>Nếu bạn không muốn bỏ tất hết cá nhân, gia đình v.v.. ra khỏi xe chứa clip, bạn có thể từng các mục riêng biệt bằng cách click <b> Hủy bỏ</b> trong hộp Tên. <u>Không</u> có câu thoại khẳng định khi bạn nhấp vào liên kết này, yêu cầu được thực hiện nga."
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Bạn muốn thêm mối liên kết nào từ người này?"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "Ai có thể xem hình không ảnh chìm?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Tuổi vợ"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Họ của vợ trở thành tên mới"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Họ của vợ được thay bằng họ của chồng"
+
+#~ msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+#~ msgstr "Với tùy chọn này, hệ thống email nội bộ của <b>webtrees</b> sẽ được sử dụng và không có email sẽ được gửi đi.  Bạn sẽ nhận được thư <u>nội bộ</u> từ người dùng khác. Khi một người sử dụng trang web gửi cho bạn một tin nhắn, thông điệp sẽ xuất hiện trong khối thông điệp trên của Trang cá nhân của tôi. Nếu bạn đã loại bỏ khối này ra khỏi Trang Của Tôi, bạn sẽ không thấy bất kỳ tin nhắn. Tuy nhiên, chúng sẽ hiện ngay sau khi bạn cấu hình Trang của tôi để lại có khối tin nhắn."
+
+#~ msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
+#~ msgstr "Bạn có thể thay đổi diện mạo của <b>webtrees</b> bằng sử dụng \"kiểu trình bày\". Mỗi kiểu trình bày có kiểu, trình bày, gam màu v.v. khác nhau."
+
+#~ msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
+#~ msgstr "Bạn có thể nhấp vào nút này để xem xem có đường quan hệ nào giữa hai người không. Đường quan hệ trước đó có thể hiện lại bằng cách nhấp vào liên kết với số đường."
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "Bạn có thể quyết định FAQ này có thể thấy dù GEDCOM thế nào đi nữa, hay chỉ GEDCOM hiện tại mới thấy.<br><ul><li><b>TẤT CẢ<b/>&nbsp;&nbsp;&nbsp; FAQ sẽ hiện trong danh sách tất cả các FAQ, không cần biết đến GEDCOM thế nào đi nữa.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;FAQ sẽ hiện chỉ GEDCOM trong danh sách các GEDCOM hiện hành.</li></ul>"
+
+#~ msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+#~ msgstr "Bạn có thể giới hạn số lượng các Tin tức hiển thị, nhờ vậy làm giảm chiều cao của khối tin của GEDCOM.<br><br>Tùy chọn này xác có giới hạn nào được áp dụng hoặc giới hạn nên được tính theo thời gian hay số lượng bài."
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Bạn có thể tìm phụ nữ đã kết hôn dễ dàng hơn bằng cách ghi tên kết hôn của họ.<br>Tuy nhiên không phải tất cả phụ nữ đều lấy tên họ theo chồng, cho nên cẩn thận việc đưa nhầm thônng tin vào CSDL."
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "Bạn sẽ không nhận được email nào từ site này, vì yêu cầu mở tài khoản sẽ bị hủy bỏ sau bảy ngày."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Giỏ dữ liệu của bạn trống."
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "Quản trị máy chủ sẽ cung cấp cho bạn chi tiết về kết nối."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Tài khoản của bạn không kích hoạt mục \"thay đổi tự động được chấp thuận\". Bạn chỉ có thể thay đổi mỗi lần một bản ghi."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "File nén zip"
+
+#~ msgid "daughter of"
+#~ msgstr "con gái của"
+
+#~ msgctxt "son's wife's father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "cha con dâu"
+
+#~ msgctxt "son's wife's mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "mẹ con dâu"
+
+#~ msgctxt "son's wife's parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "cha mẹ con dâu"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "mất"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "mất"
+
+#~ msgid "first"
+#~ msgstr "thứ nhất"
+
+#~ msgctxt "child's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "cháu rể, chồng cháu gái"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "cháu rể, chồng cháu gái"
+
+#~ msgctxt "son's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "chồng chắt gái"
+
+#~ msgctxt "child's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "cháu dâu, vợ của cháu trai"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "cháu dâu, vợ của cháu trai"
+
+#~ msgctxt "son's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "vợ cháu trai"
+
+#~ msgid "last"
+#~ msgstr "cuối cùng"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "đã kết hôn"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "đã có gia đình"
+
+#~ msgid "son of"
+#~ msgstr "con trai của"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "cha ruột của rể"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "mẹ ruột của rể"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "cha mẹ của rể"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_turkish_ci"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "sinh"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "sinh"
+
+#~ msgid "webtrees’ database must be on the same server as PGV’s"
+#~ msgstr "CSDL webtrees phải có trên cùng máy chủ như của PGV"

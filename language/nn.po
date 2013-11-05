@@ -11,8 +11,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-22 04:48+0000\n"
-"X-Generator: Launchpad (build 16626)\n"
+"X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 "X-Poedit-Language: Norwegian Bokmal\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -1687,7 +1687,7 @@ msgstr "Eit interaktivt tre som syner alle anar og etterkomarar til ein person."
 
 #: setup.php:944
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "Ein uventa databasefeil har oppstått."
 
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
@@ -2789,7 +2789,7 @@ msgstr ""
 
 #: help_text.php:1422
 msgid "By default this chart does not show spouses for the descendants because it makes the chart harder to read and understand.  Turning this option on will show spouses on the chart."
-msgstr "Som standard synast ikkje ektefeller til etterkomarar avdi det gjer diagrammet vanskelegare å lese og forstå.<br /> - Ved å merke av dette valet, vil diagrammet også syne ektefeller."
+msgstr "Som standard synast ikkje ektefeller til etterkomarar avdi det gjer diagrammet vanskelegare å lese og forstå.<br>- Ved å merke av dette valet, vil diagrammet også syne ektefeller."
 
 #. I18N: Help text for the "Port number" site configuration setting
 #: help_text.php:767
@@ -3309,7 +3309,7 @@ msgstr "Klikk for å velje person som familieoverhovud."
 
 #: help_text.php:1356
 msgid "Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically."
-msgstr "Ved å klikke på lenka, vil du få sjå ei liste med alle personar og familier som har hendingar knytte til dette geografiske nivå.<br /><br />Når du er kome til slutten av rekkja med geografiske stadnivå, slik som ein stad eller by, vil lista synast automatisk."
+msgstr "Ved å klikke på lenka, vil du få sjå ei liste med alle personar og familier som har hendingar knytte til dette geografiske nivå.<br><br>Når du er kome til slutten av rekkja med geografiske stadnivå, slik som ein stad eller by, vil lista synast automatisk."
 
 #: help_text.php:1142
 msgid "Clicking the \"+\" icon will open the GEDFact Shared Note Assistant window.<br />Specific help will be found there.<br /><br />When you click the \"Save\" button, the ID of the Shared Note will be pasted here."
@@ -4318,11 +4318,11 @@ msgstr "Sletta brukar: "
 
 #: admin_trees_manage.php:196
 msgid "Deleting old genealogy data…"
-msgstr "Slettar gamle slektsdata..."
+msgstr "Slettar gamle slektsdata…"
 
 #: library/WT/Controller/Family.php:159
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
-msgstr "Om du slettar denne familien vil alle koplingar mellom familiemedlemene også verte fjerna. Personane vil  <u>ikkje</u> verte sletta !<br />Er du sikker på at du vil slette denne familien ?"
+msgstr "Om du slettar denne familien vil alle koplingar mellom familiemedlemene også verte fjerna. Personane vil  <u>ikkje</u> verte sletta !<br>Er du sikker på at du vil slette denne familien ?"
 
 #: library/WT/Stats.php:3840
 msgid "Denmark"
@@ -6543,7 +6543,7 @@ msgstr "Om etternamnet er ukjent, bruk to skråstrekar utan noko imellom: <%s>Ni
 
 #: help_text.php:1474
 msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
-msgstr "Dersom dette valet er merka av, vil brukaren ha høve til å endre sin eigen brukarkonto.<br /><br />Om valet ikkje er avmerka, vil brukaren ikkje kunne endre sine eigne brukarinnstillingar.  Kanskje ikkje tilrådd, men dette gjev deg høve til å lage eit felles brukarnamn og passord for fleire brukarar, kanskje ei familie, og då hindre brukarane i å endre den felles brukarkontoen."
+msgstr "Dersom dette valet er merka av, vil brukaren ha høve til å endre sin eigen brukarkonto.<br><br>Om valet ikkje er avmerka, vil brukaren ikkje kunne endre sine eigne brukarinnstillingar.  Kanskje ikkje tilrådd, men dette gjev deg høve til å lage eit felles brukarnamn og passord for fleire brukarar, kanskje ei familie, og då hindre brukarane i å endre den felles brukarkontoen."
 
 #: help_text.php:621
 msgid "If this person has any events other than Death, Burial, or Cremation more recent than this number of years, he is considered to be \"alive\".  Children's birth dates are considered to be such events for this purpose."
@@ -8860,8 +8860,8 @@ msgstr "Ingen hendingar finnast for i morgon."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Ingen hendingar for nolevande personar finnast neste %s dag."
-msgstr[1] "Ingen hendingar for nolevande personar finnast for dei neste %s dagane."
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/functions/functions_print_lists.php:1828
 #: includes/functions/functions_print_lists.php:1937
@@ -9273,7 +9273,7 @@ msgstr "Kun Forvaltarar kan redigere"
 
 #: site-unavailable.php:67
 msgid "Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr "Oops! Webserveren kan ikkje kople til databaseserveren. Den kan vere opptatt, gjennomgå vedlikehald, eller rett og slett vere øydelagt. Du bør <a href=\"index.php\"> prøve att </a> etter eit par minutt eller kontakte administratoren for nettsida."
+msgstr "Oops! Webserveren kan ikkje kople til databaseserveren. Den kan vere opptatt, gjennomgå vedlikehald, eller rett og slett vere øydelagt. Du bør <a href=\"index.php\">prøve att</a> etter eit par minutt eller kontakte administratoren for nettsida."
 
 #: setup.php:224
 msgid "Oops!  webtrees was unable to create files in this folder."
@@ -12792,7 +12792,7 @@ msgstr "Dette er eit valfritt felt som kan nyttast til å angi formatet til mult
 
 #: help_text.php:370
 msgid "This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program."
-msgstr "Dette er eit valfritt statusfelt og er hovudsakleg nytta til registrering av kor langt peronar er komne i LDS TempleReady ordineringsprogram."
+msgstr "Dette er eit valfritt statusfelt og er hovudsakleg nytta til registrering av kor langt peronar er komne i LDS templeReady ordineringsprogram."
 
 #: setup.php:288 setup.php:292
 msgid "This is case sensitive."
@@ -12866,7 +12866,7 @@ msgstr "Dette er eit utval av GEDCOM-fakta for kjelder som synast ved sia av den
 
 #: help_text.php:990
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100."
-msgstr "Dette er breidden (i pixlar) som programmet vil nytte ved automatisk generering av miniatyrbileter.<br />Standardverdi er 100."
+msgstr "Dette er breidden (i pixlar) som programmet vil nytte ved automatisk generering av miniatyrbileter.<br>Standardverdi er 100."
 
 #: help_text.php:1361 setup.php:417
 msgid "This is your real name, as you would like it displayed on screen."
@@ -14437,7 +14437,7 @@ msgstr "Ved dette valet nyttast det interne meldingssystemet i <b>webtrees</b>, 
 
 #: help_text.php:1199
 msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."
-msgstr "Med dette valet vil du ikkje motta meldingar i det helie! - Heller ikkje administrator kan nå deg..."
+msgstr "Med dette valet vil du ikkje motta meldingar i det helie! - Heller ikkje administrator kan nå deg…"
 
 #: help_text.php:1195
 msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page."
@@ -18602,7 +18602,7 @@ msgstr "\"%s\" er lagt til blant dine Favorittar."
 
 #: library/WT/Note.php:82
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:40
 msgctxt "Unknown given name"
@@ -18613,3 +18613,1647 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
+
+#~ msgid " but the details are unknown"
+#~ msgstr " men detaljane er ukjende"
+
+#~ msgid " in "
+#~ msgstr " i "
+
+#~ msgid "%1$s’s %2$s"
+#~ msgstr "%1$ss %2$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%H:%i:%s"
+
+#~ msgid "%j %F %Y"
+#~ msgstr "%j. %F %Y"
+
+#~ msgid "%s day"
+#~ msgid_plural "%s days"
+#~ msgstr[0] "%s dag"
+#~ msgstr[1] "%s dagar"
+
+#~ msgid "%s day ago"
+#~ msgid_plural "%s days ago"
+#~ msgstr[0] "%s dag sidan"
+#~ msgstr[1] "%s dagar sidan"
+
+#~ msgid "%s hour ago"
+#~ msgid_plural "%s hours ago"
+#~ msgstr[0] "%s time sidan"
+#~ msgstr[1] "%s timar sidan"
+
+#~ msgid "%s minute ago"
+#~ msgid_plural "%s minutes ago"
+#~ msgstr[0] "%s minutt sidan"
+#~ msgstr[1] "%s minutt sidan"
+
+#~ msgid "%s month"
+#~ msgid_plural "%s months"
+#~ msgstr[0] "%s månad"
+#~ msgstr[1] "%s månader"
+
+#~ msgid "%s month ago"
+#~ msgid_plural "%s months ago"
+#~ msgstr[0] "%s månad sidan"
+#~ msgstr[1] "%s månader sidan"
+
+#~ msgid "%s second ago"
+#~ msgid_plural "%s seconds ago"
+#~ msgstr[0] "%s sekund sidan"
+#~ msgstr[1] "%s sekund sidan"
+
+#~ msgid "%s three times removed ascending"
+#~ msgstr "%s tre generasjonar tilbake"
+
+#~ msgid "%s three times removed descending"
+#~ msgstr "%s og tre generasjonar fram"
+
+#~ msgid "%s week"
+#~ msgid_plural "%s weeks"
+#~ msgstr[0] "%s veke"
+#~ msgstr[1] "%s veker"
+
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "%s år"
+#~ msgstr[1] "%s år"
+
+#~ msgid "%s year ago"
+#~ msgid_plural "%s years ago"
+#~ msgstr[0] "%s år sidan"
+#~ msgstr[1] "%s år sidan"
+
+#~ msgid "%s%%"
+#~ msgstr "%s%%"
+
+#~ msgid "(aged %s)"
+#~ msgstr "(alder %s)"
+
+#~ msgid "(aged less than %s)"
+#~ msgstr "(yngre enn %s)"
+
+#~ msgid "(aged more than %s)"
+#~ msgstr "(eldre enn %s)"
+
+#~ msgid "(filtered from %s total entries)"
+#~ msgstr "(utvalt av totalt %s)"
+
+#~ msgid "(in childhood)"
+#~ msgstr "(i barndomen)"
+
+#~ msgid "(in infancy)"
+#~ msgstr "(som spedbarn)"
+
+#~ msgid "(stillborn)"
+#~ msgstr "(dødfødd)"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
+#~ msgstr "<b>GUID</b> er i denne samanheng ei korting for «Globalt Unik ID» («Globally Unique ID»).<br><br>Tanken bak GUID er at alle verdas individ skal kunne identifiserast på ein repeterbar måte, slik at sentrale organisasjonar som til dømes LDS-kirka sitt Familiehistoriesenter i Salt Lake City, eller for den saks skyld andre kompatible slektsprogram på din eigen PC, kan avgjere om det dreiar seg om same person, uansett kvar GEDCOM-fila kjem frå. Familiehistoriesenteret sitt mål er å føre eit sentralt register over genealogiske data som dernest kan gjerast tilgjengeleg gjennom nett-tenester, so eit kvart program kan få tilgang til registeret sine data og samkøyre eigne data mot desse.<br><br>Om du ikkje har planar om å dele di GEDCOM-fil med andre på denne måten, treng du ikkje late <b>webtrees</b> opprette slike GUID-ar; på ei annan sie, gjer det heller ikkje skade, utover å auke storleiken på GEDCOM-fila."
+
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+#~ msgstr "<b>Nei</b> tyder at godkjendte brukarar kan sjå alle opplysningar om nolevande personar.<br>'<b>Ja</b> tyder at brukarar kun kan sjå privat informasjon om nolevande personar dei er i slekt med."
+
+#~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+#~ msgstr "<b>Merk:</b> Privat informasjon om nolevande personar vil kun bli gitt til familie og nære vener. Du må kunne verifisere ditt slektskap for å kunne motta private data. I enkelte høve kan informasjon om avlidne personar også vere skjult. Dette kan skyldast manglande informasjon om gjeldande personar.<br><br>Søkjer du informasjon om personar i vår database, ver venleg å kontrollere  at du søkjer riktig person ved å sjekke aktuelle årstal, stadnamn og nære familiemedlem. Ønskjer du å sende inn framlegg til endringar eller oppdateringar på eksisterande data, vær då venleg å oppgi kjelde."
+
+#~ msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
+#~ msgstr "<b>webtrees</b> let deg kopiere opptil 10 fakta, med alle detaljar, til ein utklippstavle. Dette er ikkje det same som den utklippsmappa du kan nytte for å eksportere delar av databasen.<br><br>Du kan velje kva som helst av fakta frå utklippstavla og kopiere desse til Personen, Familien, Mediet, Kjelda eller Arkivet du redigerar. Ein kan ikkje kopiere fakta mellom ulike post-typar. Til dømes kan du ikkje kopiere eit Bryllaups-faktum til ei Kjelde eller ein Person-post, sidan Bryllaup berre kan førekome i Familie-postar.<br><br>Dette er ein særs nyttig funksjon når ein skal føre inn liknande/identiske fakta, til dømes folketeljingsdata for mange personar eller familier."
+
+#~ msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
+#~ msgstr "<b>webtrees</b> skal kunne sende e-post, som til dømes gløymde passord og meldingar. Du kan nytte servaren sin PHP-mail-teneste (ikkje alltid tilgjengeleg) eller ein ekstern SMTP (mail-relay) teneste, der du må oppgi detaljar for tilslutning."
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgstr "<center><h3><b>Velkomen til desse slektssidene !</b></h3>PS! - <i>Sidene er <b>kun</b> tilgjengelege for brukarar som har <b>gyldig</b> brukarnamn og passord.</i></center>"
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+#~ msgstr "<center><h3><b>Velkomen til desse slektssidene !</b></h3>PS! - <i>Sidene er <b>kun</b> tilgjengelege for <b>registrerte</b> brukarar!</i><br>Har du ein brukarkonto, kan du logge deg inn nedanfor.<br><br>Dersom du enno ikkje har ein konto, kan søkje om å få oppretta ein<br>ved å klikke på lenka \"Søk om brukarkonto\".<br>Etter å ha handsama søknaden din,<br>kan administratoren til nettstaden anten godkjenne eller avslå den.<br>Du vil motta ein e-post med beskjed dersom søknaden din blir akseptert.</center>"
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+#~ msgstr "<center><h3><b>Velkomen til desse slektssidene !</b></h3>PS! - <i>Sidene er <b>kun</b> tilgjengelege for <b>medlemer av familien</b>.</i><br>Har du ein brukarkonto, kan du logge deg inn nedanfor.<br><br>Dersom du enno ikkje har ein konto, kan søkje om å få oppretta ein<br>ved å klikke på lenka \"Søk om brukarkonto\".<br>Etter å ha handsama søknaden din,<br>kan administratoren til nettstaden anten godkjenne eller avslå den.<br>Du vil motta ein e-post dersom søknaden vert godkjend.</center>"
+
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+#~ msgstr "<center><h3><b>Velkomen til desse slektssidene !</b></h3>PS! - <i>Nettstaden er tilgjengeleg for <b>alle</b> besøkjande som har ein brukarkonto.</i><br>Har du ein brukarkonto, kan du logge deg inn nedanfor.<br><br>Dersom du enno ikkje har ein brukarkonto, kan du søkje om å få ein<br>ved å klikke på lenka \"Søk om brukarkonto\".<br>Etter å ha handsama informasjonen i søknaden, vil administratoren til nettstaden aktivere kontoen din.<br>Du vil motta ein e-post når den er godkjend.</center>"
+
+#~ msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
+#~ msgstr "<div class=\"largeError\">NB:</div><div class=\"error\">Ved å fylle ut og sende inn dette skjemaet, erklærer du at du vil:<ul><li>respektere personvern av nolevande personar;</li><li>og forklare i kommentarfeltet nedanfor kven du er i slekt med, eller skaffe oss opplysningar om personar som vi bør ha denne slektsdatabasen.</li></ul></div>"
+
+#~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
+#~ msgstr "Ein databaseserver kan romme mange separate databaser. Du kan velje ein eksisterende database (oppretta av serveradministrator) eller opprette ein ny (om din brukerkonto har rettar til dette)."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Oversyn over fakta som stammar frå ei bestemd kjelde."
+
+#~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
+#~ msgstr "Ein brukar kan ikkje logge inn før både \"E-post stadfesta\" og \"Godkjend av administrator\" er kryssa av."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyzæøå"
+
+#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ"
+
+#~ msgid "Access"
+#~ msgstr "Tilgjenge"
+
+#~ msgid "Add a husband using an existing individual"
+#~ msgstr "Legg til ny ektemann ved å lenke til ein registrert person"
+
+#~ msgid "Add a new associate allows you to link a fact with an associated individual in the site.  This is one way in which you might record that someone was the godfather of another individual."
+#~ msgstr "Å leggje til ein ny tilslutta person gjev deg mogelegheit til å knyte ei faktaopplysing til ein \"utanforståande\" person i slektstreet.  Dette er måten du kan kople ein person som forlovar, gudfar og liknande til ein annan person."
+
+#~ msgid "Add a new name"
+#~ msgstr "Legg til nytt namn"
+
+#~ msgid "Add a wife using an existing individual"
+#~ msgstr "Legg til ny hustru ved å knyte til ein registrert person"
+
+#~ msgid "Add another individual to the chart"
+#~ msgstr "Legg til ein ny person i diagrammet"
+
+#~ msgid "Add individuals"
+#~ msgstr "Legg til personar"
+
+#~ msgid "Add just this individual."
+#~ msgstr "Kun denne personen"
+
+#~ msgid "Add parents’ and all descendants’ records together with this family record."
+#~ msgstr "Legg til foreldre og alle etterkomarar til denne familien."
+
+#~ msgid "Add parents’ and children’s records together with this family record."
+#~ msgstr "Legg til foreldre og born til denne familien."
+
+#~ msgid "Add parents’ records together with this family record."
+#~ msgstr "Legg til foreldra til denne familien."
+
+#~ msgid "Add this individual and his direct line ancestors."
+#~ msgstr "Personen og anar i direkte linje."
+
+#~ msgid "Add this individual, his direct line ancestors, and their families."
+#~ msgstr "Personen og anar i direkte linje,  med deira familiar."
+
+#~ msgid "Add this individual, his parents, and siblings."
+#~ msgstr "Personen, foreldre og sysken."
+
+#~ msgid "Add this individual, his spouse, and all descendants."
+#~ msgstr "Legg til denne personen, samt ektefelle og alle etterkomarar."
+
+#~ msgid "Add this individual, his spouse, and children."
+#~ msgstr "Legg til denne personen, samt ektefelle og born."
+
+#~ msgid "Add this source and families/individuals linked to it."
+#~ msgstr "Legg til denne kjelda og familiar/personer den er lenka til"
+
+#~ msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+#~ msgstr "Av og til må administratorar rydde opp i og rette data som er ført inn av andre brukarar, til dømes ved å føye til land i eit stadnamn (PLAC). Når administratorar gjer denne type endringar, vil normalt informasjonen om tidspunkt for siste endring, som vert lagra i CHAN-koden i GEDCOM-posten, òg oppdaterast. Dette er ikkje alltid ønskjeleg.<br><br>Om dette alternativet er valt, vil <b>webtrees</b> behalde den opprinnelege informasjonen i staden for å erstatte den med den nye. Når dette alternativet er valt, har administrator òg mogelegheit til å endre eller slette informasjonen i den opprinnelege CHAN-koden."
+
+#~ msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+#~ msgstr "Etter at du har logga deg inn, vel då 'Min konto' i menyen under 'Mi Side' og angje eit nytt passord i feltet for å endre passordet ditt."
+
+#~ msgid "Age at which to assume an individual is dead"
+#~ msgstr "Antatt maksimal levetid"
+
+#~ msgid "Age of parents next to child’s birthdate"
+#~ msgstr "Foreldre sin alder ved sia av barnet sin fødselsdato"
+
+#~ msgid "All individuals"
+#~ msgstr "Alle personar"
+
+#~ msgid "Allow GEDCOM switching"
+#~ msgstr "Tillat byte mellom slektsdatabasar"
+
+#~ msgid "Allow messages to be stored online"
+#~ msgstr "Tillat lagring av meldingar \"online\""
+
+#~ msgid "An interactive tree, showing all the ancestors and descendants of an individual."
+#~ msgstr "Eit interaktivt tre som syner alle anar og etterkomarar til ein person."
+
+#~ msgid "An unexpected database error occured."
+#~ msgstr "Ein uventa databasefeil har oppstått."
+
+#~ msgid "Ancestors of "
+#~ msgstr "Forfedrar til "
+
+#~ msgid "Ancestral file number"
+#~ msgstr "AFN nummer"
+
+#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
+#~ msgstr "Er du viss på at du ønskjer å angre alle endringar for denne GEDCOM?"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
+
+#~ msgid "Available blocks"
+#~ msgstr "Tilgjengelege blokker"
+
+#~ msgid "Begin year"
+#~ msgstr "Start år"
+
+#~ msgid "Best man"
+#~ msgstr "Forlovar til brudgomen"
+
+#~ msgid "Binary data object"
+#~ msgstr "Binært dataobjekt"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "Stad for fødsel inneheld"
+
+#~ msgid "Birth and death details on charts"
+#~ msgstr "Fødsel- og dødsdetaljar i diagram"
+
+#~ msgid "Birth date range end"
+#~ msgstr "Seinaste fødselsdato"
+
+#~ msgid "Birth date range start"
+#~ msgstr "Tidlegaste fødselssdato"
+
+#~ msgid "Brother"
+#~ msgstr "Bror"
+
+#~ msgid "Burial place contains"
+#~ msgstr "Stad for gravlegging inneheld"
+
+#~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
+#~ msgstr "Som standard synes kun namn som førekjem i dine slektsted. Googlemaps-tabellen kan dessutan inneholde detaljar for andre stadar, for eksempel om du har importert stadar frå ei ekstern fil. Om du krysser av  i denne ruta, vil alle stadnamn synast, også dei som ikkje er i bruk i augneblinken."
+
+#~ msgid "Change family members"
+#~ msgstr "Byt familiemedlemer"
+
+#~ msgid "Child of "
+#~ msgstr "Barn av "
+
+#~ msgid "Children of "
+#~ msgstr "Born av "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Velg slektninger"
+
+#~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
+#~ msgstr "Vel kva miniatyrbilete du vil laste opp. Sjølv om miniatyrbileter kan genererast automatisk når du lastar opp bileter, vil du nokon gonger kanskje ønskje å lage dine eigne, ikke minst for andre medietypar. Du kan til dømes nytte eit stillbilete frå ein video, eller eit fotografi av ein person du har gjort eit lydopptak av."
+
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgstr "Vel å syne ei standard topptekst for di Velkomsthelsing. Om brukarar skiftar språk, vil toppteksta synast på det nye språket.<br><br>Om du veljer <b>Ja</b>, vil teksta sjå slik ut:<div class=\"list_value_wrap\"><center><b>Velkomen til desse slektssidene!</b></center><br>Tilgangen er avgrensa til brukarar som har konto og passord til denne nettstaden.<br></div>"
+
+#~ msgid "Civil registrar"
+#~ msgstr "Sorenskriver"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Sorenskrivar"
+
+#~ msgctxt "MALE"
+#~ msgid "Civil registrar"
+#~ msgstr "Sorenskrivar"
+
+#~ msgid "Clear chart"
+#~ msgstr "Nullstill diagram"
+
+#~ msgid "Click %s to choose individual as head of family."
+#~ msgstr "Klikk %s for å velje person som familieoverhovud."
+
+#~ msgid "Click name to add individual to add links list."
+#~ msgstr "Klikk på namn for å tilføye person til <b>Tilføy lenke</b>-lista."
+
+#~ msgid "Click this link to remove the individual from the timeline."
+#~ msgstr "Klikk på denne lenka for å ta bort personen frå tidslinja."
+
+#~ msgid "Click to choose individual as head of family."
+#~ msgstr "Klikk for å velje person som familieoverhovud."
+
+#~ msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
+#~ msgstr "Klikk på \"+\"-ikonet, for å opne GEDFact-assistenten for Delte notat i eit nytt vindauge.<br>Ytterlegare hjelp vil du finne der.<br><br>Når du klikker på \"Lagre\" i GEDFact-assistenten, vil ID-en til det delte notatet setjast inn her."
+
+#~ msgid "Coat of arms"
+#~ msgstr "Våpenskjold"
+
+#~ msgid "Common law marriage"
+#~ msgstr "Samvitsekteskap"
+
+#~ msgid "Contact information"
+#~ msgstr "Kontakt Informasjon"
+
+#~ msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
+#~ msgstr "Korriger NAME-postar på forma 'John/DOE/' eller 'John /DOE', som er brukt av eldre slektsforskningsprogram."
+
+#~ msgid "Cote d’Ivoire"
+#~ msgstr "Elfenbeinskysten"
+
+#~ msgid "Create a new shared note"
+#~ msgstr "Opprett eit nytt Delt Notat"
+
+#~ msgid "Create a new shared note using assistant"
+#~ msgstr "Opprett eit nytt Delt Notat ved bruk av assistent"
+
+#~ msgid "Create repository"
+#~ msgstr "Opprett Arkiv"
+
+#~ msgid "Create user"
+#~ msgstr "Opprett brukar"
+
+#~ msgid "Custom event"
+#~ msgstr "Eigendefinert hending"
+
+#~ msgid "Date of LDS baptism"
+#~ msgstr "Dato for mormondåp"
+
+#~ msgid "Date of LDS child sealing"
+#~ msgstr "Dato for barns besegling (mormon)"
+
+#~ msgid "Date of LDS endowment"
+#~ msgstr "Dato for Mormonlegat"
+
+#~ msgid "Date of LDS spouse sealing"
+#~ msgstr "Dato for ektefelles besegling (mormon)"
+
+#~ msgid "Date of adoption"
+#~ msgstr "Dato for adopsjon"
+
+#~ msgid "Date of blessing"
+#~ msgstr "Dato for velsigning"
+
+#~ msgid "Date of cremation"
+#~ msgstr "Dato for kremering"
+
+#~ msgid "Date of emigration"
+#~ msgstr "Emigrasjonsdato"
+
+#~ msgid "Date of event"
+#~ msgstr "Dato for hending"
+
+#~ msgid "Date of immigration"
+#~ msgstr "Immigrasjonsdato"
+
+#~ msgid "Date of naturalization"
+#~ msgstr "Dato for Statsborgarskap"
+
+#~ msgid "Date of ordination"
+#~ msgstr "Dato for ordinasjon"
+
+#~ msgid "Date of residence"
+#~ msgstr "Dato for bustad"
+
+#~ msgid "Daughter"
+#~ msgstr "Dotter"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Stad for dødsfall inneheld"
+
+#~ msgid "Death date range end"
+#~ msgstr "Seinaste dødsdato"
+
+#~ msgid "Death date range start"
+#~ msgstr "Tidlegaste dødsdato"
+
+#~ msgid "Default theme"
+#~ msgstr "Standard tema"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Etterkomarar av "
+
+#~ msgid "Descent steps"
+#~ msgstr "Etterkomarledd"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhu al-Qi’dah"
+#~ msgstr "Dhu al-Qi'dah"
+
+#~ msgid "Differences"
+#~ msgstr "Ulikheiter"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Anar i direkte linje"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Anar i direkte linje og deira familier"
+
+#~ msgid "Display %s"
+#~ msgstr "Syn %s"
+
+#~ msgid "Do not seal, previous sealing cancelled"
+#~ msgstr "Ikke besegl: forrige besegling er annullert (mormon)"
+
+#~ msgid "Do not seal: unauthorized"
+#~ msgstr "Ikke besegl: uautorisert (mormon)"
+
+#~ msgid "Do not send messages"
+#~ msgstr "Ikkje send meldingar"
+
+#~ msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+#~ msgstr "E-postadressa som skal nyttast i &laquo;From:&raquo;-feltet i e-post som <b>webtrees</b> opprettar automatisk.<br><br><b>webtrees</b> kan sende e-post automatisk for å gjere administratorar oppmerksame på endringar som må handsamast. <b>webtrees</b> sender òg meldingar til brukarar som har bedt om ein konto.<br><br>Vanlegvis inneheld &laquo;From:&raquo;-feltet i deesse automatisk oppretta meldingane noko i retning av <i>From: webtrees-noreply@dinnettstad</i> for å syne at ein ikkje treng svara på  e-posten. For å verje seg mot spam og anna e-postmisbruk krev enkelte e-postsystem at &laquo;From:&raquo;-feltet er ei gyldig e-postadresse og vil ikkje akseptere e-post som synes å kome frå <i>webtrees-noreply</i>."
+
+#~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
+#~ msgstr "Kvart medieobjekt bør knytast til ein eller fleire persona, familier eller kjendeangivingar i din database.<br><br>For å opprette ein slik kopling kan du anten skrive inn/søkje etter personen-, familie-eller kjelde ID medan du opprettar medieobjektet; eller du kan opprette koplingar seinare ved å nytte val for redigering på sida mediesida; eller ved å leggje til medieobjekt gjennom \"Legg til medie\"-lenka på Person-, Familie- eller Kjelde-sidene."
+
+#~ msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+#~ msgstr "Alle kjelder registrerar bestemte hendingar, vanlegvis for eit gitt tidsrom og eit jurisdiksjonsområde. Ei Folketeljing registrerar til dømes hendingar knytt folketeljing, og ei kyrkjebok registrerar hendingar som fødsel/dåp, vigsel og død/gravlegging.<br><br>Vel frå lista over tilgjengelege typar hendingar kva hendingar som vert registrert av denne kjelda. Datoen bør gjevast som ein tidsperiode, som til dømes <i>FROM 1900 TO 1910</i>. Jurisdiksjonsområdet er namnet på den lågaste myndigheit som omfattar alle stadnamn som fins i kjelda. Til dømes vil \"Tranøy, Troms, NOR\" nyttast som jurisdiksjonsområde for hendingar som finn stad ein eller annan stad i Tranøy sogn i Troms, medan jurisdiksjonsområdet vil vere \"Troms, NOR\" dersom kjelda registrerar hendingar ikkje berre frå Tranøy men òg frå andre stadar i Troms fylke."
+
+#~ msgid "Edit details"
+#~ msgstr "Rediger detaljar"
+
+#~ msgid "Edit raw GEDCOM"
+#~ msgstr "Endre direkte i GEDCOM"
+
+#~ msgid "Edit shared note"
+#~ msgstr "Endre Delt Notat"
+
+#~ msgid "Email address:"
+#~ msgstr "E-postadresse"
+
+#~ msgid "End year"
+#~ msgstr "Slutt år"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "Endringar til og med"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Tast inn ID på familie"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Angi Person ID"
+
+#~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
+#~ msgstr "Angi ein tittel for mediefila du redigerer.  Er dette ein tittel på ei multimediefil, gir du ein beskrivande tittel som vil vere synleg for brukarar."
+
+#~ msgid "Enter an individual, family, or source ID"
+#~ msgstr "Angi ID til ein person, familie eller kjelde"
+
+#~ msgid "Enter associate GEDCOM ID."
+#~ msgstr "Angi tilhøyrande GEDCOM ID."
+
+#~ msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+#~ msgstr "Angi eller søk etter ID for person, familie eller kjelde som dette medieobjektet skal knytast til."
+
+#~ msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Angi eit faksnummer, inkludert landskode og eventuelt retningsnummer.<br><br>Døme:<ul><li>Noreg: +47 35 00 00 01</li><li>Tyskland: +49 25859 56 76 89</li><li>USA: +1 888 555-1212</li></ul>La dette feltet stå tomt om du ikkje ønskjer å oppgi eit faksnummer."
+
+#~ msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+#~ msgstr "Skriv inn nettadressa med http://.<br><br>Eit døme på ei nettadresse ser slik ut: <b>http://www.webtrees.net/</b> La feltet stå tomt om du ikkje vil ha med ei nettadresse."
+
+#~ msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
+#~ msgstr "Angi ei postadresse i feltet på same måte som du ville gjort på ein konvolutt.<br><br>La dette feltet stå tomt dersom du ikke ønskjer å oppgi ei postadresse."
+
+#~ msgid "Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address."
+#~ msgstr "Angi ei e-postadresse.<br><br>Eit døme på e-postadresse er: <b>namn@hotmail.com</b><br>La dette feltet stå tomt om du ikkje ønskjer å oppgi ei e-postadresse."
+
+#~ msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+#~ msgstr "Angi øvre grense her.<br><br>Om du har valt å avgrense syning av artiklar etter alder, bestemmer talet kor mange dagar artiklar skal synast; artiklar eldre enn angjeve tal på dager, vil ikkje synast. Om du har valt å avgrense etter mengde, vil kun den angjevne mengd artikler (sortert etter dato) synast.<br><br>Om du angir 0, vil grenseverdien settast ut av funksjon, og alle artiklane vil synast."
+
+#~ msgid "Enter the name of the cemetery or other resting place where individual is buried."
+#~ msgstr "Angi namnet på gravstaden eller anna kvilestad der personen er gravlagt."
+
+#~ msgid "Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
+#~ msgstr "Angi eit telefonnummer, inlkudert landskode og eventuelt retningsnummer.<br><br>Døme:<ul><li>Noreg: +47 35 00 00 00</li><li>Tyskland: +49 25859 56 76 89</li><li>USA: +1 888 555-1212.</li></ul>La dette feltet stå tomt om du ikkje ønskjer å oppgi eit telefonnummer."
+
+#~ msgid "Entry text:"
+#~ msgstr "Tekst:"
+
+#~ msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+#~ msgstr "Kvar person i slektsbasen på dennee nettstaden har eit unikt ID-nummer.  Dersom du kjenner ditt eige ID-nummer, kan du oppgi det her. Om du ikkje huskar ID-nummeret eller ikkje kan finne det grunna personvern, ver venleg å oppgi nok informasjon i kommentarfeltet slik at administrator kan identifisere deg, og kunne gi deg ID-nummeret ditt."
+
+#~ msgid "Extend privacy to dead individuals"
+#~ msgstr "Utvid personvernsinnstillingar til avlidne personar"
+
+#~ msgid "External objects"
+#~ msgstr "Eksterne objekt"
+
+#~ msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+#~ msgstr "Ein FAQ (Frequently Asked Questions - Ofte stilte spørsmål) er ei liste med spørsmål og svar der ein kan informere om nettstaden sine retningslinjer, praksis og framgangsmåtar. Spørsmåla kan til dømes omhandle personvern, eigedomsrett, brukarkonti, upassande innhald, krav om kjeldetilvisingar, osb."
+
+#~ msgid "Facts for family records"
+#~ msgstr "Fakta for familieregistreringar"
+
+#~ msgid "Facts for individual records"
+#~ msgstr "Fakta for personregistreringar"
+
+#~ msgid "Facts for repository records"
+#~ msgstr "Fakta for arkivregistreringar"
+
+#~ msgid "Facts for source records"
+#~ msgstr "Fakta for kjelderegistreringar"
+
+#~ msgid "Family group information"
+#~ msgstr "Familieopplysningar"
+
+#~ msgid "Family tree clippings cart"
+#~ msgstr "Utklippsmappe"
+
+#~ msgid "Family with husband"
+#~ msgstr "Familie med ektemann"
+
+#~ msgid "Family with wife"
+#~ msgstr "Familie med hustru"
+
+#~ msgid "Father’s Birthplace - (Chapman format)"
+#~ msgstr "Far sin fødestad (Chapman format)"
+
+#~ msgid "Father’s age"
+#~ msgstr "Far sin alder"
+
+#~ msgid "Font"
+#~ msgstr "Skrifttype"
+
+#~ msgid "For LDS ordinances, this field records the temple where it was performed."
+#~ msgstr "I dette feltet kan du leggje inn kvar LDS (Mormoner) ordineringar fann stad."
+
+#~ msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
+#~ msgstr "Om du til dømes angir 2 ledd, vil personen kunne sjå barnebarn (barn + barn), tante (forelder + sysken), ste-dotter (ektemake + barn), men ikkje fetter (forelder + sysken + barn)."
+
+#~ msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "For best mogeleg syning på nettet nyttar <b>webtrees</b> teiknsettet UTF-8. Nokon program, som til dømes Family Tree Maker, kan ikkje importere GEDCOM-filer i UTF-8. Om du kryssar av denne ruta, vil fila konverterast frå <b>UTF-8</b> til <b>ANSI (ISO-8859-1)</b> ved nedlasting.<br><br>Kva format du treng, avheng av kva program du skal arbeide med den nedlasta GEDCOM-fila i. Les programmet sin dokumentasjon om du er i tvil.<br><br>Merk, for at spesialteikn skal stå uforandra, må du behalde fila i UTF-8 og finne ein annan måte å konvertere den på, til eit format der ditt program kan handsame spesialteikn.  Kontakt evt. programmet sin produsent eller forfattar.<br><br>Denne <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia-artikkel\"><b>Wikipedia-artikkelen</b></a> inneheld omfattende informasjon om UTF-8, med nyttige lenker vidare til andre nettstadar."
+
+#~ msgid "Foster child"
+#~ msgstr "Fosterbarn"
+
+#~ msgid "Foster father"
+#~ msgstr "Fosterfar"
+
+#~ msgid "Foster mother"
+#~ msgstr "Fostermor"
+
+#~ msgid "From email address"
+#~ msgstr "\"Frå\" e-postadresse"
+
+#~ msgid "GEDCOM statistics"
+#~ msgstr "Statistikk for slektsbasen"
+
+#~ msgid "Gedcom"
+#~ msgstr "Gedcom"
+
+#~ msgid "Generation "
+#~ msgstr "Generasjon "
+
+#~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#~ msgstr "Gjev brukarar høve til å velje eige tema (utsjånad) frå ein meny<br>Forutset at nytta tema har slik meny<br>Forutset òg at \"Tillat brukarar å velje utsjånad\" er sett til \"Ja\""
+
+#~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+#~ msgstr "Gjev besøkjande høve til å registere seg for å få ein konto på nettstadent.<br><br>Søkjaren vil motta ei e-postmelding med ein kode for å stadfeste søknaden.<br>Søknaden må dernest godkjennast av ein administrator før kontoen vert aktiveret."
+
+#~ msgid "He "
+#~ msgstr "Han "
+
+#~ msgid "He died"
+#~ msgstr "Han døydde"
+
+#~ msgid "He married"
+#~ msgstr "Han gifta seg med"
+
+#~ msgid "He resided at"
+#~ msgstr "Han var busett i"
+
+#~ msgid "He was born"
+#~ msgstr "Han blei fødd"
+
+#~ msgid "He was buried"
+#~ msgstr "Han vart gravlagd"
+
+#~ msgid "He was christened"
+#~ msgstr "Han blei døypt"
+
+#~ msgid "He was cremated"
+#~ msgstr "Han vart kremert"
+
+#~ msgid "Hello %s…"
+#~ msgstr "Hei %s …"
+
+#~ msgid "Hello %s…<br>Thank you for your registration."
+#~ msgstr "Hei %s og takk for søknaden din om å få ein brukarkonto."
+
+#~ msgid "Hello administrator…"
+#~ msgstr "Hei administrator …"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Hennar yrke var"
+
+#~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
+#~ msgstr "Her kan du leggje til eit faktum til posten du redigerar.<br><br>Vel fyrst eit faktum frå nedtrekkslista, og trykk so på knappen  <b>Legg til</b>. Alle tilgjengelege fakta som kan leggjast til i databasen, finn du i nedtrekkslista."
+
+#~ msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+#~ msgstr "Her kan du leggje til eit Kjelde-<b>Sitat</b> til posten.<br><br>Klikk på lenka og det kjem opp eit vindauge der du kan velje kjelda frå lista (Finn ID) eller opprette ei ny kjelde og dernest leggje til Sitatet.<br><br>Å leggje til kjelder er ein viktig del av slektsgranskinga då det gir andre mogelegheit til å  verifisere den informasjonen du presenterar."
+
+#~ msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
+#~ msgstr "Her kan du velge mellom to måtar å syne stadnamn. Om Ja er valt vil staden ha eit kort namn eller det aktuelle nivånamnet, om Nei, heile namnet.<br><b>Døme:<br>Hele navnet:</b> Chicago, Illinois, USA<br><b>Kort namn:</b> Chicago<br><b>Heile namnet:</b> Illinois, USA<br><b>Kort namn:</b> Illinois"
+
+#~ msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+#~ msgstr "Her vel du kva tekst som skal synast på innloggingssida. Du kan velje kva standardtekst som passar best for din nettstad. Du kan òg velje å skrive di eiga velkomsttekst. Sjå hjelpeteksta under <b>Eigendefinert velkomsttekst</b> for nærare informasjon.<br><br>Standardtekstene er:<ul><li><b>Standardtekst som seier at alle brukarar kan be om ein brukarkonto:</b><div class=\"list_value_wrap\"><center><b>Velkomen til desse slektssidene!</b></center><br>Nettstaden er open for alle besøkjande som har ein brukerkonto.<br><br>Har du en brukarkonto, kan du logge deg inn nedanfor. Om du ikkje har ein brukarkonto enno, kan du søkje om å få ein ved å klikke på lenka nedanfor.<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administrator av nettstaden aktivere kontoen din. Du vil motta ein e-post når den er godkjend.</div><br></li><li><b>Standardtekst som seier at administrator avgjer søknader om brukarkonto:</b><div class=\"list_value_wrap\"><center><b>Velkomen til desse slektssidene!</b></center><br>Tilgang til nettstaden er avgrensa til <u>autoriserte</u> brukarar.<br><br>Har du ein brukarkonto, kan du logge deg inn nedanfor. Om du ikkje har ein brukarkonto enno, kan du søkje om å få ein ved å klikke på lenka under.<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administrator av nettstaden anten godkjenne eller avslå søknaden din. Du vil motta ein e-post når søknaden er handsama.</div><br></li><li><b>Standardtekst som seier at kun familiemedlemer kan søkje om brukarkonto:</b><div class=\"list_value_wrap\"><center><b>Velkomen til desse slektssidene!</b></center><br>Tilgang til nettstaden er avgrensa til <u>familiemedlemer</u>.<br><br>Har du ein brukarkonto, kan du logge deg inn nedanfor. Om du ikkje har ein brukarkonto enno, kan du søkje om å få ein ved å klikke på lenka nedanfor.<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administrator av nettstaden anten godkjenne eller avslå søknaden din. Du vil motta ein e-post når søknaden er handsama.</div></li></ul>"
+
+#~ msgid "Hide &amp; show"
+#~ msgstr "Skjul &amp; syn"
+
+#~ msgid "His occupation was"
+#~ msgstr "Hans yrke var"
+
+#~ msgid "Hit count:"
+#~ msgstr "Tal på treff:"
+
+#~ msgid "Husband’s age"
+#~ msgstr "Ektemannen sin alder"
+
+#~ msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+#~ msgstr "Om ein person var kjend under eit kallenamn som ikkje er del av det formelle namnet, settast det i hermeteikn: <%s>Nils \"Kroknase\" /Olsson/<%s>."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Om Mediebrannmuren er aktivert, skal kopiar av vassmerka bileter i full størrelse lagrast på serveren i tillegg til dei same bileta utan vassmerke?<br><br>Om alternativet er sett til <b>Ja</b>, vil vassmerka bileter i full størrelse synast raskare, men krevje større lagringsplass på serveren."
+
+#~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
+#~ msgstr "Om Mediebrannmuren er aktivert, skal kopiar av vassmerka miniatyrbileter lagres på serveren i tillegg til dei same miniatyrbileta utan vassmerke?<br><br>Om alternativet er sett til <b>Ja</b>,  vil medielister som inneheld vassmerka miniatyrbileter verte genererert raskare, men detter krev større lagringsplass på serveren."
+
+#~ msgid "If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don't watermark the thumbnails."
+#~ msgstr "Om Mediebrannmuren er aktivert, skal miniatyrbileter vassmerkast? Medielister vil synast raskare om du ikkje vassmerkar miniatyrbileta."
+
+#~ msgid "If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here."
+#~ msgstr "Om Mediebrannmuren er aktivert, vil brukarar kun sjå vassmerka bileter om dei ikkje har tilgangsnivået som er spesifisert her."
+
+#~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+#~ msgstr "Dersom valet <b>Gi besøkjande høve til å be om ein brukarkonto</b> er aktivert, vil denne innstillinga avgjere om administrator må godkjenne registreringar.<br><br>Vel du <b>Ja</b>, vil alle nye brukarar først måtte bekrefte registreringa og deretter verte godkjende av ein administrator før dei kan logge seg inn. Vel du <b>Nei</b>, vil avmerkingsboksa <b>Godkjend brukar<br>[av Admin]</b> bli aktivert automatisk når brukarar bekreftar kontoen sin. Brukarane kan deretter logge seg inn direkte utan at administrator treng å godkjenne kontoen."
+
+#~ msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+#~ msgstr "Om denne personen har andre hendingar enn Død, Gravlegging eller Kremering seinare enn dette tal på år, vert personen rekna som \"nolevande\".  Born sine fødselsdatoar vert òg rekna som slike hendingar."
+
+#~ msgid "If you didn’t request an account, you can just delete this message."
+#~ msgstr "Dersom du ikkje har bede om å få ein konto, kan du berre slette denne e-posten."
+
+#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
+#~ msgstr "Bruk dei gitte verdiane om du ikkje kjenner desse innstillingane. Dei vil truleg fungere. Verdiane kan endrast seinare."
+
+#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
+#~ msgstr "Om du ikkje ynskjer å sende epost, til dømes om du køyrer webtrees med ein enkelt brukar eller på eigen PC, kan du slå av denne funksjonen."
+
+#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
+#~ msgstr "Om du har mange stadnamn som ikkje vert nytta, kan det ta noko lengre tid å generere lista."
+
+#~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
+#~ msgstr "Om du vil leggje til eit notat til denne posten, er dette staden.<br><br>Klikk på lenka, og eit vindauge vil kome opp der du kan skrive inn notatet. Når du er ferdig, klikk <b>Legg til</b> og lukk vindauget."
+
+#~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
+#~ msgstr "Ved å sette dette valet til <b>Ja</b>, gjev du brukarar av nettstaden din høve til å byte slektsdatabase i fall du har fleire slike.<br><br>Om du vel <b>Nei</b>, vil brukarar ikkje ha høve til å byte slektsdatabase."
+
+#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
+#~ msgstr "Om serveren sin sikkerheitspolicy tillet det, kan du be om auka minne og CPU tidsinnstillingar på <b>webtrees</b> si administrasjonsside. Om dette ikkje går, må administrator for server kontaktast."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
+#~ msgstr "I enkelte språkområde er det vanleg å skrive eit namn både med språket sitt eige alfabet og i latinsk form, dvs. som det ville blitt skrive eller uttala på språk basert på det latinske alfabetet, som til dømes norsk og engelsk.<br><br>Om du føretrekk å nytte eit ikkje-latinsk alfabet, som til dømes hebraisk, gresk, russisk, kinesisk eller arabisk, for å føre inn namn i dei vanlege namnefelta, kan du nytte dette feltet for å skrive inn det same namnet med latinske bokstaver. Begge versjonar av namnet vil synast i lister og diagram.<br><br>Sjølv om feltet kallast \"Latinsk\", er det sjølvsagt mogeleg å nytte andre alfabet enn det latinske. Dette kan vere aktuelt for japanske namn, der tre ulike alfabet kan førekome."
+
+#~ msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
+#~ msgstr "I enkelte språkområde er det vanleg å skrive eit namn både med språket sitt eige alfabet og i latinsk form, dvs. som det ville blitt skrive eller uttala på språk basert på det latinske alfabetet, som til dømes norsk og engelsk.<br><br>Om du føretrekk å å nytte det latinske alfabetet i standardfeltet, kan du her føre inn namnet med eit ikkje-latinsk alfabet som til dømes hebraisk, gresk, russisk, kinesisk eller arabisk. Begge versjonar av namnet vil synast i lister og diagram.<br><br>Sjølv om feltet kallast \"Hebraisk\", er det sjølvsagt mogeleg å nytte andre alfabet enn det hebraiske."
+
+#~ msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
+#~ msgstr "I enkelte land gjeld lov om personvern ikkje berre for nolevande personar, men òg for nyleg avlidne. Dette valet let deg utvide personvernet til òg å gjelde personar som er fødde eller døde innanfor eit gitt tal år. Om du let felta stå tome, vert funksjonen ikkje nytta."
+
+#~ msgid "In this month…"
+#~ msgstr "I denne månad …"
+
+#~ msgid "In this year…"
+#~ msgstr "I dette år …"
+
+#~ msgid "Include the individual’s immediate family?"
+#~ msgstr "Inkluder personen sin næraste familie"
+
+#~ msgid "Individual 1"
+#~ msgstr "Person 1"
+
+#~ msgid "Individual 2"
+#~ msgstr "Person 2"
+
+#~ msgid "Individual who lived the longest"
+#~ msgstr "Person som har levd lengst"
+
+#~ msgid "LDS temple"
+#~ msgstr "Mormon tempel"
+
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
+#~ msgid "Link ID"
+#~ msgstr "Lenke-ID"
+
+#~ msgid "Link this individual to an existing family as a child"
+#~ msgstr "Knyt denne personen til ein eksisterande familie som eit barn"
+
+#~ msgid "Link this individual to an existing family as a husband"
+#~ msgstr "Knyt denne personen til ein eksisterande familie som ektemann"
+
+#~ msgid "Link this individual to an existing family as a wife"
+#~ msgstr "Knyt denne personen til ein eksisterande familie som hustru"
+
+#~ msgid "Living individuals"
+#~ msgstr "Nolevande peronar"
+
+#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
+#~ msgstr "Last opp slektstre frå din eigen disk ved å nytte \"importer\"-funksjonen for kvar av filene."
+
+#~ msgid "Loading…"
+#~ msgstr "Laster…"
+
+#~ msgid "Location not removed: this location contains sub-locations"
+#~ msgstr "Staden er ikkje sletta: denne staden har andre stadar knytt opp til seg"
+
+#~ msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero."
+#~ msgstr "Lange lister over personar med same etternamn kan brytast opp i kortare underlister etter førebokstaven i førenamn.<br><br>Dette valet avgjer om underlister av etternamn skal nyttast.  Om oppdeling av lister ikkje er ønska , set du dette valet til null."
+
+#~ msgid "Main section blocks"
+#~ msgstr "Blokker i hovudseksjonen"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Seinaste dato for vigsel"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Tidlegaste dato for vigsel"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Stad for vigsel inneheld"
+
+#~ msgid "Marriage intention"
+#~ msgstr "Ekteskaps-intensjon"
+
+#~ msgid "Married name"
+#~ msgstr "Namn som gift"
+
+#~ msgid "Married surname"
+#~ msgstr "Etternamn som gift"
+
+#~ msgid "Merge from ID:"
+#~ msgstr "Flett frå ID:"
+
+#~ msgid "Merge to ID:"
+#~ msgstr "Flett til ID:"
+
+#~ msgid "Min. no. of occurrences to be a “common surname”"
+#~ msgstr "Min. førekomst for \"mest nytta etternavn\""
+
+#~ msgid "Most Viewed Items"
+#~ msgstr "Mest synte objekt"
+
+#~ msgid "Mother’s Birthplace - (Chapman format)"
+#~ msgstr "Mor sin fødestad (Chapman format)"
+
+#~ msgid "Mother’s age"
+#~ msgstr "Mor sin alder"
+
+#~ msgid "Move left"
+#~ msgstr "Flytt til venstre"
+
+#~ msgid "Move right"
+#~ msgstr "Flytt til høgre"
+
+#~ msgid "Name List"
+#~ msgstr "Namneliste"
+
+#~ msgid "No events for living individuals exist for the next %s day."
+#~ msgid_plural "No events for living people exist for the next %s days."
+#~ msgstr[0] "Ingen hendingar for nolevande personar finnast neste %s dag."
+#~ msgstr[1] "Ingen hendingar for nolevande personar finnast for dei neste %s dagane."
+
+#~ msgid "No events for living individuals exist for today."
+#~ msgstr "Ingen hendingar for nolevande personar finnast i dag."
+
+#~ msgid "No events for living individuals exist for tomorrow."
+#~ msgstr "Ingen hendingar for nolevende personar finnast for i morgon."
+
+#~ msgid "No records to display"
+#~ msgstr "Ingen postar å syne"
+
+#~ msgid "No such ID exists in this GEDCOM file."
+#~ msgstr "Ukjend ID i denne slektsbasen."
+
+#~ msgid "No temple - living ordinance"
+#~ msgstr "Ordinans under livstid - ikkje knytt til eit tempel"
+
+#~ msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
+#~ msgstr "Vanlegvis må alle endringar som vert gjort i slektstreet godkjennast av ein moderator. Dette alternativet let ein bruker gjere endringar utan å trenge ein moderator si godkjenning."
+
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
+#~ msgstr[0] "NB: “nolevande” vert definert (om død eller gravlegging ikkje er kjent) fram til %d år etter fødsel eller utrekna fødsel."
+#~ msgstr[1] "NB: “nolevande” vert definert (om død eller gravlegging ikkje er kjent) fram til %d år etter fødsel eller utrekna fødsel."
+
+#~ msgid "Nuku’Alofa, Tonga"
+#~ msgstr "Nuku'Alofa, Tonga"
+
+#~ msgid "Number of months since the last login for a user’s account to be considered inactive: "
+#~ msgstr "Tal på månader sidan siste innlogging, før ein brukarkonto vert rekna for inaktiv: "
+
+#~ msgid "Oldest living individuals"
+#~ msgstr "Eldste nolevande person"
+
+#~ msgid "On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality."
+#~ msgstr "Dette diagram syner ein eller fleire personar langsmed ein vannrett tidslinje, slik at du kan sjå korleis livslaupa til ulike personar overlappar kvarandre.<br><br>Du kan leggje til personar ein og ein eller etter familie. Det tidlegare utvalet vert behalde etter som du legg til fleire personar i diagrammet. Du kan tøme lista ved å klikke på <b>Nullstill diagram</b>.<br><br>Du kan òg leggje til personar gjennom å søkje etter dei etter tidsbolk eller stad."
+
+#~ msgid "On this day…"
+#~ msgstr "På denne dag …"
+
+#~ msgid "Online editing"
+#~ msgstr "Online redigering"
+
+#~ msgid "Orientation"
+#~ msgstr "Orientering"
+
+#~ msgid "Other folder… please type in"
+#~ msgstr "Anna mappe… skriv inn"
+
+#~ msgid "Outgoing server (SMTP) name"
+#~ msgstr "Utgående servernamn (SMTP)"
+
+#~ msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP-utvidinga \"%1$s\" er slått av. Utan denne vil følgjande eigenskapar ikkje fungere: %2$s. Spør din serveradministrator om å få den slått på."
+
+#~ msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP-utvididinga \"%s\" er slått av, og du kan difor ikkje installere webtrees. Kontakt administrator for serveren for å få slått på denne funksjonen."
+
+#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
+#~ msgstr "PHP-innstillinga \"%1$s\" er slått av. Utan denne vil følgjande eigenskapar ikkje fungere: %2$s. Kontakt din serveradministrator for å få den slått på."
+
+#~ msgid "Page"
+#~ msgstr "Side"
+
+#~ msgid "Page size"
+#~ msgstr "Sidestorleik"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Foreldre og sysken"
+
+#~ msgid "Parent’s age"
+#~ msgstr "Forelder sin alder"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Anetre"
+
+#~ msgid "Place of LDS baptism"
+#~ msgstr "Stad for mormondåp"
+
+#~ msgid "Place of LDS child sealing"
+#~ msgstr "Stad for barns besegling (mormon)"
+
+#~ msgid "Place of LDS endowment"
+#~ msgstr "Stad for Mormonlegat"
+
+#~ msgid "Place of LDS spouse sealing"
+#~ msgstr "Stad for ektefelles besegling (mormon)"
+
+#~ msgid "Place of adoption"
+#~ msgstr "Stad for adopsjon"
+
+#~ msgid "Place of blessing"
+#~ msgstr "Stad for velsigning"
+
+#~ msgid "Place of cremation"
+#~ msgstr "Stad for kremering"
+
+#~ msgid "Place of emigration"
+#~ msgstr "Stad for emigrasjon"
+
+#~ msgid "Place of event"
+#~ msgstr "Stad for hending"
+
+#~ msgid "Place of immigration"
+#~ msgstr "Stad for immigrasjon"
+
+#~ msgid "Place of naturalization"
+#~ msgstr "Stad for Statsborgarskap"
+
+#~ msgid "Place of ordination"
+#~ msgstr "Stad for ordinasjon"
+
+#~ msgid "Place of residence"
+#~ msgstr "Namn på bustad"
+
+#~ msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.<br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+#~ msgstr "Stadsnamn bør førast inn i tråd med gjeldande genealogiske standardar. I slektsforsking oppgir ein stadnamn med den mest spesifikke informasjonen om ein stad fyrst, og deretter trinn for trinn opp til den mest generelle, med komma mellom dei ulike nivå. Namna du nyttar for å angi stadane bør representere dei ulike nivåa i stat- eller kirkeadministrasjonen der sentrale register vert ført og oppbevart.<br><br>Til dømes, ein stad som Brødstadbotn i Troms kunne førast inn som \"Brøstadbotn, Dyrøy, Troms, NOR\". Første del av stadnemninga, Brøstadbotn, er staden der hendinga fann stad. Neste del, \"Dyrøy\", er kommunen. \"Troms\" er fylket, og \"NOR\" er landet. Det er viktig å angi alle nivåa, sidan administrasjonen på kvart nivå kan føre relevante regiser.<br><br>Om eit nivå i stadnemninga er ukjent, bør du angi dette med en tom plass mellom to komma. Om du til dømes ikkje veit kva kommune Brøstadbotn ligg i, bør du føre det inn som  \"Brøstadbotn, , Troms, NOR. Annars, om du til dømes ikkje veit meir enn at ein person er fødd i Troms, kan du kunne føre dette inn som  \", , Troms, NOR\".<br><br>Du kan nytte <b>Finn stad</b> for å finne stadar som allereie førekjem i databasen."
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Skriv ut grunnleggjande hendingar når dei er utan innhald?"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-awwal"
+#~ msgstr "Rabi' al-awwal"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabi’ al-thani"
+#~ msgstr "Rabi' al-thani"
+
+#~ msgid "Recent years (&lt; 100 yrs)"
+#~ msgstr "Dei siste 100 åra"
+
+#~ msgid "Registry officer"
+#~ msgstr "Sorenskrivar"
+
+#~ msgctxt "FEMALE"
+#~ msgid "Registry officer"
+#~ msgstr "Sorenskrivar"
+
+#~ msgctxt "MALE"
+#~ msgid "Registry officer"
+#~ msgstr "Sorenskrivar"
+
+#~ msgid "Religious institution"
+#~ msgstr "Religiøs institusjon"
+
+#~ msgid "Remove this location?"
+#~ msgstr "Slette denne staden?"
+
+#~ msgid "Right section blocks"
+#~ msgstr "Blokker i høgre kolonne"
+
+#~ msgid "SMTP port"
+#~ msgstr "SMTP port"
+
+#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
+#~ msgstr "Lagre alle dine slektstre på eigen disk ved å nytte \"eksporter\"-funksjonen for kvar av filene."
+
+#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
+#~ msgstr "Søk og/eller erstatt data i din GEDCOM mha. enkle søk eller avansert mønster-samsvar."
+
+#~ msgid "Search for individuals to add to Add Links list."
+#~ msgstr "Søk etter personar som skal leggjast til lenkelista"
+
+#~ msgid "Security"
+#~ msgstr "Tryggleik"
+
+#~ msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
+#~ msgstr "Vel ei nemning frå lista. Om du vel <b>Gudfar</b>, så tyder det: <i>Denne personen er Gudfar til den synte personen</i>."
+
+#~ msgid "Select events"
+#~ msgstr "Vel hendingar"
+
+#~ msgid "Send message"
+#~ msgstr "Send melding"
+
+#~ msgid "Sender email address"
+#~ msgstr "Avsendar si e-postadresse"
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
+#~ msgstr "Angi tal på generasjonar som skal synast i etterkomar- og anediagram."
+
+#~ msgid "Set the maximum number of generations to display on descendancy charts."
+#~ msgstr "Angi høgste tal på generasjonar som skal synast i diagram for etterkomarar."
+
+#~ msgid "Set the maximum number of generations to display on pedigree charts."
+#~ msgstr "Angi høgaste tal på generasjonar som skal synast på anediagram."
+
+#~ msgid "Set the privacy access level for all dead individuals."
+#~ msgstr "Vel nivå for personvern for alle avdøde personar."
+
+#~ msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
+#~ msgstr "Ved å velje <b>Ja</b> her vil LDS (Mormon) ordineringskodar synast i diagrambokser.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>Ein person som har alle ordineringane vil ha <b>BESP</b> skrive ut etter namnet sitt.  Manglande ordineringar vert synt som <b>_</b> i staden for bokstavkoden.  Til dømes, <b>BE__</b> indikerer manglande <b>S</b> og <b>P</b> ordineringar."
+
+#~ msgid "Shared note contains:"
+#~ msgstr "Delt notat inneheld:"
+
+#~ msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
+#~ msgstr "Eit Delt notat er eit fritt tekstfelt, og det vil synast på Fakta seksjonen på personsida.<br><br>Kvartt Delt notat kan knytast til meir enn ein person, familie, kjelde eller hending."
+
+#~ msgid "Shared notes found"
+#~ msgstr "Delte notat funne"
+
+#~ msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
+#~ msgstr "Delte notat, sameleis som vanlege notat, er fri tekst. Til skilnad frå vanlege notat kan eit delt notat knytast til meir enn ein person, familie, kjelde eller hending.<br><br>Ved å klikke på lenka til delte notat kan du opprette ei lenke til eit eksisterande delt notat eller lage eit nytt og samtidig lenke til det. Om det allereie er oppretta ei lenke til eit eksisterende delt notat, kan du òg endre innhaldet i dette.<br><ul><li><b>Knyt til eit eksisterande delt notat</b><div style=\"padding-left:20px;\">Om du allereie kjenner ID-nummeret til det notat du vil knyte til, kan du føre det inn direkte i feltet.<br><br>Om du klikkar på <b>Finn delt notat</b>-ikonet, kan du der søkje i teksta til alle dei delte notata du har og velje eitt av dei. Det valte notat sitt ID-nummer vil leggjast inn i feltet automatisk.<br><br>Du må klikke på <b>Legg til</b> for å oppdatere den opprinnelege posten.</div><br></li><li><b>Opprett eit nytt delt notat</b><div style=\"padding-left:20px;\">Om du klikker på <b>Opprett eit nytt delt notat</b>-ikonet, vil eit nytt vindauge opnast, der du kan føre inn ny tekst. Som med alminnelege notat kan du òg skrive inn URL adresser<br><br>Når du klikkar på <b>Lagre</b>, vil du sjå ei melding med ID-nummeret til det notat du nettopp har laga. Klikk på meldinga for å lukke vindauget og overføre det nye ID-nummeret direkte til ID-nummerfeltet. Om du berre lukker vindauget, vil ID-nummeret ikkje verte kopiert automatisk.<br><br>Du må klikke på <b>Legg til</b> for å oppdatere den originale posten.</div><br></li><li><b>Endre eit eksisterande delt notat</b><div style=\"padding-left:20px;\">Når du klikker på <b>Endre delt notat</b>-ikonet, vil eit nytt vindauge opnast, der du kan endre teksta i det delte notatet. Som med alminnelege notat kan du òg skrive inn URL adresser.<br><br>Når du klikker på <b>Lagre</b>, vil teksten oppdaterast. Du kan lukke vindauget og dernest klikke på <b>Lagre</b> att.<br><br>Når du endrar tekst i eit delt notat, vil forandringane synast overalt der det delte notatet er knytt til. Nye lenker som du opprettar etter endringa, vil òg nytte den oppdaterte teksta.</div></li></ul>"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sha’aban"
+#~ msgstr "Sha'aban"
+
+#~ msgid "She "
+#~ msgstr "Ho "
+
+#~ msgid "She died"
+#~ msgstr "Ho døydde"
+
+#~ msgid "She married"
+#~ msgstr "Ho gifta seg med"
+
+#~ msgid "She resided at"
+#~ msgstr "Ho var busett i"
+
+#~ msgid "She was born"
+#~ msgstr "Ho blei fødd"
+
+#~ msgid "She was buried"
+#~ msgstr "Ho vart gravlagd"
+
+#~ msgid "She was christened"
+#~ msgstr "Ho blei døypt"
+
+#~ msgid "She was cremated"
+#~ msgstr "Ho vart kremert"
+
+#~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
+#~ msgstr "Skal GeoNames-database nyttast til å finne fleire forslag til stadnamn?<br><br>Når dette valet er sett til <b>Ja</b>, vil det verte søkt i GeoNames-databasen for å finne forslag til stadnamn som vert skrive inn.  Når det er sett til <b>Nei</b>, vil det søkjast kun i den lokale databasen over stadnamn.  Etterkvart som du skriv inn meir av stadnamnet, vil forslaga verte meir nøyaktig.  Dette valet kan seinke innskrivinga av data, om du har langsamt nettsamband.<br><br>GeoNames geografisk database er gratis tilgjengeleg. Den inneheld over 8,000,000 geografiske namn."
+
+#~ msgid "Show acceptable use agreement on “Request new user account” page"
+#~ msgstr "Syn avtale om akseptabel bruk ved søknad om brukarkonto"
+
+#~ msgid "Show age of parents next to child’s birthdate"
+#~ msgstr "Syn alder til foreldre ved sia av fødselsdatoen til borna"
+
+#~ msgid "Show all places in a list"
+#~ msgstr "Syn alle stadnamn"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Syn born til forfedrar?"
+
+#~ msgid "Show dead individuals"
+#~ msgstr "Syn avlidne personar"
+
+#~ msgid "Show details"
+#~ msgstr "Syn detaljar"
+
+#~ msgid "Show highlight images in individual boxes"
+#~ msgstr "Syn hovudbilete ved sidan av personnamn i diagram"
+
+#~ msgid "Show inactive places"
+#~ msgstr "Syn stadnamn som ikkje er i bruk"
+
+#~ msgid "Show individuals born more than 100 years ago."
+#~ msgstr "Syn personar fødde for meir enn 100 år sidan."
+
+#~ msgid "Show individuals born within the last 100 years."
+#~ msgstr "Syn personar som er fødde innan dei siste 100 år."
+
+#~ msgid "Show individuals who are alive or couples where both partners are alive."
+#~ msgstr "Syn nolevande personar eller par der båe ektemakane er i live."
+
+#~ msgid "Show individuals who are dead or couples where both partners are deceased."
+#~ msgstr "Syn avdøde personar eller par der båe ektemakane er døde."
+
+#~ msgid "Show individuals who died more than 100 years ago."
+#~ msgstr "Syn personar som døydde for meir enn 100 år sidan."
+
+#~ msgid "Show individuals who died within the last 100 years."
+#~ msgstr "Syn personar som døydde innan dei siste 100 år."
+
+#~ msgid "Show notes?"
+#~ msgstr "Syne notatar?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Syn yrker?"
+
+#~ msgid "Show only events of living individuals?"
+#~ msgstr "Syn kun hendingar for nolevande personar"
+
+#~ msgid "Show only individuals of whom the gender is not known."
+#~ msgstr "Syn kun personar der kjønn ikkje er kjent."
+
+#~ msgid "Show only individuals, events, or all?"
+#~ msgstr "Syne kun personar, hendingar, eller alle?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Syn ventande endringar"
+
+#~ msgid "Show photos?"
+#~ msgstr "Syn bileter?"
+
+#~ msgid "Show places in hierarchy"
+#~ msgstr "Syn stadnamn etter nivå"
+
+#~ msgid "Show related individuals/families"
+#~ msgstr "Syn slekta personar/familier"
+
+#~ msgid "Show residences?"
+#~ msgstr "Syn bustader?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Syn kjelder?"
+
+#~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
+#~ msgstr "Syn kun \"lauv\", dvs. nolevende personar eller par som ikkje har born registrert i dabasen."
+
+#~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
+#~ msgstr "Syn kun \"patriarkar\", dvs. personar eller par som ikkje har forfedrar registrert i databasen."
+
+#~ msgid "Showing %1$s to %2$s of %3$s"
+#~ msgstr "Syner %1$s til %2$s av %3$s"
+
+#~ msgid "Sister"
+#~ msgstr "Syster"
+
+#~ msgid "Social security number"
+#~ msgstr "Personnummer"
+
+#~ msgid "Son"
+#~ msgstr "Son"
+
+#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
+#~ msgstr "Kjeldetilvisingar kan inkludere felt for å lagre informasjon om kvaliteten på data (primærkjelde, sekundærkjelde, osb.) og datoen hendinga vart registrert i kjelda.  Om du ikkje nyttar desse felta kan du deaktivere dei når du opprettar nye kjeldertilvisingar."
+
+#~ msgid "Sources to the events"
+#~ msgstr "Kjelder for hendingar"
+
+#~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
+#~ msgstr "Angir om meldingar som vert sende i <b>webtrees</b> skal lagrast i databasen. Om dette vert sett til <b>Ja</b>, vil meldingane vere tilgjengelege for innlogga brukarar. Om sett til <b>Nei</b>, vert meldingar kun sende som e-post."
+
+#~ msgid "Spouse"
+#~ msgstr "Ektefelle"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Ektefeller og born"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Endringar frå og med"
+
+#~ msgid "Surname option"
+#~ msgstr "Alternativ for etternamn"
+
+#~ msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+#~ msgstr "Denne lista syner dei favorittar som du har valt på \"Mi side\". Den syner òg favorittar for gjeldande GEDCOM, valt av administrator. Klikkar du på ein av favorittane, vert du teken til denne personen si informasjonsside.<br><br>Informasjon om korleis leggje til favorittar finn du på \"Mi side\"."
+
+#~ msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+#~ msgstr "Media Viewer kan syne ei lenke, der brukarar kan laste ned mediefila til lokal PC.<br><br>Du vil kanskje skjule nedlastningslenka med omsyn til tryggleik."
+
+#~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
+#~ msgstr "Feltet Type gir deg høve til å angi ei brukardefinert hending.  Feltet er har ikke bunde format, slik at du står fritt til å velje innhald."
+
+#~ msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+#~ msgstr "Administratoren til nettstaden har fått beskjed om søknaden.<br>Så snart administrator har godkjent kontoen din,<br>kan du logge deg inn med ditt brukarnamn og passord."
+
+#~ msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+#~ msgstr "Utklippsholdaren let deg ta \"utklipp\" frå slektstreet og lagre desse i ei GEDCOM-fil, som kan lastast ned og importerast i eit anna slektsprogram.<br><ul><li>Korleis ta utklipp?<br>Dette er enkelt. Overalt der du ser eit klikkbart namn (person, familie eller kjelde) kan du gå til personen si Fakta-side. Der vil du finne menypunktet <b>Legg i utklippsmappa</b> i hovedmenyen. Når du klikker på denne lenken, kan du velje mellom ulike alternativ for kva som skal med i utklippet.</li><li>KOrleis laste dette ned?<br>Så snart du har lagt til utklipp i di mappe, kan du laste desse ned ved å klikke på <b>Last ned</b>. Følg instruksjonane og lenkene.</li></ul>"
+
+#~ msgid "The individual to be contacted about technical questions or errors encountered on your site."
+#~ msgstr "Den personen besøkjande kan kontakte i høve tekniske spørsmål eller feil på nettstaden."
+
+#~ msgid "The individual to contact about the genealogical data on this site."
+#~ msgstr "Den brukaren besøkjande kan kontakte vedrørande slektsmaterialet på nettstaden din."
+
+#~ msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+#~ msgstr "Tal på år etter fødsel kan leggjast inn på fana for personvern i feltet \"Antatt maksimal levetid\"."
+
+#~ msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
+#~ msgstr "Mediefilene du lastar opp kan - og bør kanskje - kallast noko anna på serveren enn på di lokale datamaskin. Ofte vil det lokale filnamnet ha meining for deg, men vere langt mindre meiningsfullt for andre besøkjande på nettstaden. Det er dessutan ei mogelegheit for at båe du og ein annan brukar vil laste opp ei fil som heiter \"bestemor.jpg\".<br><br>I dette feltet angjev du det nye namnet på fila du lastar opp. Det namnet du skriv her, vil også verte nytta til å namngi miniatyrbilete som høyrer til biletet, og som anten lastast opp separat eller genererast automatisk. Du treng ikkje å føre inn filtillegget  (jpg, gif, pdf, doc, osb.)<br><br>. Lat feltet stå tomt for å behalde det opprinnelege namnet på fila."
+
+#~ msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
+#~ msgstr "Autoritetsberande institusjon, føretak, person eller anna eining.<br><br>Til dømes ein person sin arbeidsgjevar, kyrkje som administrerar ritual eller hendingar, eller ein institusjon som er ansvarleg for å føre/oppbevare registreringar."
+
+#~ msgid "The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>."
+#~ msgstr "Portnummeret som skal nyttast for oppkopling til SMTP-serveren.  Normalt er dette port <b>25</b>."
+
+#~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
+#~ msgstr "Det er valfritt å nytte prefiks, men vert tilrådd. Ved å gje tabellen eit unikt prefiks, kan fleire applikasjonar dele same database. \"wt_\" er føreslått, men du står fritt til å velje."
+
+#~ msgid "The regex appears to contain an error.  It can’t be used."
+#~ msgstr "Din regex ser ut til å innehalde feil og kan ikkje brukast."
+
+#~ msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
+#~ msgstr "Tema kan veljast på tre nivå: brukar, GEDCOM og nettstad. Brukarinnstillingar har høgare prioritet enn GEDCOM-innstillingar, som i sin tur står høgare enn innstillingar for nettstaden. Om ein vel\"standardtema\" på brukarnivå, nyttast innstillinga for den gitte GEDCOM. Om ein vel \"standardtema\" på GEDCOM-nivå, nyttast innstillinga for nettstaden."
+
+#~ msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
+#~ msgstr "Dette slektstreet (GEDCOM) blei sist oppdatert #gedcomUpdated#. Det er til saman #totalSurnames# etternamn i slektstreet. Den eldste innføringa er #firstEventName#s #firstEventType# i #firstEventYear#. Den siste hendinga er #lastEventName#s #lastEventType# i #lastEventYear#.<br><br>Om du har kommentarar eller spørsmål, kontakt #contactWebmaster#."
+
+#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
+#~ msgstr "Denne slektsfila (GEDCOM) blei laga med <b>%1$s</b> den <b>%2$s</b>."
+
+#~ msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+#~ msgstr "Denne blokka let anetre-, etterkomar- eller timeglasdiagram synast på Startsida eller Mi Side. Av plassgrunnar bør diagramma berre plasserast i venstre spalte.<br><br>Når denne blokka vert synt på Startsida, er proband (personen diagrammet går ut i frå) fastsett av administrator. Når den vert synt på brukarar sine eigentilpassa sider (Mi Side), vil det vere bestemt av brukaren sjølv.<br><br>Diagramma fungerar på same måte som når dei vert henta frå menyane. Klikk på ein persons for å sjå fleire detaljar om vedkomande."
+
+#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
+#~ msgstr "Denne blokka vil syne dei 10 mest synte personane/familiane.  Denne blokka krev at teljaren er aktivert i GEDCOM-innstillingane."
+
+#~ msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
+#~ msgstr "Dersom dette valet er merka av, vil brukarar som er logga på, sjå kva andre brukarar som er logga på.<br><br>Ved å ikkje merke av dette valet, vil andre ikkje kunne sjå om nokon er logga på, og du vil heller ikke kunne sjå andre brukarar."
+
+#~ msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+#~ msgstr "I dette feltet kan du angi kva kjelde faktaopplysninga er knytta til.  Feltet skal KUN inneholde ein kjelde-ID.  Ved sia av feltet synes den noverande tittelen for gjeldande kilde-ID.  Bruk valet <b>Finn ID</b> for å søke etter ID-nummeret til kjelda.  Om ein let feltet stå tomt, fjernast heile kjeldetilvisinga."
+
+#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Dette feltet styrer rekkefølgjen som FAQ-elementa vert synt i.<br><br>Du treng ikkje å leggje inn sekvensnummer i rekkefølgje. Om du let det vere hol i nummerrekkefølgja, kan du setje inn andre element seinare. Om du til dømes nyttar tala 1, 6, 11, 16, kan du seinare setje inn element med dei manglande sekvensnummer. Negative tal og null er tillatne, og kan nyttast til å setje inn element føre det fyrste.<br><br>Når meir enn eitt FAQ-element har same sekvensnummer, vil berre eitt av desse elementa vere synleg."
+
+#~ msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
+#~ msgstr "Her kan du endre kalenderåret. Skriv inn eit år i feltet og trykk  <b>Enter</b> på tastaturet for å syne ønska kalenderår.<br><br><b>Avanserte funksjonar</b> for <b>Syn år</b><dl><dt><b>Meir enn eitt år</b></dt><dd>Søkje på datoar innanfor ein periode på fleire år.<br><br>Tidbolkar er <u>inklusive</u>: Det vil seie, dei strekkjer seg fra 1. januar i det fyrste året i perioden til 31. desember i det siste året. Her er nokre døme på bolkar<br><br><b>1992-5</b> for alle hendingar frå 1992 til 1995.<br><b>1972-89</b> for alle hendingar frå 1972 til 1989.<br><b>1610-759</b> for alle hendingar frå 1610 til 1759.<br><b>1880-1905</b> for alle hendingar frå 1880 til 1905.<br><b>880-1105</b> for alle hendingar frå 880 to 1105.<br><br>For å sjå alle hendingar i eit bestemt tiår eller århundre, kan du erstatte det siste sifferet i årstalet med <b>?</b>. Tiø dømes <b>197?</b> for alle hendingar frå 1970 til 1979 eller <b>16??</b> for alle hendingar på 1600-talet.<br><br>Om ein vel ein tidbolk over år, skifter kalenderen til årssyning.</dd></dl>"
+
+#~ msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+#~ msgstr "I dette feltet kan du føre inn ID-nummer for personar som skal leggjast til i Utklippsmappa. I neste trinn kan du velje kven av personen sine slektningar som skal takast med.<br><br>Om du ikkje kjenner personen sitt ID-nummer, kan du søkje på namn ved å klikke på personikonet ved sia av \"Legg til\"-knappen."
+
+#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
+#~ msgstr "Dette er ei kommaseparert liste med GEDCOM-kodar for dei fakta som skal synast når ein ny person vert lagt til. Til dømes, om BIRT er med på lista, vil felt for fødselsdato og fødestad verte synt på skjemaet."
+
+#~ msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
+#~ msgstr "Dette er ei lenke til opplysningane om deg i slektstreet. Om dette ikkje er riktig person, ver venleg å kontakte administrator."
+
+#~ msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+#~ msgstr "Dette er lista over GEDCOM-fakta som brukarar kan leggje til familier.  Du kan endre denne lista ved å ta bort eller leggje til faktakodar, òg eigendefinerte om naudsynt.  Faktanamn som er på denne lista kan ikkje samstundes vere på lista <i>Unike familiefakta</i>."
+
+#~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
+#~ msgstr "Dette er namnet på SMTP-serveren for utgåande mail. Døme: <b>smtp.foo.bar.com</b>.<br><br>Verdiar for nokre vanlege leverandørar:<br><br><b>Gmail<br></b><br><b>Namn på utgåande server (SMTP):</b> smtp.gmail.com<br><b>SMTP-Port:</b> 465 eller 587<br><b>Sikker forbindelse:</b> SSL<br><br><b>Hotmail<br></b><br><b>Namn på utgåande server (SMTP):</b> smtp.live.com<br><b>SMTP-port:</b> 25 eller 587<br><b>Sikker forbindelse:</b> TLS<br><br><b>Yahoo Mail Plus (for tida ein betalt teneste)<br></b><br><b>Namn på utgående server (SMTP):</b> smtp.mail.yahoo.com<br><b>SMTP-port:</b> 25"
+
+#~ msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
+#~ msgstr "Dette er namnet på SMTP-serveren. 'localhost' tyder at mailserveren køyrer på same computer som din webserver."
+
+#~ msgid "This is used in the \"From:\" header when sending mails."
+#~ msgstr "Vert nytta i \"Frå:\"-feltet ved sending av e-post."
+
+#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
+#~ msgstr "Vert nytta i \"Avsendar\"-feltet ved sending av e-post. Er ofte det same som i \"Frå\" feltet."
+
+#~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br><br>Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br><br>When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
+#~ msgstr "Med dette alternativet syner <b>webtrees</b> alle personar som har ei tilknyting til personen eller familien i søkjeresultatet. Det motsatte - å vise alle personar/familiar som ein person i søkjeresultatet er assosiert med - er ikkje mogeleg.<br><br>Til dømes: Anta at person <b>A</b> er gudfar til person <b>B</b>. Dette forholdet er gjeve med ein ASSO-kode i person <b>B</b> sin GEDCOM-post. Det fins ingen tilsvarande kode i person <b>A</b> sin GEDCOM-post.<br><br>Når dette alternativet er sett til <b>Ja</b> og søkjeresultatet omfattar <b>B</b>, vil <b>A</b> følgje med automatisk på grunn av ASSO-koda i <b>B</b> sin GEDCOM-post. Men om søkjeresultatet omfattar <b>A</b>, vil <b>B</b> ikkje kome med, sidan det ikkje fins nokon motsvarande ASSO-kode hjå <b>A</b>."
+
+#~ msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
+#~ msgstr "Dette valet avgjer om notat- og kjeldereferansar som er knytte til fakta skal synast på fanene for notatar og kjelder på personsider.<br><br>Normalt syner notatar- og kjeldefanene berre notat- og kjelderreferansar som er knytte direkte til personen sin post.  Desse kallast <i>nivå 1</i> noter- og kildereferanser.<br><br>Valet <b>Ja</b> vil resultere i at desse fanene òg vil syne notat- og kjeldereferansar tilhøyrande ulike fakta i personposten.  Desse er <i>nivå 2</i>-notat og kjelde referansar avdi dei ulike faktapostane er nivå 1."
+
+#~ msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
+#~ msgstr "Dette valet avgjer om alderen til far og mor til et barn skal synast ved sia av fødselsdatoen til barnet i diagram"
+
+#~ msgid "This option controls whether or not to show the Birth and Death details of an individual on charts."
+#~ msgstr "Dette alternativet fastset om detaljar for fødsel og dødsfall skal synast i diagram eller ikkje."
+
+#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgstr "Dette valet fastset om ein person sitt kjønn skal synast med ikon på diagram eller ikkje.<br><br>Sidan kjønn òg er indikert med farge på boksene, vil ikke dette valet altså ikkje skjule ein person sitt kjønn. Valet vil kun ta bort duplisert informasjon frå boksene."
+
+#~ msgid "This option enables online editing features for this database so that users with Edit privileges may update data online."
+#~ msgstr "Aktiverar online-redigering for denne databasen, slik at brukarar med redigeringsrett kan oppdatere dette familietreet online."
+
+#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
+#~ msgstr "Dette valet fastset om sletstreet skal synast liggjande eller ståaende."
+
+#~ msgid "This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
+#~ msgstr "Dette valgt er som <b>webtrees</b>' interne meldingar, med eitt tillegg. I tillegg til at meldinga synast i det interne systemet, vil ein kopi av meldinga verte send til den e-postadressa du har oppgjeve under Min konto.  Dette er standard kontaktmetode."
+
+#~ msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
+#~ msgstr "Dette valet aktiverar alle personvernsinnstillingar og skjuler dermed alle detaljar om nolevande personar, i samsvar med innstillingane på fana for Personvern på kvar enkel GEDCOM si kofigurasjonsside."
+
+#~ msgid "This option will generate thumbnails for all files in the current directory which don't already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br><br>If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links."
+#~ msgstr "Funksjonen lagar miniatyrbileter for alle filene i mediemappa som enno ikkje har slike. Dette er meir praktisk enn å klikke <b>Lag miniatyrbilete</b> for kvar enkel fil.<br><br>Om du vil behalde kontrollen med kva filer som skal eller ikkje skal ha miniatyrbileter, bør du ikkje nytte denne funksjonen. Klikk i staden på dei relevante <b>Lag miniatyrbilete</b>-lenkene."
+
+#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Dette valet let deg flytte eit element nedeover på FAQ-sida.<br><br>Kvar gong du gjer bruk av dette valet, vil FAQ-posisjonnummeret for dette elementet auke med ein.  Du kan få same effekt ved å redigere det aktuelle elementet og endre FAQ-posisjonsfeltet.  Når fleire enn eitt element har same posisjonsnummer, vil kun eitt av elementa vere synleg."
+
+#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+#~ msgstr "Dette valet let deg flytte eit element oppover på FAQ-sida.<br><br>Kvar gong du gjer bruk av dette valet, vil FAQ-posisjonnummeret for dette elementet minke med ein.  Du kan få same effekt ved å redigere det aktuelle elementet og endre FAQ-posisjonsfeltet.  Når fleire enn eitt element har same posisjonsnummer, vil kun eitt av elementa vere synleg."
+
+#~ msgid "This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
+#~ msgstr "Dette valet vil behalde familieband i private postar. Det tyder at du vil sjå tome \"private\" bokser i stamtreet og andre diagramer med private personar."
+
+#~ msgid "This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server’s software, as it relates to PHP and <b>webtrees</b>, can be viewed."
+#~ msgstr "Denne sida gir utførleg informasjon om serveren der <b>webtrees</b> er installert. Her finn du konfigurasjonsdetaljar om serveren si programvare, som har med PHP og <b>wetrees</b> å gjere."
+
+#~ msgid "This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent."
+#~ msgstr "Denne sida let deg slå saman to GEDCOM-postar frå same GEDCOM-fil.<br><br>Dette kan vere nyttig om ein har fletta to GEDCOM-filer og no har duplikat av fleire personar, familiar og kjelder.<br><br>Prosessen består av tre trinn.<br><ol><li>Før inn to ID-ar. ID-ane <u>må</u> vere av same slag. Du kan til dømes ikkje flette saman ein person og ein familie eller ein familie og ei kjelde.<br>I feltet <b>Slå saman til ID:</b> skriv du inn ID for den posten du vil skal behaldast etter samanslåing.<br>I feltet <b>Slå saman frå ID:</b> skriv du inn ID for den posten som skal slettast etter samansåinga.</li><li>Vel kva fakta som skal behaldast frå dei to postane når dei vert slått saman. Klikk tilhøyrande boksar for å merke av dei fakta du vil behalde.</li><li>Kontroller resultatet av samanslåinga.</li></ol>Nokon med administrasjonsrettar ma kanskje godkjenne dei endringane du har gjort før dei vert lagra for godt."
+
+#~ msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#~ msgstr "Denne rolla har dei same rettar som Medlem, i tillegg til retten til å leggje til, endre og slette data. Alle endringar må godkjennast av ein moderator, med mindre innstillinga \"Godkjenn endringar automatisk\" er aktivert for denne brukaren."
+
+#~ msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+#~ msgstr "Denne delen gjer det mogeleg å leggje til ei ny kjeldetilvising til den gjeldande faktaposten.<br><br>I kjeldefeltet angir du ID til kjelda.  Om du må opprette ny kjelde, klikkar du på <b>Opprett ei ny kjelde</b>.  I feltet for tilvisingsdetaljar kan du angi sidenummer eller anna informasjon som kan hjelpe andre å finne fram til opplysningane i kjelda.  I tekstfeltet kan du òg skrive inn tekstutdrag frå kjelda."
+
+#~ msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
+#~ msgstr "Serveren si minnegrense er på %dMB og CPU-tidsgrensa er på %d sekund."
+
+#~ msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+#~ msgstr "Dette skal vere ei liste med faktatypar, skilt med komma eller mellomrom, som du vil skal synast i tillegg til fødsel- og dødsår i diagramboksar. Lista må innehalde faktatypar som definert i GEDCOM 5.5.1-standarden. Til dømes om du vil at yrket skal stå i boksa, legg du til \"OCCU\" i dette feltet."
+
+#~ msgid "This text will be appended to each page title.  It will be shown in the browser’s title bar, bookmarks, etc."
+#~ msgstr "Denne teksten vert lagt til alle sidetitlar, og vil synast i nettlesaren si tittellinje, i bokmerker, osb."
+
+#~ msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+#~ msgstr "Denne verdien angir kor mange generasjonar etterkomarar av rotpersonen som vil synast i Timeglasdiagrammet."
+
+#~ msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
+#~ msgstr "For å hjelpe deg igang med denne blokka, har vi laga nokre standardmalar. Når du vel ein av desse, inneheld tekstfeltet ein tekst som kan nyttast som utgangspunkt for eigne endringar."
+
+#~ msgid "To family"
+#~ msgstr "Til familie"
+
+#~ msgid "To individual"
+#~ msgstr "Til person"
+
+#~ msgid "To source"
+#~ msgstr "Til kjelde"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "Tal på godkjende endringar: "
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Ta på ventande endringar: "
+
+#~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
+#~ msgstr "Transport Layer Security (TLS) og Secure Sockets Layer (SSL) er krypteringsprotokollar for dataoverføring.<br><br>TLS 1.0, 1.1 og 1.2 er standardiserte vidareutviklingar av SSL 3.0. TLS 1.0 og SSL 3.1 er ekvivalente. Vidareutvikling av SSL pågår no under det nye namnet TLS.<br><br>Om din SMTP-server krev SSL-protokollen ved innlogging, bør du velje <b>SSL</b>. Om din SMTP-server krev TLS-protokollen ved innlogging, bør du velje <b>TLS</b>."
+
+#~ msgid "Unrecognized GEDCOM code"
+#~ msgstr "Ukjend GEDCOM-kode"
+
+#~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
+#~ msgstr "Nytt SMTP for å sende e-post frå <b>webtrees</b>.<br><br>Dette valet krev at det er tilgong til ein SMTP mail-server. Settast det til <b>Nei</b>, nyttar <b>webtrees</b> det e-postsystemet som er innebygd i serveren sin PHP-installasjon."
+
+#~ msgid "Use SMTP to send external mails"
+#~ msgstr "Nytt SMTP for å sende ekstern e-post"
+
+#~ msgid "Use colors"
+#~ msgstr "Nytt fargar"
+
+#~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
+#~ msgstr "Bruk navn og passord for å autentisere oppkopling til SMTP-server.<br><br>Dei fleste SMTP-servarar  krevjer at alle oppkoplinger blir autentisert før dei vil godta utgåande e-post."
+
+#~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
+#~ msgstr "Nytt siluettbileter der det ikkje er angjeve noko hovudbilete for personen. Siluettane som nyttast angjev kjønnet til personen.<br><br><table><tr><td wrap valign=\"middle\">Dette biletet nyttast når pesonen sitt kjønn er ukjent:"
+
+#~ msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move right and Move left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
+#~ msgstr "Nytt desse knappane til å flytte ein komponent frå ei liste til ei anna.<br><br>Merk den komponenten du ønskjer å flytte eller kopiere, og klikk ei pil med ønska retning. Nytt <b>&raquo;</b> og <b>&laquo;</b> knappane for å flytte den merka komponenten frå venstre til høgre eller omvendt. Nytt <b>&gt;</b> og <b>&lt;</b> knappane til å flytte den merka komponenten mellom Tilgjengelege Blokker og listene til høger og venstre.<br><br>Innhaldet i lista over Tilgjengelege Blokker vert ståande uansett hva du gjer med knappane Flytt til høgre og Flytt til venstre, fordi ein komponentkan nyttast fleire gonger på same side.  HTML-blokka er eit døme på dette.</dd></dl>"
+
+#~ msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
+#~ msgstr "Nytt desse knappene for å endre rekkefølgja på komponentar i lista.  Komponentane vert synt i den rekkefølgja du ser her.<br><br>Marker den komponenten du ønskjer å flytte, og klikk ein knapp for å flytte komponenten opp eller ned."
+
+#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
+#~ msgstr "Nytt dette feltet for å lagre ein korta versjon av ein tittel. Feltet nyttast i samband med ei kjelde sitt tittelfelt. Som standard vil <b>webtrees</b> fyrst nytte tittelen og deretter den forkorta tittelen.<br><br>Ifølgje GEDCOM 5.5 spesifikasjonen \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>I <b>webtrees</b> er kortforma ikkje obligatorisk, slik den er i andre slektsforskningsprogram."
+
+#~ msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+#~ msgstr "Bruk dette feltet for å angi at denne mediefila er hovudbilete for personen den er knytta til.  Hovudbiletet er det som vert nytta i diagram og på personen si faktaside."
+
+#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
+#~ msgstr "Nytt denne sida til å endre eller fjerne familiemedlemer.<br><br>For kvar medlem i familien kan du bruke valet Endre for å velje ein annan person som skal ta denne rolla i familien.  Du kan også bruke valet Fjern for å ta bort denne personen frå familien.<br><br>Når du er ferdig med å gjere endringar for familiemedlemene, klikkar du på knappen Lagre for å lagre endringene."
+
+#~ msgid "User didn’t verify within 7 days."
+#~ msgstr "Brukar stadfesta ikkje innan 7 dagar."
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "Brukarnamn kan ikkje innehalde følgjande teikn: &lt; &gt; \" %% { } ;"
+
+#~ msgid "Users logged in"
+#~ msgstr "Brukarar innlogga"
+
+#~ msgid "Users’ languages"
+#~ msgstr "Brukarar sine språk"
+
+#~ msgid "User’s account has been inactive too long: "
+#~ msgstr "Brukarkonto har vore inaktiv for lenge: "
+
+#~ msgid "View GEDCOM record"
+#~ msgstr "Syn data i GEDCOM-fil"
+
+#~ msgid "View day"
+#~ msgstr "Syn dag"
+
+#~ msgid "View details"
+#~ msgstr "Sjå detaljar"
+
+#~ msgid "View family"
+#~ msgstr "Syn familie"
+
+#~ msgid "View month"
+#~ msgstr "Syn månad"
+
+#~ msgid "View notes"
+#~ msgstr "Sjå notatar"
+
+#~ msgid "View person"
+#~ msgstr "Syn person"
+
+#~ msgid "View source"
+#~ msgstr "Syn kjelde"
+
+#~ msgid "View year"
+#~ msgstr "Syn år"
+
+#~ msgid "Visitor options"
+#~ msgstr "Innstillingar for gjester"
+
+#~ msgid "Visitors"
+#~ msgstr "Besøkjande"
+
+#~ msgid "WEEK_START=0"
+#~ msgstr "WEEK_START=1"
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
+#~ msgstr "Vi vil no sende ein e-post om stadfesting til adressa ( %s ).<br>Ved hjelp av denne e-posten kan du aktivere kontoen din. Dersom du ikkje aktiverar kontoen din innan 7 dagar, vil den verte sletta (du kan registrere kontoen att etter dei 7 dagane, om du ønskjer det). For å logge deg inn på denne nettstaden, krevjast det at du oppgjev eit brukarnamn og eit passord."
+
+#~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
+#~ msgstr "Vi vil no sende ein e-post om stadfesting til adressa ( %s ). Du må stadfeste søknaden din om å få ein konto ved å følgje instruksane i e-posten. Dersom du ikkje stadfestar søknaden innan 7 dagar, vil søknaden om ein konto verte avslått automatisk.  Dersom seinare ønskjer å få ein ny konto, må du søkje på ny.<br><br>Etter at du har følgt instruksjonene i e-posten, kan du logge deg inn.  For å logge deg inn på denne nettstaden, krevjast det at du oppgjev brukarnamnet og passordet ditt."
+
+#~ msgid "Web site and META tag settings"
+#~ msgstr "Nettside og META settingar"
+
+#~ msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
+#~ msgstr "Når ein brukar registrerar seg for å få ein konto, vert ein e-post med ei lenke for stadfesting sendt til den oppgjevne adressa. Når det vert klikka på denne lenka, veit vi at adressa er korrekt, og \"E-post stadfesta\" vert automatisk angjeve."
+
+#~ msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
+#~ msgstr "Om sett til <b>Ja</>, vil følgjande tekst synast over innskrivingsfeltet på sida \"Søk om brukarkonto\":<div class=\"list_value_wrap\"><div class=\"largeError\">Merk:</div><div class=\"error\">Ved å fylle i og sende dette skjemaet, erklærer du at du vil:<ul><li>respektere vern av nolevande personar registrerte i denne databasen;</li><li>og greie ut i tekstboksa nedanfor kven du har slektskap til , eller skaffe oss opplysningar om personar som bør leggjast til i basen.</li></ul></div>"
+
+#~ msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
+#~ msgstr "Om dy kryssar av i denne ruta, vert diagrammet synt med dei eldste personane øvst. Om ikke, kjem dei yngste personane øvst."
+
+#~ msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
+#~ msgstr "Om denne boksa er kryssa av, synast alle Kjelde- eller Notat-poster for denne personen. Om den ikkje er kryssa av, vil Kjelder eller Notatar som er knytte til andre fakta om personen ikkje synast."
+
+#~ msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
+#~ msgstr "Om denne ruta kryssast av, vil GEDCOM-fila komprimerast til ZIP-format før nedlastninga startar. Dette vil redusere storleiken på fila betydeleg, men du lyt gjere bruk av eit utpakningsprogram (til dømes WinZip) for å dekomprimere fila før den kan nyttast.<br><br>Dette er nyttig om du skal laste ned store GEDCOM-filer. Det fins ein risiko for at nedlastingstida for ei ukomprimert fil vil overstige den høgaste tillatne programkøyringstida, noko som vil resultere i ufullstendige nedlastingar. ZIP-alternativet reduserar nedlastingstida med omlag 75 prosent."
+
+#~ msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
+#~ msgstr "Når du klikker på <b>Legg til nytt Delt notat</b>, kjem det opp eit nytt vindauge. Du kan velje å kople til eit allereie eksisterande Delt notat, eller du kan opprette eit nytt og samstundes lage ei lenke til det."
+
+#~ msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
+#~ msgstr "Ved å klikke på knappen vil du tøme utklippsmappa di heilt.<br><br>Om du ikkje ønskjer å fjerne alle personar, familier, osb. frå utklippsmappa, kan du fjerne enkeltvis ved å klikke på \"Fjern\" i namnetabellen.<br><br><b>PS</b> - Det er <u>ikkje</u> nokon mogelegheit til å angre dersom du klikkar på desse knappane; Utklippsmappa vert tømd med ein gong."
+
+#~ msgid "Which links from this individual would you also like to add?"
+#~ msgstr "Kva lenker frå denne personen vil du og leggje til?"
+
+#~ msgid "Who can view non-watermarked images?"
+#~ msgstr "Kven kan sjå bilete som ikkje er vassmerka?"
+
+#~ msgid "Wife’s age"
+#~ msgstr "Hustru sin alder"
+
+#~ msgid "Wife’s maiden surname becomes new given name"
+#~ msgstr "Hustru sitt jentenamn skal nyttast som mellomnamn"
+
+#~ msgid "Wife’s surname replaced by husband’s surname"
+#~ msgstr "Hustru sitt etternamn erstatta med ektemannen sitt etternamn"
+
+#~ msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+#~ msgstr "Ved dette valet nyttast det interne meldingssystemet i <b>webtrees</b>, og ingen e-post vert send.  Du vil berre kunne få <u>interne</u> meldingar frå dei andre brukarane. Når ein annan brukar sender deg ei melding, vil den synast under Mine meldingar på Mi Side. Om du har tatt bort denne blokka frå Mi Side, vil du ikkje kunne sjå desse meldingane. Meldingane vil fortsatt finnast i systemet, og vert synte så snart du aktiverar Mine meldingar på Mi Side att."
+
+#~ msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
+#~ msgstr "Du kan endre <b>webtrees</b> sin utsjånad ved å nytte ulike \"tema\". Kvart tema har sin eigen stil, form, fargeskjema, osb."
+
+#~ msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
+#~ msgstr "Du kan klikke på denne knappen for å sjå om det er fleire slektslinjer mellom dei to personane.<br>Dei andre slektslinjene kan synast på ny ved å klikke på nummeret til slektslinjen."
+
+#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
+#~ msgstr "Du kan velje om denne FAQ skal vere synleg uansett GEDCOM, eller om den berre skal synast for gjeldande GEDCOM.<br><ul><li><b>ALLE</b>&nbsp;&nbsp;&nbsp;Denne FAQ vil synast i alle lister, uansett GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;Denne FAQ vil synast kun i gjeldande  GEDCOM's FAQ list.</li></ul>"
+
+#~ msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+#~ msgstr "Du kan avgrense mengde nyhendeartiklar som synast og dermed redusere høgda på blokka for Nyhende.<br><br>Dette valet nyttast for å angi om det skal vere ei øvre grense, og om avgrensinga skal settast etter artiklane sin alder eller mengde artiklar."
+
+#~ msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+#~ msgstr "Du kan gjere det enklare å søke etter gifte kvinner ved å leggje til etternamnet dei fekk då dei gifta seg.<br>Men, ikkje alle tek ektemannen sitt etternamn, so ver varsam slik at feilaktig informasjon ikkje vert introdusert i databasen."
+
+#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
+#~ msgstr "Du vil ikkje få tilsendt fleire e-postar frå denne nettstaden, då kontoen vil bli sletta etter 7 dagar dersom den ikkje vert stadfesta."
+
+#~ msgid "Your clippings cart is empty."
+#~ msgstr "Utklippsmappa di er tom."
+
+#~ msgid "Your server’s administrator will provide you with the connection details."
+#~ msgstr "Din serveradministrator kan gje deg detaljane for tilknytning."
+
+#~ msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
+#~ msgstr "Din brukarkonto har ikkje \"Godkjenn endringar automatisk\" aktivert. Du vil derfor berre kunne endre ein post om gongen."
+
+#~ msgid "Zip file(s)"
+#~ msgstr "Zip-fil(er)"
+
+#~ msgid "daughter of"
+#~ msgstr "dotter av"
+
+#~ msgctxt "son's wife's father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "verdotters far"
+
+#~ msgctxt "son's wife's mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "verdotters mor"
+
+#~ msgctxt "son's wife's parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "verdotters forelder"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "døydde"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "døydde"
+
+#~ msgid "first"
+#~ msgstr "fyrste"
+
+#~ msgctxt "child's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "barnebarns ektemann"
+
+#~ msgctxt "daughter's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "dotterdotters ektemann"
+
+#~ msgctxt "son's daughter's husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "sonedotters ektemann"
+
+#~ msgctxt "child's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "barnebarns hustru"
+
+#~ msgctxt "daughter's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "dottersons hustru"
+
+#~ msgctxt "son's son's wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "sonesons hustru"
+
+#~ msgid "last"
+#~ msgstr "siste"
+
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "ekta"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "ekta"
+
+#~ msgid "son of"
+#~ msgstr "son av"
+
+#~ msgctxt "daughter's husband's father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "versons far"
+
+#~ msgctxt "daughter's husband's mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "versons mor"
+
+#~ msgctxt "daughter's husband's parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "versons forelder"
+
+#~ msgid "utf8_unicode_ci"
+#~ msgstr "utf8_danish_ci"
+
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "blei fødd"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "blei fødd"
+
+#~ msgid "webtrees’ database must be on the same server as PGV’s"
+#~ msgstr "<b>webtrees</b> sin database må vere på same server som PGV-databasen."
