@@ -559,7 +559,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 					"place":        "<?php echo WT_Filter::escapeJs($gmark['place']       ); ?>",
 					"tooltip":      "<?php echo WT_Filter::escapeJs($gmark['tooltip']     ); ?>",
 					"image":        "<?php echo WT_Filter::escapeJs($gmark['image']       ); ?>",
-					"icon":         "<?php echo WT_Filter::escapeJs($gmark['pl_icon']     ); ?>",
+					"pl_icon":      "<?php echo WT_Filter::escapeJs($gmark['pl_icon']     ); ?>",
 					"sv_lati":      "<?php echo WT_Filter::escapeJs($gmark['sv_lati']     ); ?>",
 					"sv_long":      "<?php echo WT_Filter::escapeJs($gmark['sv_long']     ); ?>",
 					"sv_bearing":   "<?php echo WT_Filter::escapeJs($gmark['sv_bearing']  ); ?>",
