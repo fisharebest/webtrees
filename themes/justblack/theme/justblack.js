@@ -20,8 +20,6 @@
 * You should have received a copy of the GNU General Public License
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-*
-* $ Id: justblack.js for webtrees 1.4.0 2013-03-17 JustCarmen $
 */
 
 //=========================================================================================================
@@ -81,9 +79,6 @@ function jb_modalDialog(url, title) {
 				if (jQuery('textarea.html-edit').length > 0) {					 
 					$dialog.dialog( "option", "width", 700 );
 					$dialog.dialog( "option", "height", 550 );
-					if (!CKEDITOR.instances['html']) { 
-						CKEDITOR.replace('html');
-					}
 				}
 				jQuery('.ui-widget-overlay').bind('click', function(){					
 					$dialog.dialog('close');
@@ -91,7 +86,6 @@ function jb_modalDialog(url, title) {
 				})			
 			},
 			close: function(event, ui) {					
-				if (typeof CKEDITOR != 'undefined' && CKEDITOR.instances['html']) { CKEDITOR.instances.html.destroy(true);}
 				$dialog.remove();
 				jQuery('.ui-widget-overlay').remove();
 			},
@@ -100,7 +94,7 @@ function jb_modalDialog(url, title) {
 	// open the dialog box after some time. This is needed for the dialogbox to get loaded in center position.
 	setTimeout(function() {
 		$dialog.dialog('open');				
-	}, 1000);
+	}, 500);
 		   
 	return false;
 }
