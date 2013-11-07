@@ -423,7 +423,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 	
 				ob_start();imagejpeg($FancyImageBar,null,100);$FancyImageBar = ob_get_clean();			
 				$html = '<div id="fancy_imagebar">
-							<img src="data:image/jpeg;base64,'.base64_encode($FancyImageBar).'" />
+							<img alt="fancy_imagebar" src="data:image/jpeg;base64,'.base64_encode($FancyImageBar).'">
 						</div>';
 									
 				// output
