@@ -71,17 +71,6 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		);
 		
 		return $FIB_SETTINGS;		
-	}
-	
-	// Get the stylesheet for the current theme
-	private function getStylesheet($WT_THEME_URL) {		
-		if(file_exists(WT_MODULES_DIR.$this->getName().'/'.$WT_THEME_URL.'style.css')) {		
-			$stylesheet = '<link rel="stylesheet" href="'.WT_MODULES_DIR.$this->getName().'/'.$WT_THEME_URL.'style.css" type="text/css">';
-		}
-		else { // get default stylesheet
-			$stylesheet = '<link rel="stylesheet" href="'.WT_MODULES_DIR.$this->getName().'/'.WT_THEMES_DIR.'webtrees/style.css" type="text/css">';
-		}				
-		return $stylesheet;		
 	}	
 	
 	// Get the medialist from the database (source: library/WT/Query/Media.php)
@@ -229,7 +218,17 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$FIB_SETTINGS = $this->getSettings();
 				$FIB_IMAGES = $FIB_SETTINGS['IMAGES'];
 					
-				$controller->addInlineJavascript('					
+				$controller->addInlineJavascript('
+					function include_css(css_file) {
+						var html_doc = document.getElementsByTagName("head")[0];
+						var css = document.createElement("link");
+						css.setAttribute("rel", "stylesheet");
+						css.setAttribute("type", "text/css");
+						css.setAttribute("href", css_file);
+						html_doc.appendChild(css);
+					}
+					include_css("'.WT_MODULES_DIR.$this->getName().'/style.css");
+										
 					if (jQuery("#image_block li:visible").length == 0) jQuery(".no_images").show();
 					
 					jQuery("#select_all").click(function(){
@@ -271,8 +270,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 					});					
 				'); 
 					
-				$html = $this->getStylesheet(WT_THEME_URL).'
-						<div id="fib_config"><h2>'.$this->getTitle().'</h2>
+				$html = '<div id="fib_config"><h2>'.$this->getTitle().'</h2>
 						<form method="post" name="configform" action="'.$this->getConfigLink().'">
 							<input type="hidden" name="count" value="'.count($medialist).'" />	
 							<div id="selectbar">
@@ -424,9 +422,8 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 				}
 	
 				ob_start();imagejpeg($FancyImageBar,null,100);$FancyImageBar = ob_get_clean();			
-				$html = '<div id="fancy_imagebar">'.$this->getStylesheet(WT_THEME_URL).'
+				$html = '<div id="fancy_imagebar">
 							<img src="data:image/jpeg;base64,'.base64_encode($FancyImageBar).'" />
-							<div class="divider"></div>
 						</div>';
 									
 				// output
@@ -455,7 +452,10 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 						
 			$FIB_SETTINGS = $this->getSettings();			
 			
-			if ($ctype=='gedcom' && in_array('Homepage', $FIB_SETTINGS['PAGES']) || ($ctype=='user' && in_array('My page', $FIB_SETTINGS['PAGES']))) {				
+			if ($ctype=='gedcom' && in_array('Homepage', $FIB_SETTINGS['PAGES']) || ($ctype=='user' && in_array('My page', $FIB_SETTINGS['PAGES']))) {	
+			
+				// add js file to set a few theme depending styles
+				$controller->addExternalJavascript(WT_MODULES_DIR.$this->getName().'/style.js');		
 				
 				// put the fancy imagebar in the right position
 				$controller->addInlineJavaScript("				
