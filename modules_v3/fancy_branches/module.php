@@ -94,7 +94,9 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 		global $controller;    
 		
 		if (WT_SCRIPT_NAME == 'branches.php') {
-			echo $this->includeCss();		
+			// load the module stylesheet
+			echo $this->includeCss(WT_MODULES_DIR.$this->getName().'/style.css');	
+				
 			$controller
 				->addExternalJavaScript(WT_MODULES_DIR.$this->getName().'/js/jquery.treeview.js')
 				->addInlineJavaScript('			
@@ -137,21 +139,17 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 		return null;
 	}
 	
-	// Implement the css stylesheet for this module	
-	private function includeCss() {
-		return $this->getScript(WT_MODULES_DIR.$this->getName().'/style.css');	
-	}	
-	
-	private function getScript($css) {
+	// Implement the css stylesheet for this module		
+	private function includeCss($css) {
 		return
 			'<script>
 				if (document.createStyleSheet) {
 					document.createStyleSheet("'.$css.'"); // For Internet Explorer
 				} else {
 					var newSheet=document.createElement("link");
-					newSheet.setAttribute("rel","stylesheet");
-					newSheet.setAttribute("type","text/css");
 					newSheet.setAttribute("href","'.$css.'");
+					newSheet.setAttribute("type","text/css");
+					newSheet.setAttribute("rel","stylesheet");
 					document.getElementsByTagName("head")[0].appendChild(newSheet);
 				}
 			</script>';

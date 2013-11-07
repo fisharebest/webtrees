@@ -74,7 +74,8 @@ class fancy_privacy_check_WT_Module extends WT_Module implements WT_Module_Sideb
 		global $controller, $MAX_ALIVE_AGE, $SHOW_EST_LIST_DATES, $SEARCH_SPIDER;	
 		$SHOW_EST_LIST_DATES = get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 		
-		$html = $this->includeCss();
+		// load the module stylesheet
+		$html = $this->includeCss(WT_MODULES_DIR.$this->getName().'/style.css');	
 		
 		$controller->addInlineJavascript('			
 			jQuery(document).ajaxSend(function(){
@@ -205,21 +206,16 @@ class fancy_privacy_check_WT_Module extends WT_Module implements WT_Module_Sideb
 		return '';
 	}
 	
-	// Implement the css stylesheet for this module	
-	private function includeCss() {
-		return $this->getScript(WT_MODULES_DIR.$this->getName().'/style.css');	
-	}	
-	
-	private function getScript($css) {
+	private function includeCss($css) {
 		return
 			'<script>
 				if (document.createStyleSheet) {
 					document.createStyleSheet("'.$css.'"); // For Internet Explorer
 				} else {
 					var newSheet=document.createElement("link");
-					newSheet.setAttribute("rel","stylesheet");
-					newSheet.setAttribute("type","text/css");
 					newSheet.setAttribute("href","'.$css.'");
+					newSheet.setAttribute("type","text/css");
+					newSheet.setAttribute("rel","stylesheet");
 					document.getElementsByTagName("head")[0].appendChild(newSheet);
 				}
 			</script>';

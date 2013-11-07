@@ -42,7 +42,9 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		global $controller, $ctype;
 		
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
-		$content = $this->includeCss();		
+		
+		// load the module stylesheet
+		$content = $this->includeCss(WT_MODULES_DIR.$this->getName().'/style.css');
 		
 		$controller->addInlineJavascript('						
 			// select all			
@@ -114,7 +116,7 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		// header
 		if (get_user_count()>1) {
 			$content.= 	'<div style="float:left;padding:10px 0">'.WT_I18N::translate('Send message');
-			$content .= '<select name="touser" style="margin:0 10px">';
+			$content.= 	'<select name="touser" style="margin:0 10px">';
 			$content.=		'<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
 							foreach (get_all_users() as $user_id=>$user_name) {
 								if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'contactmethod')!='none') {
@@ -132,14 +134,14 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		} else {
 			// submit button to delete messages
 			$content.= '<input type="hidden" name="action" value="deletemessage">';			
-			$content .= '<div style="text-align:right;padding:10px 0">';			
-			$content .= '<input type="submit" value="'.WT_I18N::translate('Delete Selected Messages').'"></div>';		
+			$content.= '<div style="text-align:right;padding:10px 0">';			
+			$content.= '<input type="submit" value="'.WT_I18N::translate('Delete Selected Messages').'"></div>';		
 		
 			//content			
-			$content .= '<div class="clearfloat">'.$this->print_user_table($messages).'</div>';				
+			$content.= '<div class="clearfloat">'.$this->print_user_table($messages).'</div>';				
 		}
 		// end form
-		$content .= '</form>';
+		$content.= '</form>';
 		
 		// template
 		$id=$this->getName().$block_id;
@@ -300,21 +302,16 @@ class fancy_user_messages_WT_Module extends WT_Module implements WT_Module_Block
 		return false;
 	}
 	
-	// Implement the css stylesheet for this module	
-	private function includeCss() {
-		echo $this->getScript(WT_MODULES_DIR.$this->getName().'/style.css');	
-	}	
-	
-	private function getScript($css) {
+	private function includeCss($css) {
 		return
 			'<script>
 				if (document.createStyleSheet) {
 					document.createStyleSheet("'.$css.'"); // For Internet Explorer
 				} else {
 					var newSheet=document.createElement("link");
-					newSheet.setAttribute("rel","stylesheet");
-					newSheet.setAttribute("type","text/css");
 					newSheet.setAttribute("href","'.$css.'");
+					newSheet.setAttribute("type","text/css");
+					newSheet.setAttribute("rel","stylesheet");
 					document.getElementsByTagName("head")[0].appendChild(newSheet);
 				}
 			</script>';
