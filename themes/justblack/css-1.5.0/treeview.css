@@ -22,12 +22,10 @@
 * $ Id: treeview.css 2013-09-15 JustCarmen $
 */
 
-#tv_tree{background:url(images/tree_bg.jpg);}
-.tv_out{border:none;background-color:#272727;}
-#tabs .tv_out {background-color:#FECF5B} /* for the individual page tab */
-.tv_in{border:#dd6900 1px solid;}
+.tv_out{border:none;background-color:#FCDE97}
 #tree-title{color:#272727;}
 #tv_tree div.tv_box img.tv_treelink{height:25px;width:25px;}
+.charts_block h2#tree-title{visibility:hidden}
 
 /* Person or couple(s) box style */
 #tv_tree div.tv_box{border:thin outset #6f2f00;border-radius:0;box-shadow:1px 1px 2px #cfcf8f;filter:progid:DXImageTransform.Microsoft.dropShadow(color=#cfcf8f,offX=1,offY=1,positive=true);}
@@ -36,7 +34,7 @@
 #tv_tree div.tv_box div.tv_person_expanded a{color:#272727;text-decoration:underline;}
 
 /* horizontal and vertical lines color */
-#tv_tree div.tv_vline,#tv_tree div.tv_hline{background-color:#002f6f;}
+#tv_tree div.tv_vline,#tv_tree div.tv_hline{background-color:#272727;}
 #tv_tree table.tv_tree td.tv_vline_h{background-image:url(images/tree_vline.jpg);}
 #tv_tree table.tv_tree td.tv_vline_t{background-image:url(images/tree_vline_t.gif);}
 #tv_tree table.tv_tree td.tv_vline_b{background-image:url(images/tree_vline_b.gif);}

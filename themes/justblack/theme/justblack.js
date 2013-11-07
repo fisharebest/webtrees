@@ -622,6 +622,14 @@ jQuery(document).ready(function($){
 	
 	/************************************** TREE VIEW ***********************************************/	
 	// load custom treeview stylesheet. Be sure it is loaded after treeview.css		
+	function getTreeStylesheet(){
+		if (document.createStyleSheet) {
+			document.createStyleSheet('' + WT_CSS_URL + 'treeview.css'); // For Internet Explorer
+		} else {
+			$('head').append('<link rel="stylesheet" type="text/css" href="' + WT_CSS_URL + 'treeview.css">');	
+		}
+	}
+	
 	if (curPage() == 'individual.php' || qstring('mod_action') == 'treeview') {
 		$('#content a[name=tv_content]').after('<div class="loading-image"></div>');
 		$.ajax({
@@ -629,11 +637,7 @@ jQuery(document).ready(function($){
 			async:false,
 			beforeSend:function(){	
 				$('.tv_out').hide();
-				if (document.createStyleSheet) {
-					document.createStyleSheet('' + WT_CSS_URL + 'treeview.css'); // For Internet Explorer
-				} else {
-					$('head').append('<link rel="stylesheet" type="text/css" href="' + WT_CSS_URL + 'treeview.css">');	
-				}
+				getTreeStylesheet();				
 			},
 			complete:function(){								
 				$('.tv_out').show(); 
@@ -642,12 +646,13 @@ jQuery(document).ready(function($){
 		$('#content .loading-image').remove();	
 	}
 	
-	// tree view in charts block - load stylesheet in the block. because in the head it is overruled by the default one.
-	$.ajax({
-		complete:function(){
-			$("div[id^=charts]").prepend('<link rel="stylesheet" type="text/css" href="' + WT_THEME_DIR + 'css/jb_treeview.css">');
-		}
-	});
+	if (curPage() == 'index.php') {
+		$(document).ajaxStop(function(){
+			if($("a[name=tv_content]").length > 0){			
+				getTreeStylesheet();
+			}
+		});
+	}
 	/************************************** FAMILY BOOK ***********************************************/		
 	if (curPage() == 'familybook.php') {
 		$('hr:last').remove(); // remove the last page-break line because it is just above the justblack divider.
