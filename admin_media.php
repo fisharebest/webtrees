@@ -420,7 +420,6 @@ function media_object_info(WT_Media $media) {
 	$xref   = $media->getXref();
 	$gedcom = WT_Tree::getNameFromId($media->getGedcomId());
 	$name   = $media->getFullName();
-	$conf   = WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($name));
 
 	$html   =
 		'<b>' . $name . '</b>' .
@@ -430,9 +429,9 @@ function media_object_info(WT_Media $media) {
 
 		$html .=
 			' - ' .
-			'<a onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . $gedcom . '\', \'_blank\', edit_window_specs)" href="#">' . WT_I18N::Translate('Edit') . '</a>' .
+			'<a onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . WT_Filter::escapeJs($gedcom) . '\', \'_blank\', edit_window_specs)" href="#">' . WT_I18N::Translate('Edit') . '</a>' .
 			' - ' .
-			'<a onclick="if (confirm(\'' . WT_Filter::escapeJs($conf) . '\')) jQuery.post(\'action.php\',{action:\'delete-media\',xref:\'' . $xref . '\',ged:\'' . $gedcom . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a>' .
+			'<a onclick="return delete_media(\'' . WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($media->getFullName()))) . '\', \'' . $media->getXref() . \'', '\'' . WT_Filter::escapeJs($gedcom) . '\');" href="#">' . WT_I18N::Translate('Delete') . '</a>' .
 			' - ';
 
 	if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {

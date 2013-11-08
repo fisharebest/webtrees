@@ -108,9 +108,7 @@ case 'site_setting':
 		$id1 = 'WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE;
 		break;
 	case 'LOGIN_URL':
-		if ($value=='') {
-			$value=null; // Empty string is invalid - delete the row
-		} elseif (!preg_match('/^https?:\/\//', $value)) {
+		if ($value && !preg_match('/^https?:\/\//', $value)) {
 			fail();
 		}
 		break;
