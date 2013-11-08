@@ -2055,6 +2055,7 @@ case 'changefamily':
 	$family = WT_Family::getInstance($famid);
 	
 	$controller
+		->setPageTitle(WT_I18N::translate('Change Family Members'))
 		->pageHeader()
 		->addInlineJavascript('
 				function pastename(name) {
