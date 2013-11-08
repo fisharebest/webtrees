@@ -42,6 +42,11 @@ $text      = WT_Filter::post('text');
 
 switch ($action) {
 case 'compose':
+	
+	if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
+		ckeditor_WT_Module::enableEditor($controller);
+	}
+
 	echo '<h3>'.WT_I18N::translate('Add/edit journal/news entry').'</h3>';
 	echo '<form style="overflow: hidden;" name="messageform" method="post" action="editnews.php?action=save&news_id='.$news_id.'">';
 	if ($news_id) {
@@ -62,18 +67,7 @@ case 'compose':
 	echo '<tr><td><input type="text" name="title" size="50" dir="auto" autofocus value="'.$news['title'].'"></td></tr>';
 	echo '<tr><th valign="top" style="text-align:left;font-weight:900;" dir="auto;">'.WT_I18N::translate('Entry text:').'</th></tr>';
 	echo '<tr><td>';
-	if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
-		require_once WT_ROOT.WT_MODULES_DIR.'ckeditor/ckeditor.php';
-		$oCKeditor = new CKEditor();
-		$oCKeditor->basePath =  WT_MODULES_DIR.'ckeditor/';
-		$oCKeditor->config['width'] = 700;
-		$oCKeditor->config['height'] = 250;
-		$oCKeditor->config['AutoDetectLanguage'] = false ;
-		$oCKeditor->config['DefaultLanguage'] = 'en';
-		$oCKeditor->editor('text', $news['text']);
-	} else { //use standard textarea
-		echo '<textarea name="text" cols="80" rows="10" dir="auto">'.WT_Filter::escapeHtml($news['text']).'</textarea>';
-	}
+	echo '<textarea name="text" class="html-edit" cols="80" rows="10" dir="auto">'.WT_Filter::escapeHtml($news['text']).'</textarea>';
 	echo '</td></tr>';
 	echo '<tr><td><input type="submit" value="'.WT_I18N::translate('save').'"></td></tr>';
 	echo '</table>';
