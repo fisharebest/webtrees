@@ -24,7 +24,7 @@
 // so this script can be used safely. The script is checking if a file exists. If not the built-in gdocs viewer exit message will be shown.
 
 define('WT_SCRIPT_NAME', 'pdfviewer.php');
-require './../../includes/session.php';
+require './../../../includes/session.php';
 
 Zend_Session::writeClose();
 
