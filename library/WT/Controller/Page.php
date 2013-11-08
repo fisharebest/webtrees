@@ -164,6 +164,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 			var browserType    = "' . WT_Filter::escapeJs($BROWSERTYPE)              . '";
 			var WT_SCRIPT_NAME = "' . WT_Filter::escapeJs(WT_SCRIPT_NAME)            . '";
 			var WT_LOCALE      = "' . WT_Filter::escapeJs(WT_LOCALE)                 . '";
+			var accesstime     = "' . WT_Filter::escapeJs(WT_TIMESTAMP)              . '";
 			var WT_CSRF_TOKEN  = "' . WT_Filter::escapeJs(WT_Filter::getCsrfToken()) . '";
 		', self::JS_PRIORITY_HIGH);
 	
