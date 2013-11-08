@@ -41,6 +41,13 @@ require './includes/session.php';
 
 header('Content-type: text/html; charset=UTF-8');
 
+
+if (!WT_Filter::checkCsrf()) {
+	Zend_Session::writeClose();
+	header('HTTP/1.0 406 Not Acceptable');
+	exit;
+}
+
 switch (WT_Filter::post('action')) {
 case 'accept-changes':
 	// Accept all the pending changes for a record
@@ -157,7 +164,7 @@ case 'delete-source':
 case 'delete-user':
 	$user_id = WT_Filter::post('user_id');
 
-	if (WT_USER_IS_ADMIN && WT_USER_ID != $user_id && WT_Filter::checkCsrf()) {
+	if (WT_USER_IS_ADMIN && WT_USER_ID != $user_id) {
 		AddToLog('deleted user ->' . get_user_name($user_id) . '<-', 'auth');
 		delete_user($user_id);
 	}

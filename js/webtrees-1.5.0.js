@@ -403,6 +403,130 @@ function add_name(xref) {
 	});
 }
 
+// Accept the changes to a record - and reload the page
+function accept_changes(xref) {
+	jQuery.post('action.php', {
+		action: 'accept-changes',
+		xref:   xref,
+		ged:    WT_GEDCOM,
+		csrf:   WT_CSRF_TOKEN
+	},
+	function(){
+		location.reload();
+	});
+	return false;
+}
+
+// Reject the changes to a record - and reload the page
+function reject_changes(xref) {
+	jQuery.post('action.php', {
+		action: 'reject-changes',
+		xref:   xref,
+		ged:    WT_GEDCOM,
+		csrf:   WT_CSRF_TOKEN
+	},
+	function(){
+		location.reload();
+	});
+	return false;
+}
+
+// Delete a family - and reload the page
+function delete_family(message, xref, gedcom) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-family',
+			xref:      xref,
+			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
+// Delete an individual - and reload the page
+function delete_individual(message, xref, gedcom) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-individual',
+			xref:      xref,
+			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
+// Delete a media object - and reload the page
+function delete_media(message, xref, gedcom) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-media',
+			xref:      xref,
+			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
+// Delete a note object - and reload the page
+function delete_note(message, xref, gedcom) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-note',
+			xref:      xref,
+			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
+// Delete a repository - and reload the page
+function delete_repository(message, xref, gedcom) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-repository',
+			xref:      xref,
+			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
+// Delete a source - and reload the page
+function delete_source(message, xref, gedcom) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-source',
+			xref:      xref,
+			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
 // Delete a fact - and reload the page
 function delete_fact(message, xref, fact_id) {
 	if (confirm(message)) {
@@ -410,7 +534,8 @@ function delete_fact(message, xref, fact_id) {
 			action:   'delete-fact',
 			xref:      xref,
 			fact_id:   fact_id,
-			ged:       WT_GEDCOM
+			ged:       WT_GEDCOM,
+			csrf:      WT_CSRF_TOKEN
 		},
 		function(){
 			location.reload();
@@ -425,7 +550,8 @@ function copy_fact(xref, fact_id) {
 		action:   'copy-fact',
 		xref:      xref,
 		fact_id:   fact_id,
-		ged:       WT_GEDCOM
+		ged:       WT_GEDCOM,
+		csrf:      WT_CSRF_TOKEN
 	},
 	function(){
 		location.reload();
