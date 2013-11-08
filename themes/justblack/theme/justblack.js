@@ -126,24 +126,46 @@ jQuery.noConflict();
 
 jQuery(document).ready(function($){	
 
-	/********************************************* COLORBOX MEDIA GALLERY ***********************************************/	
-	$("body").on('click', 'a.gallery', function(event) {
-		// Function for title correction
-		function longTitles() {
-			// correct long titles
-			var tClass 		= $("#cboxTitle .title");
-			var tID		  	= $("#cboxTitle");
-			if (tClass.width() > tID.width() - 100) { // 100 because the width of the 4 buttons is 25px each
-				tClass.css({"width" : tID.width() - 100, "margin-left" : "75px"});
-			}
-			if (tClass.height() > 25) { // 26 is 2 lines
-				tID.css({"bottom" : 0});
-				tClass.css({"height" : "26px"}); // max 2 lines.
-			} else {
-				tID.css({"bottom" : "6px"}); // set the value to vertically center a 1 line title.
-				tClass.css({"height" : "auto"}); // set the value back;
-			}			
+	/********************************************* COLORBOX MEDIA GALLERY ***********************************************/
+	// prepare all images for colorbox display
+	function get_imagetype() {
+		var xrefs = [];
+		$('a[type^=image].gallery').each(function(){
+		  var xref = qstring('mid', $(this).attr('href'));
+		  $(this).attr('id', xref); 
+		  xrefs.push(xref);		  
+		});
+		$.ajax({
+			url: WT_THEME_JUSTBLACK + 'action.php?action=imagetype',
+			type: 'POST',
+			data: {
+				'xrefs': xrefs
+			},
+			success: function(data) {
+				$.each(data, function(index, value) {
+					$('a[id=' + index + ']').attr('data-obje-type', value);	
+				})
+			}	  
+		});
+	}
+	// Function to correct long titles
+	function longTitles() {
+		var tClass 		= $("#cboxTitle .title");
+		var tID		  	= $("#cboxTitle");
+		if (tClass.width() > tID.width() - 100) { // 100 because the width of the 4 buttons is 25px each
+			tClass.css({"width" : tID.width() - 100, "margin-left" : "75px"});
 		}
+		if (tClass.height() > 25) { // 26 is 2 lines
+			tID.css({"bottom" : 0});
+			tClass.css({"height" : "26px"}); // max 2 lines.
+		} else {
+			tID.css({"bottom" : "6px"}); // set the value to vertically center a 1 line title.
+			tClass.css({"height" : "auto"}); // set the value back;
+		}			
+	}
+	// add colorbox function to all images on the page when first clicking on an image.	
+	$("body").one('click', 'a.gallery', function(event) {
+		get_imagetype();	
 			
 		// General (both images and pdf)
 		$("a[type^=image].gallery, a[type$=pdf].gallery").colorbox({
@@ -175,10 +197,12 @@ jQuery(document).ready(function($){
 		// Add colorbox to images
 		$("a[type^=image].gallery").colorbox({			
 			photo:			true,
-			scalePhotos:	false,			
+			scalePhotos:	function(){
+								if($(this).data('obje-type') === 'photo') return true;
+								else return false;							
+							},
 			maxWidth:		"95%",
-			maxHeight:		"95%",				
-			fixed:			false,
+			maxHeight:		"95%",
 			title:			function(){
 								var img_title = jQuery(this).data("title");
 								return "<div class=\"title\">" + img_title + "</div>";
@@ -236,9 +260,11 @@ jQuery(document).ready(function($){
 		}		
 		
 		// Do not open the gallery when clicking on the mainimage on the individual page
-		if($(this).parents("#indi_mainimage").length > 0) {
-			$(this).colorbox({rel:"nofollow"});
-		}
+		$('a.gallery').each(function(){
+			if($(this).parents("#indi_mainimage").length > 0) {
+				$(this).colorbox({rel:"nofollow"});
+			}
+		});
 	});		
 	
 	/********************************************* TOOLTIPS ***********************************************/	
@@ -867,6 +893,5 @@ jQuery(document).ready(function($){
             target: "_blank"
          });
       }
-   })
-	
+   })	
 });
