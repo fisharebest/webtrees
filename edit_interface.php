@@ -1589,7 +1589,7 @@ case 'paste':
 		->setPageTitle(WT_I18N::translate('Add from clipboard'))
 		->pageHeader();
 
-	$record->createFact($WT_SESSION->clipboard[$fact]['factrec']);
+	$record->createFact($WT_SESSION->clipboard[$fact]['factrec'], true);
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
 
