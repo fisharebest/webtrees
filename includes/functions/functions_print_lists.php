@@ -248,7 +248,14 @@ function format_indi_table($datalist, $option='') {
 		//-- place filtering
 		if ($option=='BIRT_PLAC' && strstr($person->getBirthPlace(), $filter)===false) continue;
 		if ($option=='DEAT_PLAC' && strstr($person->getDeathPlace(), $filter)===false) continue;
-		$html .= '<tr>';
+		if ($person->isNew()) {
+			$class = ' class="new"';
+		} elseif ($person->isOld()) {
+			$class = ' class="old"';
+		} else {
+			$class = '';
+		}
+		$html .= '<tr' . $class . '>';
 		//-- Indi name(s)
 		$html .= '<td colspan="2">';
 		foreach ($person->getAllNames() as $num=>$name) {
@@ -654,7 +661,14 @@ function format_fam_table($datalist, $option='') {
 		}
 		//-- place filtering
 		if ($option=='MARR_PLAC' && strstr($family->getMarriagePlace(), $filter)===false) continue;
-		$html .= '<tr>';
+		if ($family->isNew()) {
+			$class = ' class="new"';
+		} elseif ($family->isOld()) {
+			$class = ' class="old"';
+		} else {
+			$class = '';
+		}
+		$html .= '<tr' . $class . '>';
 		//-- Husband name(s)
 		$html .= '<td colspan="2">';
 		foreach ($husb->getAllNames() as $num=>$name) {
@@ -928,7 +942,14 @@ function format_sour_table($datalist) {
 		if (!$source->canShow()) {
 			continue;
 		}
-		$html .= '<tr>';
+		if ($source->isNew()) {
+			$class = ' class="new"';
+		} elseif ($source->isOld()) {
+			$class = ' class="old"';
+		} else {
+			$class = '';
+		}
+		$html .= '<tr' . $class . '>';
 		//-- Source name(s)
 		$html .= '<td>';
 		foreach ($source->getAllNames() as $n=>$name) {
@@ -1050,7 +1071,14 @@ function format_note_table($datalist) {
 		if (!$note->canShow()) {
 			continue;
 		}
-		$html .= '<tr>';
+		if ($note->isNew()) {
+			$class = ' class="new"';
+		} elseif ($note->isOld()) {
+			$class = ' class="old"';
+		} else {
+			$class = '';
+		}
+		$html .= '<tr' . $class . '>';
 		//-- Shared Note name
 		$html .= '<td><a class="name2" href="'. $note->getHtmlUrl(). '">'. highlight_search_hits($note->getFullName()). '</a></td>';
 		//-- Linked INDIs
@@ -1140,7 +1168,14 @@ function format_repo_table($repos) {
 		if (!$repo->canShow()) {
 			continue;
 		}
-		$html .= '<tr>';
+		if ($repo->isNew()) {
+			$class = ' class="new"';
+		} elseif ($repo->isOld()) {
+			$class = ' class="old"';
+		} else {
+			$class = '';
+		}
+		$html .= '<tr' . $class . '>';
 		//-- Repository name(s)
 		$html .= '<td>';
 		foreach ($repo->getAllNames() as $n=>$name) {
@@ -1239,7 +1274,14 @@ function format_media_table($datalist) {
 	foreach ($datalist as $media) {
 		if ($media->canShow()) {
 			$name = $media->getFullName();
-			$html .= "<tr>";
+			if ($media->isNew()) {
+				$class = ' class="new"';
+			} elseif ($media->isOld()) {
+				$class = ' class="old"';
+			} else {
+				$class = '';
+			}
+			$html .= '<tr' . $class . '>';
 			//-- Object thumbnail
 			$html .= '<td>'. $media->displayImage(). '</td>';
 			//-- Object name(s)
