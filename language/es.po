@@ -19687,16 +19687,6 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
-#~ msgid "%d month"
-#~ msgid_plural "%d months"
-#~ msgstr[0] "%d mes"
-#~ msgstr[1] "%d meses"
-
-#~ msgid "%d year"
-#~ msgid_plural "%d years"
-#~ msgstr[0] "%d año"
-#~ msgstr[1] "%d años"
-
 #~ msgid "Abbreviate chart labels"
 #~ msgstr "Abreviar las etiquetas en los diagramas"
 
