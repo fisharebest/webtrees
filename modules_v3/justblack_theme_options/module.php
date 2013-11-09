@@ -287,7 +287,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		if ($SEARCH_SPIDER) return null;
 		
 		$menulink = $this->getSettings('media_menu_link');
-		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=yes&amp;folder='.urlencode(rtrim($menulink, "/")).'&amp;sortby=title&amp;max=20&amp;filter=&amp;columns=2', 'menu-media');		
+		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($menulink), 'menu-media');		
 		
 		$folders = array_values(WT_Query_Media::folderList());
 		foreach ($folders as $key => $folder) {
@@ -296,7 +296,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				$name = substr($folder, 0, -1);
 				if(empty($name)) $name = WT_I18N::translate('Media');
 				$title = ucfirst($name);
-				$submenu = new WT_Menu($title, 'medialist.php?action=filter&amp;search=yes&amp;folder='.urlencode(rtrim($folder, "/")).'&amp;sortby=title&amp;max=20&amp;filter=&amp;columns=2', 'menu-media-folder'.$key);
+				$submenu = new WT_Menu($title, 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($folder), 'menu-media-folder-'.$key);
 				$menu->addSubmenu($submenu);
 			}
 		};	
