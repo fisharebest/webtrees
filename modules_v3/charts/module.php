@@ -184,7 +184,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
 
-		if (WT_Filter::postBool('save')) {
+		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'details', WT_Filter::postBool('details'));
 			set_block_setting($block_id, 'type',    WT_Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
 			set_block_setting($block_id, 'pid',     WT_Filter::post('pid', WT_REGEX_XREF));
