@@ -138,6 +138,7 @@ jQuery(document).ready(function($){
 		$.ajax({
 			url: WT_THEME_JUSTBLACK + 'action.php?action=imagetype',
 			type: 'POST',
+			async: false,
 			data: {
 				'xrefs': xrefs
 			},
