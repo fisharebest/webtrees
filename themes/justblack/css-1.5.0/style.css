@@ -445,16 +445,23 @@ html[dir='rtl'] #ancestry_chart li{left:auto;margin:0;padding:0 2px 0 0}
 .person3{background-color:#272727;border:outset #ff8c00 1px;vertical-align:top}
 .person4{background-color:#272727;border:outset #ff8c00 1px;vertical-align:top}
 .person5{background-color:#272727;border:outset #ff8c00 1px;vertical-align:top}
+
+#compact_chart, #fan_chart, #ancestry_chart, #familybook_chart, #hourglass_chart {margin:20px;}
+
 .compact_view{cursor:url(images/icons/zoomin.png),n-resize}
 .compact_view p{margin:0;padding-left:40px;width:180px;font-size:0.75em}
+
 .listlog{color:#555555;line-height:20pt}
+
 input,button,textarea{border-color:#808080 #e7e7e7 #e7e7e7 #808080;border-width:1px;color:#2E2E2E;font-family:inherit;font-size:13px}
 input,textarea{padding-left:3px;padding-right:3px}
 input{color:#272727;margin-top:8px}
 select{background-color:#ffffde;border-color:#ff8c00;border-width:1px;color:#2E2E2E;font-family:inherit;font-size:13px}
 form{font-size:13px;line-height:2em}
+
 h2{color: #e7e7e7;font-family:'@Salina',Verdana,Arial,Helvetica,sans-serif;font-weight:normal;font-size:28px;padding-bottom:20px;text-align:center}
 h4{color:#e7e7e7;font-size:13px;font-weight:bold}
+
 .formField{font-size:13px}
 .starredname{text-decoration:underline}
 .search_hit{background-color:#DD6900;padding:2px}
