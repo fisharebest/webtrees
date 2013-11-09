@@ -231,27 +231,27 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'show_last_update',     safe_POST_bool('show_last_update'));
-			set_block_setting($block_id, 'show_common_surnames', safe_POST_bool('show_common_surnames'));
-			set_block_setting($block_id, 'stat_indi',            safe_POST_bool('stat_indi'));
-			set_block_setting($block_id, 'stat_fam',             safe_POST_bool('stat_fam'));
-			set_block_setting($block_id, 'stat_sour',            safe_POST_bool('stat_sour'));
-			set_block_setting($block_id, 'stat_other',           safe_POST_bool('stat_other'));
-			set_block_setting($block_id, 'stat_media',           safe_POST_bool('stat_media'));
-			set_block_setting($block_id, 'stat_repo',            safe_POST_bool('stat_repo'));
-			set_block_setting($block_id, 'stat_surname',         safe_POST_bool('stat_surname'));
-			set_block_setting($block_id, 'stat_events',          safe_POST_bool('stat_events'));
-			set_block_setting($block_id, 'stat_users',           safe_POST_bool('stat_users'));
-			set_block_setting($block_id, 'stat_first_birth',     safe_POST_bool('stat_first_birth'));
-			set_block_setting($block_id, 'stat_last_birth',      safe_POST_bool('stat_last_birth'));
-			set_block_setting($block_id, 'stat_first_death',     safe_POST_bool('stat_first_death'));
-			set_block_setting($block_id, 'stat_last_death',      safe_POST_bool('stat_last_death'));
-			set_block_setting($block_id, 'stat_long_life',       safe_POST_bool('stat_long_life'));
-			set_block_setting($block_id, 'stat_avg_life',        safe_POST_bool('stat_avg_life'));
-			set_block_setting($block_id, 'stat_most_chil',       safe_POST_bool('stat_most_chil'));
-			set_block_setting($block_id, 'stat_avg_chil',        safe_POST_bool('stat_avg_chil'));
-			set_block_setting($block_id, 'stat_link',            safe_POST_bool('stat_link'));
+		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
+			set_block_setting($block_id, 'show_last_update',     WT_Filter::postBool('show_last_update'));
+			set_block_setting($block_id, 'show_common_surnames', WT_Filter::postBool('show_common_surnames'));
+			set_block_setting($block_id, 'stat_indi',            WT_Filter::postBool('stat_indi'));
+			set_block_setting($block_id, 'stat_fam',             WT_Filter::postBool('stat_fam'));
+			set_block_setting($block_id, 'stat_sour',            WT_Filter::postBool('stat_sour'));
+			set_block_setting($block_id, 'stat_other',           WT_Filter::postBool('stat_other'));
+			set_block_setting($block_id, 'stat_media',           WT_Filter::postBool('stat_media'));
+			set_block_setting($block_id, 'stat_repo',            WT_Filter::postBool('stat_repo'));
+			set_block_setting($block_id, 'stat_surname',         WT_Filter::postBool('stat_surname'));
+			set_block_setting($block_id, 'stat_events',          WT_Filter::postBool('stat_events'));
+			set_block_setting($block_id, 'stat_users',           WT_Filter::postBool('stat_users'));
+			set_block_setting($block_id, 'stat_first_birth',     WT_Filter::postBool('stat_first_birth'));
+			set_block_setting($block_id, 'stat_last_birth',      WT_Filter::postBool('stat_last_birth'));
+			set_block_setting($block_id, 'stat_first_death',     WT_Filter::postBool('stat_first_death'));
+			set_block_setting($block_id, 'stat_last_death',      WT_Filter::postBool('stat_last_death'));
+			set_block_setting($block_id, 'stat_long_life',       WT_Filter::postBool('stat_long_life'));
+			set_block_setting($block_id, 'stat_avg_life',        WT_Filter::postBool('stat_avg_life'));
+			set_block_setting($block_id, 'stat_most_chil',       WT_Filter::postBool('stat_most_chil'));
+			set_block_setting($block_id, 'stat_avg_chil',        WT_Filter::postBool('stat_avg_chil'));
+			set_block_setting($block_id, 'stat_link',            WT_Filter::postBool('stat_link'));
 			exit;
 		}
 

@@ -235,7 +235,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (WT_Filter::postBool('save')) {
+		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'days',      WT_Filter::postInteger('days', 1, 30, 7));
 			set_block_setting($block_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
 			set_block_setting($block_id, 'calendar',  WT_Filter::post('calendar', 'jewish|gregorian', 'jewish'));

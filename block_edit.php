@@ -47,6 +47,7 @@ if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 ?>
 <form name="block" method="post" action="block_edit.php?block_id=<?php echo $block_id; ?>" onsubmit="return modalDialogSubmitAjax(this);" >
 	<input type="hidden" name="save" value="1">
+	<?php echo WT_Filter::getCsrf(); ?>
 	<p>
 		<?php echo $block->getDescription(); ?>
 	</p>

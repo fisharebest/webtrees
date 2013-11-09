@@ -111,12 +111,12 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'filter',        safe_POST_bool('filter'));
-			set_block_setting($block_id, 'onlyBDM',       safe_POST_bool('onlyBDM'));
-			set_block_setting($block_id, 'infoStyle',     safe_POST('infoStyle', array('list', 'table'), 'table'));
-			set_block_setting($block_id, 'sortStyle',     safe_POST('sortStyle', array('alpha', 'anniv'), 'alpha'));
-			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
+		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
+			set_block_setting($block_id, 'filter',    WT_Filter::postBool('filter'));
+			set_block_setting($block_id, 'onlyBDM',   WT_Filter::postBool('onlyBDM'));
+			set_block_setting($block_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
+			set_block_setting($block_id, 'sortStyle', WT_Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
+			set_block_setting($block_id, 'block',     WT_Filter::postBool('block'));
 			exit;
 		}
 

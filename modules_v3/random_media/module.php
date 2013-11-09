@@ -219,39 +219,39 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'filter',             safe_POST('filter', array('indi', 'event', 'all'), 'all'));
-			set_block_setting($block_id, 'controls',           safe_POST_bool('controls'));
-			set_block_setting($block_id, 'start',              safe_POST_bool('start'));
-			set_block_setting($block_id, 'filter_avi',         safe_POST_bool('filter_avi'));
-			set_block_setting($block_id, 'filter_bmp',         safe_POST_bool('filter_bmp'));
-			set_block_setting($block_id, 'filter_gif',         safe_POST_bool('filter_gif'));
-			set_block_setting($block_id, 'filter_jpeg',        safe_POST_bool('filter_jpeg'));
-			set_block_setting($block_id, 'filter_mp3',         safe_POST_bool('filter_mp3'));
-			set_block_setting($block_id, 'filter_ole',         safe_POST_bool('filter_ole'));
-			set_block_setting($block_id, 'filter_pcx',         safe_POST_bool('filter_pcx'));
-			set_block_setting($block_id, 'filter_pdf',         safe_POST_bool('filter_pdf'));
-			set_block_setting($block_id, 'filter_png',         safe_POST_bool('filter_png'));
-			set_block_setting($block_id, 'filter_tiff',        safe_POST_bool('filter_tiff'));
-			set_block_setting($block_id, 'filter_wav',         safe_POST_bool('filter_wav'));
-			set_block_setting($block_id, 'filter_audio',       safe_POST_bool('filter_audio'));
-			set_block_setting($block_id, 'filter_book',        safe_POST_bool('filter_book'));
-			set_block_setting($block_id, 'filter_card',        safe_POST_bool('filter_card'));
-			set_block_setting($block_id, 'filter_certificate', safe_POST_bool('filter_certificate'));
-			set_block_setting($block_id, 'filter_coat',        safe_POST_bool('filter_coat'));
-			set_block_setting($block_id, 'filter_document',    safe_POST_bool('filter_document'));
-			set_block_setting($block_id, 'filter_electronic',  safe_POST_bool('filter_electronic'));
-			set_block_setting($block_id, 'filter_fiche',       safe_POST_bool('filter_fiche'));
-			set_block_setting($block_id, 'filter_film',        safe_POST_bool('filter_film'));
-			set_block_setting($block_id, 'filter_magazine',    safe_POST_bool('filter_magazine'));
-			set_block_setting($block_id, 'filter_manuscript',  safe_POST_bool('filter_manuscript'));
-			set_block_setting($block_id, 'filter_map',         safe_POST_bool('filter_map'));
-			set_block_setting($block_id, 'filter_newspaper',   safe_POST_bool('filter_newspaper'));
-			set_block_setting($block_id, 'filter_other',       safe_POST_bool('filter_other'));
-			set_block_setting($block_id, 'filter_painting',    safe_POST_bool('filter_painting'));
-			set_block_setting($block_id, 'filter_photo',       safe_POST_bool('filter_photo'));
-			set_block_setting($block_id, 'filter_tombstone',   safe_POST_bool('filter_tombstone'));
-			set_block_setting($block_id, 'filter_video',       safe_POST_bool('filter_video'));
+		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
+			set_block_setting($block_id, 'filter',             WT_Filter::post('filter', 'indi|event|all', 'all'));
+			set_block_setting($block_id, 'controls',           WT_Filter::postBool('controls'));
+			set_block_setting($block_id, 'start',              WT_Filter::postBool('start'));
+			set_block_setting($block_id, 'filter_avi',         WT_Filter::postBool('filter_avi'));
+			set_block_setting($block_id, 'filter_bmp',         WT_Filter::postBool('filter_bmp'));
+			set_block_setting($block_id, 'filter_gif',         WT_Filter::postBool('filter_gif'));
+			set_block_setting($block_id, 'filter_jpeg',        WT_Filter::postBool('filter_jpeg'));
+			set_block_setting($block_id, 'filter_mp3',         WT_Filter::postBool('filter_mp3'));
+			set_block_setting($block_id, 'filter_ole',         WT_Filter::postBool('filter_ole'));
+			set_block_setting($block_id, 'filter_pcx',         WT_Filter::postBool('filter_pcx'));
+			set_block_setting($block_id, 'filter_pdf',         WT_Filter::postBool('filter_pdf'));
+			set_block_setting($block_id, 'filter_png',         WT_Filter::postBool('filter_png'));
+			set_block_setting($block_id, 'filter_tiff',        WT_Filter::postBool('filter_tiff'));
+			set_block_setting($block_id, 'filter_wav',         WT_Filter::postBool('filter_wav'));
+			set_block_setting($block_id, 'filter_audio',       WT_Filter::postBool('filter_audio'));
+			set_block_setting($block_id, 'filter_book',        WT_Filter::postBool('filter_book'));
+			set_block_setting($block_id, 'filter_card',        WT_Filter::postBool('filter_card'));
+			set_block_setting($block_id, 'filter_certificate', WT_Filter::postBool('filter_certificate'));
+			set_block_setting($block_id, 'filter_coat',        WT_Filter::postBool('filter_coat'));
+			set_block_setting($block_id, 'filter_document',    WT_Filter::postBool('filter_document'));
+			set_block_setting($block_id, 'filter_electronic',  WT_Filter::postBool('filter_electronic'));
+			set_block_setting($block_id, 'filter_fiche',       WT_Filter::postBool('filter_fiche'));
+			set_block_setting($block_id, 'filter_film',        WT_Filter::postBool('filter_film'));
+			set_block_setting($block_id, 'filter_magazine',    WT_Filter::postBool('filter_magazine'));
+			set_block_setting($block_id, 'filter_manuscript',  WT_Filter::postBool('filter_manuscript'));
+			set_block_setting($block_id, 'filter_map',         WT_Filter::postBool('filter_map'));
+			set_block_setting($block_id, 'filter_newspaper',   WT_Filter::postBool('filter_newspaper'));
+			set_block_setting($block_id, 'filter_other',       WT_Filter::postBool('filter_other'));
+			set_block_setting($block_id, 'filter_painting',    WT_Filter::postBool('filter_painting'));
+			set_block_setting($block_id, 'filter_photo',       WT_Filter::postBool('filter_photo'));
+			set_block_setting($block_id, 'filter_tombstone',   WT_Filter::postBool('filter_tombstone'));
+			set_block_setting($block_id, 'filter_video',       WT_Filter::postBool('filter_video'));
 			exit;
 		}
 

@@ -135,12 +135,12 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'gedcom',         safe_POST('gedcom'));
-			set_block_setting($block_id, 'title',          $_POST['title']);
-			set_block_setting($block_id, 'html',           $_POST['html']);
-			set_block_setting($block_id, 'show_timestamp', safe_POST_bool('show_timestamp'));
-			set_block_setting($block_id, 'timestamp',      safe_POST('timestamp'));
+		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
+			set_block_setting($block_id, 'gedcom',         WT_Filter::post('gedcom'));
+			set_block_setting($block_id, 'title',          WT_Filter::post('title'));
+			set_block_setting($block_id, 'html',           WT_Filter::post('html'));
+			set_block_setting($block_id, 'show_timestamp', WT_Filter::postBool('show_timestamp'));
+			set_block_setting($block_id, 'timestamp',      WT_Filter::post('timestamp'));
 			$languages=array();
 			foreach (WT_I18N::installed_languages() as $code=>$name) {
 				if (safe_POST_bool('lang_'.$code)) {

@@ -159,9 +159,9 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'limit', safe_POST('limit'));
-			set_block_setting($block_id, 'flag',  safe_POST('flag'));
+		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
+			set_block_setting($block_id, 'limit', WT_Filter::post('limit'));
+			set_block_setting($block_id, 'flag',  WT_Filter::post('flag'));
 			exit;
 		}
 

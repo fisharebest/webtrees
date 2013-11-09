@@ -100,8 +100,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 	private function edit() {
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		if (safe_POST_bool('save')) {
-			$block_id=safe_POST('block_id');
+		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
+			$block_id = WT_Filter::postInteger('block_id');
 			if ($block_id) {
 				WT_DB::prepare(
 					"UPDATE `##block` SET gedcom_id=NULLIF(?, ''), block_order=? WHERE block_id=?"
