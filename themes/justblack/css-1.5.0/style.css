@@ -1480,6 +1480,7 @@ html[dir='rtl'] #lightbox_content #thumblist li  {float:right; margin-left:5px;}
 #map_pane .infowindow #iwhead a{color:#e2e2e2}
 #map_pane .infowindow #gmtabs li a{background-color:#545454;border:1px solid #272727;color:#e2e2e2;font-size:9px;font-weight:bold;line-height:1.5em}
 #map_pane .infowindow .highlt_img img[src*=silhouette]{background-color:#8E8E8E;border:1px solid #272727;padding:2px}
+#iwcontent_edit {background-color:#CCC !important}
 
 /* Census assistant module */
 table.table-census-assistant th {
