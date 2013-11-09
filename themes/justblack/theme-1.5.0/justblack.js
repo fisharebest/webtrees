@@ -526,8 +526,6 @@ jQuery(document).ready(function($){
 	if (curPage() == 'hourglass.php' && qstring('show_spouse') == '1') {
 		function styleSB(){			
 			 $.ajax({
-				cache:true,
-				async:true,
 				success:function(){
 					$('.person_box_template.style1').each(function(){
 						var width = $(this).width();
@@ -654,8 +652,6 @@ jQuery(document).ready(function($){
 	if (curPage() == 'individual.php' || qstring('mod_action') == 'treeview') {
 		$('#content a[name=tv_content]').after('<div class="loading-image"></div>');
 		$.ajax({
-			cache:false,
-			async:false,
 			beforeSend:function(){	
 				$('.tv_out').hide();
 				getTreeStylesheet();				
