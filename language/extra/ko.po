@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-05 13:02+0000\n"
+"POT-Creation-Date: 2013-11-09 17:47+0000\n"
 "PO-Revision-Date: 2012-09-04 02:03+0000\n"
 "Last-Translator: chunghi  LEE <webmaster@jangmal.net>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -19,11 +19,11 @@ msgstr ""
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
 "X-Generator: Launchpad (build 16718)\n"
 
-#: statisticsplot.php:801
+#: statisticsplot.php:804
 msgid " per gender"
 msgstr ""
 
-#: statisticsplot.php:803
+#: statisticsplot.php:806
 msgid " per time period"
 msgstr ""
 
@@ -83,7 +83,7 @@ msgid "%1$s %2$d times removed descending"
 msgstr ""
 
 #. I18N: The placeholders are GEDCOM identifiers and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
-#: admin_trees_check.php:200
+#: admin_trees_check.php:204
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
 msgstr ""
@@ -111,13 +111,13 @@ msgid "%1$s does not exist.  Did you mean %2$s?"
 msgstr ""
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
-#: admin_trees_check.php:191
+#: admin_trees_check.php:195
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
 msgstr ""
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
-#: admin_trees_check.php:180
+#: admin_trees_check.php:184
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
 msgstr ""
@@ -155,14 +155,14 @@ msgid_plural "%d Individuals"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/functions/functions_print.php:335 library/WT/Stats.php:3419
+#: includes/functions/functions_print.php:335 library/WT/Stats.php:3420
 #, php-format
 msgid "%d anonymous logged-in user"
 msgid_plural "%d anonymous logged-in users"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/functions/functions_print.php:341 library/WT/Stats.php:3429
+#: includes/functions/functions_print.php:341 library/WT/Stats.php:3430
 #, php-format
 msgid "%d logged-in user"
 msgid_plural "%d logged-in users"
@@ -210,7 +210,7 @@ msgid "%s (%s)"
 msgstr ""
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
-#: library/WT/Stats.php:4045
+#: library/WT/Stats.php:4046
 #, php-format
 msgid "%s BCE"
 msgstr ""
@@ -221,14 +221,14 @@ msgstr ""
 msgid "%s KB"
 msgstr ""
 
-#: library/WT/Stats.php:2563 library/WT/Stats.php:2567
+#: library/WT/Stats.php:2564 library/WT/Stats.php:2568
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] ""
 msgstr[1] ""
 
-#: library/WT/Stats.php:3092 library/WT/Stats.php:3096
+#: library/WT/Stats.php:3093 library/WT/Stats.php:3097
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
@@ -255,7 +255,7 @@ msgid_plural "%s messages"
 msgstr[0] ""
 msgstr[1] ""
 
-#: statisticsplot.php:744
+#: statisticsplot.php:747
 #, php-format
 msgid "%s not implemented"
 msgstr ""
@@ -302,7 +302,7 @@ msgid "%s twice removed descending"
 msgstr ""
 
 #: calendar.php:560 includes/functions/functions_print_lists.php:1921
-#: modules_v3/yahrzeit/module.php:116
+#: modules_v3/yahrzeit/module.php:118
 #, php-format
 msgid "%s year anniversary"
 msgstr ""
@@ -333,107 +333,107 @@ msgid_plural "&plusmn;%d years"
 msgstr[0] ""
 msgstr[1] ""
 
-#: library/WT/Stats.php:4059
+#: library/WT/Stats.php:4060
 msgctxt "CENTURY"
 msgid "10th"
 msgstr ""
 
-#: library/WT/Stats.php:4058
+#: library/WT/Stats.php:4059
 msgctxt "CENTURY"
 msgid "11th"
 msgstr ""
 
-#: library/WT/Stats.php:4057
+#: library/WT/Stats.php:4058
 msgctxt "CENTURY"
 msgid "12th"
 msgstr ""
 
-#: library/WT/Stats.php:4056
+#: library/WT/Stats.php:4057
 msgctxt "CENTURY"
 msgid "13th"
 msgstr ""
 
-#: library/WT/Stats.php:4055
+#: library/WT/Stats.php:4056
 msgctxt "CENTURY"
 msgid "14th"
 msgstr ""
 
-#: library/WT/Stats.php:4054
+#: library/WT/Stats.php:4055
 msgctxt "CENTURY"
 msgid "15th"
 msgstr ""
 
-#: library/WT/Stats.php:4053
+#: library/WT/Stats.php:4054
 msgctxt "CENTURY"
 msgid "16th"
 msgstr ""
 
-#: library/WT/Stats.php:4052
+#: library/WT/Stats.php:4053
 msgctxt "CENTURY"
 msgid "17th"
 msgstr ""
 
-#: library/WT/Stats.php:4051
+#: library/WT/Stats.php:4052
 msgctxt "CENTURY"
 msgid "18th"
 msgstr ""
 
-#: library/WT/Stats.php:4050
+#: library/WT/Stats.php:4051
 msgctxt "CENTURY"
 msgid "19th"
 msgstr ""
 
-#: library/WT/Stats.php:4068
+#: library/WT/Stats.php:4069
 msgctxt "CENTURY"
 msgid "1st"
 msgstr ""
 
-#: library/WT/Stats.php:4049
+#: library/WT/Stats.php:4050
 msgctxt "CENTURY"
 msgid "20th"
 msgstr ""
 
-#: library/WT/Stats.php:4048
+#: library/WT/Stats.php:4049
 msgctxt "CENTURY"
 msgid "21st"
 msgstr ""
 
-#: library/WT/Stats.php:4067
+#: library/WT/Stats.php:4068
 msgctxt "CENTURY"
 msgid "2nd"
 msgstr ""
 
-#: library/WT/Stats.php:4066
+#: library/WT/Stats.php:4067
 msgctxt "CENTURY"
 msgid "3rd"
 msgstr ""
 
-#: library/WT/Stats.php:4065
+#: library/WT/Stats.php:4066
 msgctxt "CENTURY"
 msgid "4th"
 msgstr ""
 
-#: library/WT/Stats.php:4064
+#: library/WT/Stats.php:4065
 msgctxt "CENTURY"
 msgid "5th"
 msgstr ""
 
-#: library/WT/Stats.php:4063
+#: library/WT/Stats.php:4064
 msgctxt "CENTURY"
 msgid "6th"
 msgstr ""
 
-#: library/WT/Stats.php:4062
+#: library/WT/Stats.php:4063
 msgctxt "CENTURY"
 msgid "7th"
 msgstr ""
 
-#: library/WT/Stats.php:4061
+#: library/WT/Stats.php:4062
 msgctxt "CENTURY"
 msgid "8th"
 msgstr ""
 
-#: library/WT/Stats.php:4060
+#: library/WT/Stats.php:4061
 msgctxt "CENTURY"
 msgid "9th"
 msgstr ""
@@ -442,7 +442,7 @@ msgstr ""
 msgid "<b>GUID</b> in this context is an acronym for «Globally Unique ID».<br /><br />GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS Church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same person no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br /><br />If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
 msgstr ""
 
-#: help_text.php:1326
+#: help_text.php:1321
 msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr ""
 
@@ -450,7 +450,7 @@ msgstr ""
 msgid "<b>No</b> means that authenticated users can see the details of all living people.  <b>Yes</b> means that users can only see the private information of living people they are related to.<br /><br />This option sets the default for all users who have access to this genealogical database.  The Administrator can override this option for individual users by editing the user's account details."
 msgstr ""
 
-#: message.php:122
+#: message.php:120
 msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead persons may also be private.  If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
 msgstr ""
 
@@ -482,29 +482,29 @@ msgstr ""
 msgid "<b>webtrees</b> reply address"
 msgstr ""
 
-#: login.php:138
+#: login.php:139
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access is permitted to users who have an account and a password for this website."
 msgstr ""
 
-#: login.php:132
+#: login.php:133
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>authorized</u> users only.<br /><br />If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 msgstr ""
 
-#: login.php:135
+#: login.php:136
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 msgstr ""
 
-#: login.php:129
+#: login.php:130
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
 msgstr ""
 
 #. I18N: default option in list of themes
-#: admin_trees_config.php:452 admin_users.php:205 admin_users.php:405
+#: admin_trees_config.php:461 admin_users.php:205 admin_users.php:405
 #: edituser.php:163
 msgid "<default theme>"
 msgstr ""
 
-#: login.php:378
+#: login.php:379
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
 msgstr ""
 
@@ -604,17 +604,17 @@ msgid "A media object is a record in the family tree which contains information 
 msgstr ""
 
 #. I18N: %s is a username
-#: login.php:239
+#: login.php:240
 #, php-format
 msgid "A new password has been created and emailed to %s.  You can change this password after you login."
 msgstr ""
 
-#: login.php:216
+#: login.php:217
 msgid "A new password was requested for your user name."
 msgstr ""
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:477
+#: login.php:478
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
@@ -625,7 +625,7 @@ msgid "A private area to record notes or keep a journal."
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:293
+#: login.php:294
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
 msgstr ""
@@ -710,7 +710,7 @@ msgstr ""
 msgid "A report of vital records for a given date or place."
 msgstr ""
 
-#: help_text.php:1382
+#: help_text.php:1377
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr ""
 
@@ -764,7 +764,7 @@ msgstr ""
 msgid "A tab showing the sources linked to an individual."
 msgstr ""
 
-#: help_text.php:1490
+#: help_text.php:1485
 msgid "A user will not be able to login until both the \"email verified\" and \"approved by administrator\" options are selected."
 msgstr ""
 
@@ -810,11 +810,11 @@ msgctxt "NOMINATIVE"
 msgid "Aban"
 msgstr ""
 
-#: admin_trees_config.php:937 help_text.php:408
+#: admin_trees_config.php:946 help_text.php:408
 msgid "Abbreviate chart labels"
 msgstr ""
 
-#: admin_trees_config.php:892 help_text.php:882
+#: admin_trees_config.php:901 help_text.php:882
 msgid "Abbreviate place names"
 msgstr ""
 
@@ -823,7 +823,7 @@ msgstr ""
 msgid "Abbreviation"
 msgstr ""
 
-#: library/WT/Stats.php:3774
+#: library/WT/Stats.php:3775
 msgid "Acadia"
 msgstr ""
 
@@ -835,13 +835,13 @@ msgstr ""
 msgid "Accept or reject any pending changes."
 msgstr ""
 
-#: admin_module_blocks.php:57 admin_module_menus.php:76
-#: admin_module_reports.php:57 admin_module_sidebar.php:76
-#: admin_module_tabs.php:76
+#: admin_module_blocks.php:58 admin_module_menus.php:77
+#: admin_module_reports.php:58 admin_module_sidebar.php:77
+#: admin_module_tabs.php:77
 msgid "Access level"
 msgstr ""
 
-#: help_text.php:1483
+#: help_text.php:1478
 msgid "Account approval and email verification"
 msgstr ""
 
@@ -913,9 +913,9 @@ msgctxt "NOMINATIVE"
 msgid "Adar II"
 msgstr ""
 
-#: admin_trees_config.php:573 edit_interface.php:2179
-#: includes/functions/functions_print.php:1029
-#: includes/functions/functions_print.php:1084 index_edit.php:293
+#: admin_trees_config.php:582 edit_interface.php:2179
+#: includes/functions/functions_print.php:1031
+#: includes/functions/functions_print.php:1086 index_edit.php:293
 #: index_edit.php:311 lifespan.php:273
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:101
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:185
@@ -930,7 +930,7 @@ msgstr ""
 msgid "Add  a new geographic location"
 msgstr ""
 
-#: modules_v3/clippings/module.php:485
+#: modules_v3/clippings/module.php:491
 #, php-format
 msgid "Add %s to cart"
 msgstr ""
@@ -955,7 +955,7 @@ msgstr ""
 msgid "Add a child to create a one-parent family"
 msgstr ""
 
-#: includes/functions/functions_charts.php:272
+#: includes/functions/functions_charts.php:271
 #: library/WT/Controller/Family.php:129
 msgid "Add a child to this family"
 msgstr ""
@@ -1071,7 +1071,7 @@ msgstr ""
 #: modules_v3/top10_pageviews/module.php:149
 #: modules_v3/top10_surnames/module.php:169
 #: modules_v3/upcoming_events/module.php:170
-#: modules_v3/user_messages/module.php:164 modules_v3/yahrzeit/module.php:254
+#: modules_v3/user_messages/module.php:164 modules_v3/yahrzeit/module.php:275
 msgid "Add a scrollbar when block contents grow"
 msgstr "블록의 내용이 성장할 때 스크롤바를 추가"
 
@@ -1100,7 +1100,7 @@ msgid "Add child"
 msgstr ""
 
 #: edit_interface.php:1878 help_text.php:1064
-#: includes/functions/functions_print.php:1010
+#: includes/functions/functions_print.php:1012
 msgid "Add from clipboard"
 msgstr ""
 
@@ -1108,15 +1108,15 @@ msgstr ""
 msgid "Add husband"
 msgstr ""
 
-#: modules_v3/clippings/module.php:90 modules_v3/clippings/module.php:510
+#: modules_v3/clippings/module.php:90 modules_v3/clippings/module.php:516
 msgid "Add just this family record."
 msgstr ""
 
-#: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:527
+#: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:533
 msgid "Add just this person."
 msgstr ""
 
-#: modules_v3/clippings/module.php:129 modules_v3/clippings/module.php:548
+#: modules_v3/clippings/module.php:129 modules_v3/clippings/module.php:554
 msgid "Add just this source."
 msgstr ""
 
@@ -1145,15 +1145,15 @@ msgstr ""
 msgid "Add new Name"
 msgstr ""
 
-#: modules_v3/clippings/module.php:93 modules_v3/clippings/module.php:513
+#: modules_v3/clippings/module.php:93 modules_v3/clippings/module.php:519
 msgid "Add parents' and all descendants' records together with this family record."
 msgstr ""
 
-#: modules_v3/clippings/module.php:92 modules_v3/clippings/module.php:512
+#: modules_v3/clippings/module.php:92 modules_v3/clippings/module.php:518
 msgid "Add parents' and children's records together with this family record."
 msgstr ""
 
-#: modules_v3/clippings/module.php:91 modules_v3/clippings/module.php:511
+#: modules_v3/clippings/module.php:91 modules_v3/clippings/module.php:517
 msgid "Add parents' records together with this family record."
 msgstr ""
 
@@ -1161,7 +1161,7 @@ msgstr ""
 msgid "Add people"
 msgstr ""
 
-#: admin_trees_config.php:315 help_text.php:1052
+#: admin_trees_config.php:324 help_text.php:1052
 msgid "Add spaces where notes were wrapped"
 msgstr ""
 
@@ -1170,31 +1170,31 @@ msgstr ""
 msgid "Add story"
 msgstr ""
 
-#: modules_v3/clippings/module.php:110 modules_v3/clippings/module.php:529
+#: modules_v3/clippings/module.php:110 modules_v3/clippings/module.php:535
 msgid "Add this person and his direct line ancestors."
 msgstr ""
 
-#: modules_v3/clippings/module.php:112 modules_v3/clippings/module.php:531
+#: modules_v3/clippings/module.php:112 modules_v3/clippings/module.php:537
 msgid "Add this person, his direct line ancestors, and their families."
 msgstr ""
 
-#: modules_v3/clippings/module.php:109 modules_v3/clippings/module.php:528
+#: modules_v3/clippings/module.php:109 modules_v3/clippings/module.php:534
 msgid "Add this person, his parents, and siblings."
 msgstr ""
 
-#: modules_v3/clippings/module.php:115 modules_v3/clippings/module.php:534
+#: modules_v3/clippings/module.php:115 modules_v3/clippings/module.php:540
 msgid "Add this person, his spouse, and all descendants."
 msgstr ""
 
-#: modules_v3/clippings/module.php:114 modules_v3/clippings/module.php:533
+#: modules_v3/clippings/module.php:114 modules_v3/clippings/module.php:539
 msgid "Add this person, his spouse, and children."
 msgstr ""
 
-#: modules_v3/clippings/module.php:130 modules_v3/clippings/module.php:549
+#: modules_v3/clippings/module.php:130 modules_v3/clippings/module.php:555
 msgid "Add this source and families/people linked to it."
 msgstr ""
 
-#: admin_trees_config.php:416 help_text.php:691
+#: admin_trees_config.php:425 help_text.php:691
 msgid "Add to TITLE header tag"
 msgstr ""
 
@@ -1216,7 +1216,7 @@ msgstr ""
 msgid "Add unlinked records"
 msgstr ""
 
-#: admin_trees_config.php:687
+#: admin_trees_config.php:696
 msgid "Add watermarks to thumbnails?"
 msgstr ""
 
@@ -1267,7 +1267,7 @@ msgstr ""
 msgid "Administration"
 msgstr ""
 
-#: admin_users.php:189 admin_users.php:363 help_text.php:1405
+#: admin_users.php:189 admin_users.php:363 help_text.php:1400
 msgid "Administrator"
 msgstr ""
 
@@ -1279,7 +1279,7 @@ msgstr ""
 msgid "Administrators"
 msgstr ""
 
-#: help_text.php:1292
+#: help_text.php:1287
 msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br /><br />When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
 msgstr ""
 
@@ -1429,15 +1429,15 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: admin_trees_config.php:1204
+#: admin_trees_config.php:1213
 msgid "Advanced fact settings"
 msgstr ""
 
-#: admin_trees_config.php:1209 help_text.php:413
+#: admin_trees_config.php:1218 help_text.php:413
 msgid "Advanced name facts"
 msgstr ""
 
-#: admin_trees_config.php:1217 help_text.php:418
+#: admin_trees_config.php:1226 help_text.php:418
 msgid "Advanced place name facts"
 msgstr ""
 
@@ -1446,7 +1446,7 @@ msgstr ""
 msgid "Advanced search"
 msgstr ""
 
-#: library/WT/Stats.php:3775
+#: library/WT/Stats.php:3776
 msgid "Afghanistan"
 msgstr ""
 
@@ -1458,17 +1458,17 @@ msgstr ""
 msgid "After creating the family tree, you will be able to upload or import data from a GEDCOM file."
 msgstr ""
 
-#: login.php:222
+#: login.php:223
 msgid "After you have logged in, select the «My Account» link under the «My Page» menu and fill in the password fields to change your password."
 msgstr ""
 
 #. I18N: gedcom tag AGE
-#: autocomplete.php:117 includes/functions/functions_print.php:814
-#: includes/functions/functions_print.php:852
+#: autocomplete.php:117 includes/functions/functions_print.php:816
+#: includes/functions/functions_print.php:854
 #: library/WT/Controller/Timeline.php:225
 #: library/WT/Controller/Timeline.php:227 library/WT/Gedcom/Tag.php:120
-#: library/WT/Person.php:473 library/WT/Stats.php:1641
-#: library/WT/Stats.php:2379 library/WT/Stats.php:2380
+#: library/WT/Person.php:473 library/WT/Stats.php:1642
+#: library/WT/Stats.php:2380 library/WT/Stats.php:2381
 #: modules_v3/GEDFact_assistant/CENS_ctrl.php:41 timeline.php:375
 msgid "Age"
 msgstr ""
@@ -1477,7 +1477,7 @@ msgstr ""
 msgid "Age at birth of child"
 msgstr ""
 
-#: admin_trees_config.php:526 help_text.php:620
+#: admin_trees_config.php:535 help_text.php:620
 msgid "Age at which to assume a person is dead"
 msgstr ""
 
@@ -1497,12 +1497,12 @@ msgstr ""
 msgid "Age difference"
 msgstr ""
 
-#: statistics.php:541 statisticsplot.php:924
+#: statistics.php:541 statisticsplot.php:927
 msgid "Age in year of first marriage"
 msgstr ""
 
 #: includes/functions/functions_print_lists.php:891 statistics.php:245
-#: statistics.php:537 statisticsplot.php:921
+#: statistics.php:537 statisticsplot.php:924
 msgid "Age in year of marriage"
 msgstr ""
 
@@ -1510,16 +1510,16 @@ msgstr ""
 msgid "Age of item"
 msgstr ""
 
-#: admin_trees_config.php:961
+#: admin_trees_config.php:970
 msgid "Age of parents next to child's birthdate"
 msgstr ""
 
-#: statistics.php:529 statisticsplot.php:915
+#: statistics.php:529 statisticsplot.php:918
 msgid "Age related to birth year"
 msgstr ""
 
 #: includes/functions/functions_print_lists.php:438 statistics.php:533
-#: statisticsplot.php:918
+#: statisticsplot.php:921
 msgid "Age related to death year"
 msgstr ""
 
@@ -1528,11 +1528,11 @@ msgstr ""
 msgid "Agency"
 msgstr ""
 
-#: library/WT/Stats.php:3778
+#: library/WT/Stats.php:3779
 msgid "Aland Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3779
+#: library/WT/Stats.php:3780
 msgid "Albania"
 msgstr ""
 
@@ -1545,7 +1545,7 @@ msgstr ""
 msgid "Albuquerque, New Mexico"
 msgstr ""
 
-#: library/WT/Stats.php:3842
+#: library/WT/Stats.php:3843
 msgid "Algeria"
 msgstr ""
 
@@ -1562,7 +1562,7 @@ msgstr ""
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
 #: indilist.php:167 indilist.php:251 indilist.php:253
-#: library/WT/Stats.php:3324 modules_v3/faq/module.php:186
+#: library/WT/Stats.php:3325 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
 #: modules_v3/googlemap/admin_places.php:756
 #: modules_v3/googlemap/module.php:1481 modules_v3/googlemap/module.php:1497
@@ -1576,20 +1576,20 @@ msgstr "전체"
 msgid "All People"
 msgstr ""
 
-#: help_text.php:1318
+#: help_text.php:1313
 msgid "All changes in PGV must be accepted"
 msgstr ""
 
-#: help_text.php:1324
+#: help_text.php:1319
 msgid "All existing PGV users must have distinct email addresses"
 msgstr ""
 
-#: admin_trees_config.php:1077 admin_trees_config.php:1114
-#: admin_trees_config.php:1151 admin_trees_config.php:1180
+#: admin_trees_config.php:1086 admin_trees_config.php:1123
+#: admin_trees_config.php:1160 admin_trees_config.php:1189
 msgid "All facts"
 msgstr ""
 
-#: login.php:384
+#: login.php:385
 msgid "All fields must be completed."
 msgstr ""
 
@@ -1602,7 +1602,7 @@ msgstr ""
 msgid "Allow this user to edit his account information"
 msgstr ""
 
-#: admin_trees_config.php:1035 help_text.php:851
+#: admin_trees_config.php:1044 help_text.php:851
 msgid "Allow users to see raw GEDCOM records"
 msgstr ""
 
@@ -1631,7 +1631,7 @@ msgctxt "MALE"
 msgid "Also known as"
 msgstr ""
 
-#: library/WT/Stats.php:3785
+#: library/WT/Stats.php:3786
 msgid "American Samoa"
 msgstr ""
 
@@ -1716,15 +1716,15 @@ msgstr ""
 msgid "Anchorage, Alaska"
 msgstr ""
 
-#: library/WT/Stats.php:3780
+#: library/WT/Stats.php:3781
 msgid "Andorra"
 msgstr ""
 
-#: library/WT/Stats.php:3776
+#: library/WT/Stats.php:3777
 msgid "Angola"
 msgstr ""
 
-#: library/WT/Stats.php:3777
+#: library/WT/Stats.php:3778
 msgid "Anguilla"
 msgstr ""
 
@@ -1732,7 +1732,7 @@ msgstr ""
 #: includes/functions/functions_print_lists.php:219
 #: includes/functions/functions_print_lists.php:635
 #: includes/functions/functions_print_lists.php:1767
-#: modules_v3/yahrzeit/module.php:157
+#: modules_v3/yahrzeit/module.php:159
 msgid "Anniversary"
 msgstr ""
 
@@ -1749,11 +1749,11 @@ msgstr ""
 msgid "Answer"
 msgstr ""
 
-#: library/WT/Stats.php:3786
+#: library/WT/Stats.php:3787
 msgid "Antarctica"
 msgstr ""
 
-#: library/WT/Stats.php:3788
+#: library/WT/Stats.php:3789
 msgid "Antigua and Barbuda"
 msgstr ""
 
@@ -1772,11 +1772,11 @@ msgstr ""
 
 #: admin_trees_download.php:113 help_text.php:1101
 #: modules_v3/clippings/module.php:203 modules_v3/clippings/module.php:211
-#: modules_v3/clippings/module.php:584 modules_v3/clippings/module.php:592
+#: modules_v3/clippings/module.php:590 modules_v3/clippings/module.php:598
 msgid "Apply privacy settings?"
 msgstr ""
 
-#: save.php:268
+#: save.php:266
 #, php-format
 msgid "Approval of account at %s"
 msgstr ""
@@ -1813,7 +1813,7 @@ msgctxt "LOCATIVE"
 msgid "April"
 msgstr ""
 
-#: includes/functions/functions_print.php:1104
+#: includes/functions/functions_print.php:1106
 #: library/WT/Date/Calendar.php:136
 msgctxt "NOMINATIVE"
 msgid "April"
@@ -1841,7 +1841,7 @@ msgstr ""
 #: includes/functions/functions_print_facts.php:888
 #: includes/functions/functions_print_facts.php:1176
 #: library/WT/Controller/Individual.php:188
-#: modules_v3/lightbox/functions/lightbox_print_media.php:423
+#: modules_v3/lightbox/functions/lightbox_print_media.php:418
 msgid "Are you sure you want to delete this fact?"
 msgstr ""
 
@@ -1855,7 +1855,7 @@ msgid "Are you sure you want to delete this story?"
 msgstr ""
 
 #: admin_media.php:290 admin_media.php:425 admin_site_access.php:114
-#: admin_trees_manage.php:229 admin_users.php:162
+#: admin_trees_manage.php:231 admin_users.php:162
 #: includes/functions/functions_print_lists.php:1028
 #: includes/functions/functions_print_lists.php:1129
 #: includes/functions/functions_print_lists.php:1221
@@ -1875,15 +1875,15 @@ msgstr ""
 msgid "Are you sure you want to undo all the changes to this family tree?"
 msgstr ""
 
-#: library/WT/Stats.php:3783
+#: library/WT/Stats.php:3784
 msgid "Argentina"
 msgstr ""
 
-#: library/WT/Stats.php:3784
+#: library/WT/Stats.php:3785
 msgid "Armenia"
 msgstr ""
 
-#: library/WT/Stats.php:3773
+#: library/WT/Stats.php:3774
 msgid "Aruba"
 msgstr ""
 
@@ -1918,7 +1918,7 @@ msgstr ""
 msgid "Asuncion, Paraguay"
 msgstr ""
 
-#: library/WT/Stats.php:3976
+#: library/WT/Stats.php:3977
 msgid "At Sea"
 msgstr ""
 
@@ -1978,17 +1978,17 @@ msgctxt "LOCATIVE"
 msgid "August"
 msgstr ""
 
-#: includes/functions/functions_print.php:1108
+#: includes/functions/functions_print.php:1110
 #: library/WT/Date/Calendar.php:140
 msgctxt "NOMINATIVE"
 msgid "August"
 msgstr ""
 
-#: library/WT/Stats.php:3789
+#: library/WT/Stats.php:3790
 msgid "Australia"
 msgstr ""
 
-#: library/WT/Stats.php:3790
+#: library/WT/Stats.php:3791
 msgid "Austria"
 msgstr ""
 
@@ -2002,23 +2002,23 @@ msgstr ""
 msgid "Author of last change"
 msgstr ""
 
-#: admin_users.php:201 admin_users.php:381 help_text.php:1467
+#: admin_users.php:201 admin_users.php:381 help_text.php:1462
 msgid "Automatically approve changes made by this user"
 msgstr ""
 
-#: admin_trees_config.php:307 help_text.php:556
+#: admin_trees_config.php:316 help_text.php:556
 msgid "Automatically create globally unique IDs"
 msgstr ""
 
-#: admin_trees_config.php:839 help_text.php:502
+#: admin_trees_config.php:848 help_text.php:502
 msgid "Automatically expand list of events of close relatives"
 msgstr ""
 
-#: admin_trees_config.php:998 help_text.php:497
+#: admin_trees_config.php:1007 help_text.php:497
 msgid "Automatically expand notes"
 msgstr ""
 
-#: admin_trees_config.php:1006 help_text.php:507
+#: admin_trees_config.php:1015 help_text.php:507
 msgid "Automatically expand sources"
 msgstr ""
 
@@ -2046,27 +2046,27 @@ msgstr ""
 msgid "Available Blocks"
 msgstr ""
 
-#: includes/functions/functions_print_lists.php:1987 library/WT/Stats.php:2392
+#: includes/functions/functions_print_lists.php:1987 library/WT/Stats.php:2393
 msgid "Average age"
 msgstr ""
 
-#: library/WT/Stats.php:1654 modules_v3/gedcom_stats/module.php:164
+#: library/WT/Stats.php:1655 modules_v3/gedcom_stats/module.php:164
 #: modules_v3/gedcom_stats/module.php:343 modules_v3/html/module.php:242
 #: statistics.php:134
 msgid "Average age at death"
 msgstr ""
 
-#: library/WT/Stats.php:2381 library/WT/Stats.php:2382
-#: library/WT/Stats.php:2386 library/WT/Stats.php:2390
-#: library/WT/Stats.php:2392
+#: library/WT/Stats.php:2382 library/WT/Stats.php:2383
+#: library/WT/Stats.php:2387 library/WT/Stats.php:2391
+#: library/WT/Stats.php:2393
 msgid "Average age in century of marriage"
 msgstr ""
 
-#: library/WT/Stats.php:1642 library/WT/Stats.php:1654
+#: library/WT/Stats.php:1643 library/WT/Stats.php:1655
 msgid "Average age related to death century"
 msgstr ""
 
-#: library/WT/Stats.php:2896 modules_v3/gedcom_stats/module.php:180
+#: library/WT/Stats.php:2897 modules_v3/gedcom_stats/module.php:180
 #: modules_v3/gedcom_stats/module.php:359 modules_v3/html/module.php:252
 #: statistics.php:291
 msgid "Average number of children per family"
@@ -2101,11 +2101,11 @@ msgctxt "NOMINATIVE"
 msgid "Azar"
 msgstr ""
 
-#: library/WT/Stats.php:3791
+#: library/WT/Stats.php:3792
 msgid "Azerbaijan"
 msgstr ""
 
-#: library/WT/Stats.php:3792
+#: library/WT/Stats.php:3793
 msgid "Azores"
 msgstr ""
 
@@ -2114,7 +2114,7 @@ msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
 msgstr ""
 
-#: library/WT/Stats.php:3800
+#: library/WT/Stats.php:3801
 msgid "Bahamas"
 msgstr ""
 
@@ -2142,11 +2142,11 @@ msgctxt "NOMINATIVE"
 msgid "Bahman"
 msgstr ""
 
-#: library/WT/Stats.php:3799
+#: library/WT/Stats.php:3800
 msgid "Bahrain"
 msgstr ""
 
-#: library/WT/Stats.php:3797
+#: library/WT/Stats.php:3798
 msgid "Bangladesh"
 msgstr ""
 
@@ -2229,7 +2229,7 @@ msgstr ""
 msgid "Bar mitzvah"
 msgstr ""
 
-#: library/WT/Stats.php:3807
+#: library/WT/Stats.php:3808
 msgid "Barbados"
 msgstr ""
 
@@ -2271,7 +2271,7 @@ msgstr ""
 msgid "Begins with"
 msgstr ""
 
-#: library/WT/Stats.php:3802
+#: library/WT/Stats.php:3803
 msgid "Belarus"
 msgstr ""
 
@@ -2280,19 +2280,19 @@ msgstr ""
 msgid "Belgian Chocolate"
 msgstr ""
 
-#: library/WT/Stats.php:3794
+#: library/WT/Stats.php:3795
 msgid "Belgium"
 msgstr ""
 
-#: library/WT/Stats.php:3803
+#: library/WT/Stats.php:3804
 msgid "Belize"
 msgstr ""
 
-#: library/WT/Stats.php:3795
+#: library/WT/Stats.php:3796
 msgid "Benin"
 msgstr ""
 
-#: library/WT/Stats.php:3804
+#: library/WT/Stats.php:3805
 msgid "Bermuda"
 msgstr ""
 
@@ -2304,7 +2304,7 @@ msgstr ""
 msgid "Best Man"
 msgstr ""
 
-#: library/WT/Stats.php:3809
+#: library/WT/Stats.php:3810
 msgid "Bhutan"
 msgstr ""
 
@@ -2346,7 +2346,7 @@ msgctxt "Pedigree"
 msgid "Birth"
 msgstr ""
 
-#: library/WT/Stats.php:1015 statistics.php:553
+#: library/WT/Stats.php:1014 statistics.php:553
 msgid "Birth by country"
 msgstr ""
 
@@ -2432,7 +2432,7 @@ msgstr ""
 msgid "Births"
 msgstr "출생"
 
-#: library/WT/Stats.php:1243 statistics.php:106
+#: library/WT/Stats.php:1244 statistics.php:106
 msgid "Births by century"
 msgstr ""
 
@@ -2449,7 +2449,7 @@ msgstr ""
 msgid "Blessing"
 msgstr ""
 
-#: admin_module_blocks.php:55 admin_modules.php:122
+#: admin_module_blocks.php:56 admin_modules.php:127
 msgid "Block"
 msgstr ""
 
@@ -2467,7 +2467,7 @@ msgstr ""
 msgid "Blue Marine"
 msgstr ""
 
-#: message.php:140
+#: message.php:141
 msgid "Body:"
 msgstr ""
 
@@ -2479,7 +2479,7 @@ msgstr ""
 msgid "Boise, Idaho"
 msgstr ""
 
-#: library/WT/Stats.php:3805
+#: library/WT/Stats.php:3806
 msgid "Bolivia"
 msgstr ""
 
@@ -2496,7 +2496,7 @@ msgstr ""
 msgid "Born in the covenant"
 msgstr ""
 
-#: library/WT/Stats.php:3801
+#: library/WT/Stats.php:3802
 msgid "Bosnia and Herzegovina"
 msgstr ""
 
@@ -2512,7 +2512,7 @@ msgstr ""
 msgid "Both dead"
 msgstr ""
 
-#: library/WT/Stats.php:3811
+#: library/WT/Stats.php:3812
 msgid "Botswana"
 msgstr ""
 
@@ -2520,7 +2520,7 @@ msgstr ""
 msgid "Bountiful, Utah"
 msgstr ""
 
-#: library/WT/Stats.php:3810
+#: library/WT/Stats.php:3811
 msgid "Bouvet Island"
 msgstr ""
 
@@ -2538,7 +2538,7 @@ msgstr ""
 msgid "Branches of the %s family"
 msgstr ""
 
-#: library/WT/Stats.php:3806
+#: library/WT/Stats.php:3807
 msgid "Brazil"
 msgstr ""
 
@@ -2581,15 +2581,15 @@ msgstr ""
 msgid "Brit milah of a son"
 msgstr ""
 
-#: library/WT/Stats.php:3886
+#: library/WT/Stats.php:3887
 msgid "British Indian Ocean Territory"
 msgstr ""
 
-#: library/WT/Stats.php:4025
+#: library/WT/Stats.php:4026
 msgid "British Virgin Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3812
+#: library/WT/Stats.php:3813
 msgid "British West Indies"
 msgstr ""
 
@@ -2613,7 +2613,7 @@ msgctxt "NOMINATIVE"
 msgid "Brumaire"
 msgstr ""
 
-#: library/WT/Stats.php:3808
+#: library/WT/Stats.php:3809
 msgid "Brunei Darussalam"
 msgstr ""
 
@@ -2621,7 +2621,7 @@ msgstr ""
 msgid "Buenos Aires, Argentina"
 msgstr ""
 
-#: library/WT/Stats.php:3798
+#: library/WT/Stats.php:3799
 msgid "Bulgaria"
 msgstr ""
 
@@ -2759,11 +2759,11 @@ msgstr ""
 msgid "Burial of a wife"
 msgstr ""
 
-#: library/WT/Stats.php:3796
+#: library/WT/Stats.php:3797
 msgid "Burkina Faso"
 msgstr ""
 
-#: library/WT/Stats.php:3793
+#: library/WT/Stats.php:3794
 msgid "Burundi"
 msgstr ""
 
@@ -2785,7 +2785,7 @@ msgstr ""
 msgid "By default the list shows only those places which can be matched between the Google Maps place list and your family trees.  You may have details for other places, such as those imported in bulk from an external file.  This option also allows you to list all the places that exist the Google Maps list, or just those that exist in the Google Maps table but not on your family trees."
 msgstr ""
 
-#: help_text.php:1422
+#: help_text.php:1417
 msgid "By default this chart does not show spouses for the descendants because it makes the chart harder to read and understand.  Turning this option on will show spouses on the chart."
 msgstr ""
 
@@ -2812,11 +2812,11 @@ msgstr ""
 msgid "CKEditor™"
 msgstr ""
 
-#: library/WT/MenuBar.php:374
+#: library/WT/MenuBar.php:374 modules_v3/yahrzeit/module.php:265
 msgid "Calendar"
 msgstr ""
 
-#: admin_trees_config.php:250 help_text.php:441
+#: admin_trees_config.php:259 help_text.php:441
 msgid "Calendar conversion"
 msgstr ""
 
@@ -2825,11 +2825,11 @@ msgstr ""
 msgid "Call number"
 msgstr ""
 
-#: library/WT/Stats.php:3899
+#: library/WT/Stats.php:3900
 msgid "Cambodia"
 msgstr ""
 
-#: library/WT/Stats.php:3823
+#: library/WT/Stats.php:3824
 msgid "Cameroon"
 msgstr ""
 
@@ -2837,11 +2837,11 @@ msgstr ""
 msgid "Campinas, Brazil"
 msgstr ""
 
-#: library/WT/Stats.php:3814
+#: library/WT/Stats.php:3815
 msgid "Canada"
 msgstr ""
 
-#: modules_v3/clippings/module.php:615
+#: modules_v3/clippings/module.php:621
 msgid "Cancel"
 msgstr ""
 
@@ -2849,11 +2849,11 @@ msgstr ""
 msgid "Cannot create"
 msgstr ""
 
-#: library/WT/Stats.php:3815
+#: library/WT/Stats.php:3816
 msgid "Cape Colony"
 msgstr ""
 
-#: library/WT/Stats.php:3829
+#: library/WT/Stats.php:3830
 msgid "Cape Verde"
 msgstr ""
 
@@ -2878,7 +2878,7 @@ msgstr ""
 msgid "Caste"
 msgstr ""
 
-#: library/WT/Stats.php:3816
+#: library/WT/Stats.php:3817
 msgid "Catalonia"
 msgstr ""
 
@@ -2895,7 +2895,7 @@ msgstr ""
 msgid "Cause of death"
 msgstr ""
 
-#: library/WT/Stats.php:3834
+#: library/WT/Stats.php:3835
 msgid "Cayman Islands"
 msgstr ""
 
@@ -2938,7 +2938,7 @@ msgstr ""
 msgid "Center map here"
 msgstr ""
 
-#: library/WT/Stats.php:3813
+#: library/WT/Stats.php:3814
 msgid "Central African Republic"
 msgstr ""
 
@@ -2946,7 +2946,7 @@ msgstr ""
 msgid "Certificate"
 msgstr ""
 
-#: library/WT/Stats.php:4001
+#: library/WT/Stats.php:4002
 msgid "Chad"
 msgstr ""
 
@@ -2998,7 +2998,7 @@ msgstr[1] ""
 msgid "Changes log"
 msgstr ""
 
-#: library/WT/Stats.php:3819
+#: library/WT/Stats.php:3820
 msgid "Channel Islands"
 msgstr ""
 
@@ -3007,7 +3007,7 @@ msgstr ""
 msgid "Character set"
 msgstr ""
 
-#: admin_modules.php:123 admin_modules.php:141
+#: admin_modules.php:128 admin_modules.php:146
 msgid "Chart"
 msgstr ""
 
@@ -3016,7 +3016,7 @@ msgid "Chart type"
 msgstr ""
 
 #. I18N: Name of a module/block
-#: admin_trees_config.php:794 admin_trees_config.php:932
+#: admin_trees_config.php:803 admin_trees_config.php:941
 #: library/WT/MenuBar.php:100 modules_v3/charts/help_text.php:33
 #: modules_v3/charts/module.php:34
 msgid "Charts"
@@ -3062,7 +3062,7 @@ msgid "Child of %s"
 msgstr ""
 
 #: includes/functions/functions_print_lists.php:215
-#: includes/functions/functions_print_lists.php:637
+#: includes/functions/functions_print_lists.php:637 statisticsplot.php:784
 msgid "Children"
 msgstr ""
 
@@ -3095,11 +3095,11 @@ msgstr ""
 msgid "Children take their mother’s surname."
 msgstr ""
 
-#: library/WT/Stats.php:3820
+#: library/WT/Stats.php:3821
 msgid "Chile"
 msgstr ""
 
-#: library/WT/Stats.php:3821
+#: library/WT/Stats.php:3822
 msgid "China"
 msgstr ""
 
@@ -3111,7 +3111,7 @@ msgstr ""
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
 msgstr ""
 
-#: help_text.php:1463
+#: help_text.php:1458
 msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the person who made an audio recording."
 msgstr ""
 
@@ -3201,7 +3201,7 @@ msgstr ""
 msgid "Christening of a son"
 msgstr ""
 
-#: library/WT/Stats.php:3833
+#: library/WT/Stats.php:3834
 msgid "Christmas Island"
 msgstr ""
 
@@ -3276,7 +3276,7 @@ msgstr ""
 msgid "Click a row, then drag-and-drop to re-order media "
 msgstr ""
 
-#: admin_trees_manage.php:263
+#: admin_trees_manage.php:272
 msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
 msgstr ""
 
@@ -3296,7 +3296,7 @@ msgstr ""
 msgid "Click on a title to go straight to it, or scroll down to read them all"
 msgstr ""
 
-#: help_text.php:1376
+#: help_text.php:1371
 msgid "Click this link to remove the person from the timeline."
 msgstr ""
 
@@ -3305,7 +3305,7 @@ msgstr ""
 msgid "Click to choose person as Head of family."
 msgstr ""
 
-#: help_text.php:1356
+#: help_text.php:1351
 msgid "Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically."
 msgstr ""
 
@@ -3326,7 +3326,7 @@ msgstr ""
 msgid "Cochabamba, Bolivia"
 msgstr ""
 
-#: library/WT/Stats.php:3817
+#: library/WT/Stats.php:3818
 msgid "Cocos (Keeling) Islands"
 msgstr ""
 
@@ -3344,7 +3344,7 @@ msgstr ""
 msgid "Collapse all"
 msgstr ""
 
-#: library/WT/Stats.php:3827
+#: library/WT/Stats.php:3828
 msgid "Colombia"
 msgstr ""
 
@@ -3373,8 +3373,8 @@ msgstr ""
 msgid "Comment"
 msgstr ""
 
-#: admin_users.php:210 help_text.php:1365 login.php:297 login.php:339
-#: login.php:411
+#: admin_users.php:210 help_text.php:1360 login.php:298 login.php:340
+#: login.php:412
 msgid "Comments"
 msgstr ""
 
@@ -3388,7 +3388,7 @@ msgstr ""
 msgid "Communicate directly with other users, using private messages."
 msgstr ""
 
-#: library/WT/Stats.php:3828
+#: library/WT/Stats.php:3829
 msgid "Comoros"
 msgstr ""
 
@@ -3428,11 +3428,11 @@ msgstr ""
 #: modules_v3/top10_givnnames/module.php:62
 #: modules_v3/top10_pageviews/module.php:60
 #: modules_v3/top10_surnames/module.php:83
-#: modules_v3/upcoming_events/module.php:69 modules_v3/yahrzeit/module.php:63
+#: modules_v3/upcoming_events/module.php:69 modules_v3/yahrzeit/module.php:65
 msgid "Configure"
 msgstr "설정"
 
-#: admin_users.php:384 edituser.php:154 help_text.php:1306 login.php:406
+#: admin_users.php:384 edituser.php:154 help_text.php:1301 login.php:407
 msgid "Confirm password"
 msgstr ""
 
@@ -3441,11 +3441,11 @@ msgstr ""
 msgid "Confirmation"
 msgstr ""
 
-#: library/WT/Stats.php:3825
+#: library/WT/Stats.php:3826
 msgid "Congo (Brazzaville)"
 msgstr ""
 
-#: library/WT/Stats.php:3824
+#: library/WT/Stats.php:3825
 msgid "Congo (Kinshasa)"
 msgstr ""
 
@@ -3453,7 +3453,7 @@ msgstr ""
 msgid "Connection to database server"
 msgstr ""
 
-#: admin_trees_config.php:360
+#: admin_trees_config.php:369
 msgid "Contact Information"
 msgstr ""
 
@@ -3467,8 +3467,8 @@ msgid "Content"
 msgstr ""
 
 #: modules_v3/clippings/module.php:94 modules_v3/clippings/module.php:117
-#: modules_v3/clippings/module.php:131 modules_v3/clippings/module.php:514
-#: modules_v3/clippings/module.php:537 modules_v3/clippings/module.php:550
+#: modules_v3/clippings/module.php:131 modules_v3/clippings/module.php:520
+#: modules_v3/clippings/module.php:543 modules_v3/clippings/module.php:556
 #: modules_v3/googlemap/admin_places.php:373
 msgid "Continue Adding"
 msgstr ""
@@ -3478,16 +3478,16 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: help_text.php:1509
+#: help_text.php:1504
 msgid "Convert from UTF-8 to ANSI"
 msgstr ""
 
 #: admin_trees_download.php:125 modules_v3/clippings/module.php:218
-#: modules_v3/clippings/module.php:600
+#: modules_v3/clippings/module.php:606
 msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
 msgstr ""
 
-#: library/WT/Stats.php:3826
+#: library/WT/Stats.php:3827
 msgid "Cook Islands"
 msgstr ""
 
@@ -3520,19 +3520,19 @@ msgstr ""
 msgid "Correct NAME records of the form 'John/DOE/' or 'John /DOE', as produced by older genealogy programs."
 msgstr ""
 
-#: library/WT/Stats.php:3830
+#: library/WT/Stats.php:3831
 msgid "Costa Rica"
 msgstr ""
 
-#: library/WT/Stats.php:3822
+#: library/WT/Stats.php:3823
 msgid "Cote d'Ivoire"
 msgstr ""
 
-#: login.php:549
+#: login.php:550
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr ""
 
-#: admin.php:215 library/WT/Stats.php:3325
+#: admin.php:215 library/WT/Stats.php:3326
 msgid "Count"
 msgstr ""
 
@@ -3550,7 +3550,7 @@ msgstr ""
 msgid "Country"
 msgstr ""
 
-#: statisticsplot.php:813 statisticsplot.php:815 statisticsplot.php:817
+#: statisticsplot.php:816 statisticsplot.php:818 statisticsplot.php:820
 msgid "Counts "
 msgstr ""
 
@@ -3581,7 +3581,7 @@ msgstr ""
 msgid "Create a new Shared Note using Assistant"
 msgstr ""
 
-#: admin_trees_manage.php:240 help_text.php:1070
+#: admin_trees_manage.php:247 help_text.php:1070
 msgid "Create a new family tree"
 msgstr ""
 
@@ -3608,10 +3608,6 @@ msgstr ""
 #: admin_site_other.php:64 edit_interface.php:668 edit_interface.php:765
 #: includes/functions/functions_edit.php:1188
 msgid "Create a new source"
-msgstr ""
-
-#: help_text.php:1250
-msgid "Create missing thumbnails"
 msgstr ""
 
 #: statistics.php:417
@@ -3745,11 +3741,11 @@ msgstr ""
 msgid "Cremation of a wife"
 msgstr ""
 
-#: library/WT/Stats.php:3880
+#: library/WT/Stats.php:3881
 msgid "Croatia"
 msgstr ""
 
-#: library/WT/Stats.php:3832
+#: library/WT/Stats.php:3833
 msgid "Cuba"
 msgstr ""
 
@@ -3765,7 +3761,7 @@ msgstr ""
 msgid "Custom"
 msgstr ""
 
-#: calendar.php:264 includes/functions/functions_print.php:1081
+#: calendar.php:264 includes/functions/functions_print.php:1083
 msgid "Custom Event"
 msgstr ""
 
@@ -3777,15 +3773,15 @@ msgstr ""
 msgid "Custom welcome text"
 msgstr ""
 
-#: library/WT/Stats.php:3835
+#: library/WT/Stats.php:3836
 msgid "Cyprus"
 msgstr ""
 
-#: library/WT/Stats.php:3836
+#: library/WT/Stats.php:3837
 msgid "Czech Republic"
 msgstr ""
 
-#: library/WT/Stats.php:3831
+#: library/WT/Stats.php:3832
 msgid "Czechoslovakia"
 msgstr ""
 
@@ -3812,7 +3808,7 @@ msgstr ""
 msgid "Data folder"
 msgstr ""
 
-#: login.php:543
+#: login.php:544
 msgid "Data was not correct, please try again"
 msgstr ""
 
@@ -3846,7 +3842,7 @@ msgstr ""
 msgid "Date Sent:"
 msgstr "보낸 날짜:"
 
-#: admin_trees_config.php:1022 help_text.php:1411
+#: admin_trees_config.php:1031 help_text.php:1406
 msgid "Date differences"
 msgstr ""
 
@@ -4029,7 +4025,7 @@ msgstr ""
 msgid "Death"
 msgstr ""
 
-#: library/WT/Stats.php:1032 statistics.php:561
+#: library/WT/Stats.php:1031 statistics.php:561
 msgid "Death by country"
 msgstr ""
 
@@ -4169,7 +4165,7 @@ msgstr ""
 msgid "Deaths"
 msgstr ""
 
-#: library/WT/Stats.php:1304 statistics.php:107
+#: library/WT/Stats.php:1305 statistics.php:107
 msgid "Deaths by century"
 msgstr ""
 
@@ -4206,7 +4202,7 @@ msgctxt "LOCATIVE"
 msgid "December"
 msgstr ""
 
-#: includes/functions/functions_print.php:1112
+#: includes/functions/functions_print.php:1114
 #: library/WT/Date/Calendar.php:144
 msgctxt "NOMINATIVE"
 msgid "December"
@@ -4220,7 +4216,7 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: admin_site_config.php:90 admin_trees_config.php:447
+#: admin_site_config.php:90 admin_trees_config.php:456
 msgid "Default Theme"
 msgstr ""
 
@@ -4228,11 +4224,11 @@ msgstr ""
 msgid "Default chart"
 msgstr ""
 
-#: admin_trees_manage.php:238 help_text.php:1116
+#: admin_trees_manage.php:245 help_text.php:1116
 msgid "Default family tree"
 msgstr ""
 
-#: admin_trees_config.php:233 admin_users.php:225 admin_users.php:427
+#: admin_trees_config.php:242 admin_users.php:225 admin_users.php:427
 #: edituser.php:145 help_text.php:1121 modules_v3/gedcom_block/module.php:52
 msgid "Default individual"
 msgstr ""
@@ -4242,11 +4238,11 @@ msgid "Default map type"
 msgstr ""
 
 #. I18N: A site configuration setting
-#: admin_trees_config.php:799 help_text.php:706
+#: admin_trees_config.php:808 help_text.php:706
 msgid "Default pedigree chart layout"
 msgstr ""
 
-#: admin_trees_config.php:810 help_text.php:492
+#: admin_trees_config.php:819 help_text.php:492
 msgid "Default pedigree generations"
 msgstr ""
 
@@ -4260,8 +4256,8 @@ msgid "Degree"
 msgstr ""
 
 #: admin_site_access.php:284 admin_site_change.php:275
-#: admin_site_clean.php:126 admin_site_logs.php:242 admin_trees_config.php:605
-#: admin_trees_manage.php:229 edit_interface.php:151
+#: admin_site_clean.php:126 admin_site_logs.php:242 admin_trees_config.php:614
+#: admin_trees_manage.php:231 edit_interface.php:151
 #: includes/functions/functions_print_facts.php:170
 #: includes/functions/functions_print_facts.php:691
 #: includes/functions/functions_print_facts.php:888
@@ -4314,7 +4310,7 @@ msgstr ""
 msgid "Deleted user: "
 msgstr ""
 
-#: admin_trees_manage.php:196
+#: admin_trees_manage.php:197
 msgid "Deleting old genealogy data…"
 msgstr ""
 
@@ -4322,7 +4318,7 @@ msgstr ""
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
 msgstr ""
 
-#: library/WT/Stats.php:3840
+#: library/WT/Stats.php:3841
 msgid "Denmark"
 msgstr ""
 
@@ -4363,22 +4359,22 @@ msgid "Descent Steps"
 msgstr ""
 
 #. I18N: gedcom tag DSCR
-#: admin_module_blocks.php:56 admin_module_menus.php:74
-#: admin_module_reports.php:56 admin_module_sidebar.php:74
-#: admin_module_tabs.php:74 admin_modules.php:118 find.php:469
+#: admin_module_blocks.php:57 admin_module_menus.php:75
+#: admin_module_reports.php:57 admin_module_sidebar.php:75
+#: admin_module_tabs.php:75 admin_modules.php:123 find.php:469
 #: library/WT/Gedcom/Tag.php:193
 msgid "Description"
 msgstr ""
 
-#: admin_trees_config.php:424 help_text.php:686
+#: admin_trees_config.php:433 help_text.php:686
 msgid "Description META tag"
 msgstr ""
 
-#: login.php:401
+#: login.php:402
 msgid "Desired password"
 msgstr ""
 
-#: login.php:396
+#: login.php:397
 msgid "Desired user name"
 msgstr ""
 
@@ -4519,11 +4515,11 @@ msgstr ""
 msgid "Divorce filed"
 msgstr ""
 
-#: library/WT/Stats.php:2263 statistics.php:209
+#: library/WT/Stats.php:2264 statistics.php:209
 msgid "Divorces by century"
 msgstr ""
 
-#: library/WT/Stats.php:3838
+#: library/WT/Stats.php:3839
 msgid "Djibouti"
 msgstr ""
 
@@ -4545,11 +4541,11 @@ msgstr ""
 msgid "Do not create new locations, just import coordinates for existing locations."
 msgstr ""
 
-#: addmedia.php:733 admin_trees_config.php:1262 edit_interface.php:243
+#: addmedia.php:733 admin_trees_config.php:1271 edit_interface.php:243
 #: edit_interface.php:331 edit_interface.php:501 edit_interface.php:560
 #: edit_interface.php:720 edit_interface.php:843 edit_interface.php:1011
 #: edit_interface.php:1082 edit_interface.php:1154 edit_interface.php:2036
-#: edit_interface.php:2468 help_text.php:1291
+#: edit_interface.php:2468 help_text.php:1286
 #: includes/functions/functions_edit.php:932 includes/media_reorder.php:169
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 msgid "Do not update the “last change” record"
@@ -4560,15 +4556,15 @@ msgstr ""
 msgid "Document"
 msgstr ""
 
-#: library/WT/Stats.php:3839
+#: library/WT/Stats.php:3840
 msgid "Dominica"
 msgstr ""
 
-#: library/WT/Stats.php:3841
+#: library/WT/Stats.php:3842
 msgid "Dominican Republic"
 msgstr ""
 
-#: admin_trees_manage.php:221 modules_v3/googlemap/admin_places.php:757
+#: admin_trees_manage.php:222 modules_v3/googlemap/admin_places.php:757
 msgid "Download"
 msgstr ""
 
@@ -4586,8 +4582,8 @@ msgstr ""
 msgid "Download GEDCOM"
 msgstr ""
 
-#: modules_v3/clippings/module.php:228 modules_v3/clippings/module.php:480
-#: modules_v3/clippings/module.php:616
+#: modules_v3/clippings/module.php:228 modules_v3/clippings/module.php:486
+#: modules_v3/clippings/module.php:622
 msgid "Download Now"
 msgstr ""
 
@@ -4611,11 +4607,11 @@ msgstr ""
 msgid "Duodi"
 msgstr ""
 
-#: admin_users.php:258 edituser.php:61 login.php:260
+#: admin_users.php:258 edituser.php:61 login.php:261
 msgid "Duplicate email address.  A user with that email already exists."
 msgstr ""
 
-#: admin_users.php:255 edituser.php:59 login.php:258
+#: admin_users.php:255 edituser.php:59 login.php:259
 msgid "Duplicate user name.  A user with that user name already exists.  Please choose another user name."
 msgstr ""
 
@@ -4627,7 +4623,7 @@ msgstr ""
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br /><br />Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, \"Oneida, Idaho, USA\" would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. \"Idaho, USA\" would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
 
-#: help_text.php:1348
+#: help_text.php:1343
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
 msgstr ""
 
@@ -4657,7 +4653,7 @@ msgstr ""
 msgid "Earliest marriage"
 msgstr ""
 
-#: library/WT/Stats.php:3843
+#: library/WT/Stats.php:3844
 msgid "Ecuador"
 msgstr ""
 
@@ -4699,7 +4695,7 @@ msgstr ""
 msgid "Edit Shared Note"
 msgstr ""
 
-#: help_text.php:1473
+#: help_text.php:1468
 msgid "Edit account information"
 msgstr ""
 
@@ -4707,7 +4703,7 @@ msgstr ""
 msgid "Edit gender"
 msgstr ""
 
-#: modules_v3/lightbox/functions/lightbox_print_media.php:389
+#: modules_v3/lightbox/functions/lightbox_print_media.php:384
 msgid "Edit media"
 msgstr ""
 
@@ -4724,7 +4720,7 @@ msgstr ""
 msgid "Edit note"
 msgstr ""
 
-#: admin_trees_config.php:214
+#: admin_trees_config.php:223
 msgid "Edit options"
 msgstr ""
 
@@ -4753,7 +4749,7 @@ msgid "Edit this individual and replace their details with your own"
 msgstr ""
 
 #. I18N: Listbox entry; name of a role
-#: admin_users.php:45 help_text.php:1393
+#: admin_users.php:45 help_text.php:1388
 msgid "Editor"
 msgstr ""
 
@@ -4766,15 +4762,15 @@ msgstr ""
 msgid "Education"
 msgstr ""
 
-#: library/WT/Stats.php:3844
+#: library/WT/Stats.php:3845
 msgid "Egypt"
 msgstr ""
 
-#: library/WT/Stats.php:3845
+#: library/WT/Stats.php:3846
 msgid "Eire"
 msgstr ""
 
-#: library/WT/Stats.php:3986
+#: library/WT/Stats.php:3987
 msgid "El Salvador"
 msgstr ""
 
@@ -4812,7 +4808,7 @@ msgid "Email"
 msgstr ""
 
 #: includes/authentication.php:237 includes/authentication.php:291
-#: login.php:296 message.php:130 modules_v3/user_messages/module.php:94
+#: login.php:297 message.php:131 modules_v3/user_messages/module.php:94
 msgid "Email Address:"
 msgstr "전자메일 주소:"
 
@@ -4822,7 +4818,7 @@ msgstr "전자메일 주소:"
 #. I18N: gedcom tag _EMAIL
 #: admin_users.php:373 edituser.php:158 help_text.php:1209
 #: library/WT/Gedcom/Tag.php:196 library/WT/Gedcom/Tag.php:197
-#: library/WT/Gedcom/Tag.php:198 library/WT/Gedcom/Tag.php:714 login.php:391
+#: library/WT/Gedcom/Tag.php:198 library/WT/Gedcom/Tag.php:714 login.php:392
 #: setup.php:431
 msgid "Email address"
 msgstr ""
@@ -4870,11 +4866,11 @@ msgid "Employer"
 msgstr ""
 
 #: modules_v3/clippings/help_text.php:38 modules_v3/clippings/module.php:270
-#: modules_v3/clippings/module.php:476
+#: modules_v3/clippings/module.php:482
 msgid "Empty Cart"
 msgstr ""
 
-#: admin_modules.php:116
+#: admin_modules.php:121
 msgid "Enabled"
 msgstr ""
 
@@ -4901,7 +4897,7 @@ msgstr ""
 msgid "Engagement"
 msgstr ""
 
-#: library/WT/Stats.php:3846
+#: library/WT/Stats.php:3847
 msgid "England"
 msgstr ""
 
@@ -4970,11 +4966,11 @@ msgstr ""
 msgid "Entry Text:"
 msgstr ""
 
-#: library/WT/Stats.php:3869
+#: library/WT/Stats.php:3870
 msgid "Equatorial Guinea"
 msgstr ""
 
-#: library/WT/Stats.php:3847
+#: library/WT/Stats.php:3848
 msgid "Eritrea"
 msgstr ""
 
@@ -5016,15 +5012,15 @@ msgctxt "NOMINATIVE"
 msgid "Esfand"
 msgstr ""
 
-#: admin_trees_config.php:778 help_text.php:841
+#: admin_trees_config.php:787 help_text.php:841
 msgid "Estimated dates for birth and death"
 msgstr ""
 
-#: library/WT/Stats.php:3850
+#: library/WT/Stats.php:3851
 msgid "Estonia"
 msgstr ""
 
-#: library/WT/Stats.php:3851
+#: library/WT/Stats.php:3852
 msgid "Ethiopia"
 msgstr ""
 
@@ -5050,11 +5046,11 @@ msgstr ""
 msgid "Events of close relatives"
 msgstr ""
 
-#: help_text.php:1371
+#: help_text.php:1366
 msgid "Every person in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don't know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
 msgstr ""
 
-#: help_text.php:1386
+#: help_text.php:1381
 msgid "Everybody has this role, including visitors to the site and search engines."
 msgstr ""
 
@@ -5085,7 +5081,7 @@ msgstr ""
 msgid "Excluded from this submission"
 msgstr ""
 
-#: admin_trees_config.php:1059 help_text.php:897
+#: admin_trees_config.php:1068 help_text.php:897
 msgid "Execution statistics"
 msgstr ""
 
@@ -5099,12 +5095,12 @@ msgid "Expand all"
 msgstr ""
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:412
+#: login.php:413
 msgid "Explain why you are requesting an account."
 msgstr ""
 
 #: admin_site_change.php:274 admin_site_logs.php:241
-#: admin_trees_manage.php:213
+#: admin_trees_manage.php:214
 msgid "Export"
 msgstr ""
 
@@ -5113,7 +5109,7 @@ msgid "Export family tree"
 msgstr ""
 
 #. I18N: ... [who were] born in the last XX years or died in the last YY years
-#: admin_trees_config.php:496 help_text.php:605
+#: admin_trees_config.php:505 help_text.php:605
 msgid "Extend privacy to dead people"
 msgstr ""
 
@@ -5210,11 +5206,11 @@ msgstr ""
 msgid "Fact 9"
 msgstr ""
 
-#: admin_trees_config.php:990
+#: admin_trees_config.php:999
 msgid "Fact icons"
 msgstr ""
 
-#: includes/functions/functions_print.php:1072
+#: includes/functions/functions_print.php:1074
 msgid "Fact or event"
 msgstr ""
 
@@ -5224,19 +5220,19 @@ msgstr ""
 msgid "Facts and events"
 msgstr "사실 및 이벤트"
 
-#: admin_trees_config.php:1109
+#: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr ""
 
-#: admin_trees_config.php:1072
+#: admin_trees_config.php:1081
 msgid "Facts for Individual records"
 msgstr ""
 
-#: admin_trees_config.php:1175
+#: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr ""
 
-#: admin_trees_config.php:1146
+#: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr ""
 
@@ -5248,11 +5244,11 @@ msgstr ""
 msgid "Facts for new individuals"
 msgstr ""
 
-#: library/WT/Stats.php:3857
+#: library/WT/Stats.php:3858
 msgid "Faeroe Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3855
+#: library/WT/Stats.php:3856
 msgid "Falkland Islands"
 msgstr ""
 
@@ -5267,7 +5263,7 @@ msgstr ""
 #: modules_v3/gedcom_stats/module.php:316
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:188
 #: modules_v3/relatives/module.php:34 note.php:101 placelist.php:232
-#: search.php:119 source.php:100 statistics.php:56
+#: search.php:119 source.php:100 statistics.php:56 statisticsplot.php:782
 msgid "Families"
 msgstr ""
 
@@ -5284,7 +5280,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:928
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:935
 #: modules_v3/family_group_report/module.php:35
-#: modules_v3/family_nav/module.php:300
+#: modules_v3/family_nav/module.php:302
 msgid "Family"
 msgstr "가족"
 
@@ -5292,7 +5288,7 @@ msgstr "가족"
 msgid "Family Group Information"
 msgstr ""
 
-#: admin_trees_config.php:334 help_text.php:527
+#: admin_trees_config.php:343 help_text.php:527
 msgid "Family ID prefix"
 msgstr ""
 
@@ -5356,7 +5352,7 @@ msgid "Family of %s"
 msgstr ""
 
 #: admin_site_change.php:269 admin_site_change.php:293 admin_site_logs.php:236
-#: admin_site_logs.php:259 admin_trees_manage.php:181 admin_users.php:224
+#: admin_site_logs.php:259 admin_trees_manage.php:182 admin_users.php:224
 #: admin_users.php:426 edit_changes.php:174
 #: modules_v3/batch_update/admin_batch_update.php:63
 #: modules_v3/faq/module.php:354 modules_v3/googlemap/module.php:1476
@@ -5378,7 +5374,7 @@ msgstr ""
 msgid "Family tree exported to %s."
 msgstr ""
 
-#: admin_trees_config.php:221
+#: admin_trees_config.php:230
 msgid "Family tree title"
 msgstr ""
 
@@ -5475,7 +5471,7 @@ msgstr ""
 msgid "Father's Birthplace - (Chapman format)"
 msgstr ""
 
-#: includes/functions/functions_print.php:732
+#: includes/functions/functions_print.php:734
 msgid "Father's age"
 msgstr ""
 
@@ -5497,7 +5493,7 @@ msgid "Father’s family with an unknown individual"
 msgstr ""
 
 #. I18N: Name of a module
-#: help_text.php:1260 library/WT/MenuBar.php:506
+#: help_text.php:1255 library/WT/MenuBar.php:506
 #: modules_v3/gedcom_favorites/module.php:36
 msgid "Favorites"
 msgstr ""
@@ -5527,7 +5523,7 @@ msgctxt "LOCATIVE"
 msgid "February"
 msgstr ""
 
-#: includes/functions/functions_print.php:1102
+#: includes/functions/functions_print.php:1104
 #: library/WT/Date/Calendar.php:134
 msgctxt "NOMINATIVE"
 msgid "February"
@@ -5535,15 +5531,15 @@ msgstr ""
 
 #: calendar.php:582 includes/functions/functions_edit.php:1459
 #: library/WT/Controller/Individual.php:274
-#: library/WT/Controller/Individual.php:277 library/WT/Stats.php:3324
-#: statisticsplot.php:799 timeline.php:262
+#: library/WT/Controller/Individual.php:277 library/WT/Stats.php:3325
+#: statisticsplot.php:802 timeline.php:262
 msgid "Female"
 msgstr ""
 
 #: calendar.php:211 calendar.php:213
 #: includes/functions/functions_print_lists.php:1987 library/WT/Stats.php:607
 #: library/WT/Stats.php:611 library/WT/Stats.php:617 library/WT/Stats.php:620
-#: library/WT/Stats.php:1654 library/WT/Stats.php:2392
+#: library/WT/Stats.php:1655 library/WT/Stats.php:2393
 #: modules_v3/gedcom_stats/module.php:95
 #: modules_v3/gedcom_stats/module.php:167 modules_v3/html/module.php:180
 #: modules_v3/top10_givnnames/module.php:84 statistics.php:136
@@ -5551,11 +5547,11 @@ msgstr ""
 msgid "Females"
 msgstr ""
 
-#: library/WT/Stats.php:3853
+#: library/WT/Stats.php:3854
 msgid "Fiji"
 msgstr ""
 
-#: modules_v3/clippings/module.php:195 modules_v3/clippings/module.php:574
+#: modules_v3/clippings/module.php:195 modules_v3/clippings/module.php:580
 msgid "File Information"
 msgstr ""
 
@@ -5564,7 +5560,7 @@ msgid "File containing places (CSV)"
 msgstr ""
 
 #: addmedia.php:489 addmedia.php:510 admin_media_upload.php:200
-#: help_text.php:1449
+#: help_text.php:1444
 msgid "File name on server"
 msgstr ""
 
@@ -5611,42 +5607,42 @@ msgstr ""
 msgid "Filter"
 msgstr "필터"
 
-#: find.php:109 includes/functions/functions_print.php:1170
+#: find.php:109 includes/functions/functions_print.php:1172
 msgid "Find a fact or event"
 msgstr ""
 
 #: admin_site_merge.php:294 admin_site_merge.php:315 find.php:76
-#: includes/functions/functions_print.php:1136
+#: includes/functions/functions_print.php:1138
 msgid "Find a family"
 msgstr ""
 
-#: find.php:79 includes/functions/functions_print.php:1166
+#: find.php:79 includes/functions/functions_print.php:1168
 msgid "Find a media object"
 msgstr ""
 
-#: find.php:88 includes/functions/functions_print.php:1158
+#: find.php:88 includes/functions/functions_print.php:1160
 msgid "Find a note"
 msgstr ""
 
-#: find.php:82 includes/functions/functions_print.php:1132
+#: find.php:82 includes/functions/functions_print.php:1134
 msgid "Find a place"
 msgstr ""
 
-#: find.php:85 includes/functions/functions_print.php:1162
+#: find.php:85 includes/functions/functions_print.php:1164
 msgid "Find a repository"
 msgstr ""
 
 #: admin_site_merge.php:295 admin_site_merge.php:316 find.php:91
-#: includes/functions/functions_print.php:1154
+#: includes/functions/functions_print.php:1156
 msgid "Find a source"
 msgstr ""
 
-#: find.php:94 includes/functions/functions_print.php:1140
+#: find.php:94 includes/functions/functions_print.php:1142
 msgid "Find a special character"
 msgstr ""
 
 #: admin_site_merge.php:293 admin_site_merge.php:314 find.php:73
-#: includes/functions/functions_print.php:1128
+#: includes/functions/functions_print.php:1130
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:34
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:77
 #: modules_v3/GEDFact_assistant/module.php:80
@@ -5657,11 +5653,11 @@ msgstr ""
 msgid "Find next path"
 msgstr ""
 
-#: help_text.php:1286
+#: help_text.php:1281
 msgid "Find next relationship path"
 msgstr ""
 
-#: library/WT/Stats.php:3852
+#: library/WT/Stats.php:3853
 msgid "Finland"
 msgstr ""
 
@@ -5685,7 +5681,7 @@ msgstr ""
 msgid "Flag"
 msgstr ""
 
-#: library/WT/Stats.php:3854
+#: library/WT/Stats.php:3855
 msgid "Flanders"
 msgstr ""
 
@@ -5713,7 +5709,7 @@ msgstr ""
 msgid "Folder"
 msgstr ""
 
-#: addmedia.php:530 admin_media_upload.php:212 help_text.php:1454
+#: addmedia.php:530 admin_media_upload.php:212 help_text.php:1449
 msgid "Folder name on server"
 msgstr ""
 
@@ -5735,12 +5731,12 @@ msgstr ""
 msgid "For help with genealogy questions contact"
 msgstr ""
 
-#: includes/functions/functions_print.php:585
-#: includes/functions/functions_print.php:588
+#: includes/functions/functions_print.php:587
+#: includes/functions/functions_print.php:590
 msgid "For more information contact"
 msgstr ""
 
-#: help_text.php:1510
+#: help_text.php:1505
 msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br /><br />The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren't sure, consult the documentation of that program.<br /><br />Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program's method for handling these special characters by some other means.  Consult your program's manufacturer or author.<br /><br />This <a href='http://en.wikipedia.org/wiki/UTF-8' target='_blank' title='Wikipedia article'><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
 msgstr ""
 
@@ -5790,7 +5786,7 @@ msgstr ""
 msgid "Foster Mother"
 msgstr ""
 
-#: library/WT/Stats.php:3856
+#: library/WT/Stats.php:3857
 msgid "France"
 msgstr ""
 
@@ -5807,15 +5803,15 @@ msgstr ""
 msgid "French"
 msgstr ""
 
-#: library/WT/Stats.php:3874
+#: library/WT/Stats.php:3875
 msgid "French Guiana"
 msgstr ""
 
-#: library/WT/Stats.php:3966
+#: library/WT/Stats.php:3967
 msgid "French Polynesia"
 msgstr ""
 
-#: library/WT/Stats.php:3787
+#: library/WT/Stats.php:3788
 msgid "French Southern Territories"
 msgstr ""
 
@@ -5827,7 +5823,7 @@ msgstr ""
 msgid "Fresno, California"
 msgstr ""
 
-#: includes/functions/functions_print.php:1120
+#: includes/functions/functions_print.php:1122
 #: library/WT/Date/Calendar.php:259
 msgid "Fri"
 msgstr ""
@@ -5905,7 +5901,7 @@ msgstr ""
 msgid "Funeral"
 msgstr ""
 
-#: admin_trees_config.php:1043 help_text.php:561
+#: admin_trees_config.php:1052 help_text.php:561
 msgid "GEDCOM errors"
 msgstr ""
 
@@ -5916,14 +5912,14 @@ msgid "GEDCOM file"
 msgstr ""
 
 #. I18N: %s is a folder name
-#: help_text.php:1220 help_text.php:1271
+#: help_text.php:1220 help_text.php:1266
 #, php-format
 msgid "GEDCOM files are stored in the %s folder."
 msgstr ""
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
-#: admin_trees_config.php:627 admin_trees_download.php:131 help_text.php:542
-#: modules_v3/clippings/module.php:221 modules_v3/clippings/module.php:604
+#: admin_trees_config.php:636 admin_trees_download.php:131 help_text.php:542
+#: modules_v3/clippings/module.php:221 modules_v3/clippings/module.php:610
 msgid "GEDCOM media path"
 msgstr ""
 
@@ -5935,11 +5931,11 @@ msgstr ""
 msgid "GEDFact shared note assistant"
 msgstr ""
 
-#: library/WT/Stats.php:3859
+#: library/WT/Stats.php:3860
 msgid "Gabon"
 msgstr ""
 
-#: library/WT/Stats.php:3867
+#: library/WT/Stats.php:3868
 msgid "Gambia"
 msgstr ""
 
@@ -5948,15 +5944,15 @@ msgstr ""
 msgid "Gender"
 msgstr ""
 
-#: admin_trees_config.php:953 help_text.php:711
+#: admin_trees_config.php:962 help_text.php:711
 msgid "Gender icon on charts"
 msgstr ""
 
-#: admin_trees_config.php:375 help_text.php:487
+#: admin_trees_config.php:384 help_text.php:487
 msgid "Genealogy contact"
 msgstr ""
 
-#: admin_trees_config.php:209 admin_trees_config.php:1030
+#: admin_trees_config.php:218 admin_trees_config.php:1039
 msgid "General"
 msgstr ""
 
@@ -6004,11 +6000,11 @@ msgstr ""
 msgid "Geographical area"
 msgstr ""
 
-#: library/WT/Stats.php:3861
+#: library/WT/Stats.php:3862
 msgid "Georgia"
 msgstr ""
 
-#: library/WT/Stats.php:3837
+#: library/WT/Stats.php:3838
 msgid "Germany"
 msgstr ""
 
@@ -6032,11 +6028,11 @@ msgctxt "NOMINATIVE"
 msgid "Germinal"
 msgstr ""
 
-#: library/WT/Stats.php:3863
+#: library/WT/Stats.php:3864
 msgid "Ghana"
 msgstr ""
 
-#: library/WT/Stats.php:3864
+#: library/WT/Stats.php:3865
 msgid "Gibraltar"
 msgstr ""
 
@@ -6092,7 +6088,7 @@ msgid "Godson"
 msgstr ""
 
 #. I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps
-#: includes/functions/functions_print.php:937
+#: includes/functions/functions_print.php:939
 #: modules_v3/googlemap/admin_places.php:191
 #: modules_v3/googlemap/module.php:50 modules_v3/googlemap/module.php:192
 #: modules_v3/googlemap/module.php:1448
@@ -6132,7 +6128,7 @@ msgstr ""
 msgid "Greatest age between siblings"
 msgstr ""
 
-#: library/WT/Stats.php:3870
+#: library/WT/Stats.php:3871
 msgid "Greece"
 msgstr ""
 
@@ -6141,7 +6137,7 @@ msgstr ""
 msgid "Green Beam"
 msgstr ""
 
-#: library/WT/Stats.php:3872
+#: library/WT/Stats.php:3873
 msgid "Greenland"
 msgstr ""
 
@@ -6150,7 +6146,7 @@ msgstr ""
 msgid "Gregorian"
 msgstr ""
 
-#: library/WT/Stats.php:3871
+#: library/WT/Stats.php:3872
 msgid "Grenada"
 msgstr ""
 
@@ -6158,11 +6154,11 @@ msgstr ""
 msgid "Guadalajara, Mexico"
 msgstr ""
 
-#: library/WT/Stats.php:3866
+#: library/WT/Stats.php:3867
 msgid "Guadeloupe"
 msgstr ""
 
-#: library/WT/Stats.php:3875
+#: library/WT/Stats.php:3876
 msgid "Guam"
 msgstr ""
 
@@ -6180,7 +6176,7 @@ msgctxt "MALE"
 msgid "Guardian"
 msgstr ""
 
-#: library/WT/Stats.php:3873
+#: library/WT/Stats.php:3874
 msgid "Guatemala"
 msgstr ""
 
@@ -6192,19 +6188,19 @@ msgstr ""
 msgid "Guayaquil, Ecuador"
 msgstr ""
 
-#: library/WT/Stats.php:3862
+#: library/WT/Stats.php:3863
 msgid "Guernsey"
 msgstr ""
 
-#: library/WT/Stats.php:3865
+#: library/WT/Stats.php:3866
 msgid "Guinea"
 msgstr ""
 
-#: library/WT/Stats.php:3868
+#: library/WT/Stats.php:3869
 msgid "Guinea-Bissau"
 msgstr ""
 
-#: library/WT/Stats.php:3876
+#: library/WT/Stats.php:3877
 msgid "Guyana"
 msgstr ""
 
@@ -6218,7 +6214,7 @@ msgstr ""
 msgid "Hair color"
 msgstr ""
 
-#: library/WT/Stats.php:3881
+#: library/WT/Stats.php:3882
 msgid "Haiti"
 msgstr ""
 
@@ -6245,7 +6241,7 @@ msgstr ""
 msgid "Header"
 msgstr ""
 
-#: library/WT/Stats.php:3878
+#: library/WT/Stats.php:3879
 msgid "Heard Island and McDonald Islands"
 msgstr ""
 
@@ -6265,21 +6261,21 @@ msgstr ""
 msgid "Height"
 msgstr ""
 
-#: login.php:215 login.php:322
+#: login.php:216 login.php:323
 #, php-format
 msgid "Hello %s ..."
 msgstr ""
 
-#: login.php:356
+#: login.php:357
 #, php-format
 msgid "Hello %s ...<br />Thank you for your registration."
 msgstr ""
 
-#: login.php:291 login.php:475
+#: login.php:292 login.php:476
 msgid "Hello Administrator ..."
 msgstr ""
 
-#: help_text.php:1519
+#: help_text.php:1514
 msgid "Help"
 msgstr ""
 
@@ -6347,7 +6343,7 @@ msgctxt "NOMINATIVE"
 msgid "Heshvan"
 msgstr ""
 
-#: admin_trees_config.php:213
+#: admin_trees_config.php:222
 msgid "Hide &amp; Show"
 msgstr ""
 
@@ -6355,7 +6351,7 @@ msgstr ""
 msgid "Hide flags"
 msgstr ""
 
-#: admin_trees_config.php:41 admin_trees_config.php:642
+#: admin_trees_config.php:41 admin_trees_config.php:651
 #: includes/functions/functions_edit.php:196
 msgid "Hide from everyone"
 msgstr ""
@@ -6372,7 +6368,7 @@ msgstr ""
 msgid "Hide the lines connecting the child to each parent if they exist on the map."
 msgstr ""
 
-#: library/WT/Stats.php:1094
+#: library/WT/Stats.php:1095
 msgid "Highest population"
 msgstr ""
 
@@ -6398,7 +6394,7 @@ msgstr ""
 msgid "Hit Count:"
 msgstr ""
 
-#: admin_trees_config.php:1051 help_text.php:831
+#: admin_trees_config.php:1060 help_text.php:831
 msgid "Hit counters"
 msgstr ""
 
@@ -6408,16 +6404,16 @@ msgid "Holocaust"
 msgstr ""
 
 #. I18N: Name of a module
-#: admin_modules.php:140 library/WT/MenuBar.php:35
+#: admin_modules.php:145 library/WT/MenuBar.php:35
 #: modules_v3/gedcom_block/module.php:34
 msgid "Home page"
 msgstr ""
 
-#: library/WT/Stats.php:3879
+#: library/WT/Stats.php:3880
 msgid "Honduras"
 msgstr ""
 
-#: library/WT/Gedcom/Code/Temp.php:112 library/WT/Stats.php:3877
+#: library/WT/Gedcom/Code/Temp.php:112 library/WT/Stats.php:3878
 msgid "Hong Kong"
 msgstr ""
 
@@ -6448,7 +6444,7 @@ msgstr ""
 msgid "Houston, Texas"
 msgstr ""
 
-#: library/WT/Stats.php:3882
+#: library/WT/Stats.php:3883
 msgid "Hungary"
 msgstr ""
 
@@ -6465,7 +6461,7 @@ msgstr ""
 msgid "Hybrid"
 msgstr ""
 
-#: admin_trees_config.php:324
+#: admin_trees_config.php:333
 msgid "ID settings"
 msgstr ""
 
@@ -6474,11 +6470,11 @@ msgstr ""
 msgid "IP address"
 msgstr ""
 
-#: library/WT/Stats.php:3890
+#: library/WT/Stats.php:3891
 msgid "Iceland"
 msgstr ""
 
-#: admin_trees_config.php:1233 help_text.php:959
+#: admin_trees_config.php:1242 help_text.php:959
 msgctxt "Surname tradition"
 msgid "Icelandic"
 msgstr ""
@@ -6502,7 +6498,7 @@ msgstr ""
 msgid "If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
 msgstr ""
 
-#: help_text.php:1486
+#: help_text.php:1481
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
 msgstr ""
 
@@ -6539,7 +6535,7 @@ msgstr ""
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
 msgstr ""
 
-#: help_text.php:1474
+#: help_text.php:1469
 msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
 msgstr ""
 
@@ -6563,11 +6559,11 @@ msgstr ""
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr ""
 
-#: login.php:340
+#: login.php:341
 msgid "If you didn't request an account, you can just delete this message."
 msgstr ""
 
-#: help_text.php:1457
+#: help_text.php:1452
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
 msgstr ""
 
@@ -6575,7 +6571,7 @@ msgstr ""
 msgid "If you have a note to add to this record, this is the place to do so.<br /><br />Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that's all."
 msgstr ""
 
-#: admin_trees_manage.php:168
+#: admin_trees_manage.php:170
 msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM."
 msgstr ""
 
@@ -6620,11 +6616,11 @@ msgstr ""
 msgid "Image dimensions"
 msgstr ""
 
-#: admin_trees_config.php:711
+#: admin_trees_config.php:720
 msgid "Images without watermarks"
 msgstr ""
 
-#: modules_v3/family_nav/module.php:169
+#: modules_v3/family_nav/module.php:171
 msgid "Immediate Family"
 msgstr ""
 
@@ -6633,7 +6629,7 @@ msgstr ""
 msgid "Immigration"
 msgstr ""
 
-#: admin_trees_manage.php:217 modules_v3/googlemap/admin_places.php:730
+#: admin_trees_manage.php:218 modules_v3/googlemap/admin_places.php:730
 msgid "Import"
 msgstr ""
 
@@ -6641,7 +6637,7 @@ msgstr ""
 msgid "Import all places from a family tree"
 msgstr ""
 
-#: help_text.php:1265
+#: help_text.php:1260
 msgid "Import family tree"
 msgstr ""
 
@@ -6690,8 +6686,8 @@ msgstr ""
 msgid "Include individuals with “%s” as a married name"
 msgstr ""
 
-#: help_text.php:1276 modules_v3/clippings/module.php:199
-#: modules_v3/clippings/module.php:578
+#: help_text.php:1271 modules_v3/clippings/module.php:199
+#: modules_v3/clippings/module.php:584
 msgid "Include media (automatically zips files)"
 msgstr ""
 
@@ -6704,7 +6700,7 @@ msgstr ""
 msgid "Include the person's immediate family?"
 msgstr ""
 
-#: library/WT/Stats.php:3884
+#: library/WT/Stats.php:3885
 msgid "India"
 msgstr ""
 
@@ -6720,7 +6716,7 @@ msgstr ""
 msgid "Individual"
 msgstr ""
 
-#: admin_trees_config.php:328 help_text.php:537
+#: admin_trees_config.php:337 help_text.php:537
 msgid "Individual ID prefix"
 msgstr ""
 
@@ -6732,7 +6728,7 @@ msgstr ""
 msgid "Individual distribution"
 msgstr ""
 
-#: library/WT/Stats.php:1065 statistics.php:603
+#: library/WT/Stats.php:1066 statistics.php:603
 msgid "Individual distribution chart"
 msgstr ""
 
@@ -6745,12 +6741,12 @@ msgstr ""
 msgid "Individual list"
 msgstr ""
 
-#: admin_trees_config.php:834 admin_trees_config.php:985
+#: admin_trees_config.php:843 admin_trees_config.php:994
 msgid "Individual pages"
 msgstr ""
 
 #: admin_users.php:226 admin_users.php:428 edituser.php:141 help_text.php:1204
-#: help_text.php:1370 help_text.php:1478
+#: help_text.php:1365 help_text.php:1473
 msgid "Individual record"
 msgstr ""
 
@@ -6766,6 +6762,7 @@ msgstr ""
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:172
 #: modules_v3/random_media/module.php:264 note.php:98 placelist.php:229
 #: search.php:114 search.php:166 source.php:97 statistics.php:54
+#: statisticsplot.php:786
 msgid "Individuals"
 msgstr "개인"
 
@@ -6778,7 +6775,7 @@ msgstr ""
 msgid "Individuals with surname %s"
 msgstr ""
 
-#: library/WT/Stats.php:3883
+#: library/WT/Stats.php:3884
 msgid "Indonesia"
 msgstr ""
 
@@ -6801,7 +6798,7 @@ msgctxt "MALE"
 msgid "Informant"
 msgstr ""
 
-#: login.php:325
+#: login.php:326
 msgid "Information about the request is shown under the link below."
 msgstr ""
 
@@ -6866,31 +6863,31 @@ msgstr ""
 msgid "Invalid date"
 msgstr ""
 
-#: library/WT/Stats.php:3888
+#: library/WT/Stats.php:3889
 msgid "Iran"
 msgstr ""
 
-#: library/WT/Stats.php:3889
+#: library/WT/Stats.php:3890
 msgid "Iraq"
 msgstr ""
 
-#: library/WT/Stats.php:3887
+#: library/WT/Stats.php:3888
 msgid "Ireland"
 msgstr ""
 
-#: library/WT/Stats.php:3885
+#: library/WT/Stats.php:3886
 msgid "Isle of Man"
 msgstr ""
 
-#: library/WT/Stats.php:3891
+#: library/WT/Stats.php:3892
 msgid "Israel"
 msgstr ""
 
-#: help_text.php:1440
+#: help_text.php:1435
 msgid "It is easier to manage your media files if you choose a consistent format for the filenames.  To organise media files into folders, you must first set the number of levels in the GEDCOM administration page."
 msgstr ""
 
-#: library/WT/Stats.php:3892
+#: library/WT/Stats.php:3893
 msgid "Italy"
 msgstr ""
 
@@ -6919,7 +6916,7 @@ msgstr ""
 msgid "Jalali"
 msgstr ""
 
-#: library/WT/Stats.php:3893
+#: library/WT/Stats.php:3894
 msgid "Jamaica"
 msgstr ""
 
@@ -6943,13 +6940,13 @@ msgctxt "LOCATIVE"
 msgid "January"
 msgstr ""
 
-#: includes/functions/functions_print.php:1101
+#: includes/functions/functions_print.php:1103
 #: library/WT/Date/Calendar.php:133
 msgctxt "NOMINATIVE"
 msgid "January"
 msgstr ""
 
-#: library/WT/Stats.php:3895
+#: library/WT/Stats.php:3896
 msgid "Japan"
 msgstr ""
 
@@ -6967,7 +6964,7 @@ msgstr ""
 msgid "John /DOE/"
 msgstr ""
 
-#: library/WT/Stats.php:3894
+#: library/WT/Stats.php:3895
 msgid "Jordan"
 msgstr ""
 
@@ -7005,7 +7002,7 @@ msgctxt "LOCATIVE"
 msgid "July"
 msgstr ""
 
-#: includes/functions/functions_print.php:1107
+#: includes/functions/functions_print.php:1109
 #: library/WT/Date/Calendar.php:139
 msgctxt "NOMINATIVE"
 msgid "July"
@@ -7079,13 +7076,13 @@ msgctxt "LOCATIVE"
 msgid "June"
 msgstr ""
 
-#: includes/functions/functions_print.php:1106
+#: includes/functions/functions_print.php:1108
 #: library/WT/Date/Calendar.php:138
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr ""
 
-#: library/WT/Stats.php:3896
+#: library/WT/Stats.php:3897
 msgid "Kazakhstan"
 msgstr ""
 
@@ -7097,7 +7094,7 @@ msgstr ""
 msgid "Keep Link in list"
 msgstr ""
 
-#: library/WT/Stats.php:3897
+#: library/WT/Stats.php:3898
 msgid "Kenya"
 msgstr ""
 
@@ -7138,7 +7135,7 @@ msgstr ""
 msgid "Kiev, Ukraine"
 msgstr ""
 
-#: library/WT/Stats.php:3900
+#: library/WT/Stats.php:3901
 msgid "Kiribati"
 msgstr ""
 
@@ -7166,19 +7163,19 @@ msgstr ""
 msgid "Kona, Hawaii"
 msgstr ""
 
-#: library/WT/Stats.php:3902
+#: library/WT/Stats.php:3903
 msgid "Korea"
 msgstr ""
 
-#: library/WT/Stats.php:3903
+#: library/WT/Stats.php:3904
 msgid "Kuwait"
 msgstr ""
 
-#: library/WT/Stats.php:3898
+#: library/WT/Stats.php:3899
 msgid "Kyrgyzstan"
 msgstr ""
 
-#: includes/functions/functions_print.php:952
+#: includes/functions/functions_print.php:954
 msgid "LDS Temple"
 msgstr ""
 
@@ -7202,7 +7199,7 @@ msgstr ""
 msgid "LDS endowment"
 msgstr ""
 
-#: admin_trees_config.php:969 help_text.php:856
+#: admin_trees_config.php:978 help_text.php:856
 msgid "LDS ordinance codes in chart boxes"
 msgstr ""
 
@@ -7215,18 +7212,18 @@ msgstr ""
 msgid "Laie, Hawaii"
 msgstr ""
 
-#: admin_trees_config.php:803 pedigree.php:61
+#: admin_trees_config.php:812 pedigree.php:61
 msgid "Landscape"
 msgstr ""
 
 #. I18N: gedcom tag LANG
-#: admin_trees_config.php:228 admin_users.php:399 admin_users.php:570
+#: admin_trees_config.php:237 admin_users.php:399 admin_users.php:570
 #: edituser.php:156 help_text.php:610 library/WT/Gedcom/Tag.php:242
 #: library/WT/MenuBar.php:467
 msgid "Language"
 msgstr ""
 
-#: library/WT/Stats.php:3904
+#: library/WT/Stats.php:3905
 msgid "Laos"
 msgstr ""
 
@@ -7234,7 +7231,7 @@ msgstr ""
 msgid "Large systems (50000 individuals): 64-128MB, 40-80 seconds"
 msgstr ""
 
-#: library/WT/Stats.php:2845 statistics.php:303
+#: library/WT/Stats.php:2846 statistics.php:303
 msgid "Largest families"
 msgstr ""
 
@@ -7299,11 +7296,11 @@ msgstr ""
 msgid "Latitude"
 msgstr ""
 
-#: library/WT/Stats.php:3914
+#: library/WT/Stats.php:3915
 msgid "Latvia"
 msgstr ""
 
-#: admin_trees_config.php:212 ancestry.php:61 descendancy.php:52
+#: admin_trees_config.php:221 ancestry.php:61 descendancy.php:52
 #: fanchart.php:57 pedigree.php:45
 msgid "Layout"
 msgstr ""
@@ -7312,7 +7309,7 @@ msgstr ""
 msgid "Leave password blank if you want to keep the current password."
 msgstr ""
 
-#: admin_trees_config.php:429
+#: admin_trees_config.php:438
 msgid "Leave this field empty to use the title of the currently active database."
 msgstr ""
 
@@ -7321,7 +7318,7 @@ msgstr ""
 msgid "Leaves"
 msgstr ""
 
-#: library/WT/Stats.php:3905
+#: library/WT/Stats.php:3906
 msgid "Lebanon"
 msgstr ""
 
@@ -7334,7 +7331,7 @@ msgstr ""
 msgid "Length of marriage"
 msgstr ""
 
-#: library/WT/Stats.php:3911
+#: library/WT/Stats.php:3912
 msgid "Lesotho"
 msgstr ""
 
@@ -7343,15 +7340,15 @@ msgstr ""
 msgid "Level"
 msgstr ""
 
-#: library/WT/Stats.php:3906
+#: library/WT/Stats.php:3907
 msgid "Liberia"
 msgstr ""
 
-#: library/WT/Stats.php:3907
+#: library/WT/Stats.php:3908
 msgid "Libya"
 msgstr ""
 
-#: library/WT/Stats.php:3909
+#: library/WT/Stats.php:3910
 msgid "Liechtenstein"
 msgstr ""
 
@@ -7359,7 +7356,7 @@ msgstr ""
 msgid "Lifespan"
 msgstr ""
 
-#: help_text.php:1281 library/WT/Controller/Lifespan.php:76
+#: help_text.php:1276 library/WT/Controller/Lifespan.php:76
 #: library/WT/MenuBar.php:111 lifespan.php:257
 msgid "Lifespans"
 msgstr ""
@@ -7417,15 +7414,15 @@ msgstr ""
 msgid "List places"
 msgstr ""
 
-#: admin_trees_config.php:753 library/WT/MenuBar.php:286
+#: admin_trees_config.php:762 library/WT/MenuBar.php:286
 msgid "Lists"
 msgstr ""
 
-#: library/WT/Stats.php:3912
+#: library/WT/Stats.php:3913
 msgid "Lithuania"
 msgstr ""
 
-#: admin_trees_config.php:1233 help_text.php:971
+#: admin_trees_config.php:1242 help_text.php:971
 msgctxt "Surname tradition"
 msgid "Lithuanian"
 msgstr ""
@@ -7485,14 +7482,14 @@ msgstr ""
 msgid "Logan, Utah"
 msgstr ""
 
-#: modules_v3/login_block/module.php:59 themes/webtrees/header.php:79
+#: modules_v3/login_block/module.php:60 themes/webtrees/header.php:79
 msgid "Logged in as "
 msgstr "으로 로그인 "
 
 #. I18N: Name of a module
 #: admin_site_config.php:64 includes/functions/functions_print.php:304
-#: login.php:113 login.php:163 modules_v3/login_block/module.php:34
-#: modules_v3/login_block/module.php:65 modules_v3/login_block/module.php:85
+#: login.php:113 login.php:164 modules_v3/login_block/module.php:34
+#: modules_v3/login_block/module.php:66 modules_v3/login_block/module.php:86
 msgid "Login"
 msgstr "로그인"
 
@@ -7506,7 +7503,7 @@ msgid "Login URL"
 msgstr ""
 
 #: includes/functions/functions_print.php:316
-#: modules_v3/login_block/module.php:56 modules_v3/login_block/module.php:61
+#: modules_v3/login_block/module.php:57 modules_v3/login_block/module.php:62
 msgid "Logout"
 msgstr "로그아웃"
 
@@ -7536,8 +7533,8 @@ msgstr ""
 msgid "Los Angeles, California"
 msgstr ""
 
-#: login.php:177 login.php:193 login.php:231
-#: modules_v3/login_block/module.php:100
+#: login.php:178 login.php:194 login.php:232
+#: modules_v3/login_block/module.php:101
 msgid "Lost password request"
 msgstr "분실 비밀번호 요청"
 
@@ -7545,7 +7542,7 @@ msgstr "분실 비밀번호 요청"
 msgid "Louisville, Kentucky"
 msgstr ""
 
-#: library/WT/Stats.php:1095
+#: library/WT/Stats.php:1096
 msgid "Lowest population"
 msgstr ""
 
@@ -7553,19 +7550,19 @@ msgstr ""
 msgid "Lubbock, Texas"
 msgstr ""
 
-#: library/WT/Stats.php:3913
+#: library/WT/Stats.php:3914
 msgid "Luxembourg"
 msgstr ""
 
-#: library/WT/Stats.php:3915
+#: library/WT/Stats.php:3916
 msgid "Macau"
 msgstr ""
 
-#: library/WT/Stats.php:3923
+#: library/WT/Stats.php:3924
 msgid "Macedonia"
 msgstr ""
 
-#: library/WT/Stats.php:3919
+#: library/WT/Stats.php:3920
 msgid "Madagascar"
 msgstr ""
 
@@ -7606,29 +7603,29 @@ msgstr ""
 msgid "Make a backup of your database before you start."
 msgstr ""
 
-#: library/WT/Stats.php:3935
+#: library/WT/Stats.php:3936
 msgid "Malawi"
 msgstr ""
 
-#: library/WT/Stats.php:3936
+#: library/WT/Stats.php:3937
 msgid "Malaysia"
 msgstr ""
 
-#: library/WT/Stats.php:3920
+#: library/WT/Stats.php:3921
 msgid "Maldives"
 msgstr ""
 
 #: calendar.php:578 includes/functions/functions_edit.php:1457
 #: library/WT/Controller/Individual.php:265
-#: library/WT/Controller/Individual.php:268 library/WT/Stats.php:3324
-#: statisticsplot.php:798 timeline.php:260
+#: library/WT/Controller/Individual.php:268 library/WT/Stats.php:3325
+#: statisticsplot.php:801 timeline.php:260
 msgid "Male"
 msgstr ""
 
 #: calendar.php:206 calendar.php:208 calendar.php:440 calendar.php:441
 #: includes/functions/functions_print_lists.php:1987 library/WT/Stats.php:608
 #: library/WT/Stats.php:610 library/WT/Stats.php:618 library/WT/Stats.php:619
-#: library/WT/Stats.php:1654 library/WT/Stats.php:2392
+#: library/WT/Stats.php:1655 library/WT/Stats.php:2393
 #: modules_v3/gedcom_stats/module.php:94
 #: modules_v3/gedcom_stats/module.php:166 modules_v3/html/module.php:176
 #: modules_v3/top10_givnnames/module.php:89 statistics.php:135
@@ -7636,22 +7633,22 @@ msgstr ""
 msgid "Males"
 msgstr ""
 
-#: library/WT/Stats.php:3924
+#: library/WT/Stats.php:3925
 msgid "Mali"
 msgstr ""
 
-#: library/WT/Stats.php:3925
+#: library/WT/Stats.php:3926
 msgid "Malta"
 msgstr ""
 
 #: library/WT/Controller/Media.php:90
-#: modules_v3/lightbox/functions/lightbox_print_media.php:396
+#: modules_v3/lightbox/functions/lightbox_print_media.php:391
 msgid "Manage links"
 msgstr ""
 
 #. I18N: Listbox entry; name of a role
-#: admin_trees_download.php:118 admin_users.php:47 help_text.php:1401
-#: modules_v3/clippings/module.php:206 modules_v3/clippings/module.php:587
+#: admin_trees_download.php:118 admin_users.php:47 help_text.php:1396
+#: modules_v3/clippings/module.php:206 modules_v3/clippings/module.php:593
 msgid "Manager"
 msgstr ""
 
@@ -7706,7 +7703,7 @@ msgctxt "LOCATIVE"
 msgid "March"
 msgstr ""
 
-#: includes/functions/functions_print.php:1103
+#: includes/functions/functions_print.php:1105
 #: library/WT/Date/Calendar.php:135
 msgctxt "NOMINATIVE"
 msgid "March"
@@ -7737,7 +7734,7 @@ msgstr ""
 msgid "Marriage bond"
 msgstr ""
 
-#: library/WT/Stats.php:1049 statistics.php:557
+#: library/WT/Stats.php:1048 statistics.php:557
 msgid "Marriage by country"
 msgstr ""
 
@@ -7868,7 +7865,7 @@ msgstr ""
 msgid "Marriages"
 msgstr ""
 
-#: library/WT/Stats.php:2198 statistics.php:208
+#: library/WT/Stats.php:2199 statistics.php:208
 msgid "Marriages by century"
 msgstr ""
 
@@ -7881,11 +7878,11 @@ msgstr ""
 msgid "Married Surname"
 msgstr ""
 
-#: library/WT/Stats.php:3922
+#: library/WT/Stats.php:3923
 msgid "Marshall Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3933
+#: library/WT/Stats.php:3934
 msgid "Martinique"
 msgstr ""
 
@@ -7897,11 +7894,11 @@ msgstr ""
 msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr ""
 
-#: library/WT/Stats.php:3931
+#: library/WT/Stats.php:3932
 msgid "Mauritania"
 msgstr ""
 
-#: library/WT/Stats.php:3934
+#: library/WT/Stats.php:3935
 msgid "Mauritius"
 msgstr ""
 
@@ -7910,15 +7907,15 @@ msgstr ""
 msgid "Max"
 msgstr ""
 
-#: admin_trees_config.php:826 help_text.php:625
+#: admin_trees_config.php:835 help_text.php:625
 msgid "Maximum descendancy generations"
 msgstr ""
 
-#: admin_trees_config.php:770 help_text.php:922
+#: admin_trees_config.php:779 help_text.php:922
 msgid "Maximum number of surnames on individual list"
 msgstr ""
 
-#: admin_trees_config.php:818 help_text.php:647
+#: admin_trees_config.php:827 help_text.php:647
 msgid "Maximum pedigree generations"
 msgstr ""
 
@@ -7946,13 +7943,13 @@ msgctxt "LOCATIVE"
 msgid "May"
 msgstr ""
 
-#: includes/functions/functions_print.php:1105
+#: includes/functions/functions_print.php:1107
 #: library/WT/Date/Calendar.php:137
 msgctxt "NOMINATIVE"
 msgid "May"
 msgstr ""
 
-#: library/WT/Stats.php:3937
+#: library/WT/Stats.php:3938
 msgid "Mayotte"
 msgstr ""
 
@@ -7961,14 +7958,14 @@ msgid "Medford, Oregon"
 msgstr ""
 
 #. I18N: Name of a module
-#: admin_media.php:511 admin_media.php:601 admin_trees_config.php:211
+#: admin_media.php:511 admin_media.php:601 admin_trees_config.php:220
 #: includes/functions/functions_print_lists.php:1272 inverselink.php:87
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:89
 #: modules_v3/media/module.php:34 themes/_administration/header.php:135
 msgid "Media"
 msgstr "미디어"
 
-#: admin_trees_config.php:350 help_text.php:664
+#: admin_trees_config.php:359 help_text.php:664
 msgid "Media ID prefix"
 msgstr ""
 
@@ -7999,19 +7996,19 @@ msgstr ""
 msgid "Media file %s does not exist."
 msgstr ""
 
-#: addmedia.php:477 admin_media_upload.php:186 help_text.php:1436
+#: addmedia.php:477 admin_media_upload.php:186 help_text.php:1431
 msgid "Media file to upload"
 msgstr ""
 
-#: admin_media.php:539 admin_trees_config.php:634
+#: admin_media.php:539 admin_trees_config.php:643
 msgid "Media files"
 msgstr ""
 
-#: admin_trees_config.php:619 help_text.php:652
+#: admin_trees_config.php:628 help_text.php:652
 msgid "Media folder"
 msgstr ""
 
-#: admin_media.php:540 admin_trees_config.php:615
+#: admin_media.php:540 admin_trees_config.php:624
 msgid "Media folders"
 msgstr ""
 
@@ -8094,9 +8091,9 @@ msgid "Melbourne, Australia"
 msgstr ""
 
 #. I18N: Listbox entry; name of a role
-#: admin_trees_download.php:120 admin_users.php:44 help_text.php:1389
+#: admin_trees_download.php:120 admin_users.php:44 help_text.php:1384
 #: modules_v3/clippings/module.php:207 modules_v3/clippings/module.php:213
-#: modules_v3/clippings/module.php:588 modules_v3/clippings/module.php:594
+#: modules_v3/clippings/module.php:594 modules_v3/clippings/module.php:600
 msgid "Member"
 msgstr ""
 
@@ -8108,7 +8105,7 @@ msgstr ""
 msgid "Memphis, Tennessee"
 msgstr ""
 
-#: admin_module_menus.php:73 admin_modules.php:119 admin_modules.php:137
+#: admin_module_menus.php:74 admin_modules.php:124 admin_modules.php:142
 msgid "Menu"
 msgstr ""
 
@@ -8147,13 +8144,13 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: message.php:202
+#: message.php:203
 #, php-format
 msgid "Message successfully sent to %s"
 msgstr ""
 
 #: includes/functions/functions_mail.php:176
-#: includes/functions/functions_mail.php:186 message.php:49 message.php:204
+#: includes/functions/functions_mail.php:186 message.php:49 message.php:205
 msgid "Message was not sent"
 msgstr ""
 
@@ -8184,7 +8181,7 @@ msgctxt "NOMINATIVE"
 msgid "Messidor"
 msgstr ""
 
-#: library/WT/Stats.php:3921
+#: library/WT/Stats.php:3922
 msgid "Mexico"
 msgstr ""
 
@@ -8200,7 +8197,7 @@ msgstr ""
 msgid "Microfilm"
 msgstr ""
 
-#: library/WT/Stats.php:3858
+#: library/WT/Stats.php:3859
 msgid "Micronesia"
 msgstr ""
 
@@ -8223,7 +8220,7 @@ msgstr ""
 msgid "Military service"
 msgstr ""
 
-#: admin_trees_config.php:729 help_text.php:482
+#: admin_trees_config.php:738 help_text.php:482
 msgid "Min. no. of occurrences to be a \"common surname\""
 msgstr ""
 
@@ -8246,11 +8243,11 @@ msgid "Moderate pending changes"
 msgstr ""
 
 #. I18N: Listbox entry; name of a role
-#: admin_users.php:46 help_text.php:1397
+#: admin_users.php:46 help_text.php:1392
 msgid "Moderator"
 msgstr ""
 
-#: admin_modules.php:117
+#: admin_modules.php:122
 msgid "Module"
 msgstr ""
 
@@ -8264,16 +8261,16 @@ msgstr ""
 msgid "Modules"
 msgstr ""
 
-#: library/WT/Stats.php:3918
+#: library/WT/Stats.php:3919
 msgid "Moldova"
 msgstr ""
 
-#: includes/functions/functions_print.php:1116
+#: includes/functions/functions_print.php:1118
 #: library/WT/Date/Calendar.php:255
 msgid "Mon"
 msgstr ""
 
-#: library/WT/Stats.php:3917
+#: library/WT/Stats.php:3918
 msgid "Monaco"
 msgstr ""
 
@@ -8281,11 +8278,11 @@ msgstr ""
 msgid "Monday"
 msgstr ""
 
-#: library/WT/Stats.php:3927
+#: library/WT/Stats.php:3928
 msgid "Mongolia"
 msgstr ""
 
-#: library/WT/Stats.php:3929
+#: library/WT/Stats.php:3930
 msgid "Montenegro"
 msgstr ""
 
@@ -8301,23 +8298,23 @@ msgstr ""
 msgid "Month"
 msgstr ""
 
-#: statistics.php:505 statisticsplot.php:897
+#: statistics.php:505 statisticsplot.php:900
 msgid "Month of birth"
 msgstr ""
 
-#: library/WT/Stats.php:2797 statistics.php:521 statisticsplot.php:906
+#: library/WT/Stats.php:2798 statistics.php:521 statisticsplot.php:909
 msgid "Month of birth of first child in a relation"
 msgstr ""
 
-#: statistics.php:509 statisticsplot.php:900
+#: statistics.php:509 statisticsplot.php:903
 msgid "Month of death"
 msgstr ""
 
-#: statistics.php:517 statisticsplot.php:909
+#: statistics.php:517 statisticsplot.php:912
 msgid "Month of first marriage"
 msgstr ""
 
-#: statistics.php:513 statisticsplot.php:903
+#: statistics.php:513 statisticsplot.php:906
 msgid "Month of marriage"
 msgstr ""
 
@@ -8325,11 +8322,11 @@ msgstr ""
 msgid "Month:"
 msgstr ""
 
-#: statisticsplot.php:912
+#: statisticsplot.php:915
 msgid "Months between marriage and birth of first child"
 msgstr ""
 
-#: statisticsplot.php:912
+#: statisticsplot.php:915
 msgid "Months between marriage and first child"
 msgstr ""
 
@@ -8341,7 +8338,7 @@ msgstr ""
 msgid "Montreal, Quebec, Canada"
 msgstr ""
 
-#: library/WT/Stats.php:3932
+#: library/WT/Stats.php:3933
 msgid "Montserrat"
 msgstr ""
 
@@ -8374,7 +8371,7 @@ msgctxt "NOMINATIVE"
 msgid "Mordad"
 msgstr ""
 
-#: library/WT/Stats.php:3916
+#: library/WT/Stats.php:3917
 msgid "Morocco"
 msgstr ""
 
@@ -8413,7 +8410,7 @@ msgstr ""
 msgid "Mother's Birthplace - (Chapman format)"
 msgstr ""
 
-#: includes/functions/functions_print.php:724
+#: includes/functions/functions_print.php:726
 msgid "Mother's age"
 msgstr ""
 
@@ -8462,7 +8459,7 @@ msgstr ""
 msgid "Move up"
 msgstr ""
 
-#: library/WT/Stats.php:3930
+#: library/WT/Stats.php:3931
 msgid "Mozambique"
 msgstr ""
 
@@ -8513,7 +8510,7 @@ msgid "My individual record"
 msgstr ""
 
 #. I18N: Name of a module
-#: admin_modules.php:140 admin_users.php:213 index.php:82 index.php:90
+#: admin_modules.php:145 admin_users.php:213 index.php:82 index.php:90
 #: library/WT/MenuBar.php:61 library/WT/MenuBar.php:64
 #: modules_v3/user_welcome/module.php:34 themes/_administration/header.php:68
 msgid "My page"
@@ -8529,13 +8526,13 @@ msgstr ""
 msgid "MySQL gave the error: %s"
 msgstr ""
 
-#: library/WT/Stats.php:3926
+#: library/WT/Stats.php:3927
 msgid "Myanmar"
 msgstr ""
 
 #. I18N: gedcom tag NAME
 #: library/WT/Controller/Individual.php:175 library/WT/Gedcom/Tag.php:265
-#: library/WT/Stats.php:3325
+#: library/WT/Stats.php:3326
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:119
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:571
 msgid "Name"
@@ -8569,19 +8566,19 @@ msgstr ""
 msgid "Name suffix"
 msgstr ""
 
-#: admin_trees_config.php:724 statistics.php:174
+#: admin_trees_config.php:733 statistics.php:174
 msgid "Names"
 msgstr ""
 
-#: admin_trees_config.php:510 help_text.php:866
+#: admin_trees_config.php:519 help_text.php:866
 msgid "Names of private individuals"
 msgstr ""
 
-#: admin_trees_config.php:737 help_text.php:472
+#: admin_trees_config.php:746 help_text.php:472
 msgid "Names to add to common surnames (comma separated)"
 msgstr ""
 
-#: admin_trees_config.php:745 help_text.php:477
+#: admin_trees_config.php:754 help_text.php:477
 msgid "Names to remove from common surnames (comma separated)"
 msgstr ""
 
@@ -8590,7 +8587,7 @@ msgstr ""
 msgid "Namesake"
 msgstr ""
 
-#: library/WT/Stats.php:3938
+#: library/WT/Stats.php:3939
 msgid "Namibia"
 msgstr ""
 
@@ -8616,7 +8613,7 @@ msgstr ""
 msgid "Naturalization"
 msgstr ""
 
-#: library/WT/Stats.php:3949
+#: library/WT/Stats.php:3950
 msgid "Nauru"
 msgstr ""
 
@@ -8638,19 +8635,19 @@ msgstr ""
 msgid "Neighborhood"
 msgstr ""
 
-#: library/WT/Stats.php:3948
+#: library/WT/Stats.php:3949
 msgid "Nepal"
 msgstr ""
 
-#: library/WT/Stats.php:3946
+#: library/WT/Stats.php:3947
 msgid "Netherlands"
 msgstr ""
 
-#: library/WT/Stats.php:3781
+#: library/WT/Stats.php:3782
 msgid "Netherlands Antilles"
 msgstr ""
 
-#: library/WT/Stats.php:3950
+#: library/WT/Stats.php:3951
 msgid "Neutral Zone"
 msgstr ""
 
@@ -8675,7 +8672,7 @@ msgctxt "MALE"
 msgid "Never married"
 msgstr ""
 
-#: library/WT/Stats.php:3939
+#: library/WT/Stats.php:3940
 msgid "New Caledonia"
 msgstr ""
 
@@ -8683,7 +8680,7 @@ msgstr ""
 msgid "New York, New York"
 msgstr ""
 
-#: library/WT/Stats.php:3951
+#: library/WT/Stats.php:3952
 msgid "New Zealand"
 msgstr ""
 
@@ -8691,18 +8688,18 @@ msgstr ""
 msgid "New data"
 msgstr ""
 
-#: admin_trees_config.php:1093 admin_trees_config.php:1130
+#: admin_trees_config.php:1102 admin_trees_config.php:1139
 msgid "New entry facts"
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:310
+#: login.php:311
 #, php-format
 msgid "New registration at %s"
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:500
+#: login.php:501
 #, php-format
 msgid "New user at %s"
 msgstr ""
@@ -8728,7 +8725,7 @@ msgstr ""
 msgid "Next image"
 msgstr "다음 이미지"
 
-#: library/WT/Stats.php:3943
+#: library/WT/Stats.php:3944
 msgid "Nicaragua"
 msgstr ""
 
@@ -8737,11 +8734,11 @@ msgstr ""
 msgid "Nickname"
 msgstr ""
 
-#: library/WT/Stats.php:3940
+#: library/WT/Stats.php:3941
 msgid "Niger"
 msgstr ""
 
-#: library/WT/Stats.php:3942
+#: library/WT/Stats.php:3943
 msgid "Nigeria"
 msgstr ""
 
@@ -8765,7 +8762,7 @@ msgctxt "NOMINATIVE"
 msgid "Nissan"
 msgstr ""
 
-#: library/WT/Stats.php:3945
+#: library/WT/Stats.php:3946
 msgid "Niue"
 msgstr ""
 
@@ -8793,7 +8790,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: admin_trees_manage.php:162
+#: admin_trees_manage.php:164
 #, php-format
 msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server."
 msgstr ""
@@ -8810,13 +8807,13 @@ msgstr ""
 msgid "No ancestors in the database."
 msgstr ""
 
-#: admin_trees_config.php:260 admin_trees_config.php:280
+#: admin_trees_config.php:269 admin_trees_config.php:289
 msgid "No calendar conversion"
 msgstr ""
 
 #: includes/functions/functions_charts.php:263
 #: library/WT/Controller/Descendancy.php:250
-#: modules_v3/descendancy/module.php:239
+#: modules_v3/descendancy/module.php:241
 msgid "No children"
 msgstr ""
 
@@ -8829,7 +8826,7 @@ msgstr ""
 msgid "No contact method"
 msgstr ""
 
-#: admin_trees_check.php:228
+#: admin_trees_check.php:232
 msgid "No errors were found."
 msgstr ""
 
@@ -8887,7 +8884,7 @@ msgstr ""
 msgid "No link between the two individuals could be found."
 msgstr ""
 
-#: library/WT/Stats.php:3416
+#: library/WT/Stats.php:3417
 msgid "No logged-in and no anonymous users"
 msgstr ""
 
@@ -8921,14 +8918,14 @@ msgid "No predefined text"
 msgstr ""
 
 #: find.php:509 find.php:534 find.php:590 find.php:618 find.php:641
-#: find.php:664 find.php:687 library/WT/Controller/AdvancedSearch.php:512
+#: find.php:664 find.php:687 library/WT/Controller/AdvancedSearch.php:534
 #: library/WT/Controller/Search.php:700
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:187
 #: modules_v3/GEDFact_assistant/module.php:165 placelist.php:61
 msgid "No results found."
 msgstr ""
 
-#: library/WT/Stats.php:1096
+#: library/WT/Stats.php:1097
 msgid "Nobody at all"
 msgstr ""
 
@@ -8939,8 +8936,8 @@ msgstr ""
 
 #: admin_trees_download.php:116 admin_users.php:450 famlist.php:115
 #: famlist.php:145 indilist.php:115 indilist.php:145 library/WT/Stats.php:758
-#: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:586
-#: modules_v3/families/module.php:149 modules_v3/individuals/module.php:148
+#: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:592
+#: modules_v3/families/module.php:151 modules_v3/individuals/module.php:150
 msgid "None"
 msgstr ""
 
@@ -8953,27 +8950,27 @@ msgstr ""
 msgid "Noon"
 msgstr ""
 
-#: library/WT/Stats.php:3941
+#: library/WT/Stats.php:3942
 msgid "Norfolk Island"
 msgstr ""
 
-#: help_text.php:1468
+#: help_text.php:1463
 msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator's approval."
 msgstr ""
 
-#: library/WT/Stats.php:3962
+#: library/WT/Stats.php:3963
 msgid "North Korea"
 msgstr ""
 
-#: library/WT/Stats.php:3944
+#: library/WT/Stats.php:3945
 msgid "Northern Ireland"
 msgstr ""
 
-#: library/WT/Stats.php:3928
+#: library/WT/Stats.php:3929
 msgid "Northern Mariana Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3947
+#: library/WT/Stats.php:3948
 msgid "Norway"
 msgstr ""
 
@@ -9009,11 +9006,11 @@ msgstr ""
 
 #. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:484
-#: includes/functions/functions_print.php:558 library/WT/Gedcom/Tag.php:276
+#: includes/functions/functions_print.php:560 library/WT/Gedcom/Tag.php:276
 msgid "Note"
 msgstr ""
 
-#: admin_trees_config.php:353 help_text.php:696
+#: admin_trees_config.php:362 help_text.php:696
 msgid "Note ID prefix"
 msgstr ""
 
@@ -9071,7 +9068,7 @@ msgctxt "LOCATIVE"
 msgid "November"
 msgstr ""
 
-#: includes/functions/functions_print.php:1111
+#: includes/functions/functions_print.php:1113
 #: library/WT/Date/Calendar.php:143
 msgctxt "NOMINATIVE"
 msgid "November"
@@ -9082,25 +9079,24 @@ msgid "Nuku'Alofa, Tonga"
 msgstr ""
 
 #. I18N: gedcom tag NCHI
-#: library/WT/Gedcom/Tag.php:273 library/WT/Stats.php:2894
-#: library/WT/Stats.php:2895 statistics.php:545 statisticsplot.php:781
-#: statisticsplot.php:927
+#: library/WT/Gedcom/Tag.php:273 library/WT/Stats.php:2895
+#: library/WT/Stats.php:2896 statistics.php:545 statisticsplot.php:930
 msgid "Number of children"
 msgstr ""
 
 #: modules_v3/recent_changes/module.php:136
 #: modules_v3/upcoming_events/module.php:131
-#: modules_v3/yahrzeit/module.php:239
+#: modules_v3/yahrzeit/module.php:250
 msgid "Number of days to show"
 msgstr ""
 
-#: library/WT/Stats.php:3059 statistics.php:292
+#: library/WT/Stats.php:3060 statistics.php:292
 msgid "Number of families without children"
 msgstr ""
 
 #: modules_v3/clippings/module.php:111 modules_v3/clippings/module.php:113
-#: modules_v3/clippings/module.php:116 modules_v3/clippings/module.php:530
-#: modules_v3/clippings/module.php:532 modules_v3/clippings/module.php:535
+#: modules_v3/clippings/module.php:116 modules_v3/clippings/module.php:536
+#: modules_v3/clippings/module.php:538 modules_v3/clippings/module.php:541
 msgid "Number of generations:"
 msgstr ""
 
@@ -9155,7 +9151,7 @@ msgstr ""
 msgid "Occupations"
 msgstr ""
 
-#: library/WT/Stats.php:3965
+#: library/WT/Stats.php:3966
 msgid "Occupied Palestinian Territory"
 msgstr ""
 
@@ -9183,7 +9179,7 @@ msgctxt "LOCATIVE"
 msgid "October"
 msgstr ""
 
-#: includes/functions/functions_print.php:1110
+#: includes/functions/functions_print.php:1112
 #: library/WT/Date/Calendar.php:142
 msgctxt "NOMINATIVE"
 msgid "October"
@@ -9238,7 +9234,7 @@ msgstr ""
 msgid "Olivia"
 msgstr ""
 
-#: library/WT/Stats.php:3952
+#: library/WT/Stats.php:3953
 msgid "Oman"
 msgstr ""
 
@@ -9246,7 +9242,7 @@ msgstr ""
 msgid "On This Day ..."
 msgstr ""
 
-#: help_text.php:1282
+#: help_text.php:1277
 msgid "On this chart you can display one or more persons along a horizontal timeline.  This chart allows you to see how the lives of different people overlapped.<br /><br />You can add people to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more people to the chart.  You can clear the chart at any time with the <b>Clear Chart</b> button.<br /><br />You can also add people to the chart by searching for them by date range or locality."
 msgstr ""
 
@@ -9288,8 +9284,8 @@ msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
 msgstr ""
 
-#: admin_module_menus.php:75 admin_module_sidebar.php:75
-#: admin_module_tabs.php:75
+#: admin_module_menus.php:76 admin_module_sidebar.php:76
+#: admin_module_tabs.php:76
 msgid "Order"
 msgstr ""
 
@@ -9331,8 +9327,8 @@ msgstr ""
 msgid "Orlando, Florida"
 msgstr ""
 
-#: library/WT/Gedcom/Tag.php:918 library/WT/Stats.php:3216
-#: library/WT/Stats.php:3390
+#: library/WT/Gedcom/Tag.php:918 library/WT/Stats.php:3217
+#: library/WT/Stats.php:3391
 #: modules_v3/lightbox/functions/lightbox_print_media.php:138
 msgid "Other"
 msgstr ""
@@ -9341,7 +9337,7 @@ msgstr ""
 msgid "Other Searches"
 msgstr ""
 
-#: admin_trees_config.php:977 help_text.php:462
+#: admin_trees_config.php:986 help_text.php:462
 msgid "Other facts to show in charts"
 msgstr ""
 
@@ -9353,7 +9349,7 @@ msgstr ""
 msgid "Other records"
 msgstr ""
 
-#: admin_trees_config.php:1225
+#: admin_trees_config.php:1234
 msgid "Other settings"
 msgstr ""
 
@@ -9388,7 +9384,7 @@ msgstr ""
 msgid "P.M."
 msgstr ""
 
-#: help_text.php:1316
+#: help_text.php:1311
 msgid "PGV must be version 4.2.3, or any SVN up to #6973"
 msgstr ""
 
@@ -9412,7 +9408,7 @@ msgstr ""
 msgid "PHP failed to write to disk"
 msgstr ""
 
-#: admin_site_info.php:34 help_text.php:1331
+#: admin_site_info.php:34 help_text.php:1326
 #: themes/_administration/header.php:96
 msgid "PHP information"
 msgstr ""
@@ -9435,11 +9431,11 @@ msgstr ""
 msgid "Painting"
 msgstr ""
 
-#: library/WT/Stats.php:3953
+#: library/WT/Stats.php:3954
 msgid "Pakistan"
 msgstr ""
 
-#: library/WT/Stats.php:3958
+#: library/WT/Stats.php:3959
 msgid "Palau"
 msgstr ""
 
@@ -9452,7 +9448,7 @@ msgstr ""
 msgid "Palmyra, New York"
 msgstr ""
 
-#: library/WT/Stats.php:3954
+#: library/WT/Stats.php:3955
 msgid "Panama"
 msgstr ""
 
@@ -9460,15 +9456,15 @@ msgstr ""
 msgid "Papeete, Tahiti"
 msgstr ""
 
-#: library/WT/Stats.php:3959
+#: library/WT/Stats.php:3960
 msgid "Papua New Guinea"
 msgstr ""
 
-#: library/WT/Stats.php:3964
+#: library/WT/Stats.php:3965
 msgid "Paraguay"
 msgstr ""
 
-#: includes/functions/functions_print.php:736
+#: includes/functions/functions_print.php:738
 msgid "Parent's age"
 msgstr ""
 
@@ -9481,13 +9477,13 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:932
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:937
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:939
-#: modules_v3/family_nav/module.php:298 modules_v3/family_nav/module.php:299
+#: modules_v3/family_nav/module.php:300 modules_v3/family_nav/module.php:301
 msgid "Parents"
 msgstr "부모"
 
 #: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
-#: edituser.php:152 help_text.php:736 help_text.php:1301 login.php:158
-#: login.php:219 login.php:448 modules_v3/login_block/module.php:80
+#: edituser.php:152 help_text.php:736 help_text.php:1296 login.php:159
+#: login.php:220 login.php:449 modules_v3/login_block/module.php:81
 #: setup.php:423
 msgid "Password"
 msgstr "비밀번호"
@@ -9496,7 +9492,7 @@ msgstr "비밀번호"
 msgid "Passwords do not match."
 msgstr ""
 
-#: help_text.php:1302
+#: help_text.php:1297
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr ""
 
@@ -9540,7 +9536,7 @@ msgid "Pending Changes block"
 msgstr ""
 
 #. I18N: Name of a module
-#: edit_changes.php:33 edit_changes.php:53 help_text.php:1336
+#: edit_changes.php:33 edit_changes.php:53 help_text.php:1331
 #: modules_v3/review_changes/module.php:34
 #: themes/_administration/header.php:77 themes/clouds/header.php:123
 #: themes/colors/header.php:97 themes/fab/header.php:79
@@ -9548,7 +9544,7 @@ msgstr ""
 msgid "Pending changes"
 msgstr ""
 
-#: help_text.php:1343
+#: help_text.php:1338
 msgid "Pending changes are only shown when your account has permission to edit.  When you log out, you will no longer be able to see them.  Also, pending changes are only shown on certain pages.  For example, they are not shown in lists, reports, or search results."
 msgstr ""
 
@@ -9578,11 +9574,11 @@ msgstr ""
 msgid "Perth, Australia"
 msgstr ""
 
-#: library/WT/Stats.php:3956
+#: library/WT/Stats.php:3957
 msgid "Peru"
 msgstr ""
 
-#: library/WT/Stats.php:3957
+#: library/WT/Stats.php:3958
 msgid "Philippines"
 msgstr ""
 
@@ -9627,7 +9623,7 @@ msgstr ""
 msgid "PhpGedView must use the same database as <b>webtrees</b>"
 msgstr ""
 
-#: admin_pgv_to_wt.php:116 help_text.php:1311
+#: admin_pgv_to_wt.php:116 help_text.php:1306
 msgid "PhpGedView to <b>webtrees</b> transfer wizard"
 msgstr ""
 
@@ -9640,7 +9636,7 @@ msgstr ""
 msgid "Pink Plastic"
 msgstr ""
 
-#: library/WT/Stats.php:3955
+#: library/WT/Stats.php:3956
 msgid "Pitcairn"
 msgstr ""
 
@@ -9792,7 +9788,7 @@ msgstr ""
 msgid "Place of marriage banns"
 msgstr ""
 
-#: admin_trees_config.php:887 statistics.php:392
+#: admin_trees_config.php:896 statistics.php:392
 msgid "Places"
 msgstr ""
 
@@ -9817,11 +9813,11 @@ msgstr ""
 msgid "Play"
 msgstr "재생"
 
-#: login.php:326
+#: login.php:327
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
 msgstr ""
 
-#: login.php:221
+#: login.php:222
 msgid "Please click on the link below or paste it into your browser, login with the new password, and change it immediately to keep the integrity of your data secure."
 msgstr ""
 
@@ -9829,7 +9825,7 @@ msgstr ""
 msgid "Please enter a Given name, Last name, or Place in addition to Year"
 msgstr ""
 
-#: message.php:106
+#: message.php:104
 msgid "Please enter a message subject."
 msgstr ""
 
@@ -9842,11 +9838,11 @@ msgstr ""
 msgid "Please enter more than one character"
 msgstr ""
 
-#: message.php:111
+#: message.php:109
 msgid "Please enter some message text before sending."
 msgstr ""
 
-#: message.php:130
+#: message.php:131
 msgid "Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry."
 msgstr ""
 
@@ -9876,11 +9872,11 @@ msgctxt "NOMINATIVE"
 msgid "Pluviôse"
 msgstr ""
 
-#: library/WT/Stats.php:3960
+#: library/WT/Stats.php:3961
 msgid "Poland"
 msgstr ""
 
-#: admin_trees_config.php:1233 help_text.php:964
+#: admin_trees_config.php:1242 help_text.php:964
 msgctxt "Surname tradition"
 msgid "Polish"
 msgstr ""
@@ -9898,15 +9894,15 @@ msgstr ""
 msgid "Porto Alegre, Brazil"
 msgstr ""
 
-#: admin_trees_config.php:804 pedigree.php:61
+#: admin_trees_config.php:813 pedigree.php:61
 msgid "Portrait"
 msgstr ""
 
-#: library/WT/Stats.php:3963
+#: library/WT/Stats.php:3964
 msgid "Portugal"
 msgstr ""
 
-#: admin_trees_config.php:1233 help_text.php:954
+#: admin_trees_config.php:1242 help_text.php:954
 msgctxt "Surname tradition"
 msgid "Portuguese"
 msgstr ""
@@ -9973,7 +9969,7 @@ msgstr ""
 #: modules_v3/top10_givnnames/module.php:149
 #: modules_v3/top10_surnames/module.php:162
 #: modules_v3/upcoming_events/module.php:153
-#: modules_v3/yahrzeit/module.php:247
+#: modules_v3/yahrzeit/module.php:258
 msgid "Presentation style"
 msgstr ""
 
@@ -9998,15 +9994,15 @@ msgstr ""
 msgid "Primidi"
 msgstr ""
 
-#: admin_trees_config.php:210
+#: admin_trees_config.php:219
 msgid "Privacy"
 msgstr ""
 
-#: admin_trees_config.php:480 help_text.php:566
+#: admin_trees_config.php:489 help_text.php:566
 msgid "Privacy options"
 msgstr ""
 
-#: admin_trees_config.php:537
+#: admin_trees_config.php:546
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr ""
 
@@ -10018,7 +10014,7 @@ msgstr ""
 #: library/WT/Person.php:419 library/WT/Person.php:442
 #: library/WT/Person.php:1905 library/WT/Report/Base.php:1946
 #: library/WT/Repository.php:57 library/WT/Source.php:49
-#: library/WT/Stats.php:863 library/WT/Stats.php:1804
+#: library/WT/Stats.php:863 library/WT/Stats.php:1805
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:240
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:372
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:521
@@ -10076,11 +10072,11 @@ msgstr ""
 msgid "Publication"
 msgstr ""
 
-#: library/WT/Stats.php:3961
+#: library/WT/Stats.php:3962
 msgid "Puerto Rico"
 msgstr ""
 
-#: library/WT/Stats.php:3967
+#: library/WT/Stats.php:3968
 msgid "Qatar"
 msgstr ""
 
@@ -10097,8 +10093,8 @@ msgstr ""
 msgid "Question"
 msgstr ""
 
-#: admin_trees_config.php:1101 admin_trees_config.php:1138
-#: admin_trees_config.php:1167 admin_trees_config.php:1196
+#: admin_trees_config.php:1110 admin_trees_config.php:1147
+#: admin_trees_config.php:1176 admin_trees_config.php:1205
 msgid "Quick facts"
 msgstr ""
 
@@ -10264,8 +10260,8 @@ msgstr ""
 msgid "Re-order media"
 msgstr "미디어 재정렬"
 
-#: admin_users.php:361 admin_users.php:567 edituser.php:137 help_text.php:1360
-#: login.php:295 login.php:386
+#: admin_users.php:361 admin_users.php:567 edituser.php:137 help_text.php:1355
+#: login.php:296 login.php:387
 msgid "Real name"
 msgstr ""
 
@@ -10282,7 +10278,7 @@ msgstr ""
 msgid "Recife, Brazil"
 msgstr ""
 
-#: login.php:220
+#: login.php:221
 msgid "Recommendation:"
 msgstr ""
 
@@ -10411,7 +10407,7 @@ msgstr ""
 msgid "Relationship: %s"
 msgstr ""
 
-#: includes/functions/functions_print.php:668
+#: includes/functions/functions_print.php:670
 #: includes/functions/functions_print_lists.php:286 library/WT/MenuBar.php:112
 #: library/WT/MenuBar.php:230 library/WT/MenuBar.php:255 relationship.php:73
 #: relationship.php:88
@@ -10452,7 +10448,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:222
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:572
 #: modules_v3/clippings/module.php:279 modules_v3/clippings/module.php:301
-#: modules_v3/clippings/module.php:466
+#: modules_v3/clippings/module.php:472
 #: modules_v3/gedcom_favorites/module.php:125
 #: modules_v3/googlemap/admin_places.php:683
 msgid "Remove"
@@ -10472,7 +10468,7 @@ msgstr ""
 msgid "Remove flag"
 msgstr ""
 
-#: help_text.php:1375 timeline.php:272 timeline.php:288
+#: help_text.php:1370 timeline.php:272 timeline.php:288
 msgid "Remove person"
 msgstr ""
 
@@ -10496,7 +10492,7 @@ msgstr ""
 msgid "Reply"
 msgstr "회신"
 
-#: admin_module_reports.php:55 admin_modules.php:124 admin_modules.php:142
+#: admin_module_reports.php:56 admin_modules.php:129 admin_modules.php:147
 msgid "Report"
 msgstr ""
 
@@ -10520,7 +10516,7 @@ msgstr ""
 msgid "Repository"
 msgstr ""
 
-#: admin_trees_config.php:347 help_text.php:811
+#: admin_trees_config.php:356 help_text.php:811
 msgid "Repository ID prefix"
 msgstr ""
 
@@ -10536,12 +10532,12 @@ msgstr ""
 msgid "Repository name"
 msgstr ""
 
-#: login.php:166 modules_v3/login_block/module.php:88
+#: login.php:167 modules_v3/login_block/module.php:89
 msgid "Request new password"
 msgstr "새 암호 요청"
 
-#: login.php:169 login.php:251 modules_v3/gedcom_block/module.php:54
-#: modules_v3/login_block/module.php:91
+#: login.php:170 login.php:252 modules_v3/gedcom_block/module.php:54
+#: modules_v3/login_block/module.php:92
 msgid "Request new user account"
 msgstr "새 사용자 계정 요청"
 
@@ -10549,7 +10545,7 @@ msgstr "새 사용자 계정 요청"
 msgid "Require an administrator to approve new user registrations"
 msgstr ""
 
-#: admin_trees_config.php:472 help_text.php:821
+#: admin_trees_config.php:481 help_text.php:821
 msgid "Require visitor authentication"
 msgstr ""
 
@@ -10614,7 +10610,7 @@ msgstr ""
 msgid "Retirement"
 msgstr ""
 
-#: library/WT/Stats.php:3968
+#: library/WT/Stats.php:3969
 msgid "Reunion"
 msgstr ""
 
@@ -10623,12 +10619,12 @@ msgid "Right Section Blocks"
 msgstr ""
 
 #. I18N: gedcom tag ROLE
-#: admin_users.php:227 admin_users.php:429 help_text.php:1380
+#: admin_users.php:227 admin_users.php:429 help_text.php:1375
 #: library/WT/Gedcom/Tag.php:311
 msgid "Role"
 msgstr ""
 
-#: library/WT/Stats.php:3969
+#: library/WT/Stats.php:3970
 msgid "Romania"
 msgstr ""
 
@@ -10664,11 +10660,11 @@ msgstr ""
 msgid "Russell"
 msgstr ""
 
-#: library/WT/Stats.php:3970
+#: library/WT/Stats.php:3971
 msgid "Russia"
 msgstr ""
 
-#: library/WT/Stats.php:3971
+#: library/WT/Stats.php:3972
 msgid "Rwanda"
 msgstr ""
 
@@ -10709,23 +10705,23 @@ msgstr ""
 msgid "Sage"
 msgstr ""
 
-#: library/WT/Stats.php:3981
+#: library/WT/Stats.php:3982
 msgid "Saint Helena"
 msgstr ""
 
-#: library/WT/Stats.php:3901
+#: library/WT/Stats.php:3902
 msgid "Saint Kitts and Nevis"
 msgstr ""
 
-#: library/WT/Stats.php:3908
+#: library/WT/Stats.php:3909
 msgid "Saint Lucia"
 msgstr ""
 
-#: library/WT/Stats.php:3989
+#: library/WT/Stats.php:3990
 msgid "Saint Pierre and Miquelon"
 msgstr ""
 
-#: library/WT/Stats.php:4023
+#: library/WT/Stats.php:4024
 msgid "Saint Vincent and the Grenadines"
 msgstr ""
 
@@ -10733,7 +10729,7 @@ msgstr ""
 msgid "Salt Lake City, Utah"
 msgstr ""
 
-#: library/WT/Stats.php:4032
+#: library/WT/Stats.php:4033
 msgid "Samoa"
 msgstr ""
 
@@ -10749,7 +10745,7 @@ msgstr ""
 msgid "San Jose, Costa Rica"
 msgstr ""
 
-#: library/WT/Stats.php:3987
+#: library/WT/Stats.php:3988
 msgid "San Marino"
 msgstr ""
 
@@ -10765,11 +10761,11 @@ msgstr ""
 msgid "Sao Paulo, Brazil"
 msgstr ""
 
-#: library/WT/Stats.php:3991
+#: library/WT/Stats.php:3992
 msgid "Sao Tome and Principe"
 msgstr ""
 
-#: includes/functions/functions_print.php:1121
+#: includes/functions/functions_print.php:1123
 #: library/WT/Date/Calendar.php:260
 msgid "Sat"
 msgstr ""
@@ -10782,7 +10778,7 @@ msgstr ""
 msgid "Saturday"
 msgstr ""
 
-#: library/WT/Stats.php:3972
+#: library/WT/Stats.php:3973
 msgid "Saudi Arabia"
 msgstr ""
 
@@ -10798,7 +10794,7 @@ msgstr ""
 msgid "School or college"
 msgstr ""
 
-#: library/WT/Stats.php:3974
+#: library/WT/Stats.php:3975
 msgid "Scotland"
 msgstr ""
 
@@ -10833,8 +10829,8 @@ msgstr ""
 #: library/WT/MenuBar.php:416 lifespan.php:302 medialist.php:157
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:61
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:95
-#: modules_v3/descendancy/module.php:99 modules_v3/descendancy/module.php:128
-#: modules_v3/families/module.php:141 modules_v3/individuals/module.php:141
+#: modules_v3/descendancy/module.php:101 modules_v3/descendancy/module.php:130
+#: modules_v3/families/module.php:143 modules_v3/individuals/module.php:143
 #: search.php:159 search.php:262 search.php:264 search.php:266
 #: search_advanced.php:295 themes/clouds/header.php:83
 #: themes/clouds/header.php:84 themes/colors/header.php:126
@@ -10941,7 +10937,7 @@ msgstr ""
 msgid "Select the desired count interval"
 msgstr ""
 
-#: help_text.php:1438
+#: help_text.php:1433
 msgid "Select the media file that you want to upload.  If a file already exists with the same name, it will be overwritten."
 msgstr ""
 
@@ -10949,11 +10945,11 @@ msgstr ""
 msgid "Select the stats to show in this block"
 msgstr ""
 
-#: help_text.php:1515
+#: help_text.php:1510
 msgid "Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href=\"http://www.winzip.com\" target=\"_blank\">http://www.winzip.com</a>."
 msgstr ""
 
-#: help_text.php:1277
+#: help_text.php:1272
 msgid "Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download."
 msgstr ""
 
@@ -10979,12 +10975,12 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr ""
 
-#: login.php:456 message.php:141 modules_v3/user_messages/module.php:84
+#: login.php:457 message.php:142 modules_v3/user_messages/module.php:84
 msgid "Send"
 msgstr "보내기"
 
 #: edit_changes.php:188 includes/functions/functions_print.php:351
-#: library/WT/Stats.php:3445 library/WT/Stats.php:3447 message.php:118
+#: library/WT/Stats.php:3446 library/WT/Stats.php:3448 message.php:116
 #: modules_v3/user_messages/module.php:75
 msgid "Send Message"
 msgstr "메시지 보내기"
@@ -11019,7 +11015,7 @@ msgstr ""
 msgid "Sending server name"
 msgstr ""
 
-#: library/WT/Stats.php:3977
+#: library/WT/Stats.php:3978
 msgid "Senegal"
 msgstr ""
 
@@ -11052,7 +11048,7 @@ msgctxt "LOCATIVE"
 msgid "September"
 msgstr ""
 
-#: includes/functions/functions_print.php:1109
+#: includes/functions/functions_print.php:1111
 #: library/WT/Date/Calendar.php:141
 msgctxt "NOMINATIVE"
 msgid "September"
@@ -11062,11 +11058,11 @@ msgstr ""
 msgid "Septidi"
 msgstr ""
 
-#: library/WT/Stats.php:3978
+#: library/WT/Stats.php:3979
 msgid "Serbia"
 msgstr ""
 
-#: library/WT/Stats.php:3973
+#: library/WT/Stats.php:3974
 msgid "Serbia and Montenegro"
 msgstr ""
 
@@ -11100,7 +11096,7 @@ msgstr ""
 
 #: admin_media.php:447 inverselink.php:167 library/WT/Controller/Media.php:93
 #: library/WT/Controller/Media.php:181
-#: modules_v3/lightbox/functions/lightbox_print_media.php:401
+#: modules_v3/lightbox/functions/lightbox_print_media.php:396
 msgid "Set link"
 msgstr ""
 
@@ -11156,7 +11152,7 @@ msgstr ""
 msgid "Sextidi"
 msgstr ""
 
-#: library/WT/Stats.php:3998
+#: library/WT/Stats.php:3999
 msgid "Seychelles"
 msgstr ""
 
@@ -11339,11 +11335,11 @@ msgstr ""
 msgid "Show all notes"
 msgstr ""
 
-#: admin_trees_config.php:1014 help_text.php:861
+#: admin_trees_config.php:1023 help_text.php:861
 msgid "Show all notes and source references on notes and sources tabs"
 msgstr ""
 
-#: help_text.php:1416 modules_v3/sources_tab/module.php:59
+#: help_text.php:1411 modules_v3/sources_tab/module.php:59
 msgid "Show all sources"
 msgstr ""
 
@@ -11361,7 +11357,7 @@ msgid "Show an age cursor?"
 msgstr ""
 
 #. I18N: A site configuration setting
-#: admin_trees_config.php:945 help_text.php:701
+#: admin_trees_config.php:954 help_text.php:701
 msgid "Show chart details by default"
 msgstr ""
 
@@ -11414,7 +11410,7 @@ msgstr ""
 msgid "Show date of last update?"
 msgstr ""
 
-#: admin_trees_config.php:488 help_text.php:836
+#: admin_trees_config.php:497 help_text.php:836
 msgid "Show dead people"
 msgstr ""
 
@@ -11422,11 +11418,11 @@ msgstr ""
 msgid "Show divorced couples."
 msgstr ""
 
-#: admin_trees_config.php:647 help_text.php:872
+#: admin_trees_config.php:656 help_text.php:872
 msgid "Show download link in media viewer"
 msgstr ""
 
-#: admin_trees_config.php:847
+#: admin_trees_config.php:856
 msgid "Show events of close relatives on individual page"
 msgstr ""
 
@@ -11438,7 +11434,7 @@ msgstr ""
 msgid "Show family on timeline chart"
 msgstr ""
 
-#: admin_trees_config.php:674 compact.php:55
+#: admin_trees_config.php:683 compact.php:55
 msgid "Show highlight images in people boxes"
 msgstr ""
 
@@ -11458,7 +11454,7 @@ msgstr ""
 msgid "Show list of family trees"
 msgstr ""
 
-#: help_text.php:1296 relationship.php:118
+#: help_text.php:1291 relationship.php:118
 msgid "Show oldest top"
 msgstr ""
 
@@ -11527,7 +11523,7 @@ msgstr ""
 msgid "Show persons born within the last 100 years."
 msgstr ""
 
-#: admin_trees_config.php:518 help_text.php:887
+#: admin_trees_config.php:527 help_text.php:887
 msgid "Show private relationships"
 msgstr ""
 
@@ -11555,7 +11551,7 @@ msgstr ""
 msgid "Show slide show controls?"
 msgstr "슬라이드 쇼 컨트롤을 표시 하시겠습니까?"
 
-#: familybook.php:76 help_text.php:1421 hourglass.php:91
+#: familybook.php:76 help_text.php:1416 hourglass.php:91
 msgid "Show spouses"
 msgstr ""
 
@@ -11565,7 +11561,7 @@ msgid "Show statistics charts"
 msgstr ""
 
 #. I18N: The placeholders are edit controls.  Show the [first/last] [1/2/3/4/5] parts of a place name
-#: admin_trees_config.php:897
+#: admin_trees_config.php:906
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
 msgstr ""
@@ -11596,7 +11592,7 @@ msgstr ""
 msgid "Show timeline"
 msgstr ""
 
-#: admin_trees_config.php:40 admin_trees_config.php:642
+#: admin_trees_config.php:40 admin_trees_config.php:651
 #: includes/functions/functions_edit.php:195
 #: includes/functions/functions_edit.php:207
 #: includes/functions/functions_print_facts.php:232
@@ -11606,7 +11602,7 @@ msgstr ""
 msgid "Show to managers"
 msgstr ""
 
-#: admin_trees_config.php:39 admin_trees_config.php:641
+#: admin_trees_config.php:39 admin_trees_config.php:650
 #: includes/functions/functions_edit.php:194
 #: includes/functions/functions_edit.php:206
 #: includes/functions/functions_print_facts.php:229
@@ -11645,16 +11641,16 @@ msgstr ""
 msgid "Siblings"
 msgstr ""
 
-#: library/WT/Stats.php:3982
+#: library/WT/Stats.php:3983
 msgid "Sicily"
 msgstr ""
 
-#: admin_module_sidebar.php:73 admin_modules.php:121 admin_modules.php:139
+#: admin_module_sidebar.php:74 admin_modules.php:126 admin_modules.php:144
 #: themes/_administration/header.php:146
 msgid "Sidebar"
 msgstr ""
 
-#: library/WT/Stats.php:3985
+#: library/WT/Stats.php:3986
 msgid "Sierra Leone"
 msgstr ""
 
@@ -11662,15 +11658,15 @@ msgstr ""
 msgid "Simple dates are assumed to be in the gregorian calendar.  To specify a date in another calendar, add a keyword before the date.  This keyword is optional if the month or year format make the date unambiguous."
 msgstr ""
 
-#: help_text.php:1426
+#: help_text.php:1421
 msgid "Simple search filter"
 msgstr ""
 
-#: help_text.php:1427
+#: help_text.php:1422
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
 msgstr ""
 
-#: library/WT/Stats.php:3979
+#: library/WT/Stats.php:3980
 msgid "Singapore"
 msgstr ""
 
@@ -11737,11 +11733,11 @@ msgstr ""
 msgid "Slide show"
 msgstr "슬라이드 쇼"
 
-#: library/WT/Stats.php:3994
+#: library/WT/Stats.php:3995
 msgid "Slovakia"
 msgstr ""
 
-#: library/WT/Stats.php:3995
+#: library/WT/Stats.php:3996
 msgid "Slovenia"
 msgstr ""
 
@@ -11758,11 +11754,11 @@ msgstr ""
 msgid "Social Security Number"
 msgstr ""
 
-#: library/WT/Stats.php:3984
+#: library/WT/Stats.php:3985
 msgid "Solomon Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3988
+#: library/WT/Stats.php:3989
 msgid "Somalia"
 msgstr ""
 
@@ -11814,7 +11810,7 @@ msgstr ""
 msgid "Source"
 msgstr ""
 
-#: admin_trees_config.php:340 help_text.php:902
+#: admin_trees_config.php:349 help_text.php:902
 msgid "Source ID prefix"
 msgstr ""
 
@@ -11830,7 +11826,7 @@ msgstr ""
 msgid "Source contains:"
 msgstr ""
 
-#: admin_trees_config.php:1246 help_text.php:781
+#: admin_trees_config.php:1255 help_text.php:781
 msgid "Source type"
 msgstr ""
 
@@ -11842,14 +11838,14 @@ msgstr ""
 #: library/WT/Controller/Search.php:595 library/WT/MenuBar.php:311
 #: mediaviewer.php:138 modules_v3/gedcom_stats/module.php:104
 #: modules_v3/gedcom_stats/module.php:324 modules_v3/html/module.php:192
-#: modules_v3/lightbox/functions/lightbox_print_media.php:374
+#: modules_v3/lightbox/functions/lightbox_print_media.php:369
 #: modules_v3/sources_tab/module.php:34 note.php:107 repo.php:94
 #: search.php:124 sourcelist.php:31 sourcelist.php:35 statistics.php:338
 #: statistics.php:375
 msgid "Sources"
 msgstr ""
 
-#: library/WT/Stats.php:4035
+#: library/WT/Stats.php:4036
 msgid "South Africa"
 msgstr ""
 
@@ -11857,19 +11853,19 @@ msgstr ""
 msgid "South America"
 msgstr ""
 
-#: library/WT/Stats.php:3980
+#: library/WT/Stats.php:3981
 msgid "South Georgia and the South Sandwich Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3990
+#: library/WT/Stats.php:3991
 msgid "South Sudan"
 msgstr ""
 
-#: library/WT/Stats.php:3849
+#: library/WT/Stats.php:3850
 msgid "Spain"
 msgstr ""
 
-#: admin_trees_config.php:1233 help_text.php:949
+#: admin_trees_config.php:1242 help_text.php:949
 msgctxt "Surname tradition"
 msgid "Spanish"
 msgstr ""
@@ -11898,7 +11894,7 @@ msgstr ""
 msgid "Spouses"
 msgstr ""
 
-#: library/WT/Stats.php:3910
+#: library/WT/Stats.php:3911
 msgid "Sri Lanka"
 msgstr ""
 
@@ -11949,13 +11945,13 @@ msgstr ""
 msgid "Statistics"
 msgstr ""
 
-#: statistics.php:471 statisticsplot.php:889
+#: statistics.php:471 statisticsplot.php:892
 msgid "Statistics plot"
 msgstr ""
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:254 admin_site_change.php:288
-#: includes/functions/functions_print.php:955 library/WT/Gedcom/Tag.php:324
+#: includes/functions/functions_print.php:957 library/WT/Gedcom/Tag.php:324
 msgid "Status"
 msgstr ""
 
@@ -11983,11 +11979,11 @@ msgstr ""
 msgid "Stop"
 msgstr "정지"
 
-#: admin_trees_config.php:695
+#: admin_trees_config.php:704
 msgid "Store watermarked full size images on server?"
 msgstr ""
 
-#: admin_trees_config.php:703
+#: admin_trees_config.php:712
 msgid "Store watermarked thumbnails on server?"
 msgstr ""
 
@@ -12010,7 +12006,7 @@ msgstr ""
 msgid "Subdivision"
 msgstr ""
 
-#: message.php:132 modules_v3/user_messages/module.php:92
+#: message.php:133 modules_v3/user_messages/module.php:92
 msgid "Subject:"
 msgstr "제목:"
 
@@ -12029,7 +12025,7 @@ msgstr ""
 msgid "Submitter"
 msgstr ""
 
-#: library/WT/Stats.php:3975
+#: library/WT/Stats.php:3976
 msgid "Sudan"
 msgstr ""
 
@@ -12037,7 +12033,7 @@ msgstr ""
 msgid "Suffixes"
 msgstr ""
 
-#: includes/functions/functions_print.php:1115
+#: includes/functions/functions_print.php:1117
 #: library/WT/Date/Calendar.php:261
 msgid "Sun"
 msgstr ""
@@ -12052,12 +12048,12 @@ msgstr ""
 msgid "Support and documentation can be found at %s."
 msgstr ""
 
-#: library/WT/Stats.php:3993
+#: library/WT/Stats.php:3994
 msgid "Suriname"
 msgstr ""
 
 #. I18N: gedcom tag SURN
-#: help_text.php:1255 library/WT/Gedcom/Tag.php:328
+#: help_text.php:1250 library/WT/Gedcom/Tag.php:328
 msgid "Surname"
 msgstr ""
 
@@ -12069,7 +12065,7 @@ msgstr ""
 msgid "Surname distribution chart"
 msgstr ""
 
-#: admin_trees_config.php:758
+#: admin_trees_config.php:767
 msgid "Surname list style"
 msgstr ""
 
@@ -12078,7 +12074,7 @@ msgstr ""
 msgid "Surname prefix"
 msgstr ""
 
-#: admin_trees_config.php:1230 help_text.php:927
+#: admin_trees_config.php:1239 help_text.php:927
 msgid "Surname tradition"
 msgstr ""
 
@@ -12096,19 +12092,19 @@ msgstr ""
 msgid "Suva, Fiji"
 msgstr ""
 
-#: library/WT/Stats.php:3983
+#: library/WT/Stats.php:3984
 msgid "Svalbard and Jan Mayen Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3997
+#: library/WT/Stats.php:3998
 msgid "Swaziland"
 msgstr ""
 
-#: library/WT/Stats.php:3996
+#: library/WT/Stats.php:3997
 msgid "Sweden"
 msgstr ""
 
-#: library/WT/Stats.php:3818
+#: library/WT/Stats.php:3819
 msgid "Switzerland"
 msgstr ""
 
@@ -12116,7 +12112,7 @@ msgstr ""
 msgid "Sydney, Australia"
 msgstr ""
 
-#: library/WT/Stats.php:3999
+#: library/WT/Stats.php:4000
 msgid "Syrian Arab Republic"
 msgstr ""
 
@@ -12124,7 +12120,7 @@ msgstr ""
 msgid "System settings"
 msgstr ""
 
-#: admin_module_tabs.php:73 admin_modules.php:120 admin_modules.php:138
+#: admin_module_tabs.php:74 admin_modules.php:125 admin_modules.php:143
 msgid "Tab"
 msgstr ""
 
@@ -12144,11 +12140,11 @@ msgstr ""
 msgid "Taipei, Taiwan"
 msgstr ""
 
-#: library/WT/Stats.php:4014
+#: library/WT/Stats.php:4015
 msgid "Taiwan"
 msgstr ""
 
-#: library/WT/Stats.php:4004
+#: library/WT/Stats.php:4005
 msgid "Tajikistan"
 msgstr ""
 
@@ -12182,7 +12178,7 @@ msgctxt "NOMINATIVE"
 msgid "Tamuz"
 msgstr ""
 
-#: library/WT/Stats.php:4015
+#: library/WT/Stats.php:4016
 msgid "Tanzania"
 msgstr ""
 
@@ -12191,7 +12187,7 @@ msgstr ""
 msgid "Teal Top"
 msgstr ""
 
-#: admin_trees_config.php:393 help_text.php:1032
+#: admin_trees_config.php:402 help_text.php:1032
 msgid "Technical help contact"
 msgstr ""
 
@@ -12233,7 +12229,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: library/WT/Stats.php:4003
+#: library/WT/Stats.php:4004
 msgid "Thailand"
 msgstr ""
 
@@ -12245,7 +12241,7 @@ msgstr ""
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr ""
 
-#: login.php:535
+#: login.php:536
 msgid "The Administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
 msgstr ""
 
@@ -12257,7 +12253,7 @@ msgstr ""
 msgid "The FAQ list is empty."
 msgstr ""
 
-#: help_text.php:1261
+#: help_text.php:1256
 msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that person.<br /><br />More help about adding Favorites is available in your personalized My Page."
 msgstr ""
 
@@ -12269,11 +12265,11 @@ msgstr ""
 msgid "The Media Viewer can show a link which, when clicked, will download the Media file to the local PC.<br /><br />You may want to hide the download link for security reasons."
 msgstr ""
 
-#: help_text.php:1312
+#: help_text.php:1307
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
 msgstr ""
 
-#: save.php:269
+#: save.php:267
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr ""
@@ -12290,11 +12286,11 @@ msgstr ""
 msgid "The changes to “%s” have been rejected."
 msgstr ""
 
-#: help_text.php:1322
+#: help_text.php:1317
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
 msgstr ""
 
-#: login.php:512
+#: login.php:513
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
 msgstr ""
@@ -12303,7 +12299,7 @@ msgstr ""
 msgid "The database reported the following error message:"
 msgstr ""
 
-#: admin_trees_config.php:786
+#: admin_trees_config.php:795
 msgid "The date and time of the last update"
 msgstr ""
 
@@ -12351,14 +12347,14 @@ msgstr ""
 #: addmedia.php:114 addmedia.php:125 addmedia.php:137 addmedia.php:279
 #: addmedia.php:290 addmedia.php:302 admin_media_upload.php:63
 #: admin_media_upload.php:74 admin_media_upload.php:86
-#: admin_trees_config.php:183
+#: admin_trees_config.php:191
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr ""
 
 #: addmedia.php:112 addmedia.php:123 addmedia.php:277 addmedia.php:288
 #: admin_media_upload.php:61 admin_media_upload.php:72
-#: admin_trees_config.php:181
+#: admin_trees_config.php:189
 #, php-format
 msgid "The folder %s was created."
 msgstr ""
@@ -12400,11 +12396,11 @@ msgstr ""
 msgid "The following visitors were not recognised, and were assumed to be search engines."
 msgstr ""
 
-#: help_text.php:1520
+#: help_text.php:1515
 msgid "The help text has not been written for this item."
 msgstr ""
 
-#: help_text.php:1479
+#: help_text.php:1474
 msgid "The individual record identifies the user in each family tree.  Since a user can view the details of their individual record, this can only be set by an administrator.  If the user does not have a record in a family tree, leave it empty."
 msgstr ""
 
@@ -12422,7 +12418,7 @@ msgstr ""
 msgid "The media file was not found in this family tree"
 msgstr "가계도 에서 미디어 파일을 찾을수 없습니다."
 
-#: help_text.php:1450
+#: help_text.php:1445
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called \"granny.jpg\".<br /><br />In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br /><br />Leave this field blank to keep the original name of the file you have uploaded from your local computer."
 msgstr ""
 
@@ -12430,7 +12426,7 @@ msgstr ""
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
 msgstr ""
 
-#: help_text.php:1256
+#: help_text.php:1251
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
 msgstr ""
 
@@ -12498,7 +12494,7 @@ msgstr ""
 msgid "The time in seconds that a <b>webtrees</b> session remains active before requiring a login.  The default is 7200, which is 2 hours."
 msgstr ""
 
-#: login.php:298
+#: login.php:299
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
 msgstr ""
 
@@ -12528,7 +12524,7 @@ msgstr ""
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
 msgstr ""
 
-#: admin_modules.php:125 admin_modules.php:143 admin_users.php:204
+#: admin_modules.php:130 admin_modules.php:148 admin_users.php:204
 #: admin_users.php:402 edituser.php:160 help_text.php:981
 #: library/WT/MenuBar.php:449
 msgid "Theme"
@@ -12539,7 +12535,7 @@ msgstr ""
 msgid "Theme change"
 msgstr ""
 
-#: admin_trees_config.php:439 help_text.php:428
+#: admin_trees_config.php:448 help_text.php:428
 msgid "Theme dropdown selector for theme changes"
 msgstr ""
 
@@ -12633,7 +12629,7 @@ msgstr ""
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
 
-#: help_text.php:1495
+#: help_text.php:1490
 msgid "This checkbox controls your visibility to other users while you're online.  It also controls your ability to see other online users who are configured to be visible.<br /><br />When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
 msgstr ""
 
@@ -12678,8 +12674,8 @@ msgstr ""
 msgid "This family has been edited.  You should review the changes and then %1$s or %2$s them."
 msgstr ""
 
-#: includes/functions/functions_charts.php:422
-#: includes/functions/functions_charts.php:595
+#: includes/functions/functions_charts.php:420
+#: includes/functions/functions_charts.php:593
 msgid "This family remained childless"
 msgstr ""
 
@@ -12746,11 +12742,11 @@ msgstr ""
 msgid "This individual will be selected by default when viewing charts and reports."
 msgstr ""
 
-#: includes/functions/functions_print.php:579 library/WT/Stats.php:848
-#: library/WT/Stats.php:1387 library/WT/Stats.php:1473
-#: library/WT/Stats.php:1782 library/WT/Stats.php:1881
-#: library/WT/Stats.php:2112 library/WT/Stats.php:2529
-#: library/WT/Stats.php:2630 library/WT/Stats.php:2677
+#: includes/functions/functions_print.php:581 library/WT/Stats.php:848
+#: library/WT/Stats.php:1388 library/WT/Stats.php:1474
+#: library/WT/Stats.php:1783 library/WT/Stats.php:1882
+#: library/WT/Stats.php:2113 library/WT/Stats.php:2530
+#: library/WT/Stats.php:2631 library/WT/Stats.php:2678
 msgid "This information is private and cannot be shown."
 msgstr ""
 
@@ -12864,7 +12860,7 @@ msgstr ""
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100."
 msgstr ""
 
-#: help_text.php:1361 setup.php:417
+#: help_text.php:1356 setup.php:417
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr ""
 
@@ -12929,7 +12925,7 @@ msgstr ""
 msgid "This message will be sent to %s"
 msgstr ""
 
-#: admin_modules.php:151
+#: admin_modules.php:156
 msgid "This module cannot be found.  Delete its configuration settings."
 msgstr ""
 
@@ -13002,11 +12998,11 @@ msgstr ""
 msgid "This option creates a new family tree.  The name you give it will be used to generate URLs and filenames, so you should choose something short, simple, and avoid punctuation."
 msgstr ""
 
-#: help_text.php:1268
+#: help_text.php:1263
 msgid "This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on the server."
 msgstr ""
 
-#: help_text.php:1432
+#: help_text.php:1427
 msgid "This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on your computer."
 msgstr ""
 
@@ -13029,10 +13025,6 @@ msgstr ""
 
 #: help_text.php:567
 msgid "This option will enable all privacy settings and hide the details of living people, as defined or modified on the Privacy tab of each GEDCOM's configuration page."
-msgstr ""
-
-#: help_text.php:1251
-msgid "This option will generate thumbnails for all files in the current directory which don't already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br /><br />If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links."
 msgstr ""
 
 #: modules_v3/faq/help_text.php:52
@@ -13075,7 +13067,7 @@ msgstr ""
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly.  It is an advanced option, and you should not use it unless you understand the GEDCOM format.  If you make a mistake here, it can be difficult to fix."
 msgstr ""
 
-#: help_text.php:1332
+#: help_text.php:1327
 msgid "This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server's software, as it relates to PHP and <b>webtrees</b>, can be viewed."
 msgstr ""
 
@@ -13087,7 +13079,7 @@ msgstr ""
 msgid "This place has no coordinates"
 msgstr ""
 
-#: help_text.php:1341
+#: help_text.php:1336
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
 msgstr ""
 
@@ -13121,23 +13113,23 @@ msgstr ""
 msgid "This repository has been edited.  You should review the changes and then %1$s or %2$s them."
 msgstr ""
 
-#: help_text.php:1398
+#: help_text.php:1393
 msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
 msgstr ""
 
-#: help_text.php:1406
+#: help_text.php:1401
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules."
 msgstr ""
 
-#: help_text.php:1394
+#: help_text.php:1389
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the \"automatically accept changes\" option enabled."
 msgstr ""
 
-#: help_text.php:1402
+#: help_text.php:1397
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
 msgstr ""
 
-#: help_text.php:1390
+#: help_text.php:1385
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
 msgstr ""
 
@@ -13194,7 +13186,7 @@ msgstr ""
 msgid "This text will be appended to each page title.  It will be shown in the browser's title bar, bookmarks, etc."
 msgstr ""
 
-#: admin_trees_check.php:174
+#: admin_trees_check.php:173 admin_trees_check.php:178
 msgid "This type of link is not allowed here."
 msgstr ""
 
@@ -13220,7 +13212,7 @@ msgstr ""
 msgid "This website is temporarily unavailable"
 msgstr ""
 
-#: admin_trees_manage.php:129
+#: admin_trees_manage.php:130
 #, php-format
 msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
 msgstr ""
@@ -13229,7 +13221,7 @@ msgstr ""
 msgid "This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
 msgstr ""
 
-#: includes/functions/functions_print.php:1119
+#: includes/functions/functions_print.php:1121
 #: library/WT/Date/Calendar.php:258
 msgid "Thu"
 msgstr ""
@@ -13250,11 +13242,11 @@ msgid "Thumbnail file %s does not exist."
 msgstr ""
 
 #. I18N: Small versions of images
-#: admin_trees_config.php:654
+#: admin_trees_config.php:663
 msgid "Thumbnail images"
 msgstr ""
 
-#: addmedia.php:481 admin_media_upload.php:192 help_text.php:1462
+#: addmedia.php:481 admin_media_upload.php:192 help_text.php:1457
 msgid "Thumbnail to upload"
 msgstr ""
 
@@ -13284,7 +13276,7 @@ msgstr ""
 msgid "Timestamp"
 msgstr ""
 
-#: library/WT/Stats.php:4007
+#: library/WT/Stats.php:4008
 msgid "Timor-Leste"
 msgstr ""
 
@@ -13354,19 +13346,19 @@ msgstr ""
 
 #: admin_media.php:454 library/WT/Controller/Media.php:98
 #: library/WT/Controller/Media.php:186
-#: modules_v3/lightbox/functions/lightbox_print_media.php:409
+#: modules_v3/lightbox/functions/lightbox_print_media.php:404
 msgid "To Family"
 msgstr ""
 
 #: admin_media.php:449 library/WT/Controller/Media.php:94
 #: library/WT/Controller/Media.php:183
-#: modules_v3/lightbox/functions/lightbox_print_media.php:404
+#: modules_v3/lightbox/functions/lightbox_print_media.php:399
 msgid "To Person"
 msgstr ""
 
 #: admin_media.php:459 library/WT/Controller/Media.php:102
 #: library/WT/Controller/Media.php:189
-#: modules_v3/lightbox/functions/lightbox_print_media.php:414
+#: modules_v3/lightbox/functions/lightbox_print_media.php:409
 msgid "To Source"
 msgstr ""
 
@@ -13399,11 +13391,11 @@ msgstr ""
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
 msgstr ""
 
-#: library/WT/Stats.php:4002
+#: library/WT/Stats.php:4003
 msgid "Togo"
 msgstr ""
 
-#: library/WT/Stats.php:4005
+#: library/WT/Stats.php:4006
 msgid "Tokelau"
 msgstr ""
 
@@ -13415,7 +13407,7 @@ msgstr ""
 msgid "Tombstone"
 msgstr ""
 
-#: library/WT/Stats.php:4008
+#: library/WT/Stats.php:4009
 msgid "Tonga"
 msgstr ""
 
@@ -13486,7 +13478,7 @@ msgstr ""
 msgid "Total events"
 msgstr ""
 
-#: library/WT/Stats.php:3058 statisticsplot.php:779
+#: library/WT/Stats.php:3059
 msgid "Total families"
 msgstr ""
 
@@ -13501,10 +13493,6 @@ msgstr ""
 
 #: statistics.php:178
 msgid "Total given names"
-msgstr ""
-
-#: statisticsplot.php:783
-msgid "Total individuals"
 msgstr ""
 
 #: calendar.php:438 find.php:507 modules_v3/GEDFact_assistant/module.php:162
@@ -13556,7 +13544,7 @@ msgstr ""
 msgid "Trailer"
 msgstr ""
 
-#: library/WT/Stats.php:4009
+#: library/WT/Stats.php:4010
 msgid "Transylvania"
 msgstr ""
 
@@ -13564,11 +13552,11 @@ msgstr ""
 msgid "Tridi"
 msgstr ""
 
-#: library/WT/Stats.php:4010
+#: library/WT/Stats.php:4011
 msgid "Trinidad and Tobago"
 msgstr ""
 
-#: includes/functions/functions_print.php:1117
+#: includes/functions/functions_print.php:1119
 #: library/WT/Date/Calendar.php:256
 msgid "Tue"
 msgstr ""
@@ -13577,23 +13565,23 @@ msgstr ""
 msgid "Tuesday"
 msgstr ""
 
-#: library/WT/Stats.php:4011
+#: library/WT/Stats.php:4012
 msgid "Tunisia"
 msgstr ""
 
-#: library/WT/Stats.php:4012
+#: library/WT/Stats.php:4013
 msgid "Turkey"
 msgstr ""
 
-#: library/WT/Stats.php:4006
+#: library/WT/Stats.php:4007
 msgid "Turkmenistan"
 msgstr ""
 
-#: library/WT/Stats.php:4000
+#: library/WT/Stats.php:4001
 msgid "Turks and Caicos Islands"
 msgstr ""
 
-#: library/WT/Stats.php:4013
+#: library/WT/Stats.php:4014
 msgid "Tuvalu"
 msgstr ""
 
@@ -13613,11 +13601,11 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr ""
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:385 login.php:407
+#: admin_users.php:385 login.php:408
 msgid "Type the password again."
 msgstr ""
 
-#: help_text.php:1307 setup.php:429
+#: help_text.php:1302 setup.php:429
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr ""
 
@@ -13631,27 +13619,27 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-#: library/WT/Stats.php:4018
+#: library/WT/Stats.php:4019
 msgid "US Minor Outlying Islands"
 msgstr ""
 
-#: library/WT/Stats.php:4026
+#: library/WT/Stats.php:4027
 msgid "US Virgin Islands"
 msgstr ""
 
-#: library/WT/Stats.php:4020
+#: library/WT/Stats.php:4021
 msgid "USA"
 msgstr ""
 
-#: library/WT/Stats.php:3992
+#: library/WT/Stats.php:3993
 msgid "USSR"
 msgstr ""
 
-#: library/WT/Stats.php:4016
+#: library/WT/Stats.php:4017
 msgid "Uganda"
 msgstr ""
 
-#: library/WT/Stats.php:4017
+#: library/WT/Stats.php:4018
 msgid "Ukraine"
 msgstr ""
 
@@ -13665,7 +13653,7 @@ msgstr ""
 msgid "Unable to create %s.  Check the permissions."
 msgstr ""
 
-#: admin_site_merge.php:67 admin_site_merge.php:70 admin_trees_config.php:243
+#: admin_site_merge.php:67 admin_site_merge.php:70 admin_trees_config.php:252
 msgid "Unable to find record with ID"
 msgstr ""
 
@@ -13682,8 +13670,8 @@ msgstr ""
 msgid "Undo all changes"
 msgstr ""
 
-#: admin_trees_config.php:1085 admin_trees_config.php:1122
-#: admin_trees_config.php:1159 admin_trees_config.php:1188
+#: admin_trees_config.php:1094 admin_trees_config.php:1131
+#: admin_trees_config.php:1168 admin_trees_config.php:1197
 msgid "Unique facts"
 msgstr ""
 
@@ -13703,26 +13691,26 @@ msgstr ""
 msgid "Unique source facts"
 msgstr ""
 
-#: library/WT/Stats.php:3782
+#: library/WT/Stats.php:3783
 msgid "United Arab Emirates"
 msgstr ""
 
-#: library/WT/Stats.php:3860
+#: library/WT/Stats.php:3861
 msgid "United Kingdom"
 msgstr ""
 
-#: library/WT/Stats.php:3772
+#: library/WT/Stats.php:3773
 msgid "Unknown"
 msgstr ""
 
-#: library/WT/Stats.php:3041
+#: library/WT/Stats.php:3042
 msgctxt "unknown century"
 msgid "Unknown"
 msgstr ""
 
 #: calendar.php:586 includes/functions/functions_edit.php:1461
 #: library/WT/Controller/Individual.php:283
-#: library/WT/Controller/Individual.php:286 library/WT/Stats.php:3324
+#: library/WT/Controller/Individual.php:286 library/WT/Stats.php:3325
 #: timeline.php:264
 msgctxt "unknown gender"
 msgid "Unknown"
@@ -13733,7 +13721,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr ""
 
-#: modules_v3/lightbox/functions/lightbox_print_media.php:422
+#: modules_v3/lightbox/functions/lightbox_print_media.php:417
 msgid "Unlink Media"
 msgstr ""
 
@@ -13791,12 +13779,12 @@ msgstr ""
 msgid "Upgrade to webtrees %s"
 msgstr ""
 
-#: admin_media_upload.php:236 admin_trees_manage.php:225
+#: admin_media_upload.php:236 admin_trees_manage.php:226
 #: modules_v3/googlemap/admin_places.php:743
 msgid "Upload"
 msgstr ""
 
-#: help_text.php:1431
+#: help_text.php:1426
 msgid "Upload family tree"
 msgstr ""
 
@@ -13804,12 +13792,12 @@ msgstr ""
 msgid "Upload geographic data"
 msgstr ""
 
-#: admin_media_upload.php:34 admin_media_upload.php:179 help_text.php:1444
+#: admin_media_upload.php:34 admin_media_upload.php:179 help_text.php:1439
 #: themes/_administration/header.php:137
 msgid "Upload media files"
 msgstr ""
 
-#: help_text.php:1445
+#: help_text.php:1440
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
 msgstr ""
 
@@ -13818,11 +13806,11 @@ msgstr ""
 msgid "Uploaded file exceeds the allowed size"
 msgstr ""
 
-#: library/WT/Stats.php:4019
+#: library/WT/Stats.php:4020
 msgid "Uruguay"
 msgstr ""
 
-#: admin_trees_config.php:1254 help_text.php:994
+#: admin_trees_config.php:1263 help_text.php:994
 msgid "Use GeoNames database for autocomplete on places"
 msgstr ""
 
@@ -13834,7 +13822,7 @@ msgstr ""
 msgid "Use PHP mail to send messages"
 msgstr ""
 
-#: admin_trees_config.php:299 help_text.php:1009
+#: admin_trees_config.php:308 help_text.php:1009
 msgid "Use RIN number instead of GEDCOM ID"
 msgstr ""
 
@@ -13847,7 +13835,7 @@ msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to
 msgstr ""
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:380 login.php:402
+#: admin_users.php:380 login.php:403
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -13858,7 +13846,7 @@ msgstr[1] ""
 msgid "Use compact layout"
 msgstr ""
 
-#: admin_trees_config.php:1238 help_text.php:532
+#: admin_trees_config.php:1247 help_text.php:532
 msgid "Use full source citations"
 msgstr ""
 
@@ -13874,7 +13862,7 @@ msgstr ""
 msgid "Use silhouette images when no highlighted image for that person has been specified.  The images used are specific to the gender of the person in question.<br /><br /><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the person is unknown:"
 msgstr ""
 
-#: admin_trees_config.php:666 help_text.php:1014
+#: admin_trees_config.php:675 help_text.php:1014
 msgid "Use silhouettes"
 msgstr ""
 
@@ -13890,7 +13878,7 @@ msgstr ""
 msgid "Use this field to signal that this media item is the highlighted or primary item for the person it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
 msgstr ""
 
-#: help_text.php:1366
+#: help_text.php:1361
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
 msgstr ""
 
@@ -13919,11 +13907,11 @@ msgstr ""
 msgid "User not verified by administrator."
 msgstr ""
 
-#: admin_trees_config.php:434
+#: admin_trees_config.php:443
 msgid "User options"
 msgstr ""
 
-#: login.php:436 login.php:442 login.php:506 login.php:510
+#: login.php:437 login.php:443 login.php:507 login.php:511
 msgid "User verification"
 msgstr ""
 
@@ -13937,21 +13925,21 @@ msgid "User-agent string"
 msgstr ""
 
 #: admin_site_config.php:135 admin_users.php:367 admin_users.php:566
-#: edituser.php:135 help_text.php:741 help_text.php:1499 login.php:153
-#: login.php:217 login.php:294 login.php:337 login.php:444
-#: modules_v3/login_block/module.php:75 modules_v3/todo/module.php:99
+#: edituser.php:135 help_text.php:741 help_text.php:1494 login.php:154
+#: login.php:218 login.php:295 login.php:338 login.php:445
+#: modules_v3/login_block/module.php:76 modules_v3/todo/module.php:99
 msgid "Username"
 msgstr "사용자 이름"
 
-#: login.php:179 modules_v3/login_block/module.php:102
+#: login.php:180 modules_v3/login_block/module.php:103
 msgid "Username or email address"
 msgstr "사용자 이름이나 이메일 주소"
 
-#: help_text.php:1502
+#: help_text.php:1497
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr ""
 
-#: help_text.php:1504
+#: help_text.php:1499
 #, php-format
 msgid "Usernames may not contain the following characters: &lt; &gt; \" %% { } ;"
 msgstr ""
@@ -13976,15 +13964,15 @@ msgstr ""
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
 msgstr ""
 
-#: library/WT/Stats.php:4021
+#: library/WT/Stats.php:4022
 msgid "Uzbekistan"
 msgstr ""
 
-#: library/WT/Stats.php:4028
+#: library/WT/Stats.php:4029
 msgid "Vanuatu"
 msgstr ""
 
-#: library/WT/Stats.php:4022
+#: library/WT/Stats.php:4023
 msgid "Vatican City"
 msgstr ""
 
@@ -14008,7 +13996,7 @@ msgctxt "NOMINATIVE"
 msgid "Vendémiaire"
 msgstr ""
 
-#: library/WT/Stats.php:4024
+#: library/WT/Stats.php:4025
 msgid "Venezuela"
 msgstr ""
 
@@ -14036,7 +14024,7 @@ msgstr ""
 msgid "Veracruz, Mexico"
 msgstr ""
 
-#: login.php:338 login.php:452
+#: login.php:339 login.php:453
 msgid "Verification code:"
 msgstr ""
 
@@ -14057,7 +14045,7 @@ msgstr ""
 msgid "Video"
 msgstr ""
 
-#: library/WT/Stats.php:4027
+#: library/WT/Stats.php:4028
 msgid "Viet Nam"
 msgstr ""
 
@@ -14073,7 +14061,7 @@ msgid "View Day"
 msgstr ""
 
 #: library/WT/Controller/Media.php:193
-#: modules_v3/lightbox/functions/lightbox_print_media.php:363
+#: modules_v3/lightbox/functions/lightbox_print_media.php:358
 msgid "View Details"
 msgstr ""
 
@@ -14081,9 +14069,9 @@ msgstr ""
 #: includes/functions/functions_print_facts.php:595
 #: includes/functions/functions_print_facts.php:1219
 #: library/WT/Controller/Ancestry.php:143
-#: library/WT/Controller/Descendancy.php:209 library/WT/Stats.php:2628
-#: library/WT/Stats.php:2654 library/WT/Stats.php:2665
-#: library/WT/Stats.php:2674 medialist.php:297
+#: library/WT/Controller/Descendancy.php:209 library/WT/Stats.php:2629
+#: library/WT/Stats.php:2655 library/WT/Stats.php:2666
+#: library/WT/Stats.php:2675 medialist.php:297
 #: modules_v3/random_media/module.php:184 modules_v3/relatives/module.php:55
 msgid "View Family"
 msgstr ""
@@ -14099,8 +14087,8 @@ msgstr ""
 msgid "View Month"
 msgstr ""
 
-#: modules_v3/lightbox/functions/lightbox_print_media.php:356
-#: modules_v3/lightbox/functions/lightbox_print_media.php:358
+#: modules_v3/lightbox/functions/lightbox_print_media.php:351
+#: modules_v3/lightbox/functions/lightbox_print_media.php:353
 msgid "View Notes"
 msgstr ""
 
@@ -14117,7 +14105,7 @@ msgstr ""
 msgid "View Year"
 msgstr ""
 
-#: help_text.php:1355
+#: help_text.php:1350
 msgid "View all records"
 msgstr ""
 
@@ -14141,7 +14129,7 @@ msgstr ""
 msgid "Villa Hermosa, Mexico"
 msgstr ""
 
-#: help_text.php:1494
+#: help_text.php:1489
 msgid "Visible online"
 msgstr ""
 
@@ -14150,9 +14138,9 @@ msgid "Visible to other users when online"
 msgstr ""
 
 #. I18N: Listbox entry; name of a role
-#: admin_trees_download.php:122 admin_users.php:43 help_text.php:1385
+#: admin_trees_download.php:122 admin_users.php:43 help_text.php:1380
 #: modules_v3/clippings/module.php:208 modules_v3/clippings/module.php:214
-#: modules_v3/clippings/module.php:589 modules_v3/clippings/module.php:595
+#: modules_v3/clippings/module.php:595 modules_v3/clippings/module.php:601
 msgid "Visitor"
 msgstr ""
 
@@ -14161,11 +14149,11 @@ msgstr ""
 msgid "Vital records"
 msgstr ""
 
-#: library/WT/Stats.php:4031
+#: library/WT/Stats.php:4032
 msgid "Wales"
 msgstr ""
 
-#: library/WT/Stats.php:4030
+#: library/WT/Stats.php:4031
 msgid "Wallis and Futuna Islands"
 msgstr ""
 
@@ -14188,7 +14176,7 @@ msgid "Washington, DC"
 msgstr ""
 
 #. I18N: Copyright messages, added to images
-#: admin_trees_config.php:682 help_text.php:1020
+#: admin_trees_config.php:691 help_text.php:1020
 msgid "Watermarks"
 msgstr ""
 
@@ -14200,17 +14188,17 @@ msgstr ""
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
 msgstr ""
 
-#: login.php:358
+#: login.php:359
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password."
 msgstr ""
 
-#: login.php:360
+#: login.php:361
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
 msgstr ""
 
-#: admin_trees_config.php:412
+#: admin_trees_config.php:421
 msgid "Web Site and META Tag Settings"
 msgstr ""
 
@@ -14223,7 +14211,7 @@ msgstr ""
 msgid "Website URL"
 msgstr ""
 
-#: includes/functions/functions_print.php:1118
+#: includes/functions/functions_print.php:1120
 #: library/WT/Date/Calendar.php:257
 msgid "Wed"
 msgstr ""
@@ -14251,11 +14239,11 @@ msgstr ""
 msgid "Welcome text on login page"
 msgstr ""
 
-#: library/WT/Stats.php:4029
+#: library/WT/Stats.php:4030
 msgid "West Africa"
 msgstr ""
 
-#: library/WT/Stats.php:3848
+#: library/WT/Stats.php:3849
 msgid "Western Sahara"
 msgstr ""
 
@@ -14283,7 +14271,7 @@ msgstr ""
 msgid "When a new source record is added online in <b>webtrees</b>, a new ID for that source will be generated automatically.  The source ID will have this prefix."
 msgstr ""
 
-#: help_text.php:1484
+#: help_text.php:1479
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the \"email verified\" option is selected automatically."
 msgstr ""
 
@@ -14303,15 +14291,15 @@ msgstr ""
 msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the «Request new user account» page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
 msgstr ""
 
-#: help_text.php:1297
+#: help_text.php:1292
 msgid "When this check box is checked, the chart will be printed with oldest people at the top.  When it is unchecked, youngest people will appear at the top."
 msgstr ""
 
-#: help_text.php:1417
+#: help_text.php:1412
 msgid "When this option is checked, you can see all Source or Note records for this person.  When this option is unchecked, Source or Note records that are associated with other facts for this person will not be shown."
 msgstr ""
 
-#: help_text.php:1412
+#: help_text.php:1407
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
 msgstr ""
 
@@ -14319,7 +14307,7 @@ msgstr ""
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
 msgstr ""
 
-#: help_text.php:1339
+#: help_text.php:1334
 msgid "When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted."
 msgstr ""
 
@@ -14335,7 +14323,7 @@ msgstr ""
 msgid "When you click this link your Clippings Cart will be totally emptied.<br /><br />If you don't want to remove all persons, families, etc. from the Clippings Cart, you can remove items individually by clicking the <b>Remove</b> link in the Name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
 msgstr ""
 
-#: message.php:145
+#: message.php:146
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
 msgstr ""
 
@@ -14351,19 +14339,19 @@ msgstr ""
 msgid "Which family trees should be included in the sitemaps?"
 msgstr ""
 
-#: modules_v3/clippings/module.php:104 modules_v3/clippings/module.php:522
+#: modules_v3/clippings/module.php:104 modules_v3/clippings/module.php:528
 msgid "Which links from this person would you also like to add?"
 msgstr ""
 
-#: modules_v3/clippings/module.php:86 modules_v3/clippings/module.php:506
+#: modules_v3/clippings/module.php:86 modules_v3/clippings/module.php:512
 msgid "Which other links from this family would you like to add?"
 msgstr ""
 
-#: modules_v3/clippings/module.php:125 modules_v3/clippings/module.php:544
+#: modules_v3/clippings/module.php:125 modules_v3/clippings/module.php:550
 msgid "Which records linked to this source should be added?"
 msgstr ""
 
-#: admin_trees_config.php:638 help_text.php:669
+#: admin_trees_config.php:647 help_text.php:669
 msgid "Who can upload new media files?"
 msgstr ""
 
@@ -14389,7 +14377,7 @@ msgstr ""
 msgid "Width"
 msgstr ""
 
-#: admin_trees_config.php:658 help_text.php:989
+#: admin_trees_config.php:667 help_text.php:989
 msgid "Width of generated thumbnails"
 msgstr ""
 
@@ -14481,12 +14469,12 @@ msgstr ""
 msgid "Year:"
 msgstr ""
 
-#: library/WT/Stats.php:4033
+#: library/WT/Stats.php:4034
 msgid "Yemen"
 msgstr ""
 
 #. I18N: %1$s is the site URL and %2$s is an email address
-#: login.php:324
+#: login.php:325
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr ""
@@ -14499,7 +14487,7 @@ msgstr ""
 msgid "You are about to remove one place."
 msgstr ""
 
-#: login.php:263 message.php:70
+#: login.php:264 message.php:70
 msgid "You are not allowed to send messages that contain external links."
 msgstr ""
 
@@ -14508,7 +14496,7 @@ msgstr ""
 msgid "You can change the appearance of <b>webtrees</b> using \"themes\".  Each theme has a different style, layout, color scheme, etc."
 msgstr ""
 
-#: help_text.php:1287
+#: help_text.php:1282
 msgid "You can click this button to see whether there is another relationship path between the two people.  Previously found paths can be displayed again by clicking the link with the path number."
 msgstr ""
 
@@ -14526,7 +14514,7 @@ msgstr ""
 msgid "You can make it easier to search for married women by recording their married name.<br />However not all women take their husband's surname, so beware of introducing incorrect information into your database."
 msgstr ""
 
-#: login.php:537
+#: login.php:538
 msgid "You can now login with your user name and password."
 msgstr ""
 
@@ -14546,7 +14534,7 @@ msgstr ""
 msgid "You do not have permission to view this page."
 msgstr ""
 
-#: login.php:481
+#: login.php:482
 msgid "You do not have to take any action; the user can now login."
 msgstr ""
 
@@ -14554,7 +14542,7 @@ msgstr ""
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr ""
 
-#: login.php:533
+#: login.php:534
 msgid "You have confirmed your request to become a registered user."
 msgstr ""
 
@@ -14566,7 +14554,7 @@ msgstr ""
 msgid "You have not created any Journal items."
 msgstr ""
 
-#: admin_trees_manage.php:132
+#: admin_trees_manage.php:133
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr ""
 
@@ -14615,7 +14603,7 @@ msgstr ""
 msgid "You must enter an email address."
 msgstr ""
 
-#: help_text.php:1320
+#: help_text.php:1315
 msgid "You must export your latest GEDCOM data"
 msgstr ""
 
@@ -14635,7 +14623,7 @@ msgstr ""
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr ""
 
-#: admin_pgv_to_wt.php:1049
+#: admin_pgv_to_wt.php:1061
 msgid "You need to login again, using your PhpGedView username and password."
 msgstr ""
 
@@ -14643,7 +14631,7 @@ msgstr ""
 msgid "You need to set up an administrator account.  This account can control all aspects of this <b>webtrees</b> installation.  Please choose a strong password."
 msgstr ""
 
-#: login.php:479
+#: login.php:480
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr ""
 
@@ -14665,20 +14653,20 @@ msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in you
 msgstr ""
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
-#: login.php:264 message.php:71
+#: login.php:265 message.php:71
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr ""
 
-#: help_text.php:1488
+#: help_text.php:1483
 msgid "You should not approve an account unless you know that the email address is correct."
 msgstr ""
 
-#: login.php:302
+#: login.php:303
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part."
 msgstr ""
 
-#: login.php:300
+#: login.php:301
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account."
 msgstr ""
 
@@ -14686,7 +14674,7 @@ msgstr ""
 msgid "You will use this to login to webtrees."
 msgstr ""
 
-#: login.php:341
+#: login.php:342
 msgid "You won't get any more email from this site, because the account request will be deleted automatically after seven days."
 msgstr ""
 
@@ -14706,12 +14694,12 @@ msgstr ""
 msgid "Youngest mother"
 msgstr ""
 
-#: modules_v3/clippings/module.php:181 modules_v3/clippings/module.php:440
+#: modules_v3/clippings/module.php:181 modules_v3/clippings/module.php:446
 msgid "Your Clippings Cart is empty."
 msgstr ""
 
 #: includes/authentication.php:237 includes/authentication.php:291
-#: message.php:129
+#: message.php:130
 msgid "Your Name:"
 msgstr ""
 
@@ -14720,7 +14708,7 @@ msgid "Your name"
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:342
+#: login.php:343
 #, php-format
 msgid "Your registration at %s"
 msgstr ""
@@ -14733,28 +14721,28 @@ msgstr ""
 msgid "Your user account does not have \"automatically approve changes\" enabled.  You will only be able to change one record at a time."
 msgstr ""
 
-#: library/WT/Stats.php:4034
+#: library/WT/Stats.php:4035
 msgid "Yugoslavia"
 msgstr ""
 
-#: library/WT/Stats.php:4036
+#: library/WT/Stats.php:4037
 msgid "Zaire"
 msgstr ""
 
-#: library/WT/Stats.php:4037
+#: library/WT/Stats.php:4038
 msgid "Zambia"
 msgstr ""
 
-#: library/WT/Stats.php:4038
+#: library/WT/Stats.php:4039
 msgid "Zimbabwe"
 msgstr ""
 
 #: admin_trees_download.php:107 modules_v3/clippings/module.php:196
-#: modules_v3/clippings/module.php:575
+#: modules_v3/clippings/module.php:581
 msgid "Zip File(s)"
 msgstr ""
 
-#: help_text.php:1514
+#: help_text.php:1509
 msgid "Zip clippings"
 msgstr ""
 
@@ -14842,7 +14830,7 @@ msgctxt "MALE"
 msgid "adopted name"
 msgstr ""
 
-#: library/WT/Stats.php:1749 library/WT/Stats.php:3607
+#: library/WT/Stats.php:1750 library/WT/Stats.php:3608
 msgid "adoption"
 msgstr ""
 
@@ -14856,12 +14844,12 @@ msgstr "이후"
 msgid "after %s"
 msgstr ""
 
-#: includes/functions/functions_print.php:826
+#: includes/functions/functions_print.php:828
 msgid "after death"
 msgstr ""
 
-#: statisticsplot.php:915 statisticsplot.php:918 statisticsplot.php:921
-#: statisticsplot.php:924
+#: statisticsplot.php:918 statisticsplot.php:921 statisticsplot.php:924
+#: statisticsplot.php:927
 msgid "age"
 msgstr ""
 
@@ -14887,9 +14875,9 @@ msgctxt "MALE"
 msgid "also known as"
 msgstr ""
 
-#: library/WT/Controller/Ancestry.php:144 library/WT/Stats.php:2626
-#: library/WT/Stats.php:2651 library/WT/Stats.php:2662
-#: library/WT/Stats.php:2672 library/WT/Stats.php:3426 medialist.php:47
+#: library/WT/Controller/Ancestry.php:144 library/WT/Stats.php:2627
+#: library/WT/Stats.php:2652 library/WT/Stats.php:2663
+#: library/WT/Stats.php:2673 library/WT/Stats.php:3427 medialist.php:47
 msgid "and"
 msgstr ""
 
@@ -14951,12 +14939,6 @@ msgstr ""
 msgid "before"
 msgstr "이전"
 
-#. I18N: %d is a year
-#: statisticsplot.php:718
-#, php-format
-msgid "before %d"
-msgstr ""
-
 #. I18N: Gedcom BEF dates
 #: library/WT/Date.php:241
 #, php-format
@@ -14969,7 +14951,7 @@ msgstr ""
 msgid "between %s and %s"
 msgstr ""
 
-#: library/WT/Stats.php:1746 library/WT/Stats.php:3604
+#: library/WT/Stats.php:1747 library/WT/Stats.php:3605
 msgid "birth"
 msgstr ""
 
@@ -14991,7 +14973,7 @@ msgid "birth name"
 msgstr ""
 
 #. I18N: Extend privacy to dead people [who were] ...
-#: admin_trees_config.php:502
+#: admin_trees_config.php:511
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
 msgstr ""
@@ -15074,7 +15056,7 @@ msgstr ""
 msgid "bullet list"
 msgstr ""
 
-#: library/WT/Stats.php:1750 library/WT/Stats.php:3608
+#: library/WT/Stats.php:1751 library/WT/Stats.php:3609
 msgid "burial"
 msgstr ""
 
@@ -15088,13 +15070,13 @@ msgstr ""
 msgid "calculated %s"
 msgstr ""
 
-#: library/WT/Stats.php:1751 library/WT/Stats.php:3609
+#: library/WT/Stats.php:1752 library/WT/Stats.php:3610
 msgid "census added"
 msgstr ""
 
-#: library/WT/Stats.php:1641 library/WT/Stats.php:2379
-#: library/WT/Stats.php:2380 library/WT/Stats.php:2894
-#: library/WT/Stats.php:2895 library/WT/Stats.php:3041
+#: library/WT/Stats.php:1642 library/WT/Stats.php:2380
+#: library/WT/Stats.php:2381 library/WT/Stats.php:2895
+#: library/WT/Stats.php:2896 library/WT/Stats.php:3042
 msgid "century"
 msgstr ""
 
@@ -15115,14 +15097,14 @@ msgctxt "MALE"
 msgid "change of name"
 msgstr ""
 
-#: edit_interface.php:2089 edit_interface.php:2175
+#: edit_interface.php:2099 edit_interface.php:2175
 #: includes/functions/functions.php:1181
 #: modules_v3/googlemap/googlemap.php:294
 #: modules_v3/googlemap/googlemap.php:321
 msgid "child"
 msgstr ""
 
-#: statisticsplot.php:927
+#: statisticsplot.php:930
 msgid "children"
 msgstr ""
 
@@ -15140,7 +15122,7 @@ msgstr ""
 #: edit_interface.php:1161 edit_interface.php:2045 edit_interface.php:2185
 #: edit_interface.php:2421 find.php:712
 #: includes/functions/functions_edit.php:955 includes/media_reorder.php:179
-#: inverselink.php:173 message.php:150
+#: inverselink.php:173 message.php:151
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:192
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:600
 #: modules_v3/GEDFact_assistant/module.php:137
@@ -15156,9 +15138,9 @@ msgid "compact list"
 msgstr ""
 
 #. I18N: button label
-#: admin_pgv_to_wt.php:1050 admin_trees_download.php:140
-#: admin_trees_manage.php:169 admin_users.php:543 login.php:183 login.php:419
-#: modules_v3/login_block/module.php:106 setup.php:203 setup.php:227
+#: admin_pgv_to_wt.php:1062 admin_trees_download.php:140
+#: admin_trees_manage.php:171 admin_users.php:543 login.php:184 login.php:420
+#: modules_v3/login_block/module.php:107 setup.php:203 setup.php:227
 #: setup.php:296 setup.php:381 setup.php:437
 msgid "continue"
 msgstr ""
@@ -15177,8 +15159,8 @@ msgstr ""
 msgid "date periods"
 msgstr ""
 
-#: edit_interface.php:2087 includes/functions/functions.php:1180
-#: includes/functions/functions_charts.php:274
+#: edit_interface.php:2097 includes/functions/functions.php:1180
+#: includes/functions/functions_charts.php:273
 #: modules_v3/googlemap/googlemap.php:285
 #: modules_v3/googlemap/googlemap.php:325 modules_v3/relatives/module.php:279
 msgid "daughter"
@@ -15209,7 +15191,7 @@ msgctxt "son's wife's parent"
 msgid "daughter-in-law's parent"
 msgstr ""
 
-#: library/WT/Stats.php:1747 library/WT/Stats.php:3605
+#: library/WT/Stats.php:1748 library/WT/Stats.php:3606
 msgid "death"
 msgstr ""
 
@@ -15230,7 +15212,7 @@ msgstr ""
 msgid "digits"
 msgstr ""
 
-#: admin_trees_config.php:483
+#: admin_trees_config.php:492
 msgid "disable"
 msgstr ""
 
@@ -15285,7 +15267,7 @@ msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
 msgstr ""
 
-#: admin_trees_config.php:483
+#: admin_trees_config.php:492
 msgid "enable"
 msgstr ""
 
@@ -15318,11 +15300,11 @@ msgctxt "Abbreviation for fax number"
 msgid "f."
 msgstr ""
 
-#: admin_trees_config.php:1249
+#: admin_trees_config.php:1258
 msgid "facts"
 msgstr ""
 
-#: edit_interface.php:2072 edit_interface.php:2077
+#: edit_interface.php:2082 edit_interface.php:2087
 #: includes/functions/functions.php:1138
 msgid "father"
 msgstr ""
@@ -15399,7 +15381,7 @@ msgstr ""
 msgid "file upload capability"
 msgstr ""
 
-#: admin_trees_config.php:900
+#: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
 msgstr ""
@@ -15681,12 +15663,6 @@ msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
 msgstr[0] ""
 msgstr[1] ""
-
-#. I18N: %d is a year
-#: statisticsplot.php:729
-#, php-format
-msgid "from %d"
-msgstr ""
 
 #. I18N: Gedcom FROM dates
 #: library/WT/Date.php:243
@@ -17229,16 +17205,16 @@ msgstr ""
 msgid "half-year after marriage"
 msgstr ""
 
-#: admin_trees_config.php:442 admin_trees_config.php:781
-#: admin_trees_config.php:789 admin_trees_config.php:956
-#: admin_trees_config.php:964 admin_trees_config.php:972
-#: admin_trees_config.php:993 admin_trees_config.php:1025
-#: admin_trees_config.php:1046 admin_trees_config.php:1054
-#: admin_trees_config.php:1062 modules_v3/googlemap/module.php:271
+#: admin_trees_config.php:451 admin_trees_config.php:790
+#: admin_trees_config.php:798 admin_trees_config.php:965
+#: admin_trees_config.php:973 admin_trees_config.php:981
+#: admin_trees_config.php:1002 admin_trees_config.php:1034
+#: admin_trees_config.php:1055 admin_trees_config.php:1063
+#: admin_trees_config.php:1071 modules_v3/googlemap/module.php:271
 msgid "hide"
 msgstr ""
 
-#: edit_interface.php:2098 edit_interface.php:2107
+#: edit_interface.php:2108 edit_interface.php:2117
 #: includes/functions/functions.php:1152
 msgid "husband"
 msgstr ""
@@ -17311,7 +17287,7 @@ msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
 msgstr ""
 
-#: admin_trees_config.php:901
+#: admin_trees_config.php:910
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
 msgstr ""
@@ -17320,11 +17296,11 @@ msgstr ""
 msgid "less than"
 msgstr ""
 
-#: admin_trees_config.php:762 modules_v3/recent_changes/module.php:146
+#: admin_trees_config.php:771 modules_v3/recent_changes/module.php:146
 #: modules_v3/todays_events/module.php:143
 #: modules_v3/top10_givnnames/module.php:151
 #: modules_v3/upcoming_events/module.php:155
-#: modules_v3/yahrzeit/module.php:249
+#: modules_v3/yahrzeit/module.php:260
 msgid "list"
 msgstr ""
 
@@ -17338,7 +17314,7 @@ msgstr ""
 msgid "maiden name"
 msgstr ""
 
-#: library/WT/Stats.php:1748 library/WT/Stats.php:3606
+#: library/WT/Stats.php:1749 library/WT/Stats.php:3607
 msgid "marriage"
 msgstr ""
 
@@ -17375,7 +17351,7 @@ msgid "maternal grandparent"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Matrilineal (a system where children take their mother’s surname
-#: admin_trees_config.php:1233 help_text.php:938
+#: admin_trees_config.php:1242 help_text.php:938
 msgid "matrilineal"
 msgstr ""
 
@@ -17385,7 +17361,7 @@ msgstr ""
 
 #: modules_v3/recent_changes/module.php:139
 #: modules_v3/upcoming_events/module.php:134
-#: modules_v3/yahrzeit/module.php:242
+#: modules_v3/yahrzeit/module.php:253
 #, php-format
 msgid "maximum %d day"
 msgid_plural "maximum %d days"
@@ -17401,8 +17377,8 @@ msgstr ""
 msgid "minimum"
 msgstr ""
 
-#: statisticsplot.php:897 statisticsplot.php:900 statisticsplot.php:903
-#: statisticsplot.php:906 statisticsplot.php:909
+#: statisticsplot.php:900 statisticsplot.php:903 statisticsplot.php:906
+#: statisticsplot.php:909 statisticsplot.php:912
 msgid "month"
 msgstr ""
 
@@ -17414,7 +17390,7 @@ msgstr ""
 msgid "months before and after marriage"
 msgstr ""
 
-#: edit_interface.php:2070 edit_interface.php:2079
+#: edit_interface.php:2080 edit_interface.php:2089
 #: includes/functions/functions.php:1137
 msgid "mother"
 msgstr ""
@@ -17538,20 +17514,20 @@ msgstr ""
 #: includes/functions/functions_edit.php:143
 #: includes/functions/functions_edit.php:1452
 #: includes/functions/functions_print_facts.php:1228
-#: includes/functions/functions_print_lists.php:795 library/WT/Stats.php:3518
+#: includes/functions/functions_print_lists.php:795 library/WT/Stats.php:3519
 #: modules_v3/batch_update/admin_batch_update.php:339
 #: modules_v3/charts/module.php:215
 msgid "no"
 msgstr "아니오"
 
-#: admin_site_config.php:37 admin_trees_config.php:1249
+#: admin_site_config.php:37 admin_trees_config.php:1258
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2170
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1193
-#: modules_v3/family_nav/module.php:408
+#: modules_v3/family_nav/module.php:410
 msgid "none"
 msgstr "없음"
 
-#: admin_trees_config.php:1233
+#: admin_trees_config.php:1242
 msgctxt "Surname tradition"
 msgid "none"
 msgstr ""
@@ -17565,15 +17541,15 @@ msgstr ""
 msgid "north"
 msgstr ""
 
-#: statistics.php:656 statisticsplot.php:763
+#: statistics.php:656 statisticsplot.php:766
 msgid "numbers"
 msgstr ""
 
-#: statisticsplot.php:813 statisticsplot.php:815 statisticsplot.php:817
+#: statisticsplot.php:816 statisticsplot.php:818 statisticsplot.php:820
 msgid "of"
 msgstr ""
 
-#: includes/functions/functions_print.php:824
+#: includes/functions/functions_print.php:826
 msgid "on the date of death"
 msgstr ""
 
@@ -17622,7 +17598,7 @@ msgctxt "MALE/FEMALE"
 msgid "partner"
 msgstr ""
 
-#: admin_trees_config.php:1233 help_text.php:943
+#: admin_trees_config.php:1242 help_text.php:943
 msgctxt "Surname tradition"
 msgid "paternal"
 msgstr ""
@@ -17643,7 +17619,7 @@ msgid "paternal grandparent"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Patrilineal (a system where children take their father’s surname
-#: admin_trees_config.php:1233 help_text.php:932
+#: admin_trees_config.php:1242 help_text.php:932
 msgid "patrilineal"
 msgstr ""
 
@@ -17652,7 +17628,7 @@ msgstr ""
 msgid "pending"
 msgstr ""
 
-#: statistics.php:659 statisticsplot.php:787
+#: statistics.php:659 statisticsplot.php:790
 msgid "percentage"
 msgstr ""
 
@@ -17674,7 +17650,7 @@ msgstr ""
 msgid "questionable evidence"
 msgstr ""
 
-#: admin_trees_config.php:1249
+#: admin_trees_config.php:1258
 msgid "records"
 msgstr ""
 
@@ -17731,10 +17707,10 @@ msgid "robot"
 msgstr ""
 
 #. I18N: button label
-#: addmedia.php:745 admin_module_blocks.php:92 admin_module_menus.php:113
-#: admin_module_reports.php:92 admin_module_sidebar.php:112
-#: admin_module_tabs.php:113 admin_modules.php:158 admin_site_merge.php:165
-#: admin_trees_config.php:1272 admin_trees_manage.php:253 block_edit.php:57
+#: addmedia.php:745 admin_module_blocks.php:93 admin_module_menus.php:114
+#: admin_module_reports.php:93 admin_module_sidebar.php:113
+#: admin_module_tabs.php:114 admin_modules.php:163 admin_site_merge.php:165
+#: admin_trees_config.php:1281 admin_trees_manage.php:262 block_edit.php:58
 #: edit_interface.php:204 edit_interface.php:292 edit_interface.php:359
 #: edit_interface.php:509 edit_interface.php:576 edit_interface.php:754
 #: edit_interface.php:849 edit_interface.php:1023 edit_interface.php:1091
@@ -17956,12 +17932,12 @@ msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
 msgstr ""
 
-#: admin_trees_config.php:442 admin_trees_config.php:781
-#: admin_trees_config.php:789 admin_trees_config.php:956
-#: admin_trees_config.php:964 admin_trees_config.php:972
-#: admin_trees_config.php:993 admin_trees_config.php:1025
-#: admin_trees_config.php:1046 admin_trees_config.php:1054
-#: admin_trees_config.php:1062 modules_v3/faq/module.php:358
+#: admin_trees_config.php:451 admin_trees_config.php:790
+#: admin_trees_config.php:798 admin_trees_config.php:965
+#: admin_trees_config.php:973 admin_trees_config.php:981
+#: admin_trees_config.php:1002 admin_trees_config.php:1034
+#: admin_trees_config.php:1055 admin_trees_config.php:1063
+#: admin_trees_config.php:1071 modules_v3/faq/module.php:358
 #: modules_v3/googlemap/module.php:271 modules_v3/stories/module.php:342
 msgid "show"
 msgstr ""
@@ -18033,8 +18009,8 @@ msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
 msgstr ""
 
-#: edit_interface.php:2085 includes/functions/functions.php:1179
-#: includes/functions/functions_charts.php:273
+#: edit_interface.php:2095 includes/functions/functions.php:1179
+#: includes/functions/functions_charts.php:272
 #: modules_v3/googlemap/googlemap.php:290
 #: modules_v3/googlemap/googlemap.php:330 modules_v3/relatives/module.php:278
 msgid "son"
@@ -18122,7 +18098,7 @@ msgstr ""
 msgid "south"
 msgstr ""
 
-#: edit_interface.php:2100 edit_interface.php:2109 edit_interface.php:2137
+#: edit_interface.php:2110 edit_interface.php:2119 edit_interface.php:2137
 #: edit_interface.php:2152 includes/functions/functions.php:1178
 msgid "spouse"
 msgstr ""
@@ -18253,16 +18229,16 @@ msgctxt "Abbreviation for telephone number"
 msgid "t."
 msgstr ""
 
-#: admin_trees_config.php:763 modules_v3/recent_changes/module.php:146
+#: admin_trees_config.php:772 modules_v3/recent_changes/module.php:146
 #: modules_v3/todays_events/module.php:143
 #: modules_v3/top10_givnnames/module.php:151
 #: modules_v3/top10_surnames/module.php:164
 #: modules_v3/upcoming_events/module.php:155
-#: modules_v3/yahrzeit/module.php:249
+#: modules_v3/yahrzeit/module.php:260
 msgid "table"
 msgstr ""
 
-#: admin_trees_config.php:764 modules_v3/top10_surnames/module.php:164
+#: admin_trees_config.php:773 modules_v3/top10_surnames/module.php:164
 msgid "tag cloud"
 msgstr ""
 
@@ -18339,7 +18315,7 @@ msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
 msgstr ""
 
-#: admin_trees_config.php:590
+#: admin_trees_config.php:599
 msgid "this record does not exist"
 msgstr ""
 
@@ -18496,7 +18472,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2182
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1199
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1205
-#: modules_v3/family_nav/module.php:411 modules_v3/family_nav/module.php:414
+#: modules_v3/family_nav/module.php:413 modules_v3/family_nav/module.php:416
 msgctxt "unknown family"
 msgid "unknown"
 msgstr "알 수 없음"
@@ -18519,7 +18495,7 @@ msgstr ""
 msgid "webtrees Message"
 msgstr ""
 
-#: help_text.php:1314
+#: help_text.php:1309
 msgid "webtrees database must be on the same server as PGV's"
 msgstr ""
 
@@ -18528,7 +18504,7 @@ msgstr ""
 msgid "webtrees internal messaging"
 msgstr ""
 
-#: admin_trees_config.php:369
+#: admin_trees_config.php:378
 msgid "webtrees reply address"
 msgstr ""
 
@@ -18537,7 +18513,7 @@ msgstr ""
 msgid "webtrees sends emails with no storage"
 msgstr ""
 
-#: includes/functions/functions_print.php:601
+#: includes/functions/functions_print.php:603
 msgid "webtrees wiki"
 msgstr ""
 
@@ -18545,7 +18521,7 @@ msgstr ""
 msgid "west"
 msgstr ""
 
-#: edit_interface.php:2096 edit_interface.php:2105
+#: edit_interface.php:2106 edit_interface.php:2115
 #: includes/functions/functions.php:1165
 msgid "wife"
 msgstr ""
@@ -18558,10 +18534,10 @@ msgstr ""
 #: includes/functions/functions_edit.php:143
 #: includes/functions/functions_edit.php:1417
 #: includes/functions/functions_edit.php:1449
-#: includes/functions/functions_print.php:865
+#: includes/functions/functions_print.php:867
 #: includes/functions/functions_print_facts.php:1225
 #: includes/functions/functions_print_lists.php:353
-#: includes/functions/functions_print_lists.php:793 library/WT/Stats.php:3517
+#: includes/functions/functions_print_lists.php:793 library/WT/Stats.php:3518
 #: modules_v3/batch_update/admin_batch_update.php:340
 #: modules_v3/charts/module.php:216 modules_v3/relatives/module.php:206
 msgid "yes"
