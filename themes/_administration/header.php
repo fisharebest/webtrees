@@ -125,9 +125,9 @@ if (WT_USER_IS_ADMIN) {
 		WT_I18N::translate('Users'),
 		'</a></li>',
 		'<li><ul>',
-		'<li><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')=="createform" ? 'class="current" ' : ''), 'href="admin_users.php?action=createform">', WT_I18N::translate('Add a new user'), '</a></li>',
-		'<li><a ', (WT_SCRIPT_NAME=="admin_users_bulk.php" ? 'class="current" ' : ''), 'href="admin_users_bulk.php">', WT_I18N::translate('Send broadcast messages'), '</a>',
-		'<li><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')=="cleanup" ? 'class="current" ' : ''), 'href="admin_users.php?action=cleanup">', WT_I18N::translate('Delete inactive users'), '</a></li>',
+		'<li><a ', (WT_SCRIPT_NAME=='admin_users.php' && WT_Filter::get('action')=='createform' ? 'class="current" ' : ''), 'href="admin_users.php?action=createform">', WT_I18N::translate('Add a new user'), '</a></li>',
+		'<li><a ', (WT_SCRIPT_NAME=='admin_users_bulk.php' ? 'class="current" ' : ''), 'href="admin_users_bulk.php">', WT_I18N::translate('Send broadcast messages'), '</a>',
+		'<li><a ', (WT_SCRIPT_NAME=='admin_users.php' && WT_Filter::get('action')=='cleanup' ? 'class="current" ' : ''), 'href="admin_users.php?action=cleanup">', WT_I18N::translate('Delete inactive users'), '</a></li>',
 		'<li><a href="index_edit.php?user_id=-1" onclick="return modalDialog(\'index_edit.php?user_id=-1'.'\', \'', WT_I18N::translate('Set the default blocks for new users'), '\');">', WT_I18N::translate('Set the default blocks'), '</a></li>',
 		
 		
