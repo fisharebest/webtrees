@@ -44,6 +44,8 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'admin_config':
+			
+			require WT_ROOT.'includes/functions/functions_edit.php';
 								
 			$controller=new WT_Controller_Page;
 			$controller
@@ -58,20 +60,16 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 			
 			$save = WT_Filter::postBool('save');
 			if (isset($save)) {
-				isset($_POST['NEW_SB']) ? $value = 1 : $value = 0;
-				set_module_setting($this->getName(), 'SB',  $value);				
+				set_module_setting($this->getName(), 'SB',  WT_Filter::postInteger('NEW_SB'));				
 				AddToLog($this->getTitle().' config updated', 'config');
 			}			
 			
-			$SB = get_module_setting($this->getName(), 'SB');
-			if (!isset($SB)) $SB = '1';
-			$SB == 1 ? $checked = 'checked="checked"' : $checked = "";
-			
+			$SB = get_module_setting($this->getName(), 'SB');			
 			echo '
 				<h2>'.$controller->getPageTitle().'</h2>
 				<form method="post" name="configform" action="'.$this->getConfigLink().'">
-					<label>'.WT_I18N::translate('Use d\'Aboville numbering system').'</label>
-					<input type="checkbox" name="NEW_SB" value="'.$SB.'" '.$checked.' />
+					<label>'.WT_I18N::translate('Use d\'Aboville numbering system').'</label>'
+					.two_state_checkbox('NEW_SB', $SB).'
 					<input type="submit" name="save" value="'.WT_I18N::translate('Save').'" />
 				</form>';				
 			break;
