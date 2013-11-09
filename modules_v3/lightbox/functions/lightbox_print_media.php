@@ -280,11 +280,6 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 			echo '<div class="clearlist">';
 			echo '</div>';
 			echo '</td></tr></table>';
-			if ($kind==3 && $numm > 0) {
-				echo '<font size="1">';
-				echo 'UK census images have been obtained from The National Archives, the custodian of the original records, and appear here with their approval on the condition that no commercial use is made of them without permission.  Requests for commercial publication of these or other UK census images appearing on this website should be directed to: Image Library, The National Archives, Kew, Surrey, TW9 4DU, United Kingdom.';
-				echo '</font>';
-			}
 			echo '</td>';
 			echo '</tr>';
 			echo '</table>';
