@@ -1199,47 +1199,43 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 }
 
 /* ============== medialist.php ======================= */
-#lightbox-menu {
-	margin-bottom: 60px;
-}
 .lb-menu {
-	position: relative;
-	float: left;
-	list-style-type: none;
-	margin: 0 10px;
+	display: inline-block;
+	margin: 0;
 }
 .lb-menu ul {
+	display: block;
 	list-style-type: none;
 }
-.lb-menu li {
+.lb-menu > li {
 	font-weight: normal;
 	float: left;
 	top: 0;
 }
+.lb-menu li:first-child {
+	padding-left: 0;
+}
 .lb-menu > li ul {
 	display: none;
-	width: 80px;
 }
 .lb-menu > li:hover ul {
-	display: block;
-	top: 36px;
-}
-.lb-menu a {
-	display: block;
+	display: block; top: 36px;
 }
 .lb-menu li a {
-	padding-top: 12px;
+	padding-top: 24px;
 }
 .lb-menu li li a {
 	padding: 1px 10px 1px 5px;
 }
-html[dir=rtl] .lb-menu {
+.makeMenu.lb-menu li:before{
+	content: "";
+}
+.lb-image_edit, .lb-image_link{
+	padding-right: 5px;
+}
+html[dir=rtl] .lb-menu > li {
 	float: right;
 }
-html[dir=rtl] .lb-menu li {
-	float: right;
-}
-
 /* ============== login.php ======================= */
 #login-register-page h2 {
 	text-align: center;

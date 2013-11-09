@@ -79,7 +79,7 @@ $controller->pageHeader();
 				<?php echo WT_I18N::translate('Folder'); ?>
 			</td>
 			<td class="optionbox wrap width25">
-				<?php echo select_edit_control('folder', $folders, null, $folder); ?>
+				<?php echo select_edit_control('folder', array_filter($folders), $MEDIA_DIRECTORY, $folder); ?>
 			</td>
 			<?php
 			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
@@ -171,13 +171,13 @@ if ($search) {
 		$ct = '0';
 	}
 
-	echo '<div align="center">', WT_I18N::translate('Media Objects found'), ' ', $ct, ' <br><br>';
+	echo '<div><p style="text-align:center">', WT_I18N::translate('Media Objects found'), ' ', $ct, '</p>';
 
   if ($ct>0) {
 	$currentPage = ((int) ($start / $max)) + 1;
 	$lastPage = (int) (($ct + $max - 1) / $max);
 
-	echo '<table class="list_table">';
+	echo '<table class="list_table width100">';
 	// echo page back, page number, page forward controls
 	echo '<tr><td colspan="2">';
 	echo '<table class="list_table_controls">';
@@ -215,7 +215,7 @@ if ($search) {
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
 				if ($start<0) $start = 0;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '"class="icon-rarrow"></a>';
+				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-rarrow"></a>';
 			}
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
@@ -237,25 +237,24 @@ if ($search) {
 	}
 	echo '</td>';
 	echo '</tr></table></td></tr>';
-
 	echo '<tr>';
 	for ($i=$start, $n=0; $i<$start+$count; ++$i) {
 		$mediaobject = $medialist[$i];
 
-		if ($columns == '1') echo '<td class="list_value_wrap" width="80%">';
-		if ($columns == '2') echo '<td class="list_value_wrap" width="50%">';
+		if ($columns == '1') echo '<td class="list_value_wrap width80">';
+		if ($columns == '2') echo '<td class="list_value_wrap width50">';
 
-		echo '<table><tr><td valign="top" style="white-space:normal;">';
+		echo '<table><tr><td style="vertical-align:top; white-space:normal;">';
 		echo $mediaobject->displayImage();
-		echo '</td><td class="list_value_wrap" style="border:none;" width="100%">';
+		echo '</td><td class="list_value_wrap width100" style="border:none; padding-left:5px">';
 		if (WT_USER_CAN_EDIT) {
 			echo WT_Controller_Media::getMediaListMenu($mediaobject);
 		}
 		// If sorting by title, highlight the title.  If sorting by filename, highlight the filename
 		if ($sortby=='title') {
-			echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
+			echo '<div><p><b><a href="', $mediaobject->getHtmlUrl(), '">';
 			echo $mediaobject->getFullName();
-			echo '</a></b></p>';
+			echo '</a></b></p></div>';
 		} else {
 			echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
 			echo basename($mediaobject->getFilename());
@@ -300,10 +299,10 @@ if ($search) {
 			echo '</tr><tr>';
 		}
 	} // end media loop
-	echo '</tr>';
+	
 	// echo page back, page number, page forward controls
-	echo '<tr><td colspan="2">';
-	echo '<table class="list_table width100">';
+	echo '<td colspan="2">';
+	echo '<table class="list_table_controls">';
 	echo '<tr>';
 	echo '<td class="width30">';
 	if ($TEXT_DIRECTION=='ltr') {
@@ -331,7 +330,7 @@ if ($search) {
 		}
 	}
 	echo '</td>';
-	echo '<td align="center">', WT_I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
+	echo '<td style="text-align:center">', WT_I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
 	echo '<td class="width30">';
 	if ($TEXT_DIRECTION=='ltr') {
 		if ($ct>$max) {
