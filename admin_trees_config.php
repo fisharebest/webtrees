@@ -41,6 +41,9 @@ $PRIVACY_CONSTANTS = array(
 
 switch (WT_Filter::post('action')) {
 case 'delete':
+	if (!WT_Filter::checkCsrf()) {
+		break;
+	}
 	WT_DB::prepare(
 		"DELETE FROM `##default_resn` WHERE default_resn_id=?"
 	)->execute(array(WT_Filter::post('default_resn_id')));
@@ -48,6 +51,9 @@ case 'delete':
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
 	exit;
 case 'add':
+	if (!WT_Filter::checkCsrf()) {
+		break;
+	}
 	if ((WT_Filter::post('xref') || WT_Filter::post('tag_type')) && WT_Filter::post('resn')) {
 		if (WT_Filter::post('xref')=='') {
 			WT_DB::prepare(
@@ -67,6 +73,9 @@ case 'add':
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
 	exit;
 case 'update':
+	if (!WT_Filter::checkCsrf()) {
+		break;
+	}
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_NAME_FACTS',          WT_Filter::post('NEW_ADVANCED_NAME_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_PLAC_FACTS',          WT_Filter::post('NEW_ADVANCED_PLAC_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN',         WT_Filter::postBool('NEW_ALLOW_THEME_DROPDOWN'));
@@ -198,6 +207,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 
 ?>
 <form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
+	<?php echo WT_Filter::getCsrf(); ?>
 	<input type="hidden" name="action" value="update">
 	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 
