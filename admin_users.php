@@ -210,6 +210,12 @@ case 'load1row':
 	echo '<dt>', WT_I18N::translate('My page'), '</dt>';
 	echo '<dd><a href="#" onclick="modalDialog(\'index_edit.php?user_id='.$user_id.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a></dd>';
 
+	// Masquerade as others users - but not other administrators
+	if (!get_user_setting($user_id, 'canadmin')) {
+		echo '<dt>', /* I18N: Pretend to be another user, by logging in as them */ WT_I18N::translate('Masquerade as this user'), '</dt>';
+		echo '<dd><a href="#" onclick="return masquerade(', $user_id, ')">', /* I18N: verb: pretend to be someone else */ WT_I18N::translate('masquerade'), '</a></dd>';
+	}
+
 	echo '</dl>';
 
 	// Column One - details
@@ -286,7 +292,9 @@ case 'createuser':
 			}
 		}
 		AddToLog("User ->{$username}<- created", 'auth');
-		$action='listusers';
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+		WT_Session::writeClose();
+		exit;
 	}
 }
 

@@ -574,6 +574,19 @@ function delete_user(message, user_id) {
 	return false;
 }
 
+// Masquerade as another user - and reload the page.
+function masquerade(user_id) {
+	jQuery.post('action.php', {
+		action:   'masquerade',
+		user_id:   user_id,
+		csrf:      WT_CSRF_TOKEN
+	},
+	function(){
+		location.reload();
+	});
+	return false;
+}
+
 function reorder_children(xref) {
 	return edit_interface({
 		"action": "reorder_children",
