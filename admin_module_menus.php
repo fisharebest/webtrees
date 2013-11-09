@@ -44,7 +44,7 @@ $modules=WT_Module::getActiveMenus(WT_GED_ID, WT_PRIV_HIDE);
 
 $action = WT_Filter::post('action');
 
-if ($action=='update_mods') {
+if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 	foreach ($modules as $module_name=>$module) {
 		foreach (WT_Tree::getAll() as $tree) {
 			$access_level = WT_Filter::post("menuaccess-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
@@ -65,6 +65,7 @@ if ($action=='update_mods') {
 <div id="menus" align="center">
 	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 		<input type="hidden" name="action" value="update_mods">
+		<?php echo WT_Filter::getCsrf(); ?>
 		<table id="menus_table" class="modules_table">
 			<thead>
 				<tr>
