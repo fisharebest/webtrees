@@ -743,34 +743,34 @@ function print_main_sources(WT_Fact $fact, $level) {
  *  getSourceStructure() function.
  */
 function printSourceStructure($textSOUR) {
-	$html='';
+	$html = '';
 
 	if ($textSOUR['PAGE']) {
-		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('PAGE').':</span> <span class="field" dir="auto">'.WT_Filter::expandUrls($textSOUR['PAGE']).'</span></div>';
+		$html .= WT_Gedcom_Tag::getLabelValue('PAGE', WT_Filter::expandUrls($textSOUR['PAGE']));
 	}
 
 	if ($textSOUR['EVEN']) {
-		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('EVEN').': </span><span class="field" dir="auto">'.$textSOUR['EVEN'].'</span></div>';
+		$html .= WT_Gedcom_Tag::getLabelValue('EVEN', WT_Filter::escapeHtml($textSOUR['EVEN']));
 		if ($textSOUR['ROLE']) {
-			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('ROLE').': </span><span class="field" dir="auto">'.$textSOUR['ROLE'].'</span></div>';
+			$html .= WT_Gedcom_Tag::getLabelValue('ROLE', WT_Filter::escapeHtml($textSOUR['ROLE']));
 		}
 	}
 
 	if ($textSOUR['DATE'] || count($textSOUR['TEXT'])) {
 		if ($textSOUR['DATE']) {
-			$date=new WT_Date($textSOUR['DATE']);
-			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('DATA:DATE').':</span> <span class="field">'.$date->Display(false).'</span></div>';
+			$date = new WT_Date($textSOUR['DATE']);
+			$html .= WT_Gedcom_Tag::getLabelValue('DATA:DATE', $date->Display(false));
 		}
 		foreach ($textSOUR['TEXT'] as $text) {
-			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('TEXT').':</span> <span class="field" dir="auto">'.WT_Filter::expandUrls($text).'</span></div>';
+			$html .= WT_Gedcom_Tag::getLabelValue('TEXT', '<span style="white-space: pre-wrap;">' . WT_Filter::expandUrls($text) . '</span>');
 		}
 	}
 
 	if ($textSOUR['QUAY']!='') {
-		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('QUAY').':</span> <span class="field" dir="auto">'.WT_Gedcom_Code_Quay::getValue($textSOUR['QUAY']).'</span></div>';
+		$html .= WT_Gedcom_Tag::getLabelValue('QUAY', WT_Gedcom_Code_Quay::getValue($textSOUR['QUAY']));
 	}
 
-	return $html;
+	return '<div class="indent">' . $html . '</div>';
 }
 
 /**
