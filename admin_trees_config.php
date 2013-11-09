@@ -43,6 +43,9 @@ $PRIVACY_CONSTANTS = array(
 
 switch (safe_POST('action')) {
 case 'delete':
+	if (!WT_Filter::checkCsrf()) {
+		break;
+	}
 	WT_DB::prepare(
 		"DELETE FROM `##default_resn` WHERE default_resn_id=?"
 	)->execute(array(safe_POST('default_resn_id')));
@@ -50,8 +53,11 @@ case 'delete':
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
 	exit;
 case 'add':
-	if ((safe_POST('xref') || safe_POST('tag_type')) && safe_POST('resn')) {
-		if (safe_POST('xref')=='') {
+	if (!WT_Filter::checkCsrf()) {
+		break;
+	}
+	if ((WT_Filter::post('xref') || WT_Filter::post('tag_type')) && WT_Filter::post('resn')) {
+		if (WT_Filter::post('xref')=='') {
 			WT_DB::prepare(
 				"DELETE FROM `##default_resn` WHERE gedcom_id=? AND tag_type=? AND xref IS NULL"
 			)->execute(array(WT_GED_ID, safe_POST('tag_type')));
@@ -69,10 +75,12 @@ case 'add':
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
 	exit;
 case 'update':
-	set_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS',      safe_POST_bool('NEW_ABBREVIATE_CHART_LABELS'));
-	set_gedcom_setting(WT_GED_ID, 'ADVANCED_NAME_FACTS',          safe_POST('NEW_ADVANCED_NAME_FACTS'));
-	set_gedcom_setting(WT_GED_ID, 'ADVANCED_PLAC_FACTS',          safe_POST('NEW_ADVANCED_PLAC_FACTS'));
-	set_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN',         safe_POST_bool('NEW_ALLOW_THEME_DROPDOWN'));
+	if (!WT_Filter::checkCsrf()) {
+		break;
+	}
+	set_gedcom_setting(WT_GED_ID, 'ADVANCED_NAME_FACTS',          WT_Filter::post('NEW_ADVANCED_NAME_FACTS'));
+	set_gedcom_setting(WT_GED_ID, 'ADVANCED_PLAC_FACTS',          WT_Filter::post('NEW_ADVANCED_PLAC_FACTS'));
+	set_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN',         WT_Filter::postBool('NEW_ALLOW_THEME_DROPDOWN'));
 	// For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
 	// e.g. "gregorian_and_jewish"
 	set_gedcom_setting(WT_GED_ID, 'CALENDAR_FORMAT',              implode('_and_', array_unique(array(
@@ -201,6 +209,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 
 ?>
 <form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
+	<?php echo WT_Filter::getCsrf(); ?>
 	<input type="hidden" name="action" value="update">
 	<input type="hidden" name="ged" value="<?php echo htmlspecialchars(WT_GEDCOM); ?>">
 
