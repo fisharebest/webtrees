@@ -34,7 +34,7 @@ $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	// JustBlack
-	->addExternalJavascript(WT_THEME_JUSTBLACK.'justblack.js');
+	->addExternalJavascript(WT_THEME_JUSTBLACK.'justblack-1.5.0.js');
 	
 ob_start();	
 echo

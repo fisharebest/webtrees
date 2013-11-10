@@ -33,7 +33,7 @@ $theme_name = "JustBlack";
 define('WT_CSS_URL', WT_THEME_URL . 'css-1.5.0/');
 
 // theme specific files.
-define('WT_THEME_JUSTBLACK', WT_THEME_URL . 'theme-1.5.0/'); 
+define('WT_THEME_JUSTBLACK', WT_THEME_URL . 'theme/'); 
 
 require_once(WT_ROOT.WT_THEME_JUSTBLACK . 'functions.php');
 
