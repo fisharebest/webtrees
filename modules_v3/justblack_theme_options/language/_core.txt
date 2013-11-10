@@ -1,0 +1,59 @@
+
+===============================================================================================================
+#The strings below exists in the Justblack Theme Options module but are part of the core translation of webtrees.
+#Do not translate these strings within the module. Remove them if they exists in the module language files.
+#Note: the line number may be different from the current line number in the file justblack_theme_options/module.php
+===============================================================================================================
+
+#: modules_v3/justblack_theme_options/help_text.php:34
+msgid "Family tree title"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:173
+#: modules_v3/justblack_theme_options/module.php:252
+msgid "View"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:191
+msgid "My page"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:197
+msgid "Charts"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:203
+msgid "Lists"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:209
+msgid "Calendar"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:215
+msgid "Reports"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:221
+msgid "Search"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:629
+msgid "Default"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:630
+msgid "Custom"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:631
+msgid "None"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:687
+msgid "Save"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:688
+msgid "Reset"
+msgstr ""

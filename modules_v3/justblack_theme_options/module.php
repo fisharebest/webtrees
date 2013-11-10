@@ -20,8 +20,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-// $Id: module.php 13838 2013-07-01 v1.1 JustCarmen$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -682,7 +680,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				$html .=		'</select>
 							</div>	
 							<div class="field">
-								<label for="gviewer_pdf">'.WT_I18N::translate('Use google docs viewer for pdf\'s?').help_link('gviewer', $this->getName()).'</label>
+								<label for="gviewer_pdf">'.WT_I18N::translate('Use Google Docs Viewer for pdf\'s?').help_link('gviewer', $this->getName()).'</label>
 								<input type="checkbox" id="gviewer_pdf" name="JB_GVIEWER_PDF" '.$this->getChecked($JB_SETTINGS['GVIEWER_PDF']).' />
 							</div>														
 							<div id="buttons">

@@ -57,8 +57,8 @@ case 'media_folder':
 case 'gviewer':
 	$title=WT_I18N::translate('Use the Google Docs Viewer');
 	$text=WT_I18N::translate('<p>The Google Docs Viewer is a way to present pdf files in a consistant way across all browsers. You are no longer dependent on the user\'s own PDF viewer.</p>'.
-	                         '<p>A second advantage of using the gviewer for pdf-files is that it now is possible to place watermarks on pdf files. If you have set the option to use watermarks for images in your tree settings, the watermarks will now be placed on pdf-files too.</p>'.
-							 '<p>You and your users don\'t need a google account to use the gviewer.</p>');
+	                         '<p>A second advantage of using the Google Docs Viewer is that it now is possible to place watermarks on pdf files. If you have set the option to use watermarks for images in your tree settings, the watermarks will now be placed on pdf-files too.</p>'.
+							 '<p>You and your users don\'t need a google account to use the Google Docs Viewer.</p>');
 	break;
 case 'sort_topmenu':
 	$title=WT_I18N::translate('Sorting the topmenu');
