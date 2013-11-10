@@ -98,7 +98,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 	private function edit() {
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		if (WT_Filter::postBool('save')) {
+		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			$block_id = WT_Filter::postInteger('block_id');
 			if ($block_id) {
 				WT_DB::prepare(

@@ -25,7 +25,53 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Page();
 $controller
 	->requireAdminLogin()
-	->setPageTitle(WT_I18N::translate('Module administration'))
+	->setPageTitle(WT_I18N::translate('Module administration'));
+
+$modules = WT_Module::getInstalledModules('disabled');
+
+$module_status = WT_DB::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
+
+switch (WT_Filter::post('action')) {
+case 'update_mods':
+	if (WT_Filter::checkCsrf()) {
+		foreach ($modules as $module_name=>$status) {
+			$new_status=WT_Filter::post("status-{$module_name}", '[01]');
+			if ($new_status!==null) {
+				$new_status=$new_status ? 'enabled' : 'disabled';
+				if ($new_status!=$status) {
+					WT_DB::prepare("UPDATE `##module` SET status=? WHERE module_name=?")->execute(array($new_status, $module_name));
+					$module_status[$module_name]=$new_status;
+				}
+			}
+		}
+	}
+	break;
+}
+
+switch (WT_Filter::get('action')) {
+case 'delete_module':
+	$module_name=WT_Filter::get('module_name');
+	WT_DB::prepare(
+		"DELETE `##block_setting`".
+		" FROM `##block_setting`".
+		" JOIN `##block` USING (block_id)".
+		" JOIN `##module` USING (module_name)".
+		" WHERE module_name=?"
+	)->execute(array($module_name));
+	WT_DB::prepare(
+		"DELETE `##block`".
+		" FROM `##block`".
+		" JOIN `##module` USING (module_name)".
+		" WHERE module_name=?"
+	)->execute(array($module_name));
+	WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute(array($module_name));
+	WT_DB::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute(array($module_name));
+	WT_DB::prepare("DELETE FROM `##module`         WHERE module_name=?")->execute(array($module_name));
+	unset($modules[$module_name]);
+	break;
+}
+
+$controller
 	->pageHeader()
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->addInlineJavascript('
@@ -61,53 +107,12 @@ $controller
 		});
 	');
 
-$modules=WT_Module::getInstalledModules('disabled');
-
-$module_status=WT_DB::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
-
-switch (WT_Filter::post('action')) {
-case 'update_mods':
-	foreach ($modules as $module_name=>$status) {
-		$new_status=WT_Filter::post("status-{$module_name}", '[01]');
-		if ($new_status!==null) {
-			$new_status=$new_status ? 'enabled' : 'disabled';
-			if ($new_status!=$status) {
-				WT_DB::prepare("UPDATE `##module` SET status=? WHERE module_name=?")->execute(array($new_status, $module_name));
-				$module_status[$module_name]=$new_status;
-			}
-		}
-	}
-	break;
-}
-
-switch (WT_Filter::get('action')) {
-case 'delete_module':
-	$module_name=WT_Filter::get('module_name');
-	WT_DB::prepare(
-		"DELETE `##block_setting`".
-		" FROM `##block_setting`".
-		" JOIN `##block` USING (block_id)".
-		" JOIN `##module` USING (module_name)".
-		" WHERE module_name=?"
-	)->execute(array($module_name));
-	WT_DB::prepare(
-		"DELETE `##block`".
-		" FROM `##block`".
-		" JOIN `##module` USING (module_name)".
-		" WHERE module_name=?"
-	)->execute(array($module_name));
-	WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute(array($module_name));
-	WT_DB::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute(array($module_name));
-	WT_DB::prepare("DELETE FROM `##module`         WHERE module_name=?")->execute(array($module_name));
-	unset($modules[$module_name]);
-	break;
-}
-
 ?>
 <div align="center">
 	<div id="tabs">
 		<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 			<input type="hidden" name="action" value="update_mods">
+			<?php echo WT_Filter::getCsrf(); ?>
 			<table id="installed_table" border="0" cellpadding="0" cellspacing="1">
 				<thead>
 					<tr>

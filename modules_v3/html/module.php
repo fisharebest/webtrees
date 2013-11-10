@@ -133,7 +133,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (WT_Filter::postBool('save')) {
+		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'gedcom',         WT_Filter::post('gedcom'));
 			set_block_setting($block_id, 'title',          WT_Filter::post('title'));
 			set_block_setting($block_id, 'html',           WT_Filter::post('html'));
