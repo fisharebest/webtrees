@@ -103,11 +103,6 @@ jQuery(window).resize(function() {
 	jQuery(".ui-dialog-content").dialog("option", "position", ['center', 'center']);
 });
 
-function curPage() {
-	var path = jQuery(location).attr('pathname').split("/");
-	return path[path.length - 1];
-}
-
 function qstring(key, url) {
 	if (url == null) var url = window.location.href;
 	KeysValues = url.split(/[\?&]+/);
@@ -442,7 +437,7 @@ jQuery(document).ready(function($){
 	}
 	
 	/************************************ EDIT USER PAGE **********************************************/
-	if (curPage() == 'edituser.php') {
+	if (WT_SCRIPT_NAME == 'edituser.php') {
 		var title = $('#edituser-page h2').text();
 		$('#edituser-page h2').remove();
 		$('<div id="edituser-page-title" class="subheaders ui-state-default">' + title + '</div>').prependTo('#edituser-page');		
@@ -476,7 +471,7 @@ jQuery(document).ready(function($){
 	});
 	
 	/************************************** INDIVIDUAL PAGE ***********************************************/	
-	if (curPage() == 'individual.php') {
+	if (WT_SCRIPT_NAME == 'individual.php') {
 			
 		// General
 		$('<div class="divider">').appendTo('#tabs ul:first');
@@ -517,13 +512,13 @@ jQuery(document).ready(function($){
 	
 	/********************************************* MESSAGES.PHP*******************************************************/	 
 	// correction. Popup is smaller than the input and textarea field.
-	if (curPage() == 'message.php') {
+	if (WT_SCRIPT_NAME == 'message.php') {
 		$('input[name=subject]').attr('size', '45');
 		$('textarea[name=body]').attr('cols', '43');	
 	}
 	
 	/************************************************ HOURGLASS CHART *****************************************************/
-	if (curPage() == 'hourglass.php' && qstring('show_spouse') == '1') {
+	if (WT_SCRIPT_NAME == 'hourglass.php' && qstring('show_spouse') == '1') {
 		function styleSB(){			
 			 $.ajax({
 				success:function(){
@@ -552,7 +547,7 @@ jQuery(document).ready(function($){
 	}
 		
 	/****************************** CHILDBOX (ON PEDIGREE CHART AND HOURGLASS CHART)***************************************/
-	if (curPage() == 'pedigree.php' || curPage() == 'hourglass.php') {
+	if (WT_SCRIPT_NAME == 'pedigree.php' || WT_SCRIPT_NAME == 'hourglass.php') {
 		$('#hourglass_chart #childbox .name1').each(function(){
 			$(this).appendTo($(this).parents('#childbox'));		
 		});
@@ -607,7 +602,7 @@ jQuery(document).ready(function($){
 	}
 	
 	/************************************ FANCHART PAGE (POPUPS)***************************************/
-	if (curPage() == 'fanchart.php') {
+	if (WT_SCRIPT_NAME == 'fanchart.php') {
 		$('table.person_box td').each(function(){
 			var content = $(this).html();
 			$(this).parents('table').before('<div class="fanchart_box">' + content + '</div>').remove();			
@@ -645,11 +640,11 @@ jQuery(document).ready(function($){
 		if (document.createStyleSheet) {
 			document.createStyleSheet('' + WT_CSS_URL + 'treeview.css'); // For Internet Explorer
 		} else {
-			$('head').append('<link rel="stylesheet" type="text/css" href="' + WT_CSS_URL + 'treeview.css">');	
+			$('head').append('<link id="jb-treeview-css" rel="stylesheet" type="text/css" href="' + WT_CSS_URL + 'treeview.css">');	
 		}
 	}
 	
-	if (curPage() == 'individual.php' || qstring('mod_action') == 'treeview') {
+	if (WT_SCRIPT_NAME == 'individual.php' || qstring('mod_action') == 'treeview') {
 		$('#content a[name=tv_content]').after('<div class="loading-image"></div>');
 		$.ajax({
 			beforeSend:function(){	
@@ -663,20 +658,20 @@ jQuery(document).ready(function($){
 		$('#content .loading-image').remove();	
 	}
 	
-	if (curPage() == 'index.php') {
+	if (WT_SCRIPT_NAME == 'index.php') {		
 		$(document).ajaxStop(function(){
 			if($("a[name=tv_content]").length > 0){			
 				getTreeStylesheet();
 			}
-		});
+		})		
 	}
 	/************************************** FAMILY BOOK ***********************************************/		
-	if (curPage() == 'familybook.php') {
+	if (WT_SCRIPT_NAME == 'familybook.php') {
 		$('hr:last').remove(); // remove the last page-break line because it is just above the justblack divider.
 	}	
 	
 	/************************************** MEDIALIST PAGE ********************************************/	
-	if (curPage() == 'medialist.php') {	
+	if (WT_SCRIPT_NAME == 'medialist.php') {	
 		$('#medialist-page .list_table:eq(1)').each(function(){
 			$(this).find('.list_table:last').addClass('list_table_controls');
 		});
@@ -736,7 +731,7 @@ jQuery(document).ready(function($){
 	}
 	
 	/************************************** MEDIAVIEWER PAGE ******************************************/
-	if (curPage() == 'mediaviewer.php') {
+	if (WT_SCRIPT_NAME == 'mediaviewer.php') {
 		$('#media-tabs').find('.ui-widget-header').removeClass('ui-widget-header');
 		$('#media-tabs ul').after('<div class="divider">');	
 	}
@@ -779,7 +774,7 @@ jQuery(document).ready(function($){
 	});
 	
 	/************************************** CALENDAR PAGE ********************************************/	
-	if (curPage() == 'calendar.php') {
+	if (WT_SCRIPT_NAME == 'calendar.php') {
 		$('.icon-indis, .icon-cfamily').parent().addClass('ui-state-default');
 		$('.icon-sex_m_15x15').removeClass().addClass('icon-sex_m_9x9');
 		$('.icon-sex_f_15x15').removeClass().addClass('icon-sex_f_9x9');
@@ -793,7 +788,7 @@ jQuery(document).ready(function($){
 	}
 
 	/************************************** SEARCH PAGE ***********************************************/		
-	if (curPage() == 'search.php') {
+	if (WT_SCRIPT_NAME == 'search.php') {
 		var searchForm = $('#search-page form');
 		var searchResult = $('#search-result-tabs');
 		var titleBtn = $('#search-page h2').text();
@@ -820,7 +815,7 @@ jQuery(document).ready(function($){
 		}
 	}
 	
-	if (curPage() == 'search_advanced.php') {
+	if (WT_SCRIPT_NAME == 'search_advanced.php') {
 		$('#search-page a[onclick^=addFields]').attr('onclick', 'addFields();return false;');
 		var searchForm = $('#search-page form');
 		var searchResult = $('#search-page .indi-list');
@@ -854,7 +849,7 @@ jQuery(document).ready(function($){
 	}
 	
 	/************************************* PLACELIST PAGE *******************************************/
-	if (curPage() === 'placelist.php') {
+	if (WT_SCRIPT_NAME == 'placelist.php') {
 		$('#place-hierarchy').each(function(){
 			$(this).find('.list_label').addClass('ui-state-default');
 			$(this).find('.icon-place').remove();	
