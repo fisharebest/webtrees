@@ -8676,7 +8676,7 @@ msgstr "Martinique"
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:215
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Prétendre être cet utilisateur"
 
 #: modules_v3/batch_update/plugins/search_replace.php:90
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -11219,7 +11219,7 @@ msgstr "Expression régulière"
 
 #: modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_blank\">php.net/manual/en/regexp.reference.php</a> for futher details."
-msgstr ""
+msgstr "Les expressions régulières constituent un système très puissant et très rapide pour faire des recherches dans des chaînes de caractères. Voir <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_blank\">php.net/manual/en/regexp.reference.php</a> pour de plus amples détails."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:33
@@ -13699,7 +13699,7 @@ msgstr "Ce dossier sera utilisé pour stocker les fichiers médias de cet arbre 
 
 #: library/WT/Filter.php:237
 msgid "This form has expired.  Try again."
-msgstr ""
+msgstr "Ce formulaire a expiré. Essayez à nouveau."
 
 #: individual.php:91 library/WT/Controller/Chart.php:45
 msgid "This individual does not exist or you do not have permission to view it."
@@ -18372,7 +18372,7 @@ msgstr "nom après mariage"
 #. I18N: verb: pretend to be someone else
 #: admin_users.php:216
 msgid "masquerade"
-msgstr ""
+msgstr "se déguiser"
 
 #: includes/functions/functions.php:910
 msgctxt "mother's father"
