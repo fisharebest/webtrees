@@ -1,22 +1,14 @@
 READ THE README FILE FOR INSTALLATION AND UPGRADE INSTRUCTIONS
 
-JustBlack for webtrees 1.5.0 - NOT PUBLISHED YET
-* The same changes made to the core theme files have been made to this theme if neccessary. Followed dev upgrades on this.
-* Bugfix from error log:
-  [Mon Jul 08 19:17:35 2013] [error] [client 66.249.78.188] PHP Notice:  Undefined variable: output in /var/www/qb103200/data/www/stamboomknegt.nl/themes/justblack/functions.php on line 178
-  [Mon Jul 08 19:27:54 2013] [error] [client 66.249.78.188] PHP Notice:  Trying to get property of non-object in /var/www/qb103200/data/www/stamboomknegt.nl/themes/justblack/functions.php on line 158, referer: http://www.stamboomknegt.nl/individual.php?pid=I461&ged=stamboom_knegt.ged
-  Added extra security in function getFlags in functions.php
-!!!* Changed colorbox function for images. Set max-width and max-height to auto and fixed to false to be able to scroll larger images (like documents).
-* Bugfix in the topmenu styling in justblack.js due to issues in IE8. 
-  See forum topic http://www.webtrees.net/index.php/en/forum/4-customising/28160-error-in-justblack-theme/
-* TODO: Bugfix in functions.php colorbox function. See forum topic: http://www.webtrees.net/index.php/en/forum/4-customising/28173-just-black-and-media#40504
-* Removed the code in the header which stated to use IE8 for medialist page if browser is IE 9 or 10.
-* Bugfix. The divider on the individual page only needs to be placed beyond the menu. In some cases, when entering a story for instance the divider was placed multiple times.
+10-11-2013 - JustBlack for webtrees 1.5.0
+* The same changes made to the core theme files have been made to this theme if neccessary. Followed development for wt 1.5.0.
+* Better colorbox function for both images and pdf's. Made distinction between jpeg images and other jpeg documents for better display.
+* Bugfix in the topmenu styling in justblack.js due to issues in IE8.
 * Better layout for stories tab on individual page.
 * Removed lightgrey color of text in indilist and famlist for better readability.
 * Changed the source citations style and the indent style.
-* Changed font-size in dataTables from 12 to 11px.
-* Changed the size of the small thumbs in the media list view (use a cropped image of 60px/45px. Done with some js.
+* Changed font-size in dataTables.
+* Changed the size of the small thumbs in the media list view (use a cropped image of 60px/45px instead). Done with some js.
 * Bugfix: styles for the lightbox module were accidentally removed in the previous version. Back in this version with an improved style.
 * Changed the folder structure and some folder names to keep in sync with the default themes.
 * Bug fix: On the change blocks dialog the background overlay wasn't removed when clicking on it.
@@ -24,8 +16,24 @@ JustBlack for webtrees 1.5.0 - NOT PUBLISHED YET
 * Bug fix: Added maxHeight to help dialog box. Boxes could be too long when opened within a popup (like the help dialog boxes for dates).
 * Applied some styles to datatables.
 * Make fields within message popups smaller so they fit in the popup.
+* Removed some unused functions and icons.
+* Improved interactive treeview style and script.
+* Restyled the calender page.
+* Changed bgcolor for pedigree map popup for better silhouette display.
 
-TODO:: ADD ICONS FOR edit_raw (see theme Xenea in svn 7131). Update submenu styles.
+And more.
+
+========================================================================================================
+
+20-10-2013 - JustBlack for webtrees 1.4.3 v4
+* Included patch from 19-08
+* Bugfix in the JustBlack Theme Options Module
+
+========================================================================================================
+
+19-08-2013 - Patch
+* See http://www.webtrees.net/index.php/en/forum/4-customising/28173-just-black-and-media
+
 ========================================================================================================
  
 01-07-2013 - JustBlack for webtrees 1.4.3 v3.
@@ -38,6 +46,7 @@ TODO:: ADD ICONS FOR edit_raw (see theme Xenea in svn 7131). Update submenu styl
 * JustBlack Theme Options Module version 1.0.1
 
 ========================================================================================================
+
 25-06-2013 - JustBlack for webtrees 1.4.2/1.4.3
 * NEW: THEME-OPTIONS. FROM THIS VERSION THIS THEME COMES WITH A SEPARATE MODULE WHERE YOU CAN SET SEVERAL THEME OPTIONS.
 * Added notes to the colorbox popup. Notes will be displayed in a tooltip when opening the colorbox for 5 seconds and on hovering over the image with the mouse.
@@ -51,6 +60,7 @@ TODO:: ADD ICONS FOR edit_raw (see theme Xenea in svn 7131). Update submenu styl
   wrong side of the screen. Thanks Dave for reporting this bug.
 
 ========================================================================================================
+
 29-03-2013 - JustBlack for webtrees 1.4.1
 
 * Changed the size of the colorbox from 80% to 95%.
@@ -65,7 +75,9 @@ TODO:: ADD ICONS FOR edit_raw (see theme Xenea in svn 7131). Update submenu styl
 * Solved bug submenus disappearing to fast on hover.
 * Restyled the popups in the pedigree map.
 * Restyled the statistics page.
+
 ========================================================================================================
+
 17-03-2013 - Patch provided for JustBlack for webtrees 1.4.0(2)
 * Added turkish characters to the font exception list. Only one file changed: justblack.js.
 
@@ -109,6 +121,7 @@ TODO:: ADD ICONS FOR edit_raw (see theme Xenea in svn 7131). Update submenu styl
   so the neccessary styles and javascript are moved to style.css and justblack.js.
 * Removed the extra javascript plugins (jquery.livequery.min.js, jquery.tiptip.js and jquery.url.js) from the theme/js folder. The plugins
   are not needed anymore because custom justblack functions had taken over the functionallity of the plugins. This reduced the dependence on other developpers.
+  
 ========================================================================================================
 
 24-10-2012 - JustBlack for webtrees 1.3.2 
