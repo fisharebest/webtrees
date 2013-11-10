@@ -32,7 +32,7 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 		
 	// Extend WT_Module
 	public function getTitle() {
-		return /* Name of a module (not translatable) */  'Fancy Branches'.'<span class="nowrap">'.help_link('test').'</span>';
+		return /* Name of a module (not translatable) */  'Fancy Branches';
 	}
 
 	// Extend WT_Module
