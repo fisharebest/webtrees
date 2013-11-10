@@ -1,6 +1,6 @@
-Version 1.1 for webtrees 1.5.0 - Not published yet
-* Functions safe_GET() and safe_POST() are deprecated. Now use WT_Filter::functions.
-  See library/Filter.php from line 132 for an overview of the new functions.
+10-11-2013 Version 1.5.0 for webtrees 1.5.0
+
+* Updated several functions in order to use this module with webtrees 1.5.0
 * New theme options added:
   - Set media menu as main menu item and use media folders as submenu links (only 1 level submenus supported at the moment);
   - Use google docs viewer for pdf's. Advantages: watermarked pdf's and quicker loading.
