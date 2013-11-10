@@ -247,7 +247,7 @@ msgstr "%s"
 #: library/WT/Stats.php:4018
 #, php-format
 msgid "%s BCE"
-msgstr "%s BCE"
+msgstr "%s avant cette ère"
 
 #. I18N: size of file in KB
 #: admin_media.php:402 library/WT/Media.php:201
@@ -302,7 +302,7 @@ msgstr[1] "%s personnes sont privées."
 #: setup.php:116
 #, php-format
 msgid "%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it."
-msgstr "%s est désactivé sur ce serveur.  Vous ne pouvez installer webtrees sans l’activer.  Veuillez s’il vous plaît demander à l’administrateur de votre serveur de l’activer."
+msgstr "%s est désactivé sur ce serveur. Vous ne pouvez installer webtrees sans l’activer. Veuillez s’il vous plaît demander à l’administrateur de votre serveur de l’activer."
 
 #: modules_v3/user_messages/module.php:66
 #, php-format
@@ -592,11 +592,11 @@ msgstr "9ème"
 
 #: help_text.php:550
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
-msgstr "<b>GUID</b> dans ce contexte est un acronyme pour «&nbsp;Globally Unique ID&nbsp;».<br><br>GUID sont destinés à aider à identifier chaque individu d’une manière unique mondialement, de sorte que les organisations centrales telles que le Centre d’histoire de la famille de l’Église mormone à Salt Lake City, ou des programmes compatible s’exécutant sur votre propre serveur, puissent déterminer s’ils ont affaire avec la même personne, peu importe de l’origine de GEDCOM. L’objectif du Centre d’histoire de la famille de l’Église mormone est de disposer d’un référentiel central de données généalogiques et de l’exposer à travers les services web. Cela permettra à tout programme d’accéder aux données et de les mettre à jour.<br><br>Si vous n’avez pas l’intention de partager cette GEDCOM avec quelqu’un d’autre, vous n’avez pas besoin de laisser <b>webtrees</b> créer ces GUID, toutefois cela n’engendre pas de problèmes si ce n’est que d’augmenter la taille de votre fichier GEDCOM."
+msgstr "<b>GUID</b> dans ce contexte est un acronyme pour «&nbsp;Globally Unique ID&nbsp;».<br><br>GUID est destiné à aider à identifier chaque individu d’une manière unique mondialement, de sorte que les organisations centrales telles que le Centre d’histoire de la famille de l’Église mormone à Salt Lake City, ou des programmes compatibles s’exécutant sur votre propre serveur, puissent déterminer s’ils ont affaire avec la même personne, peu importe l’origine du GEDCOM. L’objectif du Centre d’histoire de la famille de l’Église mormone est de disposer d’un référentiel central de données généalogiques et de l’exposer à travers les services web. Cela permettra à tout programme d’accéder aux données et de les mettre à jour.<br><br>Si vous n’avez pas l’intention de partager cet GEDCOM avec quelqu’un d’autre, vous n’avez pas besoin de laisser <b>webtrees</b> créer ces GUID, toutefois cela n’engendre pas de problèmes si ce n’est que d’augmenter la taille de votre fichier GEDCOM."
 
 #: help_text.php:1309
 msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr "<b>Note importante:</b> L’assistant de transfert n’est pas en mesure d’aider à déplacer des éléments médias. Vous aurez besoin de mettre en place et de déplacer ou copier votre configuration des médias et des objets séparément après l’assistant de transfert est terminé."
+msgstr "<b>Note importante:</b> L’assistant de transfert n’est pas en mesure d’aider à déplacer des éléments médias. Vous aurez besoin de mettre en place et de déplacer ou copier votre configuration des médias et les objets séparément après que l’assistant de transfert ait terminé."
 
 #: help_text.php:998
 msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
@@ -604,11 +604,11 @@ msgstr "Autoriser l’accès aux détails privés des proches<br><br>Option dés
 
 #: message.php:118
 msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
-msgstr "<b>Veuillez noter&nbsp;:<b /> les informations privées des individus vivants ne seront diffusées qu’aux proches de la famille et aux amis proches. Votre relation sera vérifiée avant que vous ne receviez des données privées. Parfois des informations sur des personnes décédées sont également privées. Si c’est le cas, c’est parce qu’il n’y a pas assez d’informations connues sur la personne pour déterminer si elle est vivante ou non et nous n’avons probablement pas plus d’informations sur cette personne.<br><br>Avant de poser une question, veuillez vérifier que vous souhaitez des renseignements sur la bonne personne en contrôlant les dates, lieux et familles proches. Si vous soumettez des changements de données généalogiques, veuillez inclure les sources d’où vous tenez les données."
+msgstr "<b>Veuillez noter&nbsp;:<b /> les informations privées des individus vivants ne seront diffusées qu’aux proches de la famille et aux amis proches. Votre relation sera vérifiée avant que vous ne receviez des données privées. Parfois des informations sur des personnes décédées sont également privées. Si c’est le cas, c’est parce qu’il n’y a pas assez d’informations connues sur la personne pour déterminer si elle est vivante ou non et nous n’avons probablement pas plus d’informations sur cette personne.<br><br>Avant de poser une question, veuillez vous assurer que votre requête concerne la bonne personne en vérifiant les dates, lieux et parenté proche. Si vous soumettez des changements de données généalogiques, veuillez inclure les sources de ces données."
 
 #: help_text.php:1054
 msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
-msgstr "<b>webtrees</b> vous permet de copier jusqu’à 10 faits, incluant tous leurs détails, dans un presse-papier. Ce presse-papier est différent de Panier que vous utilisez pour exporter des extraits de votre base de données généalogiques.<br><br>Vous pouvez sélectionner n’importe lequel des faits du presse-papier et le copier dans un enregistrement en cours de modification d’un Individu, d’une Famille, d’un objet Multimedia, d’une Source ou un Dépôt d’archives. Cependant, vous ne pouvez copier des faits d’enregistrements de type discordant. Par exemple, vous ne pouvez copier un fait Mariage à un enregistrement de type Individu car un fait Mariage est associé uniquement aux enregistrements de type Famille.<br><br>Ceci est très utile lorsque des faits similaires, comme les faits des recensements, s’appliquent à plusieurs individus ou familles."
+msgstr "<b>webtrees</b> vous permet de copier jusqu’à 10 faits, incluant tous leurs détails, dans un presse-papier. Ce presse-papier est différent du Panier que vous utilisez pour exporter des extraits de votre base de données généalogiques.<br><br>Vous pouvez sélectionner n’importe lequel des faits du presse-papier et le copier dans un enregistrement en cours de modification d’un Individu, d’une Famille, d’un objet Multimédia, d’une Source ou un Dépôt d’archives. Cependant, vous ne pouvez copier des faits d’enregistrements de type discordant. Par exemple, vous ne pouvez copier un fait Mariage à un enregistrement de type Individu car un fait Mariage est associé uniquement aux enregistrements de type Famille.<br><br>Ceci est très utile lorsque des faits similaires, comme les faits des recensements, s’appliquent à plusieurs individus ou familles."
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:79
@@ -654,7 +654,7 @@ msgstr "<thème par défaut>"
 
 #: login.php:376
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
-msgstr "<div class=\"largeError\">Attention:</div><div class=\"error\">En remplissant et en soumettant ce formulaire, vous acceptez:<ul><li>de protéger la vie privée des personnes vivantes répertoriées sur notre site;</li><li>et dans la zone de texte ci-dessous, expliquer avec qui vous êtes liés, ou de nous fournir des informations sur quelqu’un qui est sur notre site.</li></ul></div>"
+msgstr "<div class=\"largeError\">Attention:</div><div class=\"error\">En remplissant et en soumettant ce formulaire, vous acceptez:<ul><li>de protéger la vie privée des personnes vivantes répertoriées sur notre site;</li><li>et dans la zone de texte ci-dessous, de nous fournir des informations sur la personne avec qui vous êtes apparentée et qui est listée dans notre site.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
 #: library/WT/Gedcom/Tag.php:841
@@ -9479,7 +9479,7 @@ msgstr "Jamais mariée"
 #: library/WT/Gedcom/Tag.php:791
 msgctxt "MALE"
 msgid "Never married"
-msgstr "Jamais marié(e)"
+msgstr "Jamais marié"
 
 #: library/WT/Stats.php:3912
 msgid "New Caledonia"
@@ -9770,7 +9770,7 @@ msgstr "Île Norfolk"
 
 #: help_text.php:1443
 msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
-msgstr "Normalement, toute modification apportée à un arbre de la famille doivent être approuvés par un modérateur. Cette option permet à un utilisateur d’effectuer des modifications sans avoir besoin d’un modérateur d’approbation."
+msgstr "Normalement, toutes modifications apportées à un arbre généalogique doivent être approuvées par un modérateur. Cette option permet à un utilisateur d’effectuer des modifications sans avoir besoin de l’approbation d’un modérateur."
 
 #: library/WT/Stats.php:3935
 msgid "North Korea"
@@ -9831,7 +9831,7 @@ msgstr "Préfixe Note"
 
 #: help_text.php:343
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr "Notez que si un compte d’utilisateur est lié à un enregistrement, alors l’utilisateur sera toujours en mesure d’afficher ce dossier."
+msgstr "Notez que si un compte d’utilisateur est lié à une fiche, alors l’utilisateur sera toujours en mesure d’afficher ce dossier."
 
 #: help_text.php:715
 msgid "Note: longer path lengths require a lot of calculation, which can make your site run slowly for these users."
