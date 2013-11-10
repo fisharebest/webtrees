@@ -135,18 +135,18 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 			$found |= !$fact->isOld();
 			if ($fact->isNew()) {
-				$class = 'facts_label new';
+				$class = ' new';
 			} elseif ($fact->isOld()) {
-				$class = 'facts_label old';
+				$class = ' old';
 			} else {
-				$class = 'facts_label';
+				$class = '';
 			}
 			?>
 			<tr>
 				<td class="facts_label">
 					&nbsp;
 				</td>
-				<td class="facts_value">
+				<td class="facts_value<?php echo $class; ?>">
 					<?php echo WT_Gedcom_Tag::getLabelValue($fact->getTag(), $fact->getDate()->Display(false) . ' — ' . $fact->getPlace()->getFullName()); ?>
 				</td>
 			</tr>
