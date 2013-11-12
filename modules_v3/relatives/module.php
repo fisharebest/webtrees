@@ -129,6 +129,40 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<?php
 		}
 
+		///// WIFE /////
+		$found = false;
+		foreach ($family->getFacts('WIFE', $access_level) as $fact) {
+			$person = $fact->getTarget();
+			if ($person instanceof WT_Individual) {
+				$found |= !$fact->isOld();
+				if ($fact->isNew()) {
+					$class = 'facts_label new';
+				} elseif ($fact->isOld()) {
+					$class = 'facts_label old';
+				} else {
+					$class = 'facts_label';
+				}
+				?>
+				<tr>
+					<td class="<?php echo $class; ?>">
+						<?php echo get_close_relationship_name($controller->record, $person); ?>
+					</td>
+					<td class="<?php echo $controller->getPersonStyle($person); ?>">
+						<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
+					</td>
+				</tr>
+				<?php
+			}
+		}
+		if (!$found && $family->canEdit()) {
+			?>
+			<tr>
+				<td class="facts_label"><?php echo WT_I18N::translate('Add wife'); ?></td>
+				<td class="facts_value"><a href="#" onclick="return add_spouse_to_family('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
+			</tr>
+			<?php
+		}
+
 		///// MARR /////
 		$found = false;
 		$prev = new WT_Date('');
@@ -167,40 +201,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						<?php echo WT_I18N::translate('Add marriage details'); ?>
 					</a>
 				</td>
-			</tr>
-			<?php
-		}
-
-		///// WIFE /////
-		$found = false;
-		foreach ($family->getFacts('WIFE', $access_level) as $fact) {
-			$person = $fact->getTarget();
-			if ($person instanceof WT_Individual) {
-				$found |= !$fact->isOld();
-				if ($fact->isNew()) {
-					$class = 'facts_label new';
-				} elseif ($fact->isOld()) {
-					$class = 'facts_label old';
-				} else {
-					$class = 'facts_label';
-				}
-				?>
-				<tr>
-					<td class="<?php echo $class; ?>">
-						<?php echo get_close_relationship_name($controller->record, $person); ?>
-					</td>
-					<td class="<?php echo $controller->getPersonStyle($person); ?>">
-						<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
-					</td>
-				</tr>
-				<?php
-			}
-		}
-		if (!$found && $family->canEdit()) {
-			?>
-			<tr>
-				<td class="facts_label"><?php echo WT_I18N::translate('Add wife'); ?></td>
-				<td class="facts_value"><a href="#" onclick="return add_spouse_to_family('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
 			</tr>
 			<?php
 		}
