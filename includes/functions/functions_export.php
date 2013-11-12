@@ -196,90 +196,115 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		$head=utf8_decode($head);
 	}
 
-	// Buffer the output.  Lots of small fwrite() calls can be very slow when writing large gedcoms.
-	$buffer=reformat_record_export($head);
-
+	// Fetch all the records first - to prevent MySQL timeouts between fetches
 	$rows=WT_DB::prepare(
 		"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
 		" FROM `##individuals` WHERE i_file=? ORDER BY i_id"
 	)->execute(array($ged_id))->fetchAll();
+	$individuals = array();
 	foreach ($rows as $row) {
-		$rec = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
-		if ($exportOptions['toANSI']=="yes") {
-			$rec=utf8_decode($rec);
-		}
-		$buffer.=reformat_record_export($rec);
-		if (strlen($buffer)>65536) {
-			fwrite($gedout, $buffer);
-			$buffer='';
-		}
+		$individuals[] = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 	}
-
+	
 	$rows=WT_DB::prepare(
 		"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom".
 		" FROM `##families` WHERE f_file=? ORDER BY f_id"
 	)->execute(array($ged_id))->fetchAll();
+	$families = array();
 	foreach ($rows as $row) {
-		$rec = WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
-		if ($exportOptions['toANSI']=="yes") {
-			$rec=utf8_decode($rec);
-		}
-		$buffer.=reformat_record_export($rec);
-		if (strlen($buffer)>65536) {
-			fwrite($gedout, $buffer);
-			$buffer='';
-		}
+		$families[] = WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 	}
 
 	$rows=WT_DB::prepare(
 		"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom".
 		" FROM `##sources` WHERE s_file=? ORDER BY s_id"
 	)->execute(array($ged_id))->fetchAll();
+	$sources = array();
 	foreach ($rows as $row) {
-		$rec = WT_Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
-		if ($exportOptions['toANSI']=="yes") {
-			$rec=utf8_decode($rec);
-		}
-		$buffer.=reformat_record_export($rec);
-		if (strlen($buffer)>65536) {
-			fwrite($gedout, $buffer);
-			$buffer='';
-		}
-	}
-
-	$rows=WT_DB::prepare(
-		"SELECT o_type AS type, o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
-		" FROM `##other` WHERE o_file=? AND o_type!='HEAD' AND o_type!='TRLR' ORDER BY o_id"
-	)->execute(array($ged_id))->fetchAll();
-	foreach ($rows as $row) {
-		switch ($row->type) {
-		case 'NOTE':
-			$rec = WT_Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
-			break;
-		case 'REPO':
-			$rec = WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
-			break;
-		default:
-			$rec = WT_GedcomRecord::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
-			break;
-		}
-
-		if ($exportOptions['toANSI']=="yes") {
-			$rec=utf8_decode($rec);
-		}
-		$buffer.=reformat_record_export($rec);
-		if (strlen($buffer)>65536) {
-			fwrite($gedout, $buffer);
-			$buffer='';
-		}
+		$sources[] = WT_Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 	}
 
 	$rows=WT_DB::prepare(
 		"SELECT 'OBJE' AS type, m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom".
 		" FROM `##media` WHERE m_file=? ORDER BY m_id"
 	)->execute(array($ged_id))->fetchAll();
+	$medias = array();
 	foreach ($rows as $row) {
-		$rec = WT_Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
+		$medias[] = WT_Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+	}
+
+	$rows=WT_DB::prepare(
+		"SELECT o_type AS type, o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
+		" FROM `##other` WHERE o_file=? AND o_type!='HEAD' AND o_type!='TRLR' ORDER BY o_id"
+	)->execute(array($ged_id))->fetchAll();
+	$others = array();
+	foreach ($rows as $row) {
+		switch ($row->type) {
+		case 'NOTE':
+			$others[] = WT_Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			break;
+		case 'REPO':
+			$others[] = WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			break;
+		default:
+			$others[] = WT_GedcomRecord::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			break;
+		}
+	}
+
+	// Buffer the output.  Lots of small fwrite() calls can be very slow when writing large gedcoms.
+	$buffer=reformat_record_export($head);
+
+	foreach ($individuals as $individual) {
+		$rec = $individual->privatizeGedcom($access_level);
+		if ($exportOptions['toANSI']=="yes") {
+			$rec=utf8_decode($rec);
+		}
+		$buffer.=reformat_record_export($rec);
+		if (strlen($buffer)>65536) {
+			fwrite($gedout, $buffer);
+			$buffer='';
+		}
+	}
+
+	foreach ($families as $family) {
+		$rec = $family->privatizeGedcom($access_level);
+		if ($exportOptions['toANSI']=="yes") {
+			$rec=utf8_decode($rec);
+		}
+		$buffer.=reformat_record_export($rec);
+		if (strlen($buffer)>65536) {
+			fwrite($gedout, $buffer);
+			$buffer='';
+		}
+	}
+
+	foreach ($sources as $source) {
+		$rec = $source->privatizeGedcom($access_level);
+		if ($exportOptions['toANSI']=="yes") {
+			$rec=utf8_decode($rec);
+		}
+		$buffer.=reformat_record_export($rec);
+		if (strlen($buffer)>65536) {
+			fwrite($gedout, $buffer);
+			$buffer='';
+		}
+	}
+
+	foreach ($others as $other) {
+		$rec = $other->privatizeGedcom($access_level);
+		if ($exportOptions['toANSI']=="yes") {
+			$rec=utf8_decode($rec);
+		}
+		$buffer.=reformat_record_export($rec);
+		if (strlen($buffer)>65536) {
+			fwrite($gedout, $buffer);
+			$buffer='';
+		}
+	}
+
+	foreach ($medias as $media) {
+		$rec = $media->privatizeGedcom($access_level);
 		$rec = convert_media_path($rec, $exportOptions['path']);
 		if ($exportOptions['toANSI']=="yes") {
 			$rec=utf8_decode($rec);
