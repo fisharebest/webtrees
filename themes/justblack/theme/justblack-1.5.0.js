@@ -386,7 +386,7 @@ jQuery(document).ready(function($){
 	
 	/**************************************** MODAL DIALOG BOXES ********************************************/		
 	// replace default function with our justblack theme function (better dialog boxes)
-	$(document).ajaxComplete(function() {
+	function jb_dialogBox() {
 		$('[onclick^="helpDialog"]').each(function(){
 			$(this).attr('onclick',function(index,attr){			
 				return attr.replace('helpDialog', 'jb_helpDialog');				
@@ -397,8 +397,13 @@ jQuery(document).ready(function($){
 			$(this).attr('onclick',function(index,attr){			
 				return attr.replace('modalDialog', 'jb_modalDialog');				
 			});		
-		});		
-	 })
+		});	
+	}
+		
+	jb_dialogBox();
+	$(document).ajaxComplete(function() {
+		jb_dialogBox();	
+	})
 	
 	/********************************************* CUSTOM CONTACT LINK ***********************************************/	
 	// custom contact link (in custom html block or news block for example). Give the link the class 'contact_link_admin');
