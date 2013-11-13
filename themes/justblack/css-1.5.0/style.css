@@ -318,8 +318,8 @@ a:hover .nameZoom{color:#E7E7E7;font-size:13px;font-weight:bold;text-decoration:
 .detailsZoom{font-size:14px;text-decoration:none}
 .name_head{color:#e7e7e7;font-size:16px;font-weight:bold;letter-spacing:.2px}
 .label{font-weight:bold}
-.error{color:#fff8dc;font-weight:bold}
-.largeError{color:#fff8dc;font-size:large;font-weight:bold}
+.error{color:#F00;font-weight:bold}
+.largeError{color:#F00;font-size:large;font-weight:bold}
 .warning{color:#767676;font-weight:bold}
 .indent{padding-left:10px;padding-top:10px}
 .image{border:solid #e7e7e7 1px;height:150px;padding:5px}
