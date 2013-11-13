@@ -99,7 +99,7 @@ case 'delete-source':
 			$gedrec = find_gedcom_record($xref, $record->getGedId(), true);
 			$gedrec = remove_links($gedrec, $record->getXref());
 			// If we have removed a link from a family to an individual, and it has only one member
-			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedrec) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $gedrec, $match)<2) {
+			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $gedcom, $match)==1) {
 				// Delete the family
 				$family = WT_GedcomRecord::getInstance($xref);
 				WT_FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ WT_I18N::translate('The family “%s” has been deleted, as it only has one member.', $family->getFullName()));
