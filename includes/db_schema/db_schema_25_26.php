@@ -36,5 +36,11 @@ self::exec(
 	"DELETE FROM `##site_setting` WHERE setting_name IN ('WELCOME_TEXT_CUST_HEAD')"
 );
 
+// Modern versions of Internet Explorer use a different
+self::exec(
+	"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES".
+	" ('Mozilla/% (Windows%; Trident%; rv:%) like Gecko', 'allow', 'Modern Internet Explorer')"
+);
+
 // Update the version to indicate success
 WT_Site::preference($schema_name, $next_version);
