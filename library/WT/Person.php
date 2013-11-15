@@ -462,7 +462,7 @@ class WT_Person extends WT_GedcomRecord {
 			return '';
 		}
 		$tmp = '<span dir="ltr" title="'.strip_tags($this->getBirthDate()->Display()).'">'.$this->getBirthYear();
-			if (strip_tags($this->getDeathYear()) =='') { $tmp .= '</span>'; } else { $tmp .= '-</span>'; } 		
+			if (strip_tags($this->getDeathYear()) =='') { $tmp .= '</span>'; } else { $tmp .= '-</span>'; }
 		$tmp .= '<span title="'.strip_tags($this->getDeathDate()->Display()).'">'.$this->getDeathYear().'</span>';
 		// display age only for exact dates (empty date qualifier)
 		if ($age_at_death
@@ -947,7 +947,7 @@ class WT_Person extends WT_GedcomRecord {
 		$this->parseFacts();
 		return $this->otherfacts;
 	}
-	
+
 	// A label for a parental family group
 	function getChildFamilyLabel(WT_Family $family) {
 		if (preg_match('/\n1 FAMC @'.$family->getXref().'@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->getGedcomRecord(), $match)) {
@@ -1305,7 +1305,7 @@ class WT_Person extends WT_GedcomRecord {
 					$sgdate=$sEvent->getDate();
 					$srec = $sEvent->getGedcomRecord();
 					if ($sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-						if ($option=='_GCHI' && $relation=='dau') { 
+						if ($option=='_GCHI' && $relation=='dau') {
 							// Convert the event to a close relatives event.
 							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_GCH1', $sEvent->getGedcomRecord()); // Full
 							$tmp_rec="1 _".$sEvent->getTag()."_GCH1\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
@@ -1462,7 +1462,7 @@ class WT_Person extends WT_GedcomRecord {
 						} else {
 							$factrec.="\n2 $asso_tag @".$associate->getXref().'@';
 							// CHR/BAPM events are commonly used.  Generate the reverse relationship
-							if (preg_match('/^(?:BAPM|CHR)$/', $event->getTag()) && preg_match('/2 _?ASSO @('.$person->getXref().')@\n3 RELA god(?:parent|mother|father)/', $event->getGedcomRecord())) {
+							if (preg_match('/^(?:BAPM|CHR)$/', $event->getTag()) && preg_match('/2 _?ASSO @('.$this->getXref().')@\n3 RELA god(?:parent|mother|father)/', $event->getGedcomRecord())) {
 								switch ($associate->getSex()) {
 								case 'M':
 									$factrec.="\n3 RELA godson";
@@ -1869,7 +1869,7 @@ class WT_Person extends WT_GedcomRecord {
 		global $bwidth, $SHOW_HIGHLIGHT_IMAGES, $UNKNOWN_NN, $UNKNOWN_PN;
 		// Estimate number of characters that can fit in box. Calulates to 28 characters in webtrees theme, or 34 if no thumbnail used.
 		if ($SHOW_HIGHLIGHT_IMAGES) {
-			$char = intval(($bwidth-40)/6.5); 
+			$char = intval(($bwidth-40)/6.5);
 		} else {
 			$char = ($bwidth/6.5);
 		}
