@@ -128,7 +128,7 @@ $controller->pageHeader();
 				<input type="checkbox" name="convert" value="yes">
 			</dd>
 			<dt>
-				<?php echo WT_I18N::translate('GEDCOM media path'), help_link('GEDCOM_MEDIA_PATH'); ?>
+				<?php echo WT_I18N::translate('Add the GEDCOM media path to filenames'), help_link('GEDCOM_MEDIA_PATH'); ?>
 			</dt>
 			<dd>
 				<input type="checkbox" name="conv_path" value="<?php echo htmlspecialchars($GEDCOM_MEDIA_PATH); ?>">
