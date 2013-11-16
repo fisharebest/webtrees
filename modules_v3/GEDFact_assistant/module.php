@@ -267,7 +267,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			'YrsM'       => 'Years Married, or Y if married in Census Year',
 		);
 
-		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.*)((?:\n.*)*)\n.end_formatted_area\.\n(.*(?:\n.*)*)/', $note->getNote(), $match)) {
+		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.*)((?:\n.*)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
 			// This looks like a census-assistant shared note
 			$title     = WT_Filter::escapeHtml($match[1]);
 			$preamble  = WT_Filter::escapeHtml($match[2]);
