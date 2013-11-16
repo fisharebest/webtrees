@@ -227,9 +227,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 					ckeditor_WT_Module::enableEditor($controller);
 				}
-				// "Help for this page" link
-				echo '<div id="page_help">', help_link('add_story', $this->getName()), '</div>';
-				echo '<form name="story" method="post" action="#">';
+
+				echo '<form name="story" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">';
+				echo WT_Filter::getCsrf();
 				echo '<input type="hidden" name="save" value="1">';
 				echo '<input type="hidden" name="block_id" value="', $block_id, '">';
 				echo '<input type="hidden" name="gedcom_id" value="', WT_GED_ID, '">';
