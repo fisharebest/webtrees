@@ -227,6 +227,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				}
 
 				echo '<form name="story" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">';
+				echo WT_Filter::getCsrf();
 				echo '<input type="hidden" name="save" value="1">';
 				echo '<input type="hidden" name="block_id" value="', $block_id, '">';
 				echo '<input type="hidden" name="gedcom_id" value="', WT_GED_ID, '">';
