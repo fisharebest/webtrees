@@ -1419,10 +1419,14 @@ class WT_Person extends WT_GedcomRecord {
 
 		if (file_exists(WT_Site::preference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
 			require WT_Site::preference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php';
-			foreach ($histo as $indexval=>$hrec) {
-				$sdate=new WT_Date(get_gedcom_value('DATE', 2, $hrec));
+			foreach ($histo as $hist) {
+				// Earlier versions of the WIKI encouraged people to use HTML entities,
+				// rather than UTF8 encoding.
+				$hist = html_entity_decode($hist, ENT_QUOTES, 'UTF-8');
+
+				$sdate=new WT_Date(get_gedcom_value('DATE', 2, $hist));
 				if ($sdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sdate)<=0 && WT_Date::Compare($sdate, $this->getEstimatedDeathDate())<=0) {
-					$event = new WT_Event($hrec, null, -1);
+					$event = new WT_Event($hist, null, -1);
 					$this->indifacts[] = $event;
 				}
 			}
