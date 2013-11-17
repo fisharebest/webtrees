@@ -214,7 +214,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
 					<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
 
-					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('GEDCOM media path'), help_link('GEDCOM_MEDIA_PATH'); ?></td>
+					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Add the GEDCOM media path to filenames'), help_link('GEDCOM_MEDIA_PATH'); ?></td>
 					<td class="list_value">
 						<input type="checkbox" name="conv_path" value="<?php echo WT_Filter::escapeHtml($GEDCOM_MEDIA_PATH); ?>">
 						<span dir="auto"><?php echo WT_Filter::escapeHtml($GEDCOM_MEDIA_PATH); ?></span>
@@ -600,7 +600,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
 
 		<tr>
-		<td class="descriptionbox width50 wrap">'.WT_I18N::translate('GEDCOM media path').help_link('GEDCOM_MEDIA_PATH').'</td>
+		<td class="descriptionbox width50 wrap">'.WT_I18N::translate('Add the GEDCOM media path to filenames').help_link('GEDCOM_MEDIA_PATH').'</td>
 		<td class="optionbox">
 		<input type="checkbox" name="conv_path" value="' . WT_Filter::escapeHtml($GEDCOM_MEDIA_PATH) . '">
 		<span dir="auto">' . WT_Filter::escapeHtml($GEDCOM_MEDIA_PATH) . '</span></td>
