@@ -97,22 +97,21 @@ class fancy_visitors_info_WT_Module extends WT_Module implements WT_Module_Sideb
 	private function get_source_count() {
 		global $controller;
 		// source: WT_Fact::getCitations()
-		if ($this->sourceCount===null) {
-			$ct = preg_match_all('/\n([1-2] SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $controller->record->getGedcom());
-			foreach ($controller->record->getSpouseFamilies() as $sfam)
-				$ct += preg_match_all('/\n([1-2] SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $sfam->getGedcom());;
-			$this->sourceCount = $ct;
-		}
-		return $this->sourceCount;
+		$ct = preg_match_all('/\n([1-2] SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $controller->record->getGedcom(), $matches, PREG_SET_ORDER);
+		foreach ($controller->record->getSpouseFamilies() as $sfam) {
+			$ct += preg_match_all('/\n([1-2] SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $sfam->getGedcom(), $matches, PREG_SET_ORDER);
+		}		
+		return $ct;
 	}
 	
 	private function get_media_count() {
 		global $controller;
 		// source: WT_Fact::getMedia().
-		if ($this->mediaCount===null) {
-			$this->mediaCount = preg_match_all('/\n[1-2] OBJE @(' . WT_REGEX_XREF . ')@/', $controller->record->getGedcom());			
+		$ct = preg_match_all('/\n[1-2] OBJE @(' . WT_REGEX_XREF . ')@/', $controller->record->getGedcom(), $matches);
+		foreach ($controller->record->getSpouseFamilies() as $sfam) {
+			$ct += preg_match_all('/\n[1-2] OBJE @(' . WT_REGEX_XREF . ')@/', $sfam->getGedcom(), $matches);
 		}
-		return $this->mediaCount;
+		return $ct;
 	}
 	
 	// Implement WT_Module_Sidebar
