@@ -257,10 +257,10 @@ if (stristr($_SERVER['HTTP_USER_AGENT'], 'Opera')) {
 	$BROWSERTYPE = 'opera';
 } elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'KHTML')) {
 	$BROWSERTYPE = 'chrome';
+} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE') || stristr($_SERVER['HTTP_USER_AGENT'], 'Trident')) {
+	$BROWSERTYPE = 'msie';
 } elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'Gecko')) {
 	$BROWSERTYPE = 'mozilla';
-} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
-	$BROWSERTYPE = 'msie';
 } else {
 	$BROWSERTYPE = 'other';
 }
