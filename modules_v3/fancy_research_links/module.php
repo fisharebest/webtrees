@@ -77,33 +77,21 @@ class fancy_research_links_WT_Module extends WT_Module implements WT_Module_Side
 		$html = $this->includeCss(WT_MODULES_DIR.$this->getName().'/style.css');	
 		
 		$controller->addInlineJavascript('
-			jQuery(document).ajaxSend(function(){
-				jQuery("#'.$this->getName().' a").text("'.$this->getSidebarTitle().'");
-				jQuery("a.research_link").each(function(){
-					var url = jQuery(this).attr("href");
-					jQuery(this).colorbox({
-						width:		"75%",
-						height:		"90%",
-						fixed:		true,
-						iframe:		true,
-						title:		"<a href=\"" + url + "\" target=\"_blank\">" + url + "</a>"
-					});					
-				});
-				jQuery("#research_status > li").click(function(e){
-					var obj = jQuery(this);
-					jQuery(this).find("ul").each(function(){
-						if(jQuery(this).length > 0) {
-							e.preventDefault();
-							obj.find("a:first").removeClass("cboxElement");
-							if(jQuery(this).is(":visible")) {
-								jQuery(this).hide();
-							}
-							else {
-								jQuery(this).show();
-							}
-						}
-					});
-				});
+			jQuery("#'.$this->getName().' a").text("'.$this->getSidebarTitle().'");
+			jQuery("a.research_link").each(function(){
+				var url = jQuery(this).attr("href");
+				jQuery(this).colorbox({
+					width:		"75%",
+					height:		"90%",
+					fixed:		true,
+					iframe:		true,
+					modal:		true,
+					title:		"<a href=\"" + url + "\" target=\"_blank\">" + url + "</a>"
+				});					
+			});
+			jQuery("#research_status a.mainlink").click(function(e){
+				e.preventDefault();
+				jQuery(this).parent().find(".sublinks").toggle();
 			});
 		');	 
 		
@@ -116,17 +104,17 @@ class fancy_research_links_WT_Module extends WT_Module implements WT_Module_Side
 					$sublinks = $plugin->create_sublink($value);
 				}
 			}			
-			$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="research_link" href="'.$link.'">'.$plugin->getName().'</a>';
-						
 			if($sublinks) {
-				$html .= '<ul style="display:none">';
+				$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="mainlink" href="'.$link.'">'.$plugin->getName().'</a>';
+				$html .= '<ul class="sublinks">';
 				foreach ($sublinks as $sublink) {
 					$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="research_link" href="'.$sublink['link'].'">'.$sublink['title'].'</a></li>';				
 				}				
-				$html .= '</ul>';			
+				$html .= '</ul></li>';			
 			}
-			
-			$html .= '</li>';
+			else { // default
+				$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="research_link" href="'.$link.'">'.$plugin->getName().'</a></li>';
+			}
 		}
 		$html.= '</ul>';
 		return $html;
