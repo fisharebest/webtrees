@@ -31,9 +31,9 @@ $this
 	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"50%", height:"50%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"})')
 	->addInlineJavascript('
 		jQuery.extend(jQuery.colorbox.settings, {
-			title:	function(){
-					var img_title = jQuery(this).data("title");
-					return img_title;
+			title: function() {
+				var img_title = jQuery(this).data("title");
+				return img_title;
 			}
 		});
 	');
@@ -42,17 +42,15 @@ echo
 	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
 	'<meta charset="UTF-8">',
+	'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
+	'<meta name="robots" content="noindex,nofollow">',
 	'<title>', htmlspecialchars($title), '</title>',
 	'<link rel="icon" href="', WT_CSS_URL, 'favicon.png" type="image/png">',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css" type="text/css">',
-	'<link rel="stylesheet" href="', WT_CSS_URL, 'style.css', '" type="text/css" media="all">',
-	'<meta name="robots" content="noindex,nofollow">';
-
-switch ($BROWSERTYPE) {
-case 'msie':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, $BROWSERTYPE, '.css">';
-	break;
-}
+	'<link rel="stylesheet" href="', WT_CSS_URL, 'style.css" type="text/css">',
+	'<!--[if IE]>',
+	'<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, 'msie.css">',
+	'<![endif]-->';
 
 echo
 	$javascript,

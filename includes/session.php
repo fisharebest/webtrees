@@ -171,6 +171,11 @@ if (!isset($_SERVER['REQUEST_URI']))  {
 	}
 }
 
+// Some browsers do not send a user-agent string
+if (!isset($_SERVER['HTTP_USER_AGENT'])) {
+	$_SERVER['HTTP_USER_AGENT'] = '';
+}
+
 // Common functions
 require WT_ROOT.'includes/functions/functions.php';
 require WT_ROOT.'includes/functions/functions_db.php';
@@ -248,27 +253,10 @@ if (!ini_get('safe_mode')) {
 	}
 }
 
-// Determine browser type
-if (!isset($_SERVER['HTTP_USER_AGENT'])) {
-	$_SERVER['HTTP_USER_AGENT']='';
-}
-// TODO: Browser sniffing is bad.  We should use capability detection.
-if (stristr($_SERVER['HTTP_USER_AGENT'], 'Opera')) {
-	$BROWSERTYPE = 'opera';
-} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'KHTML')) {
-	$BROWSERTYPE = 'chrome';
-} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'Gecko')) {
-	$BROWSERTYPE = 'mozilla';
-} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
-	$BROWSERTYPE = 'msie';
-} else {
-	$BROWSERTYPE = 'other';
-}
-
 $rule=WT_DB::prepare(
-	"SELECT SQL_CACHE rule FROM `##site_access_rule`".
-	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end".
-	" AND ? LIKE user_agent_pattern".
+	"SELECT SQL_CACHE rule FROM `##site_access_rule`" .
+	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end" .
+	" AND ? LIKE user_agent_pattern" .
 	" ORDER BY ip_address_end-ip_address_start"
 )->execute(array($WT_REQUEST->getClientIp(), $_SERVER['HTTP_USER_AGENT']))->fetchOne();
 

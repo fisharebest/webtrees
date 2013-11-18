@@ -113,7 +113,9 @@ class WT_Filter {
 				$variable,
 				FILTER_CALLBACK,
 				array(
-					'options' => function($x) {return mb_check_encoding($x, 'UTF-8') ? $x : false;},
+					'options' => function($x) {
+						return !function_exists('mb_convert_encoding') || mb_check_encoding($x, 'UTF-8') ? $x : false;
+					},
 				)
 			);
 			return ($tmp===null || $tmp===false) ? $default : $tmp;
@@ -145,7 +147,9 @@ class WT_Filter {
 					$variable => array(
 						'flags'   => FILTER_REQUIRE_ARRAY,
 						'filter'  => FILTER_CALLBACK,
-						'options' => function($x) {return mb_check_encoding($x, 'UTF-8') ? $x : false;}
+						'options' => function($x) {
+							return !function_exists('mb_convert_encoding') || mb_check_encoding($x, 'UTF-8') ? $x : false;
+						}
 					),
 				)
 			);

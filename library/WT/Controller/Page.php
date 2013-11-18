@@ -126,8 +126,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	// Print the page header, using the theme
 	public function pageHeader() {
 		// Import global variables into the local scope, for the theme's header.php
-		global $BROWSERTYPE, $SEARCH_SPIDER, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION;
-		global $headerfile, $view;
+		global $SEARCH_SPIDER, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION, $headerfile, $view;
 
 		// The title often includes the names of records, which may have markup
 		// that cannot be used in the page title.
@@ -159,7 +158,6 @@ class WT_Controller_Page extends WT_Controller_Base {
 			var WT_GED_ID      = "' . WT_Filter::escapeJs(WT_GED_ID)                 . '";
 			var WT_USER_ID     = "' . WT_Filter::escapeJs(WT_USER_ID)                . '";
 			var textDirection  = "' . WT_Filter::escapeJs($TEXT_DIRECTION)           . '";
-			var browserType    = "' . WT_Filter::escapeJs($BROWSERTYPE)              . '";
 			var WT_SCRIPT_NAME = "' . WT_Filter::escapeJs(WT_SCRIPT_NAME)            . '";
 			var WT_LOCALE      = "' . WT_Filter::escapeJs(WT_LOCALE)                 . '";
 			var WT_CSRF_TOKEN  = "' . WT_Filter::escapeJs(WT_Filter::getCsrfToken()) . '";
@@ -172,11 +170,6 @@ class WT_Controller_Page extends WT_Controller_Base {
 				jQuery("a.icon_arrow").attr("href", "#");
 			}
 		');
-
-		// Tell IE to use standards mode instead of compatability mode.
-		if ($BROWSERTYPE=='msie') {
-			header("X-UA-Compatible: IE=Edge");
-		}
 
 		header('Content-Type: text/html; charset=UTF-8');
 		require WT_ROOT.$headerfile;

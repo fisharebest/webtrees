@@ -8403,7 +8403,7 @@ msgstr "Mange mail-servere kræver at den afsendende server identificerer sig ko
 #: library/WT/Gedcom/Tag.php:232 library/WT/Gedcom/Tag.php:892
 #: modules_v3/googlemap/module.php:266
 msgid "Map"
-msgstr "Kort"
+msgstr "Landkort"
 
 #: library/WT/Date/Calendar.php:193
 msgctxt "Abbreviation for March"
