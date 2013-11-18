@@ -160,7 +160,7 @@ class WT_Filter {
 	}
 
 	private static function _inputArrayCallback($x) {
-		return mb_check_encoding($x, 'UTF-8') ? $x : false;
+		return !function_exists('mb_check_encoding') || mb_check_encoding($x, 'UTF-8') ? $x : false;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
