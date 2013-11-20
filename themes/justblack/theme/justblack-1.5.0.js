@@ -274,7 +274,7 @@ jQuery(document).ready(function($){
         });	
 	
 		$(document).tooltip({
-			items: '*[title]'
+			items: '*[title]:not(.ui-dialog-titlebar-close)'
 		});	
 	}
 	
