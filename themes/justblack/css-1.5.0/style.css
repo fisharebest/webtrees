@@ -66,7 +66,7 @@
 
 html{overflow-y:scroll}
 body{background-color:#2E2E2E;color:#e7e7e7;font:13px Verdana,Arial,Helvetica,sans-serif;margin:0;}
-html[dir='rtl'] body{direction:rtl;text-align:right}
+html[dir=rtl] body{direction:rtl;text-align:right}
 a{color:#dd6900;text-decoration:none}
 a:hover{color:#767676;text-decoration:none}
 a.link:link,a.link:active,a.link:visited{color:#e7e7e7;font-weight:bold}
@@ -104,12 +104,12 @@ html[dir="rtl"] input:required:valid, html[dir="rtl"] textarea:required:valid, h
 #main-menu li li{background-image:url(images/sprites-sub-menu.png);background-repeat:no-repeat;clear:both;height:23px;left:auto;line-height:23px;margin-bottom:3px;text-align:left;text-indent:26px;width:100%}
 
 /* Reverse left and right on RTL pages  */
-html[dir='rtl'] #topMenu{float:right}
-html[dir='rtl'] #main-menu li{float:right}
-html[dir='rtl'] #main-menu li:hover > ul{left:auto;right:100%}
-html[dir='rtl'] #main-menu > li:hover > ul{left:auto;right:0}
-html[dir='rtl'] #main-menu li li{text-align:right}
-html[dir='rtl'] #main-menu li li a{float:right;padding:1px 5px 1px 10px}
+html[dir=rtl] #topMenu{float:right}
+html[dir=rtl] #main-menu li{float:right}
+html[dir=rtl] #main-menu li:hover > ul{left:auto;right:100%}
+html[dir=rtl] #main-menu > li:hover > ul{left:auto;right:0}
+html[dir=rtl] #main-menu li li{text-align:right}
+html[dir=rtl] #main-menu li li a{float:right;padding:1px 5px 1px 10px}
 
 /********************Menu Top Row Icons **********************/
 
@@ -250,9 +250,9 @@ li[id^=menu-report-] 		{background-position:left -483px;} html[dir=rtl] #menu-re
 #extra-menu li ul li a{padding:3px 8px}
 #extra-menu .lang-active, #extra-menu .theme-active{font-weight:bold}
 
-html[dir='rtl'] #extra-menu {float:left;margin:5px 0 0 15px;}
-html[dir='rtl'] #extra-menu li ul {left:0;right:auto}
-html[dir='rtl'] #extra-menu li ul li {text-align:right;}
+html[dir=rtl] #extra-menu {float:left;margin:5px 0 0 15px;}
+html[dir=rtl] #extra-menu li ul {left:0;right:auto}
+html[dir=rtl] #extra-menu li ul li {text-align:right;}
 
 /* ========= Options menu ========== */
 #extra-menu ul, #main-menu ul {z-index:210;}/* Set stack level for top two header menu rows */
@@ -268,13 +268,13 @@ html[dir='rtl'] #extra-menu li ul li {text-align:right;}
 #favdate{bottom:0;padding-bottom:10px;padding-right:10px;position:absolute;right:0}
 
 /* LTR to RTL Translation  */
-html[dir='rtl'] #fav-menu{float:right;padding-right:10px;text-align:right}
-html[dir='rtl'] #search-menu{float:left;padding-left:10px;text-align:left}
-html[dir='rtl'] #favdate{left:0;padding-left:10px;right:auto}
+html[dir=rtl] #fav-menu{float:right;padding-right:10px;text-align:right}
+html[dir=rtl] #search-menu{float:left;padding-left:10px;text-align:left}
+html[dir=rtl] #favdate{left:0;padding-left:10px;right:auto}
 
 /*   Header end  */
 fieldset{line-height:1.5em;margin:8px 8px 4px;border:none}
-html[dir='rtl'] fieldset{text-align:right}
+html[dir=rtl] fieldset{text-align:right}
 legend{font-weight:bold}
 img{border:none;vertical-align:middle}
 ul{margin:8px;padding-left:15px;padding-right:15px}
@@ -329,7 +329,7 @@ html[dir="rtl"] .pedigree_image{float:right;margin-left:3px;margin-top:3px;max-h
 .pedigree_form{width:60px}
 .thumbnail{height:auto;padding:5px}
 .icon{border:none;padding-left:0;padding-right:5px}
-html[dir='rtl'] .icon{padding-left:5px;padding-right:0}
+html[dir=rtl] .icon{padding-left:5px;padding-right:0}
 .link{font-size:11px;text-align:center}
 .sublinks_cell{background-color:#272727;font-size:11px}
 .menuitem .icon{height:32px;width:32px}
@@ -381,8 +381,8 @@ img.block{border:none;vertical-align:middle}
 #index_main_blocks{clear:none;float:left;width:65%}
 #index_small_blocks{clear:none;float:right;width:33%}
 #index_full_blocks{clear:none;width:100%}
-html[dir='rtl'] #index_main_blocks{float:right}
-html[dir='rtl'] #index_small_blocks{float:left}
+html[dir=rtl] #index_main_blocks{float:right}
+html[dir=rtl] #index_small_blocks{float:left}
 #main_select,#available_select,#right_select{min-width:150px}
 .user_welcome_block table,.gedcom_block_block table{margin:auto}
 .user_welcome_block td,.gedcom_block_block td{text-align:center;vertical-align:top;width:33%}
@@ -408,7 +408,7 @@ html[dir='rtl'] #index_small_blocks{float:left}
 .tdmid {vertical-align:middle;}
 .tdbot, .tvertline {vertical-align:bottom;}
 
-html[dir='rtl'] #familybook_chart{margin-right:10px;}
+html[dir=rtl] #familybook_chart{margin-right:10px;}
 
 /*-- pedigree chart specific stylesheets -- */
 #pedigree-page table.list_table {margin:0 auto;width:500px;}
@@ -419,14 +419,14 @@ html[dir='rtl'] #familybook_chart{margin-right:10px;}
 #pedigree_chart #childarrow, #pedigree_chart #uparrow, #pedigree_chart .shadow {position:absolute;}
 
 /*-- pedigree chart rtl specific stylesheets -- */
-html[dir='rtl'] #pedigree_chart{left:auto;right:0;width:99%}
+html[dir=rtl] #pedigree_chart{left:auto;right:0;width:99%}
 
 /*-- descendancy chart specific stylesheets -- */
 #descendancy_chart ul{background-image:url(images/vline.png);background-position:left top;background-repeat:repeat-y;list-style:none;margin:0 0 5px 15px;padding-bottom:0;padding-right:0;padding-top:0}
 #descendancy_chart li{list-style:none;margin:0 0 0 -15px;padding-bottom:0;padding-right:0;padding-top:0}
 
 /*-- descendancy chart rtl specific stylesheets -- */
-html[dir='rtl'] #descendancy_chart ul{background-position:right top;left:auto;margin:0 15px 0 0}
+html[dir=rtl] #descendancy_chart ul{background-position:right top;left:auto;margin:0 15px 0 0}
 
 /*-- ancestry chart specific stylesheets -- */
 #ancestry_chart ul{background-image:url(images/vline.png);background-position:left top;background-repeat:repeat-y;display:block;list-style:none;margin:0 0 0 15px;padding-bottom:0;padding-right:0;padding-top:0}
@@ -434,8 +434,8 @@ html[dir='rtl'] #descendancy_chart ul{background-position:right top;left:auto;ma
 #ancestry_chart li table{margin:5px 0}
 
 /*-- ancestry chart rtl specific stylesheets -- */
-html[dir='rtl'] #ancestry_chart ul{background-position:right top;left:auto;margin:0 15px 0 0}
-html[dir='rtl'] #ancestry_chart li{left:auto;margin:0;padding:0 2px 0 0}
+html[dir=rtl] #ancestry_chart ul{background-position:right top;left:auto;margin:0 15px 0 0}
+html[dir=rtl] #ancestry_chart li{left:auto;margin:0;padding:0 2px 0 0}
 
 /*-- timeline chart specific styles -- */
 #timeline_chart{position:relative;top:0}
@@ -622,7 +622,7 @@ html[dir="rtl"] .person_box_template i[class^="icon-silhouette"] {float:right;}
 #register-form textarea{margin:0 3px;vertical-align:top;width:580px}
 #register-form div#registration-submit{text-align:center}
 .login_block_block #login-form,.login_block_block #new_passwd_form{background:none;border:0}
-html[dir='rtl'] #login-form label,html[dir='rtl'] #new_passwd_form label,html[dir='rtl'] #register-form label,html[dir='rtl'] #verify-form label{text-align:left}
+html[dir=rtl] #login-form label,html[dir=rtl] #new_passwd_form label,html[dir=rtl] #register-form label,html[dir=rtl] #verify-form label{text-align:left}
 #verify-form label{display:inline-block;text-align:right;width:140px}
 #verify-form h4{text-align:center}
 #verify-form input[type=submit]{margin-top:10px}
@@ -643,7 +643,7 @@ html[dir='rtl'] #login-form label,html[dir='rtl'] #new_passwd_form label,html[di
 .popup li span{padding:0 5px}
 .popup li ul,.popup li ul li,.popup li span span{padding:0}
 .itr:hover .popup{display:block;position:absolute;right:0;width:12em;z-index:9999}
-html[dir='rtl'] .itr:hover .popup{left:0;right:auto}
+html[dir=rtl] .itr:hover .popup{left:0;right:auto}
 
 /* styles for FindFacts pop-up  */
 #layDefinedTags,#tabDefinedTagsShow{width:450px}
@@ -667,8 +667,8 @@ div.faq_body{background-color:#272727;border-bottom:1px solid #545454;border-lef
 .faq_italic{font-size:90%;font-style:italic;font-weight:bold;padding:0 10px}
 .faq_top{float:right}
 .faq_edit{float:right}
-html[dir='rtl'] .faq_top{float:left}
-html[dir='rtl'] .faq_edit{float:left}
+html[dir=rtl] .faq_top{float:left}
+html[dir=rtl] .faq_edit{float:left}
 td.descriptionbox a{color:#e7e7e7}
 td.descriptionbox a:hover{color:#dd6900}
 .logo{text-align:center}
@@ -686,8 +686,8 @@ span.link_text{display:none}
 
 /* Indi header  */
 .field .editlink,.field .deletelink,.field .copylink{float:right}
-html[dir='rtl'] .editlink,html[dir='rtl'] .copylink,html[dir='rtl'] .deletelink{float:right}
-html[dir='rtl'].field .editlink,html[dir='rtl'].field .deletelink{float:left}
+html[dir=rtl] .editlink,html[dir=rtl] .copylink,html[dir=rtl] .deletelink{float:right}
+html[dir=rtl].field .editlink,html[dir=rtl].field .deletelink{float:left}
 /* =========== end edit, copy, delete links ====================
 
 /* =========== Indi header ==================  */
@@ -718,18 +718,18 @@ html[dir='rtl'].field .editlink,html[dir='rtl'].field .deletelink{float:left}
 #sex{float:right}
 #dates{float:right}
 dd .editlink,dd .deletelink{float:right}
-html[dir='rtl'] #indi_header{float:right}
-html[dir='rtl'] #indi_header h3{padding:0 30px 0 10px;text-align:right}
-html[dir='rtl'] #indi_header h3 .header_age{float:left;padding:5px 15px 5px 0}
-html[dir='rtl'] #main_name{float:right}
-html[dir='rtl'] #indi_mainimage{float:right}
-html[dir='rtl'] #indi_mainimage a img{float:right}
-html[dir='rtl'] #indi_note .fact_NOTE{float:right;margin:0 0 0 10px}
-html[dir='rtl'] #header_accordion1{float:left}
-html[dir='rtl'] .indi_table{clear:right}
-html[dir='rtl'] #sex{float:left}
-html[dir='rtl'] #dates{float:left}
-html[dir='rtl'] dd .editlink,html[dir='rtl'] dd .deletelink{float:left}
+html[dir=rtl] #indi_header{float:right}
+html[dir=rtl] #indi_header h3{padding:0 30px 0 10px;text-align:right}
+html[dir=rtl] #indi_header h3 .header_age{float:left;padding:5px 15px 5px 0}
+html[dir=rtl] #main_name{float:right}
+html[dir=rtl] #indi_mainimage{float:right}
+html[dir=rtl] #indi_mainimage a img{float:right}
+html[dir=rtl] #indi_note .fact_NOTE{float:right;margin:0 0 0 10px}
+html[dir=rtl] #header_accordion1{float:left}
+html[dir=rtl] .indi_table{clear:right}
+html[dir=rtl] #sex{float:left}
+html[dir=rtl] #dates{float:left}
+html[dir=rtl] dd .editlink,html[dir=rtl] dd .deletelink{float:left}
 
 /* INDI IMAGE SPRITE  */
 .male_gender,.female_gender,.unknown_gender,.editicon,.copyicon,.deleteicon{background:url(images/indi_sprite.png) no-repeat;display:block}
@@ -749,11 +749,11 @@ html[dir='rtl'] dd .editlink,html[dir='rtl'] dd .deletelink{float:left}
 .media-separator{display:none}
 
 /* ========= jquery-ui.custom.css changes (also see jquery_ui.custom.css) ============  */
-html[dir='rtl'] .ui-tabs{direction:rtl}
-html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected,html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default{float:right}
-html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon{right:0.5em}
-html[dir='rtl'] .ui-dialog-title{float:right}
-html[dir='rtl'] .ui-dialog-titlebar-close{left:.3em;right:auto}
+html[dir=rtl] .ui-tabs{direction:rtl}
+html[dir=rtl] ui-tabs .ui-tabs-nav li.ui-tabs-selected,html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default{float:right}
+html[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon{right:0.5em}
+html[dir=rtl] .ui-dialog-title{float:right}
+html[dir=rtl] .ui-dialog-titlebar-close{left:.3em;right:auto}
 
 /* ========= jQuery.datatable styling over-rides ============  */
 .odd td{border:#545454 1px solid}
@@ -773,14 +773,14 @@ html[dir='rtl'] .ui-dialog-titlebar-close{left:.3em;right:auto}
 #loading{text-align:center}
 .DataTables_sort_wrapper{margin:5px 20px;position:relative}
 .DataTables_sort_wrapper span{left:0;margin-left:-20px;margin-top:-8px;position:absolute;top:50%}
-html[dir='rtl'] .css_right{float:right}
-html[dir='rtl'] .dataTables_paginate{float:right}
-html[dir='rtl'] .dataTables_processing{float:right}
-html[dir='rtl'] .dataTables_filter{float:left}
-html[dir='rtl'] .dataTables_info{float:right}
-html[dir='rtl'] .dataTables_length{float:left}
-html[dir='rtl'] .DataTables_sort_wrapper{margin-right:20px}
-html[dir='rtl'] .DataTables_sort_wrapper span{left:auto;margin-right:-20px;right:0}
+html[dir=rtl] .css_right{float:right}
+html[dir=rtl] .dataTables_paginate{float:right}
+html[dir=rtl] .dataTables_processing{float:right}
+html[dir=rtl] .dataTables_filter{float:left}
+html[dir=rtl] .dataTables_info{float:right}
+html[dir=rtl] .dataTables_length{float:left}
+html[dir=rtl] .DataTables_sort_wrapper{margin-right:20px}
+html[dir=rtl] .DataTables_sort_wrapper span{left:auto;margin-right:-20px;right:0}
 
 /* ========= List styles =================  */
 .source-list,.note-list,.repo-list,.media-list,.indi-list,.fam-list{margin:5px auto;visibility:hidden;width:98%}
@@ -804,7 +804,7 @@ html[dir='rtl'] .DataTables_sort_wrapper span{left:auto;margin-right:-20px;right
 #search-result-tabs h3{text-align:center}
 #searchAccordion-indi,#searchAccordion-fam,#searchAccordion-source,#searchAccordion-note{margin:auto;width:99%}
 #place-hierarchy h4{text-align:center}
-html[dir='rtl'] .source-list th:last-child,html[dir='rtl'] .note-list th:last-child,html[dir='rtl'] .repo-list th:last-child{margin:0 1px 1px -2px}
+html[dir=rtl] .source-list th:last-child,html[dir=rtl] .note-list th:last-child,html[dir=rtl] .repo-list th:last-child{margin:0 1px 1px -2px}
 
 /* ========= Sidebar ==============  */
 #main{min-width:600px;width:100%}
@@ -820,12 +820,12 @@ html[dir='rtl'] .source-list th:last-child,html[dir='rtl'] .note-list th:last-ch
 .use-sidebar.sidebar-at-right #sidebar,.sidebar-at-right #separator{float:right}
 #separator{background:#FF8C00 url(images/indi_sprite.png) no-repeat -26px 100px;border:1px solid #999;border-top-left-radius:3px;border-top-right-radius:3px;display:block;margin-top:5px;max-width:10px;min-width:6px;width:0.75%}
 .use-sidebar #separator{background:#FF8C00 url(images/indi_sprite.png) no-repeat -1px 100px}
-html[dir='rtl'] #indi_left{float:right}
-html[dir='rtl'] #tabs{float:right}
-html[dir='rtl'] #sidebar{margin:5px 0 0 2px}
-html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar,html[dir='rtl'] .sidebar-at-right #separator{float:left}
-html[dir='rtl'] #separator{background:#c3dfff url(images/indi_sprite.png) no-repeat -1px 100px}
-html[dir='rtl'] .use-sidebar #separator{background:#c3dfff url(images/indi_sprite.png) no-repeat -26px 100px}
+html[dir=rtl] #indi_left{float:right}
+html[dir=rtl] #tabs{float:right}
+html[dir=rtl] #sidebar{margin:5px 0 0 2px}
+html[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,html[dir=rtl] .sidebar-at-right #separator{float:left}
+html[dir=rtl] #separator{background:#c3dfff url(images/indi_sprite.png) no-repeat -1px 100px}
+html[dir=rtl] .use-sidebar #separator{background:#c3dfff url(images/indi_sprite.png) no-repeat -26px 100px}
 
 /* ============== Sidebar content items ==============   
 /* Family navigator  */
@@ -837,9 +837,9 @@ html[dir='rtl'] .use-sidebar #separator{background:#c3dfff url(images/indi_sprit
 .flyout4{margin-left:0;margin-top:0;padding:3px;text-align:left}
 .flyout3,.flyout3 a{background:none;border:none;left:0;margin-top:0;padding:0;text-align:left;text-decoration:none}
 .famnav_link{font-size:11px;padding:0;width:100%}
-html[dir='rtl'] .flyout{left:210px;text-align:right}
-html[dir='rtl'] .flyout2{right:40px;text-align:right}
-html[dir='rtl'] .flyout3{text-align:right}
+html[dir=rtl] .flyout{left:210px;text-align:right}
+html[dir=rtl] .flyout2{right:40px;text-align:right}
+html[dir=rtl] .flyout3{text-align:right}
 
 /* Individuals, Families  */
 .sb_indi_surname_li,.sb_fam_surname_li{list-style-image:url(images/icons/plus.png);white-space:nowrap}
@@ -850,8 +850,8 @@ html[dir='rtl'] .flyout3{text-align:right}
 .sb_desc_indi_li{list-style-type:none}
 .desc_tree_div{display:none}
 .desc_tree_div ul{margin-left:10px;margin-right:0;margin-top:0;padding:0}
-html[dir='rtl'] #sb_desc_content{margin-right:3px}
-html[dir='rtl'] .desc_tree_div ul{margin-left:0;margin-right:10px}
+html[dir=rtl] #sb_desc_content{margin-right:3px}
+html[dir=rtl] .desc_tree_div ul{margin-left:0;margin-right:10px}
 .name_tree_div li,.name_tree_div_visible li{list-style:none;margin:0;padding:0;white-space:normal}
 .name_tree_div{display:none}
 .name_tree_div ul,.name_tree_div_visible ul{margin:0;padding:0}
@@ -911,8 +911,8 @@ html[dir='rtl'] .desc_tree_div ul{margin-left:0;margin-right:10px}
 #edituser-table span.pw-info {display:block;font-size: 9px;line-height:1.25em}
 #edituser-table input, #edituser-table select{margin:0;}
 #edituser_submit {text-align:center;}
-html[dir='rtl'] #edituser-table .label{float:right;}
-html[dir='rtl'] #edituser-table .value {margin:0 300px 0 0;padding:5px 10px 5px 0}
+html[dir=rtl] #edituser-table .label{float:right;}
+html[dir=rtl] #edituser-table .value {margin:0 300px 0 0;padding:5px 10px 5px 0}
 
 /* ======= Who is online block ==========  */
 .logged_in_list{line-height:20px;margin:5px 0 0;padding:0}
@@ -1092,8 +1092,8 @@ a.icon-udarrow:hover{background-image:url(images/icons/udarrow2.png);height:20px
 #save-cancel input{padding:2px 8px;}
 #save-cancel .save {float:left;margin:5px}
 #save-cancel .cancel {float:right;margin:5px}
-html[dir='rtl'] #save-cancel .save {float:right;}
-html[dir='rtl'] #save-cancel .cancel {float:left;}
+html[dir=rtl] #save-cancel .save {float:right;}
+html[dir=rtl] #save-cancel .cancel {float:left;}
 #edit_interface-page, #addmedia-page {margin-bottom:50px;}
 
 /* Addmedia pop-ups*/
@@ -1117,7 +1117,7 @@ html[dir='rtl'] #save-cancel .cancel {float:left;}
 #lang-menu span{display:none}
 #lang-menu.dropdown{margin-left:10px;text-align:left;width:100%}
 #lang-menu.dropdown .lang-active{background-color:#3399FF;color:#fff}
-html[dir='rtl'] #lang-menu.dropdown{margin-right:10px;text-align:right}
+html[dir=rtl] #lang-menu.dropdown{margin-right:10px;text-align:right}
 
 /*Language flags (only core languages) */
 #menu-language-ar {background-position: 0px -15px}
@@ -1260,8 +1260,8 @@ div.charts_block .person_box_template, #descendancy_chart .person_box_template, 
 .lb-menu li {display:inline;position:relative;float:left; top:0;}
 .lb-menu a {display:block}
 .lb-menu li a {padding-top:25px;}
-html[dir='rtl'] .lb-menu {float:right;}
-html[dir='rtl'] .lb-menu li {float:right;}
+html[dir=rtl] .lb-menu {float:right;}
+html[dir=rtl] .lb-menu li {float:right;}
 
 .lb-menu .popup{position:absolute;left:-50px;width:140px;z-index:999}
 .lb-menu .popup ul {background-color:#FFEEB0;border:#FECF5B 1px solid;padding:0;box-shadow: 3px 4px #171717;}
@@ -1468,8 +1468,8 @@ table.tabs_table #side_bar a#alturl {font-size:9px}
 #lightbox_content .album_media_title{width: 122px;font-size:11px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 2px;margin-top: 5px;
 color: #e2e2e2;text-align: center;}
 #lightbox_content #clearlist {display:block;}
-html[dir='rtl'] #lightbox_content #thumblist  {float:right;}
-html[dir='rtl'] #lightbox_content #thumblist li  {float:right; margin-left:5px;}
+html[dir=rtl] #lightbox_content #thumblist  {float:right;}
+html[dir=rtl] #lightbox_content #thumblist li  {float:right; margin-left:5px;}
 
 /* Google maps tab  */
 #googlemap_left > img {display:none}
