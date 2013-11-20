@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-09 18:17+0000\n"
-"PO-Revision-Date: 2013-10-15 23:38+0100\n"
+"PO-Revision-Date: 2013-11-20 08:18+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -391,14 +391,14 @@ msgstr[1] "%s weken"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s jaar"
-msgstr[1] "%sjaren"
+msgstr[1] "%s jaar"
 
 #: library/WT/I18N.php:388
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
 msgstr[0] "%s jaar geleden"
-msgstr[1] "%s jaren geleden"
+msgstr[1] "%s jaar geleden"
 
 #: calendar.php:564 includes/functions/functions_print_lists.php:1879
 #: modules_v3/yahrzeit/module.php:116
@@ -436,7 +436,7 @@ msgstr "&lt;selecteer&gt;"
 msgid "&plusmn;%d year"
 msgid_plural "&plusmn;%d years"
 msgstr[0] "&plusmin;%d jaar"
-msgstr[1] "&plusmin;%d jaren"
+msgstr[1] "&plusmin;%d jaar"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
 #: library/WT/I18N.php:366 library/WT/I18N.php:370
@@ -9839,7 +9839,7 @@ msgstr "Opmerking: langere paden hebben veel rekenwerk nodig, wat  de site voor 
 msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
 msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
 msgstr[0] "Opmerking: “in leven” wordt geacht te zijn beëindigd %d jaar na geboorte of geschatte geboorte (als geen overlijden of begrafenis bekend is)."
-msgstr[1] "Opmerking: “in leven” wordt geacht te zijn beëindigd %d jaren na geboorte of geschatte geboorte (als geen overlijden of begrafenis bekend is)."
+msgstr[1] "Opmerking: “in leven” wordt geacht te zijn beëindigd %d jaar na geboorte of geschatte geboorte (als geen overlijden of begrafenis bekend is)."
 
 #. I18N: Name of a module
 #: admin.php:229 admin.php:261 library/WT/Controller/Search.php:574
@@ -15973,7 +15973,7 @@ msgstr "geboortenaam"
 #: admin_trees_config.php:509
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr "geboren in de laatste %1$s jaren of gestorven in de laatste %2$s jaren."
+msgstr "geboren in de laatste %1$s jaar of gestorven in de laatste %2$s jaar."
 
 #: includes/functions/functions.php:842 modules_v3/relatives/module.php:251
 msgid "brother"
@@ -16678,7 +16678,7 @@ msgstr "van"
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
 msgstr[0] "van %1$s interval %2$s jaar"
-msgstr[1] "van %1$s interval %2$s jaren"
+msgstr[1] "van %1$s interval %2$s jaar"
 
 #. I18N: Gedcom FROM dates
 #: library/WT/Date.php:241
@@ -18264,7 +18264,7 @@ msgstr "vertaald %s (%s)"
 msgid "interval %s year"
 msgid_plural "interval %s years"
 msgstr[0] "interval %s jaar"
-msgstr[1] "interval %s jaren"
+msgstr[1] "interval %s jaar"
 
 #: statistics.php:603
 msgid "interval one child"
