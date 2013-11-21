@@ -218,7 +218,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		// Save the updated preferences
 		if (WT_Filter::post('action')=='save') {
 			foreach (WT_Tree::getAll() as $tree) {
-				set_gedcom_setting($tree->tree_id, 'include_in_sitemap', WT_Filter::postBool('include'.$tree->tree_id));
+				set_gedcom_setting($tree->tree_id, 'include_in_sitemap', (bool) WT_Filter::postBool('include'.$tree->tree_id));
 			}
 			// Clear cache and force files to be regenerated
 			WT_DB::prepare(
@@ -234,7 +234,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			WT_I18N::translate('Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href="http://www.sitemaps.org/">www.sitemaps.org</a>.').
 			'</p>',
 			'<p>', WT_I18N::translate('Which family trees should be included in the sitemaps?'), '</p>',
-			'<form method="post" action="?">',
+			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=admin">',
 			'<input type="hidden" name="action" value="save">';
 		foreach (WT_Tree::getAll() as $tree) {
 			echo '<p><input type="checkbox" name="include', $tree->tree_id, '"';
@@ -251,7 +251,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 
 		if ($include_any) {
 			$site_map_url1=WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap.xml';
-			$site_map_url2=rawurlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&mod_action=generate&file=sitemap.xml');
+			$site_map_url2=rawurlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'amp;mod_action=generate&amp;file=sitemap.xml');
 			echo '<p>', WT_I18N::translate('To tell search engines that sitemaps are available, you should add the following line to your robots.txt file.'), '</p>';
 			echo
 				'<pre>Sitemap: ', $site_map_url1, '</pre>',
