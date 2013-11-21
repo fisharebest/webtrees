@@ -3,4 +3,4 @@
 	url = https://github.com/JustCarmen/fancy_treeview
 [submodule "modules_v3/fancy_research_links"]
 	path = modules_v3/fancy_research_links
-	url = ../fancy_research_links
+	url = https://github.com/JustCarmen/fancy_research_links
