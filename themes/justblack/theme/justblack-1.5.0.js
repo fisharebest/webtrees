@@ -159,6 +159,19 @@ jQuery(document).ready(function($){
 			tClass.css({"height" : "auto"}); // set the value back;
 		}			
 	}
+	
+	function resizeImg() {		
+		$("#cboxLoadedContent").css('overflow-x', 'hidden');
+		var outerW = parseInt($("#cboxLoadedContent").css("width"), 10);
+		var innerW = parseInt($(".cboxPhoto").css("width"), 10);
+		if (innerW > outerW) {		
+			var innerH = parseInt($(".cboxPhoto").css("height"), 10);
+			var ratio = innerH/innerW;
+			var outerH = outerW * ratio;
+			$(".cboxPhoto").css({"width": outerW + "px", "height": outerH + "px"});		
+		}
+	}
+	
 	// add colorbox function to all images on the page when first clicking on an image.	
 	$("body").one('click', 'a.gallery', function(event) {
 		get_imagetype();	
@@ -175,9 +188,6 @@ jQuery(document).ready(function($){
 							},
 			onComplete:		function() {				
 								$(".cboxPhoto").wheelzoom();
-								if($(".cboxPhoto").width() <= $("#cboxContent").width()) {
-									$("#cboxLoadedContent").css('overflow-x', 'hidden');
-								}
 								$(".cboxPhoto img").on("click", function(e) {e.preventDefault();});								
 								var note = $(this).data("obje-note");
 								if(note != '') {
@@ -197,11 +207,14 @@ jQuery(document).ready(function($){
 								if($(this).data('obje-type') === 'photo') return true;
 								else return false;							
 							},
-			maxWidth:		"95%",
-			maxHeight:		"95%",
+			maxWidth:		"90%",
+			maxHeight:		"90%",
 			title:			function(){
 								var img_title = jQuery(this).data("title");
 								return "<div class=\"title\">" + img_title + "</div>";
+							},
+			onComplete:		function() {
+								if($(this).data('obje-type') !== 'photo') resizeImg();
 							}
 		});
 		
