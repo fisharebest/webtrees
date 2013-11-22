@@ -4,3 +4,6 @@
 [submodule "modules_v3/fancy_research_links"]
 	path = modules_v3/fancy_research_links
 	url = https://github.com/JustCarmen/fancy_research_links
+[submodule "modules_v3/justblack_theme_options"]
+	path = modules_v3/justblack_theme_options
+	url = https://github.com/JustCarmen/justblack_theme_options.git
