@@ -7,3 +7,6 @@
 [submodule "modules_v3/justblack_theme_options"]
 	path = modules_v3/justblack_theme_options
 	url = https://github.com/JustCarmen/justblack_theme_options.git
+[submodule "themes/justblack"]
+	path = themes/justblack
+	url = https://github.com/JustCarmen/justblack
