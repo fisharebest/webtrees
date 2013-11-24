@@ -587,7 +587,7 @@ case 'INDEX_DIRECTORY':
 	break;
 
 case 'INDI_FACTS_ADD':
-	$title=WT_I18N::translate('Individual add facts');
+	$title=WT_I18N::translate('All individual facts');
 	$text=WT_I18N::translate('This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list.');
 	break;
 
@@ -793,7 +793,7 @@ case 'QUICK_REQUIRED_FAMFACTS':
 	break;
 
 case 'REPO_FACTS_ADD':
-	$title=WT_I18N::translate('Repository add facts');
+	$title=WT_I18N::translate('All repository facts');
 	$text=WT_I18N::translate('This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Repository Facts</i> list.');
 	break;
 
@@ -904,7 +904,7 @@ case 'SOURCE_ID_PREFIX':
 	break;
 
 case 'SOUR_FACTS_ADD':
-	$title=WT_I18N::translate('Source add facts');
+	$title=WT_I18N::translate('All source facts');
 	$text=WT_I18N::translate('This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Source Facts</i> list.');
 	break;
 

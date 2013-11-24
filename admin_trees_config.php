@@ -1083,7 +1083,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('All facts'), help_link('INDI_FACTS_ADD'); ?>
+					<?php echo WT_I18N::translate('All individual facts'), help_link('INDI_FACTS_ADD'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_INDI_FACTS_ADD" name="NEW_INDI_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_INDI_FACTS_ADD'); ?>
@@ -1091,7 +1091,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('Unique facts'), help_link('INDI_FACTS_UNIQUE'); ?>
+					<?php echo WT_I18N::translate('Unique individual facts'), help_link('INDI_FACTS_UNIQUE'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_INDI_FACTS_UNIQUE" name="NEW_INDI_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_INDI_FACTS_UNIQUE'); ?>
@@ -1099,7 +1099,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('New entry facts'), help_link('QUICK_REQUIRED_FACTS'); ?>
+					<?php echo WT_I18N::translate('Facts for new individuals'), help_link('QUICK_REQUIRED_FACTS'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_QUICK_REQUIRED_FACTS" name="NEW_QUICK_REQUIRED_FACTS" value="<?php echo $QUICK_REQUIRED_FACTS; ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_QUICK_REQUIRED_FACTS'); ?>
@@ -1107,7 +1107,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('Quick facts'), help_link('INDI_FACTS_QUICK'); ?>
+					<?php echo WT_I18N::translate('Quick individual facts'), help_link('INDI_FACTS_QUICK'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_INDI_FACTS_QUICK" name="NEW_INDI_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_INDI_FACTS_QUICK'); ?>
@@ -1120,7 +1120,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('All facts'), help_link('FAM_FACTS_ADD'); ?>
+					<?php echo WT_I18N::translate('All family facts'), help_link('FAM_FACTS_ADD'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_FAM_FACTS_ADD" name="NEW_FAM_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_FAM_FACTS_ADD'); ?>
@@ -1128,7 +1128,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('Unique facts'), help_link('FAM_FACTS_UNIQUE'); ?>
+					<?php echo WT_I18N::translate('Unique family facts'), help_link('FAM_FACTS_UNIQUE'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_FAM_FACTS_UNIQUE" name="NEW_FAM_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_FAM_FACTS_UNIQUE'); ?>
@@ -1136,7 +1136,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('New entry facts'), help_link('QUICK_REQUIRED_FAMFACTS'); ?>
+					<?php echo WT_I18N::translate('Facts for new families'), help_link('QUICK_REQUIRED_FAMFACTS'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_QUICK_REQUIRED_FAMFACTS" name="NEW_QUICK_REQUIRED_FAMFACTS" value="<?php echo $QUICK_REQUIRED_FAMFACTS; ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_QUICK_REQUIRED_FAMFACTS'); ?>
@@ -1144,7 +1144,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('Quick facts'), help_link('FAM_FACTS_QUICK'); ?>
+					<?php echo WT_I18N::translate('Quick family facts facts'), help_link('FAM_FACTS_QUICK'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_FAM_FACTS_QUICK" name="NEW_FAM_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_FAM_FACTS_QUICK'); ?>
@@ -1157,7 +1157,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('All facts'), help_link('SOUR_FACTS_ADD'); ?>
+					<?php echo WT_I18N::translate('All source facts'), help_link('SOUR_FACTS_ADD'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_SOUR_FACTS_ADD" name="NEW_SOUR_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_SOUR_FACTS_ADD'); ?>
@@ -1165,7 +1165,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('Unique facts'), help_link('SOUR_FACTS_UNIQUE'); ?>
+					<?php echo WT_I18N::translate('Unique source facts'), help_link('SOUR_FACTS_UNIQUE'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_SOUR_FACTS_UNIQUE" name="NEW_SOUR_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_SOUR_FACTS_UNIQUE'); ?>
@@ -1173,7 +1173,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('Quick facts'), help_link('SOUR_FACTS_QUICK'); ?>
+					<?php echo WT_I18N::translate('Quick source facts'), help_link('SOUR_FACTS_QUICK'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_SOUR_FACTS_QUICK" name="NEW_SOUR_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_SOUR_FACTS_QUICK'); ?>
@@ -1186,7 +1186,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('All facts'), help_link('REPO_FACTS_ADD'); ?>
+					<?php echo WT_I18N::translate('All repository facts'), help_link('REPO_FACTS_ADD'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_REPO_FACTS_ADD" name="NEW_REPO_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_REPO_FACTS_ADD'); ?>
@@ -1194,7 +1194,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('Unique facts'), help_link('REPO_FACTS_UNIQUE'); ?>
+					<?php echo WT_I18N::translate('Unique repository facts'), help_link('REPO_FACTS_UNIQUE'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_REPO_FACTS_UNIQUE" name="NEW_REPO_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_REPO_FACTS_UNIQUE'); ?>
@@ -1202,7 +1202,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('Quick facts'), help_link('REPO_FACTS_QUICK'); ?>
+					<?php echo WT_I18N::translate('Quick repository facts'), help_link('REPO_FACTS_QUICK'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_REPO_FACTS_QUICK" name="NEW_REPO_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_REPO_FACTS_QUICK'); ?>
