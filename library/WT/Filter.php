@@ -175,7 +175,7 @@ class WT_Filter {
 	}
 
 	public static function getBool($variable) {
-		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_BOOLEAN);
+		return (bool)filter_input(INPUT_GET, $variable, FILTER_VALIDATE_BOOLEAN);
 	}
 
 	public static function getInteger($variable, $min=0, $max=PHP_INT_MAX, $default=0) {
@@ -202,7 +202,7 @@ class WT_Filter {
 	}
 
 	public static function postBool($variable) {
-		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_BOOLEAN);
+		return (bool)filter_input(INPUT_POST, $variable, FILTER_VALIDATE_BOOLEAN);
 	}
 
 	public static function postInteger($variable, $min=0, $max=PHP_INT_MAX, $default=0) {
