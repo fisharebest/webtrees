@@ -1153,16 +1153,14 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 .list_table_controls td {min-width:40px;text-align:center;}
 
 /* ============== medialist.php ======================= */
-#lightbox-menu {margin-bottom:60px;}
-.lb-menu {position:relative; float:left; list-style-type:none; margin:0;}
-.lb-menu ul {list-style-type:none;}
-.lb-menu li {font-weight:normal; float:left; top:0;}
-.lb-menu > li ul {display:none;width:80px;}
-.lb-menu > li:hover  ul {display:block; top:36px;}
-.lb-menu a {display:block;}
+.lb-menu {display:inline-block; margin:0;}
+.lb-menu ul {display:block;list-style-type:none;}
+.lb-menu > li {font-weight:normal; float:left; margin-right:2px; top:0;}
+.lb-menu li:first-child {padding-left:0;}
+.lb-menu > li ul {display:none;}
+.lb-menu > li:hover ul {display:block; top:36px;}
 .lb-menu li li a {padding:1px 10px 1px 5px;}
-html[dir=rtl] .lb-menu {float:right;}
-html[dir=rtl] .lb-menu li {float:right;}
+html[dir=rtl] .lb-menu > li {float:right;}
 
 /* ============== login.php ======================= */
 #login-register-page h2 {text-align:center;}

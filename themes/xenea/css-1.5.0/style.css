@@ -1460,21 +1460,22 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 .list_table_controls td {min-width:40px;text-align:center;}
 
 /* ============== medialist.php ======================= */
-#lightbox-menu {margin-bottom:60px;}
-.lb-menu {position:relative; float:left; list-style-type:none; margin:0;}
-.lb-menu ul {list-style-type:none;}
-.lb-menu li {font-weight:normal; float:left; top:0;}
-.lb-menu > li ul {display:none;width:80px;}
+.lb-menu {display:inline-block; margin:0;}
+.lb-menu ul {display:block;list-style-type:none;}
+.lb-menu > li {font-weight:normal; float:left; top:0;}
+.lb-menu li:first-child {padding-left:0;}
+.lb-menu > li ul {display:none;}
 .lb-menu > li:hover ul {display:block; top:36px;}
 .lb-menu a {display:block;}
-.lb-menu li a {padding-top:24px;}
+.lb-menu li a {color:#0000ff;font-weight:normal;padding-top:24px;}
+.lb-menu li a:hover {color:#ff0000;font-weight:normal}
 .lb-menu li li a {padding:1px 10px 1px 5px;}
-html[dir=rtl] .lb-menu {float:right;}
-html[dir=rtl] .lb-menu li {float:right;}
+.lb-image_edit, .lb-image_link {padding-right:5px;}
+html[dir=rtl] .lb-menu > li {float:right;}
 
-li#lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
-li#lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
-li#lb-image_view {background:url(images/image_view.png) no-repeat 50% 20%;}
+.lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
+.lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
+.lb-image_view {background:url(images/image_view.png) no-repeat 50% 20%;}
 
 /* ============== login.php ======================= */
 #login-register-page h2 {text-align:center;}
@@ -2077,10 +2078,6 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(images/u
 #indi_mainimage .icon-silhouette-F {width: 99px; height:106px; background-image:url(images/silhouette_female.png);}
 #indi_mainimage .icon-silhouette-M {width: 99px; height: 99px; background-image:url(images/silhouette_male.png);}
 #indi_mainimage .icon-silhouette-U {width:100px; height: 97px; background-image:url(images/silhouette_unknown.png);}
-
-/* style needed for lightbox album icons */
-#medialist-page .list_value_wrap a {color:#0000ff;font-weight:normal}
-#medialist-page .list_value_wrap a:hover {color:#ff0000;font-weight:normal}
 
 /* Edit interface pop-ups*/
 #edit_interface-page h4 {color:#555555;margin:5px;}
