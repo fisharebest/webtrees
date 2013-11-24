@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 
 // Create GM tables, if not already present
 try {
-	WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'/googlemap/db_schema/', 'GM_SCHEMA_VERSION', 4);
+	WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'/googlemap/db_schema/', 'GM_SCHEMA_VERSION', 5);
 } catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);
@@ -59,9 +59,6 @@ global $GOOGLEMAP_PRECISION_4;
 $GOOGLEMAP_PRECISION_4 = get_module_setting('googlemap', 'GM_PRECISION_4', '4');  // House level
 global $GOOGLEMAP_PRECISION_5;
 $GOOGLEMAP_PRECISION_5 = get_module_setting('googlemap', 'GM_PRECISION_5', '9');  // Max prcision level
-
-global $GM_MAX_NOF_LEVELS;
-$GM_MAX_NOF_LEVELS     = get_module_setting('googlemap', 'GM_MAX_NOF_LEVELS',    '4'); // Max nr of levels to use in Googlemap
 
 global $GOOGLEMAP_COORD;
 $GOOGLEMAP_COORD       = get_module_setting('googlemap', 'GM_COORD',             '0'); // Enable or disable Display Map Co-ordinates
