@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-09 17:47+0000\n"
+"POT-Creation-Date: 2013-11-24 22:39+0000\n"
 "PO-Revision-Date: 2013-08-04 16:29+0000\n"
 "Last-Translator: Vytautas Krivickas <Unknown>\n"
 "Language-Team: \n"
@@ -18,6 +18,32 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+
+#: modules_v3/ahnentafel_report/report.xml:158
+#: modules_v3/ahnentafel_report/report.xml:186
+#: modules_v3/ahnentafel_report/report.xml:281
+#: modules_v3/ahnentafel_report/report.xml:309
+#: modules_v3/ahnentafel_report/report.xml:334
+#: modules_v3/ahnentafel_report/report.xml:365
+msgid " but the details are unknown"
+msgstr " bet detalės yra nežinomos"
+
+#: modules_v3/ahnentafel_report/report.xml:157
+#: modules_v3/ahnentafel_report/report.xml:185
+#: modules_v3/ahnentafel_report/report.xml:212
+#: modules_v3/ahnentafel_report/report.xml:280
+#: modules_v3/ahnentafel_report/report.xml:308
+#: modules_v3/ahnentafel_report/report.xml:333
+#: modules_v3/ahnentafel_report/report.xml:364
+#: modules_v3/descendancy_report/report.xml:125
+#: modules_v3/descendancy_report/report.xml:157
+#: modules_v3/descendancy_report/report.xml:314
+#: modules_v3/descendancy_report/report.xml:352
+#: modules_v3/descendancy_report/report.xml:383
+#: modules_v3/descendancy_report/report.xml:422
+#: modules_v3/descendancy_report/report.xml:453
+msgid " in "
+msgstr " į "
 
 #: statisticsplot.php:804
 msgid " per gender"
@@ -645,66 +671,81 @@ msgstr "Būsimasis naudotojas užsiregistravo su webtrees į %s."
 
 #. I18N: Description of the “Pedigree” module
 #: modules_v3/pedigree_report/module.php:41
+#: modules_v3/pedigree_report/report.xml:5
 msgid "A report of an individual’s ancestors, formatted as a tree."
 msgstr "Ataskaita apie asmens protėvius, kuri suformuota kaip medis."
 
 #. I18N: Description of the “Ancestors” module
 #: modules_v3/ahnentafel_report/module.php:41
+#: modules_v3/ahnentafel_report/report.xml:6
 msgid "A report of an individual’s ancestors, in a narrative style."
 msgstr "Ataskaita apie asmens protėvius, kuri pateikta pasakojamuoju stiliumi."
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy_report/module.php:41
+#: modules_v3/descendancy_report/report.xml:5
 msgid "A report of an individual’s descendants, in a narrative style."
 msgstr "Ataskaita apie asmens palikuonis, kuri pateikta pasakojamuoju stiliumi."
 
 #. I18N: Description of the “Individual” module
 #: modules_v3/individual_report/module.php:41
+#: modules_v3/individual_report/report.xml:5
 msgid "A report of an individual’s details."
 msgstr "Ataskaita apie asmens duomenis."
 
+#: modules_v3/fact_sources/report.xml:5
+msgid "A report of facts which are supported by a given source."
+msgstr "Faktai, kurie yra paremiami nurodytu šaltiniu."
+
 #. I18N: Description of the “Family” module
 #: modules_v3/family_group_report/module.php:41
+#: modules_v3/family_group_report/report.xml:5
 msgid "A report of family members and their details."
 msgstr "Informacija apie šeimos narius ir duomenys apie juos."
 
 #. I18N: Description of the “Deaths” module
-#: modules_v3/death_report/module.php:41
+#: modules_v3/death_report/module.php:41 modules_v3/death_report/report.xml:5
 msgid "A report of individuals who died in a given time or place."
 msgstr "Ataskaita apie asmenis, kurie mirė tam tikru metu ar toje pat vietoje."
 
 #. I18N: Description of the “Occupations” module
 #: modules_v3/occupation_report/module.php:41
+#: modules_v3/occupation_report/report.xml:5
 msgid "A report of individuals who had a given occupation."
 msgstr "Sąrašas asmenų turintis nurodytą profesiją."
 
 #. I18N: Description of the “Births” module
-#: modules_v3/birth_report/module.php:41
+#: modules_v3/birth_report/module.php:41 modules_v3/birth_report/report.xml:5
 msgid "A report of individuals who were born in a given time or place."
 msgstr "Ataskaita apie asmenis kurie gimė nurodytu laiku ar vietovėje."
 
 #. I18N: Description of the “Cemeteries” module
 #: modules_v3/cemetery_report/module.php:41
+#: modules_v3/cemetery_report/report.xml:5
 msgid "A report of individuals who were buried in a given place."
 msgstr "Ataskaita apie asmenis palaidotus nurodytoje vietovėje."
 
 #. I18N: Description of the “Marriages” module
 #: modules_v3/marriage_report/module.php:41
+#: modules_v3/marriage_report/report.xml:5
 msgid "A report of individuals who were married in a given time or place."
 msgstr "Ataskaita apie asmenis, kurie vedė/ištekėjo duotu laikotarpiu ar vietovėje."
 
 #. I18N: Description of the “Changes” module
 #: modules_v3/change_report/module.php:41
+#: modules_v3/change_report/report.xml:5
 msgid "A report of recent and pending changes."
 msgstr "Ataskaita apie neseniai darytus ir laukiančius patvirtinimo pakeitimus."
 
 #. I18N: Description of the “Related families”
 #: modules_v3/individual_ext_report/module.php:41
+#: modules_v3/individual_ext_report/report.xml:5
 msgid "A report of the families that are closely related to an individual."
 msgstr "Ataskaita apie šeimas susijusias su asmeniu."
 
 #. I18N: Description of the “Related individuals” module
 #: modules_v3/relative_ext_report/module.php:41
+#: modules_v3/relative_ext_report/report.xml:5
 msgid "A report of the individuals that are closely related to an individual."
 msgstr "Ataskaita apie asmenis kurie artimai susije su asmeniu."
 
@@ -715,11 +756,12 @@ msgstr "Ataskaita apie pateiktą informacijos šaltinį."
 
 #. I18N: Description of the “Missing data”
 #: modules_v3/missing_facts_report/module.php:41
+#: modules_v3/missing_facts_report/report.xml:5
 msgid "A report of the information that is missing for an individual and their relatives."
 msgstr "Trūkstamos informacijos apie asmenis ir jų gimines ataskaita."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:41
+#: modules_v3/bdm_report/module.php:41 modules_v3/bdm_report/report.xml:5
 msgid "A report of vital records for a given date or place."
 msgstr "Įrašų ataskaitą pagal duotą datą ar vietovę."
 
@@ -789,6 +831,44 @@ msgstr ""
 #: includes/functions/functions_date.php:115
 msgid "A.M."
 msgstr ""
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A3"
+msgstr "A3"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A4"
+msgstr "A4"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1575,11 +1655,19 @@ msgstr "Gyvi"
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
 #: indilist.php:167 indilist.php:251 indilist.php:253
-#: library/WT/Stats.php:3325 modules_v3/faq/module.php:186
+#: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
 #: modules_v3/googlemap/admin_places.php:756
 #: modules_v3/googlemap/module.php:1481 modules_v3/googlemap/module.php:1497
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:8
 #: modules_v3/random_media/module.php:264
+#: modules_v3/relative_ext_report/report.xml:7
 #: modules_v3/user_messages/module.php:91
 msgid "All"
 msgstr "VISI"
@@ -1705,6 +1793,7 @@ msgstr "Netikėta duomenų bazės klaida."
 #: library/WT/Controller/Ancestry.php:83
 #: library/WT/Controller/Fanchart.php:314 library/WT/MenuBar.php:106
 #: modules_v3/ahnentafel_report/module.php:35
+#: modules_v3/ahnentafel_report/report.xml:5
 msgid "Ancestors"
 msgstr "Protėviai"
 
@@ -1712,6 +1801,10 @@ msgstr "Protėviai"
 #: library/WT/Gedcom/Tag.php:124
 msgid "Ancestors interest"
 msgstr "Protėvių interesai"
+
+#: modules_v3/ahnentafel_report/report.xml:53
+msgid "Ancestors of "
+msgstr ""
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Ancestry.php:80
@@ -1891,6 +1984,25 @@ msgstr ""
 #: library/WT/Stats.php:3784
 msgid "Argentina"
 msgstr "Argentina"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Arial"
+msgstr "Arial"
 
 #: library/WT/Stats.php:3785
 msgid "Armenia"
@@ -2340,7 +2452,32 @@ msgid "Birmingham, Alabama"
 msgstr "Birmingham, Alabama"
 
 #. I18N: gedcom tag BIRT
-#: library/WT/Gedcom/Tag.php:140
+#: library/WT/Gedcom/Tag.php:140 modules_v3/bdm_report/report.xml:56
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:177
+#: modules_v3/family_group_report/report.xml:528
+#: modules_v3/family_group_report/report.xml:869
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:54
 msgid "Birth"
 msgstr "Gimė"
 
@@ -2358,6 +2495,18 @@ msgstr "Gimė"
 msgctxt "Pedigree"
 msgid "Birth"
 msgstr "Gimė"
+
+#: modules_v3/bdm_report/report.xml:9 modules_v3/birth_report/report.xml:9
+msgid "Birth Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
+msgid "Birth Date range start"
+msgstr ""
+
+#: modules_v3/birth_report/report.xml:7
+msgid "Birth Place contains"
+msgstr "Gimimo vietos yra"
 
 #: library/WT/Stats.php:1014 statistics.php:553
 msgid "Birth by country"
@@ -2441,7 +2590,8 @@ msgid "Birth:"
 msgstr "Gimė:"
 
 #. I18N: Name of a module/report
-#: modules_v3/birth_report/module.php:35
+#: modules_v3/birth_report/module.php:35 modules_v3/birth_report/report.xml:4
+#: modules_v3/birth_report/report.xml:29
 msgid "Births"
 msgstr "Gimimai"
 
@@ -2606,6 +2756,11 @@ msgstr "Isole Vergini Britanniche"
 msgid "British West Indies"
 msgstr ""
 
+#: modules_v3/individual_ext_report/report.xml:311
+#: modules_v3/individual_report/report.xml:313
+msgid "Brother"
+msgstr "Brolis"
+
 #: library/WT/Date/French.php:71
 msgctxt "GENITIVE"
 msgid "Brumaire"
@@ -2639,9 +2794,15 @@ msgid "Bulgaria"
 msgstr "Bulgarija"
 
 #. I18N: gedcom tag BURI
-#: library/WT/Gedcom/Tag.php:147
+#: library/WT/Gedcom/Tag.php:147 modules_v3/family_group_report/report.xml:346
+#: modules_v3/family_group_report/report.xml:697
+#: modules_v3/family_group_report/report.xml:1038
 msgid "Burial"
 msgstr "Laidotuvės"
+
+#: modules_v3/cemetery_report/report.xml:6
+msgid "Burial Place contains"
+msgstr ""
 
 #: library/WT/Gedcom/Tag.php:531
 msgid "Burial of a brother"
@@ -2914,11 +3075,13 @@ msgstr "Isole Cayman"
 
 #. I18N: Name of a module/report
 #: modules_v3/cemetery_report/module.php:35
+#: modules_v3/cemetery_report/report.xml:4
+#: modules_v3/cemetery_report/report.xml:33
 msgid "Cemeteries"
 msgstr "Kapinės"
 
 #. I18N: gedcom tag CEME
-#: library/WT/Gedcom/Tag.php:153
+#: library/WT/Gedcom/Tag.php:153 modules_v3/cemetery_report/report.xml:52
 msgid "Cemetery"
 msgstr "Kapinės"
 
@@ -2996,6 +3159,8 @@ msgstr "Pakeista į %1$s iš %2$s"
 
 #. I18N: Name of a module/report
 #: admin_site_change.php:29 modules_v3/change_report/module.php:35
+#: modules_v3/change_report/report.xml:4
+#: modules_v3/change_report/report.xml:42
 msgid "Changes"
 msgstr "Pakeitimai"
 
@@ -3069,6 +3234,11 @@ msgstr "Chicago, Ilinojus"
 msgid "Child"
 msgstr "Vaikas"
 
+#: modules_v3/ahnentafel_report/report.xml:394
+#: modules_v3/descendancy_report/report.xml:479
+msgid "Child of "
+msgstr "vaikas "
+
 #. I18N: e.g. “Child of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:331
 #, php-format
@@ -3076,13 +3246,20 @@ msgid "Child of %s"
 msgstr "%s vaikas"
 
 #: includes/functions/functions_print_lists.php:215
-#: includes/functions/functions_print_lists.php:637 statisticsplot.php:784
+#: includes/functions/functions_print_lists.php:637
+#: modules_v3/family_group_report/report.xml:753
+#: modules_v3/relative_ext_report/report.xml:121 statisticsplot.php:784
 msgid "Children"
 msgstr "Vaikai"
 
 #: statistics.php:288
 msgid "Children in family"
 msgstr "Vaikų šeimoje"
+
+#: modules_v3/ahnentafel_report/report.xml:397
+#: modules_v3/descendancy_report/report.xml:482
+msgid "Children of "
+msgstr "vaikai "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: help_text.php:962
@@ -3121,6 +3298,12 @@ msgstr "Cina"
 msgid "Choose a report to run"
 msgstr "Pasirinkite raportą vykdymui"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Choose relatives"
+msgstr "Pasirinkite giminaičius"
+
 #: help_text.php:355
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
 msgstr "Iš išplečiamojo sąrašo pasirinkite tinkamą lytį. <b>Nežinoma</b> rodo, kad lytis yra nežinoma."
@@ -3142,7 +3325,9 @@ msgid "Choose: "
 msgstr "Pasirinkite: "
 
 #. I18N: gedcom tag CHR
-#: library/WT/Gedcom/Tag.php:162
+#: library/WT/Gedcom/Tag.php:162 modules_v3/family_group_report/report.xml:201
+#: modules_v3/family_group_report/report.xml:552
+#: modules_v3/family_group_report/report.xml:893
 msgid "Christening"
 msgstr "Krikštas"
 
@@ -3258,7 +3443,7 @@ msgctxt "MALE"
 msgid "Civil Registrar"
 msgstr ""
 
-#: library/WT/Gedcom/Tag.php:255
+#: library/WT/Gedcom/Tag.php:255 modules_v3/fact_sources/report.xml:200
 msgid "Civil marriage"
 msgstr "Civilinė santuoka"
 
@@ -3848,7 +4033,10 @@ msgstr "Naudotojo abonemento duomenų bazė"
 
 #. I18N: gedcom tag DATE
 #: edit_changes.php:173 help_text.php:177 help_text.php:207
-#: library/WT/Gedcom/Tag.php:183
+#: library/WT/Gedcom/Tag.php:183 modules_v3/bdm_report/report.xml:130
+#: modules_v3/bdm_report/report.xml:156 modules_v3/bdm_report/report.xml:190
+#: modules_v3/birth_report/report.xml:38 modules_v3/death_report/report.xml:44
+#: modules_v3/marriage_report/report.xml:44
 msgid "Date"
 msgstr "Data"
 
@@ -4011,6 +4199,12 @@ msgstr ""
 msgid "Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords."
 msgstr "Datos yra saugomos naudojant anglų santrumpas ir žodžius. Nuorodos yra prieinamas kaip alternatyva šiems sutrumpinimams ir raktažodžiams."
 
+#: modules_v3/family_group_report/report.xml:798
+#: modules_v3/individual_ext_report/report.xml:554
+#: modules_v3/individual_report/report.xml:556
+msgid "Daughter"
+msgstr "Dukra"
+
 #. I18N: e.g. “Daughter of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:328
 #, php-format
@@ -4035,9 +4229,46 @@ msgid "Dead"
 msgstr "Iš viso mirusių"
 
 #. I18N: gedcom tag DEAT
-#: library/WT/Gedcom/Tag.php:184
+#: library/WT/Gedcom/Tag.php:184 modules_v3/bdm_report/report.xml:85
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:284
+#: modules_v3/family_group_report/report.xml:635
+#: modules_v3/family_group_report/report.xml:976
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:60
 msgid "Death"
 msgstr "Mirė"
+
+#: modules_v3/bdm_report/report.xml:11 modules_v3/death_report/report.xml:9
+msgid "Death Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
+msgid "Death Date range start"
+msgstr ""
+
+#: modules_v3/death_report/report.xml:7
+msgid "Death Place contains"
+msgstr ""
 
 #: library/WT/Stats.php:1031 statistics.php:561
 msgid "Death by country"
@@ -4175,7 +4406,8 @@ msgid "Death places"
 msgstr "Mirčių vietovės"
 
 #. I18N: Name of a module/report
-#: modules_v3/death_report/module.php:35
+#: modules_v3/death_report/module.php:35 modules_v3/death_report/report.xml:4
+#: modules_v3/death_report/report.xml:30
 msgid "Deaths"
 msgstr "Mirtys"
 
@@ -4269,6 +4501,25 @@ msgstr "Įprastinis dydis aukščiausiam lygiui"
 msgid "Degree"
 msgstr "Mokslinis laipsnis"
 
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "DejaVu"
+msgstr "DejaVu"
+
 #: admin_site_access.php:284 admin_site_change.php:275
 #: admin_site_clean.php:126 admin_site_logs.php:242 admin_trees_config.php:614
 #: admin_trees_manage.php:231 edit_interface.php:151
@@ -4353,6 +4604,10 @@ msgstr "Palikuonio kartos"
 #: library/WT/MenuBar.php:105 modules_v3/charts/module.php:206
 #: modules_v3/descendancy/module.php:34
 #: modules_v3/descendancy_report/module.php:35
+#: modules_v3/descendancy_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
 msgid "Descendants"
 msgstr "Palikuonys"
 
@@ -4360,6 +4615,10 @@ msgstr "Palikuonys"
 #: library/WT/Gedcom/Tag.php:189
 msgid "Descendants interest"
 msgstr "Palikuonių pomėgiai"
+
+#: modules_v3/descendancy_report/report.xml:40
+msgid "Descendants of "
+msgstr "Palikuonys "
 
 #. I18N: %s is an individual’s name
 #: descendancy.php:117 descendancy.php:123
@@ -4493,9 +4752,25 @@ msgstr ""
 msgid "Died as an infant: exempt"
 msgstr ""
 
+#: modules_v3/change_report/report.xml:58
+msgid "Differences"
+msgstr "Skirtumai"
+
 #: help_text.php:444
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
 msgstr ""
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors"
+msgstr "Tiesioginė protėvių linija"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors and their families"
+msgstr "Tiesioginė protėvių ir jų šeimų linija"
 
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
@@ -4901,6 +5176,10 @@ msgstr ""
 msgid "End Year"
 msgstr "Pabaigos metai"
 
+#: modules_v3/change_report/report.xml:7
+msgid "Ending range of change dates"
+msgstr "Užbaigiama sritis nuo datų pakeitimo"
+
 #. I18N: http://en.wikipedia.org/wiki/Endowment_house
 #: library/WT/Gedcom/Code/Temp.php:98
 msgid "Endowment House"
@@ -4914,6 +5193,20 @@ msgstr "Sužadėtuvės"
 #: library/WT/Stats.php:3847
 msgid "England"
 msgstr "Inghilterra"
+
+#: modules_v3/family_group_report/report.xml:7
+msgid "Enter Family ID"
+msgstr "Įveskite šeimos ID"
+
+#: modules_v3/ahnentafel_report/report.xml:7
+#: modules_v3/descendancy_report/report.xml:6
+#: modules_v3/individual_ext_report/report.xml:6
+#: modules_v3/individual_report/report.xml:6
+#: modules_v3/missing_facts_report/report.xml:6
+#: modules_v3/pedigree_report/report.xml:6
+#: modules_v3/relative_ext_report/report.xml:6
+msgid "Enter Individual ID"
+msgstr "Įveskite asmens ID"
 
 #: addmedia.php:448 modules_v3/gedcom_favorites/module.php:180
 msgid "Enter a Person, Family, or Source ID"
@@ -5043,7 +5336,9 @@ msgid "Europe"
 msgstr "Europa"
 
 #. I18N: gedcom tag EVEN
-#: library/WT/Gedcom/Tag.php:208
+#: library/WT/Gedcom/Tag.php:208 modules_v3/fact_sources/report.xml:68
+#: modules_v3/fact_sources/report.xml:155
+#: modules_v3/missing_facts_report/report.xml:53
 msgid "Event"
 msgstr "Įvykis"
 
@@ -5229,6 +5524,8 @@ msgid "Fact or event"
 msgstr "Faktas arba įvykis"
 
 #. I18N: Name of a module/tab on the individual page.
+#: modules_v3/individual_ext_report/report.xml:151
+#: modules_v3/individual_report/report.xml:146
 #: modules_v3/personal_facts/module.php:34
 #: modules_v3/random_media/module.php:264
 msgid "Facts and events"
@@ -5273,7 +5570,9 @@ msgstr "Isole Falkland"
 #: includes/functions/functions_print_lists.php:1084
 #: includes/functions/functions_print_lists.php:1276
 #: library/WT/Controller/Search.php:594 library/WT/MenuBar.php:300
-#: mediaviewer.php:135 modules_v3/gedcom_stats/module.php:101
+#: mediaviewer.php:135 modules_v3/fact_sources/report.xml:150
+#: modules_v3/fact_sources/report.xml:312
+#: modules_v3/gedcom_stats/module.php:101
 #: modules_v3/gedcom_stats/module.php:316
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:188
 #: modules_v3/relatives/module.php:34 note.php:101 placelist.php:232
@@ -5294,6 +5593,9 @@ msgstr "Šeimos su aprašymu"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:928
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:935
 #: modules_v3/family_group_report/module.php:35
+#: modules_v3/family_group_report/report.xml:4
+#: modules_v3/family_group_report/report.xml:86
+#: modules_v3/family_group_report/report.xml:94
 #: modules_v3/family_nav/module.php:302
 msgid "Family"
 msgstr "Šeima"
@@ -5411,8 +5713,14 @@ msgstr "Šeima su įtėviais"
 msgid "Family with foster parents"
 msgstr "Šeima su globėjais"
 
+#: modules_v3/individual_ext_report/report.xml:433
+#: modules_v3/individual_report/report.xml:435
+msgid "Family with husband"
+msgstr "Šeima su vyru"
+
 #: library/WT/Gedcom/Code/Pedi.php:89 library/WT/Gedcom/Code/Pedi.php:94
-#: library/WT/Person.php:996
+#: library/WT/Person.php:996 modules_v3/individual_ext_report/report.xml:229
+#: modules_v3/individual_report/report.xml:231
 msgid "Family with parents"
 msgstr "Šeima su tėvais"
 
@@ -5434,6 +5742,11 @@ msgstr "Šeima su sutuoktiniu"
 #: modules_v3/gedcom_stats/module.php:351 modules_v3/html/module.php:247
 msgid "Family with the most children"
 msgstr "Šeima turinti daugiausiai vaikų"
+
+#: modules_v3/individual_ext_report/report.xml:427
+#: modules_v3/individual_report/report.xml:429
+msgid "Family with wife"
+msgstr "Šeima su žmona"
 
 #: includes/functions/functions_print.php:102
 #: library/WT/Controller/Fanchart.php:55
@@ -5477,7 +5790,12 @@ msgctxt "NOMINATIVE"
 msgid "Farvardin"
 msgstr ""
 
-#: search_advanced.php:210
+#: modules_v3/bdm_report/report.xml:116
+#: modules_v3/family_group_report/report.xml:462
+#: modules_v3/family_group_report/report.xml:722
+#: modules_v3/individual_ext_report/report.xml:235
+#: modules_v3/individual_report/report.xml:237
+#: modules_v3/relative_ext_report/report.xml:62 search_advanced.php:210
 msgid "Father"
 msgstr "Tėvas"
 
@@ -5490,7 +5808,7 @@ msgid "Father's age"
 msgstr "Tėvo amžius"
 
 #. I18N: %s is the name of an individual’s father
-#: library/WT/Person.php:1634
+#: library/WT/Person.php:1638
 #, php-format
 msgid "Father: %s"
 msgstr "Tėvas: %s"
@@ -5648,6 +5966,7 @@ msgstr "Rasti saugyklą"
 
 #: admin_site_merge.php:295 admin_site_merge.php:316 find.php:91
 #: includes/functions/functions_print.php:1156
+#: modules_v3/fact_sources/report.xml:6
 msgid "Find a source"
 msgstr "Rasti šaltinį"
 
@@ -5726,6 +6045,24 @@ msgstr "Katalogas"
 #: addmedia.php:530 admin_media_upload.php:212 help_text.php:1449
 msgid "Folder name on server"
 msgstr "Aplanko pavadinimas serveryje"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgid "Font"
+msgstr "Šriftas"
 
 #: help_text.php:375
 msgid "For LDS ordinances, this field records the Temple where it was performed."
@@ -5954,7 +6291,11 @@ msgid "Gambia"
 msgstr "Gambija"
 
 #. I18N: gedcom tag SEX
-#: library/WT/Gedcom/Tag.php:314
+#: library/WT/Gedcom/Tag.php:314 modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592
 msgid "Gender"
 msgstr "Lytis"
 
@@ -5990,8 +6331,17 @@ msgstr "Sugeneruota %s"
 msgid "Generation"
 msgstr "Karta"
 
+#: modules_v3/ahnentafel_report/report.xml:76
+#: modules_v3/descendancy_report/report.xml:53
+msgid "Generation "
+msgstr "Karta "
+
 #: ancestry.php:112 descendancy.php:78 familybook.php:62 fanchart.php:68
-#: hourglass.php:75 modules_v3/googlemap/module.php:676 pedigree.php:44
+#: hourglass.php:75 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7
+#: modules_v3/googlemap/module.php:676
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/missing_facts_report/report.xml:8 pedigree.php:44
 msgid "Generations"
 msgstr "Kartos"
 
@@ -6244,6 +6594,40 @@ msgstr "Hamilton, Naujoji Zelandija"
 msgid "Hartford, Connecticut"
 msgstr "Hartford, Konektikutas"
 
+#: modules_v3/descendancy_report/report.xml:427
+msgid "He "
+msgstr "Jis "
+
+#: modules_v3/ahnentafel_report/report.xml:289
+msgid "He died"
+msgstr "Jis mirė"
+
+#: modules_v3/ahnentafel_report/report.xml:258
+#: modules_v3/descendancy_report/report.xml:172
+msgid "He married"
+msgstr "Jis vedė"
+
+#: modules_v3/ahnentafel_report/report.xml:220
+msgid "He resided at"
+msgstr ""
+
+#: modules_v3/descendancy_report/report.xml:400
+msgid "He was born"
+msgstr "Jis gimė"
+
+#: modules_v3/ahnentafel_report/report.xml:345
+msgid "He was buried"
+msgstr "Jis buvo palaidotas"
+
+#: modules_v3/ahnentafel_report/report.xml:164
+msgid "He was christened"
+msgstr "Jis buvo pakrikštytas"
+
+#: modules_v3/ahnentafel_report/report.xml:314
+#: modules_v3/ahnentafel_report/report.xml:341
+msgid "He was cremated"
+msgstr "Jis buvo kremuotas"
+
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:645
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:728
@@ -6296,6 +6680,29 @@ msgstr "Pagalba"
 #: library/WT/Gedcom/Code/Temp.php:110
 msgid "Helsinki, Finland"
 msgstr "Helsinki, Suomija"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Helvetica"
+msgstr "Helvetica"
+
+#: modules_v3/ahnentafel_report/report.xml:194
+msgid "Her occupation was"
+msgstr ""
 
 #: modules_v3/googlemap/help_text.php:71
 msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
@@ -6392,6 +6799,8 @@ msgstr "Paryškinti lango pavadinimą, tada spustelėkite vieną iš rodyklių p
 
 #. I18N: gedcom tag _PRIM
 #: library/WT/Gedcom/Tag.php:746
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
 msgid "Highlighted image"
 msgstr "Paryškintas paveikslas"
 
@@ -6399,6 +6808,10 @@ msgstr "Paryškintas paveikslas"
 #: help_text.php:227 library/WT/Date/Hijri.php:41
 msgid "Hijri"
 msgstr "Hijri"
+
+#: modules_v3/ahnentafel_report/report.xml:193
+msgid "His occupation was"
+msgstr ""
 
 #: modules_v3/personal_facts/module.php:88
 msgid "Historical facts"
@@ -6464,6 +6877,16 @@ msgstr "Ungheria"
 
 #. I18N: gedcom tag HUSB
 #: edit_interface.php:543 library/WT/Gedcom/Tag.php:235
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+#: modules_v3/family_group_report/report.xml:142
+#: modules_v3/family_group_report/report.xml:1076
+#: modules_v3/individual_ext_report/report.xml:194
+#: modules_v3/individual_ext_report/report.xml:208
+#: modules_v3/individual_ext_report/report.xml:441
+#: modules_v3/individual_report/report.xml:189
+#: modules_v3/individual_report/report.xml:210
+#: modules_v3/individual_report/report.xml:443
 msgid "Husband"
 msgstr "Vyras"
 
@@ -6725,6 +7148,8 @@ msgstr "Indija"
 #: inverselink.php:110 library/WT/Gedcom/Tag.php:240
 #: modules_v3/charts/module.php:221 modules_v3/googlemap/module.php:673
 #: modules_v3/individual_report/module.php:35
+#: modules_v3/individual_report/report.xml:4
+#: modules_v3/individual_report/report.xml:85
 #: modules_v3/stories/module.php:247 modules_v3/stories/module.php:350
 #: modules_v3/stories/module.php:416 pedigree.php:43
 msgid "Individual"
@@ -6771,6 +7196,8 @@ msgstr "Asmeninis įrašas"
 #: includes/functions/functions_print_lists.php:1365 indilist.php:132
 #: indilist.php:135 library/WT/Controller/Search.php:593
 #: library/WT/MenuBar.php:298 mediaviewer.php:132
+#: modules_v3/fact_sources/report.xml:52
+#: modules_v3/fact_sources/report.xml:256
 #: modules_v3/gedcom_stats/module.php:93
 #: modules_v3/gedcom_stats/module.php:300
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:172
@@ -7226,7 +7653,8 @@ msgstr ""
 msgid "Laie, Hawaii"
 msgstr "Laie, Havajai"
 
-#: admin_trees_config.php:812 pedigree.php:61
+#: admin_trees_config.php:812 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Landscape"
 msgstr "Horizontaliai"
 
@@ -7258,7 +7686,8 @@ msgid "Las Vegas, Nevada"
 msgstr "Las Vegas, Nevada"
 
 #. I18N: gedcom tag CHAN
-#: library/WT/Gedcom/Tag.php:157
+#: library/WT/Gedcom/Tag.php:157 modules_v3/change_report/report.xml:64
+#: modules_v3/change_report/report.xml:106
 msgid "Last change"
 msgstr "Paskutinis pakeitimas"
 
@@ -7336,6 +7765,25 @@ msgstr "Lapai"
 msgid "Lebanon"
 msgstr "Libano"
 
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Legal"
+msgstr ""
+
 #. I18N: gedcom tag LEGA
 #: library/WT/Gedcom/Tag.php:244
 msgid "Legatee"
@@ -7348,6 +7796,25 @@ msgstr "Šeimyninio gyvenimo trukmė"
 #: library/WT/Stats.php:3912
 msgid "Lesotho"
 msgstr "Lesotas"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Letter"
+msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:175
 #: modules_v3/googlemap/module.php:380 modules_v3/googlemap/module.php:1598
@@ -7724,14 +8191,27 @@ msgid "March"
 msgstr "Kovo"
 
 #. I18N: gedcom tag MARR
-#: library/WT/Gedcom/Tag.php:252
+#: library/WT/Gedcom/Tag.php:252 modules_v3/bdm_report/report.xml:76
+#: modules_v3/family_group_report/report.xml:372
 msgid "Marriage"
 msgstr "Santuoka"
+
+#: modules_v3/marriage_report/report.xml:9
+msgid "Marriage Date range end"
+msgstr "Santuokos datos srities pabaiga"
+
+#: modules_v3/marriage_report/report.xml:8
+msgid "Marriage Date range start"
+msgstr "Santuokos datos srities pradžia"
 
 #. I18N: gedcom tag _MARI
 #: library/WT/Gedcom/Tag.php:744
 msgid "Marriage Intention"
 msgstr "Ketinimas vesti"
+
+#: modules_v3/marriage_report/report.xml:7
+msgid "Marriage Place contains"
+msgstr ""
 
 #. I18N: gedcom tag MARB
 #: library/WT/Gedcom/Tag.php:247
@@ -7876,6 +8356,8 @@ msgstr "Santuokos tipas nežinomas"
 
 #. I18N: Name of a module/report
 #: modules_v3/marriage_report/module.php:35
+#: modules_v3/marriage_report/report.xml:4
+#: modules_v3/marriage_report/report.xml:28
 msgid "Marriages"
 msgstr "Vedybos"
 
@@ -8249,6 +8731,8 @@ msgstr "Trūksta PHP laikinojo aplanko"
 
 #. I18N: Name of a module/report
 #: modules_v3/missing_facts_report/module.php:35
+#: modules_v3/missing_facts_report/report.xml:4
+#: modules_v3/missing_facts_report/report.xml:50
 msgid "Missing data"
 msgstr "Trūksta duomenų"
 
@@ -8416,7 +8900,12 @@ msgstr "Dauguma svetainių yra sukonfigūruotos naudoti numatytąją vertę 3306
 msgid "Most viewed pages"
 msgstr "Dažniausiai žiūrimi puslapiai"
 
-#: search_advanced.php:247
+#: modules_v3/bdm_report/report.xml:118
+#: modules_v3/family_group_report/report.xml:469
+#: modules_v3/family_group_report/report.xml:729
+#: modules_v3/individual_ext_report/report.xml:271
+#: modules_v3/individual_report/report.xml:273
+#: modules_v3/relative_ext_report/report.xml:63 search_advanced.php:247
 msgid "Mother"
 msgstr "Motina"
 
@@ -8429,7 +8918,7 @@ msgid "Mother's age"
 msgstr "Mamos amžius"
 
 #. I18N: %s is the name of an individual’s mother
-#: library/WT/Person.php:1643
+#: library/WT/Person.php:1647
 #, php-format
 msgid "Mother: %s"
 msgstr "Mama: %s"
@@ -8549,6 +9038,20 @@ msgstr "Mianmaras"
 #: library/WT/Stats.php:3326
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:119
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:571
+#: modules_v3/bdm_report/report.xml:6 modules_v3/bdm_report/report.xml:47
+#: modules_v3/birth_report/report.xml:6 modules_v3/birth_report/report.xml:34
+#: modules_v3/cemetery_report/report.xml:39
+#: modules_v3/change_report/report.xml:54
+#: modules_v3/change_report/report.xml:94 modules_v3/death_report/report.xml:6
+#: modules_v3/death_report/report.xml:36 modules_v3/fact_sources/report.xml:60
+#: modules_v3/fact_sources/report.xml:153
+#: modules_v3/fact_sources/report.xml:264
+#: modules_v3/fact_sources/report.xml:315
+#: modules_v3/marriage_report/report.xml:6
+#: modules_v3/marriage_report/report.xml:36
+#: modules_v3/missing_facts_report/report.xml:52
+#: modules_v3/occupation_report/report.xml:41
+#: modules_v3/relative_ext_report/report.xml:48
 msgid "Name"
 msgstr "Vardas"
 
@@ -8561,6 +9064,11 @@ msgstr "Saugykla"
 #: modules_v3/clippings/module.php:278
 msgid "Name / Description"
 msgstr "Vardas / Apibrėžimas"
+
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+msgid "Name List"
+msgstr "Vardų sąrašas"
 
 #: find.php:184 find.php:199
 msgid "Name contains:"
@@ -8952,8 +9460,12 @@ msgstr "Naktinė"
 
 #: admin_trees_download.php:116 admin_users.php:450 famlist.php:115
 #: famlist.php:145 indilist.php:115 indilist.php:145 library/WT/Stats.php:758
-#: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:592
-#: modules_v3/families/module.php:151 modules_v3/individuals/module.php:150
+#: modules_v3/cemetery_report/report.xml:8 modules_v3/clippings/module.php:205
+#: modules_v3/clippings/module.php:592 modules_v3/death_report/report.xml:11
+#: modules_v3/families/module.php:151
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/individuals/module.php:150
 msgid "None"
 msgstr "Nieko"
 
@@ -9023,6 +9535,10 @@ msgstr "Nevedęs"
 #. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:484
 #: includes/functions/functions_print.php:560 library/WT/Gedcom/Tag.php:276
+#: modules_v3/cemetery_report/report.xml:62
+#: modules_v3/family_group_report/report.xml:480
+#: modules_v3/family_group_report/report.xml:741
+#: modules_v3/family_group_report/report.xml:1090
 msgid "Note"
 msgstr "Pastaba"
 
@@ -9050,7 +9566,9 @@ msgstr ""
 #: admin.php:232 admin.php:264 library/WT/Controller/Search.php:596
 #: mediaviewer.php:144
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1140
-#: modules_v3/notes/module.php:34 source.php:106 statistics.php:339
+#: modules_v3/individual_ext_report/report.xml:221
+#: modules_v3/individual_report/report.xml:223 modules_v3/notes/module.php:34
+#: source.php:106 statistics.php:339
 msgid "Notes"
 msgstr "Pastabos"
 
@@ -9166,6 +9684,8 @@ msgstr "Profesija"
 
 #. I18N: Name of a report
 #: modules_v3/occupation_report/module.php:35
+#: modules_v3/occupation_report/report.xml:4
+#: modules_v3/occupation_report/report.xml:35
 msgid "Occupations"
 msgstr "Profesijos"
 
@@ -9341,6 +9861,11 @@ msgstr "Ceremonija"
 msgid "Ordination"
 msgstr "Įšventinimas"
 
+#: modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7
+msgid "Orientation"
+msgstr "Orientacija"
+
 #: library/WT/Gedcom/Code/Temp.php:150
 msgid "Orlando, Florida"
 msgstr "Orlando, Florida"
@@ -9440,10 +9965,45 @@ msgstr "PHP nustatymas \"%1$s\" yra išjungtas. Be to, neveiks šios funkcijos: 
 msgid "PHP time limit"
 msgstr "PHP laiko limitas"
 
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_ext_report/report.xml:90
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/missing_facts_report/report.xml:51
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42
+msgid "Page"
+msgstr "Puslapis"
+
 #: medialist.php:216 medialist.php:339
 #, php-format
 msgid "Page %s of %s"
 msgstr "Puslapis %s iš %s"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgid "Page size"
+msgstr "Puslapio dydis"
 
 #: library/WT/Gedcom/Tag.php:917
 msgid "Painting"
@@ -9499,6 +10059,12 @@ msgstr "Tėvų amžius"
 msgid "Parents"
 msgstr "Tėvai"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Parents and siblings"
+msgstr "Tėvai, broliai ir seserys"
+
 #: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
 #: edituser.php:152 help_text.php:736 help_text.php:1296 login.php:159
 #: login.php:220 login.php:449 modules_v3/login_block/module.php:81
@@ -9523,8 +10089,14 @@ msgstr "Slaptažodis turi turėti bent 6 simbolius."
 #: library/WT/Controller/Fanchart.php:306
 #: library/WT/Controller/Pedigree.php:94 library/WT/MenuBar.php:104
 #: modules_v3/charts/module.php:205 modules_v3/pedigree_report/module.php:35
+#: modules_v3/pedigree_report/report.xml:4
+#: modules_v3/pedigree_report/report.xml:41
 msgid "Pedigree"
 msgstr "Kilmė"
+
+#: modules_v3/pedigree_report/report.xml:737
+msgid "Pedigree Chart"
+msgstr "Kilmės diagrama"
 
 #: includes/functions/functions_print.php:93
 #: library/WT/Controller/Fanchart.php:308 library/WT/MenuBar.php:123
@@ -9555,6 +10127,7 @@ msgstr "Laukiančių peržiūros pakeitimų langas"
 
 #. I18N: Name of a module
 #: edit_changes.php:33 edit_changes.php:53 help_text.php:1331
+#: modules_v3/change_report/report.xml:50
 #: modules_v3/review_changes/module.php:34
 #: themes/_administration/header.php:77 themes/clouds/header.php:123
 #: themes/colors/header.php:97 themes/fab/header.php:79
@@ -9661,12 +10234,18 @@ msgstr ""
 #. I18N: gedcom tag PLAC
 #: library/WT/Gedcom/Tag.php:290
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1136
+#: modules_v3/bdm_report/report.xml:7 modules_v3/bdm_report/report.xml:132
+#: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
+#: modules_v3/birth_report/report.xml:40
+#: modules_v3/cemetery_report/report.xml:58
+#: modules_v3/death_report/report.xml:48
 #: modules_v3/googlemap/admin_places.php:179
 #: modules_v3/googlemap/admin_places.php:180
 #: modules_v3/googlemap/admin_places.php:181
 #: modules_v3/googlemap/admin_places.php:182
 #: modules_v3/googlemap/admin_places.php:183
-#: modules_v3/googlemap/module.php:1591 search.php:169 search.php:182
+#: modules_v3/googlemap/module.php:1591
+#: modules_v3/marriage_report/report.xml:48 search.php:169 search.php:182
 msgid "Place"
 msgstr "Vieta"
 
@@ -9912,7 +10491,8 @@ msgstr "Portland, Oregonas"
 msgid "Porto Alegre, Brazil"
 msgstr "Porto Alegre, Brazilija"
 
-#: admin_trees_config.php:813 pedigree.php:61
+#: admin_trees_config.php:813 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Portrait"
 msgstr "Vertikaliai"
 
@@ -10012,6 +10592,10 @@ msgstr "Dvasininkas"
 msgid "Primidi"
 msgstr ""
 
+#: modules_v3/family_group_report/report.xml:11
+msgid "Print basic events when blank?"
+msgstr ""
+
 #: admin_trees_config.php:219
 msgid "Privacy"
 msgstr "Slaptumas"
@@ -10030,7 +10614,7 @@ msgstr "Privatumo apribojimai - jie taikomi įrašams ir faktams kurie neturi GE
 #: library/WT/Person.php:121 library/WT/Person.php:336
 #: library/WT/Person.php:359 library/WT/Person.php:382
 #: library/WT/Person.php:419 library/WT/Person.php:442
-#: library/WT/Person.php:1905 library/WT/Report/Base.php:1946
+#: library/WT/Person.php:1909 library/WT/Report/Base.php:1946
 #: library/WT/Repository.php:57 library/WT/Source.php:49
 #: library/WT/Stats.php:863 library/WT/Stats.php:1805
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:240
@@ -10288,7 +10872,8 @@ msgid "Recent Years (&lt; 100 yrs)"
 msgstr "Pastarieji metai (&lt; 100 m)"
 
 #. I18N: Name of a module
-#: admin.php:244 modules_v3/recent_changes/module.php:36
+#: admin.php:244 modules_v3/change_report/report.xml:90
+#: modules_v3/recent_changes/module.php:36
 msgid "Recent changes"
 msgstr "Naujausi pakeitimai"
 
@@ -10359,7 +10944,7 @@ msgstr "Nuorodos numeris"
 msgid "Regina, Saskatchewan, Canada"
 msgstr "Regina, Saskatchewan, Kanada"
 
-#: library/WT/Gedcom/Tag.php:256
+#: library/WT/Gedcom/Tag.php:256 modules_v3/fact_sources/report.xml:203
 msgid "Registered partnership"
 msgstr "Registruota partnerystė"
 
@@ -10387,11 +10972,15 @@ msgstr ""
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:35
+#: modules_v3/individual_ext_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:89
 msgid "Related families"
 msgstr "Susijusios šeimos"
 
 #. I18N: Name of a report
 #: modules_v3/relative_ext_report/module.php:35
+#: modules_v3/relative_ext_report/report.xml:4
+#: modules_v3/relative_ext_report/report.xml:41
 msgid "Related individuals"
 msgstr "Susije asmenys"
 
@@ -10447,7 +11036,7 @@ msgstr "Tikyba"
 msgid "Religious Institution"
 msgstr "Religinė institucija"
 
-#: library/WT/Gedcom/Tag.php:257
+#: library/WT/Gedcom/Tag.php:257 modules_v3/fact_sources/report.xml:197
 msgid "Religious marriage"
 msgstr "Bažnytinė santuoka"
 
@@ -11278,6 +11867,40 @@ msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr ""
 
+#: modules_v3/descendancy_report/report.xml:357
+msgid "She "
+msgstr "Ji "
+
+#: modules_v3/ahnentafel_report/report.xml:290
+msgid "She died"
+msgstr "Ji mirė"
+
+#: modules_v3/ahnentafel_report/report.xml:259
+#: modules_v3/descendancy_report/report.xml:241
+msgid "She married"
+msgstr "Ji ištekėjo"
+
+#: modules_v3/ahnentafel_report/report.xml:221
+msgid "She resided at"
+msgstr ""
+
+#: modules_v3/descendancy_report/report.xml:330
+msgid "She was born"
+msgstr "Ji gimė"
+
+#: modules_v3/ahnentafel_report/report.xml:346
+msgid "She was buried"
+msgstr "Ji buvo palaidota"
+
+#: modules_v3/ahnentafel_report/report.xml:165
+msgid "She was christened"
+msgstr "Ji buvo pakrikštyta"
+
+#: modules_v3/ahnentafel_report/report.xml:315
+#: modules_v3/ahnentafel_report/report.xml:342
+msgid "She was cremated"
+msgstr "Ji buvo kremuota"
+
 #: library/WT/Date/Jewish.php:111
 msgctxt "GENITIVE"
 msgid "Shevat"
@@ -11379,6 +12002,10 @@ msgstr "Ar rodyti amžiaus žymeklį?"
 msgid "Show chart details by default"
 msgstr ""
 
+#: modules_v3/ahnentafel_report/report.xml:13
+msgid "Show children of ancestors?"
+msgstr "Rodyti vaikams protėvius?"
+
 #: library/WT/MenuBar.php:173 library/WT/MenuBar.php:193
 msgid "Show children on timeline chart"
 msgstr "Parodyti vaikus laiko lentelėje"
@@ -11472,6 +12099,17 @@ msgstr "Ar rodyti nuorodą į statistikos diagramas?"
 msgid "Show list of family trees"
 msgstr ""
 
+#: modules_v3/ahnentafel_report/report.xml:10
+#: modules_v3/family_group_report/report.xml:9
+#: modules_v3/individual_ext_report/report.xml:11
+#: modules_v3/individual_report/report.xml:8
+msgid "Show notes?"
+msgstr "Ar rodyti pastabas?"
+
+#: modules_v3/ahnentafel_report/report.xml:11
+msgid "Show occupations?"
+msgstr "Ar rodyti profesijas?"
+
 #: help_text.php:1291 relationship.php:118
 msgid "Show oldest top"
 msgstr "Seniausią rodyti viršuje"
@@ -11515,6 +12153,10 @@ msgstr "Rodyti tėvus"
 msgid "Show path"
 msgstr "Surasti ryšį"
 
+#: modules_v3/change_report/report.xml:9
+msgid "Show pending changes"
+msgstr "Rodyti laukiančius pakeitimus"
+
 #: includes/functions/functions_print_lists.php:91
 #: includes/functions/functions_print_lists.php:496
 msgid "Show people who are alive or couples where both partners are alive."
@@ -11541,6 +12183,12 @@ msgstr "Rodyti asmenis gimusius anksčiau kaip prieš šimtą metų."
 msgid "Show persons born within the last 100 years."
 msgstr "Rodyti asmenis gimusius per paskutinius šimtą metų."
 
+#: modules_v3/family_group_report/report.xml:10
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+msgid "Show photos?"
+msgstr "Ar rodyti nuotraukas?"
+
 #: admin_trees_config.php:527 help_text.php:887
 msgid "Show private relationships"
 msgstr "Rodyti asmens giminystės ryšius"
@@ -11561,6 +12209,10 @@ msgstr "Rodyti tyrimo užduotis, kurios nėra paskirtos nei vienam naudotojui"
 msgid "Show research tasks that have a date in the future"
 msgstr "Rodyti tyrimo užduotis, kurios turi numatytą datą"
 
+#: modules_v3/ahnentafel_report/report.xml:12
+msgid "Show residences?"
+msgstr "Rodyti gyvenamąsias vietas?"
+
 #: help_text.php:898
 msgid "Show runtime statistics and database queries at the bottom of every page."
 msgstr ""
@@ -11568,6 +12220,14 @@ msgstr ""
 #: modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
 msgstr "Rodyti skaidrių rodyme valdiklį?"
+
+#: modules_v3/ahnentafel_report/report.xml:9
+#: modules_v3/descendancy_report/report.xml:8
+#: modules_v3/family_group_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:10
+#: modules_v3/individual_report/report.xml:7
+msgid "Show sources?"
+msgstr "Ar rodyti šaltinius?"
 
 #: familybook.php:76 help_text.php:1416 hourglass.php:91
 msgid "Show spouses"
@@ -11688,6 +12348,11 @@ msgstr ""
 msgid "Singapore"
 msgstr "Singapūras"
 
+#: modules_v3/individual_ext_report/report.xml:347
+#: modules_v3/individual_report/report.xml:349
+msgid "Sister"
+msgstr "Sesuo"
+
 #: admin_site_access.php:32 themes/_administration/header.php:97
 msgid "Site access rules"
 msgstr "Puslapio prieigos taisyklės"
@@ -11797,13 +12462,28 @@ msgstr "Kai kurie įrašai negalėjo būti įtraukti dėl privatumo apribojimų"
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
 msgstr ""
 
+#: modules_v3/family_group_report/report.xml:763
+#: modules_v3/individual_ext_report/report.xml:518
+#: modules_v3/individual_report/report.xml:520
+msgid "Son"
+msgstr "Sūnus"
+
 #. I18N: e.g. “Son of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:325
 #, php-format
 msgid "Son of %s"
 msgstr "Sūnus %s"
 
-#: medialist.php:92 modules_v3/recent_changes/module.php:151
+#: medialist.php:92 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/recent_changes/module.php:151
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:148
 #: modules_v3/upcoming_events/module.php:160
 msgid "Sort order"
@@ -11824,7 +12504,12 @@ msgstr "Skamba kaip"
 #. I18N: Name of a module/report
 #: includes/functions/functions_print_facts.php:467
 #: includes/functions/functions_print_facts.php:496 inverselink.php:134
-#: library/WT/Gedcom/Tag.php:320 modules_v3/fact_sources/module.php:35
+#: library/WT/Gedcom/Tag.php:320 modules_v3/bdm_report/report.xml:134
+#: modules_v3/bdm_report/report.xml:160 modules_v3/bdm_report/report.xml:194
+#: modules_v3/birth_report/report.xml:41 modules_v3/death_report/report.xml:52
+#: modules_v3/fact_sources/module.php:35 modules_v3/fact_sources/report.xml:4
+#: modules_v3/fact_sources/report.xml:41
+#: modules_v3/marriage_report/report.xml:52
 msgid "Source"
 msgstr "Šaltinis"
 
@@ -11845,6 +12530,7 @@ msgid "Source contains:"
 msgstr "Šaltinis turi:"
 
 #: admin_trees_config.php:1255 help_text.php:781
+#: modules_v3/fact_sources/report.xml:7
 msgid "Source type"
 msgstr "Šaltinio tipas"
 
@@ -11854,14 +12540,23 @@ msgstr "Šaltinio tipas"
 #: includes/functions/functions_print_lists.php:1177
 #: includes/functions/functions_print_lists.php:1278
 #: library/WT/Controller/Search.php:595 library/WT/MenuBar.php:311
-#: mediaviewer.php:138 modules_v3/gedcom_stats/module.php:104
+#: mediaviewer.php:138 modules_v3/ahnentafel_report/report.xml:480
+#: modules_v3/descendancy_report/report.xml:612
+#: modules_v3/family_group_report/report.xml:1107
+#: modules_v3/gedcom_stats/module.php:104
 #: modules_v3/gedcom_stats/module.php:324 modules_v3/html/module.php:192
+#: modules_v3/individual_ext_report/report.xml:636
+#: modules_v3/individual_report/report.xml:636
 #: modules_v3/lightbox/functions/lightbox_print_media.php:369
 #: modules_v3/sources_tab/module.php:34 note.php:107 repo.php:94
 #: search.php:124 sourcelist.php:31 sourcelist.php:35 statistics.php:338
 #: statistics.php:375
 msgid "Sources"
 msgstr "Šaltinių"
+
+#: modules_v3/missing_facts_report/report.xml:12
+msgid "Sources to the events"
+msgstr "Šaltiniai į įvykius"
 
 #: library/WT/Stats.php:4036
 msgid "South Africa"
@@ -11896,6 +12591,10 @@ msgstr "Greitis"
 msgid "Spokane, Washington"
 msgstr "Spokane, Vašingtonas"
 
+#: modules_v3/bdm_report/report.xml:167
+msgid "Spouse"
+msgstr "Sutuoktinis"
+
 #: library/WT/Gedcom/Tag.php:216
 msgid "Spouse census date"
 msgstr "Santuokos surašymo data"
@@ -11911,6 +12610,12 @@ msgstr "Santuokos įrašas"
 #: includes/functions/functions_print_lists.php:1363
 msgid "Spouses"
 msgstr "Sutuoktiniai"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Spouses and children"
+msgstr "Sutuoktiniai ir vaikai"
 
 #: library/WT/Stats.php:3911
 msgid "Sri Lanka"
@@ -11949,6 +12654,10 @@ msgstr "Pradėti nuo tėvų"
 #: modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
 msgstr "Pradėti skaidrių rodymą puslapio įkėlime?"
+
+#: modules_v3/change_report/report.xml:6
+msgid "Starting range of change dates"
+msgstr "Pradedama sritis nuo datų pakeitimo"
 
 #. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:323 modules_v3/googlemap/admin_places.php:176
@@ -12214,7 +12923,7 @@ msgid "Templates"
 msgstr "Šablonai"
 
 #. I18N: gedcom tag TEMP
-#: library/WT/Gedcom/Tag.php:329
+#: library/WT/Gedcom/Tag.php:329 modules_v3/individual_report/report.xml:205
 msgid "Temple"
 msgstr "Šventykla"
 
@@ -13476,6 +14185,10 @@ msgstr "Dažniausiai pateikiamos pavardės"
 msgid "Toronto, Ontario, Canada"
 msgstr "Toronto, Ontario, Kanada"
 
+#: modules_v3/change_report/report.xml:125
+msgid "Total accepted changes: "
+msgstr "Viso priimtų pakeitimų: "
+
 #: statistics.php:98
 msgid "Total births"
 msgstr "Iš viso gimusių"
@@ -13494,11 +14207,15 @@ msgstr "Iš viso skyrybų"
 
 #: modules_v3/gedcom_stats/module.php:113
 #: modules_v3/gedcom_stats/module.php:356 modules_v3/html/module.php:204
-#: statistics.php:351
+#: modules_v3/missing_facts_report/report.xml:599 statistics.php:351
 msgid "Total events"
 msgstr "Iš viso įvykių"
 
-#: library/WT/Stats.php:3059
+#: library/WT/Stats.php:3059 modules_v3/fact_sources/report.xml:246
+#: modules_v3/fact_sources/report.xml:250
+#: modules_v3/fact_sources/report.xml:348
+#: modules_v3/fact_sources/report.xml:352
+#: modules_v3/marriage_report/report.xml:112
 msgid "Total families"
 msgstr "iš viso šeimų"
 
@@ -13514,6 +14231,19 @@ msgstr "iš viso moterų"
 #: statistics.php:178
 msgid "Total given names"
 msgstr "Iš viso vardų"
+
+#: modules_v3/bdm_report/report.xml:208 modules_v3/birth_report/report.xml:65
+#: modules_v3/cemetery_report/report.xml:86
+#: modules_v3/death_report/report.xml:98
+#: modules_v3/fact_sources/report.xml:140
+#: modules_v3/fact_sources/report.xml:144
+#: modules_v3/fact_sources/report.xml:303
+#: modules_v3/fact_sources/report.xml:307
+#: modules_v3/missing_facts_report/report.xml:598
+#: modules_v3/occupation_report/report.xml:92
+#: modules_v3/relative_ext_report/report.xml:146
+msgid "Total individuals"
+msgstr "iš viso vardų"
 
 #: calendar.php:438 find.php:507 modules_v3/GEDFact_assistant/module.php:162
 #: statistics.php:75
@@ -13536,6 +14266,10 @@ msgstr "Iš viso vedybų"
 #: admin.php:164
 msgid "Total number of users"
 msgstr "Narių skaičius"
+
+#: modules_v3/change_report/report.xml:85
+msgid "Total pending changes: "
+msgstr "Viso laukiančių pakeitimų: "
 
 #. I18N: A count of places
 #: modules_v3/googlemap/module.php:1709
@@ -13731,7 +14465,11 @@ msgstr "Nežinomas"
 #: calendar.php:586 includes/functions/functions_edit.php:1461
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:286 library/WT/Stats.php:3325
-#: timeline.php:264
+#: modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592 timeline.php:264
 msgctxt "unknown gender"
 msgid "Unknown"
 msgstr "Nežinomas"
@@ -13861,6 +14599,11 @@ msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] ""
 msgstr[1] ""
+
+#: modules_v3/family_group_report/report.xml:14
+#: modules_v3/individual_ext_report/report.xml:15
+msgid "Use colors"
+msgstr "Naudoti spalvas"
 
 #: modules_v3/tree/class_treeview.php:74
 msgid "Use compact layout"
@@ -14165,7 +14908,8 @@ msgid "Visitor"
 msgstr "Lankytojas"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:35
+#: modules_v3/bdm_report/module.php:35 modules_v3/bdm_report/report.xml:4
+#: modules_v3/bdm_report/report.xml:32
 msgid "Vital records"
 msgstr "Esminiai įrašai"
 
@@ -14403,6 +15147,14 @@ msgstr "Generuojamų video, foto ar audio miniatiūrų plotis"
 
 #. I18N: gedcom tag WIFE
 #: edit_interface.php:541 library/WT/Gedcom/Tag.php:340
+#: modules_v3/family_group_report/report.xml:493
+#: modules_v3/family_group_report/report.xml:1067
+#: modules_v3/individual_ext_report/report.xml:197
+#: modules_v3/individual_ext_report/report.xml:211
+#: modules_v3/individual_ext_report/report.xml:477
+#: modules_v3/individual_report/report.xml:192
+#: modules_v3/individual_report/report.xml:213
+#: modules_v3/individual_report/report.xml:479
 msgid "Wife"
 msgstr "Žmona"
 
@@ -14898,6 +15650,13 @@ msgstr "dar žinomas kaip"
 #: library/WT/Controller/Ancestry.php:144 library/WT/Stats.php:2627
 #: library/WT/Stats.php:2652 library/WT/Stats.php:2663
 #: library/WT/Stats.php:2673 library/WT/Stats.php:3427 medialist.php:47
+#: modules_v3/ahnentafel_report/report.xml:400
+#: modules_v3/descendancy_report/report.xml:131
+#: modules_v3/descendancy_report/report.xml:229
+#: modules_v3/descendancy_report/report.xml:298
+#: modules_v3/descendancy_report/report.xml:362
+#: modules_v3/descendancy_report/report.xml:432
+#: modules_v3/descendancy_report/report.xml:485
 msgid "and"
 msgstr "ir"
 
@@ -15186,6 +15945,10 @@ msgstr "laiko periodai"
 msgid "daughter"
 msgstr "duktė"
 
+#: modules_v3/descendancy_report/report.xml:225
+msgid "daughter of"
+msgstr "duktė"
+
 #: includes/functions/functions.php:1238
 msgctxt "child's wife"
 msgid "daughter-in-law"
@@ -15225,6 +15988,18 @@ msgstr "laipsniai"
 #: admin_site_access.php:110 admin_site_access.php:301
 msgid "deny"
 msgstr "drausti"
+
+#: modules_v3/descendancy_report/report.xml:137
+#: modules_v3/descendancy_report/report.xml:364
+msgctxt "FEMALE"
+msgid "died"
+msgstr "mirė"
+
+#: modules_v3/descendancy_report/report.xml:134
+#: modules_v3/descendancy_report/report.xml:434
+msgctxt "MALE"
+msgid "died"
+msgstr "mirė"
 
 #: modules_v3/googlemap/module.php:312 modules_v3/googlemap/module.php:321
 #: modules_v3/googlemap/module.php:330 modules_v3/googlemap/module.php:338
@@ -15320,7 +16095,7 @@ msgctxt "Abbreviation for fax number"
 msgid "f."
 msgstr "fax"
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "facts"
 msgstr "faktai"
 
@@ -17338,6 +18113,16 @@ msgstr "mergautinė pavardė"
 msgid "marriage"
 msgstr "vedybos"
 
+#: modules_v3/descendancy_report/report.xml:244
+msgctxt "FEMALE"
+msgid "married"
+msgstr "ištekėjusi"
+
+#: modules_v3/descendancy_report/report.xml:175
+msgctxt "MALE"
+msgid "married"
+msgstr "vedė"
+
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:116
 msgid "married name"
@@ -17537,7 +18322,13 @@ msgstr "devintos eilės pusbrolis/pusseserė"
 #: includes/functions/functions_print_facts.php:1228
 #: includes/functions/functions_print_lists.php:795 library/WT/Stats.php:3519
 #: modules_v3/batch_update/admin_batch_update.php:339
-#: modules_v3/charts/module.php:215
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:215
+#: modules_v3/family_group_report/report.xml:250
+#: modules_v3/family_group_report/report.xml:421
+#: modules_v3/family_group_report/report.xml:601
+#: modules_v3/family_group_report/report.xml:942
+#: modules_v3/individual_ext_report/report.xml:180
+#: modules_v3/individual_report/report.xml:175
 msgid "no"
 msgstr "ne"
 
@@ -17566,7 +18357,19 @@ msgstr "šiaurė"
 msgid "numbers"
 msgstr "skaičiais"
 
-#: statisticsplot.php:816 statisticsplot.php:818 statisticsplot.php:820
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42 statisticsplot.php:816
+#: statisticsplot.php:818 statisticsplot.php:820
 msgid "of"
 msgstr "iš"
 
@@ -17671,7 +18474,7 @@ msgstr "ketvirčiai po vedybų"
 msgid "questionable evidence"
 msgstr ""
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "records"
 msgstr "įrašai"
 
@@ -18037,6 +18840,10 @@ msgstr "šeštos eilės pusbrolis/pusseserė"
 msgid "son"
 msgstr "sūnus"
 
+#: modules_v3/descendancy_report/report.xml:294
+msgid "son of"
+msgstr "sūnus"
+
 #: includes/functions/functions.php:1235
 msgctxt "child's husband"
 msgid "son-in-law"
@@ -18068,23 +18875,32 @@ msgid "son/daughter-in-law"
 msgstr "žentas/marti"
 
 #. I18N: An option in a list-box
+#: modules_v3/change_report/report.xml:8
 #: modules_v3/todays_events/module.php:152
 #: modules_v3/upcoming_events/module.php:164
 msgid "sort by date"
 msgstr "rikiuoti pagal datą"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2044 reportengine.php:513
+#: edit_interface.php:2044 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10 modules_v3/change_report/report.xml:8
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:513
 msgid "sort by date of birth"
 msgstr "rikiuoti pagal gimimo datą"
 
 #. I18N: An option in a list-box
-#: reportengine.php:515
+#: modules_v3/bdm_report/report.xml:12 modules_v3/cemetery_report/report.xml:7
+#: modules_v3/death_report/report.xml:10
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:515
 msgid "sort by date of death"
 msgstr "rikuoti pagal mirties datą"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2420 reportengine.php:514
+#: edit_interface.php:2420 modules_v3/marriage_report/report.xml:10
+#: reportengine.php:514
 msgid "sort by date of marriage"
 msgstr "rikiuoti pagal vedybų datą"
 
@@ -18104,7 +18920,15 @@ msgid "sort by filename"
 msgstr "rikiuoti pagal failo pavadinimą"
 
 #. I18N: An option in a list-box
+#: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
 #: modules_v3/recent_changes/module.php:154
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:151
 #: modules_v3/upcoming_events/module.php:163
 msgid "sort by name"
@@ -18507,6 +19331,18 @@ msgstr "nežinomas asmuo"
 msgid "unreliable evidence"
 msgstr ""
 
+#: modules_v3/ahnentafel_report/report.xml:139
+#: modules_v3/descendancy_report/report.xml:105
+msgctxt "FEMALE"
+msgid "was born"
+msgstr "gimė"
+
+#: modules_v3/ahnentafel_report/report.xml:138
+#: modules_v3/descendancy_report/report.xml:102
+msgctxt "MALE"
+msgid "was born"
+msgstr "gimė"
+
 #: modules_v3/review_changes/module.php:86
 msgid "webtrees - Review changes"
 msgstr "kilmės medis - Pakeitimų peržiūra"
@@ -18560,7 +19396,14 @@ msgstr "metai"
 #: includes/functions/functions_print_lists.php:353
 #: includes/functions/functions_print_lists.php:793 library/WT/Stats.php:3518
 #: modules_v3/batch_update/admin_batch_update.php:340
-#: modules_v3/charts/module.php:216 modules_v3/relatives/module.php:206
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:216
+#: modules_v3/family_group_report/report.xml:247
+#: modules_v3/family_group_report/report.xml:418
+#: modules_v3/family_group_report/report.xml:598
+#: modules_v3/family_group_report/report.xml:939
+#: modules_v3/individual_ext_report/report.xml:177
+#: modules_v3/individual_report/report.xml:172
+#: modules_v3/relatives/module.php:206
 msgid "yes"
 msgstr "taip"
 
@@ -18582,7 +19425,7 @@ msgid "younger sister"
 msgstr "jaunesnė sesuo"
 
 #. I18N: Place a nickname in quotation marks
-#: library/WT/Person.php:1791
+#: library/WT/Person.php:1795
 #, php-format
 msgid "“%s”"
 msgstr ""
@@ -18606,12 +19449,6 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid " but the details are unknown"
-#~ msgstr " bet detalės yra nežinomos"
-
-#~ msgid " in "
-#~ msgstr " į "
 
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%1$s’s %2$s"
@@ -18739,17 +19576,6 @@ msgstr "…"
 #~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "Duomenų bazių serveryje galima laikyti daugelį atskirų duomenų bazių. Jūs turite pasirinkti esamą duomenų bazę (sukurtą serverio administratorius) arba sukurti naują (jei jūsų duomenų bazės vartotojo sąskaita turi tokias teises)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "Faktai, kurie yra paremiami nurodytu šaltiniu."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4"
-
 #~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
 #~ msgstr "ALPHABET_lower=aąbcčdeęėfghiyįjklmnoprsštuųūvzž"
 
@@ -18834,10 +19660,6 @@ msgstr "…"
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "Ar jūs tikrai norite atšaukti visus paskutinius veiksmus padarytus šiam GEDCOM?"
 
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
-
 #~ msgid "Available blocks"
 #~ msgstr "Galimi blokai"
 
@@ -18846,9 +19668,6 @@ msgstr "…"
 
 #~ msgid "Best man"
 #~ msgstr "Pabrolys"
-
-#~ msgid "Birth Place contains"
-#~ msgstr "Gimimo vietos yra"
 
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Gimimo ir mirties detalės diagramose"
@@ -18859,23 +19678,11 @@ msgstr "…"
 #~ msgid "Birth date range start"
 #~ msgstr "Gimimų laikotarpis prasideda"
 
-#~ msgid "Brother"
-#~ msgstr "Brolis"
-
 #~ msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
 #~ msgstr "Įprastai rodomos vietovės susietos su jūsų šeimos medžiu. Pasirinkus šią opciją bus rodomos visos vietovės, net ir tos kurios yra nesusietos su kitais įrašais."
 
 #~ msgid "Change family members"
 #~ msgstr "Keisti šeimos narius"
-
-#~ msgid "Child of "
-#~ msgstr "vaikas "
-
-#~ msgid "Children of "
-#~ msgstr "vaikai "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Pasirinkite giminaičius"
 
 #~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
 #~ msgstr "Pasirinkite miniatiūrą, kurią norite įkelti. Nors miniatiūros gali būti sukurtos automatiškai iš paveikslėlio, Jūs tikriausiai norėsite pats sukurti miniatiūras, ypač iš kitų medijos rūšių. Pavyzdžiui, Jūs galite pateikti paveikslėlį iš vaizdo medžiagos, arba žmogaus fotografiją , kuris padarė garso įrašą."
@@ -18961,9 +19768,6 @@ msgstr "…"
 #~ msgid "Date of residence"
 #~ msgstr "Būstinės įkūrimo data"
 
-#~ msgid "Daughter"
-#~ msgstr "Dukra"
-
 #~ msgid "Death date range end"
 #~ msgstr "mirčių laikotarpis baigiasi"
 
@@ -18973,24 +19777,8 @@ msgstr "…"
 #~ msgid "Default theme"
 #~ msgstr "Numatyta tema"
 
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "Palikuonys "
-
 #~ msgid "Descent steps"
 #~ msgstr "Sekantys žingsniai"
-
-#~ msgid "Differences"
-#~ msgstr "Skirtumai"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Tiesioginė protėvių linija"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Tiesioginė protėvių ir jų šeimų linija"
 
 #~ msgid "Display %s"
 #~ msgstr "Rodyti %s"
@@ -19012,15 +19800,6 @@ msgstr "…"
 
 #~ msgid "End year"
 #~ msgstr "Pabaigos metai"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Užbaigiama sritis nuo datų pakeitimo"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Įveskite šeimos ID"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Įveskite asmens ID"
 
 #~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
 #~ msgstr "Įveskite redaguojamo elemento pavadinimą. Jeigu tai yra media objektas tai jį apibūdinantį pavadinimą įveskite aprašomąjį pavadinimą, kuris identifikuotų šį elementą vartotojui."
@@ -19082,20 +19861,11 @@ msgstr "…"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Šeimos medžio iškarpų krepšelis"
 
-#~ msgid "Family with husband"
-#~ msgstr "Šeima su vyru"
-
-#~ msgid "Family with wife"
-#~ msgstr "Šeima su žmona"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Tėvo gimtinė - (Chapman formatas)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Tėvo amžius"
-
-#~ msgid "Font"
-#~ msgstr "Šriftas"
 
 #~ msgid "Foster child"
 #~ msgstr "Įvaikis"
@@ -19115,30 +19885,6 @@ msgstr "…"
 #~ msgid "Gedcom"
 #~ msgstr "Genealoginių Duomenų Ryšys (GEDCOM)"
 
-#~ msgid "Generation "
-#~ msgstr "Karta "
-
-#~ msgid "He "
-#~ msgstr "Jis "
-
-#~ msgid "He died"
-#~ msgstr "Jis mirė"
-
-#~ msgid "He married"
-#~ msgstr "Jis vedė"
-
-#~ msgid "He was born"
-#~ msgstr "Jis gimė"
-
-#~ msgid "He was buried"
-#~ msgstr "Jis buvo palaidotas"
-
-#~ msgid "He was christened"
-#~ msgstr "Jis buvo pakrikštytas"
-
-#~ msgid "He was cremated"
-#~ msgstr "Jis buvo kremuotas"
-
 #~ msgid "Hello %s…"
 #~ msgstr "Sveiki %s …"
 
@@ -19147,10 +19893,6 @@ msgstr "…"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Sveikas Administratoriau…"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
 
 #~ msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
 #~ msgstr "Čia galite pasirinkti tarp dviejų būdų rodyti vietovių pavadinimus hierarchijoje. Jei nustatyta Taip, vieta turi trumpą pavadinimą arba faktinio lygmens pavadinimą, jei Ne - pilną pavadinimą.<br><b>Pavyzdžiai:<br>Pilnas pavadinimas:</b> Čikaga, Ilinojus, JAV<br><b>Trumpas pavadinimas:</b> Čikaga<br><b>Pilnas pavadinimas:</b> Ilinojus, JAV<br><b>Trumpas pavadinimas:</b> Ilinojus"
@@ -19224,12 +19966,6 @@ msgstr "…"
 #~ msgid "Main section blocks"
 #~ msgstr "Pagrindinis pasirinkimų blokas"
 
-#~ msgid "Marriage Date range end"
-#~ msgstr "Santuokos datos srities pabaiga"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Santuokos datos srities pradžia"
-
 #~ msgid "Marriage intention"
 #~ msgstr "Ketinimas vesti"
 
@@ -19262,9 +19998,6 @@ msgstr "…"
 
 #~ msgid "Move right"
 #~ msgstr "Į dešinę"
-
-#~ msgid "Name List"
-#~ msgstr "Vardų sąrašas"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -19299,9 +20032,6 @@ msgstr "…"
 #~ msgid "Online editing"
 #~ msgstr "Tiesioginis redagavimas"
 
-#~ msgid "Orientation"
-#~ msgstr "Orientacija"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Kitas aplankas… Prašome suvesti"
 
@@ -19317,20 +20047,8 @@ msgstr "…"
 #~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
 #~ msgstr "PHP nustatymas \"%1$s\" yra išjungtas. Be to, neveiks šios funkcijos: %2$s . Prašome kreiptis į serverio administratorių, kad jis pakeistų PHP nustatymus."
 
-#~ msgid "Page"
-#~ msgstr "Puslapis"
-
-#~ msgid "Page size"
-#~ msgstr "Puslapio dydis"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Tėvai, broliai ir seserys"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Tėvų amžius"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Kilmės diagrama"
 
 #~ msgid "Place of adoption"
 #~ msgstr "Įvaikinimo vieta"
@@ -19424,27 +20142,6 @@ msgstr "…"
 #~ msgid "Shared notes found"
 #~ msgstr "Rastos bendrai naudojamos pastabos"
 
-#~ msgid "She "
-#~ msgstr "Ji "
-
-#~ msgid "She died"
-#~ msgstr "Ji mirė"
-
-#~ msgid "She married"
-#~ msgstr "Ji ištekėjo"
-
-#~ msgid "She was born"
-#~ msgstr "Ji gimė"
-
-#~ msgid "She was buried"
-#~ msgstr "Ji buvo palaidota"
-
-#~ msgid "She was christened"
-#~ msgstr "Ji buvo pakrikštyta"
-
-#~ msgid "She was cremated"
-#~ msgstr "Ji buvo kremuota"
-
 #~ msgid "Show acceptable use agreement on “Request new user account” page"
 #~ msgstr "Rodyti svetainės naudojimosi susitarimo tekstą puslapyje \"Naujo lankytojo registracija\""
 
@@ -19453,9 +20150,6 @@ msgstr "…"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "Rodyti visas vietoves saraše"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Rodyti vaikams protėvius?"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "Rodyti mirusius asmenis"
@@ -19487,12 +20181,6 @@ msgstr "…"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Rodyti asmenis mirusius per paskutinius šimtą metų."
 
-#~ msgid "Show notes?"
-#~ msgstr "Ar rodyti pastabas?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Ar rodyti profesijas?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Rodyti tik gyvų žmonių duomenis?"
 
@@ -19502,23 +20190,11 @@ msgstr "…"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Rodyti tik asmenis, įvykius ar viską?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Rodyti laukiančius pakeitimus"
-
-#~ msgid "Show photos?"
-#~ msgstr "Ar rodyti nuotraukas?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Rodyti vietoves herarchine tvarka"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Rodyti susijusius asmenis/šeimas"
-
-#~ msgid "Show residences?"
-#~ msgstr "Rodyti gyvenamąsias vietas?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Ar rodyti šaltinius?"
 
 #~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
 #~ msgstr "Rodyti «lapus» porų arba individų. Tai yra asmenis, kurie yra gyvi, bet neturi vaikų registruotų duomenų bazėje."
@@ -19529,26 +20205,8 @@ msgstr "…"
 #~ msgid "Showing %1$s to %2$s of %3$s"
 #~ msgstr "Rodoma nuo %1$s iki %2$s iš %3$s"
 
-#~ msgid "Sister"
-#~ msgstr "Sesuo"
-
 #~ msgid "Social security number"
 #~ msgstr "Socialinio draudimo pažymėjimo numeris"
-
-#~ msgid "Son"
-#~ msgstr "Sūnus"
-
-#~ msgid "Sources to the events"
-#~ msgstr "Šaltiniai į įvykius"
-
-#~ msgid "Spouse"
-#~ msgstr "Sutuoktinis"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Sutuoktiniai ir vaikai"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Pradedama sritis nuo datų pakeitimo"
 
 #~ msgid "Surname option"
 #~ msgstr "Nustatymai pavardėms"
@@ -19619,23 +20277,11 @@ msgstr "…"
 #~ msgid "To source"
 #~ msgstr "Į šaltinį"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Viso priimtų pakeitimų: "
-
-#~ msgid "Total individuals"
-#~ msgstr "iš viso vardų"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Viso laukiančių pakeitimų: "
-
 #~ msgid "Unrecognized GEDCOM code"
 #~ msgstr "Neatpažintas GEDCOM kodas"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Naudoti SMTP siųsti paštą į išorę"
-
-#~ msgid "Use colors"
-#~ msgstr "Naudoti spalvas"
 
 #~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
 #~ msgstr "Naudokite šį lauką saugoti pavadinimo trupinio versijai. Šis laukas yra naudojamas kartu su šaltinio pavadinimo lauku. Pagal nutylėjimą <b>webtrees</b> bus pirmasis pavadinimas ir tada sutrumpinimas.<br><br>Pagal GEDCOM 5,5 specifikaciją, \"šis įrašas yra teikti trumpą pavadinimą, naudojamą rūšiavimui, užpildymą ir išrinkti šaltinių įrašus (pg 62).\"<br><br> <b>webtrees</b>sutrumpintas straipsnio pavadinimas yra neprivalomas, bet kitose genealoginėse programose yra reikalaujamas."
@@ -19742,9 +20388,6 @@ msgstr "…"
 #~ msgid "before %d"
 #~ msgstr "prieš %d"
 
-#~ msgid "daughter of"
-#~ msgstr "duktė"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "svotas - marčios tėvas"
@@ -19756,14 +20399,6 @@ msgstr "…"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "svotai - marčios tėvai"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "mirė"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "mirė"
 
 #~ msgid "first"
 #~ msgstr "pirmas"
@@ -19798,17 +20433,6 @@ msgstr "…"
 #~ msgid "last"
 #~ msgstr "paskutinis"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "ištekėjusi"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "vedė"
-
-#~ msgid "son of"
-#~ msgstr "sūnus"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "svotas"
@@ -19823,14 +20447,6 @@ msgstr "…"
 
 #~ msgid "utf8_unicode_ci"
 #~ msgstr "utf8_lithuanian_ci"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "gimė"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "gimė"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "kilmės medžio duomenų bazė turi būti tame pačiame serveryje, kaip ir PGV's"

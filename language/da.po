@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-09 17:47+0000\n"
+"POT-Creation-Date: 2013-11-24 22:39+0000\n"
 "PO-Revision-Date: 2013-07-27 20:59+0000\n"
 "Last-Translator: meliza <Unknown>\n"
 "Language-Team: \n"
@@ -18,6 +18,32 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+
+#: modules_v3/ahnentafel_report/report.xml:158
+#: modules_v3/ahnentafel_report/report.xml:186
+#: modules_v3/ahnentafel_report/report.xml:281
+#: modules_v3/ahnentafel_report/report.xml:309
+#: modules_v3/ahnentafel_report/report.xml:334
+#: modules_v3/ahnentafel_report/report.xml:365
+msgid " but the details are unknown"
+msgstr " men nærmere detaljer er ukendte"
+
+#: modules_v3/ahnentafel_report/report.xml:157
+#: modules_v3/ahnentafel_report/report.xml:185
+#: modules_v3/ahnentafel_report/report.xml:212
+#: modules_v3/ahnentafel_report/report.xml:280
+#: modules_v3/ahnentafel_report/report.xml:308
+#: modules_v3/ahnentafel_report/report.xml:333
+#: modules_v3/ahnentafel_report/report.xml:364
+#: modules_v3/descendancy_report/report.xml:125
+#: modules_v3/descendancy_report/report.xml:157
+#: modules_v3/descendancy_report/report.xml:314
+#: modules_v3/descendancy_report/report.xml:352
+#: modules_v3/descendancy_report/report.xml:383
+#: modules_v3/descendancy_report/report.xml:422
+#: modules_v3/descendancy_report/report.xml:453
+msgid " in "
+msgstr " i "
 
 #: statisticsplot.php:804
 msgid " per gender"
@@ -634,66 +660,81 @@ msgstr "En bruger er blevet registreret hos webtrees på %s."
 
 #. I18N: Description of the “Pedigree” module
 #: modules_v3/pedigree_report/module.php:41
+#: modules_v3/pedigree_report/report.xml:5
 msgid "A report of an individual’s ancestors, formatted as a tree."
 msgstr "En rapport over et individs aner, udformet som et træ."
 
 #. I18N: Description of the “Ancestors” module
 #: modules_v3/ahnentafel_report/module.php:41
+#: modules_v3/ahnentafel_report/report.xml:6
 msgid "A report of an individual’s ancestors, in a narrative style."
 msgstr "En rapport for et individs ane i beskrivende stil."
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy_report/module.php:41
+#: modules_v3/descendancy_report/report.xml:5
 msgid "A report of an individual’s descendants, in a narrative style."
 msgstr "En rapport for en persons efterkommer i fortællende stil."
 
 #. I18N: Description of the “Individual” module
 #: modules_v3/individual_report/module.php:41
+#: modules_v3/individual_report/report.xml:5
 msgid "A report of an individual’s details."
 msgstr "En rapport af den enkeltes oplysninger."
 
+#: modules_v3/fact_sources/report.xml:5
+msgid "A report of facts which are supported by a given source."
+msgstr "En rapport over fakta, understøttet af en given kilde."
+
 #. I18N: Description of the “Family” module
 #: modules_v3/family_group_report/module.php:41
+#: modules_v3/family_group_report/report.xml:5
 msgid "A report of family members and their details."
 msgstr "En rapport med familiemedlemmer og deres detaljer"
 
 #. I18N: Description of the “Deaths” module
-#: modules_v3/death_report/module.php:41
+#: modules_v3/death_report/module.php:41 modules_v3/death_report/report.xml:5
 msgid "A report of individuals who died in a given time or place."
 msgstr "En rapport over personer der er døde indenfor et tidsrum eller på et sted."
 
 #. I18N: Description of the “Occupations” module
 #: modules_v3/occupation_report/module.php:41
+#: modules_v3/occupation_report/report.xml:5
 msgid "A report of individuals who had a given occupation."
 msgstr "En rapport over individer der havde et givent erhverv."
 
 #. I18N: Description of the “Births” module
-#: modules_v3/birth_report/module.php:41
+#: modules_v3/birth_report/module.php:41 modules_v3/birth_report/report.xml:5
 msgid "A report of individuals who were born in a given time or place."
 msgstr "En rapport over personer der er født på et givent tidspunkt eller sted."
 
 #. I18N: Description of the “Cemeteries” module
 #: modules_v3/cemetery_report/module.php:41
+#: modules_v3/cemetery_report/report.xml:5
 msgid "A report of individuals who were buried in a given place."
 msgstr "En rapport over individer der er begravet et bestemt sted"
 
 #. I18N: Description of the “Marriages” module
 #: modules_v3/marriage_report/module.php:41
+#: modules_v3/marriage_report/report.xml:5
 msgid "A report of individuals who were married in a given time or place."
 msgstr "En rapport over individer som er blevet gift på en given tid eller sted."
 
 #. I18N: Description of the “Changes” module
 #: modules_v3/change_report/module.php:41
+#: modules_v3/change_report/report.xml:5
 msgid "A report of recent and pending changes."
 msgstr "En rapport over nylige og ventende ændringer"
 
 #. I18N: Description of the “Related families”
 #: modules_v3/individual_ext_report/module.php:41
+#: modules_v3/individual_ext_report/report.xml:5
 msgid "A report of the families that are closely related to an individual."
 msgstr "En rapport over familier som er nært beslægtet til et individ."
 
 #. I18N: Description of the “Related individuals” module
 #: modules_v3/relative_ext_report/module.php:41
+#: modules_v3/relative_ext_report/report.xml:5
 msgid "A report of the individuals that are closely related to an individual."
 msgstr "En rapport over en persons nære slægtninge."
 
@@ -704,11 +745,12 @@ msgstr "En rapport over information leveret af en kilde."
 
 #. I18N: Description of the “Missing data”
 #: modules_v3/missing_facts_report/module.php:41
+#: modules_v3/missing_facts_report/report.xml:5
 msgid "A report of the information that is missing for an individual and their relatives."
 msgstr "En rapport over de oplysninger der mangler for en person samt pårørende."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:41
+#: modules_v3/bdm_report/module.php:41 modules_v3/bdm_report/report.xml:5
 msgid "A report of vital records for a given date or place."
 msgstr "En rapport over vigtige begivenheder for given dato eller sted"
 
@@ -778,6 +820,44 @@ msgstr ""
 #: includes/functions/functions_date.php:115
 msgid "A.M."
 msgstr "A.M."
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A3"
+msgstr "A3"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A4"
+msgstr "A4"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1564,11 +1644,19 @@ msgstr "I live"
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
 #: indilist.php:167 indilist.php:251 indilist.php:253
-#: library/WT/Stats.php:3325 modules_v3/faq/module.php:186
+#: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
 #: modules_v3/googlemap/admin_places.php:756
 #: modules_v3/googlemap/module.php:1481 modules_v3/googlemap/module.php:1497
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:8
 #: modules_v3/random_media/module.php:264
+#: modules_v3/relative_ext_report/report.xml:7
 #: modules_v3/user_messages/module.php:91
 msgid "All"
 msgstr "Alle"
@@ -1694,6 +1782,7 @@ msgstr "Der opstod en uforudset databasefejl."
 #: library/WT/Controller/Ancestry.php:83
 #: library/WT/Controller/Fanchart.php:314 library/WT/MenuBar.php:106
 #: modules_v3/ahnentafel_report/module.php:35
+#: modules_v3/ahnentafel_report/report.xml:5
 msgid "Ancestors"
 msgstr "Forfædre"
 
@@ -1701,6 +1790,10 @@ msgstr "Forfædre"
 #: library/WT/Gedcom/Tag.php:124
 msgid "Ancestors interest"
 msgstr "Mangler forfædre…"
+
+#: modules_v3/ahnentafel_report/report.xml:53
+msgid "Ancestors of "
+msgstr "Aner til "
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Ancestry.php:80
@@ -1880,6 +1973,25 @@ msgstr ""
 #: library/WT/Stats.php:3784
 msgid "Argentina"
 msgstr "Argentina"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Arial"
+msgstr "Arial"
 
 #: library/WT/Stats.php:3785
 msgid "Armenia"
@@ -2329,7 +2441,32 @@ msgid "Birmingham, Alabama"
 msgstr "Birmingham, Alabama"
 
 #. I18N: gedcom tag BIRT
-#: library/WT/Gedcom/Tag.php:140
+#: library/WT/Gedcom/Tag.php:140 modules_v3/bdm_report/report.xml:56
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:177
+#: modules_v3/family_group_report/report.xml:528
+#: modules_v3/family_group_report/report.xml:869
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:54
 msgid "Birth"
 msgstr "Født"
 
@@ -2347,6 +2484,18 @@ msgstr "Fødsel"
 msgctxt "Pedigree"
 msgid "Birth"
 msgstr "Født"
+
+#: modules_v3/bdm_report/report.xml:9 modules_v3/birth_report/report.xml:9
+msgid "Birth Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
+msgid "Birth Date range start"
+msgstr ""
+
+#: modules_v3/birth_report/report.xml:7
+msgid "Birth Place contains"
+msgstr "Sted for fødsel indeholder"
 
 #: library/WT/Stats.php:1014 statistics.php:553
 msgid "Birth by country"
@@ -2430,7 +2579,8 @@ msgid "Birth:"
 msgstr "Fødsel:"
 
 #. I18N: Name of a module/report
-#: modules_v3/birth_report/module.php:35
+#: modules_v3/birth_report/module.php:35 modules_v3/birth_report/report.xml:4
+#: modules_v3/birth_report/report.xml:29
 msgid "Births"
 msgstr "Fødsler"
 
@@ -2595,6 +2745,11 @@ msgstr "Jomfruøerne (Storbritannien)"
 msgid "British West Indies"
 msgstr "Britisk Vestindien"
 
+#: modules_v3/individual_ext_report/report.xml:311
+#: modules_v3/individual_report/report.xml:313
+msgid "Brother"
+msgstr "Bror"
+
 #: library/WT/Date/French.php:71
 msgctxt "GENITIVE"
 msgid "Brumaire"
@@ -2628,9 +2783,15 @@ msgid "Bulgaria"
 msgstr "Bulgarien"
 
 #. I18N: gedcom tag BURI
-#: library/WT/Gedcom/Tag.php:147
+#: library/WT/Gedcom/Tag.php:147 modules_v3/family_group_report/report.xml:346
+#: modules_v3/family_group_report/report.xml:697
+#: modules_v3/family_group_report/report.xml:1038
 msgid "Burial"
 msgstr "Begravelse"
+
+#: modules_v3/cemetery_report/report.xml:6
+msgid "Burial Place contains"
+msgstr ""
 
 #: library/WT/Gedcom/Tag.php:531
 msgid "Burial of a brother"
@@ -2903,11 +3064,13 @@ msgstr "Caymanøerne"
 
 #. I18N: Name of a module/report
 #: modules_v3/cemetery_report/module.php:35
+#: modules_v3/cemetery_report/report.xml:4
+#: modules_v3/cemetery_report/report.xml:33
 msgid "Cemeteries"
 msgstr "Kirkegårde"
 
 #. I18N: gedcom tag CEME
-#: library/WT/Gedcom/Tag.php:153
+#: library/WT/Gedcom/Tag.php:153 modules_v3/cemetery_report/report.xml:52
 msgid "Cemetery"
 msgstr "Kirkegård"
 
@@ -2985,6 +3148,8 @@ msgstr "Rettet den %1$s af %2$s"
 
 #. I18N: Name of a module/report
 #: admin_site_change.php:29 modules_v3/change_report/module.php:35
+#: modules_v3/change_report/report.xml:4
+#: modules_v3/change_report/report.xml:42
 msgid "Changes"
 msgstr "Ændringer"
 
@@ -3057,6 +3222,11 @@ msgstr "Chicago, Illinois"
 msgid "Child"
 msgstr "Barn"
 
+#: modules_v3/ahnentafel_report/report.xml:394
+#: modules_v3/descendancy_report/report.xml:479
+msgid "Child of "
+msgstr "Barn af "
+
 #. I18N: e.g. “Child of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:331
 #, php-format
@@ -3064,13 +3234,20 @@ msgid "Child of %s"
 msgstr "Barn af %s"
 
 #: includes/functions/functions_print_lists.php:215
-#: includes/functions/functions_print_lists.php:637 statisticsplot.php:784
+#: includes/functions/functions_print_lists.php:637
+#: modules_v3/family_group_report/report.xml:753
+#: modules_v3/relative_ext_report/report.xml:121 statisticsplot.php:784
 msgid "Children"
 msgstr "Børn"
 
 #: statistics.php:288
 msgid "Children in family"
 msgstr "Børn i familien"
+
+#: modules_v3/ahnentafel_report/report.xml:397
+#: modules_v3/descendancy_report/report.xml:482
+msgid "Children of "
+msgstr "Børn af "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: help_text.php:962
@@ -3109,6 +3286,12 @@ msgstr "Kina"
 msgid "Choose a report to run"
 msgstr "Vælg en udskriftstype"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Choose relatives"
+msgstr "Vælg slægtninge"
+
 #: help_text.php:355
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
 msgstr "Vælg ret køn fra “drop-down”-listen.  Valgmuligheden <b>Ukendt</b> indikerer, at du ikke kender personens køn."
@@ -3130,7 +3313,9 @@ msgid "Choose: "
 msgstr "Vælg: "
 
 #. I18N: gedcom tag CHR
-#: library/WT/Gedcom/Tag.php:162
+#: library/WT/Gedcom/Tag.php:162 modules_v3/family_group_report/report.xml:201
+#: modules_v3/family_group_report/report.xml:552
+#: modules_v3/family_group_report/report.xml:893
 msgid "Christening"
 msgstr "Dåb"
 
@@ -3246,7 +3431,7 @@ msgctxt "MALE"
 msgid "Civil Registrar"
 msgstr "Giftefoged"
 
-#: library/WT/Gedcom/Tag.php:255
+#: library/WT/Gedcom/Tag.php:255 modules_v3/fact_sources/report.xml:200
 msgid "Civil marriage"
 msgstr "Borgerligt ægteskab"
 
@@ -3836,7 +4021,10 @@ msgstr "Databasens brugerkonto"
 
 #. I18N: gedcom tag DATE
 #: edit_changes.php:173 help_text.php:177 help_text.php:207
-#: library/WT/Gedcom/Tag.php:183
+#: library/WT/Gedcom/Tag.php:183 modules_v3/bdm_report/report.xml:130
+#: modules_v3/bdm_report/report.xml:156 modules_v3/bdm_report/report.xml:190
+#: modules_v3/birth_report/report.xml:38 modules_v3/death_report/report.xml:44
+#: modules_v3/marriage_report/report.xml:44
 msgid "Date"
 msgstr "Dato"
 
@@ -3999,6 +4187,12 @@ msgstr "Datoer bliver kun konverteret, hvis de er gyldige i kalendersystemet. Fx
 msgid "Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords."
 msgstr "Datoer gemmes ved brug af engelske forkortelser og nøgleord. Der findes genveje som alternativer til disse forkortelser og nøgleord."
 
+#: modules_v3/family_group_report/report.xml:798
+#: modules_v3/individual_ext_report/report.xml:554
+#: modules_v3/individual_report/report.xml:556
+msgid "Daughter"
+msgstr "Datter"
+
 #. I18N: e.g. “Daughter of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:328
 #, php-format
@@ -4023,9 +4217,46 @@ msgid "Dead"
 msgstr "Antal døde"
 
 #. I18N: gedcom tag DEAT
-#: library/WT/Gedcom/Tag.php:184
+#: library/WT/Gedcom/Tag.php:184 modules_v3/bdm_report/report.xml:85
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:284
+#: modules_v3/family_group_report/report.xml:635
+#: modules_v3/family_group_report/report.xml:976
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:60
 msgid "Death"
 msgstr "Død"
+
+#: modules_v3/bdm_report/report.xml:11 modules_v3/death_report/report.xml:9
+msgid "Death Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
+msgid "Death Date range start"
+msgstr ""
+
+#: modules_v3/death_report/report.xml:7
+msgid "Death Place contains"
+msgstr "Sted for dødsfald indeholder"
 
 #: library/WT/Stats.php:1031 statistics.php:561
 msgid "Death by country"
@@ -4163,7 +4394,8 @@ msgid "Death places"
 msgstr "Steder for dødsfald"
 
 #. I18N: Name of a module/report
-#: modules_v3/death_report/module.php:35
+#: modules_v3/death_report/module.php:35 modules_v3/death_report/report.xml:4
+#: modules_v3/death_report/report.xml:30
 msgid "Deaths"
 msgstr "Dødsfald"
 
@@ -4257,6 +4489,25 @@ msgstr "Standard værdi for topniveau"
 msgid "Degree"
 msgstr "Akademisk grad"
 
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "DejaVu"
+msgstr "DejaVu"
+
 #: admin_site_access.php:284 admin_site_change.php:275
 #: admin_site_clean.php:126 admin_site_logs.php:242 admin_trees_config.php:614
 #: admin_trees_manage.php:231 edit_interface.php:151
@@ -4341,6 +4592,10 @@ msgstr "Generationer af efterkommere"
 #: library/WT/MenuBar.php:105 modules_v3/charts/module.php:206
 #: modules_v3/descendancy/module.php:34
 #: modules_v3/descendancy_report/module.php:35
+#: modules_v3/descendancy_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
 msgid "Descendants"
 msgstr "Efterkommere"
 
@@ -4348,6 +4603,10 @@ msgstr "Efterkommere"
 #: library/WT/Gedcom/Tag.php:189
 msgid "Descendants interest"
 msgstr "Mangler efterkommer(e)…"
+
+#: modules_v3/descendancy_report/report.xml:40
+msgid "Descendants of "
+msgstr "Efterkommere af "
 
 #. I18N: %s is an individual’s name
 #: descendancy.php:117 descendancy.php:123
@@ -4481,9 +4740,25 @@ msgstr "Død som barn: undtaget"
 msgid "Died as an infant: exempt"
 msgstr "Død som spæd: undtaget"
 
+#: modules_v3/change_report/report.xml:58
+msgid "Differences"
+msgstr "Forskelle"
+
 #: help_text.php:444
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
 msgstr "Der anvendes forskellige kalendersystemer i forskellige dele af verden, og mange andre kalendersystemer er blevet anvendt i tidligere tid. Hvor det er muligt, skal du indtaste datoer i det kalendersystem der var gældende, dengang begivenheden fandt sted. Du kan derefter angive en konvertering, for at vise disse datoer i et mere velkendt kalendersystem. Hvis du jævnligt bruger to kalendersystemer, kan du angive to konverteringer, og datoer vil blive konverteret til begge de valgte kalendersystemer."
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors"
+msgstr "Efterkommere i direkte linje"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors and their families"
+msgstr "Forfædre i direkte linje og deres familier"
 
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
@@ -4889,6 +5164,10 @@ msgstr "Slut ip-adresse"
 msgid "End Year"
 msgstr "Slut år"
 
+#: modules_v3/change_report/report.xml:7
+msgid "Ending range of change dates"
+msgstr "Sidste ændringsdato"
+
 #. I18N: http://en.wikipedia.org/wiki/Endowment_house
 #: library/WT/Gedcom/Code/Temp.php:98
 msgid "Endowment House"
@@ -4902,6 +5181,20 @@ msgstr "Forlovet"
 #: library/WT/Stats.php:3847
 msgid "England"
 msgstr "England"
+
+#: modules_v3/family_group_report/report.xml:7
+msgid "Enter Family ID"
+msgstr "Indtast ID på familie"
+
+#: modules_v3/ahnentafel_report/report.xml:7
+#: modules_v3/descendancy_report/report.xml:6
+#: modules_v3/individual_ext_report/report.xml:6
+#: modules_v3/individual_report/report.xml:6
+#: modules_v3/missing_facts_report/report.xml:6
+#: modules_v3/pedigree_report/report.xml:6
+#: modules_v3/relative_ext_report/report.xml:6
+msgid "Enter Individual ID"
+msgstr "Angiv Person ID&nbsp;"
 
 #: addmedia.php:448 modules_v3/gedcom_favorites/module.php:180
 msgid "Enter a Person, Family, or Source ID"
@@ -5031,7 +5324,9 @@ msgid "Europe"
 msgstr "Europa"
 
 #. I18N: gedcom tag EVEN
-#: library/WT/Gedcom/Tag.php:208
+#: library/WT/Gedcom/Tag.php:208 modules_v3/fact_sources/report.xml:68
+#: modules_v3/fact_sources/report.xml:155
+#: modules_v3/missing_facts_report/report.xml:53
 msgid "Event"
 msgstr "Begivenhed"
 
@@ -5217,6 +5512,8 @@ msgid "Fact or event"
 msgstr "Fakta eller hændelse"
 
 #. I18N: Name of a module/tab on the individual page.
+#: modules_v3/individual_ext_report/report.xml:151
+#: modules_v3/individual_report/report.xml:146
 #: modules_v3/personal_facts/module.php:34
 #: modules_v3/random_media/module.php:264
 msgid "Facts and events"
@@ -5261,7 +5558,9 @@ msgstr "Falklandsøerne"
 #: includes/functions/functions_print_lists.php:1084
 #: includes/functions/functions_print_lists.php:1276
 #: library/WT/Controller/Search.php:594 library/WT/MenuBar.php:300
-#: mediaviewer.php:135 modules_v3/gedcom_stats/module.php:101
+#: mediaviewer.php:135 modules_v3/fact_sources/report.xml:150
+#: modules_v3/fact_sources/report.xml:312
+#: modules_v3/gedcom_stats/module.php:101
 #: modules_v3/gedcom_stats/module.php:316
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:188
 #: modules_v3/relatives/module.php:34 note.php:101 placelist.php:232
@@ -5282,6 +5581,9 @@ msgstr "Familier med kilder"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:928
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:935
 #: modules_v3/family_group_report/module.php:35
+#: modules_v3/family_group_report/report.xml:4
+#: modules_v3/family_group_report/report.xml:86
+#: modules_v3/family_group_report/report.xml:94
 #: modules_v3/family_nav/module.php:302
 msgid "Family"
 msgstr "Familie"
@@ -5399,8 +5701,14 @@ msgstr "Familie med adoptivforældre"
 msgid "Family with foster parents"
 msgstr "Familie med plejeforældre"
 
+#: modules_v3/individual_ext_report/report.xml:433
+#: modules_v3/individual_report/report.xml:435
+msgid "Family with husband"
+msgstr "Familie med husbond"
+
 #: library/WT/Gedcom/Code/Pedi.php:89 library/WT/Gedcom/Code/Pedi.php:94
-#: library/WT/Person.php:996
+#: library/WT/Person.php:996 modules_v3/individual_ext_report/report.xml:229
+#: modules_v3/individual_report/report.xml:231
 msgid "Family with parents"
 msgstr "Familie med forældre"
 
@@ -5422,6 +5730,11 @@ msgstr "Familie med ægtefælle"
 #: modules_v3/gedcom_stats/module.php:351 modules_v3/html/module.php:247
 msgid "Family with the most children"
 msgstr "Familie med flest børn"
+
+#: modules_v3/individual_ext_report/report.xml:427
+#: modules_v3/individual_report/report.xml:429
+msgid "Family with wife"
+msgstr "Familie med hustru"
 
 #: includes/functions/functions_print.php:102
 #: library/WT/Controller/Fanchart.php:55
@@ -5465,7 +5778,12 @@ msgctxt "NOMINATIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#: search_advanced.php:210
+#: modules_v3/bdm_report/report.xml:116
+#: modules_v3/family_group_report/report.xml:462
+#: modules_v3/family_group_report/report.xml:722
+#: modules_v3/individual_ext_report/report.xml:235
+#: modules_v3/individual_report/report.xml:237
+#: modules_v3/relative_ext_report/report.xml:62 search_advanced.php:210
 msgid "Father"
 msgstr "Far"
 
@@ -5478,7 +5796,7 @@ msgid "Father's age"
 msgstr "Faderens alder"
 
 #. I18N: %s is the name of an individual’s father
-#: library/WT/Person.php:1634
+#: library/WT/Person.php:1638
 #, php-format
 msgid "Father: %s"
 msgstr "Far: %s"
@@ -5636,6 +5954,7 @@ msgstr "Find opbevaringssted"
 
 #: admin_site_merge.php:295 admin_site_merge.php:316 find.php:91
 #: includes/functions/functions_print.php:1156
+#: modules_v3/fact_sources/report.xml:6
 msgid "Find a source"
 msgstr "Find en kilde"
 
@@ -5714,6 +6033,24 @@ msgstr "Mappe"
 #: addmedia.php:530 admin_media_upload.php:212 help_text.php:1449
 msgid "Folder name on server"
 msgstr "Mappenavn på server"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgid "Font"
+msgstr "Skrifttype"
 
 #: help_text.php:375
 msgid "For LDS ordinances, this field records the Temple where it was performed."
@@ -5942,7 +6279,11 @@ msgid "Gambia"
 msgstr "Gambia"
 
 #. I18N: gedcom tag SEX
-#: library/WT/Gedcom/Tag.php:314
+#: library/WT/Gedcom/Tag.php:314 modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592
 msgid "Gender"
 msgstr "Køn"
 
@@ -5978,8 +6319,17 @@ msgstr "Genereret med %s"
 msgid "Generation"
 msgstr "Generation"
 
+#: modules_v3/ahnentafel_report/report.xml:76
+#: modules_v3/descendancy_report/report.xml:53
+msgid "Generation "
+msgstr "Generation "
+
 #: ancestry.php:112 descendancy.php:78 familybook.php:62 fanchart.php:68
-#: hourglass.php:75 modules_v3/googlemap/module.php:676 pedigree.php:44
+#: hourglass.php:75 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7
+#: modules_v3/googlemap/module.php:676
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/missing_facts_report/report.xml:8 pedigree.php:44
 msgid "Generations"
 msgstr "Generationer"
 
@@ -6232,6 +6582,40 @@ msgstr "Hamilton, New Zealand"
 msgid "Hartford, Connecticut"
 msgstr "Hartford, Connecticut"
 
+#: modules_v3/descendancy_report/report.xml:427
+msgid "He "
+msgstr "Han "
+
+#: modules_v3/ahnentafel_report/report.xml:289
+msgid "He died"
+msgstr "Han døde"
+
+#: modules_v3/ahnentafel_report/report.xml:258
+#: modules_v3/descendancy_report/report.xml:172
+msgid "He married"
+msgstr "Han indgik ægteskab med"
+
+#: modules_v3/ahnentafel_report/report.xml:220
+msgid "He resided at"
+msgstr "Han boede"
+
+#: modules_v3/descendancy_report/report.xml:400
+msgid "He was born"
+msgstr "Han blev født"
+
+#: modules_v3/ahnentafel_report/report.xml:345
+msgid "He was buried"
+msgstr "Han blev begravet"
+
+#: modules_v3/ahnentafel_report/report.xml:164
+msgid "He was christened"
+msgstr "Han blev døbt"
+
+#: modules_v3/ahnentafel_report/report.xml:314
+#: modules_v3/ahnentafel_report/report.xml:341
+msgid "He was cremated"
+msgstr "Han blev kremeret"
+
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:645
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:728
@@ -6284,6 +6668,29 @@ msgstr "Hjælp"
 #: library/WT/Gedcom/Code/Temp.php:110
 msgid "Helsinki, Finland"
 msgstr "Helsinki, Finland"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Helvetica"
+msgstr "Helvetica"
+
+#: modules_v3/ahnentafel_report/report.xml:194
+msgid "Her occupation was"
+msgstr "Hendes erhverv var"
 
 #: modules_v3/googlemap/help_text.php:71
 msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
@@ -6380,6 +6787,8 @@ msgstr "Markér navnet på en ramme og klik på en af pilene for at flytte den m
 
 #. I18N: gedcom tag _PRIM
 #: library/WT/Gedcom/Tag.php:746
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
 msgid "Highlighted image"
 msgstr "Markeret som hovedbillede"
 
@@ -6387,6 +6796,10 @@ msgstr "Markeret som hovedbillede"
 #: help_text.php:227 library/WT/Date/Hijri.php:41
 msgid "Hijri"
 msgstr "Hijri"
+
+#: modules_v3/ahnentafel_report/report.xml:193
+msgid "His occupation was"
+msgstr "Hans erhverv var"
 
 #: modules_v3/personal_facts/module.php:88
 msgid "Historical facts"
@@ -6452,6 +6865,16 @@ msgstr "Ungarn"
 
 #. I18N: gedcom tag HUSB
 #: edit_interface.php:543 library/WT/Gedcom/Tag.php:235
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+#: modules_v3/family_group_report/report.xml:142
+#: modules_v3/family_group_report/report.xml:1076
+#: modules_v3/individual_ext_report/report.xml:194
+#: modules_v3/individual_ext_report/report.xml:208
+#: modules_v3/individual_ext_report/report.xml:441
+#: modules_v3/individual_report/report.xml:189
+#: modules_v3/individual_report/report.xml:210
+#: modules_v3/individual_report/report.xml:443
 msgid "Husband"
 msgstr "Ægtemand"
 
@@ -6713,6 +7136,8 @@ msgstr "Indien"
 #: inverselink.php:110 library/WT/Gedcom/Tag.php:240
 #: modules_v3/charts/module.php:221 modules_v3/googlemap/module.php:673
 #: modules_v3/individual_report/module.php:35
+#: modules_v3/individual_report/report.xml:4
+#: modules_v3/individual_report/report.xml:85
 #: modules_v3/stories/module.php:247 modules_v3/stories/module.php:350
 #: modules_v3/stories/module.php:416 pedigree.php:43
 msgid "Individual"
@@ -6759,6 +7184,8 @@ msgstr "Individuel post"
 #: includes/functions/functions_print_lists.php:1365 indilist.php:132
 #: indilist.php:135 library/WT/Controller/Search.php:593
 #: library/WT/MenuBar.php:298 mediaviewer.php:132
+#: modules_v3/fact_sources/report.xml:52
+#: modules_v3/fact_sources/report.xml:256
 #: modules_v3/gedcom_stats/module.php:93
 #: modules_v3/gedcom_stats/module.php:300
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:172
@@ -7214,7 +7641,8 @@ msgstr "Ægtefælles besegling (mormon)"
 msgid "Laie, Hawaii"
 msgstr "Laie, Hawaii"
 
-#: admin_trees_config.php:812 pedigree.php:61
+#: admin_trees_config.php:812 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Landscape"
 msgstr "Liggende"
 
@@ -7246,7 +7674,8 @@ msgid "Las Vegas, Nevada"
 msgstr "Las Vegas, Nevada"
 
 #. I18N: gedcom tag CHAN
-#: library/WT/Gedcom/Tag.php:157
+#: library/WT/Gedcom/Tag.php:157 modules_v3/change_report/report.xml:64
+#: modules_v3/change_report/report.xml:106
 msgid "Last change"
 msgstr "Sidste ændring"
 
@@ -7324,6 +7753,25 @@ msgstr "Blade"
 msgid "Lebanon"
 msgstr "Libanon"
 
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Legal"
+msgstr "US Legal"
+
 #. I18N: gedcom tag LEGA
 #: library/WT/Gedcom/Tag.php:244
 msgid "Legatee"
@@ -7336,6 +7784,25 @@ msgstr "Længde af ægteskabs"
 #: library/WT/Stats.php:3912
 msgid "Lesotho"
 msgstr "Lesotho"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Letter"
+msgstr "US Letter"
 
 #: modules_v3/googlemap/admin_places.php:175
 #: modules_v3/googlemap/module.php:380 modules_v3/googlemap/module.php:1598
@@ -7712,14 +8179,27 @@ msgid "March"
 msgstr "marts"
 
 #. I18N: gedcom tag MARR
-#: library/WT/Gedcom/Tag.php:252
+#: library/WT/Gedcom/Tag.php:252 modules_v3/bdm_report/report.xml:76
+#: modules_v3/family_group_report/report.xml:372
 msgid "Marriage"
 msgstr "Ægteskab"
+
+#: modules_v3/marriage_report/report.xml:9
+msgid "Marriage Date range end"
+msgstr "Interval for dato for ægteskab slut"
+
+#: modules_v3/marriage_report/report.xml:8
+msgid "Marriage Date range start"
+msgstr "Interval for dato for ægteskab start"
 
 #. I18N: gedcom tag _MARI
 #: library/WT/Gedcom/Tag.php:744
 msgid "Marriage Intention"
 msgstr "Ægteskabsintention"
+
+#: modules_v3/marriage_report/report.xml:7
+msgid "Marriage Place contains"
+msgstr "Sted for ægteskaber indeholder"
 
 #. I18N: gedcom tag MARB
 #: library/WT/Gedcom/Tag.php:247
@@ -7864,6 +8344,8 @@ msgstr "Ægteskabstype ukendt"
 
 #. I18N: Name of a module/report
 #: modules_v3/marriage_report/module.php:35
+#: modules_v3/marriage_report/report.xml:4
+#: modules_v3/marriage_report/report.xml:28
 msgid "Marriages"
 msgstr "Ægteskaber"
 
@@ -8237,6 +8719,8 @@ msgstr "Manglende midlertidig PHP mappe"
 
 #. I18N: Name of a module/report
 #: modules_v3/missing_facts_report/module.php:35
+#: modules_v3/missing_facts_report/report.xml:4
+#: modules_v3/missing_facts_report/report.xml:50
 msgid "Missing data"
 msgstr "Manglende data"
 
@@ -8404,7 +8888,12 @@ msgstr "De fleste hjemmesider er konfigureret til at bruge standardporten på 33
 msgid "Most viewed pages"
 msgstr "Mest sete sider"
 
-#: search_advanced.php:247
+#: modules_v3/bdm_report/report.xml:118
+#: modules_v3/family_group_report/report.xml:469
+#: modules_v3/family_group_report/report.xml:729
+#: modules_v3/individual_ext_report/report.xml:271
+#: modules_v3/individual_report/report.xml:273
+#: modules_v3/relative_ext_report/report.xml:63 search_advanced.php:247
 msgid "Mother"
 msgstr "Mor"
 
@@ -8417,7 +8906,7 @@ msgid "Mother's age"
 msgstr "Moderens alder"
 
 #. I18N: %s is the name of an individual’s mother
-#: library/WT/Person.php:1643
+#: library/WT/Person.php:1647
 #, php-format
 msgid "Mother: %s"
 msgstr "Mor: %s"
@@ -8537,6 +9026,20 @@ msgstr "Myanmar (Burma)"
 #: library/WT/Stats.php:3326
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:119
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:571
+#: modules_v3/bdm_report/report.xml:6 modules_v3/bdm_report/report.xml:47
+#: modules_v3/birth_report/report.xml:6 modules_v3/birth_report/report.xml:34
+#: modules_v3/cemetery_report/report.xml:39
+#: modules_v3/change_report/report.xml:54
+#: modules_v3/change_report/report.xml:94 modules_v3/death_report/report.xml:6
+#: modules_v3/death_report/report.xml:36 modules_v3/fact_sources/report.xml:60
+#: modules_v3/fact_sources/report.xml:153
+#: modules_v3/fact_sources/report.xml:264
+#: modules_v3/fact_sources/report.xml:315
+#: modules_v3/marriage_report/report.xml:6
+#: modules_v3/marriage_report/report.xml:36
+#: modules_v3/missing_facts_report/report.xml:52
+#: modules_v3/occupation_report/report.xml:41
+#: modules_v3/relative_ext_report/report.xml:48
 msgid "Name"
 msgstr "Navn"
 
@@ -8549,6 +9052,11 @@ msgstr "Navn"
 #: modules_v3/clippings/module.php:278
 msgid "Name / Description"
 msgstr "Navn / beskrivelse"
+
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+msgid "Name List"
+msgstr "Navneliste"
 
 #: find.php:184 find.php:199
 msgid "Name contains:"
@@ -8939,8 +9447,12 @@ msgstr "Natlig"
 
 #: admin_trees_download.php:116 admin_users.php:450 famlist.php:115
 #: famlist.php:145 indilist.php:115 indilist.php:145 library/WT/Stats.php:758
-#: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:592
-#: modules_v3/families/module.php:151 modules_v3/individuals/module.php:150
+#: modules_v3/cemetery_report/report.xml:8 modules_v3/clippings/module.php:205
+#: modules_v3/clippings/module.php:592 modules_v3/death_report/report.xml:11
+#: modules_v3/families/module.php:151
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/individuals/module.php:150
 msgid "None"
 msgstr "Ingen"
 
@@ -9010,6 +9522,10 @@ msgstr "Ugift"
 #. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:484
 #: includes/functions/functions_print.php:560 library/WT/Gedcom/Tag.php:276
+#: modules_v3/cemetery_report/report.xml:62
+#: modules_v3/family_group_report/report.xml:480
+#: modules_v3/family_group_report/report.xml:741
+#: modules_v3/family_group_report/report.xml:1090
 msgid "Note"
 msgstr "Note"
 
@@ -9036,7 +9552,9 @@ msgstr "Note: længere stier kræver en masse beregninger, som kan forårsage at
 #: admin.php:232 admin.php:264 library/WT/Controller/Search.php:596
 #: mediaviewer.php:144
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1140
-#: modules_v3/notes/module.php:34 source.php:106 statistics.php:339
+#: modules_v3/individual_ext_report/report.xml:221
+#: modules_v3/individual_report/report.xml:223 modules_v3/notes/module.php:34
+#: source.php:106 statistics.php:339
 msgid "Notes"
 msgstr "Noter"
 
@@ -9152,6 +9670,8 @@ msgstr "Erhverv"
 
 #. I18N: Name of a report
 #: modules_v3/occupation_report/module.php:35
+#: modules_v3/occupation_report/report.xml:4
+#: modules_v3/occupation_report/report.xml:35
 msgid "Occupations"
 msgstr "Erhverv"
 
@@ -9327,6 +9847,11 @@ msgstr "Ritual rel. tjeneste"
 msgid "Ordination"
 msgstr "Ordineret rel. tjeneste"
 
+#: modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7
+msgid "Orientation"
+msgstr "Orientering"
+
 #: library/WT/Gedcom/Code/Temp.php:150
 msgid "Orlando, Florida"
 msgstr "Orlando, Florida"
@@ -9426,10 +9951,45 @@ msgstr "PHP-indstillingen \"%1$s\" er slået fra. Uden denne vil følgende egens
 msgid "PHP time limit"
 msgstr "PHP tidsbegrænsning"
 
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_ext_report/report.xml:90
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/missing_facts_report/report.xml:51
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42
+msgid "Page"
+msgstr "Side"
+
 #: medialist.php:216 medialist.php:339
 #, php-format
 msgid "Page %s of %s"
 msgstr "Side %s af %s"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgid "Page size"
+msgstr "Sidestørrelse"
 
 #: library/WT/Gedcom/Tag.php:917
 msgid "Painting"
@@ -9485,6 +10045,12 @@ msgstr "Forældrerens alder"
 msgid "Parents"
 msgstr "Forældre:"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Parents and siblings"
+msgstr "Forældre og søskende"
+
 #: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
 #: edituser.php:152 help_text.php:736 help_text.php:1296 login.php:159
 #: login.php:220 login.php:449 modules_v3/login_block/module.php:81
@@ -9509,8 +10075,14 @@ msgstr "Adgangskoden skal indeholde mindst 6 tegn."
 #: library/WT/Controller/Fanchart.php:306
 #: library/WT/Controller/Pedigree.php:94 library/WT/MenuBar.php:104
 #: modules_v3/charts/module.php:205 modules_v3/pedigree_report/module.php:35
+#: modules_v3/pedigree_report/report.xml:4
+#: modules_v3/pedigree_report/report.xml:41
 msgid "Pedigree"
 msgstr "Anetavle"
+
+#: modules_v3/pedigree_report/report.xml:737
+msgid "Pedigree Chart"
+msgstr "Anetræ"
 
 #: includes/functions/functions_print.php:93
 #: library/WT/Controller/Fanchart.php:308 library/WT/MenuBar.php:123
@@ -9541,6 +10113,7 @@ msgstr "Ramme for ventende ændringer"
 
 #. I18N: Name of a module
 #: edit_changes.php:33 edit_changes.php:53 help_text.php:1331
+#: modules_v3/change_report/report.xml:50
 #: modules_v3/review_changes/module.php:34
 #: themes/_administration/header.php:77 themes/clouds/header.php:123
 #: themes/colors/header.php:97 themes/fab/header.php:79
@@ -9647,12 +10220,18 @@ msgstr "Pitcairn"
 #. I18N: gedcom tag PLAC
 #: library/WT/Gedcom/Tag.php:290
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1136
+#: modules_v3/bdm_report/report.xml:7 modules_v3/bdm_report/report.xml:132
+#: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
+#: modules_v3/birth_report/report.xml:40
+#: modules_v3/cemetery_report/report.xml:58
+#: modules_v3/death_report/report.xml:48
 #: modules_v3/googlemap/admin_places.php:179
 #: modules_v3/googlemap/admin_places.php:180
 #: modules_v3/googlemap/admin_places.php:181
 #: modules_v3/googlemap/admin_places.php:182
 #: modules_v3/googlemap/admin_places.php:183
-#: modules_v3/googlemap/module.php:1591 search.php:169 search.php:182
+#: modules_v3/googlemap/module.php:1591
+#: modules_v3/marriage_report/report.xml:48 search.php:169 search.php:182
 msgid "Place"
 msgstr "Sted"
 
@@ -9898,7 +10477,8 @@ msgstr "Portland, Oregon"
 msgid "Porto Alegre, Brazil"
 msgstr "Porto Alegre, Brasilien"
 
-#: admin_trees_config.php:813 pedigree.php:61
+#: admin_trees_config.php:813 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Portrait"
 msgstr "Stående"
 
@@ -9998,6 +10578,10 @@ msgstr "Præst"
 msgid "Primidi"
 msgstr "Primidi"
 
+#: modules_v3/family_group_report/report.xml:11
+msgid "Print basic events when blank?"
+msgstr "Udskrift grundlæggende begivenheder når tom?"
+
 #: admin_trees_config.php:219
 msgid "Privacy"
 msgstr "Privatliv"
@@ -10016,7 +10600,7 @@ msgstr "Privatlivsrestriktioner - disse påvirker poster og fakta der ikke indeh
 #: library/WT/Person.php:121 library/WT/Person.php:336
 #: library/WT/Person.php:359 library/WT/Person.php:382
 #: library/WT/Person.php:419 library/WT/Person.php:442
-#: library/WT/Person.php:1905 library/WT/Report/Base.php:1946
+#: library/WT/Person.php:1909 library/WT/Report/Base.php:1946
 #: library/WT/Repository.php:57 library/WT/Source.php:49
 #: library/WT/Stats.php:863 library/WT/Stats.php:1805
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:240
@@ -10274,7 +10858,8 @@ msgid "Recent Years (&lt; 100 yrs)"
 msgstr "De sidste 100 år"
 
 #. I18N: Name of a module
-#: admin.php:244 modules_v3/recent_changes/module.php:36
+#: admin.php:244 modules_v3/change_report/report.xml:90
+#: modules_v3/recent_changes/module.php:36
 msgid "Recent changes"
 msgstr "Seneste Ændringer"
 
@@ -10345,7 +10930,7 @@ msgstr "Referencenummer"
 msgid "Regina, Saskatchewan, Canada"
 msgstr "Regina, Saskatchewan, Canada"
 
-#: library/WT/Gedcom/Tag.php:256
+#: library/WT/Gedcom/Tag.php:256 modules_v3/fact_sources/report.xml:203
 msgid "Registered partnership"
 msgstr "Registreret partnerskab"
 
@@ -10373,11 +10958,15 @@ msgstr "Regulære udtryk er en avanceret mønster-matchende teknik. Se <a href=\
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:35
+#: modules_v3/individual_ext_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:89
 msgid "Related families"
 msgstr "Relaterede familier"
 
 #. I18N: Name of a report
 #: modules_v3/relative_ext_report/module.php:35
+#: modules_v3/relative_ext_report/report.xml:4
+#: modules_v3/relative_ext_report/report.xml:41
 msgid "Related individuals"
 msgstr "Relaterede individer"
 
@@ -10433,7 +11022,7 @@ msgstr "Religion"
 msgid "Religious Institution"
 msgstr "Religiøs institution"
 
-#: library/WT/Gedcom/Tag.php:257
+#: library/WT/Gedcom/Tag.php:257 modules_v3/fact_sources/report.xml:197
 msgid "Religious marriage"
 msgstr "Religiøst ægteskab"
 
@@ -11264,6 +11853,40 @@ msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
+#: modules_v3/descendancy_report/report.xml:357
+msgid "She "
+msgstr "Hun "
+
+#: modules_v3/ahnentafel_report/report.xml:290
+msgid "She died"
+msgstr "Hun døde"
+
+#: modules_v3/ahnentafel_report/report.xml:259
+#: modules_v3/descendancy_report/report.xml:241
+msgid "She married"
+msgstr "Hun indgik ægteskab med"
+
+#: modules_v3/ahnentafel_report/report.xml:221
+msgid "She resided at"
+msgstr "Hun boede"
+
+#: modules_v3/descendancy_report/report.xml:330
+msgid "She was born"
+msgstr "Hun blev født"
+
+#: modules_v3/ahnentafel_report/report.xml:346
+msgid "She was buried"
+msgstr "Hun blev begravet"
+
+#: modules_v3/ahnentafel_report/report.xml:165
+msgid "She was christened"
+msgstr "Hun blev døbt"
+
+#: modules_v3/ahnentafel_report/report.xml:315
+#: modules_v3/ahnentafel_report/report.xml:342
+msgid "She was cremated"
+msgstr "Hun blev kremeret"
+
 #: library/WT/Date/Jewish.php:111
 msgctxt "GENITIVE"
 msgid "Shevat"
@@ -11365,6 +11988,10 @@ msgstr "Vis en aldersmarkør?"
 msgid "Show chart details by default"
 msgstr ""
 
+#: modules_v3/ahnentafel_report/report.xml:13
+msgid "Show children of ancestors?"
+msgstr "Vis aners børn?"
+
 #: library/WT/MenuBar.php:173 library/WT/MenuBar.php:193
 msgid "Show children on timeline chart"
 msgstr "Vis børn på en tidslinie"
@@ -11458,6 +12085,17 @@ msgstr "Vis link til Statistikdiagrammer?"
 msgid "Show list of family trees"
 msgstr ""
 
+#: modules_v3/ahnentafel_report/report.xml:10
+#: modules_v3/family_group_report/report.xml:9
+#: modules_v3/individual_ext_report/report.xml:11
+#: modules_v3/individual_report/report.xml:8
+msgid "Show notes?"
+msgstr "Vis noter?"
+
+#: modules_v3/ahnentafel_report/report.xml:11
+msgid "Show occupations?"
+msgstr "Vis erhverv?"
+
 #: help_text.php:1291 relationship.php:118
 msgid "Show oldest top"
 msgstr "Vis de ældste øverst"
@@ -11501,6 +12139,10 @@ msgstr "Vis forældre"
 msgid "Show path"
 msgstr "Vis sti"
 
+#: modules_v3/change_report/report.xml:9
+msgid "Show pending changes"
+msgstr "Vis afventende ændringer"
+
 #: includes/functions/functions_print_lists.php:91
 #: includes/functions/functions_print_lists.php:496
 msgid "Show people who are alive or couples where both partners are alive."
@@ -11527,6 +12169,12 @@ msgstr "Vis personer der er født for mere end 100 år siden."
 msgid "Show persons born within the last 100 years."
 msgstr "Vis personer født inden for de sidste 100 år."
 
+#: modules_v3/family_group_report/report.xml:10
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+msgid "Show photos?"
+msgstr "Vis billeder?"
+
 #: admin_trees_config.php:527 help_text.php:887
 msgid "Show private relationships"
 msgstr "Vis private relationer"
@@ -11547,6 +12195,10 @@ msgstr "Vis forskningsopgaver der ikke er tildelt til andre brugere."
 msgid "Show research tasks that have a date in the future"
 msgstr "Vis forskningsopgaver der har en fremtidig deadline."
 
+#: modules_v3/ahnentafel_report/report.xml:12
+msgid "Show residences?"
+msgstr "Vis bopæle?"
+
 #: help_text.php:898
 msgid "Show runtime statistics and database queries at the bottom of every page."
 msgstr "Vis runtime statistik og antal databaseforespørgsler nederst på hver side."
@@ -11554,6 +12206,14 @@ msgstr "Vis runtime statistik og antal databaseforespørgsler nederst på hver s
 #: modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
 msgstr "Vis kontroller for diashow?"
+
+#: modules_v3/ahnentafel_report/report.xml:9
+#: modules_v3/descendancy_report/report.xml:8
+#: modules_v3/family_group_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:10
+#: modules_v3/individual_report/report.xml:7
+msgid "Show sources?"
+msgstr "Vis kilder?"
 
 #: familybook.php:76 help_text.php:1416 hourglass.php:91
 msgid "Show spouses"
@@ -11674,6 +12334,11 @@ msgstr "Simpelt søgefilter baseret på de bogstaver/tegn, der er skrevet ind. I
 msgid "Singapore"
 msgstr "Singapore"
 
+#: modules_v3/individual_ext_report/report.xml:347
+#: modules_v3/individual_report/report.xml:349
+msgid "Sister"
+msgstr "Søster"
+
 #: admin_site_access.php:32 themes/_administration/header.php:97
 msgid "Site access rules"
 msgstr "Sidens adgangsregler"
@@ -11783,13 +12448,28 @@ msgstr "Nogle emner kunne ikke tilføjes på grund af privatlivs-begrænsninger"
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
 msgstr "Nogle stednavne kan skrives med valgfrie præfiks og suffiks. For eksempel \"Orange\" i stedet for \"Orange County\". Hvis familietræet indholder de fulde stednavne, men den geografiske database indeholder de korte stednavne, bør du angive en liste med de præfiks og suffiks der skal ignoreres. Flere angivelser skal adskilles med semikoloner. For eksempel \"County;County of\" eller \"Township;Twp;Twp.\"."
 
+#: modules_v3/family_group_report/report.xml:763
+#: modules_v3/individual_ext_report/report.xml:518
+#: modules_v3/individual_report/report.xml:520
+msgid "Son"
+msgstr "Søn"
+
 #. I18N: e.g. “Son of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:325
 #, php-format
 msgid "Son of %s"
 msgstr "Søn af %s"
 
-#: medialist.php:92 modules_v3/recent_changes/module.php:151
+#: medialist.php:92 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/recent_changes/module.php:151
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:148
 #: modules_v3/upcoming_events/module.php:160
 msgid "Sort order"
@@ -11810,7 +12490,12 @@ msgstr "Lyder som"
 #. I18N: Name of a module/report
 #: includes/functions/functions_print_facts.php:467
 #: includes/functions/functions_print_facts.php:496 inverselink.php:134
-#: library/WT/Gedcom/Tag.php:320 modules_v3/fact_sources/module.php:35
+#: library/WT/Gedcom/Tag.php:320 modules_v3/bdm_report/report.xml:134
+#: modules_v3/bdm_report/report.xml:160 modules_v3/bdm_report/report.xml:194
+#: modules_v3/birth_report/report.xml:41 modules_v3/death_report/report.xml:52
+#: modules_v3/fact_sources/module.php:35 modules_v3/fact_sources/report.xml:4
+#: modules_v3/fact_sources/report.xml:41
+#: modules_v3/marriage_report/report.xml:52
 msgid "Source"
 msgstr "Kilde"
 
@@ -11831,6 +12516,7 @@ msgid "Source contains:"
 msgstr "Kilder indholder:"
 
 #: admin_trees_config.php:1255 help_text.php:781
+#: modules_v3/fact_sources/report.xml:7
 msgid "Source type"
 msgstr "Kildetype"
 
@@ -11840,14 +12526,23 @@ msgstr "Kildetype"
 #: includes/functions/functions_print_lists.php:1177
 #: includes/functions/functions_print_lists.php:1278
 #: library/WT/Controller/Search.php:595 library/WT/MenuBar.php:311
-#: mediaviewer.php:138 modules_v3/gedcom_stats/module.php:104
+#: mediaviewer.php:138 modules_v3/ahnentafel_report/report.xml:480
+#: modules_v3/descendancy_report/report.xml:612
+#: modules_v3/family_group_report/report.xml:1107
+#: modules_v3/gedcom_stats/module.php:104
 #: modules_v3/gedcom_stats/module.php:324 modules_v3/html/module.php:192
+#: modules_v3/individual_ext_report/report.xml:636
+#: modules_v3/individual_report/report.xml:636
 #: modules_v3/lightbox/functions/lightbox_print_media.php:369
 #: modules_v3/sources_tab/module.php:34 note.php:107 repo.php:94
 #: search.php:124 sourcelist.php:31 sourcelist.php:35 statistics.php:338
 #: statistics.php:375
 msgid "Sources"
 msgstr "Kilder"
+
+#: modules_v3/missing_facts_report/report.xml:12
+msgid "Sources to the events"
+msgstr "Kilder for begivenheden"
 
 #: library/WT/Stats.php:4036
 msgid "South Africa"
@@ -11882,6 +12577,10 @@ msgstr "Hastighed"
 msgid "Spokane, Washington"
 msgstr "Spokane, Washington"
 
+#: modules_v3/bdm_report/report.xml:167
+msgid "Spouse"
+msgstr "Ægtefælle/partner"
+
 #: library/WT/Gedcom/Tag.php:216
 msgid "Spouse census date"
 msgstr "Ægtefælles folketællingsdato"
@@ -11897,6 +12596,12 @@ msgstr "Note for ægtefælle"
 #: includes/functions/functions_print_lists.php:1363
 msgid "Spouses"
 msgstr "Ægtefæller"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Spouses and children"
+msgstr "Ægtefælle og børn"
 
 #: library/WT/Stats.php:3911
 msgid "Sri Lanka"
@@ -11935,6 +12640,10 @@ msgstr "Start med forældrene"
 #: modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
 msgstr "Start diashow når side er indlæst?"
+
+#: modules_v3/change_report/report.xml:6
+msgid "Starting range of change dates"
+msgstr "Første ændringsdato"
 
 #. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:323 modules_v3/googlemap/admin_places.php:176
@@ -12200,7 +12909,7 @@ msgid "Templates"
 msgstr "Skabeloner"
 
 #. I18N: gedcom tag TEMP
-#: library/WT/Gedcom/Tag.php:329
+#: library/WT/Gedcom/Tag.php:329 modules_v3/individual_report/report.xml:205
 msgid "Temple"
 msgstr "Tempel (Mormoner)"
 
@@ -13460,6 +14169,10 @@ msgstr "Mest brugte efternavne"
 msgid "Toronto, Ontario, Canada"
 msgstr "Toronto, Ontario, Canada"
 
+#: modules_v3/change_report/report.xml:125
+msgid "Total accepted changes: "
+msgstr "Total accepterede ændringer: "
+
 #: statistics.php:98
 msgid "Total births"
 msgstr "Total fødsler"
@@ -13478,11 +14191,15 @@ msgstr "Total antal skilsmisser"
 
 #: modules_v3/gedcom_stats/module.php:113
 #: modules_v3/gedcom_stats/module.php:356 modules_v3/html/module.php:204
-#: statistics.php:351
+#: modules_v3/missing_facts_report/report.xml:599 statistics.php:351
 msgid "Total events"
 msgstr "Total antal begivenheder"
 
-#: library/WT/Stats.php:3059
+#: library/WT/Stats.php:3059 modules_v3/fact_sources/report.xml:246
+#: modules_v3/fact_sources/report.xml:250
+#: modules_v3/fact_sources/report.xml:348
+#: modules_v3/fact_sources/report.xml:352
+#: modules_v3/marriage_report/report.xml:112
 msgid "Total families"
 msgstr "antal familier ="
 
@@ -13498,6 +14215,19 @@ msgstr "Antal kvinder"
 #: statistics.php:178
 msgid "Total given names"
 msgstr "Total antal fornavne"
+
+#: modules_v3/bdm_report/report.xml:208 modules_v3/birth_report/report.xml:65
+#: modules_v3/cemetery_report/report.xml:86
+#: modules_v3/death_report/report.xml:98
+#: modules_v3/fact_sources/report.xml:140
+#: modules_v3/fact_sources/report.xml:144
+#: modules_v3/fact_sources/report.xml:303
+#: modules_v3/fact_sources/report.xml:307
+#: modules_v3/missing_facts_report/report.xml:598
+#: modules_v3/occupation_report/report.xml:92
+#: modules_v3/relative_ext_report/report.xml:146
+msgid "Total individuals"
+msgstr "Antal individer"
 
 #: calendar.php:438 find.php:507 modules_v3/GEDFact_assistant/module.php:162
 #: statistics.php:75
@@ -13520,6 +14250,10 @@ msgstr "Total antal vielser"
 #: admin.php:164
 msgid "Total number of users"
 msgstr "Total antal brugere"
+
+#: modules_v3/change_report/report.xml:85
+msgid "Total pending changes: "
+msgstr "Total ventende ændringer: "
 
 #. I18N: A count of places
 #: modules_v3/googlemap/module.php:1709
@@ -13715,7 +14449,11 @@ msgstr "Ukendt"
 #: calendar.php:586 includes/functions/functions_edit.php:1461
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:286 library/WT/Stats.php:3325
-#: timeline.php:264
+#: modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592 timeline.php:264
 msgctxt "unknown gender"
 msgid "Unknown"
 msgstr "Ukendt"
@@ -13845,6 +14583,11 @@ msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] "Brug mindst %s tegn."
 msgstr[1] "Brug mindst %s tegn."
+
+#: modules_v3/family_group_report/report.xml:14
+#: modules_v3/individual_ext_report/report.xml:15
+msgid "Use colors"
+msgstr "Brug farver"
 
 #: modules_v3/tree/class_treeview.php:74
 msgid "Use compact layout"
@@ -14149,7 +14892,8 @@ msgid "Visitor"
 msgstr "Gæst"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:35
+#: modules_v3/bdm_report/module.php:35 modules_v3/bdm_report/report.xml:4
+#: modules_v3/bdm_report/report.xml:32
 msgid "Vital records"
 msgstr "Vitale poster"
 
@@ -14387,6 +15131,14 @@ msgstr "Bredden af de genererede miniaturebilleder"
 
 #. I18N: gedcom tag WIFE
 #: edit_interface.php:541 library/WT/Gedcom/Tag.php:340
+#: modules_v3/family_group_report/report.xml:493
+#: modules_v3/family_group_report/report.xml:1067
+#: modules_v3/individual_ext_report/report.xml:197
+#: modules_v3/individual_ext_report/report.xml:211
+#: modules_v3/individual_ext_report/report.xml:477
+#: modules_v3/individual_report/report.xml:192
+#: modules_v3/individual_report/report.xml:213
+#: modules_v3/individual_report/report.xml:479
 msgid "Wife"
 msgstr "Hustru"
 
@@ -14882,6 +15634,13 @@ msgstr "også kendt som"
 #: library/WT/Controller/Ancestry.php:144 library/WT/Stats.php:2627
 #: library/WT/Stats.php:2652 library/WT/Stats.php:2663
 #: library/WT/Stats.php:2673 library/WT/Stats.php:3427 medialist.php:47
+#: modules_v3/ahnentafel_report/report.xml:400
+#: modules_v3/descendancy_report/report.xml:131
+#: modules_v3/descendancy_report/report.xml:229
+#: modules_v3/descendancy_report/report.xml:298
+#: modules_v3/descendancy_report/report.xml:362
+#: modules_v3/descendancy_report/report.xml:432
+#: modules_v3/descendancy_report/report.xml:485
 msgid "and"
 msgstr "og"
 
@@ -15170,6 +15929,10 @@ msgstr "dato-intervaller"
 msgid "daughter"
 msgstr "datter"
 
+#: modules_v3/descendancy_report/report.xml:225
+msgid "daughter of"
+msgstr "datter af"
+
 #: includes/functions/functions.php:1238
 msgctxt "child's wife"
 msgid "daughter-in-law"
@@ -15209,6 +15972,18 @@ msgstr "grader"
 #: admin_site_access.php:110 admin_site_access.php:301
 msgid "deny"
 msgstr "afvis"
+
+#: modules_v3/descendancy_report/report.xml:137
+#: modules_v3/descendancy_report/report.xml:364
+msgctxt "FEMALE"
+msgid "died"
+msgstr "døde"
+
+#: modules_v3/descendancy_report/report.xml:134
+#: modules_v3/descendancy_report/report.xml:434
+msgctxt "MALE"
+msgid "died"
+msgstr "døde"
 
 #: modules_v3/googlemap/module.php:312 modules_v3/googlemap/module.php:321
 #: modules_v3/googlemap/module.php:330 modules_v3/googlemap/module.php:338
@@ -15304,7 +16079,7 @@ msgctxt "Abbreviation for fax number"
 msgid "f."
 msgstr "fax"
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "facts"
 msgstr "fakta"
 
@@ -17322,6 +18097,16 @@ msgstr "pigenavn"
 msgid "marriage"
 msgstr "ægteskab"
 
+#: modules_v3/descendancy_report/report.xml:244
+msgctxt "FEMALE"
+msgid "married"
+msgstr "gift"
+
+#: modules_v3/descendancy_report/report.xml:175
+msgctxt "MALE"
+msgid "married"
+msgstr "gift"
+
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:116
 msgid "married name"
@@ -17520,7 +18305,13 @@ msgstr "fætter/kusine af 9. led"
 #: includes/functions/functions_print_facts.php:1228
 #: includes/functions/functions_print_lists.php:795 library/WT/Stats.php:3519
 #: modules_v3/batch_update/admin_batch_update.php:339
-#: modules_v3/charts/module.php:215
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:215
+#: modules_v3/family_group_report/report.xml:250
+#: modules_v3/family_group_report/report.xml:421
+#: modules_v3/family_group_report/report.xml:601
+#: modules_v3/family_group_report/report.xml:942
+#: modules_v3/individual_ext_report/report.xml:180
+#: modules_v3/individual_report/report.xml:175
 msgid "no"
 msgstr "nej"
 
@@ -17549,7 +18340,19 @@ msgstr "nord"
 msgid "numbers"
 msgstr "antal for en familie"
 
-#: statisticsplot.php:816 statisticsplot.php:818 statisticsplot.php:820
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42 statisticsplot.php:816
+#: statisticsplot.php:818 statisticsplot.php:820
 msgid "of"
 msgstr "af"
 
@@ -17654,7 +18457,7 @@ msgstr "kvartaler efter vielse"
 msgid "questionable evidence"
 msgstr "tvivlsomt bevis"
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "records"
 msgstr "poster"
 
@@ -18020,6 +18823,10 @@ msgstr "fætter/kusine af 6. led"
 msgid "son"
 msgstr "søn"
 
+#: modules_v3/descendancy_report/report.xml:294
+msgid "son of"
+msgstr "søn af"
+
 #: includes/functions/functions.php:1235
 msgctxt "child's husband"
 msgid "son-in-law"
@@ -18051,23 +18858,32 @@ msgid "son/daughter-in-law"
 msgstr "svigersøn/-datter"
 
 #. I18N: An option in a list-box
+#: modules_v3/change_report/report.xml:8
 #: modules_v3/todays_events/module.php:152
 #: modules_v3/upcoming_events/module.php:164
 msgid "sort by date"
 msgstr "sorter efter dato"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2044 reportengine.php:513
+#: edit_interface.php:2044 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10 modules_v3/change_report/report.xml:8
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:513
 msgid "sort by date of birth"
 msgstr "sorter efter fødselsdato"
 
 #. I18N: An option in a list-box
-#: reportengine.php:515
+#: modules_v3/bdm_report/report.xml:12 modules_v3/cemetery_report/report.xml:7
+#: modules_v3/death_report/report.xml:10
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:515
 msgid "sort by date of death"
 msgstr "sorter efter dødsdato"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2420 reportengine.php:514
+#: edit_interface.php:2420 modules_v3/marriage_report/report.xml:10
+#: reportengine.php:514
 msgid "sort by date of marriage"
 msgstr "sorter efter dato for ægteskab"
 
@@ -18087,7 +18903,15 @@ msgid "sort by filename"
 msgstr "sorter efter filnavn"
 
 #. I18N: An option in a list-box
+#: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
 #: modules_v3/recent_changes/module.php:154
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:151
 #: modules_v3/upcoming_events/module.php:163
 msgid "sort by name"
@@ -18490,6 +19314,18 @@ msgstr "ukendt person"
 msgid "unreliable evidence"
 msgstr "utroværdigt bevis"
 
+#: modules_v3/ahnentafel_report/report.xml:139
+#: modules_v3/descendancy_report/report.xml:105
+msgctxt "FEMALE"
+msgid "was born"
+msgstr "blev født"
+
+#: modules_v3/ahnentafel_report/report.xml:138
+#: modules_v3/descendancy_report/report.xml:102
+msgctxt "MALE"
+msgid "was born"
+msgstr "blev født"
+
 #: modules_v3/review_changes/module.php:86
 msgid "webtrees - Review changes"
 msgstr "webtrees - gennemse ændringer"
@@ -18543,7 +19379,14 @@ msgstr "år"
 #: includes/functions/functions_print_lists.php:353
 #: includes/functions/functions_print_lists.php:793 library/WT/Stats.php:3518
 #: modules_v3/batch_update/admin_batch_update.php:340
-#: modules_v3/charts/module.php:216 modules_v3/relatives/module.php:206
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:216
+#: modules_v3/family_group_report/report.xml:247
+#: modules_v3/family_group_report/report.xml:418
+#: modules_v3/family_group_report/report.xml:598
+#: modules_v3/family_group_report/report.xml:939
+#: modules_v3/individual_ext_report/report.xml:177
+#: modules_v3/individual_report/report.xml:172
+#: modules_v3/relatives/module.php:206
 msgid "yes"
 msgstr "ja"
 
@@ -18565,7 +19408,7 @@ msgid "younger sister"
 msgstr "lillesøster"
 
 #. I18N: Place a nickname in quotation marks
-#: library/WT/Person.php:1791
+#: library/WT/Person.php:1795
 #, php-format
 msgid "“%s”"
 msgstr "\"%s\""
@@ -18589,12 +19432,6 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid " but the details are unknown"
-#~ msgstr " men nærmere detaljer er ukendte"
-
-#~ msgid " in "
-#~ msgstr " i "
 
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%1$s’s %2$s"
@@ -18715,19 +19552,8 @@ msgstr "…"
 #~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "En databaseserver kan indholde mange separate databaser. Du kan vælge en eksisterende database (oprettet af serveradministratoren) eller oprette en ny (hvis din databases brugerkonto har rettigheder til dette)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "En rapport over fakta, understøttet af en given kilde."
-
 #~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 #~ msgstr "En bruger kan ikke logge ind før felterne “E-mail verificeret” og “Godkendt af administrator” er afkrydset."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4"
 
 #~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
 #~ msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyzæøå"
@@ -18813,18 +19639,11 @@ msgstr "…"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Der opstod en uforudset databasefejl."
 
-#~ msgid "Ancestors of "
-#~ msgstr "Aner til "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "Anens filnummer"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "Er du sikker på, at du vil fortryde alle ændringer for denne GEDCOM-fil?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
 
 #~ msgid "Available blocks"
 #~ msgstr "Mulige rammer"
@@ -18838,9 +19657,6 @@ msgstr "…"
 #~ msgid "Binary data object"
 #~ msgstr "Binært dataobjekt"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "Sted for fødsel indeholder"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Fødsels- og dødsdetaljer i skemaer"
 
@@ -18850,9 +19666,6 @@ msgstr "…"
 #~ msgid "Birth date range start"
 #~ msgstr "Interval for fødselsdato start"
 
-#~ msgid "Brother"
-#~ msgstr "Bror"
-
 #~ msgid "Burial place contains"
 #~ msgstr "Sted for begravelse indeholder"
 
@@ -18861,15 +19674,6 @@ msgstr "…"
 
 #~ msgid "Change family members"
 #~ msgstr "Rediger familiemedlemmer"
-
-#~ msgid "Child of "
-#~ msgstr "Barn af "
-
-#~ msgid "Children of "
-#~ msgstr "Børn af "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Vælg slægtninge"
 
 #~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
 #~ msgstr "Vælg det miniaturebillede du ønsker at uploade. Selvom miniaturebilleder kan genereres automatisk kan du ønske at skabe dine egne miniaturebilleder, især for specielle medietyper. Du kan fx lave et enkelt billede fra videoen eller et foto af den person som har lavet lydoptagelsen."
@@ -18978,12 +19782,6 @@ msgstr "…"
 #~ msgid "Date of residence"
 #~ msgstr "Dato for bopæl"
 
-#~ msgid "Daughter"
-#~ msgstr "Datter"
-
-#~ msgid "Death Place contains"
-#~ msgstr "Sted for dødsfald indeholder"
-
 #~ msgid "Death date range end"
 #~ msgstr "Slut på interval for dato for dødsfald"
 
@@ -18992,13 +19790,6 @@ msgstr "…"
 
 #~ msgid "Default theme"
 #~ msgstr "Standardtema"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "Efterkommere af "
 
 #~ msgid "Descent steps"
 #~ msgstr "Efterkommertrin"
@@ -19018,15 +19809,6 @@ msgstr "…"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Dhu al-Qi'dah"
-
-#~ msgid "Differences"
-#~ msgstr "Forskelle"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Efterkommere i direkte linje"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Forfædre i direkte linje og deres familier"
 
 #~ msgid "Display %s"
 #~ msgstr "Vis %s"
@@ -19063,15 +19845,6 @@ msgstr "…"
 
 #~ msgid "End year"
 #~ msgstr "Slut år"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Sidste ændringsdato"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Indtast ID på familie"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Angiv Person ID&nbsp;"
 
 #~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
 #~ msgstr "Angiv en titel på det objekt du redigerer.  Hvis det er titlen på et multimedieobjekt, angiver du en beskrivende titel, der også vil blive vist for besøgende på hjemmesiden."
@@ -19139,20 +19912,11 @@ msgstr "…"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Udklipsholder"
 
-#~ msgid "Family with husband"
-#~ msgstr "Familie med husbond"
-
-#~ msgid "Family with wife"
-#~ msgstr "Familie med hustru"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Fars fødested (Chapman kode)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Faderens alder"
-
-#~ msgid "Font"
-#~ msgstr "Skrifttype"
 
 #~ msgid "For LDS ordinances, this field records the temple where it was performed."
 #~ msgstr "I dette felt kan du anføre, hvor LDS (Mormoner) ordineringen fandt sted."
@@ -19181,38 +19945,11 @@ msgstr "…"
 #~ msgid "Gedcom"
 #~ msgstr "Gedcom"
 
-#~ msgid "Generation "
-#~ msgstr "Generation "
-
 #~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
 #~ msgstr "Giver brugere mulighed for at vælge deres eget layout (tema) fra en “drop down” liste (hvis den er tilgængelig som tema)<br>Det er også nødvendigt at feltet: “Tillad brugere at vælge deres eget tema” er sat til <b>Ja</b>."
 
 #~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
 #~ msgstr "Giver besøgende mulighed for at registrere sig for at få en konto på hjemmesiden.<br><br>Ansøgeren vil modtage en e-mail, der indeholder en kode for at bekræfte ansøgningen.<br>Ansøgningen skal godkendes af en administrator før kontoen bliver aktiveret."
-
-#~ msgid "He "
-#~ msgstr "Han "
-
-#~ msgid "He died"
-#~ msgstr "Han døde"
-
-#~ msgid "He married"
-#~ msgstr "Han indgik ægteskab med"
-
-#~ msgid "He resided at"
-#~ msgstr "Han boede"
-
-#~ msgid "He was born"
-#~ msgstr "Han blev født"
-
-#~ msgid "He was buried"
-#~ msgstr "Han blev begravet"
-
-#~ msgid "He was christened"
-#~ msgstr "Han blev døbt"
-
-#~ msgid "He was cremated"
-#~ msgstr "Han blev kremeret"
 
 #~ msgid "Hello %s…"
 #~ msgstr "Hej %s …"
@@ -19222,13 +19959,6 @@ msgstr "…"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Hej administrator …"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Her occupation was"
-#~ msgstr "Hendes erhverv var"
 
 #~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
 #~ msgstr "Her kan du tilføje fakta for en eller flere personer.<br><br>Vælg først en faktaoplysning fra “drop-down listen”, og klik så på knappen <b>“Tilføj”</b>. <br>I “drop-down listen” finder du alle tilgængelige faktaoplysninger for slægtsdatabasen."
@@ -19244,9 +19974,6 @@ msgstr "…"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "Vis &amp; skjul"
-
-#~ msgid "His occupation was"
-#~ msgstr "Hans erhverv var"
 
 #~ msgid "Hit count:"
 #~ msgstr "Antal visninger:"
@@ -19326,14 +20053,6 @@ msgstr "…"
 #~ msgid "LDS temple"
 #~ msgstr "Mormon tempel"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "US Legal"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "US Letter"
-
 #~ msgid "Link ID"
 #~ msgstr "Link ID"
 
@@ -19363,15 +20082,6 @@ msgstr "…"
 
 #~ msgid "Main section blocks"
 #~ msgstr "Hovedsektionens rammer"
-
-#~ msgid "Marriage Date range end"
-#~ msgstr "Interval for dato for ægteskab slut"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Interval for dato for ægteskab start"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "Sted for ægteskaber indeholder"
 
 #~ msgid "Marriage intention"
 #~ msgstr "Ægteskabsintention"
@@ -19405,9 +20115,6 @@ msgstr "…"
 
 #~ msgid "Move right"
 #~ msgstr "Flyt til højre"
-
-#~ msgid "Name List"
-#~ msgstr "Navneliste"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -19455,9 +20162,6 @@ msgstr "…"
 #~ msgid "Online editing"
 #~ msgstr "Online redigering"
 
-#~ msgid "Orientation"
-#~ msgstr "Orientering"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Anden mappe… indtast venligst"
 
@@ -19473,20 +20177,8 @@ msgstr "…"
 #~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
 #~ msgstr "PHP-indstillingen \"%1$s\" er slået fra. Uden denne vil følgende egenskaber ikke fungere: %2$s. Kontakt venligst din serveradministrator for at slå den til."
 
-#~ msgid "Page"
-#~ msgstr "Side"
-
-#~ msgid "Page size"
-#~ msgstr "Sidestørrelse"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Forældre og søskende"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Forældrerens alder"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Anetræ"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "Sted for mormondåb"
@@ -19535,9 +20227,6 @@ msgstr "…"
 
 #~ msgid "President’s Office"
 #~ msgstr "Præsidentens kontor"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "Udskrift grundlæggende begivenheder når tom?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -19667,30 +20356,6 @@ msgstr "…"
 #~ msgid "Sha’aban"
 #~ msgstr "Sha'aban"
 
-#~ msgid "She "
-#~ msgstr "Hun "
-
-#~ msgid "She died"
-#~ msgstr "Hun døde"
-
-#~ msgid "She married"
-#~ msgstr "Hun indgik ægteskab med"
-
-#~ msgid "She resided at"
-#~ msgstr "Hun boede"
-
-#~ msgid "She was born"
-#~ msgstr "Hun blev født"
-
-#~ msgid "She was buried"
-#~ msgstr "Hun blev begravet"
-
-#~ msgid "She was christened"
-#~ msgstr "Hun blev døbt"
-
-#~ msgid "She was cremated"
-#~ msgstr "Hun blev kremeret"
-
 #~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
 #~ msgstr "Skal GeoNames databasen bruges til at give flere forslag til stednavne?<br><br>Når denne indstilling viser <b>Ja</b> så vil GeoNames databasen blive bedt om at levere forslag til det stednavn der er ved at blive skrevet. Når indstillingen er <b>Nej</b> så er det blot den nuværened geologiske database der gennemsøges. Jo mere der tilføjes til stednavnet des mere nøjagtig vil forslagene blive. Denne indstilling kan bremse indtastning af data, især hvis din internetforbindelse er langsom.<br><br>GeoNames databasen indeholder i øjeblikket over 8.000.000 geografiske navne og den hentes og bruges helt gratis."
 
@@ -19702,9 +20367,6 @@ msgstr "…"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "Vis alle stednavne"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Vis aners børn?"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "Vis døde personer"
@@ -19736,12 +20398,6 @@ msgstr "…"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Vis personer som er døde inden for de sidste 100 år."
 
-#~ msgid "Show notes?"
-#~ msgstr "Vis noter?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Vis erhverv?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Vis kun begivenheder hørende til nulevende personer?"
 
@@ -19751,23 +20407,11 @@ msgstr "…"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Vis materiale relateret til personer, begivenheder eller alt?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Vis afventende ændringer"
-
-#~ msgid "Show photos?"
-#~ msgstr "Vis billeder?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Vis stednavn efter niveau"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Vis beslægtede personer/familier"
-
-#~ msgid "Show residences?"
-#~ msgstr "Vis bopæle?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Vis kilder?"
 
 #~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
 #~ msgstr "Vis «blade» par eller personer. Dette er personer der er i live, men som ikke har nogen børn der er registreret i databasen."
@@ -19778,32 +20422,14 @@ msgstr "…"
 #~ msgid "Showing %1$s to %2$s of %3$s"
 #~ msgstr "Viser %1$s til %2$s af %3$s"
 
-#~ msgid "Sister"
-#~ msgstr "Søster"
-
 #~ msgid "Social security number"
 #~ msgstr "Personnummer"
-
-#~ msgid "Son"
-#~ msgstr "Søn"
 
 #~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
 #~ msgstr "Kildecitater kan inkludere felter til at angive kvaliteten (primær, sekundær, osv.) og den dato begivenheden skete i kildematerialet. Hvis du ikke bruger disse felter kan du deaktivere dem når du opretter nye kildecitater."
 
-#~ msgid "Sources to the events"
-#~ msgstr "Kilder for begivenheden"
-
 #~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
 #~ msgstr "Specificerer om beskeder sendt via <b>webtrees</b> kan blive lagret i databasen. Hvis <b>Ja</b> vil brugere være i stand til at hente deres beskeder når de logger på <b>webtrees</b>. Hvis sat til <b>Nej</b> vil beskederne blive sendt som e-mail."
-
-#~ msgid "Spouse"
-#~ msgstr "Ægtefælle/partner"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Ægtefælle og børn"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Første ændringsdato"
 
 #~ msgid "Surname option"
 #~ msgstr "Indstilling for efternavne"
@@ -19976,15 +20602,6 @@ msgstr "…"
 #~ msgid "To source"
 #~ msgstr "Til kilde"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Total accepterede ændringer: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Antal individer"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Total ventende ændringer: "
-
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
 #~ msgstr "TLS (Transport Layer Security) og SSL (Secure Sockets Layer) er krypteringsprotokoller for internetdata..<br><br>TLS 1.0, 1.1 og 1.2 er standardiserede udviklinger af SSL 3.0. TLS 1.0 og SSL 3.1 er ækvivalente. Det videre arbejde med SSL sker nu under det nye navn TLS.<br><br>Hvis din SMTP-server kræver SSL-protokol ved login skal du vælge <b>SSL</b> indstillingen. Hvis din SMTP-server kræver TLS-protokol ved login skal du vælge <b>TLS</b> indstillingen."
 
@@ -19996,9 +20613,6 @@ msgstr "…"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Brug SMTP til at sende eksterne emails"
-
-#~ msgid "Use colors"
-#~ msgstr "Brug farver"
 
 #~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
 #~ msgstr "Brug brugernavn og kodeord til autentificere og forbinde til SMTP-serveren.<br><br>Nogle SMTP-servere kræver at alle forbindelser bliver autentificerede før serveren godkender afsendelse af e-mails."
@@ -20153,9 +20767,6 @@ msgstr "…"
 #~ msgid "before %d"
 #~ msgstr "før %d"
 
-#~ msgid "daughter of"
-#~ msgstr "datter af"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "svigerdatters far"
@@ -20167,14 +20778,6 @@ msgstr "…"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "svigerdatters forælder"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "døde"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "døde"
 
 #~ msgid "first"
 #~ msgstr "første"
@@ -20209,17 +20812,6 @@ msgstr "…"
 #~ msgid "last"
 #~ msgstr "sidste"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "gift"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "gift"
-
-#~ msgid "son of"
-#~ msgstr "søn af"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "svigersøns far"
@@ -20234,14 +20826,6 @@ msgstr "…"
 
 #~ msgid "utf8_unicode_ci"
 #~ msgstr "utf8_danish_ci"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "blev født"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "blev født"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "webtrees-databasen skal være på den samme server som PGV's"

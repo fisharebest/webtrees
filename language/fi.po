@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-09 17:47+0000\n"
+"POT-Creation-Date: 2013-11-24 22:39+0000\n"
 "PO-Revision-Date: 2013-03-27 09:05+0000\n"
 "Last-Translator: meliza <Unknown>\n"
 "Language-Team: \n"
@@ -18,6 +18,32 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+
+#: modules_v3/ahnentafel_report/report.xml:158
+#: modules_v3/ahnentafel_report/report.xml:186
+#: modules_v3/ahnentafel_report/report.xml:281
+#: modules_v3/ahnentafel_report/report.xml:309
+#: modules_v3/ahnentafel_report/report.xml:334
+#: modules_v3/ahnentafel_report/report.xml:365
+msgid " but the details are unknown"
+msgstr " mutta yksityiskohdat ovat tuntemattomia"
+
+#: modules_v3/ahnentafel_report/report.xml:157
+#: modules_v3/ahnentafel_report/report.xml:185
+#: modules_v3/ahnentafel_report/report.xml:212
+#: modules_v3/ahnentafel_report/report.xml:280
+#: modules_v3/ahnentafel_report/report.xml:308
+#: modules_v3/ahnentafel_report/report.xml:333
+#: modules_v3/ahnentafel_report/report.xml:364
+#: modules_v3/descendancy_report/report.xml:125
+#: modules_v3/descendancy_report/report.xml:157
+#: modules_v3/descendancy_report/report.xml:314
+#: modules_v3/descendancy_report/report.xml:352
+#: modules_v3/descendancy_report/report.xml:383
+#: modules_v3/descendancy_report/report.xml:422
+#: modules_v3/descendancy_report/report.xml:453
+msgid " in "
+msgstr " paikassa "
 
 #: statisticsplot.php:804
 msgid " per gender"
@@ -634,66 +660,81 @@ msgstr "Mahdollinen käyttäjä on rekisteröitynyt webtreesiin, %s"
 
 #. I18N: Description of the “Pedigree” module
 #: modules_v3/pedigree_report/module.php:41
+#: modules_v3/pedigree_report/report.xml:5
 msgid "A report of an individual’s ancestors, formatted as a tree."
 msgstr "Raportti henkilön esivanhemmista puu muodissa."
 
 #. I18N: Description of the “Ancestors” module
 #: modules_v3/ahnentafel_report/module.php:41
+#: modules_v3/ahnentafel_report/report.xml:6
 msgid "A report of an individual’s ancestors, in a narrative style."
 msgstr "Kerrontatyylinen raportti henkilön esivanhemmista."
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy_report/module.php:41
+#: modules_v3/descendancy_report/report.xml:5
 msgid "A report of an individual’s descendants, in a narrative style."
 msgstr "Kerrontatyylinen raportti henkilön jälkeläisistä."
 
 #. I18N: Description of the “Individual” module
 #: modules_v3/individual_report/module.php:41
+#: modules_v3/individual_report/report.xml:5
 msgid "A report of an individual’s details."
 msgstr "Raportti henkilön tiedoista."
 
+#: modules_v3/fact_sources/report.xml:5
+msgid "A report of facts which are supported by a given source."
+msgstr "Raportti tiedoista, jotka ovat lähtöisin tietystä lähteestä."
+
 #. I18N: Description of the “Family” module
 #: modules_v3/family_group_report/module.php:41
+#: modules_v3/family_group_report/report.xml:5
 msgid "A report of family members and their details."
 msgstr "Raportti perheenjäsenistä ja heidän tiedoista."
 
 #. I18N: Description of the “Deaths” module
-#: modules_v3/death_report/module.php:41
+#: modules_v3/death_report/module.php:41 modules_v3/death_report/report.xml:5
 msgid "A report of individuals who died in a given time or place."
 msgstr "Raportti henkilöistä, jotka kuolivat tiettyyn aikaan tai tietyssä paikassa."
 
 #. I18N: Description of the “Occupations” module
 #: modules_v3/occupation_report/module.php:41
+#: modules_v3/occupation_report/report.xml:5
 msgid "A report of individuals who had a given occupation."
 msgstr "Raportti henkilöistä, joilla oli tietty ammatti."
 
 #. I18N: Description of the “Births” module
-#: modules_v3/birth_report/module.php:41
+#: modules_v3/birth_report/module.php:41 modules_v3/birth_report/report.xml:5
 msgid "A report of individuals who were born in a given time or place."
 msgstr "Raportti henkilöistä, jotka ovat syntyneet tiettyyn aikaan tai tietyssä paikassa."
 
 #. I18N: Description of the “Cemeteries” module
 #: modules_v3/cemetery_report/module.php:41
+#: modules_v3/cemetery_report/report.xml:5
 msgid "A report of individuals who were buried in a given place."
 msgstr "Raportti henkilöistä, jotka on haudattu tietyssä paikassa."
 
 #. I18N: Description of the “Marriages” module
 #: modules_v3/marriage_report/module.php:41
+#: modules_v3/marriage_report/report.xml:5
 msgid "A report of individuals who were married in a given time or place."
 msgstr "Raportti henkilöistä, jotka menivät naimisiin tiettyyn aikaan tai tietyssä paikassa."
 
 #. I18N: Description of the “Changes” module
 #: modules_v3/change_report/module.php:41
+#: modules_v3/change_report/report.xml:5
 msgid "A report of recent and pending changes."
 msgstr "Viimeisten ja vireillä olevien muutosten raportti"
 
 #. I18N: Description of the “Related families”
 #: modules_v3/individual_ext_report/module.php:41
+#: modules_v3/individual_ext_report/report.xml:5
 msgid "A report of the families that are closely related to an individual."
 msgstr "Raportti henkilön lähisukulaisperheistä."
 
 #. I18N: Description of the “Related individuals” module
 #: modules_v3/relative_ext_report/module.php:41
+#: modules_v3/relative_ext_report/report.xml:5
 msgid "A report of the individuals that are closely related to an individual."
 msgstr "Raportti henkilön lähisukulaisista."
 
@@ -704,11 +745,12 @@ msgstr "Raportti lähteen antamista tiedoista."
 
 #. I18N: Description of the “Missing data”
 #: modules_v3/missing_facts_report/module.php:41
+#: modules_v3/missing_facts_report/report.xml:5
 msgid "A report of the information that is missing for an individual and their relatives."
 msgstr "Raportti henkilön ja hänen omaistensa puuttuvista tiedoista."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:41
+#: modules_v3/bdm_report/module.php:41 modules_v3/bdm_report/report.xml:5
 msgid "A report of vital records for a given date or place."
 msgstr "Raportti keskeisimmistä tapahtumista, tiettynä ajanjaksona tai tietyssä paikassa."
 
@@ -778,6 +820,44 @@ msgstr ""
 #: includes/functions/functions_date.php:115
 msgid "A.M."
 msgstr "A.M."
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A3"
+msgstr "A3"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A4"
+msgstr "A4"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1564,11 +1644,19 @@ msgstr "Elävät"
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
 #: indilist.php:167 indilist.php:251 indilist.php:253
-#: library/WT/Stats.php:3325 modules_v3/faq/module.php:186
+#: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
 #: modules_v3/googlemap/admin_places.php:756
 #: modules_v3/googlemap/module.php:1481 modules_v3/googlemap/module.php:1497
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:8
 #: modules_v3/random_media/module.php:264
+#: modules_v3/relative_ext_report/report.xml:7
 #: modules_v3/user_messages/module.php:91
 msgid "All"
 msgstr "Kaikki"
@@ -1694,6 +1782,7 @@ msgstr "Virhe tietokannassa."
 #: library/WT/Controller/Ancestry.php:83
 #: library/WT/Controller/Fanchart.php:314 library/WT/MenuBar.php:106
 #: modules_v3/ahnentafel_report/module.php:35
+#: modules_v3/ahnentafel_report/report.xml:5
 msgid "Ancestors"
 msgstr "Esivanhemmat"
 
@@ -1701,6 +1790,10 @@ msgstr "Esivanhemmat"
 #: library/WT/Gedcom/Tag.php:124
 msgid "Ancestors interest"
 msgstr "Henkilön esipolvien lisätutkiminen"
+
+#: modules_v3/ahnentafel_report/report.xml:53
+msgid "Ancestors of "
+msgstr "Esivanhemmat - "
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Ancestry.php:80
@@ -1880,6 +1973,25 @@ msgstr ""
 #: library/WT/Stats.php:3784
 msgid "Argentina"
 msgstr "Argentiina"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Arial"
+msgstr "Arial"
 
 #: library/WT/Stats.php:3785
 msgid "Armenia"
@@ -2329,7 +2441,32 @@ msgid "Birmingham, Alabama"
 msgstr "Birmingham, Alabama"
 
 #. I18N: gedcom tag BIRT
-#: library/WT/Gedcom/Tag.php:140
+#: library/WT/Gedcom/Tag.php:140 modules_v3/bdm_report/report.xml:56
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:177
+#: modules_v3/family_group_report/report.xml:528
+#: modules_v3/family_group_report/report.xml:869
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:54
 msgid "Birth"
 msgstr "Syntymä"
 
@@ -2347,6 +2484,18 @@ msgstr "Syntymä"
 msgctxt "Pedigree"
 msgid "Birth"
 msgstr "Syntymä"
+
+#: modules_v3/bdm_report/report.xml:9 modules_v3/birth_report/report.xml:9
+msgid "Birth Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
+msgid "Birth Date range start"
+msgstr ""
+
+#: modules_v3/birth_report/report.xml:7
+msgid "Birth Place contains"
+msgstr "Syntymäpaikassa on"
 
 #: library/WT/Stats.php:1014 statistics.php:553
 msgid "Birth by country"
@@ -2430,7 +2579,8 @@ msgid "Birth:"
 msgstr "Syntymä:"
 
 #. I18N: Name of a module/report
-#: modules_v3/birth_report/module.php:35
+#: modules_v3/birth_report/module.php:35 modules_v3/birth_report/report.xml:4
+#: modules_v3/birth_report/report.xml:29
 msgid "Births"
 msgstr "Syntymät"
 
@@ -2595,6 +2745,11 @@ msgstr "Neitsyssaaret"
 msgid "British West Indies"
 msgstr "Brittiläinen Länsi-Intia"
 
+#: modules_v3/individual_ext_report/report.xml:311
+#: modules_v3/individual_report/report.xml:313
+msgid "Brother"
+msgstr "Veli"
+
 #: library/WT/Date/French.php:71
 msgctxt "GENITIVE"
 msgid "Brumaire"
@@ -2628,9 +2783,15 @@ msgid "Bulgaria"
 msgstr "Bulgaria"
 
 #. I18N: gedcom tag BURI
-#: library/WT/Gedcom/Tag.php:147
+#: library/WT/Gedcom/Tag.php:147 modules_v3/family_group_report/report.xml:346
+#: modules_v3/family_group_report/report.xml:697
+#: modules_v3/family_group_report/report.xml:1038
 msgid "Burial"
 msgstr "Hautaaminen"
+
+#: modules_v3/cemetery_report/report.xml:6
+msgid "Burial Place contains"
+msgstr ""
 
 #: library/WT/Gedcom/Tag.php:531
 msgid "Burial of a brother"
@@ -2903,11 +3064,13 @@ msgstr "Caymansaaret"
 
 #. I18N: Name of a module/report
 #: modules_v3/cemetery_report/module.php:35
+#: modules_v3/cemetery_report/report.xml:4
+#: modules_v3/cemetery_report/report.xml:33
 msgid "Cemeteries"
 msgstr "Hautausmaat"
 
 #. I18N: gedcom tag CEME
-#: library/WT/Gedcom/Tag.php:153
+#: library/WT/Gedcom/Tag.php:153 modules_v3/cemetery_report/report.xml:52
 msgid "Cemetery"
 msgstr "Hautausmaa"
 
@@ -2985,6 +3148,8 @@ msgstr "Muutosajankohta  %1$s tekijänä %2$s"
 
 #. I18N: Name of a module/report
 #: admin_site_change.php:29 modules_v3/change_report/module.php:35
+#: modules_v3/change_report/report.xml:4
+#: modules_v3/change_report/report.xml:42
 msgid "Changes"
 msgstr "Muutokset"
 
@@ -3057,6 +3222,11 @@ msgstr "Chicago, Illinois"
 msgid "Child"
 msgstr "Lapsi"
 
+#: modules_v3/ahnentafel_report/report.xml:394
+#: modules_v3/descendancy_report/report.xml:479
+msgid "Child of "
+msgstr "Tämän henkilön lapsi: "
+
 #. I18N: e.g. “Child of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:331
 #, php-format
@@ -3064,13 +3234,20 @@ msgid "Child of %s"
 msgstr "%s:n lapsi"
 
 #: includes/functions/functions_print_lists.php:215
-#: includes/functions/functions_print_lists.php:637 statisticsplot.php:784
+#: includes/functions/functions_print_lists.php:637
+#: modules_v3/family_group_report/report.xml:753
+#: modules_v3/relative_ext_report/report.xml:121 statisticsplot.php:784
 msgid "Children"
 msgstr "Lapset"
 
 #: statistics.php:288
 msgid "Children in family"
 msgstr "Lasten lukumäärä perheessä"
+
+#: modules_v3/ahnentafel_report/report.xml:397
+#: modules_v3/descendancy_report/report.xml:482
+msgid "Children of "
+msgstr "Seuraavien lasten vanhemmat: "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: help_text.php:962
@@ -3109,6 +3286,12 @@ msgstr "Kiina"
 msgid "Choose a report to run"
 msgstr "Valitse ajettava raportti"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Choose relatives"
+msgstr "Valitse sukulaiset"
+
 #: help_text.php:355
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
 msgstr "Valitse oikea sukupuoli alasvetovalikosta. Vaihtoehto \"Tuntematon\" osoittaa, että sukupuolta ei tiedetä."
@@ -3130,7 +3313,9 @@ msgid "Choose: "
 msgstr "Valitse: "
 
 #. I18N: gedcom tag CHR
-#: library/WT/Gedcom/Tag.php:162
+#: library/WT/Gedcom/Tag.php:162 modules_v3/family_group_report/report.xml:201
+#: modules_v3/family_group_report/report.xml:552
+#: modules_v3/family_group_report/report.xml:893
 msgid "Christening"
 msgstr "Ristiäiset"
 
@@ -3246,7 +3431,7 @@ msgctxt "MALE"
 msgid "Civil Registrar"
 msgstr "Siviilirekisteriviranomainen"
 
-#: library/WT/Gedcom/Tag.php:255
+#: library/WT/Gedcom/Tag.php:255 modules_v3/fact_sources/report.xml:200
 msgid "Civil marriage"
 msgstr "Siviililiitto"
 
@@ -3836,7 +4021,10 @@ msgstr "Tietokannan käyttäjätunnus"
 
 #. I18N: gedcom tag DATE
 #: edit_changes.php:173 help_text.php:177 help_text.php:207
-#: library/WT/Gedcom/Tag.php:183
+#: library/WT/Gedcom/Tag.php:183 modules_v3/bdm_report/report.xml:130
+#: modules_v3/bdm_report/report.xml:156 modules_v3/bdm_report/report.xml:190
+#: modules_v3/birth_report/report.xml:38 modules_v3/death_report/report.xml:44
+#: modules_v3/marriage_report/report.xml:44
 msgid "Date"
 msgstr "Päiväys"
 
@@ -3999,6 +4187,12 @@ msgstr "Päivämäärät muunnetaan ainoastaan, jos ne ovat voimassa kalenteriss
 msgid "Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords."
 msgstr "Päivämäärät tallennetaan käyttäen englanninkielisiä lyhenteitä ja avainsanoja. Näiden lyhenteiden kirjoittamisen sijasta voit käyttää pikavalintoja."
 
+#: modules_v3/family_group_report/report.xml:798
+#: modules_v3/individual_ext_report/report.xml:554
+#: modules_v3/individual_report/report.xml:556
+msgid "Daughter"
+msgstr "Tytär"
+
 #. I18N: e.g. “Daughter of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:328
 #, php-format
@@ -4023,9 +4217,46 @@ msgid "Dead"
 msgstr "Kuolleet"
 
 #. I18N: gedcom tag DEAT
-#: library/WT/Gedcom/Tag.php:184
+#: library/WT/Gedcom/Tag.php:184 modules_v3/bdm_report/report.xml:85
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:284
+#: modules_v3/family_group_report/report.xml:635
+#: modules_v3/family_group_report/report.xml:976
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:60
 msgid "Death"
 msgstr "Kuolema"
+
+#: modules_v3/bdm_report/report.xml:11 modules_v3/death_report/report.xml:9
+msgid "Death Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
+msgid "Death Date range start"
+msgstr ""
+
+#: modules_v3/death_report/report.xml:7
+msgid "Death Place contains"
+msgstr "Kuolinpaikka sisältää"
 
 #: library/WT/Stats.php:1031 statistics.php:561
 msgid "Death by country"
@@ -4163,7 +4394,8 @@ msgid "Death places"
 msgstr "Kuolinpaikat"
 
 #. I18N: Name of a module/report
-#: modules_v3/death_report/module.php:35
+#: modules_v3/death_report/module.php:35 modules_v3/death_report/report.xml:4
+#: modules_v3/death_report/report.xml:30
 msgid "Deaths"
 msgstr "Kuolemat"
 
@@ -4257,6 +4489,25 @@ msgstr "Oletus arvo ylimmälle tasolle"
 msgid "Degree"
 msgstr "Tutkinto"
 
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "DejaVu"
+msgstr "DejaVu"
+
 #: admin_site_access.php:284 admin_site_change.php:275
 #: admin_site_clean.php:126 admin_site_logs.php:242 admin_trees_config.php:614
 #: admin_trees_manage.php:231 edit_interface.php:151
@@ -4341,6 +4592,10 @@ msgstr "Jälkisukupolvet"
 #: library/WT/MenuBar.php:105 modules_v3/charts/module.php:206
 #: modules_v3/descendancy/module.php:34
 #: modules_v3/descendancy_report/module.php:35
+#: modules_v3/descendancy_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
 msgid "Descendants"
 msgstr "Jälkeläiset"
 
@@ -4348,6 +4603,10 @@ msgstr "Jälkeläiset"
 #: library/WT/Gedcom/Tag.php:189
 msgid "Descendants interest"
 msgstr "Henkilön jälkeläisten lisätutkiminen"
+
+#: modules_v3/descendancy_report/report.xml:40
+msgid "Descendants of "
+msgstr "Jälkeläiset - "
 
 #. I18N: %s is an individual’s name
 #: descendancy.php:117 descendancy.php:123
@@ -4481,9 +4740,25 @@ msgstr "(mormoni) Kuollut lapsena: vapautettu"
 msgid "Died as an infant: exempt"
 msgstr "(mormoni) Kuollut pikkulapsena: ei mukana"
 
+#: modules_v3/change_report/report.xml:58
+msgid "Differences"
+msgstr "Eroavuudet"
+
 #: help_text.php:444
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
 msgstr "Eri kalenterijärjestelmiä käytetään eri puolilla maailmaa, ja monet muut kalenterijärjestelmät olivat käytössä aikaisemmin. Jos mahdollista, sinun pitäisi kirjoittaa päivämäärät käyttämällä kalenteria jossa tapahtuma alun perin kirjattiin. Tämän jälkeen voit määrittää muunnoksen ja näyttää nämä päivämäärät tutummassa kalenterissa. Jos säännöllisesti käytät kahta kalenteria, voit määrittää kaksi muunnosta ja päivämäärät muunnetaan molempiin valittuun kalenteriin."
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors"
+msgstr "Suorat esivanhemmat"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors and their families"
+msgstr "Suorat esivanhemmat ja heidän perheensä"
 
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
@@ -4889,6 +5164,10 @@ msgstr "Loppuen IP-osoite"
 msgid "End Year"
 msgstr "Lopetusvuosi"
 
+#: modules_v3/change_report/report.xml:7
+msgid "Ending range of change dates"
+msgstr "Muutosten aikavälin loppu"
+
 #. I18N: http://en.wikipedia.org/wiki/Endowment_house
 #: library/WT/Gedcom/Code/Temp.php:98
 msgid "Endowment House"
@@ -4902,6 +5181,20 @@ msgstr "Kihlaus"
 #: library/WT/Stats.php:3847
 msgid "England"
 msgstr "Englanti"
+
+#: modules_v3/family_group_report/report.xml:7
+msgid "Enter Family ID"
+msgstr "Anna perheen ID"
+
+#: modules_v3/ahnentafel_report/report.xml:7
+#: modules_v3/descendancy_report/report.xml:6
+#: modules_v3/individual_ext_report/report.xml:6
+#: modules_v3/individual_report/report.xml:6
+#: modules_v3/missing_facts_report/report.xml:6
+#: modules_v3/pedigree_report/report.xml:6
+#: modules_v3/relative_ext_report/report.xml:6
+msgid "Enter Individual ID"
+msgstr "Syötä henkilö ID"
 
 #: addmedia.php:448 modules_v3/gedcom_favorites/module.php:180
 msgid "Enter a Person, Family, or Source ID"
@@ -5031,7 +5324,9 @@ msgid "Europe"
 msgstr "Eurooppa"
 
 #. I18N: gedcom tag EVEN
-#: library/WT/Gedcom/Tag.php:208
+#: library/WT/Gedcom/Tag.php:208 modules_v3/fact_sources/report.xml:68
+#: modules_v3/fact_sources/report.xml:155
+#: modules_v3/missing_facts_report/report.xml:53
 msgid "Event"
 msgstr "Tapahtuma"
 
@@ -5217,6 +5512,8 @@ msgid "Fact or event"
 msgstr "Tieto tai tapahtuma"
 
 #. I18N: Name of a module/tab on the individual page.
+#: modules_v3/individual_ext_report/report.xml:151
+#: modules_v3/individual_report/report.xml:146
 #: modules_v3/personal_facts/module.php:34
 #: modules_v3/random_media/module.php:264
 msgid "Facts and events"
@@ -5261,7 +5558,9 @@ msgstr "Falklandinsaaret"
 #: includes/functions/functions_print_lists.php:1084
 #: includes/functions/functions_print_lists.php:1276
 #: library/WT/Controller/Search.php:594 library/WT/MenuBar.php:300
-#: mediaviewer.php:135 modules_v3/gedcom_stats/module.php:101
+#: mediaviewer.php:135 modules_v3/fact_sources/report.xml:150
+#: modules_v3/fact_sources/report.xml:312
+#: modules_v3/gedcom_stats/module.php:101
 #: modules_v3/gedcom_stats/module.php:316
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:188
 #: modules_v3/relatives/module.php:34 note.php:101 placelist.php:232
@@ -5282,6 +5581,9 @@ msgstr "Perheet, joilla on tietolähteitä"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:928
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:935
 #: modules_v3/family_group_report/module.php:35
+#: modules_v3/family_group_report/report.xml:4
+#: modules_v3/family_group_report/report.xml:86
+#: modules_v3/family_group_report/report.xml:94
 #: modules_v3/family_nav/module.php:302
 msgid "Family"
 msgstr "Perhe"
@@ -5399,8 +5701,14 @@ msgstr "Adoptioperhe"
 msgid "Family with foster parents"
 msgstr "Kasvatusperhe"
 
+#: modules_v3/individual_ext_report/report.xml:433
+#: modules_v3/individual_report/report.xml:435
+msgid "Family with husband"
+msgstr "Perhe miehineen"
+
 #: library/WT/Gedcom/Code/Pedi.php:89 library/WT/Gedcom/Code/Pedi.php:94
-#: library/WT/Person.php:996
+#: library/WT/Person.php:996 modules_v3/individual_ext_report/report.xml:229
+#: modules_v3/individual_report/report.xml:231
 msgid "Family with parents"
 msgstr "Vanhempien perhe"
 
@@ -5422,6 +5730,11 @@ msgstr "Perhe puolison kanssa"
 #: modules_v3/gedcom_stats/module.php:351 modules_v3/html/module.php:247
 msgid "Family with the most children"
 msgstr "Suurin lapsiluku"
+
+#: modules_v3/individual_ext_report/report.xml:427
+#: modules_v3/individual_report/report.xml:429
+msgid "Family with wife"
+msgstr "Perhe vaimoineen"
 
 #: includes/functions/functions_print.php:102
 #: library/WT/Controller/Fanchart.php:55
@@ -5465,7 +5778,12 @@ msgctxt "NOMINATIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#: search_advanced.php:210
+#: modules_v3/bdm_report/report.xml:116
+#: modules_v3/family_group_report/report.xml:462
+#: modules_v3/family_group_report/report.xml:722
+#: modules_v3/individual_ext_report/report.xml:235
+#: modules_v3/individual_report/report.xml:237
+#: modules_v3/relative_ext_report/report.xml:62 search_advanced.php:210
 msgid "Father"
 msgstr "Isä"
 
@@ -5478,7 +5796,7 @@ msgid "Father's age"
 msgstr "Isän ikä"
 
 #. I18N: %s is the name of an individual’s father
-#: library/WT/Person.php:1634
+#: library/WT/Person.php:1638
 #, php-format
 msgid "Father: %s"
 msgstr "Isä: %s"
@@ -5636,6 +5954,7 @@ msgstr "Etsi tietovarasto"
 
 #: admin_site_merge.php:295 admin_site_merge.php:316 find.php:91
 #: includes/functions/functions_print.php:1156
+#: modules_v3/fact_sources/report.xml:6
 msgid "Find a source"
 msgstr "Etsi lähde"
 
@@ -5714,6 +6033,24 @@ msgstr "Kansio"
 #: addmedia.php:530 admin_media_upload.php:212 help_text.php:1449
 msgid "Folder name on server"
 msgstr "Kansion nimi palvelimella"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgid "Font"
+msgstr "Kirjasinlaji"
 
 #: help_text.php:375
 msgid "For LDS ordinances, this field records the Temple where it was performed."
@@ -5942,7 +6279,11 @@ msgid "Gambia"
 msgstr "Gambia"
 
 #. I18N: gedcom tag SEX
-#: library/WT/Gedcom/Tag.php:314
+#: library/WT/Gedcom/Tag.php:314 modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592
 msgid "Gender"
 msgstr "Sukupuoli"
 
@@ -5978,8 +6319,17 @@ msgstr "%s sovelluksen tulos"
 msgid "Generation"
 msgstr "Sukupolvi"
 
+#: modules_v3/ahnentafel_report/report.xml:76
+#: modules_v3/descendancy_report/report.xml:53
+msgid "Generation "
+msgstr "Sukupolvi "
+
 #: ancestry.php:112 descendancy.php:78 familybook.php:62 fanchart.php:68
-#: hourglass.php:75 modules_v3/googlemap/module.php:676 pedigree.php:44
+#: hourglass.php:75 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7
+#: modules_v3/googlemap/module.php:676
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/missing_facts_report/report.xml:8 pedigree.php:44
 msgid "Generations"
 msgstr "Sukupolvet"
 
@@ -6232,6 +6582,40 @@ msgstr "Hamilton, Uusi Seelanti"
 msgid "Hartford, Connecticut"
 msgstr "Hartford, Connecticut"
 
+#: modules_v3/descendancy_report/report.xml:427
+msgid "He "
+msgstr "Hän "
+
+#: modules_v3/ahnentafel_report/report.xml:289
+msgid "He died"
+msgstr "Hän kuoli"
+
+#: modules_v3/ahnentafel_report/report.xml:258
+#: modules_v3/descendancy_report/report.xml:172
+msgid "He married"
+msgstr "Hänen vaimonsa oli"
+
+#: modules_v3/ahnentafel_report/report.xml:220
+msgid "He resided at"
+msgstr "Hän asui"
+
+#: modules_v3/descendancy_report/report.xml:400
+msgid "He was born"
+msgstr "Hän syntyi"
+
+#: modules_v3/ahnentafel_report/report.xml:345
+msgid "He was buried"
+msgstr "Hänet on haudattu"
+
+#: modules_v3/ahnentafel_report/report.xml:164
+msgid "He was christened"
+msgstr "Hänet kastettiin"
+
+#: modules_v3/ahnentafel_report/report.xml:314
+#: modules_v3/ahnentafel_report/report.xml:341
+msgid "He was cremated"
+msgstr "Hänet polttohaudattiin"
+
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:645
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:728
@@ -6284,6 +6668,29 @@ msgstr "Ohje"
 #: library/WT/Gedcom/Code/Temp.php:110
 msgid "Helsinki, Finland"
 msgstr "Helsinki, Suomi"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Helvetica"
+msgstr "Helvetica"
+
+#: modules_v3/ahnentafel_report/report.xml:194
+msgid "Her occupation was"
+msgstr "Hänen ammattinsa oli"
 
 #: modules_v3/googlemap/help_text.php:71
 msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
@@ -6380,6 +6787,8 @@ msgstr "Korosta nimeä ja klikkaa sitten nuolikuvaketta siirtääksesi haluttuun
 
 #. I18N: gedcom tag _PRIM
 #: library/WT/Gedcom/Tag.php:746
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
 msgid "Highlighted image"
 msgstr "Ensisijainen kuva"
 
@@ -6387,6 +6796,10 @@ msgstr "Ensisijainen kuva"
 #: help_text.php:227 library/WT/Date/Hijri.php:41
 msgid "Hijri"
 msgstr "Islamilainen (Hijri)"
+
+#: modules_v3/ahnentafel_report/report.xml:193
+msgid "His occupation was"
+msgstr "Hänen ammattinsa oli"
 
 #: modules_v3/personal_facts/module.php:88
 msgid "Historical facts"
@@ -6452,6 +6865,16 @@ msgstr "Unkari"
 
 #. I18N: gedcom tag HUSB
 #: edit_interface.php:543 library/WT/Gedcom/Tag.php:235
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+#: modules_v3/family_group_report/report.xml:142
+#: modules_v3/family_group_report/report.xml:1076
+#: modules_v3/individual_ext_report/report.xml:194
+#: modules_v3/individual_ext_report/report.xml:208
+#: modules_v3/individual_ext_report/report.xml:441
+#: modules_v3/individual_report/report.xml:189
+#: modules_v3/individual_report/report.xml:210
+#: modules_v3/individual_report/report.xml:443
 msgid "Husband"
 msgstr "Mies"
 
@@ -6713,6 +7136,8 @@ msgstr "Intia"
 #: inverselink.php:110 library/WT/Gedcom/Tag.php:240
 #: modules_v3/charts/module.php:221 modules_v3/googlemap/module.php:673
 #: modules_v3/individual_report/module.php:35
+#: modules_v3/individual_report/report.xml:4
+#: modules_v3/individual_report/report.xml:85
 #: modules_v3/stories/module.php:247 modules_v3/stories/module.php:350
 #: modules_v3/stories/module.php:416 pedigree.php:43
 msgid "Individual"
@@ -6759,6 +7184,8 @@ msgstr "Henkilötiedot"
 #: includes/functions/functions_print_lists.php:1365 indilist.php:132
 #: indilist.php:135 library/WT/Controller/Search.php:593
 #: library/WT/MenuBar.php:298 mediaviewer.php:132
+#: modules_v3/fact_sources/report.xml:52
+#: modules_v3/fact_sources/report.xml:256
 #: modules_v3/gedcom_stats/module.php:93
 #: modules_v3/gedcom_stats/module.php:300
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:172
@@ -7214,7 +7641,8 @@ msgstr "Mormoni, puolison sinetöinti"
 msgid "Laie, Hawaii"
 msgstr "Laie, Hawaii"
 
-#: admin_trees_config.php:812 pedigree.php:61
+#: admin_trees_config.php:812 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Landscape"
 msgstr "Vaakasuoraan"
 
@@ -7246,7 +7674,8 @@ msgid "Las Vegas, Nevada"
 msgstr "Las Vegas, Nevada"
 
 #. I18N: gedcom tag CHAN
-#: library/WT/Gedcom/Tag.php:157
+#: library/WT/Gedcom/Tag.php:157 modules_v3/change_report/report.xml:64
+#: modules_v3/change_report/report.xml:106
 msgid "Last change"
 msgstr "Viimeisin muutos"
 
@@ -7324,6 +7753,25 @@ msgstr "Lehdet"
 msgid "Lebanon"
 msgstr "Libanon"
 
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Legal"
+msgstr "Legal"
+
 #. I18N: gedcom tag LEGA
 #: library/WT/Gedcom/Tag.php:244
 msgid "Legatee"
@@ -7336,6 +7784,25 @@ msgstr "Avioliiton kesto"
 #: library/WT/Stats.php:3912
 msgid "Lesotho"
 msgstr "Lesoto"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Letter"
+msgstr "Letter"
 
 #: modules_v3/googlemap/admin_places.php:175
 #: modules_v3/googlemap/module.php:380 modules_v3/googlemap/module.php:1598
@@ -7712,14 +8179,27 @@ msgid "March"
 msgstr "maaliskuu"
 
 #. I18N: gedcom tag MARR
-#: library/WT/Gedcom/Tag.php:252
+#: library/WT/Gedcom/Tag.php:252 modules_v3/bdm_report/report.xml:76
+#: modules_v3/family_group_report/report.xml:372
 msgid "Marriage"
 msgstr "Avioliitto"
+
+#: modules_v3/marriage_report/report.xml:9
+msgid "Marriage Date range end"
+msgstr "Avioitumisaikavälin loppu"
+
+#: modules_v3/marriage_report/report.xml:8
+msgid "Marriage Date range start"
+msgstr "Avioitumisaikavälin alku"
 
 #. I18N: gedcom tag _MARI
 #: library/WT/Gedcom/Tag.php:744
 msgid "Marriage Intention"
 msgstr "Avioliittoaikomus"
+
+#: modules_v3/marriage_report/report.xml:7
+msgid "Marriage Place contains"
+msgstr "Avioitumispaikka sisältää"
 
 #. I18N: gedcom tag MARB
 #: library/WT/Gedcom/Tag.php:247
@@ -7864,6 +8344,8 @@ msgstr "Avioliiton muoto tuntematon"
 
 #. I18N: Name of a module/report
 #: modules_v3/marriage_report/module.php:35
+#: modules_v3/marriage_report/report.xml:4
+#: modules_v3/marriage_report/report.xml:28
 msgid "Marriages"
 msgstr "Avioliitot"
 
@@ -8237,6 +8719,8 @@ msgstr "PHP:n tilapäistiedostojen kansio puuttuu"
 
 #. I18N: Name of a module/report
 #: modules_v3/missing_facts_report/module.php:35
+#: modules_v3/missing_facts_report/report.xml:4
+#: modules_v3/missing_facts_report/report.xml:50
 msgid "Missing data"
 msgstr "Puuttuvat tiedot"
 
@@ -8404,7 +8888,12 @@ msgstr "Yleensä sivuston asennus tehdään käyttäen oletusarvo 3306"
 msgid "Most viewed pages"
 msgstr "Katsotuimmat sivut"
 
-#: search_advanced.php:247
+#: modules_v3/bdm_report/report.xml:118
+#: modules_v3/family_group_report/report.xml:469
+#: modules_v3/family_group_report/report.xml:729
+#: modules_v3/individual_ext_report/report.xml:271
+#: modules_v3/individual_report/report.xml:273
+#: modules_v3/relative_ext_report/report.xml:63 search_advanced.php:247
 msgid "Mother"
 msgstr "Äiti"
 
@@ -8417,7 +8906,7 @@ msgid "Mother's age"
 msgstr "Äidin ikä"
 
 #. I18N: %s is the name of an individual’s mother
-#: library/WT/Person.php:1643
+#: library/WT/Person.php:1647
 #, php-format
 msgid "Mother: %s"
 msgstr "Äiti: %s"
@@ -8537,6 +9026,20 @@ msgstr "Myanmar (ent. Burma)"
 #: library/WT/Stats.php:3326
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:119
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:571
+#: modules_v3/bdm_report/report.xml:6 modules_v3/bdm_report/report.xml:47
+#: modules_v3/birth_report/report.xml:6 modules_v3/birth_report/report.xml:34
+#: modules_v3/cemetery_report/report.xml:39
+#: modules_v3/change_report/report.xml:54
+#: modules_v3/change_report/report.xml:94 modules_v3/death_report/report.xml:6
+#: modules_v3/death_report/report.xml:36 modules_v3/fact_sources/report.xml:60
+#: modules_v3/fact_sources/report.xml:153
+#: modules_v3/fact_sources/report.xml:264
+#: modules_v3/fact_sources/report.xml:315
+#: modules_v3/marriage_report/report.xml:6
+#: modules_v3/marriage_report/report.xml:36
+#: modules_v3/missing_facts_report/report.xml:52
+#: modules_v3/occupation_report/report.xml:41
+#: modules_v3/relative_ext_report/report.xml:48
 msgid "Name"
 msgstr "Nimi"
 
@@ -8549,6 +9052,11 @@ msgstr "Nimi"
 #: modules_v3/clippings/module.php:278
 msgid "Name / Description"
 msgstr "Nimi / Kuvaus"
+
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+msgid "Name List"
+msgstr "Nimiluettelo"
 
 #: find.php:184 find.php:199
 msgid "Name contains:"
@@ -8939,8 +9447,12 @@ msgstr "öinen"
 
 #: admin_trees_download.php:116 admin_users.php:450 famlist.php:115
 #: famlist.php:145 indilist.php:115 indilist.php:145 library/WT/Stats.php:758
-#: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:592
-#: modules_v3/families/module.php:151 modules_v3/individuals/module.php:150
+#: modules_v3/cemetery_report/report.xml:8 modules_v3/clippings/module.php:205
+#: modules_v3/clippings/module.php:592 modules_v3/death_report/report.xml:11
+#: modules_v3/families/module.php:151
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/individuals/module.php:150
 msgid "None"
 msgstr "Ei mikään"
 
@@ -9010,6 +9522,10 @@ msgstr "Naimaton"
 #. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:484
 #: includes/functions/functions_print.php:560 library/WT/Gedcom/Tag.php:276
+#: modules_v3/cemetery_report/report.xml:62
+#: modules_v3/family_group_report/report.xml:480
+#: modules_v3/family_group_report/report.xml:741
+#: modules_v3/family_group_report/report.xml:1090
 msgid "Note"
 msgstr "Lisätieto"
 
@@ -9036,7 +9552,9 @@ msgstr "Huom: mitä isompi on sallittujen hyppyjen määrä, sitä enemmän lask
 #: admin.php:232 admin.php:264 library/WT/Controller/Search.php:596
 #: mediaviewer.php:144
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1140
-#: modules_v3/notes/module.php:34 source.php:106 statistics.php:339
+#: modules_v3/individual_ext_report/report.xml:221
+#: modules_v3/individual_report/report.xml:223 modules_v3/notes/module.php:34
+#: source.php:106 statistics.php:339
 msgid "Notes"
 msgstr "Lisätiedot"
 
@@ -9152,6 +9670,8 @@ msgstr "Ammatti"
 
 #. I18N: Name of a report
 #: modules_v3/occupation_report/module.php:35
+#: modules_v3/occupation_report/report.xml:4
+#: modules_v3/occupation_report/report.xml:35
 msgid "Occupations"
 msgstr "Ammatit"
 
@@ -9327,6 +9847,11 @@ msgstr "Uskonnollinen toimitus"
 msgid "Ordination"
 msgstr "Papiksivihkiminen"
 
+#: modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7
+msgid "Orientation"
+msgstr "Sivun asento"
+
 #: library/WT/Gedcom/Code/Temp.php:150
 msgid "Orlando, Florida"
 msgstr "Orlando, Florida"
@@ -9426,10 +9951,45 @@ msgstr "PHP asetus \"%1$s\" ei ole käytössä. Ilman sitä, seuraavat ominaisuu
 msgid "PHP time limit"
 msgstr "PHP aikaraja"
 
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_ext_report/report.xml:90
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/missing_facts_report/report.xml:51
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42
+msgid "Page"
+msgstr "Sivu"
+
 #: medialist.php:216 medialist.php:339
 #, php-format
 msgid "Page %s of %s"
 msgstr "Sivu %s / %s"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgid "Page size"
+msgstr "Sivun koko"
 
 #: library/WT/Gedcom/Tag.php:917
 msgid "Painting"
@@ -9485,6 +10045,12 @@ msgstr "Vanhempien ikä"
 msgid "Parents"
 msgstr "Vanhemmat"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Parents and siblings"
+msgstr "Vanhemmat ja sisarukset"
+
 #: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
 #: edituser.php:152 help_text.php:736 help_text.php:1296 login.php:159
 #: login.php:220 login.php:449 modules_v3/login_block/module.php:81
@@ -9509,8 +10075,14 @@ msgstr "Salasanassa pitää olla vähintään 6 merkkiä."
 #: library/WT/Controller/Fanchart.php:306
 #: library/WT/Controller/Pedigree.php:94 library/WT/MenuBar.php:104
 #: modules_v3/charts/module.php:205 modules_v3/pedigree_report/module.php:35
+#: modules_v3/pedigree_report/report.xml:4
+#: modules_v3/pedigree_report/report.xml:41
 msgid "Pedigree"
 msgstr "Suhde perheeseen"
+
+#: modules_v3/pedigree_report/report.xml:737
+msgid "Pedigree Chart"
+msgstr "Esivanhemmat-kaavio"
 
 #: includes/functions/functions_print.php:93
 #: library/WT/Controller/Fanchart.php:308 library/WT/MenuBar.php:123
@@ -9541,6 +10113,7 @@ msgstr "Vireillä olevien muutosten-lohko"
 
 #. I18N: Name of a module
 #: edit_changes.php:33 edit_changes.php:53 help_text.php:1331
+#: modules_v3/change_report/report.xml:50
 #: modules_v3/review_changes/module.php:34
 #: themes/_administration/header.php:77 themes/clouds/header.php:123
 #: themes/colors/header.php:97 themes/fab/header.php:79
@@ -9647,12 +10220,18 @@ msgstr "Pitcairn"
 #. I18N: gedcom tag PLAC
 #: library/WT/Gedcom/Tag.php:290
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1136
+#: modules_v3/bdm_report/report.xml:7 modules_v3/bdm_report/report.xml:132
+#: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
+#: modules_v3/birth_report/report.xml:40
+#: modules_v3/cemetery_report/report.xml:58
+#: modules_v3/death_report/report.xml:48
 #: modules_v3/googlemap/admin_places.php:179
 #: modules_v3/googlemap/admin_places.php:180
 #: modules_v3/googlemap/admin_places.php:181
 #: modules_v3/googlemap/admin_places.php:182
 #: modules_v3/googlemap/admin_places.php:183
-#: modules_v3/googlemap/module.php:1591 search.php:169 search.php:182
+#: modules_v3/googlemap/module.php:1591
+#: modules_v3/marriage_report/report.xml:48 search.php:169 search.php:182
 msgid "Place"
 msgstr "Paikka"
 
@@ -9898,7 +10477,8 @@ msgstr "Portland, Oregon"
 msgid "Porto Alegre, Brazil"
 msgstr "Porto Alegre, Brasilia"
 
-#: admin_trees_config.php:813 pedigree.php:61
+#: admin_trees_config.php:813 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Portrait"
 msgstr "Pystysuoraan"
 
@@ -9998,6 +10578,10 @@ msgstr "Pappi"
 msgid "Primidi"
 msgstr "Primidi"
 
+#: modules_v3/family_group_report/report.xml:11
+msgid "Print basic events when blank?"
+msgstr "Tulosta perustapahtumat, jotka ovat tyhjiä?"
+
 #: admin_trees_config.php:219
 msgid "Privacy"
 msgstr "Yksityisyys"
@@ -10016,7 +10600,7 @@ msgstr "Yksityisyysrajoituksia - nämä sovelletaan GEDCOM tietueisiin ja tietoi
 #: library/WT/Person.php:121 library/WT/Person.php:336
 #: library/WT/Person.php:359 library/WT/Person.php:382
 #: library/WT/Person.php:419 library/WT/Person.php:442
-#: library/WT/Person.php:1905 library/WT/Report/Base.php:1946
+#: library/WT/Person.php:1909 library/WT/Report/Base.php:1946
 #: library/WT/Repository.php:57 library/WT/Source.php:49
 #: library/WT/Stats.php:863 library/WT/Stats.php:1805
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:240
@@ -10274,7 +10858,8 @@ msgid "Recent Years (&lt; 100 yrs)"
 msgstr "Viime vuosina (< 100 vuotta)"
 
 #. I18N: Name of a module
-#: admin.php:244 modules_v3/recent_changes/module.php:36
+#: admin.php:244 modules_v3/change_report/report.xml:90
+#: modules_v3/recent_changes/module.php:36
 msgid "Recent changes"
 msgstr "Viimeiset muutokset"
 
@@ -10345,7 +10930,7 @@ msgstr "Viitenumero"
 msgid "Regina, Saskatchewan, Canada"
 msgstr "Regina, Saskatchewan, Kanada"
 
-#: library/WT/Gedcom/Tag.php:256
+#: library/WT/Gedcom/Tag.php:256 modules_v3/fact_sources/report.xml:203
 msgid "Registered partnership"
 msgstr "Rekisteröity liitto"
 
@@ -10373,11 +10958,15 @@ msgstr "Regular expressions are an advanced pattern matching technique. See <a h
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:35
+#: modules_v3/individual_ext_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:89
 msgid "Related families"
 msgstr "Sukulaisperheet"
 
 #. I18N: Name of a report
 #: modules_v3/relative_ext_report/module.php:35
+#: modules_v3/relative_ext_report/report.xml:4
+#: modules_v3/relative_ext_report/report.xml:41
 msgid "Related individuals"
 msgstr "Sukulaiset"
 
@@ -10433,7 +11022,7 @@ msgstr "Uskonto"
 msgid "Religious Institution"
 msgstr "Uskonnollinen yhteisö"
 
-#: library/WT/Gedcom/Tag.php:257
+#: library/WT/Gedcom/Tag.php:257 modules_v3/fact_sources/report.xml:197
 msgid "Religious marriage"
 msgstr "Kirkollinen avioliitto"
 
@@ -11264,6 +11853,40 @@ msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "shawwal"
 
+#: modules_v3/descendancy_report/report.xml:357
+msgid "She "
+msgstr "Hän "
+
+#: modules_v3/ahnentafel_report/report.xml:290
+msgid "She died"
+msgstr "Hän kuoli"
+
+#: modules_v3/ahnentafel_report/report.xml:259
+#: modules_v3/descendancy_report/report.xml:241
+msgid "She married"
+msgstr "Hänen miehensä oli"
+
+#: modules_v3/ahnentafel_report/report.xml:221
+msgid "She resided at"
+msgstr "Hän asui"
+
+#: modules_v3/descendancy_report/report.xml:330
+msgid "She was born"
+msgstr "Hän syntyi"
+
+#: modules_v3/ahnentafel_report/report.xml:346
+msgid "She was buried"
+msgstr "Hänet on haudattu"
+
+#: modules_v3/ahnentafel_report/report.xml:165
+msgid "She was christened"
+msgstr "Hänet kastettiin"
+
+#: modules_v3/ahnentafel_report/report.xml:315
+#: modules_v3/ahnentafel_report/report.xml:342
+msgid "She was cremated"
+msgstr "Hänet polttohaudattiin"
+
 #: library/WT/Date/Jewish.php:111
 msgctxt "GENITIVE"
 msgid "Shevat"
@@ -11365,6 +11988,10 @@ msgstr "Näytä ikäkursori?"
 msgid "Show chart details by default"
 msgstr ""
 
+#: modules_v3/ahnentafel_report/report.xml:13
+msgid "Show children of ancestors?"
+msgstr "Näytä esipolvien lapset?"
+
 #: library/WT/MenuBar.php:173 library/WT/MenuBar.php:193
 msgid "Show children on timeline chart"
 msgstr "Näytä lapset aikajanalla"
@@ -11458,6 +12085,17 @@ msgstr "Näytä linkki tilastotietokaavioihin?"
 msgid "Show list of family trees"
 msgstr ""
 
+#: modules_v3/ahnentafel_report/report.xml:10
+#: modules_v3/family_group_report/report.xml:9
+#: modules_v3/individual_ext_report/report.xml:11
+#: modules_v3/individual_report/report.xml:8
+msgid "Show notes?"
+msgstr "Näytä lisätiedot?"
+
+#: modules_v3/ahnentafel_report/report.xml:11
+msgid "Show occupations?"
+msgstr "Näytä ammatit?"
+
 #: help_text.php:1291 relationship.php:118
 msgid "Show oldest top"
 msgstr "Näytä vanhin huipulla"
@@ -11501,6 +12139,10 @@ msgstr "Näytä vanhemmat"
 msgid "Show path"
 msgstr "Näytä polku"
 
+#: modules_v3/change_report/report.xml:9
+msgid "Show pending changes"
+msgstr "Näytä vireillä olevat muutokset"
+
 #: includes/functions/functions_print_lists.php:91
 #: includes/functions/functions_print_lists.php:496
 msgid "Show people who are alive or couples where both partners are alive."
@@ -11527,6 +12169,12 @@ msgstr "Näytä henkilöt jotka syntyivät yli sata vuotta sitten."
 msgid "Show persons born within the last 100 years."
 msgstr "Näytä henkilöt jotka syntyivät viimeisen sadan vuoden aikana."
 
+#: modules_v3/family_group_report/report.xml:10
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+msgid "Show photos?"
+msgstr "Näytä valokuvat?"
+
 #: admin_trees_config.php:527 help_text.php:887
 msgid "Show private relationships"
 msgstr "Näytä piilotetut sukulaiset"
@@ -11547,6 +12195,10 @@ msgstr "Näytä tutkimus tehtäviä, joita ei ole määritetty yhdellekään kä
 msgid "Show research tasks that have a date in the future"
 msgstr "Näytä tutkimustehtävät, joiden päivämäärä on tulevaisuudessa."
 
+#: modules_v3/ahnentafel_report/report.xml:12
+msgid "Show residences?"
+msgstr "Näytä asuinpaikat?"
+
 #: help_text.php:898
 msgid "Show runtime statistics and database queries at the bottom of every page."
 msgstr "Näytä suoritustilasto- ja tietokannastahakutiedot jokaisen sivun alaosassa."
@@ -11554,6 +12206,14 @@ msgstr "Näytä suoritustilasto- ja tietokannastahakutiedot jokaisen sivun alaos
 #: modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
 msgstr "Näytä diaesityksen valvonta?"
+
+#: modules_v3/ahnentafel_report/report.xml:9
+#: modules_v3/descendancy_report/report.xml:8
+#: modules_v3/family_group_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:10
+#: modules_v3/individual_report/report.xml:7
+msgid "Show sources?"
+msgstr "Näytä tietolähteet?"
 
 #: familybook.php:76 help_text.php:1416 hourglass.php:91
 msgid "Show spouses"
@@ -11674,6 +12334,11 @@ msgstr "Yksinkertainen hakusuodatin, joka perustuu syötettyihin merkkeihin. Jok
 msgid "Singapore"
 msgstr "Singapore"
 
+#: modules_v3/individual_ext_report/report.xml:347
+#: modules_v3/individual_report/report.xml:349
+msgid "Sister"
+msgstr "Sisar"
+
 #: admin_site_access.php:32 themes/_administration/header.php:97
 msgid "Site access rules"
 msgstr "Sivustoon pääsemissäännöt"
@@ -11783,13 +12448,28 @@ msgstr "Joitakin kohteita ei voitu lisätä yksityisyysrajoitusten vuoksi."
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
 msgstr "Jotkut paikannimet voidaan kirjoittaa valinnaisten etuliitteiden ja päätteiden kanssa. Esimerkiksi \"Uusimaa\" ja \"Uudenmaan lääni\". Jos sukupuussa paikannimet ovat täydellisinä, mutta maantieteellinen tietokanta sisältää lyhyet paikannimet, sinun tulee määrittää luettelo etuliitteistä ja päätteistä joita ei tule ottaa huomioon. Vaihtoehdot tulee erottaa toisistaan puolipisteellä. Esimerkiksi \"County; County of\" tai \"Maalaiskunta; mlk; mlk.\"."
 
+#: modules_v3/family_group_report/report.xml:763
+#: modules_v3/individual_ext_report/report.xml:518
+#: modules_v3/individual_report/report.xml:520
+msgid "Son"
+msgstr "Poika"
+
 #. I18N: e.g. “Son of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:325
 #, php-format
 msgid "Son of %s"
 msgstr "%s - poika"
 
-#: medialist.php:92 modules_v3/recent_changes/module.php:151
+#: medialist.php:92 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/recent_changes/module.php:151
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:148
 #: modules_v3/upcoming_events/module.php:160
 msgid "Sort order"
@@ -11810,7 +12490,12 @@ msgstr "Kuulostaa tältä"
 #. I18N: Name of a module/report
 #: includes/functions/functions_print_facts.php:467
 #: includes/functions/functions_print_facts.php:496 inverselink.php:134
-#: library/WT/Gedcom/Tag.php:320 modules_v3/fact_sources/module.php:35
+#: library/WT/Gedcom/Tag.php:320 modules_v3/bdm_report/report.xml:134
+#: modules_v3/bdm_report/report.xml:160 modules_v3/bdm_report/report.xml:194
+#: modules_v3/birth_report/report.xml:41 modules_v3/death_report/report.xml:52
+#: modules_v3/fact_sources/module.php:35 modules_v3/fact_sources/report.xml:4
+#: modules_v3/fact_sources/report.xml:41
+#: modules_v3/marriage_report/report.xml:52
 msgid "Source"
 msgstr "Lähde"
 
@@ -11831,6 +12516,7 @@ msgid "Source contains:"
 msgstr "Lähde sisältää:"
 
 #: admin_trees_config.php:1255 help_text.php:781
+#: modules_v3/fact_sources/report.xml:7
 msgid "Source type"
 msgstr "Tietolähde"
 
@@ -11840,14 +12526,23 @@ msgstr "Tietolähde"
 #: includes/functions/functions_print_lists.php:1177
 #: includes/functions/functions_print_lists.php:1278
 #: library/WT/Controller/Search.php:595 library/WT/MenuBar.php:311
-#: mediaviewer.php:138 modules_v3/gedcom_stats/module.php:104
+#: mediaviewer.php:138 modules_v3/ahnentafel_report/report.xml:480
+#: modules_v3/descendancy_report/report.xml:612
+#: modules_v3/family_group_report/report.xml:1107
+#: modules_v3/gedcom_stats/module.php:104
 #: modules_v3/gedcom_stats/module.php:324 modules_v3/html/module.php:192
+#: modules_v3/individual_ext_report/report.xml:636
+#: modules_v3/individual_report/report.xml:636
 #: modules_v3/lightbox/functions/lightbox_print_media.php:369
 #: modules_v3/sources_tab/module.php:34 note.php:107 repo.php:94
 #: search.php:124 sourcelist.php:31 sourcelist.php:35 statistics.php:338
 #: statistics.php:375
 msgid "Sources"
 msgstr "Lähteet"
+
+#: modules_v3/missing_facts_report/report.xml:12
+msgid "Sources to the events"
+msgstr "Tapahtumien lähdetiedot"
 
 #: library/WT/Stats.php:4036
 msgid "South Africa"
@@ -11882,6 +12577,10 @@ msgstr "Nopeus"
 msgid "Spokane, Washington"
 msgstr "Spokane, Washington"
 
+#: modules_v3/bdm_report/report.xml:167
+msgid "Spouse"
+msgstr "Puoliso"
+
 #: library/WT/Gedcom/Tag.php:216
 msgid "Spouse census date"
 msgstr "Puolison väestönlaskennan päivämäärä"
@@ -11897,6 +12596,12 @@ msgstr "Puoliso, lisätieto"
 #: includes/functions/functions_print_lists.php:1363
 msgid "Spouses"
 msgstr "Puolisot"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Spouses and children"
+msgstr "Aviopuolisot ja lapset"
 
 #: library/WT/Stats.php:3911
 msgid "Sri Lanka"
@@ -11935,6 +12640,10 @@ msgstr "Aloita vanhemmista"
 #: modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
 msgstr "Aloita diaesitys sivun latautuessa?"
+
+#: modules_v3/change_report/report.xml:6
+msgid "Starting range of change dates"
+msgstr "Muutosten aikavälin alku"
 
 #. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:323 modules_v3/googlemap/admin_places.php:176
@@ -12200,7 +12909,7 @@ msgid "Templates"
 msgstr "Mallipohjat"
 
 #. I18N: gedcom tag TEMP
-#: library/WT/Gedcom/Tag.php:329
+#: library/WT/Gedcom/Tag.php:329 modules_v3/individual_report/report.xml:205
 msgid "Temple"
 msgstr "Temppeli"
 
@@ -13460,6 +14169,10 @@ msgstr "Yleisimmät sukunimet"
 msgid "Toronto, Ontario, Canada"
 msgstr "Toronto, Ontario, Kanada"
 
+#: modules_v3/change_report/report.xml:125
+msgid "Total accepted changes: "
+msgstr "Hyväksyttyjä muutoksia yhteensä: "
+
 #: statistics.php:98
 msgid "Total births"
 msgstr "Syntymiä yhteensä"
@@ -13478,11 +14191,15 @@ msgstr "Avioeroja yhteensä"
 
 #: modules_v3/gedcom_stats/module.php:113
 #: modules_v3/gedcom_stats/module.php:356 modules_v3/html/module.php:204
-#: statistics.php:351
+#: modules_v3/missing_facts_report/report.xml:599 statistics.php:351
 msgid "Total events"
 msgstr "Kaikki tapahtumat"
 
-#: library/WT/Stats.php:3059
+#: library/WT/Stats.php:3059 modules_v3/fact_sources/report.xml:246
+#: modules_v3/fact_sources/report.xml:250
+#: modules_v3/fact_sources/report.xml:348
+#: modules_v3/fact_sources/report.xml:352
+#: modules_v3/marriage_report/report.xml:112
 msgid "Total families"
 msgstr "Perheitä yhteensä"
 
@@ -13498,6 +14215,19 @@ msgstr "Naisia yhteensä"
 #: statistics.php:178
 msgid "Total given names"
 msgstr "Etunimiä yhteensä"
+
+#: modules_v3/bdm_report/report.xml:208 modules_v3/birth_report/report.xml:65
+#: modules_v3/cemetery_report/report.xml:86
+#: modules_v3/death_report/report.xml:98
+#: modules_v3/fact_sources/report.xml:140
+#: modules_v3/fact_sources/report.xml:144
+#: modules_v3/fact_sources/report.xml:303
+#: modules_v3/fact_sources/report.xml:307
+#: modules_v3/missing_facts_report/report.xml:598
+#: modules_v3/occupation_report/report.xml:92
+#: modules_v3/relative_ext_report/report.xml:146
+msgid "Total individuals"
+msgstr "Henkilöitä yhteensä"
 
 #: calendar.php:438 find.php:507 modules_v3/GEDFact_assistant/module.php:162
 #: statistics.php:75
@@ -13520,6 +14250,10 @@ msgstr "Avioliittoja yhteensä"
 #: admin.php:164
 msgid "Total number of users"
 msgstr "Käyttäjiä kaikkiaan"
+
+#: modules_v3/change_report/report.xml:85
+msgid "Total pending changes: "
+msgstr "Vireillä olevia muutoksia yhteensä: "
 
 #. I18N: A count of places
 #: modules_v3/googlemap/module.php:1709
@@ -13715,7 +14449,11 @@ msgstr "Vuosisata tuntematon"
 #: calendar.php:586 includes/functions/functions_edit.php:1461
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:286 library/WT/Stats.php:3325
-#: timeline.php:264
+#: modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592 timeline.php:264
 msgctxt "unknown gender"
 msgid "Unknown"
 msgstr "Sukupuoli ei tiedossa"
@@ -13845,6 +14583,11 @@ msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] "Käytä vähintään %s merkkiä."
 msgstr[1] "Käytä vähintään %s merkkiä."
+
+#: modules_v3/family_group_report/report.xml:14
+#: modules_v3/individual_ext_report/report.xml:15
+msgid "Use colors"
+msgstr "Käytä värejä?"
 
 #: modules_v3/tree/class_treeview.php:74
 msgid "Use compact layout"
@@ -14149,7 +14892,8 @@ msgid "Visitor"
 msgstr "Vierailija"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:35
+#: modules_v3/bdm_report/module.php:35 modules_v3/bdm_report/report.xml:4
+#: modules_v3/bdm_report/report.xml:32
 msgid "Vital records"
 msgstr "Keskeisimmät tapahtumat"
 
@@ -14387,6 +15131,14 @@ msgstr "Ohjelman tekemien pienoiskuvien leveys"
 
 #. I18N: gedcom tag WIFE
 #: edit_interface.php:541 library/WT/Gedcom/Tag.php:340
+#: modules_v3/family_group_report/report.xml:493
+#: modules_v3/family_group_report/report.xml:1067
+#: modules_v3/individual_ext_report/report.xml:197
+#: modules_v3/individual_ext_report/report.xml:211
+#: modules_v3/individual_ext_report/report.xml:477
+#: modules_v3/individual_report/report.xml:192
+#: modules_v3/individual_report/report.xml:213
+#: modules_v3/individual_report/report.xml:479
 msgid "Wife"
 msgstr "Vaimo"
 
@@ -14882,6 +15634,13 @@ msgstr "tunnettu myös nimellä"
 #: library/WT/Controller/Ancestry.php:144 library/WT/Stats.php:2627
 #: library/WT/Stats.php:2652 library/WT/Stats.php:2663
 #: library/WT/Stats.php:2673 library/WT/Stats.php:3427 medialist.php:47
+#: modules_v3/ahnentafel_report/report.xml:400
+#: modules_v3/descendancy_report/report.xml:131
+#: modules_v3/descendancy_report/report.xml:229
+#: modules_v3/descendancy_report/report.xml:298
+#: modules_v3/descendancy_report/report.xml:362
+#: modules_v3/descendancy_report/report.xml:432
+#: modules_v3/descendancy_report/report.xml:485
 msgid "and"
 msgstr "-"
 
@@ -15170,6 +15929,10 @@ msgstr "aikajaksot"
 msgid "daughter"
 msgstr "tytär"
 
+#: modules_v3/descendancy_report/report.xml:225
+msgid "daughter of"
+msgstr "jonka vanhemmat olivat"
+
 #: includes/functions/functions.php:1238
 msgctxt "child's wife"
 msgid "daughter-in-law"
@@ -15209,6 +15972,18 @@ msgstr "astetta"
 #: admin_site_access.php:110 admin_site_access.php:301
 msgid "deny"
 msgstr "estä"
+
+#: modules_v3/descendancy_report/report.xml:137
+#: modules_v3/descendancy_report/report.xml:364
+msgctxt "FEMALE"
+msgid "died"
+msgstr "kuoli"
+
+#: modules_v3/descendancy_report/report.xml:134
+#: modules_v3/descendancy_report/report.xml:434
+msgctxt "MALE"
+msgid "died"
+msgstr "kuoli"
 
 #: modules_v3/googlemap/module.php:312 modules_v3/googlemap/module.php:321
 #: modules_v3/googlemap/module.php:330 modules_v3/googlemap/module.php:338
@@ -15304,7 +16079,7 @@ msgctxt "Abbreviation for fax number"
 msgid "f."
 msgstr "f."
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "facts"
 msgstr "tiedot"
 
@@ -17322,6 +18097,16 @@ msgstr "tyttönimi"
 msgid "marriage"
 msgstr "avioliitto"
 
+#: modules_v3/descendancy_report/report.xml:244
+msgctxt "FEMALE"
+msgid "married"
+msgstr "avioitui"
+
+#: modules_v3/descendancy_report/report.xml:175
+msgctxt "MALE"
+msgid "married"
+msgstr "avioitui"
+
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:116
 msgid "married name"
@@ -17520,7 +18305,13 @@ msgstr "9. serkku"
 #: includes/functions/functions_print_facts.php:1228
 #: includes/functions/functions_print_lists.php:795 library/WT/Stats.php:3519
 #: modules_v3/batch_update/admin_batch_update.php:339
-#: modules_v3/charts/module.php:215
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:215
+#: modules_v3/family_group_report/report.xml:250
+#: modules_v3/family_group_report/report.xml:421
+#: modules_v3/family_group_report/report.xml:601
+#: modules_v3/family_group_report/report.xml:942
+#: modules_v3/individual_ext_report/report.xml:180
+#: modules_v3/individual_report/report.xml:175
 msgid "no"
 msgstr "ei"
 
@@ -17549,7 +18340,19 @@ msgstr "pohjoinen"
 msgid "numbers"
 msgstr "lukumäärät"
 
-#: statisticsplot.php:816 statisticsplot.php:818 statisticsplot.php:820
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42 statisticsplot.php:816
+#: statisticsplot.php:818 statisticsplot.php:820
 msgid "of"
 msgstr "/"
 
@@ -17654,7 +18457,7 @@ msgstr "Vuosineljänneksiä avioitumisen jälkeen"
 msgid "questionable evidence"
 msgstr "kyseenalainen todiste"
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "records"
 msgstr "tietueet"
 
@@ -18020,6 +18823,10 @@ msgstr "6. serkku"
 msgid "son"
 msgstr "poika"
 
+#: modules_v3/descendancy_report/report.xml:294
+msgid "son of"
+msgstr "jonka vanhemmat olivat"
+
 #: includes/functions/functions.php:1235
 msgctxt "child's husband"
 msgid "son-in-law"
@@ -18051,23 +18858,32 @@ msgid "son/daughter-in-law"
 msgstr "lapsen puoliso / vävy,miniä"
 
 #. I18N: An option in a list-box
+#: modules_v3/change_report/report.xml:8
 #: modules_v3/todays_events/module.php:152
 #: modules_v3/upcoming_events/module.php:164
 msgid "sort by date"
 msgstr "järjestä päivämäärän mukaan"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2044 reportengine.php:513
+#: edit_interface.php:2044 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10 modules_v3/change_report/report.xml:8
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:513
 msgid "sort by date of birth"
 msgstr "järjestä syntymäpäivämäärän mukaan"
 
 #. I18N: An option in a list-box
-#: reportengine.php:515
+#: modules_v3/bdm_report/report.xml:12 modules_v3/cemetery_report/report.xml:7
+#: modules_v3/death_report/report.xml:10
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:515
 msgid "sort by date of death"
 msgstr "järjestä kuolinpäivämäärän mukaan"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2420 reportengine.php:514
+#: edit_interface.php:2420 modules_v3/marriage_report/report.xml:10
+#: reportengine.php:514
 msgid "sort by date of marriage"
 msgstr "järjestä avioitumispäivämäärän mukaan"
 
@@ -18087,7 +18903,15 @@ msgid "sort by filename"
 msgstr "järjestä tiedostonimen mukaan"
 
 #. I18N: An option in a list-box
+#: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
 #: modules_v3/recent_changes/module.php:154
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:151
 #: modules_v3/upcoming_events/module.php:163
 msgid "sort by name"
@@ -18490,6 +19314,18 @@ msgstr "henkilö ei tiedossa"
 msgid "unreliable evidence"
 msgstr "epäluotettava todiste"
 
+#: modules_v3/ahnentafel_report/report.xml:139
+#: modules_v3/descendancy_report/report.xml:105
+msgctxt "FEMALE"
+msgid "was born"
+msgstr "syntyi"
+
+#: modules_v3/ahnentafel_report/report.xml:138
+#: modules_v3/descendancy_report/report.xml:102
+msgctxt "MALE"
+msgid "was born"
+msgstr "syntyi"
+
 #: modules_v3/review_changes/module.php:86
 msgid "webtrees - Review changes"
 msgstr "webtrees -Tarkasta muutokset"
@@ -18543,7 +19379,14 @@ msgstr "vuotta"
 #: includes/functions/functions_print_lists.php:353
 #: includes/functions/functions_print_lists.php:793 library/WT/Stats.php:3518
 #: modules_v3/batch_update/admin_batch_update.php:340
-#: modules_v3/charts/module.php:216 modules_v3/relatives/module.php:206
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:216
+#: modules_v3/family_group_report/report.xml:247
+#: modules_v3/family_group_report/report.xml:418
+#: modules_v3/family_group_report/report.xml:598
+#: modules_v3/family_group_report/report.xml:939
+#: modules_v3/individual_ext_report/report.xml:177
+#: modules_v3/individual_report/report.xml:172
+#: modules_v3/relatives/module.php:206
 msgid "yes"
 msgstr "kyllä"
 
@@ -18565,7 +19408,7 @@ msgid "younger sister"
 msgstr "nuorempi sisko"
 
 #. I18N: Place a nickname in quotation marks
-#: library/WT/Person.php:1791
+#: library/WT/Person.php:1795
 #, php-format
 msgid "“%s”"
 msgstr "“%s”"
@@ -18589,12 +19432,6 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid " but the details are unknown"
-#~ msgstr " mutta yksityiskohdat ovat tuntemattomia"
-
-#~ msgid " in "
-#~ msgstr " paikassa "
 
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%1$s &rarr; %2$s"
@@ -18721,19 +19558,8 @@ msgstr "…"
 #~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "Tietokantajärjestelmässä voi olla useita erillisiä tietokantoja. Valitse olemassa oleva tietokanta (palvelinylläpitäjän luoma) tai luo itse uusi (jos sinulla on riittävät oikeudet siihen)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "Raportti tiedoista, jotka ovat lähtöisin tietystä lähteestä."
-
 #~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 #~ msgstr "Käyttäjä ei voi kirjautua sisään, ennen kuin sekä \"sähköpostiosoite on varmistettu\" että \"ylläpitäjä on hyväksynyt\" asetukset on kuitattu."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4"
 
 #~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
 #~ msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyzåäö"
@@ -18819,18 +19645,11 @@ msgstr "…"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Virhe tietokannassa."
 
-#~ msgid "Ancestors of "
-#~ msgstr "Esivanhemmat - "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "Ancestral file number (AFN)"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "Oletko varma, että haluat peruuttaa kaikki tähän GEDCOM-tiedostoon tekemäsi muutokset?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
 
 #~ msgid "Available blocks"
 #~ msgstr "Käytettävissä olevat lohkot"
@@ -18844,9 +19663,6 @@ msgstr "…"
 #~ msgid "Binary data object"
 #~ msgstr "Binääridataobjekti"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "Syntymäpaikassa on"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Syntymä- ja kuolematiedot kaavioissa"
 
@@ -18856,9 +19672,6 @@ msgstr "…"
 #~ msgid "Birth date range start"
 #~ msgstr "Syntymän aikavälin alku"
 
-#~ msgid "Brother"
-#~ msgstr "Veli"
-
 #~ msgid "Burial place contains"
 #~ msgstr "Hautaamispaika  sisältää"
 
@@ -18867,15 +19680,6 @@ msgstr "…"
 
 #~ msgid "Change family members"
 #~ msgstr "Muuta perheenjäseniä"
-
-#~ msgid "Child of "
-#~ msgstr "Tämän henkilön lapsi: "
-
-#~ msgid "Children of "
-#~ msgstr "Seuraavien lasten vanhemmat: "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Valitse sukulaiset"
 
 #~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
 #~ msgstr "Valitse minkä pienoiskuvan haluat siirtää palvelimelle. Pienoiskuva luodaan myös automaattisesti, mutta toisinaan saatat haluta eri kuvan pienoiskuvaksi. Esimerkiksi, videolle voit käyttää video-otoksesta tietyn still-kuvan tai kuvaajan valokuvan."
@@ -18984,12 +19788,6 @@ msgstr "…"
 #~ msgid "Date of residence"
 #~ msgstr "Asuinpaikan päivämäärä"
 
-#~ msgid "Daughter"
-#~ msgstr "Tytär"
-
-#~ msgid "Death Place contains"
-#~ msgstr "Kuolinpaikka sisältää"
-
 #~ msgid "Death date range end"
 #~ msgstr "Kuolinaikavälin loppu"
 
@@ -18998,13 +19796,6 @@ msgstr "…"
 
 #~ msgid "Default theme"
 #~ msgstr "Oletusteema"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "Jälkeläiset - "
 
 #~ msgid "Descent steps"
 #~ msgstr "Jälkipolvien lukumäärä"
@@ -19024,15 +19815,6 @@ msgstr "…"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "dhul-qa`da"
-
-#~ msgid "Differences"
-#~ msgstr "Eroavuudet"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Suorat esivanhemmat"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Suorat esivanhemmat ja heidän perheensä"
 
 #~ msgid "Display %s"
 #~ msgstr "Näytä %s"
@@ -19069,15 +19851,6 @@ msgstr "…"
 
 #~ msgid "End year"
 #~ msgstr "Lopetusvuosi"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Muutosten aikavälin loppu"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Anna perheen ID"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Syötä henkilö ID"
 
 #~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
 #~ msgstr "Anna otsikko kohteelle jota muokkat. Jos kyseessä on multimediakohde, anna kuvaava otsikko, jolla käyttäjä voi sen tunnistaa."
@@ -19145,20 +19918,11 @@ msgstr "…"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Sukupuun leikekori"
 
-#~ msgid "Family with husband"
-#~ msgstr "Perhe miehineen"
-
-#~ msgid "Family with wife"
-#~ msgstr "Perhe vaimoineen"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Isän syntymäpaikka (Chapman muodossa)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Isän ikä"
-
-#~ msgid "Font"
-#~ msgstr "Kirjasinlaji"
 
 #~ msgid "For LDS ordinances, this field records the temple where it was performed."
 #~ msgstr "Myöhempien Aikojen Pyhien Jeesuksen Kristuksen Kirkon jäseniä koskeva uskonnollinen toimitus. Tässä kentässä on temppeli, jossa se suoritettiin."
@@ -19187,38 +19951,11 @@ msgstr "…"
 #~ msgid "Gedcom"
 #~ msgstr "Gedcom"
 
-#~ msgid "Generation "
-#~ msgstr "Sukupolvi "
-
 #~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
 #~ msgstr "Sallii käyttäjien valita teeman vaihtoehtolistasta.<br><br>Tämä valinta toimii vain silloin kun <b>Salli käyttäjien valita itselleen oma teema</b> on myös voimassa. Muutoin vaihtoehtolista ei näy käyttäjälle."
 
 #~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
 #~ msgstr "Vierailija voi pyytää itselleen käyttäjätilin tälle sivustolle.<br><br>Vierailija saa sähköpostiviestin, jossa on tarvittava avain käyttäjätilipyytäjän tunnistamiseen. Vierailijan kuitattua lähetetty viesti, käyttäen avainta, ylläpitäjän on hyväksyttävä uusi käyttäjätili ennen kuin se astuu voimaan."
-
-#~ msgid "He "
-#~ msgstr "Hän "
-
-#~ msgid "He died"
-#~ msgstr "Hän kuoli"
-
-#~ msgid "He married"
-#~ msgstr "Hänen vaimonsa oli"
-
-#~ msgid "He resided at"
-#~ msgstr "Hän asui"
-
-#~ msgid "He was born"
-#~ msgstr "Hän syntyi"
-
-#~ msgid "He was buried"
-#~ msgstr "Hänet on haudattu"
-
-#~ msgid "He was christened"
-#~ msgstr "Hänet kastettiin"
-
-#~ msgid "He was cremated"
-#~ msgstr "Hänet polttohaudattiin"
 
 #~ msgid "Hello %s…"
 #~ msgstr "Hei %s…"
@@ -19228,13 +19965,6 @@ msgstr "…"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Hei hallinnoitsija…"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Her occupation was"
-#~ msgstr "Hänen ammattinsa oli"
 
 #~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
 #~ msgstr "Tässä voit lisätä tietoja henkilölle tai henkilöille.<br><br>Valitse ensin tietolaji pudotusvalikosta ja klikkaa sitten \"Lisää\" painiketta.<br>Pudotusvalikossa ovat kaikki GEDCOM-tiedostoon lisättävissä olevat tietolajit."
@@ -19250,9 +19980,6 @@ msgstr "…"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "Piilota &amp; näytä"
-
-#~ msgid "His occupation was"
-#~ msgstr "Hänen ammattinsa oli"
 
 #~ msgid "Hit count:"
 #~ msgstr "Luettu laskuri"
@@ -19332,14 +20059,6 @@ msgstr "…"
 #~ msgid "LDS temple"
 #~ msgstr "Mormonitemppeli"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "Letter"
-
 #~ msgid "Link ID"
 #~ msgstr "Linkin ID"
 
@@ -19369,15 +20088,6 @@ msgstr "…"
 
 #~ msgid "Main section blocks"
 #~ msgstr "Pääosan lohkot"
-
-#~ msgid "Marriage Date range end"
-#~ msgstr "Avioitumisaikavälin loppu"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Avioitumisaikavälin alku"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "Avioitumispaikka sisältää"
 
 #~ msgid "Marriage intention"
 #~ msgstr "Avioliittoaikomus"
@@ -19411,9 +20121,6 @@ msgstr "…"
 
 #~ msgid "Move right"
 #~ msgstr "Siirrä oikealle"
-
-#~ msgid "Name List"
-#~ msgstr "Nimiluettelo"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -19461,9 +20168,6 @@ msgstr "…"
 #~ msgid "Online editing"
 #~ msgstr "Online tietojen muokkaaminen"
 
-#~ msgid "Orientation"
-#~ msgstr "Sivun asento"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Toinen kansio… ole hyvä ja kirjoita"
 
@@ -19479,20 +20183,8 @@ msgstr "…"
 #~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
 #~ msgstr "PHP asetus \"%1$s\" ei ole käytössä. Ilman sitä, seuraavat ominaisuudet eivät onnistu: %2$s. Pyydä palvelimesi ylläpitäjää ottaamaan asetuksen käyttöön."
 
-#~ msgid "Page"
-#~ msgstr "Sivu"
-
-#~ msgid "Page size"
-#~ msgstr "Sivun koko"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Vanhemmat ja sisarukset"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Vanhempien ikä"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Esivanhemmat-kaavio"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "LDS kasteen paikkakunta"
@@ -19541,9 +20233,6 @@ msgstr "…"
 
 #~ msgid "President’s Office"
 #~ msgstr "Presidentin toimisto (Mormoni)"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "Tulosta perustapahtumat, jotka ovat tyhjiä?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -19673,30 +20362,6 @@ msgstr "…"
 #~ msgid "Sha’aban"
 #~ msgstr "sha`ban"
 
-#~ msgid "She "
-#~ msgstr "Hän "
-
-#~ msgid "She died"
-#~ msgstr "Hän kuoli"
-
-#~ msgid "She married"
-#~ msgstr "Hänen miehensä oli"
-
-#~ msgid "She resided at"
-#~ msgstr "Hän asui"
-
-#~ msgid "She was born"
-#~ msgstr "Hän syntyi"
-
-#~ msgid "She was buried"
-#~ msgstr "Hänet on haudattu"
-
-#~ msgid "She was christened"
-#~ msgstr "Hänet kastettiin"
-
-#~ msgid "She was cremated"
-#~ msgstr "Hänet polttohaudattiin"
-
 #~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
 #~ msgstr "Pitäisikö käyttää GeoNames tietokantaa, joka tarjoaa ehdotuksia paikan nimeksi?<br><br>Valtsemalla <b>Kyllä</b>, GeoNames tietokannasta etsitään ehdotuksia. Valtsemalla <b>Ei</b> käytetään vain käytössä olevaa tietokantaa. Sitä mukaa kun kirjoitetaan, tarkentuvat ehdotukset. Tämä omaisuus voi hidastaa toimintaasi, erityisesti kun toimit hitaalla intenet yhdeydellä..<br><br>GeoNames maantieteellinen tietokannan käyttäminen on ilmaista. Siellä on yli 8 miljoonaa maantieteellisia paikannimiä."
 
@@ -19708,9 +20373,6 @@ msgstr "…"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "Näytä kaikki paikat listassa"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Näytä esipolvien lapset?"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "Näytä kuolleet ihmiset"
@@ -19742,12 +20404,6 @@ msgstr "…"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Näytä viimeisten sadan vuoden aikana kuolleet henkilöt."
 
-#~ msgid "Show notes?"
-#~ msgstr "Näytä lisätiedot?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Näytä ammatit?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Näytä vain elossa olevien henkilöiden tapahtumat?"
 
@@ -19757,23 +20413,11 @@ msgstr "…"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Näytetäänkö ainoastaan henkilöt, tapahtumat vai kaikki?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Näytä vireillä olevat muutokset"
-
-#~ msgid "Show photos?"
-#~ msgstr "Näytä valokuvat?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Näytä paikat hierarkiana"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Näytä sukulaishenkilöt ja -perheet."
-
-#~ msgid "Show residences?"
-#~ msgstr "Näytä asuinpaikat?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Näytä tietolähteet?"
 
 #~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
 #~ msgstr "Näytä &laquo;lehti&raquo;parit tai henkilöt. Nämä ovat elossa olevia henkilöitä, joilla ei ole lapsia tietokannassa."
@@ -19784,32 +20428,14 @@ msgstr "…"
 #~ msgid "Showing %1$s to %2$s of %3$s"
 #~ msgstr "Näytetään rivit %1$s - %2$s ( %3$s )"
 
-#~ msgid "Sister"
-#~ msgstr "Sisar"
-
 #~ msgid "Social security number"
 #~ msgstr "Henkilötunnus"
-
-#~ msgid "Son"
-#~ msgstr "Poika"
 
 #~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
 #~ msgstr "Lähdetietoviitteet voivat myös sisältää tietoa lähdetiedon luotettavuudesta (ensikäden, välikäden jne) sekä päiväyksen milloin lähdetieto on saatu. Näitä lisäkenttiä voidaan poistaa käytöstä kirjoitettaessa uusia lähdetietoviitteitä."
 
-#~ msgid "Sources to the events"
-#~ msgstr "Tapahtumien lähdetiedot"
-
 #~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
 #~ msgstr "Ilmoittaa pitääkö <b>webtrees</b> viestit tallentaa tietokantaan. Kun valitaan <b>Kyllä</b>, niin käyttäjä voi hakea viestejään kun on kirjautunut<b>webtrees</b>iin. Kun valitaan <b>Ei</b>, niin viestit ainoastaan lähetetään sähköpostina, ilman niiden tallentamista."
-
-#~ msgid "Spouse"
-#~ msgstr "Puoliso"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Aviopuolisot ja lapset"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Muutosten aikavälin alku"
 
 #~ msgid "Surname option"
 #~ msgstr "Sukunimioptio"
@@ -19982,15 +20608,6 @@ msgstr "…"
 #~ msgid "To source"
 #~ msgstr "lähteeseen"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Hyväksyttyjä muutoksia yhteensä: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Henkilöitä yhteensä"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Vireillä olevia muutoksia yhteensä: "
-
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
 #~ msgstr "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
 
@@ -20002,9 +20619,6 @@ msgstr "…"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Käytä SMTP -protokollaan ulkoisten viestien lähettämiseen"
-
-#~ msgid "Use colors"
-#~ msgstr "Käytä värejä?"
 
 #~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
 #~ msgstr "Käytä käyttäjä ja salasana tunnistusta yhteydessä SMTP palvelimeen.<br><br>Jotkut SMTP-palvelimet vaativat kaikkien yhteyksien varmennukset ennen kuin ne hyväksyvät lähtevän sähköpostin."
@@ -20159,9 +20773,6 @@ msgstr "…"
 #~ msgid "before %d"
 #~ msgstr "ennen %d"
 
-#~ msgid "daughter of"
-#~ msgstr "jonka vanhemmat olivat"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "pojan vaimonisä / miniän isä"
@@ -20173,14 +20784,6 @@ msgstr "…"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "miniän isä/äiti"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "kuoli"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "kuoli"
 
 #~ msgid "first"
 #~ msgstr "ensimmäinen"
@@ -20215,17 +20818,6 @@ msgstr "…"
 #~ msgid "last"
 #~ msgstr "viimeinen"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "avioitui"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "avioitui"
-
-#~ msgid "son of"
-#~ msgstr "jonka vanhemmat olivat"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "tyttären miehenisä / tyttären appi"
@@ -20240,14 +20832,6 @@ msgstr "…"
 
 #~ msgid "utf8_unicode_ci"
 #~ msgstr "utf8_swedish_ci"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "syntyi"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "syntyi"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "webtrees tietokannan ja PGV pitää olla samassa serverissa"

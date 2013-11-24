@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VIETNAMESE LANGUAGE\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-09 17:47+0000\n"
+"POT-Creation-Date: 2013-11-24 22:39+0000\n"
 "PO-Revision-Date: 2013-06-05 09:22+0000\n"
 "Last-Translator: de tran <Unknown>\n"
 "Language-Team: VN LANGUAGE <trande@gmail.com >\n"
@@ -19,6 +19,32 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+
+#: modules_v3/ahnentafel_report/report.xml:158
+#: modules_v3/ahnentafel_report/report.xml:186
+#: modules_v3/ahnentafel_report/report.xml:281
+#: modules_v3/ahnentafel_report/report.xml:309
+#: modules_v3/ahnentafel_report/report.xml:334
+#: modules_v3/ahnentafel_report/report.xml:365
+msgid " but the details are unknown"
+msgstr " nhưng chi tiết không được biết"
+
+#: modules_v3/ahnentafel_report/report.xml:157
+#: modules_v3/ahnentafel_report/report.xml:185
+#: modules_v3/ahnentafel_report/report.xml:212
+#: modules_v3/ahnentafel_report/report.xml:280
+#: modules_v3/ahnentafel_report/report.xml:308
+#: modules_v3/ahnentafel_report/report.xml:333
+#: modules_v3/ahnentafel_report/report.xml:364
+#: modules_v3/descendancy_report/report.xml:125
+#: modules_v3/descendancy_report/report.xml:157
+#: modules_v3/descendancy_report/report.xml:314
+#: modules_v3/descendancy_report/report.xml:352
+#: modules_v3/descendancy_report/report.xml:383
+#: modules_v3/descendancy_report/report.xml:422
+#: modules_v3/descendancy_report/report.xml:453
+msgid " in "
+msgstr " tại "
 
 #: statisticsplot.php:804
 msgid " per gender"
@@ -622,66 +648,81 @@ msgstr "Một người dùng tương lại đã đăng ký chương trình webtr
 
 #. I18N: Description of the “Pedigree” module
 #: modules_v3/pedigree_report/module.php:41
+#: modules_v3/pedigree_report/report.xml:5
 msgid "A report of an individual’s ancestors, formatted as a tree."
 msgstr "Một báo cáo các tổ tiên của một cá nhân, trình bày dạng cây."
 
 #. I18N: Description of the “Ancestors” module
 #: modules_v3/ahnentafel_report/module.php:41
+#: modules_v3/ahnentafel_report/report.xml:6
 msgid "A report of an individual’s ancestors, in a narrative style."
 msgstr "Một báo cáo tổ tiên của một cá nhân, trình bày theo kiểu tường thuật."
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy_report/module.php:41
+#: modules_v3/descendancy_report/report.xml:5
 msgid "A report of an individual’s descendants, in a narrative style."
 msgstr "Một báo cáo con cháu của một người dạng tường thuật."
 
 #. I18N: Description of the “Individual” module
 #: modules_v3/individual_report/module.php:41
+#: modules_v3/individual_report/report.xml:5
 msgid "A report of an individual’s details."
 msgstr "Một báo cáo về chi tiết của một cá nhân."
 
+#: modules_v3/fact_sources/report.xml:5
+msgid "A report of facts which are supported by a given source."
+msgstr "Một báo cáo về sự kiện hỗ trợ bởi một nguồn."
+
 #. I18N: Description of the “Family” module
 #: modules_v3/family_group_report/module.php:41
+#: modules_v3/family_group_report/report.xml:5
 msgid "A report of family members and their details."
 msgstr "Báo cáo thành viên gia đình và chi tiết của họ."
 
 #. I18N: Description of the “Deaths” module
-#: modules_v3/death_report/module.php:41
+#: modules_v3/death_report/module.php:41 modules_v3/death_report/report.xml:5
 msgid "A report of individuals who died in a given time or place."
 msgstr "Một báo cáo các cá nhân đã mất ở một nơi nào đó."
 
 #. I18N: Description of the “Occupations” module
 #: modules_v3/occupation_report/module.php:41
+#: modules_v3/occupation_report/report.xml:5
 msgid "A report of individuals who had a given occupation."
 msgstr "Báo cáo cá nhân có một nghề nào đó."
 
 #. I18N: Description of the “Births” module
-#: modules_v3/birth_report/module.php:41
+#: modules_v3/birth_report/module.php:41 modules_v3/birth_report/report.xml:5
 msgid "A report of individuals who were born in a given time or place."
 msgstr "Một báo cáo các cá nhân sinh ở một địa điểm nào đó."
 
 #. I18N: Description of the “Cemeteries” module
 #: modules_v3/cemetery_report/module.php:41
+#: modules_v3/cemetery_report/report.xml:5
 msgid "A report of individuals who were buried in a given place."
 msgstr "Một bản báo cáo các cá nhân được an táng cùng một địa điểm nào đó."
 
 #. I18N: Description of the “Marriages” module
 #: modules_v3/marriage_report/module.php:41
+#: modules_v3/marriage_report/report.xml:5
 msgid "A report of individuals who were married in a given time or place."
 msgstr "Một báo cáo về  các cá nhân đã kết h ôn ở một thời gian hay địa điểm nào đó."
 
 #. I18N: Description of the “Changes” module
 #: modules_v3/change_report/module.php:41
+#: modules_v3/change_report/report.xml:5
 msgid "A report of recent and pending changes."
 msgstr "Báo cáo các thay đổi mới đây và đang chờ."
 
 #. I18N: Description of the “Related families”
 #: modules_v3/individual_ext_report/module.php:41
+#: modules_v3/individual_ext_report/report.xml:5
 msgid "A report of the families that are closely related to an individual."
 msgstr "Một báo cáo các gia đình liên hệ mật thiết đến một cá nhân."
 
 #. I18N: Description of the “Related individuals” module
 #: modules_v3/relative_ext_report/module.php:41
+#: modules_v3/relative_ext_report/report.xml:5
 msgid "A report of the individuals that are closely related to an individual."
 msgstr "Một báo cáo các cá nhân có quan hệ gần gũi với một cá nhân khác."
 
@@ -692,11 +733,12 @@ msgstr "Một báo cáo các thông tin cung cấp từ  một nguồn."
 
 #. I18N: Description of the “Missing data”
 #: modules_v3/missing_facts_report/module.php:41
+#: modules_v3/missing_facts_report/report.xml:5
 msgid "A report of the information that is missing for an individual and their relatives."
 msgstr "Một bản báo cáo về các thông tin còn thiếu của cá nhân và các người thân của họ."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:41
+#: modules_v3/bdm_report/module.php:41 modules_v3/bdm_report/report.xml:5
 msgid "A report of vital records for a given date or place."
 msgstr "Một báo cáo về các điểm quan trọng cho một ngày hay địa điểm nào đó."
 
@@ -766,6 +808,44 @@ msgstr ""
 #: includes/functions/functions_date.php:115
 msgid "A.M."
 msgstr "sáng"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A3"
+msgstr "khổ A3"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A4"
+msgstr "khổ A4"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1552,11 +1632,19 @@ msgstr "Còn sống"
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
 #: indilist.php:167 indilist.php:251 indilist.php:253
-#: library/WT/Stats.php:3325 modules_v3/faq/module.php:186
+#: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
 #: modules_v3/googlemap/admin_places.php:756
 #: modules_v3/googlemap/module.php:1481 modules_v3/googlemap/module.php:1497
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:8
 #: modules_v3/random_media/module.php:264
+#: modules_v3/relative_ext_report/report.xml:7
 #: modules_v3/user_messages/module.php:91
 msgid "All"
 msgstr "Tất cả"
@@ -1682,6 +1770,7 @@ msgstr "Có lỗi về CSDL bât ngờ xảy ra."
 #: library/WT/Controller/Ancestry.php:83
 #: library/WT/Controller/Fanchart.php:314 library/WT/MenuBar.php:106
 #: modules_v3/ahnentafel_report/module.php:35
+#: modules_v3/ahnentafel_report/report.xml:5
 msgid "Ancestors"
 msgstr "Tổ tiên"
 
@@ -1689,6 +1778,10 @@ msgstr "Tổ tiên"
 #: library/WT/Gedcom/Tag.php:124
 msgid "Ancestors interest"
 msgstr "Tâm Ý Của Tổ Tiên"
+
+#: modules_v3/ahnentafel_report/report.xml:53
+msgid "Ancestors of "
+msgstr "Tổ tiên của "
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Ancestry.php:80
@@ -1868,6 +1961,25 @@ msgstr ""
 #: library/WT/Stats.php:3784
 msgid "Argentina"
 msgstr "Argentine"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Arial"
+msgstr "Phông chữ arial"
 
 #: library/WT/Stats.php:3785
 msgid "Armenia"
@@ -2317,7 +2429,32 @@ msgid "Birmingham, Alabama"
 msgstr "Birmingham, Alabama"
 
 #. I18N: gedcom tag BIRT
-#: library/WT/Gedcom/Tag.php:140
+#: library/WT/Gedcom/Tag.php:140 modules_v3/bdm_report/report.xml:56
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:177
+#: modules_v3/family_group_report/report.xml:528
+#: modules_v3/family_group_report/report.xml:869
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:54
 msgid "Birth"
 msgstr "Sinh"
 
@@ -2335,6 +2472,18 @@ msgstr "Sinh"
 msgctxt "Pedigree"
 msgid "Birth"
 msgstr "Sinh"
+
+#: modules_v3/bdm_report/report.xml:9 modules_v3/birth_report/report.xml:9
+msgid "Birth Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
+msgid "Birth Date range start"
+msgstr ""
+
+#: modules_v3/birth_report/report.xml:7
+msgid "Birth Place contains"
+msgstr "Nơi sinh chứa"
 
 #: library/WT/Stats.php:1014 statistics.php:553
 msgid "Birth by country"
@@ -2418,7 +2567,8 @@ msgid "Birth:"
 msgstr "Sinh:"
 
 #. I18N: Name of a module/report
-#: modules_v3/birth_report/module.php:35
+#: modules_v3/birth_report/module.php:35 modules_v3/birth_report/report.xml:4
+#: modules_v3/birth_report/report.xml:29
 msgid "Births"
 msgstr "Sinh"
 
@@ -2583,6 +2733,11 @@ msgstr "British Virgin Islands"
 msgid "British West Indies"
 msgstr "British West Indies"
 
+#: modules_v3/individual_ext_report/report.xml:311
+#: modules_v3/individual_report/report.xml:313
+msgid "Brother"
+msgstr "Anh (Em) Trai"
+
 #: library/WT/Date/French.php:71
 msgctxt "GENITIVE"
 msgid "Brumaire"
@@ -2616,9 +2771,15 @@ msgid "Bulgaria"
 msgstr "Bulgaria"
 
 #. I18N: gedcom tag BURI
-#: library/WT/Gedcom/Tag.php:147
+#: library/WT/Gedcom/Tag.php:147 modules_v3/family_group_report/report.xml:346
+#: modules_v3/family_group_report/report.xml:697
+#: modules_v3/family_group_report/report.xml:1038
 msgid "Burial"
 msgstr "Lể An Táng"
+
+#: modules_v3/cemetery_report/report.xml:6
+msgid "Burial Place contains"
+msgstr ""
 
 #: library/WT/Gedcom/Tag.php:531
 msgid "Burial of a brother"
@@ -2890,11 +3051,13 @@ msgstr "Cayman Islands"
 
 #. I18N: Name of a module/report
 #: modules_v3/cemetery_report/module.php:35
+#: modules_v3/cemetery_report/report.xml:4
+#: modules_v3/cemetery_report/report.xml:33
 msgid "Cemeteries"
 msgstr "Nghĩa trang"
 
 #. I18N: gedcom tag CEME
-#: library/WT/Gedcom/Tag.php:153
+#: library/WT/Gedcom/Tag.php:153 modules_v3/cemetery_report/report.xml:52
 msgid "Cemetery"
 msgstr "Nghĩa Trang"
 
@@ -2972,6 +3135,8 @@ msgstr "Đã thay đổi vào %1$s bởi %2$s"
 
 #. I18N: Name of a module/report
 #: admin_site_change.php:29 modules_v3/change_report/module.php:35
+#: modules_v3/change_report/report.xml:4
+#: modules_v3/change_report/report.xml:42
 msgid "Changes"
 msgstr "Các thay đổi"
 
@@ -3043,6 +3208,11 @@ msgstr "Chicago, Illinois"
 msgid "Child"
 msgstr "Con"
 
+#: modules_v3/ahnentafel_report/report.xml:394
+#: modules_v3/descendancy_report/report.xml:479
+msgid "Child of "
+msgstr "Con trai của "
+
 #. I18N: e.g. “Child of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:331
 #, php-format
@@ -3050,13 +3220,20 @@ msgid "Child of %s"
 msgstr "Con của %s"
 
 #: includes/functions/functions_print_lists.php:215
-#: includes/functions/functions_print_lists.php:637 statisticsplot.php:784
+#: includes/functions/functions_print_lists.php:637
+#: modules_v3/family_group_report/report.xml:753
+#: modules_v3/relative_ext_report/report.xml:121 statisticsplot.php:784
 msgid "Children"
 msgstr "Con"
 
 #: statistics.php:288
 msgid "Children in family"
 msgstr "Con cái trong gia đình"
+
+#: modules_v3/ahnentafel_report/report.xml:397
+#: modules_v3/descendancy_report/report.xml:482
+msgid "Children of "
+msgstr "Là các con của "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: help_text.php:962
@@ -3095,6 +3272,12 @@ msgstr "Trung quốc"
 msgid "Choose a report to run"
 msgstr "Chọn một loại báo cáo"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Choose relatives"
+msgstr "Chọn bà con"
+
 #: help_text.php:355
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
 msgstr "Chọn giới tính thích hợp từ danh sách thả xuống. Tùy chọn <b>không rõ</b> cho thấy người đó giới tính chưa được biết."
@@ -3116,7 +3299,9 @@ msgid "Choose: "
 msgstr "Chọn: "
 
 #. I18N: gedcom tag CHR
-#: library/WT/Gedcom/Tag.php:162
+#: library/WT/Gedcom/Tag.php:162 modules_v3/family_group_report/report.xml:201
+#: modules_v3/family_group_report/report.xml:552
+#: modules_v3/family_group_report/report.xml:893
 msgid "Christening"
 msgstr "Lể Rửa Tội"
 
@@ -3232,7 +3417,7 @@ msgctxt "MALE"
 msgid "Civil Registrar"
 msgstr "Nhân viên đăng ký dân sự"
 
-#: library/WT/Gedcom/Tag.php:255
+#: library/WT/Gedcom/Tag.php:255 modules_v3/fact_sources/report.xml:200
 msgid "Civil marriage"
 msgstr "Kết hôn công dân"
 
@@ -3822,7 +4007,10 @@ msgstr "Tài khoản người dùng CSDL"
 
 #. I18N: gedcom tag DATE
 #: edit_changes.php:173 help_text.php:177 help_text.php:207
-#: library/WT/Gedcom/Tag.php:183
+#: library/WT/Gedcom/Tag.php:183 modules_v3/bdm_report/report.xml:130
+#: modules_v3/bdm_report/report.xml:156 modules_v3/bdm_report/report.xml:190
+#: modules_v3/birth_report/report.xml:38 modules_v3/death_report/report.xml:44
+#: modules_v3/marriage_report/report.xml:44
 msgid "Date"
 msgstr "Ngày Tháng"
 
@@ -3985,6 +4173,12 @@ msgstr "Ngày tháng được hoán chuyển nếu nó đúng với lịch. Thí
 msgid "Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords."
 msgstr "Ngày tháng được lưu trữ dùng từ viết tắt tiếng Anh hay từ khóa. Từ viết tắt có sẵn như là thay thế cho các từ viết tắt và từ khóa này."
 
+#: modules_v3/family_group_report/report.xml:798
+#: modules_v3/individual_ext_report/report.xml:554
+#: modules_v3/individual_report/report.xml:556
+msgid "Daughter"
+msgstr "Con gái"
+
 #. I18N: e.g. “Daughter of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:328
 #, php-format
@@ -4009,9 +4203,46 @@ msgid "Dead"
 msgstr "Tổng số chết"
 
 #. I18N: gedcom tag DEAT
-#: library/WT/Gedcom/Tag.php:184
+#: library/WT/Gedcom/Tag.php:184 modules_v3/bdm_report/report.xml:85
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:284
+#: modules_v3/family_group_report/report.xml:635
+#: modules_v3/family_group_report/report.xml:976
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:60
 msgid "Death"
 msgstr "Chết"
+
+#: modules_v3/bdm_report/report.xml:11 modules_v3/death_report/report.xml:9
+msgid "Death Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
+msgid "Death Date range start"
+msgstr ""
+
+#: modules_v3/death_report/report.xml:7
+msgid "Death Place contains"
+msgstr "Nơi mất chứa"
 
 #: library/WT/Stats.php:1031 statistics.php:561
 msgid "Death by country"
@@ -4149,7 +4380,8 @@ msgid "Death places"
 msgstr "Nơi mất"
 
 #. I18N: Name of a module/report
-#: modules_v3/death_report/module.php:35
+#: modules_v3/death_report/module.php:35 modules_v3/death_report/report.xml:4
+#: modules_v3/death_report/report.xml:30
 msgid "Deaths"
 msgstr "Mất"
 
@@ -4243,6 +4475,25 @@ msgstr "Giá trị mặc định cho cấp cao nhất"
 msgid "Degree"
 msgstr "Bằng Cấp"
 
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "DejaVu"
+msgstr "Phông chữ DejaVu"
+
 #: admin_site_access.php:284 admin_site_change.php:275
 #: admin_site_clean.php:126 admin_site_logs.php:242 admin_trees_config.php:614
 #: admin_trees_manage.php:231 edit_interface.php:151
@@ -4327,6 +4578,10 @@ msgstr "Các thế hệ con cháu"
 #: library/WT/MenuBar.php:105 modules_v3/charts/module.php:206
 #: modules_v3/descendancy/module.php:34
 #: modules_v3/descendancy_report/module.php:35
+#: modules_v3/descendancy_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
 msgid "Descendants"
 msgstr "Con cháu"
 
@@ -4334,6 +4589,10 @@ msgstr "Con cháu"
 #: library/WT/Gedcom/Tag.php:189
 msgid "Descendants interest"
 msgstr "Quyền lợi con cháu"
+
+#: modules_v3/descendancy_report/report.xml:40
+msgid "Descendants of "
+msgstr "Con cháu của "
 
 #. I18N: %s is an individual’s name
 #: descendancy.php:117 descendancy.php:123
@@ -4467,9 +4726,25 @@ msgstr "Died as a child: exempt"
 msgid "Died as an infant: exempt"
 msgstr "Chết còn bé: loại trừ"
 
+#: modules_v3/change_report/report.xml:58
+msgid "Differences"
+msgstr "Các dị biệt"
+
 #: help_text.php:444
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
 msgstr "Các hệ thống lịch khác nhau được dùng tại những nơi khác nhau của thế giới, nhiều hệ thống lịch được dùng trong quá khứ. Khi có thể, bạn phải nhập ngày bằng loại lịch mà ban đầu sự kiện được ghi nhận. Bạn có thể chỉ ra cách chuyển đổi để chỉ các ngày này trong loại lịch phổ biến hơn. Nếu bạn thường dùng hai loại lịch, bạn có thể nêu rõ hai cách chuyển đổi và ngày sẽ được chuyển sang cả hai loại lịch được chọn."
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors"
+msgstr "Tổ tiên trực tiếp"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors and their families"
+msgstr "Tổ tiên trực tiếp và gia đình họ"
 
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
@@ -4875,6 +5150,10 @@ msgstr "Địa chỉ cuối IP"
 msgid "End Year"
 msgstr "Năm kết thúc"
 
+#: modules_v3/change_report/report.xml:7
+msgid "Ending range of change dates"
+msgstr "Chấm dứt khoảni thời gian thay đổi"
+
 #. I18N: http://en.wikipedia.org/wiki/Endowment_house
 #: library/WT/Gedcom/Code/Temp.php:98
 msgid "Endowment House"
@@ -4888,6 +5167,20 @@ msgstr "Lễ đính hôn"
 #: library/WT/Stats.php:3847
 msgid "England"
 msgstr "Anh"
+
+#: modules_v3/family_group_report/report.xml:7
+msgid "Enter Family ID"
+msgstr "Nhập ID gia đình"
+
+#: modules_v3/ahnentafel_report/report.xml:7
+#: modules_v3/descendancy_report/report.xml:6
+#: modules_v3/individual_ext_report/report.xml:6
+#: modules_v3/individual_report/report.xml:6
+#: modules_v3/missing_facts_report/report.xml:6
+#: modules_v3/pedigree_report/report.xml:6
+#: modules_v3/relative_ext_report/report.xml:6
+msgid "Enter Individual ID"
+msgstr "Nhập số ID cá nhân"
 
 #: addmedia.php:448 modules_v3/gedcom_favorites/module.php:180
 msgid "Enter a Person, Family, or Source ID"
@@ -5017,7 +5310,9 @@ msgid "Europe"
 msgstr "Châu Âu"
 
 #. I18N: gedcom tag EVEN
-#: library/WT/Gedcom/Tag.php:208
+#: library/WT/Gedcom/Tag.php:208 modules_v3/fact_sources/report.xml:68
+#: modules_v3/fact_sources/report.xml:155
+#: modules_v3/missing_facts_report/report.xml:53
 msgid "Event"
 msgstr "Sự Kiện"
 
@@ -5203,6 +5498,8 @@ msgid "Fact or event"
 msgstr "Sự kiện hay biến cố"
 
 #. I18N: Name of a module/tab on the individual page.
+#: modules_v3/individual_ext_report/report.xml:151
+#: modules_v3/individual_report/report.xml:146
 #: modules_v3/personal_facts/module.php:34
 #: modules_v3/random_media/module.php:264
 msgid "Facts and events"
@@ -5247,7 +5544,9 @@ msgstr "Falkland Islands"
 #: includes/functions/functions_print_lists.php:1084
 #: includes/functions/functions_print_lists.php:1276
 #: library/WT/Controller/Search.php:594 library/WT/MenuBar.php:300
-#: mediaviewer.php:135 modules_v3/gedcom_stats/module.php:101
+#: mediaviewer.php:135 modules_v3/fact_sources/report.xml:150
+#: modules_v3/fact_sources/report.xml:312
+#: modules_v3/gedcom_stats/module.php:101
 #: modules_v3/gedcom_stats/module.php:316
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:188
 #: modules_v3/relatives/module.php:34 note.php:101 placelist.php:232
@@ -5268,6 +5567,9 @@ msgstr "Gia đình và nguồn tài liệu"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:928
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:935
 #: modules_v3/family_group_report/module.php:35
+#: modules_v3/family_group_report/report.xml:4
+#: modules_v3/family_group_report/report.xml:86
+#: modules_v3/family_group_report/report.xml:94
 #: modules_v3/family_nav/module.php:302
 msgid "Family"
 msgstr "Gia đình"
@@ -5385,8 +5687,14 @@ msgstr "gia đình với bố mẹ nuôi"
 msgid "Family with foster parents"
 msgstr "gia đình với bộ mẹ nuôi"
 
+#: modules_v3/individual_ext_report/report.xml:433
+#: modules_v3/individual_report/report.xml:435
+msgid "Family with husband"
+msgstr "Gia đình và chồng"
+
 #: library/WT/Gedcom/Code/Pedi.php:89 library/WT/Gedcom/Code/Pedi.php:94
-#: library/WT/Person.php:996
+#: library/WT/Person.php:996 modules_v3/individual_ext_report/report.xml:229
+#: modules_v3/individual_report/report.xml:231
 msgid "Family with parents"
 msgstr "Gia đình của cha mẹ"
 
@@ -5408,6 +5716,11 @@ msgstr "Gia đình của chồng/vợ"
 #: modules_v3/gedcom_stats/module.php:351 modules_v3/html/module.php:247
 msgid "Family with the most children"
 msgstr "Gia đình đông con nhất"
+
+#: modules_v3/individual_ext_report/report.xml:427
+#: modules_v3/individual_report/report.xml:429
+msgid "Family with wife"
+msgstr "Gia đình có vợ"
 
 #: includes/functions/functions_print.php:102
 #: library/WT/Controller/Fanchart.php:55
@@ -5451,7 +5764,12 @@ msgctxt "NOMINATIVE"
 msgid "Farvardin"
 msgstr "Tháng Farvardin"
 
-#: search_advanced.php:210
+#: modules_v3/bdm_report/report.xml:116
+#: modules_v3/family_group_report/report.xml:462
+#: modules_v3/family_group_report/report.xml:722
+#: modules_v3/individual_ext_report/report.xml:235
+#: modules_v3/individual_report/report.xml:237
+#: modules_v3/relative_ext_report/report.xml:62 search_advanced.php:210
 msgid "Father"
 msgstr "Bố"
 
@@ -5464,7 +5782,7 @@ msgid "Father's age"
 msgstr "Tuổi cha"
 
 #. I18N: %s is the name of an individual’s father
-#: library/WT/Person.php:1634
+#: library/WT/Person.php:1638
 #, php-format
 msgid "Father: %s"
 msgstr "Cha: %s"
@@ -5622,6 +5940,7 @@ msgstr "Tìm kho tư liệu"
 
 #: admin_site_merge.php:295 admin_site_merge.php:316 find.php:91
 #: includes/functions/functions_print.php:1156
+#: modules_v3/fact_sources/report.xml:6
 msgid "Find a source"
 msgstr "Tìm một nguồn"
 
@@ -5700,6 +6019,24 @@ msgstr "Thư mục"
 #: addmedia.php:530 admin_media_upload.php:212 help_text.php:1449
 msgid "Folder name on server"
 msgstr "Tên thư mục ở máy phục vụ"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgid "Font"
+msgstr "Phông"
 
 #: help_text.php:375
 msgid "For LDS ordinances, this field records the Temple where it was performed."
@@ -5928,7 +6265,11 @@ msgid "Gambia"
 msgstr "Gambia"
 
 #. I18N: gedcom tag SEX
-#: library/WT/Gedcom/Tag.php:314
+#: library/WT/Gedcom/Tag.php:314 modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592
 msgid "Gender"
 msgstr "Giới tính"
 
@@ -5964,8 +6305,17 @@ msgstr "Tạo bởi %s"
 msgid "Generation"
 msgstr "Thế hệ"
 
+#: modules_v3/ahnentafel_report/report.xml:76
+#: modules_v3/descendancy_report/report.xml:53
+msgid "Generation "
+msgstr "Thế hệ "
+
 #: ancestry.php:112 descendancy.php:78 familybook.php:62 fanchart.php:68
-#: hourglass.php:75 modules_v3/googlemap/module.php:676 pedigree.php:44
+#: hourglass.php:75 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7
+#: modules_v3/googlemap/module.php:676
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/missing_facts_report/report.xml:8 pedigree.php:44
 msgid "Generations"
 msgstr "Thế hệ"
 
@@ -6218,6 +6568,40 @@ msgstr "Hamilton, New Zealand"
 msgid "Hartford, Connecticut"
 msgstr "Hartford, Connecticut"
 
+#: modules_v3/descendancy_report/report.xml:427
+msgid "He "
+msgstr "Ông "
+
+#: modules_v3/ahnentafel_report/report.xml:289
+msgid "He died"
+msgstr "Ông mất"
+
+#: modules_v3/ahnentafel_report/report.xml:258
+#: modules_v3/descendancy_report/report.xml:172
+msgid "He married"
+msgstr "Ông kết hôn"
+
+#: modules_v3/ahnentafel_report/report.xml:220
+msgid "He resided at"
+msgstr "Ông sống tại"
+
+#: modules_v3/descendancy_report/report.xml:400
+msgid "He was born"
+msgstr "Ông sinh năm"
+
+#: modules_v3/ahnentafel_report/report.xml:345
+msgid "He was buried"
+msgstr "Ông được chôn cất"
+
+#: modules_v3/ahnentafel_report/report.xml:164
+msgid "He was christened"
+msgstr "Ông được rửa tội"
+
+#: modules_v3/ahnentafel_report/report.xml:314
+#: modules_v3/ahnentafel_report/report.xml:341
+msgid "He was cremated"
+msgstr "Ông được hỏa táng"
+
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:645
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:728
@@ -6270,6 +6654,29 @@ msgstr "Hướng dẫn"
 #: library/WT/Gedcom/Code/Temp.php:110
 msgid "Helsinki, Finland"
 msgstr "Helsinki, Finland"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Helvetica"
+msgstr "Phông chữ Helvetica"
+
+#: modules_v3/ahnentafel_report/report.xml:194
+msgid "Her occupation was"
+msgstr "Nghề nghiệp của bà là"
 
 #: modules_v3/googlemap/help_text.php:71
 msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
@@ -6366,6 +6773,8 @@ msgstr "Chiếu sáng một tên k hối rồi nhấp vào một mũi tên để
 
 #. I18N: gedcom tag _PRIM
 #: library/WT/Gedcom/Tag.php:746
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
 msgid "Highlighted image"
 msgstr "Ảnh được trỏ chiếu"
 
@@ -6373,6 +6782,10 @@ msgstr "Ảnh được trỏ chiếu"
 #: help_text.php:227 library/WT/Date/Hijri.php:41
 msgid "Hijri"
 msgstr "Tiếng Hijri"
+
+#: modules_v3/ahnentafel_report/report.xml:193
+msgid "His occupation was"
+msgstr "Nghề của ông là"
 
 #: modules_v3/personal_facts/module.php:88
 msgid "Historical facts"
@@ -6438,6 +6851,16 @@ msgstr "Hungary"
 
 #. I18N: gedcom tag HUSB
 #: edit_interface.php:543 library/WT/Gedcom/Tag.php:235
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+#: modules_v3/family_group_report/report.xml:142
+#: modules_v3/family_group_report/report.xml:1076
+#: modules_v3/individual_ext_report/report.xml:194
+#: modules_v3/individual_ext_report/report.xml:208
+#: modules_v3/individual_ext_report/report.xml:441
+#: modules_v3/individual_report/report.xml:189
+#: modules_v3/individual_report/report.xml:210
+#: modules_v3/individual_report/report.xml:443
 msgid "Husband"
 msgstr "Chồng"
 
@@ -6699,6 +7122,8 @@ msgstr "India"
 #: inverselink.php:110 library/WT/Gedcom/Tag.php:240
 #: modules_v3/charts/module.php:221 modules_v3/googlemap/module.php:673
 #: modules_v3/individual_report/module.php:35
+#: modules_v3/individual_report/report.xml:4
+#: modules_v3/individual_report/report.xml:85
 #: modules_v3/stories/module.php:247 modules_v3/stories/module.php:350
 #: modules_v3/stories/module.php:416 pedigree.php:43
 msgid "Individual"
@@ -6745,6 +7170,8 @@ msgstr "Bản ghi từng người"
 #: includes/functions/functions_print_lists.php:1365 indilist.php:132
 #: indilist.php:135 library/WT/Controller/Search.php:593
 #: library/WT/MenuBar.php:298 mediaviewer.php:132
+#: modules_v3/fact_sources/report.xml:52
+#: modules_v3/fact_sources/report.xml:256
 #: modules_v3/gedcom_stats/module.php:93
 #: modules_v3/gedcom_stats/module.php:300
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:172
@@ -7200,7 +7627,8 @@ msgstr "Ràng buộc LDS của bạn đời"
 msgid "Laie, Hawaii"
 msgstr "Laie, Hawaii"
 
-#: admin_trees_config.php:812 pedigree.php:61
+#: admin_trees_config.php:812 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Landscape"
 msgstr "Phong Cảnh"
 
@@ -7232,7 +7660,8 @@ msgid "Las Vegas, Nevada"
 msgstr "Las Vegas, Nevada"
 
 #. I18N: gedcom tag CHAN
-#: library/WT/Gedcom/Tag.php:157
+#: library/WT/Gedcom/Tag.php:157 modules_v3/change_report/report.xml:64
+#: modules_v3/change_report/report.xml:106
 msgid "Last change"
 msgstr "Cập Nhật Hóa"
 
@@ -7310,6 +7739,25 @@ msgstr "Vô sinh"
 msgid "Lebanon"
 msgstr "Lebanon"
 
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Legal"
+msgstr "Khổ giấy legal"
+
 #. I18N: gedcom tag LEGA
 #: library/WT/Gedcom/Tag.php:244
 msgid "Legatee"
@@ -7322,6 +7770,25 @@ msgstr "Thời gian cưới nhau"
 #: library/WT/Stats.php:3912
 msgid "Lesotho"
 msgstr "Lesotho"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Letter"
+msgstr "Khổ giấy thư tín (letter)"
 
 #: modules_v3/googlemap/admin_places.php:175
 #: modules_v3/googlemap/module.php:380 modules_v3/googlemap/module.php:1598
@@ -7698,14 +8165,27 @@ msgid "March"
 msgstr "Tháng Ba"
 
 #. I18N: gedcom tag MARR
-#: library/WT/Gedcom/Tag.php:252
+#: library/WT/Gedcom/Tag.php:252 modules_v3/bdm_report/report.xml:76
+#: modules_v3/family_group_report/report.xml:372
 msgid "Marriage"
 msgstr "Hôn lễ"
+
+#: modules_v3/marriage_report/report.xml:9
+msgid "Marriage Date range end"
+msgstr "Ngày kết hôn kết thúc"
+
+#: modules_v3/marriage_report/report.xml:8
+msgid "Marriage Date range start"
+msgstr "Ngày kết hôn bắt đầu từ"
 
 #. I18N: gedcom tag _MARI
 #: library/WT/Gedcom/Tag.php:744
 msgid "Marriage Intention"
 msgstr "Ý định kết hôn"
+
+#: modules_v3/marriage_report/report.xml:7
+msgid "Marriage Place contains"
+msgstr "Địa điểm kết hôn chứa"
 
 #. I18N: gedcom tag MARB
 #: library/WT/Gedcom/Tag.php:247
@@ -7850,6 +8330,8 @@ msgstr "Không biết loại kết hôn"
 
 #. I18N: Name of a module/report
 #: modules_v3/marriage_report/module.php:35
+#: modules_v3/marriage_report/report.xml:4
+#: modules_v3/marriage_report/report.xml:28
 msgid "Marriages"
 msgstr "Kết hôn"
 
@@ -8223,6 +8705,8 @@ msgstr "Lạc thư mục tạm PHP"
 
 #. I18N: Name of a module/report
 #: modules_v3/missing_facts_report/module.php:35
+#: modules_v3/missing_facts_report/report.xml:4
+#: modules_v3/missing_facts_report/report.xml:50
 msgid "Missing data"
 msgstr "Dữ liệu còn thiếu"
 
@@ -8390,7 +8874,12 @@ msgstr "Phần lớn các site được đặt cấu hình dùng giá trị mặ
 msgid "Most viewed pages"
 msgstr "Các trang được xem nhiều nhất."
 
-#: search_advanced.php:247
+#: modules_v3/bdm_report/report.xml:118
+#: modules_v3/family_group_report/report.xml:469
+#: modules_v3/family_group_report/report.xml:729
+#: modules_v3/individual_ext_report/report.xml:271
+#: modules_v3/individual_report/report.xml:273
+#: modules_v3/relative_ext_report/report.xml:63 search_advanced.php:247
 msgid "Mother"
 msgstr "Mẹ"
 
@@ -8403,7 +8892,7 @@ msgid "Mother's age"
 msgstr "Tuổi mẹ"
 
 #. I18N: %s is the name of an individual’s mother
-#: library/WT/Person.php:1643
+#: library/WT/Person.php:1647
 #, php-format
 msgid "Mother: %s"
 msgstr "Mẹ: %s"
@@ -8523,6 +9012,20 @@ msgstr "Myanmar"
 #: library/WT/Stats.php:3326
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:119
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:571
+#: modules_v3/bdm_report/report.xml:6 modules_v3/bdm_report/report.xml:47
+#: modules_v3/birth_report/report.xml:6 modules_v3/birth_report/report.xml:34
+#: modules_v3/cemetery_report/report.xml:39
+#: modules_v3/change_report/report.xml:54
+#: modules_v3/change_report/report.xml:94 modules_v3/death_report/report.xml:6
+#: modules_v3/death_report/report.xml:36 modules_v3/fact_sources/report.xml:60
+#: modules_v3/fact_sources/report.xml:153
+#: modules_v3/fact_sources/report.xml:264
+#: modules_v3/fact_sources/report.xml:315
+#: modules_v3/marriage_report/report.xml:6
+#: modules_v3/marriage_report/report.xml:36
+#: modules_v3/missing_facts_report/report.xml:52
+#: modules_v3/occupation_report/report.xml:41
+#: modules_v3/relative_ext_report/report.xml:48
 msgid "Name"
 msgstr "Tên"
 
@@ -8535,6 +9038,11 @@ msgstr "Tên"
 #: modules_v3/clippings/module.php:278
 msgid "Name / Description"
 msgstr "Tên / Mô tả"
+
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+msgid "Name List"
+msgstr "Danh sách tên"
 
 #: find.php:184 find.php:199
 msgid "Name contains:"
@@ -8923,8 +9431,12 @@ msgstr "Màu đêm"
 
 #: admin_trees_download.php:116 admin_users.php:450 famlist.php:115
 #: famlist.php:145 indilist.php:115 indilist.php:145 library/WT/Stats.php:758
-#: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:592
-#: modules_v3/families/module.php:151 modules_v3/individuals/module.php:150
+#: modules_v3/cemetery_report/report.xml:8 modules_v3/clippings/module.php:205
+#: modules_v3/clippings/module.php:592 modules_v3/death_report/report.xml:11
+#: modules_v3/families/module.php:151
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/individuals/module.php:150
 msgid "None"
 msgstr "Không hạn chế"
 
@@ -8994,6 +9506,10 @@ msgstr "Không kết hôn"
 #. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:484
 #: includes/functions/functions_print.php:560 library/WT/Gedcom/Tag.php:276
+#: modules_v3/cemetery_report/report.xml:62
+#: modules_v3/family_group_report/report.xml:480
+#: modules_v3/family_group_report/report.xml:741
+#: modules_v3/family_group_report/report.xml:1090
 msgid "Note"
 msgstr "Ghi chú"
 
@@ -9019,7 +9535,9 @@ msgstr "ghi chú: đường dẫn dài hơn đòi hỏi nhiều tính toán, có
 #: admin.php:232 admin.php:264 library/WT/Controller/Search.php:596
 #: mediaviewer.php:144
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1140
-#: modules_v3/notes/module.php:34 source.php:106 statistics.php:339
+#: modules_v3/individual_ext_report/report.xml:221
+#: modules_v3/individual_report/report.xml:223 modules_v3/notes/module.php:34
+#: source.php:106 statistics.php:339
 msgid "Notes"
 msgstr "Ghi chú"
 
@@ -9135,6 +9653,8 @@ msgstr "Nghề nghiệp"
 
 #. I18N: Name of a report
 #: modules_v3/occupation_report/module.php:35
+#: modules_v3/occupation_report/report.xml:4
+#: modules_v3/occupation_report/report.xml:35
 msgid "Occupations"
 msgstr "Nghề nghiệp"
 
@@ -9310,6 +9830,11 @@ msgstr "Sắc lệnh"
 msgid "Ordination"
 msgstr "Lể tấn phong"
 
+#: modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7
+msgid "Orientation"
+msgstr "Phương Hướng"
+
 #: library/WT/Gedcom/Code/Temp.php:150
 msgid "Orlando, Florida"
 msgstr "Orlando, Florida"
@@ -9409,10 +9934,45 @@ msgstr "Thiết đặt \"%1$s\" PHP không được kích hoạt. Và khi không
 msgid "PHP time limit"
 msgstr "Giới hạn thời gian PHP"
 
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_ext_report/report.xml:90
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/missing_facts_report/report.xml:51
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42
+msgid "Page"
+msgstr "Trang"
+
 #: medialist.php:216 medialist.php:339
 #, php-format
 msgid "Page %s of %s"
 msgstr "Trang  %s / %s"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgid "Page size"
+msgstr "Khổ trang"
 
 #: library/WT/Gedcom/Tag.php:917
 msgid "Painting"
@@ -9468,6 +10028,12 @@ msgstr "Tuổi cha mẹ"
 msgid "Parents"
 msgstr "Cha mẹ"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Parents and siblings"
+msgstr "Cha mẹ và anh em"
+
 #: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
 #: edituser.php:152 help_text.php:736 help_text.php:1296 login.php:159
 #: login.php:220 login.php:449 modules_v3/login_block/module.php:81
@@ -9492,8 +10058,14 @@ msgstr "Mật khẩu phải có tối thiểu 6 kí tự"
 #: library/WT/Controller/Fanchart.php:306
 #: library/WT/Controller/Pedigree.php:94 library/WT/MenuBar.php:104
 #: modules_v3/charts/module.php:205 modules_v3/pedigree_report/module.php:35
+#: modules_v3/pedigree_report/report.xml:4
+#: modules_v3/pedigree_report/report.xml:41
 msgid "Pedigree"
 msgstr "Phả hệ"
+
+#: modules_v3/pedigree_report/report.xml:737
+msgid "Pedigree Chart"
+msgstr "Đồ Thị Dòng Giống"
 
 #: includes/functions/functions_print.php:93
 #: library/WT/Controller/Fanchart.php:308 library/WT/MenuBar.php:123
@@ -9524,6 +10096,7 @@ msgstr "Khối Thay đổi đang chờ duyệt"
 
 #. I18N: Name of a module
 #: edit_changes.php:33 edit_changes.php:53 help_text.php:1331
+#: modules_v3/change_report/report.xml:50
 #: modules_v3/review_changes/module.php:34
 #: themes/_administration/header.php:77 themes/clouds/header.php:123
 #: themes/colors/header.php:97 themes/fab/header.php:79
@@ -9630,12 +10203,18 @@ msgstr "Pitcairn"
 #. I18N: gedcom tag PLAC
 #: library/WT/Gedcom/Tag.php:290
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1136
+#: modules_v3/bdm_report/report.xml:7 modules_v3/bdm_report/report.xml:132
+#: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
+#: modules_v3/birth_report/report.xml:40
+#: modules_v3/cemetery_report/report.xml:58
+#: modules_v3/death_report/report.xml:48
 #: modules_v3/googlemap/admin_places.php:179
 #: modules_v3/googlemap/admin_places.php:180
 #: modules_v3/googlemap/admin_places.php:181
 #: modules_v3/googlemap/admin_places.php:182
 #: modules_v3/googlemap/admin_places.php:183
-#: modules_v3/googlemap/module.php:1591 search.php:169 search.php:182
+#: modules_v3/googlemap/module.php:1591
+#: modules_v3/marriage_report/report.xml:48 search.php:169 search.php:182
 msgid "Place"
 msgstr "Nơi"
 
@@ -9881,7 +10460,8 @@ msgstr "Portland, Oregon"
 msgid "Porto Alegre, Brazil"
 msgstr "Porto Alegre, Brazil"
 
-#: admin_trees_config.php:813 pedigree.php:61
+#: admin_trees_config.php:813 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Portrait"
 msgstr "Chân Dung"
 
@@ -9981,6 +10561,10 @@ msgstr "Thầy tu"
 msgid "Primidi"
 msgstr "Primidi"
 
+#: modules_v3/family_group_report/report.xml:11
+msgid "Print basic events when blank?"
+msgstr "In các sự kiện chính khi khộng có gì?"
+
 #: admin_trees_config.php:219
 msgid "Privacy"
 msgstr "Không được bộc lộ"
@@ -9999,7 +10583,7 @@ msgstr "Hạn chế vì tính riêng tư- áp dụng cho bản ghi và sự ki�
 #: library/WT/Person.php:121 library/WT/Person.php:336
 #: library/WT/Person.php:359 library/WT/Person.php:382
 #: library/WT/Person.php:419 library/WT/Person.php:442
-#: library/WT/Person.php:1905 library/WT/Report/Base.php:1946
+#: library/WT/Person.php:1909 library/WT/Report/Base.php:1946
 #: library/WT/Repository.php:57 library/WT/Source.php:49
 #: library/WT/Stats.php:863 library/WT/Stats.php:1805
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:240
@@ -10257,7 +10841,8 @@ msgid "Recent Years (&lt; 100 yrs)"
 msgstr "Những năm gần đây (< 100 năm)"
 
 #. I18N: Name of a module
-#: admin.php:244 modules_v3/recent_changes/module.php:36
+#: admin.php:244 modules_v3/change_report/report.xml:90
+#: modules_v3/recent_changes/module.php:36
 msgid "Recent changes"
 msgstr "Khối Thay Đổi Mới Đây"
 
@@ -10328,7 +10913,7 @@ msgstr "Số tham khảo"
 msgid "Regina, Saskatchewan, Canada"
 msgstr "Regina, Saskatchewan, Canada"
 
-#: library/WT/Gedcom/Tag.php:256
+#: library/WT/Gedcom/Tag.php:256 modules_v3/fact_sources/report.xml:203
 msgid "Registered partnership"
 msgstr "Bạn đời đăng ký"
 
@@ -10356,11 +10941,15 @@ msgstr "Cụm từ thông thường là một kỹ thuật khớp mẫu nâng ca
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:35
+#: modules_v3/individual_ext_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:89
 msgid "Related families"
 msgstr "Các gia đình liên quan"
 
 #. I18N: Name of a report
 #: modules_v3/relative_ext_report/module.php:35
+#: modules_v3/relative_ext_report/report.xml:4
+#: modules_v3/relative_ext_report/report.xml:41
 msgid "Related individuals"
 msgstr "Những người liên quan"
 
@@ -10416,7 +11005,7 @@ msgstr "Tôn Giáo"
 msgid "Religious Institution"
 msgstr "Viện tôn giáo"
 
-#: library/WT/Gedcom/Tag.php:257
+#: library/WT/Gedcom/Tag.php:257 modules_v3/fact_sources/report.xml:197
 msgid "Religious marriage"
 msgstr "Kết Hôn theo lễ nghi tôn Giáo"
 
@@ -11247,6 +11836,40 @@ msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
+#: modules_v3/descendancy_report/report.xml:357
+msgid "She "
+msgstr "Bà "
+
+#: modules_v3/ahnentafel_report/report.xml:290
+msgid "She died"
+msgstr "Bà mất"
+
+#: modules_v3/ahnentafel_report/report.xml:259
+#: modules_v3/descendancy_report/report.xml:241
+msgid "She married"
+msgstr "Bà kết hôn"
+
+#: modules_v3/ahnentafel_report/report.xml:221
+msgid "She resided at"
+msgstr "Bà sống tại"
+
+#: modules_v3/descendancy_report/report.xml:330
+msgid "She was born"
+msgstr "Bà sinh năm"
+
+#: modules_v3/ahnentafel_report/report.xml:346
+msgid "She was buried"
+msgstr "Bà được chôn"
+
+#: modules_v3/ahnentafel_report/report.xml:165
+msgid "She was christened"
+msgstr "Bà được rửa tội"
+
+#: modules_v3/ahnentafel_report/report.xml:315
+#: modules_v3/ahnentafel_report/report.xml:342
+msgid "She was cremated"
+msgstr "Bà được hỏa táng"
+
 #: library/WT/Date/Jewish.php:111
 msgctxt "GENITIVE"
 msgid "Shevat"
@@ -11348,6 +11971,10 @@ msgstr "Có hiển thị dấu trỏ tuổi không?"
 msgid "Show chart details by default"
 msgstr ""
 
+#: modules_v3/ahnentafel_report/report.xml:13
+msgid "Show children of ancestors?"
+msgstr "Hiện con cháu của tổ tiên?"
+
 #: library/WT/MenuBar.php:173 library/WT/MenuBar.php:193
 msgid "Show children on timeline chart"
 msgstr "Xem đồ thị lịch sử con cái"
@@ -11441,6 +12068,17 @@ msgstr "Hiện liên kết biểu đồ thống kê?"
 msgid "Show list of family trees"
 msgstr ""
 
+#: modules_v3/ahnentafel_report/report.xml:10
+#: modules_v3/family_group_report/report.xml:9
+#: modules_v3/individual_ext_report/report.xml:11
+#: modules_v3/individual_report/report.xml:8
+msgid "Show notes?"
+msgstr "Hiện các chú thích?"
+
+#: modules_v3/ahnentafel_report/report.xml:11
+msgid "Show occupations?"
+msgstr "Hiẹn các nghề nghiệp?"
+
 #: help_text.php:1291 relationship.php:118
 msgid "Show oldest top"
 msgstr "Sắp đặt già nhất phía trên"
@@ -11484,6 +12122,10 @@ msgstr "Hiện cha mẹ"
 msgid "Show path"
 msgstr "Hiện đường dẫn"
 
+#: modules_v3/change_report/report.xml:9
+msgid "Show pending changes"
+msgstr "Hiện các thay đổi chờ duyệt"
+
 #: includes/functions/functions_print_lists.php:91
 #: includes/functions/functions_print_lists.php:496
 msgid "Show people who are alive or couples where both partners are alive."
@@ -11510,6 +12152,12 @@ msgstr "Hiện những người sinh hơn 100 năm."
 msgid "Show persons born within the last 100 years."
 msgstr "Hiện những người sinh trong 100 năm qua."
 
+#: modules_v3/family_group_report/report.xml:10
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+msgid "Show photos?"
+msgstr "Hiển thị hình?"
+
 #: admin_trees_config.php:527 help_text.php:887
 msgid "Show private relationships"
 msgstr "Hiện các mối quan hệ riêng"
@@ -11530,6 +12178,10 @@ msgstr "Hiển thị các tác vụ nghiên cứu chưa giao cho người dùng 
 msgid "Show research tasks that have a date in the future"
 msgstr "Hiển thị các tác vụ nghiên cứu có thời gian thực hiện ở tương l"
 
+#: modules_v3/ahnentafel_report/report.xml:12
+msgid "Show residences?"
+msgstr "Hiện nơi cư trú?"
+
 #: help_text.php:898
 msgid "Show runtime statistics and database queries at the bottom of every page."
 msgstr "Hiện thống kê thời gian thi hành và truy vấn CDSL ở cuối mỗi trang."
@@ -11537,6 +12189,14 @@ msgstr "Hiện thống kê thời gian thi hành và truy vấn CDSL ở cuối 
 #: modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
 msgstr "Hiển thị các nút điều khiển chiếu ảnh?"
+
+#: modules_v3/ahnentafel_report/report.xml:9
+#: modules_v3/descendancy_report/report.xml:8
+#: modules_v3/family_group_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:10
+#: modules_v3/individual_report/report.xml:7
+msgid "Show sources?"
+msgstr "Hiện các nguồn tư liệu?"
 
 #: familybook.php:76 help_text.php:1416 hourglass.php:91
 msgid "Show spouses"
@@ -11657,6 +12317,11 @@ msgstr "Bộ lọc tìm kiếm đơn giản dựa vào từ điền vào, wildca
 msgid "Singapore"
 msgstr "Singapore"
 
+#: modules_v3/individual_ext_report/report.xml:347
+#: modules_v3/individual_report/report.xml:349
+msgid "Sister"
+msgstr "Anh (Em) Gái"
+
 #: admin_site_access.php:32 themes/_administration/header.php:97
 msgid "Site access rules"
 msgstr "Qui định truy cập site"
@@ -11766,13 +12431,28 @@ msgstr "Vài mục không thể thêm vào do hạn chế bởi tính riêng tư
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
 msgstr "Vài địa danh có thể viết ra cùng tiền hoặc hậu tố tùy chọn. Thí dụ \"Orange\" thay vì \"Orange County\". Nếu cây gia đình chứa tên địa điểm đầy đủ, nhưng cơ sở dữ liệu chứa tên ngắn của địa điểm đó, bạn phải nêu cụ thể các tiền và hậu tố được bỏ qua. Đa tùy chọn có thể tách bằng dấu chấm phẩy. Thí dụ \"County;County of\" hoặc \"Township;Twp;Twp.\"."
 
+#: modules_v3/family_group_report/report.xml:763
+#: modules_v3/individual_ext_report/report.xml:518
+#: modules_v3/individual_report/report.xml:520
+msgid "Son"
+msgstr "Con trai"
+
 #. I18N: e.g. “Son of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:325
 #, php-format
 msgid "Son of %s"
 msgstr "Con trai của %s"
 
-#: medialist.php:92 modules_v3/recent_changes/module.php:151
+#: medialist.php:92 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/recent_changes/module.php:151
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:148
 #: modules_v3/upcoming_events/module.php:160
 msgid "Sort order"
@@ -11793,7 +12473,12 @@ msgstr "Âm giống như"
 #. I18N: Name of a module/report
 #: includes/functions/functions_print_facts.php:467
 #: includes/functions/functions_print_facts.php:496 inverselink.php:134
-#: library/WT/Gedcom/Tag.php:320 modules_v3/fact_sources/module.php:35
+#: library/WT/Gedcom/Tag.php:320 modules_v3/bdm_report/report.xml:134
+#: modules_v3/bdm_report/report.xml:160 modules_v3/bdm_report/report.xml:194
+#: modules_v3/birth_report/report.xml:41 modules_v3/death_report/report.xml:52
+#: modules_v3/fact_sources/module.php:35 modules_v3/fact_sources/report.xml:4
+#: modules_v3/fact_sources/report.xml:41
+#: modules_v3/marriage_report/report.xml:52
 msgid "Source"
 msgstr "Nguồn"
 
@@ -11814,6 +12499,7 @@ msgid "Source contains:"
 msgstr "Nguồn chứa:"
 
 #: admin_trees_config.php:1255 help_text.php:781
+#: modules_v3/fact_sources/report.xml:7
 msgid "Source type"
 msgstr "Kiểu nguồn"
 
@@ -11823,14 +12509,23 @@ msgstr "Kiểu nguồn"
 #: includes/functions/functions_print_lists.php:1177
 #: includes/functions/functions_print_lists.php:1278
 #: library/WT/Controller/Search.php:595 library/WT/MenuBar.php:311
-#: mediaviewer.php:138 modules_v3/gedcom_stats/module.php:104
+#: mediaviewer.php:138 modules_v3/ahnentafel_report/report.xml:480
+#: modules_v3/descendancy_report/report.xml:612
+#: modules_v3/family_group_report/report.xml:1107
+#: modules_v3/gedcom_stats/module.php:104
 #: modules_v3/gedcom_stats/module.php:324 modules_v3/html/module.php:192
+#: modules_v3/individual_ext_report/report.xml:636
+#: modules_v3/individual_report/report.xml:636
 #: modules_v3/lightbox/functions/lightbox_print_media.php:369
 #: modules_v3/sources_tab/module.php:34 note.php:107 repo.php:94
 #: search.php:124 sourcelist.php:31 sourcelist.php:35 statistics.php:338
 #: statistics.php:375
 msgid "Sources"
 msgstr "Nguồn"
+
+#: modules_v3/missing_facts_report/report.xml:12
+msgid "Sources to the events"
+msgstr "Nguồn tài liệu của sự kiện"
 
 #: library/WT/Stats.php:4036
 msgid "South Africa"
@@ -11865,6 +12560,10 @@ msgstr "Tốc độ"
 msgid "Spokane, Washington"
 msgstr "Spokane, Washington"
 
+#: modules_v3/bdm_report/report.xml:167
+msgid "Spouse"
+msgstr "Chồng/vợ"
+
 #: library/WT/Gedcom/Tag.php:216
 msgid "Spouse census date"
 msgstr "Ngày tháng thống kê của bạn đời"
@@ -11880,6 +12579,12 @@ msgstr "Ghi chú về bạn đời"
 #: includes/functions/functions_print_lists.php:1363
 msgid "Spouses"
 msgstr "Bạn đời"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Spouses and children"
+msgstr "Các bạn đời và con cái"
 
 #: library/WT/Stats.php:3911
 msgid "Sri Lanka"
@@ -11918,6 +12623,10 @@ msgstr "Bắt Đầu ở Cha Mẹ"
 #: modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
 msgstr "Bắt đầu chạy ảnh chiếu khi tải trang?"
+
+#: modules_v3/change_report/report.xml:6
+msgid "Starting range of change dates"
+msgstr "Bắt đầu khoản thời gian thay đổi"
 
 #. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:323 modules_v3/googlemap/admin_places.php:176
@@ -12183,7 +12892,7 @@ msgid "Templates"
 msgstr "Kiểu trình bày"
 
 #. I18N: gedcom tag TEMP
-#: library/WT/Gedcom/Tag.php:329
+#: library/WT/Gedcom/Tag.php:329 modules_v3/individual_report/report.xml:205
 msgid "Temple"
 msgstr "Nhà thờ"
 
@@ -13441,6 +14150,10 @@ msgstr "Họ dùng nhiều nhất"
 msgid "Toronto, Ontario, Canada"
 msgstr "Toronto, Ontario, Canada"
 
+#: modules_v3/change_report/report.xml:125
+msgid "Total accepted changes: "
+msgstr "Tổng các thay đổi chấp thuận: "
+
 #: statistics.php:98
 msgid "Total births"
 msgstr "Tổng số sinh"
@@ -13459,11 +14172,15 @@ msgstr "Tổng các ly dị"
 
 #: modules_v3/gedcom_stats/module.php:113
 #: modules_v3/gedcom_stats/module.php:356 modules_v3/html/module.php:204
-#: statistics.php:351
+#: modules_v3/missing_facts_report/report.xml:599 statistics.php:351
 msgid "Total events"
 msgstr "Tổng số sự kiện"
 
-#: library/WT/Stats.php:3059
+#: library/WT/Stats.php:3059 modules_v3/fact_sources/report.xml:246
+#: modules_v3/fact_sources/report.xml:250
+#: modules_v3/fact_sources/report.xml:348
+#: modules_v3/fact_sources/report.xml:352
+#: modules_v3/marriage_report/report.xml:112
 msgid "Total families"
 msgstr "Tổng các gia đình"
 
@@ -13479,6 +14196,19 @@ msgstr "Tổng số nữ"
 #: statistics.php:178
 msgid "Total given names"
 msgstr "Tổng số tên"
+
+#: modules_v3/bdm_report/report.xml:208 modules_v3/birth_report/report.xml:65
+#: modules_v3/cemetery_report/report.xml:86
+#: modules_v3/death_report/report.xml:98
+#: modules_v3/fact_sources/report.xml:140
+#: modules_v3/fact_sources/report.xml:144
+#: modules_v3/fact_sources/report.xml:303
+#: modules_v3/fact_sources/report.xml:307
+#: modules_v3/missing_facts_report/report.xml:598
+#: modules_v3/occupation_report/report.xml:92
+#: modules_v3/relative_ext_report/report.xml:146
+msgid "Total individuals"
+msgstr "Tổng số người"
 
 #: calendar.php:438 find.php:507 modules_v3/GEDFact_assistant/module.php:162
 #: statistics.php:75
@@ -13501,6 +14231,10 @@ msgstr "Tổng các hôn nhân"
 #: admin.php:164
 msgid "Total number of users"
 msgstr "Tổng số người dùng"
+
+#: modules_v3/change_report/report.xml:85
+msgid "Total pending changes: "
+msgstr "Tổng các thay đổi chờ xem xét: "
 
 #. I18N: A count of places
 #: modules_v3/googlemap/module.php:1709
@@ -13696,7 +14430,11 @@ msgstr "Không biết"
 #: calendar.php:586 includes/functions/functions_edit.php:1461
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:286 library/WT/Stats.php:3325
-#: timeline.php:264
+#: modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592 timeline.php:264
 msgctxt "unknown gender"
 msgid "Unknown"
 msgstr "Không biết"
@@ -13825,6 +14563,11 @@ msgstr "Dùng &laquo;?&raquo; để đọ từng chữ, sử dụng &laquo;*&raq
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] "Dùng ít nhất %s ký tự."
+
+#: modules_v3/family_group_report/report.xml:14
+#: modules_v3/individual_ext_report/report.xml:15
+msgid "Use colors"
+msgstr "Dùng màu"
 
 #: modules_v3/tree/class_treeview.php:74
 msgid "Use compact layout"
@@ -14129,7 +14872,8 @@ msgid "Visitor"
 msgstr "Khách"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:35
+#: modules_v3/bdm_report/module.php:35 modules_v3/bdm_report/report.xml:4
+#: modules_v3/bdm_report/report.xml:32
 msgid "Vital records"
 msgstr "Hồ sơ chi tiết quan trọng"
 
@@ -14367,6 +15111,14 @@ msgstr "Bề ngang hình nhỏ tạo ra"
 
 #. I18N: gedcom tag WIFE
 #: edit_interface.php:541 library/WT/Gedcom/Tag.php:340
+#: modules_v3/family_group_report/report.xml:493
+#: modules_v3/family_group_report/report.xml:1067
+#: modules_v3/individual_ext_report/report.xml:197
+#: modules_v3/individual_ext_report/report.xml:211
+#: modules_v3/individual_ext_report/report.xml:477
+#: modules_v3/individual_report/report.xml:192
+#: modules_v3/individual_report/report.xml:213
+#: modules_v3/individual_report/report.xml:479
 msgid "Wife"
 msgstr "Vợ"
 
@@ -14862,6 +15614,13 @@ msgstr "còn được gọi là"
 #: library/WT/Controller/Ancestry.php:144 library/WT/Stats.php:2627
 #: library/WT/Stats.php:2652 library/WT/Stats.php:2663
 #: library/WT/Stats.php:2673 library/WT/Stats.php:3427 medialist.php:47
+#: modules_v3/ahnentafel_report/report.xml:400
+#: modules_v3/descendancy_report/report.xml:131
+#: modules_v3/descendancy_report/report.xml:229
+#: modules_v3/descendancy_report/report.xml:298
+#: modules_v3/descendancy_report/report.xml:362
+#: modules_v3/descendancy_report/report.xml:432
+#: modules_v3/descendancy_report/report.xml:485
 msgid "and"
 msgstr "và"
 
@@ -15150,6 +15909,10 @@ msgstr "thời kỳ. Lựa đơn vị cho thời kỳ trên trục z"
 msgid "daughter"
 msgstr "con gái"
 
+#: modules_v3/descendancy_report/report.xml:225
+msgid "daughter of"
+msgstr "con gái của"
+
 #: includes/functions/functions.php:1238
 msgctxt "child's wife"
 msgid "daughter-in-law"
@@ -15189,6 +15952,18 @@ msgstr "độ"
 #: admin_site_access.php:110 admin_site_access.php:301
 msgid "deny"
 msgstr "từ chối"
+
+#: modules_v3/descendancy_report/report.xml:137
+#: modules_v3/descendancy_report/report.xml:364
+msgctxt "FEMALE"
+msgid "died"
+msgstr "mất"
+
+#: modules_v3/descendancy_report/report.xml:134
+#: modules_v3/descendancy_report/report.xml:434
+msgctxt "MALE"
+msgid "died"
+msgstr "mất"
 
 #: modules_v3/googlemap/module.php:312 modules_v3/googlemap/module.php:321
 #: modules_v3/googlemap/module.php:330 modules_v3/googlemap/module.php:338
@@ -15284,7 +16059,7 @@ msgctxt "Abbreviation for fax number"
 msgid "f."
 msgstr "f."
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "facts"
 msgstr "sự kiện"
 
@@ -17300,6 +18075,16 @@ msgstr "nhủ danh"
 msgid "marriage"
 msgstr "kết hôn"
 
+#: modules_v3/descendancy_report/report.xml:244
+msgctxt "FEMALE"
+msgid "married"
+msgstr "đã kết hôn"
+
+#: modules_v3/descendancy_report/report.xml:175
+msgctxt "MALE"
+msgid "married"
+msgstr "đã có gia đình"
+
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:116
 msgid "married name"
@@ -17497,7 +18282,13 @@ msgstr "anh em họ 9 đời"
 #: includes/functions/functions_print_facts.php:1228
 #: includes/functions/functions_print_lists.php:795 library/WT/Stats.php:3519
 #: modules_v3/batch_update/admin_batch_update.php:339
-#: modules_v3/charts/module.php:215
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:215
+#: modules_v3/family_group_report/report.xml:250
+#: modules_v3/family_group_report/report.xml:421
+#: modules_v3/family_group_report/report.xml:601
+#: modules_v3/family_group_report/report.xml:942
+#: modules_v3/individual_ext_report/report.xml:180
+#: modules_v3/individual_report/report.xml:175
 msgid "no"
 msgstr "không"
 
@@ -17526,7 +18317,19 @@ msgstr "bắc"
 msgid "numbers"
 msgstr "số"
 
-#: statisticsplot.php:816 statisticsplot.php:818 statisticsplot.php:820
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42 statisticsplot.php:816
+#: statisticsplot.php:818 statisticsplot.php:820
 msgid "of"
 msgstr "của"
 
@@ -17631,7 +18434,7 @@ msgstr "quý sau hôn nhân"
 msgid "questionable evidence"
 msgstr "chứng cứ đáng ngờ"
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "records"
 msgstr "bản ghi"
 
@@ -17997,6 +18800,10 @@ msgstr "anh em họ 6 đời"
 msgid "son"
 msgstr "con trai"
 
+#: modules_v3/descendancy_report/report.xml:294
+msgid "son of"
+msgstr "con trai của"
+
 #: includes/functions/functions.php:1235
 msgctxt "child's husband"
 msgid "son-in-law"
@@ -18028,23 +18835,32 @@ msgid "son/daughter-in-law"
 msgstr "con rể/ con dâu"
 
 #. I18N: An option in a list-box
+#: modules_v3/change_report/report.xml:8
 #: modules_v3/todays_events/module.php:152
 #: modules_v3/upcoming_events/module.php:164
 msgid "sort by date"
 msgstr "xếp theo ngày"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2044 reportengine.php:513
+#: edit_interface.php:2044 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10 modules_v3/change_report/report.xml:8
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:513
 msgid "sort by date of birth"
 msgstr "sắp xếp theo ngày sinh"
 
 #. I18N: An option in a list-box
-#: reportengine.php:515
+#: modules_v3/bdm_report/report.xml:12 modules_v3/cemetery_report/report.xml:7
+#: modules_v3/death_report/report.xml:10
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:515
 msgid "sort by date of death"
 msgstr "sắp xếp theo ngày mất"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2420 reportengine.php:514
+#: edit_interface.php:2420 modules_v3/marriage_report/report.xml:10
+#: reportengine.php:514
 msgid "sort by date of marriage"
 msgstr "sắp xếp theo ngày kết hôn"
 
@@ -18064,7 +18880,15 @@ msgid "sort by filename"
 msgstr "sắp xếp bằng tên file"
 
 #. I18N: An option in a list-box
+#: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
 #: modules_v3/recent_changes/module.php:154
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:151
 #: modules_v3/upcoming_events/module.php:163
 msgid "sort by name"
@@ -18467,6 +19291,18 @@ msgstr "người lạ"
 msgid "unreliable evidence"
 msgstr "chứng cứ không tin cậy"
 
+#: modules_v3/ahnentafel_report/report.xml:139
+#: modules_v3/descendancy_report/report.xml:105
+msgctxt "FEMALE"
+msgid "was born"
+msgstr "sinh"
+
+#: modules_v3/ahnentafel_report/report.xml:138
+#: modules_v3/descendancy_report/report.xml:102
+msgctxt "MALE"
+msgid "was born"
+msgstr "sinh"
+
 #: modules_v3/review_changes/module.php:86
 msgid "webtrees - Review changes"
 msgstr "webtrees- Xem xét các thay đổi"
@@ -18520,7 +19356,14 @@ msgstr "năm"
 #: includes/functions/functions_print_lists.php:353
 #: includes/functions/functions_print_lists.php:793 library/WT/Stats.php:3518
 #: modules_v3/batch_update/admin_batch_update.php:340
-#: modules_v3/charts/module.php:216 modules_v3/relatives/module.php:206
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:216
+#: modules_v3/family_group_report/report.xml:247
+#: modules_v3/family_group_report/report.xml:418
+#: modules_v3/family_group_report/report.xml:598
+#: modules_v3/family_group_report/report.xml:939
+#: modules_v3/individual_ext_report/report.xml:177
+#: modules_v3/individual_report/report.xml:172
+#: modules_v3/relatives/module.php:206
 msgid "yes"
 msgstr "có"
 
@@ -18542,7 +19385,7 @@ msgid "younger sister"
 msgstr "em gái"
 
 #. I18N: Place a nickname in quotation marks
-#: library/WT/Person.php:1791
+#: library/WT/Person.php:1795
 #, php-format
 msgid "“%s”"
 msgstr "“%s”"
@@ -18566,12 +19409,6 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid " but the details are unknown"
-#~ msgstr " nhưng chi tiết không được biết"
-
-#~ msgid " in "
-#~ msgstr " tại "
 
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%1$s’s %2$s"
@@ -18688,19 +19525,8 @@ msgstr "…"
 #~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "Máy chủ CSDL có thể lưu trữ nhiề CSDL riêng biệt. Bạn cần chọn một CSDL đang có (tạo ra bởi người quản trị của máy chủ), hay tạo ra một CSDL mới (nếu tài khoản người dùng CSDL có đủ quyền này)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "Một báo cáo về sự kiện hỗ trợ bởi một nguồn."
-
 #~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 #~ msgstr "Môt người dùng không thể nào đăng nhập cho tới khi tùy chọn xác minh bằng email và chấp thuận của quản trị được chọn."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "khổ A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "khổ A4"
 
 #~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
 #~ msgstr "ALPHABET_lower=aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz"
@@ -18786,18 +19612,11 @@ msgstr "…"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Có lỗi về CSDL bât ngờ xảy ra."
 
-#~ msgid "Ancestors of "
-#~ msgstr "Tổ tiên của "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "File tổ tiên số"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "Bạn có chắc muốn khôi phục mọi thay đổi cho file GEDCOM này không?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Phông chữ arial"
 
 #~ msgid "Available blocks"
 #~ msgstr "Khối Sẵn Có"
@@ -18811,9 +19630,6 @@ msgstr "…"
 #~ msgid "Binary data object"
 #~ msgstr "Đối tượng nhị phân"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "Nơi sinh chứa"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Chi tiết sinh và mất trên biểu đồ"
 
@@ -18823,9 +19639,6 @@ msgstr "…"
 #~ msgid "Birth date range start"
 #~ msgstr "Sinh khoảng thời gian từ"
 
-#~ msgid "Brother"
-#~ msgstr "Anh (Em) Trai"
-
 #~ msgid "Burial place contains"
 #~ msgstr "Nơi chôn chứa"
 
@@ -18834,15 +19647,6 @@ msgstr "…"
 
 #~ msgid "Change family members"
 #~ msgstr "Thay đổi thành viên gia đình"
-
-#~ msgid "Child of "
-#~ msgstr "Con trai của "
-
-#~ msgid "Children of "
-#~ msgstr "Là các con của "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Chọn bà con"
 
 #~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
 #~ msgstr "Chọn hình nhỏ cần tải lên. Mặc dù hình nhỏ này có thể được tạo ra tự động, nhưng có khi bạn lại muốn tự mình tạo ra, đặc biệc cho loại file nghe nhìn khác. Thí dụ, bạn có thể tạo ra ảnh bất động cho phim, hay hình người đã làm ra phim đó."
@@ -18951,12 +19755,6 @@ msgstr "…"
 #~ msgid "Date of residence"
 #~ msgstr "Ngày cư trú"
 
-#~ msgid "Daughter"
-#~ msgstr "Con gái"
-
-#~ msgid "Death Place contains"
-#~ msgstr "Nơi mất chứa"
-
 #~ msgid "Death date range end"
 #~ msgstr "Mất khoảng thời gian kết thúc"
 
@@ -18965,13 +19763,6 @@ msgstr "…"
 
 #~ msgid "Default theme"
 #~ msgstr "Kiểu trình bày mặc định"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "Phông chữ DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "Con cháu của "
 
 #~ msgid "Descent steps"
 #~ msgstr "Bước giảm dần"
@@ -18991,15 +19782,6 @@ msgstr "…"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Dhu al-Qi'dah"
-
-#~ msgid "Differences"
-#~ msgstr "Các dị biệt"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Tổ tiên trực tiếp"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Tổ tiên trực tiếp và gia đình họ"
 
 #~ msgid "Display %s"
 #~ msgstr "Hiển thị %s"
@@ -19036,15 +19818,6 @@ msgstr "…"
 
 #~ msgid "End year"
 #~ msgstr "Năm kết thúc"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Chấm dứt khoảni thời gian thay đổi"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Nhập ID gia đình"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Nhập số ID cá nhân"
 
 #~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
 #~ msgstr "Nhập tiêu đề của mục bạn đang sửa. Nếu đây là 1 tiêu đề của file đa phương tiện, nhập mô tả tiêu đề nhằm giúp người dùng nhận biết được nó."
@@ -19112,20 +19885,11 @@ msgstr "…"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Giỏ Lấy Dữ Liệu Dòng Họ"
 
-#~ msgid "Family with husband"
-#~ msgstr "Gia đình và chồng"
-
-#~ msgid "Family with wife"
-#~ msgstr "Gia đình có vợ"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Nơi sinh của cha - (theo mẫu Chapman)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Tuổi cha"
-
-#~ msgid "Font"
-#~ msgstr "Phông"
 
 #~ msgid "For LDS ordinances, this field records the temple where it was performed."
 #~ msgstr "Đối với lễ LDS, trường này ghi lại nhà thờ nơi làm lễ."
@@ -19154,38 +19918,11 @@ msgstr "…"
 #~ msgid "Gedcom"
 #~ msgstr "GEDCOM"
 
-#~ msgid "Generation "
-#~ msgstr "Thế hệ "
-
 #~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
 #~ msgstr "Cho người dùng tùy chọn chọn kiểu trình bày trang riêng từ một menu.<br><br>Ngay cả khi việc này được thiết đặt, kiểu trình bày hiện sẽ không có một menu như thế. Để có hiệu lực, tùy chọn này cần phải đặt mục <b>Cho phép người dùng được quyền chọn kiểu riêng</b> được đặt nữa."
 
 #~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
 #~ msgstr "Cho khách thăm tùy chọn đăng ký tài khoản tại site.<br><br>Khách sẽ nhận được một email cùng mã để xác minh việc xin cấp tài khoản. Sau khi thẩm tra, quản trị viên có thể chấp thuận đăng ký trước khi tài khoản được kích hoạt."
-
-#~ msgid "He "
-#~ msgstr "Ông "
-
-#~ msgid "He died"
-#~ msgstr "Ông mất"
-
-#~ msgid "He married"
-#~ msgstr "Ông kết hôn"
-
-#~ msgid "He resided at"
-#~ msgstr "Ông sống tại"
-
-#~ msgid "He was born"
-#~ msgstr "Ông sinh năm"
-
-#~ msgid "He was buried"
-#~ msgstr "Ông được chôn cất"
-
-#~ msgid "He was christened"
-#~ msgstr "Ông được rửa tội"
-
-#~ msgid "He was cremated"
-#~ msgstr "Ông được hỏa táng"
 
 #~ msgid "Hello %s…"
 #~ msgstr "Chào %s …"
@@ -19195,13 +19932,6 @@ msgstr "…"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Xin chào quản trị…"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Phông chữ Helvetica"
-
-#~ msgid "Her occupation was"
-#~ msgstr "Nghề nghiệp của bà là"
 
 #~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
 #~ msgstr "Tại đây bạn có thể thêm sự kiện vào bản ghi đang sửa.<br><br>Trước tiên chọn một sự kiện từ danh sách sổ xuống, rồi nhấp vào nút <b>Thêm</b>. Mọi sự kiện có thể thêm vào CSDL trong danh sách sổ xuống đó."
@@ -19217,9 +19947,6 @@ msgstr "…"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "Che &amp; hiện"
-
-#~ msgid "His occupation was"
-#~ msgstr "Nghề của ông là"
 
 #~ msgid "Hit count:"
 #~ msgstr "Tổng số viếng thăm:"
@@ -19299,14 +20026,6 @@ msgstr "…"
 #~ msgid "LDS temple"
 #~ msgstr "Đền LDS"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Khổ giấy legal"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "Khổ giấy thư tín (letter)"
-
 #~ msgid "Link ID"
 #~ msgstr "ID liên kết"
 
@@ -19336,15 +20055,6 @@ msgstr "…"
 
 #~ msgid "Main section blocks"
 #~ msgstr "Phần Khối Chính"
-
-#~ msgid "Marriage Date range end"
-#~ msgstr "Ngày kết hôn kết thúc"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Ngày kết hôn bắt đầu từ"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "Địa điểm kết hôn chứa"
 
 #~ msgid "Marriage intention"
 #~ msgstr "Ý định kết hôn"
@@ -19378,9 +20088,6 @@ msgstr "…"
 
 #~ msgid "Move right"
 #~ msgstr "Chuyển phải"
-
-#~ msgid "Name List"
-#~ msgstr "Danh sách tên"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -19426,9 +20133,6 @@ msgstr "…"
 #~ msgid "Online editing"
 #~ msgstr "Sửa trực tuyến"
 
-#~ msgid "Orientation"
-#~ msgstr "Phương Hướng"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Thư mục khác… xin nhập vào"
 
@@ -19444,20 +20148,8 @@ msgstr "…"
 #~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
 #~ msgstr "Thiết đặt \"%1$s\" PHP không được kích hoạt. Và khi không kích hoạt các tính năng sau đây không hoạt động: %2$s. Vui lòng yêu cầu quản trị máy phục vụ kích hoạt nó."
 
-#~ msgid "Page"
-#~ msgstr "Trang"
-
-#~ msgid "Page size"
-#~ msgstr "Khổ trang"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Cha mẹ và anh em"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Tuổi cha mẹ"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Đồ Thị Dòng Giống"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "Nơi rửa tội LDS"
@@ -19506,9 +20198,6 @@ msgstr "…"
 
 #~ msgid "President’s Office"
 #~ msgstr "President's Office"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "In các sự kiện chính khi khộng có gì?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -19638,30 +20327,6 @@ msgstr "…"
 #~ msgid "Sha’aban"
 #~ msgstr "Sha'aban"
 
-#~ msgid "She "
-#~ msgstr "Bà "
-
-#~ msgid "She died"
-#~ msgstr "Bà mất"
-
-#~ msgid "She married"
-#~ msgstr "Bà kết hôn"
-
-#~ msgid "She resided at"
-#~ msgstr "Bà sống tại"
-
-#~ msgid "She was born"
-#~ msgstr "Bà sinh năm"
-
-#~ msgid "She was buried"
-#~ msgstr "Bà được chôn"
-
-#~ msgid "She was christened"
-#~ msgstr "Bà được rửa tội"
-
-#~ msgid "She was cremated"
-#~ msgstr "Bà được hỏa táng"
-
 #~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
 #~ msgstr "CSDL GeoNames có được dùng để cung cấp các khuyến nghị cho tên không?<br><br>Khi tùy chọn này đặt là <b>Có</b>, thì CSDL Geonames sẽ được truy vấn để cung cấp các đề nghị tên địa điểm nhập vào. Khi đặt ở <b>Không</b> chỉ CSDL gia phả hiện dùng được tìm. Khi bạn nhập vào nhiều tên địa điểm, thì đề nghị càng cụ thể hơn. Tùy chọn này có thể làm chậm nhập dữ liệu, đặc biệt khi kết nối internet của bạn chậm.<br><br>CSDL GeoNames có thể truy cập miễn phí. Hiện có khoảng 8,000,000 tên địa lý."
 
@@ -19673,9 +20338,6 @@ msgstr "…"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "Xem tấtcCả những Nơi trong một Danh Sách"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Hiện con cháu của tổ tiên?"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "Hiện người đã mất"
@@ -19707,12 +20369,6 @@ msgstr "…"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Hiện những người chết trong 100 năm."
 
-#~ msgid "Show notes?"
-#~ msgstr "Hiện các chú thích?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Hiẹn các nghề nghiệp?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Chỉ hiện sự kiện của người sống?"
 
@@ -19722,23 +20378,11 @@ msgstr "…"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Chỉ hiển thị người, sự kiện hay tất cả?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Hiện các thay đổi chờ duyệt"
-
-#~ msgid "Show photos?"
-#~ msgstr "Hiển thị hình?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Hiển thị địa điểm theo thứ cấp"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Hiển thị các người/ gia đình liên quan"
-
-#~ msgid "Show residences?"
-#~ msgstr "Hiện nơi cư trú?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Hiện các nguồn tư liệu?"
 
 #~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
 #~ msgstr "Hiện các cặp vợ chồng hay cá nhân \"vô sinh\" . Họ là người còn sống nhưng không có con ghi trong CSDL."
@@ -19749,32 +20393,14 @@ msgstr "…"
 #~ msgid "Showing %1$s to %2$s of %3$s"
 #~ msgstr "Hiển thị %1$s đến %2$s of %3$s"
 
-#~ msgid "Sister"
-#~ msgstr "Anh (Em) Gái"
-
 #~ msgid "Social security number"
 #~ msgstr "Số ASXH"
-
-#~ msgid "Son"
-#~ msgstr "Con trai"
 
 #~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
 #~ msgstr "Trích dẫn nguồn có thể gồm có trường cho bản ghi để ghi chất lượng dữ kiện (chủ yếu, thứ yếu v.v..) và ngày tháng sự kiện được ghi nhận ở nguồn. Nếu bạn không dùng trường này, bạn có thể không kích hoạt nó khi tạo ra trích dẫn nguồn mới."
 
-#~ msgid "Sources to the events"
-#~ msgstr "Nguồn tài liệu của sự kiện"
-
 #~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
 #~ msgstr "Nêu cụ thể là email sẽ gửi qua <b>webtrees</b> có chứa lại trong CSDL không. Nếu đặt là <b>Có</b> người dùng sẽ có thể nhận được email của họ khi họ đăng nhập <b>webtrees</b>. Nếu đặt là <b>Không</b> thì email sẽ không được gửi đi."
-
-#~ msgid "Spouse"
-#~ msgstr "Chồng/vợ"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Các bạn đời và con cái"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Bắt đầu khoản thời gian thay đổi"
 
 #~ msgid "Surname option"
 #~ msgstr "Tủy chọn về họ"
@@ -19947,15 +20573,6 @@ msgstr "…"
 #~ msgid "To source"
 #~ msgstr "Với Nguồn"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Tổng các thay đổi chấp thuận: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Tổng số người"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Tổng các thay đổi chờ xem xét: "
-
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
 #~ msgstr "Transport Layer Security (TLS) và Secure Sockets Layer (SSL) là giao thức mã hóa dữ liệu Internet.<br><br> TLS 1.0, 1.1 và 1.2 là các phát triển tiêu chuẩn của SSL 3.0. TLS 1.0 và SSL 3.1 là tương đương của nó. Các công việc nghiên cứu thêm cho SSL hiện đang được thực hiện với tên mới, TLS.<br><br> Nếu máy chủ SMTP của bạn yêu cầu giao thức SSL khi đăng nhập, bạn nên chọn tùy chọn <b> SSL </b>. Nếu máy chủ SMTP của bạn yêu cầu giao thức TLS khi đăng nhập, bạn nên chọn tùy chọn <b> TLS </b>."
 
@@ -19967,9 +20584,6 @@ msgstr "…"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Dùng SMTP để gửi mail ra ngoài"
-
-#~ msgid "Use colors"
-#~ msgstr "Dùng màu"
 
 #~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
 #~ msgstr "Thẩm tra tên người dùng và mật khẩu để truy cập vào máy SMTP.<br><br> Vài máy chủ SMTP yêu cầu mọi kết nối phải qua thẩm tra trước khi chấp nhận gửi thư đi."
@@ -20124,9 +20738,6 @@ msgstr "…"
 #~ msgid "before %d"
 #~ msgstr "trước %d"
 
-#~ msgid "daughter of"
-#~ msgstr "con gái của"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "cha con dâu"
@@ -20138,14 +20749,6 @@ msgstr "…"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "cha mẹ con dâu"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "mất"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "mất"
 
 #~ msgid "first"
 #~ msgstr "thứ nhất"
@@ -20180,17 +20783,6 @@ msgstr "…"
 #~ msgid "last"
 #~ msgstr "cuối cùng"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "đã kết hôn"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "đã có gia đình"
-
-#~ msgid "son of"
-#~ msgstr "con trai của"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "cha ruột của rể"
@@ -20205,14 +20797,6 @@ msgstr "…"
 
 #~ msgid "utf8_unicode_ci"
 #~ msgstr "utf8_turkish_ci"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "sinh"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "sinh"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "CSDL webtrees phải có trên cùng máy chủ như của PGV"

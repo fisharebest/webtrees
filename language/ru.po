@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-09 17:47+0000\n"
+"POT-Creation-Date: 2013-11-24 22:39+0000\n"
 "PO-Revision-Date: 2013-08-04 16:55+0000\n"
 "Last-Translator: Roman Koshkin <mar2008m@rambler.ru>\n"
 "Language-Team: \n"
@@ -20,6 +20,32 @@ msgstr ""
 "X-Source-Language: C\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+
+#: modules_v3/ahnentafel_report/report.xml:158
+#: modules_v3/ahnentafel_report/report.xml:186
+#: modules_v3/ahnentafel_report/report.xml:281
+#: modules_v3/ahnentafel_report/report.xml:309
+#: modules_v3/ahnentafel_report/report.xml:334
+#: modules_v3/ahnentafel_report/report.xml:365
+msgid " but the details are unknown"
+msgstr " но подробности неизвестны"
+
+#: modules_v3/ahnentafel_report/report.xml:157
+#: modules_v3/ahnentafel_report/report.xml:185
+#: modules_v3/ahnentafel_report/report.xml:212
+#: modules_v3/ahnentafel_report/report.xml:280
+#: modules_v3/ahnentafel_report/report.xml:308
+#: modules_v3/ahnentafel_report/report.xml:333
+#: modules_v3/ahnentafel_report/report.xml:364
+#: modules_v3/descendancy_report/report.xml:125
+#: modules_v3/descendancy_report/report.xml:157
+#: modules_v3/descendancy_report/report.xml:314
+#: modules_v3/descendancy_report/report.xml:352
+#: modules_v3/descendancy_report/report.xml:383
+#: modules_v3/descendancy_report/report.xml:422
+#: modules_v3/descendancy_report/report.xml:453
+msgid " in "
+msgstr " в "
 
 #: statisticsplot.php:804
 msgid " per gender"
@@ -649,66 +675,81 @@ msgstr "Новый пользователь зарегистрировался �
 
 #. I18N: Description of the “Pedigree” module
 #: modules_v3/pedigree_report/module.php:41
+#: modules_v3/pedigree_report/report.xml:5
 msgid "A report of an individual’s ancestors, formatted as a tree."
 msgstr "Отчет о предках персоны в формате древа."
 
 #. I18N: Description of the “Ancestors” module
 #: modules_v3/ahnentafel_report/module.php:41
+#: modules_v3/ahnentafel_report/report.xml:6
 msgid "A report of an individual’s ancestors, in a narrative style."
 msgstr "Отчет о предках человека, в повествовательном стиле."
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy_report/module.php:41
+#: modules_v3/descendancy_report/report.xml:5
 msgid "A report of an individual’s descendants, in a narrative style."
 msgstr "Отчёт о потомках персоны в стиле рассказа."
 
 #. I18N: Description of the “Individual” module
 #: modules_v3/individual_report/module.php:41
+#: modules_v3/individual_report/report.xml:5
 msgid "A report of an individual’s details."
 msgstr "Отчет о личных данных персоны."
 
+#: modules_v3/fact_sources/report.xml:5
+msgid "A report of facts which are supported by a given source."
+msgstr "Список фактов, приведённых в источнике."
+
 #. I18N: Description of the “Family” module
 #: modules_v3/family_group_report/module.php:41
+#: modules_v3/family_group_report/report.xml:5
 msgid "A report of family members and their details."
 msgstr "Подробный отчет о членах семьи"
 
 #. I18N: Description of the “Deaths” module
-#: modules_v3/death_report/module.php:41
+#: modules_v3/death_report/module.php:41 modules_v3/death_report/report.xml:5
 msgid "A report of individuals who died in a given time or place."
 msgstr "Отчет о людях, которые умерли в заданное время или месте."
 
 #. I18N: Description of the “Occupations” module
 #: modules_v3/occupation_report/module.php:41
+#: modules_v3/occupation_report/report.xml:5
 msgid "A report of individuals who had a given occupation."
 msgstr "Отчет по персонам с данной профессией."
 
 #. I18N: Description of the “Births” module
-#: modules_v3/birth_report/module.php:41
+#: modules_v3/birth_report/module.php:41 modules_v3/birth_report/report.xml:5
 msgid "A report of individuals who were born in a given time or place."
 msgstr "Отчет о людях рожденные в заданном времени или месте."
 
 #. I18N: Description of the “Cemeteries” module
 #: modules_v3/cemetery_report/module.php:41
+#: modules_v3/cemetery_report/report.xml:5
 msgid "A report of individuals who were buried in a given place."
 msgstr "Отчет о людях захороненные в заданном месте."
 
 #. I18N: Description of the “Marriages” module
 #: modules_v3/marriage_report/module.php:41
+#: modules_v3/marriage_report/report.xml:5
 msgid "A report of individuals who were married in a given time or place."
 msgstr "Отчет о людях заключившие брак в заданное время или месте."
 
 #. I18N: Description of the “Changes” module
 #: modules_v3/change_report/module.php:41
+#: modules_v3/change_report/report.xml:5
 msgid "A report of recent and pending changes."
 msgstr "Отчёт последних и ожидающих изменений"
 
 #. I18N: Description of the “Related families”
 #: modules_v3/individual_ext_report/module.php:41
+#: modules_v3/individual_ext_report/report.xml:5
 msgid "A report of the families that are closely related to an individual."
 msgstr "Отчет о семьях близких родственников персоны."
 
 #. I18N: Description of the “Related individuals” module
 #: modules_v3/relative_ext_report/module.php:41
+#: modules_v3/relative_ext_report/report.xml:5
 msgid "A report of the individuals that are closely related to an individual."
 msgstr "Отчет и близких родственниках персоны."
 
@@ -719,11 +760,12 @@ msgstr "Доклад по информации, предоставленной �
 
 #. I18N: Description of the “Missing data”
 #: modules_v3/missing_facts_report/module.php:41
+#: modules_v3/missing_facts_report/report.xml:5
 msgid "A report of the information that is missing for an individual and their relatives."
 msgstr "Отчет о отсутствующей информации о человеке и родственников."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:41
+#: modules_v3/bdm_report/module.php:41 modules_v3/bdm_report/report.xml:5
 msgid "A report of vital records for a given date or place."
 msgstr "Отчёт записей актов гражданского состояния(ЗАГС) на указанную дату или место."
 
@@ -793,6 +835,44 @@ msgstr "Водяной знак представляет собой текст, 
 #: includes/functions/functions_date.php:115
 msgid "A.M."
 msgstr "Д. П."
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A3"
+msgstr "А3"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A4"
+msgstr "А4"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1579,11 +1659,19 @@ msgstr "Живые"
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
 #: indilist.php:167 indilist.php:251 indilist.php:253
-#: library/WT/Stats.php:3325 modules_v3/faq/module.php:186
+#: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
 #: modules_v3/googlemap/admin_places.php:756
 #: modules_v3/googlemap/module.php:1481 modules_v3/googlemap/module.php:1497
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:8
 #: modules_v3/random_media/module.php:264
+#: modules_v3/relative_ext_report/report.xml:7
 #: modules_v3/user_messages/module.php:91
 msgid "All"
 msgstr "Все"
@@ -1709,6 +1797,7 @@ msgstr "Возникла неожиданная ошибка в базе дан�
 #: library/WT/Controller/Ancestry.php:83
 #: library/WT/Controller/Fanchart.php:314 library/WT/MenuBar.php:106
 #: modules_v3/ahnentafel_report/module.php:35
+#: modules_v3/ahnentafel_report/report.xml:5
 msgid "Ancestors"
 msgstr "Предки"
 
@@ -1716,6 +1805,10 @@ msgstr "Предки"
 #: library/WT/Gedcom/Tag.php:124
 msgid "Ancestors interest"
 msgstr "Интерес к предкам"
+
+#: modules_v3/ahnentafel_report/report.xml:53
+msgid "Ancestors of "
+msgstr "Предки "
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Ancestry.php:80
@@ -1895,6 +1988,25 @@ msgstr "Вы уверены, что хотите отменить все изм�
 #: library/WT/Stats.php:3784
 msgid "Argentina"
 msgstr "Аргентина"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Arial"
+msgstr "Ариал"
 
 #: library/WT/Stats.php:3785
 msgid "Armenia"
@@ -2344,7 +2456,32 @@ msgid "Birmingham, Alabama"
 msgstr "Бирмингем, Алабама"
 
 #. I18N: gedcom tag BIRT
-#: library/WT/Gedcom/Tag.php:140
+#: library/WT/Gedcom/Tag.php:140 modules_v3/bdm_report/report.xml:56
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:177
+#: modules_v3/family_group_report/report.xml:528
+#: modules_v3/family_group_report/report.xml:869
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:54
 msgid "Birth"
 msgstr "Рождение"
 
@@ -2362,6 +2499,18 @@ msgstr "Рождение"
 msgctxt "Pedigree"
 msgid "Birth"
 msgstr "Рождение"
+
+#: modules_v3/bdm_report/report.xml:9 modules_v3/birth_report/report.xml:9
+msgid "Birth Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
+msgid "Birth Date range start"
+msgstr ""
+
+#: modules_v3/birth_report/report.xml:7
+msgid "Birth Place contains"
+msgstr "Место рождения содержит"
 
 #: library/WT/Stats.php:1014 statistics.php:553
 msgid "Birth by country"
@@ -2445,7 +2594,8 @@ msgid "Birth:"
 msgstr "Рождение:"
 
 #. I18N: Name of a module/report
-#: modules_v3/birth_report/module.php:35
+#: modules_v3/birth_report/module.php:35 modules_v3/birth_report/report.xml:4
+#: modules_v3/birth_report/report.xml:29
 msgid "Births"
 msgstr "Рождения"
 
@@ -2610,6 +2760,11 @@ msgstr "Британские Виргинские острова"
 msgid "British West Indies"
 msgstr "Британская Вест-Индия"
 
+#: modules_v3/individual_ext_report/report.xml:311
+#: modules_v3/individual_report/report.xml:313
+msgid "Brother"
+msgstr "Брат"
+
 #: library/WT/Date/French.php:71
 msgctxt "GENITIVE"
 msgid "Brumaire"
@@ -2643,9 +2798,15 @@ msgid "Bulgaria"
 msgstr "Болгария"
 
 #. I18N: gedcom tag BURI
-#: library/WT/Gedcom/Tag.php:147
+#: library/WT/Gedcom/Tag.php:147 modules_v3/family_group_report/report.xml:346
+#: modules_v3/family_group_report/report.xml:697
+#: modules_v3/family_group_report/report.xml:1038
 msgid "Burial"
 msgstr "Похороны"
+
+#: modules_v3/cemetery_report/report.xml:6
+msgid "Burial Place contains"
+msgstr ""
 
 #: library/WT/Gedcom/Tag.php:531
 msgid "Burial of a brother"
@@ -2919,11 +3080,13 @@ msgstr "Каймановы острова"
 
 #. I18N: Name of a module/report
 #: modules_v3/cemetery_report/module.php:35
+#: modules_v3/cemetery_report/report.xml:4
+#: modules_v3/cemetery_report/report.xml:33
 msgid "Cemeteries"
 msgstr "Кладбище"
 
 #. I18N: gedcom tag CEME
-#: library/WT/Gedcom/Tag.php:153
+#: library/WT/Gedcom/Tag.php:153 modules_v3/cemetery_report/report.xml:52
 msgid "Cemetery"
 msgstr "Кладбище"
 
@@ -3001,6 +3164,8 @@ msgstr "Изменено %1$s  %2$s"
 
 #. I18N: Name of a module/report
 #: admin_site_change.php:29 modules_v3/change_report/module.php:35
+#: modules_v3/change_report/report.xml:4
+#: modules_v3/change_report/report.xml:42
 msgid "Changes"
 msgstr "Изменения"
 
@@ -3074,6 +3239,11 @@ msgstr "Чикаго, Иллинойс"
 msgid "Child"
 msgstr "Ребёнок"
 
+#: modules_v3/ahnentafel_report/report.xml:394
+#: modules_v3/descendancy_report/report.xml:479
+msgid "Child of "
+msgstr "Ребёнок от "
+
 #. I18N: e.g. “Child of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:331
 #, php-format
@@ -3081,13 +3251,20 @@ msgid "Child of %s"
 msgstr "Ребёнок от %s"
 
 #: includes/functions/functions_print_lists.php:215
-#: includes/functions/functions_print_lists.php:637 statisticsplot.php:784
+#: includes/functions/functions_print_lists.php:637
+#: modules_v3/family_group_report/report.xml:753
+#: modules_v3/relative_ext_report/report.xml:121 statisticsplot.php:784
 msgid "Children"
 msgstr "Дети"
 
 #: statistics.php:288
 msgid "Children in family"
 msgstr "Детей в семье"
+
+#: modules_v3/ahnentafel_report/report.xml:397
+#: modules_v3/descendancy_report/report.xml:482
+msgid "Children of "
+msgstr "Дети от "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: help_text.php:962
@@ -3126,6 +3303,12 @@ msgstr "Китай"
 msgid "Choose a report to run"
 msgstr "Выберите отчёт для запуска"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Choose relatives"
+msgstr "Выберите родственников"
+
 #: help_text.php:355
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
 msgstr "Выберете подходящий пол в выпадающем меню.  <b>нет данных</b> означает, что пол неизвестен."
@@ -3147,7 +3330,9 @@ msgid "Choose: "
 msgstr "Выберите: "
 
 #. I18N: gedcom tag CHR
-#: library/WT/Gedcom/Tag.php:162
+#: library/WT/Gedcom/Tag.php:162 modules_v3/family_group_report/report.xml:201
+#: modules_v3/family_group_report/report.xml:552
+#: modules_v3/family_group_report/report.xml:893
 msgid "Christening"
 msgstr "Крещение"
 
@@ -3263,7 +3448,7 @@ msgctxt "MALE"
 msgid "Civil Registrar"
 msgstr "Регистратор актов гражданского состояния"
 
-#: library/WT/Gedcom/Tag.php:255
+#: library/WT/Gedcom/Tag.php:255 modules_v3/fact_sources/report.xml:200
 msgid "Civil marriage"
 msgstr "Зарегистрированный брак"
 
@@ -3853,7 +4038,10 @@ msgstr "Пользователь базы данных"
 
 #. I18N: gedcom tag DATE
 #: edit_changes.php:173 help_text.php:177 help_text.php:207
-#: library/WT/Gedcom/Tag.php:183
+#: library/WT/Gedcom/Tag.php:183 modules_v3/bdm_report/report.xml:130
+#: modules_v3/bdm_report/report.xml:156 modules_v3/bdm_report/report.xml:190
+#: modules_v3/birth_report/report.xml:38 modules_v3/death_report/report.xml:44
+#: modules_v3/marriage_report/report.xml:44
 msgid "Date"
 msgstr "Дата"
 
@@ -4016,6 +4204,12 @@ msgstr "Даты будут конвертироваться только в т�
 msgid "Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords."
 msgstr "Даты сохраняются используя английские сокращения и ключевые слова. Сочетания клавиш могут быть использованы вместо сокращений и ключевых слов."
 
+#: modules_v3/family_group_report/report.xml:798
+#: modules_v3/individual_ext_report/report.xml:554
+#: modules_v3/individual_report/report.xml:556
+msgid "Daughter"
+msgstr "Дочь"
+
 #. I18N: e.g. “Daughter of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:328
 #, php-format
@@ -4040,9 +4234,46 @@ msgid "Dead"
 msgstr "Мертвые"
 
 #. I18N: gedcom tag DEAT
-#: library/WT/Gedcom/Tag.php:184
+#: library/WT/Gedcom/Tag.php:184 modules_v3/bdm_report/report.xml:85
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:284
+#: modules_v3/family_group_report/report.xml:635
+#: modules_v3/family_group_report/report.xml:976
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:60
 msgid "Death"
 msgstr "Смерть"
+
+#: modules_v3/bdm_report/report.xml:11 modules_v3/death_report/report.xml:9
+msgid "Death Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
+msgid "Death Date range start"
+msgstr ""
+
+#: modules_v3/death_report/report.xml:7
+msgid "Death Place contains"
+msgstr "Место смерти содержит"
 
 #: library/WT/Stats.php:1031 statistics.php:561
 msgid "Death by country"
@@ -4180,7 +4411,8 @@ msgid "Death places"
 msgstr "Места смерти"
 
 #. I18N: Name of a module/report
-#: modules_v3/death_report/module.php:35
+#: modules_v3/death_report/module.php:35 modules_v3/death_report/report.xml:4
+#: modules_v3/death_report/report.xml:30
 msgid "Deaths"
 msgstr "Смерти"
 
@@ -4274,6 +4506,25 @@ msgstr "Значение по умолчанию для верхнего уро�
 msgid "Degree"
 msgstr "Звание, чин"
 
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "DejaVu"
+msgstr "DejaVu"
+
 #: admin_site_access.php:284 admin_site_change.php:275
 #: admin_site_clean.php:126 admin_site_logs.php:242 admin_trees_config.php:614
 #: admin_trees_manage.php:231 edit_interface.php:151
@@ -4358,6 +4609,10 @@ msgstr "Генерации потомков"
 #: library/WT/MenuBar.php:105 modules_v3/charts/module.php:206
 #: modules_v3/descendancy/module.php:34
 #: modules_v3/descendancy_report/module.php:35
+#: modules_v3/descendancy_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
 msgid "Descendants"
 msgstr "Потомки"
 
@@ -4365,6 +4620,10 @@ msgstr "Потомки"
 #: library/WT/Gedcom/Tag.php:189
 msgid "Descendants interest"
 msgstr "Интерес к потомкам"
+
+#: modules_v3/descendancy_report/report.xml:40
+msgid "Descendants of "
+msgstr "Потомки от "
 
 #. I18N: %s is an individual’s name
 #: descendancy.php:117 descendancy.php:123
@@ -4498,9 +4757,25 @@ msgstr "Умер, как ребенок: исключается"
 msgid "Died as an infant: exempt"
 msgstr "Умер в младенчестве: исключается"
 
+#: modules_v3/change_report/report.xml:58
+msgid "Differences"
+msgstr "Различия"
+
 #: help_text.php:444
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
 msgstr "Различные календарные системы используются в различных частях мира, и многие другие календарные системы были использованы в прошлом. Где это возможно, вы должны ввести даты с помощью календаря, в котором событие первоначально было записано. Затем можно указать преобразование, чтобы показать эти даты в более привычном календаре. Если вы регулярно используете два календаря, можно указать две формы и даты будут преобразованы в обоих выбранных календарях."
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors"
+msgstr "Прямая линия предков"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors and their families"
+msgstr "Прямая линия предков и их семей"
 
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
@@ -4906,6 +5181,10 @@ msgstr "Конечный IP-адрес"
 msgid "End Year"
 msgstr "Год конца"
 
+#: modules_v3/change_report/report.xml:7
+msgid "Ending range of change dates"
+msgstr "Окончание диапазона даты изменения"
+
 #. I18N: http://en.wikipedia.org/wiki/Endowment_house
 #: library/WT/Gedcom/Code/Temp.php:98
 msgid "Endowment House"
@@ -4919,6 +5198,20 @@ msgstr "Обручение"
 #: library/WT/Stats.php:3847
 msgid "England"
 msgstr "Англия"
+
+#: modules_v3/family_group_report/report.xml:7
+msgid "Enter Family ID"
+msgstr "Введите ID семьи"
+
+#: modules_v3/ahnentafel_report/report.xml:7
+#: modules_v3/descendancy_report/report.xml:6
+#: modules_v3/individual_ext_report/report.xml:6
+#: modules_v3/individual_report/report.xml:6
+#: modules_v3/missing_facts_report/report.xml:6
+#: modules_v3/pedigree_report/report.xml:6
+#: modules_v3/relative_ext_report/report.xml:6
+msgid "Enter Individual ID"
+msgstr "Введите ID персоны"
 
 #: addmedia.php:448 modules_v3/gedcom_favorites/module.php:180
 msgid "Enter a Person, Family, or Source ID"
@@ -5048,7 +5341,9 @@ msgid "Europe"
 msgstr "Европа"
 
 #. I18N: gedcom tag EVEN
-#: library/WT/Gedcom/Tag.php:208
+#: library/WT/Gedcom/Tag.php:208 modules_v3/fact_sources/report.xml:68
+#: modules_v3/fact_sources/report.xml:155
+#: modules_v3/missing_facts_report/report.xml:53
 msgid "Event"
 msgstr "Событие"
 
@@ -5234,6 +5529,8 @@ msgid "Fact or event"
 msgstr "Факт или событие"
 
 #. I18N: Name of a module/tab on the individual page.
+#: modules_v3/individual_ext_report/report.xml:151
+#: modules_v3/individual_report/report.xml:146
 #: modules_v3/personal_facts/module.php:34
 #: modules_v3/random_media/module.php:264
 msgid "Facts and events"
@@ -5278,7 +5575,9 @@ msgstr "Фолклендские острова"
 #: includes/functions/functions_print_lists.php:1084
 #: includes/functions/functions_print_lists.php:1276
 #: library/WT/Controller/Search.php:594 library/WT/MenuBar.php:300
-#: mediaviewer.php:135 modules_v3/gedcom_stats/module.php:101
+#: mediaviewer.php:135 modules_v3/fact_sources/report.xml:150
+#: modules_v3/fact_sources/report.xml:312
+#: modules_v3/gedcom_stats/module.php:101
 #: modules_v3/gedcom_stats/module.php:316
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:188
 #: modules_v3/relatives/module.php:34 note.php:101 placelist.php:232
@@ -5299,6 +5598,9 @@ msgstr "Семьи с источниками"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:928
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:935
 #: modules_v3/family_group_report/module.php:35
+#: modules_v3/family_group_report/report.xml:4
+#: modules_v3/family_group_report/report.xml:86
+#: modules_v3/family_group_report/report.xml:94
 #: modules_v3/family_nav/module.php:302
 msgid "Family"
 msgstr "Семья"
@@ -5416,8 +5718,14 @@ msgstr "Семья с приемными родителями"
 msgid "Family with foster parents"
 msgstr "Семья опекуна"
 
+#: modules_v3/individual_ext_report/report.xml:433
+#: modules_v3/individual_report/report.xml:435
+msgid "Family with husband"
+msgstr "Семья с мужем"
+
 #: library/WT/Gedcom/Code/Pedi.php:89 library/WT/Gedcom/Code/Pedi.php:94
-#: library/WT/Person.php:996
+#: library/WT/Person.php:996 modules_v3/individual_ext_report/report.xml:229
+#: modules_v3/individual_report/report.xml:231
 msgid "Family with parents"
 msgstr "Семья с родителями"
 
@@ -5439,6 +5747,11 @@ msgstr "Семья с супругом:"
 #: modules_v3/gedcom_stats/module.php:351 modules_v3/html/module.php:247
 msgid "Family with the most children"
 msgstr "Самая многодетная семья"
+
+#: modules_v3/individual_ext_report/report.xml:427
+#: modules_v3/individual_report/report.xml:429
+msgid "Family with wife"
+msgstr "Семья с женой"
 
 #: includes/functions/functions_print.php:102
 #: library/WT/Controller/Fanchart.php:55
@@ -5482,7 +5795,12 @@ msgctxt "NOMINATIVE"
 msgid "Farvardin"
 msgstr "Фарвардин"
 
-#: search_advanced.php:210
+#: modules_v3/bdm_report/report.xml:116
+#: modules_v3/family_group_report/report.xml:462
+#: modules_v3/family_group_report/report.xml:722
+#: modules_v3/individual_ext_report/report.xml:235
+#: modules_v3/individual_report/report.xml:237
+#: modules_v3/relative_ext_report/report.xml:62 search_advanced.php:210
 msgid "Father"
 msgstr "Отец"
 
@@ -5495,7 +5813,7 @@ msgid "Father's age"
 msgstr "Возраст отца"
 
 #. I18N: %s is the name of an individual’s father
-#: library/WT/Person.php:1634
+#: library/WT/Person.php:1638
 #, php-format
 msgid "Father: %s"
 msgstr "Отец: %s"
@@ -5653,6 +5971,7 @@ msgstr "Найти архив"
 
 #: admin_site_merge.php:295 admin_site_merge.php:316 find.php:91
 #: includes/functions/functions_print.php:1156
+#: modules_v3/fact_sources/report.xml:6
 msgid "Find a source"
 msgstr "Найти источник"
 
@@ -5731,6 +6050,24 @@ msgstr "Папка"
 #: addmedia.php:530 admin_media_upload.php:212 help_text.php:1449
 msgid "Folder name on server"
 msgstr "Имя папки на сервере"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgid "Font"
+msgstr "Шрифт"
 
 #: help_text.php:375
 msgid "For LDS ordinances, this field records the Temple where it was performed."
@@ -5959,7 +6296,11 @@ msgid "Gambia"
 msgstr "Гамбия"
 
 #. I18N: gedcom tag SEX
-#: library/WT/Gedcom/Tag.php:314
+#: library/WT/Gedcom/Tag.php:314 modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592
 msgid "Gender"
 msgstr "Пол"
 
@@ -5995,8 +6336,17 @@ msgstr "Сгенерировано %s"
 msgid "Generation"
 msgstr "Поколение"
 
+#: modules_v3/ahnentafel_report/report.xml:76
+#: modules_v3/descendancy_report/report.xml:53
+msgid "Generation "
+msgstr "Поколение "
+
 #: ancestry.php:112 descendancy.php:78 familybook.php:62 fanchart.php:68
-#: hourglass.php:75 modules_v3/googlemap/module.php:676 pedigree.php:44
+#: hourglass.php:75 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7
+#: modules_v3/googlemap/module.php:676
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/missing_facts_report/report.xml:8 pedigree.php:44
 msgid "Generations"
 msgstr "Поколения"
 
@@ -6249,6 +6599,40 @@ msgstr "Гамильтон, Новая Зеландия"
 msgid "Hartford, Connecticut"
 msgstr "Хартфорд, Коннектикут"
 
+#: modules_v3/descendancy_report/report.xml:427
+msgid "He "
+msgstr "Он "
+
+#: modules_v3/ahnentafel_report/report.xml:289
+msgid "He died"
+msgstr "Он умер"
+
+#: modules_v3/ahnentafel_report/report.xml:258
+#: modules_v3/descendancy_report/report.xml:172
+msgid "He married"
+msgstr "Он женился"
+
+#: modules_v3/ahnentafel_report/report.xml:220
+msgid "He resided at"
+msgstr "Он проживал в"
+
+#: modules_v3/descendancy_report/report.xml:400
+msgid "He was born"
+msgstr "Родился"
+
+#: modules_v3/ahnentafel_report/report.xml:345
+msgid "He was buried"
+msgstr "Был похоронён"
+
+#: modules_v3/ahnentafel_report/report.xml:164
+msgid "He was christened"
+msgstr "Он был крещён"
+
+#: modules_v3/ahnentafel_report/report.xml:314
+#: modules_v3/ahnentafel_report/report.xml:341
+msgid "He was cremated"
+msgstr "Он был кримирован"
+
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:645
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:728
@@ -6301,6 +6685,29 @@ msgstr "Помощник"
 #: library/WT/Gedcom/Code/Temp.php:110
 msgid "Helsinki, Finland"
 msgstr "Хельсинки, Финляндия"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Helvetica"
+msgstr "Гельветика"
+
+#: modules_v3/ahnentafel_report/report.xml:194
+msgid "Her occupation was"
+msgstr "Её род занятий было"
 
 #: modules_v3/googlemap/help_text.php:71
 msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
@@ -6397,6 +6804,8 @@ msgstr "Выделите имя блока, а затем щелкните на 
 
 #. I18N: gedcom tag _PRIM
 #: library/WT/Gedcom/Tag.php:746
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
 msgid "Highlighted image"
 msgstr "Главная"
 
@@ -6404,6 +6813,10 @@ msgstr "Главная"
 #: help_text.php:227 library/WT/Date/Hijri.php:41
 msgid "Hijri"
 msgstr "Хиджра"
+
+#: modules_v3/ahnentafel_report/report.xml:193
+msgid "His occupation was"
+msgstr "Его род занятий было"
 
 #: modules_v3/personal_facts/module.php:88
 msgid "Historical facts"
@@ -6469,6 +6882,16 @@ msgstr "Венгрия"
 
 #. I18N: gedcom tag HUSB
 #: edit_interface.php:543 library/WT/Gedcom/Tag.php:235
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+#: modules_v3/family_group_report/report.xml:142
+#: modules_v3/family_group_report/report.xml:1076
+#: modules_v3/individual_ext_report/report.xml:194
+#: modules_v3/individual_ext_report/report.xml:208
+#: modules_v3/individual_ext_report/report.xml:441
+#: modules_v3/individual_report/report.xml:189
+#: modules_v3/individual_report/report.xml:210
+#: modules_v3/individual_report/report.xml:443
 msgid "Husband"
 msgstr "Супруг"
 
@@ -6730,6 +7153,8 @@ msgstr "Индия"
 #: inverselink.php:110 library/WT/Gedcom/Tag.php:240
 #: modules_v3/charts/module.php:221 modules_v3/googlemap/module.php:673
 #: modules_v3/individual_report/module.php:35
+#: modules_v3/individual_report/report.xml:4
+#: modules_v3/individual_report/report.xml:85
 #: modules_v3/stories/module.php:247 modules_v3/stories/module.php:350
 #: modules_v3/stories/module.php:416 pedigree.php:43
 msgid "Individual"
@@ -6776,6 +7201,8 @@ msgstr "Персональная запись"
 #: includes/functions/functions_print_lists.php:1365 indilist.php:132
 #: indilist.php:135 library/WT/Controller/Search.php:593
 #: library/WT/MenuBar.php:298 mediaviewer.php:132
+#: modules_v3/fact_sources/report.xml:52
+#: modules_v3/fact_sources/report.xml:256
 #: modules_v3/gedcom_stats/module.php:93
 #: modules_v3/gedcom_stats/module.php:300
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:172
@@ -7231,7 +7658,8 @@ msgstr "Запечатывание супруга (мормоны)"
 msgid "Laie, Hawaii"
 msgstr "Лаи, Гавайи"
 
-#: admin_trees_config.php:812 pedigree.php:61
+#: admin_trees_config.php:812 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Landscape"
 msgstr "Горизонтально"
 
@@ -7263,7 +7691,8 @@ msgid "Las Vegas, Nevada"
 msgstr "Лас Вегас, Невада"
 
 #. I18N: gedcom tag CHAN
-#: library/WT/Gedcom/Tag.php:157
+#: library/WT/Gedcom/Tag.php:157 modules_v3/change_report/report.xml:64
+#: modules_v3/change_report/report.xml:106
 msgid "Last change"
 msgstr "Последнее изменение"
 
@@ -7341,6 +7770,25 @@ msgstr "Крона"
 msgid "Lebanon"
 msgstr "Ливан"
 
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Legal"
+msgstr "Legal"
+
 #. I18N: gedcom tag LEGA
 #: library/WT/Gedcom/Tag.php:244
 msgid "Legatee"
@@ -7353,6 +7801,25 @@ msgstr "Продолжительность брака"
 #: library/WT/Stats.php:3912
 msgid "Lesotho"
 msgstr "Лесото"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Letter"
+msgstr "Letter"
 
 #: modules_v3/googlemap/admin_places.php:175
 #: modules_v3/googlemap/module.php:380 modules_v3/googlemap/module.php:1598
@@ -7729,14 +8196,27 @@ msgid "March"
 msgstr "март"
 
 #. I18N: gedcom tag MARR
-#: library/WT/Gedcom/Tag.php:252
+#: library/WT/Gedcom/Tag.php:252 modules_v3/bdm_report/report.xml:76
+#: modules_v3/family_group_report/report.xml:372
 msgid "Marriage"
 msgstr "Брак"
+
+#: modules_v3/marriage_report/report.xml:9
+msgid "Marriage Date range end"
+msgstr "Конец диапазона даты брака"
+
+#: modules_v3/marriage_report/report.xml:8
+msgid "Marriage Date range start"
+msgstr "Начало диапазона даты брака"
 
 #. I18N: gedcom tag _MARI
 #: library/WT/Gedcom/Tag.php:744
 msgid "Marriage Intention"
 msgstr "Помолвка"
+
+#: modules_v3/marriage_report/report.xml:7
+msgid "Marriage Place contains"
+msgstr "Место брака содержит"
 
 #. I18N: gedcom tag MARB
 #: library/WT/Gedcom/Tag.php:247
@@ -7881,6 +8361,8 @@ msgstr "Неизвестный тип брака"
 
 #. I18N: Name of a module/report
 #: modules_v3/marriage_report/module.php:35
+#: modules_v3/marriage_report/report.xml:4
+#: modules_v3/marriage_report/report.xml:28
 msgid "Marriages"
 msgstr "Бракосочетания"
 
@@ -8254,6 +8736,8 @@ msgstr "Отсутствует папка для временных файлов
 
 #. I18N: Name of a module/report
 #: modules_v3/missing_facts_report/module.php:35
+#: modules_v3/missing_facts_report/report.xml:4
+#: modules_v3/missing_facts_report/report.xml:50
 msgid "Missing data"
 msgstr "Отсутствующие данные"
 
@@ -8421,7 +8905,12 @@ msgstr "Большенство страниц используют по умол
 msgid "Most viewed pages"
 msgstr "Часто посещаемые страницы"
 
-#: search_advanced.php:247
+#: modules_v3/bdm_report/report.xml:118
+#: modules_v3/family_group_report/report.xml:469
+#: modules_v3/family_group_report/report.xml:729
+#: modules_v3/individual_ext_report/report.xml:271
+#: modules_v3/individual_report/report.xml:273
+#: modules_v3/relative_ext_report/report.xml:63 search_advanced.php:247
 msgid "Mother"
 msgstr "Мать"
 
@@ -8434,7 +8923,7 @@ msgid "Mother's age"
 msgstr "Возраст матери"
 
 #. I18N: %s is the name of an individual’s mother
-#: library/WT/Person.php:1643
+#: library/WT/Person.php:1647
 #, php-format
 msgid "Mother: %s"
 msgstr "Мать: %s"
@@ -8554,6 +9043,20 @@ msgstr "Бирма"
 #: library/WT/Stats.php:3326
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:119
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:571
+#: modules_v3/bdm_report/report.xml:6 modules_v3/bdm_report/report.xml:47
+#: modules_v3/birth_report/report.xml:6 modules_v3/birth_report/report.xml:34
+#: modules_v3/cemetery_report/report.xml:39
+#: modules_v3/change_report/report.xml:54
+#: modules_v3/change_report/report.xml:94 modules_v3/death_report/report.xml:6
+#: modules_v3/death_report/report.xml:36 modules_v3/fact_sources/report.xml:60
+#: modules_v3/fact_sources/report.xml:153
+#: modules_v3/fact_sources/report.xml:264
+#: modules_v3/fact_sources/report.xml:315
+#: modules_v3/marriage_report/report.xml:6
+#: modules_v3/marriage_report/report.xml:36
+#: modules_v3/missing_facts_report/report.xml:52
+#: modules_v3/occupation_report/report.xml:41
+#: modules_v3/relative_ext_report/report.xml:48
 msgid "Name"
 msgstr "Имя, фамилия"
 
@@ -8566,6 +9069,11 @@ msgstr "Название"
 #: modules_v3/clippings/module.php:278
 msgid "Name / Description"
 msgstr "Название / Описание"
+
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+msgid "Name List"
+msgstr "Список имён"
 
 #: find.php:184 find.php:199
 msgid "Name contains:"
@@ -8958,8 +9466,12 @@ msgstr "Ночной"
 
 #: admin_trees_download.php:116 admin_users.php:450 famlist.php:115
 #: famlist.php:145 indilist.php:115 indilist.php:145 library/WT/Stats.php:758
-#: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:592
-#: modules_v3/families/module.php:151 modules_v3/individuals/module.php:150
+#: modules_v3/cemetery_report/report.xml:8 modules_v3/clippings/module.php:205
+#: modules_v3/clippings/module.php:592 modules_v3/death_report/report.xml:11
+#: modules_v3/families/module.php:151
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/individuals/module.php:150
 msgid "None"
 msgstr "Нет"
 
@@ -9029,6 +9541,10 @@ msgstr "Холостой"
 #. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:484
 #: includes/functions/functions_print.php:560 library/WT/Gedcom/Tag.php:276
+#: modules_v3/cemetery_report/report.xml:62
+#: modules_v3/family_group_report/report.xml:480
+#: modules_v3/family_group_report/report.xml:741
+#: modules_v3/family_group_report/report.xml:1090
 msgid "Note"
 msgstr "Примечание"
 
@@ -9056,7 +9572,9 @@ msgstr "Примечание: более длинные пути требуют 
 #: admin.php:232 admin.php:264 library/WT/Controller/Search.php:596
 #: mediaviewer.php:144
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1140
-#: modules_v3/notes/module.php:34 source.php:106 statistics.php:339
+#: modules_v3/individual_ext_report/report.xml:221
+#: modules_v3/individual_report/report.xml:223 modules_v3/notes/module.php:34
+#: source.php:106 statistics.php:339
 msgid "Notes"
 msgstr "Примечания"
 
@@ -9172,6 +9690,8 @@ msgstr "Род занятий"
 
 #. I18N: Name of a report
 #: modules_v3/occupation_report/module.php:35
+#: modules_v3/occupation_report/report.xml:4
+#: modules_v3/occupation_report/report.xml:35
 msgid "Occupations"
 msgstr "Профессии"
 
@@ -9347,6 +9867,11 @@ msgstr "Посвящение у мормонов"
 msgid "Ordination"
 msgstr "Посвящение в сан"
 
+#: modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7
+msgid "Orientation"
+msgstr "Ориентация"
+
 #: library/WT/Gedcom/Code/Temp.php:150
 msgid "Orlando, Florida"
 msgstr "Орландо, Флорида"
@@ -9446,10 +9971,45 @@ msgstr "Настройка PHP \"%1$s\" выключена. Без этого, �
 msgid "PHP time limit"
 msgstr "Ограничение времени выполнения PHP"
 
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_ext_report/report.xml:90
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/missing_facts_report/report.xml:51
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42
+msgid "Page"
+msgstr "Страница"
+
 #: medialist.php:216 medialist.php:339
 #, php-format
 msgid "Page %s of %s"
 msgstr "Страница %s из %s"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgid "Page size"
+msgstr "Формат страницы"
 
 #: library/WT/Gedcom/Tag.php:917
 msgid "Painting"
@@ -9505,6 +10065,12 @@ msgstr "Возраст родителя:"
 msgid "Parents"
 msgstr "Родители"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Parents and siblings"
+msgstr "Родители, братья, сёстры"
+
 #: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
 #: edituser.php:152 help_text.php:736 help_text.php:1296 login.php:159
 #: login.php:220 login.php:449 modules_v3/login_block/module.php:81
@@ -9529,8 +10095,14 @@ msgstr "Пароль должен быть минимум 6 символов"
 #: library/WT/Controller/Fanchart.php:306
 #: library/WT/Controller/Pedigree.php:94 library/WT/MenuBar.php:104
 #: modules_v3/charts/module.php:205 modules_v3/pedigree_report/module.php:35
+#: modules_v3/pedigree_report/report.xml:4
+#: modules_v3/pedigree_report/report.xml:41
 msgid "Pedigree"
 msgstr "Родословная"
+
+#: modules_v3/pedigree_report/report.xml:737
+msgid "Pedigree Chart"
+msgstr "Восходящее<br>Древо"
 
 #: includes/functions/functions_print.php:93
 #: library/WT/Controller/Fanchart.php:308 library/WT/MenuBar.php:123
@@ -9561,6 +10133,7 @@ msgstr "Блок ожидающих изменений"
 
 #. I18N: Name of a module
 #: edit_changes.php:33 edit_changes.php:53 help_text.php:1331
+#: modules_v3/change_report/report.xml:50
 #: modules_v3/review_changes/module.php:34
 #: themes/_administration/header.php:77 themes/clouds/header.php:123
 #: themes/colors/header.php:97 themes/fab/header.php:79
@@ -9667,12 +10240,18 @@ msgstr "Питкэрн"
 #. I18N: gedcom tag PLAC
 #: library/WT/Gedcom/Tag.php:290
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1136
+#: modules_v3/bdm_report/report.xml:7 modules_v3/bdm_report/report.xml:132
+#: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
+#: modules_v3/birth_report/report.xml:40
+#: modules_v3/cemetery_report/report.xml:58
+#: modules_v3/death_report/report.xml:48
 #: modules_v3/googlemap/admin_places.php:179
 #: modules_v3/googlemap/admin_places.php:180
 #: modules_v3/googlemap/admin_places.php:181
 #: modules_v3/googlemap/admin_places.php:182
 #: modules_v3/googlemap/admin_places.php:183
-#: modules_v3/googlemap/module.php:1591 search.php:169 search.php:182
+#: modules_v3/googlemap/module.php:1591
+#: modules_v3/marriage_report/report.xml:48 search.php:169 search.php:182
 msgid "Place"
 msgstr "Место"
 
@@ -9918,7 +10497,8 @@ msgstr "Портленд, штат Орегон"
 msgid "Porto Alegre, Brazil"
 msgstr "Порту-Алегри, Бразилия"
 
-#: admin_trees_config.php:813 pedigree.php:61
+#: admin_trees_config.php:813 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Portrait"
 msgstr "Вертикально"
 
@@ -10018,6 +10598,10 @@ msgstr "Священник"
 msgid "Primidi"
 msgstr "Примиди"
 
+#: modules_v3/family_group_report/report.xml:11
+msgid "Print basic events when blank?"
+msgstr "Отображать основные события если нет сведений?"
+
 #: admin_trees_config.php:219
 msgid "Privacy"
 msgstr "Конфиденциальность"
@@ -10036,7 +10620,7 @@ msgstr "Ограничения доступа - эти настойки влия
 #: library/WT/Person.php:121 library/WT/Person.php:336
 #: library/WT/Person.php:359 library/WT/Person.php:382
 #: library/WT/Person.php:419 library/WT/Person.php:442
-#: library/WT/Person.php:1905 library/WT/Report/Base.php:1946
+#: library/WT/Person.php:1909 library/WT/Report/Base.php:1946
 #: library/WT/Repository.php:57 library/WT/Source.php:49
 #: library/WT/Stats.php:863 library/WT/Stats.php:1805
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:240
@@ -10294,7 +10878,8 @@ msgid "Recent Years (&lt; 100 yrs)"
 msgstr "Последние года (< 100 лет)"
 
 #. I18N: Name of a module
-#: admin.php:244 modules_v3/recent_changes/module.php:36
+#: admin.php:244 modules_v3/change_report/report.xml:90
+#: modules_v3/recent_changes/module.php:36
 msgid "Recent changes"
 msgstr "Последние изменения"
 
@@ -10365,7 +10950,7 @@ msgstr "Шифр документа"
 msgid "Regina, Saskatchewan, Canada"
 msgstr "Регина, Саскачеван, Канада"
 
-#: library/WT/Gedcom/Tag.php:256
+#: library/WT/Gedcom/Tag.php:256 modules_v3/fact_sources/report.xml:203
 msgid "Registered partnership"
 msgstr "Гражданское партнёрство"
 
@@ -10393,11 +10978,15 @@ msgstr "Регулярные выражения - продвинутая тех�
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:35
+#: modules_v3/individual_ext_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:89
 msgid "Related families"
 msgstr "Семьи родственников"
 
 #. I18N: Name of a report
 #: modules_v3/relative_ext_report/module.php:35
+#: modules_v3/relative_ext_report/report.xml:4
+#: modules_v3/relative_ext_report/report.xml:41
 msgid "Related individuals"
 msgstr "Родственники"
 
@@ -10453,7 +11042,7 @@ msgstr "Вероисповедание"
 msgid "Religious Institution"
 msgstr "Религиозные Учреждение"
 
-#: library/WT/Gedcom/Tag.php:257
+#: library/WT/Gedcom/Tag.php:257 modules_v3/fact_sources/report.xml:197
 msgid "Religious marriage"
 msgstr "Церковный брак"
 
@@ -11284,6 +11873,40 @@ msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Шавваль"
 
+#: modules_v3/descendancy_report/report.xml:357
+msgid "She "
+msgstr "Она "
+
+#: modules_v3/ahnentafel_report/report.xml:290
+msgid "She died"
+msgstr "Она умерла"
+
+#: modules_v3/ahnentafel_report/report.xml:259
+#: modules_v3/descendancy_report/report.xml:241
+msgid "She married"
+msgstr "Она вышла замуж"
+
+#: modules_v3/ahnentafel_report/report.xml:221
+msgid "She resided at"
+msgstr "Она проживала в"
+
+#: modules_v3/descendancy_report/report.xml:330
+msgid "She was born"
+msgstr "Родилась"
+
+#: modules_v3/ahnentafel_report/report.xml:346
+msgid "She was buried"
+msgstr "Была похоронена"
+
+#: modules_v3/ahnentafel_report/report.xml:165
+msgid "She was christened"
+msgstr "Она была крещена"
+
+#: modules_v3/ahnentafel_report/report.xml:315
+#: modules_v3/ahnentafel_report/report.xml:342
+msgid "She was cremated"
+msgstr "Она была кримирована"
+
 #: library/WT/Date/Jewish.php:111
 msgctxt "GENITIVE"
 msgid "Shevat"
@@ -11385,6 +12008,10 @@ msgstr "Показать курсор возраста?"
 msgid "Show chart details by default"
 msgstr "Показать подробный график по умолчанию"
 
+#: modules_v3/ahnentafel_report/report.xml:13
+msgid "Show children of ancestors?"
+msgstr "Показать детей предков?"
+
 #: library/WT/MenuBar.php:173 library/WT/MenuBar.php:193
 msgid "Show children on timeline chart"
 msgstr "Показать детей на временной оси"
@@ -11478,6 +12105,17 @@ msgstr "Показать ссылку на диаграммы статистик
 msgid "Show list of family trees"
 msgstr "Показать список родословных"
 
+#: modules_v3/ahnentafel_report/report.xml:10
+#: modules_v3/family_group_report/report.xml:9
+#: modules_v3/individual_ext_report/report.xml:11
+#: modules_v3/individual_report/report.xml:8
+msgid "Show notes?"
+msgstr "Показать примечания?"
+
+#: modules_v3/ahnentafel_report/report.xml:11
+msgid "Show occupations?"
+msgstr "Показать профессии?"
+
 #: help_text.php:1291 relationship.php:118
 msgid "Show oldest top"
 msgstr "Старшее поколение сверху"
@@ -11521,6 +12159,10 @@ msgstr "Показать родителей"
 msgid "Show path"
 msgstr "Показать путь"
 
+#: modules_v3/change_report/report.xml:9
+msgid "Show pending changes"
+msgstr "Показать внесённые изменения"
+
 #: includes/functions/functions_print_lists.php:91
 #: includes/functions/functions_print_lists.php:496
 msgid "Show people who are alive or couples where both partners are alive."
@@ -11547,6 +12189,12 @@ msgstr "Показать персон, родившихся раньше ста 
 msgid "Show persons born within the last 100 years."
 msgstr "Показать людей родившихся в последние сто лет."
 
+#: modules_v3/family_group_report/report.xml:10
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+msgid "Show photos?"
+msgstr "Показывать фото?"
+
 #: admin_trees_config.php:527 help_text.php:887
 msgid "Show private relationships"
 msgstr "Показывать связь к защищенным людям"
@@ -11567,6 +12215,10 @@ msgstr "Показывать неназначенные задания"
 msgid "Show research tasks that have a date in the future"
 msgstr "Показывать задания с датой в будущем"
 
+#: modules_v3/ahnentafel_report/report.xml:12
+msgid "Show residences?"
+msgstr "Показать места жительства?"
+
 #: help_text.php:898
 msgid "Show runtime statistics and database queries at the bottom of every page."
 msgstr "Показать выполнения статистических данных и запросов к базе данных, в нижней части каждой страницы."
@@ -11574,6 +12226,14 @@ msgstr "Показать выполнения статистических да�
 #: modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
 msgstr "Показывать элементы контроля слайд-шоу?"
+
+#: modules_v3/ahnentafel_report/report.xml:9
+#: modules_v3/descendancy_report/report.xml:8
+#: modules_v3/family_group_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:10
+#: modules_v3/individual_report/report.xml:7
+msgid "Show sources?"
+msgstr "Показать источники?"
 
 #: familybook.php:76 help_text.php:1416 hourglass.php:91
 msgid "Show spouses"
@@ -11694,6 +12354,11 @@ msgstr "Простой поисковый фильтр на основе вве�
 msgid "Singapore"
 msgstr "Сингапур"
 
+#: modules_v3/individual_ext_report/report.xml:347
+#: modules_v3/individual_report/report.xml:349
+msgid "Sister"
+msgstr "Сестра"
+
 #: admin_site_access.php:32 themes/_administration/header.php:97
 msgid "Site access rules"
 msgstr "Правила доступа к сайту"
@@ -11803,13 +12468,28 @@ msgstr "Некоторые записи не могут быть добавле�
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
 msgstr "Некоторые географические названия могут быть записаны с дополнительными префиксами и суффиксами. Например, \"Orange\" и \"Orange County\". Если семейное дерево содержит полные имена мест, а географическая база данных содержит короткие имена мест, то Вы должны указать список префиксов и суффиксов. Различные варианты должны быть разделены точкой с запятой. Например, \"County;County of\" или \"Township;Twp;Twp.”."
 
+#: modules_v3/family_group_report/report.xml:763
+#: modules_v3/individual_ext_report/report.xml:518
+#: modules_v3/individual_report/report.xml:520
+msgid "Son"
+msgstr "Сын"
+
 #. I18N: e.g. “Son of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:325
 #, php-format
 msgid "Son of %s"
 msgstr "Сын от %s"
 
-#: medialist.php:92 modules_v3/recent_changes/module.php:151
+#: medialist.php:92 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/recent_changes/module.php:151
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:148
 #: modules_v3/upcoming_events/module.php:160
 msgid "Sort order"
@@ -11830,7 +12510,12 @@ msgstr "Звучит как"
 #. I18N: Name of a module/report
 #: includes/functions/functions_print_facts.php:467
 #: includes/functions/functions_print_facts.php:496 inverselink.php:134
-#: library/WT/Gedcom/Tag.php:320 modules_v3/fact_sources/module.php:35
+#: library/WT/Gedcom/Tag.php:320 modules_v3/bdm_report/report.xml:134
+#: modules_v3/bdm_report/report.xml:160 modules_v3/bdm_report/report.xml:194
+#: modules_v3/birth_report/report.xml:41 modules_v3/death_report/report.xml:52
+#: modules_v3/fact_sources/module.php:35 modules_v3/fact_sources/report.xml:4
+#: modules_v3/fact_sources/report.xml:41
+#: modules_v3/marriage_report/report.xml:52
 msgid "Source"
 msgstr "Источник"
 
@@ -11851,6 +12536,7 @@ msgid "Source contains:"
 msgstr "Источники содержат:"
 
 #: admin_trees_config.php:1255 help_text.php:781
+#: modules_v3/fact_sources/report.xml:7
 msgid "Source type"
 msgstr "Тип источника"
 
@@ -11860,14 +12546,23 @@ msgstr "Тип источника"
 #: includes/functions/functions_print_lists.php:1177
 #: includes/functions/functions_print_lists.php:1278
 #: library/WT/Controller/Search.php:595 library/WT/MenuBar.php:311
-#: mediaviewer.php:138 modules_v3/gedcom_stats/module.php:104
+#: mediaviewer.php:138 modules_v3/ahnentafel_report/report.xml:480
+#: modules_v3/descendancy_report/report.xml:612
+#: modules_v3/family_group_report/report.xml:1107
+#: modules_v3/gedcom_stats/module.php:104
 #: modules_v3/gedcom_stats/module.php:324 modules_v3/html/module.php:192
+#: modules_v3/individual_ext_report/report.xml:636
+#: modules_v3/individual_report/report.xml:636
 #: modules_v3/lightbox/functions/lightbox_print_media.php:369
 #: modules_v3/sources_tab/module.php:34 note.php:107 repo.php:94
 #: search.php:124 sourcelist.php:31 sourcelist.php:35 statistics.php:338
 #: statistics.php:375
 msgid "Sources"
 msgstr "Источники"
+
+#: modules_v3/missing_facts_report/report.xml:12
+msgid "Sources to the events"
+msgstr "Источники событий"
 
 #: library/WT/Stats.php:4036
 msgid "South Africa"
@@ -11902,6 +12597,10 @@ msgstr "Скорость"
 msgid "Spokane, Washington"
 msgstr "Спокан, штат Вашингтон"
 
+#: modules_v3/bdm_report/report.xml:167
+msgid "Spouse"
+msgstr "Супруг(а)"
+
 #: library/WT/Gedcom/Tag.php:216
 msgid "Spouse census date"
 msgstr "Дата переписи супруга(и)"
@@ -11917,6 +12616,12 @@ msgstr "Примечание о супруге"
 #: includes/functions/functions_print_lists.php:1363
 msgid "Spouses"
 msgstr "Супруги"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Spouses and children"
+msgstr "Супруги и дети"
 
 #: library/WT/Stats.php:3911
 msgid "Sri Lanka"
@@ -11955,6 +12660,10 @@ msgstr "Перейти на родителей"
 #: modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
 msgstr "Включить слайд-шоу при загрузке страницы?"
+
+#: modules_v3/change_report/report.xml:6
+msgid "Starting range of change dates"
+msgstr "Начало диапазона дат изменения"
 
 #. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:323 modules_v3/googlemap/admin_places.php:176
@@ -12220,7 +12929,7 @@ msgid "Templates"
 msgstr "Образцы"
 
 #. I18N: gedcom tag TEMP
-#: library/WT/Gedcom/Tag.php:329
+#: library/WT/Gedcom/Tag.php:329 modules_v3/individual_report/report.xml:205
 msgid "Temple"
 msgstr "Храм мормонов"
 
@@ -13482,6 +14191,10 @@ msgstr "Наиболее часто встречающиеся фамилии"
 msgid "Toronto, Ontario, Canada"
 msgstr "Торонто, Онтарио, Канада"
 
+#: modules_v3/change_report/report.xml:125
+msgid "Total accepted changes: "
+msgstr "Всего принятых изменений: "
+
 #: statistics.php:98
 msgid "Total births"
 msgstr "Всего рождений"
@@ -13500,11 +14213,15 @@ msgstr "Всего разводов"
 
 #: modules_v3/gedcom_stats/module.php:113
 #: modules_v3/gedcom_stats/module.php:356 modules_v3/html/module.php:204
-#: statistics.php:351
+#: modules_v3/missing_facts_report/report.xml:599 statistics.php:351
 msgid "Total events"
 msgstr "Всего событий"
 
-#: library/WT/Stats.php:3059
+#: library/WT/Stats.php:3059 modules_v3/fact_sources/report.xml:246
+#: modules_v3/fact_sources/report.xml:250
+#: modules_v3/fact_sources/report.xml:348
+#: modules_v3/fact_sources/report.xml:352
+#: modules_v3/marriage_report/report.xml:112
 msgid "Total families"
 msgstr "Всего семей"
 
@@ -13520,6 +14237,19 @@ msgstr "Всего женщин"
 #: statistics.php:178
 msgid "Total given names"
 msgstr "Всего имен и отчеств"
+
+#: modules_v3/bdm_report/report.xml:208 modules_v3/birth_report/report.xml:65
+#: modules_v3/cemetery_report/report.xml:86
+#: modules_v3/death_report/report.xml:98
+#: modules_v3/fact_sources/report.xml:140
+#: modules_v3/fact_sources/report.xml:144
+#: modules_v3/fact_sources/report.xml:303
+#: modules_v3/fact_sources/report.xml:307
+#: modules_v3/missing_facts_report/report.xml:598
+#: modules_v3/occupation_report/report.xml:92
+#: modules_v3/relative_ext_report/report.xml:146
+msgid "Total individuals"
+msgstr "Всего персон"
 
 #: calendar.php:438 find.php:507 modules_v3/GEDFact_assistant/module.php:162
 #: statistics.php:75
@@ -13542,6 +14272,10 @@ msgstr "Всего браков"
 #: admin.php:164
 msgid "Total number of users"
 msgstr "Всего пользователей"
+
+#: modules_v3/change_report/report.xml:85
+msgid "Total pending changes: "
+msgstr "Всего изменений: "
 
 #. I18N: A count of places
 #: modules_v3/googlemap/module.php:1709
@@ -13737,7 +14471,11 @@ msgstr "неизвестно"
 #: calendar.php:586 includes/functions/functions_edit.php:1461
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:286 library/WT/Stats.php:3325
-#: timeline.php:264
+#: modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592 timeline.php:264
 msgctxt "unknown gender"
 msgid "Unknown"
 msgstr "Нет данных"
@@ -13868,6 +14606,11 @@ msgid_plural "Use at least %s characters."
 msgstr[0] "Минимум %s символ."
 msgstr[1] "Минимум %s символа."
 msgstr[2] "Минимум %s символов."
+
+#: modules_v3/family_group_report/report.xml:14
+#: modules_v3/individual_ext_report/report.xml:15
+msgid "Use colors"
+msgstr "Использовать цвета"
 
 #: modules_v3/tree/class_treeview.php:74
 msgid "Use compact layout"
@@ -14172,7 +14915,8 @@ msgid "Visitor"
 msgstr "Посетитель"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:35
+#: modules_v3/bdm_report/module.php:35 modules_v3/bdm_report/report.xml:4
+#: modules_v3/bdm_report/report.xml:32
 msgid "Vital records"
 msgstr "ЗАГС"
 
@@ -14410,6 +15154,14 @@ msgstr "Ширина генерируемых миниатюр"
 
 #. I18N: gedcom tag WIFE
 #: edit_interface.php:541 library/WT/Gedcom/Tag.php:340
+#: modules_v3/family_group_report/report.xml:493
+#: modules_v3/family_group_report/report.xml:1067
+#: modules_v3/individual_ext_report/report.xml:197
+#: modules_v3/individual_ext_report/report.xml:211
+#: modules_v3/individual_ext_report/report.xml:477
+#: modules_v3/individual_report/report.xml:192
+#: modules_v3/individual_report/report.xml:213
+#: modules_v3/individual_report/report.xml:479
 msgid "Wife"
 msgstr "Супруга"
 
@@ -14905,6 +15657,13 @@ msgstr "также известен как"
 #: library/WT/Controller/Ancestry.php:144 library/WT/Stats.php:2627
 #: library/WT/Stats.php:2652 library/WT/Stats.php:2663
 #: library/WT/Stats.php:2673 library/WT/Stats.php:3427 medialist.php:47
+#: modules_v3/ahnentafel_report/report.xml:400
+#: modules_v3/descendancy_report/report.xml:131
+#: modules_v3/descendancy_report/report.xml:229
+#: modules_v3/descendancy_report/report.xml:298
+#: modules_v3/descendancy_report/report.xml:362
+#: modules_v3/descendancy_report/report.xml:432
+#: modules_v3/descendancy_report/report.xml:485
 msgid "and"
 msgstr "и"
 
@@ -15193,6 +15952,10 @@ msgstr "отрезок времени"
 msgid "daughter"
 msgstr "дочь"
 
+#: modules_v3/descendancy_report/report.xml:225
+msgid "daughter of"
+msgstr "дочь от"
+
 #: includes/functions/functions.php:1238
 msgctxt "child's wife"
 msgid "daughter-in-law"
@@ -15232,6 +15995,18 @@ msgstr "градусов"
 #: admin_site_access.php:110 admin_site_access.php:301
 msgid "deny"
 msgstr "отклонить"
+
+#: modules_v3/descendancy_report/report.xml:137
+#: modules_v3/descendancy_report/report.xml:364
+msgctxt "FEMALE"
+msgid "died"
+msgstr "умерла"
+
+#: modules_v3/descendancy_report/report.xml:134
+#: modules_v3/descendancy_report/report.xml:434
+msgctxt "MALE"
+msgid "died"
+msgstr "умер"
 
 #: modules_v3/googlemap/module.php:312 modules_v3/googlemap/module.php:321
 #: modules_v3/googlemap/module.php:330 modules_v3/googlemap/module.php:338
@@ -15327,7 +16102,7 @@ msgctxt "Abbreviation for fax number"
 msgid "f."
 msgstr "факс"
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "facts"
 msgstr "факты"
 
@@ -17347,6 +18122,16 @@ msgstr "девичья фамилия"
 msgid "marriage"
 msgstr "вступление в брак"
 
+#: modules_v3/descendancy_report/report.xml:244
+msgctxt "FEMALE"
+msgid "married"
+msgstr "вышла замуж"
+
+#: modules_v3/descendancy_report/report.xml:175
+msgctxt "MALE"
+msgid "married"
+msgstr "женился"
+
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:116
 msgid "married name"
@@ -17546,7 +18331,13 @@ msgstr "10-тиюродный брат/сестра"
 #: includes/functions/functions_print_facts.php:1228
 #: includes/functions/functions_print_lists.php:795 library/WT/Stats.php:3519
 #: modules_v3/batch_update/admin_batch_update.php:339
-#: modules_v3/charts/module.php:215
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:215
+#: modules_v3/family_group_report/report.xml:250
+#: modules_v3/family_group_report/report.xml:421
+#: modules_v3/family_group_report/report.xml:601
+#: modules_v3/family_group_report/report.xml:942
+#: modules_v3/individual_ext_report/report.xml:180
+#: modules_v3/individual_report/report.xml:175
 msgid "no"
 msgstr "нет"
 
@@ -17575,7 +18366,19 @@ msgstr "северная"
 msgid "numbers"
 msgstr "числа"
 
-#: statisticsplot.php:816 statisticsplot.php:818 statisticsplot.php:820
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42 statisticsplot.php:816
+#: statisticsplot.php:818 statisticsplot.php:820
 msgid "of"
 msgstr "из"
 
@@ -17680,7 +18483,7 @@ msgstr "кварталов после вступления в брак"
 msgid "questionable evidence"
 msgstr "достоверность под вопросом"
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "records"
 msgstr "записи"
 
@@ -18046,6 +18849,10 @@ msgstr "7-миюродный брат/сестра"
 msgid "son"
 msgstr "сын"
 
+#: modules_v3/descendancy_report/report.xml:294
+msgid "son of"
+msgstr "сын от"
+
 #: includes/functions/functions.php:1235
 msgctxt "child's husband"
 msgid "son-in-law"
@@ -18077,23 +18884,32 @@ msgid "son/daughter-in-law"
 msgstr "зять/невестка"
 
 #. I18N: An option in a list-box
+#: modules_v3/change_report/report.xml:8
 #: modules_v3/todays_events/module.php:152
 #: modules_v3/upcoming_events/module.php:164
 msgid "sort by date"
 msgstr "сортировать по дате"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2044 reportengine.php:513
+#: edit_interface.php:2044 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10 modules_v3/change_report/report.xml:8
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:513
 msgid "sort by date of birth"
 msgstr "сортировать по дате рождения"
 
 #. I18N: An option in a list-box
-#: reportengine.php:515
+#: modules_v3/bdm_report/report.xml:12 modules_v3/cemetery_report/report.xml:7
+#: modules_v3/death_report/report.xml:10
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:515
 msgid "sort by date of death"
 msgstr "сортировать по дате смерти"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2420 reportengine.php:514
+#: edit_interface.php:2420 modules_v3/marriage_report/report.xml:10
+#: reportengine.php:514
 msgid "sort by date of marriage"
 msgstr "сортировать по дате брака"
 
@@ -18113,7 +18929,15 @@ msgid "sort by filename"
 msgstr "сортировать по имени файла"
 
 #. I18N: An option in a list-box
+#: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
 #: modules_v3/recent_changes/module.php:154
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:151
 #: modules_v3/upcoming_events/module.php:163
 msgid "sort by name"
@@ -18516,6 +19340,18 @@ msgstr "неизвестная персона"
 msgid "unreliable evidence"
 msgstr "недостоверный источник"
 
+#: modules_v3/ahnentafel_report/report.xml:139
+#: modules_v3/descendancy_report/report.xml:105
+msgctxt "FEMALE"
+msgid "was born"
+msgstr "родилась"
+
+#: modules_v3/ahnentafel_report/report.xml:138
+#: modules_v3/descendancy_report/report.xml:102
+msgctxt "MALE"
+msgid "was born"
+msgstr "родился"
+
 #: modules_v3/review_changes/module.php:86
 msgid "webtrees - Review changes"
 msgstr "webtrees - Просмотреть изменения"
@@ -18569,7 +19405,14 @@ msgstr "года(лет)"
 #: includes/functions/functions_print_lists.php:353
 #: includes/functions/functions_print_lists.php:793 library/WT/Stats.php:3518
 #: modules_v3/batch_update/admin_batch_update.php:340
-#: modules_v3/charts/module.php:216 modules_v3/relatives/module.php:206
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:216
+#: modules_v3/family_group_report/report.xml:247
+#: modules_v3/family_group_report/report.xml:418
+#: modules_v3/family_group_report/report.xml:598
+#: modules_v3/family_group_report/report.xml:939
+#: modules_v3/individual_ext_report/report.xml:177
+#: modules_v3/individual_report/report.xml:172
+#: modules_v3/relatives/module.php:206
 msgid "yes"
 msgstr "да"
 
@@ -18591,7 +19434,7 @@ msgid "younger sister"
 msgstr "младшая сестра"
 
 #. I18N: Place a nickname in quotation marks
-#: library/WT/Person.php:1791
+#: library/WT/Person.php:1795
 #, php-format
 msgid "“%s”"
 msgstr "“%s”"
@@ -18615,12 +19458,6 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid " but the details are unknown"
-#~ msgstr " но подробности неизвестны"
-
-#~ msgid " in "
-#~ msgstr " в "
 
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%1$sой %2$s"
@@ -18757,19 +19594,8 @@ msgstr "…"
 #~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "Сервер базы данных может сохранять несколько баз данных. Вы должны указать существующую базу данных (созданную администратором сервера(хостинг-провайдер)) или создать новую базу данных (если у Вас есть права на это)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "Список фактов, приведённых в источнике."
-
 #~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 #~ msgstr "Пользователь не сможет войти в систему, пока опции \"эл.почта подтверждена\" и \"Одобрен администратором\" не будут выбраны."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "А3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "А4"
 
 #~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
 #~ msgstr "ALPHABET_lower=абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
@@ -18855,18 +19681,11 @@ msgstr "…"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Возникла неожиданная ошибка в базе данных."
 
-#~ msgid "Ancestors of "
-#~ msgstr "Предки "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "Номер потомственного файла"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "Вы уверены, что желаете отменить все изменения в базе данных?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Ариал"
 
 #~ msgid "Available blocks"
 #~ msgstr "Доступные блоки"
@@ -18880,9 +19699,6 @@ msgstr "…"
 #~ msgid "Binary data object"
 #~ msgstr "Бинарный объект данных"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "Место рождения содержит"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Сведения о рождении и смерти на схемах"
 
@@ -18892,9 +19708,6 @@ msgstr "…"
 #~ msgid "Birth date range start"
 #~ msgstr "Начало диапазона даты рождения"
 
-#~ msgid "Brother"
-#~ msgstr "Брат"
-
 #~ msgid "Burial place contains"
 #~ msgstr "Место захоронения содержит"
 
@@ -18903,15 +19716,6 @@ msgstr "…"
 
 #~ msgid "Change family members"
 #~ msgstr "Редактировать членов семьи"
-
-#~ msgid "Child of "
-#~ msgstr "Ребёнок от "
-
-#~ msgid "Children of "
-#~ msgstr "Дети от "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Выберите родственников"
 
 #~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
 #~ msgstr "Выберите изображение миниатюры, которое Вы хотите загрузить. Хотя предварительный просмотр изображений генерируется автоматически, Вы можете создать свою собственную миниатюру для других типов файлов. Например, Вы можете добавить изображение из фильма или фото человека, который сделал запись звука."
@@ -19026,12 +19830,6 @@ msgstr "…"
 #~ msgid "Date of residence"
 #~ msgstr "Дата проживания"
 
-#~ msgid "Daughter"
-#~ msgstr "Дочь"
-
-#~ msgid "Death Place contains"
-#~ msgstr "Место смерти содержит"
-
 #~ msgid "Death date range end"
 #~ msgstr "Период даты смерти заканчивается"
 
@@ -19040,13 +19838,6 @@ msgstr "…"
 
 #~ msgid "Default theme"
 #~ msgstr "Тема по умолчанию"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "Потомки от "
 
 #~ msgid "Descent steps"
 #~ msgstr "Всего поколений:"
@@ -19066,15 +19857,6 @@ msgstr "…"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Зулькада"
-
-#~ msgid "Differences"
-#~ msgstr "Различия"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Прямая линия предков"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Прямая линия предков и их семей"
 
 #~ msgid "Display %s"
 #~ msgstr "Показать %s"
@@ -19111,15 +19893,6 @@ msgstr "…"
 
 #~ msgid "End year"
 #~ msgstr "Год конца"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Окончание диапазона даты изменения"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Введите ID семьи"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Введите ID персоны"
 
 #~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
 #~ msgstr "Введите заголовок для элемента редактирования. Если это название мультимедийных элементов, введите описательное название, которое будет идентифицировать этот элемент для пользователя."
@@ -19190,20 +19963,11 @@ msgstr "…"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "GEDCOM-Корзина генеалогического древа"
 
-#~ msgid "Family with husband"
-#~ msgstr "Семья с мужем"
-
-#~ msgid "Family with wife"
-#~ msgstr "Семья с женой"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Место рождения отца"
 
 #~ msgid "Father’s age"
 #~ msgstr "Возраст отца"
-
-#~ msgid "Font"
-#~ msgstr "Шрифт"
 
 #~ msgid "For LDS ordinances, this field records the temple where it was performed."
 #~ msgstr "Для таинства Мормонов, это поле записывает храм, где оно было выполнено."
@@ -19232,38 +19996,11 @@ msgstr "…"
 #~ msgid "Gedcom"
 #~ msgstr "Gedcom"
 
-#~ msgid "Generation "
-#~ msgstr "Поколение "
-
 #~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
 #~ msgstr "Дает пользователям возможность выбора своей собственной темы из меню. В основных настройках вы должны позволить пользователям выбирать тему."
 
 #~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
 #~ msgstr "Дать возможность пользователям зарегистрироваться на  сайте.<br><br>Посетитель получит письмо с ссылкой для верификации регистрации. Учетная запись становится активной после одобрения администратора."
-
-#~ msgid "He "
-#~ msgstr "Он "
-
-#~ msgid "He died"
-#~ msgstr "Он умер"
-
-#~ msgid "He married"
-#~ msgstr "Он женился"
-
-#~ msgid "He resided at"
-#~ msgstr "Он проживал в"
-
-#~ msgid "He was born"
-#~ msgstr "Родился"
-
-#~ msgid "He was buried"
-#~ msgstr "Был похоронён"
-
-#~ msgid "He was christened"
-#~ msgstr "Он был крещён"
-
-#~ msgid "He was cremated"
-#~ msgstr "Он был кримирован"
 
 #~ msgid "Hello %s…"
 #~ msgstr "Здравствуйте, %s…"
@@ -19273,13 +20010,6 @@ msgstr "…"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Здравствуйте, администратор…"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Гельветика"
-
-#~ msgid "Her occupation was"
-#~ msgstr "Её род занятий было"
 
 #~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
 #~ msgstr "Здесь Вы можете добавить факт к редактируемой записи.<br><br>Сначала выберите факт из выпадающего списка и нажмите кнопку <b>Добавить</b>. Этот список содержит все факты, которые вы можете добавить."
@@ -19295,9 +20025,6 @@ msgstr "…"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "Скрыть &amp; показать"
-
-#~ msgid "His occupation was"
-#~ msgstr "Его род занятий было"
 
 #~ msgid "Hit count:"
 #~ msgstr "Посетителей:"
@@ -19377,14 +20104,6 @@ msgstr "…"
 #~ msgid "LDS temple"
 #~ msgstr "Храм мормонов"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "Letter"
-
 #~ msgid "Link ID"
 #~ msgstr "Идентификатор связи"
 
@@ -19414,15 +20133,6 @@ msgstr "…"
 
 #~ msgid "Main section blocks"
 #~ msgstr "Блоки основной секции"
-
-#~ msgid "Marriage Date range end"
-#~ msgstr "Конец диапазона даты брака"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Начало диапазона даты брака"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "Место брака содержит"
 
 #~ msgid "Marriage intention"
 #~ msgstr "Помолвка"
@@ -19462,9 +20172,6 @@ msgstr "…"
 
 #~ msgid "Move right"
 #~ msgstr "Вправо"
-
-#~ msgid "Name List"
-#~ msgstr "Список имён"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -19514,9 +20221,6 @@ msgstr "…"
 #~ msgid "Online editing"
 #~ msgstr "Редактировать в режиме онлайн"
 
-#~ msgid "Orientation"
-#~ msgstr "Ориентация"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Другая папка… введите, пожалуйста"
 
@@ -19532,20 +20236,8 @@ msgstr "…"
 #~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
 #~ msgstr "Настройка PHP \"%1$s\" выключена. Без этого, следующая функция не будет работать: %2$s.  Пожалуйста свяжитесь с администратором сервера (хостинг-провайдер) с просьбой активировать эту настройку."
 
-#~ msgid "Page"
-#~ msgstr "Страница"
-
-#~ msgid "Page size"
-#~ msgstr "Формат страницы"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Родители, братья, сёстры"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Возраст родителя:"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Восходящее<br>Древо"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "Место крещения (мормоны)"
@@ -19594,9 +20286,6 @@ msgstr "…"
 
 #~ msgid "President’s Office"
 #~ msgstr "Канцелярия президента церкви мормонов"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "Отображать основные события если нет сведений?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -19729,30 +20418,6 @@ msgstr "…"
 #~ msgid "Sha’aban"
 #~ msgstr "Шаабан"
 
-#~ msgid "She "
-#~ msgstr "Она "
-
-#~ msgid "She died"
-#~ msgstr "Она умерла"
-
-#~ msgid "She married"
-#~ msgstr "Она вышла замуж"
-
-#~ msgid "She resided at"
-#~ msgstr "Она проживала в"
-
-#~ msgid "She was born"
-#~ msgstr "Родилась"
-
-#~ msgid "She was buried"
-#~ msgstr "Была похоронена"
-
-#~ msgid "She was christened"
-#~ msgstr "Она была крещена"
-
-#~ msgid "She was cremated"
-#~ msgstr "Она была кримирована"
-
 #~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
 #~ msgstr "Используете ли Вы базу данных Geonames в качестве предложений для географических названий?<br>Когда эта опция установлена в <b>Да</b>, база данных Geonames будет предлагать географические названия на основе ввода. При установке <b>Нет</b> поиск производится только в текущей базе генеалогического дерева. Чем больше имен Вы вводите, тем более точные предложения. Эта опция может привести к замедлению ввода данных, особенно, если Вы используете медленное соединение с Интернетом.<br>Географическая база данных Geonames доступна бесплатно. Она содержит более восьми миллионов географических названий."
 
@@ -19764,9 +20429,6 @@ msgstr "…"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "Показать все места в виде списка."
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Показать детей предков?"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "Видимость мертвых людей"
@@ -19798,12 +20460,6 @@ msgstr "…"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Показать персон, скончавшихся до ста лет назад включительно."
 
-#~ msgid "Show notes?"
-#~ msgstr "Показать примечания?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Показать профессии?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Показывать только события для ныне живущих?"
 
@@ -19813,23 +20469,11 @@ msgstr "…"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Показывать только персоны, события или все?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Показать внесённые изменения"
-
-#~ msgid "Show photos?"
-#~ msgstr "Показывать фото?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Показать иерархию мест"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Показать родственников"
-
-#~ msgid "Show residences?"
-#~ msgstr "Показать места жительства?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Показать источники?"
 
 #~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
 #~ msgstr "Показать «лепестки» супружеские пары или отдельные лица. Это люди, которые живы, но не имеют детей, записанные в базе данных."
@@ -19840,32 +20484,14 @@ msgstr "…"
 #~ msgid "Showing %1$s to %2$s of %3$s"
 #~ msgstr "Показано %1$s до %2$s из %3$s"
 
-#~ msgid "Sister"
-#~ msgstr "Сестра"
-
 #~ msgid "Social security number"
 #~ msgstr "Номер социального страхования"
-
-#~ msgid "Son"
-#~ msgstr "Сын"
 
 #~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
 #~ msgstr "Цитата из источника может включать в себя поля для записи качества данных (первичный, вторичный и т.д.) и дату записи события в источнике. Если вы не используете эти поля, вы можете отключить их при создании новых цитат источника."
 
-#~ msgid "Sources to the events"
-#~ msgstr "Источники событий"
-
 #~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
 #~ msgstr "Указывает, будут ли сообщения, отправленные через <b>webtrees</b> сохранены в базе данных. Если установлено значение <b>Да</b> - пользователи смогут прочитать свои сообщения при входе в <b>webtrees</b>. Если установлено значение <b>Нет</b> - сообщения отправляются только по электронной почте."
-
-#~ msgid "Spouse"
-#~ msgstr "Супруг(а)"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Супруги и дети"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Начало диапазона дат изменения"
 
 #~ msgid "Surname option"
 #~ msgstr "Традиция смены фамилии"
@@ -20038,15 +20664,6 @@ msgstr "…"
 #~ msgid "To source"
 #~ msgstr "С источником"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Всего принятых изменений: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Всего персон"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Всего изменений: "
-
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
 #~ msgstr "Transport Layer Security (безопасность транспортного уровня) (TLS) и Secure Sockets Layer (уровень защищенных сокетов)(SSL) — криптографические протоколы, обеспечивающие защищённую передачу данных между узлами в сети Интернет.<br><br>TLS 1.0, 1.1 и 1.2 являются стандартными развитиями SSL 3.0. TLS 1.0 и SSL 3.1. Дальнейшая работа по SSL в настоящее время проводится под новым именем - TLS.<br><br> Если ваш SMTP-сервер требует SSL протокол во время входа в систему, Вы должны выбрать вариант <b>SSL</b>. Если ваш SMTP-сервер требует протокол TLS во время входа в систему, вы должны выбрать вариант <b>TLS</b>."
 
@@ -20061,9 +20678,6 @@ msgstr "…"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Использовать протокол SMTP для отсылки электронных писем"
-
-#~ msgid "Use colors"
-#~ msgstr "Использовать цвета"
 
 #~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
 #~ msgstr "Использование имени и пароля для подключения к SMTP-серверу.<br><br> Некоторые SMTP-серверы требуют аутентификации, прежде чем они примут исходящую электронную почту."
@@ -20218,9 +20832,6 @@ msgstr "…"
 #~ msgid "before %d"
 #~ msgstr "до %d"
 
-#~ msgid "daughter of"
-#~ msgstr "дочь от"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "сват"
@@ -20232,14 +20843,6 @@ msgstr "…"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "сват"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "умерла"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "умер"
 
 #~ msgid "estate name"
 #~ msgstr "название недвижимости"
@@ -20285,17 +20888,6 @@ msgstr "…"
 #~ msgid "last"
 #~ msgstr "последняя"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "вышла замуж"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "женился"
-
-#~ msgid "son of"
-#~ msgstr "сын от"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "Сват"
@@ -20310,14 +20902,6 @@ msgstr "…"
 
 #~ msgid "utf8_unicode_ci"
 #~ msgstr "utf8_unicode_ci"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "родилась"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "родился"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "база данных webtrees должна быть на том же сервере что и от PGV"

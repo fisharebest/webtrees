@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-09 17:47+0000\n"
+"POT-Creation-Date: 2013-11-24 22:39+0000\n"
 "PO-Revision-Date: 2013-04-02 19:56+0000\n"
 "Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: \n"
@@ -18,6 +18,32 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+
+#: modules_v3/ahnentafel_report/report.xml:158
+#: modules_v3/ahnentafel_report/report.xml:186
+#: modules_v3/ahnentafel_report/report.xml:281
+#: modules_v3/ahnentafel_report/report.xml:309
+#: modules_v3/ahnentafel_report/report.xml:334
+#: modules_v3/ahnentafel_report/report.xml:365
+msgid " but the details are unknown"
+msgstr " 但细节是未知的"
+
+#: modules_v3/ahnentafel_report/report.xml:157
+#: modules_v3/ahnentafel_report/report.xml:185
+#: modules_v3/ahnentafel_report/report.xml:212
+#: modules_v3/ahnentafel_report/report.xml:280
+#: modules_v3/ahnentafel_report/report.xml:308
+#: modules_v3/ahnentafel_report/report.xml:333
+#: modules_v3/ahnentafel_report/report.xml:364
+#: modules_v3/descendancy_report/report.xml:125
+#: modules_v3/descendancy_report/report.xml:157
+#: modules_v3/descendancy_report/report.xml:314
+#: modules_v3/descendancy_report/report.xml:352
+#: modules_v3/descendancy_report/report.xml:383
+#: modules_v3/descendancy_report/report.xml:422
+#: modules_v3/descendancy_report/report.xml:453
+msgid " in "
+msgstr " 在 "
 
 #: statisticsplot.php:804
 msgid " per gender"
@@ -621,66 +647,81 @@ msgstr "一个可能的webtrees用户在 %s 注册"
 
 #. I18N: Description of the “Pedigree” module
 #: modules_v3/pedigree_report/module.php:41
+#: modules_v3/pedigree_report/report.xml:5
 msgid "A report of an individual’s ancestors, formatted as a tree."
 msgstr "树形风格的祖先报告"
 
 #. I18N: Description of the “Ancestors” module
 #: modules_v3/ahnentafel_report/module.php:41
+#: modules_v3/ahnentafel_report/report.xml:6
 msgid "A report of an individual’s ancestors, in a narrative style."
 msgstr "叙事风格的祖先报告"
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy_report/module.php:41
+#: modules_v3/descendancy_report/report.xml:5
 msgid "A report of an individual’s descendants, in a narrative style."
 msgstr "叙事风格的后代报告"
 
 #. I18N: Description of the “Individual” module
 #: modules_v3/individual_report/module.php:41
+#: modules_v3/individual_report/report.xml:5
 msgid "A report of an individual’s details."
 msgstr "个人的详细报告"
 
+#: modules_v3/fact_sources/report.xml:5
+msgid "A report of facts which are supported by a given source."
+msgstr "由一个给定的资源的事实报告"
+
 #. I18N: Description of the “Family” module
 #: modules_v3/family_group_report/module.php:41
+#: modules_v3/family_group_report/report.xml:5
 msgid "A report of family members and their details."
 msgstr "家庭成员和他们的细节的报告。"
 
 #. I18N: Description of the “Deaths” module
-#: modules_v3/death_report/module.php:41
+#: modules_v3/death_report/module.php:41 modules_v3/death_report/report.xml:5
 msgid "A report of individuals who died in a given time or place."
 msgstr "死亡时间或地点的报告。"
 
 #. I18N: Description of the “Occupations” module
 #: modules_v3/occupation_report/module.php:41
+#: modules_v3/occupation_report/report.xml:5
 msgid "A report of individuals who had a given occupation."
 msgstr "职业的报告。"
 
 #. I18N: Description of the “Births” module
-#: modules_v3/birth_report/module.php:41
+#: modules_v3/birth_report/module.php:41 modules_v3/birth_report/report.xml:5
 msgid "A report of individuals who were born in a given time or place."
 msgstr "出生时间和地点的报告"
 
 #. I18N: Description of the “Cemeteries” module
 #: modules_v3/cemetery_report/module.php:41
+#: modules_v3/cemetery_report/report.xml:5
 msgid "A report of individuals who were buried in a given place."
 msgstr "埋葬地报告"
 
 #. I18N: Description of the “Marriages” module
 #: modules_v3/marriage_report/module.php:41
+#: modules_v3/marriage_report/report.xml:5
 msgid "A report of individuals who were married in a given time or place."
 msgstr "结婚的时间和地点的报告"
 
 #. I18N: Description of the “Changes” module
 #: modules_v3/change_report/module.php:41
+#: modules_v3/change_report/report.xml:5
 msgid "A report of recent and pending changes."
 msgstr "最近变更和待定的报告。"
 
 #. I18N: Description of the “Related families”
 #: modules_v3/individual_ext_report/module.php:41
+#: modules_v3/individual_ext_report/report.xml:5
 msgid "A report of the families that are closely related to an individual."
 msgstr "一个人的家庭相关的报告。"
 
 #. I18N: Description of the “Related individuals” module
 #: modules_v3/relative_ext_report/module.php:41
+#: modules_v3/relative_ext_report/report.xml:5
 msgid "A report of the individuals that are closely related to an individual."
 msgstr "个人密切相关的个人报告。"
 
@@ -691,11 +732,12 @@ msgstr "资源信息报告。"
 
 #. I18N: Description of the “Missing data”
 #: modules_v3/missing_facts_report/module.php:41
+#: modules_v3/missing_facts_report/report.xml:5
 msgid "A report of the information that is missing for an individual and their relatives."
 msgstr "一个人和他们的亲属的丢失信息报告。"
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:41
+#: modules_v3/bdm_report/module.php:41 modules_v3/bdm_report/report.xml:5
 msgid "A report of vital records for a given date or place."
 msgstr "对于一个给定的日期或地点的重要记录报告。"
 
@@ -765,6 +807,44 @@ msgstr ""
 #: includes/functions/functions_date.php:115
 msgid "A.M."
 msgstr "上午."
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A3"
+msgstr "A3"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A4"
+msgstr "A4"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1551,11 +1631,19 @@ msgstr "活着的"
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
 #: indilist.php:167 indilist.php:251 indilist.php:253
-#: library/WT/Stats.php:3325 modules_v3/faq/module.php:186
+#: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
 #: modules_v3/googlemap/admin_places.php:756
 #: modules_v3/googlemap/module.php:1481 modules_v3/googlemap/module.php:1497
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:8
 #: modules_v3/random_media/module.php:264
+#: modules_v3/relative_ext_report/report.xml:7
 #: modules_v3/user_messages/module.php:91
 msgid "All"
 msgstr "全部"
@@ -1681,6 +1769,7 @@ msgstr "数据库发生意外错误。"
 #: library/WT/Controller/Ancestry.php:83
 #: library/WT/Controller/Fanchart.php:314 library/WT/MenuBar.php:106
 #: modules_v3/ahnentafel_report/module.php:35
+#: modules_v3/ahnentafel_report/report.xml:5
 msgid "Ancestors"
 msgstr "祖先树"
 
@@ -1688,6 +1777,10 @@ msgstr "祖先树"
 #: library/WT/Gedcom/Tag.php:124
 msgid "Ancestors interest"
 msgstr "祖先兴趣"
+
+#: modules_v3/ahnentafel_report/report.xml:53
+msgid "Ancestors of "
+msgstr "祖先 "
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Ancestry.php:80
@@ -1867,6 +1960,25 @@ msgstr ""
 #: library/WT/Stats.php:3784
 msgid "Argentina"
 msgstr "阿根廷"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Arial"
+msgstr "宋体"
 
 #: library/WT/Stats.php:3785
 msgid "Armenia"
@@ -2316,7 +2428,32 @@ msgid "Birmingham, Alabama"
 msgstr "伯明翰，阿拉巴马州"
 
 #. I18N: gedcom tag BIRT
-#: library/WT/Gedcom/Tag.php:140
+#: library/WT/Gedcom/Tag.php:140 modules_v3/bdm_report/report.xml:56
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:177
+#: modules_v3/family_group_report/report.xml:528
+#: modules_v3/family_group_report/report.xml:869
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:54
 msgid "Birth"
 msgstr "出生"
 
@@ -2334,6 +2471,18 @@ msgstr "出生"
 msgctxt "Pedigree"
 msgid "Birth"
 msgstr "出生"
+
+#: modules_v3/bdm_report/report.xml:9 modules_v3/birth_report/report.xml:9
+msgid "Birth Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
+msgid "Birth Date range start"
+msgstr ""
+
+#: modules_v3/birth_report/report.xml:7
+msgid "Birth Place contains"
+msgstr "出生地包含"
 
 #: library/WT/Stats.php:1014 statistics.php:553
 msgid "Birth by country"
@@ -2417,7 +2566,8 @@ msgid "Birth:"
 msgstr "生日："
 
 #. I18N: Name of a module/report
-#: modules_v3/birth_report/module.php:35
+#: modules_v3/birth_report/module.php:35 modules_v3/birth_report/report.xml:4
+#: modules_v3/birth_report/report.xml:29
 msgid "Births"
 msgstr "出生报告"
 
@@ -2582,6 +2732,11 @@ msgstr "英属维京群岛"
 msgid "British West Indies"
 msgstr "英属西印度群岛"
 
+#: modules_v3/individual_ext_report/report.xml:311
+#: modules_v3/individual_report/report.xml:313
+msgid "Brother"
+msgstr "兄弟"
+
 #: library/WT/Date/French.php:71
 msgctxt "GENITIVE"
 msgid "Brumaire"
@@ -2615,9 +2770,15 @@ msgid "Bulgaria"
 msgstr "保加利亚"
 
 #. I18N: gedcom tag BURI
-#: library/WT/Gedcom/Tag.php:147
+#: library/WT/Gedcom/Tag.php:147 modules_v3/family_group_report/report.xml:346
+#: modules_v3/family_group_report/report.xml:697
+#: modules_v3/family_group_report/report.xml:1038
 msgid "Burial"
 msgstr "埋葬"
+
+#: modules_v3/cemetery_report/report.xml:6
+msgid "Burial Place contains"
+msgstr ""
 
 #: library/WT/Gedcom/Tag.php:531
 msgid "Burial of a brother"
@@ -2889,11 +3050,13 @@ msgstr "开曼群岛"
 
 #. I18N: Name of a module/report
 #: modules_v3/cemetery_report/module.php:35
+#: modules_v3/cemetery_report/report.xml:4
+#: modules_v3/cemetery_report/report.xml:33
 msgid "Cemeteries"
 msgstr "墓地"
 
 #. I18N: gedcom tag CEME
-#: library/WT/Gedcom/Tag.php:153
+#: library/WT/Gedcom/Tag.php:153 modules_v3/cemetery_report/report.xml:52
 msgid "Cemetery"
 msgstr "墓地"
 
@@ -2971,6 +3134,8 @@ msgstr "由 %2$s 修改 %1$s"
 
 #. I18N: Name of a module/report
 #: admin_site_change.php:29 modules_v3/change_report/module.php:35
+#: modules_v3/change_report/report.xml:4
+#: modules_v3/change_report/report.xml:42
 msgid "Changes"
 msgstr "变化"
 
@@ -3042,6 +3207,11 @@ msgstr "芝加哥伊利诺斯"
 msgid "Child"
 msgstr "儿女"
 
+#: modules_v3/ahnentafel_report/report.xml:394
+#: modules_v3/descendancy_report/report.xml:479
+msgid "Child of "
+msgstr "孩子 "
+
 #. I18N: e.g. “Child of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:331
 #, php-format
@@ -3049,13 +3219,20 @@ msgid "Child of %s"
 msgstr "%s 孩子"
 
 #: includes/functions/functions_print_lists.php:215
-#: includes/functions/functions_print_lists.php:637 statisticsplot.php:784
+#: includes/functions/functions_print_lists.php:637
+#: modules_v3/family_group_report/report.xml:753
+#: modules_v3/relative_ext_report/report.xml:121 statisticsplot.php:784
 msgid "Children"
 msgstr "孩子"
 
 #: statistics.php:288
 msgid "Children in family"
 msgstr "家庭中的孩子"
+
+#: modules_v3/ahnentafel_report/report.xml:397
+#: modules_v3/descendancy_report/report.xml:482
+msgid "Children of "
+msgstr "孩子 "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: help_text.php:962
@@ -3094,6 +3271,12 @@ msgstr "中国"
 msgid "Choose a report to run"
 msgstr "选择一个报告来运行"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Choose relatives"
+msgstr "选择亲戚"
+
 #: help_text.php:355
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
 msgstr "从下拉列表中选择合适的性。<b>未知</b>选项表明性别是未知的。"
@@ -3115,7 +3298,9 @@ msgid "Choose: "
 msgstr "选择: "
 
 #. I18N: gedcom tag CHR
-#: library/WT/Gedcom/Tag.php:162
+#: library/WT/Gedcom/Tag.php:162 modules_v3/family_group_report/report.xml:201
+#: modules_v3/family_group_report/report.xml:552
+#: modules_v3/family_group_report/report.xml:893
 msgid "Christening"
 msgstr "洗礼"
 
@@ -3231,7 +3416,7 @@ msgctxt "MALE"
 msgid "Civil Registrar"
 msgstr "男公证人"
 
-#: library/WT/Gedcom/Tag.php:255
+#: library/WT/Gedcom/Tag.php:255 modules_v3/fact_sources/report.xml:200
 msgid "Civil marriage"
 msgstr "公证结婚"
 
@@ -3821,7 +4006,10 @@ msgstr "数据库用户帐户"
 
 #. I18N: gedcom tag DATE
 #: edit_changes.php:173 help_text.php:177 help_text.php:207
-#: library/WT/Gedcom/Tag.php:183
+#: library/WT/Gedcom/Tag.php:183 modules_v3/bdm_report/report.xml:130
+#: modules_v3/bdm_report/report.xml:156 modules_v3/bdm_report/report.xml:190
+#: modules_v3/birth_report/report.xml:38 modules_v3/death_report/report.xml:44
+#: modules_v3/marriage_report/report.xml:44
 msgid "Date"
 msgstr "日期"
 
@@ -3984,6 +4172,12 @@ msgstr "日期只对于有效的日历转换。例如,只有日期在 %1$s 和 %
 msgid "Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords."
 msgstr "日期存储使用英语缩写词和关键词。缩写可用来替代这些缩写词和关键词。"
 
+#: modules_v3/family_group_report/report.xml:798
+#: modules_v3/individual_ext_report/report.xml:554
+#: modules_v3/individual_report/report.xml:556
+msgid "Daughter"
+msgstr "女儿"
+
 #. I18N: e.g. “Daughter of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:328
 #, php-format
@@ -4008,9 +4202,46 @@ msgid "Dead"
 msgstr "去世的"
 
 #. I18N: gedcom tag DEAT
-#: library/WT/Gedcom/Tag.php:184
+#: library/WT/Gedcom/Tag.php:184 modules_v3/bdm_report/report.xml:85
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:284
+#: modules_v3/family_group_report/report.xml:635
+#: modules_v3/family_group_report/report.xml:976
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:60
 msgid "Death"
 msgstr "去世"
+
+#: modules_v3/bdm_report/report.xml:11 modules_v3/death_report/report.xml:9
+msgid "Death Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
+msgid "Death Date range start"
+msgstr ""
+
+#: modules_v3/death_report/report.xml:7
+msgid "Death Place contains"
+msgstr "死亡地包含"
 
 #: library/WT/Stats.php:1031 statistics.php:561
 msgid "Death by country"
@@ -4148,7 +4379,8 @@ msgid "Death places"
 msgstr "去世地"
 
 #. I18N: Name of a module/report
-#: modules_v3/death_report/module.php:35
+#: modules_v3/death_report/module.php:35 modules_v3/death_report/report.xml:4
+#: modules_v3/death_report/report.xml:30
 msgid "Deaths"
 msgstr "去世"
 
@@ -4242,6 +4474,25 @@ msgstr "顶级的默认值"
 msgid "Degree"
 msgstr "程度"
 
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "DejaVu"
+msgstr "既视"
+
 #: admin_site_access.php:284 admin_site_change.php:275
 #: admin_site_clean.php:126 admin_site_logs.php:242 admin_trees_config.php:614
 #: admin_trees_manage.php:231 edit_interface.php:151
@@ -4326,6 +4577,10 @@ msgstr "子孙后代"
 #: library/WT/MenuBar.php:105 modules_v3/charts/module.php:206
 #: modules_v3/descendancy/module.php:34
 #: modules_v3/descendancy_report/module.php:35
+#: modules_v3/descendancy_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
 msgid "Descendants"
 msgstr "后代图"
 
@@ -4333,6 +4588,10 @@ msgstr "后代图"
 #: library/WT/Gedcom/Tag.php:189
 msgid "Descendants interest"
 msgstr "后代利益"
+
+#: modules_v3/descendancy_report/report.xml:40
+msgid "Descendants of "
+msgstr "后代 "
 
 #. I18N: %s is an individual’s name
 #: descendancy.php:117 descendancy.php:123
@@ -4466,9 +4725,25 @@ msgstr "孩子时死亡：豁免"
 msgid "Died as an infant: exempt"
 msgstr "死亡的婴儿：免除"
 
+#: modules_v3/change_report/report.xml:58
+msgid "Differences"
+msgstr "日期差异"
+
 #: help_text.php:444
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
 msgstr "在世界上不同的地区使用不同的日历系统，许多其他的日历系统已过时。在可能的情况下，你应该使用日历中的事件的最初记录输入日期。你可以指定转换为一个更熟悉的日历来显示这些日期。如果你经常使用两个日历，你可以指定两个转换和日期将被转换为两个选定的日历。"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors"
+msgstr "直系祖先"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors and their families"
+msgstr "直接的祖先和他们的家庭"
 
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
@@ -4874,6 +5149,10 @@ msgstr "结束IP"
 msgid "End Year"
 msgstr "结束年"
 
+#: modules_v3/change_report/report.xml:7
+msgid "Ending range of change dates"
+msgstr "变更日期范围的结束"
+
 #. I18N: http://en.wikipedia.org/wiki/Endowment_house
 #: library/WT/Gedcom/Code/Temp.php:98
 msgid "Endowment House"
@@ -4887,6 +5166,20 @@ msgstr "订婚"
 #: library/WT/Stats.php:3847
 msgid "England"
 msgstr "英格兰"
+
+#: modules_v3/family_group_report/report.xml:7
+msgid "Enter Family ID"
+msgstr "输入家庭ID"
+
+#: modules_v3/ahnentafel_report/report.xml:7
+#: modules_v3/descendancy_report/report.xml:6
+#: modules_v3/individual_ext_report/report.xml:6
+#: modules_v3/individual_report/report.xml:6
+#: modules_v3/missing_facts_report/report.xml:6
+#: modules_v3/pedigree_report/report.xml:6
+#: modules_v3/relative_ext_report/report.xml:6
+msgid "Enter Individual ID"
+msgstr "输入个人ID"
 
 #: addmedia.php:448 modules_v3/gedcom_favorites/module.php:180
 msgid "Enter a Person, Family, or Source ID"
@@ -5016,7 +5309,9 @@ msgid "Europe"
 msgstr "欧洲"
 
 #. I18N: gedcom tag EVEN
-#: library/WT/Gedcom/Tag.php:208
+#: library/WT/Gedcom/Tag.php:208 modules_v3/fact_sources/report.xml:68
+#: modules_v3/fact_sources/report.xml:155
+#: modules_v3/missing_facts_report/report.xml:53
 msgid "Event"
 msgstr "事件"
 
@@ -5202,6 +5497,8 @@ msgid "Fact or event"
 msgstr "事实或事件"
 
 #. I18N: Name of a module/tab on the individual page.
+#: modules_v3/individual_ext_report/report.xml:151
+#: modules_v3/individual_report/report.xml:146
 #: modules_v3/personal_facts/module.php:34
 #: modules_v3/random_media/module.php:264
 msgid "Facts and events"
@@ -5246,7 +5543,9 @@ msgstr "福克兰群岛"
 #: includes/functions/functions_print_lists.php:1084
 #: includes/functions/functions_print_lists.php:1276
 #: library/WT/Controller/Search.php:594 library/WT/MenuBar.php:300
-#: mediaviewer.php:135 modules_v3/gedcom_stats/module.php:101
+#: mediaviewer.php:135 modules_v3/fact_sources/report.xml:150
+#: modules_v3/fact_sources/report.xml:312
+#: modules_v3/gedcom_stats/module.php:101
 #: modules_v3/gedcom_stats/module.php:316
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:188
 #: modules_v3/relatives/module.php:34 note.php:101 placelist.php:232
@@ -5267,6 +5566,9 @@ msgstr "家庭资源"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:928
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:935
 #: modules_v3/family_group_report/module.php:35
+#: modules_v3/family_group_report/report.xml:4
+#: modules_v3/family_group_report/report.xml:86
+#: modules_v3/family_group_report/report.xml:94
 #: modules_v3/family_nav/module.php:302
 msgid "Family"
 msgstr "家庭"
@@ -5384,8 +5686,14 @@ msgstr "养父母家庭"
 msgid "Family with foster parents"
 msgstr "寄养父母家庭"
 
+#: modules_v3/individual_ext_report/report.xml:433
+#: modules_v3/individual_report/report.xml:435
+msgid "Family with husband"
+msgstr "丈夫的家庭"
+
 #: library/WT/Gedcom/Code/Pedi.php:89 library/WT/Gedcom/Code/Pedi.php:94
-#: library/WT/Person.php:996
+#: library/WT/Person.php:996 modules_v3/individual_ext_report/report.xml:229
+#: modules_v3/individual_report/report.xml:231
 msgid "Family with parents"
 msgstr "父母家庭"
 
@@ -5407,6 +5715,11 @@ msgstr "配偶家庭"
 #: modules_v3/gedcom_stats/module.php:351 modules_v3/html/module.php:247
 msgid "Family with the most children"
 msgstr "孩子最多家庭"
+
+#: modules_v3/individual_ext_report/report.xml:427
+#: modules_v3/individual_report/report.xml:429
+msgid "Family with wife"
+msgstr "妻子的家庭"
 
 #: includes/functions/functions_print.php:102
 #: library/WT/Controller/Fanchart.php:55
@@ -5450,7 +5763,12 @@ msgctxt "NOMINATIVE"
 msgid "Farvardin"
 msgstr "第一月"
 
-#: search_advanced.php:210
+#: modules_v3/bdm_report/report.xml:116
+#: modules_v3/family_group_report/report.xml:462
+#: modules_v3/family_group_report/report.xml:722
+#: modules_v3/individual_ext_report/report.xml:235
+#: modules_v3/individual_report/report.xml:237
+#: modules_v3/relative_ext_report/report.xml:62 search_advanced.php:210
 msgid "Father"
 msgstr "父亲"
 
@@ -5463,7 +5781,7 @@ msgid "Father's age"
 msgstr "父亲的年龄"
 
 #. I18N: %s is the name of an individual’s father
-#: library/WT/Person.php:1634
+#: library/WT/Person.php:1638
 #, php-format
 msgid "Father: %s"
 msgstr "父亲: %s"
@@ -5621,6 +5939,7 @@ msgstr "找一个存储库"
 
 #: admin_site_merge.php:295 admin_site_merge.php:316 find.php:91
 #: includes/functions/functions_print.php:1156
+#: modules_v3/fact_sources/report.xml:6
 msgid "Find a source"
 msgstr "找一个资源"
 
@@ -5699,6 +6018,24 @@ msgstr "文件夹"
 #: addmedia.php:530 admin_media_upload.php:212 help_text.php:1449
 msgid "Folder name on server"
 msgstr "服务器上文件夹名称"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgid "Font"
+msgstr "字体"
 
 #: help_text.php:375
 msgid "For LDS ordinances, this field records the Temple where it was performed."
@@ -5927,7 +6264,11 @@ msgid "Gambia"
 msgstr "冈比亚"
 
 #. I18N: gedcom tag SEX
-#: library/WT/Gedcom/Tag.php:314
+#: library/WT/Gedcom/Tag.php:314 modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592
 msgid "Gender"
 msgstr "性别"
 
@@ -5963,8 +6304,17 @@ msgstr "从 %s 生成"
 msgid "Generation"
 msgstr "代"
 
+#: modules_v3/ahnentafel_report/report.xml:76
+#: modules_v3/descendancy_report/report.xml:53
+msgid "Generation "
+msgstr "代 "
+
 #: ancestry.php:112 descendancy.php:78 familybook.php:62 fanchart.php:68
-#: hourglass.php:75 modules_v3/googlemap/module.php:676 pedigree.php:44
+#: hourglass.php:75 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7
+#: modules_v3/googlemap/module.php:676
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/missing_facts_report/report.xml:8 pedigree.php:44
 msgid "Generations"
 msgstr "包含几代人"
 
@@ -6217,6 +6567,40 @@ msgstr "汉密尔顿,新西兰"
 msgid "Hartford, Connecticut"
 msgstr "康涅狄格州哈特福德"
 
+#: modules_v3/descendancy_report/report.xml:427
+msgid "He "
+msgstr "他 "
+
+#: modules_v3/ahnentafel_report/report.xml:289
+msgid "He died"
+msgstr "他去世了"
+
+#: modules_v3/ahnentafel_report/report.xml:258
+#: modules_v3/descendancy_report/report.xml:172
+msgid "He married"
+msgstr "他结婚了"
+
+#: modules_v3/ahnentafel_report/report.xml:220
+msgid "He resided at"
+msgstr "他居住在"
+
+#: modules_v3/descendancy_report/report.xml:400
+msgid "He was born"
+msgstr "他出生"
+
+#: modules_v3/ahnentafel_report/report.xml:345
+msgid "He was buried"
+msgstr "他被葬"
+
+#: modules_v3/ahnentafel_report/report.xml:164
+msgid "He was christened"
+msgstr "他被命名为"
+
+#: modules_v3/ahnentafel_report/report.xml:314
+#: modules_v3/ahnentafel_report/report.xml:341
+msgid "He was cremated"
+msgstr "他被火化"
+
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:645
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:728
@@ -6269,6 +6653,29 @@ msgstr "帮助"
 #: library/WT/Gedcom/Code/Temp.php:110
 msgid "Helsinki, Finland"
 msgstr "芬兰赫尔辛基"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Helvetica"
+msgstr "黑体"
+
+#: modules_v3/ahnentafel_report/report.xml:194
+msgid "Her occupation was"
+msgstr "她的职业是"
 
 #: modules_v3/googlemap/help_text.php:71
 msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
@@ -6365,6 +6772,8 @@ msgstr "选中一个块名称,然后点击一个箭头图标移动那选中块�
 
 #. I18N: gedcom tag _PRIM
 #: library/WT/Gedcom/Tag.php:746
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
 msgid "Highlighted image"
 msgstr "突出图像"
 
@@ -6372,6 +6781,10 @@ msgstr "突出图像"
 #: help_text.php:227 library/WT/Date/Hijri.php:41
 msgid "Hijri"
 msgstr "伊斯兰历"
+
+#: modules_v3/ahnentafel_report/report.xml:193
+msgid "His occupation was"
+msgstr "他的职业是"
 
 #: modules_v3/personal_facts/module.php:88
 msgid "Historical facts"
@@ -6437,6 +6850,16 @@ msgstr "匈牙利"
 
 #. I18N: gedcom tag HUSB
 #: edit_interface.php:543 library/WT/Gedcom/Tag.php:235
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+#: modules_v3/family_group_report/report.xml:142
+#: modules_v3/family_group_report/report.xml:1076
+#: modules_v3/individual_ext_report/report.xml:194
+#: modules_v3/individual_ext_report/report.xml:208
+#: modules_v3/individual_ext_report/report.xml:441
+#: modules_v3/individual_report/report.xml:189
+#: modules_v3/individual_report/report.xml:210
+#: modules_v3/individual_report/report.xml:443
 msgid "Husband"
 msgstr "丈夫"
 
@@ -6698,6 +7121,8 @@ msgstr "印度"
 #: inverselink.php:110 library/WT/Gedcom/Tag.php:240
 #: modules_v3/charts/module.php:221 modules_v3/googlemap/module.php:673
 #: modules_v3/individual_report/module.php:35
+#: modules_v3/individual_report/report.xml:4
+#: modules_v3/individual_report/report.xml:85
 #: modules_v3/stories/module.php:247 modules_v3/stories/module.php:350
 #: modules_v3/stories/module.php:416 pedigree.php:43
 msgid "Individual"
@@ -6744,6 +7169,8 @@ msgstr "个人记录"
 #: includes/functions/functions_print_lists.php:1365 indilist.php:132
 #: indilist.php:135 library/WT/Controller/Search.php:593
 #: library/WT/MenuBar.php:298 mediaviewer.php:132
+#: modules_v3/fact_sources/report.xml:52
+#: modules_v3/fact_sources/report.xml:256
 #: modules_v3/gedcom_stats/module.php:93
 #: modules_v3/gedcom_stats/module.php:300
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:172
@@ -7199,7 +7626,8 @@ msgstr "LDS 配偶密封"
 msgid "Laie, Hawaii"
 msgstr "Laie,夏威夷"
 
-#: admin_trees_config.php:812 pedigree.php:61
+#: admin_trees_config.php:812 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Landscape"
 msgstr "横图表"
 
@@ -7231,7 +7659,8 @@ msgid "Las Vegas, Nevada"
 msgstr "拉斯维加斯,内华达州"
 
 #. I18N: gedcom tag CHAN
-#: library/WT/Gedcom/Tag.php:157
+#: library/WT/Gedcom/Tag.php:157 modules_v3/change_report/report.xml:64
+#: modules_v3/change_report/report.xml:106
 msgid "Last change"
 msgstr "最新更改"
 
@@ -7309,6 +7738,25 @@ msgstr "未录入孩子的"
 msgid "Lebanon"
 msgstr "黎巴嫩"
 
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Legal"
+msgstr "约定"
+
 #. I18N: gedcom tag LEGA
 #: library/WT/Gedcom/Tag.php:244
 msgid "Legatee"
@@ -7321,6 +7769,25 @@ msgstr "婚姻长度"
 #: library/WT/Stats.php:3912
 msgid "Lesotho"
 msgstr "莱索托"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Letter"
+msgstr "纸张大小"
 
 #: modules_v3/googlemap/admin_places.php:175
 #: modules_v3/googlemap/module.php:380 modules_v3/googlemap/module.php:1598
@@ -7697,14 +8164,27 @@ msgid "March"
 msgstr "三月"
 
 #. I18N: gedcom tag MARR
-#: library/WT/Gedcom/Tag.php:252
+#: library/WT/Gedcom/Tag.php:252 modules_v3/bdm_report/report.xml:76
+#: modules_v3/family_group_report/report.xml:372
 msgid "Marriage"
 msgstr "婚姻"
+
+#: modules_v3/marriage_report/report.xml:9
+msgid "Marriage Date range end"
+msgstr "婚姻结束日期范围"
+
+#: modules_v3/marriage_report/report.xml:8
+msgid "Marriage Date range start"
+msgstr "婚姻的日期范围开始"
 
 #. I18N: gedcom tag _MARI
 #: library/WT/Gedcom/Tag.php:744
 msgid "Marriage Intention"
 msgstr "婚姻的意图"
+
+#: modules_v3/marriage_report/report.xml:7
+msgid "Marriage Place contains"
+msgstr "婚姻所含"
 
 #. I18N: gedcom tag MARB
 #: library/WT/Gedcom/Tag.php:247
@@ -7849,6 +8329,8 @@ msgstr "婚姻类型未知"
 
 #. I18N: Name of a module/report
 #: modules_v3/marriage_report/module.php:35
+#: modules_v3/marriage_report/report.xml:4
+#: modules_v3/marriage_report/report.xml:28
 msgid "Marriages"
 msgstr "婚姻"
 
@@ -8222,6 +8704,8 @@ msgstr "丢失PHP临时目录"
 
 #. I18N: Name of a module/report
 #: modules_v3/missing_facts_report/module.php:35
+#: modules_v3/missing_facts_report/report.xml:4
+#: modules_v3/missing_facts_report/report.xml:50
 msgid "Missing data"
 msgstr "缺失数据"
 
@@ -8389,7 +8873,12 @@ msgstr "大多数的网站都是配置为使用默认值3306。"
 msgid "Most viewed pages"
 msgstr "浏览最多的页面"
 
-#: search_advanced.php:247
+#: modules_v3/bdm_report/report.xml:118
+#: modules_v3/family_group_report/report.xml:469
+#: modules_v3/family_group_report/report.xml:729
+#: modules_v3/individual_ext_report/report.xml:271
+#: modules_v3/individual_report/report.xml:273
+#: modules_v3/relative_ext_report/report.xml:63 search_advanced.php:247
 msgid "Mother"
 msgstr "母亲"
 
@@ -8402,7 +8891,7 @@ msgid "Mother's age"
 msgstr "母亲的年龄"
 
 #. I18N: %s is the name of an individual’s mother
-#: library/WT/Person.php:1643
+#: library/WT/Person.php:1647
 #, php-format
 msgid "Mother: %s"
 msgstr "母亲: %s"
@@ -8522,6 +9011,20 @@ msgstr "缅甸"
 #: library/WT/Stats.php:3326
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:119
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:571
+#: modules_v3/bdm_report/report.xml:6 modules_v3/bdm_report/report.xml:47
+#: modules_v3/birth_report/report.xml:6 modules_v3/birth_report/report.xml:34
+#: modules_v3/cemetery_report/report.xml:39
+#: modules_v3/change_report/report.xml:54
+#: modules_v3/change_report/report.xml:94 modules_v3/death_report/report.xml:6
+#: modules_v3/death_report/report.xml:36 modules_v3/fact_sources/report.xml:60
+#: modules_v3/fact_sources/report.xml:153
+#: modules_v3/fact_sources/report.xml:264
+#: modules_v3/fact_sources/report.xml:315
+#: modules_v3/marriage_report/report.xml:6
+#: modules_v3/marriage_report/report.xml:36
+#: modules_v3/missing_facts_report/report.xml:52
+#: modules_v3/occupation_report/report.xml:41
+#: modules_v3/relative_ext_report/report.xml:48
 msgid "Name"
 msgstr "名字"
 
@@ -8534,6 +9037,11 @@ msgstr "名称"
 #: modules_v3/clippings/module.php:278
 msgid "Name / Description"
 msgstr "名称/描述"
+
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+msgid "Name List"
+msgstr "名单"
 
 #: find.php:184 find.php:199
 msgid "Name contains:"
@@ -8922,8 +9430,12 @@ msgstr "夜间"
 
 #: admin_trees_download.php:116 admin_users.php:450 famlist.php:115
 #: famlist.php:145 indilist.php:115 indilist.php:145 library/WT/Stats.php:758
-#: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:592
-#: modules_v3/families/module.php:151 modules_v3/individuals/module.php:150
+#: modules_v3/cemetery_report/report.xml:8 modules_v3/clippings/module.php:205
+#: modules_v3/clippings/module.php:592 modules_v3/death_report/report.xml:11
+#: modules_v3/families/module.php:151
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/individuals/module.php:150
 msgid "None"
 msgstr "没有"
 
@@ -8993,6 +9505,10 @@ msgstr "鳏夫"
 #. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:484
 #: includes/functions/functions_print.php:560 library/WT/Gedcom/Tag.php:276
+#: modules_v3/cemetery_report/report.xml:62
+#: modules_v3/family_group_report/report.xml:480
+#: modules_v3/family_group_report/report.xml:741
+#: modules_v3/family_group_report/report.xml:1090
 msgid "Note"
 msgstr "记事"
 
@@ -9018,7 +9534,9 @@ msgstr "注意:长路径长度需要大量的计算,这些用户可能使你的�
 #: admin.php:232 admin.php:264 library/WT/Controller/Search.php:596
 #: mediaviewer.php:144
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1140
-#: modules_v3/notes/module.php:34 source.php:106 statistics.php:339
+#: modules_v3/individual_ext_report/report.xml:221
+#: modules_v3/individual_report/report.xml:223 modules_v3/notes/module.php:34
+#: source.php:106 statistics.php:339
 msgid "Notes"
 msgstr "记事"
 
@@ -9134,6 +9652,8 @@ msgstr "职业"
 
 #. I18N: Name of a report
 #: modules_v3/occupation_report/module.php:35
+#: modules_v3/occupation_report/report.xml:4
+#: modules_v3/occupation_report/report.xml:35
 msgid "Occupations"
 msgstr "职业"
 
@@ -9309,6 +9829,11 @@ msgstr "条例"
 msgid "Ordination"
 msgstr "祝圣礼"
 
+#: modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7
+msgid "Orientation"
+msgstr "方向"
+
 #: library/WT/Gedcom/Code/Temp.php:150
 msgid "Orlando, Florida"
 msgstr "奥兰多,佛罗里达"
@@ -9408,10 +9933,45 @@ msgstr "PHP设置  \"%1$s \" 是禁用的。没有它,以下功能将不工作�
 msgid "PHP time limit"
 msgstr "PHP时间限制"
 
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_ext_report/report.xml:90
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/missing_facts_report/report.xml:51
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42
+msgid "Page"
+msgstr "页"
+
 #: medialist.php:216 medialist.php:339
 #, php-format
 msgid "Page %s of %s"
 msgstr "%s 的 %s 页面"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgid "Page size"
+msgstr "页面大小"
 
 #: library/WT/Gedcom/Tag.php:917
 msgid "Painting"
@@ -9467,6 +10027,12 @@ msgstr "父母的年龄"
 msgid "Parents"
 msgstr "父母"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Parents and siblings"
+msgstr "父母和兄弟姐妹"
+
 #: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
 #: edituser.php:152 help_text.php:736 help_text.php:1296 login.php:159
 #: login.php:220 login.php:449 modules_v3/login_block/module.php:81
@@ -9491,8 +10057,14 @@ msgstr "密码必须包含至少6个字符。"
 #: library/WT/Controller/Fanchart.php:306
 #: library/WT/Controller/Pedigree.php:94 library/WT/MenuBar.php:104
 #: modules_v3/charts/module.php:205 modules_v3/pedigree_report/module.php:35
+#: modules_v3/pedigree_report/report.xml:4
+#: modules_v3/pedigree_report/report.xml:41
 msgid "Pedigree"
 msgstr "家谱树"
+
+#: modules_v3/pedigree_report/report.xml:737
+msgid "Pedigree Chart"
+msgstr "家谱图"
 
 #: includes/functions/functions_print.php:93
 #: library/WT/Controller/Fanchart.php:308 library/WT/MenuBar.php:123
@@ -9523,6 +10095,7 @@ msgstr "待定的更改块"
 
 #. I18N: Name of a module
 #: edit_changes.php:33 edit_changes.php:53 help_text.php:1331
+#: modules_v3/change_report/report.xml:50
 #: modules_v3/review_changes/module.php:34
 #: themes/_administration/header.php:77 themes/clouds/header.php:123
 #: themes/colors/header.php:97 themes/fab/header.php:79
@@ -9629,12 +10202,18 @@ msgstr "皮特克恩"
 #. I18N: gedcom tag PLAC
 #: library/WT/Gedcom/Tag.php:290
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1136
+#: modules_v3/bdm_report/report.xml:7 modules_v3/bdm_report/report.xml:132
+#: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
+#: modules_v3/birth_report/report.xml:40
+#: modules_v3/cemetery_report/report.xml:58
+#: modules_v3/death_report/report.xml:48
 #: modules_v3/googlemap/admin_places.php:179
 #: modules_v3/googlemap/admin_places.php:180
 #: modules_v3/googlemap/admin_places.php:181
 #: modules_v3/googlemap/admin_places.php:182
 #: modules_v3/googlemap/admin_places.php:183
-#: modules_v3/googlemap/module.php:1591 search.php:169 search.php:182
+#: modules_v3/googlemap/module.php:1591
+#: modules_v3/marriage_report/report.xml:48 search.php:169 search.php:182
 msgid "Place"
 msgstr "地点"
 
@@ -9880,7 +10459,8 @@ msgstr "波特兰,俄勒冈州"
 msgid "Porto Alegre, Brazil"
 msgstr "在巴西阿雷格里港"
 
-#: admin_trees_config.php:813 pedigree.php:61
+#: admin_trees_config.php:813 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Portrait"
 msgstr "竖图表"
 
@@ -9980,6 +10560,10 @@ msgstr "牧师"
 msgid "Primidi"
 msgstr "Primidi"
 
+#: modules_v3/family_group_report/report.xml:11
+msgid "Print basic events when blank?"
+msgstr "当空白时显示基本事件?"
+
 #: admin_trees_config.php:219
 msgid "Privacy"
 msgstr "隐私"
@@ -9998,7 +10582,7 @@ msgstr "隐私限制—这些适用于不包含一个标记RESN GEDCOM的记录�
 #: library/WT/Person.php:121 library/WT/Person.php:336
 #: library/WT/Person.php:359 library/WT/Person.php:382
 #: library/WT/Person.php:419 library/WT/Person.php:442
-#: library/WT/Person.php:1905 library/WT/Report/Base.php:1946
+#: library/WT/Person.php:1909 library/WT/Report/Base.php:1946
 #: library/WT/Repository.php:57 library/WT/Source.php:49
 #: library/WT/Stats.php:863 library/WT/Stats.php:1805
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:240
@@ -10256,7 +10840,8 @@ msgid "Recent Years (&lt; 100 yrs)"
 msgstr "近期事件(< 100 年)"
 
 #. I18N: Name of a module
-#: admin.php:244 modules_v3/recent_changes/module.php:36
+#: admin.php:244 modules_v3/change_report/report.xml:90
+#: modules_v3/recent_changes/module.php:36
 msgid "Recent changes"
 msgstr "最近更改"
 
@@ -10327,7 +10912,7 @@ msgstr "参考编码"
 msgid "Regina, Saskatchewan, Canada"
 msgstr "里贾纳，萨斯喀彻温省，加拿大"
 
-#: library/WT/Gedcom/Tag.php:256
+#: library/WT/Gedcom/Tag.php:256 modules_v3/fact_sources/report.xml:203
 msgid "Registered partnership"
 msgstr "注册合作伙伴"
 
@@ -10355,11 +10940,15 @@ msgstr "正则表达式是一种先进的模式匹配技术。请看 <a href=\"h
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:35
+#: modules_v3/individual_ext_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:89
 msgid "Related families"
 msgstr "相关的家庭"
 
 #. I18N: Name of a report
 #: modules_v3/relative_ext_report/module.php:35
+#: modules_v3/relative_ext_report/report.xml:4
+#: modules_v3/relative_ext_report/report.xml:41
 msgid "Related individuals"
 msgstr "个人相关"
 
@@ -10415,7 +11004,7 @@ msgstr "宗教信仰"
 msgid "Religious Institution"
 msgstr "宗教机构"
 
-#: library/WT/Gedcom/Tag.php:257
+#: library/WT/Gedcom/Tag.php:257 modules_v3/fact_sources/report.xml:197
 msgid "Religious marriage"
 msgstr "宗教婚姻"
 
@@ -11246,6 +11835,40 @@ msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "第十月"
 
+#: modules_v3/descendancy_report/report.xml:357
+msgid "She "
+msgstr "她 "
+
+#: modules_v3/ahnentafel_report/report.xml:290
+msgid "She died"
+msgstr "她去世了"
+
+#: modules_v3/ahnentafel_report/report.xml:259
+#: modules_v3/descendancy_report/report.xml:241
+msgid "She married"
+msgstr "她嫁给了"
+
+#: modules_v3/ahnentafel_report/report.xml:221
+msgid "She resided at"
+msgstr "她居住在"
+
+#: modules_v3/descendancy_report/report.xml:330
+msgid "She was born"
+msgstr "她出生"
+
+#: modules_v3/ahnentafel_report/report.xml:346
+msgid "She was buried"
+msgstr "她被埋葬"
+
+#: modules_v3/ahnentafel_report/report.xml:165
+msgid "She was christened"
+msgstr "她被命名为"
+
+#: modules_v3/ahnentafel_report/report.xml:315
+#: modules_v3/ahnentafel_report/report.xml:342
+msgid "She was cremated"
+msgstr "她被火化"
+
 #: library/WT/Date/Jewish.php:111
 msgctxt "GENITIVE"
 msgid "Shevat"
@@ -11347,6 +11970,10 @@ msgstr "显示年代标记？"
 msgid "Show chart details by default"
 msgstr ""
 
+#: modules_v3/ahnentafel_report/report.xml:13
+msgid "Show children of ancestors?"
+msgstr "显示祖先的孩子？"
+
 #: library/WT/MenuBar.php:173 library/WT/MenuBar.php:193
 msgid "Show children on timeline chart"
 msgstr "在时间线图上显示孩子"
@@ -11440,6 +12067,17 @@ msgstr "显示链接到统计图表吗?"
 msgid "Show list of family trees"
 msgstr ""
 
+#: modules_v3/ahnentafel_report/report.xml:10
+#: modules_v3/family_group_report/report.xml:9
+#: modules_v3/individual_ext_report/report.xml:11
+#: modules_v3/individual_report/report.xml:8
+msgid "Show notes?"
+msgstr "显示记事吗?"
+
+#: modules_v3/ahnentafel_report/report.xml:11
+msgid "Show occupations?"
+msgstr "显示职业吗?"
+
 #: help_text.php:1291 relationship.php:118
 msgid "Show oldest top"
 msgstr "最老的在顶部显示"
@@ -11483,6 +12121,10 @@ msgstr "显示父母"
 msgid "Show path"
 msgstr "显示路径"
 
+#: modules_v3/change_report/report.xml:9
+msgid "Show pending changes"
+msgstr "显示待定的更改"
+
 #: includes/functions/functions_print_lists.php:91
 #: includes/functions/functions_print_lists.php:496
 msgid "Show people who are alive or couples where both partners are alive."
@@ -11509,6 +12151,12 @@ msgstr "显示100年前出生的人。"
 msgid "Show persons born within the last 100 years."
 msgstr "显示100年内出生的人。"
 
+#: modules_v3/family_group_report/report.xml:10
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+msgid "Show photos?"
+msgstr "显示照片吗?"
+
 #: admin_trees_config.php:527 help_text.php:887
 msgid "Show private relationships"
 msgstr "显示私人关系"
@@ -11529,6 +12177,10 @@ msgstr "显示考证任务没有分配给任何用户"
 msgid "Show research tasks that have a date in the future"
 msgstr "显示在未来某一日期的考证任务，"
 
+#: modules_v3/ahnentafel_report/report.xml:12
+msgid "Show residences?"
+msgstr "显示住宅？"
+
 #: help_text.php:898
 msgid "Show runtime statistics and database queries at the bottom of every page."
 msgstr "在每一页的底部显示运行统计和数据库查询。"
@@ -11536,6 +12188,14 @@ msgstr "在每一页的底部显示运行统计和数据库查询。"
 #: modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
 msgstr "示幻灯片控制?"
+
+#: modules_v3/ahnentafel_report/report.xml:9
+#: modules_v3/descendancy_report/report.xml:8
+#: modules_v3/family_group_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:10
+#: modules_v3/individual_report/report.xml:7
+msgid "Show sources?"
+msgstr "显示资源?"
 
 #: familybook.php:76 help_text.php:1416 hourglass.php:91
 msgid "Show spouses"
@@ -11656,6 +12316,11 @@ msgstr "简单的搜索筛选器基于字符输入,通配符不被接受。"
 msgid "Singapore"
 msgstr "新加坡"
 
+#: modules_v3/individual_ext_report/report.xml:347
+#: modules_v3/individual_report/report.xml:349
+msgid "Sister"
+msgstr "姐妹"
+
 #: admin_site_access.php:32 themes/_administration/header.php:97
 msgid "Site access rules"
 msgstr "网站访问规则"
@@ -11765,13 +12430,28 @@ msgstr "因为隐私有些信息不能被加入"
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
 msgstr "一些地名可以用可选的前缀和后缀。例如 ‘Durham‘ 与 ‘County Durham‘。如果家谱包含完整的地名，但地理数据库包含短的地名，那么你应该指定一个列的前缀和后缀应不予考虑。应该用分号分隔多个选项。比如县 ‘County;County of‘ 或者 ‘Parish;Par;Par.‘."
 
+#: modules_v3/family_group_report/report.xml:763
+#: modules_v3/individual_ext_report/report.xml:518
+#: modules_v3/individual_report/report.xml:520
+msgid "Son"
+msgstr "儿子"
+
 #. I18N: e.g. “Son of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:325
 #, php-format
 msgid "Son of %s"
 msgstr "%s 的儿子"
 
-#: medialist.php:92 modules_v3/recent_changes/module.php:151
+#: medialist.php:92 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/recent_changes/module.php:151
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:148
 #: modules_v3/upcoming_events/module.php:160
 msgid "Sort order"
@@ -11792,7 +12472,12 @@ msgstr "听起来像"
 #. I18N: Name of a module/report
 #: includes/functions/functions_print_facts.php:467
 #: includes/functions/functions_print_facts.php:496 inverselink.php:134
-#: library/WT/Gedcom/Tag.php:320 modules_v3/fact_sources/module.php:35
+#: library/WT/Gedcom/Tag.php:320 modules_v3/bdm_report/report.xml:134
+#: modules_v3/bdm_report/report.xml:160 modules_v3/bdm_report/report.xml:194
+#: modules_v3/birth_report/report.xml:41 modules_v3/death_report/report.xml:52
+#: modules_v3/fact_sources/module.php:35 modules_v3/fact_sources/report.xml:4
+#: modules_v3/fact_sources/report.xml:41
+#: modules_v3/marriage_report/report.xml:52
 msgid "Source"
 msgstr "资源"
 
@@ -11813,6 +12498,7 @@ msgid "Source contains:"
 msgstr "资源包含:"
 
 #: admin_trees_config.php:1255 help_text.php:781
+#: modules_v3/fact_sources/report.xml:7
 msgid "Source type"
 msgstr "资源类型"
 
@@ -11822,14 +12508,23 @@ msgstr "资源类型"
 #: includes/functions/functions_print_lists.php:1177
 #: includes/functions/functions_print_lists.php:1278
 #: library/WT/Controller/Search.php:595 library/WT/MenuBar.php:311
-#: mediaviewer.php:138 modules_v3/gedcom_stats/module.php:104
+#: mediaviewer.php:138 modules_v3/ahnentafel_report/report.xml:480
+#: modules_v3/descendancy_report/report.xml:612
+#: modules_v3/family_group_report/report.xml:1107
+#: modules_v3/gedcom_stats/module.php:104
 #: modules_v3/gedcom_stats/module.php:324 modules_v3/html/module.php:192
+#: modules_v3/individual_ext_report/report.xml:636
+#: modules_v3/individual_report/report.xml:636
 #: modules_v3/lightbox/functions/lightbox_print_media.php:369
 #: modules_v3/sources_tab/module.php:34 note.php:107 repo.php:94
 #: search.php:124 sourcelist.php:31 sourcelist.php:35 statistics.php:338
 #: statistics.php:375
 msgid "Sources"
 msgstr "资源"
+
+#: modules_v3/missing_facts_report/report.xml:12
+msgid "Sources to the events"
+msgstr "为事件添加资源"
 
 #: library/WT/Stats.php:4036
 msgid "South Africa"
@@ -11864,6 +12559,10 @@ msgstr "速度"
 msgid "Spokane, Washington"
 msgstr "斯波坎,华盛顿"
 
+#: modules_v3/bdm_report/report.xml:167
+msgid "Spouse"
+msgstr "配偶"
+
 #: library/WT/Gedcom/Tag.php:216
 msgid "Spouse census date"
 msgstr "配偶结合日期"
@@ -11879,6 +12578,12 @@ msgstr "配偶记事"
 #: includes/functions/functions_print_lists.php:1363
 msgid "Spouses"
 msgstr "配偶"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Spouses and children"
+msgstr "配偶和子女"
 
 #: library/WT/Stats.php:3911
 msgid "Sri Lanka"
@@ -11917,6 +12622,10 @@ msgstr "从父母开始"
 #: modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
 msgstr "页面加载时就开始幻灯片展示?"
+
+#: modules_v3/change_report/report.xml:6
+msgid "Starting range of change dates"
+msgstr "变更日期范围的开始"
 
 #. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:323 modules_v3/googlemap/admin_places.php:176
@@ -12182,7 +12891,7 @@ msgid "Templates"
 msgstr "模板"
 
 #. I18N: gedcom tag TEMP
-#: library/WT/Gedcom/Tag.php:329
+#: library/WT/Gedcom/Tag.php:329 modules_v3/individual_report/report.xml:205
 msgid "Temple"
 msgstr "寺庙"
 
@@ -13440,6 +14149,10 @@ msgstr "最常用的姓氏"
 msgid "Toronto, Ontario, Canada"
 msgstr "多伦多安大略加拿大"
 
+#: modules_v3/change_report/report.xml:125
+msgid "Total accepted changes: "
+msgstr "总接受变化： "
+
 #: statistics.php:98
 msgid "Total births"
 msgstr "总出生"
@@ -13458,11 +14171,15 @@ msgstr "总离婚"
 
 #: modules_v3/gedcom_stats/module.php:113
 #: modules_v3/gedcom_stats/module.php:356 modules_v3/html/module.php:204
-#: statistics.php:351
+#: modules_v3/missing_facts_report/report.xml:599 statistics.php:351
 msgid "Total events"
 msgstr "总共事件"
 
-#: library/WT/Stats.php:3059
+#: library/WT/Stats.php:3059 modules_v3/fact_sources/report.xml:246
+#: modules_v3/fact_sources/report.xml:250
+#: modules_v3/fact_sources/report.xml:348
+#: modules_v3/fact_sources/report.xml:352
+#: modules_v3/marriage_report/report.xml:112
 msgid "Total families"
 msgstr "总家庭"
 
@@ -13478,6 +14195,19 @@ msgstr "总女性"
 #: statistics.php:178
 msgid "Total given names"
 msgstr "总名字"
+
+#: modules_v3/bdm_report/report.xml:208 modules_v3/birth_report/report.xml:65
+#: modules_v3/cemetery_report/report.xml:86
+#: modules_v3/death_report/report.xml:98
+#: modules_v3/fact_sources/report.xml:140
+#: modules_v3/fact_sources/report.xml:144
+#: modules_v3/fact_sources/report.xml:303
+#: modules_v3/fact_sources/report.xml:307
+#: modules_v3/missing_facts_report/report.xml:598
+#: modules_v3/occupation_report/report.xml:92
+#: modules_v3/relative_ext_report/report.xml:146
+msgid "Total individuals"
+msgstr "总个人"
 
 #: calendar.php:438 find.php:507 modules_v3/GEDFact_assistant/module.php:162
 #: statistics.php:75
@@ -13500,6 +14230,10 @@ msgstr "总婚姻"
 #: admin.php:164
 msgid "Total number of users"
 msgstr "总用户数量"
+
+#: modules_v3/change_report/report.xml:85
+msgid "Total pending changes: "
+msgstr "总待定更改: "
 
 #. I18N: A count of places
 #: modules_v3/googlemap/module.php:1709
@@ -13695,7 +14429,11 @@ msgstr "未知"
 #: calendar.php:586 includes/functions/functions_edit.php:1461
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:286 library/WT/Stats.php:3325
-#: timeline.php:264
+#: modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592 timeline.php:264
 msgctxt "unknown gender"
 msgid "Unknown"
 msgstr "未知"
@@ -13824,6 +14562,11 @@ msgstr "使用'？'匹配一个字符，使用“*”匹配零个或多个字符
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] "至少个 %s 字符"
+
+#: modules_v3/family_group_report/report.xml:14
+#: modules_v3/individual_ext_report/report.xml:15
+msgid "Use colors"
+msgstr "使用颜色"
 
 #: modules_v3/tree/class_treeview.php:74
 msgid "Use compact layout"
@@ -14128,7 +14871,8 @@ msgid "Visitor"
 msgstr "访客"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:35
+#: modules_v3/bdm_report/module.php:35 modules_v3/bdm_report/report.xml:4
+#: modules_v3/bdm_report/report.xml:32
 msgid "Vital records"
 msgstr "关键记录"
 
@@ -14366,6 +15110,14 @@ msgstr "缩略图宽度"
 
 #. I18N: gedcom tag WIFE
 #: edit_interface.php:541 library/WT/Gedcom/Tag.php:340
+#: modules_v3/family_group_report/report.xml:493
+#: modules_v3/family_group_report/report.xml:1067
+#: modules_v3/individual_ext_report/report.xml:197
+#: modules_v3/individual_ext_report/report.xml:211
+#: modules_v3/individual_ext_report/report.xml:477
+#: modules_v3/individual_report/report.xml:192
+#: modules_v3/individual_report/report.xml:213
+#: modules_v3/individual_report/report.xml:479
 msgid "Wife"
 msgstr "妻子"
 
@@ -14861,6 +15613,13 @@ msgstr "也被称为"
 #: library/WT/Controller/Ancestry.php:144 library/WT/Stats.php:2627
 #: library/WT/Stats.php:2652 library/WT/Stats.php:2663
 #: library/WT/Stats.php:2673 library/WT/Stats.php:3427 medialist.php:47
+#: modules_v3/ahnentafel_report/report.xml:400
+#: modules_v3/descendancy_report/report.xml:131
+#: modules_v3/descendancy_report/report.xml:229
+#: modules_v3/descendancy_report/report.xml:298
+#: modules_v3/descendancy_report/report.xml:362
+#: modules_v3/descendancy_report/report.xml:432
+#: modules_v3/descendancy_report/report.xml:485
 msgid "and"
 msgstr "并且"
 
@@ -15149,6 +15908,10 @@ msgstr "日期时间"
 msgid "daughter"
 msgstr "女儿"
 
+#: modules_v3/descendancy_report/report.xml:225
+msgid "daughter of"
+msgstr "女儿"
+
 #: includes/functions/functions.php:1238
 msgctxt "child's wife"
 msgid "daughter-in-law"
@@ -15188,6 +15951,18 @@ msgstr "度数"
 #: admin_site_access.php:110 admin_site_access.php:301
 msgid "deny"
 msgstr "拒绝"
+
+#: modules_v3/descendancy_report/report.xml:137
+#: modules_v3/descendancy_report/report.xml:364
+msgctxt "FEMALE"
+msgid "died"
+msgstr "死亡"
+
+#: modules_v3/descendancy_report/report.xml:134
+#: modules_v3/descendancy_report/report.xml:434
+msgctxt "MALE"
+msgid "died"
+msgstr "死亡"
 
 #: modules_v3/googlemap/module.php:312 modules_v3/googlemap/module.php:321
 #: modules_v3/googlemap/module.php:330 modules_v3/googlemap/module.php:338
@@ -15283,7 +16058,7 @@ msgctxt "Abbreviation for fax number"
 msgid "f."
 msgstr "传真："
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "facts"
 msgstr "事实"
 
@@ -17299,6 +18074,16 @@ msgstr "娘家姓"
 msgid "marriage"
 msgstr "结婚"
 
+#: modules_v3/descendancy_report/report.xml:244
+msgctxt "FEMALE"
+msgid "married"
+msgstr "嫁了"
+
+#: modules_v3/descendancy_report/report.xml:175
+msgctxt "MALE"
+msgid "married"
+msgstr "娶了"
+
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:116
 msgid "married name"
@@ -17496,7 +18281,13 @@ msgstr "第九代堂（表）兄(妹)"
 #: includes/functions/functions_print_facts.php:1228
 #: includes/functions/functions_print_lists.php:795 library/WT/Stats.php:3519
 #: modules_v3/batch_update/admin_batch_update.php:339
-#: modules_v3/charts/module.php:215
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:215
+#: modules_v3/family_group_report/report.xml:250
+#: modules_v3/family_group_report/report.xml:421
+#: modules_v3/family_group_report/report.xml:601
+#: modules_v3/family_group_report/report.xml:942
+#: modules_v3/individual_ext_report/report.xml:180
+#: modules_v3/individual_report/report.xml:175
 msgid "no"
 msgstr "不"
 
@@ -17525,7 +18316,19 @@ msgstr "北方"
 msgid "numbers"
 msgstr "数字"
 
-#: statisticsplot.php:816 statisticsplot.php:818 statisticsplot.php:820
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42 statisticsplot.php:816
+#: statisticsplot.php:818 statisticsplot.php:820
 msgid "of"
 msgstr "从"
 
@@ -17630,7 +18433,7 @@ msgstr "婚后住所"
 msgid "questionable evidence"
 msgstr "可疑的证据"
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "records"
 msgstr "记录"
 
@@ -17996,6 +18799,10 @@ msgstr "第六代堂（表）兄(妹)"
 msgid "son"
 msgstr "儿子"
 
+#: modules_v3/descendancy_report/report.xml:294
+msgid "son of"
+msgstr "儿子的"
+
 #: includes/functions/functions.php:1235
 msgctxt "child's husband"
 msgid "son-in-law"
@@ -18027,23 +18834,32 @@ msgid "son/daughter-in-law"
 msgstr "儿子/儿媳"
 
 #. I18N: An option in a list-box
+#: modules_v3/change_report/report.xml:8
 #: modules_v3/todays_events/module.php:152
 #: modules_v3/upcoming_events/module.php:164
 msgid "sort by date"
 msgstr "按日期排序"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2044 reportengine.php:513
+#: edit_interface.php:2044 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10 modules_v3/change_report/report.xml:8
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:513
 msgid "sort by date of birth"
 msgstr "按出生日期排序"
 
 #. I18N: An option in a list-box
-#: reportengine.php:515
+#: modules_v3/bdm_report/report.xml:12 modules_v3/cemetery_report/report.xml:7
+#: modules_v3/death_report/report.xml:10
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:515
 msgid "sort by date of death"
 msgstr "按死亡日期排序"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2420 reportengine.php:514
+#: edit_interface.php:2420 modules_v3/marriage_report/report.xml:10
+#: reportengine.php:514
 msgid "sort by date of marriage"
 msgstr "按结婚日期排序"
 
@@ -18063,7 +18879,15 @@ msgid "sort by filename"
 msgstr "按文件名排序"
 
 #. I18N: An option in a list-box
+#: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
 #: modules_v3/recent_changes/module.php:154
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:151
 #: modules_v3/upcoming_events/module.php:163
 msgid "sort by name"
@@ -18466,6 +19290,18 @@ msgstr "不明身份的人"
 msgid "unreliable evidence"
 msgstr "不可靠的证据"
 
+#: modules_v3/ahnentafel_report/report.xml:139
+#: modules_v3/descendancy_report/report.xml:105
+msgctxt "FEMALE"
+msgid "was born"
+msgstr "诞生"
+
+#: modules_v3/ahnentafel_report/report.xml:138
+#: modules_v3/descendancy_report/report.xml:102
+msgctxt "MALE"
+msgid "was born"
+msgstr "诞生"
+
 #: modules_v3/review_changes/module.php:86
 msgid "webtrees - Review changes"
 msgstr "webtrees - 审批变化"
@@ -18519,7 +19355,14 @@ msgstr "年:"
 #: includes/functions/functions_print_lists.php:353
 #: includes/functions/functions_print_lists.php:793 library/WT/Stats.php:3518
 #: modules_v3/batch_update/admin_batch_update.php:340
-#: modules_v3/charts/module.php:216 modules_v3/relatives/module.php:206
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:216
+#: modules_v3/family_group_report/report.xml:247
+#: modules_v3/family_group_report/report.xml:418
+#: modules_v3/family_group_report/report.xml:598
+#: modules_v3/family_group_report/report.xml:939
+#: modules_v3/individual_ext_report/report.xml:177
+#: modules_v3/individual_report/report.xml:172
+#: modules_v3/relatives/module.php:206
 msgid "yes"
 msgstr "是"
 
@@ -18541,7 +19384,7 @@ msgid "younger sister"
 msgstr "妹妹"
 
 #. I18N: Place a nickname in quotation marks
-#: library/WT/Person.php:1791
+#: library/WT/Person.php:1795
 #, php-format
 msgid "“%s”"
 msgstr "“%s”"
@@ -18565,12 +19408,6 @@ msgstr "缺少名字"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "缺少姓氏"
-
-#~ msgid " but the details are unknown"
-#~ msgstr " 但细节是未知的"
-
-#~ msgid " in "
-#~ msgstr " 在 "
 
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%1$s's %2$s"
@@ -18687,19 +19524,8 @@ msgstr "缺少姓氏"
 #~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "数据库服务器可以存储许多不同的数据库。你需要选择一个现有的数据库（由服务器管理员创建）或创建一个新的（如果你的数据库用户帐户具有足够的特权）。"
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "由一个给定的资源的事实报告"
-
 #~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 #~ msgstr "用户将无法登录除非“邮件验证”和“经管理员批准”的选项被选择。"
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4"
 
 #~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
 #~ msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
@@ -18785,18 +19611,11 @@ msgstr "缺少姓氏"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "数据库发生意外错误。"
 
-#~ msgid "Ancestors of "
-#~ msgstr "祖先 "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "祖先文件编号 (AFN)"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "确定你想撤消所有这GEDCOM变化？"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "宋体"
 
 #~ msgid "Available blocks"
 #~ msgstr "可用块"
@@ -18810,9 +19629,6 @@ msgstr "缺少姓氏"
 #~ msgid "Binary data object"
 #~ msgstr "数码资料"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "出生地包含"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "图表上的出生和死亡的详情"
 
@@ -18822,9 +19638,6 @@ msgstr "缺少姓氏"
 #~ msgid "Birth date range start"
 #~ msgstr "出生日期范围的开始"
 
-#~ msgid "Brother"
-#~ msgstr "兄弟"
-
 #~ msgid "Burial place contains"
 #~ msgstr "埋葬的地点包含"
 
@@ -18833,15 +19646,6 @@ msgstr "缺少姓氏"
 
 #~ msgid "Change family members"
 #~ msgstr "改变家庭成员"
-
-#~ msgid "Child of "
-#~ msgstr "孩子 "
-
-#~ msgid "Children of "
-#~ msgstr "孩子 "
-
-#~ msgid "Choose relatives"
-#~ msgstr "选择亲戚"
 
 #~ msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
 #~ msgstr "选择你想上传的缩略图。虽然可以自动生成缩略图的图片,您可能希望生成自己的缩略图,尤其是对其他媒体类型。例如,您可以提供一个静态图像从一个视频或音乐照片。"
@@ -18950,12 +19754,6 @@ msgstr "缺少姓氏"
 #~ msgid "Date of residence"
 #~ msgstr "居住日期"
 
-#~ msgid "Daughter"
-#~ msgstr "女儿"
-
-#~ msgid "Death Place contains"
-#~ msgstr "死亡地包含"
-
 #~ msgid "Death date range end"
 #~ msgstr "死亡日期范围的结束"
 
@@ -18964,13 +19762,6 @@ msgstr "缺少姓氏"
 
 #~ msgid "Default theme"
 #~ msgstr "默认主题"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "既视"
-
-#~ msgid "Descendants of "
-#~ msgstr "后代 "
 
 #~ msgid "Descent steps"
 #~ msgstr "显示几代人的家庭"
@@ -18990,15 +19781,6 @@ msgstr "缺少姓氏"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "第十一月"
-
-#~ msgid "Differences"
-#~ msgstr "日期差异"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "直系祖先"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "直接的祖先和他们的家庭"
 
 #~ msgid "Display %s"
 #~ msgstr "展示 %s"
@@ -19035,15 +19817,6 @@ msgstr "缺少姓氏"
 
 #~ msgid "End year"
 #~ msgstr "结束年"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "变更日期范围的结束"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "输入家庭ID"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "输入个人ID"
 
 #~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
 #~ msgstr "输入一个你正在编辑的条目的标题。如果这是一个标题,一个多媒体项目,输入一个描述性的标题,将显示该项目给用户。"
@@ -19111,20 +19884,11 @@ msgstr "缺少姓氏"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "家谱收集箱功能"
 
-#~ msgid "Family with husband"
-#~ msgstr "丈夫的家庭"
-
-#~ msgid "Family with wife"
-#~ msgstr "妻子的家庭"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "父亲的出生地—(查普曼格式)"
 
 #~ msgid "Father’s age"
 #~ msgstr "父亲的年龄"
-
-#~ msgid "Font"
-#~ msgstr "字体"
 
 #~ msgid "For LDS ordinances, this field records the temple where it was performed."
 #~ msgstr "对于LDS条例，这个选项是由寺庙控制的"
@@ -19153,38 +19917,11 @@ msgstr "缺少姓氏"
 #~ msgid "Gedcom"
 #~ msgstr "家谱数据"
 
-#~ msgid "Generation "
-#~ msgstr "代 "
-
 #~ msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
 #~ msgstr "提供给用户选择,选择自己的主题从菜单。<br><br>即使设置这个选项,主题目前实际上可能是无效的,这个选项需要<b>允许用户选择他们自己的主题</b>选项也设置。"
 
 #~ msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
 #~ msgstr "允许游客选择在网站上注册自己的账户。<br><br>游客将收到一个电子邮件消息,该消息带有一个代码来验证他申请的帐户。必须管理员核实后批准使他的账户它变得活跃。"
-
-#~ msgid "He "
-#~ msgstr "他 "
-
-#~ msgid "He died"
-#~ msgstr "他去世了"
-
-#~ msgid "He married"
-#~ msgstr "他结婚了"
-
-#~ msgid "He resided at"
-#~ msgstr "他居住在"
-
-#~ msgid "He was born"
-#~ msgstr "他出生"
-
-#~ msgid "He was buried"
-#~ msgstr "他被葬"
-
-#~ msgid "He was christened"
-#~ msgstr "他被命名为"
-
-#~ msgid "He was cremated"
-#~ msgstr "他被火化"
 
 #~ msgid "Hello %s…"
 #~ msgstr "你好 %s …"
@@ -19194,13 +19931,6 @@ msgstr "缺少姓氏"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "你好管理员……"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "黑体"
-
-#~ msgid "Her occupation was"
-#~ msgstr "她的职业是"
 
 #~ msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
 #~ msgstr "在这里你可以添加一个事实正在编辑的记录。<br><br>首先选择一个事实从下拉列表,然后单击<b>添加</b>按钮。所有你可以添加到数据库可能的事实在那个下拉列表。"
@@ -19216,9 +19946,6 @@ msgstr "缺少姓氏"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "隐藏/显示"
-
-#~ msgid "His occupation was"
-#~ msgstr "他的职业是"
 
 #~ msgid "Hit count:"
 #~ msgstr "访问次数:"
@@ -19298,14 +20025,6 @@ msgstr "缺少姓氏"
 #~ msgid "LDS temple"
 #~ msgstr "LDS 寺庙"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "约定"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "纸张大小"
-
 #~ msgid "Link ID"
 #~ msgstr "链接ID"
 
@@ -19335,15 +20054,6 @@ msgstr "缺少姓氏"
 
 #~ msgid "Main section blocks"
 #~ msgstr "主要部分"
-
-#~ msgid "Marriage Date range end"
-#~ msgstr "婚姻结束日期范围"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "婚姻的日期范围开始"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "婚姻所含"
 
 #~ msgid "Marriage intention"
 #~ msgstr "婚姻的意图"
@@ -19377,9 +20087,6 @@ msgstr "缺少姓氏"
 
 #~ msgid "Move right"
 #~ msgstr "移到最右边"
-
-#~ msgid "Name List"
-#~ msgstr "名单"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -19425,9 +20132,6 @@ msgstr "缺少姓氏"
 #~ msgid "Online editing"
 #~ msgstr "在线编辑"
 
-#~ msgid "Orientation"
-#~ msgstr "方向"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "其他文件夹…请输入"
 
@@ -19443,20 +20147,8 @@ msgstr "缺少姓氏"
 #~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
 #~ msgstr "PHP设置  \"%1$s \" 是禁用的。没有它,以下功能将不工作： %2$s. 请联系服务器的管理员启用它。"
 
-#~ msgid "Page"
-#~ msgstr "页"
-
-#~ msgid "Page size"
-#~ msgstr "页面大小"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "父母和兄弟姐妹"
-
 #~ msgid "Parent’s age"
 #~ msgstr "父母的年龄"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "家谱图"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "LDS 洗礼的地点"
@@ -19505,9 +20197,6 @@ msgstr "缺少姓氏"
 
 #~ msgid "President’s Office"
 #~ msgstr "总统办公室"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "当空白时显示基本事件?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -19637,30 +20326,6 @@ msgstr "缺少姓氏"
 #~ msgid "Sha’aban"
 #~ msgstr "第八月"
 
-#~ msgid "She "
-#~ msgstr "她 "
-
-#~ msgid "She died"
-#~ msgstr "她去世了"
-
-#~ msgid "She married"
-#~ msgstr "她嫁给了"
-
-#~ msgid "She resided at"
-#~ msgstr "她居住在"
-
-#~ msgid "She was born"
-#~ msgstr "她出生"
-
-#~ msgid "She was buried"
-#~ msgstr "她被埋葬"
-
-#~ msgid "She was christened"
-#~ msgstr "她被命名为"
-
-#~ msgid "She was cremated"
-#~ msgstr "她被火化"
-
 #~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
 #~ msgstr "要用GeoNames数据库用于提供地名更多的建议吗？<br><br>当此选项设置为<b>是</b>时，GeoNames数据库将在输入地名时提供建议。当设置为<b>不</b>，只有当前家谱数据库被搜索。如果你录入更多的地名，建议将变得更加精确。这个选项可以减少数据输入，特别是如果你的网络连接速度很慢时。<br><br>GeoNames地理数据库是免费的。目前包含超过8000000个地名。"
 
@@ -19672,9 +20337,6 @@ msgstr "缺少姓氏"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "在列表中显示所有的地方"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "显示祖先的孩子？"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "显示死者"
@@ -19706,12 +20368,6 @@ msgstr "缺少姓氏"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "显示100年内去世的人。"
 
-#~ msgid "Show notes?"
-#~ msgstr "显示记事吗?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "显示职业吗?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "只显示现在活着人的事件？"
 
@@ -19721,23 +20377,11 @@ msgstr "缺少姓氏"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "只显示个人,事件,还是所有?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "显示待定的更改"
-
-#~ msgid "Show photos?"
-#~ msgstr "显示照片吗?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "显示地方分布"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "显示相关人/家庭"
-
-#~ msgid "Show residences?"
-#~ msgstr "显示住宅？"
-
-#~ msgid "Show sources?"
-#~ msgstr "显示资源?"
 
 #~ msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
 #~ msgstr "显示«未录入孩子»夫妻或个人。这些是人活着但没有孩子记录在数据库中。"
@@ -19748,32 +20392,14 @@ msgstr "缺少姓氏"
 #~ msgid "Showing %1$s to %2$s of %3$s"
 #~ msgstr "显示 %3$s 的 %1$s 到 %2$s"
 
-#~ msgid "Sister"
-#~ msgstr "姐妹"
-
 #~ msgid "Social security number"
 #~ msgstr "社会安全号码"
-
-#~ msgid "Son"
-#~ msgstr "儿子"
 
 #~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
 #~ msgstr "被引用资源可能包括记录数据的不同数据(主、次等)字段。如果你不使用这些字段,当创建新源引用时您可以禁用他们。"
 
-#~ msgid "Sources to the events"
-#~ msgstr "为事件添加资源"
-
 #~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
 #~ msgstr "指定是否通过<b> webtrees </b>可以存储在数据库中发送的消息。如果设置为<b>是</b>用户能够检索信息时，他们登录到<b> webtrees </b>。如果设置为<b>不</b>信息只会发送电子邮件。"
-
-#~ msgid "Spouse"
-#~ msgstr "配偶"
-
-#~ msgid "Spouses and children"
-#~ msgstr "配偶和子女"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "变更日期范围的开始"
 
 #~ msgid "Surname option"
 #~ msgstr "姓选项"
@@ -19946,15 +20572,6 @@ msgstr "缺少姓氏"
 #~ msgid "To source"
 #~ msgstr "对资源"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "总接受变化： "
-
-#~ msgid "Total individuals"
-#~ msgstr "总个人"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "总待定更改: "
-
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
 #~ msgstr "传输层安全（TLS）和安全套接字层（SSL）是网络数据加密协议。<br><br> TLS 1，1.1和1.2是标准化发展，SSL 3，TLS 1和SSL 3.1是同样的。SSL现在的新名字为TLS。<br><br>如果你的SMTP服务器需要SSL协议登录时，您应该选择<b> SSL </b>选项。如果你的SMTP服务器登录时需要TLS协议，你应该选择<b> TLS </b>选项。"
 
@@ -19966,9 +20583,6 @@ msgstr "缺少姓氏"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "使用SMTP发送外部邮件"
-
-#~ msgid "Use colors"
-#~ msgstr "使用颜色"
 
 #~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
 #~ msgstr "使用用户名和密码身份验证连接到SMTP服务器。<br><br>某些SMTP服务器在接受外部邮件之前，要求所有连接被认证。"
@@ -20123,9 +20737,6 @@ msgstr "缺少姓氏"
 #~ msgid "before %d"
 #~ msgstr "在 %d 年前"
 
-#~ msgid "daughter of"
-#~ msgstr "女儿"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "亲家公"
@@ -20137,14 +20748,6 @@ msgstr "缺少姓氏"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "亲家"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "死亡"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "死亡"
 
 #~ msgid "first"
 #~ msgstr "第一"
@@ -20179,17 +20782,6 @@ msgstr "缺少姓氏"
 #~ msgid "last"
 #~ msgstr "最后"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "嫁了"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "娶了"
-
-#~ msgid "son of"
-#~ msgstr "儿子的"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "亲家公"
@@ -20204,14 +20796,6 @@ msgstr "缺少姓氏"
 
 #~ msgid "utf8_unicode_ci"
 #~ msgstr "utf8_unicode_ci"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "诞生"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "诞生"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "webtrees数据库和PGV的数据库必须在同一台服务器上"

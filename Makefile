@@ -73,7 +73,12 @@ clean:
 # Gettext template (.POT) file
 ################################################################################
 language/webtrees.pot: $(LANGUAGE_SRC)
+	# Modify the .XML report files so that xgettext can scan them
+	find modules*/ -name "*.xml" -exec cp -p {} {}.bak \;
+	sed -i -e 's~\(WT_I18N::[^)]*[)]\)~<?= \1 ?>~g' modules*/*/*.xml
 	echo $^ | xargs xgettext --package-name=webtrees --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=$@ --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translate_c:1c,2 --keyword=plural:1,2 --keyword=noop:1
+	# Restore the .XML files
+	find modules*/ -name "*.xml" -exec mv {}.bak {} \;
 
 ################################################################################
 # Gettext catalog (.PO) files
