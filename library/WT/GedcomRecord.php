@@ -887,12 +887,14 @@ class WT_GedcomRecord {
 		$old_chan = $this->getFirstFact('CHAN');
 		// Replacing (or deleting) an existing fact
 		foreach ($this->getFacts(null, false, WT_PRIV_HIDE) as $fact) {
-			if ($fact->getFactId() == $fact_id) {
-				if ($gedcom) {
-					$new_gedcom .= "\n" . $gedcom;
+			if (!$fact->isOld()) {
+				if ($fact->getFactId() == $fact_id) {
+					if ($gedcom) {
+						$new_gedcom .= "\n" . $gedcom;
+					}
+				} elseif ($fact->getTag()!='CHAN' || !$update_chan) {
+					$new_gedcom .= "\n" . $fact->getGedcom();
 				}
-			} elseif ($fact->getTag()!='CHAN' || !$update_chan) {
-				$new_gedcom .= "\n" . $fact->getGedcom();
 			}
 		}
 		if ($update_chan) {
