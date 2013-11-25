@@ -544,6 +544,23 @@ function delete_fact(message, xref, fact_id) {
 	return false;
 }
 
+// Remove links from one record to another - and reload the page
+function unlink_media(message, source, target) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action: 'unlink-media',
+			source: source,
+			target: target,
+			ged:    WT_GEDCOM,
+			csrf:   WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
 // Copy a fact to the clipboard
 function copy_fact(xref, fact_id) {
 	jQuery.post('action.php', {
