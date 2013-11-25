@@ -273,7 +273,7 @@ class WT_Fact {
 			if ($date->isOK()) {
 				$attributes[] = $date->display();
 			}
-			$place = $this->getPlace()->getFullName();
+			$place = $this->getPlace()->getShortName();
 			if ($place) {
 				$attributes[] = $place;
 			}
