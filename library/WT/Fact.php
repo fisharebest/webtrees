@@ -291,14 +291,13 @@ class WT_Fact {
 	// Display an icon for this fact.
 	// Icons are held in a theme subfolder.  Not all themes provide icons.
 	public function Icon() {
-		$dir=WT_THEME_DIR.'images/facts/';
-		$tag=$this->getTag();
-		$file=$tag.'.png';
-		if (file_exists($dir.$file)) {
-			return '<img src="'.WT_STATIC_URL.$dir.$file.'" title="'.WT_Gedcom_Tag::getLabel($tag).'">';
-		} elseif (file_exists($dir.'NULL.png')) {
+		$icon = 'images/facts/' . $this->getTag() . '.png';
+		$dir = substr(WT_CSS_URL, strlen(WT_STATIC_URL));
+		if (file_exists($dir . $icon)) {
+			return '<img src="' . WT_CSS_URL . $icon . '" title="' . WT_Gedcom_Tag::getLabel($this->getTag()) . '">';
+		} elseif (file_exists($dir . 'images/facts/NULL.png')) {
 			// Spacer image - for alignment - until we move to a sprite.
-			return '<img src="'.WT_STATIC_URL.$dir.'NULL.png">';
+			return '<img src="' . WT_CSS_URL . 'images/facts/NULL.png">';
 		} else {
 			return '';
 		}

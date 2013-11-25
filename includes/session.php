@@ -34,9 +34,8 @@ define('WT_VERSION_RELEASE', 'dev'); // “dev”, “beta”, “rc1”, “”
 define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
 
 // External URLs
-define('WT_WEBTREES_URL',    'http://webtrees.net/');
+define('WT_WEBTREES_URL',    'http://www.webtrees.net/');
 define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net/');
-define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
 // For example, http://my.cdn.com/webtrees-static-1.3.1/
