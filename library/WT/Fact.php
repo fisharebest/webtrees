@@ -260,6 +260,8 @@ class WT_Fact {
 
 	// A one-line summary of the fact - for charts, etc.
 	public function summary() {
+		global $SHOW_PARENTS_AGE;
+
 		$attributes = array();
 		$target = $this->getTarget();
 		if ($target) {
@@ -270,7 +272,9 @@ class WT_Fact {
 				$attributes[] = '<span dir="auto">' . WT_Filter::escapeHtml($value) . '</span>';
 			}
 			$date = $this->getDate();
-			if ($date->isOK()) {
+			if ($this->getTag() == 'BIRT' && $SHOW_PARENTS_AGE) {
+				$attributes[] = $date->display() . format_parents_age($this->getParent(), $date);
+			} else {
 				$attributes[] = $date->display();
 			}
 			$place = $this->getPlace()->getShortName();
