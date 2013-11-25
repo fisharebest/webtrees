@@ -3468,6 +3468,7 @@ html[dir=rtl] #cboxSlideshow {
 /* Census assistant module */
 table.table-census-assistant th {
 	font-weight: bold;
+	text-align:  left;
 }
 
 /* Stories module */
