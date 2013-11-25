@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-24 22:39+0000\n"
+"POT-Creation-Date: 2013-11-25 20:40+0000\n"
 "PO-Revision-Date: 2013-05-05 01:04+0000\n"
 "Last-Translator: Muadh Hamidaddin <Unknown>\n"
 "Language-Team: \n"
@@ -259,6 +259,16 @@ msgstr[3] "%d أعوام"
 msgstr[4] "%d عاماً"
 msgstr[5] "%d عاماً"
 
+#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#: library/WT/I18N.php:154
+msgid "%g:%i:%s %a"
+msgstr ""
+
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
+#: library/WT/I18N.php:152
+msgid "%j %F %Y"
+msgstr "%j %F %Y"
+
 #: includes/functions/functions.php:2162
 #, php-format
 msgid "%s"
@@ -292,6 +302,29 @@ msgstr[3] "%s أولاد"
 msgstr[4] "%s ولداً"
 msgstr[5] "%s ولداً"
 
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:353
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s أيام"
+msgstr[1] "يوماً واحداً"
+msgstr[2] "يومان"
+msgstr[3] "%s أيام"
+msgstr[4] "%s يوماً"
+msgstr[5] "%s يوماً"
+
+#: library/WT/I18N.php:396
+#, php-format
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] "قبل أقل من يوم"
+msgstr[1] "قبل يوماً واحداً"
+msgstr[2] "قبل يومين"
+msgstr[3] "قبل %s أيام"
+msgstr[4] "قبل %s يوماً"
+msgstr[5] "قبل %s يوماً"
+
 #: library/WT/Stats.php:3093 library/WT/Stats.php:3097
 #, php-format
 msgid "%s grandchild"
@@ -302,6 +335,17 @@ msgstr[2] "حفيدان"
 msgstr[3] "%s أحفاد"
 msgstr[4] "%s حفيداً"
 msgstr[5] "%s حفيداً"
+
+#: library/WT/I18N.php:399
+#, php-format
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] "قبل أقل من ساعة"
+msgstr[1] "قبل ساعة واحدة"
+msgstr[2] "قبل ساعتين"
+msgstr[3] "قبل %s ساعات"
+msgstr[4] "قبل %s ساعة"
+msgstr[5] "قبل %s ساعة"
 
 #: modules_v3/googlemap/module.php:826
 #, php-format
@@ -331,6 +375,40 @@ msgstr[3] "%s رسائل"
 msgstr[4] "%s رسالة"
 msgstr[5] "%s رسالة"
 
+#: library/WT/I18N.php:402
+#, php-format
+msgid "%s minute ago"
+msgid_plural "%s minutes ago"
+msgstr[0] "قبل أقل من دقيقة"
+msgstr[1] "قبل دقيقة واحدة"
+msgstr[2] "قبل دقيقتين"
+msgstr[3] "قبل %s دقائق"
+msgstr[4] "قبل %s دقيقة"
+msgstr[5] "قبل %s دقيقة"
+
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:345
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s أشهر"
+msgstr[1] "شهراً واحداً"
+msgstr[2] "شهران"
+msgstr[3] "%s أشهر"
+msgstr[4] "%s شهراً"
+msgstr[5] "%s شهراً"
+
+#: library/WT/I18N.php:393
+#, php-format
+msgid "%s month ago"
+msgid_plural "%s months ago"
+msgstr[0] "قبل أقل من شهر"
+msgstr[1] "قبل شهر اً واحداً"
+msgstr[2] "قبل شهرين"
+msgstr[3] "قبل %s أشهر"
+msgstr[4] "قبل %s شهراً"
+msgstr[5] "قبل %s شهراً"
+
 #: statisticsplot.php:747
 #, php-format
 msgid "%s not implemented"
@@ -352,6 +430,17 @@ msgstr "%s بفارق جيل واحد نزولاً"
 #, php-format
 msgid "%s places"
 msgstr ""
+
+#: library/WT/I18N.php:404
+#, php-format
+msgid "%s second ago"
+msgid_plural "%s seconds ago"
+msgstr[0] "قبل أقل من ثانية"
+msgstr[1] "قبل ثانية واحدة"
+msgstr[2] "قبل ثانيتين"
+msgstr[3] "قبل %s ثوان"
+msgstr[4] "قبل %s ثانية"
+msgstr[5] "قبل %s ثانية"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2106
@@ -377,11 +466,51 @@ msgstr "%s بفارق جيلين علواً"
 msgid "%s twice removed descending"
 msgstr "%s بفارق جيلين نزولاً"
 
+#. I18N: Part of an age string. e.g 7 weeks and 3 days
+#: library/WT/I18N.php:349
+#, php-format
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] "%s أسابيع"
+msgstr[1] "أسبوعاً واحداً"
+msgstr[2] "أسبوعان"
+msgstr[3] "%s أسابيع"
+msgstr[4] "%s أسبوعاً"
+msgstr[5] "%s أسبوعاً"
+
+#: library/WT/I18N.php:339
+#, php-format
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s أعوام"
+msgstr[1] "عاماً واحداً"
+msgstr[2] "عامان"
+msgstr[3] "%s  أعوام"
+msgstr[4] "%s عاماً"
+msgstr[5] "%s عاماً"
+
+#: library/WT/I18N.php:390
+#, php-format
+msgid "%s year ago"
+msgid_plural "%s years ago"
+msgstr[0] "قبل أقل من عام"
+msgstr[1] "قبل عاماً واحداً"
+msgstr[2] "قبل عامين"
+msgstr[3] "قبل %s أعوام"
+msgstr[4] "قبل %s عاماً"
+msgstr[5] "قبل %s عاماً"
+
 #: calendar.php:560 includes/functions/functions_print_lists.php:1921
 #: modules_v3/yahrzeit/module.php:118
 #, php-format
 msgid "%s year anniversary"
 msgstr "ذكرى السنة الـ %s"
+
+#. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
+#: library/WT/I18N.php:260
+#, php-format
+msgid "%s%%"
+msgstr "%s٪"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:97
@@ -412,6 +541,50 @@ msgstr[2] "&plusmn; عامان"
 msgstr[3] "&plusmn;%d أعوام"
 msgstr[4] "&plusmn;%d عاماً"
 msgstr[5] "&plusmn;%d عاماً"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+#: library/WT/I18N.php:368 library/WT/I18N.php:372
+#, php-format
+msgid "(aged %s)"
+msgstr "(العمر %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+#: library/WT/I18N.php:362
+#, php-format
+msgid "(aged less than %s)"
+msgstr "(العمر أقل من %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+#: library/WT/I18N.php:365
+#, php-format
+msgid "(aged more than %s)"
+msgstr "(العمر أكثر من %s)"
+
+#. I18N: %s is a placeholder for a number
+#: library/WT/I18N.php:474
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr "(منتقى من إجمالي %s مادة)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
+#: library/WT/I18N.php:333
+msgid "(in childhood)"
+msgstr "(عند الطفولة)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
+#: library/WT/I18N.php:330
+msgid "(in infancy)"
+msgstr "(عند الرضاعة)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
+#: library/WT/I18N.php:327
+msgid "(stillborn)"
+msgstr "(عند الولادة)"
+
+#. I18N: This punctuation is used to separate lists of items.
+#: library/WT/I18N.php:173
+msgid ", "
+msgstr "، "
 
 #: library/WT/Stats.php:4060
 msgctxt "CENTURY"
@@ -934,6 +1107,14 @@ msgstr "11x17"
 msgctxt "paper size"
 msgid "A4"
 msgstr "210x297 م.م."
+
+#: library/WT/I18N.php:159
+msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+msgstr "ALPHABET_lower=ابتثجحخدذرزسشصضطظعغفقكلمنهويآةىی"
+
+#: library/WT/I18N.php:156
+msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+msgstr "ALPHABET_upper=ابتثجحخدذرزسشصضطظعغفقكلمنهويآةىی"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1716,10 +1897,11 @@ msgstr "لقب"
 msgid "Alive"
 msgstr "على قيد الحياة"
 
+#. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:225 famlist.php:70 famlist.php:76 famlist.php:82
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
-#: indilist.php:167 indilist.php:251 indilist.php:253
+#: indilist.php:167 indilist.php:251 indilist.php:253 library/WT/I18N.php:418
 #: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
@@ -4844,6 +5026,12 @@ msgstr "أسلاف مباشرين"
 msgid "Direct line ancestors and their families"
 msgstr "أسلاف مباشرين مع أسرهم"
 
+#. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
+#: library/WT/I18N.php:422
+#, php-format
+msgid "Display %s"
+msgstr "إدراج %s"
+
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
 msgstr "إحداثيات شاشة إظهار الخريطة"
@@ -6007,7 +6195,7 @@ msgstr "الملفات المؤشر عليها بـ %s لايمكن إزالته
 
 #: admin_site_change.php:273 admin_site_logs.php:240 find.php:188 find.php:203
 #: find.php:221 find.php:238 find.php:255 find.php:273 find.php:290
-#: find.php:481 modules_v3/random_media/module.php:300
+#: find.php:481 library/WT/I18N.php:480 modules_v3/random_media/module.php:300
 msgid "Filter"
 msgstr "إنتقاء"
 
@@ -7997,6 +8185,7 @@ msgstr "تحميل جميع ملفات المشجرات من القرص بإست
 msgid "Loading data from GEDCOM: %.1f%%"
 msgstr "يتم تحميل البيانات من ملف GEDCOM: %.1f%%"
 
+#: library/WT/I18N.php:478 library/WT/I18N.php:479
 #: themes/clouds/templates/compactbox_template.php:54
 #: themes/clouds/templates/personbox_template.php:48
 #: themes/colors/templates/compactbox_template.php:54
@@ -9519,6 +9708,10 @@ msgstr ""
 #: admin_site_config.php:46
 msgid "No predefined text"
 msgstr "لا يوجد نص محدد مسبقاً"
+
+#: library/WT/I18N.php:471 library/WT/I18N.php:482
+msgid "No records to display"
+msgstr "لايوجد سجلات لإظهارها"
 
 #: find.php:509 find.php:534 find.php:590 find.php:618 find.php:641
 #: find.php:664 find.php:687 library/WT/Controller/AdvancedSearch.php:534
@@ -12391,6 +12584,12 @@ msgstr "إظهار الأحياء الذين لا يوجد لهم نسل في ا
 msgid "Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database."
 msgstr "إظهار الأفراد الذين لا يوجد لهم أسلاف في المشجر."
 
+#. I18N: %s are placeholders for numbers
+#: library/WT/I18N.php:472 library/WT/I18N.php:473
+#, php-format
+msgid "Showing %1$s to %2$s of %3$s"
+msgstr "إظهار %1$s إلى %2$s من %3$s"
+
 #: library/WT/Controller/Fanchart.php:337
 #: library/WT/Controller/Hourglass.php:407 pedigree.php:227
 msgid "Sibling"
@@ -15005,6 +15204,11 @@ msgstr "زائر"
 msgid "Vital records"
 msgstr "سجلات حيوية"
 
+#. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
+#: library/WT/I18N.php:162
+msgid "WEEK_START=0"
+msgstr "WEEK_START=6"
+
 #: library/WT/Stats.php:4032
 msgid "Wales"
 msgstr "ويلز"
@@ -16271,6 +16475,11 @@ msgstr "حفيد خامس لسلف مشترك"
 #: setup.php:164
 msgid "file upload capability"
 msgstr "إمكانية تحميل الملفات"
+
+#. I18N: button label, first page
+#: library/WT/I18N.php:466
+msgid "first"
+msgstr "الأول"
 
 #: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -18186,6 +18395,11 @@ msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
 msgstr "أيام مكملة"
 
+#. I18N: button label, last page
+#: library/WT/I18N.php:467
+msgid "last"
+msgstr "الأخير"
+
 #: admin_trees_config.php:910
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
@@ -18373,7 +18587,8 @@ msgctxt "sister's child"
 msgid "nephew/niece"
 msgstr "ولد أخت"
 
-#: admin_pgv_to_wt.php:157 admin_site_merge.php:318
+#. I18N: button label, next page
+#: admin_pgv_to_wt.php:157 admin_site_merge.php:318 library/WT/I18N.php:468
 #: modules_v3/batch_update/admin_batch_update.php:98
 msgid "next"
 msgstr "اللاحق"
@@ -18563,7 +18778,8 @@ msgstr "مُعلق"
 msgid "percentage"
 msgstr "نسبة مئوية"
 
-#: modules_v3/batch_update/admin_batch_update.php:97
+#. I18N: button label, previous page
+#: library/WT/I18N.php:469 modules_v3/batch_update/admin_batch_update.php:97
 msgid "previous"
 msgstr "السابق"
 
@@ -19438,6 +19654,11 @@ msgstr "شخص غير معروف"
 msgid "unreliable evidence"
 msgstr "قرينة غير معتمدة"
 
+#. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
+#: library/WT/I18N.php:176
+msgid "utf8_unicode_ci"
+msgstr "utf8_unicode_ci"
+
 #: modules_v3/ahnentafel_report/report.xml:139
 #: modules_v3/descendancy_report/report.xml:105
 msgctxt "FEMALE"
@@ -19563,131 +19784,11 @@ msgstr "…"
 #~ msgid "%H:%i:%s"
 #~ msgstr "%h:%i:%s%A"
 
-#~ msgid "%j %F %Y"
-#~ msgstr "%j %F %Y"
-
-#~ msgid "%s day"
-#~ msgid_plural "%s days"
-#~ msgstr[0] "%s أيام"
-#~ msgstr[1] "يوماً واحداً"
-#~ msgstr[2] "يومان"
-#~ msgstr[3] "%s أيام"
-#~ msgstr[4] "%s يوماً"
-#~ msgstr[5] "%s يوماً"
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "قبل أقل من يوم"
-#~ msgstr[1] "قبل يوماً واحداً"
-#~ msgstr[2] "قبل يومين"
-#~ msgstr[3] "قبل %s أيام"
-#~ msgstr[4] "قبل %s يوماً"
-#~ msgstr[5] "قبل %s يوماً"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "قبل أقل من ساعة"
-#~ msgstr[1] "قبل ساعة واحدة"
-#~ msgstr[2] "قبل ساعتين"
-#~ msgstr[3] "قبل %s ساعات"
-#~ msgstr[4] "قبل %s ساعة"
-#~ msgstr[5] "قبل %s ساعة"
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "قبل أقل من دقيقة"
-#~ msgstr[1] "قبل دقيقة واحدة"
-#~ msgstr[2] "قبل دقيقتين"
-#~ msgstr[3] "قبل %s دقائق"
-#~ msgstr[4] "قبل %s دقيقة"
-#~ msgstr[5] "قبل %s دقيقة"
-
-#~ msgid "%s month"
-#~ msgid_plural "%s months"
-#~ msgstr[0] "%s أشهر"
-#~ msgstr[1] "شهراً واحداً"
-#~ msgstr[2] "شهران"
-#~ msgstr[3] "%s أشهر"
-#~ msgstr[4] "%s شهراً"
-#~ msgstr[5] "%s شهراً"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "قبل أقل من شهر"
-#~ msgstr[1] "قبل شهر اً واحداً"
-#~ msgstr[2] "قبل شهرين"
-#~ msgstr[3] "قبل %s أشهر"
-#~ msgstr[4] "قبل %s شهراً"
-#~ msgstr[5] "قبل %s شهراً"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "قبل أقل من ثانية"
-#~ msgstr[1] "قبل ثانية واحدة"
-#~ msgstr[2] "قبل ثانيتين"
-#~ msgstr[3] "قبل %s ثوان"
-#~ msgstr[4] "قبل %s ثانية"
-#~ msgstr[5] "قبل %s ثانية"
-
 #~ msgid "%s three times removed ascending"
 #~ msgstr "%s بفارق ثلاثة أجيال علواً"
 
 #~ msgid "%s three times removed descending"
 #~ msgstr "%s بفارق ثلاثة أجيال نزولاً"
-
-#~ msgid "%s week"
-#~ msgid_plural "%s weeks"
-#~ msgstr[0] "%s أسابيع"
-#~ msgstr[1] "أسبوعاً واحداً"
-#~ msgstr[2] "أسبوعان"
-#~ msgstr[3] "%s أسابيع"
-#~ msgstr[4] "%s أسبوعاً"
-#~ msgstr[5] "%s أسبوعاً"
-
-#~ msgid "%s year"
-#~ msgid_plural "%s years"
-#~ msgstr[0] "%s أعوام"
-#~ msgstr[1] "عاماً واحداً"
-#~ msgstr[2] "عامان"
-#~ msgstr[3] "%s  أعوام"
-#~ msgstr[4] "%s عاماً"
-#~ msgstr[5] "%s عاماً"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "قبل أقل من عام"
-#~ msgstr[1] "قبل عاماً واحداً"
-#~ msgstr[2] "قبل عامين"
-#~ msgstr[3] "قبل %s أعوام"
-#~ msgstr[4] "قبل %s عاماً"
-#~ msgstr[5] "قبل %s عاماً"
-
-#~ msgid "%s%%"
-#~ msgstr "%s٪"
-
-#~ msgid "(aged %s)"
-#~ msgstr "(العمر %s)"
-
-#~ msgid "(aged less than %s)"
-#~ msgstr "(العمر أقل من %s)"
-
-#~ msgid "(aged more than %s)"
-#~ msgstr "(العمر أكثر من %s)"
-
-#~ msgid "(filtered from %s total entries)"
-#~ msgstr "(منتقى من إجمالي %s مادة)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(عند الطفولة)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(عند الرضاعة)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(عند الولادة)"
-
-#~ msgid ", "
-#~ msgstr "، "
 
 #~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
 #~ msgstr "هذا <b>GUID</b> يعني المعرف العالمي الفريد، وهو معرف خاص لضمان عدم تكراره لأكثر من فرد في أي مشجر."
@@ -19748,12 +19849,6 @@ msgstr "…"
 
 #~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 #~ msgstr "لن يتمكن المستخدم من تسجيل الدخول إلا بعد أن تكون خيارات \"البريد الإلكتروني مصادق\" و \"مقبول من المدير\" مؤشراً عليها."
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=ابتثجحخدذرزسشصضطظعغفقكلمنهويآةىی"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=ابتثجحخدذرزسشصضطظعغفقكلمنهويآةىی"
 
 #~ msgid "Access"
 #~ msgstr "صلاحية النفاذ"
@@ -20003,9 +20098,6 @@ msgstr "…"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "ذو القعدة"
-
-#~ msgid "Display %s"
-#~ msgstr "إدراج %s"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "لا تحكم، إحكام سابق ملغى"
@@ -20325,9 +20417,6 @@ msgstr "…"
 #~ msgid "No events for living individuals exist for tomorrow."
 #~ msgstr "لا يوجد أي أحداث في الغد لمن هم على قيد الحياة."
 
-#~ msgid "No records to display"
-#~ msgstr "لايوجد سجلات لإظهارها"
-
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "لا يوجد هذا المعرف الخاص في ملف GEDCOM هذا."
 
@@ -20621,9 +20710,6 @@ msgstr "…"
 #~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
 #~ msgstr "إظهار الأفراد الذين لا يوجد لهم أسلاف في المشجر."
 
-#~ msgid "Showing %1$s to %2$s of %3$s"
-#~ msgstr "إظهار %1$s إلى %2$s من %3$s"
-
 #~ msgid "Social security number"
 #~ msgstr "رقم الضمان الإجتماعي"
 
@@ -20885,9 +20971,6 @@ msgstr "…"
 #~ msgid "Visitors"
 #~ msgstr "زائرين"
 
-#~ msgid "WEEK_START=0"
-#~ msgstr "WEEK_START=6"
-
 #~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 #~ msgstr ""
 #~ "سيتم إرسال رسالة تأكيد إلى <b>%s</b>. يجب المصادقة عل طلب للحساب بإتباع للتعليمات في رسالة النأكيد خلال سبعة أيام، وإلا سيعتبر الطلب لاغ تلقائياً ويجب التقدم بطلب جديد.<br><br>\n"
@@ -20985,9 +21068,6 @@ msgstr "…"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "والد زوجة إبن"
 
-#~ msgid "first"
-#~ msgstr "الأول"
-
 #~ msgid "from %d"
 #~ msgstr "من %d"
 
@@ -21015,9 +21095,6 @@ msgstr "…"
 #~ msgid "grandson’s wife"
 #~ msgstr "زوجة إبن إبن"
 
-#~ msgid "last"
-#~ msgstr "الأخير"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "أب زوج بنت"
@@ -21029,9 +21106,6 @@ msgstr "…"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "والد زوج بنت"
-
-#~ msgid "utf8_unicode_ci"
-#~ msgstr "utf8_unicode_ci"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "يتوجب أن تكون قاعدة بيانات webtrees في نفس خادم PGV"

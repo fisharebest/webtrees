@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VIETNAMESE LANGUAGE\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-24 22:39+0000\n"
+"POT-Creation-Date: 2013-11-25 20:40+0000\n"
 "PO-Revision-Date: 2013-06-05 09:22+0000\n"
 "Last-Translator: de tran <Unknown>\n"
 "Language-Team: VN LANGUAGE <trande@gmail.com >\n"
@@ -220,6 +220,16 @@ msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] "%d năm"
 
+#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#: library/WT/I18N.php:154
+msgid "%g:%i:%s %a"
+msgstr ""
+
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
+#: library/WT/I18N.php:152
+msgid "%j %F %Y"
+msgstr "%j %F %Y"
+
 #: includes/functions/functions.php:2162
 #, php-format
 msgid "%s"
@@ -248,11 +258,30 @@ msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] "%s con"
 
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:353
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s ngày"
+
+#: library/WT/I18N.php:396
+#, php-format
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] "%s ngày qua"
+
 #: library/WT/Stats.php:3093 library/WT/Stats.php:3097
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s cháu"
+
+#: library/WT/I18N.php:399
+#, php-format
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] "%s giờ qua"
 
 #: modules_v3/googlemap/module.php:826
 #, php-format
@@ -271,6 +300,25 @@ msgstr "%s không hoạt động ở máy chủ này. Bạn không thể cài we
 msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s tin"
+
+#: library/WT/I18N.php:402
+#, php-format
+msgid "%s minute ago"
+msgid_plural "%s minutes ago"
+msgstr[0] "%s phút qua"
+
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:345
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s tháng"
+
+#: library/WT/I18N.php:393
+#, php-format
+msgid "%s month ago"
+msgid_plural "%s months ago"
+msgstr[0] "%s tháng qua"
 
 #: statisticsplot.php:747
 #, php-format
@@ -293,6 +341,12 @@ msgstr "%s đời 1 lệch 1 nhỏ"
 #, php-format
 msgid "%s places"
 msgstr ""
+
+#: library/WT/I18N.php:404
+#, php-format
+msgid "%s second ago"
+msgid_plural "%s seconds ago"
+msgstr[0] "%s giây qua"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2106
@@ -318,11 +372,36 @@ msgstr "%s đời lệch 2 lớn"
 msgid "%s twice removed descending"
 msgstr "%s đời lêch 2 nhỏ"
 
+#. I18N: Part of an age string. e.g 7 weeks and 3 days
+#: library/WT/I18N.php:349
+#, php-format
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] "%s tuần"
+
+#: library/WT/I18N.php:339
+#, php-format
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s năm"
+
+#: library/WT/I18N.php:390
+#, php-format
+msgid "%s year ago"
+msgid_plural "%s years ago"
+msgstr[0] "%s năm qua"
+
 #: calendar.php:560 includes/functions/functions_print_lists.php:1921
 #: modules_v3/yahrzeit/module.php:118
 #, php-format
 msgid "%s year anniversary"
 msgstr "Kỷ niệm năm %s"
+
+#. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
+#: library/WT/I18N.php:260
+#, php-format
+msgid "%s%%"
+msgstr "%s%%"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:97
@@ -348,6 +427,50 @@ msgstr "&lt;chọn&gt;"
 msgid "&plusmn;%d year"
 msgid_plural "&plusmn;%d years"
 msgstr[0] "&plusmn;%d năm"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+#: library/WT/I18N.php:368 library/WT/I18N.php:372
+#, php-format
+msgid "(aged %s)"
+msgstr "(tuổi %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+#: library/WT/I18N.php:362
+#, php-format
+msgid "(aged less than %s)"
+msgstr "(tuổi nhỏ hơn %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+#: library/WT/I18N.php:365
+#, php-format
+msgid "(aged more than %s)"
+msgstr "(tuổi nhiều hơn %s)"
+
+#. I18N: %s is a placeholder for a number
+#: library/WT/I18N.php:474
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr "(lọc từ tổng %s mục nhập)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
+#: library/WT/I18N.php:333
+msgid "(in childhood)"
+msgstr "lúc thiếu niên"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
+#: library/WT/I18N.php:330
+msgid "(in infancy)"
+msgstr "lúc ấu thời"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
+#: library/WT/I18N.php:327
+msgid "(stillborn)"
+msgstr "(chết non)"
+
+#. I18N: This punctuation is used to separate lists of items.
+#: library/WT/I18N.php:173
+msgid ", "
+msgstr ", "
 
 #: library/WT/Stats.php:4060
 msgctxt "CENTURY"
@@ -846,6 +969,14 @@ msgstr "khổ A3"
 msgctxt "paper size"
 msgid "A4"
 msgstr "khổ A4"
+
+#: library/WT/I18N.php:159
+msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+msgstr "ALPHABET_lower=aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz"
+
+#: library/WT/I18N.php:156
+msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+msgstr "ALPHABET_upper=AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1628,10 +1759,11 @@ msgstr "Còn gọi là"
 msgid "Alive"
 msgstr "Còn sống"
 
+#. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:225 famlist.php:70 famlist.php:76 famlist.php:82
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
-#: indilist.php:167 indilist.php:251 indilist.php:253
+#: indilist.php:167 indilist.php:251 indilist.php:253 library/WT/I18N.php:418
 #: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
@@ -4746,6 +4878,12 @@ msgstr "Tổ tiên trực tiếp"
 msgid "Direct line ancestors and their families"
 msgstr "Tổ tiên trực tiếp và gia đình họ"
 
+#. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
+#: library/WT/I18N.php:422
+#, php-format
+msgid "Display %s"
+msgstr "Hiển thị %s"
+
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
 msgstr "Hiện tọa độ bản đồ"
@@ -5909,7 +6047,7 @@ msgstr "File đã đánh dấu %s cần thiết để chương trình chạy đ�
 
 #: admin_site_change.php:273 admin_site_logs.php:240 find.php:188 find.php:203
 #: find.php:221 find.php:238 find.php:255 find.php:273 find.php:290
-#: find.php:481 modules_v3/random_media/module.php:300
+#: find.php:481 library/WT/I18N.php:480 modules_v3/random_media/module.php:300
 msgid "Filter"
 msgstr "Lọc"
 
@@ -7899,6 +8037,7 @@ msgstr "Tải cây gia đình của bạn từ đĩa, bằng cách dùng chức 
 msgid "Loading data from GEDCOM: %.1f%%"
 msgstr "Tải dữ liệu từ file GEDCOM: %.1f%%"
 
+#: library/WT/I18N.php:478 library/WT/I18N.php:479
 #: themes/clouds/templates/compactbox_template.php:54
 #: themes/clouds/templates/personbox_template.php:48
 #: themes/colors/templates/compactbox_template.php:54
@@ -9411,6 +9550,10 @@ msgstr ""
 #: admin_site_config.php:46
 msgid "No predefined text"
 msgstr "Không có văn bản định trước"
+
+#: library/WT/I18N.php:471 library/WT/I18N.php:482
+msgid "No records to display"
+msgstr "Không có bản ghi nào để hiển thị"
 
 #: find.php:509 find.php:534 find.php:590 find.php:618 find.php:641
 #: find.php:664 find.php:687 library/WT/Controller/AdvancedSearch.php:534
@@ -12278,6 +12421,12 @@ msgstr "Hiện các cặp vợ chồng hay cá nhân \"vô sinh\" . Họ là ng�
 msgid "Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database."
 msgstr "Hiện vợ chồng \"gốc\" hay từng người. Những người này cũng được gọc là \"trưởng tộc\". Họ là người mà ba mẹ đều không được ghi trong CSDL."
 
+#. I18N: %s are placeholders for numbers
+#: library/WT/I18N.php:472 library/WT/I18N.php:473
+#, php-format
+msgid "Showing %1$s to %2$s of %3$s"
+msgstr "Hiển thị %1$s đến %2$s of %3$s"
+
 #: library/WT/Controller/Fanchart.php:337
 #: library/WT/Controller/Hourglass.php:407 pedigree.php:227
 msgid "Sibling"
@@ -14877,6 +15026,11 @@ msgstr "Khách"
 msgid "Vital records"
 msgstr "Hồ sơ chi tiết quan trọng"
 
+#. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
+#: library/WT/I18N.php:162
+msgid "WEEK_START=0"
+msgstr "WEEK_START=0"
+
 #: library/WT/Stats.php:4032
 msgid "Wales"
 msgstr "Wales"
@@ -16139,6 +16293,11 @@ msgstr "anh em họ 5 đời"
 #: setup.php:164
 msgid "file upload capability"
 msgstr "khả năng tải file lên"
+
+#. I18N: button label, first page
+#: library/WT/I18N.php:466
+msgid "first"
+msgstr "thứ nhất"
 
 #: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -18044,6 +18203,11 @@ msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
 msgstr "jours complémentaires"
 
+#. I18N: button label, last page
+#: library/WT/I18N.php:467
+msgid "last"
+msgstr "cuối cùng"
+
 #: admin_trees_config.php:910
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
@@ -18226,7 +18390,8 @@ msgctxt "sister's child"
 msgid "nephew/niece"
 msgstr "cháu trai/ cháu gái"
 
-#: admin_pgv_to_wt.php:157 admin_site_merge.php:318
+#. I18N: button label, next page
+#: admin_pgv_to_wt.php:157 admin_site_merge.php:318 library/WT/I18N.php:468
 #: modules_v3/batch_update/admin_batch_update.php:98
 msgid "next"
 msgstr "tiếp theo"
@@ -18416,7 +18581,8 @@ msgstr "chờ"
 msgid "percentage"
 msgstr "tỷ lệ phần trăm"
 
-#: modules_v3/batch_update/admin_batch_update.php:97
+#. I18N: button label, previous page
+#: library/WT/I18N.php:469 modules_v3/batch_update/admin_batch_update.php:97
 msgid "previous"
 msgstr "trước"
 
@@ -19291,6 +19457,11 @@ msgstr "người lạ"
 msgid "unreliable evidence"
 msgstr "chứng cứ không tin cậy"
 
+#. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
+#: library/WT/I18N.php:176
+msgid "utf8_unicode_ci"
+msgstr "utf8_turkish_ci"
+
 #: modules_v3/ahnentafel_report/report.xml:139
 #: modules_v3/descendancy_report/report.xml:105
 msgctxt "FEMALE"
@@ -19416,81 +19587,11 @@ msgstr "…"
 #~ msgid "%H:%i:%s"
 #~ msgstr "%g:%i:%s %a"
 
-#~ msgid "%j %F %Y"
-#~ msgstr "%j %F %Y"
-
-#~ msgid "%s day"
-#~ msgid_plural "%s days"
-#~ msgstr[0] "%s ngày"
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "%s ngày qua"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "%s giờ qua"
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "%s phút qua"
-
-#~ msgid "%s month"
-#~ msgid_plural "%s months"
-#~ msgstr[0] "%s tháng"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "%s tháng qua"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "%s giây qua"
-
 #~ msgid "%s three times removed ascending"
 #~ msgstr "%s cách ba đời trên"
 
 #~ msgid "%s three times removed descending"
 #~ msgstr "%s cách 3 đời xuống"
-
-#~ msgid "%s week"
-#~ msgid_plural "%s weeks"
-#~ msgstr[0] "%s tuần"
-
-#~ msgid "%s year"
-#~ msgid_plural "%s years"
-#~ msgstr[0] "%s năm"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "%s năm qua"
-
-#~ msgid "%s%%"
-#~ msgstr "%s%%"
-
-#~ msgid "(aged %s)"
-#~ msgstr "(tuổi %s)"
-
-#~ msgid "(aged less than %s)"
-#~ msgstr "(tuổi nhỏ hơn %s)"
-
-#~ msgid "(aged more than %s)"
-#~ msgstr "(tuổi nhiều hơn %s)"
-
-#~ msgid "(filtered from %s total entries)"
-#~ msgstr "(lọc từ tổng %s mục nhập)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "lúc thiếu niên"
-
-#~ msgid "(in infancy)"
-#~ msgstr "lúc ấu thời"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(chết non)"
-
-#~ msgid ", "
-#~ msgstr ", "
 
 #~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
 #~ msgstr "<b>GUID</b> trong bối cảnh này là một từ viết tắt cho \"ID duy nhất toàn cục\"<br><br>GUID dùng nhằm mục đích giúp nhận ra từng cá nhân bằng lập lại nhiều lần, để tổ chức trung tâm như Trung tâm Lịch sử Gia đình của Giáo Hội LDS ở Salt Lake City, hoặc ngay các chương trình tương thích chạy trên máy chủ của riêng bạn, có thể xác định liệu chúng có đang làm việc với cùng một người cho dù file GEDCOM đó từ đâu ra. Mục tiêu của Trung tâm Lịch sử gia đình là để có một kho trung tâm các dữ liệu phả hệ và trình bày nó qua các dịch vụ web. Điều này sẽ cho phép bất kỳ chương trình nào tiếp cận với số lliệu và cập nhật số liệu ngay trong nó.<br><br>Nếu bạn không có ý định chia sẻ GEDCOM với bất cứ ai khác, bạn không cần để cho <b>webtrees</b> tạo ra GUID này, tuy nhiên làm như thế không có hại gì ngoài chuyện làm tăng thêm kích cỡ của file GEDCOM."
@@ -19527,12 +19628,6 @@ msgstr "…"
 
 #~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 #~ msgstr "Môt người dùng không thể nào đăng nhập cho tới khi tùy chọn xác minh bằng email và chấp thuận của quản trị được chọn."
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ"
 
 #~ msgid "Access"
 #~ msgstr "Truy cập"
@@ -19782,9 +19877,6 @@ msgstr "…"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Dhu al-Qi'dah"
-
-#~ msgid "Display %s"
-#~ msgstr "Hiển thị %s"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "Đừng niêm seal, lần niêm trước đã hủy bỏ"
@@ -20099,9 +20191,6 @@ msgstr "…"
 #~ msgid "No events for living individuals exist for tomorrow."
 #~ msgstr "Không có sự kiện nào cho người sống ngày mai."
 
-#~ msgid "No records to display"
-#~ msgstr "Không có bản ghi nào để hiển thị"
-
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "Không có Nhận Diện nào như vậy trong cái file GEDCOM này"
 
@@ -20390,9 +20479,6 @@ msgstr "…"
 #~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
 #~ msgstr "Hiện vợ chồng \"gốc\" hay từng người. Những người này cũng được gọc là \"trưởng tộc\". Họ là người mà ba mẹ đều không được ghi trong CSDL."
 
-#~ msgid "Showing %1$s to %2$s of %3$s"
-#~ msgstr "Hiển thị %1$s đến %2$s of %3$s"
-
 #~ msgid "Social security number"
 #~ msgstr "Số ASXH"
 
@@ -20654,9 +20740,6 @@ msgstr "…"
 #~ msgid "Visitors"
 #~ msgstr "Khách thăm"
 
-#~ msgid "WEEK_START=0"
-#~ msgstr "WEEK_START=0"
-
 #~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 #~ msgstr "Chúng tôi sẽ gửi cho bạn một email xác nhận đến địa chỉ <b>%s</b>. Bạn phải xác minh yêu cầu mở tài khoản của bạn bằng cách làm theo các hướng dẫn trong email xác nhận. Nếu bạn không xác nhận yêu cầu mở tài khoản của bạn trong vòng bảy ngày, việc xin mở tại khoản tự động hủy bỏ. Bạn phải cần xin mở lại.<br><br>Sau khi bạn theo các chỉ dẫn trong email xác nhận, quản trị cũng phải chấp thuận yêu cầu của bạn trước khi tài khoản của bạn có thể được dùng.<br><br>Để đăng nhập vào site này, bạn ần phải biết tên người dùng và mật khẩu của bạn."
 
@@ -20750,9 +20833,6 @@ msgstr "…"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "cha mẹ con dâu"
 
-#~ msgid "first"
-#~ msgstr "thứ nhất"
-
 #~ msgid "from %d"
 #~ msgstr "từ %d"
 
@@ -20780,9 +20860,6 @@ msgstr "…"
 #~ msgid "grandson’s wife"
 #~ msgstr "vợ cháu trai"
 
-#~ msgid "last"
-#~ msgstr "cuối cùng"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "cha ruột của rể"
@@ -20794,9 +20871,6 @@ msgstr "…"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "cha mẹ của rể"
-
-#~ msgid "utf8_unicode_ci"
-#~ msgstr "utf8_turkish_ci"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "CSDL webtrees phải có trên cùng máy chủ như của PGV"

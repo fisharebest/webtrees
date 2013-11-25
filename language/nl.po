@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-24 22:39+0000\n"
+"POT-Creation-Date: 2013-11-25 20:40+0000\n"
 "PO-Revision-Date: 2013-10-15 23:38+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
@@ -226,6 +226,16 @@ msgid_plural "%d years"
 msgstr[0] "%d jaar"
 msgstr[1] "%d jaren"
 
+#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#: library/WT/I18N.php:154
+msgid "%g:%i:%s %a"
+msgstr ""
+
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
+#: library/WT/I18N.php:152
+msgid "%j %F %Y"
+msgstr "%j %F %Y"
+
 #: includes/functions/functions.php:2162
 #, php-format
 msgid "%s"
@@ -255,12 +265,34 @@ msgid_plural "%s children"
 msgstr[0] "%s kind"
 msgstr[1] "%s kinderen"
 
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:353
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s dag"
+msgstr[1] "%s dagen"
+
+#: library/WT/I18N.php:396
+#, php-format
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] "%s dag geleden"
+msgstr[1] "%s dagen geleden"
+
 #: library/WT/Stats.php:3093 library/WT/Stats.php:3097
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s kleinkind"
 msgstr[1] "%s kleinkinderen"
+
+#: library/WT/I18N.php:399
+#, php-format
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] "%s uur geleden"
+msgstr[1] "%s uren geleden"
 
 #: modules_v3/googlemap/module.php:826
 #, php-format
@@ -281,6 +313,28 @@ msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s bericht"
 msgstr[1] "%s berichten"
+
+#: library/WT/I18N.php:402
+#, php-format
+msgid "%s minute ago"
+msgid_plural "%s minutes ago"
+msgstr[0] "%s minuut geleden"
+msgstr[1] "%s minuten geleden"
+
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:345
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s maand"
+msgstr[1] "%s maanden"
+
+#: library/WT/I18N.php:393
+#, php-format
+msgid "%s month ago"
+msgid_plural "%s months ago"
+msgstr[0] "%s maand geleden"
+msgstr[1] "%s maanden geleden"
 
 #: statisticsplot.php:747
 #, php-format
@@ -303,6 +357,13 @@ msgstr ""
 #, php-format
 msgid "%s places"
 msgstr ""
+
+#: library/WT/I18N.php:404
+#, php-format
+msgid "%s second ago"
+msgid_plural "%s seconds ago"
+msgstr[0] "%s seconde geleden"
+msgstr[1] "%s seconden geleden"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2106
@@ -328,11 +389,39 @@ msgstr ""
 msgid "%s twice removed descending"
 msgstr ""
 
+#. I18N: Part of an age string. e.g 7 weeks and 3 days
+#: library/WT/I18N.php:349
+#, php-format
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] "%s week"
+msgstr[1] "%s weken"
+
+#: library/WT/I18N.php:339
+#, php-format
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s jaar"
+msgstr[1] "%sjaren"
+
+#: library/WT/I18N.php:390
+#, php-format
+msgid "%s year ago"
+msgid_plural "%s years ago"
+msgstr[0] "%s jaar geleden"
+msgstr[1] "%s jaren geleden"
+
 #: calendar.php:560 includes/functions/functions_print_lists.php:1921
 #: modules_v3/yahrzeit/module.php:118
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s<sup>e</sup> gedenkdag"
+
+#. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
+#: library/WT/I18N.php:260
+#, php-format
+msgid "%s%%"
+msgstr "%s%%"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:97
@@ -359,6 +448,50 @@ msgid "&plusmn;%d year"
 msgid_plural "&plusmn;%d years"
 msgstr[0] "&plusmin;%d jaar"
 msgstr[1] "&plusmin;%d jaren"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+#: library/WT/I18N.php:368 library/WT/I18N.php:372
+#, php-format
+msgid "(aged %s)"
+msgstr "(ouderdom %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+#: library/WT/I18N.php:362
+#, php-format
+msgid "(aged less than %s)"
+msgstr "(ouderdom minder dan %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+#: library/WT/I18N.php:365
+#, php-format
+msgid "(aged more than %s)"
+msgstr "(ouderdom meer dan %s)"
+
+#. I18N: %s is a placeholder for a number
+#: library/WT/I18N.php:474
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr "(Gefilterd uit %s stuks)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
+#: library/WT/I18N.php:333
+msgid "(in childhood)"
+msgstr "(tijdens kindzijn)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
+#: library/WT/I18N.php:330
+msgid "(in infancy)"
+msgstr "(in kindertijd)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
+#: library/WT/I18N.php:327
+msgid "(stillborn)"
+msgstr "(doodgeboren)"
+
+#. I18N: This punctuation is used to separate lists of items.
+#: library/WT/I18N.php:173
+msgid ", "
+msgstr ", "
 
 #: library/WT/Stats.php:4060
 msgctxt "CENTURY"
@@ -857,6 +990,14 @@ msgstr "A3 formaat"
 msgctxt "paper size"
 msgid "A4"
 msgstr "A4 formaat"
+
+#: library/WT/I18N.php:159
+msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+msgstr "ALFABET_kleineletters=abcdefghijklmnopqrstuvwxyz"
+
+#: library/WT/I18N.php:156
+msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+msgstr "ALFABET_hoofdletters=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1639,10 +1780,11 @@ msgstr "Alias"
 msgid "Alive"
 msgstr "Levend"
 
+#. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:225 famlist.php:70 famlist.php:76 famlist.php:82
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
-#: indilist.php:167 indilist.php:251 indilist.php:253
+#: indilist.php:167 indilist.php:251 indilist.php:253 library/WT/I18N.php:418
 #: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
@@ -4759,6 +4901,12 @@ msgstr "Voorouders in rechte lijn"
 msgid "Direct line ancestors and their families"
 msgstr "Voorouders in directe lijn en hun gezinnen"
 
+#. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
+#: library/WT/I18N.php:422
+#, php-format
+msgid "Display %s"
+msgstr "Toon %s"
+
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
 msgstr "Toon de Kaartcoördinaten"
@@ -5922,7 +6070,7 @@ msgstr "Bestanden gemarkeerd met %s zijn benodigd voor juiste werking en kunnen 
 
 #: admin_site_change.php:273 admin_site_logs.php:240 find.php:188 find.php:203
 #: find.php:221 find.php:238 find.php:255 find.php:273 find.php:290
-#: find.php:481 modules_v3/random_media/module.php:300
+#: find.php:481 library/WT/I18N.php:480 modules_v3/random_media/module.php:300
 msgid "Filter"
 msgstr "Filter"
 
@@ -7912,6 +8060,7 @@ msgstr "Laad al uw familie bomen vanaf een schijf, door voor iedere boom gebruik
 msgid "Loading data from GEDCOM: %.1f%%"
 msgstr "Data laden van GEDCOM: %.1f%%"
 
+#: library/WT/I18N.php:478 library/WT/I18N.php:479
 #: themes/clouds/templates/compactbox_template.php:54
 #: themes/clouds/templates/personbox_template.php:48
 #: themes/colors/templates/compactbox_template.php:54
@@ -9426,6 +9575,10 @@ msgstr ""
 #: admin_site_config.php:46
 msgid "No predefined text"
 msgstr "Geen vooraf gedefinieerde tekst"
+
+#: library/WT/I18N.php:471 library/WT/I18N.php:482
+msgid "No records to display"
+msgstr "Geen records om te tonen"
 
 #: find.php:509 find.php:534 find.php:590 find.php:618 find.php:641
 #: find.php:664 find.php:687 library/WT/Controller/AdvancedSearch.php:534
@@ -12294,6 +12447,12 @@ msgstr "Toon «blad»-paren of personen. Dit zijn nog levende personen, waarvan 
 msgid "Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database."
 msgstr "Toon «wortel»-paren of personen. Deze mensen worden ook wel «patriarchen» genoemd. Zij zijn personen, waarvan geen ouders zijn opgenomen in de database."
 
+#. I18N: %s are placeholders for numbers
+#: library/WT/I18N.php:472 library/WT/I18N.php:473
+#, php-format
+msgid "Showing %1$s to %2$s of %3$s"
+msgstr "Toont %1$s tot %2$s van %3$s"
+
 #: library/WT/Controller/Fanchart.php:337
 #: library/WT/Controller/Hourglass.php:407 pedigree.php:227
 msgid "Sibling"
@@ -14896,6 +15055,11 @@ msgstr "Bezoeker"
 msgid "Vital records"
 msgstr "Vitale records"
 
+#. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
+#: library/WT/I18N.php:162
+msgid "WEEK_START=0"
+msgstr "WEEK_START=0"
+
 #: library/WT/Stats.php:4032
 msgid "Wales"
 msgstr "Wales"
@@ -16158,6 +16322,11 @@ msgstr "achterneef/achternicht 12e graad"
 #: setup.php:164
 msgid "file upload capability"
 msgstr "Bestand upload capaciteit"
+
+#. I18N: button label, first page
+#: library/WT/I18N.php:466
+msgid "first"
+msgstr "eerste"
 
 #: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -18065,6 +18234,11 @@ msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
 msgstr "jours complémentaires"
 
+#. I18N: button label, last page
+#: library/WT/I18N.php:467
+msgid "last"
+msgstr "laatste"
+
 #: admin_trees_config.php:910
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
@@ -18248,7 +18422,8 @@ msgctxt "sister's child"
 msgid "nephew/niece"
 msgstr "neef/nicht"
 
-#: admin_pgv_to_wt.php:157 admin_site_merge.php:318
+#. I18N: button label, next page
+#: admin_pgv_to_wt.php:157 admin_site_merge.php:318 library/WT/I18N.php:468
 #: modules_v3/batch_update/admin_batch_update.php:98
 msgid "next"
 msgstr "volgende"
@@ -18438,7 +18613,8 @@ msgstr "uitstaand"
 msgid "percentage"
 msgstr "percentage"
 
-#: modules_v3/batch_update/admin_batch_update.php:97
+#. I18N: button label, previous page
+#: library/WT/I18N.php:469 modules_v3/batch_update/admin_batch_update.php:97
 msgid "previous"
 msgstr "vorige"
 
@@ -19313,6 +19489,11 @@ msgstr "onbekend persoon"
 msgid "unreliable evidence"
 msgstr "onbetrouwbaar bewijs"
 
+#. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
+#: library/WT/I18N.php:176
+msgid "utf8_unicode_ci"
+msgstr "utf8_unicode_ci"
+
 #: modules_v3/ahnentafel_report/report.xml:139
 #: modules_v3/descendancy_report/report.xml:105
 msgctxt "FEMALE"
@@ -19435,86 +19616,6 @@ msgstr "…"
 #~ msgid "%H:%i:%s"
 #~ msgstr "%H:%i:%s"
 
-#~ msgid "%j %F %Y"
-#~ msgstr "%j %F %Y"
-
-#~ msgid "%s day"
-#~ msgid_plural "%s days"
-#~ msgstr[0] "%s dag"
-#~ msgstr[1] "%s dagen"
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "%s dag geleden"
-#~ msgstr[1] "%s dagen geleden"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "%s uur geleden"
-#~ msgstr[1] "%s uren geleden"
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "%s minuut geleden"
-#~ msgstr[1] "%s minuten geleden"
-
-#~ msgid "%s month"
-#~ msgid_plural "%s months"
-#~ msgstr[0] "%s maand"
-#~ msgstr[1] "%s maanden"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "%s maand geleden"
-#~ msgstr[1] "%s maanden geleden"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "%s seconde geleden"
-#~ msgstr[1] "%s seconden geleden"
-
-#~ msgid "%s week"
-#~ msgid_plural "%s weeks"
-#~ msgstr[0] "%s week"
-#~ msgstr[1] "%s weken"
-
-#~ msgid "%s year"
-#~ msgid_plural "%s years"
-#~ msgstr[0] "%s jaar"
-#~ msgstr[1] "%sjaren"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "%s jaar geleden"
-#~ msgstr[1] "%s jaren geleden"
-
-#~ msgid "%s%%"
-#~ msgstr "%s%%"
-
-#~ msgid "(aged %s)"
-#~ msgstr "(ouderdom %s)"
-
-#~ msgid "(aged less than %s)"
-#~ msgstr "(ouderdom minder dan %s)"
-
-#~ msgid "(aged more than %s)"
-#~ msgstr "(ouderdom meer dan %s)"
-
-#~ msgid "(filtered from %s total entries)"
-#~ msgstr "(Gefilterd uit %s stuks)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(tijdens kindzijn)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(in kindertijd)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(doodgeboren)"
-
-#~ msgid ", "
-#~ msgstr ", "
-
 #~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
 #~ msgstr "<b>GUID</b> staat in dit verband voor «Globally Unique ID» (ed: globaal unieke identificatie)<br><br>GUID's zijn bedoeld om elk individu te identificeren op een herhaalbare wijze, zodat centrale organisaties, zoals het Family History Center van de LDS church in Salt Lake City, of zelfs compatibele programma's welke op uw eigen server draaien, kunnen bepalen of ze met dezelfde persoon te maken hebben ongeacht waar de GEDCOM vandaan komt. Het doel van het Family History Center is het maken van een centrale opslagplaats met genealogische gegevens en deze via web diensten beschikbaar te stellen. Hierdoor kan elk programma die gegevens inzien en bijwerken.<br><br>Als u niet van plan bent deze GEDCOM te delen met anderen, dan hoeft u <b>webtrees</b> deze GUID's niet te laten maken; echter, wel doen heeft echter geen ander nadeel dan dat het de omvang van uw GEDCOM vergroot."
 
@@ -19547,12 +19648,6 @@ msgstr "…"
 
 #~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 #~ msgstr "Een gebruiker kan zich niet aanmelden totdat zowel \"e-mail geverifieerd\" en \"goedgekeurd door beheerder\" opties geselecteerd zijn ."
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALFABET_kleineletters=abcdefghijklmnopqrstuvwxyz"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALFABET_hoofdletters=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 #~ msgid "Access"
 #~ msgstr "Toegang"
@@ -19802,9 +19897,6 @@ msgstr "…"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Dhu al-Qi'dah"
-
-#~ msgid "Display %s"
-#~ msgstr "Toon %s"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "Niet verzegelen, vorige verzegeling afgebroken"
@@ -20120,9 +20212,6 @@ msgstr "…"
 #~ msgid "No events for living individuals exist for tomorrow."
 #~ msgstr "Er zijn geen gebeurtenissen van levende personen voor morgen."
 
-#~ msgid "No records to display"
-#~ msgstr "Geen records om te tonen"
-
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "Dit ID bestaat niet in dit GEDCOM-bestand"
 
@@ -20412,9 +20501,6 @@ msgstr "…"
 #~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
 #~ msgstr "Toon «wortel»-paren of personen. Deze mensen worden ook wel «patriarchen» genoemd. Zij zijn personen, waarvan geen ouders zijn opgenomen in de database."
 
-#~ msgid "Showing %1$s to %2$s of %3$s"
-#~ msgstr "Toont %1$s tot %2$s van %3$s"
-
 #~ msgid "Social security number"
 #~ msgstr "Social security number (USA)"
 
@@ -20676,9 +20762,6 @@ msgstr "…"
 #~ msgid "Visitors"
 #~ msgstr "Bezoekers"
 
-#~ msgid "WEEK_START=0"
-#~ msgstr "WEEK_START=0"
-
 #~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 #~ msgstr "We zullen nu een e-mailbevestiging sturen naar het adres <b>%s</b>. U moet uw account aanvraag verifiëren door de  instructies op te volgen in de email. Als dit niet binnen zeven dagen gebeurt, wordt uw aanvraag automatisch verwijderd. U moet dan opnieuw een aanvraag indienen.<br><br>Nadat u de instructies in de  e-mailbevestiging hebt opgevolgd moet de beheerder nog uw aanvraag goedkeuren voordat u gebruik kunt maken van uw account.<br><br>Om aan te melden op deze site moet u weten wat uw gebruikersnaam en wachtwoord zijn."
 
@@ -20772,9 +20855,6 @@ msgstr "…"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "schoonouders van zoon"
 
-#~ msgid "first"
-#~ msgstr "eerste"
-
 #~ msgid "from %d"
 #~ msgstr "vanaf %d"
 
@@ -20802,9 +20882,6 @@ msgstr "…"
 #~ msgid "grandson’s wife"
 #~ msgstr "aangetrouwde kleindochter"
 
-#~ msgid "last"
-#~ msgstr "laatste"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "vader van schoonzoon"
@@ -20816,9 +20893,6 @@ msgstr "…"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "ouders van schoonzoon"
-
-#~ msgid "utf8_unicode_ci"
-#~ msgstr "utf8_unicode_ci"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "webtrees database moet op dezelfde server staan als die van PGV"

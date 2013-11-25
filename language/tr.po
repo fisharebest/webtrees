@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-24 22:39+0000\n"
+"POT-Creation-Date: 2013-11-25 20:40+0000\n"
 "PO-Revision-Date: 2013-03-17 18:33+0000\n"
 "Last-Translator: Adem GENÇ <Unknown>\n"
 "Language-Team: Adem GENÇ <tutastes@gmail.com>\n"
@@ -216,6 +216,16 @@ msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] "%d yıl"
 
+#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#: library/WT/I18N.php:154
+msgid "%g:%i:%s %a"
+msgstr ""
+
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
+#: library/WT/I18N.php:152
+msgid "%j %F %Y"
+msgstr "%d-%M-%Y"
+
 #: includes/functions/functions.php:2162
 #, php-format
 msgid "%s"
@@ -245,12 +255,34 @@ msgid_plural "%s children"
 msgstr[0] "%s çocuk"
 msgstr[1] "%s çocuk"
 
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:353
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s gün"
+msgstr[1] "%s gün"
+
+#: library/WT/I18N.php:396
+#, php-format
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] "%s gün önce"
+msgstr[1] "%s gün önce"
+
 #: library/WT/Stats.php:3093 library/WT/Stats.php:3097
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s torun"
 msgstr[1] "%s torun"
+
+#: library/WT/I18N.php:399
+#, php-format
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] "%s saat önce"
+msgstr[1] "%s saat önce"
 
 #: modules_v3/googlemap/module.php:826
 #, php-format
@@ -270,6 +302,28 @@ msgstr ""
 msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s mesajınız var"
+
+#: library/WT/I18N.php:402
+#, php-format
+msgid "%s minute ago"
+msgid_plural "%s minutes ago"
+msgstr[0] "%s dakika önce"
+msgstr[1] "%s dakika önce"
+
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:345
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s ay"
+msgstr[1] "%s ay"
+
+#: library/WT/I18N.php:393
+#, php-format
+msgid "%s month ago"
+msgid_plural "%s months ago"
+msgstr[0] "%s ay önce"
+msgstr[1] "%s ay önce"
 
 #: statisticsplot.php:747
 #, php-format
@@ -292,6 +346,13 @@ msgstr ""
 #, php-format
 msgid "%s places"
 msgstr ""
+
+#: library/WT/I18N.php:404
+#, php-format
+msgid "%s second ago"
+msgid_plural "%s seconds ago"
+msgstr[0] "%s saniye önce"
+msgstr[1] "%s saniye önce"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2106
@@ -317,11 +378,39 @@ msgstr ""
 msgid "%s twice removed descending"
 msgstr ""
 
+#. I18N: Part of an age string. e.g 7 weeks and 3 days
+#: library/WT/I18N.php:349
+#, php-format
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] "%s hafta"
+msgstr[1] "%s hafta"
+
+#: library/WT/I18N.php:339
+#, php-format
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s yıl"
+msgstr[1] "%s yıl"
+
+#: library/WT/I18N.php:390
+#, php-format
+msgid "%s year ago"
+msgid_plural "%s years ago"
+msgstr[0] "%s yıl önce"
+msgstr[1] "%s yıl önce"
+
 #: calendar.php:560 includes/functions/functions_print_lists.php:1921
 #: modules_v3/yahrzeit/module.php:118
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s. yıl dönümü"
+
+#. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
+#: library/WT/I18N.php:260
+#, php-format
+msgid "%s%%"
+msgstr "%s%%"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:97
@@ -348,6 +437,50 @@ msgid "&plusmn;%d year"
 msgid_plural "&plusmn;%d years"
 msgstr[0] "&plusmn;%d yıl"
 msgstr[1] "&plusmn;%d yıl"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+#: library/WT/I18N.php:368 library/WT/I18N.php:372
+#, php-format
+msgid "(aged %s)"
+msgstr "(%s yaşındaydı)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+#: library/WT/I18N.php:362
+#, php-format
+msgid "(aged less than %s)"
+msgstr "(%s daha az yaşlı)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+#: library/WT/I18N.php:365
+#, php-format
+msgid "(aged more than %s)"
+msgstr "(%s daha çok yaşlı)"
+
+#. I18N: %s is a placeholder for a number
+#: library/WT/I18N.php:474
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr "(toplam %s girişten filtrelendi)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
+#: library/WT/I18N.php:333
+msgid "(in childhood)"
+msgstr "(çocuklukta)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
+#: library/WT/I18N.php:330
+msgid "(in infancy)"
+msgstr "(doğarken)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
+#: library/WT/I18N.php:327
+msgid "(stillborn)"
+msgstr "(ölü doğdu)"
+
+#. I18N: This punctuation is used to separate lists of items.
+#: library/WT/I18N.php:173
+msgid ", "
+msgstr ""
 
 #: library/WT/Stats.php:4060
 msgctxt "CENTURY"
@@ -846,6 +979,14 @@ msgstr ""
 msgctxt "paper size"
 msgid "A4"
 msgstr ""
+
+#: library/WT/I18N.php:159
+msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+msgstr "ALPHABET_lower=abcçdefgğhiıjklmnoöpqrsştuüvwxyz"
+
+#: library/WT/I18N.php:156
+msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+msgstr "ALPHABET_upper=ABCÇDEFGĞHIİJKLMNOÖPQRSŞTUÜVWXYZ"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1628,10 +1769,11 @@ msgstr "Rumuz"
 msgid "Alive"
 msgstr "Yaşayan"
 
+#. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:225 famlist.php:70 famlist.php:76 famlist.php:82
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
-#: indilist.php:167 indilist.php:251 indilist.php:253
+#: indilist.php:167 indilist.php:251 indilist.php:253 library/WT/I18N.php:418
 #: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
@@ -4748,6 +4890,12 @@ msgstr "Direk atalara doğru"
 msgid "Direct line ancestors and their families"
 msgstr "Direk atalara doğru ve onların aileleri"
 
+#. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
+#: library/WT/I18N.php:422
+#, php-format
+msgid "Display %s"
+msgstr "Göster %s"
+
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
 msgstr "Harita Koordinatlar göster"
@@ -5911,7 +6059,7 @@ msgstr "%s ile işaretlenmiş dosyalar sitenin doğru bir şekilde çalışması
 
 #: admin_site_change.php:273 admin_site_logs.php:240 find.php:188 find.php:203
 #: find.php:221 find.php:238 find.php:255 find.php:273 find.php:290
-#: find.php:481 modules_v3/random_media/module.php:300
+#: find.php:481 library/WT/I18N.php:480 modules_v3/random_media/module.php:300
 msgid "Filter"
 msgstr "Filtre"
 
@@ -7901,6 +8049,7 @@ msgstr "Her biri için \"içeri aktarama\" fonksiyonunu kullanarak diskteki tüm
 msgid "Loading data from GEDCOM: %.1f%%"
 msgstr "%.1f%% GEDCOM dan yükleniyor"
 
+#: library/WT/I18N.php:478 library/WT/I18N.php:479
 #: themes/clouds/templates/compactbox_template.php:54
 #: themes/clouds/templates/personbox_template.php:48
 #: themes/colors/templates/compactbox_template.php:54
@@ -9415,6 +9564,10 @@ msgstr ""
 #: admin_site_config.php:46
 msgid "No predefined text"
 msgstr "Önceden tanımlanmış metin yok"
+
+#: library/WT/I18N.php:471 library/WT/I18N.php:482
+msgid "No records to display"
+msgstr "Gösterilecek kayıt yok"
 
 #: find.php:509 find.php:534 find.php:590 find.php:618 find.php:641
 #: find.php:664 find.php:687 library/WT/Controller/AdvancedSearch.php:534
@@ -12283,6 +12436,12 @@ msgstr "«yapraklar» çiftleri yada bireyleri göster. Bu bireyler yaşıyor an
 msgid "Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database."
 msgstr "«kökler» çiftleri yada bireyleri göster. Bu kişiye «büyük aile reisi» denebilir. Onlar veritabanında hiçbir ebeveynleri kayıtlı olmayan bireylerdir."
 
+#. I18N: %s are placeholders for numbers
+#: library/WT/I18N.php:472 library/WT/I18N.php:473
+#, php-format
+msgid "Showing %1$s to %2$s of %3$s"
+msgstr "Gösterilen %1$s den %2$s toplam %3$s"
+
 #: library/WT/Controller/Fanchart.php:337
 #: library/WT/Controller/Hourglass.php:407 pedigree.php:227
 msgid "Sibling"
@@ -14885,6 +15044,11 @@ msgstr "Ziyaretçi"
 msgid "Vital records"
 msgstr "Yaşamsal kayıtlar"
 
+#. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
+#: library/WT/I18N.php:162
+msgid "WEEK_START=0"
+msgstr "WEEK_START=1"
+
 #: library/WT/Stats.php:4032
 msgid "Wales"
 msgstr "Galler"
@@ -16147,6 +16311,11 @@ msgstr "beşinci kuzen"
 #: setup.php:164
 msgid "file upload capability"
 msgstr "dosya yükleme yeteneklilik"
+
+#. I18N: button label, first page
+#: library/WT/I18N.php:466
+msgid "first"
+msgstr "ilk"
 
 #: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -18054,6 +18223,11 @@ msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
 msgstr ""
 
+#. I18N: button label, last page
+#: library/WT/I18N.php:467
+msgid "last"
+msgstr "son"
+
 #: admin_trees_config.php:910
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
@@ -18236,7 +18410,8 @@ msgctxt "sister's child"
 msgid "nephew/niece"
 msgstr "erkek/kız yeğen"
 
-#: admin_pgv_to_wt.php:157 admin_site_merge.php:318
+#. I18N: button label, next page
+#: admin_pgv_to_wt.php:157 admin_site_merge.php:318 library/WT/I18N.php:468
 #: modules_v3/batch_update/admin_batch_update.php:98
 msgid "next"
 msgstr "sonraki"
@@ -18426,7 +18601,8 @@ msgstr "bekliyor"
 msgid "percentage"
 msgstr "yüzde"
 
-#: modules_v3/batch_update/admin_batch_update.php:97
+#. I18N: button label, previous page
+#: library/WT/I18N.php:469 modules_v3/batch_update/admin_batch_update.php:97
 msgid "previous"
 msgstr "önceki"
 
@@ -19301,6 +19477,11 @@ msgstr "bilinmeyen kişi"
 msgid "unreliable evidence"
 msgstr "güvenilmez kanıt"
 
+#. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
+#: library/WT/I18N.php:176
+msgid "utf8_unicode_ci"
+msgstr "utf8_unicode_ci"
+
 #: modules_v3/ahnentafel_report/report.xml:139
 #: modules_v3/descendancy_report/report.xml:105
 msgctxt "FEMALE"
@@ -19426,83 +19607,6 @@ msgstr "Soyisimsiz"
 #~ msgid "%H:%i:%s"
 #~ msgstr "%H:%i"
 
-#~ msgid "%j %F %Y"
-#~ msgstr "%d-%M-%Y"
-
-#~ msgid "%s day"
-#~ msgid_plural "%s days"
-#~ msgstr[0] "%s gün"
-#~ msgstr[1] "%s gün"
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "%s gün önce"
-#~ msgstr[1] "%s gün önce"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "%s saat önce"
-#~ msgstr[1] "%s saat önce"
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "%s dakika önce"
-#~ msgstr[1] "%s dakika önce"
-
-#~ msgid "%s month"
-#~ msgid_plural "%s months"
-#~ msgstr[0] "%s ay"
-#~ msgstr[1] "%s ay"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "%s ay önce"
-#~ msgstr[1] "%s ay önce"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "%s saniye önce"
-#~ msgstr[1] "%s saniye önce"
-
-#~ msgid "%s week"
-#~ msgid_plural "%s weeks"
-#~ msgstr[0] "%s hafta"
-#~ msgstr[1] "%s hafta"
-
-#~ msgid "%s year"
-#~ msgid_plural "%s years"
-#~ msgstr[0] "%s yıl"
-#~ msgstr[1] "%s yıl"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "%s yıl önce"
-#~ msgstr[1] "%s yıl önce"
-
-#~ msgid "%s%%"
-#~ msgstr "%s%%"
-
-#~ msgid "(aged %s)"
-#~ msgstr "(%s yaşındaydı)"
-
-#~ msgid "(aged less than %s)"
-#~ msgstr "(%s daha az yaşlı)"
-
-#~ msgid "(aged more than %s)"
-#~ msgstr "(%s daha çok yaşlı)"
-
-#~ msgid "(filtered from %s total entries)"
-#~ msgstr "(toplam %s girişten filtrelendi)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(çocuklukta)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(doğarken)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(ölü doğdu)"
-
 #~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
 #~ msgstr "<b>Lütfen Not:</b> Bu soyağacının kurallar çerçevesine göre değişebilen kurala göre genel olarak bireylerin yaşam özel bilgileri yalnızca aile, akraba ve yakın arkadaşına verilebilir. Herhangi bir özel veri almadan önce bu kişinin ilişki durumu doğrulanması istenir. Ölü kişilerinde verileri bazen gizli olabilir. Çünkü bu durumda yeterli bilgi belirlemek için kişi hakkında bilinen veya hayatta değildir ve bebeğin yanındaki bu kişi hakkında daha fazla bilgi olmayabilir.<br><br>Soru sormadan önce lütfen tarihleri, yerleri kontrol ederek doğru kişi hakkında sorunuzu sorun ve akraba kapat. Eğer nesiller verisinde yanlışları değiştirilmesi için bilgi gönderiyorsanız lütfen verinin kayak yerini belirtin."
 
@@ -19526,12 +19630,6 @@ msgstr "Soyisimsiz"
 
 #~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "Bir veritabanı sunucusu birçok ayrı veritabanı depolayabilirsiniz. (Sunucunuzun yöneticisi tarafından oluşturulan) mevcut bir veritabanı seçin veya yeni bir tane oluşturun (eğer veritabanı kullanıcı hesabınız ayrıcalıklara sahip ise)"
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=abcçdefgğhiıjklmnoöpqrsştuüvwxyz"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=ABCÇDEFGĞHIİJKLMNOÖPQRSŞTUÜVWXYZ"
 
 #~ msgid "Access"
 #~ msgstr "Erişim"
@@ -19755,9 +19853,6 @@ msgstr "Soyisimsiz"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Zilkade"
 
-#~ msgid "Display %s"
-#~ msgstr "Göster %s"
-
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "Kapatma değil, önceki kapatma iptalı"
 
@@ -19972,9 +20067,6 @@ msgstr "Soyisimsiz"
 
 #~ msgid "No events for living individuals exist for tomorrow."
 #~ msgstr "Yarın yaşayan insan için hadiseler mevcut değil."
-
-#~ msgid "No records to display"
-#~ msgstr "Gösterilecek kayıt yok"
 
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "Bu GEDCOM dosyada böyle mevcut ID yok."
@@ -20230,9 +20322,6 @@ msgstr "Soyisimsiz"
 #~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
 #~ msgstr "«kökler» çiftleri yada bireyleri göster. Bu kişiye «büyük aile reisi» denebilir. Onlar veritabanında hiçbir ebeveynleri kayıtlı olmayan bireylerdir."
 
-#~ msgid "Showing %1$s to %2$s of %3$s"
-#~ msgstr "Gösterilen %1$s den %2$s toplam %3$s"
-
 #~ msgid "Social security number"
 #~ msgstr "Sosyal Güvenlik Numara"
 
@@ -20335,9 +20424,6 @@ msgstr "Soyisimsiz"
 #~ msgid "Visitors"
 #~ msgstr "Ziyaretçiler"
 
-#~ msgid "WEEK_START=0"
-#~ msgstr "WEEK_START=1"
-
 #~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 #~ msgstr "Üyelik sırasında verdiğiniz <b>%s</b> e-posta adresinize onay mesajı gönderdik. Lütfen e-posta hesabınızı kontrol ederek üyeliğinizi onaylayınız. Eğer hesabinizi yedi(7) gün içinde onaylamaz iseniz hesabiniz otomatikman silinecektir. Tekrar kaydolmak zorunda kalacaksınız.<br><br><br>Bu siteye giriş yapmak için kullanıcı adı ve şifre gerekir."
 
@@ -20395,9 +20481,6 @@ msgstr "Soyisimsiz"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "gelininin ebeveyni"
 
-#~ msgid "first"
-#~ msgstr "ilk"
-
 #~ msgid "from %d"
 #~ msgstr "%d yılından"
 
@@ -20425,9 +20508,6 @@ msgstr "Soyisimsiz"
 #~ msgid "grandson’s wife"
 #~ msgstr "oğlunun gelini"
 
-#~ msgid "last"
-#~ msgstr "son"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "kızının kayınpederi"
@@ -20439,6 +20519,3 @@ msgstr "Soyisimsiz"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "kızının kayın ebeveyni"
-
-#~ msgid "utf8_unicode_ci"
-#~ msgstr "utf8_unicode_ci"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-24 22:39+0000\n"
+"POT-Creation-Date: 2013-11-25 20:40+0000\n"
 "PO-Revision-Date: 2013-05-13 06:38+0000\n"
 "Last-Translator: Michele Locati <mlocati@gmail.com>\n"
 "Language-Team: it\n"
@@ -228,6 +228,16 @@ msgid_plural "%d years"
 msgstr[0] "%d anno"
 msgstr[1] "%d anni"
 
+#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#: library/WT/I18N.php:154
+msgid "%g:%i:%s %a"
+msgstr "%G.%i.%s"
+
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
+#: library/WT/I18N.php:152
+msgid "%j %F %Y"
+msgstr "%j %F %Y"
+
 #: includes/functions/functions.php:2162
 #, php-format
 msgid "%s"
@@ -257,12 +267,34 @@ msgid_plural "%s children"
 msgstr[0] "%s figlio"
 msgstr[1] "%s figli"
 
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:353
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s giorno"
+msgstr[1] "%s giorni"
+
+#: library/WT/I18N.php:396
+#, php-format
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] "%s giorno fa"
+msgstr[1] "%s giorni fa"
+
 #: library/WT/Stats.php:3093 library/WT/Stats.php:3097
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s nipote"
 msgstr[1] "%s nipoti"
+
+#: library/WT/I18N.php:399
+#, php-format
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] "%s ora fa"
+msgstr[1] "%s ore fa"
 
 #: modules_v3/googlemap/module.php:826
 #, php-format
@@ -283,6 +315,28 @@ msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s messaggio"
 msgstr[1] "%s messaggi"
+
+#: library/WT/I18N.php:402
+#, php-format
+msgid "%s minute ago"
+msgid_plural "%s minutes ago"
+msgstr[0] "%s minuto fa"
+msgstr[1] "%s minuti fa"
+
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:345
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s mese"
+msgstr[1] "%s mesi"
+
+#: library/WT/I18N.php:393
+#, php-format
+msgid "%s month ago"
+msgid_plural "%s months ago"
+msgstr[0] "%s mese fa"
+msgstr[1] "%s mesi fa"
 
 #: statisticsplot.php:747
 #, php-format
@@ -305,6 +359,13 @@ msgstr "%s once removed descending"
 #, php-format
 msgid "%s places"
 msgstr ""
+
+#: library/WT/I18N.php:404
+#, php-format
+msgid "%s second ago"
+msgid_plural "%s seconds ago"
+msgstr[0] "%s secondo fa"
+msgstr[1] "%s secondi fa"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2106
@@ -330,11 +391,39 @@ msgstr "%s twice removed ascending"
 msgid "%s twice removed descending"
 msgstr "%s twice removed descending"
 
+#. I18N: Part of an age string. e.g 7 weeks and 3 days
+#: library/WT/I18N.php:349
+#, php-format
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] "%s settimana"
+msgstr[1] "%s settimane"
+
+#: library/WT/I18N.php:339
+#, php-format
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s anno"
+msgstr[1] "%s anni"
+
+#: library/WT/I18N.php:390
+#, php-format
+msgid "%s year ago"
+msgid_plural "%s years ago"
+msgstr[0] "%s anno fa"
+msgstr[1] "%s anni fa"
+
 #: calendar.php:560 includes/functions/functions_print_lists.php:1921
 #: modules_v3/yahrzeit/module.php:118
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s anni d’anniversario"
+
+#. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
+#: library/WT/I18N.php:260
+#, php-format
+msgid "%s%%"
+msgstr "%s%%"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:97
@@ -361,6 +450,50 @@ msgid "&plusmn;%d year"
 msgid_plural "&plusmn;%d years"
 msgstr[0] "&plusmn;%d anno"
 msgstr[1] "&plusmn;%d anni"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+#: library/WT/I18N.php:368 library/WT/I18N.php:372
+#, php-format
+msgid "(aged %s)"
+msgstr "(all’età di %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+#: library/WT/I18N.php:362
+#, php-format
+msgid "(aged less than %s)"
+msgstr "(all’età di meno di %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+#: library/WT/I18N.php:365
+#, php-format
+msgid "(aged more than %s)"
+msgstr "(all’età di più di %s)"
+
+#. I18N: %s is a placeholder for a number
+#: library/WT/I18N.php:474
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr "(filtrati su un totale di %s elementi)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
+#: library/WT/I18N.php:333
+msgid "(in childhood)"
+msgstr "(da piccolo)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
+#: library/WT/I18N.php:330
+msgid "(in infancy)"
+msgstr "(da neonato)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
+#: library/WT/I18N.php:327
+msgid "(stillborn)"
+msgstr "(nato morto)"
+
+#. I18N: This punctuation is used to separate lists of items.
+#: library/WT/I18N.php:173
+msgid ", "
+msgstr ", "
 
 #: library/WT/Stats.php:4060
 msgctxt "CENTURY"
@@ -859,6 +992,14 @@ msgstr "A3"
 msgctxt "paper size"
 msgid "A4"
 msgstr "A4"
+
+#: library/WT/I18N.php:159
+msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+
+#: library/WT/I18N.php:156
+msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1641,10 +1782,11 @@ msgstr "Pseudonimo"
 msgid "Alive"
 msgstr "In vita"
 
+#. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:225 famlist.php:70 famlist.php:76 famlist.php:82
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
-#: indilist.php:167 indilist.php:251 indilist.php:253
+#: indilist.php:167 indilist.php:251 indilist.php:253 library/WT/I18N.php:418
 #: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
@@ -4761,6 +4903,12 @@ msgstr "Antenati in linea diretta"
 msgid "Direct line ancestors and their families"
 msgstr "Antenati in linea diretta e relative famiglie"
 
+#. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
+#: library/WT/I18N.php:422
+#, php-format
+msgid "Display %s"
+msgstr "Mostra %s"
+
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
 msgstr "Mostra le coordinate della mappa"
@@ -5924,7 +6072,7 @@ msgstr "I file contrassegnati con %s sono necessari per il corretto funzionament
 
 #: admin_site_change.php:273 admin_site_logs.php:240 find.php:188 find.php:203
 #: find.php:221 find.php:238 find.php:255 find.php:273 find.php:290
-#: find.php:481 modules_v3/random_media/module.php:300
+#: find.php:481 library/WT/I18N.php:480 modules_v3/random_media/module.php:300
 msgid "Filter"
 msgstr "Filtra"
 
@@ -7914,6 +8062,7 @@ msgstr "Cariicare tutti i propri alberi genealogici da disco, utilizzando la fun
 msgid "Loading data from GEDCOM: %.1f%%"
 msgstr "Caricamento in corso dei dati dal GEDCOM: %.1f%%"
 
+#: library/WT/I18N.php:478 library/WT/I18N.php:479
 #: themes/clouds/templates/compactbox_template.php:54
 #: themes/clouds/templates/personbox_template.php:48
 #: themes/colors/templates/compactbox_template.php:54
@@ -9428,6 +9577,10 @@ msgstr ""
 #: admin_site_config.php:46
 msgid "No predefined text"
 msgstr "nessun testo predefinito"
+
+#: library/WT/I18N.php:471 library/WT/I18N.php:482
+msgid "No records to display"
+msgstr "Nessun record da mostrare"
 
 #: find.php:509 find.php:534 find.php:590 find.php:618 find.php:641
 #: find.php:664 find.php:687 library/WT/Controller/AdvancedSearch.php:534
@@ -12296,6 +12449,12 @@ msgstr "Mostra coppie o persone «foglie». Queste sono persone che sono vive, m
 msgid "Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database."
 msgstr "Mostra coppie o persone «radice». Queste persone possono anche essere chiamate «patriarchi». Sono persone che non hanno genitori registrati nel database."
 
+#. I18N: %s are placeholders for numbers
+#: library/WT/I18N.php:472 library/WT/I18N.php:473
+#, php-format
+msgid "Showing %1$s to %2$s of %3$s"
+msgstr "Mostrati da %1$s a %2$s su %3$s"
+
 #: library/WT/Controller/Fanchart.php:337
 #: library/WT/Controller/Hourglass.php:407 pedigree.php:227
 msgid "Sibling"
@@ -14898,6 +15057,11 @@ msgstr "Visitatore"
 msgid "Vital records"
 msgstr "Dati anagrafici"
 
+#. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
+#: library/WT/I18N.php:162
+msgid "WEEK_START=0"
+msgstr "WEEK_START=1"
+
 #: library/WT/Stats.php:4032
 msgid "Wales"
 msgstr "Galles"
@@ -16160,6 +16324,11 @@ msgstr "cugino/a di 5° grado"
 #: setup.php:164
 msgid "file upload capability"
 msgstr "possibilità di caricare file"
+
+#. I18N: button label, first page
+#: library/WT/I18N.php:466
+msgid "first"
+msgstr "primo"
 
 #: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -18067,6 +18236,11 @@ msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
 msgstr "giorni complementari"
 
+#. I18N: button label, last page
+#: library/WT/I18N.php:467
+msgid "last"
+msgstr "fine"
+
 #: admin_trees_config.php:910
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
@@ -18250,7 +18424,8 @@ msgctxt "sister's child"
 msgid "nephew/niece"
 msgstr "nipote (di zii)"
 
-#: admin_pgv_to_wt.php:157 admin_site_merge.php:318
+#. I18N: button label, next page
+#: admin_pgv_to_wt.php:157 admin_site_merge.php:318 library/WT/I18N.php:468
 #: modules_v3/batch_update/admin_batch_update.php:98
 msgid "next"
 msgstr "avanti"
@@ -18440,7 +18615,8 @@ msgstr "in sospeso"
 msgid "percentage"
 msgstr "percentuali"
 
-#: modules_v3/batch_update/admin_batch_update.php:97
+#. I18N: button label, previous page
+#: library/WT/I18N.php:469 modules_v3/batch_update/admin_batch_update.php:97
 msgid "previous"
 msgstr "indietro"
 
@@ -19315,6 +19491,11 @@ msgstr "persona sconosciuta"
 msgid "unreliable evidence"
 msgstr "prova non affidabile"
 
+#. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
+#: library/WT/I18N.php:176
+msgid "utf8_unicode_ci"
+msgstr "utf8_unicode_ci"
+
 #: modules_v3/ahnentafel_report/report.xml:139
 #: modules_v3/descendancy_report/report.xml:105
 msgctxt "FEMALE"
@@ -19440,94 +19621,11 @@ msgstr "…"
 #~ msgid "%H:%i:%s"
 #~ msgstr "%G.%i.%s"
 
-#~ msgid "%g:%i:%s %a"
-#~ msgstr "%G.%i.%s"
-
-#~ msgid "%j %F %Y"
-#~ msgstr "%j %F %Y"
-
-#~ msgid "%s day"
-#~ msgid_plural "%s days"
-#~ msgstr[0] "%s giorno"
-#~ msgstr[1] "%s giorni"
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "%s giorno fa"
-#~ msgstr[1] "%s giorni fa"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "%s ora fa"
-#~ msgstr[1] "%s ore fa"
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "%s minuto fa"
-#~ msgstr[1] "%s minuti fa"
-
-#~ msgid "%s month"
-#~ msgid_plural "%s months"
-#~ msgstr[0] "%s mese"
-#~ msgstr[1] "%s mesi"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "%s mese fa"
-#~ msgstr[1] "%s mesi fa"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "%s secondo fa"
-#~ msgstr[1] "%s secondi fa"
-
 #~ msgid "%s three times removed ascending"
 #~ msgstr "%s three times removed ascending"
 
 #~ msgid "%s three times removed descending"
 #~ msgstr "%s three times removed descending"
-
-#~ msgid "%s week"
-#~ msgid_plural "%s weeks"
-#~ msgstr[0] "%s settimana"
-#~ msgstr[1] "%s settimane"
-
-#~ msgid "%s year"
-#~ msgid_plural "%s years"
-#~ msgstr[0] "%s anno"
-#~ msgstr[1] "%s anni"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "%s anno fa"
-#~ msgstr[1] "%s anni fa"
-
-#~ msgid "%s%%"
-#~ msgstr "%s%%"
-
-#~ msgid "(aged %s)"
-#~ msgstr "(all’età di %s)"
-
-#~ msgid "(aged less than %s)"
-#~ msgstr "(all’età di meno di %s)"
-
-#~ msgid "(aged more than %s)"
-#~ msgstr "(all’età di più di %s)"
-
-#~ msgid "(filtered from %s total entries)"
-#~ msgstr "(filtrati su un totale di %s elementi)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(da piccolo)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(da neonato)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(nato morto)"
-
-#~ msgid ", "
-#~ msgstr ", "
 
 #~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
 #~ msgstr "<b>GUID</b>, in questo contesto, è l’acronimo di «Globally Unique ID» (ovvero identificativo univoco globale).<br><br>Lo scopo dei GUID è quello di contribuire a identificare ogni persona in modo ripetibile; in tal modo le organizzazioni principali (come il Family History Center o la chiesa mormone di Salt Lake City), o anche programmi compatibili in esecuzione sul proprio server, sono in grado di determinare se hanno a che fare con la stessa persona, indipendentemente dall’origine del GEDCOM. L’obiettivo del Family History Center è quello di avere un archivio centralizzato di dati genealogici da esporre attraverso servizi web. Ciò consentirà a qualsiasi programma di accedere ai dati e di aggiornare tale archivio con le proprie informazioni.<br><br>Se non si desidera condividere questo GEDCOM con nessun altro, non è necessario che <b>webtrees</b> crei questi GUID; tuttavia l’unica controindicazione della creazione dei GUID è l’aumento delle dimensioni del GEDCOM."
@@ -19564,12 +19662,6 @@ msgstr "…"
 
 #~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 #~ msgstr "Un utente non sarà in grado accedere fino a quando entrambe le opzioni \"email verificata\" e \"approvato da un amministratore\" non sono entrambe selezionate."
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 #~ msgid "Access"
 #~ msgstr "Accesso"
@@ -19825,9 +19917,6 @@ msgstr "…"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Dhu al-Qi’dah"
-
-#~ msgid "Display %s"
-#~ msgstr "Mostra %s"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "Non suggellare,  suggellamento precedente annullato"
@@ -20161,9 +20250,6 @@ msgstr "…"
 #~ msgid "No events for living individuals exist for tomorrow."
 #~ msgstr "Nessun evento per le persone viventi per domani."
 
-#~ msgid "No records to display"
-#~ msgstr "Nessun record da mostrare"
-
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "Non esiste questo ID nel file di famiglia."
 
@@ -20456,9 +20542,6 @@ msgstr "…"
 #~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
 #~ msgstr "Mostra coppie o persone «radice». Queste persone possono anche essere chiamate «patriarchi». Sono persone che non hanno genitori registrati nel database."
 
-#~ msgid "Showing %1$s to %2$s of %3$s"
-#~ msgstr "Mostrati da %1$s a %2$s su %3$s"
-
 #~ msgid "Social security number"
 #~ msgstr "Numero di previdenza sociale"
 
@@ -20744,9 +20827,6 @@ msgstr "…"
 #~ msgid "Visitors"
 #~ msgstr "Visitatori"
 
-#~ msgid "WEEK_START=0"
-#~ msgstr "WEEK_START=1"
-
 #~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 #~ msgstr "Verrà ora inviata un’email di conferma all’indirizzo <b>%s</b>. È necessario verificare la propria richiesta di un account seguendo le istruzioni nel messaggio di conferma. Se non si completa la conferma entro sette giorni la propria richiesta verrà rifiutata automaticamente e sarà necessario registrarsi nuovamente.<br><br>Dopo aver seguito le istruzioni nell’email di conferma, l’amministratore dovrà approvare la richiesta prima di poter utilizzare il nuovo account.<br><br>Per collegarsi a questo sito sarà necessario conoscere il proprio nome utente e la propria password."
 
@@ -20854,9 +20934,6 @@ msgstr "…"
 #~ msgid "estate name"
 #~ msgstr "nome topografico"
 
-#~ msgid "first"
-#~ msgstr "primo"
-
 #~ msgid "from %d"
 #~ msgstr "dal %d"
 
@@ -20884,9 +20961,6 @@ msgstr "…"
 #~ msgid "grandson’s wife"
 #~ msgstr "moglie del nipote (di nonni)"
 
-#~ msgid "last"
-#~ msgstr "fine"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "consuocero"
@@ -20898,9 +20972,6 @@ msgstr "…"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "consuocero/a"
-
-#~ msgid "utf8_unicode_ci"
-#~ msgstr "utf8_unicode_ci"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "Il database di webtrees e quello di PGV devono risiedere nello stesso server"

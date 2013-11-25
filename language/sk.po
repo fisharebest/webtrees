@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-24 22:39+0000\n"
+"POT-Creation-Date: 2013-11-25 20:40+0000\n"
 "PO-Revision-Date: 2013-07-18 11:54+0000\n"
 "Last-Translator: Ladislav Rosival <Unknown>\n"
 "Language-Team: \n"
@@ -235,6 +235,16 @@ msgstr[0] "%d rok"
 msgstr[1] "%d roky"
 msgstr[2] "%d rokov"
 
+#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#: library/WT/I18N.php:154
+msgid "%g:%i:%s %a"
+msgstr ""
+
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
+#: library/WT/I18N.php:152
+msgid "%j %F %Y"
+msgstr "%j. %F %Y"
+
 #: includes/functions/functions.php:2162
 #, php-format
 msgid "%s"
@@ -265,6 +275,23 @@ msgstr[0] "%s dieťa"
 msgstr[1] "%s detí"
 msgstr[2] "%s detí"
 
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:353
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s deň"
+msgstr[1] "%s dni"
+msgstr[2] "%s dní"
+
+#: library/WT/I18N.php:396
+#, fuzzy, php-format
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] "včera"
+msgstr[1] "pred %s dňami"
+msgstr[2] "pred %s dňami"
+
 #: library/WT/Stats.php:3093 library/WT/Stats.php:3097
 #, php-format
 msgid "%s grandchild"
@@ -272,6 +299,14 @@ msgid_plural "%s grandchildren"
 msgstr[0] "%s pradieťa"
 msgstr[1] "%s pradeti"
 msgstr[2] "%s pradetí"
+
+#: library/WT/I18N.php:399
+#, php-format
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] "pred %s hodinou"
+msgstr[1] "pred %s hodinami"
+msgstr[2] "pred %s hodinami"
 
 #: modules_v3/googlemap/module.php:826
 #, php-format
@@ -295,6 +330,31 @@ msgstr[0] "%s správa"
 msgstr[1] "%s správy"
 msgstr[2] "%s správ"
 
+#: library/WT/I18N.php:402
+#, php-format
+msgid "%s minute ago"
+msgid_plural "%s minutes ago"
+msgstr[0] "pred %s minutou"
+msgstr[1] "pred %s minutami"
+msgstr[2] "pred %s minutami"
+
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:345
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s mesiac"
+msgstr[1] "%s mesiace"
+msgstr[2] "%s mesiacov"
+
+#: library/WT/I18N.php:393
+#, fuzzy, php-format
+msgid "%s month ago"
+msgid_plural "%s months ago"
+msgstr[0] "pred mesiacom"
+msgstr[1] "pred %s mesiacmi"
+msgstr[2] "pred %s mesiacmi"
+
 #: statisticsplot.php:747
 #, php-format
 msgid "%s not implemented"
@@ -316,6 +376,14 @@ msgstr "%s o generáciu nižšie"
 #, php-format
 msgid "%s places"
 msgstr ""
+
+#: library/WT/I18N.php:404
+#, php-format
+msgid "%s second ago"
+msgid_plural "%s seconds ago"
+msgstr[0] "pred %s sekundou"
+msgstr[1] "pred %s sekundami"
+msgstr[2] "pred %s sekundami"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2106
@@ -341,11 +409,42 @@ msgstr "%s o dve generácie vyššie"
 msgid "%s twice removed descending"
 msgstr "%s o dve generácie nižšie"
 
+#. I18N: Part of an age string. e.g 7 weeks and 3 days
+#: library/WT/I18N.php:349
+#, php-format
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] "%s týždeň"
+msgstr[1] "%s týždne"
+msgstr[2] "%s týždňov"
+
+#: library/WT/I18N.php:339
+#, php-format
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s rok"
+msgstr[1] "%s rokov"
+msgstr[2] "%s rokov"
+
+#: library/WT/I18N.php:390
+#, fuzzy, php-format
+msgid "%s year ago"
+msgid_plural "%s years ago"
+msgstr[0] "pred rokom"
+msgstr[1] "%s years ago"
+msgstr[2] "pred %s rokmi"
+
 #: calendar.php:560 includes/functions/functions_print_lists.php:1921
 #: modules_v3/yahrzeit/module.php:118
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s. výročie"
+
+#. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
+#: library/WT/I18N.php:260
+#, php-format
+msgid "%s%%"
+msgstr "%s %%"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:97
@@ -373,6 +472,50 @@ msgid_plural "&plusmn;%d years"
 msgstr[0] "&plusmn;%d rok"
 msgstr[1] "&plusmn;%d roky"
 msgstr[2] "&plusmn;%d rokov"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+#: library/WT/I18N.php:368 library/WT/I18N.php:372
+#, php-format
+msgid "(aged %s)"
+msgstr "(vo veku %s rokov)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+#: library/WT/I18N.php:362
+#, php-format
+msgid "(aged less than %s)"
+msgstr "(menej než %s rokov)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+#: library/WT/I18N.php:365
+#, php-format
+msgid "(aged more than %s)"
+msgstr "(viac než %s rokov)"
+
+#. I18N: %s is a placeholder for a number
+#: library/WT/I18N.php:474
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr "(filter z %s celkových položiek)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
+#: library/WT/I18N.php:333
+msgid "(in childhood)"
+msgstr "v detstve"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
+#: library/WT/I18N.php:330
+msgid "(in infancy)"
+msgstr "v detstve"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
+#: library/WT/I18N.php:327
+msgid "(stillborn)"
+msgstr "mrtvonarodený"
+
+#. I18N: This punctuation is used to separate lists of items.
+#: library/WT/I18N.php:173
+msgid ", "
+msgstr ", "
 
 #: library/WT/Stats.php:4060
 msgctxt "CENTURY"
@@ -871,6 +1014,14 @@ msgstr "A3"
 msgctxt "paper size"
 msgid "A4"
 msgstr "A4"
+
+#: library/WT/I18N.php:159
+msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+msgstr "ALPHABET_lower=aáäbcčdďeéfghiíjklľĺmnňoóôpqrŕsštťuúvwxyýzž"
+
+#: library/WT/I18N.php:156
+msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+msgstr "ALPHABET_upper=AÁÄBCČDĎEÉFGHIÍJKLĽĹMNŇOÓÔPQRŔSŠTŤUÚVWXYÝZŽ"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1653,10 +1804,11 @@ msgstr "Prezývka"
 msgid "Alive"
 msgstr "Živí"
 
+#. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:225 famlist.php:70 famlist.php:76 famlist.php:82
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
-#: indilist.php:167 indilist.php:251 indilist.php:253
+#: indilist.php:167 indilist.php:251 indilist.php:253 library/WT/I18N.php:418
 #: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
@@ -4775,6 +4927,12 @@ msgstr "Predkovia po priamej líni"
 msgid "Direct line ancestors and their families"
 msgstr "Predkovia po priamej línii a ich rodiny"
 
+#. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
+#: library/WT/I18N.php:422
+#, php-format
+msgid "Display %s"
+msgstr "Zobraziť %s"
+
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
 msgstr "Zobraziť mapové súradnice"
@@ -5938,7 +6096,7 @@ msgstr "Súbory označené %s sú dôležité pre prevádzku a nebudú odstráne
 
 #: admin_site_change.php:273 admin_site_logs.php:240 find.php:188 find.php:203
 #: find.php:221 find.php:238 find.php:255 find.php:273 find.php:290
-#: find.php:481 modules_v3/random_media/module.php:300
+#: find.php:481 library/WT/I18N.php:480 modules_v3/random_media/module.php:300
 msgid "Filter"
 msgstr "Filter"
 
@@ -7928,6 +8086,7 @@ msgstr "Načítajte všetky vaše rodokmene z disku za pomoci funkcie Import."
 msgid "Loading data from GEDCOM: %.1f%%"
 msgstr "Nahrávam data z GEDCOMu: %.1f%%"
 
+#: library/WT/I18N.php:478 library/WT/I18N.php:479
 #: themes/clouds/templates/compactbox_template.php:54
 #: themes/clouds/templates/personbox_template.php:48
 #: themes/colors/templates/compactbox_template.php:54
@@ -9444,6 +9603,10 @@ msgstr ""
 #: admin_site_config.php:46
 msgid "No predefined text"
 msgstr "Prednastavený text"
+
+#: library/WT/I18N.php:471 library/WT/I18N.php:482
+msgid "No records to display"
+msgstr "Žiadne záznamy k zobrazeniu"
 
 #: find.php:509 find.php:534 find.php:590 find.php:618 find.php:641
 #: find.php:664 find.php:687 library/WT/Controller/AdvancedSearch.php:534
@@ -12313,6 +12476,12 @@ msgstr "Zobraziť «listové» páry alebo osoby. To sú také ktoré žijú, al
 msgid "Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database."
 msgstr "Zobraziť «koreňové» osoby alebo páry. Tieto osoby sa tiež nazývajú «patriarchami». Sú to osoby ktoré nemajú záznam o rodičoch v tejto databázi."
 
+#. I18N: %s are placeholders for numbers
+#: library/WT/I18N.php:472 library/WT/I18N.php:473
+#, php-format
+msgid "Showing %1$s to %2$s of %3$s"
+msgstr "Zobrazuje sa od %1$s do %2$s z %3$s"
+
 #: library/WT/Controller/Fanchart.php:337
 #: library/WT/Controller/Hourglass.php:407 pedigree.php:227
 msgid "Sibling"
@@ -14918,6 +15087,11 @@ msgstr "Návštevník"
 msgid "Vital records"
 msgstr "Životné záznamy"
 
+#. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
+#: library/WT/I18N.php:162
+msgid "WEEK_START=0"
+msgstr "WEEK_START=1"
+
 #: library/WT/Stats.php:4032
 msgid "Wales"
 msgstr "Wels"
@@ -16180,6 +16354,11 @@ msgstr "bratranec/sesternica z 5. kolena"
 #: setup.php:164
 msgid "file upload capability"
 msgstr "možnosť nahrávať súbory"
+
+#. I18N: button label, first page
+#: library/WT/I18N.php:466
+msgid "first"
+msgstr "prvá"
 
 #: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -18089,6 +18268,11 @@ msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
 msgstr "doplnkové dni (Francúzsky republikánsky kalendár)"
 
+#. I18N: button label, last page
+#: library/WT/I18N.php:467
+msgid "last"
+msgstr "posledný"
+
 #: admin_trees_config.php:910
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
@@ -18273,7 +18457,8 @@ msgctxt "sister's child"
 msgid "nephew/niece"
 msgstr "synovec/neter"
 
-#: admin_pgv_to_wt.php:157 admin_site_merge.php:318
+#. I18N: button label, next page
+#: admin_pgv_to_wt.php:157 admin_site_merge.php:318 library/WT/I18N.php:468
 #: modules_v3/batch_update/admin_batch_update.php:98
 msgid "next"
 msgstr "nasledujúci"
@@ -18463,7 +18648,8 @@ msgstr "čakajúce"
 msgid "percentage"
 msgstr "Percentá"
 
-#: modules_v3/batch_update/admin_batch_update.php:97
+#. I18N: button label, previous page
+#: library/WT/I18N.php:469 modules_v3/batch_update/admin_batch_update.php:97
 msgid "previous"
 msgstr "predošlý(á)"
 
@@ -19338,6 +19524,11 @@ msgstr "neznáma osoba"
 msgid "unreliable evidence"
 msgstr "nespoľahlivý zdroj"
 
+#. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
+#: library/WT/I18N.php:176
+msgid "utf8_unicode_ci"
+msgstr "utf8_slovak_ci"
+
 #: modules_v3/ahnentafel_report/report.xml:139
 #: modules_v3/descendancy_report/report.xml:105
 msgctxt "FEMALE"
@@ -19463,104 +19654,11 @@ msgstr "…"
 #~ msgid "%H:%i:%s"
 #~ msgstr "%G:%i:%s"
 
-#~ msgid "%j %F %Y"
-#~ msgstr "%j. %F %Y"
-
-#~ msgid "%s day"
-#~ msgid_plural "%s days"
-#~ msgstr[0] "%s deň"
-#~ msgstr[1] "%s dni"
-#~ msgstr[2] "%s dní"
-
-#, fuzzy
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "včera"
-#~ msgstr[1] "pred %s dňami"
-#~ msgstr[2] "pred %s dňami"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "pred %s hodinou"
-#~ msgstr[1] "pred %s hodinami"
-#~ msgstr[2] "pred %s hodinami"
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "pred %s minutou"
-#~ msgstr[1] "pred %s minutami"
-#~ msgstr[2] "pred %s minutami"
-
-#~ msgid "%s month"
-#~ msgid_plural "%s months"
-#~ msgstr[0] "%s mesiac"
-#~ msgstr[1] "%s mesiace"
-#~ msgstr[2] "%s mesiacov"
-
-#, fuzzy
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "pred mesiacom"
-#~ msgstr[1] "pred %s mesiacmi"
-#~ msgstr[2] "pred %s mesiacmi"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "pred %s sekundou"
-#~ msgstr[1] "pred %s sekundami"
-#~ msgstr[2] "pred %s sekundami"
-
 #~ msgid "%s three times removed ascending"
 #~ msgstr "%s o tri generácie vyššie"
 
 #~ msgid "%s three times removed descending"
 #~ msgstr "%s o tri generácie nižšie"
-
-#~ msgid "%s week"
-#~ msgid_plural "%s weeks"
-#~ msgstr[0] "%s týždeň"
-#~ msgstr[1] "%s týždne"
-#~ msgstr[2] "%s týždňov"
-
-#~ msgid "%s year"
-#~ msgid_plural "%s years"
-#~ msgstr[0] "%s rok"
-#~ msgstr[1] "%s rokov"
-#~ msgstr[2] "%s rokov"
-
-#, fuzzy
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "pred rokom"
-#~ msgstr[1] "%s years ago"
-#~ msgstr[2] "pred %s rokmi"
-
-#~ msgid "%s%%"
-#~ msgstr "%s %%"
-
-#~ msgid "(aged %s)"
-#~ msgstr "(vo veku %s rokov)"
-
-#~ msgid "(aged less than %s)"
-#~ msgstr "(menej než %s rokov)"
-
-#~ msgid "(aged more than %s)"
-#~ msgstr "(viac než %s rokov)"
-
-#~ msgid "(filtered from %s total entries)"
-#~ msgstr "(filter z %s celkových položiek)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "v detstve"
-
-#~ msgid "(in infancy)"
-#~ msgstr "v detstve"
-
-#~ msgid "(stillborn)"
-#~ msgstr "mrtvonarodený"
-
-#~ msgid ", "
-#~ msgstr ", "
 
 #~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
 #~ msgstr "V tomto kontexte je <b>GUID</b> skratka pre  «Globally Unique ID» (globálny unikátny identifikátor).<br><br>GUID pomáhajú určiť každú osobu, takže centrálne organizácie ako Rodinné historické centrum cirkvi LDS v Salt Lake City alebo kompatibilné programy bežiace na vašom serveri môžu určiť, či manipulujú s rovnakou osobou nezávisle na tom, kde má konkrétny GEDCOM pôvod. Cieľ Rodinného historického centra je mať centrálne úložisko genealogických údajov a mať ich dostupné cez webové služby. Tie umožnia akémukoľvek programu pristupovať k údajom a ich aktualizáciu.<br><br>Ak nezamýšľate zdieľať váš GEDCOM  s kýmkoľvek iným, nie je nutné vytvárať tieto GUID, avšak pokiaľ tak budete robiť, nebude v tom žiadny problém okrem zvýšenia veľkosti vášho GEDCOMu."
@@ -19597,12 +19695,6 @@ msgstr "…"
 
 #~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 #~ msgstr "Užívateľ nebude schopný sa prihlásiť do tej doby, dokedy nebude jeho \\\"email overený\\\" a \\\"schválený správcom\\\" (príslušné voľby označené)."
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=aáäbcčdďeéfghiíjklľĺmnňoóôpqrŕsštťuúvwxyýzž"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=AÁÄBCČDĎEÉFGHIÍJKLĽĹMNŇOÓÔPQRŔSŠTŤUÚVWXYÝZŽ"
 
 #~ msgid "Access"
 #~ msgstr "Prístup"
@@ -19852,9 +19944,6 @@ msgstr "…"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Dhu al-Qi'dah"
-
-#~ msgid "Display %s"
-#~ msgstr "Zobraziť %s"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "Do not seal, previous sealing cancelled (LDS)"
@@ -20168,9 +20257,6 @@ msgstr "…"
 #~ msgid "No events for living individuals exist for tomorrow."
 #~ msgstr "Neexistujú žiadne udalosti žijúcich osôb pre zajtrajšok."
 
-#~ msgid "No records to display"
-#~ msgstr "Žiadne záznamy k zobrazeniu"
-
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "Žiadne také ID neexistuje v tomto GEDCOM súbore."
 
@@ -20461,9 +20547,6 @@ msgstr "…"
 #~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
 #~ msgstr "Zobraziť «koreňové» osoby alebo páry. Tieto osoby sa tiež nazývajú «patriarchami». Sú to osoby ktoré nemajú záznam o rodičoch v tejto databázi."
 
-#~ msgid "Showing %1$s to %2$s of %3$s"
-#~ msgstr "Zobrazuje sa od %1$s do %2$s z %3$s"
-
 #~ msgid "Social security number"
 #~ msgstr "Social security number (USA)"
 
@@ -20725,9 +20808,6 @@ msgstr "…"
 #~ msgid "Visitors"
 #~ msgstr "Návštevník"
 
-#~ msgid "WEEK_START=0"
-#~ msgstr "WEEK_START=1"
-
 #~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 #~ msgstr "Teraz vám zašleme na adresu <b>%s</b> e-mail na potvrdenie. Musíte potvrdiť Vašu žiadosť o účet postupom, uvedeným v potvrdzujúcom e-maile. Pokiaľ Vašu požiadavku nepotvrdíte v priebehu siedmych dní, bude Vaša žiadosť automaticky zamietnutá. V takomto prípade musíte opätovne požiadať o vytvorenie účtu.<br><br>Po vykonaní inštrukcí v potvrdzujúcom je ešte potrebné, aby Váš prístup schválil administrátor.<br><br>Pre prihlásenie na túto stránku potrebujete poznať svoje užívateľské meno a heslo."
 
@@ -20821,9 +20901,6 @@ msgstr "…"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "svat"
 
-#~ msgid "first"
-#~ msgstr "prvá"
-
 #~ msgid "from %d"
 #~ msgstr "od %d"
 
@@ -20851,9 +20928,6 @@ msgstr "…"
 #~ msgid "grandson’s wife"
 #~ msgstr "manželka vnuka"
 
-#~ msgid "last"
-#~ msgstr "posledný"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "svat"
@@ -20865,9 +20939,6 @@ msgstr "…"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "svat"
-
-#~ msgid "utf8_unicode_ci"
-#~ msgstr "utf8_slovak_ci"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "webtrees databáza musí byť na rovnakom serveri ako PGV"

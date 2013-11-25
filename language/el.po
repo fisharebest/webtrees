@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-24 22:39+0000\n"
+"POT-Creation-Date: 2013-11-25 20:40+0000\n"
 "PO-Revision-Date: 2013-06-03 12:51+0000\n"
 "Last-Translator: Yiannis <ycathome@gmail.com>\n"
 "Language-Team: \n"
@@ -226,6 +226,16 @@ msgid_plural "%d years"
 msgstr[0] "%d χρόνος"
 msgstr[1] "%d χρόνια"
 
+#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#: library/WT/I18N.php:154
+msgid "%g:%i:%s %a"
+msgstr ""
+
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
+#: library/WT/I18N.php:152
+msgid "%j %F %Y"
+msgstr ""
+
 #: includes/functions/functions.php:2162
 #, php-format
 msgid "%s"
@@ -255,12 +265,34 @@ msgid_plural "%s children"
 msgstr[0] ""
 msgstr[1] ""
 
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:353
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: library/WT/I18N.php:396
+#, php-format
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] "Πρίν %s ημέρα"
+msgstr[1] "Πρίν %s ημέρες"
+
 #: library/WT/Stats.php:3093 library/WT/Stats.php:3097
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] ""
 msgstr[1] ""
+
+#: library/WT/I18N.php:399
+#, php-format
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] "Πρίν %s ώρα"
+msgstr[1] "Πρίν %s ώρες"
 
 #: modules_v3/googlemap/module.php:826
 #, php-format
@@ -281,6 +313,28 @@ msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s μήνυμα"
 msgstr[1] "%s μηνύματα"
+
+#: library/WT/I18N.php:402
+#, php-format
+msgid "%s minute ago"
+msgid_plural "%s minutes ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:345
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s μήνας"
+msgstr[1] "%s μήνες"
+
+#: library/WT/I18N.php:393
+#, php-format
+msgid "%s month ago"
+msgid_plural "%s months ago"
+msgstr[0] "Πρίν %s μήνα"
+msgstr[1] "Πριν %s μήνες"
 
 #: statisticsplot.php:747
 #, php-format
@@ -303,6 +357,13 @@ msgstr ""
 #, php-format
 msgid "%s places"
 msgstr ""
+
+#: library/WT/I18N.php:404
+#, php-format
+msgid "%s second ago"
+msgid_plural "%s seconds ago"
+msgstr[0] "Πρίν %s δευτερόλεπτο"
+msgstr[1] "Πρίν %s δευτερόλεπτα"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2106
@@ -328,11 +389,39 @@ msgstr ""
 msgid "%s twice removed descending"
 msgstr ""
 
+#. I18N: Part of an age string. e.g 7 weeks and 3 days
+#: library/WT/I18N.php:349
+#, php-format
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] "%s εβδομάδα"
+msgstr[1] "%s εβδομάδες"
+
+#: library/WT/I18N.php:339
+#, php-format
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s χρόνο"
+msgstr[1] "%s χρόνια"
+
+#: library/WT/I18N.php:390
+#, php-format
+msgid "%s year ago"
+msgid_plural "%s years ago"
+msgstr[0] "Πρίν %s χρόνο"
+msgstr[1] "Πρίν %s χρόνια"
+
 #: calendar.php:560 includes/functions/functions_print_lists.php:1921
 #: modules_v3/yahrzeit/module.php:118
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s Επέτειος"
+
+#. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
+#: library/WT/I18N.php:260
+#, php-format
+msgid "%s%%"
+msgstr ""
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:97
@@ -359,6 +448,50 @@ msgid "&plusmn;%d year"
 msgid_plural "&plusmn;%d years"
 msgstr[0] "&plusmn;%d χρόνο"
 msgstr[1] "&plusmn;%d χρόνια"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+#: library/WT/I18N.php:368 library/WT/I18N.php:372
+#, php-format
+msgid "(aged %s)"
+msgstr ""
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+#: library/WT/I18N.php:362
+#, php-format
+msgid "(aged less than %s)"
+msgstr ""
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+#: library/WT/I18N.php:365
+#, php-format
+msgid "(aged more than %s)"
+msgstr ""
+
+#. I18N: %s is a placeholder for a number
+#: library/WT/I18N.php:474
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr "(φιλτραρισμένο από %s συνολικές καταχωρήσεις)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
+#: library/WT/I18N.php:333
+msgid "(in childhood)"
+msgstr ""
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
+#: library/WT/I18N.php:330
+msgid "(in infancy)"
+msgstr ""
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
+#: library/WT/I18N.php:327
+msgid "(stillborn)"
+msgstr ""
+
+#. I18N: This punctuation is used to separate lists of items.
+#: library/WT/I18N.php:173
+msgid ", "
+msgstr ""
 
 #: library/WT/Stats.php:4060
 msgctxt "CENTURY"
@@ -857,6 +990,14 @@ msgstr ""
 msgctxt "paper size"
 msgid "A4"
 msgstr ""
+
+#: library/WT/I18N.php:159
+msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+msgstr "ALPHABET_lower=άαβγδέεζήηθίϊΐικλμνξόοπρσςτύϋΰυφχψώω"
+
+#: library/WT/I18N.php:156
+msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+msgstr "ALPHABET_upper=ΆΑΒΓΔΈΕΖΉΗΘΊΪΪΙΚΛΜΝΞΌΟΠΡΣΣΤΎΫΫΥΦΧΨΏΩ"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1639,10 +1780,11 @@ msgstr "Ψευδόνυμο"
 msgid "Alive"
 msgstr "Εν ζωή"
 
+#. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:225 famlist.php:70 famlist.php:76 famlist.php:82
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
-#: indilist.php:167 indilist.php:251 indilist.php:253
+#: indilist.php:167 indilist.php:251 indilist.php:253 library/WT/I18N.php:418
 #: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
@@ -4759,6 +4901,12 @@ msgstr ""
 msgid "Direct line ancestors and their families"
 msgstr ""
 
+#. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
+#: library/WT/I18N.php:422
+#, php-format
+msgid "Display %s"
+msgstr "Εμφάνιση %s"
+
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
 msgstr "Εμφάνιση συντεταγμένων χάρτη"
@@ -5922,7 +6070,7 @@ msgstr "Αρχεία με %s χρειάζονται για την σωστή λ�
 
 #: admin_site_change.php:273 admin_site_logs.php:240 find.php:188 find.php:203
 #: find.php:221 find.php:238 find.php:255 find.php:273 find.php:290
-#: find.php:481 modules_v3/random_media/module.php:300
+#: find.php:481 library/WT/I18N.php:480 modules_v3/random_media/module.php:300
 msgid "Filter"
 msgstr "Φίλτρο"
 
@@ -7912,6 +8060,7 @@ msgstr ""
 msgid "Loading data from GEDCOM: %.1f%%"
 msgstr ""
 
+#: library/WT/I18N.php:478 library/WT/I18N.php:479
 #: themes/clouds/templates/compactbox_template.php:54
 #: themes/clouds/templates/personbox_template.php:48
 #: themes/colors/templates/compactbox_template.php:54
@@ -9426,6 +9575,10 @@ msgstr ""
 #: admin_site_config.php:46
 msgid "No predefined text"
 msgstr ""
+
+#: library/WT/I18N.php:471 library/WT/I18N.php:482
+msgid "No records to display"
+msgstr "Δεν υπάρχουν εγγραφές προς εμφάνιση"
 
 #: find.php:509 find.php:534 find.php:590 find.php:618 find.php:641
 #: find.php:664 find.php:687 library/WT/Controller/AdvancedSearch.php:534
@@ -12294,6 +12447,12 @@ msgstr "Εμφάνιση «φύλλων», ζευγαριών ή ατόμων. �
 msgid "Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database."
 msgstr "Εμφάνιση «ριζών», ζευγάρια ή άτομα. Αυτά τα άτομα μπορούν επίσης να αποκαλεστούν «πατριάρχες». Είναι άτομα που δεν έχουν γονείς καταχωρημένους στην βάση δεδομένων."
 
+#. I18N: %s are placeholders for numbers
+#: library/WT/I18N.php:472 library/WT/I18N.php:473
+#, php-format
+msgid "Showing %1$s to %2$s of %3$s"
+msgstr "Προβολή %1$s εώς %2$s από %3$s"
+
 #: library/WT/Controller/Fanchart.php:337
 #: library/WT/Controller/Hourglass.php:407 pedigree.php:227
 msgid "Sibling"
@@ -14896,6 +15055,11 @@ msgstr "Επισκέπτης"
 msgid "Vital records"
 msgstr "Εγγραφές ζωής"
 
+#. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
+#: library/WT/I18N.php:162
+msgid "WEEK_START=0"
+msgstr "Αρχή εβδομάδας=0"
+
 #: library/WT/Stats.php:4032
 msgid "Wales"
 msgstr ""
@@ -16158,6 +16322,11 @@ msgstr "5α ξαδέρφια"
 #: setup.php:164
 msgid "file upload capability"
 msgstr "δυνατότητα ανεβάσματος αρχείων"
+
+#. I18N: button label, first page
+#: library/WT/I18N.php:466
+msgid "first"
+msgstr "πρώτη"
 
 #: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -18065,6 +18234,11 @@ msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
 msgstr ""
 
+#. I18N: button label, last page
+#: library/WT/I18N.php:467
+msgid "last"
+msgstr "τελευταία"
+
 #: admin_trees_config.php:910
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
@@ -18248,7 +18422,8 @@ msgctxt "sister's child"
 msgid "nephew/niece"
 msgstr "ανηψιός/ανηψιά"
 
-#: admin_pgv_to_wt.php:157 admin_site_merge.php:318
+#. I18N: button label, next page
+#: admin_pgv_to_wt.php:157 admin_site_merge.php:318 library/WT/I18N.php:468
 #: modules_v3/batch_update/admin_batch_update.php:98
 msgid "next"
 msgstr "επόμενη"
@@ -18438,7 +18613,8 @@ msgstr ""
 msgid "percentage"
 msgstr "ποσοστό"
 
-#: modules_v3/batch_update/admin_batch_update.php:97
+#. I18N: button label, previous page
+#: library/WT/I18N.php:469 modules_v3/batch_update/admin_batch_update.php:97
 msgid "previous"
 msgstr "προηγούμενη"
 
@@ -19313,6 +19489,11 @@ msgstr "Άγνωστο άτομο"
 msgid "unreliable evidence"
 msgstr ""
 
+#. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
+#: library/WT/I18N.php:176
+msgid "utf8_unicode_ci"
+msgstr ""
+
 #: modules_v3/ahnentafel_report/report.xml:139
 #: modules_v3/descendancy_report/report.xml:105
 msgctxt "FEMALE"
@@ -19432,49 +19613,6 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
 
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "Πρίν %s ημέρα"
-#~ msgstr[1] "Πρίν %s ημέρες"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "Πρίν %s ώρα"
-#~ msgstr[1] "Πρίν %s ώρες"
-
-#~ msgid "%s month"
-#~ msgid_plural "%s months"
-#~ msgstr[0] "%s μήνας"
-#~ msgstr[1] "%s μήνες"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "Πρίν %s μήνα"
-#~ msgstr[1] "Πριν %s μήνες"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "Πρίν %s δευτερόλεπτο"
-#~ msgstr[1] "Πρίν %s δευτερόλεπτα"
-
-#~ msgid "%s week"
-#~ msgid_plural "%s weeks"
-#~ msgstr[0] "%s εβδομάδα"
-#~ msgstr[1] "%s εβδομάδες"
-
-#~ msgid "%s year"
-#~ msgid_plural "%s years"
-#~ msgstr[0] "%s χρόνο"
-#~ msgstr[1] "%s χρόνια"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "Πρίν %s χρόνο"
-#~ msgstr[1] "Πρίν %s χρόνια"
-
-#~ msgid "(filtered from %s total entries)"
-#~ msgstr "(φιλτραρισμένο από %s συνολικές καταχωρήσεις)"
-
 #~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
 #~ msgstr "Use relationship privacy<br><br>A 'No' value means authenticated users can see the details of all living people.<br>A 'Yes' value means users can only see the private information of living people they are related to."
 
@@ -19489,12 +19627,6 @@ msgstr ""
 
 #~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
 #~ msgstr "<center><b>Καλώς ήλθατε σε αυτό τον γενεαλογικό ιστοτόπο</b></center><br>Η πρόσβαση σε αυτή την τοποθεσία επιτρέπεται σε κάθε επισκέπτη που διαθέτει ένα λογαριασμό χρήστη.<br><br>Εάν έχετε ένα λογαριασμό χρήστη, μπορείτε να συνδεθείτε σε αυτή τη σελίδα. Εάν δεν έχετε λογαριασμό χρήστη, μπορείτε να υποβάλετε αίτημα για έναν, επιλέγοντας το κατάλληλο σύνδεσμο παρακάτω.<br><br>Μετά την επιβεβαίωση του αιτήματος σας, ο διαχειριστής της τοποθεσίας θα ενεργοποιήσει τον λογαριασμό σας. Θα λάβετε ένα email μόλις το αίτημα σας εγκριθεί."
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=άαβγδέεζήηθίϊΐικλμνξόοπρσςτύϋΰυφχψώω"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=ΆΑΒΓΔΈΕΖΉΗΘΊΪΪΙΚΛΜΝΞΌΟΠΡΣΣΤΎΫΫΥΦΧΨΏΩ"
 
 #~ msgid "Access"
 #~ msgstr "Απλή Πρόσβαση"
@@ -19633,9 +19765,6 @@ msgstr ""
 
 #~ msgid "Descent steps"
 #~ msgstr "Βήματα προγόνων"
-
-#~ msgid "Display %s"
-#~ msgstr "Εμφάνιση %s"
 
 #~ msgid "Do not send messages"
 #~ msgstr "Να μήν επιτρέπονται τα μυνήματα"
@@ -19813,9 +19942,6 @@ msgstr ""
 #~ msgid "No events for living individuals exist for tomorrow."
 #~ msgstr "Δεν υπάρχουν συμβάντα ζωντανών ατόμων για αύριο."
 
-#~ msgid "No records to display"
-#~ msgstr "Δεν υπάρχουν εγγραφές προς εμφάνιση"
-
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "Δεν υπάρχει τέτοιο ID σε αυτό το αρχείο GEDCOM."
 
@@ -19939,9 +20065,6 @@ msgstr ""
 #~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
 #~ msgstr "Εμφάνιση «ριζών», ζευγάρια ή άτομα. Αυτά τα άτομα μπορούν επίσης να αποκαλεστούν «πατριάρχες». Είναι άτομα που δεν έχουν γονείς καταχωρημένους στην βάση δεδομένων."
 
-#~ msgid "Showing %1$s to %2$s of %3$s"
-#~ msgstr "Προβολή %1$s εώς %2$s από %3$s"
-
 #~ msgid "Social security number"
 #~ msgstr "Αριθμός κοινωνικής ασφάλισης"
 
@@ -20038,9 +20161,6 @@ msgstr ""
 #~ msgid "View year"
 #~ msgstr "Προβολή έτους"
 
-#~ msgid "WEEK_START=0"
-#~ msgstr "Αρχή εβδομάδας=0"
-
 #~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 #~ msgstr "Τώρα θα στείλουμε ένα email επιβεβαίωσης στην διεύθυνση <b>%s</b>. Πρέπει να επαληθεύσετε την αίτηση λογαριασμού σας, ακολουθώντας τις οδηγίες στο email επαλήθευσης. Εάν δεν επιβεβαιώσετε την αίτηση λογαριασμού μέσα σε επτά ημέρες, το αίτημα σας θα απορριφθεί αυτόματα. Θα πρέπει να υποβάλετε ξανά.<br><br>Εφόσον ακολουθήσετε τις οδηγίες στο email επιβεβαίωσης, ο διαχειριστής θα πρέπει να εγκρίνει την αίτηση σας, πριν μπορέσει να χρησιμοποιηθεί ο λογαριασμός σας.<br><br>Για να συνδεθείτε σε αυτή την τοποθεσία θα πρέπει να γνωρίζετε το όνομα χρήστη και τον κωδικό σας."
 
@@ -20080,14 +20200,8 @@ msgstr ""
 #~ msgid "before %d"
 #~ msgstr "πρίν το %d"
 
-#~ msgid "first"
-#~ msgstr "πρώτη"
-
 #~ msgid "from %d"
 #~ msgstr "Από %d"
-
-#~ msgid "last"
-#~ msgstr "τελευταία"
 
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"

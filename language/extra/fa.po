@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-24 22:39+0000\n"
+"POT-Creation-Date: 2013-11-25 20:40+0000\n"
 "PO-Revision-Date: 2013-03-26 13:05+0000\n"
 "Last-Translator: Reza Modarres <Unknown>\n"
 "Language-Team: webtrees-fa <webtrees-fa>\n"
@@ -219,6 +219,16 @@ msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] "%d سال"
 
+#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#: library/WT/I18N.php:154
+msgid "%g:%i:%s %a"
+msgstr ""
+
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
+#: library/WT/I18N.php:152
+msgid "%j %F %Y"
+msgstr "%j %F %Y"
+
 #: includes/functions/functions.php:2162
 #, php-format
 msgid "%s"
@@ -248,12 +258,31 @@ msgid_plural "%s children"
 msgstr[0] ""
 msgstr[1] ""
 
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:353
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] ""
+
+#: library/WT/I18N.php:396
+#, php-format
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] ""
+
 #: library/WT/Stats.php:3093 library/WT/Stats.php:3097
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] ""
 msgstr[1] ""
+
+#: library/WT/I18N.php:399
+#, php-format
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] ""
 
 #: modules_v3/googlemap/module.php:826
 #, php-format
@@ -274,6 +303,25 @@ msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] ""
 msgstr[1] ""
+
+#: library/WT/I18N.php:402
+#, php-format
+msgid "%s minute ago"
+msgid_plural "%s minutes ago"
+msgstr[0] ""
+
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:345
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] ""
+
+#: library/WT/I18N.php:393
+#, php-format
+msgid "%s month ago"
+msgid_plural "%s months ago"
+msgstr[0] ""
 
 #: statisticsplot.php:747
 #, php-format
@@ -296,6 +344,12 @@ msgstr ""
 #, php-format
 msgid "%s places"
 msgstr ""
+
+#: library/WT/I18N.php:404
+#, php-format
+msgid "%s second ago"
+msgid_plural "%s seconds ago"
+msgstr[0] ""
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2106
@@ -321,10 +375,35 @@ msgstr ""
 msgid "%s twice removed descending"
 msgstr ""
 
+#. I18N: Part of an age string. e.g 7 weeks and 3 days
+#: library/WT/I18N.php:349
+#, php-format
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] ""
+
+#: library/WT/I18N.php:339
+#, php-format
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] ""
+
+#: library/WT/I18N.php:390
+#, php-format
+msgid "%s year ago"
+msgid_plural "%s years ago"
+msgstr[0] ""
+
 #: calendar.php:560 includes/functions/functions_print_lists.php:1921
 #: modules_v3/yahrzeit/module.php:118
 #, php-format
 msgid "%s year anniversary"
+msgstr ""
+
+#. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
+#: library/WT/I18N.php:260
+#, php-format
+msgid "%s%%"
 msgstr ""
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
@@ -351,6 +430,50 @@ msgstr ""
 msgid "&plusmn;%d year"
 msgid_plural "&plusmn;%d years"
 msgstr[0] "&plusmn;%d سال"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+#: library/WT/I18N.php:368 library/WT/I18N.php:372
+#, php-format
+msgid "(aged %s)"
+msgstr "(%s سالگی)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+#: library/WT/I18N.php:362
+#, php-format
+msgid "(aged less than %s)"
+msgstr "(کوچک تر از %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+#: library/WT/I18N.php:365
+#, php-format
+msgid "(aged more than %s)"
+msgstr "(بزرگ تر از %s)"
+
+#. I18N: %s is a placeholder for a number
+#: library/WT/I18N.php:474
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr "فیلتر شده از %s مقدار"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
+#: library/WT/I18N.php:333
+msgid "(in childhood)"
+msgstr "(در کودکی)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
+#: library/WT/I18N.php:330
+msgid "(in infancy)"
+msgstr "(در طفولیت)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
+#: library/WT/I18N.php:327
+msgid "(stillborn)"
+msgstr "(به هنگام تولد)"
+
+#. I18N: This punctuation is used to separate lists of items.
+#: library/WT/I18N.php:173
+msgid ", "
+msgstr ""
 
 #: library/WT/Stats.php:4060
 msgctxt "CENTURY"
@@ -849,6 +972,14 @@ msgstr ""
 msgctxt "paper size"
 msgid "A4"
 msgstr ""
+
+#: library/WT/I18N.php:159
+msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+
+#: library/WT/I18N.php:156
+msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1631,10 +1762,11 @@ msgstr ""
 msgid "Alive"
 msgstr ""
 
+#. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:225 famlist.php:70 famlist.php:76 famlist.php:82
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
-#: indilist.php:167 indilist.php:251 indilist.php:253
+#: indilist.php:167 indilist.php:251 indilist.php:253 library/WT/I18N.php:418
 #: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
@@ -4751,6 +4883,12 @@ msgstr ""
 msgid "Direct line ancestors and their families"
 msgstr ""
 
+#. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
+#: library/WT/I18N.php:422
+#, php-format
+msgid "Display %s"
+msgstr ""
+
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
 msgstr ""
@@ -5914,7 +6052,7 @@ msgstr "فایل های علامت گذاری شده با %s جهت انجام �
 
 #: admin_site_change.php:273 admin_site_logs.php:240 find.php:188 find.php:203
 #: find.php:221 find.php:238 find.php:255 find.php:273 find.php:290
-#: find.php:481 modules_v3/random_media/module.php:300
+#: find.php:481 library/WT/I18N.php:480 modules_v3/random_media/module.php:300
 msgid "Filter"
 msgstr "فیلتر"
 
@@ -7904,6 +8042,7 @@ msgstr ""
 msgid "Loading data from GEDCOM: %.1f%%"
 msgstr ""
 
+#: library/WT/I18N.php:478 library/WT/I18N.php:479
 #: themes/clouds/templates/compactbox_template.php:54
 #: themes/clouds/templates/personbox_template.php:48
 #: themes/colors/templates/compactbox_template.php:54
@@ -9417,6 +9556,10 @@ msgstr ""
 #: admin_site_config.php:46
 msgid "No predefined text"
 msgstr "هیچ متن از پیش‌تعریف‌شده‌ای موجود نیست"
+
+#: library/WT/I18N.php:471 library/WT/I18N.php:482
+msgid "No records to display"
+msgstr "هیچ سوابقی برای نمایش موجود نمی باشد"
 
 #: find.php:509 find.php:534 find.php:590 find.php:618 find.php:641
 #: find.php:664 find.php:687 library/WT/Controller/AdvancedSearch.php:534
@@ -12284,6 +12427,12 @@ msgstr ""
 msgid "Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database."
 msgstr ""
 
+#. I18N: %s are placeholders for numbers
+#: library/WT/I18N.php:472 library/WT/I18N.php:473
+#, php-format
+msgid "Showing %1$s to %2$s of %3$s"
+msgstr "نمایش %1$s تا %2$s از %3$s"
+
 #: library/WT/Controller/Fanchart.php:337
 #: library/WT/Controller/Hourglass.php:407 pedigree.php:227
 msgid "Sibling"
@@ -14886,6 +15035,11 @@ msgstr "بازدید کننده"
 msgid "Vital records"
 msgstr ""
 
+#. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
+#: library/WT/I18N.php:162
+msgid "WEEK_START=0"
+msgstr "WEEK_START=0"
+
 #: library/WT/Stats.php:4032
 msgid "Wales"
 msgstr ""
@@ -16148,6 +16302,11 @@ msgstr ""
 #: setup.php:164
 msgid "file upload capability"
 msgstr "قابلیت آپلود فایل"
+
+#. I18N: button label, first page
+#: library/WT/I18N.php:466
+msgid "first"
+msgstr "اولین"
 
 #: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -18055,6 +18214,11 @@ msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
 msgstr "جورس کومپلمنتایرس"
 
+#. I18N: button label, last page
+#: library/WT/I18N.php:467
+msgid "last"
+msgstr "آخرین"
+
 #: admin_trees_config.php:910
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
@@ -18238,7 +18402,8 @@ msgctxt "sister's child"
 msgid "nephew/niece"
 msgstr ""
 
-#: admin_pgv_to_wt.php:157 admin_site_merge.php:318
+#. I18N: button label, next page
+#: admin_pgv_to_wt.php:157 admin_site_merge.php:318 library/WT/I18N.php:468
 #: modules_v3/batch_update/admin_batch_update.php:98
 msgid "next"
 msgstr "بعدی"
@@ -18428,7 +18593,8 @@ msgstr ""
 msgid "percentage"
 msgstr "درصد"
 
-#: modules_v3/batch_update/admin_batch_update.php:97
+#. I18N: button label, previous page
+#: library/WT/I18N.php:469 modules_v3/batch_update/admin_batch_update.php:97
 msgid "previous"
 msgstr "قبلی"
 
@@ -19303,6 +19469,11 @@ msgstr "فرد ناشناس"
 msgid "unreliable evidence"
 msgstr ""
 
+#. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
+#: library/WT/I18N.php:176
+msgid "utf8_unicode_ci"
+msgstr "utf8_unicode_ci"
+
 #: modules_v3/ahnentafel_report/report.xml:139
 #: modules_v3/descendancy_report/report.xml:105
 msgctxt "FEMALE"
@@ -19425,30 +19596,6 @@ msgstr ""
 #~ msgid "%H:%i:%s"
 #~ msgstr "%g:%i:%s %a"
 
-#~ msgid "%j %F %Y"
-#~ msgstr "%j %F %Y"
-
-#~ msgid "(aged %s)"
-#~ msgstr "(%s سالگی)"
-
-#~ msgid "(aged less than %s)"
-#~ msgstr "(کوچک تر از %s)"
-
-#~ msgid "(aged more than %s)"
-#~ msgstr "(بزرگ تر از %s)"
-
-#~ msgid "(filtered from %s total entries)"
-#~ msgstr "فیلتر شده از %s مقدار"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(در کودکی)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(در طفولیت)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(به هنگام تولد)"
-
 #~ msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
 #~ msgstr "به یاد داشته باشید: اطلاعات شخصی افرادی که در قید حیات هستند فقط برای اعضای خانواده و خویشاوندان نزدیک و البته دوستان ایشان به نمایش گذاشته خواهند شد. در هر صورت قبل از مشاهده هرگونه اطلاعات شخصی از شما در مورد رابطه‌ خویشاوندی با فرد مورد نظر پرسیده خواهد شد. بعضا ممکن است این موارد برای افراد متوفی نیز صدق کند که این موارد بیشتر به دلیل عدم وجود اطلاعات کافی در مورد فرد است، در صورتی که تغییراتی در اطلاعات خویشاوندان خود ایجاد می کنید، جهت بررسی بهتر توسط مدیریتابتدا منابع خود را ارائه کنید."
 
@@ -19457,12 +19604,6 @@ msgstr ""
 
 #~ msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "یک سرور دیتابیس می تواند ممکن است تعداد زیادی دیتابیس دیگر را نیز سرویس دهی کند، شما باید یک دیتابیس موجود را انتخاب کنید و یا از یک دیتابیس جدید که ایجاد می کنید استفاده نمایید"
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 #~ msgid "Access"
 #~ msgstr "دسترسی"
@@ -19606,9 +19747,6 @@ msgstr ""
 #~ msgid "No events for living individuals exist for tomorrow."
 #~ msgstr "هیچ رخدادی برای فردا برای افرادی که در قید حیات هستند موجود نیست"
 
-#~ msgid "No records to display"
-#~ msgstr "هیچ سوابقی برای نمایش موجود نمی باشد"
-
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "چنین شماره ID در فایل شجرنامه وجود ندارد"
 
@@ -19732,9 +19870,6 @@ msgstr ""
 #~ msgid "Show related individuals/families"
 #~ msgstr "نمایش افراد و خانواده های مرتبط"
 
-#~ msgid "Showing %1$s to %2$s of %3$s"
-#~ msgstr "نمایش %1$s تا %2$s از %3$s"
-
 #~ msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
 #~ msgstr "پیشوند اختیاری است، ولی با گذاشتن پسوند های جداگانه برای هر نوع دیتابیس تشخیص آنها ساده تر خواهد بود"
 
@@ -19795,9 +19930,6 @@ msgstr ""
 #~ msgid "Visitor options"
 #~ msgstr "تنظیمات بازدیدکنندگان"
 
-#~ msgid "WEEK_START=0"
-#~ msgstr "WEEK_START=0"
-
 #~ msgid "Web site and META tag settings"
 #~ msgstr "تنظیمات متا و تگ های سیستم"
 
@@ -19812,12 +19944,3 @@ msgstr ""
 
 #~ msgid "Zip file(s)"
 #~ msgstr "فایل(های) فشرده"
-
-#~ msgid "first"
-#~ msgstr "اولین"
-
-#~ msgid "last"
-#~ msgstr "آخرین"
-
-#~ msgid "utf8_unicode_ci"
-#~ msgstr "utf8_unicode_ci"

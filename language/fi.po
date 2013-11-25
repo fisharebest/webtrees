@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-24 22:39+0000\n"
+"POT-Creation-Date: 2013-11-25 20:40+0000\n"
 "PO-Revision-Date: 2013-03-27 09:05+0000\n"
 "Last-Translator: meliza <Unknown>\n"
 "Language-Team: \n"
@@ -227,6 +227,16 @@ msgid_plural "%d years"
 msgstr[0] "%d vuosi"
 msgstr[1] "%d vuotta"
 
+#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#: library/WT/I18N.php:154
+msgid "%g:%i:%s %a"
+msgstr ""
+
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
+#: library/WT/I18N.php:152
+msgid "%j %F %Y"
+msgstr "%j. %F %Y"
+
 #: includes/functions/functions.php:2162
 #, php-format
 msgid "%s"
@@ -256,12 +266,34 @@ msgid_plural "%s children"
 msgstr[0] "%s lapsi"
 msgstr[1] "%s lasta"
 
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:353
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s päivä"
+msgstr[1] "%s päivää"
+
+#: library/WT/I18N.php:396
+#, php-format
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] "%s päivä sitten"
+msgstr[1] "%s päivää sitten"
+
 #: library/WT/Stats.php:3093 library/WT/Stats.php:3097
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s lapsenlapsi"
 msgstr[1] "%s lastenlasta"
+
+#: library/WT/I18N.php:399
+#, php-format
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] "%s tunti sitten"
+msgstr[1] "%s tunteja sitten"
 
 #: modules_v3/googlemap/module.php:826
 #, php-format
@@ -282,6 +314,28 @@ msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s viesti"
 msgstr[1] "%s viestiä"
+
+#: library/WT/I18N.php:402
+#, php-format
+msgid "%s minute ago"
+msgid_plural "%s minutes ago"
+msgstr[0] "%s minuutti sitten"
+msgstr[1] "%s minuutteja sitten"
+
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:345
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s kuukausi"
+msgstr[1] "%s kuukautta"
+
+#: library/WT/I18N.php:393
+#, php-format
+msgid "%s month ago"
+msgid_plural "%s months ago"
+msgstr[0] "%s kuukausi sitten"
+msgstr[1] "%s kuukautta sitten"
 
 #: statisticsplot.php:747
 #, php-format
@@ -304,6 +358,13 @@ msgstr "%s"
 #, php-format
 msgid "%s places"
 msgstr ""
+
+#: library/WT/I18N.php:404
+#, php-format
+msgid "%s second ago"
+msgid_plural "%s seconds ago"
+msgstr[0] "%s sekunti sitten"
+msgstr[1] "%s sekunteja sitten"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2106
@@ -329,11 +390,39 @@ msgstr "%s"
 msgid "%s twice removed descending"
 msgstr "%s"
 
+#. I18N: Part of an age string. e.g 7 weeks and 3 days
+#: library/WT/I18N.php:349
+#, php-format
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] "%s viikko"
+msgstr[1] "%s viikkoa"
+
+#: library/WT/I18N.php:339
+#, php-format
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s vuosi"
+msgstr[1] "%s vuotta"
+
+#: library/WT/I18N.php:390
+#, php-format
+msgid "%s year ago"
+msgid_plural "%s years ago"
+msgstr[0] "%s vuosi sitten"
+msgstr[1] "%s vuotta sitten"
+
 #: calendar.php:560 includes/functions/functions_print_lists.php:1921
 #: modules_v3/yahrzeit/module.php:118
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s. vuosipäivä"
+
+#. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
+#: library/WT/I18N.php:260
+#, php-format
+msgid "%s%%"
+msgstr "%s%%"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:97
@@ -360,6 +449,50 @@ msgid "&plusmn;%d year"
 msgid_plural "&plusmn;%d years"
 msgstr[0] "&plusmn;%d vuosi"
 msgstr[1] "&plusmn;%d vuotta"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+#: library/WT/I18N.php:368 library/WT/I18N.php:372
+#, php-format
+msgid "(aged %s)"
+msgstr "(ikä %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+#: library/WT/I18N.php:362
+#, php-format
+msgid "(aged less than %s)"
+msgstr "(ikä vähemmän kuin %s)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+#: library/WT/I18N.php:365
+#, php-format
+msgid "(aged more than %s)"
+msgstr "(ikä enemmän kuin %s)"
+
+#. I18N: %s is a placeholder for a number
+#: library/WT/I18N.php:474
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr "(valittu %s:sta)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
+#: library/WT/I18N.php:333
+msgid "(in childhood)"
+msgstr "(lapsena)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
+#: library/WT/I18N.php:330
+msgid "(in infancy)"
+msgstr "(pikkulapsena)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
+#: library/WT/I18N.php:327
+msgid "(stillborn)"
+msgstr "(kuolleena syntynyt)"
+
+#. I18N: This punctuation is used to separate lists of items.
+#: library/WT/I18N.php:173
+msgid ", "
+msgstr ", "
 
 #: library/WT/Stats.php:4060
 msgctxt "CENTURY"
@@ -858,6 +991,14 @@ msgstr "A3"
 msgctxt "paper size"
 msgid "A4"
 msgstr "A4"
+
+#: library/WT/I18N.php:159
+msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyzåäö"
+
+#: library/WT/I18N.php:156
+msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1640,10 +1781,11 @@ msgstr "Aliasnimi"
 msgid "Alive"
 msgstr "Elävät"
 
+#. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:225 famlist.php:70 famlist.php:76 famlist.php:82
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
-#: indilist.php:167 indilist.php:251 indilist.php:253
+#: indilist.php:167 indilist.php:251 indilist.php:253 library/WT/I18N.php:418
 #: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
@@ -4760,6 +4902,12 @@ msgstr "Suorat esivanhemmat"
 msgid "Direct line ancestors and their families"
 msgstr "Suorat esivanhemmat ja heidän perheensä"
 
+#. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
+#: library/WT/I18N.php:422
+#, php-format
+msgid "Display %s"
+msgstr "Näytä %s"
+
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
 msgstr "Näytä karttakordinaatit"
@@ -5923,7 +6071,7 @@ msgstr "%s merkityt tiedostot tarvitaan tässä palvelussa, joten niitä ei voi 
 
 #: admin_site_change.php:273 admin_site_logs.php:240 find.php:188 find.php:203
 #: find.php:221 find.php:238 find.php:255 find.php:273 find.php:290
-#: find.php:481 modules_v3/random_media/module.php:300
+#: find.php:481 library/WT/I18N.php:480 modules_v3/random_media/module.php:300
 msgid "Filter"
 msgstr "Suodatus"
 
@@ -7913,6 +8061,7 @@ msgstr "Lataa ja ota käyttöön tallennetut sukupuut, käyttäen \"tuonti\" kul
 msgid "Loading data from GEDCOM: %.1f%%"
 msgstr "Ladataan tietoja GEDCOM tiedostosta: %.1f%%"
 
+#: library/WT/I18N.php:478 library/WT/I18N.php:479
 #: themes/clouds/templates/compactbox_template.php:54
 #: themes/clouds/templates/personbox_template.php:48
 #: themes/colors/templates/compactbox_template.php:54
@@ -9427,6 +9576,10 @@ msgstr ""
 #: admin_site_config.php:46
 msgid "No predefined text"
 msgstr "Ei esivalmistettua tekstiä"
+
+#: library/WT/I18N.php:471 library/WT/I18N.php:482
+msgid "No records to display"
+msgstr "Ei tietueita näytettävänä"
 
 #: find.php:509 find.php:534 find.php:590 find.php:618 find.php:641
 #: find.php:664 find.php:687 library/WT/Controller/AdvancedSearch.php:534
@@ -12295,6 +12448,12 @@ msgstr "Näytä &laquo;lehti&raquo;parit tai henkilöt. Nämä ovat elossa olevi
 msgid "Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database."
 msgstr "Näytä &laquo;juuri&raquo;parit tai henkilöt. Heitä voi myös kutsua &laquo;patriarkoiksi&raquo;. He ovat henkilöitä, joilla ei ole vanhempia tietokannassa."
 
+#. I18N: %s are placeholders for numbers
+#: library/WT/I18N.php:472 library/WT/I18N.php:473
+#, php-format
+msgid "Showing %1$s to %2$s of %3$s"
+msgstr "Näytetään rivit %1$s - %2$s ( %3$s )"
+
 #: library/WT/Controller/Fanchart.php:337
 #: library/WT/Controller/Hourglass.php:407 pedigree.php:227
 msgid "Sibling"
@@ -14897,6 +15056,11 @@ msgstr "Vierailija"
 msgid "Vital records"
 msgstr "Keskeisimmät tapahtumat"
 
+#. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
+#: library/WT/I18N.php:162
+msgid "WEEK_START=0"
+msgstr "WEEK_START=1"
+
 #: library/WT/Stats.php:4032
 msgid "Wales"
 msgstr "Wales"
@@ -16159,6 +16323,11 @@ msgstr "5. serkku"
 #: setup.php:164
 msgid "file upload capability"
 msgstr "tiedostojen palvelimelle-siirto ominaisuudet"
+
+#. I18N: button label, first page
+#: library/WT/I18N.php:466
+msgid "first"
+msgstr "ensimmäinen"
 
 #: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -18066,6 +18235,11 @@ msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
 msgstr "jours complémentaires"
 
+#. I18N: button label, last page
+#: library/WT/I18N.php:467
+msgid "last"
+msgstr "viimeinen"
+
 #: admin_trees_config.php:910
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
@@ -18249,7 +18423,8 @@ msgctxt "sister's child"
 msgid "nephew/niece"
 msgstr "siskon lapsi"
 
-#: admin_pgv_to_wt.php:157 admin_site_merge.php:318
+#. I18N: button label, next page
+#: admin_pgv_to_wt.php:157 admin_site_merge.php:318 library/WT/I18N.php:468
 #: modules_v3/batch_update/admin_batch_update.php:98
 msgid "next"
 msgstr "seuraava"
@@ -18439,7 +18614,8 @@ msgstr "odottaa jatkokäsittelyä"
 msgid "percentage"
 msgstr "prosenttiosuus"
 
-#: modules_v3/batch_update/admin_batch_update.php:97
+#. I18N: button label, previous page
+#: library/WT/I18N.php:469 modules_v3/batch_update/admin_batch_update.php:97
 msgid "previous"
 msgstr "edellinen"
 
@@ -19314,6 +19490,11 @@ msgstr "henkilö ei tiedossa"
 msgid "unreliable evidence"
 msgstr "epäluotettava todiste"
 
+#. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
+#: library/WT/I18N.php:176
+msgid "utf8_unicode_ci"
+msgstr "utf8_swedish_ci"
+
 #: modules_v3/ahnentafel_report/report.xml:139
 #: modules_v3/descendancy_report/report.xml:105
 msgctxt "FEMALE"
@@ -19439,91 +19620,11 @@ msgstr "…"
 #~ msgid "%H:%i:%s"
 #~ msgstr "%H:%i:%s"
 
-#~ msgid "%j %F %Y"
-#~ msgstr "%j. %F %Y"
-
-#~ msgid "%s day"
-#~ msgid_plural "%s days"
-#~ msgstr[0] "%s päivä"
-#~ msgstr[1] "%s päivää"
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "%s päivä sitten"
-#~ msgstr[1] "%s päivää sitten"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "%s tunti sitten"
-#~ msgstr[1] "%s tunteja sitten"
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "%s minuutti sitten"
-#~ msgstr[1] "%s minuutteja sitten"
-
-#~ msgid "%s month"
-#~ msgid_plural "%s months"
-#~ msgstr[0] "%s kuukausi"
-#~ msgstr[1] "%s kuukautta"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "%s kuukausi sitten"
-#~ msgstr[1] "%s kuukautta sitten"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "%s sekunti sitten"
-#~ msgstr[1] "%s sekunteja sitten"
-
 #~ msgid "%s three times removed ascending"
 #~ msgstr "%s"
 
 #~ msgid "%s three times removed descending"
 #~ msgstr "%s"
-
-#~ msgid "%s week"
-#~ msgid_plural "%s weeks"
-#~ msgstr[0] "%s viikko"
-#~ msgstr[1] "%s viikkoa"
-
-#~ msgid "%s year"
-#~ msgid_plural "%s years"
-#~ msgstr[0] "%s vuosi"
-#~ msgstr[1] "%s vuotta"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "%s vuosi sitten"
-#~ msgstr[1] "%s vuotta sitten"
-
-#~ msgid "%s%%"
-#~ msgstr "%s%%"
-
-#~ msgid "(aged %s)"
-#~ msgstr "(ikä %s)"
-
-#~ msgid "(aged less than %s)"
-#~ msgstr "(ikä vähemmän kuin %s)"
-
-#~ msgid "(aged more than %s)"
-#~ msgstr "(ikä enemmän kuin %s)"
-
-#~ msgid "(filtered from %s total entries)"
-#~ msgstr "(valittu %s:sta)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(lapsena)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(pikkulapsena)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(kuolleena syntynyt)"
-
-#~ msgid ", "
-#~ msgstr ", "
 
 #~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
 #~ msgstr "<b>GUID</b> on lyhenne termista «Globally Unique ID».<br><br>GUID pyrkii henkilön tunnistamiseen sellaisella tavalla, että keskeiset järjestöt, kuten Salt Lake Cityn MAP-kirkon sukututkimuskeskus (Family History Center of the LDS church in Salt Lake City), tai yhteensopivat sukututkimusohjelmistot palvelimellasi, voisivat todeta käsittelevänsä samaa henkilöä, riippumatta siitä mistä GEDCOM aineisto on peräisin. Sukututkimuskeksen päämääränänä on luoda yhteinen sukututkimuksen tietovaraston ja hyödyttää sitä web palveluiden kautta. Tällä tavalla mikä tahansa sukututkimusohjelma voisi hakea tietoja ja täydentää omaa aineistoa saaduilla tiedoilla.<br><br>Jos sinulla ei ole tarkoitus jakaa GEDCOM aineistoasi muiden kanssa, sinulla ei ole tarvetta luoda näitä GUID tunnisteita <b>webtrees</b> ohjelmalla. Niiden luominen ei aiheuta muuta haittaa, kuin sen että GEDCOMin tilantarve lisääntyy."
@@ -19560,12 +19661,6 @@ msgstr "…"
 
 #~ msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 #~ msgstr "Käyttäjä ei voi kirjautua sisään, ennen kuin sekä \"sähköpostiosoite on varmistettu\" että \"ylläpitäjä on hyväksynyt\" asetukset on kuitattu."
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyzåäö"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ"
 
 #~ msgid "Access"
 #~ msgstr "Pääsy"
@@ -19815,9 +19910,6 @@ msgstr "…"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "dhul-qa`da"
-
-#~ msgid "Display %s"
-#~ msgstr "Näytä %s"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "(mormoni) Älä sinetöi: aiempi sinetöinti peruutettu"
@@ -20133,9 +20225,6 @@ msgstr "…"
 #~ msgid "No events for living individuals exist for tomorrow."
 #~ msgstr "Elossa olevien henkilöiden tapahtumia ei ole huomenna."
 
-#~ msgid "No records to display"
-#~ msgstr "Ei tietueita näytettävänä"
-
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "Tätä ID-tunnusta ei ole tässä GEDCOM-tiedostossa."
 
@@ -20425,9 +20514,6 @@ msgstr "…"
 #~ msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
 #~ msgstr "Näytä &laquo;juuri&raquo;parit tai henkilöt. Heitä voi myös kutsua &laquo;patriarkoiksi&raquo;. He ovat henkilöitä, joilla ei ole vanhempia tietokannassa."
 
-#~ msgid "Showing %1$s to %2$s of %3$s"
-#~ msgstr "Näytetään rivit %1$s - %2$s ( %3$s )"
-
 #~ msgid "Social security number"
 #~ msgstr "Henkilötunnus"
 
@@ -20689,9 +20775,6 @@ msgstr "…"
 #~ msgid "Visitors"
 #~ msgstr "Vierailija"
 
-#~ msgid "WEEK_START=0"
-#~ msgstr "WEEK_START=1"
-
 #~ msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 #~ msgstr "Tulet saamaan koodin sähköpostissa osoitteeseen (%s). Käytä viesti tilisi vahvistukseen. Tilisi pyyhitään seitsemän päivän kuluttua jos et vahvista sitä (voit sen jälkeen rekisteröidä tilin uudelleen). Kirjautuminen sivuille vaatii käyttäjätunnuksen ja salasanan."
 
@@ -20785,9 +20868,6 @@ msgstr "…"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "miniän isä/äiti"
 
-#~ msgid "first"
-#~ msgstr "ensimmäinen"
-
 #~ msgid "from %d"
 #~ msgstr "%d lähtien"
 
@@ -20815,9 +20895,6 @@ msgstr "…"
 #~ msgid "grandson’s wife"
 #~ msgstr "pojanpojanvaimo"
 
-#~ msgid "last"
-#~ msgstr "viimeinen"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "tyttären miehenisä / tyttären appi"
@@ -20829,9 +20906,6 @@ msgstr "…"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "tyttären appi/anoppi"
-
-#~ msgid "utf8_unicode_ci"
-#~ msgstr "utf8_swedish_ci"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "webtrees tietokannan ja PGV pitää olla samassa serverissa"
