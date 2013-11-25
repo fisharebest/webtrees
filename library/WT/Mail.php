@@ -34,7 +34,6 @@ class WT_Mail {
 			self::EOL .
 			'---------------------------------------' . self::EOL .
 			'IP ADDRESS: ' . $WT_REQUEST->getClientIp() . self::EOL .
-			'DNS LOOKUP: ' . gethostbyaddr($WT_REQUEST->getClientIp()) . self::EOL .
 			'LANGUAGE: '   . WT_LOCALE . self::EOL;
 	}
 
