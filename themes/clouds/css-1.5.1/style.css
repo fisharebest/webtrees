@@ -1355,10 +1355,6 @@ background:#dfeeff;
 .new { outline: solid blue 1px; }
 .old { outline: solid red  1px; }
 
-.note_details {
-display:none;
-}
-
 a.showit {
 position:relative;
 z-index:24;
@@ -1994,7 +1990,6 @@ width:98%;
 
 #indi_header a {
 color:#333377;
-font-size:0.75em;
 font-weight:400;
 }
 
@@ -2076,7 +2071,7 @@ margin:0 5px 0 0;
 margin:3px 0;
 }
 
-#indi_note .note_details,#indi_note .fact_SOUR a {
+#indi_note .fact_SOUR a {
 font-size:100%;
 }
 
