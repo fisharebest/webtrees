@@ -289,7 +289,9 @@ case 'REPO': // Repositories, that include the search terms
 	foreach ($rows as $row) {
 		$record = WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($record->canShowName()) {
-			$data[] = array('value'=>$record->getXref(), 'label'=>strip_tags($record->getFullName()));
+			foreach ($record->getFacts('NAME') as $fact) {
+				$data[] = array('value'=>$record->getXref(), 'label'=>$fact->getValue());
+			}
 		}
 	}
 	echo json_encode($data);
@@ -317,7 +319,9 @@ case 'SOUR': // Sources, that include the search terms
 	foreach ($rows as $row) {
 		$record = WT_Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($record->canShowName()) {
-			$data[] = array('value'=>$record->getXref(), 'label'=>strip_tags($record->getFullName()));
+			foreach ($record->getFacts('TITL') as $fact) {
+				$data[] = array('value'=>$record->getXref(), 'label'=>$fact->getValue());
+			}
 		}
 	}
 	echo json_encode($data);

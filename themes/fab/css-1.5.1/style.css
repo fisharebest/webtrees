@@ -115,7 +115,7 @@ a:active {
 	text-decoration: underline;
 }
 
-img {
+a.gallery img {
 	border: 0;
 	border-radius: 4px;
 	margin: 4px;
@@ -3468,6 +3468,7 @@ html[dir=rtl] #cboxSlideshow {
 /* Census assistant module */
 table.table-census-assistant th {
 	font-weight: bold;
+	text-align:  left;
 }
 
 /* Stories module */

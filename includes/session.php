@@ -34,9 +34,8 @@ define('WT_VERSION_RELEASE', 'dev'); // “dev”, “beta”, “rc1”, “”
 define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
 
 // External URLs
-define('WT_WEBTREES_URL',    'http://webtrees.net/');
+define('WT_WEBTREES_URL',    'http://www.webtrees.net/');
 define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net/');
-define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
 // For example, http://my.cdn.com/webtrees-static-1.3.1/
@@ -57,7 +56,7 @@ define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.datatables-1.9.4.js'
 define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable-1.7.1.js');
 define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom-1.1.2.js');
 define('WT_MODERNIZR_URL',         WT_STATIC_URL.'js/modernizr.custom-2.6.2.js');
-define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees-1.5.0.js');
+define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees-1.5.1.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes

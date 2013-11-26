@@ -1719,8 +1719,8 @@ case 'reorder_media_update':
 // Change the order of children within a family record
 ////////////////////////////////////////////////////////////////////////////////
 case 'reorder_children':
-	$xref   = WT_Filter::get('xref', WT_REGEX_XREF);
-	$option = WT_Filter::get('option');
+	$xref   = WT_Filter::post('xref', WT_REGEX_XREF, WT_Filter::get('xref', WT_REGEX_XREF));
+	$option = WT_Filter::post('option');
 
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
@@ -2103,8 +2103,8 @@ case 'changefamily_update':
 // Change the order of FAMS records within an INDI record
 ////////////////////////////////////////////////////////////////////////////////
 case 'reorder_fams':
-	$xref   = WT_Filter::get('xref', WT_REGEX_XREF);
-	$option = WT_Filter::get('option');
+	$xref   = WT_Filter::post('xref', WT_REGEX_XREF, WT_Filter::get('xref', WT_REGEX_XREF));
+	$option = WT_Filter::post('option');
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);

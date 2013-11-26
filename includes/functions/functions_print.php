@@ -632,52 +632,42 @@ function print_asso_rela_record(WT_Fact $event, WT_GedcomRecord $record) {
 *
 * @param string $pid child ID
 */
-function format_parents_age($pid, $birth_date=null) {
-	global $SHOW_PARENTS_AGE;
-
+function format_parents_age(WT_Individual $person, WT_Date $birth_date) {
 	$html='';
-	if ($SHOW_PARENTS_AGE) {
-		$person=WT_Individual::getInstance($pid);
-		$families=$person->getChildFamilies();
-		// Where an indi has multiple birth records, we need to know the
-		// date of it.  For person boxes, etc., use the default birth date.
-		if (is_null($birth_date)) {
-			$birth_date=$person->getBirthDate();
-		}
-		// Multiple sets of parents (e.g. adoption) cause complications, so ignore.
-		if ($birth_date->isOK() && count($families)==1) {
-			$family=current($families);
-			foreach ($family->getSpouses() as $parent) {
-				if ($parent->getBirthDate()->isOK()) {
-					$sex=$parent->getSexImage();
-					$age=WT_Date::getAge($parent->getBirthDate(), $birth_date, 2);
-					$deatdate=$parent->getDeathDate();
-					switch ($parent->getSex()) {
-					case 'F':
-						// Highlight mothers who die in childbirth or shortly afterwards
-						if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()+90) {
-							$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
-						} else {
-							$html.=' <span title="'.WT_I18N::translate('Mother’s age').'">'.$sex.$age.'</span>';
-						}
-						break;
-					case 'M':
-						// Highlight fathers who die before the birth
-						if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()) {
-							$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
-						} else {
-							$html.=' <span title="'.WT_I18N::translate('Father’s age').'">'.$sex.$age.'</span>';
-						}
-						break;
-					default:
-						$html.=' <span title="'.WT_I18N::translate('Parent’s age').'">'.$sex.$age.'</span>';
-						break;
+	$families=$person->getChildFamilies();
+	// Multiple sets of parents (e.g. adoption) cause complications, so ignore.
+	if ($birth_date->isOK() && count($families)==1) {
+		$family=current($families);
+		foreach ($family->getSpouses() as $parent) {
+			if ($parent->getBirthDate()->isOK()) {
+				$sex=$parent->getSexImage();
+				$age=WT_Date::getAge($parent->getBirthDate(), $birth_date, 2);
+				$deatdate=$parent->getDeathDate();
+				switch ($parent->getSex()) {
+				case 'F':
+					// Highlight mothers who die in childbirth or shortly afterwards
+					if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()+90) {
+						$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
+					} else {
+						$html.=' <span title="'.WT_I18N::translate('Mother’s age').'">'.$sex.$age.'</span>';
 					}
+					break;
+				case 'M':
+					// Highlight fathers who die before the birth
+					if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()) {
+						$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
+					} else {
+						$html.=' <span title="'.WT_I18N::translate('Father’s age').'">'.$sex.$age.'</span>';
+					}
+					break;
+				default:
+					$html.=' <span title="'.WT_I18N::translate('Parent’s age').'">'.$sex.$age.'</span>';
+					break;
 				}
 			}
-			if ($html) {
-				$html='<span class="age">'.$html.'</span>';
-			}
+		}
+		if ($html) {
+			$html='<span class="age">'.$html.'</span>';
 		}
 	}
 	return $html;
@@ -690,9 +680,7 @@ function format_parents_age($pid, $birth_date=null) {
 // $anchor option to print a link to calendar
 // $time option to print TIME value
 function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false, $time=false) {
-	global $pid, $SEARCH_SPIDER;
-	global $GEDCOM;
-	$ged_id=get_id_from_gedcom($GEDCOM);
+	global $pid, $SEARCH_SPIDER, $SHOW_PARENTS_AGE;
 
 	$factrec = $event->getGedcom();
 	$html='';
@@ -730,8 +718,8 @@ function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false
 		$fact = $event->getTag();
 		if ($record instanceof WT_Individual) {
 			// age of parents at child birth
-			if ($fact=='BIRT') {
-				$html .= format_parents_age($record->getXref(), $date);
+			if ($fact=='BIRT' && $SHOW_PARENTS_AGE) {
+				$html .= format_parents_age($record, $date);
 			}
 			// age at event
 			else if ($fact!='CHAN' && $fact!='_TODO') {

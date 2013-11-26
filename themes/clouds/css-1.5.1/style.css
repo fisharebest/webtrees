@@ -3070,6 +3070,7 @@ html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
 /* Census assistant module */
 table.table-census-assistant th {
 	font-weight: bold;
+	text-align:  left;
 }
 
 /* Stories module */
