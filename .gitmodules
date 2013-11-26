@@ -10,3 +10,6 @@
 [submodule "themes/justblack"]
 	path = themes/justblack
 	url = https://github.com/JustCarmen/justblack
+[submodule "modules_v3/fancy_database_backup"]
+	path = modules_v3/fancy_database_backup
+	url = https://github.com/JustCarmen/fancy_database_backup.git
