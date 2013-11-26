@@ -844,10 +844,6 @@ margin:20px;
 .new { outline: solid blue 1px; }
 .old { outline: solid red  1px; }
 
-.note_details {
-	display:none;
-}
-
 a.showit {
 	position:relative;
 	z-index:24;
@@ -1378,7 +1374,6 @@ html[dir=rtl].field .editlink, html[dir=rtl].field .deletelink {float:left;}
 #indi_note {margin:0 0 5px 0;}
 #indi_note .fact_NOTE .label {float:left;margin:0 10px 0 0;}
 #indi_note , #indi_note .fact_NOTE .label {font-size:12px;}
-#indi_note .note_details {font-size:12px;}
 #indi_note .fact_SOUR a {font-size:12px;}
 #indi_note .fact_NOTE,
 #indi_note .fact_SOUR {clear: both;}

@@ -955,10 +955,6 @@ html[dir=rtl] #ancestry_chart li {
 	background-color: #bce;
 }
 
-.note_details {
-	display: none;
-}
-
 a.showit {
 	position: relative;
 	z-index: 24;

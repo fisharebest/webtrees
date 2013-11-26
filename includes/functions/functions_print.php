@@ -442,11 +442,9 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $first_line . '</a>';
 		}
 		$data .= '<span class="field" dir="auto">' . $first_line . '</span>';
-		$data .= '<div id="' . $elementID . '"';
-		if ($EXPAND_NOTES) {
-			$data .= ' style="display:block"';
-		}
-		$data .= ' class="note_details" dir="auto" style="white-space:pre-wrap">' . $cont_lines. '</div>';
+		$data .= '<div id="' . $elementID . '" dir="auto" style="white-space:pre-wrap; display:';
+		$data .= $EXPAND_NOTES ? 'block' : 'none';
+		$data .= '">' . $cont_lines. '</div>';
 	} else {
 		if ($note) {
 			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $first_line . '</a>';
