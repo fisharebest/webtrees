@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-09 18:17+0000\n"
-"PO-Revision-Date: 2013-11-20 08:18+0100\n"
+"PO-Revision-Date: 2013-11-28 00:46+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -605,7 +605,7 @@ msgstr "<b>Aandachtspunt:</b> Privé informatie van levende personen zal alleen 
 
 #: help_text.php:1054
 msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
-msgstr "<b>webtrees</b> laat u tot 10 feiten, met al hun details, kopiëren naar een klembord. Dit klembord is anders dan de Knipselwagen waarnaar u delen van uw database kunt exporteren.<br><br>U kunt elk feit van dat klembord selecteren en kopiëren naar het Persoons-, Gezins-, Media-, Bron- of Opslagplaats-record welke op dat moment bewerkt wordt. U kunt evenwel geen feiten kopiëren naar niet-gelijksoortige records. U kunt b.v. geen Huwelijks-feit naar een Bron- of een Persoonsrecord kopiëren, want een Huwelijks-feit hoort alleen bij Gezinsrecords.<br><br>Dit is erg makkelijk om soortgelijke feiten, zoals volkstelling-feiten, bij veel personen of gezinnen snel in te voeren."
+msgstr "<b>webtrees</b> laat u tot 10 feiten, met al hun details, kopiëren naar een klembord. Dit klembord is anders dan de optie om stamboomknipsels te verzamelen waarmee u delen van uw database kunt exporteren.<br><br>U kunt elk feit van dat klembord selecteren en kopiëren naar het Persoons-, Gezins-, Media-, Bron- of Opslagplaats-record welke op dat moment bewerkt wordt. U kunt evenwel geen feiten kopiëren naar niet-gelijksoortige records. U kunt b.v. geen Huwelijks-feit naar een Bron- of een Persoonsrecord kopiëren, want een Huwelijks-feit hoort alleen bij Gezinsrecords.<br><br>Dit is erg makkelijk om soortgelijke feiten, zoals volkstelling-feiten, bij veel personen of gezinnen snel in te voeren."
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:79
@@ -1129,7 +1129,7 @@ msgstr "Voeg een nieuwe geografische locatie toe."
 #: modules_v3/clippings/module.php:484
 #, php-format
 msgid "Add %s to cart"
-msgstr "Voeg %s aan wagen toe"
+msgstr "%s toevoegen aan knipselverzameling"
 
 #: modules_v3/faq/module.php:145 modules_v3/faq/module.php:358
 msgid "Add FAQ item"
@@ -1385,7 +1385,7 @@ msgstr "Voeg toe aan TITLE header tag"
 
 #: modules_v3/clippings/module.php:333
 msgid "Add to clippings cart"
-msgstr "Voeg toe aan knipselwagen"
+msgstr "Toevoegen aan knipselverzameling"
 
 #. I18N: Menu option.  Add [the current page] to the list of favorites
 #: library/WT/Controller/Family.php:124
@@ -3689,7 +3689,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
 msgid "Clippings cart"
-msgstr "Knipselwagen"
+msgstr "Stamboomknipsels"
 
 #: library/WT/Gedcom/Tag.php:885
 msgid "Coat of arms"
@@ -5433,7 +5433,7 @@ msgstr "Werkgever"
 #: modules_v3/clippings/help_text.php:36 modules_v3/clippings/module.php:266
 #: modules_v3/clippings/module.php:475
 msgid "Empty Cart"
-msgstr "Maak wagen leeg"
+msgstr "Verwijder uw stamboomknipsels"
 
 #: admin_modules.php:119
 msgid "Enabled"
@@ -5950,7 +5950,7 @@ msgstr "Stamboomtoegang en -instellingen"
 
 #: modules_v3/clippings/module.php:73 modules_v3/clippings/module.php:269
 msgid "Family tree clippings cart"
-msgstr "Stamboom-knipselwagen"
+msgstr "Stamboomknipsels"
 
 #: admin_trees_config.php:31
 msgid "Family tree configuration"
@@ -6154,7 +6154,7 @@ msgstr "Fiji"
 
 #: modules_v3/clippings/module.php:191 modules_v3/clippings/module.php:573
 msgid "File Information"
-msgstr "Bestands Informatie"
+msgstr "Bestandsinformatie"
 
 #: modules_v3/googlemap/admin_places.php:318
 msgid "File containing places (CSV)"
@@ -11267,7 +11267,7 @@ msgstr "Verwantschap: %s"
 #: library/WT/MenuBar.php:228 library/WT/MenuBar.php:253 relationship.php:71
 #: relationship.php:86
 msgid "Relationships"
-msgstr "Relaties"
+msgstr "Verwantschap"
 
 #. I18N: %s are individual’s names
 #: relationship.php:60
@@ -11799,11 +11799,11 @@ msgstr "Selecteer de te tonen statistieken in dit blok"
 
 #: help_text.php:1490
 msgid "Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href=\"http://www.winzip.com\" target=\"_blank\">http://www.winzip.com</a>."
-msgstr "Selecteer deze optie om uw knipsels op te slaan in een ZIP-bestand. Voor meer informatie over ZIP-bestanden, kunt u terecht op <a href=\"http://www.winzip.com\" target=\"_blank\">http://www.winzip.com</a>."
+msgstr "Selecteer deze optie om uw knipselverzameling op te slaan in een ZIP-bestand. Voor meer informatie over ZIP-bestanden, kunt u terecht op <a href=\"http://www.winzip.com\" target=\"_blank\">http://www.winzip.com</a>."
 
 #: help_text.php:1260
 msgid "Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download."
-msgstr "Selecteer deze optie om de mediabestanden gekoppeld aan de records in uw knipselwagen op te nemen. Door deze optie te kiezen worden de bestanden automatisch ge-zipt gedurende de  download van de records."
+msgstr "Selecteer deze optie om de mediabestanden die bij uw stamboomknipsels horen, op te nemen in het te downloaden bestand. Wanneer u deze optie kiest worden de bestanden automatisch ge-zipt tijdens het downloaden."
 
 #: admin_site_merge.php:246
 msgid "Select two GEDCOM records to merge.  The records must be of the same type."
@@ -13275,7 +13275,7 @@ msgstr "De wijzigingen aan \"%s\" zijn niet geaccepteerd."
 
 #: modules_v3/clippings/module.php:142
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
-msgstr "De knipselwagen staat toe uittreksels (\"knipsels\") van deze stamboom te bundelen in een enkel bestand dat gedownload kan worden en vervolgens geïmporteerd in uw eigen genealogieprogramma . Het downloadbare bestand wordt opgeslagen in het GEDCOM- formaat.<br><ul><li>Hoe knipsels  te nemen?<br>Dit is eenvoudig. Door op een aanklikbare naam (persoon, gezin of bron) te klikken, gaat u naar de Detailpagina van die naam. Daar ziet u de <b>Voeg toe aan knipselwagen</b> optie. Daarop klikken levert een aantal opties op om te downloaden.</li><li>Hoe downloaden?<br>Zodra er items zijn in de knipselwagen, kan worden geklikt op de link <b>Download nu</b>. Volg dan  de instructies en de links</li></ul>"
+msgstr "U kunt uittreksels (\"knipsels\") van deze stamboom bundelen in een enkel bestand dat u kunt downloaden en vervolgens kunt importeren in uw eigen genealogieprogramma. Het bestand wordt opgeslagen in het GEDCOM-formaat.<br><ul><li>Hoe neemt u een stamboomknipsel?<br>Door op een aanklikbare naam (persoon, gezin of bron) te klikken, gaat u naar de bijbehorende detailpagina. Daar vindt u de optie \"<b>Toevoegen aan knipselverzameling</b>\". Wanneer u daarop klikt krijgt u een aantal opties te zien voor het samenstellen van het te downloaden bestand.</li><li>Hoe download u uw verzamelde stamboomknipsels?<br>Nadat u een of meerdere stamboomknipsels hebt verzameld, klikt u op de link <b>Download nu</b>. Volg dan de instructies en de links.</li></ul>"
 
 #: help_text.php:1305
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
@@ -13740,7 +13740,7 @@ msgstr "Met dit invulvak kunt u het jaar van de kalender wijzigen. Type een jaar
 
 #: modules_v3/clippings/help_text.php:32
 msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
-msgstr "In dit invulvak kan het ID-nummer van een persoon ingevuld worden, zodat deze kan worden toegevoegd aan de knipselwagen. Na toevoegen krijgt u  opties aangeboden om  de relaties van die persoon  mee te nemen in de knipselwagen.<br><br>Is iemands ID-nummer onbekend, dan kan gezocht worden op naam door op het persoon-pictogram te klikken naast de Toevoegen-knop."
+msgstr "In dit invulvak kunt u het ID-nummer van een persoon invullen, zodat u deze kunt toevoegen aan uw verzameling stamboomknipsels. Eenmaal toegevoegd, krijgt u opties aangeboden om relaties van die persoon aan de verzameling toe te voegen.<br><br>Als u het  ID-nummer van de betreffende persoon niet weet, dan kunt u zoeken op naam door te klikken op het persoonspictogram naast de Toevoegen-knop."
 
 #: help_text.php:407
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
@@ -15316,7 +15316,7 @@ msgstr "Als u klikt op \"Voeg een nieuwe Gedeelde notitie toe\", opent een nieuw
 
 #: modules_v3/clippings/help_text.php:37
 msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
-msgstr "Door op deze knop te klikken, wordt de knipselwagen geheel leeg gemaakt.<br><br>Moeten niet alle personen, gezinnen, enz. uit uw knipselwagen verwijderd worden, dan kan dat ook selectief door op de knop \"Verwijderen\" in de Naam vakken te klikken. Er wordt niet om een bevestiging gevraagd als u op een van deze links klikt;  De verzochte verwijdering vindt direct plaats"
+msgstr "Wanneer u op deze link klikt, wordt uw verzameling stamboomknipsels verwijderd.<br><br>Wilt u niet alle personen, gezinnen, enz. uit uw verzameling verwijderen, dan kunt u items selectief verwijderen door op de knop <b>Verwijderen</b> in de naam-vakken te klikken. Er wordt niet om een bevestiging gevraagd als u op een van deze links klikt;  de gevraagde verwijdering vindt direct plaats."
 
 #: message.php:144
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
@@ -15692,7 +15692,7 @@ msgstr "Uw naam:"
 
 #: modules_v3/clippings/module.php:177 modules_v3/clippings/module.php:442
 msgid "Your clippings cart is empty."
-msgstr "Uw Knipselwagen is leeg."
+msgstr "U heeft nog geen stamboomknipsels verzameld."
 
 #: setup.php:392
 msgid "Your name"
