@@ -45,6 +45,7 @@ case 'update_mods':
 			}
 		}
 	}
+	header('Location: admin_modules.php');
 	break;
 }
 
@@ -68,6 +69,7 @@ case 'delete_module':
 	WT_DB::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute(array($module_name));
 	WT_DB::prepare("DELETE FROM `##module`         WHERE module_name=?")->execute(array($module_name));
 	unset($modules[$module_name]);
+	unset($module_status[$module_name]);
 	break;
 }
 
