@@ -63,7 +63,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 		// These links are used internally to record the sort order.
 		return;
 	default:
-		// Hide unrecognised/custom tags?
+		// Hide unrecognized/custom tags?
 		if ($HIDE_GEDCOM_ERRORS && !WT_Gedcom_Tag::isTag($fact->getTag())) {
 			return;
 		}

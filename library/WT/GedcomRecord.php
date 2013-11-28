@@ -150,7 +150,7 @@ class WT_GedcomRecord {
 			$xref = $match[1];
 			$type = $match[1];
 		} elseif ($gedcom.$pending) {
-			throw new Exception('Unrecognised GEDCOM record: ' . $gedcom);
+			throw new Exception('Unrecognized GEDCOM record: ' . $gedcom);
 		} else {
 			// A record with both pending creation and pending deletion
 			$type = static::RECORD_TYPE;

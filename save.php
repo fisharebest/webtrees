@@ -130,7 +130,7 @@ case 'site_setting':
 		}
 		fail();
 	default:
-		// An unrecognised setting
+		// An unrecognized setting
 		fail();
 	}
 
@@ -191,7 +191,7 @@ case 'user':
 	case 'email':
 		break;
 	default:
-		// An unrecognised setting
+		// An unrecognized setting
 		fail();
 	}
 
@@ -225,7 +225,7 @@ case 'user_gedcom_setting':
 	case 'RELATIONSHIP_PATH_LENGTH':
 		break;
 	default:
-		// An unrecognised setting
+		// An unrecognized setting
 		fail();
 	}
 
@@ -277,7 +277,7 @@ case 'user_setting':
 	case 'theme':
 		break;
 	default:
-		// An unrecognised setting
+		// An unrecognized setting
 		fail();
 	}
 
@@ -309,6 +309,6 @@ case 'module':
 	}
 
 default:
-	// An unrecognised table
+	// An unrecognized table
 	fail();
 }

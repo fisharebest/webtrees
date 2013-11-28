@@ -284,7 +284,7 @@ WT_DB::exec(
 	</thead>
 </table>
 
-<p><?php echo WT_I18N::translate('The following visitors were not recognised, and were assumed to be search engines.'); ?></p>
+<p><?php echo WT_I18N::translate('The following visitors were not recognized, and were assumed to be search engines.'); ?></p>
 
 <table id="unknown_site_visitors" style="width:100%;">
 	<thead>

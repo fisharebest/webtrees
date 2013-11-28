@@ -158,7 +158,7 @@ msgstr ""
 msgid "%1$s’s %2$s"
 msgstr ""
 
-#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: library/WT/I18N.php:152
 msgid "%H:%i:%s"
 msgstr ""
@@ -868,7 +868,7 @@ msgstr "Шәхеснең якын туганнарын күрчәтүче ян-�
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:34
-msgid "A sidebar showing non-genealogical information about an indivdual."
+msgid "A sidebar showing non-genealogical information about an individual."
 msgstr "Шәхескә кагылышлы, ләкин генеалогик булмаган мәгълүматны күрсәтүче ян-такта"
 
 #. I18N: Description of the “Descendants” module
@@ -3922,7 +3922,7 @@ msgstr ""
 msgid "Create a new media object"
 msgstr ""
 
-#. I18N: An note that is not linked to any other record
+#. I18N: A note that is not linked to any other record
 #: admin_site_other.php:55
 msgid "Create a new note"
 msgstr ""
@@ -4349,7 +4349,7 @@ msgid "Date range"
 msgstr ""
 
 #: help_text.php:185
-msgid "Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range."
+msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr ""
 
 #: admin_users.php:577
@@ -8366,7 +8366,7 @@ msgid "Manuscript"
 msgstr "Кулъязма"
 
 #: help_text.php:555
-msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message."
+msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
 msgstr ""
 
 #. I18N: Help text for the “Sending server name” site configuration setting
@@ -8507,7 +8507,7 @@ msgstr "Помолвка"
 
 #. I18N: gedcom tag MARL
 #: library/WT/Gedcom/Tag.php:237
-msgid "Marriage licence"
+msgid "Marriage license"
 msgstr "Өйләнешү турындагы таныклык"
 
 #: library/WT/Gedcom/Tag.php:774
@@ -8989,7 +8989,7 @@ msgid "Min. no. of occurrences to be a “common surname”"
 msgstr ""
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
 msgstr "Google Map картасын кимендә (минимум) һәм күбендә (максимум) зурайту коэффициенты. 1 тулы карта, 15 бер өй дәрәҗәсендә дигәнне аңлата. 15-ле зурайту барлык җирләрдә дә булмаска да мөмкин."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9608,7 +9608,7 @@ msgstr ""
 msgid "No errors were found."
 msgstr ""
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1799
 #: includes/functions/functions_print_lists.php:1906
 #, php-format
@@ -9637,7 +9637,7 @@ msgstr "Бүген исән шәхесләргә кагылышлы вакыйг
 msgid "No events for living individuals exist for tomorrow."
 msgstr "Исән шәхесләр өчен иртәгә вакыйгалар юк"
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1806
 #: includes/functions/functions_print_lists.php:1913
 #, php-format
@@ -11395,7 +11395,7 @@ msgid "Research tasks are special events, added to individuals in your family tr
 msgstr "Тикшеренү эшләре - вакыйгаларның аерым бер төре. Аларны шәхесләргә беркетү  өстәмә тикшеренүләр үткәрү кирәклеген күрсәтә. Мәсәлән, ышанычлырак чыганаклардан алынган мәгълүматлар белән чагыштырырга, документлар яки фотографияләр табырга, капма-каршы килүче мәгълүматларның дөресен билгеләргә кирәк булса."
 
 #: modules_v3/todo/help_text.php:36
-msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognise this tag."
+msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
 msgstr "Тикшеренү эшләре _TODO дигән стандарт булмаган GEDCOM коды белән кертелә. Башка генеология программалары аны кабул итмәскә мөмкин."
 
 #: includes/functions/functions_print_lists.php:97
@@ -12720,7 +12720,7 @@ msgstr "%s улы"
 msgid "Sort order"
 msgstr "Тәртип"
 
-#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is a individual’s surname, so may need transliterating into non-latin alphabets.
+#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: includes/functions/functions_print_lists.php:207
 #: library/WT/Controller/Branches.php:153
 #: library/WT/Controller/Branches.php:188
@@ -13355,7 +13355,7 @@ msgid "The following rules are used to decide whether a visitor is a human being
 msgstr ""
 
 #: admin_site_access.php:287
-msgid "The following visitors were not recognised, and were assumed to be search engines."
+msgid "The following visitors were not recognized, and were assumed to be search engines."
 msgstr ""
 
 #: help_text.php:1495
@@ -15718,11 +15718,11 @@ msgstr "Зурайту"
 #: modules_v3/googlemap/admin_places.php:162
 #: modules_v3/googlemap/admin_places.php:582
 #: modules_v3/googlemap/places_edit.php:318
-msgid "Zoom factor"
+msgid "Zoom level"
 msgstr "Зурайту дәрәҗәсе"
 
 #: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
-msgid "Zoom factor of map"
+msgid "Zoom level of map"
 msgstr "Ничә тапкыр зурайтырга"
 
 #: modules_v3/googlemap/module.php:1347 timeline.php:300
@@ -15979,7 +15979,7 @@ msgid "brother-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:939
-msgctxt "spouses's brother"
+msgctxt "spouse's brother"
 msgid "brother-in-law"
 msgstr ""
 
@@ -16014,7 +16014,7 @@ msgid "brother/sister-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:947
-msgctxt "spouses's sibling"
+msgctxt "spouse's sibling"
 msgid "brother/sister-in-law"
 msgstr ""
 
@@ -16300,7 +16300,7 @@ msgid "father-in-law"
 msgstr "Кайната"
 
 #: includes/functions/functions.php:942
-msgctxt "spouses's father"
+msgctxt "spouse's father"
 msgid "father-in-law"
 msgstr "Бабай"
 
@@ -18409,7 +18409,7 @@ msgid "mother-in-law"
 msgstr "кайнана"
 
 #: includes/functions/functions.php:943
-msgctxt "spouses's mother"
+msgctxt "spouse's mother"
 msgid "mother-in-law"
 msgstr ""
 
@@ -18419,7 +18419,7 @@ msgid "mother-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:946
-msgctxt "spouses's parent"
+msgctxt "spouse's parent"
 msgid "mother/father-in-law"
 msgstr ""
 
@@ -18686,18 +18686,18 @@ msgstr ""
 msgid "rejected"
 msgstr ""
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:138
 msgid "religious name"
 msgstr "дини исеме"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:135
 msgctxt "FEMALE"
 msgid "religious name"
 msgstr "дини исеме"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:132
 msgctxt "MALE"
 msgid "religious name"
@@ -18995,7 +18995,7 @@ msgid "sister-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:944
-msgctxt "spouses's sister"
+msgctxt "spouse's sister"
 msgid "sister-in-law"
 msgstr ""
 
@@ -19165,7 +19165,7 @@ msgid "step-child"
 msgstr ""
 
 #: includes/functions/functions.php:940
-msgctxt "spouses's child"
+msgctxt "spouse's child"
 msgid "step-child"
 msgstr ""
 
@@ -19180,7 +19180,7 @@ msgid "step-daughter"
 msgstr ""
 
 #: includes/functions/functions.php:941
-msgctxt "spouses's daughter"
+msgctxt "spouse's daughter"
 msgid "step-daughter"
 msgstr ""
 
@@ -19240,7 +19240,7 @@ msgid "step-son"
 msgstr ""
 
 #: includes/functions/functions.php:945
-msgctxt "spouses's son"
+msgctxt "spouse's son"
 msgid "step-son"
 msgstr ""
 

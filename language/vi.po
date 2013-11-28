@@ -164,7 +164,7 @@ msgstr "%1$s–%2$s"
 msgid "%1$s’s %2$s"
 msgstr "%1$s’s %2$s"
 
-#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: library/WT/I18N.php:152
 msgid "%H:%i:%s"
 msgstr "%g:%i:%s %a"
@@ -870,7 +870,7 @@ msgstr "Một thanh biên hiển thị các gia đình gần và bà con của m
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:34
-msgid "A sidebar showing non-genealogical information about an indivdual."
+msgid "A sidebar showing non-genealogical information about an individual."
 msgstr "Thanh biên hiển thị các thông tin không gia tộc về một người."
 
 #. I18N: Description of the “Descendants” module
@@ -3923,7 +3923,7 @@ msgstr "Tạo một cá nhân mới"
 msgid "Create a new media object"
 msgstr "Tạo đối tượng đa phương tiện mới"
 
-#. I18N: An note that is not linked to any other record
+#. I18N: A note that is not linked to any other record
 #: admin_site_other.php:55
 msgid "Create a new note"
 msgstr "Tạo một ghi chú mới"
@@ -4350,7 +4350,7 @@ msgid "Date range"
 msgstr "Khoảng thời gian"
 
 #: help_text.php:185
-msgid "Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range."
+msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr "Khoảng ngày tháng dùng để chỉ là một sự kiện, như sinh đã xảy ra vào ngày không biết trong khoảng thòi gian nào đó."
 
 #: admin_users.php:577
@@ -8367,7 +8367,7 @@ msgid "Manuscript"
 msgstr "Bản thảo"
 
 #: help_text.php:555
-msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message."
+msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
 msgstr "Nhiều chương trình gia phả tạo ra các GEDCOM với thẻ riêng, và <b>webtrees</b> hiểu hầu hết các thẻ này. Khi có thẻ nào nó không nhận ra, thì tùy chọn này sẽ cho bạn chọn hiển thị hay che các thông báo này."
 
 #. I18N: Help text for the “Sending server name” site configuration setting
@@ -8508,7 +8508,7 @@ msgstr "Ý định kết hôn"
 
 #. I18N: gedcom tag MARL
 #: library/WT/Gedcom/Tag.php:237
-msgid "Marriage licence"
+msgid "Marriage license"
 msgstr "Giấy kết hôn"
 
 #: library/WT/Gedcom/Tag.php:774
@@ -8990,7 +8990,7 @@ msgid "Min. no. of occurrences to be a “common surname”"
 msgstr "Số lần tối thiểu để xem là \"họ phổ biến\""
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
 msgstr "Phóng to và thu nhỏ tối đa cho Google map. 1 là toàn bộ bản đồ, 15 cho thấy từng nhà. Lưu ý mức 15 chỉ có ở một số khu vực."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9609,7 +9609,7 @@ msgstr "Không có phương pháp liên lạc nào"
 msgid "No errors were found."
 msgstr "Không phát hiện lỗi nào."
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1799
 #: includes/functions/functions_print_lists.php:1906
 #, php-format
@@ -9637,7 +9637,7 @@ msgstr "Không có chuyện về người sống cho ngày hôm nay."
 msgid "No events for living individuals exist for tomorrow."
 msgstr "Không có sự kiện nào cho người sống ngày mai."
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1806
 #: includes/functions/functions_print_lists.php:1913
 #, php-format
@@ -11394,7 +11394,7 @@ msgid "Research tasks are special events, added to individuals in your family tr
 msgstr "Các tác vụ nghiên cưu là những sự kiện đặc biệt, được thêm vào cho các cá nhân của cây gia đình của bạn, báo là cần có các nghiên cứu thêm. Bạn có thể dùng chúng như là lời nhắc nhở kiểm tra số liệu dựa trên nguồn đáng tin cậy hơn, để tìm kiếm thêm tài liệu hay hình ảnh, để giải quyết các thông tin mâu thuẫn nhau v.v.."
 
 #: modules_v3/todo/help_text.php:36
-msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognise this tag."
+msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
 msgstr "Các tác vụ nghiên cứu được lưu trữ trong thẻ riêng \"_TODO\" của file GEDCOM. Các ứng dụng về gia phả khác có thể không nhận ra thẻ này."
 
 #: includes/functions/functions_print_lists.php:97
@@ -12719,7 +12719,7 @@ msgstr "Con trai của %s"
 msgid "Sort order"
 msgstr "Thứ tự sắp xếp"
 
-#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is a individual’s surname, so may need transliterating into non-latin alphabets.
+#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: includes/functions/functions_print_lists.php:207
 #: library/WT/Controller/Branches.php:153
 #: library/WT/Controller/Branches.php:188
@@ -13354,7 +13354,7 @@ msgid "The following rules are used to decide whether a visitor is a human being
 msgstr "Qui luật sau đây được dùng để quyết định một khách thăm site có phải là con người (cho phép truy cập hoàn toàn), hay là robot truy tìm (truy cập hạn chế) hay là các trình thăm dò không cần (từ chối truy cập)."
 
 #: admin_site_access.php:287
-msgid "The following visitors were not recognised, and were assumed to be search engines."
+msgid "The following visitors were not recognized, and were assumed to be search engines."
 msgstr "Các khách sau đây không thể nhận diện, và được xem như là máy truy tìm."
 
 #: help_text.php:1495
@@ -15715,11 +15715,11 @@ msgstr "Phóng to"
 #: modules_v3/googlemap/admin_places.php:162
 #: modules_v3/googlemap/admin_places.php:582
 #: modules_v3/googlemap/places_edit.php:318
-msgid "Zoom factor"
+msgid "Zoom level"
 msgstr "Độ phóng đại"
 
 #: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
-msgid "Zoom factor of map"
+msgid "Zoom level of map"
 msgstr "Độ phóng đại bản đồ"
 
 #: modules_v3/googlemap/module.php:1347 timeline.php:300
@@ -15976,7 +15976,7 @@ msgid "brother-in-law"
 msgstr "anh rể"
 
 #: includes/functions/functions.php:939
-msgctxt "spouses's brother"
+msgctxt "spouse's brother"
 msgid "brother-in-law"
 msgstr "anh rể"
 
@@ -16011,7 +16011,7 @@ msgid "brother/sister-in-law"
 msgstr "anh rể/ chị dâu"
 
 #: includes/functions/functions.php:947
-msgctxt "spouses's sibling"
+msgctxt "spouse's sibling"
 msgid "brother/sister-in-law"
 msgstr "anh/ chị em dâu"
 
@@ -16297,7 +16297,7 @@ msgid "father-in-law"
 msgstr "cha chồng/ cha vợ"
 
 #: includes/functions/functions.php:942
-msgctxt "spouses's father"
+msgctxt "spouse's father"
 msgid "father-in-law"
 msgstr "cha vợ / cha chồng"
 
@@ -18404,7 +18404,7 @@ msgid "mother-in-law"
 msgstr "mẹ chồng/ mẹ vợ"
 
 #: includes/functions/functions.php:943
-msgctxt "spouses's mother"
+msgctxt "spouse's mother"
 msgid "mother-in-law"
 msgstr "má vợ/ má chồng"
 
@@ -18414,7 +18414,7 @@ msgid "mother-in-law"
 msgstr "mẹ vợ/ mẹ chồng"
 
 #: includes/functions/functions.php:946
-msgctxt "spouses's parent"
+msgctxt "spouse's parent"
 msgid "mother/father-in-law"
 msgstr "mẹ/ cha chồng hoặc vợ"
 
@@ -18681,18 +18681,18 @@ msgstr "từ chối"
 msgid "rejected"
 msgstr "từ chối"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:138
 msgid "religious name"
 msgstr "tên đạo"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:135
 msgctxt "FEMALE"
 msgid "religious name"
 msgstr "tên đạo"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:132
 msgctxt "MALE"
 msgid "religious name"
@@ -18990,7 +18990,7 @@ msgid "sister-in-law"
 msgstr "chị dâu"
 
 #: includes/functions/functions.php:944
-msgctxt "spouses's sister"
+msgctxt "spouse's sister"
 msgid "sister-in-law"
 msgstr "chị dâu/ em dâu"
 
@@ -19160,7 +19160,7 @@ msgid "step-child"
 msgstr "con nuôi"
 
 #: includes/functions/functions.php:940
-msgctxt "spouses's child"
+msgctxt "spouse's child"
 msgid "step-child"
 msgstr "con nuôi"
 
@@ -19175,7 +19175,7 @@ msgid "step-daughter"
 msgstr "con gái nuôi"
 
 #: includes/functions/functions.php:941
-msgctxt "spouses's daughter"
+msgctxt "spouse's daughter"
 msgid "step-daughter"
 msgstr "con gái nuôi"
 
@@ -19235,7 +19235,7 @@ msgid "step-son"
 msgstr "con trai nuôi"
 
 #: includes/functions/functions.php:945
-msgctxt "spouses's son"
+msgctxt "spouse's son"
 msgid "step-son"
 msgstr "con trai nuôi"
 

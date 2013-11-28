@@ -33,7 +33,7 @@ case 'todo':
 		'</p><p class="ui-state-highlight">'.
 		WT_I18N::translate('To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences.').
 		'</p><p class="ui-state-highlight">'.
-		WT_I18N::translate('Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognise this tag.').
+		WT_I18N::translate('Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag.').
 		'</p>';
 	break;
 }

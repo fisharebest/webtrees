@@ -167,7 +167,7 @@ msgstr "%1$s–%2$s"
 msgid "%1$s’s %2$s"
 msgstr "%1$s’s %2$s"
 
-#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: library/WT/I18N.php:152
 msgid "%H:%i:%s"
 msgstr "%g:%i:%s %a"
@@ -913,7 +913,7 @@ msgstr "Šoninė juosta parodo asmens artimuosius ir giminaičius."
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:34
-msgid "A sidebar showing non-genealogical information about an indivdual."
+msgid "A sidebar showing non-genealogical information about an individual."
 msgstr "Šoninė juosta rodanti negeneologinę informaciją apie asmenį."
 
 #. I18N: Description of the “Descendants” module
@@ -3969,7 +3969,7 @@ msgstr "Sukurti naują asmenį"
 msgid "Create a new media object"
 msgstr ""
 
-#. I18N: An note that is not linked to any other record
+#. I18N: A note that is not linked to any other record
 #: admin_site_other.php:55
 msgid "Create a new note"
 msgstr "Sukurti naują pastabą ar užrašą"
@@ -4396,7 +4396,7 @@ msgid "Date range"
 msgstr "Laiko diapazonas"
 
 #: help_text.php:185
-msgid "Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range."
+msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr "Laikotarpis yra vartojamas siekiant nurodyti, kad įvykis, pavyzdžiui, gimimas, įvyko nežinomu laiku bet šiame laiko diapazone."
 
 #: admin_users.php:577
@@ -8413,7 +8413,7 @@ msgid "Manuscript"
 msgstr "Rankraštis"
 
 #: help_text.php:555
-msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message."
+msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
 msgstr ""
 
 #. I18N: Help text for the “Sending server name” site configuration setting
@@ -8554,7 +8554,7 @@ msgstr "Ketinimas vesti"
 
 #. I18N: gedcom tag MARL
 #: library/WT/Gedcom/Tag.php:237
-msgid "Marriage licence"
+msgid "Marriage license"
 msgstr "Leidimas vedyboms"
 
 #: library/WT/Gedcom/Tag.php:774
@@ -9036,7 +9036,7 @@ msgid "Min. no. of occurrences to be a “common surname”"
 msgstr "Min. kiekis atitikimų, esančių su \"bendromis pavardėmis\""
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
 msgstr "Minimalus ir maksimalus priartinimo lygmuo Google žemėlapyje. 1 rodo visą žemėlapį, 15 rodo smulkiai net atskirus namus. Atkreipkite dėmesį, kad 15 nėra visur prieinama, prieš pasirinkdami šį nustatymą pasitikrinkite kad jis yra prieinamas jūsų konkrečioje vietovėje."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9655,7 +9655,7 @@ msgstr "Nėra susisiekimo būdo"
 msgid "No errors were found."
 msgstr "Klaidų nerasta."
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1799
 #: includes/functions/functions_print_lists.php:1906
 #, php-format
@@ -9684,7 +9684,7 @@ msgstr "Šiandien, įvykių susijusių su gyvais žmonėmis, nėra."
 msgid "No events for living individuals exist for tomorrow."
 msgstr "Nėra gyvų žmonių įvykių rytojui."
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1806
 #: includes/functions/functions_print_lists.php:1913
 #, php-format
@@ -11444,7 +11444,7 @@ msgid "Research tasks are special events, added to individuals in your family tr
 msgstr "Tyrimo užduotys yra išskirtinis įvykis, pridedamas prie asmens savo šeimos medyje, kurio tapatumą dar reikia nustatyti tolimesniame tyrime. Jūs galite naudoti jas kaip priminimą patikrinti faktus dar sykį labiau patikimuose šaltiniuose, gaunant dokumentus arba fotografijas, taip ištaisant nesutampančią informaciją, ir t.t."
 
 #: modules_v3/todo/help_text.php:36
-msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognise this tag."
+msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
 msgstr "Tyrimo užduotys yra saugomi naudojant pritaikytą GEDCOM gairę “_TODO”.  Kitos genealogijos programos gali neatpažinti šios gairės."
 
 #: includes/functions/functions_print_lists.php:97
@@ -12769,7 +12769,7 @@ msgstr "Sūnus %s"
 msgid "Sort order"
 msgstr "Rikiavimo tvarka"
 
-#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is a individual’s surname, so may need transliterating into non-latin alphabets.
+#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: includes/functions/functions_print_lists.php:207
 #: library/WT/Controller/Branches.php:153
 #: library/WT/Controller/Branches.php:188
@@ -13404,7 +13404,7 @@ msgid "The following rules are used to decide whether a visitor is a human being
 msgstr ""
 
 #: admin_site_access.php:287
-msgid "The following visitors were not recognised, and were assumed to be search engines."
+msgid "The following visitors were not recognized, and were assumed to be search engines."
 msgstr ""
 
 #: help_text.php:1495
@@ -15770,11 +15770,11 @@ msgstr "Mastelis"
 #: modules_v3/googlemap/admin_places.php:162
 #: modules_v3/googlemap/admin_places.php:582
 #: modules_v3/googlemap/places_edit.php:318
-msgid "Zoom factor"
+msgid "Zoom level"
 msgstr "Priartinimo lygmuo"
 
 #: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
-msgid "Zoom factor of map"
+msgid "Zoom level of map"
 msgstr "Priartinimo lygmuo žemėlapyje"
 
 #: modules_v3/googlemap/module.php:1347 timeline.php:300
@@ -16031,7 +16031,7 @@ msgid "brother-in-law"
 msgstr "svainis arba dieveris"
 
 #: includes/functions/functions.php:939
-msgctxt "spouses's brother"
+msgctxt "spouse's brother"
 msgid "brother-in-law"
 msgstr "svainis arba dieveris"
 
@@ -16066,7 +16066,7 @@ msgid "brother/sister-in-law"
 msgstr "svainis/dieveris/svainė/brolienė"
 
 #: includes/functions/functions.php:947
-msgctxt "spouses's sibling"
+msgctxt "spouse's sibling"
 msgid "brother/sister-in-law"
 msgstr "svainis/dieveris/svainė/brolienė"
 
@@ -16352,7 +16352,7 @@ msgid "father-in-law"
 msgstr "uošvis"
 
 #: includes/functions/functions.php:942
-msgctxt "spouses's father"
+msgctxt "spouse's father"
 msgid "father-in-law"
 msgstr "uošvis"
 
@@ -18463,7 +18463,7 @@ msgid "mother-in-law"
 msgstr "uošvienė"
 
 #: includes/functions/functions.php:943
-msgctxt "spouses's mother"
+msgctxt "spouse's mother"
 msgid "mother-in-law"
 msgstr "uošvienė"
 
@@ -18473,7 +18473,7 @@ msgid "mother-in-law"
 msgstr "uošvienė"
 
 #: includes/functions/functions.php:946
-msgctxt "spouses's parent"
+msgctxt "spouse's parent"
 msgid "mother/father-in-law"
 msgstr "uošviai"
 
@@ -18740,18 +18740,18 @@ msgstr "atšaukti"
 msgid "rejected"
 msgstr ""
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:138
 msgid "religious name"
 msgstr "religinis vardas"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:135
 msgctxt "FEMALE"
 msgid "religious name"
 msgstr "religinis vardas"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:132
 msgctxt "MALE"
 msgid "religious name"
@@ -19049,7 +19049,7 @@ msgid "sister-in-law"
 msgstr "brolienė arba svainė"
 
 #: includes/functions/functions.php:944
-msgctxt "spouses's sister"
+msgctxt "spouse's sister"
 msgid "sister-in-law"
 msgstr "brolienė arba svainė"
 
@@ -19219,7 +19219,7 @@ msgid "step-child"
 msgstr "posūnis"
 
 #: includes/functions/functions.php:940
-msgctxt "spouses's child"
+msgctxt "spouse's child"
 msgid "step-child"
 msgstr "posūnis"
 
@@ -19234,7 +19234,7 @@ msgid "step-daughter"
 msgstr "podukra"
 
 #: includes/functions/functions.php:941
-msgctxt "spouses's daughter"
+msgctxt "spouse's daughter"
 msgid "step-daughter"
 msgstr "podukra"
 
@@ -19294,7 +19294,7 @@ msgid "step-son"
 msgstr "posūnis"
 
 #: includes/functions/functions.php:945
-msgctxt "spouses's son"
+msgctxt "spouse's son"
 msgid "step-son"
 msgstr "posūnis"
 

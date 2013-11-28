@@ -284,7 +284,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							</td>
 						</tr>
 						<tr>
-							<th><?php echo WT_I18N::translate('Zoom factor of map'), help_link('GOOGLEMAP_MAP_ZOOM','googlemap'); ?></th>
+							<th><?php echo WT_I18N::translate('Zoom level of map'), help_link('GOOGLEMAP_MAP_ZOOM','googlemap'); ?></th>
 							<td>
 								<?php echo WT_I18N::translate('minimum'); ?>: <select name="NEW_GM_MIN_ZOOM">
 								<?php for ($j=1; $j < 15; $j++) { ?>

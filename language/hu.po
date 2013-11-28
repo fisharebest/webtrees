@@ -165,7 +165,7 @@ msgstr ""
 msgid "%1$s’s %2$s"
 msgstr "%1$s %2$s"
 
-#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: library/WT/I18N.php:152
 msgid "%H:%i:%s"
 msgstr "%g:%i:%s %a"
@@ -892,7 +892,7 @@ msgstr "Oldalsáv amiben megjelenik a személy családja és a közeli rokonok."
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:34
-msgid "A sidebar showing non-genealogical information about an indivdual."
+msgid "A sidebar showing non-genealogical information about an individual."
 msgstr "Az oldalsávon a személy családitól eltérő adatai jelennek meg."
 
 #. I18N: Description of the “Descendants” module
@@ -3947,7 +3947,7 @@ msgstr "Új (senkihez rokoni viszonyban nem álló) személy létrehozása"
 msgid "Create a new media object"
 msgstr ""
 
-#. I18N: An note that is not linked to any other record
+#. I18N: A note that is not linked to any other record
 #: admin_site_other.php:55
 msgid "Create a new note"
 msgstr "Új jegyzet/megjegyzés létrehozása"
@@ -4374,7 +4374,7 @@ msgid "Date range"
 msgstr "Dátum intervallum"
 
 #: help_text.php:185
-msgid "Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range."
+msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr ""
 
 #: admin_users.php:577
@@ -8391,7 +8391,7 @@ msgid "Manuscript"
 msgstr "Kézirat"
 
 #: help_text.php:555
-msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message."
+msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
 msgstr ""
 
 #. I18N: Help text for the “Sending server name” site configuration setting
@@ -8532,7 +8532,7 @@ msgstr "Házassági szándék"
 
 #. I18N: gedcom tag MARL
 #: library/WT/Gedcom/Tag.php:237
-msgid "Marriage licence"
+msgid "Marriage license"
 msgstr "Házassági engedély"
 
 #: library/WT/Gedcom/Tag.php:774
@@ -9014,7 +9014,7 @@ msgid "Min. no. of occurrences to be a “common surname”"
 msgstr "Események min. száma \"közös vezetéknévhez\""
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
 msgstr "A minimális és maximális zoom érték a térképben. 1 a teljes térkép, 15 egy házhely felülete. Megjegyzendő, hogy 15 csak bizonyos helyeken működik."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9633,7 +9633,7 @@ msgstr "Nincs kapcsolattartás"
 msgid "No errors were found."
 msgstr "Nincs hiba."
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1799
 #: includes/functions/functions_print_lists.php:1906
 #, php-format
@@ -9662,7 +9662,7 @@ msgstr "A mai napon nincs esemény az élők között."
 msgid "No events for living individuals exist for tomorrow."
 msgstr "Semmi esemény nincs holnap az élők között."
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1806
 #: includes/functions/functions_print_lists.php:1913
 #, php-format
@@ -11421,7 +11421,7 @@ msgid "Research tasks are special events, added to individuals in your family tr
 msgstr "Kutatási teendők speciális \"esemény\"-bejegyzések, amelyeket a családfa egyedeihez lehet csatolni, és abban segítenek, hogy további kutatómunka igényét jelölik. Például emlékeztetőként használhatod őket, hogy egy adatokat még több vagy megbízhatóbb forrásból kellene ellenőrizni, hogy dokumentumokat vagy fényképeket kellene még beszerezni vagy hogy még dolgozni kell még ellentmondó információk feloldásán, stb."
 
 #: modules_v3/todo/help_text.php:36
-msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognise this tag."
+msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
 msgstr "Kutatási teendők a „_TODO” GEDCOM-címke segítségével lesznek eltárolva. Más családkutatási programok eseteg nem ismerik ezt a címkét."
 
 #: includes/functions/functions_print_lists.php:97
@@ -12746,7 +12746,7 @@ msgstr "%s fia"
 msgid "Sort order"
 msgstr "Rendezési sorrend"
 
-#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is a individual’s surname, so may need transliterating into non-latin alphabets.
+#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: includes/functions/functions_print_lists.php:207
 #: library/WT/Controller/Branches.php:153
 #: library/WT/Controller/Branches.php:188
@@ -13381,7 +13381,7 @@ msgid "The following rules are used to decide whether a visitor is a human being
 msgstr "A következő szabályok arra valók, hogy megállapíthassuk, hogy egy látogató egy emberi lény (teljes hozzáférés) vagy egy keresőrobot (korlátozott hozzáférés) vagy egy nemkívánatos robot (tiltott hozzáférés)."
 
 #: admin_site_access.php:287
-msgid "The following visitors were not recognised, and were assumed to be search engines."
+msgid "The following visitors were not recognized, and were assumed to be search engines."
 msgstr "A következő látogatók eddig nem voltak ismertek, és ezért keresőrobotnak lettek feltételezve:"
 
 #: help_text.php:1495
@@ -15745,11 +15745,11 @@ msgstr "Nagyítás"
 #: modules_v3/googlemap/admin_places.php:162
 #: modules_v3/googlemap/admin_places.php:582
 #: modules_v3/googlemap/places_edit.php:318
-msgid "Zoom factor"
+msgid "Zoom level"
 msgstr "Nagyítási szint"
 
 #: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
-msgid "Zoom factor of map"
+msgid "Zoom level of map"
 msgstr "Térkép nagyítása"
 
 #: modules_v3/googlemap/module.php:1347 timeline.php:300
@@ -16006,7 +16006,7 @@ msgid "brother-in-law"
 msgstr "sógor"
 
 #: includes/functions/functions.php:939
-msgctxt "spouses's brother"
+msgctxt "spouse's brother"
 msgid "brother-in-law"
 msgstr "sógor"
 
@@ -16041,7 +16041,7 @@ msgid "brother/sister-in-law"
 msgstr "sógor/sógornő"
 
 #: includes/functions/functions.php:947
-msgctxt "spouses's sibling"
+msgctxt "spouse's sibling"
 msgid "brother/sister-in-law"
 msgstr "sógor/sógornő"
 
@@ -16327,7 +16327,7 @@ msgid "father-in-law"
 msgstr "após"
 
 #: includes/functions/functions.php:942
-msgctxt "spouses's father"
+msgctxt "spouse's father"
 msgid "father-in-law"
 msgstr "após"
 
@@ -18437,7 +18437,7 @@ msgid "mother-in-law"
 msgstr "anyós"
 
 #: includes/functions/functions.php:943
-msgctxt "spouses's mother"
+msgctxt "spouse's mother"
 msgid "mother-in-law"
 msgstr "anyós"
 
@@ -18447,7 +18447,7 @@ msgid "mother-in-law"
 msgstr "anyós"
 
 #: includes/functions/functions.php:946
-msgctxt "spouses's parent"
+msgctxt "spouse's parent"
 msgid "mother/father-in-law"
 msgstr "anyós/após"
 
@@ -18714,18 +18714,18 @@ msgstr "visszautasít"
 msgid "rejected"
 msgstr ""
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:138
 msgid "religious name"
 msgstr ""
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:135
 msgctxt "FEMALE"
 msgid "religious name"
 msgstr ""
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:132
 msgctxt "MALE"
 msgid "religious name"
@@ -19023,7 +19023,7 @@ msgid "sister-in-law"
 msgstr "sógornő"
 
 #: includes/functions/functions.php:944
-msgctxt "spouses's sister"
+msgctxt "spouse's sister"
 msgid "sister-in-law"
 msgstr "sógornő"
 
@@ -19193,7 +19193,7 @@ msgid "step-child"
 msgstr "mostohagyerek"
 
 #: includes/functions/functions.php:940
-msgctxt "spouses's child"
+msgctxt "spouse's child"
 msgid "step-child"
 msgstr "mostohagyerek"
 
@@ -19208,7 +19208,7 @@ msgid "step-daughter"
 msgstr "mostahalány"
 
 #: includes/functions/functions.php:941
-msgctxt "spouses's daughter"
+msgctxt "spouse's daughter"
 msgid "step-daughter"
 msgstr "mostahalány"
 
@@ -19268,7 +19268,7 @@ msgid "step-son"
 msgstr "mostohafiú"
 
 #: includes/functions/functions.php:945
-msgctxt "spouses's son"
+msgctxt "spouse's son"
 msgid "step-son"
 msgstr "mostohafiú"
 
