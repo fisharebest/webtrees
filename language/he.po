@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-09 18:17+0000\n"
-"PO-Revision-Date: 2013-11-10 13:23+0200\n"
+"PO-Revision-Date: 2013-11-27 15:58+0200\n"
 "Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language-Team: \n"
 "Language: he\n"
@@ -62,8 +62,8 @@ msgstr "#%d"
 #, php-format
 msgid "%1$d individual displayed, out of the normal total of %2$d, from %3$d generations."
 msgid_plural "%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations."
-msgstr[0] "אדם אחד מוצג מתוך מכסימום אפשרי של %2$d עבור %3$d דורות"
-msgstr[1] "%1$d אנשים מוצגים מתוך מכסימום אפשרי של %2$d עבור %3$d דורות"
+msgstr[0] "אדם אחד מוצג מתוך מקסימום אפשרי של %2$d עבור %3$d דורות"
+msgstr[1] "%1$d אנשים מוצגים מתוך מקסימום אפשרי של %2$d עבור %3$d דורות"
 
 #. I18N: %1$d is a count of individuals, %2$s is a list of their names
 #: modules_v3/googlemap/module.php:827
@@ -601,7 +601,7 @@ msgstr "<b>לא</b> הפירוש שמשתמשים מורשים יוכלו לרא
 
 #: message.php:118
 msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
-msgstr "<b>שים לב:</b> מידע פרטי על אנשים חיים יינתן רק לקרובי משפחה וחברים קרובים. אתה תתבקש לאמת את היחסים שלך לפני שתקבל את כל הנתונים הפרטיים. לפעמים גם המידע של אנשים מתים עשוי להיות פרטי. במקרה הזה, הדבר קורה משום שאין מספיק מידע ידוע על האדם כדי לקבוע אם הוא בחיים או לא, ואין לנו כנראה מידע נוסף על אדם זה.<br><br>לפני שתשאל שאלה , ודא שאתה חוקר את האדם הנכון ע״י בדיקת תאריכים, מקומות, וקרובי משפחה. אם אתה שולח שינויים לנתוני אילן היוחסין, בבקשה כלול את המקורות שמהם הישגת את הנתונים."
+msgstr "<b>שים לב:</b> מידע פרטי על אנשים חיים יינתן רק לקרובי משפחה וחברים קרובים. אתה תתבקש לאמת את היחסים שלך לפני שתקבל את כל הנתונים הפרטיים. לפעמים גם המידע של אנשים מתים עשוי להיות פרטי. במקרה הזה, הדבר קורה משום שאין מספיק מידע ידוע על האדם כדי לקבוע אם הוא בחיים או לא, ואין לנו כנראה מידע נוסף על אדם זה.<br><br>לפני שתשאל שאלה , ודא שאתה חוקר את האדם הנכון ע״י בדיקת תאריכים, מקומות, וקרובי משפחה. אם אתה שולח שינויים לנתוני אילן היוחסין, בבקשה כלול את המקורות שמהם השגת את הנתונים."
 
 #: help_text.php:1054
 msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
@@ -665,7 +665,7 @@ msgstr "ישות שאלות ותשובות יכולה להיות מוצגת רק
 
 #: help_text.php:320
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "לילד יכול להיות יותר מזוג הורים. מערכת היחסים בין הילד לבין ההורים יכולה להיות ביולוגית, משפטית, או על פי תרבות ומסורת מקומית. אם שושלת היוחסין לא צויינה, אז מניחים שהקשר ביולוגי."
+msgstr "לילד יכול להיות יותר מזוג הורים. מערכת היחסים בין הילד לבין ההורים יכולה להיות ביולוגית, משפטית, או על פי תרבות ומסורת מקומית. אם שושלת היוחסין לא צוינה, אז מניחים שהקשר ביולוגי."
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:35
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -817,7 +817,7 @@ msgstr "דו״ח של אנשים שנפטרו בזמן ומקום נתונים."
 #: modules_v3/occupation_report/module.php:39
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "רשימה של אנשים שהייו בעלי עיסוק נתון."
+msgstr "רשימה של אנשים שהיו בעלי עיסוק נתון."
 
 #. I18N: Description of the “Births” module
 #: modules_v3/birth_report/module.php:39 modules_v3/birth_report/report.xml:4
@@ -912,7 +912,7 @@ msgstr "לשונית המראה עובדות ואירועים של אדם"
 #. I18N: Description of the “Media” module
 #: modules_v3/media/module.php:39
 msgid "A tab showing the media objects linked to an individual."
-msgstr "לשונית המציגה אוביקטי מדיה הקשורים לאדם."
+msgstr "לשונית המציגה ישויות מדיה הקשורים לאדם."
 
 #. I18N: Description of the “Notes” module
 #: modules_v3/notes/module.php:39
@@ -1761,7 +1761,7 @@ msgstr "חיים"
 #: modules_v3/relative_ext_report/report.xml:6
 #: modules_v3/user_messages/module.php:85
 msgid "All"
-msgstr "הכול"
+msgstr "הכל"
 
 #: help_text.php:1301
 msgid "All changes in PGV must be accepted"
@@ -1778,7 +1778,7 @@ msgstr "כל העובדות"
 
 #: login.php:382
 msgid "All fields must be completed."
-msgstr "יש להשלים את כלהשדות."
+msgstr "יש להשלים את כל השדות."
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
@@ -1840,7 +1840,7 @@ msgstr "חלופה להצגת תרשימים."
 #. I18N: Description of the “Census assistant” module
 #: modules_v3/GEDFact_assistant/module.php:37
 msgid "An alternative way to enter census transcripts and link them to individuals."
-msgstr "דרך חלופית להכנסת תמלילי מפקד אוכלוסין ולקשר אותם לאנשים."
+msgstr "דרך חלופית להכנסת תעתיק למפקד אוכלוסין ולקשר אותם לאנשים."
 
 #. I18N: Description of the “Login” module
 #: modules_v3/login_block/module.php:37
@@ -2094,7 +2094,7 @@ msgstr "ארובה"
 
 #: modules_v3/html/help_text.php:32
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr "בנוסף לשימוש בסרגל הכלים להחלת עיצוב HTML, ניתן להוסיף שדות מסד נתונים המתעדכנים באופן אוטומטי. שדות מיוחדים אלה מסומנים בעזרת תווי <b>#</b>. לדוגמא <b>#totalFamilies#</b> יוחלף במספר האמיתי של משפחות במסד הנתונים. יתכן שמשתמשים מתקדמים ירצו להחיל מחלקות CSS לטקסט שלהם, כך שהעיצוב יתאים לעיצוב הנבחר."
+msgstr "בנוסף לשימוש בסרגל הכלים להחלת עיצוב HTML, ניתן להוסיף שדות מסד נתונים המתעדכנים באופן אוטומטי. שדות מיוחדים אלה מסומנים בעזרת תווי <b>#</b>. לדוגמא <b>#totalFamilies#</b> יוחלף במספר האמתי של משפחות במסד הנתונים. יתכן שמשתמשים מתקדמים ירצו להחיל מחלקות CSS לטקסט שלהם, כך שהעיצוב יתאים לעיצוב הנבחר."
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:77
@@ -2308,7 +2308,7 @@ msgstr "אזר"
 
 #: library/WT/Stats.php:3764
 msgid "Azerbaijan"
-msgstr "אזרבייג'אן"
+msgstr "אזרבייג'ן"
 
 #: library/WT/Stats.php:3765
 msgid "Azores"
@@ -3137,7 +3137,7 @@ msgstr "בדרך כלל SMTP משתמש בפורט‏ 25"
 
 #: modules_v3/googlemap/help_text.php:81
 msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
-msgstr "כברירת מחדל, הרשימה מראה רק את המקומות שנימצאים באילנות היוחסין שלך. יתכן שלך יש פירוט של מקומות אחרים, כגון אלה שייובאו בצורה כוללת מקובץ חיצוני. בחירת אפשרות זו תציג את כל המקומות, ביניהם מקומות שכעת אינם בשימוש."
+msgstr "כברירת מחדל, הרשימה מראה רק את המקומות שנמצאים באילנות היוחסין שלך. יתכן שלך יש פירוט של מקומות אחרים, כגון אלה שייובאו בצורה כוללת מקובץ חיצוני. בחירת אפשרות זו תציג את כל המקומות, ביניהם מקומות שכעת אינם בשימוש."
 
 #: help_text.php:629
 #, php-format
@@ -3277,7 +3277,7 @@ msgstr "מקום מפקד אוכלוסין"
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:565
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1113
 msgid "Census transcript"
-msgstr "תמליל מפקד"
+msgstr "תעתיק מפקד אוכלוסין"
 
 #: modules_v3/googlemap/module.php:1351
 msgid "Center map here"
@@ -3679,7 +3679,7 @@ msgstr "לחיצה על קישור זה יראה רשימה של כל האנשי
 
 #: help_text.php:1130
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
-msgstr "לחיצה על צלמית \"+\" תפתח חלון של עוזר GEDFact של הודעות משותפות.<br>שם אפשר לימצוא  עזרה ספציפית.<br><br>כאשר לוחצים על כפתור ה\"שמור\", קוד הזיהוי של ההערה המשותפת יודבקו כאן."
+msgstr "לחיצה על צלמית \"+\" תפתח חלון של עוזר GEDFact של הודעות משותפות.<br>שם אפשר למצוא  עזרה ספציפית.<br><br>כאשר לוחצים על כפתור ה\"שמור\", קוד הזיהוי של ההערה המשותפת יודבקו כאן."
 
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:86
@@ -4366,7 +4366,7 @@ msgstr "תקופת תאריכים"
 
 #: help_text.php:196
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr "משתמשים בתקופות תאריכים כדי לציין שעובדה, כמו עסוק, הנמשכה לאורך תקופת זמן."
+msgstr "משתמשים בתקופות תאריכים כדי לציין שעובדה, כמו עסוק, נמשכה לאורך תקופת זמן."
 
 #: help_text.php:187 statistics.php:646
 msgid "Date range"
@@ -4937,7 +4937,7 @@ msgstr "פירוטים"
 
 #: library/WT/Gedcom/Code/Temp.php:94
 msgid "Detroit, Michigan"
-msgstr "דטרויט,מישיגן"
+msgstr "דטרויט, מישיגן"
 
 #: library/WT/Date/Jalali.php:126
 msgctxt "Abbreviation for Persian month: Dey"
@@ -5058,7 +5058,7 @@ msgstr "הצג קואורדינטות של המפה"
 
 #: find.php:220 find.php:237 find.php:254 find.php:272 find.php:289
 msgid "Display all"
-msgstr "הצג הכול"
+msgstr "הצג הכל"
 
 #. I18N: Description of the “Favorites” module
 #: modules_v3/gedcom_favorites/module.php:39
@@ -5103,7 +5103,7 @@ msgstr "אל תיצור מקומות חדשים, רק ייבא קואורדינ�
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:73
 msgid "Do not seal, previous sealing cancelled"
-msgstr "אין לחותום, לפני שהחותמת הקודמת בוטלה"
+msgstr "אין לחתום, לפני שהחותמת הקודמת בוטלה"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:70
@@ -5655,7 +5655,7 @@ msgstr "מחרוזת מדויקת"
 #: famlist.php:176 indilist.php:176
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "אל תכלול אנשים ששם הנישאין שלהם ”%s“"
+msgstr "אל תכלול אנשים ששם הנישואין שלהם ”%s“"
 
 #: admin_media.php:575
 msgid "Exclude subfolders"
@@ -6219,7 +6219,7 @@ msgstr "מצא משפחה"
 
 #: find.php:77 includes/functions/functions_print.php:1099
 msgid "Find a media object"
-msgstr "מצא ישות מדייה"
+msgstr "מצא ישות מדיה"
 
 #: find.php:86 includes/functions/functions_print.php:1091
 msgid "Find a note"
@@ -6788,7 +6788,7 @@ msgstr "גוודלחרה, מקסיקו"
 
 #: library/WT/Stats.php:3839
 msgid "Guadeloupe"
-msgstr "גוואדלופ"
+msgstr "גואדלופ"
 
 #: library/WT/Stats.php:3848
 msgid "Guam"
@@ -6818,11 +6818,11 @@ msgstr "גואטמלה סיטי, גואטמלה"
 
 #: library/WT/Gedcom/Code/Temp.php:103
 msgid "Guayaquil, Ecuador"
-msgstr "גואיאקיל, אקוואדור"
+msgstr "גואיאקיל, אקוודור"
 
 #: library/WT/Stats.php:3835
 msgid "Guernsey"
-msgstr "גאורנסי"
+msgstr "גרנזי"
 
 #: library/WT/Stats.php:3838
 msgid "Guinea"
@@ -7053,11 +7053,11 @@ msgstr "הסתר את הקווים המחברים את הילד אל כל הור
 
 #: library/WT/Stats.php:1067
 msgid "Highest population"
-msgstr "האוכלוסיה הגדולה ביותר"
+msgstr "האוכלוסייה הגדולה ביותר"
 
 #: index_edit.php:247 index_edit.php:332
 msgid "Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
-msgstr "הדגש שם בלוק ולחץ על אחת מצלמיות החץ כדי להעביר את הבלוק המודגש לכיוון המוצבע."
+msgstr "הדגש שם בלוק ולחץ על אחת מצלמיות החץ כדי להעביר את הבלוק המודגש לכיוון המצבע."
 
 #. I18N: gedcom tag _PRIM
 #: library/WT/Gedcom/Tag.php:732
@@ -7226,7 +7226,7 @@ msgstr "אם מספר הפעמים ששם משפחה קיים קטן מסף, ה�
 
 #: help_text.php:810
 msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
-msgstr "אם <b>אפשר למשתמשים לבקש רישום באתר</b> מופעלת, הערך הזה קובע האם המנהל חייב לאשר את הרישום.<br><br>ההגדרה  <b>כן</b> תדרוש שכל המשתמשים החדשים חייבים לאמת תחילה את עצמם ולאחר מכן יאושרו על ידי מנהל לפני שהם יכולים להתחבר לאתר. הגדרה <b>לא</b>, תיבת הסימון <b>המשתמש אושר על ידי המינהלן</b> תסומן באופן אוטומטי כאשר המשתמש מאמת את החשבון שלו, ובכך מתאפשרת כניסה מיידית לאתר לאחר מכן ללא התערבות מנהל."
+msgstr "אם <b>אפשר למשתמשים לבקש רישום באתר</b> מופעלת, הערך הזה קובע האם המנהל חייב לאשר את הרישום.<br><br>ההגדרה  <b>כן</b> תדרוש שכל המשתמשים החדשים חייבים לאמת תחילה את עצמם ולאחר מכן יאושרו על ידי מנהל לפני שהם יכולים להתחבר לאתר. הגדרה <b>לא</b>, תיבת הסימון <b>המשתמש אושר על ידי המנהלן</b> תסומן באופן אוטומטי כאשר המשתמש מאמת את החשבון שלו, ובכך מתאפשרת כניסה מיידית לאתר לאחר מכן ללא התערבות מנהל."
 
 #: help_text.php:281
 #, php-format
@@ -7263,7 +7263,7 @@ msgstr "מחק הודעה זו אם לא ביקשת חשבון."
 
 #: modules_v3/googlemap/help_text.php:83
 msgid "If you have a large number of inactive places, it can be slow to generate the list."
-msgstr "אם יש כמות גדולה של מקומות לא פעילים, זה יכול להאיט את יצירת הרשימה."
+msgstr "אם יש כמות גדולה של מקומות לא פעילים, זה יכול להאט את יצירת הרשימה."
 
 #: help_text.php:1432
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -7275,7 +7275,7 @@ msgstr "אם ברצונך להוסיף הערה לרשומה זו, כאן המק
 
 #: admin_trees_manage.php:168
 msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM."
-msgstr "אם יצרת ב-webtrees ישויות מדיה, וערכת את ה-GEDCOM שלך בצורה לא מקוונת באמצעות תוכנית שמוחקת ישויות מדיה, אז עליך לבחור את הטיבה הזו כדי למזג את ישויות המדיה הנוכחיים עם ה-GEDCOM החדש."
+msgstr "אם יצרת ב-webtrees ישויות מדיה, וערכת את ה-GEDCOM שלך בצורה לא מקוונת באמצעות תכנית שמוחקת ישויות מדיה, אז עליך לבחור את הטיבה הזו כדי למזג את ישויות המדיה הנוכחיים עם ה-GEDCOM החדש."
 
 #: help_text.php:1031
 msgid "If you have opted for custom welcome text, you can type that text here.  To set this text for other languages, you must switch to that language, and visit this page again."
@@ -7353,7 +7353,7 @@ msgstr "בתרבויות רבות מקובל שיש שם מסורתי שכתוב
 
 #: help_text.php:450
 msgid "In some calendars, days start at midnight.  In other calendars, days start at sunset.  The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
-msgstr "בלוחות שנה מסוימים, ימים לתחילים בחצות. בלוחות אחרים, ימים מתחילים בשקיעה. תהליך ההמרה אינה לוקחת בחשבון את הזמן, ולכן לכל אירוע המתרחש בין השקיעה ועד חצות, ההמרה בין סוגים אלה של לוח השנה יהיה עם שגיאה של יום."
+msgstr "בלוחות שנה מסוימים, ימים מתחילים בחצות. בלוחות אחרים, ימים מתחילים בשקיעה. תהליך ההמרה אינה לוקחת בחשבון את הזמן, ולכן לכל אירוע המתרחש בין השקיעה ועד חצות, ההמרה בין סוגים אלה של לוח השנה יהיה עם שגיאה של יום."
 
 #: help_text.php:599
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
@@ -7382,7 +7382,7 @@ msgstr "כלול מקומות עם התאמה מלאה: "
 #: famlist.php:178 indilist.php:178
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "כלול אנשים ששם הנישאין שלהם ”%s“"
+msgstr "כלול אנשים ששם הנישואין שלהם ”%s“"
 
 #: help_text.php:1259 modules_v3/clippings/module.php:195
 #: modules_v3/clippings/module.php:577
@@ -8001,7 +8001,7 @@ msgstr "קו רוחב"
 
 #: library/WT/Stats.php:3887
 msgid "Latvia"
-msgstr "לטבייה"
+msgstr "לטביה"
 
 #: admin_trees_config.php:219 ancestry.php:59 descendancy.php:57
 #: fanchart.php:56 pedigree.php:49
@@ -8054,7 +8054,7 @@ msgstr "גיל הנישואין"
 
 #: library/WT/Stats.php:3884
 msgid "Lesotho"
-msgstr "לסוטו"
+msgstr "לשוטו"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -8273,7 +8273,7 @@ msgstr "לואיוויל, קנטקי"
 
 #: library/WT/Stats.php:1068
 msgid "Lowest population"
-msgstr "האוכלוסיה הקטנה ביותר"
+msgstr "האוכלוסייה הקטנה ביותר"
 
 #: library/WT/Gedcom/Code/Temp.php:122
 msgid "Lubbock, Texas"
@@ -8391,7 +8391,7 @@ msgstr "כתב-יד"
 
 #: help_text.php:555
 msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "תוכניות שושלת יוחסין רבות יצרות קובץ GEDCOM עם תגים מותאמים אישית, ו-<b>webtrees</b> מבינה את רובם. כאשר התגים הבלתי מוכרים נמצאים, אפשרות זו מאפשרת לך לבחור אם להתעלם מהם או להציג הודעת אזהרה."
+msgstr "תוכניות שושלת יוחסין רבות יוצרות קובץ GEDCOM עם תגים מותאמים אישית, ו-<b>webtrees</b> מבינה את רובם. כאשר התגים הבלתי מוכרים נמצאים, אפשרות זו מאפשרת לך לבחור אם להתעלם מהם או להציג הודעת אזהרה."
 
 #. I18N: Help text for the “Sending server name” site configuration setting
 #: help_text.php:750
@@ -8694,11 +8694,11 @@ msgstr "מאוריציוס"
 #: modules_v3/googlemap/module.php:353
 #: modules_v3/googlemap/places_edit.php:294
 msgid "Max"
-msgstr "מכסימלי"
+msgstr "מקסימלי"
 
 #: admin_trees_config.php:833 help_text.php:618
 msgid "Maximum descendancy generations"
-msgstr "מכסימום דורות של צאצאים"
+msgstr "מקסימום דורות של צאצאים"
 
 #: admin_trees_config.php:777 help_text.php:915
 msgid "Maximum number of surnames on individual list"
@@ -8706,11 +8706,11 @@ msgstr "מספר מרבי של שמות משפחה ברשימת השמות"
 
 #: admin_trees_config.php:825 help_text.php:640
 msgid "Maximum pedigree generations"
-msgstr "מספר דורות מכסימלי באילן יוחסין"
+msgstr "מספר דורות מקסימלי באילן יוחסין"
 
 #: admin_media_upload.php:177
 msgid "Maximum upload size: "
-msgstr "גודל העלאה מכסימלי: "
+msgstr "גודל העלאה מקסימלי: "
 
 #: library/WT/Date/Calendar.php:195
 msgctxt "Abbreviation for May"
@@ -9094,7 +9094,7 @@ msgstr "חודש לידה"
 
 #: library/WT/Stats.php:2772 statistics.php:530 statisticsplot.php:907
 msgid "Month of birth of first child in a relation"
-msgstr "חודש של לידת הילד/ה הראשון/נה ביחס"
+msgstr "חודש של לידת הילד הראשון בקשר"
 
 #: statistics.php:518 statisticsplot.php:901
 msgid "Month of death"
@@ -9126,7 +9126,7 @@ msgstr "מונטיצ'לו, יוטה"
 
 #: library/WT/Gedcom/Code/Temp.php:135
 msgid "Montreal, Quebec, Canada"
-msgstr "מונטריאול,קוויבק, קנדה"
+msgstr "מונטריאול, קוויבק, קנדה"
 
 #: library/WT/Stats.php:3905
 msgid "Montserrat"
@@ -10017,7 +10017,7 @@ msgstr "נתון ישן"
 
 #: admin.php:107
 msgid "Old files found"
-msgstr "נימצאו קבצים ישנים"
+msgstr "נמצאו קבצים ישנים"
 
 #: pedigree.php:67
 msgid "Oldest at bottom"
@@ -11040,7 +11040,7 @@ msgstr "רביע א-ת'אני"
 #. I18N: This is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing.
 #: library/WT/Gedcom/Code/Pedi.php:67
 msgid "Rada"
-msgstr "ראדה - קרבת מיינקת משותפת"
+msgstr "ראדה - קרבת מינקת משותפת"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: library/WT/Date/Hijri.php:69
@@ -11118,7 +11118,7 @@ msgstr "סדר מחדש מדיה"
 #: admin_users.php:366 admin_users.php:572 edituser.php:135 help_text.php:1343
 #: login.php:281 login.php:384
 msgid "Real name"
-msgstr "שם אמיתי"
+msgstr "שם אמתי"
 
 #. I18N: Name of a module
 #: admin.php:241 modules_v3/change_report/report.xml:89
@@ -11215,7 +11215,7 @@ msgid "Regular expression"
 msgstr "ביטוי רגיל"
 
 #: modules_v3/batch_update/plugins/search_replace.php:93
-msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_blank\">php.net/manual/en/regexp.reference.php</a> for futher details."
+msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_blank\">php.net/manual/en/regexp.reference.php</a> for further details."
 msgstr "ביטויים רגילים Regular expressions הם טכניקת התאמת תבנית מתקדמת. ראה <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_blank\">php.net/manual/en/regexp.reference.php</a> לפרטים נוספים."
 
 #. I18N: Name of a module/report
@@ -11986,11 +11986,11 @@ msgstr "הגדר את רמת גישת הפרטיות עבור כל האנשים 
 
 #: help_text.php:840
 msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
-msgstr "קבע את זה כ<b>כן</b> כדי להציג סמלים ליד שמות עובדה בדף העובדות והאירועים של אדם. סמלי עובדות יוצגו רק אם הם קיימים בתקיית <i>images/facts</i> של העיצוב הנוכחי."
+msgstr "קבע את זה כ<b>כן</b> כדי להציג סמלים ליד שמות עובדה בדף העובדות והאירועים של אדם. סמלי עובדות יוצגו רק אם הם קיימים בתיקיית <i>images/facts</i> של העיצוב הנוכחי."
 
 #: help_text.php:1003
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for Individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr "הגדר <b>כן</b> כדי להשתמש במספר רין RIN במקום קוד זיהוי של GEDCOM כאשר מבקשים קוד זיהוי אישי בקבצי תצורה, הגדרות משתמשים, ותרשימים. זה שימושי עבור תוכניות שושלת יוחסין שיצוא ה-GEDCOM שלהם לא נעשה כל פעם עם אותו קוד זיהוי שהוקצה לאנשים, אבל תמיד מהשתמשים באותו רין."
+msgstr "הגדר <b>כן</b> כדי להשתמש במספר רין RIN במקום קוד זיהוי של GEDCOM כאשר מבקשים קוד זיהוי אישי בקבצי תצורה, הגדרות משתמשים, ותרשימים. זה שימושי עבור תוכניות שושלת יוחסין שיצוא ה-GEDCOM שלהם לא נעשה כל פעם עם אותו קוד זיהוי שהוקצה לאנשים, אבל תמיד משתמשים באותו רין."
 
 #: help_text.php:850
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
@@ -12410,7 +12410,7 @@ msgstr "הראה רק אנשים שמינם בלתי ידוע."
 
 #: modules_v3/random_media/module.php:260
 msgid "Show only individuals, events, or all?"
-msgstr "הראה רק אנשים, אירועים, או הכול?"
+msgstr "הראה רק אנשים, אירועים, או הכל?"
 
 #: includes/functions/functions_print_lists.php:86
 msgid "Show only males."
@@ -12590,7 +12590,7 @@ msgstr "סיירה לאונה"
 
 #: help_text.php:203
 msgid "Simple dates are assumed to be in the gregorian calendar.  To specify a date in another calendar, add a keyword before the date.  This keyword is optional if the month or year format make the date unambiguous."
-msgstr "מניחים שתאריכים פשוטים הם לפי לוח שנה גרגוריאני. כדי לציין שתאריך לפי לוח שנה אחר,הוסף מילת מפתח לפני התאריך. מילת המפתח היא אופציונלית אם מבנה החודש או השנה הופכים את התאריך לחד-משמעי."
+msgstr "מניחים שתאריכים פשוטים הם לפי לוח שנה גרגוריאני. כדי לציין שתאריך לפי לוח שנה אחר, הוסף מילת מפתח לפני התאריך. מילת המפתח היא אופציונלית אם מבנה החודש או השנה הופכים את התאריך לחד-משמעי."
 
 #: help_text.php:1409
 msgid "Simple search filter"
@@ -12836,7 +12836,7 @@ msgstr "דרום אמריקה"
 
 #: library/WT/Stats.php:3953
 msgid "South Georgia and the South Sandwich Islands"
-msgstr "איי ג'ורג'יה וסנדביץ הדרומיים"
+msgstr "איי ג'ורג'יה הדרומית ואיי סנדוויץ' הדרומיים"
 
 #: library/WT/Stats.php:3963
 msgid "South Sudan"
@@ -13085,7 +13085,7 @@ msgstr "סובה, פיג'י"
 
 #: library/WT/Stats.php:3956
 msgid "Svalbard and Jan Mayen Islands"
-msgstr "איי סבאלברג וז'אן מאיאן"
+msgstr "איי סבאלברד ויאן מאיין"
 
 #: library/WT/Stats.php:3970
 msgid "Swaziland"
@@ -13133,7 +13133,7 @@ msgstr "טאיפיי, טאיוואן"
 
 #: library/WT/Stats.php:3987
 msgid "Taiwan"
-msgstr "טיוואן"
+msgstr "טאיוואן"
 
 #: library/WT/Stats.php:3977
 msgid "Tajikistan"
@@ -13230,7 +13230,7 @@ msgstr "שדה <b>שם</b> מכיל את השם המלא של האדם, כפי �
 
 #: help_text.php:296
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "השדה <b>שם המשפחה</b> מכיל שם שמשמש במיון וקיבוץ. הוא יכול להיות שונה משם המשפחה האמיתי של האדם שתמיד נלקח משדה <b>שם</b>. שדה זה יכול לשמש במיון שמות משפחה עם או בלי קידומת (גוך / ואן גוך) ובקיבוץ וריאציות כתיב או הטיות (קובלסקי / קובלסקה). אם אדם צריך להיות ברשימה ביותר משם משפחה אחד, השמות האלה צריכים להיות מופרדים בפסיקים."
+msgstr "השדה <b>שם המשפחה</b> מכיל שם שמשמש במיון וקיבוץ. הוא יכול להיות שונה משם המשפחה האמתי של האדם שתמיד נלקח משדה <b>שם</b>. שדה זה יכול לשמש במיון שמות משפחה עם או בלי קידומת (גוך / ואן גוך) ובקיבוץ וריאציות כתיב או הטיות (קובלסקי / קובלסקה). אם אדם צריך להיות ברשימה ביותר משם משפחה אחד, השמות האלה צריכים להיות מופרדים בפסיקים."
 
 #: modules_v3/faq/module.php:363
 msgid "The FAQ list is empty."
@@ -13279,7 +13279,7 @@ msgstr "עגלת גזירי העץ מאפשרת לקיחת קטעים (\"גזי�
 
 #: help_text.php:1305
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
-msgstr "שם המשתמש הנוכחי של המינהלן ב-<b>webtrees</b> חייב להיות זהה לשם המשתמש של מינהלן קיים ב-PGV"
+msgstr "שם המשתמש הנוכחי של המנהלן ב-<b>webtrees</b> חייב להיות זהה לשם המשתמש של מנהלן קיים ב-PGV"
 
 #: login.php:506
 #, php-format
@@ -13348,7 +13348,7 @@ msgstr "תיקייה %s אינה קיימת, ולא ניתן ליצור אותה
 #: admin_trees_config.php:187
 #, php-format
 msgid "The folder %s was created."
-msgstr "תקייה %s נוצרה"
+msgstr "תיקייה %s נוצרה"
 
 #: help_text.php:578
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -13393,7 +13393,7 @@ msgstr "רשומת הפרט מזהה את המשתמש בכל עץ משפחה. �
 
 #: help_text.php:1026
 msgid "The individual to be contacted about technical questions or errors encountered on your site."
-msgstr "האדם הטכני אליו יש להיתקשר בדבר שאלות או טעויות שנתקלו בהן באתר שלך."
+msgstr "האדם הטכני אליו יש להתקשר בדבר שאלות או טעויות שנתקלו בהן באתר שלך."
 
 #: help_text.php:481
 msgid "The individual to contact about the genealogical data on this site."
@@ -13419,7 +13419,7 @@ msgstr "ניתן, וכנראה רצוי, ששם הקובץ שאותו אתה מ�
 
 #: setup.php:160
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr "דרישות ה-CPU והזיכרון תלויות במספר האנשים הנימצאים בעץ המשפחה."
+msgstr "דרישות ה-CPU והזיכרון תלויות במספר האנשים הנמצאים בעץ המשפחה."
 
 #: help_text.php:1239
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13443,7 +13443,7 @@ msgstr "הסיסמאות אינן מתאימות"
 
 #: setup.php:355
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-msgstr "הקידומת היא אופציונלית, אך מומלצת. על ידי מתן קידומת ייחודית לשמות הטבלאות תוכל לאפשר ליישומים שונים לחלוק את אותו מאגר המידע. מומלץ להשתמש ב-\"_wt\", אך ניתן לההשתמש בכל קידומת שהיא."
+msgstr "הקידומת היא אופציונלית, אך מומלצת. על ידי מתן קידומת ייחודית לשמות הטבלאות תוכל לאפשר ליישומים שונים לחלוק את אותו מאגר המידע. מומלץ להשתמש ב-\"_wt\", אך ניתן להשתמש בכל קידומת שהיא."
 
 #: modules_v3/batch_update/plugins/search_replace.php:82
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13589,7 +13589,7 @@ msgstr "דפים אלו מספקים גישה לכל הגדרות התצורה �
 #. I18N: do not translate the #keywords#
 #: modules_v3/html/module.php:159
 msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "קובץ ה-GEDCOM (עץ משפחה) עודכן לאחרונה ב-#gedcomUpdated#. עץ משפחה זה כולל #totalSurnames# שמות משפחה.  #firstEventType# ofהאירוע המוקדם ביותר הוא #firstEventName# ב-#firstEventYear#. האירוע האחרון הוא #lastEventType# של  #lastEventName# i ב-#lastEventYear#.<br><br>אם יש לך הערות או תגובות, התקשר בבקשה עם #contactWebmaster#."
+msgstr "קובץ ה-GEDCOM (עץ משפחה) עודכן לאחרונה ב-#gedcomUpdated#. עץ משפחה זה כולל #totalSurnames# שמות משפחה.  האירוע המוקדם ביותר הוא #firstEventType# של #firstEventName# ב-#firstEventYear#. האירוע האחרון הוא #lastEventType# של  #lastEventName# ב-#lastEventYear#.<br><br>אם יש לך הערות או תגובות, התקשר בבקשה עם #contactWebmaster#."
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:148
@@ -13846,7 +13846,7 @@ msgstr "זה הרוחב (בפיקסלים) שהתכנית תשתמש באופן 
 
 #: help_text.php:1344 setup.php:394
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr "השם האמיתי שלך, כפי שיוצג על המסך."
+msgstr "השם האמתי שלך, כפי שיוצג על המסך."
 
 #: admin_trees_check.php:133
 msgid "This may be a mistake in your data."
@@ -14005,7 +14005,7 @@ msgstr "אפשרות זו תוריד את עץ המשפחה לקובץ GEDCOM ב
 
 #: help_text.php:560
 msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
-msgstr "אפשרות זו תאפשר את כל הגדרות הפרטיות והסתרת הפרטים של אנשים חיים, כפי שמגדירים או משנים בהוצץ הפרטית של דף התצורה של כל קובץ GEDCOM."
+msgstr "אפשרות זו תאפשר את כל הגדרות הפרטיות והסתרת הפרטים של אנשים חיים, כפי שמגדירים או משנים בחוצץ הפרטית של דף התצורה של כל קובץ GEDCOM."
 
 #: modules_v3/faq/help_text.php:50
 msgid "This option will let you delete an item from the FAQ page"
@@ -14617,7 +14617,7 @@ msgstr "איים קטנים מרוחקים של ארה״ב"
 
 #: library/WT/Stats.php:3999
 msgid "US Virgin Islands"
-msgstr "איי הבתולה האמריקאיים"
+msgstr "איי הבתולה האמריקניים"
 
 #: library/WT/Stats.php:3993
 msgid "USA"
@@ -15150,7 +15150,7 @@ msgstr "ווילס"
 
 #: library/WT/Stats.php:4003
 msgid "Wallis and Futuna Islands"
-msgstr "איי וליס ופוטונה"
+msgstr "איי ואליס ופוטונה"
 
 #: library/WT/Gedcom/Code/Rela.php:192
 msgid "Ward"
@@ -15181,7 +15181,7 @@ msgstr "סימני מים הם אופציונליים ובדרך כלל מוצג
 
 #: help_text.php:1020
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr "יצירת סימני מים יכולה להיות איטית לתמונות גדולות. אתרים עסוקים יכולים להעדיף לייצר אותם פעם אחת ולאחסן את התמונה עם סימני המיים בשרת."
+msgstr "יצירת סימני מים יכולה להיות איטית לתמונות גדולות. אתרים עסוקים יכולים להעדיף לייצר אותם פעם אחת ולאחסן את התמונה עם סימני המים בשרת."
 
 #: login.php:356
 #, php-format
@@ -15284,7 +15284,7 @@ msgstr "כאשר מחשבים יחסים, אפשרות זו קובעת אם <b>w
 
 #: help_text.php:886
 msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
-msgstr "כאשר הערך הנבחר הוא <b>כן</b>, ההודעה הבאה תופיעה מעל שדות הקלט על דף  «בקש חשבון משתמש חדש»:<div class=\"list_value_wrap\"><div class=\"largeError\">שים לב:</div><div class=\"error\">על ידי השלמת ושליחת טופס זה, אתה מסכים:<ul><li>להגן על פרטיותם של אנשים חיים שמופיע באתר שלנו;</li><li>ובתיבת הטקסט שלהלן, להסביר למי אתה קשור, או לספק לנו מידע על מי צריך להיות רשום באתר שלנו.</li></ul></div></div>"
+msgstr "כאשר הערך הנבחר הוא <b>כן</b>, ההודעה הבאה תופיע מעל שדות הקלט על דף  «בקש חשבון משתמש חדש»:<div class=\"list_value_wrap\"><div class=\"largeError\">שים לב:</div><div class=\"error\">על ידי השלמת ושליחת טופס זה, אתה מסכים:<ul><li>להגן על פרטיותם של אנשים חיים שמופיע באתר שלנו;</li><li>ובתיבת הטקסט שלהלן, להסביר למי אתה קשור, או לספק לנו מידע על מי צריך להיות רשום באתר שלנו.</li></ul></div></div>"
 
 #: help_text.php:1280
 msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
@@ -15413,7 +15413,7 @@ msgstr "צוואה"
 
 #: library/WT/Gedcom/Code/Temp.php:191
 msgid "Winter Quarters, Nebraska"
-msgstr "ווינטר קורטרס, נברסקה"
+msgstr "ווינטר קוורטרס, נברסקה"
 
 #: library/WT/Stats.php:308 library/WT/Stats.php:352
 msgid "With sources"
@@ -15581,7 +15581,7 @@ msgstr "יש למלא סיסמה."
 
 #: admin_users.php:318 edituser.php:103
 msgid "You must enter a real name."
-msgstr "עליך להזין שם אמיתי."
+msgstr "עליך להזין שם אמתי."
 
 #: admin_users.php:313 edituser.php:98
 msgid "You must enter a user name."
@@ -16375,7 +16375,7 @@ msgstr "%s החמישי/ת"
 #: includes/functions/functions.php:684
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr "דודנית מדרגהה 5"
+msgstr "דודנית מדרגה 5"
 
 #: includes/functions/functions.php:665
 msgctxt "MALE"
@@ -18393,7 +18393,7 @@ msgstr "מצד האם"
 
 #: modules_v3/googlemap/module.php:294
 msgid "maximum"
-msgstr "מכסימום"
+msgstr "מקסימום"
 
 #: modules_v3/recent_changes/module.php:137
 #: modules_v3/upcoming_events/module.php:132
@@ -19954,7 +19954,7 @@ msgstr "…"
 #~ msgstr "מי יכול לראות תמונות ללא סימני מים?"
 
 #~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
-#~ msgstr "אתה יכול לקבוע אם שאלה ותשובה זו תהייה גלויה בלי קשר לקובץ ה-GEDCOM, או אם היא גלויה רק לקובץ ה-GEDCOM הנוכחי.<br><ul><li><b>הכול</b>&nbsp;&nbsp;&nbsp;השאלה והתשובה תופיע בכל רשימות השאלות והתשובות, ללא קשר לקובץ GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;השאלה הנפוצה תופיע רק ברשימת השאלות והתשובות של קובץ ה-GEDCOM הפעיל.</li></ul>"
+#~ msgstr "אתה יכול לקבוע אם שאלה ותשובה זו תהייה גלויה בלי קשר לקובץ ה-GEDCOM, או אם היא גלויה רק לקובץ ה-GEDCOM הנוכחי.<br><ul><li><b>הכל</b>&nbsp;&nbsp;&nbsp;השאלה והתשובה תופיע בכל רשימות השאלות והתשובות, ללא קשר לקובץ GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;השאלה הנפוצה תופיע רק ברשימת השאלות והתשובות של קובץ ה-GEDCOM הפעיל.</li></ul>"
 
 #~ msgid "You have the following options:"
 #~ msgstr "קיימות לפניך האפשרויות הבאות:"
