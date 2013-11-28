@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-09 18:17+0000\n"
+"POT-Creation-Date: 2013-11-28 15:21+0000\n"
 "PO-Revision-Date: 2013-01-18 11:22+0000\n"
 "Last-Translator: Gudjon Sigurdsson <Unknown>\n"
 "Language-Team: Icelandic <is@li.org>\n"
@@ -650,7 +650,7 @@ msgstr "<center><b>Velkomin/-n á þessa ættfræði vefsíðu</b></center><br>A
 msgid "<default theme>"
 msgstr "<sjálfgefið þema>"
 
-#: login.php:376
+#: login.php:374
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
 msgstr "<div class=\"largeError\">Tilkynning:</div><div class=\"error\">Með því að fyllta út og senda þetta eyðublað, þá samþykkir þú:<ul><li>að verja friðhelgi þess fólks sem er á lífi og tilgreint á þessari vefsíðu;</li><li>og í textakassann hér að neðan, að útskýra hverjum þú ert skyldur, eða upplýsa okkur um einhvern sem ætti að vera skráður á vefsíðu okkar.</li></ul></div>"
 
@@ -759,7 +759,7 @@ msgstr "Nýtt lykilorð hefur verið útbúið og sent í tölvupósti til %s. �
 msgid "A new password was requested for your user name."
 msgstr "Óskað var eftir nýju lykilorði fyrir þitt notandaheiti."
 
-#: login.php:475
+#: login.php:473
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "Nýr notandi (%1$s) hefur óskað eftir reikningi (%2$s) og staðfest netfang (%3$s)."
@@ -1111,8 +1111,8 @@ msgid "Adar II"
 msgstr "Adar II"
 
 #: admin_trees_config.php:580 edit_interface.php:1973
-#: includes/functions/functions_print.php:961
-#: includes/functions/functions_print.php:1017 index_edit.php:291
+#: includes/functions/functions_print.php:947
+#: includes/functions/functions_print.php:1003 index_edit.php:291
 #: index_edit.php:309 lifespan.php:157
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:94
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:185
@@ -1250,7 +1250,7 @@ msgstr "Bæta við nýrri heimildar tilvísun"
 msgid "Add a new spouse"
 msgstr "Bæta við nýjum maka"
 
-#: themes/_administration/header.php:134
+#: themes/_administration/header.php:132
 msgid "Add a new user"
 msgstr "Bæta við nýjum notanda"
 
@@ -1272,7 +1272,7 @@ msgstr "Bæta við nýrri eiginkonu"
 msgid "Add a scrollbar when block contents grow"
 msgstr "Bæta við flettistiku þegar efnisbálkur vex"
 
-#: modules_v3/relatives/module.php:203
+#: modules_v3/relatives/module.php:161
 msgid "Add a wife to this family"
 msgstr "Bæta eiginkonu við þessa fjölskyldu"
 
@@ -1290,7 +1290,7 @@ msgid "Add by ID"
 msgstr "Bæta við eftir auðkenni"
 
 #: edit_interface.php:1589 help_text.php:1052
-#: includes/functions/functions_print.php:942
+#: includes/functions/functions_print.php:928
 msgid "Add from clipboard"
 msgstr "Bæta við frá klippiborði"
 
@@ -1318,7 +1318,7 @@ msgstr "Bæta eingöngu við þessari heimild."
 msgid "Add links"
 msgstr "Bæta við krækju"
 
-#: modules_v3/relatives/module.php:167
+#: modules_v3/relatives/module.php:201
 msgid "Add marriage details"
 msgstr "Bæta við upplýsingum um giftingu"
 
@@ -1352,9 +1352,14 @@ msgid "Add spaces where notes were wrapped"
 msgstr "Bætið við línubilum þar sem glósur eru umvafðar"
 
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
-#: modules_v3/stories/module.php:338
+#: modules_v3/stories/module.php:339
 msgid "Add story"
 msgstr "Bæta við sögu"
+
+#: admin_trees_download.php:129 modules_v3/clippings/module.php:217
+#: modules_v3/clippings/module.php:603
+msgid "Add the GEDCOM media path to filenames"
+msgstr ""
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:528
 msgid "Add this individual and his direct line ancestors."
@@ -1397,7 +1402,7 @@ msgid "Add to favorites"
 msgstr "Bæta við í eftirlæti"
 
 #: admin_site_other.php:31 admin_site_other.php:37
-#: themes/_administration/header.php:122
+#: themes/_administration/header.php:120
 msgid "Add unlinked records"
 msgstr "Bæta við ótengdar færslur"
 
@@ -1405,7 +1410,7 @@ msgstr "Bæta við ótengdar færslur"
 msgid "Add watermarks to thumbnails?"
 msgstr "Bæta við vatnsmerki á smámynd?"
 
-#: modules_v3/relatives/module.php:202
+#: modules_v3/relatives/module.php:160
 msgid "Add wife"
 msgstr "Bæta við eiginkonu"
 
@@ -1418,7 +1423,7 @@ msgstr "Bæta við þínum eigin texta og myndum."
 msgid "Add/Insert Blank Row"
 msgstr "Bæta við/Setja inn tóma röð"
 
-#: editnews.php:31 editnews.php:45
+#: editnews.php:31 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Bæta við/breyta dagbókar/frétta færslum"
 
@@ -1447,8 +1452,8 @@ msgstr "Adelaide, Ástralía"
 msgid "Admin comments on user"
 msgstr "Kerfisstjóri gefur umsögn á notanda"
 
-#: admin.php:29 library/WT/MenuBar.php:83 themes/_administration/header.php:64
-#: themes/_administration/header.php:95
+#: admin.php:29 library/WT/MenuBar.php:83 themes/_administration/header.php:62
+#: themes/_administration/header.php:93
 msgid "Administration"
 msgstr "Kerfisstjórnun"
 
@@ -1648,8 +1653,8 @@ msgid "After you have logged in, select the “My Account” link under the “M
 msgstr "Eftir að þú hefur skráð þig inn, veldu þá krækjuna «Minn Reikningur» undir valmyndinni «Mín Síða» og fyllið út lykilorðsreitina til að breyta lykilorðinu þínu."
 
 #. I18N: gedcom tag AGE
-#: autocomplete.php:114 includes/functions/functions_print.php:761
-#: includes/functions/functions_print.php:799
+#: autocomplete.php:114 includes/functions/functions_print.php:747
+#: includes/functions/functions_print.php:785
 #: library/WT/Controller/Timeline.php:226
 #: library/WT/Controller/Timeline.php:228 library/WT/Gedcom/Tag.php:106
 #: library/WT/Stats.php:1614 library/WT/Stats.php:2354
@@ -1772,19 +1777,30 @@ msgstr "Samþykkja verður allar breytingar í PGV"
 msgid "All existing PGV users must have distinct email addresses"
 msgstr "Allir gildandi PGV notendur verða að hafa einstakt netfang"
 
-#: admin_trees_config.php:1076 admin_trees_config.php:1113
-#: admin_trees_config.php:1150 admin_trees_config.php:1179
-msgid "All facts"
-msgstr "Allar staðreyndir"
+#: admin_trees_config.php:1113 help_text.php:505
+msgid "All family facts"
+msgstr ""
 
-#: login.php:382
+#: login.php:380
 msgid "All fields must be completed."
 msgstr "Alla reiti þarf að fylla út."
+
+#: admin_trees_config.php:1076 help_text.php:583
+msgid "All individual facts"
+msgstr ""
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
 msgid "All individuals"
 msgstr "Allt fólk"
+
+#: admin_trees_config.php:1179 help_text.php:789
+msgid "All repository facts"
+msgstr ""
+
+#: admin_trees_config.php:1150 help_text.php:900
+msgid "All source facts"
+msgstr ""
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1871,7 +1887,7 @@ msgstr "Ritstýringarvalmynd fyrir einstaklinga, fjölskyldur, uppruna o.s.frv."
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr "Gagnvirkt tré, sem sýnir alla forfeður og afkomendur persónu."
 
-#: setup.php:921
+#: setup.php:922
 msgid "An unexpected database error occurred."
 msgstr "Óvænt gagnagrunnsvilla kom upp."
 
@@ -2002,7 +2018,7 @@ msgctxt "LOCATIVE"
 msgid "April"
 msgstr "Apríl"
 
-#: includes/functions/functions_print.php:1037
+#: includes/functions/functions_print.php:1023
 #: library/WT/Date/Calendar.php:126
 msgctxt "NOMINATIVE"
 msgid "April"
@@ -2029,7 +2045,7 @@ msgstr "Ertu viss um að þú viljir eyða þessari frétt?"
 #: includes/functions/functions_print_facts.php:674
 #: includes/functions/functions_print_facts.php:869
 #: includes/functions/functions_print_facts.php:1013
-#: library/WT/Controller/Individual.php:158 modules_v3/lightbox/module.php:203
+#: library/WT/Controller/Individual.php:158
 msgid "Are you sure you want to delete this fact?"
 msgstr "Ertu viss um að þú viljir eyða þessari staðreynd?"
 
@@ -2038,7 +2054,7 @@ msgstr "Ertu viss um að þú viljir eyða þessari staðreynd?"
 msgid "Are you sure you want to delete this message?  It cannot be retrieved later."
 msgstr "Ertu viss um að þú viljir eyða þessu skilaboði? Ekki er hægt að endurheimta það síðar."
 
-#: modules_v3/stories/module.php:359
+#: modules_v3/stories/module.php:360
 msgid "Are you sure you want to delete this story?"
 msgstr "Ertu viss um að þú viljir eyða þessari sögu?"
 
@@ -2053,6 +2069,10 @@ msgstr "Ertu viss um að þú viljir eyða þessari sögu?"
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Ertu viss um að þú viljir eyða “%s”?"
+
+#: modules_v3/lightbox/module.php:203
+msgid "Are you sure you want to remove links to this media object?"
+msgstr ""
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -2184,7 +2204,7 @@ msgctxt "LOCATIVE"
 msgid "August"
 msgstr "Ágúst"
 
-#: includes/functions/functions_print.php:1041
+#: includes/functions/functions_print.php:1027
 #: library/WT/Date/Calendar.php:130
 msgctxt "NOMINATIVE"
 msgid "August"
@@ -2786,7 +2806,7 @@ msgstr "Blessun"
 msgid "Block"
 msgstr "Kassi"
 
-#: themes/_administration/header.php:149
+#: themes/_administration/header.php:147
 msgid "Blocks"
 msgstr "Kassar"
 
@@ -3343,7 +3363,7 @@ msgid_plural "Changes in the last %s days"
 msgstr[0] "Breytingar á síðasta degi"
 msgstr[1] "Breytingar á síðustu %s dögum"
 
-#: themes/_administration/header.php:124
+#: themes/_administration/header.php:122
 msgid "Changes log"
 msgstr "Breytingaskrá"
 
@@ -3375,7 +3395,7 @@ msgstr "Gröf"
 msgid "Check access rights on this directory."
 msgstr "Athugið aðgangsréttindi á þessa möppu."
 
-#: admin_trees_check.php:34 themes/_administration/header.php:123
+#: admin_trees_check.php:34 themes/_administration/header.php:121
 msgid "Check for errors"
 msgstr "Leita að villum"
 
@@ -3618,7 +3638,7 @@ msgid "Civil registrar"
 msgstr "Borgarritari"
 
 #. I18N: The “Data folder” is a configuration setting
-#: admin_site_clean.php:28 themes/_administration/header.php:104
+#: admin_site_clean.php:28 themes/_administration/header.php:102
 msgid "Clean up data folder"
 msgstr ""
 
@@ -3683,7 +3703,7 @@ msgid "Clicking the “+” icon will open the GEDFact shared note assistant win
 msgstr "Með því að smella á \"+\" táknið þá opnast glugginn GEDFact sameiginleg glósu aðstoð.<br>Sérstaka hjálp er að finna þarna.<br><br>Þegar þú smellir á \"Vista\" hnappinn, þá verður auðkenni sameiginlegu glósunnar límt inn hér."
 
 #. I18N: The local time on the client/browser
-#: themes/_administration/header.php:86
+#: themes/_administration/header.php:84
 msgid "Client time"
 msgstr ""
 
@@ -3743,8 +3763,8 @@ msgstr "Dálkar á síðu"
 msgid "Comment"
 msgstr "Athugasemd"
 
-#: admin_users.php:207 help_text.php:1348 login.php:283 login.php:312
-#: login.php:409
+#: admin_users.php:207 help_text.php:1348 login.php:283 login.php:309
+#: login.php:407
 msgid "Comments"
 msgstr "Athugasemdir"
 
@@ -3802,7 +3822,7 @@ msgstr "Samtenging"
 msgid "Configure"
 msgstr "Stilla"
 
-#: admin_users.php:389 edituser.php:152 help_text.php:1289 login.php:404
+#: admin_users.php:389 edituser.php:152 help_text.php:1289 login.php:402
 msgid "Confirm password"
 msgstr "Staðfesta lykilorð"
 
@@ -3899,7 +3919,7 @@ msgstr "Kosta Ríka"
 msgid "Cote d’Ivoire"
 msgstr "Fílabeinsströndin"
 
-#: login.php:555
+#: login.php:551
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr "Ekki var hægt að staðfesta upplýsingarnar sem þú slóst inn. Vinsamlega reynið aftur eða hafið samband við kerfisstjóra vefsíðunnar fyrir frekari upplýsingar."
 
@@ -4133,11 +4153,11 @@ msgstr "Núverandi"
 msgid "Custom"
 msgstr "Sérsniðið"
 
-#: calendar.php:269 includes/functions/functions_print.php:1014
+#: calendar.php:269 includes/functions/functions_print.php:1000
 msgid "Custom event"
 msgstr "Sérsniðin atburður"
 
-#: includes/functions/functions_print.php:1013
+#: includes/functions/functions_print.php:999
 msgid "Custom fact"
 msgstr ""
 
@@ -4184,7 +4204,7 @@ msgstr "Gögn"
 msgid "Data folder"
 msgstr "Gagnamappa"
 
-#: login.php:549
+#: login.php:545
 msgid "Data was not correct, please try again"
 msgstr "Gögn voru ekki rétt, vinsamlega reynið aftur"
 
@@ -4733,7 +4753,7 @@ msgctxt "LOCATIVE"
 msgid "December"
 msgstr "Desember"
 
-#: includes/functions/functions_print.php:1045
+#: includes/functions/functions_print.php:1031
 #: library/WT/Date/Calendar.php:134
 msgctxt "NOMINATIVE"
 msgid "December"
@@ -4834,7 +4854,7 @@ msgstr "Eyða völdum skilaboðum"
 msgid "Delete all existing geographic data before importing the file."
 msgstr "Eyða öllum fyrirliggjandi landfræði gögnum áður en skráin er flutt inn."
 
-#: themes/_administration/header.php:136
+#: themes/_administration/header.php:134
 msgid "Delete inactive users"
 msgstr "Eða óvirkum notendum"
 
@@ -4918,11 +4938,11 @@ msgstr "Lýsing"
 msgid "Description META tag"
 msgstr "Lýsingar META merkimiði"
 
-#: login.php:399
+#: login.php:397
 msgid "Desired password"
 msgstr "Óska lykilorð"
 
-#: login.php:394
+#: login.php:392
 msgid "Desired user name"
 msgstr "Óska notandaheiti"
 
@@ -5114,6 +5134,7 @@ msgstr "Innsiglið ekki: óheimilt"
 #: addmedia.php:725 admin_trees_config.php:1261 edit_interface.php:2208
 #: help_text.php:1274
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
+#: modules_v3/batch_update/admin_batch_update.php:342
 msgid "Do not update the “last change” record"
 msgstr "Ekki uppfæra \"síðasta breyting\" færsluna"
 
@@ -5310,7 +5331,7 @@ msgstr "Breyta heimild"
 msgid "Edit story"
 msgstr "Breyta sögu"
 
-#: library/WT/Tree.php:331
+#: library/WT/Tree.php:332
 msgid "Edit this individual and replace their details with your own"
 msgstr "Breyta þessum einstaklingi og skipta út þeirra upplýsingum með þínum eigin"
 
@@ -5379,7 +5400,7 @@ msgstr "Tölvupóstur"
 #. I18N: gedcom tag _EMAIL
 #: admin_users.php:378 edituser.php:156 help_text.php:1197
 #: library/WT/Gedcom/Tag.php:182 library/WT/Gedcom/Tag.php:183
-#: library/WT/Gedcom/Tag.php:184 library/WT/Gedcom/Tag.php:700 login.php:389
+#: library/WT/Gedcom/Tag.php:184 library/WT/Gedcom/Tag.php:700 login.php:387
 #: setup.php:408
 msgid "Email address"
 msgstr "Netfang"
@@ -5546,7 +5567,7 @@ msgstr "Sláið inn þysjunarstig"
 msgid "Entire record"
 msgstr "Heildar færsla"
 
-#: editnews.php:63
+#: editnews.php:68
 msgid "Entry text:"
 msgstr "Textarfærsla:"
 
@@ -5677,7 +5698,7 @@ msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s 
 msgstr ""
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:410
+#: login.php:408
 msgid "Explain why you are requesting an account."
 msgstr ""
 
@@ -5792,7 +5813,7 @@ msgstr "Staðreynd 9"
 msgid "Fact icons"
 msgstr "Staðreyndatákn"
 
-#: includes/functions/functions_print.php:1004
+#: includes/functions/functions_print.php:990
 msgid "Fact or event"
 msgstr ""
 
@@ -5812,11 +5833,11 @@ msgstr "Staðreyndir fyrir fjölskyldufærslur"
 msgid "Facts for individual records"
 msgstr "Staðreyndir fyrir einstaklingsfærslur"
 
-#: help_text.php:784
+#: admin_trees_config.php:1129 help_text.php:784
 msgid "Facts for new families"
 msgstr "Staðreyndir fyrir nýja fjölskyldu"
 
-#: help_text.php:779
+#: admin_trees_config.php:1092 help_text.php:779
 msgid "Facts for new individuals"
 msgstr "Staðreyndir fyrir nýja einstaklinga"
 
@@ -5876,10 +5897,6 @@ msgstr "Fjölskylda"
 #: admin_trees_config.php:341 help_text.php:520
 msgid "Family ID prefix"
 msgstr "Forskeyti fjölskyldu auðkennis"
-
-#: help_text.php:505
-msgid "Family add facts"
-msgstr "Fjölskylda bæta við staðreyndum"
 
 #. I18N: gedcom tag FAMC
 #: library/WT/Gedcom/Tag.php:199
@@ -5941,7 +5958,7 @@ msgstr "Fjölskylda %s"
 #: admin_users.php:431 edit_changes.php:182
 #: modules_v3/batch_update/admin_batch_update.php:61
 #: modules_v3/faq/module.php:351 modules_v3/googlemap/module.php:1468
-#: modules_v3/html/module.php:294 modules_v3/stories/module.php:331
+#: modules_v3/html/module.php:294 modules_v3/stories/module.php:332
 msgid "Family tree"
 msgstr "Fjölskyldutré"
 
@@ -5968,7 +5985,7 @@ msgid "Family tree title"
 msgstr ""
 
 #: admin.php:198 admin_trees_manage.php:28 search.php:219
-#: themes/_administration/header.php:106 themes/_administration/header.php:108
+#: themes/_administration/header.php:104 themes/_administration/header.php:106
 msgid "Family trees"
 msgstr "Fjölskyldutré"
 
@@ -6079,7 +6096,7 @@ msgstr "Faðir"
 msgid "Father: %s"
 msgstr "Faðir: %s"
 
-#: includes/functions/functions_print.php:669
+#: includes/functions/functions_print.php:658
 msgid "Father’s age"
 msgstr "Aldur föður"
 
@@ -6125,7 +6142,7 @@ msgctxt "LOCATIVE"
 msgid "February"
 msgstr "Febrúar"
 
-#: includes/functions/functions_print.php:1035
+#: includes/functions/functions_print.php:1021
 #: library/WT/Date/Calendar.php:124
 msgctxt "NOMINATIVE"
 msgid "February"
@@ -6209,43 +6226,43 @@ msgstr "Skrár merktar með %s eru nauðsynlegar fyrir eðlilega virkni og er ek
 msgid "Filter"
 msgstr "Sía"
 
-#: find.php:107 includes/functions/functions_print.php:1103
+#: find.php:107 includes/functions/functions_print.php:1089
 msgid "Find a fact or event"
 msgstr "Finna staðreynd eða atburð"
 
 #: admin_site_merge.php:267 admin_site_merge.php:288 find.php:74
-#: includes/functions/functions_print.php:1069
+#: includes/functions/functions_print.php:1055
 msgid "Find a family"
 msgstr "Finna fjölskyldu"
 
-#: find.php:77 includes/functions/functions_print.php:1099
+#: find.php:77 includes/functions/functions_print.php:1085
 msgid "Find a media object"
 msgstr "Finna miðilshlut"
 
-#: find.php:86 includes/functions/functions_print.php:1091
+#: find.php:86 includes/functions/functions_print.php:1077
 msgid "Find a note"
 msgstr "Finna glósu"
 
-#: find.php:80 includes/functions/functions_print.php:1065
+#: find.php:80 includes/functions/functions_print.php:1051
 msgid "Find a place"
 msgstr "Finna stað"
 
-#: find.php:83 includes/functions/functions_print.php:1095
+#: find.php:83 includes/functions/functions_print.php:1081
 msgid "Find a repository"
 msgstr "Finna geymslu"
 
 #: admin_site_merge.php:268 admin_site_merge.php:289 find.php:89
-#: includes/functions/functions_print.php:1087
+#: includes/functions/functions_print.php:1073
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
 msgstr "Finna heimild"
 
-#: find.php:92 includes/functions/functions_print.php:1073
+#: find.php:92 includes/functions/functions_print.php:1059
 msgid "Find a special character"
 msgstr "Finna sérstakan bókstaf"
 
 #: admin_site_merge.php:266 admin_site_merge.php:287 find.php:71
-#: includes/functions/functions_print.php:1061
+#: includes/functions/functions_print.php:1047
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:32
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:75
 #: modules_v3/GEDFact_assistant/module.php:78
@@ -6352,8 +6369,8 @@ msgstr "Sem dæmi, ef þú tilgreinir slóðalengd upp á 2, þá mun persónan 
 msgid "For help with genealogy questions contact"
 msgstr "Varðandi hjálp með ættfræðispurningar hafið þá samband við"
 
-#: includes/functions/functions_print.php:523
-#: includes/functions/functions_print.php:526
+#: includes/functions/functions_print.php:521
+#: includes/functions/functions_print.php:524
 msgid "For more information contact"
 msgstr "Fyrir frekari upplýsingar hafið þá samband við"
 
@@ -6444,7 +6461,7 @@ msgstr "Algengar spurningar"
 msgid "Fresno, California"
 msgstr "Fresno, Kalifornía"
 
-#: includes/functions/functions_print.php:1053
+#: includes/functions/functions_print.php:1039
 #: library/WT/Date/Calendar.php:223
 msgid "Fri"
 msgstr "Fös"
@@ -6539,8 +6556,7 @@ msgid "GEDCOM files are stored in the %s folder."
 msgstr ""
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
-#: admin_trees_config.php:634 admin_trees_download.php:129 help_text.php:535
-#: modules_v3/clippings/module.php:217 modules_v3/clippings/module.php:603
+#: admin_trees_config.php:634 help_text.php:535
 msgid "GEDCOM media path"
 msgstr ""
 
@@ -6722,7 +6738,7 @@ msgid "Godson"
 msgstr "Guðsonur"
 
 #. I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps
-#: includes/functions/functions_print.php:872
+#: includes/functions/functions_print.php:858
 #: modules_v3/googlemap/admin_places.php:168
 #: modules_v3/googlemap/module.php:48 modules_v3/googlemap/module.php:197
 #: modules_v3/googlemap/module.php:1440
@@ -6926,17 +6942,17 @@ msgstr "Hebresku nafn"
 msgid "Height"
 msgstr "Hæð"
 
-#: login.php:212 login.php:302
+#: login.php:212 login.php:299
 #, php-format
 msgid "Hello %s…"
 msgstr "Halló %s …"
 
-#: login.php:354
+#: login.php:352
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "Halló %s …<br>Takk fyrir skráninguna þína."
 
-#: login.php:277 login.php:472
+#: login.php:277 login.php:470
 msgid "Hello administrator…"
 msgstr "Halló Kerfissstjóri …"
 
@@ -7258,7 +7274,7 @@ msgstr "Ef þú ert vefstjóri þá ættir þú að athuga að:"
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr "Ef þú getur ekki lagfært vandamálið sjálfur, þá getur þú óskað eftir aðstoð á umræðuvefnum <a href=\"http://webtrees.net\">webtrees.net</a>"
 
-#: login.php:313
+#: login.php:310
 msgid "If you didn’t request an account, you can just delete this message."
 msgstr "Ef þú óskaðir ekki eftir reikning, þá getur þú einfaldlega eytt þessum skilaboðum."
 
@@ -7412,8 +7428,8 @@ msgstr "Indland"
 #: modules_v3/individual_report/module.php:33
 #: modules_v3/individual_report/report.xml:3
 #: modules_v3/individual_report/report.xml:84
-#: modules_v3/stories/module.php:244 modules_v3/stories/module.php:343
-#: modules_v3/stories/module.php:409 pedigree.php:43
+#: modules_v3/stories/module.php:245 modules_v3/stories/module.php:344
+#: modules_v3/stories/module.php:410 pedigree.php:43
 msgid "Individual"
 msgstr "Einstaklingur"
 
@@ -7428,10 +7444,6 @@ msgstr "Persóna 2"
 #: admin_trees_config.php:335 help_text.php:530
 msgid "Individual ID prefix"
 msgstr "Forskeyti einstaklings auðkennis"
-
-#: help_text.php:583
-msgid "Individual add facts"
-msgstr "Einstaklingur bæta við staðreyndum"
 
 #: statistics.php:558
 msgid "Individual distribution"
@@ -7510,7 +7522,7 @@ msgctxt "MALE"
 msgid "Informant"
 msgstr "Heimildamaður"
 
-#: login.php:305
+#: login.php:302
 msgid "Information about the request is shown under the link below."
 msgstr "Upplýsingar um beiðnina er birt undir krækjunni hér að neðan."
 
@@ -7642,7 +7654,7 @@ msgctxt "LOCATIVE"
 msgid "January"
 msgstr "Janúar"
 
-#: includes/functions/functions_print.php:1034
+#: includes/functions/functions_print.php:1020
 #: library/WT/Date/Calendar.php:123
 msgctxt "NOMINATIVE"
 msgid "January"
@@ -7662,7 +7674,7 @@ msgid "Johannesburg, South Africa"
 msgstr "Johannesburg, Suður Afríka"
 
 #. I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname.
-#: library/WT/Tree.php:330
+#: library/WT/Tree.php:331
 msgid "John /DOE/"
 msgstr "John /DOE/"
 
@@ -7704,7 +7716,7 @@ msgctxt "LOCATIVE"
 msgid "July"
 msgstr "Júlí"
 
-#: includes/functions/functions_print.php:1040
+#: includes/functions/functions_print.php:1026
 #: library/WT/Date/Calendar.php:129
 msgctxt "NOMINATIVE"
 msgid "July"
@@ -7778,7 +7790,7 @@ msgctxt "LOCATIVE"
 msgid "June"
 msgstr "Júní"
 
-#: includes/functions/functions_print.php:1039
+#: includes/functions/functions_print.php:1025
 #: library/WT/Date/Calendar.php:128
 msgctxt "NOMINATIVE"
 msgid "June"
@@ -7906,7 +7918,7 @@ msgstr "LDS reglugerðar kóðar í grafkassa"
 msgid "LDS spouse sealing"
 msgstr "LDS makastaðfesting"
 
-#: includes/functions/functions_print.php:884
+#: includes/functions/functions_print.php:870
 msgid "LDS temple"
 msgstr "LDS Musteri"
 
@@ -8212,7 +8224,7 @@ msgstr "Leigjandi"
 msgid "Logan, Utah"
 msgstr "Logan, Utah"
 
-#: modules_v3/login_block/module.php:58 themes/webtrees/header.php:63
+#: modules_v3/login_block/module.php:58 themes/webtrees/header.php:64
 msgid "Logged in as "
 msgstr "Innskráður sem "
 
@@ -8237,7 +8249,7 @@ msgstr "Innskráningar veffang"
 msgid "Logout"
 msgstr "Útskráning"
 
-#: admin_site_logs.php:27 themes/_administration/header.php:100
+#: admin_site_logs.php:27 themes/_administration/header.php:98
 msgid "Logs"
 msgstr "Atburðaskrá"
 
@@ -8425,7 +8437,7 @@ msgctxt "LOCATIVE"
 msgid "March"
 msgstr "Mars"
 
-#: includes/functions/functions_print.php:1036
+#: includes/functions/functions_print.php:1022
 #: library/WT/Date/Calendar.php:125
 msgctxt "NOMINATIVE"
 msgid "March"
@@ -8733,7 +8745,7 @@ msgctxt "LOCATIVE"
 msgid "May"
 msgstr "Maí"
 
-#: includes/functions/functions_print.php:1038
+#: includes/functions/functions_print.php:1024
 #: library/WT/Date/Calendar.php:127
 msgctxt "NOMINATIVE"
 msgid "May"
@@ -8751,7 +8763,7 @@ msgstr "Medford, Oregon"
 #: admin_media.php:505 admin_media.php:595 admin_trees_config.php:218
 #: includes/functions/functions_print_lists.php:1260 inverselink.php:85
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:87
-#: modules_v3/media/module.php:34 themes/_administration/header.php:139
+#: modules_v3/media/module.php:34 themes/_administration/header.php:137
 msgid "Media"
 msgstr "Miðill"
 
@@ -8899,7 +8911,7 @@ msgstr "Memphis, Tennessee"
 msgid "Menu"
 msgstr "Valmynd"
 
-#: themes/_administration/header.php:147
+#: themes/_administration/header.php:145
 msgid "Menus"
 msgstr "Valmyndir"
 
@@ -8914,7 +8926,7 @@ msgstr "Sameina frá auðkenni:"
 
 #: admin_site_merge.php:32 admin_site_merge.php:78 admin_site_merge.php:146
 #: admin_site_merge.php:243 help_text.php:1160
-#: themes/_administration/header.php:121
+#: themes/_administration/header.php:119
 msgid "Merge records"
 msgstr "Steypa saman færslur"
 
@@ -9048,7 +9060,7 @@ msgstr "Eining"
 msgid "Module administration"
 msgstr "Einingar kerfisstjórn"
 
-#: themes/_administration/header.php:144
+#: themes/_administration/header.php:142
 msgid "Modules"
 msgstr "Einingar"
 
@@ -9056,7 +9068,7 @@ msgstr "Einingar"
 msgid "Moldova"
 msgstr "Moldavía"
 
-#: includes/functions/functions_print.php:1049
+#: includes/functions/functions_print.php:1035
 #: library/WT/Date/Calendar.php:219
 msgid "Mon"
 msgstr "Mán"
@@ -9208,7 +9220,7 @@ msgstr "Móðir"
 msgid "Mother: %s"
 msgstr "Móðir: %s"
 
-#: includes/functions/functions_print.php:661
+#: includes/functions/functions_print.php:650
 msgid "Mother’s age"
 msgstr "Aldur móður"
 
@@ -9293,7 +9305,7 @@ msgid "My account"
 msgstr "Minn reikningur"
 
 #. I18N: Default title for new family trees
-#: library/WT/Tree.php:315
+#: library/WT/Tree.php:316
 msgid "My family tree"
 msgstr ""
 
@@ -9304,7 +9316,7 @@ msgstr "Mínar einstaklingsfærslur"
 #. I18N: Name of a module
 #: admin_modules.php:143 admin_users.php:210 index.php:87 index.php:95
 #: library/WT/MenuBar.php:59 library/WT/MenuBar.php:62
-#: modules_v3/user_welcome/module.php:32 themes/_administration/header.php:66
+#: modules_v3/user_welcome/module.php:32 themes/_administration/header.php:64
 msgid "My page"
 msgstr "Mín síða"
 
@@ -9495,10 +9507,6 @@ msgstr "Nýja Sjáland"
 msgid "New data"
 msgstr ""
 
-#: admin_trees_config.php:1092 admin_trees_config.php:1129
-msgid "New entry facts"
-msgstr "Nýjar staðreyndafærslur"
-
 #. I18N: %s is a server name/URL
 #: login.php:292
 #, php-format
@@ -9506,7 +9514,7 @@ msgid "New registration at %s"
 msgstr "Nýskráning við %s"
 
 #. I18N: %s is a server name/URL
-#: login.php:492
+#: login.php:490
 #, php-format
 msgid "New user at %s"
 msgstr "Nýr notandi á %s"
@@ -9814,7 +9822,7 @@ msgstr "Ekki giftur"
 
 #. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:437
-#: includes/functions/functions_print.php:497 library/WT/Gedcom/Tag.php:262
+#: includes/functions/functions_print.php:495 library/WT/Gedcom/Tag.php:262
 #: modules_v3/cemetery_report/report.xml:61
 #: modules_v3/family_group_report/report.xml:479
 #: modules_v3/family_group_report/report.xml:740
@@ -9884,7 +9892,7 @@ msgctxt "LOCATIVE"
 msgid "November"
 msgstr "Nóvember"
 
-#: includes/functions/functions_print.php:1044
+#: includes/functions/functions_print.php:1030
 #: library/WT/Date/Calendar.php:133
 msgctxt "NOMINATIVE"
 msgid "November"
@@ -9998,7 +10006,7 @@ msgctxt "LOCATIVE"
 msgid "October"
 msgstr "Október"
 
-#: includes/functions/functions_print.php:1043
+#: includes/functions/functions_print.php:1029
 #: library/WT/Date/Calendar.php:132
 msgctxt "NOMINATIVE"
 msgid "October"
@@ -10228,7 +10236,7 @@ msgid "PHP failed to write to disk"
 msgstr "PHP tókst ekki að skrifa á disk"
 
 #: admin_site_info.php:32 help_text.php:1314
-#: themes/_administration/header.php:102
+#: themes/_administration/header.php:100
 msgid "PHP information"
 msgstr "PHP upplýsingar"
 
@@ -10336,13 +10344,13 @@ msgstr "Foreldrar"
 msgid "Parents and siblings"
 msgstr "Foreldrar og systkini"
 
-#: includes/functions/functions_print.php:673
+#: includes/functions/functions_print.php:662
 msgid "Parent’s age"
 msgstr "Aldur foreldra"
 
 #: admin_site_config.php:136 admin_users.php:189 admin_users.php:384
 #: edituser.php:150 help_text.php:729 help_text.php:1284 login.php:151
-#: login.php:215 login.php:446 modules_v3/login_block/module.php:76
+#: login.php:215 login.php:444 modules_v3/login_block/module.php:76
 #: setup.php:400
 msgid "Password"
 msgstr "Lykilorð"
@@ -10405,9 +10413,9 @@ msgstr "Box fyrir breytingar sem bíða"
 #: modules_v3/change_report/report.xml:49
 #: modules_v3/review_changes/module.php:32
 #: modules_v3/review_changes/module.php:73
-#: themes/_administration/header.php:76 themes/clouds/header.php:121
-#: themes/colors/header.php:95 themes/fab/header.php:75
-#: themes/minimal/header.php:79 themes/xenea/header.php:109
+#: themes/_administration/header.php:74 themes/clouds/header.php:119
+#: themes/colors/header.php:90 themes/fab/header.php:73
+#: themes/minimal/header.php:76 themes/xenea/header.php:107
 msgid "Pending changes"
 msgstr "Fyrirhugaðar breytingar"
 
@@ -10686,7 +10694,7 @@ msgstr ""
 msgid "Play"
 msgstr "Spila"
 
-#: login.php:306
+#: login.php:303
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
 msgstr "Vinsamlega smellið á eftirfarandi krækju og fyllið inn umbeðin gögn til að staðfesta beiðni þína og netfang."
 
@@ -10951,24 +10959,23 @@ msgstr "Quartidi"
 msgid "Question"
 msgstr "Spurning"
 
-#: admin_trees_config.php:1100 admin_trees_config.php:1137
-#: admin_trees_config.php:1166 admin_trees_config.php:1195
-msgid "Quick facts"
-msgstr "Flýti staðreyndir"
-
 #: help_text.php:510
 msgid "Quick family facts"
 msgstr "Flýti fjölskyldur staðreyndir"
 
-#: help_text.php:588
+#: admin_trees_config.php:1137
+msgid "Quick family facts facts"
+msgstr ""
+
+#: admin_trees_config.php:1100 help_text.php:588
 msgid "Quick individual facts"
 msgstr "Flýti einstaklings staðreyndir"
 
-#: help_text.php:794
+#: admin_trees_config.php:1195 help_text.php:794
 msgid "Quick repository facts"
 msgstr "Flýti gagnahirslu staðreyndir"
 
-#: help_text.php:905
+#: admin_trees_config.php:1166 help_text.php:905
 msgid "Quick source facts"
 msgstr "Flýti heimilda staðreyndir"
 
@@ -10982,7 +10989,7 @@ msgstr "Quintidi"
 msgid "RE: "
 msgstr "Svar: "
 
-#: admin_site_readme.php:27 themes/_administration/header.php:101
+#: admin_site_readme.php:27 themes/_administration/header.php:99
 msgid "README documentation"
 msgstr "Lestu mig skjöl"
 
@@ -11117,7 +11124,7 @@ msgid "Re-order media"
 msgstr "Endurraða miðlum."
 
 #: admin_users.php:366 admin_users.php:572 edituser.php:135 help_text.php:1343
-#: login.php:281 login.php:384
+#: login.php:281 login.php:382
 msgid "Real name"
 msgstr "Raunverulegt nafn"
 
@@ -11215,8 +11222,9 @@ msgstr "Skráningarfulltrúi"
 msgid "Regular expression"
 msgstr "Regluleg framsetning"
 
+#. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
-msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_blank\">php.net/manual/en/regexp.reference.php</a> for futher details."
+msgid "Regular expressions are an advanced pattern matching technique."
 msgstr ""
 
 #. I18N: Name of a module/report
@@ -11263,7 +11271,7 @@ msgstr ""
 msgid "Relationship: %s"
 msgstr "Skyldleiki: %s"
 
-#: includes/functions/functions_print.php:602
+#: includes/functions/functions_print.php:600
 #: includes/functions/functions_print_lists.php:290 library/WT/MenuBar.php:110
 #: library/WT/MenuBar.php:228 library/WT/MenuBar.php:253 relationship.php:71
 #: relationship.php:86
@@ -11353,7 +11361,7 @@ msgstr "Svara"
 msgid "Report"
 msgstr "Skýrsla"
 
-#: library/WT/MenuBar.php:397 themes/_administration/header.php:151
+#: library/WT/MenuBar.php:397 themes/_administration/header.php:149
 msgid "Reports"
 msgstr "Skýrslur"
 
@@ -11376,10 +11384,6 @@ msgstr "Geymsla"
 #: admin_trees_config.php:354 help_text.php:804
 msgid "Repository ID prefix"
 msgstr "Forskeyti geymslu auðkennis"
-
-#: help_text.php:789
-msgid "Repository add facts"
-msgstr "Gagnahirsla bæta við staðreyndir"
 
 #: find.php:249
 msgid "Repository contains:"
@@ -11622,7 +11626,7 @@ msgstr "Sao Paulo, Brasilía"
 msgid "Sao Tome and Principe"
 msgstr "Saó Tóme og Prinsípe"
 
-#: includes/functions/functions_print.php:1054
+#: includes/functions/functions_print.php:1040
 #: library/WT/Date/Calendar.php:224
 msgid "Sat"
 msgstr "Lau"
@@ -11689,11 +11693,11 @@ msgstr "Staðfestingu aflétt (skilnaður)"
 #: modules_v3/descendancy/module.php:102 modules_v3/descendancy/module.php:131
 #: modules_v3/families/module.php:141 modules_v3/individuals/module.php:141
 #: search.php:157 search.php:260 search.php:262 search.php:264
-#: search_advanced.php:293 themes/clouds/header.php:81
-#: themes/clouds/header.php:82 themes/colors/header.php:125
-#: themes/colors/header.php:126 themes/fab/header.php:97
-#: themes/minimal/header.php:101 themes/webtrees/header.php:81
-#: themes/webtrees/header.php:82 themes/xenea/header.php:79
+#: search_advanced.php:293 themes/clouds/header.php:79
+#: themes/clouds/header.php:80 themes/colors/header.php:120
+#: themes/colors/header.php:121 themes/fab/header.php:95
+#: themes/minimal/header.php:98 themes/webtrees/header.php:82
+#: themes/webtrees/header.php:83 themes/xenea/header.php:77
 msgid "Search"
 msgstr "Leita"
 
@@ -11708,7 +11712,7 @@ msgstr "Leita og skipta út"
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
 
-#: includes/session.php:544
+#: includes/session.php:531
 msgid "Search engine"
 msgstr "Leitarvél"
 
@@ -11748,6 +11752,12 @@ msgstr "Seattle, Washington"
 #: admin_site_config.php:139 help_text.php:764
 msgid "Secure connection"
 msgstr "Örugg tenging"
+
+#. I18N: %s is a URL
+#: modules_v3/batch_update/plugins/search_replace.php:93
+#, php-format
+msgid "See %s for more information."
+msgstr ""
 
 #: includes/functions/functions_edit.php:311 reportengine.php:250
 msgid "Select a date"
@@ -11828,11 +11838,11 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "Sölumaður"
 
-#: login.php:454 message.php:140 modules_v3/user_messages/module.php:78
+#: login.php:452 message.php:140 modules_v3/user_messages/module.php:78
 msgid "Send"
 msgstr "Senda"
 
-#: admin_users_bulk.php:32 themes/_administration/header.php:135
+#: admin_users_bulk.php:32 themes/_administration/header.php:133
 msgid "Send broadcast messages"
 msgstr "Senda útsendingar skilaboð"
 
@@ -11901,7 +11911,7 @@ msgctxt "LOCATIVE"
 msgid "September"
 msgstr "September"
 
-#: includes/functions/functions_print.php:1042
+#: includes/functions/functions_print.php:1028
 #: library/WT/Date/Calendar.php:131
 msgctxt "NOMINATIVE"
 msgid "September"
@@ -11943,7 +11953,7 @@ msgid "Server name"
 msgstr "Vefþjónsheiti"
 
 #. I18N: The local time on the server
-#: themes/_administration/header.php:83
+#: themes/_administration/header.php:81
 msgid "Server time"
 msgstr ""
 
@@ -11957,15 +11967,15 @@ msgstr "Setu vinnslufrestur"
 msgid "Set link"
 msgstr "Festa krækju"
 
-#: themes/_administration/header.php:125 themes/_administration/header.php:137
+#: themes/_administration/header.php:123 themes/_administration/header.php:135
 msgid "Set the default blocks"
 msgstr "Setja sjálfgefna blokk"
 
-#: themes/_administration/header.php:125
+#: themes/_administration/header.php:123
 msgid "Set the default blocks for new family trees"
 msgstr "Setja sjálfgefna blokk fyrir ný fjölskyldutré"
 
-#: themes/_administration/header.php:137
+#: themes/_administration/header.php:135
 msgid "Set the default blocks for new users"
 msgstr "Setja sjálfgefna blokk fyrir nýja notendur"
 
@@ -12517,7 +12527,7 @@ msgid "Show the location of places and events using the Google Maps™ mapping s
 msgstr "Sýnið staðsetningu staða og atburða með því að nota Google Maps™ landakortaþjónustu."
 
 #: modules_v3/faq/module.php:174 modules_v3/html/module.php:325
-#: modules_v3/stories/module.php:245
+#: modules_v3/stories/module.php:246
 msgid "Show this block for which languages?"
 msgstr "Sýna þetta box fyrir hvaða tungumál?"
 
@@ -12581,7 +12591,7 @@ msgid "Sicily"
 msgstr "Sikiley"
 
 #: admin_module_sidebar.php:72 admin_modules.php:124 admin_modules.php:142
-#: themes/_administration/header.php:150
+#: themes/_administration/header.php:148
 msgid "Sidebar"
 msgstr "Hliðarslá"
 
@@ -12610,12 +12620,12 @@ msgstr "Singapúr"
 msgid "Sister"
 msgstr "Systir"
 
-#: admin_site_access.php:30 themes/_administration/header.php:103
+#: admin_site_access.php:30 themes/_administration/header.php:101
 msgid "Site access rules"
 msgstr "Aðgangsreglur vefsíðu"
 
 #: admin_site_config.php:30 admin_site_config.php:56
-#: themes/_administration/header.php:99
+#: themes/_administration/header.php:97
 msgid "Site configuration"
 msgstr "Vefsíðu uppsetning"
 
@@ -12787,10 +12797,6 @@ msgstr "Heimild"
 msgid "Source ID prefix"
 msgstr "Forskeyti uppruna auðkennis"
 
-#: help_text.php:900
-msgid "Source add facts"
-msgstr "Heimild bæta við staðreyndum"
-
 #: help_text.php:526
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
 msgstr "Heimilda tilvísanir geta innihaldið reiti til að skrá gæði gagnanna (uppruna, vara o.s.frv.) og dagsetning þegar atburðurinn var skráður í heimildina. Ef þú notar ekki þessa reiti, þá getur þú afvirkjað þá þegar ný heimilda tilvísun er stofnuð."
@@ -12943,7 +12949,7 @@ msgstr "Tölfræði teikning"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:252 admin_site_change.php:286
-#: includes/functions/functions_print.php:887 library/WT/Gedcom/Tag.php:310
+#: includes/functions/functions_print.php:873 library/WT/Gedcom/Tag.php:310
 msgid "Status"
 msgstr "Staða"
 
@@ -12980,16 +12986,16 @@ msgid "Store watermarked thumbnails on server?"
 msgstr "Vista vatnsmerktar smámyndir á þjóni?"
 
 #. I18N: Name of a module
-#: modules_v3/stories/module.php:32 modules_v3/stories/module.php:404
+#: modules_v3/stories/module.php:32 modules_v3/stories/module.php:405
 msgid "Stories"
 msgstr "Sögur"
 
-#: modules_v3/stories/module.php:238
+#: modules_v3/stories/module.php:239
 msgid "Story"
 msgstr "Saga"
 
-#: modules_v3/stories/module.php:235 modules_v3/stories/module.php:342
-#: modules_v3/stories/module.php:408
+#: modules_v3/stories/module.php:236 modules_v3/stories/module.php:343
+#: modules_v3/stories/module.php:409
 msgid "Story title"
 msgstr "Söguheiti"
 
@@ -13025,7 +13031,7 @@ msgstr "Súdan"
 msgid "Suffixes"
 msgstr "Viðskeyti"
 
-#: includes/functions/functions_print.php:1048
+#: includes/functions/functions_print.php:1034
 #: library/WT/Date/Calendar.php:225
 msgid "Sun"
 msgstr "Sun"
@@ -13120,7 +13126,7 @@ msgstr "Flipi"
 msgid "Table prefix"
 msgstr "Töflu forskeyti"
 
-#: themes/_administration/header.php:148
+#: themes/_administration/header.php:146
 msgid "Tabs"
 msgstr "Flipar"
 
@@ -13258,7 +13264,7 @@ msgstr "PGV til <b>webtrees</b> álfurinn er sjálfvirkt ferli til að aðstoða
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "Kerfisstjórinn á webtrees vefsíðunni %s hefur samþykkt þína umsókn um reikning. Þú getur núna skráð þig inn með því að fylgja eftirfarandi krækju: %s"
 
-#: login.php:540
+#: login.php:536
 msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
 msgstr "Kerfisstjórinn hefur verið upplýstur. Um leið og hann gefur þér heimild til innskráningar, þá getur þú skráð þig inn með notandaheiti þínu og lykilorði."
 
@@ -13269,7 +13275,7 @@ msgid "The changes to “%s” have been accepted."
 msgstr "Breytingar við “%s” hafa verið samþykktar."
 
 #. I18N: %s is the name of an individual, source or other record
-#: action.php:192
+#: action.php:220
 #, php-format
 msgid "The changes to “%s” have been rejected."
 msgstr "Breytingarnar við “%s” hefur verið hafnað."
@@ -13282,7 +13288,7 @@ msgstr ""
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
 msgstr "Núverandi <b>webtrees</b> kerfisstjóra notandaheiti verður að vera það sama og gildandi PGV kerfisstjóra notandaheiti"
 
-#: login.php:506
+#: login.php:501
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
 msgstr "Gögnin fyrir notandann <b>%s</b> voru athuguð."
@@ -13503,7 +13509,7 @@ msgstr "Útgáfan af %s er of ný"
 msgid "The version of %s is too old"
 msgstr "Útgáfan af %s er of gömul"
 
-#: setup.php:923
+#: setup.php:924
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
 msgstr "Þróunaraðilar webtrees eru mjög áhugasamir um að fá upplýsingar um þessa villu. Ef þú hefur samband við þá, þá munu þeir hjálpa þér við að leysa þetta vandamál."
 
@@ -13695,7 +13701,7 @@ msgstr ""
 msgid "This folder will be used to store the media files for this family tree."
 msgstr ""
 
-#: library/WT/Filter.php:237
+#: library/WT/Filter.php:241
 msgid "This form has expired.  Try again."
 msgstr ""
 
@@ -13727,7 +13733,7 @@ msgstr "Þessum einstaklingi hefur verið breytt. Þú ættir að endurskoða br
 msgid "This individual will be selected by default when viewing charts and reports."
 msgstr ""
 
-#: includes/functions/functions_print.php:517 library/WT/Stats.php:823
+#: includes/functions/functions_print.php:515 library/WT/Stats.php:823
 #: library/WT/Stats.php:1360 library/WT/Stats.php:1446
 #: library/WT/Stats.php:1757 library/WT/Stats.php:1856
 #: library/WT/Stats.php:2087 library/WT/Stats.php:2504
@@ -14192,7 +14198,7 @@ msgstr "Þetta mun eyða öllum ættfræðigögnum frá <b>%s</b> og skipta þei
 msgid "This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
 msgstr "Þetta mun lista alla staðina frá valinni GEDCOM skrá. Sjálfgefið er að þetta mun EKKI INNIFELA staði sem eru að fullu samhæfðir á milli GEDCOM skrárinnar og GoogleMap taflanna."
 
-#: includes/functions/functions_print.php:1052
+#: includes/functions/functions_print.php:1038
 #: library/WT/Date/Calendar.php:222
 msgid "Thu"
 msgstr "Fim"
@@ -14311,7 +14317,7 @@ msgstr "Heiti"
 msgid "Title in Hebrew"
 msgstr "Heiti á Hebresku"
 
-#: editnews.php:61
+#: editnews.php:66
 msgid "Title:"
 msgstr "Heiti:"
 
@@ -14549,7 +14555,7 @@ msgstr "Tridi"
 msgid "Trinidad and Tobago"
 msgstr "Trínidad og Tóbagó"
 
-#: includes/functions/functions_print.php:1050
+#: includes/functions/functions_print.php:1036
 #: library/WT/Date/Calendar.php:220
 msgid "Tue"
 msgstr "Þri"
@@ -14594,7 +14600,7 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "Gerð staðarmerkja í staðar stigveldi"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:390 login.php:405
+#: admin_users.php:390 login.php:403
 msgid "Type the password again."
 msgstr "Skráið aftur lykilorðið."
 
@@ -14629,7 +14635,7 @@ msgid "USSR"
 msgstr "USSR"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
-#: themes/_administration/header.php:89
+#: themes/_administration/header.php:87
 msgid "UTC"
 msgstr ""
 
@@ -14668,24 +14674,19 @@ msgstr "Afturkalla"
 msgid "Undo all changes"
 msgstr "Hætta við allar breytingar"
 
-#: admin_trees_config.php:1084 admin_trees_config.php:1121
-#: admin_trees_config.php:1158 admin_trees_config.php:1187
-msgid "Unique facts"
-msgstr "Einstakar staðreyndir"
-
-#: help_text.php:515
+#: admin_trees_config.php:1121 help_text.php:515
 msgid "Unique family facts"
 msgstr "Einstakar fjölskyldu staðreyndir"
 
-#: help_text.php:593
+#: admin_trees_config.php:1084 help_text.php:593
 msgid "Unique individual facts"
 msgstr "Einstakar einstaklings staðreyndir"
 
-#: help_text.php:799
+#: admin_trees_config.php:1187 help_text.php:799
 msgid "Unique repository facts"
 msgstr "Einstakar gagnahirslu staðreyndir"
 
-#: help_text.php:910
+#: admin_trees_config.php:1158 help_text.php:910
 msgid "Unique source facts"
 msgstr "Einstakar heimilda staðreyndir"
 
@@ -14757,10 +14758,6 @@ msgstr "Uppfæra"
 msgid "Update all"
 msgstr "Uppfæra allt"
 
-#: modules_v3/batch_update/admin_batch_update.php:342
-msgid "Update the CHAN record"
-msgstr "Uppfæra CHAN færsluna"
-
 #: admin_site_merge.php:152
 msgid "Updating linked record"
 msgstr "Uppfæri tengda færslu"
@@ -14789,7 +14786,7 @@ msgid "Upload geographic data"
 msgstr "Hlaða inn landfræðigögnum"
 
 #: admin_media_upload.php:32 admin_media_upload.php:177 help_text.php:1419
-#: themes/_administration/header.php:141
+#: themes/_administration/header.php:139
 msgid "Upload media files"
 msgstr "Flytja inn miðlunarskrár"
 
@@ -14831,7 +14828,7 @@ msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to
 msgstr "Notið &laquo;?&raquo; til að finna samsvörun við einn bókstaf, notið use &laquo;*&raquo; til að finna samsvörun við engan eða fleiri bókstafi."
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:385 login.php:400
+#: admin_users.php:385 login.php:398
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -14912,7 +14909,7 @@ msgstr "Notandi ekki staðfestur af kerfisstjóra."
 msgid "User options"
 msgstr "Valkostir notanda"
 
-#: login.php:434 login.php:440 login.php:500 login.php:504
+#: login.php:432 login.php:438 login.php:495 login.php:499
 msgid "User verification"
 msgstr "Notanda staðfesting"
 
@@ -14923,7 +14920,7 @@ msgstr "Notanda-forritastrengur"
 
 #: admin_site_config.php:133 admin_users.php:372 admin_users.php:571
 #: edituser.php:133 help_text.php:734 help_text.php:1474 login.php:146
-#: login.php:214 login.php:280 login.php:310 login.php:442
+#: login.php:214 login.php:280 login.php:307 login.php:440
 #: modules_v3/login_block/module.php:71 modules_v3/todo/module.php:97
 msgid "Username"
 msgstr "Notandaheiti"
@@ -14941,7 +14938,7 @@ msgstr "Notandaheiti er stafstaða ónæmt og sleppið broddstöfum, þannig að
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
 msgstr "Notandanöfn geta ekki innihaldið eftirfarandi stafi: &lt; &gt; \" %% { } ;"
 
-#: admin.php:122 themes/_administration/header.php:131
+#: admin.php:122 themes/_administration/header.php:129
 msgid "Users"
 msgstr "Notendur"
 
@@ -15025,7 +15022,7 @@ msgstr "Ventôse"
 msgid "Veracruz, Mexico"
 msgstr "Veracruz, Mexikó"
 
-#: login.php:311 login.php:450
+#: login.php:308 login.php:448
 msgid "Verification code:"
 msgstr "Staðfestingarkóði:"
 
@@ -15184,12 +15181,12 @@ msgstr ""
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
 msgstr ""
 
-#: login.php:356
+#: login.php:354
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 msgstr "Við munum núna senda staðfestingar tölvupóst á netfangið <b>%s</b>. Þú verður að staðfesta beiðni þína um reikning með því að fylgja leiðbeiningum í staðfestingar tölvupóstinum. Ef þú staðfestir ekki reikningsbeiðni þína innan sjö daga, þá verður þinni umsókn hafnað sjálfkrafa. Þú þarft síðan að sækja um aftur.<br><br>Eftir að þú hefur fylgt leiðbeiningunum í staðfestingar tölvupóstinum, þá þarf kerfisstjórinn sem sem áður að samþykkja beiðni þína áður en hægt er að nota reikningingin þinn.<br><br>Til að skrá þig inn á vefsíðuna, þá þarftu að vita notandaheitið þitt og lykilorð."
 
-#: login.php:358
+#: login.php:356
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
 msgstr "Við munum núna senda staðfestingar tölvupóst á netfangið <b>%s</b>. Þú verður að staðfesta beiðni þína um reikning með því að fylgja leiðbeiningum í staðfestingar tölvupóstinum. Ef þú staðfestir ekki reikningsbeiðni þína innan sjö daga, þá verður þinni umsókn hafnað sjálfkrafa. Þú þarft síðan að sækja um aftur.<br><br>Eftir að þú hefur fylgt leiðbeiningunum í staðfestingar tölvupóstinum, þá getur þú skráð þig inn. Til að skrá þig inn á vefsíðuna, þá þarftu að vita notandaheitið þitt og lykilorð."
@@ -15207,7 +15204,7 @@ msgstr "Vefsíðu og lýsigagna stillingar"
 msgid "Website URL"
 msgstr "Vefsíðu veffang"
 
-#: includes/functions/functions_print.php:1051
+#: includes/functions/functions_print.php:1037
 #: library/WT/Date/Calendar.php:221
 msgid "Wed"
 msgstr "Mið"
@@ -15479,7 +15476,7 @@ msgid "Yemen"
 msgstr "Jemen"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
-#: login.php:304
+#: login.php:301
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr "Þú (eða einhver sem segist vera þú) hefur stofnað reikning á %1$s með því að nota netfangið %2$s."
@@ -15511,7 +15508,7 @@ msgstr "Þú getur takmarkað fjölda Fréttagreina sem birtast og þar með min
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "Þú getur auðveldað leitina að giftum konum með því að skrá giftingarnöfn þeirra.<br>Allar konur taka þó ekki eftirnöfn eiginmanna sinna, svo þú skalt varast að setja inn rangar upplýsingar inn í gagnagrunninn þinn."
 
-#: login.php:542
+#: login.php:538
 msgid "You can now login with your user name and password."
 msgstr "Þú getur skráð þig inn núna með þínu notandaheiti og lykilorði."
 
@@ -15527,11 +15524,11 @@ msgstr "Þú getur flýtt fyrir friðhelgis útreikningum með því að bæta v
 msgid "You cannot login because your browser does not accept cookies."
 msgstr ""
 
-#: downloadbackup.php:34 includes/session.php:546
+#: downloadbackup.php:34 includes/session.php:533
 msgid "You do not have permission to view this page."
 msgstr "Þú hefur ekki réttindi til að skoða þessa síðu."
 
-#: login.php:483
+#: login.php:481
 msgid "You do not have to take any action; the user can now login."
 msgstr "Þú þarft ekki að framkvæma neina aðgerð; notandinn getur núna skráð sig inn."
 
@@ -15539,7 +15536,7 @@ msgstr "Þú þarft ekki að framkvæma neina aðgerð; notandinn getur núna sk
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "Þú slóst inn sama auðkennið. Þú getur ekki sameinað sömu færslurnar."
 
-#: login.php:538
+#: login.php:534
 msgid "You have confirmed your request to become a registered user."
 msgstr "Þú hefur staðfest beiðni þína um að gerast skráður notandi."
 
@@ -15624,7 +15621,7 @@ msgstr "Þú verður að innskrá þig aftur, með því að nota PhpGedView not
 msgid "You need to set up an administrator account.  This account can control all aspects of this <b>webtrees</b> installation.  Please choose a strong password."
 msgstr "Þú þarft að setja upp kerfisstjóra reikning. Þessi reikningur getur stjórnað öllum atriðum á þessari <b>webtrees</b> uppsetningu. Vinsamlega veljið sterkt lykilorð."
 
-#: login.php:481
+#: login.php:479
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr "Þú þarft núna að skoða reiknings upplýsingarnar og setja \"samþykkta\" stöðu á \"já\"."
 
@@ -15667,7 +15664,7 @@ msgstr "Þú verður upplýstur með tölvupósti þegar þessi væntanlegi nota
 msgid "You will use this to login to webtrees."
 msgstr "Þú munt nota þetta til að skrá þig inn á webtrees."
 
-#: login.php:315
+#: login.php:312
 msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
 msgstr "Þú færð ekki fleiri tölvupósta frá þessari vefsíðu, vegna þess að reikningsbeiðninni verður eytt sjálfkrafa eftir sjö daga."
 
@@ -15700,7 +15697,7 @@ msgid "Your name"
 msgstr "Nafnið þitt"
 
 #. I18N: %s is a server name/URL
-#: login.php:316
+#: login.php:313
 #, php-format
 msgid "Your registration at %s"
 msgstr "Þín skráning á %s"
@@ -15742,16 +15739,6 @@ msgstr "Þjöppuð skrá(-r)"
 msgid "Zoom"
 msgstr "Þysja"
 
-#: modules_v3/googlemap/admin_places.php:162
-#: modules_v3/googlemap/admin_places.php:582
-#: modules_v3/googlemap/places_edit.php:318
-msgid "Zoom level"
-msgstr "Þysjunarstuðull"
-
-#: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
-msgid "Zoom level of map"
-msgstr "Þysjunarstuðull landakorts"
-
 #: modules_v3/googlemap/module.php:1347 timeline.php:300
 msgid "Zoom in"
 msgstr "Þysja inn"
@@ -15763,6 +15750,16 @@ msgstr "Þysja inn hér"
 #: includes/functions/functions_print.php:127
 msgid "Zoom in/out on this box."
 msgstr "Þysja inn/út í þessum kassa"
+
+#: modules_v3/googlemap/admin_places.php:162
+#: modules_v3/googlemap/admin_places.php:582
+#: modules_v3/googlemap/places_edit.php:318
+msgid "Zoom level"
+msgstr "Þysjunarstuðull"
+
+#: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
+msgid "Zoom level of map"
+msgstr "Þysjunarstuðull landakorts"
 
 #: modules_v3/googlemap/module.php:1348 timeline.php:301
 msgid "Zoom out"
@@ -15835,7 +15832,7 @@ msgstr "fyrir aftan"
 msgid "after %s"
 msgstr "eftir %s"
 
-#: includes/functions/functions_print.php:773
+#: includes/functions/functions_print.php:759
 msgid "after death"
 msgstr "eftir andlát"
 
@@ -16006,9 +16003,9 @@ msgid "brother-in-law"
 msgstr "mágur"
 
 #: includes/functions/functions.php:939
-msgctxt "spouse's brother"
+msgctxt "spouses's brother"
 msgid "brother-in-law"
-msgstr "mágur"
+msgstr ""
 
 #: includes/functions/functions.php:948
 msgctxt "wife's brother"
@@ -16041,9 +16038,9 @@ msgid "brother/sister-in-law"
 msgstr "bróðir/mágkona"
 
 #: includes/functions/functions.php:947
-msgctxt "spouse's sibling"
+msgctxt "spouses's sibling"
 msgid "brother/sister-in-law"
-msgstr "bróðir/mágkona"
+msgstr ""
 
 #: includes/functions/functions.php:953
 msgctxt "wife's sibling"
@@ -16135,7 +16132,7 @@ msgstr "samanþjappaður listi"
 
 #. I18N: button label
 #: admin_pgv_to_wt.php:1059 admin_trees_download.php:138
-#: admin_trees_manage.php:169 admin_users.php:548 login.php:176 login.php:417
+#: admin_trees_manage.php:169 admin_users.php:548 login.php:176 login.php:415
 #: modules_v3/login_block/module.php:102 setup.php:180 setup.php:204
 #: setup.php:273 setup.php:358 setup.php:414
 msgid "continue"
@@ -16327,9 +16324,9 @@ msgid "father-in-law"
 msgstr "tengdafaðir"
 
 #: includes/functions/functions.php:942
-msgctxt "spouse's father"
+msgctxt "spouses's father"
 msgid "father-in-law"
-msgstr "tengdafaðir"
+msgstr ""
 
 #: includes/functions/functions.php:951
 msgctxt "wife's father"
@@ -18437,9 +18434,9 @@ msgid "mother-in-law"
 msgstr "tengdamóðir"
 
 #: includes/functions/functions.php:943
-msgctxt "spouse's mother"
+msgctxt "spouses's mother"
 msgid "mother-in-law"
-msgstr "tengdamóðir"
+msgstr ""
 
 #: includes/functions/functions.php:952
 msgctxt "wife's mother"
@@ -18447,9 +18444,9 @@ msgid "mother-in-law"
 msgstr "tengdamóðir"
 
 #: includes/functions/functions.php:946
-msgctxt "spouse's parent"
+msgctxt "spouses's parent"
 msgid "mother/father-in-law"
-msgstr "móðir/tengdafaðir"
+msgstr ""
 
 #: includes/functions/functions.php:877
 msgctxt "brother's son"
@@ -18552,7 +18549,7 @@ msgstr "níundu frændsystkini"
 #: includes/functions/functions_edit.php:542
 #: includes/functions/functions_print_facts.php:1055
 #: includes/functions/functions_print_lists.php:776 library/WT/Stats.php:3491
-#: modules_v3/batch_update/admin_batch_update.php:344
+#: modules_v3/batch_update/admin_batch_update.php:345
 #: modules_v3/change_report/report.xml:8 modules_v3/charts/module.php:213
 #: modules_v3/family_group_report/report.xml:249
 #: modules_v3/family_group_report/report.xml:420
@@ -18604,7 +18601,7 @@ msgstr "tölur"
 msgid "of"
 msgstr "af"
 
-#: includes/functions/functions_print.php:771
+#: includes/functions/functions_print.php:757
 msgid "on the date of death"
 msgstr "á degi andláts"
 
@@ -18759,7 +18756,7 @@ msgstr "vélmenni"
 #: edit_interface.php:1210 edit_interface.php:1308 edit_interface.php:1402
 #: edit_interface.php:1485 edit_interface.php:1679 edit_interface.php:1779
 #: edit_interface.php:1979 edit_interface.php:2142 edit_interface.php:2675
-#: editnews.php:78 edituser.php:176 find.php:484
+#: editnews.php:72 edituser.php:176 find.php:484
 #: includes/functions/functions_edit.php:34
 #: includes/functions/functions_edit.php:48
 #: includes/functions/functions_edit.php:107 index_edit.php:335
@@ -18768,7 +18765,7 @@ msgstr "vélmenni"
 #: modules_v3/googlemap/module.php:626
 #: modules_v3/googlemap/placehierarchy.php:254
 #: modules_v3/googlemap/places_edit.php:339 modules_v3/sitemap/module.php:248
-#: modules_v3/stories/module.php:262
+#: modules_v3/stories/module.php:263
 msgid "save"
 msgstr "vista"
 
@@ -18981,7 +18978,7 @@ msgstr "sjöundu frændsystkini"
 #: admin_trees_config.php:992 admin_trees_config.php:1024
 #: admin_trees_config.php:1045 admin_trees_config.php:1053
 #: admin_trees_config.php:1061 modules_v3/faq/module.php:355
-#: modules_v3/googlemap/module.php:275 modules_v3/stories/module.php:335
+#: modules_v3/googlemap/module.php:275 modules_v3/stories/module.php:336
 msgid "show"
 msgstr "sýna"
 
@@ -19023,9 +19020,9 @@ msgid "sister-in-law"
 msgstr "mágkona"
 
 #: includes/functions/functions.php:944
-msgctxt "spouse's sister"
+msgctxt "spouses's sister"
 msgid "sister-in-law"
-msgstr "mágkona"
+msgstr ""
 
 #: includes/functions/functions.php:1139
 msgctxt "wife's brother's wife"
@@ -19193,9 +19190,9 @@ msgid "step-child"
 msgstr "stjúpbarn"
 
 #: includes/functions/functions.php:940
-msgctxt "spouse's child"
+msgctxt "spouses's child"
 msgid "step-child"
-msgstr "stjúpbarn"
+msgstr ""
 
 #: includes/functions/functions.php:949
 msgctxt "wife's child"
@@ -19208,9 +19205,9 @@ msgid "step-daughter"
 msgstr "stjúpdóttir"
 
 #: includes/functions/functions.php:941
-msgctxt "spouse's daughter"
+msgctxt "spouses's daughter"
 msgid "step-daughter"
-msgstr "stjúpdóttir"
+msgstr ""
 
 #: includes/functions/functions.php:950
 msgctxt "wife's daughter"
@@ -19268,9 +19265,9 @@ msgid "step-son"
 msgstr "stjúpsonur"
 
 #: includes/functions/functions.php:945
-msgctxt "spouse's son"
+msgctxt "spouses's son"
 msgid "step-son"
-msgstr "stjúpsonur"
+msgstr ""
 
 #: includes/functions/functions.php:955
 msgctxt "wife's son"
@@ -19566,7 +19563,7 @@ msgstr "Svar netfang webtrees"
 msgid "webtrees sends emails with no storage"
 msgstr "webtrees sendir tölvupósta með engri geymslu"
 
-#: includes/functions/functions_print.php:539
+#: includes/functions/functions_print.php:537
 msgid "webtrees wiki"
 msgstr "webtrees wiki"
 
@@ -19591,11 +19588,11 @@ msgstr "ár"
 #: includes/functions/functions_edit.php:146
 #: includes/functions/functions_edit.php:515
 #: includes/functions/functions_edit.php:539
-#: includes/functions/functions_print.php:813
+#: includes/functions/functions_print.php:799
 #: includes/functions/functions_print_facts.php:1052
 #: includes/functions/functions_print_lists.php:357
 #: includes/functions/functions_print_lists.php:778 library/WT/Stats.php:3490
-#: modules_v3/batch_update/admin_batch_update.php:345
+#: modules_v3/batch_update/admin_batch_update.php:344
 #: modules_v3/change_report/report.xml:8 modules_v3/charts/module.php:214
 #: modules_v3/family_group_report/report.xml:246
 #: modules_v3/family_group_report/report.xml:417
@@ -19667,6 +19664,9 @@ msgstr "…"
 #~ msgid "Add child"
 #~ msgstr "Bæta við barni"
 
+#~ msgid "All facts"
+#~ msgstr "Allar staðreyndir"
+
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "Heimila GEDCOM skiptingu"
 
@@ -19736,6 +19736,9 @@ msgstr "…"
 #~ msgid "External objects"
 #~ msgstr "Ytri hlutir"
 
+#~ msgid "Family add facts"
+#~ msgstr "Fjölskylda bæta við staðreyndum"
+
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Fæðingarstaður föðurs - (Chapman snið)"
 
@@ -19772,6 +19775,9 @@ msgstr "…"
 #~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
 #~ msgstr "Ef þú ert með umhverfi með mörgum GEDCOM og með því að stilla þetta gildi á <b>Já</b> gerir þínum vefsíðu gestum <u>og</u> notendum að hafa þann valkost að breyta GEDCOM. Með því að stilla á <b>Nei</b> þá verður GEDCOM skipting óvirk fyrir bæði gesti <u>og</u> innskráða notendur."
 
+#~ msgid "Individual add facts"
+#~ msgstr "Einstaklingur bæta við staðreyndum"
+
 #~ msgid "Individual information"
 #~ msgstr "Einstaklings upplýsingar"
 
@@ -19798,6 +19804,9 @@ msgstr "…"
 
 #~ msgid "Name List"
 #~ msgstr "Nafnalisti"
+
+#~ msgid "New entry facts"
+#~ msgstr "Nýjar staðreyndafærslur"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -19828,6 +19837,9 @@ msgstr "…"
 #~ msgid "Port"
 #~ msgstr "Tengi"
 
+#~ msgid "Quick facts"
+#~ msgstr "Flýti staðreyndir"
+
 #~ msgid "Recommendation:"
 #~ msgstr "Ráðlegging:"
 
@@ -19836,6 +19848,9 @@ msgstr "…"
 
 #~ msgid "Replace record"
 #~ msgstr "Skipta út færslu"
+
+#~ msgid "Repository add facts"
+#~ msgstr "Gagnahirsla bæta við staðreyndir"
 
 #~ msgid "SMTP port"
 #~ msgstr "SMTP tengi"
@@ -19857,6 +19872,9 @@ msgstr "…"
 
 #~ msgid "Show timeline"
 #~ msgstr "Sýna tímalínu"
+
+#~ msgid "Source add facts"
+#~ msgstr "Heimild bæta við staðreyndum"
 
 #~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
 #~ msgstr "Tilgreinir hvort skilaboð sem send eru í gegnum <b>webtrees</b> geta verið vistuð í gagnagrunninum. Ef stillt á <b>Já</b> þá munu notendur geta kallað fram skilaboðin sín þegar þeir skrá sig inn á <b>webtrees</b>. Ef stillt á <b>Nei</b> þá verða skilaboðin eingöngu send."
@@ -19906,6 +19924,12 @@ msgstr "…"
 #~ msgid "This record was last changed by <i>%s</i> at %s"
 #~ msgstr "Þessi færsla var síðast breytt af <i>%s</i> þann %s"
 
+#~ msgid "Unique facts"
+#~ msgstr "Einstakar staðreyndir"
+
+#~ msgid "Update the CHAN record"
+#~ msgstr "Uppfæra CHAN færsluna"
+
 #~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
 #~ msgstr "Nota SMTP til að seda tölvupósta frá <b>webtrees</b>.<br><br>Þessi valkostur þarfnast aðgangs að SMTP póstþjóni. Þegar stillt á <b>Nei</b> þá mun <b>webtrees</b> nota tölvupóstkerfið sem innbyggt er í PHP á þessum vefþjóni."
 
@@ -19936,6 +19960,14 @@ msgstr "…"
 #~ msgid "before %d"
 #~ msgstr "á undan %d"
 
+#~ msgctxt "spouse's brother"
+#~ msgid "brother-in-law"
+#~ msgstr "mágur"
+
+#~ msgctxt "spouse's sibling"
+#~ msgid "brother/sister-in-law"
+#~ msgstr "bróðir/mágkona"
+
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
 #~ msgstr "n."
@@ -19944,11 +19976,39 @@ msgstr "…"
 #~ msgid "f."
 #~ msgstr "f."
 
+#~ msgctxt "spouse's father"
+#~ msgid "father-in-law"
+#~ msgstr "tengdafaðir"
+
 #~ msgid "from %d"
 #~ msgstr "frá %d"
 
+#~ msgctxt "spouse's mother"
+#~ msgid "mother-in-law"
+#~ msgstr "tengdamóðir"
+
+#~ msgctxt "spouse's parent"
+#~ msgid "mother/father-in-law"
+#~ msgstr "móðir/tengdafaðir"
+
 #~ msgid "or"
 #~ msgstr "eða"
+
+#~ msgctxt "spouse's sister"
+#~ msgid "sister-in-law"
+#~ msgstr "mágkona"
+
+#~ msgctxt "spouse's child"
+#~ msgid "step-child"
+#~ msgstr "stjúpbarn"
+
+#~ msgctxt "spouse's daughter"
+#~ msgid "step-daughter"
+#~ msgstr "stjúpdóttir"
+
+#~ msgctxt "spouse's son"
+#~ msgid "step-son"
+#~ msgstr "stjúpsonur"
 
 #~ msgctxt "Abbreviation for telephone number"
 #~ msgid "t."

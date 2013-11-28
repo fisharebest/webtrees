@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-09 18:17+0000\n"
+"POT-Creation-Date: 2013-11-28 15:21+0000\n"
 "PO-Revision-Date: 2013-05-05 01:04+0000\n"
 "Last-Translator: Muadh Hamidaddin <Unknown>\n"
 "Language-Team: \n"
@@ -742,7 +742,7 @@ msgstr "<center><b>مرحباً في هذا الموقع</b></center><br>الد�
 msgid "<default theme>"
 msgstr "<المظهر الإفتراضي>"
 
-#: login.php:376
+#: login.php:374
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
 msgstr ""
 "<div class=\"largeError\">تنوية:</div>\n"
@@ -875,7 +875,7 @@ msgstr "لقد تم إنشاء كلمة مرور جديدة وأرسلت إلى 
 msgid "A new password was requested for your user name."
 msgstr "لقد تم طلب كلمة دخول جديدة لإسم المستخدم خاصتك"
 
-#: login.php:475
+#: login.php:473
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "مستخدم جديد (%1$s) طلب إنشاء حساب بإسم (%2$s) وصادق على عنوان البريد الإلكتروني (%3$s)."
@@ -1227,8 +1227,8 @@ msgid "Adar II"
 msgstr "أدار الثاني"
 
 #: admin_trees_config.php:580 edit_interface.php:1973
-#: includes/functions/functions_print.php:961
-#: includes/functions/functions_print.php:1017 index_edit.php:291
+#: includes/functions/functions_print.php:947
+#: includes/functions/functions_print.php:1003 index_edit.php:291
 #: index_edit.php:309 lifespan.php:157
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:94
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:185
@@ -1366,7 +1366,7 @@ msgstr "إضافة إقتباس جديد من مصدر"
 msgid "Add a new spouse"
 msgstr "إضافة زوج/زوجة جديدة"
 
-#: themes/_administration/header.php:134
+#: themes/_administration/header.php:132
 msgid "Add a new user"
 msgstr "إضافة مستخدم جديد"
 
@@ -1388,7 +1388,7 @@ msgstr "إضافة زوجة جديدة"
 msgid "Add a scrollbar when block contents grow"
 msgstr "إضافة شريط تمرير عندما تكثر محتويات الكتلة"
 
-#: modules_v3/relatives/module.php:203
+#: modules_v3/relatives/module.php:161
 msgid "Add a wife to this family"
 msgstr "إضافة زوجة لهذه الأسرة"
 
@@ -1406,7 +1406,7 @@ msgid "Add by ID"
 msgstr "إضافة بالمعرف الخاص"
 
 #: edit_interface.php:1589 help_text.php:1052
-#: includes/functions/functions_print.php:942
+#: includes/functions/functions_print.php:928
 msgid "Add from clipboard"
 msgstr "إضافة من الحافظة"
 
@@ -1434,7 +1434,7 @@ msgstr "إضافة هذا المصدر فقط."
 msgid "Add links"
 msgstr "إضافة روابط"
 
-#: modules_v3/relatives/module.php:167
+#: modules_v3/relatives/module.php:201
 msgid "Add marriage details"
 msgstr "إضافة تفاصيل الزواج"
 
@@ -1468,9 +1468,14 @@ msgid "Add spaces where notes were wrapped"
 msgstr "إضافة مساحة فارغة بين كلمات الملاحظات"
 
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
-#: modules_v3/stories/module.php:338
+#: modules_v3/stories/module.php:339
 msgid "Add story"
 msgstr "إضافة رواية"
+
+#: admin_trees_download.php:129 modules_v3/clippings/module.php:217
+#: modules_v3/clippings/module.php:603
+msgid "Add the GEDCOM media path to filenames"
+msgstr ""
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:528
 msgid "Add this individual and his direct line ancestors."
@@ -1513,7 +1518,7 @@ msgid "Add to favorites"
 msgstr "إضافة إلى المفضلات"
 
 #: admin_site_other.php:31 admin_site_other.php:37
-#: themes/_administration/header.php:122
+#: themes/_administration/header.php:120
 msgid "Add unlinked records"
 msgstr "إضافة سجلات غير مرتبطة"
 
@@ -1521,7 +1526,7 @@ msgstr "إضافة سجلات غير مرتبطة"
 msgid "Add watermarks to thumbnails?"
 msgstr "دمج علامات مائية في الصور المصغرة؟"
 
-#: modules_v3/relatives/module.php:202
+#: modules_v3/relatives/module.php:160
 msgid "Add wife"
 msgstr "إضافة زوجة"
 
@@ -1534,7 +1539,7 @@ msgstr "إضافة نصوص وصور مستقلة بطريقة متطورة."
 msgid "Add/Insert Blank Row"
 msgstr "إضافة/إدخال صف فارغ"
 
-#: editnews.php:31 editnews.php:45
+#: editnews.php:31 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "إضافة/تعديل نص ذكرى شخصية"
 
@@ -1563,8 +1568,8 @@ msgstr "أديلايد، استراليا"
 msgid "Admin comments on user"
 msgstr "ملاحظات المدير على المستخدم"
 
-#: admin.php:29 library/WT/MenuBar.php:83 themes/_administration/header.php:64
-#: themes/_administration/header.php:95
+#: admin.php:29 library/WT/MenuBar.php:83 themes/_administration/header.php:62
+#: themes/_administration/header.php:93
 msgid "Administration"
 msgstr "الإدارة"
 
@@ -1764,8 +1769,8 @@ msgid "After you have logged in, select the “My Account” link under the “M
 msgstr "بعد تسجيل الدخول إذهب خيار «حسابي في الموقع» من قائمة «صفحتي» حيث بإمكانك هناك تغيير كلمة المرور."
 
 #. I18N: gedcom tag AGE
-#: autocomplete.php:114 includes/functions/functions_print.php:761
-#: includes/functions/functions_print.php:799
+#: autocomplete.php:114 includes/functions/functions_print.php:747
+#: includes/functions/functions_print.php:785
 #: library/WT/Controller/Timeline.php:226
 #: library/WT/Controller/Timeline.php:228 library/WT/Gedcom/Tag.php:106
 #: library/WT/Stats.php:1614 library/WT/Stats.php:2354
@@ -1888,19 +1893,30 @@ msgstr "يجب قبول جميع التغييرات في PGV"
 msgid "All existing PGV users must have distinct email addresses"
 msgstr "جميع مستخدمي PGV يجب أن يكون لديهم عنوان بريد إلكتروني فريد"
 
-#: admin_trees_config.php:1076 admin_trees_config.php:1113
-#: admin_trees_config.php:1150 admin_trees_config.php:1179
-msgid "All facts"
-msgstr "كل المعلومات"
+#: admin_trees_config.php:1113 help_text.php:505
+msgid "All family facts"
+msgstr ""
 
-#: login.php:382
+#: login.php:380
 msgid "All fields must be completed."
 msgstr "يجب إتمام جميع الحقول."
+
+#: admin_trees_config.php:1076 help_text.php:583
+msgid "All individual facts"
+msgstr ""
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
 msgid "All individuals"
 msgstr "الجميع"
+
+#: admin_trees_config.php:1179 help_text.php:789
+msgid "All repository facts"
+msgstr ""
+
+#: admin_trees_config.php:1150 help_text.php:900
+msgid "All source facts"
+msgstr ""
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1987,7 +2003,7 @@ msgstr "قائمة لتعديل الأفراد والأسر والمصادر و�
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr "مشجر تفاعلي يظهر الأسلاف والأنسال للفرد."
 
-#: setup.php:921
+#: setup.php:922
 msgid "An unexpected database error occurred."
 msgstr "لقد نتج خطأ غير متوقع في قاعدة البيانات."
 
@@ -2118,7 +2134,7 @@ msgctxt "LOCATIVE"
 msgid "April"
 msgstr "أبريل"
 
-#: includes/functions/functions_print.php:1037
+#: includes/functions/functions_print.php:1023
 #: library/WT/Date/Calendar.php:126
 msgctxt "NOMINATIVE"
 msgid "April"
@@ -2145,7 +2161,7 @@ msgstr "هل أنت متأكد من رغبتك في حذف هذا الخبر؟"
 #: includes/functions/functions_print_facts.php:674
 #: includes/functions/functions_print_facts.php:869
 #: includes/functions/functions_print_facts.php:1013
-#: library/WT/Controller/Individual.php:158 modules_v3/lightbox/module.php:203
+#: library/WT/Controller/Individual.php:158
 msgid "Are you sure you want to delete this fact?"
 msgstr "هل أنت متأكد من رغبتك في حذف هذه المعلومة؟"
 
@@ -2154,7 +2170,7 @@ msgstr "هل أنت متأكد من رغبتك في حذف هذه المعلوم
 msgid "Are you sure you want to delete this message?  It cannot be retrieved later."
 msgstr "هل أنت متأكد من رغبتك في حذف هذه الرسالة نهائياً؟"
 
-#: modules_v3/stories/module.php:359
+#: modules_v3/stories/module.php:360
 msgid "Are you sure you want to delete this story?"
 msgstr "هل أنت متأكد من رغبتك في حذف هذه الرواية؟"
 
@@ -2169,6 +2185,10 @@ msgstr "هل أنت متأكد من رغبتك في حذف هذه الرواية
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "هل أنت متأكد من رغبتك في حذف ”%s“؟"
+
+#: modules_v3/lightbox/module.php:203
+msgid "Are you sure you want to remove links to this media object?"
+msgstr ""
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -2300,7 +2320,7 @@ msgctxt "LOCATIVE"
 msgid "August"
 msgstr "أغسطس"
 
-#: includes/functions/functions_print.php:1041
+#: includes/functions/functions_print.php:1027
 #: library/WT/Date/Calendar.php:130
 msgctxt "NOMINATIVE"
 msgid "August"
@@ -2902,7 +2922,7 @@ msgstr "مباركة"
 msgid "Block"
 msgstr "كتلة"
 
-#: themes/_administration/header.php:149
+#: themes/_administration/header.php:147
 msgid "Blocks"
 msgstr "كتل"
 
@@ -3467,7 +3487,7 @@ msgstr[3] "التعديلات في الـ %s أيام السابقة"
 msgstr[4] "التعديلات في الـ %s يوماً السابقة"
 msgstr[5] "التعديلات في الـ %s يوم السابقة"
 
-#: themes/_administration/header.php:124
+#: themes/_administration/header.php:122
 msgid "Changes log"
 msgstr "سِجل التعديلات"
 
@@ -3499,7 +3519,7 @@ msgstr "مخططات"
 msgid "Check access rights on this directory."
 msgstr "تأكد من صلاحيات النفوذ في هذا المجلد."
 
-#: admin_trees_check.php:34 themes/_administration/header.php:123
+#: admin_trees_check.php:34 themes/_administration/header.php:121
 msgid "Check for errors"
 msgstr "تحقق من الأخطاء"
 
@@ -3742,7 +3762,7 @@ msgid "Civil registrar"
 msgstr "كاتب سجل مدني"
 
 #. I18N: The “Data folder” is a configuration setting
-#: admin_site_clean.php:28 themes/_administration/header.php:104
+#: admin_site_clean.php:28 themes/_administration/header.php:102
 msgid "Clean up data folder"
 msgstr "إزالة ملفات مجلد البيانات"
 
@@ -3807,7 +3827,7 @@ msgid "Clicking the “+” icon will open the GEDFact shared note assistant win
 msgstr "النقر على \"+\" سيظهر نافذة مساعد ملاحظات معلومات المشجر."
 
 #. I18N: The local time on the client/browser
-#: themes/_administration/header.php:86
+#: themes/_administration/header.php:84
 msgid "Client time"
 msgstr ""
 
@@ -3867,8 +3887,8 @@ msgstr "عدد الأعمدة في الصفحة"
 msgid "Comment"
 msgstr "تعليق"
 
-#: admin_users.php:207 help_text.php:1348 login.php:283 login.php:312
-#: login.php:409
+#: admin_users.php:207 help_text.php:1348 login.php:283 login.php:309
+#: login.php:407
 msgid "Comments"
 msgstr "تعقيب"
 
@@ -3926,7 +3946,7 @@ msgstr "سلسلة"
 msgid "Configure"
 msgstr "تهيئة"
 
-#: admin_users.php:389 edituser.php:152 help_text.php:1289 login.php:404
+#: admin_users.php:389 edituser.php:152 help_text.php:1289 login.php:402
 msgid "Confirm password"
 msgstr "تأكيد كلمة المرور"
 
@@ -4023,7 +4043,7 @@ msgstr "كوستاريكا"
 msgid "Cote d’Ivoire"
 msgstr "كوت ديفوار"
 
-#: login.php:555
+#: login.php:551
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr "لم يتم التمكن من التحقق من المعلومات التي أدخلت. لطفاً إعادة المحاولة أو التواصل مع المدير."
 
@@ -4257,11 +4277,11 @@ msgstr "الحالي"
 msgid "Custom"
 msgstr "مخصص"
 
-#: calendar.php:269 includes/functions/functions_print.php:1014
+#: calendar.php:269 includes/functions/functions_print.php:1000
 msgid "Custom event"
 msgstr "حدث مخصص"
 
-#: includes/functions/functions_print.php:1013
+#: includes/functions/functions_print.php:999
 msgid "Custom fact"
 msgstr ""
 
@@ -4308,7 +4328,7 @@ msgstr "بيانات"
 msgid "Data folder"
 msgstr "مجلد البيانات"
 
-#: login.php:549
+#: login.php:545
 msgid "Data was not correct, please try again"
 msgstr "البيانات غير صحيحة، لطفاً المحاولة مرة أخرى."
 
@@ -4857,7 +4877,7 @@ msgctxt "LOCATIVE"
 msgid "December"
 msgstr "ديسمبر"
 
-#: includes/functions/functions_print.php:1045
+#: includes/functions/functions_print.php:1031
 #: library/WT/Date/Calendar.php:134
 msgctxt "NOMINATIVE"
 msgid "December"
@@ -4958,7 +4978,7 @@ msgstr "حذف الرسائل المختارة"
 msgid "Delete all existing geographic data before importing the file."
 msgstr "حذف جميع البيانات الجغرافية القائمة قبل توريد الملف."
 
-#: themes/_administration/header.php:136
+#: themes/_administration/header.php:134
 msgid "Delete inactive users"
 msgstr "حذف المستخدمين الخاملين"
 
@@ -5042,11 +5062,11 @@ msgstr "وصف"
 msgid "Description META tag"
 msgstr "محتوى العلامة الوصفية"
 
-#: login.php:399
+#: login.php:397
 msgid "Desired password"
 msgstr "كلمة المرور المرغوبة"
 
-#: login.php:394
+#: login.php:392
 msgid "Desired user name"
 msgstr "إسم المستخدم المرغوب"
 
@@ -5238,6 +5258,7 @@ msgstr "لا تحكم: غير مصرح"
 #: addmedia.php:725 admin_trees_config.php:1261 edit_interface.php:2208
 #: help_text.php:1274
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
+#: modules_v3/batch_update/admin_batch_update.php:342
 msgid "Do not update the “last change” record"
 msgstr "عدم تحديث سجل ”آخر تعديل“."
 
@@ -5434,7 +5455,7 @@ msgstr "تعديل المصدر"
 msgid "Edit story"
 msgstr "تعديل الرواية"
 
-#: library/WT/Tree.php:331
+#: library/WT/Tree.php:332
 msgid "Edit this individual and replace their details with your own"
 msgstr "تعديل معلومات هذا الفرد وإستبدالها بتفاصيل أخرى"
 
@@ -5503,7 +5524,7 @@ msgstr "البريد الإلكتروني"
 #. I18N: gedcom tag _EMAIL
 #: admin_users.php:378 edituser.php:156 help_text.php:1197
 #: library/WT/Gedcom/Tag.php:182 library/WT/Gedcom/Tag.php:183
-#: library/WT/Gedcom/Tag.php:184 library/WT/Gedcom/Tag.php:700 login.php:389
+#: library/WT/Gedcom/Tag.php:184 library/WT/Gedcom/Tag.php:700 login.php:387
 #: setup.php:408
 msgid "Email address"
 msgstr "عنوان البريد الإلكتروني"
@@ -5670,7 +5691,7 @@ msgstr "إدخال مستوى التكبير"
 msgid "Entire record"
 msgstr "كامل السجل"
 
-#: editnews.php:63
+#: editnews.php:68
 msgid "Entry text:"
 msgstr "النص:"
 
@@ -5801,7 +5822,7 @@ msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s 
 msgstr ""
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:410
+#: login.php:408
 msgid "Explain why you are requesting an account."
 msgstr "وضح لماذا تود طلب حساب."
 
@@ -5916,7 +5937,7 @@ msgstr "معلومة 9"
 msgid "Fact icons"
 msgstr "رموز المعلومات"
 
-#: includes/functions/functions_print.php:1004
+#: includes/functions/functions_print.php:990
 msgid "Fact or event"
 msgstr "معلومة أو حدث"
 
@@ -5936,11 +5957,11 @@ msgstr "معلومات سجلات الأسر"
 msgid "Facts for individual records"
 msgstr "معلومات للسجلات الفردية"
 
-#: help_text.php:784
+#: admin_trees_config.php:1129 help_text.php:784
 msgid "Facts for new families"
 msgstr "معلومات للأسر الجديدة"
 
-#: help_text.php:779
+#: admin_trees_config.php:1092 help_text.php:779
 msgid "Facts for new individuals"
 msgstr "معلومات للأفراد الجدد"
 
@@ -6000,10 +6021,6 @@ msgstr "أسرة"
 #: admin_trees_config.php:341 help_text.php:520
 msgid "Family ID prefix"
 msgstr "بادئة المعرف الخاص بأسرة"
-
-#: help_text.php:505
-msgid "Family add facts"
-msgstr "إضافة معلومات أسرة"
 
 #. I18N: gedcom tag FAMC
 #: library/WT/Gedcom/Tag.php:199
@@ -6065,7 +6082,7 @@ msgstr "أسرة %s"
 #: admin_users.php:431 edit_changes.php:182
 #: modules_v3/batch_update/admin_batch_update.php:61
 #: modules_v3/faq/module.php:351 modules_v3/googlemap/module.php:1468
-#: modules_v3/html/module.php:294 modules_v3/stories/module.php:331
+#: modules_v3/html/module.php:294 modules_v3/stories/module.php:332
 msgid "Family tree"
 msgstr "مشجر العائلة"
 
@@ -6092,7 +6109,7 @@ msgid "Family tree title"
 msgstr "مسمى المشجر"
 
 #: admin.php:198 admin_trees_manage.php:28 search.php:219
-#: themes/_administration/header.php:106 themes/_administration/header.php:108
+#: themes/_administration/header.php:104 themes/_administration/header.php:106
 msgid "Family trees"
 msgstr "مشجرات العائلة"
 
@@ -6203,7 +6220,7 @@ msgstr "أب"
 msgid "Father: %s"
 msgstr "الأب: %s"
 
-#: includes/functions/functions_print.php:669
+#: includes/functions/functions_print.php:658
 msgid "Father’s age"
 msgstr "عمر الأب"
 
@@ -6249,7 +6266,7 @@ msgctxt "LOCATIVE"
 msgid "February"
 msgstr "فبراير"
 
-#: includes/functions/functions_print.php:1035
+#: includes/functions/functions_print.php:1021
 #: library/WT/Date/Calendar.php:124
 msgctxt "NOMINATIVE"
 msgid "February"
@@ -6333,43 +6350,43 @@ msgstr "الملفات المؤشر عليها بـ %s لايمكن إزالته
 msgid "Filter"
 msgstr "إنتقاء"
 
-#: find.php:107 includes/functions/functions_print.php:1103
+#: find.php:107 includes/functions/functions_print.php:1089
 msgid "Find a fact or event"
 msgstr "بحث عن معلومة أو حدث"
 
 #: admin_site_merge.php:267 admin_site_merge.php:288 find.php:74
-#: includes/functions/functions_print.php:1069
+#: includes/functions/functions_print.php:1055
 msgid "Find a family"
 msgstr "بحث عن أسرة"
 
-#: find.php:77 includes/functions/functions_print.php:1099
+#: find.php:77 includes/functions/functions_print.php:1085
 msgid "Find a media object"
 msgstr "بحث عن وسيط"
 
-#: find.php:86 includes/functions/functions_print.php:1091
+#: find.php:86 includes/functions/functions_print.php:1077
 msgid "Find a note"
 msgstr "بحث عن ملاحظة"
 
-#: find.php:80 includes/functions/functions_print.php:1065
+#: find.php:80 includes/functions/functions_print.php:1051
 msgid "Find a place"
 msgstr "بحث عن مكان"
 
-#: find.php:83 includes/functions/functions_print.php:1095
+#: find.php:83 includes/functions/functions_print.php:1081
 msgid "Find a repository"
 msgstr "بحث عن مستودع"
 
 #: admin_site_merge.php:268 admin_site_merge.php:289 find.php:89
-#: includes/functions/functions_print.php:1087
+#: includes/functions/functions_print.php:1073
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
 msgstr "بحث عن مصدر"
 
-#: find.php:92 includes/functions/functions_print.php:1073
+#: find.php:92 includes/functions/functions_print.php:1059
 msgid "Find a special character"
 msgstr "بحث عن حرف معين"
 
 #: admin_site_merge.php:266 admin_site_merge.php:287 find.php:71
-#: includes/functions/functions_print.php:1061
+#: includes/functions/functions_print.php:1047
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:32
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:75
 #: modules_v3/GEDFact_assistant/module.php:78
@@ -6476,8 +6493,8 @@ msgstr "مثلاً عند تحديد مدى المسار بـ 2، سيتمكن �
 msgid "For help with genealogy questions contact"
 msgstr "للإستفسار عن المشجرات تواصل مع"
 
-#: includes/functions/functions_print.php:523
-#: includes/functions/functions_print.php:526
+#: includes/functions/functions_print.php:521
+#: includes/functions/functions_print.php:524
 msgid "For more information contact"
 msgstr "لمزيد من المعلومات إتصل بـ"
 
@@ -6568,7 +6585,7 @@ msgstr "الأسئلة الأكثر شيوعاً"
 msgid "Fresno, California"
 msgstr "فريسنو، كاليفورنيا"
 
-#: includes/functions/functions_print.php:1053
+#: includes/functions/functions_print.php:1039
 #: library/WT/Date/Calendar.php:223
 msgid "Fri"
 msgstr "الجمعة"
@@ -6663,8 +6680,7 @@ msgid "GEDCOM files are stored in the %s folder."
 msgstr "ملفات المشجرات محفوظه في المجلد %s."
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
-#: admin_trees_config.php:634 admin_trees_download.php:129 help_text.php:535
-#: modules_v3/clippings/module.php:217 modules_v3/clippings/module.php:603
+#: admin_trees_config.php:634 help_text.php:535
 msgid "GEDCOM media path"
 msgstr "مسار ملفات الوسائط للمشجر"
 
@@ -6846,7 +6862,7 @@ msgid "Godson"
 msgstr "مكفول"
 
 #. I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps
-#: includes/functions/functions_print.php:872
+#: includes/functions/functions_print.php:858
 #: modules_v3/googlemap/admin_places.php:168
 #: modules_v3/googlemap/module.php:48 modules_v3/googlemap/module.php:197
 #: modules_v3/googlemap/module.php:1440
@@ -7050,17 +7066,17 @@ msgstr "الإسم بالعبرية"
 msgid "Height"
 msgstr "الطول"
 
-#: login.php:212 login.php:302
+#: login.php:212 login.php:299
 #, php-format
 msgid "Hello %s…"
 msgstr "مرحباً %s …"
 
-#: login.php:354
+#: login.php:352
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "مرحباً يا %s …<br>شكراً على التسجل."
 
-#: login.php:277 login.php:472
+#: login.php:277 login.php:470
 msgid "Hello administrator…"
 msgstr "مرحباً يا مدير …"
 
@@ -7382,7 +7398,7 @@ msgstr "إن كنت مدير الموقع فعليك تفحص التالي:"
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr "في حالة عدم التمكن من تجاوز هذه المشكلة، يمكن التواصل في منتدى <a href=\"http://webtrees.net\">webtrees.net</a>"
 
-#: login.php:313
+#: login.php:310
 msgid "If you didn’t request an account, you can just delete this message."
 msgstr "إذا لم تتقدم بطلب حساب فلطفاً إهمال هذه الرسالة."
 
@@ -7536,8 +7552,8 @@ msgstr "الهند"
 #: modules_v3/individual_report/module.php:33
 #: modules_v3/individual_report/report.xml:3
 #: modules_v3/individual_report/report.xml:84
-#: modules_v3/stories/module.php:244 modules_v3/stories/module.php:343
-#: modules_v3/stories/module.php:409 pedigree.php:43
+#: modules_v3/stories/module.php:245 modules_v3/stories/module.php:344
+#: modules_v3/stories/module.php:410 pedigree.php:43
 msgid "Individual"
 msgstr "فرد"
 
@@ -7552,10 +7568,6 @@ msgstr "الفرد الثاني"
 #: admin_trees_config.php:335 help_text.php:530
 msgid "Individual ID prefix"
 msgstr "بادئة المعرف الخاص بفرد"
-
-#: help_text.php:583
-msgid "Individual add facts"
-msgstr "إضافة معلومات للفرد"
 
 #: statistics.php:558
 msgid "Individual distribution"
@@ -7634,7 +7646,7 @@ msgctxt "MALE"
 msgid "Informant"
 msgstr "مبلغ"
 
-#: login.php:305
+#: login.php:302
 msgid "Information about the request is shown under the link below."
 msgstr "المعلومات عن هذا الطلب ظاهرة تحت الرابط في الأسفل."
 
@@ -7766,7 +7778,7 @@ msgctxt "LOCATIVE"
 msgid "January"
 msgstr "يناير"
 
-#: includes/functions/functions_print.php:1034
+#: includes/functions/functions_print.php:1020
 #: library/WT/Date/Calendar.php:123
 msgctxt "NOMINATIVE"
 msgid "January"
@@ -7786,7 +7798,7 @@ msgid "Johannesburg, South Africa"
 msgstr "جوهانسبرغ، جنوب أفريقيا"
 
 #. I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname.
-#: library/WT/Tree.php:330
+#: library/WT/Tree.php:331
 msgid "John /DOE/"
 msgstr "عنترة /العبسي/"
 
@@ -7828,7 +7840,7 @@ msgctxt "LOCATIVE"
 msgid "July"
 msgstr "يوليو"
 
-#: includes/functions/functions_print.php:1040
+#: includes/functions/functions_print.php:1026
 #: library/WT/Date/Calendar.php:129
 msgctxt "NOMINATIVE"
 msgid "July"
@@ -7902,7 +7914,7 @@ msgctxt "LOCATIVE"
 msgid "June"
 msgstr "يونيو"
 
-#: includes/functions/functions_print.php:1039
+#: includes/functions/functions_print.php:1025
 #: library/WT/Date/Calendar.php:128
 msgctxt "NOMINATIVE"
 msgid "June"
@@ -8030,7 +8042,7 @@ msgstr "رموز مراسم LDS في خانات المخططات"
 msgid "LDS spouse sealing"
 msgstr "إحكام زوج LDS"
 
-#: includes/functions/functions_print.php:884
+#: includes/functions/functions_print.php:870
 msgid "LDS temple"
 msgstr "معبد قديسي اليوم الأخير"
 
@@ -8336,7 +8348,7 @@ msgstr "نزيل"
 msgid "Logan, Utah"
 msgstr "لوغان، ويوتا"
 
-#: modules_v3/login_block/module.php:58 themes/webtrees/header.php:63
+#: modules_v3/login_block/module.php:58 themes/webtrees/header.php:64
 msgid "Logged in as "
 msgstr "الدخول مسجل بإسم "
 
@@ -8361,7 +8373,7 @@ msgstr "رابط الإنترنت للدخول"
 msgid "Logout"
 msgstr "خروج"
 
-#: admin_site_logs.php:27 themes/_administration/header.php:100
+#: admin_site_logs.php:27 themes/_administration/header.php:98
 msgid "Logs"
 msgstr "سجلات النظام"
 
@@ -8549,7 +8561,7 @@ msgctxt "LOCATIVE"
 msgid "March"
 msgstr "مارس"
 
-#: includes/functions/functions_print.php:1036
+#: includes/functions/functions_print.php:1022
 #: library/WT/Date/Calendar.php:125
 msgctxt "NOMINATIVE"
 msgid "March"
@@ -8857,7 +8869,7 @@ msgctxt "LOCATIVE"
 msgid "May"
 msgstr "مايو"
 
-#: includes/functions/functions_print.php:1038
+#: includes/functions/functions_print.php:1024
 #: library/WT/Date/Calendar.php:127
 msgctxt "NOMINATIVE"
 msgid "May"
@@ -8875,7 +8887,7 @@ msgstr "مدفورد، أوريغون"
 #: admin_media.php:505 admin_media.php:595 admin_trees_config.php:218
 #: includes/functions/functions_print_lists.php:1260 inverselink.php:85
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:87
-#: modules_v3/media/module.php:34 themes/_administration/header.php:139
+#: modules_v3/media/module.php:34 themes/_administration/header.php:137
 msgid "Media"
 msgstr "وسائط"
 
@@ -9023,7 +9035,7 @@ msgstr "ممفيس، تينيسي"
 msgid "Menu"
 msgstr "قائمة"
 
-#: themes/_administration/header.php:147
+#: themes/_administration/header.php:145
 msgid "Menus"
 msgstr "قوائم"
 
@@ -9038,7 +9050,7 @@ msgstr "دمج من المعرف الخاص:"
 
 #: admin_site_merge.php:32 admin_site_merge.php:78 admin_site_merge.php:146
 #: admin_site_merge.php:243 help_text.php:1160
-#: themes/_administration/header.php:121
+#: themes/_administration/header.php:119
 msgid "Merge records"
 msgstr "دمج السجلات"
 
@@ -9172,7 +9184,7 @@ msgstr "مكون"
 msgid "Module administration"
 msgstr "إدارة المكونات"
 
-#: themes/_administration/header.php:144
+#: themes/_administration/header.php:142
 msgid "Modules"
 msgstr "وحدات"
 
@@ -9180,7 +9192,7 @@ msgstr "وحدات"
 msgid "Moldova"
 msgstr "مولدوفا"
 
-#: includes/functions/functions_print.php:1049
+#: includes/functions/functions_print.php:1035
 #: library/WT/Date/Calendar.php:219
 msgid "Mon"
 msgstr "الإثنين"
@@ -9332,7 +9344,7 @@ msgstr "أم"
 msgid "Mother: %s"
 msgstr "الأم: %s"
 
-#: includes/functions/functions_print.php:661
+#: includes/functions/functions_print.php:650
 msgid "Mother’s age"
 msgstr "عمر الأم"
 
@@ -9417,7 +9429,7 @@ msgid "My account"
 msgstr "حسابي في الموقع"
 
 #. I18N: Default title for new family trees
-#: library/WT/Tree.php:315
+#: library/WT/Tree.php:316
 msgid "My family tree"
 msgstr "مشجر عائلتي"
 
@@ -9428,7 +9440,7 @@ msgstr "سجلي في المشجر"
 #. I18N: Name of a module
 #: admin_modules.php:143 admin_users.php:210 index.php:87 index.php:95
 #: library/WT/MenuBar.php:59 library/WT/MenuBar.php:62
-#: modules_v3/user_welcome/module.php:32 themes/_administration/header.php:66
+#: modules_v3/user_welcome/module.php:32 themes/_administration/header.php:64
 msgid "My page"
 msgstr "صفحتي"
 
@@ -9619,10 +9631,6 @@ msgstr "نيوزيلندا"
 msgid "New data"
 msgstr "بيانات حديثة"
 
-#: admin_trees_config.php:1092 admin_trees_config.php:1129
-msgid "New entry facts"
-msgstr "معلومات إضافية للإدخال الجديد"
-
 #. I18N: %s is a server name/URL
 #: login.php:292
 #, php-format
@@ -9630,7 +9638,7 @@ msgid "New registration at %s"
 msgstr "تسجيل جديد في %s"
 
 #. I18N: %s is a server name/URL
-#: login.php:492
+#: login.php:490
 #, php-format
 msgid "New user at %s"
 msgstr "مستخدم جديد في %s"
@@ -9946,7 +9954,7 @@ msgstr "غير متزوج"
 
 #. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:437
-#: includes/functions/functions_print.php:497 library/WT/Gedcom/Tag.php:262
+#: includes/functions/functions_print.php:495 library/WT/Gedcom/Tag.php:262
 #: modules_v3/cemetery_report/report.xml:61
 #: modules_v3/family_group_report/report.xml:479
 #: modules_v3/family_group_report/report.xml:740
@@ -10020,7 +10028,7 @@ msgctxt "LOCATIVE"
 msgid "November"
 msgstr "نوفمبر"
 
-#: includes/functions/functions_print.php:1044
+#: includes/functions/functions_print.php:1030
 #: library/WT/Date/Calendar.php:133
 msgctxt "NOMINATIVE"
 msgid "November"
@@ -10134,7 +10142,7 @@ msgctxt "LOCATIVE"
 msgid "October"
 msgstr "أكتوبر"
 
-#: includes/functions/functions_print.php:1043
+#: includes/functions/functions_print.php:1029
 #: library/WT/Date/Calendar.php:132
 msgctxt "NOMINATIVE"
 msgid "October"
@@ -10364,7 +10372,7 @@ msgid "PHP failed to write to disk"
 msgstr "لم تتمكن PHP من الكتابة على القرص"
 
 #: admin_site_info.php:32 help_text.php:1314
-#: themes/_administration/header.php:102
+#: themes/_administration/header.php:100
 msgid "PHP information"
 msgstr "معلومات PHP"
 
@@ -10472,13 +10480,13 @@ msgstr "الوالدان"
 msgid "Parents and siblings"
 msgstr "الوالدين والإخوة"
 
-#: includes/functions/functions_print.php:673
+#: includes/functions/functions_print.php:662
 msgid "Parent’s age"
 msgstr "عمر الوالدين"
 
 #: admin_site_config.php:136 admin_users.php:189 admin_users.php:384
 #: edituser.php:150 help_text.php:729 help_text.php:1284 login.php:151
-#: login.php:215 login.php:446 modules_v3/login_block/module.php:76
+#: login.php:215 login.php:444 modules_v3/login_block/module.php:76
 #: setup.php:400
 msgid "Password"
 msgstr "كلمة المرور"
@@ -10541,9 +10549,9 @@ msgstr "كتلة التعديلات المعلقة"
 #: modules_v3/change_report/report.xml:49
 #: modules_v3/review_changes/module.php:32
 #: modules_v3/review_changes/module.php:73
-#: themes/_administration/header.php:76 themes/clouds/header.php:121
-#: themes/colors/header.php:95 themes/fab/header.php:75
-#: themes/minimal/header.php:79 themes/xenea/header.php:109
+#: themes/_administration/header.php:74 themes/clouds/header.php:119
+#: themes/colors/header.php:90 themes/fab/header.php:73
+#: themes/minimal/header.php:76 themes/xenea/header.php:107
 msgid "Pending changes"
 msgstr "التعديلات المعلقة"
 
@@ -10822,7 +10830,7 @@ msgstr ""
 msgid "Play"
 msgstr "تشغيل"
 
-#: login.php:306
+#: login.php:303
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
 msgstr "لطفاً النقر على الرابط التالي وإدخال البيانات المطلوية ليتم تأكيد الطلب وعنوان البريد الإلكتروني."
 
@@ -11087,24 +11095,23 @@ msgstr "رابع"
 msgid "Question"
 msgstr "سؤال"
 
-#: admin_trees_config.php:1100 admin_trees_config.php:1137
-#: admin_trees_config.php:1166 admin_trees_config.php:1195
-msgid "Quick facts"
-msgstr "معلومات موجزة"
-
 #: help_text.php:510
 msgid "Quick family facts"
 msgstr "معلومات أسرية موجزة"
 
-#: help_text.php:588
+#: admin_trees_config.php:1137
+msgid "Quick family facts facts"
+msgstr ""
+
+#: admin_trees_config.php:1100 help_text.php:588
 msgid "Quick individual facts"
 msgstr "معلومات فردية موجزة"
 
-#: help_text.php:794
+#: admin_trees_config.php:1195 help_text.php:794
 msgid "Quick repository facts"
 msgstr "معلومات مستودعات مختزلة"
 
-#: help_text.php:905
+#: admin_trees_config.php:1166 help_text.php:905
 msgid "Quick source facts"
 msgstr "معلومات مصادر مختزلة"
 
@@ -11118,7 +11125,7 @@ msgstr "خامس"
 msgid "RE: "
 msgstr "رد: "
 
-#: admin_site_readme.php:27 themes/_administration/header.php:101
+#: admin_site_readme.php:27 themes/_administration/header.php:99
 msgid "README documentation"
 msgstr "إقرأني أولاً"
 
@@ -11253,7 +11260,7 @@ msgid "Re-order media"
 msgstr "إعادة ترتيب الوسائط"
 
 #: admin_users.php:366 admin_users.php:572 edituser.php:135 help_text.php:1343
-#: login.php:281 login.php:384
+#: login.php:281 login.php:382
 msgid "Real name"
 msgstr "الإسم الحقيقي"
 
@@ -11351,8 +11358,9 @@ msgstr "ضابط سجلات"
 msgid "Regular expression"
 msgstr "تعبير نمطي"
 
+#. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
-msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_blank\">php.net/manual/en/regexp.reference.php</a> for futher details."
+msgid "Regular expressions are an advanced pattern matching technique."
 msgstr ""
 
 #. I18N: Name of a module/report
@@ -11399,7 +11407,7 @@ msgstr "القرابة من الأبوين"
 msgid "Relationship: %s"
 msgstr "القرابة: %s"
 
-#: includes/functions/functions_print.php:602
+#: includes/functions/functions_print.php:600
 #: includes/functions/functions_print_lists.php:290 library/WT/MenuBar.php:110
 #: library/WT/MenuBar.php:228 library/WT/MenuBar.php:253 relationship.php:71
 #: relationship.php:86
@@ -11489,7 +11497,7 @@ msgstr "رد"
 msgid "Report"
 msgstr "تقرير"
 
-#: library/WT/MenuBar.php:397 themes/_administration/header.php:151
+#: library/WT/MenuBar.php:397 themes/_administration/header.php:149
 msgid "Reports"
 msgstr "تقارير"
 
@@ -11512,10 +11520,6 @@ msgstr "مستودع"
 #: admin_trees_config.php:354 help_text.php:804
 msgid "Repository ID prefix"
 msgstr "بادئة المعرف الخاص بمستودع"
-
-#: help_text.php:789
-msgid "Repository add facts"
-msgstr "إضافة معلومات المستودعات"
 
 #: find.php:249
 msgid "Repository contains:"
@@ -11758,7 +11762,7 @@ msgstr "ساو باولو، البرازيل"
 msgid "Sao Tome and Principe"
 msgstr "ساو تومي وبرينسيبي"
 
-#: includes/functions/functions_print.php:1054
+#: includes/functions/functions_print.php:1040
 #: library/WT/Date/Calendar.php:224
 msgid "Sat"
 msgstr "السبت"
@@ -11825,11 +11829,11 @@ msgstr "إحكام ملغى (طلاق)"
 #: modules_v3/descendancy/module.php:102 modules_v3/descendancy/module.php:131
 #: modules_v3/families/module.php:141 modules_v3/individuals/module.php:141
 #: search.php:157 search.php:260 search.php:262 search.php:264
-#: search_advanced.php:293 themes/clouds/header.php:81
-#: themes/clouds/header.php:82 themes/colors/header.php:125
-#: themes/colors/header.php:126 themes/fab/header.php:97
-#: themes/minimal/header.php:101 themes/webtrees/header.php:81
-#: themes/webtrees/header.php:82 themes/xenea/header.php:79
+#: search_advanced.php:293 themes/clouds/header.php:79
+#: themes/clouds/header.php:80 themes/colors/header.php:120
+#: themes/colors/header.php:121 themes/fab/header.php:95
+#: themes/minimal/header.php:98 themes/webtrees/header.php:82
+#: themes/webtrees/header.php:83 themes/xenea/header.php:77
 msgid "Search"
 msgstr "بحث"
 
@@ -11844,7 +11848,7 @@ msgstr "بحث وإستبدال"
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
 
-#: includes/session.php:544
+#: includes/session.php:531
 msgid "Search engine"
 msgstr "محرك البحث"
 
@@ -11884,6 +11888,12 @@ msgstr "سياتل، واشنطن"
 #: admin_site_config.php:139 help_text.php:764
 msgid "Secure connection"
 msgstr "إتصال آمن"
+
+#. I18N: %s is a URL
+#: modules_v3/batch_update/plugins/search_replace.php:93
+#, php-format
+msgid "See %s for more information."
+msgstr ""
 
 #: includes/functions/functions_edit.php:311 reportengine.php:250
 msgid "Select a date"
@@ -11964,11 +11974,11 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "بائع"
 
-#: login.php:454 message.php:140 modules_v3/user_messages/module.php:78
+#: login.php:452 message.php:140 modules_v3/user_messages/module.php:78
 msgid "Send"
 msgstr "إرسال"
 
-#: admin_users_bulk.php:32 themes/_administration/header.php:135
+#: admin_users_bulk.php:32 themes/_administration/header.php:133
 msgid "Send broadcast messages"
 msgstr "إرسال رسائل جماعية"
 
@@ -12037,7 +12047,7 @@ msgctxt "LOCATIVE"
 msgid "September"
 msgstr "سبتمبر"
 
-#: includes/functions/functions_print.php:1042
+#: includes/functions/functions_print.php:1028
 #: library/WT/Date/Calendar.php:131
 msgctxt "NOMINATIVE"
 msgid "September"
@@ -12079,7 +12089,7 @@ msgid "Server name"
 msgstr "إسم الخادم"
 
 #. I18N: The local time on the server
-#: themes/_administration/header.php:83
+#: themes/_administration/header.php:81
 msgid "Server time"
 msgstr ""
 
@@ -12093,15 +12103,15 @@ msgstr "زمن إعتبار إتصال المستخدم منقطع"
 msgid "Set link"
 msgstr "ربط"
 
-#: themes/_administration/header.php:125 themes/_administration/header.php:137
+#: themes/_administration/header.php:123 themes/_administration/header.php:135
 msgid "Set the default blocks"
 msgstr "إعداد الكتل الإفتراضية"
 
-#: themes/_administration/header.php:125
+#: themes/_administration/header.php:123
 msgid "Set the default blocks for new family trees"
 msgstr "إعداد الكتل الإفتراضية للمشجرات الجديدة"
 
-#: themes/_administration/header.php:137
+#: themes/_administration/header.php:135
 msgid "Set the default blocks for new users"
 msgstr "إعداد الكتل الإفتراضية للمستخدمين الجدد"
 
@@ -12653,7 +12663,7 @@ msgid "Show the location of places and events using the Google Maps™ mapping s
 msgstr "إظهار مواقع الأماكن والأحداث بإستخدام خدمة خرائط Google™."
 
 #: modules_v3/faq/module.php:174 modules_v3/html/module.php:325
-#: modules_v3/stories/module.php:245
+#: modules_v3/stories/module.php:246
 msgid "Show this block for which languages?"
 msgstr "اللغات التي تود إظهار هذه الكتلة فيها؟"
 
@@ -12717,7 +12727,7 @@ msgid "Sicily"
 msgstr "صقلية"
 
 #: admin_module_sidebar.php:72 admin_modules.php:124 admin_modules.php:142
-#: themes/_administration/header.php:150
+#: themes/_administration/header.php:148
 msgid "Sidebar"
 msgstr "لائحة جانبية"
 
@@ -12746,12 +12756,12 @@ msgstr "سنغافورة"
 msgid "Sister"
 msgstr "أخت"
 
-#: admin_site_access.php:30 themes/_administration/header.php:103
+#: admin_site_access.php:30 themes/_administration/header.php:101
 msgid "Site access rules"
 msgstr "قواعد النفاذ للموقع"
 
 #: admin_site_config.php:30 admin_site_config.php:56
-#: themes/_administration/header.php:99
+#: themes/_administration/header.php:97
 msgid "Site configuration"
 msgstr "تهيئة الموقع"
 
@@ -12923,10 +12933,6 @@ msgstr "مصدر"
 msgid "Source ID prefix"
 msgstr "بادئة المعرف الخاص بمصدر"
 
-#: help_text.php:900
-msgid "Source add facts"
-msgstr "إضافة معلومات المصادر"
-
 #: help_text.php:526
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
 msgstr "إقتباسات المصادر يمكن أن تحتوي على مدى جودة المعلومة فيها وكذلك التأريخ. يمكن تعطيل هذا عند إنشاء إقتباس جديد."
@@ -13079,7 +13085,7 @@ msgstr "رسم الإحصائيات"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:252 admin_site_change.php:286
-#: includes/functions/functions_print.php:887 library/WT/Gedcom/Tag.php:310
+#: includes/functions/functions_print.php:873 library/WT/Gedcom/Tag.php:310
 msgid "Status"
 msgstr "الوضع"
 
@@ -13116,16 +13122,16 @@ msgid "Store watermarked thumbnails on server?"
 msgstr "تخزين الصور المصغرة والمعلمة مائياً في الموقع؟"
 
 #. I18N: Name of a module
-#: modules_v3/stories/module.php:32 modules_v3/stories/module.php:404
+#: modules_v3/stories/module.php:32 modules_v3/stories/module.php:405
 msgid "Stories"
 msgstr "روايات"
 
-#: modules_v3/stories/module.php:238
+#: modules_v3/stories/module.php:239
 msgid "Story"
 msgstr "رواية"
 
-#: modules_v3/stories/module.php:235 modules_v3/stories/module.php:342
-#: modules_v3/stories/module.php:408
+#: modules_v3/stories/module.php:236 modules_v3/stories/module.php:343
+#: modules_v3/stories/module.php:409
 msgid "Story title"
 msgstr "مسمى الرواية"
 
@@ -13161,7 +13167,7 @@ msgstr "السُودان"
 msgid "Suffixes"
 msgstr "لواحق"
 
-#: includes/functions/functions_print.php:1048
+#: includes/functions/functions_print.php:1034
 #: library/WT/Date/Calendar.php:225
 msgid "Sun"
 msgstr "الأحد"
@@ -13256,7 +13262,7 @@ msgstr "جدول"
 msgid "Table prefix"
 msgstr "بادئة الجدول"
 
-#: themes/_administration/header.php:148
+#: themes/_administration/header.php:146
 msgid "Tabs"
 msgstr "جداول"
 
@@ -13394,7 +13400,7 @@ msgstr "يعتمد النص الإنجليزي:<br><br>The PGV to <b>webtrees</b
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "لقد تمت الموافقة على طلب حساب مستخدم في موقع webtrees %s. بالإمكان الآن الدخول بإستخدام الربط التالي: %s"
 
-#: login.php:540
+#: login.php:536
 msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
 msgstr "لقد تم إعلام المدير. وحالما تتم الموافقة سوف تتمكن من تسجيل الدخول بإستخدام إسم المستخدم وكلمة المرور الخاصتين بك."
 
@@ -13405,7 +13411,7 @@ msgid "The changes to “%s” have been accepted."
 msgstr "لقد تم قبول التعديلات على ”%s“."
 
 #. I18N: %s is the name of an individual, source or other record
-#: action.php:192
+#: action.php:220
 #, php-format
 msgid "The changes to “%s” have been rejected."
 msgstr "لقد تم رفض التعديلات على ”%s“."
@@ -13418,7 +13424,7 @@ msgstr "سلة المقتطفات تتيح أخذ مقتطفات (\"قصاصات
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
 msgstr "إسم المستخدم للمدير في <b>webtrees</b> يجب أن يتطابق مع إسم المستخدم للمدير في PGV"
 
-#: login.php:506
+#: login.php:501
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
 msgstr "بيانات المستخدم <b>%s</b> تم فحصها."
@@ -13639,7 +13645,7 @@ msgstr "النسخة %s حديثة جداً"
 msgid "The version of %s is too old"
 msgstr "النسخة %s قديمة جداً"
 
-#: setup.php:923
+#: setup.php:924
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
 msgstr "مطوروا برنامج webtrees لهم إهتمام بمعرفة هذا الخطأ. وسيقومون بالمساعدة على تجاوزه إن تم التوصل معهم."
 
@@ -13831,7 +13837,7 @@ msgstr "هذا المجلد سيستخدم من قبل الwebtrees  لحفظ م
 msgid "This folder will be used to store the media files for this family tree."
 msgstr "هذا المجلد سيستخدم لحفظ ملفات الوسائط المتعددة الخاصة بشجره العائلة."
 
-#: library/WT/Filter.php:237
+#: library/WT/Filter.php:241
 msgid "This form has expired.  Try again."
 msgstr ""
 
@@ -13863,7 +13869,7 @@ msgstr "لقدم تم تعديل هذا الفرد، بعد الإطلاع يج�
 msgid "This individual will be selected by default when viewing charts and reports."
 msgstr "سيتم إختيار هذا الفرد إفتراضياً عند إظهار المخططات والتقارير."
 
-#: includes/functions/functions_print.php:517 library/WT/Stats.php:823
+#: includes/functions/functions_print.php:515 library/WT/Stats.php:823
 #: library/WT/Stats.php:1360 library/WT/Stats.php:1446
 #: library/WT/Stats.php:1757 library/WT/Stats.php:1856
 #: library/WT/Stats.php:2087 library/WT/Stats.php:2504
@@ -14328,7 +14334,7 @@ msgstr "هذا سيحذف جميع المعلومات من المشجر <b>%s</b
 msgid "This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
 msgstr "ستم إدراج جميع الأماكن من ملف الـ GEDCOM المختار. وإفتراضياً هذا لن يتضمن الأماكن الغير متطابقة مع جداول أماكن خرائط Google."
 
-#: includes/functions/functions_print.php:1052
+#: includes/functions/functions_print.php:1038
 #: library/WT/Date/Calendar.php:222
 msgid "Thu"
 msgstr "الخميس"
@@ -14447,7 +14453,7 @@ msgstr "مسمى"
 msgid "Title in Hebrew"
 msgstr "المسمى بالعبرية"
 
-#: editnews.php:61
+#: editnews.php:66
 msgid "Title:"
 msgstr "المسمى:"
 
@@ -14693,7 +14699,7 @@ msgstr "ثالث"
 msgid "Trinidad and Tobago"
 msgstr "ترينيداد وتوباغو"
 
-#: includes/functions/functions_print.php:1050
+#: includes/functions/functions_print.php:1036
 #: library/WT/Date/Calendar.php:220
 msgid "Tue"
 msgstr "الثلاثاء"
@@ -14738,7 +14744,7 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "نوع دلالات الأماكن في تدرجها الهرمي"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:390 login.php:405
+#: admin_users.php:390 login.php:403
 msgid "Type the password again."
 msgstr "أعد إدخال كلمة المرور مرة أخرى."
 
@@ -14773,7 +14779,7 @@ msgid "USSR"
 msgstr "الإتحاد السوفياتي"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
-#: themes/_administration/header.php:89
+#: themes/_administration/header.php:87
 msgid "UTC"
 msgstr ""
 
@@ -14812,24 +14818,19 @@ msgstr "تراجع"
 msgid "Undo all changes"
 msgstr "التراجع عن كافة التعديلات"
 
-#: admin_trees_config.php:1084 admin_trees_config.php:1121
-#: admin_trees_config.php:1158 admin_trees_config.php:1187
-msgid "Unique facts"
-msgstr "معلومات فريدة"
-
-#: help_text.php:515
+#: admin_trees_config.php:1121 help_text.php:515
 msgid "Unique family facts"
 msgstr "معلومات أسرية فريدة"
 
-#: help_text.php:593
+#: admin_trees_config.php:1084 help_text.php:593
 msgid "Unique individual facts"
 msgstr "معلومات فردية فريدة"
 
-#: help_text.php:799
+#: admin_trees_config.php:1187 help_text.php:799
 msgid "Unique repository facts"
 msgstr "معلومات مستودعات فريدة"
 
-#: help_text.php:910
+#: admin_trees_config.php:1158 help_text.php:910
 msgid "Unique source facts"
 msgstr "معلومات مصادر فريدة"
 
@@ -14901,10 +14902,6 @@ msgstr "تحديث"
 msgid "Update all"
 msgstr "تحديث الجميع"
 
-#: modules_v3/batch_update/admin_batch_update.php:342
-msgid "Update the CHAN record"
-msgstr "تحديث سجل \"آخر تعديل\""
-
 #: admin_site_merge.php:152
 msgid "Updating linked record"
 msgstr "تحديث السجلات المرتبطة"
@@ -14933,7 +14930,7 @@ msgid "Upload geographic data"
 msgstr "تحميل البيانات الجغرافية"
 
 #: admin_media_upload.php:32 admin_media_upload.php:177 help_text.php:1419
-#: themes/_administration/header.php:141
+#: themes/_administration/header.php:139
 msgid "Upload media files"
 msgstr "تحميل ملفات الوسائط"
 
@@ -14975,7 +14972,7 @@ msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to
 msgstr "إستخدام &laquo;?&raquo; لمطابقة حرف واحد، وإستخدام &laquo;*&raquo; لمطابقة أي حرف أو لا شيء"
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:385 login.php:400
+#: admin_users.php:385 login.php:398
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15060,7 +15057,7 @@ msgstr "المدير لم يصادق على المستخدم."
 msgid "User options"
 msgstr "خيارات المستخدم"
 
-#: login.php:434 login.php:440 login.php:500 login.php:504
+#: login.php:432 login.php:438 login.php:495 login.php:499
 msgid "User verification"
 msgstr "مصادقة المستخدم"
 
@@ -15071,7 +15068,7 @@ msgstr "نص المستخدم  البديل"
 
 #: admin_site_config.php:133 admin_users.php:372 admin_users.php:571
 #: edituser.php:133 help_text.php:734 help_text.php:1474 login.php:146
-#: login.php:214 login.php:280 login.php:310 login.php:442
+#: login.php:214 login.php:280 login.php:307 login.php:440
 #: modules_v3/login_block/module.php:71 modules_v3/todo/module.php:97
 msgid "Username"
 msgstr "إسم المستخدم"
@@ -15089,7 +15086,7 @@ msgstr "وضعية الأحرف وأحرف اللفظ غير معتبرة عند
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
 msgstr "إسم المستخدم يجب أن لا يحتوي على أي من الأحرف أو الرموز التالية: &lt; &gt; \" %% { } ;"
 
-#: admin.php:122 themes/_administration/header.php:131
+#: admin.php:122 themes/_administration/header.php:129
 msgid "Users"
 msgstr "مستخدمين"
 
@@ -15173,7 +15170,7 @@ msgstr "فينتوا"
 msgid "Veracruz, Mexico"
 msgstr "فيراكروز، المكسيك"
 
-#: login.php:311 login.php:450
+#: login.php:308 login.php:448
 msgid "Verification code:"
 msgstr "رمز المصادقة:"
 
@@ -15332,14 +15329,14 @@ msgstr ""
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
 msgstr ""
 
-#: login.php:356
+#: login.php:354
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 msgstr ""
 "سيتم إرسال رسالة تأكيد إلى <b>%s</b>. يجب المصادقة عل طلب للحساب بإتباع للتعليمات في رسالة النأكيد خلال سبعة أيام، وإلا سيعتبر الطلب لاغ تلقائياً ويجب التقدم بطلب جديد.<br><br>\n"
 "بعد المصادقة على الطلب سيقوم المدير بالإطلاع والموافقة عليه قبل أن التمكن من إستخدام الحساب."
 
-#: login.php:358
+#: login.php:356
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
 msgstr ""
@@ -15359,7 +15356,7 @@ msgstr "إعدادات الموقع والعلامات الوصفية"
 msgid "Website URL"
 msgstr "رابط الإنترنت للموقع"
 
-#: includes/functions/functions_print.php:1051
+#: includes/functions/functions_print.php:1037
 #: library/WT/Date/Calendar.php:221
 msgid "Wed"
 msgstr "الأربعاء"
@@ -15631,7 +15628,7 @@ msgid "Yemen"
 msgstr "اليمن"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
-#: login.php:304
+#: login.php:301
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr "لقد تم طلب إنشاء حساب في %1$s بإستخدام عنوان البريد الإلكتروني  %2$s."
@@ -15663,7 +15660,7 @@ msgstr "يمكن الحد من عدد المواد الإخبارية وبذلك
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "يمكن جعل البحث عن النساء المتزوجات أكثر سهولة من خلال تسجيل أسمائهن التي إكتسبنها ما بعد الزواج.<br>ولكن ليس كل النساء تأخذ لقب زوجها ، فيجب توخي الحذر من تقديم معلومات غير صحيحة في قاعدة البيانات الخاصة بك."
 
-#: login.php:542
+#: login.php:538
 msgid "You can now login with your user name and password."
 msgstr "تستطيع الآن تسجيل الدخول بإستخدام إسم المستخدم وكلمة المرور الخاصتين بك."
 
@@ -15679,11 +15676,11 @@ msgstr "يمكن جعل أداء التحقق من الخصوصية أكثر س�
 msgid "You cannot login because your browser does not accept cookies."
 msgstr "لا يمكن تسجيل الدخول بسبب عدم تفعيل ملفات تعريف الارتباط (الكوكيز) في متصفحك."
 
-#: downloadbackup.php:34 includes/session.php:546
+#: downloadbackup.php:34 includes/session.php:533
 msgid "You do not have permission to view this page."
 msgstr "لا يوجد صلاحية للإطلاع هذه الصفحة."
 
-#: login.php:483
+#: login.php:481
 msgid "You do not have to take any action; the user can now login."
 msgstr "لا يتطلب القيام بأي إجراء. المستخدم يستطيع تسجيل الدخول الآن."
 
@@ -15691,7 +15688,7 @@ msgstr "لا يتطلب القيام بأي إجراء. المستخدم يست�
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "لقد تم إدخال نفس المعرف الخاص. لا يمكن دمج السجل مع ذاته."
 
-#: login.php:538
+#: login.php:534
 msgid "You have confirmed your request to become a registered user."
 msgstr "لقد تم تأكيد طلب تسجيل مستخدم."
 
@@ -15776,7 +15773,7 @@ msgstr "يلزم تسجيل الدخول مجدداً بإستخدام إسم م
 msgid "You need to set up an administrator account.  This account can control all aspects of this <b>webtrees</b> installation.  Please choose a strong password."
 msgstr "يجب إعداد حساب لمدير. وهذا الحساب هو من سيملك التحكم الكلي بمشجرات. لطفاً إختيار كلمة مرور عصية."
 
-#: login.php:481
+#: login.php:479
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr "الآن يجب مراجعة تفاصيل الحساب، ومن ثم إعداد وضع \"مقبول\" إلى \"نعم\"."
 
@@ -15819,7 +15816,7 @@ msgstr "ستم إعلامك برسالة إلكترونية عندما يؤكد 
 msgid "You will use this to login to webtrees."
 msgstr "سيتم إستخدام هذا لتسجيل الدخول إلى webtrees."
 
-#: login.php:315
+#: login.php:312
 msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
 msgstr "لن يتم إستلام أي رسائل من هذا الموقع مستقبلاً، لأن طلب الحساب سوف يلغى تلقائياً بعد سبعة أيام."
 
@@ -15852,7 +15849,7 @@ msgid "Your name"
 msgstr "الإسم"
 
 #. I18N: %s is a server name/URL
-#: login.php:316
+#: login.php:313
 #, php-format
 msgid "Your registration at %s"
 msgstr "تسجيلك في %s"
@@ -15894,16 +15891,6 @@ msgstr "ملفات مضغوطة"
 msgid "Zoom"
 msgstr "تكبير"
 
-#: modules_v3/googlemap/admin_places.php:162
-#: modules_v3/googlemap/admin_places.php:582
-#: modules_v3/googlemap/places_edit.php:318
-msgid "Zoom level"
-msgstr "مستوى التكبير"
-
-#: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
-msgid "Zoom level of map"
-msgstr "مستوى تكبير الخريطة"
-
 #: modules_v3/googlemap/module.php:1347 timeline.php:300
 msgid "Zoom in"
 msgstr "تكبير"
@@ -15915,6 +15902,16 @@ msgstr "تكبير هنا"
 #: includes/functions/functions_print.php:127
 msgid "Zoom in/out on this box."
 msgstr "إظهار/إخفاء التفاصيل في هذه الخانة"
+
+#: modules_v3/googlemap/admin_places.php:162
+#: modules_v3/googlemap/admin_places.php:582
+#: modules_v3/googlemap/places_edit.php:318
+msgid "Zoom level"
+msgstr "مستوى التكبير"
+
+#: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
+msgid "Zoom level of map"
+msgstr "مستوى تكبير الخريطة"
 
 #: modules_v3/googlemap/module.php:1348 timeline.php:301
 msgid "Zoom out"
@@ -15987,7 +15984,7 @@ msgstr "بعد"
 msgid "after %s"
 msgstr "بعد %s"
 
-#: includes/functions/functions_print.php:773
+#: includes/functions/functions_print.php:759
 msgid "after death"
 msgstr "بعد الوفاة"
 
@@ -16158,9 +16155,9 @@ msgid "brother-in-law"
 msgstr "أخ زوج أخت"
 
 #: includes/functions/functions.php:939
-msgctxt "spouse's brother"
+msgctxt "spouses's brother"
 msgid "brother-in-law"
-msgstr "أخ زوج"
+msgstr ""
 
 #: includes/functions/functions.php:948
 msgctxt "wife's brother"
@@ -16193,9 +16190,9 @@ msgid "brother/sister-in-law"
 msgstr "أخ زوج أخت"
 
 #: includes/functions/functions.php:947
-msgctxt "spouse's sibling"
+msgctxt "spouses's sibling"
 msgid "brother/sister-in-law"
-msgstr "أخ زوج"
+msgstr ""
 
 #: includes/functions/functions.php:953
 msgctxt "wife's sibling"
@@ -16287,7 +16284,7 @@ msgstr "قائمة مضغوطة"
 
 #. I18N: button label
 #: admin_pgv_to_wt.php:1059 admin_trees_download.php:138
-#: admin_trees_manage.php:169 admin_users.php:548 login.php:176 login.php:417
+#: admin_trees_manage.php:169 admin_users.php:548 login.php:176 login.php:415
 #: modules_v3/login_block/module.php:102 setup.php:180 setup.php:204
 #: setup.php:273 setup.php:358 setup.php:414
 msgid "continue"
@@ -16479,9 +16476,9 @@ msgid "father-in-law"
 msgstr "أب زوج"
 
 #: includes/functions/functions.php:942
-msgctxt "spouse's father"
+msgctxt "spouses's father"
 msgid "father-in-law"
-msgstr "أب زوج"
+msgstr ""
 
 #: includes/functions/functions.php:951
 msgctxt "wife's father"
@@ -18601,9 +18598,9 @@ msgid "mother-in-law"
 msgstr "أم زوج"
 
 #: includes/functions/functions.php:943
-msgctxt "spouse's mother"
+msgctxt "spouses's mother"
 msgid "mother-in-law"
-msgstr "أم زوج"
+msgstr ""
 
 #: includes/functions/functions.php:952
 msgctxt "wife's mother"
@@ -18611,9 +18608,9 @@ msgid "mother-in-law"
 msgstr "أم زوجة"
 
 #: includes/functions/functions.php:946
-msgctxt "spouse's parent"
+msgctxt "spouses's parent"
 msgid "mother/father-in-law"
-msgstr "والد زوج"
+msgstr ""
 
 #: includes/functions/functions.php:877
 msgctxt "brother's son"
@@ -18716,7 +18713,7 @@ msgstr "حفيد تاسع لسلف مشترك"
 #: includes/functions/functions_edit.php:542
 #: includes/functions/functions_print_facts.php:1055
 #: includes/functions/functions_print_lists.php:776 library/WT/Stats.php:3491
-#: modules_v3/batch_update/admin_batch_update.php:344
+#: modules_v3/batch_update/admin_batch_update.php:345
 #: modules_v3/change_report/report.xml:8 modules_v3/charts/module.php:213
 #: modules_v3/family_group_report/report.xml:249
 #: modules_v3/family_group_report/report.xml:420
@@ -18768,7 +18765,7 @@ msgstr "أرقام"
 msgid "of"
 msgstr "من"
 
-#: includes/functions/functions_print.php:771
+#: includes/functions/functions_print.php:757
 msgid "on the date of death"
 msgstr "في تأريخ يوم الوفاة"
 
@@ -18923,7 +18920,7 @@ msgstr "روبوت"
 #: edit_interface.php:1210 edit_interface.php:1308 edit_interface.php:1402
 #: edit_interface.php:1485 edit_interface.php:1679 edit_interface.php:1779
 #: edit_interface.php:1979 edit_interface.php:2142 edit_interface.php:2675
-#: editnews.php:78 edituser.php:176 find.php:484
+#: editnews.php:72 edituser.php:176 find.php:484
 #: includes/functions/functions_edit.php:34
 #: includes/functions/functions_edit.php:48
 #: includes/functions/functions_edit.php:107 index_edit.php:335
@@ -18932,7 +18929,7 @@ msgstr "روبوت"
 #: modules_v3/googlemap/module.php:626
 #: modules_v3/googlemap/placehierarchy.php:254
 #: modules_v3/googlemap/places_edit.php:339 modules_v3/sitemap/module.php:248
-#: modules_v3/stories/module.php:262
+#: modules_v3/stories/module.php:263
 msgid "save"
 msgstr "حفظ"
 
@@ -19145,7 +19142,7 @@ msgstr "حفيد سابع لسلف مشترك"
 #: admin_trees_config.php:992 admin_trees_config.php:1024
 #: admin_trees_config.php:1045 admin_trees_config.php:1053
 #: admin_trees_config.php:1061 modules_v3/faq/module.php:355
-#: modules_v3/googlemap/module.php:275 modules_v3/stories/module.php:335
+#: modules_v3/googlemap/module.php:275 modules_v3/stories/module.php:336
 msgid "show"
 msgstr "إظهار"
 
@@ -19187,9 +19184,9 @@ msgid "sister-in-law"
 msgstr "أخت زوج أخت"
 
 #: includes/functions/functions.php:944
-msgctxt "spouse's sister"
+msgctxt "spouses's sister"
 msgid "sister-in-law"
-msgstr "أخت زوج"
+msgstr ""
 
 #: includes/functions/functions.php:1139
 msgctxt "wife's brother's wife"
@@ -19357,9 +19354,9 @@ msgid "step-child"
 msgstr "إبن زوج"
 
 #: includes/functions/functions.php:940
-msgctxt "spouse's child"
+msgctxt "spouses's child"
 msgid "step-child"
-msgstr "ولد زوج"
+msgstr ""
 
 #: includes/functions/functions.php:949
 msgctxt "wife's child"
@@ -19372,9 +19369,9 @@ msgid "step-daughter"
 msgstr "بنت زوج"
 
 #: includes/functions/functions.php:941
-msgctxt "spouse's daughter"
+msgctxt "spouses's daughter"
 msgid "step-daughter"
-msgstr "بنت زوج"
+msgstr ""
 
 #: includes/functions/functions.php:950
 msgctxt "wife's daughter"
@@ -19432,9 +19429,9 @@ msgid "step-son"
 msgstr "إبن زوج"
 
 #: includes/functions/functions.php:945
-msgctxt "spouse's son"
+msgctxt "spouses's son"
 msgid "step-son"
-msgstr "إبن الزوج"
+msgstr ""
 
 #: includes/functions/functions.php:955
 msgctxt "wife's son"
@@ -19730,7 +19727,7 @@ msgstr "عنوان إستقبال ردود رسائل النظام الآلية"
 msgid "webtrees sends emails with no storage"
 msgstr "الموقع يرسل الرسائل دون حفظ"
 
-#: includes/functions/functions_print.php:539
+#: includes/functions/functions_print.php:537
 msgid "webtrees wiki"
 msgstr "webtrees wiki"
 
@@ -19755,11 +19752,11 @@ msgstr "أعوام"
 #: includes/functions/functions_edit.php:146
 #: includes/functions/functions_edit.php:515
 #: includes/functions/functions_edit.php:539
-#: includes/functions/functions_print.php:813
+#: includes/functions/functions_print.php:799
 #: includes/functions/functions_print_facts.php:1052
 #: includes/functions/functions_print_lists.php:357
 #: includes/functions/functions_print_lists.php:778 library/WT/Stats.php:3490
-#: modules_v3/batch_update/admin_batch_update.php:345
+#: modules_v3/batch_update/admin_batch_update.php:344
 #: modules_v3/change_report/report.xml:8 modules_v3/charts/module.php:214
 #: modules_v3/family_group_report/report.xml:246
 #: modules_v3/family_group_report/report.xml:417
@@ -19831,6 +19828,9 @@ msgstr "…"
 #~ msgid "Add child"
 #~ msgstr "إضافة ولد"
 
+#~ msgid "All facts"
+#~ msgstr "كل المعلومات"
+
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "تمكين تبديل GEDCOM"
 
@@ -19900,6 +19900,9 @@ msgstr "…"
 #~ msgid "External objects"
 #~ msgstr "كائنات خارجية"
 
+#~ msgid "Family add facts"
+#~ msgstr "إضافة معلومات أسرة"
+
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "مكان ميلاد الأب (صيغة شابمان)"
 
@@ -19936,6 +19939,9 @@ msgstr "…"
 #~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
 #~ msgstr "عند إستخدام أكثر من مشجر في ذات الموقع، إختيار <b>Yes</b> يتيح <u>للمستخدم والزائر</u>  إختيار المشجر المراد الإطلاع عليه والتنقل بينها. وعند إختيار <b>No</b> فيمنع ذلك."
 
+#~ msgid "Individual add facts"
+#~ msgstr "إضافة معلومات للفرد"
+
 #~ msgid "Individual information"
 #~ msgstr "معلومات الفرد"
 
@@ -19965,6 +19971,9 @@ msgstr "…"
 
 #~ msgid "Name List"
 #~ msgstr "قائمة الأسماء"
+
+#~ msgid "New entry facts"
+#~ msgstr "معلومات إضافية للإدخال الجديد"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -20002,6 +20011,9 @@ msgstr "…"
 #~ msgid "Port"
 #~ msgstr "منفذ"
 
+#~ msgid "Quick facts"
+#~ msgstr "معلومات موجزة"
+
 #~ msgid "Recommendation:"
 #~ msgstr "التوصيات:"
 
@@ -20010,6 +20022,9 @@ msgstr "…"
 
 #~ msgid "Replace record"
 #~ msgstr "استبدال السجل"
+
+#~ msgid "Repository add facts"
+#~ msgstr "إضافة معلومات المستودعات"
 
 #~ msgid "SMTP port"
 #~ msgstr "منفذ SMTP"
@@ -20031,6 +20046,9 @@ msgstr "…"
 
 #~ msgid "Show timeline"
 #~ msgstr "إظهار الجدول الزمني"
+
+#~ msgid "Source add facts"
+#~ msgstr "إضافة معلومات المصادر"
 
 #~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
 #~ msgstr "يحدد إتاحة تخزين الرسائل المرسلة من <b>webtrees</b> في قاعدة البيانات في الموقع. إذا كان الخيار <B>نعم</B> سوف يتمكن المستخدم من إستعادة رسائله عند الدخول إلى الموقع، بينما الخيار عند <B>لا</B> سترسل الرسائل بالبريد الإلكتروني فقط."
@@ -20089,6 +20107,12 @@ msgstr "…"
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
 #~ msgstr "طبقة النقل الآمن (TLS) وطبقة مآخذ التوصيل الآمنة (SSL) هي بروتوكولات  تشفير بيانات الإنترنت.<br><br> TLS 1.0 و 1.1 و 1.2 هي تطورات موحدة لـ SSL 3.0 . TLS 1.0 و 3.1 SSL هي ما يعادلها. ويتم الآن العمل على  SSL تحت الإسم الجديد  TLS.<br><br> إذا كان خادم SMTP يتطلب بروتوكول SSL خلال تسجيل الدخول، يجب عليك تحديد <B>SSL</ B> كخيار. وإذا كان خادم SMTP يتطلب بروتوكول TLS أثناء تسجيل الدخول  فيجب عليك تحديد <B>TLS</ B> كخيار."
 
+#~ msgid "Unique facts"
+#~ msgstr "معلومات فريدة"
+
+#~ msgid "Update the CHAN record"
+#~ msgstr "تحديث سجل \"آخر تعديل\""
+
 #~ msgid "Upgrade the web-server to PHP %s or higher."
 #~ msgstr "قم بترقية نسخه الـPHP في خادم الشبكة إلى  %s أو أحدث."
 
@@ -20125,6 +20149,14 @@ msgstr "…"
 #~ msgid "before %d"
 #~ msgstr "قبل %d"
 
+#~ msgctxt "spouse's brother"
+#~ msgid "brother-in-law"
+#~ msgstr "أخ زوج"
+
+#~ msgctxt "spouse's sibling"
+#~ msgid "brother/sister-in-law"
+#~ msgstr "أخ زوج"
+
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
 #~ msgstr "بريد."
@@ -20133,11 +20165,39 @@ msgstr "…"
 #~ msgid "f."
 #~ msgstr "فاكس."
 
+#~ msgctxt "spouse's father"
+#~ msgid "father-in-law"
+#~ msgstr "أب زوج"
+
 #~ msgid "from %d"
 #~ msgstr "من %d"
 
+#~ msgctxt "spouse's mother"
+#~ msgid "mother-in-law"
+#~ msgstr "أم زوج"
+
+#~ msgctxt "spouse's parent"
+#~ msgid "mother/father-in-law"
+#~ msgstr "والد زوج"
+
 #~ msgid "or"
 #~ msgstr "أو"
+
+#~ msgctxt "spouse's sister"
+#~ msgid "sister-in-law"
+#~ msgstr "أخت زوج"
+
+#~ msgctxt "spouse's child"
+#~ msgid "step-child"
+#~ msgstr "ولد زوج"
+
+#~ msgctxt "spouse's daughter"
+#~ msgid "step-daughter"
+#~ msgstr "بنت زوج"
+
+#~ msgctxt "spouse's son"
+#~ msgid "step-son"
+#~ msgstr "إبن الزوج"
 
 #~ msgctxt "Abbreviation for telephone number"
 #~ msgid "t."
