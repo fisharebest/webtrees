@@ -351,7 +351,7 @@ function scan_dirs($dir, $recursive, $filter) {
 		foreach (scandir($dir) as $path) {
 			if (is_dir($dir . $path)) {
 				// TODO - but what if there are user-defined subfolders “thumbs” or “watermarks”…
-				if ($path!='.' && $path!='..' && $path!='thumbs' && $path!='watermarks' && $recursive) {
+				if ($path!='.' && $path!='..' && $path!='thumbs' && $path!='watermark' && $recursive) {
 					foreach (scan_dirs($dir . $path . '/', $recursive, $filter) as $subpath) {
 						$files[] = $path . '/' . $subpath;
 					}

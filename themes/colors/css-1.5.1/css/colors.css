@@ -536,7 +536,7 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000000;border
 .messagebox {background:#dfeeff;border-radius:3px;}
 .nam a:hover {color:#ff0000;}
 .nav_content {padding:0;width:100%;}
-.note_details,a.showit > span {display:none;}
+a.showit > span {display:none;}
 .nowrap,.tag_cloud a {white-space:nowrap;}
 .place {padding-top:5px;}
 .statistics-page {text-align:center;}
@@ -740,7 +740,6 @@ html[dir=rtl].field  .editlink, html[dir=rtl].field  .deletelink {float:left;}
 .indi_name_details dt:after {content:":";}
 
 #indi_note {margin:0 0 5px;}
-#indi_note .note_details {font-size:100%;}
 #indi_note .fact_SOUR a {font-size:100%;margin:3px 0;}
 #indi_note .fact_NOTE {float:left;margin:0 5px 0 0;}
 #indi_note .fact_SOUR {margin:3px 0;}
@@ -1210,6 +1209,7 @@ html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
 /* Census assistant module */
 table.table-census-assistant th {
 	font-weight: bold;
+	text-align:  left;
 }
 
 /* Stories module */

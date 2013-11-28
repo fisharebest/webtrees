@@ -574,6 +574,14 @@ function old_paths() {
 		WT_ROOT.'themes/xenea/images',
 		WT_ROOT.'themes/xenea/msie.css',
 		WT_ROOT.'themes/xenea/style.css',
+		// Removed in 1.5.0
+		WT_ROOT.'js/webtrees-1.5.0.js',
+		WT_ROOT.'themes/clouds/css-1.5.0',
+		WT_ROOT.'themes/colors/css-1.5.0',
+		WT_ROOT.'themes/fab/css-1.5.0',
+		WT_ROOT.'themes/minimal/css-1.5.0',
+		WT_ROOT.'themes/webtrees/css-1.5.0',
+		WT_ROOT.'themes/xenea/css-1.5.0',
 	);
 }
 
