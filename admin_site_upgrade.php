@@ -70,7 +70,7 @@ if ($latest_version == '') {
 
 if (version_compare(WT_VERSION, $latest_version) > 0) {
 	echo '<p>', WT_I18N::translate('This is the latest version of webtrees.  No upgrade is available.'), '</p>';
-	//exit;
+	exit;
 }
 
 echo '<form method="POST" action="admin_site_upgrade.php">';
