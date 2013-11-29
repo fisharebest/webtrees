@@ -66,7 +66,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	private function generate_index() {
 		// Check the cache
 		$timestamp=get_module_setting($this->getName(), 'sitemap.timestamp');
-		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
+		if (($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) || WT_USER_ID) {
 			$data=get_module_setting($this->getName(), 'sitemap.xml');
 		} else {
 			$data='';
@@ -117,7 +117,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	private function generate_file($ged_id, $rec_type, $volume) {
 		// Check the cache
 		$timestamp=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp');
-		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
+		if (($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) || WT_USER_ID) {
 			$data=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml');
 		} else {
 			$data='';
