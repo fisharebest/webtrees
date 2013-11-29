@@ -100,6 +100,22 @@ default:
 				$url='index.php';
 			}
 
+			// We're logging in as an administrator
+			if (userIsAdmin($user_id)) {
+				// Check for updates
+				$latest_version_txt=fetch_latest_version();
+				if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
+					list($latest_version, $earliest_version, $download_url)=explode('|', $latest_version_txt);
+					if (version_compare(WT_VERSION, $latest_version)<0) {
+						// An upgrade is available.  Let the admin know, by redirecting to the upgrade wizard
+						$url = 'admin_site_upgrade.php';
+					}
+				} else {
+					// Cannot determine the latest version
+				}
+				
+			}
+
 			// Redirect to the target URL
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$url);
 			// Explicitly write the session data before we exit,
