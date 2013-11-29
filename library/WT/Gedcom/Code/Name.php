@@ -128,13 +128,13 @@ class WT_Gedcom_Code_Name {
 		case 'religious':
 			switch ($sex) {
 			case 'M':
-				/* I18N: A name taken when entering a religion or a religous order */
+				/* I18N: A name taken when entering a religion or a religious order */
 				return WT_I18N::translate_c('MALE', 'religious name');
 			case 'F':
-				/* I18N: A name taken when entering a religion or a religous order */
+				/* I18N: A name taken when entering a religion or a religious order */
 				return WT_I18N::translate_c('FEMALE', 'religious name');
 			default:
-				/* I18N: A name taken when entering a religion or a religous order */
+				/* I18N: A name taken when entering a religion or a religious order */
 				return WT_I18N::translate('religious name');
 			}
 		default:

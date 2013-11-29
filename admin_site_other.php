@@ -52,7 +52,7 @@ $controller
 		<tr>
 			<td>
 				<a href="#" onclick="addnewnote(''); return false;">
-					<?php echo /* I18N: An note that is not linked to any other record */ WT_I18N::translate('Create a new note'); ?>
+					<?php echo /* I18N: A note that is not linked to any other record */ WT_I18N::translate('Create a new note'); ?>
 				</a>
 			</td>
 		</tr>

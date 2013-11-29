@@ -28,8 +28,8 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 
 switch ($help) {
 case 'GOOGLEMAP_MAP_ZOOM':
-	$title=WT_I18N::translate('Zoom factor of map');
-	$text=WT_I18N::translate('Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas.');
+	$title=WT_I18N::translate('Zoom level of map');
+	$text=WT_I18N::translate('Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas.');
 	break;
 
 case 'GOOGLEMAP_PRECISION':

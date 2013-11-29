@@ -127,6 +127,24 @@ $start_time=microtime(true);
 // We want to know about all PHP errors
 error_reporting(E_ALL | E_STRICT);
 
+// PHP5.3 may be using magic-quotes :-(
+if (version_compare(PHP_VERSION, '5.4', '<') && get_magic_quotes_gpc()) {
+	// http://php.net/manual/en/security.magicquotes.disabling.php
+	$process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
+	while (list($key, $val) = each($process)) {
+		foreach ($val as $k => $v) {
+			unset($process[$key][$k]);
+			if (is_array($v)) {
+				$process[$key][stripslashes($k)] = $v;
+				$process[] = &$process[$key][stripslashes($k)];
+			} else {
+				$process[$key][stripslashes($k)] = stripslashes($v);
+			}
+		}
+	}
+	unset($process);
+}
+
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
 set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';

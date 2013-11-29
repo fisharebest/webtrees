@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-09 18:17+0000\n"
+"POT-Creation-Date: 2013-11-28 15:21+0000\n"
 "PO-Revision-Date: 2013-04-02 19:56+0000\n"
 "Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: \n"
@@ -163,7 +163,7 @@ msgstr "%1$s–%2$s"
 msgid "%1$s’s %2$s"
 msgstr "%1$s's %2$s"
 
-#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: library/WT/I18N.php:152
 msgid "%H:%i:%s"
 msgstr "%H:%i:%s"
@@ -627,7 +627,7 @@ msgstr "<center><b>欢迎访问这个家谱网站</b></center><br>允许每个�
 msgid "<default theme>"
 msgstr "<默认主题>"
 
-#: login.php:376
+#: login.php:374
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
 msgstr "<div class=\"largeError\">Notice:</div><div class=\"error\">完成和递交此表格，您同意：<ul><li>保护在我们的网站上列出的活人的隐私;</li><li>在下面的文本框，解释你是谁，或向我们提供谁会在我们的网站上列出的信息。</li></ul></div>"
 
@@ -736,7 +736,7 @@ msgstr "新的密码已经被创建和发送给%s。你可以在你登录时更�
 msgid "A new password was requested for your user name."
 msgstr "这个用户名要求输入新的密码。"
 
-#: login.php:475
+#: login.php:473
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "新用户在 (%1$s) 申请了一个帐户 (%2$s) ，验证电子邮件地址 (%3$s)."
@@ -869,7 +869,7 @@ msgstr "侧边栏显示一个人的家人和亲戚"
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:34
-msgid "A sidebar showing non-genealogical information about an indivdual."
+msgid "A sidebar showing non-genealogical information about an individual."
 msgstr "侧边栏，显示非家谱的个人信息。"
 
 #. I18N: Description of the “Descendants” module
@@ -1088,8 +1088,8 @@ msgid "Adar II"
 msgstr "第六月"
 
 #: admin_trees_config.php:580 edit_interface.php:1973
-#: includes/functions/functions_print.php:961
-#: includes/functions/functions_print.php:1017 index_edit.php:291
+#: includes/functions/functions_print.php:947
+#: includes/functions/functions_print.php:1003 index_edit.php:291
 #: index_edit.php:309 lifespan.php:157
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:94
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:185
@@ -1227,7 +1227,7 @@ msgstr "添加资源情況"
 msgid "Add a new spouse"
 msgstr "添加一个配偶"
 
-#: themes/_administration/header.php:134
+#: themes/_administration/header.php:132
 msgid "Add a new user"
 msgstr "添加新用户"
 
@@ -1249,7 +1249,7 @@ msgstr "添加一个妻子"
 msgid "Add a scrollbar when block contents grow"
 msgstr "当内容增长时添加一个滚动条"
 
-#: modules_v3/relatives/module.php:203
+#: modules_v3/relatives/module.php:161
 msgid "Add a wife to this family"
 msgstr "添加妻子到这个家庭"
 
@@ -1267,7 +1267,7 @@ msgid "Add by ID"
 msgstr "按ID添加"
 
 #: edit_interface.php:1589 help_text.php:1052
-#: includes/functions/functions_print.php:942
+#: includes/functions/functions_print.php:928
 msgid "Add from clipboard"
 msgstr "添加到剪贴板"
 
@@ -1295,7 +1295,7 @@ msgstr "添加到这个资源。"
 msgid "Add links"
 msgstr "添加链接"
 
-#: modules_v3/relatives/module.php:167
+#: modules_v3/relatives/module.php:201
 msgid "Add marriage details"
 msgstr "增加婚姻细节"
 
@@ -1329,9 +1329,14 @@ msgid "Add spaces where notes were wrapped"
 msgstr "添加空格在记事的位置"
 
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
-#: modules_v3/stories/module.php:338
+#: modules_v3/stories/module.php:339
 msgid "Add story"
 msgstr "添加故事"
+
+#: admin_trees_download.php:129 modules_v3/clippings/module.php:217
+#: modules_v3/clippings/module.php:603
+msgid "Add the GEDCOM media path to filenames"
+msgstr ""
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:528
 msgid "Add this individual and his direct line ancestors."
@@ -1374,7 +1379,7 @@ msgid "Add to favorites"
 msgstr "添加到收藏"
 
 #: admin_site_other.php:31 admin_site_other.php:37
-#: themes/_administration/header.php:122
+#: themes/_administration/header.php:120
 msgid "Add unlinked records"
 msgstr "添加未链接的记录"
 
@@ -1382,7 +1387,7 @@ msgstr "添加未链接的记录"
 msgid "Add watermarks to thumbnails?"
 msgstr "添加水印到缩略图？"
 
-#: modules_v3/relatives/module.php:202
+#: modules_v3/relatives/module.php:160
 msgid "Add wife"
 msgstr "添加妻子"
 
@@ -1395,7 +1400,7 @@ msgstr "添加您自己的文字和图形。"
 msgid "Add/Insert Blank Row"
 msgstr "添加/插入空白行"
 
-#: editnews.php:31 editnews.php:45
+#: editnews.php:31 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "添加日记或新闻"
 
@@ -1424,8 +1429,8 @@ msgstr "阿德莱德，澳大利亚"
 msgid "Admin comments on user"
 msgstr "管理用户评论"
 
-#: admin.php:29 library/WT/MenuBar.php:83 themes/_administration/header.php:64
-#: themes/_administration/header.php:95
+#: admin.php:29 library/WT/MenuBar.php:83 themes/_administration/header.php:62
+#: themes/_administration/header.php:93
 msgid "Administration"
 msgstr "管理"
 
@@ -1625,8 +1630,8 @@ msgid "After you have logged in, select the “My Account” link under the “M
 msgstr "登录后，选择«我的网页»菜单下的«我的帐户»链接，在密码框更改你的密码。"
 
 #. I18N: gedcom tag AGE
-#: autocomplete.php:114 includes/functions/functions_print.php:761
-#: includes/functions/functions_print.php:799
+#: autocomplete.php:114 includes/functions/functions_print.php:747
+#: includes/functions/functions_print.php:785
 #: library/WT/Controller/Timeline.php:226
 #: library/WT/Controller/Timeline.php:228 library/WT/Gedcom/Tag.php:106
 #: library/WT/Stats.php:1614 library/WT/Stats.php:2354
@@ -1749,19 +1754,30 @@ msgstr "所有记录变化必须接受"
 msgid "All existing PGV users must have distinct email addresses"
 msgstr "所有现有的PGV用户必须有不同的电子邮件地址"
 
-#: admin_trees_config.php:1076 admin_trees_config.php:1113
-#: admin_trees_config.php:1150 admin_trees_config.php:1179
-msgid "All facts"
-msgstr "添加事件"
+#: admin_trees_config.php:1113 help_text.php:505
+msgid "All family facts"
+msgstr ""
 
-#: login.php:382
+#: login.php:380
 msgid "All fields must be completed."
 msgstr "所有项必须完成"
+
+#: admin_trees_config.php:1076 help_text.php:583
+msgid "All individual facts"
+msgstr ""
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
 msgid "All individuals"
 msgstr "所有人"
+
+#: admin_trees_config.php:1179 help_text.php:789
+msgid "All repository facts"
+msgstr ""
+
+#: admin_trees_config.php:1150 help_text.php:900
+msgid "All source facts"
+msgstr ""
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1848,7 +1864,7 @@ msgstr "编辑菜单中的个人，家庭，资源等。"
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr "显示一个人所有的祖先和后代的交互树。"
 
-#: setup.php:921
+#: setup.php:922
 msgid "An unexpected database error occurred."
 msgstr "数据库发生意外错误。"
 
@@ -1979,7 +1995,7 @@ msgctxt "LOCATIVE"
 msgid "April"
 msgstr "四月"
 
-#: includes/functions/functions_print.php:1037
+#: includes/functions/functions_print.php:1023
 #: library/WT/Date/Calendar.php:126
 msgctxt "NOMINATIVE"
 msgid "April"
@@ -2006,7 +2022,7 @@ msgstr "您确定要删除此新闻项目吗？"
 #: includes/functions/functions_print_facts.php:674
 #: includes/functions/functions_print_facts.php:869
 #: includes/functions/functions_print_facts.php:1013
-#: library/WT/Controller/Individual.php:158 modules_v3/lightbox/module.php:203
+#: library/WT/Controller/Individual.php:158
 msgid "Are you sure you want to delete this fact?"
 msgstr "您确定要删除这个事实？"
 
@@ -2015,7 +2031,7 @@ msgstr "您确定要删除这个事实？"
 msgid "Are you sure you want to delete this message?  It cannot be retrieved later."
 msgstr "您确定要删除此消息？它将无法被检索。"
 
-#: modules_v3/stories/module.php:359
+#: modules_v3/stories/module.php:360
 msgid "Are you sure you want to delete this story?"
 msgstr "您确定要删除这个故事吗？"
 
@@ -2030,6 +2046,10 @@ msgstr "您确定要删除这个故事吗？"
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "确定要删除“%s”吗？"
+
+#: modules_v3/lightbox/module.php:203
+msgid "Are you sure you want to remove links to this media object?"
+msgstr ""
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -2161,7 +2181,7 @@ msgctxt "LOCATIVE"
 msgid "August"
 msgstr "八月"
 
-#: includes/functions/functions_print.php:1041
+#: includes/functions/functions_print.php:1027
 #: library/WT/Date/Calendar.php:130
 msgctxt "NOMINATIVE"
 msgid "August"
@@ -2763,7 +2783,7 @@ msgstr "祝福"
 msgid "Block"
 msgstr "块"
 
-#: themes/_administration/header.php:149
+#: themes/_administration/header.php:147
 msgid "Blocks"
 msgstr "区块"
 
@@ -3318,7 +3338,7 @@ msgid "Changes in the last day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "最后一天的变化"
 
-#: themes/_administration/header.php:124
+#: themes/_administration/header.php:122
 msgid "Changes log"
 msgstr "修改日志"
 
@@ -3350,7 +3370,7 @@ msgstr "图表"
 msgid "Check access rights on this directory."
 msgstr "查看该目录的访问权限。"
 
-#: admin_trees_check.php:34 themes/_administration/header.php:123
+#: admin_trees_check.php:34 themes/_administration/header.php:121
 msgid "Check for errors"
 msgstr "检查错误"
 
@@ -3593,7 +3613,7 @@ msgid "Civil registrar"
 msgstr "男公证人"
 
 #. I18N: The “Data folder” is a configuration setting
-#: admin_site_clean.php:28 themes/_administration/header.php:104
+#: admin_site_clean.php:28 themes/_administration/header.php:102
 msgid "Clean up data folder"
 msgstr "清理数据文件夹"
 
@@ -3658,7 +3678,7 @@ msgid "Clicking the “+” icon will open the GEDFact shared note assistant win
 msgstr "点击\"+ \" 图标将打开GEDFact的共享记事辅助窗口。<br>那里会有具体的帮助。<br><br>当你点击\"保存\"按钮，那个ID共享的记事将被粘贴在这里。"
 
 #. I18N: The local time on the client/browser
-#: themes/_administration/header.php:86
+#: themes/_administration/header.php:84
 msgid "Client time"
 msgstr ""
 
@@ -3718,8 +3738,8 @@ msgstr "每页列数"
 msgid "Comment"
 msgstr "评论"
 
-#: admin_users.php:207 help_text.php:1348 login.php:283 login.php:312
-#: login.php:409
+#: admin_users.php:207 help_text.php:1348 login.php:283 login.php:309
+#: login.php:407
 msgid "Comments"
 msgstr "备注"
 
@@ -3777,7 +3797,7 @@ msgstr "串联"
 msgid "Configure"
 msgstr "配置"
 
-#: admin_users.php:389 edituser.php:152 help_text.php:1289 login.php:404
+#: admin_users.php:389 edituser.php:152 help_text.php:1289 login.php:402
 msgid "Confirm password"
 msgstr "确认密码"
 
@@ -3874,7 +3894,7 @@ msgstr "哥斯达黎加"
 msgid "Cote d’Ivoire"
 msgstr "科特迪瓦"
 
-#: login.php:555
+#: login.php:551
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr "无法验证您输入的信息。请确认后再试一次。"
 
@@ -3922,7 +3942,7 @@ msgstr "添加个人"
 msgid "Create a new media object"
 msgstr "新建一个媒体对象"
 
-#. I18N: An note that is not linked to any other record
+#. I18N: A note that is not linked to any other record
 #: admin_site_other.php:55
 msgid "Create a new note"
 msgstr "添加记事"
@@ -4108,11 +4128,11 @@ msgstr "现有的"
 msgid "Custom"
 msgstr "定制"
 
-#: calendar.php:269 includes/functions/functions_print.php:1014
+#: calendar.php:269 includes/functions/functions_print.php:1000
 msgid "Custom event"
 msgstr "自定义事件"
 
-#: includes/functions/functions_print.php:1013
+#: includes/functions/functions_print.php:999
 msgid "Custom fact"
 msgstr ""
 
@@ -4159,7 +4179,7 @@ msgstr "资料"
 msgid "Data folder"
 msgstr "数据文件夹"
 
-#: login.php:549
+#: login.php:545
 msgid "Data was not correct, please try again"
 msgstr "数据不正确,请再试一次"
 
@@ -4349,7 +4369,7 @@ msgid "Date range"
 msgstr "日期范围"
 
 #: help_text.php:185
-msgid "Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range."
+msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr "日期范围是用来表明一个事件,例如一个出生,发生在一个在一个可能的范围里的未知日期。"
 
 #: admin_users.php:577
@@ -4708,7 +4728,7 @@ msgctxt "LOCATIVE"
 msgid "December"
 msgstr "十二月"
 
-#: includes/functions/functions_print.php:1045
+#: includes/functions/functions_print.php:1031
 #: library/WT/Date/Calendar.php:134
 msgctxt "NOMINATIVE"
 msgid "December"
@@ -4809,7 +4829,7 @@ msgstr "删除选定的消息"
 msgid "Delete all existing geographic data before importing the file."
 msgstr "导入文件之前删除所有现有的地理数据。"
 
-#: themes/_administration/header.php:136
+#: themes/_administration/header.php:134
 msgid "Delete inactive users"
 msgstr "删除无效用户"
 
@@ -4893,11 +4913,11 @@ msgstr "描述"
 msgid "Description META tag"
 msgstr "描述元标记"
 
-#: login.php:399
+#: login.php:397
 msgid "Desired password"
 msgstr "所需的密码"
 
-#: login.php:394
+#: login.php:392
 msgid "Desired user name"
 msgstr "所需的用户名"
 
@@ -5089,6 +5109,7 @@ msgstr "不密封:未经授权"
 #: addmedia.php:725 admin_trees_config.php:1261 edit_interface.php:2208
 #: help_text.php:1274
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
+#: modules_v3/batch_update/admin_batch_update.php:342
 msgid "Do not update the “last change” record"
 msgstr "不更新“最后更改”记录"
 
@@ -5285,7 +5306,7 @@ msgstr "辑辑资源"
 msgid "Edit story"
 msgstr "编辑故事"
 
-#: library/WT/Tree.php:331
+#: library/WT/Tree.php:332
 msgid "Edit this individual and replace their details with your own"
 msgstr "编辑这个个体和用你自己的细节替换他们的"
 
@@ -5354,7 +5375,7 @@ msgstr "电子邮件"
 #. I18N: gedcom tag _EMAIL
 #: admin_users.php:378 edituser.php:156 help_text.php:1197
 #: library/WT/Gedcom/Tag.php:182 library/WT/Gedcom/Tag.php:183
-#: library/WT/Gedcom/Tag.php:184 library/WT/Gedcom/Tag.php:700 login.php:389
+#: library/WT/Gedcom/Tag.php:184 library/WT/Gedcom/Tag.php:700 login.php:387
 #: setup.php:408
 msgid "Email address"
 msgstr "电子邮件地址"
@@ -5521,7 +5542,7 @@ msgstr "输入缩放级别"
 msgid "Entire record"
 msgstr "整个记录"
 
-#: editnews.php:63
+#: editnews.php:68
 msgid "Entry text:"
 msgstr "输入文本:"
 
@@ -5652,7 +5673,7 @@ msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s 
 msgstr ""
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:410
+#: login.php:408
 msgid "Explain why you are requesting an account."
 msgstr "说明你为什么要申请一个帐户。"
 
@@ -5767,7 +5788,7 @@ msgstr "事实9"
 msgid "Fact icons"
 msgstr "事件图标"
 
-#: includes/functions/functions_print.php:1004
+#: includes/functions/functions_print.php:990
 msgid "Fact or event"
 msgstr "事实或事件"
 
@@ -5787,11 +5808,11 @@ msgstr "家庭事件"
 msgid "Facts for individual records"
 msgstr "个人事件"
 
-#: help_text.php:784
+#: admin_trees_config.php:1129 help_text.php:784
 msgid "Facts for new families"
 msgstr "新家庭的事件"
 
-#: help_text.php:779
+#: admin_trees_config.php:1092 help_text.php:779
 msgid "Facts for new individuals"
 msgstr "新个人的事件"
 
@@ -5851,10 +5872,6 @@ msgstr "家庭"
 #: admin_trees_config.php:341 help_text.php:520
 msgid "Family ID prefix"
 msgstr "家庭ID前缀"
-
-#: help_text.php:505
-msgid "Family add facts"
-msgstr "添加家庭事件"
 
 #. I18N: gedcom tag FAMC
 #: library/WT/Gedcom/Tag.php:199
@@ -5916,7 +5933,7 @@ msgstr "%s 的家庭"
 #: admin_users.php:431 edit_changes.php:182
 #: modules_v3/batch_update/admin_batch_update.php:61
 #: modules_v3/faq/module.php:351 modules_v3/googlemap/module.php:1468
-#: modules_v3/html/module.php:294 modules_v3/stories/module.php:331
+#: modules_v3/html/module.php:294 modules_v3/stories/module.php:332
 msgid "Family tree"
 msgstr "家谱"
 
@@ -5943,7 +5960,7 @@ msgid "Family tree title"
 msgstr "家谱标题"
 
 #: admin.php:198 admin_trees_manage.php:28 search.php:219
-#: themes/_administration/header.php:106 themes/_administration/header.php:108
+#: themes/_administration/header.php:104 themes/_administration/header.php:106
 msgid "Family trees"
 msgstr "家谱"
 
@@ -6054,7 +6071,7 @@ msgstr "父亲"
 msgid "Father: %s"
 msgstr "父亲: %s"
 
-#: includes/functions/functions_print.php:669
+#: includes/functions/functions_print.php:658
 msgid "Father’s age"
 msgstr "父亲的年龄"
 
@@ -6100,7 +6117,7 @@ msgctxt "LOCATIVE"
 msgid "February"
 msgstr "二月"
 
-#: includes/functions/functions_print.php:1035
+#: includes/functions/functions_print.php:1021
 #: library/WT/Date/Calendar.php:124
 msgctxt "NOMINATIVE"
 msgid "February"
@@ -6184,43 +6201,43 @@ msgstr "标有 %s 文件正常操作需要和不能被删除。"
 msgid "Filter"
 msgstr "过滤器"
 
-#: find.php:107 includes/functions/functions_print.php:1103
+#: find.php:107 includes/functions/functions_print.php:1089
 msgid "Find a fact or event"
 msgstr "找一个事实或事件"
 
 #: admin_site_merge.php:267 admin_site_merge.php:288 find.php:74
-#: includes/functions/functions_print.php:1069
+#: includes/functions/functions_print.php:1055
 msgid "Find a family"
 msgstr "找一个家庭"
 
-#: find.php:77 includes/functions/functions_print.php:1099
+#: find.php:77 includes/functions/functions_print.php:1085
 msgid "Find a media object"
 msgstr "找一个媒体对象"
 
-#: find.php:86 includes/functions/functions_print.php:1091
+#: find.php:86 includes/functions/functions_print.php:1077
 msgid "Find a note"
 msgstr "找一个记事"
 
-#: find.php:80 includes/functions/functions_print.php:1065
+#: find.php:80 includes/functions/functions_print.php:1051
 msgid "Find a place"
 msgstr "找个地方"
 
-#: find.php:83 includes/functions/functions_print.php:1095
+#: find.php:83 includes/functions/functions_print.php:1081
 msgid "Find a repository"
 msgstr "找一个存储库"
 
 #: admin_site_merge.php:268 admin_site_merge.php:289 find.php:89
-#: includes/functions/functions_print.php:1087
+#: includes/functions/functions_print.php:1073
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
 msgstr "找一个资源"
 
-#: find.php:92 includes/functions/functions_print.php:1073
+#: find.php:92 includes/functions/functions_print.php:1059
 msgid "Find a special character"
 msgstr "找一个特殊字符"
 
 #: admin_site_merge.php:266 admin_site_merge.php:287 find.php:71
-#: includes/functions/functions_print.php:1061
+#: includes/functions/functions_print.php:1047
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:32
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:75
 #: modules_v3/GEDFact_assistant/module.php:78
@@ -6327,8 +6344,8 @@ msgstr "例如,如果您指定一个路径长度的2,人将能够看到自己的
 msgid "For help with genealogy questions contact"
 msgstr "家谱问题联系"
 
-#: includes/functions/functions_print.php:523
-#: includes/functions/functions_print.php:526
+#: includes/functions/functions_print.php:521
+#: includes/functions/functions_print.php:524
 msgid "For more information contact"
 msgstr "如果需要更多的信息请联系"
 
@@ -6419,7 +6436,7 @@ msgstr "常见问题"
 msgid "Fresno, California"
 msgstr "加州弗雷斯诺"
 
-#: includes/functions/functions_print.php:1053
+#: includes/functions/functions_print.php:1039
 #: library/WT/Date/Calendar.php:223
 msgid "Fri"
 msgstr "星期五"
@@ -6514,8 +6531,7 @@ msgid "GEDCOM files are stored in the %s folder."
 msgstr "GEDCOM文件存放在 %s 文件夹"
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
-#: admin_trees_config.php:634 admin_trees_download.php:129 help_text.php:535
-#: modules_v3/clippings/module.php:217 modules_v3/clippings/module.php:603
+#: admin_trees_config.php:634 help_text.php:535
 msgid "GEDCOM media path"
 msgstr "GEDCOM 媒体目录"
 
@@ -6697,7 +6713,7 @@ msgid "Godson"
 msgstr "教子"
 
 #. I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps
-#: includes/functions/functions_print.php:872
+#: includes/functions/functions_print.php:858
 #: modules_v3/googlemap/admin_places.php:168
 #: modules_v3/googlemap/module.php:48 modules_v3/googlemap/module.php:197
 #: modules_v3/googlemap/module.php:1440
@@ -6901,17 +6917,17 @@ msgstr "犹太"
 msgid "Height"
 msgstr "高度"
 
-#: login.php:212 login.php:302
+#: login.php:212 login.php:299
 #, php-format
 msgid "Hello %s…"
 msgstr "你好 %s …"
 
-#: login.php:354
+#: login.php:352
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "你好 %s …<br>谢谢你的注册。"
 
-#: login.php:277 login.php:472
+#: login.php:277 login.php:470
 msgid "Hello administrator…"
 msgstr "你好管理员……"
 
@@ -7233,7 +7249,7 @@ msgstr "如果你是网站管理员,你应该检查:"
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr "如果你不能自己解决问题,你可以在<a href=\"http://webtrees.net\">webtrees.net</a>论坛寻求帮助"
 
-#: login.php:313
+#: login.php:310
 msgid "If you didn’t request an account, you can just delete this message."
 msgstr "如果你没有申请一个帐户,您可以删除此消息。"
 
@@ -7387,8 +7403,8 @@ msgstr "印度"
 #: modules_v3/individual_report/module.php:33
 #: modules_v3/individual_report/report.xml:3
 #: modules_v3/individual_report/report.xml:84
-#: modules_v3/stories/module.php:244 modules_v3/stories/module.php:343
-#: modules_v3/stories/module.php:409 pedigree.php:43
+#: modules_v3/stories/module.php:245 modules_v3/stories/module.php:344
+#: modules_v3/stories/module.php:410 pedigree.php:43
 msgid "Individual"
 msgstr "个人"
 
@@ -7403,10 +7419,6 @@ msgstr "第二个人"
 #: admin_trees_config.php:335 help_text.php:530
 msgid "Individual ID prefix"
 msgstr "个人ID前缀"
-
-#: help_text.php:583
-msgid "Individual add facts"
-msgstr "添加个人事件"
 
 #: statistics.php:558
 msgid "Individual distribution"
@@ -7485,7 +7497,7 @@ msgctxt "MALE"
 msgid "Informant"
 msgstr "男线人"
 
-#: login.php:305
+#: login.php:302
 msgid "Information about the request is shown under the link below."
 msgstr "申请的信息显示在下面的链接。"
 
@@ -7617,7 +7629,7 @@ msgctxt "LOCATIVE"
 msgid "January"
 msgstr "一月"
 
-#: includes/functions/functions_print.php:1034
+#: includes/functions/functions_print.php:1020
 #: library/WT/Date/Calendar.php:123
 msgctxt "NOMINATIVE"
 msgid "January"
@@ -7637,7 +7649,7 @@ msgid "Johannesburg, South Africa"
 msgstr "约翰内斯堡,南非"
 
 #. I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname.
-#: library/WT/Tree.php:330
+#: library/WT/Tree.php:331
 msgid "John /DOE/"
 msgstr "乔 /布洛格斯/"
 
@@ -7679,7 +7691,7 @@ msgctxt "LOCATIVE"
 msgid "July"
 msgstr "七月"
 
-#: includes/functions/functions_print.php:1040
+#: includes/functions/functions_print.php:1026
 #: library/WT/Date/Calendar.php:129
 msgctxt "NOMINATIVE"
 msgid "July"
@@ -7753,7 +7765,7 @@ msgctxt "LOCATIVE"
 msgid "June"
 msgstr "六月"
 
-#: includes/functions/functions_print.php:1039
+#: includes/functions/functions_print.php:1025
 #: library/WT/Date/Calendar.php:128
 msgctxt "NOMINATIVE"
 msgid "June"
@@ -7881,7 +7893,7 @@ msgstr "在图表中的LDS条例码"
 msgid "LDS spouse sealing"
 msgstr "LDS 配偶密封"
 
-#: includes/functions/functions_print.php:884
+#: includes/functions/functions_print.php:870
 msgid "LDS temple"
 msgstr "LDS 寺庙"
 
@@ -8187,7 +8199,7 @@ msgstr "男房客"
 msgid "Logan, Utah"
 msgstr "犹他州洛根"
 
-#: modules_v3/login_block/module.php:58 themes/webtrees/header.php:63
+#: modules_v3/login_block/module.php:58 themes/webtrees/header.php:64
 msgid "Logged in as "
 msgstr "已登录人员 "
 
@@ -8212,7 +8224,7 @@ msgstr "登录URL"
 msgid "Logout"
 msgstr "注销"
 
-#: admin_site_logs.php:27 themes/_administration/header.php:100
+#: admin_site_logs.php:27 themes/_administration/header.php:98
 msgid "Logs"
 msgstr "日志"
 
@@ -8366,7 +8378,7 @@ msgid "Manuscript"
 msgstr "原文"
 
 #: help_text.php:555
-msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message."
+msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
 msgstr "许多家谱程序创建自定义标签的GEDCOM文件，<b>webtrees</b>最了解他们。当未确认的标签被发现，这个选项可以让您选择是否忽略或显示一个警告信息。"
 
 #. I18N: Help text for the “Sending server name” site configuration setting
@@ -8400,7 +8412,7 @@ msgctxt "LOCATIVE"
 msgid "March"
 msgstr "三月"
 
-#: includes/functions/functions_print.php:1036
+#: includes/functions/functions_print.php:1022
 #: library/WT/Date/Calendar.php:125
 msgctxt "NOMINATIVE"
 msgid "March"
@@ -8507,7 +8519,7 @@ msgstr "婚姻的意图"
 
 #. I18N: gedcom tag MARL
 #: library/WT/Gedcom/Tag.php:237
-msgid "Marriage licence"
+msgid "Marriage license"
 msgstr "结婚登记证"
 
 #: library/WT/Gedcom/Tag.php:774
@@ -8708,7 +8720,7 @@ msgctxt "LOCATIVE"
 msgid "May"
 msgstr "五月"
 
-#: includes/functions/functions_print.php:1038
+#: includes/functions/functions_print.php:1024
 #: library/WT/Date/Calendar.php:127
 msgctxt "NOMINATIVE"
 msgid "May"
@@ -8726,7 +8738,7 @@ msgstr "梅德福,俄勒冈州"
 #: admin_media.php:505 admin_media.php:595 admin_trees_config.php:218
 #: includes/functions/functions_print_lists.php:1260 inverselink.php:85
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:87
-#: modules_v3/media/module.php:34 themes/_administration/header.php:139
+#: modules_v3/media/module.php:34 themes/_administration/header.php:137
 msgid "Media"
 msgstr "媒体"
 
@@ -8874,7 +8886,7 @@ msgstr "田纳西州的孟菲斯"
 msgid "Menu"
 msgstr "菜单"
 
-#: themes/_administration/header.php:147
+#: themes/_administration/header.php:145
 msgid "Menus"
 msgstr "菜单"
 
@@ -8889,7 +8901,7 @@ msgstr "从ID合并:"
 
 #: admin_site_merge.php:32 admin_site_merge.php:78 admin_site_merge.php:146
 #: admin_site_merge.php:243 help_text.php:1160
-#: themes/_administration/header.php:121
+#: themes/_administration/header.php:119
 msgid "Merge records"
 msgstr "合并记录"
 
@@ -8989,7 +9001,7 @@ msgid "Min. no. of occurrences to be a “common surname”"
 msgstr "常见的姓"
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
 msgstr "谷歌地图最小和最大缩放因子。1是完整的地图,15是单一的房子。注意,15只提供在某些地区。"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9023,7 +9035,7 @@ msgstr "模块"
 msgid "Module administration"
 msgstr "模块管理"
 
-#: themes/_administration/header.php:144
+#: themes/_administration/header.php:142
 msgid "Modules"
 msgstr "模块"
 
@@ -9031,7 +9043,7 @@ msgstr "模块"
 msgid "Moldova"
 msgstr "摩尔多瓦"
 
-#: includes/functions/functions_print.php:1049
+#: includes/functions/functions_print.php:1035
 #: library/WT/Date/Calendar.php:219
 msgid "Mon"
 msgstr "星期一"
@@ -9183,7 +9195,7 @@ msgstr "母亲"
 msgid "Mother: %s"
 msgstr "母亲: %s"
 
-#: includes/functions/functions_print.php:661
+#: includes/functions/functions_print.php:650
 msgid "Mother’s age"
 msgstr "母亲的年龄"
 
@@ -9268,7 +9280,7 @@ msgid "My account"
 msgstr "我的账户"
 
 #. I18N: Default title for new family trees
-#: library/WT/Tree.php:315
+#: library/WT/Tree.php:316
 msgid "My family tree"
 msgstr "我的家谱"
 
@@ -9279,7 +9291,7 @@ msgstr "个人档案"
 #. I18N: Name of a module
 #: admin_modules.php:143 admin_users.php:210 index.php:87 index.php:95
 #: library/WT/MenuBar.php:59 library/WT/MenuBar.php:62
-#: modules_v3/user_welcome/module.php:32 themes/_administration/header.php:66
+#: modules_v3/user_welcome/module.php:32 themes/_administration/header.php:64
 msgid "My page"
 msgstr "我的网页"
 
@@ -9470,10 +9482,6 @@ msgstr "新西兰"
 msgid "New data"
 msgstr "新的数据"
 
-#: admin_trees_config.php:1092 admin_trees_config.php:1129
-msgid "New entry facts"
-msgstr "新事件"
-
 #. I18N: %s is a server name/URL
 #: login.php:292
 #, php-format
@@ -9481,7 +9489,7 @@ msgid "New registration at %s"
 msgstr "在家 %s 新登记"
 
 #. I18N: %s is a server name/URL
-#: login.php:492
+#: login.php:490
 #, php-format
 msgid "New user at %s"
 msgstr "新用户在 %s 验证"
@@ -9608,7 +9616,7 @@ msgstr "没有联系方式"
 msgid "No errors were found."
 msgstr "没有发现错误。"
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1799
 #: includes/functions/functions_print_lists.php:1906
 #, php-format
@@ -9636,7 +9644,7 @@ msgstr "着的人今天没有事件。"
 msgid "No events for living individuals exist for tomorrow."
 msgstr "活着的人明天没有事件。"
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1806
 #: includes/functions/functions_print_lists.php:1913
 #, php-format
@@ -9787,7 +9795,7 @@ msgstr "鳏夫"
 
 #. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:437
-#: includes/functions/functions_print.php:497 library/WT/Gedcom/Tag.php:262
+#: includes/functions/functions_print.php:495 library/WT/Gedcom/Tag.php:262
 #: modules_v3/cemetery_report/report.xml:61
 #: modules_v3/family_group_report/report.xml:479
 #: modules_v3/family_group_report/report.xml:740
@@ -9856,7 +9864,7 @@ msgctxt "LOCATIVE"
 msgid "November"
 msgstr "十一月"
 
-#: includes/functions/functions_print.php:1044
+#: includes/functions/functions_print.php:1030
 #: library/WT/Date/Calendar.php:133
 msgctxt "NOMINATIVE"
 msgid "November"
@@ -9970,7 +9978,7 @@ msgctxt "LOCATIVE"
 msgid "October"
 msgstr "十月"
 
-#: includes/functions/functions_print.php:1043
+#: includes/functions/functions_print.php:1029
 #: library/WT/Date/Calendar.php:132
 msgctxt "NOMINATIVE"
 msgid "October"
@@ -10200,7 +10208,7 @@ msgid "PHP failed to write to disk"
 msgstr "PHP未能写入磁盘"
 
 #: admin_site_info.php:32 help_text.php:1314
-#: themes/_administration/header.php:102
+#: themes/_administration/header.php:100
 msgid "PHP information"
 msgstr "PHP 信息"
 
@@ -10308,13 +10316,13 @@ msgstr "父母"
 msgid "Parents and siblings"
 msgstr "父母和兄弟姐妹"
 
-#: includes/functions/functions_print.php:673
+#: includes/functions/functions_print.php:662
 msgid "Parent’s age"
 msgstr "父母的年龄"
 
 #: admin_site_config.php:136 admin_users.php:189 admin_users.php:384
 #: edituser.php:150 help_text.php:729 help_text.php:1284 login.php:151
-#: login.php:215 login.php:446 modules_v3/login_block/module.php:76
+#: login.php:215 login.php:444 modules_v3/login_block/module.php:76
 #: setup.php:400
 msgid "Password"
 msgstr "密码"
@@ -10377,9 +10385,9 @@ msgstr "待定的更改块"
 #: modules_v3/change_report/report.xml:49
 #: modules_v3/review_changes/module.php:32
 #: modules_v3/review_changes/module.php:73
-#: themes/_administration/header.php:76 themes/clouds/header.php:121
-#: themes/colors/header.php:95 themes/fab/header.php:75
-#: themes/minimal/header.php:79 themes/xenea/header.php:109
+#: themes/_administration/header.php:74 themes/clouds/header.php:119
+#: themes/colors/header.php:90 themes/fab/header.php:73
+#: themes/minimal/header.php:76 themes/xenea/header.php:107
 msgid "Pending changes"
 msgstr "待定的更改"
 
@@ -10658,7 +10666,7 @@ msgstr "应根据家谱的标准输入的地方。地方记录地方最具体的
 msgid "Play"
 msgstr "播放"
 
-#: login.php:306
+#: login.php:303
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
 msgstr "请点击下面的链接并填写请求的数据来确认你的申请和电子邮件地址。"
 
@@ -10923,24 +10931,23 @@ msgstr "Quartidi"
 msgid "Question"
 msgstr "问题"
 
-#: admin_trees_config.php:1100 admin_trees_config.php:1137
-#: admin_trees_config.php:1166 admin_trees_config.php:1195
-msgid "Quick facts"
-msgstr "快速事件"
-
 #: help_text.php:510
 msgid "Quick family facts"
 msgstr "快速家庭事件"
 
-#: help_text.php:588
+#: admin_trees_config.php:1137
+msgid "Quick family facts facts"
+msgstr ""
+
+#: admin_trees_config.php:1100 help_text.php:588
 msgid "Quick individual facts"
 msgstr "快速个人事件"
 
-#: help_text.php:794
+#: admin_trees_config.php:1195 help_text.php:794
 msgid "Quick repository facts"
 msgstr "快速库事件"
 
-#: help_text.php:905
+#: admin_trees_config.php:1166 help_text.php:905
 msgid "Quick source facts"
 msgstr "快速资源事件"
 
@@ -10954,7 +10961,7 @@ msgstr "Quintidi"
 msgid "RE: "
 msgstr "回复: "
 
-#: admin_site_readme.php:27 themes/_administration/header.php:101
+#: admin_site_readme.php:27 themes/_administration/header.php:99
 msgid "README documentation"
 msgstr "README文档"
 
@@ -11089,7 +11096,7 @@ msgid "Re-order media"
 msgstr "重新排列媒体"
 
 #: admin_users.php:366 admin_users.php:572 edituser.php:135 help_text.php:1343
-#: login.php:281 login.php:384
+#: login.php:281 login.php:382
 msgid "Real name"
 msgstr "真实姓名"
 
@@ -11187,8 +11194,9 @@ msgstr "男登记官"
 msgid "Regular expression"
 msgstr "正则表达式"
 
+#. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
-msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_blank\">php.net/manual/en/regexp.reference.php</a> for futher details."
+msgid "Regular expressions are an advanced pattern matching technique."
 msgstr ""
 
 #. I18N: Name of a module/report
@@ -11235,7 +11243,7 @@ msgstr "和父母的关系"
 msgid "Relationship: %s"
 msgstr "关系： %s"
 
-#: includes/functions/functions_print.php:602
+#: includes/functions/functions_print.php:600
 #: includes/functions/functions_print_lists.php:290 library/WT/MenuBar.php:110
 #: library/WT/MenuBar.php:228 library/WT/MenuBar.php:253 relationship.php:71
 #: relationship.php:86
@@ -11325,7 +11333,7 @@ msgstr "回复"
 msgid "Report"
 msgstr "报告"
 
-#: library/WT/MenuBar.php:397 themes/_administration/header.php:151
+#: library/WT/MenuBar.php:397 themes/_administration/header.php:149
 msgid "Reports"
 msgstr "报告"
 
@@ -11348,10 +11356,6 @@ msgstr "库"
 #: admin_trees_config.php:354 help_text.php:804
 msgid "Repository ID prefix"
 msgstr "库ID前缀"
-
-#: help_text.php:789
-msgid "Repository add facts"
-msgstr "添加库事件"
 
 #: find.php:249
 msgid "Repository contains:"
@@ -11393,7 +11397,7 @@ msgid "Research tasks are special events, added to individuals in your family tr
 msgstr "考证任务是特殊事件,添加到个人在你的家谱,确定需要进一步的考证。您可以使用它们作为一个提醒检查事实和更可靠的资源,获取文件或照片、解决矛盾的信息等等。"
 
 #: modules_v3/todo/help_text.php:36
-msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognise this tag."
+msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
 msgstr "考证任务存储使用自定义GEDCOM 标记 “_TODO”。其他应用程序可能无法识别这个谱系标记。"
 
 #: includes/functions/functions_print_lists.php:97
@@ -11594,7 +11598,7 @@ msgstr "圣保罗,巴西"
 msgid "Sao Tome and Principe"
 msgstr "圣多美和普林西比"
 
-#: includes/functions/functions_print.php:1054
+#: includes/functions/functions_print.php:1040
 #: library/WT/Date/Calendar.php:224
 msgid "Sat"
 msgstr "周六"
@@ -11661,11 +11665,11 @@ msgstr "密封取消（离婚）"
 #: modules_v3/descendancy/module.php:102 modules_v3/descendancy/module.php:131
 #: modules_v3/families/module.php:141 modules_v3/individuals/module.php:141
 #: search.php:157 search.php:260 search.php:262 search.php:264
-#: search_advanced.php:293 themes/clouds/header.php:81
-#: themes/clouds/header.php:82 themes/colors/header.php:125
-#: themes/colors/header.php:126 themes/fab/header.php:97
-#: themes/minimal/header.php:101 themes/webtrees/header.php:81
-#: themes/webtrees/header.php:82 themes/xenea/header.php:79
+#: search_advanced.php:293 themes/clouds/header.php:79
+#: themes/clouds/header.php:80 themes/colors/header.php:120
+#: themes/colors/header.php:121 themes/fab/header.php:95
+#: themes/minimal/header.php:98 themes/webtrees/header.php:82
+#: themes/webtrees/header.php:83 themes/xenea/header.php:77
 msgid "Search"
 msgstr "搜索"
 
@@ -11680,7 +11684,7 @@ msgstr "搜索和替换"
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
 
-#: includes/session.php:544
+#: includes/session.php:531
 msgid "Search engine"
 msgstr "搜索引擎"
 
@@ -11720,6 +11724,12 @@ msgstr "西雅图,华盛顿"
 #: admin_site_config.php:139 help_text.php:764
 msgid "Secure connection"
 msgstr "安全连接"
+
+#. I18N: %s is a URL
+#: modules_v3/batch_update/plugins/search_replace.php:93
+#, php-format
+msgid "See %s for more information."
+msgstr ""
 
 #: includes/functions/functions_edit.php:311 reportengine.php:250
 msgid "Select a date"
@@ -11800,11 +11810,11 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "男卖方"
 
-#: login.php:454 message.php:140 modules_v3/user_messages/module.php:78
+#: login.php:452 message.php:140 modules_v3/user_messages/module.php:78
 msgid "Send"
 msgstr "发送"
 
-#: admin_users_bulk.php:32 themes/_administration/header.php:135
+#: admin_users_bulk.php:32 themes/_administration/header.php:133
 msgid "Send broadcast messages"
 msgstr "发送广播消息"
 
@@ -11873,7 +11883,7 @@ msgctxt "LOCATIVE"
 msgid "September"
 msgstr "九月"
 
-#: includes/functions/functions_print.php:1042
+#: includes/functions/functions_print.php:1028
 #: library/WT/Date/Calendar.php:131
 msgctxt "NOMINATIVE"
 msgid "September"
@@ -11915,7 +11925,7 @@ msgid "Server name"
 msgstr "服务器名称"
 
 #. I18N: The local time on the server
-#: themes/_administration/header.php:83
+#: themes/_administration/header.php:81
 msgid "Server time"
 msgstr ""
 
@@ -11929,15 +11939,15 @@ msgstr "会话超时"
 msgid "Set link"
 msgstr "设置链接"
 
-#: themes/_administration/header.php:125 themes/_administration/header.php:137
+#: themes/_administration/header.php:123 themes/_administration/header.php:135
 msgid "Set the default blocks"
 msgstr "设置默认块"
 
-#: themes/_administration/header.php:125
+#: themes/_administration/header.php:123
 msgid "Set the default blocks for new family trees"
 msgstr "为新家谱设置默认块"
 
-#: themes/_administration/header.php:137
+#: themes/_administration/header.php:135
 msgid "Set the default blocks for new users"
 msgstr "为新用户设置默认块"
 
@@ -12489,7 +12499,7 @@ msgid "Show the location of places and events using the Google Maps™ mapping s
 msgstr "使用谷歌地图™地图显示位置的地方和事件的坐标。"
 
 #: modules_v3/faq/module.php:174 modules_v3/html/module.php:325
-#: modules_v3/stories/module.php:245
+#: modules_v3/stories/module.php:246
 msgid "Show this block for which languages?"
 msgstr "显示语言选择么？"
 
@@ -12553,7 +12563,7 @@ msgid "Sicily"
 msgstr "西西里"
 
 #: admin_module_sidebar.php:72 admin_modules.php:124 admin_modules.php:142
-#: themes/_administration/header.php:150
+#: themes/_administration/header.php:148
 msgid "Sidebar"
 msgstr "侧边栏"
 
@@ -12582,12 +12592,12 @@ msgstr "新加坡"
 msgid "Sister"
 msgstr "姐妹"
 
-#: admin_site_access.php:30 themes/_administration/header.php:103
+#: admin_site_access.php:30 themes/_administration/header.php:101
 msgid "Site access rules"
 msgstr "网站访问规则"
 
 #: admin_site_config.php:30 admin_site_config.php:56
-#: themes/_administration/header.php:99
+#: themes/_administration/header.php:97
 msgid "Site configuration"
 msgstr "站点配置"
 
@@ -12718,7 +12728,7 @@ msgstr "%s 的儿子"
 msgid "Sort order"
 msgstr "排序顺序"
 
-#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is a individual’s surname, so may need transliterating into non-latin alphabets.
+#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: includes/functions/functions_print_lists.php:207
 #: library/WT/Controller/Branches.php:153
 #: library/WT/Controller/Branches.php:188
@@ -12758,10 +12768,6 @@ msgstr "资源"
 #: admin_trees_config.php:347 help_text.php:895
 msgid "Source ID prefix"
 msgstr "资源ID前缀"
-
-#: help_text.php:900
-msgid "Source add facts"
-msgstr "添加资源事件"
 
 #: help_text.php:526
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
@@ -12915,7 +12921,7 @@ msgstr "统计图"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:252 admin_site_change.php:286
-#: includes/functions/functions_print.php:887 library/WT/Gedcom/Tag.php:310
+#: includes/functions/functions_print.php:873 library/WT/Gedcom/Tag.php:310
 msgid "Status"
 msgstr "状态"
 
@@ -12952,16 +12958,16 @@ msgid "Store watermarked thumbnails on server?"
 msgstr "水印缩略图存储服务器？"
 
 #. I18N: Name of a module
-#: modules_v3/stories/module.php:32 modules_v3/stories/module.php:404
+#: modules_v3/stories/module.php:32 modules_v3/stories/module.php:405
 msgid "Stories"
 msgstr "故事"
 
-#: modules_v3/stories/module.php:238
+#: modules_v3/stories/module.php:239
 msgid "Story"
 msgstr "故事"
 
-#: modules_v3/stories/module.php:235 modules_v3/stories/module.php:342
-#: modules_v3/stories/module.php:408
+#: modules_v3/stories/module.php:236 modules_v3/stories/module.php:343
+#: modules_v3/stories/module.php:409
 msgid "Story title"
 msgstr "故事标题"
 
@@ -12997,7 +13003,7 @@ msgstr "苏丹"
 msgid "Suffixes"
 msgstr "后缀"
 
-#: includes/functions/functions_print.php:1048
+#: includes/functions/functions_print.php:1034
 #: library/WT/Date/Calendar.php:225
 msgid "Sun"
 msgstr "周日"
@@ -13092,7 +13098,7 @@ msgstr "选项卡"
 msgid "Table prefix"
 msgstr "表前缀"
 
-#: themes/_administration/header.php:148
+#: themes/_administration/header.php:146
 msgid "Tabs"
 msgstr "标签"
 
@@ -13230,7 +13236,7 @@ msgstr "PGV到<b>webtrees</b>向导是一个协助管理员从PGV安装到一个
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "在webtrees站点%s已批准你的申请一个帐号管理员。你现在可以登录访问以下链接：%s"
 
-#: login.php:540
+#: login.php:536
 msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
 msgstr "已经通知管理员。当他给你登录权限,您就可以用你的用户名和密码登陆。"
 
@@ -13241,7 +13247,7 @@ msgid "The changes to “%s” have been accepted."
 msgstr "更改 “%s”已被接受。"
 
 #. I18N: %s is the name of an individual, source or other record
-#: action.php:192
+#: action.php:220
 #, php-format
 msgid "The changes to “%s” have been rejected."
 msgstr "更改“%s”被拒绝。"
@@ -13254,7 +13260,7 @@ msgstr "收集箱，您可以从这个家谱的提取物（“收集箱”），
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
 msgstr "当前<b>webtrees</b>管理员用户名必须与现有的PGV管理员用户名相同"
 
-#: login.php:506
+#: login.php:501
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
 msgstr "用户<b>%s</b>数据检查。"
@@ -13353,7 +13359,7 @@ msgid "The following rules are used to decide whether a visitor is a human being
 msgstr "下面的规则来决定是否一个访客是人类（允许完全访问），搜索引擎机器人（允许受限制的访问）或不必要的过滤（拒绝所有访问）。"
 
 #: admin_site_access.php:287
-msgid "The following visitors were not recognised, and were assumed to be search engines."
+msgid "The following visitors were not recognized, and were assumed to be search engines."
 msgstr "下面的访客不被认可，并被认为是搜索引擎。"
 
 #: help_text.php:1495
@@ -13475,7 +13481,7 @@ msgstr "%s 的版本太新"
 msgid "The version of %s is too old"
 msgstr "%s 的版本太旧了"
 
-#: setup.php:923
+#: setup.php:924
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
 msgstr "webtrees开发者对这个错误很感兴趣。如果你和他们联系，他们会帮助你解决问题。"
 
@@ -13667,7 +13673,7 @@ msgstr "将使用此文件夹webtrees存储媒体文件，GEDCOM文件，临时�
 msgid "This folder will be used to store the media files for this family tree."
 msgstr "此文件夹将用于这个家谱存储媒体文件。"
 
-#: library/WT/Filter.php:237
+#: library/WT/Filter.php:241
 msgid "This form has expired.  Try again."
 msgstr ""
 
@@ -13699,7 +13705,7 @@ msgstr "这个人已经被编辑。你应该评估变更,然后 %1$s 或 %2$s �
 msgid "This individual will be selected by default when viewing charts and reports."
 msgstr "当浏览图表和报告这个人将被默认选中。"
 
-#: includes/functions/functions_print.php:517 library/WT/Stats.php:823
+#: includes/functions/functions_print.php:515 library/WT/Stats.php:823
 #: library/WT/Stats.php:1360 library/WT/Stats.php:1446
 #: library/WT/Stats.php:1757 library/WT/Stats.php:1856
 #: library/WT/Stats.php:2087 library/WT/Stats.php:2504
@@ -14164,7 +14170,7 @@ msgstr "从<b>%s</b>删除所有的家谱资料并用另一个GEDCOM取代它的
 msgid "This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
 msgstr "这将从选定的GEDCOM文件中列出所有的地方。在默认情况下这将不包括地方完全匹配GEDCOM之间的文件和GoogleMap表"
 
-#: includes/functions/functions_print.php:1052
+#: includes/functions/functions_print.php:1038
 #: library/WT/Date/Calendar.php:222
 msgid "Thu"
 msgstr "星期四"
@@ -14283,7 +14289,7 @@ msgstr "标题"
 msgid "Title in Hebrew"
 msgstr "犹太标题"
 
-#: editnews.php:61
+#: editnews.php:66
 msgid "Title:"
 msgstr "标题:"
 
@@ -14519,7 +14525,7 @@ msgstr "Tridi"
 msgid "Trinidad and Tobago"
 msgstr "特立尼达和多巴哥"
 
-#: includes/functions/functions_print.php:1050
+#: includes/functions/functions_print.php:1036
 #: library/WT/Date/Calendar.php:220
 msgid "Tue"
 msgstr "星期二"
@@ -14564,7 +14570,7 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "地方标列表类型"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:390 login.php:405
+#: admin_users.php:390 login.php:403
 msgid "Type the password again."
 msgstr "再次输入密码"
 
@@ -14599,7 +14605,7 @@ msgid "USSR"
 msgstr "苏联"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
-#: themes/_administration/header.php:89
+#: themes/_administration/header.php:87
 msgid "UTC"
 msgstr ""
 
@@ -14638,24 +14644,19 @@ msgstr "撤销"
 msgid "Undo all changes"
 msgstr "撤销所有更改"
 
-#: admin_trees_config.php:1084 admin_trees_config.php:1121
-#: admin_trees_config.php:1158 admin_trees_config.php:1187
-msgid "Unique facts"
-msgstr "独特事件"
-
-#: help_text.php:515
+#: admin_trees_config.php:1121 help_text.php:515
 msgid "Unique family facts"
 msgstr "独特的家庭事件"
 
-#: help_text.php:593
+#: admin_trees_config.php:1084 help_text.php:593
 msgid "Unique individual facts"
 msgstr "独特的个体事实件"
 
-#: help_text.php:799
+#: admin_trees_config.php:1187 help_text.php:799
 msgid "Unique repository facts"
 msgstr "独特的库事件"
 
-#: help_text.php:910
+#: admin_trees_config.php:1158 help_text.php:910
 msgid "Unique source facts"
 msgstr "独特的资源事件"
 
@@ -14727,10 +14728,6 @@ msgstr "更新"
 msgid "Update all"
 msgstr "更新所有"
 
-#: modules_v3/batch_update/admin_batch_update.php:342
-msgid "Update the CHAN record"
-msgstr "更新CHAN记录"
-
 #: admin_site_merge.php:152
 msgid "Updating linked record"
 msgstr "更新的链接记录"
@@ -14759,7 +14756,7 @@ msgid "Upload geographic data"
 msgstr "上传地理数据"
 
 #: admin_media_upload.php:32 admin_media_upload.php:177 help_text.php:1419
-#: themes/_administration/header.php:141
+#: themes/_administration/header.php:139
 msgid "Upload media files"
 msgstr "上传媒体文件"
 
@@ -14801,7 +14798,7 @@ msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to
 msgstr "使用'？'匹配一个字符，使用“*”匹配零个或多个字符。"
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:385 login.php:400
+#: admin_users.php:385 login.php:398
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -14881,7 +14878,7 @@ msgstr "没有被管理员确认的用户"
 msgid "User options"
 msgstr "用户选项"
 
-#: login.php:434 login.php:440 login.php:500 login.php:504
+#: login.php:432 login.php:438 login.php:495 login.php:499
 msgid "User verification"
 msgstr "用户验证"
 
@@ -14892,7 +14889,7 @@ msgstr "用户代理字符串"
 
 #: admin_site_config.php:133 admin_users.php:372 admin_users.php:571
 #: edituser.php:133 help_text.php:734 help_text.php:1474 login.php:146
-#: login.php:214 login.php:280 login.php:310 login.php:442
+#: login.php:214 login.php:280 login.php:307 login.php:440
 #: modules_v3/login_block/module.php:71 modules_v3/todo/module.php:97
 msgid "Username"
 msgstr "用户名"
@@ -14910,7 +14907,7 @@ msgstr "用户名是大小写不敏感而忽略重音字母，使““chloe”,
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
 msgstr "用户名不能包含下列字符：&lt；p&gt； \" %% { } ;"
 
-#: admin.php:122 themes/_administration/header.php:131
+#: admin.php:122 themes/_administration/header.php:129
 msgid "Users"
 msgstr "用户"
 
@@ -14994,7 +14991,7 @@ msgstr "第六月"
 msgid "Veracruz, Mexico"
 msgstr "韦拉克鲁斯州，墨西哥"
 
-#: login.php:311 login.php:450
+#: login.php:308 login.php:448
 msgid "Verification code:"
 msgstr "验证码："
 
@@ -15153,12 +15150,12 @@ msgstr ""
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
 msgstr ""
 
-#: login.php:356
+#: login.php:354
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 msgstr "现在我们将发送一封确认邮件到地址<b>%s</b>。你必须遵循的确认电子邮件中说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br><br>在你按照指示的确认电子邮件中，还必须管理员批准您的帐户请求才可以使用。<br><br>登录到这个网站，你需要知道你的用户名密码。"
 
-#: login.php:358
+#: login.php:356
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
 msgstr "现在我们将发送一封确认邮件到地址<b>%s</b>。你必须在确认电子邮件说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br><br>在你按照电子邮件指示的确认后，您可以登录。登录到该网站，你需要知道你的用户名和密码。"
@@ -15176,7 +15173,7 @@ msgstr "网站和元标签设置"
 msgid "Website URL"
 msgstr "网站 URL"
 
-#: includes/functions/functions_print.php:1051
+#: includes/functions/functions_print.php:1037
 #: library/WT/Date/Calendar.php:221
 msgid "Wed"
 msgstr "星期三"
@@ -15448,7 +15445,7 @@ msgid "Yemen"
 msgstr "也门"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
-#: login.php:304
+#: login.php:301
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr "你(或有人声称是你)在 %1$s 使用电子邮件地址 %2$s 注册一个帐户。"
@@ -15480,7 +15477,7 @@ msgstr "你可以限制显示的新闻文章的数量,从而减少GEDCOM的新�
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "您可以更容易地搜索已婚妇女如果记录他们的婚姻名。<br>但是不是所有的女人需要随丈夫的姓，所以要当心输入不正确的信息到你的数据库中。"
 
-#: login.php:542
+#: login.php:538
 msgid "You can now login with your user name and password."
 msgstr "您可以使用您的用户名和密码登录。"
 
@@ -15496,11 +15493,11 @@ msgstr "您可以加强隐私，通过添加其他日期可以推断个人死亡
 msgid "You cannot login because your browser does not accept cookies."
 msgstr "你不能登陆，你的浏览器不支持COOKIES"
 
-#: downloadbackup.php:34 includes/session.php:546
+#: downloadbackup.php:34 includes/session.php:533
 msgid "You do not have permission to view this page."
 msgstr "您没有权限浏览这个页面。"
 
-#: login.php:483
+#: login.php:481
 msgid "You do not have to take any action; the user can now login."
 msgstr "用户现在可以登录。"
 
@@ -15508,7 +15505,7 @@ msgstr "用户现在可以登录。"
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "您输入相同的ID。不能合并相同的记录。"
 
-#: login.php:538
+#: login.php:534
 msgid "You have confirmed your request to become a registered user."
 msgstr "您的申请通过。"
 
@@ -15593,7 +15590,7 @@ msgstr "你要用你的PhpGedView用户和密码登陆。"
 msgid "You need to set up an administrator account.  This account can control all aspects of this <b>webtrees</b> installation.  Please choose a strong password."
 msgstr "您需要设置一个管理员帐户。此帐户可以控制这个<b> webtrees</b>安装的各个方面。请选择一个强密码。"
 
-#: login.php:481
+#: login.php:479
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr "您需要审批帐户的详细资料，并设置“批准”的状态为'是'。"
 
@@ -15636,7 +15633,7 @@ msgstr "用户请求将通过电子邮件通知。您就可以激活的用户名
 msgid "You will use this to login to webtrees."
 msgstr "您将使用此登录到webtrees。"
 
-#: login.php:315
+#: login.php:312
 msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
 msgstr "你不会从这个网站得到任何更多的电子邮件，因为该帐户的申请七天后将被自动删除。"
 
@@ -15669,7 +15666,7 @@ msgid "Your name"
 msgstr "你的名字"
 
 #. I18N: %s is a server name/URL
-#: login.php:316
+#: login.php:313
 #, php-format
 msgid "Your registration at %s"
 msgstr "您的在 %s 注册"
@@ -15711,16 +15708,6 @@ msgstr "Zip文件"
 msgid "Zoom"
 msgstr "放大"
 
-#: modules_v3/googlemap/admin_places.php:162
-#: modules_v3/googlemap/admin_places.php:582
-#: modules_v3/googlemap/places_edit.php:318
-msgid "Zoom factor"
-msgstr "变焦倍数"
-
-#: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
-msgid "Zoom factor of map"
-msgstr "地图变焦倍数"
-
 #: modules_v3/googlemap/module.php:1347 timeline.php:300
 msgid "Zoom in"
 msgstr "放大"
@@ -15732,6 +15719,16 @@ msgstr "在这里放大"
 #: includes/functions/functions_print.php:127
 msgid "Zoom in/out on this box."
 msgstr "在此框放大/缩小。"
+
+#: modules_v3/googlemap/admin_places.php:162
+#: modules_v3/googlemap/admin_places.php:582
+#: modules_v3/googlemap/places_edit.php:318
+msgid "Zoom level"
+msgstr "变焦倍数"
+
+#: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
+msgid "Zoom level of map"
+msgstr "地图变焦倍数"
 
 #: modules_v3/googlemap/module.php:1348 timeline.php:301
 msgid "Zoom out"
@@ -15804,7 +15801,7 @@ msgstr "以后"
 msgid "after %s"
 msgstr "在 %s  之后"
 
-#: includes/functions/functions_print.php:773
+#: includes/functions/functions_print.php:759
 msgid "after death"
 msgstr "去世后"
 
@@ -15977,7 +15974,7 @@ msgstr "姐哥"
 #: includes/functions/functions.php:939
 msgctxt "spouses's brother"
 msgid "brother-in-law"
-msgstr "哥哥"
+msgstr ""
 
 #: includes/functions/functions.php:948
 msgctxt "wife's brother"
@@ -16012,7 +16009,7 @@ msgstr "兄弟/姐妹"
 #: includes/functions/functions.php:947
 msgctxt "spouses's sibling"
 msgid "brother/sister-in-law"
-msgstr "哥哥/嫂嫂"
+msgstr ""
 
 #: includes/functions/functions.php:953
 msgctxt "wife's sibling"
@@ -16104,7 +16101,7 @@ msgstr "紧凑列表"
 
 #. I18N: button label
 #: admin_pgv_to_wt.php:1059 admin_trees_download.php:138
-#: admin_trees_manage.php:169 admin_users.php:548 login.php:176 login.php:417
+#: admin_trees_manage.php:169 admin_users.php:548 login.php:176 login.php:415
 #: modules_v3/login_block/module.php:102 setup.php:180 setup.php:204
 #: setup.php:273 setup.php:358 setup.php:414
 msgid "continue"
@@ -16298,7 +16295,7 @@ msgstr "公公"
 #: includes/functions/functions.php:942
 msgctxt "spouses's father"
 msgid "father-in-law"
-msgstr "岳父"
+msgstr ""
 
 #: includes/functions/functions.php:951
 msgctxt "wife's father"
@@ -18405,7 +18402,7 @@ msgstr "婆婆"
 #: includes/functions/functions.php:943
 msgctxt "spouses's mother"
 msgid "mother-in-law"
-msgstr "岳母"
+msgstr ""
 
 #: includes/functions/functions.php:952
 msgctxt "wife's mother"
@@ -18415,7 +18412,7 @@ msgstr "岳母"
 #: includes/functions/functions.php:946
 msgctxt "spouses's parent"
 msgid "mother/father-in-law"
-msgstr "岳父/岳母"
+msgstr ""
 
 #: includes/functions/functions.php:877
 msgctxt "brother's son"
@@ -18518,7 +18515,7 @@ msgstr "第九代堂（表）兄(妹)"
 #: includes/functions/functions_edit.php:542
 #: includes/functions/functions_print_facts.php:1055
 #: includes/functions/functions_print_lists.php:776 library/WT/Stats.php:3491
-#: modules_v3/batch_update/admin_batch_update.php:344
+#: modules_v3/batch_update/admin_batch_update.php:345
 #: modules_v3/change_report/report.xml:8 modules_v3/charts/module.php:213
 #: modules_v3/family_group_report/report.xml:249
 #: modules_v3/family_group_report/report.xml:420
@@ -18570,7 +18567,7 @@ msgstr "数字"
 msgid "of"
 msgstr "从"
 
-#: includes/functions/functions_print.php:771
+#: includes/functions/functions_print.php:757
 msgid "on the date of death"
 msgstr "死亡日期"
 
@@ -18680,18 +18677,18 @@ msgstr "拒绝"
 msgid "rejected"
 msgstr "拒绝"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:138
 msgid "religious name"
 msgstr "宗教名字"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:135
 msgctxt "FEMALE"
 msgid "religious name"
 msgstr "宗教名字"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:132
 msgctxt "MALE"
 msgid "religious name"
@@ -18725,7 +18722,7 @@ msgstr "机器人"
 #: edit_interface.php:1210 edit_interface.php:1308 edit_interface.php:1402
 #: edit_interface.php:1485 edit_interface.php:1679 edit_interface.php:1779
 #: edit_interface.php:1979 edit_interface.php:2142 edit_interface.php:2675
-#: editnews.php:78 edituser.php:176 find.php:484
+#: editnews.php:72 edituser.php:176 find.php:484
 #: includes/functions/functions_edit.php:34
 #: includes/functions/functions_edit.php:48
 #: includes/functions/functions_edit.php:107 index_edit.php:335
@@ -18734,7 +18731,7 @@ msgstr "机器人"
 #: modules_v3/googlemap/module.php:626
 #: modules_v3/googlemap/placehierarchy.php:254
 #: modules_v3/googlemap/places_edit.php:339 modules_v3/sitemap/module.php:248
-#: modules_v3/stories/module.php:262
+#: modules_v3/stories/module.php:263
 msgid "save"
 msgstr "保存"
 
@@ -18947,7 +18944,7 @@ msgstr "第七代堂（表）兄(妹)"
 #: admin_trees_config.php:992 admin_trees_config.php:1024
 #: admin_trees_config.php:1045 admin_trees_config.php:1053
 #: admin_trees_config.php:1061 modules_v3/faq/module.php:355
-#: modules_v3/googlemap/module.php:275 modules_v3/stories/module.php:335
+#: modules_v3/googlemap/module.php:275 modules_v3/stories/module.php:336
 msgid "show"
 msgstr "显示"
 
@@ -18991,7 +18988,7 @@ msgstr "姐妹"
 #: includes/functions/functions.php:944
 msgctxt "spouses's sister"
 msgid "sister-in-law"
-msgstr "嫂嫂"
+msgstr ""
 
 #: includes/functions/functions.php:1139
 msgctxt "wife's brother's wife"
@@ -19161,7 +19158,7 @@ msgstr "继子女"
 #: includes/functions/functions.php:940
 msgctxt "spouses's child"
 msgid "step-child"
-msgstr "继子女"
+msgstr ""
 
 #: includes/functions/functions.php:949
 msgctxt "wife's child"
@@ -19176,7 +19173,7 @@ msgstr "继女"
 #: includes/functions/functions.php:941
 msgctxt "spouses's daughter"
 msgid "step-daughter"
-msgstr "继女"
+msgstr ""
 
 #: includes/functions/functions.php:950
 msgctxt "wife's daughter"
@@ -19236,7 +19233,7 @@ msgstr "继子"
 #: includes/functions/functions.php:945
 msgctxt "spouses's son"
 msgid "step-son"
-msgstr "继子"
+msgstr ""
 
 #: includes/functions/functions.php:955
 msgctxt "wife's son"
@@ -19532,7 +19529,7 @@ msgstr "webtrees回复地址"
 msgid "webtrees sends emails with no storage"
 msgstr "webtrees发送电子邮件且没有内部消息"
 
-#: includes/functions/functions_print.php:539
+#: includes/functions/functions_print.php:537
 msgid "webtrees wiki"
 msgstr "webtrees维基"
 
@@ -19557,11 +19554,11 @@ msgstr "年:"
 #: includes/functions/functions_edit.php:146
 #: includes/functions/functions_edit.php:515
 #: includes/functions/functions_edit.php:539
-#: includes/functions/functions_print.php:813
+#: includes/functions/functions_print.php:799
 #: includes/functions/functions_print_facts.php:1052
 #: includes/functions/functions_print_lists.php:357
 #: includes/functions/functions_print_lists.php:778 library/WT/Stats.php:3490
-#: modules_v3/batch_update/admin_batch_update.php:345
+#: modules_v3/batch_update/admin_batch_update.php:344
 #: modules_v3/change_report/report.xml:8 modules_v3/charts/module.php:214
 #: modules_v3/family_group_report/report.xml:246
 #: modules_v3/family_group_report/report.xml:417
@@ -19633,6 +19630,9 @@ msgstr "缺少姓氏"
 #~ msgid "Add child"
 #~ msgstr "添加儿女"
 
+#~ msgid "All facts"
+#~ msgstr "添加事件"
+
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "可以换其它家谱"
 
@@ -19702,6 +19702,9 @@ msgstr "缺少姓氏"
 #~ msgid "External objects"
 #~ msgstr "外部对象"
 
+#~ msgid "Family add facts"
+#~ msgstr "添加家庭事件"
+
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "父亲的出生地—(查普曼格式)"
 
@@ -19738,6 +19741,9 @@ msgstr "缺少姓氏"
 #~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
 #~ msgstr "如果你有一个多个GEDCOMs环境,将值设置为<b>是</b>允许你的网站访客<u>并且</u>用户可以选择改变GEDCOMs。设置为<b>不</b>禁用GEDCOM访问<u>和</u>登录。"
 
+#~ msgid "Individual add facts"
+#~ msgstr "添加个人事件"
+
 #~ msgid "Individual information"
 #~ msgstr "个人资料"
 
@@ -19768,6 +19774,9 @@ msgstr "缺少姓氏"
 #~ msgid "Name List"
 #~ msgstr "名单"
 
+#~ msgid "New entry facts"
+#~ msgstr "新事件"
+
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
 #~ msgstr[0] "在接下来的%s天活着的人没有事件。"
@@ -19796,6 +19805,9 @@ msgstr "缺少姓氏"
 #~ msgid "Port"
 #~ msgstr "端口"
 
+#~ msgid "Quick facts"
+#~ msgstr "快速事件"
+
 #~ msgid "Recommendation:"
 #~ msgstr "推荐:"
 
@@ -19804,6 +19816,9 @@ msgstr "缺少姓氏"
 
 #~ msgid "Replace record"
 #~ msgstr "替换记录"
+
+#~ msgid "Repository add facts"
+#~ msgstr "添加库事件"
 
 #~ msgid "SMTP port"
 #~ msgstr "SMTP端口"
@@ -19825,6 +19840,9 @@ msgstr "缺少姓氏"
 
 #~ msgid "Show timeline"
 #~ msgstr "显示时间线图"
+
+#~ msgid "Source add facts"
+#~ msgstr "添加资源事件"
 
 #~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
 #~ msgstr "指定是否通过<b> webtrees </b>可以存储在数据库中发送的消息。如果设置为<b>是</b>用户能够检索信息时，他们登录到<b> webtrees </b>。如果设置为<b>不</b>信息只会发送电子邮件。"
@@ -19883,6 +19901,12 @@ msgstr "缺少姓氏"
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
 #~ msgstr "传输层安全（TLS）和安全套接字层（SSL）是网络数据加密协议。<br><br> TLS 1，1.1和1.2是标准化发展，SSL 3，TLS 1和SSL 3.1是同样的。SSL现在的新名字为TLS。<br><br>如果你的SMTP服务器需要SSL协议登录时，您应该选择<b> SSL </b>选项。如果你的SMTP服务器登录时需要TLS协议，你应该选择<b> TLS </b>选项。"
 
+#~ msgid "Unique facts"
+#~ msgstr "独特事件"
+
+#~ msgid "Update the CHAN record"
+#~ msgstr "更新CHAN记录"
+
 #~ msgid "Upgrade the web-server to PHP %s or higher."
 #~ msgstr "web服务器升级到PHP %s 或更高。"
 
@@ -19919,6 +19943,14 @@ msgstr "缺少姓氏"
 #~ msgid "before %d"
 #~ msgstr "在 %d 年前"
 
+#~ msgctxt "spouse's brother"
+#~ msgid "brother-in-law"
+#~ msgstr "哥哥"
+
+#~ msgctxt "spouse's sibling"
+#~ msgid "brother/sister-in-law"
+#~ msgstr "哥哥/嫂嫂"
+
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
 #~ msgstr "电子邮件："
@@ -19927,11 +19959,39 @@ msgstr "缺少姓氏"
 #~ msgid "f."
 #~ msgstr "传真："
 
+#~ msgctxt "spouse's father"
+#~ msgid "father-in-law"
+#~ msgstr "岳父"
+
 #~ msgid "from %d"
 #~ msgstr "从 %d 年"
 
+#~ msgctxt "spouse's mother"
+#~ msgid "mother-in-law"
+#~ msgstr "岳母"
+
+#~ msgctxt "spouse's parent"
+#~ msgid "mother/father-in-law"
+#~ msgstr "岳父/岳母"
+
 #~ msgid "or"
 #~ msgstr "或"
+
+#~ msgctxt "spouse's sister"
+#~ msgid "sister-in-law"
+#~ msgstr "嫂嫂"
+
+#~ msgctxt "spouse's child"
+#~ msgid "step-child"
+#~ msgstr "继子女"
+
+#~ msgctxt "spouse's daughter"
+#~ msgid "step-daughter"
+#~ msgstr "继女"
+
+#~ msgctxt "spouse's son"
+#~ msgid "step-son"
+#~ msgstr "继子"
 
 #~ msgctxt "Abbreviation for telephone number"
 #~ msgid "t."

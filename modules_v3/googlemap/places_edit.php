@@ -315,7 +315,7 @@ $api='v3';
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo WT_I18N::translate('Zoom factor'), help_link('PLE_ZOOM','googlemap'); ?></td>
+		<td class="descriptionbox"><?php echo WT_I18N::translate('Zoom level'), help_link('PLE_ZOOM','googlemap'); ?></td>
 		<td class="optionbox" colspan="2">
 			<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor; ?>" size="20" onchange="updateMap();"></td>
 	</tr>
