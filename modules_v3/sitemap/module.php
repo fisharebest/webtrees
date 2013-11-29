@@ -120,7 +120,8 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
 			$data=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml');
 		} else {
-			$data='';
+			$tree=WT_Tree::get($ged_id);
+			$data='<url><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'index.php?ctype=gedcom&amp;ged='.$tree->tree_name_url.'</loc></url>'.PHP_EOL;
 			$records=array();
 			switch ($rec_type) {
 			case 'i':
