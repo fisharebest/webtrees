@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-09 18:17+0000\n"
+"POT-Creation-Date: 2013-11-28 15:21+0000\n"
 "PO-Revision-Date: 2013-05-13 06:03+0000\n"
 "Last-Translator: wooc <Unknown>\n"
 "Language-Team: \n"
@@ -167,7 +167,7 @@ msgstr "%1$s–%2$s"
 msgid "%1$s’s %2$s"
 msgstr "%2$s → %1$s"
 
-#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: library/WT/I18N.php:152
 msgid "%H:%i:%s"
 msgstr "%G:%i:%s"
@@ -673,7 +673,7 @@ msgstr "<center><b>Witaj na naszej stronie genealogicznej</b></center><br><br>Do
 msgid "<default theme>"
 msgstr "<domyślny motyw>"
 
-#: login.php:376
+#: login.php:374
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
 msgstr "<div class=\"largeError\">Uwaga:</div><div class=\"error\">Wypełniając i wysyłając do nas ten formularz zobowiązujesz się do:<ul><li>ochrony prywatności osób żyjących występujących na naszej stronie</li><li>wyjaśnienia w polu niżej, z kim jesteś spokrewniony, lub dostarczenia informacji na temat osoby, która powinna zostać dodana do naszej strony.</li></ul></div>"
 
@@ -782,7 +782,7 @@ msgstr "Nowe hasło zostało utworzone i wysłane do %s. Hasło można zmienić 
 msgid "A new password was requested for your user name."
 msgstr "Otrzymaliśmy zamówienie na nowe hasło dla twojego konta."
 
-#: login.php:475
+#: login.php:473
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "Nowy użytkownik (%1$s) poprosił o utworzenie konta (%2$s) i zweryfikował adres e-mail (%3$s)."
@@ -915,7 +915,7 @@ msgstr "Pasek boczny pokazujący bliskie rodziny i krewnych danej osoby."
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:34
-msgid "A sidebar showing non-genealogical information about an indivdual."
+msgid "A sidebar showing non-genealogical information about an individual."
 msgstr "Pasek boczny pokazujący niegenealogiczne informacje dotyczące danej osoby."
 
 #. I18N: Description of the “Descendants” module
@@ -1134,8 +1134,8 @@ msgid "Adar II"
 msgstr "adar II"
 
 #: admin_trees_config.php:580 edit_interface.php:1973
-#: includes/functions/functions_print.php:961
-#: includes/functions/functions_print.php:1017 index_edit.php:291
+#: includes/functions/functions_print.php:947
+#: includes/functions/functions_print.php:1003 index_edit.php:291
 #: index_edit.php:309 lifespan.php:157
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:94
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:185
@@ -1273,7 +1273,7 @@ msgstr "Dodaj nowe źródło"
 msgid "Add a new spouse"
 msgstr "Dodaj nowego współmałżonka"
 
-#: themes/_administration/header.php:134
+#: themes/_administration/header.php:132
 msgid "Add a new user"
 msgstr "Dodaj nowego użytkownika"
 
@@ -1295,7 +1295,7 @@ msgstr "Dodaj nową żonę"
 msgid "Add a scrollbar when block contents grow"
 msgstr "Dodaj pasek przewijania, gdy zawartość bloku jest długa"
 
-#: modules_v3/relatives/module.php:203
+#: modules_v3/relatives/module.php:161
 msgid "Add a wife to this family"
 msgstr "Dodaj żonę do tej rodziny"
 
@@ -1313,7 +1313,7 @@ msgid "Add by ID"
 msgstr "Dodaj po identyfikatorze"
 
 #: edit_interface.php:1589 help_text.php:1052
-#: includes/functions/functions_print.php:942
+#: includes/functions/functions_print.php:928
 msgid "Add from clipboard"
 msgstr "Dodaj ze schowka"
 
@@ -1341,7 +1341,7 @@ msgstr "Dodaj samo źródło."
 msgid "Add links"
 msgstr "Dodaj powiązania"
 
-#: modules_v3/relatives/module.php:167
+#: modules_v3/relatives/module.php:201
 msgid "Add marriage details"
 msgstr "Dodaj szczegóły małżeństwa"
 
@@ -1375,9 +1375,14 @@ msgid "Add spaces where notes were wrapped"
 msgstr "Wstawiaj spacje zamiast zawijania wierszy notatek"
 
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
-#: modules_v3/stories/module.php:338
+#: modules_v3/stories/module.php:339
 msgid "Add story"
 msgstr "Dodaj historię"
+
+#: admin_trees_download.php:129 modules_v3/clippings/module.php:217
+#: modules_v3/clippings/module.php:603
+msgid "Add the GEDCOM media path to filenames"
+msgstr ""
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:528
 msgid "Add this individual and his direct line ancestors."
@@ -1420,7 +1425,7 @@ msgid "Add to favorites"
 msgstr "Dodaj do ulubionych"
 
 #: admin_site_other.php:31 admin_site_other.php:37
-#: themes/_administration/header.php:122
+#: themes/_administration/header.php:120
 msgid "Add unlinked records"
 msgstr "Dodaj niepowiązane wpisy"
 
@@ -1428,7 +1433,7 @@ msgstr "Dodaj niepowiązane wpisy"
 msgid "Add watermarks to thumbnails?"
 msgstr "Dodać znak wodny do miniaturek?"
 
-#: modules_v3/relatives/module.php:202
+#: modules_v3/relatives/module.php:160
 msgid "Add wife"
 msgstr "Dodaj żonę"
 
@@ -1441,7 +1446,7 @@ msgstr "Dodaj swój własny tekst i grafikę."
 msgid "Add/Insert Blank Row"
 msgstr "Dodaj/wstaw pustą linię"
 
-#: editnews.php:31 editnews.php:45
+#: editnews.php:31 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Dodaj/zmień artykuł lub wpis do dziennika"
 
@@ -1470,8 +1475,8 @@ msgstr "Adelaide, Australia"
 msgid "Admin comments on user"
 msgstr "Komentarz administratora do użytkownika"
 
-#: admin.php:29 library/WT/MenuBar.php:83 themes/_administration/header.php:64
-#: themes/_administration/header.php:95
+#: admin.php:29 library/WT/MenuBar.php:83 themes/_administration/header.php:62
+#: themes/_administration/header.php:93
 msgid "Administration"
 msgstr "Administracja"
 
@@ -1671,8 +1676,8 @@ msgid "After you have logged in, select the “My Account” link under the “M
 msgstr "Aby zmienić hasło, po zalogowaniu wybierz odnośnik «Moje konto» w menu «Mój portal» i wypełnij pola hasła."
 
 #. I18N: gedcom tag AGE
-#: autocomplete.php:114 includes/functions/functions_print.php:761
-#: includes/functions/functions_print.php:799
+#: autocomplete.php:114 includes/functions/functions_print.php:747
+#: includes/functions/functions_print.php:785
 #: library/WT/Controller/Timeline.php:226
 #: library/WT/Controller/Timeline.php:228 library/WT/Gedcom/Tag.php:106
 #: library/WT/Stats.php:1614 library/WT/Stats.php:2354
@@ -1795,19 +1800,30 @@ msgstr "Wszystkie zmiany w PGV muszą być zaakceptowane"
 msgid "All existing PGV users must have distinct email addresses"
 msgstr "Wszyscy istniejący użytkownicy PGV muszą mieć różne adresy e-mail"
 
-#: admin_trees_config.php:1076 admin_trees_config.php:1113
-#: admin_trees_config.php:1150 admin_trees_config.php:1179
-msgid "All facts"
-msgstr "Wszystkie"
+#: admin_trees_config.php:1113 help_text.php:505
+msgid "All family facts"
+msgstr ""
 
-#: login.php:382
+#: login.php:380
 msgid "All fields must be completed."
 msgstr "Wszystkie pola muszą być wypełnione."
+
+#: admin_trees_config.php:1076 help_text.php:583
+msgid "All individual facts"
+msgstr ""
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
 msgid "All individuals"
 msgstr "Wszystkie osoby"
+
+#: admin_trees_config.php:1179 help_text.php:789
+msgid "All repository facts"
+msgstr ""
+
+#: admin_trees_config.php:1150 help_text.php:900
+msgid "All source facts"
+msgstr ""
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1894,7 +1910,7 @@ msgstr "Menu edycji dla osób, rodzin, źródeł, itp."
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr "Interaktywne drzewo, pokazujące wszystkich przodków i potomków danej osoby."
 
-#: setup.php:921
+#: setup.php:922
 msgid "An unexpected database error occurred."
 msgstr "Wystąpił nieoczekiwany błąd z bazą danych."
 
@@ -2025,7 +2041,7 @@ msgctxt "LOCATIVE"
 msgid "April"
 msgstr "kwietniu"
 
-#: includes/functions/functions_print.php:1037
+#: includes/functions/functions_print.php:1023
 #: library/WT/Date/Calendar.php:126
 msgctxt "NOMINATIVE"
 msgid "April"
@@ -2052,7 +2068,7 @@ msgstr "Usunąć ten artykuł?"
 #: includes/functions/functions_print_facts.php:674
 #: includes/functions/functions_print_facts.php:869
 #: includes/functions/functions_print_facts.php:1013
-#: library/WT/Controller/Individual.php:158 modules_v3/lightbox/module.php:203
+#: library/WT/Controller/Individual.php:158
 msgid "Are you sure you want to delete this fact?"
 msgstr "Usunąć ten fakt?"
 
@@ -2061,7 +2077,7 @@ msgstr "Usunąć ten fakt?"
 msgid "Are you sure you want to delete this message?  It cannot be retrieved later."
 msgstr "Usunąć tę wiadomość? Nie będzie można tego cofnąć."
 
-#: modules_v3/stories/module.php:359
+#: modules_v3/stories/module.php:360
 msgid "Are you sure you want to delete this story?"
 msgstr "Usunąć tę historię?"
 
@@ -2076,6 +2092,10 @@ msgstr "Usunąć tę historię?"
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Usunąć „%s”?"
+
+#: modules_v3/lightbox/module.php:203
+msgid "Are you sure you want to remove links to this media object?"
+msgstr ""
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -2207,7 +2227,7 @@ msgctxt "LOCATIVE"
 msgid "August"
 msgstr "sierpniu"
 
-#: includes/functions/functions_print.php:1041
+#: includes/functions/functions_print.php:1027
 #: library/WT/Date/Calendar.php:130
 msgctxt "NOMINATIVE"
 msgid "August"
@@ -2809,7 +2829,7 @@ msgstr "Błogosławieństwo"
 msgid "Block"
 msgstr "Blok"
 
-#: themes/_administration/header.php:149
+#: themes/_administration/header.php:147
 msgid "Blocks"
 msgstr "Bloki"
 
@@ -3368,7 +3388,7 @@ msgstr[0] "Zmiany wprowadzone ostatniego dniaZmiany wprowadzone ostatniego dnia"
 msgstr[1] "Zmiany wprowadzone w ostatnich %s dniach"
 msgstr[2] "Zmiany wprowadzone w ostatnich %s dniach"
 
-#: themes/_administration/header.php:124
+#: themes/_administration/header.php:122
 msgid "Changes log"
 msgstr "Rejestr zmian"
 
@@ -3400,7 +3420,7 @@ msgstr "Diagramy"
 msgid "Check access rights on this directory."
 msgstr "Sprawdź prawa dostępu do tego katalogu."
 
-#: admin_trees_check.php:34 themes/_administration/header.php:123
+#: admin_trees_check.php:34 themes/_administration/header.php:121
 msgid "Check for errors"
 msgstr "Sprawdź błędy"
 
@@ -3643,7 +3663,7 @@ msgid "Civil registrar"
 msgstr "Urzędnik cywilny"
 
 #. I18N: The “Data folder” is a configuration setting
-#: admin_site_clean.php:28 themes/_administration/header.php:104
+#: admin_site_clean.php:28 themes/_administration/header.php:102
 msgid "Clean up data folder"
 msgstr "Wyczyść katalog data"
 
@@ -3708,7 +3728,7 @@ msgid "Clicking the “+” icon will open the GEDFact shared note assistant win
 msgstr "Kliknięcie ikony „+\" otworzy okno Aystenta GEDFact.<br>Tekst pomocy będzie dostępny tutaj.<br><br>Gdy kliknięty zostnie przycisk „Zapisz”, identyfikator wspólnej notatki zostanie wklejony tutaj."
 
 #. I18N: The local time on the client/browser
-#: themes/_administration/header.php:86
+#: themes/_administration/header.php:84
 msgid "Client time"
 msgstr ""
 
@@ -3768,8 +3788,8 @@ msgstr "Kolumn na stronę"
 msgid "Comment"
 msgstr "Komentarz"
 
-#: admin_users.php:207 help_text.php:1348 login.php:283 login.php:312
-#: login.php:409
+#: admin_users.php:207 help_text.php:1348 login.php:283 login.php:309
+#: login.php:407
 msgid "Comments"
 msgstr "Komentarze"
 
@@ -3827,7 +3847,7 @@ msgstr "Łączenie"
 msgid "Configure"
 msgstr "Konfiguruj"
 
-#: admin_users.php:389 edituser.php:152 help_text.php:1289 login.php:404
+#: admin_users.php:389 edituser.php:152 help_text.php:1289 login.php:402
 msgid "Confirm password"
 msgstr "Potwierdzenie hasła"
 
@@ -3924,7 +3944,7 @@ msgstr "Kostaryka"
 msgid "Cote d’Ivoire"
 msgstr "Wybrzeże Kości Słoniowej"
 
-#: login.php:555
+#: login.php:551
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr "Nie można potwierdzić podanej informacji. Spróbuj ponownie lub skontaktuj się z administratorem."
 
@@ -3972,7 +3992,7 @@ msgstr "Utwórz nową osobę"
 msgid "Create a new media object"
 msgstr "Utwórz nowy obiekt multimedialny"
 
-#. I18N: An note that is not linked to any other record
+#. I18N: A note that is not linked to any other record
 #: admin_site_other.php:55
 msgid "Create a new note"
 msgstr "Utwórz nową notatkę"
@@ -4158,11 +4178,11 @@ msgstr "Bieżący"
 msgid "Custom"
 msgstr "Własny"
 
-#: calendar.php:269 includes/functions/functions_print.php:1014
+#: calendar.php:269 includes/functions/functions_print.php:1000
 msgid "Custom event"
 msgstr "Inne wydarzenie"
 
-#: includes/functions/functions_print.php:1013
+#: includes/functions/functions_print.php:999
 msgid "Custom fact"
 msgstr ""
 
@@ -4209,7 +4229,7 @@ msgstr "Dane"
 msgid "Data folder"
 msgstr "Katalog danych"
 
-#: login.php:549
+#: login.php:545
 msgid "Data was not correct, please try again"
 msgstr "Dane nie są prawidłowe, spróbuj ponownie."
 
@@ -4399,7 +4419,7 @@ msgid "Date range"
 msgstr "Zakres dat"
 
 #: help_text.php:185
-msgid "Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range."
+msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr "Zakresy dat są wykorzystywane do wskazania, że zdarzenie, takie jak narodziny, ma nieznaną datę, ale możliwy zakres."
 
 #: admin_users.php:577
@@ -4758,7 +4778,7 @@ msgctxt "LOCATIVE"
 msgid "December"
 msgstr "grudniu"
 
-#: includes/functions/functions_print.php:1045
+#: includes/functions/functions_print.php:1031
 #: library/WT/Date/Calendar.php:134
 msgctxt "NOMINATIVE"
 msgid "December"
@@ -4859,7 +4879,7 @@ msgstr "Usuń zaznaczone wiadomości"
 msgid "Delete all existing geographic data before importing the file."
 msgstr "Usuń wszystkie istniejące dane geograficzne przed importowaniem pliku."
 
-#: themes/_administration/header.php:136
+#: themes/_administration/header.php:134
 msgid "Delete inactive users"
 msgstr "Usuń nieaktywnych"
 
@@ -4943,11 +4963,11 @@ msgstr "Opis"
 msgid "Description META tag"
 msgstr "Znacznik META opisu"
 
-#: login.php:399
+#: login.php:397
 msgid "Desired password"
 msgstr "Proponowane hasło"
 
-#: login.php:394
+#: login.php:392
 msgid "Desired user name"
 msgstr "Proponowana nazwa użytkownika"
 
@@ -5139,6 +5159,7 @@ msgstr "Nienaznaczony: nieuprawniony"
 #: addmedia.php:725 admin_trees_config.php:1261 edit_interface.php:2208
 #: help_text.php:1274
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
+#: modules_v3/batch_update/admin_batch_update.php:342
 msgid "Do not update the “last change” record"
 msgstr "Nie aktualizuj wpisu „ostatniej zmiany”"
 
@@ -5335,7 +5356,7 @@ msgstr "Edytuj źródło"
 msgid "Edit story"
 msgstr "Edytuj historię"
 
-#: library/WT/Tree.php:331
+#: library/WT/Tree.php:332
 msgid "Edit this individual and replace their details with your own"
 msgstr "Edytuj tę osobę i zastąp jej dane swoimi"
 
@@ -5404,7 +5425,7 @@ msgstr "Email"
 #. I18N: gedcom tag _EMAIL
 #: admin_users.php:378 edituser.php:156 help_text.php:1197
 #: library/WT/Gedcom/Tag.php:182 library/WT/Gedcom/Tag.php:183
-#: library/WT/Gedcom/Tag.php:184 library/WT/Gedcom/Tag.php:700 login.php:389
+#: library/WT/Gedcom/Tag.php:184 library/WT/Gedcom/Tag.php:700 login.php:387
 #: setup.php:408
 msgid "Email address"
 msgstr "Adres email"
@@ -5571,7 +5592,7 @@ msgstr "Powiększenie"
 msgid "Entire record"
 msgstr "Cały wpis"
 
-#: editnews.php:63
+#: editnews.php:68
 msgid "Entry text:"
 msgstr "Treść:"
 
@@ -5702,7 +5723,7 @@ msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s 
 msgstr ""
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:410
+#: login.php:408
 msgid "Explain why you are requesting an account."
 msgstr "Wyjaśnij dlaczego chcesz utworzyć konto."
 
@@ -5817,7 +5838,7 @@ msgstr "Fakt 9"
 msgid "Fact icons"
 msgstr "Ikonki faktów"
 
-#: includes/functions/functions_print.php:1004
+#: includes/functions/functions_print.php:990
 msgid "Fact or event"
 msgstr "Fakt lub wydarzenie"
 
@@ -5837,11 +5858,11 @@ msgstr "Fakty rodzinne"
 msgid "Facts for individual records"
 msgstr "Fakty osobowe"
 
-#: help_text.php:784
+#: admin_trees_config.php:1129 help_text.php:784
 msgid "Facts for new families"
 msgstr "Fakty dla nowych rodzin"
 
-#: help_text.php:779
+#: admin_trees_config.php:1092 help_text.php:779
 msgid "Facts for new individuals"
 msgstr "Fakty dla nowych osób"
 
@@ -5901,10 +5922,6 @@ msgstr "Rodzina"
 #: admin_trees_config.php:341 help_text.php:520
 msgid "Family ID prefix"
 msgstr "Przedrostek identyfikatora rodziny"
-
-#: help_text.php:505
-msgid "Family add facts"
-msgstr "Fakty rodzinne"
 
 #. I18N: gedcom tag FAMC
 #: library/WT/Gedcom/Tag.php:199
@@ -5966,7 +5983,7 @@ msgstr "Rodzina - %s"
 #: admin_users.php:431 edit_changes.php:182
 #: modules_v3/batch_update/admin_batch_update.php:61
 #: modules_v3/faq/module.php:351 modules_v3/googlemap/module.php:1468
-#: modules_v3/html/module.php:294 modules_v3/stories/module.php:331
+#: modules_v3/html/module.php:294 modules_v3/stories/module.php:332
 msgid "Family tree"
 msgstr "Drzewo genealogiczne"
 
@@ -5993,7 +6010,7 @@ msgid "Family tree title"
 msgstr "Nazwa drzewa genealogicznego"
 
 #: admin.php:198 admin_trees_manage.php:28 search.php:219
-#: themes/_administration/header.php:106 themes/_administration/header.php:108
+#: themes/_administration/header.php:104 themes/_administration/header.php:106
 msgid "Family trees"
 msgstr "Drzewa genealogiczne"
 
@@ -6104,7 +6121,7 @@ msgstr "Ojciec"
 msgid "Father: %s"
 msgstr "Ojciec: %s"
 
-#: includes/functions/functions_print.php:669
+#: includes/functions/functions_print.php:658
 msgid "Father’s age"
 msgstr "Wiek ojca"
 
@@ -6150,7 +6167,7 @@ msgctxt "LOCATIVE"
 msgid "February"
 msgstr "lutym"
 
-#: includes/functions/functions_print.php:1035
+#: includes/functions/functions_print.php:1021
 #: library/WT/Date/Calendar.php:124
 msgctxt "NOMINATIVE"
 msgid "February"
@@ -6234,43 +6251,43 @@ msgstr "Pliki zaznaczone %s są wymaganymi do prawidłowego działania i nie mog
 msgid "Filter"
 msgstr "Szukaj"
 
-#: find.php:107 includes/functions/functions_print.php:1103
+#: find.php:107 includes/functions/functions_print.php:1089
 msgid "Find a fact or event"
 msgstr "Znajdź fakt lub wydarzenie"
 
 #: admin_site_merge.php:267 admin_site_merge.php:288 find.php:74
-#: includes/functions/functions_print.php:1069
+#: includes/functions/functions_print.php:1055
 msgid "Find a family"
 msgstr "Znajdź rodzinę"
 
-#: find.php:77 includes/functions/functions_print.php:1099
+#: find.php:77 includes/functions/functions_print.php:1085
 msgid "Find a media object"
 msgstr "Znajdź obiekt multimedialny"
 
-#: find.php:86 includes/functions/functions_print.php:1091
+#: find.php:86 includes/functions/functions_print.php:1077
 msgid "Find a note"
 msgstr "Znajdź notatkę"
 
-#: find.php:80 includes/functions/functions_print.php:1065
+#: find.php:80 includes/functions/functions_print.php:1051
 msgid "Find a place"
 msgstr "Znajdź miejsce"
 
-#: find.php:83 includes/functions/functions_print.php:1095
+#: find.php:83 includes/functions/functions_print.php:1081
 msgid "Find a repository"
 msgstr "Znajdź repozytorium"
 
 #: admin_site_merge.php:268 admin_site_merge.php:289 find.php:89
-#: includes/functions/functions_print.php:1087
+#: includes/functions/functions_print.php:1073
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
 msgstr "Znajdź źródło"
 
-#: find.php:92 includes/functions/functions_print.php:1073
+#: find.php:92 includes/functions/functions_print.php:1059
 msgid "Find a special character"
 msgstr "Znajdź znak specjalny"
 
 #: admin_site_merge.php:266 admin_site_merge.php:287 find.php:71
-#: includes/functions/functions_print.php:1061
+#: includes/functions/functions_print.php:1047
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:32
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:75
 #: modules_v3/GEDFact_assistant/module.php:78
@@ -6377,8 +6394,8 @@ msgstr "Na przykład, jeśli zostanie określona liczba 2 kroków pokrewieństwa
 msgid "For help with genealogy questions contact"
 msgstr "Na pytania genealogiczne odpowiada"
 
-#: includes/functions/functions_print.php:523
-#: includes/functions/functions_print.php:526
+#: includes/functions/functions_print.php:521
+#: includes/functions/functions_print.php:524
 msgid "For more information contact"
 msgstr "Więcej informacji udziela"
 
@@ -6469,7 +6486,7 @@ msgstr "Często zadawane pytania"
 msgid "Fresno, California"
 msgstr "Fresno, California"
 
-#: includes/functions/functions_print.php:1053
+#: includes/functions/functions_print.php:1039
 #: library/WT/Date/Calendar.php:223
 msgid "Fri"
 msgstr "Pt"
@@ -6564,8 +6581,7 @@ msgid "GEDCOM files are stored in the %s folder."
 msgstr "Pliki GEDCOM przechowywane są w katalogu %s."
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
-#: admin_trees_config.php:634 admin_trees_download.php:129 help_text.php:535
-#: modules_v3/clippings/module.php:217 modules_v3/clippings/module.php:603
+#: admin_trees_config.php:634 help_text.php:535
 msgid "GEDCOM media path"
 msgstr "Ścieżka multimediów GEDCOM"
 
@@ -6747,7 +6763,7 @@ msgid "Godson"
 msgstr "Chrześniak"
 
 #. I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps
-#: includes/functions/functions_print.php:872
+#: includes/functions/functions_print.php:858
 #: modules_v3/googlemap/admin_places.php:168
 #: modules_v3/googlemap/module.php:48 modules_v3/googlemap/module.php:197
 #: modules_v3/googlemap/module.php:1440
@@ -6951,17 +6967,17 @@ msgstr "Nazwisko hebrajskie"
 msgid "Height"
 msgstr "Wysokość"
 
-#: login.php:212 login.php:302
+#: login.php:212 login.php:299
 #, php-format
 msgid "Hello %s…"
 msgstr "Witaj %s …"
 
-#: login.php:354
+#: login.php:352
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "Witaj %s …<br>Dziękujemy za rejestrację"
 
-#: login.php:277 login.php:472
+#: login.php:277 login.php:470
 msgid "Hello administrator…"
 msgstr "Witaj Administratorze …"
 
@@ -7283,7 +7299,7 @@ msgstr "Jeśli jesteś administratorem strony, powinieneś sprawdzić, czy:"
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr "Jeśli nie jesteś w stanie rozwiązać problemu samodzielnie, możesz poprosić o pomoc na forum na stronie <a href=\"http://webtrees.net\">webtrees.net</a>"
 
-#: login.php:313
+#: login.php:310
 msgid "If you didn’t request an account, you can just delete this message."
 msgstr "Jeśli nie proszono o utworzenie konta można zignorować tę wiadomość."
 
@@ -7437,8 +7453,8 @@ msgstr "Indie"
 #: modules_v3/individual_report/module.php:33
 #: modules_v3/individual_report/report.xml:3
 #: modules_v3/individual_report/report.xml:84
-#: modules_v3/stories/module.php:244 modules_v3/stories/module.php:343
-#: modules_v3/stories/module.php:409 pedigree.php:43
+#: modules_v3/stories/module.php:245 modules_v3/stories/module.php:344
+#: modules_v3/stories/module.php:410 pedigree.php:43
 msgid "Individual"
 msgstr "Osoba"
 
@@ -7453,10 +7469,6 @@ msgstr "Druga osoba"
 #: admin_trees_config.php:335 help_text.php:530
 msgid "Individual ID prefix"
 msgstr "Przedrostek identyfikatora osoby"
-
-#: help_text.php:583
-msgid "Individual add facts"
-msgstr "Fakty osobowe"
 
 #: statistics.php:558
 msgid "Individual distribution"
@@ -7535,7 +7547,7 @@ msgctxt "MALE"
 msgid "Informant"
 msgstr "Informator"
 
-#: login.php:305
+#: login.php:302
 msgid "Information about the request is shown under the link below."
 msgstr "Dane zgłoszenia znajdują się pod poniższym odnośnikiem."
 
@@ -7667,7 +7679,7 @@ msgctxt "LOCATIVE"
 msgid "January"
 msgstr "styczniu"
 
-#: includes/functions/functions_print.php:1034
+#: includes/functions/functions_print.php:1020
 #: library/WT/Date/Calendar.php:123
 msgctxt "NOMINATIVE"
 msgid "January"
@@ -7687,7 +7699,7 @@ msgid "Johannesburg, South Africa"
 msgstr "Johannesburg, Republika Południowej Afryki"
 
 #. I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname.
-#: library/WT/Tree.php:330
+#: library/WT/Tree.php:331
 msgid "John /DOE/"
 msgstr "Jan /Kowalski/"
 
@@ -7729,7 +7741,7 @@ msgctxt "LOCATIVE"
 msgid "July"
 msgstr "lipcu"
 
-#: includes/functions/functions_print.php:1040
+#: includes/functions/functions_print.php:1026
 #: library/WT/Date/Calendar.php:129
 msgctxt "NOMINATIVE"
 msgid "July"
@@ -7803,7 +7815,7 @@ msgctxt "LOCATIVE"
 msgid "June"
 msgstr "czerwcu"
 
-#: includes/functions/functions_print.php:1039
+#: includes/functions/functions_print.php:1025
 #: library/WT/Date/Calendar.php:128
 msgctxt "NOMINATIVE"
 msgid "June"
@@ -7931,7 +7943,7 @@ msgstr "Kody ceremonii mormońskich w ramkach diagramów"
 msgid "LDS spouse sealing"
 msgstr "Naznaczenie mormońskie małżonka"
 
-#: includes/functions/functions_print.php:884
+#: includes/functions/functions_print.php:870
 msgid "LDS temple"
 msgstr "Świątynia Mormońska"
 
@@ -8237,7 +8249,7 @@ msgstr "Lokator"
 msgid "Logan, Utah"
 msgstr "Logan, Utah"
 
-#: modules_v3/login_block/module.php:58 themes/webtrees/header.php:63
+#: modules_v3/login_block/module.php:58 themes/webtrees/header.php:64
 msgid "Logged in as "
 msgstr "Użytkownik: "
 
@@ -8262,7 +8274,7 @@ msgstr "URL logowania"
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: admin_site_logs.php:27 themes/_administration/header.php:100
+#: admin_site_logs.php:27 themes/_administration/header.php:98
 msgid "Logs"
 msgstr "Dzienniki"
 
@@ -8416,7 +8428,7 @@ msgid "Manuscript"
 msgstr "Rękopis"
 
 #: help_text.php:555
-msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message."
+msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
 msgstr "Wiele programów genealogicznych tworzy pliki GEDCOM używając niestandardowych znaczników ale <b>webtrees</b> rozumie większość z nich. Kiedy jednak znajdzie nierozpoznany znacznik, opcja ta pozwala wybrać, czy go ignorować czy wyświetlić komunikat ostrzegawczy."
 
 #. I18N: Help text for the “Sending server name” site configuration setting
@@ -8450,7 +8462,7 @@ msgctxt "LOCATIVE"
 msgid "March"
 msgstr "marcu"
 
-#: includes/functions/functions_print.php:1036
+#: includes/functions/functions_print.php:1022
 #: library/WT/Date/Calendar.php:125
 msgctxt "NOMINATIVE"
 msgid "March"
@@ -8557,7 +8569,7 @@ msgstr "Zapowiedzi"
 
 #. I18N: gedcom tag MARL
 #: library/WT/Gedcom/Tag.php:237
-msgid "Marriage licence"
+msgid "Marriage license"
 msgstr "Akt ślubu"
 
 #: library/WT/Gedcom/Tag.php:774
@@ -8758,7 +8770,7 @@ msgctxt "LOCATIVE"
 msgid "May"
 msgstr "maju"
 
-#: includes/functions/functions_print.php:1038
+#: includes/functions/functions_print.php:1024
 #: library/WT/Date/Calendar.php:127
 msgctxt "NOMINATIVE"
 msgid "May"
@@ -8776,7 +8788,7 @@ msgstr "Medford, Oregon"
 #: admin_media.php:505 admin_media.php:595 admin_trees_config.php:218
 #: includes/functions/functions_print_lists.php:1260 inverselink.php:85
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:87
-#: modules_v3/media/module.php:34 themes/_administration/header.php:139
+#: modules_v3/media/module.php:34 themes/_administration/header.php:137
 msgid "Media"
 msgstr "Multimedia"
 
@@ -8924,7 +8936,7 @@ msgstr "Memphis, Tennessee"
 msgid "Menu"
 msgstr "Menu"
 
-#: themes/_administration/header.php:147
+#: themes/_administration/header.php:145
 msgid "Menus"
 msgstr "Menu"
 
@@ -8939,7 +8951,7 @@ msgstr "ID z którego scalić dane:"
 
 #: admin_site_merge.php:32 admin_site_merge.php:78 admin_site_merge.php:146
 #: admin_site_merge.php:243 help_text.php:1160
-#: themes/_administration/header.php:121
+#: themes/_administration/header.php:119
 msgid "Merge records"
 msgstr "Scal wpisy"
 
@@ -9039,7 +9051,7 @@ msgid "Min. no. of occurrences to be a “common surname”"
 msgstr "Minimalna liczba wystąpień dla statusu „najczęściej występującego nazwiska”"
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
 msgstr "Minimalny i maksymalny współczynnik powiększenia dla Mapy Google. 1 - cała mapa, 15 - pojedyncze domy. Współczynnik 15 dostępny jest tylko w pewnych miejscach."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9073,7 +9085,7 @@ msgstr "Moduł"
 msgid "Module administration"
 msgstr "Administracja modułami"
 
-#: themes/_administration/header.php:144
+#: themes/_administration/header.php:142
 msgid "Modules"
 msgstr "Moduły"
 
@@ -9081,7 +9093,7 @@ msgstr "Moduły"
 msgid "Moldova"
 msgstr "Mołdawia"
 
-#: includes/functions/functions_print.php:1049
+#: includes/functions/functions_print.php:1035
 #: library/WT/Date/Calendar.php:219
 msgid "Mon"
 msgstr "Pn"
@@ -9233,7 +9245,7 @@ msgstr "Matka"
 msgid "Mother: %s"
 msgstr "Matka: %s"
 
-#: includes/functions/functions_print.php:661
+#: includes/functions/functions_print.php:650
 msgid "Mother’s age"
 msgstr "Wiek matki"
 
@@ -9318,7 +9330,7 @@ msgid "My account"
 msgstr "Moje konto"
 
 #. I18N: Default title for new family trees
-#: library/WT/Tree.php:315
+#: library/WT/Tree.php:316
 msgid "My family tree"
 msgstr "Moje drzewo genealogiczne"
 
@@ -9329,7 +9341,7 @@ msgstr "Moje dane"
 #. I18N: Name of a module
 #: admin_modules.php:143 admin_users.php:210 index.php:87 index.php:95
 #: library/WT/MenuBar.php:59 library/WT/MenuBar.php:62
-#: modules_v3/user_welcome/module.php:32 themes/_administration/header.php:66
+#: modules_v3/user_welcome/module.php:32 themes/_administration/header.php:64
 msgid "My page"
 msgstr "Moja strona"
 
@@ -9520,10 +9532,6 @@ msgstr "Nowa Zelandia"
 msgid "New data"
 msgstr "Nowe dane"
 
-#: admin_trees_config.php:1092 admin_trees_config.php:1129
-msgid "New entry facts"
-msgstr "Fakty nowego wpisu"
-
 #. I18N: %s is a server name/URL
 #: login.php:292
 #, php-format
@@ -9531,7 +9539,7 @@ msgid "New registration at %s"
 msgstr "Nowa rejestracja na %s"
 
 #. I18N: %s is a server name/URL
-#: login.php:492
+#: login.php:490
 #, php-format
 msgid "New user at %s"
 msgstr "Nowy użytkownik na %s"
@@ -9658,7 +9666,7 @@ msgstr "Brak kontaktu"
 msgid "No errors were found."
 msgstr "Nie znaleziono żadnych błędów."
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1799
 #: includes/functions/functions_print_lists.php:1906
 #, php-format
@@ -9688,7 +9696,7 @@ msgstr "Brak wydarzeń dla osób żyjących na dziś."
 msgid "No events for living individuals exist for tomorrow."
 msgstr "Brak wydarzeń dla osób żyjących na jutro."
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1806
 #: includes/functions/functions_print_lists.php:1913
 #, php-format
@@ -9841,7 +9849,7 @@ msgstr "Nieżonaty"
 
 #. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:437
-#: includes/functions/functions_print.php:497 library/WT/Gedcom/Tag.php:262
+#: includes/functions/functions_print.php:495 library/WT/Gedcom/Tag.php:262
 #: modules_v3/cemetery_report/report.xml:61
 #: modules_v3/family_group_report/report.xml:479
 #: modules_v3/family_group_report/report.xml:740
@@ -9912,7 +9920,7 @@ msgctxt "LOCATIVE"
 msgid "November"
 msgstr "listopadzie"
 
-#: includes/functions/functions_print.php:1044
+#: includes/functions/functions_print.php:1030
 #: library/WT/Date/Calendar.php:133
 msgctxt "NOMINATIVE"
 msgid "November"
@@ -10026,7 +10034,7 @@ msgctxt "LOCATIVE"
 msgid "October"
 msgstr "październiku"
 
-#: includes/functions/functions_print.php:1043
+#: includes/functions/functions_print.php:1029
 #: library/WT/Date/Calendar.php:132
 msgctxt "NOMINATIVE"
 msgid "October"
@@ -10256,7 +10264,7 @@ msgid "PHP failed to write to disk"
 msgstr "PHP nie może zapisać na dysku"
 
 #: admin_site_info.php:32 help_text.php:1314
-#: themes/_administration/header.php:102
+#: themes/_administration/header.php:100
 msgid "PHP information"
 msgstr "PHPInfo"
 
@@ -10364,13 +10372,13 @@ msgstr "Rodzice"
 msgid "Parents and siblings"
 msgstr "Rodzice i rodzeństwo"
 
-#: includes/functions/functions_print.php:673
+#: includes/functions/functions_print.php:662
 msgid "Parent’s age"
 msgstr "Wiek rodzica"
 
 #: admin_site_config.php:136 admin_users.php:189 admin_users.php:384
 #: edituser.php:150 help_text.php:729 help_text.php:1284 login.php:151
-#: login.php:215 login.php:446 modules_v3/login_block/module.php:76
+#: login.php:215 login.php:444 modules_v3/login_block/module.php:76
 #: setup.php:400
 msgid "Password"
 msgstr "Hasło"
@@ -10433,9 +10441,9 @@ msgstr "Blok oczekujących zmian"
 #: modules_v3/change_report/report.xml:49
 #: modules_v3/review_changes/module.php:32
 #: modules_v3/review_changes/module.php:73
-#: themes/_administration/header.php:76 themes/clouds/header.php:121
-#: themes/colors/header.php:95 themes/fab/header.php:75
-#: themes/minimal/header.php:79 themes/xenea/header.php:109
+#: themes/_administration/header.php:74 themes/clouds/header.php:119
+#: themes/colors/header.php:90 themes/fab/header.php:73
+#: themes/minimal/header.php:76 themes/xenea/header.php:107
 msgid "Pending changes"
 msgstr "Oczekujące zmiany"
 
@@ -10714,7 +10722,7 @@ msgstr "Miejsca należy wprowadzać zgodnie ze standardami przyjętymi w genealo
 msgid "Play"
 msgstr "Odtwórz"
 
-#: login.php:306
+#: login.php:303
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
 msgstr "Kliknij na odnośnik poniżej i wpisz wymagane informacje aby zweryfikować swoje konto i adres email."
 
@@ -10979,24 +10987,23 @@ msgstr "Quartidi"
 msgid "Question"
 msgstr "Pytanie"
 
-#: admin_trees_config.php:1100 admin_trees_config.php:1137
-#: admin_trees_config.php:1166 admin_trees_config.php:1195
-msgid "Quick facts"
-msgstr "Podręczne"
-
 #: help_text.php:510
 msgid "Quick family facts"
 msgstr "Podręczne fakty rodzinne"
 
-#: help_text.php:588
+#: admin_trees_config.php:1137
+msgid "Quick family facts facts"
+msgstr ""
+
+#: admin_trees_config.php:1100 help_text.php:588
 msgid "Quick individual facts"
 msgstr "Podręczne fakty osobowe"
 
-#: help_text.php:794
+#: admin_trees_config.php:1195 help_text.php:794
 msgid "Quick repository facts"
 msgstr "Podręczne fakty repozytorium"
 
-#: help_text.php:905
+#: admin_trees_config.php:1166 help_text.php:905
 msgid "Quick source facts"
 msgstr "Podręczne fakty źródłowe"
 
@@ -11010,7 +11017,7 @@ msgstr "Quintidi"
 msgid "RE: "
 msgstr "Odp: "
 
-#: admin_site_readme.php:27 themes/_administration/header.php:101
+#: admin_site_readme.php:27 themes/_administration/header.php:99
 msgid "README documentation"
 msgstr "Dokumentacja README"
 
@@ -11145,7 +11152,7 @@ msgid "Re-order media"
 msgstr "Uporządkuj multimedia"
 
 #: admin_users.php:366 admin_users.php:572 edituser.php:135 help_text.php:1343
-#: login.php:281 login.php:384
+#: login.php:281 login.php:382
 msgid "Real name"
 msgstr "Imię i nazwisko"
 
@@ -11243,8 +11250,9 @@ msgstr "Urzędnik stanu cywilnego"
 msgid "Regular expression"
 msgstr "Wyrażenia regularne"
 
+#. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
-msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_blank\">php.net/manual/en/regexp.reference.php</a> for futher details."
+msgid "Regular expressions are an advanced pattern matching technique."
 msgstr ""
 
 #. I18N: Name of a module/report
@@ -11291,7 +11299,7 @@ msgstr "Relacja z rodzicami"
 msgid "Relationship: %s"
 msgstr "Pokrewieństwo: %s"
 
-#: includes/functions/functions_print.php:602
+#: includes/functions/functions_print.php:600
 #: includes/functions/functions_print_lists.php:290 library/WT/MenuBar.php:110
 #: library/WT/MenuBar.php:228 library/WT/MenuBar.php:253 relationship.php:71
 #: relationship.php:86
@@ -11381,7 +11389,7 @@ msgstr "Odpowiedz"
 msgid "Report"
 msgstr "Raport"
 
-#: library/WT/MenuBar.php:397 themes/_administration/header.php:151
+#: library/WT/MenuBar.php:397 themes/_administration/header.php:149
 msgid "Reports"
 msgstr "Raporty"
 
@@ -11404,10 +11412,6 @@ msgstr "Repozytorium"
 #: admin_trees_config.php:354 help_text.php:804
 msgid "Repository ID prefix"
 msgstr "Przedrostek identyfikatora repozytorium"
-
-#: help_text.php:789
-msgid "Repository add facts"
-msgstr "Fakty repozytorium"
 
 #: find.php:249
 msgid "Repository contains:"
@@ -11449,7 +11453,7 @@ msgid "Research tasks are special events, added to individuals in your family tr
 msgstr "Zadania badawcze są specjalnymi wydarzeniami, dodanymi do osób w drzewie genealogicznym, które identyfikują potrzebę dalszych badań. Można ich używać jako przypomnienia, by sprawdzić fakty w bardziej wiarygodnych źródłach, w celu uzyskania dokumentów lub fotografii, rozwiązania sprzecznych informacji, itp."
 
 #: modules_v3/todo/help_text.php:36
-msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognise this tag."
+msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
 msgstr "Zadania badawcze są przechowywane przy użyciu niestandardowego znacznika GEDCOM „_TODO”. Inne aplikacje genealogiczne mogą nie rozpoznawać tego znacznika."
 
 #: includes/functions/functions_print_lists.php:97
@@ -11650,7 +11654,7 @@ msgstr "Sao Paulo, Brazylia"
 msgid "Sao Tome and Principe"
 msgstr "Wyspy Świętego Tomasza i Książęca"
 
-#: includes/functions/functions_print.php:1054
+#: includes/functions/functions_print.php:1040
 #: library/WT/Date/Calendar.php:224
 msgid "Sat"
 msgstr "So"
@@ -11717,11 +11721,11 @@ msgstr "Naznaczenie anulowane (rozwód)"
 #: modules_v3/descendancy/module.php:102 modules_v3/descendancy/module.php:131
 #: modules_v3/families/module.php:141 modules_v3/individuals/module.php:141
 #: search.php:157 search.php:260 search.php:262 search.php:264
-#: search_advanced.php:293 themes/clouds/header.php:81
-#: themes/clouds/header.php:82 themes/colors/header.php:125
-#: themes/colors/header.php:126 themes/fab/header.php:97
-#: themes/minimal/header.php:101 themes/webtrees/header.php:81
-#: themes/webtrees/header.php:82 themes/xenea/header.php:79
+#: search_advanced.php:293 themes/clouds/header.php:79
+#: themes/clouds/header.php:80 themes/colors/header.php:120
+#: themes/colors/header.php:121 themes/fab/header.php:95
+#: themes/minimal/header.php:98 themes/webtrees/header.php:82
+#: themes/webtrees/header.php:83 themes/xenea/header.php:77
 msgid "Search"
 msgstr "Szukaj"
 
@@ -11736,7 +11740,7 @@ msgstr "Znajdź i zamień"
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
 
-#: includes/session.php:544
+#: includes/session.php:531
 msgid "Search engine"
 msgstr "Wyszukiwarka"
 
@@ -11776,6 +11780,12 @@ msgstr "Seattle, Washington"
 #: admin_site_config.php:139 help_text.php:764
 msgid "Secure connection"
 msgstr "Bezpieczne połączenie"
+
+#. I18N: %s is a URL
+#: modules_v3/batch_update/plugins/search_replace.php:93
+#, php-format
+msgid "See %s for more information."
+msgstr ""
 
 #: includes/functions/functions_edit.php:311 reportengine.php:250
 msgid "Select a date"
@@ -11856,11 +11866,11 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "Sprzedawca"
 
-#: login.php:454 message.php:140 modules_v3/user_messages/module.php:78
+#: login.php:452 message.php:140 modules_v3/user_messages/module.php:78
 msgid "Send"
 msgstr "Wyślij"
 
-#: admin_users_bulk.php:32 themes/_administration/header.php:135
+#: admin_users_bulk.php:32 themes/_administration/header.php:133
 msgid "Send broadcast messages"
 msgstr "Wyślij wiadomości"
 
@@ -11929,7 +11939,7 @@ msgctxt "LOCATIVE"
 msgid "September"
 msgstr "wrześniu"
 
-#: includes/functions/functions_print.php:1042
+#: includes/functions/functions_print.php:1028
 #: library/WT/Date/Calendar.php:131
 msgctxt "NOMINATIVE"
 msgid "September"
@@ -11971,7 +11981,7 @@ msgid "Server name"
 msgstr "Nazwa serwera"
 
 #. I18N: The local time on the server
-#: themes/_administration/header.php:83
+#: themes/_administration/header.php:81
 msgid "Server time"
 msgstr ""
 
@@ -11985,15 +11995,15 @@ msgstr "Wygaśnięcie sesji"
 msgid "Set link"
 msgstr "Ustaw powiązanie"
 
-#: themes/_administration/header.php:125 themes/_administration/header.php:137
+#: themes/_administration/header.php:123 themes/_administration/header.php:135
 msgid "Set the default blocks"
 msgstr "Ustaw domyślne bloki"
 
-#: themes/_administration/header.php:125
+#: themes/_administration/header.php:123
 msgid "Set the default blocks for new family trees"
 msgstr "Ustaw domyślne bloki dla nowych drzew genealogicznych"
 
-#: themes/_administration/header.php:137
+#: themes/_administration/header.php:135
 msgid "Set the default blocks for new users"
 msgstr "Ustaw domyślne bloki dla nowych użytkowników"
 
@@ -12545,7 +12555,7 @@ msgid "Show the location of places and events using the Google Maps™ mapping s
 msgstr "Pokazuje lokalizację miejsc i zdarzeń za pomocą usługi Google Maps™."
 
 #: modules_v3/faq/module.php:174 modules_v3/html/module.php:325
-#: modules_v3/stories/module.php:245
+#: modules_v3/stories/module.php:246
 msgid "Show this block for which languages?"
 msgstr "Pokaż ten blok dla następujących języków"
 
@@ -12609,7 +12619,7 @@ msgid "Sicily"
 msgstr "Sycylia"
 
 #: admin_module_sidebar.php:72 admin_modules.php:124 admin_modules.php:142
-#: themes/_administration/header.php:150
+#: themes/_administration/header.php:148
 msgid "Sidebar"
 msgstr "Panel"
 
@@ -12638,12 +12648,12 @@ msgstr "Singapur"
 msgid "Sister"
 msgstr "Siostra"
 
-#: admin_site_access.php:30 themes/_administration/header.php:103
+#: admin_site_access.php:30 themes/_administration/header.php:101
 msgid "Site access rules"
 msgstr "Zasady dostępu do witryny"
 
 #: admin_site_config.php:30 admin_site_config.php:56
-#: themes/_administration/header.php:99
+#: themes/_administration/header.php:97
 msgid "Site configuration"
 msgstr "Konfiguracja witryny"
 
@@ -12774,7 +12784,7 @@ msgstr "Syn rodziny: %s"
 msgid "Sort order"
 msgstr "Sortowanie"
 
-#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is a individual’s surname, so may need transliterating into non-latin alphabets.
+#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: includes/functions/functions_print_lists.php:207
 #: library/WT/Controller/Branches.php:153
 #: library/WT/Controller/Branches.php:188
@@ -12814,10 +12824,6 @@ msgstr "Źródło"
 #: admin_trees_config.php:347 help_text.php:895
 msgid "Source ID prefix"
 msgstr "Przedrostek identyfikatora źródła"
-
-#: help_text.php:900
-msgid "Source add facts"
-msgstr "Fakty źródłowe"
 
 #: help_text.php:526
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
@@ -12971,7 +12977,7 @@ msgstr "Wykres statystyk"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:252 admin_site_change.php:286
-#: includes/functions/functions_print.php:887 library/WT/Gedcom/Tag.php:310
+#: includes/functions/functions_print.php:873 library/WT/Gedcom/Tag.php:310
 msgid "Status"
 msgstr "Status"
 
@@ -13008,16 +13014,16 @@ msgid "Store watermarked thumbnails on server?"
 msgstr "Przechowywać miniaturki ze znakiem wodnym na serwerze?"
 
 #. I18N: Name of a module
-#: modules_v3/stories/module.php:32 modules_v3/stories/module.php:404
+#: modules_v3/stories/module.php:32 modules_v3/stories/module.php:405
 msgid "Stories"
 msgstr "Historie"
 
-#: modules_v3/stories/module.php:238
+#: modules_v3/stories/module.php:239
 msgid "Story"
 msgstr "Historia"
 
-#: modules_v3/stories/module.php:235 modules_v3/stories/module.php:342
-#: modules_v3/stories/module.php:408
+#: modules_v3/stories/module.php:236 modules_v3/stories/module.php:343
+#: modules_v3/stories/module.php:409
 msgid "Story title"
 msgstr "Tytuł historii"
 
@@ -13053,7 +13059,7 @@ msgstr "Sudan"
 msgid "Suffixes"
 msgstr "Przyrostki"
 
-#: includes/functions/functions_print.php:1048
+#: includes/functions/functions_print.php:1034
 #: library/WT/Date/Calendar.php:225
 msgid "Sun"
 msgstr "Nd"
@@ -13148,7 +13154,7 @@ msgstr "Zakładka"
 msgid "Table prefix"
 msgstr "Przedrostek tabeli"
 
-#: themes/_administration/header.php:148
+#: themes/_administration/header.php:146
 msgid "Tabs"
 msgstr "Zakładki"
 
@@ -13286,7 +13292,7 @@ msgstr "Kreator transferu PGV do <b>webtrees</b> jest zautomatyzowanym procesem,
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "Administrator strony %s zatwierdził twoje zgłoszenie. Można się teraz zalogować używając odnośnika: %s"
 
-#: login.php:540
+#: login.php:536
 msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
 msgstr "Administrator został o tym poinformowany.<br>Gdy tylko udzieli zezwolenia będzie możliwe zalogowanie się na stronie korzystając ze swojego loginu i hasła."
 
@@ -13297,7 +13303,7 @@ msgid "The changes to “%s” have been accepted."
 msgstr "Zmiany wprowadzone do wpisu „%s” zostały zaakceptowane."
 
 #. I18N: %s is the name of an individual, source or other record
-#: action.php:192
+#: action.php:220
 #, php-format
 msgid "The changes to “%s” have been rejected."
 msgstr "Zmiany wprowadzone do wpisu „%s” zostały odrzucone."
@@ -13310,7 +13316,7 @@ msgstr "Koszyk wycinków umożliwia zbieranie wybranych informacji („wycinków
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
 msgstr "Obecna nazwa użytkownika administrującego <b>webtrees</b> musi być taka sama jak istniejąca nazwa użytkownika administrującego PGV"
 
-#: login.php:506
+#: login.php:501
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
 msgstr "Informacje o użytkowniku %s zostały potwierdzone."
@@ -13409,7 +13415,7 @@ msgid "The following rules are used to decide whether a visitor is a human being
 msgstr "Poniższe zasady są stosowane do określenia, czy użytkownik jest człowiekiem (pełny dostęp), robotem wyszukującym (ograniczony dostęp) lub niechcianym robotem (cały dostęp zablokowany)."
 
 #: admin_site_access.php:287
-msgid "The following visitors were not recognised, and were assumed to be search engines."
+msgid "The following visitors were not recognized, and were assumed to be search engines."
 msgstr "Poniżsi odwiedzający nie zostali rozpoznani i zostali potraktowani jako wyszukiwarki."
 
 #: help_text.php:1495
@@ -13531,7 +13537,7 @@ msgstr "Wersja %s jest za nowa"
 msgid "The version of %s is too old"
 msgstr "Wersja %s jest za stara"
 
-#: setup.php:923
+#: setup.php:924
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
 msgstr "Programiści webtrees chcą dowiedzieć się o tym błędzie. Jeśli się z nimi skontaktujesz, pomogą w rozwiązaniu tego problemu."
 
@@ -13723,7 +13729,7 @@ msgstr "Katalog ten będzie wykorzystywany przez webtrees do przechowywania plik
 msgid "This folder will be used to store the media files for this family tree."
 msgstr "Ten katalog będzie używany do przechowywania plików multimedialnych powiązanych z danym drzewem genealogicznym."
 
-#: library/WT/Filter.php:237
+#: library/WT/Filter.php:241
 msgid "This form has expired.  Try again."
 msgstr ""
 
@@ -13755,7 +13761,7 @@ msgstr "Ta osoba została zmieniona. Należy przejrzeć zmiany, a następnie %1$
 msgid "This individual will be selected by default when viewing charts and reports."
 msgstr "Będzie to główna osoba dla wyświetlanych wykresów i raportów."
 
-#: includes/functions/functions_print.php:517 library/WT/Stats.php:823
+#: includes/functions/functions_print.php:515 library/WT/Stats.php:823
 #: library/WT/Stats.php:1360 library/WT/Stats.php:1446
 #: library/WT/Stats.php:1757 library/WT/Stats.php:1856
 #: library/WT/Stats.php:2087 library/WT/Stats.php:2504
@@ -14220,7 +14226,7 @@ msgstr "Spowoduje to usunięcie wszystkich danych genealogicznych <b>%s</b> i za
 msgid "This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
 msgstr "Lista wszystkich miejsc z danego drzewa genealogicznego. Domyślnie NIE BĘDĄ POKAZANE miejsca identyczne znajdujące się w drzewie i tablicach miejsc Map Google."
 
-#: includes/functions/functions_print.php:1052
+#: includes/functions/functions_print.php:1038
 #: library/WT/Date/Calendar.php:222
 msgid "Thu"
 msgstr "Cz"
@@ -14339,7 +14345,7 @@ msgstr "Tytuł"
 msgid "Title in Hebrew"
 msgstr "Tytuł w języku hebrajskim"
 
-#: editnews.php:61
+#: editnews.php:66
 msgid "Title:"
 msgstr "Tytuł"
 
@@ -14579,7 +14585,7 @@ msgstr "Tridi"
 msgid "Trinidad and Tobago"
 msgstr "Trynidad i Tobago"
 
-#: includes/functions/functions_print.php:1050
+#: includes/functions/functions_print.php:1036
 #: library/WT/Date/Calendar.php:220
 msgid "Tue"
 msgstr "Wt"
@@ -14624,7 +14630,7 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "Typ znacznika miejsca w hierarchii miejsc"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:390 login.php:405
+#: admin_users.php:390 login.php:403
 msgid "Type the password again."
 msgstr "Wpisz hasło ponownie."
 
@@ -14659,7 +14665,7 @@ msgid "USSR"
 msgstr "ZSSR"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
-#: themes/_administration/header.php:89
+#: themes/_administration/header.php:87
 msgid "UTC"
 msgstr ""
 
@@ -14698,24 +14704,19 @@ msgstr "Cofnij"
 msgid "Undo all changes"
 msgstr "Cofnij wszystkie zmiany"
 
-#: admin_trees_config.php:1084 admin_trees_config.php:1121
-#: admin_trees_config.php:1158 admin_trees_config.php:1187
-msgid "Unique facts"
-msgstr "Unikalne"
-
-#: help_text.php:515
+#: admin_trees_config.php:1121 help_text.php:515
 msgid "Unique family facts"
 msgstr "Niepowtarzalne fakty rodzinne"
 
-#: help_text.php:593
+#: admin_trees_config.php:1084 help_text.php:593
 msgid "Unique individual facts"
 msgstr "Niepowtarzalne fakty osobowe"
 
-#: help_text.php:799
+#: admin_trees_config.php:1187 help_text.php:799
 msgid "Unique repository facts"
 msgstr "Niepowtarzalne fakty repozytorium"
 
-#: help_text.php:910
+#: admin_trees_config.php:1158 help_text.php:910
 msgid "Unique source facts"
 msgstr "Niepowtarzalne fakty źródłowe"
 
@@ -14787,10 +14788,6 @@ msgstr "Uaktualnij"
 msgid "Update all"
 msgstr "Uaktualnij wszystkie"
 
-#: modules_v3/batch_update/admin_batch_update.php:342
-msgid "Update the CHAN record"
-msgstr "Uaktualnij wpis CHAN (ostatnia zmiana)"
-
 #: admin_site_merge.php:152
 msgid "Updating linked record"
 msgstr "Uaktualnianie powiązanego wpisu"
@@ -14819,7 +14816,7 @@ msgid "Upload geographic data"
 msgstr "Wgraj dane geograficzne"
 
 #: admin_media_upload.php:32 admin_media_upload.php:177 help_text.php:1419
-#: themes/_administration/header.php:141
+#: themes/_administration/header.php:139
 msgid "Upload media files"
 msgstr "Wgraj pliki multimedialne"
 
@@ -14861,7 +14858,7 @@ msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to
 msgstr "Użyj &laquo;?&raquo; by zastąpić pojedynczy dowolny znak, lub użyj &laquo;*&raquo; by zastąpić wiele dowolnych znaków."
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:385 login.php:400
+#: admin_users.php:385 login.php:398
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -14943,7 +14940,7 @@ msgstr "Użytkownik nie został zatwierdzony przez administratora."
 msgid "User options"
 msgstr "Opcje użytkownika"
 
-#: login.php:434 login.php:440 login.php:500 login.php:504
+#: login.php:432 login.php:438 login.php:495 login.php:499
 msgid "User verification"
 msgstr "Weryfikacja użytkownika"
 
@@ -14954,7 +14951,7 @@ msgstr "Identyfikator przeglądarki"
 
 #: admin_site_config.php:133 admin_users.php:372 admin_users.php:571
 #: edituser.php:133 help_text.php:734 help_text.php:1474 login.php:146
-#: login.php:214 login.php:280 login.php:310 login.php:442
+#: login.php:214 login.php:280 login.php:307 login.php:440
 #: modules_v3/login_block/module.php:71 modules_v3/todo/module.php:97
 msgid "Username"
 msgstr "Nazwa użytkownika"
@@ -14972,7 +14969,7 @@ msgstr "Wielkość liter w nazwach użytkowników nie ma znaczenia oraz ignorowa
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
 msgstr "Nazwy użytkownika nie mogą zawierać następujących znaków: &lt; &gt; \" %% { } ;"
 
-#: admin.php:122 themes/_administration/header.php:131
+#: admin.php:122 themes/_administration/header.php:129
 msgid "Users"
 msgstr "Użytkownicy"
 
@@ -15056,7 +15053,7 @@ msgstr "Ventôse"
 msgid "Veracruz, Mexico"
 msgstr "Veracruz, Meksyk"
 
-#: login.php:311 login.php:450
+#: login.php:308 login.php:448
 msgid "Verification code:"
 msgstr "Kod weryfikacyjny:"
 
@@ -15215,12 +15212,12 @@ msgstr ""
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
 msgstr ""
 
-#: login.php:356
+#: login.php:354
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 msgstr "Wkrótce otrzymasz email na adres: <b>%s</b>. Należy postępować według instrukcji zawartych w emailu aby aktywować swoje konto. Jeśli konto nie zostanie aktywowane w przeciągu siedmiu dni, zostanie ono usunięte i będzie konieczna ponowna rejestracja.<br><br>Po potwierdzeniu należy poczekać aż administrator zatwierdzi konto.<br><br>Aby w pełni korzystać z zasobów tej strony należy zapamiętać swój login i hasło."
 
-#: login.php:358
+#: login.php:356
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
 msgstr "Wkrótce otrzymasz email na adres: <b>%s</b>. Należy postępować według instrukcji zawartych w emailu aby aktywować swoje konto. Jeśli konto nie zostanie aktywowane w przeciągu siedmiu dni, zostanie ono usunięte i będzie konieczna ponowna rejestracja. Aby w pełni korzystać z zasobów tej strony należy zapamiętać swój login i hasło."
@@ -15238,7 +15235,7 @@ msgstr "Strona WWW i ustawienia znacznika META"
 msgid "Website URL"
 msgstr "Adres strony domowej"
 
-#: includes/functions/functions_print.php:1051
+#: includes/functions/functions_print.php:1037
 #: library/WT/Date/Calendar.php:221
 msgid "Wed"
 msgstr "Śr"
@@ -15510,7 +15507,7 @@ msgid "Yemen"
 msgstr "Jemen"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
-#: login.php:304
+#: login.php:301
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr "Ty, lub ktoś podający się za Ciebie poprosił o utworzenie konta na %1$s korzystając z adresu e-mail %2$s."
@@ -15542,7 +15539,7 @@ msgstr "Można ograniczyć liczbę wyświetlanych artykułów, zmniejszając w t
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "Można łatwiej znaleźć kobiety zamężne wprowadzając ich nazwiska po ślubie.<br>Jednakże nie wszystkie kobiety przyjmują nazwiska męża po ślubie, więc należy zachować szczególną uwagę korzystając z tej funkcji, by nie wprowadzić niepoprawnych danych do bazy."
 
-#: login.php:542
+#: login.php:538
 msgid "You can now login with your user name and password."
 msgstr "Można teraz się zalogować używając swojej nazwy użytkownika i hasła."
 
@@ -15558,11 +15555,11 @@ msgstr "Można przyspieszyć obliczenia prywatności dodając wpis śmierci dla 
 msgid "You cannot login because your browser does not accept cookies."
 msgstr "Nie możesz się zalogować ponieważ Twoja przeglądarka nie akceptuje ciasteczek."
 
-#: downloadbackup.php:34 includes/session.php:546
+#: downloadbackup.php:34 includes/session.php:533
 msgid "You do not have permission to view this page."
 msgstr "Brak uprawnień do przeglądania tej strony."
 
-#: login.php:483
+#: login.php:481
 msgid "You do not have to take any action; the user can now login."
 msgstr "Nie trzeba już nic robić, użytkownik może się teraz zalogować."
 
@@ -15570,7 +15567,7 @@ msgstr "Nie trzeba już nic robić, użytkownik może się teraz zalogować."
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "Wprowadzono jednakowe identyfikatory. Nie można scalać wpisu samego ze sobą."
 
-#: login.php:538
+#: login.php:534
 msgid "You have confirmed your request to become a registered user."
 msgstr "Twoje zgłoszenie zostania zarejestrowanym użytkownikiem zostało potwierdzone."
 
@@ -15655,7 +15652,7 @@ msgstr "Należy zalogować się ponownie używając nazwy użytkownika i hasła 
 msgid "You need to set up an administrator account.  This account can control all aspects of this <b>webtrees</b> installation.  Please choose a strong password."
 msgstr "Należy założyć konto administratora. Korzystając z tego konta będzie możliwe kontrolowanie wszystkich danych tej instalacji <b>webtrees</b>. Należy wybrać silne hasło."
 
-#: login.php:481
+#: login.php:479
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr "Należy teraz dokonać przeglądu danych konta i ustawić status „zatwierdzone” na „tak”."
 
@@ -15698,7 +15695,7 @@ msgstr "Otrzymasz email powiadamiający gdy użytkownik potwierdzi prośbę. Wó
 msgid "You will use this to login to webtrees."
 msgstr "Będzie on używany do logowania się na webtrees."
 
-#: login.php:315
+#: login.php:312
 msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
 msgstr "Nie otrzymasz więcej emaili od nas, ponieważ wniosek o nowe konto zostanie usunięty po upływie siedmiu dni."
 
@@ -15731,7 +15728,7 @@ msgid "Your name"
 msgstr "Imię i nazwisko"
 
 #. I18N: %s is a server name/URL
-#: login.php:316
+#: login.php:313
 #, php-format
 msgid "Your registration at %s"
 msgstr "Rejestracja na %s"
@@ -15773,16 +15770,6 @@ msgstr "Kompresja ZIP"
 msgid "Zoom"
 msgstr "Powiększenie"
 
-#: modules_v3/googlemap/admin_places.php:162
-#: modules_v3/googlemap/admin_places.php:582
-#: modules_v3/googlemap/places_edit.php:318
-msgid "Zoom factor"
-msgstr "Powiększenie"
-
-#: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
-msgid "Zoom factor of map"
-msgstr "Współczynnik powiększenia mapy"
-
 #: modules_v3/googlemap/module.php:1347 timeline.php:300
 msgid "Zoom in"
 msgstr "Powiększ"
@@ -15794,6 +15781,16 @@ msgstr "Powiększ tutaj"
 #: includes/functions/functions_print.php:127
 msgid "Zoom in/out on this box."
 msgstr "Powiększ/pomniejsz tę ramkę"
+
+#: modules_v3/googlemap/admin_places.php:162
+#: modules_v3/googlemap/admin_places.php:582
+#: modules_v3/googlemap/places_edit.php:318
+msgid "Zoom level"
+msgstr "Powiększenie"
+
+#: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
+msgid "Zoom level of map"
+msgstr "Współczynnik powiększenia mapy"
 
 #: modules_v3/googlemap/module.php:1348 timeline.php:301
 msgid "Zoom out"
@@ -15866,7 +15863,7 @@ msgstr "po"
 msgid "after %s"
 msgstr "po %s"
 
-#: includes/functions/functions_print.php:773
+#: includes/functions/functions_print.php:759
 msgid "after death"
 msgstr "po śmierci"
 
@@ -16039,7 +16036,7 @@ msgstr "brat szwagra"
 #: includes/functions/functions.php:939
 msgctxt "spouses's brother"
 msgid "brother-in-law"
-msgstr "szwagier"
+msgstr ""
 
 #: includes/functions/functions.php:948
 msgctxt "wife's brother"
@@ -16074,7 +16071,7 @@ msgstr "rodzeństwo szwagra"
 #: includes/functions/functions.php:947
 msgctxt "spouses's sibling"
 msgid "brother/sister-in-law"
-msgstr "szwagier/szwagierka"
+msgstr ""
 
 #: includes/functions/functions.php:953
 msgctxt "wife's sibling"
@@ -16166,7 +16163,7 @@ msgstr "zwięzła lista"
 
 #. I18N: button label
 #: admin_pgv_to_wt.php:1059 admin_trees_download.php:138
-#: admin_trees_manage.php:169 admin_users.php:548 login.php:176 login.php:417
+#: admin_trees_manage.php:169 admin_users.php:548 login.php:176 login.php:415
 #: modules_v3/login_block/module.php:102 setup.php:180 setup.php:204
 #: setup.php:273 setup.php:358 setup.php:414
 msgid "continue"
@@ -16360,7 +16357,7 @@ msgstr "teść"
 #: includes/functions/functions.php:942
 msgctxt "spouses's father"
 msgid "father-in-law"
-msgstr "teść"
+msgstr ""
 
 #: includes/functions/functions.php:951
 msgctxt "wife's father"
@@ -18473,7 +18470,7 @@ msgstr "teściowa"
 #: includes/functions/functions.php:943
 msgctxt "spouses's mother"
 msgid "mother-in-law"
-msgstr "teściowa"
+msgstr ""
 
 #: includes/functions/functions.php:952
 msgctxt "wife's mother"
@@ -18483,7 +18480,7 @@ msgstr "teściowa"
 #: includes/functions/functions.php:946
 msgctxt "spouses's parent"
 msgid "mother/father-in-law"
-msgstr "teść/teściowa"
+msgstr ""
 
 #: includes/functions/functions.php:877
 msgctxt "brother's son"
@@ -18586,7 +18583,7 @@ msgstr "kuzyn(ka) dziewiątego stopnia"
 #: includes/functions/functions_edit.php:542
 #: includes/functions/functions_print_facts.php:1055
 #: includes/functions/functions_print_lists.php:776 library/WT/Stats.php:3491
-#: modules_v3/batch_update/admin_batch_update.php:344
+#: modules_v3/batch_update/admin_batch_update.php:345
 #: modules_v3/change_report/report.xml:8 modules_v3/charts/module.php:213
 #: modules_v3/family_group_report/report.xml:249
 #: modules_v3/family_group_report/report.xml:420
@@ -18638,7 +18635,7 @@ msgstr "ilościowa"
 msgid "of"
 msgstr "z"
 
-#: includes/functions/functions_print.php:771
+#: includes/functions/functions_print.php:757
 msgid "on the date of death"
 msgstr "w dniu śmierci"
 
@@ -18748,18 +18745,18 @@ msgstr "odrzucić"
 msgid "rejected"
 msgstr "odrzucona"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:138
 msgid "religious name"
 msgstr "zakonne"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:135
 msgctxt "FEMALE"
 msgid "religious name"
 msgstr "zakonne"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:132
 msgctxt "MALE"
 msgid "religious name"
@@ -18793,7 +18790,7 @@ msgstr "robot"
 #: edit_interface.php:1210 edit_interface.php:1308 edit_interface.php:1402
 #: edit_interface.php:1485 edit_interface.php:1679 edit_interface.php:1779
 #: edit_interface.php:1979 edit_interface.php:2142 edit_interface.php:2675
-#: editnews.php:78 edituser.php:176 find.php:484
+#: editnews.php:72 edituser.php:176 find.php:484
 #: includes/functions/functions_edit.php:34
 #: includes/functions/functions_edit.php:48
 #: includes/functions/functions_edit.php:107 index_edit.php:335
@@ -18802,7 +18799,7 @@ msgstr "robot"
 #: modules_v3/googlemap/module.php:626
 #: modules_v3/googlemap/placehierarchy.php:254
 #: modules_v3/googlemap/places_edit.php:339 modules_v3/sitemap/module.php:248
-#: modules_v3/stories/module.php:262
+#: modules_v3/stories/module.php:263
 msgid "save"
 msgstr "Zapisz"
 
@@ -19015,7 +19012,7 @@ msgstr "kuzyn(ka) siódmego stopnia"
 #: admin_trees_config.php:992 admin_trees_config.php:1024
 #: admin_trees_config.php:1045 admin_trees_config.php:1053
 #: admin_trees_config.php:1061 modules_v3/faq/module.php:355
-#: modules_v3/googlemap/module.php:275 modules_v3/stories/module.php:335
+#: modules_v3/googlemap/module.php:275 modules_v3/stories/module.php:336
 msgid "show"
 msgstr "Pokaż"
 
@@ -19059,7 +19056,7 @@ msgstr "siostra szwagra"
 #: includes/functions/functions.php:944
 msgctxt "spouses's sister"
 msgid "sister-in-law"
-msgstr "szwagierka"
+msgstr ""
 
 #: includes/functions/functions.php:1139
 msgctxt "wife's brother's wife"
@@ -19229,7 +19226,7 @@ msgstr "dziecko przybrane"
 #: includes/functions/functions.php:940
 msgctxt "spouses's child"
 msgid "step-child"
-msgstr "dziecko przybrane"
+msgstr ""
 
 #: includes/functions/functions.php:949
 msgctxt "wife's child"
@@ -19244,7 +19241,7 @@ msgstr "pasierbica"
 #: includes/functions/functions.php:941
 msgctxt "spouses's daughter"
 msgid "step-daughter"
-msgstr "pasierbica"
+msgstr ""
 
 #: includes/functions/functions.php:950
 msgctxt "wife's daughter"
@@ -19304,7 +19301,7 @@ msgstr "pasierb"
 #: includes/functions/functions.php:945
 msgctxt "spouses's son"
 msgid "step-son"
-msgstr "pasierb"
+msgstr ""
 
 #: includes/functions/functions.php:955
 msgctxt "wife's son"
@@ -19600,7 +19597,7 @@ msgstr "Adres zwrotny webtrees"
 msgid "webtrees sends emails with no storage"
 msgstr "webtrees wysyła emaile bez zachowywania"
 
-#: includes/functions/functions_print.php:539
+#: includes/functions/functions_print.php:537
 msgid "webtrees wiki"
 msgstr "webtrees wiki"
 
@@ -19625,11 +19622,11 @@ msgstr "lat"
 #: includes/functions/functions_edit.php:146
 #: includes/functions/functions_edit.php:515
 #: includes/functions/functions_edit.php:539
-#: includes/functions/functions_print.php:813
+#: includes/functions/functions_print.php:799
 #: includes/functions/functions_print_facts.php:1052
 #: includes/functions/functions_print_lists.php:357
 #: includes/functions/functions_print_lists.php:778 library/WT/Stats.php:3490
-#: modules_v3/batch_update/admin_batch_update.php:345
+#: modules_v3/batch_update/admin_batch_update.php:344
 #: modules_v3/change_report/report.xml:8 modules_v3/charts/module.php:214
 #: modules_v3/family_group_report/report.xml:246
 #: modules_v3/family_group_report/report.xml:417
@@ -19701,6 +19698,9 @@ msgstr "…"
 #~ msgid "Add child"
 #~ msgstr "Dodaj dziecko"
 
+#~ msgid "All facts"
+#~ msgstr "Wszystkie"
+
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "Zezwalaj na przełączanie pomiędzy drzewami genealogicznymi"
 
@@ -19770,6 +19770,9 @@ msgstr "…"
 #~ msgid "External objects"
 #~ msgstr "Zewnętrzne obiekty"
 
+#~ msgid "Family add facts"
+#~ msgstr "Fakty rodzinne"
+
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Miejsce urodzenia ojca - (format Chapmana)"
 
@@ -19806,6 +19809,9 @@ msgstr "…"
 #~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
 #~ msgstr "Jeśli na danej witrynie istnieje wiele drzew genealogicznych, wybranie opcji <b>Tak</b> pozwoli odwiedzającym witrynę gościnnie <u>oraz</u> użytkownikom na zmianę aktywnego drzewa genealogicznego. Wybranie opcji <b>Nie</b> uniemożliwi przełączanie drzew genealogicznych <u>zarówno</u> gościom, <u>jak i </u> zalogowanym użytkownikom."
 
+#~ msgid "Individual add facts"
+#~ msgstr "Fakty osobowe"
+
 #~ msgid "Individual information"
 #~ msgstr "Informacje o osobie"
 
@@ -19835,6 +19841,9 @@ msgstr "…"
 
 #~ msgid "Name List"
 #~ msgstr "Lista nazwisk"
+
+#~ msgid "New entry facts"
+#~ msgstr "Fakty nowego wpisu"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -19866,6 +19875,9 @@ msgstr "…"
 #~ msgid "Port"
 #~ msgstr "Port"
 
+#~ msgid "Quick facts"
+#~ msgstr "Podręczne"
+
 #~ msgid "Recommendation:"
 #~ msgstr "Zalecenie:"
 
@@ -19874,6 +19886,9 @@ msgstr "…"
 
 #~ msgid "Replace record"
 #~ msgstr "Zastąp wpis"
+
+#~ msgid "Repository add facts"
+#~ msgstr "Fakty repozytorium"
 
 #~ msgid "SMTP port"
 #~ msgstr "Port SMTP"
@@ -19895,6 +19910,9 @@ msgstr "…"
 
 #~ msgid "Show timeline"
 #~ msgstr "Pokaż oś czasu"
+
+#~ msgid "Source add facts"
+#~ msgstr "Fakty źródłowe"
 
 #~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
 #~ msgstr "Określa, czy wiadomości przesłane przez <b>webtrees</b> mają być przechowywane w bazie danych. Wybranie <b>Tak</b> spowoduje, że użytkownicy będą mogli przeglądać swoje wiadomości po zalogowaniu do <b>webtrees</b>. Wybranie <b>Nie</b> spowoduje, że wiadomości będą jedynie wysyłane emailem."
@@ -19953,6 +19971,12 @@ msgstr "…"
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
 #~ msgstr "Transport Layer Security (TLS) oraz Secure Sockets Layer (SSL), to protokoły kryptograficzne, mające na celu zapewnienie poufności i integralności transmisji danych oraz zapewnienie uwierzytelnienia. Jeśli Twój serwer SMTP wymaga i/lub wspiera uwierzytelnianie przez SSL wybierz opcję <b>SSL</b>. Natomiast jeśli Twój serwer SMTP wymaga i/lub wspiera uwierzytelnianie przez TLS wybierz opcję <b>TLS</b>."
 
+#~ msgid "Unique facts"
+#~ msgstr "Unikalne"
+
+#~ msgid "Update the CHAN record"
+#~ msgstr "Uaktualnij wpis CHAN (ostatnia zmiana)"
+
 #~ msgid "Upgrade the web-server to PHP %s or higher."
 #~ msgstr "Uaktualnienie serwera www do wersji PHP %s lub wyższej."
 
@@ -19989,6 +20013,14 @@ msgstr "…"
 #~ msgid "before %d"
 #~ msgstr "przed %d"
 
+#~ msgctxt "spouse's brother"
+#~ msgid "brother-in-law"
+#~ msgstr "szwagier"
+
+#~ msgctxt "spouse's sibling"
+#~ msgid "brother/sister-in-law"
+#~ msgstr "szwagier/szwagierka"
+
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
 #~ msgstr "email"
@@ -19997,11 +20029,39 @@ msgstr "…"
 #~ msgid "f."
 #~ msgstr "faks"
 
+#~ msgctxt "spouse's father"
+#~ msgid "father-in-law"
+#~ msgstr "teść"
+
 #~ msgid "from %d"
 #~ msgstr "od %d"
 
+#~ msgctxt "spouse's mother"
+#~ msgid "mother-in-law"
+#~ msgstr "teściowa"
+
+#~ msgctxt "spouse's parent"
+#~ msgid "mother/father-in-law"
+#~ msgstr "teść/teściowa"
+
 #~ msgid "or"
 #~ msgstr "lub"
+
+#~ msgctxt "spouse's sister"
+#~ msgid "sister-in-law"
+#~ msgstr "szwagierka"
+
+#~ msgctxt "spouse's child"
+#~ msgid "step-child"
+#~ msgstr "dziecko przybrane"
+
+#~ msgctxt "spouse's daughter"
+#~ msgid "step-daughter"
+#~ msgstr "pasierbica"
+
+#~ msgctxt "spouse's son"
+#~ msgid "step-son"
+#~ msgstr "pasierb"
 
 #~ msgctxt "Abbreviation for telephone number"
 #~ msgid "t."

@@ -182,7 +182,7 @@ case 'DATE':
 		'<tr><td>'.$dates['CAL 1900'].'</td><td><tt dir="ltr" lang="en">CAL 1900</tt></td><td><tt dir="ltr" lang="en">#1900</tt></td></tr>'.
 		'<tr><td>'.$dates['INT 1900 (...)'].'</td><td><tt dir="ltr" lang="en">INT 1900 (...)</tt></td><td>&nbsp;</td></tr>'.
 		'</table>'.
-		'<p>'.WT_I18N::translate('Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range.').'</p>'.
+		'<p>'.WT_I18N::translate('Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range.').'</p>'.
 		'<table border="1">'.
 		'<tr><th>'.WT_I18N::translate('Date range').'</th><th>'.WT_I18N::translate('Format').'</th><th>'.WT_I18N::translate('Shortcut').'</th></tr>'.
 		'<tr><td>'.$dates['BET 1900 AND 1910'].'</td><td><tt dir="ltr" lang="en">BET 1900 AND 1910</tt></td><td><tt dir="ltr" lang="en">1900-1910</tt></td></tr>'.
@@ -552,7 +552,7 @@ case 'GENERATE_GUID':
 
 case 'HIDE_GEDCOM_ERRORS':
 	$title=WT_I18N::translate('GEDCOM errors');
-	$text=WT_I18N::translate('Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message.');
+	$text=WT_I18N::translate('Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message.');
 	break;
 
 case 'HIDE_LIVE_PEOPLE':

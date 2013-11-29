@@ -334,7 +334,7 @@ function get_cont($nlevel, $nrec) {
 }
 
 // ************************************************* START OF SORTING FUNCTIONS ********************************* //
-// Function to sort GEDCOM fact tags based on their tanslations
+// Function to sort GEDCOM fact tags based on their translations
 function factsort($a, $b) {
 	return utf8_strcasecmp(WT_I18N::translate($a), WT_I18N::translate($b));
 }

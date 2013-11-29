@@ -231,6 +231,7 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Parents Wifes Parent Family ---------------------------
 							$gparent=$family->getWife();
+							$cfamily = null;
 							foreach ($gparent->getChildFamilies() as $cfamily) {
 								$phusb = $cfamily->getHusband();
 								$pwife = $cfamily->getWife();
@@ -248,7 +249,7 @@ if (!defined('WT_WEBTREES')) {
 							$surn    = $nam[0]['surname'];
 							$husbnam = null;
 							// Get wifes married name if available
-							if ($cfamily->getHusband()) {
+							if ($cfamily && $cfamily->getHusband()) {
 								$husbnams = $cfamily->getHusband()->getAllNames();
 								if ($husbnams[0]['surname']=="@N.N." || $husbnams[0]['surname']=="") {
 									// if Husband or his name is not known then use wifes birth name
@@ -618,6 +619,7 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Step Wifes Parent Family --------------------------------------
 							$gparent=$family->getWife();
+							$cfamily = null;
 							foreach ($gparent->getChildFamilies() as $cfamily) {
 								$phusb = $cfamily->getHusband();
 								$pwife = $cfamily->getWife();
@@ -635,7 +637,7 @@ if (!defined('WT_WEBTREES')) {
 							$surn  = $nam[0]['surname'];
 							$husbnam = null;
 							// Get wifes married name if available
-							if ($cfamily->getHusband()) {
+							if ($cfamily && $cfamily->getHusband()) {
 								$husbnams = $cfamily->getHusband()->getAllNames();
 								if ($husbnams[0]['surname']=="@N.N." || $husbnams[0]['surname']=="") {
 									// if Husband or his name is not known then use wifes birth name
@@ -995,6 +997,7 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Spouse Wifes Parents --------------------------------------
 							$gparent=$family->getWife();
+							$cfamily = null;
 							foreach ($gparent->getChildFamilies() as $cfamily) {
 								$husb = $cfamily->getHusband();
 								$wife = $cfamily->getWife();
@@ -1013,7 +1016,7 @@ if (!defined('WT_WEBTREES')) {
 							$surn    = $nam[0]['surname'];
 							$husbnam = null;
 							// Get wifes married name if available
-							if ($cfamily->getHusband()) {
+							if ($cfamily && $cfamily->getHusband()) {
 								$husbnams = $cfamily->getHusband()->getAllNames();
 								if ($husbnams[0]['surname']=="@N.N." || $husbnams[0]['surname']=="") {
 									// if Husband or his name is not known then use wifes birth name

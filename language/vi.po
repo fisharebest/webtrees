@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VIETNAMESE LANGUAGE\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-09 18:17+0000\n"
+"POT-Creation-Date: 2013-11-28 15:21+0000\n"
 "PO-Revision-Date: 2013-06-05 09:22+0000\n"
 "Last-Translator: de tran <Unknown>\n"
 "Language-Team: VN LANGUAGE <trande@gmail.com >\n"
@@ -164,7 +164,7 @@ msgstr "%1$s–%2$s"
 msgid "%1$s’s %2$s"
 msgstr "%1$s’s %2$s"
 
-#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: library/WT/I18N.php:152
 msgid "%H:%i:%s"
 msgstr "%g:%i:%s %a"
@@ -628,7 +628,7 @@ msgstr "<center><b>Chào bạn đã viếng site gia phả này</b></center><br>
 msgid "<default theme>"
 msgstr "<kiểu trình bày mặc định>"
 
-#: login.php:376
+#: login.php:374
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
 msgstr "<div class=\"largeError\">Lưu ý:</div><div class=\"error\">Qua việc điền đủ và gửi mẫu này, bạn đồng ý: :<ul><li>to bảo vệ tính riêng tư của người sống nêu trong site;</li><li>và trong hộp văn bản bên dưới, giải thích bạn quan hệ với ai, hay cung cấp cho chúng tôi thông tin về người nào cần nêu ra ở site chúng tôi..</li></ul></div>"
 
@@ -737,7 +737,7 @@ msgstr "Đã tạo một mật khẩu mới và đã gửi  bằng email đến 
 msgid "A new password was requested for your user name."
 msgstr "Có yêu cầu mật khẩu mới cho tên người dùng của bạn."
 
-#: login.php:475
+#: login.php:473
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "Một người dùng mới (%1$s) đã yêu cầu tạo tài khoản (%2$s) và đã được xác minh bằng một địa chỉ email (%3$s)."
@@ -870,7 +870,7 @@ msgstr "Một thanh biên hiển thị các gia đình gần và bà con của m
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:34
-msgid "A sidebar showing non-genealogical information about an indivdual."
+msgid "A sidebar showing non-genealogical information about an individual."
 msgstr "Thanh biên hiển thị các thông tin không gia tộc về một người."
 
 #. I18N: Description of the “Descendants” module
@@ -1089,8 +1089,8 @@ msgid "Adar II"
 msgstr "Adar II"
 
 #: admin_trees_config.php:580 edit_interface.php:1973
-#: includes/functions/functions_print.php:961
-#: includes/functions/functions_print.php:1017 index_edit.php:291
+#: includes/functions/functions_print.php:947
+#: includes/functions/functions_print.php:1003 index_edit.php:291
 #: index_edit.php:309 lifespan.php:157
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:94
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:185
@@ -1228,7 +1228,7 @@ msgstr "Thêm Nguồn Sự Dẫn mới"
 msgid "Add a new spouse"
 msgstr "Thêm bạn đời"
 
-#: themes/_administration/header.php:134
+#: themes/_administration/header.php:132
 msgid "Add a new user"
 msgstr "Thêm vào một thành viên mới"
 
@@ -1250,7 +1250,7 @@ msgstr "Thêm vợ mới"
 msgid "Add a scrollbar when block contents grow"
 msgstr "Thêm thanh cuốn khi nội dung tăng nhiều"
 
-#: modules_v3/relatives/module.php:203
+#: modules_v3/relatives/module.php:161
 msgid "Add a wife to this family"
 msgstr "Thêm vợ mới cho gia đình này"
 
@@ -1268,7 +1268,7 @@ msgid "Add by ID"
 msgstr "Thêm vào theo số ID"
 
 #: edit_interface.php:1589 help_text.php:1052
-#: includes/functions/functions_print.php:942
+#: includes/functions/functions_print.php:928
 msgid "Add from clipboard"
 msgstr "Thêm từ bộ nhớ tạm"
 
@@ -1296,7 +1296,7 @@ msgstr "Chỉ thêm vào nguồn này."
 msgid "Add links"
 msgstr "Thêm liên kết"
 
-#: modules_v3/relatives/module.php:167
+#: modules_v3/relatives/module.php:201
 msgid "Add marriage details"
 msgstr "Thêm chi tiết kết hôn"
 
@@ -1330,9 +1330,14 @@ msgid "Add spaces where notes were wrapped"
 msgstr "Thêm khỏang cách nơi các ghi chú được gói"
 
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
-#: modules_v3/stories/module.php:338
+#: modules_v3/stories/module.php:339
 msgid "Add story"
 msgstr "Thêm chuyện"
+
+#: admin_trees_download.php:129 modules_v3/clippings/module.php:217
+#: modules_v3/clippings/module.php:603
+msgid "Add the GEDCOM media path to filenames"
+msgstr ""
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:528
 msgid "Add this individual and his direct line ancestors."
@@ -1375,7 +1380,7 @@ msgid "Add to favorites"
 msgstr "Thêm vào mục ưa thích"
 
 #: admin_site_other.php:31 admin_site_other.php:37
-#: themes/_administration/header.php:122
+#: themes/_administration/header.php:120
 msgid "Add unlinked records"
 msgstr "Thêm các hồ sơ không liên kết"
 
@@ -1383,7 +1388,7 @@ msgstr "Thêm các hồ sơ không liên kết"
 msgid "Add watermarks to thumbnails?"
 msgstr "và ảnh chìm trong hình nhỏ?"
 
-#: modules_v3/relatives/module.php:202
+#: modules_v3/relatives/module.php:160
 msgid "Add wife"
 msgstr "Thêm vợ"
 
@@ -1396,7 +1401,7 @@ msgstr "Thêm hình ảnh và ghi chú của riêng bạn."
 msgid "Add/Insert Blank Row"
 msgstr "Thêm/ chèn dòng trống"
 
-#: editnews.php:31 editnews.php:45
+#: editnews.php:31 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Thêm/Sửa  Tin Tức/Nhật Ký"
 
@@ -1425,8 +1430,8 @@ msgstr "Adelaide, Úc"
 msgid "Admin comments on user"
 msgstr "Ý kiến quản trị về người dùng"
 
-#: admin.php:29 library/WT/MenuBar.php:83 themes/_administration/header.php:64
-#: themes/_administration/header.php:95
+#: admin.php:29 library/WT/MenuBar.php:83 themes/_administration/header.php:62
+#: themes/_administration/header.php:93
 msgid "Administration"
 msgstr "Quản trị"
 
@@ -1626,8 +1631,8 @@ msgid "After you have logged in, select the “My Account” link under the “M
 msgstr "Sau khi bạn đăng nhập, chọn liên kết \"Tài khoản của tôi\" bên dưới menu \"Trang của tôi\" và điền vào trường mật khẩu để thay đổi mật khẩu."
 
 #. I18N: gedcom tag AGE
-#: autocomplete.php:114 includes/functions/functions_print.php:761
-#: includes/functions/functions_print.php:799
+#: autocomplete.php:114 includes/functions/functions_print.php:747
+#: includes/functions/functions_print.php:785
 #: library/WT/Controller/Timeline.php:226
 #: library/WT/Controller/Timeline.php:228 library/WT/Gedcom/Tag.php:106
 #: library/WT/Stats.php:1614 library/WT/Stats.php:2354
@@ -1750,19 +1755,30 @@ msgstr "Mọi thay đổi trong PGV phải được chấp nhận"
 msgid "All existing PGV users must have distinct email addresses"
 msgstr "Mọi nguời dùng PGV đang có phải có địa chỉ email không trùng lắp nhau"
 
-#: admin_trees_config.php:1076 admin_trees_config.php:1113
-#: admin_trees_config.php:1150 admin_trees_config.php:1179
-msgid "All facts"
-msgstr "Tất cả sự kiện"
+#: admin_trees_config.php:1113 help_text.php:505
+msgid "All family facts"
+msgstr ""
 
-#: login.php:382
+#: login.php:380
 msgid "All fields must be completed."
 msgstr "Mọi trường phải được điền đủ."
+
+#: admin_trees_config.php:1076 help_text.php:583
+msgid "All individual facts"
+msgstr ""
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
 msgid "All individuals"
 msgstr "Mọi Người"
+
+#: admin_trees_config.php:1179 help_text.php:789
+msgid "All repository facts"
+msgstr ""
+
+#: admin_trees_config.php:1150 help_text.php:900
+msgid "All source facts"
+msgstr ""
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1849,7 +1865,7 @@ msgstr "Một menu chỉnh sửa cá nhân, gia đình, nguồn v.v.."
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr "Một cây gia phả tương tác hiển thị tất cả tổ tiên và con cháu của một người."
 
-#: setup.php:921
+#: setup.php:922
 msgid "An unexpected database error occurred."
 msgstr "Có lỗi về CSDL bât ngờ xảy ra."
 
@@ -1980,7 +1996,7 @@ msgctxt "LOCATIVE"
 msgid "April"
 msgstr "Tháng Tư"
 
-#: includes/functions/functions_print.php:1037
+#: includes/functions/functions_print.php:1023
 #: library/WT/Date/Calendar.php:126
 msgctxt "NOMINATIVE"
 msgid "April"
@@ -2007,7 +2023,7 @@ msgstr "Bạn có chắc là muốn xóa cái tin tức mới cho vào không?"
 #: includes/functions/functions_print_facts.php:674
 #: includes/functions/functions_print_facts.php:869
 #: includes/functions/functions_print_facts.php:1013
-#: library/WT/Controller/Individual.php:158 modules_v3/lightbox/module.php:203
+#: library/WT/Controller/Individual.php:158
 msgid "Are you sure you want to delete this fact?"
 msgstr "Bạn có chắc là muốn xoá bỏ sự kiện GEDCOM này?"
 
@@ -2016,7 +2032,7 @@ msgstr "Bạn có chắc là muốn xoá bỏ sự kiện GEDCOM này?"
 msgid "Are you sure you want to delete this message?  It cannot be retrieved later."
 msgstr "Có chắc là muốn xóa thư này? Sẽ không tìm lại được sau này."
 
-#: modules_v3/stories/module.php:359
+#: modules_v3/stories/module.php:360
 msgid "Are you sure you want to delete this story?"
 msgstr "Bạn có chắc muốn xóa chuyện này?"
 
@@ -2031,6 +2047,10 @@ msgstr "Bạn có chắc muốn xóa chuyện này?"
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Có chắc bạn muốn xóa “%s” không?"
+
+#: modules_v3/lightbox/module.php:203
+msgid "Are you sure you want to remove links to this media object?"
+msgstr ""
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -2162,7 +2182,7 @@ msgctxt "LOCATIVE"
 msgid "August"
 msgstr "Tháng Tám"
 
-#: includes/functions/functions_print.php:1041
+#: includes/functions/functions_print.php:1027
 #: library/WT/Date/Calendar.php:130
 msgctxt "NOMINATIVE"
 msgid "August"
@@ -2764,7 +2784,7 @@ msgstr "Được Ban Phép Lành"
 msgid "Block"
 msgstr "Khối"
 
-#: themes/_administration/header.php:149
+#: themes/_administration/header.php:147
 msgid "Blocks"
 msgstr "Khối"
 
@@ -3319,7 +3339,7 @@ msgid "Changes in the last day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Thay đổi %s ngày gần đây nhât"
 
-#: themes/_administration/header.php:124
+#: themes/_administration/header.php:122
 msgid "Changes log"
 msgstr "Ghi chép thay đổi"
 
@@ -3351,7 +3371,7 @@ msgstr "Biểu đồ"
 msgid "Check access rights on this directory."
 msgstr "Kiểm tra quyền truy cập thư mục này."
 
-#: admin_trees_check.php:34 themes/_administration/header.php:123
+#: admin_trees_check.php:34 themes/_administration/header.php:121
 msgid "Check for errors"
 msgstr "Kiểm tra lỗi"
 
@@ -3594,7 +3614,7 @@ msgid "Civil registrar"
 msgstr "Nhân viên đăng ký dân sự"
 
 #. I18N: The “Data folder” is a configuration setting
-#: admin_site_clean.php:28 themes/_administration/header.php:104
+#: admin_site_clean.php:28 themes/_administration/header.php:102
 msgid "Clean up data folder"
 msgstr "Dọn sạch thư mục dữ kiện"
 
@@ -3659,7 +3679,7 @@ msgid "Clicking the “+” icon will open the GEDFact shared note assistant win
 msgstr "Nhấp biểu tượng \"+\" sẽ mở cửa sổ Trợ giúp Ghi chú chia xẻ GEDFact.<br>Hỗ trợ đặc biệt sẽ có thể thấy tại đây.<br><br>Khi bạn nhấp vào nút  \"Lưu\", ID của ghi chú chia xẻ sẽ được dán vào đây."
 
 #. I18N: The local time on the client/browser
-#: themes/_administration/header.php:86
+#: themes/_administration/header.php:84
 msgid "Client time"
 msgstr ""
 
@@ -3719,8 +3739,8 @@ msgstr "Số cột mỗi trang"
 msgid "Comment"
 msgstr "Phê Bình"
 
-#: admin_users.php:207 help_text.php:1348 login.php:283 login.php:312
-#: login.php:409
+#: admin_users.php:207 help_text.php:1348 login.php:283 login.php:309
+#: login.php:407
 msgid "Comments"
 msgstr "Bình Luận"
 
@@ -3778,7 +3798,7 @@ msgstr "Liên hệ"
 msgid "Configure"
 msgstr "Đặt cấu  hình"
 
-#: admin_users.php:389 edituser.php:152 help_text.php:1289 login.php:404
+#: admin_users.php:389 edituser.php:152 help_text.php:1289 login.php:402
 msgid "Confirm password"
 msgstr "Xác nhận mật khẩu"
 
@@ -3875,7 +3895,7 @@ msgstr "Costa Rica"
 msgid "Cote d’Ivoire"
 msgstr "Cote d'Ivoire"
 
-#: login.php:555
+#: login.php:551
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr "Không kiểm lại được những gì bạn nhập. Vui lòng nhập lại hay liên hệ với quản trị site để tìm thêm thông tin."
 
@@ -3923,7 +3943,7 @@ msgstr "Tạo một cá nhân mới"
 msgid "Create a new media object"
 msgstr "Tạo đối tượng đa phương tiện mới"
 
-#. I18N: An note that is not linked to any other record
+#. I18N: A note that is not linked to any other record
 #: admin_site_other.php:55
 msgid "Create a new note"
 msgstr "Tạo một ghi chú mới"
@@ -4109,11 +4129,11 @@ msgstr "Hiện tại"
 msgid "Custom"
 msgstr "Tùy thích"
 
-#: calendar.php:269 includes/functions/functions_print.php:1014
+#: calendar.php:269 includes/functions/functions_print.php:1000
 msgid "Custom event"
 msgstr "Sự việc riêng rẽ"
 
-#: includes/functions/functions_print.php:1013
+#: includes/functions/functions_print.php:999
 msgid "Custom fact"
 msgstr ""
 
@@ -4160,7 +4180,7 @@ msgstr "dữ liệu"
 msgid "Data folder"
 msgstr "Thư mục dữ kiện"
 
-#: login.php:549
+#: login.php:545
 msgid "Data was not correct, please try again"
 msgstr "Dữ liệu không đúng, xin thử lại"
 
@@ -4350,7 +4370,7 @@ msgid "Date range"
 msgstr "Khoảng thời gian"
 
 #: help_text.php:185
-msgid "Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range."
+msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr "Khoảng ngày tháng dùng để chỉ là một sự kiện, như sinh đã xảy ra vào ngày không biết trong khoảng thòi gian nào đó."
 
 #: admin_users.php:577
@@ -4709,7 +4729,7 @@ msgctxt "LOCATIVE"
 msgid "December"
 msgstr "Tháng Mười Hai"
 
-#: includes/functions/functions_print.php:1045
+#: includes/functions/functions_print.php:1031
 #: library/WT/Date/Calendar.php:134
 msgctxt "NOMINATIVE"
 msgid "December"
@@ -4810,7 +4830,7 @@ msgstr "Bỏ những thư đã chọn"
 msgid "Delete all existing geographic data before importing the file."
 msgstr "Xóa tất cả các số liệu địa lý trước khi nhập tập tin."
 
-#: themes/_administration/header.php:136
+#: themes/_administration/header.php:134
 msgid "Delete inactive users"
 msgstr "Xóa người không hoạt động"
 
@@ -4894,11 +4914,11 @@ msgstr "Mô tả"
 msgid "Description META tag"
 msgstr "Mô tả thẻ META"
 
-#: login.php:399
+#: login.php:397
 msgid "Desired password"
 msgstr "Mật khẩu muốn dùng"
 
-#: login.php:394
+#: login.php:392
 msgid "Desired user name"
 msgstr "Tên người dùng muốn dùng"
 
@@ -5090,6 +5110,7 @@ msgstr "Đừng niêm seal: không thẩm quyền"
 #: addmedia.php:725 admin_trees_config.php:1261 edit_interface.php:2208
 #: help_text.php:1274
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
+#: modules_v3/batch_update/admin_batch_update.php:342
 msgid "Do not update the “last change” record"
 msgstr "Không cập nhật bản ghi \"thay đổi gần đây nhất\""
 
@@ -5286,7 +5307,7 @@ msgstr "Chỉnh sửa nguồn"
 msgid "Edit story"
 msgstr "Sửa chuyện"
 
-#: library/WT/Tree.php:331
+#: library/WT/Tree.php:332
 msgid "Edit this individual and replace their details with your own"
 msgstr "Sửa người này và thay thế chi tiết của họ bằng chi tiết của bạn"
 
@@ -5355,7 +5376,7 @@ msgstr "Địa chỉ email"
 #. I18N: gedcom tag _EMAIL
 #: admin_users.php:378 edituser.php:156 help_text.php:1197
 #: library/WT/Gedcom/Tag.php:182 library/WT/Gedcom/Tag.php:183
-#: library/WT/Gedcom/Tag.php:184 library/WT/Gedcom/Tag.php:700 login.php:389
+#: library/WT/Gedcom/Tag.php:184 library/WT/Gedcom/Tag.php:700 login.php:387
 #: setup.php:408
 msgid "Email address"
 msgstr "Địa chỉ email"
@@ -5522,7 +5543,7 @@ msgstr "Nhập mức phóng đại"
 msgid "Entire record"
 msgstr "Toàn bộ bản ghi"
 
-#: editnews.php:63
+#: editnews.php:68
 msgid "Entry text:"
 msgstr "Nội dung nhập khẩu:"
 
@@ -5653,7 +5674,7 @@ msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s 
 msgstr ""
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:410
+#: login.php:408
 msgid "Explain why you are requesting an account."
 msgstr "Giải thích tại sao bạn yêu cầu một tài khoản."
 
@@ -5768,7 +5789,7 @@ msgstr "Sự kiện 9"
 msgid "Fact icons"
 msgstr "Biểu tượng sự kiện"
 
-#: includes/functions/functions_print.php:1004
+#: includes/functions/functions_print.php:990
 msgid "Fact or event"
 msgstr "Sự kiện hay biến cố"
 
@@ -5788,11 +5809,11 @@ msgstr "Sự kiện cho bản ghi gia đình"
 msgid "Facts for individual records"
 msgstr "Sự kiện cho bản ghi cá nhân"
 
-#: help_text.php:784
+#: admin_trees_config.php:1129 help_text.php:784
 msgid "Facts for new families"
 msgstr "Sự kiện cho gia đình mới"
 
-#: help_text.php:779
+#: admin_trees_config.php:1092 help_text.php:779
 msgid "Facts for new individuals"
 msgstr "Sự kiện cho người mới"
 
@@ -5852,10 +5873,6 @@ msgstr "Gia đình"
 #: admin_trees_config.php:341 help_text.php:520
 msgid "Family ID prefix"
 msgstr "Tiếp đầu ngữ ID gia đình"
-
-#: help_text.php:505
-msgid "Family add facts"
-msgstr "Thêm sự kiện gia đình"
 
 #. I18N: gedcom tag FAMC
 #: library/WT/Gedcom/Tag.php:199
@@ -5917,7 +5934,7 @@ msgstr "Gia đình của %s"
 #: admin_users.php:431 edit_changes.php:182
 #: modules_v3/batch_update/admin_batch_update.php:61
 #: modules_v3/faq/module.php:351 modules_v3/googlemap/module.php:1468
-#: modules_v3/html/module.php:294 modules_v3/stories/module.php:331
+#: modules_v3/html/module.php:294 modules_v3/stories/module.php:332
 msgid "Family tree"
 msgstr "Cây gia đình"
 
@@ -5944,7 +5961,7 @@ msgid "Family tree title"
 msgstr "Tiêu đề cây gia đình"
 
 #: admin.php:198 admin_trees_manage.php:28 search.php:219
-#: themes/_administration/header.php:106 themes/_administration/header.php:108
+#: themes/_administration/header.php:104 themes/_administration/header.php:106
 msgid "Family trees"
 msgstr "Các cây gia đình"
 
@@ -6055,7 +6072,7 @@ msgstr "Bố"
 msgid "Father: %s"
 msgstr "Cha: %s"
 
-#: includes/functions/functions_print.php:669
+#: includes/functions/functions_print.php:658
 msgid "Father’s age"
 msgstr "Tuổi cha"
 
@@ -6101,7 +6118,7 @@ msgctxt "LOCATIVE"
 msgid "February"
 msgstr "Tháng Hai"
 
-#: includes/functions/functions_print.php:1035
+#: includes/functions/functions_print.php:1021
 #: library/WT/Date/Calendar.php:124
 msgctxt "NOMINATIVE"
 msgid "February"
@@ -6185,43 +6202,43 @@ msgstr "File đã đánh dấu %s cần thiết để chương trình chạy đ�
 msgid "Filter"
 msgstr "Lọc"
 
-#: find.php:107 includes/functions/functions_print.php:1103
+#: find.php:107 includes/functions/functions_print.php:1089
 msgid "Find a fact or event"
 msgstr "Tìm một sự kiện"
 
 #: admin_site_merge.php:267 admin_site_merge.php:288 find.php:74
-#: includes/functions/functions_print.php:1069
+#: includes/functions/functions_print.php:1055
 msgid "Find a family"
 msgstr "Tìm một gia đình"
 
-#: find.php:77 includes/functions/functions_print.php:1099
+#: find.php:77 includes/functions/functions_print.php:1085
 msgid "Find a media object"
 msgstr "Tìm một tài liệu đa phương tiện"
 
-#: find.php:86 includes/functions/functions_print.php:1091
+#: find.php:86 includes/functions/functions_print.php:1077
 msgid "Find a note"
 msgstr "Tìm một ghi chú"
 
-#: find.php:80 includes/functions/functions_print.php:1065
+#: find.php:80 includes/functions/functions_print.php:1051
 msgid "Find a place"
 msgstr "Tìm một địa điểm"
 
-#: find.php:83 includes/functions/functions_print.php:1095
+#: find.php:83 includes/functions/functions_print.php:1081
 msgid "Find a repository"
 msgstr "Tìm kho tư liệu"
 
 #: admin_site_merge.php:268 admin_site_merge.php:289 find.php:89
-#: includes/functions/functions_print.php:1087
+#: includes/functions/functions_print.php:1073
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
 msgstr "Tìm một nguồn"
 
-#: find.php:92 includes/functions/functions_print.php:1073
+#: find.php:92 includes/functions/functions_print.php:1059
 msgid "Find a special character"
 msgstr "Tìm ký tự đặc biệt"
 
 #: admin_site_merge.php:266 admin_site_merge.php:287 find.php:71
-#: includes/functions/functions_print.php:1061
+#: includes/functions/functions_print.php:1047
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:32
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:75
 #: modules_v3/GEDFact_assistant/module.php:78
@@ -6328,8 +6345,8 @@ msgstr "Thí dụ như nếu bạn nêu cụ thế một đường dẫn dài 2,
 msgid "For help with genealogy questions contact"
 msgstr "Để được hỗ trợ các câu hỏi về gia phả, xin liên lạc với"
 
-#: includes/functions/functions_print.php:523
-#: includes/functions/functions_print.php:526
+#: includes/functions/functions_print.php:521
+#: includes/functions/functions_print.php:524
 msgid "For more information contact"
 msgstr "Để có thêm chi tiết xin liên lạc với"
 
@@ -6420,7 +6437,7 @@ msgstr "Câu hỏi thường gặp"
 msgid "Fresno, California"
 msgstr "Fresno, California"
 
-#: includes/functions/functions_print.php:1053
+#: includes/functions/functions_print.php:1039
 #: library/WT/Date/Calendar.php:223
 msgid "Fri"
 msgstr "T6"
@@ -6515,8 +6532,7 @@ msgid "GEDCOM files are stored in the %s folder."
 msgstr "Tập tin GEDCOM được chứa ở thư mục %s."
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
-#: admin_trees_config.php:634 admin_trees_download.php:129 help_text.php:535
-#: modules_v3/clippings/module.php:217 modules_v3/clippings/module.php:603
+#: admin_trees_config.php:634 help_text.php:535
 msgid "GEDCOM media path"
 msgstr "Đường dẫn đa phương tiện cho tập tin GEDCOM"
 
@@ -6698,7 +6714,7 @@ msgid "Godson"
 msgstr "Con đỡ đầu"
 
 #. I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps
-#: includes/functions/functions_print.php:872
+#: includes/functions/functions_print.php:858
 #: modules_v3/googlemap/admin_places.php:168
 #: modules_v3/googlemap/module.php:48 modules_v3/googlemap/module.php:197
 #: modules_v3/googlemap/module.php:1440
@@ -6902,17 +6918,17 @@ msgstr "Tên Do Thái"
 msgid "Height"
 msgstr "Chiều cao"
 
-#: login.php:212 login.php:302
+#: login.php:212 login.php:299
 #, php-format
 msgid "Hello %s…"
 msgstr "Chào %s …"
 
-#: login.php:354
+#: login.php:352
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "Chào %s …<br>Cám ơn bạn đã đăng ký"
 
-#: login.php:277 login.php:472
+#: login.php:277 login.php:470
 msgid "Hello administrator…"
 msgstr "Xin chào quản trị…"
 
@@ -7234,7 +7250,7 @@ msgstr "Nếu bạn là quản trị site, phải phải kiểm tra:"
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr "Nếu bạn không thể giải quyết vấn đề, bạn có thể yêu cầu hỗ trợ trên diễn đàn tại <a href=\"http://webtrees.net\">webtrees.net</a>"
 
-#: login.php:313
+#: login.php:310
 msgid "If you didn’t request an account, you can just delete this message."
 msgstr "Nếu bạn không yêu cầu mở tài khoản, bạn chỉ cần xóa bỏ thư này."
 
@@ -7388,8 +7404,8 @@ msgstr "India"
 #: modules_v3/individual_report/module.php:33
 #: modules_v3/individual_report/report.xml:3
 #: modules_v3/individual_report/report.xml:84
-#: modules_v3/stories/module.php:244 modules_v3/stories/module.php:343
-#: modules_v3/stories/module.php:409 pedigree.php:43
+#: modules_v3/stories/module.php:245 modules_v3/stories/module.php:344
+#: modules_v3/stories/module.php:410 pedigree.php:43
 msgid "Individual"
 msgstr "Cá nhân"
 
@@ -7404,10 +7420,6 @@ msgstr "Người 2"
 #: admin_trees_config.php:335 help_text.php:530
 msgid "Individual ID prefix"
 msgstr "Tiếp đầu ngữ ID cá nhân"
-
-#: help_text.php:583
-msgid "Individual add facts"
-msgstr "Thêm sự kiện cá nhân"
 
 #: statistics.php:558
 msgid "Individual distribution"
@@ -7486,7 +7498,7 @@ msgctxt "MALE"
 msgid "Informant"
 msgstr "Người thông tin"
 
-#: login.php:305
+#: login.php:302
 msgid "Information about the request is shown under the link below."
 msgstr "Thông tin về yêu cầu thẩy được ở liên kết bên dưới."
 
@@ -7618,7 +7630,7 @@ msgctxt "LOCATIVE"
 msgid "January"
 msgstr "Tháng Giêng"
 
-#: includes/functions/functions_print.php:1034
+#: includes/functions/functions_print.php:1020
 #: library/WT/Date/Calendar.php:123
 msgctxt "NOMINATIVE"
 msgid "January"
@@ -7638,7 +7650,7 @@ msgid "Johannesburg, South Africa"
 msgstr "Johannesburg, South Africa"
 
 #. I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname.
-#: library/WT/Tree.php:330
+#: library/WT/Tree.php:331
 msgid "John /DOE/"
 msgstr "John /DOE/"
 
@@ -7680,7 +7692,7 @@ msgctxt "LOCATIVE"
 msgid "July"
 msgstr "Tháng Bảy"
 
-#: includes/functions/functions_print.php:1040
+#: includes/functions/functions_print.php:1026
 #: library/WT/Date/Calendar.php:129
 msgctxt "NOMINATIVE"
 msgid "July"
@@ -7754,7 +7766,7 @@ msgctxt "LOCATIVE"
 msgid "June"
 msgstr "Tháng Sáu"
 
-#: includes/functions/functions_print.php:1039
+#: includes/functions/functions_print.php:1025
 #: library/WT/Date/Calendar.php:128
 msgctxt "NOMINATIVE"
 msgid "June"
@@ -7882,7 +7894,7 @@ msgstr "Mã thứ tự LDS trên hộp biểu đồ"
 msgid "LDS spouse sealing"
 msgstr "Ràng buộc LDS của bạn đời"
 
-#: includes/functions/functions_print.php:884
+#: includes/functions/functions_print.php:870
 msgid "LDS temple"
 msgstr "Đền LDS"
 
@@ -8188,7 +8200,7 @@ msgstr "Người ở thuê"
 msgid "Logan, Utah"
 msgstr "Logan, Utah"
 
-#: modules_v3/login_block/module.php:58 themes/webtrees/header.php:63
+#: modules_v3/login_block/module.php:58 themes/webtrees/header.php:64
 msgid "Logged in as "
 msgstr "Đã đăng nhập là "
 
@@ -8213,7 +8225,7 @@ msgstr "URL đăng nhập"
 msgid "Logout"
 msgstr "Thoát"
 
-#: admin_site_logs.php:27 themes/_administration/header.php:100
+#: admin_site_logs.php:27 themes/_administration/header.php:98
 msgid "Logs"
 msgstr "Nhật ký"
 
@@ -8367,7 +8379,7 @@ msgid "Manuscript"
 msgstr "Bản thảo"
 
 #: help_text.php:555
-msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message."
+msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
 msgstr "Nhiều chương trình gia phả tạo ra các GEDCOM với thẻ riêng, và <b>webtrees</b> hiểu hầu hết các thẻ này. Khi có thẻ nào nó không nhận ra, thì tùy chọn này sẽ cho bạn chọn hiển thị hay che các thông báo này."
 
 #. I18N: Help text for the “Sending server name” site configuration setting
@@ -8401,7 +8413,7 @@ msgctxt "LOCATIVE"
 msgid "March"
 msgstr "Tháng Ba"
 
-#: includes/functions/functions_print.php:1036
+#: includes/functions/functions_print.php:1022
 #: library/WT/Date/Calendar.php:125
 msgctxt "NOMINATIVE"
 msgid "March"
@@ -8508,7 +8520,7 @@ msgstr "Ý định kết hôn"
 
 #. I18N: gedcom tag MARL
 #: library/WT/Gedcom/Tag.php:237
-msgid "Marriage licence"
+msgid "Marriage license"
 msgstr "Giấy kết hôn"
 
 #: library/WT/Gedcom/Tag.php:774
@@ -8709,7 +8721,7 @@ msgctxt "LOCATIVE"
 msgid "May"
 msgstr "Tháng Nam"
 
-#: includes/functions/functions_print.php:1038
+#: includes/functions/functions_print.php:1024
 #: library/WT/Date/Calendar.php:127
 msgctxt "NOMINATIVE"
 msgid "May"
@@ -8727,7 +8739,7 @@ msgstr "Medford, Oregon"
 #: admin_media.php:505 admin_media.php:595 admin_trees_config.php:218
 #: includes/functions/functions_print_lists.php:1260 inverselink.php:85
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:87
-#: modules_v3/media/module.php:34 themes/_administration/header.php:139
+#: modules_v3/media/module.php:34 themes/_administration/header.php:137
 msgid "Media"
 msgstr "Đa phương tiện"
 
@@ -8875,7 +8887,7 @@ msgstr "Memphis, Tennessee"
 msgid "Menu"
 msgstr "Menu"
 
-#: themes/_administration/header.php:147
+#: themes/_administration/header.php:145
 msgid "Menus"
 msgstr "Menu"
 
@@ -8890,7 +8902,7 @@ msgstr "Hoà từ số ID:"
 
 #: admin_site_merge.php:32 admin_site_merge.php:78 admin_site_merge.php:146
 #: admin_site_merge.php:243 help_text.php:1160
-#: themes/_administration/header.php:121
+#: themes/_administration/header.php:119
 msgid "Merge records"
 msgstr "Hoà Bản ghi vào cùng nhau"
 
@@ -8990,7 +9002,7 @@ msgid "Min. no. of occurrences to be a “common surname”"
 msgstr "Số lần tối thiểu để xem là \"họ phổ biến\""
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
 msgstr "Phóng to và thu nhỏ tối đa cho Google map. 1 là toàn bộ bản đồ, 15 cho thấy từng nhà. Lưu ý mức 15 chỉ có ở một số khu vực."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9024,7 +9036,7 @@ msgstr "Mô đun"
 msgid "Module administration"
 msgstr "Quản lý mô-đun"
 
-#: themes/_administration/header.php:144
+#: themes/_administration/header.php:142
 msgid "Modules"
 msgstr "Các mô-đun"
 
@@ -9032,7 +9044,7 @@ msgstr "Các mô-đun"
 msgid "Moldova"
 msgstr "Moldovya"
 
-#: includes/functions/functions_print.php:1049
+#: includes/functions/functions_print.php:1035
 #: library/WT/Date/Calendar.php:219
 msgid "Mon"
 msgstr "T2"
@@ -9184,7 +9196,7 @@ msgstr "Mẹ"
 msgid "Mother: %s"
 msgstr "Mẹ: %s"
 
-#: includes/functions/functions_print.php:661
+#: includes/functions/functions_print.php:650
 msgid "Mother’s age"
 msgstr "Tuổi mẹ"
 
@@ -9269,7 +9281,7 @@ msgid "My account"
 msgstr "Tài Khoản của tôi"
 
 #. I18N: Default title for new family trees
-#: library/WT/Tree.php:315
+#: library/WT/Tree.php:316
 msgid "My family tree"
 msgstr "Cây gia đình của tôi"
 
@@ -9280,7 +9292,7 @@ msgstr "Bản ghi của Tôi"
 #. I18N: Name of a module
 #: admin_modules.php:143 admin_users.php:210 index.php:87 index.php:95
 #: library/WT/MenuBar.php:59 library/WT/MenuBar.php:62
-#: modules_v3/user_welcome/module.php:32 themes/_administration/header.php:66
+#: modules_v3/user_welcome/module.php:32 themes/_administration/header.php:64
 msgid "My page"
 msgstr "Trang của tôi"
 
@@ -9471,10 +9483,6 @@ msgstr "New Zealand"
 msgid "New data"
 msgstr "Dữ liệu mới"
 
-#: admin_trees_config.php:1092 admin_trees_config.php:1129
-msgid "New entry facts"
-msgstr "Sự kiện mới nhập"
-
 #. I18N: %s is a server name/URL
 #: login.php:292
 #, php-format
@@ -9482,7 +9490,7 @@ msgid "New registration at %s"
 msgstr "Có đăng ký mới tại %s"
 
 #. I18N: %s is a server name/URL
-#: login.php:492
+#: login.php:490
 #, php-format
 msgid "New user at %s"
 msgstr "Người dùng mới tại %s"
@@ -9609,7 +9617,7 @@ msgstr "Không có phương pháp liên lạc nào"
 msgid "No errors were found."
 msgstr "Không phát hiện lỗi nào."
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1799
 #: includes/functions/functions_print_lists.php:1906
 #, php-format
@@ -9637,7 +9645,7 @@ msgstr "Không có chuyện về người sống cho ngày hôm nay."
 msgid "No events for living individuals exist for tomorrow."
 msgstr "Không có sự kiện nào cho người sống ngày mai."
 
-#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+#. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1806
 #: includes/functions/functions_print_lists.php:1913
 #, php-format
@@ -9788,7 +9796,7 @@ msgstr "Không kết hôn"
 
 #. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:437
-#: includes/functions/functions_print.php:497 library/WT/Gedcom/Tag.php:262
+#: includes/functions/functions_print.php:495 library/WT/Gedcom/Tag.php:262
 #: modules_v3/cemetery_report/report.xml:61
 #: modules_v3/family_group_report/report.xml:479
 #: modules_v3/family_group_report/report.xml:740
@@ -9857,7 +9865,7 @@ msgctxt "LOCATIVE"
 msgid "November"
 msgstr "Tháng Mười Một"
 
-#: includes/functions/functions_print.php:1044
+#: includes/functions/functions_print.php:1030
 #: library/WT/Date/Calendar.php:133
 msgctxt "NOMINATIVE"
 msgid "November"
@@ -9971,7 +9979,7 @@ msgctxt "LOCATIVE"
 msgid "October"
 msgstr "Tháng Mười"
 
-#: includes/functions/functions_print.php:1043
+#: includes/functions/functions_print.php:1029
 #: library/WT/Date/Calendar.php:132
 msgctxt "NOMINATIVE"
 msgid "October"
@@ -10201,7 +10209,7 @@ msgid "PHP failed to write to disk"
 msgstr "PHP không viết vào đĩa được"
 
 #: admin_site_info.php:32 help_text.php:1314
-#: themes/_administration/header.php:102
+#: themes/_administration/header.php:100
 msgid "PHP information"
 msgstr "Thông tin về PHP"
 
@@ -10309,13 +10317,13 @@ msgstr "Cha mẹ"
 msgid "Parents and siblings"
 msgstr "Cha mẹ và anh em"
 
-#: includes/functions/functions_print.php:673
+#: includes/functions/functions_print.php:662
 msgid "Parent’s age"
 msgstr "Tuổi cha mẹ"
 
 #: admin_site_config.php:136 admin_users.php:189 admin_users.php:384
 #: edituser.php:150 help_text.php:729 help_text.php:1284 login.php:151
-#: login.php:215 login.php:446 modules_v3/login_block/module.php:76
+#: login.php:215 login.php:444 modules_v3/login_block/module.php:76
 #: setup.php:400
 msgid "Password"
 msgstr "Mật khẩu"
@@ -10378,9 +10386,9 @@ msgstr "Khối Thay đổi đang chờ duyệt"
 #: modules_v3/change_report/report.xml:49
 #: modules_v3/review_changes/module.php:32
 #: modules_v3/review_changes/module.php:73
-#: themes/_administration/header.php:76 themes/clouds/header.php:121
-#: themes/colors/header.php:95 themes/fab/header.php:75
-#: themes/minimal/header.php:79 themes/xenea/header.php:109
+#: themes/_administration/header.php:74 themes/clouds/header.php:119
+#: themes/colors/header.php:90 themes/fab/header.php:73
+#: themes/minimal/header.php:76 themes/xenea/header.php:107
 msgid "Pending changes"
 msgstr "Những chuyện đang chờ đổi"
 
@@ -10659,7 +10667,7 @@ msgstr ""
 msgid "Play"
 msgstr "Mở"
 
-#: login.php:306
+#: login.php:303
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
 msgstr "Vui lòng nhấp vào liên kết sau đây và điền vào số liệu yêu cầu để xác nhận yêu cầu của bạn và địa chỉ email của bạn."
 
@@ -10924,24 +10932,23 @@ msgstr "Quartidi"
 msgid "Question"
 msgstr "Câu hỏi"
 
-#: admin_trees_config.php:1100 admin_trees_config.php:1137
-#: admin_trees_config.php:1166 admin_trees_config.php:1195
-msgid "Quick facts"
-msgstr "Sự kiện nhanh"
-
 #: help_text.php:510
 msgid "Quick family facts"
 msgstr "Sự kiện gia đình"
 
-#: help_text.php:588
+#: admin_trees_config.php:1137
+msgid "Quick family facts facts"
+msgstr ""
+
+#: admin_trees_config.php:1100 help_text.php:588
 msgid "Quick individual facts"
 msgstr "Sự kiện cá nhân nhanh"
 
-#: help_text.php:794
+#: admin_trees_config.php:1195 help_text.php:794
 msgid "Quick repository facts"
 msgstr "Sự kiện kho lưu trữ nhanh"
 
-#: help_text.php:905
+#: admin_trees_config.php:1166 help_text.php:905
 msgid "Quick source facts"
 msgstr "Sự kiện nguồn nhanh"
 
@@ -10955,7 +10962,7 @@ msgstr "Quintidi"
 msgid "RE: "
 msgstr "VỀ: "
 
-#: admin_site_readme.php:27 themes/_administration/header.php:101
+#: admin_site_readme.php:27 themes/_administration/header.php:99
 msgid "README documentation"
 msgstr "Tài liệu Hãy Đọc Trước"
 
@@ -11090,7 +11097,7 @@ msgid "Re-order media"
 msgstr "Sắp xếp lại file nghe nhìn"
 
 #: admin_users.php:366 admin_users.php:572 edituser.php:135 help_text.php:1343
-#: login.php:281 login.php:384
+#: login.php:281 login.php:382
 msgid "Real name"
 msgstr "Tên thật"
 
@@ -11188,8 +11195,9 @@ msgstr "Ủy viên hộ tịch"
 msgid "Regular expression"
 msgstr "Cụm từ thông thường"
 
+#. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
-msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_blank\">php.net/manual/en/regexp.reference.php</a> for futher details."
+msgid "Regular expressions are an advanced pattern matching technique."
 msgstr ""
 
 #. I18N: Name of a module/report
@@ -11236,7 +11244,7 @@ msgstr "Qua hệ với bố mẹ"
 msgid "Relationship: %s"
 msgstr "Quan hệ: %s"
 
-#: includes/functions/functions_print.php:602
+#: includes/functions/functions_print.php:600
 #: includes/functions/functions_print_lists.php:290 library/WT/MenuBar.php:110
 #: library/WT/MenuBar.php:228 library/WT/MenuBar.php:253 relationship.php:71
 #: relationship.php:86
@@ -11326,7 +11334,7 @@ msgstr "Trả lời"
 msgid "Report"
 msgstr "Báo cáo"
 
-#: library/WT/MenuBar.php:397 themes/_administration/header.php:151
+#: library/WT/MenuBar.php:397 themes/_administration/header.php:149
 msgid "Reports"
 msgstr "Các báo cáo"
 
@@ -11349,10 +11357,6 @@ msgstr "Nơi Tàng Trữ"
 #: admin_trees_config.php:354 help_text.php:804
 msgid "Repository ID prefix"
 msgstr "Tiếp đầu ngữ ID kho lưu trữ"
-
-#: help_text.php:789
-msgid "Repository add facts"
-msgstr "Sự kiện thêm vào kho"
 
 #: find.php:249
 msgid "Repository contains:"
@@ -11394,7 +11398,7 @@ msgid "Research tasks are special events, added to individuals in your family tr
 msgstr "Các tác vụ nghiên cưu là những sự kiện đặc biệt, được thêm vào cho các cá nhân của cây gia đình của bạn, báo là cần có các nghiên cứu thêm. Bạn có thể dùng chúng như là lời nhắc nhở kiểm tra số liệu dựa trên nguồn đáng tin cậy hơn, để tìm kiếm thêm tài liệu hay hình ảnh, để giải quyết các thông tin mâu thuẫn nhau v.v.."
 
 #: modules_v3/todo/help_text.php:36
-msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognise this tag."
+msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
 msgstr "Các tác vụ nghiên cứu được lưu trữ trong thẻ riêng \"_TODO\" của file GEDCOM. Các ứng dụng về gia phả khác có thể không nhận ra thẻ này."
 
 #: includes/functions/functions_print_lists.php:97
@@ -11595,7 +11599,7 @@ msgstr "Sao Paulo, Brazil"
 msgid "Sao Tome and Principe"
 msgstr "Sao Tome and Principe"
 
-#: includes/functions/functions_print.php:1054
+#: includes/functions/functions_print.php:1040
 #: library/WT/Date/Calendar.php:224
 msgid "Sat"
 msgstr "T7"
@@ -11662,11 +11666,11 @@ msgstr "Sealing cancelled (divorce)"
 #: modules_v3/descendancy/module.php:102 modules_v3/descendancy/module.php:131
 #: modules_v3/families/module.php:141 modules_v3/individuals/module.php:141
 #: search.php:157 search.php:260 search.php:262 search.php:264
-#: search_advanced.php:293 themes/clouds/header.php:81
-#: themes/clouds/header.php:82 themes/colors/header.php:125
-#: themes/colors/header.php:126 themes/fab/header.php:97
-#: themes/minimal/header.php:101 themes/webtrees/header.php:81
-#: themes/webtrees/header.php:82 themes/xenea/header.php:79
+#: search_advanced.php:293 themes/clouds/header.php:79
+#: themes/clouds/header.php:80 themes/colors/header.php:120
+#: themes/colors/header.php:121 themes/fab/header.php:95
+#: themes/minimal/header.php:98 themes/webtrees/header.php:82
+#: themes/webtrees/header.php:83 themes/xenea/header.php:77
 msgid "Search"
 msgstr "Truy tìm"
 
@@ -11681,7 +11685,7 @@ msgstr "Tìm và thay thế"
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
 
-#: includes/session.php:544
+#: includes/session.php:531
 msgid "Search engine"
 msgstr "Cơ chế truy tìm"
 
@@ -11721,6 +11725,12 @@ msgstr "Seattle, Washington"
 #: admin_site_config.php:139 help_text.php:764
 msgid "Secure connection"
 msgstr "Kết nối bảo mật"
+
+#. I18N: %s is a URL
+#: modules_v3/batch_update/plugins/search_replace.php:93
+#, php-format
+msgid "See %s for more information."
+msgstr ""
 
 #: includes/functions/functions_edit.php:311 reportengine.php:250
 msgid "Select a date"
@@ -11801,11 +11811,11 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "Người bán"
 
-#: login.php:454 message.php:140 modules_v3/user_messages/module.php:78
+#: login.php:452 message.php:140 modules_v3/user_messages/module.php:78
 msgid "Send"
 msgstr "Gửi"
 
-#: admin_users_bulk.php:32 themes/_administration/header.php:135
+#: admin_users_bulk.php:32 themes/_administration/header.php:133
 msgid "Send broadcast messages"
 msgstr "Gửi quảng bá"
 
@@ -11874,7 +11884,7 @@ msgctxt "LOCATIVE"
 msgid "September"
 msgstr "Tháng Chín"
 
-#: includes/functions/functions_print.php:1042
+#: includes/functions/functions_print.php:1028
 #: library/WT/Date/Calendar.php:131
 msgctxt "NOMINATIVE"
 msgid "September"
@@ -11916,7 +11926,7 @@ msgid "Server name"
 msgstr "Tên máy phục vụ"
 
 #. I18N: The local time on the server
-#: themes/_administration/header.php:83
+#: themes/_administration/header.php:81
 msgid "Server time"
 msgstr ""
 
@@ -11930,15 +11940,15 @@ msgstr "Hết thời gian phiên làm việc"
 msgid "Set link"
 msgstr "Đặt mối liên kết"
 
-#: themes/_administration/header.php:125 themes/_administration/header.php:137
+#: themes/_administration/header.php:123 themes/_administration/header.php:135
 msgid "Set the default blocks"
 msgstr "Đặt khối mặc định"
 
-#: themes/_administration/header.php:125
+#: themes/_administration/header.php:123
 msgid "Set the default blocks for new family trees"
 msgstr "Đặt khối mặc định cho cây gia đình mới"
 
-#: themes/_administration/header.php:137
+#: themes/_administration/header.php:135
 msgid "Set the default blocks for new users"
 msgstr "Đặt khối mặc định cho những người dùng mới"
 
@@ -12490,7 +12500,7 @@ msgid "Show the location of places and events using the Google Maps™ mapping s
 msgstr "Hiển thị vị trí của địa điểm hay sự kiện bằng cách dùng dịch vụ của Google Map."
 
 #: modules_v3/faq/module.php:174 modules_v3/html/module.php:325
-#: modules_v3/stories/module.php:245
+#: modules_v3/stories/module.php:246
 msgid "Show this block for which languages?"
 msgstr "Hiện khối này cho ngôn ngữ nào?"
 
@@ -12554,7 +12564,7 @@ msgid "Sicily"
 msgstr "Sicilya"
 
 #: admin_module_sidebar.php:72 admin_modules.php:124 admin_modules.php:142
-#: themes/_administration/header.php:150
+#: themes/_administration/header.php:148
 msgid "Sidebar"
 msgstr "Thanh bên"
 
@@ -12583,12 +12593,12 @@ msgstr "Singapore"
 msgid "Sister"
 msgstr "Anh (Em) Gái"
 
-#: admin_site_access.php:30 themes/_administration/header.php:103
+#: admin_site_access.php:30 themes/_administration/header.php:101
 msgid "Site access rules"
 msgstr "Qui định truy cập site"
 
 #: admin_site_config.php:30 admin_site_config.php:56
-#: themes/_administration/header.php:99
+#: themes/_administration/header.php:97
 msgid "Site configuration"
 msgstr "Cấu hình của site"
 
@@ -12719,7 +12729,7 @@ msgstr "Con trai của %s"
 msgid "Sort order"
 msgstr "Thứ tự sắp xếp"
 
-#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is a individual’s surname, so may need transliterating into non-latin alphabets.
+#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: includes/functions/functions_print_lists.php:207
 #: library/WT/Controller/Branches.php:153
 #: library/WT/Controller/Branches.php:188
@@ -12759,10 +12769,6 @@ msgstr "Nguồn"
 #: admin_trees_config.php:347 help_text.php:895
 msgid "Source ID prefix"
 msgstr "Tiếp đầu ngữ ID nguồn"
-
-#: help_text.php:900
-msgid "Source add facts"
-msgstr "Sự kiện thêm nguồn"
 
 #: help_text.php:526
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
@@ -12916,7 +12922,7 @@ msgstr "Kế hoạch thống kê"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:252 admin_site_change.php:286
-#: includes/functions/functions_print.php:887 library/WT/Gedcom/Tag.php:310
+#: includes/functions/functions_print.php:873 library/WT/Gedcom/Tag.php:310
 msgid "Status"
 msgstr "Tình trạng"
 
@@ -12953,16 +12959,16 @@ msgid "Store watermarked thumbnails on server?"
 msgstr "Lưu hình nhỏ có hình chìm trên máy chủ?"
 
 #. I18N: Name of a module
-#: modules_v3/stories/module.php:32 modules_v3/stories/module.php:404
+#: modules_v3/stories/module.php:32 modules_v3/stories/module.php:405
 msgid "Stories"
 msgstr "Stories"
 
-#: modules_v3/stories/module.php:238
+#: modules_v3/stories/module.php:239
 msgid "Story"
 msgstr "Chuyện"
 
-#: modules_v3/stories/module.php:235 modules_v3/stories/module.php:342
-#: modules_v3/stories/module.php:408
+#: modules_v3/stories/module.php:236 modules_v3/stories/module.php:343
+#: modules_v3/stories/module.php:409
 msgid "Story title"
 msgstr "Tiêu đề chuyện"
 
@@ -12998,7 +13004,7 @@ msgstr "Sudan"
 msgid "Suffixes"
 msgstr "Hậu tố"
 
-#: includes/functions/functions_print.php:1048
+#: includes/functions/functions_print.php:1034
 #: library/WT/Date/Calendar.php:225
 msgid "Sun"
 msgstr "CN"
@@ -13093,7 +13099,7 @@ msgstr "Thẻ"
 msgid "Table prefix"
 msgstr "Tiếp đầu tố của bảng"
 
-#: themes/_administration/header.php:148
+#: themes/_administration/header.php:146
 msgid "Tabs"
 msgstr "Thẻ"
 
@@ -13231,7 +13237,7 @@ msgstr "Wizard chuyển PGV sang <b>webtrees</b> là một quá trình tự đ�
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "Quản trị tại site webtrees %s đã chấp thuận xin mở tài khoản của bạn. Bạn có thể truy cập bằng cách nhập vào tài khoản sau: %s"
 
-#: login.php:540
+#: login.php:536
 msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
 msgstr "Đã thông báo cho quản trị. Ngay khi quản trị cho phép truy nhập, bạn có thể đăng nhập bằng tên người dùng và mật khẩu của bạn."
 
@@ -13242,7 +13248,7 @@ msgid "The changes to “%s” have been accepted."
 msgstr "Các thay đổi cho \"%s\" được chấp thuận."
 
 #. I18N: %s is the name of an individual, source or other record
-#: action.php:192
+#: action.php:220
 #, php-format
 msgid "The changes to “%s” have been rejected."
 msgstr "Thay đổi sang \"%s\" đã bị từ chối."
@@ -13255,7 +13261,7 @@ msgstr "Xe chứa đoạn chép cho phép bạn rút ra  (\"các đoạn chép\"
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
 msgstr "Tên người dùng quản trị  <b>webtrees</b> phải cùng tên với người dùng quản trị PGV"
 
-#: login.php:506
+#: login.php:501
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
 msgstr "Dữ liệu cho người dùng <b>%s</b> được kiểm tra."
@@ -13354,7 +13360,7 @@ msgid "The following rules are used to decide whether a visitor is a human being
 msgstr "Qui luật sau đây được dùng để quyết định một khách thăm site có phải là con người (cho phép truy cập hoàn toàn), hay là robot truy tìm (truy cập hạn chế) hay là các trình thăm dò không cần (từ chối truy cập)."
 
 #: admin_site_access.php:287
-msgid "The following visitors were not recognised, and were assumed to be search engines."
+msgid "The following visitors were not recognized, and were assumed to be search engines."
 msgstr "Các khách sau đây không thể nhận diện, và được xem như là máy truy tìm."
 
 #: help_text.php:1495
@@ -13476,7 +13482,7 @@ msgstr "Phiên bản %s quá mới"
 msgid "The version of %s is too old"
 msgstr "Phiên bản của %s quá cũ"
 
-#: setup.php:923
+#: setup.php:924
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
 msgstr "Những người phát triển webtrees rất quan tâm biết lỗi này. Nếu bạn liên hệ họ, họ sẽ giúp bạn giải quyết vấn đề."
 
@@ -13668,7 +13674,7 @@ msgstr "Thư mục này được dùng bởi webtrees để chứa tập tin đa
 msgid "This folder will be used to store the media files for this family tree."
 msgstr "Thư mục này phải được dùng để chứa tập tin đa phương tiện cho cây gia đình nay."
 
-#: library/WT/Filter.php:237
+#: library/WT/Filter.php:241
 msgid "This form has expired.  Try again."
 msgstr ""
 
@@ -13700,7 +13706,7 @@ msgstr "Cá nhân này đã được sửa chữa. Bạn phải xem xét các th
 msgid "This individual will be selected by default when viewing charts and reports."
 msgstr "Người này sẽ được chọn mặc định khi xem biểu đồ hay báo cáo."
 
-#: includes/functions/functions_print.php:517 library/WT/Stats.php:823
+#: includes/functions/functions_print.php:515 library/WT/Stats.php:823
 #: library/WT/Stats.php:1360 library/WT/Stats.php:1446
 #: library/WT/Stats.php:1757 library/WT/Stats.php:1856
 #: library/WT/Stats.php:2087 library/WT/Stats.php:2504
@@ -14165,7 +14171,7 @@ msgstr "Việc này sẽ xóa bỏ mọi chi tiết gia phả của <b>%s</b> v�
 msgid "This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
 msgstr "Chức năng này liệt kê mọi địa điểm từ file GEDCOM được chọn. Mặc đình điều này không gồm các địa điểm thỏa mãn hoàn toàn giữa file GEDCOM và bảng GoogleMap"
 
-#: includes/functions/functions_print.php:1052
+#: includes/functions/functions_print.php:1038
 #: library/WT/Date/Calendar.php:222
 msgid "Thu"
 msgstr "T5"
@@ -14284,7 +14290,7 @@ msgstr "Chức danh"
 msgid "Title in Hebrew"
 msgstr "Tiêu đề tiếng Do Thái"
 
-#: editnews.php:61
+#: editnews.php:66
 msgid "Title:"
 msgstr "Đầu Đề"
 
@@ -14520,7 +14526,7 @@ msgstr "Tridi"
 msgid "Trinidad and Tobago"
 msgstr "Trinidad ve Tobago"
 
-#: includes/functions/functions_print.php:1050
+#: includes/functions/functions_print.php:1036
 #: library/WT/Date/Calendar.php:220
 msgid "Tue"
 msgstr "T3"
@@ -14565,7 +14571,7 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "Kiểu dấu đánh dấu địa điểm trong địa điểm thứ cấp"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:390 login.php:405
+#: admin_users.php:390 login.php:403
 msgid "Type the password again."
 msgstr "Đánh lại mật khẩu."
 
@@ -14600,7 +14606,7 @@ msgid "USSR"
 msgstr "SSCB"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
-#: themes/_administration/header.php:89
+#: themes/_administration/header.php:87
 msgid "UTC"
 msgstr ""
 
@@ -14639,24 +14645,19 @@ msgstr "Sửa lại"
 msgid "Undo all changes"
 msgstr "Hủy tất cả thay đổi"
 
-#: admin_trees_config.php:1084 admin_trees_config.php:1121
-#: admin_trees_config.php:1158 admin_trees_config.php:1187
-msgid "Unique facts"
-msgstr "Sự kiện duy nhất"
-
-#: help_text.php:515
+#: admin_trees_config.php:1121 help_text.php:515
 msgid "Unique family facts"
 msgstr "Sự kiện gia đình không trùng lắp"
 
-#: help_text.php:593
+#: admin_trees_config.php:1084 help_text.php:593
 msgid "Unique individual facts"
 msgstr "Sự kiện cá nhân không trùng lắp"
 
-#: help_text.php:799
+#: admin_trees_config.php:1187 help_text.php:799
 msgid "Unique repository facts"
 msgstr "Kho sự kiện không trùng lắp"
 
-#: help_text.php:910
+#: admin_trees_config.php:1158 help_text.php:910
 msgid "Unique source facts"
 msgstr "Sự kiện nguồn không trùng lắp"
 
@@ -14728,10 +14729,6 @@ msgstr "Cập nhật"
 msgid "Update all"
 msgstr "Cập nhật tất cả"
 
-#: modules_v3/batch_update/admin_batch_update.php:342
-msgid "Update the CHAN record"
-msgstr "Cập nhậ bản ghi CHAN"
-
 #: admin_site_merge.php:152
 msgid "Updating linked record"
 msgstr "Đang cập nhật bản ghi liên kết"
@@ -14760,7 +14757,7 @@ msgid "Upload geographic data"
 msgstr "Tải dữ liệu địa lý lên"
 
 #: admin_media_upload.php:32 admin_media_upload.php:177 help_text.php:1419
-#: themes/_administration/header.php:141
+#: themes/_administration/header.php:139
 msgid "Upload media files"
 msgstr "Tải file đa phương tiện lên"
 
@@ -14802,7 +14799,7 @@ msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to
 msgstr "Dùng &laquo;?&raquo; để đọ từng chữ, sử dụng &laquo;*&raquo; để đọ zero hay nhiều ký tự hơn."
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:385 login.php:400
+#: admin_users.php:385 login.php:398
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -14882,7 +14879,7 @@ msgstr "Người dùng không được quản trị xác minh."
 msgid "User options"
 msgstr "Tùy chọn người dùng"
 
-#: login.php:434 login.php:440 login.php:500 login.php:504
+#: login.php:432 login.php:438 login.php:495 login.php:499
 msgid "User verification"
 msgstr "Xác minh thành viên"
 
@@ -14893,7 +14890,7 @@ msgstr "Chuỗi đại diện người dùng"
 
 #: admin_site_config.php:133 admin_users.php:372 admin_users.php:571
 #: edituser.php:133 help_text.php:734 help_text.php:1474 login.php:146
-#: login.php:214 login.php:280 login.php:310 login.php:442
+#: login.php:214 login.php:280 login.php:307 login.php:440
 #: modules_v3/login_block/module.php:71 modules_v3/todo/module.php:97
 msgid "Username"
 msgstr "Tên người dùng"
@@ -14911,7 +14908,7 @@ msgstr "Tên người dùng phân biệt chữ hoa và chữ thường, cho nên
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
 msgstr "Tên người dùng không thể chứa các ký tự sau đây: &lt; &gt; \" %% { } ;"
 
-#: admin.php:122 themes/_administration/header.php:131
+#: admin.php:122 themes/_administration/header.php:129
 msgid "Users"
 msgstr "Người dùng"
 
@@ -14995,7 +14992,7 @@ msgstr "Ventôse"
 msgid "Veracruz, Mexico"
 msgstr "Veracruz, Mexico"
 
-#: login.php:311 login.php:450
+#: login.php:308 login.php:448
 msgid "Verification code:"
 msgstr "Mã xác minh:"
 
@@ -15154,12 +15151,12 @@ msgstr ""
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
 msgstr ""
 
-#: login.php:356
+#: login.php:354
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 msgstr "Chúng tôi sẽ gửi cho bạn một email xác nhận đến địa chỉ <b>%s</b>. Bạn phải xác minh yêu cầu mở tài khoản của bạn bằng cách làm theo các hướng dẫn trong email xác nhận. Nếu bạn không xác nhận yêu cầu mở tài khoản của bạn trong vòng bảy ngày, việc xin mở tại khoản tự động hủy bỏ. Bạn phải cần xin mở lại.<br><br>Sau khi bạn theo các chỉ dẫn trong email xác nhận, quản trị cũng phải chấp thuận yêu cầu của bạn trước khi tài khoản của bạn có thể được dùng.<br><br>Để đăng nhập vào site này, bạn ần phải biết tên người dùng và mật khẩu của bạn."
 
-#: login.php:358
+#: login.php:356
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
 msgstr "Chúng tôi sẽ gửi cho bạn một email xác nhận đến địa chỉ <b>%s</b>. Bạn phải xác minh yêu cầu mở tài khoản của bạn bằng cách làm theo các hướng dẫn trong email xác nhận. Nếu bạn không xác nhận yêu cầu mở tài khoản của bạn trong vòng bảy ngày, việc xin mở tại khoản tự động hủy bỏ. Bạn phải cần xin mở lại.<br><br>Sau khi bạn theo các chỉ dẫn trong email xác nhận, quản trị cũng phải chấp thuận yêu cầu của bạn trước khi tài khoản của bạn có thể được dùng.<br><br>Để đăng nhập vào site này, bạn ần phải biết tên người dùng và mật khẩu của bạn."
@@ -15177,7 +15174,7 @@ msgstr "Website và đặt thẻ META"
 msgid "Website URL"
 msgstr "URL"
 
-#: includes/functions/functions_print.php:1051
+#: includes/functions/functions_print.php:1037
 #: library/WT/Date/Calendar.php:221
 msgid "Wed"
 msgstr "T4"
@@ -15449,7 +15446,7 @@ msgid "Yemen"
 msgstr "Yemen"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
-#: login.php:304
+#: login.php:301
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr "Bạn (hay người nào đó xưng là bạn)  đã yêu cầu mở tài khoản tại %1$s dùng địa chỉ email %2$s."
@@ -15481,7 +15478,7 @@ msgstr "Bạn có thể giới hạn số lượng các Tin tức hiển thị, 
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "Bạn có thể tìm phụ nữ đã kết hôn dễ dàng hơn bằng cách ghi tên kết hôn của họ.<br>Tuy nhiên không phải tất cả phụ nữ đều lấy tên họ theo chồng, cho nên cẩn thận việc đưa nhầm thônng tin vào CSDL."
 
-#: login.php:542
+#: login.php:538
 msgid "You can now login with your user name and password."
 msgstr "Bây giờ bạn có thể đăng nhập với tên truy nhập và mật khẩu của bạn"
 
@@ -15497,11 +15494,11 @@ msgstr "Bạn có thể tính toán tính riêng tư nhanh bằng cách thêm b�
 msgid "You cannot login because your browser does not accept cookies."
 msgstr "Bạn không thể đăng nhập vì trình duyệt của bạn không chấp nhận cookies."
 
-#: downloadbackup.php:34 includes/session.php:546
+#: downloadbackup.php:34 includes/session.php:533
 msgid "You do not have permission to view this page."
 msgstr "Bạn không được xem trang này."
 
-#: login.php:483
+#: login.php:481
 msgid "You do not have to take any action; the user can now login."
 msgstr "Bạn không cần hành không động gì hết; thành viên có thể truy nhập bây giờ."
 
@@ -15509,7 +15506,7 @@ msgstr "Bạn không cần hành không động gì hết; thành viên có th�
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "Bạn nhập cùng số ID. Không thể trộn những bản ghi giống nhau."
 
-#: login.php:538
+#: login.php:534
 msgid "You have confirmed your request to become a registered user."
 msgstr "Bạn đã xác nhận yêu cầu xin trở thành người dùng có đăng ký của bạn."
 
@@ -15594,7 +15591,7 @@ msgstr "Bạn cần đăng nhập lại, dùng tên người dùng và mật kh�
 msgid "You need to set up an administrator account.  This account can control all aspects of this <b>webtrees</b> installation.  Please choose a strong password."
 msgstr "Bạn cần thiết đặt một tài khoản quản trị. Tài khoản này kiểm soát tất cả mọi phương diện của cài đặt <b>webtrees</b> này. Vui lòng chọn một mật khẩu mạnh."
 
-#: login.php:481
+#: login.php:479
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr "Bạn hiện cần phải xem xét chi tiết tài khoản, và đặt tình trạng “chấp thuận” sang “được”."
 
@@ -15637,7 +15634,7 @@ msgstr "Bạn sẽ được báo bằng email khi người dùng tương lai nà
 msgid "You will use this to login to webtrees."
 msgstr "Bạn sẽ dùng nó để đăng nhập vào webtrees."
 
-#: login.php:315
+#: login.php:312
 msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
 msgstr "Bạn sẽ không nhận được email nào từ site này, vì yêu cầu mở tài khoản sẽ bị hủy bỏ sau bảy ngày."
 
@@ -15670,7 +15667,7 @@ msgid "Your name"
 msgstr "Tên của bạn"
 
 #. I18N: %s is a server name/URL
-#: login.php:316
+#: login.php:313
 #, php-format
 msgid "Your registration at %s"
 msgstr "Đăng ký của bạn tại %s"
@@ -15712,16 +15709,6 @@ msgstr "File nén zip"
 msgid "Zoom"
 msgstr "Phóng to"
 
-#: modules_v3/googlemap/admin_places.php:162
-#: modules_v3/googlemap/admin_places.php:582
-#: modules_v3/googlemap/places_edit.php:318
-msgid "Zoom factor"
-msgstr "Độ phóng đại"
-
-#: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
-msgid "Zoom factor of map"
-msgstr "Độ phóng đại bản đồ"
-
 #: modules_v3/googlemap/module.php:1347 timeline.php:300
 msgid "Zoom in"
 msgstr "Phóng to"
@@ -15733,6 +15720,16 @@ msgstr "Thu nhỏ lại"
 #: includes/functions/functions_print.php:127
 msgid "Zoom in/out on this box."
 msgstr "Phóng ra/thu nhỏ cái hộp này."
+
+#: modules_v3/googlemap/admin_places.php:162
+#: modules_v3/googlemap/admin_places.php:582
+#: modules_v3/googlemap/places_edit.php:318
+msgid "Zoom level"
+msgstr "Độ phóng đại"
+
+#: modules_v3/googlemap/help_text.php:31 modules_v3/googlemap/module.php:287
+msgid "Zoom level of map"
+msgstr "Độ phóng đại bản đồ"
 
 #: modules_v3/googlemap/module.php:1348 timeline.php:301
 msgid "Zoom out"
@@ -15805,7 +15802,7 @@ msgstr "sau"
 msgid "after %s"
 msgstr "sau %s"
 
-#: includes/functions/functions_print.php:773
+#: includes/functions/functions_print.php:759
 msgid "after death"
 msgstr "sau khi chết"
 
@@ -15978,7 +15975,7 @@ msgstr "anh rể"
 #: includes/functions/functions.php:939
 msgctxt "spouses's brother"
 msgid "brother-in-law"
-msgstr "anh rể"
+msgstr ""
 
 #: includes/functions/functions.php:948
 msgctxt "wife's brother"
@@ -16013,7 +16010,7 @@ msgstr "anh rể/ chị dâu"
 #: includes/functions/functions.php:947
 msgctxt "spouses's sibling"
 msgid "brother/sister-in-law"
-msgstr "anh/ chị em dâu"
+msgstr ""
 
 #: includes/functions/functions.php:953
 msgctxt "wife's sibling"
@@ -16105,7 +16102,7 @@ msgstr "danh sách gọn"
 
 #. I18N: button label
 #: admin_pgv_to_wt.php:1059 admin_trees_download.php:138
-#: admin_trees_manage.php:169 admin_users.php:548 login.php:176 login.php:417
+#: admin_trees_manage.php:169 admin_users.php:548 login.php:176 login.php:415
 #: modules_v3/login_block/module.php:102 setup.php:180 setup.php:204
 #: setup.php:273 setup.php:358 setup.php:414
 msgid "continue"
@@ -16299,7 +16296,7 @@ msgstr "cha chồng/ cha vợ"
 #: includes/functions/functions.php:942
 msgctxt "spouses's father"
 msgid "father-in-law"
-msgstr "cha vợ / cha chồng"
+msgstr ""
 
 #: includes/functions/functions.php:951
 msgctxt "wife's father"
@@ -18406,7 +18403,7 @@ msgstr "mẹ chồng/ mẹ vợ"
 #: includes/functions/functions.php:943
 msgctxt "spouses's mother"
 msgid "mother-in-law"
-msgstr "má vợ/ má chồng"
+msgstr ""
 
 #: includes/functions/functions.php:952
 msgctxt "wife's mother"
@@ -18416,7 +18413,7 @@ msgstr "mẹ vợ/ mẹ chồng"
 #: includes/functions/functions.php:946
 msgctxt "spouses's parent"
 msgid "mother/father-in-law"
-msgstr "mẹ/ cha chồng hoặc vợ"
+msgstr ""
 
 #: includes/functions/functions.php:877
 msgctxt "brother's son"
@@ -18519,7 +18516,7 @@ msgstr "anh em họ 9 đời"
 #: includes/functions/functions_edit.php:542
 #: includes/functions/functions_print_facts.php:1055
 #: includes/functions/functions_print_lists.php:776 library/WT/Stats.php:3491
-#: modules_v3/batch_update/admin_batch_update.php:344
+#: modules_v3/batch_update/admin_batch_update.php:345
 #: modules_v3/change_report/report.xml:8 modules_v3/charts/module.php:213
 #: modules_v3/family_group_report/report.xml:249
 #: modules_v3/family_group_report/report.xml:420
@@ -18571,7 +18568,7 @@ msgstr "số"
 msgid "of"
 msgstr "của"
 
-#: includes/functions/functions_print.php:771
+#: includes/functions/functions_print.php:757
 msgid "on the date of death"
 msgstr "vào ngày tháng mất"
 
@@ -18681,18 +18678,18 @@ msgstr "từ chối"
 msgid "rejected"
 msgstr "từ chối"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:138
 msgid "religious name"
 msgstr "tên đạo"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:135
 msgctxt "FEMALE"
 msgid "religious name"
 msgstr "tên đạo"
 
-#. I18N: A name taken when entering a religion or a religous order
+#. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:132
 msgctxt "MALE"
 msgid "religious name"
@@ -18726,7 +18723,7 @@ msgstr "robot"
 #: edit_interface.php:1210 edit_interface.php:1308 edit_interface.php:1402
 #: edit_interface.php:1485 edit_interface.php:1679 edit_interface.php:1779
 #: edit_interface.php:1979 edit_interface.php:2142 edit_interface.php:2675
-#: editnews.php:78 edituser.php:176 find.php:484
+#: editnews.php:72 edituser.php:176 find.php:484
 #: includes/functions/functions_edit.php:34
 #: includes/functions/functions_edit.php:48
 #: includes/functions/functions_edit.php:107 index_edit.php:335
@@ -18735,7 +18732,7 @@ msgstr "robot"
 #: modules_v3/googlemap/module.php:626
 #: modules_v3/googlemap/placehierarchy.php:254
 #: modules_v3/googlemap/places_edit.php:339 modules_v3/sitemap/module.php:248
-#: modules_v3/stories/module.php:262
+#: modules_v3/stories/module.php:263
 msgid "save"
 msgstr "lưu"
 
@@ -18948,7 +18945,7 @@ msgstr "anh em họ 7 đời"
 #: admin_trees_config.php:992 admin_trees_config.php:1024
 #: admin_trees_config.php:1045 admin_trees_config.php:1053
 #: admin_trees_config.php:1061 modules_v3/faq/module.php:355
-#: modules_v3/googlemap/module.php:275 modules_v3/stories/module.php:335
+#: modules_v3/googlemap/module.php:275 modules_v3/stories/module.php:336
 msgid "show"
 msgstr "hiện"
 
@@ -18992,7 +18989,7 @@ msgstr "chị dâu"
 #: includes/functions/functions.php:944
 msgctxt "spouses's sister"
 msgid "sister-in-law"
-msgstr "chị dâu/ em dâu"
+msgstr ""
 
 #: includes/functions/functions.php:1139
 msgctxt "wife's brother's wife"
@@ -19162,7 +19159,7 @@ msgstr "con nuôi"
 #: includes/functions/functions.php:940
 msgctxt "spouses's child"
 msgid "step-child"
-msgstr "con nuôi"
+msgstr ""
 
 #: includes/functions/functions.php:949
 msgctxt "wife's child"
@@ -19177,7 +19174,7 @@ msgstr "con gái nuôi"
 #: includes/functions/functions.php:941
 msgctxt "spouses's daughter"
 msgid "step-daughter"
-msgstr "con gái nuôi"
+msgstr ""
 
 #: includes/functions/functions.php:950
 msgctxt "wife's daughter"
@@ -19237,7 +19234,7 @@ msgstr "con trai nuôi"
 #: includes/functions/functions.php:945
 msgctxt "spouses's son"
 msgid "step-son"
-msgstr "con trai nuôi"
+msgstr ""
 
 #: includes/functions/functions.php:955
 msgctxt "wife's son"
@@ -19533,7 +19530,7 @@ msgstr "Địa chỉ hồi đáp cho webtrees"
 msgid "webtrees sends emails with no storage"
 msgstr "webtrees gửi email không lưu trữ"
 
-#: includes/functions/functions_print.php:539
+#: includes/functions/functions_print.php:537
 msgid "webtrees wiki"
 msgstr "wiki của chương trình webtrees"
 
@@ -19558,11 +19555,11 @@ msgstr "năm"
 #: includes/functions/functions_edit.php:146
 #: includes/functions/functions_edit.php:515
 #: includes/functions/functions_edit.php:539
-#: includes/functions/functions_print.php:813
+#: includes/functions/functions_print.php:799
 #: includes/functions/functions_print_facts.php:1052
 #: includes/functions/functions_print_lists.php:357
 #: includes/functions/functions_print_lists.php:778 library/WT/Stats.php:3490
-#: modules_v3/batch_update/admin_batch_update.php:345
+#: modules_v3/batch_update/admin_batch_update.php:344
 #: modules_v3/change_report/report.xml:8 modules_v3/charts/module.php:214
 #: modules_v3/family_group_report/report.xml:246
 #: modules_v3/family_group_report/report.xml:417
@@ -19634,6 +19631,9 @@ msgstr "…"
 #~ msgid "Add child"
 #~ msgstr "Thêm con"
 
+#~ msgid "All facts"
+#~ msgstr "Tất cả sự kiện"
+
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "Cho phép chuyển file GEDCOM"
 
@@ -19703,6 +19703,9 @@ msgstr "…"
 #~ msgid "External objects"
 #~ msgstr "Đối tượng ngoài"
 
+#~ msgid "Family add facts"
+#~ msgstr "Thêm sự kiện gia đình"
+
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Nơi sinh của cha - (theo mẫu Chapman)"
 
@@ -19739,6 +19742,9 @@ msgstr "…"
 #~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
 #~ msgstr "Nếu bạn dùng nhiều file GEDCOM, đặt giá trị này thàng <b>Có</b> cho phép khách thăm website của bạn <u>và </u> người dùng có tùy chọn thay đổi GEDCOMS. Đặt nó ở <b>Không</b> sẽ vô hiệu việc chuyển đổi GEDCOM cho khách thăm <u>và </u>người dùng đăng nhập."
 
+#~ msgid "Individual add facts"
+#~ msgstr "Thêm sự kiện cá nhân"
+
 #~ msgid "Individual information"
 #~ msgstr "Chi tiết cá nhân"
 
@@ -19768,6 +19774,9 @@ msgstr "…"
 
 #~ msgid "Name List"
 #~ msgstr "Danh sách tên"
+
+#~ msgid "New entry facts"
+#~ msgstr "Sự kiện mới nhập"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -19800,6 +19809,9 @@ msgstr "…"
 #~ msgid "Port"
 #~ msgstr "Cổng"
 
+#~ msgid "Quick facts"
+#~ msgstr "Sự kiện nhanh"
+
 #~ msgid "Recommendation:"
 #~ msgstr "Đề nghị là:"
 
@@ -19808,6 +19820,9 @@ msgstr "…"
 
 #~ msgid "Replace record"
 #~ msgstr "Đổi bản ghi"
+
+#~ msgid "Repository add facts"
+#~ msgstr "Sự kiện thêm vào kho"
 
 #~ msgid "SMTP port"
 #~ msgstr "Cổng SMTP"
@@ -19829,6 +19844,9 @@ msgstr "…"
 
 #~ msgid "Show timeline"
 #~ msgstr "Hiển thị trục thời gian"
+
+#~ msgid "Source add facts"
+#~ msgstr "Sự kiện thêm nguồn"
 
 #~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
 #~ msgstr "Nêu cụ thể là email sẽ gửi qua <b>webtrees</b> có chứa lại trong CSDL không. Nếu đặt là <b>Có</b> người dùng sẽ có thể nhận được email của họ khi họ đăng nhập <b>webtrees</b>. Nếu đặt là <b>Không</b> thì email sẽ không được gửi đi."
@@ -19887,6 +19905,12 @@ msgstr "…"
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
 #~ msgstr "Transport Layer Security (TLS) và Secure Sockets Layer (SSL) là giao thức mã hóa dữ liệu Internet.<br><br> TLS 1.0, 1.1 và 1.2 là các phát triển tiêu chuẩn của SSL 3.0. TLS 1.0 và SSL 3.1 là tương đương của nó. Các công việc nghiên cứu thêm cho SSL hiện đang được thực hiện với tên mới, TLS.<br><br> Nếu máy chủ SMTP của bạn yêu cầu giao thức SSL khi đăng nhập, bạn nên chọn tùy chọn <b> SSL </b>. Nếu máy chủ SMTP của bạn yêu cầu giao thức TLS khi đăng nhập, bạn nên chọn tùy chọn <b> TLS </b>."
 
+#~ msgid "Unique facts"
+#~ msgstr "Sự kiện duy nhất"
+
+#~ msgid "Update the CHAN record"
+#~ msgstr "Cập nhậ bản ghi CHAN"
+
 #~ msgid "Upgrade the web-server to PHP %s or higher."
 #~ msgstr "Nâng cấp máy phục vụ lên PHP %s hay cao hơn."
 
@@ -19923,6 +19947,14 @@ msgstr "…"
 #~ msgid "before %d"
 #~ msgstr "trước %d"
 
+#~ msgctxt "spouse's brother"
+#~ msgid "brother-in-law"
+#~ msgstr "anh rể"
+
+#~ msgctxt "spouse's sibling"
+#~ msgid "brother/sister-in-law"
+#~ msgstr "anh/ chị em dâu"
+
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
 #~ msgstr "e."
@@ -19931,11 +19963,39 @@ msgstr "…"
 #~ msgid "f."
 #~ msgstr "f."
 
+#~ msgctxt "spouse's father"
+#~ msgid "father-in-law"
+#~ msgstr "cha vợ / cha chồng"
+
 #~ msgid "from %d"
 #~ msgstr "từ %d"
 
+#~ msgctxt "spouse's mother"
+#~ msgid "mother-in-law"
+#~ msgstr "má vợ/ má chồng"
+
+#~ msgctxt "spouse's parent"
+#~ msgid "mother/father-in-law"
+#~ msgstr "mẹ/ cha chồng hoặc vợ"
+
 #~ msgid "or"
 #~ msgstr "hoặc là"
+
+#~ msgctxt "spouse's sister"
+#~ msgid "sister-in-law"
+#~ msgstr "chị dâu/ em dâu"
+
+#~ msgctxt "spouse's child"
+#~ msgid "step-child"
+#~ msgstr "con nuôi"
+
+#~ msgctxt "spouse's daughter"
+#~ msgid "step-daughter"
+#~ msgstr "con gái nuôi"
+
+#~ msgctxt "spouse's son"
+#~ msgid "step-son"
+#~ msgstr "con trai nuôi"
 
 #~ msgctxt "Abbreviation for telephone number"
 #~ msgid "t."
