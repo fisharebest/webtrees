@@ -29,9 +29,9 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$action     = WT_Filter::post('action',  null, WT_Filter::get('action'));
-$placeid    = WT_Filter::post('placeid', null, WT_Filter::get('placeid'));
-$place_name = WT_Filter::post('place_name');
+$action     = WT_Filter::post('action',     null, WT_Filter::get('action'));
+$placeid    = WT_Filter::post('placeid',    null, WT_Filter::get('placeid'));
+$place_name = WT_Filter::post('place_name', null, WT_Filter::get('place_name'));
 
 $controller=new WT_Controller_Simple();
 $controller
@@ -315,7 +315,7 @@ $api='v3';
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo WT_I18N::translate('Zoom factor'), help_link('PLE_ZOOM','googlemap'); ?></td>
+		<td class="descriptionbox"><?php echo WT_I18N::translate('Zoom level'), help_link('PLE_ZOOM','googlemap'); ?></td>
 		<td class="optionbox" colspan="2">
 			<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor; ?>" size="20" onchange="updateMap();"></td>
 	</tr>

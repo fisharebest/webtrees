@@ -70,31 +70,32 @@ function import_gedcom_file($gedcom_id, $path, $filename) {
 	fclose($fp);
 }
 
-// Process GET actions
-switch (WT_Filter::get('action')) {
-case 'delete':
-	WT_Tree::delete(WT_GED_ID);
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
-	break;
-}
-
 // Process POST actions
 switch (WT_Filter::post('action')) {
-case 'setdefault':
-	WT_Site::preference('DEFAULT_GEDCOM', WT_Filter::post('default_ged'));
+case 'delete':
+	$gedcom_id = WT_Filter::postInteger('gedcom_id');
+	if (WT_Filter::checkCsrf() && $gedcom_id) {
+		WT_Tree::delete($gedcom_id);
+	}
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
 	break;
-case 'new_ged':
+case 'setdefault':
+	if (WT_Filter::checkCsrf()) {
+		WT_Site::preference('DEFAULT_GEDCOM', WT_Filter::post('default_ged'));
+	}
+	break;
+case 'new_tree':
 	$ged_name=basename(WT_Filter::post('ged_name'));
-	if ($ged_name) {
+	if (WT_Filter::checkCsrf() && $ged_name) {
 		WT_Tree::create($ged_name);
 	}
 	break;
 case 'replace_upload':
-	$gedcom_id=WT_Filter::postInteger('gedcom_id');
+	$gedcom_id = WT_Filter::postInteger('gedcom_id');
 	// Make sure the gedcom still exists
-	if (get_gedcom_from_id($gedcom_id)) {
+	if (WT_Filter::checkCsrf() && get_gedcom_from_id($gedcom_id)) {
 		foreach ($_FILES as $FILE) {
-			if ($FILE['error']==0 && is_readable($FILE['tmp_name'])) {
+			if ($FILE['error'] == 0 && is_readable($FILE['tmp_name'])) {
 				import_gedcom_file($gedcom_id, $FILE['tmp_name'], $FILE['name']);
 			}
 		}
@@ -102,10 +103,10 @@ case 'replace_upload':
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?keep_media'.$gedcom_id.'='.WT_Filter::postBool('keep_media'.$gedcom_id));
 	exit;
 case 'replace_import':
-	$gedcom_id=WT_Filter::postInteger('gedcom_id');
+	$gedcom_id = WT_Filter::postInteger('gedcom_id');
 	// Make sure the gedcom still exists
-	if (get_gedcom_from_id($gedcom_id)) {
-		$ged_name=basename(WT_Filter::post('ged_name'));
+	if (WT_Filter::checkCsrf() && get_gedcom_from_id($gedcom_id)) {
+		$ged_name = basename(WT_Filter::post('ged_name'));
 		import_gedcom_file($gedcom_id, WT_DATA_DIR.$ged_name, $ged_name);
 	}
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?keep_media'.$gedcom_id.'='.WT_Filter::postBool('keep_media'.$gedcom_id));
@@ -129,6 +130,7 @@ case 'importform':
 	$previous_gedcom_filename=get_gedcom_setting($gedcom_id, 'gedcom_filename');
 	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', WT_Filter::escapeHtml($previous_gedcom_filename), '\' && \'\' != \'', WT_Filter::escapeHtml($previous_gedcom_filename), '\') return confirm(\'', WT_Filter::escapeHtml(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">';
 	echo '<input type="hidden" name="gedcom_id" value="', $gedcom_id, '">';
+	echo WT_Filter::getCsrf();
 	if (WT_Filter::get('action')=='uploadform') {
 		echo '<input type="hidden" name="action" value="replace_upload">';
 		echo '<input type="file" name="ged_name">';
@@ -168,7 +170,6 @@ case 'importform':
 	echo '</form>';
 	exit;
 }
-
 
 // List the gedcoms available to this user
 foreach (WT_Tree::GetAll() as $tree) {
@@ -224,7 +225,13 @@ foreach (WT_Tree::GetAll() as $tree) {
 			help_link('upload_gedcom'),
 			'</td>',
 			// delete
-			'<td><a href="', WT_SCRIPT_NAME, '?action=delete&amp;ged=', $tree->tree_name_url, '" onclick="return confirm(\''.WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)),'\');">', WT_I18N::translate('Delete'), '</a>',
+			'<td>',
+			'<a href="#" onclick="if (confirm(\''.WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)),'\')) document.delete_form', $tree->tree_id, '.submit(); return false;">', WT_I18N::translate('Delete'), '</a>',
+			'<form name="delete_form', $tree->tree_id ,'" method="post" action="', WT_SCRIPT_NAME ,'">',
+			'<input type="hidden" name="action" value="delete">',
+			'<input type="hidden" name="gedcom_id" value="', $tree->tree_id, '">',
+			WT_Filter::getCsrf(),
+			'</form>',
 			'</td></tr></table></td></tr></table><br>';
 	}
 }
@@ -240,13 +247,15 @@ if (WT_USER_IS_ADMIN) {
 		echo
 			'<td><form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
 			'<input type="hidden" name="action" value="setdefault">',
+			WT_Filter::getCsrf(),
 			select_edit_control('default_ged', WT_Tree::getNameList(), '', WT_Site::preference('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'),
 			'</form></td>';
 	}
 	echo
 		'<td class="button">',
 		'<form name="createform" method="post" action="', WT_SCRIPT_NAME, '">',
-		'<input type="hidden" name="action" value="new_ged">',
+		WT_Filter::getCsrf(),
+		'<input type="hidden" name="action" value="new_tree">',
 		'<input name="ged_name">',
 		' <input type="submit" value="', WT_I18N::translate('save') , '">',
 		'</form>',

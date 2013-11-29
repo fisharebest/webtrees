@@ -428,6 +428,10 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			if (file_exists(WT_Site::preference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
 				require WT_Site::preference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
 				foreach ($histo as $hist) {
+					// Earlier versions of the WIKI encouraged people to use HTML entities,
+					// rather than UTF8 encoding.
+					$hist = html_entity_decode($hist, ENT_QUOTES, 'UTF-8');
+					
 					$fact = new WT_Fact($hist, $person, 'histo');
 					$sdate = $fact->getDate();
 					if ($sdate->isOK() && WT_Date::Compare($birt_date, $sdate)<=0 && WT_Date::Compare($sdate, $deat_date)<=0) {

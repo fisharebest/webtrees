@@ -41,7 +41,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $show_full, $PEDIGREE_FULL_DETAILS, $BROWSERTYPE, $controller;
+		global $ctype, $show_full, $PEDIGREE_FULL_DETAILS, $controller;
 
 		self::updateSchema(); // make sure the favorites table has been created
 
@@ -175,7 +175,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<input type="hidden" name="ged" value="'.WT_GEDCOM.'">';
 			$content .= '<div class="add_fav_ref">';
 			$content .= '<input type="radio" name="fav_category" value="record" checked="checked" onclick="jQuery(\'#gid'.$uniqueID.'\').removeAttr(\'disabled\'); jQuery(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">';
-			$content .= '<label for="gid">'.WT_I18N::translate('Enter an individual, family, or source ID').'</label>';
+			$content .= '<label for="gid'.$uniqueID.'">'.WT_I18N::translate('Enter an individual, family, or source ID').'</label>';
 			$content .= '<input class="pedigree_form" type="text" name="gid" id="gid'.$uniqueID.'" size="5" value="">';
 			$content .= ' '.print_findindi_link('gid'.$uniqueID);
 			$content .= ' '.print_findfamily_link('gid'.$uniqueID);
@@ -227,7 +227,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (WT_Filter::postBool('save')) {
+		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'block',  WT_Filter::postBool('block'));
 			exit;
 		}

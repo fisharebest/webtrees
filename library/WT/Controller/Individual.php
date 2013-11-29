@@ -304,7 +304,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-indi-del');
-			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(strip_tags($this->record->getFullName())))."')) jQuery.post('action.php',{action:'delete-individual',xref:'".$this->record->getXref()."'},function(){location.reload();})");
+			$submenu->addOnclick("return delete_individual('".WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(strip_tags($this->record->getFullName())))."', '".$this->record->getXref()."');");
 			$menu->addSubmenu($submenu);
 		}
 

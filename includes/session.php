@@ -29,14 +29,13 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_WEBTREES',        'webtrees');
-define('WT_VERSION',         '1.5.0');
+define('WT_VERSION',         '1.5.1');
 define('WT_VERSION_RELEASE', 'dev'); // “dev”, “beta”, “rc1”, “”, etc.
 define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
 
 // External URLs
-define('WT_WEBTREES_URL',    'http://webtrees.net/');
+define('WT_WEBTREES_URL',    'http://www.webtrees.net/');
 define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net/');
-define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
 // For example, http://my.cdn.com/webtrees-static-1.3.1/
@@ -57,7 +56,7 @@ define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.datatables-1.9.4.js'
 define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable-1.7.1.js');
 define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom-1.1.2.js');
 define('WT_MODERNIZR_URL',         WT_STATIC_URL.'js/modernizr.custom-2.6.2.js');
-define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees-1.5.0.js');
+define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees-1.5.1.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
@@ -72,7 +71,7 @@ define('WT_DEBUG_LANG', false);
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 25);
+define('WT_SCHEMA_VERSION', 26);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
@@ -128,6 +127,24 @@ $start_time=microtime(true);
 // We want to know about all PHP errors
 error_reporting(E_ALL | E_STRICT);
 
+// PHP5.3 may be using magic-quotes :-(
+if (version_compare(PHP_VERSION, '5.4', '<') && get_magic_quotes_gpc()) {
+	// http://php.net/manual/en/security.magicquotes.disabling.php
+	$process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
+	while (list($key, $val) = each($process)) {
+		foreach ($val as $k => $v) {
+			unset($process[$key][$k]);
+			if (is_array($v)) {
+				$process[$key][stripslashes($k)] = $v;
+				$process[] = &$process[$key][stripslashes($k)];
+			} else {
+				$process[$key][stripslashes($k)] = stripslashes($v);
+			}
+		}
+	}
+	unset($process);
+}
+
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
 set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
@@ -169,6 +186,11 @@ if (!isset($_SERVER['REQUEST_URI']))  {
 	if (isset($_SERVER['QUERY_STRING'])) {
 		$_SERVER['REQUEST_URI'].='?'.$_SERVER['QUERY_STRING'];
 	}
+}
+
+// Some browsers do not send a user-agent string
+if (!isset($_SERVER['HTTP_USER_AGENT'])) {
+	$_SERVER['HTTP_USER_AGENT'] = '';
 }
 
 // Common functions
@@ -248,27 +270,10 @@ if (!ini_get('safe_mode')) {
 	}
 }
 
-// Determine browser type
-if (!isset($_SERVER['HTTP_USER_AGENT'])) {
-	$_SERVER['HTTP_USER_AGENT']='';
-}
-// TODO: Browser sniffing is bad.  We should use capability detection.
-if (stristr($_SERVER['HTTP_USER_AGENT'], 'Opera')) {
-	$BROWSERTYPE = 'opera';
-} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'KHTML')) {
-	$BROWSERTYPE = 'chrome';
-} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'Gecko')) {
-	$BROWSERTYPE = 'mozilla';
-} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
-	$BROWSERTYPE = 'msie';
-} else {
-	$BROWSERTYPE = 'other';
-}
-
 $rule=WT_DB::prepare(
-	"SELECT SQL_CACHE rule FROM `##site_access_rule`".
-	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end".
-	" AND ? LIKE user_agent_pattern".
+	"SELECT SQL_CACHE rule FROM `##site_access_rule`" .
+	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end" .
+	" AND ? LIKE user_agent_pattern" .
 	" ORDER BY ip_address_end-ip_address_start"
 )->execute(array($WT_REQUEST->getClientIp(), $_SERVER['HTTP_USER_AGENT']))->fetchOne();
 

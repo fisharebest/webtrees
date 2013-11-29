@@ -63,7 +63,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 		// These links are used internally to record the sort order.
 		return;
 	default:
-		// Hide unrecognised/custom tags?
+		// Hide unrecognized/custom tags?
 		if ($HIDE_GEDCOM_ERRORS && !WT_Gedcom_Tag::isTag($fact->getTag())) {
 			return;
 		}
@@ -670,7 +670,7 @@ function print_main_sources(WT_Fact $fact, $level) {
 					echo WT_Gedcom_Tag::getLabel($factname, $parent), '</a>';
 					echo '<div class="editfacts">';
 					echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return edit_record('$pid', '$fact_id');\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
-					echo '<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\''.rawurlencode($factrec).'\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
+					echo '<div class="copylink"><a class="copyicon" href="#" onclick="return copy_fact(\'', $pid, '\', \'', $fact_id, '\');" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
 					echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_fact('".WT_I18N::translate('Are you sure you want to delete this fact?')."', '$pid', '$fact_id');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
 				echo '</div>';
 			} else {
@@ -743,34 +743,34 @@ function print_main_sources(WT_Fact $fact, $level) {
  *  getSourceStructure() function.
  */
 function printSourceStructure($textSOUR) {
-	$html='';
+	$html = '';
 
 	if ($textSOUR['PAGE']) {
-		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('PAGE').':</span> <span class="field" dir="auto">'.WT_Filter::expandUrls($textSOUR['PAGE']).'</span></div>';
+		$html .= WT_Gedcom_Tag::getLabelValue('PAGE', WT_Filter::expandUrls($textSOUR['PAGE']));
 	}
 
 	if ($textSOUR['EVEN']) {
-		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('EVEN').': </span><span class="field" dir="auto">'.$textSOUR['EVEN'].'</span></div>';
+		$html .= WT_Gedcom_Tag::getLabelValue('EVEN', WT_Filter::escapeHtml($textSOUR['EVEN']));
 		if ($textSOUR['ROLE']) {
-			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('ROLE').': </span><span class="field" dir="auto">'.$textSOUR['ROLE'].'</span></div>';
+			$html .= WT_Gedcom_Tag::getLabelValue('ROLE', WT_Filter::escapeHtml($textSOUR['ROLE']));
 		}
 	}
 
 	if ($textSOUR['DATE'] || count($textSOUR['TEXT'])) {
 		if ($textSOUR['DATE']) {
-			$date=new WT_Date($textSOUR['DATE']);
-			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('DATA:DATE').':</span> <span class="field">'.$date->Display(false).'</span></div>';
+			$date = new WT_Date($textSOUR['DATE']);
+			$html .= WT_Gedcom_Tag::getLabelValue('DATA:DATE', $date->Display(false));
 		}
 		foreach ($textSOUR['TEXT'] as $text) {
-			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('TEXT').':</span> <span class="field" dir="auto">'.WT_Filter::expandUrls($text).'</span></div>';
+			$html .= WT_Gedcom_Tag::getLabelValue('TEXT', '<span style="white-space: pre-wrap;">' . WT_Filter::expandUrls($text) . '</span>');
 		}
 	}
 
 	if ($textSOUR['QUAY']!='') {
-		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('QUAY').':</span> <span class="field" dir="auto">'.WT_Gedcom_Code_Quay::getValue($textSOUR['QUAY']).'</span></div>';
+		$html .= WT_Gedcom_Tag::getLabelValue('QUAY', WT_Gedcom_Code_Quay::getValue($textSOUR['QUAY']));
 	}
 
-	return $html;
+	return '<div class="indent">' . $html . '</div>';
 }
 
 /**
@@ -865,7 +865,7 @@ function print_main_notes(WT_Fact $fact, $level) {
 				echo '</a>';
 				echo '<div class="editfacts">';
 				echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return edit_record('$pid', '$fact_id');\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
-				echo '<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\''.rawurlencode($factrec).'\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
+				echo '<div class="copylink"><a class="copyicon" href="#" onclick="return copy_fact(\'', $pid, '\', \'', $fact_id, '\');" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
 				echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_fact('".WT_I18N::translate('Are you sure you want to delete this fact?')."', '$pid', '$fact_id');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
 				echo '</div>';
 			}
@@ -902,14 +902,13 @@ function print_main_notes(WT_Fact $fact, $level) {
 		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
 			// Note objects
 			$nid = $nmatch[1];
-			$note=WT_Note::getInstance($nid);
+			$note = WT_Note::getInstance($nid);
 			if ($note) {
-				$text = $note->getNote();
 				// If Census assistant installed, allow it to format the note
-				if ($fact->getTag()=='CENS' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+				if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 					$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
 				} else {
-					$text = WT_Filter::expandUrls($text);
+					$text = WT_Filter::expandUrls($note->getNote());
 				}
 			} else {
 				$text = '<span class="error">' . WT_Filter::escapeHtml($nid) . '</span>';

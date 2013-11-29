@@ -396,15 +396,14 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 
 	$text .= get_cont($nlevel, $nrec);
 
-	// Check if shared note
+	// Check if shared note (we have already checked that it exists)
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ NOTE/', $nrec, $match)) {
 		$note = WT_Note::getInstance($match[1]);
-		// Check if using census assistant
-		if ($note && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+		// If Census assistant installed, allow it to format the note
+		if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 			$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
 		} else {
-			$text = $note->getNote();
-			$text = WT_Filter::expandUrls($text);
+			$text = WT_Filter::expandUrls($note->getNote());
 		}
 	} else {
 		$note = null;
@@ -415,12 +414,21 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		return strip_tags($text);
 	}
 
+	if (strpos($text, "\n") !== false) {
+		list($first_line, $cont_lines) = explode("\n", $text, 2);
+	} else {
+		$first_line = $text;
+		$cont_lines = '';
+	}
 
-	$brpos = strpos($text, '<br>');
 	$data = '<div class="fact_NOTE"><span class="label">';
-	if ($brpos !== false) {
-		if ($EXPAND_NOTES) $plusminus='minus'; else $plusminus='plus';
-		$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-'.$plusminus.'"></i></a> ';
+	if ($cont_lines) {
+		if ($EXPAND_NOTES) {
+			$plusminus='minus';
+		} else {
+			$plusminus='plus';
+		}
+		$data .= '<a href="#" onclick="expand_layer(\'' . $elementID . '\'); return false;"><i id="' . $elementID . '_img" class="icon-' . $plusminus . '"></i></a> ';
 	}
 
 	if ($note) {
@@ -429,26 +437,21 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		$data .= WT_I18N::translate('Note').': </span>';
 	}
 
-	if ($brpos !== false) {
-		$line1 = substr($text, 0, $brpos);
+	if ($cont_lines) {
 		if ($note) {
-			$line1 = '<a href="' . $note->getHtmlUrl() . '">' . $line1 . '</a>';
+			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $first_line . '</a>';
 		}
-		$data .= '<span class="field" dir="auto">' . $line1 . '</span>';
-		$data .= '<div id="' . $elementID . '"';
-		if ($EXPAND_NOTES) {
-			$data .= ' style="display:block"';
-		}
-		$data .= ' class="note_details" dir="auto">';
-		$data .= substr($text, $brpos + 4);
-		$data .= '</div>';
+		$data .= '<span class="field" dir="auto">' . $first_line . '</span>';
+		$data .= '<div id="' . $elementID . '" dir="auto" style="white-space:pre-wrap; display:';
+		$data .= $EXPAND_NOTES ? 'block' : 'none';
+		$data .= '">' . $cont_lines. '</div>';
 	} else {
 		if ($note) {
-			$text = '<a href="' . $note->getHtmlUrl() . '">' . $text . '</a>';
+			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $first_line . '</a>';
 		}
-		$data .= '<span class="field" dir="auto">'.$text. '</span>';
+		$data .= '<span class="field" dir="auto">' . $first_line . '</span>';
 	}
-	$data .= "</div>";
+	$data .= '</div>';
 
 	return $data;
 }
@@ -460,9 +463,6 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 * @param bool $textOnly Don't print the "Note: " introduction
 */
 function print_fact_notes($factrec, $level, $textOnly=false) {
-	global $GEDCOM;
-	$ged_id=get_id_from_gedcom($GEDCOM);
-
 	$data = "";
 	$previous_spos = 0;
 	$nlevel = $level+1;
@@ -476,14 +476,14 @@ function print_fact_notes($factrec, $level, $textOnly=false) {
 		$nrec = substr($factrec, $spos1, $spos2-$spos1);
 		if (!isset($match[$j][1])) $match[$j][1]="";
 		if (!preg_match("/@(.*)@/", $match[$j][1], $nmatch)) {
-			$data .= print_note_record($match[$j][1], $nlevel, $nrec, $textOnly, true);
+			$data .= print_note_record($match[$j][1], $nlevel, $nrec, $textOnly);
 		} else {
 			$note = WT_Note::getInstance($nmatch[1]);
 			if ($note) {
 				if ($note->canShow()) {
 					$noterec = $note->getGedcom();
 					$nt = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
-					$data .= print_note_record(($nt>0)?$n1match[1]:"", 1, $noterec, $textOnly, true);
+					$data .= print_note_record(($nt>0)?$n1match[1]:"", 1, $noterec, $textOnly);
 					if (!$textOnly) {
 						if (strpos($noterec, "1 SOUR")!==false) {
 							require_once WT_ROOT.'includes/functions/functions_print_facts.php';
@@ -630,52 +630,42 @@ function print_asso_rela_record(WT_Fact $event, WT_GedcomRecord $record) {
 *
 * @param string $pid child ID
 */
-function format_parents_age($pid, $birth_date=null) {
-	global $SHOW_PARENTS_AGE;
-
+function format_parents_age(WT_Individual $person, WT_Date $birth_date) {
 	$html='';
-	if ($SHOW_PARENTS_AGE) {
-		$person=WT_Individual::getInstance($pid);
-		$families=$person->getChildFamilies();
-		// Where an indi has multiple birth records, we need to know the
-		// date of it.  For person boxes, etc., use the default birth date.
-		if (is_null($birth_date)) {
-			$birth_date=$person->getBirthDate();
-		}
-		// Multiple sets of parents (e.g. adoption) cause complications, so ignore.
-		if ($birth_date->isOK() && count($families)==1) {
-			$family=current($families);
-			foreach ($family->getSpouses() as $parent) {
-				if ($parent->getBirthDate()->isOK()) {
-					$sex=$parent->getSexImage();
-					$age=WT_Date::getAge($parent->getBirthDate(), $birth_date, 2);
-					$deatdate=$parent->getDeathDate();
-					switch ($parent->getSex()) {
-					case 'F':
-						// Highlight mothers who die in childbirth or shortly afterwards
-						if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()+90) {
-							$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
-						} else {
-							$html.=' <span title="'.WT_I18N::translate('Mother’s age').'">'.$sex.$age.'</span>';
-						}
-						break;
-					case 'M':
-						// Highlight fathers who die before the birth
-						if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()) {
-							$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
-						} else {
-							$html.=' <span title="'.WT_I18N::translate('Father’s age').'">'.$sex.$age.'</span>';
-						}
-						break;
-					default:
-						$html.=' <span title="'.WT_I18N::translate('Parent’s age').'">'.$sex.$age.'</span>';
-						break;
+	$families=$person->getChildFamilies();
+	// Multiple sets of parents (e.g. adoption) cause complications, so ignore.
+	if ($birth_date->isOK() && count($families)==1) {
+		$family=current($families);
+		foreach ($family->getSpouses() as $parent) {
+			if ($parent->getBirthDate()->isOK()) {
+				$sex=$parent->getSexImage();
+				$age=WT_Date::getAge($parent->getBirthDate(), $birth_date, 2);
+				$deatdate=$parent->getDeathDate();
+				switch ($parent->getSex()) {
+				case 'F':
+					// Highlight mothers who die in childbirth or shortly afterwards
+					if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()+90) {
+						$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
+					} else {
+						$html.=' <span title="'.WT_I18N::translate('Mother’s age').'">'.$sex.$age.'</span>';
 					}
+					break;
+				case 'M':
+					// Highlight fathers who die before the birth
+					if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()) {
+						$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
+					} else {
+						$html.=' <span title="'.WT_I18N::translate('Father’s age').'">'.$sex.$age.'</span>';
+					}
+					break;
+				default:
+					$html.=' <span title="'.WT_I18N::translate('Parent’s age').'">'.$sex.$age.'</span>';
+					break;
 				}
 			}
-			if ($html) {
-				$html='<span class="age">'.$html.'</span>';
-			}
+		}
+		if ($html) {
+			$html='<span class="age">'.$html.'</span>';
 		}
 	}
 	return $html;
@@ -688,9 +678,7 @@ function format_parents_age($pid, $birth_date=null) {
 // $anchor option to print a link to calendar
 // $time option to print TIME value
 function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false, $time=false) {
-	global $pid, $SEARCH_SPIDER;
-	global $GEDCOM;
-	$ged_id=get_id_from_gedcom($GEDCOM);
+	global $pid, $SEARCH_SPIDER, $SHOW_PARENTS_AGE;
 
 	$factrec = $event->getGedcom();
 	$html='';
@@ -728,8 +716,8 @@ function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false
 		$fact = $event->getTag();
 		if ($record instanceof WT_Individual) {
 			// age of parents at child birth
-			if ($fact=='BIRT') {
-				$html .= format_parents_age($record->getXref(), $date);
+			if ($fact=='BIRT' && $SHOW_PARENTS_AGE) {
+				$html .= format_parents_age($record, $date);
 			}
 			// age at event
 			else if ($fact!='CHAN' && $fact!='_TODO') {

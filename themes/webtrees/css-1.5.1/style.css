@@ -264,7 +264,6 @@ html[dir=rtl] .header_search {float:left;}
 .new { outline: solid blue 1px; }
 .old { outline: solid red  1px; }
 
-.note_details {display:none;}
 a.showit {position:relative;z-index:24;text-decoration:none;}
 a.showit:hover {z-index:25;background-color:#ffff9b;cursor:crosshair;}
 a.showit > span {display:none;}
@@ -720,7 +719,6 @@ html[dir=rtl].field .editlink, html[dir=rtl].field .deletelink {float:left;}
 #dates {float:right;}
 dd .editlink, dd .deletelink {float:right;}
 #indi_note .fact_NOTE {float:left;margin:0 5px 0 0;}
-#indi_note .note_details {font-size:100%;}
 #indi_note .fact_SOUR {margin:3px 0;}
 #indi_note .fact_SOUR a {font-size:100%;}
 #indi_note .fact_NOTE,
@@ -1141,7 +1139,13 @@ html[dir=rtl] #cboxCurrent {right:auto;left:0;}
 html[dir=rtl] #cboxClose {right:auto;left:0;}
 html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
 
-/* Stories */
+/* Census assistant module */
+table.table-census-assistant th {
+	font-weight: bold;
+	text-align:  left;
+}
+
+/* Stories module */
 .story_title {
 	padding-top: 12px;
 	height:      32px;

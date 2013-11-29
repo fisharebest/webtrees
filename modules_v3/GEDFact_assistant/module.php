@@ -267,7 +267,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			'YrsM'       => 'Years Married, or Y if married in Census Year',
 		);
 
-		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.*)((?:\n.*)*)\n.end_formatted_area\.\n(.*(?:\n.*)*)/', $note->getNote(), $match)) {
+		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.*)((?:\n.*)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
 			// This looks like a census-assistant shared note
 			$title     = WT_Filter::escapeHtml($match[1]);
 			$preamble  = WT_Filter::escapeHtml($match[2]);
@@ -293,21 +293,14 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				$tbody .= '</tr>';
 			}
 
-			// TODO: why doesn't this work?  Why do we need to add the javascript inline?
-			//$controller->addInlineJavascript(
-			//	'jQuery("head").append(\'<link rel="stylesheet" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/css/cens_style.css" type="text/css">\');'
-			//);
-
 			return
-				'<script>jQuery("head").append(\'<link rel="stylesheet" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/css/cens_style.css" type="text/css">\');</script>' .
-				'<span class="note1">' . $title . '</span>' .
-				'<br>' . // Needed to allow the first line to be converted to a link
-				'<span class="note1">' . $preamble . '</span>' .
-				'<table class="note2">' .
+				$title . "\n" . // The newline allows the framework to expand the details and turn the first line into a link
+				'<p>' . $preamble . '</p>' .
+				'<table class="table-census-assistant">' .
 				'<thead>' .  $thead .  '</thead>' .
 				'<tbody>' .  $tbody .  '</tbody>' .
 				'</table>' .
-				'<span class="note1">' . $postamble . '</span>';
+				'<p>' . $postamble . '</p>';
 		} else {
 			// Not a census-assistant shared note - apply default formatting
 			return WT_Filter::expandUrls($note->getNote());

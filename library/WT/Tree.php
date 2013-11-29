@@ -76,6 +76,7 @@ class WT_Tree {
 		} else {
 			// If parameter two is specified, then SET the setting
 			if ($this->preference($setting_name)!=$setting_value) {
+				$this->preference[$setting_name]=$setting_value;
 				// Audit log of changes
 				AddToLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
 			}

@@ -234,7 +234,7 @@ class WT_Gedcom_Tag {
 		case 'MARB:DATE': return WT_I18N::translate('Date of marriage banns');
 		case 'MARB:PLAC': return WT_I18N::translate('Place of marriage banns');
 		case 'MARC': return /* I18N: gedcom tag MARC */ WT_I18N::translate('Marriage contract');
-		case 'MARL': return /* I18N: gedcom tag MARL */ WT_I18N::translate('Marriage licence');
+		case 'MARL': return /* I18N: gedcom tag MARL */ WT_I18N::translate('Marriage license');
 		case 'MARR': return /* I18N: gedcom tag MARR */ WT_I18N::translate('Marriage');
 		case 'MARR:DATE': return WT_I18N::translate('Date of marriage');
 		case 'MARR:PLAC': return WT_I18N::translate('Place of marriage');

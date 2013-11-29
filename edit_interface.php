@@ -1589,7 +1589,7 @@ case 'paste':
 		->setPageTitle(WT_I18N::translate('Add from clipboard'))
 		->pageHeader();
 
-	$record->createFact($WT_SESSION->clipboard[$fact]['factrec']);
+	$record->createFact($WT_SESSION->clipboard[$fact]['factrec'], true);
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
 
@@ -1719,8 +1719,8 @@ case 'reorder_media_update':
 // Change the order of children within a family record
 ////////////////////////////////////////////////////////////////////////////////
 case 'reorder_children':
-	$xref   = WT_Filter::get('xref', WT_REGEX_XREF);
-	$option = WT_Filter::get('option');
+	$xref   = WT_Filter::post('xref', WT_REGEX_XREF, WT_Filter::get('xref', WT_REGEX_XREF));
+	$option = WT_Filter::post('option');
 
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
@@ -2103,8 +2103,8 @@ case 'changefamily_update':
 // Change the order of FAMS records within an INDI record
 ////////////////////////////////////////////////////////////////////////////////
 case 'reorder_fams':
-	$xref   = WT_Filter::get('xref', WT_REGEX_XREF);
-	$option = WT_Filter::get('option');
+	$xref   = WT_Filter::post('xref', WT_REGEX_XREF, WT_Filter::get('xref', WT_REGEX_XREF));
+	$option = WT_Filter::post('option');
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -2217,7 +2217,7 @@ function keep_chan(WT_GedcomRecord $record=null) {
 // prints a form to add an individual or edit an individual’s name
 function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $family=null, WT_Fact $name_fact=null, $famtag='CHIL', $sextag='U') {
 	global $WORD_WRAPPED_NOTES;
-	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept;
+	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $SHOW_GEDCOM_RECORD;
 	global $bdm, $STANDARD_NAME_FACTS, $REVERSED_NAME_FACTS, $ADVANCED_NAME_FACTS, $ADVANCED_PLAC_FACTS;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $NO_UPDATE_CHAN, $controller;
 

@@ -114,11 +114,8 @@ a:hover,
 a:active {
 	text-decoration: underline;
 }
-:focus {
-	outline-style: none;
-}
 
-img {
+a.gallery img {
 	border: 0;
 	border-radius: 4px;
 	margin: 4px;
@@ -956,10 +953,6 @@ html[dir=rtl] #ancestry_chart li {
 /* Message box */
 .messagebox {
 	background-color: #bce;
-}
-
-.note_details {
-	display: none;
 }
 
 a.showit {
@@ -3265,12 +3258,13 @@ a.icon-uarrow:hover {
 	text-align: center;
 }
 #save-cancel {
-	position: fixed;
-	bottom: 0;
-	border-radius: 4px;
-	width: 96.5%;
-	border: solid #999 1px;
-	margin: 0;
+	background-color: #eee;
+	border-radius:    4px;
+	border:           solid #999 1px;
+	bottom:           0;
+	margin:           0;
+	position:         fixed;
+	width:            96.5%;
 }
 #save-cancel input {
 	padding: 2px 8px;
@@ -3467,7 +3461,13 @@ html[dir=rtl] #cboxSlideshow {
 	left: 0;
 }
 
-/* Stories tab */
+/* Census assistant module */
+table.table-census-assistant th {
+	font-weight: bold;
+	text-align:  left;
+}
+
+/* Stories module */
 .story_title {
 	padding-top: 12px;
 	height:      32px;

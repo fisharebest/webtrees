@@ -1355,10 +1355,6 @@ background:#dfeeff;
 .new { outline: solid blue 1px; }
 .old { outline: solid red  1px; }
 
-.note_details {
-display:none;
-}
-
 a.showit {
 position:relative;
 z-index:24;
@@ -1655,6 +1651,8 @@ html[dir=rtl] .theme_form li ul li  {float:right;}
 
 #branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls  {margin:0 auto;}
 #medialist-page .list_table_controls  {width:100%;}
+#branches-page ol {margin-left: 40px;font-size:14px;}
+html[dir=rtl] #branches-page ol {margin-right: 40px;}
 .list_table_controls td {min-width:40px;padding:1px;text-align:center;}
 
 #branches-page p {
@@ -1994,7 +1992,6 @@ width:98%;
 
 #indi_header a {
 color:#333377;
-font-size:0.75em;
 font-weight:400;
 }
 
@@ -2076,7 +2073,7 @@ margin:0 5px 0 0;
 margin:3px 0;
 }
 
-#indi_note .note_details,#indi_note .fact_SOUR a {
+#indi_note .fact_SOUR a {
 font-size:100%;
 }
 
@@ -3067,7 +3064,13 @@ html[dir=rtl] #cboxCurrent {right:auto;left:0}
 html[dir=rtl] #cboxClose {right:auto;left:0}
 html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
 
-/* Stories tab */
+/* Census assistant module */
+table.table-census-assistant th {
+	font-weight: bold;
+	text-align:  left;
+}
+
+/* Stories module */
 .story_title {
 	padding-top: 12px;
 	height:      32px;

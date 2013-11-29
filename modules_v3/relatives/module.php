@@ -129,48 +129,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<?php
 		}
 
-		///// MARR /////
-		$found = false;
-		$prev = new WT_Date('');
-		foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
-			$found |= !$fact->isOld();
-			if ($fact->isNew()) {
-				$class = 'facts_label new';
-			} elseif ($fact->isOld()) {
-				$class = 'facts_label old';
-			} else {
-				$class = 'facts_label';
-			}
-			?>
-			<tr>
-				<td class="facts_label">
-					&nbsp;
-				</td>
-				<td class="facts_value">
-					<?php echo WT_Gedcom_Tag::getLabelValue($fact->getTag(), $fact->getDate()->Display(false) . ' — ' . $fact->getPlace()->getFullName()); ?>
-				</td>
-			</tr>
-			<?php
-			if (!$prev->isOK() && $fact->getDate()->isOK()) {
-				$prev = $fact->getDate();
-			}
-		}
-		if (!$found && $family->canShow() && $family->canEdit()) {
-			// Add a new marriage
-			?>
-			<tr>
-				<td class="facts_label">
-					&nbsp;
-				</td>
-				<td class="facts_value">
-					<a href="#" onclick="return add_new_record('<?php echo $family->getXref(); ?>', 'MARR');">
-						<?php echo WT_I18N::translate('Add marriage details'); ?>
-					</a>
-				</td>
-			</tr>
-			<?php
-		}
-
 		///// WIFE /////
 		$found = false;
 		foreach ($family->getFacts('WIFE', $access_level) as $fact) {
@@ -201,6 +159,48 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_label"><?php echo WT_I18N::translate('Add wife'); ?></td>
 				<td class="facts_value"><a href="#" onclick="return add_spouse_to_family('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
+			</tr>
+			<?php
+		}
+
+		///// MARR /////
+		$found = false;
+		$prev = new WT_Date('');
+		foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
+			$found |= !$fact->isOld();
+			if ($fact->isNew()) {
+				$class = ' new';
+			} elseif ($fact->isOld()) {
+				$class = ' old';
+			} else {
+				$class = '';
+			}
+			?>
+			<tr>
+				<td class="facts_label">
+					&nbsp;
+				</td>
+				<td class="facts_value<?php echo $class; ?>">
+					<?php echo WT_Gedcom_Tag::getLabelValue($fact->getTag(), $fact->getDate()->Display(false) . ' — ' . $fact->getPlace()->getFullName()); ?>
+				</td>
+			</tr>
+			<?php
+			if (!$prev->isOK() && $fact->getDate()->isOK()) {
+				$prev = $fact->getDate();
+			}
+		}
+		if (!$found && $family->canShow() && $family->canEdit()) {
+			// Add a new marriage
+			?>
+			<tr>
+				<td class="facts_label">
+					&nbsp;
+				</td>
+				<td class="facts_value">
+					<a href="#" onclick="return add_new_record('<?php echo $family->getXref(); ?>', 'MARR');">
+						<?php echo WT_I18N::translate('Add marriage details'); ?>
+					</a>
+				</td>
 			</tr>
 			<?php
 		}

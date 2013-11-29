@@ -204,7 +204,7 @@ function format_indi_table($datalist, $option='') {
 	$html .= '<th>'. WT_Gedcom_Tag::getLabel('SURN'). '</th>';
 	$html .= '<th>GIVN</th>';
 	$html .= '<th>SURN</th>';
-	$html .= '<th>'. /* I18N: Abbreviation for “Sosa-Stradonitz number”.  This is a individual’s surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'). '</th>';
+	$html .= '<th>'. /* I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'). '</th>';
 	$html .= '<th>SOSA</th>';
 	$html .= '<th>'. WT_Gedcom_Tag::getLabel('BIRT'). '</th>';
 	$html .= '<th>SORT_BIRT</th>';
@@ -248,7 +248,14 @@ function format_indi_table($datalist, $option='') {
 		//-- place filtering
 		if ($option=='BIRT_PLAC' && strstr($person->getBirthPlace(), $filter)===false) continue;
 		if ($option=='DEAT_PLAC' && strstr($person->getDeathPlace(), $filter)===false) continue;
-		$html .= '<tr>';
+		if ($person->isNew()) {
+			$class = ' class="new"';
+		} elseif ($person->isOld()) {
+			$class = ' class="old"';
+		} else {
+			$class = '';
+		}
+		$html .= '<tr' . $class . '>';
 		//-- Indi name(s)
 		$html .= '<td colspan="2">';
 		foreach ($person->getAllNames() as $num=>$name) {
@@ -654,7 +661,14 @@ function format_fam_table($datalist, $option='') {
 		}
 		//-- place filtering
 		if ($option=='MARR_PLAC' && strstr($family->getMarriagePlace(), $filter)===false) continue;
-		$html .= '<tr>';
+		if ($family->isNew()) {
+			$class = ' class="new"';
+		} elseif ($family->isOld()) {
+			$class = ' class="old"';
+		} else {
+			$class = '';
+		}
+		$html .= '<tr' . $class . '>';
 		//-- Husband name(s)
 		$html .= '<td colspan="2">';
 		foreach ($husb->getAllNames() as $num=>$name) {
@@ -928,7 +942,14 @@ function format_sour_table($datalist) {
 		if (!$source->canShow()) {
 			continue;
 		}
-		$html .= '<tr>';
+		if ($source->isNew()) {
+			$class = ' class="new"';
+		} elseif ($source->isOld()) {
+			$class = ' class="old"';
+		} else {
+			$class = '';
+		}
+		$html .= '<tr' . $class . '>';
 		//-- Source name(s)
 		$html .= '<td>';
 		foreach ($source->getAllNames() as $n=>$name) {
@@ -978,7 +999,7 @@ function format_sour_table($datalist) {
 		}
 		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-source\',xref:\''. $source->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="return delete_source(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName())) . "', '" . $source->getXref() . '\');"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
@@ -1050,7 +1071,14 @@ function format_note_table($datalist) {
 		if (!$note->canShow()) {
 			continue;
 		}
-		$html .= '<tr>';
+		if ($note->isNew()) {
+			$class = ' class="new"';
+		} elseif ($note->isOld()) {
+			$class = ' class="old"';
+		} else {
+			$class = '';
+		}
+		$html .= '<tr' . $class . '>';
 		//-- Shared Note name
 		$html .= '<td><a class="name2" href="'. $note->getHtmlUrl(). '">'. highlight_search_hits($note->getFullName()). '</a></td>';
 		//-- Linked INDIs
@@ -1079,7 +1107,7 @@ function format_note_table($datalist) {
 		}
 		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-note\',xref:\''. $note->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="return delete_note(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName())) . "', '" . $note->getXref() . '\');"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
 			$html .= '<td></td>';
 		}
@@ -1140,7 +1168,14 @@ function format_repo_table($repos) {
 		if (!$repo->canShow()) {
 			continue;
 		}
-		$html .= '<tr>';
+		if ($repo->isNew()) {
+			$class = ' class="new"';
+		} elseif ($repo->isOld()) {
+			$class = ' class="old"';
+		} else {
+			$class = '';
+		}
+		$html .= '<tr' . $class . '>';
 		//-- Repository name(s)
 		$html .= '<td>';
 		foreach ($repo->getAllNames() as $n=>$name) {
@@ -1171,7 +1206,7 @@ function format_repo_table($repos) {
 		}
 		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-repository\',xref:\''. $repo->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="return delete_repository(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName())) . "', '" . $repo->getXref() . '\');"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
@@ -1239,7 +1274,14 @@ function format_media_table($datalist) {
 	foreach ($datalist as $media) {
 		if ($media->canShow()) {
 			$name = $media->getFullName();
-			$html .= "<tr>";
+			if ($media->isNew()) {
+				$class = ' class="new"';
+			} elseif ($media->isOld()) {
+				$class = ' class="old"';
+			} else {
+				$class = '';
+			}
+			$html .= '<tr' . $class . '>';
 			//-- Object thumbnail
 			$html .= '<td>'. $media->displayImage(). '</td>';
 			//-- Object name(s)
@@ -1753,14 +1795,14 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 				if ($endjd==$startjd) {
 					$summary = WT_I18N::translate('No events exist for tomorrow.');
 				} else {
-					// I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+					// I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 					$summary = WT_I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd-$startjd+1, WT_I18N::number($endjd-$startjd+1));
 				}
 			} else {
 				if ($endjd==$startjd) {
 					$summary = WT_I18N::translate('No events for living individuals exist for tomorrow.');
 				} else {
-					// I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+					// I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 					$summary = WT_I18N::plural('No events for living people exist for the next %s day.', 'No events for living people exist for the next %s days.', $endjd-$startjd+1, WT_I18N::number($endjd-$startjd+1));
 				}
 			}
@@ -1860,14 +1902,14 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 				if ($endjd==$startjd) {
 					$summary = WT_I18N::translate('No events exist for tomorrow.');
 				} else {
-					// I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+					// I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 					$summary = WT_I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd-$startjd+1, WT_I18N::number($endjd-$startjd+1));
 				}
 			} else {
 				if ($endjd==$startjd) {
 					$summary = WT_I18N::translate('No events for living individuals exist for tomorrow.');
 				} else {
-					// I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
+					// I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 					$summary = WT_I18N::plural('No events for living people exist for the next %s day.', 'No events for living people exist for the next %s days.', $endjd-$startjd+1, WT_I18N::number($endjd-$startjd+1));
 				}
 			}

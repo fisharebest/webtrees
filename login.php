@@ -50,9 +50,10 @@ $password        = WT_Filter::post('password');
 $timediff        = WT_Filter::postInteger('timediff', -43200, 50400, 0); // Same range as date('Z')
 
 // These parameters may come from the URL which is emailed to users.
-if (empty($action))        $action        = WT_Filter::get('action');
-if (empty($user_name))     $user_name     = WT_Filter::get('user_name', WT_REGEX_USERNAME);
-if (empty($user_hashcode)) $user_hashcode = WT_Filter::get('user_hashcode');
+if (!$action)        $action        = WT_Filter::get('action');
+if (!$user_name)     $user_name     = WT_Filter::get('user_name', WT_REGEX_USERNAME);
+if (!$user_hashcode) $user_hashcode = WT_Filter::get('user_hashcode');
+if (!$url)           $url           = WT_Filter::getUrl('url');
 
 // This parameter may come from generated login links
 if (!$url) {
@@ -289,9 +290,6 @@ case 'register':
 			$mail1_body .= WT_Mail::auditFooter();
 
 			$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title);
-			$mail1_to      = getUserEmail($webmaster_user_id);
-			$mail1_from    = getUserFullName($webmaster_user_id);
-			$mail1_method  = get_user_setting($webmaster_user_id, 'contact_method');
 			WT_I18N::init(WT_LOCALE);
 
 			echo '<div id="login-register-page">';
@@ -336,15 +334,16 @@ case 'register':
 				// From:
 				$WT_TREE,
 				// To:
-				$mail1_to,
-				$mail1_to,
+				getUserEmail($webmaster_user_id),
+				getUserFullName($webmaster_user_id),
 				// Reply-To:
-				$mail1_from,
-				$mail1_from,
+				$WEBTREES_EMAIL,
+				$WEBTREES_EMAIL,
 				// Message
 				$mail1_subject,
 				$mail1_body
 			);
+			$mail1_method = get_user_setting($webmaster_user_id, 'contact_method');
 			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 					->execute(array($user_email, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, WT_Filter::unescapeHtml($mail1_body)));
@@ -489,9 +488,6 @@ case 'verify_hash':
 		WT_Mail::auditFooter();
 
 	$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title);
-	$mail1_to      = getUserEmail($webmaster_user_id);
-	$mail1_from    = getUserFullName($webmaster_user_id);
-	$mail1_method  = get_user_setting($webmaster_user_id, 'CONTACT_METHOD');
 
 	// Change to the new user’s language
 	WT_I18N::init(get_user_setting($user_id, 'language'));
@@ -511,15 +507,16 @@ case 'verify_hash':
 				// From:
 				$WT_TREE,
 				// To:
-				$mail1_to,
-				$mail1_to,
+				getUserEmail($webmaster_user_id),
+				getUserFullName($webmaster_user_id),
 				// Reply-To:
-				$mail1_from,
-				$mail1_from,
+				$WEBTREES_EMAIL,
+				$WEBTREES_EMAIL,
 				// Message
 				$mail1_subject,
 				$mail1_body
 			);
+			$mail1_method  = get_user_setting($webmaster_user_id, 'CONTACT_METHOD');
 			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 					->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, WT_Filter::unescapeHtml($mail1_body)));

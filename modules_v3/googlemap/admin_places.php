@@ -159,7 +159,7 @@ if ($action=='ExportFile' && WT_USER_IS_ADMIN) {
 	if ($maxLevel>6) echo '"', WT_I18N::translate('Place'), '";';
 	if ($maxLevel>7) echo '"', WT_I18N::translate('Place'), '";';
 	echo '"', WT_I18N::translate('Longitude'), '";"', WT_I18N::translate('Latitude'), '";';
-	echo '"', WT_I18N::translate('Zoom factor'), '";"', WT_I18N::translate('Icon'), '";', WT_EOL;
+	echo '"', WT_I18N::translate('Zoom level'), '";"', WT_I18N::translate('Icon'), '";', WT_EOL;
 	outputLevel($parent);
 	exit;
 }
@@ -579,7 +579,7 @@ echo '<table class="gm_plac_edit"><tr>';
 echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
 echo '<th>', WT_Gedcom_Tag::getLabel('LATI'), '</th>';
 echo '<th>', WT_Gedcom_Tag::getLabel('LONG'), '</th>';
-echo '<th>', WT_I18N::translate('Zoom factor'), '</th>';
+echo '<th>', WT_I18N::translate('Zoom level'), '</th>';
 echo '<th>', WT_I18N::translate('Icon'), '</th>';
 echo '<th>';
 echo WT_I18N::translate('Edit'), '</th><th>', WT_I18N::translate('Delete'), '</th></tr>';

@@ -126,8 +126,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	// Print the page header, using the theme
 	public function pageHeader() {
 		// Import global variables into the local scope, for the theme's header.php
-		global $BROWSERTYPE, $SEARCH_SPIDER, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION;
-		global $headerfile, $view;
+		global $SEARCH_SPIDER, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION, $headerfile, $view;
 
 		// The title often includes the names of records, which may have markup
 		// that cannot be used in the page title.
@@ -149,18 +148,19 @@ class WT_Controller_Page extends WT_Controller_Base {
 		// This javascript needs to be loaded in the header, *before* the CSS.
 		// All other javascript should be defered until the end of the page
 		$javascript= '<script src="' . WT_MODERNIZR_URL . '"></script>';
+
 		// Give Javascript access to some PHP constants
 		$this->addInlineJavascript('
-			var WT_STATIC_URL  = "'.WT_STATIC_URL.'";
-			var WT_THEME_DIR   = "'.WT_THEME_DIR.'";
-			var WT_MODULES_DIR = "'.WT_MODULES_DIR.'";
-			var WT_GEDCOM      = "'.WT_GEDCOM.'";
-			var WT_GED_ID      = "'.WT_GED_ID.'";
-			var WT_USER_ID     = "'.WT_USER_ID.'";
-			var textDirection  = "'.$TEXT_DIRECTION.'";
-			var browserType    = "'.$BROWSERTYPE.'";
-			var WT_SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
-			var WT_LOCALE      = "'.WT_LOCALE.'";
+			var WT_STATIC_URL  = "' . WT_Filter::escapeJs(WT_STATIC_URL)             . '";
+			var WT_THEME_DIR   = "' . WT_Filter::escapeJs(WT_THEME_DIR)              . '";
+			var WT_MODULES_DIR = "' . WT_Filter::escapeJs(WT_MODULES_DIR)            . '";
+			var WT_GEDCOM      = "' . WT_Filter::escapeJs(WT_GEDCOM)                 . '";
+			var WT_GED_ID      = "' . WT_Filter::escapeJs(WT_GED_ID)                 . '";
+			var WT_USER_ID     = "' . WT_Filter::escapeJs(WT_USER_ID)                . '";
+			var textDirection  = "' . WT_Filter::escapeJs($TEXT_DIRECTION)           . '";
+			var WT_SCRIPT_NAME = "' . WT_Filter::escapeJs(WT_SCRIPT_NAME)            . '";
+			var WT_LOCALE      = "' . WT_Filter::escapeJs(WT_LOCALE)                 . '";
+			var WT_CSRF_TOKEN  = "' . WT_Filter::escapeJs(WT_Filter::getCsrfToken()) . '";
 		', self::JS_PRIORITY_HIGH);
 
 		// Temporary fix for access to main menu hover elements on android/blackberry touch devices
@@ -170,11 +170,6 @@ class WT_Controller_Page extends WT_Controller_Base {
 				jQuery("a.icon_arrow").attr("href", "#");
 			}
 		');
-
-		// Tell IE to use standards mode instead of compatability mode.
-		if ($BROWSERTYPE=='msie') {
-			header("X-UA-Compatible: IE=Edge");
-		}
 
 		header('Content-Type: text/html; charset=UTF-8');
 		require WT_ROOT.$headerfile;

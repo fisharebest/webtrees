@@ -41,6 +41,13 @@ require './includes/session.php';
 
 header('Content-type: text/html; charset=UTF-8');
 
+
+if (!WT_Filter::checkCsrf()) {
+	Zend_Session::writeClose();
+	header('HTTP/1.0 406 Not Acceptable');
+	exit;
+}
+
 switch (WT_Filter::post('action')) {
 case 'accept-changes':
 	// Accept all the pending changes for a record
@@ -128,7 +135,7 @@ case 'delete-source':
 			$gedcom =$linker->getGedcom();
 			$gedcom = remove_links($gedcom, $record->getXref());
 			// If we have removed a link from a family to an individual, and it has only one member
-			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $gedcom, $match)<2) {
+			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $gedcom, $match)==1) {
 				// Delete the family
 				$family = WT_GedcomRecord::getInstance($xref);
 				WT_FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ WT_I18N::translate('The family “%s” has been deleted, as it only has one member.', $family->getFullName()));
@@ -149,6 +156,57 @@ case 'delete-source':
 		}
 		// Delete the record itself
 		$record->deleteRecord();
+	} else {
+		header('HTTP/1.0 406 Not Acceptable');
+	}
+	break;
+
+case 'delete-user':
+	$user_id = WT_Filter::postInteger('user_id');
+
+	if (WT_USER_IS_ADMIN && WT_USER_ID != $user_id) {
+		AddToLog('deleted user ->' . get_user_name($user_id) . '<-', 'auth');
+		delete_user($user_id);
+	}
+	break;
+
+case 'masquerade':
+	$user_id   = WT_Filter::postInteger('user_id');
+	$all_users = get_all_users('ASC', 'username');
+
+	if (WT_USER_IS_ADMIN && WT_USER_ID != $user_id && array_key_exists($user_id, $all_users)) {
+		AddToLog('masquerade as user ->' . get_user_name($user_id) . '<-', 'auth');
+		$WT_SESSION->wt_user = $user_id;
+		Zend_Session::regenerateId();
+		Zend_Session::writeClose();
+	} else {
+		header('HTTP/1.0 406 Not Acceptable');
+	}
+	break;
+
+case 'unlink-media':
+	// Remove links from an individual and their spouse-family records to a media object.
+	// Used by the "unlink" option on the album (lightbox) tab.
+	$source = WT_Individual::getInstance( WT_Filter::post('source', WT_REGEX_XREF));
+	$target = WT_Filter::post('target', WT_REGEX_XREF);
+	if ($source && $source->canShow() && $source->canEdit() && $target) {
+		// Consider the individual and their spouse-family records
+		$sources = $source->getSpouseFamilies();
+		$sources[] = $source;
+		foreach ($sources as $source) {
+			var_dump($source->getXref());
+			foreach ($source->getFacts() as $fact) {
+				if (!$fact->isOld()) {
+					if ($fact->getValue() == '@' . $target . '@') {
+						// Level 1 links
+						$source->deleteFact($fact->getFactId());
+					} elseif (strpos($fact->getGedcom(), ' @' . $target . '@')) {
+						// Level 2-3 links
+						$source->updateFact($fact->getFactId(), preg_replace(array('/\n2 OBJE @' . $target . '@(\n[3-9].*)*/', '/\n3 OBJE @' . $target . '@(\n[4-9].*)*/'), '', $fact->getGedcom(), true));
+					}
+				}
+			}
+		}
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');
 	}

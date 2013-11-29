@@ -32,14 +32,15 @@ $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addInlineJavascript('activate_colorbox();')
-	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, { width:"70%", height:"70%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'", title: function() { var img_title = jQuery(this).data("title"); return img_title; } } );');
+	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, { width:"85%", height:"85%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'", title: function() { var img_title = jQuery(this).data("title"); return img_title; } } );');
 ?>
 <!DOCTYPE html>
 <html <?php echo WT_I18N::html_markup(); ?>>
 <head>
 	<meta charset="UTF-8">
-	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
+	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
 	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_THEME_URL; ?>jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>style.css">

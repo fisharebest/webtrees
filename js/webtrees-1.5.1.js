@@ -403,6 +403,130 @@ function add_name(xref) {
 	});
 }
 
+// Accept the changes to a record - and reload the page
+function accept_changes(xref) {
+	jQuery.post('action.php', {
+		action: 'accept-changes',
+		xref:   xref,
+		ged:    WT_GEDCOM,
+		csrf:   WT_CSRF_TOKEN
+	},
+	function(){
+		location.reload();
+	});
+	return false;
+}
+
+// Reject the changes to a record - and reload the page
+function reject_changes(xref) {
+	jQuery.post('action.php', {
+		action: 'reject-changes',
+		xref:   xref,
+		ged:    WT_GEDCOM,
+		csrf:   WT_CSRF_TOKEN
+	},
+	function(){
+		location.reload();
+	});
+	return false;
+}
+
+// Delete a family - and reload the page
+function delete_family(message, xref, gedcom) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-family',
+			xref:      xref,
+			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
+// Delete an individual - and reload the page
+function delete_individual(message, xref, gedcom) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-individual',
+			xref:      xref,
+			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
+// Delete a media object - and reload the page
+function delete_media(message, xref, gedcom) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-media',
+			xref:      xref,
+			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
+// Delete a note object - and reload the page
+function delete_note(message, xref, gedcom) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-note',
+			xref:      xref,
+			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
+// Delete a repository - and reload the page
+function delete_repository(message, xref, gedcom) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-repository',
+			xref:      xref,
+			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
+// Delete a source - and reload the page
+function delete_source(message, xref, gedcom) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-source',
+			xref:      xref,
+			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
 // Delete a fact - and reload the page
 function delete_fact(message, xref, fact_id) {
 	if (confirm(message)) {
@@ -410,7 +534,25 @@ function delete_fact(message, xref, fact_id) {
 			action:   'delete-fact',
 			xref:      xref,
 			fact_id:   fact_id,
-			ged:       WT_GEDCOM
+			ged:       WT_GEDCOM,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
+// Remove links from one record to another - and reload the page
+function unlink_media(message, source, target) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action: 'unlink-media',
+			source: source,
+			target: target,
+			ged:    WT_GEDCOM,
+			csrf:   WT_CSRF_TOKEN
 		},
 		function(){
 			location.reload();
@@ -425,7 +567,36 @@ function copy_fact(xref, fact_id) {
 		action:   'copy-fact',
 		xref:      xref,
 		fact_id:   fact_id,
-		ged:       WT_GEDCOM
+		ged:       WT_GEDCOM,
+		csrf:      WT_CSRF_TOKEN
+	},
+	function(){
+		location.reload();
+	});
+	return false;
+}
+
+// Delete a user - and reload the page
+function delete_user(message, user_id) {
+	if (confirm(message)) {
+		jQuery.post('action.php', {
+			action:   'delete-user',
+			user_id:   user_id,
+			csrf:      WT_CSRF_TOKEN
+		},
+		function(){
+			location.reload();
+		});
+	}
+	return false;
+}
+
+// Masquerade as another user - and reload the page.
+function masquerade(user_id) {
+	jQuery.post('action.php', {
+		action:   'masquerade',
+		user_id:   user_id,
+		csrf:      WT_CSRF_TOKEN
 	},
 	function(){
 		location.reload();
@@ -559,7 +730,7 @@ function valid_date(datefield) {
 		if (typeof(locale_date_format)!='undefined')
 			if (locale_date_format=='MDY' || locale_date_format=='YMD')
 				dmy=locale_date_format;
-		var yyyy=new Date().getUTCFullYear();
+		var yyyy=new Date().getFullYear();
 		var yy=yyyy % 100;
 		var cc=yyyy - yy;
 		if (dmy=='DMY' && f1<=31 && f2<=12 || f1>13 && f1<=31 && f2<=12 && f3>31)
@@ -1056,18 +1227,18 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 	content += '<td><select name="'+dateFieldId+'_daySelect" id="'+dateFieldId+'_daySelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
 	for (i=1; i<32; i++) {
 		content += '<option value="'+i+'"';
-		if (date.getUTCDate()==i) content += ' selected="selected"';
+		if (date.getDate()==i) content += ' selected="selected"';
 		content += '>'+i+'</option>';
 	}
 	content += '</select></td>';
 	content += '<td><select name="'+dateFieldId+'_monSelect" id="'+dateFieldId+'_monSelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
 	for (i=1; i<13; i++) {
 		content += '<option value="'+i+'"';
-		if (date.getUTCMonth()+1==i) content += ' selected="selected"';
+		if (date.getMonth()+1==i) content += ' selected="selected"';
 		content += '>'+monthLabels[i]+'</option>';
 	}
 	content += '</select></td>';
-	content += '<td><input type="text" name="'+dateFieldId+'_yearInput" id="'+dateFieldId+'_yearInput" size="5" value="'+date.getUTCFullYear()+'" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');" /></td></tr>';
+	content += '<td><input type="text" name="'+dateFieldId+'_yearInput" id="'+dateFieldId+'_yearInput" size="5" value="'+date.getFullYear()+'" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');" /></td></tr>';
 	content += '<tr><td colspan="3">';
 	content += '<table width="100%">';
 	content += '<tr>';
@@ -1083,8 +1254,8 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 	}
 	content += '</tr>';
 
-	var tdate = new Date(date.getUTCFullYear(), date.getUTCMonth(), 1);
-	var day = tdate.getUTCDay();
+	var tdate = new Date(date.getFullYear(), date.getMonth(), 1);
+	var day = tdate.getDay();
 	day = day - weekStart;
 	var daymilli = (1000*60*60*24);
 	tdate = tdate.getTime() - (day*daymilli) + (daymilli/2);
@@ -1094,13 +1265,13 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 		content += '<tr>';
 		for (i=0; i<7; i++) {
 			content += '<td ';
-			if (tdate.getUTCMonth()==date.getUTCMonth()) {
-				if (tdate.getUTCDate()==date.getUTCDate()) content += 'class="descriptionbox"';
+			if (tdate.getMonth()==date.getMonth()) {
+				if (tdate.getDate()==date.getDate()) content += 'class="descriptionbox"';
 				else content += 'class="optionbox"';
 			}
 			else content += 'style="background-color:#EAEAEA; border: solid #AAAAAA 1px;"';
-			content += '><a href="#" onclick="return cal_dateClicked(\''+dateFieldId+'\', \''+dateDivId+'\', '+tdate.getUTCFullYear()+', '+tdate.getUTCMonth()+', '+tdate.getUTCDate()+');">';
-			content += tdate.getUTCDate();
+			content += '><a href="#" onclick="return cal_dateClicked(\''+dateFieldId+'\', \''+dateDivId+'\', '+tdate.getFullYear()+', '+tdate.getMonth()+', '+tdate.getDate()+');">';
+			content += tdate.getDate();
 			content += '</a></td>';
 			datemilli = tdate.getTime() + daymilli;
 			tdate = new Date(datemilli);
@@ -1135,7 +1306,7 @@ function cal_updateCalendar(dateFieldId, dateDivId) {
 
 	var date = new Date(yearInput.value, month, dateSel.options[dateSel.selectedIndex].value);
 	if (!date) alert('Date error '+date);
-	cal_setDateField(dateFieldId, date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
+	cal_setDateField(dateFieldId, date.getFullYear(), date.getMonth(), date.getDate());
 
 	var dateDiv = document.getElementById(dateDivId);
 	if (!dateDiv) {

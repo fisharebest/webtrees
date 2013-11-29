@@ -217,7 +217,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (WT_Filter::postBool('save')) {
+		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'filter',             WT_Filter::post('filter', 'indi|event|all', 'all'));
 			set_block_setting($block_id, 'controls',           WT_Filter::postBool('controls'));
 			set_block_setting($block_id, 'start',              WT_Filter::postBool('start'));

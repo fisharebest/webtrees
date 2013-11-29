@@ -28,12 +28,12 @@ $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addInlineJavascript('activate_colorbox();')
-	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"50%", height:"50%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"})')
+	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"75%", height:"75%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"})')
 	->addInlineJavascript('
 		jQuery.extend(jQuery.colorbox.settings, {
-			title:	function(){
-					var img_title = jQuery(this).data("title");
-					return img_title;
+			title: function() {
+				var img_title = jQuery(this).data("title");
+				return img_title;
 			}
 		});
 	');
@@ -42,17 +42,15 @@ echo
 	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
 	'<meta charset="UTF-8">',
+	'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
+	'<meta name="robots" content="noindex,nofollow">',
 	'<title>', htmlspecialchars($title), '</title>',
 	'<link rel="icon" href="', WT_CSS_URL, 'favicon.png" type="image/png">',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css" type="text/css">',
-	'<link rel="stylesheet" href="', WT_CSS_URL, 'style.css', '" type="text/css" media="all">',
-	'<meta name="robots" content="noindex,nofollow">';
-
-switch ($BROWSERTYPE) {
-case 'msie':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, $BROWSERTYPE, '.css">';
-	break;
-}
+	'<link rel="stylesheet" href="', WT_CSS_URL, 'style.css" type="text/css">',
+	'<!--[if IE]>',
+	'<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, 'msie.css">',
+	'<![endif]-->';
 
 echo
 	$javascript,
@@ -133,7 +131,6 @@ if (WT_USER_IS_ADMIN) {
 		'<li><ul>',
 		'<li><a ', (WT_SCRIPT_NAME=='admin_users.php' && WT_Filter::get('action')=='createform' ? 'class="current" ' : ''), 'href="admin_users.php?action=createform">', WT_I18N::translate('Add a new user'), '</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=='admin_users_bulk.php' ? 'class="current" ' : ''), 'href="admin_users_bulk.php">', WT_I18N::translate('Send broadcast messages'), '</a>',
-		'<li><a ', (WT_SCRIPT_NAME=='admin_masquerade.php' ? 'class="current" ' : ''), 'href="admin_masquerade.php">', WT_I18N::translate('Masquerade'), '</a>',
 		'<li><a ', (WT_SCRIPT_NAME=='admin_users.php' && WT_Filter::get('action')=='cleanup' ? 'class="current" ' : ''), 'href="admin_users.php?action=cleanup">', WT_I18N::translate('Delete inactive users'), '</a></li>',
 		'<li><a href="index_edit.php?user_id=-1" onclick="return modalDialog(\'index_edit.php?user_id=-1'.'\', \'', WT_I18N::translate('Set the default blocks for new users'), '\');">', WT_I18N::translate('Set the default blocks'), '</a></li>',
 		'</ul></li>',
