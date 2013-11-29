@@ -18,7 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-define('WT_SCRIPT_NAME', 'admin.php');
+define('WT_SCRIPT_NAME', 'admin_site_upgrade.php');
 
 require './includes/session.php';
 require WT_ROOT . 'library/pclzip.lib.php'; // TODO - rename and use autoloading
