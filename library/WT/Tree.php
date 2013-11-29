@@ -382,4 +382,51 @@ class WT_Tree {
 		// After updating the database, we need to fetch a new (sorted) copy
 		self::$trees=null;
 	}
+
+	//////////////////////////////////////////////////////////////////////////////
+	//
+	// Export the tree to a GEDCOM file
+	//
+	//////////////////////////////////////////////////////////////////////////////
+
+	public function exportGedcom($gedcom_file) {
+
+		// TODO: these functions need to be moved to the GedcomRecord(?) class
+		require_once WT_ROOT.'includes/functions/functions_export.php';
+
+		// To avoid partial trees on timeout/diskspace/etc, write to a temporary file first
+		$tmp_file = $gedcom_file . '.tmp';
+
+		$file_pointer = @fopen($tmp_file, 'w');
+		if ($file_pointer === false) {
+			return false;
+		}
+			
+		$buffer = reformat_record_export(gedcom_header($this->tree_name));
+
+		$stmt = WT_DB::prepare(
+			"SELECT i_gedcom AS gedcom FROM `##individuals` WHERE i_file = ?" .
+			" UNION ALL " .
+			"SELECT f_gedcom AS gedcom FROM `##families`    WHERE f_file = ?" .
+			" UNION ALL " .
+			"SELECT s_gedcom AS gedcom FROM `##sources`     WHERE s_file = ?" .
+			" UNION ALL " .
+			"SELECT o_gedcom AS gedcom FROM `##other`       WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')" .
+			" UNION ALL " .
+			"SELECT m_gedcom AS gedcom FROM `##media`       WHERE m_file = ?"
+		)->execute(array($this->tree_id, $this->tree_id, $this->tree_id, $this->tree_id, $this->tree_id));
+
+		while ($row = $stmt->fetch()) {
+			$buffer .= reformat_record_export($row->gedcom);
+			if (strlen($buffer)>65535) {
+				fwrite($file_pointer, $buffer);
+				$buffer = '';
+			}
+		}
+
+		fwrite($file_pointer, $buffer . '0 TRLR' . WT_EOL);
+		fclose($file_pointer);
+
+		return @rename($tmp_file, $gedcom_file);
+	}
 }
