@@ -32,10 +32,6 @@ if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 	list($latest_version, $earliest_version, $download_url) = explode('|', '||');
 }
 
-// For testing....
-$latest_version      = '1.6.0';
-$download_url        = 'http://localhost/webtrees-1.5.0.zip';
-
 $latest_version_html = '<span dir="ltr">' . $latest_version . '</span>';
 $download_url_html   = '<b dir="auto"><a href="' . WT_Filter::escapeHtml($download_url) . '">' . WT_Filter::escapeHtml($download_url) . '</a></b>';
 
