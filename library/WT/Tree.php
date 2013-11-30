@@ -56,7 +56,7 @@ class WT_Tree {
 		$this->imported       =$imported;
 	}
 
-	// Get and Set the tree's configuration settings
+	// Get and Set the tree’s configuration settings
 	public function preference($setting_name, $setting_value=null) {
 		// There are lots of settings, and we need to fetch lots of them on every page
 		// so it is quicker to fetch them all in one go.
@@ -87,7 +87,7 @@ class WT_Tree {
 		}
 	}
 
-	// Get and Set the tree's configuration settings
+	// Get and Set the tree’s configuration settings
 	public function userPreference($user_id, $setting_name, $setting_value=null) {
 		// There are lots of settings, and we need to fetch lots of them on every page
 		// so it is quicker to fetch them all in one go.
@@ -242,7 +242,7 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'INDI_FACTS_UNIQUE',            '');
 		set_gedcom_setting($tree_id, 'KEEP_ALIVE_YEARS_BIRTH',       '');
 		set_gedcom_setting($tree_id, 'KEEP_ALIVE_YEARS_DEATH',       '');
-		set_gedcom_setting($tree_id, 'LANGUAGE',                     WT_LOCALE); // Defualt to the current admin's language`
+		set_gedcom_setting($tree_id, 'LANGUAGE',                     WT_LOCALE); // Default to the current admin’s language
 		set_gedcom_setting($tree_id, 'MAX_ALIVE_AGE',                120);
 		set_gedcom_setting($tree_id, 'MAX_DESCENDANCY_GENERATIONS',  '15');
 		set_gedcom_setting($tree_id, 'MAX_PEDIGREE_GENERATIONS',     '10');

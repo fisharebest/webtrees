@@ -1134,7 +1134,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('Quick family facts facts'), help_link('FAM_FACTS_QUICK'); ?>
+					<?php echo WT_I18N::translate('Quick family facts'), help_link('FAM_FACTS_QUICK'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_FAM_FACTS_QUICK" name="NEW_FAM_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_FAM_FACTS_QUICK'); ?>

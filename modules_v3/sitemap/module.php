@@ -62,7 +62,8 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		}
 	}
 
-	// The index file contains references to all the other files
+	// The index file contains references to all the other files.
+	// These files are the same for visitors/users/admins.
 	private function generate_index() {
 		// Check the cache
 		$timestamp=get_module_setting($this->getName(), 'sitemap.timestamp');
@@ -104,7 +105,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				}
 			}
 			$data='<'.'?xml version="1.0" encoding="UTF-8" ?'.'>'.PHP_EOL.'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'.PHP_EOL.$data.'</sitemapindex>'.PHP_EOL;
-			// Cache this data
+			// Cache this data.
 			set_module_setting($this->getName(), 'sitemap.xml', $data);
 			set_module_setting($this->getName(), 'sitemap.timestamp', WT_TIMESTAMP);
 		}
@@ -114,13 +115,15 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	}
 
 	// A separate file for each family tree and each record type.
+	// These files depend on access levels, so only cache for visitors.
 	private function generate_file($ged_id, $rec_type, $volume) {
 		// Check the cache
 		$timestamp=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp');
-		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
+		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE && !WT_USER_ID) {
 			$data=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml');
 		} else {
-			$data='';
+			$tree=WT_Tree::get($ged_id);
+			$data='<url><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'index.php?ctype=gedcom&amp;ged='.$tree->tree_name_url.'</loc></url>'.PHP_EOL;
 			$records=array();
 			switch ($rec_type) {
 			case 'i':
@@ -199,9 +202,12 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				}
 			}
 			$data='<'.'?xml version="1.0" encoding="UTF-8" ?'.'>'.PHP_EOL.'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">'.PHP_EOL.$data.'</urlset>'.PHP_EOL;
-			// Cache this data
-			set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml', $data);
-			set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp', WT_TIMESTAMP);
+			// Cache this data - but only for visitors, as we don’t want
+			// visitors to see data created by logged-in users.
+			if (!WT_USER_ID) {
+				set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml', $data);
+				set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp', WT_TIMESTAMP);
+			}
 		}
 		header('Content-Type: application/xml');
 		header('Content-Length: '.strlen($data));

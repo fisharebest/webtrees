@@ -44,7 +44,7 @@ $user_password02 = WT_Filter::post('user_password02', WT_REGEX_PASSWORD);
 $user_comments   = WT_Filter::post('user_comments');
 $user_password   = WT_Filter::post('user_password');
 $user_hashcode   = WT_Filter::post('user_hashcode');
-$url             = WT_Filter::postUrl('url');
+$url             = WT_Filter::post('url'); // Not actually a URL - just a path
 $username        = WT_Filter::post('username');
 $password        = WT_Filter::post('password');
 $timediff        = WT_Filter::postInteger('timediff', -43200, 50400, 0); // Same range as date('Z')
@@ -53,7 +53,7 @@ $timediff        = WT_Filter::postInteger('timediff', -43200, 50400, 0); // Same
 if (!$action)        $action        = WT_Filter::get('action');
 if (!$user_name)     $user_name     = WT_Filter::get('user_name', WT_REGEX_USERNAME);
 if (!$user_hashcode) $user_hashcode = WT_Filter::get('user_hashcode');
-if (!$url)           $url           = WT_Filter::getUrl('url');
+if (!$url)           $url           = WT_Filter::get('url'); // Not actually a URL - just a path
 
 // This parameter may come from generated login links
 if (!$url) {

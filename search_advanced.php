@@ -147,7 +147,7 @@ echo '</script>';
 		</td>
 		<td id="vcell<?php echo $i; ?>" class="list_value">
 			<?php
-			$currentFieldSearch = $controller->getField($i); // Get this field's name and the search criterion
+			$currentFieldSearch = $controller->getField($i); // Get this field’s name and the search criterion
 			$currentField = substr($currentFieldSearch, 0, strrpos($currentFieldSearch, ':')); // Get the actual field name
 			?>
 				<input tabindex="<?php echo $i+1; ?>" type="text" id="value<?php echo $i; ?>" name="values[<?php echo $i; ?>]" value="<?php echo $controller->getValue($i); ?>"<?php echo (substr($controller->getField($i),-4)=='PLAC') ? 'class="PLAC"' : ''; ?>>
@@ -175,7 +175,7 @@ echo '</script>';
 		//-- relative fields
 		if ($i==0 && $fct>4) {
 			$j=$fct;
-			// Get the current options for Father's and Mother's name searches
+			// Get the current options for Father’s and Mother’s name searches
 			$fatherGivnOption = 'SDX';
 			$fatherSurnOption = 'SDX';
 			$motherGivnOption = 'SDX';

@@ -146,7 +146,7 @@ $controller
 								'<td>', $module instanceof WT_Module_Theme   ? WT_I18N::translate('Theme') : '-', '</td>',
 								'</tr>';
 						} else {
-							// Module can't be found on disk?
+							// Module can’t be found on disk?
 							// Don't delete it automatically.  It may be temporarily missing, after a re-installation, etc.
 							echo
 								'<tr class="error"><td>&nbsp;</td><td>', $module_name, '</td><td>',

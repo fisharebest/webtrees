@@ -740,7 +740,7 @@ function get_common_surnames($min) {
 * @return array
 */
 function get_top_surnames($ged_id, $min, $max) {
-	// Use n_surn, rather than n_surname, as it is used to generate url's for
+	// Use n_surn, rather than n_surname, as it is used to generate URLs for
 	// the indi-list, etc.
 	$max=(int)$max;
 	if ($max==0) {
@@ -805,7 +805,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 				}
 				break;
 			case 3:
-				// 1 KSL includes 30 CSH (if this year didn't have 30 CSH)
+				// 1 KSL includes 30 CSH (if this year didn’t have 30 CSH)
 				// 29 KSL does not include 30 KSL (but would include an invalid 31 KSL if there were no 30 KSL)
 				if ($anniv->d==1) {
 					$tmp=new WT_Date_Jewish(array($anniv->y, 'csh', 1));
@@ -824,7 +824,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 					}
 				break;
 			case 4:
-				// 1 TVT includes 30 KSL (if this year didn't have 30 KSL)
+				// 1 TVT includes 30 KSL (if this year didn’t have 30 KSL)
 				if ($anniv->d==1) {
 					$tmp=new WT_Date_Jewish($anniv->y, 'ksl', 1);
 					if ($tmp->DaysInMonth()==29) {
@@ -1068,7 +1068,7 @@ function rename_user($user_id, $new_username) {
 function delete_user($user_id) {
 	// Don't delete the logs.
 	WT_DB::prepare("UPDATE `##log` SET user_id=NULL   WHERE user_id =?")->execute(array($user_id));
-	// Take over the user's pending changes.
+	// Take over the user’s pending changes.
 	// TODO: perhaps we should prevent deletion of users with pending changes?
 	WT_DB::prepare("DELETE FROM `##change` WHERE user_id=? AND status='accepted'")->execute(array($user_id));
 	WT_DB::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute(array(WT_USER_ID, $user_id));

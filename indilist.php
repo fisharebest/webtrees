@@ -60,7 +60,7 @@ case 'yes':
 }
 
 // Make sure selections are consistent.
-// i.e. can't specify show_all and surname at the same time.
+// i.e. can’t specify show_all and surname at the same time.
 if ($show_all=='yes') {
 	if ($show_all_firstnames=='yes') {
 		$alpha   = '';

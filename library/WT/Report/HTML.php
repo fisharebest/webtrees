@@ -518,7 +518,7 @@ class WT_Report_HTML extends WT_Report_Base {
 			foreach ($lines as $line) {
 				$wtext = utf8_wordwrap($line, $lw, "\n", true);
 				$wraptext .= $wtext;
-				// Add a new line as long as it's not the last line
+				// Add a new line as long as it’s not the last line
 				if ($lfct > 1) {
 					$wraptext.= "\n";
 				}
@@ -541,7 +541,7 @@ class WT_Report_HTML extends WT_Report_Base {
 			$htmlcode .= " class=\"". $style["name"]. "\"";
 		}
 		if (!empty($color)) {
-			// Check if Text Color is set and if it's valid HTML color
+			// Check if Text Color is set and if it’s valid HTML color
 			if (preg_match("/#?(..)(..)(..)/", $color)) {
 				$htmlcode .= " style=\"color:$color;\"";
 			}
@@ -865,14 +865,14 @@ class TextBoxHTML extends TextBox {
 				}
 				// Collect the Footnote links
 				elseif ($element->get_type() == "Footnote") {
-					// Check if the Footnote has been set with it's link number
+					// Check if the Footnote has been set with it’s link number
 					$html->checkFootnote($element);
 					// Save first the last element if any
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
 						$lastelement = array();
 					}
-					// Save the Footnote with it's link number as key for sorting later
+					// Save the Footnote with it’s link number as key for sorting later
 					$footnote_element[$element->num] = $element;
 				}
 				//-- do not keep empty footnotes
@@ -996,7 +996,7 @@ class TextBoxHTML extends TextBox {
 				$fH += abs($html->getFootnotesHeight($cW));
 			}
 		}
-		// Add up what's the final height
+		// Add up what’s the final height
 		$cH = $this->height;
 		// If any element exist
 		if ($cE > 0) {
@@ -1040,7 +1040,7 @@ class TextBoxHTML extends TextBox {
 				echo " background-color:", $this->bgcolor, ";";
 			}
 		}
-		// Print padding only when it's set
+		// Print padding only when it’s set
 		if ($this->padding) {
 			// Use Cell around padding to support RTL also
 			echo "padding:", $cP, "pt;";
@@ -1234,7 +1234,7 @@ class TextHTML extends Text {
 					}
 					// Check the Line Feed counter
 					if ($lfct > 1) {
-						// Add a new line feed as long as it's not the last line
+						// Add a new line feed as long as it’s not the last line
 						$newtext.= "\n";
 						// Reset the line width
 						$lw = 0;
@@ -1394,7 +1394,7 @@ class FootnoteHTML extends Footnote {
 					}
 					// Check the Line Feed counter
 					if ($lfct > 1) {
-						// Add a new line feed as long as it's not the last line
+						// Add a new line feed as long as it’s not the last line
 						$newtext.= "\n";
 						// Reset the line width
 						$lw = 0;

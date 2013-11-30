@@ -18,7 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-define('WT_SCRIPT_NAME', 'admin.php');
+define('WT_SCRIPT_NAME', 'admin_site_upgrade.php');
 
 require './includes/session.php';
 require WT_ROOT . 'library/pclzip.lib.php'; // TODO - rename and use autoloading
@@ -31,10 +31,6 @@ if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 	// Cannot determine the latest version
 	list($latest_version, $earliest_version, $download_url) = explode('|', '||');
 }
-
-// For testing....
-$latest_version      = '1.6.0';
-$download_url        = 'http://localhost/webtrees-1.5.0.zip';
 
 $latest_version_html = '<span dir="ltr">' . $latest_version . '</span>';
 $download_url_html   = '<b dir="auto"><a href="' . WT_Filter::escapeHtml($download_url) . '">' . WT_Filter::escapeHtml($download_url) . '</a></b>';
@@ -74,7 +70,7 @@ if ($latest_version == '') {
 
 if (version_compare(WT_VERSION, $latest_version) > 0) {
 	echo '<p>', WT_I18N::translate('This is the latest version of webtrees.  No upgrade is available.'), '</p>';
-	//exit;
+	exit;
 }
 
 echo '<form method="POST" action="admin_site_upgrade.php">';

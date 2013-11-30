@@ -27,7 +27,7 @@
 // mredkj.com
 
 // CONFIG notes. Below are some comments that point to where this script can be customized.
-// Note: Make sure to include a <tbody></tbody> in your table's HTML
+// Note: Make sure to include a <tbody></tbody> in your table’s HTML
 
 echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/chapman_codes.js"></script>';
 ?>
@@ -190,7 +190,7 @@ function preview() {
 
 		// ---------------------------------------------
 
-		// Extract Indi id's from created list --------------------------------------
+		// Extract Indi IDs from created list --------------------------------------
 		for (var y=1; y<tr.cells.length-3; y++) {
 			if (y>=2 && y<=73) {
 					continue;
@@ -447,14 +447,6 @@ function preview() {
 
 	}
 
-	//-- TODO -- Check for corrected ages  --- Sill to fix manual entry for override of values --------------------
-		//changeAge(NoteYear.value);
-
-	// --- Debug only - alert indi id's found --------
-	//if (i!=0) {
-	//alert(iid);
-	//}
-
 	var mem = document.getElementById('NOTE');
 	if (Notes.value!="" && Notes.value!=null) {
 		mem.value = str + "\n.end_formatted_area.\n\nNotes:\n"+Notes.value;
@@ -462,7 +454,7 @@ function preview() {
 		mem.value = str + "\n.end_formatted_area.\n";
 	}
 
-	// ---- Create an array of Indi id's ----------
+	// ---- Create an array of Indi IDs ----------
 	var mem21 = document.getElementById('pid_array');
 		mem21.value = iid.slice(0, -2);
 

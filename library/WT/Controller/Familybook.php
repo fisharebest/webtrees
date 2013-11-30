@@ -244,14 +244,14 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '<table>';
 			$this->printEmptyBox($bwidth, $bheight);
 
-			//-- recursively get the father's family
+			//-- recursively get the father’s family
 			$this->print_person_pedigree($person, $count+1);
 			echo '</td>',
 				 '<td>',
 				 '</tr>';
 			$this->printEmptyBox($bwidth, $bheight);
 
-			//-- recursively get the mother's family
+			//-- recursively get the mother’s family
 			$this->print_person_pedigree($person, $count+1);
 			echo '</td>',
 				 '<td>',
@@ -272,7 +272,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '</td>';
 			if ($family->getHusband()) {
 				echo '<td>';
-				//-- recursively get the father's family
+				//-- recursively get the father’s family
 				$this->print_person_pedigree($family->getHusband(), $count+1);
 				echo '</td>';
 			} else {
@@ -294,7 +294,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '</td>';
 			if ($family->getWife()) {
 				echo '<td>';
-				//-- recursively print the mother's family
+				//-- recursively print the mother’s family
 				$this->print_person_pedigree($family->getWife(), $count+1);
 				echo '</td>';
 			} else {

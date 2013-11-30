@@ -868,14 +868,14 @@ class TextBoxPDF extends TextBox {
 				}
 				// Collect the Footnote links
 				elseif ($element->get_type() == "Footnote") {
-					// Check if the Footnote has been set with it's link number
+					// Check if the Footnote has been set with it’s link number
 					$pdf->checkFootnote($element);
 					// Save first the last element if any
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
 						$lastelement = array();
 					}
-					// Save the Footnote with it's link number as key for sorting later
+					// Save the Footnote with it’s link number as key for sorting later
 					$footnote_element[$element->num] = $element;
 				}
 				//-- do not keep empty footnotes
@@ -996,7 +996,7 @@ class TextBoxPDF extends TextBox {
 				if ($w > $cWT) {
 					$w = $lw[0];
 				}
-				// Footnote is at the bottom of the page. No need to calculate it's height or wrap the text!
+				// Footnote is at the bottom of the page. No need to calculate it’s height or wrap the text!
 				// We are changing the margins anyway!
 				// For anything else but text (images), get the height
 				$eH += $this->elements[$i]->getHeight($pdf);
@@ -1006,7 +1006,7 @@ class TextBoxPDF extends TextBox {
 			//}
 		}
 
-		// Add up what's the final height
+		// Add up what’s the final height
 		$cH = $this->height;
 		// If any element exist
 		if ($cE > 0) {
@@ -1274,7 +1274,7 @@ class TextPDF extends Text {
 					}
 					// Check the Line Feed counter
 					if ($lfct > 1) {
-						// Add a new line as long as it's not the last line
+						// Add a new line as long as it’s not the last line
 						$newtext.= "\n";
 						// Reset the line width
 						$lw = 0;
@@ -1427,7 +1427,7 @@ class FootnotePDF extends Footnote {
 					}
 					// Check the Line Feed counter
 					if ($lfct > 1) {
-						// Add a new line feed as long as it's not the last line
+						// Add a new line feed as long as it’s not the last line
 						$newtext.= "\n";
 						// Reset the line width
 						$lw = 0;

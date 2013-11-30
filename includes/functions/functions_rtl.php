@@ -264,7 +264,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 					break;
 				}
 				if (($currentLen != 1) || ($currentLetter >= 'A' && $currentLetter <= 'Z') || ($currentLetter >= 'a' && $currentLetter <= 'z')) {
-					// Since it's neither Hebrew nor Arabic, this UTF-8 character or ASCII letter must be LTR
+					// Since it’s neither Hebrew nor Arabic, this UTF-8 character or ASCII letter must be LTR
 					$newState = 'LTR';
 					break;
 				}
@@ -721,7 +721,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 			break;
 		}
 		while (substr($textSpan, -9) == '<LTRbr>') {
-			$trailingBreaks = '<br>' . $trailingBreaks; // Plain <br> because it's outside a span
+			$trailingBreaks = '<br>' . $trailingBreaks; // Plain <br> because it’s outside a span
 			$textSpan = substr($textSpan, 0, -9);
 		}
 		if ($trailingBreaks != '') {
@@ -784,7 +784,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 
 				// If the parenthesized text doesn't look like an ID number,
 				// we don't want to touch it.
-				// This check won't work if somebody uses ID numbers with an unusual format.
+				// This check won’t work if somebody uses ID numbers with an unusual format.
 				$offset = 1;
 				$charArray = getchar($temp, $offset); // Get 1st character of parenthesized text
 				if (strpos($numbers, $charArray['letter']) !== false) break;
@@ -892,7 +892,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 			break;
 		}
 		while (substr($textSpan, -9) == '<RTLbr>') {
-			$trailingBreaks = '<br>' . $trailingBreaks; // Plain <br> because it's outside a span
+			$trailingBreaks = '<br>' . $trailingBreaks; // Plain <br> because it’s outside a span
 			$textSpan = substr($textSpan, 0, -9);
 		}
 		if ($trailingBreaks != '') {

@@ -26,7 +26,7 @@ if (!defined('WT_WEBTREES')) {
 class WT_Site {
 	static $setting=null;
 
-	// Get and Set the site's configuration settings
+	// Get and Set the site’s configuration settings
 	public static function preference($setting_name, $setting_value=null) {
 		// There are lots of settings, and we need to fetch lots of them on every page
 		// so it is quicker to fetch them all in one go.

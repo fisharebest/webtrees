@@ -305,7 +305,7 @@ function remove_links($gedrec, $xref) {
 	return $gedrec;
 }
 
-// generates javascript code for calendar popup in user's language
+// generates javascript code for calendar popup in user’s language
 function print_calendar_popup($id) {
 	return
 		' <a href="#" onclick="cal_toggleDate(\'caldiv'.$id.'\', \''.$id.'\'); return false;" class="icon-button_calendar" title="'.WT_I18N::translate('Select a date').'"></a>'.

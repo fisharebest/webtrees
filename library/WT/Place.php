@@ -106,7 +106,7 @@ class WT_Place {
 		return implode(WT_I18N::$list_separator, $tmp);
 	}
 
-	// For lists and charts, where the full name won't fit.
+	// For lists and charts, where the full name won’t fit.
 	public function getShortName() {
 		global $SHOW_PEDIGREE_PLACES, $SHOW_PEDIGREE_PLACES_SUFFIX;
 

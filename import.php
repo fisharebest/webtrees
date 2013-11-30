@@ -3,7 +3,7 @@
 //
 // For each gedcom that needs importing, admin_trees_manage.php will create
 // a <div id="importNNN"></div>, where NNN is the gedcom ID.
-// It will then call import.php to load the div's contents using AJAX.
+// It will then call import.php to load the div elements contents using AJAX.
 //
 // We import small blocks of data from wt_gedcom_chunks, working for
 // a couple of seconds.  When each block is loaded, we set its status
