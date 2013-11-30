@@ -2,8 +2,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-30 14:32+0000\n"
-"PO-Revision-Date: 2013-11-27 01:27+0200\n"
 "Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -1372,7 +1370,7 @@ msgstr "Lisää tarina"
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:217
 #: modules_v3/clippings/module.php:603
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Lisää GEDCOM:in mediapolku tiedostonimiin"
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:528
 msgid "Add this individual and his direct line ancestors."
@@ -1792,7 +1790,7 @@ msgstr "Kaikilla PGV käyttäjillä pitää olla yksilölliset sähköpostiosoit
 
 #: admin_trees_config.php:1113 help_text.php:505
 msgid "All family facts"
-msgstr ""
+msgstr "Kaikki perhetiedot"
 
 #: login.php:396
 msgid "All fields must be completed."
@@ -1804,7 +1802,7 @@ msgstr ""
 
 #: admin_trees_config.php:1076 help_text.php:583
 msgid "All individual facts"
-msgstr ""
+msgstr "Kaikki henkilötiedot"
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
@@ -1813,11 +1811,11 @@ msgstr "Kaikki henkilöt"
 
 #: admin_trees_config.php:1179 help_text.php:789
 msgid "All repository facts"
-msgstr ""
+msgstr "Kaikki tietovarastotiedot"
 
 #: admin_trees_config.php:1150 help_text.php:900
 msgid "All source facts"
-msgstr ""
+msgstr "Kaikki lähdetiedot"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -2094,7 +2092,7 @@ msgstr "Haluatko todella poistaa ”%s”?"
 
 #: modules_v3/lightbox/module.php:203
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa liitteet tähän mediaobjektiin?"
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -11068,7 +11066,7 @@ msgstr "Perhetietojen pikalista"
 
 #: admin_trees_config.php:1137
 msgid "Quick family facts facts"
-msgstr ""
+msgstr "Perhetietojen pikalista"
 
 #: admin_trees_config.php:1100 help_text.php:588
 msgid "Quick individual facts"
@@ -11076,7 +11074,7 @@ msgstr "Henkilötietojen pikalista"
 
 #: admin_trees_config.php:1195 help_text.php:794
 msgid "Quick repository facts"
-msgstr "Pikavalinta tietovarastotiedot"
+msgstr "Tietovarastotietojen pikalista"
 
 #: admin_trees_config.php:1166 help_text.php:905
 msgid "Quick source facts"
@@ -11324,7 +11322,7 @@ msgstr "Säännölliset lauseke "
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Säännölliset lausekkeet ovat kehittynyt hahmontunnistus tekniikka."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:33
@@ -11852,7 +11850,7 @@ msgstr "SSL kirjautuminen"
 #: modules_v3/batch_update/plugins/search_replace.php:93
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Katso %s lisätietoja varten."
 
 #: includes/functions/functions_edit.php:311 reportengine.php:250
 msgid "Select a date"

@@ -2,8 +2,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-30 14:32+0000\n"
-"PO-Revision-Date: 2013-11-28 13:11+0200\n"
 "Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -430,7 +428,7 @@ msgstr "%s%%"
 #: library/WT/Date/Julian.php:95
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;fvt."
+msgstr "%s&nbsp;fvt"
 
 #. I18N: CE=Common Era, for Julian years > 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:98 library/WT/Date/Julian.php:100
@@ -1421,7 +1419,7 @@ msgstr "Lägg till olänkade dataposter"
 
 #: admin_trees_config.php:694
 msgid "Add watermarks to thumbnails?"
-msgstr "Lägg till vattenmärke till miniatyr?"
+msgstr "Lägg till vattenstämplar till miniatyrbilder?"
 
 #: modules_v3/relatives/module.php:160
 msgid "Add wife"
@@ -1792,7 +1790,7 @@ msgstr "Alla PGV-användare måste ha olika e-postadresser"
 
 #: admin_trees_config.php:1113 help_text.php:505
 msgid "All family facts"
-msgstr ""
+msgstr "Alla familjefakta"
 
 #: login.php:396
 msgid "All fields must be completed."
@@ -1804,7 +1802,7 @@ msgstr ""
 
 #: admin_trees_config.php:1076 help_text.php:583
 msgid "All individual facts"
-msgstr ""
+msgstr "Alla personfakta"
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
@@ -1813,11 +1811,11 @@ msgstr "Alla personer"
 
 #: admin_trees_config.php:1179 help_text.php:789
 msgid "All repository facts"
-msgstr ""
+msgstr "Alla arkivfakta"
 
 #: admin_trees_config.php:1150 help_text.php:900
 msgid "All source facts"
-msgstr ""
+msgstr "Alla källfakta"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -7422,7 +7420,7 @@ msgstr "Bildens dimensioner"
 
 #: admin_trees_config.php:718
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Bilder utan vattenstämplar"
 
 #: modules_v3/family_nav/module.php:87
 msgid "Immediate Family"
@@ -11068,7 +11066,7 @@ msgstr "Snabba familjefakta"
 
 #: admin_trees_config.php:1137
 msgid "Quick family facts facts"
-msgstr ""
+msgstr "Snabb familjefakta"
 
 #: admin_trees_config.php:1100 help_text.php:588
 msgid "Quick individual facts"
@@ -13074,11 +13072,11 @@ msgstr "Stoppa"
 
 #: admin_trees_config.php:702
 msgid "Store watermarked full size images on server?"
-msgstr "Spara vattenmärkta fullstora bilder på servern?"
+msgstr "Spara vattenstämplade fullstora bilder på servern?"
 
 #: admin_trees_config.php:710
 msgid "Store watermarked thumbnails on server?"
-msgstr "Spara vattenmärkta miniatyrer på servern?"
+msgstr "Spara vattenstämplade miniatyrbilder på servern?"
 
 #. I18N: Name of a module
 #: modules_v3/stories/module.php:32 modules_v3/stories/module.php:405
@@ -13539,7 +13537,7 @@ msgstr "Media filen hittades inte i detta släktträd"
 
 #: help_text.php:1425
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr "Media filen du laddar upp kan ha, och troligen borde ha, annat namn på servern än det har på din lokala dator. Detta beror på att ofta har lokala filnamnet betydelse för dig, men är mycket mindre meningsfullt för andra som besöker den här webbplatsen. Tänk också att du och någon annan båda försöker ladda upp olika filer som kallas \"granny.jpg\".<br><br>I det här fältet anger du det nya namnet på den fil du överför. Det namn du anger här kommer också att användas för att namnge miniatyr, som kan laddas upp separat eller genereras automatiskt. Du behöver inte ange filnamnstillägget (jpg, gif, pdf, doc, etc.)<br><br>Lämna detta fält tomt för att behålla det ursprungliga namnet på filen du har laddat upp från din lokala dator."
+msgstr "Media filen du laddar upp kan ha, och troligen borde ha, annat namn på servern än det har på din lokala dator. Detta beror på att ofta har lokala filnamnet betydelse för dig, men är mycket mindre meningsfullt för andra som besöker den här webbplatsen. Tänk också att du och någon annan båda försöker ladda upp olika filer som kallas \"granny.jpg\".<br><br>I det här fältet anger du det nya namnet på den fil du överför. Det namn du anger här kommer också att användas för att namnge miniatyrbilder, som kan laddas upp separat eller genereras automatiskt. Du behöver inte ange filnamnstillägget (jpg, gif, pdf, doc, etc.)<br><br>Lämna detta fält tomt för att behålla det ursprungliga namnet på filen du har laddat upp från din lokala dator."
 
 #: setup.php:160
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -14011,7 +14009,7 @@ msgstr "Denna media fil finns, men kan inte nås."
 
 #: mediafirewall.php:365
 msgid "This media file is broken and cannot be watermarked"
-msgstr "Media filen är trasig och kan inte vattenmärkas"
+msgstr "Media filen är trasig och kan inte vattenstämplas"
 
 #: mediaviewer.php:74
 msgid "This media object does not exist or you do not have permission to view it."
@@ -15472,7 +15470,7 @@ msgstr "När du klickar på <b>Lägg till ny delad anteckning</b>-länk, öppnas
 
 #: modules_v3/clippings/help_text.php:37
 msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
-msgstr "Genom att klicka på denna länk kommer Urklippskorgen att tömmas helt.<br><br>Om du inte vill ta bort alla personer, familjer etc. från Urklippskorgen kan du ta bort dem en och en genom att klicka på <b>Ta bort</b>-länken i namnboxarna. Det finns <u>ingen</u> bekräftelsedialog när du klickar på någon av dessa länkar, raderingen sker omedelbart."
+msgstr "Genom att klicka på denna länk kommer Urklippskorgen att tömmas helt.<br><br>Om du inte vill ta bort alla personer, familjer etc. från Urklippskorgen kan du ta bort dem en och en genom att klicka på <b>Radera</b>-länken i namnboxarna. Det finns <u>ingen</u> bekräftelsedialog när du klickar på någon av dessa länkar, raderingen sker omedelbart."
 
 #: message.php:144
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
