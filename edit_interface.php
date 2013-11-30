@@ -1246,7 +1246,7 @@ case 'addsourceaction':
 		$newgedrec .= "\n1 PUBL " . preg_replace('/\r?\n/', "\n2 CONT ", $PUBL);
 	}
 	$REPO = WT_Filter::post('REPO', WT_REGEX_XREF);
-	if ($AUTH) {
+	if ($REPO) {
 		$newgedrec .= "\n1 REPO @" . $REPO . "@";
 		$CALN = WT_Filter::post('CALN');
 		if ($CALN) {
