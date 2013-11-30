@@ -312,6 +312,10 @@ if ($zip_size) {
 	echo $icon_success;
 } else {
 	echo $icon_failure;
+	// Guess why we might have failed...
+	if (preg_match('/^https:/', $download_url) && !in_array('ssl', stream_get_transports())) {
+		echo '<br>', /* I18N: http://en.wikipedia.org/wiki/Https */ WT_I18N::translate('This server does not support secure downloads using HTTPS.');
+	}
 }
 
 echo '</li>'; flush();
