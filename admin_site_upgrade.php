@@ -298,15 +298,18 @@ echo '</li>';
 
 echo '<li>', /* I18N: The system is about to [...]; %s is a URL. */ WT_I18N::translate('Download %s…', $download_url_html);
 
+$zip_file   = WT_DATA_DIR . basename($download_url);
+$zip_dir    = WT_DATA_DIR . basename($download_url, '.zip');
+$zip_stream = fopen($zip_file, 'w');
 $start_time = microtime(true);
-$zip_data = WT_File::fetchUrl($download_url);
-$end_time = microtime(true);
-$zip_file = WT_DATA_DIR . basename($download_url);
-$zip_dir  = WT_DATA_DIR . basename($download_url, '.zip');
-echo '<br>', /* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */ WT_I18N::translate('%1$sKB were downloaded in %2$s seconds.', WT_I18N::number(strlen($zip_data) / 1024), WT_I18N::number($end_time - $start_time, 2));
-if ($zip_data) {
+WT_File::fetchUrl($download_url, $zip_stream);
+$end_time   = microtime(true);
+$zip_size   = filesize($zip_file);
+fclose($zip_stream);
+
+echo '<br>', /* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */ WT_I18N::translate('%1$sKB were downloaded in %2$s seconds.', WT_I18N::number($zip_size / 1024), WT_I18N::number($end_time - $start_time, 2));
+if ($zip_size) {
 	echo $icon_success;
-	file_put_contents($zip_file, $zip_data);
 } else {
 	echo $icon_failure;
 }
