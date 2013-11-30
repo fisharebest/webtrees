@@ -28,9 +28,12 @@ class WT_File {
 	// Fetch a remote file
 	// Note that fopen() and file_get_contents() are often unvailable, as they
 	// can easily be exploited by application bugs, and are therefore disabled.
+	// Hence we use fsockopen().
+	// To allow arbitrarily large downloads with small memory limits, we either
+	// write output to a stream or return it.
 	//////////////////////////////////////////////////////////////////////////////
 
-	public static function fetchUrl($url, $timeout=3) {
+	public static function fetchUrl($url, $stream=null) {
 		$host = parse_url($url, PHP_URL_HOST);
 		$port = parse_url($url, PHP_URL_PORT);
 		$path = parse_url($url, PHP_URL_PATH);
@@ -41,25 +44,38 @@ class WT_File {
 
 		$scheme = $port == 443 ? 'ssl://' : '';
 
-		$fp = @fsockopen($scheme . $host, $port, $errno, $errstr, $timeout);
+		$fp = @fsockopen($scheme . $host, $port, $errno, $errstr, 5);
 		if (!$fp) {
 			return null;
 		}
 
 		fputs($fp, "GET $path HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
 
-		$response = '';
-		while ($data = fread($fp, 8192)) {
-			$response .= $data;
-		}
-		fclose($fp);
+		// The first part of the response include the HTTP headers
+		$response = fread($fp, 65536);
 
 		// The file has moved?  Follow it.
 		if (preg_match('/^HTTP\/1.[01] 30[23].+\nLocation: ([^\r\n]+)/s', $response, $match)) {
-			return WT_File::fetchUrl($match[1]);
+			fclose($fp);
+			return WT_File::fetchUrl($match[1], $stream);
 		} else {
 			// The response includes headers, a blank line, then the content
-			return substr($response, strpos($response, "\r\n\r\n") + 4);
+			$response = substr($response, strpos($response, "\r\n\r\n") + 4);
+		}
+
+		if ($stream) {
+			fwrite($stream, $response);
+			while ($tmp = fread($fp, 8192)) {
+				fwrite($stream, $tmp);
+			}
+			fclose($fp);
+			return null;
+		} else  {
+			while ($tmp = fread($fp, 8192)) {
+				$response .= $tmp;
+			}
+			fclose($fp);
+			return $response;
 		}
 	}
 
