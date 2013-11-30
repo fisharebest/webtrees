@@ -11065,7 +11065,7 @@ msgid "Quick family facts"
 msgstr "Perhetietojen pikalista"
 
 #: admin_trees_config.php:1137
-msgid "Quick family facts facts"
+msgid "Quick family facts"
 msgstr "Perhetietojen pikalista"
 
 #: admin_trees_config.php:1100 help_text.php:588

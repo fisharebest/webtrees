@@ -11040,7 +11040,7 @@ msgid "Quick family facts"
 msgstr "Sự kiện gia đình"
 
 #: admin_trees_config.php:1137
-msgid "Quick family facts facts"
+msgid "Quick family facts"
 msgstr ""
 
 #: admin_trees_config.php:1100 help_text.php:588
