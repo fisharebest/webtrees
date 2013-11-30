@@ -97,7 +97,7 @@ class WT_Soundex {
 	// function call to achieve the desired transformations.
 	//
 	// Note about the use of "\x01":
-	// This code, which can't legitimately occur in the kind of text we're dealing with,
+	// This code, which can’t legitimately occur in the kind of text we're dealing with,
 	// is used as a place-holder so that conditional string replacements can be done.
 	private static $transformNameTable=array(
 		// Force Yiddish ligatures to be treated as separate letters
@@ -736,7 +736,7 @@ class WT_Soundex {
 
 		$result = array_flip(array_flip($result)); // Kill the double results in the array
 
-		// We're done.  All that's left is to sort the result
+		// We're done.  All that’s left is to sort the result
 		sort($result);
 		return $result;
 	}

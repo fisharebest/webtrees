@@ -248,10 +248,10 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 	/**
 	 * Handles searches entered in the top search box in the themes and
-	 * prepares the search to do a general search on indi's, fams, and sources.
+	 * prepares the search to do a general search on individuals, families and sources.
 	 */
 	function TopSearch() {
-		// first set some required variables. Search only in current gedcom, only in indi's.
+		// first set some required variables. Search only in current gedcom, only in individuals.
 		$this->srindi = "yes";
 
 		// Enable the default gedcom for search
@@ -295,7 +295,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			$logstring = "Type: General\nQuery: ".$this->query;
 			AddToSearchlog($logstring, $this->sgeds);
 
-			// Search the indi's
+			// Search the individuals
 			if (isset ($this->srindi)) {
 				$this->myindilist=search_indis($query_terms, array_keys($this->sgeds), 'AND');
 			} else {
@@ -524,7 +524,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			}
 		}
 
-		// Now we have the final list of indi's to be printed.
+		// Now we have the final list of individuals to be printed.
 		// We may add the assos at this point.
 
 		if ($this->showasso == 'on') {

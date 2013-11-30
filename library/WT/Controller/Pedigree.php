@@ -147,7 +147,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		$this->offsetarray = array();
 		$this->minyoffset = 0;
 		if ($this->treesize<3) $this->treesize=3;
-		// -- loop through all of id's in the array starting at the last and working to the first
+		// -- loop through all of IDs in the array starting at the last and working to the first
 		//-- calculation the box positions
 		for ($i=($this->treesize-1); $i>=0; $i--) {
 			// -- check to see if we have moved to the next generation

@@ -4,7 +4,7 @@
 // Definitions for the Roman calendar
 // TODO The 5.5.1 gedcom spec mentions this calendar, but gives no details of
 // how it is to be represented....  This class is just a place holder so that
-// webtrees won't compain if it receives one.
+// webtrees won’t compain if it receives one.
 //
 // NOTE: Since different calendars start their days at different times, (civil
 // midnight, solar midnight, sunset, sunrise, etc.), we convert on the basis of
@@ -36,10 +36,10 @@ class WT_Date_Roman extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DROMAN@';
 
 	protected function FormatGedcomYear() {
-		return sprintf('%04dAUC',$this->y);
+		return sprintf('%04dAUC', $this->y);
 	}
 
 	protected function FormatLongYear() {
-		return $this->y.'AUC';
+		return $this->y . 'AUC';
 	}
 }

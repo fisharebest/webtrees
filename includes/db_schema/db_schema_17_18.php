@@ -59,7 +59,7 @@ self::exec(
 	" ('Mozilla/5.0 (compatible; Konqueror/%', 'allow', 'Konqueror browser')"
 );
 
-// Don't do this.  We can't easily/safely migrate the data, and the user may
+// Don't do this.  We can’t easily/safely migrate the data, and the user may
 // wish to migrate it manually....
 //self::exec("DROP TABLE IF EXISTS `##wt_ip_address`");
 

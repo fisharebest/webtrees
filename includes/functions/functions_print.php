@@ -223,7 +223,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 }
 
 // print HTML header meta links
-// previously identical code in each theme's header.php file
+// previously identical code in each theme’s header.php file
 // now added as a function here.
 
 function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL) {

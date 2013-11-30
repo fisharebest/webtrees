@@ -438,7 +438,7 @@ function addRowToTable(num, pid, nam, head)
 }
 
 // CONFIG: this entire function is affected by myRowObject settings
-// If there isn't a checkbox in your row, then this function can't be used.
+// If there isn't a checkbox in your row, then this function can’t be used.
 function deleteChecked()
 {
 	if (hasLoaded) {
@@ -460,7 +460,7 @@ function deleteChecked()
 	}
 }
 
-// If there isn't an element with an onclick event in your row, then this function can't be used.
+// If there isn't an element with an onclick event in your row, then this function can’t be used.
 function deleteCurrentRow(obj)
 {
 	if (hasLoaded) {

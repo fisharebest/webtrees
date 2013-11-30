@@ -36,7 +36,7 @@ if ($user_id) {
 
 // Only an admin can edit the "default" page
 // Only managers can edit the "home page"
-// Only a user or an admin can edit a user's "my page"
+// Only a user or an admin can edit a user’s "my page"
 if (
 	$gedcom_id<0 && !WT_USER_IS_ADMIN ||
 	$gedcom_id>0 && !userGedcomAdmin(WT_USER_ID, $gedcom_id) ||

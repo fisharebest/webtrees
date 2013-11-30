@@ -291,7 +291,7 @@ class WT_Date {
 	}
 
 	// Calculate the the age of a person, on a date.
-	// If $d2 is null, today's date is used.
+	// If $d2 is null, today’s date is used.
 	static function getAge(WT_Date $d1, WT_Date $d2=null, $format) {
 		if ($d2) {
 			if ($d2->MaxJD()>=$d1->MinJD() && $d2->MinJD()<=$d1->MinJD()) {
@@ -339,7 +339,7 @@ class WT_Date {
 		if (is_null($d2)) {
 			return $d1->date1->GetAge(true, WT_CLIENT_JD, $warn_on_negative);
 		} else {
-			// If dates overlap, then can't calculate age.
+			// If dates overlap, then can’t calculate age.
 			if (self::Compare($d1, $d2)) {
 				return $d1->date1->GetAge(true, $d2->MinJD(), $warn_on_negative);
 			} if (self::Compare($d1, $d2)==0 && $d1->date1->minJD==$d2->MinJD()) {

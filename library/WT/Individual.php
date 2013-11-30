@@ -825,11 +825,11 @@ class WT_Individual extends WT_GedcomRecord {
 		return '@P.N. /@N.N./';
 	}
 
-	// Convert a name record into 'full' and 'sort' versions.
-	// Use the NAME field to generate the 'full' version, as the
-	// gedcom spec says that this is the individual's name, as they would write it.
+	// Convert a name record into ‘full’ and ‘sort’ versions.
+	// Use the NAME field to generate the ‘full’ version, as the
+	// gedcom spec says that this is the individual’s name, as they would write it.
 	// Use the SURN field to generate the sortable names.  Note that this field
-	// may also be used for the 'true' surname, perhaps spelt differently to that
+	// may also be used for the ‘true’ surname, perhaps spelt differently to that
 	// recorded in the NAME field. e.g.
 	//
 	// 1 NAME Robert /de Gliderow/

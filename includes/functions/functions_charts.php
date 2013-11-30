@@ -117,13 +117,13 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	print_pedigree_person($husb, 1, 2, $personcount);
 	echo "</td></tr></table>";
 	echo "</td>";
-	// husband's parents
+	// husband’s parents
 	$hfam = $husb->getPrimaryChildFamily();
 
 	if ($hfam || $sosa) {
 		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
 		echo "<td><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
-		// husband's father
+		// husband’s father
 		if ($hfam && $hfam->getHusband()) {
 			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
 			if ($sosa > 0) print_sosa_number($sosa * 4, $hfam->getHusband()->getXref(), "down");
@@ -140,7 +140,7 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 		echo '</td>';
 	}
 	if ($hfam || $sosa) {
-		// husband's mother
+		// husband’s mother
 		echo "</tr><tr><td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
 		if ($hfam && $hfam->getWife()) {
 			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
@@ -187,13 +187,13 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	print_pedigree_person($wife, 1, 3, $personcount);
 	echo "</td></tr></table>";
 	echo "</td>";
-	// wife's parents
+	// wife’s parents
 	$hfam = $wife->getPrimaryChildFamily();
 
 	if ($hfam || $sosa) {
 		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
 		echo "<td><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
-		// wife's father
+		// wife’s father
 		if ($hfam && $hfam->getHusband()) {
 			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\"><tr>";
 			if ($sosa > 0) print_sosa_number($sosa * 4 + 2, $hfam->getHusband()->getXref(), "down");
@@ -210,7 +210,7 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 		echo '</td>';
 	}
 	if ($hfam || $sosa) {
-		// wife's mother
+		// wife’s mother
 		echo "</tr><tr><td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
 		if ($hfam && $hfam->getWife()) {
 			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\"><tr>";
@@ -398,7 +398,7 @@ function print_sosa_family($famid, $childid, $sosa, $label="", $parid="", $gpari
  * creates an array with all of the individual ids to be displayed on an ascendancy chart
  *
  * the id in position 1 is the root person.  The other positions are filled according to the following algorithm
- * if an individual is at position $i then individual $i's father will occupy position ($i*2) and $i's mother
+ * if an individual is at position $i then individual $i’s father will occupy position ($i*2) and $i’s mother
  * will occupy ($i*2)+1
  *
  * @param string $rootid
@@ -456,7 +456,7 @@ function print_url_arrow($id, $url, $label, $dir=2) {
 	$array_style=array("icon-larrow", "icon-rarrow", "icon-uarrow", "icon-darrow");
 	$astyle=$array_style[$adir];
 
-	// Labels include people's names, which may contain markup
+	// Labels include people’s names, which may contain markup
 	echo '<a href="'.$url.'" title="'.strip_tags($label).'" class="'.$astyle.'"></a>';
 }
 

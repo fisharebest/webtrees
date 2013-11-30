@@ -194,7 +194,7 @@ class WT_Menu {
 	}
 
 	/**
-	* returns the number of submenu's in this menu
+	* returns the number of submenus in this menu
 	* @return int
 	*/
 	function subCount() {

@@ -784,7 +784,7 @@ class TextBox extends Element {
 	*/
 	public $padding;
 	/**
-	* Resets this box last height after it's done
+	* Resets this box last height after it’s done
 	*/
 	public $reseth;
 

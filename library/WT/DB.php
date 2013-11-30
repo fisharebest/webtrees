@@ -219,8 +219,8 @@ class WT_DB {
 		try {
 			$current_version=(int)WT_Site::preference($schema_name);
 		} catch (PDOException $e) {
-			// During initial installation, this table won't exist.
-			// It will only be a problem if we can't subsequently create it.
+			// During initial installation, this table won’t exist.
+			// It will only be a problem if we can’t subsequently create it.
 			$current_version=0;
 		}
 

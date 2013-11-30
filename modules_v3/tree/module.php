@@ -25,7 +25,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class tree_WT_Module extends WT_Module implements WT_Module_Tab {
-	var $headers; // CSS and script to include in the top of <head> section, before theme's CSS
+	var $headers; // CSS and script to include in the top of <head> section, before theme’s CSS
 	var $js; // the TreeViewHandler javascript
 
 	// Extend WT_Module. This title should be normalized when this module will be added officially

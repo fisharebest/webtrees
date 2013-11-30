@@ -161,7 +161,7 @@ function initialize() {
   	});
 
 
-    // ===Next, get the map's default panorama and set up some defaults. ===========================
+    // ===Next, get the map’s default panorama and set up some defaults. ===========================
 
     // --- First check if Browser supports html5 ---
     var browserName=navigator.appName;

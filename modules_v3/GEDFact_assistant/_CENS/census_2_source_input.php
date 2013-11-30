@@ -401,7 +401,7 @@ if (!defined('WT_WEBTREES')) {
 			for (var j=2; j<tr.cells.length; j++) {
 				if (j!=73) {
 					// 73 is the Chil born array column
-					// therefore miss out all cols except this column's cells
+					// therefore miss out all cols except this column’s cells
 					continue;
 				} else {
 					// Calculate Children Born, Living, Died --------------------------

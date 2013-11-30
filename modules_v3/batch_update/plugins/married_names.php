@@ -27,7 +27,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class married_names_bu_plugin extends base_plugin {
-	var $surname=null; // User option: add or replace husband's surname
+	var $surname=null; // User option: add or replace husband’s surname
 
 	static function getName() {
 		return WT_I18N::translate('Add missing married names');

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-28 15:21+0000\n"
+"POT-Creation-Date: 2013-11-30 14:32+0000\n"
 "PO-Revision-Date: 2013-08-04 16:35+0000\n"
 "Last-Translator: mimo <mimo0511@gmail.com>\n"
 "Language-Team: \n"
@@ -65,6 +65,7 @@ msgid "%1$d individual displayed, out of the normal total of %2$d, from %3$d gen
 msgid_plural "%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #. I18N: %1$d is a count of individuals, %2$s is a list of their names
 #: modules_v3/googlemap/module.php:827
@@ -73,6 +74,7 @@ msgid "%1$d individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:743
@@ -141,6 +143,15 @@ msgstr ""
 msgid "%1$s does not have a link back to %2$s."
 msgstr ""
 
+#. I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds
+#: admin_site_upgrade.php:357 admin_site_upgrade.php:432
+#, php-format
+msgid "%1$s file was extracted in %2$s seconds."
+msgid_plural "%1$s files were extracted in %2$s seconds."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:182
 #, php-format
@@ -151,6 +162,12 @@ msgstr ""
 #: admin_media.php:406 library/WT/Media.php:282
 #, php-format
 msgid "%1$s × %2$s pixels"
+msgstr ""
+
+#. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
+#: admin_site_upgrade.php:306
+#, php-format
+msgid "%1$sKB were downloaded in %2$s seconds."
 msgstr ""
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
@@ -177,6 +194,7 @@ msgid "%d Child"
 msgid_plural "%d Children"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: lifespan.php:200
 #, php-format
@@ -264,6 +282,7 @@ msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: includes/functions/functions_date.php:59 library/WT/I18N.php:351
@@ -288,6 +307,7 @@ msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: library/WT/I18N.php:397
 #, php-format
@@ -303,6 +323,7 @@ msgid "%s individual is private."
 msgid_plural "%s individuals are private."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:116
@@ -316,6 +337,7 @@ msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: library/WT/I18N.php:400
 #, php-format
@@ -648,15 +670,15 @@ msgstr ""
 msgid "<b>webtrees</b> reply address"
 msgstr ""
 
-#: login.php:128
+#: login.php:144
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 msgstr "<center><b>Dobrodošli na genološku web stranicu</b></center><br>Pristup ovomj stranici je dozvoljen <u>registriranim</u> korisnicima.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-mailom nakon pregleda prijave."
 
-#: login.php:131
+#: login.php:147
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 msgstr "<center><b>Dobrodošli na gednolšku web stranicu</b></center><br>Pristup stranici je dopušten  <u>samo članovima obitelji</u>.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-mailom nakon pregleda prijave."
 
-#: login.php:125
+#: login.php:141
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
 msgstr "<center><b>Dobrodošli na genološku web stranicu</b></center><br>Pristup stranici je dopušten svakome tko ima korisnički račun.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate korisnički račun, možete se prijaviti za dobivanje jednog na prikladnom linku ispod<br><br>Nakon pregledavanja vaše prijave, administrator će aktivirati vaš račun. Primiti će te e-mail sa potvrdom aktivacije računa na vaš e-mail."
 
@@ -666,7 +688,7 @@ msgstr "<center><b>Dobrodošli na genološku web stranicu</b></center><br>Pristu
 msgid "<default theme>"
 msgstr ""
 
-#: login.php:374
+#: login.php:390
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
 msgstr ""
 
@@ -766,18 +788,22 @@ msgid "A media object is a record in the family tree which contains information 
 msgstr ""
 
 #. I18N: %s is a username
-#: login.php:226
+#: login.php:242
 #, php-format
 msgid "A new password has been created and emailed to %s.  You can change this password after you login."
 msgstr ""
 
-#: login.php:213
+#: login.php:229
 msgid "A new password was requested for your user name."
 msgstr ""
 
-#: login.php:473
+#: login.php:489
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
+msgstr ""
+
+#: admin.php:63 admin_site_upgrade.php:83
+msgid "A new version of webtrees is available."
 msgstr ""
 
 #. I18N: Description of the “Journal” module
@@ -786,7 +812,7 @@ msgid "A private area to record notes or keep a journal."
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:279
+#: login.php:295
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
 msgstr ""
@@ -1048,10 +1074,6 @@ msgstr "אקדיה"
 msgid "Accept"
 msgstr "Prihvati"
 
-#: admin.php:73
-msgid "Accept or reject any pending changes."
-msgstr ""
-
 #: admin_module_blocks.php:56 admin_module_menus.php:75
 #: admin_module_reports.php:56 admin_module_sidebar.php:75
 #: admin_module_tabs.php:75
@@ -1148,7 +1170,7 @@ msgstr ""
 msgid "Add %s to cart"
 msgstr ""
 
-#: modules_v3/faq/module.php:145 modules_v3/faq/module.php:358
+#: modules_v3/faq/module.php:145 modules_v3/faq/module.php:359
 msgid "Add FAQ item"
 msgstr ""
 
@@ -1481,7 +1503,7 @@ msgstr "Administrator"
 msgid "Administrator account"
 msgstr ""
 
-#: admin.php:163
+#: admin.php:138
 msgid "Administrators"
 msgstr ""
 
@@ -1579,12 +1601,12 @@ msgid "Adoption of a granddaughter"
 msgstr "Posvojenje unuke"
 
 #: library/WT/Gedcom/Tag.php:344
-msgctxt "daughter's daughter"
+msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
 msgstr "Posvojenje unuke po kćeri"
 
 #: library/WT/Gedcom/Tag.php:350
-msgctxt "son's daughter"
+msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
 msgstr "Posvojenje unuke po sinu"
 
@@ -1593,12 +1615,12 @@ msgid "Adoption of a grandson"
 msgstr "Posvojenje unuka"
 
 #: library/WT/Gedcom/Tag.php:343
-msgctxt "daughter's son"
+msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
 msgstr "Posvojenje unuka"
 
 #: library/WT/Gedcom/Tag.php:349
-msgctxt "son's son"
+msgctxt "son’s son"
 msgid "Adoption of a grandson"
 msgstr "Posvojenje unuka"
 
@@ -1664,7 +1686,7 @@ msgstr "Afrika"
 msgid "After creating the family tree, you will be able to upload or import data from a GEDCOM file."
 msgstr ""
 
-#: login.php:216
+#: login.php:232
 msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
 msgstr ""
 
@@ -1770,8 +1792,8 @@ msgstr ""
 #: indilist.php:68 indilist.php:74 indilist.php:80 indilist.php:163
 #: indilist.php:165 indilist.php:249 indilist.php:251 library/WT/I18N.php:416
 #: library/WT/Stats.php:3297 modules_v3/ahnentafel_report/report.xml:7
-#: modules_v3/descendancy_report/report.xml:6 modules_v3/faq/module.php:184
-#: modules_v3/faq/module.php:371 modules_v3/googlemap/admin_places.php:674
+#: modules_v3/descendancy_report/report.xml:6 modules_v3/faq/module.php:185
+#: modules_v3/faq/module.php:372 modules_v3/googlemap/admin_places.php:674
 #: modules_v3/googlemap/module.php:1473 modules_v3/googlemap/module.php:1489
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -1797,8 +1819,12 @@ msgstr ""
 msgid "All family facts"
 msgstr ""
 
-#: login.php:380
+#: login.php:396
 msgid "All fields must be completed."
+msgstr ""
+
+#: admin_site_upgrade.php:387
+msgid "All files have read and write permission."
 msgstr ""
 
 #: admin_trees_config.php:1076 help_text.php:583
@@ -1898,6 +1924,11 @@ msgstr ""
 msgid "An edit menu for individuals, families, sources, etc."
 msgstr ""
 
+#: admin_site_upgrade.php:330 admin_site_upgrade.php:349
+#: admin_site_upgrade.php:359 admin_site_upgrade.php:434
+msgid "An error occurred when unzipping the file."
+msgstr ""
+
 #. I18N: Description of the “Interactive tree” module
 #: modules_v3/tree/module.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
@@ -1970,7 +2001,7 @@ msgstr ""
 msgid "Annulment"
 msgstr "Poništenje"
 
-#: modules_v3/faq/module.php:168
+#: modules_v3/faq/module.php:169
 msgid "Answer"
 msgstr "Odgovor"
 
@@ -2045,7 +2076,7 @@ msgstr "Travanj"
 msgid "Aqua Marine"
 msgstr "Aqua Marine"
 
-#: modules_v3/faq/module.php:395
+#: modules_v3/faq/module.php:396
 msgid "Are you sure you want to delete this FAQ entry?"
 msgstr ""
 
@@ -2419,12 +2450,12 @@ msgid "Baptism of a granddaughter"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:400
-msgctxt "daughter's daughter"
+msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:406
-msgctxt "son's daughter"
+msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
 msgstr ""
 
@@ -2433,12 +2464,12 @@ msgid "Baptism of a grandson"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:399
-msgctxt "daughter's son"
+msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:405
-msgctxt "son's son"
+msgctxt "son’s son"
 msgid "Baptism of a grandson"
 msgstr ""
 
@@ -2744,12 +2775,12 @@ msgid "Birth of a granddaughter"
 msgstr "Rođenje unuke"
 
 #: library/WT/Gedcom/Tag.php:437
-msgctxt "daughter's daughter"
+msgctxt "daughter’s daughter"
 msgid "Birth of a granddaughter"
 msgstr "Rođenje unuke po kćeri"
 
 #: library/WT/Gedcom/Tag.php:443
-msgctxt "son's daughter"
+msgctxt "son’s daughter"
 msgid "Birth of a granddaughter"
 msgstr "Rođenje unuke po sinu"
 
@@ -2758,12 +2789,12 @@ msgid "Birth of a grandson"
 msgstr "Rođenje unuka"
 
 #: library/WT/Gedcom/Tag.php:436
-msgctxt "daughter's son"
+msgctxt "daughter’s son"
 msgid "Birth of a grandson"
 msgstr "Rođenje unuka"
 
 #: library/WT/Gedcom/Tag.php:442
-msgctxt "son's son"
+msgctxt "son’s son"
 msgid "Birth of a grandson"
 msgstr "Rođenje unuka"
 
@@ -2934,12 +2965,12 @@ msgid "Brit milah of a grandson"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:818
-msgctxt "daughter's son"
+msgctxt "daughter’s son"
 msgid "Brit milah of a grandson"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:819
-msgctxt "son's son"
+msgctxt "son’s son"
 msgid "Brit milah of a grandson"
 msgstr ""
 
@@ -3034,12 +3065,12 @@ msgid "Burial of a granddaughter"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:476
-msgctxt "daughter's daughter"
+msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:482
-msgctxt "son's daughter"
+msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
 msgstr ""
 
@@ -3060,12 +3091,12 @@ msgid "Burial of a grandson"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:475
-msgctxt "daughter's son"
+msgctxt "daughter’s son"
 msgid "Burial of a grandson"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:481
-msgctxt "son's son"
+msgctxt "son’s son"
 msgid "Burial of a grandson"
 msgstr ""
 
@@ -3182,6 +3213,7 @@ msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #. I18N: %s is an amount of memory, such as 32MB
 #: help_text.php:671
@@ -3276,6 +3308,14 @@ msgstr "Razlog"
 #: library/WT/Gedcom/Tag.php:171
 msgid "Cause of death"
 msgstr "Uzrok smrti"
+
+#: admin_site_upgrade.php:202
+msgid "Caution: old modules may not work, or they may prevent webtrees from working."
+msgstr ""
+
+#: admin_site_upgrade.php:265
+msgid "Caution: old themes may not work, or they may prevent webtrees from working."
+msgstr ""
 
 #: library/WT/Stats.php:3807
 msgid "Cayman Islands"
@@ -3378,6 +3418,7 @@ msgid "Changes in the last day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: themes/_administration/header.php:122
 msgid "Changes log"
@@ -3411,8 +3452,27 @@ msgstr "Grafički prikazi"
 msgid "Check access rights on this directory."
 msgstr ""
 
+#: admin_site_upgrade.php:370
+msgid "Check file permissions…"
+msgstr ""
+
+#. I18N: The system is about to [...]
+#: admin_site_upgrade.php:116
+msgid "Check for custom modules…"
+msgstr ""
+
+#. I18N: The system is about to [...]
+#: admin_site_upgrade.php:218
+msgid "Check for custom themes…"
+msgstr ""
+
 #: admin_trees_check.php:34 themes/_administration/header.php:121
 msgid "Check for errors"
+msgstr ""
+
+#. I18N: The system is about to [...]
+#: admin_site_upgrade.php:97
+msgid "Check for pending changes…"
 msgstr ""
 
 #: help_text.php:460 relationship.php:138
@@ -3556,12 +3616,12 @@ msgid "Christening of a granddaughter"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:542
-msgctxt "daughter's daughter"
+msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:548
-msgctxt "son's daughter"
+msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
 msgstr ""
 
@@ -3570,12 +3630,12 @@ msgid "Christening of a grandson"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:541
-msgctxt "daughter's son"
+msgctxt "daughter’s son"
 msgid "Christening of a grandson"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:547
-msgctxt "son's son"
+msgctxt "son’s son"
 msgid "Christening of a grandson"
 msgstr ""
 
@@ -3681,7 +3741,7 @@ msgstr "Klikni na red te povucite za preslaganje "
 msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
 msgstr ""
 
-#: modules_v3/faq/module.php:281
+#: modules_v3/faq/module.php:282
 msgid "Click here to Add, Edit, or Delete"
 msgstr ""
 
@@ -3697,7 +3757,7 @@ msgstr ""
 msgid "Click name to add individual to add links list."
 msgstr ""
 
-#: modules_v3/faq/module.php:278
+#: modules_v3/faq/module.php:279
 msgid "Click on a title to go straight to it, or scroll down to read them all"
 msgstr ""
 
@@ -3779,8 +3839,8 @@ msgstr ""
 msgid "Comment"
 msgstr "Komentar"
 
-#: admin_users.php:207 help_text.php:1348 login.php:283 login.php:309
-#: login.php:407
+#: admin_users.php:207 help_text.php:1348 login.php:299 login.php:325
+#: login.php:423
 msgid "Comments"
 msgstr "Komentari"
 
@@ -3838,7 +3898,7 @@ msgstr ""
 msgid "Configure"
 msgstr "Postavke"
 
-#: admin_users.php:389 edituser.php:152 help_text.php:1289 login.php:402
+#: admin_users.php:389 edituser.php:152 help_text.php:1289 login.php:418
 msgid "Confirm password"
 msgstr "Potvrdite lozinku"
 
@@ -3909,8 +3969,14 @@ msgstr ""
 msgid "Copy"
 msgstr ""
 
-#: admin.php:77
-msgid "Copy the new files to the web server, replacing any that have the same name."
+#. I18N: The system is about to [...]
+#: admin_site_upgrade.php:410
+msgid "Copy files…"
+msgstr ""
+
+#: admin_site_upgrade.php:381
+#, php-format
+msgid "Copy these files to the folder %s, replacing any that have the same name."
 msgstr ""
 
 #. I18N: gedcom tag COPR
@@ -3935,11 +4001,11 @@ msgstr "קוסטה ריקה"
 msgid "Cote d’Ivoire"
 msgstr "Obala Bjelokosti"
 
-#: login.php:551
+#: login.php:567
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr ""
 
-#: admin.php:212 library/WT/Stats.php:3298
+#: admin.php:187 library/WT/Stats.php:3298
 msgid "Count"
 msgstr "Broj"
 
@@ -4062,12 +4128,12 @@ msgid "Cremation of a granddaughter"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:579
-msgctxt "daughter's daughter"
+msgctxt "daughter’s daughter"
 msgid "Cremation of a granddaughter"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:585
-msgctxt "son's daughter"
+msgctxt "son’s daughter"
 msgid "Cremation of a granddaughter"
 msgstr ""
 
@@ -4084,12 +4150,12 @@ msgid "Cremation of a grandson"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:578
-msgctxt "daughter's son"
+msgctxt "daughter’s son"
 msgid "Cremation of a grandson"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:584
-msgctxt "son's son"
+msgctxt "son’s son"
 msgid "Cremation of a grandson"
 msgstr ""
 
@@ -4177,9 +4243,17 @@ msgstr "Događaj (od korisnika)"
 msgid "Custom fact"
 msgstr ""
 
+#: admin_site_upgrade.php:190 admin_site_upgrade.php:193
+msgid "Custom module"
+msgstr ""
+
 #: find.php:480
 msgid "Custom tags"
 msgstr "Personalizirane oznake"
+
+#: admin_site_upgrade.php:250 admin_site_upgrade.php:253
+msgid "Custom theme"
+msgstr ""
 
 #: admin_site_config.php:163 help_text.php:1030
 msgid "Custom welcome text"
@@ -4220,7 +4294,7 @@ msgstr "Podatci"
 msgid "Data folder"
 msgstr ""
 
-#: login.php:545
+#: login.php:561
 msgid "Data was not correct, please try again"
 msgstr ""
 
@@ -4439,7 +4513,7 @@ msgstr "Kćer"
 msgid "Daughter of %s"
 msgstr ""
 
-#: admin.php:255 calendar.php:138 library/WT/MenuBar.php:374
+#: admin.php:230 calendar.php:138 library/WT/MenuBar.php:374
 msgid "Day"
 msgstr ""
 
@@ -4626,12 +4700,12 @@ msgid "Death of a granddaughter"
 msgstr "Smrt unuke"
 
 #: library/WT/Gedcom/Tag.php:646
-msgctxt "daughter's daughter"
+msgctxt "daughter’s daughter"
 msgid "Death of a granddaughter"
 msgstr "Smrt unuke po kćeri"
 
 #: library/WT/Gedcom/Tag.php:652
-msgctxt "son's daughter"
+msgctxt "son’s daughter"
 msgid "Death of a granddaughter"
 msgstr "Smrt unuke po sinu"
 
@@ -4648,12 +4722,12 @@ msgid "Death of a grandson"
 msgstr "Smrt unuka/unuke"
 
 #: library/WT/Gedcom/Tag.php:645
-msgctxt "daughter's son"
+msgctxt "daughter’s son"
 msgid "Death of a grandson"
 msgstr "Smrt unuka"
 
 #: library/WT/Gedcom/Tag.php:651
-msgctxt "son's son"
+msgctxt "son’s son"
 msgid "Death of a grandson"
 msgstr "Smrt unuka"
 
@@ -4850,7 +4924,7 @@ msgstr ""
 #: library/WT/Controller/Family.php:109
 #: library/WT/Controller/Individual.php:306 library/WT/Controller/Media.php:83
 #: library/WT/Controller/Note.php:70 library/WT/Controller/Repository.php:62
-#: library/WT/Controller/Source.php:62 modules_v3/faq/module.php:395
+#: library/WT/Controller/Source.php:62 modules_v3/faq/module.php:396
 #: modules_v3/gedcom_news/module.php:119
 #: modules_v3/googlemap/admin_places.php:585
 #: modules_v3/user_blog/module.php:91 modules_v3/user_messages/module.php:85
@@ -4878,6 +4952,11 @@ msgstr ""
 msgid "Delete name"
 msgstr ""
 
+#. I18N: The system is about to [...]
+#: admin_site_upgrade.php:459
+msgid "Delete temporary files…"
+msgstr ""
+
 #: admin_site_clean.php:88
 msgid "Deleted files:"
 msgstr ""
@@ -4900,6 +4979,10 @@ msgstr "דנמרק"
 
 #: library/WT/Gedcom/Code/Temp.php:93
 msgid "Denver, Colorado"
+msgstr ""
+
+#: admin_site_upgrade.php:84
+msgid "Depending on your server configuration, you may be able to upgrade automatically."
 msgstr ""
 
 #: help_text.php:1213
@@ -4954,11 +5037,11 @@ msgstr "Opis"
 msgid "Description META tag"
 msgstr ""
 
-#: login.php:397
+#: login.php:413
 msgid "Desired password"
 msgstr ""
 
-#: login.php:392
+#: login.php:408
 msgid "Desired user name"
 msgstr ""
 
@@ -5083,6 +5166,14 @@ msgstr "Direktna linija predaka"
 msgid "Direct line ancestors and their families"
 msgstr ""
 
+#: admin_site_upgrade.php:201
+msgid "Disable these modules"
+msgstr ""
+
+#: admin_site_upgrade.php:264
+msgid "Disable these themes"
+msgstr ""
+
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: library/WT/I18N.php:420
 #, php-format
@@ -5170,10 +5261,10 @@ msgstr "רפובליקה דומיניקנית"
 msgid "Download"
 msgstr ""
 
-#. I18N: %s is a URL/link to a .ZIP file
-#: admin.php:71
+#. I18N: The system is about to [...]; %s is a URL.
+#: admin_site_upgrade.php:299
 #, php-format
-msgid "Download %s and extract the files."
+msgid "Download %s…"
 msgstr ""
 
 #: mediaviewer.php:104
@@ -5209,11 +5300,11 @@ msgstr "Skinite izvješće"
 msgid "Duodi"
 msgstr ""
 
-#: admin_users.php:261 edituser.php:59 login.php:246
+#: admin_users.php:261 edituser.php:59 login.php:262
 msgid "Duplicate email address.  A user with that email already exists."
 msgstr "Postojeća adresa e-pošte."
 
-#: admin_users.php:258 edituser.php:57 login.php:244
+#: admin_users.php:258 edituser.php:57 login.php:260
 msgid "Duplicate user name.  A user with that user name already exists.  Please choose another user name."
 msgstr "Postojeće korisničko ime. Korisnik sa tim imenom već postoji. Molimo odaberite drugo korisničko ime."
 
@@ -5276,7 +5367,7 @@ msgstr "אקוודור"
 #: library/WT/Controller/Individual.php:246
 #: library/WT/Controller/Individual.php:265 library/WT/Controller/Media.php:52
 #: library/WT/Controller/Note.php:51 library/WT/Controller/Repository.php:51
-#: library/WT/Controller/Source.php:51 modules_v3/faq/module.php:392
+#: library/WT/Controller/Source.php:51 modules_v3/faq/module.php:393
 #: modules_v3/gedcom_news/module.php:118
 #: modules_v3/googlemap/admin_places.php:585
 #: modules_v3/googlemap/admin_places.php:609
@@ -5416,12 +5507,12 @@ msgstr ""
 #. I18N: gedcom tag _EMAIL
 #: admin_users.php:378 edituser.php:156 help_text.php:1197
 #: library/WT/Gedcom/Tag.php:182 library/WT/Gedcom/Tag.php:183
-#: library/WT/Gedcom/Tag.php:184 library/WT/Gedcom/Tag.php:700 login.php:387
+#: library/WT/Gedcom/Tag.php:184 library/WT/Gedcom/Tag.php:700 login.php:403
 #: setup.php:408
 msgid "Email address"
 msgstr "Adresa e-pošte"
 
-#: includes/authentication.php:283 login.php:282 message.php:129
+#: includes/authentication.php:283 login.php:298 message.php:129
 #: modules_v3/user_messages/module.php:88
 msgid "Email address:"
 msgstr "Adresa e-pošte:"
@@ -5714,7 +5805,7 @@ msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s 
 msgstr ""
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:408
+#: login.php:424
 msgid "Explain why you are requesting an account."
 msgstr ""
 
@@ -5722,6 +5813,11 @@ msgstr ""
 #: admin_trees_manage.php:212
 msgid "Export"
 msgstr "Izvoz"
+
+#. I18N: The system is about to [...]
+#: admin_site_upgrade.php:281
+msgid "Export all family trees to GEDCOM files…"
+msgstr ""
 
 #: help_text.php:1202
 msgid "Export family tree"
@@ -5752,15 +5848,15 @@ msgid "Eye color"
 msgstr "Boja očiju"
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
-#: modules_v3/faq/module.php:32 modules_v3/faq/module.php:430
+#: modules_v3/faq/module.php:32 modules_v3/faq/module.php:431
 msgid "FAQ"
 msgstr "Često postavljana pitanja"
 
-#: modules_v3/faq/help_text.php:39 modules_v3/faq/module.php:175
+#: modules_v3/faq/help_text.php:39 modules_v3/faq/module.php:176
 msgid "FAQ position"
 msgstr ""
 
-#: modules_v3/faq/help_text.php:44 modules_v3/faq/module.php:176
+#: modules_v3/faq/help_text.php:44 modules_v3/faq/module.php:177
 msgid "FAQ visibility"
 msgstr ""
 
@@ -5874,7 +5970,7 @@ msgid "Falkland Islands"
 msgstr "איי פוקלנד"
 
 #. I18N: Name of a module
-#: admin.php:217 admin.php:257 ancestry.php:101 calendar.php:410
+#: admin.php:192 admin.php:232 ancestry.php:101 calendar.php:410
 #: descendancy.php:70 famlist.php:130 famlist.php:133
 #: includes/functions/functions_print_lists.php:928
 #: includes/functions/functions_print_lists.php:1058
@@ -5898,8 +5994,8 @@ msgstr "Obitelji sa izvorima"
 #. I18N: Name of a module/report
 #: edit_interface.php:955 includes/functions/functions_edit.php:705
 #: inverselink.php:120 library/WT/Gedcom/Tag.php:198
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1306
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1313
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1309
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1316
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:574
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:581
 #: modules_v3/family_group_report/module.php:33
@@ -5973,7 +6069,7 @@ msgstr "Obitelj od %s"
 #: admin_site_logs.php:257 admin_trees_manage.php:180 admin_users.php:227
 #: admin_users.php:431 edit_changes.php:182
 #: modules_v3/batch_update/admin_batch_update.php:61
-#: modules_v3/faq/module.php:351 modules_v3/googlemap/module.php:1468
+#: modules_v3/faq/module.php:352 modules_v3/googlemap/module.php:1468
 #: modules_v3/html/module.php:294 modules_v3/stories/module.php:332
 msgid "Family tree"
 msgstr "Obiteljsko stablo"
@@ -5991,7 +6087,7 @@ msgid "Family tree configuration"
 msgstr "Oblikovanje obiteljskog stabla"
 
 #. I18N: %s is a filename
-#: admin_trees_export.php:109
+#: admin_site_upgrade.php:286 admin_trees_export.php:36
 #, php-format
 msgid "Family tree exported to %s."
 msgstr "Obiteljsko stablo izvezeno u %s"
@@ -6000,7 +6096,7 @@ msgstr "Obiteljsko stablo izvezeno u %s"
 msgid "Family tree title"
 msgstr ""
 
-#: admin.php:198 admin_trees_manage.php:28 search.php:219
+#: admin.php:173 admin_trees_manage.php:28 search.php:219
 #: themes/_administration/header.php:104 themes/_administration/header.php:106
 msgid "Family trees"
 msgstr "Obiteljska stabla"
@@ -6227,7 +6323,7 @@ msgstr ""
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr ""
 
-#: admin.php:109
+#: admin.php:84
 msgid "Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them."
 msgstr ""
 
@@ -6469,7 +6565,7 @@ msgstr "הפולינזים הצרפתיים"
 msgid "French Southern Territories"
 msgstr "הטריטוריות הדרומיות של צרפת"
 
-#: modules_v3/faq/help_text.php:31 modules_v3/faq/module.php:276
+#: modules_v3/faq/help_text.php:31 modules_v3/faq/module.php:277
 msgid "Frequently asked questions"
 msgstr "Često postavljana pitanja"
 
@@ -6958,17 +7054,17 @@ msgstr ""
 msgid "Height"
 msgstr "Visina"
 
-#: login.php:212 login.php:299
+#: login.php:228 login.php:315
 #, php-format
 msgid "Hello %s…"
 msgstr ""
 
-#: login.php:352
+#: login.php:368
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr ""
 
-#: login.php:277 login.php:470
+#: login.php:293 login.php:486
 msgid "Hello administrator…"
 msgstr ""
 
@@ -7290,7 +7386,7 @@ msgstr ""
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr ""
 
-#: login.php:310
+#: login.php:326
 msgid "If you didn’t request an account, you can just delete this message."
 msgstr ""
 
@@ -7488,7 +7584,7 @@ msgstr "Osobni zapis"
 msgid "Individual who lived the longest"
 msgstr ""
 
-#: admin.php:214 admin.php:256 ancestry.php:95 calendar.php:409
+#: admin.php:189 admin.php:231 ancestry.php:95 calendar.php:409
 #: descendancy.php:67 includes/functions/functions_print_lists.php:926
 #: includes/functions/functions_print_lists.php:1056
 #: includes/functions/functions_print_lists.php:1262
@@ -7538,7 +7634,7 @@ msgctxt "MALE"
 msgid "Informant"
 msgstr ""
 
-#: login.php:302
+#: login.php:318
 msgid "Information about the request is shown under the link below."
 msgstr ""
 
@@ -7616,6 +7712,10 @@ msgstr "אי מאן"
 #: library/WT/Stats.php:3864
 msgid "Israel"
 msgstr "ישראל"
+
+#: admin_site_upgrade.php:81 admin_site_upgrade.php:85
+msgid "It can take several minutes to download and install the upgrade.  Be patient."
+msgstr ""
 
 #: library/WT/Stats.php:3865
 msgid "Italy"
@@ -8188,10 +8288,6 @@ msgstr "Živući"
 msgid "Living individuals"
 msgstr ""
 
-#: admin.php:80
-msgid "Load all your family trees from disk, by using the “import” function for each one."
-msgstr ""
-
 #: import.php:77
 #, php-format
 msgid "Loading data from GEDCOM: %.1f%%"
@@ -8246,7 +8342,7 @@ msgstr "Logirani ste kao "
 
 #. I18N: Name of a module
 #: admin_site_config.php:62 includes/functions/functions_print.php:273
-#: login.php:108 login.php:156 modules_v3/login_block/module.php:32
+#: login.php:124 login.php:172 modules_v3/login_block/module.php:32
 #: modules_v3/login_block/module.php:64 modules_v3/login_block/module.php:81
 msgid "Login"
 msgstr "Prijava"
@@ -8291,7 +8387,7 @@ msgstr "Geografska dužina"
 msgid "Los Angeles, California"
 msgstr ""
 
-#: login.php:170 login.php:186 login.php:211
+#: login.php:186 login.php:202 login.php:227
 #: modules_v3/login_block/module.php:96
 msgid "Lost password request"
 msgstr "Zaboravili ste lozinku"
@@ -8350,10 +8446,6 @@ msgstr "Pošalji mail na: link"
 msgid "Main section blocks"
 msgstr "Blokovi glavne sekcije"
 
-#: admin.php:87
-msgid "Make a backup of your database before you start."
-msgstr ""
-
 #: library/WT/Stats.php:3908
 msgid "Malawi"
 msgstr "מלאווי"
@@ -8402,7 +8494,7 @@ msgstr "Uredi poveznice"
 msgid "Manager"
 msgstr "Upravitelj"
 
-#: admin.php:164
+#: admin.php:139
 msgid "Managers"
 msgstr ""
 
@@ -8590,12 +8682,12 @@ msgid "Marriage of a granddaughter"
 msgstr "Vjenčanje unuke"
 
 #: library/WT/Gedcom/Tag.php:751
-msgctxt "daughter's daughter"
+msgctxt "daughter’s daughter"
 msgid "Marriage of a granddaughter"
 msgstr "Vjenčanje unuke po kćeri"
 
 #: library/WT/Gedcom/Tag.php:757
-msgctxt "son's daughter"
+msgctxt "son’s daughter"
 msgid "Marriage of a granddaughter"
 msgstr "Vjenčanje unuke po sinu"
 
@@ -8604,12 +8696,12 @@ msgid "Marriage of a grandson"
 msgstr "Brak unuka"
 
 #: library/WT/Gedcom/Tag.php:750
-msgctxt "daughter's son"
+msgctxt "daughter’s son"
 msgid "Marriage of a grandson"
 msgstr "Brak unuka po kćeri"
 
 #: library/WT/Gedcom/Tag.php:756
-msgctxt "son's son"
+msgctxt "son’s son"
 msgid "Marriage of a grandson"
 msgstr "Brak unuka po sinu"
 
@@ -8835,7 +8927,7 @@ msgstr ""
 msgid "Media object"
 msgstr ""
 
-#: admin.php:226 admin.php:260
+#: admin.php:201 admin.php:235
 #: includes/functions/functions_print_lists.php:930
 #: includes/functions/functions_print_lists.php:1060
 #: library/WT/MenuBar.php:303 medialist.php:30
@@ -9113,7 +9205,7 @@ msgstr ""
 msgid "Montevideo, Uruguay"
 msgstr ""
 
-#: admin.php:255 calendar.php:154 library/WT/MenuBar.php:377
+#: admin.php:230 calendar.php:154 library/WT/MenuBar.php:377
 msgid "Month"
 msgstr ""
 
@@ -9524,13 +9616,13 @@ msgid "New data"
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:292
+#: login.php:308
 #, php-format
 msgid "New registration at %s"
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:490
+#: login.php:506
 #, php-format
 msgid "New user at %s"
 msgstr ""
@@ -9653,6 +9745,14 @@ msgstr "Nema kontakta"
 msgid "No contact method"
 msgstr ""
 
+#: admin_site_upgrade.php:207
+msgid "No custom modules are enabled."
+msgstr ""
+
+#: admin_site_upgrade.php:270
+msgid "No custom themes are enabled."
+msgstr ""
+
 #: admin_trees_check.php:230
 msgid "No errors were found."
 msgstr ""
@@ -9665,6 +9765,7 @@ msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: includes/functions/functions_print_lists.php:1786
 #: includes/functions/functions_print_lists.php:1893
@@ -9756,6 +9857,10 @@ msgstr "Nije pronađen nijedan rezultat."
 
 #: includes/functions/functions_edit.php:519
 msgid "No temple - living ordinance"
+msgstr ""
+
+#: admin_site_upgrade.php:67
+msgid "No upgrade information is available."
 msgstr ""
 
 #: library/WT/Stats.php:1069
@@ -9866,9 +9971,10 @@ msgid "Note: “living” is defined (if no death or burial is known) as ending 
 msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #. I18N: Name of a module
-#: admin.php:229 admin.php:261 library/WT/Controller/Search.php:574
+#: admin.php:204 admin.php:236 library/WT/Controller/Search.php:574
 #: mediaviewer.php:142
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1125
 #: modules_v3/individual_ext_report/report.xml:220
@@ -10041,7 +10147,7 @@ msgstr ""
 msgid "Old data"
 msgstr ""
 
-#: admin.php:107
+#: admin.php:82
 msgid "Old files found"
 msgstr ""
 
@@ -10343,10 +10449,10 @@ msgid "Paraguay"
 msgstr "פרגוואי"
 
 #: family.php:107 library/WT/Controller/Hourglass.php:371
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1308
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1310
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1315
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1317
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1311
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1313
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1318
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1320
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:576
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:578
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:583
@@ -10366,8 +10472,8 @@ msgid "Parent’s age"
 msgstr "Dob roditelja"
 
 #: admin_site_config.php:136 admin_users.php:189 admin_users.php:384
-#: edituser.php:150 help_text.php:729 help_text.php:1284 login.php:151
-#: login.php:215 login.php:444 modules_v3/login_block/module.php:76
+#: edituser.php:150 help_text.php:729 help_text.php:1284 login.php:167
+#: login.php:231 login.php:460 modules_v3/login_block/module.php:76
 #: setup.php:400
 msgid "Password"
 msgstr "Lozinka"
@@ -10426,8 +10532,8 @@ msgid "Pending Changes block"
 msgstr ""
 
 #. I18N: Name of a module
-#: edit_changes.php:31 edit_changes.php:51 help_text.php:1319
-#: modules_v3/change_report/report.xml:49
+#: admin_site_upgrade.php:103 edit_changes.php:31 edit_changes.php:51
+#: help_text.php:1319 modules_v3/change_report/report.xml:49
 #: modules_v3/review_changes/module.php:32
 #: modules_v3/review_changes/module.php:73
 #: themes/_administration/header.php:74 themes/clouds/header.php:119
@@ -10686,6 +10792,16 @@ msgstr ""
 msgid "Place of residence"
 msgstr ""
 
+#: admin_site_upgrade.php:395
+#, php-format
+msgid "Place the site offline, by creating the file %s…"
+msgstr ""
+
+#: admin_site_upgrade.php:445
+#, php-format
+msgid "Place the site online, by deleting the file %s…"
+msgstr ""
+
 #: admin_trees_config.php:894 statistics.php:401
 msgid "Places"
 msgstr "Mjesta"
@@ -10711,7 +10827,7 @@ msgstr ""
 msgid "Play"
 msgstr ""
 
-#: login.php:303
+#: login.php:319
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
 msgstr ""
 
@@ -10796,7 +10912,7 @@ msgctxt "Surname tradition"
 msgid "Portuguese"
 msgstr ""
 
-#: modules_v3/faq/module.php:369
+#: modules_v3/faq/module.php:370
 msgid "Position item"
 msgstr ""
 
@@ -10899,20 +11015,20 @@ msgstr ""
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr ""
 
-#: expand_view.php:32 library/WT/Controller/GedcomRecord.php:64
+#: expand_view.php:32 library/WT/Controller/GedcomRecord.php:72
 #: library/WT/GedcomRecord.php:404 library/WT/GedcomRecord.php:452
 #: library/WT/GedcomRecord.php:577 library/WT/Individual.php:1069
 #: library/WT/Note.php:62 library/WT/Report/Base.php:1936
 #: library/WT/Repository.php:47 library/WT/Source.php:51
 #: library/WT/Stats.php:838 library/WT/Stats.php:1779
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:476
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:853
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1425
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1518
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1628
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1724
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1845
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1982
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:477
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:855
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1428
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1521
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1631
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1727
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1848
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1985
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:159
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:194
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:234
@@ -10972,7 +11088,7 @@ msgstr ""
 msgid "Quartidi"
 msgstr ""
 
-#: modules_v3/faq/module.php:165
+#: modules_v3/faq/module.php:166
 msgid "Question"
 msgstr "Pitanje"
 
@@ -11141,12 +11257,12 @@ msgid "Re-order media"
 msgstr "Presloži mediju"
 
 #: admin_users.php:366 admin_users.php:572 edituser.php:135 help_text.php:1343
-#: login.php:281 login.php:382
+#: login.php:297 login.php:398
 msgid "Real name"
 msgstr "Pravo ime"
 
 #. I18N: Name of a module
-#: admin.php:241 modules_v3/change_report/report.xml:89
+#: admin.php:216 modules_v3/change_report/report.xml:89
 #: modules_v3/recent_changes/module.php:34
 msgid "Recent changes"
 msgstr "Nedavne promjene"
@@ -11157,10 +11273,6 @@ msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:158
 msgid "Recife, Brazil"
-msgstr ""
-
-#: admin.php:85
-msgid "Recommendations"
 msgstr ""
 
 #: admin_site_change.php:255 admin_site_change.php:287
@@ -11382,7 +11494,7 @@ msgstr "Izvješće"
 msgid "Reports"
 msgstr "Izvještaji"
 
-#: admin.php:223 admin.php:259 library/WT/MenuBar.php:306 mediaviewer.php:139
+#: admin.php:198 admin.php:234 library/WT/MenuBar.php:306 mediaviewer.php:139
 #: modules_v3/gedcom_stats/module.php:108
 #: modules_v3/gedcom_stats/module.php:338 modules_v3/html/module.php:198
 #: repolist.php:29 repolist.php:33 statistics.php:349
@@ -11410,11 +11522,11 @@ msgstr "Mjesto čuvanja sadrži:"
 msgid "Repository name"
 msgstr "Ime mjesta čuvanja"
 
-#: login.php:159 modules_v3/login_block/module.php:84
+#: login.php:175 modules_v3/login_block/module.php:84
 msgid "Request new password"
 msgstr "Zatraži novu lozinku"
 
-#: login.php:162 login.php:237 modules_v3/gedcom_block/module.php:52
+#: login.php:178 login.php:253 modules_v3/gedcom_block/module.php:52
 #: modules_v3/login_block/module.php:87
 msgid "Request new user account"
 msgstr "Zatražite novi račun"
@@ -11664,10 +11776,6 @@ msgstr "ערב הסעודית"
 msgid "Save"
 msgstr "Spremi"
 
-#: admin.php:74
-msgid "Save all your family trees to disk, by using the “export” function for each one."
-msgstr ""
-
 #: library/WT/Gedcom/Tag.php:181
 msgid "School or college"
 msgstr ""
@@ -11729,7 +11837,7 @@ msgstr "Traži i zamijeni"
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
 
-#: includes/session.php:531
+#: includes/session.php:549
 msgid "Search engine"
 msgstr ""
 
@@ -11855,7 +11963,7 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "Prodavač"
 
-#: login.php:452 message.php:140 modules_v3/user_messages/module.php:78
+#: login.php:468 message.php:140 modules_v3/user_messages/module.php:78
 msgid "Send"
 msgstr "Pošalji"
 
@@ -12543,7 +12651,7 @@ msgstr ""
 msgid "Show the location of places and events using the Google Maps™ mapping service."
 msgstr ""
 
-#: modules_v3/faq/module.php:174 modules_v3/html/module.php:325
+#: modules_v3/faq/module.php:175 modules_v3/html/module.php:325
 #: modules_v3/stories/module.php:246
 msgid "Show this block for which languages?"
 msgstr ""
@@ -12652,7 +12760,7 @@ msgid "Sitemaps"
 msgstr ""
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
-#: modules_v3/sitemap/module.php:234
+#: modules_v3/sitemap/module.php:240
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
 
@@ -12828,7 +12936,7 @@ msgid "Source type"
 msgstr "Izvorna vrsta"
 
 #. I18N: Name of a module
-#: admin.php:220 admin.php:258
+#: admin.php:195 admin.php:233
 #: includes/functions/functions_print_lists.php:1062
 #: includes/functions/functions_print_lists.php:1158
 #: includes/functions/functions_print_lists.php:1266
@@ -13163,12 +13271,6 @@ msgstr "טיוואן"
 msgid "Tajikistan"
 msgstr "טג'יקיסטן"
 
-#. I18N: %s is a filename
-#: admin.php:88
-#, php-format
-msgid "Take your site offline while copying the new files.  Do this by temporarily creating a file %s on the web server."
-msgstr ""
-
 #: library/WT/Gedcom/Code/Temp.php:183
 msgid "Tampico, Mexico"
 msgstr ""
@@ -13256,7 +13358,7 @@ msgstr ""
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr ""
 
-#: modules_v3/faq/module.php:363
+#: modules_v3/faq/module.php:364
 msgid "The FAQ list is empty."
 msgstr ""
 
@@ -13281,7 +13383,7 @@ msgstr ""
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "Administrator na webtrees stranici %s je odobrio vašu prijavu. Možete se logirati koristeći slijedeći link %s"
 
-#: login.php:536
+#: login.php:552
 msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
 msgstr ""
 
@@ -13305,7 +13407,7 @@ msgstr ""
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
 msgstr ""
 
-#: login.php:501
+#: login.php:517
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
 msgstr ""
@@ -13337,12 +13439,29 @@ msgstr ""
 msgid "The file %s already exists.  Use another filename."
 msgstr ""
 
-#: admin_media.php:60 admin_media.php:67
+#: admin_site_upgrade.php:399 admin_site_upgrade.php:429
+#, php-format
+msgid "The file %s could not be created."
+msgstr ""
+
+#: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:450
+#: admin_site_upgrade.php:470
 #, php-format
 msgid "The file %s could not be deleted."
 msgstr ""
 
-#: admin_media.php:58 admin_media.php:65
+#: admin_site_upgrade.php:377
+#, php-format
+msgid "The file %s could not be updated."
+msgstr ""
+
+#: admin_site_upgrade.php:401
+#, php-format
+msgid "The file %s was created."
+msgstr ""
+
+#: admin_media.php:58 admin_media.php:65 admin_site_upgrade.php:448
+#: admin_site_upgrade.php:468
 #, php-format
 msgid "The file %s was deleted."
 msgstr ""
@@ -13359,6 +13478,11 @@ msgstr ""
 msgid "The file “%s” does not exist."
 msgstr "Datoteka “%s” ne postoji."
 
+#: admin_site_upgrade.php:464
+#, php-format
+msgid "The folder %s could not be deleted."
+msgstr ""
+
 #: addmedia.php:112 addmedia.php:123 addmedia.php:135 addmedia.php:274
 #: addmedia.php:285 addmedia.php:297 admin_media_upload.php:61
 #: admin_media_upload.php:72 admin_media_upload.php:84
@@ -13372,6 +13496,11 @@ msgstr ""
 #: admin_trees_config.php:187
 #, php-format
 msgid "The folder %s was created."
+msgstr ""
+
+#: admin_site_upgrade.php:462
+#, php-format
+msgid "The folder %s was deleted."
 msgstr ""
 
 #: help_text.php:578
@@ -13429,6 +13558,7 @@ msgstr ""
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:149 action.php:153 library/WT/Controller/GedcomRecord.php:36
+#: library/WT/Controller/GedcomRecord.php:44
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
 msgstr ""
@@ -13443,6 +13573,11 @@ msgstr ""
 
 #: setup.php:160
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
+msgstr ""
+
+#: admin_site_upgrade.php:380
+#, php-format
+msgid "The new files are currently located in the folder %s."
 msgstr ""
 
 #: help_text.php:1239
@@ -13500,7 +13635,11 @@ msgstr ""
 msgid "The time in seconds that a <b>webtrees</b> session remains active before requiring a login.  The default is 7200, which is 2 hours."
 msgstr ""
 
-#: login.php:284
+#: admin_site_upgrade.php:476
+msgid "The upgrade is complete."
+msgstr ""
+
+#: login.php:300
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
 msgstr ""
 
@@ -13564,6 +13703,10 @@ msgstr ""
 
 #: modules_v3/media/module.php:73
 msgid "There are no media objects for this individual."
+msgstr ""
+
+#: admin_site_upgrade.php:107
+msgid "There are no pending changes."
 msgstr ""
 
 #: modules_v3/todo/module.php:127
@@ -13805,6 +13948,10 @@ msgstr ""
 #. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:695
 msgid "This is the initial setting for the “show details” option on the charts."
+msgstr ""
+
+#: admin_site_upgrade.php:72
+msgid "This is the latest version of webtrees.  No upgrade is available."
 msgstr ""
 
 #: help_text.php:506
@@ -14152,6 +14299,10 @@ msgstr ""
 msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr ""
 
+#: admin_site_upgrade.php:41
+msgid "This site is being upgraded.  Try again in a few minutes."
+msgstr ""
+
 #: source.php:73
 msgid "This source does not exist or you do not have permission to view it."
 msgstr ""
@@ -14342,6 +14493,10 @@ msgstr "Naziv:"
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
 msgstr ""
 
+#: admin_site_upgrade.php:379
+msgid "To complete the upgrade, you should install the files manually."
+msgstr ""
+
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
 msgstr ""
@@ -14355,6 +14510,11 @@ msgstr "Za obitelj"
 #: library/WT/Controller/Media.php:146 modules_v3/lightbox/module.php:184
 msgid "To individual"
 msgstr "Za osobu"
+
+#: admin_site_upgrade.php:382
+#, php-format
+msgid "To prevent visitors from accessing the site while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors."
+msgstr ""
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:574
@@ -14370,11 +14530,11 @@ msgstr ""
 msgid "To source"
 msgstr "Za izvor"
 
-#: modules_v3/sitemap/module.php:259
+#: modules_v3/sitemap/module.php:265
 msgid "To tell search engines that sitemaps are available, you can use the following links."
 msgstr ""
 
-#: modules_v3/sitemap/module.php:255
+#: modules_v3/sitemap/module.php:261
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
 msgstr ""
 
@@ -14409,6 +14569,7 @@ msgid "Top %s given name"
 msgid_plural "Top %s given names"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #. I18N: Title for a list of the most common surnames, %s is a number.  Note that a separate translation exists when %s is 1
 #: modules_v3/top10_surnames/module.php:91
@@ -14417,6 +14578,7 @@ msgid "Top %s surname"
 msgid_plural "Top %s surnames"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: modules_v3/googlemap/admin_places.php:568
 #: modules_v3/googlemap/admin_places.php:633 placelist.php:110
@@ -14525,7 +14687,7 @@ msgstr "Ukupno muških"
 msgid "Total marriages"
 msgstr "Ukupno brakova"
 
-#: admin.php:162
+#: admin.php:137
 msgid "Total number of users"
 msgstr ""
 
@@ -14617,7 +14779,7 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr ""
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:390 login.php:403
+#: admin_users.php:390 login.php:419
 msgid "Type the password again."
 msgstr ""
 
@@ -14652,7 +14814,7 @@ msgid "USSR"
 msgstr "ברית המועצות"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
-#: themes/_administration/header.php:87
+#: admin_site_upgrade.php:41 themes/_administration/header.php:87
 msgid "UTC"
 msgstr ""
 
@@ -14669,7 +14831,7 @@ msgid "Unable to connect using these settings.  Your server gave the following e
 msgstr ""
 
 #. I18N: %s is a filename
-#: admin_trees_export.php:111 admin_trees_export.php:114
+#: admin_site_upgrade.php:288 admin_trees_export.php:38
 #, php-format
 msgid "Unable to create %s.  Check the permissions."
 msgstr ""
@@ -14753,12 +14915,18 @@ msgstr "Neprepoznati GEDCOM kod"
 msgid "Unused files"
 msgstr ""
 
-#: admin.php:182 admin.php:184
+#: admin.php:157 admin.php:159
 msgid "Unverified by Administrator"
 msgstr ""
 
-#: admin.php:176 admin.php:178
+#: admin.php:151 admin.php:153
 msgid "Unverified by User"
+msgstr ""
+
+#. I18N: The system is about to [...]; %s is a .ZIP file.
+#: admin_site_upgrade.php:321
+#, php-format
+msgid "Unzip %s to a temporary folder…"
 msgstr ""
 
 #. I18N: Name of a module
@@ -14779,14 +14947,19 @@ msgstr ""
 msgid "Updating linked record"
 msgstr ""
 
-#: admin.php:69
-msgid "Upgrade instructions"
+#. I18N: Ignore the warnings, and [...]
+#: admin_site_upgrade.php:202 admin_site_upgrade.php:265
+msgid "Upgrade anyway"
 msgstr ""
 
-#. I18N: %s is a version number
-#: admin.php:66
+#. I18N: %s is a version number, such as 1.2.3
+#: admin.php:63 admin_site_upgrade.php:86
 #, php-format
 msgid "Upgrade to webtrees %s"
+msgstr ""
+
+#: admin_site_upgrade.php:55
+msgid "Upgrade wizard"
 msgstr ""
 
 #: admin_media_upload.php:234 admin_trees_manage.php:224
@@ -14845,12 +15018,13 @@ msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to
 msgstr ""
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:385 login.php:398
+#: admin_users.php:385 login.php:414
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: modules_v3/family_group_report/report.xml:13
 #: modules_v3/individual_ext_report/report.xml:14
@@ -14926,7 +15100,7 @@ msgstr ""
 msgid "User options"
 msgstr ""
 
-#: login.php:432 login.php:438 login.php:495 login.php:499
+#: login.php:448 login.php:454 login.php:511 login.php:515
 msgid "User verification"
 msgstr ""
 
@@ -14936,13 +15110,13 @@ msgid "User-agent string"
 msgstr ""
 
 #: admin_site_config.php:133 admin_users.php:372 admin_users.php:571
-#: edituser.php:133 help_text.php:734 help_text.php:1474 login.php:146
-#: login.php:214 login.php:280 login.php:307 login.php:440
+#: edituser.php:133 help_text.php:734 help_text.php:1474 login.php:162
+#: login.php:230 login.php:296 login.php:323 login.php:456
 #: modules_v3/login_block/module.php:71 modules_v3/todo/module.php:97
 msgid "Username"
 msgstr "Korisničko ime"
 
-#: login.php:172 modules_v3/login_block/module.php:98
+#: login.php:188 modules_v3/login_block/module.php:98
 msgid "Username or email address"
 msgstr ""
 
@@ -14955,19 +15129,19 @@ msgstr ""
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
 msgstr ""
 
-#: admin.php:122 themes/_administration/header.php:129
+#: admin.php:97 themes/_administration/header.php:129
 msgid "Users"
 msgstr "Korisnici"
 
-#: admin.php:192
+#: admin.php:167
 msgid "Users logged in"
 msgstr "Prijavljenih korisnika"
 
-#: admin.php:170 admin.php:172
+#: admin.php:145 admin.php:147
 msgid "Users with warnings"
 msgstr ""
 
-#: admin.php:187
+#: admin.php:162
 msgid "Users’ languages"
 msgstr ""
 
@@ -15039,7 +15213,7 @@ msgstr ""
 msgid "Veracruz, Mexico"
 msgstr ""
 
-#: login.php:308 login.php:448
+#: login.php:324 login.php:464
 msgid "Verification code:"
 msgstr ""
 
@@ -15198,12 +15372,12 @@ msgstr ""
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
 msgstr ""
 
-#: login.php:354
+#: login.php:370
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
 msgstr ""
 
-#: login.php:356
+#: login.php:372
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
 msgstr ""
@@ -15230,7 +15404,7 @@ msgstr "Sri"
 msgid "Wednesday"
 msgstr "Srijeda"
 
-#: admin.php:255
+#: admin.php:230
 msgid "Week"
 msgstr ""
 
@@ -15345,7 +15519,7 @@ msgstr ""
 msgid "Where is your PhpGedView installation?"
 msgstr ""
 
-#: modules_v3/sitemap/module.php:236
+#: modules_v3/sitemap/module.php:242
 msgid "Which family trees should be included in the sitemaps?"
 msgstr ""
 
@@ -15493,12 +15667,12 @@ msgid "Yemen"
 msgstr "תימן"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
-#: login.php:301
+#: login.php:317
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr ""
 
-#: login.php:249 message.php:68
+#: login.php:265 message.php:68
 msgid "You are not allowed to send messages that contain external links."
 msgstr ""
 
@@ -15525,8 +15699,16 @@ msgstr "You can limit the number of News articles displayed, thereby reducing th
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr ""
 
-#: login.php:538
+#: login.php:554
 msgid "You can now login with your user name and password."
+msgstr ""
+
+#: admin_site_upgrade.php:201
+msgid "You can re-enable these modules after the upgrade."
+msgstr ""
+
+#: admin_site_upgrade.php:264
+msgid "You can re-enable these themes after the upgrade."
 msgstr ""
 
 #: help_text.php:634 help_text.php:673
@@ -15541,11 +15723,11 @@ msgstr ""
 msgid "You cannot login because your browser does not accept cookies."
 msgstr ""
 
-#: downloadbackup.php:34 includes/session.php:533
+#: downloadbackup.php:34 includes/session.php:551
 msgid "You do not have permission to view this page."
 msgstr ""
 
-#: login.php:481
+#: login.php:497
 msgid "You do not have to take any action; the user can now login."
 msgstr ""
 
@@ -15553,7 +15735,7 @@ msgstr ""
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr ""
 
-#: login.php:534
+#: login.php:550
 msgid "You have confirmed your request to become a registered user."
 msgstr ""
 
@@ -15638,7 +15820,7 @@ msgstr ""
 msgid "You need to set up an administrator account.  This account can control all aspects of this <b>webtrees</b> installation.  Please choose a strong password."
 msgstr ""
 
-#: login.php:479
+#: login.php:495
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr ""
 
@@ -15655,12 +15837,24 @@ msgstr "Poslali ste slijedeću poruku webtrees administratoru"
 msgid "You sent the following message to a webtrees user:"
 msgstr "Poslali ste slijedeću poruku webtrees korisniku"
 
+#: admin_site_upgrade.php:102
+msgid "You should accept or reject all pending changes before upgrading."
+msgstr ""
+
 #: help_text.php:1142
 msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
 msgstr ""
 
+#: admin_site_upgrade.php:200
+msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
+msgstr ""
+
+#: admin_site_upgrade.php:263
+msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
+msgstr ""
+
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
-#: login.php:250 message.php:69
+#: login.php:266 message.php:69
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr ""
@@ -15669,11 +15863,11 @@ msgstr ""
 msgid "You should not approve an account unless you know that the email address is correct."
 msgstr ""
 
-#: login.php:288
+#: login.php:304
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part."
 msgstr ""
 
-#: login.php:286
+#: login.php:302
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account."
 msgstr ""
 
@@ -15681,7 +15875,7 @@ msgstr ""
 msgid "You will use this to login to webtrees."
 msgstr ""
 
-#: login.php:312
+#: login.php:328
 msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
 msgstr ""
 
@@ -15714,7 +15908,7 @@ msgid "Your name"
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:313
+#: login.php:329
 #, php-format
 msgid "Your registration at %s"
 msgstr ""
@@ -15894,47 +16088,47 @@ msgid "and"
 msgstr "i"
 
 #: includes/functions/functions.php:1011
-msgctxt "father's brother's wife"
+msgctxt "father’s brother’s wife"
 msgid "aunt"
 msgstr "Ujna po ocu"
 
 #: includes/functions/functions.php:896
-msgctxt "father's sister"
+msgctxt "father’s sister"
 msgid "aunt"
 msgstr "Ujna po ocu"
 
 #: includes/functions/functions.php:1042
-msgctxt "mother's brother's wife"
+msgctxt "mother’s brother’s wife"
 msgid "aunt"
 msgstr "Ujna po ocu"
 
 #: includes/functions/functions.php:915
-msgctxt "mother's sister"
+msgctxt "mother’s sister"
 msgid "aunt"
 msgstr ""
 
 #: includes/functions/functions.php:1068
-msgctxt "parent's brother's wife"
+msgctxt "parent’s brother’s wife"
 msgid "aunt"
 msgstr "Ujna po ocu"
 
 #: includes/functions/functions.php:924
-msgctxt "parent's sister"
+msgctxt "parent’s sister"
 msgid "aunt"
 msgstr ""
 
 #: includes/functions/functions.php:895
-msgctxt "father's sibling"
+msgctxt "father’s sibling"
 msgid "aunt/uncle"
 msgstr "Ujak/ujna po ocu"
 
 #: includes/functions/functions.php:914
-msgctxt "mother's sibling"
+msgctxt "mother’s sibling"
 msgid "aunt/uncle"
 msgstr ""
 
 #: includes/functions/functions.php:923
-msgctxt "parent's sibling"
+msgctxt "parent’s sibling"
 msgid "aunt/uncle"
 msgstr ""
 
@@ -15943,7 +16137,7 @@ msgctxt "Abbreviation for birth"
 msgid "b."
 msgstr "rođ."
 
-#: modules_v3/faq/module.php:312
+#: modules_v3/faq/module.php:313
 msgid "back to top"
 msgstr ""
 
@@ -15995,72 +16189,72 @@ msgid "brother"
 msgstr "brat"
 
 #: includes/functions/functions.php:980
-msgctxt "brother's wife's brother"
+msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:899
-msgctxt "husband's brother"
+msgctxt "husband’s brother"
 msgid "brother-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:1038
-msgctxt "husband's sister's husband"
+msgctxt "husband’s sister’s husband"
 msgid "brother-in-law"
 msgstr "Zet"
 
 #: includes/functions/functions.php:933
-msgctxt "sister's husband"
+msgctxt "sister’s husband"
 msgid "brother-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:1115
-msgctxt "sister's husband's brother"
+msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:939
-msgctxt "spouses's brother"
+msgctxt "spouse’s brother"
 msgid "brother-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:948
-msgctxt "wife's brother"
+msgctxt "wife’s brother"
 msgid "brother-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:1140
-msgctxt "wife's sister's husband"
+msgctxt "wife’s sister’s husband"
 msgid "brother-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:981
-msgctxt "brother's wife's sibling"
+msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:904
-msgctxt "husband's sibling"
+msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:930
-msgctxt "sibling's spouse"
+msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:1116
-msgctxt "sister's husband's sibling"
+msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:947
-msgctxt "spouses's sibling"
+msgctxt "spouse’s sibling"
 msgid "brother/sister-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:953
-msgctxt "wife's sibling"
+msgctxt "wife’s sibling"
 msgid "brother/sister-in-law"
 msgstr ""
 
@@ -16149,7 +16343,7 @@ msgstr ""
 
 #. I18N: button label
 #: admin_pgv_to_wt.php:1059 admin_trees_download.php:138
-#: admin_trees_manage.php:169 admin_users.php:548 login.php:176 login.php:415
+#: admin_trees_manage.php:169 admin_users.php:548 login.php:192 login.php:431
 #: modules_v3/login_block/module.php:102 setup.php:180 setup.php:204
 #: setup.php:273 setup.php:358 setup.php:414
 msgid "continue"
@@ -16181,27 +16375,27 @@ msgid "daughter of"
 msgstr ""
 
 #: includes/functions/functions.php:884
-msgctxt "child's wife"
+msgctxt "child’s wife"
 msgid "daughter-in-law"
 msgstr "Nevjesta"
 
 #: includes/functions/functions.php:938
-msgctxt "son's wife"
+msgctxt "son’s wife"
 msgid "daughter-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:1136
-msgctxt "son's wife's father"
+msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
 msgstr ""
 
 #: includes/functions/functions.php:1137
-msgctxt "son's wife's mother"
+msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
 msgstr ""
 
 #: includes/functions/functions.php:1138
-msgctxt "son's wife's parent"
+msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
 msgstr ""
 
@@ -16336,17 +16530,17 @@ msgid "father"
 msgstr "otac"
 
 #: includes/functions/functions.php:902
-msgctxt "husband's father"
+msgctxt "husband’s father"
 msgid "father-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:942
-msgctxt "spouses's father"
+msgctxt "spouse’s father"
 msgid "father-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:951
-msgctxt "wife's father"
+msgctxt "wife’s father"
 msgid "father-in-law"
 msgstr ""
 
@@ -16455,182 +16649,182 @@ msgid "first cousin"
 msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:1008
-msgctxt "father's brother's child"
+msgctxt "father’s brother’s child"
 msgid "first cousin"
 msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:1009
-msgctxt "father's brother's daughter"
+msgctxt "father’s brother’s daughter"
 msgid "first cousin"
 msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:1010
-msgctxt "father's brother's son"
+msgctxt "father’s brother’s son"
 msgid "first cousin"
 msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:1030
-msgctxt "father's sister's child"
+msgctxt "father’s sister’s child"
 msgid "first cousin"
 msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:1031
-msgctxt "father's sister's daughter"
+msgctxt "father’s sister’s daughter"
 msgid "first cousin"
 msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:1033
-msgctxt "father's sister's son"
+msgctxt "father’s sister’s son"
 msgid "first cousin"
 msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:1039
-msgctxt "mother's brother's child"
+msgctxt "mother’s brother’s child"
 msgid "first cousin"
 msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:1040
-msgctxt "mother's brother's daughter"
+msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
 msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:1041
-msgctxt "mother's brother's son"
+msgctxt "mother’s brother’s son"
 msgid "first cousin"
 msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:1064
-msgctxt "mother's sister's child"
+msgctxt "mother’s sister’s child"
 msgid "first cousin"
 msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:1065
-msgctxt "mother's sister's daughter"
+msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
 msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:1067
-msgctxt "mother's sister's son"
+msgctxt "mother’s sister’s son"
 msgid "first cousin"
 msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:1172
-msgctxt "father's father's brother's child"
+msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1170
-msgctxt "father's father's brother's daughter"
+msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1171
-msgctxt "father's father's brother's son"
+msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1175
-msgctxt "father's father's sister's child"
+msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1173
-msgctxt "father's father's sister's daughter"
+msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1174
-msgctxt "father's father's sister's son"
+msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1178
-msgctxt "father's mother's brother's child"
+msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1176
-msgctxt "father's mother's brother's daughter"
+msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1177
-msgctxt "father's mother's brother's son"
+msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1181
-msgctxt "father's mother's sister's child"
+msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1179
-msgctxt "father's mother's sister's daughter"
+msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1180
-msgctxt "father's mother's sister's son"
+msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1184
-msgctxt "mother's father's brother's child"
+msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1182
-msgctxt "mother's father's brother's daughter"
+msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1183
-msgctxt "mother's father's brother's son"
+msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1187
-msgctxt "mother's father's sister's child"
+msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1185
-msgctxt "mother's father's sister's daughter"
+msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1186
-msgctxt "mother's father's sister's son"
+msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1190
-msgctxt "mother's mother's brother's child"
+msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1188
-msgctxt "mother's mother's brother's daughter"
+msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1189
-msgctxt "mother's mother's brother's son"
+msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1193
-msgctxt "mother's mother's sister's child"
+msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1191
-msgctxt "mother's mother's sister's daughter"
+msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
 msgstr ""
 
 #: includes/functions/functions.php:1192
-msgctxt "mother's mother's sister's son"
+msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
 msgstr ""
 
@@ -16694,6 +16888,7 @@ msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #. I18N: Gedcom FROM dates
 #: library/WT/Date.php:241
@@ -16722,92 +16917,92 @@ msgid "go to new individual"
 msgstr ""
 
 #: includes/functions/functions.php:879
-msgctxt "child's child"
+msgctxt "child’s child"
 msgid "grandchild"
 msgstr "Unuk/unuka"
 
 #: includes/functions/functions.php:885
-msgctxt "daughter's child"
+msgctxt "daughter’s child"
 msgid "grandchild"
 msgstr "Unuk/Unuka"
 
 #: includes/functions/functions.php:935
-msgctxt "son's child"
+msgctxt "son’s child"
 msgid "grandchild"
 msgstr ""
 
 #: includes/functions/functions.php:880
-msgctxt "child's daughter"
+msgctxt "child’s daughter"
 msgid "granddaughter"
 msgstr "Unuka"
 
 #: includes/functions/functions.php:886
-msgctxt "daughter's daughter"
+msgctxt "daughter’s daughter"
 msgid "granddaughter"
 msgstr "Unuka"
 
 #: includes/functions/functions.php:936
-msgctxt "son's daughter"
+msgctxt "son’s daughter"
 msgid "granddaughter"
 msgstr ""
 
 #: includes/functions/functions.php:988
-msgctxt "child's daughter's husband"
+msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
 msgstr ""
 
 #: includes/functions/functions.php:999
-msgctxt "daughter's daughter's husband"
+msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
 msgstr ""
 
 #: includes/functions/functions.php:1130
-msgctxt "son's daughter's husband"
+msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
 msgstr ""
 
 #: includes/functions/functions.php:920
-msgctxt "parent's father"
+msgctxt "parent’s father"
 msgid "grandfather"
 msgstr ""
 
 #: includes/functions/functions.php:921
-msgctxt "parent's mother"
+msgctxt "parent’s mother"
 msgid "grandmother"
 msgstr ""
 
 #: includes/functions/functions.php:922
-msgctxt "parent's parent"
+msgctxt "parent’s parent"
 msgid "grandparent"
 msgstr ""
 
 #: includes/functions/functions.php:882
-msgctxt "child's son"
+msgctxt "child’s son"
 msgid "grandson"
 msgstr "Unuk"
 
 #: includes/functions/functions.php:888
-msgctxt "daughter's son"
+msgctxt "daughter’s son"
 msgid "grandson"
 msgstr "Unuk"
 
 #: includes/functions/functions.php:937
-msgctxt "son's son"
+msgctxt "son’s son"
 msgid "grandson"
 msgstr ""
 
 #: includes/functions/functions.php:993
-msgctxt "child's son's wife"
+msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
 msgstr ""
 
 #: includes/functions/functions.php:1007
-msgctxt "daughter's son's wife"
+msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
 msgstr "Unukova žena"
 
 #: includes/functions/functions.php:1135
-msgctxt "son's son's wife"
+msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
 msgstr ""
 
@@ -16869,19 +17064,19 @@ msgstr ""
 
 #: includes/functions/functions.php:1482
 #, php-format
-msgctxt "(a man's) brother's great x(%d-1) grandson"
+msgctxt "(a man’s) brother’s great x(%d-1) grandson"
 msgid "great x%d nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1484
 #, php-format
-msgctxt "(a man's) sister's great x(%d-1) grandson"
+msgctxt "(a man’s) sister’s great x(%d-1) grandson"
 msgid "great x%d nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1486
 #, php-format
-msgctxt "(a woman's) great x%d nephew"
+msgctxt "(a woman’s) great x%d nephew"
 msgid "great x%d nephew"
 msgstr ""
 
@@ -16892,19 +17087,19 @@ msgstr ""
 
 #: includes/functions/functions.php:1497
 #, php-format
-msgctxt "(a man's) brother's great x(%d-1) grandchild"
+msgctxt "(a man’s) brother’s great x(%d-1) grandchild"
 msgid "great x%d nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1499
 #, php-format
-msgctxt "(a man's) sister's great x(%d-1) grandchild"
+msgctxt "(a man’s) sister’s great x(%d-1) grandchild"
 msgid "great x%d nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1501
 #, php-format
-msgctxt "(a woman's) great x%d nephew/niece"
+msgctxt "(a woman’s) great x%d nephew/niece"
 msgid "great x%d nephew/niece"
 msgstr ""
 
@@ -16915,19 +17110,19 @@ msgstr ""
 
 #: includes/functions/functions.php:1489
 #, php-format
-msgctxt "(a man's) brother's great x(%d-1) granddaughter"
+msgctxt "(a man’s) brother’s great x(%d-1) granddaughter"
 msgid "great x%d niece"
 msgstr ""
 
 #: includes/functions/functions.php:1491
 #, php-format
-msgctxt "(a man's) sister's great x(%d-1) granddaughter"
+msgctxt "(a man’s) sister’s great x(%d-1) granddaughter"
 msgid "great x%d niece"
 msgstr ""
 
 #: includes/functions/functions.php:1493
 #, php-format
-msgctxt "(a woman's) great x%d niece"
+msgctxt "(a woman’s) great x%d niece"
 msgid "great x%d niece"
 msgstr ""
 
@@ -16939,19 +17134,19 @@ msgstr ""
 
 #: includes/functions/functions.php:1339
 #, php-format
-msgctxt "great x(%d-1) grandfather's brother"
+msgctxt "great x(%d-1) grandfather’s brother"
 msgid "great x%d uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1340
 #, php-format
-msgctxt "great x(%d-1) grandmother's brother"
+msgctxt "great x(%d-1) grandmother’s brother"
 msgid "great x%d uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1341
 #, php-format
-msgctxt "great x(%d-1) grandparent's brother"
+msgctxt "great x(%d-1) grandparent’s brother"
 msgid "great x%d uncle"
 msgstr ""
 
@@ -16988,62 +17183,62 @@ msgid "great x4 grandson"
 msgstr ""
 
 #: includes/functions/functions.php:1422
-msgctxt "(a man's) brother's great-great-great-grandson"
+msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great x4 nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1424
-msgctxt "(a man's) sister's great-great-great-grandson"
+msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great x4 nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1426
-msgctxt "(a woman's) great x4 nephew"
+msgctxt "(a woman’s) great x4 nephew"
 msgid "great x4 nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1438
-msgctxt "(a man's) brother's great-great-great-grandchild"
+msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great x4 nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1440
-msgctxt "(a man's) sister's great-great-great-grandchild"
+msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great x4 nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1442
-msgctxt "(a woman's) great x4 nephew/niece"
+msgctxt "(a woman’s) great x4 nephew/niece"
 msgid "great x4 nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1430
-msgctxt "(a man's) brother's great-great-great-granddaughter"
+msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great x4 niece"
 msgstr ""
 
 #: includes/functions/functions.php:1432
-msgctxt "(a man's) sister's great-great-great-granddaughter"
+msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great x4 niece"
 msgstr ""
 
 #: includes/functions/functions.php:1434
-msgctxt "(a woman's) great x4 niece"
+msgctxt "(a woman’s) great x4 niece"
 msgid "great x4 niece"
 msgstr ""
 
 #: includes/functions/functions.php:1287
-msgctxt "great-great-great-grandfather's brother"
+msgctxt "great-great-great-grandfather’s brother"
 msgid "great x4 uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1288
-msgctxt "great-great-great-grandmother's brother"
+msgctxt "great-great-great-grandmother’s brother"
 msgid "great x4 uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1289
-msgctxt "great-great-great-grandparent's brother"
+msgctxt "great-great-great-grandparent’s brother"
 msgid "great x4 uncle"
 msgstr ""
 
@@ -17080,62 +17275,62 @@ msgid "great x5 grandson"
 msgstr ""
 
 #: includes/functions/functions.php:1449
-msgctxt "(a man's) brother's great x4 grandson"
+msgctxt "(a man’s) brother’s great x4 grandson"
 msgid "great x5 nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1451
-msgctxt "(a man's) sister's great x4 grandson"
+msgctxt "(a man’s) sister’s great x4 grandson"
 msgid "great x5 nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1453
-msgctxt "(a woman's) great x5 nephew"
+msgctxt "(a woman’s) great x5 nephew"
 msgid "great x5 nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1465
-msgctxt "(a man's) brother's great x4 grandchild"
+msgctxt "(a man’s) brother’s great x4 grandchild"
 msgid "great x5 nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1467
-msgctxt "(a man's) sister's great x4 grandchild"
+msgctxt "(a man’s) sister’s great x4 grandchild"
 msgid "great x5 nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1469
-msgctxt "(a woman's) great x5 nephew/niece"
+msgctxt "(a woman’s) great x5 nephew/niece"
 msgid "great x5 nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1457
-msgctxt "(a man's) brother's great x4 granddaughter"
+msgctxt "(a man’s) brother’s great x4 granddaughter"
 msgid "great x5 niece"
 msgstr ""
 
 #: includes/functions/functions.php:1459
-msgctxt "(a man's) sister's great x4 granddaughter"
+msgctxt "(a man’s) sister’s great x4 granddaughter"
 msgid "great x5 niece"
 msgstr ""
 
 #: includes/functions/functions.php:1461
-msgctxt "(a woman's) great x5 niece"
+msgctxt "(a woman’s) great x5 niece"
 msgid "great x5 niece"
 msgstr ""
 
 #: includes/functions/functions.php:1297
-msgctxt "great x4 grandfather's brother"
+msgctxt "great x4 grandfather’s brother"
 msgid "great x5 uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1298
-msgctxt "great x4 grandmother's brother"
+msgctxt "great x4 grandmother’s brother"
 msgid "great x5 uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1299
-msgctxt "great x4 grandparent's brother"
+msgctxt "great x4 grandparent’s brother"
 msgid "great x5 uncle"
 msgstr ""
 
@@ -17172,17 +17367,17 @@ msgid "great x6 grandson"
 msgstr ""
 
 #: includes/functions/functions.php:1307
-msgctxt "great x5 grandfather's brother"
+msgctxt "great x5 grandfather’s brother"
 msgid "great x6 uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1308
-msgctxt "great x5 grandmother's brother"
+msgctxt "great x5 grandmother’s brother"
 msgid "great x6 uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1309
-msgctxt "great x5 grandparent's brother"
+msgctxt "great x5 grandparent’s brother"
 msgid "great x6 uncle"
 msgstr ""
 
@@ -17219,467 +17414,467 @@ msgid "great x7 grandson"
 msgstr ""
 
 #: includes/functions/functions.php:1317
-msgctxt "great x6 grandfather's brother"
+msgctxt "great x6 grandfather’s brother"
 msgid "great x7 uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1318
-msgctxt "great x6 grandmother's brother"
+msgctxt "great x6 grandmother’s brother"
 msgid "great x7 uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1319
-msgctxt "great x6 grandparent's brother"
+msgctxt "great x6 grandparent’s brother"
 msgid "great x7 uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1143
-msgctxt "father's father's brother's wife"
+msgctxt "father’s father’s brother’s wife"
 msgid "great-aunt"
 msgstr ""
 
 #: includes/functions/functions.php:1017
-msgctxt "father's father's sister"
+msgctxt "father’s father’s sister"
 msgid "great-aunt"
 msgstr "Praujna"
 
 #: includes/functions/functions.php:1146
-msgctxt "father's mother's brother's wife"
+msgctxt "father’s mother’s brother’s wife"
 msgid "great-aunt"
 msgstr ""
 
 #: includes/functions/functions.php:1023
-msgctxt "father's mother's sister"
+msgctxt "father’s mother’s sister"
 msgid "great-aunt"
 msgstr ""
 
 #: includes/functions/functions.php:1149
-msgctxt "father's parent's brother's wife"
+msgctxt "father’s parent’s brother’s wife"
 msgid "great-aunt"
 msgstr ""
 
 #: includes/functions/functions.php:1029
-msgctxt "father's parent's sister"
+msgctxt "father’s parent’s sister"
 msgid "great-aunt"
 msgstr "Praujna"
 
 #: includes/functions/functions.php:1152
-msgctxt "mother's father's brother's wife"
+msgctxt "mother’s father’s brother’s wife"
 msgid "great-aunt"
 msgstr ""
 
 #: includes/functions/functions.php:1048
-msgctxt "mother's father's sister"
+msgctxt "mother’s father’s sister"
 msgid "great-aunt"
 msgstr "Praujna"
 
 #: includes/functions/functions.php:1155
-msgctxt "mother's mother's brother's wife"
+msgctxt "mother’s mother’s brother’s wife"
 msgid "great-aunt"
 msgstr ""
 
 #: includes/functions/functions.php:1057
-msgctxt "mother's mother's sister"
+msgctxt "mother’s mother’s sister"
 msgid "great-aunt"
 msgstr "Praujna"
 
 #: includes/functions/functions.php:1158
-msgctxt "mother's parent's brother's wife"
+msgctxt "mother’s parent’s brother’s wife"
 msgid "great-aunt"
 msgstr ""
 
 #: includes/functions/functions.php:1063
-msgctxt "mother's parent's sister"
+msgctxt "mother’s parent’s sister"
 msgid "great-aunt"
 msgstr "Praujna"
 
 #: includes/functions/functions.php:1161
-msgctxt "parent's father's brother's wife"
+msgctxt "parent’s father’s brother’s wife"
 msgid "great-aunt"
 msgstr ""
 
 #: includes/functions/functions.php:1074
-msgctxt "parent's father's sister"
+msgctxt "parent’s father’s sister"
 msgid "great-aunt"
 msgstr "Praujna"
 
 #: includes/functions/functions.php:1164
-msgctxt "parent's mother's brother's wife"
+msgctxt "parent’s mother’s brother’s wife"
 msgid "great-aunt"
 msgstr ""
 
 #: includes/functions/functions.php:1080
-msgctxt "parent's mother's sister"
+msgctxt "parent’s mother’s sister"
 msgid "great-aunt"
 msgstr "Praujna"
 
 #: includes/functions/functions.php:1167
-msgctxt "parent's parent's brother's wife"
+msgctxt "parent’s parent’s brother’s wife"
 msgid "great-aunt"
 msgstr ""
 
 #: includes/functions/functions.php:1086
-msgctxt "parent's parent's sister"
+msgctxt "parent’s parent’s sister"
 msgid "great-aunt"
 msgstr "Praujna"
 
 #: includes/functions/functions.php:1016
-msgctxt "father's father's sibling"
+msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
 msgstr "Praujna/ujac"
 
 #: includes/functions/functions.php:1144
-msgctxt "father's father's sibling's spouse"
+msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1022
-msgctxt "father's mother's sibling"
+msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
 msgstr "Praujna/ujac"
 
 #: includes/functions/functions.php:1147
-msgctxt "father's mother's sibling's spouse"
+msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1028
-msgctxt "father's parent's sibling"
+msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
 msgstr "Praujna/ujac"
 
 #: includes/functions/functions.php:1150
-msgctxt "father's parent's sibling's spouse"
+msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1047
-msgctxt "mother's father's sibling"
+msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
 msgstr "Praujna/ujac"
 
 #: includes/functions/functions.php:1153
-msgctxt "mother's father's sibling's spouse"
+msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1056
-msgctxt "mother's mother's sibling"
+msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
 msgstr "Praujna/ujac"
 
 #: includes/functions/functions.php:1156
-msgctxt "mother's mother's sibling's spouse"
+msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1062
-msgctxt "mother's parent's sibling"
+msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
 msgstr "Praujna/ujac"
 
 #: includes/functions/functions.php:1159
-msgctxt "mother's parent's sibling's spouse"
+msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1073
-msgctxt "parent's father's sibling"
+msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
 msgstr "Praujna/ujac"
 
 #: includes/functions/functions.php:1162
-msgctxt "parent's father's sibling's spouse"
+msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1079
-msgctxt "parent's mother's sibling"
+msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
 msgstr "Praujna/ujac"
 
 #: includes/functions/functions.php:1165
-msgctxt "parent's mother's sibling's spouse"
+msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1085
-msgctxt "parent's parent's sibling"
+msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
 msgstr "Praujna/ujac"
 
 #: includes/functions/functions.php:1168
-msgctxt "parent's parent's sibling's spouse"
+msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
 msgstr ""
 
 #: includes/functions/functions.php:983
-msgctxt "child's child's child"
+msgctxt "child’s child’s child"
 msgid "great-grandchild"
 msgstr "praunuk/unuka"
 
 #: includes/functions/functions.php:986
-msgctxt "child's daughter's child"
+msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
 msgstr "praunuk/unuka"
 
 #: includes/functions/functions.php:990
-msgctxt "child's son's child"
+msgctxt "child’s son’s child"
 msgid "great-grandchild"
 msgstr ""
 
 #: includes/functions/functions.php:994
-msgctxt "daughter's child's child"
+msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
 msgstr ""
 
 #: includes/functions/functions.php:997
-msgctxt "daughter's daughter's child"
+msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
 msgstr ""
 
 #: includes/functions/functions.php:1004
-msgctxt "daughter's son's child"
+msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
 msgstr ""
 
 #: includes/functions/functions.php:1125
-msgctxt "son's child's child"
+msgctxt "son’s child’s child"
 msgid "great-grandchild"
 msgstr ""
 
 #: includes/functions/functions.php:1128
-msgctxt "son's daughter's child"
+msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
 msgstr ""
 
 #: includes/functions/functions.php:1132
-msgctxt "son's son's child"
+msgctxt "son’s son’s child"
 msgid "great-grandchild"
 msgstr ""
 
 #: includes/functions/functions.php:984
-msgctxt "child's child's daughter"
+msgctxt "child’s child’s daughter"
 msgid "great-granddaughter"
 msgstr "praunuka"
 
 #: includes/functions/functions.php:987
-msgctxt "child's daughter's daughter"
+msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
 msgstr "praunuka"
 
 #: includes/functions/functions.php:991
-msgctxt "child's son's daughter"
+msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
 msgstr ""
 
 #: includes/functions/functions.php:995
-msgctxt "daughter's child's daughter"
+msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
 msgstr ""
 
 #: includes/functions/functions.php:998
-msgctxt "daughter's daughter's daughter"
+msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
 msgstr ""
 
 #: includes/functions/functions.php:1005
-msgctxt "daughter's son's daughter"
+msgctxt "daughter’s son’s daughter"
 msgid "great-granddaughter"
 msgstr "praunuka"
 
 #: includes/functions/functions.php:1126
-msgctxt "son's child's daughter"
+msgctxt "son’s child’s daughter"
 msgid "great-granddaughter"
 msgstr ""
 
 #: includes/functions/functions.php:1129
-msgctxt "son's daughter's daughter"
+msgctxt "son’s daughter’s daughter"
 msgid "great-granddaughter"
 msgstr ""
 
 #: includes/functions/functions.php:1133
-msgctxt "son's son's daughter"
+msgctxt "son’s son’s daughter"
 msgid "great-granddaughter"
 msgstr ""
 
 #: includes/functions/functions.php:1013
-msgctxt "father's father's father"
+msgctxt "father’s father’s father"
 msgid "great-grandfather"
 msgstr "Pradjed"
 
 #: includes/functions/functions.php:1019
-msgctxt "father's mother's father"
+msgctxt "father’s mother’s father"
 msgid "great-grandfather"
 msgstr "Pradjed"
 
 #: includes/functions/functions.php:1025
-msgctxt "father's parent's father"
+msgctxt "father’s parent’s father"
 msgid "great-grandfather"
 msgstr "Pradjed"
 
 #: includes/functions/functions.php:1044
-msgctxt "mother's father's father"
+msgctxt "mother’s father’s father"
 msgid "great-grandfather"
 msgstr "Pradjed"
 
 #: includes/functions/functions.php:1053
-msgctxt "mother's mother's father"
+msgctxt "mother’s mother’s father"
 msgid "great-grandfather"
 msgstr "Pradjed"
 
 #: includes/functions/functions.php:1059
-msgctxt "mother's parent's father"
+msgctxt "mother’s parent’s father"
 msgid "great-grandfather"
 msgstr "Pradjed"
 
 #: includes/functions/functions.php:1070
-msgctxt "parent's father's father"
+msgctxt "parent’s father’s father"
 msgid "great-grandfather"
 msgstr "Pradjed"
 
 #: includes/functions/functions.php:1076
-msgctxt "parent's mother's father"
+msgctxt "parent’s mother’s father"
 msgid "great-grandfather"
 msgstr "Pradjed"
 
 #: includes/functions/functions.php:1082
-msgctxt "parent's parent's father"
+msgctxt "parent’s parent’s father"
 msgid "great-grandfather"
 msgstr "Pradjed"
 
 #: includes/functions/functions.php:1014
-msgctxt "father's father's mother"
+msgctxt "father’s father’s mother"
 msgid "great-grandmother"
 msgstr "Prabaka"
 
 #: includes/functions/functions.php:1020
-msgctxt "father's mother's mother"
+msgctxt "father’s mother’s mother"
 msgid "great-grandmother"
 msgstr "Prabaka"
 
 #: includes/functions/functions.php:1026
-msgctxt "father's parent's mother"
+msgctxt "father’s parent’s mother"
 msgid "great-grandmother"
 msgstr "Prabaka"
 
 #: includes/functions/functions.php:1045
-msgctxt "mother's father's mother"
+msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
 msgstr "Prabaka"
 
 #: includes/functions/functions.php:1054
-msgctxt "mother's mother's mother"
+msgctxt "mother’s mother’s mother"
 msgid "great-grandmother"
 msgstr "Prabaka"
 
 #: includes/functions/functions.php:1060
-msgctxt "mother's parent's mother"
+msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
 msgstr "Prabaka"
 
 #: includes/functions/functions.php:1071
-msgctxt "parent's father's mother"
+msgctxt "parent’s father’s mother"
 msgid "great-grandmother"
 msgstr "Prabaka"
 
 #: includes/functions/functions.php:1077
-msgctxt "parent's mother's mother"
+msgctxt "parent’s mother’s mother"
 msgid "great-grandmother"
 msgstr "Prabaka"
 
 #: includes/functions/functions.php:1083
-msgctxt "parent's parent's mother"
+msgctxt "parent’s parent’s mother"
 msgid "great-grandmother"
 msgstr "Prabaka"
 
 #: includes/functions/functions.php:1015
-msgctxt "father's father's parent"
+msgctxt "father’s father’s parent"
 msgid "great-grandparent"
 msgstr "Pradjed/baka"
 
 #: includes/functions/functions.php:1021
-msgctxt "father's mother's parent"
+msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
 msgstr "Prabaka/djed"
 
 #: includes/functions/functions.php:1027
-msgctxt "father's parent's parent"
+msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
 msgstr "Prabaka/djed"
 
 #: includes/functions/functions.php:1046
-msgctxt "mother's father's parent"
+msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
 msgstr "Pradjed/baka"
 
 #: includes/functions/functions.php:1055
-msgctxt "mother's mother's parent"
+msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
 msgstr "Pradjed/baka"
 
 #: includes/functions/functions.php:1061
-msgctxt "mother's parent's parent"
+msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
 msgstr "Prabaka/djed"
 
 #: includes/functions/functions.php:1072
-msgctxt "parent's father's parent"
+msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
 msgstr "Prabaka/djed"
 
 #: includes/functions/functions.php:1078
-msgctxt "parent's mother's parent"
+msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
 msgstr "Pradjed/baka"
 
 #: includes/functions/functions.php:1084
-msgctxt "parent's parent's parent"
+msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
 msgstr "Pradjed/baka"
 
 #: includes/functions/functions.php:985
-msgctxt "child's child's son"
+msgctxt "child’s child’s son"
 msgid "great-grandson"
 msgstr "praunuk"
 
 #: includes/functions/functions.php:989
-msgctxt "child's daughter's son"
+msgctxt "child’s daughter’s son"
 msgid "great-grandson"
 msgstr ""
 
 #: includes/functions/functions.php:992
-msgctxt "child's son's son"
+msgctxt "child’s son’s son"
 msgid "great-grandson"
 msgstr ""
 
 #: includes/functions/functions.php:996
-msgctxt "daughter's child's son"
+msgctxt "daughter’s child’s son"
 msgid "great-grandson"
 msgstr ""
 
 #: includes/functions/functions.php:1000
-msgctxt "daughter's daughter's son"
+msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
 msgstr ""
 
 #: includes/functions/functions.php:1006
-msgctxt "daughter's son's son"
+msgctxt "daughter’s son’s son"
 msgid "great-grandson"
 msgstr "praunuk"
 
 #: includes/functions/functions.php:1127
-msgctxt "son's child's son"
+msgctxt "son’s child’s son"
 msgid "great-grandson"
 msgstr ""
 
 #: includes/functions/functions.php:1131
-msgctxt "son's daughter's son"
+msgctxt "son’s daughter’s son"
 msgid "great-grandson"
 msgstr ""
 
 #: includes/functions/functions.php:1134
-msgctxt "son's son's son"
+msgctxt "son’s son’s son"
 msgid "great-grandson"
 msgstr ""
 
@@ -17748,437 +17943,437 @@ msgid "great-great-great-grandson"
 msgstr ""
 
 #: includes/functions/functions.php:1395
-msgctxt "(a man's) brother's great-great-grandson"
+msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1397
-msgctxt "(a man's) sister's great-great-grandson"
+msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1399
-msgctxt "(a woman's) great-great-great-nephew"
+msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1411
-msgctxt "(a man's) brother's great-great-grandchild"
+msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1413
-msgctxt "(a man's) sister's great-great-grandchild"
+msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1415
-msgctxt "(a woman's) great-great-great-nephew/niece"
+msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1403
-msgctxt "(a man's) brother's great-great-granddaughter"
+msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:1405
-msgctxt "(a man's) sister's great-great-granddaughter"
+msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:1407
-msgctxt "(a woman's) great-great-great-niece"
+msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:1277
-msgctxt "great-great-grandfather's brother"
+msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1278
-msgctxt "great-great-grandmother's brother"
+msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1279
-msgctxt "great-great-grandparent's brother"
+msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1368
-msgctxt "(a man's) brother's great-grandson"
+msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1370
-msgctxt "(a man's) sister's great-grandson"
+msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1372
-msgctxt "(a woman's) great-great-nephew"
+msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1384
-msgctxt "(a man's) brother's great-grandchild"
+msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1386
-msgctxt "(a man's) sister's great-grandchild"
+msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1388
-msgctxt "(a woman's) great-great-nephew/niece"
+msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1376
-msgctxt "(a man's) brother's great-granddaughter"
+msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:1378
-msgctxt "(a man's) sister's great-granddaughter"
+msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:1380
-msgctxt "(a woman's) great-great-niece"
+msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:1267
-msgctxt "great-grandfather's brother"
+msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1268
-msgctxt "great-grandmother's brother"
+msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1269
-msgctxt "great-grandparent's brother"
+msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:964
-msgctxt "(a man's) brother's child's son"
+msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:971
-msgctxt "(a man's) brother's daughter's son"
+msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:977
-msgctxt "(a man's) brother's son's son"
+msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1106
-msgctxt "(a man's) sister's child's son"
+msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
 msgstr "Pranećak"
 
 #: includes/functions/functions.php:1113
-msgctxt "(a man's) sister's daughter's son"
+msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
 msgstr "Pranećak"
 
 #: includes/functions/functions.php:1122
-msgctxt "(a man's) sister's son's son"
+msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:965
-msgctxt "(a woman's) brother's child's son"
+msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:972
-msgctxt "(a woman's) brother's daughter's son"
+msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:978
-msgctxt "(a woman's) brother's son's son"
+msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1107
-msgctxt "(a woman's) sister's child's son"
+msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
 msgstr "Pranećak"
 
 #: includes/functions/functions.php:1114
-msgctxt "(a woman's) sister's daughter's son"
+msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
 msgstr "Pranećak"
 
 #: includes/functions/functions.php:1123
-msgctxt "(a woman's) sister's son's son"
+msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1093
-msgctxt "sibling's child's son"
+msgctxt "sibling’s child’s son"
 msgid "great-nephew"
 msgstr "Pranećak"
 
 #: includes/functions/functions.php:1097
-msgctxt "sibling's daughter's son"
+msgctxt "sibling’s daughter’s son"
 msgid "great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1100
-msgctxt "sibling's son's son"
+msgctxt "sibling’s son’s son"
 msgid "great-nephew"
 msgstr ""
 
 #: includes/functions/functions.php:960
-msgctxt "(a man's) brother's child's child"
+msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:966
-msgctxt "(a man's) brother's daughter's child"
+msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:973
-msgctxt "(a man's) brother's son's child"
+msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1102
-msgctxt "(a man's) sister's child's child"
+msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1108
-msgctxt "(a man's) sister's daughter's child"
+msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
 msgstr "Pranećak/nećakinja"
 
 #: includes/functions/functions.php:1118
-msgctxt "(a man's) sister's son's child"
+msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:961
-msgctxt "(a woman's) brother's child's child"
+msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:967
-msgctxt "(a woman's) brother's daughter's child"
+msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:974
-msgctxt "(a woman's) brother's son's child"
+msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1103
-msgctxt "(a woman's) sister's child's child"
+msgctxt "(a woman’s) sister’s child’s child"
 msgid "great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1109
-msgctxt "(a woman's) sister's daughter's child"
+msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
 msgstr "Pranećak/nećakinja"
 
 #: includes/functions/functions.php:1119
-msgctxt "(a woman's) sister's son's child"
+msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1091
-msgctxt "sibling's child's child"
+msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
 msgstr "pranećak/nećakinja"
 
 #: includes/functions/functions.php:1094
-msgctxt "sibling's daughter's child"
+msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
 msgstr "Pranećak/nećakinja"
 
 #: includes/functions/functions.php:1098
-msgctxt "sibling's son's child"
+msgctxt "sibling’s son’s child"
 msgid "great-nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:962
-msgctxt "(a man's) brother's child's daughter"
+msgctxt "(a man’s) brother’s child’s daughter"
 msgid "great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:968
-msgctxt "(a man's) brother's daughter's daughter"
+msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:975
-msgctxt "(a man's) brother's son's daughter"
+msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:1104
-msgctxt "(a man's) sister's child's daughter"
+msgctxt "(a man’s) sister’s child’s daughter"
 msgid "great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:1110
-msgctxt "(a man's) sister's daughter's daughter"
+msgctxt "(a man’s) sister’s daughter’s daughter"
 msgid "great-niece"
 msgstr "Pranećakinja"
 
 #: includes/functions/functions.php:1120
-msgctxt "(a man's) sister's son's daughter"
+msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:963
-msgctxt "(a woman's) brother's child's daughter"
+msgctxt "(a woman’s) brother’s child’s daughter"
 msgid "great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:969
-msgctxt "(a woman's) brother's daughter's daughter"
+msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:976
-msgctxt "(a woman's) brother's son's daughter"
+msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:1105
-msgctxt "(a woman's) sister's child's daughter"
+msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
 msgstr "Pranećakinja"
 
 #: includes/functions/functions.php:1111
-msgctxt "(a woman's) sister's daughter's daughter"
+msgctxt "(a woman’s) sister’s daughter’s daughter"
 msgid "great-niece"
 msgstr "Pranećakinja"
 
 #: includes/functions/functions.php:1121
-msgctxt "(a woman's) sister's son's daughter"
+msgctxt "(a woman’s) sister’s son’s daughter"
 msgid "great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:1092
-msgctxt "sibling's child's daughter"
+msgctxt "sibling’s child’s daughter"
 msgid "great-niece"
 msgstr "Pranećakinja"
 
 #: includes/functions/functions.php:1095
-msgctxt "sibling's daughter's daughter"
+msgctxt "sibling’s daughter’s daughter"
 msgid "great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:1099
-msgctxt "sibling's son's daughter"
+msgctxt "sibling’s son’s daughter"
 msgid "great-niece"
 msgstr ""
 
 #: includes/functions/functions.php:1012
-msgctxt "father's father's brother"
+msgctxt "father’s father’s brother"
 msgid "great-uncle"
 msgstr "Praujac"
 
 #: includes/functions/functions.php:1145
-msgctxt "father's father's sister's husband"
+msgctxt "father’s father’s sister’s husband"
 msgid "great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1018
-msgctxt "father's mother's brother"
+msgctxt "father’s mother’s brother"
 msgid "great-uncle"
 msgstr "Praujac"
 
 #: includes/functions/functions.php:1148
-msgctxt "father's mother's sister's husband"
+msgctxt "father’s mother’s sister’s husband"
 msgid "great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1024
-msgctxt "father's parent's brother"
+msgctxt "father’s parent’s brother"
 msgid "great-uncle"
 msgstr "Praujac"
 
 #: includes/functions/functions.php:1151
-msgctxt "father's parent's sister's husband"
+msgctxt "father’s parent’s sister’s husband"
 msgid "great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1043
-msgctxt "mother's father's brother"
+msgctxt "mother’s father’s brother"
 msgid "great-uncle"
 msgstr "Praujac"
 
 #: includes/functions/functions.php:1154
-msgctxt "mother's father's sister's husband"
+msgctxt "mother’s father’s sister’s husband"
 msgid "great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1052
-msgctxt "mother's mother's brother"
+msgctxt "mother’s mother’s brother"
 msgid "great-uncle"
 msgstr "Praujac"
 
 #: includes/functions/functions.php:1157
-msgctxt "mother's mother's sister's husband"
+msgctxt "mother’s mother’s sister’s husband"
 msgid "great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1058
-msgctxt "mother's parent's brother"
+msgctxt "mother’s parent’s brother"
 msgid "great-uncle"
 msgstr "Praujac"
 
 #: includes/functions/functions.php:1160
-msgctxt "mother's parent's sister's husband"
+msgctxt "mother’s parent’s sister’s husband"
 msgid "great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1069
-msgctxt "parent's father's brother"
+msgctxt "parent’s father’s brother"
 msgid "great-uncle"
 msgstr "Praujac"
 
 #: includes/functions/functions.php:1163
-msgctxt "parent's father's sister's husband"
+msgctxt "parent’s father’s sister’s husband"
 msgid "great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1075
-msgctxt "parent's mother's brother"
+msgctxt "parent’s mother’s brother"
 msgid "great-uncle"
 msgstr "Praujac"
 
 #: includes/functions/functions.php:1166
-msgctxt "parent's mother's sister's husband"
+msgctxt "parent’s mother’s sister’s husband"
 msgid "great-uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1081
-msgctxt "parent's parent's brother"
+msgctxt "parent’s parent’s brother"
 msgid "great-uncle"
 msgstr "Praujac"
 
 #: includes/functions/functions.php:1169
-msgctxt "parent's parent's sister's husband"
+msgctxt "parent’s parent’s sister’s husband"
 msgid "great-uncle"
 msgstr ""
 
@@ -18188,47 +18383,47 @@ msgid "half circle"
 msgstr ""
 
 #: includes/functions/functions.php:897
-msgctxt "father's son"
+msgctxt "father’s son"
 msgid "half-brother"
 msgstr "Polubrat po ocu"
 
 #: includes/functions/functions.php:916
-msgctxt "mother's son"
+msgctxt "mother’s son"
 msgid "half-brother"
 msgstr ""
 
 #: includes/functions/functions.php:925
-msgctxt "parent's son"
+msgctxt "parent’s son"
 msgid "half-brother"
 msgstr ""
 
 #: includes/functions/functions.php:890
-msgctxt "father's child"
+msgctxt "father’s child"
 msgid "half-sibling"
 msgstr "polubrat/sestra"
 
 #: includes/functions/functions.php:908
-msgctxt "mother's child"
+msgctxt "mother’s child"
 msgid "half-sibling"
 msgstr ""
 
 #: includes/functions/functions.php:918
-msgctxt "parent's child"
+msgctxt "parent’s child"
 msgid "half-sibling"
 msgstr ""
 
 #: includes/functions/functions.php:891
-msgctxt "father's daughter"
+msgctxt "father’s daughter"
 msgid "half-sister"
 msgstr "Polusestra po ocu"
 
 #: includes/functions/functions.php:909
-msgctxt "mother's daughter"
+msgctxt "mother’s daughter"
 msgid "half-sister"
 msgstr ""
 
 #: includes/functions/functions.php:919
-msgctxt "parent's daughter"
+msgctxt "parent’s daughter"
 msgid "half-sister"
 msgstr ""
 
@@ -18280,6 +18475,7 @@ msgid "interval %s year"
 msgid_plural "interval %s years"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: statistics.php:603
 msgid "interval one child"
@@ -18387,17 +18583,17 @@ msgid "masquerade"
 msgstr ""
 
 #: includes/functions/functions.php:910
-msgctxt "mother's father"
+msgctxt "mother’s father"
 msgid "maternal grandfather"
 msgstr ""
 
 #: includes/functions/functions.php:912
-msgctxt "mother's mother"
+msgctxt "mother’s mother"
 msgid "maternal grandmother"
 msgstr ""
 
 #: includes/functions/functions.php:913
-msgctxt "mother's parent"
+msgctxt "mother’s parent"
 msgid "maternal grandparent"
 msgstr ""
 
@@ -18418,6 +18614,7 @@ msgid "maximum %d day"
 msgid_plural "maximum %d days"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: includes/functions/functions_date.php:103
@@ -18446,67 +18643,67 @@ msgid "mother"
 msgstr "majka"
 
 #: includes/functions/functions.php:903
-msgctxt "husband's mother"
+msgctxt "husband’s mother"
 msgid "mother-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:943
-msgctxt "spouses's mother"
+msgctxt "spouse’s mother"
 msgid "mother-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:952
-msgctxt "wife's mother"
+msgctxt "wife’s mother"
 msgid "mother-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:946
-msgctxt "spouses's parent"
+msgctxt "spouse’s parent"
 msgid "mother/father-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:877
-msgctxt "brother's son"
+msgctxt "brother’s son"
 msgid "nephew"
 msgstr "nećak"
 
 #: includes/functions/functions.php:929
-msgctxt "sibling's son"
+msgctxt "sibling’s son"
 msgid "nephew"
 msgstr ""
 
 #: includes/functions/functions.php:934
-msgctxt "sister's son"
+msgctxt "sister’s son"
 msgid "nephew"
 msgstr ""
 
 #: includes/functions/functions.php:970
-msgctxt "brother's daughter's husband"
+msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:1096
-msgctxt "sibling's daughter's husband"
+msgctxt "sibling’s daughter’s husband"
 msgid "nephew-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:1112
-msgctxt "sisters's daughter's husband"
+msgctxt "sisters’s daughter’s husband"
 msgid "nephew-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:875
-msgctxt "brother's child"
+msgctxt "brother’s child"
 msgid "nephew/niece"
 msgstr "nećak/nećakinja"
 
 #: includes/functions/functions.php:927
-msgctxt "sibling's child"
+msgctxt "sibling’s child"
 msgid "nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:931
-msgctxt "sister's child"
+msgctxt "sister’s child"
 msgid "nephew/niece"
 msgstr ""
 
@@ -18517,32 +18714,32 @@ msgid "next"
 msgstr "naprijed"
 
 #: includes/functions/functions.php:876
-msgctxt "brother's daughter"
+msgctxt "brother’s daughter"
 msgid "niece"
 msgstr "nećakinja"
 
 #: includes/functions/functions.php:928
-msgctxt "sibling's daughter"
+msgctxt "sibling’s daughter"
 msgid "niece"
 msgstr ""
 
 #: includes/functions/functions.php:932
-msgctxt "sister's daughter"
+msgctxt "sister’s daughter"
 msgid "niece"
 msgstr ""
 
 #: includes/functions/functions.php:979
-msgctxt "brother's son's wife"
+msgctxt "brother’s son’s wife"
 msgid "niece-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:1101
-msgctxt "sibling's son's wife"
+msgctxt "sibling’s son’s wife"
 msgid "niece-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:1124
-msgctxt "sisters's son's wife"
+msgctxt "sisters’s son’s wife"
 msgid "niece-in-law"
 msgstr ""
 
@@ -18578,7 +18775,7 @@ msgid "no"
 msgstr "Ne"
 
 #: admin_site_config.php:35 admin_trees_config.php:1248
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1989
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1992
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:779
 #: modules_v3/family_nav/module.php:295
 msgid "none"
@@ -18660,17 +18857,17 @@ msgid "paternal"
 msgstr ""
 
 #: includes/functions/functions.php:892
-msgctxt "father's father"
+msgctxt "father’s father"
 msgid "paternal grandfather"
 msgstr "Djed po ocu"
 
 #: includes/functions/functions.php:893
-msgctxt "father's mother"
+msgctxt "father’s mother"
 msgid "paternal grandmother"
 msgstr "Baka po ocu"
 
 #: includes/functions/functions.php:894
-msgctxt "father's parent"
+msgctxt "father’s parent"
 msgid "paternal grandparent"
 msgstr ""
 
@@ -18778,10 +18975,10 @@ msgstr ""
 #: includes/functions/functions_edit.php:48
 #: includes/functions/functions_edit.php:107 index_edit.php:335
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:599
-#: modules_v3/faq/module.php:188 modules_v3/googlemap/module.php:425
+#: modules_v3/faq/module.php:189 modules_v3/googlemap/module.php:425
 #: modules_v3/googlemap/module.php:626
 #: modules_v3/googlemap/placehierarchy.php:254
-#: modules_v3/googlemap/places_edit.php:339 modules_v3/sitemap/module.php:248
+#: modules_v3/googlemap/places_edit.php:339 modules_v3/sitemap/module.php:254
 #: modules_v3/stories/module.php:263
 msgid "save"
 msgstr ""
@@ -18820,137 +19017,137 @@ msgid "second cousin"
 msgstr "Rod u drugom koljenu"
 
 #: includes/functions/functions.php:1202
-msgctxt "grandfather's brother's grandchild"
+msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1198
-msgctxt "grandfather's brother's granddaughter"
+msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1200
-msgctxt "grandfather's brother's grandson"
+msgctxt "grandfather’s brother’s grandson"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1214
-msgctxt "grandfather's sibling's grandchild"
+msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1210
-msgctxt "grandfather's sibling's granddaughter"
+msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1212
-msgctxt "grandfather's sibling's grandson"
+msgctxt "grandfather’s sibling’s grandson"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1208
-msgctxt "grandfather's sister's grandchild"
+msgctxt "grandfather’s sister’s grandchild"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1204
-msgctxt "grandfather's sister's granddaughter"
+msgctxt "grandfather’s sister’s granddaughter"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1206
-msgctxt "grandfather's sister's grandson"
+msgctxt "grandfather’s sister’s grandson"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1220
-msgctxt "grandmother's brother's grandchild"
+msgctxt "grandmother’s brother’s grandchild"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1216
-msgctxt "grandmother's brother's granddaughter"
+msgctxt "grandmother’s brother’s granddaughter"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1218
-msgctxt "grandmother's brother's grandson"
+msgctxt "grandmother’s brother’s grandson"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1232
-msgctxt "grandmother's sibling's grandchild"
+msgctxt "grandmother’s sibling’s grandchild"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1228
-msgctxt "grandmother's sibling's granddaughter"
+msgctxt "grandmother’s sibling’s granddaughter"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1230
-msgctxt "grandmother's sibling's grandson"
+msgctxt "grandmother’s sibling’s grandson"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1226
-msgctxt "grandmother's sister's grandchild"
+msgctxt "grandmother’s sister’s grandchild"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1222
-msgctxt "grandmother's sister's granddaughter"
+msgctxt "grandmother’s sister’s granddaughter"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1224
-msgctxt "grandmother's sister's grandson"
+msgctxt "grandmother’s sister’s grandson"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1238
-msgctxt "grandparent's brother's grandchild"
+msgctxt "grandparent’s brother’s grandchild"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1234
-msgctxt "grandparent's brother's granddaughter"
+msgctxt "grandparent’s brother’s granddaughter"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1236
-msgctxt "grandparent's brother's grandson"
+msgctxt "grandparent’s brother’s grandson"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1250
-msgctxt "grandparent's sibling's grandchild"
+msgctxt "grandparent’s sibling’s grandchild"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1246
-msgctxt "grandparent's sibling's granddaughter"
+msgctxt "grandparent’s sibling’s granddaughter"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1248
-msgctxt "grandparent's sibling's grandson"
+msgctxt "grandparent’s sibling’s grandson"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1244
-msgctxt "grandparent's sister's grandchild"
+msgctxt "grandparent’s sister’s grandchild"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1240
-msgctxt "grandparent's sister's granddaughter"
+msgctxt "grandparent’s sister’s granddaughter"
 msgid "second cousin"
 msgstr ""
 
 #: includes/functions/functions.php:1242
-msgctxt "grandparent's sister's grandson"
+msgctxt "grandparent’s sister’s grandson"
 msgid "second cousin"
 msgstr ""
 
@@ -18994,7 +19191,7 @@ msgstr "Rod u sedmom koljenu"
 #: admin_trees_config.php:963 admin_trees_config.php:971
 #: admin_trees_config.php:992 admin_trees_config.php:1024
 #: admin_trees_config.php:1045 admin_trees_config.php:1053
-#: admin_trees_config.php:1061 modules_v3/faq/module.php:355
+#: admin_trees_config.php:1061 modules_v3/faq/module.php:356
 #: modules_v3/googlemap/module.php:275 modules_v3/stories/module.php:336
 msgid "show"
 msgstr "Prikaži"
@@ -19012,42 +19209,42 @@ msgid "sister"
 msgstr "sestra"
 
 #: includes/functions/functions.php:878
-msgctxt "brother's wife"
+msgctxt "brother’s wife"
 msgid "sister-in-law"
 msgstr "Nevjesta"
 
 #: includes/functions/functions.php:982
-msgctxt "brother's wife's sister"
+msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:1037
-msgctxt "husband's brother's wife"
+msgctxt "husband’s brother’s wife"
 msgid "sister-in-law"
 msgstr "Nevjesta"
 
 #: includes/functions/functions.php:905
-msgctxt "husband's sister"
+msgctxt "husband’s sister"
 msgid "sister-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:1117
-msgctxt "sister's husband's sister"
+msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:944
-msgctxt "spouses's sister"
+msgctxt "spouse’s sister"
 msgid "sister-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:1139
-msgctxt "wife's brother's wife"
+msgctxt "wife’s brother’s wife"
 msgid "sister-in-law"
 msgstr ""
 
 #: includes/functions/functions.php:954
-msgctxt "wife's sister"
+msgctxt "wife’s sister"
 msgid "sister-in-law"
 msgstr ""
 
@@ -19078,32 +19275,32 @@ msgid "son of"
 msgstr ""
 
 #: includes/functions/functions.php:881
-msgctxt "child's husband"
+msgctxt "child’s husband"
 msgid "son-in-law"
 msgstr "Zet"
 
 #: includes/functions/functions.php:887
-msgctxt "daughter's husband"
+msgctxt "daughter’s husband"
 msgid "son-in-law"
 msgstr "zet"
 
 #: includes/functions/functions.php:1001
-msgctxt "daughter's husband's father"
+msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
 msgstr ""
 
 #: includes/functions/functions.php:1002
-msgctxt "daughter's husband's mother"
+msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
 msgstr ""
 
 #: includes/functions/functions.php:1003
-msgctxt "daughter's husband's parent"
+msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
 msgstr ""
 
 #: includes/functions/functions.php:883
-msgctxt "child's spouse"
+msgctxt "child’s spouse"
 msgid "son/daughter-in-law"
 msgstr "Nevjesta"
 
@@ -19187,107 +19384,107 @@ msgid "ssl"
 msgstr ""
 
 #: includes/functions/functions.php:1036
-msgctxt "father's wife's son"
+msgctxt "father’s wife’s son"
 msgid "step-brother"
 msgstr "Polubrat"
 
 #: includes/functions/functions.php:1051
-msgctxt "mother's husband's son"
+msgctxt "mother’s husband’s son"
 msgid "step-brother"
 msgstr "Polubrat"
 
 #: includes/functions/functions.php:1090
-msgctxt "parent's spouse's son"
+msgctxt "parent’s spouse’s son"
 msgid "step-brother"
 msgstr "Polubrat"
 
 #: includes/functions/functions.php:900
-msgctxt "husband's child"
+msgctxt "husband’s child"
 msgid "step-child"
 msgstr ""
 
 #: includes/functions/functions.php:940
-msgctxt "spouses's child"
+msgctxt "spouse’s child"
 msgid "step-child"
 msgstr ""
 
 #: includes/functions/functions.php:949
-msgctxt "wife's child"
+msgctxt "wife’s child"
 msgid "step-child"
 msgstr ""
 
 #: includes/functions/functions.php:901
-msgctxt "husband's daughter"
+msgctxt "husband’s daughter"
 msgid "step-daughter"
 msgstr ""
 
 #: includes/functions/functions.php:941
-msgctxt "spouses's daughter"
+msgctxt "spouse’s daughter"
 msgid "step-daughter"
 msgstr ""
 
 #: includes/functions/functions.php:950
-msgctxt "wife's daughter"
+msgctxt "wife’s daughter"
 msgid "step-daughter"
 msgstr ""
 
 #: includes/functions/functions.php:911
-msgctxt "mother's husband"
+msgctxt "mother’s husband"
 msgid "step-father"
 msgstr "očuh"
 
 #: includes/functions/functions.php:898
-msgctxt "father's wife"
+msgctxt "father’s wife"
 msgid "step-mother"
 msgstr "Maćeha"
 
 #: includes/functions/functions.php:926
-msgctxt "parent's spouse"
+msgctxt "parent’s spouse"
 msgid "step-parent"
 msgstr ""
 
 #: includes/functions/functions.php:1034
-msgctxt "father's wife's child"
+msgctxt "father’s wife’s child"
 msgid "step-sibling"
 msgstr "polubrat/sestra po maćehi"
 
 #: includes/functions/functions.php:1049
-msgctxt "mother's husband's child"
+msgctxt "mother’s husband’s child"
 msgid "step-sibling"
 msgstr "polubrat/sestra po maćehi"
 
 #: includes/functions/functions.php:1088
-msgctxt "parent's spouse's child"
+msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
 msgstr "polubrat/sestra po maćehi"
 
 #: includes/functions/functions.php:1035
-msgctxt "father's wife's daughter"
+msgctxt "father’s wife’s daughter"
 msgid "step-sister"
 msgstr "Polusestra"
 
 #: includes/functions/functions.php:1050
-msgctxt "mother's husband's daughter"
+msgctxt "mother’s husband’s daughter"
 msgid "step-sister"
 msgstr "Polusestra"
 
 #: includes/functions/functions.php:1089
-msgctxt "parent's spouse's daughter"
+msgctxt "parent’s spouse’s daughter"
 msgid "step-sister"
 msgstr "Polusestra"
 
 #: includes/functions/functions.php:906
-msgctxt "husband's son"
+msgctxt "husband’s son"
 msgid "step-son"
 msgstr ""
 
 #: includes/functions/functions.php:945
-msgctxt "spouses's son"
+msgctxt "spouse’s son"
 msgid "step-son"
 msgstr ""
 
 #: includes/functions/functions.php:955
-msgctxt "wife's son"
+msgctxt "wife’s son"
 msgid "step-son"
 msgstr ""
 
@@ -19425,32 +19622,32 @@ msgid "twin sister"
 msgstr "sestra blizanka"
 
 #: includes/functions/functions.php:889
-msgctxt "father's brother"
+msgctxt "father’s brother"
 msgid "uncle"
 msgstr "Ujak"
 
 #: includes/functions/functions.php:1032
-msgctxt "father's sister's husband"
+msgctxt "father’s sister’s husband"
 msgid "uncle"
 msgstr "Ujak"
 
 #: includes/functions/functions.php:907
-msgctxt "mother's brother"
+msgctxt "mother’s brother"
 msgid "uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1066
-msgctxt "mother's sister's husband"
+msgctxt "mother’s sister’s husband"
 msgid "uncle"
 msgstr "Ujak"
 
 #: includes/functions/functions.php:917
-msgctxt "parent's brother"
+msgctxt "parent’s brother"
 msgid "uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1087
-msgctxt "parent's sister's husband"
+msgctxt "parent’s sister’s husband"
 msgid "uncle"
 msgstr "Ujak"
 
@@ -19467,52 +19664,52 @@ msgstr "Ujak"
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:111
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:135
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:136
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:245
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:246
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:361
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:247
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:362
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:380
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:363
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:381
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:496
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:382
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:497
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:521
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:498
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:522
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:632
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:633
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:748
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:749
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:760
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:761
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:873
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:874
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:898
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:899
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1010
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1011
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1133
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1134
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1146
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1147
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1342
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1343
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1369
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1370
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1450
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1451
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1542
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1543
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1571
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1572
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1655
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1656
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1747
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1748
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1776
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1777
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1878
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1879
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1903
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1904
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:523
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:634
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:635
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:750
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:751
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:762
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:763
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:875
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:876
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:900
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:901
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1013
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1014
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1136
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1137
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1149
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1150
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1345
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1346
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1372
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1373
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1453
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1454
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1545
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1546
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1574
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1575
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1658
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1659
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1750
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1751
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1779
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1780
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1881
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1882
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1906
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1907
 #: modules_v3/googlemap/admin_places.php:556
 #: modules_v3/googlemap/admin_places.php:563
 #: modules_v3/googlemap/admin_places.php:593
@@ -19530,8 +19727,8 @@ msgstr "Ujak"
 msgid "unknown"
 msgstr "nepoznato"
 
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1995
-#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2001
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1998
+#: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2004
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:785
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:791
 #: modules_v3/family_nav/module.php:298 modules_v3/family_nav/module.php:301

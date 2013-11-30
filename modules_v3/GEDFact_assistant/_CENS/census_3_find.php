@@ -128,7 +128,7 @@ if ($action=="filter") {
 			}
 			if (!isset($marrdate)) { $marrdate = ""; }
 
-			//-- Get Children's Name, DOB, DOD --------------------------
+			//-- Get Children’s Name, DOB, DOD --------------------------
 			$chBLDarray = Array();
 			if (isset($children)) {
 				foreach ($children as $key=>$child) {
@@ -136,10 +136,10 @@ if ($action=="filter") {
 					$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 					$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
 					$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
-					$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln); // Child's Full Name
-					$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // Child's Date of Birth (Julian)
+					$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln); // Child’s Full Name
+					$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // Child’s Date of Birth (Julian)
 					if (!isset($chdob)) { $chdob = ""; }
-					$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // Child's Date of Death (Julian)
+					$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // Child’s Date of Death (Julian)
 					if (!isset($chdod)) { $chdod = ""; }
 					$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
 					array_push($chBLDarray, $chBLD);
@@ -168,8 +168,8 @@ if ($action=="filter") {
 			echo "'".(($indi->getDeathDate()->minJD() + $indi->getDeathDate()->maxJD())/2)."' ,"; // dod       - Date of Death
 			echo "'', "; // occu      - Occupation
 			echo "'".WT_Filter::escapeHtml($indi->getbirthplace())."', "; // birthpl   - Birthplace
-			echo "'".$FBP."', "; // fbirthpl  - Father's Birthplace
-			echo "'".$MBP."', "; // mbirthpl  - Mother's Birthplace
+			echo "'".$FBP."', "; // fbirthpl  - Father’s Birthplace
+			echo "'".$MBP."', "; // mbirthpl  - Mother’s Birthplace
 			echo "'".$chBLDarray."'"; // chilBLD   - Array of Children (name, birthdate, deathdate)
 			echo ");";
 			echo "return false;\">";

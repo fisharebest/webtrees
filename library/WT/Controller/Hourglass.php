@@ -130,7 +130,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			echo '</td>';
 			echo '<td>';
 
-				//-- recursively get the father's family
+				//-- recursively get the father’s family
 				$this->print_person_pedigree($person, $count+1);
 				echo '</td>';
 				echo '<td>';
@@ -139,7 +139,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				 '<div style="width:',$bwidth,'px; height:',$bheight,'px;"></div>';
 				 echo '</td>';
 			echo '<td>';
-				//-- recursively get the father's family
+				//-- recursively get the father’s family
 				$this->print_person_pedigree($person, $count+1);
 				echo '</td>';
 				echo '<td>';
@@ -163,7 +163,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				if ($count==$this->generations-1 && $family->getHusband()->getChildFamilies()) {
 					echo "<a href=\"#\" onclick=\"return ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\" class=\"".$this->right_arrow."\"></a> ";
 				}
-				//-- recursively get the father's family
+				//-- recursively get the father’s family
 				$this->print_person_pedigree($family->getHusband(), $count+1);
 				echo "</td>";
 			}
@@ -183,7 +183,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 					echo "<a href=\"#\" onclick=\"ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."'); return false;\" class=\"".$this->right_arrow."\"></a> ";
 				}
 
-				//-- recursively print the mother's family
+				//-- recursively print the mother’s family
 				$this->print_person_pedigree($family->getWife(), $count+1);
 				echo "</td>";
 			}
