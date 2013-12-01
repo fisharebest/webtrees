@@ -52,36 +52,49 @@ class WT_Soundex {
 	}
 
 	public static function soundex_std($text) {
-		$words=explode(' ', $text);
-		$soundex_array=array();
+		$words = explode(' ', $text);
+		$soundex_array = array();
 		foreach ($words as $word) {
-			if ($word) {
-				$soundex_array[]=soundex($word);
+			$soundex = soundex($word);
+			// Only return codes from recognisable sounds
+			if ($soundex != '0000') {
+				$soundex_array[] = $soundex;
 			}
 		}
+		// Combine words, e.g. “New York” as “Newyork”
 		if (count($words)>1) {
-			$soundex_array[]=soundex(strtr($text, ' ', ''));
+			$soundex_array[] = soundex(strtr($text, ' ', ''));
 		}
 		// A varchar(255) column can only hold 51 4-character codes (plus 50 delimiters)
-		$soundex_array=array_slice($soundex_array, 0, 51);
-		return implode(':', array_unique($soundex_array));
+		$soundex_array = array_slice(array_unique($soundex_array), 0, 51);
+
+		if ($soundex_array) {
+			return implode(':', $soundex_array);
+		} else {
+			return null;
+		}
 	}
 
 	public static function soundex_dm($text) {
-		$words=explode(' ', $text);
-		$soundex_array=array();
-		$combined = '';
+		$words = explode(' ', $text);
+		$soundex_array = array();
 		foreach ($words as $word) {
 			if ($word) {
-				$soundex_array=array_merge($soundex_array, self::DMSoundex($word));
+				$soundex_array = array_merge($soundex_array, self::DMSoundex($word));
 			}
 		}
+		// Combine words, e.g. “New York” as “Newyork”
 		if (count($words)>1) {
-			$soundex_array=array_merge($soundex_array, self::DMSoundex(strtr($text, ' ', '')));
+			$soundex_array = array_merge($soundex_array, self::DMSoundex(strtr($text, ' ', '')));
 		}
 		// A varchar(255) column can only hold 36 6-entries (plus 35 delimiters)
-		$soundex_array=array_slice($soundex_array, 0, 36);
-		return implode(':', array_unique($soundex_array));
+		$soundex_array = array_slice(array_unique($soundex_array), 0, 36);
+
+		if ($soundex_array) {
+			return implode(':', $soundex_array);
+		} else {
+			return null;
+		}
 	}
 
 	// Determine the Daitch–Mokotoff Soundex code for a word
@@ -715,12 +728,16 @@ class WT_Soundex {
 								$workingEntry[] = $soundTableEntry[$state];
 							}
 						}
-						if (count($workingEntry) < 7) $partialResult[] = $workingEntry;
-						else {
+						if (count($workingEntry) < 7) {
+							$partialResult[] = $workingEntry;
+						} else {
 							// This is the 6th code in the sequence
 							// We're looking for 7 entries because the first is '!' and doesn't count
-							$tempResult = str_replace('!', '', implode('', $workingEntry)) . '000000';
-							$result[] = substr($tempResult, 0, 6);
+							$tempResult = str_replace('!', '', implode('', $workingEntry));
+							// Only return codes from recognisable sounds
+							if ($tempResult) {
+								$result[] = substr($tempResult . '000000', 0, 6);
+							}
 						}
 					}
 				}
@@ -730,14 +747,13 @@ class WT_Soundex {
 
 		// Zero-fill and copy all remaining partial results
 		foreach ($partialResult as $workingEntry) {
-			$tempResult = str_replace('!', '', implode('', $workingEntry)) . '000000';
-			$result[] = substr($tempResult, 0, 6);
+			$tempResult = str_replace('!', '', implode('', $workingEntry));
+			// Only return codes from recognisable sounds
+			if ($tempResult) {
+				$result[] = substr($tempResult . '000000', 0, 6);
+			}
 		}
 
-		$result = array_flip(array_flip($result)); // Kill the double results in the array
-
-		// We're done.  All that’s left is to sort the result
-		sort($result);
 		return $result;
 	}
 }
