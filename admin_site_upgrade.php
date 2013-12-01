@@ -42,7 +42,7 @@ $lock_file_text      = WT_I18N::translate('This site is being upgraded.  Try aga
 
 // Success/failure indicators
 $icon_success        = '<i class="icon-yes"></i>';
-$icon_failure        = '<i class="icon-delete"></i>';
+$icon_failure        = '<i class="icon-failure"></i>';
 
 // Need confirmation for various actions
 $continue            = WT_Filter::post('continue', '1') && WT_Filter::checkCsrf();
