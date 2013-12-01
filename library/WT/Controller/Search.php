@@ -132,7 +132,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		// vars use for soundex search
 		$this->firstname = WT_Filter::post('firstname');
 		$this->lastname  = WT_Filter::post('lastname');
-		$this->place2    = WT_Filter::post('place2');
+		$this->place     = WT_Filter::post('place');
 		$this->year      = WT_Filter::post('year');
 
 		// Set the search result titles for soundex searches

@@ -11062,10 +11062,6 @@ msgstr "Frage"
 msgid "Quick family facts"
 msgstr "Schnell hinzugefügte Familienereignisse"
 
-#: admin_trees_config.php:1137
-msgid "Quick family facts"
-msgstr ""
-
 #: admin_trees_config.php:1100 help_text.php:588
 msgid "Quick individual facts"
 msgstr "Schnell hinzugefügte Personenereignisse"

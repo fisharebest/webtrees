@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-30 14:32+0000\n"
-"PO-Revision-Date: 2013-11-28 00:46+0100\n"
+"PO-Revision-Date: 2013-12-01 01:26+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -145,8 +145,8 @@ msgstr "%1$s heeft geen koppeling terug naar %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Het uitpakken van %1$s bestand duurde %2$s seconden."
+msgstr[1] "Het uitpakken van %1$s bestanden duurde %2$s seconden."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:182
@@ -164,7 +164,7 @@ msgstr "%1$s × %2$s pixels"
 #: admin_site_upgrade.php:306
 #, php-format
 msgid "%1$sKB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "Het downloaden van %1$sKB duurde %2$s seconden."
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:421
@@ -655,7 +655,7 @@ msgstr "<center><b>Welkom op deze genealogiewebsite</b></center><br><br>Toegang 
 
 #: login.php:141
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
-msgstr ""
+msgstr "<center><b>Welkom op deze genealogie website</b></center><br>Toegang tot deze site is voorbehouden aan bezoekers met een gebruikersaccount.<br><br>Als u een gebruikersaccount heeft, kunt u inloggen op deze pagina.  Als u geen gebruikersaccount heeft, kunt u er een aanvragen door op de link hieronder te klikken.<br><br>Nadat uw aanvraag is gecontroleerd, zal de website beheerder uw account activeren. U ontvangt een e-mail wanneer uw aanvraag is goedgekeurd."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:459 admin_users.php:202 admin_users.php:410
@@ -779,7 +779,7 @@ msgstr "Een nieuwe gebruiker (%1$s) heeft een account (%2$s) aangevraagd en een 
 
 #: admin.php:63 admin_site_upgrade.php:83
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Een nieuwe versie van webtrees is beschikbaar."
 
 #. I18N: Description of the “Journal” module
 #: modules_v3/user_blog/module.php:45
@@ -948,7 +948,7 @@ msgstr "Een gebruiker kan zich niet aanmelden totdat zowel \"e-mail geverifieerd
 
 #: help_text.php:1016
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Een watermerk is een tekst die wordt toegevoegd aan een afbeelding om anderen te ontmoedigen de afbeelding zonder toestemming te kopiëren."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:117
@@ -1372,7 +1372,7 @@ msgstr "Voeg verhaal toe"
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:217
 #: modules_v3/clippings/module.php:603
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Voeg het GEDCOM media pad toe aan bestandsnamen."
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:528
 msgid "Add this individual and his direct line ancestors."
@@ -1792,7 +1792,7 @@ msgstr "Alle bestaande PGV-gebruikers moeten unieke e-mailadressen hebben"
 
 #: admin_trees_config.php:1113 help_text.php:505
 msgid "All family facts"
-msgstr ""
+msgstr "Alle feiten voor gezinnen"
 
 #: login.php:396
 msgid "All fields must be completed."
@@ -1800,11 +1800,11 @@ msgstr "Alle velden moeten ingevuld worden."
 
 #: admin_site_upgrade.php:387
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "Alle bestanden hebben lees- en schrijfrechten."
 
 #: admin_trees_config.php:1076 help_text.php:583
 msgid "All individual facts"
-msgstr ""
+msgstr "Alle feiten voor personen"
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
@@ -1813,11 +1813,11 @@ msgstr "Alle personen"
 
 #: admin_trees_config.php:1179 help_text.php:789
 msgid "All repository facts"
-msgstr ""
+msgstr "Alle feiten voor opslagplaatsen"
 
 #: admin_trees_config.php:1150 help_text.php:900
 msgid "All source facts"
-msgstr ""
+msgstr "Alle feiten voor bronnen"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1892,7 +1892,7 @@ msgstr "Een deelgenoot is een andere persoon die betrokken was bij dit feit of g
 
 #: help_text.php:60
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr ""
+msgstr "Een gerelateerd persoon is een persoon die in betrekking staat tot deze persoon, zoals een vriend of een werkgever."
 
 #. I18N: Description of the “Edit” module
 #: modules_v3/page_menu/module.php:37
@@ -1902,7 +1902,7 @@ msgstr "Een menu om personen, gezinnen, bronnen, enz. te wijzigen"
 #: admin_site_upgrade.php:330 admin_site_upgrade.php:349
 #: admin_site_upgrade.php:359 admin_site_upgrade.php:434
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "Er heeft zich een fout voorgedaan tijdens het uitpakken van het bestand."
 
 #. I18N: Description of the “Interactive tree” module
 #: modules_v3/tree/module.php:38
@@ -2094,7 +2094,7 @@ msgstr "Weet u zeker dat u “%s” wilt verwijderen?"
 
 #: modules_v3/lightbox/module.php:203
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Weet u zeker dat u de koppelingen naar dit media object wilt verwijderen?"
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -2102,7 +2102,7 @@ msgstr "Weet u zeker dat u dit item uit uw favorietenlijst wilt verwijderen?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Weet u zeker dat u alle veranderingen aan deze stamboom ongedaan wilt maken?"
 
 #: library/WT/Stats.php:3756
 msgid "Argentina"
@@ -3285,11 +3285,11 @@ msgstr "Doodsoorzaak"
 
 #: admin_site_upgrade.php:202
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Let op: oude modules werken misschien niet of zorgen ervoor dat webtrees niet werkt."
 
 #: admin_site_upgrade.php:265
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Let op: oude thema's werken misschien niet of zorgen ervoor dat webtrees niet werkt."
 
 #: library/WT/Stats.php:3807
 msgid "Cayman Islands"
@@ -3427,17 +3427,17 @@ msgstr "Controleer de toegangsrechten tot deze map."
 
 #: admin_site_upgrade.php:370
 msgid "Check file permissions…"
-msgstr ""
+msgstr "Controleer bestandsrechten..."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:116
 msgid "Check for custom modules…"
-msgstr ""
+msgstr "Controleer op niet-standaard modules..."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:218
 msgid "Check for custom themes…"
-msgstr ""
+msgstr "Controleer op niet-standaard thema's..."
 
 #: admin_trees_check.php:34 themes/_administration/header.php:121
 msgid "Check for errors"
@@ -3446,7 +3446,7 @@ msgstr "Controleer op fouten"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:97
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "Controleer op uitstaande wijzigingen..."
 
 #: help_text.php:460 relationship.php:138
 msgid "Check relationships by marriage"
@@ -3754,7 +3754,7 @@ msgstr "Klikken op het \"+\"pictogram opent het venster van de Volkstellingsassi
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:84
 msgid "Client time"
-msgstr ""
+msgstr "Lokale tijd"
 
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
@@ -3945,12 +3945,12 @@ msgstr "Kopiëer"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:410
 msgid "Copy files…"
-msgstr ""
+msgstr "Kopieer bestanden..."
 
 #: admin_site_upgrade.php:381
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr ""
+msgstr "Kopieer deze bestanden naar de folder %s. Vervang hierbij alle bestanden met dezelfde naam."
 
 #. I18N: gedcom tag COPR
 #: library/WT/Gedcom/Tag.php:161
@@ -4006,7 +4006,7 @@ msgstr "County"
 
 #: admin_media.php:284
 msgid "Create"
-msgstr ""
+msgstr "Creëer"
 
 #: admin_trees_manage.php:245 help_text.php:1058
 msgid "Create a new family tree"
@@ -4214,11 +4214,11 @@ msgstr "Vrij te kiezen gebeurtenis"
 
 #: includes/functions/functions_print.php:999
 msgid "Custom fact"
-msgstr ""
+msgstr "Niet-standaard feit"
 
 #: admin_site_upgrade.php:190 admin_site_upgrade.php:193
 msgid "Custom module"
-msgstr ""
+msgstr "Niet-standaard module"
 
 #: find.php:480
 msgid "Custom tags"
@@ -4226,7 +4226,7 @@ msgstr "Zelf gedefinieerde tags"
 
 #: admin_site_upgrade.php:250 admin_site_upgrade.php:253
 msgid "Custom theme"
-msgstr ""
+msgstr "Niet-standaard thema"
 
 #: admin_site_config.php:163 help_text.php:1030
 msgid "Custom welcome text"
@@ -4928,7 +4928,7 @@ msgstr "Verwijder naam"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:459
 msgid "Delete temporary files…"
-msgstr ""
+msgstr "Verwijder tijdelijke bestanden..."
 
 #: admin_site_clean.php:88
 msgid "Deleted files:"
@@ -4956,7 +4956,7 @@ msgstr "Denver, Colorado"
 
 #: admin_site_upgrade.php:84
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr ""
+msgstr "Het hangt van uw server configuratie af of u automatisch kunt upgraden."
 
 #: help_text.php:1213
 msgid "Descendant generations"
@@ -5141,11 +5141,11 @@ msgstr "Voorouders in directe lijn en hun gezinnen"
 
 #: admin_site_upgrade.php:201
 msgid "Disable these modules"
-msgstr ""
+msgstr "Schakel deze modules uit"
 
 #: admin_site_upgrade.php:264
 msgid "Disable these themes"
-msgstr ""
+msgstr "Schakel deze thema's uit"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: library/WT/I18N.php:420
@@ -5238,7 +5238,7 @@ msgstr "Download"
 #: admin_site_upgrade.php:299
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Download %s…"
 
 #: mediaviewer.php:104
 msgid "Download File"
@@ -5775,7 +5775,7 @@ msgstr "Uitvoeringsstatistieken"
 #: includes/functions/functions_print.php:255
 #, php-format
 msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB."
-msgstr ""
+msgstr "Uitvoeringstijd: %1$s seconden. Database verzoeken: %2$s. Geheugengebruik: %3$s KB."
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:424
@@ -5790,7 +5790,7 @@ msgstr "Exporteer"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:281
 msgid "Export all family trees to GEDCOM files…"
-msgstr ""
+msgstr "Exporteer alle stambomen naar GEDCOM bestanden..."
 
 #: help_text.php:1202
 msgid "Export family tree"
@@ -6466,7 +6466,7 @@ msgstr "Voor een optimale weergave op het internet, maakt <b>webtrees</b> gebrui
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:417
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "Voor websites met meer dan één stamboom laat deze optie een lijst van stambomen zien in het hoofdmenu, de zoekpagina's enz."
 
 #: includes/functions/functions_print.php:372
 msgid "For technical support and information contact"
@@ -7422,7 +7422,7 @@ msgstr "Afmetingen afbeelding"
 
 #: admin_trees_config.php:718
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Afbeeldingen zonder watermerk"
 
 #: modules_v3/family_nav/module.php:87
 msgid "Immediate Family"
@@ -7688,7 +7688,7 @@ msgstr "Israël"
 
 #: admin_site_upgrade.php:81 admin_site_upgrade.php:85
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
-msgstr ""
+msgstr "Het kan enkele minuten duren om de upgrade te downloaden en te installeren. Even geduld a.u.b."
 
 #: library/WT/Stats.php:3865
 msgid "Italy"
@@ -8490,7 +8490,7 @@ msgstr "Veel genealogie programma's maken GEDCOM-bestanden met eigen tags aan en
 #. I18N: Help text for the “Sending server name” site configuration setting
 #: help_text.php:750
 msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "De meeste e-mail servers eisen dat de uitgaande server zichzelf correct identificeert door een geldige domeinnaam te gebruiken."
 
 #. I18N: gedcom tag MAP
 #: library/WT/Gedcom/Tag.php:232 library/WT/Gedcom/Tag.php:892
@@ -8767,7 +8767,7 @@ msgstr "Martinique"
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:215
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Vermom uzelf als deze gebruiker"
 
 #: modules_v3/batch_update/plugins/search_replace.php:90
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -9720,11 +9720,11 @@ msgstr "Geheel geen contact"
 
 #: admin_site_upgrade.php:207
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "Er zijn geen niet-standaard modules ingeschakeld."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "Er zijn geen niet-standaard thema's ingeschakeld."
 
 #: admin_trees_check.php:230
 msgid "No errors were found."
@@ -9765,8 +9765,8 @@ msgstr "Er zijn geen gebeurtenissen van levende personen voor morgen."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Er zijn geen gebeurtenissen voor levende personen %s."
+msgstr[1] "Er zijn geen gebeurtenissen voor levende personen in de komende %s dagen."
 
 #: library/WT/Controller/Family.php:164
 msgid "No facts for this family."
@@ -9832,7 +9832,7 @@ msgstr "Verordening heeft tijdens het leven van betrokkene plaatsgevonden"
 
 #: admin_site_upgrade.php:67
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Er is geen upgrade informatie beschikbaar."
 
 #: library/WT/Stats.php:1069
 msgid "Nobody at all"
@@ -10765,12 +10765,12 @@ msgstr "Woonplaats"
 #: admin_site_upgrade.php:395
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr ""
+msgstr "Plaats de website offline door het bestand %s aan te maken..."
 
 #: admin_site_upgrade.php:445
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr ""
+msgstr "Plaats de website online door het bestand %s te verwijderen..."
 
 #: admin_trees_config.php:894 statistics.php:401
 msgid "Places"
@@ -11062,13 +11062,9 @@ msgstr "Quartidi"
 msgid "Question"
 msgstr "Vraag"
 
-#: help_text.php:510
+#: admin_trees_config.php:1137 help_text.php:510
 msgid "Quick family facts"
 msgstr "Snel toe te voegen feiten/gebeurtenissen voor gezinnen"
-
-#: admin_trees_config.php:1137
-msgid "Quick family facts"
-msgstr ""
 
 #: admin_trees_config.php:1100 help_text.php:588
 msgid "Quick individual facts"
@@ -11324,7 +11320,7 @@ msgstr "Reguliere expressie"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Een reguliere expressie is een geavanceerde patroonherkenningstechniek."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:33
@@ -11805,7 +11801,7 @@ msgstr "Zoek en vervang"
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:39
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr ""
+msgstr "Zoek en vervang tekst door gebruik te maken van een eenvoudige zoekopdracht of geavanceerde patroonherkenning."
 
 #: includes/session.php:549
 msgid "Search engine"
@@ -11852,7 +11848,7 @@ msgstr "Beveiligde verbinding"
 #: modules_v3/batch_update/plugins/search_replace.php:93
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Zie %s voor meer informatie."
 
 #: includes/functions/functions_edit.php:311 reportengine.php:250
 msgid "Select a date"
@@ -11971,7 +11967,7 @@ msgstr "Naam afzender"
 #. I18N: A site configuration setting
 #: admin_site_config.php:142 help_text.php:749
 msgid "Sending server name"
-msgstr ""
+msgstr "Naam van de uitgaande server"
 
 #: library/WT/Stats.php:3950
 msgid "Senegal"
@@ -12050,7 +12046,7 @@ msgstr "Servernaam"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:81
 msgid "Server time"
-msgstr ""
+msgstr "Tijd op de server"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:94 help_text.php:719
@@ -12346,7 +12342,7 @@ msgstr "Leeftijd indicator tonen?"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:944 help_text.php:694
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Toon standaard details in diagrammen"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -12479,7 +12475,7 @@ msgstr "Toon koppeling naar Statistiekendiagram?"
 
 #: admin_site_config.php:91 help_text.php:416
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Toon lijst met stambomen"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -13412,7 +13408,7 @@ msgstr "Het bestand %s betaat al. Gebruik een andere bestandsnaam."
 #: admin_site_upgrade.php:399 admin_site_upgrade.php:429
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Het bestand %s kon niet worden aangemaakt."
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:450
 #: admin_site_upgrade.php:470
@@ -13423,12 +13419,12 @@ msgstr "Het bestand %s kon niet worden verwijderd."
 #: admin_site_upgrade.php:377
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "Het bestand %s kon niet worden geupdate."
 
 #: admin_site_upgrade.php:401
 #, php-format
 msgid "The file %s was created."
-msgstr ""
+msgstr "Het bestand %s is aangemaakt."
 
 #: admin_media.php:58 admin_media.php:65 admin_site_upgrade.php:448
 #: admin_site_upgrade.php:468
@@ -13451,7 +13447,7 @@ msgstr "Het bestand ‘%s’ bestaat niet."
 #: admin_site_upgrade.php:464
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "De folder %s kon niet worden verwijderd."
 
 #: addmedia.php:112 addmedia.php:123 addmedia.php:135 addmedia.php:274
 #: addmedia.php:285 addmedia.php:297 admin_media_upload.php:61
@@ -13471,7 +13467,7 @@ msgstr "De map %s werd aangemaakt."
 #: admin_site_upgrade.php:462
 #, php-format
 msgid "The folder %s was deleted."
-msgstr ""
+msgstr "De folder %s is verwijderd."
 
 #: help_text.php:578
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -13548,7 +13544,7 @@ msgstr "De vereisten voor geheugen en processortijd zijn afhankelijk van het aan
 #: admin_site_upgrade.php:380
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "Nieuwe bestanden zijn geplaatst in de folder %s."
 
 #: help_text.php:1239
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13607,7 +13603,7 @@ msgstr "De tijd in seconden dat een <b>webtrees</b>-sessie actief blijft, voorda
 
 #: admin_site_upgrade.php:476
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "De upgrade is compleet."
 
 #: login.php:300
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13677,7 +13673,7 @@ msgstr "Er zijn geen mediaobjecten voor deze persoon."
 
 #: admin_site_upgrade.php:107
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Er zijn geen uitstaande wijzigingen."
 
 #: modules_v3/todo/module.php:127
 msgid "There are no research tasks in this family tree."
@@ -13833,7 +13829,7 @@ msgstr "Deze map wordt gebruikt om mediabestanden van deze stamboom in op te sla
 
 #: library/WT/Filter.php:241
 msgid "This form has expired.  Try again."
-msgstr ""
+msgstr "Dit formulier is verlopen. Probeer opnieuw."
 
 #: individual.php:91 library/WT/Controller/Chart.php:45
 msgid "This individual does not exist or you do not have permission to view it."
@@ -13918,11 +13914,11 @@ msgstr "Dit is hoofdletter gevoelig. Als een database met deze naam nog niet bes
 #. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:695
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr ""
+msgstr "Dit is de startinstelling voor de “toon details” optie in de diagrammen."
 
 #: admin_site_upgrade.php:72
 msgid "This is the latest version of webtrees.  No upgrade is available."
-msgstr ""
+msgstr "Dit is de laatste versie van webtrees. Er is geen upgrade beschikbaar."
 
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
@@ -14271,7 +14267,7 @@ msgstr "Dit zou een door een komma of spatie gescheiden lijst met feiten/gebeurt
 
 #: admin_site_upgrade.php:41
 msgid "This site is being upgraded.  Try again in a few minutes."
-msgstr ""
+msgstr "Deze website wordt geupdate. Probeer het over een paar minuten opnieuw."
 
 #: source.php:73
 msgid "This source does not exist or you do not have permission to view it."
@@ -14465,7 +14461,7 @@ msgstr "Om u te helpen met dit blok hebben we diverse standaard sjablonen gecre�
 
 #: admin_site_upgrade.php:379
 msgid "To complete the upgrade, you should install the files manually."
-msgstr ""
+msgstr "Om de upgrade te voltooien, dient u de bestanden handmatig te installeren."
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -14484,7 +14480,7 @@ msgstr "Aan een persoon"
 #: admin_site_upgrade.php:382
 #, php-format
 msgid "To prevent visitors from accessing the site while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors."
-msgstr ""
+msgstr "Om te voorkomen dat bezoekers de website bezoeken terwijl u bezig bent met het kopieren van bestanden, kunt u tijdelijk het bestand %s op de server aanmaken. U kunt dit bestand voorzien van een bericht dat getoond zal worden aan bezoekers."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:574
@@ -14895,7 +14891,7 @@ msgstr "Niet geverifieerd door gebruiker"
 #: admin_site_upgrade.php:321
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "%s uitpakken naar een tijdelijke folder..."
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:32
@@ -14918,17 +14914,17 @@ msgstr "Bijwerken gekoppeld record"
 #. I18N: Ignore the warnings, and [...]
 #: admin_site_upgrade.php:202 admin_site_upgrade.php:265
 msgid "Upgrade anyway"
-msgstr ""
+msgstr "Toch upgraden"
 
 #. I18N: %s is a version number, such as 1.2.3
 #: admin.php:63 admin_site_upgrade.php:86
 #, php-format
 msgid "Upgrade to webtrees %s"
-msgstr "Upgrade naar webtrees %s"
+msgstr "Upgraden naar webtrees %s"
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Upgrade wizard"
 
 #: admin_media_upload.php:234 admin_trees_manage.php:224
 #: modules_v3/googlemap/admin_places.php:661
@@ -15333,11 +15329,11 @@ msgstr "Watermerk"
 
 #: help_text.php:1018
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Een watermerk is optioneel en wordt normaalgesproken alleen getoond aan bezoekers."
 
 #: help_text.php:1020
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "Het genereren van watermerken voor grote afbeeldingen kan traag zijn. Voor drukke websites verdient het daarom de voorkeur om de watermerken eenmaal te genereren en de afbeeldingen met watermerk op te slaan op de server."
 
 #: login.php:370
 #, php-format
@@ -15452,7 +15448,7 @@ msgstr "Wanneer u deze optie inschakelt, ziet u alle Bronnen of Notities die bij
 
 #: help_text.php:1395
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr ""
+msgstr "Wanneer deze optie is ingeschakeld, berekent webtrees de leeftijdsverschillen tussen broers/zussen, kinderen, partners enz."
 
 #: help_text.php:922
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
@@ -15672,11 +15668,11 @@ msgstr "U kunt zich nu aanmelden met uw gebruikersnaam en wachtwoord."
 
 #: admin_site_upgrade.php:201
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "U kunt deze modules opnieuw inschakelen nadat de upgrade voltooid is."
 
 #: admin_site_upgrade.php:264
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "U kunt deze thema's opnieuw inschakelen nadat de upgrade voltooid is."
 
 #: help_text.php:634 help_text.php:673
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15806,7 +15802,7 @@ msgstr "U zond het volgende bericht naar een webtrees-gebruiker:"
 
 #: admin_site_upgrade.php:102
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "Voor het updaten, dient u alle uitstaande wijzigingen te accepteren of af te wijzen."
 
 #: help_text.php:1142
 msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
@@ -15814,11 +15810,11 @@ msgstr "U moet niet het verticale lijn character &ldquo;|&rdquo; in uw notities 
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "U dient de maker van de module te raadplegen om de compatibiliteit met deze versie van webtrees te verifiëren."
 
 #: admin_site_upgrade.php:263
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "U dient de maker van het thema te raadplegen om de compatibiliteit met deze versie van webtrees te verifiëren."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:266 message.php:69
@@ -18545,7 +18541,7 @@ msgstr "aangenomen huwelijksnaam"
 #. I18N: verb: pretend to be someone else
 #: admin_users.php:216
 msgid "masquerade"
-msgstr ""
+msgstr "vermomming"
 
 #: includes/functions/functions.php:910
 msgctxt "mother’s father"

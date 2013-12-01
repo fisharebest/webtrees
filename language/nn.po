@@ -11067,10 +11067,6 @@ msgstr "Spørsmål"
 msgid "Quick family facts"
 msgstr "Snøggfakta for familie"
 
-#: admin_trees_config.php:1137
-msgid "Quick family facts"
-msgstr ""
-
 #: admin_trees_config.php:1100 help_text.php:588
 msgid "Quick individual facts"
 msgstr "Snøggfakta for peron"
