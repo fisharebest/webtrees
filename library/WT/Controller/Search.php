@@ -139,26 +139,11 @@ class WT_Controller_Search extends WT_Controller_Page {
 		}
 
 		// vars use for soundex search
-		if (!empty ($_REQUEST["firstname"])) {
-			$this->firstname = $_REQUEST["firstname"];
-		} else {
-			$this->firstname="";
-		}
-		if (!empty ($_REQUEST["lastname"])) {
-			$this->lastname = $_REQUEST["lastname"];
-		} else {
-			$this->lastname="";
-		}
-		if (!empty ($_REQUEST["place2"])) {
-			$this->place = $_REQUEST["place2"];
-		} else {
-			$this->place="";
-		}
-		if (!empty ($_REQUEST["year"])) {
-			$this->year = $_REQUEST["year"];
-		} else {
-			$this->year="";
-		}
+		$this->firstname = WT_Filter::post('firstname');
+		$this->lastname  = WT_Filter::post('lastname');
+		$this->place     = WT_Filter::post('place');
+		$this->year      = WT_Filter::post('year');
+
 		// Set the search result titles for soundex searches
 		if ($this->firstname || $this->lastname || $this->place) {
 			$this->myquery=htmlspecialchars(implode(' ', array($this->firstname, $this->lastname, $this->place)));
