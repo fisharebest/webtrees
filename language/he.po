@@ -11060,11 +11060,7 @@ msgstr "קורטידי"
 msgid "Question"
 msgstr "שאלה"
 
-#: help_text.php:510
-msgid "Quick family facts"
-msgstr "עובדות משפחתיות מהירות"
-
-#: admin_trees_config.php:1137
+#: help_text.php:510 admin_trees_config.php:1137
 msgid "Quick family facts"
 msgstr "עובדות משפחתיות מהירות"
 

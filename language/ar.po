@@ -11207,10 +11207,6 @@ msgstr "سؤال"
 msgid "Quick family facts"
 msgstr "معلومات أسرية موجزة"
 
-#: admin_trees_config.php:1137
-msgid "Quick family facts"
-msgstr ""
-
 #: admin_trees_config.php:1100 help_text.php:588
 msgid "Quick individual facts"
 msgstr "معلومات فردية موجزة"
