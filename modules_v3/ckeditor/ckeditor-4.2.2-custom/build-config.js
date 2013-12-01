@@ -168,6 +168,6 @@ var CKBUILDER_CONFIG = {
 		'ug' : 1,
 		'uk' : 1,
 		'vi' : 1,
-		'cy' : 1,
+		'cy' : 1
 	}
 };
