@@ -148,8 +148,8 @@ msgstr "%1$s n’a pas un lien vers %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s fichier a été extrait en %2$s secondes."
+msgstr[1] "%1$s fichiers ont été extraits en %2$s secondes."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:182
@@ -167,7 +167,7 @@ msgstr "%1$s × %2$s pixels"
 #: admin_site_upgrade.php:306
 #, php-format
 msgid "%1$sKB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$sKB ont été téléchargés en %2$s secondes."
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:421
@@ -782,7 +782,7 @@ msgstr "Un nouvel utilisateur (%1$s) a demandé un compte (%2$s) et a vérifié 
 
 #: admin.php:63 admin_site_upgrade.php:83
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Une nouvelle version de webtrees est disponible."
 
 #. I18N: Description of the “Journal” module
 #: modules_v3/user_blog/module.php:45
@@ -1375,7 +1375,7 @@ msgstr "Ajouter une histoire"
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:217
 #: modules_v3/clippings/module.php:603
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Ajouter le chemin GEDCOM du média aux noms de fichiers."
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:528
 msgid "Add this individual and his direct line ancestors."
@@ -1795,7 +1795,7 @@ msgstr "Tous les utilisateurs existants PGV doivent avoir des adresses électron
 
 #: admin_trees_config.php:1113 help_text.php:505
 msgid "All family facts"
-msgstr ""
+msgstr "Tous les faits de la famille"
 
 #: login.php:396
 msgid "All fields must be completed."
@@ -1803,11 +1803,11 @@ msgstr "Tous les champs doivent être complétés"
 
 #: admin_site_upgrade.php:387
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "Tous les fichiers ont la permission de lecture et d’écriture."
 
 #: admin_trees_config.php:1076 help_text.php:583
 msgid "All individual facts"
-msgstr ""
+msgstr "Tous les faits de l’individu"
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
@@ -1816,11 +1816,11 @@ msgstr "Toutes les personnes"
 
 #: admin_trees_config.php:1179 help_text.php:789
 msgid "All repository facts"
-msgstr ""
+msgstr "Tous les faits du dépôt d’archives"
 
 #: admin_trees_config.php:1150 help_text.php:900
 msgid "All source facts"
-msgstr ""
+msgstr "Tous les faits de la source"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1905,7 +1905,7 @@ msgstr "Menu d’édition pour les individus, les familles, les sources, etc"
 #: admin_site_upgrade.php:330 admin_site_upgrade.php:349
 #: admin_site_upgrade.php:359 admin_site_upgrade.php:434
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "Une erreur est survenue lors de la décompression du fichier."
 
 #. I18N: Description of the “Interactive tree” module
 #: modules_v3/tree/module.php:38
@@ -2097,7 +2097,7 @@ msgstr "Voulez-vous vraiment supprimer «&nbsp;%s&nbsp;»&nbsp;?"
 
 #: modules_v3/lightbox/module.php:203
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Êtes-vous certain de vouloir enlever les liens vers cet objet média ?"
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -3288,11 +3288,11 @@ msgstr "Cause du décès"
 
 #: admin_site_upgrade.php:202
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Attention : les anciens modules peuvent ne pas fonctionner ou bloquer le fonctionnement de webtrees."
 
 #: admin_site_upgrade.php:265
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Attention : les anciens thèmes peuvent ne pas fonctionner ou bloquer le fonctionnement de webtrees."
 
 #: library/WT/Stats.php:3807
 msgid "Cayman Islands"
@@ -3430,17 +3430,17 @@ msgstr "Vérifier les droits d’écriture de ce dossier."
 
 #: admin_site_upgrade.php:370
 msgid "Check file permissions…"
-msgstr ""
+msgstr "Vérifier les permissions de fichier…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:116
 msgid "Check for custom modules…"
-msgstr ""
+msgstr "Vérifier les modules personnalisés…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:218
 msgid "Check for custom themes…"
-msgstr ""
+msgstr "Vérifier les thèmes personnalisés…"
 
 #: admin_trees_check.php:34 themes/_administration/header.php:121
 msgid "Check for errors"
@@ -3449,7 +3449,7 @@ msgstr "Rechercher les erreurs"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:97
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "Vérifier les modifications en attente d’approbation…"
 
 #: help_text.php:460 relationship.php:138
 msgid "Check relationships by marriage"
@@ -3948,12 +3948,12 @@ msgstr "Copier"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:410
 msgid "Copy files…"
-msgstr ""
+msgstr "Copier les fichiers…"
 
 #: admin_site_upgrade.php:381
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr ""
+msgstr "Copier ces fichiers dans le dossier %s, en écrasant tous fichiers du même nom."
 
 #. I18N: gedcom tag COPR
 #: library/WT/Gedcom/Tag.php:161
@@ -4221,7 +4221,7 @@ msgstr "Fait personnalisé"
 
 #: admin_site_upgrade.php:190 admin_site_upgrade.php:193
 msgid "Custom module"
-msgstr ""
+msgstr "Module personnalisé"
 
 #: find.php:480
 msgid "Custom tags"
@@ -4229,7 +4229,7 @@ msgstr "Balises spécifiques"
 
 #: admin_site_upgrade.php:250 admin_site_upgrade.php:253
 msgid "Custom theme"
-msgstr ""
+msgstr "Thème personnalisé"
 
 #: admin_site_config.php:163 help_text.php:1030
 msgid "Custom welcome text"
@@ -4931,7 +4931,7 @@ msgstr "Supprimer le nom"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:459
 msgid "Delete temporary files…"
-msgstr ""
+msgstr "Supprimer les fichiers temporaires…"
 
 #: admin_site_clean.php:88
 msgid "Deleted files:"
@@ -4959,7 +4959,7 @@ msgstr "Denver, Colorado"
 
 #: admin_site_upgrade.php:84
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr ""
+msgstr "Selon la configuration de votre serveur, vous pouvez être capable de mettre à jour automatiquement."
 
 #: help_text.php:1213
 msgid "Descendant generations"
@@ -5144,11 +5144,11 @@ msgstr "Ancêtres en ligne directe et leurs familles"
 
 #: admin_site_upgrade.php:201
 msgid "Disable these modules"
-msgstr ""
+msgstr "Désactiver ces modules"
 
 #: admin_site_upgrade.php:264
 msgid "Disable these themes"
-msgstr ""
+msgstr "Désactiver ces thèmes"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: library/WT/I18N.php:420
@@ -5241,7 +5241,7 @@ msgstr "Télécharger"
 #: admin_site_upgrade.php:299
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Télécharger %s…"
 
 #: mediaviewer.php:104
 msgid "Download File"
@@ -5793,7 +5793,7 @@ msgstr "Exporter"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:281
 msgid "Export all family trees to GEDCOM files…"
-msgstr ""
+msgstr "Exporter tous les arbres vers les fichiers GEDCOM…"
 
 #: help_text.php:1202
 msgid "Export family tree"
@@ -7691,7 +7691,7 @@ msgstr "Israël"
 
 #: admin_site_upgrade.php:81 admin_site_upgrade.php:85
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
-msgstr ""
+msgstr "Il peut prendre plusieurs minutes à télécharger et à installer la mise à jour. Soyez patient."
 
 #: library/WT/Stats.php:3865
 msgid "Italy"
@@ -9723,11 +9723,11 @@ msgstr "Messagerie désactivée"
 
 #: admin_site_upgrade.php:207
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "Aucun module personnalisé est activé."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "Aucun thème personnalisé est activé."
 
 #: admin_trees_check.php:230
 msgid "No errors were found."
@@ -9835,7 +9835,7 @@ msgstr "Pas de temple"
 
 #: admin_site_upgrade.php:67
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Aucune information de mise à jour disponible."
 
 #: library/WT/Stats.php:1069
 msgid "Nobody at all"
@@ -10768,12 +10768,12 @@ msgstr "Lieu de Résidence"
 #: admin_site_upgrade.php:395
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr ""
+msgstr "Mettre le site hors ligne en créant le fichier %s…"
 
 #: admin_site_upgrade.php:445
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr ""
+msgstr "Mettre le site en ligne en supprimant le fichier %s…"
 
 #: admin_trees_config.php:894 statistics.php:401
 msgid "Places"
@@ -11323,7 +11323,7 @@ msgstr "Expression régulière"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Les expressions rationnelles sont une technique d’appariement de chaînes de catactères."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:33
@@ -11851,7 +11851,7 @@ msgstr "SSL requis"
 #: modules_v3/batch_update/plugins/search_replace.php:93
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Voir %s pour plus d’information."
 
 #: includes/functions/functions_edit.php:311 reportengine.php:250
 msgid "Select a date"
@@ -13411,7 +13411,7 @@ msgstr "Le fichier %s existe déjà. Utilisez un autre nom de fichier."
 #: admin_site_upgrade.php:399 admin_site_upgrade.php:429
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Le fichier %s n’a pas pu être créé."
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:450
 #: admin_site_upgrade.php:470
@@ -13422,12 +13422,12 @@ msgstr "Le fichier %s ne peut pas être supprimé."
 #: admin_site_upgrade.php:377
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "Le fichier n’a pas pu être mis à jour."
 
 #: admin_site_upgrade.php:401
 #, php-format
 msgid "The file %s was created."
-msgstr ""
+msgstr "Le fichier %s a été créé."
 
 #: admin_media.php:58 admin_media.php:65 admin_site_upgrade.php:448
 #: admin_site_upgrade.php:468
@@ -13450,7 +13450,7 @@ msgstr "Le fichier «&nbsp;%s&nbsp;» n’existe pas."
 #: admin_site_upgrade.php:464
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Le dossier %s n’a pas pu être supprimé."
 
 #: addmedia.php:112 addmedia.php:123 addmedia.php:135 addmedia.php:274
 #: addmedia.php:285 addmedia.php:297 admin_media_upload.php:61
@@ -13470,7 +13470,7 @@ msgstr "Le dossier %s a été créé."
 #: admin_site_upgrade.php:462
 #, php-format
 msgid "The folder %s was deleted."
-msgstr ""
+msgstr "Le dossier %s a été supprimé."
 
 #: help_text.php:578
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -13547,7 +13547,7 @@ msgstr "La mémoire et le temps maximum d’exécution requis dépendent du nomb
 #: admin_site_upgrade.php:380
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "Les nouveaux fichiers sont actuellement situés dans le dossier %s."
 
 #: help_text.php:1239
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13606,7 +13606,7 @@ msgstr "Le temps en secondes que la session <b>webtrees</b> reste active avant d
 
 #: admin_site_upgrade.php:476
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "La mise à jour est complétée."
 
 #: login.php:300
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13676,7 +13676,7 @@ msgstr "Aucun objet média lié à cet individu."
 
 #: admin_site_upgrade.php:107
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Il n’y a pas de modifications en attente d’approbation."
 
 #: modules_v3/todo/module.php:127
 msgid "There are no research tasks in this family tree."
@@ -13921,7 +13921,7 @@ msgstr "Ceci est le réglage initial pour l’option « Afficher les détails »
 
 #: admin_site_upgrade.php:72
 msgid "This is the latest version of webtrees.  No upgrade is available."
-msgstr ""
+msgstr "Ceci est la dernière version de webtrees. Aucune mise à jour disponible."
 
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
@@ -14270,7 +14270,7 @@ msgstr "Ceci est une liste de faits additionnels qui doivent être séparés par
 
 #: admin_site_upgrade.php:41
 msgid "This site is being upgraded.  Try again in a few minutes."
-msgstr ""
+msgstr "Ce site est en maintenance. Veuillez essayer dans quelques minutes."
 
 #: source.php:73
 msgid "This source does not exist or you do not have permission to view it."
@@ -14464,7 +14464,7 @@ msgstr "Pour vous aider à travailler avec ce bloc, nous avons créé plusieurs 
 
 #: admin_site_upgrade.php:379
 msgid "To complete the upgrade, you should install the files manually."
-msgstr ""
+msgstr "Pour compléter la mise à jour, vous devez installer manuellement les fichiers."
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -14483,7 +14483,7 @@ msgstr "à une personne"
 #: admin_site_upgrade.php:382
 #, php-format
 msgid "To prevent visitors from accessing the site while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors."
-msgstr ""
+msgstr "Afin d’empêcher les visiteurs d’accéder à votre site durant le processus de mise à jour, vous pouvez créer un fichier temporaire %s sur le serveur. S’il contient un message, celui-ci sera affiché aux visiteurs."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:574
@@ -14894,7 +14894,7 @@ msgstr "Non vérifié par l’utilisateur"
 #: admin_site_upgrade.php:321
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Décompresser %s vers un dossier temporaire…"
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:32
@@ -14917,7 +14917,7 @@ msgstr "Mise à jour de l’enregistrement lié"
 #. I18N: Ignore the warnings, and [...]
 #: admin_site_upgrade.php:202 admin_site_upgrade.php:265
 msgid "Upgrade anyway"
-msgstr ""
+msgstr "Mettre à jour de toutes façons"
 
 #. I18N: %s is a version number, such as 1.2.3
 #: admin.php:63 admin_site_upgrade.php:86
@@ -14927,7 +14927,7 @@ msgstr "Mettre à jour à la version %s de webtrees"
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Assistant de mise à jour"
 
 #: admin_media_upload.php:234 admin_trees_manage.php:224
 #: modules_v3/googlemap/admin_places.php:661
@@ -15671,11 +15671,11 @@ msgstr "Vous pouvez maintenant vous connecter avec votre nom de compte et votre 
 
 #: admin_site_upgrade.php:201
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "Vous pouvez réactiver ces modules après la mise à jour."
 
 #: admin_site_upgrade.php:264
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "Vous pouvez réactiver ces thèmes après la mise à jour."
 
 #: help_text.php:634 help_text.php:673
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15805,7 +15805,7 @@ msgstr "Vous avez envoyé le message suivant à l’utilisateur webtrees"
 
 #: admin_site_upgrade.php:102
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "Vous devez accepter ou rejeter toutes les modifications en attente avant la mise à jour."
 
 #: help_text.php:1142
 msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
@@ -15813,11 +15813,11 @@ msgstr "Vous ne devez pas utiliser la barre verticale &ldquo;|&rdquo; dans vos n
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Vous devez consulter l’auteur du module afin de confirmer sa compatibilité avec cette version de webtrees."
 
 #: admin_site_upgrade.php:263
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Vous devez consulter l’auteur du thème afin de confirmer sa compatibilité avec cette version de webtrees."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:266 message.php:69
