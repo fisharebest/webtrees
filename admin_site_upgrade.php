@@ -266,10 +266,10 @@ if ($custom_themes) {
 	echo '</li></ul></form>';
 	exit;	
 } else {
-	if ($modules_action != 'ignore') {
+	if ($themes_action != 'ignore') {
 		echo '<br>', WT_I18N::translate('No custom themes are enabled.'), $icon_success;
 	}
-	echo '<input type="hidden" name="themes" value="', WT_Filter::escapeHtml($modules_action), '">';
+	echo '<input type="hidden" name="themes" value="', WT_Filter::escapeHtml($themes_action), '">';
 }
 
 echo '</li>'; flush();
