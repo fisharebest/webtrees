@@ -123,7 +123,7 @@ class WT_Filter {
 	}
 
 	private static function _inputCallback($x) {
-		return mb_check_encoding($x, 'UTF-8') ? $x : false;
+		return !function_exists('mb_check_encoding') || mb_check_encoding($x, 'UTF-8') ? $x : false;
 	}
 
 	private static function _inputArray($source, $variable, $regexp=null, $default=null) {
