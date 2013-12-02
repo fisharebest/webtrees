@@ -242,7 +242,6 @@ function addMessage($message) {
 		$copy_email .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".$message['url']."\r\n";
 	}
 	$copy_email .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n";
-	$copy_email .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n";
 	$copy_email .= "LANGUAGE: ".WT_LOCALE."\r\n";
 	$copy_subject = "[".WT_I18N::translate('webtrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
 	$from ='';
@@ -293,7 +292,6 @@ function addMessage($message) {
 		if (!empty($message['url']))
 			$message['body'] .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".$message['url']."\r\n";
 		$message['body'] .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n";
-		$message['body'] .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n";
 		$message['body'] .= "LANGUAGE: ".WT_LOCALE."\r\n";
 	}
 	if (empty($message['created']))

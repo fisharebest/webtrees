@@ -305,7 +305,6 @@ case 'register':
 			$mail1_body.=
 				"\r\n".
 				"=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n".
-				"DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n".
 				"LANGUAGE: ".WT_LOCALE."\r\n";
 
 			$mail1_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
@@ -493,7 +492,6 @@ case 'verify_hash':
 		"\r\n\r\n".
 		"=--------------------------------------=\r\n".
 		"IP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n".
-		"DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n".
 		"LANGUAGE: ".WT_LOCALE."\r\n";
 
 	$mail1_to=$WEBTREES_EMAIL;
