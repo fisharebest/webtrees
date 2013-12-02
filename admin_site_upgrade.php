@@ -32,7 +32,13 @@ if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 	list($latest_version, $earliest_version, $download_url) = explode('|', '||');
 }
 
-$latest_version_html = '<span dir="ltr">' . $latest_version . '</span>';
+if (WT_VERSION_RELEASE == 'dev') {
+	// if the dev version is currently installed, download the latest dev version from git instead of the production version
+	// developers can override this with their personal git url if desired
+	$download_url='https://github.com/fisharebest/webtrees/archive/master.zip';
+}
+
+$latest_version_html = '<span dir="ltr">' . ( (WT_VERSION_RELEASE == 'dev') ? 'latest dev version from ' . WT_Filter::escapeHtml($download_url) : $latest_version ) . '</span>';
 $download_url_html   = '<b dir="auto"><a href="' . WT_Filter::escapeHtml($download_url) . '">' . WT_Filter::escapeHtml($download_url) . '</a></b>';
 
 // Show a friendly message while the site is being upgraded
@@ -68,7 +74,7 @@ if ($latest_version == '') {
 	exit;
 }
 
-if (version_compare(WT_VERSION, $latest_version) > 0) {
+if ((version_compare(WT_VERSION, $latest_version) > 0) && (WT_VERSION_RELEASE != 'dev') ){
 	echo '<p>', WT_I18N::translate('This is the latest version of webtrees.  No upgrade is available.'), '</p>';
 	exit;
 }
@@ -341,10 +347,18 @@ if (!is_array($res) || $res['status'] != 'ok') {
 
 $num_files = $res['nb'];
 
+$zip_path_remove = 'webtrees';
+if (WT_VERSION_RELEASE == 'dev') {
+	// if using a personal git url, the top level directory in the zip file might not be 'webtrees'
+	$res = $archive->listContent();
+	$zip_path_remove = $res[0]['filename'];
+	$zip_path_remove = rtrim($zip_path_remove, '/');
+}
+
 $start_time = microtime(true);
 $res = $archive->extract(
 	PCLZIP_OPT_PATH,         $zip_dir,
-	PCLZIP_OPT_REMOVE_PATH, 'webtrees',
+	PCLZIP_OPT_REMOVE_PATH,  $zip_path_remove,
 	PCLZIP_OPT_REPLACE_NEWER
 );
 $end_time = microtime(true);
@@ -352,7 +366,7 @@ $end_time = microtime(true);
 if (is_array($res)) {
 	foreach ($res as $result) {
 		// Note that we're stripping the initial "webtrees/", so the top folder will fail.
-		if ($result['status'] != 'ok' && $result['filename'] != 'webtrees/') {
+		if ($result['status'] != 'ok' && $result['filename'] != $zip_path_remove.'/') {
 			echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 			echo '<pre>';
 			var_dump($result);
@@ -424,7 +438,7 @@ echo '<li>', /* I18N: The system is about to [...] */ WT_I18N::translate('Copy f
 $start_time = microtime(true);
 $res = $archive->extract(
 	PCLZIP_OPT_PATH,        WT_ROOT,
-	PCLZIP_OPT_REMOVE_PATH, 'webtrees',
+	PCLZIP_OPT_REMOVE_PATH, $zip_path_remove,
 	PCLZIP_OPT_REPLACE_NEWER
 );
 $end_time = microtime(true);
