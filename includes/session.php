@@ -31,8 +31,8 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_WEBTREES',        'webtrees');
-define('WT_VERSION',         '1.4.5');
-define('WT_VERSION_RELEASE', ''); // “dev”, “beta”, “rc1”, “”, etc.
+define('WT_VERSION',         '1.4.6');
+define('WT_VERSION_RELEASE', 'dev'); // “dev”, “beta”, “rc1”, “”, etc.
 define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
 
 // External URLs
