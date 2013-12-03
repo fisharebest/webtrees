@@ -7,8 +7,8 @@ LANGUAGE_SRC=$(shell git grep -I --name-only --fixed-strings -e WT_I18N:: -- "*.
 MO_FILES=$(patsubst %.po,%.mo,$(PO_FILES))
 PO_FILES=$(wildcard $(LANGUAGE_DIR)/*.po $(LANGUAGE_DIR)/extra/*.po)
 SHELL=bash
-WT_VERSION=$(shell grep "'WT_VERSION'" includes/session.php | cut -d "'" -f 4 | cut -d - -f 1)
-WT_RELEASE=$(shell grep "'WT_VERSION'" includes/session.php | cut -d "'" -f 4 | cut -d - -f 2)
+WT_VERSION=$(shell grep "'WT_VERSION'" includes/session.php | cut -d "'" -f 4 | awk -F - '{print $1}')
+WT_RELEASE=$(shell grep "'WT_VERSION'" includes/session.php | cut -d "'" -f 4 | awk -F - '{print $1}')
 
 # Location of minification tools
 CLOSURE_JS=$(BUILD_DIR)/compiler-20121212.jar
