@@ -296,6 +296,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				->setPageTitle($this->getTitle())
 				->pageHeader()
 				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+				->addExternalJavascript(WT_JQUERY_COOKIE_URL)
 				->addInlineJavascript('
 					jQuery("#story_table").dataTable({
 						"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
@@ -349,8 +350,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$story_title = get_block_setting($story->block_id, 'title');
 				$indi=WT_Individual::getInstance($story->xref);
 					if ($indi) {
-						echo '<tr><td><a href="', $indi->getHtmlUrl().'#stories">', $story_title, '</a></td>
-							  <td><a href="', $indi->getHtmlUrl().'#stories">'.$indi->getFullName(), '</a></td>';
+						echo '<tr><td><a href="', $indi->getHtmlUrl().'" '.$this->onClick(true).'>', $story_title, '</a></td>
+							  <td><a href="', $indi->getHtmlUrl().'" '.$this->onClick(false).'>'.$indi->getFullName(), '</a></td>';
 					} else {
 						echo '<tr><td>', $story_title, '</td><td class="error">', $story->xref, '</td>';
 					}
@@ -373,6 +374,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+			->addExternalJavascript(WT_JQUERY_COOKIE_URL)
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
 					"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
@@ -415,7 +417,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 					if ($indi) {
 						if ($indi->canShow()) {
-							echo '<tr><td><a href="'.$indi->getHtmlUrl().'#stories">'.$story_title.'</a></td><td><a href="'.$indi->getHtmlUrl().'#stories">'.$indi->getFullName().'</a></td></tr>';
+							echo '<tr><td><a href="'.$indi->getHtmlUrl().'" '.$this->onClick(true).'>'.$story_title.'</a></td><td><a href="'.$indi->getHtmlUrl().'" '.$this->onClick(false).'>'.$indi->getFullName().'</a></td></tr>';
 						}
 					} else {
 						echo '<tr><td>', $story_title, '</td><td class="error">', $story->xref, '</td></tr>';
@@ -443,6 +445,11 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			//-- Stories menu item
 			$menu = new WT_Menu($this->getTitle(), 'module.php?mod='.$this->getName().'&amp;mod_action=show_list', 'menu-story');
 			return $menu;
+		}
+
+		private function onClick($storytab=true) {
+			$tabId = $storytab ? array_search($this->getname(),array_keys(WT_Module::getActiveTabs())) : 0;
+			return "onclick=\"jQuery.cookie('indi-tab',$tabId);\"";
 		}
 
 }
