@@ -78,7 +78,7 @@ echo
 	}
 	echo '</div>',
 	'<div id="info">',
-	WT_WEBTREES, ' ', WT_VERSION_TEXT,
+	WT_WEBTREES, ' ', WT_VERSION,
 	'<br>',
 	WT_I18N::translate('Current Server Time:'), ' ', format_timestamp(WT_TIMESTAMP),
 	'</div>',

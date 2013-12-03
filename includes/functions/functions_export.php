@@ -92,18 +92,18 @@ function gedcom_header($gedfile) {
 	$ged_id=get_id_from_gedcom($gedfile);
 
 	// Default values for a new header
-	$HEAD="0 HEAD";
-	$SOUR="\n1 SOUR ".WT_WEBTREES."\n2 NAME ".WT_WEBTREES."\n2 VERS ".WT_VERSION_TEXT;
-	$DEST="\n1 DEST DISKETTE";
-	$DATE="\n1 DATE ".strtoupper(date("d M Y"))."\n2 TIME ".date("H:i:s");
-	$GEDC="\n1 GEDC\n2 VERS 5.5.1\n2 FORM Lineage-Linked";
-	$CHAR="\n1 CHAR UTF-8";
-	$FILE="\n1 FILE {$gedfile}";
-	$LANG="";
-	$PLAC="\n1 PLAC\n2 FORM City, County, State/Province, Country";
-	$COPR="";
-	$SUBN="";
-	$SUBM="\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME ".WT_USER_NAME; // The SUBM record is mandatory
+	$HEAD = "0 HEAD";
+	$SOUR = "\n1 SOUR " . WT_WEBTREES . "\n2 NAME " . WT_WEBTREES . "\n2 VERS " . WT_VERSION;
+	$DEST = "\n1 DEST DISKETTE";
+	$DATE = "\n1 DATE " . strtoupper(date("d M Y")) . "\n2 TIME " . date("H:i:s");
+	$GEDC = "\n1 GEDC\n2 VERS 5.5.1\n2 FORM Lineage-Linked";
+	$CHAR = "\n1 CHAR UTF-8";
+	$FILE = "\n1 FILE {$gedfile}";
+	$LANG = "";
+	$PLAC = "\n1 PLAC\n2 FORM City, County, State/Province, Country";
+	$COPR = "";
+	$SUBN = "";
+	$SUBM = "\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME " . WT_USER_NAME; // The SUBM record is mandatory
 
 	// Preserve some values from the original header
 	if (get_gedcom_setting($ged_id, 'imported')) {

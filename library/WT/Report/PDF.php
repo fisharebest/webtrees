@@ -91,7 +91,7 @@ class WT_Report_PDF extends WT_Report_Base {
 		// Only admin should see the version number
 		$appversion = WT_WEBTREES;
 		if (WT_USER_IS_ADMIN) {
-			$appversion .= " ".WT_VERSION_TEXT;
+			$appversion .= " ".WT_VERSION;
 		}
 		$this->pdf->SetCreator($appversion." (".parent::wt_url.")");
 		// Not implemented yet - WT_Report_Base::setup()

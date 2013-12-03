@@ -7,8 +7,8 @@ LANGUAGE_SRC=$(shell git grep -I --name-only --fixed-strings -e WT_I18N:: -- "*.
 MO_FILES=$(patsubst %.po,%.mo,$(PO_FILES))
 PO_FILES=$(wildcard $(LANGUAGE_DIR)/*.po $(LANGUAGE_DIR)/extra/*.po)
 SHELL=bash
-WT_VERSION=$(shell grep "'WT_VERSION'" includes/session.php | cut -d "'" -f 4)
-WT_RELEASE=$(shell grep "'WT_VERSION_RELEASE'" includes/session.php | cut -d "'" -f 4)
+WT_VERSION=$(shell grep "'WT_VERSION'" includes/session.php | cut -d "'" -f 4 | cut -d - -f 1)
+WT_RELEASE=$(shell grep "'WT_VERSION'" includes/session.php | cut -d "'" -f 4 | cut -d - -f 2)
 
 # Location of minification tools
 CLOSURE_JS=$(BUILD_DIR)/compiler-20121212.jar
@@ -42,7 +42,7 @@ build/webtrees: clean update
 	# Extract from the repository either a tag or the current revision
 	if [ -z "$(WT_RELEASE)" ]; then git archive --prefix=$@/ $(WT_VERSION); else git archive --prefix=$@/ $(GIT_BRANCH); fi | tar -x
 	# Embed the build number in the code (for DEV builds only)
-	sed -i "s/define('WT_RELEASE', 'dev')/define('WT_RELEASE', 'dev-$(BUILD_NUMBER)')/" $@/includes/session.php
+	sed -i "s/define('WT_RELEASE', '$(WT_VERSION)-dev')/define('WT_RELEASE', '$(WT_VERSION)-dev+$(BUILD_NUMBER)')/" $@/includes/session.php
 	# Add language files
 	cp -R $(LANGUAGE_DIR)/*.mo       $@/$(LANGUAGE_DIR)/
 	cp -R $(LANGUAGE_DIR)/extra/*.mo $@/$(LANGUAGE_DIR)/extra/
@@ -55,9 +55,6 @@ build/webtrees: clean update
 	cd $(@D) && zip -qr $(@F)-$(BUILD_VERSION).zip $(@F)
 	# If we have a GNU private key, sign the file with it
 	if test -d ~/.gnupg; then gpg --armor --sign --detach-sig $@-$(BUILD_VERSION).zip; fi
-	# If we have a public html area, publish the files
-	if test -d ~/public_html/build; then cp $@-$(BUILD_VERSION).zip ~/public_html/build/; fi
-	if test -d ~/public_html/build; then echo ${BUILD_VERSION} > ~/public_html/build/latest-dev.txt; fi
 	rm -Rf $@
 	# Done!
 	ls -l $@-$(BUILD_VERSION).zip*

@@ -30,15 +30,13 @@ if (!defined('WT_SCRIPT_NAME')) {
 }
 
 // Identify ourself
-define('WT_WEBTREES',        'webtrees');
-define('WT_VERSION',         '1.4.6');
-define('WT_VERSION_RELEASE', 'dev'); // “dev”, “beta”, “rc1”, “”, etc.
-define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
+define('WT_WEBTREES',     'webtrees');
+define('WT_VERSION',      '1.4.6-dev');
+define('WT_VERSION_TEXT', WT_VERSION); // Deprecated
 
 // External URLs
-define('WT_WEBTREES_URL',    'http://webtrees.net/');
-define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net/');
-define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees/');
+define('WT_WEBTREES_URL',  'http://www.webtrees.net/');
+define('WT_WEBTREES_WIKI', 'http://wiki.webtrees.net/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
 // For example, http://my.cdn.com/webtrees-static-1.3.1/
