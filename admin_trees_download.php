@@ -65,7 +65,7 @@ if ($action == "download" && $zip == "yes") {
 	$gedout = fopen($gedname, "w");
 	export_gedcom($GEDCOM, $gedout, $exportOptions);
 	fclose($gedout);
-	$comment = "Created by ".WT_WEBTREES." ".WT_VERSION_TEXT." on " . date("r") . ".";
+	$comment = "Created by ".WT_WEBTREES." ".WT_VERSION." on " . date("r") . ".";
 	$archive = new PclZip($zipfile);
 	$v_list = $archive->create($gedname, PCLZIP_OPT_COMMENT, $comment, PCLZIP_OPT_REMOVE_PATH, $temppath);
 	if ($v_list == 0) echo "Error : " . $archive->errorInfo(true);

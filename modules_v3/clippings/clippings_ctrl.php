@@ -269,7 +269,7 @@ class WT_Controller_Clippings {
 			fclose($fp);
 			$zipName = "clippings".rand(0, 1500).".zip";
 			$fname = WT_DATA_DIR.$zipName;
-			$comment = "Created by ".WT_WEBTREES." ".WT_VERSION_TEXT." on ".date("d M Y").".";
+			$comment = "Created by ".WT_WEBTREES." ".WT_VERSION." on ".date("d M Y").".";
 			$archive = new PclZip($fname);
 			// add the ged file to the root of the zip file (strip off the data folder)
 			$this->media_list[]= array (PCLZIP_ATT_FILE_NAME => WT_DATA_DIR.$tempFileName, PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName);
