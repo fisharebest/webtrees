@@ -901,19 +901,19 @@ function update_names($xref, $ged_id, $record) {
 
 	foreach ($record->getAllNames() as $n=>$name) {
 		if ($record instanceof WT_Individual) {
-			if ($name['givn']=='@P.N.') {
-				$soundex_givn_std=null;
-				$soundex_givn_dm=null;
+			if ($name['givn'] == '@P.N.') {
+				$soundex_givn_std = null;
+				$soundex_givn_dm  = null;
 			} else {
-				$soundex_givn_std="'".WT_Soundex::soundex_std($name['givn'])."'";
-				$soundex_givn_dm="'".WT_Soundex::soundex_dm($name['givn'])."'";
+				$soundex_givn_std = WT_Soundex::soundex_std($name['givn']);
+				$soundex_givn_dm  = WT_Soundex::soundex_dm ($name['givn']);
 			}
-			if ($name['surn']=='@N.N.') {
-				$soundex_surn_std=null;
-				$soundex_surn_dm=null;
+			if ($name['surn'] == '@N.N.') {
+				$soundex_surn_std = null;
+				$soundex_surn_dm  = null;
 			} else {
-				$soundex_surn_std="'".WT_Soundex::soundex_std($name['surname'])."'";
-				$soundex_surn_dm="'".WT_Soundex::soundex_dm($name['surname'])."'";
+				$soundex_surn_std = WT_Soundex::soundex_std($name['surname']);
+				$soundex_surn_dm  = WT_Soundex::soundex_dm ($name['surname']);
 			}
 			$sql_insert_name_indi->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'], $name['surname'], $name['surn'], $name['givn'], $soundex_givn_std, $soundex_surn_std, $soundex_givn_dm, $soundex_surn_dm));
 		} else {

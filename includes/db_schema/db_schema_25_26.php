@@ -1,5 +1,5 @@
 <?php
-// Update the database schema from version 24-25
+// Update the database schema from version 25-26
 // - delete unused settings and update indexes
 //
 // The script should assume that it can be interrupted at

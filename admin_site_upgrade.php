@@ -42,7 +42,7 @@ $lock_file_text      = WT_I18N::translate('This site is being upgraded.  Try aga
 
 // Success/failure indicators
 $icon_success        = '<i class="icon-yes"></i>';
-$icon_failure        = '<i class="icon-delete"></i>';
+$icon_failure        = '<i class="icon-failure"></i>';
 
 // Need confirmation for various actions
 $continue            = WT_Filter::post('continue', '1') && WT_Filter::checkCsrf();
@@ -266,10 +266,10 @@ if ($custom_themes) {
 	echo '</li></ul></form>';
 	exit;	
 } else {
-	if ($modules_action != 'ignore') {
+	if ($themes_action != 'ignore') {
 		echo '<br>', WT_I18N::translate('No custom themes are enabled.'), $icon_success;
 	}
-	echo '<input type="hidden" name="themes" value="', WT_Filter::escapeHtml($modules_action), '">';
+	echo '<input type="hidden" name="themes" value="', WT_Filter::escapeHtml($themes_action), '">';
 }
 
 echo '</li>'; flush();

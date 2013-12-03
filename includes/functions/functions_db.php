@@ -281,43 +281,56 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, $geds) {
 	$sql.=' WHERE i_file IN ('.implode(',', $geds).')';
 	switch ($soundex) {
 	case 'Russell':
-		$givn_sdx=explode(':', WT_Soundex::soundex_std($firstname));
-		$surn_sdx=explode(':', WT_Soundex::soundex_std($lastname));
-		$plac_sdx=explode(':', WT_Soundex::soundex_std($place));
-		$field='std';
+		$givn_sdx = WT_Soundex::soundex_std($firstname);
+		$surn_sdx = WT_Soundex::soundex_std($lastname);
+		$plac_sdx = WT_Soundex::soundex_std($place);
+		$field    = 'std';
 		break;
 	default:
 	case 'DaitchM':
-		$givn_sdx=explode(':', WT_Soundex::soundex_dm($firstname));
-		$surn_sdx=explode(':', WT_Soundex::soundex_dm($lastname));
-		$plac_sdx=explode(':', WT_Soundex::soundex_dm($place));
-		$field='dm';
+		$givn_sdx = WT_Soundex::soundex_dm($firstname);
+		$surn_sdx = WT_Soundex::soundex_dm($lastname);
+		$plac_sdx = WT_Soundex::soundex_dm($place);
+		$field    = 'dm';
 		break;
 	}
+
+	// Nothing to search for?  Return nothing.
+	if (!$givn_sdx && !$surn_sdx && !$plac_sdx) {
+		return array();
+	}
+
+	$sql_args = array();
 	if ($firstname && $givn_sdx) {
+		$givn_sdx = explode(':', $givn_sdx);
 		foreach ($givn_sdx as $k=>$v) {
-			$givn_sdx[$k]="n_soundex_givn_{$field} LIKE ".WT_DB::quote("%{$v}%");
+			$givn_sdx[$k] = "n_soundex_givn_{$field} LIKE CONCAT('%', ?, '%')";
+			$sql_args[]   = $v;
 	}
 		$sql.=' AND ('.implode(' OR ', $givn_sdx).')';
 		}
 	if ($lastname && $surn_sdx) {
+		$surn_sdx = explode(':', $surn_sdx);
 		foreach ($surn_sdx as $k=>$v) {
-			$surn_sdx[$k]="n_soundex_surn_{$field} LIKE ".WT_DB::quote("%{$v}%");
+			$surn_sdx[$k] = "n_soundex_surn_{$field} LIKE CONCAT('%', ?, '%')";
+			$sql_args[]   = $v;
 		}
 		$sql.=' AND ('.implode(' OR ', $surn_sdx).')';
 			}
 	if ($place && $plac_sdx) {
+		$plac_sdx = explode(':', $plac_sdx);
 		foreach ($plac_sdx as $k=>$v) {
-			$plac_sdx[$k]="p_{$field}_soundex LIKE ".WT_DB::quote("%{$v}%");
+			$plac_sdx[$k] = "p_{$field}_soundex LIKE CONCAT('%', ?, '%')";
+			$sql_args[]   = $v;
 		}
-		$sql.=' AND ('.implode(' OR ', $plac_sdx).')';
+		$sql .= ' AND (' . implode(' OR ', $plac_sdx) . ')';
 	}
 
 	// Group results by gedcom, to minimise switching between privacy files
-	$sql.=' ORDER BY gedcom_id';
+	$sql .= ' ORDER BY gedcom_id';
 
 	$list=array();
-	$rows=WT_DB::prepare($sql)->fetchAll();
+	$rows=WT_DB::prepare($sql)->execute($sql_args)->fetchAll();
 	$GED_ID=WT_GED_ID;
 	foreach ($rows as $row) {
 		// Switch privacy file if necessary

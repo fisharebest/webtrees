@@ -29,7 +29,7 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_WEBTREES',        'webtrees');
-define('WT_VERSION',         '1.5.1');
+define('WT_VERSION',         '1.5.2');
 define('WT_VERSION_RELEASE', 'dev'); // “dev”, “beta”, “rc1”, “”, etc.
 define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
 
@@ -71,7 +71,7 @@ define('WT_DEBUG_LANG', false);
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 26);
+define('WT_SCHEMA_VERSION', 27);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);

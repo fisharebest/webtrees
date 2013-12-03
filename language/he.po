@@ -14,6 +14,8 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
@@ -14251,13 +14253,9 @@ msgid "This section allows you to add a new source citation to the fact that you
 msgstr "הקטע הזה מאפשר להוסיף ציטוט של מקור חדש לעובדה שכעת בעריכה.<br><br>בשדה המקור עליך להכניס את הזיהוי של המקור. לחץ על קישור <b>צור מקור חדש</b> אם אתה זקוק למקור חדש. בשדה הפירוט של הציטוט הכנס את מספר הדף או נתון אחר שיכול לעזור לאחרים למצוא את מקום הנתון במקור. בשדה המלל הכנס תעתיק מתוך המקור."
 
 #: setup.php:171
-#, fuzzy, php-format
+#, php-format
 msgid "This server’s memory limit is %dMB and its CPU time limit is %d seconds."
-msgstr ""
-"#-#-#-#-#  he.po (Fab)  #-#-#-#-#\n"
-"מגבלת זיכרון של שרת זה היא %d מגה-בית, ומגבלת זמן  ה-CPU היא %d שניות.\n"
-"#-#-#-#-#  he.po (Fab)  #-#-#-#-#\n"
-"מגבלת הזכרון של שרת זה היא %dMB ומגבלת זמן המעבד שלו היא %d שניות."
+msgstr "מגבלת זיכרון של שרת זה היא %d מגה-בית, ומגבלת זמן  ה-CPU היא %d שניות."
 
 #: help_text.php:544
 msgid "This setting is only used when you read or write GEDCOM files."

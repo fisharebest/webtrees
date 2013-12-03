@@ -359,7 +359,7 @@ function add_spouse_to_family(xref, famtag) {
 
 function add_unlinked_indi() {
 	return edit_interface({
-		"action": "add_unlinked_indi",
+		"action": "add_unlinked_indi"
 	});
 }
 
@@ -384,7 +384,7 @@ function linkspouse(xref, famtag) {
 function add_famc(xref) {
 	return edit_interface({
 		"action": "addfamlink",
-		"xref": xref,
+		"xref": xref
 	});
 }
 

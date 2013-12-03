@@ -149,6 +149,7 @@ case 'importform':
 			}
 		}
 		if ($files) {
+			sort($files);
 			echo WT_DATA_DIR, '<select name="ged_name">';
 			foreach ($files as $file) {
 				echo '<option value="', WT_Filter::escapeHtml($file), '"';
