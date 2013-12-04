@@ -1254,7 +1254,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				// end of add image
 
 				$dataleft  = WT_Filter::escapeJs($image . $event . ' — ' . $name);
-				$datamid   = WT_Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '"></a></span>');
+				$datamid   = WT_Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">('.WT_I18N::translate('View person').')</a></span>');
 				$dataright = WT_Filter::escapeJs('<br><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .  $person->getBirthDate()->Display(false) . ' — ' . $person->getBirthPlace());
 
 				$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
