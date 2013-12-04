@@ -131,6 +131,11 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 			echo "<td valign=\"top\">";
 			print_pedigree_person(WT_Individual::getInstance($hfam->getHusband()->getXref()), 1, 4, $personcount);
 			echo "</td></tr></table>";
+		} elseif (!$hfam->getHusband()) {
+			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
+			echo '<td valign="top">';
+			print_pedigree_person($hfam->getHusband());
+			echo '</td></tr></table>';
 		}
 		echo "</td>";
 	}
@@ -148,6 +153,11 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 			if (!empty($gparid) && $hfam->getWife()->getXref()==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 			echo '<td valign="top">';
 			print_pedigree_person(WT_Individual::getInstance($hfam->getWife()->getXref()), 1, 5, $personcount);
+			echo '</td></tr></table>';
+		} elseif (!$hfam->getWife()) {
+			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
+			echo '<td valign="top">';
+			print_pedigree_person($hfam->getWife());
 			echo '</td></tr></table>';
 		}
 		echo '</td>';
