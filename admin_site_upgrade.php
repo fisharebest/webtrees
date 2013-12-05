@@ -24,16 +24,17 @@ require './includes/session.php';
 require WT_ROOT . 'library/pclzip.lib.php'; // TODO - rename and use autoloading
 
 // Check for updates
-$latest_version_txt = fetch_latest_version();
-if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
-	list($latest_version, $earliest_version, $download_url) = explode('|', $latest_version_txt);
+$prod_version_txt = fetch_latest_version();
+if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $prod_version_txt)) {
+	list($prod_version, $earliest_version, $prod_download_url) = explode('|', $prod_version_txt);
 } else {
 	// Cannot determine the latest version
-	list($latest_version, $earliest_version, $download_url) = explode('|', '||');
+	list($prod_version, $earliest_version, $prod_download_url) = explode('|', '||');
 }
 
-$latest_version_html = '<span dir="ltr">' . $latest_version . '</span>';
-$download_url_html   = '<b dir="auto"><a href="' . WT_Filter::escapeHtml($download_url) . '">' . WT_Filter::escapeHtml($download_url) . '</a></b>';
+// if the dev version is currently installed, download the latest dev version from git instead of the production version
+// developers can override this with their personal git url if desired
+$dev_download_url='https://github.com/fisharebest/webtrees/archive/master.zip';
 
 // Show a friendly message while the site is being upgraded
 $lock_file           = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'site-offline.txt';
@@ -45,9 +46,24 @@ $icon_success        = '<i class="icon-yes"></i>';
 $icon_failure        = '<i class="icon-failure"></i>';
 
 // Need confirmation for various actions
-$continue            = WT_Filter::post('continue', '1') && WT_Filter::checkCsrf();
+$continue            = WT_Filter::post('continue', 'prod|dev');
+if ($continue && !WT_Filter::checkCsrf()) {
+	$continue    = false;
+}
 $modules_action      = WT_Filter::post('modules',  'ignore|disable');
 $themes_action       = WT_Filter::post('themes',   'ignore|disable');
+
+$download_url        = ($continue == 'dev') ? $dev_download_url : $prod_download_url;
+$download_url_html   = '<b dir="auto"><a href="' . WT_Filter::escapeHtml($download_url) . '">' . WT_Filter::escapeHtml($download_url) . '</a></b>';
+$prod_version_html   = '<span dir="ltr">' . $prod_version . '</span>';
+
+$show_prod_option    = (version_compare(WT_VERSION, $prod_version) < 0) ? true : false;
+if ((version_compare(WT_VERSION, $prod_version) === 0) && (WT_VERSION_RELEASE == 'dev')) {
+	// if the installed version and the prod version are the same, but the current version is a dev release, allow upgrade to prod
+	$show_prod_option = true;
+}
+// prod users can switch to dev by adding ?src=dev to url
+$show_dev_option     = ((WT_VERSION_RELEASE == 'dev') || ($continue == 'dev') || WT_Filter::get('src', 'dev')) ? true : false;
 
 $controller = new WT_Controller_Page();
 $controller
@@ -63,12 +79,12 @@ if (ob_get_level()) {
 
 echo '<h2>', $controller->getPageTitle(), '</h2>';
 
-if ($latest_version == '') {
+if (($prod_version == '') && (!$show_dev_option)){
 	echo '<p>', WT_I18N::translate('No upgrade information is available.'), '</p>';
 	exit;
 }
 
-if (version_compare(WT_VERSION, $latest_version) > 0) {
+if (!$show_prod_option && !$show_dev_option){
 	echo '<p>', WT_I18N::translate('This is the latest version of webtrees.  No upgrade is available.'), '</p>';
 	exit;
 }
@@ -77,13 +93,26 @@ echo '<form method="POST" action="admin_site_upgrade.php">';
 echo WT_Filter::getCsrf();
 
 if ($continue) {
-	echo '<input type="hidden" name="continue" value="1">';
+	echo '<input type="hidden" name="continue" value="' . $continue . '">';
 	echo '<p>', WT_I18N::translate('It can take several minutes to download and install the upgrade.  Be patient.'), '</p>';
 } else {
-	echo '<p>', WT_I18N::translate('A new version of webtrees is available.'), '</p>';
-	echo '<p>', WT_I18N::translate('Depending on your server configuration, you may be able to upgrade automatically.'), '</p>';
-	echo '<p>', WT_I18N::translate('It can take several minutes to download and install the upgrade.  Be patient.'), '</p>';
-	echo '<button type="submit" name="continue" value="1">', /* I18N: %s is a version number, such as 1.2.3 */ WT_I18N::translate('Upgrade to webtrees %s', $latest_version_html), '</button>';
+	if ($show_prod_option) {
+		echo '<p>', WT_I18N::translate('A new version of webtrees is available.'), '</p>';
+		echo '<p>', WT_I18N::translate('Depending on your server configuration, you may be able to upgrade automatically.'), '</p>';
+		echo '<p>', WT_I18N::translate('It can take several minutes to download and install the upgrade.  Be patient.'), '</p>';
+		echo '<button type="submit" name="continue" value="prod">', /* I18N: %s is a version number, such as 1.2.3 */ WT_I18N::translate('Upgrade to webtrees %s', $prod_version_html), '</button>';
+	}
+	
+	if ($show_dev_option) {
+		if (WT_VERSION_RELEASE == 'dev') {
+			echo '<p>', WT_I18N::translate('You have a development version of webtrees installed.'), '</p>';
+		} else {
+			echo '<p>', WT_I18N::translate('You have requested the development version of webtrees.'), '</p>';
+		}
+		echo '<p>', WT_I18N::translate('Depending on your server configuration, you may be able to upgrade to the latest development version automatically.'), '</p>';
+		echo '<p>', WT_I18N::translate('It can take several minutes to download and install the upgrade.  Be patient.'), '</p>';
+		echo '<button type="submit" name="continue" value="dev">', /* I18N: %s is a url */ WT_I18N::translate('Upgrade to the latest development version of webtrees from %s', WT_Filter::escapeHtml($dev_download_url) ), '</button>';
+	}
 	echo '</form>';
 	exit;
 }
@@ -341,10 +370,18 @@ if (!is_array($res) || $res['status'] != 'ok') {
 
 $num_files = $res['nb'];
 
+$zip_path_remove = 'webtrees'; // assume that all official releases have a top-level directory named 'webtrees'
+if ($continue == 'dev') {
+	// if using a personal git url, the top level directory in the zip file might not be 'webtrees'
+	$res = $archive->listContent();
+	$zip_path_remove = $res[0]['filename'];
+	$zip_path_remove = rtrim($zip_path_remove, '/');
+}
+
 $start_time = microtime(true);
 $res = $archive->extract(
 	PCLZIP_OPT_PATH,         $zip_dir,
-	PCLZIP_OPT_REMOVE_PATH, 'webtrees',
+	PCLZIP_OPT_REMOVE_PATH,  $zip_path_remove,
 	PCLZIP_OPT_REPLACE_NEWER
 );
 $end_time = microtime(true);
@@ -352,7 +389,7 @@ $end_time = microtime(true);
 if (is_array($res)) {
 	foreach ($res as $result) {
 		// Note that we're stripping the initial "webtrees/", so the top folder will fail.
-		if ($result['status'] != 'ok' && $result['filename'] != 'webtrees/') {
+		if ($result['status'] != 'ok' && $result['filename'] != $zip_path_remove.'/') {
 			echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 			echo '<pre>';
 			var_dump($result);
@@ -424,7 +461,7 @@ echo '<li>', /* I18N: The system is about to [...] */ WT_I18N::translate('Copy f
 $start_time = microtime(true);
 $res = $archive->extract(
 	PCLZIP_OPT_PATH,        WT_ROOT,
-	PCLZIP_OPT_REMOVE_PATH, 'webtrees',
+	PCLZIP_OPT_REMOVE_PATH, $zip_path_remove,
 	PCLZIP_OPT_REPLACE_NEWER
 );
 $end_time = microtime(true);
