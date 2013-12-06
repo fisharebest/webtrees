@@ -6899,12 +6899,12 @@ msgstr "Vormund"
 #: library/WT/Gedcom/Code/Rela.php:128
 msgctxt "FEMALE"
 msgid "Guardian"
-msgstr "Erziehungsberechtigte"
+msgstr "Vormund"
 
 #: library/WT/Gedcom/Code/Rela.php:127
 msgctxt "MALE"
 msgid "Guardian"
-msgstr "Erziehungsberechtigter"
+msgstr "Vormund"
 
 #: library/WT/Stats.php:3846
 msgid "Guatemala"

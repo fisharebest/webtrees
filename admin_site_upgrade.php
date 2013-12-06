@@ -68,7 +68,7 @@ if ($latest_version == '') {
 	exit;
 }
 
-if (version_compare(WT_VERSION, $latest_version) > 0) {
+if (version_compare(WT_VERSION, $latest_version) >= 0) {
 	echo '<p>', WT_I18N::translate('This is the latest version of webtrees.  No upgrade is available.'), '</p>';
 	exit;
 }
