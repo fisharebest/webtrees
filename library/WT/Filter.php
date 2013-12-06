@@ -85,7 +85,7 @@ class WT_Filter {
 			'/' . addcslashes('(?!>)' . self::URL_REGEX . '(?!</a>)', '/') . '/i',
 			create_function( // Insert soft hyphens into the replaced string
 				'$m',
-				'return "<a href=\"" . $m[0] . "\" target=\"blank\">" . preg_replace("/\b/", "&shy;", $m[0]) . "</a>";'
+				'return "<a href=\"" . $m[0] . "\" target=\"_blank\">" . preg_replace("/\b/", "&shy;", $m[0]) . "</a>";'
 			),
 			WT_Filter::escapeHtml($text)
 		);
