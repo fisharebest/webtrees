@@ -119,16 +119,16 @@ if ($action=='choose') {
 	echo '<div id="reportengine-page">
 		<form name="choosereport" method="get" action="reportengine.php">
 		<input type="hidden" name="action" value="setup">
-		<input type="hidden" name="output" value="', $output, '">
+		<input type="hidden" name="output" value="', WT_Filter::escapeHtml($output), '">
 		<table class="facts_table width40">
 		<tr><td class="topbottombar" colspan="2">', WT_I18N::translate('Choose a report to run'), '</td></tr>
 		<tr><td class="descriptionbox wrap width33 vmiddle">', WT_I18N::translate('Select report'), '</td>
-		<td class="optionbox"><select onchange="this.form.submit();" name="report">';
+		<td class="optionbox"><select name="report">';
 	foreach ($reports as $file=>$report) {
-			echo '<option value="', $file, '">', $report, '</option>';
+			echo '<option value="', WT_Filter::escapeHtml($file), '">', WT_Filter::escapeHtml($report), '</option>';
 	}
 	echo '</select></td></tr>
-		<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Click here to continue'), '"></td></tr>
+		<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('continue'), '"></td></tr>
 		</table></form></div>';
 }
 
@@ -167,7 +167,7 @@ elseif ($action=='setup') {
 	echo '<div id="reportengine-page">
 		<form name="setupreport" method="get" action="reportengine.php" onsubmit="if (this.output[1].checked) {this.target=\'_blank\';}">
 		<input type="hidden" name="action" value="run">
-		<input type="hidden" name="report" value="', $report, '">
+		<input type="hidden" name="report" value="', WT_Filter::escapeHtml($report), '">
 		<table class="facts_table width50">
 		<tr><td class="topbottombar" colspan="2">', WT_I18N::translate('Enter report values'), '</td></tr>
 		<tr><td class="descriptionbox width30 wrap">', WT_I18N::translate('Selected Report'), '</td><td class="optionbox">', $report_array['title'], '<br>', $report_array['description'], '</td></tr>';
@@ -177,7 +177,7 @@ elseif ($action=='setup') {
 	}
 	foreach ($report_array['inputs'] as $indexval => $input) {
 		echo '<tr><td class="descriptionbox wrap">';
-		echo '<input type="hidden" name="varnames[]" value="', $input["name"], '">';
+		echo '<input type="hidden" name="varnames[]" value="', WT_Filter::escapeHtml($input["name"]), '">';
 		echo WT_I18N::translate($input['value']), '</td><td class="optionbox">';
 		if (!isset($input['type'])) {
 			$input['type'] = 'text';
@@ -212,18 +212,17 @@ elseif ($action=='setup') {
 			}
 		}
 		if ($input['type']=='text') {
-			echo '<input type="text" name="vars[', $input['name'], ']" id="', $input['name'], '" 
-					value="', $input['default'], '" style="direction: ltr;">';
+			echo '<input type="text" name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '" value="', WT_Filter::escapeHtml($input['default']), '" style="direction: ltr;">';
 		}
 		if ($input['type']=='checkbox') {
-			echo '<input type="checkbox" name="vars[', $input['name'], ']" id="', $input['name'], '" value="1"';
+			echo '<input type="checkbox" name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '" value="1"';
 			if ($input['default']=='1') {
 				echo ' checked="checked"';
 			}
 			echo '>';
 		}
 		if ($input['type']=='select') {
-			echo '<select name="vars[', $input['name'], ']" id="', $input['name'], '_var">';
+			echo '<select name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '_var">';
 			$options = preg_split('/[|]+/', $input['options']);
 			foreach ($options as $indexval => $option) {
 				$opt = explode('=>', $option);
@@ -235,12 +234,12 @@ elseif ($action=='setup') {
 				if ($opt[0]==$input['default']) {
 					echo ' selected="selected"';
 				}
-				echo '>', $display, '</option>';
+				echo '>', WT_Filter::escapeHtml($display), '</option>';
 			}
 			echo '</select>';
 		}
 		if (isset($input['lookup'])) {
-			echo '<input type="hidden" name="type[', $input['name'], ']" value="', $input['lookup'], '">';
+			echo '<input type="hidden" name="type[', WT_Filter::escapeHtml($input['name']), ']" value="', WT_Filter::escapeHtml($input['lookup']), '">';
 			if ($input['lookup']=='INDI') {
 				echo print_findindi_link('pid');
 			} elseif ($input['lookup']=='PLAC') {
@@ -250,8 +249,8 @@ elseif ($action=='setup') {
 			} elseif ($input['lookup']=='SOUR') {
 				echo print_findsource_link($input['name']);
 			} elseif ($input['lookup']=='DATE') {
-				echo ' <a href="#" onclick="cal_toggleDate(\'div_', $input['name'], '\', \'', $input['name'], '\'); return false;" class="icon-button_calendar" title="', WT_I18N::translate('Select a date'), '"></a>';
-				echo '<div id="div_', $input['name'], '" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>';
+				echo ' <a href="#" onclick="cal_toggleDate(\'div_', WT_Filter::EscapeJs($input['name']), '\', \'', WT_Filter::EscapeJs($input['name']), '\'); return false;" class="icon-button_calendar" title="', WT_I18N::translate('Select a date'), '"></a>';
+				echo '<div id="div_', WT_Filter::EscapeHtml($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>';
 			}
 		}
 		echo '</td></tr>';
@@ -271,7 +270,7 @@ elseif ($action=='setup') {
 		</td>
 		</tr>
 		<tr><td class="topbottombar" colspan="2">
-		<input type="submit" value="', WT_I18N::translate('Download report'), '">
+		<input type="submit" value="', WT_I18N::translate('continue'), '">
 		</td></tr></table></form></div>';
 }
 //-- run the report
