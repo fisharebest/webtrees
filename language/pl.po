@@ -148,9 +148,9 @@ msgstr "%1$s nie ma powiązania zwrotnego do %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1$s plik został rozpakowany w %2$s sekund."
+msgstr[1] "%1$s pliki zostały rozpakowane w %2$s sekund."
+msgstr[2] "%1$s plików zostało rozpakowanych w %2$s sekund."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:182
@@ -168,7 +168,7 @@ msgstr "%1$s × %2$s pikseli"
 #: admin_site_upgrade.php:306
 #, php-format
 msgid "%1$sKB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$sKB zostało pobranych w %2$s sekund."
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:421
@@ -268,7 +268,7 @@ msgstr "%s"
 #: library/WT/Stats.php:4018
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s p.n.e."
 
 #. I18N: size of file in KB
 #: admin_media.php:402 library/WT/Media.php:201
@@ -804,7 +804,7 @@ msgstr "Nowy użytkownik (%1$s) poprosił o utworzenie konta (%2$s) i zweryfikow
 
 #: admin.php:63 admin_site_upgrade.php:83
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Dostępna jest nowa wersja webtrees."
 
 #. I18N: Description of the “Journal” module
 #: modules_v3/user_blog/module.php:45
@@ -973,7 +973,7 @@ msgstr "Użytkownik nie będzie w stanie zalogować się dopóki pola „email p
 
 #: help_text.php:1016
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Znak wodny jest to tekst dodawany do obrazów, aby zapobiec kopiowaniu ich bez zezwolenia."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:117
@@ -1397,7 +1397,7 @@ msgstr "Dodaj historię"
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:217
 #: modules_v3/clippings/module.php:603
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Dodaj ścieżkę multimediów GEDCOM do nazw plików"
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:528
 msgid "Add this individual and his direct line ancestors."
@@ -1817,7 +1817,7 @@ msgstr "Wszyscy istniejący użytkownicy PGV muszą mieć różne adresy e-mail"
 
 #: admin_trees_config.php:1113 help_text.php:505
 msgid "All family facts"
-msgstr ""
+msgstr "Wszystkie fakty dotyczące rodziny"
 
 #: login.php:396
 msgid "All fields must be completed."
@@ -1825,11 +1825,11 @@ msgstr "Wszystkie pola muszą być wypełnione."
 
 #: admin_site_upgrade.php:387
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "Wszystkie pliki mają atrybuty do odczytu i zapisu."
 
 #: admin_trees_config.php:1076 help_text.php:583
 msgid "All individual facts"
-msgstr ""
+msgstr "Wszystkie fakty dotyczące osoby"
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
@@ -1838,11 +1838,11 @@ msgstr "Wszystkie osoby"
 
 #: admin_trees_config.php:1179 help_text.php:789
 msgid "All repository facts"
-msgstr ""
+msgstr "Wszystkie fakty dotyczące repozytorium"
 
 #: admin_trees_config.php:1150 help_text.php:900
 msgid "All source facts"
-msgstr ""
+msgstr "Wszystkie fakty dotyczące źródła"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1927,7 +1927,7 @@ msgstr "Menu edycji dla osób, rodzin, źródeł, itp."
 #: admin_site_upgrade.php:330 admin_site_upgrade.php:349
 #: admin_site_upgrade.php:359 admin_site_upgrade.php:434
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "Wystąpił błąd podczas rozpakowywania pliku."
 
 #. I18N: Description of the “Interactive tree” module
 #: modules_v3/tree/module.php:38
@@ -2119,7 +2119,7 @@ msgstr "Usunąć „%s”?"
 
 #: modules_v3/lightbox/module.php:203
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Usunąć powiązania z tym obiektem multimedialnym?"
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -2127,7 +2127,7 @@ msgstr "Usunąć ten element z listy ulubionych?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Odrzucić wszystkie zmiany wprowadzone w danym drzewie genealogicznym?"
 
 #: library/WT/Stats.php:3756
 msgid "Argentina"
@@ -3311,11 +3311,11 @@ msgstr "Przyczyna śmierci"
 
 #: admin_site_upgrade.php:202
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Uwaga: stare moduły mogą nie działać lub uniemożliwiać działanie webtrees."
 
 #: admin_site_upgrade.php:265
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Uwaga: stare motywy mogą nie działać lub uniemożliwiać działanie webtrees."
 
 #: library/WT/Stats.php:3807
 msgid "Cayman Islands"
@@ -3454,17 +3454,17 @@ msgstr "Sprawdź prawa dostępu do tego katalogu."
 
 #: admin_site_upgrade.php:370
 msgid "Check file permissions…"
-msgstr ""
+msgstr "Sprawdzanie atrybutów plików…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:116
 msgid "Check for custom modules…"
-msgstr ""
+msgstr "Sprawdzanie modułów użytkownika…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:218
 msgid "Check for custom themes…"
-msgstr ""
+msgstr "Sprawdzanie motywów użytkownika…"
 
 #: admin_trees_check.php:34 themes/_administration/header.php:121
 msgid "Check for errors"
@@ -3473,7 +3473,7 @@ msgstr "Sprawdź błędy"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:97
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "Sprawdzanie niezatwierdzonych zmian…"
 
 #: help_text.php:460 relationship.php:138
 msgid "Check relationships by marriage"
@@ -3781,7 +3781,7 @@ msgstr "Kliknięcie ikony „+\" otworzy okno Aystenta GEDFact.<br>Tekst pomocy 
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:84
 msgid "Client time"
-msgstr ""
+msgstr "Czas użytkownika"
 
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
@@ -3972,12 +3972,12 @@ msgstr "Kopiuj"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:410
 msgid "Copy files…"
-msgstr ""
+msgstr "Kopiowanie plików…"
 
 #: admin_site_upgrade.php:381
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr ""
+msgstr "Należy skopiować następujące pliki do katalogu %s nadpisując wszystkie, które mają taką samą nazwę."
 
 #. I18N: gedcom tag COPR
 #: library/WT/Gedcom/Tag.php:161
@@ -3991,7 +3991,7 @@ msgstr "Korporacja / Firma"
 
 #: modules_v3/batch_update/plugins/name_format.php:35
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "Poprawia wpisy NAME z 'Jan/KOWALSKI/' lub 'Jan /KOWALSKI', które są generowane przez starsze programy genealogiczne, na 'Jan /KOWALSKI/'."
+msgstr "Poprawia wpisy NAME z ‘Jan/KOWALSKI/’ lub ‘Jan /KOWALSKI’, które są generowane przez starsze programy genealogiczne, na ‘Jan /KOWALSKI/’."
 
 #: library/WT/Stats.php:3803
 msgid "Costa Rica"
@@ -4241,11 +4241,11 @@ msgstr "Inne wydarzenie"
 
 #: includes/functions/functions_print.php:999
 msgid "Custom fact"
-msgstr ""
+msgstr "Własny fakt"
 
 #: admin_site_upgrade.php:190 admin_site_upgrade.php:193
 msgid "Custom module"
-msgstr ""
+msgstr "Własny moduł"
 
 #: find.php:480
 msgid "Custom tags"
@@ -4253,7 +4253,7 @@ msgstr "Własne znaczniki"
 
 #: admin_site_upgrade.php:250 admin_site_upgrade.php:253
 msgid "Custom theme"
-msgstr ""
+msgstr "Własny motyw"
 
 #: admin_site_config.php:163 help_text.php:1030
 msgid "Custom welcome text"
@@ -4955,7 +4955,7 @@ msgstr "Usuń imię i nazwisko"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:459
 msgid "Delete temporary files…"
-msgstr ""
+msgstr "Usuwanie plików tymczasowych…"
 
 #: admin_site_clean.php:88
 msgid "Deleted files:"
@@ -4983,7 +4983,7 @@ msgstr "Denver, Colorado"
 
 #: admin_site_upgrade.php:84
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr ""
+msgstr "Będzie możliwa automatyczna aktualizacja w zależności od konfiguracji serwera."
 
 #: help_text.php:1213
 msgid "Descendant generations"
@@ -5168,11 +5168,11 @@ msgstr "Przodkowie w linii prostej i ich rodziny"
 
 #: admin_site_upgrade.php:201
 msgid "Disable these modules"
-msgstr ""
+msgstr "Wyłącz następujące moduły"
 
 #: admin_site_upgrade.php:264
 msgid "Disable these themes"
-msgstr ""
+msgstr "Wyłącz następujące motywy"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: library/WT/I18N.php:420
@@ -5265,7 +5265,7 @@ msgstr "Pobierz"
 #: admin_site_upgrade.php:299
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Pobieranie %s…"
 
 #: mediaviewer.php:104
 msgid "Download File"
@@ -5802,7 +5802,7 @@ msgstr "Statystyki wykonania"
 #: includes/functions/functions_print.php:255
 #, php-format
 msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB."
-msgstr ""
+msgstr "Czas wykonania: %1$s sekund. Zapytania do bazy danych: %2$s. Użyta pamięć: %3$s KB."
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:424
@@ -5817,7 +5817,7 @@ msgstr "Eksportuj"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:281
 msgid "Export all family trees to GEDCOM files…"
-msgstr ""
+msgstr "Eksportowanie wszystkich drzew genealogicznych do plików GEDCOM…"
 
 #: help_text.php:1202
 msgid "Export family tree"
@@ -6493,7 +6493,7 @@ msgstr "<b>webtrees</b> korzysta ze standardu kodowania UTF-8, który zapewnia p
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:417
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "Dla stron z więcej niż jednym drzewem genealogicznym ta opcja pozwala na pokazanie listy drzew w głównym menu, stronie wyszykiwania, itp."
 
 #: includes/functions/functions_print.php:372
 msgid "For technical support and information contact"
@@ -7449,7 +7449,7 @@ msgstr "Wymiary zdjęcia"
 
 #: admin_trees_config.php:718
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Obrazy bez znaków wodnych"
 
 #: modules_v3/family_nav/module.php:87
 msgid "Immediate Family"
@@ -7715,7 +7715,7 @@ msgstr "Izrael"
 
 #: admin_site_upgrade.php:81 admin_site_upgrade.php:85
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
-msgstr ""
+msgstr "Proszę czekać. Pobieranie i aktualizacja może zająć kilka minut."
 
 #: library/WT/Stats.php:3865
 msgid "Italy"
@@ -8794,7 +8794,7 @@ msgstr "Martynika"
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:215
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Przebierz się za tego użytkownika"
 
 #: modules_v3/batch_update/plugins/search_replace.php:90
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -9747,11 +9747,11 @@ msgstr "Brak kontaktu"
 
 #: admin_site_upgrade.php:207
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "Brak modułów użytkownika."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "Brak motywów użytkownika."
 
 #: admin_trees_check.php:230
 msgid "No errors were found."
@@ -9793,9 +9793,9 @@ msgstr "Brak wydarzeń dla osób żyjących na jutro."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Brak istniejących wydarzeń dla osób żyjących w ciągu %s dnia."
+msgstr[1] "Brak istniejących wydarzeń dla osób żyjących w ciągu %s dni."
+msgstr[2] "Brak istniejących wydarzeń dla osób żyjących w ciągu %s dni."
 
 #: library/WT/Controller/Family.php:164
 msgid "No facts for this family."
@@ -9861,7 +9861,7 @@ msgstr "Brak świątyni - obrządek życiowy"
 
 #: admin_site_upgrade.php:67
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Brak informacji o aktualizacji."
 
 #: library/WT/Stats.php:1069
 msgid "Nobody at all"
@@ -10023,7 +10023,7 @@ msgstr "listopad"
 
 #: library/WT/Gedcom/Code/Temp.php:141
 msgid "Nuku’Alofa, Tonga"
-msgstr "Nuku'Alofa, Tonga"
+msgstr "Nuku’Alofa, Tonga"
 
 #. I18N: gedcom tag NCHI
 #: library/WT/Gedcom/Tag.php:259 library/WT/Stats.php:2868
@@ -10673,7 +10673,7 @@ msgstr "Miejsce w języku hebrajskim"
 
 #: help_text.php:876
 msgid "Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr "Nazwy miejsc są często zbyt długie by zmieścić się na wykresach, listach, itp. Mogą one być skrócone przez pokazanie tylko kilku początkowych części nazwy takich jak <i>miejscowość, powiat</i>, lub kilku końcowych części takich jak <i>województwo, kraj</i>."
+msgstr "Nazwy miejsc są często zbyt długie by zmieścić się na diagramach, listach, itp. Mogą one być skrócone przez pokazanie tylko kilku początkowych części nazwy takich jak <i>miejscowość, powiat</i>, lub kilku końcowych części takich jak <i>województwo, kraj</i>."
 
 #: library/WT/Gedcom/Tag.php:116
 msgid "Place of LDS baptism"
@@ -10795,12 +10795,12 @@ msgstr "Miejsce zamieszkania"
 #: admin_site_upgrade.php:395
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr ""
+msgstr "Przestaw stronę w tryb nieaktywny tworząc plik %s…"
 
 #: admin_site_upgrade.php:445
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr ""
+msgstr "Przestaw stronę w tryb aktywny usuwając plik %s…"
 
 #: admin_trees_config.php:894 statistics.php:401
 msgid "Places"
@@ -11350,7 +11350,7 @@ msgstr "Wyrażenia regularne"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Wyrażenia regularne są zaawansowaną techniką dopasowywania do wzorca."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:33
@@ -11831,7 +11831,7 @@ msgstr "Znajdź i zamień"
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:39
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr ""
+msgstr "Wyszukaj i zastąp tekst używając prostych wyszukań oraz zaawansowanych doposowań do wzorca."
 
 #: includes/session.php:549
 msgid "Search engine"
@@ -11878,7 +11878,7 @@ msgstr "Bezpieczne połączenie"
 #: modules_v3/batch_update/plugins/search_replace.php:93
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Więcej informacji na: %s."
 
 #: includes/functions/functions_edit.php:311 reportengine.php:250
 msgid "Select a date"
@@ -12076,7 +12076,7 @@ msgstr "Nazwa serwera"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:81
 msgid "Server time"
-msgstr ""
+msgstr "Czas serwera"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:94 help_text.php:719
@@ -12372,7 +12372,7 @@ msgstr "Pokaż kursor wieku"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:944 help_text.php:694
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Domyślnie pokazuj szczegóły w diagramach"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -12505,7 +12505,7 @@ msgstr "Pokaż odnośnik do wykresów statystyk"
 
 #: admin_site_config.php:91 help_text.php:416
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Pokaż listę drzew genealogicznych"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -13438,7 +13438,7 @@ msgstr "Plik o nazwie %s już istnieje. Należy użyć innej nazwy."
 #: admin_site_upgrade.php:399 admin_site_upgrade.php:429
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Plik %s nie może być utworzony."
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:450
 #: admin_site_upgrade.php:470
@@ -13449,12 +13449,12 @@ msgstr "Nie można usunąć pliku %s."
 #: admin_site_upgrade.php:377
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "Plik %s nie może być zaktualizowany."
 
 #: admin_site_upgrade.php:401
 #, php-format
 msgid "The file %s was created."
-msgstr ""
+msgstr "Plik %s został utworzony."
 
 #: admin_media.php:58 admin_media.php:65 admin_site_upgrade.php:448
 #: admin_site_upgrade.php:468
@@ -13477,7 +13477,7 @@ msgstr "Plik „%s” nie istnieje."
 #: admin_site_upgrade.php:464
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Katalog %s nie może być usunięty."
 
 #: addmedia.php:112 addmedia.php:123 addmedia.php:135 addmedia.php:274
 #: addmedia.php:285 addmedia.php:297 admin_media_upload.php:61
@@ -13497,7 +13497,7 @@ msgstr "Katalog %s został utworzony."
 #: admin_site_upgrade.php:462
 #, php-format
 msgid "The folder %s was deleted."
-msgstr ""
+msgstr "Katalog %s został usunięty."
 
 #: help_text.php:578
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -13574,7 +13574,7 @@ msgstr "Wymagania pamięci i czasu pracy procesora zależą od liczby osób w tw
 #: admin_site_upgrade.php:380
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "Nowe pliki obecnie znajdują się w katalogu %s."
 
 #: help_text.php:1239
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13633,7 +13633,7 @@ msgstr "Czas w sekundach, po którym sesja <b>webtrees</b> wygaśnie i będzie k
 
 #: admin_site_upgrade.php:476
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Aktualizacja zakończona."
 
 #: login.php:300
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13703,7 +13703,7 @@ msgstr "Brak multimediów powiązanych z tą osobą."
 
 #: admin_site_upgrade.php:107
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Brak niezatwierdzonych zmian."
 
 #: modules_v3/todo/module.php:127
 msgid "There are no research tasks in this family tree."
@@ -13859,7 +13859,7 @@ msgstr "Ten katalog będzie używany do przechowywania plików multimedialnych p
 
 #: library/WT/Filter.php:241
 msgid "This form has expired.  Try again."
-msgstr ""
+msgstr "Dany formularz jest nieaktualny. Spróbuj ponownie."
 
 #: individual.php:91 library/WT/Controller/Chart.php:45
 msgid "This individual does not exist or you do not have permission to view it."
@@ -13944,11 +13944,11 @@ msgstr "Wielkość liter ma znaczenie. Jeśli baza danych o podanej nazwie nie i
 #. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:695
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr ""
+msgstr "Jest to początkowe ustawienie dla opcji „Pokaż szczegóły” na diagramach."
 
 #: admin_site_upgrade.php:72
 msgid "This is the latest version of webtrees.  No upgrade is available."
-msgstr ""
+msgstr "Używasz aktualnej wersji webtrees. Brak dostępnej aktualizacji."
 
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
@@ -13985,7 +13985,7 @@ msgstr "To jest lista faktów GEDCOM, które użytkownicy mogą dodać tylko <u>
 #. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:755
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Jest to nazwa serwera SMTP. 'localhost' oznacza, że usługa poczty elektronicznej jest uruchomiona na tym samym komputerze co serwer www."
+msgstr "Jest to nazwa serwera SMTP. ‘localhost’ oznacza, że usługa poczty elektronicznej jest uruchomiona na tym samym komputerze co serwer www."
 
 #: help_text.php:476
 msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the Home Page."
@@ -14297,7 +14297,7 @@ msgstr "Powinna być to lista faktów rozdzielana przecinkami lub spacjami (doda
 
 #: admin_site_upgrade.php:41
 msgid "This site is being upgraded.  Try again in a few minutes."
-msgstr ""
+msgstr "Strona jest w czasie aktualizacji. Należy spróbować w ciągu kilku minut."
 
 #: source.php:73
 msgid "This source does not exist or you do not have permission to view it."
@@ -14491,7 +14491,7 @@ msgstr "Aby pomóc ci w rozpoczęciu pracy nad nowym blokiem, utworzyliśmy kilk
 
 #: admin_site_upgrade.php:379
 msgid "To complete the upgrade, you should install the files manually."
-msgstr ""
+msgstr "Aby ukończyć aktualizację należy zainstalować pliki ręcznie."
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -14510,7 +14510,7 @@ msgstr "z osobą"
 #: admin_site_upgrade.php:382
 #, php-format
 msgid "To prevent visitors from accessing the site while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors."
-msgstr ""
+msgstr "Aby zaopobieć odwiedzaniu strony w trakcie kopiowania plików należy utworzyć tymczasowy plik %s na serwerze. Jeśli zawiera on wiadomość, będzie widoczna dla odwiedzających."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:574
@@ -14812,7 +14812,7 @@ msgstr "ZSSR"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:41 themes/_administration/header.php:87
 msgid "UTC"
-msgstr ""
+msgstr "Czas UTC"
 
 #: library/WT/Stats.php:3989
 msgid "Uganda"
@@ -14923,7 +14923,7 @@ msgstr "Niepotwierdzeni przez użytkownika"
 #: admin_site_upgrade.php:321
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Rozpakowywanie %s do katalogu tymczasowego…"
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:32
@@ -14946,7 +14946,7 @@ msgstr "Uaktualnianie powiązanego wpisu"
 #. I18N: Ignore the warnings, and [...]
 #: admin_site_upgrade.php:202 admin_site_upgrade.php:265
 msgid "Upgrade anyway"
-msgstr ""
+msgstr "Mimo to aktualizuj"
 
 #. I18N: %s is a version number, such as 1.2.3
 #: admin.php:63 admin_site_upgrade.php:86
@@ -14956,7 +14956,7 @@ msgstr "Aktualizacja webtrees do wersji %s"
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Asystent aktualizacji"
 
 #: admin_media_upload.php:234 admin_trees_manage.php:224
 #: modules_v3/googlemap/admin_places.php:661
@@ -15362,11 +15362,11 @@ msgstr "Znaki wodne"
 
 #: help_text.php:1018
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Znaki wodne są opcjonalne i nornalnie pokazywane są tylko gościom."
 
 #: help_text.php:1020
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "Dodawanie znaku wodnego może być wolne dla dużych obrazów. Dla stron z dużą ilością osób odwiedzających preferowane jest utworzenie obrazów ze znakiem wodnym raz i następnie trzymanie ich na serwerze."
 
 #: login.php:370
 #, php-format
@@ -15481,7 +15481,7 @@ msgstr "Gdy ta opcja jest włączona, można zobaczyć wszystkie źródła i not
 
 #: help_text.php:1395
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr ""
+msgstr "Gdy ta opcja jest zaznaczona będzie obliczana różnica wieku pomiędzy rodzeństwem, dziećmi, małżonkami, itp."
 
 #: help_text.php:922
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
@@ -15701,11 +15701,11 @@ msgstr "Można teraz się zalogować używając swojej nazwy użytkownika i has�
 
 #: admin_site_upgrade.php:201
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "Można włączyć dane moduły ponownie po zakończeniu aktualizacji."
 
 #: admin_site_upgrade.php:264
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "Można włączyć dane motywy ponownie po zakończeniu aktualizacji."
 
 #: help_text.php:634 help_text.php:673
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15835,7 +15835,7 @@ msgstr "Została wysłana następująca wiadomość do użytkownika:"
 
 #: admin_site_upgrade.php:102
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "Należy zatwierdzić lub odrzucić wszystkie niezatwierdzone zmiany przed aktualizacją."
 
 #: help_text.php:1142
 msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
@@ -15843,11 +15843,11 @@ msgstr "Należy unikać używania znaku linii pionowej &bdquo;|&rdquo; w notatka
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Należy skontaktować się z autorem modułu aby potwierdzić jego kompatybilność z daną wersją webtrees."
 
 #: admin_site_upgrade.php:263
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Należy skontaktować się z autorem motywu aby potwierdzić jego kompatybilność z daną wersją webtrees."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:266 message.php:69
@@ -16485,19 +16485,19 @@ msgstr "Włącz"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:97
 msgid "estate name"
-msgstr ""
+msgstr "majątkowe"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:94
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "majątkowe"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:91
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "majątkowe"
 
 #. I18N: Gedcom EST dates
 #: library/WT/Date.php:237
@@ -18576,7 +18576,7 @@ msgstr "po ślubie"
 #. I18N: verb: pretend to be someone else
 #: admin_users.php:216
 msgid "masquerade"
-msgstr ""
+msgstr "przebierz się"
 
 #: includes/functions/functions.php:910
 msgctxt "mother’s father"

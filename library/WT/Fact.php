@@ -272,7 +272,7 @@ class WT_Fact {
 				$attributes[] = '<span dir="auto">' . WT_Filter::escapeHtml($value) . '</span>';
 			}
 			$date = $this->getDate();
-			if ($this->getTag() == 'BIRT' && $SHOW_PARENTS_AGE) {
+			if ($this->getTag() == 'BIRT' && $SHOW_PARENTS_AGE && $this->getParent() instanceof WT_Individual) {
 				$attributes[] = $date->display() . format_parents_age($this->getParent(), $date);
 			} else {
 				$attributes[] = $date->display();

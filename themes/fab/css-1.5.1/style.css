@@ -349,7 +349,7 @@ html[dir=rtl] .makeMenu li ul li {
 .person_box,
 .person_boxF,
 .person_boxNN {
-	margin: 0;
+	margin: 1px 0px;
 }
 
 .person_box .details1,
