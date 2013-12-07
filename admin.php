@@ -1408,6 +1408,8 @@ function old_paths() {
 		WT_ROOT.'themes/minimal/jquery-ui-1.10.0',
 		WT_ROOT.'themes/webtrees/jquery-ui-1.10.0',
 		WT_ROOT.'themes/xenea/jquery-ui-1.10.0',
+		// Removed in 1.4.6
+		WT_ROOT.'js/webtrees-1.4.2.js',
 	);
 }
 
