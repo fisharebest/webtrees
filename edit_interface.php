@@ -90,6 +90,7 @@ case 'editraw':
 			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="updateraw">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
+			<?php echo WT_Filter::getCsrf(); ?>
 			<ul id="raw-gedcom-list">
 				<?php foreach ($record->getFacts() as $fact) { ?>
 					<?php if (!$fact->isOld()) { ?>
@@ -124,6 +125,12 @@ case 'updateraw':
 	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
 	$facts     = WT_Filter::postArray('fact');
 	$fact_ids  = WT_Filter::postArray('fact_id');
+
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=editraw&xref=' . $xref);
+		exit;
+	}
 
 	$record = WT_GedcomRecord::getInstance($xref);
 	check_record_access($record);
@@ -193,6 +200,7 @@ case 'editrawfact':
 			<input type="hidden" name="action" value="updaterawfact">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<input type="hidden" name="fact_id" value="<?php echo $fact_id; ?>">
+			<?php echo WT_Filter::getCsrf(); ?>
 			<textarea name="gedcom" id="gedcom" dir="ltr"><?php echo WT_Filter::escapeHtml($edit_fact->getGedcom()); ?></textarea>
 			<table class="facts_table">
 				<?php echo keep_chan($record); ?>
@@ -212,6 +220,12 @@ case 'updaterawfact':
 	$fact_id   = WT_Filter::post('fact_id');
 	$gedcom    = WT_Filter::post('gedcom');
 	$keep_chan = WT_Filter::postBool('keep_chan');
+
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=editrawfact&xref=' . $xref . '&fact_id=' . $fact_id);
+		exit;
+	}
 
 	$record = WT_GedcomRecord::getInstance($xref);
 	check_record_access($record);
@@ -279,6 +293,8 @@ case 'edit':
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="fact_id" value="', $fact_id, '">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
+	echo '<input type="hidden" name="prev_action" value="edit">';
+	echo WT_Filter::getCsrf();
 	echo '<table class="facts_table">';
 	create_edit_form($record, $edit_fact);
 	echo keep_chan($record);
@@ -364,6 +380,9 @@ case 'add':
 	echo '<input type="hidden" name="ged" value="', WT_Filter::escapeHtml(WT_GEDCOM), '">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
+	echo '<input type="hidden" name="prev_action" value="add">';
+	echo '<input type="hidden" name="fact_type" value="' . $fact . '">';
+	echo WT_Filter::getCsrf();
 	echo '<table class="facts_table">';
 
 	create_add_form($fact);
@@ -406,6 +425,14 @@ case 'update':
 	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
 	$fact_id   = WT_Filter::post('fact_id');
 	$keep_chan = WT_Filter::postBool('keep_chan');
+
+	if (!WT_Filter::checkCsrf()) {
+		$prev_action = WT_Filter::post('prev_action', 'add|edit|addname|editname');
+		$fact_type   = WT_Filter::post('fact_type', WT_REGEX_TAG);
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=' . $prev_action . '&xref=' . $xref . '&fact_id=' . $fact_id . '&fact=' . $fact_type);
+		exit;
+	}
 
 	$record = WT_GedcomRecord::getInstance($xref);
 	check_record_access($record);
@@ -527,6 +554,13 @@ case 'add_child_to_family_action':
 	$text      = WT_Filter::postArray('text');
 	$islink    = WT_Filter::postArray('islink', '[01]');
 
+	if (!WT_Filter::checkCsrf()) {
+		$gender = WT_Filter::get('gender', '[MFU]', 'U');
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_child_to_family&xref=' . $xref . '&gender=' . $gender);
+		exit;
+	}
+
 	$family    = WT_Family::getInstance($xref);
 	check_record_access($family);
 
@@ -597,6 +631,12 @@ case 'add_child_to_individual_action':
 	$tag     = WT_Filter::postArray('tag', WT_REGEX_TAG);
 	$text    = WT_Filter::postArray('text');
 	$islink  = WT_Filter::postArray('islink', '[01]');
+
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_child_to_individual&xref=' . $xref);
+		exit;
+	}
 
 	$person  = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -674,6 +714,13 @@ case 'add_parent_to_individual_action':
 	$text    = WT_Filter::postArray('text');
 	$islink  = WT_Filter::postArray('islink', '[01]');
 
+	if (!WT_Filter::checkCsrf()) {
+		$gender = WT_Filter::get('gender', '[MFU]', 'U');
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_parent_to_individual&xref=' . $xref . '&gender=' . $gender);
+		exit;
+	}
+
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
 
@@ -738,6 +785,12 @@ case 'add_unlinked_indi_action':
 	$text    = WT_Filter::postArray('text');
 	$islink  = WT_Filter::postArray('islink', '[01]');
 
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_unlinked_indi');
+		exit;
+	}
+
 	$controller
 		->requireManagerLogin()
 		->pageHeader();
@@ -795,6 +848,13 @@ case 'add_spouse_to_individual_action':
 	$tag     = WT_Filter::postArray('tag', WT_REGEX_TAG);
 	$text    = WT_Filter::postArray('text');
 	$islink  = WT_Filter::postArray('islink', '[01]');
+
+	if (!WT_Filter::checkCsrf()) {
+		$gender = WT_Filter::get('famtag', 'HUSB|WIFE');
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_spouse_to_individual&xref=' . $xref . '&famtag=' . $famtag);
+		exit;
+	}
 
 	$person  = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -881,6 +941,13 @@ case 'add_spouse_to_family_action':
 	$family  = WT_Family::getInstance($xref);
 	check_record_access($family);
 
+	if (!WT_Filter::checkCsrf()) {
+		$gender = WT_Filter::get('famtag', 'HUSB|WIFE');
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_spouse_to_family&xref=' . $xref . '&famtag=' . $famtag);
+		exit;
+	}
+
 	$controller->pageHeader();
 
 	// Create the new spouse
@@ -949,6 +1016,7 @@ case 'addfamlink':
 			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="linkfamaction">
 			<input type="hidden" name="xref" value="<?php echo $person->getXref(); ?>">
+			<?php echo WT_Filter::getCsrf(); ?>
 			<table class="facts_table">
 				<tr>
 					<td class="facts_label">
@@ -983,6 +1051,12 @@ case 'linkfamaction':
 	$xref   = WT_Filter::post('xref',  WT_REGEX_XREF);
 	$famid  = WT_Filter::post('famid', WT_REGEX_XREF);
 	$PEDI   = WT_Filter::post('PEDI');
+
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addfamlink&xref=' . $xref);
+		exit;
+	}
 
 	$person = WT_Individual::getInstance($xref);
 	$family = WT_Family::getInstance($famid);
@@ -1049,6 +1123,7 @@ case 'linkspouse':
 			<input type="hidden" name="action" value="linkspouseaction">
 			<input type="hidden" name="xref" value="<?php echo $person->getXref(); ?>">
 			<input type="hidden" name="famtag" value="<?php echo $famtag; ?>">
+			<?php echo WT_Filter::getCsrf(); ?>
 			<table class="facts_table">
 				<tr>
 					<td class="facts_label">
@@ -1088,6 +1163,13 @@ case 'linkspouseaction':
 	$tag     = WT_Filter::postArray('tag', WT_REGEX_TAG);
 	$text    = WT_Filter::postArray('text');
 	$islink  = WT_Filter::postArray('islink', '[01]');
+
+	if (!WT_Filter::checkCsrf()) {
+		$gender = WT_Filter::get('famtag', 'HUSB|WIFE');
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=linkspouse&xref=' . $xref . '&famtag=' . $famtag);
+		exit;
+	}
 
 	$person  = WT_Individual::getInstance($xref);
 	$spouse  = WT_Individual::getInstance($spid);
@@ -1155,6 +1237,7 @@ case 'addnewsource':
 			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="addsourceaction">
 			<input type="hidden" name="xref" value="newsour">
+			<?php echo WT_Filter::getCsrf(); ?>
 			<table class="facts_table">
 				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('TITL'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="TITL" id="TITL" value="" size="60"> <?php echo print_specialchar_link('TITL'); ?></td></tr>
@@ -1219,6 +1302,12 @@ case 'addsourceaction':
 	$controller
 		->setPageTitle(WT_I18N::translate('Create a new source'))
 		->pageHeader();
+
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addnewsource');
+		exit;
+	}
 
 	$newgedrec = "0 @XREF@ SOUR";
 	$ABBR = WT_Filter::post('ABBR');
@@ -1291,6 +1380,7 @@ case 'addnewnote':
 			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="addnoteaction">
 			<input type="hidden" name="noteid" value="newnote">
+			<?php echo WT_Filter::getCsrf(); ?>
 			<?php
 			echo '<table class="facts_table">';
 			echo '<tr>';
@@ -1318,6 +1408,12 @@ case 'addnoteaction':
 		->setPageTitle(WT_I18N::translate('Create a new shared note'))
 		->pageHeader();
 
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addnewnote');
+		exit;
+	}
+
 	$gedrec  = '0 @XREF@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", WT_Filter::post('NOTE'));
 
 	$record = WT_GedcomRecord::createRecord($gedrec, WT_GED_ID);
@@ -1334,6 +1430,12 @@ case 'addnoteaction_assisted':
 	$controller
 		->setPageTitle(WT_I18N::translate('Create a new shared note using assistant'))
 		->pageHeader();
+
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addnewnote_assisted');
+		exit;
+	}
 
 	echo '<div id="edit_interface-page">';
 	echo '<h4>', $controller->getPageTitle(), '</h4>';
@@ -1361,6 +1463,7 @@ case 'addmedia_links':
 			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="addmedia_links">
 			<input type="hidden" name="noteid" value="newnote">
+			<?php echo WT_Filter::getCsrf(); ?>
 			<?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/MEDIA_ctrl.php'; ?>
 		</form>
 	</div>
@@ -1387,6 +1490,7 @@ case 'editnote':
 			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="editnoteaction">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
+			<?php echo WT_Filter::getCsrf(); ?>
 			<table class="facts_table">
 				<tr>
 					<td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Shared note'), help_link('SHARED_NOTE'); ?></td>
@@ -1411,6 +1515,12 @@ case 'editnoteaction':
 	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
 	$keep_chan = WT_Filter::postBool('keep_chan');
 	$note      = WT_Filter::post('NOTE');
+
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=editnote&xref=' . $xref);
+		exit;
+	}
 
 	$record = WT_Note::getInstance($xref);
 	check_record_access($record);
@@ -1458,6 +1568,7 @@ case 'addnewrepository':
 		<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 		<input type="hidden" name="action" value="addrepoaction">
 		<input type="hidden" name="xref" value="newrepo">
+		<?php echo WT_Filter::getCsrf(); ?>
 		<table class="facts_table">
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Repository name'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="REPO_NAME" id="REPO_NAME" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('REPO_NAME'); ?></td></tr>
@@ -1491,6 +1602,13 @@ case 'addnewrepository':
 	break;
 
 case 'addrepoaction':
+
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addnewrepository');
+		exit;
+	}
+
 	$controller
 		->setPageTitle(WT_I18N::translate('Create repository'))
 		->pageHeader();
@@ -1589,7 +1707,9 @@ case 'paste':
 		->setPageTitle(WT_I18N::translate('Add from clipboard'))
 		->pageHeader();
 
-	$record->createFact($WT_SESSION->clipboard[$fact]['factrec'], true);
+	if (WT_Filter::checkCsrf()) {
+		$record->createFact($WT_SESSION->clipboard[$fact]['factrec'], true);
+	}
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
 
@@ -1655,6 +1775,7 @@ case 'reorder_media':
 			<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 			<input type="hidden" name="action" value="reorder_media_update">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
+			<?php echo WT_Filter::getCsrf(); ?>
 			<ul id="reorder_media_list">
 			<?php foreach ($sort_obje as $n=>$obje) { ?>
 				<li class="facts_value" style="list-style:none;cursor:move;margin-bottom:2px;" id="li_<?php echo $obje->getXref(); ?>">
@@ -1688,6 +1809,12 @@ case 'reorder_media_update':
 	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
 	$order1    = WT_Filter::post('order1');
 	$keep_chan = WT_Filter::postBool('keep_chan');
+
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=reorder_media_&xref=' . $xref);
+		exit;
+	}
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -1739,6 +1866,7 @@ case 'reorder_children':
 			<input type="hidden" name="action" value="reorder_update">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<input type="hidden" name="option" value="bybirth">
+			<?php echo WT_Filter::getCsrf(); ?>
 			<ul id="reorder_list">
 				<?php
 				// reorder children in modified families
@@ -1789,6 +1917,12 @@ case 'reorder_update':
 	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
 	$order     = WT_Filter::post('order');
 	$keep_chan = WT_Filter::postBool('keep_chan');
+
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=reorder_children&xref=' . $xref);
+		exit;
+	}
 
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
@@ -1858,6 +1992,7 @@ case 'changefamily':
 				<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 				<input type="hidden" name="action" value="changefamily_update">
 				<input type="hidden" name="xref" value="<?php echo $xref; ?>">
+				<?php echo WT_Filter::getCsrf(); ?>
 				<table>
 					<tr>
 					<?php if ($father) { ?>
@@ -1990,6 +2125,12 @@ case 'changefamily_update':
 	$HUSB      = WT_Filter::post('HUSB', WT_REGEX_XREF);
 	$WIFE      = WT_Filter::post('WIFE', WT_REGEX_XREF);
 	$keep_chan = WT_Filter::postBool('keep_chan');
+
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=changefamily&xref=' . $xref);
+		exit;
+	}
 
 	//TODO use CHIL[] instead of CHIL<n>
 	//$CHIL      = WT_Filter::postArray('CHIL', WT_REGEX_XREF);
@@ -2129,6 +2270,7 @@ case 'reorder_fams':
 		<input type="hidden" name="action" value="reorder_fams_update">
 		<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 		<input type="hidden" name="option" value="bymarriage">
+		<?php echo WT_Filter::getCsrf(); ?>
 		<ul id="reorder_list">
 		<?php foreach ($fams as $n=>$family) { ?>
 			<li class="facts_value" style="cursor:move;margin-bottom:2px;" id="li_<?php echo $family->getXref(); ?>">
@@ -2152,6 +2294,12 @@ case 'reorder_fams_update':
 	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
 	$order     = WT_Filter::post('order');
 	$keep_chan = WT_Filter::postBool('keep_chan');
+
+	if (!WT_Filter::checkCsrf()) {
+		Zend_Session::writeClose();
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=reorder_fams&xref=' . $xref);
+		exit;
+	}
 
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
@@ -2215,7 +2363,7 @@ function keep_chan(WT_GedcomRecord $record=null) {
 }
 
 // prints a form to add an individual or edit an individual’s name
-function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $family=null, WT_Fact $name_fact=null, $famtag='CHIL', $sextag='U') {
+function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $family=null, WT_Fact $name_fact=null, $famtag='CHIL', $gender='U') {
 	global $WORD_WRAPPED_NOTES;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $SHOW_GEDCOM_RECORD;
 	global $bdm, $STANDARD_NAME_FACTS, $REVERSED_NAME_FACTS, $ADVANCED_NAME_FACTS, $ADVANCED_PLAC_FACTS;
@@ -2265,7 +2413,9 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	echo '<input type="hidden" name="fact_id" value="', $name_fact_id, '">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
 	echo '<input type="hidden" name="famtag" value="', $famtag, '">';
+	echo '<input type="hidden" name="gender" value="', $gender, '">';
 	echo '<input type="hidden" name="goto" value="">'; // set by javascript
+	echo WT_Filter::getCsrf();
 	echo '<table class="facts_table">';
 
 	switch ($nextaction) {
@@ -2370,11 +2520,11 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 			// Daughters get their father’s given name plus “sdottir”
 			switch ($nextaction) {
 			case 'add_child_to_family_action':
-				if ($sextag=='M' && preg_match('/(\S+)\s+\/.*\//', $father_name, $match)) {
+				if ($gender=='M' && preg_match('/(\S+)\s+\/.*\//', $father_name, $match)) {
 					$name_fields['SURN']=preg_replace('/s$/', '', $match[1]).'sson';
 					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
 				}
-				if ($sextag=='F' && preg_match('/(\S+)\s+\/.*\//', $father_name, $match)) {
+				if ($gender=='F' && preg_match('/(\S+)\s+\/.*\//', $father_name, $match)) {
 					$name_fields['SURN']=preg_replace('/s$/', '', $match[1]).'sdottir';
 					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
 				}
@@ -2459,9 +2609,9 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 			case 'add_child_to_family_action':
 				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $father_name, $match)) {
 					$name_fields['SURN']=$match[2];
-					if ($SURNAME_TRADITION=='polish' && $sextag=='F') {
+					if ($SURNAME_TRADITION=='polish' && $gender=='F') {
 						$match[2]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
-					} else if ($SURNAME_TRADITION=='lithuanian' && $sextag=='F') {
+					} else if ($SURNAME_TRADITION=='lithuanian' && $gender=='F') {
 						$match[2]=preg_replace(array('/as$/', '/a$/', '/is$/', '/ys$/', '/ius$/', '/us$/'), array('aitė', 'aitė', 'ytė', 'ytė', 'iūtė', 'utė'), $match[2]);
 					}
 					$name_fields['SPFX']=trim($match[1]);
@@ -2471,9 +2621,9 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 			case 'add_child_to_individual_action':
 				if ($person->getSex()=='M' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
 					$name_fields['SURN']=$match[2];
-					if ($SURNAME_TRADITION=='polish' && $sextag=='F') {
+					if ($SURNAME_TRADITION=='polish' && $gender=='F') {
 						$match[2]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
-					} else if ($SURNAME_TRADITION=='lithuanian' && $sextag=='F') {
+					} else if ($SURNAME_TRADITION=='lithuanian' && $gender=='F') {
 						$match[2]=preg_replace(array('/as$/', '/a$/', '/is$/', '/ys$/', '/ius$/', '/us$/'), array('aitė', 'aitė', 'ytė', 'ytė', 'iūtė', 'utė'), $match[2]);
 					}
 					$name_fields['SPFX']=trim($match[1]);
@@ -2482,7 +2632,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 				break;
 			case 'add_parent_to_individual_action':
 				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					if ($SURNAME_TRADITION=='polish' && $sextag=='M') {
+					if ($SURNAME_TRADITION=='polish' && $gender=='M') {
 						$match[2]=preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $match[2]);
 					} else if ($SURNAME_TRADITION=='lithuanian') {
 						// not a complete list as the rules are somewhat complicated but will do 95% correctly
@@ -2618,9 +2768,9 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	if ($nextaction!='update') {
 		echo '</table><br><table class="facts_table">';
 		// 1 SEX
-		if ($famtag=="HUSB" || $sextag=="M") {
+		if ($famtag=="HUSB" || $gender=="M") {
 			add_simple_tag("0 SEX M");
-		} elseif ($famtag=="WIFE" || $sextag=="F") {
+		} elseif ($famtag=="WIFE" || $gender=="F") {
 			add_simple_tag("0 SEX F");
 		} else {
 			add_simple_tag("0 SEX");
@@ -2681,7 +2831,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	echo '</form>';
 	$controller->addInlineJavascript('
 	SURNAME_TRADITION="'.$SURNAME_TRADITION.'";
-	sextag="'.$sextag.'";
+	gender="'.$gender.'";
 	famtag="'.$famtag.'";
 	function trim(str) {
 		str=str.replace(/\s\s+/g, " ");
@@ -2704,7 +2854,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 		var spfx=frm.SPFX.value;
 		var surn=frm.SURN.value;
 		var nsfx=frm.NSFX.value;
-		if (SURNAME_TRADITION=="polish" && (sextag=="F" || famtag=="WIFE")) {
+		if (SURNAME_TRADITION=="polish" && (gender=="F" || famtag=="WIFE")) {
 			surn=surn.replace(/ski$/, "ska");
 			surn=surn.replace(/cki$/, "cka");
 			surn=surn.replace(/dzki$/, "dzka");

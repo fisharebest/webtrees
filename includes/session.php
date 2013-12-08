@@ -482,6 +482,9 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 		// Requested change of theme?
 		$THEME_DIR = WT_Filter::get('theme');
 		unset($_GET['theme']);
+		if (!in_array($THEME_DIR, get_theme_names())) {
+			$THEME_DIR = '';
+		}
 		// Last theme used?
 		if (!$THEME_DIR && in_array($WT_SESSION->theme_dir, get_theme_names())) {
 			$THEME_DIR=$WT_SESSION->theme_dir;
