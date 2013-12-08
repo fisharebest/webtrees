@@ -91,6 +91,7 @@ if ($user_id) {
 }
 
 if ($action=='update') {
+	Zend_Session::writeClose();
 	foreach (array('main', 'side') as $location) {
 		if ($location=='main') {
 			$new_blocks=$main;
