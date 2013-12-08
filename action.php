@@ -187,6 +187,7 @@ case 'masquerade':
 case 'unlink-media':
 	// Remove links from an individual and their spouse-family records to a media object.
 	// Used by the "unlink" option on the album (lightbox) tab.
+	require WT_ROOT.'includes/functions/functions_edit.php';
 	$source = WT_Individual::getInstance( WT_Filter::post('source', WT_REGEX_XREF));
 	$target = WT_Filter::post('target', WT_REGEX_XREF);
 	if ($source && $source->canShow() && $source->canEdit() && $target) {
@@ -194,15 +195,14 @@ case 'unlink-media':
 		$sources = $source->getSpouseFamilies();
 		$sources[] = $source;
 		foreach ($sources as $source) {
-			var_dump($source->getXref());
 			foreach ($source->getFacts() as $fact) {
 				if (!$fact->isOld()) {
 					if ($fact->getValue() == '@' . $target . '@') {
 						// Level 1 links
-						$source->deleteFact($fact->getFactId());
+						$source->deleteFact($fact->getFactId(), true);
 					} elseif (strpos($fact->getGedcom(), ' @' . $target . '@')) {
 						// Level 2-3 links
-						$source->updateFact($fact->getFactId(), preg_replace(array('/\n2 OBJE @' . $target . '@(\n[3-9].*)*/', '/\n3 OBJE @' . $target . '@(\n[4-9].*)*/'), '', $fact->getGedcom(), true));
+						$source->updateFact($fact->getFactId(), preg_replace(array('/\n2 OBJE @' . $target . '@(\n[3-9].*)*/', '/\n3 OBJE @' . $target . '@(\n[4-9].*)*/'), '', $fact->getGedcom()), true);
 					}
 				}
 			}
