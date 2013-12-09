@@ -920,17 +920,16 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	// -- Add from clipboard
 	if ($WT_SESSION->clipboard) {
 		$newRow = true;
-		foreach (array_reverse($WT_SESSION->clipboard, true) as $key=>$fact) {
+		foreach (array_reverse($WT_SESSION->clipboard, true) as $fact_id=>$fact) {
 			if ($fact["type"]==$type || $fact["type"]=='all') {
 				if ($newRow) {
 					$newRow = false;
 					echo '<tr><td class="descriptionbox">';
 					echo WT_I18N::translate('Add from clipboard'), '</td>';
 					echo '<td class="optionbox wrap"><form method="get" name="newFromClipboard" action="?" onsubmit="return false;">';
-					echo '<select id="newClipboardFact" name="newClipboardFact">';
+					echo '<select id="newClipboardFact">';
 				}
-				$fact_type=WT_Gedcom_Tag::getLabel($fact['fact']);
-				echo '<option value="clipboard_', $key, '">', $fact_type;
+				echo '<option value="', WT_Filter::escapeHtml($fact_id), '">', WT_Gedcom_Tag::getLabel($fact['fact']);
 				// TODO use the event class to store/parse the clipboard events
 				if (preg_match('/^2 DATE (.+)/m', $fact['factrec'], $match)) {
 					$tmp=new WT_Date($match[1]);
@@ -944,7 +943,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 		}
 		if (!$newRow) {
 			echo '</select>';
-			echo '&nbsp;&nbsp;<input type="button" value="', WT_I18N::translate('Add'), "\" onclick=\"addClipboardRecord('$id', 'newClipboardFact');\"> ";
+			echo '&nbsp;&nbsp;<input type="button" value="', WT_I18N::translate('Add'), "\" onclick=\"return paste_fact('$id', '#newClipboardFact');\"> ";
 			echo '</form></td></tr>', "\n";
 		}
 	}

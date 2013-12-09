@@ -1696,24 +1696,6 @@ case 'addname':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-case 'paste':
-	$xref = WT_Filter::get('xref', WT_REGEX_XREF);
-	$fact = WT_Filter::get('fact');
-
-	$record = WT_GedcomRecord::getInstance($xref);
-	check_record_access($record);
-
-	$controller
-		->setPageTitle(WT_I18N::translate('Add from clipboard'))
-		->pageHeader();
-
-	if (WT_Filter::checkCsrf()) {
-		$record->createFact($WT_SESSION->clipboard[$fact]['factrec'], true);
-	}
-	$controller->addInlineJavascript('closePopupAndReloadParent();');
-	break;
-
-////////////////////////////////////////////////////////////////////////////////
 // Change the order of media objects
 ////////////////////////////////////////////////////////////////////////////////
 case 'reorder_media':

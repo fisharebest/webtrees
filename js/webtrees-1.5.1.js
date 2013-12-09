@@ -293,19 +293,6 @@ function add_record(xref, fact_field) {
 	return false;
 }
 
-function addClipboardRecord(xref, fact) {
-	var factfield = document.getElementById(fact);
-	if (factfield) {
-		var factvalue = factfield.options[factfield.selectedIndex].value;
-		return edit_interface({
-			"action": "paste",
-			"xref": xref,
-			"fact": factvalue.substr(10)
-		});
-	}
-	return false;
-}
-
 function reorder_media(xref) {
 	return edit_interface({
 		"action": "reorder_media",
@@ -567,6 +554,21 @@ function copy_fact(xref, fact_id) {
 		action:   'copy-fact',
 		xref:      xref,
 		fact_id:   fact_id,
+		ged:       WT_GEDCOM,
+		csrf:      WT_CSRF_TOKEN
+	},
+	function(){
+		location.reload();
+	});
+	return false;
+}
+
+// Paste a fact from the clipboard
+function paste_fact(xref, element) {
+	jQuery.post('action.php', {
+		action:   'paste-fact',
+		xref:      xref,
+		fact_id:   jQuery(element).val(), // element is the <select> containing the option
 		ged:       WT_GEDCOM,
 		csrf:      WT_CSRF_TOKEN
 	},

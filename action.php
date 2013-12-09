@@ -85,7 +85,7 @@ case 'copy-fact':
 				if (!is_array($WT_SESSION->clipboard)) {
 					$WT_SESSION->clipboard=array();
 				}
-				$WT_SESSION->clipboard[]=array(
+				$WT_SESSION->clipboard[$fact_id]=array(
 					'type'   =>$type,
 					'factrec'=>$fact->getGedcom(),
 					'fact'   =>$fact->getTag()
@@ -98,6 +98,19 @@ case 'copy-fact':
 				break 2;
 			}
 		}
+	}
+	break;
+
+case 'paste-fact':
+	// Paste a fact from the clipboard
+	require WT_ROOT.'includes/functions/functions_edit.php';
+	$xref    = WT_Filter::post('xref', WT_REGEX_XREF);
+	$fact_id = WT_Filter::post('fact_id');
+
+	$record = WT_GedcomRecord::getInstance($xref);
+
+	if ($record && $record->canEdit() && isset($WT_SESSION->clipboard[$fact_id])) {
+		$record->createFact($WT_SESSION->clipboard[$fact_id]['factrec'], true);
 	}
 	break;
 
