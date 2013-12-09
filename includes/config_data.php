@@ -176,6 +176,7 @@ $emptyfacts=array(
 $nonplacfacts=array(
 	'ENDL',
 	'NCHI',
+	'REFN',
 	'SLGC',
 	'SLGS',
 );
