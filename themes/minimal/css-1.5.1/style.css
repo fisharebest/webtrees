@@ -1615,7 +1615,6 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 .logged_in_list {margin:5px 0 0 0;padding:0;line-height:20px;}
 
 @media print {
-	* {margin:0;padding:0;}
 	#backprint, #header, #topMenu, #separator  {display:none;}
 	#pedigree_chart {left:right;left:-80px;}
 	#header_accordion1 {width: 510px!important}

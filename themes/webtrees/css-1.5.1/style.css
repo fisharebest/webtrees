@@ -912,7 +912,6 @@ html[dir=rtl] #edituser-table .label {float:right;}
 html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 
 @media print {
-	* {margin:0;padding:0;}
 	#backprint, #separator  {display:none;}
 	#header, #footer, .noprint {display:none !important;}
 	#pedigree_chart {left:right;left:-80px;}
