@@ -13,3 +13,6 @@
 [submodule "modules_v3/fancy_database_backup"]
 	path = modules_v3/fancy_database_backup
 	url = https://github.com/JustCarmen/fancy_database_backup.git
+[submodule "modules_v3/fancy_privacy_list"]
+	path = modules_v3/fancy_privacy_list
+	url = https://github.com/JustCarmen/fancy_privacy_list.git
