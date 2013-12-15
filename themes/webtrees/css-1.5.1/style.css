@@ -50,8 +50,8 @@ input:required:valid, textarea:required:valid {background-image:url(data:image/p
 input:required:invalid, textarea:required:invalid {background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);background-position:right top; background-repeat:no-repeat;}
 html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[dir=rtl] input:required:invalid, html[dir=rtl] textarea:required:invalid {background-position:left top;}
 
-.line1, .line2, .line3 {vertical-align:bottom;}
-.line4 {vertical-align:middle;}
+.line1, .line2, .line3 {vertical-align:middle;}
+#hourglass_chart img.line4 {vertical-align:middle;}
 .line5 {vertical-align:top;}
 
 #mycart a img {height:15px;}
@@ -155,7 +155,7 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 #familybook_chart td {margin:0; padding:0;}
 #familybook_chart h2 {text-align:center;}
 #familybook_chart .line3, #familybook_chart .pvline, #familybook_chart .spacer {width: 3px;}
-#familybook_chart .line4 {width: 7px;}
+#familybook_chart .line4 {width: 7px; vertical-align:middle;}
 [ID^="vline"] {width:3px;}
 #familybook_chart h3 {color:#000066;font-size: 16px;text-align:center;}
 #relationship-page h3 {margin:20px 0 0 20px;}

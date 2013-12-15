@@ -73,10 +73,10 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		}
 
 		// -- size of the detailed boxes based upon optional width parameter
-		$Dbwidth=($this->box_width*$bwidth)/100;
-		$Dbheight=($this->box_width*$bheight)/100;
-		$bwidth=$Dbwidth;
-		$bheight=$Dbheight;
+		$Dbwidth =$this->box_width * $bwidth  / 100;
+		$Dbheight=$this->box_width * $bheight / 100;
+		$bwidth  =$Dbwidth;
+		$bheight =$Dbheight;
 
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
@@ -117,7 +117,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		//if (!$person) return;
 		$genoffset = $this->generations;  // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
-		$lh = ($bhalfheight+3) * pow(2, ($genoffset-$count-1));
+		$lh = ($bhalfheight+4) * pow(2, ($genoffset-$count-1));
 		//
 		//Prints empty table columns for children w/o parents up to the max generation
 		//This allows vertical line spacing to be consistent
@@ -169,7 +169,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			}
 			echo "</tr><tr>";
 			echo "<td valign=\"top\"><img name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\"></td>";
-			echo "<td><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\"></td>";
+			echo "<td><img class=\"line4\" src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\"></td>";
 			echo "<td>";
 			//-- print the mother box
 			print_pedigree_person($family->getWife());
@@ -207,19 +207,18 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		if ($count>$this->dgenerations) return 0;
 		if (!$person) return;
 		$pid=$person->getXref();
-
 		$tablealign = "right";
 		$otablealign = "left";
 		if ($TEXT_DIRECTION=="rtl") {
 			$tablealign = "left";
 			$otablealign = "right";
 		}
+		
 		//-- put a space between families on the last generation
 		if ($count==$this->dgenerations-1) {
 			if (isset($lastGenSecondFam)) echo "<br>";
 			$lastGenSecondFam = true;
 		}
-
 		echo "<table id=\"table_$pid\" align=\"".$tablealign."\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">";
 		echo "<tr>";
 		echo "<td align=\"$tablealign\" width=\"100%\">";
@@ -254,18 +253,19 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 					//-- print the lines
 					$twidth = 7;
 					if ($ct==1) $twidth+=3;
+
 					if ($ct>1) {
 						if ($i==0) {
 							//-- adjust for the number of kids
 							$h = ($bhalfheight+3)*$numkids;
-							echo "<td valign=\"bottom\"><img class=\"line1\" name=\"tvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$h\" alt=\"\"></td>";
+							echo "<td valign=\"bottom\"><img class=\"line1\" name=\"tvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\"  alt=\"\"></td>";
 						} else if ($i==$ct-1) {
 							$h = ($bhalfheight+3)*$kids;
 							if ($count<$this->dgenerations-1) {
 								if ($this->show_spouse) $h-=15;
 								else $h += 15;
 							}
-							echo "<td valign=\"top\"><img name=\"bvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"".$h."\" alt=\"\"></td>";
+							echo "<td valign=\"top\"><img name=\"bvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" alt=\"\"></td>";
 						} else {
 							echo "<td style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td>";
 						}
@@ -512,7 +512,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
 			var hline = document.getElementById("table_"+pid);
 			var hline2 = document.getElementById("table2_"+pid);
-			var newHeight = Math.abs(hline.offsetHeight - (hline2.offsetTop + <?php echo $bhalfheight+9; ?>));
+			var newHeight = Math.abs(hline.offsetHeight - (hline2.offsetTop + <?php echo $bhalfheight+5; ?>));
 			vlines[i].style.height=newHeight+'px';
 		}
 
@@ -521,14 +521,14 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
 			var hline = document.getElementById("table_"+pid);
 			var hline2 = document.getElementById("table2_"+pid);
-			vlines[i].style.height=(hline.offsetTop+hline2.offsetTop + <?php echo $bhalfheight+9; ?>)+'px';
+			vlines[i].style.height=(hline.offsetTop+hline2.offsetTop + <?php echo $bhalfheight+5; ?>)+'px';
 		}
 
 		vlines = document.getElementsByName("pvline");
 		//alert(vlines[0].parentNode.parentNode.parentNode);
 		for (i=0; i < vlines.length; i++) {
 			//vlines[i].parentNode.style.height="50%";
-			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2-1)+'px';
+			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2)+'px';
 		}
 	}
 </script>
