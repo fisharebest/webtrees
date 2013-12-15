@@ -197,7 +197,6 @@ require WT_ROOT.'includes/functions/functions.php';
 require WT_ROOT.'includes/functions/functions_db.php';
 // TODO: Not all pages require all of these.  Only load them in scripts that need them?
 require WT_ROOT.'includes/functions/functions_print.php';
-require WT_ROOT.'includes/functions/functions_rtl.php';
 require WT_ROOT.'includes/functions/functions_mediadb.php';
 require WT_ROOT.'includes/functions/functions_date.php';
 require WT_ROOT.'includes/functions/functions_charts.php';

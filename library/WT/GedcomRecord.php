@@ -475,7 +475,7 @@ class WT_GedcomRecord {
 				switch (WT_LOCALE) {
 				case 'el':
 					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Grek') {
+						if ($name['type']!='_MARNM' && WT_I18N::textScript($name['sort'])=='Grek') {
 							$this->_getPrimaryName=$n;
 							break;
 						}
@@ -483,7 +483,7 @@ class WT_GedcomRecord {
 					break;
 				case 'ru':
 					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Cyrl') {
+						if ($name['type']!='_MARNM' && WT_I18N::textScript($name['sort'])=='Cyrl') {
 							$this->_getPrimaryName=$n;
 							break;
 						}
@@ -491,7 +491,7 @@ class WT_GedcomRecord {
 					break;
 				case 'he':
 					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Hebr') {
+						if ($name['type']!='_MARNM' && WT_I18N::textScript($name['sort'])=='Hebr') {
 							$this->_getPrimaryName=$n;
 							break;
 						}
@@ -499,7 +499,7 @@ class WT_GedcomRecord {
 					break;
 				case 'ar':
 					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Arab') {
+						if ($name['type']!='_MARNM' && WT_I18N::textScript($name['sort'])=='Arab') {
 							$this->_getPrimaryName=$n;
 							break;
 						}
@@ -507,7 +507,7 @@ class WT_GedcomRecord {
 					break;
 				default:
 					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Latn') {
+						if ($name['type']!='_MARNM' && WT_I18N::textScript($name['sort'])=='Latn') {
 							$this->_getPrimaryName=$n;
 							break;
 						}
@@ -527,9 +527,9 @@ class WT_GedcomRecord {
 			// ....except when there are names with different character sets
 			$all_names=$this->getAllNames();
 			if (count($all_names)>1) {
-				$primary_script=utf8_script($all_names[$this->getPrimaryName()]['sort']);
+				$primary_script=WT_I18N::textScript($all_names[$this->getPrimaryName()]['sort']);
 				foreach ($all_names as $n=>$name) {
-					if ($n!=$this->getPrimaryName() && $name['type']!='_MARNM' && utf8_script($name['sort'])!=$primary_script) {
+					if ($n!=$this->getPrimaryName() && $name['type']!='_MARNM' && WT_I18N::textScript($name['sort'])!=$primary_script) {
 						$this->_getSecondaryName=$n;
 						break;
 					}

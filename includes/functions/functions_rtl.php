@@ -234,7 +234,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 			// Determine the directionality of the current UTF-8 character
 			$newState = $currentState;
 			while (true) {
-				if (utf8_direction($currentLetter)=='rtl') {
+				if (WT_I18N::scriptDirection(WT_I18N::languageScript($currentLetter)) == 'rtl') {
 					if ($currentState == '') {
 						$newState = 'RTL';
 						break;
@@ -249,7 +249,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 						$nextLen = $nextCharArray['length'];
 						$tempText = substr($tempText, $nextLen);
 
-						if (utf8_direction($nextLetter)=='rtl') {
+						if (WT_I18N::scriptDirection(WT_I18N::languageScript($nextLetter)) == 'rtl') {
 							$newState = 'RTL';
 							break 2;
 						}
@@ -385,7 +385,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 			break;
 		}
 		$textSpan = stripLRMRLM(substr($result, $lenStart+3, $spanEnd-$lenStart-3));
-		$langSpan = utf8_script($textSpan);
+		$langSpan = WT_I18N::textScript($textSpan);
 		if ($langSpan == 'Hebr' || $langSpan == 'Arab') {
 			break;
 		}
@@ -1061,7 +1061,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 function reverseText($text) {
 	$text = strip_tags(html_entity_decode($text,ENT_COMPAT,'UTF-8'));
 	$text = str_replace(array('&lrm;', '&rlm;', WT_UTF8_LRM, WT_UTF8_RLM), '', $text);
-	$textLanguage = utf8_script($text);
+	$textLanguage = WT_I18N::textScript($text);
 	if ($textLanguage!='Hebr' && $textLanguage!='Arab') return $text;
 
 	$reversedText = '';
@@ -1091,3 +1091,42 @@ function reverseText($text) {
 	$reversedText = $numbers.$reversedText; // emit any waiting LTR numbers now
 	return $reversedText;
 }
+
+function utf8_wordwrap($string, $width=75, $sep="\n", $cut=false) {
+	$out='';
+	while ($string) {
+		if (utf8_strlen($string) <= $width){ //Do not wrap any text that is less than the output area.
+			$out.=$string;
+			$string='';
+		} else {
+			$sub1=utf8_substr($string, 0, $width+1);
+			if (utf8_substr($string,utf8_strlen($sub1)-1,1)==' ') //include words that end by a space immediately after the area.
+				$sub=$sub1;
+			else
+				$sub=utf8_substr($string, 0, $width);
+			$spacepos=strrpos($sub, ' ');
+			if ($spacepos==false) {
+				// No space on line?
+				if ($cut) {
+					$out.=$sub.$sep;
+					$string=utf8_substr($string, utf8_strlen($sub));
+				} else {
+					$spacepos=strpos($string, ' ');
+					if ($spacepos==false) {
+						$out.=$string;
+						$string='';
+					} else {
+						$out.=substr($string, 0, $spacepos).$sep;
+						$string=substr($string, $spacepos+1);
+					}
+				}
+			} else {
+				// Split at space;
+				$out.=substr($string, 0, $spacepos).$sep;
+				$string=substr($string, $spacepos+1);
+			}
+		}
+	}
+	return $out;
+}
+
