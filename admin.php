@@ -26,6 +26,10 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
+	->addInlineJavascript('jQuery("#x").accordion({active:0, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }, heightStyle: "content"});')
+	->addInlineJavascript('jQuery("#tree_stats").accordion({icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});')
+	->addInlineJavascript('jQuery("#changes").accordion({icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});')
+	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");')
 	->setPageTitle(WT_I18N::translate('Administration'))
 	->pageHeader();
 
@@ -38,215 +42,247 @@ if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 	$latest_version='';
 }
 
-$stats=new WT_Stats(WT_GEDCOM);
-	$totusers  =0;       // Total number of users
-	$warnusers =0;       // Users with warning
-	$applusers =0;       // Users who have not verified themselves
-	$nverusers =0;       // Users not verified by admin but verified themselves
-	$adminusers=0;       // Administrators
-	$userlang  =array(); // Array for user languages
-	$gedadmin  =array(); // Array for managers
-
-// Display a series of "blocks" of general information, vary according to admin or manager.
-
-echo '<div id="content_container" style="visibility:hidden">';
-
-echo '<div id="x">';// div x - manages the accordion effect
-
-echo '<h2>', WT_WEBTREES, ' ', WT_VERSION, '</h2>',
-	'<div id="about">',
-	'<p>', WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this <b>webtrees</b> site.'), '</p>',
-	'<p>',  /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support and documentation can be found at %s.', ' <a class="current" href="http://webtrees.net/">webtrees.net</a>'), '</p>';
-
-// Accordion block for UPGRADE - only shown when upgrades are available
-if (WT_USER_IS_ADMIN && $latest_version && version_compare(WT_VERSION, $latest_version)<0) {
-	echo '<p>', WT_I18N::translate('A new version of webtrees is available.'), ' <a href="admin_site_upgrade.php"><span class="error">',  WT_I18N::translate('Upgrade to webtrees %s', WT_Filter::escapeHtml($latest_version)), '</span></a></p>';
-}
-
-echo '</div>';
-
-// Accordion block for DELETE OLD FILES - only shown when old files are found
-$old_files_found=false;
+// Delete old files (if we can).
+$old_files = array();
 foreach (old_paths() as $path) {
 	if (file_exists($path)) {
 		delete_recursively($path);
 		// we may not have permission to delete.  Is it still there?
 		if (file_exists($path)) {
-			$old_files_found=true;
+			$old_files[] = $path;
 		}
 	}
 }
 
-if (WT_USER_IS_ADMIN && $old_files_found) {
-	echo
-		'<h2><span class="warning">', WT_I18N::translate('Old files found'), '</span></h2>',
-		'<div>',
-		'<p>', WT_I18N::translate('Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them.'), '</p>',
-		'<ul>';
-		foreach (old_paths() as $path) {
-			if (file_exists($path)) {
-				echo '<li>', $path, '</li>';
-			}
-		}
-	echo
-		'</ul>',
-		'</div>';
-}
+// Total number of users
+$total_users = WT_DB::prepare(
+	"SELECT COUNT(*) FROM `##user` WHERE user_id>0"
+)->fetchOne();
 
-echo
-	'<h2>', WT_I18N::translate('Users'), '</h2>',
-	'<div id="users">'; //id = users
+// Total number of administrators
+$total_administrators = WT_DB::prepare(
+	"SELECT COUNT(*) FROM `##user_setting` WHERE setting_name='canadmin' AND setting_value=1"
+)->fetchOne();
 
-		foreach(get_all_users() as $user_id=>$user_name) {
-			$totusers = $totusers + 1;
-			if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) {
-				$warnusers++;
-			}
-			if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
-				$nverusers++;
-			}
-			if (!get_user_setting($user_id, 'verified')) {
-				$applusers++;
-			}
-			if (get_user_setting($user_id, 'canadmin')) {
-				$adminusers++;
-			}
-			foreach (WT_Tree::getAll() as $tree) {
-				if ($tree->userPreference($user_id, 'canedit')=='admin') {
-					if (isset($gedadmin[$tree->tree_id])) {
-						$gedadmin[$tree->tree_id]["number"]++;
-					} else {
-						$gedadmin[$tree->tree_id]["number"] = 1;
-						$gedadmin[$tree->tree_id]["ged"] = $tree->tree_name;
-						$gedadmin[$tree->tree_id]["title"] = $tree->tree_title_html;
-					}
-				}
-			}
-			if ($user_lang=get_user_setting($user_id, 'language')) {
-				if (isset($userlang[$user_lang]))
-					$userlang[$user_lang]["number"]++;
-				else {
-					$userlang[$user_lang]["langname"] = Zend_Locale::getTranslation($user_lang, 'language', WT_LOCALE);
-					$userlang[$user_lang]["number"] = 1;
-				}
-			}
-		}
+// Total numbers of managers
+$total_managers = WT_DB::prepare(
+	"SELECT gs.setting_value, COUNT(*)" .
+	" FROM `##gedcom_setting` gs" .
+	" JOIN `##user_gedcom_setting` ugs USING (gedcom_id)" .
+	" WHERE ugs.setting_name = 'canedit' AND ugs.setting_value='admin'" .
+	" AND   gs.setting_name ='title'" .
+	" GROUP BY gedcom_id" .
+	" ORDER BY gs.setting_value"
+)->fetchAssoc();
 
-	echo
-		'<table>',
-		'<tr><td>', WT_I18N::translate('Total number of users'), '</td><td>', $totusers, '</td></tr>',
-		'<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=adminusers">', WT_I18N::translate('Administrators'), '</a></td><td>', $adminusers, '</td></tr>',
-		'<tr><td colspan="2">', WT_I18N::translate('Managers'), '</td></tr>';
-		foreach ($gedadmin as $ged_id=>$geds) {
-			echo '<tr><td><div><a href="admin_users.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '" dir="auto">', $geds['title'], '</a></div></td><td>', $geds['number'], '</td></tr>';
-		}
-	echo '<tr><td>';
-	if ($warnusers == 0) {
-		echo WT_I18N::translate('Users with warnings');
-	} else {
-		echo '<a href="admin_users.php?action=listusers&amp;filter=warnings">', WT_I18N::translate('Users with warnings'), '</a>';
-	}
-	echo '</td><td>', $warnusers, '</td></tr><tr><td>';
-	if ($applusers == 0) {
-		echo WT_I18N::translate('Unverified by User');
-	} else {
-		echo '<a href="admin_users.php?action=listusers&amp;filter=usunver">', WT_I18N::translate('Unverified by User'), '</a>';
-	}
-	echo '</td><td>', $applusers, '</td></tr><tr><td>';
-	if ($nverusers == 0) {
-		echo WT_I18N::translate('Unverified by Administrator');
-	} else {
-		echo '<a href="admin_users.php?action=listusers&amp;filter=admunver">', WT_I18N::translate('Unverified by Administrator'), '</a>';
-	}
-	echo '</td><td>', $nverusers, '</td></tr>';
-	echo '<tr><td colspan="2">', WT_I18N::translate('Users’ languages'), '</td></tr>';
-	foreach ($userlang as $key=>$ulang) {
-		echo '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=language&amp;usrlang=', $key, '">', $ulang['langname'], '</a></td><td>', $ulang['number'], '</td></tr>';
-	}
-	echo
-		'<tr><td colspan="2">', WT_I18N::translate('Users logged in'), '</td></tr>',
-		'<tr><td colspan="2"><div>', $stats->_usersLoggedIn('list'), '</div></td></tr>',
-		'</table>';
-echo '</div>'; // id = users
+// Number of users who have not verified their email address
+$unverified = WT_DB::prepare(
+	"SELECT COUNT(*) FROM `##user_setting` WHERE setting_name='verified' AND setting_value=0"
+)->fetchOne();
 
-echo
-	'<h2>', WT_I18N::translate('Family trees'), '</h2>',
-	'<div id="trees">',// id=trees
-	'<div id="tree_stats">';
-$n=0;
-foreach (WT_Tree::getAll() as $tree) {
-	$stats = new WT_Stats($tree->tree_name);
-	if ($tree->tree_id==WT_GED_ID) {
-		$accordion_element=$n;
-	}
-	++$n;
-	echo
-		'<h3>', $stats->gedcomTitle(), '</h3>',
-		'<div>',
-		'<table>',
-		'<tr><td>&nbsp;</td><td><span>', WT_I18N::translate('Count'), '</span></td></tr>',
-		'<tr><th><a href="indilist.php?ged=', $tree->tree_name_url, '">',
-		WT_I18N::translate('Individuals'), '</a></th><td>', $stats->totalIndividuals(),
-		'</td></tr>',
-		'<tr><th><a href="famlist.php?ged=', $tree->tree_name_url, '">',
-		WT_I18N::translate('Families'), '</a></th><td>', $stats->totalFamilies(),
-		'</td></tr>',
-		'<tr><th><a href="sourcelist.php?ged=', $tree->tree_name_url, '">',
-		WT_I18N::translate('Sources'), '</a></th><td>', $stats->totalSources(),
-		'</td></tr>',
-		'<tr><th><a href="repolist.php?ged=', $tree->tree_name_url, '">',
-		WT_I18N::translate('Repositories'), '</a></th><td>', $stats->totalRepositories(),
-		'</td></tr>',
-		'<tr><th><a href="medialist.php?ged=', $tree->tree_name_url, '">',
-		WT_I18N::translate('Media objects'), '</a></th><td>', $stats->totalMedia(),
-		'</td></tr>',
-		'<tr><th><a href="notelist.php?ged=', $tree->tree_name_url, '">',
-		WT_I18N::translate('Notes'), '</a></th><td>', $stats->totalNotes(),
-		'</td></tr>',
-		'</table>',
-		'</div>';
-}
-echo
-	'</div>', // id=tree_stats
-	'</div>'; // id=trees
+// Number of users whose accounts are not approved by an administrator
+$unapproved = WT_DB::prepare(
+	"SELECT COUNT(*) FROM `##user_setting` WHERE setting_name='verified_by_admin' AND setting_value=0"
+)->fetchOne();
 
-$controller->addInlineJavascript('jQuery("#tree_stats").accordion({active:'.$accordion_element.', icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+// Number of users of each language
+$user_languages = WT_DB::prepare(
+	"SELECT setting_value, COUNT(*)" .
+	" FROM `##user_setting`" .
+	" WHERE setting_name = 'language'" .
+	" GROUP BY setting_value"
+)->fetchAssoc();
 
-echo
-	'<h2>', WT_I18N::translate('Recent changes'), '</h2>',
-	'<div id="recent2">'; //id=recent
-	echo
-	'<div id="changes">';
-$n=0;
-foreach (WT_Tree::GetAll() as $tree) {
-	if ($tree->tree_id==WT_GED_ID) {
-		$accordion_element=$n;
-	}
-	++$n;
-	echo
-		'<h3><span dir="auto">', $tree->tree_title_html, '</span></h3>',
-		'<div>',
-		'<table>',
-		'<tr><td>&nbsp;</td><td><span>', WT_I18N::translate('Day'), '</span></td><td><span>', WT_I18N::translate('Week'), '</span></td><td><span>', WT_I18N::translate('Month'), '</span></td></tr>',
-		'<tr><th>', WT_I18N::translate('Individuals'), '</th><td>', WT_Query_Admin::countIndiChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countIndiChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countIndiChangesMonth($tree->tree_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Families'), '</th><td>', WT_Query_Admin::countFamChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countFamChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countFamChangesMonth($tree->tree_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Sources'), '</th><td>',  WT_Query_Admin::countSourChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countSourChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countSourChangesMonth($tree->tree_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Repositories'), '</th><td>',  WT_Query_Admin::countRepoChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countRepoChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countRepoChangesMonth($tree->tree_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Media objects'), '</th><td>', WT_Query_Admin::countObjeChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countObjeChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countObjeChangesMonth($tree->tree_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Notes'), '</th><td>', WT_Query_Admin::countNoteChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countNoteChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countNoteChangesMonth($tree->tree_id), '</td></tr>',
-		'</table>',
-		'</div>';
-	}
-echo
-	'</div>', // id=changes
-	'</div>', // id=recent
-	'</div>', //id = "x"
-	'</div>'; //id = content_container
+$stats = new WT_Stats(WT_GEDCOM);
 
-$controller
-	->addInlineJavascript('jQuery("#changes").accordion({active:' . $accordion_element . ', icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});')
-	->addInlineJavascript('jQuery("#x").accordion({active:0, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }, heightStyle: "content"});')
-	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");');
+?>
+<div id="content_container" style="visibility:hidden">
+	<div id="x">
+		<h2><?php echo WT_WEBTREES, ' ', WT_VERSION; ?></h2>
+		<div id="about">
+			<p>
+				<?php echo WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this <b>webtrees</b> site.'); ?>
+			</p>
+			<p>
+				<?php echo /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support and documentation can be found at %s.', ' <a class="current" href="http://webtrees.net/">webtrees.net</a>'); ?>
+			</p>
+			<?php if (WT_USER_IS_ADMIN && $latest_version && version_compare(WT_VERSION, $latest_version)<0) { ?>
+			<p>
+				<?php echo WT_I18N::translate('A new version of webtrees is available.'); ?>
+				<a href="admin_site_upgrade.php" class="error">
+					<?php echo WT_I18N::translate('Upgrade to webtrees %s', WT_Filter::escapeHtml($latest_version)); ?>
+				</a>
+			</p>
+			<?php } ?>
+		</div>
+
+		<?php if (WT_USER_IS_ADMIN && $old_files) { ?>
+		<h2><span class="warning">', WT_I18N::translate('Old files found'), '</span></h2>
+		<div>
+			<p>
+				<?php echo WT_I18N::translate('Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them.'); ?>
+			</p>
+			<ul>
+				<?php foreach ($old_files as $file) { ?>
+				<li dir="ltr"><?php echo $path; ?></li>';
+				<?php } ?>	
+			</ul>
+		</div>
+		<?php } ?>
+
+		<h2><?php echo WT_I18N::translate('Users'); ?></h2>
+		<div id="users">
+			<table>
+				<tbody>
+					<tr>
+						<td><?php echo WT_I18N::translate('Total number of users'); ?></td>
+						<td><?php echo $total_users; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo WT_I18N::translate('Administrators'); ?></td>
+						<td><?php echo $total_administrators; ?></td>
+					</tr>
+					<tr>
+					<td colspan="2"><?php echo WT_I18N::translate('Managers'); ?></td>
+					</tr>
+					<?php foreach ($total_managers as $gedcom_title=>$n) { ?>
+					<tr>
+						<td>&nbsp;&nbsp;<?php echo WT_Filter::escapeHtml($gedcom_title); ?></td>
+						<td><?php echo $n; ?></td>
+					</tr>
+					<?php } ?>
+					<tr>
+						<td><?php echo WT_I18N::translate('Unverified by User'); ?></td>
+						<td><?php echo $unverified; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo WT_I18N::translate('Unverified by Administrator'); ?></td>
+						<td><?php echo $unapproved; ?></td>
+					</tr>
+					<tr>
+						<td colspan="2"><?php echo WT_I18N::translate('Users’ languages'); ?></td>
+					</tr>
+					<?php foreach ($user_languages as $language=>$n) { ?>
+					<tr>
+						<td>&nbsp;&nbsp;<?php echo WT_I18N::languageName($language); ?></td>
+						<td><?php echo $n; ?></td>
+					</tr>
+					<?php } ?>
+					<tr>
+						<td colspan="2"><?php echo WT_I18N::translate('Users logged in'); ?></td>
+					</tr>
+					<tr>
+						<td colspan="2"><?php echo $stats->_usersLoggedIn('list'); ?></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<h2><?php echo WT_I18N::translate('Family trees'); ?></h2>
+		<div id="trees">
+			<div id="tree_stats">
+				<?php foreach (WT_Tree::getAll() as $tree) { ?>
+				<?php $stats = new WT_Stats($tree->tree_name); ?>
+				<h3><?php echo $stats->gedcomTitle(); ?></h3>
+				<div>
+					<table>
+						<thead>
+							<tr>
+								<th><?php echo WT_I18N::translate('Records'); ?></th>
+								<th><?php echo WT_I18N::translate('Count'); ?></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th><a href="indilist.php?ged=<?php echo $tree->tree_name_url; ?>"><?php echo WT_I18N::translate('Individuals'); ?></a></th>
+								<td><?php echo $stats->totalIndividuals(); ?></td>
+							</tr>
+							<tr>
+								<th><a href="famlist.php?ged=<?php echo $tree->tree_name_url; ?>"><?php echo WT_I18N::translate('Families'); ?></a></th>
+								<td><?php echo $stats->totalFamilies(); ?></td>
+							</tr>
+							<tr>
+								<th><a href="sourcelist.php?ged=<?php echo $tree->tree_name_url; ?>"><?php echo WT_I18N::translate('Sources'); ?></a></th>
+								<td><?php echo$stats->totalSources(); ?></td>
+							</tr>
+							<tr><th><a href="repolist.php?ged=<?php echo $tree->tree_name_url; ?>"><?php echo WT_I18N::translate('Repositories'); ?></a></th>
+								<td><?php echo$stats->totalRepositories(); ?></td>
+							</tr>
+							<tr><th><a href="medialist.php?ged=<?php echo $tree->tree_name_url; ?>"><?php echo WT_I18N::translate('Media objects'); ?></a></th>
+								<td><?php echo$stats->totalMedia(); ?></td>
+							</tr>
+							<tr><th><a href="notelist.php?ged=<?php echo $tree->tree_name_url; ?>"><?php echo WT_I18N::translate('Notes'); ?></a></th>
+								<td><?php echo$stats->totalNotes(); ?></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<?php } ?>
+			</div>
+		</div>
+
+		<h2><?php echo WT_I18N::translate('Recent changes'); ?></h2>
+		<div id="recent2">
+			<div id="changes">
+				<?php foreach (WT_Tree::GetAll() as $tree) { ?>
+				<h3><span dir="auto"><?php echo $tree->tree_title_html; ?></span></h3>
+				<div>
+					<table>
+						<thead>
+							<tr>
+								<th><?php echo WT_I18N::translate('Records'); ?></th>
+								<th><?php echo WT_I18N::translate('Day'); ?></th>
+								<th><?php echo WT_I18N::translate('Week'); ?></th>
+								<th><?php echo WT_I18N::translate('Month'); ?></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th><?php echo WT_I18N::translate('Individuals'); ?></th>
+								<td><?php echo WT_Query_Admin::countIndiChangesToday($tree->tree_id); ?></td>
+								<td><?php echo WT_Query_Admin::countIndiChangesWeek($tree->tree_id); ?></td>
+								<td><?php echo WT_Query_Admin::countIndiChangesMonth($tree->tree_id); ?></td>
+							</tr>
+							<tr>
+								<th><?php echo WT_I18N::translate('Families'); ?></th>
+								<td><?php echo WT_Query_Admin::countFamChangesToday($tree->tree_id); ?></td>
+								<td><?php echo WT_Query_Admin::countFamChangesWeek($tree->tree_id); ?></td>
+								<td><?php echo WT_Query_Admin::countFamChangesMonth($tree->tree_id); ?></td>
+							</tr>
+							<tr>
+								<th><?php echo WT_I18N::translate('Sources'); ?></th>
+								<td><?php echo WT_Query_Admin::countSourChangesToday($tree->tree_id); ?></td>
+								<td><?php echo WT_Query_Admin::countSourChangesWeek($tree->tree_id); ?></td>
+								<td><?php echo WT_Query_Admin::countSourChangesMonth($tree->tree_id); ?></td>
+							</tr>
+							<tr>
+								<th><?php echo WT_I18N::translate('Repositories'); ?></th>
+								<td><?php echo WT_Query_Admin::countRepoChangesToday($tree->tree_id); ?></td>
+								<td><?php echo WT_Query_Admin::countRepoChangesWeek($tree->tree_id); ?></td>
+								<td><?php echo WT_Query_Admin::countRepoChangesMonth($tree->tree_id); ?></td>
+							</tr>
+							<tr>
+								<th><?php echo WT_I18N::translate('Media objects'); ?></th>
+								<td><?php echo WT_Query_Admin::countObjeChangesToday($tree->tree_id); ?></td>
+								<td><?php echo WT_Query_Admin::countObjeChangesWeek($tree->tree_id); ?></td>
+								<td><?php echo WT_Query_Admin::countObjeChangesMonth($tree->tree_id); ?></td>
+							</tr>
+							<tr>
+								<th><?php echo WT_I18N::translate('Notes'); ?></th>
+								<td><?php echo WT_Query_Admin::countNoteChangesToday($tree->tree_id); ?></td>
+								<td><?php echo WT_Query_Admin::countNoteChangesWeek($tree->tree_id); ?></td>
+								<td><?php echo WT_Query_Admin::countNoteChangesMonth($tree->tree_id); ?></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<?php } ?>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php
 
 // This is a list of old files and directories, from earlier versions of webtrees, that can be deleted
 // It was generated with the help of a command like this
