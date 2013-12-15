@@ -61,17 +61,7 @@ function utf8_script($string) {
 
 // Determine whether a string contains LTR or RTL characters
 function utf8_direction($string) {
-	switch (utf8_script($string)) {
-	case 'Latn':
-	case 'Cyrl':
-	case 'Grek':
-		return 'ltr';
-	case 'Arab':
-	case 'Hebr':
-		return 'rtl';
-	default:
-		return 'unknown';
-	}
+	return WT_I18N::scriptDirection(utf8_script($string));
 }
 
 function utf8_strtoupper($string) {
@@ -283,12 +273,6 @@ function utf8_wordwrap($string, $width=75, $sep="\n", $cut=false) {
 	}
 	return $out;
 }
-
-// This is a list of digits.  Note that arabic digits are displayed LTR, even in RTL text
-define('WT_UTF8_DIGITS', '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹');
-// This is a list of parentheses, which need special RTL logic.
-define('WT_UTF8_PARENTHESES1', ')(][}{><»«﴾﴿‹›“”‘’');
-define('WT_UTF8_PARENTHESES2', '()[]{}<>«»﴿﴾›‹”“’‘');
 
 // This is a list of all reversable character conversions from the UNICODE 5.1 database.
 // It excludes ambiguous (dotless i) and mixed-case (Dz) characters.

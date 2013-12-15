@@ -1,5 +1,5 @@
 <?php
-// RTL Functions
+// RTL Functions for use in the PDF/HTML reports
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2013 webtrees development team.
@@ -26,6 +26,14 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+
+// This is a list of digits.  Note that arabic digits are displayed LTR, even in RTL text
+define('WT_UTF8_DIGITS', '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹');
+
+// This is a list of parentheses, which need special RTL logic.
+define('WT_UTF8_PARENTHESES1', ')(][}{><»«﴾﴿‹›“”‘’');
+define('WT_UTF8_PARENTHESES2', '()[]{}<>«»﴿﴾›‹”“’‘');
+
 $SpecialChar = array(' ','.',',','"','\'','/','\\','|',':',';','+','&','#','@','-','=','*','%','!','?','$','<','>',"\n");
 $SpecialPar = array('(',')','[',']','{','}');
 $SpecialNum  = array('0','1','2','3','4','5','6','7','8','9');
