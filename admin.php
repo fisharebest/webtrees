@@ -164,7 +164,7 @@ $stats = new WT_Stats(WT_GEDCOM);
 					</tr>
 					<?php foreach ($user_languages as $language=>$n) { ?>
 					<tr>
-						<td>&nbsp;&nbsp;<?php echo Zend_Locale::getTranslation($language, 'language', WT_LOCALE); ?></td>
+						<td>&nbsp;&nbsp;<?php echo WT_I18N::languageName($language); ?></td>
 						<td><?php echo $n; ?></td>
 					</tr>
 					<?php } ?>
