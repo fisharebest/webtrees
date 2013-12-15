@@ -59,6 +59,7 @@ echo '</h3>';
 		<input id="pid_array" type="hidden" name="pid_array" value="none">
 		<input id="xref" type="hidden" name="xref" value=<?php echo $xref; ?>>
 		<?php
+		echo WT_Filter::getCsrf();
 
 global $tabno, $linkToID, $SEARCH_SPIDER;
 global $SHOW_AGE_DIFF, $GEDCOM;
