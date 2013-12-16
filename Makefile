@@ -1,6 +1,7 @@
 BUILD_DIR=build
 BUILD_NUMBER=$(shell git log --oneline | wc -l)
 BUILD_VERSION=$(if $(WT_RELEASE),$(BUILD_NUMBER),$(WT_VERSION)$(WT_RELEASE))
+GIT_BRANCH=$(git symbolic-ref -q HEAD || git describe --tags --exact-match)
 LANGUAGE_DIR=language
 LANGUAGE_SRC=$(shell git grep -I --name-only --fixed-strings -e WT_I18N:: -- "*.php" "*.xml")
 MO_FILES=$(patsubst %.po,%.mo,$(PO_FILES))
@@ -38,8 +39,8 @@ update: $(MO_FILES) $(CSS_RTL_FILES)
 # Create a release from this GIT branch
 ################################################################################
 build/webtrees: clean update
-	# Extract from the repository
-	git archive --prefix=$@/ master | tar -x
+	# Extract from the repository, to filter files using .gitattributes
+	git archive --prefix=$@/ $(GIT_BRANCH) | tar -x
 	# Embed the build number in the code (for DEV builds only)
 	sed -i "s/define('WT_RELEASE', '$(WT_VERSION)-dev')/define('WT_RELEASE', '$(WT_VERSION)-dev+$(BUILD_NUMBER)')/" $@/includes/session.php
 	# Add language files
