@@ -791,7 +791,11 @@ function valid_date(datefield) {
 	if (datephrase != "") {
 		datestr=datestr+" ("+datephrase;
 	}
-	datefield.value=datestr;
+	// Only update it if is has been corrected - otherwise input focus
+	// moves to the end of the field unnecessarily
+	if (datefield.value !== datestr) {
+		datefield.value=datestr;
+	}
 }
 var oldheight = 0;
 var oldwidth = 0;
