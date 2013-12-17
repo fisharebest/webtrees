@@ -88,7 +88,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$box_width=$this->box_width;
 		echo '<table>';
 		echo '<tr>';
-		echo '<td width="', ($bwidth-2), '">';
+		echo '<td width="', ($bwidth), '">';
 		$gencount = 0;
 		$numkids = 0;
 		$familycount = 0;
@@ -163,19 +163,19 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					if ($ct>1) {
 						if ($i==0) {
 							//-- adjust for the first column on left
-							$h= round(((($bheight)*$kids)/2)-1);
+							//$h= round(((($bheight)*$kids)/2)-1);
+							$h= round(((($bheight)*$kids)+8)/2);  // Assumes border = 1 and padding = 3
 							//-- adjust for other vertical columns
 							if ($kids>1) $h = ((($kids-1)*4)+$h);
 							echo '<td class="tdbot">',
-								 '<img class="tvertline" id="vline_',$chil,'" src="',$WT_IMAGES["vline"],'"  height="',$h,'" alt=""></td>';
+								 '<img class="tvertline" id="vline_',$chil,'" src="',$WT_IMAGES["vline"],'"  height="',$h-1,'" alt=""></td>';
 						} else if ($i==$ct-1) {
 							//-- adjust for the first column on left
-							$h= round(((($bheight)*$kids)/2)+10);
+							$h= round(((($bheight)*$kids)+8)/2);
 							//-- adjust for other vertical columns
 							if ($kids>1) $h = ((($kids-1)*4)+$h);
-
 							echo '<td class="tdtop">',
-								 '<img class="bvertline" id="vline_',$chil,'" src="',$WT_IMAGES["vline"],'" height="',$h,'" alt=""></td>';
+								 '<img class="bvertline" id="vline_',$chil,'" src="',$WT_IMAGES["vline"],'" height="',$h+1,'" alt=""></td>';
 						} else {
 							echo '<td style="background: url(',$WT_IMAGES["vline"],');">',
 								 '<img class="spacer" src="',$WT_IMAGES["spacer"],'" alt=""></td>';
@@ -196,11 +196,11 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		if ($person) {
 			print_pedigree_person($person);
 					echo '</td><td>',
-			 '<img class="line2" src="',$WT_IMAGES["hline"],'" width="7" height="3" alt="">';
-		} else { // blank table spaces
-			echo '<div style="width:',$bwidth+16,'px; height:',$bheight+8,'px;"></div>',
-				 '</td><td width="7">';
-		}
+			 '<img class="line2" src="',$WT_IMAGES["hline"],'" width="8" height="3" alt="">';
+		} else  if ($kids==1 ) 
+			echo '<div style="width:',$bwidth+19,'px; height:',$bheight+8,'px;"></div>',
+				 '</td><td>';
+
 		//----- Print the spouse
 		if ($count==1 ) {
 			if ($this->show_spouse) {
@@ -263,7 +263,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '<table>',
 				 '<tr>',
 				 '<td class="tdbot">',
-				 '<img class="line3 pvline"  src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
+				 '<img class="line3 pvline"  src="',$WT_IMAGES["vline"],'" height="',$lh-1,'" alt=""></td>',
 				 '<td>',
 				 '<img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
 				 '<td>';
@@ -286,7 +286,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				}
 			}
 			echo '</tr><tr>',
-				 '<td class="tdtop"><img class="pvline" src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
+				 '<td class="tdtop"><img class="pvline" src="',$WT_IMAGES["vline"],'" height="',$lh+1,'" alt=""></td>',
 				 '<td><img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
 				 '<td>';
 			//-- print the mother box
@@ -367,22 +367,5 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				}
 			}
 		}
-	}
-	/**
-	 * Javascript for pedigree side of Familybook
-	 */
-	function setupJavascript() {
-		global $bhalfheight;
-?>
-<script>
-	function sizeLines() {
-		vlines = document.getElementsByClassName("pvline");
-		for (i=0; i < vlines.length; i++) {
-			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2-1)+'px';
-		}
-	}
-</script>
-<?php
-		return $this;
 	}
 }

@@ -150,7 +150,7 @@ html[dir=rtl] #tree_stats th, html[dir=rtl] #recent th {padding:0 0 0 10px; text
 html[dir=rtl] #tree_stats td, html[dir=rtl] #recent td {padding:0 0 0 10px; text-align:left;}
 #tree_stats .ui-accordion-content, #recent2 .ui-accordion-content {padding:1em; min-height:140px;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
-#trees span, #recent2 span {text-decoration:underline;}
+#trees thead, #recent2 thead {text-decoration:underline;}
 #x h2, #x h3 {padding:0 25px;}
 
 /* SITE ACCESS */

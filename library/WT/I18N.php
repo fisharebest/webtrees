@@ -39,7 +39,7 @@ class WT_I18N {
 
 	// Initialise the translation adapter with a locale setting.
 	// If null is passed, work out which language is needed from the environment.
-	static public function init($locale=null) {
+	public static function init($locale=null) {
 		global $WT_SESSION;
 
 		// The translation libraries only work with a cache.
@@ -177,25 +177,21 @@ class WT_I18N {
 	}
 
 	// Check which languages are installed
-	static public function installed_languages() {
+	public static function installed_languages() {
 		$mo_files=glob(WT_ROOT.'language'.DIRECTORY_SEPARATOR.'*.mo');
 		$cache_key=md5(serialize($mo_files));
 
 		if (!($installed_languages=self::$cache->load($cache_key))) {
 			$installed_languages=array();
 			foreach ($mo_files as $mo_file) {
-				if (preg_match('/^(([a-z][a-z][a-z]?)(_[A-Z][A-Z])?)\.mo$/', basename($mo_file), $match)) {
-					// launchpad does not support language variants.
-					// Until it does, we cannot support languages such as sr@latin
-					// See http://zendframework.com/issues/browse/ZF-7485
-
+				if (preg_match('/^(([a-z][a-z][a-z]?)([-_][A-Z][A-Z])?([-_][A-Za-z]+)*)\.mo$/', basename($mo_file), $match)) {
 					// Sort by the transation of the base language, then the variant.
 					// e.g. English|British English, Portuguese|Brazilian Portuguese
-					$tmp1=Zend_Locale::getTranslation($match[1], 'language', $match[1]);
+					$tmp1 = WT_I18N::languageName($match[1]);
 					if ($match[1]==$match[2]) {
 						$tmp2=$tmp1;
 					} else {
-						$tmp2=Zend_Locale::getTranslation($match[2], 'language', $match[2]);
+						$tmp2 = WT_I18N::languageName($match[2]);
 					}
 					$installed_languages[$match[1]]=$tmp2.'|'.$tmp1;
 				}
@@ -221,7 +217,7 @@ class WT_I18N {
 	}
 
 	// Generate i18n markup for the <html> tag, e.g. lang="ar" dir="rtl"
-	static public function html_markup() {
+	public static function html_markup() {
 		$localeData=Zend_Locale_Data::getList(self::$locale, 'layout');
 		$dir=$localeData['characters']=='right-to-left' ? 'rtl' : 'ltr';
 		list($lang)=explode('_', self::$locale);
@@ -232,7 +228,7 @@ class WT_I18N {
 	// en: 12,345.67
 	// fr: 12 345,67
 	// de: 12.345,67
-	static public function number($n, $precision=0) {
+	public static function number($n, $precision=0) {
 		// Add "punctuation" and convert digits
 		$n=Zend_Locale_Format::toNumber($n, array('locale'=>WT_LOCALE, 'precision'=>$precision));
 		$n=self::digits($n);
@@ -240,7 +236,7 @@ class WT_I18N {
 	}
 	// Convert the digits 0-9 into the local script
 	// Used for years, etc., where we do not want thousands-separators, decimals, etc.
-	static public function digits($n) {
+	public static function digits($n) {
 		if (WT_NUMBERING_SYSTEM!='latn') {
 			return Zend_Locale_Format::convertNumerals($n, 'latn', WT_NUMBERING_SYSTEM);
 		} else {
@@ -252,7 +248,7 @@ class WT_I18N {
 	// en: 12.3%
 	// fr: 12,3 %
 	// de: 12,3%
-	static public function percentage($n, $precision=0) {
+	public static function percentage($n, $precision=0) {
 		return
 			/* I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol. */
 			WT_I18N::translate('%s%%', self::number($n*100.0, $precision));
@@ -260,7 +256,7 @@ class WT_I18N {
 
 	// echo WT_I18N::translate('Hello World!');
 	// echo WT_I18N::translate('The %s sat on the mat', 'cat');
-	static public function translate(/* var_args */) {
+	public static function translate(/* var_args */) {
 		$args=func_get_args();
 		if (WT_DEBUG_LANG) {
 			$args[0]=WT_Debug::pseudoTranslate($args[0]);
@@ -273,7 +269,7 @@ class WT_I18N {
 	// Context sensitive version of translate.
 	// echo WT_I18N::translate_c('NOMINATIVE', 'January');
 	// echo WT_I18N::translate_c('GENITIVE',   'January');
-	static public function translate_c(/* var_args */) {
+	public static function translate_c(/* var_args */) {
 		$args=func_get_args();
 		if (WT_DEBUG_LANG) {
 			$msgtxt=WT_Debug::pseudoTranslate($args[1]);
@@ -292,14 +288,14 @@ class WT_I18N {
 	// Similar to translate, but do perform "no operation" on it.
 	// This is necessary to fetch a format string (containing % characters) without
 	// performing sustitution of arguments.
-	static public function noop($string) {
+	public static function noop($string) {
 		return Zend_Registry::get('Zend_Translate')->_($string);
 	}
 
 	// echo self::plural('There is an error', 'There are errors', $num_errors);
 	// echo self::plural('There is one error', 'There are %s errors', $num_errors);
 	// echo self::plural('There is %1$d %2$s cat', 'There are %1$d %2$s cats', $num, $num, $colour);
-	static public function plural(/* var_args */) {
+	public static function plural(/* var_args */) {
 		$args=func_get_args();
 		if (WT_DEBUG_LANG) {
 			if ($args[2]==1) {
@@ -318,7 +314,7 @@ class WT_I18N {
 	// NB: The import function will have normalised this, so we don't need
 	// to worry about badly formatted strings
 	// NOTE: this function is not yet complete - eventually it will replace get_age_at_event()
-	static public function gedcom_age($string) {
+	public static function gedcom_age($string) {
 		switch ($string) {
 		case 'STILLBORN':
 			// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (stillborn)
@@ -372,7 +368,7 @@ class WT_I18N {
 	}
 
 	// Convert a number of seconds into a relative time.  e.g. 630 => "10 hours, 30 minutes ago"
-	static function time_ago($seconds) {
+	public static function time_ago($seconds) {
 		$year=365*24*60*60;
 		$month=30*24*60*60;
 		$day=24*60*60;
@@ -403,8 +399,81 @@ class WT_I18N {
 		}
 	}
 
+	// Return the endonym for a given language - as per http://cldr.unicode.org/
+	public static function languageName($language) {
+		switch (str_replace(array('_', '@'), '-', $language)) {
+		case 'af':      return 'Afrikaans';
+		case 'ar':      return 'العربية';
+		case 'bg':      return 'български';
+		case 'bs':      return 'bosanski';
+		case 'ca':      return 'català';
+		case 'cs':      return 'čeština';
+		case 'da':      return 'dansk';
+		case 'de':      return 'Deutsch';
+		case 'dv':      return 'ދިވެހިބަސް';
+		case 'el':      return 'Ελληνικά';
+		case 'en':      return 'English';
+		case 'en-AU':   return 'Australian English';
+		case 'en-GB':   return 'British English';
+		case 'en-US':   return 'U.S. English';
+		case 'es':      return 'español';
+		case 'et':      return 'eesti';
+		case 'fa':      return 'فارسی';
+		case 'fi':      return 'suomi';
+		case 'fo':      return 'føroyskt';
+		case 'fr':      return 'français';
+		case 'fr-CA':   return 'français canadien';
+		case 'gl':      return 'galego';
+		case 'haw':     return 'ʻŌlelo Hawaiʻi';
+		case 'he':      return 'עברית';
+		case 'hr':      return 'hrvatski';
+		case 'hu':      return 'magyar';
+		case 'id':      return 'Bahasa Indonesia';
+		case 'is':      return 'íslenska';
+		case 'it':      return 'italiano';
+		case 'ja':      return '日本語';
+		case 'ka':      return 'ქართული';
+		case 'ko':      return '한국어';
+		case 'lt':      return 'lietuvių';
+		case 'lv':      return 'latviešu';
+		case 'mi':      return 'Māori';
+		case 'mr':      return 'मराठी';
+		case 'ms':      return 'Bahasa Melayu';
+		case 'nb':      return 'norsk bokmål';
+		case 'ne':      return 'नेपाली';
+		case 'nl':      return 'Nederlands';
+		case 'nn':      return 'nynorsk';
+		case 'oc':      return 'occitan';
+		case 'pl':      return 'polski';
+		case 'pt':      return 'português';
+		case 'pt-BR':   return 'português do Brasil';
+		case 'ro':      return 'română';
+		case 'ru':      return 'русский';
+		case 'sk':      return 'slovenčina';
+		case 'sl':      return 'slovenščina';
+		case 'sr':      return 'Српски';
+		case 'sr-Latn': return 'srpski';
+		case 'sv':      return 'svenska';
+		case 'ta':      return 'தமிழ்';
+		case 'tr':      return 'Türkçe';
+		case 'tt':      return 'Татар';
+		case 'uk':      return 'українська';
+		case 'vi':      return 'Tiếng Việt';
+		case 'yi':      return 'ייִדיש';
+		case 'zh':      return '中文';
+		case 'zh-CN':   return '简体中文'; // Simplified Chinese
+		case 'zh-TW':   return '繁體中文'; // Traditional Chinese
+		default:
+			// Use the PHP/intl library, if it exists
+			if (class_exists('\\Locale')) {
+				return Locale::getDisplayName($language, $language);
+			}
+			return $language;
+		}
+	}
+
 	// Generate consistent I18N for datatables.js
-	static function datatablesI18N(array $lengths=null) {
+	public static function datatablesI18N(array $lengths=null) {
 		if ($lengths===null) {
 			$lengths=array(10, 20, 30, 50, 100, -1);
 		}

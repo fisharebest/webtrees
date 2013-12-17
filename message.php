@@ -122,7 +122,7 @@ case 'compose':
 	echo '<table>';
 	if ($to != 'all' && $to != 'last_6mo' && $to != 'never_logged') {
 		echo '<tr><td></td><td>', WT_I18N::translate('This message will be sent to %s', '<b>'.getUserFullName($to_user_id).'</b>'), '<br>';
-		echo /* I18N: %s is the name of a language */ WT_I18N::translate('This user prefers to receive messages in %s', Zend_Locale::getTranslation(get_user_setting($to_user_id, 'language'), 'language', WT_LOCALE)), '</td></tr>';
+		echo /* I18N: %s is the name of a language */ WT_I18N::translate('This user prefers to receive messages in %s', WT_I18N::languageName(get_user_setting($to_user_id, 'language'))), '</td></tr>';
 	}
 	if (!WT_USER_ID) {
 		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your Name:'), '</td>';

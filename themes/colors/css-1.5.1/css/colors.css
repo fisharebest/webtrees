@@ -319,7 +319,7 @@ html[dir=rtl] #descendancy_chart ul {background-position:right top;margin:0 15px
 #familybook_chart td {margin:0; padding:0;}
 #familybook_chart h2 {text-align:center;}
 #familybook_chart .line3, #familybook_chart .pvline, #familybook_chart .spacer {width: 3px}
-#familybook_chart .line4 {width: 7px}
+#familybook_chart .line4 {width: 7px; vertical-align:middle;}
 [ID^="vline"] {width:3px;}
 #familybook_chart h3 {font-size: 16px;text-align:center;}
 #relationship-page h3 {margin:20px 0 0 20px;}
@@ -530,8 +530,8 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000000;border
 .execution_stats {padding:12px;text-align:center;}
 .gchart {border:1px solid #999999;}
 .iwstyle {width:360px;}
-.line1,.line2,.line3 {vertical-align:bottom;}
-.line4 {vertical-align:middle;}
+.line1,.line2,.line3{vertical-align:middle;}
+#hourglass_chart img.line4 {vertical-align:middle;}
 .line5 {vertical-align:top;}
 .logo {text-align:center;}
 .messagebox {background:#dfeeff;border-radius:3px;}
