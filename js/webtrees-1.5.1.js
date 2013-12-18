@@ -708,25 +708,25 @@ function valid_date(datefield) {
 
 	// Shortcut for @#Dxxxxx@ 01 01 1400, etc.
 	if (datestr.match(/^(@#DHIJRI@|HIJRI)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-		datestr = "@#DHIJRI@" + RegExp.$2 + hijri_months[parseInt(RegExp.$3)-1] + RegExp.$4;
+		datestr = "@#DHIJRI@" + RegExp.$2 + hijri_months[parseInt(RegExp.$3, 10)-1] + RegExp.$4;
 	}
 	if (datestr.match(/^(@#DJALALI@|JALALI)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-		datestr = "@#DJALALI@" + RegExp.$2 + jalali_months[parseInt(RegExp.$3)-1] + RegExp.$4;
+		datestr = "@#DJALALI@" + RegExp.$2 + jalali_months[parseInt(RegExp.$3, 10)-1] + RegExp.$4;
 	}
 	if (datestr.match(/^(@#DHEBREW@|HEBREW)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-		datestr = "@#DHEBREW@" + RegExp.$2 + hebrew_months[parseInt(RegExp.$3)-1] + RegExp.$4;
+		datestr = "@#DHEBREW@" + RegExp.$2 + hebrew_months[parseInt(RegExp.$3, 10)-1] + RegExp.$4;
 	}
 	if (datestr.match(/^(@#DFRENCH R@|FRENCH)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-		datestr = "@#DFRENCH R@" + RegExp.$2 + french_months[parseInt(RegExp.$3)-1] + RegExp.$4;
+		datestr = "@#DFRENCH R@" + RegExp.$2 + french_months[parseInt(RegExp.$3, 10)-1] + RegExp.$4;
 	}
 
 	// e.g. 17.11.1860, 03/04/2005 or 1999-12-31.  Use locale settings where DMY order is ambiguous.
 	var qsearch = /^([^\d]*)(\d+)[^\d](\d+)[^\d](\d+)$/i;
 	if (qsearch.exec(datestr)) {
 		var f0=RegExp.$1;
-		var f1=parseInt(RegExp.$2);
-		var f2=parseInt(RegExp.$3);
-		var f3=parseInt(RegExp.$4);
+		var f1=parseInt(RegExp.$2, 10);
+		var f2=parseInt(RegExp.$3, 10);
+		var f3=parseInt(RegExp.$4, 10);
 		var f4=RegExp.$5;
 		var dmy='DMY';
 		if (typeof(locale_date_format)!='undefined')
