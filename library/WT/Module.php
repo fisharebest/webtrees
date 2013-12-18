@@ -18,68 +18,14 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-// Modules can optionally implement the following interfaces.
-interface WT_Module_Block {
-	public function getBlock($block_id);
-	public function loadAjax();
-	public function isUserBlock();
-	public function isGedcomBlock();
-	public function configureBlock($block_id);
-}
-
-interface WT_Module_Chart {
-	public function getChart();
-}
-
-interface WT_Module_Config {
-	public function getConfigLink();
-}
-
-interface WT_Module_Menu {
-	public function defaultMenuOrder();
-}
-
-interface WT_Module_Report {
-	public function getReportMenus();
-}
-
-interface WT_Module_Sidebar {
-	public function defaultSidebarOrder();
-	public function getSidebarContent();
-	public function getSidebarAjaxContent();
-	public function hasSidebarContent();
-}
-
-interface WT_Module_Tab {
-	public function defaultTabOrder();
-	public function getTabContent();
-	public function hasTabContent();
-	public function canLoadAjax();
-	public function getPreLoadContent();
-	public function isGrayedOut();
-
-}
-
-interface WT_Module_Theme {
-	public function getTheme();
-}
-
 abstract class WT_Module {
+	private $_title = null;
 
-	private $_title=null;
+	public function __construct() {
+		$this->_title = $this->getTitle();
+	}
 
 	public function __toString() {
-		// We need to call getTitle() frequently (e.g. uasort callback function), but
-		// this results in repeated calls to the same WT_I18N::Translate('...')
-		// Caching the result gives a measurable performance boost.
-		if (!isset($this->_title)) {
-			$this->_title=$this->getTitle();
-		}
 		return $this->_title;
 	}
 
@@ -102,7 +48,7 @@ abstract class WT_Module {
 	public function modAction($mod_action) {
 	}
 
-	static public function getActiveModules($sort=false) {
+	public static function getActiveModules($sort=false) {
 		// We call this function several times, so cache the results.
 		// Sorting is slow, so only do it when requested.
 		static $modules=null;
@@ -134,7 +80,7 @@ abstract class WT_Module {
 		return $modules;
 	}
 
-	static private function getActiveModulesByComponent($component, $ged_id, $access_level) {
+	private static function getActiveModulesByComponent($component, $ged_id, $access_level) {
 		$module_names=WT_DB::prepare(
 			"SELECT SQL_CACHE module_name".
 			" FROM `##module`".
@@ -163,7 +109,7 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all the active, authorised blocks
-	static public function getActiveBlocks($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	public static function getActiveBlocks($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $blocks=null;
 		if ($blocks===null) {
 			$blocks=self::getActiveModulesByComponent('block', $ged_id, $access_level);
@@ -172,7 +118,7 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all the active, authorised charts
-	static public function getActiveCharts($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	public static function getActiveCharts($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $charts=null;
 		if ($charts===null) {
 			$charts=self::getActiveModulesByComponent('chart', $ged_id, $access_level);
@@ -181,7 +127,7 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all the active, authorised menus
-	static public function getActiveMenus($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	public static function getActiveMenus($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $menus=null;
 		if ($menus===null) {
 			$menus=self::getActiveModulesByComponent('menu', $ged_id, $access_level);
@@ -190,7 +136,7 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all the active, authorised reports
-	static public function getActiveReports($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	public static function getActiveReports($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $reports=null;
 		if ($reports===null) {
 			$reports=self::getActiveModulesByComponent('report', $ged_id, $access_level);
@@ -199,7 +145,7 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all the active, authorised sidebars
-	static public function getActiveSidebars($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	public static function getActiveSidebars($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $sidebars=null;
 		if ($sidebars===null) {
 			$sidebars=self::getActiveModulesByComponent('sidebar', $ged_id, $access_level);
@@ -208,7 +154,7 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all the active, authorised tabs
-	static public function getActiveTabs($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	public static function getActiveTabs($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $tabs=null;
 		if ($tabs===null) {
 			$tabs=self::getActiveModulesByComponent('tab', $ged_id, $access_level);
@@ -217,7 +163,7 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all the active, authorised themes
-	static public function getActiveThemes($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	public static function getActiveThemes($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $themes=null;
 		if ($themes===null) {
 			$themes=self::getActiveModulesByComponent('theme', $ged_id, $access_level);
@@ -228,7 +174,7 @@ abstract class WT_Module {
 	// Get a list of all installed modules.
 	// During setup, new modules need status of 'enabled'
 	// In admin->modules, new modules need status of 'disabled'
-	static public function getInstalledModules($status) {
+	public static function getInstalledModules($status) {
 		$modules=array();
 		$dir=opendir(WT_ROOT.WT_MODULES_DIR);
 		while (($file=readdir($dir))!==false) {
@@ -303,7 +249,7 @@ abstract class WT_Module {
 	}
 
 	// We have a new family tree - assign default access rights to it.
-	static public function setDefaultAccess($ged_id) {
+	public static function setDefaultAccess($ged_id) {
 		foreach (self::getInstalledModules('disabled') as $module) {
 			if ($module instanceof WT_Module_Menu) {
 				WT_DB::prepare(
