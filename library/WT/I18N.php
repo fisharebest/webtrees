@@ -132,6 +132,9 @@ class WT_I18N {
 		// Load the translation file
 		self::$translation_adapter = new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);
 
+		// Deprecated - some custom modules use this to add translations
+		Zend_Registry::set('Zend_Translate', self::$translation_adapter);
+
 		// Load any local user translations
 		if (is_dir(WT_DATA_DIR.'language')) {
 			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.mo')) {
