@@ -83,10 +83,9 @@ class WT_Filter {
 	public static function expandUrls($text) {
 		return preg_replace_callback(
 			'/' . addcslashes('(?!>)' . self::URL_REGEX . '(?!</a>)', '/') . '/i',
-			create_function( // Insert soft hyphens into the replaced string
-				'$m',
-				'return "<a href=\"" . $m[0] . "\" target=\"_blank\">" . preg_replace("/\b/", "&shy;", $m[0]) . "</a>";'
-			),
+			function ($m) {
+				return '<a href="' . $m[0] . '" target="_blank">' . $m[0] . '</a>';
+			},
 			WT_Filter::escapeHtml($text)
 		);
 	}

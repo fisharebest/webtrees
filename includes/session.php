@@ -298,14 +298,43 @@ case '':
 }
 
 // Store our session data in the database.
-// Only update the session table once per minute, unless the session data has actually changed.
 session_set_save_handler(
-	create_function('', 'return true;'), // open
-	create_function('', 'return true;'), // close
-	create_function('$id', 'return WT_DB::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();'), // read
-	create_function('$id,$data', 'global $WT_REQUEST;WT_DB::prepare("INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time) VALUES (?,?,?,?,CURRENT_TIMESTAMP-SECOND(CURRENT_TIMESTAMP)) ON DUPLICATE KEY UPDATE user_id=VALUES(user_id), ip_address=VALUES(ip_address), session_data=VALUES(session_data), session_time=CURRENT_TIMESTAMP-SECOND(CURRENT_TIMESTAMP)")->execute(array($id, WT_USER_ID, $WT_REQUEST->getClientIp(), $data));return true;'), // write
-	create_function('$id', 'WT_DB::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));return true;'), // destroy
-	create_function('$maxlifetime', 'WT_DB::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));return true;') // gc
+	// open
+	function () {
+		return true;
+	},
+	// close
+	function () {
+		return true;
+	},
+	// read
+	function ($id) {
+		return WT_DB::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();
+	},
+	// write
+	function ($id, $data) use ($WT_REQUEST) {
+		// Only update the session table once per minute, unless the session data has actually changed.
+		WT_DB::prepare(
+			"INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
+			" VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP))" .
+			" ON DUPLICATE KEY UPDATE" .
+			" user_id      = VALUES(user_id)," .
+			" ip_address   = VALUES(ip_address)," .
+			" session_data = VALUES(session_data)," .
+			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
+		)->execute(array($id, WT_USER_ID, $WT_REQUEST->getClientIp(), $data));
+		return true;
+	},
+	// destroy
+	function ($id) {
+		WT_DB::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));
+		return true;
+	},
+	// gc
+	function ($maxlifetime) {
+		WT_DB::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));
+		return true;
+	}
 );
 
 // Use the Zend_Session object to start the session.
