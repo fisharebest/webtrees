@@ -155,6 +155,10 @@ class WT_Media extends WT_GedcomRecord {
 							$width  = $THUMBNAIL_WIDTH;
 							$height = round($imgsize[1] * ($width/$imgsize[0]));
 							$thumb_image = @imagecreatetruecolor($width, $height);
+							// Create a transparent background, instead of the default black one
+							@imagesavealpha($thumb_image, true);
+							@imagefill($thumb_image, 0, 0, imagecolorallocatealpha($thumb_image, 0, 0, 0, 127));
+							// Shrink the image
 							@imagecopyresampled($thumb_image, $main_image, 0, 0, 0, 0, $width, $height, $imgsize[0], $imgsize[1]);
 							switch ($imgsize['mime']) {
 							case 'image/png':  @imagepng ($thumb_image, $file); break;
