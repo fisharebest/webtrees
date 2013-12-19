@@ -30,10 +30,6 @@ if (!defined('WT_WEBTREES')) {
 // This is a list of digits.  Note that arabic digits are displayed LTR, even in RTL text
 define('WT_UTF8_DIGITS', '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹');
 
-// This is a list of parentheses, which need special RTL logic.
-define('WT_UTF8_PARENTHESES1', ')(][}{><»«﴾﴿‹›“”‘’');
-define('WT_UTF8_PARENTHESES2', '()[]{}<>«»﴿﴾›‹”“’‘');
-
 $SpecialChar = array(' ','.',',','"','\'','/','\\','|',':',';','+','&','#','@','-','=','*','%','!','?','$','<','>',"\n");
 $SpecialPar = array('(',')','[',']','{','}');
 $SpecialNum  = array('0','1','2','3','4','5','6','7','8','9');
@@ -1045,51 +1041,6 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 	$result .= $trailingBreaks; // Get rid of any waiting <br>
 
 	return;
-}
-
-/*
- * Function to reverse RTL text for proper appearance on charts.
- *
- * GoogleChart and the GD library don't handle RTL text properly.  They assume that all text is LTR.
- * This function reverses the input text so that it will appear properly when rendered by GoogleChart
- * and by the GD library (the Circle Diagram).
- *
- * Note 1: Numbers must always be rendered LTR, even when the rest of the text is RTL.
- * Note 2: The visual direction of paired characters such as parentheses, brackets, directional
- *         quotation marks, etc. must be reversed so that the appearance of the RTL text is preserved.
- */
-function reverseText($text) {
-	$text = strip_tags(html_entity_decode($text,ENT_COMPAT,'UTF-8'));
-	$text = str_replace(array('&lrm;', '&rlm;', WT_UTF8_LRM, WT_UTF8_RLM), '', $text);
-	$textLanguage = WT_I18N::textScript($text);
-	if ($textLanguage!='Hebr' && $textLanguage!='Arab') return $text;
-
-	$reversedText = '';
-	$numbers = '';
-	while ($text!='') {
-		$charLen = 1;
-		$letter = substr($text, 0, 1);
-		if ((ord($letter) & 0xE0) == 0xC0) $charLen = 2; // 2-byte sequence
-		if ((ord($letter) & 0xF0) == 0xE0) $charLen = 3; // 3-byte sequence
-		if ((ord($letter) & 0xF8) == 0xF0) $charLen = 4; // 4-byte sequence
-
-		$letter = substr($text, 0, $charLen);
-		$text = substr($text, $charLen);
-		if (strpos(WT_UTF8_DIGITS, $letter)!==false) {
-			$numbers .= $letter; // accumulate numbers in LTR mode
-		} else {
-			$reversedText = $numbers.$reversedText; // emit any waiting LTR numbers now
-			$numbers = '';
-			if (strpos(WT_UTF8_PARENTHESES1, $letter)!==false) {
-				$reversedText = substr(WT_UTF8_PARENTHESES2, strpos(WT_UTF8_PARENTHESES1, $letter), strlen($letter)).$reversedText;
-			} else {
-				$reversedText = $letter.$reversedText;
-			}
-		}
-	}
-
-	$reversedText = $numbers.$reversedText; // emit any waiting LTR numbers now
-	return $reversedText;
 }
 
 function utf8_wordwrap($string, $width=75, $sep="\n", $cut=false) {
