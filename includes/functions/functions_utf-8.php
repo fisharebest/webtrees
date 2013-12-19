@@ -27,6 +27,9 @@ if (!defined('WT_WEBTREES')) {
 define('WT_UTF8_PARENTHESES1', ')(][}{><»«﴾﴿‹›“”‘’');
 define('WT_UTF8_PARENTHESES2', '()[]{}<>«»﴿﴾›‹”“’‘');
 
+// This is a list of digits.  Note that arabic digits are displayed LTR, even in RTL text
+define('WT_UTF8_DIGITS', '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹');
+
 function utf8_strtoupper($string) {
 	global $ALPHABET_lower, $ALPHABET_upper; // Language-specific conversions, e.g. Turkish dotless i
 

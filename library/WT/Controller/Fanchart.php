@@ -70,7 +70,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 	 * @return string $text output string
 	 */
 	public function split_align_text($data, $maxlen) {
-		global $RTLOrd;
+		$RTLOrd = array(215,216,217,218,219);
 
 		$lines = explode("\n", $data);
 		// more than 1 line : recursive calls

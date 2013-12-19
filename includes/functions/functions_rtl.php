@@ -27,9 +27,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// This is a list of digits.  Note that arabic digits are displayed LTR, even in RTL text
-define('WT_UTF8_DIGITS', '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹');
-
 $SpecialChar = array(' ','.',',','"','\'','/','\\','|',':',';','+','&','#','@','-','=','*','%','!','?','$','<','>',"\n");
 $SpecialPar = array('(',')','[',']','{','}');
 $SpecialNum  = array('0','1','2','3','4','5','6','7','8','9');
