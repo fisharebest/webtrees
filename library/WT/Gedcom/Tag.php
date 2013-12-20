@@ -811,6 +811,7 @@ class WT_Gedcom_Tag {
 		case '_URL':   return /* I18N: gedcom tag _URL   */ WT_I18N::translate('Web URL');
 		case '_WEIG':  return /* I18N: gedcom tag _WEIG  */ WT_I18N::translate('Weight');
 		case '_WITN':  return /* I18N: gedcom tag _WITN  */ WT_I18N::translate('Witness');
+		case '_WT_OBJE_SORT':  return /* I18N: gedcom tag _WT_OBJE_SORT  */ WT_I18N::translate('Re-order media');
 		case '_YART':  return /* I18N: gedcom tag _YART  */ WT_I18N::translate('Yahrzeit');
 		// Brit milah applies only to males, no need for male/female translations
 		case '__BRTM_CHIL': return WT_I18N::translate  ('Brit milah of a son');
