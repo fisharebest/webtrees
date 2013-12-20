@@ -29,8 +29,6 @@
 define('WT_SCRIPT_NAME', 'help_text.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Ajax();
-
 $help = WT_Filter::get('help');
 switch ($help) {
 	//////////////////////////////////////////////////////////////////////////////
@@ -1500,8 +1498,7 @@ default:
 	}
 	break;
 }
-
-$controller->pageHeader();
-
-echo '<span class="helpheader">', $title, '</span>';
-echo '<div class="helpcontent">', $text,'</div>';
+// This file is called by a getJSON call so return the data
+// in correct format
+header('Content-Type: application/json');
+echo json_encode(array('title'=>$title,'content'=>$text));
