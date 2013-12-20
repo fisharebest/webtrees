@@ -34,21 +34,30 @@ var assist_window_specs='width=900,height=800,left=70,top=70,resizable=1,scrollb
 var gmap_window_specs='width=650,height=600,left=200,top=150,resizable=1,scrollbars=1'; // googlemap module place editing
 var fam_nav_specs='width=300,height=600,left=817,top=150,resizable=1,scrollbars=1'; // media_0_inverselink.php
 
-// TODO: This function loads help_text.php twice.  It should only load it once.
-function helpDialog(which, mod) {
-	url='help_text.php?help='+which+'&mod='+mod;
-	dialog=jQuery('<div></div>')
-		.load(url+' .helpcontent')
+function modalNotes(title, content) {
+	jQuery('<div />', {
+		title: title,
+		html: content
+	})
 		.dialog({
 			modal: true,
 			width: 500,
-			closeText: ""
+			closeText: "",
+			open: function () {
+				// Close the dialog when we click outside it.
+				var dialog = this;
+		        jQuery('.ui-widget-overlay').on('click', function () {
+					jQuery(dialog).dialog('close');
+				});
+			}
 		});
-	jQuery(".ui-widget-overlay").on("click", function () {
-		jQuery("div:ui-dialog:visible").dialog("close");
-	});
-	jQuery('.ui-dialog-title').load(url+' .helpheader');
 	return false;
+}
+
+function helpDialog(which, mod) {
+	jQuery.getJSON('help_text.php?help=' + which + '&mod=' + mod, function (json) {
+		modalNotes(json.title, json.content);
+	});
 }
 
 // Create a modal dialog, fetching the contents from a URL
@@ -56,41 +65,22 @@ function modalDialog(url, title) {
 	jQuery(document).ajaxComplete(function() {
 		jQuery('.ui-dialog').before('<div class="ui-widget-overlay" />');
 	});
-	dialog=jQuery('<div title="'+title+'"></div>')
+	jQuery('<div />', {
+		title: title
+	})
 		.load(url)
 		.dialog({
 			modal: false,
 			width: 700,
 			closeText: "",
-			close: function(event, ui) {
+			close: function (event, ui) {
 				jQuery(this).remove();
 				jQuery('.ui-widget-overlay').remove();
 			}
 		});
-	// Close the window when we click outside it.
-	jQuery(".ui-widget-overlay").on("click", function () {
-		jQuery("div:ui-dialog:visible").dialog("close");
-		jQuery(this).remove();
-	});
 	return false;
 }
 
-// Create a modal dialog to display notes
-function modalNotes(content, title) {
-	dialog=jQuery('<div title="'+title+'"></div>')
-		.html(content)
-		.dialog({
-			modal: true,
-			width: 500,
-			closeText: "",
-			close: function(event, ui) { jQuery(this).remove(); }
-		});
-	// Close the window when we click outside it.
-	jQuery(".ui-widget-overlay").on("click", function () {
-		jQuery("div:ui-dialog:visible").dialog("close");
-	});
-	return false;
-}
 
 // For a dialog containing a form, submit the form via AJAX
 // (to save the data), then reload the page (to display it).
