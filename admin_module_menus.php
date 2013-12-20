@@ -58,7 +58,7 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 		)->execute(array($order, $module_name));
 		$module->order=$order; // Make the new order take effect immediately
 	}
-	uasort($modules, create_function('$x,$y', 'return $x->order > $y->order;'));
+	uasort($modules, function($x,$y) { return $x->order - $y->order; });
 }
 
 ?>

@@ -664,7 +664,7 @@ class WT_Soundex {
 		}
 
 		// Initialize
-		$name_script = utf8_script($name);
+		$name_script = WT_I18N::textScript($name);
 		if ($name_script == 'Hebr' || $name_script == 'Arab') $noVowels = true;
 		else $noVowels = false;
 		$lastPos = strlen($name) - 1;

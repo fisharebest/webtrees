@@ -256,7 +256,7 @@ class WT_Family extends WT_GedcomRecord {
 				);
 			}
 			foreach ($husb_names as $n=>$husb_name) {
-				$husb_names[$n]['script']=utf8_script($husb_name['full']);
+				$husb_names[$n]['script']=WT_I18N::textScript($husb_name['full']);
 			}
 			if ($this->wife) {
 				$wife_names=$this->wife->getAllNames();
@@ -270,7 +270,7 @@ class WT_Family extends WT_GedcomRecord {
 				);
 			}
 			foreach ($wife_names as $n=>$wife_name) {
-				$wife_names[$n]['script']=utf8_script($wife_name['full']);
+				$wife_names[$n]['script']=WT_I18N::textScript($wife_name['full']);
 			}
 			// Add the matched names first
 			foreach ($husb_names as $husb_name) {

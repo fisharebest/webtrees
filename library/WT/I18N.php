@@ -31,11 +31,20 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_I18N {
-	static public  $locale='';
-	static private $dir='';
-	static public  $collation;
-	static public  $list_separator;
-	static private $cache=null;
+	// All characters for a given script - for identifying text and text-direction.
+	const WT_UTF8_ARABIC_CHARACTERS = '؆؇؈؉؊؋؍؎؏ؘؙؚؐؑؒؓؔؕؖؗ؞ءآأؤإئابةتثجحخدذرزسشصضطظعغػؼؽؾؿفقكلمنهوىيٖٜٗ٘ٙٚٛٝٞ٪٫٬٭ٮٯٱٲٳٴٵٶٷٸٹٺٻټٽپٿڀځڂڃڄڅچڇڈډڊڋڌڍڎڏڐڑڒړڔڕږڗژڙښڛڜڝڞڟڠڡڢڣڤڥڦڧڨکڪګڬڭڮگڰڱڲڳڴڵڶڷڸڹںڻڼڽھڿۀہۂۃۄۅۆۇۈۉۊۋیۍێۏېۑےۓ۔ەۖۗۘۙۚۛۜ۞ۣ۟۠ۡۢۤۥۦۧۨ۩۪ۭ۫۬ۮۯ۰۱۲۳۴۵۶۷۸۹ۺۻۼ۽۾ۿݐݑݒݓݔݕݖݗݘݙݚݛݜݝݞݟݠݡݢݣݤݥݦݧݨݩݪݫݬݭݮݯݰݱݲݳݴݵݶݷݸݹݺݻݼݽݾݿﭐﭑﭒﭓﭔﭕﭖﭗﭘﭙﭚﭛﭜﭝﭞﭟﭠﭡﭢﭣﭤﭥﭦﭧﭨﭩﭪﭫﭬﭭﭮﭯﭰﭱﭲﭳﭴﭵﭶﭷﭸﭹﭺﭻﭼﭽﭾﭿﮀﮁﮂﮃﮄﮅﮆﮇﮈﮉﮊﮋﮌﮍﮎﮏﮐﮑﮒﮓﮔﮕﮖﮗﮘﮙﮚﮛﮜﮝﮞﮟﮠﮡﮢﮣﮤﮥﮦﮧﮨﮩﮪﮫﮬﮭﮮﮯﮰﮱﯓﯔﯕﯖﯗﯘﯙﯚﯛﯜﯝﯞﯟﯠﯡﯢﯣﯤﯥﯦﯧﯨﯩﯪﯫﯬﯭﯮﯯﯰﯱﯲﯳﯴﯵﯶﯷﯸﯹﯺﯻﯼﯽﯾﯿﰀﰁﰂﰃﰄﰅﰆﰇﰈﰉﰊﰋﰌﰍﰎﰏﰐﰑﰒﰓﰔﰕﰖﰗﰘﰙﰚﰛﰜﰝﰞﰟﰠﰡﰢﰣﰤﰥﰦﰧﰨﰩﰪﰫﰬﰭﰮﰯﰰﰱﰲﰳﰴﰵﰶﰷﰸﰹﰺﰻﰼﰽﰾﰿﱀﱁﱂﱃﱄﱅﱆﱇﱈﱉﱊﱋﱌﱍﱎﱏﱐﱑﱒﱓﱔﱕﱖﱗﱘﱙﱚﱛﱜﱝﱞﱟﱠﱡﱢﱣﱤﱥﱦﱧﱨﱩﱪﱫﱬﱭﱮﱯﱰﱱﱲﱳﱴﱵﱶﱷﱸﱹﱺﱻﱼﱽﱾﱿﲀﲁﲂﲃﲄﲅﲆﲇﲈﲉﲊﲋﲌﲍﲎﲏﲐﲑﲒﲓﲔﲕﲖﲗﲘﲙﲚﲛﲜﲝﲞﲟﲠﲡﲢﲣﲤﲥﲦﲧﲨﲩﲪﲫﲬﲭﲮﲯﲰﲱﲲﲳﲴﲵﲶﲷﲸﲹﲺﲻﲼﲽﲾﲿﳀﳁﳂﳃﳄﳅﳆﳇﳈﳉﳊﳋﳌﳍﳎﳏﳐﳑﳒﳓﳔﳕﳖﳗﳘﳙﳚﳛﳜﳝﳞﳟﳠﳡﳢﳣﳤﳥﳦﳧﳨﳩﳪﳫﳬﳭﳮﳯﳰﳱﳲﳳﳴﳵﳶﳷﳸﳹﳺﳻﳼﳽﳾﳿﴀﴁﴂﴃﴄﴅﴆﴇﴈﴉﴊﴋﴌﴍﴎﴏﴐﴑﴒﴓﴔﴕﴖﴗﴘﴙﴚﴛﴜﴝﴞﴟﴠﴡﴢﴣﴤﴥﴦﴧﴨﴩﴪﴫﴬﴭﴮﴯﴰﴱﴲﴳﴴﴵﴶﴷﴸﴹﴺﴻﴼﴽﵐﵑﵒﵓﵔﵕﵖﵗﵘﵙﵚﵛﵜﵝﵞﵟﵠﵡﵢﵣﵤﵥﵦﵧﵨﵩﵪﵫﵬﵭﵮﵯﵰﵱﵲﵳﵴﵵﵶﵷﵸﵹﵺﵻﵼﵽﵾﵿﶀﶁﶂﶃﶄﶅﶆﶇﶈﶉﶊﶋﶌﶍﶎﶏﶒﶓﶔﶕﶖﶗﶘﶙﶚﶛﶜﶝﶞﶟﶠﶡﶢﶣﶤﶥﶦﶧﶨﶩﶪﶫﶬﶭﶮﶯﶰﶱﶲﶳﶴﶵﶶﶷﶸﶹﶺﶻﶼﶽﶾﶿﷀﷁﷂﷃﷄﷅﷆﷇﷰﷱﷲﷳﷴﷵﷶﷷﷸﷹﷺﷻ﷼ﹰﹱﹲﹳﹴﹶﹷﹸﹹﹺﹻﹼﹽﹾﹿﺀﺁﺂﺃﺄﺅﺆﺇﺈﺉﺊﺋﺌﺍﺎﺏﺐﺑﺒﺓﺔﺕﺖﺗﺘﺙﺚﺛﺜﺝﺞﺟﺠﺡﺢﺣﺤﺥﺦﺧﺨﺩﺪﺫﺬﺭﺮﺯﺰﺱﺲﺳﺴﺵﺶﺷﺸﺹﺺﺻﺼﺽﺾﺿﻀﻁﻂﻃﻄﻅﻆﻇﻈﻉﻊﻋﻌﻍﻎﻏﻐﻑﻒﻓﻔﻕﻖﻗﻘﻙﻚﻛﻜﻝﻞﻟﻠﻡﻢﻣﻤﻥﻦﻧﻨﻩﻪﻫﻬﻭﻮﻯﻰﻱﻲﻳﻴﻵﻶﻷﻸﻹﻺﻻﻼ';
+	const WT_UTF8_CYRILLIC_CHARACTERS = 'ЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяѐёђѓєѕіїјљњћќѝўџѠѡѢѣѤѥѦѧѨѩѪѫѬѭѮѯѰѱѲѳѴѵѶѷѸѹѺѻѼѽѾѿҀҁ҂҃҄҇҈҉ҊҋҌҍҎҏҐґҒғҔҕҖҗҘҙҚқҜҝҞҟҠҡҢңҤҥҦҧҨҩҪҫҬҭҮүҰұҲҳҴҵҶҷҸҹҺһҼҽҾҿӀӁӂӃӄӅӆӇӈӉӊӋӌӍӎӏӐӑӒӓӔӕӖӗӘәӚӛӜӝӞӟӠӡӢӣӤӥӦӧӨөӪӫӬӭӮӯӰӱӲӳӴӵӶӷӸӹӺӻӼӽӾӿԀԁԂԃԄԅԆԇԈԉԊԋԌԍԎԏԐԑԒԓԔԕԖԗԘԙԚԛԜԝԞԟԠԡԢԣԤԥᴫᵸⷠⷡⷢⷣⷤⷥⷦⷧⷨⷩⷪⷫⷬⷭⷮⷯⷰⷱⷲⷳⷴⷵⷶⷷⷸⷹⷺⷻⷼⷽⷾⷿꙀꙁꙂꙃꙄꙅꙆꙇꙈꙉꙊꙋꙌꙍꙎꙏꙐꙑꙒꙓꙔꙕꙖꙗꙘꙙꙚꙛꙜꙝꙞꙟꙢꙣꙤꙥꙦꙧꙨꙩꙪꙫꙬꙭꙮ꙯꙰꙱꙲꙳꙼꙽꙾ꙿꚀꚁꚂꚃꚄꚅꚆꚇꚈꚉꚊꚋꚌꚍꚎꚏꚐꚑꚒꚓꚔꚕꚖꚗ';
+	const WT_UTF8_GREEK_CHARACTERS = 'ͰͱͲͳ͵Ͷͷͺͻͼͽ΄ΆΈΉΊΌΎΏΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩΪΫάέήίΰαβγδεζηθικλμνξοπρςστυφχψωϊϋόύώϏϐϑϒϓϔϕϖϗϘϙϚϛϜϝϞϟϠϡϰϱϲϳϴϵ϶ϷϸϹϺϻϼϽϾϿᴦᴧᴨᴩᴪᵝᵞᵟᵠᵡᵦᵧᵨᵩᵪᶿἀἁἂἃἄἅἆἇἈἉἊἋἌἍἎἏἐἑἒἓἔἕἘἙἚἛἜἝἠἡἢἣἤἥἦἧἨἩἪἫἬἭἮἯἰἱἲἳἴἵἶἷἸἹἺἻἼἽἾἿὀὁὂὃὄὅὈὉὊὋὌὍὐὑὒὓὔὕὖὗὙὛὝὟὠὡὢὣὤὥὦὧὨὩὪὫὬὭὮὯὰάὲέὴήὶίὸόὺύὼώᾀᾁᾂᾃᾄᾅᾆᾇᾈᾉᾊᾋᾌᾍᾎᾏᾐᾑᾒᾓᾔᾕᾖᾗᾘᾙᾚᾛᾜᾝᾞᾟᾠᾡᾢᾣᾤᾥᾦᾧᾨᾩᾪᾫᾬᾭᾮᾯᾰᾱᾲᾳᾴᾶᾷᾸᾹᾺΆᾼ᾽ι᾿῀῁ῂῃῄῆῇῈΈῊΉῌ῍῎῏ῐῑῒΐῖῗῘῙῚΊ῝῞῟ῠῡῢΰῤῥῦῧῨῩῪΎῬ῭΅`ῲῳῴῶῷῸΌῺΏῼ´῾Ω';
+	const WT_UTF8_HEBREW_CHARACTERS = '־ֿ׀ׁׂ׃ׅׄ׆ׇאבגדהוזחטיךכלםמןנסעףפץצקרשתװױײ׳״יִﬞײַﬠﬡﬢﬣﬤﬥﬦﬧﬨ﬩שׁשׂשּׁשּׂאַאָאּבּגּדּהּוּזּטּיּךּכּלּמּנּסּףּפּצּקּרּשּתּוֹבֿכֿפֿﭏ';
+	const WT_UTF8_LATIN_CHARACTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+
+	public  static $locale;
+	public  static $collation;
+	public  static $list_separator;
+	private static $dir;
+	private static $cache;
+	private static $numbering_system;
+	private static $translation_adapter;
 
 	// Initialise the translation adapter with a locale setting.
 	// If null is passed, work out which language is needed from the environment.
@@ -119,27 +128,27 @@ class WT_I18N {
 				}
 			}
 		}
+		
 		// Load the translation file
-		$translate=new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);
+		self::$translation_adapter = new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);
 
-		// Make the locale and translation adapter available to the rest of the Zend Framework
-		Zend_Registry::set('Zend_Locale',    $locale);
-		Zend_Registry::set('Zend_Translate', $translate);
+		// Deprecated - some custom modules use this to add translations
+		Zend_Registry::set('Zend_Translate', self::$translation_adapter);
 
 		// Load any local user translations
 		if (is_dir(WT_DATA_DIR.'language')) {
 			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.mo')) {
-				$translate->addTranslation(
+				self::$translation_adapter->addTranslation(
 					new Zend_Translate('gettext', WT_DATA_DIR.'language/'.$locale.'.mo', $locale)
 				);
 			}
 			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.php')) {
-				$translate->addTranslation(
+				self::$translation_adapter->addTranslation(
 					new Zend_Translate('array', WT_DATA_DIR.'language/'.$locale.'.php', $locale)
 				);
 			}
 			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.csv')) {
-				$translate->addTranslation(
+				self::$translation_adapter->addTranslation(
 					new Zend_Translate('csv', WT_DATA_DIR.'language/'.$locale.'.csv', $locale)
 				);
 			}
@@ -161,8 +170,7 @@ class WT_I18N {
 		list(, $WEEK_START)=explode('=', $WEEK_START);
 
 		global $TEXT_DIRECTION;
-		$localeData=Zend_Locale_Data::getList($locale, 'layout');
-		$TEXT_DIRECTION=$localeData['characters']=='right-to-left' ? 'rtl' : 'ltr';
+		$TEXT_DIRECTION = WT_I18N::scriptDirection(WT_I18N::languageScript($locale));
 
 		self::$locale=$locale;
 		self::$dir=$TEXT_DIRECTION;
@@ -172,6 +180,9 @@ class WT_I18N {
 
 		// I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 		self::$collation=WT_I18N::translate('utf8_unicode_ci');
+
+		// Non-latin numbers may require non-latin digits
+		self::$numbering_system = Zend_Locale_Data::getContent($locale, 'defaultnumberingsystem');
 
 		return $locale;
 	}
@@ -220,7 +231,7 @@ class WT_I18N {
 	public static function html_markup() {
 		$localeData=Zend_Locale_Data::getList(self::$locale, 'layout');
 		$dir=$localeData['characters']=='right-to-left' ? 'rtl' : 'ltr';
-		list($lang)=explode('_', self::$locale);
+		list($lang) = preg_split('/[-_@]/', self::$locale);
 		return 'lang="'.$lang.'" dir="'.$dir.'"';
 	}
 
@@ -234,11 +245,12 @@ class WT_I18N {
 		$n=self::digits($n);
 		return $n;
 	}
+
 	// Convert the digits 0-9 into the local script
 	// Used for years, etc., where we do not want thousands-separators, decimals, etc.
 	public static function digits($n) {
-		if (WT_NUMBERING_SYSTEM!='latn') {
-			return Zend_Locale_Format::convertNumerals($n, 'latn', WT_NUMBERING_SYSTEM);
+		if (self::$numbering_system != 'latn') {
+			return Zend_Locale_Format::convertNumerals($n, 'latn', self::$numbering_system);
 		} else {
 			return $n;
 		}
@@ -261,7 +273,7 @@ class WT_I18N {
 		if (WT_DEBUG_LANG) {
 			$args[0]=WT_Debug::pseudoTranslate($args[0]);
 		} else {
-			$args[0]=Zend_Registry::get('Zend_Translate')->_($args[0]);
+			$args[0]=self::$translation_adapter->_($args[0]);
 		}
 		return call_user_func_array('sprintf', $args);
 	}
@@ -275,7 +287,7 @@ class WT_I18N {
 			$msgtxt=WT_Debug::pseudoTranslate($args[1]);
 		} else {
 			$msgid=$args[0]."\x04".$args[1];
-			$msgtxt=Zend_Registry::get('Zend_Translate')->_($msgid);
+			$msgtxt=self::$translation_adapter->_($msgid);
 			if ($msgtxt==$msgid) {
 				$msgtxt=$args[1];
 			}
@@ -289,7 +301,7 @@ class WT_I18N {
 	// This is necessary to fetch a format string (containing % characters) without
 	// performing sustitution of arguments.
 	public static function noop($string) {
-		return Zend_Registry::get('Zend_Translate')->_($string);
+		return self::$translation_adapter->_($string);
 	}
 
 	// echo self::plural('There is an error', 'There are errors', $num_errors);
@@ -304,7 +316,7 @@ class WT_I18N {
 				$string=WT_Debug::pseudoTranslate($args[1]);
 			}
 		} else {
-			$string=Zend_Registry::get('Zend_Translate')->plural($args[0], $args[1], $args[2]);
+			$string=self::$translation_adapter->plural($args[0], $args[1], $args[2]);
 		}
 		array_splice($args, 0, 3, array($string));
 		return call_user_func_array('sprintf', $args);
@@ -472,6 +484,125 @@ class WT_I18N {
 		}
 	}
 
+	// Return the script used by a given language
+	// The PHP/intl library does not provde this information.
+	public static function languageScript($language) {
+		switch (str_replace(array('_', '@'), '-', $language)) {
+		case 'af':      return 'Latn';
+		case 'ar':      return 'Arab';
+		case 'bg':      return 'Cyrl';
+		case 'bs':      return 'Latn';
+		case 'ca':      return 'Latn';
+		case 'cs':      return 'Latn';
+		case 'da':      return 'Latn';
+		case 'de':      return 'Latn';
+		case 'dv':      return 'Thaa';
+		case 'el':      return 'Grek';
+		case 'en':      return 'Latn';
+		case 'en-AU':   return 'Latn';
+		case 'en-GB':   return 'Latn';
+		case 'en-US':   return 'Latn';
+		case 'es':      return 'Latn';
+		case 'et':      return 'Latn';
+		case 'fa':      return 'Arab';
+		case 'fi':      return 'Latn';
+		case 'fo':      return 'Latn';
+		case 'fr':      return 'Latn';
+		case 'fr-CA':   return 'Latn';
+		case 'gl':      return 'Latn';
+		case 'haw':     return 'Latn';
+		case 'he':      return 'Hebr';
+		case 'hr':      return 'Latn';
+		case 'hu':      return 'Latn';
+		case 'id':      return 'Latn';
+		case 'is':      return 'Latn';
+		case 'it':      return 'Latn';
+		case 'ja':      return 'Kana';
+		case 'ka':      return 'Geor';
+		case 'ko':      return 'Kore';
+		case 'lt':      return 'Latn';
+		case 'lv':      return 'Latn';
+		case 'mi':      return 'Latn';
+		case 'mr':      return 'Mymr';
+		case 'ms':      return 'Latn';
+		case 'nb':      return 'Latn';
+		case 'ne':      return 'Deva';
+		case 'nl':      return 'Latn';
+		case 'nn':      return 'Latn';
+		case 'oc':      return 'Latn';
+		case 'pl':      return 'Latn';
+		case 'pt':      return 'Latn';
+		case 'pt-BR':   return 'Latn';
+		case 'ro':      return 'Latn';
+		case 'ru':      return 'Cyrl';
+		case 'sk':      return 'Latn';
+		case 'sl':      return 'Latn';
+		case 'sr':      return 'Cyrl';
+		case 'sr-Latn': return 'Latn';
+		case 'sv':      return 'Latn';
+		case 'ta':      return 'Taml';
+		case 'tr':      return 'Latn';
+		case 'tt':      return 'Cyrl';
+		case 'uk':      return 'Cyrl';
+		case 'vi':      return 'Latn';
+		case 'yi':      return 'Hebr';
+		case 'zh':      return 'Hans';
+		case 'zh-CN':   return 'Hans';
+		case 'zh-TW':   return 'Hant';
+		default:
+			return 'Latn';
+		}
+	}
+
+	// Identify the script used for a piece of text
+	public static function textScript($string) {
+		$string = strip_tags($string);                               // otherwise HTML tags show up as latin
+		$string = html_entity_decode($string, ENT_QUOTES, 'UTF-8');  // otherwise HTML entities show up as latin
+		$string = str_replace(array('@N.N.', '@P.N.'), '', $string); // otherwise unknown names show up as latin
+		$pos = 0;
+		$strlen = strlen($string);
+		while ($pos < $strlen) {
+			$byte = ord($string[$pos]);
+			if (($byte & 0xE0) == 0xC0) {
+				$chrlen = 2;
+				$chr = $string[$pos] . $string[$pos + 1];
+			} elseif (($byte & 0xF0) == 0xE0) {
+				$chrlen = 3;
+				$chr = $string[$pos] . $string[$pos + 1] . $string[$pos + 2];
+			} else {
+				$chrlen = 1;
+				$chr = $string[$pos];
+			}
+			if (strpos(WT_I18N::WT_UTF8_LATIN_CHARACTERS, $chr) !== false) {
+				return 'Latn';
+			} elseif (strpos(WT_I18N::WT_UTF8_CYRILLIC_CHARACTERS, $chr) !== false) {
+				return 'Cyrl';
+			} elseif (strpos(WT_I18N::WT_UTF8_HEBREW_CHARACTERS, $chr) !== false) {
+				return 'Hebr';
+			} elseif (strpos(WT_I18N::WT_UTF8_GREEK_CHARACTERS, $chr) !== false) {
+				return 'Grek';
+			} elseif (strpos(WT_I18N::WT_UTF8_ARABIC_CHARACTERS, $chr) !== false) {
+				return 'Arab';
+			}
+			$pos += $chrlen;
+		}
+		return 'Latn';
+	}
+
+	// Return the direction (ltr or rtl) for a given script
+	// The PHP/intl library does not provde this information.
+	public static function scriptDirection($script) {
+		switch ($script) {
+		case 'Arab':
+		case 'Hebr':
+		case 'Mong':
+		case 'Thaa':
+			return 'rtl';
+		default:
+			return 'ltr';
+		}
+	}
+
 	// Generate consistent I18N for datatables.js
 	public static function datatablesI18N(array $lengths=null) {
 		if ($lengths===null) {
@@ -489,10 +620,9 @@ class WT_I18N {
 		$length_menu=/* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', $length_menu);
 
 		// Which symbol is used for separating numbers into groups
-		$symbols = Zend_Locale_Data::getList(WT_LOCALE, 'symbols');
+		$symbols = Zend_Locale_Data::getList(self::$locale, 'symbols');
 		// Which digits are used for numbers
-		$numbering_system=Zend_Locale_Data::getContent(WT_LOCALE, 'defaultnumberingsystem');
-		$digits=Zend_Locale_Data::getContent(WT_LOCALE, 'numberingsystem', $numbering_system);
+		$digits = Zend_Locale_Data::getContent(self::$locale, 'numberingsystem', self::$numbering_system);
 
 		if ($digits=='0123456789') {
 			$callback='';
