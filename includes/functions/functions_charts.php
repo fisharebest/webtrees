@@ -246,8 +246,8 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 function print_family_children(WT_Family $family, $childid = "", $sosa = 0, $label="", $personcount="1") {
 	global $bwidth, $bheight, $pbwidth, $pbheight, $cbheight, $cbwidth, $show_cousins, $WT_IMAGES, $TEXT_DIRECTION;
 
-	$children = $family->getFacts('CHIL');
-	$numchil=$family->getNumberOfChildren();
+	$children = $family->getChildren();
+	$numchil = count($children);
 
 	echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"2\"><tr>";
 	if ($sosa>0) echo "<td></td>";
@@ -274,8 +274,7 @@ function print_family_children(WT_Family $family, $childid = "", $sosa = 0, $lab
 
 	$nchi=1;
 	if ($children) {
-		foreach ($children as $chil) {
-			$child = $chil->getTarget();
+		foreach ($children as $child) {
 			echo '<tr>';
 			if ($sosa != 0) {
 				if ($child->getXref() == $childid) {
@@ -286,9 +285,9 @@ function print_family_children(WT_Family $family, $childid = "", $sosa = 0, $lab
 					print_sosa_number($label.($nchi++).".");
 				}
 			}
-			if ($chil->isNew()) {
+			if ($child->isNew()) {
 				echo '<td valign="middle" class="new">';
-			} elseif ($chil->isOld()) {
+			} elseif ($child->isOld()) {
 				echo '<td valign="middle" class="old">';
 			} else {
 				echo '<td valign="middle">';
