@@ -605,7 +605,7 @@ function shiftlinks() {
 	// Unlink records indicated by radio button =========
 	if ($exist_links) {
 		foreach (explode(',', $exist_links) as $remLinkId) {
-			$indi = WT_Individual::getInstance($remLinkId);
+			$indi = WT_GedcomRecord::getInstance($remLinkId);
 			$indi->removeLinks($mediaid, $update_CHAN!='no_change');
 		}
 	}
@@ -614,7 +614,7 @@ function shiftlinks() {
 		// array_unique() because parseAddLinks() may includes the gid field, even
 		// when it is also in the list.
 		foreach (array_unique(explode(',', $more_links)) as $addLinkId) {
-			$indi = WT_Individual::getInstance($addLinkId);
+			$indi = WT_GedcomRecord::getInstance($addLinkId);
 			$indi->createFact('1 OBJE @' . $mediaid . '@', $update_CHAN!='no_change');
 		}
 	}
