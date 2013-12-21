@@ -808,7 +808,7 @@ class WT_Gedcom_Tag {
 		case '_TODO':  return /* I18N: gedcom tag _TODO  */ WT_I18N::translate('Research task');
 		case '_TYPE':  return /* I18N: gedcom tag _TYPE  */ WT_I18N::translate('Media type');
 		case '_UID':   return /* I18N: gedcom tag _UID   */ WT_I18N::translate('Globally unique identifier');
-		case '_URL':   return /* I18N: gedcom tag _URL   */ WT_I18N::translate('Web URL');
+		case '_URL':   return /* I18N: gedcom tag _URL   */ WT_I18N::translate('URL');
 		case '_WEIG':  return /* I18N: gedcom tag _WEIG  */ WT_I18N::translate('Weight');
 		case '_WITN':  return /* I18N: gedcom tag _WITN  */ WT_I18N::translate('Witness');
 		case '_WT_OBJE_SORT':  return /* I18N: gedcom tag _WT_OBJE_SORT  */ WT_I18N::translate('Re-order media');
