@@ -14,6 +14,8 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
@@ -609,7 +611,7 @@ msgstr ""
 
 #: help_text.php:998
 msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
-msgstr "Ett <b>Nej'</b>innebär att registrerade användare kan se detaljerna på alla levande personer.<br><br>Ett <b>Ja</b> betyder att användare bara kan se den privata informationen för levande personer de är släkt med."
+msgstr "Ett <b>Nej</b> innebär att registrerade användare kan se detaljerna på alla levande personer.<br><br>Ett <b>Ja</b> betyder att användare bara kan se den privata informationen för levande personer de är släkt med."
 
 #: message.php:118
 msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
@@ -942,7 +944,7 @@ msgstr "Flik som visar källor länkande till en person."
 
 #: help_text.php:1465
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
-msgstr "En användare kommer inte att kunna logga in förrän både “e-post verifierad” och “godkänd av administratör” är valda."
+msgstr "En användare kommer inte att kunna logga in förrän både ”e-post verifierad” och ”godkänd av administratör” är valda."
 
 #: help_text.php:1016
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
@@ -1661,7 +1663,7 @@ msgstr "Efter att släktträdet skapats kommer du att kunna ladda upp eller impo
 
 #: login.php:232
 msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
-msgstr "Efter att du loggat in, välj länken “Mitt konto” under menyn “Min Sida”, fyll i lösenordsfälten för att ändra ditt lösenord."
+msgstr "Efter att du loggat in, välj länken ”Mitt konto” under menyn ”Min Sida”, fyll i lösenordsfälten för att ändra ditt lösenord."
 
 #. I18N: gedcom tag AGE
 #: autocomplete.php:114 includes/functions/functions_print.php:747
@@ -1820,7 +1822,7 @@ msgstr "Alla källfakta"
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Tillåt andra moduler att redigera text med en “WYSIWYG”-editor, istället för att använda HTML-koder."
+msgstr "Tillåt andra moduler att redigera text med en ”WYSIWYG”-editor, istället för att använda HTML-koder."
 
 #: admin_users.php:195 admin_users.php:391
 msgid "Allow this user to edit his account information"
@@ -1862,7 +1864,7 @@ msgstr "Amerikanska Samoa"
 #. I18N: Description of the “Album” module
 #: modules_v3/lightbox/module.php:39
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Alternativ till “Media”-flik och en förbättrad bildvisare."
+msgstr "Alternativ till ”Media”-flik och en förbättrad bildvisare."
 
 #. I18N: Description of the “Charts” module
 #: modules_v3/charts/module.php:37
@@ -2088,7 +2090,7 @@ msgstr "Är du säker på att du vill ta bort denna berättelse?"
 #: library/WT/Controller/Source.php:63
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "Vill du verkligen ta bort “%s”?"
+msgstr "Vill du verkligen ta bort ”%s”?"
 
 #: modules_v3/lightbox/module.php:203
 msgid "Are you sure you want to remove links to this media object?"
@@ -3726,7 +3728,7 @@ msgstr "Klicka här för att öppna eller stänga sidopanelen"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:105
 msgid "Click name to add individual to add links list."
-msgstr "Klicka på namn för att lägga till person till “Lägg till Länklista”."
+msgstr "Klicka på namn för att lägga till person till ”Lägg till Länklista”."
 
 #: modules_v3/faq/module.php:279
 msgid "Click on a title to go straight to it, or scroll down to read them all"
@@ -3747,7 +3749,7 @@ msgstr "Klicka på denna länk kommer att visa en lista av alla personer och fam
 
 #: help_text.php:1130
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
-msgstr "Klickande på “+”-ikon öppnar GEDFact delad antecknings guide fönster.<br>Mer specifik hjälp finns här.<br><br>När nu klickar på “Spara”-knappen, delad antecknings ID klistras hit."
+msgstr "Klickande på ”+”-ikon öppnar GEDFact delad antecknings guide fönster.<br>Mer specifik hjälp finns här.<br><br>När nu klickar på ”Spara”-knappen, delad antecknings ID klistras hit."
 
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:84
@@ -3962,7 +3964,7 @@ msgstr "Bolag"
 
 #: modules_v3/batch_update/plugins/name_format.php:35
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "Rätta NAME-dataposter av form “John/DOE/” eller “John /DOE”, som produceras av äldre släktprogram."
+msgstr "Rätta NAME-dataposter av form ”John/DOE/” eller ”John /DOE”, som produceras av äldre släktprogram."
 
 #: library/WT/Stats.php:3803
 msgid "Costa Rica"
@@ -5214,7 +5216,7 @@ msgstr "(mormon) Försegla inte; icke auktoriserad"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 #: modules_v3/batch_update/admin_batch_update.php:342
 msgid "Do not update the “last change” record"
-msgstr "Uppdatera inte dataposten “senaste ändringen”"
+msgstr "Uppdatera inte dataposten ”senaste ändringen”"
 
 #: library/WT/Gedcom/Tag.php:886
 msgid "Document"
@@ -5285,7 +5287,7 @@ msgstr ""
 
 #: help_text.php:1166
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Varje källa registrerar specifika händelser, i allmänhet för ett visst datumintervall och för en plats jurisdiktion. Till exempel en folkräkning registrerar folkräkning händelser och kyrkans register registrerar födelse, giftermål och död händelser.<br><br>Markera de händelser som registreras av denna källa från listan över händelser som tillhandahålls. Datum bör anges i datumintervall format såsom <i>FROM 1900 TO 1910</i>. Plats jurisdiktion är namnet på den lägsta behörigheten som omfattar alla lägre nivå platser som nämns i denna källa. Exempelvis skulle “Oneida, Idaho, USA” användas som en källa jurisdiktion plats för händelser som inträffar i de olika städerna inom Oneida County. “Idaho, USA” skulle vara källa behörighet om de händelser som registrerats ägde rum inte bara i Oneida County, utan även i andra län i Idaho."
+msgstr "Varje källa registrerar specifika händelser, i allmänhet för ett visst datumintervall och för en plats jurisdiktion. Till exempel en folkräkning registrerar folkräkning händelser och kyrkans register registrerar födelse, giftermål och död händelser.<br><br>Markera de händelser som registreras av denna källa från listan över händelser som tillhandahålls. Datum bör anges i datumintervall format såsom <i>FROM 1900 TO 1910</i>. Plats jurisdiktion är namnet på den lägsta behörigheten som omfattar alla lägre nivå platser som nämns i denna källa. Exempelvis skulle ”Oneida, Idaho, USA” användas som en källa jurisdiktion plats för händelser som inträffar i de olika städerna inom Oneida County. ”Idaho, USA” skulle vara källa behörighet om de händelser som registrerats ägde rum inte bara i Oneida County, utan även i andra län i Idaho."
 
 #: help_text.php:1331
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
@@ -5755,7 +5757,7 @@ msgstr "Exakt text"
 #: famlist.php:176 indilist.php:176
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Uteslut personer med “%s” som vigselnamn"
+msgstr "Uteslut personer med ”%s” som vigselnamn"
 
 #: admin_media.php:575
 msgid "Exclude subfolders"
@@ -6287,12 +6289,12 @@ msgstr "Filnamn"
 #: addmedia.php:171 addmedia.php:310 admin_media_upload.php:112
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "Filnamn tillåts inte innehålla tecknet “%s”."
+msgstr "Filnamn tillåts inte innehålla tecknet ”%s”."
 
 #: addmedia.php:176 addmedia.php:315 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "Filnamn tillåts inte filändelsen “%s”."
+msgstr "Filnamn tillåts inte filändelsen ”%s”."
 
 #: admin.php:84
 msgid "Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them."
@@ -7339,7 +7341,7 @@ msgstr "Om denna ruta är ikryssad, kommer denna användare att kunna redigera d
 
 #: help_text.php:614
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
-msgstr "Om denna person har någon annan händelse än Död, Begravning, eller Kremering och de har hänt tidigare än detta antal år, anses han vara “levande”. Barns födelsedatum anses vara en sådan händelse för detta ändamål."
+msgstr "Om denna person har någon annan händelse än Död, Begravning, eller Kremering och de har hänt tidigare än detta antal år, anses han vara ”levande”. Barns födelsedatum anses vara en sådan händelse för detta ändamål."
 
 #: help_text.php:652
 msgid "If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate."
@@ -7445,11 +7447,11 @@ msgstr "Importera släktträd"
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "I många kulturer är det vanligt att ha namn skrivna med deras traditionella tecken och att det finns en version skrivna med västerländska (Latin) bokstäver, så att man kan skriva eller uttala namnet t.ex. på engelska.<br><br>Om du vill använda ett icke västerländsk teckenspråk så som hebreiska, grekiska, ryska, kinesiska, eller arabiska till att skriva i vanliga namnfält då kan detta fält användas till att skriva in samma namn med västerlänska tecken. Båda versionerna av namnet kommer då att synas i listor och diagram.<br><br>Fastän detta fält har rubriken “Latinska tecken”, är det inte begränsad till dessa. Det kan t.ex. användas för japanska namn, som har olika skrivsätt."
+msgstr "I många kulturer är det vanligt att ha namn skrivna med deras traditionella tecken och att det finns en version skrivna med västerländska (Latin) bokstäver, så att man kan skriva eller uttala namnet t.ex. på engelska.<br><br>Om du vill använda ett icke västerländsk teckenspråk så som hebreiska, grekiska, ryska, kinesiska, eller arabiska till att skriva i vanliga namnfält då kan detta fält användas till att skriva in samma namn med västerlänska tecken. Båda versionerna av namnet kommer då att synas i listor och diagram.<br><br>Fastän detta fält har rubriken ”Latinska tecken”, är det inte begränsad till dessa. Det kan t.ex. användas för japanska namn, som har olika skrivsätt."
 
 #: help_text.php:393
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "I många kulturer är det vanligt att ha namn skrivna med deras traditionella tecken och att det finns en version skrivna med västerländska (Latin) bokstäver, så att man kan skriva eller uttala namnet t.ex. på engelska.<br><br>Om du vill använda ett icke västerländsk teckenspråk så som hebreiska, grekiska, ryska, kinesiska, eller arabiska till att skriva i vanliga namnfält då kan detta fält användas till att skriva in samma namn med västerlänska tecken. Båda versionerna av namnet kommer då att synas i listor och diagram.<br><br>Fastän detta fält har rubriken “Hebreiska”, så kan man fritt välja vilket teckenspråk som helst."
+msgstr "I många kulturer är det vanligt att ha namn skrivna med deras traditionella tecken och att det finns en version skrivna med västerländska (Latin) bokstäver, så att man kan skriva eller uttala namnet t.ex. på engelska.<br><br>Om du vill använda ett icke västerländsk teckenspråk så som hebreiska, grekiska, ryska, kinesiska, eller arabiska till att skriva i vanliga namnfält då kan detta fält användas till att skriva in samma namn med västerlänska tecken. Båda versionerna av namnet kommer då att synas i listor och diagram.<br><br>Fastän detta fält har rubriken ”Hebreiska”, så kan man fritt välja vilket teckenspråk som helst."
 
 #: help_text.php:450
 msgid "In some calendars, days start at midnight.  In other calendars, days start at sunset.  The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
@@ -7482,7 +7484,7 @@ msgstr "Inkludera helt matchade platser "
 #: famlist.php:178 indilist.php:178
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Inkludera personer med “%s” som vigselnamn"
+msgstr "Inkludera personer med ”%s” som vigselnamn"
 
 #: help_text.php:1259 modules_v3/clippings/module.php:195
 #: modules_v3/clippings/module.php:577
@@ -9102,7 +9104,7 @@ msgstr "Militärtjänst"
 
 #: admin_trees_config.php:736 help_text.php:475
 msgid "Min. no. of occurrences to be a “common surname”"
-msgstr "Minimi antal förekomst för att bli “vanligt efternamn”"
+msgstr "Minimi antal förekomst för att bli ”vanligt efternamn”"
 
 #: modules_v3/googlemap/help_text.php:32
 msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
@@ -9474,11 +9476,11 @@ msgstr "Privatpersoners namn"
 
 #: admin_trees_config.php:744 help_text.php:465
 msgid "Names to add to common surnames (comma separated)"
-msgstr "Namn att lägga till “vanliga efternamn” (åtskilda med komma)"
+msgstr "Namn att lägga till ”vanliga efternamn” (åtskilda med komma)"
 
 #: admin_trees_config.php:752 help_text.php:470
 msgid "Names to remove from common surnames (comma separated)"
-msgstr "Namn att ta bort från “vanliga efternamn” (åtskilda med komma)"
+msgstr "Namn att ta bort från ”vanliga efternamn” (åtskilda med komma)"
 
 #. I18N: gedcom tag _NAMS
 #: library/WT/Gedcom/Tag.php:787
@@ -9938,8 +9940,8 @@ msgstr ""
 #, php-format
 msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
 msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-msgstr[0] "Anm.: Definitionen “levande” (ifall ingen döds- eller begravningstid är känd) slutar %d år efter födelse eller uppskattad födelse."
-msgstr[1] "Anm.: Definitionen “levande” (ifall ingen döds- eller begravningstid är känd) slutar %d år efter födelse eller uppskattad födelse."
+msgstr[0] "Anm.: Definitionen ”levande” (ifall ingen döds- eller begravningstid är känd) slutar %d år efter födelse eller uppskattad födelse."
+msgstr[1] "Anm.: Definitionen ”levande” (ifall ingen döds- eller begravningstid är känd) slutar %d år efter födelse eller uppskattad födelse."
 
 #. I18N: Name of a module
 #: admin.php:204 admin.php:236 library/WT/Controller/Search.php:574
@@ -10314,12 +10316,12 @@ msgstr "PHP blockad på grund av filändelsen"
 #: setup.php:135
 #, php-format
 msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "PHP-filändelse “%1$s” är inaktiv. Utan den kan följande egenskaper inte fungera: %2$s. Be din server-administratör aktivera den."
+msgstr "PHP-filändelse ”%1$s” är inaktiv. Utan den kan följande egenskaper inte fungera: %2$s. Be din server-administratör aktivera den."
 
 #: setup.php:123
 #, php-format
 msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
-msgstr "PHP-filändelse “%1$s” är inaktiv. Du kan inte installera webtrees förrän den är aktiv. Be din server-administratör aktivera den."
+msgstr "PHP-filändelse ”%1$s” är inaktiv. Du kan inte installera webtrees förrän den är aktiv. Be din server-administratör aktivera den."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:98
@@ -10334,7 +10336,7 @@ msgstr "PHP-information"
 #: setup.php:144
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "PHP-inställning “%1$s” är inaktiv. Utan den kan följande egenskaper inte fungera: %2$s. Be din server-administratör aktivera den."
+msgstr "PHP-inställning ”%1$s” är inaktiv. Utan den kan följande egenskaper inte fungera: %2$s. Be din server-administratör aktivera den."
 
 #: admin_site_config.php:76 help_text.php:626
 msgid "PHP time limit"
@@ -10452,7 +10454,7 @@ msgstr "Lösenorden stämmer inte överens."
 
 #: help_text.php:1285
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
-msgstr "Lösenord bör vara minst 6 tecken långa och de är skifteslägeskänsliga, så att “hemlig” icke är samma som “HEMLIG”."
+msgstr "Lösenord bör vara minst 6 tecken långa och de är skifteslägeskänsliga, så att ”hemlig” icke är samma som ”HEMLIG”."
 
 #: admin_users.php:338 edituser.php:113
 msgid "Passwords must contain at least 6 characters."
@@ -10786,7 +10788,7 @@ msgstr "Orter i %s"
 
 #: help_text.php:330
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "Orter skall anges i enlighet med normerna inom släktforskning. I släktforskning bör orter registreras med den mest specifika informationen först och sedan de minst specifika sedan genom att använda kommatecken för att skilja de olika informationsnivåerna. Ortens information nivå bör motsvara förvaltning eller kyrka där viktiga uppgifterposter för den orten finns.<br>Till exempel skulle en plats som Salt Lake City skrivas som “Salt Lake City, Salt Lake, Utah, USA”.<br>Låt oss undersöka varje del av denna plats. Den första delen, “Salt Lake City”, är den stad eller kommun där händelsen inträffade. I vissa länder kan det finnas kommuner eller stadsdelar inne i en stad som är viktigt att notera. I så fall bör de komma före staden. Nästa del, “Salt Lake”, är länet. “Utah” är staten, och “USA” är landet. Det är viktigt att notera varje ort eftersom genealogiska register förs av regeringarna i varje nivå.<br>Om en nivå av platsen är okänd, bör du lämna ett mellanrum mellan kommatecken. Antag, i exemplet ovan, att du inte vet länet för Salt Lake City. Du borde ange den så här: “Salt Lake City, , Utah, USA”. Antag att du bara vet att en person är född i Utah. Du skulle ange informationen så här: “, , Utah, USA”.<br>Du kan använda <b>Sök plats</b> länken för att hjälpa dig hitta platser som redan finns i databasen."
+msgstr "Orter skall anges i enlighet med normerna inom släktforskning. I släktforskning bör orter registreras med den mest specifika informationen först och sedan de minst specifika sedan genom att använda kommatecken för att skilja de olika informationsnivåerna. Ortens information nivå bör motsvara förvaltning eller kyrka där viktiga uppgifterposter för den orten finns.<br>Till exempel skulle en plats som Salt Lake City skrivas som ”Salt Lake City, Salt Lake, Utah, USA”.<br>Låt oss unders??ka varje del av denna plats. Den första delen, ”Salt Lake City”, är den stad eller kommun där händelsen inträffade. I vissa länder kan det finnas kommuner eller stadsdelar inne i en stad som är viktigt att notera. I så fall bör de komma före staden. Nästa del, ”Salt Lake”, är länet. ”Utah” är staten, och ”USA” är landet. Det är viktigt att notera varje ort eftersom genealogiska register förs av regeringarna i varje nivå.<br>Om en nivå av platsen är okänd, bör du lämna ett mellanrum mellan kommatecken. Antag, i exemplet ovan, att du inte vet länet för Salt Lake City. Du borde ange den så här: ”Salt Lake City, , Utah, USA”. Antag att du bara vet att en person är född i Utah. Du skulle ange informationen så här: ”, , Utah, USA”.<br>Du kan använda <b>Sök plats</b> länken för att hjälpa dig hitta platser som redan finns i databasen."
 
 #: modules_v3/random_media/module.php:130 themes/_administration/header.php:31
 #: themes/clouds/header.php:34 themes/colors/header.php:37
@@ -11062,7 +11064,7 @@ msgstr "Fråga"
 
 #: help_text.php:510 admin_trees_config.php:1137
 msgid "Quick family facts"
-msgstr "Snabb familjefakta"
+msgstr "Snabba familjefakta"
 
 #: admin_trees_config.php:1100 help_text.php:588
 msgid "Quick individual facts"
@@ -11519,7 +11521,7 @@ msgstr "Forskningsuppgifter är speciella händelser som läggs till personer i 
 
 #: modules_v3/todo/help_text.php:36
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
-msgstr "Forskningsuppgifter lagras med den anpassade GEDCOM-taggen “_TODO”. Andra genealogiprogram kanske inte känner igen den här taggen."
+msgstr "Forskningsuppgifter lagras med den anpassade GEDCOM-taggen ”_TODO”. Andra genealogiprogram kanske inte känner igen den här taggen."
 
 #: includes/functions/functions_print_lists.php:97
 #: includes/functions/functions_print_lists.php:511 medialist.php:153
@@ -11815,7 +11817,7 @@ msgstr "Skriv in nyckelord:"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:57
 msgid "Search for individuals to add to Add Links list."
-msgstr "Sök efter personer att lägga till “Lägg till länklista”."
+msgstr "Sök efter personer att lägga till ”Lägg till länklista”."
 
 #: modules_v3/googlemap/places_edit.php:256
 msgid "Search globally"
@@ -12302,7 +12304,7 @@ msgstr "Visa"
 
 #: admin_site_config.php:166 help_text.php:885
 msgid "Show acceptable use agreement on “Request new user account” page"
-msgstr "Visa godtagbara användaravtal på sidan “Begär nytt användarkonto”"
+msgstr "Visa godtagbara användaravtal på sidan ”Begär nytt användarkonto”"
 
 #: help_text.php:870
 msgid "Show age of parents next to child’s birthdate"
@@ -12652,12 +12654,12 @@ msgstr "Visa för gäster"
 #: includes/functions/functions_print_lists.php:96
 #: includes/functions/functions_print_lists.php:505
 msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
-msgstr "Visa “löv” för par eller personer. Dessa är personer som lever men har inga barn registereade i databasen."
+msgstr "Visa ”löv” för par eller personer. Dessa är personer som lever men har inga barn registereade i databasen."
 
 #: includes/functions/functions_print_lists.php:95
 #: includes/functions/functions_print_lists.php:504
 msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
-msgstr "Visa “rötter” för par eller personer. Dessa personer kan också kallas “patriarker”. Dessa är personer som inte har föräldrar registrerade i databasen."
+msgstr "Visa ”rötter” för par eller personer. Dessa personer kan också kallas ”patriarker”. Dessa är personer som inte har föräldrar registrerade i databasen."
 
 #. I18N: %s are placeholders for numbers
 #: library/WT/I18N.php:470 library/WT/I18N.php:471
@@ -13355,17 +13357,17 @@ msgstr "Administratören har informerats. Så snart han har gett dig rättighete
 #: action.php:57
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "Redigering till “%s” har blivit accepterad."
+msgstr "Redigering till ”%s” har blivit accepterad."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:220
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "Ändringar till “%s” har icke blivit godkända."
+msgstr "Ändringar till ”%s” har icke blivit godkända."
 
 #: modules_v3/clippings/module.php:142
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
-msgstr "Urklippskorgen tillåter dig att göra extrakt (“urklipp”) från detta släktträd och packa ihop dem till en enda nedladdning  och importera den till ditt egna släktforsningsprogram. Den nedladdningsbara filen är inspelad i GEDCOM-format.<br><ul><li>Hur gör man urklipp?<br>Detta är väldigt enkelt. När du ser ett klickbart namn (individ, familj eller källa) kan du gå till detaljsidan för namnet. Där kommer du att se valet <b>Lägg till i urklippskorg</b>. När du klickar på länken kommer du att erbjudas flera alternativ att ladda ner.</li><li>Hur laddar man ner?<br>När du har saker i urklippskorgen, kan du ladda ner dem genom att klicka på <b> Ladda ner nu</b> länken. Följ instruktionerna och länkarna.</li></ul>"
+msgstr "Urklippskorgen tillåter dig att göra extrakt (”urklipp”) från detta släktträd och packa ihop dem till en enda nedladdning  och importera den till ditt egna släktforsningsprogram. Den nedladdningsbara filen är inspelad i GEDCOM-format.<br><ul><li>Hur gör man urklipp?<br>Detta är väldigt enkelt. När du ser ett klickbart namn (individ, familj eller källa) kan du gå till detaljsidan för namnet. Där kommer du att se valet <b>Lägg till i urklippskorg</b>. När du klickar på länken kommer du att erbjudas flera alternativ att ladda ner.</li><li>Hur laddar man ner?<br>När du har saker i urklippskorgen, kan du ladda ner dem genom att klicka på <b> Ladda ner nu</b> länken. Följ instruktionerna och länkarna.</li></ul>"
 
 #: help_text.php:1305
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
@@ -13396,7 +13398,7 @@ msgstr "Denna persons detaljer är privata."
 #: action.php:141
 #, php-format
 msgid "The family “%s” has been deleted, as it only has one member."
-msgstr "Familjen “%s” har tagits bort, då den bara har en medlem."
+msgstr "Familjen ”%s” har tagits bort, då den bara har en medlem."
 
 #: addmedia.php:190 admin_media_upload.php:131
 #, php-format
@@ -13440,7 +13442,7 @@ msgstr "Filen %s laddades upp."
 #: mediaviewer.php:107
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "Filen “%s” finns inte."
+msgstr "Filen ”%s” finns inte."
 
 #: admin_site_upgrade.php:464
 #, php-format
@@ -13518,14 +13520,14 @@ msgstr "Person som kan kontaktas gällande släktuppgifter i denna sajt."
 
 #: help_text.php:564
 msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
-msgstr "Tidslängd efter födelse som kan ställas in i Privat konfigurationsfliks alternativ  “Åldersgräns då person antas vara död”."
+msgstr "Tidslängd efter födelse som kan ställas in i Privat konfigurationsfliks alternativ  ”Åldersgräns då person antas vara död”."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:149 action.php:153 library/WT/Controller/GedcomRecord.php:36
 #: library/WT/Controller/GedcomRecord.php:44
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "Länken från “%1$s” till “%2$s” har raderats."
+msgstr "Länken från ”%1$s” till ”%2$s” har raderats."
 
 #: mediafirewall.php:35
 msgid "The media file was not found in this family tree"
@@ -13533,7 +13535,7 @@ msgstr "Media filen hittades inte i detta släktträd"
 
 #: help_text.php:1425
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr "Media filen du laddar upp kan ha, och troligen borde ha, annat namn på servern än det har på din lokala dator. Detta beror på att ofta har lokala filnamnet betydelse för dig, men är mycket mindre meningsfullt för andra som besöker den här webbplatsen. Tänk också att du och någon annan båda försöker ladda upp olika filer som kallas “granny.jpg“.<br><br>I det här fältet anger du det nya namnet på den fil du överför. Det namn du anger här kommer också att användas för att namnge miniatyrbilder, som kan laddas upp separat eller genereras automatiskt. Du behöver inte ange filnamnstillägget (jpg, gif, pdf, doc, etc.)<br><br>Lämna detta fält tomt för att behålla det ursprungliga namnet på filen du har laddat upp från din lokala dator."
+msgstr "Media filen du laddar upp kan ha, och troligen borde ha, annat namn på servern än det har på din lokala dator. Detta beror på att ofta har lokala filnamnet betydelse för dig, men är mycket mindre meningsfullt för andra som besöker den här webbplatsen. Tänk också att du och någon annan båda försöker ladda upp olika filer som kallas ”granny.jpg”.<br><br>I det här fältet anger du det nya namnet på den fil du överför. Det namn du anger här kommer också att användas för att namnge miniatyrbilder, som kan laddas upp separat eller genereras automatiskt. Du behöver inte ange filnamnstillägget (jpg, gif, pdf, doc, etc.)<br><br>Lämna detta fält tomt för att behålla det ursprungliga namnet på filen du har laddat upp från din lokala dator."
 
 #: setup.php:160
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13566,7 +13568,7 @@ msgstr "Lösenorden stämmer inte överens."
 
 #: setup.php:355
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-msgstr "Man kan välja om man vill ha prefix, men det rekommenderas. Genom att ge tabellnamn ett unikt prefix, kan du låta flera olika program använda samma databas. “wt_” är föreslaget, men det kan ändras."
+msgstr "Man kan välja om man vill ha prefix, men det rekommenderas. Genom att ge tabellnamn ett unikt prefix, kan du låta flera olika program använda samma databas. ”wt_” är föreslaget, men det kan ändras."
 
 #: modules_v3/batch_update/plugins/search_replace.php:82
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13650,7 +13652,7 @@ msgstr "Temarullgardinsväljare för temaändringar"
 
 #: help_text.php:978
 msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
-msgstr "Tema kan väljas vid tre nivåer: användar-, GEDCOM- eller sajt-nivå. Användares inställning har högre prioritet än GEDCOMs inställning, som i sin tur är högre än sajt-inställningen. Om “standard tema” väljs vid användarnivå, ges den tema för den nuvarande GEDCOM. Om “standard tema” väljs vid GEDCOM-nivå, ges den tema för sajten."
+msgstr "Tema kan väljas vid tre nivåer: användar-, GEDCOM- eller sajt-nivå. Användares inställning har högre prioritet än GEDCOMs inställning, som i sin tur är högre än sajt-inställningen. Om ”standard tema” väljs vid användarnivå, ges den tema för den nuvarande GEDCOM. Om ”standard tema” väljs vid GEDCOM-nivå, ges den tema för sajten."
 
 #: modules_v3/extra_info/module.php:61
 #: modules_v3/personal_facts/module.php:122
@@ -13953,7 +13955,7 @@ msgstr "Detta är en lista av GEDCOM fakta som dina användare kan lägga till e
 #. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:755
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Detta är namnet på SMTP-server. “localhost” betyder att e-post kör på samma dator som din webb-server."
+msgstr "Detta är namnet på SMTP-server. ”localhost” betyder att e-post kör på samma dator som din webb-server."
 
 #: help_text.php:476
 msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the Home Page."
@@ -14055,7 +14057,7 @@ msgstr "Det bör vara minst sex tecken. Det är skiftlägeskänsligt."
 #. I18N: Help text for the “Sender name” site configuration setting
 #: help_text.php:745
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Detta namn används i “Från”-fältet när automatiska mejl skickas från denna server."
+msgstr "Detta namn används i ”Från”-fältet när automatiska mejl skickas från denna server."
 
 #: note.php:73
 msgid "This note does not exist or you do not have permission to view it."
@@ -14261,7 +14263,7 @@ msgstr "Denna inställning används endast när du läser eller skriver GEDCOM-f
 
 #: help_text.php:456
 msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Detta skall vara en med komma eller mellanrum separerad faktalista, som utöver Födelse och Död, skall synas i rutor så som på Antavlan. Denna lista kräver att du använder faktataggar som definierats i GEDCOM 5.5.1. Om du t.ex. vill att yrket skall visas i rutan skall du lägga till “OCCU” i detta fält."
+msgstr "Detta skall vara en med komma eller mellanrum separerad faktalista, som utöver Födelse och Död, skall synas i rutor så som på Antavlan. Denna lista kräver att du använder faktataggar som definierats i GEDCOM 5.5.1. Om du t.ex. vill att yrket skall visas i rutan skall du lägga till ”OCCU” i detta fält."
 
 #: admin_site_upgrade.php:41
 msgid "This site is being upgraded.  Try again in a few minutes."
@@ -14463,7 +14465,7 @@ msgstr ""
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "För att skapa nya forskningsuppgifter, måste du först lägga “forskningsuppgift” till listan av fakta och händelser i släktträdsinställningarna."
+msgstr "För att skapa nya forskningsuppgifter, måste du först lägga ”forskningsuppgift” till listan av fakta och händelser i släktträdsinställningarna."
 
 #: admin_media.php:451 library/WT/Controller/Media.php:69
 #: library/WT/Controller/Media.php:149 modules_v3/lightbox/module.php:189
@@ -15083,7 +15085,7 @@ msgstr "Användarnamn eller e-postadress"
 
 #: help_text.php:1477
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Användarnamn är skiftlägesokänsliga och ignorerar accentuerade bokstäver, så att “chloe”, “chloë” och “Chloe”  anses vara samma."
+msgstr "Användarnamn är skiftlägesokänsliga och ignorerar accentuerade bokstäver, så att ”chloe”, ”chloë” och ”Chloe” anses vara samma."
 
 #: help_text.php:1479
 #, php-format
@@ -15418,7 +15420,7 @@ msgstr "När en ny källa läggs till on-line i <b>webtrees</b>, så skapas en n
 
 #: help_text.php:1459
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "När en användare registrerar ett konto sänds ett e-postmeddelande till användarens adress med en verifieringslänk. När användaren klickar på länken vet vi att e-postadressen är korrekt och “E-post verifierad” markeras automatiskt."
+msgstr "När en användare registrerar ett konto sänds ett e-postmeddelande till användarens adress med en verifieringslänk. När användaren klickar på länken vet vi att e-postadressen är korrekt och ”E-post verifierad” markeras automatiskt."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:44
 msgid "When adding a Link, the ID field cannot be empty."
@@ -15434,7 +15436,7 @@ msgstr "Vid detta alternativ bestäms om <b>webtrees</b> också tar i beaktande 
 
 #: help_text.php:886
 msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
-msgstr "När detta sätts till <b>Ja</b>, syns följande meddelande ovanför inskrivningsfältet på \"Begär nytt användarkonto\"-sidan:<div class=\"list_value_wrap\"><div class=\"largeError\">Obs!</div><div class=\"error\">Med sändandet av denna begäran, godkänner du också:<ul><li>att skydda och respektera integriteten för levande personer som finns på denna sajt;</li><li>och i textrutan nedanför, berätta till vem du är släkt eller ge oss information på någon som borde finns på vår sajt.</li></ul></div></div>"
+msgstr "När detta sätts till <b>Ja</b>, syns följande meddelande ovanför inskrivningsfältet på ”Begär nytt användarkonto”-sidan:<div class=\"list_value_wrap\"><div class=\"largeError\">Obs!</div><div class=\"error\">Med sändandet av denna begäran, godkänner du också:<ul><li>att skydda och respektera integriteten för levande personer som finns på denna sajt;</li><li>och i textrutan nedanför, berätta till vem du är släkt eller ge oss information på någon som borde finns på vår sajt.</li></ul></div></div>"
 
 #: help_text.php:1280
 msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
@@ -15454,7 +15456,7 @@ msgstr "När du lägger till en ny släktmedlem, kan ett släktnamn ges som stan
 
 #: help_text.php:1322
 msgid "When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "När du lägger till, redigera eller tar bort uppgifter, kommer ändringarna inte att sparas omedelbart. Istället förvaras de i ett “väntande” område. Dessa väntande ändringar måste granskas av en moderator innan de accepteras."
+msgstr "När du lägger till, redigera eller tar bort uppgifter, kommer ändringarna inte att sparas omedelbart. Istället förvaras de i ett ”väntande” område. Dessa väntande ändringar måste granskas av en moderator innan de accepteras."
 
 #: help_text.php:1120
 msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
@@ -15640,7 +15642,7 @@ msgstr "Du har inte tillåtelse att skicka meddelanden som innehåller externa l
 #. I18N: Help text for the "Default Theme" site configuration setting
 #: help_text.php:976
 msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
-msgstr "Du kan ändra utseende på <b>webtrees</b> med användandet av “tema”. Varje tema har sin egen stil, layout, färgschema, etc."
+msgstr "Du kan ändra utseende på <b>webtrees</b> med användandet av ”tema”. Varje tema har sin egen stil, layout, färgschema osv."
 
 #: help_text.php:1270
 msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
@@ -15783,7 +15785,7 @@ msgstr "Du behöver sätta upp ett administratörskonto. Detta konto kan kontrol
 
 #: login.php:495
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
-msgstr "Du måste nu granska kontouppgifterna och sätta “godkänd”-status till “ja”."
+msgstr "Du måste nu granska kontouppgifterna och sätta ”godkänd”-status till ”ja”."
 
 #. I18N: Help text for the “Login URL” site configuration setting
 #: help_text.php:609
@@ -15818,7 +15820,7 @@ msgstr ""
 #: login.php:266 message.php:69
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "Ta bort “%1$s” från “%2$s” och försök på nytt."
+msgstr "Ta bort ”%1$s” från ”%2$s” och försök på nytt."
 
 #: help_text.php:1463
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -15880,7 +15882,7 @@ msgstr "Från din serveradministratör får du nödvändig anslutningsinformatio
 
 #: modules_v3/batch_update/admin_batch_update.php:78
 msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
-msgstr "Ditt användarkonto har inte “godkänn automatiskt ändringar” aktiverat. Du kommer bara att kunna ändra en post åt gången."
+msgstr "Ditt användarkonto har inte ”godkänn automatiskt ändringar” aktiverat. Du kommer bara att kunna ändra en post åt gången."
 
 #: library/WT/Stats.php:4007
 msgid "Yugoslavia"
@@ -19796,13 +19798,13 @@ msgstr "yngre syster"
 #: library/WT/Individual.php:955
 #, php-format
 msgid "“%s”"
-msgstr "“%s”"
+msgstr "”%s”"
 
 #. I18N: %s is the name of an individual, source or other record
 #: modules_v3/user_favorites/module.php:78
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "“%s” har lagts till dina favoriter."
+msgstr "”%s” har lagts till dina favoriter."
 
 #: library/WT/Note.php:82
 msgid "…"
@@ -19975,7 +19977,7 @@ msgstr "…"
 #~ msgstr "Länka personen till existerande familj som maka"
 
 #~ msgid "Load all your family trees from disk, by using the “import” function for each one."
-#~ msgstr "Ladda in  alla dina släktträd, med användandet av \"import\"-funktion för var och en."
+#~ msgstr "Ladda in  alla dina släktträd, med användandet av ”import”-funktion för var och en."
 
 #~ msgid "Mailer error: %s"
 #~ msgstr "E-postprogramfel: %s"
@@ -20016,7 +20018,7 @@ msgstr "…"
 #~ msgstr "Utgående server (SMTP)-namn"
 
 #~ msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.<br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-#~ msgstr "Platser skall anges enligt standarder för släktforskning. I släktforskning registrerar man platser med den mest specifika informationen om platsen först och sedan arbetar man upp till den minst specifika plats sist, med hjälp av kommatecken för att separera olika plats nivåer. Den nivå som du registrerar platsinformation ska representera regeringens eller kyrkans nivåer där viktiga dokument för denna ort hålls.<br><br>Till exempel skulle en plats som Salt Lake City skrivas som \"Salt Lake city, ??Salt Lake, Utah, USA\".<br><br>Låt oss undersöka varje del av denna plats. Den första delen, \"Salt Lake City\", är den stad eller township där händelsen inträffade. I vissa länder kan det finnas kommuner eller distrikt inom en stad som är viktigt att notera. I så fall bör de komma innan staden. Nästa del, \"Salt Lake\" är länet. \"Utah\" är staten, och \"USA\" är i landet. Det är viktigt att notera varje plats eftersom genealogiska register förs av regeringarna i varje nivå.<br><br>Om en nivå av platsen är okänd, bör du lämna ett utrymme mellan kommatecken. Antag, i exemplet ovan, att du inte vet länet för Salt Lake City. Du bör då registrera det så här: \"Salt Lake City, , Utah, USA\". Anta att du bara vet att en person är född i Utah. Du skulle ange informationen så här: \", , Utah, USA\".<br><br>Du kan använda <b>Sök ort</b> för att hjälpa dig att hitta platser som redan finns i databasen."
+#~ msgstr "Platser skall anges enligt standarder för släktforskning. I släktforskning registrerar man platser med den mest specifika informationen om platsen först och sedan arbetar man upp till den minst specifika plats sist, med hjälp av kommatecken för att separera olika plats nivåer. Den nivå som du registrerar platsinformation ska representera regeringens eller kyrkans nivåer där viktiga dokument för denna ort hålls.<br><br>Till exempel skulle en plats som Salt Lake City skrivas som ”Salt Lake city, Salt Lake, Utah, USA”.<br><br>Låt oss undersöka varje del av denna plats. Den första delen, ”Salt Lake City”, är den stad eller township där händelsen inträffade. I vissa länder kan det finnas kommuner eller distrikt inom en stad som är viktigt att notera. I så fall bör de komma innan staden. Nästa del, ”Salt Lake” är länet. ”Utah” är staten, och ”USA” är i landet. Det är viktigt att notera varje plats eftersom genealogiska register förs av regeringarna i varje nivå.<br><br>Om en nivå av platsen är okänd, bör du lämna ett utrymme mellan kommatecken. Antag, i exemplet ovan, att du inte vet länet för Salt Lake City. Du bör då registrera det så här: ”Salt Lake City, , Utah, USA”. Anta att du bara vet att en person är född i Utah. Du skulle ange informationen så här: ”, , Utah, USA”.<br><br>Du kan använda <b>Sök ort</b> för att hjälpa dig att hitta platser som redan finns i databasen."
 
 #~ msgid "Please click on the link below or paste it into your browser, login with the new password, and change it immediately to keep the integrity of your data secure."
 #~ msgstr "Klicka på länken nedan, logga in med ditt nya lösenord. Ändra sedan lösenordet så att säkerheten behålls för dina data."
@@ -20049,7 +20051,7 @@ msgstr "…"
 #~ msgstr "SMTP-port"
 
 #~ msgid "Save all your family trees to disk, by using the “export” function for each one."
-#~ msgstr "Spara all släktträd, med användandet av \"export\"-funktion för var och en."
+#~ msgstr "Spara all släktträd, med användandet av ”export”-funktion för var och en."
 
 #~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
 #~ msgstr "Sök och/eller ersätt data i din GEDCOM med hjälp av enkel sökning eller avancerad mönstermatchning."

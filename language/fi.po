@@ -1,20 +1,17 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Fab\n"
+"Project-Id-Version: Webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
+"POT-Creation-Date: 2013-11-30 14:32+0000\n"
+"PO-Revision-Date: 2013-12-22 19:19+0200\n"
 "Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language-Team: \n"
-"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
 "X-Generator: Poedit 1.5.7\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -68,8 +65,8 @@ msgstr[1] "%1$d henkilöä näytössä %3$d sukupolven mahdollisista %2$d henkil
 #, php-format
 msgid "%1$d individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "%1$d henkilöltä puuttuu syntymäpaikan koordinaatit:%2$s."
-msgstr[1] "%1$d henkilöiltä puuttuu syntymäpaikan koordinaatit:%2$s."
+msgstr[0] "%1$d henkilöltä puuttuvat syntymäpaikan koordinaatit: %2$s."
+msgstr[1] "%1$d henkilöiltä puuttuvat syntymäpaikan koordinaatit: %2$s."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:743
@@ -1482,7 +1479,7 @@ msgstr "Palvelimen ylläpitäjät"
 
 #: help_text.php:1275
 msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
-msgstr "Toisinaan pitää ylläpitäjän oikaista ja korjata käyttäjien syöttämää tietoa, esimerkiksi PLAC sijaintia, lisäämällä maa. Kun ylläpitäjä suorittaa sellaisia oikaisuja, alkuperäinen muutostieto tavallisesti korvataan. Tämä ei ehkä ole toivottavaa.<br><br>Kun tämä valitaan, <b>webtrees</b> säilyttää alkuperäiset muutoksen tekijän ja -ajan tiedot. Tällä valinnalla ylläpitäjät voivat muuttaa tai poistaa alkuperäiset CHAN-tiedot, jotka liittyvät muutostietueeseen."
+msgstr "Toisinaan ylläpitäjän pitää puhdistaa ja korjata käyttäjien syöttämää tietoa, esimerkiksi PLAC sijaintia, lisäämällä maa. Kun ylläpitäjä suorittaa sellaisia oikaisuja, alkuperäinen muutostieto tavallisesti korvataan. Tämä ei ehkä ole toivottavaa.<br><br>Kun tämä valitaan, <b>webtrees</b> säilyttää alkuperäiset muutoksen tekijän ja -ajan tiedot. Tällä valinnalla ylläpitäjät voivat muuttaa tai poistaa alkuperäiset CHAN-tiedot, jotka liittyvät muutostietueeseen."
 
 #: library/WT/Gedcom/Code/Pedi.php:49
 msgctxt "Female pedigree"
@@ -1657,7 +1654,7 @@ msgstr "Afrikka"
 
 #: help_text.php:1062
 msgid "After creating the family tree, you will be able to upload or import data from a GEDCOM file."
-msgstr "Sukupuun perustamisen jälkeen, voit ladata tai tuoda sille aineistoa GEDCOM-tiedostolta."
+msgstr "Luotuasi sukupuun, voit ladata tai tuoda sille aineistoa GEDCOM-tiedostolta."
 
 #: login.php:232
 msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
@@ -3687,7 +3684,7 @@ msgstr "Siviilirekisteriviranomainen"
 #. I18N: The “Data folder” is a configuration setting
 #: admin_site_clean.php:28 themes/_administration/header.php:102
 msgid "Clean up data folder"
-msgstr "Oikaise data kansio"
+msgstr "Puhdista tietokansio"
 
 #: lifespan.php:196 timeline.php:302
 msgid "Clear chart"
@@ -3922,7 +3919,7 @@ msgstr "Muunna UTF-8 muotoisesta ANSI muotoon"
 #: admin_trees_download.php:123 modules_v3/clippings/module.php:214
 #: modules_v3/clippings/module.php:599
 msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr "Muunnetaanko tämä UTF-8-koodattu GEDCOM ANSI (ISO-8859-1) muotoon?"
+msgstr "Muunna tämä UTF-8-koodattu GEDCOM ANSI (ISO-8859-1) muotoon"
 
 #: library/WT/Stats.php:3799
 msgid "Cook Islands"
@@ -4263,7 +4260,7 @@ msgstr "Tiedot"
 
 #: admin_site_config.php:70 help_text.php:569
 msgid "Data folder"
-msgstr "Data kansio"
+msgstr "Tietokansio"
 
 #: login.php:561
 msgid "Data was not correct, please try again"
@@ -5171,7 +5168,7 @@ msgstr "Näytä ja hallitse käyttäjän suosikkisivuja."
 
 #: modules_v3/googlemap/help_text.php:90 modules_v3/googlemap/module.php:414
 msgid "Display short placenames"
-msgstr "Näytetäänkö lyhyet paikannimet?"
+msgstr "Näytä lyhyet paikannimet"
 
 #. I18N: gedcom tag DIV
 #: library/WT/Gedcom/Tag.php:177
@@ -7335,7 +7332,7 @@ msgstr "Jos sukunimi on tuntematon, käytä tyhjiä kauttaviivoja: <%s>Mary //<%
 
 #: help_text.php:1449
 msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
-msgstr "Jos tämä ruutu on rastitettu, tämä käyttäjä voi muuttaa käyttäjätietojaan. Jos ruutua ei ole rastitettu, hän ei voi muuttaa käyttäjätietojaan. Tällä tavoin voit luoda yhden käyttäjätunnuksen ja salasanan usealle käyttäjälle yhteisesti ja estää heitä muuttamasta käyttäjätietojaan."
+msgstr "Jos tämä ruutu on rastitettu, tämä käyttäjä voi muuttaa käyttäjätietojaan. Jos ruutua ei ole rastitettu, hän ei voi muuttaa käyttäjätietojaan. Tällä tavoin voit luoda yhden käyttäjätunnuksen ja salasanan usealle käyttäjälle yhteisesti ja estää heitä muuttamasta kyttäjätietojaan."
 
 #: help_text.php:614
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
@@ -7355,7 +7352,7 @@ msgstr "Jos olet web-sivuston ylläpitäjä, tarkista:"
 
 #: site-unavailable.php:83
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
-msgstr "Jos et pysty ratkomaan ongelman, kokeile jos saisit apua forumista <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgstr "Jos et pysty ratkomaan ongelmaa, kokeile jos saisit apua forumista <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: login.php:326
 msgid "If you didn’t request an account, you can just delete this message."
@@ -13875,7 +13872,7 @@ msgstr "Tähän kenttään voit kirjoittaa henkilön ID-tunnuksen lisätäksesi 
 
 #: help_text.php:407
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Pilkulla \",\" eroteltu luettelo GEDCOM tietoaihetunnisteista, joita esitettään nimen lisäämis-/muokkausikkunassa. Jos käytät muita kuin länsimaalaisia aakkosia kuten heprealaisia, kreikkalaisia, kyrillisiä tai arabialaisia aakkosia, voit lisätä tunnistemerkintöjä (tag) kuten _HEB, ROMN, FONE jne., jotta voit tallentaa nimiä useissa eri aakkosissa."
+msgstr "Pilkuilla \",\" eroteltu luettelo GEDCOM tietoaihetunnisteista, joita esitettään nimen lisäämis-/muokkausikkunassa. Jos käytät muita kuin länsimaalaisia aakkosia kuten heprealaisia, kreikkalaisia, kyrillisiä tai arabialaisia aakkosia, voit lisätä tunnistemerkintöjä (tag) kuten _HEB, ROMN, FONE jne., jotta voit tallentaa nimiä useissa eri aakkosissa."
 
 #: help_text.php:785
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family.  For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
@@ -14990,7 +14987,7 @@ msgstr[1] "Käytä vähintään %s merkkiä."
 #: modules_v3/family_group_report/report.xml:13
 #: modules_v3/individual_ext_report/report.xml:14
 msgid "Use colors"
-msgstr "Käytä värejä?"
+msgstr "Käytä värejä"
 
 #: modules_v3/tree/class_treeview.php:68
 msgid "Use compact layout"
@@ -15088,7 +15085,7 @@ msgstr "Käyttäjätunnuksen kirjoittamisella isoilla ja pienillä kirjaimilla e
 #: help_text.php:1479
 #, php-format
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "Käyttäjätunnuksessa ei saa käyttää seuraavia erikoismerkkejä: &lt; &gt; \" %% { } ;"
+msgstr "Käyttäjätunnuksessa ei saa käyttää seuraavia erikoismerkkejä: &lt; &gt; &quot; %% { } ;"
 
 #: admin.php:97 themes/_administration/header.php:129
 msgid "Users"
@@ -15466,7 +15463,7 @@ msgstr "Kun klikkaat <b>Lisää uusi jaettu lisätieto</b> linkkiä, avautuu uus
 
 #: modules_v3/clippings/help_text.php:37
 msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
-msgstr "Klikkaamalla tätä, leikekorisi tyhjenee kokonaan.<br><br>Jos et halua poistaa kaikkia henkilöitä, perheitä ja paikkoja leikekorista, voit poistaa ne yksitellen klikkaamalla \"Poista\" linkkiä nimiruuduissa."
+msgstr "Klikkaamalla tätä, leikekorisi tyhjenee kokonaan.<br><br>Jos et halua poistaa kaikkia henkilöitä, perheitä ja paikkoja leikekorista, voit poistaa ne yksitellen klikkaamalla <b>Poista</b> linkkiä nimiruuduissa."
 
 #: message.php:144
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
@@ -15710,7 +15707,7 @@ msgstr "Et ole luonnut päiväkirjamerkintöjä."
 
 #: admin_trees_manage.php:131
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
-msgstr "Olet valinnut eriniminen GEDCOM. Onko tämä oikea?"
+msgstr "Olet valinnut erinimisen GEDCOM:in. Onko tämä oikea?"
 
 #: addmedia.php:482
 msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
