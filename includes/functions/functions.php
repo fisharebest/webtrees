@@ -111,7 +111,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $CHART_BOX_TAGS;               $CHART_BOX_TAGS               =get_gedcom_setting($ged_id, 'CHART_BOX_TAGS');
 	global $CONTACT_USER_ID;              $CONTACT_USER_ID              =get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
 	global $DEFAULT_PEDIGREE_GENERATIONS; $DEFAULT_PEDIGREE_GENERATIONS =get_gedcom_setting($ged_id, 'DEFAULT_PEDIGREE_GENERATIONS');
-	global $EXPAND_NOTES;                 $EXPAND_NOTES                 =get_gedcom_setting($ged_id, 'EXPAND_NOTES');
 	global $EXPAND_RELATIVES_EVENTS;      $EXPAND_RELATIVES_EVENTS      =get_gedcom_setting($ged_id, 'EXPAND_RELATIVES_EVENTS');
 	global $EXPAND_SOURCES;               $EXPAND_SOURCES               =get_gedcom_setting($ged_id, 'EXPAND_SOURCES');
 	global $FAM_ID_PREFIX;                $FAM_ID_PREFIX                =get_gedcom_setting($ged_id, 'FAM_ID_PREFIX');

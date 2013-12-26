@@ -214,7 +214,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 
 	// Convert custom markup into HTML
 	public static function formatCensusNote(WT_Note $note) {
-		global $controller;
+		global $controller, $WT_TREE;
 
 		$headers = array(
 			'AgM'        => 'Age at first marriage',
@@ -303,7 +303,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				'<p>' . $postamble . '</p>';
 		} else {
 			// Not a census-assistant shared note - apply default formatting
-			return WT_Filter::expandUrls($note->getNote());
+			return WT_Filter::formatText($note->getNote(), $WT_TREE);
 		}
 	}
 

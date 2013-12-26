@@ -91,7 +91,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD',       WT_Filter::post('NEW_COMMON_NAMES_THRESHOLD', WT_REGEX_INTEGER, 40));
 	set_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID',              WT_Filter::post('NEW_CONTACT_USER_ID'));
 	set_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS', WT_Filter::post('NEW_DEFAULT_PEDIGREE_GENERATIONS'));
-	set_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES',                 WT_Filter::postBool('NEW_EXPAND_NOTES'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS',      WT_Filter::postBool('NEW_EXPAND_RELATIVES_EVENTS'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES',               WT_Filter::postBool('NEW_EXPAND_SOURCES'));
 	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD',                str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_ADD')));
@@ -99,6 +98,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE',             str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_UNIQUE')));
 	set_gedcom_setting(WT_GED_ID, 'FAM_ID_PREFIX',                WT_Filter::post('NEW_FAM_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'FULL_SOURCES',                 WT_Filter::postBool('NEW_FULL_SOURCES'));
+	set_gedcom_setting(WT_GED_ID, 'FORMAT_TEXT',                  WT_Filter::post('NEW_FORMAT_TEXT'));
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_ID_PREFIX',             WT_Filter::post('NEW_GEDCOM_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            WT_Filter::post('NEW_GEDCOM_MEDIA_PATH'));
 	set_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS',                WT_Filter::postBool('NEW_GENERATE_UIDS'));
@@ -929,6 +929,28 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						?>
 					</td>
 				</tr>
+				<tr>
+					<th colspan="2">
+						<?php echo WT_I18N::translate('Format'); ?>
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<?php echo WT_I18N::translate('Format text and notes'), help_link('FORMAT_TEXT'); ?>
+					</td>
+					<td>
+						<?php
+						echo select_edit_control('NEW_FORMAT_TEXT',
+								array(
+									''         => WT_I18N::translate('none'),
+									'markdown' => /* I18N: https://en.wikipedia.org/wiki/Markdown */ WT_I18N::translate('markdown')
+								),
+								null,
+								get_gedcom_setting(WT_GED_ID, 'FORMAT_TEXT')
+							);
+						?>
+					</td>
+				</tr>
 			</table>
 		</div>
 		<!-- HIDE & SHOW -->
@@ -990,14 +1012,6 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</td>
 					<td>
 						<?php echo radio_buttons('NEW_SHOW_FACT_ICONS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_FACT_ICONS); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Automatically expand notes'), help_link('EXPAND_NOTES'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('NEW_EXPAND_NOTES', get_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES')); ?>
 					</td>
 				</tr>
 				<tr>

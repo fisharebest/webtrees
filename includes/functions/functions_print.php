@@ -391,69 +391,36 @@ function contact_links($ged_id=WT_GED_ID) {
 * @return boolean
 */
 function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
-	global $EXPAND_SOURCES, $EXPAND_NOTES;
-	$elementID = 'N-'.(int)(microtime()*1000000);
-
+	global $WT_TREE;
+	
 	$text .= get_cont($nlevel, $nrec);
 
 	// Check if shared note (we have already checked that it exists)
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ NOTE/', $nrec, $match)) {
-		$note = WT_Note::getInstance($match[1]);
+		$note  = WT_Note::getInstance($match[1]);
+		$label = 'SHARED_NOTE';
 		// If Census assistant installed, allow it to format the note
 		if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-			$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
+			$html = GEDFact_assistant_WT_Module::formatCensusNote($note);
 		} else {
-			$text = WT_Filter::expandUrls($note->getNote());
+			$html = WT_Filter::formatText($note->getNote(), $WT_TREE);
 		}
 	} else {
-		$note = null;
-		$text = WT_Filter::expandUrls($text);
+		$note  = null;
+		$label = 'NOTE';
+		$html  = WT_Filter::formatText($text, $WT_TREE);
 	}
 
 	if ($textOnly) {
 		return strip_tags($text);
 	}
 
-	if (strpos($text, "\n") !== false) {
-		list($first_line, $cont_lines) = explode("\n", $text, 2);
-	} else {
-		$first_line = $text;
-		$cont_lines = '';
+	if (strpos($text, "\n") === false) {
+		// A one-line note? strip the block-level tags, so it displays inline
+		$html = strip_tags($html, '<a><strong><em>');
 	}
 
-	$data = '<div class="fact_NOTE"><span class="label">';
-	if ($cont_lines) {
-		if ($EXPAND_NOTES) {
-			$plusminus='minus';
-		} else {
-			$plusminus='plus';
-		}
-		$data .= '<a href="#" onclick="expand_layer(\'' . $elementID . '\'); return false;"><i id="' . $elementID . '_img" class="icon-' . $plusminus . '"></i></a> ';
-	}
-
-	if ($note) {
-		$data .= WT_I18N::translate('Shared note').': </span> ';
-	} else {
-		$data .= WT_I18N::translate('Note').': </span>';
-	}
-
-	if ($cont_lines) {
-		if ($note) {
-			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $first_line . '</a>';
-		}
-		$data .= '<span class="field" dir="auto">' . $first_line . '</span>';
-		$data .= '<div id="' . $elementID . '" dir="auto" style="white-space:pre-wrap; display:';
-		$data .= $EXPAND_NOTES ? 'block' : 'none';
-		$data .= '">' . $cont_lines. '</div>';
-	} else {
-		if ($note) {
-			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $first_line . '</a>';
-		}
-		$data .= '<span class="field" dir="auto">' . $first_line . '</span>';
-	}
-	$data .= '</div>';
-
-	return $data;
+	return WT_Gedcom_Tag::getLabelValue($label, $html);
 }
 
 /**

@@ -92,11 +92,11 @@ foreach ($controller->record->getFacts() as $fact) {
 	}
 }
 
-// Check if using census assistant
+// Legacy formatting, created by the census assistant
 if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 	$text = GEDFact_assistant_WT_Module::formatCensusNote($controller->record);
 } else {
-	$text = WT_Filter::expandUrls($controller->record->getNote());
+	$text = WT_Filter::formatText($controller->record->getNote(), $WT_TREE);
 }
 
 ?>
@@ -157,7 +157,7 @@ if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						<?php echo WT_I18N::translate('Shared note'); ?>
 					<?php } ?>
 				</td>
-				<td class="optionbox wrap width80" style="white-space: pre-wrap;"><?php echo $text; ?></td>
+				<td class="optionbox wrap width80"><?php echo $text; ?></td>
 			</tr>
 			<?php
 				foreach ($facts as $fact) {

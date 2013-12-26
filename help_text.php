@@ -486,11 +486,6 @@ case 'DEFAULT_PEDIGREE_GENERATIONS':
 	$text=WT_I18N::translate('Set the default number of generations to display on descendancy and pedigree charts.');
 	break;
 
-case 'EXPAND_NOTES':
-	$title=WT_I18N::translate('Automatically expand notes');
-	$text=WT_I18N::translate('This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page.');
-	break;
-
 case 'EXPAND_RELATIVES_EVENTS':
 	$title=WT_I18N::translate('Automatically expand list of events of close relatives');
 	$text=WT_I18N::translate('This option controls whether or not to automatically expand the <i>Events of close relatives</i> list.');
@@ -519,6 +514,16 @@ case 'FAM_FACTS_UNIQUE':
 case 'FAM_ID_PREFIX':
 	$title=WT_I18N::translate('Family ID prefix');
 	$text=WT_I18N::translate('When a new family record is added online in <b>webtrees</b>, a new ID for that family will be generated automatically. The family ID will have this prefix.');
+	break;
+
+case 'FORMAT_TEXT':
+	$title=WT_I18N::translate('Format text and notes');
+	$text =
+		'<p>' .
+		WT_I18N::translate('To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc.') .
+		'</p><p>' .
+		WT_I18N::translate('Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc.') .
+		'</p>';
 	break;
 
 case 'FULL_SOURCES':
