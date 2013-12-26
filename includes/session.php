@@ -168,9 +168,12 @@ define('WT_SERVER_NAME',
 	(empty($_SERVER['SERVER_PORT']) || $_SERVER['SERVER_PORT']==80 ? '' : ':'.$_SERVER['SERVER_PORT'])
 );
 
+// REDIRECT_URL should be set in the case of Apache following a RedirectRule
 // SCRIPT_NAME should always be correct, but is not always present.
 // PHP_SELF should always be present, but may have trailing path: /path/to/script.php/FOO/BAR
-if (!empty($_SERVER['SCRIPT_NAME'])) {
+if (!empty($_SERVER['REDIRECT_URL'])) {
+	define('WT_SCRIPT_PATH', substr($_SERVER['REDIRECT_URL'], 0, stripos($_SERVER['REDIRECT_URL'], WT_SCRIPT_NAME)));
+} elseif (!empty($_SERVER['SCRIPT_NAME'])) {
 	define('WT_SCRIPT_PATH', substr($_SERVER['SCRIPT_NAME'], 0, stripos($_SERVER['SCRIPT_NAME'], WT_SCRIPT_NAME)));
 } elseif (!empty($_SERVER['PHP_SELF'])) {
 	define('WT_SCRIPT_PATH', substr($_SERVER['PHP_SELF'], 0, stripos($_SERVER['PHP_SELF'], WT_SCRIPT_NAME)));
