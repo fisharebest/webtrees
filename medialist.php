@@ -41,7 +41,7 @@ $reset          = WT_Filter::get('reset');
 $apply_filter   = WT_Filter::get('apply_filter');
 $filter         = WT_Filter::get('filter', null, ''); // MySQL needs an empty string, not NULL
 $columns        = WT_Filter::getInteger('columns', 1, 2, 2);
-$subdirs        = WT_Filter::get('subdirs');
+$subdirs        = WT_Filter::get('subdirs', 'on');
 $currentdironly = ($subdirs=='on') ? false : true;
 
 // reset all variables
@@ -128,7 +128,7 @@ $controller->pageHeader();
 				<?php echo WT_I18N::translate('Search filters'); ?>
 			</td>
 			<td class="optionbox wrap width25">
-				<input id="filter" name="filter" value="<?php echo $filter; ?>" size="14" dir="auto">
+				<input id="filter" name="filter" value="<?php echo WT_Filter::escapeHtml($filter); ?>" size="14" dir="auto">
 			</td>
 			<td class="descriptionbox wrap width25">
 				<?php echo WT_I18N::translate('Columns per page'); ?>
