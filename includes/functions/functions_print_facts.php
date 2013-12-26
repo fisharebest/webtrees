@@ -269,6 +269,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 		}
 		break;
 	case 'URL':
+	case '_URL':
 	case 'WWW':
 		echo '<div class="field"><a href="', WT_Filter::escapeHtml($fact->getValue()), '">', WT_Filter::escapeHtml($fact->getValue()), '</a></div>';
 		break;
@@ -415,6 +416,12 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			if (preg_match('/\n3 TYPE (.+)/', $fact->getGedcom(), $type_match)) {
 				echo WT_Gedcom_Tag::getLabelValue('TYPE', WT_Gedcom_Tag::getFileFormTypeValue($type_match[1]));
 			}
+			break;
+		case 'URL':
+		case '_URL':
+		case 'WWW':
+			$link = '<a href="' . WT_Filter::escapeHtml($match[2]) . '">' . WT_Filter::escapeHtml($match[2]) . '</a>';
+			echo WT_Gedcom_Tag::getLabelValue($fact->getTag().':'.$match[1], $link);
 			break;
 		default:
 			if (!$HIDE_GEDCOM_ERRORS || WT_Gedcom_Tag::isTag($match[1])) {

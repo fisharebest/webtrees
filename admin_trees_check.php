@@ -99,6 +99,7 @@ $XREF_LINKS=array(
 	'SOUR'          => 'SOUR',
 	'REPO'          => 'REPO',
 	'OBJE'          => 'OBJE',
+	'SUBM'          => 'SUBM',
 	'FAMC'          => 'FAM',
 	'FAMS'          => 'FAM',
 	//'ADOP'=>'FAM', // Need to handle this case specially.  We may have both ADOP and FAMC links to the same FAM, but only store one.
@@ -111,18 +112,18 @@ $XREF_LINKS=array(
 	'AUTH'          => 'INDI', // A webtrees extension
 	'ANCI'          => 'SUBM',
 	'DESI'          => 'SUBM',
-	'_WT_OBJE_SORT' => 'OBJE'
+	'_WT_OBJE_SORT' => 'OBJE',
 );
 
 $RECORD_LINKS=array(
-	'INDI'=>array('NOTE', 'OBJE', 'SOUR', 'ASSO', '_ASSO', 'FAMC', 'FAMS', 'ALIA', '_WT_OBJE_SORT'),
-	'FAM' =>array('NOTE', 'OBJE', 'SOUR', 'ASSO', '_ASSO', 'HUSB', 'WIFE', 'CHIL'),
+	'INDI'=>array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'FAMC', 'FAMS', 'ALIA', '_WT_OBJE_SORT'),
+	'FAM' =>array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'HUSB', 'WIFE', 'CHIL'),
 	'SOUR'=>array('NOTE', 'OBJE', 'REPO', 'AUTH'),
 	'REPO'=>array('NOTE'),
 	'OBJE'=>array('NOTE'), // The spec also allows SOUR, but we treat this as a warning
 	'NOTE'=>array(), // The spec also allows SOUR, but we treat this as a warning
-	'SUBM'=>array(),
-	'SUBN'=>array(),
+	'SUBM'=>array('NOTE', 'OBJE'),
+	'SUBN'=>array('SUBM'),
 );
 
 $errors=false;

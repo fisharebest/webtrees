@@ -967,7 +967,7 @@ function create_media_object($level, $gedrec, $ged_id) {
 	if (!$xref) {
 		$xref = get_new_xref("OBJE", $ged_id);
 		// renumber the lines
-		$gedrec = preg_replace("/^(\d+) /me", "($1-$level).' '", $gedrec);
+		$gedrec = preg_replace_callback('/\n(\d+)/', function ($m) use ($level) { return "\n" . ($m[1] - $level); }, $gedrec);
 		// convert to an object
 		$gedrec = str_replace("\n0 OBJE\n", '0 @' . $xref . "@ OBJE\n", $gedrec);
 		// Fix Legacy GEDCOMS
