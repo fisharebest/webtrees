@@ -417,10 +417,26 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 
 	if (strpos($text, "\n") === false) {
 		// A one-line note? strip the block-level tags, so it displays inline
-		$html = strip_tags($html, '<a><strong><em>');
+		return WT_Gedcom_Tag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
+	} elseif ($WT_TREE->preference('EXPAND_NOTES')) {
+		// A multi-line note, and we're expanding notes by default
+		return WT_Gedcom_Tag::getLabelValue($label, $html);
+	} else {
+		// A multi-line note, with an expand/collapse option
+		$element_id = 'n-' . uniqid();
+		list($first, $rest) = explode("\n", $html, 2);
+		// If the first line contains HTML, we cannot easily display it after the "Note:" label.
+		// It may contain the first line of a table, an HREF that spans newlines, etc.
+		if (strpos($first, '<') !== false) {
+			$first = '';
+			$rest  = $html;
+		}
+		return
+			'<div class="fact_NOTE"><span class="label">' .
+			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . WT_Gedcom_Tag::getLabel($label) . ': ' .
+			'</div>' .
+			'<div id="' . $element_id . '" style="display:none">' . $html . '</div>';
 	}
-
-	return WT_Gedcom_Tag::getLabelValue($label, $html);
 }
 
 /**

@@ -656,6 +656,7 @@ foreach ($GEDCOMS as $GEDCOM=>$GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'COMMON_NAMES_THRESHOLD',       $COMMON_NAMES_THRESHOLD));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CONTACT_USER_ID',              get_user_id($CONTACT_EMAIL)));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'DEFAULT_PEDIGREE_GENERATIONS', $DEFAULT_PEDIGREE_GENERATIONS));
+	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'EXPAND_NOTES',                 $EXPAND_NOTES));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'EXPAND_RELATIVES_EVENTS',      $EXPAND_RELATIVES_EVENTS));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'EXPAND_SOURCES',               $EXPAND_SOURCES));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'FAM_FACTS_ADD',                $FAM_FACTS_ADD));

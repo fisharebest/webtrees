@@ -91,6 +91,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD',       WT_Filter::post('NEW_COMMON_NAMES_THRESHOLD', WT_REGEX_INTEGER, 40));
 	set_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID',              WT_Filter::post('NEW_CONTACT_USER_ID'));
 	set_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS', WT_Filter::post('NEW_DEFAULT_PEDIGREE_GENERATIONS'));
+	set_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES',                 WT_Filter::postBool('NEW_EXPAND_NOTES'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS',      WT_Filter::postBool('NEW_EXPAND_RELATIVES_EVENTS'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES',               WT_Filter::postBool('NEW_EXPAND_SOURCES'));
 	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD',                str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_ADD')));
@@ -1012,6 +1013,14 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</td>
 					<td>
 						<?php echo radio_buttons('NEW_SHOW_FACT_ICONS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_FACT_ICONS); ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php echo WT_I18N::translate('Automatically expand notes'), help_link('EXPAND_NOTES'); ?>
+					</td>
+					<td>
+						<?php echo edit_field_yes_no('NEW_EXPAND_NOTES', get_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES')); ?>
 					</td>
 				</tr>
 				<tr>

@@ -486,6 +486,11 @@ case 'DEFAULT_PEDIGREE_GENERATIONS':
 	$text=WT_I18N::translate('Set the default number of generations to display on descendancy and pedigree charts.');
 	break;
 
+case 'EXPAND_NOTES':
+	$title=WT_I18N::translate('Automatically expand notes');
+	$text=WT_I18N::translate('This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page.');
+	break;
+
 case 'EXPAND_RELATIVES_EVENTS':
 	$title=WT_I18N::translate('Automatically expand list of events of close relatives');
 	$text=WT_I18N::translate('This option controls whether or not to automatically expand the <i>Events of close relatives</i> list.');
@@ -525,7 +530,6 @@ case 'FORMAT_TEXT':
 		WT_I18N::translate('Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc.') .
 		'</p>';
 	break;
-
 case 'FULL_SOURCES':
 	$title=WT_I18N::translate('Use full source citations');
 	$text=WT_I18N::translate('Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations.');
