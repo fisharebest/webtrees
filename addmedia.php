@@ -69,8 +69,7 @@ if ($media) {
 	$disp = $media->canShow();
 }
 if ($action=='update' || $action=='create') {
-	if (!isset($linktoid) || $linktoid=='new') $linktoid='';
-	if (!empty($linktoid)) {
+	if ($linktoid) {
 		$disp = WT_GedcomRecord::getInstance($linktoid)->canShow();
 	}
 }
@@ -422,20 +421,20 @@ echo '<form method="post" name="newmedia" action="addmedia.php" enctype="multipa
 echo '<input type="hidden" name="action" value="', $action, '">';
 echo '<input type="hidden" name="ged" value="', WT_GEDCOM, '">';
 echo '<input type="hidden" name="pid" value="', $pid, '">';
-if (!empty($linktoid)) {
+if ($linktoid) {
 	echo '<input type="hidden" name="linktoid" value="', $linktoid, '">';
 }
 echo '<table class="facts_table">';
 echo '<tr><td class="topbottombar" colspan="2">';
 echo $controller->getPageTitle(), help_link('OBJE');
 echo '</td></tr>';
-if ($linktoid == 'new' || ($linktoid == '' && $action != 'update')) {
+if (!$linktoid && $action == 'create') {
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo WT_I18N::translate('Enter an individual, family, or source ID');
-	echo '</td><td class="optionbox wrap"><input type="text" name="gid" id="gid" size="6" value="">';
-	echo ' ', print_findindi_link('gid');
-	echo ' ', print_findfamily_link('gid');
-	echo ' ', print_findsource_link('gid');
+	echo '</td><td class="optionbox wrap"><input type="text" name="linktoid" id="linktoid" size="6" value="">';
+	echo ' ', print_findindi_link('linktoid');
+	echo ' ', print_findfamily_link('linktoid');
+	echo ' ', print_findsource_link('linktoid');
 	echo '<p class="sub">', WT_I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.'), '</p></td></tr>';
 }
 
