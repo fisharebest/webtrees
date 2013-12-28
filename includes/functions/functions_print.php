@@ -423,14 +423,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		return WT_Gedcom_Tag::getLabelValue($label, $html);
 	} else {
 		// A multi-line note, with an expand/collapse option
-		$element_id = 'n-' . uniqid();
-		list($first, $rest) = explode("\n", $html, 2);
-		// If the first line contains HTML, we cannot easily display it after the "Note:" label.
-		// It may contain the first line of a table, an HREF that spans newlines, etc.
-		if (strpos($first, '<') !== false) {
-			$first = '';
-			$rest  = $html;
-		}
+		$element_id = uniqid('n-');
 		return
 			'<div class="fact_NOTE"><span class="label">' .
 			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . WT_Gedcom_Tag::getLabel($label) . ': ' .
