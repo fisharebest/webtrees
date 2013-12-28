@@ -108,8 +108,15 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	private function drawFamily(WT_Individual $root, WT_Family $family) {
 		global $controller;
 		global $spouselinks, $parentlinks;
+		global $SHOW_PRIVATE_RELATIONSHIPS;
 
-		foreach ($family->getFacts('HUSB') as $fact) {
+		if ($SHOW_PRIVATE_RELATIONSHIPS) {
+			$access_level = WT_PRIV_HIDE;
+		} else {
+			$access_level = WT_USER_ACCESS_LEVEL;
+		}
+
+		foreach ($family->getFacts('HUSB', false, $access_level) as $fact) {
 			$spouse = $fact->getTarget();
 			if ($spouse instanceof WT_Individual) {
 				$menu = new WT_Menu(get_close_relationship_name($root, $spouse));
@@ -125,7 +132,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 
-		foreach ($family->getFacts('WIFE') as $fact) {
+		foreach ($family->getFacts('WIFE', false, $access_level) as $fact) {
 			$spouse = $fact->getTarget();
 			if ($spouse instanceof WT_Individual) {
 				$menu = new WT_Menu(get_close_relationship_name($root, $spouse));
@@ -141,7 +148,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 
-		foreach ($family->getFacts('CHIL') as $fact) {
+		foreach ($family->getFacts('CHIL', false, $access_level) as $fact) {
 			$child = $fact->getTarget();
 			if ($child instanceof WT_Individual) {
 				$menu = new WT_Menu(get_close_relationship_name($root, $child));
