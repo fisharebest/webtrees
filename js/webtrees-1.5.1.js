@@ -239,10 +239,10 @@ var show = false;
 	function expand_layer(sid) {
 		if (jQuery("#"+sid+"_img").hasClass("icon-plus")) {
 			jQuery('#'+sid+"_img").removeClass("icon-plus").addClass("icon-minus");
-			jQuery('#'+sid).show("fast");
+			jQuery('#'+sid).slideDown("fast");
 		} else {
 			jQuery('#'+sid+"_img").removeClass("icon-minus").addClass("icon-plus");
-			jQuery('#'+sid).hide("fast");
+			jQuery('#'+sid).slideUp("fast");
 		}
 		return false;
 	}

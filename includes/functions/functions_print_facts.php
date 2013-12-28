@@ -755,6 +755,7 @@ function print_main_sources(WT_Fact $fact, $level) {
  *  getSourceStructure() function.
  */
 function printSourceStructure($textSOUR) {
+	global $WT_TREE;
 	$html = '';
 
 	if ($textSOUR['PAGE']) {
@@ -774,7 +775,7 @@ function printSourceStructure($textSOUR) {
 			$html .= WT_Gedcom_Tag::getLabelValue('DATA:DATE', $date->Display(false));
 		}
 		foreach ($textSOUR['TEXT'] as $text) {
-			$html .= WT_Gedcom_Tag::getLabelValue('TEXT', '<span style="white-space: pre-wrap;">' . WT_Filter::expandUrls($text) . '</span>');
+			$html .= WT_Gedcom_Tag::getLabelValue('TEXT', WT_Filter::formatText($text, $WT_TREE));
 		}
 	}
 
@@ -838,7 +839,7 @@ function getSourceStructure($srec) {
 
 // Print a row for the notes tab on the individual page
 function print_main_notes(WT_Fact $fact, $level) {
-	global $GEDCOM, $SHOW_FACT_ICONS, $TEXT_DIRECTION;
+	global $GEDCOM, $WT_TREE, $SHOW_FACT_ICONS, $TEXT_DIRECTION;
 
 	$factrec = $fact->getGedcom();
 	$fact_id = $fact->getFactId();
@@ -920,7 +921,7 @@ function print_main_notes(WT_Fact $fact, $level) {
 				if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 					$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
 				} else {
-					$text = WT_Filter::expandUrls($note->getNote());
+					$text = WT_Filter::formatText($note->getNote(), $WT_TREE);
 				}
 			} else {
 				$text = '<span class="error">' . WT_Filter::escapeHtml($nid) . '</span>';
@@ -929,11 +930,11 @@ function print_main_notes(WT_Fact $fact, $level) {
 			// Inline notes
 			$nrec = get_sub_record($level, "$level NOTE", $factrec, $j+1);
 			$text = $match[$j][1] . get_cont($level+1, $nrec);
-			$text = WT_Filter::expandUrls($text);
+			$text = WT_Filter::formatText($text, $WT_TREE);
 		}
 
 		echo '<td class="optionbox', $styleadd, ' wrap">';
-		echo '<div style="white-space:pre-wrap;">', $text, '</div>';
+		echo $text;
 
 		if (!empty($noterec)) {
 			echo print_fact_sources($noterec, 1);

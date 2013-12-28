@@ -1689,6 +1689,22 @@ html[dir=rtl].field .deletelink {
 	clear: both;
 }
 
+.markdown p {
+	margin:      0 0 0.5em;
+	white-space: pre-wrap;
+}
+.markdown table {
+	border-collapse: collapse;
+}
+.markdown th {
+	font-weight: bold;
+}
+.markdown td,
+.markdown th {
+	border:  solid thin #000;
+	padding: 3px;
+}
+
 #header_accordion1 {
 	float: left;
 }

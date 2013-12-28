@@ -333,7 +333,6 @@ class WT_Fact {
 
 		if (empty($factsort))
 			$factsort=array_flip(array(
-				'OBJE', 'NOTE', 'SOUR', // On the individual tabs, show 1 OBJE before 1 XXXX/2 OBJE
 				'BIRT',
 				'_HNM',
 				'ALIA', '_AKA', '_AKAN',
@@ -386,7 +385,9 @@ class WT_Fact {
 				'TEMP',
 				'SLGC', 'BAPL', 'CONL', 'ENDL', 'SLGS',
 				'ADDR', 'PHON', 'EMAIL', '_EMAIL', 'EMAL', 'FAX', 'WWW', 'URL', '_URL',
+				'FILE', // For media objects
 				'AFN', 'REFN', '_PRMN', 'REF', 'RIN', '_UID',
+				'OBJE', 'NOTE', 'SOUR',
 				'CHAN', '_TODO',
 			));
 

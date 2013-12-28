@@ -724,6 +724,22 @@ dd .editlink, dd .deletelink {float:right;}
 #indi_note .fact_NOTE,
 #indi_note .fact_SOUR {clear: both;}
 
+.markdown p {
+	margin:      0 0 0.5em;
+	white-space: pre-wrap;
+}
+.markdown table {
+	border-collapse: collapse;
+}
+.markdown th {
+	font-weight: bold;
+}
+.markdown td,
+.markdown th {
+	border:  solid thin #000;
+	padding: 3px;
+}
+
 html[dir=rtl] #indi_header {float:right;}
 html[dir=rtl] #indi_header h3 {padding:0 30px 0 10px;text-align:right;}
 html[dir=rtl] #indi_header h3 .header_age {padding:5px 5px 5px 0;float:left;}

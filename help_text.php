@@ -521,6 +521,15 @@ case 'FAM_ID_PREFIX':
 	$text=WT_I18N::translate('When a new family record is added online in <b>webtrees</b>, a new ID for that family will be generated automatically. The family ID will have this prefix.');
 	break;
 
+case 'FORMAT_TEXT':
+	$title=WT_I18N::translate('Format text and notes');
+	$text =
+		'<p>' .
+		WT_I18N::translate('To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc.') .
+		'</p><p>' .
+		WT_I18N::translate('Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc.') .
+		'</p>';
+	break;
 case 'FULL_SOURCES':
 	$title=WT_I18N::translate('Use full source citations');
 	$text=WT_I18N::translate('Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations.');
