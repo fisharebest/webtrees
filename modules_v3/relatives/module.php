@@ -131,7 +131,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		///// WIFE /////
 		$found = false;
-		foreach ($family->getFacts('WIFE', $access_level) as $fact) {
+		foreach ($family->getFacts('WIFE', false, $access_level) as $fact) {
 			$person = $fact->getTarget();
 			if ($person instanceof WT_Individual) {
 				$found |= !$fact->isOld();
@@ -207,7 +207,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		///// CHIL /////
 		$child_number = 0;
-		foreach ($family->getFacts('CHIL', $access_level) as $fact) {
+		foreach ($family->getFacts('CHIL', false, $access_level) as $fact) {
 			$person = $fact->getTarget();
 			if ($person instanceof WT_Individual) {
 				if ($fact->isNew()) {
