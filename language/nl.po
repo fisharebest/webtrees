@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-12-28 11:49+0000\n"
-"PO-Revision-Date: 2013-12-01 01:26+0100\n"
+"PO-Revision-Date: 2013-12-28 18:48+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.3\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -1471,7 +1471,7 @@ msgstr "Beheer"
 
 #: admin_trees_places.php:80
 msgid "Administration - place edit"
-msgstr ""
+msgstr "Administratie - wijzig plaatsen"
 
 #: admin_users.php:186 admin_users.php:368 help_text.php:1397
 msgid "Administrator"
@@ -4386,7 +4386,7 @@ msgstr "Overlijdensdatum"
 
 #: library/WT/Gedcom/Tag.php:204
 msgid "Date of divorce"
-msgstr "Datum van scheiding"
+msgstr "Datum van echtscheiding"
 
 #: library/WT/Gedcom/Tag.php:186
 msgid "Date of emigration"
@@ -5176,7 +5176,7 @@ msgstr "Toon korte plaatsnamen"
 #. I18N: gedcom tag DIV
 #: library/WT/Gedcom/Tag.php:177
 msgid "Divorce"
-msgstr "Scheiding"
+msgstr "Echtscheiding"
 
 #. I18N: gedcom tag DIVF
 #: library/WT/Gedcom/Tag.php:178
@@ -5185,7 +5185,7 @@ msgstr "Echtscheiding aangevraagd"
 
 #: library/WT/Stats.php:2238 statistics.php:218
 msgid "Divorces by century"
-msgstr "Scheidingen per eeuw"
+msgstr "Echtscheidingen per eeuw"
 
 #: library/WT/Stats.php:3811
 msgid "Djibouti"
@@ -6477,7 +6477,7 @@ msgstr "Formaat"
 
 #: admin_trees_config.php:940 help_text.php:525
 msgid "Format text and notes"
-msgstr ""
+msgstr "Tekst en notities opmaken"
 
 #: library/WT/Gedcom/Code/Pedi.php:55
 msgctxt "Female pedigree"
@@ -6770,7 +6770,7 @@ msgstr "Gibraltar"
 
 #: search.php:176
 msgid "Given name"
-msgstr "Voornaam:"
+msgstr "Voornaam"
 
 #. I18N: gedcom tag GIVN
 #: library/WT/Gedcom/Tag.php:218
@@ -7312,7 +7312,7 @@ msgstr "Als een persoon twee afzonderlijke achternamen heeft, moeten beiden inge
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Als een persoon bekend was onder zijn bijnaam welke geen deel is van zijn formele naam, moet het ingesloten worden door twee aanhalingstekens. B.v. <%s>John &quot;Nobby&quot; /Clark/<%s>."
+msgstr "Als een persoon bekend was onder zijn roepnaam welke geen deel is van zijn formele naam, moet het ingesloten worden door twee aanhalingstekens. B.v. <%s>John &quot;Nobby&quot; /Clark/<%s>."
 
 #: help_text.php:287
 #, php-format
@@ -8521,7 +8521,7 @@ msgstr "maart"
 
 #: help_text.php:530
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr ""
+msgstr "Markdown is een eenvoudig opmaak systeem dat wordt gebruikt op websites zoals Wikipedia. Het systeem maakt gebruik van simpele tekens om headers en subheaders, vetgedrukte en schuine tekst, lijsten, tabellen enz. te maken."
 
 #. I18N: gedcom tag MARR
 #: library/WT/Gedcom/Tag.php:238 modules_v3/ahnentafel_report/report.xml:453
@@ -9626,7 +9626,7 @@ msgstr "Nicaragua"
 #. I18N: gedcom tag NICK
 #: library/WT/Gedcom/Tag.php:260
 msgid "Nickname"
-msgstr "Bijnaam"
+msgstr "Roepnaam"
 
 #: library/WT/Stats.php:3913
 msgid "Niger"
@@ -9810,7 +9810,7 @@ msgstr "Geen plaatsen gevonden"
 
 #: admin_trees_places.php:121
 msgid "No places were found."
-msgstr ""
+msgstr "Er werden geen plaatsen gevonden."
 
 #: admin_site_config.php:44
 msgid "No predefined text"
@@ -11775,7 +11775,7 @@ msgstr "Verzegeling"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:57
 msgid "Sealing cancelled (divorce)"
-msgstr "Verzegeling afgezegd (scheiding)"
+msgstr "Verzegeling afgezegd (echtscheiding)"
 
 #: library/WT/MenuBar.php:414 lifespan.php:193 medialist.php:152
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:59
@@ -13494,11 +13494,11 @@ msgstr "Het volgende bericht is verzonden naar uw webtrees-gebruikersaccount van
 
 #: admin_trees_places.php:108
 msgid "The following places were changed:"
-msgstr ""
+msgstr "De volgende plaatsen zijn gewijzigd:"
 
 #: admin_trees_places.php:108
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "De volgende plaatsen zullen worden gewijzigd:"
 
 #: admin_site_access.php:270
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -14261,7 +14261,7 @@ msgstr "In deze sectie kan een bronvermelding toegevoegd worden aan het feit dat
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:317
 msgid "This server does not support secure downloads using HTTPS."
-msgstr ""
+msgstr "Deze server ondersteund geen veilige downloads met HTTPS."
 
 #: setup.php:171
 #, php-format
@@ -14345,7 +14345,7 @@ msgstr "Dit zal alle plaatsen van het geselecteerde GEDCOM-bestand tonen. Standa
 
 #: admin_trees_places.php:89
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "Hiermee wordt het hoogste niveau van een plaatsnaam bijgewerkt. ”Mexico“ bijvoorbeeld, komt overeen met ”Quintana Roo, Mexico“, maar niet met ”Sante Fe, New Mexico“."
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:222
@@ -14484,7 +14484,7 @@ msgstr "Om nieuwe onderzoekstaken aan te maken moet u eerst <b>onderzoekstaak</b
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr ""
+msgstr "Om compatibiliteit met andere genealogische programma’s te garanderen, zouden notities, tekst en transcripties eigenllijk vastgelegd moeten worden in simpele niet-opgemaakte tekst. Opmaak is echter vaak wenselijk als ondersteuning van de presentatie, het begrijpelijk maken van de tekst enz."
 
 #: admin_media.php:451 library/WT/Controller/Media.php:69
 #: library/WT/Controller/Media.php:149 modules_v3/lightbox/module.php:189
@@ -14801,7 +14801,7 @@ msgstr "USSR"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:41 themes/_administration/header.php:87
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #: library/WT/Stats.php:3989
 msgid "Uganda"
@@ -14930,11 +14930,11 @@ msgstr "Alles bijwerken"
 
 #: admin_trees_places.php:85
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Alle plaatsnamen in een stamboom bijwerken"
 
 #: themes/_administration/header.php:121
 msgid "Update place names"
-msgstr ""
+msgstr "Plaatsnamen bijwerken"
 
 #: admin_site_merge.php:152
 msgid "Updating linked record"
@@ -18532,7 +18532,7 @@ msgstr "meisjesnaam"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:947
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: library/WT/Stats.php:1723 library/WT/Stats.php:3579
 msgid "marriage"
