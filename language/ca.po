@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-12-28 11:49+0000\n"
+"POT-Creation-Date: 2013-12-29 12:41+0000\n"
 "PO-Revision-Date: 2013-04-01 08:45+0000\n"
 "Last-Translator: Toni Planas Vilà <Unknown>\n"
 "Language-Team: \n"
@@ -3558,7 +3558,7 @@ msgstr "Seleccioneu la imatge en miniatura que voleu carregar. Malgrat que es po
 msgid "Choose user defined welcome text typed below"
 msgstr "Escolliu un text de benvinguda personalitzat i escriviu-lo més avall"
 
-#: addmedia.php:529 admin_media_upload.php:216
+#: addmedia.php:528 admin_media_upload.php:216
 msgid "Choose: "
 msgstr "Escolliu: "
 
@@ -4017,7 +4017,7 @@ msgid "Create a new individual"
 msgstr "Creeu una persona nova"
 
 #. I18N: A media object that is not linked to any other record
-#: addmedia.php:90 addmedia.php:407 admin_site_other.php:69
+#: addmedia.php:89 addmedia.php:406 admin_site_other.php:69
 msgid "Create a new media object"
 msgstr "Creeu un nou objecte multimèdia"
 
@@ -5192,7 +5192,7 @@ msgstr "Divorcis per centúries"
 msgid "Djibouti"
 msgstr "Djibouti"
 
-#: addmedia.php:482 addmedia.php:510 admin_media_upload.php:202
+#: addmedia.php:481 addmedia.php:509 admin_media_upload.php:202
 msgid "Do not change to keep original file name."
 msgstr "Per conservar el nom del fitxer original, deixeu-ho en blanc."
 
@@ -5210,7 +5210,7 @@ msgstr "No segellat, segellament previ cancel·lat"
 msgid "Do not seal: unauthorized"
 msgstr "No segellat: desautoritzat"
 
-#: addmedia.php:725 admin_trees_config.php:1284 edit_interface.php:2338
+#: addmedia.php:724 admin_trees_config.php:1284 edit_interface.php:2338
 #: help_text.php:1283
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 #: modules_v3/batch_update/admin_batch_update.php:342
@@ -5364,7 +5364,7 @@ msgstr "Editeu el gènere"
 msgid "Edit media"
 msgstr "Editeu el multimèdia"
 
-#: addmedia.php:252 addmedia.php:411 library/WT/Controller/Media.php:55
+#: addmedia.php:251 addmedia.php:410 library/WT/Controller/Media.php:55
 msgid "Edit media object"
 msgstr "Editeu l'objecte multimèdia"
 
@@ -5581,7 +5581,7 @@ msgstr "Entreu l'ID de la família"
 msgid "Enter Individual ID"
 msgstr "Entreu l'ID de la persona"
 
-#: addmedia.php:434 modules_v3/gedcom_favorites/module.php:178
+#: addmedia.php:433 modules_v3/gedcom_favorites/module.php:178
 msgid "Enter an individual, family, or source ID"
 msgstr "Entreu un ID de Persona, Família o Font"
 
@@ -5593,7 +5593,7 @@ msgstr "Entreu una nota (opcional) sobre aquest favorit"
 msgid "Enter filename"
 msgstr "Introduiu un nom d'arxiu"
 
-#: addmedia.php:439
+#: addmedia.php:438
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
 msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
 msgstr "Entreu o cerqueu l'ID de la persona, família o font al que cal vincular aquest ítem multimèdia."
@@ -5970,7 +5970,7 @@ msgstr "Famílies amb fonts"
 #: modules_v3/family_group_report/report.xml:3
 #: modules_v3/family_group_report/report.xml:85
 #: modules_v3/family_group_report/report.xml:93
-#: modules_v3/family_nav/module.php:189
+#: modules_v3/family_nav/module.php:196
 msgid "Family"
 msgstr "Família"
 
@@ -6257,7 +6257,7 @@ msgstr "Informació del fitxer"
 msgid "File containing places (CSV)"
 msgstr "Arxiu que conté els indrets (CSV)"
 
-#: addmedia.php:481 addmedia.php:502 admin_media_upload.php:198
+#: addmedia.php:480 addmedia.php:501 admin_media_upload.php:198
 #: help_text.php:1433
 msgid "File name on server"
 msgstr "Nom del fitxer al servidor"
@@ -6280,12 +6280,12 @@ msgstr "Fitxer parcialment carregat. Torneu-hi."
 msgid "Filename"
 msgstr "Nom de fitxer"
 
-#: addmedia.php:171 addmedia.php:310 admin_media_upload.php:112
+#: addmedia.php:170 addmedia.php:309 admin_media_upload.php:112
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
 msgstr "Els noms d'arxiu no poden contenir el caràcter “%s”."
 
-#: addmedia.php:176 addmedia.php:315 admin_media_upload.php:117
+#: addmedia.php:175 addmedia.php:314 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "Els noms d'arxiu no poden contenir l'extensió “%s”."
@@ -6408,7 +6408,7 @@ msgstr "Floral"
 msgid "Folder"
 msgstr "Directori"
 
-#: addmedia.php:522 admin_media_upload.php:210 help_text.php:1438
+#: addmedia.php:521 admin_media_upload.php:210 help_text.php:1438
 msgid "Folder name on server"
 msgstr "Nom del directori al servidor"
 
@@ -8863,22 +8863,22 @@ msgstr "Fitxers Multimèdia:"
 msgid "Media file"
 msgstr "Fitxer multimèdia"
 
-#: addmedia.php:338 addmedia.php:358
+#: addmedia.php:337 addmedia.php:357
 #, php-format
 msgid "Media file %1$s could not be renamed to %2$s."
 msgstr "No pot reanomenar-se l'arxiu multimèdia %1$s  com a %2$s"
 
-#: addmedia.php:356
+#: addmedia.php:355
 #, php-format
 msgid "Media file %1$s successfully renamed to %2$s."
 msgstr "S'ha reanomenat l'arxiu multimèdia %1$s com a %2$s"
 
-#: addmedia.php:363
+#: addmedia.php:362
 #, php-format
 msgid "Media file %s does not exist."
 msgstr "No existeix l'arxiu multimèdia %s"
 
-#: addmedia.php:466 admin_media_upload.php:184
+#: addmedia.php:465 admin_media_upload.php:184
 msgid "Media file to upload"
 msgstr "Fitxer multimèdia a carregar"
 
@@ -9796,7 +9796,7 @@ msgstr "No hi han dades de mapa per a aquesta persona"
 msgid "No matching facts found"
 msgstr "No s'han trobat els esdeveniments cercats"
 
-#: addmedia.php:180 addmedia.php:319 admin_media_upload.php:121
+#: addmedia.php:179 addmedia.php:318 admin_media_upload.php:121
 msgid "No media file was provided."
 msgstr "No s'ha donat arxiu multimèdia."
 
@@ -10259,7 +10259,7 @@ msgstr "Altres recerques"
 msgid "Other facts to show in charts"
 msgstr "Altres esdeveniments a mostrar als gràfics"
 
-#: addmedia.php:531 admin_media_upload.php:217
+#: addmedia.php:530 admin_media_upload.php:217
 msgid "Other folder… please type in"
 msgstr "Altres carpetes… entreu-les"
 
@@ -10425,7 +10425,7 @@ msgstr "Paraguai"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:578
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:583
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:585
-#: modules_v3/family_nav/module.php:187 modules_v3/family_nav/module.php:188
+#: modules_v3/family_nav/module.php:194 modules_v3/family_nav/module.php:195
 msgid "Parents"
 msgstr "Pares"
 
@@ -11440,7 +11440,7 @@ msgstr "Esborra aquesta ubicació?"
 msgid "Reno, Nevada"
 msgstr "Reno, Nevada"
 
-#: search.php:139
+#: admin_trees_places.php:98 search.php:139
 msgid "Replace with"
 msgstr "Canvia-ho per"
 
@@ -11811,7 +11811,7 @@ msgstr "Motor de recerca"
 msgid "Search filters"
 msgstr "Filtres de recerca"
 
-#: search.php:103 search.php:137
+#: admin_trees_places.php:96 search.php:103 search.php:137
 msgid "Search for"
 msgstr "Cerca per"
 
@@ -13399,7 +13399,7 @@ msgstr "Els detalls d'aquesta persona són privats."
 msgid "The family “%s” has been deleted, as it only has one member."
 msgstr "La família “%s” ha estat eliminada, ja que només té un membre."
 
-#: addmedia.php:190 admin_media_upload.php:131
+#: addmedia.php:189 admin_media_upload.php:131
 #, php-format
 msgid "The file %s already exists.  Use another filename."
 msgstr "El fitxer %s ja existeix. Trieu-ne un altre."
@@ -13448,15 +13448,15 @@ msgstr "El fitxer “%s” no existeix."
 msgid "The folder %s could not be deleted."
 msgstr ""
 
-#: addmedia.php:112 addmedia.php:123 addmedia.php:135 addmedia.php:274
-#: addmedia.php:285 addmedia.php:297 admin_media_upload.php:61
+#: addmedia.php:111 addmedia.php:122 addmedia.php:134 addmedia.php:273
+#: addmedia.php:284 addmedia.php:296 admin_media_upload.php:61
 #: admin_media_upload.php:72 admin_media_upload.php:84
 #: admin_trees_config.php:190
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "La carpeta %s no existeix, i no s'ha pogut crear."
 
-#: addmedia.php:110 addmedia.php:121 addmedia.php:272 addmedia.php:283
+#: addmedia.php:109 addmedia.php:120 addmedia.php:271 addmedia.php:282
 #: admin_media_upload.php:59 admin_media_upload.php:70
 #: admin_trees_config.php:188
 #, php-format
@@ -13698,7 +13698,7 @@ msgstr "Hi ha canvis pendents per a que els modereu"
 msgid "There have been no changes within the last %s days."
 msgstr "No hi ha hagut canvis en els darrers %s dies."
 
-#: addmedia.php:199 admin_media_upload.php:141 edit_interface.php:469
+#: addmedia.php:198 admin_media_upload.php:141 edit_interface.php:469
 msgid "There was an error uploading your file."
 msgstr "Ha ocorregut un error tot carregant el fitxer."
 
@@ -13770,7 +13770,7 @@ msgstr "Aquesta base de dades solament funciona amb la versió %s MySQL.  Aquí 
 msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Aquesta adreça de correu electrònic serà utilitzada per enviar el recordatori de contrasenya, les notificacions del lloc, i els missatges dels membres de la família que estan registrats en el lloc."
 
-#: addmedia.php:546
+#: addmedia.php:545
 msgid "This entry is ignored if you have entered a URL into the file name field."
 msgstr "Aquesta entrada s'ignorarà si heu entrat un URL al camp nom de fitxer."
 
@@ -13821,7 +13821,7 @@ msgstr "Aquest camp us permet introduïr o canviar la ressenya de la font vincul
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Aquest camp controla l'ordre amb el que apareixeran les entrades de PMF.<br><br>No cal que entreu els números seqüencialment. Si deixeu forats a l'esquema de numeració, podeu inserir-hi ítems més endavant. Per exemple, si feu servir els números  1, 6, 11, 16, podeu posteriorment inserir entrades amb els números de seqüència perduts. Es permeten números negatius i el zero que podeu utilitzar-les per inserir entrades davant del primer.<br><br>Quan més d'un ítem té els mateix número de posició, solament se'n veurà un d'ells."
 
-#: addmedia.php:332
+#: addmedia.php:331
 msgid "This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
 msgstr "Aquest fitxer és vinculat a una altra base de dades genealògica d'aquest servidor. No pot eliminar-se, reanomenar-se o moure's mentre es mantingui aquest enllaç."
 
@@ -14353,17 +14353,17 @@ msgstr ""
 msgid "Thu"
 msgstr "Dj"
 
-#: addmedia.php:372
+#: addmedia.php:371
 #, php-format
 msgid "Thumbnail file %1$s could not be renamed to %2$s."
 msgstr "No pot reanomenar-se l'arxiu miniatura %1$s com a %2$s"
 
-#: addmedia.php:370
+#: addmedia.php:369
 #, php-format
 msgid "Thumbnail file %1$s successfully renamed to %2$s."
 msgstr "S'ha reanomenat correctament l'arxiu miniatura %1$s com a %2$s"
 
-#: addmedia.php:377
+#: addmedia.php:376
 #, php-format
 msgid "Thumbnail file %s does not exist."
 msgstr "No existeix l'arxiu miniatura %s."
@@ -14373,11 +14373,11 @@ msgstr "No existeix l'arxiu miniatura %s."
 msgid "Thumbnail images"
 msgstr "Miniatures"
 
-#: addmedia.php:470 admin_media_upload.php:190 help_text.php:1446
+#: addmedia.php:469 admin_media_upload.php:190 help_text.php:1446
 msgid "Thumbnail to upload"
 msgstr "Miniatura a carregar"
 
-#: addmedia.php:149 admin_media_upload.php:98
+#: addmedia.php:148 admin_media_upload.php:98
 msgid "Thumbnails must be images."
 msgstr "Les miniatures han de ser imatges."
 
@@ -15736,7 +15736,7 @@ msgstr "A l'Agenda no hi ha cap entrada."
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "Heu seleccionat un GEDCOM amb un nom diferent. És correcte?"
 
-#: addmedia.php:482
+#: addmedia.php:481
 msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
 msgstr "També podeu entrar-hi un URL, començant amb &laquo;http://&raquo;."
 
@@ -16305,7 +16305,7 @@ msgid "click to edit"
 msgstr "polseu per editar"
 
 #. I18N: button label
-#: addmedia.php:248 addmedia.php:401 addmedia.php:736 edit_changes.php:240
+#: addmedia.php:247 addmedia.php:400 addmedia.php:735 edit_changes.php:240
 #: edit_interface.php:116 edit_interface.php:210 edit_interface.php:354
 #: edit_interface.php:415 edit_interface.php:1043 edit_interface.php:1151
 #: edit_interface.php:1294 edit_interface.php:1399 edit_interface.php:1507
@@ -18766,7 +18766,7 @@ msgstr "no"
 #: admin_trees_config.php:1271
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1992
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:779
-#: modules_v3/family_nav/module.php:295
+#: modules_v3/family_nav/module.php:302
 msgid "none"
 msgstr "cap"
 
@@ -18874,6 +18874,11 @@ msgstr "pendent"
 msgid "percentage"
 msgstr "percentatge"
 
+#. I18N: button label
+#: admin_trees_places.php:101
+msgid "preview"
+msgstr "Vista prèvia"
+
 #. I18N: button label, previous page
 #: library/WT/I18N.php:666 modules_v3/batch_update/admin_batch_update.php:94
 msgid "previous"
@@ -18950,7 +18955,7 @@ msgid "robot"
 msgstr "robot"
 
 #. I18N: button label
-#: addmedia.php:735 admin_module_blocks.php:91 admin_module_menus.php:112
+#: addmedia.php:734 admin_module_blocks.php:91 admin_module_menus.php:112
 #: admin_module_reports.php:91 admin_module_sidebar.php:111
 #: admin_module_tabs.php:112 admin_modules.php:161 admin_site_merge.php:142
 #: admin_trees_config.php:1294 admin_trees_manage.php:261 block_edit.php:56
@@ -19720,7 +19725,7 @@ msgstr "desconegut"
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2004
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:785
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:791
-#: modules_v3/family_nav/module.php:298 modules_v3/family_nav/module.php:301
+#: modules_v3/family_nav/module.php:305 modules_v3/family_nav/module.php:308
 msgctxt "unknown family"
 msgid "unknown"
 msgstr "desconegut"
@@ -19729,6 +19734,11 @@ msgstr "desconegut"
 #: library/WT/Gedcom/Code/Quay.php:39
 msgid "unreliable evidence"
 msgstr "proves poc fiables"
+
+#. I18N: button label
+#: admin_trees_places.php:102
+msgid "update"
+msgstr "Actualitza"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:182

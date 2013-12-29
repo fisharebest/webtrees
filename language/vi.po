@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VIETNAMESE LANGUAGE\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-12-28 11:49+0000\n"
+"POT-Creation-Date: 2013-12-29 12:41+0000\n"
 "PO-Revision-Date: 2013-06-05 09:22+0000\n"
 "Last-Translator: de tran <Unknown>\n"
 "Language-Team: VN LANGUAGE <trande@gmail.com >\n"
@@ -3533,7 +3533,7 @@ msgstr "Chọn hình nhỏ cần tải lên. Mặc dù hình nhỏ này có th�
 msgid "Choose user defined welcome text typed below"
 msgstr "Chọn lời chào người dùng xác định ghi bên dưới"
 
-#: addmedia.php:529 admin_media_upload.php:216
+#: addmedia.php:528 admin_media_upload.php:216
 msgid "Choose: "
 msgstr "Chọn: "
 
@@ -3992,7 +3992,7 @@ msgid "Create a new individual"
 msgstr "Tạo một cá nhân mới"
 
 #. I18N: A media object that is not linked to any other record
-#: addmedia.php:90 addmedia.php:407 admin_site_other.php:69
+#: addmedia.php:89 addmedia.php:406 admin_site_other.php:69
 msgid "Create a new media object"
 msgstr "Tạo đối tượng đa phương tiện mới"
 
@@ -5167,7 +5167,7 @@ msgstr "Ly dị theo thế kỷ"
 msgid "Djibouti"
 msgstr "Djibouti"
 
-#: addmedia.php:482 addmedia.php:510 admin_media_upload.php:202
+#: addmedia.php:481 addmedia.php:509 admin_media_upload.php:202
 msgid "Do not change to keep original file name."
 msgstr "Đừng thay đổi để giữ tên file gốc."
 
@@ -5185,7 +5185,7 @@ msgstr "Đừng niêm seal, lần niêm trước đã hủy bỏ"
 msgid "Do not seal: unauthorized"
 msgstr "Đừng niêm seal: không thẩm quyền"
 
-#: addmedia.php:725 admin_trees_config.php:1284 edit_interface.php:2338
+#: addmedia.php:724 admin_trees_config.php:1284 edit_interface.php:2338
 #: help_text.php:1283
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 #: modules_v3/batch_update/admin_batch_update.php:342
@@ -5339,7 +5339,7 @@ msgstr "Sửa Đổi Giới Tính"
 msgid "Edit media"
 msgstr "Sửa file nghe nhìn"
 
-#: addmedia.php:252 addmedia.php:411 library/WT/Controller/Media.php:55
+#: addmedia.php:251 addmedia.php:410 library/WT/Controller/Media.php:55
 msgid "Edit media object"
 msgstr "Chỉnh sửa đối tượng nghe nhìn"
 
@@ -5556,7 +5556,7 @@ msgstr "Nhập ID gia đình"
 msgid "Enter Individual ID"
 msgstr "Nhập số ID cá nhân"
 
-#: addmedia.php:434 modules_v3/gedcom_favorites/module.php:178
+#: addmedia.php:433 modules_v3/gedcom_favorites/module.php:178
 msgid "Enter an individual, family, or source ID"
 msgstr "Nhập một người, gia đình hay nguồn ID"
 
@@ -5568,7 +5568,7 @@ msgstr "Nhập một ghi chú tùy ý về nhân vật ưa thích này"
 msgid "Enter filename"
 msgstr "Nhập tên"
 
-#: addmedia.php:439
+#: addmedia.php:438
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
 msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
 msgstr "Nhập hoặc tìm ID một người, gia đình hay nguồn mà file nghe nhìn này liên kết đến."
@@ -5945,7 +5945,7 @@ msgstr "Gia đình và nguồn tài liệu"
 #: modules_v3/family_group_report/report.xml:3
 #: modules_v3/family_group_report/report.xml:85
 #: modules_v3/family_group_report/report.xml:93
-#: modules_v3/family_nav/module.php:189
+#: modules_v3/family_nav/module.php:196
 msgid "Family"
 msgstr "Gia đình"
 
@@ -6232,7 +6232,7 @@ msgstr "Thông tin file"
 msgid "File containing places (CSV)"
 msgstr "File chứa địa điểm (CSV)"
 
-#: addmedia.php:481 addmedia.php:502 admin_media_upload.php:198
+#: addmedia.php:480 addmedia.php:501 admin_media_upload.php:198
 #: help_text.php:1433
 msgid "File name on server"
 msgstr "Tên file ở máy phục vụ"
@@ -6255,12 +6255,12 @@ msgstr "Tập tin chỉ gửi lên nửa chừng, xin làm lại"
 msgid "Filename"
 msgstr "Tên file"
 
-#: addmedia.php:171 addmedia.php:310 admin_media_upload.php:112
+#: addmedia.php:170 addmedia.php:309 admin_media_upload.php:112
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
 msgstr "Tên tập tin không được có ký tự “%s”."
 
-#: addmedia.php:176 addmedia.php:315 admin_media_upload.php:117
+#: addmedia.php:175 addmedia.php:314 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "Tên tập tin không được có đuôi “%s”."
@@ -6383,7 +6383,7 @@ msgstr "Floréal"
 msgid "Folder"
 msgstr "Thư mục"
 
-#: addmedia.php:522 admin_media_upload.php:210 help_text.php:1438
+#: addmedia.php:521 admin_media_upload.php:210 help_text.php:1438
 msgid "Folder name on server"
 msgstr "Tên thư mục ở máy phục vụ"
 
@@ -8838,22 +8838,22 @@ msgstr "File phương tiện chứa:"
 msgid "Media file"
 msgstr "File nghe nhìn"
 
-#: addmedia.php:338 addmedia.php:358
+#: addmedia.php:337 addmedia.php:357
 #, php-format
 msgid "Media file %1$s could not be renamed to %2$s."
 msgstr "File nghe nhìn %1$s không thể đổi tên thành %2$s."
 
-#: addmedia.php:356
+#: addmedia.php:355
 #, php-format
 msgid "Media file %1$s successfully renamed to %2$s."
 msgstr "File nghe nhìn %1$s đã đổi tên thành công thành %2$s."
 
-#: addmedia.php:363
+#: addmedia.php:362
 #, php-format
 msgid "Media file %s does not exist."
 msgstr "File nghe nhìn %s không tồn tại."
 
-#: addmedia.php:466 admin_media_upload.php:184
+#: addmedia.php:465 admin_media_upload.php:184
 msgid "Media file to upload"
 msgstr "Tập tin đa phương tiện"
 
@@ -9769,7 +9769,7 @@ msgstr "Không có số liệu bản đồ cho người này"
 msgid "No matching facts found"
 msgstr "Không tìm thấy sự kiện nào khớp"
 
-#: addmedia.php:180 addmedia.php:319 admin_media_upload.php:121
+#: addmedia.php:179 addmedia.php:318 admin_media_upload.php:121
 msgid "No media file was provided."
 msgstr "Không có tập tin đa phương tiện nào được cung cấp."
 
@@ -10231,7 +10231,7 @@ msgstr "Các tìm kiếm khác"
 msgid "Other facts to show in charts"
 msgstr "Các sự kiện khác hiện trên biểu đồ"
 
-#: addmedia.php:531 admin_media_upload.php:217
+#: addmedia.php:530 admin_media_upload.php:217
 msgid "Other folder… please type in"
 msgstr "Thư mục khác… xin nhập vào"
 
@@ -10397,7 +10397,7 @@ msgstr "Paraguay"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:578
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:583
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:585
-#: modules_v3/family_nav/module.php:187 modules_v3/family_nav/module.php:188
+#: modules_v3/family_nav/module.php:194 modules_v3/family_nav/module.php:195
 msgid "Parents"
 msgstr "Cha mẹ"
 
@@ -11412,7 +11412,7 @@ msgstr "Bỏ địa điểm này?"
 msgid "Reno, Nevada"
 msgstr "Reno, Nevada"
 
-#: search.php:139
+#: admin_trees_places.php:98 search.php:139
 msgid "Replace with"
 msgstr "Thay bằng"
 
@@ -11783,7 +11783,7 @@ msgstr "Cơ chế truy tìm"
 msgid "Search filters"
 msgstr "Bộ lọc tìm kiếm"
 
-#: search.php:103 search.php:137
+#: admin_trees_places.php:96 search.php:103 search.php:137
 msgid "Search for"
 msgstr "Tìm"
 
@@ -13371,7 +13371,7 @@ msgstr "Chi tiết của cá nhân này không được tiết lộ."
 msgid "The family “%s” has been deleted, as it only has one member."
 msgstr "Gia đình  “%s” đã bị xóa, vì nó chỉ có một thành viên."
 
-#: addmedia.php:190 admin_media_upload.php:131
+#: addmedia.php:189 admin_media_upload.php:131
 #, php-format
 msgid "The file %s already exists.  Use another filename."
 msgstr "Tập tin %s đã có. Dùng một tên khác."
@@ -13420,15 +13420,15 @@ msgstr "Tập tin \"%s\" không tồn tại."
 msgid "The folder %s could not be deleted."
 msgstr ""
 
-#: addmedia.php:112 addmedia.php:123 addmedia.php:135 addmedia.php:274
-#: addmedia.php:285 addmedia.php:297 admin_media_upload.php:61
+#: addmedia.php:111 addmedia.php:122 addmedia.php:134 addmedia.php:273
+#: addmedia.php:284 addmedia.php:296 admin_media_upload.php:61
 #: admin_media_upload.php:72 admin_media_upload.php:84
 #: admin_trees_config.php:190
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Thư mục %s không tồn tại, và không thể tạo được."
 
-#: addmedia.php:110 addmedia.php:121 addmedia.php:272 addmedia.php:283
+#: addmedia.php:109 addmedia.php:120 addmedia.php:271 addmedia.php:282
 #: admin_media_upload.php:59 admin_media_upload.php:70
 #: admin_trees_config.php:188
 #, php-format
@@ -13670,7 +13670,7 @@ msgstr "Đang có các thay đổi để bạn xem chỉnh"
 msgid "There have been no changes within the last %s days."
 msgstr "Không có thay đổi nào trong vòng %s ngày qua."
 
-#: addmedia.php:199 admin_media_upload.php:141 edit_interface.php:469
+#: addmedia.php:198 admin_media_upload.php:141 edit_interface.php:469
 msgid "There was an error uploading your file."
 msgstr "Có lỗi khi tải tập tin của bạn lên."
 
@@ -13742,7 +13742,7 @@ msgstr "CSDL này chỉ chạy ở MySQL phiên bản %s. Bạn không thể cà
 msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Địa chỉ email này được dùng để gửi cho bạn lời nhắc về mật khẩu, thông báo về site, và các thông báo từ những thành viên gia đình khác có đăng ký ở site."
 
-#: addmedia.php:546
+#: addmedia.php:545
 msgid "This entry is ignored if you have entered a URL into the file name field."
 msgstr "Mục nhập này bị bỏ qua nếu bạn nhập vào một URL vào trường tên."
 
@@ -13793,7 +13793,7 @@ msgstr "Trường này cho phép bạn thay đổi bản ghi nguồn là sự ki
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Trường này kiểm soát thứ tự mục FAQ hiện ra.<br><br>Bạn không cần phải nhập vào số thứ tự. Nếu bạn để các lổ trống trong chuỗi số, bạn có thể chèn thêm vào sau này. Thí dụ, nếu bạn dùng số 1, 6, 11, 16, bạn có thể sau này chèn các chuỗi số còn thiếu vào. Số âm và số zero cũng dùng được, và có thể dùng để thêm trước câu đầu.<br><br>Khi có nhiều hơn một mục FAQ cùng số vị trí, chỉ một mục sẽ thấy được."
 
-#: addmedia.php:332
+#: addmedia.php:331
 msgid "This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
 msgstr "Fine này liên kết đến một CSDL gia phả khác trên máy chủ. Nó không thể xóa, di chuyển hay đổi tên được cho đến khi liên kết đó được loại bỏ."
 
@@ -14325,17 +14325,17 @@ msgstr ""
 msgid "Thu"
 msgstr "T5"
 
-#: addmedia.php:372
+#: addmedia.php:371
 #, php-format
 msgid "Thumbnail file %1$s could not be renamed to %2$s."
 msgstr "File hình nhỏ %1$s không thể đổi tên thành %2$s."
 
-#: addmedia.php:370
+#: addmedia.php:369
 #, php-format
 msgid "Thumbnail file %1$s successfully renamed to %2$s."
 msgstr "File hình nhỏ %1$s đã đổi tên thành công thành %2$s."
 
-#: addmedia.php:377
+#: addmedia.php:376
 #, php-format
 msgid "Thumbnail file %s does not exist."
 msgstr "File nhình nhỏ %s không tồn tại."
@@ -14345,11 +14345,11 @@ msgstr "File nhình nhỏ %s không tồn tại."
 msgid "Thumbnail images"
 msgstr "Ảnh nhỏ"
 
-#: addmedia.php:470 admin_media_upload.php:190 help_text.php:1446
+#: addmedia.php:469 admin_media_upload.php:190 help_text.php:1446
 msgid "Thumbnail to upload"
 msgstr "Bức chân dung nhỏ"
 
-#: addmedia.php:149 admin_media_upload.php:98
+#: addmedia.php:148 admin_media_upload.php:98
 msgid "Thumbnails must be images."
 msgstr "Ảnh nhỏ phải ở dạng hình ảnh."
 
@@ -15705,7 +15705,7 @@ msgstr "Bạn đã không tạo ra mục Nhật ký nào."
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "Bạn đã chọn file GEDCOM có tên khác. Đúng không?"
 
-#: addmedia.php:482
+#: addmedia.php:481
 msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
 msgstr "Bạn có thể nhập URL, bắt đầu bằng &laquo;http://&raquo;."
 
@@ -16274,7 +16274,7 @@ msgid "click to edit"
 msgstr "nhấp để chỉnh sửa"
 
 #. I18N: button label
-#: addmedia.php:248 addmedia.php:401 addmedia.php:736 edit_changes.php:240
+#: addmedia.php:247 addmedia.php:400 addmedia.php:735 edit_changes.php:240
 #: edit_interface.php:116 edit_interface.php:210 edit_interface.php:354
 #: edit_interface.php:415 edit_interface.php:1043 edit_interface.php:1151
 #: edit_interface.php:1294 edit_interface.php:1399 edit_interface.php:1507
@@ -18732,7 +18732,7 @@ msgstr "không"
 #: admin_trees_config.php:1271
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1992
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:779
-#: modules_v3/family_nav/module.php:295
+#: modules_v3/family_nav/module.php:302
 msgid "none"
 msgstr "không ai"
 
@@ -18840,6 +18840,11 @@ msgstr "chờ"
 msgid "percentage"
 msgstr "tỷ lệ phần trăm"
 
+#. I18N: button label
+#: admin_trees_places.php:101
+msgid "preview"
+msgstr "Xem trước"
+
 #. I18N: button label, previous page
 #: library/WT/I18N.php:666 modules_v3/batch_update/admin_batch_update.php:94
 msgid "previous"
@@ -18916,7 +18921,7 @@ msgid "robot"
 msgstr "robot"
 
 #. I18N: button label
-#: addmedia.php:735 admin_module_blocks.php:91 admin_module_menus.php:112
+#: addmedia.php:734 admin_module_blocks.php:91 admin_module_menus.php:112
 #: admin_module_reports.php:91 admin_module_sidebar.php:111
 #: admin_module_tabs.php:112 admin_modules.php:161 admin_site_merge.php:142
 #: admin_trees_config.php:1294 admin_trees_manage.php:261 block_edit.php:56
@@ -19686,7 +19691,7 @@ msgstr "không biết"
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2004
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:785
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:791
-#: modules_v3/family_nav/module.php:298 modules_v3/family_nav/module.php:301
+#: modules_v3/family_nav/module.php:305 modules_v3/family_nav/module.php:308
 msgctxt "unknown family"
 msgid "unknown"
 msgstr "không biết"
@@ -19695,6 +19700,11 @@ msgstr "không biết"
 #: library/WT/Gedcom/Code/Quay.php:39
 msgid "unreliable evidence"
 msgstr "chứng cứ không tin cậy"
+
+#. I18N: button label
+#: admin_trees_places.php:102
+msgid "update"
+msgstr "Cập nhật"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:182

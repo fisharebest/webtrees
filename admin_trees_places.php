@@ -93,13 +93,13 @@ $controller
 	<dl>
 		<dt><?php echo WT_I18N::translate('Family tree'); ?></dt>
 		<dd><?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM, 'autofocus'); ?></dd>
-		<dt><label for="search">Search</label></dt>
-		<dd><input name="search" id="search" type="text" value="<?= WT_Filter::escapeHtml($search) ?>" required></dd>
-		<dt><label for="replace">Replace</label></dt>
-		<dd><input name="replace" id="replace" type="text" value="<?= WT_Filter::escapeHtml($replace) ?>" required></dd>
+		<dt><label for="search"><?php echo WT_I18N::translate('Search for'); ?></label></dt>
+		<dd><input name="search" id="search" type="text" size="30" value="<?= WT_Filter::escapeHtml($search) ?>" required></dd>
+		<dt><label for="replace"><?php echo WT_I18N::translate('Replace with'); ?></label></dt>
+		<dd><input name="replace" id="replace" type="text" size="30" value="<?= WT_Filter::escapeHtml($replace) ?>" required></dd>
 	</dl>
-	<input type="submit" value="preview">
-	<input type="submit" value="update" name="confirm">
+	<button type="submit" value="preview"><?php echo /* I18N: button label */ WT_I18N::translate('preview'); ?></button>
+	<button type="submit" value="update" name="confirm"><?php echo /* I18N: button label */ WT_I18N::translate('update'); ?></button>
 </form>
 
 <?php if ($search && $replace) { ?>

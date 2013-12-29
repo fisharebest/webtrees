@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-12-28 11:49+0000\n"
+"POT-Creation-Date: 2013-12-29 12:41+0000\n"
 "PO-Revision-Date: 2013-03-17 18:33+0000\n"
 "Last-Translator: Adem GENÇ <Unknown>\n"
 "Language-Team: Adem GENÇ <tutastes@gmail.com>\n"
@@ -3546,7 +3546,7 @@ msgstr ""
 msgid "Choose user defined welcome text typed below"
 msgstr "Aşağıda kulanıcı tanımlı hoş geldiniz yazılmış metin seçin"
 
-#: addmedia.php:529 admin_media_upload.php:216
+#: addmedia.php:528 admin_media_upload.php:216
 msgid "Choose: "
 msgstr "Seçin: "
 
@@ -4005,7 +4005,7 @@ msgid "Create a new individual"
 msgstr "Yeni birey oluştur"
 
 #. I18N: A media object that is not linked to any other record
-#: addmedia.php:90 addmedia.php:407 admin_site_other.php:69
+#: addmedia.php:89 addmedia.php:406 admin_site_other.php:69
 msgid "Create a new media object"
 msgstr "Yeni medya öğesi oluştur"
 
@@ -5180,7 +5180,7 @@ msgstr "Yüzyıla göre boşanmalar"
 msgid "Djibouti"
 msgstr "Cibuti"
 
-#: addmedia.php:482 addmedia.php:510 admin_media_upload.php:202
+#: addmedia.php:481 addmedia.php:509 admin_media_upload.php:202
 msgid "Do not change to keep original file name."
 msgstr "Orijinal dosya adını konurmak için değişiklik yapmayınız."
 
@@ -5198,7 +5198,7 @@ msgstr "Kapatma değil, önceki kapatma iptalı"
 msgid "Do not seal: unauthorized"
 msgstr "Kapatma değil: onaylanmamış"
 
-#: addmedia.php:725 admin_trees_config.php:1284 edit_interface.php:2338
+#: addmedia.php:724 admin_trees_config.php:1284 edit_interface.php:2338
 #: help_text.php:1283
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 #: modules_v3/batch_update/admin_batch_update.php:342
@@ -5352,7 +5352,7 @@ msgstr "Cinsiyet düzenle"
 msgid "Edit media"
 msgstr "Medya düzenle"
 
-#: addmedia.php:252 addmedia.php:411 library/WT/Controller/Media.php:55
+#: addmedia.php:251 addmedia.php:410 library/WT/Controller/Media.php:55
 msgid "Edit media object"
 msgstr "Medya öğesi düzenle"
 
@@ -5569,7 +5569,7 @@ msgstr "Aile ID Gir"
 msgid "Enter Individual ID"
 msgstr "Birey ID Girin"
 
-#: addmedia.php:434 modules_v3/gedcom_favorites/module.php:178
+#: addmedia.php:433 modules_v3/gedcom_favorites/module.php:178
 msgid "Enter an individual, family, or source ID"
 msgstr "Bir Kişi, Aile, yada Kaynak ID girin"
 
@@ -5581,7 +5581,7 @@ msgstr "Bu favoriyle ilgili bir not girin(isteğe bağlı)"
 msgid "Enter filename"
 msgstr "Dosya adı gir"
 
-#: addmedia.php:439
+#: addmedia.php:438
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
 msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
 msgstr "Bu medya öğesi bağlamak istediğiniz kişi, aile veya kaynak için ID girin veya arayın."
@@ -5958,7 +5958,7 @@ msgstr "Kaynaklar ile aileler"
 #: modules_v3/family_group_report/report.xml:3
 #: modules_v3/family_group_report/report.xml:85
 #: modules_v3/family_group_report/report.xml:93
-#: modules_v3/family_nav/module.php:189
+#: modules_v3/family_nav/module.php:196
 msgid "Family"
 msgstr "Aile"
 
@@ -6245,7 +6245,7 @@ msgstr "Dosya bilgileri"
 msgid "File containing places (CSV)"
 msgstr "Yerlerin içerdiği dosya (CSV"
 
-#: addmedia.php:481 addmedia.php:502 admin_media_upload.php:198
+#: addmedia.php:480 addmedia.php:501 admin_media_upload.php:198
 #: help_text.php:1433
 msgid "File name on server"
 msgstr "Sunucudaki dosya adı"
@@ -6268,12 +6268,12 @@ msgstr "Dosya sadece kısmen yüklendi, lütfen tekrar deneyin"
 msgid "Filename"
 msgstr "Dosya adı"
 
-#: addmedia.php:171 addmedia.php:310 admin_media_upload.php:112
+#: addmedia.php:170 addmedia.php:309 admin_media_upload.php:112
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
 msgstr "Dosya adlarında içeren “%s” karakterlere izin verilemez."
 
-#: addmedia.php:176 addmedia.php:315 admin_media_upload.php:117
+#: addmedia.php:175 addmedia.php:314 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "Dosya adlarında içeren “%s” uzantılara izin verilemez."
@@ -6396,7 +6396,7 @@ msgstr ""
 msgid "Folder"
 msgstr "Klasör"
 
-#: addmedia.php:522 admin_media_upload.php:210 help_text.php:1438
+#: addmedia.php:521 admin_media_upload.php:210 help_text.php:1438
 msgid "Folder name on server"
 msgstr "Sunucudaki klasör adı"
 
@@ -8851,22 +8851,22 @@ msgstr "Medya içerikleri:"
 msgid "Media file"
 msgstr "Medya dosya"
 
-#: addmedia.php:338 addmedia.php:358
+#: addmedia.php:337 addmedia.php:357
 #, php-format
 msgid "Media file %1$s could not be renamed to %2$s."
 msgstr "Ana medya %1$s dosyası %2$s olarak yeniden adlandırılanmaz."
 
-#: addmedia.php:356
+#: addmedia.php:355
 #, php-format
 msgid "Media file %1$s successfully renamed to %2$s."
 msgstr "Medya dosyası %1$s başarıyla %2$s olarak yeniden adlandırıldı."
 
-#: addmedia.php:363
+#: addmedia.php:362
 #, php-format
 msgid "Media file %s does not exist."
 msgstr "Medya %s dosyası mevcut değil."
 
-#: addmedia.php:466 admin_media_upload.php:184
+#: addmedia.php:465 admin_media_upload.php:184
 msgid "Media file to upload"
 msgstr "Medya dosyası yükle"
 
@@ -9784,7 +9784,7 @@ msgstr "Bu birey için harita verisi yok"
 msgid "No matching facts found"
 msgstr "Eşlenen olgular bulunamadı"
 
-#: addmedia.php:180 addmedia.php:319 admin_media_upload.php:121
+#: addmedia.php:179 addmedia.php:318 admin_media_upload.php:121
 msgid "No media file was provided."
 msgstr "Hiçbir medya dosyası sağlanmadı."
 
@@ -10247,7 +10247,7 @@ msgstr "Diğer Aramalar"
 msgid "Other facts to show in charts"
 msgstr "Çizelgede gösterilecek diğer olgular"
 
-#: addmedia.php:531 admin_media_upload.php:217
+#: addmedia.php:530 admin_media_upload.php:217
 msgid "Other folder… please type in"
 msgstr "Diğer dizin… lütfen yazın"
 
@@ -10413,7 +10413,7 @@ msgstr "Paraguay"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:578
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:583
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:585
-#: modules_v3/family_nav/module.php:187 modules_v3/family_nav/module.php:188
+#: modules_v3/family_nav/module.php:194 modules_v3/family_nav/module.php:195
 msgid "Parents"
 msgstr "Ebeveynler"
 
@@ -11428,7 +11428,7 @@ msgstr "Bu konumu kaldırmak istiyor musunuz?"
 msgid "Reno, Nevada"
 msgstr "Reno, Nevada"
 
-#: search.php:139
+#: admin_trees_places.php:98 search.php:139
 msgid "Replace with"
 msgstr "İle değiştir"
 
@@ -11799,7 +11799,7 @@ msgstr "Arama motoru"
 msgid "Search filters"
 msgstr "Arama filtreleri"
 
-#: search.php:103 search.php:137
+#: admin_trees_places.php:96 search.php:103 search.php:137
 msgid "Search for"
 msgstr "İçin ara"
 
@@ -13387,7 +13387,7 @@ msgstr "Bu bireyin ayrıntıları hususidir."
 msgid "The family “%s” has been deleted, as it only has one member."
 msgstr "Sadece bir üye sahip olan aile \"%s\" silindi."
 
-#: addmedia.php:190 admin_media_upload.php:131
+#: addmedia.php:189 admin_media_upload.php:131
 #, php-format
 msgid "The file %s already exists.  Use another filename."
 msgstr "%s dosyası zaten var. Başka bir dosya adı kullanın."
@@ -13436,15 +13436,15 @@ msgstr "Dosya “%s” mevcut değil."
 msgid "The folder %s could not be deleted."
 msgstr ""
 
-#: addmedia.php:112 addmedia.php:123 addmedia.php:135 addmedia.php:274
-#: addmedia.php:285 addmedia.php:297 admin_media_upload.php:61
+#: addmedia.php:111 addmedia.php:122 addmedia.php:134 addmedia.php:273
+#: addmedia.php:284 addmedia.php:296 admin_media_upload.php:61
 #: admin_media_upload.php:72 admin_media_upload.php:84
 #: admin_trees_config.php:190
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "%s klasör mevcut değil, ve oluşturulamadı."
 
-#: addmedia.php:110 addmedia.php:121 addmedia.php:272 addmedia.php:283
+#: addmedia.php:109 addmedia.php:120 addmedia.php:271 addmedia.php:282
 #: admin_media_upload.php:59 admin_media_upload.php:70
 #: admin_trees_config.php:188
 #, php-format
@@ -13686,7 +13686,7 @@ msgstr "Ilımlıda bekleyen değişiklikler mevcut."
 msgid "There have been no changes within the last %s days."
 msgstr "Son %s gün içinde herhangi bir değişiklik olmamıştır."
 
-#: addmedia.php:199 admin_media_upload.php:141 edit_interface.php:469
+#: addmedia.php:198 admin_media_upload.php:141 edit_interface.php:469
 msgid "There was an error uploading your file."
 msgstr "Dosyanız yüklenirken bir hata oluştu."
 
@@ -13758,7 +13758,7 @@ msgstr "Bu veritabanı MySQL sürümü %s kullanıyor. Burada webtrees kuramazs�
 msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Bu e-posta adresi şifre unuttuğunuzda, site bildirimlerinde ve sitede kayıtlı olan diğer aile üyelerine mesaj göndermek veya almak için kullanılacaktır."
 
-#: addmedia.php:546
+#: addmedia.php:545
 msgid "This entry is ignored if you have entered a URL into the file name field."
 msgstr "Bu girişe eğer dosya adı alanına bir URL girerseniz yoksayılacaktır."
 
@@ -13809,7 +13809,7 @@ msgstr ""
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr ""
 
-#: addmedia.php:332
+#: addmedia.php:331
 msgid "This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
 msgstr "Bu dosya bu sunucu üzerindeki başka bir soyağacı veritabanına bağlıdır. Bu bağlantı kaldırılana kadar silinemez, taşınamaz, veya yeniden adlandırılanmaz."
 
@@ -14341,17 +14341,17 @@ msgstr ""
 msgid "Thu"
 msgstr "Prş"
 
-#: addmedia.php:372
+#: addmedia.php:371
 #, php-format
 msgid "Thumbnail file %1$s could not be renamed to %2$s."
 msgstr "Tırnak önizleme %1$s dosyası %2$s olarak yeniden adlandırılanmadı."
 
-#: addmedia.php:370
+#: addmedia.php:369
 #, php-format
 msgid "Thumbnail file %1$s successfully renamed to %2$s."
 msgstr "Tırnak önizleme %1$s dosyası %2$s olarak başarıyla adlandırıldı."
 
-#: addmedia.php:377
+#: addmedia.php:376
 #, php-format
 msgid "Thumbnail file %s does not exist."
 msgstr "Tırnak önizleme %s dosyası mevcut değil."
@@ -14361,11 +14361,11 @@ msgstr "Tırnak önizleme %s dosyası mevcut değil."
 msgid "Thumbnail images"
 msgstr "Tırnakönizleme resimleri"
 
-#: addmedia.php:470 admin_media_upload.php:190 help_text.php:1446
+#: addmedia.php:469 admin_media_upload.php:190 help_text.php:1446
 msgid "Thumbnail to upload"
 msgstr "Tırnak önizleme dosyası yükle"
 
-#: addmedia.php:149 admin_media_upload.php:98
+#: addmedia.php:148 admin_media_upload.php:98
 msgid "Thumbnails must be images."
 msgstr "Tırnakönizleme resim olmalıdır."
 
@@ -15724,7 +15724,7 @@ msgstr "Herhangi bir günlük öğelerini oluşturmadınız."
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "Siz farklı bir adına sahip bir GEDCOM seçtiniz. Bu doğru mudur?"
 
-#: addmedia.php:482
+#: addmedia.php:481
 msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
 msgstr "Bir URL girin, &laquo;http://&raquo; ile başlayan."
 
@@ -16293,7 +16293,7 @@ msgid "click to edit"
 msgstr "tıkla düzelt"
 
 #. I18N: button label
-#: addmedia.php:248 addmedia.php:401 addmedia.php:736 edit_changes.php:240
+#: addmedia.php:247 addmedia.php:400 addmedia.php:735 edit_changes.php:240
 #: edit_interface.php:116 edit_interface.php:210 edit_interface.php:354
 #: edit_interface.php:415 edit_interface.php:1043 edit_interface.php:1151
 #: edit_interface.php:1294 edit_interface.php:1399 edit_interface.php:1507
@@ -18753,7 +18753,7 @@ msgstr "hayır"
 #: admin_trees_config.php:1271
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1992
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:779
-#: modules_v3/family_nav/module.php:295
+#: modules_v3/family_nav/module.php:302
 msgid "none"
 msgstr "hiçbiri"
 
@@ -18861,6 +18861,11 @@ msgstr "bekliyor"
 msgid "percentage"
 msgstr "yüzde"
 
+#. I18N: button label
+#: admin_trees_places.php:101
+msgid "preview"
+msgstr "Önizleme"
+
 #. I18N: button label, previous page
 #: library/WT/I18N.php:666 modules_v3/batch_update/admin_batch_update.php:94
 msgid "previous"
@@ -18937,7 +18942,7 @@ msgid "robot"
 msgstr "robot"
 
 #. I18N: button label
-#: addmedia.php:735 admin_module_blocks.php:91 admin_module_menus.php:112
+#: addmedia.php:734 admin_module_blocks.php:91 admin_module_menus.php:112
 #: admin_module_reports.php:91 admin_module_sidebar.php:111
 #: admin_module_tabs.php:112 admin_modules.php:161 admin_site_merge.php:142
 #: admin_trees_config.php:1294 admin_trees_manage.php:261 block_edit.php:56
@@ -19707,7 +19712,7 @@ msgstr "bilinmiyor"
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2004
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:785
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:791
-#: modules_v3/family_nav/module.php:298 modules_v3/family_nav/module.php:301
+#: modules_v3/family_nav/module.php:305 modules_v3/family_nav/module.php:308
 msgctxt "unknown family"
 msgid "unknown"
 msgstr "bilinmiyor"
@@ -19716,6 +19721,11 @@ msgstr "bilinmiyor"
 #: library/WT/Gedcom/Code/Quay.php:39
 msgid "unreliable evidence"
 msgstr "güvenilmez kanıt"
+
+#. I18N: button label
+#: admin_trees_places.php:102
+msgid "update"
+msgstr "Güncelle"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:182

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-12-28 11:49+0000\n"
+"POT-Creation-Date: 2013-12-29 12:41+0000\n"
 "PO-Revision-Date: 2013-05-20 10:30+0000\n"
 "Last-Translator: Roman Koshkin <mar2008m@rambler.ru>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -3584,7 +3584,7 @@ msgstr "Виберіть зображення мініатюри, яке Ви х
 msgid "Choose user defined welcome text typed below"
 msgstr "Використовувати текст привітання заданий нижче"
 
-#: addmedia.php:529 admin_media_upload.php:216
+#: addmedia.php:528 admin_media_upload.php:216
 msgid "Choose: "
 msgstr "Выберите: "
 
@@ -4043,7 +4043,7 @@ msgid "Create a new individual"
 msgstr "Створити нову персону"
 
 #. I18N: A media object that is not linked to any other record
-#: addmedia.php:90 addmedia.php:407 admin_site_other.php:69
+#: addmedia.php:89 addmedia.php:406 admin_site_other.php:69
 msgid "Create a new media object"
 msgstr "Створіть новий медіа-об'єкт"
 
@@ -5218,7 +5218,7 @@ msgstr "Середній вік вступу в шлюб за століттям
 msgid "Djibouti"
 msgstr "Джібуті"
 
-#: addmedia.php:482 addmedia.php:510 admin_media_upload.php:202
+#: addmedia.php:481 addmedia.php:509 admin_media_upload.php:202
 msgid "Do not change to keep original file name."
 msgstr "Не змінювати, щоб зберегти початкове ім'я файлу."
 
@@ -5236,7 +5236,7 @@ msgstr "Неназначено, попереднє призначення ска
 msgid "Do not seal: unauthorized"
 msgstr "Неназначено: несанкціонований"
 
-#: addmedia.php:725 admin_trees_config.php:1284 edit_interface.php:2338
+#: addmedia.php:724 admin_trees_config.php:1284 edit_interface.php:2338
 #: help_text.php:1283
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 #: modules_v3/batch_update/admin_batch_update.php:342
@@ -5390,7 +5390,7 @@ msgstr "Редагувати стать"
 msgid "Edit media"
 msgstr "Редагувати медіаоб'ект"
 
-#: addmedia.php:252 addmedia.php:411 library/WT/Controller/Media.php:55
+#: addmedia.php:251 addmedia.php:410 library/WT/Controller/Media.php:55
 msgid "Edit media object"
 msgstr "Редагувати медіаоб'ект"
 
@@ -5607,7 +5607,7 @@ msgstr "Введіть ID сім'ї"
 msgid "Enter Individual ID"
 msgstr "Введіть ID персони"
 
-#: addmedia.php:434 modules_v3/gedcom_favorites/module.php:178
+#: addmedia.php:433 modules_v3/gedcom_favorites/module.php:178
 msgid "Enter an individual, family, or source ID"
 msgstr "Введіть номер запису персони, сім'ї або джерела"
 
@@ -5619,7 +5619,7 @@ msgstr "Введіть додаткове зауваження про обран
 msgid "Enter filename"
 msgstr "Ввести ім'я файлу"
 
-#: addmedia.php:439
+#: addmedia.php:438
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
 msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
 msgstr "Введіть або знайдіть ID персони, сім'ї або джерела до якого приєднати цей медіаоб'ект."
@@ -5996,7 +5996,7 @@ msgstr "Сім'ї з джерелами"
 #: modules_v3/family_group_report/report.xml:3
 #: modules_v3/family_group_report/report.xml:85
 #: modules_v3/family_group_report/report.xml:93
-#: modules_v3/family_nav/module.php:189
+#: modules_v3/family_nav/module.php:196
 msgid "Family"
 msgstr "Сім’я"
 
@@ -6283,7 +6283,7 @@ msgstr "Інформація про файл"
 msgid "File containing places (CSV)"
 msgstr "Файл містить місця розташування (CSV​​)"
 
-#: addmedia.php:481 addmedia.php:502 admin_media_upload.php:198
+#: addmedia.php:480 addmedia.php:501 admin_media_upload.php:198
 #: help_text.php:1433
 msgid "File name on server"
 msgstr "Ім'я файлу на сервері"
@@ -6306,12 +6306,12 @@ msgstr "Файл завантажений частково. Спробуйте �
 msgid "Filename"
 msgstr "Ім'я файлу"
 
-#: addmedia.php:171 addmedia.php:310 admin_media_upload.php:112
+#: addmedia.php:170 addmedia.php:309 admin_media_upload.php:112
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
 msgstr "Імена файлів не можуть містити символ “%s”."
 
-#: addmedia.php:176 addmedia.php:315 admin_media_upload.php:117
+#: addmedia.php:175 addmedia.php:314 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "Імена файлів не можуть мати розширення “%s”."
@@ -6434,7 +6434,7 @@ msgstr "Флореаль"
 msgid "Folder"
 msgstr "Папка"
 
-#: addmedia.php:522 admin_media_upload.php:210 help_text.php:1438
+#: addmedia.php:521 admin_media_upload.php:210 help_text.php:1438
 msgid "Folder name on server"
 msgstr "Ім'я папки на сервері"
 
@@ -8889,22 +8889,22 @@ msgstr "Медіа містить:"
 msgid "Media file"
 msgstr "Медіафайл"
 
-#: addmedia.php:338 addmedia.php:358
+#: addmedia.php:337 addmedia.php:357
 #, php-format
 msgid "Media file %1$s could not be renamed to %2$s."
 msgstr "Медіафайл %1$s не може бути перейменовано в %2$s."
 
-#: addmedia.php:356
+#: addmedia.php:355
 #, php-format
 msgid "Media file %1$s successfully renamed to %2$s."
 msgstr "Медіафайл %1$s успішно перейменовано в %2$s."
 
-#: addmedia.php:363
+#: addmedia.php:362
 #, php-format
 msgid "Media file %s does not exist."
 msgstr "Медіафайл% s не існує."
 
-#: addmedia.php:466 admin_media_upload.php:184
+#: addmedia.php:465 admin_media_upload.php:184
 msgid "Media file to upload"
 msgstr "Виберіть мультимедійний файл"
 
@@ -9824,7 +9824,7 @@ msgstr "Для цієї персони карт немає"
 msgid "No matching facts found"
 msgstr "Не знайдено співпадаючих фактів"
 
-#: addmedia.php:180 addmedia.php:319 admin_media_upload.php:121
+#: addmedia.php:179 addmedia.php:318 admin_media_upload.php:121
 msgid "No media file was provided."
 msgstr "Медіа-файл не був наданий."
 
@@ -10288,7 +10288,7 @@ msgstr "Інші варіанти пошуку"
 msgid "Other facts to show in charts"
 msgstr "Інші факти для відображення на схемах"
 
-#: addmedia.php:531 admin_media_upload.php:217
+#: addmedia.php:530 admin_media_upload.php:217
 msgid "Other folder… please type in"
 msgstr "Інша папка … введіть, будь ласка"
 
@@ -10454,7 +10454,7 @@ msgstr "Парагвай"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:578
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:583
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:585
-#: modules_v3/family_nav/module.php:187 modules_v3/family_nav/module.php:188
+#: modules_v3/family_nav/module.php:194 modules_v3/family_nav/module.php:195
 msgid "Parents"
 msgstr "Батьки"
 
@@ -11469,7 +11469,7 @@ msgstr "Видалити це місце розташування?"
 msgid "Reno, Nevada"
 msgstr "Ріно, штат Невада"
 
-#: search.php:139
+#: admin_trees_places.php:98 search.php:139
 msgid "Replace with"
 msgstr "Замінити на"
 
@@ -11840,7 +11840,7 @@ msgstr "Пошукова система"
 msgid "Search filters"
 msgstr "Фільтри пошуку"
 
-#: search.php:103 search.php:137
+#: admin_trees_places.php:96 search.php:103 search.php:137
 msgid "Search for"
 msgstr "Пошук по"
 
@@ -13428,7 +13428,7 @@ msgstr "Подробиці цієї людини є приватними."
 msgid "The family “%s” has been deleted, as it only has one member."
 msgstr "Родина “%s” видалено, вона складається з однієї людини."
 
-#: addmedia.php:190 admin_media_upload.php:131
+#: addmedia.php:189 admin_media_upload.php:131
 #, php-format
 msgid "The file %s already exists.  Use another filename."
 msgstr "Файл %s вже існує. Використовуйте інше ім'я файлу."
@@ -13477,15 +13477,15 @@ msgstr "Файл “%s” не існує."
 msgid "The folder %s could not be deleted."
 msgstr ""
 
-#: addmedia.php:112 addmedia.php:123 addmedia.php:135 addmedia.php:274
-#: addmedia.php:285 addmedia.php:297 admin_media_upload.php:61
+#: addmedia.php:111 addmedia.php:122 addmedia.php:134 addmedia.php:273
+#: addmedia.php:284 addmedia.php:296 admin_media_upload.php:61
 #: admin_media_upload.php:72 admin_media_upload.php:84
 #: admin_trees_config.php:190
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Папка %s не існує, і вона не може бути створена."
 
-#: addmedia.php:110 addmedia.php:121 addmedia.php:272 addmedia.php:283
+#: addmedia.php:109 addmedia.php:120 addmedia.php:271 addmedia.php:282
 #: admin_media_upload.php:59 admin_media_upload.php:70
 #: admin_trees_config.php:188
 #, php-format
@@ -13727,7 +13727,7 @@ msgstr "Є очікують зміни для модерування."
 msgid "There have been no changes within the last %s days."
 msgstr "Змін за останні %s днів немає."
 
-#: addmedia.php:199 admin_media_upload.php:141 edit_interface.php:469
+#: addmedia.php:198 admin_media_upload.php:141 edit_interface.php:469
 msgid "There was an error uploading your file."
 msgstr "Помилка при завантаженні файлу."
 
@@ -13799,7 +13799,7 @@ msgstr "Ця база даних працює тільки з MySQL версіє
 msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Ця адреса буде використовуватися для відправки вам нагадування пароля, оповіщення та повідомлення сайту, а також від інших членів сім'ї, зареєстрованих на сайті."
 
-#: addmedia.php:546
+#: addmedia.php:545
 msgid "This entry is ignored if you have entered a URL into the file name field."
 msgstr "Ця запис ігнорується, якщо ввели URL в поле імені файлу."
 
@@ -13850,7 +13850,7 @@ msgstr "Це поле дозволяє змінити запис про джер
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Це поле визначає позицію ЧаВО записи в списку.<br><br>Вам не потрібно вводити цифри послідовно. Пропущену нумерацію ви можете додати пізніше. Наприклад, якщо ви використовуєте числа 1, 6, 11, 16, пізніше ви зможете вставити позицію з відсутніми номерами. Негативні числа і нуль дозволені, і можуть бути використані для вставки елементів у верхній частині списку.<br><br>Коли кілька ЧаВО записів мають один і той же номер позиції, то, тільки одна з цих записів буде видна."
 
-#: addmedia.php:332
+#: addmedia.php:331
 msgid "This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
 msgstr "Цей файл пов'язаний з іншого генеалогічної базою даних на сервері і тому не може бути видалений, перемешен або перейменований до тих пір, поки цей зв'язок не видалено."
 
@@ -14382,17 +14382,17 @@ msgstr ""
 msgid "Thu"
 msgstr "Чтв"
 
-#: addmedia.php:372
+#: addmedia.php:371
 #, php-format
 msgid "Thumbnail file %1$s could not be renamed to %2$s."
 msgstr "Мініатюра %1$s не може бути перейменовано в %2$s."
 
-#: addmedia.php:370
+#: addmedia.php:369
 #, php-format
 msgid "Thumbnail file %1$s successfully renamed to %2$s."
 msgstr "Мініатюра %1$s успішно перейменовано в %2$s."
 
-#: addmedia.php:377
+#: addmedia.php:376
 #, php-format
 msgid "Thumbnail file %s does not exist."
 msgstr "Мініатюра %s не існує."
@@ -14402,11 +14402,11 @@ msgstr "Мініатюра %s не існує."
 msgid "Thumbnail images"
 msgstr "Мініатюра зображення"
 
-#: addmedia.php:470 admin_media_upload.php:190 help_text.php:1446
+#: addmedia.php:469 admin_media_upload.php:190 help_text.php:1446
 msgid "Thumbnail to upload"
 msgstr "Мініатюрне відтворення"
 
-#: addmedia.php:149 admin_media_upload.php:98
+#: addmedia.php:148 admin_media_upload.php:98
 msgid "Thumbnails must be images."
 msgstr "Ескізи повинні бути зображеннями."
 
@@ -15768,7 +15768,7 @@ msgstr "У Вас не створено жодної замітки для що�
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "Ви вибрали GEDCOM з іншим ім'ям. Так правильно?"
 
-#: addmedia.php:482
+#: addmedia.php:481
 msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
 msgstr "Можете ввести інтернет-посилання (URL), починаючи з &laquo;http://&raquo;."
 
@@ -16337,7 +16337,7 @@ msgid "click to edit"
 msgstr "натисніть для редагування"
 
 #. I18N: button label
-#: addmedia.php:248 addmedia.php:401 addmedia.php:736 edit_changes.php:240
+#: addmedia.php:247 addmedia.php:400 addmedia.php:735 edit_changes.php:240
 #: edit_interface.php:116 edit_interface.php:210 edit_interface.php:354
 #: edit_interface.php:415 edit_interface.php:1043 edit_interface.php:1151
 #: edit_interface.php:1294 edit_interface.php:1399 edit_interface.php:1507
@@ -18801,7 +18801,7 @@ msgstr "ні"
 #: admin_trees_config.php:1271
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1992
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:779
-#: modules_v3/family_nav/module.php:295
+#: modules_v3/family_nav/module.php:302
 msgid "none"
 msgstr "немає"
 
@@ -18909,6 +18909,11 @@ msgstr "в очікуванні"
 msgid "percentage"
 msgstr "відсоток"
 
+#. I18N: button label
+#: admin_trees_places.php:101
+msgid "preview"
+msgstr "Передпроглядання"
+
 #. I18N: button label, previous page
 #: library/WT/I18N.php:666 modules_v3/batch_update/admin_batch_update.php:94
 msgid "previous"
@@ -18985,7 +18990,7 @@ msgid "robot"
 msgstr "робот"
 
 #. I18N: button label
-#: addmedia.php:735 admin_module_blocks.php:91 admin_module_menus.php:112
+#: addmedia.php:734 admin_module_blocks.php:91 admin_module_menus.php:112
 #: admin_module_reports.php:91 admin_module_sidebar.php:111
 #: admin_module_tabs.php:112 admin_modules.php:161 admin_site_merge.php:142
 #: admin_trees_config.php:1294 admin_trees_manage.php:261 block_edit.php:56
@@ -19755,7 +19760,7 @@ msgstr "невідомо"
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2004
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:785
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:791
-#: modules_v3/family_nav/module.php:298 modules_v3/family_nav/module.php:301
+#: modules_v3/family_nav/module.php:305 modules_v3/family_nav/module.php:308
 msgctxt "unknown family"
 msgid "unknown"
 msgstr "немає даних"
@@ -19764,6 +19769,11 @@ msgstr "немає даних"
 #: library/WT/Gedcom/Code/Quay.php:39
 msgid "unreliable evidence"
 msgstr "ненадійні докази"
+
+#. I18N: button label
+#: admin_trees_places.php:102
+msgid "update"
+msgstr "Оновлення"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:182

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-12-28 11:49+0000\n"
+"POT-Creation-Date: 2013-12-29 12:41+0000\n"
 "PO-Revision-Date: 2013-05-05 01:04+0000\n"
 "Last-Translator: Muadh Hamidaddin <Unknown>\n"
 "Language-Team: \n"
@@ -3686,7 +3686,7 @@ msgstr "إختيار الصورة المصغرة المراد تحميلها. و
 msgid "Choose user defined welcome text typed below"
 msgstr "كما هو في نص رسالة الترحيب الخصصة في الأسفل"
 
-#: addmedia.php:529 admin_media_upload.php:216
+#: addmedia.php:528 admin_media_upload.php:216
 msgid "Choose: "
 msgstr "إختيار: "
 
@@ -4145,7 +4145,7 @@ msgid "Create a new individual"
 msgstr "إضافه فرد جديد"
 
 #. I18N: A media object that is not linked to any other record
-#: addmedia.php:90 addmedia.php:407 admin_site_other.php:69
+#: addmedia.php:89 addmedia.php:406 admin_site_other.php:69
 msgid "Create a new media object"
 msgstr "إنشاء ملف وسائط جديد"
 
@@ -5320,7 +5320,7 @@ msgstr "عدد حالات طلاق بالقرن"
 msgid "Djibouti"
 msgstr "جيبوتي"
 
-#: addmedia.php:482 addmedia.php:510 admin_media_upload.php:202
+#: addmedia.php:481 addmedia.php:509 admin_media_upload.php:202
 msgid "Do not change to keep original file name."
 msgstr "تترك الخانة فارغة لإستخدام الإسم الأصلي."
 
@@ -5338,7 +5338,7 @@ msgstr "لا تحكم، إحكام سابق ملغى"
 msgid "Do not seal: unauthorized"
 msgstr "لا تحكم: غير مصرح"
 
-#: addmedia.php:725 admin_trees_config.php:1284 edit_interface.php:2338
+#: addmedia.php:724 admin_trees_config.php:1284 edit_interface.php:2338
 #: help_text.php:1283
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 #: modules_v3/batch_update/admin_batch_update.php:342
@@ -5492,7 +5492,7 @@ msgstr "تعديل الجنس"
 msgid "Edit media"
 msgstr "تعديل وسائط"
 
-#: addmedia.php:252 addmedia.php:411 library/WT/Controller/Media.php:55
+#: addmedia.php:251 addmedia.php:410 library/WT/Controller/Media.php:55
 msgid "Edit media object"
 msgstr "تعديل كائن وسائط"
 
@@ -5709,7 +5709,7 @@ msgstr "إدخال المعرف الخاص بالأسرة"
 msgid "Enter Individual ID"
 msgstr "إدخال المعرف الخاص بفرد"
 
-#: addmedia.php:434 modules_v3/gedcom_favorites/module.php:178
+#: addmedia.php:433 modules_v3/gedcom_favorites/module.php:178
 msgid "Enter an individual, family, or source ID"
 msgstr "أدخل المعرف الخاص بالفرد أو الأسرة أو المصدر"
 
@@ -5721,7 +5721,7 @@ msgstr "أدخل ملاحظات إضافية عن هذه المفضلة"
 msgid "Enter filename"
 msgstr "إدخال إسم الملف"
 
-#: addmedia.php:439
+#: addmedia.php:438
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
 msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
 msgstr "أدخل أو إبحث عن المعرف الخاص بفرد أو بأسرة أو بمصدر الذي تود ربط عنصر الوسائط هذا به."
@@ -6098,7 +6098,7 @@ msgstr "أسر لمعلوماتها مصادر"
 #: modules_v3/family_group_report/report.xml:3
 #: modules_v3/family_group_report/report.xml:85
 #: modules_v3/family_group_report/report.xml:93
-#: modules_v3/family_nav/module.php:189
+#: modules_v3/family_nav/module.php:196
 msgid "Family"
 msgstr "أسرة"
 
@@ -6385,7 +6385,7 @@ msgstr "معلومات الملف"
 msgid "File containing places (CSV)"
 msgstr "الملف المحتوي على بيانات الأماكن (CVS)"
 
-#: addmedia.php:481 addmedia.php:502 admin_media_upload.php:198
+#: addmedia.php:480 addmedia.php:501 admin_media_upload.php:198
 #: help_text.php:1433
 msgid "File name on server"
 msgstr "إسم الملف في الخادم"
@@ -6408,12 +6408,12 @@ msgstr "لقد تم تحميل الملف جزئياً، لطفاً أعادة �
 msgid "Filename"
 msgstr "إسم الملف"
 
-#: addmedia.php:171 addmedia.php:310 admin_media_upload.php:112
+#: addmedia.php:170 addmedia.php:309 admin_media_upload.php:112
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
 msgstr "أسماء الملفات لا يمكن أن تحوي على الحرف “%s”."
 
-#: addmedia.php:176 addmedia.php:315 admin_media_upload.php:117
+#: addmedia.php:175 addmedia.php:314 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "لا يسمح بالامتداد “%s” لأسماء الملفات."
@@ -6536,7 +6536,7 @@ msgstr "فلوريال"
 msgid "Folder"
 msgstr "المجلد"
 
-#: addmedia.php:522 admin_media_upload.php:210 help_text.php:1438
+#: addmedia.php:521 admin_media_upload.php:210 help_text.php:1438
 msgid "Folder name on server"
 msgstr "إسم المجلد في الخادم"
 
@@ -8991,22 +8991,22 @@ msgstr "الوسائط فيها:"
 msgid "Media file"
 msgstr "ملف وسائط"
 
-#: addmedia.php:338 addmedia.php:358
+#: addmedia.php:337 addmedia.php:357
 #, php-format
 msgid "Media file %1$s could not be renamed to %2$s."
 msgstr "لم يتم التمكن من تغيير إسم ملف الوسائط %1$s إلى %2$s."
 
-#: addmedia.php:356
+#: addmedia.php:355
 #, php-format
 msgid "Media file %1$s successfully renamed to %2$s."
 msgstr "تم تغيير إسم ملف الوسائط %1$s إلى %2$s بنجاح."
 
-#: addmedia.php:363
+#: addmedia.php:362
 #, php-format
 msgid "Media file %s does not exist."
 msgstr "ملف الوسائط %s غير موجود."
 
-#: addmedia.php:466 admin_media_upload.php:184
+#: addmedia.php:465 admin_media_upload.php:184
 msgid "Media file to upload"
 msgstr "تحميل ملف الوسائط"
 
@@ -9932,7 +9932,7 @@ msgstr "لا يوجد معلومات خريطة لهذا الفرد"
 msgid "No matching facts found"
 msgstr "لم يتم العثور معلومات مطابقة"
 
-#: addmedia.php:180 addmedia.php:319 admin_media_upload.php:121
+#: addmedia.php:179 addmedia.php:318 admin_media_upload.php:121
 msgid "No media file was provided."
 msgstr "لم يتم إصافة أي ملف وسائط."
 
@@ -10399,7 +10399,7 @@ msgstr "بحث آخر"
 msgid "Other facts to show in charts"
 msgstr "معلومات أخرى لإظهارها في المخطط"
 
-#: addmedia.php:531 admin_media_upload.php:217
+#: addmedia.php:530 admin_media_upload.php:217
 msgid "Other folder… please type in"
 msgstr "مجلد آخر … لطفاً أدخال"
 
@@ -10565,7 +10565,7 @@ msgstr "باراغواي"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:578
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:583
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:585
-#: modules_v3/family_nav/module.php:187 modules_v3/family_nav/module.php:188
+#: modules_v3/family_nav/module.php:194 modules_v3/family_nav/module.php:195
 msgid "Parents"
 msgstr "الوالدان"
 
@@ -11580,7 +11580,7 @@ msgstr "إزالة هذا الموقع؟"
 msgid "Reno, Nevada"
 msgstr "رينو، نيفادا"
 
-#: search.php:139
+#: admin_trees_places.php:98 search.php:139
 msgid "Replace with"
 msgstr "إستبدال بـ"
 
@@ -11951,7 +11951,7 @@ msgstr "محرك البحث"
 msgid "Search filters"
 msgstr "إنتقائيات البحث"
 
-#: search.php:103 search.php:137
+#: admin_trees_places.php:96 search.php:103 search.php:137
 msgid "Search for"
 msgstr "بحث عن"
 
@@ -13539,7 +13539,7 @@ msgstr "تفاصيل هذا الفرد لها خصوصية"
 msgid "The family “%s” has been deleted, as it only has one member."
 msgstr "لقد تم حذف الأسرة %s ، لأنه لا يوجد فيها سوى فرداً واحداً."
 
-#: addmedia.php:190 admin_media_upload.php:131
+#: addmedia.php:189 admin_media_upload.php:131
 #, php-format
 msgid "The file %s already exists.  Use another filename."
 msgstr "الملف %s موجود مسبقاً. إستخدم إسم آخر للملف."
@@ -13588,15 +13588,15 @@ msgstr "الملف ”%s“ غير موجود."
 msgid "The folder %s could not be deleted."
 msgstr ""
 
-#: addmedia.php:112 addmedia.php:123 addmedia.php:135 addmedia.php:274
-#: addmedia.php:285 addmedia.php:297 admin_media_upload.php:61
+#: addmedia.php:111 addmedia.php:122 addmedia.php:134 addmedia.php:273
+#: addmedia.php:284 addmedia.php:296 admin_media_upload.php:61
 #: admin_media_upload.php:72 admin_media_upload.php:84
 #: admin_trees_config.php:190
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "المجلد %s غير موجود، و قد تعذر أنشاؤه."
 
-#: addmedia.php:110 addmedia.php:121 addmedia.php:272 addmedia.php:283
+#: addmedia.php:109 addmedia.php:120 addmedia.php:271 addmedia.php:282
 #: admin_media_upload.php:59 admin_media_upload.php:70
 #: admin_trees_config.php:188
 #, php-format
@@ -13838,7 +13838,7 @@ msgstr "يوجد تعديلات معلقة تحتاج للإشراف."
 msgid "There have been no changes within the last %s days."
 msgstr "لم يتم أي تغيير خلال الأيام الـ %s المنصرمة."
 
-#: addmedia.php:199 admin_media_upload.php:141 edit_interface.php:469
+#: addmedia.php:198 admin_media_upload.php:141 edit_interface.php:469
 msgid "There was an error uploading your file."
 msgstr "نتج خطأ عند تحميل ملفك."
 
@@ -13910,7 +13910,7 @@ msgstr "قاعدة البيانات هذه منصب فيها MySQL إصدار %s
 msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "سيتم إستخدام عنوان البريد الإلكتروني هذا لإرسال مذكرات كلمة المرور وتنويهات الموقع إليك، وكذلك الرسائل المرسلة إليك من المستخدمين الآخرين فيه."
 
-#: addmedia.php:546
+#: addmedia.php:545
 msgid "This entry is ignored if you have entered a URL into the file name field."
 msgstr "سيتم تجاهل هذا الإدخال إذا كنت قد أدخلت رابط إنترنت في حقل إسم الملف."
 
@@ -13961,7 +13961,7 @@ msgstr "هذا الحقل يستخدم لتغيير سجل المصدر الذي
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "هذا الحقل يتحكم في ترتيب الأسئلة الشائعة.<br><br>ليس ضرورياً إدخال الأرقام بالتسلسل. إذا تركت فراغات بين الأرقام يمكن إدخال عناصر أخرى لاحقاً. ويمكن إستخدام أرقام سالبة لإتاحة إدخال عنصر جديد قبل عنصر قائم.<br><br>إذا وجد رقم مماثل لأكثر من سؤال شائع فسيتم إظهار واحداً منها فقط."
 
-#: addmedia.php:332
+#: addmedia.php:331
 msgid "This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
 msgstr "هذا الملف له إرتباط بمشجر آخر في نفس الخادم، لايمكن إزالته أو نقله أو إعادة تسميته قبل فك إرتباطه."
 
@@ -14493,17 +14493,17 @@ msgstr ""
 msgid "Thu"
 msgstr "الخميس"
 
-#: addmedia.php:372
+#: addmedia.php:371
 #, php-format
 msgid "Thumbnail file %1$s could not be renamed to %2$s."
 msgstr "لم يتم التمكن بتغيير إسم ملف الصور المصغرة %1$s إلى %2$s."
 
-#: addmedia.php:370
+#: addmedia.php:369
 #, php-format
 msgid "Thumbnail file %1$s successfully renamed to %2$s."
 msgstr "تم تغيير إسم ملف الصور المصغرة %1$s إلى %2$s بنجاح."
 
-#: addmedia.php:377
+#: addmedia.php:376
 #, php-format
 msgid "Thumbnail file %s does not exist."
 msgstr "ملف الصورة المصغرة %s غير موجود."
@@ -14513,11 +14513,11 @@ msgstr "ملف الصورة المصغرة %s غير موجود."
 msgid "Thumbnail images"
 msgstr "مصغرات الصور"
 
-#: addmedia.php:470 admin_media_upload.php:190 help_text.php:1446
+#: addmedia.php:469 admin_media_upload.php:190 help_text.php:1446
 msgid "Thumbnail to upload"
 msgstr "صورة مصغرة للتحميل"
 
-#: addmedia.php:149 admin_media_upload.php:98
+#: addmedia.php:148 admin_media_upload.php:98
 msgid "Thumbnails must be images."
 msgstr "الصور المصغرة يجب أن تحتوي على صور."
 
@@ -15892,7 +15892,7 @@ msgstr "لم تدون أي ذكرى."
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "لقد قمت بإختيار ملف GEDCOM بإسم آخر، هل هذا ما تريده؟"
 
-#: addmedia.php:482
+#: addmedia.php:481
 msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
 msgstr "بمكنك إدخال رابط إنترنت مبتدئاً بـ  &laquo;//:http&raquo;."
 
@@ -16461,7 +16461,7 @@ msgid "click to edit"
 msgstr "نقر للتعديل"
 
 #. I18N: button label
-#: addmedia.php:248 addmedia.php:401 addmedia.php:736 edit_changes.php:240
+#: addmedia.php:247 addmedia.php:400 addmedia.php:735 edit_changes.php:240
 #: edit_interface.php:116 edit_interface.php:210 edit_interface.php:354
 #: edit_interface.php:415 edit_interface.php:1043 edit_interface.php:1151
 #: edit_interface.php:1294 edit_interface.php:1399 edit_interface.php:1507
@@ -18934,7 +18934,7 @@ msgstr "كلا"
 #: admin_trees_config.php:1271
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1992
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:779
-#: modules_v3/family_nav/module.php:295
+#: modules_v3/family_nav/module.php:302
 msgid "none"
 msgstr "لا شيء"
 
@@ -19042,6 +19042,11 @@ msgstr "مُعلق"
 msgid "percentage"
 msgstr "نسبة مئوية"
 
+#. I18N: button label
+#: admin_trees_places.php:101
+msgid "preview"
+msgstr "معاينة"
+
 #. I18N: button label, previous page
 #: library/WT/I18N.php:666 modules_v3/batch_update/admin_batch_update.php:94
 msgid "previous"
@@ -19118,7 +19123,7 @@ msgid "robot"
 msgstr "روبوت"
 
 #. I18N: button label
-#: addmedia.php:735 admin_module_blocks.php:91 admin_module_menus.php:112
+#: addmedia.php:734 admin_module_blocks.php:91 admin_module_menus.php:112
 #: admin_module_reports.php:91 admin_module_sidebar.php:111
 #: admin_module_tabs.php:112 admin_modules.php:161 admin_site_merge.php:142
 #: admin_trees_config.php:1294 admin_trees_manage.php:261 block_edit.php:56
@@ -19888,7 +19893,7 @@ msgstr "غير معروف"
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2004
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:785
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:791
-#: modules_v3/family_nav/module.php:298 modules_v3/family_nav/module.php:301
+#: modules_v3/family_nav/module.php:305 modules_v3/family_nav/module.php:308
 msgctxt "unknown family"
 msgid "unknown"
 msgstr "غير معروفة"
@@ -19897,6 +19902,11 @@ msgstr "غير معروفة"
 #: library/WT/Gedcom/Code/Quay.php:39
 msgid "unreliable evidence"
 msgstr "قرينة غير معتمدة"
+
+#. I18N: button label
+#: admin_trees_places.php:102
+msgid "update"
+msgstr "تحديث"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:182
