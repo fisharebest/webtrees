@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-12-29 12:41+0000\n"
-"PO-Revision-Date: 2013-12-28 18:48+0100\n"
+"PO-Revision-Date: 2013-12-30 21:39+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -10956,7 +10956,7 @@ msgstr "Preston, Engeland"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:35
 msgid "Preview"
-msgstr "Voorbeeldweergave"
+msgstr "Voorvertoning"
 
 #: library/WT/Gedcom/Code/Rela.php:160
 msgid "Priest"
@@ -14345,7 +14345,7 @@ msgstr "Dit zal alle plaatsen van het geselecteerde GEDCOM-bestand tonen. Standa
 
 #: admin_trees_places.php:89
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Hiermee wordt het hoogste niveau van een plaatsnaam bijgewerkt. ”Mexico“ bijvoorbeeld, komt overeen met ”Quintana Roo, Mexico“, maar niet met ”Sante Fe, New Mexico“."
+msgstr "Hiermee wordt het hoogste niveau van een plaatsnaam bijgewerkt. “Mexico” bijvoorbeeld, komt overeen met “Quintana Roo, Mexico”, maar niet met “Sante Fe, New Mexico”."
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:222
@@ -18876,7 +18876,7 @@ msgstr "percentage"
 #. I18N: button label
 #: admin_trees_places.php:101
 msgid "preview"
-msgstr "Voorbeeldweergave"
+msgstr "voorvertoning"
 
 #. I18N: button label, previous page
 #: library/WT/I18N.php:666 modules_v3/batch_update/admin_batch_update.php:94
@@ -19737,7 +19737,7 @@ msgstr "onbetrouwbaar bewijs"
 #. I18N: button label
 #: admin_trees_places.php:102
 msgid "update"
-msgstr "Bijwerken"
+msgstr "bijwerken"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:182
