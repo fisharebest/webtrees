@@ -26,7 +26,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:333
 #: modules_v3/ahnentafel_report/report.xml:364
 msgid " but the details are unknown"
-msgstr " , ale szczegóły są nieznane"
+msgstr ", ale szczegóły są nieznane"
 
 #: modules_v3/ahnentafel_report/report.xml:156
 #: modules_v3/ahnentafel_report/report.xml:184
@@ -1496,7 +1496,7 @@ msgstr "Administracja"
 
 #: admin_trees_places.php:80
 msgid "Administration - place edit"
-msgstr ""
+msgstr "Administracja - edycja miejsc"
 
 #: admin_users.php:186 admin_users.php:368 help_text.php:1397
 msgid "Administrator"
@@ -2428,76 +2428,76 @@ msgstr "Bangladesz"
 #. I18N: gedcom tag BAPM
 #: library/WT/Gedcom/Tag.php:117 modules_v3/missing_facts_report/report.xml:13
 msgid "Baptism"
-msgstr "Chrzest baptystyczny"
+msgstr "Chrzest"
 
 #: library/WT/Gedcom/Tag.php:417
 msgid "Baptism of a brother"
-msgstr "Chrzest baptystyczny brata"
+msgstr "Chrzest brata"
 
 #: library/WT/Gedcom/Tag.php:389
 msgid "Baptism of a child"
-msgstr "Chrzest baptystyczny dziecka"
+msgstr "Chrzest dziecka"
 
 #: library/WT/Gedcom/Tag.php:388
 msgid "Baptism of a daughter"
-msgstr "Chrzest baptystyczny córki"
+msgstr "Chrzest córki"
 
 #: library/WT/Gedcom/Tag.php:395 library/WT/Gedcom/Tag.php:401
 #: library/WT/Gedcom/Tag.php:407
 msgid "Baptism of a grandchild"
-msgstr "Chrzest baptystyczny wnuka/wnuczki"
+msgstr "Chrzest wnuka/wnuczki"
 
 #: library/WT/Gedcom/Tag.php:394
 msgid "Baptism of a granddaughter"
-msgstr "Chrzest baptystyczny wnuczki"
+msgstr "Chrzest wnuczki"
 
 #: library/WT/Gedcom/Tag.php:400
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "Chrzest baptystyczny wnuczki"
+msgstr "Chrzest wnuczki"
 
 #: library/WT/Gedcom/Tag.php:406
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "Chrzest baptystyczny wnuczki"
+msgstr "Chrzest wnuczki"
 
 #: library/WT/Gedcom/Tag.php:393
 msgid "Baptism of a grandson"
-msgstr "Chrzest baptystyczny wnuka"
+msgstr "Chrzest wnuka"
 
 #: library/WT/Gedcom/Tag.php:399
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr "Chrzest baptystyczny wnuka"
+msgstr "Chrzest wnuka"
 
 #: library/WT/Gedcom/Tag.php:405
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr "Chrzest baptystyczny wnuka"
+msgstr "Chrzest wnuka"
 
 #: library/WT/Gedcom/Tag.php:411
 msgid "Baptism of a half-brother"
-msgstr "Chrzest baptystyczny brata przyrodniego"
+msgstr "Chrzest brata przyrodniego"
 
 #: library/WT/Gedcom/Tag.php:413
 msgid "Baptism of a half-sibling"
-msgstr "Chrzest baptystyczny rodzeństwa przyrodniego"
+msgstr "Chrzest rodzeństwa przyrodniego"
 
 #: library/WT/Gedcom/Tag.php:412
 msgid "Baptism of a half-sister"
-msgstr "Chrzest baptystyczny siostry przyrodniej"
+msgstr "Chrzest siostry przyrodniej"
 
 #: library/WT/Gedcom/Tag.php:419
 msgid "Baptism of a sibling"
-msgstr "Chrzest baptystyczny brata/siostry"
+msgstr "Chrzest brata/siostry"
 
 #: library/WT/Gedcom/Tag.php:418
 msgid "Baptism of a sister"
-msgstr "Chrzest baptystyczny siostry"
+msgstr "Chrzest siostry"
 
 #: library/WT/Gedcom/Tag.php:387
 msgid "Baptism of a son"
-msgstr "Chrzest baptystyczny syna"
+msgstr "Chrzest syna"
 
 #. I18N: gedcom tag BARM
 #: library/WT/Gedcom/Tag.php:120 modules_v3/missing_facts_report/report.xml:14
@@ -3774,7 +3774,7 @@ msgstr "Kliknięcie na ten odnośnik spowoduje wyświetlenie listy wszystkich os
 
 #: help_text.php:1139
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
-msgstr "Kliknięcie ikony „+\" otworzy okno Aystenta GEDFact.<br>Tekst pomocy będzie dostępny tutaj.<br><br>Gdy kliknięty zostnie przycisk „Zapisz”, identyfikator wspólnej notatki zostanie wklejony tutaj."
+msgstr "Kliknięcie ikony „+” otworzy okno Aystenta GEDFact.<br>Tekst pomocy będzie dostępny tutaj.<br><br>Gdy kliknięty zostnie przycisk „Zapisz”, identyfikator wspólnej notatki zostanie wklejony tutaj."
 
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:84
@@ -4359,7 +4359,7 @@ msgstr "Data adopcji"
 #: library/WT/Gedcom/Tag.php:118
 #: modules_v3/missing_facts_report/report.xml:125
 msgid "Date of baptism"
-msgstr "Data chrztu baptystycznego"
+msgstr "Data chrztu"
 
 #: library/WT/Gedcom/Tag.php:121
 #: modules_v3/missing_facts_report/report.xml:208
@@ -5304,7 +5304,7 @@ msgstr "Powielona nazwa użytkownika. Użytkownik o tej nazwie już istnieje. Wy
 
 #: help_text.php:779
 msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "Adres email, który ma się pojawić w polu &laquo;Od:&raquo; (&laquo;From:&raquo;) wiadomości wysyłanych automatycznie przez <b>webtrees</b>.<br><br><b>webtrees</b> może automatycznie wysyłać emaile aby powiadamiać administratorów o zmianach, które muszą zostać przejrzane. <b>webtrees</b> także wysyła powiadomienia emailowe do użytkowników, którzy rozpoczęli rejestrację konta.<br><br>Zwykle pole &laquo;Od:&raquo; (&laquo;From:&raquo;) tych automatycznie wygenerowanych wiadomości ma postać <i>From: webtrees-noreply@twojastrona</i>, która informuje, aby nie odpowiadać na ten email. Dla ochrony przez spamem i innymi nadużyciami niektóre systemy emailowe wymagają od każdej wiadomości poprawnego adresu email w polu &laquo;Od:&raquo; (&laquo;From:&raquo;) i nie dostarczą wiadomości wysłanych z konta <i>webtrees-noreply</i>."
+msgstr "Adres email, który ma się pojawić w polu „Od:” („From:”) wiadomości wysyłanych automatycznie przez <b>webtrees</b>.<br><br><b>webtrees</b> może automatycznie wysyłać emaile aby powiadamiać administratorów o zmianach, które muszą zostać przejrzane. <b>webtrees</b> także wysyła powiadomienia emailowe do użytkowników, którzy rozpoczęli rejestrację konta.<br><br>Zwykle pole „Od:” („From:”) tych automatycznie wygenerowanych wiadomości ma postać <i>From: webtrees-noreply@twojastrona</i>, która informuje, aby nie odpowiadać na ten email. Dla ochrony przez spamem i innymi nadużyciami niektóre systemy emailowe wymagają od każdej wiadomości poprawnego adresu email w polu „Od:” („From:”) i nie dostarczą wiadomości wysłanych z konta <i>webtrees-noreply</i>."
 
 #: help_text.php:1175
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -6504,7 +6504,7 @@ msgstr "Format"
 
 #: admin_trees_config.php:940 help_text.php:525
 msgid "Format text and notes"
-msgstr ""
+msgstr "Formatowanie tekstu i notatek"
 
 #: library/WT/Gedcom/Code/Pedi.php:55
 msgctxt "Female pedigree"
@@ -6840,7 +6840,7 @@ msgstr "Matka chrzestna"
 #. I18N: gedcom tag _GODP
 #: library/WT/Gedcom/Code/Rela.php:115 library/WT/Gedcom/Tag.php:718
 msgid "Godparent"
-msgstr "Rodzic chrzestny"
+msgstr "Rodzice chrzestni"
 
 #: library/WT/Gedcom/Code/Rela.php:118
 msgid "Godson"
@@ -7339,7 +7339,7 @@ msgstr "Jeżeli osoba ma dwa osobne nazwiska, oba powinny być ujęte w ukośnik
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Jeśli osoba była znana pod pseudonimem lub przezwiskiem, który nie jest częścią imienia lub nazwiska, powinien on być ujęty w cudzysłów. Na przykład: <%s>Jan \"Meszko\" /Kowalski/<%s>."
+msgstr "Jeśli osoba była znana pod pseudonimem lub przezwiskiem, który nie jest częścią imienia lub nazwiska, powinien on być ujęty w cudzysłów. Na przykład: <%s>Jan &quot;Meszko&quot; /Kowalski/<%s>."
 
 #: help_text.php:287
 #, php-format
@@ -8548,7 +8548,7 @@ msgstr "marzec"
 
 #: help_text.php:530
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr ""
+msgstr "Markdown jest prostym system formatowania, używanym na stronach internetowych, takich jak Wikipedia. Wykorzystuje dyskretne znaki interpunkcyjne, aby utworzyć nagłówki i podtytuły, tekst pogrubiony i kursywę, listy, tabele itp."
 
 #. I18N: gedcom tag MARR
 #: library/WT/Gedcom/Tag.php:238 modules_v3/ahnentafel_report/report.xml:453
@@ -9839,7 +9839,7 @@ msgstr "Nie znaleziono podanych miejsc"
 
 #: admin_trees_places.php:121
 msgid "No places were found."
-msgstr ""
+msgstr "Nie znaleziono żadnych miejsc."
 
 #: admin_site_config.php:44
 msgid "No predefined text"
@@ -10695,7 +10695,7 @@ msgstr "Miejsce adopcji"
 #: library/WT/Gedcom/Tag.php:119
 #: modules_v3/missing_facts_report/report.xml:136
 msgid "Place of baptism"
-msgstr "Miejsce chrztu baptystycznego"
+msgstr "Miejsce chrztu"
 
 #: library/WT/Gedcom/Tag.php:122
 #: modules_v3/missing_facts_report/report.xml:219
@@ -13524,11 +13524,11 @@ msgstr "Poniższa wiadomość została nadesłana na twoje konto od użytkownika
 
 #: admin_trees_places.php:108
 msgid "The following places were changed:"
-msgstr ""
+msgstr "Następujące miejsca zostały zmienione:"
 
 #: admin_trees_places.php:108
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "Następujące miejsca mogą zostać zmienione:"
 
 #: admin_site_access.php:270
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -14291,7 +14291,7 @@ msgstr "Ta sekcja pozwala dodawać nowe źródło do faktu, który jest edytowan
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:317
 msgid "This server does not support secure downloads using HTTPS."
-msgstr ""
+msgstr "Ten serwer nie obsługuje bezpiecznego pobierania za pomocą protokołu HTTPS."
 
 #: setup.php:171
 #, php-format
@@ -14375,7 +14375,7 @@ msgstr "Lista wszystkich miejsc z danego drzewa genealogicznego. Domyślnie NIE 
 
 #: admin_trees_places.php:89
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "Ta funkcja uaktualni część nazwy miejca jaką jest kraj. Na przykład „Meksyk” dopasuje do „Quintana Roo, Meksyk”, ale nie do „Santa Fe, Nowy Meksyk”."
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:222
@@ -14514,7 +14514,7 @@ msgstr "Aby utworzyć nowe zadanie badawcze, należy najpierw dodać „zadanie 
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr ""
+msgstr "Aby zapewnić zgodność z innymi aplikacjami genealogicznych, notatki, tekst i transkrypcje powinny być zapisane za pomocą prostego, niesformatowanego tekstu. Jednak często jest pożądane formatowanie celu ułatwienia prezentacji, zrozumienia, itp."
 
 #: admin_media.php:451 library/WT/Controller/Media.php:69
 #: library/WT/Controller/Media.php:149 modules_v3/lightbox/module.php:189
@@ -14962,11 +14962,11 @@ msgstr "Uaktualnij wszystkie"
 
 #: admin_trees_places.php:85
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Uaktualnij wszystkie nazwy miejsc w drzewie genealogicznym"
 
 #: themes/_administration/header.php:121
 msgid "Update place names"
-msgstr ""
+msgstr "Uaktualnij nazwy miejsc"
 
 #: admin_site_merge.php:152
 msgid "Updating linked record"
@@ -15152,7 +15152,7 @@ msgstr "Wielkość liter w nazwach użytkowników nie ma znaczenia oraz ignorowa
 #: help_text.php:1488
 #, php-format
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "Nazwy użytkownika nie mogą zawierać następujących znaków: &lt; &gt; \" %% { } ;"
+msgstr "Nazwy użytkownika nie mogą zawierać następujących znaków: &lt; &gt; &quot; %% { } ;"
 
 #: admin.php:133 themes/_administration/header.php:130
 msgid "Users"
@@ -18567,7 +18567,7 @@ msgstr "panieńskie"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:947
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: library/WT/Stats.php:1723 library/WT/Stats.php:3579
 msgid "marriage"
@@ -19817,7 +19817,7 @@ msgstr "webtrees wiki"
 
 #: help_text.php:1306
 msgid "webtrees’ database must be on the same server as PGV’s"
-msgstr "Bazy danych webtrees musi być na tym samym serwerze co baza PGV"
+msgstr "Baza danych webtrees musi być na tym samym serwerze co baza PGV"
 
 #: modules_v3/googlemap/places_edit.php:313
 msgid "west"
