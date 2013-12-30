@@ -31,19 +31,19 @@ if (!defined('WT_WEBTREES')) {
 }
 
 /**
- * Enable HTML code to pass for testing
- * false = use the old style, HTML disabled
- * true = use the new style, HTML enabled
- */
+* Enable HTML code to pass for testing
+* false = use the old style, HTML disabled
+* true = use the new style, HTML enabled
+*/
 define("WT_RNEW", false);
 
 /**
- * Main Report Class
- *
- * Document wide functions and variable defaults that will be inherited of the report modules
- * @package webtrees
- * @subpackage Reports
- */
+* Main Report Class
+*
+* Document wide functions and variable defaults that will be inherited of the report modules
+* @package webtrees
+* @subpackage Reports
+*/
 class WT_Report_Base {
 	/**
 	* Left Margin (expressed in points) Default: 17.99 mm, 0.7083 inch
@@ -406,11 +406,11 @@ class WT_Report_Base {
 }
 
 /**
- * Main WT Report Element class that all other page elements are extended from
- *
- * @package webtrees
- * @subpackage Reports
- */
+* Main WT Report Element class that all other page elements are extended from
+*
+* @package webtrees
+* @subpackage Reports
+*/
 class Element {
 	/**
 	* @var string
@@ -541,7 +541,7 @@ class Html extends Element {
 }
 
 /**
- * Cell element class
+* Cell element class
 *
 * @package webtrees
 * @subpackage Reports
@@ -694,7 +694,7 @@ class Cell extends Element {
 }
 
 /**
- * TextBox element class
+* TextBox element class
 *
 * @package webtrees
 * @subpackage Reports
@@ -839,7 +839,7 @@ class TextBox extends Element {
 }
 
 /**
- * Text element class
+* Text element class
 *
 * @package webtrees
 * @subpackage Reports
@@ -905,7 +905,7 @@ class Text extends Element {
 }
 
 /**
- * Footnote element class
+* Footnote element class
 *
 * @package webtrees
 * @subpackage Reports
@@ -1002,7 +1002,7 @@ class Footnote extends Element {
 }
 
 /**
- * PageHeader element class
+* PageHeader element class
 *
 * @package webtrees
 * @subpackage Reports
@@ -1040,7 +1040,7 @@ class PageHeader extends Element {
 }
 
 /**
- * Image element class
+* Image element class
 *
 * @package webtrees
 * @subpackage Reports
@@ -1123,7 +1123,7 @@ class Image extends Element {
 }
 
 /**
- * Line element class
+* Line element class
 *
 * @package webtrees
 * @subpackage Reports
@@ -1184,16 +1184,16 @@ class Line extends Element {
 }
 
 /**
- *XML start element handler
- *
- * This function is called whenever a starting element is reached
- * The element handler will be called if found, otherwise it must be HTML
- *
- * @param resource $parser the resource handler for the XML parser
- * @param string $name the name of the XML element parsed
- * @param array $attrs an array of key value pairs for the attributes
- * @see endElement()
- */
+*XML start element handler
+*
+* This function is called whenever a starting element is reached
+* The element handler will be called if found, otherwise it must be HTML
+*
+* @param resource $parser the resource handler for the XML parser
+* @param string $name the name of the XML element parsed
+* @param array $attrs an array of key value pairs for the attributes
+* @see endElement()
+*/
 function startElement($parser, $name, $attrs) {
 	global $elementHandler, $processIfs, $processGedcoms, $processRepeats, $vars;
 	global $processFootnote;
@@ -1222,15 +1222,15 @@ function startElement($parser, $name, $attrs) {
 }
 
 /**
- * XML end element handler
- *
- * This function is called whenever an ending element is reached
- * The element handler will be called if found, otherwise it must be HTML
- *
- * @param resource $parser the resource handler for the XML parser
- * @param string $name the name of the XML element parsed
- * @see startElement()
- */
+* XML end element handler
+*
+* This function is called whenever an ending element is reached
+* The element handler will be called if found, otherwise it must be HTML
+*
+* @param resource $parser the resource handler for the XML parser
+* @param string $name the name of the XML element parsed
+* @see startElement()
+*/
 function endElement($parser, $name) {
 	global $elementHandler, $processIfs, $processGedcoms, $processRepeats;
 	global $processFootnote;
@@ -1247,14 +1247,14 @@ function endElement($parser, $name) {
 }
 
 /**
- * XML character data handler
- *
- * This function is called whenever raw character data is reached
- * just print it to the screen
- * @param resource $parser the resource handler for the XML parser
- * @param string $data the name of the XML element parsed
- * @todo check this
- */
+* XML character data handler
+*
+* This function is called whenever raw character data is reached
+* just print it to the screen
+* @param resource $parser the resource handler for the XML parser
+* @param string $data the name of the XML element parsed
+* @todo check this
+*/
 function characterData($parser, $data) {
 	global $printData, $currentElement, $processGedcoms, $processIfs, $processRepeats, $reportTitle, $wt_report, $reportDescription;
 
@@ -1659,7 +1659,7 @@ function GedcomSHandler($attrs) {
 	$newgedrec = "";
 	if (count($tags)<2) {
 		$tmp=WT_GedcomRecord::getInstance($attrs['id']);
-		$newgedrec=$tmp ? $tmp->getGedcom() : '';
+		$newgedrec=$tmp ? $tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL) : '';
 	}
 	if (empty($newgedrec)) {
 		$tgedrec = $gedrec;
@@ -1670,14 +1670,14 @@ function GedcomSHandler($attrs) {
 					$newgedrec = $vars[$match[1]]['gedcom'];
 				} else {
 					$tmp=WT_GedcomRecord::getInstance($match[1]);
-					$newgedrec=$tmp ? $tmp->getGedcom() : '';
+					$newgedrec=$tmp ? $tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL) : '';
 				}
 			} else {
 				if (preg_match("/@(.+)/", $tag, $match)) {
 					$gmatch = array();
 					if (preg_match("/\d $match[1] @([^@]+)@/", $tgedrec, $gmatch)) {
 						$tmp=WT_GedcomRecord::getInstance($gmatch[1]);
-						$newgedrec=$tmp ? $tmp->getGedcom() : '';
+						$newgedrec=$tmp ? $tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL) : '';
 						$tgedrec = $newgedrec;
 					} else {
 						$newgedrec = "";
@@ -3138,7 +3138,7 @@ function ListSHandler($attrs) {
 	if ($filters) {
 		foreach ($list as $key=>$record) {
 			foreach ($filters as $filter) {
-				if (!preg_match("/".$filter."/i", $record->getGedcom())) {
+				if (!preg_match("/".$filter."/i", $record->privatizeGedcom(WT_USER_ACCESS_LEVEL))) {
 					unset($list[$key]);
 					break;
 				}
@@ -3149,7 +3149,7 @@ function ListSHandler($attrs) {
 		$mylist = array();
 		foreach ($list as $indi) {
 			$key=$indi->getXref();
-			$grec=$indi->getGedcom();
+			$grec=$indi->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 			$keep = true;
 			foreach ($filters2 as $filter) {
 				if ($keep) {
@@ -3301,7 +3301,7 @@ function ListEHandler() {
 		$list_private = 0;
 		foreach ($list as $record) {
 			if ($record->canShow()) {
-				$gedrec = $record->getGedcom();
+				$gedrec = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 				//-- start the sax parser
 				$repeat_parser = xml_parser_create();
 				$parser = $repeat_parser;
@@ -3533,7 +3533,7 @@ function RelativesEHandler() {
 				$generation = $value->generation;
 			}
 			$tmp=WT_GedcomRecord::getInstance($key);
-			$gedrec = $tmp->getGedcom();
+			$gedrec = $tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 			//-- start the sax parser
 			$repeat_parser = xml_parser_create();
 			$parser = $repeat_parser;
@@ -3674,15 +3674,15 @@ function DescriptionEHandler() {
 }
 
 /**
- * get gedcom tag value
- *
- * returns the value of a gedcom tag from the given gedcom record
- * @param string $tag The tag to find, use : to delineate subtags
- * @param int $level The gedcom line level of the first tag to find, setting level to 0 will cause it to use 1+ the level of the incoming record
- * @param string $gedrec The gedcom record to get the value from
- * @param int $truncate Should the value be truncated to a certain number of characters
- * @return string
- */
+* get gedcom tag value
+*
+* returns the value of a gedcom tag from the given gedcom record
+* @param string $tag The tag to find, use : to delineate subtags
+* @param int $level The gedcom line level of the first tag to find, setting level to 0 will cause it to use 1+ the level of the incoming record
+* @param string $gedrec The gedcom record to get the value from
+* @param int $truncate Should the value be truncated to a certain number of characters
+* @return string
+*/
 function get_gedcom_value($tag, $level, $gedrec, $truncate='') {
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);

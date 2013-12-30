@@ -323,9 +323,7 @@ case 'register':
 				WT_I18N::translate('Username') . " " . $user_name . WT_Mail::EOL .
 				WT_I18N::translate('Verification code:') . " " . get_user_setting($user_id, 'reg_hashcode') . WT_Mail::EOL .
 				WT_I18N::translate('Comments').": " . $user_comments . WT_Mail::EOL .
-				WT_I18N::translate('If you didn’t request an account, you can just delete this message.') .
-				'  '.
-				WT_I18N::translate('You won’t get any more email from this site, because the account request will be deleted automatically after seven days.') . WT_Mail::EOL;
+				WT_I18N::translate('If you didn’t request an account, you can just delete this message.') . WT_Mail::EOL;
 			$mail2_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 			$mail2_to     =$user_email;
 			$mail2_from   =$WEBTREES_EMAIL;

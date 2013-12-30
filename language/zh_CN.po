@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-12-28 11:49+0000\n"
+"POT-Creation-Date: 2013-12-29 12:41+0000\n"
 "PO-Revision-Date: 2013-04-02 19:56+0000\n"
 "Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: \n"
@@ -3532,7 +3532,7 @@ msgstr "选择你想上传的缩略图。虽然可以自动生成缩略图的图
 msgid "Choose user defined welcome text typed below"
 msgstr "选择用户定义的文本在下面输入欢迎文本"
 
-#: addmedia.php:529 admin_media_upload.php:216
+#: addmedia.php:528 admin_media_upload.php:216
 msgid "Choose: "
 msgstr "选择: "
 
@@ -3991,7 +3991,7 @@ msgid "Create a new individual"
 msgstr "添加个人"
 
 #. I18N: A media object that is not linked to any other record
-#: addmedia.php:90 addmedia.php:407 admin_site_other.php:69
+#: addmedia.php:89 addmedia.php:406 admin_site_other.php:69
 msgid "Create a new media object"
 msgstr "新建一个媒体对象"
 
@@ -5166,7 +5166,7 @@ msgstr "按世纪统计离婚"
 msgid "Djibouti"
 msgstr "吉布提"
 
-#: addmedia.php:482 addmedia.php:510 admin_media_upload.php:202
+#: addmedia.php:481 addmedia.php:509 admin_media_upload.php:202
 msgid "Do not change to keep original file name."
 msgstr "不改变原始的文件名称。"
 
@@ -5184,7 +5184,7 @@ msgstr "不密封,先前的密封取消"
 msgid "Do not seal: unauthorized"
 msgstr "不密封:未经授权"
 
-#: addmedia.php:725 admin_trees_config.php:1284 edit_interface.php:2338
+#: addmedia.php:724 admin_trees_config.php:1284 edit_interface.php:2338
 #: help_text.php:1283
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 #: modules_v3/batch_update/admin_batch_update.php:342
@@ -5338,7 +5338,7 @@ msgstr "更改性别"
 msgid "Edit media"
 msgstr "编辑媒体"
 
-#: addmedia.php:252 addmedia.php:411 library/WT/Controller/Media.php:55
+#: addmedia.php:251 addmedia.php:410 library/WT/Controller/Media.php:55
 msgid "Edit media object"
 msgstr "编辑媒体对象"
 
@@ -5555,7 +5555,7 @@ msgstr "输入家庭ID"
 msgid "Enter Individual ID"
 msgstr "输入个人ID"
 
-#: addmedia.php:434 modules_v3/gedcom_favorites/module.php:178
+#: addmedia.php:433 modules_v3/gedcom_favorites/module.php:178
 msgid "Enter an individual, family, or source ID"
 msgstr "输入个人，家庭，或资源ID"
 
@@ -5567,7 +5567,7 @@ msgstr "输入这个收藏的备注"
 msgid "Enter filename"
 msgstr "输入文件名"
 
-#: addmedia.php:439
+#: addmedia.php:438
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
 msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
 msgstr "输入或查找媒体项目链接的人,家庭,或资源的ID。"
@@ -5944,7 +5944,7 @@ msgstr "家庭资源"
 #: modules_v3/family_group_report/report.xml:3
 #: modules_v3/family_group_report/report.xml:85
 #: modules_v3/family_group_report/report.xml:93
-#: modules_v3/family_nav/module.php:189
+#: modules_v3/family_nav/module.php:196
 msgid "Family"
 msgstr "家庭"
 
@@ -6231,7 +6231,7 @@ msgstr "文件信息"
 msgid "File containing places (CSV)"
 msgstr "包含地点的文件(CSV)"
 
-#: addmedia.php:481 addmedia.php:502 admin_media_upload.php:198
+#: addmedia.php:480 addmedia.php:501 admin_media_upload.php:198
 #: help_text.php:1433
 msgid "File name on server"
 msgstr "在服务器上的文件名"
@@ -6254,12 +6254,12 @@ msgstr "文件只是部分上传,请再试一次"
 msgid "Filename"
 msgstr "文件名"
 
-#: addmedia.php:171 addmedia.php:310 admin_media_upload.php:112
+#: addmedia.php:170 addmedia.php:309 admin_media_upload.php:112
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
 msgstr "文件名包含非法字符 “%s” 。"
 
-#: addmedia.php:176 addmedia.php:315 admin_media_upload.php:117
+#: addmedia.php:175 addmedia.php:314 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "文件名包含非法扩展名 “%s” 。"
@@ -6382,7 +6382,7 @@ msgstr "第八月"
 msgid "Folder"
 msgstr "文件夹"
 
-#: addmedia.php:522 admin_media_upload.php:210 help_text.php:1438
+#: addmedia.php:521 admin_media_upload.php:210 help_text.php:1438
 msgid "Folder name on server"
 msgstr "服务器上文件夹名称"
 
@@ -8837,22 +8837,22 @@ msgstr "媒体包含:"
 msgid "Media file"
 msgstr "媒体文件"
 
-#: addmedia.php:338 addmedia.php:358
+#: addmedia.php:337 addmedia.php:357
 #, php-format
 msgid "Media file %1$s could not be renamed to %2$s."
 msgstr "媒体文件 %1$s 不能被重命名为 %2$s。"
 
-#: addmedia.php:356
+#: addmedia.php:355
 #, php-format
 msgid "Media file %1$s successfully renamed to %2$s."
 msgstr "媒体文件 %1$s 成功重命名为 %2$s。"
 
-#: addmedia.php:363
+#: addmedia.php:362
 #, php-format
 msgid "Media file %s does not exist."
 msgstr "媒体文件 %s 并不存在。"
 
-#: addmedia.php:466 admin_media_upload.php:184
+#: addmedia.php:465 admin_media_upload.php:184
 msgid "Media file to upload"
 msgstr "媒体文件上传"
 
@@ -9768,7 +9768,7 @@ msgstr "没有这个人的地图数据"
 msgid "No matching facts found"
 msgstr "没有找到匹配的事实"
 
-#: addmedia.php:180 addmedia.php:319 admin_media_upload.php:121
+#: addmedia.php:179 addmedia.php:318 admin_media_upload.php:121
 msgid "No media file was provided."
 msgstr "没有媒体文件。"
 
@@ -10230,7 +10230,7 @@ msgstr "其他搜索"
 msgid "Other facts to show in charts"
 msgstr "在图表其他显示事件"
 
-#: addmedia.php:531 admin_media_upload.php:217
+#: addmedia.php:530 admin_media_upload.php:217
 msgid "Other folder… please type in"
 msgstr "其他文件夹…请输入"
 
@@ -10396,7 +10396,7 @@ msgstr "巴拉圭"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:578
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:583
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:585
-#: modules_v3/family_nav/module.php:187 modules_v3/family_nav/module.php:188
+#: modules_v3/family_nav/module.php:194 modules_v3/family_nav/module.php:195
 msgid "Parents"
 msgstr "父母"
 
@@ -11411,7 +11411,7 @@ msgstr "删除这个位置吗?"
 msgid "Reno, Nevada"
 msgstr "内华达州里诺"
 
-#: search.php:139
+#: admin_trees_places.php:98 search.php:139
 msgid "Replace with"
 msgstr "替换"
 
@@ -11782,7 +11782,7 @@ msgstr "搜索引擎"
 msgid "Search filters"
 msgstr "搜索过滤器"
 
-#: search.php:103 search.php:137
+#: admin_trees_places.php:96 search.php:103 search.php:137
 msgid "Search for"
 msgstr "搜索"
 
@@ -13370,7 +13370,7 @@ msgstr "这人细节是私密的。"
 msgid "The family “%s” has been deleted, as it only has one member."
 msgstr "因为它只有一个成员，家庭“%s”已被删除。"
 
-#: addmedia.php:190 admin_media_upload.php:131
+#: addmedia.php:189 admin_media_upload.php:131
 #, php-format
 msgid "The file %s already exists.  Use another filename."
 msgstr "文件 %s 已经存在，请用其它文件名"
@@ -13419,15 +13419,15 @@ msgstr "文件“%s”不存在。"
 msgid "The folder %s could not be deleted."
 msgstr ""
 
-#: addmedia.php:112 addmedia.php:123 addmedia.php:135 addmedia.php:274
-#: addmedia.php:285 addmedia.php:297 admin_media_upload.php:61
+#: addmedia.php:111 addmedia.php:122 addmedia.php:134 addmedia.php:273
+#: addmedia.php:284 addmedia.php:296 admin_media_upload.php:61
 #: admin_media_upload.php:72 admin_media_upload.php:84
 #: admin_trees_config.php:190
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "文件夹 %s 不存在，不能被创建"
 
-#: addmedia.php:110 addmedia.php:121 addmedia.php:272 addmedia.php:283
+#: addmedia.php:109 addmedia.php:120 addmedia.php:271 addmedia.php:282
 #: admin_media_upload.php:59 admin_media_upload.php:70
 #: admin_trees_config.php:188
 #, php-format
@@ -13669,7 +13669,7 @@ msgstr "有待定的更改需你确认"
 msgid "There have been no changes within the last %s days."
 msgstr "在过去 %s 天没有变更"
 
-#: addmedia.php:199 admin_media_upload.php:141 edit_interface.php:469
+#: addmedia.php:198 admin_media_upload.php:141 edit_interface.php:469
 msgid "There was an error uploading your file."
 msgstr "您上传文件时有一个错误。"
 
@@ -13741,7 +13741,7 @@ msgstr "数据库只有运行在版本 %s 的MySQL 。这里您无法安装webtr
 msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "该电子邮件地址将被用来发送你的密码提示和网站其他家庭成员网站通知和消息。"
 
-#: addmedia.php:546
+#: addmedia.php:545
 msgid "This entry is ignored if you have entered a URL into the file name field."
 msgstr "如果你输入一个URL到文件名字段,本条目会被忽略。"
 
@@ -13792,7 +13792,7 @@ msgstr "此字段允许您改变这个事实的引文链接到资源记录。这
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "这个选项会让你在常见问题页面向下移动一个项目。<br><br>你每次使用此选项，常见问题位置的数量成1的倍数增加了。您可以通过编辑问题中项目的或改变的FAQ位置字段实现相同的效果。<br><br>当一个以上的有相同的位置数常见问题项，只有这一个项目将是可见的。"
 
-#: addmedia.php:332
+#: addmedia.php:331
 msgid "This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
 msgstr "本文件被服务器上的另一个家谱数据库调用。它不能被删除，移动或重命名，至到这些调用已被删除。"
 
@@ -14324,17 +14324,17 @@ msgstr ""
 msgid "Thu"
 msgstr "星期四"
 
-#: addmedia.php:372
+#: addmedia.php:371
 #, php-format
 msgid "Thumbnail file %1$s could not be renamed to %2$s."
 msgstr "缩略图文件 %1$s 不能被重命名为 %2$s 。"
 
-#: addmedia.php:370
+#: addmedia.php:369
 #, php-format
 msgid "Thumbnail file %1$s successfully renamed to %2$s."
 msgstr "缩略图文件 %1$s 成功重命名为 %2$s 。"
 
-#: addmedia.php:377
+#: addmedia.php:376
 #, php-format
 msgid "Thumbnail file %s does not exist."
 msgstr "缩略图文件 %s 不存在。"
@@ -14344,11 +14344,11 @@ msgstr "缩略图文件 %s 不存在。"
 msgid "Thumbnail images"
 msgstr "缩略图"
 
-#: addmedia.php:470 admin_media_upload.php:190 help_text.php:1446
+#: addmedia.php:469 admin_media_upload.php:190 help_text.php:1446
 msgid "Thumbnail to upload"
 msgstr "缩略图上传"
 
-#: addmedia.php:149 admin_media_upload.php:98
+#: addmedia.php:148 admin_media_upload.php:98
 msgid "Thumbnails must be images."
 msgstr "缩略图一定要是图像"
 
@@ -15704,7 +15704,7 @@ msgstr "您还没有创建任何日记项目"
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "您选择了一个不同名称的GEDCOM。对吗？"
 
-#: addmedia.php:482
+#: addmedia.php:481
 msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
 msgstr "您可以输入一个以“http://”开头的URL，地址。"
 
@@ -16273,7 +16273,7 @@ msgid "click to edit"
 msgstr "单击“编辑”"
 
 #. I18N: button label
-#: addmedia.php:248 addmedia.php:401 addmedia.php:736 edit_changes.php:240
+#: addmedia.php:247 addmedia.php:400 addmedia.php:735 edit_changes.php:240
 #: edit_interface.php:116 edit_interface.php:210 edit_interface.php:354
 #: edit_interface.php:415 edit_interface.php:1043 edit_interface.php:1151
 #: edit_interface.php:1294 edit_interface.php:1399 edit_interface.php:1507
@@ -18731,7 +18731,7 @@ msgstr "不"
 #: admin_trees_config.php:1271
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1992
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:779
-#: modules_v3/family_nav/module.php:295
+#: modules_v3/family_nav/module.php:302
 msgid "none"
 msgstr "没有"
 
@@ -18839,6 +18839,11 @@ msgstr "待定"
 msgid "percentage"
 msgstr "百分比"
 
+#. I18N: button label
+#: admin_trees_places.php:101
+msgid "preview"
+msgstr "预览"
+
 #. I18N: button label, previous page
 #: library/WT/I18N.php:666 modules_v3/batch_update/admin_batch_update.php:94
 msgid "previous"
@@ -18915,7 +18920,7 @@ msgid "robot"
 msgstr "机器人"
 
 #. I18N: button label
-#: addmedia.php:735 admin_module_blocks.php:91 admin_module_menus.php:112
+#: addmedia.php:734 admin_module_blocks.php:91 admin_module_menus.php:112
 #: admin_module_reports.php:91 admin_module_sidebar.php:111
 #: admin_module_tabs.php:112 admin_modules.php:161 admin_site_merge.php:142
 #: admin_trees_config.php:1294 admin_trees_manage.php:261 block_edit.php:56
@@ -19685,7 +19690,7 @@ msgstr "未知"
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2004
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:785
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:791
-#: modules_v3/family_nav/module.php:298 modules_v3/family_nav/module.php:301
+#: modules_v3/family_nav/module.php:305 modules_v3/family_nav/module.php:308
 msgctxt "unknown family"
 msgid "unknown"
 msgstr "家庭未知"
@@ -19694,6 +19699,11 @@ msgstr "家庭未知"
 #: library/WT/Gedcom/Code/Quay.php:39
 msgid "unreliable evidence"
 msgstr "不可靠的证据"
+
+#. I18N: button label
+#: admin_trees_places.php:102
+msgid "update"
+msgstr "更新"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:182

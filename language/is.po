@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-12-28 11:49+0000\n"
+"POT-Creation-Date: 2013-12-29 12:41+0000\n"
 "PO-Revision-Date: 2013-01-18 11:22+0000\n"
 "Last-Translator: Gudjon Sigurdsson <Unknown>\n"
 "Language-Team: Icelandic <is@li.org>\n"
@@ -3558,7 +3558,7 @@ msgstr "Veldu smámyndina sem þú vilt flytja inn. Þó hægt sé að útbúa s
 msgid "Choose user defined welcome text typed below"
 msgstr "Velja notanda skilgreindan móttökutexta sem skráður er hér að neðan"
 
-#: addmedia.php:529 admin_media_upload.php:216
+#: addmedia.php:528 admin_media_upload.php:216
 msgid "Choose: "
 msgstr "Velja: "
 
@@ -4017,7 +4017,7 @@ msgid "Create a new individual"
 msgstr "Stofna nýjan einstakling"
 
 #. I18N: A media object that is not linked to any other record
-#: addmedia.php:90 addmedia.php:407 admin_site_other.php:69
+#: addmedia.php:89 addmedia.php:406 admin_site_other.php:69
 msgid "Create a new media object"
 msgstr "Stofna nýjan miðilshlut"
 
@@ -5192,7 +5192,7 @@ msgstr "Fráskilnaður eftir öldum"
 msgid "Djibouti"
 msgstr "Djíbútí"
 
-#: addmedia.php:482 addmedia.php:510 admin_media_upload.php:202
+#: addmedia.php:481 addmedia.php:509 admin_media_upload.php:202
 msgid "Do not change to keep original file name."
 msgstr "Ekki breyta til að halda í uppruna skráarheiti."
 
@@ -5210,7 +5210,7 @@ msgstr "Innsiglið ekki, fyrra innsigli aflétt"
 msgid "Do not seal: unauthorized"
 msgstr "Innsiglið ekki: óheimilt"
 
-#: addmedia.php:725 admin_trees_config.php:1284 edit_interface.php:2338
+#: addmedia.php:724 admin_trees_config.php:1284 edit_interface.php:2338
 #: help_text.php:1283
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 #: modules_v3/batch_update/admin_batch_update.php:342
@@ -5364,7 +5364,7 @@ msgstr "Breyta kyni"
 msgid "Edit media"
 msgstr "Breyta miðli"
 
-#: addmedia.php:252 addmedia.php:411 library/WT/Controller/Media.php:55
+#: addmedia.php:251 addmedia.php:410 library/WT/Controller/Media.php:55
 msgid "Edit media object"
 msgstr "Breyta miðilshlut"
 
@@ -5581,7 +5581,7 @@ msgstr "Sláið inn Fjölskyldu Auðkenni"
 msgid "Enter Individual ID"
 msgstr "Sláið inn Einstaklings Auðkenni"
 
-#: addmedia.php:434 modules_v3/gedcom_favorites/module.php:178
+#: addmedia.php:433 modules_v3/gedcom_favorites/module.php:178
 msgid "Enter an individual, family, or source ID"
 msgstr "Sláðu inn persónu, fjölskyldu eða heimilda auðkenni"
 
@@ -5593,7 +5593,7 @@ msgstr "Sláið inn auka skýringu um þetta eftirlæti"
 msgid "Enter filename"
 msgstr "Sláið inn skráarheiti"
 
-#: addmedia.php:439
+#: addmedia.php:438
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
 msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
 msgstr "Sláið inn eða leitið að auðkenni persónunnar, fjölskyldunnar eða uppruna sem þetta miðilsatriði ætti að tengjast."
@@ -5970,7 +5970,7 @@ msgstr "Fjölskyldur með heimildir"
 #: modules_v3/family_group_report/report.xml:3
 #: modules_v3/family_group_report/report.xml:85
 #: modules_v3/family_group_report/report.xml:93
-#: modules_v3/family_nav/module.php:189
+#: modules_v3/family_nav/module.php:196
 msgid "Family"
 msgstr "Fjölskylda"
 
@@ -6257,7 +6257,7 @@ msgstr "Skráar upplýsingar"
 msgid "File containing places (CSV)"
 msgstr "Skrá sem inniheldur staði (CSV)"
 
-#: addmedia.php:481 addmedia.php:502 admin_media_upload.php:198
+#: addmedia.php:480 addmedia.php:501 admin_media_upload.php:198
 #: help_text.php:1433
 msgid "File name on server"
 msgstr "Skáarheiti á þjóni"
@@ -6280,12 +6280,12 @@ msgstr "Skrá var aðeins að hluta hlaðið inn, vinsamlega reynið aftur"
 msgid "Filename"
 msgstr "Skráarheiti"
 
-#: addmedia.php:171 addmedia.php:310 admin_media_upload.php:112
+#: addmedia.php:170 addmedia.php:309 admin_media_upload.php:112
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
 msgstr "Skráarheiti geta ekki innihaldið bókstafin \"%s\"."
 
-#: addmedia.php:176 addmedia.php:315 admin_media_upload.php:117
+#: addmedia.php:175 addmedia.php:314 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "Skráarheiti geta ekki innihaldið endinguna \"%s\"."
@@ -6408,7 +6408,7 @@ msgstr "Floréal"
 msgid "Folder"
 msgstr "Mappa"
 
-#: addmedia.php:522 admin_media_upload.php:210 help_text.php:1438
+#: addmedia.php:521 admin_media_upload.php:210 help_text.php:1438
 msgid "Folder name on server"
 msgstr "Möppuheiti á þjóni"
 
@@ -8863,22 +8863,22 @@ msgstr "Miðill inniheldur:"
 msgid "Media file"
 msgstr "Miðilsskrá"
 
-#: addmedia.php:338 addmedia.php:358
+#: addmedia.php:337 addmedia.php:357
 #, php-format
 msgid "Media file %1$s could not be renamed to %2$s."
 msgstr "Miðilsskrá %1$s var ekki hægt að endurnefna í %2$s."
 
-#: addmedia.php:356
+#: addmedia.php:355
 #, php-format
 msgid "Media file %1$s successfully renamed to %2$s."
 msgstr "Miðilsskrá %1$s var giftusamlega endurnefnd í %2$s."
 
-#: addmedia.php:363
+#: addmedia.php:362
 #, php-format
 msgid "Media file %s does not exist."
 msgstr "Miðilsskrá %s er ekki til."
 
-#: addmedia.php:466 admin_media_upload.php:184
+#: addmedia.php:465 admin_media_upload.php:184
 msgid "Media file to upload"
 msgstr "Miðilsskrá til að flytja inn"
 
@@ -9796,7 +9796,7 @@ msgstr "Engin kortagögn fyrir þessa persónu"
 msgid "No matching facts found"
 msgstr "Engar samstæðar staðreyndir fundust"
 
-#: addmedia.php:180 addmedia.php:319 admin_media_upload.php:121
+#: addmedia.php:179 addmedia.php:318 admin_media_upload.php:121
 msgid "No media file was provided."
 msgstr ""
 
@@ -10259,7 +10259,7 @@ msgstr "Aðrar leitir"
 msgid "Other facts to show in charts"
 msgstr "Aðrar staðreyndir til að sýna á grafi"
 
-#: addmedia.php:531 admin_media_upload.php:217
+#: addmedia.php:530 admin_media_upload.php:217
 msgid "Other folder… please type in"
 msgstr "Aðrar möppur… vinsamlega sláið inn"
 
@@ -10425,7 +10425,7 @@ msgstr "Paragvæ"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:578
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:583
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:585
-#: modules_v3/family_nav/module.php:187 modules_v3/family_nav/module.php:188
+#: modules_v3/family_nav/module.php:194 modules_v3/family_nav/module.php:195
 msgid "Parents"
 msgstr "Foreldrar"
 
@@ -11440,7 +11440,7 @@ msgstr "Fjarlægja þessa staðsetningu?"
 msgid "Reno, Nevada"
 msgstr "Reno, Nevada"
 
-#: search.php:139
+#: admin_trees_places.php:98 search.php:139
 msgid "Replace with"
 msgstr "Skipta út með"
 
@@ -11811,7 +11811,7 @@ msgstr "Leitarvél"
 msgid "Search filters"
 msgstr "Leitarsíur"
 
-#: search.php:103 search.php:137
+#: admin_trees_places.php:96 search.php:103 search.php:137
 msgid "Search for"
 msgstr "Leita að"
 
@@ -13399,7 +13399,7 @@ msgstr "Nánari upplýsingar um þennan einstakling eru einkamál."
 msgid "The family “%s” has been deleted, as it only has one member."
 msgstr "Fjölskyldunni “%s” hefur verið eytt, þar sem hún hefur aðeins einn meðlim."
 
-#: addmedia.php:190 admin_media_upload.php:131
+#: addmedia.php:189 admin_media_upload.php:131
 #, php-format
 msgid "The file %s already exists.  Use another filename."
 msgstr "Skráin %s er þegar til staðar. Notið annað skráarheiti."
@@ -13448,15 +13448,15 @@ msgstr "Skráin \"%s\" er ekki til."
 msgid "The folder %s could not be deleted."
 msgstr ""
 
-#: addmedia.php:112 addmedia.php:123 addmedia.php:135 addmedia.php:274
-#: addmedia.php:285 addmedia.php:297 admin_media_upload.php:61
+#: addmedia.php:111 addmedia.php:122 addmedia.php:134 addmedia.php:273
+#: addmedia.php:284 addmedia.php:296 admin_media_upload.php:61
 #: admin_media_upload.php:72 admin_media_upload.php:84
 #: admin_trees_config.php:190
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Mappan %s er ekki til staðar og ekki var hægt að stofna hana."
 
-#: addmedia.php:110 addmedia.php:121 addmedia.php:272 addmedia.php:283
+#: addmedia.php:109 addmedia.php:120 addmedia.php:271 addmedia.php:282
 #: admin_media_upload.php:59 admin_media_upload.php:70
 #: admin_trees_config.php:188
 #, php-format
@@ -13698,7 +13698,7 @@ msgstr "Það eru bíða breytingar eftir þér til að fundarstýra."
 msgid "There have been no changes within the last %s days."
 msgstr "Það hafa engar breytingar verið gerðar innan síðustu %s daga."
 
-#: addmedia.php:199 admin_media_upload.php:141 edit_interface.php:469
+#: addmedia.php:198 admin_media_upload.php:141 edit_interface.php:469
 msgid "There was an error uploading your file."
 msgstr "Það kom upp villa við upphleðslu á skrá þinni."
 
@@ -13770,7 +13770,7 @@ msgstr "Þessi gagnagrunnur keyrir eingöngu MySQL útgáfu %s. Þú getur ekki 
 msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Þetta netfang verður notað til að senda þér lykilorða upprifjun, vefsíðu tilkynningar og skilaboð frá öðrum fjölskyldumeðlimum sem eru skráðir á vefsíðunni."
 
-#: addmedia.php:546
+#: addmedia.php:545
 msgid "This entry is ignored if you have entered a URL into the file name field."
 msgstr "Þessari færslu er sleppt ef þú hefur slegið inn URL í skráarheitis reitinn."
 
@@ -13821,7 +13821,7 @@ msgstr "Þessi reitur heimilar þér að breyta heimildarfærslunni sem þessi s
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Þessi reitur stjórnar röðina sem S&S atriðin eru birt.<br><br>Þú þarft ekki að slá inn tölurnar í röð. Ef þú skilur eftir eyður í töluskemanu, þá getur þú bætt inn öðrum atriðum síðar. Sem dæmi, ef þú notar tölurnar 1, 6, 11, 16 þá getur þú seinna bætt við atriðum sem vantar í talnaröðina. Neikvæðar tölur og núll eru leyfileg og er hægt að nota til að bæta framan við fyrstu töluna.<br><br>Þegar fleiri en eitt S&S atriði er með sama stöðu töluna þá verður aðeins eitt af þeim atriðum sýnilegt."
 
-#: addmedia.php:332
+#: addmedia.php:331
 msgid "This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
 msgstr "Þessi skrá er tengd við annan ættfræði gagnagrunn á þessum vefþjóni. Ekki er hægt að eyða honum, fjarlægja eða endurnefna fyrr en þessar krækjur hafa verið fjarlægðar."
 
@@ -14353,17 +14353,17 @@ msgstr ""
 msgid "Thu"
 msgstr "Fim"
 
-#: addmedia.php:372
+#: addmedia.php:371
 #, php-format
 msgid "Thumbnail file %1$s could not be renamed to %2$s."
 msgstr "Smámyndaskrá %1$s var ekki hægt að endurnefna í %2$s."
 
-#: addmedia.php:370
+#: addmedia.php:369
 #, php-format
 msgid "Thumbnail file %1$s successfully renamed to %2$s."
 msgstr "Smámyndaskrá %1$s giftusamlega endurnefnd í %2$s."
 
-#: addmedia.php:377
+#: addmedia.php:376
 #, php-format
 msgid "Thumbnail file %s does not exist."
 msgstr "Smámyndaskrá %s er ekki til."
@@ -14373,11 +14373,11 @@ msgstr "Smámyndaskrá %s er ekki til."
 msgid "Thumbnail images"
 msgstr ""
 
-#: addmedia.php:470 admin_media_upload.php:190 help_text.php:1446
+#: addmedia.php:469 admin_media_upload.php:190 help_text.php:1446
 msgid "Thumbnail to upload"
 msgstr "Smámynd til að hlaða inn"
 
-#: addmedia.php:149 admin_media_upload.php:98
+#: addmedia.php:148 admin_media_upload.php:98
 msgid "Thumbnails must be images."
 msgstr ""
 
@@ -15736,7 +15736,7 @@ msgstr "Þú hefur ekki stofnað neitt dagbókaratriði."
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "Þú hefur valið GEDCOM með öðru heiti. Er þetta rétt?"
 
-#: addmedia.php:482
+#: addmedia.php:481
 msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
 msgstr "Þú getur slegið inn veffang, sem byrjar á &laquo;http://&raquo;."
 
@@ -16305,7 +16305,7 @@ msgid "click to edit"
 msgstr "smella til að breyta"
 
 #. I18N: button label
-#: addmedia.php:248 addmedia.php:401 addmedia.php:736 edit_changes.php:240
+#: addmedia.php:247 addmedia.php:400 addmedia.php:735 edit_changes.php:240
 #: edit_interface.php:116 edit_interface.php:210 edit_interface.php:354
 #: edit_interface.php:415 edit_interface.php:1043 edit_interface.php:1151
 #: edit_interface.php:1294 edit_interface.php:1399 edit_interface.php:1507
@@ -18766,7 +18766,7 @@ msgstr "nei"
 #: admin_trees_config.php:1271
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1992
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:779
-#: modules_v3/family_nav/module.php:295
+#: modules_v3/family_nav/module.php:302
 msgid "none"
 msgstr "engin"
 
@@ -18874,6 +18874,11 @@ msgstr ""
 msgid "percentage"
 msgstr "prósenta"
 
+#. I18N: button label
+#: admin_trees_places.php:101
+msgid "preview"
+msgstr "Forskoða"
+
 #. I18N: button label, previous page
 #: library/WT/I18N.php:666 modules_v3/batch_update/admin_batch_update.php:94
 msgid "previous"
@@ -18950,7 +18955,7 @@ msgid "robot"
 msgstr "vélmenni"
 
 #. I18N: button label
-#: addmedia.php:735 admin_module_blocks.php:91 admin_module_menus.php:112
+#: addmedia.php:734 admin_module_blocks.php:91 admin_module_menus.php:112
 #: admin_module_reports.php:91 admin_module_sidebar.php:111
 #: admin_module_tabs.php:112 admin_modules.php:161 admin_site_merge.php:142
 #: admin_trees_config.php:1294 admin_trees_manage.php:261 block_edit.php:56
@@ -19720,7 +19725,7 @@ msgstr "óþekkt"
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2004
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:785
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:791
-#: modules_v3/family_nav/module.php:298 modules_v3/family_nav/module.php:301
+#: modules_v3/family_nav/module.php:305 modules_v3/family_nav/module.php:308
 msgctxt "unknown family"
 msgid "unknown"
 msgstr "óþekkt"
@@ -19729,6 +19734,11 @@ msgstr "óþekkt"
 #: library/WT/Gedcom/Code/Quay.php:39
 msgid "unreliable evidence"
 msgstr ""
+
+#. I18N: button label
+#: admin_trees_places.php:102
+msgid "update"
+msgstr "Uppfæra"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:182

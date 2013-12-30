@@ -668,7 +668,7 @@ msgstr "<thème par défaut>"
 
 #: login.php:390
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
-msgstr "<div class=\"largeError\">Attention:</div><div class=\"error\">En remplissant et en soumettant ce formulaire, vous acceptez:<ul><li>de protéger la vie privée des personnes vivantes répertoriées sur notre site;</li><li>et dans la zone de texte ci-dessous, de nous fournir des informations sur la personne avec qui vous êtes apparentée et qui est listée dans notre site.</li></ul></div>"
+msgstr "<div class=\"largeError\">Attention:</div><div class=\"error\">En remplissant et en soumettant ce formulaire, vous acceptez:<ul><li>de protéger la vie privée des personnes vivantes répertoriées sur notre site;</li><li>et dans la zone de texte ci-dessous, d’expliquer votre relation de parenté et de nous fournir des informations sur quelqu’un qui est sur notre site.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
 #: library/WT/Gedcom/Tag.php:842
@@ -682,7 +682,7 @@ msgstr "Un élément FAQ peut être affiché sur seulement un arbre ou sur tous 
 
 #: help_text.php:320
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Un enfant peut avoir plus d’un couple de parents.  La relation entre l’enfant et ses parents peut être biologique, légale ou  basée sur la culture locale et la tradition.  Par défaut, elle sera biologique si la relation n’est pas spécifiée."
+msgstr "Un enfant peut avoir plus d’un couple de parents. La relation entre l’enfant et ses parents peut être biologique, légale ou basée sur la culture locale et la tradition. Par défaut, elle sera biologique si la relation n’est pas spécifiée."
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:35
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -1474,7 +1474,7 @@ msgstr "Administration"
 
 #: admin_trees_places.php:80
 msgid "Administration - place edit"
-msgstr ""
+msgstr "Administration - éditer lieu"
 
 #: admin_users.php:186 admin_users.php:368 help_text.php:1397
 msgid "Administrator"
@@ -3523,7 +3523,7 @@ msgstr "Les enfants portent un nom de la mère et un nom du père."
 #. I18N: In the patrilineal surname tradition, ...
 #: help_text.php:937 help_text.php:947 help_text.php:968 help_text.php:975
 msgid "Children take their father’s surname."
-msgstr "Les enfants portent le nom de famile de leur père."
+msgstr "Les enfants portent le nom de famille de leur père."
 
 #. I18N: In the matrilineal surname tradition, ...
 #: help_text.php:943
@@ -3560,7 +3560,7 @@ msgstr "Choisir la miniature à téléverser. Bien que les miniatures des images
 msgid "Choose user defined welcome text typed below"
 msgstr "Choisir un texte de bienvenue"
 
-#: addmedia.php:529 admin_media_upload.php:216
+#: addmedia.php:528 admin_media_upload.php:216
 msgid "Choose: "
 msgstr "Choisir : "
 
@@ -3746,7 +3746,7 @@ msgstr "Cliquer pour choisir une personne comme chef de famille (de-cujus)."
 
 #: help_text.php:1348
 msgid "Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically."
-msgstr "Cliquer sur ce lien vous affichera une liste complète des individus et des familles qui ont un évènement lié à ce lieu. Quand vous arrivez au niveau de la ville ou du village, la liste des noms sera affichée automatiquement."
+msgstr "Cliquer sur ce lien affichera une liste complète des individus et des familles qui ont un évènement lié à ce lieu. Quand vous arrivez au niveau de la ville ou du village, la liste des noms sera affichée automatiquement."
 
 #: help_text.php:1139
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
@@ -4019,7 +4019,7 @@ msgid "Create a new individual"
 msgstr "Créer un nouvel individu."
 
 #. I18N: A media object that is not linked to any other record
-#: addmedia.php:90 addmedia.php:407 admin_site_other.php:69
+#: addmedia.php:89 addmedia.php:406 admin_site_other.php:69
 msgid "Create a new media object"
 msgstr "Créer un nouvel objet média."
 
@@ -4451,7 +4451,7 @@ msgstr "Date de la période"
 
 #: help_text.php:196
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr "Les dates relatant une période sont utilisées pour indiquer qu’un fait, comme une profession, à une durée dans le temps."
+msgstr "Les dates relatant une période sont utilisées pour indiquer qu’un fait, comme une profession, a une durée dans le temps."
 
 #: help_text.php:187 statistics.php:646
 msgid "Date range"
@@ -5194,7 +5194,7 @@ msgstr "Divorces par siècle"
 msgid "Djibouti"
 msgstr "Djibouti"
 
-#: addmedia.php:482 addmedia.php:510 admin_media_upload.php:202
+#: addmedia.php:481 addmedia.php:509 admin_media_upload.php:202
 msgid "Do not change to keep original file name."
 msgstr "Ne pas modifier pour conserver le nom d’origine."
 
@@ -5210,9 +5210,9 @@ msgstr "Ne pas sceller: précédent scellement annulé"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:70
 msgid "Do not seal: unauthorized"
-msgstr "Ne pas sceller: interdit"
+msgstr "Ne pas sceller : interdit"
 
-#: addmedia.php:725 admin_trees_config.php:1284 edit_interface.php:2338
+#: addmedia.php:724 admin_trees_config.php:1284 edit_interface.php:2338
 #: help_text.php:1283
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 #: modules_v3/batch_update/admin_batch_update.php:342
@@ -5276,11 +5276,11 @@ msgstr "Adresse courriel en double. Un utilisateur avec cette adresse courriel e
 
 #: admin_users.php:258 edituser.php:57 login.php:260
 msgid "Duplicate user name.  A user with that user name already exists.  Please choose another user name."
-msgstr "Utilisateur déjà existant.  Un utilisateur existe déjà sous ce nom.  Veuillez retourner à la page précédente et choisir un autre nom."
+msgstr "Utilisateur déjà existant. Un utilisateur existe déjà sous ce nom. Veuillez retourner à la page précédente et choisir un autre nom."
 
 #: help_text.php:779
 msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "Adresse courriel utilisés dans le champ &laquo;De:&raquo;domaine pour un courriel que <b>webtrees</b> crée automatiquement.<br><br><b>webtrees</b> peut créer automatiquement des courriels pour informer les administrateurs des changements survenus. <b>webtrees</b> envoie également des notifications par courriel à des utilisateurs qui ont demandé un compte.<br><br>Habituellement, le champ &laquo;From:&raquo; des créations automatiquement des courriels est quelque chose comme<i>De: webtrees-noreply@yoursite</i> montre qu’il n’y a pas de réponse nécessaire à faire pour ce courriel. Pour se prémunir contre le spam ou autres abus de courriel, certains systèmes de courrier électronique exige que tous les champs d’adresse de message doit être celui d’un compte courriel valide et les messages venant de <i>webtrees-noreply</i> ne seront pas acceptés."
+msgstr "Adresse courriel utilisée dans le champ &laquo;De:&raquo; pour les courriels que <b>webtrees</b> crée automatiquement.<br><br><b>webtrees</b> peut créer automatiquement des courriels pour informer les administrateurs des changements survenus. <b>webtrees</b> envoie également des notifications par courriel à des utilisateurs qui ont demandé un compte.<br><br>Habituellement, le champ &laquo;De:&raquo; de ces courriels automatiques est quelque chose comme <i>De: webtrees-noreply@yoursite</i> pour montrer qu’il n’y a pas de réponse nécessaire à faire à ce courriel. Pour se prémunir contre le spam ou autres abus de courriel, certains systèmes de courrier électronique exigent que le champ &laquo;De:&raquo; doive être celui d’un compte courriel valide et les messages venant de <i>webtrees-noreply</i> ne seront pas acceptés."
 
 #: help_text.php:1175
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -5366,7 +5366,7 @@ msgstr "Modifier le sexe"
 msgid "Edit media"
 msgstr "Modifier le média"
 
-#: addmedia.php:252 addmedia.php:411 library/WT/Controller/Media.php:55
+#: addmedia.php:251 addmedia.php:410 library/WT/Controller/Media.php:55
 msgid "Edit media object"
 msgstr "Modifier un objet multimédia"
 
@@ -5410,7 +5410,7 @@ msgstr "Modifier l’histoire"
 
 #: library/WT/Tree.php:332
 msgid "Edit this individual and replace their details with your own"
-msgstr "Modifier cette personne et de remplacer les informations par les vôtres"
+msgstr "Modifier cette personne et remplacer ses données par les vôtres"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:42 help_text.php:1385
@@ -5583,7 +5583,7 @@ msgstr "Code famille"
 msgid "Enter Individual ID"
 msgstr "Code individu"
 
-#: addmedia.php:434 modules_v3/gedcom_favorites/module.php:178
+#: addmedia.php:433 modules_v3/gedcom_favorites/module.php:178
 msgid "Enter an individual, family, or source ID"
 msgstr "Entrer un code Individu, Famille ou Source"
 
@@ -5595,10 +5595,10 @@ msgstr "Entrer un commentaire pour ce favori"
 msgid "Enter filename"
 msgstr "Nom du fichier"
 
-#: addmedia.php:439
+#: addmedia.php:438
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
 msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
-msgstr "Entrez ou recherchez l’ID de la personne, de la famille, ou de la source auqiel ce media doit être lié."
+msgstr "Entrez ou recherchez l’ID de la personne, de la famille, ou de la source auquel ce média doit être lié."
 
 #: modules_v3/googlemap/help_text.php:53
 msgid "Enter precision"
@@ -5610,7 +5610,7 @@ msgstr "Entrez les paramètres du rapport"
 
 #: help_text.php:263
 msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
-msgstr "Entrez le numero de FAX y compris le numéro du pays, et de la zone si il y a lieu.<br><br>Laissez ce champ à blanc si vous ne voulez pas inclure de numéro FAX. Par exemple, un numéro de FAX en France doit être du type (sans le zero du début) :  +33 491422679 et un numéro aux USA ou au Canada doit être du type : +1 888 555-1212."
+msgstr "Entrez le numéro de FAX y compris le numéro du pays, et de la zone s’il y a lieu.<br><br>Laissez ce champ en blanc si vous ne voulez pas inclure de numéro FAX. Par exemple, un numéro de FAX en France doit être du type (sans le zéro du début) :  +33 491422679 et un numéro aux USA ou au Canada doit être du type : +1 888 555-1212."
 
 #: help_text.php:388
 msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
@@ -5626,11 +5626,11 @@ msgstr "Entrez l’adresse courriel.<br><br>Une adresse courriel a la forme suiv
 
 #: help_text.php:1238
 msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
-msgstr "Saisissez la valeur limite ici.<br><br>Si vous avez opté pour la limite de l’affichage des articles à partir de leur date de publication, tout article plus vieux que le nombre de jours spécifiés sera masqué. Si vous avez opté pour limiter le nombre d’articles selon leur nombre, seulement le nombre spécifié d’articles parmi les plus récents sera affiché.  Les articles restants seront masqués.<br><br>Un Zéro saisi ici supprimera toutes limites, affichant tous les articles."
+msgstr "Saisissez la valeur limite ici.<br><br>Si vous avez opté pour une limite de l’affichage des articles par la date de publication, tout article plus vieux que le nombre de jours spécifiés sera masqué. Si vous avez opté pour limiter le nombre d’articles selon leur nombre, seulement le nombre spécifié d’articles parmi les plus récents sera affiché. Les articles restants seront masqués.<br><br>Un Zéro saisi ici supprimera toutes limites, affichant tous les articles."
 
 #: help_text.php:325
 msgid "Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
-msgstr "Entrez le numéro de téléphone y compris le numéro du pays, et de la zone si il y a lieu.<br><br>Laissez ce champ en blanc si vous ne voulez pas inclure de numéro de téléphone. Par exemple, un numéro en France est du type (sans le zero du début) : +33 391322679 et un numéro aux USA ou au Canada du type : +1 888 555-1212."
+msgstr "Entrez le numéro de téléphone y compris le numéro du pays, et de la zone s’il y a lieu.<br><br>Laissez ce champ en blanc si vous ne voulez pas inclure de numéro de téléphone. Par exemple, un numéro en France est du type (sans le zero du début) : +33 391322679 et un numéro aux USA ou au Canada du type : +1 888 555-1212."
 
 #: help_text.php:383
 msgid "Enter the time for this event in 24-hour format with leading zeroes. Midnight is 00:00. Examples: 04:50 13:00 20:30."
@@ -5732,7 +5732,7 @@ msgstr "Événements de la famille proche"
 
 #: help_text.php:1363
 msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
-msgstr "Chaque personne figurant dans la base est identifiée par un numéro d’ID unique sur ce site. Si vous connaissez le numéro d’ID de votre enregistrement, entrez le ici. Si vous ne le connaissez pas ou ne pouvez pas le trouver à cause des règles de protections sur la vie privée, veuillez laisser assez de renseignements dans le champ Commentaires pour aider l’administrateur du site à vous identifier, afin de mettre à jour ce champ avec votre numéro d’ID."
+msgstr "Chaque personne figurant dans la base est identifiée par un numéro d’ID unique sur ce site. Si vous connaissez le numéro d’ID de votre enregistrement, entrez-le ici. Si vous ne le connaissez pas ou ne pouvez pas le trouver à cause des règles de protections sur la vie privée, veuillez laisser assez de renseignements dans le champ Commentaires pour aider l’administrateur du site à vous identifier, afin de mettre à jour ce champ avec votre numéro d’ID."
 
 #: help_text.php:1378
 msgid "Everybody has this role, including visitors to the site and search engines."
@@ -5972,7 +5972,7 @@ msgstr "Familles avec sources"
 #: modules_v3/family_group_report/report.xml:3
 #: modules_v3/family_group_report/report.xml:85
 #: modules_v3/family_group_report/report.xml:93
-#: modules_v3/family_nav/module.php:189
+#: modules_v3/family_nav/module.php:196
 msgid "Family"
 msgstr "Famille"
 
@@ -6259,7 +6259,7 @@ msgstr "Informations du fichier"
 msgid "File containing places (CSV)"
 msgstr "Fichier contenant les lieux (CSV)"
 
-#: addmedia.php:481 addmedia.php:502 admin_media_upload.php:198
+#: addmedia.php:480 addmedia.php:501 admin_media_upload.php:198
 #: help_text.php:1433
 msgid "File name on server"
 msgstr "Nom du fichier sur le serveur"
@@ -6282,12 +6282,12 @@ msgstr "Fichier reçu partiellement. Veuillez recommencer."
 msgid "Filename"
 msgstr "Nom du fichier"
 
-#: addmedia.php:171 addmedia.php:310 admin_media_upload.php:112
+#: addmedia.php:170 addmedia.php:309 admin_media_upload.php:112
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
 msgstr "Les noms de fichier ne doivent pas contenir le caractère «&nbsp;%s&nbsp;»."
 
-#: addmedia.php:176 addmedia.php:315 admin_media_upload.php:117
+#: addmedia.php:175 addmedia.php:314 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "Les noms de fichier ne doivent pas avoir l’extension «&nbsp;%s&nbsp;»."
@@ -6410,7 +6410,7 @@ msgstr "Floréal"
 msgid "Folder"
 msgstr "Répertoire"
 
-#: addmedia.php:522 admin_media_upload.php:210 help_text.php:1438
+#: addmedia.php:521 admin_media_upload.php:210 help_text.php:1438
 msgid "Folder name on server"
 msgstr "Nom du dossier sur le serveur"
 
@@ -6480,7 +6480,7 @@ msgstr "Format"
 
 #: admin_trees_config.php:940 help_text.php:525
 msgid "Format text and notes"
-msgstr ""
+msgstr "Mise en forme du texte et des notes"
 
 #: library/WT/Gedcom/Code/Pedi.php:55
 msgctxt "Female pedigree"
@@ -8524,7 +8524,7 @@ msgstr "mars"
 
 #: help_text.php:530
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr ""
+msgstr "Markdown est un système simple de mise en forme, utilisé sur des sites comme Wikipédia. Il utilise des caractères de ponctuation discrets pour créer des titres et sous-titres, texte en gras et en italique, listes, tableaux, etc."
 
 #. I18N: gedcom tag MARR
 #: library/WT/Gedcom/Tag.php:238 modules_v3/ahnentafel_report/report.xml:453
@@ -8865,22 +8865,22 @@ msgstr "Objet multimédia :"
 msgid "Media file"
 msgstr "Fichier média"
 
-#: addmedia.php:338 addmedia.php:358
+#: addmedia.php:337 addmedia.php:357
 #, php-format
 msgid "Media file %1$s could not be renamed to %2$s."
 msgstr "Le fichier Média %1$s ne peut pas être renommé en %2$s."
 
-#: addmedia.php:356
+#: addmedia.php:355
 #, php-format
 msgid "Media file %1$s successfully renamed to %2$s."
 msgstr "Le fichier Média %1$s a été renommé avec succès en %2$s."
 
-#: addmedia.php:363
+#: addmedia.php:362
 #, php-format
 msgid "Media file %s does not exist."
 msgstr "Le fichier Média %s n’existe pas."
 
-#: addmedia.php:466 admin_media_upload.php:184
+#: addmedia.php:465 admin_media_upload.php:184
 msgid "Media file to upload"
 msgstr "Objet média"
 
@@ -9798,7 +9798,7 @@ msgstr "Aucune donnée cartographique"
 msgid "No matching facts found"
 msgstr "Aucun champ correspondant"
 
-#: addmedia.php:180 addmedia.php:319 admin_media_upload.php:121
+#: addmedia.php:179 addmedia.php:318 admin_media_upload.php:121
 msgid "No media file was provided."
 msgstr "Aucun fichier média n’a été fourni."
 
@@ -9813,7 +9813,7 @@ msgstr "Lieu introuvable"
 
 #: admin_trees_places.php:121
 msgid "No places were found."
-msgstr ""
+msgstr "Aucun lieu trouvé."
 
 #: admin_site_config.php:44
 msgid "No predefined text"
@@ -10261,7 +10261,7 @@ msgstr "Autres recherches"
 msgid "Other facts to show in charts"
 msgstr "Autres évènements à afficher dans les tableaux"
 
-#: addmedia.php:531 admin_media_upload.php:217
+#: addmedia.php:530 admin_media_upload.php:217
 msgid "Other folder… please type in"
 msgstr "Autre répertoire… renseignez ici le nom de ce nouveau répertoire"
 
@@ -10427,7 +10427,7 @@ msgstr "Paraguay"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:578
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:583
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:585
-#: modules_v3/family_nav/module.php:187 modules_v3/family_nav/module.php:188
+#: modules_v3/family_nav/module.php:194 modules_v3/family_nav/module.php:195
 msgid "Parents"
 msgstr "Parents"
 
@@ -10643,7 +10643,7 @@ msgstr "Lieu en Hébreu"
 
 #: help_text.php:885
 msgid "Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr "Les noms de lieux sont fréquemment trop longs pour un affichage adéquat dans les graphiques, les listes, etc.  Ils peuvent être abrégés en affichant seulement les premières parties du nom telles que <i>village, département</i>, ou les dernières parties telles que <i>région, pays</i>."
+msgstr "Les noms de lieux sont fréquemment trop longs pour un affichage adéquat dans les graphiques, les listes, etc. Ils peuvent être abrégés en affichant seulement les premières parties du nom telles que <i>village, département</i>, ou les dernières parties telles que <i>région, pays</i>."
 
 #: library/WT/Gedcom/Tag.php:116
 msgid "Place of LDS baptism"
@@ -10788,7 +10788,7 @@ msgstr "Lieux d’/de/du/des %s"
 
 #: help_text.php:330
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "Lieux doit être saisi conformément aux normes généalogiques. En généalogie, les lieux sont enregistrés avec les informations les plus spécifiques sur l’endroit d’abord, puis jusqu’à l’endroit le moins spécifiques en dernier, en utilisant des virgules pour séparer les niveaux des endroits différents. Le niveau auquel vous enregistrez les informations devrait représenter pour les documents les lieux aux niveaux de gouvernement ou d’une église où ils sont conservés.<br><br>Par exemple, un endroit comme Salt Lake City serait entré comme «&nbsp;Salt Lake City, Salt Lake City, Utah, Etats-Unis&nbsp;».<br><br>Examinons chaque partie de ce lieu. La première partie, «&nbsp;Salt Lake City&nbsp;», est la ville ou du canton où l’événement s’est produit. Dans certains pays, il peut y avoir des municipalités ou des districts à l’intérieur d’une ville qui sont importants à noter. Dans ce cas, ils devraient venir devant la ville. La partie suivante, «&nbsp;Salt Lake City&nbsp;», est le comté. «&nbsp;Utah&nbsp;» est l’état, et «&nbsp;USA&nbsp;» est le pays. Il est important de noter chaque lieu parce que les dossiers généalogiques sont conservés par les gouvernements de chaque niveau.<br><br>Si le niveau du lieu est inconnu, vous devez laisser un espace entre les virgules. Supposons que, dans l’exemple ci-dessus, vous ne saviez pas le comté de Salt Lake City. Vous devez ensuite l’enregistrer comme ceci: «&nbsp;Salt Lake City , , Utah, Etats-Unis&nbsp;». Supposons que vous ne connaissez qu’une personne est née dans l’Utah. Vous entrez les informations comme ceci: «&nbsp;,&nbsp;,&nbsp;Utah, Etats-Unis&nbsp;». <br><br>Vous pouvez utiliser le lien <b>Rechercher Lieux</b> pour vous aider à trouver des lieux qui existent déjà dans la base de données."
+msgstr "Les lieux doivent être saisis conformément aux normes généalogiques. En généalogie, les lieux sont enregistrés avec les informations du lieu les plus spécifiques en premier, puis jusqu’à l’endroit le moins spécifique en dernier, en utilisant des virgules pour séparer les niveaux des endroits différents. Le niveau de lieu auquel vous enregistrez les informations devrait représenter les niveaux d’un gouvernement ou d’une église où les documents relatifs à ces informations sont conservés.<br><br>Par exemple, un endroit comme Salt Lake City serait entré comme «&nbsp;Salt Lake City, Salt Lake City, Utah, Etats-Unis&nbsp;».<br><br>Examinons chaque partie de ce lieu. La première partie, «&nbsp;Salt Lake City&nbsp;», est la ville ou le canton où l’événement s’est produit. Dans certains pays, il peut y avoir des municipalités ou des districts à l’intérieur d’une ville qui sont importants à noter. Dans ce cas, ils devraient s’inscrire devant la ville. La partie suivante, «&nbsp;Salt Lake City&nbsp;», est le comté. «&nbsp;Utah&nbsp;» est l’état, et «&nbsp;USA&nbsp;» est le pays. Il est important de noter chaque lieu parce que les dossiers généalogiques sont conservés par les gouvernements de chaque niveau.<br><br>Supposons que vous ne connaissez seulement qu’une personne est née dans l’Utah. Vous entrez les informations comme ceci: «&nbsp;,&nbsp;,&nbsp;Utah, USA&nbsp;».<br><br>Vous pouvez utiliser le lien <b>Rechercher Lieux</b> pour vous aider à trouver des lieux qui existent déjà dans la base de données."
 
 #: modules_v3/random_media/module.php:130 themes/_administration/header.php:31
 #: themes/clouds/header.php:34 themes/colors/header.php:37
@@ -11442,7 +11442,7 @@ msgstr "Supprimer ce lieu ?"
 msgid "Reno, Nevada"
 msgstr "Reno, Nevada"
 
-#: search.php:139
+#: admin_trees_places.php:98 search.php:139
 msgid "Replace with"
 msgstr "Remplacer par"
 
@@ -11813,7 +11813,7 @@ msgstr "Moteur de recherche"
 msgid "Search filters"
 msgstr "Filtres de recherche"
 
-#: search.php:103 search.php:137
+#: admin_trees_places.php:96 search.php:103 search.php:137
 msgid "Search for"
 msgstr "Rechercher"
 
@@ -11891,7 +11891,7 @@ msgstr "Sélectionner"
 
 #: statistics.php:572 statistics.php:583 statistics.php:592
 msgid "Select the desired age interval"
-msgstr "Sélectionnez l’interval d’âge souhaité"
+msgstr "Sélectionnez l’intervalle d’âge souhaité"
 
 #: statistics.php:601
 msgid "Select the desired count interval"
@@ -12161,7 +12161,7 @@ msgstr "Notes partagées"
 
 #: help_text.php:358
 msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
-msgstr "Les notes partagées sont des textes de forme libre.<br><br>Chaque note partagée peut être liée à plus d’une personne, famille, source ou évènement."
+msgstr "Les notes partagées sont du texte libre.<br><br>Chaque note partagée peut être liée à plus d’une personne, famille, source ou évènement."
 
 #: find.php:659
 msgid "Shared notes found"
@@ -13047,7 +13047,7 @@ msgstr "Statut"
 
 #: library/WT/Gedcom/Tag.php:311
 msgid "Status change date"
-msgstr "Date du changement de status"
+msgstr "Date du changement de statut"
 
 #: includes/functions/functions_date.php:36
 msgid "Stillborn"
@@ -13401,7 +13401,7 @@ msgstr "Les détails de cette personne sont privés."
 msgid "The family “%s” has been deleted, as it only has one member."
 msgstr "La famille «&nbsp;%s&nbsp;» a été supprimée car elle n’avait qu’un seul membre."
 
-#: addmedia.php:190 admin_media_upload.php:131
+#: addmedia.php:189 admin_media_upload.php:131
 #, php-format
 msgid "The file %s already exists.  Use another filename."
 msgstr "Le fichier %s existe déjà. Utilisez un autre nom de fichier."
@@ -13450,15 +13450,15 @@ msgstr "Le fichier «&nbsp;%s&nbsp;» n’existe pas."
 msgid "The folder %s could not be deleted."
 msgstr "Le dossier %s n’a pas pu être supprimé."
 
-#: addmedia.php:112 addmedia.php:123 addmedia.php:135 addmedia.php:274
-#: addmedia.php:285 addmedia.php:297 admin_media_upload.php:61
+#: addmedia.php:111 addmedia.php:122 addmedia.php:134 addmedia.php:273
+#: addmedia.php:284 addmedia.php:296 admin_media_upload.php:61
 #: admin_media_upload.php:72 admin_media_upload.php:84
 #: admin_trees_config.php:190
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Le dossier %s n’existe pas et ne peut être créé."
 
-#: addmedia.php:110 addmedia.php:121 addmedia.php:272 addmedia.php:283
+#: addmedia.php:109 addmedia.php:120 addmedia.php:271 addmedia.php:282
 #: admin_media_upload.php:59 admin_media_upload.php:70
 #: admin_trees_config.php:188
 #, php-format
@@ -13497,11 +13497,11 @@ msgstr "Le message suivant vous a été envoyé par "
 
 #: admin_trees_places.php:108
 msgid "The following places were changed:"
-msgstr ""
+msgstr "Les lieux ci-dessous ont été changés :"
 
 #: admin_trees_places.php:108
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "Les lieux ci-dessous devraient être changés :"
 
 #: admin_site_access.php:270
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -13700,7 +13700,7 @@ msgstr "Il y a des changements en cours en attente de modération."
 msgid "There have been no changes within the last %s days."
 msgstr "Il n’y a eu aucun changement dans les %s derniers jours"
 
-#: addmedia.php:199 admin_media_upload.php:141 edit_interface.php:469
+#: addmedia.php:198 admin_media_upload.php:141 edit_interface.php:469
 msgid "There was an error uploading your file."
 msgstr "Erreur lors du téléversement de votre fichier GEDCOM."
 
@@ -13772,7 +13772,7 @@ msgstr "La base de données nécessite au moins la version MySQL %s. Vous ne pou
 msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Cette adresse courriel sera utilisée pour recevoir votre mot de passe, pour les notifications du site et pour les messages en provenance des autres membres de la famille enregistrés sur le site."
 
-#: addmedia.php:546
+#: addmedia.php:545
 msgid "This entry is ignored if you have entered a URL into the file name field."
 msgstr "Cette entrée est ignorée si vous avez entré une adresse URL dans le champ correspondant au nom de fichier."
 
@@ -13823,7 +13823,7 @@ msgstr "Saisir dans ce champ le code de la source associée à l’évènement. 
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Ce champ contrôle l’ordre dans lequel les éléments de la FAQ sont affichés.<br><br>Vous n’avez pas à entrer les numéros de façon séquentielle. Si vous laissez des trous dans le système de numérotation, vous pouvez insérer d’autres éléments plus tard. Par exemple, si vous utilisez les numéros 1, 6, 11, 16, vous pouvez insérer des éléments plus tard, avec les numéros de séquence manquants. Les nombres négatifs et zéro sont autorisés, et peut être utilisé pour insérer des éléments en face de la première.<br><br>Lorsqu’il y a plus qu’un élément de FAQ avec le même numéro, un seul de ces éléments sera visible."
 
-#: addmedia.php:332
+#: addmedia.php:331
 msgid "This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
 msgstr "Impossible de supprimer, renommer ou déplacer ce fichier : il reste des liens avec un autre GEDCOM sur ce serveur."
 
@@ -13856,7 +13856,7 @@ msgstr "Cet individu a été supprimé. Vous devriez examiner la suppression pui
 
 #: individual.php:77
 msgid "This individual has been edited.  The changes need to be reviewed by a moderator."
-msgstr "La fiche de cet individu a été modifiée. Les modification doivent être révisées par un gestionnaire."
+msgstr "La fiche de cet individu a été modifiée. Les modifications doivent être révisées par un gestionnaire."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: individual.php:68
@@ -14264,7 +14264,7 @@ msgstr "Cette section vous permet d’associer une source à l’évènement que
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:317
 msgid "This server does not support secure downloads using HTTPS."
-msgstr ""
+msgstr "Ce serveur ne supporte pas les téléchargements sécurisés utilisant le protocole HTTPS."
 
 #: setup.php:171
 #, php-format
@@ -14348,24 +14348,24 @@ msgstr "Ceci listera tous les lieux du fichier GEDCOM sélectionné. Par défaut
 
 #: admin_trees_places.php:89
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "Cela mettra à jour la partie de plus haut niveau ou des parties du nom de lieu. Par exemple, « Mexique » correspondra à « Quintana Roo, Mexique », mais pas à « Santa Fe, Nouveau-Mexique »."
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:222
 msgid "Thu"
 msgstr "Jeu"
 
-#: addmedia.php:372
+#: addmedia.php:371
 #, php-format
 msgid "Thumbnail file %1$s could not be renamed to %2$s."
 msgstr "Le fichier minature %1$s ne peut pas être renommé en %2$s."
 
-#: addmedia.php:370
+#: addmedia.php:369
 #, php-format
 msgid "Thumbnail file %1$s successfully renamed to %2$s."
 msgstr "Le fichier minature %1$s a été renommé avec succès en %2$s."
 
-#: addmedia.php:377
+#: addmedia.php:376
 #, php-format
 msgid "Thumbnail file %s does not exist."
 msgstr "La miniature %s n’existe pas."
@@ -14375,11 +14375,11 @@ msgstr "La miniature %s n’existe pas."
 msgid "Thumbnail images"
 msgstr "Miniatures"
 
-#: addmedia.php:470 admin_media_upload.php:190 help_text.php:1446
+#: addmedia.php:469 admin_media_upload.php:190 help_text.php:1446
 msgid "Thumbnail to upload"
 msgstr "Miniature"
 
-#: addmedia.php:149 admin_media_upload.php:98
+#: addmedia.php:148 admin_media_upload.php:98
 msgid "Thumbnails must be images."
 msgstr "Les miniatures doivent être des images."
 
@@ -14487,7 +14487,7 @@ msgstr "Pour créer des nouvelles tâches à faire, vous devez premièrement ajo
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr ""
+msgstr "Pour assurer la compatibilité avec d’autres logiciels de généalogie, les notes, du texte et relevés de notes doivent être enregistrés en texte simple, non formaté. Toutefois, la mise en forme est souvent souhaitable pour faciliter la présentation, la compréhension, etc."
 
 #: admin_media.php:451 library/WT/Controller/Media.php:69
 #: library/WT/Controller/Media.php:149 modules_v3/lightbox/module.php:189
@@ -14933,11 +14933,11 @@ msgstr "Tout mettre à jour"
 
 #: admin_trees_places.php:85
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Mettre à jour tous les noms de lieux dans un arbre généalogique"
 
 #: themes/_administration/header.php:121
 msgid "Update place names"
-msgstr ""
+msgstr "Mettre à jour les noms de lieux"
 
 #: admin_site_merge.php:152
 msgid "Updating linked record"
@@ -15122,7 +15122,7 @@ msgstr "Les identifiants ne sont pas sensibles à la casse et ignorent les lettr
 #: help_text.php:1488
 #, php-format
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "Les identifiants ne doivent pas contenir les caractères suivants&nbsp;:&nbsp;&lt; &gt; \" %% { } ;"
+msgstr "Les identifiants ne doivent pas contenir les caractères suivants&nbsp;:&nbsp;&lt; &gt; &quot; %% { } ;"
 
 #: admin.php:133 themes/_administration/header.php:130
 msgid "Users"
@@ -15460,7 +15460,7 @@ msgstr "Lors du calcul des relations, cette option permet à <b>webtrees</b> d�
 
 #: help_text.php:895
 msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
-msgstr "Lorsqu’il est réglé sur <b>Oui</b>, le message suivant apparaîtra au-dessus des champs de saisie de la page «&nbsp;Demander un compte utilisateur&nbsp;» page&nbsp;:<div class=\"list_value_wrap\"><div class=\"largeError\">Attention&nbsp;:</div><div class=\"error\">En remplissant et en soumettant ce formulaire, vous acceptez&nbsp;:<ul><li>de protéger la vie privée des personnes vivantes répertoriées sur notre site&nbsp;</li><li>et dans la zone de texte ci-dessous, expliquer avec qui vous êtes liés, ou de nous fournir des informations sur quelqu’un qui est sur notre site.</li></ul></div></div>"
+msgstr "Lorsqu’il est réglé sur <b>Oui</b>, le message suivant apparaîtra au-dessus des champs de saisie de la page «&nbsp;Demander un compte utilisateur&nbsp;» page&nbsp;:<div class=\"list_value_wrap\"><div class=\"largeError\">Attention&nbsp;:</div><div class=\"error\">En remplissant et en soumettant ce formulaire, vous acceptez&nbsp;:<ul><li>de protéger la vie privée des personnes vivantes répertoriées sur notre site&nbsp;</li><li>et dans la zone de texte ci-dessous, d’expliquer votre relation de parenté et de nous fournir des informations sur quelqu’un qui est sur notre site.</li></ul></div></div>"
 
 #: help_text.php:1289
 msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
@@ -15593,7 +15593,7 @@ msgstr "Winter Quarters, Nebraska"
 
 #: library/WT/Stats.php:308 library/WT/Stats.php:352
 msgid "With sources"
-msgstr "Avec les sources"
+msgstr "Avec sources"
 
 #: help_text.php:1184
 msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
@@ -15609,7 +15609,7 @@ msgstr "En activant cette option, vous recevrez uniquement des messages par cour
 
 #: library/WT/Stats.php:307 library/WT/Stats.php:351
 msgid "Without sources"
-msgstr "Sans les sources"
+msgstr "Sans sources"
 
 #. I18N: gedcom tag _WITN
 #: library/WT/Gedcom/Code/Rela.php:196 library/WT/Gedcom/Tag.php:813
@@ -15738,7 +15738,7 @@ msgstr "Journal vide."
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "Vous avez sélectionné un fichier GEDCOM avec un nom différent. Est-ce correct?"
 
-#: addmedia.php:482
+#: addmedia.php:481
 msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
 msgstr "Entrer une URL commencant par «&nbsp;http://&nbsp;»."
 
@@ -16307,7 +16307,7 @@ msgid "click to edit"
 msgstr "cliquez pour modifier"
 
 #. I18N: button label
-#: addmedia.php:248 addmedia.php:401 addmedia.php:736 edit_changes.php:240
+#: addmedia.php:247 addmedia.php:400 addmedia.php:735 edit_changes.php:240
 #: edit_interface.php:116 edit_interface.php:210 edit_interface.php:354
 #: edit_interface.php:415 edit_interface.php:1043 edit_interface.php:1151
 #: edit_interface.php:1294 edit_interface.php:1399 edit_interface.php:1507
@@ -18535,7 +18535,7 @@ msgstr "nom à la naissance"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:947
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: library/WT/Stats.php:1723 library/WT/Stats.php:3579
 msgid "marriage"
@@ -18768,7 +18768,7 @@ msgstr "non"
 #: admin_trees_config.php:1271
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1992
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:779
-#: modules_v3/family_nav/module.php:295
+#: modules_v3/family_nav/module.php:302
 msgid "none"
 msgstr "aucun"
 
@@ -18875,6 +18875,10 @@ msgstr "en attente"
 #: statistics.php:668 statisticsplot.php:788
 msgid "percentage"
 msgstr "pourcentage"
+#. I18N: button label
+#: admin_trees_places.php:101
+msgid "preview"
+msgstr "Aperçu"
 
 #. I18N: button label, previous page
 #: library/WT/I18N.php:666 modules_v3/batch_update/admin_batch_update.php:94
@@ -18952,7 +18956,7 @@ msgid "robot"
 msgstr "robot"
 
 #. I18N: button label
-#: addmedia.php:735 admin_module_blocks.php:91 admin_module_menus.php:112
+#: addmedia.php:734 admin_module_blocks.php:91 admin_module_menus.php:112
 #: admin_module_reports.php:91 admin_module_sidebar.php:111
 #: admin_module_tabs.php:112 admin_modules.php:161 admin_site_merge.php:142
 #: admin_trees_config.php:1294 admin_trees_manage.php:261 block_edit.php:56
@@ -19722,7 +19726,7 @@ msgstr "inconnu"
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2004
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:785
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:791
-#: modules_v3/family_nav/module.php:298 modules_v3/family_nav/module.php:301
+#: modules_v3/family_nav/module.php:305 modules_v3/family_nav/module.php:308
 msgctxt "unknown family"
 msgid "unknown"
 msgstr "inconnu(e)"
@@ -19731,6 +19735,10 @@ msgstr "inconnu(e)"
 #: library/WT/Gedcom/Code/Quay.php:39
 msgid "unreliable evidence"
 msgstr "source non fiable"
+#. I18N: button label
+#: admin_trees_places.php:102
+msgid "update"
+msgstr "Mise à jour"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:182

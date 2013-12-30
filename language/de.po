@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-12-28 11:49+0000\n"
+"POT-Creation-Date: 2013-12-29 12:41+0000\n"
 "PO-Revision-Date: 2013-06-24 05:42+0000\n"
 "Last-Translator: rybog <rybog@web.de>\n"
 "Language-Team: \n"
@@ -3553,7 +3553,7 @@ msgstr "Wählen Sie das Miniaturbild, welches Sie hochladen möchten. Obwohl Min
 msgid "Choose user defined welcome text typed below"
 msgstr "Selbsterstellter Text wie unten angegeben"
 
-#: addmedia.php:529 admin_media_upload.php:216
+#: addmedia.php:528 admin_media_upload.php:216
 msgid "Choose: "
 msgstr "Wählen: "
 
@@ -4012,7 +4012,7 @@ msgid "Create a new individual"
 msgstr "Erstelle eine neue Person"
 
 #. I18N: A media object that is not linked to any other record
-#: addmedia.php:90 addmedia.php:407 admin_site_other.php:69
+#: addmedia.php:89 addmedia.php:406 admin_site_other.php:69
 msgid "Create a new media object"
 msgstr "Erstelle ein neues Medien Objekt"
 
@@ -5187,7 +5187,7 @@ msgstr "Scheidungen pro Jahrhundert"
 msgid "Djibouti"
 msgstr "Dschibuti"
 
-#: addmedia.php:482 addmedia.php:510 admin_media_upload.php:202
+#: addmedia.php:481 addmedia.php:509 admin_media_upload.php:202
 msgid "Do not change to keep original file name."
 msgstr "Nicht ändern, um den ursprünglichen Namen zu behalten."
 
@@ -5205,7 +5205,7 @@ msgstr "Nicht siegeln - frühere Siegelung aufgehoben"
 msgid "Do not seal: unauthorized"
 msgstr "Nicht siegeln - keine Erlaubnis"
 
-#: addmedia.php:725 admin_trees_config.php:1284 edit_interface.php:2338
+#: addmedia.php:724 admin_trees_config.php:1284 edit_interface.php:2338
 #: help_text.php:1283
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
 #: modules_v3/batch_update/admin_batch_update.php:342
@@ -5359,7 +5359,7 @@ msgstr "Geschlecht ändern"
 msgid "Edit media"
 msgstr "Medienobjekt bearbeiten"
 
-#: addmedia.php:252 addmedia.php:411 library/WT/Controller/Media.php:55
+#: addmedia.php:251 addmedia.php:410 library/WT/Controller/Media.php:55
 msgid "Edit media object"
 msgstr "Bearbeiten des Medieneintrags"
 
@@ -5576,7 +5576,7 @@ msgstr "Familien ID eingeben"
 msgid "Enter Individual ID"
 msgstr "Personen-ID eingeben"
 
-#: addmedia.php:434 modules_v3/gedcom_favorites/module.php:178
+#: addmedia.php:433 modules_v3/gedcom_favorites/module.php:178
 msgid "Enter an individual, family, or source ID"
 msgstr "Personen, Familien oder Quellen Id eingeben"
 
@@ -5588,7 +5588,7 @@ msgstr "Gebe eine zusätzliche Bemerkung zu dem Lesezeichen ein"
 msgid "Enter filename"
 msgstr "Dateiname"
 
-#: addmedia.php:439
+#: addmedia.php:438
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
 msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
 msgstr "Die ID Nummer einer Person, Familie, oder Quelle eingeben oder suchen, um eine Verbindung zu diesem Medien Objekt herzustellen."
@@ -5965,7 +5965,7 @@ msgstr "Familien mit Quellenangabe"
 #: modules_v3/family_group_report/report.xml:3
 #: modules_v3/family_group_report/report.xml:85
 #: modules_v3/family_group_report/report.xml:93
-#: modules_v3/family_nav/module.php:189
+#: modules_v3/family_nav/module.php:196
 msgid "Family"
 msgstr "Familie"
 
@@ -6252,7 +6252,7 @@ msgstr "Datei-Informationen"
 msgid "File containing places (CSV)"
 msgstr "Lokale-Datei mit den Orten (CSV)"
 
-#: addmedia.php:481 addmedia.php:502 admin_media_upload.php:198
+#: addmedia.php:480 addmedia.php:501 admin_media_upload.php:198
 #: help_text.php:1433
 msgid "File name on server"
 msgstr "Dateiname auf dem Server"
@@ -6275,12 +6275,12 @@ msgstr "Die Datei wurde nur teilweise hochgeladen. Bitte versuchen Sie es erneut
 msgid "Filename"
 msgstr "Dateiname"
 
-#: addmedia.php:171 addmedia.php:310 admin_media_upload.php:112
+#: addmedia.php:170 addmedia.php:309 admin_media_upload.php:112
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
 msgstr "Dateinamen dürfen das Zeichen “%s” nicht enthalten."
 
-#: addmedia.php:176 addmedia.php:315 admin_media_upload.php:117
+#: addmedia.php:175 addmedia.php:314 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "Dateinamen dürfen nicht die Erweiterung \"%s\" haben."
@@ -6403,7 +6403,7 @@ msgstr "Floréal"
 msgid "Folder"
 msgstr "Verzeichnis"
 
-#: addmedia.php:522 admin_media_upload.php:210 help_text.php:1438
+#: addmedia.php:521 admin_media_upload.php:210 help_text.php:1438
 msgid "Folder name on server"
 msgstr "Verzeichnisname auf dem Server"
 
@@ -8858,22 +8858,22 @@ msgstr "Inhalt der Medien:"
 msgid "Media file"
 msgstr "Mediendatei"
 
-#: addmedia.php:338 addmedia.php:358
+#: addmedia.php:337 addmedia.php:357
 #, php-format
 msgid "Media file %1$s could not be renamed to %2$s."
 msgstr "Die Mediendatei %1$s konnte nicht in %2$s umbenannt werden."
 
-#: addmedia.php:356
+#: addmedia.php:355
 #, php-format
 msgid "Media file %1$s successfully renamed to %2$s."
 msgstr "Die Mediendatei %1$s wurde in %2$s umbenannt."
 
-#: addmedia.php:363
+#: addmedia.php:362
 #, php-format
 msgid "Media file %s does not exist."
 msgstr "Die Mediendatei %s ist nicht vorhanden."
 
-#: addmedia.php:466 admin_media_upload.php:184
+#: addmedia.php:465 admin_media_upload.php:184
 msgid "Media file to upload"
 msgstr "Multimedia Datei zum Hochladen"
 
@@ -9791,7 +9791,7 @@ msgstr "Keine Karteninformation für diese Person"
 msgid "No matching facts found"
 msgstr "Keine übereinstimmende Fakten gefunden"
 
-#: addmedia.php:180 addmedia.php:319 admin_media_upload.php:121
+#: addmedia.php:179 addmedia.php:318 admin_media_upload.php:121
 msgid "No media file was provided."
 msgstr "Keine Mediendatei gefunden."
 
@@ -10254,7 +10254,7 @@ msgstr "Andere Suchen"
 msgid "Other facts to show in charts"
 msgstr "Andere auf Diagrammen zu zeigende Ereignisse"
 
-#: addmedia.php:531 admin_media_upload.php:217
+#: addmedia.php:530 admin_media_upload.php:217
 msgid "Other folder… please type in"
 msgstr "Anderes Verzeichnis … bitte eingeben"
 
@@ -10420,7 +10420,7 @@ msgstr "Paraguay"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:578
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:583
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:585
-#: modules_v3/family_nav/module.php:187 modules_v3/family_nav/module.php:188
+#: modules_v3/family_nav/module.php:194 modules_v3/family_nav/module.php:195
 msgid "Parents"
 msgstr "Eltern"
 
@@ -11435,7 +11435,7 @@ msgstr "Diese Ortsdaten entfernen?"
 msgid "Reno, Nevada"
 msgstr "Reno, Nevada"
 
-#: search.php:139
+#: admin_trees_places.php:98 search.php:139
 msgid "Replace with"
 msgstr "Ersetzen mit …"
 
@@ -11806,7 +11806,7 @@ msgstr "Suchmaschine"
 msgid "Search filters"
 msgstr "Such-Filter"
 
-#: search.php:103 search.php:137
+#: admin_trees_places.php:96 search.php:103 search.php:137
 msgid "Search for"
 msgstr "Suche aus"
 
@@ -13394,7 +13394,7 @@ msgstr "Die Details dieser Person sind vertraulich."
 msgid "The family “%s” has been deleted, as it only has one member."
 msgstr "Die Familie %s\" wurde gelöscht, da sie nur aus einem Mitglied besteht."
 
-#: addmedia.php:190 admin_media_upload.php:131
+#: addmedia.php:189 admin_media_upload.php:131
 #, php-format
 msgid "The file %s already exists.  Use another filename."
 msgstr "Die Datei %s existiert schon. Bitte einen anderen Dateinamen verwenden."
@@ -13443,15 +13443,15 @@ msgstr "Die Datei \"%s\"  existiert nicht."
 msgid "The folder %s could not be deleted."
 msgstr ""
 
-#: addmedia.php:112 addmedia.php:123 addmedia.php:135 addmedia.php:274
-#: addmedia.php:285 addmedia.php:297 admin_media_upload.php:61
+#: addmedia.php:111 addmedia.php:122 addmedia.php:134 addmedia.php:273
+#: addmedia.php:284 addmedia.php:296 admin_media_upload.php:61
 #: admin_media_upload.php:72 admin_media_upload.php:84
 #: admin_trees_config.php:190
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Der Ordner %s existiert nicht und konnte nicht erstellt werden."
 
-#: addmedia.php:110 addmedia.php:121 addmedia.php:272 addmedia.php:283
+#: addmedia.php:109 addmedia.php:120 addmedia.php:271 addmedia.php:282
 #: admin_media_upload.php:59 admin_media_upload.php:70
 #: admin_trees_config.php:188
 #, php-format
@@ -13693,7 +13693,7 @@ msgstr "hier sind ausstehende Änderungen für die Moderation"
 msgid "There have been no changes within the last %s days."
 msgstr "In den letzten %s Tagen sind keine Änderungen erfolgt."
 
-#: addmedia.php:199 admin_media_upload.php:141 edit_interface.php:469
+#: addmedia.php:198 admin_media_upload.php:141 edit_interface.php:469
 msgid "There was an error uploading your file."
 msgstr "Beim Übertragen (upload) Ihrer Datei auf den Server trat ein Fehler auf."
 
@@ -13765,7 +13765,7 @@ msgstr "Ihre Datenbank lässt nur MySQL Version %s zu. Sie können hier webtrees
 msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Diese E-Mail-Adresse dient dem Versand von Passworterinnerungen, Webseitenbenachrichtigungen und Nachrichten von anderen Familienmitgliedern, die auf der Seite registriert sind."
 
-#: addmedia.php:546
+#: addmedia.php:545
 msgid "This entry is ignored if you have entered a URL into the file name field."
 msgstr "Diese Eingabe wird nicht beachtet, wenn Sie oben einen URL eingegeben haben."
 
@@ -13816,7 +13816,7 @@ msgstr "Dieses Feld ermöglicht Ihnen, das Zitat an eine andere Quelle anzuschli
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Dieser Eintrag bestimmt die Reihenfolge, in der die FAQ-Einträge auf der FAQ-Seite dargestellt werden.<br><br>Es ist nicht nötig, die Nummern sequentiell und ohne Löcher einzutragen.  Wenn die Reihenfolge der von Ihnen eingetragen Ordnungsnummern Löcher enthält, können Sie dann später andere Einträge in die FAQ-Liste einfügen. Zum Beispiel, wenn Sie die Ordnungsnummern 1, 6, 11, 16 benutzen, können Sie später andere Einträge mit den fehlenden Ordnungsnummern hinzufügen.  Negative Nummern und Null sind erlaubt, und ermöglichen Ihnen, Einträge <u>vor</u> dem jetzigen ersten Eintrag hinzuzufügen.<br><br>Wenn mehrere Einträge die selbe Ordnugsnummer haben, ist nur einer dieser Einträge sichtbar.  Welcher Eintrag dann sichtbar ist, ist unbestimmt."
 
-#: addmedia.php:332
+#: addmedia.php:331
 msgid "This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
 msgstr "Diese Mediendatei ist mit einer anderen genealogischen Datei auf diesem Server verbunden.  Sie kann nicht gelöscht, verlegt, oder umbenannt werden, bis diese Verbindungen gelöscht sind."
 
@@ -14348,17 +14348,17 @@ msgstr ""
 msgid "Thu"
 msgstr "Do"
 
-#: addmedia.php:372
+#: addmedia.php:371
 #, php-format
 msgid "Thumbnail file %1$s could not be renamed to %2$s."
 msgstr "Die Miniaturansicht %1$s konnte nicht in %2$s umbenannt werden."
 
-#: addmedia.php:370
+#: addmedia.php:369
 #, php-format
 msgid "Thumbnail file %1$s successfully renamed to %2$s."
 msgstr "Die Miniaturansicht %1$s wurde in %2$s umbenannt."
 
-#: addmedia.php:377
+#: addmedia.php:376
 #, php-format
 msgid "Thumbnail file %s does not exist."
 msgstr "Die Miniaturansicht %s ist nicht vorhanden."
@@ -14368,11 +14368,11 @@ msgstr "Die Miniaturansicht %s ist nicht vorhanden."
 msgid "Thumbnail images"
 msgstr "Vorschaubilder"
 
-#: addmedia.php:470 admin_media_upload.php:190 help_text.php:1446
+#: addmedia.php:469 admin_media_upload.php:190 help_text.php:1446
 msgid "Thumbnail to upload"
 msgstr "Miniaturbild zum Hochladen"
 
-#: addmedia.php:149 admin_media_upload.php:98
+#: addmedia.php:148 admin_media_upload.php:98
 msgid "Thumbnails must be images."
 msgstr "Als Vorschaubild sind nur Bilddateien möglich."
 
@@ -15731,7 +15731,7 @@ msgstr "Sie haben noch keine Einträge angelegt."
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "Sie haben eine GEDCOM mit einem anderen Namen gewählt. Ist das korrekt?"
 
-#: addmedia.php:482
+#: addmedia.php:481
 msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
 msgstr "Sie können hier einen URL eingeben, der mit &laquo;http://&raquo; beginnt."
 
@@ -16300,7 +16300,7 @@ msgid "click to edit"
 msgstr "zum Bearbeiten klicken"
 
 #. I18N: button label
-#: addmedia.php:248 addmedia.php:401 addmedia.php:736 edit_changes.php:240
+#: addmedia.php:247 addmedia.php:400 addmedia.php:735 edit_changes.php:240
 #: edit_interface.php:116 edit_interface.php:210 edit_interface.php:354
 #: edit_interface.php:415 edit_interface.php:1043 edit_interface.php:1151
 #: edit_interface.php:1294 edit_interface.php:1399 edit_interface.php:1507
@@ -18761,7 +18761,7 @@ msgstr "nein"
 #: admin_trees_config.php:1271
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1992
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:779
-#: modules_v3/family_nav/module.php:295
+#: modules_v3/family_nav/module.php:302
 msgid "none"
 msgstr "keine"
 
@@ -18869,6 +18869,11 @@ msgstr "ausstehend"
 msgid "percentage"
 msgstr "Prozentzahl"
 
+#. I18N: button label
+#: admin_trees_places.php:101
+msgid "preview"
+msgstr "Vorschau"
+
 #. I18N: button label, previous page
 #: library/WT/I18N.php:666 modules_v3/batch_update/admin_batch_update.php:94
 msgid "previous"
@@ -18945,7 +18950,7 @@ msgid "robot"
 msgstr "Webcrawler"
 
 #. I18N: button label
-#: addmedia.php:735 admin_module_blocks.php:91 admin_module_menus.php:112
+#: addmedia.php:734 admin_module_blocks.php:91 admin_module_menus.php:112
 #: admin_module_reports.php:91 admin_module_sidebar.php:111
 #: admin_module_tabs.php:112 admin_modules.php:161 admin_site_merge.php:142
 #: admin_trees_config.php:1294 admin_trees_manage.php:261 block_edit.php:56
@@ -19715,7 +19720,7 @@ msgstr "unbekannt"
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2004
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:785
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:791
-#: modules_v3/family_nav/module.php:298 modules_v3/family_nav/module.php:301
+#: modules_v3/family_nav/module.php:305 modules_v3/family_nav/module.php:308
 msgctxt "unknown family"
 msgid "unknown"
 msgstr "unbekannt"
@@ -19724,6 +19729,11 @@ msgstr "unbekannt"
 #: library/WT/Gedcom/Code/Quay.php:39
 msgid "unreliable evidence"
 msgstr "unzuverlässiger Nachweis"
+
+#. I18N: button label
+#: admin_trees_places.php:102
+msgid "update"
+msgstr "Bearbeiten"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:182

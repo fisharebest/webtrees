@@ -65,24 +65,26 @@ function get_tag_values($tag) {
 $newvars = array();
 foreach ($vars as $name=>$var) {
 	$newvars[$name]['id'] = $var;
-	if (!empty($type[$name]) && (($type[$name]=='INDI') || ($type[$name]=='FAM') || ($type[$name]=='SOUR'))) {
-		$record = WT_GedcomRecord::getInstance($var);
-		if (!$record) {
-			$action='setup';
+	if (!empty($type[$name])) {
+		switch ($type[$name]) {
+		case 'INDI':
+			$record = WT_Individual::getInstance($var);
+			break;
+		case 'FAM':
+			$record = WT_Family::getInstance($var);
+			break;
+		case 'SOUR':
+			$record = WT_Source::getInstance($var);
+			break;
+		default:
+			$record = null;
+			break;
 		}
-		$gedcom = $record->getGedcom();
-		// If we wanted a FAM, and were given an INDI, look for a spouse
-		if ($type[$name]=='FAM' && $record instanceof WT_Individual) {
-			$tmp = false;
-			foreach ($record->getSpouseFamilies() as $family) {
-				$gedcom = $family->getGedcom();
-				$tmp = true;
-			}
-			if (!$tmp) {
-				$action='setup';
-			}
+		if ($record && $record->canShowName()) {
+			$newvars[$name]['gedcom'] = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+		} else {
+			$action = 'setup';
 		}
-		$newvars[$name]['gedcom'] = $gedcom;
 	}
 }
 $vars = $newvars;
