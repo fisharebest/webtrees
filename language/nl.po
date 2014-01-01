@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-12-29 12:41+0000\n"
-"PO-Revision-Date: 2013-12-30 21:39+0100\n"
+"PO-Revision-Date: 2014-01-01 11:53+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -6590,7 +6590,7 @@ msgstr "Frimaire"
 #: admin_site_change.php:248 admin_site_logs.php:218
 #, php-format
 msgid "From %s to %s"
-msgstr "Van %s tot %s"
+msgstr "Vanaf %s tot %s"
 
 #: library/WT/Date/French.php:76
 msgctxt "GENITIVE"
@@ -16863,7 +16863,7 @@ msgstr "achterneef/achternicht 10e graad"
 
 #: admin_site_merge.php:190 admin_site_merge.php:196
 msgid "from"
-msgstr "van"
+msgstr "vanaf"
 
 #. I18N: from 1700 interval 50 years
 #: statistics.php:649 statistics.php:651 statistics.php:653 statistics.php:655
@@ -16871,20 +16871,20 @@ msgstr "van"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "van %1$s interval %2$s jaar"
-msgstr[1] "van %1$s interval %2$s jaar"
+msgstr[0] "vanaf %1$s interval %2$s jaar"
+msgstr[1] "vanaf %1$s interval %2$s jaar"
 
 #. I18N: Gedcom FROM dates
 #: library/WT/Date.php:241
 #, php-format
 msgid "from %s"
-msgstr "van %s"
+msgstr "vanaf %s"
 
 #. I18N: Gedcom FROM-TO dates
 #: library/WT/Date.php:244
 #, php-format
 msgid "from %s to %s"
-msgstr "van %s naar %s"
+msgstr "vanaf %s tot %s"
 
 #. I18N: layout option for the fan chart
 #: library/WT/Controller/Fanchart.php:61
