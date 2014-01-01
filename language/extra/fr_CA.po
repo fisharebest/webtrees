@@ -18875,6 +18875,7 @@ msgstr "en attente"
 #: statistics.php:668 statisticsplot.php:788
 msgid "percentage"
 msgstr "pourcentage"
+
 #. I18N: button label
 #: admin_trees_places.php:101
 msgid "preview"
