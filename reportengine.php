@@ -69,21 +69,30 @@ foreach ($vars as $name=>$var) {
 		switch ($type[$name]) {
 		case 'INDI':
 			$record = WT_Individual::getInstance($var);
+			if ($record && $record->canShowName()) {
+				$newvars[$name]['gedcom'] = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+			} else {
+				$action = 'setup';
+			}
 			break;
 		case 'FAM':
 			$record = WT_Family::getInstance($var);
+			if ($record && $record->canShowName()) {
+				$newvars[$name]['gedcom'] = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+			} else {
+				$action = 'setup';
+			}
 			break;
 		case 'SOUR':
 			$record = WT_Source::getInstance($var);
+			if ($record && $record->canShowName()) {
+				$newvars[$name]['gedcom'] = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+			} else {
+				$action = 'setup';
+			}
 			break;
 		default:
-			$record = null;
 			break;
-		}
-		if ($record && $record->canShowName()) {
-			$newvars[$name]['gedcom'] = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
-		} else {
-			$action = 'setup';
 		}
 	}
 }
