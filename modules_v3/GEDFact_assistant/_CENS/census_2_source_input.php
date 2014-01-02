@@ -562,7 +562,7 @@ if (!defined('WT_WEBTREES')) {
 		}
 		var cens_ctry_a = document.getElementById('censCtry');
 		var cens_ctry = cens_ctry_a.value;
-		document.getElementById('Titl').value = '<?php echo WT_I18N::translate('Census transcript'),' - ',$wholename, ' - ', WT_I18N::translate('Household'); ?>';
+		document.getElementById('Titl').value = '<?php echo WT_I18N::translate('Census transcript'),' - ', WT_Filter::escapeJs($wholename), ' - ', WT_I18N::translate('Household'); ?>';
 		var prev = document.getElementById('prevYear');
 		prev.value = cenyear;
 	}
@@ -1110,7 +1110,7 @@ if (!defined('WT_WEBTREES')) {
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo WT_I18N::translate('Title'); ?></div>
 			<script>
-				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo WT_I18N::translate('Census transcript'),' - ',$wholename, ' - ', WT_I18N::translate('Household'); ?>">');
+				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo WT_I18N::translate('Census transcript'),' - ', WT_Filter::escapeJs($wholename), ' - ', WT_I18N::translate('Household'); ?>">');
 			</script>
 		</div>
 		<div class="cens_sour_1">
