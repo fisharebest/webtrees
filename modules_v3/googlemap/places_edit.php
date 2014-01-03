@@ -26,7 +26,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $action     = WT_Filter::post('action',     null, WT_Filter::get('action'));
@@ -103,23 +102,20 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 	exit;
 }
 
-// Update placelocation STREETVIEW fields ----------------------------------------------------------
-if ($action=='update_sv_params' && WT_USER_IS_ADMIN) {
-	echo "Google Street View™ parameters updated";
-	echo "<br><br>";
-	echo "LATI = ".$_REQUEST['svlati']."<br>";
-	echo "LONG = ".$_REQUEST['svlong']."<br>";
-	echo "BEAR = ".$_REQUEST['svbear']."<br>";
-	echo "ELEV = ".$_REQUEST['svelev']."<br>";
-	echo "ZOOM = ".$_REQUEST['svzoom']."<br>";
-	echo "<br><br>";
-	$statement=
-		WT_DB::prepare("UPDATE `##placelocation` SET sv_lati=?, sv_long=?, sv_bearing=?, sv_elevation=?, sv_zoom=? WHERE pl_id=?");
-	$statement->execute(array($_REQUEST['svlati'], $_REQUEST['svlong'], $_REQUEST['svbear'], $_REQUEST['svelev'], $_REQUEST['svzoom'], $placeid));
-	if (!WT_DEBUG) {
-		$controller->addInlineJavaScript('closePopupAndReloadParent();');
-	}
-	echo "<div class=\"center\"><button onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('close'), "</button></div>";
+// Update placelocation STREETVIEW fields
+// TODO: This ought to be a POST request, rather than a GET request
+if ($action == 'update_sv_params' && WT_USER_IS_ADMIN) {
+	WT_DB::prepare(
+		"UPDATE `##placelocation` SET sv_lati=?, sv_long=?, sv_bearing=?, sv_elevation=?, sv_zoom=? WHERE pl_id=?"
+	)->execute(array(
+		WT_Filter::get('svlati'),
+		WT_Filter::get('svlong'),
+		WT_Filter::get('svbear'),
+		WT_Filter::get('svelev'),
+		WT_Filter::get('svzoom'),
+		$placeid
+	));
+	$controller->addInlineJavaScript('window.close();');
 	exit;
 }
 
