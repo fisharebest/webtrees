@@ -72,10 +72,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			break;
 		case 'admin_places':
 		case 'places_edit':
+		case 'wt_v3_street_view':
 			// TODO: these files should be methods in this class
-			require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
-			require_once WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
-			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/'.$mod_action.'.php';
+			require WT_ROOT . WT_MODULES_DIR . 'googlemap/googlemap.php';
+			require WT_ROOT . WT_MODULES_DIR . 'googlemap/defaultconfig.php';
+			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/' . $mod_action . '.php';
 			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
@@ -267,7 +268,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							</td>
 						</tr>
 						<tr>
-							<th><?php echo WT_I18N::translate('Google Street View™'); ?></th>
+							<th><?php echo /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ WT_I18N::translate('Google Street View™'); ?></th>
 							<td><?php echo radio_buttons('NEW_GM_USE_STREETVIEW', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_module_setting('googlemap', 'GM_USE_STREETVIEW', '0')); ?></td>
 						</tr>
 						<tr>
