@@ -20,75 +20,68 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/*global jQuery, window, parent, textDirection, WT_SCRIPT_NAME, document, WT_GEDCOM, setTimeout, clearTimeout */
+'use strict';
 // Specifications for various types of popup edit window.
 // Choose positions to center in the smallest (1000x800) target screen
-var edit_window_specs='width=650,height=600,left=175,top=100,resizable=1,scrollbars=1'; // edit_interface.php, add_media.php, gedrecord.php
-var indx_window_specs='width=600,height=500,left=200,top=150,resizable=1,scrollbars=1'; // index_edit.php, module configuration
-var news_window_specs='width=740,height=650,left=200,top=150,resizable=1,scrollbars=1'; // edit_news.php
-var help_window_specs='width=500,height=400,left=250,top=200,resizable=1,scrollbars=1'; // help.php
-var find_window_specs='width=550,height=600,left=250,top=150,resizable=1,scrollbars=1'; // find.php, inverse_link.php
-var mesg_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // message.php
-var chan_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
-var mord_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
-var assist_window_specs='width=900,height=800,left=70,top=70,resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
-var gmap_window_specs='width=650,height=600,left=200,top=150,resizable=1,scrollbars=1'; // googlemap module place editing
-var fam_nav_specs='width=300,height=600,left=817,top=150,resizable=1,scrollbars=1'; // media_0_inverselink.php
+var edit_window_specs = 'width=650,height=600,left=175,top=100,resizable=1,scrollbars=1'; // edit_interface.php, add_media.php, gedrecord.php
+var indx_window_specs = 'width=600,height=500,left=200,top=150,resizable=1,scrollbars=1'; // index_edit.php, module configuration
+var news_window_specs = 'width=740,height=650,left=200,top=150,resizable=1,scrollbars=1'; // edit_news.php
+var help_window_specs = 'width=500,height=400,left=250,top=200,resizable=1,scrollbars=1'; // help.php
+var find_window_specs = 'width=550,height=600,left=250,top=150,resizable=1,scrollbars=1'; // find.php, inverse_link.php
+var mesg_window_specs = 'width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // message.php
+var chan_window_specs = 'width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
+var mord_window_specs = 'width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
+var assist_window_specs = 'width=900,height=800,left=70,top=70,resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
+var gmap_window_specs = 'width=650,height=600,left=200,top=150,resizable=1,scrollbars=1'; // googlemap module place editing
+var fam_nav_specs = 'width=300,height=600,left=817,top=150,resizable=1,scrollbars=1'; // media_0_inverselink.php
 
-// TODO: This function loads help_text.php twice.  It should only load it once.
-function helpDialog(which, mod) {
-	url='help_text.php?help='+which+'&mod='+mod;
-	dialog=jQuery('<div></div>')
-		.load(url+' .helpcontent')
+function displayDialog(element, width) {
+	if (typeof width === 'undefined') {
+		width = 500;
+	}
+	element
 		.dialog({
 			modal: true,
-			width: 500,
-			closeText: ""
+			width: width,
+			closeText: "",
+			open: function () {
+				// Close the dialog when we click outside it.
+				var dialog = this;
+		        jQuery('.ui-widget-overlay').one('click', function () {
+					jQuery(dialog).dialog('close');
+				});
+			},
+			close: function () {
+				// completely remove the html from the page
+				jQuery(this).remove();
+			}
 		});
-	jQuery(".ui-widget-overlay").on("click", function () {
-		jQuery("div:ui-dialog:visible").dialog("close");
+}
+
+// called directly from lightbox module to display media notes
+function modalNotes(content, title) {
+	var el = jQuery('<div />', {
+		title: title,
+		html: content
 	});
-	jQuery('.ui-dialog-title').load(url+' .helpheader');
+	displayDialog(el);
 	return false;
+}
+
+function helpDialog(which, mod) {
+	jQuery.getJSON('help_text.php?help=' + which + '&mod=' + mod, function (json) {
+		modalNotes(json.content, json.title);
+	});
 }
 
 // Create a modal dialog, fetching the contents from a URL
 function modalDialog(url, title) {
-	jQuery(document).ajaxComplete(function() {
-		jQuery('.ui-dialog').before('<div class="ui-widget-overlay" />');
-	});
-	dialog=jQuery('<div title="'+title+'"></div>')
-		.load(url)
-		.dialog({
-			modal: false,
-			width: 700,
-			closeText: "",
-			close: function(event, ui) {
-				jQuery(this).remove();
-				jQuery('.ui-widget-overlay').remove();
-			}
-		});
-	// Close the window when we click outside it.
-	jQuery(".ui-widget-overlay").on("click", function () {
-		jQuery("div:ui-dialog:visible").dialog("close");
-		jQuery(this).remove();
-	});
-	return false;
-}
-
-// Create a modal dialog to display notes
-function modalNotes(content, title) {
-	dialog=jQuery('<div title="'+title+'"></div>')
-		.html(content)
-		.dialog({
-			modal: true,
-			width: 500,
-			closeText: "",
-			close: function(event, ui) { jQuery(this).remove(); }
-		});
-	// Close the window when we click outside it.
-	jQuery(".ui-widget-overlay").on("click", function () {
-		jQuery("div:ui-dialog:visible").dialog("close");
-	});
+	var el = jQuery('<div />', {
+		title: title
+	})
+		.load(url);
+	displayDialog(el, 700);
 	return false;
 }
 
@@ -99,77 +92,88 @@ function modalDialogSubmitAjax(form) {
 		type:    'POST',
 		url:     jQuery(form).attr('action'),
 		data:    jQuery(form).serialize(),
-		success: function(response) { window.location.reload(); }
+		success: function (response) { window.location.reload(); }
 	});
 	return false;
 }
 
 function closePopupAndReloadParent(url) {
 	if (parent.opener) {
-		if (url == null || url == "") {
+		if (url === null || url === "") {
 			parent.opener.location.reload();
 		} else {
-			parent.opener.location=url;
+			parent.opener.location = url;
 		}
 	}
 	window.close();
 }
 
 // variables to hold mouse x-y pos.s
-	var msX = 0;
-	var msY = 0;
+var msX = 0;
+var msY = 0;
 
 //  the following javascript function is for the positioning and hide/show of
 //  DIV layers used in the display of the pedigree chart.
 function MM_showHideLayers() { //v6.0
-	var i,p,v,obj,args=MM_showHideLayers.arguments;
-	for (i=0; i<(args.length-3); i+=4) {
-		if ((obj=document.getElementById(args[i]))!=null) {
+	var i, p, v, obj, pobj, pagewidth, contentdiv, Xadjust,
+		args = arguments;
+	for (i = 0; i < (args.length - 3); i += 4) {
+		obj = document.getElementById(args[i]);
+		if (obj !== null) {
 			if (obj.style) {
-				div=obj;
-				obj=obj.style;
+				obj = obj.style;
 			}
-			v=args[i+2];
-			if (v=='toggle') {
-				if (obj.visibility.indexOf('hid')!=-1) {
-					v='show';
+			v = args[i + 2];
+			if (v === 'toggle') {
+				if (obj.visibility.indexOf('hid') !== -1) {
+					v = 'show';
 				} else {
-					v='hide';
+					v = 'hide';
 				}
 			}
-			v=(v=='show')?'visible':(v=='hide')?'hidden':v;
-			obj.visibility=v;
-			if (args[i+1]=='followmouse') {
-				pobj = document.getElementById(args[i+3]);
-				if (pobj!=null) {
-					if (pobj.style.top!="auto" && args[i+3]!="relatives") {
-						obj.top=5+msY-parseInt(pobj.style.top)+'px';
-						if (textDirection=="ltr") obj.left=5+msX-parseInt(pobj.style.left)+'px';
-						if (textDirection=="rtl") obj.right=5+msX-parseInt(pobj.style.right)+'px';
+			v = (v === 'show') ? 'visible' : (v === 'hide') ? 'hidden' : v;
+			obj.visibility = v;
+			if (args[i + 1] === 'followmouse') {
+				pobj = document.getElementById(args[i + 3]);
+				if (pobj !== null) {
+					if (pobj.style.top !== "auto" && args[i + 3] !== "relatives") {
+						obj.top = 5 + msY - parseInt(pobj.style.top, 10) + 'px';
+						if (textDirection === "ltr") {
+							obj.left = 5 + msX - parseInt(pobj.style.left, 10) + 'px';
+						}
+						if (textDirection === "rtl") {
+							obj.right = 5 + msX - parseInt(pobj.style.right, 10) + 'px';
+						}
 					} else {
-						obj.top="auto";
-						pagewidth = document.documentElement.offsetWidth+document.documentElement.scrollLeft;
-						if (textDirection=="rtl") pagewidth -= document.documentElement.scrollLeft;
-						if (msX > pagewidth-160) msX = msX-150-pobj.offsetLeft;
+						obj.top = "auto";
+						pagewidth = document.documentElement.offsetWidth + document.documentElement.scrollLeft;
+						if (textDirection === "rtl") {
+							pagewidth -= document.documentElement.scrollLeft;
+						}
+						if (msX > pagewidth - 160) {
+							msX = msX - 150 - pobj.offsetLeft;
+						}
 						contentdiv = document.getElementById("content");
 						msX = msX - contentdiv.offsetLeft;
-						if (textDirection=="ltr") obj.left=(5+msX)+'px';
-						obj.zIndex=1000;
+						if (textDirection === "ltr") {
+							obj.left = (5 + msX) + 'px';
+						}
+						obj.zIndex = 1000;
 					}
 				} else {
-					if (WT_SCRIPT_NAME.indexOf("fanchart")>0) {
-						obj.top=(msY-20)+'px';
-						obj.left=(msX-20)+'px';
-					} else if (WT_SCRIPT_NAME.indexOf("index.php")==-1) {
+					if (WT_SCRIPT_NAME.indexOf("fanchart") > 0) {
+						obj.top = (msY - 20) + 'px';
+						obj.left = (msX - 20) + 'px';
+					} else if (WT_SCRIPT_NAME.indexOf("index.php") === -1) {
 						Xadjust = document.getElementById('content').offsetLeft;
-						obj.left=(5+(msX-Xadjust))+'px';
-						obj.top="auto";
+						obj.left = (5 + (msX - Xadjust)) + 'px';
+						obj.top = "auto";
 					} else {
 						Xadjust = document.getElementById('content').offsetLeft;
-						obj.top=(msY-50)+'px';
-						obj.left=(10+(msX-Xadjust))+'px';
+						obj.top = (msY - 50) + 'px';
+						obj.left = (10 + (msX - Xadjust)) + 'px';
 					}
-					obj.zIndex=1000;
+					obj.zIndex = 1000;
 				}
 			}
 		}
@@ -177,80 +181,87 @@ function MM_showHideLayers() { //v6.0
 }
 
 var show = false;
-	function togglechildrenbox(pid) {
-		if (!pid) pid='';
-		else pid = '.'+pid;
-		if (show) {
-			MM_showHideLayers('childbox'+pid, ' ', 'hide',' ');
-			show=false;
-		} else {
-			MM_showHideLayers('childbox'+pid, ' ', 'show', ' ');
-			show=true;
-		}
-		return false;
-	}
+function togglechildrenbox(pid) {
+	var s = show ? 'hide' : 'show',
+		id = 'childbox' + (pid ? '.' + pid : '');
+	MM_showHideLayers(id, ' ', s, ' ');
+	show = !show;
+	return false;
+}
 
-	var lastfamilybox = "";
-	var popupopen = 0;
-	function show_family_box(boxid, pboxid) {
-		popupopen = 1;
-		lastfamilybox=boxid;
-		if (pboxid=='relatives') MM_showHideLayers('I'+boxid+'links', 'followmouse', 'show',''+pboxid);
-		else {
-			famlinks = document.getElementById("I"+boxid+"links");
-			divbox = document.getElementById("out-"+boxid);
-			parentbox = document.getElementById("box"+boxid);
-			if (famlinks && divbox && parentbox) {
-				famlinks.style.top = "0px";
-				if (textDirection=="ltr") famleft = parseInt(divbox.style.width)+15;
-				else famleft = 0;
-				if (isNaN(famleft)) {
-					famleft = 0;
-					famlinks.style.top = parentbox.offsetTop+"px";
-				}
-				pagewidth = document.documentElement.offsetWidth+document.documentElement.scrollLeft;
-				if (textDirection=="rtl") pagewidth -= document.documentElement.scrollLeft;
-				if (famleft+parseInt(parentbox.style.left) > pagewidth-100) famleft=25;
-				famlinks.style.left = famleft + "px";
-				if (WT_SCRIPT_NAME.indexOf("index.php")!=-1) famlinks.style.left = "100%";
-				MM_showHideLayers('I'+boxid+'links', ' ', 'show',''+pboxid);
-				return;
+var lastfamilybox = "";
+var popupopen = 0;
+
+function show_family_box(boxid, pboxid) {
+	var famlinks, divbox, parentbox, famleft, pagewidth;
+	popupopen = 1;
+	lastfamilybox = boxid;
+	if (pboxid === 'relatives') {
+		MM_showHideLayers('I' + boxid + 'links', 'followmouse', 'show', '' + pboxid);
+	} else {
+		famlinks = document.getElementById("I" + boxid + "links");
+		divbox = document.getElementById("out-" + boxid);
+		parentbox = document.getElementById("box" + boxid);
+		if (famlinks && divbox && parentbox) {
+			famlinks.style.top = "0px";
+			if (textDirection === "ltr") {
+				famleft = parseInt(divbox.style.width, 10) + 15;
+			} else {
+				famleft = 0;
 			}
-			MM_showHideLayers('I'+boxid+'links', 'followmouse', 'show',''+pboxid);
+			if (isNaN(famleft)) {
+				famleft = 0;
+				famlinks.style.top = parentbox.offsetTop + "px";
+			}
+			pagewidth = document.documentElement.offsetWidth + document.documentElement.scrollLeft;
+			if (textDirection === "rtl") {
+				pagewidth -= document.documentElement.scrollLeft;
+			}
+			if (famleft + parseInt(parentbox.style.left, 10) > pagewidth - 100) {
+				famleft = 25;
+			}
+			famlinks.style.left = famleft + "px";
+			if (WT_SCRIPT_NAME.indexOf("index.php") !== -1) {
+				famlinks.style.left = "100%";
+			}
+			MM_showHideLayers('I' + boxid + 'links', ' ', 'show', '' + pboxid);
+			return;
 		}
+		MM_showHideLayers('I'+boxid + 'links', 'followmouse', 'show','' + pboxid);
 	}
+}
 
-	function hide_family_box(boxid) {
-		MM_showHideLayers('I'+boxid+'links', '', 'hide','');
-		popupopen = 0;
-		lastfamilybox="";
-	}
+function hide_family_box(boxid) {
+	MM_showHideLayers('I' + boxid + 'links', '', 'hide', '');
+	popupopen = 0;
+	lastfamilybox = "";
+}
 
-	var timeouts = new Array();
-	function family_box_timeout(boxid) {
-		tout = setTimeout("hide_family_box('"+boxid+"')", 2500);
-		timeouts[boxid] = tout;
-	}
+var timeouts = [];
+function family_box_timeout(boxid) {
+	var tout = setTimeout("hide_family_box('" + boxid + "')", 2500);
+	timeouts[boxid] = tout;
+}
 
-	function clear_family_box_timeout(boxid) {
-		clearTimeout(timeouts[boxid]);
-	}
+function clear_family_box_timeout(boxid) {
+	clearTimeout(timeouts[boxid]);
+}
 
-	function expand_layer(sid) {
-		if (jQuery("#"+sid+"_img").hasClass("icon-plus")) {
-			jQuery('#'+sid+"_img").removeClass("icon-plus").addClass("icon-minus");
-			jQuery('#'+sid).slideDown("fast");
-		} else {
-			jQuery('#'+sid+"_img").removeClass("icon-minus").addClass("icon-plus");
-			jQuery('#'+sid).slideUp("fast");
-		}
-		return false;
+function expand_layer(sid) {
+	if (jQuery("#" + sid + "_img").hasClass("icon-plus")) {
+		jQuery('#' + sid + "_img").removeClass("icon-plus").addClass("icon-minus");
+		jQuery('#' + sid).show("fast");
+	} else {
+		jQuery('#' + sid + "_img").removeClass("icon-minus").addClass("icon-plus");
+		jQuery('#' + sid).hide("fast");
 	}
+	return false;
+}
 
 // Open the "edit interface" popup window
 function edit_interface(params, windowspecs, pastefield) {
-	var features = windowspecs || edit_window_specs;
-	var url = 'edit_interface.php?' + jQuery.param(params) + '&ged=' + WT_GEDCOM;
+	var features = windowspecs || edit_window_specs,
+		url = 'edit_interface.php?' + jQuery.param(params) + '&ged=' + WT_GEDCOM;
 	window.open(url, '_blank', features);
 	return false;
 }
@@ -280,7 +291,7 @@ function edit_note(xref) {
 function add_record(xref, fact_field) {
 	var fact = jQuery('#' + fact_field).val();
 	if (fact) {
-		if (fact == "OBJE") {
+		if (fact === "OBJE") {
 			window.open('addmedia.php?action=showmediaform&linkid=' + encodeURIComponent(xref) + '&ged=' + encodeURIComponent(WT_GEDCOM), '_blank', edit_window_specs);
 		} else {
 			return edit_interface({
@@ -424,7 +435,7 @@ function delete_family(message, xref, gedcom) {
 		jQuery.post('action.php', {
 			action:   'delete-family',
 			xref:      xref,
-			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
 			csrf:      WT_CSRF_TOKEN
 		},
 		function(){
@@ -440,7 +451,7 @@ function delete_individual(message, xref, gedcom) {
 		jQuery.post('action.php', {
 			action:   'delete-individual',
 			xref:      xref,
-			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
 			csrf:      WT_CSRF_TOKEN
 		},
 		function(){
@@ -456,7 +467,7 @@ function delete_media(message, xref, gedcom) {
 		jQuery.post('action.php', {
 			action:   'delete-media',
 			xref:      xref,
-			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
 			csrf:      WT_CSRF_TOKEN
 		},
 		function(){
@@ -472,7 +483,7 @@ function delete_note(message, xref, gedcom) {
 		jQuery.post('action.php', {
 			action:   'delete-note',
 			xref:      xref,
-			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
 			csrf:      WT_CSRF_TOKEN
 		},
 		function(){
@@ -488,7 +499,7 @@ function delete_repository(message, xref, gedcom) {
 		jQuery.post('action.php', {
 			action:   'delete-repository',
 			xref:      xref,
-			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
 			csrf:      WT_CSRF_TOKEN
 		},
 		function(){
@@ -504,7 +515,7 @@ function delete_source(message, xref, gedcom) {
 		jQuery.post('action.php', {
 			action:   'delete-source',
 			xref:      xref,
-			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
 			csrf:      WT_CSRF_TOKEN
 		},
 		function(){
@@ -729,17 +740,17 @@ function valid_date(datefield) {
 		var f3=parseInt(RegExp.$4, 10);
 		var f4=RegExp.$5;
 		var dmy='DMY';
-		if (typeof(locale_date_format)!='undefined')
-			if (locale_date_format=='MDY' || locale_date_format=='YMD')
+		if (typeof(locale_date_format)!=='undefined')
+			if (locale_date_format==='MDY' || locale_date_format==='YMD')
 				dmy=locale_date_format;
 		var yyyy=new Date().getFullYear();
 		var yy=yyyy % 100;
 		var cc=yyyy - yy;
-		if (dmy=='DMY' && f1<=31 && f2<=12 || f1>13 && f1<=31 && f2<=12 && f3>31)
+		if (dmy==='DMY' && f1<=31 && f2<=12 || f1>13 && f1<=31 && f2<=12 && f3>31)
 			datestr=f0+f1+" "+months[f2-1]+" "+(f3>=100?f3:(f3<=yy?f3+cc:f3+cc-100));
-		else if (dmy=='MDY' && f1<=12 && f2<=31 || f2>13 && f2<=31 && f1<=12 && f3>31)
+		else if (dmy==='MDY' && f1<=12 && f2<=31 || f2>13 && f2<=31 && f1<=12 && f3>31)
 			datestr=f0+f2+" "+months[f1-1]+" "+(f3>=100?f3:(f3<=yy?f3+cc:f3+cc-100));
-		else if (dmy=='YMD' && f2<=12 && f3<=31 || f3>13 && f3<=31 && f2<=12 && f1>31)
+		else if (dmy==='YMD' && f2<=12 && f3<=31 || f3>13 && f3<=31 && f2<=12 && f1>31)
 			datestr=f0+f3+" "+months[f2-1]+" "+(f1>=100?f1:(f1<=yy?f1+cc:f1+cc-100));
 	}
 
@@ -788,7 +799,7 @@ function valid_date(datefield) {
 	// Apply leading zero to day numbers
 	datestr=datestr.replace(/(^| )(\d [A-Z]{3,5} \d{4})/, "$10$2");
 
-	if (datephrase != "") {
+	if (datephrase !== "") {
 		datestr=datestr+" ("+datephrase;
 	}
 	// Only update it if is has been corrected - otherwise input focus
@@ -816,12 +827,12 @@ var oldiconsdislpay = 0;
 var rv =null;
 
 function expandbox(boxid, bstyle) {
-	if (big==1) {
+	if (big===1) {
 		if (clength>0) { // True only if compact chart
 			fontdef.style.display='none';
 		}
 		restorebox(oldboxid, bstyle);
-		if (boxid==oldboxid) return true;
+		if (boxid===oldboxid) return true;
 	}
 
 	jQuery(document).ready(function() {
@@ -857,8 +868,8 @@ function expandbox(boxid, bstyle) {
 		oldheight=divbox.style.height;
 		oldwidth=divbox.style.width;
 		oldz = parentbox.style.zIndex;
-		if (url.indexOf("descendancy.php")==-1) parentbox.style.zIndex='100';
-		if (bstyle!=2) {
+		if (url.indexOf("descendancy.php")===-1) parentbox.style.zIndex='100';
+		if (bstyle!==2) {
 			divbox.style.width='300px';
 			diff = 300-parseInt(oldwidth);
 			if (famlinks) {
@@ -867,7 +878,7 @@ function expandbox(boxid, bstyle) {
 			}
 		}
 		divleft = parseInt(parentbox.style.left);
-		if (textDirection=="rtl") divleft = parseInt(parentbox.style.right);
+		if (textDirection==="rtl") divleft = parseInt(parentbox.style.right);
 		oldleft=divleft;
 		divleft = divleft - diff;
 		repositioned = 0;
@@ -887,7 +898,7 @@ function expandbox(boxid, bstyle) {
 				oXmlHttp.open("get", "expand_view.php?pid=" + pid, true);
 				oXmlHttp.onreadystatechange=function()
 				{
-					if (oXmlHttp.readyState==4)
+					if (oXmlHttp.readyState===4)
 					{
 						inbox.innerHTML = oXmlHttp.responseText;
 					}
@@ -935,7 +946,7 @@ function expandbox(boxid, bstyle) {
 }
 function createXMLHttp()
 {
-	if (typeof XMLHttpRequest != "undefined") {
+	if (typeof XMLHttpRequest !== "undefined") {
 		return new XMLHttpRequest();
 	} else if (window.ActiveXObject) {
 		var ARR_XMLHTTP_VERS=["MSXML2.XmlHttp.5.0","MSXML2.XmlHttp.4.0",
@@ -1013,7 +1024,7 @@ function show_submenu(elementid, parentid, dir) {
 					pagewidth = document.body.offsetWidth;
 				} else {
 					pagewidth = document.body.scrollWidth+document.documentElement.scrollLeft-55;
-					if (textDirection=="rtl") {
+					if (textDirection==="rtl") {
 						boxright = element.offsetLeft+element.offsetWidth+10;
 					}
 				}
@@ -1029,7 +1040,7 @@ function show_submenu(elementid, parentid, dir) {
 			element.style.width = maxwidth+"px";
 		}
 
-		if (dir=="down") {
+		if (dir==="down") {
 			var pelement = document.getElementById(parentid);
 			if (pelement) {
 				element.style.left=pelement.style.left;
@@ -1040,10 +1051,10 @@ function show_submenu(elementid, parentid, dir) {
 				}
 			}
 		}
-		if (dir=="right") {
+		if (dir==="right") {
 			var pelement = document.getElementById(parentid);
 			if (pelement) {
-				if (textDirection=="ltr") {
+				if (textDirection==="ltr") {
 				var boxleft = pelement.offsetLeft+pelement.offsetWidth-40;
 				var boxright = boxleft+element.offsetWidth+10;
 				if (boxright > pagewidth) {
@@ -1073,7 +1084,7 @@ function show_submenu(elementid, parentid, dir) {
 }
 
 function hide_submenu(elementid) {
-if (menutimeouts[elementid] != null) {
+if (menutimeouts[elementid] !== null) {
 	element = document.getElementById(elementid);
 	if (element && element.style) {
 		element.style.visibility='hidden';
@@ -1084,7 +1095,7 @@ if (menutimeouts[elementid] != null) {
 }
 
 function timeout_submenu(elementid) {
-	if (menutimeouts[elementid] == null) {
+	if (menutimeouts[elementid] === null) {
 		tout = setTimeout("hide_submenu('"+elementid+"')", 100);
 		menutimeouts[elementid] = tout;
 	}
@@ -1102,8 +1113,8 @@ function loadHandler() {
 
 	for (i = 0; i < document.forms.length; i++)
 		for (j = 0; j < document.forms[i].elements.length; j++) {
-			if (document.forms[i].elements[j].type=="text") {
-				if (document.forms[i].elements[j].onfocus==null) document.forms[i].elements[j].onfocus = focusHandler;
+			if (document.forms[i].elements[j].type==="text") {
+				if (document.forms[i].elements[j].onfocus===null) document.forms[i].elements[j].onfocus = focusHandler;
 			}
 		}
 }
@@ -1196,11 +1207,11 @@ function cal_toggleDate(dateDivId, dateFieldId) {
 	var dateDiv = document.getElementById(dateDivId);
 	if (!dateDiv) return false;
 
-	if (dateDiv.style.visibility=='visible') {
+	if (dateDiv.style.visibility==='visible') {
 		dateDiv.style.visibility = 'hidden';
 		return false;
 	}
-	if (dateDiv.style.visibility=='show') {
+	if (dateDiv.style.visibility==='show') {
 		dateDiv.style.visibility = 'hide';
 		return false;
 	}
@@ -1217,11 +1228,11 @@ function cal_toggleDate(dateDivId, dateFieldId) {
 	}
 
 	dateDiv.innerHTML = cal_generateSelectorContent(dateFieldId, dateDivId, date);
-	if (dateDiv.style.visibility=='hidden') {
+	if (dateDiv.style.visibility==='hidden') {
 		dateDiv.style.visibility = 'visible';
 		return false;
 	}
-	if (dateDiv.style.visibility=='hide') {
+	if (dateDiv.style.visibility==='hide') {
 		dateDiv.style.visibility = 'show';
 		return false;
 	}
@@ -1233,14 +1244,14 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 	content += '<td><select name="'+dateFieldId+'_daySelect" id="'+dateFieldId+'_daySelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
 	for (i=1; i<32; i++) {
 		content += '<option value="'+i+'"';
-		if (date.getDate()==i) content += ' selected="selected"';
+		if (date.getDate()===i) content += ' selected="selected"';
 		content += '>'+i+'</option>';
 	}
 	content += '</select></td>';
 	content += '<td><select name="'+dateFieldId+'_monSelect" id="'+dateFieldId+'_monSelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
 	for (i=1; i<13; i++) {
 		content += '<option value="'+i+'"';
-		if (date.getMonth()+1==i) content += ' selected="selected"';
+		if (date.getMonth()+1===i) content += ' selected="selected"';
 		content += '>'+monthLabels[i]+'</option>';
 	}
 	content += '</select></td>';
@@ -1271,8 +1282,8 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 		content += '<tr>';
 		for (i=0; i<7; i++) {
 			content += '<td ';
-			if (tdate.getMonth()==date.getMonth()) {
-				if (tdate.getDate()==date.getDate()) content += 'class="descriptionbox"';
+			if (tdate.getMonth()===date.getMonth()) {
+				if (tdate.getDate()===date.getDate()) content += 'class="descriptionbox"';
 				else content += 'class="optionbox"';
 			}
 			else content += 'style="background-color:#EAEAEA; border: solid #AAAAAA 1px;"';
@@ -1428,7 +1439,7 @@ function valid_lati_long(field, pos, neg) {
 	// 0.5698W ==> W0.5698
 	txt=txt.replace(/(.*)([N|S|E|W]+)$/g, '$2$1');
 	// 17.1234 ==> N17.1234
-	if (txt!='' && txt.charAt(0)!=neg && txt.charAt(0)!=pos) txt=pos+txt;
+	if (txt !== '' && txt.charAt(0)!== neg && txt.charAt(0) !== pos) txt=pos+txt;
 	field.value = txt;
 }
 
@@ -1441,10 +1452,10 @@ function activate_colorbox(config) {
 		fixed:         true,
 		// Simple I18N - the text will need to come from PHP
 		current:        '',
-		previous:       textDirection=='ltr' ? '◀' : '▶',
-		next:           textDirection=='ltr' ? '▶' : '◀',
-		slideshowStart: '○',
-		slideshowStop:  '●',
+		previous:       textDirection==='ltr' ? '?' : '?',
+		next:           textDirection==='ltr' ? '?' : '?',
+		slideshowStart: '?',
+		slideshowStop:  '?',
 		close:          '×'
 	});
 	if (config) {
