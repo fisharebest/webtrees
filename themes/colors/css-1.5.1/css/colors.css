@@ -353,12 +353,6 @@ html[dir=rtl] #relationship_chart {margin-right:10px;}
 .compact_view p {font-size:90%;margin:0;}
 .gedcom_table {border:1px solid #999999;margin:0;width:99%;}
 
-/* style needed for lightbox album icons */
-#medialist-page .list_value_wrap a {background:none;}
-#lb-image_edit a, #lb-image_link a, #lb-image_view a {color:#000000;padding-left:5px;}
-#lb-image_link a:hover {color:#ff0000;}
-.lb-menu > li:hover > ul {top:28px!important;}
-
 /* person boxes for charts */
 .person_box          {background:#ddddff;border:1px solid #aaaaaa;border-radius:3px;padding:3px;}
 .person_boxF         {background:#ffdddd;border:1px solid #aaaaaa;border-radius:3px;padding:3px;}
@@ -613,23 +607,26 @@ html[dir=rtl] .theme_form li ul li  {float:right;}
 #field_table select {min-width:100px;}
 
 /* ============== medialist.php ======================= */
-#lightbox-menu {margin-bottom:60px;}
-.lb-menu {position:relative; float:left; list-style-type:none; margin:0;}
+.lb-menu {display:inline-block; margin:0;}
 .lb-menu ul {list-style-type:none;}
-.lb-menu li {font-weight:normal; float:left; top:0;}
-.lb-menu > li ul {display:none;width:80px;}
-.lb-menu > li:hover  ul {display:block; top:36px;}
+.lb-menu > li {font-weight:normal; float:left; top:0;}
+.lb-menu > li ul {display:none;}
+.lb-menu > li:hover ul {display:block; top:36px;}
 .lb-menu a {display:block;}
 .lb-menu li a {padding-top:24px;}
 .lb-menu li li a {padding:1px 10px 1px 5px;}
-html[dir=rtl] .lb-menu {float:right;}
-html[dir=rtl] .lb-menu li {float:right;}
+.lb-menu {float:none;}
+.lb-menu li:before{content:"";}
+.makeMenu.lb-menu li a {color:#000;}
+.lb-image_edit, .lb-image_link {padding-right:5px;}
+.lb-menu > li:hover > ul {top:28px!important;}
+html[dir=rtl] .lb-menu > li {float:right;}
 
-li#lb-image_edit {background:url(../images/image_edit.png) no-repeat 50% 20%;}
-li#lb-image_link {background:url(../images/image_link.png) no-repeat 50% 20%;}
-li#lb-image_view {background:url(../images/image_view.png) no-repeat 50% 20%;}
+.list_value_wrap .lb-image_edit {background:url(../images/image_edit.png) no-repeat 50% 20%;}
+.list_value_wrap .lb-image_link {background:url(../images/image_link.png) no-repeat 50% 20%;}
+.list_value_wrap .lb-image_view {background:url(../images/image_view.png) no-repeat 50% 20%;}
 
-/* login.php  */
+/* ============== login.php ======================= */
 #login-register-page h2,#login-box,#register-box {text-align:center;}
 
 #login-register-page .warning {margin:20px auto;text-align:center;}
