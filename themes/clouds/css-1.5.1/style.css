@@ -2,7 +2,7 @@
 * Style for clouds theme
 *
 * webtrees: Web based Family History software
-* Copyright (C) 2013 webtrees development team.
+* Copyright (C) 2014 webtrees development team.
 *
 * Derived from PhpGedView Cloudy theme
 * Original author w.a. bastein http://genealogy.bastein.biz
@@ -20,7 +20,7 @@
 *
 * You should have received a copy of the GNU General Public License
 * along with this program; if not, write to the Free Software
-* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 body {
@@ -796,12 +796,6 @@ border:1px solid #999999;
 margin:0;
 width:99%;
 }
-
-/* style needed for lightbox album icons */
-#medialist-page .list_value_wrap a {background:none;}
-#lb-image_edit a, #lb-image_link a, #lb-image_view a {color:#000000;padding-left:5px;}
-#lb-image_link a:hover {color:red;}
-.lb-menu > li:hover > ul {top:28px!important;}
 
 /* person boxes are used in various charts */
 
@@ -1661,21 +1655,23 @@ html[dir=rtl] #branches-page ol {margin-right: 40px;}
 margin:10px;
 }
 /* ============== medialist.php ======================= */
-#lightbox-menu {margin-bottom:60px;}
-.lb-menu {position:relative; float:left; list-style-type:none; margin:0;}
+.lb-menu {display:inline-block; margin:0;}
 .lb-menu ul {list-style-type:none;}
-.lb-menu li {font-weight:normal; float:left; top:0;}
-.lb-menu > li ul {display:none;width:80px;}
-.lb-menu > li:hover  ul {display:block; top:36px;}
+.lb-menu > li {font-weight:normal; float:left; top:0;}
+.lb-menu > li ul {display:none;}
+.lb-menu > li:hover ul {display:block; top:36px;}
 .lb-menu a {display:block;}
 .lb-menu li a {padding-top:24px;}
 .lb-menu li li a {padding:1px 10px 1px 5px;}
-html[dir=rtl] .lb-menu {float:right;}
-html[dir=rtl] .lb-menu li {float:right;}
+.makeMenu.lb-menu li:before{content:"";}
+.lb-image_edit, .lb-image_link{padding-right:5px;}
+.lb-menu > li:hover > ul {top:28px!important;}
+html[dir=rtl] .lb-menu > li {float:right;}
 
-li#lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
-li#lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
-li#lb-image_view {background:url(images/image_view.png) no-repeat 50% 20%;}
+.lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
+.lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
+.lb-image_view {background:url(images/image_view.png) no-repeat 50% 20%;}
+
 /* ============== login.php ======================= */
 #login-form a:hover {
 color:red;

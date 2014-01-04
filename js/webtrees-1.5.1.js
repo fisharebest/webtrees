@@ -1,7 +1,7 @@
 // Common javascript functions
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2013 webtrees development team.
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -18,7 +18,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 // Specifications for various types of popup edit window.
 // Choose positions to center in the smallest (1000x800) target screen
@@ -1441,11 +1441,11 @@ function activate_colorbox(config) {
 		fixed:         true,
 		// Simple I18N - the text will need to come from PHP
 		current:        '',
-		previous:       textDirection=='ltr' ? '◀' : '▶',
-		next:           textDirection=='ltr' ? '▶' : '◀',
-		slideshowStart: '○',
-		slideshowStop:  '●',
-		close:          '×'
+		previous:       textDirection=='ltr' ? '\u25c0' : '\u25b6', // ◀ ▶
+		next:           textDirection=='ltr' ? '\u25b6' : '\u25c0', // ▶ ◀
+		slideshowStart: '\u25cb', // ○
+		slideshowStop:  '\u25cf', // ●
+		close:          '\u2715'  // ×
 	});
 	if (config) {
 		jQuery.extend(jQuery.colorbox.settings, config);

@@ -1,6 +1,6 @@
 # robots.txt file for webtrees
 #
-# (c) Greg Roach, 2013
+# Copyright (C) Greg Roach 2014
 #
 # This file needs to be placed in the domain root folder,
 # such as "www.example.com/robots.txt".  It will not work in a
@@ -20,7 +20,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 # Well-behaved robots understand "Allow" directives.
 User-Agent: bingbot       # Bing

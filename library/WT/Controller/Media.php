@@ -2,7 +2,7 @@
 // Controller for the media page
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2013 webtrees development team.
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -19,7 +19,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -134,14 +134,16 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* edit menu items used in album tab and media list
+	* edit menu items used in media list
 	*/
 	static function getMediaListMenu($mediaobject) {
-		$html='<div id="lightbox-menu"><ul class="makeMenu lb-menu">';
-		$menu = new WT_Menu(WT_I18N::translate('Edit details'), '#', 'lb-image_edit');
+		$html='<div class="lightbox-menu"><ul class="makeMenu lb-menu">';
+		$menu = new WT_Menu(WT_I18N::translate('Edit details'));
+		$menu->addClass('', '', 'lb-image_edit');
 		$menu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."', '_blank', edit_window_specs);");
-		$html.=$menu->getMenuAsList().'</ul><ul class="makeMenu lb-menu">';
-		$menu = new WT_Menu(WT_I18N::translate('Set link'), '#', 'lb-image_link');
+		$html.=$menu->getMenuAsList();
+		$menu = new WT_Menu(WT_I18N::translate('Set link'));
+		$menu->addClass('', '', 'lb-image_link');
 		$menu->addOnclick("return ilinkitem('".$mediaobject->getXref()."','person')");
 		$submenu = new WT_Menu(WT_I18N::translate('To individual'), '#');
 		$submenu->addOnclick("return ilinkitem('".$mediaobject->getXref()."','person')");
@@ -152,8 +154,9 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 		$submenu = new WT_Menu(WT_I18N::translate('To source'), '#');
 		$submenu->addOnclick("return ilinkitem('".$mediaobject->getXref()."','source')");
 		$menu->addSubMenu($submenu);
-		$html.=$menu->getMenuAsList().'</ul><ul class="makeMenu lb-menu">';
-		$menu = new WT_Menu(WT_I18N::translate('View details'), $mediaobject->getHtmlUrl(), 'lb-image_view');
+		$html.=$menu->getMenuAsList();
+		$menu = new WT_Menu(WT_I18N::translate('View details'), $mediaobject->getHtmlUrl());
+		$menu->addClass('', '', 'lb-image_view');
 		$html.=$menu->getMenuAsList();
 		$html.='</ul></div>';
 		return $html;
