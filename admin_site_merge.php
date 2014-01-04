@@ -4,7 +4,7 @@
 // This page will allow you to merge 2 gedcom records
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2013 webtrees development team.
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.

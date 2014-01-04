@@ -7,7 +7,7 @@
 // customised their local copy of this file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2013 webtrees development team.
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 PGV Development Team.

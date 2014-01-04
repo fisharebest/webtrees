@@ -1,6 +1,6 @@
 # robots.txt file for webtrees
 #
-# (c) Greg Roach, 2013
+# Copyright (C) Greg Roach 2014
 #
 # This file needs to be placed in the domain root folder,
 # such as "www.example.com/robots.txt".  It will not work in a

@@ -2,7 +2,7 @@
 // Footer for Clouds theme
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2013 webtrees development team.
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView Cloudy theme
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.

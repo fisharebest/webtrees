@@ -1,14 +1,8 @@
 <?php
 // Check a family tree for structural errors.
 //
-// Note that the tests and error messages are not yet finalised.  Wait until the code has stabilised before
-// adding I18N.
-//
 // webtrees: Web based Family History software
-// Copyright (C) 2013 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2006-2009 Greg Roach, all rights reserved
+// Copyright (C) 2014 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
