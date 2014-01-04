@@ -1441,11 +1441,11 @@ function activate_colorbox(config) {
 		fixed:         true,
 		// Simple I18N - the text will need to come from PHP
 		current:        '',
-		previous:       textDirection=='ltr' ? '◀' : '▶',
-		next:           textDirection=='ltr' ? '▶' : '◀',
-		slideshowStart: '○',
-		slideshowStop:  '●',
-		close:          '×'
+		previous:       textDirection=='ltr' ? '\u25c0' : '\u25b6', // ◀ ▶
+		next:           textDirection=='ltr' ? '\u25b6' : '\u25c0', // ▶ ◀
+		slideshowStart: '\u25cb', // ○
+		slideshowStop:  '\u25cf', // ●
+		close:          '\u2715'  // ×
 	});
 	if (config) {
 		jQuery.extend(jQuery.colorbox.settings, config);
