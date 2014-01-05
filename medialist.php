@@ -298,7 +298,7 @@ if ($search) {
 			}
 			echo '</td></tr></table>';
 			echo '</td>';
-			if ((++$n) % $columns == 0) {
+			if ((++$n) % $columns == 0 && $n < $count) {
 				echo '</tr><tr>';
 			}
 		} // end media loop
