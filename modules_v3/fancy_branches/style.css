@@ -1,5 +1,6 @@
 /* Basic style for the Fancy Branches - this css file is suitable for all themes.
-/* No specific theme stylesheets required
+** No specific theme stylesheets required
+** Copyright (C) 2014 JustCarmen.
 */
 
 #branches-page ul.aboville{counter-reset:section;} /* instigate the "d'Aboville" numbering system */
