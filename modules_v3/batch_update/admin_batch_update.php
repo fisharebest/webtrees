@@ -338,8 +338,8 @@ class base_plugin {
 		return
 			'<tr><th>'.WT_I18N::translate('Do not update the “last change” record').'</th>'.
 			'<td><select name="chan" onchange="this.form.submit();">'.
-			'<option value="yes"' . ($this->chan ? '' : ' selected="selected"') . '>'.WT_I18N::translate('yes') .'</option>'.
-			'<option value="no"'  . ($this->chan ? ' selected="selected"' : '') . '>'.WT_I18N::translate('no').'</option>'.
+			'<option value="0"' . ($this->chan ? '' : ' selected="selected"') . '>'.WT_I18N::translate('yes') .'</option>'.
+			'<option value="1"' . ($this->chan ? ' selected="selected"' : '') . '>'.WT_I18N::translate('no').'</option>'.
 			'</select></td></tr>';
 	}
 
