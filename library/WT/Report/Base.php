@@ -2257,7 +2257,7 @@ function varSHandler($attrs) {
 		$var = $vars[$var]['id'];
 	} else {
 		$tfact = $fact;
-		if (($fact == "EVEN" or $fact == "FACT") and $type != " ") {
+		if (($fact == "EVEN" || $fact == "FACT") && is_string($type) && $type != " ") {
 			// Use :
 			// n TYPE This text if string
 			$tfact = $type;
