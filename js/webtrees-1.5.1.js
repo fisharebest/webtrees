@@ -263,6 +263,14 @@ function edit_record(xref, fact_id) {
 	});
 }
 
+function add_fact(xref, fact) {
+	return edit_interface({
+		"action": "add",
+		"xref":   xref,
+		"fact":   fact
+	});
+}
+
 function edit_raw(xref) {
 	return edit_interface({
 		"action": "editraw",
@@ -283,11 +291,7 @@ function add_record(xref, fact_field) {
 		if (fact == "OBJE") {
 			window.open('addmedia.php?action=showmediaform&linkid=' + encodeURIComponent(xref) + '&ged=' + encodeURIComponent(WT_GEDCOM), '_blank', edit_window_specs);
 		} else {
-			return edit_interface({
-				"action": "add",
-				"xref":   xref,
-				"fact":   fact
-			});
+			return add_fact(xref, fact);
 		}
 	}
 	return false;

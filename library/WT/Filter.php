@@ -112,7 +112,15 @@ class WT_Filter {
 		// HTMLPurifier needs its own autoloader
 		require_once WT_ROOT . 'library/htmlpurifier-4.6.0/library/HTMLPurifier.auto.php';
 
+		// HTMLPurifier needs somewhere to write temporary files
+		$HTML_PURIFIER_CACHE_DIR = WT_DATA_DIR . 'html_purifier_cache';
+
+		if (!is_dir($HTML_PURIFIER_CACHE_DIR)) {
+			mkdir($HTML_PURIFIER_CACHE_DIR);
+		}
+
 		$config = HTMLPurifier_Config::createDefault();
+		$config->set('Cache.SerializerPath', $HTML_PURIFIER_CACHE_DIR);
 		$purifier = new HTMLPurifier($config);
 		$text = $purifier->purify($text);
 

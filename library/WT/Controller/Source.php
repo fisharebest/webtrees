@@ -53,7 +53,13 @@ class WT_Controller_Source extends WT_Controller_GedcomRecord {
 		if (WT_USER_CAN_EDIT) {
 			$fact = $this->record->getFirstFact('TITL');
 			$submenu = new WT_Menu(WT_I18N::translate('Edit source'), '#', 'menu-sour-edit');
-			$submenu->addOnclick('return edit_record(\''.$this->record->getXref().'\', \'' . $fact->getFactId() . '\');');
+			if ($fact) {
+				// Edit existing name
+				$submenu->addOnclick('return edit_record(\''.$this->record->getXref().'\', \'' . $fact->getFactId() . '\');');
+			} else {
+				// Add new name
+				$submenu->addOnclick('return add_fact(\''.$this->record->getXref().'\', \'TITL\');');
+			}
 			$menu->addSubmenu($submenu);
 		}
 
