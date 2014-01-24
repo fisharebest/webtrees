@@ -130,7 +130,7 @@ case 'load_unknown':
 	// AJAX callback for datatables
 	$sql=
 		"SELECT SQL_CALC_FOUND_ROWS".
-		" INET_NTOA(ip_address_start), ip_address_start, user_agent_pattern, site_access_rule_id".
+		" INET_NTOA(ip_address_start), ip_address_start, user_agent_pattern, DATE(updated) AS updated, site_access_rule_id".
 		" FROM `##site_access_rule`".
 		" WHERE rule='unknown'";
 	$args=array();
@@ -176,10 +176,10 @@ case 'load_unknown':
 	$aaData=WT_DB::prepare($sql)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	// Reformat the data for display
 	foreach ($aaData as &$row) {
-		$site_access_rule_id=$row[3];
-		$row[3]='<i class="icon-yes" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=allow&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
-		$row[4]='<i class="icon-yes" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=deny&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
-		$row[5]='<i class="icon-yes" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=robot&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
+		$site_access_rule_id=$row[4];
+		$row[4]='<i class="icon-yes" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=allow&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
+		$row[5]='<i class="icon-yes" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=deny&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
+		$row[6]='<i class="icon-yes" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=robot&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
 	}
 
 	// Total filtered rows
@@ -246,9 +246,10 @@ $controller
 				/* 0 ip_address         */ {"iDataSort": 1, "sClass": "ip_address"},
 				/* 0 ip_address (sort)  */ {"sType": "numeric", "bVisible": false},
 				/* 1 user_agent_pattern */ {"sClass": "ua_string"},
-				/* 2 <allowed>          */ {"bSortable": false, "sClass": "center"},
-				/* 3 <banned>           */ {"bSortable": false, "sClass": "center"},
-				/* 4 <search-engine>    */ {"bSortable": false, "sClass": "center"}
+				/* 2 updated            */ {"sClass": "ua_string"},
+				/* 3 <allowed>          */ {"bSortable": false, "sClass": "center"},
+				/* 4 <banned>           */ {"bSortable": false, "sClass": "center"},
+				/* 5 <search-engine>    */ {"bSortable": false, "sClass": "center"}
 			]
 		});
 	');
@@ -292,6 +293,7 @@ WT_DB::exec(
 			<th rowspan="2"><?php /* I18N: http://en.wikipedia.org/wiki/IP_address */ echo WT_I18N::translate('IP address'); ?></th>
 			<th rowspan="2">-</th>
 			<th rowspan="2"><?php echo WT_I18N::translate('User-agent string'); ?></th>
+			<th rowspan="2"><?php echo WT_I18N::translate('Date'); ?></th>
 			<th colspan="3"><?php echo WT_I18N::translate('Create a new rule'); ?></th>
 		</tr>
 		<tr>
