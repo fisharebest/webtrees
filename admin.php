@@ -583,6 +583,15 @@ function old_paths() {
 		WT_ROOT.'themes/minimal/css-1.5.0',
 		WT_ROOT.'themes/webtrees/css-1.5.0',
 		WT_ROOT.'themes/xenea/css-1.5.0',
+		// Removed in 1.5.2
+		WT_ROOT.'js/webtrees-1.5.1.js',
+		WT_ROOT.'themes/_administration/css-1.5.1',
+		WT_ROOT.'themes/clouds/css-1.5.1',
+		WT_ROOT.'themes/colors/css-1.5.1',
+		WT_ROOT.'themes/fab/css-1.5.1',
+		WT_ROOT.'themes/minimal/css-1.5.1',
+		WT_ROOT.'themes/webtrees/css-1.5.1',
+		WT_ROOT.'themes/xenea/css-1.5.1',
 	);
 }
 
