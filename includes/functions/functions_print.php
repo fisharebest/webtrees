@@ -37,7 +37,7 @@ if (!defined('WT_WEBTREES')) {
 * @param int $count on some charts it is important to keep a count of how many boxes were printed
 */
 function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
-	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $GEDCOM;
+	global $GEDCOM;
 	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;
 	global $chart_style, $box_width, $generations, $show_spouse, $show_full;

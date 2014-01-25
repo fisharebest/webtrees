@@ -1271,7 +1271,6 @@ if (!defined('WT_WEBTREES')) {
  */
 
 function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", $currpid, $censyear) {
-	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $SCRIPT_NAME;
 	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
 	global $chart_style, $box_width, $generations, $show_spouse, $show_full;
