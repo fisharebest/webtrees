@@ -48,7 +48,7 @@ class WT_Repository extends WT_GedcomRecord {
 	}
 
 	// Get an array of structures containing all the names in the record
-	public function getAllNames() {
-		return parent::_getAllNames('NAME', 1);
+	public function extractNames() {
+		parent::_extractNames(1, 'NAME', $this->getFacts('NAME'));
 	}
 }

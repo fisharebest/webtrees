@@ -434,14 +434,11 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	// Get an array of structures containing all the names in the record
-	public function getAllNames() {
-		if (strpos($this->getGedcom(), "\n1 TITL ")) {
-			// Earlier gedcom versions had level 1 titles
-			return parent::_getAllNames('TITL', 1);
-		} else {
-			// Later gedcom versions had level 2 titles
-			return parent::_getAllNames('TITL', 2);
-		}
+	public function extractNames() {
+		// Earlier gedcom versions had level 1 titles
+		// Later gedcom versions had level 2 titles
+		$this->_extractNames(2, 'TITL', $this->getFacts('FILE'));
+		$this->_extractNames(1, 'TITL', $this->getFacts('TITL'));
 	}
 
 	// Extra info to display when displaying this record in a list of

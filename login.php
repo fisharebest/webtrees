@@ -171,11 +171,17 @@ default:
 		<div>
 			<input type="submit" value="', WT_I18N::translate('Login'), '">
 		</div>
-		<div>
-			<a href="#" id="passwd_click">', WT_I18N::translate('Request new password'), '</a>
-		</div>';
-		if (WT_Site::preference('USE_REGISTRATION_MODULE')) {
-			echo '<div><a href="'.WT_LOGIN_URL.'?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
+		';
+		// Emails are sent from a TREE, not from a SITE.  Therefore if there is no
+		// tree available (initial setup or all trees private), then we can't send email.
+		if ($WT_TREE) {
+			echo '
+			<div>
+				<a href="#" id="passwd_click">', WT_I18N::translate('Request new password'), '</a>
+			</div>';
+			if (WT_Site::preference('USE_REGISTRATION_MODULE')) {
+				echo '<div><a href="'.WT_LOGIN_URL.'?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
+			}
 		}
 	echo '</form>';
 
