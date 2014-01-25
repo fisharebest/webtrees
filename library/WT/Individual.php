@@ -1016,8 +1016,17 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	// Get an array of structures containing all the names in the record
-	public function getAllNames() {
-		return $this->_getAllNames('NAME', 1);
+	public function extractNames() {
+		// Cannot use ->getFacts('NAME'), as we need to bypass some of the privacy using $SHOW_LIVING_NAMES / canShowName()
+		if ($this->canShowName()) {
+			$facts = array();
+			foreach ($this->facts as $fact) {
+				if ($fact->getTag() == 'NAME' && $fact->canShow()) {
+					$facts[] = $fact;
+				}
+			}
+			$this->_extractNames(1, 'NAME', $facts);
+		}
 	}
 
 	// Extra info to display when displaying this record in a list of

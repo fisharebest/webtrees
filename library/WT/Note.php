@@ -87,6 +87,8 @@ class WT_Note extends WT_GedcomRecord {
 	public function getAllNames() {
 		// Uniquely, the NOTE objects have data in their level 0 record.
 		// Hence the REGEX passed in the second parameter
-		return parent::_getAllNames('NOTE', '0 @'.WT_REGEX_XREF.'@');
+		if (preg_match('0 @' . WT_REGEX_XREF . '@ NOTE (.+)', $this->getGedcom())) {
+			$this->_addName('NOTE', $match[1]);
+		}
 	}
 }
