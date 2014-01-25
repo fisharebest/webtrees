@@ -16,3 +16,6 @@
 [submodule "modules_v3/fancy_privacy_list"]
 	path = modules_v3/fancy_privacy_list
 	url = https://github.com/JustCarmen/fancy_privacy_list.git
+[submodule "modules_v3/fancy_imagebar"]
+	path = modules_v3/fancy_imagebar
+	url = https://github.com/JustCarmen/fancy_imagebar.git
