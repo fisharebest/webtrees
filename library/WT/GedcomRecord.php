@@ -788,9 +788,11 @@ class WT_GedcomRecord {
 	}
 
 	// The facts and events for this record
-	public function getFacts($filter=null, $sort=false, $access_level=WT_USER_ACCESS_LEVEL) {
+	// $override allows us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES, by giving
+	// access to otherwise private records.
+	public function getFacts($filter=null, $sort=false, $access_level=WT_USER_ACCESS_LEVEL, $override=false) {
 		$facts=array();
-		if ($this->canShow($access_level)) {
+		if ($this->canShow($access_level) || $override) {
 			foreach ($this->facts as $fact) {
 				if (($filter==null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
 					$facts[] = $fact;

@@ -139,19 +139,15 @@ class WT_Family extends WT_GedcomRecord {
 		return $spouses;
 	}
 
-	/**
-	 * get the children
-	 * @return array array of children Persons
-	 */
+	// Get a list of this family’s children
 	function getChildren($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
-		$children=array();
-		preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $this->gedcom, $match);
-		foreach ($match[1] as $pid) {
-			$child=WT_Individual::getInstance($pid);
+		$children = array();
+		foreach ($this->getFacts('CHIL', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
+			$child = $fact->getTarget();
 			if ($child && ($SHOW_PRIVATE_RELATIONSHIPS || $child->canShowName($access_level))) {
-				$children[]=$child;
+				$children[] = $child;
 			}
 		}
 		return $children;
