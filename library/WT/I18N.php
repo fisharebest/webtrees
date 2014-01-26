@@ -41,10 +41,10 @@ class WT_I18N {
 	public  static $locale;
 	public  static $collation;
 	public  static $list_separator;
+	public  static $translation_adapter;
 	private static $dir;
 	private static $cache;
 	private static $numbering_system;
-	private static $translation_adapter;
 
 	// Initialise the translation adapter with a locale setting.
 	// If null is passed, work out which language is needed from the environment.
@@ -131,9 +131,6 @@ class WT_I18N {
 		
 		// Load the translation file
 		self::$translation_adapter = new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);
-
-		// Deprecated - some custom modules use this to add translations
-		Zend_Registry::set('Zend_Translate', self::$translation_adapter);
 
 		// Load any local user translations
 		if (is_dir(WT_DATA_DIR.'language')) {
