@@ -41,10 +41,10 @@ class WT_I18N {
 	public  static $locale;
 	public  static $collation;
 	public  static $list_separator;
+	public  static $translation_adapter;
 	private static $dir;
 	private static $cache;
 	private static $numbering_system;
-	private static $translation_adapter;
 
 	// Initialise the translation adapter with a locale setting.
 	// If null is passed, work out which language is needed from the environment.
