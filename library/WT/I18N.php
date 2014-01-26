@@ -133,22 +133,22 @@ class WT_I18N {
 		self::$translation_adapter = new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);
 
 		// Deprecated - some custom modules use this to add translations
-		Zend_Registry::set('Zend_Translate', self::$translation_adapter);
+		Zend_Registry::set('Zend_Translate', WT_I18N::$translation_adapter);
 
 		// Load any local user translations
 		if (is_dir(WT_DATA_DIR.'language')) {
 			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.mo')) {
-				self::$translation_adapter->addTranslation(
+				WT_I18N::addTranslation(
 					new Zend_Translate('gettext', WT_DATA_DIR.'language/'.$locale.'.mo', $locale)
 				);
 			}
 			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.php')) {
-				self::$translation_adapter->addTranslation(
+				WT_I18N::addTranslation(
 					new Zend_Translate('array', WT_DATA_DIR.'language/'.$locale.'.php', $locale)
 				);
 			}
 			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.csv')) {
-				self::$translation_adapter->addTranslation(
+				WT_I18N::addTranslation(
 					new Zend_Translate('csv', WT_DATA_DIR.'language/'.$locale.'.csv', $locale)
 				);
 			}
@@ -185,6 +185,11 @@ class WT_I18N {
 		self::$numbering_system = Zend_Locale_Data::getContent($locale, 'defaultnumberingsystem');
 
 		return $locale;
+	}
+
+	// Add a translation file
+	public static function addTranslation(Zend_Translate $translation) {
+		WT_I18N::$translation_adapter->addTranslation($translation);
 	}
 
 	// Check which languages are installed
