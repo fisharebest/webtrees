@@ -227,16 +227,16 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 // now added as a function here.
 
 function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL) {
-	$header_links='';
-	if (!empty($LINK_CANONICAL)) {
-		$header_links.= '<link rel="canonical" href="'. $LINK_CANONICAL. '">';
+	$header_links = '';
+	if ($LINK_CANONICAL) {
+		$header_links .= '<link rel="canonical" href="' . $LINK_CANONICAL . '">';
 	}
-	if (!empty($META_DESCRIPTION)) {
-		$header_links.= '<meta name="description" content="'. WT_Filter::escapeHtml($META_DESCRIPTION). '">';
+	if ($META_DESCRIPTION) {
+		$header_links .= '<meta name="description" content="' . $META_DESCRIPTION . '">';
 	}
-	$header_links.= '<meta name="robots" content="'. $META_ROBOTS. '">';
-	if (!empty($META_GENERATOR)) {
-		$header_links.= '<meta name="generator" content="'. $META_GENERATOR. '">';
+	$header_links .= '<meta name="robots" content="' . $META_ROBOTS . '">';
+	if ($META_GENERATOR) {
+		$header_links .= '<meta name="generator" content="' . $META_GENERATOR . '">';
 	}
 	return $header_links;
 }

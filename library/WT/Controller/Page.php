@@ -137,7 +137,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 		$META_ROBOTS      = $this->meta_robots;
 		$META_DESCRIPTION = WT_GED_ID ? get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION') : '';
 		if (!$META_DESCRIPTION) {
-			$META_DESCRIPTION = WT_TREE_TITLE;
+			$META_DESCRIPTION = strip_tags(WT_TREE_TITLE);
 		}
 		$META_GENERATOR = WT_WEBTREES . ' ' . WT_VERSION . ' - ' . WT_WEBTREES_URL;
 		$META_TITLE     = WT_GED_ID ? get_gedcom_setting(WT_GED_ID, 'META_TITLE') : '';
