@@ -445,6 +445,11 @@ class WT_GedcomRecord {
 		}
 	}
 
+	// Default for "other" object types
+	public function extractNames() {
+		$this->_addName(static::RECORD_TYPE, $this->getFallBackName(), null);
+	}
+
 	// Derived classes should redefine this function, otherwise the object will have no name
 	public function getAllNames() {
 		if ($this->_getAllNames === null) {
