@@ -424,11 +424,12 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 	} else {
 		// A multi-line note, with an expand/collapse option
 		$element_id = uniqid('n-');
+		// NOTE: class "note-details" is (currently) used only by some third-party themes
 		return
 			'<div class="fact_NOTE"><span class="label">' .
 			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . WT_Gedcom_Tag::getLabel($label) . ': ' .
 			'</div>' .
-			'<div id="' . $element_id . '" style="display:none">' . $html . '</div>';
+			'<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>';
 	}
 }
 
