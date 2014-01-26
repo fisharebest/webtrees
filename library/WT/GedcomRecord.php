@@ -431,18 +431,23 @@ class WT_GedcomRecord {
 				foreach ($matches as $match) {
 					// Treat 1 NAME / 2 TYPE married the same as _MARNM
 					if ($match[1]=='NAME' && strpos($match[3], "\n2 TYPE married")!==false) {
-						$this->_addName('_MARNM', $match[2] ? $match[2] : $this->getFallBackName(), $fact->getGedcom());
+						$this->_addName('_MARNM', $match[2], $fact->getGedcom());
 					} else {
-						$this->_addName($match[1], $match[2] ? $match[2] : $this->getFallBackName(), $fact->getGedcom());
+						$this->_addName($match[1], $match[2], $fact->getGedcom());
 					}
 					if ($match[3] && preg_match_all("/^{$sublevel} (ROMN|FONE|_\w+) (.+)((\n[{$subsublevel}-9].+)*)/m", $match[3], $submatches, PREG_SET_ORDER)) {
 						foreach ($submatches as $submatch) {
-							$this->_addName($submatch[1], $submatch[2] ? $submatch[2] : $this->getFallBackName(), $fact->getGedcom());
+							$this->_addName($submatch[1], $submatch[2], $match[3]);
 						}
 					}
 				}
 			}
 		}
+	}
+
+	// Default for "other" object types
+	public function extractNames() {
+		$this->_addName(static::RECORD_TYPE, $this->getFallBackName(), null);
 	}
 
 	// Derived classes should redefine this function, otherwise the object will have no name
