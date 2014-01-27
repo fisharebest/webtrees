@@ -3,10 +3,9 @@ msgstr ""
 "Project-Id-Version: Webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-12-29 12:41+0000\n"
-"PO-Revision-Date: 2013-12-22 19:19+0200\n"
+"PO-Revision-Date: 2014-01-02 14:19+0200\n"
 "Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -38,7 +37,7 @@ msgstr " mutta yksityiskohdat ovat tuntemattomia"
 #: modules_v3/descendancy_report/report.xml:421
 #: modules_v3/descendancy_report/report.xml:452
 msgid " in "
-msgstr " paikassa "
+msgstr " "
 
 #: statisticsplot.php:802
 msgid " per gender"
@@ -66,8 +65,8 @@ msgstr[1] "%1$d henkilöä näytössä %3$d sukupolven mahdollisista %2$d henkil
 #, php-format
 msgid "%1$d individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "%1$d henkilöltä puuttuvat syntymäpaikan koordinaatit: %2$s."
-msgstr[1] "%1$d henkilöiltä puuttuvat syntymäpaikan koordinaatit: %2$s."
+msgstr[0] "%1$d henkilöltä puuttuu syntymäpaikan koordinaatit: %2$s."
+msgstr[1] "%1$d henkilöiltä puuttuu syntymäpaikan koordinaatit: %2$s."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:742
@@ -756,7 +755,7 @@ msgstr "Luettelon käyttäjistä ja kävijöistä, jotka ovat tällä hetkellä 
 
 #: help_text.php:309
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Media objekti on sukupuun tietorivi, joka sisältää tietoja media tiedostosta. Sellaiset tiedot voisivat olla otsikko, tekijänoikeudet, seloste, yksityisyysrajoitukset jne. Media tiedosto esim. valokuva tai video voi olla tallennettuna paikallisesti (tällä palvelimella) tai toisaalla (jollain muulla palvelimella)."
+msgstr "Media kohde on sukupuun tietorivi, joka sisältää tietoja media tiedostosta. Sellaiset tiedot voisivat olla otsikko, tekijänoikeudet, seloste, yksityisyysrajoitukset jne. Media tiedosto esim. valokuva tai video voi olla tallennettuna paikallisesti (tällä palvelimella) tai toisaalla (jollain muulla palvelimella)."
 
 #. I18N: %s is a username
 #: login.php:242
@@ -820,7 +819,7 @@ msgstr "Raportti tiedoista, jotka ovat lähtöisin tietystä lähteestä."
 #: modules_v3/family_group_report/module.php:39
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr "Raportti perheenjäsenistä ja heidän tiedoista."
+msgstr "Raportti perheenjäsenistä ja heidän tiedoistaan."
 
 #. I18N: Description of the “Deaths” module
 #: modules_v3/death_report/module.php:39 modules_v3/death_report/report.xml:4
@@ -882,7 +881,7 @@ msgstr "Raportti henkilön ja hänen omaistensa puuttuvista tiedoista."
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: modules_v3/bdm_report/module.php:39 modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "Raportti keskeisimmistä tapahtumista, tiettynä ajanjaksona tai tietyssä paikassa."
+msgstr "Raportti keskeisistä tapahtumista, tiettynä ajanjaksona tai tietyssä paikassa."
 
 #: help_text.php:1374
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -926,7 +925,7 @@ msgstr "Välilehti näyttää henkilöön liittyvät tiedot ja tapahtumat."
 #. I18N: Description of the “Media” module
 #: modules_v3/media/module.php:39
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Välilehti joka näyttää henkilöön liitetyt mediaobjektit."
+msgstr "Välilehti joka näyttää henkilöön liitetyt mediakohteet."
 
 #. I18N: Description of the “Notes” module
 #: modules_v3/notes/module.php:39
@@ -1147,7 +1146,7 @@ msgstr "Lisää Usein kysytyt kysymykset aihe"
 
 #: modules_v3/clippings/module.php:155 modules_v3/clippings/module.php:245
 msgid "Add Individual By ID"
-msgstr "Lisää henkilö ID:n avulla"
+msgstr "Lisää henkilötunnuksen avulla"
 
 #: search_advanced.php:290
 msgid "Add More Fields"
@@ -1186,11 +1185,11 @@ msgstr "Lisää päiväkirjamerkintä"
 #: help_text.php:1133 includes/functions/functions_edit.php:828
 #: includes/functions/functions_edit.php:833
 msgid "Add a new associate"
-msgstr "Lisää uusi läheinen"
+msgstr "Lisää läheinen"
 
 #: help_text.php:1134
 msgid "Add a new associate allows you to link a fact with an associated individual in the site.  This is one way in which you might record that someone was the godfather of another individual."
-msgstr "Lisää uusi läheinen yhdistää sivuston tiedon ja siihen liittyvän henkilön keskenään. Tämä on yksi tapa tallentaa tieto, että joku henkilö on esimerkiksi ollut toisen henkilön kummisetä."
+msgstr "Lisää läheinen yhdistää sivuston tiedon ja siihen liittyvän henkilön keskenään. Tämä on yksi tapa tallentaa tieto, että joku henkilö on esimerkiksi ollut toisen henkilön kummisetä."
 
 #: modules_v3/relatives/module.php:250
 msgid "Add a new brother or sister"
@@ -1202,16 +1201,16 @@ msgstr "Lisää lapsi"
 
 #: edit_interface.php:701 family.php:117 modules_v3/relatives/module.php:297
 msgid "Add a new father"
-msgstr "Lisää uusi isä"
+msgstr "Lisää isä"
 
 #: modules_v3/gedcom_favorites/module.php:169
 msgid "Add a new favorite"
-msgstr "Lisää uusi suosikki"
+msgstr "Lisää suosikki"
 
 #: edit_interface.php:836 edit_interface.php:926
 #: modules_v3/relatives/module.php:362
 msgid "Add a new husband"
-msgstr "Lisää uusi mies puolisoksi"
+msgstr "Lisää puoliso"
 
 #: includes/functions/functions_edit.php:316
 #: includes/functions/functions_edit.php:875
@@ -1219,11 +1218,11 @@ msgstr "Lisää uusi mies puolisoksi"
 #: modules_v3/lightbox/module.php:71 modules_v3/media/module.php:84
 #: repo.php:135 source.php:152
 msgid "Add a new media object"
-msgstr "Lisää mediaobjekti"
+msgstr "Lisää mediakohde"
 
 #: edit_interface.php:698 family.php:121 modules_v3/relatives/module.php:300
 msgid "Add a new mother"
-msgstr "Lisää uusi äiti"
+msgstr "Lisää äiti"
 
 #: edit_interface.php:1692 library/WT/Controller/Individual.php:279
 msgid "Add a new name"
@@ -1233,7 +1232,7 @@ msgstr "Lisää nimi"
 #: includes/functions/functions_edit.php:852
 #: library/WT/Controller/Family.php:173 modules_v3/notes/module.php:93
 msgid "Add a new note"
-msgstr "Lisää uusi lisätieto"
+msgstr "Lisää lisätieto"
 
 #: includes/functions/functions_edit.php:886
 msgid "Add a new restriction"
@@ -1243,7 +1242,7 @@ msgstr "Lisää rajoitus"
 #: includes/functions/functions_edit.php:863
 #: library/WT/Controller/Family.php:180 modules_v3/notes/module.php:104
 msgid "Add a new shared note"
-msgstr "Lisää uusi jaettu lisätieto"
+msgstr "Lisää jaettu lisätieto"
 
 #: modules_v3/relatives/module.php:246
 msgid "Add a new son or daughter"
@@ -1253,7 +1252,7 @@ msgstr "Lisää poika tai tytär"
 #: includes/functions/functions_edit.php:799
 #: library/WT/Controller/Family.php:198 modules_v3/sources_tab/module.php:92
 msgid "Add a new source citation"
-msgstr "Lisää uusi tietolähdeviite"
+msgstr "Lisää tietolähdeviite"
 
 #: edit_interface.php:863
 msgid "Add a new spouse"
@@ -1261,12 +1260,12 @@ msgstr "Lisää puoliso"
 
 #: themes/_administration/header.php:133
 msgid "Add a new user"
-msgstr "Lisää uusi käyttäjä"
+msgstr "Lisää käyttäjä"
 
 #: edit_interface.php:833 edit_interface.php:923
 #: modules_v3/relatives/module.php:350
 msgid "Add a new wife"
-msgstr "Lisää uusi vaimo"
+msgstr "Lisää vaimo"
 
 #. I18N: label for a yes/no option
 #: modules_v3/charts/module.php:237 modules_v3/gedcom_favorites/module.php:239
@@ -1292,11 +1291,11 @@ msgstr "Liitä vaimo käyttäen tiedostossa olevaa henkilöä."
 
 #: lifespan.php:147 timeline.php:288
 msgid "Add another individual to the chart"
-msgstr "Lisää uusi henkilö kaavioon"
+msgstr "Lisää henkilö kaavioon"
 
 #: modules_v3/clippings/help_text.php:31
 msgid "Add by ID"
-msgstr "Lisää ID:ta käyttäen"
+msgstr "Lisää tunnusta käyttäen"
 
 #: help_text.php:1061 includes/functions/functions_print.php:904
 msgid "Add from clipboard"
@@ -1467,7 +1466,7 @@ msgstr "Järjestelmänhallinta"
 
 #: admin_trees_places.php:80
 msgid "Administration - place edit"
-msgstr ""
+msgstr "Järjestelmänhallinta - paikan muokkaus"
 
 #: admin_users.php:186 admin_users.php:368 help_text.php:1397
 msgid "Administrator"
@@ -2092,7 +2091,7 @@ msgstr "Haluatko todella poistaa ”%s”?"
 
 #: modules_v3/lightbox/module.php:203
 msgid "Are you sure you want to remove links to this media object?"
-msgstr "Haluatko varmasti poistaa liitteet tähän mediaobjektiin?"
+msgstr "Haluatko varmasti poistaa liitteet tähän mediakohteeseen?"
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -2566,7 +2565,7 @@ msgstr "Billings, Montana"
 #. I18N: gedcom tag BLOB
 #: library/WT/Gedcom/Tag.php:132
 msgid "Binary data object"
-msgstr "Binääridataobjekti"
+msgstr "Binääridatakohde"
 
 #: library/WT/Gedcom/Code/Temp.php:74
 msgid "Birmingham, Alabama"
@@ -2712,7 +2711,7 @@ msgstr "Syntymä"
 
 #: modules_v3/birth_report/report.xml:6
 msgid "Birth Place contains"
-msgstr "Syntymäpaikassa on"
+msgstr "Syntymäpaikka sisältää"
 
 #: library/WT/Stats.php:986 statistics.php:562
 msgid "Birth by country"
@@ -2720,11 +2719,11 @@ msgstr "Syntymämaa"
 
 #: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
 msgid "Birth date range end"
-msgstr "Syntymän aikavälin loppu"
+msgstr "Syntymäajanjakson loppu"
 
 #: modules_v3/bdm_report/report.xml:7 modules_v3/birth_report/report.xml:7
 msgid "Birth date range start"
-msgstr "Syntymän aikavälin alku"
+msgstr "Syntymäajanjakson alku"
 
 #: library/WT/Gedcom/Tag.php:454
 msgid "Birth of a brother"
@@ -3143,7 +3142,7 @@ msgstr "Aviovaimon hautajaiset"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
-msgstr "Hautaamispaikka sisältää"
+msgstr "Hautaamispaikan nimi sisältää"
 
 #: library/WT/Stats.php:3769
 msgid "Burkina Faso"
@@ -3389,7 +3388,7 @@ msgstr "Muutokset"
 msgid "Changes in the last day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Muutokset viime vuorokaudessa"
-msgstr[1] "Muutokset viimeisten %s päivän aikana"
+msgstr[1] "Muutokset viimeisen %s päivän aikana"
 
 #: themes/_administration/header.php:123
 msgid "Changes log"
@@ -3480,7 +3479,7 @@ msgstr "Tämän henkilön lapsi: "
 #: modules_v3/tree/class_treeview.php:324
 #, php-format
 msgid "Child of %s"
-msgstr "%s:n lapsi"
+msgstr "%s - lapsi"
 
 #: includes/functions/functions_print_lists.php:213
 #: includes/functions/functions_print_lists.php:641
@@ -3743,7 +3742,7 @@ msgstr "Klikkaamalla tätä linkkiä luetellaan kaikkien niiden henkilöiden tai
 
 #: help_text.php:1139
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
-msgstr "Klikkaamalla ”+” kuvaketta avautuu GEDFact jaettu lisätieto avustaja ikkuna.<br>Lisää ohjeita löydät sieltä.<br><br>Napsuttamalla ”Tallenna” painiketta, lisätään jaetun lisätiedon ID-tunnus tähän."
+msgstr "Klikkaamalla ”+” kuvaketta avautuu GEDFact jaettu lisätieto avustaja ikkuna.<br>Lisää ohjeita löydät sieltä.<br><br>Napsuttamalla ”Tallenna” painiketta, lisätään jaetun lisätiedon tunnus tähän."
 
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:84
@@ -3840,12 +3839,12 @@ msgstr "Kompaktipuu - %s"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:82
 msgid "Completed before 1970; date not available"
-msgstr "Valmistui ennen 1970, päivämäärä ei tiedossa"
+msgstr "Valmistui ennen 1970, aika ei tiedossa"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:67
 msgid "Completed; date unknown"
-msgstr "(mormoni) Valmis; päivämäärä tuntematon"
+msgstr "(mormoni) Valmis; aika tuntematon"
 
 #. I18N: gedcom tag CONC
 #: library/WT/Gedcom/Tag.php:155
@@ -3970,7 +3969,7 @@ msgstr "Norsunluurannikko"
 
 #: login.php:567
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
-msgstr "Täyttämiäsi tietoja ei voinut vahvistaa. Yritä uudelleen."
+msgstr "Täyttämiäsi tietoja ei voitu vahvistaa. Yritä uudelleen."
 
 #: admin.php:192 library/WT/Stats.php:3298
 msgid "Count"
@@ -4014,32 +4013,32 @@ msgstr "Luo uusi henkilö"
 #. I18N: A media object that is not linked to any other record
 #: addmedia.php:89 addmedia.php:406 admin_site_other.php:69
 msgid "Create a new media object"
-msgstr "Luo uusi mediaobjekti"
+msgstr "Luo mediakohde"
 
 #. I18N: A note that is not linked to any other record
 #: admin_site_other.php:55
 msgid "Create a new note"
-msgstr "Luo uusi lisätieto"
+msgstr "Luo lisätieto"
 
 #: admin_site_access.php:295
 msgid "Create a new rule"
-msgstr "Luo uusi sääntö"
+msgstr "Luo sääntö"
 
 #: edit_interface.php:1372 edit_interface.php:1408
 #: includes/functions/functions_edit.php:324
 msgid "Create a new shared note"
-msgstr "Luo uusi jaettu lisätieto"
+msgstr "Luo jaettu lisätieto"
 
 #: edit_interface.php:1431 modules_v3/GEDFact_assistant/CENS_ctrl.php:32
 #: modules_v3/GEDFact_assistant/module.php:342
 msgid "Create a new shared note using assistant"
-msgstr "Lisää uusi jaettu lisätieto käyttäen avustajaa"
+msgstr "Lisää jaettu lisätieto avustajaa käyttäen"
 
 #. I18N: A source that is not linked to any other record
 #: admin_site_other.php:62 edit_interface.php:1220 edit_interface.php:1303
 #: includes/functions/functions_edit.php:332
 msgid "Create a new source"
-msgstr "Luo uusi lähde"
+msgstr "Luo lähde"
 
 #: edit_interface.php:1548 edit_interface.php:1613
 #: includes/functions/functions_edit.php:320
@@ -4048,7 +4047,7 @@ msgstr "Luo tietovarasto"
 
 #: admin_users.php:480
 msgid "Create user"
-msgstr "Luo uusi käyttäjä"
+msgstr "Luo käyttäjä"
 
 #: statistics.php:426
 msgid "Create your own chart"
@@ -4295,148 +4294,148 @@ msgstr "Tietokannan käyttäjätunnus"
 #: modules_v3/marriage_report/report.xml:43
 #: modules_v3/occupation_report/report.xml:54
 msgid "Date"
-msgstr "Päiväys"
+msgstr "Aika"
 
 #: modules_v3/user_messages/module.php:87
 msgid "Date Sent:"
-msgstr "Luontipäivä:"
+msgstr "Luontiaika:"
 
 #: admin_trees_config.php:1044 help_text.php:1403
 msgid "Date differences"
-msgstr "Päivämäärän poikkeamat"
+msgstr "Ajan poikkeamat"
 
 #: library/WT/Gedcom/Tag.php:115
 msgid "Date of LDS baptism"
-msgstr "MAP-kasteen päivämäärä"
+msgstr "MAP-kasteen aika"
 
 #: library/WT/Gedcom/Tag.php:303
 msgid "Date of LDS child sealing"
-msgstr "MAP-lapsen sinetöinnin päivämäärä"
+msgstr "MAP-lapsen sinetöinnin aika"
 
 #: library/WT/Gedcom/Tag.php:189
 msgid "Date of LDS endowment"
-msgstr "MAP-endaumentin päivämäärä"
+msgstr "MAP-endaumentin aika"
 
 #: library/WT/Gedcom/Tag.php:208
 msgid "Date of LDS spouse sealing"
-msgstr "MAP-puolison sinetöinnin päivämäärä"
+msgstr "MAP-puolison sinetöinnin aika"
 
 #: library/WT/Gedcom/Tag.php:103
 msgid "Date of adoption"
-msgstr "Adoption päivämäärä"
+msgstr "Adoption aika"
 
 #: library/WT/Gedcom/Tag.php:118
 #: modules_v3/missing_facts_report/report.xml:125
 msgid "Date of baptism"
-msgstr "Kasteen päivämäärä"
+msgstr "Kasteen aika"
 
 #: library/WT/Gedcom/Tag.php:121
 #: modules_v3/missing_facts_report/report.xml:208
 msgid "Date of bar mitzvah"
-msgstr "Bar mitsva päivämäärä"
+msgstr "Bar mitsva aika"
 
 #: library/WT/Gedcom/Tag.php:124
 #: modules_v3/missing_facts_report/report.xml:249
 msgid "Date of bat mitzvah"
-msgstr "Bat mitsva päivämäärä"
+msgstr "Bat mitsva aika"
 
 #: library/WT/Gedcom/Tag.php:127 modules_v3/fact_sources/report.xml:65
 #: modules_v3/fact_sources/report.xml:269
 #: modules_v3/missing_facts_report/report.xml:77
 #: modules_v3/occupation_report/report.xml:46
 msgid "Date of birth"
-msgstr "Syntymäpäivämäärä"
+msgstr "Syntymäaika"
 
 #: library/WT/Gedcom/Tag.php:130
 msgid "Date of blessing"
-msgstr "Siunauksen päivämäärä"
+msgstr "Siunauksen aika"
 
 #: library/WT/Gedcom/Tag.php:459
 msgid "Date of brit milah"
-msgstr "Brit mila päivämäärä"
+msgstr "Brit mila aika"
 
 #: library/WT/Gedcom/Tag.php:134
 #: modules_v3/missing_facts_report/report.xml:542
 msgid "Date of burial"
-msgstr "Hautauspäivämäärä"
+msgstr "Hautausaika"
 
 #: library/WT/Gedcom/Tag.php:149
 #: modules_v3/missing_facts_report/report.xml:166
 msgid "Date of christening"
-msgstr "Kasteen päivämäärä"
+msgstr "Kasteen aika"
 
 #: library/WT/Gedcom/Tag.php:158
 #: modules_v3/missing_facts_report/report.xml:290
 msgid "Date of confirmation"
-msgstr "Rippitilaisuuden päivämäärä"
+msgstr "Rippitilaisuuden aika"
 
 #: library/WT/Gedcom/Tag.php:164
 msgid "Date of cremation"
-msgstr "Polttohautauksen päivämäärä"
+msgstr "Polttohautauksen aika"
 
 #: library/WT/Gedcom/Tag.php:172 modules_v3/cemetery_report/report.xml:44
 #: modules_v3/fact_sources/report.xml:271
 #: modules_v3/missing_facts_report/report.xml:501
 msgid "Date of death"
-msgstr "Kuolinpäivämäärä"
+msgstr "Kuolinaika"
 
 #: library/WT/Gedcom/Tag.php:204
 msgid "Date of divorce"
-msgstr "Avioeropäivämäärä"
+msgstr "Avioeron aika"
 
 #: library/WT/Gedcom/Tag.php:186
 msgid "Date of emigration"
-msgstr "Maastamuuton päivämäärä"
+msgstr "Maastamuuton aika"
 
 #: library/WT/Gedcom/Tag.php:192
 #: modules_v3/missing_facts_report/report.xml:332
 msgid "Date of engagement"
-msgstr "Kihlauspäivämäärä"
+msgstr "Kihlausaika"
 
 #: library/WT/Gedcom/Tag.php:168
 msgid "Date of entry in original source"
-msgstr "Kirjauspäivä alkuperäisessä lähteessä"
+msgstr "Kirjausaika alkuperäisessä lähteessä"
 
 #: library/WT/Gedcom/Tag.php:195
 msgid "Date of event"
-msgstr "Tapahtuman päivämäärä"
+msgstr "Tapahtuman aika"
 
 #: library/WT/Gedcom/Tag.php:212
 #: modules_v3/missing_facts_report/report.xml:374
 msgid "Date of first communion"
-msgstr "Ensimmäisen ehtoollisen päivämäärä"
+msgstr "Ensimmäisen ehtoollisen aika"
 
 #: library/WT/Gedcom/Tag.php:224
 msgid "Date of immigration"
-msgstr "Maahanmuuton päivämäärä"
+msgstr "Maahanmuuton aika"
 
 #. I18N: gedcom tag CHAN:DATE
 #: library/WT/Gedcom/Tag.php:144
 msgid "Date of last change"
-msgstr "Viimeisin muutospäivämäärä"
+msgstr "Viimeisin muutosaika"
 
 #: library/WT/Gedcom/Tag.php:205 library/WT/Gedcom/Tag.php:239
 #: modules_v3/fact_sources/report.xml:316
 #: modules_v3/missing_facts_report/report.xml:459
 msgid "Date of marriage"
-msgstr "Avioitumispäivämäärä"
+msgstr "Avioitumisaika"
 
 #: library/WT/Gedcom/Tag.php:234
 #: modules_v3/missing_facts_report/report.xml:416
 msgid "Date of marriage banns"
-msgstr "Avioliittokuulutus päivämäärä"
+msgstr "Avioliittokuulutus aika"
 
 #: library/WT/Gedcom/Tag.php:257
 msgid "Date of naturalization"
-msgstr "Kansalaistamispäivämäärä"
+msgstr "Kansalaistamisaika"
 
 #: library/WT/Gedcom/Tag.php:271
 msgid "Date of ordination"
-msgstr "Papiksivihkimisen päivämäärä"
+msgstr "Papiksivihkimisen aika"
 
 #: library/WT/Gedcom/Tag.php:290
 msgid "Date of residence"
-msgstr "Asuinpaikan päivämäärä"
+msgstr "Asuinpaikan aika"
 
 #: help_text.php:198
 msgid "Date period"
@@ -4452,7 +4451,7 @@ msgstr "Ajanjakso"
 
 #: help_text.php:185
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
-msgstr "Päivämäärien jaksotusta käytetään esimerkiksi silloin kun tarkka syntymäaika ei ole tiedossa."
+msgstr "Ajanjajaksoja käytetään esimerkiksi silloin kun tarkka syntymäaika ei ole tiedossa."
 
 #: admin_users.php:577
 msgid "Date registered"
@@ -4462,11 +4461,11 @@ msgstr "Rekisteröintipäivä"
 #: help_text.php:448
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar.  For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
-msgstr "Päivämäärät muunnetaan ainoastaan, jos ne ovat voimassa kalenterissa. Esimerkiksi vain %1$s ja %2$s väliset päivämäärät muunnetaan Ranskan kalenteriin ja vain päivämäärät %3$s jälkeen muunnetaan gregoriaaniseen kalenteriin."
+msgstr "Ajat muunnetaan ainoastaan, jos ne ovat voimassa kalenterissa. Esimerkiksi vain %1$s ja %2$s väliset ajat muunnetaan Ranskan kalenteriin ja vain ajat %3$s jälkeen muunnetaan gregoriaaniseen kalenteriin."
 
 #: help_text.php:173
 msgid "Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords."
-msgstr "Päivämäärät tallennetaan käyttäen englanninkielisiä lyhenteitä ja avainsanoja. Näiden lyhenteiden kirjoittamisen sijasta voit käyttää pikavalintoja."
+msgstr "Ajat tallennetaan käyttäen englanninkielisiä lyhenteitä ja avainsanoja. Näiden lyhenteiden kirjoittamisen sijasta voit käyttää pikavalintoja."
 
 #: modules_v3/family_group_report/report.xml:797
 #: modules_v3/individual_ext_report/report.xml:553
@@ -4622,7 +4621,7 @@ msgstr "Kuolema"
 
 #: modules_v3/death_report/report.xml:6
 msgid "Death Place contains"
-msgstr "Kuolinpaikka sisältää"
+msgstr "Kuolinpaikan nimi sisältää"
 
 #: library/WT/Stats.php:1003 statistics.php:570
 msgid "Death by country"
@@ -4630,11 +4629,11 @@ msgstr "Maa, jossa henkilö kuoli"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
-msgstr "Kuolinaikavälin loppu"
+msgstr "Kuolinajanjakson loppu"
 
 #: modules_v3/bdm_report/report.xml:9 modules_v3/death_report/report.xml:7
 msgid "Death date range start"
-msgstr "Kuolinaikaväli alku"
+msgstr "Kuolinajanjakson alku"
 
 #: library/WT/Gedcom/Tag.php:687
 msgid "Death of a brother"
@@ -5119,19 +5118,19 @@ msgstr "Eroavuudet"
 
 #: help_text.php:437
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
-msgstr "Eri kalenterijärjestelmiä käytetään eri puolilla maailmaa, ja monet muut kalenterijärjestelmät olivat käytössä aikaisemmin. Jos mahdollista, sinun pitäisi kirjoittaa päivämäärät käyttämällä kalenteria jossa tapahtuma alun perin kirjattiin. Tämän jälkeen voit määrittää muunnoksen ja näyttää nämä päivämäärät tutummassa kalenterissa. Jos säännöllisesti käytät kahta kalenteria, voit määrittää kaksi muunnosta ja päivämäärät muunnetaan molempiin valittuun kalenteriin."
+msgstr "Eri kalenterijärjestelmiä käytetään eri puolilla maailmaa, ja monet muut kalenterijärjestelmät olivat käytössä aikaisemmin. Jos mahdollista, sinun pitäisi kirjoittaa ajat käyttämällä kalenteria jossa tapahtuma alun perin kirjattiin. Tämän jälkeen voit määrittää muunnoksen ja näyttää nämä ajat tutummassa kalenterissa. Jos säännöllisesti käytät kahta kalenteria, voit määrittää kaksi muunnosta ja ajat muunnetaan molempiin valittuihin kalenterieihin."
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors"
-msgstr "Suorat esivanhemmat"
+msgstr "Esivanhemmat"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors and their families"
-msgstr "Suorat esivanhemmat ja heidän perheensä"
+msgstr "Esivanhemmat ja heidän perheensä"
 
 #: admin_site_upgrade.php:201
 msgid "Disable these modules"
@@ -5193,7 +5192,7 @@ msgstr "Älä muuta säilyttääksesi vanhan nimen."
 
 #: modules_v3/googlemap/admin_places.php:341
 msgid "Do not create new locations, just import coordinates for existing locations."
-msgstr "Älä luo uusia paikkoja, tuo vain koordinaatit olemassa oleville paikoille."
+msgstr "Älä luo uusia sijainteja, tuo vain koordinaatit olemassa oleville sijainnoille."
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:73
@@ -5277,7 +5276,7 @@ msgstr "Sähköpostiosoite ”From:” jota <b>webtrees</b> käyttää luodessaa
 
 #: help_text.php:1175
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Lähdetiedoissa kuvataan tietoja ajan ja paikan suhteen. Esimerkiksi väestölaskenta kuvaa väestönlaskennan tiedot ja kirkonkirjat kuvaavat syntymä-, avioliitto- ja kuolematiedot.<br><br>Valitse tapahtumat jotka voi saada tästä tiedonlähteestä. Päivämäärän tulisi kuvata ajanjaksona <i>FROM 1900 TO 1910</i> eli alkaen - asti. Paikkatiedolla ilmoitetaan, mikä alue on kyseessä. Esimerkiksi Oulun maakunta-arkistosta saatuja tietoja koskien Oulua olisi paikkatietona ”Oulu, Oulu, FIN” (pitäjä, lääni, maa) tai esim. tieto Yhdysvalloista ”Oneida, Idaho, USA” (city, state, country)."
+msgstr "Lähdetiedoissa kuvataan tietoja ajan ja paikan suhteen. Esimerkiksi väestölaskenta kuvaa väestönlaskennan tiedot ja kirkonkirjat kuvaavat syntymä-, avioliitto- ja kuolematiedot.<br><br>Valitse tapahtumat jotka voi saada tästä tiedonlähteestä. Aika tulisi kuvata ajanjaksona <i>FROM 1900 TO 1910</i> eli alkaen - asti. Paikkatiedolla ilmoitetaan, mikä alue on kyseessä. Esimerkiksi Oulun maakunta-arkistosta saatuja tietoja koskien Oulua olisi paikkatietona ”Oulu, Oulu, FIN” (pitäjä, lääni, maa) tai esim. tieto Yhdysvalloista ”Oneida, Idaho, USA” (city, state, country)."
 
 #: help_text.php:1340
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
@@ -5361,7 +5360,7 @@ msgstr "Muokkaa mediaa"
 
 #: addmedia.php:251 addmedia.php:410 library/WT/Controller/Media.php:55
 msgid "Edit media object"
-msgstr "Muokkaa mediaobjektia"
+msgstr "Muokkaa mediakohdetta"
 
 #: edit_interface.php:1677 includes/functions/functions_edit.php:571
 #: library/WT/Controller/Individual.php:159
@@ -5564,7 +5563,7 @@ msgstr "Englanti"
 
 #: modules_v3/family_group_report/report.xml:6
 msgid "Enter Family ID"
-msgstr "Syötä perheen ID"
+msgstr "Syötä perheen tunnus"
 
 #: modules_v3/ahnentafel_report/report.xml:6
 #: modules_v3/descendancy_report/report.xml:5
@@ -5574,11 +5573,11 @@ msgstr "Syötä perheen ID"
 #: modules_v3/pedigree_report/report.xml:5
 #: modules_v3/relative_ext_report/report.xml:5
 msgid "Enter Individual ID"
-msgstr "Syötä henkilö ID"
+msgstr "Syötä henkilötunnus"
 
 #: addmedia.php:433 modules_v3/gedcom_favorites/module.php:178
 msgid "Enter an individual, family, or source ID"
-msgstr "Syötä henkilö, perhe tai lähde-ID"
+msgstr "Syötä henkilö-, perhe- tai lähde-tunnus"
 
 #: modules_v3/gedcom_favorites/module.php:191
 msgid "Enter an optional note about this favorite"
@@ -5591,7 +5590,7 @@ msgstr "Syötä tiedostonimi"
 #: addmedia.php:438
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:193
 msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
-msgstr "Syötä tai etsi sen henkilön, perheen tai lähteen ID-tunnus, johon tämä media liitetään."
+msgstr "Syötä tai etsi sen henkilön, perheen tai lähteen tunnus, johon tämä media liitetään."
 
 #: modules_v3/googlemap/help_text.php:53
 msgid "Enter precision"
@@ -5725,7 +5724,7 @@ msgstr "Lähisukulaisten tapahtumat"
 
 #: help_text.php:1363
 msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
-msgstr "Jokaisella henkilöllä tietokannassa on oma yksilöllinen ID-tunnus. Jos tiedät ID-tunnuksesi, lisää se tähän. Jos et tiedä sitä tai et voinut löytää sitä yksityisyysasetusten vuoksi, toimita kommenttikenttään riittävästi tietoa itsestäsi, jotta ylläpitäjä voi tunnistaa sinut ja asettaa ID-tunnuksen."
+msgstr "Jokaisella henkilöllä tietokannassa on oma yksilöllinen tunnus. Jos tiedät tunnuksesi, lisää se tähän. Jos et tiedä sitä tai et voinut löytää sitä yksityisyysasetusten vuoksi, toimita kommenttikenttään riittävästi tietoa itsestäsi, jotta ylläpitäjä voi tunnistaa sinut ja asettaa tunnuksen."
 
 #: help_text.php:1378
 msgid "Everybody has this role, including visitors to the site and search engines."
@@ -5738,7 +5737,7 @@ msgstr "Tarkka"
 
 #: search_advanced.php:107 search_advanced.php:167
 msgid "Exact date"
-msgstr "Tarkka päivämäärä"
+msgstr "Tarkka aika"
 
 #: modules_v3/batch_update/plugins/search_replace.php:109
 msgid "Exact text"
@@ -5971,7 +5970,7 @@ msgstr "Perhe"
 
 #: admin_trees_config.php:342 help_text.php:520
 msgid "Family ID prefix"
-msgstr "Perheen ID etuliite"
+msgstr "Perheen tunnuksen etuliite"
 
 #. I18N: gedcom tag FAMC
 #: library/WT/Gedcom/Tag.php:199
@@ -6026,7 +6025,7 @@ msgstr "Perheuutiset ja sukupuun ilmoitukset"
 #: library/WT/Controller/Familybook.php:356
 #, php-format
 msgid "Family of %s"
-msgstr "%s:n perhe"
+msgstr "Perhe - %s"
 
 #: admin_site_change.php:267 admin_site_change.php:291 admin_site_logs.php:234
 #: admin_site_logs.php:257 admin_trees_manage.php:181
@@ -6081,7 +6080,7 @@ msgstr "Kasvatusperhe"
 #: modules_v3/individual_ext_report/report.xml:432
 #: modules_v3/individual_report/report.xml:434
 msgid "Family with husband"
-msgstr "Perhe miehineen"
+msgstr "Perhe puolison kanssa"
 
 #: library/WT/Gedcom/Code/Pedi.php:87 library/WT/Gedcom/Code/Pedi.php:92
 #: library/WT/Individual.php:770
@@ -6112,7 +6111,7 @@ msgstr "Suurin lapsiluku"
 #: modules_v3/individual_ext_report/report.xml:426
 #: modules_v3/individual_report/report.xml:428
 msgid "Family with wife"
-msgstr "Perhe vaimoineen"
+msgstr "Perhe vaimon kanssa"
 
 #: includes/functions/functions_print.php:97
 #: library/WT/Controller/Fanchart.php:53
@@ -6179,7 +6178,7 @@ msgstr "Isän ikä"
 #: library/WT/Individual.php:745 library/WT/Individual.php:759
 #, php-format
 msgid "Father’s family with %s"
-msgstr "Isän ja %s:n perhe"
+msgstr "Perhe - isä ja %s"
 
 #. I18N: A step-family.
 #: library/WT/Individual.php:751 library/WT/Individual.php:765
@@ -6311,7 +6310,7 @@ msgstr "Etsi perhe"
 
 #: find.php:77 includes/functions/functions_print.php:1060
 msgid "Find a media object"
-msgstr "Etsi mediaobjekti"
+msgstr "Etsi mediakohde"
 
 #: find.php:86 includes/functions/functions_print.php:1052
 msgid "Find a note"
@@ -6968,7 +6967,7 @@ msgstr "Hän kuoli"
 #: modules_v3/ahnentafel_report/report.xml:257
 #: modules_v3/descendancy_report/report.xml:171
 msgid "He married"
-msgstr "Hän avioitui seuraavan henkilön kanssa:"
+msgstr "Puoliso:"
 
 #: modules_v3/ahnentafel_report/report.xml:219
 msgid "He resided at"
@@ -6976,7 +6975,7 @@ msgstr "Hän asui"
 
 #: modules_v3/descendancy_report/report.xml:399
 msgid "He was born"
-msgstr "Hän syntyi"
+msgstr "Puoliso syntyi"
 
 #: modules_v3/ahnentafel_report/report.xml:344
 msgid "He was buried"
@@ -6993,7 +6992,7 @@ msgstr "Hänet polttohaudattiin"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:62
 msgid "Head of Household:"
-msgstr "Pää"
+msgstr "Pää:"
 
 #. I18N: gedcom tag HEAD
 #: library/WT/Gedcom/Tag.php:220
@@ -7079,7 +7078,7 @@ msgstr "Tässä voit lisätä tietoja henkilölle tai henkilöille.<br><br>Valit
 
 #: help_text.php:1089
 msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
-msgstr "Tässä voit lisätä tietueelle lähdeviitteen.<br><br>Klikkaamalla linkkiä, avautuu ikkuna, ja voit valita lähteen listasta (Etsi ID) tai luoda uusi lähde ja sitten lisätä lainaus.<br><br>Lähteiden lisääminen on tärkeä osa sukututkimusta, koska muut tutkijat voivat tarkistaa mistä olet hankkinut tietosi."
+msgstr "Tässä voit lisätä tietueelle lähdeviitteen.<br><br>Klikkaamalla linkkiä, avautuu ikkuna, ja voit valita lähteen listasta (Etsi tunnus) tai luoda uuden lähteen ja sitten lisätä lainaus.<br><br>Lähteiden lisääminen on tärkeä osa sukututkimusta, koska muut tutkijat voivat tarkistaa mistä olet hankkinut tietosi."
 
 #: help_text.php:1228
 msgid "Here you can change the diagram width from 50 percent to 300 percent.  At 100 percent the output image is about 640 pixels wide."
@@ -7159,7 +7158,7 @@ msgstr "Korosta nimeä ja klikkaa sitten nuolikuvaketta siirtääksesi haluttuun
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Highlighted image"
-msgstr "Ensisijainen kuva"
+msgstr "Korostettu kuva"
 
 #. I18N: The Arabic/Hijri calendar
 #: help_text.php:225 library/WT/Date/Hijri.php:41
@@ -7211,7 +7210,7 @@ msgstr "Tiimalasikaavio"
 #: library/WT/Controller/Hourglass.php:102 modules_v3/charts/module.php:102
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "%s:n tiimalasikaavio"
+msgstr "Tiimalasikaavio - %s"
 
 #: modules_v3/googlemap/module.php:345
 #: modules_v3/googlemap/places_edit.php:292
@@ -7257,7 +7256,7 @@ msgstr "Hybridi"
 
 #: admin_trees_config.php:332
 msgid "ID settings"
-msgstr "ID asetukset"
+msgstr "Tunnus asetukset"
 
 #. I18N: http://en.wikipedia.org/wiki/IP_address
 #: admin_site_access.php:292 admin_site_logs.php:228 admin_site_logs.php:255
@@ -7285,7 +7284,7 @@ msgstr "Idaho Falls, Idaho"
 #. I18N: gedcom tag IDNO
 #: library/WT/Gedcom/Tag.php:222
 msgid "Identification number"
-msgstr "Yksilötunnus"
+msgstr "Henkilötunnus"
 
 #: help_text.php:613
 msgid "If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
@@ -7521,7 +7520,7 @@ msgstr "Henkilö 2"
 
 #: admin_trees_config.php:336 help_text.php:539
 msgid "Individual ID prefix"
-msgstr "Henkilön ID etuliite"
+msgstr "Henkilötunnuksen etuliite"
 
 #: statistics.php:558
 msgid "Individual distribution"
@@ -7619,7 +7618,7 @@ msgstr "Interaktiivinen sukupuu"
 #: modules_v3/tree/class_treeview.php:135 modules_v3/tree/module.php:109
 #, php-format
 msgid "Interactive tree of %s"
-msgstr "%s:n interaktiivinen puu"
+msgstr "Interaktiivinen puu - %s"
 
 #: help_text.php:1182
 msgid "Internal messaging"
@@ -7657,7 +7656,7 @@ msgstr "GEDCOM muoto ei kelpaa"
 
 #: library/WT/Date.php:245
 msgid "Invalid date"
-msgstr "Virheellinen päivämäärä"
+msgstr "Virheellinen aika"
 
 #: library/WT/Stats.php:3861
 msgid "Iran"
@@ -8209,7 +8208,7 @@ msgstr "Rajoitus:"
 #: edit_interface.php:1009 edit_interface.php:1067
 #: modules_v3/relatives/module.php:344
 msgid "Link this individual to an existing family as a child"
-msgstr "Liitä tämä henkilö lapseksi olemassa olevaan perheeseen."
+msgstr "Liitä tämä henkilö lapseksi sivustolla olevaan perheeseen."
 
 #: inverselink.php:33 inverselink.php:84 library/WT/Controller/Family.php:191
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:86
@@ -8217,12 +8216,12 @@ msgstr "Liitä tämä henkilö lapseksi olemassa olevaan perheeseen."
 #: modules_v3/lightbox/module.php:75 modules_v3/lightbox/module.php:76
 #: modules_v3/media/module.php:89 repo.php:138 source.php:155
 msgid "Link to an existing media object"
-msgstr "Liitä olemassa olevaan mediaobjektiin"
+msgstr "Liitä sivustolla olevaan mediakohteeseen"
 
 #. I18N: gedcom tag _DBID
 #: library/WT/Gedcom/Tag.php:630
 msgid "Linked database ID"
-msgstr "Yhdistetyn tietokannan ID"
+msgstr "Yhdistetyn tietokannan tunnus"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:110
 msgid "Links"
@@ -8281,7 +8280,7 @@ msgstr "Paikalliset tiedostot"
 
 #: modules_v3/googlemap/admin_places.php:521
 msgid "Location not removed: this location contains sub-locations"
-msgstr "Sijaintia ei poistettu: tämä sijainti sisältää alikohteita"
+msgstr "Sijaintia ei poistettu: tämä sijainti sisältää alisijanteja"
 
 #: library/WT/Gedcom/Code/Rela.php:141
 msgid "Lodger"
@@ -8574,15 +8573,15 @@ msgstr "Avioliitto"
 
 #: modules_v3/marriage_report/report.xml:8
 msgid "Marriage Date range end"
-msgstr "Avioitumisaikavälin loppu"
+msgstr "Avioitumisajanjakson loppu"
 
 #: modules_v3/marriage_report/report.xml:7
 msgid "Marriage Date range start"
-msgstr "Avioitumisaikavälin alku"
+msgstr "Avioitumisajanjakson alku"
 
 #: modules_v3/marriage_report/report.xml:6
 msgid "Marriage Place contains"
-msgstr "Avioitumispaikka sisältää"
+msgstr "Avioitumispaikan nimi sisältää"
 
 #. I18N: gedcom tag MARB
 #: library/WT/Gedcom/Tag.php:233 modules_v3/missing_facts_report/report.xml:19
@@ -8592,7 +8591,7 @@ msgstr "Avioliittokuulutus"
 #. I18N: gedcom tag _MSTAT
 #: library/WT/Gedcom/Tag.php:785
 msgid "Marriage beginning status"
-msgstr "Avioliittoon astumisstatus"
+msgstr "Avioliittoon astumistila"
 
 #. I18N: gedcom tag _MBON
 #: library/WT/Gedcom/Tag.php:778
@@ -8611,7 +8610,7 @@ msgstr "Avioliittosopimus"
 #. I18N: gedcom tag _MEND
 #: library/WT/Gedcom/Tag.php:781
 msgid "Marriage ending status"
-msgstr "Avioliiton päättymisstatus"
+msgstr "Avioliiton päättymistila"
 
 #. I18N: gedcom tag _MARI
 #: library/WT/Gedcom/Tag.php:730
@@ -8724,7 +8723,7 @@ msgstr "Avioliittosopimus"
 #. I18N: gedcom tag _STAT
 #: library/WT/Gedcom/Tag.php:806
 msgid "Marriage status"
-msgstr "Avioliittostatus"
+msgstr "Avioliittotila"
 
 #: library/WT/Gedcom/Tag.php:244
 msgid "Marriage type unknown"
@@ -8844,7 +8843,7 @@ msgstr "Media"
 
 #: admin_trees_config.php:358 help_text.php:666
 msgid "Media ID prefix"
-msgstr "Median ID etuliite"
+msgstr "Mediatunnuksen etuliite"
 
 #: medialist.php:174
 msgid "Media Objects found"
@@ -8892,7 +8891,7 @@ msgstr "Media kansiot"
 #. I18N: gedcom tag OBJE
 #: admin_media.php:596 library/WT/Gedcom/Tag.php:265
 msgid "Media object"
-msgstr "Mediaobjekti"
+msgstr "Mediakohde"
 
 #: admin.php:211 admin.php:265
 #: includes/functions/functions_print_lists.php:930
@@ -8997,7 +8996,7 @@ msgstr "elohopea"
 
 #: admin_site_merge.php:270
 msgid "Merge from ID:"
-msgstr "Yhdistä tästä ID:stä:"
+msgstr "Yhdistä tunnuksesta:"
 
 #: admin_site_merge.php:32 admin_site_merge.php:78 admin_site_merge.php:146
 #: admin_site_merge.php:243 help_text.php:1169
@@ -9007,7 +9006,7 @@ msgstr "Yhdistä tietueita"
 
 #: admin_site_merge.php:249
 msgid "Merge to ID:"
-msgstr "Yhdistä tähän ID:seen:"
+msgstr "Yhdistä tunnukseen:"
 
 #: library/WT/Gedcom/Code/Temp.php:130
 msgid "Merida, Mexico"
@@ -9107,7 +9106,7 @@ msgstr "Pienin ja suurin zoomauskerroin Google Mapsille. 1 on täysi kartta ja 1
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:95
 msgid "Missing PHP temporary directory"
-msgstr "PHP:n tilapäistiedostojen kansio puuttuu"
+msgstr "PHPn tilapäistiedostojen kansio puuttuu"
 
 #. I18N: Name of a module/report
 #: modules_v3/missing_facts_report/module.php:33
@@ -9303,7 +9302,7 @@ msgstr "Äidin ikä"
 #: library/WT/Individual.php:743 library/WT/Individual.php:757
 #, php-format
 msgid "Mother’s family with %s"
-msgstr "Äidin ja %s:n perhe"
+msgstr "Perhe - äiti ja %s"
 
 #. I18N: A step-family.
 #: library/WT/Individual.php:749 library/WT/Individual.php:763
@@ -9806,7 +9805,7 @@ msgstr "Paikkoja ei löytynyt"
 
 #: admin_trees_places.php:121
 msgid "No places were found."
-msgstr ""
+msgstr "Paikkoja ei löytynyt"
 
 #: admin_site_config.php:44
 msgid "No predefined text"
@@ -9887,7 +9886,7 @@ msgstr "Norja"
 
 #: modules_v3/GEDFact_assistant/module.php:204
 msgid "Not a valid Individual, Family or Source ID"
-msgstr "Ei käytettävissä oleva henkilö-, perhe- tai lähde-ID"
+msgstr "Ei kelvollinen henkilö-, perhe- tai lähde-tunnus"
 
 #. I18N: gedcom tag _NLIV
 #: library/WT/Gedcom/Tag.php:788
@@ -9923,7 +9922,7 @@ msgstr "Lisätieto"
 
 #: admin_trees_config.php:361 help_text.php:698
 msgid "Note ID prefix"
-msgstr "Lisätiedot ID etuliite"
+msgstr "Lisätietotunnuksen etuliite"
 
 #: help_text.php:343
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10153,7 +10152,7 @@ msgstr "Oman"
 
 #: help_text.php:1274
 msgid "On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality."
-msgstr "Tässä kaaviossa voit esittää vaakatason aikajanalla yhden tai useamman henkilön. Kaavio antaa sinun nähdä henkilöiden elämän tapahtumat verrattuna toisiin.<br><br>Voit lisätä kaavioon henkilöt yksitellen tai perheittäin syöttämällä ID-tunnukset. Edellinen käytetty lista jää muistiin, kun lisäät uusia kaavioon. Kaaviosta voit poistaa listan valitsemalla <b>Tyhjennä kaavio</b>.<br><br>Henkilöiden lisääminen onnistuu myös ajanjakso- tai paikallisuushaun avulla."
+msgstr "Tässä kaaviossa voit esittää vaakatason aikajanalla yhden tai useamman henkilön. Kaavio antaa sinun nähdä henkilöiden elämän tapahtumat verrattuna toisiin.<br><br>Voit lisätä kaavioon henkilöt yksitellen tai perheittäin syöttämällä tunnukset. Edellinen käytetty lista jää muistiin, kun lisäät uusia kaavioon. Kaaviosta voit poistaa listan valitsemalla <b>Tyhjennä kaavio</b>.<br><br>Henkilöiden lisääminen onnistuu myös ajanjakso- tai paikallisuushaun avulla."
 
 #. I18N: Name of a module
 #: modules_v3/todays_events/module.php:32
@@ -10488,7 +10487,7 @@ msgstr "Esipolvitaulu - %s"
 #: library/WT/Controller/Pedigree.php:89
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "%s:n esipolvitaulu"
+msgstr "Esipolvitaulu - %s"
 
 #: modules_v3/review_changes/help_text.php:31
 msgid "Pending Changes block"
@@ -10619,7 +10618,7 @@ msgstr "Paikkaluettelo"
 
 #: find.php:232
 msgid "Place contains:"
-msgstr "Paikka sisältää:"
+msgstr "Paikan nimi sisältää:"
 
 #: modules_v3/top10_pageviews/module.php:140
 msgid "Place counts before or after name?"
@@ -11437,7 +11436,7 @@ msgstr "Reno, Nevada"
 
 #: admin_trees_places.php:98 search.php:139
 msgid "Replace with"
-msgstr "Korvaa tällä:"
+msgstr "Korvaa tällä"
 
 #: modules_v3/batch_update/plugins/search_replace.php:102
 msgid "Replacement text"
@@ -11473,7 +11472,7 @@ msgstr "Tietovarasto"
 
 #: admin_trees_config.php:355 help_text.php:813
 msgid "Repository ID prefix"
-msgstr "Tietovaraston ID etuliite"
+msgstr "Tietovarastotunnuksen etuliite"
 
 #: find.php:249
 msgid "Repository contains:"
@@ -11739,7 +11738,7 @@ msgstr "Tallenna"
 
 #: library/WT/Gedcom/Tag.php:181
 msgid "School or college"
-msgstr "Koulu, lukio tms."
+msgstr "Koulu tai yliopisto"
 
 #: library/WT/Stats.php:3947
 msgid "Scotland"
@@ -11847,7 +11846,7 @@ msgstr "Katso %s lisätietoja varten."
 
 #: includes/functions/functions_edit.php:311 reportengine.php:250
 msgid "Select a date"
-msgstr "Valitse päivämäärä"
+msgstr "Valitse aika"
 
 #: modules_v3/googlemap/help_text.php:74
 msgid "Select a file from the list of files already on the server which contains the place locations in CSV format."
@@ -12091,7 +12090,7 @@ msgstr "Asetus <b>Kyllä</b> käyttää RIN-numeroa GEDCOM tunnuksen (ID) sijast
 
 #: help_text.php:859
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
-msgstr "Valitsemalla <b>Kyllä</b> näytetään MAP-uskonnollisen toimituksen statuskoodit kaavioissa.<ul><li><b>B</b> - Kaste</li><li><b>E</b> - Endautu</li><li><b>S</b> - Sinetöity puolisoon</li><li><b>P</b> - Sinetöity vanhempiin</li></ul>Henkilö, joka on läpikäynyt kaikki nämä uskonnolliset toimitukset, saa nimensä perään <b>BESP</b>. Puuttuvat toimitukset ilmoitetaan merkinnällä <b>_</b> vastaavan kirjaimen kohdalla. Esimerkiksi <b>BE__</b> tarkoittaa että <b>S</b> ja <b>P</b> toimitukset puuttuvat."
+msgstr "Valitsemalla <b>Kyllä</b> näytetään MAP-uskonnollisen toimituksen tilakoodit kaavioissa.<ul><li><b>B</b> - Kaste</li><li><b>E</b> - Endautu</li><li><b>S</b> - Sinetöity puolisoon</li><li><b>P</b> - Sinetöity vanhempiin</li></ul>Henkilö, joka on läpikäynyt kaikki nämä uskonnolliset toimitukset, saa nimensä perään <b>BESP</b>. Puuttuvat toimitukset ilmoitetaan merkinnällä <b>_</b> vastaavan kirjaimen kohdalla. Esimerkiksi <b>BE__</b> tarkoittaa että <b>S</b> ja <b>P</b> toimitukset puuttuvat."
 
 #: help_text.php:854
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
@@ -12162,7 +12161,7 @@ msgstr "Löytyi jaettuja lisätietoja"
 
 #: help_text.php:1149
 msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
-msgstr "Jaetut lisätiedot, samoin kuin tavalliset lisätiedot, ovat vapaamuotoisia tekstejä. Toisin kuin lisätiedot, jaettu lisätieto voidaan liittää useampaan henkilöön, perheeseen, lähdetietoon tai tapahtumaan.<br><br>Klikkaamalla sopivaa kuvaketta, luot linkin olemassa olevaan jaettuun lisätietoon tai voit luoda uuden jaetun lisätiedon ja samalla linkata sen. Jos linkki jaettuun lisätietoon on jo olemassa, voit samalla muokata sen sisällön.<br><ul><li><b>Linkkaa olemassa olevaan jaettuun lisätietoon</b><div style=\"padding-left:20px;\">Jos tiedät jaetun lisätiedon ID-tunnuksen, voit kirjoittaa sen suoraan kenttään.<br><br>Klikkaamalla <b>Etsi jaettu lisätieto</b>-kuvaketta, voit valita listasta halutun lisätiedon ja sen ID-tunnus lisääntyy automaattisesti kenttään.<br><br>Sinun on valittava sen jälkeen <b>Lisää</b>-nappi, jotta alkuperäinen tietue päivittyisi.</div><br></li><li><b>Luo uusi jaettu lisätieto</b><div style=\"padding-left:20px;\">Kun valitset <b>Luo uusi jaettu lisätieto</b>, avautuu uusi ikkuna, johon voit kirjoittaa tekstisi ja tarvittaessa URL-osoitteita.<br><br>Kun klikkaat <b>Tallenna</b>-nappia, näet uuden viestin jossa on uuden jaetun lisätiedon ID-tunnus. Sinun tulee klikata tätä viestiä jotta muokkausikkuna sulkeutuisi ja uusi ID-tunnus kopioituisi ID-kenttään. Jos ainoastaan suljet ikkunan, uusi ID-tunnus ei kopioidu automaattisesti.<br><br>Sinun on klikattava <b>Lisää</b>-nappia, jotta alkuperäinen tietue päivittyisi.</div><br></li><li><b>Muokkaa olemassa olevaa jaettua lisätietoa</b><div style=\"padding-left:20px;\">Kun klikkaat <b>Muokkaa jaettua lisätietoa</b>-kuvaketta, avautuu uusi ikkuna, jossa voit muuttaa lisätiedon tekstin ja voit vaikka lisätä URL-osoitteita.<br><br>Kun klikkaat <b>Tallenna</b>-nappia, jaetun lisätiedon teksti muokkautuu. Voit sulkea ikkunan ja klikata <b>Tallenna</b>-nappia uudelleen.<br><br>Jaetun lisätiedon muutokset näkyvät heti kaikissa paikoissa mihin jaettu lisätieto on liitetty. Uudet linkit jotka teet muokkauksen jälkeen tulevat myös käyttämään muokattua tekstiä.</div></li></ul>"
+msgstr "Jaetut lisätiedot, samoin kuin tavalliset lisätiedot, ovat vapaamuotoisia tekstejä. Toisin kuin lisätiedot, jaettu lisätieto voidaan liittää useampaan henkilöön, perheeseen, lähdetietoon tai tapahtumaan.<br><br>Klikkaamalla sopivaa kuvaketta, luot linkin sivustolla olevaan jaettuun lisätietoon tai voit luoda uuden jaetun lisätiedon ja samalla linkata sen. Jos linkki jaettuun lisätietoon on jo olemassa, voit samalla muokata sen sisällön.<br><ul><li><b>Linkkaa sivustolla olevaan jaettuun lisätietoon</b><div style=\"padding-left:20px;\">Jos tiedät jaetun lisätiedon tunnuksen, voit kirjoittaa sen suoraan kenttään.<br><br>Klikkaamalla <b>Etsi jaettu lisätieto</b>-kuvaketta, voit valita listasta halutun lisätiedon ja sen tunnus lisääntyy automaattisesti kenttään.<br><br>Sinun on valittava sen jälkeen <b>Lisää</b>-nappi, jotta alkuperäinen tietue päivittyisi.</div><br></li><li><b>Luo uusi jaettu lisätieto</b><div style=\"padding-left:20px;\">Kun valitset <b>Luo uusi jaettu lisätieto</b>, avautuu uusi ikkuna, johon voit kirjoittaa tekstisi ja tarvittaessa URL-osoitteita.<br><br>Kun klikkaat <b>Tallenna</b>-nappia, näet uuden viestin jossa on uuden jaetun lisätiedon tunnus. Sinun tulee klikata tätä viestiä jotta muokkausikkuna sulkeutuisi ja uusi tunnus kopioituisi tunnus-kenttään. Jos ainoastaan suljet ikkunan, uusi tunnus ei kopioidu automaattisesti.<br><br>Sinun on klikattava <b>Lisää</b>-nappia, jotta alkuperäinen tietue päivittyisi.</div><br></li><li><b>Muokkaa sivustolla olevaa jaettua lisätietoa</b><div style=\"padding-left:20px;\">Kun klikkaat <b>Muokkaa jaettua lisätietoa</b>-kuvaketta, avautuu uusi ikkuna, jossa voit muuttaa lisätiedon tekstin ja voit vaikka lisätä URL-osoitteita.<br><br>Kun klikkaat <b>Tallenna</b>-nappia, jaetun lisätiedon teksti muokkautuu. Voit sulkea ikkunan ja klikata <b>Tallenna</b>-nappia uudelleen.<br><br>Jaetun lisätiedon muutokset näkyvät heti kaikissa paikoissa mihin jaettu lisätieto on liitetty. Uudet linkit jotka teet muokkauksen jälkeen tulevat myös käyttämään muokattua tekstiä.</div></li></ul>"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: library/WT/Date/Hijri.php:72
@@ -12223,7 +12222,7 @@ msgstr "Hän kuoli"
 #: modules_v3/ahnentafel_report/report.xml:258
 #: modules_v3/descendancy_report/report.xml:240
 msgid "She married"
-msgstr "Hän avioitui seuraavan henkilön kanssa:"
+msgstr "Puoliso:"
 
 #: modules_v3/ahnentafel_report/report.xml:220
 msgid "She resided at"
@@ -12231,7 +12230,7 @@ msgstr "Hän asui"
 
 #: modules_v3/descendancy_report/report.xml:329
 msgid "She was born"
-msgstr "Hän syntyi"
+msgstr "Puoliso syntyi"
 
 #: modules_v3/ahnentafel_report/report.xml:345
 msgid "She was buried"
@@ -12384,12 +12383,12 @@ msgstr "Näytä serkut"
 
 #: modules_v3/relatives/module.php:288
 msgid "Show date differences"
-msgstr "Näytä päivämääräpoikkeamat"
+msgstr "Näytä aikapoikkeamat"
 
 #. I18N: label for yes/no option
 #: modules_v3/gedcom_stats/module.php:260
 msgid "Show date of last update?"
-msgstr "Näytä viimeisin päivityspäivämäärä?"
+msgstr "Näytä viimeisin päivitysaika?"
 
 #: admin_trees_config.php:496 help_text.php:838
 msgid "Show dead individuals"
@@ -12422,7 +12421,7 @@ msgstr "Näytä perhe aikajanalla"
 
 #: admin_trees_config.php:682 compact.php:54
 msgid "Show highlight images in individual boxes"
-msgstr "Näytä ensisijaiset kuvat henkilöalueilla"
+msgstr "Näytä korostetut kuvat henkilöalueilla"
 
 #: help_text.php:834
 msgid "Show hit counters on Portal and Individual pages."
@@ -12557,7 +12556,7 @@ msgstr "Näytä tutkimus tehtäviä, joita ei ole määritetty yhdellekään kä
 
 #: modules_v3/todo/module.php:184
 msgid "Show research tasks that have a date in the future"
-msgstr "Näytä tutkimustehtävät, joiden päivämäärä on tulevaisuudessa."
+msgstr "Näytä tutkimustehtävät, joiden aika on tulevaisuudessa."
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences?"
@@ -12596,7 +12595,7 @@ msgstr "Näytä paikan nimen %1$s %2$s osa."
 
 #: modules_v3/html/module.php:317
 msgid "Show the date and time of update"
-msgstr "Näytä päivityksen päivämäärä ja aika"
+msgstr "Näytä päivityksen päivä ja aika"
 
 #: famlist.php:183 indilist.php:183
 msgid "Show the list of individuals"
@@ -12686,7 +12685,7 @@ msgstr "Sierra Leone"
 
 #: help_text.php:203
 msgid "Simple dates are assumed to be in the gregorian calendar.  To specify a date in another calendar, add a keyword before the date.  This keyword is optional if the month or year format make the date unambiguous."
-msgstr "Päivämäärien oletetaan noudattavan gregoriaanista kalenteria. Voit määrittää päivämäärän muun kalenterin avulla lisäämällä avainsanan päivämäärän eteen. Avainsanan lisääminen on valinnaista, jos kirjoitetun kuukauden ja vuoden tietojen perusteella voidaan päätellä mistä kalenterista on kysymys."
+msgstr "Päivämäärien oletetaan noudattavan gregoriaanista kalenteria. Voit määrittää ajan muun kalenterin avulla lisäämällä avainsanan ajan eteen. Avainsanan lisääminen on valinnaista, jos kirjoitetun kuukauden ja vuoden tietojen perusteella voidaan päätellä mistä kalenterista on kysymys."
 
 #: help_text.php:1418
 msgid "Simple search filter"
@@ -12839,7 +12838,7 @@ msgstr "%s - poika"
 #: modules_v3/todays_events/module.php:146
 #: modules_v3/upcoming_events/module.php:158
 msgid "Sort order"
-msgstr "Järjestystapa"
+msgstr "Järjestys"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: includes/functions/functions_print_lists.php:207
@@ -12880,7 +12879,7 @@ msgstr "Lähde"
 
 #: admin_trees_config.php:348 help_text.php:904
 msgid "Source ID prefix"
-msgstr "Tietolähteen ID etuliite"
+msgstr "Tietolähdetunnuksen etuliite"
 
 #: help_text.php:535
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
@@ -12957,7 +12956,7 @@ msgstr "Puoliso"
 
 #: library/WT/Gedcom/Tag.php:202
 msgid "Spouse census date"
-msgstr "Puolison väestönlaskennan päivämäärä"
+msgstr "Puolison väestönlaskennan aika"
 
 #: library/WT/Gedcom/Tag.php:203
 msgid "Spouse census place"
@@ -13040,7 +13039,7 @@ msgstr "Tila"
 
 #: library/WT/Gedcom/Tag.php:311
 msgid "Status change date"
-msgstr "Statuksen muutospäivämäärä"
+msgstr "Tilan muutosaika"
 
 #: includes/functions/functions_date.php:36
 msgid "Stillborn"
@@ -13351,13 +13350,13 @@ msgstr "Ylläpitäjä on saanut ilmoituksen. Heti kun hän on antanut sinulle oi
 #: action.php:57
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "”%s”:n muutokset on hyväksytty."
+msgstr "”%s” - muutokset on hyväksytty."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:233
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "”%s”:n muutokset on hylätty."
+msgstr "”%s” - muutokset on hylätty."
 
 #: modules_v3/clippings/module.php:142
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
@@ -13378,7 +13377,7 @@ msgstr "Tietokanta ilmoittaa seuraavan virheen:"
 
 #: admin_trees_config.php:794
 msgid "The date and time of the last update"
-msgstr "Viimeisen päivityksen päivämäärä ja aika"
+msgstr "Viimeisen päivityksen päivä ja aika"
 
 #: family.php:136
 msgid "The details of this family are private."
@@ -13490,11 +13489,11 @@ msgstr "Seuraava viesti on lähetetty webtrees käyttäjätilillesi: "
 
 #: admin_trees_places.php:108
 msgid "The following places were changed:"
-msgstr ""
+msgstr "Seuraavat paikat muuttuivat:"
 
 #: admin_trees_places.php:108
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "Seuraavat paikat muuttuisivat:"
 
 #: admin_site_access.php:270
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -13810,7 +13809,7 @@ msgstr "Tätä sukupuuta on viimeksi päivitetty %s."
 
 #: help_text.php:363
 msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
-msgstr "Tässä kentässä voit vaihtaa lähdetietuetta, johon tämä lähdeviittaus on yhdistetty. Tähän tulee lähteen ID-tunnus. Kentän viereen tulee nykyisen lähteen ID-tunnuksen otsikko. Käytä linkkiä <b>Etsi ID</b> hakeaksesi lähteen ID-tunnuksen. Poista koko viittaus tyhjentämällä ID-tunnus."
+msgstr "Tässä kentässä voit vaihtaa lähdetietuetta, johon tämä lähdeviittaus on yhdistetty. Tähän tulee lähteen tunnus. Kentän viereen tulee nykyisen lähteen tunnuksen otsikko. Käytä linkkiä <b>Etsi tunnus</b> hakeaksesi lähteen tunnuksen. Poista koko viittaus tyhjentämällä tunnus."
 
 #: modules_v3/faq/help_text.php:40
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
@@ -13871,11 +13870,11 @@ msgstr "Tämän henkilön tiedot on suojattu."
 
 #: help_text.php:1094
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "Tässä kentässä voit muuttaa kalenterivuoden.<br><br><b>Erityisominaisuuksia</b> <b>Näytä vuosi</b><dl><dt><b>Enemmän kuin yksi vuosi</b></dt><dd>Voit hakea päivämääriä vuosijakson sisällä.<br><br>Vuosijaksossa päivämääräalue ulottuu ensimmäisen vuoden 1. tammikuusta viimeisen vuoden 31. joulukuuta saakka. Tässä muutama esimerkki vuosijaksoista:<br><br><b>1992-5</b> Kaikki tapahtumat vuodesta 1992 vuoteen 1995.<br><b>1972-89</b> Kaikki tapahtumat vuodesta 1972 vuoteen 1989.<br><b>1610-759</b> Kaikki tapahtumat vuodesta 1610 vuoteen 1759.<br><b>1880-1905</b> Kaikki tapahtumat vuodesta 1880 vuoteen 1905.<br><b>880-1105</b> Kaikki tapahtumat vuodesta 880 vuoteen 1105.<br><br>Nähdäksesi kaikki tapahtumat tietyllä vuosikymmenellä tai vuosisadalla, voit kirjoittaa <b>?</b> viimeisten numeromerkkien asemesta. Esimerkiksi <b>197?</b> kaikki tapahtumat vuosina 1970-1979 tai <b>16??</b> kaikki tapahtumat vuosina 1600-1699.<br><br>Valitsemalla vuosijakso kalenterinäkymä muuttuu vuosinäkymäksi.</dd></dl>"
+msgstr "Tässä kentässä voit muuttaa kalenterivuoden.<br><br><b>Erityisominaisuuksia</b> <b>Näytä vuosi</b><dl><dt><b>Enemmän kuin yksi vuosi</b></dt><dd>Voit hakea päivämääriä vuosijakson sisällä.<br><br>Vuosijaksossa aikaalue ulottuu ensimmäisen vuoden 1. tammikuusta viimeisen vuoden 31. joulukuuta saakka. Tässä muutama esimerkki vuosijaksoista:<br><br><b>1992-5</b> Kaikki tapahtumat vuodesta 1992 vuoteen 1995.<br><b>1972-89</b> Kaikki tapahtumat vuodesta 1972 vuoteen 1989.<br><b>1610-759</b> Kaikki tapahtumat vuodesta 1610 vuoteen 1759.<br><b>1880-1905</b> Kaikki tapahtumat vuodesta 1880 vuoteen 1905.<br><b>880-1105</b> Kaikki tapahtumat vuodesta 880 vuoteen 1105.<br><br>Nähdäksesi kaikki tapahtumat tietyllä vuosikymmenellä tai vuosisadalla, voit kirjoittaa <b>?</b> viimeisten numeromerkkien asemesta. Esimerkiksi <b>197?</b> kaikki tapahtumat vuosina 1970-1979 tai <b>16??</b> kaikki tapahtumat vuosina 1600-1699.<br><br>Valitsemalla vuosijakson kalenterinäkymä muuttuu vuosinäkymäksi.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
 msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
-msgstr "Tähän kenttään voit kirjoittaa henkilön ID-tunnuksen lisätäksesi hänet leikekoriin. Kun hänet on lisätty, sinulle annetaan mahdollisuus linkittää kyseisen henkilön sukulaisuussuhteet leikekoriisi<br><br>Jos et tiedä henkilön ID-tunnusta, voit suorittaa haun klikkaamalla henkilön kuvaketta lisää-painikkeen vieressä."
+msgstr "Tähän kenttään voit kirjoittaa henkilön tunnuksen lisätäksesi hänet leikekoriin. Kun hänet on lisätty, sinulle annetaan mahdollisuus linkittää kyseisen henkilön sukulaisuussuhteet leikekoriisi<br><br>Jos et tiedä henkilön tunnusta, voit suorittaa haun klikkaamalla henkilön kuvaketta lisää-painikkeen vieressä."
 
 #: help_text.php:407
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
@@ -13883,11 +13882,11 @@ msgstr "Pilkuilla \",\" eroteltu luettelo GEDCOM tietoaihetunnisteista, joita es
 
 #: help_text.php:794
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family.  For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Tämä on pilkkumerkein (,) eroteltu luettelo GEDCOM tietotunnisteista, joita näytetään lisättäessä uuden perheen tiedot. Esimerkiksi, jos MARR (avioliitto) on luettelossa, esitetään avioliittopäivämäärä ja -paikka lomakkeessa."
+msgstr "Tämä on pilkkumerkein (,) eroteltu luettelo GEDCOM tietotunnisteista, joita näytetään lisättäessä uuden perheen tiedot. Esimerkiksi, jos MARR (avioliitto) on luettelossa, esitetään avioliittoaika ja -paikka lomakkeessa."
 
 #: help_text.php:789
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Tämä on pilkkumerkein \",\" eroteltu lista GEDCOM tietotunnisteita (tag) joita esitetään kun uusi henkilö lisätään. Esimerkiksi, jos BIRT (syntymä) on listassa, esitetään syntymäpäivämäärä ja -paikka lomakkeessa."
+msgstr "Tämä on pilkkumerkein \",\" eroteltu lista GEDCOM tietotunnisteita (tag) joita esitetään kun uusi henkilö lisätään. Esimerkiksi, jos BIRT (syntymä) on listassa, esitetään syntymäaika ja -paikka lomakkeessa."
 
 #: help_text.php:412
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
@@ -13899,7 +13898,7 @@ msgstr "Tämä on linkki tietoihisi sukupuussa. Jos tämä on väärä henkilö,
 
 #: help_text.php:268
 msgid "This is an optional field that can be used to enter the file format of the multimedia object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important."
-msgstr "Tämä on valinnallinen kenttä johon voi syöttää multimediaobjektin muodon. Jotkut sukututkimusohjelmat saattavat tarkistaa kentän määritelläkseen kuinka mediaobjektia on käsiteltävä. Koska media ei aina ole siirrettävissä tietokonejärjestelmästä toiseen kovin hyvin, kentällä ei ole suurta merkitystä."
+msgstr "Tämä on valinnallinen kenttä johon voi syöttää multimediakohteen muodon. Jotkut sukututkimusohjelmat saattavat tarkistaa kentän määritelläkseen kuinka mediakohdetta on käsiteltävä. Koska media ei aina ole siirrettävissä tietokonejärjestelmästä toiseen kovin hyvin, kentällä ei ole suurta merkitystä."
 
 #: help_text.php:368
 msgid "This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program."
@@ -14013,31 +14012,31 @@ msgstr "Tämä mediatiedosto on rikkonainen eikä siihen voi laittaa vesileimaa"
 
 #: mediaviewer.php:74
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr "Tämä mediaobjekti ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
+msgstr "Tämä mediakohde ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
 
 #: mediaviewer.php:48
 msgid "This media object has been deleted.  The deletion will need to be reviewed by a moderator."
-msgstr "Tämä mediaobjekti on poistettu. Valvojan on tarkastettava poisto."
+msgstr "Tämä mediakohde on poistettu. Valvojan on tarkastettava poisto."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: mediaviewer.php:39
 #, php-format
 msgid "This media object has been deleted.  You should review the deletion and then %1$s or %2$s it."
-msgstr "Tämä mediaobjekti on poistettu. Tarkista poisto ja %1$s tai %2$s se."
+msgstr "Tämä mediakohde on poistettu. Tarkista poisto ja %1$s tai %2$s se."
 
 #: mediaviewer.php:66
 msgid "This media object has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Tämä mediaobjekti on muokattu. Valvojan on tarkastettava muutokset."
+msgstr "Tämä mediakohde on muokattu. Valvojan on tarkastettava muutokset."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: mediaviewer.php:57
 #, php-format
 msgid "This media object has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "Tämä mediaobjekti on muokattu. Tarkista muutokset ja %1$s tai %2$s ne."
+msgstr "Tämä mediakohde on muokattu. Tarkista muutokset ja %1$s tai %2$s ne."
 
 #: admin_media.php:487 find.php:582
 msgid "This media object is not linked to any other record."
-msgstr "Tämä mediaobjekti ei liity muuhun tietueeseen."
+msgstr "Tämä mediakohde ei liity muuhun tietueeseen."
 
 #: includes/authentication.php:234 includes/authentication.php:291
 msgid "This message was sent while viewing the following URL: "
@@ -14103,11 +14102,11 @@ msgstr "Tällä valinnalla vaikutetaan siihen, laajennetaanko automaattisesti <i
 
 #: help_text.php:880
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
-msgstr "Tällä valinnalla päätät näytetäänkö kaavioissa lasten syntymäpäivämäärän vieressä isän ja äidin senhetkinen ikä."
+msgstr "Tällä valinnalla päätät näytetäänkö kaavioissa lasten syntymäajan vieressä isän ja äidin senhetkinen ikä."
 
 #: help_text.php:844
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Tällä valinnalla päätetään, esitetäänkö arvioidut syntymä- ja kuolinajat, jos päivämääriä ei tunneta. Muuten päivämäärät esitetään tyhjinä henkilöluetteloissa ja kaavioissa."
+msgstr "Tällä valinnalla päätetään, esitetäänkö arvioidut syntymä- ja kuolinajat, jos päivämääriä ei tunneta. Muuten ajat esitetään tyhjinä henkilöluetteloissa ja kaavioissa."
 
 #: help_text.php:714
 msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
@@ -14192,7 +14191,7 @@ msgstr "Tällä sivulla saat yksityiskohtaiset tiedot palvelimesta, jossa <b>web
 
 #: help_text.php:1170
 msgid "This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent."
-msgstr "Tällä sivulla voit yhdistää kaksi GEDCOM tietuetta samasta GEDCOM tiedostosta.<br><br>Tämä on hyödyllistä niille, jotka ovat yhdistäneet GEDCOM tiedostoja ja joilla on henkilöitä, perheitä tai lähdetietoja, jotka ovat samat.<br><br>Sivulla on kolme toimenpidettä.<br><ol><li>Syötä kaksi GEDCOM ID-tunnusta. ID-tunnusten on oltava samaa tyyppiä. Et voi esimerkiksi yhdistää henkilöä ja perhettä, etkä perhettä ja lähdetietoa. <br><b>Yhdistä tähän ID:seen:</b> kenttään syötät sen tietueen ID-tunnuksen, joka tulee olemaan uusi yhdistetty tietue.<br><b>Yhdistä tästä ID:stä:</b> kenttään syötät sen tietueen ID-tunnuksen, jonka tiedot siirretään yhdistettäväksi \"Yhdistä tähän ID:seen\" tietoihin. Yhdistämisen jälkeen \"Yhdistä tästä ID:stä\" tietue poistetaan.</li><li>Valitse valintaruuduissa mitkä tiedot molemmista tietueista säilytetään yhdistyksen jälkeen.</li><li>Tarkista yhdistämistulokset samalla tavalla kuin kaikki muut verkkomuutokset.</li></ol>Muutoksesi tulevat voimaan vasta kun ylläpitäjä tai henkilö, jolla on hyväksymisoikeudet, on hyväksynyt ne."
+msgstr "Tällä sivulla voit yhdistää kaksi GEDCOM tietuetta samasta GEDCOM tiedostosta.<br><br>Tämä on hyödyllistä niille, jotka ovat yhdistäneet GEDCOM tiedostoja ja joilla on henkilöitä, perheitä tai lähdetietoja, jotka ovat samat.<br><br>Sivulla on kolme toimenpidettä.<br><ol><li>Syötä kaksi GEDCOM tunnusta. Tunnusten on oltava samaa tyyppiä. Et voi esimerkiksi yhdistää henkilöä ja perhettä, etkä perhettä ja lähdetietoa. <br><b>Yhdistä tunnukseen:</b> kenttään syötät sen tietueen tunnuksen, joka tulee olemaan uusi yhdistetty tietue.<br><b>Yhdistä tunnuksesta:</b> kenttään syötät sen tietueen tunnuksen, jonka tiedot siirretään yhdistettäväksi \"Yhdistä tunnukseen\" tietoihin. Yhdistämisen jälkeen \"Yhdistä tunnuksesta\" tietue poistetaan.</li><li>Valitse valintaruuduissa mitkä tiedot molemmista tietueista säilytetään yhdistyksen jälkeen.</li><li>Tarkista yhdistämistulokset samalla tavalla kuin kaikki muut verkkomuutokset.</li></ol>Muutoksesi tulevat voimaan vasta kun ylläpitäjä tai henkilö, jolla on hyväksymisoikeudet, on hyväksynyt ne."
 
 #: modules_v3/googlemap/placehierarchy.php:364
 msgid "This place has no coordinates"
@@ -14252,7 +14251,7 @@ msgstr "Voit lisätä tähän osioon uutta muokattavaa tietoa koskevan lisätied
 
 #: help_text.php:1157
 msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
-msgstr "Tähän osioon voit lisätä uuden muokattavaa tietoa koskevan lähdeviittauksen.<br><br>Lähdekenttään täytät kyseisen lähteen ID-tunnuksen. Klikkaa linkkiä <b>Luo uusi lähde</b> jos haluat lisätä uuden lähteen. Viittauskenttään lisäät sivunumeron tai muun tiedon, joka auttaa muita löytämään lähteessä olevan tiedon. Tekstikenttään kirjoitat lähteen tekstijäljennöksen."
+msgstr "Tähän osioon voit lisätä uuden muokattavaa tietoa koskevan lähdeviittauksen.<br><br>Lähdekenttään täytät kyseisen lähteen tunnuksen. Klikkaa linkkiä <b>Luo uusi lähde</b> jos haluat lisätä uuden lähteen. Viittauskenttään lisäät sivunumeron tai muun tiedon, joka auttaa muita löytämään lähteessä olevan tiedon. Tekstikenttään kirjoitat lähteen tekstijäljennöksen."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:317
@@ -14341,7 +14340,7 @@ msgstr "Tämä listaa kaikki paikat valitusta GEDCOM-tiedostosta. Oletuksena tä
 
 #: admin_trees_places.php:89
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "Tämä päivittää korkeimman tason paikannimi-osaa tai -osia. Esimerkiksi ”Mexico” sopii ”Quintana Roo, Mexico”on, mutta ei ”Santa Fe, New Mexico”on."
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:222
@@ -14780,7 +14779,7 @@ msgstr "URL-osoite"
 
 #: library/WT/Stats.php:3991
 msgid "US Minor Outlying Islands"
-msgstr "USA:n Tyynenmeren er. alue"
+msgstr "Yhdysvaltain Tyynenmeren erillissaaret"
 
 #: library/WT/Stats.php:3999
 msgid "US Virgin Islands"
@@ -14819,7 +14818,7 @@ msgstr "EI voi luoda %s. Tarkista käyttöoikeudet."
 
 #: admin_site_merge.php:60 admin_site_merge.php:63 admin_trees_config.php:251
 msgid "Unable to find record with ID"
-msgstr "Ei löydy tietuetta ID:llä"
+msgstr "Ei löydy tietuetta tunnuksella"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:91
@@ -14865,7 +14864,7 @@ msgstr "Tuntematon"
 #: library/WT/Stats.php:3014
 msgctxt "unknown century"
 msgid "Unknown"
-msgstr "Vuosisata tuntematon"
+msgstr "tuntematon"
 
 #: calendar.php:592 includes/functions/functions_edit.php:551
 #: library/WT/Controller/Individual.php:246
@@ -14926,11 +14925,11 @@ msgstr "Päivitä kaikki"
 
 #: admin_trees_places.php:85
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Päivitä kaikki sukupuun paikannimet"
 
 #: themes/_administration/header.php:121
 msgid "Update place names"
-msgstr ""
+msgstr "Päivitä paikannimet"
 
 #: admin_site_merge.php:152
 msgid "Updating linked record"
@@ -14996,7 +14995,7 @@ msgstr "Käytä PHP mail sähköpostin lähettämiseen"
 
 #: admin_trees_config.php:307 help_text.php:1011
 msgid "Use RIN number instead of GEDCOM ID"
-msgstr "Käytä RIN-numeroa GEDCOM ID:n sijaan"
+msgstr "Käytä RIN-numeroa GEDCOM tunnuksen sijaan"
 
 #: admin_site_config.php:41
 msgid "Use SMTP to send messages"
@@ -15037,7 +15036,7 @@ msgstr "Yksityisyysrajoitus, vain oma ja lähisukulainen näkee"
 
 #: help_text.php:1017
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
-msgstr "Käytä varjokuvaa kun henkilöllä ei ole ensisijasta kuvaa. Varjokuva on erilainen sukupuolen mukaan.<br><br><table><tr><td wrap valign=\"middle\">Tätä kuvaa voidaan käyttää kun henkilön sukupuoli ei ole tiedossa:"
+msgstr "Käytä varjokuvaa kun henkilöllä ei ole korostettua kuvaa. Varjokuva on erilainen sukupuolen mukaan.<br><br><table><tr><td wrap valign=\"middle\">Tätä kuvaa voidaan käyttää kun henkilön sukupuoli ei ole tiedossa:"
 
 #: admin_trees_config.php:674 help_text.php:1016
 msgid "Use silhouettes"
@@ -15311,7 +15310,7 @@ msgstr "Vierailija"
 #: calendar.php:227 modules_v3/bdm_report/module.php:33
 #: modules_v3/bdm_report/report.xml:3 modules_v3/bdm_report/report.xml:31
 msgid "Vital records"
-msgstr "Keskeisimmät tapahtumat"
+msgstr "Keskeiset tapahtumat"
 
 #. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
 #: library/WT/I18N.php:169
@@ -15413,27 +15412,27 @@ msgstr "Länsi-Sahara"
 
 #: help_text.php:521
 msgid "When a new family record is added online in <b>webtrees</b>, a new ID for that family will be generated automatically. The family ID will have this prefix."
-msgstr "Kun uusi perhetieto lisätään netissä <b>webtrees</b>iin, perheen ID luodaan automaattisesti. Kyseisen perheen ID:n eteen lisätään tämä etuliite."
+msgstr "Kun uusi perhetieto lisätään netissä <b>webtrees</b>iin, perheen tunnus luodaan automaattisesti. Kyseisen perheen tunnuksen eteen lisätään tämä etuliite."
 
 #: help_text.php:540
 msgid "When a new individual record is added online in <b>webtrees</b>, a new ID for that individual will be generated automatically. The individual ID will have this prefix."
-msgstr "Kun lisätään uusi henkilö online-tilassa <b>webtrees</b>iin, niin henkilön ID luodaan automaattisesti. Henkilön ID:n eteen lisätään tämä etuliite."
+msgstr "Kun lisätään uusi henkilö online-tilassa <b>webtrees</b>iin, niin henkilön tunnus luodaan automaattisesti. Henkilön tunnuksen eteen lisätään tämä etuliite."
 
 #: help_text.php:667
 msgid "When a new media record is added online in <b>webtrees</b>, a new ID for that media will be generated automatically. The media ID will have this prefix."
-msgstr "Kun lisätään uusi mediatietue netissä, <b>webtrees</b> luo automaattisesti uuden ID-tunnisteen kyseiselle mediakohteelle. Media IDn eteen lisätään tämä etuliite."
+msgstr "Kun lisätään uusi mediatietue netissä, <b>webtrees</b> luo automaattisesti uuden tunnuksen kyseiselle mediakohteelle. Media tunnuksen eteen lisätään tämä etuliite."
 
 #: help_text.php:699
 msgid "When a new note record is added online in <b>webtrees</b>, a new ID for that note will be generated automatically. The note ID will have this prefix."
-msgstr "Kun online-tilassa lisätään uusi lisätieto, <b>webtrees</b> luo automaattisesti sille uuden ID:n. Lisätiedon ID:n eteen lisätään tämä etuliite."
+msgstr "Kun online-tilassa lisätään uusi lisätieto, <b>webtrees</b> luo automaattisesti sille uuden tunnuksen. Lisätiedon tunnuksen eteen lisätään tämä etuliite."
 
 #: help_text.php:814
 msgid "When a new repository record is added online in <b>webtrees</b>, a new ID for that repository will be generated automatically. The repository ID will have this prefix."
-msgstr "Kun online-tilassa lisätään uusi tietovarastotietue, luodaan automaattisesti uusi ID tietovarastolle. Tietovaraston ID:n eteen lisätään tämä etuliite."
+msgstr "Kun online-tilassa lisätään uusi tietovarastotietue, luodaan automaattisesti uusi tunnus tietovarastolle. Tietovaraston tunnuksen eteen lisätään tämä etuliite."
 
 #: help_text.php:905
 msgid "When a new source record is added online in <b>webtrees</b>, a new ID for that source will be generated automatically.  The source ID will have this prefix."
-msgstr "Lisättäessä <b>webtrees</b> online-tilassa uusi lähdetieto, luodaan automaattisesti ID lähdetiedolle. ID:n eteen lisätään tämä etuliite."
+msgstr "Lisättäessä <b>webtrees</b> online-tilassa uusi lähdetieto, luodaan automaattisesti tunnus lähdetiedolle. Tunnuksen eteen lisätään tämä etuliite."
 
 #: help_text.php:1468
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -15441,7 +15440,7 @@ msgstr "Kun vierailija pyytää itselleen käyttäjätunnuksen, -tilin, lähetet
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:44
 msgid "When adding a Link, the ID field cannot be empty."
-msgstr "Yhteyttä luotaessa, ID-kenttä ei voi olla tyhjä."
+msgstr "Yhteyttä luotaessa, tunnus-kenttä ei voi olla tyhjä."
 
 #: help_text.php:784
 msgid "When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default."
@@ -15481,7 +15480,7 @@ msgstr "Kun valitset tämän vaihtoehdon, luodaan GEDCOM tiedosto ZIP-muodossa, 
 
 #: help_text.php:1083
 msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
-msgstr "Kun klikkaat <b>Lisää uusi jaettu lisätieto</b> linkkiä, avautuu uusi ikkuna. Voit valita linkin jo olemassa olevaan lisätietoon tai luoda uuden lisätiedon ja samalla linkin siihen."
+msgstr "Kun klikkaat <b>Lisää uusi jaettu lisätieto</b> linkkiä, avautuu uusi ikkuna. Voit valita linkin jo sivustolla olevaan lisätietoon tai luoda uuden lisätiedon ja samalla linkin siihen."
 
 #: modules_v3/clippings/help_text.php:37
 msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
@@ -15598,7 +15597,7 @@ msgstr "Tällä vaihtoehdolla et saa viestejä lainkaan."
 
 #: help_text.php:1192
 msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page."
-msgstr "Tällä vaihtoehdolla saat viestit vain sähköpostiosoitteeseesi, joka on määritelty sinun käyttäjätilisi-sivulla. <b>webtrees</b>:n sisäinen viestien välitystapa ei ole ollenkaan käytössä, ja viestit eivät näy koskaan Oman sivusi Viestit-lohkossa."
+msgstr "Tällä vaihtoehdolla saat viestit vain sähköpostiosoitteeseesi, joka on määritelty sinun käyttäjätilisi-sivulla. <b>webtrees</b>in sisäinen viestien välitystapa ei ole ollenkaan käytössä, ja viestit eivät näy koskaan Oman sivusi Viestit-lohkossa."
 
 #: library/WT/Stats.php:307 library/WT/Stats.php:351
 msgid "Without sources"
@@ -15659,7 +15658,7 @@ msgstr "Et voi lähettää viestejä, jotka sisältävät ulkoisia linkkejä."
 #. I18N: Help text for the "Default Theme" site configuration setting
 #: help_text.php:985
 msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
-msgstr "Voit muuttaa <b>webtrees</b>:n esitystapaa käyttäen ”teemoja”. Jokaisella teemalla on oma miltä-näytää eli esitystapansa, värien käyttötapa jne."
+msgstr "Voit muuttaa <b>webtrees</b>in esitystapaa käyttäen ”teemoja”. Jokaisella teemalla on oma miltä-näytää eli esitystapansa, värien käyttötapa jne."
 
 #: help_text.php:1279
 msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
@@ -15713,7 +15712,7 @@ msgstr "Sinun ei tarvitse tehdä mitään; käyttäjä voi nyt kirjautua."
 
 #: admin_site_merge.php:54
 msgid "You entered the same IDs.  You cannot merge the same records."
-msgstr "Kirjoitit saman ID:n. Et voi yhdistää samoja tietueita."
+msgstr "Kirjoitit saman tunnuksen. Et voi yhdistää samoja tietueita."
 
 #: login.php:550
 msgid "You have confirmed your request to become a registered user."
@@ -15729,7 +15728,7 @@ msgstr "Et ole luonnut päiväkirjamerkintöjä."
 
 #: admin_trees_manage.php:131
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
-msgstr "Olet valinnut erinimisen GEDCOM:in. Onko tämä oikea?"
+msgstr "Olet valinnut erinimisen GEDCOMin. Onko tämä oikea?"
 
 #: addmedia.php:481
 msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
@@ -15807,7 +15806,7 @@ msgstr "Sinun pitää nyt tarkastaa käyttäjätilin tiedot ja vaihtaa asetus �
 #. I18N: Help text for the “Login URL” site configuration setting
 #: help_text.php:618
 msgid "You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "Tähän lisäät sisään kirjoittautumis-URL osoitteen, jos haluat ohjata sisään kirjautumiset toisen web sivuston tai palvelun käsiteltäväksi. Tämä on erittäin hyödyllistä, jos haluat vaihtaa salaamattomasta http-yhteydestä salattuun https-yhteysmuotoon, kun käyttäjäsi kirjautuvat sisään. Käytä koko URL-osoitetta <i>login.php</i>:hen. Esimerkiksi https://www.yourserver.com/webtrees/login.php. Huom. edellyttää ssl:n käyttöönottoa palvelimessa."
+msgstr "Tähän lisäät sisään kirjoittautumis-URL osoitteen, jos haluat ohjata sisään kirjautumiset toisen web sivuston tai palvelun käsiteltäväksi. Tämä on erittäin hyödyllistä, jos haluat vaihtaa salaamattomasta http-yhteydestä salattuun https-yhteysmuotoon, kun käyttäjäsi kirjautuvat sisään. Käytä koko URL-osoitetta <i>login.php</i>hen. Esimerkiksi https://www.yourserver.com/webtrees/login.php. Huom. edellyttää SSLn käyttöönottoa palvelimessa."
 
 #: includes/authentication.php:241
 msgid "You sent the following message to a webtrees administrator:"
@@ -16353,7 +16352,7 @@ msgstr "tytär"
 
 #: modules_v3/descendancy_report/report.xml:224
 msgid "daughter of"
-msgstr "jonka vanhemmat olivat"
+msgstr "vanhemmat:"
 
 #: includes/functions/functions.php:883
 msgctxt "child’s wife"
@@ -18872,7 +18871,7 @@ msgstr "prosenttiosuus"
 #. I18N: button label
 #: admin_trees_places.php:101
 msgid "preview"
-msgstr "Esikatselu"
+msgstr "esikatsele"
 
 #. I18N: button label, previous page
 #: library/WT/I18N.php:666 modules_v3/batch_update/admin_batch_update.php:94
@@ -19261,7 +19260,7 @@ msgstr "poika"
 
 #: modules_v3/descendancy_report/report.xml:293
 msgid "son of"
-msgstr "jonka vanhemmat olivat"
+msgstr "vanhemmat:"
 
 #: includes/functions/functions.php:880
 msgctxt "child’s husband"
@@ -19298,7 +19297,7 @@ msgstr "lapsen puoliso / vävy, miniä"
 #: modules_v3/todays_events/module.php:150
 #: modules_v3/upcoming_events/module.php:162
 msgid "sort by date"
-msgstr "järjestä päivämäärän mukaan"
+msgstr "järjestä ajan mukaan"
 
 #. I18N: An option in a list-box
 #: edit_interface.php:1890 modules_v3/bdm_report/report.xml:11
@@ -19308,30 +19307,30 @@ msgstr "järjestä päivämäärän mukaan"
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7 reportengine.php:509
 msgid "sort by date of birth"
-msgstr "järjestä syntymäpäivämäärän mukaan"
+msgstr "järjestä syntymäajan mukaan"
 
 #. I18N: An option in a list-box
 #: modules_v3/bdm_report/report.xml:11 modules_v3/cemetery_report/report.xml:6
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7 reportengine.php:511
 msgid "sort by date of death"
-msgstr "järjestä kuolinpäivämäärän mukaan"
+msgstr "järjestä kuolinajan mukaan"
 
 #. I18N: An option in a list-box
 #: edit_interface.php:2267 modules_v3/marriage_report/report.xml:9
 #: reportengine.php:510
 msgid "sort by date of marriage"
-msgstr "järjestä avioitumispäivämäärän mukaan"
+msgstr "järjestä avioitumisajan mukaan"
 
 #. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:154
 msgid "sort by date, newest first"
-msgstr "järjestä päivämäärän mukaan, uusin ensin"
+msgstr "järjestä ajan mukaan, uusin ensin"
 
 #. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:153
 msgid "sort by date, oldest first"
-msgstr "järjestä päivämäärän mukaan, vanhin ensin"
+msgstr "järjestä ajan mukaan, vanhin ensin"
 
 #. I18N: An option in a list-box
 #: medialist.php:94
@@ -19733,7 +19732,7 @@ msgstr "epäluotettava todiste"
 #. I18N: button label
 #: admin_trees_places.php:102
 msgid "update"
-msgstr "Päivitä"
+msgstr "päivitä"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:182
@@ -19879,7 +19878,7 @@ msgstr "…"
 #~ msgstr "Kaikki tiedot"
 
 #~ msgid "Allow GEDCOM switching"
-#~ msgstr "Salli GEDCOM:n vaihto"
+#~ msgstr "Salli GEDCOMin vaihto"
 
 #~ msgid "Allow messages to be stored online"
 #~ msgstr "Salli viestien tallentaminen"
@@ -19921,7 +19920,7 @@ msgstr "…"
 #~ msgstr "Aika palvelimessa:"
 
 #~ msgid "Date not known"
-#~ msgstr "Tuntematon päivämäärä"
+#~ msgstr "Tuntematon aika"
 
 #~ msgid "Default value for top-level"
 #~ msgstr "Oletus arvo ylimmälle tasolle"
@@ -19939,13 +19938,13 @@ msgstr "…"
 #~ msgstr "Lataa raportti"
 
 #~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
-#~ msgstr "Jokainen mediakohde (kuva jne) pitää yhdistää tietokannassa yhteen tai useampaan henkilöön, perheeseen tai lähdetietoon.<br><br>Voit yhdistää eli luoda linkin käyttämällä hakua tai syöttämällä henkilön, perheen tai lähdetiedon ID-tunnus silloin kun tuot mediaa tietokantaan. Yhdistämistä voi myös myöhemminkin hoitaa muokkaamalla mediakohdetta käyttäen \"Multimedian käsittely\", joka on tarjolla Henkilö-,Perhe- ja Lähdetietosivuilla."
+#~ msgstr "Jokainen mediakohde (kuva jne.) pitää yhdistää tietokannassa yhteen tai useampaan henkilöön, perheeseen tai lähdetietoon.<br><br>Voit yhdistää eli luoda linkin käyttämällä hakua tai syöttämällä henkilön, perheen tai lähdetiedon tunnus silloin kun tuot mediaa tietokantaan. Yhdistämistä voi myös myöhemminkin hoitaa muokkaamalla mediakohdetta käyttäen \"Multimedian käsittely\", joka on tarjolla Henkilö-,Perhe- ja Lähdetietosivuilla."
 
 #~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
 #~ msgstr "Anna otsikko kohteelle jota muokkat. Jos kyseessä on multimediakohde, anna kuvaava otsikko, jolla käyttäjä voi sen tunnistaa."
 
 #~ msgid "Enter associate GEDCOM ID."
-#~ msgstr "Lisää läheisen GEDCOM ID-tunnus."
+#~ msgstr "Lisää läheisen GEDCOM tunnus."
 
 #~ msgid "Enter the name of the cemetery or other resting place where individual is buried."
 #~ msgstr "Lisää hautausmaan tai muun viimeisen leposijan nimi, jossa tämä henkilö lepää."
@@ -20014,10 +20013,10 @@ msgstr "…"
 #~ msgstr "Linkin ID"
 
 #~ msgid "Link this individual to an existing family as a husband"
-#~ msgstr "Liitä tämä henkilö mieheksi olemassa olevaan perheeseen."
+#~ msgstr "Liitä tämä henkilö mieheksi sivustolla olevaan perheeseen."
 
 #~ msgid "Link this individual to an existing family as a wife"
-#~ msgstr "Liitä tämä henkilö vaimoksi olemassa olevaan perheeseen."
+#~ msgstr "Liitä tämä henkilö vaimoksi sivustolla olevaan perheeseen."
 
 #~ msgid "Load all your family trees from disk, by using the “import” function for each one."
 #~ msgstr "Lataa ja ota käyttöön tallennetut sukupuut, käyttäen ”tuonti”-toimintoa kullekin sukupuulle erikseen."
@@ -20046,7 +20045,7 @@ msgstr "…"
 #~ msgstr[1] "Ei tapahtumia elossa-olevien henkilöiden osalta seuraavien %s päivien aikana."
 
 #~ msgid "No such ID exists in this GEDCOM file."
-#~ msgstr "Tätä ID-tunnusta ei ole tässä GEDCOM-tiedostossa."
+#~ msgstr "Tätä tunnusta ei ole tässä GEDCOM-tiedostossa."
 
 #~ msgid "Not in DB"
 #~ msgstr "Ei tietokannassa"
@@ -20193,7 +20192,7 @@ msgstr "…"
 #~ msgstr "Päivitä Web-palvelin PHP %s-n tai korkeampaan."
 
 #~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
-#~ msgstr "Käytä SMTP sähköpostin lähettämiseen <b>webtrees</b> ohjelmasta.<br><br>Silloin pitää olla myös SMTP sähköpostipalvelinyhteys kunnossa. Kun valinta on <b>Ei</b>, käytetään PHP:n omaa sähköpostiominaisuutta."
+#~ msgstr "Käytä SMTP sähköpostin lähettämiseen <b>webtrees</b> ohjelmasta.<br><br>Silloin pitää olla myös SMTP sähköpostipalvelinyhteys kunnossa. Kun valinta on <b>Ei</b>, käytetään PHPn omaa sähköpostiominaisuutta."
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Käytä SMTP -protokollaan ulkoisten viestien lähettämiseen"

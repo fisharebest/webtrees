@@ -1471,7 +1471,7 @@ msgstr "ניהול"
 
 #: admin_trees_places.php:80
 msgid "Administration - place edit"
-msgstr ""
+msgstr "ניהול - עדכון מקומות"
 
 #: admin_users.php:186 admin_users.php:368 help_text.php:1397
 msgid "Administrator"
@@ -9810,7 +9810,7 @@ msgstr "לא נמצאו מקומות"
 
 #: admin_trees_places.php:121
 msgid "No places were found."
-msgstr ""
+msgstr "לא נמצאו מקומות."
 
 #: admin_site_config.php:44
 msgid "No predefined text"
@@ -11743,7 +11743,7 @@ msgstr "שמור"
 
 #: library/WT/Gedcom/Tag.php:181
 msgid "School or college"
-msgstr "בית ספר או מכללה"
+msgstr "בית ספר או אוניברסיטה"
 
 #: library/WT/Stats.php:3947
 msgid "Scotland"
@@ -13494,11 +13494,11 @@ msgstr "ההודעה הבאה נשלחה למשתמש ה-webtrees שלך מ- "
 
 #: admin_trees_places.php:108
 msgid "The following places were changed:"
-msgstr ""
+msgstr "המקומות הבאים שונו:"
 
 #: admin_trees_places.php:108
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "המקומות הבאים ישונו:"
 
 #: admin_site_access.php:270
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -14345,7 +14345,7 @@ msgstr "זה יבנה רשימה של כל המקומות מקובץ ה-GEDCOM �
 
 #: admin_trees_places.php:89
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "זה יעדכן את החלק או החלקים הגבוהים ביותר של שם המקום. לדוגמא, ”Mexico” יתאים ל-”Quintana Roo, Mexico”, אבל לא ל-”Santa Fe, New Mexico”."
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:222
@@ -14930,11 +14930,11 @@ msgstr "עדכן הכל"
 
 #: admin_trees_places.php:85
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "עדכן את כל שמות המקומות בעץ משפחה"
 
 #: themes/_administration/header.php:121
 msgid "Update place names"
-msgstr ""
+msgstr "עדכון שמות מקומות"
 
 #: admin_site_merge.php:152
 msgid "Updating linked record"
@@ -18876,7 +18876,7 @@ msgstr "אחוז"
 #. I18N: button label
 #: admin_trees_places.php:101
 msgid "preview"
-msgstr "הצגה מוקדמת"
+msgstr "תצוגה מוקדמת"
 
 #. I18N: button label, previous page
 #: library/WT/I18N.php:666 modules_v3/batch_update/admin_batch_update.php:94

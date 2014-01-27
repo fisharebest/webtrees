@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Fab\n"
+"Project-Id-Version: Webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-12-29 12:41+0000\n"
 "PO-Revision-Date: \n"
@@ -1471,7 +1471,7 @@ msgstr "Administration"
 
 #: admin_trees_places.php:80
 msgid "Administration - place edit"
-msgstr ""
+msgstr "Administration - plats redigering"
 
 #: admin_users.php:186 admin_users.php:368 help_text.php:1397
 msgid "Administrator"
@@ -9810,7 +9810,7 @@ msgstr "Inga platser hittades"
 
 #: admin_trees_places.php:121
 msgid "No places were found."
-msgstr ""
+msgstr "Inga platser hittades"
 
 #: admin_site_config.php:44
 msgid "No predefined text"
@@ -11743,7 +11743,7 @@ msgstr "Spara"
 
 #: library/WT/Gedcom/Tag.php:181
 msgid "School or college"
-msgstr "Skola, läroverk o.d."
+msgstr "Skola eller universitet"
 
 #: library/WT/Stats.php:3947
 msgid "Scotland"
@@ -11812,7 +11812,7 @@ msgstr "Sökfilter"
 
 #: admin_trees_places.php:96 search.php:103 search.php:137
 msgid "Search for"
-msgstr "Skriv in nyckelord:"
+msgstr "Skriv in nyckelord"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:57
 msgid "Search for individuals to add to Add Links list."
@@ -13494,11 +13494,11 @@ msgstr "Följande meddelande har skickats till ditt användarkonto på webtrees 
 
 #: admin_trees_places.php:108
 msgid "The following places were changed:"
-msgstr ""
+msgstr "Följande platser ändrades:"
 
 #: admin_trees_places.php:108
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "Följande platser skulle förändras:"
 
 #: admin_site_access.php:270
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -14345,7 +14345,7 @@ msgstr "Detta kommer att lista alla platserna från den valda GEDCOM-filen. Som 
 
 #: admin_trees_places.php:89
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "Detta kommer att uppdatera den högsta nivå-delen eller -delar av ortnamn. Till exempel ”Mexico” kommer att matcha ”Quintana Roo, Mexico”, men inte ”Santa Fe, New Mexico”."
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:222
@@ -14930,11 +14930,11 @@ msgstr "Uppdatera allt"
 
 #: admin_trees_places.php:85
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Uppdatera alla ortsnamn i ett släktträd"
 
 #: themes/_administration/header.php:121
 msgid "Update place names"
-msgstr ""
+msgstr "Uppdatera ortsnamn"
 
 #: admin_site_merge.php:152
 msgid "Updating linked record"
@@ -18876,7 +18876,7 @@ msgstr "procent"
 #. I18N: button label
 #: admin_trees_places.php:101
 msgid "preview"
-msgstr "Förhandsgranska"
+msgstr "förhandsvisa"
 
 #. I18N: button label, previous page
 #: library/WT/I18N.php:666 modules_v3/batch_update/admin_batch_update.php:94
@@ -19737,7 +19737,7 @@ msgstr "otillförlitligt bevis"
 #. I18N: button label
 #: admin_trees_places.php:102
 msgid "update"
-msgstr "Uppdatera"
+msgstr "uppdatera"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:182
