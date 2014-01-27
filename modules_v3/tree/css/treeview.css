@@ -209,11 +209,11 @@ table#tvTreeBorder td, #tv_tree {
 	padding:2px;
 }
 #tv_tree div.tv_box img {
-	max-width:50px;
-	_width:50px; /* hack for IE versions that do not understand max-width */
-	max-height:50px;
-	margin:2px;
-	float:left;
+	float:      left;
+	margin:     2px;
+	max-height: 50px;
+	max-width:  80px;
+	width:      auto;
 }
 html[dir=rtl] #tv_tree div.tv_box img {
 	float:right;
