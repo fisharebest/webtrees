@@ -28,6 +28,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
+	const DEFAULT_DAYS = 7;
 	const MAX_DAYS = 90;
 
 	// Extend class WT_Module
@@ -45,7 +46,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		global $ctype;
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-		$days = get_block_setting($block_id, 'days', 7);
+		$days = get_block_setting($block_id, 'days', self::DEFAULT_DAYS);
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
 		$sortStyle = get_block_setting($block_id, 'sortStyle', 'date_desc');
 		$hide_empty = get_block_setting($block_id, 'hide_empty', false);
@@ -120,7 +121,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'days',       WT_Filter::postInteger('days', 1, self::MAX_DAYS, 7));
+			set_block_setting($block_id, 'days',       WT_Filter::postInteger('days', 1, self::MAX_DAYS, self::DEFAULT_DAYS));
 			set_block_setting($block_id, 'infoStyle',  WT_Filter::post('infoStyle', 'list|table', 'table'));
 			set_block_setting($block_id, 'sortStyle',  WT_Filter::post('sortStyle', 'name|date_asc|date_desc', 'date_desc'));
 			set_block_setting($block_id, 'hide_empty', WT_Filter::postBool('hide_empty'));
@@ -130,7 +131,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$days = get_block_setting($block_id, 'days', 7);
+		$days = get_block_setting($block_id, 'days', self::DEFAULT_DAYS);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
