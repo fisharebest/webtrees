@@ -626,28 +626,25 @@ function import_record($gedrec, $ged_id, $update) {
 	$gedrec=reformat_record_import($gedrec);
 
 	// import different types of records
-	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match) > 0) {
-		list(,$xref, $type)=$match;
+	if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match) > 0) {
+		list(,$xref, $type) = $match;
 		// check for a _UID, if the record doesn't have one, add one
 		if ($GENERATE_UIDS && !strpos($gedrec, "\n1 _UID ")) {
-			$gedrec.="\n1 _UID ".uuid();
+			$gedrec .= "\n1 _UID " . uuid();
 		}
 	} elseif (preg_match('/0 ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
-		$xref=$match[1];
-		$type=$match[1];
+		$xref = null;
+		$type = $match[1];
 	} else {
 		echo WT_I18N::translate('Invalid GEDCOM format'), '<br><pre>', $gedrec, '</pre>';
 		return;
 	}
 
-	// Convert inline media into media objects
-	$gedrec = convert_inline_media($xref, $ged_id, $gedrec);
-
 	// If the user has downloaded their GEDCOM data (containing media objects) and edited it
 	// using an application which does not support (and deletes) media objects, then add them
 	// back in.
-	if ($keep_media) {
-		$old_linked_media=
+	if ($keep_media && $xref) {
+		$old_linked_media =
 			WT_DB::prepare("SELECT l_to FROM `##link` WHERE l_from=? AND l_file=? AND l_type='OBJE'")
 			->execute(array($xref, $ged_id))
 			->fetchOneColumn();
@@ -658,11 +655,14 @@ function import_record($gedrec, $ged_id, $update) {
 
 	switch ($type) {
 	case 'INDI':
-		$record=new WT_Individual($xref, $gedrec, null, $ged_id);
+		// Convert inline media into media objects
+		$gedrec = convert_inline_media($ged_id, $gedrec);
+
+		$record = new WT_Individual($xref, $gedrec, null, $ged_id);
 		if ($USE_RIN && preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
-			$rin=$match[1];
+			$rin = $match[1];
 		} else {
-			$rin=$xref;
+			$rin = $xref;
 		}
 		$sql_insert_indi->execute(array($xref, $ged_id, $rin, $record->getSex(), $gedrec));
 		// Update the cross-reference/index tables.
@@ -672,75 +672,96 @@ function import_record($gedrec, $ged_id, $update) {
 		update_names ($xref, $ged_id, $record);
 		break;
 	case 'FAM':
-		$record=new WT_Family($xref, $gedrec, null, $ged_id);
+		// Convert inline media into media objects
+		$gedrec = convert_inline_media($ged_id, $gedrec);
+
+		$record = new WT_Family($xref, $gedrec, null, $ged_id);
 		if (preg_match('/\n1 HUSB @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {
-			$husb=$match[1];
+			$husb = $match[1];
 		} else {
-			$husb='';
+			$husb = '';
 		}
 		if (preg_match('/\n1 WIFE @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {
-			$wife=$match[1];
+			$wife = $match[1];
 		} else {
-			$wife='';
+			$wife = '';
 		}
-		if ($nchi=preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {
-			$chil=implode(';', $match[1]).';';
+		if ($nchi = preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {
+			$chil = implode(';', $match[1]).';';
 		} else {
-			$chil='';
+			$chil = '';
 		}
 		if (preg_match('/\n1 NCHI (\d+)/', $gedrec, $match)) {
-			$nchi=max($nchi, $match[1]);
+			$nchi = max($nchi, $match[1]);
 		}
 		$sql_insert_fam->execute(array($xref, $ged_id, $husb, $wife, $gedrec, $nchi));
 		// Update the cross-reference/index tables.
 		update_places($xref, $ged_id, $gedrec);
 		update_dates ($xref, $ged_id, $gedrec);
 		update_links ($xref, $ged_id, $gedrec);
-		//update_names ($xref, $ged_id, $record); We do not store family names in wt_names
 		break;
 	case 'SOUR':
-		$record=new WT_Source($xref, $gedrec, null, $ged_id);
+		// Convert inline media into media objects
+		$gedrec = convert_inline_media($ged_id, $gedrec);
+
+		$record = new WT_Source($xref, $gedrec, null, $ged_id);
 		if (preg_match('/\n1 TITL (.+)/', $gedrec, $match)) {
-			$name=$match[1];
+			$name = $match[1];
 		} elseif (preg_match('/\n1 ABBR (.+)/', $gedrec, $match)) {
-			$name=$match[1];
+			$name = $match[1];
 		} else {
-			$name=$xref;
+			$name = $xref;
 		}
 		$sql_insert_sour->execute(array($xref, $ged_id, $name, $gedrec));
 		// Update the cross-reference/index tables.
-		update_links ($xref, $ged_id, $gedrec);
-		update_names ($xref, $ged_id, $record);
+		update_links($xref, $ged_id, $gedrec);
+		update_names($xref, $ged_id, $record);
 		break;
 	case 'REPO':
-		$record=new WT_Repository($xref, $gedrec, null, $ged_id);
+		// Convert inline media into media objects
+		$gedrec = convert_inline_media($ged_id, $gedrec);
+
+		$record = new WT_Repository($xref, $gedrec, null, $ged_id);
 		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
-		update_links ($xref, $ged_id, $gedrec);
-		update_names ($xref, $ged_id, $record);
+		update_links($xref, $ged_id, $gedrec);
+		update_names($xref, $ged_id, $record);
 		break;
 	case 'NOTE':
-		$record=new WT_Note($xref, $gedrec, null, $ged_id);
+		$record = new WT_Note($xref, $gedrec, null, $ged_id);
+		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
+		// Update the cross-reference/index tables.
+		update_links($xref, $ged_id, $gedrec);
+		update_names($xref, $ged_id, $record);
+		break;
+	case 'OBJE':
+		$record = new WT_Media($xref, $gedrec, null, $ged_id);
+		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
+		// Update the cross-reference/index tables.
+		update_links($xref, $ged_id, $gedrec);
+		update_names($xref, $ged_id, $record);
+		break;
+	case 'HEAD':
+		// Force HEAD records to have a creation date.
+		if (!strpos($gedrec, "\n1 DATE ")) {
+			$gedrec.="\n1 DATE ".date('j M Y');
+		}
+		// No break;
+	case 'TRLR':
+		$xref = $type;
+		// No break;
+	case 'SUBM':
+	case 'SUBN':
+		$record = new WT_GedcomRecord($xref, $gedrec, null, $ged_id);
 		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links ($xref, $ged_id, $gedrec);
-		update_names ($xref, $ged_id, $record);
-		break;
-	case 'OBJE':
-		$record=new WT_Media($xref, $gedrec, null, $ged_id);
-		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
-		// Update the cross-reference/index tables.
-		update_links ($xref, $ged_id, $gedrec);
-		update_names ($xref, $ged_id, $record);
 		break;
 	default:
-		// Custom records beginning with _ frequently do not contain unique
-		// identifiers - so we cannot load them.
-		if (substr($type, 0, 1)!='_') {
-			$record=new WT_GedcomRecord($xref, $gedrec, null, $ged_id);
-			if ($type=='HEAD' && !strpos($gedrec, "\n1 DATE ")) {
-				$gedrec.="\n1 DATE ".date('j M Y');
-			}
+		// Some desktop applications generate custom records without unique XREFs.
+		// We can't load these
+		if ($xref) {
+			$record = new WT_GedcomRecord($xref, $gedrec, null, $ged_id);
 			$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
 			// Update the cross-reference/index tables.
 			update_links ($xref, $ged_id, $gedrec);
@@ -764,7 +785,7 @@ function update_places($gid, $ged_id, $gedrec) {
 	if (!$sql_insert_placelinks) {
 		// Use INSERT IGNORE as a (temporary) fix for https://bugs.launchpad.net/webtrees/+bug/582226
 		// It ignores places that utf8_unicode_ci consider to be the same (i.e. accents).
-		// Of course, there almost certainly are such places .....
+		// For example Québec and Quebec
 		// We need a better solution that attaches multiple names to single places
 		$sql_insert_placelinks=WT_DB::prepare(
 			"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?,?,?)"
@@ -921,7 +942,7 @@ function update_names($xref, $ged_id, $record) {
 }
 
 // Extract inline media data, and convert to media objects
-function convert_inline_media($gid, $ged_id, $gedrec) {
+function convert_inline_media($ged_id, $gedrec) {
 	while (preg_match('/\n1 OBJE(?:\n[2-9].+)+/', $gedrec, $match)) {
 		$gedrec = str_replace($match[0], create_media_object(1, $match[0], $ged_id), $gedrec);
 	}
