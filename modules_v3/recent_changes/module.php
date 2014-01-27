@@ -28,6 +28,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
+	const MAX_DAYS = 90;
 
 	// Extend class WT_Module
 	public function getTitle() {
@@ -119,7 +120,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'days',       WT_Filter::postInteger('days', 1, 30, 7));
+			set_block_setting($block_id, 'days',       WT_Filter::postInteger('days', 1, self::MAX_DAYS, 7));
 			set_block_setting($block_id, 'infoStyle',  WT_Filter::post('infoStyle', 'list|table', 'table'));
 			set_block_setting($block_id, 'sortStyle',  WT_Filter::post('sortStyle', 'name|date_asc|date_desc', 'date_desc'));
 			set_block_setting($block_id, 'hide_empty', WT_Filter::postBool('hide_empty'));
@@ -134,7 +135,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		echo WT_I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="days" size="2" value="', $days, '">';
-		echo ' <em>', WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30), '</em>';
+		echo ' <em>', WT_I18N::plural('maximum %d day', 'maximum %d days', self::MAX_DAYS, self::MAX_DAYS), '</em>';
 		echo '</td></tr>';
 
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
