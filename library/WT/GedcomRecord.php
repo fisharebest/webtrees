@@ -175,15 +175,9 @@ class WT_GedcomRecord {
 		case 'NOTE':
 			$record = new WT_Note($xref, $gedcom, $pending, $gedcom_id);
 			break;
-		case 'HEAD':
-		case 'TRLR':
-		case 'SUBM':
-		case 'SUBN':
-		case 'UNKNOWN':
+		default:
 			$record = new WT_GedcomRecord($xref, $gedcom, $pending, $gedcom_id);
 			break;
-		default:
-			throw new Exception('No support for GEDCOM record type: ' . $type);
 		}
 
 		// Store it in the cache
