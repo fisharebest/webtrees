@@ -1,7 +1,7 @@
 BUILD_DIR=build
 BUILD_NUMBER=$(shell git log --oneline | wc -l)
 BUILD_VERSION=$(if $(WT_RELEASE),$(BUILD_NUMBER),$(WT_VERSION)$(WT_RELEASE))
-GIT_BRANCH=$(git symbolic-ref -q HEAD || git describe --tags --exact-match)
+GIT_BRANCH=$(shell git symbolic-ref -q HEAD || git describe --tags --exact-match)
 LANGUAGE_DIR=language
 LANGUAGE_SRC=$(shell git grep -I --name-only --fixed-strings -e WT_I18N:: -- "*.php" "*.xml")
 MO_FILES=$(patsubst %.po,%.mo,$(PO_FILES))
