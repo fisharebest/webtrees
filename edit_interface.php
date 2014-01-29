@@ -2408,7 +2408,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 		break;
 	case 'update':
 		// When adding/editing a name, specify the type
-		add_simple_tag('0 TYPE '.$name_type);
+		add_simple_tag('0 TYPE ' . $name_type, '', '', null, $person);
 		break;
 	}
 
