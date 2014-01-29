@@ -76,7 +76,7 @@ header('Content-Type: text/html; charset=UTF-8');
 			</p>
 			<ul>
 				<li>Upgrade the web-server from PHP <?php echo PHP_VERSION; ?> to PHP 5.3 or higher.</li>
-				<li>Install (or re-install) webtrees <a href="https://launchpad.net/webtrees/1.4/1.4.4/+download/webtrees-1.4.4.zip">1.4.4</a></li>
+				<li>Install (or re-install) webtrees <a href="https://launchpad.net/webtrees/1.4/1.4.6/+download/webtrees-1.4.6.zip">1.4.6</a></li>
 			</ul>
 		</div>
 	</body>
