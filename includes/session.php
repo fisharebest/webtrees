@@ -31,7 +31,7 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_WEBTREES',     'webtrees');
-define('WT_VERSION',      '1.4.6-dev');
+define('WT_VERSION',      '1.4.6');
 define('WT_VERSION_TEXT', WT_VERSION); // Deprecated
 
 // External URLs
