@@ -348,7 +348,10 @@ function print_addnewsource_link($element_id) {
 * @param string $label An optional label to echo instead of the default
 * @param string $extra optional text to display after the input field
 */
-function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
+function add_simple_tag(
+	$tag, $upperlevel = '', $label = '', $extra = null,
+	WT_Individual $person = null
+) {
 	global $MEDIA_DIRECTORY, $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
 	global $xref, $bdm, $action, $CensDate;
@@ -518,9 +521,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	} else if ($fact=="TEMP") {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Temp::templeNames(), WT_I18N::translate('No temple - living ordinance'), $value);
 	} else if ($fact=="ADOP") {
-		echo edit_field_adop($element_name, $value);
+		echo edit_field_adop($element_name, $value, '', $person);
 	} else if ($fact=="PEDI") {
-		echo edit_field_pedi($element_name, $value);
+		echo edit_field_pedi($element_name, $value, '', $person);
 	} else if ($fact=='STAT') {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Stat::statusNames($upperlevel), '', $value);
 	} else if ($fact=='RELA') {
@@ -636,7 +639,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	// NAME TYPE : hide text field and show a selection list
 	else if ($fact=='TYPE' && $level==0) {
 		$onchange = 'onchange="document.getElementById(\''.$element_id.'\').value=this.value;"';
-		echo edit_field_name_type($element_name, $value, $onchange);
+		echo edit_field_name_type($element_name, $value, $onchange, $person);
 		echo '<script>';
 		echo "document.getElementById('", $element_id, "').style.display='none';";
 		echo '</script>';
@@ -1369,7 +1372,7 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 				$add_date = false;
 			} elseif ($type=='STAT') {
 				add_simple_tag($subrecord, $level1type, WT_Gedcom_Tag::getLabel($label, $person));
-		 	} elseif ($level0type=='REPO') {
+			} elseif ($level0type=='REPO') {
 				$repo = WT_Repository::getInstance($pid);
 				add_simple_tag($subrecord, $level0type, WT_Gedcom_Tag::getLabel($label, $repo));
 			} else {
