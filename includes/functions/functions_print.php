@@ -37,7 +37,7 @@ if (!defined('WT_WEBTREES')) {
 * @param int $count on some charts it is important to keep a count of how many boxes were printed
 */
 function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
-	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $GEDCOM;
+	global $GEDCOM;
 	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;
 	global $chart_style, $box_width, $generations, $show_spouse, $show_full;
@@ -227,16 +227,16 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 // now added as a function here.
 
 function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL) {
-	$header_links='';
-	if (!empty($LINK_CANONICAL)) {
-		$header_links.= '<link rel="canonical" href="'. $LINK_CANONICAL. '">';
+	$header_links = '';
+	if ($LINK_CANONICAL) {
+		$header_links .= '<link rel="canonical" href="' . $LINK_CANONICAL . '">';
 	}
-	if (!empty($META_DESCRIPTION)) {
-		$header_links.= '<meta name="description" content="'. WT_Filter::escapeHtml($META_DESCRIPTION). '">';
+	if ($META_DESCRIPTION) {
+		$header_links .= '<meta name="description" content="' . $META_DESCRIPTION . '">';
 	}
-	$header_links.= '<meta name="robots" content="'. $META_ROBOTS. '">';
-	if (!empty($META_GENERATOR)) {
-		$header_links.= '<meta name="generator" content="'. $META_GENERATOR. '">';
+	$header_links .= '<meta name="robots" content="' . $META_ROBOTS . '">';
+	if ($META_GENERATOR) {
+		$header_links .= '<meta name="generator" content="' . $META_GENERATOR . '">';
 	}
 	return $header_links;
 }
@@ -424,11 +424,12 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 	} else {
 		// A multi-line note, with an expand/collapse option
 		$element_id = uniqid('n-');
+		// NOTE: class "note-details" is (currently) used only by some third-party themes
 		return
 			'<div class="fact_NOTE"><span class="label">' .
 			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . WT_Gedcom_Tag::getLabel($label) . ': ' .
 			'</div>' .
-			'<div id="' . $element_id . '" style="display:none">' . $html . '</div>';
+			'<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>';
 	}
 }
 

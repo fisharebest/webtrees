@@ -2871,7 +2871,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 		var surn=frm.SURN.value;
 		var nsfx=frm.NSFX.value;
 		document.getElementById("NAME").value=generate_name();
-		document.getElementById("NAME_display").innerHTML=frm.NAME.value;
+		document.getElementById("NAME_display").innerText=frm.NAME.value;
 		// Married names inherit some NSFX values, but not these
 		nsfx=nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, "");
 		// Update _MARNM field from _MARNM_SURN field and display it

@@ -175,15 +175,9 @@ class WT_GedcomRecord {
 		case 'NOTE':
 			$record = new WT_Note($xref, $gedcom, $pending, $gedcom_id);
 			break;
-		case 'HEAD':
-		case 'TRLR':
-		case 'SUBM':
-		case 'SUBN':
-		case 'UNKNOWN':
+		default:
 			$record = new WT_GedcomRecord($xref, $gedcom, $pending, $gedcom_id);
 			break;
-		default:
-			throw new Exception('No support for GEDCOM record type: ' . $type);
 		}
 
 		// Store it in the cache
@@ -423,29 +417,42 @@ class WT_GedcomRecord {
 	// ['type'] = the gedcom fact, e.g. NAME, TITL, FONE, _HEB, etc.
 	// ['full'] = the name as specified in the record, e.g. 'Vincent van Gogh' or 'John Unknown'
 	// ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
-	protected function _getAllNames($fact='!', $level=1) {
-		global $WORD_WRAPPED_NOTES;
-
-		if (is_null($this->_getAllNames)) {
-			$this->_getAllNames=array();
-			if ($this->canShowName()) {
-				$sublevel=$level+1;
-				$subsublevel=$sublevel+1;
-				if (preg_match_all("/^{$level} ({$fact}) (.+)((\n[{$sublevel}-9].+)*)/m", $this->getGedcom(), $matches, PREG_SET_ORDER)) {
-					foreach ($matches as $match) {
-						// Treat 1 NAME / 2 TYPE married the same as _MARNM
-						if ($match[1]=='NAME' && strpos($match[3], "\n2 TYPE married")!==false) {
-							$this->_addName('_MARNM', $match[2] ? $match[2] : $this->getFallBackName(), $match[0]);
-						} else {
-							$this->_addName($match[1], $match[2] ? $match[2] : $this->getFallBackName(), $match[0]);
-						}
-						if ($match[3] && preg_match_all("/^{$sublevel} (ROMN|FONE|_\w+) (.+)((\n[{$subsublevel}-9].+)*)/m", $match[3], $submatches, PREG_SET_ORDER)) {
-							foreach ($submatches as $submatch) {
-								$this->_addName($submatch[1], $submatch[2] ? $submatch[2] : $this->getFallBackName(), $submatch[0]);
-							}
+	protected function _extractNames($level, $fact_type, $facts) {
+		$sublevel    = $level + 1;
+		$subsublevel = $sublevel + 1;
+		foreach ($facts as $fact) {
+			if (preg_match_all("/^{$level} ({$fact_type}) (.+)((\n[{$sublevel}-9].+)*)/m", $fact->getGedcom(), $matches, PREG_SET_ORDER)) {
+				foreach ($matches as $match) {
+					// Treat 1 NAME / 2 TYPE married the same as _MARNM
+					if ($match[1]=='NAME' && strpos($match[3], "\n2 TYPE married")!==false) {
+						$this->_addName('_MARNM', $match[2], $fact->getGedcom());
+					} else {
+						$this->_addName($match[1], $match[2], $fact->getGedcom());
+					}
+					if ($match[3] && preg_match_all("/^{$sublevel} (ROMN|FONE|_\w+) (.+)((\n[{$subsublevel}-9].+)*)/m", $match[3], $submatches, PREG_SET_ORDER)) {
+						foreach ($submatches as $submatch) {
+							$this->_addName($submatch[1], $submatch[2], $match[3]);
 						}
 					}
-				} else {
+				}
+			}
+		}
+	}
+
+	// Default for "other" object types
+	public function extractNames() {
+		$this->_addName(static::RECORD_TYPE, $this->getFallBackName(), null);
+	}
+
+	// Derived classes should redefine this function, otherwise the object will have no name
+	public function getAllNames() {
+		if ($this->_getAllNames === null) {
+			$this->_getAllNames = array();
+			if ($this->canShowName()) {
+				// Ask the record to extract its names
+				$this->extractNames();
+				// No name found?  Use a fallback.
+				if (!$this->_getAllNames) {
 					$this->_addName(static::RECORD_TYPE, $this->getFallBackName(), null);
 				}
 			} else {
@@ -453,11 +460,6 @@ class WT_GedcomRecord {
 			}
 		}
 		return $this->_getAllNames;
-	}
-
-	// Derived classes should redefine this function, otherwise the object will have no name
-	public function getAllNames() {
-		return $this->_getAllNames('!', 1);
 	}
 
 	// If this object has no name, what do we call it?
@@ -785,9 +787,11 @@ class WT_GedcomRecord {
 	}
 
 	// The facts and events for this record
-	public function getFacts($filter=null, $sort=false, $access_level=WT_USER_ACCESS_LEVEL) {
+	// $override allows us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES, by giving
+	// access to otherwise private records.
+	public function getFacts($filter=null, $sort=false, $access_level=WT_USER_ACCESS_LEVEL, $override=false) {
 		$facts=array();
-		if ($this->canShow($access_level)) {
+		if ($this->canShow($access_level) || $override) {
 			foreach ($this->facts as $fact) {
 				if (($filter==null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
 					$facts[] = $fact;

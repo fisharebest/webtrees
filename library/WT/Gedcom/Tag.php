@@ -69,7 +69,7 @@ class WT_Gedcom_Tag {
 		'_DEAT_HSIB', '_DEAT_PARE', '_DEAT_SIBL', '_DEAT_SPOU', '_DEG', '_DETS',
 		'_EMAIL', '_EYEC', '_FA1', '_FA2', '_FA3', '_FA4', '_FA5', '_FA6', '_FA7', '_FA8',
 		'_FA9', '_FA10', '_FA11', '_FA12', '_FA13', '_FNRL', '_FREL', '_GEDF', '_GODP', '_HAIR',
-		'_HEB', '_HEIG', '_HNM', '_HOL', '_INTE', '_MARB_CHIL', '_MARB_FAMC', '_MARB_GCHI',
+		'_HEB', '_HEIG', '_HNM', '_HOL', '_INTE', '_LOC', '_MARB_CHIL', '_MARB_FAMC', '_MARB_GCHI',
 		'_MARB_GCH1', '_MARB_GCH2', '_MARB_HSIB', '_MARB_PARE', '_MARB_SIBL', '_MARI',
 		'_MARNM', '_PRIM', '_MARNM_SURN', '_MARR_CHIL', '_MARR_FAMC', '_MARR_GCHI',
 		'_MARR_GCH1', '_MARR_GCH2', '_MARR_HSIB', '_MARR_PARE', '_MARR_SIBL', '_MBON',
@@ -727,6 +727,7 @@ class WT_Gedcom_Tag {
 			case 'F': return /* I18N: gedcom tag _INTE */ WT_I18N::translate_c('FEMALE', 'Interred');
 			default:  return /* I18N: gedcom tag _INTE */ WT_I18N::translate('Interred');
 			}
+		case '_LOC': return /* I18N: gedcom tag _LOC */ WT_I18N::translate('Location');
 		case '_MARI': return /* I18N: gedcom tag _MARI */ WT_I18N::translate('Marriage intention');
 		case '_MARNM': return /* I18N: gedcom tag _MARNM */ WT_I18N::translate('Married name');
 		case '_PRIM': return /* I18N: gedcom tag _PRIM */ WT_I18N::translate('Highlighted image');

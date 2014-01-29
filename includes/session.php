@@ -29,7 +29,7 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_WEBTREES',     'webtrees');
-define('WT_VERSION',      '1.5.2-dev');
+define('WT_VERSION',      '1.5.3-dev');
 define('WT_VERSION_TEXT', WT_VERSION); // Deprecated
 
 // External URLs
@@ -55,7 +55,7 @@ define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.datatables-1.9.4.js'
 define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable-1.7.1.js');
 define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom-1.1.2.js');
 define('WT_MODERNIZR_URL',         WT_STATIC_URL.'js/modernizr.custom-2.6.2.js');
-define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees-1.5.1.js');
+define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees-1.5.2.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
@@ -172,9 +172,12 @@ define('WT_SERVER_NAME',
 	(empty($_SERVER['SERVER_PORT']) || (!$https && $_SERVER['SERVER_PORT']==80) || ($https && $_SERVER['SERVER_PORT']==443) ? '' : ':'.$_SERVER['SERVER_PORT'])
 );
 
+// REDIRECT_URL should be set in the case of Apache following a RedirectRule
 // SCRIPT_NAME should always be correct, but is not always present.
 // PHP_SELF should always be present, but may have trailing path: /path/to/script.php/FOO/BAR
-if (!empty($_SERVER['SCRIPT_NAME'])) {
+if (!empty($_SERVER['REDIRECT_URL'])) {
+	define('WT_SCRIPT_PATH', substr($_SERVER['REDIRECT_URL'], 0, stripos($_SERVER['REDIRECT_URL'], WT_SCRIPT_NAME)));
+} elseif (!empty($_SERVER['SCRIPT_NAME'])) {
 	define('WT_SCRIPT_PATH', substr($_SERVER['SCRIPT_NAME'], 0, stripos($_SERVER['SCRIPT_NAME'], WT_SCRIPT_NAME)));
 } elseif (!empty($_SERVER['PHP_SELF'])) {
 	define('WT_SCRIPT_PATH', substr($_SERVER['PHP_SELF'], 0, stripos($_SERVER['PHP_SELF'], WT_SCRIPT_NAME)));

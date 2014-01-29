@@ -231,7 +231,7 @@ function search_indis_names($query, $geds, $match) {
 	foreach ($query as $q) {
 		$querysql[]="n_full LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
 	}
-	$sql="SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_num FROM `##individuals` JOIN `##name` ON i_id=n_id AND i_file=n_file WHERE (".implode(" {$match} ", $querysql).') AND i_file IN ('.implode(',', $geds).')';
+	$sql="SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full FROM `##individuals` JOIN `##name` ON i_id=n_id AND i_file=n_file WHERE (".implode(" {$match} ", $querysql).') AND i_file IN ('.implode(',', $geds).')';
 
 	// Group results by gedcom, to minimise switching between privacy files
 	$sql.=' ORDER BY gedcom_id';
@@ -247,14 +247,19 @@ function search_indis_names($query, $geds, $match) {
 			$GED_ID=$row->gedcom_id;
 		}
 		$indi=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		// The individual may have private names - and the DB search may have found it.
 		if ($indi->canShowName()) {
-			$indi->setPrimaryName($row->n_num);
-			// We need to clone $indi, as we may have multiple references to the
-			// same person in this list, and the "primary name" would otherwise
-			// be shared amongst all of them.  This has some performance/memory
-			// implications, and there is probably a better way.  This, however,
-			// is clean, easy and works.
-			$list[]=clone $indi;
+			foreach ($indi->getAllNames() as $num => $name) {
+				if ($name['fullNN'] == $row->n_full) {
+					$indi->setPrimaryName($num);
+					// We need to clone $indi, as we may have multiple references to the
+					// same person in this list, and the "primary name" would otherwise
+					// be shared amongst all of them.
+					$list[]=clone $indi;
+					// Only need to match an individual on one name
+					break;
+				}
+			}
 		}
 	}
 	// Switch privacy file if necessary
