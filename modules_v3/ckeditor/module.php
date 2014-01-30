@@ -29,8 +29,8 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class ckeditor_WT_Module extends WT_Module {
-	const VERSION = 'ckeditor-4.2.2-custom';
-	
+	const VERSION = 'ckeditor-4.3.2-custom';
+
 	// Extend WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com */ WT_I18N::translate('CKEditor™');
