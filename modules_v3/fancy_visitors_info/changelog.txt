@@ -1,2 +1,0 @@
-// Changes in 1.5.0
-* getGedcomRecord() is changed in getXref()
