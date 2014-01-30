@@ -36,53 +36,91 @@ var assist_window_specs='width=900,height=800,left=70,top=70,resizable=1,scrollb
 var gmap_window_specs='width=650,height=600,left=200,top=150,resizable=1,scrollbars=1'; // googlemap module place editing
 var fam_nav_specs='width=300,height=600,left=817,top=150,resizable=1,scrollbars=1'; // media_0_inverselink.php
 
-var pastefield, nameElement, remElement; // Elements to paste to
+// Simulate a modal dialog. Not being a 'real' modal allows us to
+// successfully overlay one dialog upon another
+function displayDialog(element, params) {
+
+		element
+		.dialog(
+			jQuery.extend({
+				modal: false,
+				width: 500,
+				position: { my: "top", at: "top+10%", of: window },
+//			show: true,
+				closeText: "",
+				open: function () {
+					var self = this;
+					jQuery(this)
+						.closest('.ui-dialog')
+						.before(
+							jQuery('<div />', {
+								class: 'ui-widget-overlay'
+							})
+								.one('click', function () {
+									jQuery(self).dialog('close');
+								})
+						);
+				},
+				close: function () {
+					// completely remove the html from the page
+					jQuery(this).closest('.ui-dialog').prev('.ui-widget-overlay').remove();
+					jQuery(this).remove();
+				}
+			}, params)
+		);
+}
+
+function modalConfirm(title, text) {
+	var defer = jQuery.Deferred(),
+		el = jQuery('<div />', {
+			title: title,
+			html: text
+		}),
+		params = {
+			buttons: {
+				OK: function () {
+					jQuery(this).dialog('close');
+					defer.resolve(true);
+				},
+				Cancel: function () {
+					jQuery(this).dialog('close');
+					defer.resolve(false);
+				}
+			}
+		};
+
+	displayDialog(el, params);
+    return defer.promise();
+}
+
+// called directly from lightbox module to display media notes
+function modalNotes(content, title) {
+	var el = jQuery('<div />', {
+		title: title,
+		html: content
+	}),
+		params = { buttons: {
+			OK: function () {
+				jQuery(this).dialog('close');
+			}
+		}};
+	displayDialog(el, params);
+	return false;
+}
+
+function helpDialog(which, mod) {
+	jQuery.getJSON('help_text.php?help=' + which + '&mod=' + mod, function (json) {
+		modalNotes(json.content, json.title);
+	});
+}
 
 // Create a modal dialog, fetching the contents from a URL
-function modalDialog(url, title, width) {
-	jQuery('<div title="' + title + '"></div>')
-		.load(url)
-		.dialog({
-			modal: true,
-			width: typeof width === 'undefined' ? 700 : width,
-			open: function() {
-				// Close the window when we click outside it.
-				var self = this;
-				jQuery('.ui-widget-overlay').on('click', function () {
-					jQuery(self).dialog('close');
-				});
-			}
-		});
-
-	return false;
-}
-
-// Create a modal dialog for a help message.
-function helpDialog(topic, module) {
-	var url = 'help_text.php?help=' + topic + '&mod=' + module;
-
-	modalDialog(url + ' .helpcontent', '', 500);
-	jQuery('.ui-dialog-title').load(url + ' .helpheader');
-
-	return false;
-}
-
-// Create a modal dialog to display notes
-function modalNotes(content, title) {
-	jQuery('<div title="' + title + '"></div>')
-		.html(content)
-		.dialog({
-			modal: true,
-			width: 500,
-			open: function() {
-				// Close the window when we click outside it.
-				var self = this;
-				jQuery('.ui-widget-overlay').on('click', function () {
-					jQuery(self).dialog('close');
-				});
-			}
-		});
-
+function modalDialog(url, title) {
+	var el = jQuery('<div />', {
+		title: title
+	})
+		.load(url);
+	displayDialog(el,{width:700});
 	return false;
 }
 
@@ -1543,7 +1581,7 @@ function activate_colorbox(config) {
 		previous:       textDirection=='ltr' ? '\u25c0' : '\u25b6', // ◀ ▶
 		next:           textDirection=='ltr' ? '\u25b6' : '\u25c0', // ▶ ◀
 		slideshowStart: '\u25cb', // ○
-		slideshowStop:  '\u25cf', // ●
+		slideshowStop:  '\u25cf', // �?
 		close:          '\u2715'  // ×
 	});
 	if (config) {
