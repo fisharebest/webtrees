@@ -27,7 +27,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class ckeditor_WT_Module extends WT_Module {
-	const VERSION = 'ckeditor-4.2.2-custom';
+	const VERSION = 'ckeditor-4.3.2-custom';
 
 	// Extend WT_Module
 	public function getTitle() {
