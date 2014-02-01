@@ -222,7 +222,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$ids[] = $row->xref;
 		}
 
-		$vars=array('FAM');
+		$vars=array();
 		if (empty($ids)) {
 			//-- no match : search for FAM id
 			$where = "f_id LIKE ?";
