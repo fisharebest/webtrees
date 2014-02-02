@@ -44,6 +44,13 @@ class WT_Media extends WT_GedcomRecord {
 		} else {
 			$this->file = '';
 		}
+
+		// Convert special chars, e.g. äöü to right windows code page
+		// @see http://stackoverflow.com/questions/2685718/special-characters-in-file-exists-problem-php
+		if (strncasecmp(PHP_OS, 'WIN', 3) == 0) {
+			$this->file = iconv('utf-8', 'cp1252', $this->file);
+		}
+
 		if (preg_match('/\n\d TITL (.+)/', $gedcom.$pending, $match)) {
 			$this->title = $match[1];
 		} else {
