@@ -45,17 +45,42 @@ class WT_Media extends WT_GedcomRecord {
 			$this->file = '';
 		}
 
-		// Convert special chars, e.g. äöü to right windows code page
-		// @see http://stackoverflow.com/questions/2685718/special-characters-in-file-exists-problem-php
-		if (strncasecmp(PHP_OS, 'WIN', 3) == 0) {
-			$this->file = iconv('utf-8', 'cp1252', $this->file);
-		}
-
 		if (preg_match('/\n\d TITL (.+)/', $gedcom.$pending, $match)) {
 			$this->title = $match[1];
 		} else {
 			$this->title = $this->file;
 		}
+	}
+
+	/**
+	 * Get current windows code page.
+	 *
+	 * @return string
+	 */
+	protected static function getWindowsCodePage()
+	{
+		return 'Windows-' . trim(strstr(setlocale(LC_CTYPE, ''), '.'), '.');
+	}
+
+	/**
+	 * Converts a given windows file name to UTF-8 based on
+	 * the current windows code page.
+	 *
+	 * @param string $fileName File name to convert
+	 *
+	 * @return string
+	 */
+	protected static function convertWindowsFileName($fileName)
+	{
+		$codePage = self::getWindowsCodePage();
+
+		if (function_exists('iconv')) {
+			return iconv('UTF-8', $codePage, $fileName);
+		} elseif (function_exists('mb_convert_encoding')) {
+			return mb_convert_encoding($fileName, 'UTF-8', $codePage);
+		}
+
+		return $fileName;
 	}
 
 	// Implement media-specific privacy logic ...
@@ -117,11 +142,24 @@ class WT_Media extends WT_GedcomRecord {
 			// External image, or (in the case of corrupt GEDCOM data) no image at all
 			return $this->file;
 		} elseif ($which=='main') {
+			// Convert special chars, e.g. äöü to right windows code page
+			if (strncasecmp(PHP_OS, 'WIN', 3) == 0) {
+				return self::convertWindowsFileName(
+					WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file
+				);
+			}
+
 			// Main image
 			return WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
 		} else {
 			// Thumbnail
 			$file = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $this->file;
+
+			// Convert special chars, e.g. äöü to right windows code page
+			if (strncasecmp(PHP_OS, 'WIN', 3) == 0) {
+				$file = self::convertWindowsFileName($file);
+			}
+
 			// Does the thumbnail exist?
 			if (file_exists($file)) {
 				return $file;
@@ -138,6 +176,12 @@ class WT_Media extends WT_GedcomRecord {
 			}
 			// Is there a corresponding main image?
 			$main_file = WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
+
+			// Convert special chars, e.g. äöü to right windows code page
+			if (strncasecmp(PHP_OS, 'WIN', 3) == 0) {
+				$main_file = self::convertWindowsFileName($main_file);
+			}
+
 			if (!file_exists($main_file)) {
 				AddToLog('The file ' . $main_file . ' does not exist for ' . $this->getXref(), 'media');
 				return $file;
