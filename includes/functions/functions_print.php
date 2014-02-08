@@ -216,9 +216,9 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	// Output to template
 	$classfacts='';
 	if ($show_full) {
-	   require WT_THEME_DIR.'templates/personbox_template.php';
+		require WT_THEME_DIR.'templates/personbox_template.php';
 	} else {
-	   require WT_THEME_DIR.'templates/compactbox_template.php';
+		require WT_THEME_DIR.'templates/compactbox_template.php';
 	}
 }
 
@@ -392,7 +392,7 @@ function contact_links($ged_id=WT_GED_ID) {
 */
 function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 	global $WT_TREE;
-	
+
 	$text .= get_cont($nlevel, $nrec);
 
 	// Check if shared note (we have already checked that it exists)
@@ -535,69 +535,127 @@ function highlight_search_hits($string) {
 	}
 }
 
-// Print the associations from the associated individuals in $event to the individuals in $record
-function print_asso_rela_record(WT_Fact $event, WT_GedcomRecord $record) {
+/**
+ * Print the associations from the associated individuals in $event to
+ * the individuals in $record.
+ *
+ * @param WT_Fact         $event  Event instance
+ * @param WT_GedcomRecord $record Gedcom record instance
+ *
+ * @return void
+ */
+function print_asso_rela_record(WT_Fact $event, WT_GedcomRecord $record)
+{
 	global $SEARCH_SPIDER;
 
 	// To whom is this record an assocate?
 	if ($record instanceof WT_Individual) {
 		// On an individual page, we just show links to the person
-		$associates=array($record);
+		$associates = array($record);
 	} elseif ($record instanceof WT_Family) {
 		// On a family page, we show links to both spouses
-		$associates=$record->getSpouses();
+		$associates = $record->getSpouses();
 	} else {
 		// On other pages, it does not make sense to show associates
 		return;
 	}
 
-	preg_match_all('/^1 ASSO @('.WT_REGEX_XREF.')@((\n[2-9].*)*)/', $event->getGedcom(), $amatches1, PREG_SET_ORDER);
-	preg_match_all('/\n2 _?ASSO @('.WT_REGEX_XREF.')@((\n[3-9].*)*)/', $event->getGedcom(), $amatches2, PREG_SET_ORDER);
+	$amatches1 = array();
+	$amatches2 = array();
+
+	preg_match_all(
+		'/^1 ASSO @(' . WT_REGEX_XREF . ')@((\n[2-9].*)*)/',
+		$event->getGedcom(),
+		$amatches1,
+		PREG_SET_ORDER
+	);
+
+	preg_match_all(
+		'/\n2 _?ASSO @(' . WT_REGEX_XREF . ')@((\n[3-9].*)*)/',
+		$event->getGedcom(),
+		$amatches2,
+		PREG_SET_ORDER
+	);
+
 	// For each ASSO record
 	foreach (array_merge($amatches1, $amatches2) as $amatch) {
-		$person=WT_Individual::getInstance($amatch[1]);
+		$person = WT_Individual::getInstance($amatch[1]);
+		$rmatch = array();
+
 		if ($person) {
 			if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
-				$rela=$rmatch[1];
+				$rela = $rmatch[1];
 			} else {
-				$rela='';
+				$rela = '';
 			}
-			$html=array();
+
+			$html = array();
+
 			foreach ($associates as $associate) {
 				if ($associate) {
+					$relationshipName = get_associate_relationship_name($associate, $person);
+
+					$label   = '';
+					$label_2 = '';
+
 					if ($rela) {
-						$label='<span class="rela_type">'.WT_Gedcom_Code_Rela::getValue($rela, $person).':&nbsp;</span>';
-						$label_2='<span class="rela_name">'.get_associate_relationship_name($associate, $person).'</span>';
-					} else {
-						// Generate an automatic RELA
-						$label='';
-						$label_2='<span class="rela_name">'.get_associate_relationship_name($associate, $person).'</span>';
-					}
-					if (!$label && !$label_2) {
-						$label=WT_I18N::translate('Relationships');
-						$label_2='';
-					}
-					// For family records (e.g. MARR), identify the spouse with a sex icon
-					if ($record instanceof WT_Family) {
-						$label_2=$associate->getSexImage().$label_2;
+						$label = '<span class="rela_type">'
+							. WT_Gedcom_Code_Rela::getValue($rela, $person)
+							. ':&nbsp;</span>';
 					}
 
-					if ($SEARCH_SPIDER) {
-						$html[]=$label_2; // Search engines cannot use the relationship chart.
-					} else {
-						$html[]='<a href="relationship.php?pid1='.$associate->getXref().'&amp;pid2='.$person->getXref().'&amp;ged='.WT_GEDURL.'">'.$label_2.'</a>';
+					if ($relationshipName) {
+						$label_2 = '<span class="rela_name">'
+							. $relationshipName . '</span>';
+					}
+
+					if (!$label && !$label_2) {
+						$label   = WT_I18N::translate('Relationships');
+						$label_2 = '';
+					}
+
+					if ($label_2) {
+						// For family records (e.g. MARR), identify the spouse with a sex icon
+						if ($record instanceof WT_Family) {
+							$label_2 = $associate->getSexImage() . $label_2;
+						}
+
+						if ($SEARCH_SPIDER) {
+							// Search engines cannot use the relationship chart.
+							$html[] = $label_2;
+						} else {
+							$html[] = sprintf(
+								'<a href="relationship.php?%s">%s</a>',
+								http_build_query(
+									array(
+										'pid1' => $associate->getXref(),
+										'pid2' => $person->getXref(),
+										'ged'  => WT_GEDURL,
+									),
+									'',
+									'&amp;'
+								),
+								$label_2
+							);
+						}
 					}
 				}
 			}
-			$html=array_unique($html);
-			echo
-				'<div class="fact_ASSO">',$label,
+
+			$html = array_unique($html);
+
+			echo sprintf(
+				'<div class="fact_ASSO">%s%s%s<a href="%s">%s</a></div>',
+				$label,
 				implode(WT_I18N::$list_separator, $html),
-				' - ',
-				'<a href="', $person->getHtmlUrl().'">', $person->getFullName(), '</a>';
-				echo '</div>';
+				$label_2 ? ' - ' : '',
+				$person->getHtmlUrl(),
+				$person->getFullName()
+			);
 		} else {
-			echo WT_Gedcom_Tag::getLabelValue('ASSO', '<span class="error">' . $amatch[1] . '</span>');
+			echo WT_Gedcom_Tag::getLabelValue(
+				'ASSO', '<span class="error">' . $amatch[1] . '</span>'
+			);
 		}
 	}
 }
@@ -712,6 +770,7 @@ function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false
 				if ((WT_Date::Compare($date, $death_date)<=0 || !$record->isDead()) || $fact=='DEAT') {
 					// Before death, print age
 					$age=WT_Date::GetAgeGedcom($birth_date, $date);
+
 					// Only show calculated age if it differs from recorded age
 					if ($age!='') {
 						if (
