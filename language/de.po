@@ -1130,7 +1130,7 @@ msgstr "Adar II"
 #: modules_v3/gedcom_favorites/module.php:194
 #: modules_v3/googlemap/admin_places.php:634 timeline.php:293
 msgid "Add"
-msgstr "hinzufügen"
+msgstr "Hinzufügen"
 
 #: modules_v3/googlemap/admin_places.php:629
 msgid "Add  a new geographic location"
@@ -1206,7 +1206,7 @@ msgstr "Vater hinzufügen"
 
 #: modules_v3/gedcom_favorites/module.php:169
 msgid "Add a new favorite"
-msgstr "Neues Lesezeichen hinzufügen"
+msgstr "Neuen Favoriten hinzufügen"
 
 #: edit_interface.php:836 edit_interface.php:926
 #: modules_v3/relatives/module.php:362
@@ -1407,7 +1407,7 @@ msgstr "Hinzufügen zum Sammelbehälter"
 #: library/WT/Controller/Note.php:78 library/WT/Controller/Repository.php:83
 #: library/WT/Controller/Source.php:83 library/WT/MenuBar.php:526
 msgid "Add to favorites"
-msgstr "zu Favoriten hinzufügen"
+msgstr "Zu Favoriten hinzufügen"
 
 #: admin_site_other.php:31 admin_site_other.php:37
 #: themes/_administration/header.php:120
@@ -2096,7 +2096,7 @@ msgstr "Sind Sie sicher, dass Sie die Verknüpfungen zu diesem Medienobjekt entf
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
-msgstr "Möchten Sie dieses Lesezeichen wirklich löschen?"
+msgstr "Möchten Sie dieses Element wirklich aus der Liste der Favoriten entfernen?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
@@ -5158,12 +5158,12 @@ msgstr "Alles zeigen"
 #. I18N: Description of the “Favorites” module
 #: modules_v3/gedcom_favorites/module.php:39
 msgid "Display and manage a family tree’s favorite pages."
-msgstr "Anzeigen und Verwalten der Stammbaumfavoritenseiten"
+msgstr "Anzeigen und Verwalten der Favoritenseiten eines Stammbaums."
 
 #. I18N: Description of the “Favorites” module
 #: modules_v3/user_favorites/module.php:35
 msgid "Display and manage a user’s favorite pages."
-msgstr "Anzeigen und Verwalten der Benutzer-Favoriten."
+msgstr "Anzeigen und Verwalten der Favoritenseiten eines Benutzers."
 
 #: modules_v3/googlemap/help_text.php:90 modules_v3/googlemap/module.php:415
 msgid "Display short placenames"
@@ -5578,11 +5578,11 @@ msgstr "Personen-ID eingeben"
 
 #: addmedia.php:433 modules_v3/gedcom_favorites/module.php:178
 msgid "Enter an individual, family, or source ID"
-msgstr "Personen, Familien oder Quellen Id eingeben"
+msgstr "Personen-, Familien- oder Quellen-Id eingeben"
 
 #: modules_v3/gedcom_favorites/module.php:191
 msgid "Enter an optional note about this favorite"
-msgstr "Gebe eine zusätzliche Bemerkung zu dem Lesezeichen ein"
+msgstr "Tragen Sie eine zusätzliche Bemerkung zu diesem Favoriten ein"
 
 #: modules_v3/googlemap/help_text.php:73
 msgid "Enter filename"
@@ -6190,7 +6190,7 @@ msgstr "Familie des Vaters mit einer unbekannten Person"
 #: help_text.php:1252 library/WT/MenuBar.php:502
 #: modules_v3/gedcom_favorites/module.php:34
 msgid "Favorites"
-msgstr "Lesezeichen"
+msgstr "Favoriten"
 
 #. I18N: gedcom tag FAX
 #: library/WT/Gedcom/Tag.php:210
@@ -11414,7 +11414,7 @@ msgstr "Fremder Server"
 #: modules_v3/gedcom_favorites/module.php:123
 #: modules_v3/googlemap/admin_places.php:615
 msgid "Remove"
-msgstr "löschen"
+msgstr "Löschen"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:140
 msgid "Remove Link from list"
@@ -13331,7 +13331,7 @@ msgstr "Die FAQ Liste ist leer."
 
 #: help_text.php:1253
 msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
-msgstr "Diese Liste zeigt Ihnen Ihre Lesezeichen, sofern Sie welche erstellt haben. Sie zeigt auch die Lesezeichen, die der Verwalter für die GEDCOM-Datei erstellt hat.<br><br>Wenn Sie auf eines Ihrer Lesezeichen klicken, gelangen Sie zur Seite mit persönlichen Informationen zur jeweiligen Person. Weitere Hilfe zum Erstellen von Lesezeichen finden Sie unter Ihrem persönlichen Portal."
+msgstr "Diese Liste zeigt Ihnen Ihre Favoriten, sofern Sie welche erstellt haben. Sie zeigt auch die Favoriten, die der Verwalter für die GEDCOM-Datei erstellt hat.<br><br>Wenn Sie auf einen Ihrer Favoriten klicken, gelangen Sie zur Seite mit persönlichen Informationen zur jeweiligen Person. Weitere Hilfe zum Erstellen von Favoriten finden Sie unter Ihrem persönlichen Portal."
 
 #: library/WT/Gedcom/Code/Temp.php:104
 msgid "The Hague, Netherlands"
@@ -16529,7 +16529,7 @@ msgstr "Schwiegervater"
 
 #: admin_site_merge.php:212
 msgid "favorites updated."
-msgstr "Lesezeichen aktualisiert."
+msgstr "Favoriten aktualisiert."
 
 #: includes/functions/functions.php:694
 msgctxt "FEMALE"
