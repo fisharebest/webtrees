@@ -16618,7 +16618,7 @@ msgstr "erster %s"
 #: includes/functions/functions.php:680
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr "Cousine 1. Grades"
+msgstr "Cousine"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:661
@@ -16634,12 +16634,12 @@ msgstr "Cousin/e"
 #: includes/functions/functions.php:1008
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr "Cousin 1. Grades"
+msgstr "Cousin/e"
 
 #: includes/functions/functions.php:1009
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr "Cousin 1. Grades"
+msgstr "Cousine"
 
 #: includes/functions/functions.php:1010
 msgctxt "father’s brother’s son"
@@ -16649,7 +16649,7 @@ msgstr "Cousin"
 #: includes/functions/functions.php:1030
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr "Cousin"
+msgstr "Cousin/e"
 
 #: includes/functions/functions.php:1031
 msgctxt "father’s sister’s daughter"
@@ -16659,7 +16659,7 @@ msgstr "Cousine"
 #: includes/functions/functions.php:1033
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr "Cousine"
+msgstr "Cousin"
 
 #: includes/functions/functions.php:1039
 msgctxt "mother’s brother’s child"
