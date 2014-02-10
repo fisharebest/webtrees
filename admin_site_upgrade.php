@@ -36,7 +36,7 @@ $latest_version_html = '<span dir="ltr">' . $latest_version . '</span>';
 $download_url_html   = '<b dir="auto"><a href="' . WT_Filter::escapeHtml($download_url) . '">' . WT_Filter::escapeHtml($download_url) . '</a></b>';
 
 // Show a friendly message while the site is being upgraded
-$lock_file           = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'site-offline.txt';
+$lock_file           = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'offline.txt';
 $lock_file_html      = '<span dir="ltr">' . WT_Filter::escapeHtml($lock_file) . '</span>';
 $lock_file_text      = WT_I18N::translate('This site is being upgraded.  Try again in a few minutes.') . PHP_EOL . format_timestamp(WT_TIMESTAMP) .  WT_I18N::translate('UTC');
 
@@ -377,7 +377,7 @@ echo '</li>'; flush();
 echo '<li>', WT_I18N::translate('Check file permissions…');
 
 $iterator = new RecursiveDirectoryIterator($zip_dir);
-$iterator->setFlags(RecursiveDirectoryIterator::SKIP_DOTS);
+//$iterator->setFlags(RecursiveDirectoryIterator::SKIP_DOTS);
 foreach (new RecursiveIteratorIterator($iterator) as $file) {
 	$file = WT_ROOT . substr($file, strlen($zip_dir) + 1);
 	if (file_exists($file) && (!is_readable($file) || !is_writable($file))) {
