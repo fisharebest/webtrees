@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-01-28 07:54+0000\n"
-"PO-Revision-Date: 2013-06-24 05:42+0000\n"
-"Last-Translator: rybog <rybog@web.de>\n"
+"PO-Revision-Date: 2014-02-09 18:25+0100\n"
+"Last-Translator: Bogie\n"
 "Language-Team: \n"
-"Language: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
-"X-Generator: Launchpad (build 16718)\n"
+"X-Generator: Poedit 1.6.3\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -661,7 +661,7 @@ msgstr "<voreingestelltes Layout>"
 
 #: login.php:394
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
-msgstr "<div class=\"largeError\">Bitte beachten Sie:</div><div class=\\\"error\\\">Indem Sie dieses ausgefüllte Formular einsenden, bestätigen Sie Ihr Einverständnis mit den folgenden Bedingungen:<ul><li>daß Sie immer Informationen über lebende Personen, die in dieser Datenbank vorkommen, vertraulich halten;</li><li>und daß Sie in der unten stehenden Textbox Ihre Verwandtschaft zu Personen in dieser Datenbank erklären oder uns Informationen über Personen, die in dieser Datenbank vorkommen sollten aber dort fehlen, mitteilen.</li></ul></div>"
+msgstr "<div class=\"largeError\">Bitte beachten Sie:</div><div class=\\\"error\\\">Indem Sie dieses ausgefüllte Formular einsenden, bestätigen Sie Ihr Einverständnis mit den folgenden Bedingungen:<ul><li>dass Sie Informationen über lebende Personen, die in dieser Datenbank vorkommen, immer vertraulich halten;</li><li>und dass Sie in der unten stehenden Textbox Ihre Verwandtschaft zu Personen in dieser Datenbank erklären und Informationen über Personen, die in dieser Datenbank vorkommen, aber dort eventuell fehlen sollten, mitteilen.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
 #: library/WT/Gedcom/Tag.php:843
@@ -752,7 +752,7 @@ msgstr "Liste der am häufigsten gesehenen Seiten"
 #. I18N: Description of the “Who is online” module
 #: modules_v3/logged_in/module.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr "Liste der aktuell am System angemeldeten Personen"
+msgstr "Liste der aktuell am System angemeldeten Benutzer"
 
 #: help_text.php:309
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -1391,7 +1391,7 @@ msgstr "Diese Person, seinen Ehepartner, und seine Kinder"
 
 #: modules_v3/clippings/module.php:128 modules_v3/clippings/module.php:548
 msgid "Add this source and families/individuals linked to it."
-msgstr "Diese Quelle sowie alle mit ihr verbundene Familien und Personen"
+msgstr "Diese Quelle sowie alle mit ihr verbundenen Familien und Personen"
 
 #: admin_trees_config.php:424 help_text.php:693
 msgid "Add to TITLE header tag"
@@ -1783,19 +1783,19 @@ msgstr "Alles"
 
 #: help_text.php:1310
 msgid "All changes in PGV must be accepted"
-msgstr "Alle Änderungen in PGV müssen angenommen worden sein."
+msgstr "Alle Änderungen in PGV müssen angenommen werden."
 
 #: help_text.php:1316
 msgid "All existing PGV users must have distinct email addresses"
-msgstr "Alle vorhandenen PGV-Benutzer müssen eine einmalige E-Mail-Adresse haben."
+msgstr "Alle vorhandenen PGV-Benutzer müssen eine eindeutige E-Mail-Adresse haben."
 
 #: admin_trees_config.php:1136 help_text.php:505
 msgid "All family facts"
-msgstr "Alle Familienereignisse"
+msgstr "Alle Tatsachen und Ereignisse von Familien"
 
 #: login.php:400
 msgid "All fields must be completed."
-msgstr "Alle Felder müssen ausgefüllt werden."
+msgstr "Alle Felder müssen ausgefüllt sein."
 
 #: admin_site_upgrade.php:394
 msgid "All files have read and write permission."
@@ -1803,7 +1803,7 @@ msgstr "Alle Dateien haben Lese- und Schreibberechtigung."
 
 #: admin_trees_config.php:1099 help_text.php:592
 msgid "All individual facts"
-msgstr "Alle Personenereignisse"
+msgstr "Alle Tatsachen und Ereignisse von Personen"
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
@@ -1812,11 +1812,11 @@ msgstr "Alle Personen"
 
 #: admin_trees_config.php:1202 help_text.php:798
 msgid "All repository facts"
-msgstr "Alle Archivdaten"
+msgstr "Alle Tatsachen und Ereignisse von Archive"
 
 #: admin_trees_config.php:1173 help_text.php:909
 msgid "All source facts"
-msgstr "Alle Quellendaten"
+msgstr "Alle Tatsachen und Ereignisse von Quellen"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -2258,7 +2258,7 @@ msgstr "Global einmalig vorkommende ID-Nummern erstellen"
 
 #: admin_trees_config.php:847 help_text.php:495
 msgid "Automatically expand list of events of close relatives"
-msgstr "Ereignisliste naher Verwandten automatisch erweitern"
+msgstr "Ereignisliste naher Verwandter automatisch erweitern"
 
 #: admin_trees_config.php:1020 help_text.php:490
 msgid "Automatically expand notes"
@@ -2294,7 +2294,7 @@ msgstr "Verfügbare Blöcke"
 
 #: includes/functions/functions_print_lists.php:1945 library/WT/Stats.php:2367
 msgid "Average age"
-msgstr "Durchschnitt: Todesalter"
+msgstr "Durchschnitt Todesalter"
 
 #: library/WT/Stats.php:1627 modules_v3/gedcom_stats/module.php:162
 #: modules_v3/gedcom_stats/module.php:341 modules_v3/html/module.php:240
@@ -2732,7 +2732,7 @@ msgstr "Geburt eines Bruders"
 
 #: library/WT/Gedcom/Tag.php:426
 msgid "Birth of a child"
-msgstr "Kind: Geburt"
+msgstr "Geburt: Kind"
 
 #: library/WT/Gedcom/Tag.php:425
 msgid "Birth of a daughter"
@@ -2741,7 +2741,7 @@ msgstr "Geburt einer Tochter"
 #: library/WT/Gedcom/Tag.php:432 library/WT/Gedcom/Tag.php:438
 #: library/WT/Gedcom/Tag.php:444
 msgid "Birth of a grandchild"
-msgstr "Enkel: Geburt"
+msgstr "Geburt: Enkel"
 
 #: library/WT/Gedcom/Tag.php:431
 msgid "Birth of a granddaughter"
@@ -2777,7 +2777,7 @@ msgstr "Geburt eines Halb-Bruders"
 
 #: library/WT/Gedcom/Tag.php:450
 msgid "Birth of a half-sibling"
-msgstr "Halbgeschwister: Geburt"
+msgstr "Geburt: Halbgeschwister"
 
 #: library/WT/Gedcom/Tag.php:449
 msgid "Birth of a half-sister"
@@ -2785,7 +2785,7 @@ msgstr "Geburt einer Halb-Schwester"
 
 #: library/WT/Gedcom/Tag.php:456
 msgid "Birth of a sibling"
-msgstr "Geschwister: Geburt"
+msgstr "Geburt: Geschwister"
 
 #: library/WT/Gedcom/Tag.php:455
 msgid "Birth of a sister"
@@ -3501,7 +3501,7 @@ msgstr "Kinder von "
 #. I18N: In the Icelandic surname tradition, ...
 #: help_text.php:964
 msgid "Children take a patronym instead of a surname."
-msgstr "Kinder erhalten eher einen Familiennamen als einen Nachnamens"
+msgstr "Kinder erhalten eher einen Familiennamen als einen Nachnamen."
 
 #. I18N: In the Spanish surname tradition, ...
 #: help_text.php:954
@@ -4224,7 +4224,7 @@ msgstr "Benutzerdefiniertes Thema"
 
 #: admin_site_config.php:163 help_text.php:1039
 msgid "Custom welcome text"
-msgstr "Selbsterstellter Text"
+msgstr " individualisierter Begrüßungstext"
 
 #: library/WT/Stats.php:3808
 msgid "Cyprus"
@@ -4444,7 +4444,7 @@ msgstr "Zeitraum"
 
 #: help_text.php:196
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr "Eine Zeitdauer wird benutzt, um anzuzeigen, daß ein Ereignis, wie eine Beschäftigung, über einen Zeitraum hin andauerten."
+msgstr "Eine Zeitdauer wird benutzt, um anzuzeigen, dass ein Ereignis, wie eine Beschäftigung, über einen Zeitraum hin andauerten."
 
 #: help_text.php:187 statistics.php:646
 msgid "Date range"
@@ -4452,7 +4452,7 @@ msgstr "Datumsbereich"
 
 #: help_text.php:185
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
-msgstr "Zeitspannen werden benutzt, um anzuzeigen, daß ein Ereignis, wie eine Geburt, an einem nicht bekannten Datum innerhalb eines Bereichs stattfand."
+msgstr "Zeitspannen werden benutzt, um anzuzeigen, dass ein Ereignis, wie eine Geburt, an einem nicht bekannten Datum innerhalb eines Bereichs stattfand."
 
 #: admin_users.php:577
 msgid "Date registered"
@@ -4642,7 +4642,7 @@ msgstr "Tod eines Bruders"
 
 #: library/WT/Gedcom/Tag.php:635
 msgid "Death of a child"
-msgstr "Kind: Tod"
+msgstr "Tod: Kind"
 
 #: library/WT/Gedcom/Tag.php:634
 msgid "Death of a daughter"
@@ -4650,17 +4650,17 @@ msgstr "Tod einer Tochter"
 
 #: library/WT/Gedcom/Tag.php:681
 msgid "Death of a father"
-msgstr "Vater: Tod"
+msgstr "Tod: Vater"
 
 #: library/WT/Gedcom/Tag.php:659 library/WT/Gedcom/Tag.php:665
 #: library/WT/Gedcom/Tag.php:671
 msgid "Death of a grand-parent"
-msgstr "Großeltern: Tod"
+msgstr "Tod: Großeltern"
 
 #: library/WT/Gedcom/Tag.php:641 library/WT/Gedcom/Tag.php:647
 #: library/WT/Gedcom/Tag.php:653
 msgid "Death of a grandchild"
-msgstr "Enkel: Tod"
+msgstr "Tod: Enkel"
 
 #: library/WT/Gedcom/Tag.php:640
 msgid "Death of a granddaughter"
@@ -4704,7 +4704,7 @@ msgstr "Tod eines Halb-Bruders"
 
 #: library/WT/Gedcom/Tag.php:677
 msgid "Death of a half-sibling"
-msgstr "Halbgeschwister: Tod"
+msgstr "Tod: Halbgeschwister"
 
 #: library/WT/Gedcom/Tag.php:676
 msgid "Death of a half-sister"
@@ -4724,7 +4724,7 @@ msgstr "Tod einer Großmutter"
 
 #: library/WT/Gedcom/Tag.php:682
 msgid "Death of a mother"
-msgstr "Mutter: Tod"
+msgstr "Tod: Mutter"
 
 #: library/WT/Gedcom/Tag.php:683
 msgid "Death of a parent"
@@ -4740,7 +4740,7 @@ msgstr "Tod einer Großmutter"
 
 #: library/WT/Gedcom/Tag.php:689
 msgid "Death of a sibling"
-msgstr "Geschwister: Tod"
+msgstr "Tod: Geschwister"
 
 #: library/WT/Gedcom/Tag.php:688
 msgid "Death of a sister"
@@ -4752,7 +4752,7 @@ msgstr "Tod eines Sohnes"
 
 #: library/WT/Gedcom/Tag.php:695
 msgid "Death of a spouse"
-msgstr "Ehegatte: Tod"
+msgstr "Tod: Ehegatte"
 
 #: library/WT/Gedcom/Tag.php:694
 msgid "Death of a wife"
@@ -4852,7 +4852,7 @@ msgstr "Voreinstellung für Stammbaumgenerationen"
 
 #: admin_site_config.php:88 admin_trees_config.php:455
 msgid "Default theme"
-msgstr "Standard Design"
+msgstr "Standard Thema"
 
 #. I18N: gedcom tag _DEG
 #: library/WT/Gedcom/Tag.php:697
@@ -5603,7 +5603,7 @@ msgstr "Bericht Daten eingeben"
 
 #: help_text.php:263
 msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
-msgstr "Die FAX Nummer einschließlich der internationalen und lokalen Vorwahlnummer eingeben.  Bei lokalen Vorwahlnummern die erste Null nicht eingegeben.<br><br>Das leere Feld bedeutet, dass keine FAX Nummer vorhanden ist.<br><br>Beispiele wären <b>+49&nbsp;561&nbsp;56&nbsp;76&nbsp;89</b> für Nummern in Deutschland oder <b>+1&nbsp;888&nbsp;555-1212</b> für Nummern in USA oder Kanada."
+msgstr "Die FAX Nummer einschließlich der internationalen und lokalen Vorwahlnummer eingeben. Bei lokalen Vorwahlnummern die erste Null nicht eingegeben.<br><br>Das leere Feld bedeutet, dass keine FAX Nummer vorhanden ist.<br><br>Beispiele wären <b>+49&nbsp;561&nbsp;56&nbsp;76&nbsp;89</b> für Nummern in Deutschland oder <b>+1&nbsp;888&nbsp;555-1212</b> für Nummern in USA oder Kanada."
 
 #: help_text.php:388
 msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
@@ -5910,11 +5910,11 @@ msgstr "Personenereignisse"
 
 #: admin_trees_config.php:1152 help_text.php:793
 msgid "Facts for new families"
-msgstr "Ereignisse für neu angelegte Familien"
+msgstr "Tatsachen und Ereignisse von neu angelegten Familien"
 
 #: admin_trees_config.php:1115 help_text.php:788
 msgid "Facts for new individuals"
-msgstr "Ereignisse für neu angelegte Personen"
+msgstr "Tatsachen und Ereignisse von neu angelegten Personen"
 
 #: admin_trees_config.php:1197
 msgid "Facts for repository records"
@@ -6631,7 +6631,7 @@ msgstr "GEDCOM-Datei"
 #: help_text.php:1217 help_text.php:1263
 #, php-format
 msgid "GEDCOM files are stored in the %s folder."
-msgstr "GEDCOM-Dateien werden im dem Ordner %s gespeichert."
+msgstr "GEDCOM-Dateien werden im Ordner %s gespeichert."
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_config.php:635 help_text.php:544
@@ -7076,7 +7076,7 @@ msgstr "Hier wird die Vergrößerungsstufe eingetragen. Der Wert stellt die klei
 
 #: help_text.php:1059
 msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
-msgstr "Hier können Sie ein Ereignis zu einer Person hinzufügen.<br><br>Wählen Sie zunächst das Ereignis aus der Liste, klicken Sie dann den «Hinzufügen» Button. In der Liste befinden sich schon alle möglichen Ereignisse, die zum Hinzufügen in Frage kommen."
+msgstr "Hier können Sie ein Ereignis zu einer Person hinzufügen.<br><br>Wählen Sie zunächst das Ereignis aus der Liste, klicken Sie dann die Schaltfläche «Hinzufügen» . In der Liste befinden sich schon alle möglichen Ereignisse, die zum Hinzufügen in Frage kommen."
 
 #: help_text.php:1089
 msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
@@ -7092,7 +7092,7 @@ msgstr "Hier bestimmen Sie, wie die Orte angezeigt werden sollen. Bei Ja werden 
 
 #: help_text.php:1045
 msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
-msgstr "Hier können Sie den auf den Loginbildschirm erscheinenden Text definieren. Sie müssen bestimmen, welcher vordefinierte Text am besten zur Beschreibung Ihrer Zugangsregelung/ -beschränkung geeignet ist.<br><br>Sie können aber auch Ihren eigenen, individulisierten Begrüßungstext eingeben. <b> Bitte beachten Sie hierzu die Hilfetexte, die mit dem individualisiertem Begrüßungstext verbunden sind</b> Feld für weitere Informationen<br><br>Die vordefinierten Standardtexte sind: <ul><li><b>Textbausteine die mitteilen, dass alle Nutzer, unabhängig vom Bezug zur Ihrer Genealogie, ein Benutzerkonto beantragen können:</b><div class=\"list_value_wrap\"> <center> <b> Herzlich Willkommen auf dieser Genealogie Webseite</b></center><br>Der Zugang zu dieser Webseite ist jedem Besucher möglich, der ein Benutzerkonto besitzt.<br><br>Wenn Sie bereits ein Benutzerkonto besitzen, können Sie sich auf dieser Seite anmelden. Wenn Sie noch nicht über ein Benutzerkonto verfügen, können Sie es hier beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Webseitenadministrator Ihr Konto zu aktivieren. Sie erhalten eine Benachrichtigung per E-Mail, sobald Ihr Antrag genehmigt wurde</div><br></li><li><b> Standardtext, der besagt, dass bei jeder Anfrage für ein Benutzerkonto der Adminsitrator entscheidet :</b>< div class=\"list_value_wrap\"><center><b>Willkommen auf dieser Genealogie-Webseite</b></center><br>Der Zugang zu dieser Webseite ist nur <u>autorisierten</u> Benutzern gestattet.<br><br>Wenn Sie bereits ein Benutzerkonto haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch nicht über ein Benutzerkonto verfügen, können Sie es beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Webseitenadministrator Ihren Antrag entweder genehmigen oder ablehnen. Sie erhalten eine E-Mail-Nachricht, wenn Ihr Antrag genehmigt wurde</div><br></li><li><b>Standardtext, dass nur Familienmitglieder ein Benutzerkonto beantragen können:</u>.</b><div class = \"list_value_wrap\"><center><b>Willkommen auf dieser Genealogie-Webseite</b></center><br>Der Zugang zu dieser Webseite ist, <u>nur Familienmitgliedern</u> möglich.<br><br>Wenn Sie bereits ein Benutzerkonto besitzen, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto haben, können Sie es beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Nach Überprüfung Ihrer Informationen, insbesondere in Bezug auf Ihre Familienzugehörigkeit, wird der Webseitenadministrator Ihren Antrag entweder genehmigen oder ablehnen. Sie erhalten eine E-Mail, sobald Ihr Antrag genehmigt wurde.</div></li></ul>"
+msgstr "Hier können Sie den Text auf dem Login-Bildschirm wählen. Sie müssen festlegen, welcher vordefinierte Text am besten passt.<br><br>Sie können aber auch Ihren eigenen, individualisierten Begrüßungstext eingeben. Bitte beachten Sie für weitere Informationen die Hilfetexte, die mit dem Feld <b>individualisierter Begrüßungstext</b> verbunden sind.<br><br>Die vordefinierten Standardtexte sind:<ul><li><b>Textbausteine die mitteilen, dass alle Benutzer ein Benutzerkonto beantragen können:</b><div class=\"list_value_wrap\"><center><b> Willkommen auf dieser Genealogie Webseite</b></center><br>Der Zugang zu dieser Webseite ist jedem Besucher mit einem Benutzerkonto möglich.<br><br>Wenn Sie bereits ein Benutzerkonto haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto haben, können Sie es beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Webseitenadministrator Ihr Konto zu aktivieren. Sie erhalten eine E-Mail, sobald Ihr Antrag genehmigt wurde</div><br></li><li><b>Standardtext, der besagt, dass bei jeder Anfrage für ein Benutzerkonto der Administrator entscheidet:</b><div class=\"list_value_wrap\"><center><b>Willkommen auf dieser Genealogie-Webseite</b></center><br>Der Zugang zu dieser Webseite ist nur <u>autorisierten</u> Benutzern gestattet.<br><br>Wenn Sie bereits ein Benutzerkonto haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto haben, können Sie es beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Administrator Ihren Antrag entweder genehmigen oder ablehnen. Sie erhalten eine E-Mail, wenn Ihr Antrag genehmigt wurde</div><br></li><li><b>Standardtext, dass nur Familienmitglieder ein Benutzerkonto beantragen können:</b><div class = \"list_value_wrap\"><center><b>Willkommen auf dieser Genealogie-Webseite</b></center><br>Der Zugang zu dieser Webseite ist <u>nur Familienmitgliedern</u> möglich.<br><br>Wenn Sie bereits ein Benutzerkonto besitzen, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto haben, können Sie es beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Nach Überprüfung Ihrer Informationen, wird der Administrator Ihren Antrag entweder genehmigen oder ablehnen. Sie erhalten eine E-Mail, sobald Ihr Antrag genehmigt wurde.</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
 msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
@@ -7133,7 +7133,7 @@ msgstr "Flaggen verstecken"
 #: admin_trees_config.php:39 admin_trees_config.php:650
 #: includes/functions/functions_edit.php:199
 msgid "Hide from everyone"
-msgstr "niemand zeigen"
+msgstr "für niemand zeigen"
 
 #: modules_v3/googlemap/help_text.php:97 modules_v3/googlemap/module.php:680
 msgid "Hide lines"
@@ -7367,7 +7367,7 @@ msgstr "Wenn Sie eine große Menge an Mediendateien haben, können Sie sie in Un
 
 #: help_text.php:1077
 msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
-msgstr "Wenn Sie diesem Datensatz um eine Notiz ergänzen möchten, ist dies der richtige Ort, es zu tun.<br><br>Klicken Sie einfach auf den Link, dann öffnet sich ein Fenster, und Sie können Ihre Notiz eingeben. Wenn Sie die Eingabe beendet haben, klicken Sie einfach auf den Button unter dem Feld um das Fenster zu schließen. Das ist alles."
+msgstr "Wenn Sie diesem Datensatz um eine Notiz ergänzen möchten, ist dies der richtige Ort, es zu tun.<br><br>Klicken Sie einfach auf den Link, dann öffnet sich ein Fenster, und Sie können Ihre Notiz eingeben. Wenn Sie die Eingabe beendet haben, klicken Sie einfach auf die Schaltfläche unter dem Feld um das Fenster zu schließen. Das ist alles."
 
 #: admin_trees_manage.php:169
 msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM."
@@ -7453,7 +7453,7 @@ msgstr "In einigen Kalendern beginnen die Tage um Mitternacht.  In anderen begin
 
 #: help_text.php:608
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
-msgstr "In manchen Ländern bezieht sich der Datenschutz nicht nur auf lebende Personen, sondern auch auf kürzlich verstorbene. Diese Option erlaubt die Erweiterung des Datenschutzes auf Personen, die innerhalb einer angegebenen Anzahl von Jahren geboren oder verstorben sind. Lassen Sie dies Werte leer, um die Erweiterung wegzulassen."
+msgstr "In manchen Ländern bezieht sich der Datenschutz nicht nur auf lebende Personen, sondern auch auf kürzlich verstorbene. Diese Option erlaubt die Erweiterung des Datenschutzes auf Personen, die innerhalb einer angegebenen Anzahl von Jahren geboren oder verstorben sind. Lassen Sie diese Werte leer, um die Erweiterung wegzulassen."
 
 #: help_text.php:315
 msgid "In the Citation Details field you would enter the page number or other information that might help someone find the information in the source."
@@ -7766,7 +7766,7 @@ msgstr "Jordanien"
 
 #: library/WT/Gedcom/Code/Temp.php:114
 msgid "Jordan River, Utah"
-msgstr "Jordan River, Utah"
+msgstr "Fluss Jordan, Utah"
 
 #. I18N: Name of a module
 #: modules_v3/user_blog/module.php:40
@@ -8635,7 +8635,7 @@ msgstr "Heirat eines Bruders"
 
 #: library/WT/Gedcom/Tag.php:739
 msgid "Marriage of a child"
-msgstr "Kind: Heirat"
+msgstr "Heirat: Kind"
 
 #: library/WT/Gedcom/Tag.php:738
 msgid "Marriage of a daughter"
@@ -8644,12 +8644,12 @@ msgstr "Heirat einer Tochter"
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:769
 msgid "Marriage of a father"
-msgstr "Vater: Heirat"
+msgstr "Heirat: Vater"
 
 #: library/WT/Gedcom/Tag.php:747 library/WT/Gedcom/Tag.php:753
 #: library/WT/Gedcom/Tag.php:759
 msgid "Marriage of a grandchild"
-msgstr "Enkel: Heirat"
+msgstr "Heirat: Enkel"
 
 #: library/WT/Gedcom/Tag.php:746
 msgid "Marriage of a granddaughter"
@@ -8685,7 +8685,7 @@ msgstr "Heirat eines Halb-Bruders"
 
 #: library/WT/Gedcom/Tag.php:765
 msgid "Marriage of a half-sibling"
-msgstr "Halbgeschwister: Heirat"
+msgstr "Heirat: Halbgeschwister"
 
 #: library/WT/Gedcom/Tag.php:764
 msgid "Marriage of a half-sister"
@@ -8694,7 +8694,7 @@ msgstr "Heirat einer Halb-Schwester"
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:770
 msgid "Marriage of a mother"
-msgstr "Mutter: Heirat"
+msgstr "Heirat: Mutter"
 
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:771
@@ -8703,7 +8703,7 @@ msgstr "Heirat eines Elternteils"
 
 #: library/WT/Gedcom/Tag.php:777
 msgid "Marriage of a sibling"
-msgstr "Geschwister: Heirat"
+msgstr "Heirat: Geschwister"
 
 #: library/WT/Gedcom/Tag.php:776
 msgid "Marriage of a sister"
@@ -8716,7 +8716,7 @@ msgstr "Heirat eines Sohns"
 #. I18N: ...to each other
 #: library/WT/Gedcom/Tag.php:742
 msgid "Marriage of parents"
-msgstr "Eltern: Heirat"
+msgstr "Heirat: Eltern"
 
 #: statistics.php:412
 msgid "Marriage places"
@@ -8983,7 +8983,7 @@ msgstr "Mitglieder"
 
 #: admin_site_config.php:73 help_text.php:679
 msgid "Memory limit"
-msgstr "Max. Speicher Begrenzung"
+msgstr "Speicher-Begrenzung"
 
 #: library/WT/Gedcom/Code/Temp.php:129
 msgid "Memphis, Tennessee"
@@ -9930,7 +9930,7 @@ msgstr "Bemerkung"
 
 #: admin_trees_config.php:361 help_text.php:698
 msgid "Note ID prefix"
-msgstr "Bemerkungs-ID Präfix"
+msgstr "Bemerkung ID-Nummer Präfix"
 
 #: help_text.php:343
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10160,7 +10160,7 @@ msgstr "Oman"
 
 #: help_text.php:1274
 msgid "On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality."
-msgstr "Auf diesem Diagramm können die Lebensspannen mehrerer Personen gezeigt werden. Anhand einer Skala können Sie leicht erkennen, wie die Geburts- und Todesjahre verschiedener Personen sich überschneiden.<br><br>Sie können einzelne Personen oder ganze Familien dem bereits bestehendem Diagramm hinzufügen. Das Diagramm kann jederzeit durch das Klicken des <b>Diagramm löschen</b> Buttons gelöscht werden.<br><br>Sie können auch Personen dem Diagramm hinzufügen indem Sie die Datenbank nach bestimmten Daten oder Orten durchsuchen."
+msgstr "Auf diesem Diagramm können die Lebensspannen mehrerer Personen gezeigt werden. Anhand einer Skala können Sie leicht erkennen, wie die Geburts- und Todesjahre verschiedener Personen sich überschneiden.<br><br>Sie können einzelne Personen oder ganze Familien dem bereits bestehendem Diagramm hinzufügen. Das Diagramm kann jederzeit durch das Klicken der Schaltfläche <b>Diagramm löschen</b> gelöscht werden.<br><br>Sie können auch Personen dem Diagramm hinzufügen indem Sie die Datenbank nach bestimmten Daten oder Orten durchsuchen."
 
 #. I18N: Name of a module
 #: modules_v3/todays_events/module.php:32
@@ -10454,7 +10454,7 @@ msgstr "Passwörter stimmen nicht überein."
 
 #: help_text.php:1294
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
-msgstr "Passwörter müssen mindestens 6 Zeichen lang sein. Sie berücksichtigen Groß-/Kleinschreibung, so daß \"geheim\" von \"GEHEIM\" abweicht."
+msgstr "Passwörter müssen mindestens 6 Zeichen lang sein. Sie berücksichtigen Groß-/Kleinschreibung, so dass \"geheim\" von \"GEHEIM\" abweicht."
 
 #: admin_users.php:338 edituser.php:113
 msgid "Passwords must contain at least 6 characters."
@@ -10696,17 +10696,17 @@ msgstr "Ort der Brit Mila"
 #: library/WT/Gedcom/Tag.php:135
 #: modules_v3/missing_facts_report/report.xml:553
 msgid "Place of burial"
-msgstr "Ort: Begräbnis"
+msgstr "Begräbnisort"
 
 #: library/WT/Gedcom/Tag.php:150
 #: modules_v3/missing_facts_report/report.xml:177
 msgid "Place of christening"
-msgstr "Ort: Taufe"
+msgstr "Ort der Taufe"
 
 #: library/WT/Gedcom/Tag.php:159
 #: modules_v3/missing_facts_report/report.xml:301
 msgid "Place of confirmation"
-msgstr "Ort: Konfirmation"
+msgstr "Ort der Konfirmation"
 
 #: library/WT/Gedcom/Tag.php:165
 msgid "Place of cremation"
@@ -10715,7 +10715,7 @@ msgstr "Ort der Einäscherung"
 #: library/WT/Gedcom/Tag.php:173 modules_v3/fact_sources/report.xml:272
 #: modules_v3/missing_facts_report/report.xml:512
 msgid "Place of death"
-msgstr "Ort: Tod"
+msgstr "Sterbeort"
 
 #: library/WT/Gedcom/Tag.php:187
 msgid "Place of emigration"
@@ -10788,7 +10788,7 @@ msgstr "Orte in %s"
 
 #: help_text.php:330
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr ""
+msgstr "Orte sollten gemäß den Genealogie-Standards eingegeben werden. In der Genealogie werden Orte mit den spezifischsten Orts-Informationen am Anfang und bis hin zu den allgemeinsten Informationen am Ende aufgezeichnet, wobei Kommas die verschiedenen Ebenen voneinander trennen. Die Ebene, auf der Sie Orts-Informationen erfassen, sollten staatliche oder kirchliche Einheiten widerspiegeln, wo die Personenstandsbücher für diesen Ort aufbewahrt werden.<br><br>Zum Beispiel würde ein Ort wie Salt Lake City als \"Salt Lake City, Salt Lake , Utah , USA\" eingegeben werden. <br><br>Betrachten wir jeden Teil dieses Ortes. Der erste Teil, \"Salt Lake City\", ist die Stadt oder Gemeinde, wo das Ereignis stattfand. In einigen Ländern kann es Gemeinden oder Bezirke in einer Stadt geben, die ebenfalls zu beachten sind. In diesem Fall sollten sie vor der Stadt stehen. Der nächste Teil , \"Salt Lake\", ist dre Kreis. \"Utah\" ist das Bundesland und \"USA\" das Land. Es ist wichtig jeden Teil des Ortes aufzuzeichnen, da genealogische Aufzeichnungen von den Regierungsbehörden auf jeder Ebene geführt werden.<br><br>Wenn ein Teil der Ortsbeschreibung unbekannt ist, sollten Sie Leerzeichen zwischen den Kommas lassen. Nehmen wir im obigen Beispiel an, Sie wüssten den Landkreis für Salt Lake City nicht, dann sollten Sie es so aufzeichnen: \"Salt Lake City, , Utah, USA\". Angenommen, Sie wissen nur, dass ein Individuum in Utah geboren wurde. Sie würden die Informationen wie folgt eingeben \" , , Utah , USA\".<br><br>Sie können den Link <b>Orte suchen</ b> verwenden, um Orte, die bereits in der Datenbank sind, aufzufinden."
 
 #: modules_v3/random_media/module.php:130 themes/_administration/header.php:31
 #: themes/clouds/header.php:34 themes/colors/header.php:37
@@ -11064,19 +11064,19 @@ msgstr "Frage"
 
 #: admin_trees_config.php:1160 help_text.php:510
 msgid "Quick family facts"
-msgstr "Schnell hinzugefügte Familienereignisse"
+msgstr "Kurzliste für Tatsachen oder Ereignisse von Familien"
 
 #: admin_trees_config.php:1123 help_text.php:597
 msgid "Quick individual facts"
-msgstr "Schnell hinzugefügte Personenereignisse"
+msgstr "Kurzliste für Tatsachen oder Ereignisse von Personen"
 
 #: admin_trees_config.php:1218 help_text.php:803
 msgid "Quick repository facts"
-msgstr "Schnell hinzugefügte Archivdaten"
+msgstr "Kurzliste für Tatsachen oder Ereignisse von Archiven"
 
 #: admin_trees_config.php:1189 help_text.php:914
 msgid "Quick source facts"
-msgstr "Schnell hinzugefügte Quellendaten"
+msgstr "Kurzliste für Tatsachen oder Ereignisse von Quellen"
 
 #: library/WT/Date/French.php:125
 msgid "Quintidi"
@@ -11628,7 +11628,7 @@ msgstr "Ruanda"
 
 #: admin_site_config.php:118
 msgid "SMTP mail server"
-msgstr "SMTP Mail Server"
+msgstr "alternativ SMTP Mail Server"
 
 #: library/WT/Gedcom/Code/Temp.php:162
 msgid "Sacramento, California"
@@ -12102,7 +12102,7 @@ msgstr "Wenn diese Option auf <b>Ja</b> gestellt ist, wird der Stand der HLT-Ord
 
 #: help_text.php:854
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Bei <b>Ja</b> wird ein Link auf den Seiten von Personen, Quellen und Familien eingefügt, das ein neues Fenster mit den jeweiligen Rohdaten aus der GEDCOM-Datei öffnet."
+msgstr "Bei der Auswahl <b>Ja</b> wird ein Link auf den Seiten von Personen, Quellen und Familien eingefügt, der ein neues Fenster mit den jeweiligen Rohdaten aus der GEDCOM-Datei öffnet."
 
 #: setup.php:92
 msgid "Setup wizard for <b>webtrees</b>"
@@ -12169,7 +12169,7 @@ msgstr "Gemeinsame Bemerkungen gefunden"
 
 #: help_text.php:1149
 msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
-msgstr "Wie gewöhnliche Bemerkungen, sind gemeinsame Bemerkungen einfacher Text ohne besonderes Format. Im Gegenteil zu gewöhnlichen Bemerkungen, kann jede gemeinsame Bemerkung mit mehr als einer Person, Familie, Quelle, usw. verbunden sein.<br><br>Wenn Sie das richtige Symbol klicken, können Sie eine Verbindung zu einer bereits bestehenden gemeinsamen Bemerkung herstellen oder eine neue gemeinsame Bemerkung erstellen und auch gleichzeitig die Verbindung dazu herstellen. Falls solche Verbindung bereits vorhanden ist, können Sie den Text der gemeinsamen Bemerkung bearbeiten und ändern.<br><ul><li><b>Verbindung herstellen</b><div style=\"padding-left:20px;\">Wenn das ID der gewünschten gemeinsamen Bemerkung Ihnen bekannt ist, können Sie diese Nummer direkt in das Feld eingeben.<br><br>Wenn Sie den <b>Suche gemeinsame Bemerkung</b> Ikon klicken, können Sie den Text aller gemeinsamen Bemerkungen durchsuchen und dann eine davon wählen. Die ID Nummer der gewählten Bemerkung wird dann automatisch in das Feld eingegeben.<br><br>Sie müssen den <b>hinzufügen</b> Button klicken, dass der ursprüngliche Datensatz aktualisiert wird.</div><br></li><li><b>Neue Bemerkung erstellen</b><div style=\"padding-left:20px;\">Wenn Sie das <b>Neue gemeinsame Bemerkung</b> erstellen Symbol klicken, öffnet sich ein Formular. Sie können darin den Text der neuen gemeinsamen Bemerkung eingeben wie Sie möchten. Wie bei gewöhnlichen Bemerkungen, können Sie auch URL-Adressen eingeben.<br><br>Nachdem Sie den <b>Speichern</b> Button klicken, erhalten Sie eine Notiz mit der ID-Nummer der neuen Bemerkung. Um das Fenster zu schließen und die ID-Nummer in das Eingabefeld zu kopieren, sollten Sie auf dieser Notiz klicken. Wenn Sie nur das Fenster schließen, wird die neue ID-Nummer nicht automatisch in das Eingabefeld kopiert.<br><br>Sie müssen danach noch den <b>hinzufügen</b> Button klicken, um den ursprünglichen Datensatz zu aktualisieren.</div><br></li><li><b>Bemerkung bearbeiten</b><div style=\"padding-left:20px;\">Wenn Sie das <b>Gemeinsame Bemerkung bearbeiten</b> Symbol klicken, öffnet sich ein Formular. Sie können den Text der bestehenden Bemerkung ändern wie Sie möchten. Wie bei gewöhnlichen Bemerkungen, können Sie auch URL-Adressen eingeben.<br><br>Nachdem Sie den <b>Speichern</b> Button klicken, wird der Text der gemeinsamen Bemerkung aktualisiert. Sie können dann das Fenster schließen und danach den <b>Speichern</b> Button noch einmal klicken.<br><br>Wenn Sie den Text einer gemeinsamen Bemerkung ändern, wird Ihre Änderung sofort in allen damit verbundenen Datensätzen sichtbar. Der selbe geänderte Text wird auch in neu verbundenen Datensätzen sichtbar.</div></li></ul>"
+msgstr "Wie gewöhnliche Bemerkungen, sind gemeinsame Bemerkungen einfacher Text ohne besonderes Format. Im Gegenteil zu gewöhnlichen Bemerkungen, kann jede gemeinsame Bemerkung mit mehr als einer Person, Familie, Quelle, usw. verbunden sein.<br><br>Wenn Sie das richtige Symbol klicken, können Sie eine Verbindung zu einer bereits bestehenden gemeinsamen Bemerkung herstellen oder eine neue gemeinsame Bemerkung erstellen und auch gleichzeitig die Verbindung dazu herstellen. Falls solche Verbindung bereits vorhanden ist, können Sie den Text der gemeinsamen Bemerkung bearbeiten und ändern.<br><ul><li><b>Verbindung herstellen</b><div style=\"padding-left:20px;\">Wenn das ID der gewünschten gemeinsamen Bemerkung Ihnen bekannt ist, können Sie diese Nummer direkt in das Feld eingeben.<br><br>Wenn Sie den <b>Suche gemeinsame Bemerkung</b> Ikon klicken, können Sie den Text aller gemeinsamen Bemerkungen durchsuchen und dann eine davon wählen. Die ID Nummer der gewählten Bemerkung wird dann automatisch in das Feld eingegeben.<br><br>Sie müssen die Schaltfläche <b>hinzufügen</b> klicken, dass der ursprüngliche Datensatz aktualisiert wird.</div><br></li><li><b>Neue Bemerkung erstellen</b><div style=\"padding-left:20px;\">Wenn Sie das <b>Neue gemeinsame Bemerkung</b> erstellen Symbol klicken, öffnet sich ein Formular. Sie können darin den Text der neuen gemeinsamen Bemerkung eingeben wie Sie möchten. Wie bei gewöhnlichen Bemerkungen, können Sie auch URL-Adressen eingeben.<br><br>Wenn Sie die Schaltfläche <b>Speichern</b> klicken, erhalten Sie eine Notiz mit der ID-Nummer der neuen Bemerkung. Um das Fenster zu schließen und die ID-Nummer in das Eingabefeld zu kopieren, sollten Sie auf dieser Notiz klicken. Wenn Sie nur das Fenster schließen, wird die neue ID-Nummer nicht automatisch in das Eingabefeld kopiert.<br><br>Sie müssen danach noch die Schaltfläche <b>hinzufügen</b> klicken, um den ursprünglichen Datensatz zu aktualisieren.</div><br></li><li><b>Bemerkung bearbeiten</b><div style=\"padding-left:20px;\">Wenn Sie das <b>Gemeinsame Bemerkung bearbeiten</b> Symbol klicken, öffnet sich ein Formular. Sie können den Text der bestehenden Bemerkung ändern wie Sie möchten. Wie bei gewöhnlichen Bemerkungen, können Sie auch URL-Adressen eingeben.<br><br>Nachdem Sie die Schaltfläche <b>Speichern</b> klicken, wird der Text der gemeinsamen Bemerkung aktualisiert. Sie können dann das Fenster schließen und danach die Schaltfläche <b>Speichern</b> noch einmal klicken.<br><br>Wenn Sie den Text einer gemeinsamen Bemerkung ändern, wird Ihre Änderung sofort in allen damit verbundenen Datensätzen sichtbar. Der selbe geänderte Text wird auch in neu verbundenen Datensätzen sichtbar.</div></li></ul>"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: library/WT/Date/Hijri.php:72
@@ -12293,7 +12293,7 @@ msgstr "Kürzeste Ehe"
 
 #: help_text.php:997
 msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
-msgstr "Soll die GeoNames Datenbank benutzt werden, so dass Sie mehr Vorschläge über den Ortsnamen, den Sie eben eingeben, erhalten?<br><br>Die Wahl <b>Ja</b> bedeutet dass die GeoNames Datenbank während der Eingabe des Ortsnamens nach passenden Vorschlägen durchsucht wird.  Mit der Wahl <b>Nein</b> wird nur die jetzige genealogische Datenbank durchsucht.  Je mehr Sie des Ortsnamens eingeben, desto passender sind die Vorschläge.  Diese Option kann verursachen, dass die Eingabe des Ortsnamens verlangsamt wird, besonders wenn Sie über keine schnelle Internetverbindung verfügen.<br><br>Die GeoNames Datenbank kann kostenlos durchsucht werden.  Sie enthält derzeit Informationen über mehr als 8&nbsp;000&nbsp;000 geographische Namen."
+msgstr "Soll die GeoNames Datenbank benutzt werden, so dass Sie mehr Vorschläge über den Ortsnamen, den Sie eben eingeben, erhalten?<br><br>Die Wahl <b>Ja</b> bedeutet dass die GeoNames Datenbank während der Eingabe des Ortsnamens nach passenden Vorschlägen durchsucht wird.  Mit der Wahl <b>Nein</b> wird nur die jetzige genealogische Datenbank durchsucht.  Je mehr Ortsnamen Sie eingeben, desto passender sind die Vorschläge. Diese Option kann verursachen, dass die Eingabe des Ortsnamens verlangsamt wird, besonders wenn Sie über keine schnelle Internetverbindung verfügen.<br><br>Die GeoNames Datenbank kann kostenlos durchsucht werden.  Sie enthält derzeit Informationen über mehr als 8&nbsp;000&nbsp;000 geographische Namen."
 
 #: modules_v3/recent_changes/module.php:169
 msgid "Should this block be hidden when it is empty?"
@@ -12417,7 +12417,7 @@ msgstr "Diabetrachter erlauben, Download-Links zu zeigen"
 
 #: admin_trees_config.php:855
 msgid "Show events of close relatives on individual page"
-msgstr "Ereignisse naher Verwandten auf der «Persönliche Informationen» Seite zeigen"
+msgstr "Ereignisse naher Verwandter, die auf der Personen-Seite angezeigt werden:"
 
 #: help_text.php:848
 msgid "Show fact icons"
@@ -12442,11 +12442,11 @@ msgstr "Zeige aktuell nicht genutzte Orte"
 
 #: includes/functions/functions_print_lists.php:93
 msgid "Show individuals born more than 100 years ago."
-msgstr "Personen zeigen, die vor mehr als 100 Jahren geboren wurden."
+msgstr "Zeige Personen, die vor mehr als 100 Jahren geboren wurden."
 
 #: includes/functions/functions_print_lists.php:94
 msgid "Show individuals born within the last 100 years."
-msgstr "Personen zeigen, die in den letzten 100 Jahren geboren wurden."
+msgstr "Zeige Personen, die in den letzten 100 Jahren geboren wurden."
 
 #: includes/functions/functions_print_lists.php:89
 #: includes/functions/functions_print_lists.php:500
@@ -13544,7 +13544,7 @@ msgstr "Die Mediendatei wurde in diesem Familienbaum nicht gefunden"
 
 #: help_text.php:1434
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr "Die Mediendatei, die Sie auf den Server übertragen möchten, sollte dort anders benannt sein als auf Ihrem lokalen Computer.  Bedenken Sie, dass Dateinamen, die für Sie sinnvoll sind, anderen weniger Sinn haben können.  Es ist auch durchaus möglich, dass Sie und andere zur gleichen Zeit verschiedene Bilder mit dem gleichen Namen (z.B., <b>oma.jpg</b>) hochladen möchten.<br><br>In diesem Feld geben Sie den Namen, mit dem die übertragene Datei, und auch dessen automatisch erstelltes Miniaturbild, auf dem Server benannt werden soll.  Ihre Eingabe des Namenszusatzes (jpg, gif, pdf, doc, usw.) wird nicht beachtet.  Das Programm benutzt immer den ursprünglichen Namenszusatz der hoch geladenen Datei.<br><br>Wenn Sie dieses Feld leer lassen, erhält die hoch geladene Datei ihren ursprünglichen Namen."
+msgstr "Die Mediendatei, die Sie auf den Server übertragen möchten, sollte dort anders benannt sein als auf Ihrem lokalen Computer.  Bedenken Sie, dass Dateinamen, die für Sie sinnvoll sind, für andere weniger Sinn haben können.  Es ist auch durchaus möglich, dass Sie und andere zur gleichen Zeit verschiedene Bilder mit dem gleichen Namen (z.B., <b>oma.jpg</b>) hochladen möchten.<br><br>In diesem Feld geben Sie den Namen, mit dem die übertragene Datei und auch deren automatisch erstelltes Miniaturbild auf dem Server benannt werden soll, ein.  Ihre Eingabe des Namenszusatzes (jpg, gif, pdf, doc, usw.) wird nicht beachtet.  Das Programm benutzt immer den ursprünglichen Namenszusatz der hochgeladenen Datei.<br><br>Wenn Sie dieses Feld leer lassen, behält die hochgeladene Datei ihren ursprünglichen Namen."
 
 #: setup.php:160
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13661,7 +13661,7 @@ msgstr "Auswahl eines Themas"
 
 #: help_text.php:987
 msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
-msgstr "Themen können auf drei Ebenen als verbindlich ausgewählt werden: Benutzer, GEDCOM, und Web-Seite. Benutzerspezifischen Einstellungen haben Vorrang vor GEDCOM-spezifischen Einstellungen, diese wiederum haben  Vorrang vor der Web-Seitenspezifischen Einstellung. Die Auswahl eines \"Standardthema\" auf Benutzer-Ebene prägt die Einstellung für die aktuelle GEDCOM. Die Auswahl eines \"Standardthema\" auf GEDCOM Ebene prägt die Web-Seitenweise Einstellung."
+msgstr "Themen können auf drei Ebenen als verbindlich ausgewählt werden: Benutzer, Stammbaum und Webseite. Benutzerspezifische Einstellungen haben Vorrang vor Stammbaum-spezifischen Einstellungen, diese wiederum haben Vorrang vor Webseiten-spezifischen Einstellungen. Die Auswahl eines \"Standardthemas\" auf Benutzer-Ebene prägt die Einstellung für den aktuellen Stammbaum. Die Auswahl eines \"Standardthemas\" auf Stammbaum-Ebene prägt die Einstellung für die Webseite."
 
 #: modules_v3/extra_info/module.php:61
 #: modules_v3/personal_facts/module.php:122
@@ -13878,7 +13878,7 @@ msgstr "Details sind vertraulich und dürfen deshalb nicht gezeigt werden."
 
 #: help_text.php:1094
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "In diesem Feld können Sie das Jahr eingeben für die Ausgabe der Liste im «Jahres Modus» bzw. für den Kalender im «Monats Modus».<br><br>Im «Tages-Modus» ändert die Jahreszahl nichts, da die Ereignisse aller Jahre gezeigt werden.<dl><dt><b>Tipps für Fortgeschrittene</b> bei <b>Jahr zeigen:<br>Mehrere Jahre</b></dt><dd>Sie können über mehrere Jahre suchen, indem Sie im Jahresfeld folgende Eingabe machen:<br>- Beisp. 1: <b>1992-5</b> für alle Ereignisse von 1992 bis 1995.<br>- Beisp. 2: <b>1972-89</b> für alle Ereignisse von 1972 bis 1989.<br>- Beisp. 3: <b>1610-759</b> für alle Ereignisse von 1610 bis 1759.<br>- Beisp. 4: <b>1880-1905</b> für alle Ereignisse von 1880 bis 1905.<br>- Beisp. 5: <b>880-1105</b> für alle Ereignisse von 880 bis 1105.<br><br>Sie können auch die letzten Ziffern der Jahreszahl durch Fragezeichen <b>?</b> erzetzen, um alle Ereignisse eines Jahrzehntes oder Jahrhundertes zu erhalten.<br>- Beisp.: <b>197?</b> für alle Ereignisse von 1970 bis 1979 oder <b>16??</b> für alle Ereignisse von 1600 bis 1699.</dd><dt><b>Abkürzungen</b></dt><dd>Manchmal ist das genaue Datum eines Ereignisses nicht bekannt. In diesem Fall können Begriffe wie «nach», «vor» und «um» in Verbindung mit einem Datum verwendet werden. Die Daten werden zusammen mit einer englischen Abkürzung dieser Begriffe in der GEDCOM-Datei gespeichert. Im Jahres-Modus können Sie auch nach diesen Begriffen (mit oder ohne Datumsangabe) suchen. Hier einige Beispiele:<br><b>abt</b> 1800 (abt = about, d.h. um)<br><b>bet</b> 1950-1959 (bet = between, d.h. zwischen) Eingabe: bet 1950-59<br><b>bef</b> 1950 (bef = before, d.h. vor)<br><b>aft</b> 1900 (aft = after, d.h. nach)<br><br>PS: <i><b>Diese Abkürzungen müssen in Englisch eingegeben werden, da der GEDCOM-Standard die englischen Kürzel beinhaltet!</b> Das Programm sucht nach der genauen Zeichenfolge, die Sie eingeben. Wenn Sie also nach «abt 1850» suchen, wird ein Datum wie «abt oct 1850» <b>nicht</b> unter den Suchergebnissen erscheinen.</i></dd></dl>Wenn Sie eine neue Jahreszahl eingeben, wird der Bildschirm nicht sofort aktualisiert. Sie müssen den Button <b>Monat zeigen</b> oder <b>Jahr zeigen</b> klicken, um die Anzeige zu aktualisieren."
+msgstr "In diesem Feld können Sie das Jahr eingeben für die Ausgabe der Liste im «Jahres Modus» bzw. für den Kalender im «Monats Modus».<br><br>Im «Tages-Modus» ändert die Jahreszahl nichts, da die Ereignisse aller Jahre gezeigt werden.<dl><dt><b>Tipps für Fortgeschrittene</b> bei <b>Jahr zeigen:<br>Mehrere Jahre</b></dt><dd>Sie können über mehrere Jahre suchen, indem Sie im Jahresfeld folgende Eingabe machen:<br>- Beisp. 1: <b>1992-5</b> für alle Ereignisse von 1992 bis 1995.<br>- Beisp. 2: <b>1972-89</b> für alle Ereignisse von 1972 bis 1989.<br>- Beisp. 3: <b>1610-759</b> für alle Ereignisse von 1610 bis 1759.<br>- Beisp. 4: <b>1880-1905</b> für alle Ereignisse von 1880 bis 1905.<br>- Beisp. 5: <b>880-1105</b> für alle Ereignisse von 880 bis 1105.<br><br>Sie können auch die letzten Ziffern der Jahreszahl durch Fragezeichen <b>?</b> erzetzen, um alle Ereignisse eines Jahrzehntes oder Jahrhundertes zu erhalten.<br>- Beisp.: <b>197?</b> für alle Ereignisse von 1970 bis 1979 oder <b>16??</b> für alle Ereignisse von 1600 bis 1699.</dd><dt><b>Abkürzungen</b></dt><dd>Manchmal ist das genaue Datum eines Ereignisses nicht bekannt. In diesem Fall können Begriffe wie «nach», «vor» und «um» in Verbindung mit einem Datum verwendet werden. Die Daten werden zusammen mit einer englischen Abkürzung dieser Begriffe in der GEDCOM-Datei gespeichert. Im Jahres-Modus können Sie auch nach diesen Begriffen (mit oder ohne Datumsangabe) suchen. Hier einige Beispiele:<br><b>abt</b> 1800 (abt = about, d.h. um)<br><b>bet</b> 1950-1959 (bet = between, d.h. zwischen) Eingabe: bet 1950-59<br><b>bef</b> 1950 (bef = before, d.h. vor)<br><b>aft</b> 1900 (aft = after, d.h. nach)<br><br>PS: <i><b>Diese Abkürzungen müssen in Englisch eingegeben werden, da der GEDCOM-Standard die englischen Kürzel beinhaltet!</b> Das Programm sucht nach der genauen Zeichenfolge, die Sie eingeben. Wenn Sie also nach «abt 1850» suchen, wird ein Datum wie «abt oct 1850» <b>nicht</b> unter den Suchergebnissen erscheinen.</i></dd></dl>Wenn Sie eine neue Jahreszahl eingeben, wird der Bildschirm nicht sofort aktualisiert. Sie müssen die Schaltflächen <b>Monat zeigen</b> oder <b>Jahr zeigen</b> klicken, um die Anzeige zu aktualisieren."
 
 #: modules_v3/clippings/help_text.php:32
 msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
@@ -13890,11 +13890,11 @@ msgstr "Dies ist eine Komma getrennte Liste von GEDCOM Tags die in dem Bearbeitu
 
 #: help_text.php:794
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family.  For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Dies ist eine Komma-separierte Liste von korrespondierenden GEDCOM-Ereignis-Tags, die beim Hinzufügen einer neuen Familie angezeigt wird. Zum Beispiel: Wenn das Tag MARR in der Liste erscheint, werden die Felder für Hochzeitsdatum und Hochzeitsort auf dem Formular angezeigt."
+msgstr "Dies ist eine Komma-getrennte Liste von korrespondierenden GEDCOM-Ereignis-Tags, die beim Hinzufügen einer neuen Familie angezeigt wird. Zum Beispiel: Wenn das Tag MARR in der Liste erscheint, werden die Felder für Hochzeitsdatum und Hochzeitsort auf dem Formular angezeigt."
 
 #: help_text.php:789
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Dies ist eine Komma-separierte Liste von korrespondierenden GEDCOM-Ereignis-Tags, die beim Hinzufügen einer neuen Person angezeigt wird. Zum Beispiel: Wenn das Tag BIRT in der Liste erscheint, werden die Felder für Geburtsdatum und Geburtsort auf dem Formular angezeigt."
+msgstr "Dies ist eine Komma-getrennte Liste von korrespondierenden GEDCOM-Ereignis-Tags, die beim Hinzufügen einer neuen Person angezeigt wird. Zum Beispiel: Wenn das Tag BIRT in der Liste erscheint, werden die Felder für Geburtsdatum und Geburtsort auf dem Formular angezeigt."
 
 #: help_text.php:412
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
@@ -13931,35 +13931,35 @@ msgstr "Dies ist die letzte Version von webtrees. Keine Aktualisierung notwendig
 
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
-msgstr "Diese Liste enthält alle Ereignisse die diesem Familiendatensatz hinzugefügt werden können.  Sie können diese Liste durch Entfernen oder Hinzufügen von Ereignis-Codes nach Ihren Wünschen ändern.  Ereignis-Codes dieser Liste dürfen <u>nicht</u> in der <i>Einmal vorkommende Familienereignisse</i> Liste vorkommen.  D.h., jedes Ereignis-Code darf in nur einer Liste vorkommen."
+msgstr "Diese Liste enthält alle Ereignisse die diesem Familiendatensatz hinzugefügt werden können. Sie können diese Liste durch Entfernen oder Hinzufügen von Ereignis-Merkmalen nach Ihren Wünschen ändern. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Einmalige Tatsachen oder Ereignisse von Familien</i> vorkommen;  d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
 
 #: help_text.php:593
 msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list."
-msgstr "Diese Liste enthält alle Ereignisse die diesem Personendatensatz hinzugefügt werden können.  Sie können diese Liste durch Entfernen oder Hinzufügen von Ereignis-Codes nach Ihren Wünschen ändern.  Ereignis-Codes dieser Liste dürfen <u>nicht</u> in der <i>Einmal vorkommende Personenereignisse</i> Liste vorkommen.  D.h., jedes Ereignis-Code darf in nur einer Liste vorkommen."
+msgstr "Diese Liste enthält alle Ereignisse die diesem Personendatensatz hinzugefügt werden können. Sie können diese Liste durch Entfernen oder Hinzufügen von Ereignis-Merkmalen nach Ihren Wünschen ändern. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Einmalige Tatsachen oder Ereignisse von Personen</i> vorkommen;  d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
 
 #: help_text.php:799
 msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Repository Facts</i> list."
-msgstr "Diese Liste enthält alle Ereignisse die diesem Archiv-Datensatz hinzugefügt werden können.  Sie können diese Liste durch Entfernen oder Hinzufügen von Ereignis-Codes nach Ihren Wünschen ändern.  Ereignis-Codes dieser Liste dürfen <u>nicht</u> in der <i>Einmal vorkommende Archivdaten</i> Liste vorkommen.  D.h., jedes Ereignis-Code darf in nur einer Liste vorkommen."
+msgstr "Diese Liste enthält alle Ereignisse die diesem Archiv-Datensatz hinzugefügt werden können. Sie können diese Liste durch Entfernen oder Hinzufügen von Ereignis-Merkmalen nach Ihren Wünschen ändern. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Einmalige Tatsachen oder Ereignisse von Archiven</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
 
 #: help_text.php:910
 msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Source Facts</i> list."
-msgstr "Diese Liste enthält alle Ereignisse die diesem Quellendatensatz hinzugefügt werden können.  Sie können diese Liste durch Entfernen oder Hinzufügen von Ereignis-Codes nach Ihren Wünschen ändern.  Ereignis-Codes dieser Liste dürfen <u>nicht</u> in der <i>Einmal vorkommende Quellendaten</i> Liste vorkommen.  D.h., jedes Ereignis-Code darf in nur einer Liste vorkommen."
+msgstr "Diese Liste enthält alle Ereignisse die diesem Quellendatensatz hinzugefügt werden können. Sie können diese Liste durch Entfernen oder Hinzufügen von Ereignis-Merkmalen nach Ihren Wünschen ändern. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Einmalige Tatsachen oder Ereignisse von Quellen</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
 
 #: help_text.php:516
 msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the <i>Family Add Facts</i> list."
-msgstr "Diese Liste enthält alle Ereignisse die im Familiendatensatz nur <u>einmal</u> vorkommen dürfen.  Z.B., wenn DATE hier eingegeben ist, darf jeder Familiendatensatz nur eine DATE Zeile enthalten. Ereignis-Codes dieser Liste dürfen <u>nicht</u> in der <i>Familienereignisse hinzufügen</i> Liste vorkommen.  D.h., jedes Ereignis-Code darf in nur einer Liste vorkommen."
+msgstr "Diese Liste enthält alle Ereignisse die im Familiendatensatz nur <u>einmal</u> vorkommen dürfen;  z.B., wenn MARR hier eingegeben ist, darf jeder Familiendatensatz nur eine MARR Zeile enthalten. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Alle Tatsachen und Ereignisse von Familien</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
 
 #: help_text.php:603
 msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the <i>Individual Add Facts</i> list."
-msgstr "Diese Liste enthält alle Ereignisse die im Personendatensatz nur <u>einmal</u> vorkommen dürfen.  Z.B., wenn DATE hier eingegeben ist, darf jeder Personendatensatz nur eine DATE Zeile enthalten. Ereignis-Codes dieser Liste dürfen <u>nicht</u> in der <i>Personenereignisse hinzufügen</i> Liste vorkommen.  D.h., jedes Ereignis-Code darf in nur einer Liste vorkommen."
+msgstr "Diese Liste enthält alle Ereignisse die im Personendatensatz nur <u>einmal</u> vorkommen dürfen; z.B., wenn BIRT hier eingegeben ist, darf jeder Personendatensatz nur eine BIRT Zeile enthalten. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Alle Tatsachen und Ereignisse von Personen</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
 
 #: help_text.php:809
 msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the <i>Repository Add Facts</i> list."
-msgstr "Diese Liste enthält alle Ereignisse die im Archiv-Datensatz nur <u>einmal</u> vorkommen dürfen.  Z.B., wenn DATE hier eingegeben ist, darf jeder Archiv-Datensatz nur eine DATE Zeile enthalten. Ereignis-Codes dieser Liste dürfen <u>nicht</u> in der <i>Archivdaten hinzufügen</i> Liste vorkommen.  D.h., jedes Ereignis-Code darf in nur einer Liste vorkommen."
+msgstr "Diese Liste enthält alle Ereignisse die im Archiv-Datensatz nur <u>einmal</u> vorkommen dürfen; z.B., wenn NAME hier eingegeben ist, darf jeder Archiv-Datensatz nur eine NAME Zeile enthalten. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Alle Tatsachen und Ereignisse von Archiven</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
 
 #: help_text.php:920
 msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list."
-msgstr "Diese Liste enthält alle Ereignisse die im Quellendatensatz nur <u>einmal</u> vorkommen dürfen.  Z.B., wenn DATE hier eingegeben ist, darf jeder Quellendatensatz nur eine DATE Zeile enthalten. Ereignis-Codes dieser Liste dürfen <u>nicht</u> in der <i>Quellendaten hinzufügen</i> Liste vorkommen.  D.h., jedes Ereignis-Code darf in nur einer Liste vorkommen."
+msgstr "Diese Liste enthält alle Ereignisse die im Quellendatensatz nur <u>einmal</u> vorkommen dürfen; z.B., wenn TITL hier eingegeben ist, darf jeder Quellendatensatz nur eine TITL Zeile enthalten. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Alle Tatsachen und Ereignisse von Quellen</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:764
@@ -13972,19 +13972,19 @@ msgstr "Dies ist die Anzahl, wie oft ein Nachname vorkommen muss, damit er in de
 
 #: help_text.php:511
 msgid "This is the short list of GEDCOM family facts that appears next to the full list and can be added with a single click."
-msgstr "Diese Liste, die neben der kompletten Ereignisliste gezeigt wird, bestimmt welche Ereignisse durch Klicken des jeweiligen Links leicht zu dieser Familie hinzugefügt werden können."
+msgstr "Diese Kurzliste, die neben der kompletten Liste für Tatsachen und Ereignisse angezeigt wird, bestimmt welche Ereignisse durch Klicken des jeweiligen Links schnell zu dieser Familie hinzugefügt werden können."
 
 #: help_text.php:598
 msgid "This is the short list of GEDCOM individual facts that appears next to the full list and can be added with a single click."
-msgstr "Diese Liste, die neben der kompletten Ereignisliste gezeigt wird, bestimmt welche Ereignisse durch Klicken des jeweiligen Links leicht zu dieser Person hinzugefügt werden können."
+msgstr "Diese Kurzliste, die neben der kompletten Liste für Tatsachen und Ereignisse angezeigt wird, bestimmt welche Ereignisse durch Klicken des jeweiligen Links schnell zu dieser Person hinzugefügt werden können."
 
 #: help_text.php:804
 msgid "This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click."
-msgstr "Diese Liste, die neben der kompletten Ereignisliste gezeigt wird, bestimmt welche Ereignisse durch Klicken des jeweiligen Links leicht zu diesem Archiv hinzugefügt werden können."
+msgstr "Diese Kurzliste, die neben der kompletten Liste für Tatsachen und Ereignisse angezeigt wird, bestimmt welche Ereignisse durch Klicken des jeweiligen Links schnell zu diesem Archiv hinzugefügt werden können."
 
 #: help_text.php:915
 msgid "This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click."
-msgstr "Diese Liste, die neben der kompletten Ereignisliste gezeigt wird, bestimmt welche Ereignisse durch Klicken des jeweiligen Links leicht zu dieser Quelle hinzugefügt werden können."
+msgstr "Diese Kurzliste, die neben der kompletten Liste für Tatsachen und Ereignisse angezeigt wird, bestimmt welche Ereignisse durch Klicken des jeweiligen Links schnell zu dieser Quelle hinzugefügt werden können."
 
 #: help_text.php:992
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100."
@@ -14094,19 +14094,19 @@ msgstr "Diese Bemerkung wurde bearbeitet. Sie sollten die Änderung prüfen und 
 
 #: help_text.php:864
 msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-msgstr "Diese Option bestimmt, ob Bemerkungen und Quellenangaben die mit Fakten verbunden sind, in den «Bemerkungen» und «Quellen» Ordnern der «Persönliche Informationen» Seite gezeigt werden sollen oder nicht.<br><br>Gewöhnlich zeigen diese Ordner nur direkt mit dem Datensatz verbundene Bemerkungen und Quellenangaben.  Solche befinden sich auf der <i>Ebene 1</i> des Datensatzes.<br><br>Die Wahl <b>Ja</b> bestimmt, dass auch mit Fakten verbundene Bemerkungen und Quellenangaben gezeigt werden sollen.  Solche befinden sich auf der <i>Ebene 2</i> des Datensatzes, da Fakte zur Ebene 1 gehören."
+msgstr "Diese Option bestimmt, ob Bemerkungen und Quellenangaben die mit Fakten verbunden sind, in den «Bemerkungen» und «Quellen» Ordnern der Seite «Persönliche Informationen» gezeigt werden sollen oder nicht.<br><br>Gewöhnlich zeigen diese Ordner nur direkt mit dem Datensatz verbundene Bemerkungen und Quellenangaben.  Solche befinden sich auf der <i>Ebene 1</i> des Datensatzes.<br><br>Die Wahl <b>Ja</b> bestimmt, dass auch mit Fakten verbundene Bemerkungen und Quellenangaben gezeigt werden sollen.  Solche befinden sich auf der <i>Ebene 2</i> des Datensatzes, da Fakte zur Ebene 1 gehören."
 
 #: help_text.php:491
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
-msgstr "Diese Option bestimmt, ob der Inhalt von Bemerkungen auf der «Persönliche Informationen» Seite automatisch gezeigt werden soll oder nicht."
+msgstr "Diese Option bestimmt, ob der Inhalt von Bemerkungen auf der Seite «Persönliche Informationen» automatisch gezeigt werden soll oder nicht."
 
 #: help_text.php:501
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
-msgstr "Diese Option bestimmt, ob der Inhalt von Quellenangaben auf der «Persönliche Informationen» Seite automatisch gezeigt werden soll oder nicht."
+msgstr "Diese Option bestimmt, ob der Inhalt von Quellenangaben auf der Seite «Persönliche Informationen» automatisch gezeigt werden soll oder nicht."
 
 #: help_text.php:496
 msgid "This option controls whether or not to automatically expand the <i>Events of close relatives</i> list."
-msgstr "Diese Option bestimmt, ob die Liste der Ereignisse naher Verwandten im «Persönliche Fakten und Details» Ordner der «Persönliche Informationen» Seite automatisch erweitert werden soll oder nicht."
+msgstr "Diese Option bestimmt, ob die Ereignisse naher Verwandter im Register «Fakten und Ereignisse» auf der Personen-Seite automatisch angezeigt werden sollen oder nicht."
 
 #: help_text.php:880
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
@@ -14122,7 +14122,7 @@ msgstr "Diese Option bestimmt, ob das Geschlecht der Person mittels Symbol in Di
 
 #: help_text.php:1069
 msgid "This option creates a new family tree.  The name you give it will be used to generate URLs and filenames, so you should choose something short, simple, and avoid punctuation."
-msgstr "Diese Option legt einen neuen Familiestammbaum an. Der von Ihnen vergebene Name wird verwendet, um Browser-Adressen (URLs) und Dateinamen zu erzeugen. Vergeben Sie daher bitte einen kurzen, einfachen Namen und vermeiden Sie Satzzeichen."
+msgstr "Diese Option legt einen neuen Familiestammbaum an. Der von Ihnen vergebene Name wird verwendet, um Internet-Adressen (URLs) und Dateinamen zu erzeugen. Vergeben Sie daher bitte einen kurzen, einfachen Namen und vermeiden Sie Satzzeichen."
 
 #: help_text.php:1260
 msgid "This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on the server."
@@ -14147,7 +14147,7 @@ msgstr "Diese Option wählt jenen Stammbaum, der Besuchern präsentiert wird, we
 
 #: help_text.php:1124
 msgid "This option will download the family tree to a GEDCOM file on your computer."
-msgstr "Diese Option bietet an, den Stammbaum als GEDCOM-Datei auf Ihren Rechner herunterzuladen."
+msgstr "Diese Option ermöglicht, den Stammbaum als GEDCOM-Datei auf Ihren Rechner herunterzuladen."
 
 #: help_text.php:569
 msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
@@ -14183,7 +14183,7 @@ msgstr "Diese Option wird den Stammbaum in eine GEDCOM-Datei auf dem Server spei
 
 #: help_text.php:869
 msgid "This option will show the names (but no other details) of private individuals.  Individuals are private if they are still alive or if a privacy restriction has been added to their individual record.  To hide a specific name, add a privacy restriction to that name record."
-msgstr "Diese Option zeigt die Namen (aber keine weiteren Einzelheiten) der nichtöffentlichen Personen.  Personen sind nichtöffentlich, sofern sie leben oder falls dem Datensatz eine Einschränkung hinsichtlich der Veröffentlichung hinzugefügt wurde.  Um gezielt einen Namen zu verbergen, fügen Sie dem Datensatz bitte eine solche Einschränkung hinzu."
+msgstr "Diese Option zeigt die Namen (aber keine weiteren Einzelheiten) der nichtöffentlichen Personen.  Personen sind nichtöffentlich, sofern sie leben oder falls dem Datensatz eine Einschränkung hinsichtlich der Veröffentlichung hinzugefügt wurde.  Um gezielt einen Namen zu verbergen, fügen Sie dem Datensatz bitte eine solche Beschränkung hinzu."
 
 #: modules_v3/googlemap/help_text.php:47
 msgid "This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers."
@@ -14191,7 +14191,7 @@ msgstr "Diese Option bestimmt, ob Latitude und Longitude im Popup-Fenster neben 
 
 #: help_text.php:1163
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly.  It is an advanced option, and you should not use it unless you understand the GEDCOM format.  If you make a mistake here, it can be difficult to fix."
-msgstr "Auf dieser Seite können Sie die üblichen Bearbeitungsformulare des Browsers umgehen und die zugrunde liegenden Daten direkt bearbeiten. Hierbei hanndelt es sich um eine erweiterte Option, die Sie  nicht verwenden sollten, ohne das GEDCOM-Format vollständig verstanden zu haben. Hier begangene Fehler können nur sehr schwer identifiziert und behoben werden aber große Auswirkungen haben. Sie sollten auf jedenfall über eine aktuelle Datensicherung verfügen."
+msgstr "Auf dieser Seite können Sie die üblichen Bearbeitungsformulare umgehen und die zugrunde liegenden Daten direkt bearbeiten. Hierbei hanndelt es sich um eine erweiterte Option, die Sie  nicht verwenden sollten, ohne das GEDCOM-Format vollständig verstanden zu haben. Hier begangene Fehler können nur sehr schwer identifiziert und behoben werden."
 
 #: help_text.php:1324
 msgid "This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server’s software, as it relates to PHP and <b>webtrees</b>, can be viewed."
@@ -14235,11 +14235,11 @@ msgstr "Das Archiv wurde bearbeitet. Sie sollten die Änderungen prüfen und die
 
 #: help_text.php:1390
 msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
-msgstr "Diese Rolle verfügt über alle Berechtigungen der Bearbeiter-Rolle, zuzüglich der Erlaubnis, Änderungen anderer Benutzer zu genehmigen oder ablehnen."
+msgstr "Diese Rolle verfügt über alle Berechtigungen der Bearbeiter-Rolle, zuzüglich der Erlaubnis, Änderungen anderer Benutzer zu genehmigen oder abzulehnen."
 
 #: help_text.php:1398
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules."
-msgstr "Diese Rolle verfügt über alle Berechtigungen der Manager-Rolle in allen Stammbäumen, plus die Erlaubnis, die Einstellungen/Konfiguration die ganze Webseite, alle Benutzer und die funktionalen Module betreffend zu ändern."
+msgstr "Diese Rolle verfügt über alle Berechtigungen der Manager-Rolle in allen Stammbäumen, plus die Erlaubnis, die Einstellungen/Konfiguration für die ganze Webseite, alle Benutzer und die funktionalen Module betreffend zu ändern."
 
 #: help_text.php:1386
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
@@ -14277,7 +14277,7 @@ msgstr "Diese Einstellung wird nur verwendet, wenn GEDCOM Dateien gelesen oder g
 
 #: help_text.php:456
 msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Diese Liste, dessen Einträge durch Komma oder Leerzeichen getrennt sind, bestimmt die Ereignisse oder Fakten die in Boxen in Diagrammen auftreten dürfen. Alle Einträge in dieser Liste müssen Fakten, wie sie im GEDCOM 5.5.1 standard bestimmt sind, sein. Zum Beispiel, falls der Beruf der Person in dessen Box zu zeigen ist, muss dieses Feld den Eintrag \"OCCU\" enthalten."
+msgstr "Die Liste, deren Einträge durch Komma oder Leerzeichen getrennt sind, bestimmt die Ereignisse oder Fakten die in Boxen in Diagrammen auftreten dürfen. Alle Einträge in dieser Liste müssen Fakten sein, wie im GEDCOM 5.5.1 Standard definiert. Zum Beispiel, falls der Beruf der Person in deren Box zu zeigen ist, muss dieses Feld den Eintrag \"OCCU\" enthalten."
 
 #: admin_site_upgrade.php:41
 msgid "This site is being upgraded.  Try again in a few minutes."
@@ -14843,19 +14843,19 @@ msgstr "Alle Änderungen verwerfen"
 
 #: admin_trees_config.php:1144 help_text.php:515
 msgid "Unique family facts"
-msgstr "Einmal vorkommende Familienereignisse"
+msgstr "Einmalige Tatsachen oder Ereignisse von Familien"
 
 #: admin_trees_config.php:1107 help_text.php:602
 msgid "Unique individual facts"
-msgstr "Einmal vorkommende Personenereignisse"
+msgstr "Einmalige Tatsachen oder Ereignisse von Personen"
 
 #: admin_trees_config.php:1210 help_text.php:808
 msgid "Unique repository facts"
-msgstr "Einmal vorkommende Archivdaten"
+msgstr "Einmalige Tatsachen oder Ereignisse von Archiven"
 
 #: admin_trees_config.php:1181 help_text.php:919
 msgid "Unique source facts"
-msgstr "Einmal vorkommende Quellendaten"
+msgstr "Einmalige Tatsachen oder Ereignisse von Quellen"
 
 #: library/WT/Stats.php:3755
 msgid "United Arab Emirates"
@@ -15044,7 +15044,7 @@ msgstr "Verwandtschafts-Datenschutz einschalten"
 
 #: help_text.php:1017
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
-msgstr "Benutze Silhouetten wenn kein spezielles Bild für diese Person spezifiziert wurde. Die Bilder die verwendet werden sind geschlechts-spezifisch zu der entsprechenden Person<br><br><table><tr><td wrap valign=\"middle\">Diese Bild wird benutzt wenn das Geschlecht der Person unbekannt ist:"
+msgstr "Benutze Silhouetten wenn kein spezielles Bild für diese Person spezifiziert wurde. Die Bilder die verwendet werden sind geschlechts-spezifisch zu der entsprechenden Person<br><br><table><tr><td wrap valign=\"middle\">Dieses Bild wird benutzt wenn das Geschlecht der Person unbekannt ist:"
 
 #: admin_trees_config.php:674 help_text.php:1016
 msgid "Use silhouettes"
@@ -15052,11 +15052,11 @@ msgstr "Silhouetten verwenden"
 
 #: help_text.php:1104
 msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move right and Move left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
-msgstr "Mit diesen Buttons können Sie Einträge aus einer Liste kopieren oder entfernen und in einer anderen Liste eintragen.<br><br>Wie gewohnt, wählen Sie zuerst mit <u>einem</u> Klick der <u>linken</u> Maustaste den Block mit dem Sie eben arbeiten möchten.  Danach klicken Sie einen der Pfeile um den gewählten Block in der Pfeilrichtung zu verschieben.  Die <b>&raquo;</b> und <b>&laquo;</b> verschieben den gewählten Block von der ganz linken zur ganz rechten Liste oder umgekehrt. Die  <b>&gt;</b> und <b>&lt;</b> Pfeile verschieben den gewählten Block zwischen der Verfügbare Blöcke Liste und der Liste rechts oder links daneben.<br><br>Die Einträge in der Verfügbare Blöcke Liste werden niemals entfernt, weil der selbe Block, z.B. der HTML Block, mehrmals auf der Seite dargestellt werden kann."
+msgstr "Mit diesen Schaltflächen können Sie Einträge aus einer Liste kopieren oder entfernen und in einer anderen Liste eintragen.<br><br>Wie gewohnt, wählen Sie zuerst mit <u>einem</u> Klick der <u>linken</u> Maustaste den Block mit dem Sie eben arbeiten möchten.  Danach klicken Sie einen der Pfeile um den gewählten Block in der Pfeilrichtung zu verschieben.  Die <b>&raquo;</b> und <b>&laquo;</b> verschieben den gewählten Block von der ganz linken zur ganz rechten Liste oder umgekehrt. Die  <b>&gt;</b> und <b>&lt;</b> Pfeile verschieben den gewählten Block zwischen der Liste Verfügbare Blöcke und der Liste rechts oder links daneben.<br><br>Die Einträge in der Liste Verfügbare Blöcke werden niemals entfernt, weil der selbe Block, z.B. der HTML Block, mehrmals auf der Seite dargestellt werden kann."
 
 #: help_text.php:1109
 msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
-msgstr "Mit diesen Buttons können Sie die Reihenfolge der Blöcke ändern.  Die Blöcke werden auf der Startseite in der selben Reihenfolge dargestellt, wie sie in dieser Liste vorkommen.<br><br>Um die Reihenfolge zu ändern, wählen Sie zuerst mit <u>einem</u> Klick der <u>linken</u> Maustaste den Block den Sie verschieben möchten.  Danach klicken Sie Buttons so oft wie notwendig um den gewählten Block in der Reihenfolge zu verschieben."
+msgstr "Mit diesen Schaltflächen können Sie die Reihenfolge der Blöcke ändern.  Die Blöcke werden auf der Startseite in der selben Reihenfolge dargestellt, wie sie in dieser Liste vorkommen.<br><br>Um die Reihenfolge zu ändern, wählen Sie zuerst mit <u>einem</u> Klick der <u>linken</u> Maustaste den Block den Sie verschieben möchten.  Danach klicken Sie die Schaltflächen so oft wie notwendig, um den gewählten Block in der Reihenfolge zu verschieben."
 
 #: help_text.php:398
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
@@ -15068,7 +15068,7 @@ msgstr "Bitte benutzen Sie dieses Feld um dem Verwalter mitzuteilen warum Sie ei
 
 #: edit_interface.php:1971
 msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
-msgstr "Benutze diese Seite zum Ändern oder Entfernen von Familienmitgliedern.<br><br>Für jedes Familienmitglied können Sie den <b>Ändern</b> Button klicken, um eine andere Person für diese Rolle in der Familie zu wählen.<br><br>Um Ihre Änderungen zu speichern, klicken Sie den <b>Speichern</b> Button."
+msgstr "Benutze diese Seite zum Ändern oder Entfernen von Familienmitgliedern.<br><br>Für jedes Familienmitglied können Sie die Schaltfläche <b>Ändern</b> klicken, um eine andere Person für diese Rolle in der Familie zu wählen.<br><br>Um Ihre Änderungen zu speichern, klicken Sie die Schaltfläche <b>Speichern</b>."
 
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:396
 msgid "Use this value"
@@ -15102,7 +15102,7 @@ msgstr "Benutzer Verifizierung"
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: admin_site_access.php:280 admin_site_access.php:295
 msgid "User-agent string"
-msgstr "Webbrowser /-client Kennung"
+msgstr "User-Agent String"
 
 #: admin_site_config.php:133 admin_users.php:372 admin_users.php:571
 #: edituser.php:133 help_text.php:743 help_text.php:1483 login.php:162
@@ -15460,7 +15460,7 @@ msgstr "Für die Berechnung von Verwandschaftsgraden, bestimmt diese Option, ob 
 
 #: help_text.php:895
 msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
-msgstr "Wenn Sie <b>Ja</b>, wählen, wird folgende Notiz als Überschrift auf der «Benutzer Antrag» Seite gezeigt:<div class=\"list_value_wrap\"><div class=\"largeError\">Bitte beachten Sie:</div><div class=\"error\">Indem Sie dieses ausgefüllte Formular einsenden, bestätigen Sie Ihr Einverständnis mit den folgenden Bedingungen:<ul><li>daß Sie immer Informationen über lebende Personen, die in dieser Datenbank vorkommen, vertraulich halten;</li><li>und daß Sie in der unten stehenden Textbox Ihre Verwandtschaft zu Personen in dieser Datenbank erklären oder uns Informationen über Personen, die in dieser Datenbank vorkommen sollten aber dort fehlen, mitteilen.</li></ul></div></div>"
+msgstr "Wenn Sie <b>Ja</b>, wählen, wird folgende Notiz als Überschrift auf der «Benutzer Antrag» Seite gezeigt:<div class=\"list_value_wrap\"><div class=\"largeError\">Bitte beachten Sie:</div><div class=\"error\">Indem Sie dieses ausgefüllte Formular einsenden, bestätigen Sie Ihr Einverständnis mit den folgenden Bedingungen:<ul><li>dass Sie Informationen über lebende Personen, die in dieser Datenbank vorkommen, immer vertraulich halten;</li><li>und dass Sie in der unten stehenden Textbox Ihre Verwandtschaft zu Personen in dieser Datenbank erklären und Informationen über Personen, die in dieser Datenbank vorkommen, aber dort eventuell fehlen sollten, mitteilen.</li></ul></div></div>"
 
 #: help_text.php:1289
 msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
@@ -15670,7 +15670,7 @@ msgstr "Sie können das Aussehen von <b>webtrees</b> mit vorgefertigten Layoutvo
 
 #: help_text.php:1279
 msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
-msgstr "Klicken Sie diesen Button, um zu prüfen, ob es einen weiteren Verwandtschafts-Pfad gibt, der diese beiden Personen verbindet. Zuvor gefundene Pfade können wieder gezeigt werden, indem man die entsprechende Pfad-Nummer klickt."
+msgstr "Klicken Sie diesen Schaltfläche, um zu prüfen, ob es einen weiteren Verwandtschafts-Pfad gibt, der diese beiden Personen verbindet. Zuvor gefundene Pfade können wieder gezeigt werden, indem man die entsprechende Pfad-Nummer klickt."
 
 #. I18N: %s is a URL
 #: help_text.php:1165
@@ -15814,7 +15814,7 @@ msgstr "Sie sollten nun die Angaben des Benutzerkonto prüfen und den “bestät
 #. I18N: Help text for the “Login URL” site configuration setting
 #: help_text.php:618
 msgid "You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "Die Login URL muss nur dann angegeben werden, wenn Sie zu einer anderen Seite umleiten möchten, wenn die Benutzer sich anmelden. Dies ist dann sinnvoll, wenn Sie beim Benutzer-Login z.B. von http auf https wechseln möchten. Geben Sie die vollständige URL für <i>login</b> ein. Zum Beispiel https://www.ihr_server.de/webtrees/login.php ."
+msgstr "Die Login URL muss nur dann angegeben werden, wenn Sie zu einer anderen Seite umleiten möchten, wenn die Benutzer sich anmelden. Dies ist dann sinnvoll, wenn Sie beim Benutzer-Login von http auf https wechseln möchten. Geben Sie die vollständige URL für <i>login.php</i> ein. Zum Beispiel https://www.ihr_server.de/webtrees/login.php."
 
 #: includes/authentication.php:241
 msgid "You sent the following message to a webtrees administrator:"
