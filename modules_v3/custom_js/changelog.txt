@@ -1,5 +1,0 @@
-webtrees 1.5.0 modifications
-
-* Functions safe_GET() and safe_POST() are deprecated. Now use WT_Filter::functions.
-  See library/Filter.php from line 132 for an overview of the new functions.
-  safe_POST in line 49 changed in WT_Filter::post.
