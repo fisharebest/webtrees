@@ -211,6 +211,11 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 			echo "<td valign=\"top\">";
 			print_pedigree_person(WT_Individual::getInstance($hfam->getHusband()->getXref()), 1, 6, $personcount);
 			echo "</td></tr></table>";
+		} elseif ($hfam && !$hfam->getHusband()) { // here for empty box for grandfather
+			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
+			echo '<td valign="top">';
+			print_pedigree_person($hfam->getHusband());
+			echo '</td></tr></table>';
 		}
 		echo "</td>";
 	}
@@ -229,8 +234,13 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 			echo "<td valign=\"top\">";
 			print_pedigree_person(WT_Individual::getInstance($hfam->getWife()->getXref()), 1, 7, $personcount);
 			echo "</td></tr></table>";
+		} elseif ($hfam && !$hfam->getWife()) {  // here for empty box for grandmother
+			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
+			echo '<td valign="top">';
+			print_pedigree_person($hfam->getWife());
+			echo '</td></tr></table>';
 		}
-		echo "</td>";
+		echo '</td>';
 	}
 	echo "</tr></table>";
 }
