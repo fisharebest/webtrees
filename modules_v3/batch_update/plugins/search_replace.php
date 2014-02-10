@@ -45,13 +45,13 @@ class search_replace_bu_plugin extends base_plugin {
 	}
 
 	function doesRecordNeedUpdate($xref, $gedrec) {
-		return !$this->error && preg_match('/(?:'.$this->regex.')/m'.$this->case, $gedrec);
+		return !$this->error && preg_match('/(?:'.$this->regex.')/mu'.$this->case, $gedrec);
 	}
 
 	function updateRecord($xref, $gedrec) {
 		// Allow "\n" to indicate a line-feed in replacement text.
 		// Back-references such as $1, $2 are handled automatically.
-		return preg_replace('/'.$this->regex.'/'.$this->case, str_replace('\n', "\n", $this->replace), $gedrec);
+		return preg_replace('/'.$this->regex.'/mu'.$this->case, str_replace('\n', "\n", $this->replace), $gedrec);
 	}
 
 	function getOptions() {
