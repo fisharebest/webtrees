@@ -281,6 +281,7 @@ echo '</li>'; flush();
 echo '<li>', /* I18N: The system is about to [...] */ WT_I18N::translate('Export all family trees to GEDCOM files…');
 
 foreach (WT_Tree::getAll() as $tree) {
+	reset_timeout();
 	$filename = WT_DATA_DIR . $tree->tree_name . date('-Y-m-d') . '.ged';
 	if ($tree->exportGedcom($filename)) {
 		echo '<br>', WT_I18N::translate('Family tree exported to %s.', '<span dir="ltr">' . $filename . '</span>'), $icon_success;
@@ -301,6 +302,7 @@ echo '<li>', /* I18N: The system is about to [...]; %s is a URL. */ WT_I18N::tra
 $zip_file   = WT_DATA_DIR . basename($download_url);
 $zip_dir    = WT_DATA_DIR . basename($download_url, '.zip');
 $zip_stream = fopen($zip_file, 'w');
+reset_timeout();
 $start_time = microtime(true);
 WT_File::fetchUrl($download_url, $zip_stream);
 $end_time   = microtime(true);
@@ -341,6 +343,7 @@ if (!is_array($res) || $res['status'] != 'ok') {
 
 $num_files = $res['nb'];
 
+reset_timeout();
 $start_time = microtime(true);
 $res = $archive->extract(
 	PCLZIP_OPT_PATH,         $zip_dir,
@@ -376,6 +379,7 @@ echo '</li>'; flush();
 
 echo '<li>', WT_I18N::translate('Check file permissions…');
 
+reset_timeout();
 $iterator = new RecursiveDirectoryIterator($zip_dir);
 //$iterator->setFlags(RecursiveDirectoryIterator::SKIP_DOTS);
 foreach (new RecursiveIteratorIterator($iterator) as $file) {
@@ -421,6 +425,7 @@ echo '<li>', /* I18N: The system is about to [...] */ WT_I18N::translate('Copy f
 @copy('library/WT/Gedcom/Code/Rela.php', 'library/WT/Gedcom/Code/Rela' . date('-Y-m-d') . '.php');
 @copy('library/WT/Gedcom/Tag.php', 'library/WT/Gedcom/Tag' . date('-Y-m-d') . '.php');
 
+reset_timeout();
 $start_time = microtime(true);
 $res = $archive->extract(
 	PCLZIP_OPT_PATH,        WT_ROOT,
@@ -465,6 +470,7 @@ echo '</li>'; flush();
 
 echo '<li>', /* I18N: The system is about to [...] */ WT_I18N::translate('Delete temporary files…');
 
+reset_timeout();
 if (WT_File::delete($zip_dir)) {
 	echo '<br>', WT_I18N::translate('The folder %s was deleted.', '<span dir="auto">' . $zip_dir . '</span>'), $icon_success;
 } else {
@@ -481,3 +487,10 @@ echo '</li>';
 echo '</ul>';
 
 echo '<p>', WT_I18N::translate('The upgrade is complete.'), '</p>';
+
+// Reset the time limit, as timeouts in this script could leave the upgrade incomplete.
+function reset_timeout() {
+	if (!ini_get('safe_mode') && strpos(ini_get('disable_functions'), 'set_time_limit')===false) {
+		set_time_limit(ini_get('max_execution_time'));
+	}
+}
