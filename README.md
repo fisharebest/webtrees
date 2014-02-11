@@ -1,9 +1,9 @@
 Copyright (C) 2013 webtrees Development Team. All rights reserved.
 
-This and other information can be found on line at http://webtrees.net
+This and other information can be found on line at [http://webtrees.net](http://webtrees.net)
 
 The installation instructions can also be found in the wiki at:
-http://webtrees.net/mediawiki/index.php/Main_Page
+[http://webtrees.net/mediawiki/index.php/Main_Page](http://webtrees.net/mediawiki/index.php/Main_Page)
 
 
 # webtrees
@@ -396,7 +396,7 @@ The requirements are:
   if desired.
 
 #### Warning 
-Please read the http://wiki.webtrees.net/en/Converting_from_PhpGedView 
+Please read the [http://wiki.webtrees.net/en/Converting_from_PhpGedView](http://wiki.webtrees.net/en/Converting_from_PhpGedView) 
 before doing a transfer as important pre-processing steps and known issues may 
 be outlined there.
   
@@ -417,8 +417,8 @@ FAQs, and HTML blocks.  We hope to add these to the wizard in a future release.
 #### Custom privacy restrictions, block configuration, FAQs and HTML blocks
 
 We hope to add these to the wizard in a future release. Otherwise, read the 
-http://wiki.webtrees.net/en/Converting_from_PhpGedView before reporting a problem 
-in the forum.
+[http://wiki.webtrees.net/en/Converting_from_PhpGedView](http://wiki.webtrees.net/en/Converting_from_PhpGedView) 
+before reporting a problem in the forum.
 
 The transfer wizard is accessed in **webtrees** from the bottom of the 
 "Manage family trees" page to which you will be automatically directed once you 
