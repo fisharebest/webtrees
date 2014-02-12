@@ -307,94 +307,118 @@ class WT_Fact {
 		}
 	}
 
-	// Static Helper functions to sort events
-	static function CompareDate($a, $b) {
+	/**
+	 * Static Helper functions to sort events
+	 *
+	 * @param WT_Fact $a Fact one
+	 * @param WT_Fact $b Fact two
+	 *
+	 * @return integer
+	 */
+	public static function CompareDate(WT_Fact $a, WT_Fact $b)
+	{
 		if ($a->getDate()->isOK() && $b->getDate()->isOK()) {
 			// If both events have dates, compare by date
-			$ret=WT_Date::Compare($a->getDate(), $b->getDate());
-			if ($ret==0) {
+			$ret = WT_Date::Compare($a->getDate(), $b->getDate());
+
+			if ($ret == 0) {
 				// If dates are the same, compare by fact type
-				$ret=self::CompareType($a, $b);
+				$ret = self::CompareType($a, $b);
+
 				// If the fact type is also the same, retain the initial order
-				if ($ret==0) {
-					$ret=$a->sortOrder - $b->sortOrder;
+				if ($ret == 0) {
+					$ret = $a->sortOrder - $b->sortOrder;
 				}
 			}
+
 			return $ret;
 		} else {
-			// One or both events have no date - retain the initial orde
+			// One or both events have no date - retain the initial order
 			return $a->sortOrder - $b->sortOrder;
 		}
 	}
 
-	// Static method to Compare two events by their type
-	static function CompareType($a, $b) {
+	/**
+	 * Static method to compare two events by their type.
+	 *
+	 * @param WT_Fact $a Fact one
+	 * @param WT_Fact $b Fact two
+	 *
+	 * @return integer
+	 */
+	public static function CompareType(WT_Fact $a, WT_Fact $b) {
 		global $factsort;
 
-		if (empty($factsort))
-			$factsort=array_flip(array(
-				'BIRT',
-				'_HNM',
-				'ALIA', '_AKA', '_AKAN',
-				'ADOP', '_ADPF', '_ADPF',
-				'_BRTM',
-				'CHR', 'BAPM',
-				'FCOM',
-				'CONF',
-				'BARM', 'BASM',
-				'EDUC',
-				'GRAD',
-				'_DEG',
-				'EMIG', 'IMMI',
-				'NATU',
-				'_MILI', '_MILT',
-				'ENGA',
-				'MARB', 'MARC', 'MARL', '_MARI', '_MBON',
-				'MARR', 'MARR_CIVIL', 'MARR_RELIGIOUS', 'MARR_PARTNERS', 'MARR_UNKNOWN', '_COML',
-				'_STAT',
-				'_SEPR',
-				'DIVF',
-				'MARS',
-				'_BIRT_CHIL',
-				'DIV', 'ANUL',
-				'_BIRT_', '_MARR_', '_DEAT_','_BURI_', // other events of close relatives
-				'CENS',
-				'OCCU',
-				'RESI',
-				'PROP',
-				'CHRA',
-				'RETI',
-				'FACT', 'EVEN',
-				'_NMR', '_NMAR', 'NMR',
-				'NCHI',
-				'WILL',
-				'_HOL',
-				'_????_',
-				'DEAT',
-				'_FNRL', 'BURI', 'CREM', '_INTE',
-				'_YART',
-				'_NLIV',
-				'PROB',
-				'TITL',
-				'COMM',
-				'NATI',
-				'CITN',
-				'CAST',
-				'RELI',
-				'SSN', 'IDNO',
-				'TEMP',
-				'SLGC', 'BAPL', 'CONL', 'ENDL', 'SLGS',
-				'ADDR', 'PHON', 'EMAIL', '_EMAIL', 'EMAL', 'FAX', 'WWW', 'URL', '_URL',
-				'FILE', // For media objects
-				'AFN', 'REFN', '_PRMN', 'REF', 'RIN', '_UID',
-				'OBJE', 'NOTE', 'SOUR',
-				'CHAN', '_TODO',
-			));
+		if (empty($factsort)) {
+			$factsort = array_flip(
+				array(
+					'BIRT',
+					'_HNM',
+					'ALIA', '_AKA', '_AKAN',
+					'ADOP', '_ADPF', '_ADPF',
+					'_BRTM',
+					'CHR', 'BAPM',
+					'FCOM',
+					'CONF',
+					'BARM', 'BASM',
+					'EDUC',
+					'GRAD',
+					'_DEG',
+					'EMIG', 'IMMI',
+					'NATU',
+					'_MILI', '_MILT',
+					'ENGA',
+					'MARB', 'MARC', 'MARL', '_MARI', '_MBON',
+					'MARR', 'MARR_CIVIL', 'MARR_RELIGIOUS', 'MARR_PARTNERS', 'MARR_UNKNOWN', '_COML',
+					'_STAT',
+					'_SEPR',
+					'DIVF',
+					'MARS',
+					'_BIRT_CHIL',
+					'DIV', 'ANUL',
+					'_BIRT_', '_MARR_', '_DEAT_','_BURI_', // other events of close relatives
+					'CENS',
+					'OCCU',
+					'RESI',
+					'PROP',
+					'CHRA',
+					'RETI',
+					'FACT', 'EVEN',
+					'_NMR', '_NMAR', 'NMR',
+					'NCHI',
+					'WILL',
+					'_HOL',
+					'_????_',
+					'DEAT',
+					'_FNRL', 'CREM', 'BURI', '_INTE',
+					'_YART',
+					'_NLIV',
+					'PROB',
+					'TITL',
+					'COMM',
+					'NATI',
+					'CITN',
+					'CAST',
+					'RELI',
+					'SSN', 'IDNO',
+					'TEMP',
+					'SLGC', 'BAPL', 'CONL', 'ENDL', 'SLGS',
+					'ADDR', 'PHON', 'EMAIL', '_EMAIL', 'EMAL', 'FAX', 'WWW', 'URL', '_URL',
+					'FILE', // For media objects
+					'AFN', 'REFN', '_PRMN', 'REF', 'RIN', '_UID',
+					'OBJE', 'NOTE', 'SOUR',
+					'CHAN', '_TODO',
+				)
+			);
+		}
 
 		// Facts from same families stay grouped together
 		// Keep MARR and DIV from the same families from mixing with events from other FAMs
 		// Use the original order in which the facts were added
-		if ($a->parent instanceof WT_Family && $b->parent instanceof WT_Family && $a->parent !== $b->parent) {
+		if (($a->parent instanceof WT_Family)
+			&& ($b->parent instanceof WT_Family)
+			&& ($a->parent !== $b->parent)
+		) {
 			return $a->sortOrder - $b->sortOrder;
 		}
 
@@ -404,31 +428,56 @@ class WT_Fact {
 		// Events not in the above list get mapped onto one that is.
 		if (!array_key_exists($atag, $factsort)) {
 			if (preg_match('/^(_(BIRT|MARR|DEAT|BURI)_)/', $atag, $match)) {
-				$atag=$match[1];
+				$atag = $match[1];
 			} else {
-				$atag="_????_";
-			}
-		}
-		if (!array_key_exists($btag, $factsort)) {
-			if (preg_match('/^(_(BIRT|MARR|DEAT|BURI)_)/', $btag, $match)) {
-				$btag=$match[1];
-			} else {
-				$btag="_????_";
+				$atag = "_????_";
 			}
 		}
 
-		//-- don't let dated after DEAT/BURI facts sort non-dated facts before DEAT/BURI
-		//-- treat dated after BURI facts as BURI instead
-		if ($a->getAttribute('DATE')!=NULL && $factsort[$atag]>$factsort['BURI'] && $factsort[$atag]<$factsort['CHAN']) $atag='BURI';
-		if ($b->getAttribute('DATE')!=NULL && $factsort[$btag]>$factsort['BURI'] && $factsort[$btag]<$factsort['CHAN']) $btag='BURI';
-		$ret = $factsort[$atag]-$factsort[$btag];
-		//-- if facts are the same then put dated facts before non-dated facts
-		if ($ret==0) {
-			if ($a->getAttribute('DATE')!=NULL && $b->getAttribute('DATE')==NULL) return -1;
-			if ($b->getAttribute('DATE')!=NULL && $a->getAttribute('DATE')==NULL) return 1;
-			//-- if no sorting preference, then keep original ordering
+		if (!array_key_exists($btag, $factsort)) {
+			if (preg_match('/^(_(BIRT|MARR|DEAT|BURI)_)/', $btag, $match)) {
+				$btag = $match[1];
+			} else {
+				$btag = "_????_";
+			}
+		}
+
+		// - Don't let dated after DEAT/BURI facts sort non-dated facts before DEAT/BURI
+		// - Treat dated after BURI facts as BURI instead
+		if (($a->getAttribute('DATE') != null)
+			&& ($factsort[$atag] > $factsort['BURI'])
+			&& ($factsort[$atag] < $factsort['CHAN'])
+		) {
+			$atag = 'BURI';
+		}
+
+		if (($b->getAttribute('DATE') != null)
+			&& ($factsort[$btag] > $factsort['BURI'])
+			&& ($factsort[$btag] < $factsort['CHAN'])
+		) {
+			$btag = 'BURI';
+		}
+
+		$ret = $factsort[$atag] - $factsort[$btag];
+
+		// If facts are the same then put dated facts before non-dated facts
+		if ($ret == 0) {
+			if (($a->getAttribute('DATE') != null)
+				&& ($b->getAttribute('DATE') == null)
+			) {
+				return -1;
+			}
+
+			if (($b->getAttribute('DATE') != null)
+				&& ($a->getAttribute('DATE')==null)
+			) {
+				return 1;
+			}
+
+			// If no sorting preference, then keep original ordering
 			$ret = $a->sortOrder - $b->sortOrder;
 		}
+
 		return $ret;
 	}
 
