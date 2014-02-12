@@ -1,14 +1,8 @@
-Copyright (C) 2013 webtrees Development Team. All rights reserved.
-
-This and other information can be found on line at [http://webtrees.net](http://webtrees.net)
-
-The installation instructions can also be found in the wiki at:
-[http://webtrees.net/mediawiki/index.php/Main_Page](http://webtrees.net/mediawiki/index.php/Main_Page)
-
-
 # webtrees
 
-**Note:** This information is also available at [the **webtrees** WIKI](http://wiki.webtrees.net/)
+The project’s website is [webtrees.net](http://webtrees.net).
+
+Further documentation is available at [wiki.webtrees.net](http://wiki.webtrees.net).
 
 ## Contents
 
@@ -22,14 +16,12 @@ The installation instructions can also be found in the wiki at:
 * [Backup](#backup)
 * [Converting from phpgedview](#phpgedview)
 
-### License<a name="license"></a>
+### License {#license}
 
 * **webtrees: Web based Family History software**
-* Copyright (C) 2013 webtrees development team.
-
+* Copyright (C) 2014 webtrees development team.
 * Derived from PhpGedView - Copyright (C) 2002 to 2010  PGV Development Team.
 
-* All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it under the
 terms of the GNU General Public License as published by the Free Software
@@ -39,11 +31,11 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY
 WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
-See the file GPL.txt included with this software for more detailed licensing
+See the GPL.txt included with this software for more detailed licensing
 information.
 
 
-### Introduction<a name="introduction"></a>
+### Introduction {#introduction}
 
 **webtrees** is the web's leading online collaborative genealogy application.
 
@@ -72,7 +64,7 @@ making support requests and consider volunteering your own time and skills to ma
 the project even stronger and better.
 
 
-### System requirements<a name="requirements"></a>
+### System requirements {#requirements}
 
 To install **webtrees**, you need:
 
@@ -119,7 +111,7 @@ To install **webtrees**, you need:
   should review the ``Privacy settings Tools`` / ``Internet Options`` for more details.
 
 
-### Installation<a name="installation"></a>
+### Installation {#installation}
 
 Installing **webtrees** is really easy. All you need is a webserver with PHP and 
 MySQL. Almost every web hosting service provides these, but be sure to confirm 
@@ -137,7 +129,7 @@ That's it!
 
 However, before you can use **webtrees**, you need one (or possibly more) GEDCOM 
 (family tree) files. If you have been doing your research using a desktop program 
-such as Family Tree Maker, you can use it's "save as GEDCOM" function to create 
+such as Family Tree Maker, you can use it's “save as GEDCOM” function to create 
 a GEDCOM file. If you are starting from scratch, then **webtrees** can create a 
 GEDCOM file for you. Alternatively, you can import data directly from PhpGedView.
 
@@ -162,7 +154,7 @@ help and you can get friendly advice from the [help](http://webtrees.net/forums)
 forum.
 
 
-### Upgrading<a name="upgrading"></a>
+### Upgrading {#upgrading}
 Upgrading **webtrees** is quick and easy. It is strongly recommended that you 
 upgrade your installation whenever a new version is made available. Even minor 
 **webtrees** version updates usually contain a significant number of bug fixes 
@@ -173,11 +165,11 @@ new version is available.
 1. Now would be a good time to make a [backup](#backup).
 2. Download the latest version of **webtrees** available from 
    [webtrees.net](http://webtrees.net/)
-3. <span style="color:red;">While you are in the middle of uploading the new files, 
+3. While you are in the middle of uploading the new files, 
    a visitor to your site would encounter a mixture of new and old files.  This 
    could cause unpredictable behaviour or errors.  To prevent this, create the 
    file **data/offline.txt**.  While this file exists, visitors will see a 
-   "site unavailable - come back later" message.</span>
+   “site unavailable - come back later” message.
 4. Unzip the .ZIP file, and upload the files to your web server, overwriting the existing files.
 5. Delete the file **data/offline.txt**
 
@@ -199,7 +191,7 @@ It is **very likely** that your custom code will not work when you upgrade
 **We recommend that you disable all custom code before you apply the upgrade.** 
 
 Disable custom modules, switch over to a standard 
-theme, and remove any code "hacks". Once the upgrade is complete and you are satisfied 
+theme, and remove any code “hacks”. Once the upgrade is complete and you are satisfied 
 your site is fully operational contact the source of those modules or themes for 
 a new version.
 
@@ -215,7 +207,7 @@ If you have any problems or questions, help is available on the
 [webtrees forum](http://webtrees.net/forums).
 
 
-### Gedcom (family tree) files<a name="gedcom"></a>
+### Gedcom (family tree) files {#gedcom}
 
 When you ADD, IMPORT or UPLOAD a family tree (GEDCOM) file in **webtrees** the 
 data from the file is all transferred to the database tables. The file itself is 
@@ -242,11 +234,11 @@ over. Follow these steps to update a GEDCOM that has already been imported:
 * From the Administration page, go to your **webtrees** Family trees (GEDCOM) 
   configuration page. On the line  relating to this particular family tree (GEDCOM) 
   file (or a new one) click either IMPORT or UPLOAD.
-* Take careful note of the media items option (_"If you have created media objects 
+* Take careful note of the media items option (_“If you have created media objects 
   in **webtrees**, and have edited your gedcom off-line using a program that 
   deletes media objects, then tick this box to merge the current media objects 
-  with the new GEDCOM."_) In most cases you should leave this box **UNCHECKED**.
-* Click "SAVE". **webtrees** will validate the GEDCOM again before importing. 
+  with the new GEDCOM.”_) In most cases you should leave this box **UNCHECKED**.
+* Click “SAVE”. **webtrees** will validate the GEDCOM again before importing. 
   During this process, **webtrees** copies your entire family tree (GEDCOM file) 
   to a 'chunk' table within your database. Depending on the coding of your file, 
   its file size and the capabilities of your server and the supporting software, 
@@ -260,7 +252,7 @@ over. Follow these steps to update a GEDCOM that has already been imported:
 Every Family History program has its own method of creating GEDCOM files, and 
 differing output format options to select from. **webtrees'** import routines 
 can read many different formats, but not necessarily all. If your software has 
-a "UTF8" option you should always use that. However, **webtrees** has been 
+a “UTF8” option you should always use that. However, **webtrees** has been 
 tested with these alternative formats:
 
 * ANSI 
@@ -273,13 +265,13 @@ tested with these alternative formats:
    * imports OK, but is slow due to the translation into UTF8 as part 
      of the import process.
 * ANSEL  
-   * currently will not import. Gives warning <em>Error: cannot convert 
-     GEDCOM file from ANSEL encoding to UTF-8 encoding.</em> Later releases 
+   * currently will not import. Gives warning *Error: cannot convert 
+     GEDCOM file from ANSEL encoding to UTF-8 encoding*. Later releases 
      of **webtrees** may include translation from ANSEL to UTF8, but this 
      is not a simple process.
    
 
-### Security<a name="security"></a>
+### Security {#security}
 
 **Security** in _webtrees_ means ensuring your site is safe from unwanted 
 intrusions, hacking, or access to data and configuration files. The developers 
@@ -292,7 +284,7 @@ may be a risk there is a very simple test you can do: try to fetch **config.ini.
 by typing **http://_url to your site_/data/config.ini.php** in your web 
 browser.
 
-The most likely result is an "access denied" message like this:
+The most likely result is an “access denied” message like this:
 
     Forbidden
     
@@ -349,7 +341,7 @@ URL setting on the ``Admin`` -> ``Site Administration`` ->
 access the login by typing the correct URL directly into your browser's address input.
 
 
-### Backup<a name="backup"></a>
+### Backup {#backup}
 
 Backups are good. Whatever problem you have, it can always be fixed from a good 
 backup.
@@ -365,10 +357,10 @@ Remember that most web hosting services do NOT backup your data, and this is
 your responsibility.
 
 
-### Converting from phpgedview<a name="phpgedview"></a>
+### Converting from phpgedview {#phpgedview}
 
-If you are moving to **webtrees** from an existing PhpGedView ("PGV") setup, and 
-your PGV install meets certain requirements, **webtrees** has provided a "wizard" 
+If you are moving to **webtrees** from an existing PhpGedView (“PGV”) setup, and 
+your PGV install meets certain requirements, **webtrees** has provided a “wizard” 
 to help make the transfer of the majority of your data a relatively quick and 
 painless operation. See exceptions noted below. Please note that we have designed 
 this wizard so as to not disturb your existing PGV installation, leaving all those 
@@ -381,7 +373,7 @@ The requirements are:
   as your PGV username and password, or if you created a new user for **webtrees**, 
   that new user must also have full privileges to access your PGV database.
 * PGV must be at least versions 4.2.3 or 4.2.4 (this corresponds to an internal 
-  "PGV_SCHEMA_VERSION" of between 10 and 14).  Newer versions, including the current 
+  “PGV_SCHEMA_VERSION” of between 10 and 14).  Newer versions, including the current 
   version 4.3 SVN work (as of JAN 2013) also currently, and later versions, should 
   they be released, will probably work, provided the data structures do not change;
 * All changes in PGV must be accepted (as pending edits will not be transfered).
@@ -421,7 +413,7 @@ We hope to add these to the wizard in a future release. Otherwise, read the
 before reporting a problem in the forum.
 
 The transfer wizard is accessed in **webtrees** from the bottom of the 
-"Manage family trees" page to which you will be automatically directed once you 
+“Manage family trees” page to which you will be automatically directed once you 
 have completed the initial **webtrees** installation steps (section 4 above: 
 [installation](#installation)). This option is only available on a new, 
 empty **webtrees** installation; once you have created a GEDCOM (family tree) 
