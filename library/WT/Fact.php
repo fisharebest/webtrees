@@ -371,7 +371,7 @@ class WT_Fact {
 				'_HOL',
 				'_????_',
 				'DEAT',
-				'_FNRL', 'BURI', 'CREM', '_INTE',
+				'_FNRL', 'CREM', 'BURI', '_INTE',
 				'_YART',
 				'_NLIV',
 				'PROB',
