@@ -117,14 +117,14 @@ $stats = new WT_Stats(WT_GEDCOM);
 		</div>
 
 		<?php if (WT_USER_IS_ADMIN && $old_files) { ?>
-		<h2><span class="warning">', WT_I18N::translate('Old files found'), '</span></h2>
+		<h2><span class="warning"><?php echo WT_I18N::translate('Old files found'); ?></span></h2>
 		<div>
 			<p>
 				<?php echo WT_I18N::translate('Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them.'); ?>
 			</p>
 			<ul>
 				<?php foreach ($old_files as $file) { ?>
-				<li dir="ltr"><?php echo $path; ?></li>';
+				<li dir="ltr"><?php echo $path; ?></li>
 				<?php } ?>	
 			</ul>
 		</div>
