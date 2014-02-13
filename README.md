@@ -8,15 +8,15 @@ Further documentation is available at [wiki.webtrees.net](http://wiki.webtrees.n
 
 * [License](#license)
 * [Introduction](#introduction)
-* [System requirements](#requirements)
+* [System requirements](#system-requirements)
 * [Installation](#installation)
 * [Upgrading](#upgrading)
-* [Gedcom (family tree) files](#gedcom)
+* [Gedcom (family tree) files](#gedcom-family-tree-files)
 * [Security](#security)
 * [Backup](#backup)
-* [Converting from phpgedview](#phpgedview)
+* [Converting from phpgedview](#converting-from-phpgedview)
 
-### License {#license}
+### License
 
 * **webtrees: Web based Family History software**
 * Copyright (C) 2014 webtrees development team.
@@ -35,7 +35,7 @@ See the GPL.txt included with this software for more detailed licensing
 information.
 
 
-### Introduction {#introduction}
+### Introduction
 
 **webtrees** is the web's leading online collaborative genealogy application.
 
@@ -64,7 +64,7 @@ making support requests and consider volunteering your own time and skills to ma
 the project even stronger and better.
 
 
-### System requirements {#requirements}
+### System requirements
 
 To install **webtrees**, you need:
 
@@ -111,7 +111,7 @@ To install **webtrees**, you need:
   should review the ``Privacy settings Tools`` / ``Internet Options`` for more details.
 
 
-### Installation {#installation}
+### Installation
 
 Installing **webtrees** is really easy. All you need is a webserver with PHP and 
 MySQL. Almost every web hosting service provides these, but be sure to confirm 
@@ -154,7 +154,7 @@ help and you can get friendly advice from the [help](http://webtrees.net/forums)
 forum.
 
 
-### Upgrading {#upgrading}
+### Upgrading
 Upgrading **webtrees** is quick and easy. It is strongly recommended that you 
 upgrade your installation whenever a new version is made available. Even minor 
 **webtrees** version updates usually contain a significant number of bug fixes 
@@ -207,7 +207,7 @@ If you have any problems or questions, help is available on the
 [webtrees forum](http://webtrees.net/forums).
 
 
-### Gedcom (family tree) files {#gedcom}
+### Gedcom (family tree) files
 
 When you ADD, IMPORT or UPLOAD a family tree (GEDCOM) file in **webtrees** the 
 data from the file is all transferred to the database tables. The file itself is 
@@ -271,7 +271,7 @@ tested with these alternative formats:
      is not a simple process.
    
 
-### Security {#security}
+### Security
 
 **Security** in _webtrees_ means ensuring your site is safe from unwanted 
 intrusions, hacking, or access to data and configuration files. The developers 
@@ -341,7 +341,7 @@ URL setting on the ``Admin`` -> ``Site Administration`` ->
 access the login by typing the correct URL directly into your browser's address input.
 
 
-### Backup {#backup}
+### Backup
 
 Backups are good. Whatever problem you have, it can always be fixed from a good 
 backup.
@@ -357,7 +357,7 @@ Remember that most web hosting services do NOT backup your data, and this is
 your responsibility.
 
 
-### Converting from phpgedview {#phpgedview}
+### Converting from phpgedview
 
 If you are moving to **webtrees** from an existing PhpGedView (“PGV”) setup, and 
 your PGV install meets certain requirements, **webtrees** has provided a “wizard” 
