@@ -119,8 +119,7 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	echo "</td>";
 	// husband’s parents
 	$hfam = $husb->getPrimaryChildFamily();
-
-	if ($hfam || $sosa) {
+	if ($hfam) { // remove the|| test for $sosa
 		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
 		echo "<td><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
 		// husband’s father
@@ -144,7 +143,7 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 		print_url_arrow($hfam->getXref(), ($sosa==0 ? '?famid='.$hfam->getXref().'&amp;ged='.WT_GEDURL : '#'.$hfam->getXref()), $hfam->getXref(), 1);
 		echo '</td>';
 	}
-	if ($hfam || $sosa) {
+	if ($hfam) { // remove the|| test for $sosa
 		// husband’s mother
 		echo "</tr><tr><td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
 		if ($hfam && $hfam->getWife()) {
@@ -200,7 +199,7 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	// wife’s parents
 	$hfam = $wife->getPrimaryChildFamily();
 
-	if ($hfam || $sosa) {
+	if ($hfam) { // remove the|| test for $sosa
 		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
 		echo "<td><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
 		// wife’s father
@@ -211,6 +210,11 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 			echo "<td valign=\"top\">";
 			print_pedigree_person(WT_Individual::getInstance($hfam->getHusband()->getXref()), 1, 6, $personcount);
 			echo "</td></tr></table>";
+		} elseif ($hfam && !$hfam->getHusband()) { // here for empty box for grandfather
+			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
+			echo '<td valign="top">';
+			print_pedigree_person($hfam->getHusband());
+			echo '</td></tr></table>';
 		}
 		echo "</td>";
 	}
@@ -219,7 +223,7 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 		print_url_arrow($hfam->getXref(), ($sosa==0 ? '?famid='.$hfam->getXref().'&amp;ged='.WT_GEDURL : '#'.$hfam->getXref()), $hfam->getXref(), 1);
 		echo '</td>';
 	}
-	if ($hfam || $sosa) {
+	if ($hfam) {  // remove the|| test for $sosa
 		// wife’s mother
 		echo "</tr><tr><td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
 		if ($hfam && $hfam->getWife()) {
@@ -229,8 +233,13 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 			echo "<td valign=\"top\">";
 			print_pedigree_person(WT_Individual::getInstance($hfam->getWife()->getXref()), 1, 7, $personcount);
 			echo "</td></tr></table>";
+		} elseif ($hfam && !$hfam->getWife()) {  // here for empty box for grandmother
+			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
+			echo '<td valign="top">';
+			print_pedigree_person($hfam->getWife());
+			echo '</td></tr></table>';
 		}
-		echo "</td>";
+		echo '</td>';
 	}
 	echo "</tr></table>";
 }

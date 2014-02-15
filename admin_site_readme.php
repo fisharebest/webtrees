@@ -19,41 +19,23 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 define('WT_SCRIPT_NAME', 'admin_site_readme.php');
+
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('README documentation'))
 	->pageHeader();
 
-function get_tag($txt,$tag){
-	$offset = 0;
-	$start_tag = "<".$tag;
-	$end_tag = "</".$tag.">";
-	$arr = array();
-	do{
-		$pos = strpos($txt,$start_tag,$offset);
-		if($pos){
-			$str_pos = strpos($txt,">",$pos)+1;
-			$end_pos = strpos($txt,$end_tag,$str_pos);
-			$len = $end_pos - $str_pos;
-			$f_text = substr($txt,$str_pos,$len);
-			$arr[] = $f_text;
-			$offset = $end_pos;
-		}
-	}while($pos);
-	return $arr;
-}
+// This information is always LTR/English
+?>
+<div class="markdown" dir="ltr" lang="en">
+	<?php
+		use \Michelf\MarkdownExtra;
 
-echo '<div id="readme" dir="ltr" lang="en">'; // This information is always LTR/English
-
-$url = 'readme.html';
-$txt = file_get_contents($url);
-$arr = get_tag($txt, "body");
-
-foreach ($arr as $value) {
-	echo $value;
-}
-
-echo '</div>';
+		echo MarkdownExtra::defaultTransform(
+			file_get_contents('README.md')
+		);
+	?>
+</div>
