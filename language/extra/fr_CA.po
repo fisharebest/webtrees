@@ -11329,7 +11329,7 @@ msgstr "Expression régulière"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr "Les expressions rationnelles sont une technique d’appariement de chaînes de catactères."
+msgstr "Les expressions rationnelles sont une technique d’appariement de chaînes de caractères."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:33
@@ -13427,7 +13427,7 @@ msgstr "Le fichier %s ne peut pas être supprimé."
 #: admin_site_upgrade.php:384
 #, php-format
 msgid "The file %s could not be updated."
-msgstr "Le fichier n’a pas pu être mis à jour."
+msgstr "Le fichier %s n’a pas pu être mis à jour."
 
 #: admin_site_upgrade.php:408
 #, php-format
