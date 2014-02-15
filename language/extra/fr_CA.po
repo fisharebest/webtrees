@@ -101,13 +101,13 @@ msgstr "%1$d x %2$s"
 #: includes/functions/functions.php:1760
 #, php-format
 msgid "%1$s %2$d times removed ascending"
-msgstr "%1$s éloigné(e) au %2$dème degré"
+msgstr "%1$s éloigné(e) au %2$d<sup>e</sup> degré"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:1763
 #, php-format
 msgid "%1$s %2$d times removed descending"
-msgstr "%1$s éloigné(e) au %2$dème degré"
+msgstr "%1$s éloigné(e) au %2$d<sup>e</sup> degré"
 
 #. I18N: The placeholders are GEDCOM identifiers and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:199
@@ -226,19 +226,19 @@ msgstr[1] "%d mois"
 #, php-format
 msgctxt "FEMALE"
 msgid "%d x cousin"
-msgstr "cousine au (%d+1)ième degré"
+msgstr "cousine au (%d+1)<sup>e</sup> degré"
 
 #: includes/functions/functions.php:676
 #, php-format
 msgctxt "MALE"
 msgid "%d x cousin"
-msgstr "cousin au (%d+1)ième degré"
+msgstr "cousin au (%d+1)<sup>e</sup> degré"
 
 #: includes/functions/functions.php:714
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%d x cousin"
-msgstr "%dème arrière-petit(e)-cousin(e)"
+msgstr "%d<sup>e</sup> arrière-petit(e)-cousin(e)"
 
 #: modules_v3/relatives/module.php:60
 #, php-format
@@ -356,13 +356,13 @@ msgstr "%s pas implémenté"
 #: includes/functions/functions.php:1736
 #, php-format
 msgid "%s once removed ascending"
-msgstr "%s éloigné(e) au 1er degré"
+msgstr "%s éloigné(e) au 1<sup>er</sup> degré"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:1739
 #, php-format
 msgid "%s once removed descending"
-msgstr "%s éloigné(e) au 1er degré"
+msgstr "%s éloigné(e) au 1<sup>er</sup> degré"
 
 #: library/WT/I18N.php:415
 #, php-format
@@ -375,25 +375,25 @@ msgstr[1] "il y a %s secondes"
 #: includes/functions/functions.php:1752
 #, php-format
 msgid "%s three times removed ascending"
-msgstr "%s éloigné(e) au 3ème degré"
+msgstr "%s éloigné(e) au 3<sup>e</sup> degré"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:1755
 #, php-format
 msgid "%s three times removed descending"
-msgstr "%s éloigné(e) au 3ème degré"
+msgstr "%s éloigné(e) au 3<sup>e</sup> degré"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:1744
 #, php-format
 msgid "%s twice removed ascending"
-msgstr "%s éloigné(e) au 2ème degré"
+msgstr "%s éloigné(e) au 2<sup>e</sup> degré"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:1747
 #, php-format
 msgid "%s twice removed descending"
-msgstr "%s éloigné(e) au 2ème degré"
+msgstr "%s éloigné(e) au 2<sup>e</sup> degré"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: includes/functions/functions_date.php:57 library/WT/I18N.php:360
@@ -502,107 +502,107 @@ msgstr ", "
 #: library/WT/Stats.php:4032
 msgctxt "CENTURY"
 msgid "10th"
-msgstr "10ème"
+msgstr "10<sup>e</sup>"
 
 #: library/WT/Stats.php:4031
 msgctxt "CENTURY"
 msgid "11th"
-msgstr "11ème"
+msgstr "11<sup>e</sup>"
 
 #: library/WT/Stats.php:4030
 msgctxt "CENTURY"
 msgid "12th"
-msgstr "12ème"
+msgstr "12<sup>e</sup>"
 
 #: library/WT/Stats.php:4029
 msgctxt "CENTURY"
 msgid "13th"
-msgstr "13ème"
+msgstr "13<sup>e</sup>"
 
 #: library/WT/Stats.php:4028
 msgctxt "CENTURY"
 msgid "14th"
-msgstr "14ème"
+msgstr "14<sup>e</sup>"
 
 #: library/WT/Stats.php:4027
 msgctxt "CENTURY"
 msgid "15th"
-msgstr "15ème"
+msgstr "15<sup>e</sup>"
 
 #: library/WT/Stats.php:4026
 msgctxt "CENTURY"
 msgid "16th"
-msgstr "16ème"
+msgstr "16<sup>e</sup>"
 
 #: library/WT/Stats.php:4025
 msgctxt "CENTURY"
 msgid "17th"
-msgstr "17ème"
+msgstr "17<sup>e</sup>"
 
 #: library/WT/Stats.php:4024
 msgctxt "CENTURY"
 msgid "18th"
-msgstr "18ème"
+msgstr "18<sup>e</sup>"
 
 #: library/WT/Stats.php:4023
 msgctxt "CENTURY"
 msgid "19th"
-msgstr "19ème"
+msgstr "19<sup>e</sup>"
 
 #: library/WT/Stats.php:4041
 msgctxt "CENTURY"
 msgid "1st"
-msgstr "1er"
+msgstr "1<sup>er</sup>"
 
 #: library/WT/Stats.php:4022
 msgctxt "CENTURY"
 msgid "20th"
-msgstr "20ème"
+msgstr "20<sup>e</sup>"
 
 #: library/WT/Stats.php:4021
 msgctxt "CENTURY"
 msgid "21st"
-msgstr "21ème"
+msgstr "21<sup>e</sup>"
 
 #: library/WT/Stats.php:4040
 msgctxt "CENTURY"
 msgid "2nd"
-msgstr "2ème"
+msgstr "2<sup>e</sup>"
 
 #: library/WT/Stats.php:4039
 msgctxt "CENTURY"
 msgid "3rd"
-msgstr "3ème"
+msgstr "3<sup>e</sup>"
 
 #: library/WT/Stats.php:4038
 msgctxt "CENTURY"
 msgid "4th"
-msgstr "4ème"
+msgstr "4<sup>e</sup>"
 
 #: library/WT/Stats.php:4037
 msgctxt "CENTURY"
 msgid "5th"
-msgstr "5ème"
+msgstr "5<sup>e</sup>"
 
 #: library/WT/Stats.php:4036
 msgctxt "CENTURY"
 msgid "6th"
-msgstr "6ème"
+msgstr "6<sup>e</sup>"
 
 #: library/WT/Stats.php:4035
 msgctxt "CENTURY"
 msgid "7th"
-msgstr "7ème"
+msgstr "7<sup>e</sup>"
 
 #: library/WT/Stats.php:4034
 msgctxt "CENTURY"
 msgid "8th"
-msgstr "8ème"
+msgstr "8<sup>e</sup>"
 
 #: library/WT/Stats.php:4033
 msgctxt "CENTURY"
 msgid "9th"
-msgstr "9ème"
+msgstr "9<sup>e</sup>"
 
 #: help_text.php:559
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
@@ -13885,7 +13885,7 @@ msgstr "Respect des règles de confidentialité : les détails de cet enregistre
 
 #: help_text.php:1094
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "Cette case vous permet de changer l’année du calendrier. Entrez une année, puis appuyez sur <b>Entrée</b> pour afficher le calendrier de cette année. <br><br><b>Fonctionnalités avancées</b> pour <b>Afficher année</b><dl><dt><b>Plus d’une année</b></dt><dd>Vous pouvez chercher une date sur un intervalle d’années<br><br>L’intervalle est considéré avec les bornes <u>incluses</u>. Ce qui signifie que la plage couverte s’étend du 1er janvier de la première date au 31 décembre de la deuxième. Par exemple&nbsp;:<br><br><b>1992-5</b> pour tous les évènements de 1992 à 1995.<br><b>1972-89</b> tous les évènements de 1972 à 1989.<br><b>1610-759</b> tous les évènements de 1610 à 1759.<br><b>1880-1905</b> tous les évènements de 1880 à 1905.<br><b>880-1105</b> tous les évènements de 880 à 1105.<br><br>Pour sélectionner une décade, vous pouvez utiliser le caractère générique <b>?</b> à la place des chiffres finaux. Par exemple&nbsp;: <b>197?</b> pour tous les évènements de 1970 à 1979 ou <b>16??</b> pour tous les événements de 1600 à 1699.</dd></dl>"
+msgstr "Cette case vous permet de changer l’année du calendrier. Entrez une année, puis appuyez sur <b>Entrée</b> pour afficher le calendrier de cette année. <br><br><b>Fonctionnalités avancées</b> pour <b>Afficher année</b><dl><dt><b>Plus d’une année</b></dt><dd>Vous pouvez chercher une date sur un intervalle d’années<br><br>L’intervalle est considéré avec les bornes <u>incluses</u>. Ce qui signifie que la plage couverte s’étend du 1<sup>er</sup> janvier de la première date au 31 décembre de la deuxième. Par exemple&nbsp;:<br><br><b>1992-5</b> pour tous les évènements de 1992 à 1995.<br><b>1972-89</b> tous les évènements de 1972 à 1989.<br><b>1610-759</b> tous les évènements de 1610 à 1759.<br><b>1880-1905</b> tous les évènements de 1880 à 1905.<br><b>880-1105</b> tous les évènements de 880 à 1105.<br><br>Pour sélectionner une décade, vous pouvez utiliser le caractère générique <b>?</b> à la place des chiffres finaux. Par exemple&nbsp;: <b>197?</b> pour tous les évènements de 1970 à 1979 ou <b>16??</b> pour tous les événements de 1600 à 1699.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
 msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
@@ -16443,7 +16443,7 @@ msgstr "cousin au huitième degré"
 #: includes/functions/functions.php:706
 msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
-msgstr "8ème arrière-petit(e)-cousin(e)"
+msgstr "8<sup>e</sup> arrière-petit(e)-cousin(e)"
 
 #: includes/functions/functions.php:838
 msgid "elder brother"
@@ -16470,7 +16470,7 @@ msgstr "cousin au onzième degré"
 #: includes/functions/functions.php:709
 msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
-msgstr "11ème arrière-petit(e)-cousin(e)"
+msgstr "11<sup>e</sup> arrière-petit(e)-cousin(e)"
 
 #: admin_trees_config.php:491
 msgid "enable"
@@ -16551,7 +16551,7 @@ msgstr "cousin au quinzième degré"
 #: includes/functions/functions.php:713
 msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
-msgstr "15ème arrière-petit(e)-cousin(e)"
+msgstr "15<sup>e</sup> arrière-petit(e)-cousin(e)"
 
 #: includes/functions/functions.php:741
 #, php-format
@@ -16701,122 +16701,122 @@ msgstr "cousin germain"
 #: includes/functions/functions.php:1172
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "cousin(e) germain(e) éloigné(e) au 1er degré"
+msgstr "cousin(e) germain(e) éloigné(e) au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1170
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "cousine germaine éloignée au 1er degré"
+msgstr "cousine germaine éloignée au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1171
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "cousin germain éloigné au 1er degré"
+msgstr "cousin germain éloigné au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1175
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "cousin(e) germain(e) éloigné(e) au 1er degré"
+msgstr "cousin(e) germain(e) éloigné(e) au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1173
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "cousine germaine éloignée au 1er degré"
+msgstr "cousine germaine éloignée au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1174
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "cousin germain éloigné au 1er degré"
+msgstr "cousin germain éloigné au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1178
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "cousin(e) germain(e) éloigné(e) au 1er degré"
+msgstr "cousin(e) germain(e) éloigné(e) au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1176
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "cousine germaine éloignée au 1er degré"
+msgstr "cousine germaine éloignée au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1177
 msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "cousin germain éloigné au 1er degré"
+msgstr "cousin germain éloigné au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1181
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "cousin(e) germain(e) éloigné(e) au 1er degré"
+msgstr "cousin(e) germain(e) éloigné(e) au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1179
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "cousine germaine éloignée au 1er degré"
+msgstr "cousine germaine éloignée au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1180
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "cousin germain éloigné au 1er degré"
+msgstr "cousin germain éloigné au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1184
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "cousin(e) germain(e) éloigné(e) au 1er degré"
+msgstr "cousin(e) germain(e) éloigné(e) au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1182
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "cousine germaine éloignée au 1er degré"
+msgstr "cousine germaine éloignée au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1183
 msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "cousin germain éloigné au 1er degré"
+msgstr "cousin germain éloigné au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1187
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "cousin(e) germain(e) éloigné(e) au 1er degré"
+msgstr "cousin(e) germain(e) éloigné(e) au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1185
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "cousine germaine éloignée au 1er degré"
+msgstr "cousine germaine éloignée au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1186
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "cousin germain éloigné au 1er degré"
+msgstr "cousin germain éloigné au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1190
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "cousin(e) germain(e) éloigné(e) au 1er degré"
+msgstr "cousin(e) germain(e) éloigné(e) au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1188
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "cousine germaine éloignée au 1er degré"
+msgstr "cousine germaine éloignée au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1189
 msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "cousin germain éloigné au 1er degré"
+msgstr "cousin germain éloigné au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1193
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "cousin(e) germain(e) éloigné(e) au 1er degré"
+msgstr "cousin(e) germain(e) éloigné(e) au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1191
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "cousine germaine éloignée au 1er degré"
+msgstr "cousine germaine éloignée au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:1192
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "cousin germain éloigné au 1er degré"
+msgstr "cousin germain éloigné au 1<sup>er</sup> degré"
 
 #: includes/functions/functions.php:693
 msgctxt "FEMALE"
@@ -16831,7 +16831,7 @@ msgstr "cousin au quatorzième degré"
 #: includes/functions/functions.php:712
 msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
-msgstr "14ème arrière-petit(e)-cousin(e)"
+msgstr "14<sup>e</sup> arrière-petit(e)-cousin(e)"
 
 #: includes/functions/functions.php:740
 #, php-format
@@ -16999,23 +16999,23 @@ msgstr "petit-fils"
 #: includes/functions/functions.php:1353
 #, php-format
 msgid "great x%d aunt"
-msgstr "grand-tante à la %dième génération"
+msgstr "grand-tante à la %d<sup>e</sup> génération"
 
 #: includes/functions/functions.php:1334 includes/functions/functions.php:1343
 #: includes/functions/functions.php:1354
 #, php-format
 msgid "great x%d aunt/uncle"
-msgstr "grand-tante/oncle à la %dième génération"
+msgstr "grand-tante/oncle à la %d<sup>e</sup> génération"
 
 #: includes/functions/functions.php:1675 includes/functions/functions.php:1688
 #, php-format
 msgid "great x%d grandchild"
-msgstr "arrière-petit-enfant au %dème degré"
+msgstr "arrière-petit-enfant au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1674 includes/functions/functions.php:1687
 #, php-format
 msgid "great x%d granddaughter"
-msgstr "arrière-petite-fille au %dème degré"
+msgstr "arrière-petite-fille au %d<sup>e</sup> degré"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1578 includes/functions/functions.php:1585
@@ -17023,198 +17023,198 @@ msgstr "arrière-petite-fille au %dème degré"
 #: includes/functions/functions.php:1610
 #, php-format
 msgid "great x%d grandfather"
-msgstr "grand-père au %dième degré"
+msgstr "grand-père au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1579 includes/functions/functions.php:1586
 #: includes/functions/functions.php:1593 includes/functions/functions.php:1601
 #: includes/functions/functions.php:1611
 #, php-format
 msgid "great x%d grandmother"
-msgstr "grand-mère au %dième degré"
+msgstr "grand-mère au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1580 includes/functions/functions.php:1587
 #: includes/functions/functions.php:1594 includes/functions/functions.php:1602
 #: includes/functions/functions.php:1612
 #, php-format
 msgid "great x%d grandparent"
-msgstr "arrière-grand-parent au %dème degré"
+msgstr "arrière-grand-parent au %d<sup>e</sup> degré"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1673 includes/functions/functions.php:1686
 #, php-format
 msgid "great x%d grandson"
-msgstr "arrière-petit-fils au %dème degré"
+msgstr "arrière-petit-fils au %d<sup>e</sup> degré"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1506 includes/functions/functions.php:1517
 #, php-format
 msgid "great x%d nephew"
-msgstr "petit-neveu au %dème degré"
+msgstr "petit-neveu au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1482
 #, php-format
 msgctxt "(a man’s) brother’s great x(%d-1) grandson"
 msgid "great x%d nephew"
-msgstr "petit-neveu au %dème degré"
+msgstr "petit-neveu au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1484
 #, php-format
 msgctxt "(a man’s) sister’s great x(%d-1) grandson"
 msgid "great x%d nephew"
-msgstr "petit-neveu au %dème degré"
+msgstr "petit-neveu au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1486
 #, php-format
 msgctxt "(a woman’s) great x%d nephew"
 msgid "great x%d nephew"
-msgstr "petit-neveu au %dème degré"
+msgstr "petit-neveu au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1508 includes/functions/functions.php:1519
 #, php-format
 msgid "great x%d nephew/niece"
-msgstr "petit-neveu/petite-nièce au %dème degré"
+msgstr "petit-neveu/petite-nièce au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1497
 #, php-format
 msgctxt "(a man’s) brother’s great x(%d-1) grandchild"
 msgid "great x%d nephew/niece"
-msgstr "petit-neveu/petite-nièce au %dème degré"
+msgstr "petit-neveu/petite-nièce au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1499
 #, php-format
 msgctxt "(a man’s) sister’s great x(%d-1) grandchild"
 msgid "great x%d nephew/niece"
-msgstr "petit-neveu/petite-nièce au %dème degré"
+msgstr "petit-neveu/petite-nièce au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1501
 #, php-format
 msgctxt "(a woman’s) great x%d nephew/niece"
 msgid "great x%d nephew/niece"
-msgstr "petit-neveu/petite-nièce au %dème degré"
+msgstr "petit-neveu/petite-nièce au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1507 includes/functions/functions.php:1518
 #, php-format
 msgid "great x%d niece"
-msgstr "petite-nièce au %dème degré"
+msgstr "petite-nièce au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1489
 #, php-format
 msgctxt "(a man’s) brother’s great x(%d-1) granddaughter"
 msgid "great x%d niece"
-msgstr "petite-nièce au %dème degré"
+msgstr "petite-nièce au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1491
 #, php-format
 msgctxt "(a man’s) sister’s great x(%d-1) granddaughter"
 msgid "great x%d niece"
-msgstr "petite-nièce au %dème degré"
+msgstr "petite-nièce au %d<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1493
 #, php-format
 msgctxt "(a woman’s) great x%d niece"
 msgid "great x%d niece"
-msgstr "petite-nièce au %dème degré"
+msgstr "petite-nièce au %d<sup>e</sup> degré"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1332 includes/functions/functions.php:1352
 #, php-format
 msgid "great x%d uncle"
-msgstr "grand-oncle à la (%d-1) ième génération"
+msgstr "grand-oncle à la (%d-1)<sup>e</sup> génération"
 
 #: includes/functions/functions.php:1339
 #, php-format
 msgctxt "great x(%d-1) grandfather’s brother"
 msgid "great x%d uncle"
-msgstr "grand-oncle à la (%d-1) ième génération"
+msgstr "grand-oncle à la (%d-1)<sup>e</sup> génération"
 
 #: includes/functions/functions.php:1340
 #, php-format
 msgctxt "great x(%d-1) grandmother’s brother"
 msgid "great x%d uncle"
-msgstr "grand-oncle à la (%d-1) ième génération"
+msgstr "grand-oncle à la (%d-1)<sup>e</sup> génération"
 
 #: includes/functions/functions.php:1341
 #, php-format
 msgctxt "great x(%d-1) grandparent’s brother"
 msgid "great x%d uncle"
-msgstr "grand-oncle au (%d-1) ième degré"
+msgstr "grand-oncle au (%d-1)<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1290
 msgid "great x4 aunt"
-msgstr "grande-tante au 5ième degré"
+msgstr "grande-tante au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1291
 msgid "great x4 aunt/uncle"
-msgstr "grand(e)-oncle/tante au 5ième degré"
+msgstr "grand(e)-oncle/tante au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1639
 msgid "great x4 grandchild"
-msgstr "petit-enfant au 4ème degré"
+msgstr "petit-enfant au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1638
 msgid "great x4 granddaughter"
-msgstr "petite-fille au 4ème degré"
+msgstr "petite-fille au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1544
 msgid "great x4 grandfather"
-msgstr "grand-père au 5ième degré"
+msgstr "grand-père au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1545
 msgid "great x4 grandmother"
-msgstr "grand-mère au 5ième degré"
+msgstr "grand-mère au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1546
 msgid "great x4 grandparent"
-msgstr "arrière-grand-parent au 4ème degré"
+msgstr "arrière-grand-parent au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1637
 msgid "great x4 grandson"
-msgstr "petit-fils au 4ème degré"
+msgstr "petit-fils au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1422
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great x4 nephew"
-msgstr "petit-neveu au 4ème degré"
+msgstr "petit-neveu au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1424
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great x4 nephew"
-msgstr "petit-neveu au 4ème degré"
+msgstr "petit-neveu au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1426
 msgctxt "(a woman’s) great x4 nephew"
 msgid "great x4 nephew"
-msgstr "petit-neveu au 4ème degré"
+msgstr "petit-neveu au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1438
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great x4 nephew/niece"
-msgstr "petit-neveu/petite-nièce au 4ème degré"
+msgstr "petit-neveu/petite-nièce au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1440
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great x4 nephew/niece"
-msgstr "petit-neveu/petite-nièce au 4ème degré"
+msgstr "petit-neveu/petite-nièce au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1442
 msgctxt "(a woman’s) great x4 nephew/niece"
 msgid "great x4 nephew/niece"
-msgstr "petit-neveu/petite-nièce au 4ème degré"
+msgstr "petit-neveu/petite-nièce au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1430
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great x4 niece"
-msgstr "petite-nièce au 4ème degré"
+msgstr "petite-nièce au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1432
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great x4 niece"
-msgstr "petite-nièce au 4ème degré"
+msgstr "petite-nièce au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1434
 msgctxt "(a woman’s) great x4 niece"
 msgid "great x4 niece"
-msgstr "petite-nièce au 4ème degré"
+msgstr "petite-nièce au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1287
 msgctxt "great-great-great-grandfather’s brother"
@@ -17241,72 +17241,72 @@ msgstr "grande-tante/grand-oncle à la 6e génération"
 
 #: includes/functions/functions.php:1646
 msgid "great x5 grandchild"
-msgstr "petit-enfant au 5ème degré"
+msgstr "petit-enfant au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1645
 msgid "great x5 granddaughter"
-msgstr "petite-fille au 5ème degré"
+msgstr "petite-fille au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1551
 msgid "great x5 grandfather"
-msgstr "grand-père au 6ième degré"
+msgstr "grand-père au 6<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1552
 msgid "great x5 grandmother"
-msgstr "grand-mère au 6ième degré"
+msgstr "grand-mère au 6<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1553
 msgid "great x5 grandparent"
-msgstr "arrière-grand-parent au 5ème degré"
+msgstr "arrière-grand-parent au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1644
 msgid "great x5 grandson"
-msgstr "petit-fils au 5ème degré"
+msgstr "petit-fils au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1449
 msgctxt "(a man’s) brother’s great x4 grandson"
 msgid "great x5 nephew"
-msgstr "petit-neveu au 5ème degré"
+msgstr "petit-neveu au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1451
 msgctxt "(a man’s) sister’s great x4 grandson"
 msgid "great x5 nephew"
-msgstr "petit-neveu au 5ème degré"
+msgstr "petit-neveu au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1453
 msgctxt "(a woman’s) great x5 nephew"
 msgid "great x5 nephew"
-msgstr "petit-neveu au 5ème degré"
+msgstr "petit-neveu au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1465
 msgctxt "(a man’s) brother’s great x4 grandchild"
 msgid "great x5 nephew/niece"
-msgstr "petit-neveu/petite-nièce au 5ème degré"
+msgstr "petit-neveu/petite-nièce au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1467
 msgctxt "(a man’s) sister’s great x4 grandchild"
 msgid "great x5 nephew/niece"
-msgstr "petit-neveu/petite-nièce au 5ème degré"
+msgstr "petit-neveu/petite-nièce au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1469
 msgctxt "(a woman’s) great x5 nephew/niece"
 msgid "great x5 nephew/niece"
-msgstr "petit-neveu/petite-nièce au 5ème degré"
+msgstr "petit-neveu/petite-nièce au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1457
 msgctxt "(a man’s) brother’s great x4 granddaughter"
 msgid "great x5 niece"
-msgstr "petite-nièce au 5ème degré"
+msgstr "petite-nièce au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1459
 msgctxt "(a man’s) sister’s great x4 granddaughter"
 msgid "great x5 niece"
-msgstr "petite-nièce au 5ème degré"
+msgstr "petite-nièce au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1461
 msgctxt "(a woman’s) great x5 niece"
 msgid "great x5 niece"
-msgstr "petite-nièce au 5ème degré"
+msgstr "petite-nièce au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1297
 msgctxt "great x4 grandfather’s brother"
@@ -17333,27 +17333,27 @@ msgstr "grande-tante/grand-oncle à la 7e génération"
 
 #: includes/functions/functions.php:1653
 msgid "great x6 grandchild"
-msgstr "petit-enfant au 6ème degré"
+msgstr "petit-enfant au 6<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1652
 msgid "great x6 granddaughter"
-msgstr "petite-fille au 6ème degré"
+msgstr "petite-fille au 6<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1558
 msgid "great x6 grandfather"
-msgstr "grand-père au 7ième degré"
+msgstr "grand-père au 7<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1559
 msgid "great x6 grandmother"
-msgstr "grand-mère au 7ième degré"
+msgstr "grand-mère au 7<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1560
 msgid "great x6 grandparent"
-msgstr "arrière-grand-parent au 6ème degré"
+msgstr "arrière-grand-parent au 6<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1651
 msgid "great x6 grandson"
-msgstr "petit-fils au 6ème degré"
+msgstr "petit-fils au 6<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1307
 msgctxt "great x5 grandfather’s brother"
@@ -17363,12 +17363,12 @@ msgstr "grand-oncle à la 6e génération"
 #: includes/functions/functions.php:1308
 msgctxt "great x5 grandmother’s brother"
 msgid "great x6 uncle"
-msgstr "grand-oncle au 6ème degré"
+msgstr "grand-oncle au 6<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1309
 msgctxt "great x5 grandparent’s brother"
 msgid "great x6 uncle"
-msgstr "grand-oncle au 6ème degré"
+msgstr "grand-oncle au 6<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1320
 msgid "great x7 aunt"
@@ -17380,27 +17380,27 @@ msgstr "grande-tante/grand-oncle à la 8e génération"
 
 #: includes/functions/functions.php:1660
 msgid "great x7 grandchild"
-msgstr "petit-enfant au 7ème degré"
+msgstr "petit-enfant au 7<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1659
 msgid "great x7 granddaughter"
-msgstr "petite-fille au 7ème degré"
+msgstr "petite-fille au 7<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1565
 msgid "great x7 grandfather"
-msgstr "grand-père au 8ième degré"
+msgstr "grand-père au 8<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1566
 msgid "great x7 grandmother"
-msgstr "grand-mère au 8ième degré"
+msgstr "grand-mère au 8<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1567
 msgid "great x7 grandparent"
-msgstr "arrière-grand-parent au 7ème degré"
+msgstr "arrière-grand-parent au 7<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1658
 msgid "great x7 grandson"
-msgstr "petit-fils au 7ème degré"
+msgstr "petit-fils au 7<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1317
 msgctxt "great x6 grandfather’s brother"
@@ -17873,7 +17873,7 @@ msgstr "arrière-grande-tante"
 
 #: includes/functions/functions.php:1271
 msgid "great-great-aunt/uncle"
-msgstr "grand(e)-oncle/tante au 4ième degré"
+msgstr "grand(e)-oncle/tante au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1625
 msgid "great-great-grandchild"
@@ -17917,11 +17917,11 @@ msgstr "arrière-arrière-arrière-petite-fille"
 
 #: includes/functions/functions.php:1537
 msgid "great-great-great-grandfather"
-msgstr "grand-père au 4ième degré"
+msgstr "grand-père au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1538
 msgid "great-great-great-grandmother"
-msgstr "grand-mère au 4ième degré"
+msgstr "grand-mère au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1539
 msgid "great-great-great-grandparent"
@@ -18748,7 +18748,7 @@ msgstr "cousin au neuvième degré"
 #: includes/functions/functions.php:707
 msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
-msgstr "9ème arrière-petit(e)-cousin(e)"
+msgstr "9<sup>e</sup> arrière-petit(e)-cousin(e)"
 
 #: admin_users.php:248 includes/functions/functions_edit.php:139
 #: includes/functions/functions_edit.php:146
@@ -19512,7 +19512,7 @@ msgstr "cousin au dixième degré"
 #: includes/functions/functions.php:708
 msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
-msgstr "10ème arrière-petit(e)-cousin(e)"
+msgstr "10<sup>e</sup> arrière-petit(e)-cousin(e)"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
@@ -19570,7 +19570,7 @@ msgstr "cousin au treizième degré"
 #: includes/functions/functions.php:711
 msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
-msgstr "13ème arrière-petit(e)-cousin(e)"
+msgstr "13<sup>e</sup> arrière-petit(e)-cousin(e)"
 
 #: admin_trees_config.php:598
 msgid "this record does not exist"
@@ -19605,7 +19605,7 @@ msgstr "cousin au douzième degré"
 #: includes/functions/functions.php:710
 msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
-msgstr "12ème arrière-petit(e)-cousin(e)"
+msgstr "12<sup>e</sup> arrière-petit(e)-cousin(e)"
 
 #: includes/functions/functions.php:834
 msgid "twin brother"
