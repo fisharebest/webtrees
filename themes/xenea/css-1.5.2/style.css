@@ -81,7 +81,7 @@ html[dir=rtl] .hsearch {float:left;padding-left:10px;}
 	position:relative;
 }
 
-#theme-menu {float:left;margin-left:10px;margin-top:5px;}
+#theme-menu {position:absolute;margin-left:10px;margin-top:5px;}
 #fav-menu {position:absolute;left:80px;top:5px;}
 #login-menu {position:absolute;left:50%;top:15px;}
 #lang-menu {float:right;margin-right:10px;margin-top:5px;text-align:right;}
@@ -89,9 +89,9 @@ html[dir=rtl] .hsearch {float:left;padding-left:10px;}
 .lang-active, .theme-active {color:#000066;font-weight:900;}
 
 /* LTR to RTL Translation */
-html[dir=rtl] #theme-menu {float:right;margin-right:10px;}
+html[dir=rtl] #theme-menu {position:absolute;margin-right:10px;}
 html[dir=rtl] #fav-menu {position:absolute;right:80px;}
-html[dir=rtl] #login-menu {left:auto;right:50%}
+html[dir=rtl] #login-menu {position:absolute;left:auto;right:50%}
 html[dir=rtl] #lang-menu {float:left;margin-left:10px;text-align:left;}
 html[dir=rtl] #lang-menu .makeMenu li ul {right:auto;left:0;}
 
@@ -1942,7 +1942,7 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 	#topMenu, #header, #optionsmenu, #header select, #header input, #footer select, #backprint, #sidebar, #separator {display:none;}
 	#header, #footer, .noprint {display:none !important;}
 	form, button, input {display:none;}
-	#pedigree_chart {left:right;left:-80px;}
+	#pedigree_chart {right:auto;left:-80px;}
 	#header_accordion1 {width: 500px!important}
 	html[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
 	#familybook_chart h3 {margin-bottom: 10px;}

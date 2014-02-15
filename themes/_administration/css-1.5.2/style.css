@@ -105,7 +105,7 @@ html[dir=rtl] #links {left:auto; right:10px;}
 #links li ul {display:none; position:absolute; left:0; top:1.2em; background:url("../jquery-ui-1.10.3/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #eceadf; border:1px solid #d9d6c4;z-index:999;}
 html[dir=rtl] #links li ul {left:auto; right:0;}
 #links li ul li {display:block; padding:0 5px; text-align:left;}
- html[dir=rtl] #links li ul li {text-align:right;}
+html[dir=rtl] #links li ul li {text-align:right;}
 #links, #links li ul {list-style:none; margin:0; padding:1px;}
 #links li:hover > ul {display:block;}
 .ui-widget-content a.lang-active {color:#008000;}
@@ -174,17 +174,14 @@ input.log-filter {width:120px;}
 table#log_list {width:100%}
 #log_list th {min-width:80px;white-space:nowrap;}
 #log_list pre {margin:0 0 20px 0;max-width:250px;white-space:pre-wrap;word-wrap: break-word;-ms-word-break: break-all;word-break: break-all;-webkit-hyphens: auto;-moz-hyphens: auto; hyphens: auto;}
- #log_list a {color:#0000ff;}
- #log_list a:hover, #log_list a:visited {color:#ff0000;}
+#log_list a {color:#0000ff;}
+#log_list a:hover, #log_list a:visited {color:#ff0000;}
 
-/* README */
-#readme {font-size:12px; padding:10px 20px;}
-#readme  h1 {font-size:16px; font-weight:bold; margin-top:0;}
-#readme  h2 {font-size:14px; font-weight:bold; margin-top:0;}
-#readme  h3 {font-size:14px; font-weight:bold; margin:14px 0;}
-#readme li {line-height:150%;}
-#readme .back {float:right;}
-html[dir=rtl] #readme .back {float:left;}
+
+/* Markdown */
+.markdown a {
+	color: blue;
+}
 
 /* PHP INFO */
 div.php_info {padding:10px; text-align:center; width:100%;}
@@ -308,7 +305,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[dir=rtl] input:required:invalid, html[dir=rtl] textarea:required:invalid {background-position:left top;}
 
 /* BROADCAST MESSAGES */
- /* no styles used */
+/* no styles used */
 
 /* USER CLEAN */
 table#clean {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; padding:5px;}
