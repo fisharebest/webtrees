@@ -592,6 +592,9 @@ function old_paths() {
 		WT_ROOT.'themes/minimal/css-1.5.1',
 		WT_ROOT.'themes/webtrees/css-1.5.1',
 		WT_ROOT.'themes/xenea/css-1.5.1',
+		// Removed in 1.5.3
+		WT_ROOT.'js/jquery-1.10.2.js',
+		WT_ROOT.'js/jquery-ui-1.10.3.js',
 	);
 }
 

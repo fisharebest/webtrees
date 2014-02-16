@@ -179,9 +179,81 @@ table#log_list {width:100%}
 
 
 /* Markdown */
-.markdown a {
-	color: blue;
+.markdown * {
+	padding: 0px;
+	margin: 0px;
 }
+
+.markdown a {
+    color: blue;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+	text-decoration: underline;
+}
+
+.markdown h1 {
+	margin: 0px 0px 10px;
+}
+
+.markdown h2 {
+	margin: 15px 0px 5px;
+}
+
+.markdown h3 {
+	margin: 15px 0px 5px;
+}
+
+.markdown h4 {
+	margin: 15px 0px 5px;
+}
+
+.markdown p {
+	padding: 5px 0px 0px;
+}
+
+.markdown pre {
+    border: 1px solid #777;
+    border-radius: 5px;
+    overflow: auto;
+    margin: 20px;
+    padding: 10px;
+    word-wrap: normal;
+}
+
+.markdown code {
+    white-space: nowrap;
+    background-color: #eee;
+    border: 1px solid #777;
+    border-radius: 5px;
+    display: inline-block;
+    max-width: 100%;
+    overflow: auto;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0px 5px;
+}
+
+.markdown pre code {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    word-wrap: normal;
+}
+.markdown pre > code {
+    white-space: pre;
+}
+
+.markdown ol,
+.markdown ul {
+	margin: 10px 0px 10px 10px;
+	padding-left: 15px;
+}
+
 
 /* PHP INFO */
 div.php_info {padding:10px; text-align:center; width:100%;}
