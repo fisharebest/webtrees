@@ -1492,3 +1492,11 @@ function activate_colorbox(config) {
 		// Allow all other media types remain as download links
 	});
 }
+
+// Add LTR/RTL support for jQueryUI Accordions
+jQuery.extend($.ui.accordion.prototype.options, {
+	icons: {
+		header: textDirection === "rtl" ? "ui-icon-triangle-1-w" : "ui-icon-triangle-1-e",
+		activeHeader: "ui-icon-triangle-1-s"
+	}
+});

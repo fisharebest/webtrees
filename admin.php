@@ -26,9 +26,9 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
-	->addInlineJavascript('jQuery("#x").accordion({active:0, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }, heightStyle: "content"});')
-	->addInlineJavascript('jQuery("#tree_stats").accordion({icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});')
-	->addInlineJavascript('jQuery("#changes").accordion({icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});')
+	->addInlineJavascript('jQuery("#x").accordion({heightStyle: "content"});')
+	->addInlineJavascript('jQuery("#tree_stats").accordion();')
+	->addInlineJavascript('jQuery("#changes").accordion();')
 	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");')
 	->setPageTitle(WT_I18N::translate('Administration'))
 	->pageHeader();
@@ -592,6 +592,9 @@ function old_paths() {
 		WT_ROOT.'themes/minimal/css-1.5.1',
 		WT_ROOT.'themes/webtrees/css-1.5.1',
 		WT_ROOT.'themes/xenea/css-1.5.1',
+		// Removed in 1.5.3
+		WT_ROOT.'js/jquery-1.10.2.js',
+		WT_ROOT.'js/jquery-ui-1.10.3.js',
 	);
 }
 

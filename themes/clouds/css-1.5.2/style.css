@@ -45,6 +45,9 @@ padding:10px;
 
 * {
 margin:0;
+}
+
+td {
 padding:0;
 }
 
@@ -613,6 +616,7 @@ background-image:url(images/left1B.png);
 background-repeat:no-repeat;
 height:24px;
 width:26px;
+padding:0;
 }
 
 .blockh2 {
@@ -620,6 +624,7 @@ background-image:url(images/left2.png);
 background-repeat:repeat-x;
 font-size:13px;
 font-weight:700;
+padding:0;
 }
 
 .blockh3 {
@@ -627,6 +632,7 @@ background-image:url(images/left3.png);
 background-repeat:no-repeat;
 height:24px;
 width:8px;
+padding:0;
 }
 
 .blockhc {
@@ -884,6 +890,7 @@ font-size:12px;
 
 .facts_table {
 width:100%;
+padding:0;
 }
 
 .tabs_table {
@@ -2095,8 +2102,8 @@ font-size:100%;
 	border:  solid thin #000;
 	padding: 3px;
 }
-.markdown ol, .markdown ul {margin: 12px 0 12px 40px;}
-html[dir=rtl] .markdown ol, html[dir=rtl] .markdown ul {margin-right: 40px;}
+.markdown ol, .markdown ul {margin: 12px 0;}
+
 
 #main_name {
 color:#555555;
