@@ -597,7 +597,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 				}
 				echo '</div>';//#searchAccordion-indi
-				$this->addInlineJavascript('jQuery("#searchAccordion-indi").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+				$this->addInlineJavascript('jQuery("#searchAccordion-indi").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-n", "activeHeader": "ui-icon-triangle-1-s" }});');
 
 				// family results
 				echo '<div id="searchAccordion-fam">';
@@ -621,7 +621,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 				}
 				echo '</div>';//#searchAccordion-fam
-				$this->addInlineJavascript('jQuery("#searchAccordion-fam").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+				$this->addInlineJavascript('jQuery("#searchAccordion-fam").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-n", "activeHeader": "ui-icon-triangle-1-s" }});');
 
 				// source results
 				echo '<div id="searchAccordion-source">';
@@ -645,7 +645,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 				}
 				echo '</div>';//#searchAccordion-source
-				$this->addInlineJavascript('jQuery("#searchAccordion-source").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+				$this->addInlineJavascript('jQuery("#searchAccordion-source").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-n", "activeHeader": "ui-icon-triangle-1-s" }});');
 
 				// note results
 				echo '<div id="searchAccordion-note">';
@@ -669,7 +669,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 				}
 				echo '</div>';//#searchAccordion-note
-				$this->addInlineJavascript('jQuery("#searchAccordion-note").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+				$this->addInlineJavascript('jQuery("#searchAccordion-note").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-n", "activeHeader": "ui-icon-triangle-1-s" }});');
 
 				$GEDCOM=WT_GEDCOM;
 				load_gedcom_settings(WT_GED_ID);
