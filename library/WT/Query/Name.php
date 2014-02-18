@@ -219,13 +219,24 @@ class WT_Query_Name {
 	public static function surnameAlpha(
 		$marnm, $fams, $ged_id, $countRecords = true
 	) {
-		$alphas = array();
+		$alphas   = array();
+		$marnmSql = '';
+		$famsSql  = '';
+
+		// SQL sub query part to query FAMS records
+		if ($fams) {
+			$famsSql = 'JOIN `##link` ON '
+				. '(n_id = l_from AND n_file = l_file AND l_type = "FAMS")';
+		}
+
+		// SQL sub query part to exclude married names
+		if (!$marnm) {
+			$marnmSql = 'AND n_type != "_MARNM"';
+		}
 
 		$sql = "SELECT SQL_CACHE COUNT(n_id)"
-			. " FROM `##name` "
-			. ($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "")
-			. " WHERE n_file={$ged_id}"
-			. ($marnm ? "" : " AND n_type!='_MARNM'");
+			. " FROM `##name` {$famsSql}"
+			. " WHERE n_file={$ged_id} {$marnmSql}";
 
 		// Fetch all the letters in our alphabet, whether or not there
 		// are any names beginning with that letter.  It looks better to
@@ -234,7 +245,9 @@ class WT_Query_Name {
 			$count = 1;
 
 			if ($countRecords) {
-				$count = WT_DB::prepare($sql . " AND " . self::_getInitialSql('n_surn', $letter))
+				$count = WT_DB::prepare(
+					$sql . " AND " . self::_getInitialSql('n_surn', $letter)
+				)
 					->fetchOne();
 			}
 
@@ -244,16 +257,16 @@ class WT_Query_Name {
 		// Now fetch initial letters that are not in our alphabet,
 		// including "@" (for "@N.N.") and "" for no surname.
 		$sql = "SELECT SQL_CACHE UPPER(LEFT(n_surn, 1)), COUNT(n_id)"
-			. " FROM `##name` "
-			. ($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "")
-			. " WHERE n_file={$ged_id} AND n_surn<>''"
-			. ($marnm ? "" : " AND n_type!='_MARNM'");
+			. " FROM `##name` {$famsSql}"
+			. " WHERE n_file={$ged_id} AND n_surn<>'' {$marnmSql}";
 
 		foreach (self::_getAlphabet() as $letter) {
-			$sql .= " AND n_surn NOT LIKE '" . $letter . "%' COLLATE " . WT_I18N::$collation;
+			$sql .= " AND n_surn NOT LIKE '" . $letter . "%' COLLATE "
+				. WT_I18N::$collation;
 		}
 
-		$sql .= " GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
+		$sql .= " GROUP BY LEFT(n_surn, 1)"
+			. " ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
 
 		foreach (WT_DB::prepare($sql)->fetchAssoc() as $alpha => $count) {
 			$alphas[$alpha] = WT_I18N::number($count);
@@ -261,10 +274,8 @@ class WT_Query_Name {
 
 		// Names with no surname
 		$sql = "SELECT SQL_CACHE COUNT(n_id)"
-			. " FROM `##name` "
-			. ($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "")
-			. " WHERE n_file={$ged_id} AND n_surn=''"
-			. ($marnm ? "" : " AND n_type!='_MARNM'");
+			. " FROM `##name` {$famsSql}"
+			. " WHERE n_file={$ged_id} AND n_surn='' {$marnmSql}";
 
 		$numNone = WT_DB::prepare($sql)->fetchOne();
 
