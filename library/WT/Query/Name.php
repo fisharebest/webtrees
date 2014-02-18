@@ -208,7 +208,7 @@ class WT_Query_Name {
 	// Get a list of initial surname letters for indilist.php and famlist.php
 	// $marnm - if set, include married names
 	// $fams - if set, only consider individuals with FAMS records
-	static public function surnameAlpha($marnm, $fams, $ged_id) {
+	static public function surnameAlpha($marnm, $fams, $ged_id, $countRecords = true) {
 		$alphas=array();
 
 		$sql=
@@ -222,7 +222,10 @@ class WT_Query_Name {
 		// are any names beginning with that letter.  It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
 		foreach (self::_getAlphabet() as $letter) {
-			$count=WT_DB::prepare($sql." AND ".self::_getInitialSql('n_surn', $letter))->fetchOne();
+			$count = 1;
+			if ($countRecords) {
+				$count=WT_DB::prepare($sql." AND ".self::_getInitialSql('n_surn', $letter))->fetchOne();
+			}
 			$alphas[$letter]=WT_I18N::number($count);
 		}
 
