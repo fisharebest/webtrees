@@ -205,58 +205,72 @@ class WT_Query_Name {
 		return "$field LIKE CONCAT('@',".WT_DB::quote($letter).",'%') COLLATE ".WT_I18N::$collation." ESCAPE '@'";
 	}
 
-	// Get a list of initial surname letters for indilist.php and famlist.php
-	// $marnm - if set, include married names
-	// $fams - if set, only consider individuals with FAMS records
-	static public function surnameAlpha($marnm, $fams, $ged_id, $countRecords = true) {
-		$alphas=array();
+	/**
+	 * Get a list of initial surname letters for indilist.php and famlist.php.
+	 * Also used on the individual pages sidebar.
+	 *
+	 * @param boolean $marnm        If set, include married names
+	 * @param boolean $fams         If set, only consider individuals with FAMS records
+	 * @param integer $ged_id       Gedcom tree id
+	 * @param boolean $countRecords If set, count number of record for each letter
+	 *
+	 * @return array
+	 */
+	public static function surnameAlpha(
+		$marnm, $fams, $ged_id, $countRecords = true
+	) {
+		$alphas = array();
 
-		$sql=
-			"SELECT SQL_CACHE COUNT(n_id)".
-			" FROM `##name` ".
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" WHERE n_file={$ged_id}".
-			($marnm ? "" : " AND n_type!='_MARNM'");
+		$sql = "SELECT SQL_CACHE COUNT(n_id)"
+			. " FROM `##name` "
+			. ($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "")
+			. " WHERE n_file={$ged_id}"
+			. ($marnm ? "" : " AND n_type!='_MARNM'");
 
 		// Fetch all the letters in our alphabet, whether or not there
 		// are any names beginning with that letter.  It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
 		foreach (self::_getAlphabet() as $letter) {
 			$count = 1;
+
 			if ($countRecords) {
-				$count=WT_DB::prepare($sql." AND ".self::_getInitialSql('n_surn', $letter))->fetchOne();
+				$count = WT_DB::prepare($sql . " AND " . self::_getInitialSql('n_surn', $letter))
+					->fetchOne();
 			}
-			$alphas[$letter]=WT_I18N::number($count);
+
+			$alphas[$letter] = WT_I18N::number($count);
 		}
 
 		// Now fetch initial letters that are not in our alphabet,
 		// including "@" (for "@N.N.") and "" for no surname.
-		$sql=
-			"SELECT SQL_CACHE UPPER(LEFT(n_surn, 1)), COUNT(n_id)".
-			" FROM `##name` ".
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" WHERE n_file={$ged_id} AND n_surn<>''".
-			($marnm ? "" : " AND n_type!='_MARNM'");
+		$sql = "SELECT SQL_CACHE UPPER(LEFT(n_surn, 1)), COUNT(n_id)"
+			. " FROM `##name` "
+			. ($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "")
+			. " WHERE n_file={$ged_id} AND n_surn<>''"
+			. ($marnm ? "" : " AND n_type!='_MARNM'");
 
-		foreach (self::_getAlphabet() as $n=>$letter) {
-			$sql.=" AND n_surn NOT LIKE '".$letter."%' COLLATE ".WT_I18N::$collation;
+		foreach (self::_getAlphabet() as $letter) {
+			$sql .= " AND n_surn NOT LIKE '" . $letter . "%' COLLATE " . WT_I18N::$collation;
 		}
-		$sql.=" GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
-		foreach (WT_DB::prepare($sql)->fetchAssoc() as $alpha=>$count) {
-			$alphas[$alpha]=WT_I18N::number($count);
+
+		$sql .= " GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
+
+		foreach (WT_DB::prepare($sql)->fetchAssoc() as $alpha => $count) {
+			$alphas[$alpha] = WT_I18N::number($count);
 		}
 
 		// Names with no surname
-		$sql=
-			"SELECT SQL_CACHE COUNT(n_id)".
-			" FROM `##name` ".
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" WHERE n_file={$ged_id} AND n_surn=''".
-			($marnm ? "" : " AND n_type!='_MARNM'");
-		$num_none=WT_DB::prepare($sql)->fetchOne();
-		if ($num_none) {
+		$sql = "SELECT SQL_CACHE COUNT(n_id)"
+			. " FROM `##name` "
+			. ($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "")
+			. " WHERE n_file={$ged_id} AND n_surn=''"
+			. ($marnm ? "" : " AND n_type!='_MARNM'");
+
+		$numNone = WT_DB::prepare($sql)->fetchOne();
+
+		if ($numNone) {
 			// Special code to indicate "no surname"
-			$alphas[',']=$num_none;
+			$alphas[','] = $numNone;
 		}
 
 		return $alphas;
