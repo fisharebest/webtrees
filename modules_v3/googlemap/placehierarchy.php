@@ -43,26 +43,6 @@ function place_id_to_hierarchy($id) {
 	return $arr;
 }
 
-function get_p_id($place) {
-	$par = explode (",", $place);
-	$par = array_reverse($par);
-	$place_id = 0;
-	for ($i=0; $i<count($par); $i++) {
-		$par[$i] = trim($par[$i]);
-		$placelist = create_possible_place_names($par[$i], $i+1);
-		foreach ($placelist as $key => $placename) {
-			$pl_id=
-				WT_DB::prepare("SELECT p_id FROM `##places` WHERE p_parent_id=? AND p_file=? AND p_place LIKE ? ORDER BY p_place")
-				->execute(array($place_id, WT_GED_ID, $placename))
-				->fetchOne();
-			if (!empty($pl_id)) break;
-		}
-		if (empty($pl_id)) break;
-		$place_id = $pl_id;
-	}
-	return $place_id;
-}
-
 function set_placeid_map($level, $parent) {
 	if (!isset($levelm)) {
 		$levelm=0;
@@ -75,7 +55,7 @@ function set_placeid_map($level, $parent) {
 			$fullplace .= $parent[$level-$i].", ";
 		}
 		$fullplace = substr($fullplace, 0, -2);
-		$levelm = get_p_id($fullplace);
+		$levelm = getPlaceId($fullplace);
 	}
 	return $levelm;
 }

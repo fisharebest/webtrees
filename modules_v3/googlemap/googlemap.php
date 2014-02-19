@@ -94,7 +94,7 @@ function abbreviate($text) {
  *
  * @return integer
  */
-function getPlaceLocationId($place)
+function getPlaceId($place)
 {
 	static $placeIds = array();
 
@@ -105,11 +105,6 @@ function getPlaceLocationId($place)
 	$finalPlaceId = 0;
 
 	for ($i = 0; $i < count($parent); ++$i) {
-		if (empty($parent[$i])) {
-			// GoogleMap module uses "unknown" while GEDCOM uses , ,
-			$parent[$i] = 'unknown';
-		}
-
 		$placelist = create_possible_place_names($parent[$i], $i + 1);
 
 		foreach ($placelist as $placename) {
@@ -119,13 +114,13 @@ function getPlaceLocationId($place)
 			} else {
 				// Fetch record from database
 				$placeId = WT_DB::prepare(
-				'SELECT pl_id'
-				. ' FROM `##placelocation`'
-				. ' WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ?'
-				. ' ORDER BY pl_place'
+					'SELECT p_id'
+					. ' FROM `##places`'
+					. ' WHERE p_parent_id=? AND p_file=? AND p_place LIKE ?'
+					. ' ORDER BY p_place'
 				)
-				->execute(array($i, $finalPlaceId, $placename))
-				->fetchOne();
+					->execute(array($finalPlaceId, WT_GED_ID, $placename))
+					->fetchOne();
 			}
 
 			if (!empty($placeId)) {
@@ -143,6 +138,64 @@ function getPlaceLocationId($place)
 	}
 
 	return (int) $finalPlaceId;
+}
+
+/**
+ * Get id of place location.
+ *
+ * @param string $place Place string
+ *
+ * @return integer
+ */
+function getPlaceLocationId($place)
+{
+	static $placeLocationIds = array();
+
+	$parent = explode(',', strip_tags($place));
+	$parent = array_reverse($parent);
+	$parent = array_map('trim', $parent);
+
+	$locationPlaceId = 0;
+
+	for ($i = 0; $i < count($parent); ++$i) {
+		if (empty($parent[$i])) {
+			// GoogleMap module uses "unknown" while GEDCOM uses , ,
+			$parent[$i] = 'unknown';
+		}
+
+		$placelist = create_possible_place_names($parent[$i], $i + 1);
+
+		foreach ($placelist as $placename) {
+			// Look up place id in cache
+			if (isset($placeLocationIds[$i][$placename])) {
+				$placeId = $placeLocationIds[$i][$placename];
+			} else {
+				// Fetch record from database
+				$placeId = WT_DB::prepare(
+					'SELECT pl_id'
+					. ' FROM `##placelocation`'
+					. ' WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ?'
+					. ' ORDER BY pl_place'
+				)
+					->execute(array($i, $locationPlaceId, $placename))
+					->fetchOne();
+			}
+
+			if (!empty($placeId)) {
+				// Cache place id
+				$placeLocationIds[$i][$placename] = $placeId;
+				break;
+			}
+		}
+
+		if (empty($placeId)) {
+			break;
+		}
+
+		$locationPlaceId = $placeId;
+	}
+
+	return (int) $locationPlaceId;
 }
 
 /**
