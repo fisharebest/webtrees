@@ -2481,7 +2481,7 @@ msgstr "Barbados"
 
 #: modules_v3/googlemap/module.php:257
 msgid "Basic"
-msgstr "Russell"
+msgstr "Allgemein"
 
 #. I18N: gedcom tag BASM
 #: library/WT/Gedcom/Tag.php:123 modules_v3/missing_facts_report/report.xml:15
