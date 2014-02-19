@@ -34,44 +34,6 @@ try {
 	die($ex);
 }
 
-/**
- * Load module settings.
- *
- * @param string $moduleName     Name of module settings to load
- * @param array  $settingsToLoad List of settings to load and its default values
- *
- * @return array
- *
- * @todo Move to helper class so other modules could method too
- */
-function loadModuleSettings($moduleName, array $settingsToLoad)
-{
-	/* @var $statement WT_DBStatement */
-	$statement = WT_DB::prepare(
-		'SELECT SQL_CACHE setting_name, setting_value'
-		. ' FROM `##module_setting`'
-		. ' WHERE module_name = ?'
-	);
-
-	// Start with default configuration
-	$loadedSettings = $settingsToLoad;
-
-	// Load settings from database
-	$settingRecords = $statement
-		->execute(array($moduleName))
-		->fetchAll();
-
-	// Update defaults with loaded settings
-	foreach ($settingRecords as $settingRecord) {
-		$loadedSettings[$settingRecord->setting_name]
-			= $settingRecord->setting_value === null
-			? $settingsToLoad[$settingRecord->setting_name]  // Default value
-			: $settingRecord->setting_value;
-	}
-
-	return $loadedSettings;
-}
-
 // Load all module settings at once using one database request
 $settings = loadModuleSettings(
 	'googlemap',
