@@ -123,11 +123,8 @@ function set_levelm($level, $parent) {
 
 function create_map($placelevels) {
 	global $level;
-	global $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $levelm, $plzoom, $controller;
+	global $GM_USE_STREETVIEW, $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $levelm, $plzoom, $controller;
 
-	// *** ENABLE STREETVIEW *** (boolean) =========================================================
-	$STREETVIEW = get_module_setting('googlemap', 'GM_USE_STREETVIEW');
-	// =============================================================================================
 	$parent = WT_Filter::get('parent');
 
 	// create the map
@@ -141,7 +138,7 @@ function create_map($placelevels) {
 		WT_DB::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM `##placelocation` WHERE pl_id=?")
 		->execute(array($levelm))
 		->fetch(PDO::FETCH_ASSOC);
-	if ($STREETVIEW && $level!=0 ) {
+	if ($GM_USE_STREETVIEW && $level!=0 ) {
 		echo '<div id="place_map" style="margin-top:20px; border:1px solid gray; width: ', $GOOGLEMAP_PH_XSIZE, 'px; height: ', $GOOGLEMAP_PH_YSIZE, 'px; ';
 	} else {
 		echo '<div id="place_map" style="border:1px solid gray; width:', $GOOGLEMAP_PH_XSIZE, 'px; height:', $GOOGLEMAP_PH_YSIZE, 'px; ';
@@ -184,7 +181,7 @@ function create_map($placelevels) {
 	echo '</td>';
 	echo '<td style="margin-left:15px; float:right;">';
 
-	if ($STREETVIEW) {
+	if ($GM_USE_STREETVIEW) {
 		$controller->addInlineJavascript('
 			function update_sv_params(placeid) {
 				var svlati = document.getElementById("sv_latiText").value.slice(0, -1);
@@ -512,7 +509,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 					new google.maps.Size(35, 45),
 					new google.maps.Point(0,0),
 					new google.maps.Point(1, 45));
-				 } else {
+				} else {
 					var iconImage = new google.maps.MarkerImage(icon.image,
 					new google.maps.Size(20, 34),
 					new google.maps.Point(0,0),

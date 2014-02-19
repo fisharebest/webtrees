@@ -127,7 +127,7 @@ function setup_map() {
 }
 
 function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
-	global $controller, $GOOGLEMAP_MAX_ZOOM, $GOOGLEMAP_YSIZE;
+	global $controller, $GM_USE_STREETVIEW, $GOOGLEMAP_MAX_ZOOM, $GOOGLEMAP_YSIZE;
 
 	// Create the markers list array
 	$gmarks = array();
@@ -290,9 +290,6 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 		}
 	}
 	$location_groups = array_values($location_groups);
-
-	// *** ENABLE STREETVIEW ***
-	$STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	?>
 
 	<script>
@@ -430,19 +427,19 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 
 				// Use jquery for info window tabs
 				google.maps.event.addListener(infowindow, 'domready', function() {
-	  	    //jQuery code here
+			  //jQuery code here
 					jQuery('#EV').click(function() {
 						document.tabLayerEV = eval('document.getElementById("EV")');
 						document.tabLayerEV.style.background = '#ffffff';
 						document.tabLayerEV.style.paddingBottom = '1px';
-						<?php if ($STREETVIEW) { ?>
+						<?php if ($GM_USE_STREETVIEW) { ?>
 						document.tabLayerSV = eval('document.getElementById("SV")');
 						document.tabLayerSV.style.background = '#cccccc';
 						document.tabLayerSV.style.paddingBottom = '0px';
 						<?php } ?>
 						document.panelLayer1 = eval('document.getElementById("pane1")');
 						document.panelLayer1.style.display = 'block';
-						<?php if ($STREETVIEW) { ?>
+						<?php if ($GM_USE_STREETVIEW) { ?>
 						document.panelLayer2 = eval('document.getElementById("pane2")');
 						document.panelLayer2.style.display = 'none';
 						<?php } ?>
@@ -452,14 +449,14 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 						document.tabLayerEV = eval('document.getElementById("EV")');
 						document.tabLayerEV.style.background = '#cccccc';
 						document.tabLayerEV.style.paddingBottom = '0px';
-						<?php if ($STREETVIEW) { ?>
+						<?php if ($GM_USE_STREETVIEW) { ?>
 						document.tabLayerSV = eval('document.getElementById("SV")');
 						document.tabLayerSV.style.background = '#ffffff';
 						document.tabLayerSV.style.paddingBottom = '1px';
 						<?php } ?>
 						document.panelLayer1 = eval('document.getElementById("pane1")');
 						document.panelLayer1.style.display = 'none';
-						<?php if ($STREETVIEW) { ?>
+						<?php if ($GM_USE_STREETVIEW) { ?>
 						document.panelLayer2 = eval('document.getElementById("pane2")');
 						document.panelLayer2.style.display = 'block';
 						<?php } ?>
@@ -608,7 +605,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 					'<div id="gmtabs">' +
 						'<ul class="tabs" >' +
 							'<li><a href="#event" id="EV"><?php echo WT_I18N::translate('Events'); ?></a></li>' +
-							<?php if ($STREETVIEW) { ?>
+							<?php if ($GM_USE_STREETVIEW) { ?>
 							'<li><a href="#sview" id="SV"><?php echo WT_I18N::translate('Google Street View™'); ?></a></li>' +
 							<?php } ?>
 						'</ul>' +
@@ -617,7 +614,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 								'<h4 id="iwhead">' + location.place + '</h4>' +
 								event_details +
 							'</div>' +
-							<?php if ($STREETVIEW) { ?>
+							<?php if ($GM_USE_STREETVIEW) { ?>
 							'<div id="pane2">' +
 								'<h4 id="iwhead">' + location.place + '</h4>' +
 								'<div id="pano"></div>' +
