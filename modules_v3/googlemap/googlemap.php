@@ -87,30 +87,77 @@ function abbreviate($text) {
 	return $desc;
 }
 
-function get_lati_long_placelocation ($place) {
-	$parent = explode (',', $place);
+/**
+ * Load latitude and longitude data of place.
+ *
+ * @param string $place Place string
+ *
+ * @return array
+ */
+function get_lati_long_placelocation($place)
+{
+	static $placeIds            = array();
+	static $placeLocationRecord = array();
+
+	$parent = explode(',', $place);
 	$parent = array_reverse($parent);
-	$place_id = 0;
-	for ($i=0; $i<count($parent); $i++) {
-		$parent[$i] = trim($parent[$i]);
-		if (empty($parent[$i])) $parent[$i]='unknown';// GoogleMap module uses "unknown" while GEDCOM uses , ,
-		$placelist = create_possible_place_names($parent[$i], $i+1);
-		foreach ($placelist as $placename) {
-			$pl_id=
-				WT_DB::prepare("SELECT pl_id FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
-				->execute(array($i, $place_id, $placename))
-				->fetchOne();
-			if (!empty($pl_id)) break;
+	$parent = array_map('trim', $parent);
+
+	$finalPlaceId = 0;
+
+	for ($i = 0; $i < count($parent); ++$i) {
+		if (empty($parent[$i])) {
+			// GoogleMap module uses "unknown" while GEDCOM uses , ,
+			$parent[$i] = 'unknown';
 		}
-		if (empty($pl_id)) break;
-		$place_id = $pl_id;
+
+		$placelist = create_possible_place_names($parent[$i], $i + 1);
+
+		foreach ($placelist as $placename) {
+			// Look up place id in cache
+			if (isset($placeIds[$i][$placename])) {
+				$placeId = $placeIds[$i][$placename];
+			} else {
+				// Fetch record from database
+				$placeId = WT_DB::prepare(
+					'SELECT pl_id'
+					. ' FROM `##placelocation`'
+					. ' WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ?'
+					. ' ORDER BY pl_place'
+				)
+					->execute(array($i, $finalPlaceId, $placename))
+					->fetchOne();
+			}
+
+			if (!empty($placeId)) {
+				// Cache place id
+				$placeIds[$i][$placename] = $placeId;
+				break;
+			}
+		}
+
+		if (empty($placeId)) {
+			break;
+		}
+
+		$finalPlaceId = $placeId;
 	}
 
-	return
-		WT_DB::prepare("SELECT sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, pl_lati, pl_long, pl_zoom, pl_icon, pl_level FROM `##placelocation` WHERE pl_id=? ORDER BY pl_place")
-		->execute(array($place_id))
-		->fetchOneRow();
+	// Load place location data if not already cached
+	if (!isset($placeLocationRecord[$finalPlaceId])) {
+		$placeLocationRecord[$finalPlaceId]
+			= WT_DB::prepare(
+				'SELECT sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom,'
+				. ' pl_lati, pl_long, pl_zoom, pl_icon, pl_level'
+				. ' FROM `##placelocation`'
+				. ' WHERE pl_id=?'
+				. ' ORDER BY pl_place'
+			)
+				->execute(array($finalPlaceId))
+				->fetchOneRow();
+	}
 
+	return $placeLocationRecord[$finalPlaceId];
 }
 
 function setup_map() {
@@ -427,7 +474,7 @@ function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 
 				// Use jquery for info window tabs
 				google.maps.event.addListener(infowindow, 'domready', function() {
-			  //jQuery code here
+			//jQuery code here
 					jQuery('#EV').click(function() {
 						document.tabLayerEV = eval('document.getElementById("EV")');
 						document.tabLayerEV.style.background = '#ffffff';
