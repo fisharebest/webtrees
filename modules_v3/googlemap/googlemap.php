@@ -94,11 +94,11 @@ function abbreviate($text) {
  *
  * @return integer
  */
-function getPlaceId($place)
+function getPlaceLocationId($place)
 {
 	static $placeIds = array();
 
-	$parent = explode(',', $place);
+	$parent = explode(',', strip_tags($place));
 	$parent = array_reverse($parent);
 	$parent = array_map('trim', $parent);
 
@@ -156,7 +156,7 @@ function get_lati_long_placelocation($place)
 {
 	static $placeLocationRecord = array();
 
-	$placeId = getPlaceId($place);
+	$placeId = getPlaceLocationId($place);
 
 	// Load place location data if not already cached
 	if (!isset($placeLocationRecord[$placeId])) {
