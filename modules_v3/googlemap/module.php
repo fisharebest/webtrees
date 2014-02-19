@@ -72,9 +72,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		case 'places_edit':
 		case 'wt_v3_street_view':
 			// TODO: these files should be methods in this class
-			require WT_ROOT . WT_MODULES_DIR . 'googlemap/googlemap.php';
-			require WT_ROOT . WT_MODULES_DIR . 'googlemap/defaultconfig.php';
-			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/' . $mod_action . '.php';
+			include WT_ROOT . WT_MODULES_DIR . 'googlemap/googlemap.php';
+			include WT_ROOT . WT_MODULES_DIR . 'googlemap/defaultconfig.php';
+			include WT_ROOT . WT_MODULES_DIR . $this->getName() . '/' . $mod_action . '.php';
 			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
@@ -95,8 +95,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Implement WT_Module_Tab
 	public function getPreLoadContent()	{
 		ob_start();
-		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
-		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
+		include_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
+		include_once WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 		setup_map();
 		return ob_get_clean();
 	}
@@ -112,8 +112,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		if ($this->checkMapData()) {
 			ob_start();
-			require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
-			require_once WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
+			include_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
+			include_once WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 			echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 			echo '<table border="0" width="100%"><tr><td>';
 			echo '<table width="100%" border="0" class="facts_table">';
@@ -187,8 +187,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	}
 
 	private function config() {
-		require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
-		require WT_ROOT.'includes/functions/functions_edit.php';
+		include WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
+		include WT_ROOT.'includes/functions/functions_edit.php';
 
 		$action = WT_Filter::post('action');
 
@@ -227,7 +227,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 			AddToLog('Googlemap config updated', 'config');
 			// read the config file again, to set the vars
-			require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
+			include WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 		}
 		?>
 		<table id="gm_config">
@@ -430,8 +430,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	}
 
 	private function flags() {
-		require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
-		require WT_ROOT.'includes/functions/functions_edit.php';
+		include WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
+		include WT_ROOT.'includes/functions/functions_edit.php';
 
 		$controller=new WT_Controller_Simple();
 		$controller
@@ -634,8 +634,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	private function pedigree_map() {
 		global $controller, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS;
 
-		require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
-		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
+		include WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
+		include_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
 
 		// Default is show for both of these.
 		$hideflags = WT_Filter::get('hideflags');
@@ -1409,9 +1409,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	}
 
 	private function admin_placecheck() {
-		require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
-		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		include WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
+		include_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
+		include_once WT_ROOT.'includes/functions/functions_edit.php';
 
 		$action    = WT_Filter::get('action', '','go');
 		$gedcom_id = WT_Filter::get('gedcom_id', null, WT_GED_ID);
