@@ -88,16 +88,15 @@ function abbreviate($text) {
 }
 
 /**
- * Load latitude and longitude data of place.
+ * Get id of place.
  *
  * @param string $place Place string
  *
- * @return array
+ * @return integer
  */
-function get_lati_long_placelocation($place)
+function getPlaceId($place)
 {
-	static $placeIds            = array();
-	static $placeLocationRecord = array();
+	static $placeIds = array();
 
 	$parent = explode(',', $place);
 	$parent = array_reverse($parent);
@@ -120,13 +119,13 @@ function get_lati_long_placelocation($place)
 			} else {
 				// Fetch record from database
 				$placeId = WT_DB::prepare(
-					'SELECT pl_id'
-					. ' FROM `##placelocation`'
-					. ' WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ?'
-					. ' ORDER BY pl_place'
+				'SELECT pl_id'
+				. ' FROM `##placelocation`'
+				. ' WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ?'
+				. ' ORDER BY pl_place'
 				)
-					->execute(array($i, $finalPlaceId, $placename))
-					->fetchOne();
+				->execute(array($i, $finalPlaceId, $placename))
+				->fetchOne();
 			}
 
 			if (!empty($placeId)) {
@@ -143,9 +142,25 @@ function get_lati_long_placelocation($place)
 		$finalPlaceId = $placeId;
 	}
 
+	return (int) $finalPlaceId;
+}
+
+/**
+ * Load latitude and longitude data of place.
+ *
+ * @param string $place Place string
+ *
+ * @return array
+ */
+function get_lati_long_placelocation($place)
+{
+	static $placeLocationRecord = array();
+
+	$placeId = getPlaceId($place);
+
 	// Load place location data if not already cached
-	if (!isset($placeLocationRecord[$finalPlaceId])) {
-		$placeLocationRecord[$finalPlaceId]
+	if (!isset($placeLocationRecord[$placeId])) {
+		$placeLocationRecord[$placeId]
 			= WT_DB::prepare(
 				'SELECT sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom,'
 				. ' pl_lati, pl_long, pl_zoom, pl_icon, pl_level'
@@ -153,11 +168,11 @@ function get_lati_long_placelocation($place)
 				. ' WHERE pl_id=?'
 				. ' ORDER BY pl_place'
 			)
-				->execute(array($finalPlaceId))
+				->execute(array($placeId))
 				->fetchOneRow();
 	}
 
-	return $placeLocationRecord[$finalPlaceId];
+	return $placeLocationRecord[$placeId];
 }
 
 function setup_map() {
