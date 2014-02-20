@@ -25,6 +25,7 @@
 # $Id$
 
 # Well-behaved robots understand "Allow" directives.
+# Google (plus some others?) understands the "$" pattern match
 User-Agent: bingbot       # Bing
 User-Agent: Googlebot     # Google
 User-Agent: ia_archiver   # Internet Archive "wayback" machine
@@ -46,6 +47,7 @@ Allow: /repo.php
 Allow: /site-offline.php
 Allow: /site-unavailable.php
 Allow: /source.php
+Allow: /$
 Disallow: /
 
 # Disallow all other robots
