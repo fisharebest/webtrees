@@ -21,6 +21,8 @@
 abstract class WT_Module {
 	private $_title = null;
 
+	private $settings = null;
+
 	public function __construct() {
 		$this->_title = $this->getTitle();
 	}
@@ -42,6 +44,16 @@ abstract class WT_Module {
 	// This is an internal name, used to generate identifiers
 	public function getName() {
 		return str_replace('_WT_Module', '', get_class($this));
+	}
+
+	/**
+	 * Get module directory.
+	 *
+	 * @return string
+	 */
+	public function getDir()
+	{
+		return WT_ROOT . WT_MODULES_DIR . $this->getName();
 	}
 
 	// Run an action specified on the URL through module.php?mod=FOO&mod_action=BAR
@@ -287,5 +299,67 @@ abstract class WT_Module {
 				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
 			}
 		}
+	}
+
+	/**
+	 * Load module settings if not already done.
+	 *
+	 * @return void
+	 */
+	protected function loadSettings()
+	{
+		if (is_array($this->settings)) {
+			return;
+		}
+
+		/* @var $statement WT_DBStatement */
+		$statement = WT_DB::prepare(
+			'SELECT SQL_CACHE setting_name, setting_value'
+			. ' FROM `##module_setting`'
+			. ' WHERE module_name = ?'
+		);
+
+		// Load settings from database as key => value pairs
+		$this->settings = $statement
+			->execute(array($this->getName()))
+			->fetchAll(PDO::FETCH_KEY_PAIR);
+	}
+
+	/**
+	 * Get setting value by given name.
+	 *
+	 * @param string $settingName  Name of setting to get
+	 * @param mixed  $defaultValue Default value returned if setting is not set
+	 *
+	 * @return mixed
+	 */
+	public function getSetting($settingName, $defaultValue = null)
+	{
+		$this->loadSettings();
+
+		if (!isset($this->settings[$settingName])) {
+			return $defaultValue;
+		}
+
+		return $this->settings[$settingName];
+	}
+
+	/**
+	 * Set a module setting with a given value.
+	 *
+	 * @param string $settingName  Name of setting to set
+	 * @param mixed  $settingValue Value of setting
+	 *
+	 * @return self
+	 */
+	public function setSetting($settingName, $settingValue)
+	{
+		// FIXME
+		set_module_setting($this->getName(), $settingName, $settingValue);
+
+		// Update setting
+		$this->settings[$settingName] = $settingValue;
+
+		return $this;
 	}
 }
